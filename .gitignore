@@ -20,3 +20,42 @@ Extra/c/*.clean-before-*
 
 .DS_Store
 Supporting_Documentation/*.pdf
+
+# Local probes / temporary binaries
+Extra/c/probe_keygen
+Extra/c/probe_keygen_asan
+Extra/c/probe_keygen_save
+Extra/c/probe_keygen.c
+Extra/c/probe_keygen_save.c
+
+# Local logs / sanitizer outputs
+Extra/c/*.log
+Extra/c/*asan*.txt
+Extra/c/asan_*.txt
+
+# Local patch/generator scripts
+Extra/c/patch*.py
+Extra/c/extend*.py
+
+# Generated keys / secrets
+*.key
+*.sk
+*.priv
+*private*
+*secret*
+*seed*
+
+# Build artifacts
+*.o
+Extra/c/falcon
+Extra/c/test_falcon
+Extra/c/tool
+
+# Local backups / dirty copies
+Extra/c/backups/
+Extra/c/*.bak
+Extra/c/*.bak-*
+Extra/c/*.before-*
+Extra/c/*.clean-before-*
+Extra/c_dirty*/
+Extra/c_before_clean_reset*/
