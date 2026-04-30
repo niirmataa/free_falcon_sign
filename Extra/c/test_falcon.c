@@ -1658,10 +1658,19 @@ static const int16_t ntru_G_1536[] = {
 static const char *ntru_pkey_1536 = "8a03f46b194d43c2280d472bdc708aea46150dc5dae47da831c980420aaf105db6757c2792c0d3d9c8354c178f9135f070e5acd1fb85dfe0e058271c2c6e6a07cd02f278583fe38d4605a1b45d301f80f2381670b74bb81a901acd64da9ee931fb7c94f7d10a0c0095d171dc4c45b78b86d42a8ab1a3b18118141914d043b3d0a14a28df1f570955795c3a183d741410250a038332270429880b74b1134985e0512751a737be3b46b3a47490ea77f5cf0e12a22fb2729a2a160cb8e4e349a5a3010da9201a92da82081947878322cc9d11a8de79e6fae0a211da57a007614b0bbe207f2aca9232134910f28dd99da8a26d6dd8231dc7582d51430eca9ddc0c2d153c62adb6a8a2a3cfc1bb1820a42203bedd381c4b5e97b76899087d92275f5ae26a2952ede8ba639442f432a577b230ad538bb9515b2c725f5caaa15c089a4583028d22b2ae83956297d43182108207a8a3c1c96caf087a39ed56dc5a0d95235c8077aa59c867c3d778c045c61ae937b4354b119b92971416925e602b215ab610e8a652013b1c44d09cbdbde0c981d6034e5d122662748609d99aa112c0ff6519d85f2e0545a87ea991c3bf355c45e8c0da0c4a1dd0572d18e9d2363943bf1c97800e52e665ad04d8cdf8f1403989d21b6e5632105927ba5130a8607b44c78c4607cadc5d05dc5a83bbc2006031969867a6236a3922e255ff663620cd80ac8df4299d46b142410da1fd22f823fb616eb81d614354f6df6ad102df3a8e5e0c47e58ba0b6055b03c9d67c8579399903b85b1b45d23941a6ccc501490b687620c6d0c624638ca6dad78433761ce42528390346cb02e016ad148322e420c0fc229f531187585cdeb93b1f3277e82962e1d44c63e20f5b135e7b26fa187078e5684844eb477a2b5c161ac4f8d0ea567330ccf49a9296dc30d48a31aee906c617498b1fa69c74169a4e1db69ba3a2abe91ace73b4f03e7a12298b09efe7ded1171404284354380ea55a611178894c2a4e6a23a5306666cdd108a2e27cc3f5886e2d6860087d0d0c98c047f30ba7cccaa777020038f931f2e0121c24d01e3abfbb0c9efb3218cb6b34a00fdcc26244ec6cb829fc7a1046964a8f552060015622dec4b8695176d67691468f1510980ecae4822ae9f3b55a016d54511afe7ee8694c14092c535b22191ff935a3717465a17512ff26366084db702cd239220a0a0a53fa478d1190040fb50c3ec048b866398291b5a97042a63bce0e5101ee30733b370b655a16cf86b239345535ae28fb01a822944abc17077bf09f703190fda7ac70c15a930b235c802a7e191a0626376ff65334ac648404cfa4a32255e23c8e4fd2f930c46b3b08806d6a2073a5a6575b26368306200a49f32276f146a940553526728c623451cecb1282d6e316019e1deb2b29141d2e8c08607704ea4a09172d1108ec21e5a353882f086c60fd37f90a9439ecf5c0fed6cf907ed435812e42b2adc4c812d6f3a5e558d4098014057b19c42a1c0eb8c44ec14d9825030d48a3981aa2e9d1426b3e4854104b26646471bbd468627a511381e8b3de18a8ff741bfab8c1fbe7fae1778b4854f48b4cd61aaa168f0677525a1aae8178c63e27a30c11718cb5db9c05b55dac55a8c1c86a86d7470156499a6c39b2c1007789c0404000ec01f0030533ce541483eadfa7e808449a65c5a1255c166a0881cbe29ea150a1cd1ea95e2a2a51430c6311c7082bcdb79b963bcaf04408b891a126b1bce12d0fe206587c7ca17133469aaedcd90f41c68e4d1ab1fdfbde35b648a096e2b5e68508500e15134f8473e34708a12ebc5c5446c12b31b9256c67a208749ac584fb0af06aca3570558203400930614556baa8287037c522c6239c1c84cb2212c6758f400e12864c7fc1f5911f1c76d928fdb0b873a3c1bd4d5a1367558718745c7346c72603a6d22a44b48408d68cd66379e4678df321288d4e49f0946432718d002427258e66130060e68c508e3badc5bb6b23102790385439110872b31e06a8e0e7080bbf786b7cdb962658d65119303807ad1c2f4e4d10c8c7708088c2038415423a7a2a70896c6492275617715e4770255274285b152e3838e160e5d1ccf2a6cb76189f8007c41107882970de75b2a32f7c66c0fe6a08e453a192c4e13f950fd825a5f9424323890dd39110338a01ca1e5e3641b88178881a982e448b1a20dc992240fb047c8430d03922f93f629c5987113cb26951a8c9fa03f16eb069a475919cc4388279c6b39f046edea058f83c4738db41aa5b2c2242677d16340da88cc4552a86c555a13b4ffad16a19f3d003ac635ae2fd9f066a80da5c39c20570fd6c9644242c103e046fa4e3b83f8547e76213863e62665ec540639239052726c00313399c07dc3a6ce7aa81a454667ddd023305779451a9df7a55002b89b6e05593e22acce3f508744de6a30a4a056341d876a0d9159c1c44181549c91a1a820240c512fc9dd44837bea5feca27a5963d369fdc8e199ae1e7ea8423c109331ac071e172d87eb72a8336c812a840083d03bd58d08d083e23389abdc65c840038a2282aa5c7d3a3ce5a6c8fd464c41469c331ee571a204214d60e6f156c4424c241a925be21f19e7243642b68f184c190e591a7065a0de78cb56d865db0d133b236ac2a8186f141455ec42ce990686307a365a9cba6a02d2acc2de2273add076ae7af065bb50c41eedf15f8822ec096229cc12a24454644091908847c20e0d0a82396191a0858943d20129bb7a762ccc08f2f916e2edea1cfe0bff0678b8f061984c52284ef0df18b78340067831f27aed4246a6a4e10e295974ca5b68d55811f0866dc3504394f44d9636e532086db3ca2e63956524324decec3476c249c31505804340386277cee2d90cc3bc903546dc840c9a768cac676df7601571d98193168f84fa1972065dc082a4903702b7d26734d4219c98bdcd3a2552c428ebd7fd079715aa0821e8c43573df0f835aaa86f00a3ca41da2146c854b71084c88b73926c71c961c13ce1515e79e0d1d06ef3af914dc155075100b6010a178ae400cca5d7d0ea8482206e02be07a9a6f522e35c5cafab016aae2f7e1cb3af445f8be4e00bc3b6189866bdf52353f114e11c108dbe1f826c3f562ce1bb33438a994b9e1fb379ca6804d09c5991b0090e892446756a7c921439510ce3242c1dc4da01895b5220f54620d4c4c34f9a92bda5118d7e2411eca0b43585a492d7b6256d094080116b9b520164e36b835817a05ce23515dc6893b034e996584d25635274dbcd0611cee7af6762c59d3a197cdc9ba5ec910ed8d18797418d016a5e80a17c2d0303f8496950866cb2331754b15589a19c4039038886889b0c627d14588951a315f90fbac1001678764c7c89ac5a0cf769e8a7d9fe207b6be214fd6bdb8db0bee338cf8a3ddb6a6ca1c88fd3bf87cdc4e5543901041d5910e482bc5b5145404790049b3d390217192f629b5210ac1ed560abd91eba0f1e20544288df66ef8ecb33474f2d13e465d8b622c2051800aa063d0af8ac0a38d89674b588b44be6a8135af6d43923941ee0a4a4d754489271190af2e56669d334fc616823d71a5e1dc22ca602c9c7a17feba98e222d84131ccaec2c71fbb0bcb0c519a426e5643426ba151849a8d124768c7eaf0457863d485e086156e760130e76c3418e0d15f06c9a26f419226bddc898af3aea01ad3d6bd1417b60c3c69926fe73f810b23201d336788501051f9e291e22f4dcb08c2437cb6c310eca456c59ef09354f4091122b6563dc3da43f4466b6f4a6f1f7e16eb12be0e797810484721004e16b767629145df1462a2f906c18d6e95c13a40ef48cb4c1cf40e0994c9ca960925c26f98a929d052f20b88841d38d1001b0a111fa918d78c2b5b88ac956b08822f8d5cd1bd4871ce258b24adc28c24d4f85f214226244722dee3af5e8796b554bb997e1850e98b56ae03be534cfb0c66ea34e476214a878b1f242d40e7ea288abe620260b955c305da07222e6d84ea1bb007ca104493041851aa2150e55925f48287b5042db9ed865f0ed9e064256";
 
 /*
- * Each KAT test consists in three strings:
+ * Each verifier test vector consists in three strings:
  *  - nonce (hexa)
  *  - message (ASCII)
  *  - signature (hexa, uncompressed)
+ *
+ * These vectors are embedded directly in this test file.
+ *
+ * The historical binary vectors keep their original KAT_SIG_* names.
+ * The ternary [768] and [1536] vectors use TV_SIG_* names and are
+ * FREE Falcon deterministic verifier test vectors.
+ *
+ * The ternary vectors are not NIST KAT files and are not part of any
+ * official NIST KAT package.
  */
 
 static const char *const KAT_SIG_16[] = {
@@ -2072,7 +2081,7 @@ test_key_codec(void)
 }
 
 static void
-test_falcon_vrfy_KAT(const char *hexpk, const char *const *kat)
+test_falcon_vrfy_vector(const char *hexpk, const char *const *vec)
 {
 	unsigned char pk[3000];
 	size_t pklen;
@@ -2089,22 +2098,22 @@ test_falcon_vrfy_KAT(const char *hexpk, const char *const *kat)
 		fprintf(stderr, "error loading public key\n");
 		exit(EXIT_FAILURE);
 	}
-	for (u = 0; kat[u]; u += 3) {
+	for (u = 0; vec[u]; u += 3) {
 		unsigned char r[32], sig[8192];
 		const char *msg;
 		size_t rlen, siglen, msglen, v;
 		int z;
 
-		rlen = hextobin(r, sizeof r, kat[u + 0]);
-		msg = kat[u + 1];
+		rlen = hextobin(r, sizeof r, vec[u + 0]);
+		msg = vec[u + 1];
 		msglen = strlen(msg);
-		siglen = hextobin(sig, sizeof sig, kat[u + 2]);
+		siglen = hextobin(sig, sizeof sig, vec[u + 2]);
 
 		falcon_vrfy_start(fv, r, rlen);
 		falcon_vrfy_update(fv, msg, msglen);
 		z = falcon_vrfy_verify(fv, sig, siglen);
 		if (z <= 0) {
-			fprintf(stderr, "KAT 1 vrfy failed: %d\n", z);
+			fprintf(stderr, "verifier vector 1 failed: %d\n", z);
 			exit(EXIT_FAILURE);
 		}
 
@@ -2114,7 +2123,7 @@ test_falcon_vrfy_KAT(const char *hexpk, const char *const *kat)
 		}
 		z = falcon_vrfy_verify(fv, sig, siglen);
 		if (z <= 0) {
-			fprintf(stderr, "KAT 2 vrfy failed: %d\n", z);
+			fprintf(stderr, "verifier vector 2 failed: %d\n", z);
 			exit(EXIT_FAILURE);
 		}
 
@@ -2123,7 +2132,7 @@ test_falcon_vrfy_KAT(const char *hexpk, const char *const *kat)
 		falcon_vrfy_update(fv, msg, msglen);
 		z = falcon_vrfy_verify(fv, sig, siglen);
 		if (z != 0) {
-			fprintf(stderr, "KAT 2 should have failed: %d\n", z);
+			fprintf(stderr, "verifier vector negative check should have failed: %d\n", z);
 			exit(EXIT_FAILURE);
 		}
 
@@ -2137,36 +2146,36 @@ test_falcon_vrfy_KAT(const char *hexpk, const char *const *kat)
 static void
 test_falcon_vrfy(void)
 {
-	printf("Test Falcon verify: ");
+	printf("Test Falcon verify vectors: ");
 	fflush(stdout);
 
 	printf("[16]");
 	fflush(stdout);
-	test_falcon_vrfy_KAT(ntru_pkey_16, KAT_SIG_16);
+	test_falcon_vrfy_vector(ntru_pkey_16, KAT_SIG_16);
 	putchar(32);
 	fflush(stdout);
 
 	printf("[512]");
 	fflush(stdout);
-	test_falcon_vrfy_KAT(ntru_pkey_512, KAT_SIG_512);
+	test_falcon_vrfy_vector(ntru_pkey_512, KAT_SIG_512);
 	putchar(32);
 	fflush(stdout);
 
 	printf("[1024]");
 	fflush(stdout);
-	test_falcon_vrfy_KAT(ntru_pkey_1024, KAT_SIG_1024);
+	test_falcon_vrfy_vector(ntru_pkey_1024, KAT_SIG_1024);
 	putchar(32);
 	fflush(stdout);
 
 	printf("[768]");
 	fflush(stdout);
-	test_falcon_vrfy_KAT(ntru_pkey_768, TV_SIG_768);
+	test_falcon_vrfy_vector(ntru_pkey_768, TV_SIG_768);
 	putchar(32);
 	fflush(stdout);
 
 	printf("[1536]");
 	fflush(stdout);
-	test_falcon_vrfy_KAT(ntru_pkey_1536, TV_SIG_1536);
+	test_falcon_vrfy_vector(ntru_pkey_1536, TV_SIG_1536);
 	printf(" done.\n");
 	fflush(stdout);
 }
