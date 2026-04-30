@@ -2079,7 +2079,7 @@ falcon_sign_set_private_key(falcon_sign *fs,
 {
 	const unsigned char *skey_buf;
 	int comp;
-	int16_t ske[4][1024];
+	int16_t ske[4][3072];
 	int i;
 	int fb, has_G;
 
@@ -2116,7 +2116,7 @@ falcon_sign_set_private_key(falcon_sign *fs,
 	fs->ternary = fb >> 7;
 	if (fs->ternary) {
 		fs->q = 18433;
-		if (fs->logn < 3 || fs->logn > 9) {
+		if (fs->logn < 3 || fs->logn > 11) {
 			goto bad_skey;
 		}
 	} else {
@@ -2218,8 +2218,8 @@ falcon_sign_update(falcon_sign *fs, const void *data, size_t len)
 size_t
 falcon_sign_generate(falcon_sign *fs, void *sig, size_t sig_max_len, int comp)
 {
-	uint16_t hm[1024];
-	int16_t s1[1024], s2[1024];
+	uint16_t hm[3072];
+	int16_t s1[3072], s2[3072];
 	unsigned char *sig_buf;
 	size_t sig_len;
 

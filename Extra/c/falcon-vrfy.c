@@ -802,10 +802,6 @@ mq_div_18433(uint32_t x, uint32_t y)
 	return mq_montymul(y18, x, Qt, Q0It);
 }
 
-static uint16_t GMt_ext[TERNARY_GM_SIZE];
-static uint16_t iGMt_ext[TERNARY_GM_SIZE];
-static int GMt_ext_ready;
-
 static unsigned
 rev10(unsigned x)
 {
@@ -821,36 +817,51 @@ rev10(unsigned x)
 }
 
 /*
- * Generate ternary NTT tables up to logn = 11 from a primitive 9216-th
- * root modulo Qt. This reproduces the historical logn <= 9 tables and
- * extends them for the experimental 1536/3072-degree cases.
+ * Generate ternary NTT tables for a specific logn from a primitive
+ * 9216-th root modulo Qt.
  */
 static void
-mq_mkgm3(uint16_t *restrict gm, uint16_t *restrict igm)
+mq_mkgm3(uint16_t *restrict gm, uint16_t *restrict igm, unsigned logn)
 {
-	size_t u, b;
+	size_t u;
+	unsigned k;
 	uint32_t g, ig, g2, g4, ig2, ig4, w, x, ix;
 
 	g = mq_montymul(25, R2t, Qt, Q0It);
-	ig = mq_div_18433(R2t, g);
-	x = g;
-	ix = ig;
-	g2 = mq_montymul(g, g, Qt, Q0It);
-	g4 = mq_montymul(g2, g2, Qt, Q0It);
-	ig2 = mq_montymul(ig, ig, Qt, Q0It);
-	ig4 = mq_montymul(ig2, ig2, Qt, Q0It);
-	b = (size_t)1 << (TERNARY_LOGN_MAX - 1);
-	for (u = 0; u < b; u += 2) {
-		gm[b + rev10((unsigned)u)] = (uint16_t)x;
-		igm[b + rev10((unsigned)u)] = (uint16_t)ix;
-		x = mq_montymul(x, g4, Qt, Q0It);
-		ix = mq_montymul(ix, ig4, Qt, Q0It);
-		gm[b + rev10((unsigned)(u + 1))] = (uint16_t)x;
-		igm[b + rev10((unsigned)(u + 1))] = (uint16_t)ix;
-		x = mq_montymul(x, g2, Qt, Q0It);
-		ix = mq_montymul(ix, ig2, Qt, Q0It);
+	k = logn;
+	while (k ++ < TERNARY_LOGN_MAX) {
+		g = mq_montymul(g, g, Qt, Q0It);
 	}
-	for (u = b >> 1; u < b; u ++) {
+	ig = mq_div_18433(R2t, g);
+
+	if (logn == 1) {
+		gm[1] = (uint16_t)g;
+		igm[1] = (uint16_t)ig;
+	} else {
+		size_t b;
+
+		x = g;
+		ix = ig;
+		g2 = mq_montymul(g, g, Qt, Q0It);
+		g4 = mq_montymul(g2, g2, Qt, Q0It);
+		ig2 = mq_montymul(ig, ig, Qt, Q0It);
+		ig4 = mq_montymul(ig2, ig2, Qt, Q0It);
+		k = TERNARY_LOGN_MAX - logn;
+		b = (size_t)1 << (logn - 1);
+		for (u = 0; u < b; u += 2) {
+			gm[b + rev10((unsigned)(u << k))] = (uint16_t)x;
+			igm[b + rev10((unsigned)(u << k))] = (uint16_t)ix;
+			x = mq_montymul(x, g4, Qt, Q0It);
+			ix = mq_montymul(ix, ig4, Qt, Q0It);
+			gm[b + rev10((unsigned)((u + 1) << k))] = (uint16_t)x;
+			igm[b + rev10((unsigned)((u + 1) << k))] = (uint16_t)ix;
+			x = mq_montymul(x, g2, Qt, Q0It);
+			ix = mq_montymul(ix, ig2, Qt, Q0It);
+		}
+	}
+
+	k = logn - 2;
+	for (u = (size_t)1 << k; u < ((size_t)1 << (k + 1)); u ++) {
 		uint32_t y, z;
 
 		y = gm[u << 1];
@@ -860,7 +871,7 @@ mq_mkgm3(uint16_t *restrict gm, uint16_t *restrict igm)
 		igm[u] = (uint16_t)mq_montymul(
 			z, mq_montymul(z, z, Qt, Q0It), Qt, Q0It);
 	}
-	for (u = (b >> 1) - 1; u > 0; u --) {
+	for (u = ((size_t)1 << k) - 1; u > 0; u --) {
 		size_t v;
 
 		v = u << 1;
@@ -871,15 +882,6 @@ mq_mkgm3(uint16_t *restrict gm, uint16_t *restrict igm)
 	w = gm[1];
 	igm[0] = (uint16_t)mq_div_18433(
 		R2t, mq_sub(mq_add(w, w, Qt), Rt, Qt));
-}
-
-static void
-mq_ternary_init_tables(void)
-{
-	if (!GMt_ext_ready) {
-		mq_mkgm3(GMt_ext, iGMt_ext);
-		GMt_ext_ready = 1;
-	}
 }
 
 /*
@@ -979,15 +981,24 @@ mq_NTT_ternary(uint16_t *a, unsigned logn)
 {
 	size_t n, hn, u, v, t, m;
 	uint32_t r, w;
+	uint16_t gm[TERNARY_GM_SIZE], igm[TERNARY_GM_SIZE];
+	const uint16_t *gm_square, *gm_cubic;
 
 	n = (size_t)3 << (logn - 1);
 	hn = n >> 1;
-	mq_ternary_init_tables();
+	if (logn <= 9) {
+		gm_square = GMt_square;
+		gm_cubic = GMt_cubic;
+	} else {
+		mq_mkgm3(gm, igm, logn);
+		gm_square = gm;
+		gm_cubic = gm;
+	}
 
 	/*
 	 * Modulo X^2-X+1.
 	 */
-	r = GMt_ext[1];
+	r = gm_square[1];
 	for (u = 0; u < hn; u ++) {
 		uint32_t a0, a1, b;
 
@@ -1010,7 +1021,7 @@ mq_NTT_ternary(uint16_t *a, unsigned logn)
 			size_t v2;
 			uint32_t s;
 
-			s = GMt_ext[m + u1];
+			s = gm_square[m + u1];
 			v2 = v1 + ht;
 			for (v = v1; v < v2; v ++) {
 				uint32_t a0, a1;
@@ -1028,7 +1039,7 @@ mq_NTT_ternary(uint16_t *a, unsigned logn)
 	/*
 	 * Degree tripling.
 	 */
-	w = mq_montymul(GMt_ext[1], GMt_ext[1], Qt, Q0It);
+	w = mq_montymul(gm_square[1], gm_square[1], Qt, Q0It);
 	for (u = 0, v = (size_t)1 << (logn - 1); u < n; u += 3, v ++) {
 		uint32_t fA, fB, fC, x, x2;
 		uint32_t fB0, fB1, fB2, fC0, fC1, fC2;
@@ -1036,7 +1047,7 @@ mq_NTT_ternary(uint16_t *a, unsigned logn)
 		fA = a[u + 0];
 		fB = a[u + 1];
 		fC = a[u + 2];
-		x = GMt_ext[v];
+		x = gm_cubic[v];
 		x2 = mq_montysqr(x, Qt, Q0It);
 		fB0 = mq_montymul(fB, x, Qt, Q0It);
 		fB1 = mq_montymul(fB0, w, Qt, Q0It);
@@ -1058,15 +1069,24 @@ mq_iNTT_ternary(uint16_t *a, unsigned logn)
 {
 	size_t n, hn, u, v, t, m;
 	uint32_t r, w, ni;
+	uint16_t gm[TERNARY_GM_SIZE], igm[TERNARY_GM_SIZE];
+	const uint16_t *igm_square, *igm_cubic;
 
 	n = (size_t)3 << (logn - 1);
 	hn = n >> 1;
-	mq_ternary_init_tables();
+	if (logn <= 9) {
+		igm_square = iGMt_square;
+		igm_cubic = iGMt_cubic;
+	} else {
+		mq_mkgm3(gm, igm, logn);
+		igm_square = igm;
+		igm_cubic = igm;
+	}
 
 	/*
 	 * Dividing degree by 3.
 	 */
-	w = mq_montymul(iGMt_ext[1], iGMt_ext[1], Qt, Q0It);
+	w = mq_montymul(igm_square[1], igm_square[1], Qt, Q0It);
 	for (u = 0, v = (size_t)1 << (logn - 1); u < n; u += 3, v ++) {
 		uint32_t f0, f1, f2, x, x2;
 		uint32_t f11, f12, f21, f22;
@@ -1074,7 +1094,7 @@ mq_iNTT_ternary(uint16_t *a, unsigned logn)
 		f0 = a[u + 0];
 		f1 = a[u + 1];
 		f2 = a[u + 2];
-		x = iGMt_ext[v];
+		x = igm_cubic[v];
 		x2 = mq_montysqr(x, Qt, Q0It);
 		f11 = mq_montymul(f1, w, Qt, Q0It);
 		f12 = mq_montymul(f11, w, Qt, Q0It);
@@ -1099,7 +1119,7 @@ mq_iNTT_ternary(uint16_t *a, unsigned logn)
 			size_t v2;
 			uint32_t s;
 
-			s = iGMt_ext[m + u1];
+			s = igm_square[m + u1];
 			v2 = v1 + ht;
 			for (v = v1; v < v2; v ++) {
 				uint32_t a0, a1;
@@ -1117,7 +1137,7 @@ mq_iNTT_ternary(uint16_t *a, unsigned logn)
 	/*
 	 * Modulo X^2-X+1.
 	 */
-	r = iGMt_ext[0];
+	r = igm_square[0];
 	for (u = 0; u < hn; u ++) {
 		uint32_t a0, a1, b;
 
@@ -1132,7 +1152,7 @@ mq_iNTT_ternary(uint16_t *a, unsigned logn)
 	 * Corrective factor: all values have been (cumulatively)
 	 * multiplied by n. Inverses of n modulo q have been precomputed.
 	 */
-	ni = mq_div_18433(Rt, (uint32_t)n);
+	ni = logn <= 9 ? INVNQt[logn] : mq_div_18433(Rt, (uint32_t)n);
 	for (u = 0; u < n; u ++) {
 		a[u] = mq_montymul(a[u], ni, Qt, Q0It);
 	}
@@ -1230,7 +1250,7 @@ mq_poly_sub(uint16_t *f, const uint16_t *g, unsigned logn, int ternary)
  */
 struct falcon_vrfy_ {
 	shake_context sc;
-	uint16_t h[1024];
+	uint16_t h[3072];
 	unsigned logn;
 	int ternary;
 };
@@ -1290,7 +1310,7 @@ falcon_vrfy_set_public_key(falcon_vrfy *fv,
 	fv->logn = fb & 0x0F;
 	if ((fb >> 7) != 0) {
 		fv->ternary = 1;
-		if (fv->logn < 2 || fv->logn > 9) {
+		if (fv->logn < 2 || fv->logn > 11) {
 			goto bad_pkey;
 		}
 	} else {
@@ -1355,7 +1375,7 @@ int
 falcon_vrfy_verify_raw(const uint16_t *c0, const int16_t *s2,
 	const uint16_t *h, unsigned logn, int ternary)
 {
-	uint16_t x[1024];
+	uint16_t x[3072];
 	size_t u, n;
 	uint32_t q;
 
@@ -1411,8 +1431,8 @@ falcon_vrfy_verify(falcon_vrfy *fv, const void *sig, size_t len)
 	const unsigned char *sig_buf;
 	unsigned q;
 	int fb;
-	uint16_t c0[1024];
-	int16_t s2[1024];
+	uint16_t c0[3072];
+	int16_t s2[3072];
 
 	/*
 	 * Public key must have been set.

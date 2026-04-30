@@ -637,7 +637,17 @@ falcon_is_short(const int16_t *s1, const int16_t *s2,
 		 * We use 100464491 = floor((b^2)/N) when N = 768, and
 		 * scale it down for lower dimensions.
 		 */
-		return s < (int64_t)((uint32_t)100464491 >> (9 - logn));
+		{
+			int64_t bound;
+
+			bound = 100464491;
+			if (logn < 9) {
+				bound >>= 9 - logn;
+			} else {
+				bound <<= logn - 9;
+			}
+			return s < bound;
+		}
 	} else {
 		/*
 		 * In the binary case, we use the l2-norm. Code below
