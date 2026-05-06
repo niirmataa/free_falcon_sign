@@ -114,6 +114,36 @@ Current subfield/norm-down worksheet:
     below GH in the 100k run: 0 / 100000
     index-3 and index-6 sanity checks had larger margins
 
+Index-2 mechanism note:
+
+    The index-2 case is the critical subfield case because it has the smallest relative-norm degree.
+    For Phi_4608 there are 7 order-2 subgroups in (Z/4608Z)^*, and all 7 were tested.
+    In the tested measured-sigma distribution, the relative norm N_{L/K}(f) grows enough that the k=2 target is above GH instead of below it.
+    Higher k cases grow faster and are treated as sanity checks, not as the bottleneck.
+
+Expected questions:
+
+    Q: Is this a formal proof?
+    A: No. It is implementation evidence plus a model worksheet.
+
+    Q: Were only convenient index-2 subfields selected?
+    A: No. All 7 order-2 subgroups of (Z/4608Z)^* were enumerated and tested.
+
+    Q: Why is index 2 the critical case?
+    A: It has the smallest relative-norm degree. If the k=2 target is already above GH, higher k cases grow faster and are not expected to be the bottleneck.
+
+    Q: What is the actual mechanism?
+    A: The subfields are not ignored. The tested mechanism is that the relative norm of the measured-sigma secret is not short in the subfield lattice.
+
+    Q: Does the 100k run prove all future keys behave the same?
+    A: No. It supports the model and found no counterexample in this run.
+
+    Q: Did the larger measured keygen sigma make signatures unusable?
+    A: Not in this build snapshot. The 100k signature smoke had 100000 verifies, 0 verify failures, and about 1983 bytes mean encoded signature size.
+
+    Q: What would invalidate this conclusion?
+    A: A different attack model that isolates useful structure despite the above-GH relative-norm target, a bad implementation path, or evidence that another algebraic/hybrid/dual shortcut is cheaper.
+
 Minimal interpretation:
 
     The tested relative-norm subfield shortcuts did not produce a short target in this 100k run.
