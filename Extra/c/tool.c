@@ -678,7 +678,7 @@ do_keygen(int argc, char *argv[])
 				usage_keygen();
 			}
 			x = atoi(argv[i]);
-			if (x < 2 || x > 9) {
+			if (x < 2 || x > 10) {
 				fprintf(stderr, "unsupported degree\n");
 				usage_keygen();
 			}
