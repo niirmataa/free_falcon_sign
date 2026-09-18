@@ -1,0 +1,26 @@
+{
+  "reference_sha256": "01c496e5626a37b9d29848c596f0e0efaa328bf9b328649eea4bd1a45fa47f78",
+  "candidate_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+  "candidate_manifest_sha256": "2553358fbb1144acdb577e1ad371a017ac325306dd901af745295dd17b03bd5a",
+  "diff_sha256": "cb7833fce99eb68e671928b71ea28536acfc5f440babfc7b035196050a2c6060",
+  "helper_sha256": "3d3f75b5d34a1df54bb76cb70780d879fbb90db7237a26bdc46a01340ab073ce",
+  "helper": "/*\n * FT1536: canonical residue of every decoded int16_t coefficient.\n * x + 2*q is in [4098,69633], so the C remainder is nonnegative.\n */\nstatic uint16_t\nft1536_normalize_s2(int16_t x)\n{\n\tint32_t t;\n\n\tt = (int32_t)x + 36866;\n\treturn (uint16_t)(t % 18433);\n}\n\n",
+  "exact_allowed_edit": true,
+  "other_files_identical": 16,
+  "guard": "ternary == 1 && logn == 10",
+  "signed_s2_argument_unchanged": true,
+  "observer_injection": "/* TEST OBSERVER ONLY: not part of reference/ or candidate/. */\nstatic uint16_t rho_observed_pre[3072];\nstatic size_t rho_observed_n;\nstatic unsigned rho_observed_calls;\nstatic void\nrho_observe_NTT(uint16_t *a, unsigned logn, int ternary)\n{\n    size_t count = MKN(logn, ternary);\n    memcpy(rho_observed_pre, a, count * sizeof *a);\n    rho_observed_n = count;\n    rho_observed_calls ++;\n    mq_NTT(a, logn, ternary);\n}\n#define mq_NTT rho_observe_NTT\n\n",
+  "observed_sources": {
+    "reference": "908660b967b3acd5e9ebdf94f2dac530d3fd22254df8ef79eb9e07ffec51fe42",
+    "candidate": "995a7102379acb8e0a927053423d5ac84aba091ebba14547298b6f6e427694f8"
+  },
+  "mutants": {
+    "old_map": "68241eb7d35b94e59b58152f53483c46a0b4f5f817e89276cee67d813da37871",
+    "early_u16": "0865062396945c8ddaa65bdb5b20341b1cd2747410db2c060eeee66bb00c896a",
+    "wrong_modulus": "34b621e58a767565930cf32e441731fdedff388a0b9da99a7e177614e2cb7f6f",
+    "negative_C_remainder": "9217bc1127177f72bae6868448299c6c4286cb399a7772f5cc387d9751f96db1",
+    "noop": "78b323e021118af7967a7d983413fdd2b007bd9be8ec9fd3a5b782c44c5ff443"
+  },
+  "formal_sha256": "daa68021e0f5bac53cf0384a5e10b0537eb6a8ca9d02f0f2970c6ff6eefc7fe8",
+  "formal_model": "u16(t-(t/18433)*18433), t=x+36866, nonnegative t"
+}

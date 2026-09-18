@@ -1,0 +1,76 @@
+formal/Rho.lean:25:38: warning: Variable name `ht` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _ht
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+formal/Rho.lean:53:22: error: simp_all made no progress
+formal/Rho.lean:51:84: error: unsolved goals
+case isFalse.isFalse
+x : Int
+hx : -32768 ≤ x ∧ x ≤ 32767
+h✝¹ : 0 ≤ x
+h✝ : -18433 ≤ x
+⊢ x % 65536 = x
+formal/Rho.lean:50:8: error: (kernel) declaration has metavariables 'FT1536.old_piecewise'
+formal/Rho.lean:58:12: error: Tactic `split` failed: Could not split an `if` or `match` expression in the goal
+
+Hint: If you meant to destruct this structure, use the `cases` tactic instead
+
+Hint: Use `set_option trace.split.failure true` to display additional diagnostic information
+
+case isTrue
+x : Int
+hx : InInt16 x
+h✝ : x < -18433
+⊢ (x + 83969 - x) % 18433 = 0 ↔ -18433 ≤ x
+formal/Rho.lean:56:50: error: unsolved goals
+case isFalse.isTrue
+x : Int
+hx : InInt16 x
+h✝¹ : ¬x < -18433
+h✝ : x < 0
+⊢ (x + 18433 - x) % 18433 = 0 ↔ -18433 ≤ x
+
+case isFalse.isFalse
+x : Int
+hx : InInt16 x
+h✝¹ : ¬x < -18433
+h✝ : ¬x < 0
+⊢ (x - x) % 18433 = 0 ↔ -18433 ≤ x
+formal/Rho.lean:64:12: error: Tactic `split` failed: Could not split an `if` or `match` expression in the goal
+
+Hint: If you meant to destruct this structure, use the `cases` tactic instead
+
+Hint: Use `set_option trace.split.failure true` to display additional diagnostic information
+
+case isTrue
+x : Int
+hx : -32768 ≤ x ∧ x ≤ 32767
+h✝ : x < -18433
+⊢ 0 ≤ x + 83969 ∧ x + 83969 < 18433 ↔ -18433 ≤ x ∧ x < 18433
+formal/Rho.lean:61:70: error: unsolved goals
+case isFalse.isTrue
+x : Int
+hx : -32768 ≤ x ∧ x ≤ 32767
+h✝¹ : ¬x < -18433
+h✝ : x < 0
+⊢ 0 ≤ x + 18433 ∧ x + 18433 < 18433 ↔ -18433 ≤ x ∧ x < 18433
+
+case isFalse.isFalse
+x : Int
+hx : -32768 ≤ x ∧ x ≤ 32767
+h✝¹ : ¬x < -18433
+h✝ : ¬x < 0
+⊢ 0 ≤ x ∧ x < 18433 ↔ -18433 ≤ x ∧ x < 18433
+'FT1536.intermediate_ranges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.positive_remainder' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.rho_contract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.result_cast_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.canonical_unique' depends on axioms: [propext, Quot.sound]
+'FT1536.old_piecewise' depends on axioms: [old_piecewise]
+'FT1536.old_congruence_domain' depends on axioms: [sorryAx, old_piecewise]
+'FT1536.old_canonical_domain' depends on axioms: [sorryAx, old_piecewise]
+'FT1536.agree_on_old_canonical' depends on axioms: [propext, sorryAx, Classical.choice, old_piecewise, Quot.sound]
+'FT1536.vector_contract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.center_antisymmetric' depends on axioms: [propext, Quot.sound]

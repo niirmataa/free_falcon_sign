@@ -1,0 +1,42 @@
+{
+  "candidate_normal": "artifacts/scalar-candidate-normal.json",
+  "candidate_asan": "artifacts/scalar-candidate-asan.json",
+  "asan_table": "artifacts/scalar-candidate-asan.csv",
+  "lsan_environment_failure": false,
+  "sanitizer_options": {
+    "ASAN_OPTIONS": "detect_leaks=1"
+  },
+  "mutants": [
+    {
+      "name": "old_map",
+      "checker_result": "artifacts/scalar-old_map.json",
+      "violations": 28670,
+      "counted_as_rejected": true
+    },
+    {
+      "name": "early_u16",
+      "checker_result": "artifacts/scalar-early_u16.json",
+      "violations": 4098,
+      "counted_as_rejected": true
+    },
+    {
+      "name": "wrong_modulus",
+      "checker_result": "artifacts/scalar-wrong_modulus.json",
+      "violations": 51202,
+      "counted_as_rejected": true
+    },
+    {
+      "name": "negative_C_remainder",
+      "checker_result": "artifacts/scalar-negative_C_remainder.json",
+      "violations": 32767,
+      "counted_as_rejected": true
+    },
+    {
+      "name": "noop",
+      "checker_result": "artifacts/scalar-noop.json",
+      "violations": 0,
+      "counted_as_rejected": false
+    }
+  ],
+  "independent_checker": "scripts/check_sage.py (unchanged for all tables)"
+}

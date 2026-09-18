@@ -1,0 +1,24 @@
+--- reference/falcon-vrfy.c
++++ observed/reference/falcon-vrfy.c
+@@ -1370,6 +1370,21 @@
+ 	shake_inject(&fv->sc, data, len);
+ }
+ 
++/* TEST OBSERVER ONLY: not part of reference/ or candidate/. */
++static uint16_t rho_observed_pre[3072];
++static size_t rho_observed_n;
++static unsigned rho_observed_calls;
++static void
++rho_observe_NTT(uint16_t *a, unsigned logn, int ternary)
++{
++    size_t count = MKN(logn, ternary);
++    memcpy(rho_observed_pre, a, count * sizeof *a);
++    rho_observed_n = count;
++    rho_observed_calls ++;
++    mq_NTT(a, logn, ternary);
++}
++#define mq_NTT rho_observe_NTT
++
+ /* see internal.h */
+ int
+ falcon_vrfy_verify_raw(const uint16_t *c0, const int16_t *s2,
