@@ -1,0 +1,61 @@
+mq_div_18433(uint32_t x, uint32_t y)
+{
+	/*
+	 * We invert y by computing y^(q-2) mod q.
+	 *
+	 * We use the following addition chain for exponent e = 18431:
+	 *
+	 *   e0             = 1
+	 *   e1  = 2 * e0   = 2
+	 *   e2  = e1 + e0  = 3
+	 *   e3  = 2 * e2   = 6
+	 *   e4  = e3 + e0  = 7
+	 *   e5  = 2 * e4   = 14
+	 *   e6  = 2 * e5   = 28
+	 *   e7  = e6 + e4  = 35
+	 *   e8  = e7 + e6  = 63
+	 *   e9  = 2 * e8   = 126
+	 *   e10 = 2 * e9   = 252
+	 *   e11 = e10 + e7 = 287
+	 *   e12 = 2 * e11  = 574
+	 *   e13 = 2 * e12  = 1148
+	 *   e14 = 2 * e13  = 2296
+	 *   e15 = 2 * e14  = 4592
+	 *   e16 = 2 * e15  = 9184
+	 *   e17 = 2 * e16  = 18368
+	 *   e18 = e17 + e8 = 18431
+	 *
+	 * Additions on exponents are converted to Montgomery
+	 * multiplications. We define all intermediate results as so
+	 * many local variables, and let the C compiler work out which
+	 * must be kept around.
+	 */
+	uint32_t y0, y1, y2, y3, y4, y5, y6, y7, y8, y9;
+	uint32_t y10, y11, y12, y13, y14, y15, y16, y17, y18;
+
+	y0  = mq_montymul(y, R2t, Qt, Q0It);          
+	y1  = mq_montysqr(y0, Qt, Q0It);
+	y2  = mq_montymul(y1, y0, Qt, Q0It);
+	y3  = mq_montysqr(y2, Qt, Q0It);
+	y4  = mq_montymul(y3, y0, Qt, Q0It);
+	y5  = mq_montysqr(y4, Qt, Q0It);
+	y6  = mq_montysqr(y5, Qt, Q0It);
+	y7  = mq_montymul(y6, y4, Qt, Q0It);
+	y8  = mq_montymul(y7, y6, Qt, Q0It);
+	y9  = mq_montysqr(y8, Qt, Q0It);
+	y10 = mq_montysqr(y9, Qt, Q0It);
+	y11 = mq_montymul(y10, y7, Qt, Q0It);
+	y12 = mq_montysqr(y11, Qt, Q0It);
+	y13 = mq_montysqr(y12, Qt, Q0It);
+	y14 = mq_montysqr(y13, Qt, Q0It);
+	y15 = mq_montysqr(y14, Qt, Q0It);
+	y16 = mq_montysqr(y15, Qt, Q0It);
+	y17 = mq_montysqr(y16, Qt, Q0It);
+	y18 = mq_montymul(y17, y8, Qt, Q0It);
+
+	/*
+	 * Final multiplication with x, which is not in Montgomery
+	 * representation, computes the correct division result.
+	 */
+	return mq_montymul(y18, x, Qt, Q0It);
+}

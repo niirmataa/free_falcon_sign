@@ -1,0 +1,63 @@
+static void
+mq_mkgm3(uint16_t *restrict gm, uint16_t *restrict igm, unsigned logn)
+{
+	size_t u;
+	unsigned k;
+	uint32_t g, ig, g2, g4, ig2, ig4, w, x, ix;
+
+	g = mq_montymul(25, R2t, Qt, Q0It);
+	k = logn;
+	while (k ++ < TERNARY_LOGN_MAX) {
+		g = mq_montymul(g, g, Qt, Q0It);
+	}
+	ig = mq_div_18433(R2t, g);
+
+	if (logn == 1) {
+		gm[1] = (uint16_t)g;
+		igm[1] = (uint16_t)ig;
+	} else {
+		size_t b;
+
+		x = g;
+		ix = ig;
+		g2 = mq_montymul(g, g, Qt, Q0It);
+		g4 = mq_montymul(g2, g2, Qt, Q0It);
+		ig2 = mq_montymul(ig, ig, Qt, Q0It);
+		ig4 = mq_montymul(ig2, ig2, Qt, Q0It);
+		k = TERNARY_LOGN_MAX - logn;
+		b = (size_t)1 << (logn - 1);
+		for (u = 0; u < b; u += 2) {
+			gm[b + rev10((unsigned)(u << k))] = (uint16_t)x;
+			igm[b + rev10((unsigned)(u << k))] = (uint16_t)ix;
+			x = mq_montymul(x, g4, Qt, Q0It);
+			ix = mq_montymul(ix, ig4, Qt, Q0It);
+			gm[b + rev10((unsigned)((u + 1) << k))] = (uint16_t)x;
+			igm[b + rev10((unsigned)((u + 1) << k))] = (uint16_t)ix;
+			x = mq_montymul(x, g2, Qt, Q0It);
+			ix = mq_montymul(ix, ig2, Qt, Q0It);
+		}
+	}
+
+	k = logn - 2;
+	for (u = (size_t)1 << k; u < ((size_t)1 << (k + 1)); u ++) {
+		uint32_t y, z;
+
+		y = gm[u << 1];
+		z = igm[u << 1];
+		gm[u] = (uint16_t)mq_montymul(
+			y, mq_montymul(y, y, Qt, Q0It), Qt, Q0It);
+		igm[u] = (uint16_t)mq_montymul(
+			z, mq_montymul(z, z, Qt, Q0It), Qt, Q0It);
+	}
+	for (u = ((size_t)1 << k) - 1; u > 0; u --) {
+		size_t v;
+
+		v = u << 1;
+		gm[u] = (uint16_t)mq_montymul(gm[v], gm[v], Qt, Q0It);
+		igm[u] = (uint16_t)mq_montymul(igm[v], igm[v], Qt, Q0It);
+	}
+	gm[0] = gm[1];
+	w = gm[1];
+	igm[0] = (uint16_t)mq_div_18433(
+		R2t, mq_sub(mq_add(w, w, Qt), Rt, Qt));
+}

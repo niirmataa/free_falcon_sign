@@ -1,0 +1,5 @@
+Int.ofNat_le {m n : Nat} : ↑m ≤ ↑n ↔ m ≤ n
+Int.natCast_nonneg (n : Nat) : 0 ≤ ↑n
+Int.ofNat_nonneg (n : Nat) : 0 ≤ ↑n
+Int.natCast_mul (n m : Nat) : ↑(n * m) = ↑n * ↑m
+Int.mul_le_mul {a b c d : Int} (hac : a ≤ c) (hbd : b ≤ d) (nn_b : 0 ≤ b) (nn_c : 0 ≤ c) : a * b ≤ c * d

@@ -1,0 +1,16 @@
+static inline uint32_t
+mq_add(uint32_t x, uint32_t y, uint32_t q)
+{
+	/*
+	 * We compute x + y - q. If the result is negative, then the
+	 * high bit will be set, and 'd >> 31' will be equal to 1;
+	 * thus '-(d >> 31)' will be an all-one pattern. Otherwise,
+	 * it will be an all-zero pattern. In other words, this
+	 * implements a conditional addition of q.
+	 */
+	uint32_t d;
+
+	d = x + y - q;
+	d += q & -(d >> 31);
+	return d;
+}

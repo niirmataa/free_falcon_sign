@@ -1,0 +1,6 @@
+static inline uint32_t
+mq_rshift1(uint32_t x, uint32_t q)
+{
+	x += q & -(x & 1);
+	return (x >> 1);
+}

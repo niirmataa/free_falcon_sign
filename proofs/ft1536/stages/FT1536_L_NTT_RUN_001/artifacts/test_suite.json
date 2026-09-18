@@ -1,0 +1,659 @@
+{
+  "status": "IMPLEMENTATION_CONTROLS_PASS",
+  "baseline_runs": [
+    {
+      "case": "zero",
+      "variant": "base",
+      "build": "normal",
+      "result": "artifacts/pipelines/zero_base_normal.json",
+      "checker": "artifacts/pipelines/zero_base_normal.check.json"
+    },
+    {
+      "case": "zero",
+      "variant": "base",
+      "build": "asan",
+      "result": "artifacts/pipelines/zero_base_asan.json",
+      "checker": "artifacts/pipelines/zero_base_asan.check.json"
+    },
+    {
+      "case": "zero",
+      "variant": "observed",
+      "build": "normal",
+      "result": "artifacts/pipelines/zero_observed_normal.json",
+      "checker": "artifacts/pipelines/zero_observed_normal.check.json"
+    },
+    {
+      "case": "zero",
+      "variant": "observed",
+      "build": "asan",
+      "result": "artifacts/pipelines/zero_observed_asan.json",
+      "checker": "artifacts/pipelines/zero_observed_asan.check.json"
+    },
+    {
+      "case": "units",
+      "variant": "base",
+      "build": "normal",
+      "result": "artifacts/pipelines/units_base_normal.json",
+      "checker": "artifacts/pipelines/units_base_normal.check.json"
+    },
+    {
+      "case": "units",
+      "variant": "base",
+      "build": "asan",
+      "result": "artifacts/pipelines/units_base_asan.json",
+      "checker": "artifacts/pipelines/units_base_asan.check.json"
+    },
+    {
+      "case": "units",
+      "variant": "observed",
+      "build": "normal",
+      "result": "artifacts/pipelines/units_observed_normal.json",
+      "checker": "artifacts/pipelines/units_observed_normal.check.json"
+    },
+    {
+      "case": "units",
+      "variant": "observed",
+      "build": "asan",
+      "result": "artifacts/pipelines/units_observed_asan.json",
+      "checker": "artifacts/pipelines/units_observed_asan.check.json"
+    },
+    {
+      "case": "wrap",
+      "variant": "base",
+      "build": "normal",
+      "result": "artifacts/pipelines/wrap_base_normal.json",
+      "checker": "artifacts/pipelines/wrap_base_normal.check.json"
+    },
+    {
+      "case": "wrap",
+      "variant": "base",
+      "build": "asan",
+      "result": "artifacts/pipelines/wrap_base_asan.json",
+      "checker": "artifacts/pipelines/wrap_base_asan.check.json"
+    },
+    {
+      "case": "wrap",
+      "variant": "observed",
+      "build": "normal",
+      "result": "artifacts/pipelines/wrap_observed_normal.json",
+      "checker": "artifacts/pipelines/wrap_observed_normal.check.json"
+    },
+    {
+      "case": "wrap",
+      "variant": "observed",
+      "build": "asan",
+      "result": "artifacts/pipelines/wrap_observed_asan.json",
+      "checker": "artifacts/pipelines/wrap_observed_asan.check.json"
+    },
+    {
+      "case": "high_square",
+      "variant": "base",
+      "build": "normal",
+      "result": "artifacts/pipelines/high_square_base_normal.json",
+      "checker": "artifacts/pipelines/high_square_base_normal.check.json"
+    },
+    {
+      "case": "high_square",
+      "variant": "base",
+      "build": "asan",
+      "result": "artifacts/pipelines/high_square_base_asan.json",
+      "checker": "artifacts/pipelines/high_square_base_asan.check.json"
+    },
+    {
+      "case": "high_square",
+      "variant": "observed",
+      "build": "normal",
+      "result": "artifacts/pipelines/high_square_observed_normal.json",
+      "checker": "artifacts/pipelines/high_square_observed_normal.check.json"
+    },
+    {
+      "case": "high_square",
+      "variant": "observed",
+      "build": "asan",
+      "result": "artifacts/pipelines/high_square_observed_asan.json",
+      "checker": "artifacts/pipelines/high_square_observed_asan.check.json"
+    },
+    {
+      "case": "max",
+      "variant": "base",
+      "build": "normal",
+      "result": "artifacts/pipelines/max_base_normal.json",
+      "checker": "artifacts/pipelines/max_base_normal.check.json"
+    },
+    {
+      "case": "max",
+      "variant": "base",
+      "build": "asan",
+      "result": "artifacts/pipelines/max_base_asan.json",
+      "checker": "artifacts/pipelines/max_base_asan.check.json"
+    },
+    {
+      "case": "max",
+      "variant": "observed",
+      "build": "normal",
+      "result": "artifacts/pipelines/max_observed_normal.json",
+      "checker": "artifacts/pipelines/max_observed_normal.check.json"
+    },
+    {
+      "case": "max",
+      "variant": "observed",
+      "build": "asan",
+      "result": "artifacts/pipelines/max_observed_asan.json",
+      "checker": "artifacts/pipelines/max_observed_asan.check.json"
+    },
+    {
+      "case": "dense",
+      "variant": "base",
+      "build": "normal",
+      "result": "artifacts/pipelines/dense_base_normal.json",
+      "checker": "artifacts/pipelines/dense_base_normal.check.json"
+    },
+    {
+      "case": "dense",
+      "variant": "base",
+      "build": "asan",
+      "result": "artifacts/pipelines/dense_base_asan.json",
+      "checker": "artifacts/pipelines/dense_base_asan.check.json"
+    },
+    {
+      "case": "dense",
+      "variant": "observed",
+      "build": "normal",
+      "result": "artifacts/pipelines/dense_observed_normal.json",
+      "checker": "artifacts/pipelines/dense_observed_normal.check.json"
+    },
+    {
+      "case": "dense",
+      "variant": "observed",
+      "build": "asan",
+      "result": "artifacts/pipelines/dense_observed_asan.json",
+      "checker": "artifacts/pipelines/dense_observed_asan.check.json"
+    },
+    {
+      "case": "rho_witness",
+      "variant": "base",
+      "build": "normal",
+      "result": "artifacts/pipelines/rho_witness_base_normal.json",
+      "checker": "artifacts/pipelines/rho_witness_base_normal.check.json"
+    },
+    {
+      "case": "rho_witness",
+      "variant": "base",
+      "build": "asan",
+      "result": "artifacts/pipelines/rho_witness_base_asan.json",
+      "checker": "artifacts/pipelines/rho_witness_base_asan.check.json"
+    },
+    {
+      "case": "rho_witness",
+      "variant": "observed",
+      "build": "normal",
+      "result": "artifacts/pipelines/rho_witness_observed_normal.json",
+      "checker": "artifacts/pipelines/rho_witness_observed_normal.check.json"
+    },
+    {
+      "case": "rho_witness",
+      "variant": "observed",
+      "build": "asan",
+      "result": "artifacts/pipelines/rho_witness_observed_asan.json",
+      "checker": "artifacts/pipelines/rho_witness_observed_asan.check.json"
+    }
+  ],
+  "baseline_run_count": 28,
+  "mutations": [
+    {
+      "variant": "wrong_R2",
+      "rejected_cases": 3,
+      "counted_as_mutation": true,
+      "cases": [
+        {
+          "case": "units",
+          "result": "artifacts/pipelines/units_wrong_R2.json",
+          "checker": "artifacts/pipelines/units_wrong_R2.check.json",
+          "errors": [
+            [
+              "H_mont",
+              0,
+              15421,
+              10237
+            ],
+            [
+              "point_product",
+              0,
+              16976,
+              1
+            ],
+            [
+              "p",
+              7,
+              16730,
+              0
+            ],
+            [
+              "d",
+              7,
+              16730,
+              0
+            ],
+            [
+              "roundtrip",
+              0,
+              15131,
+              1
+            ]
+          ]
+        },
+        {
+          "case": "wrap",
+          "result": "artifacts/pipelines/wrap_wrong_R2.json",
+          "checker": "artifacts/pipelines/wrap_wrong_R2.check.json",
+          "errors": [
+            [
+              "h_ntt",
+              0,
+              1578,
+              7957
+            ],
+            [
+              "H_mont",
+              0,
+              2778,
+              382
+            ],
+            [
+              "r_ntt",
+              0,
+              10151,
+              625
+            ],
+            [
+              "point_product",
+              0,
+              16976,
+              14648
+            ],
+            [
+              "p",
+              0,
+              0,
+              18432
+            ],
+            [
+              "d",
+              0,
+              0,
+              18432
+            ],
+            [
+              "roundtrip",
+              1,
+              15131,
+              1
+            ]
+          ]
+        },
+        {
+          "case": "dense",
+          "result": "artifacts/pipelines/dense_wrong_R2.json",
+          "checker": "artifacts/pipelines/dense_wrong_R2.check.json",
+          "errors": [
+            [
+              "h_ntt",
+              0,
+              10278,
+              13886
+            ],
+            [
+              "H_mont",
+              0,
+              10104,
+              14119
+            ],
+            [
+              "r_ntt",
+              0,
+              14737,
+              3535
+            ],
+            [
+              "point_product",
+              0,
+              14731,
+              18364
+            ],
+            [
+              "p",
+              0,
+              11478,
+              9438
+            ],
+            [
+              "d",
+              0,
+              11469,
+              9429
+            ],
+            [
+              "roundtrip",
+              0,
+              2258,
+              11
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "variant": "missing_tomonty",
+      "rejected_cases": 3,
+      "counted_as_mutation": true,
+      "cases": [
+        {
+          "case": "units",
+          "result": "artifacts/pipelines/units_missing_tomonty.json",
+          "checker": "artifacts/pipelines/units_missing_tomonty.check.json",
+          "errors": [
+            [
+              "H_mont",
+              0,
+              1,
+              10237
+            ],
+            [
+              "point_product",
+              0,
+              5184,
+              1
+            ],
+            [
+              "p",
+              0,
+              5184,
+              1
+            ],
+            [
+              "d",
+              0,
+              5183,
+              0
+            ]
+          ]
+        },
+        {
+          "case": "wrap",
+          "result": "artifacts/pipelines/wrap_missing_tomonty.json",
+          "checker": "artifacts/pipelines/wrap_missing_tomonty.check.json",
+          "errors": [
+            [
+              "H_mont",
+              0,
+              7957,
+              382
+            ],
+            [
+              "point_product",
+              0,
+              9705,
+              14648
+            ],
+            [
+              "p",
+              0,
+              13249,
+              18432
+            ],
+            [
+              "d",
+              0,
+              13249,
+              18432
+            ]
+          ]
+        },
+        {
+          "case": "dense",
+          "result": "artifacts/pipelines/dense_missing_tomonty.json",
+          "checker": "artifacts/pipelines/dense_missing_tomonty.check.json",
+          "errors": [
+            [
+              "H_mont",
+              0,
+              13886,
+              14119
+            ],
+            [
+              "point_product",
+              0,
+              10964,
+              18364
+            ],
+            [
+              "p",
+              0,
+              5410,
+              9438
+            ],
+            [
+              "d",
+              0,
+              5401,
+              9429
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "variant": "generator_step",
+      "rejected_cases": 2,
+      "counted_as_mutation": true,
+      "cases": [
+        {
+          "case": "units",
+          "result": "artifacts/pipelines/units_generator_step.json",
+          "checker": "artifacts/pipelines/units_generator_step.check.json",
+          "errors": []
+        },
+        {
+          "case": "wrap",
+          "result": "artifacts/pipelines/wrap_generator_step.json",
+          "checker": "artifacts/pipelines/wrap_generator_step.check.json",
+          "errors": [
+            [
+              "h_ntt",
+              3,
+              5895,
+              16156
+            ],
+            [
+              "H_mont",
+              3,
+              15906,
+              8096
+            ],
+            [
+              "r_ntt",
+              3,
+              14111,
+              12857
+            ],
+            [
+              "point_product",
+              3,
+              14649,
+              14648
+            ],
+            [
+              "p",
+              0,
+              14446,
+              18432
+            ],
+            [
+              "d",
+              0,
+              14446,
+              18432
+            ]
+          ]
+        },
+        {
+          "case": "dense",
+          "result": "artifacts/pipelines/dense_generator_step.json",
+          "checker": "artifacts/pipelines/dense_generator_step.check.json",
+          "errors": [
+            [
+              "h_ntt",
+              3,
+              15046,
+              17006
+            ],
+            [
+              "H_mont",
+              3,
+              18187,
+              9170
+            ],
+            [
+              "r_ntt",
+              3,
+              6375,
+              6713
+            ],
+            [
+              "point_product",
+              3,
+              11351,
+              5709
+            ],
+            [
+              "p",
+              0,
+              398,
+              9438
+            ],
+            [
+              "d",
+              0,
+              389,
+              9429
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "variant": "missing_inverse_scale",
+      "rejected_cases": 3,
+      "counted_as_mutation": true,
+      "cases": [
+        {
+          "case": "units",
+          "result": "artifacts/pipelines/units_missing_inverse_scale.json",
+          "checker": "artifacts/pipelines/units_missing_inverse_scale.check.json",
+          "errors": [
+            [
+              "p",
+              0,
+              1536,
+              1
+            ],
+            [
+              "d",
+              0,
+              1535,
+              0
+            ],
+            [
+              "roundtrip",
+              0,
+              1536,
+              1
+            ]
+          ]
+        },
+        {
+          "case": "wrap",
+          "result": "artifacts/pipelines/wrap_missing_inverse_scale.json",
+          "checker": "artifacts/pipelines/wrap_missing_inverse_scale.check.json",
+          "errors": [
+            [
+              "p",
+              0,
+              16897,
+              18432
+            ],
+            [
+              "d",
+              0,
+              16897,
+              18432
+            ],
+            [
+              "roundtrip",
+              1,
+              1536,
+              1
+            ]
+          ]
+        },
+        {
+          "case": "dense",
+          "result": "artifacts/pipelines/dense_missing_inverse_scale.json",
+          "checker": "artifacts/pipelines/dense_missing_inverse_scale.check.json",
+          "errors": [
+            [
+              "p",
+              0,
+              8430,
+              9438
+            ],
+            [
+              "d",
+              0,
+              8421,
+              9429
+            ],
+            [
+              "roundtrip",
+              0,
+              16896,
+              11
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "variant": "noop",
+      "rejected_cases": 0,
+      "counted_as_mutation": false,
+      "cases": [
+        {
+          "case": "units",
+          "result": "artifacts/pipelines/units_noop.json",
+          "checker": "artifacts/pipelines/units_noop.check.json",
+          "errors": []
+        },
+        {
+          "case": "wrap",
+          "result": "artifacts/pipelines/wrap_noop.json",
+          "checker": "artifacts/pipelines/wrap_noop.check.json",
+          "errors": []
+        },
+        {
+          "case": "dense",
+          "result": "artifacts/pipelines/dense_noop.json",
+          "checker": "artifacts/pipelines/dense_noop.check.json",
+          "errors": []
+        }
+      ]
+    }
+  ],
+  "sanitizer": "ASan/UBSan with leak detection enabled",
+  "LSan_environment_failure": false,
+  "primitive_cases": 737,
+  "division_nonzero_denominators": 18432,
+  "all_used_tables_match": true,
+  "source_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+  "scope": "implementation controls; not a universal theorem by themselves"
+}

@@ -1,0 +1,368 @@
+{
+  "schema": "FT1536_L_NTT_OBLIGATIONS_V1",
+  "main_result": "PARTIAL_PROOF",
+  "source_integrated": false,
+  "owner_accepted": false,
+  "full_L_V_proved": false,
+  "source_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+  "obligations": [
+    {
+      "id": "W_ADD",
+      "claim": "forall canonical x,y: mq_add is canonical (x+y) mod q",
+      "source_file": "source/falcon-vrfy.c",
+      "source_lines": [
+        582,
+        597
+      ],
+      "source_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+      "premises": [
+        "pinned GCC/C99/LP64 widths",
+        "canonical operands",
+        "C unsigned arithmetic and bit-mask/shift interpretation explained in DERIVATION D1"
+      ],
+      "evidence": [
+        "formal/Words.lean:add_contract",
+        "DERIVATION.md:D1"
+      ],
+      "check_command": "python3 -B scripts/run.py 120 /home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean formal/Words.lean",
+      "status": "PROVED_MODEL_WITH_C_TRANSLATION",
+      "gap": null
+    },
+    {
+      "id": "W_SUB",
+      "claim": "forall canonical x,y: mq_sub is canonical (x-y) mod q",
+      "source_file": "source/falcon-vrfy.c",
+      "source_lines": [
+        602,
+        614
+      ],
+      "source_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+      "premises": [
+        "pinned GCC/C99/LP64 widths",
+        "canonical operands",
+        "C unsigned arithmetic and bit-mask/shift interpretation explained in DERIVATION D1"
+      ],
+      "evidence": [
+        "formal/Words.lean:sub_contract",
+        "DERIVATION.md:D1"
+      ],
+      "check_command": "python3 -B scripts/run.py 120 /home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean formal/Words.lean",
+      "status": "PROVED_MODEL_WITH_C_TRANSLATION",
+      "gap": null
+    },
+    {
+      "id": "W_HALF",
+      "claim": "canonical modular division by 2; supplemental, not used in active ternary transform",
+      "source_file": "source/falcon-vrfy.c",
+      "source_lines": [
+        619,
+        624
+      ],
+      "source_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+      "premises": [
+        "pinned GCC/C99/LP64 widths",
+        "canonical operands",
+        "C unsigned arithmetic and bit-mask/shift interpretation explained in DERIVATION D1"
+      ],
+      "evidence": [
+        "formal/Words.lean:half_contract"
+      ],
+      "check_command": "python3 -B scripts/run.py 120 /home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean formal/Words.lean",
+      "status": "PROVED_SUPPLEMENTAL",
+      "gap": null
+    },
+    {
+      "id": "W_MONT",
+      "claim": "forall canonical x,y: canonical x*y*Rinv; exact low16 under uint32 wrap; all ranges",
+      "source_file": "source/falcon-vrfy.c",
+      "source_lines": [
+        631,
+        671
+      ],
+      "source_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+      "premises": [
+        "pinned GCC/C99/LP64 widths",
+        "canonical operands",
+        "C unsigned arithmetic and bit-mask/shift interpretation explained in DERIVATION D1"
+      ],
+      "evidence": [
+        "formal/Words.lean:mq_montymul_contract",
+        "formal/Words.lean:mq_montysqr_contract",
+        "DERIVATION.md:D1"
+      ],
+      "check_command": "python3 -B scripts/run.py 120 /home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean formal/Words.lean",
+      "status": "PROVED_MODEL_WITH_C_TRANSLATION",
+      "gap": null
+    },
+    {
+      "id": "PRIME_ROOT",
+      "claim": "q prime; required quadratic/cubic root and unit identities for concrete tables",
+      "source_file": "source/falcon-vrfy.c",
+      "source_lines": [
+        59,
+        68
+      ],
+      "source_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+      "premises": [
+        "literal constants and complete finite certificates"
+      ],
+      "evidence": [
+        "formal/Words.lean:prime_factorization",
+        "formal/Tables.lean:root_and_scale_facts",
+        "artifacts/constants_certificate.json"
+      ],
+      "check_command": "python3 -B scripts/run.py 120 /home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean formal/Words.lean; python3 -B scripts/run.py 240 /home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean formal/Tables.lean",
+      "status": "PROVED_REQUIRED_RELATIONS",
+      "gap": "Exact order-25 power checks are diagnostic, not an unproved premise of the closed local contracts."
+    },
+    {
+      "id": "DIV_USED",
+      "claim": "actual addition-chain result and canonical quotient for all three constant division instances used by logn=10",
+      "source_file": "source/falcon-vrfy.c",
+      "source_lines": [
+        743,
+        803
+      ],
+      "source_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+      "premises": [
+        "W_MONT",
+        "three fixed nonzero denominators 1874,8479,1536"
+      ],
+      "evidence": [
+        "formal/Tables.lean:chain_*_checked",
+        "formal/Tables.lean:root_and_scale_facts",
+        "DERIVATION.md:D2"
+      ],
+      "check_command": "python3 -B scripts/run.py 240 /home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean formal/Tables.lean",
+      "status": "CERTIFIED_REQUIRED_INSTANCES",
+      "gap": null
+    },
+    {
+      "id": "GEN10",
+      "claim": "exact initialized 0..1023 table values, Montgomery interpretation, source recurrence and rev10 order",
+      "source_file": "source/falcon-vrfy.c",
+      "source_lines": [
+        805,
+        885
+      ],
+      "source_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+      "premises": [
+        "W_MONT",
+        "DIV_USED",
+        "fixed logn=10",
+        "disjoint gm/igm buffers"
+      ],
+      "evidence": [
+        "formal/Tables.lean:rev_even_range",
+        "formal/Tables.lean:rev_even_involution",
+        "formal/Tables.lean:sequence/parents/units",
+        "artifacts/constants_certificate.json",
+        "DERIVATION.md:D3"
+      ],
+      "check_command": "python3 -B scripts/run.py 240 /home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean formal/Tables.lean",
+      "status": "CERTIFIED_FIXED_GENERATOR",
+      "gap": null
+    },
+    {
+      "id": "INDEX_INIT",
+      "claim": "fixed address schedule, initialization-before-read for tables, valid transform index spans",
+      "source_file": "source/falcon-vrfy.c",
+      "source_lines": [
+        805,
+        1243
+      ],
+      "source_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+      "premises": [
+        "valid aligned buffers and required nonaliasing",
+        "fixed N=1536/logn=10"
+      ],
+      "evidence": [
+        "artifacts/constants_certificate.json:generator_reads/generator_writes/binary_stages",
+        "formal/Tables.lean:rev_even_range",
+        "DERIVATION.md:D3,D5"
+      ],
+      "check_command": "python3 -B scripts/run.py 240 /home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean formal/Tables.lean",
+      "status": "FIXED_SCHEDULE_CHECKED",
+      "gap": "Global buffer-state-to-polynomial invariant is separate and remains open."
+    },
+    {
+      "id": "LOCAL_BLOCKS",
+      "claim": "2x2 and 3x3 block identities for all variable block inputs with the certified coefficients",
+      "source_file": "source/falcon-vrfy.c",
+      "source_lines": [
+        998,
+        1158
+      ],
+      "source_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+      "premises": [
+        "W_MONT/W_ADD/W_SUB",
+        "GEN10",
+        "literal coefficients bound to source expressions"
+      ],
+      "evidence": [
+        "formal/Linear.lean",
+        "formal/Tables.lean:rows2/rows3",
+        "DERIVATION.md:D4"
+      ],
+      "check_command": "python3 -B scripts/run.py 90 /home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean formal/Linear.lean; python3 -B scripts/run.py 240 /home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean formal/Tables.lean",
+      "status": "PROVED_LOCAL_BLOCK_IDENTITIES",
+      "gap": null
+    },
+    {
+      "id": "FORWARD_GLOBAL",
+      "claim": "forall canonical v: source forward output is evaluation at alpha_i*omega^j in exact physical order 3i+j",
+      "source_file": "source/falcon-vrfy.c",
+      "source_lines": [
+        980,
+        1062
+      ],
+      "source_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+      "premises": [
+        "closed word/table/local-block results"
+      ],
+      "evidence": [
+        "DERIVATION.md:D5",
+        "formal/Composition.lean:forward_product premise"
+      ],
+      "check_command": "python3 -B scripts/run.py 90 /home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean formal/Composition.lean",
+      "status": "OPEN",
+      "gap": "No closed source in-place-buffer/CRT model instance proving the full stage invariant for arbitrary coefficient vectors."
+    },
+    {
+      "id": "INVERSE_GLOBAL",
+      "claim": "forall canonical v: source inverse of source forward equals v, with correct reverse schedule and n scaling",
+      "source_file": "source/falcon-vrfy.c",
+      "source_lines": [
+        1068,
+        1159
+      ],
+      "source_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+      "premises": [
+        "LOCAL_BLOCKS",
+        "INDEX_INIT",
+        "GEN10"
+      ],
+      "evidence": [
+        "formal/Linear.lean:final_scaling",
+        "DERIVATION.md:D5",
+        "formal/Composition.lean:inverse_forward premise"
+      ],
+      "check_command": "python3 -B scripts/run.py 90 /home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean formal/Composition.lean",
+      "status": "OPEN",
+      "gap": "Local inverse matrices and scale are checked, but global in-place composition is not instantiated as a source theorem."
+    },
+    {
+      "id": "PRODUCT",
+      "claim": "universal coefficient product modulo Phi after mathematical key preparation and point multiplication",
+      "source_file": "source/falcon-vrfy.c",
+      "source_lines": [
+        1185,
+        1222
+      ],
+      "source_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+      "premises": [
+        "FORWARD_GLOBAL",
+        "INVERSE_GLOBAL"
+      ],
+      "evidence": [
+        "formal/Composition.lean:L_NTT_after_global_interfaces",
+        "formal/Composition.lean:prepared_product",
+        "DERIVATION.md:D6"
+      ],
+      "check_command": "python3 -B scripts/run.py 90 /home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean formal/Composition.lean",
+      "status": "CONDITIONAL",
+      "gap": "The final theorem still has forward_product and inverse_forward hypotheses."
+    },
+    {
+      "id": "SUBTRACT",
+      "claim": "canonical subtraction d=p-c once p is the correct canonical product",
+      "source_file": "source/falcon-vrfy.c",
+      "source_lines": [
+        1228,
+        1243
+      ],
+      "source_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+      "premises": [
+        "W_SUB",
+        "PRODUCT for identification of p"
+      ],
+      "evidence": [
+        "formal/Words.lean:sub_contract",
+        "formal/Composition.lean",
+        "DERIVATION.md:D6"
+      ],
+      "check_command": "python3 -B scripts/run.py 120 /home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean formal/Words.lean; python3 -B scripts/run.py 90 /home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean formal/Composition.lean",
+      "status": "LOCAL_PROVED_COMPOSITION_CONDITIONAL",
+      "gap": "Algebraic identification d=h*r-c inherits PRODUCT gap."
+    },
+    {
+      "id": "RHO_SUBSTITUTION",
+      "claim": "r=rho(s) implies r congruent to s; after L_NTT, d=canonical(h*s-c)",
+      "source_file": "source/falcon-vrfy.c",
+      "source_lines": [
+        1377,
+        1424
+      ],
+      "source_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+      "premises": [
+        "pinned L_RHO",
+        "L_NTT completion"
+      ],
+      "evidence": [
+        "inputs/L_RHO_RESULT.json",
+        "inputs/context/8_Rho.lean",
+        "DERIVATION.md:D6"
+      ],
+      "check_command": "python3 -B scripts/run.py 90 /home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean formal/Composition.lean",
+      "status": "CONDITIONAL_ON_L_NTT",
+      "gap": "Does not independently close source forward/inverse semantics."
+    },
+    {
+      "id": "SOURCE_BINDING",
+      "claim": "17-file candidate identity, exact source slices and reversible observation-only injection",
+      "source_file": "source/falcon-vrfy.c",
+      "source_lines": [
+        59,
+        1589
+      ],
+      "source_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+      "premises": [
+        "trusted source pin",
+        "non-symlink public inputs"
+      ],
+      "evidence": [
+        "artifacts/source_binding.json",
+        "INPUTS.sha256"
+      ],
+      "check_command": "python3 -B scripts/audit.py --originals --out tmp/audit-new.json",
+      "status": "VERIFIED",
+      "gap": null
+    },
+    {
+      "id": "IMPLEMENTATION_CHECKS",
+      "claim": "required constants/primitive/pipeline controls, sanitizer, integration case and mutations",
+      "source_file": "source/falcon-vrfy.c",
+      "source_lines": [
+        582,
+        1243
+      ],
+      "source_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+      "premises": [
+        "pinned build and public inputs"
+      ],
+      "evidence": [
+        "artifacts/test_suite.json",
+        "artifacts/primitive_check.json",
+        "artifacts/primitive_check_asan.json"
+      ],
+      "check_command": "python3 -B scripts/test_suite.py (fresh copy only)",
+      "status": "CONTROLS_PASSED_NOT_UNIVERSAL_PROOF",
+      "gap": null
+    }
+  ],
+  "blocking": [
+    "FORWARD_GLOBAL",
+    "INVERSE_GLOBAL",
+    "PRODUCT"
+  ]
+}

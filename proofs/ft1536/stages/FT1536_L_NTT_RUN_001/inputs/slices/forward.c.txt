@@ -1,0 +1,84 @@
+static void
+mq_NTT_ternary(uint16_t *a, unsigned logn)
+{
+	size_t n, hn, u, v, t, m;
+	uint32_t r, w;
+	uint16_t gm[TERNARY_GM_SIZE], igm[TERNARY_GM_SIZE];
+	const uint16_t *gm_square, *gm_cubic;
+
+	n = (size_t)3 << (logn - 1);
+	hn = n >> 1;
+	if (logn <= 9) {
+		gm_square = GMt_square;
+		gm_cubic = GMt_cubic;
+	} else {
+		mq_mkgm3(gm, igm, logn);
+		gm_square = gm;
+		gm_cubic = gm;
+	}
+
+	/*
+	 * Modulo X^2-X+1.
+	 */
+	r = gm_square[1];
+	for (u = 0; u < hn; u ++) {
+		uint32_t a0, a1, b;
+
+		a0 = a[u];
+		a1 = a[u + hn];
+		b = mq_montymul(a1, r, Qt, Q0It);
+		a[u] = mq_add(a0, b, Qt);
+		a[u + hn] = mq_sub(mq_add(a0, a1, Qt), b, Qt);
+	}
+
+	/*
+	 * Intermediate steps for degree doubling.
+	 */
+	t = hn;
+	for (m = 2; t > 3; m <<= 1) {
+		size_t ht, u1, v1;
+
+		ht = t >> 1;
+		for (u1 = 0, v1 = 0; u1 < m; u1 ++, v1 += t) {
+			size_t v2;
+			uint32_t s;
+
+			s = gm_square[m + u1];
+			v2 = v1 + ht;
+			for (v = v1; v < v2; v ++) {
+				uint32_t a0, a1;
+
+				a0 = a[v];
+				a1 = a[v + ht];
+				a1 = mq_montymul(a1, s, Qt, Q0It);
+				a[v] = mq_add(a0, a1, Qt);
+				a[v + ht] = mq_sub(a0, a1, Qt);
+			}
+		}
+		t = ht;
+	}
+
+	/*
+	 * Degree tripling.
+	 */
+	w = mq_montymul(gm_square[1], gm_square[1], Qt, Q0It);
+	for (u = 0, v = (size_t)1 << (logn - 1); u < n; u += 3, v ++) {
+		uint32_t fA, fB, fC, x, x2;
+		uint32_t fB0, fB1, fB2, fC0, fC1, fC2;
+
+		fA = a[u + 0];
+		fB = a[u + 1];
+		fC = a[u + 2];
+		x = gm_cubic[v];
+		x2 = mq_montysqr(x, Qt, Q0It);
+		fB0 = mq_montymul(fB, x, Qt, Q0It);
+		fB1 = mq_montymul(fB0, w, Qt, Q0It);
+		fB2 = mq_montymul(fB1, w, Qt, Q0It);
+		fC0 = mq_montymul(fC, x2, Qt, Q0It);
+		fC1 = mq_montymul(fC0, w, Qt, Q0It);
+		fC2 = mq_montymul(fC1, w, Qt, Q0It);
+		a[u + 0] = mq_add(fA, mq_add(fB0, fC0, Qt), Qt);
+		a[u + 1] = mq_add(fA, mq_add(fB1, fC2, Qt), Qt);
+		a[u + 2] = mq_add(fA, mq_add(fB2, fC1, Qt), Qt);
+	}
+}

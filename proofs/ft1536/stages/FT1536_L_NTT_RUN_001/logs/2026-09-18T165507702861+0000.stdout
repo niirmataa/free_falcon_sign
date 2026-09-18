@@ -1,0 +1,4 @@
+List.all_eq_true.{u_1} {α : Type u_1} {p : α → Bool} {l : List α} : l.all p = true ↔ ∀ (x : α), x ∈ l → p x = true
+of_decide_eq_true {p : Prop} [inst : Decidable p] : decide p = true → p
+List.get_mem.{u_1} {α : Type u_1} (l : List α) (n : Fin l.length) : l.get n ∈ l
+List.getElem_mem.{u_1} {α : Type u_1} {l : List α} {n : Nat} (h : n < l.length) : l[n] ∈ l

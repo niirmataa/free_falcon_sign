@@ -1,0 +1,49 @@
+formal/Words.lean:60:2: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  0 ≤ a ≤ 339738624
+  23617 ≤ 5184*a - 1208025088*b - 18433*c - 65536*d - 65536*e ≤ 65535
+  0 ≤ 18431*a - 4294967296*b ≤ 4294967295
+  0 ≤ 18431*a - 4294967296*b - 65536*c ≤ 65535
+  0 ≤ 339738623*a - 79169132167168*b - 1208025088*c - 4294967296*d ≤ 4294967295
+where
+ a := z
+ b := z * 18431 / 4294967296
+ c := z * 18431 % 4294967296 / 65536
+ d := z * 18431 % 4294967296 % 65536 * 18433 / 4294967296
+ e := (z + z * 18431 % 4294967296 % 65536 * 18433 % 4294967296) / 4294967296
+formal/Words.lean:91:46: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≤ -1
+  0 ≤ c ≤ 339738624
+  0 ≤ b ≤ 18432
+  0 ≤ a ≤ 18432
+where
+ a := ↑x
+ b := ↑y
+ c := ↑x * ↑y
+ d := Int.ofNat (x * y)
+formal/Words.lean:91:57: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 339738625
+  0 ≤ c ≤ 339738624
+  0 ≤ b ≤ 18432
+  0 ≤ a ≤ 18432
+where
+ a := ↑x
+ b := ↑y
+ c := ↑x * ↑y
+ d := Int.ofNat (x * y)
+'FT1536NTT.constants' does not depend on any axioms
+'FT1536NTT.fix_contract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536NTT.add_contract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536NTT.sub_contract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536NTT.half_contract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536NTT.low_bits_preserved' depends on axioms: [propext, Quot.sound]
+'FT1536NTT.mont_ranges' depends on axioms: [sorryAx]
+'FT1536NTT.mont_divisibility' depends on axioms: [propext, Quot.sound]
+'FT1536NTT.mont_contract_z' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536NTT.product_range' depends on axioms: [propext, Quot.sound]
+'FT1536NTT.mq_montymul_contract' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536NTT.mq_montysqr_contract' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536NTT.small_divisors' does not depend on any axioms
+'FT1536NTT.prime_factorization' depends on axioms: [propext, Quot.sound]

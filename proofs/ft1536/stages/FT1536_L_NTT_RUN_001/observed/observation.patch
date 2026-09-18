@@ -1,0 +1,27 @@
+--- source/falcon-vrfy.c
++++ observed/falcon-vrfy.c
+@@ -884,6 +884,24 @@
+ 		R2t, mq_sub(mq_add(w, w, Qt), Rt, Qt));
+ }
+ 
++/* TEST OBSERVER: tables from the real logn=10 generator, no replacement. */
++static uint16_t ntto_gm[1024], ntto_igm[1024];
++static unsigned ntto_calls, ntto_same = 1;
++static void ntto_mkgm3(uint16_t *gm, uint16_t *igm, unsigned logn)
++{
++    size_t u;
++    if (logn != 10) abort();
++    mq_mkgm3(gm, igm, logn);
++    if (ntto_calls != 0) {
++        for (u = 0; u < 1024; u++)
++            if (gm[u] != ntto_gm[u] || igm[u] != ntto_igm[u]) ntto_same = 0;
++    }
++    memcpy(ntto_gm, gm, sizeof ntto_gm);
++    memcpy(ntto_igm, igm, sizeof ntto_igm);
++    ntto_calls++;
++}
++#define mq_mkgm3 ntto_mkgm3
++
+ /*
+  * Compute NTT on a ring element, binary case.
+  */

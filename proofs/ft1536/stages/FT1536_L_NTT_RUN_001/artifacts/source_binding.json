@@ -1,0 +1,133 @@
+{
+  "source_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+  "slices": [
+    {
+      "name": "constants",
+      "lines": [
+        59,
+        68
+      ],
+      "path": "inputs/slices/constants.c.txt",
+      "sha256": "91c334f8494c23d8b18c49a8241bb95f6802de2333230d9d66ad8104845054b0"
+    },
+    {
+      "name": "add",
+      "lines": [
+        582,
+        597
+      ],
+      "path": "inputs/slices/add.c.txt",
+      "sha256": "b6e2b6056fb643ed77b3a3ef28cde20ba3d7ce2c6f59c488dbf1aaf1b2b4155e"
+    },
+    {
+      "name": "sub",
+      "lines": [
+        602,
+        614
+      ],
+      "path": "inputs/slices/sub.c.txt",
+      "sha256": "03b475e780e781c972add20ee050a8c9d54c23e9c700c48f2b452c70fbc5d6b4"
+    },
+    {
+      "name": "half",
+      "lines": [
+        619,
+        624
+      ],
+      "path": "inputs/slices/half.c.txt",
+      "sha256": "4c697241cc61aa52f389ed9982b1150b0573595c7161bd9024c96424df08f944"
+    },
+    {
+      "name": "mont",
+      "lines": [
+        631,
+        662
+      ],
+      "path": "inputs/slices/mont.c.txt",
+      "sha256": "ae478bce3bc42a680d1e1e48af04ea85542225b0b349152e453db53f268cb944"
+    },
+    {
+      "name": "square",
+      "lines": [
+        667,
+        671
+      ],
+      "path": "inputs/slices/square.c.txt",
+      "sha256": "c62a3d0e54c514928d0b4c369cead9842273a36f97d2863246423de292af176e"
+    },
+    {
+      "name": "division",
+      "lines": [
+        743,
+        803
+      ],
+      "path": "inputs/slices/division.c.txt",
+      "sha256": "2c5cf12fd4eb3b041e1587d380c1562ba984602091dfe485a86057830f6ed223"
+    },
+    {
+      "name": "rev10",
+      "lines": [
+        805,
+        817
+      ],
+      "path": "inputs/slices/rev10.c.txt",
+      "sha256": "d8ac10d0621455dd0ef20ca47615471dfcbf9bee135047214bd461060021e4aa"
+    },
+    {
+      "name": "generator",
+      "lines": [
+        823,
+        885
+      ],
+      "path": "inputs/slices/generator.c.txt",
+      "sha256": "c4d5d1ffc5f4ea312dfcd0b8f4edbd6dc13ff03c9a1aa0461b37c4fc97e181e4"
+    },
+    {
+      "name": "forward",
+      "lines": [
+        979,
+        1062
+      ],
+      "path": "inputs/slices/forward.c.txt",
+      "sha256": "a006ccb37947419610b96daff08d3a5e3dd6cb040c34665a46092751938c3cb5"
+    },
+    {
+      "name": "inverse",
+      "lines": [
+        1067,
+        1159
+      ],
+      "path": "inputs/slices/inverse.c.txt",
+      "sha256": "bbc3cc6eff024f7716ddd8427f4fc36692756ed3f6ca3ede0903d4c4e72180cd"
+    },
+    {
+      "name": "dispatch_and_poly",
+      "lines": [
+        1161,
+        1243
+      ],
+      "path": "inputs/slices/dispatch_and_poly.c.txt",
+      "sha256": "770a7c637b672cf48171a57bb5c97ff8d071f9bd5d37c3e0245c4883479a3956"
+    }
+  ],
+  "logn": 10,
+  "uses_dynamic_tables": true,
+  "source_unchanged": true,
+  "observer_injection": "/* TEST OBSERVER: tables from the real logn=10 generator, no replacement. */\nstatic uint16_t ntto_gm[1024], ntto_igm[1024];\nstatic unsigned ntto_calls, ntto_same = 1;\nstatic void ntto_mkgm3(uint16_t *gm, uint16_t *igm, unsigned logn)\n{\n    size_t u;\n    if (logn != 10) abort();\n    mq_mkgm3(gm, igm, logn);\n    if (ntto_calls != 0) {\n        for (u = 0; u < 1024; u++)\n            if (gm[u] != ntto_gm[u] || igm[u] != ntto_igm[u]) ntto_same = 0;\n    }\n    memcpy(ntto_gm, gm, sizeof ntto_gm);\n    memcpy(ntto_igm, igm, sizeof ntto_igm);\n    ntto_calls++;\n}\n#define mq_mkgm3 ntto_mkgm3\n\n",
+  "observer_sha256": "b4956f2e84beb57800ff8541ddd3dfca1559bc782792648c0c831de582a10c91",
+  "exported_table_indices": [
+    0,
+    1023
+  ],
+  "not_exported": [
+    1024,
+    2047
+  ],
+  "mutants": {
+    "wrong_R2": "53b10f80d906047baddd8bb5eef966f8d6f837953e355242620495c2d4cdc04b",
+    "missing_tomonty": "d3da26d5a3c9c607e68797cbdc9ce3313846e2c51ddb2351d7f72932304ea280",
+    "generator_step": "a4e995d8d4be19c6cccc786ffd5f6c83766c4ab3338f3485f4a392d693c5b3b1",
+    "missing_inverse_scale": "a8de51d0b9e46b661d0255b5d9e0c89dce65c0cac7328d37b65ad513dcc7da16",
+    "noop": "8366d8aa7759109da9dd6d8c6198daafbd6864dc2857058c1a99fc4f43c4f23a"
+  }
+}

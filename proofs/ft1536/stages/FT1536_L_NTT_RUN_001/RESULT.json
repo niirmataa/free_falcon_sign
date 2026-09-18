@@ -1,0 +1,186 @@
+{
+  "schema": "FT1536_L_NTT_RESULT_V1",
+  "created_utc": "2026-09-18T17:43:29.682636+00:00",
+  "result": "PARTIAL_PROOF",
+  "lemma": "L_NTT",
+  "source_integrated": false,
+  "owner_accepted": false,
+  "full_L_V_proved": false,
+  "claim": "CLAIM.md",
+  "derivation": "DERIVATION.md",
+  "obligations": "OBLIGATIONS.json",
+  "parameters": {
+    "ternary": 1,
+    "logn": 10,
+    "N": 1536,
+    "q": 18433,
+    "Phi": "X^1536-X^768+1",
+    "R_M": 65536,
+    "Rt": 10237,
+    "R2t": 4564,
+    "Q0It": 18431
+  },
+  "quantifier": "all canonical h,r,c, legal aligned sufficiently sized buffers and required nonaliasing; not restricted to KeyGen support",
+  "consumed_L_RHO": {
+    "result": "L_RHO_PROVED_FOR_PINNED_MODEL",
+    "report_sha256": "ca0e3fb23542656b16c61495506db5956b3d6043d5ef26fd56396502c0b444e3",
+    "outputs_sha256": "d5cabfdaf69f080bf31b9e1903bacc4a319f87cd38cb4b643ff5e98f1240f687",
+    "candidate_manifest_sha256": "2553358fbb1144acdb577e1ad371a017ac325306dd901af745295dd17b03bd5a",
+    "Rho_lean_sha256": "daa68021e0f5bac53cf0384a5e10b0537eb6a8ca9d02f0f2970c6ff6eefc7fe8"
+  },
+  "source_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+  "source_hashes": {
+    "Makefile": "25cd0345332882ccab4beea68d5139955c871499733ab9f5fa3cc8ef898d5049",
+    "falcon-enc.c": "0f7085fa975d41ebbeb96d5db4cb68482c344ef2d602ca8853e20a4d4f04fb05",
+    "falcon-fft.c": "06b573b636ae368dcda3eb4d89c3936ab31272123440d0d5362317e55d9ac063",
+    "falcon-keygen.c": "0a09b6ed2363308f54584dfd1e2d33ee1b4601a68c77712c50da920b5074a5cf",
+    "falcon-sign.c": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8",
+    "falcon-vrfy.c": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+    "falcon.h": "657ad2b2d45b8932c3b9a703ac718c1f23dad78523036c1a934b8e21cf0f4519",
+    "fpr-double.h": "5dd9110dd4e77c96e19263488bd0937cea0032623f40cacb289da7e3e1256d56",
+    "fpr-emulated.c": "7cb06c9ea8f8bfc205a207cd73af367d299005d4bfec26333ced702f1c024e5f",
+    "fpr-emulated.h": "242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa",
+    "frng.c": "4b1289adf0c902abe9408d989b4eb8d292cbb6ea86b92e1325a10fd9c5dfc644",
+    "ft1536-adaptive-cdf-tables.h": "c16f041a64aba25991b5473111675f1c046ebc38285fca6c052124cf3b7fdf4f",
+    "internal.h": "512629d3b79fa5bd74131ed2ecde06e1d157f5ac58db3f758db96b19131f1ba5",
+    "shake.c": "c3e7864bf4139264f8c287053214bf869e242757bf555235da81454e40ea316a",
+    "shake.h": "2373a37e09907c8e57a6b1adc05e26499d9cf2752518267a80291de931c2d8df",
+    "test_falcon.c": "ecd22c8f0ac8c24df0692c94ebb293b5944fe42fc57d97f2e06f01e5ecc44b4c",
+    "tool.c": "920ac2d8a96408c505670eb2f044cde763ca11945d90ec24d8c6f2a048377890"
+  },
+  "source_unchanged": true,
+  "model": {
+    "compiler": "GCC 14.2.0",
+    "language": "C99",
+    "platform": "Linux x86_64 LP64",
+    "unsigned_wrap": "explicitly modeled; not assumed absent",
+    "compiler_formalized": false
+  },
+  "formal": {
+    "total_declarations": 186,
+    "modules": [
+      {
+        "file": "formal/Words.lean",
+        "sha256": "4630b8b49186ccbf49a074e7e684e8125bbf14e6aadfc5443be8e2cbedb7f52b",
+        "theorems": 14,
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "receipt": "logs/2026-09-18T163337454563+0000.stdout"
+      },
+      {
+        "file": "formal/Linear.lean",
+        "sha256": "60b843d305f264d47b9411f479d83f647e747b9e9bd7763fa43f27d198336dd5",
+        "theorems": 7,
+        "axioms": [
+          "Quot.sound",
+          "propext"
+        ],
+        "receipt": "logs/2026-09-18T170421177469+0000.stdout"
+      },
+      {
+        "file": "formal/Tables.lean",
+        "sha256": "ee668bf1b63a8cb9a3192b39fee68347ed67481d4c73e948372ffc1db203821e",
+        "theorems": 160,
+        "axioms": [
+          "Quot.sound",
+          "propext"
+        ],
+        "receipt": "logs/2026-09-18T170402604151+0000.stdout"
+      },
+      {
+        "file": "formal/Composition.lean",
+        "sha256": "0ee19f21c9acdb4361d862905d7ab090ed3bb904066a22059cf7688948a34772",
+        "theorems": 5,
+        "axioms": [
+          "Quot.sound",
+          "propext"
+        ],
+        "receipt": "logs/2026-09-18T172115459765+0000.stdout"
+      }
+    ],
+    "final_theorem": "FT1536Composition.L_NTT_after_global_interfaces",
+    "final_scope": "CONDITIONAL_NOT_INSTANTIATED_FOR_SOURCE",
+    "open_hypotheses": [
+      "forward_product",
+      "inverse_forward"
+    ],
+    "no_sorry_or_local_goal_axiom_in_final_files": true
+  },
+  "constants": {
+    "dynamic_generator": "mq_mkgm3(logn=10)",
+    "used_indices": [
+      0,
+      1023
+    ],
+    "uninitialized_tail_not_exported": [
+      1024,
+      2047
+    ],
+    "required_division_denominators": [
+      1874,
+      8479,
+      1536
+    ],
+    "inverse_scale_word": 6187,
+    "kernel_record_counts": {
+      "units": 1024,
+      "sequence": 256,
+      "parents": 511,
+      "tree": 510,
+      "rows2": 1022,
+      "rows3": 1536,
+      "chain": 60
+    },
+    "primality": "kernel small-divisor and factorization proof"
+  },
+  "implementation_checks": {
+    "status": "PASS",
+    "primitive_cases": 737,
+    "unsigned_product_wrap_cases": 605,
+    "all_nonzero_division_denominators": 18432,
+    "baseline_pipeline_runs": 28,
+    "cases": 7,
+    "normal_ASan_UBSan_observed_and_plain": true,
+    "leak_detection": "enabled and passed",
+    "mutants_rejected": 4,
+    "noop_passed": true,
+    "counterexample_found": false,
+    "record": "artifacts/test_suite.json"
+  },
+  "closed_local_obligations": [
+    "W_ADD",
+    "W_SUB",
+    "W_MONT",
+    "PRIME_ROOT",
+    "DIV_USED",
+    "GEN10",
+    "LOCAL_BLOCKS"
+  ],
+  "global_open": [
+    "FORWARD_GLOBAL",
+    "INVERSE_GLOBAL",
+    "SOURCE_GLOBAL_INSTANTIATION",
+    "PRODUCT"
+  ],
+  "exact_gap": "No closed global source-buffer/CRT model instance establishes forward_product and inverse_forward for the in-place C functions. Local matrices, fixed index checks and empirical agreement do not remove these premises.",
+  "RHO_substitution": "r=rho(s) gives canonical r congruent to s; identification d=canonical(h*s-c) remains conditional on L_NTT",
+  "fresh_replay": {
+    "status": "PASS",
+    "semantic_files_identical": 98,
+    "receipt": "artifacts/fresh_replay.json",
+    "phase": "PRE_FREEZE_REHEARSAL"
+  },
+  "technical_events": [
+    "initial Words/Linear proof drafts failed and are retained outside final proof scope",
+    "first fresh replay failed on copied derived slices directory; preserved, corrected copy recipe, new replay_002 passed",
+    "helper harness compiler indentation warnings retained"
+  ],
+  "next_recommendation": "Instantiate a global source/CRT buffer invariant for forward and inverse with exact physical ordering; discharge forward_product and inverse_forward and then instantiate the existing final composition.",
+  "report": "REPORT.md",
+  "report_sha256": "b89d618d7c1d3992fa1a9ea0ae8c84dcc348448f035905b87a03c37e20dfd650",
+  "output_scope": "OUTPUT_SCOPE.md",
+  "output_manifest": "OUTPUTS.sha256"
+}

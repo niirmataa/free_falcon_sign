@@ -1,0 +1,93 @@
+static void
+mq_iNTT_ternary(uint16_t *a, unsigned logn)
+{
+	size_t n, hn, u, v, t, m;
+	uint32_t r, w, ni;
+	uint16_t gm[TERNARY_GM_SIZE], igm[TERNARY_GM_SIZE];
+	const uint16_t *igm_square, *igm_cubic;
+
+	n = (size_t)3 << (logn - 1);
+	hn = n >> 1;
+	if (logn <= 9) {
+		igm_square = iGMt_square;
+		igm_cubic = iGMt_cubic;
+	} else {
+		mq_mkgm3(gm, igm, logn);
+		igm_square = igm;
+		igm_cubic = igm;
+	}
+
+	/*
+	 * Dividing degree by 3.
+	 */
+	w = mq_montymul(igm_square[1], igm_square[1], Qt, Q0It);
+	for (u = 0, v = (size_t)1 << (logn - 1); u < n; u += 3, v ++) {
+		uint32_t f0, f1, f2, x, x2;
+		uint32_t f11, f12, f21, f22;
+
+		f0 = a[u + 0];
+		f1 = a[u + 1];
+		f2 = a[u + 2];
+		x = igm_cubic[v];
+		x2 = mq_montysqr(x, Qt, Q0It);
+		f11 = mq_montymul(f1, w, Qt, Q0It);
+		f12 = mq_montymul(f11, w, Qt, Q0It);
+		f21 = mq_montymul(f2, w, Qt, Q0It);
+		f22 = mq_montymul(f21, w, Qt, Q0It);
+		a[u + 0] = mq_add(f0, mq_add(f1, f2, Qt), Qt);
+		a[u + 1] = mq_montymul(x,
+			mq_add(f0, mq_add(f11, f22, Qt), Qt), Qt, Q0It);
+		a[u + 2] = mq_montymul(x2,
+			mq_add(f0, mq_add(f12, f21, Qt), Qt), Qt, Q0It);
+	}
+
+	/*
+	 * Intermediate steps for degree halving.
+	 */
+	t = 6;
+	for (m = (size_t)1 << (logn - 2); t < n; m >>= 1) {
+		size_t ht, u1, v1;
+
+		ht = t >> 1;
+		for (u1 = 0, v1 = 0; u1 < m; u1 ++, v1 += t) {
+			size_t v2;
+			uint32_t s;
+
+			s = igm_square[m + u1];
+			v2 = v1 + ht;
+			for (v = v1; v < v2; v ++) {
+				uint32_t a0, a1;
+
+				a0 = a[v];
+				a1 = a[v + ht];
+				a[v] = mq_add(a0, a1, Qt);
+				a[v + ht] = mq_montymul(
+					mq_sub(a0, a1, Qt), s, Qt, Q0It);
+			}
+		}
+		t <<= 1;
+	}
+
+	/*
+	 * Modulo X^2-X+1.
+	 */
+	r = igm_square[0];
+	for (u = 0; u < hn; u ++) {
+		uint32_t a0, a1, b;
+
+		a0 = a[u];
+		a1 = a[u + hn];
+		b = mq_montymul(r, mq_sub(a0, a1, Qt), Qt, Q0It);
+		a[u] = mq_sub(mq_add(a0, a1, Qt), b, Qt);
+		a[u + hn] = mq_add(b, b, Qt);
+	}
+
+	/*
+	 * Corrective factor: all values have been (cumulatively)
+	 * multiplied by n. Inverses of n modulo q have been precomputed.
+	 */
+	ni = logn <= 9 ? INVNQt[logn] : mq_div_18433(Rt, (uint32_t)n);
+	for (u = 0; u < n; u ++) {
+		a[u] = mq_montymul(a[u], ni, Qt, Q0It);
+	}
+}

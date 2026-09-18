@@ -1,0 +1,83 @@
+static void
+mq_NTT(uint16_t *a, unsigned logn, int ternary)
+{
+	if (ternary) {
+		mq_NTT_ternary(a, logn);
+	} else {
+		mq_NTT_binary(a, logn);
+	}
+}
+
+static void
+mq_iNTT(uint16_t *a, unsigned logn, int ternary)
+{
+	if (ternary) {
+		mq_iNTT_ternary(a, logn);
+	} else {
+		mq_iNTT_binary(a, logn);
+	}
+}
+
+/*
+ * Convert a polynomial (mod q) to Montgomery representation.
+ */
+static void
+mq_poly_tomonty(uint16_t *f, unsigned logn, int ternary)
+{
+	size_t u, n;
+
+	if (ternary) {
+		n = (size_t)3 << (logn - 1);
+		for (u = 0; u < n; u ++) {
+			f[u] = (uint16_t)mq_montymul(f[u], R2t, Qt, Q0It);
+		}
+	} else {
+		n = (size_t)1 << logn;
+		for (u = 0; u < n; u ++) {
+			f[u] = (uint16_t)mq_montymul(f[u], R2b, Qb, Q0Ib);
+		}
+	}
+}
+
+/*
+ * Multiply two polynomials together (NTT representation, and using
+ * a Montgomery multiplication). Result f*g is written over f.
+ */
+static void
+mq_poly_montymul_ntt(uint16_t *f, const uint16_t *g, unsigned logn, int ternary)
+{
+	size_t u, n;
+
+	if (ternary) {
+		n = (size_t)3 << (logn - 1);
+		for (u = 0; u < n; u ++) {
+			f[u] = (uint16_t)mq_montymul(f[u], g[u], Qt, Q0It);
+		}
+	} else {
+		n = (size_t)1 << logn;
+		for (u = 0; u < n; u ++) {
+			f[u] = (uint16_t)mq_montymul(f[u], g[u], Qb, Q0Ib);
+		}
+	}
+}
+
+/*
+ * Subtract polynomial g from polynomial f.
+ */
+static void
+mq_poly_sub(uint16_t *f, const uint16_t *g, unsigned logn, int ternary)
+{
+	size_t u, n;
+
+	if (ternary) {
+		n = (size_t)3 << (logn - 1);
+		for (u = 0; u < n; u ++) {
+			f[u] = (uint16_t)mq_sub(f[u], g[u], Qt);
+		}
+	} else {
+		n = (size_t)1 << logn;
+		for (u = 0; u < n; u ++) {
+			f[u] = (uint16_t)mq_sub(f[u], g[u], Qb);
+		}
+	}
+}
