@@ -27,6 +27,19 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 
 ## Weryfikacja po pobraniu repo
 
+### Zapisane etapy
+
+| Etap | Werdykt / zakres | Commit checkpointu |
+|---|---|---|
+| L_V-STATIC | kontrprzykład do ustalonego Ext0 | `791f092` |
+| Odbiór Blue | niezależne potwierdzenie kontrprzykładu | `60f574e` |
+| L_RHO | poprawna normalizacja całej dziedziny int16 w przypiętym modelu | `9333a08` |
+| L_NTT | lokalne kontrakty i certyfikaty; globalna kompozycja częściowa | `e1ab6af` |
+| L_NTT_GLOBAL | globalny inverse domknięty; forward_product nadal otwarte | `341d9f7` |
+
+Odtwarzanie z czystego checkoutu Git i ukrytymi oryginałami sprawdzono
+2026-09-18: [zapis kontroli](validation/2026-09-18/README.md).
+
 Z katalogu głównego repo, Python 3.11 lub nowszy (biblioteka standardowa):
 
 ```sh
@@ -124,6 +137,15 @@ python3 -B proofs/ft1536/tools/archive.py document /ABSOLUTE/TASK.md --sha SHA25
 5. Dodać wyłącznie pliki danego etapu i utworzyć osobny commit, np.
    `proof: record L_NTT partial proof checkpoint`.
 6. Podać hash commita obok hashy raportu i OUTPUTS w przekazaniu użytkownikowi.
+
+Docelowa gałąź to lokalny **main**. Jeśli checkpoint powstał na innej gałęzi,
+po sprawdzeniu przenieś go fast-forward, o ile historia na to pozwala.
+Przy zajętym roboczym indeksie użyj osobnego worktree do operacji na main.
+Rozbieżnej historii nie nadpisuj. Push pozostaje osobnym poleceniem właściciela.
+
+Nowe zadania mogą używać `proofs/ft1536/work/<id>/` jako sandboxa obliczeń.
+Ta robocza zawartość jest ignorowana; po zakończeniu zadania importer zapisze
+jej zamrożony zakres pod stages/, a następny commit obejmie ten checkpoint.
 
 Przy wcześniejszych staged zmianach używać dokładnych pathspeców i
 `git commit --only -- <własne ścieżki>`. Jeden wykonawca operuje na indeksie.

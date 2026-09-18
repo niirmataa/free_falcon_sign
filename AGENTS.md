@@ -7,6 +7,9 @@ Docelowym repozytorium prac jest `free_falcon_sign`.
 - Każdy zakończony etap badawczy, także `PARTIAL_PROOF`, kontrprzykład lub
   udokumentowana blokada, powinien otrzymać osobny commit po sprawdzeniu
   zakresu, manifestu i raportu.
+- Docelową gałęzią checkpointów jest lokalny `main`. Przenoś zweryfikowane
+  commity przez fast-forward, gdy historia na to pozwala. Przy rozbieżnej
+  historii ustal sposób integracji; nie wymuszaj przesunięcia gałęzi.
 - W obecnym trybie Astra przygotowuje pakiet w swoim katalogu roboczym,
   a prowadzący sesję importuje go, sprawdza i wykonuje commit. Jeden wykonawca
   naraz operuje na indeksie Git.
@@ -27,6 +30,8 @@ Docelowym repozytorium prac jest `free_falcon_sign`.
 - Commit pakietu nie jest integracją kandydata C, owner acceptance ani
   ogłoszeniem bezpieczeństwa. Zachowuj rzeczywiste statusy raportu.
 - Aktywnego katalogu innego wykonawcy nie importuj jako zakończonego etapu.
+- Nowe obliczenia mogą działać w `proofs/ft1536/work/<id>/`, ignorowanym
+  przez Git. Po freeze import do stages/ tworzy wersjonowany checkpoint.
 - Nowe i edytowane pliki Lean mają mieć czysty log, bez wyciszania ostrzeżeń.
   Historyczne zależności zachowuj z pinami i opisem ich ostrzeżeń.
 
