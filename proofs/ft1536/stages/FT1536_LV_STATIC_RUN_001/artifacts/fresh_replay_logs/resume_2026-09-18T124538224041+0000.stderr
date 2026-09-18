@@ -1,0 +1,7 @@
+scripts/harness.c: In function ‘read_bytes’:
+scripts/harness.c:80:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   80 |     if(fseek(f,0,SEEK_END)) abort(); long n=ftell(f); if(n<0) abort();
+      |     ^~
+scripts/harness.c:80:38: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   80 |     if(fseek(f,0,SEEK_END)) abort(); long n=ftell(f); if(n<0) abort();
+      |                                      ^~~~

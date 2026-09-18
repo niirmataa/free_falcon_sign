@@ -1,0 +1,274 @@
+Linux footfalcon 6.12.107+deb13-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.12.107-1 (2026-08-29) x86_64 GNU/Linux
+gcc (Debian 14.2.0-19) 14.2.0
+Copyright (C) 2024 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+10.9
+Python 3.14.7
+Lean (version 4.34.0, x86_64-unknown-linux-gnu, commit 293d5d0c0c3f3dded4688b3ccd6a33939ac5102b, Release)
+# Build script for the Falcon implementation.
+#
+# ==========================(LICENSE BEGIN)============================
+#
+# Copyright (c) 2017  Falcon Project
+#
+# Permission is hereby granted, free of charge, to any person obtaining
+# a copy of this software and associated documentation files (the
+# "Software"), to deal in the Software without restriction, including
+# without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to
+# permit persons to whom the Software is furnished to do so, subject to
+# the following conditions:
+#
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+# IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+# CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+# TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+# SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#
+# ===========================(LICENSE END)=============================
+#
+# @author   Thomas Pornin <thomas.pornin@nccgroup.trust>
+
+.POSIX:
+
+CC = c99
+# CT-safe: -O only. -O3 -march=native introduced timing jitter in dudect.
+# FPEMU_CT_STRICT uses the branchless default CDF path and CT BerExp.
+CFLAGS = -W -Wall -O -DFPR_IMPL=\"fpr-emulated.h\" -DSAMPLER_CODF=0 -DSAMPLER_CDF=0 -DCT_BEREXP=1 -DFT_TERNARY_ADAPTIVE_CDF=1 -DFT1536_CANDIDATE_PROFILE=1 -DCLEANSE=1 -DTRUE_TERNARY_SECRET=1 -DTRUE_TERNARY_SECRET_MODE=1 -DTERNARY_KEYGEN_BOUND_SCALE_NUM=1250 -DTERNARY_KEYGEN_BOUND_SCALE_DEN=100 -DTERNARY_KEYGEN_MAX_ATTEMPTS=3000000 -DSIGN_MAX_ATTEMPTS=16
+LD = c99
+LDFLAGS =
+LDLIBS = -lm
+
+OBJ = falcon-enc.o falcon-vrfy.o frng.o shake.o fpr-emulated.o falcon-fft.o falcon-keygen.o falcon-sign.o
+
+all: test_falcon falcon
+
+clean:
+	-rm -f $(OBJ) test_falcon test_falcon.o falcon tool.o
+
+test_falcon: test_falcon.o $(OBJ)
+	$(LD) $(LDFLAGS) -o test_falcon test_falcon.o $(OBJ) $(LDLIBS)
+
+falcon: tool.o $(OBJ)
+	$(LD) $(LDFLAGS) -o falcon tool.o $(OBJ) $(LDLIBS)
+
+test_falcon.o: test_falcon.c falcon.h internal.h fpr-emulated.h shake.h
+	$(CC) $(CFLAGS) -c -o test_falcon.o test_falcon.c
+
+tool.o: tool.c falcon.h
+	$(CC) $(CFLAGS) -c -o tool.o tool.c
+
+falcon-enc.o: falcon-enc.c falcon.h internal.h fpr-emulated.h shake.h
+	$(CC) $(CFLAGS) -c -o falcon-enc.o falcon-enc.c
+
+falcon-fft.o: falcon-fft.c falcon.h internal.h fpr-emulated.h shake.h
+	$(CC) $(CFLAGS) -c -o falcon-fft.o falcon-fft.c
+
+falcon-keygen.o: falcon-keygen.c falcon.h internal.h fpr-emulated.h shake.h
+	$(CC) $(CFLAGS) -c -o falcon-keygen.o falcon-keygen.c
+
+falcon-sign.o: falcon-sign.c falcon.h internal.h fpr-emulated.h shake.h ft1536-adaptive-cdf-tables.h
+	$(CC) $(CFLAGS) -c -o falcon-sign.o falcon-sign.c
+
+falcon-vrfy.o: falcon-vrfy.c falcon.h internal.h fpr-emulated.h shake.h
+	$(CC) $(CFLAGS) -c -o falcon-vrfy.o falcon-vrfy.c
+
+frng.o: frng.c falcon.h internal.h fpr-emulated.h shake.h
+	$(CC) $(CFLAGS) -c -o frng.o frng.c
+
+fpr-emulated.o: fpr-emulated.c falcon.h internal.h fpr-emulated.h shake.h
+	$(CC) $(CFLAGS) -c -o fpr-emulated.o fpr-emulated.c
+
+shake.o: shake.c shake.h
+	$(CC) $(CFLAGS) -c -o shake.o shake.c
+{
+  "bindings": {
+    "decoder_binary_sha256": "0ab605a8eb0555251785e8a962b7d7c23ab0a5b0d34e1354f923f7f0aa56b7d8",
+    "generator_binary_sha256": "565cfe459430dbb3f01b4cb7dfda2b5a1b6722ac239dc819e4e18871737db1bf",
+    "private_encoded_bytes": 7681,
+    "private_encoded_sha256": "d073480ca8971c41719e855fef2d38a5271e4a5249a7764f236bef538bd4519c",
+    "public_encoded_bytes": 2881,
+    "public_encoded_sha256": "57c49fb228013b0bfc4907c754d747dca93c1049d2945ccd6cd686e9f95afc6f",
+    "source_manifest_sha256": "03eaa0dd72bf365102af102959f5a02133b32d0504e7dd5b15145529c6bc3589"
+  },
+  "claim_limits": {
+    "fixed_key_instance_only": true,
+    "keygen_distribution_theorem": false,
+    "security_established": false
+  },
+  "frozen_utc": "2026-08-19T19:05:21Z",
+  "parameters": {
+    "N": 1536,
+    "q": 18433,
+    "runtime_command": "./falcon keygen -logt 10",
+    "secret_mode": "TRUE_TERNARY_SECRET_MODE_1"
+  },
+  "provenance": {
+    "external_key_input_used": false,
+    "local_operator_machine": true,
+    "os_random_seed_bytes": 32,
+    "os_random_source": "/dev/urandom",
+    "private_literal_path_recorded": false,
+    "private_logical_alias": "PRIVATE_KEY_READ_ONLY",
+    "seed_value_stored_or_emitted": false,
+    "single_cli_keygen_invocation": true,
+    "storage_acl": "CURRENT_OPERATOR_AND_LOCAL_SYSTEM_ONLY",
+    "storage_scope": "OPERATOR_LOCALAPPDATA_NON_CLOUD"
+  },
+  "schema": "FT1536_CANONICAL_KEY_COMMITMENT_V1",
+  "status": "HASH_FROZEN_BEFORE_MATHEMATICAL_VALIDATION"
+}
+15831
+13442
+17027
+9633
+4369
+3870
+1611
+9048
+18115
+15998
+8628
+15344
+7739
+8693
+8395
+10052
+1979
+17637
+4739
+16119
+18132
+1546
+7451
+665
+14380
+13162
+2248
+11746
+3794
+15515
+4822
+4185
+5319
+16389
+9500
+13508
+13580
+14438
+14438
+194
+6380
+18359
+209
+13181
+7665
+15206
+659
+18185
+18005
+12937
+5522
+8872
+13305
+1187
+13290
+18203
+1848
+14030
+11229
+3475
+7863
+15434
+1321
+17254
+7087
+9173
+14795
+12014
+6060
+3853
+8756
+7089
+10638
+4060
+5937
+14287
+15328
+5937
+17651
+8631
+16472
+8902
+5765
+12650
+6606
+10007
+8911
+10868
+1004
+5958
+5830
+3684
+1315
+4271
+1158
+6132
+6760
+14988
+7592
+17437
+4633
+15237
+5427
+10927
+618
+10581
+16231
+14585
+13456
+17524
+11562
+1603
+13617
+12617
+7606
+3231
+12760
+8938
+3247
+11177
+13999
+17535
+13186
+6228
+9893
+4129
+10438
+10481
+16229
+10436
+3679
+10644
+7105
+17159
+2515
+16891
+10070
+7256
+15484
+10955
+4419
+16395
+11722
+7860
+1237
+14085
+164

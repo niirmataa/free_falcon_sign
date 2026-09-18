@@ -1,0 +1,467 @@
+		 * Candidate ternary verification bounds in the normalized-canonical
+		 * quadratic form above. The active FT1536 value is
+		 * floor(1.075^2 * 2*N * 768^2). SIG-001 and the final norm/security
+		 * selection remain open.
+		 */
+		{
+			int64_t bound;
+
+			switch (logn) {
+			case 3:
+				bound = 987497;
+				break;
+			case 4:
+				bound = 2052189;
+				break;
+			case 5:
+				bound = 4258765;
+				break;
+			case 6:
+				bound = 8826305;
+				break;
+			case 7:
+				bound = 18270159;
+				break;
+			case 8:
+				bound = 37775417;
+				break;
+			case 9:
+				bound = 78021029;
+				break;
+			case 10:
+				bound = FALCON_FT1536_NORM_BOUND2;
+				break;
+			default:
+				return 0;
+			}
+			return s < bound;
+		}
+	} else {
+		/*
+		 * In the binary case, we use the l2-norm. Code below
+		 * uses only 32-bit operations to compute the square
+		 * of the norm with saturation to 2^32-1 if the value
+		 * exceeds 2^31-1.
+		 */
+		size_t n, u;
+		uint32_t s, ng;
+
+		n = (size_t)1 << logn;
+		s = 0;
+		ng = 0;
+		for (u = 0; u < n; u ++) {
+			int32_t z;
+
+			z = s1[u];
+			s += (uint32_t)(z * z);
+			ng |= s;
+			z = s2[u];
+			s += (uint32_t)(z * z);
+			ng |= s;
+		}
+		s |= -(ng >> 31);
+
+		/*
+		 * Acceptance bound on the l2-norm is:
+		 *   1.2*1.55*sqrt(q)*sqrt(2*N)
+		 * Value 7085 is floor((1.2^2)*(1.55^2)*2*1024).
+		 */
+		return s < (((uint32_t)7085 * (uint32_t)12289) >> (10 - logn));
+	}
+}
+	16750, 12828,  7852,   806,  1458, 10770,  9265, 12609,
+	 8775,  1328, 14458, 11372,  1705,  1823,  7105,  6894,
+	 9026,    72, 11666,  7057,  4201,  8427, 18263, 14143,
+	11872,  6834,  4390,  7775, 13188, 11852, 17658,  7550,
+	 8671,  4125, 12457, 11838, 14110,  5843,  1013, 16889,
+	15905,  5600, 12331, 18417,  5191,  4134,  9307, 10416,
+	  141, 17654, 14588, 12484,   374,  9438, 14640,  1869,
+	17998, 16130, 13431, 13647,  6690,  6180, 12094,   509,
+	12223, 13523,  4231,  1594,  5883,  7501, 10569, 12987,
+	17487, 15162,  2004,   694,  7557,  9626,  4139,  9031,
+	10013, 13052,  3184,  2280,  6819,   761, 10145,  8793,
+	15397,  5792,   430,  6514,  4105,  8173, 14998, 17409,
+	 9415, 15310,  5503, 14176,  9024,  5443, 11982,  6357,
+	 4076,  3104,  1147,  7259,   876,  6926,  9056, 11672,
+	 8610, 11260,  3662,  8921, 16955,  6074, 12328, 17257,
+	18117,   700, 13062, 18431,  2953,  5125, 12684,  1302,
+	 6930,  6815, 11040, 10777,  4655,  5788,  1830,  7146,
+	 5330,  8726,  5778,  3767, 14007, 15171, 17287, 17705,
+	16342,  2532, 17017,  5470, 15632, 10638,   166, 15032,
+	 3832, 13211,  2833, 14024, 12256,  7850, 17450, 13144,
+	14661,  9989,  6120,  6976,  3983,  4010, 15841, 11575,
+	 8164, 10848,   398,   285, 12373, 16224, 17397, 17228,
+	 7857, 15028, 12038,  3433,  9467,  4695, 15720, 13943,
+	 4443,  3691, 16893,  6678,  1588, 11882,  7158,  2810,
+	12578,  9470,  3440, 15246, 14407, 10085,  9386, 10241,
+	 9408,  6459,  6609, 11726, 13581, 16348, 10863, 16069,
+	14175,  6399,  9176,  2773,  7008,   109, 17149,  1211,
+	15887, 17073, 15175, 12117, 16909,   576,  1163,  1157,
+	 4969, 10459,  7517,  6448,  9389, 11401,  9611,  5076,
+	 2811, 17806, 16687,  6901, 13339,  2651, 12233,  5101,
+	14069, 14567,  7491,  2539,  2282,  9878,  8104,  6081
+};
+
+static const uint16_t GMt_cubic[] = {
+	    0,     0,  5863, 13355,  3451, 10413, 17691,  5912,
+	 1638, 13729,   651,  6638,  5184, 14889,  7732, 13716,
+	 6193, 12464,  2225,  4481,  6221, 17110, 16888,  3019,
+	18432,  3784, 17251, 11902,  2776,  2426,   158, 10417,
+	 2894, 16739, 10603,  6889,  3044,  2129,  3573,  9590,
+	 9271, 14968,  9120, 14929, 14605, 15247,  9822, 12913,
+	 5467, 13131, 10444,   256, 12400,  8818,  2565,  8231,
+	 1966,  7588,  1254, 10578, 16985,  4631,  2733, 17674,
+	 8301, 17281,  5426,  2378, 16107,  9043, 15618, 16119,
+	12790,  7698,  2720, 11567, 15351, 12632,  6810,   294,
+	 3399,  4418, 17657,  5537,  2072, 12010, 15948,  2410,
+	16169, 14064, 15170, 15515, 17644, 17863,  7485,  8281,
+	14259, 15768,  6376,  2013, 11100,  6407, 14337, 15544,
+	11571, 12144, 18069, 13334,  7623,  2213, 15082, 16713,
+	 5319,  1740,  1405, 10617, 17722, 17639,  7516,  1575,
+	 3339, 10262,  2036,   770,  2735, 10106,  6995,   708,
+	10542, 16517, 18369,  2547,  7012, 10112, 11767,  7800,
+	16536,  7811,  6572, 16102, 12667, 12305,  4798,   873,
+	 2005,  7476, 10486,  7225,   886,  2182, 15004, 16937,
+	 4939,  1886, 13070, 17292,  3488, 17869, 12257, 15373,
+	 7292,  1273, 10933, 11613, 15275,  5288,  9143,  1629,
+	11564,  1766,  9795,  4483,  8622,   762, 16188, 15900,
+	14917, 14351,  9946,  4522,  9359, 13770,  2538, 18234,
+	 6214,  6732,  8614, 12601,  3224,  3030, 13570,  5458,
+	11553,  6524, 15226,  6374,  2292,  9015, 17926,  1456,
+	 6036, 16696,   981, 11362, 18094, 10899,  4828, 16384,
+	 2832, 11718, 11051,  7493,  9259,  5077, 13369, 10289,
+	 4117, 15590, 18415, 12813, 18101,  2844, 13102,  6802,
+	 4802,  4170, 17033,  7329, 15140,     4, 15470,  4728,
+	11498, 11881,  5515, 15829,  7508, 13414,  8183,  2968,
+	   81,  6857,  3577, 12887, 14773,  6257,  5635,  4141,
+	 4355, 18215,  4803,   386,  2568, 15312, 12364, 16011,
+	 9971,  2087,  7035, 15245,  6870, 12883,  9820,  2048,
+	 9503,  3431,  6849,   182, 15728,  5405, 10032, 10892,
+	 7427,  6557,  4606,  8514,  9175,  9572,  6246, 14675,
+	12678,  7547, 17800, 17415, 12902,  7849,  6073,  5719,
+	15262, 17614, 12210,  8891, 10155,  6285,  3327,   371,
+	11109,  9217,  6542,   591, 18258, 17045, 14346, 18354,
+	12065,  4581, 12121, 13873,   321,  1914, 10762, 13522,
+	 8759, 16911, 12225,  7430, 16576,  3915, 16986,   847,
+	11952,  8214,  7586, 13190,   648, 17990, 10183, 10931,
+	 7690,  6747,  2111, 11898, 16407, 16689,  1558,  3088,
+	 4854, 10165,  4765, 15147, 18252,  2883,  7254, 16034,
+	 1550, 14927,  7233,  3333, 10522,    32, 13162,   958,
+	18150,  1758, 15721, 13460, 11422,  4537,  7848, 17164,
+	  259, 15326, 11210, 14126, 18336, 16821, 14377, 11648,
+	13534, 12651, 15777,  4319, 14503, 14122, 18289, 10339,
+	 4223,  1579, 14676,  4645,   340,  3750, 14787,  8580,
+	10662,  4829, 12745, 12081,  5686, 13920, 11240, 11204,
+	13430,   661,  3447,  7116,  8279,  8364, 16288,  6160,
+	 5385, 10058,  5685, 17704,   403,  4987, 15521, 14507,
+	 3474, 15546, 14142, 16104, 15068, 14390,  4098, 13754,
+	12138,  4844,  6242, 11378,   436,  9146, 17661,  8834,
+	 4719,  4881, 11092, 18246,  5919, 17032, 10151,  2988,
+	10093,  1264,  3775,   975, 18425, 11839,  8977,  3051,
+	13104, 17667,  5208, 16238, 10038,  6621, 12497, 10430,
+	12967,  1518,  9171,  6275,  3257,  7189, 15710, 18218,
+	10604,  3105, 17921,  1943,   797,  7164,  1971,  7101,
+	11938,  5891,  9471, 13921,  2646, 15088, 12395,  9305,
+	16040,  4509, 10156,  2501,  7088, 17456,  9434,  6465,
+	 2304,   473, 13677,  6096,   347, 14128,  4628, 17431,
+	 3037, 10184, 13732,   739, 11602,  5438, 17845, 13032,
+	 9597, 16395,  7359,  5807, 12846, 16990, 13613,  8643,
+	 8738,  4210,  5836, 17743,  1140, 17995,  1871, 16841
+};
+
+static const uint16_t iGMt_square[] = {
+	 3318,   879,  6730, 10347,  8582,  5711,  3924, 12659,
+	 5824,  9168,  7663, 16975, 17627, 10581,  5605,  1683,
+	 4290,   170, 10006, 14232, 11376,  6767, 18361,  9407,
+	11539, 11328, 16610, 16728,  7061,  3975, 17105,  9658,
+	16564,  3793,  8995, 18059,  5949,  3845,   779, 18292,
+	 8017,  9126, 14299, 13242,    16,  6102, 12833,  2528,
+	 1544, 17420, 12590,  4323,  6595,  5976, 14308,  9762,
+	10883,   775,  6581,  5245, 10658, 14043, 11599,  6561,
+	 1176,  6105, 12359,  1478,  9512, 14771,  7173,  9823,
+	 6761,  9377, 11507, 17557, 11174, 17286, 15329, 14357,
+	12076,  6451, 12990,  9409,  4257, 12930,  3123,  9018,
+	 1024,  3435, 10260, 14328, 11919, 18003, 12641,  3036,
+	 9640,  8288, 17672, 11614, 16153, 15249,  5381,  8420,
+	 9402, 14294,  8807, 10876, 17739, 16429,  3271,   946,
+	 5446,  7864, 10932, 12550, 16839, 14202,  4910,  6210,
+	17924,  6339, 12253, 11743,  4786,  5002,  2303,   435,
+	12352, 10329,  8555, 16151, 15894, 10942,  3866,  4364,
+	13332,  6200, 15782,  5094, 11532,  1746,   627, 15622,
+	13357,  8822,  7032,  9044, 11985, 10916,  7974, 13464,
+	17276, 17270, 17857,  1524,  6316,  3258,  1360,  2546,
+	17222,  1284, 18324, 11425, 15660,  9257, 12034,  4258,
+	 2364,  7570,  2085,  4852,  6707, 11824, 11974,  9025,
+	 8192,  9047,  8348,  4026,  3187, 14993,  8963,  5855,
+	15623, 11275,  6551, 16845, 11755,  1540, 14742, 13990,
+	 4490,  2713, 13738,  8966, 15000,  6395,  3405, 10576,
+	 1205,  1036,  2209,  6060, 18148, 18035,  7585, 10269,
+	 6858,  2592, 14423, 14450, 11457, 12313,  8444,  3772,
+	 5289,   983, 10583,  6177,  4409, 15600,  5222, 14601,
+	 3401, 18267,  7795,  2801, 12963,  1416, 15901,  2091,
+	  728,  1146,  3262,  4426, 14666, 12655,  9707, 13103,
+	11287, 16603, 12645, 13778,  7656,  7393, 11618, 11503,
+	17131,  5749, 13308, 15480,     2,  5371, 17733,   316
+};
+
+static const uint16_t iGMt_cubic[] = {
+	    0,     0, 10467, 10693, 11779, 12521, 11471,  8020,
+	12449,  4717,  8728,  3544, 12446, 11795,  6342,  4704,
+	 8174,  8016,   350, 16007,  5349,  6531, 14648, 14649,
+	13869, 15414,  7544,  1323, 16177, 13952, 12162,  5969,
+	 3492,   759, 12354, 13802,  9109,  7855, 12811, 10845,
+	12767, 10202,  3582,  9615, 10188, 18177, 10769,  5302,
+	15342,  5520, 17791,  3186, 12624,  3504, 12736,  3465,
+	12416,  8843,   915, 16304,  3714, 11544,  4588,  1694,
+	 6287, 17725, 11062,  8327,  1266, 17663, 11510,  8171,
+	 5941, 16858,    83,   794,  9221,  7816,  3579, 16693,
+		g2 = mq_montymul(g, g, Qt, Q0It);
+		g4 = mq_montymul(g2, g2, Qt, Q0It);
+		ig2 = mq_montymul(ig, ig, Qt, Q0It);
+		ig4 = mq_montymul(ig2, ig2, Qt, Q0It);
+		k = TERNARY_LOGN_MAX - logn;
+		b = (size_t)1 << (logn - 1);
+		for (u = 0; u < b; u += 2) {
+			gm[b + rev10((unsigned)(u << k))] = (uint16_t)x;
+			igm[b + rev10((unsigned)(u << k))] = (uint16_t)ix;
+			x = mq_montymul(x, g4, Qt, Q0It);
+			ix = mq_montymul(ix, ig4, Qt, Q0It);
+			gm[b + rev10((unsigned)((u + 1) << k))] = (uint16_t)x;
+			igm[b + rev10((unsigned)((u + 1) << k))] = (uint16_t)ix;
+			x = mq_montymul(x, g2, Qt, Q0It);
+			ix = mq_montymul(ix, ig2, Qt, Q0It);
+		}
+	}
+
+	k = logn - 2;
+	for (u = (size_t)1 << k; u < ((size_t)1 << (k + 1)); u ++) {
+		uint32_t y, z;
+
+		y = gm[u << 1];
+		z = igm[u << 1];
+		gm[u] = (uint16_t)mq_montymul(
+			y, mq_montymul(y, y, Qt, Q0It), Qt, Q0It);
+		igm[u] = (uint16_t)mq_montymul(
+			z, mq_montymul(z, z, Qt, Q0It), Qt, Q0It);
+	}
+	for (u = ((size_t)1 << k) - 1; u > 0; u --) {
+		size_t v;
+
+		v = u << 1;
+		gm[u] = (uint16_t)mq_montymul(gm[v], gm[v], Qt, Q0It);
+		igm[u] = (uint16_t)mq_montymul(igm[v], igm[v], Qt, Q0It);
+	}
+	gm[0] = gm[1];
+	w = gm[1];
+	igm[0] = (uint16_t)mq_div_18433(
+		R2t, mq_sub(mq_add(w, w, Qt), Rt, Qt));
+}
+
+/*
+ * Compute NTT on a ring element, binary case.
+ */
+static void
+mq_NTT_binary(uint16_t *a, unsigned logn)
+{
+	size_t n, t, m;
+
+	n = (size_t)1 << logn;
+	t = n;
+	for (m = 1; m < n; m <<= 1) {
+		size_t ht, i, j1;
+
+		ht = t >> 1;
+		for (i = 0, j1 = 0; i < m; i ++, j1 += t) {
+			size_t j, j2;
+			uint32_t s;
+
+			s = GMb[m + i];
+			j2 = j1 + ht;
+			for (j = j1; j < j2; j ++) {
+				uint32_t u, v;
+
+				u = a[j];
+				v = mq_montymul(a[j + ht], s, Qb, Q0Ib);
+				a[j] = (uint16_t)mq_add(u, v, Qb);
+				a[j + ht] = (uint16_t)mq_sub(u, v, Qb);
+			}
+		}
+		t = ht;
+	}
+}
+
+/*
+ * Compute the inverse NTT on a ring element, binary case.
+ */
+static void
+mq_iNTT_binary(uint16_t *a, unsigned logn)
+{
+	size_t n, t, m;
+	uint32_t ni;
+
+	n = (size_t)1 << logn;
+	t = 1;
+	m = n;
+	while (m > 1) {
+		size_t hm, dt, i, j1;
+
+		hm = m >> 1;
+		dt = t << 1;
+		for (i = 0, j1 = 0; i < hm; i ++, j1 += dt) {
+			size_t j, j2;
+			uint32_t s;
+
+			j2 = j1 + t;
+			s = iGMb[hm + i];
+			for (j = j1; j < j2; j ++) {
+				uint32_t u, v, w;
+
+				u = a[j];
+				v = a[j + t];
+				a[j] = (uint16_t)mq_add(u, v, Qb);
+				w = mq_sub(u, v, Qb);
+				a[j + t] = (uint16_t)
+					mq_montymul(w, s, Qb, Q0Ib);
+			}
+		}
+		t = dt;
+		m = hm;
+	}
+
+	/*
+	 * To complete the inverse NTT, we must now divide all values by
+	 * n (the vector size). We thus need the inverse of n, i.e. we
+	 * need to divide 1 by 2 logn times. But we also want it in
+	 * Montgomery representation, i.e. we also want to multiply it
+	 * by R = 2^16. In the common case, this should be a simple right
+	 * shift. The loop below is generic and works also in corner cases;
+	 * its computation time is negligible.
+	 */
+	ni = Rb;
+	for (m = n; m > 1; m >>= 1) {
+		ni = mq_rshift1(ni, Qb);
+	}
+	for (m = 0; m < n; m ++) {
+		a[m] = (uint16_t)mq_montymul(a[m], ni, Qb, Q0Ib);
+	}
+}
+
+/*
+ * Compute NTT on a ring element, ternary case.
+ */
+static void
+mq_NTT_ternary(uint16_t *a, unsigned logn)
+{
+	size_t n, hn, u, v, t, m;
+	uint32_t r, w;
+	uint16_t gm[TERNARY_GM_SIZE], igm[TERNARY_GM_SIZE];
+	const uint16_t *gm_square, *gm_cubic;
+
+	n = (size_t)3 << (logn - 1);
+	hn = n >> 1;
+	if (logn <= 9) {
+		gm_square = GMt_square;
+		gm_cubic = GMt_cubic;
+	} else {
+		mq_mkgm3(gm, igm, logn);
+		gm_square = gm;
+		gm_cubic = gm;
+	}
+
+	/*
+	 * Modulo X^2-X+1.
+	 */
+# Exact KeyGen law and the uniform support theorem
+
+## Ideal tape
+
+The ternary sampler consumes disjoint 2-bit chunks, rejects value 3, and maps
+0, 1, 2 to -1, 0, +1.  Under an infinite iid uniform bit tape, one trial
+therefore samples independent uniform ternary polynomials `f` and `g`.
+
+All subsequent trial predicates are deterministic: the two mod-2 resultants,
+raw and orthogonalized norms, public-key computation, NTRU solve, and the leaf
+certificate.  Conditional on a successful call, the first-accepted geometric
+factor cancels, so the cap does not bias the accepted tuple distribution.
+
+## Real implementation
+
+The deployed caller obtains a 256-bit operating-system seed and deterministically
+expands it with SHAKE-512.  Its public-key law is therefore a finite seed
+pushforward, not an information-theoretic iid tape law.  No unproved
+independence or entropy claim is made about that expanded stream.
+
+## Why the distinction does not weaken this T5 result
+
+The theorem is pointwise: every source-bound successful output must have
+passed the same leaf certificate, and that certificate implies
+`tau_h < 2^-40`.  A pointwise support theorem survives every distribution on
+that support.  It therefore holds simultaneously for:
+
+- the ideal accepted iid law;
+- the real 256-bit-seed pushforward;
+- every conditioning on successful completion of the call.
+
+Thus `K_good` is the entire successful-output support and `delta_key=0`.
+Seed quality and XOF assumptions remain relevant to other security claims,
+but are not premises of this deterministic T5 implication.
+{
+  "bindings": {
+    "decoder_binary_sha256": "0ab605a8eb0555251785e8a962b7d7c23ab0a5b0d34e1354f923f7f0aa56b7d8",
+    "generator_binary_sha256": "565cfe459430dbb3f01b4cb7dfda2b5a1b6722ac239dc819e4e18871737db1bf",
+    "private_encoded_bytes": 7681,
+    "private_encoded_sha256": "d073480ca8971c41719e855fef2d38a5271e4a5249a7764f236bef538bd4519c",
+    "public_encoded_bytes": 2881,
+    "public_encoded_sha256": "57c49fb228013b0bfc4907c754d747dca93c1049d2945ccd6cd686e9f95afc6f",
+    "source_manifest_sha256": "03eaa0dd72bf365102af102959f5a02133b32d0504e7dd5b15145529c6bc3589"
+  },
+  "claim_limits": {
+    "fixed_key_instance_only": true,
+    "keygen_distribution_theorem": false,
+    "security_established": false
+  },
+  "frozen_utc": "2026-08-19T19:05:21Z",
+  "parameters": {
+    "N": 1536,
+    "q": 18433,
+    "runtime_command": "./falcon keygen -logt 10",
+    "secret_mode": "TRUE_TERNARY_SECRET_MODE_1"
+  },
+  "provenance": {
+    "external_key_input_used": false,
+    "local_operator_machine": true,
+    "os_random_seed_bytes": 32,
+    "os_random_source": "/dev/urandom",
+    "private_literal_path_recorded": false,
+    "private_logical_alias": "PRIVATE_KEY_READ_ONLY",
+    "seed_value_stored_or_emitted": false,
+    "single_cli_keygen_invocation": true,
+    "storage_acl": "CURRENT_OPERATOR_AND_LOCAL_SYSTEM_ONLY",
+    "storage_scope": "OPERATOR_LOCALAPPDATA_NON_CLOUD"
+  },
+  "schema": "FT1536_CANONICAL_KEY_COMMITMENT_V1",
+  "status": "HASH_FROZEN_BEFORE_MATHEMATICAL_VALIDATION"
+}
+ce1aef69b5998e6f214bc6a45cf6abc36fb1753d595ef1d7b0e6c1cecd9d17f2  canonical_public_h.txt
+57c49fb228013b0bfc4907c754d747dca93c1049d2945ccd6cd686e9f95afc6f  canonical_public_key.bin
+3772460fb1b77f40089293545bbdcf0a1a8cb7a1747bbb532cdb8ff8a6e2a19e  COMMANDS.log
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  DECODER.stderr.txt
+014358887337670f599c442bb3b838aa6084931efeba17a00eb72fda014e9523  KEY_COMMITMENT.json
+17b386ac028467f31b09e69f1a740124ae8a911c47a0c69b9090874747381fb6  KEY_VALIDATION.json
+e357d32d0aa91e6b80af2a83674965fbad776699c6c6f999fa71376ec52a7370  KEYGEN_ATTEMPT.json
+a3f5d51abf251689e1712b4ff017213de53a0f1a3a86b9c1c000a42e5ad6cea8  KEYGEN_IO_SUMMARY.txt
+b74fe3ed1b6ec51e2368993d24ede8a3fb68fb4b4019db1060bf34273a9e4c55  PRE_KEYGEN_BINDINGS.json
+d0186a9f0e002c13033caa82adc73f5b9362fd548d8ca1bc734047d42d6d8f50  PRIVATE_STORAGE_ATTESTATION.json
+d589fbc9e0e06c2e389537b31567f157a81088daef90e5f394ab28efdfca7cd5  report.json
+98eeeac23886fb678a491eab4ee796ebbaf2900e0ab0f2043cf53a7d01f50637  report.md
+4de9c36ab7e49c476a62cd7d473f049b61259767220b46253d4708de442eebd3  SCOPE.md
+18c547205da58c1571e7a036029f52ef1dca2df69f00f6ea54211fad41dc664e  scripts/build_gate.sh
+36eb1515c5c3d48872f7cb383d606c68d004eaeda56bd6967b9a75ff724f836e  scripts/decode_validate_stream.c
+945cf59e64f4995974cfcb02946bb31c7ce8d125d7cd866becff191136a3c440  scripts/preflight_controls.sh
+74d4cecfab51d85486487b56b7a509355eb3a65dab4aac4669b54865e18ac73e  scripts/record_run.py
+d4268128de76d0845db97774091d35440a67fc3f0dc1ca19e0c53983be2fed79  scripts/run_once.sh
+c47025f61d0dd558cc000a7c9388a4b328cd9182b59c7d031fc5f21a125aee6f  scripts/validate_key.sage
+08f6b7b4ec3fff56b618ec1cef3740c986f0dd2958ec9b3e443c935be165d882  STATUS
+ac288e35527edbe8d19d76c68057a31af7285271c7fea392d5b767ede78bdbe9  TOOLCHAIN.txt
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  VALIDATION.stderr.txt
+9b51eb6c7f2f832c19c2d484c867a3453ef060ff6cc568127d2070ee18d7766e  VALIDATION.stdout.txt
