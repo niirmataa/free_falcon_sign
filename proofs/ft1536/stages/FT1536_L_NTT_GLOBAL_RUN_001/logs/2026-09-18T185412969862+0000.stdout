@@ -1,0 +1,47 @@
+formal/ForwardProgress.lean:20:4: error: Type mismatch: After simplification, term
+  h0
+ has type
+  @Eq Int (pairStage 768 forwardRootOp s i)
+    (if false = true then
+      subQ ((s i % 18433 % 18433 + s (i + 768) % 18433 % 18433) % 18433) (14649 * s (i + 768) % 18433)
+    else (s i % 18433 % 18433 + 14649 * s (i + 768) % 18433 % 18433) % 18433)
+but is expected to have type
+  @Eq Int (pairStage 768 forwardRootOp s i) ((s i % 18433 % 18433 + 14649 * s (i + 768) % 18433 % 18433) % 18433)
+formal/ForwardProgress.lean:33:2: error: unsolved goals
+case left
+h m : Nat
+hh : HalfOK h
+s : Mem
+b : Nat
+hb : b < 768
+⊢ (if false = true then subQ (s (pairAddr h b false)) (s (pairAddr h b true) * ordinary (gmAt (m + b / h)) % 18433)
+    else
+      (s (pairAddr h b false) % 18433 % 18433 + s (pairAddr h b true) * ordinary (gmAt (m + b / h)) % 18433 % 18433) %
+        18433) =
+    (s (pairAddr h b false) % 18433 % 18433 + s (pairAddr h b true) * ordinary (gmAt (m + b / h)) % 18433 % 18433) %
+      18433
+formal/ForwardProgress.lean:35:15: warning: This simp argument is unused:
+  ↓reduceIte
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [mmQ_ordinary, addQ, Int.add_emod, Int.emod_emod]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+root_coefficients : ∀ (s : Mem) (i : Nat),
+  i < 768 →
+    pairStage 768 forwardRootOp s i = (s i + 14649 * s (i + 768)) % 18433 ∧
+      pairStage 768 forwardRootOp s (i + 768) = (s i + (1 - 14649) * s (i + 768)) % 18433
+binary_coefficients : ∀ (h m : Nat),
+  HalfOK h →
+    ∀ (s : Mem) (b : Nat),
+      b < 768 →
+        pairStage h (forwardBinaryOp m h) s (pairAddr h b false) =
+            (s (pairAddr h b false) + s (pairAddr h b true) * ordinary (gmAt (m + b / h))) % 18433 ∧
+          pairStage h (forwardBinaryOp m h) s (pairAddr h b true) =
+            (s (pairAddr h b false) - s (pairAddr h b true) * ordinary (gmAt (m + b / h))) % 18433
+'FT1536Global.mmQ_ordinary' depends on axioms: [propext]
+'FT1536Global.ordinary_root' depends on axioms: [propext]
+'FT1536Global.root_coefficients' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536Global.binary_coefficients' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536Global.initialized_binary_read' depends on axioms: [propext, Quot.sound]
+'FT1536Global.initialized_cubic_read' depends on axioms: [propext, Quot.sound]

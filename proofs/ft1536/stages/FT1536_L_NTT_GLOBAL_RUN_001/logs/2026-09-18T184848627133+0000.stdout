@@ -1,0 +1,57 @@
+formal/Stages.lean:29:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  runSteps (pairStep (pairAddr h) op) 768 s (pairAddr h b k)
+in the target expression
+  pairStage h op s (pairAddr h b k) = op b (fun l => s (pairAddr h b l)) k
+
+h : Nat
+hh : HalfOK h
+op : PairOp
+s : Mem
+b : Nat
+hb : b < 768
+k : Bool
+⊢ pairStage h op s (pairAddr h b k) = op b (fun l => s (pairAddr h b l)) k
+formal/Stages.lean:32:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  runSteps (tripleStep tripleAddr op) 512 s (tripleAddr b k)
+in the target expression
+  tripleStage op s (tripleAddr b k) = op b (fun l => s (tripleAddr b l)) k
+
+op : TripleOp
+s : Mem
+b : Nat
+hb : b < 512
+k : Fin 3
+⊢ tripleStage op s (tripleAddr b k) = op b (fun l => s (tripleAddr b l)) k
+pair_stage_inverse : ∀ (h : Nat),
+  HalfOK h →
+    ∀ (f g : PairOp) (c : Int),
+      (∀ (b : Nat),
+          b < 768 →
+            ∀ (v : Bool → Int), (∀ (k : Bool), CanonVal (v k)) → ∀ (k : Bool), g b (f b v) k = c * v k % 18433) →
+        ∀ (s : Mem), CanonMem s → pairStage h g (pairStage h f s) = scaleMem c s
+triple_stage_inverse : ∀ (f g : TripleOp) (c : Int),
+  (∀ (b : Nat),
+      b < 512 → ∀ (v : Fin 3 → Int), (∀ (k : Fin 3), CanonVal (v k)) → ∀ (k : Fin 3), g b (f b v) k = c * v k % 18433) →
+    ∀ (s : Mem), CanonMem s → tripleStage g (tripleStage f s) = scaleMem c s
+pair_stage_homogeneous : ∀ (h : Nat),
+  HalfOK h →
+    ∀ (g : PairOp) (c : Int),
+      (∀ (b : Nat),
+          b < 768 →
+            ∀ (v : Bool → Int),
+              (∀ (k : Bool), CanonVal (v k)) → ∀ (k : Bool), g b (fun j => c * v j % 18433) k = c * g b v k % 18433) →
+        ∀ (s : Mem), CanonMem s → pairStage h g (scaleMem c s) = scaleMem c (pairStage h g s)
+point_prefix : ∀ (op : Nat → Int → Int) (n : Nat) (s : Mem) (i : Nat),
+  runSteps (pointStep op) n s i = if i < n then op i (s i) else s i
+'FT1536Global.scale_combine' depends on axioms: [propext, Quot.sound]
+'FT1536Global.scale_one' depends on axioms: [propext, Quot.sound]
+'FT1536Global.pair_stage_at' depends on axioms: [sorryAx]
+'FT1536Global.triple_stage_at' depends on axioms: [propext, sorryAx]
+'FT1536Global.pair_stage_out' depends on axioms: [propext, Quot.sound]
+'FT1536Global.triple_stage_out' depends on axioms: [propext, Quot.sound]
+'FT1536Global.pair_stage_inverse' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536Global.triple_stage_inverse' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536Global.pair_stage_homogeneous' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536Global.point_prefix' depends on axioms: [propext, Quot.sound]
+'FT1536Global.scale_loop' depends on axioms: [propext, Quot.sound]
+'FT1536Global.scale_cancel' depends on axioms: [propext, Quot.sound]

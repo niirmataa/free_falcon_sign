@@ -1,0 +1,19 @@
+formal/Expressions.lean:66:19: error(lean.unknownIdentifier): Unknown identifier `i`
+formal/Expressions.lean:66:19: error(lean.unknownIdentifier): Unknown identifier `i`
+formal/Expressions.lean:66:19: error(lean.unknownIdentifier): Unknown identifier `i`
+eval_linear : ∀ (e : LExpr) (v : Fin 3 → Int),
+  (∀ (i : Fin 3), CanonVal (v i)) →
+    e.eval v = dot3 (e.eval (basis 0)) (e.eval (basis 1)) (e.eval (basis 2)) (v 0) (v 1) (v 2)
+eval_diagonal : ∀ (e : LExpr) (k : Fin 3) (scale : Int),
+  (∀ (j : Fin 3), e.eval (basis j) = if j = k then scale % 18433 else 0) →
+    ∀ (v : Fin 3 → Int), (∀ (i : Fin 3), CanonVal (v i)) → e.eval v = scale * v k % 18433
+eval_scaled : ∀ (e : LExpr) (c : Int) (v : Fin 3 → Int),
+  (∀ (i : Fin 3), CanonVal (v i)) → e.eval (scaled3 c v) = c * e.eval v % 18433
+'FT1536Global.eval_subst' depends on axioms: [propext]
+'FT1536Global.dot_add' depends on axioms: [propext, Quot.sound]
+'FT1536Global.dot_sub' depends on axioms: [propext, Quot.sound]
+'FT1536Global.dot_mm_left' depends on axioms: [propext, Quot.sound]
+'FT1536Global.dot_mm_right' depends on axioms: [propext, Quot.sound]
+'FT1536Global.eval_linear' depends on axioms: [propext, sorryAx, Quot.sound]
+'FT1536Global.eval_diagonal' depends on axioms: [propext, sorryAx, Quot.sound]
+'FT1536Global.eval_scaled' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

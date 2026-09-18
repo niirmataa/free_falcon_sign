@@ -1,0 +1,11 @@
+--- inputs/formal/Words.lean
++++ formal/Deps/Words.lean
+@@ -96,7 +96,7 @@
+     montZ (Int.ofNat (x*y)) = (Int.ofNat (x*y)*5184)%18433 ∧
+     (65536*montZ (Int.ofNat (x*y))-Int.ofNat (x*y))%18433=0 := by
+   have h := product_range x y hx hy
+-  have h0 : (0 : Int) ≤ Int.ofNat (x*y) := Int.ofNat_nonneg (x*y)
++  have h0 : (0 : Int) ≤ Int.ofNat (x*y) := Int.natCast_nonneg (x*y)
+   have h1 : Int.ofNat (x*y) ≤ 339738624 := Int.ofNat_le.mpr h
+   exact mont_contract_z (Int.ofNat (x*y)) h0 h1
+ 

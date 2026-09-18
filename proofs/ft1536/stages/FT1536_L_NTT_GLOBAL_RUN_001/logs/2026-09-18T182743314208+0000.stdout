@@ -1,0 +1,52 @@
+formal/Layouts.lean:67:2: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  0 ≤ c ≤ 2
+  b ≥ 0
+  0 ≤ a ≤ 1535
+  0 ≤ a - 3*b ≤ 2
+  a - 3*b - c ≥ 1
+where
+ a := ↑i
+ b := ↑i / 3
+ c := ↑↑⟨i % 3, ⋯⟩
+source_pair_prefix : ∀ (h : Nat),
+  HalfOK h →
+    ∀ (op : Nat → (Bool → Int) → Bool → Int) (n : Nat),
+      n ≤ 768 →
+        ∀ (s : Mem) (b : Nat),
+          b < 768 →
+            ∀ (k : Bool),
+              runSteps (pairStep (pairAddr h) op) n s (pairAddr h b k) =
+                if b < n then op b (fun l => s (pairAddr h b l)) k else s (pairAddr h b k)
+source_triple_prefix : ∀ (op : Nat → (Fin 3 → Int) → Fin 3 → Int) (n : Nat),
+  n ≤ 512 →
+    ∀ (s : Mem) (b : Nat),
+      b < 512 →
+        ∀ (k : Fin 3),
+          runSteps (tripleStep tripleAddr op) n s (tripleAddr b k) =
+            if b < n then op b (fun l => s (tripleAddr b l)) k else s (tripleAddr b k)
+pair_prefix_canonical : ∀ (h : Nat),
+  HalfOK h →
+    ∀ (op : Nat → (Bool → Int) → Bool → Int),
+      (∀ (b : Nat),
+          b < 768 →
+            ∀ (v : Bool → Int), (∀ (k : Bool), 0 ≤ v k ∧ v k < 18433) → ∀ (k : Bool), 0 ≤ op b v k ∧ op b v k < 18433) →
+        ∀ (n : Nat), n ≤ 768 → ∀ (s : Mem), CanonMem s → CanonMem (runSteps (pairStep (pairAddr h) op) n s)
+triple_prefix_canonical : ∀ (op : Nat → (Fin 3 → Int) → Fin 3 → Int),
+  (∀ (b : Nat),
+      b < 512 →
+        ∀ (v : Fin 3 → Int), (∀ (k : Fin 3), 0 ≤ v k ∧ v k < 18433) → ∀ (k : Fin 3), 0 ≤ op b v k ∧ op b v k < 18433) →
+    ∀ (n : Nat), n ≤ 512 → ∀ (s : Mem), CanonMem s → CanonMem (runSteps (tripleStep tripleAddr op) n s)
+'FT1536Global.pair_address_bound' depends on axioms: [propext, Quot.sound]
+'FT1536Global.pair_decode' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.pair_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.pair_layout' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.source_pair_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.triple_address_bound' depends on axioms: [propext, Quot.sound]
+'FT1536Global.triple_layout' depends on axioms: [propext, Quot.sound]
+'FT1536Global.triple_cover' depends on axioms: [propext, sorryAx, Quot.sound]
+'FT1536Global.source_triple_prefix' depends on axioms: [propext, Quot.sound]
+'FT1536Global.pair_prefix_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.triple_prefix_canonical' depends on axioms: [propext, sorryAx, Quot.sound]
+'FT1536Global.forward_schedule' does not depend on any axioms
+'FT1536Global.inverse_schedule' does not depend on any axioms

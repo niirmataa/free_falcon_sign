@@ -1,0 +1,106 @@
+{
+  "source_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+  "logn": 10,
+  "ternary": 1,
+  "table_initialized_used_prefix": [
+    0,
+    1023
+  ],
+  "table_binding": "artifacts/twiddle_binding.json",
+  "C_translation": "SOURCE_MODEL_BINDING.md",
+  "formal_model_sha256": {
+    "formal/Deps/Words.lean": "7bd7ae52561875cc2e7859a6f95c3e662d85a74a8a705e5a8fe0c047b9749e26",
+    "formal/Deps/Linear.lean": "60b843d305f264d47b9411f479d83f647e747b9e9bd7763fa43f27d198336dd5",
+    "formal/Deps/Tables.lean": "ee668bf1b63a8cb9a3192b39fee68347ed67481d4c73e948372ffc1db203821e",
+    "formal/Deps/Composition.lean": "0ee19f21c9acdb4361d862905d7ab090ed3bb904066a22059cf7688948a34772",
+    "formal/Buffer.lean": "2bb70a962c86bd39f32ce511eacc090cd1b26023386d74fe2540d2c208eb8ca8",
+    "formal/Layouts.lean": "ddf98b708416baaf85f15a52cf9b9d8e2696035ee8a232dbcac38ee0d1fbb563",
+    "formal/Twiddles.lean": "ee3b0340d58eae77632bcf31fd53a3c84a7c5c51122a554fde8ce8ea57b82a39",
+    "formal/SourceModel.lean": "2067c0851d41992ecdc97311e3e496a71d47f272f14867ba508cb91faf97d24f",
+    "formal/Expressions.lean": "a190cf3b5fbc8d80a4b9bd6880fbf90e99b63c3d8a75dcf04214cc0261faf598",
+    "formal/BlockExpressions.lean": "8b11fb26972be6f329f304fea35f25fb5ef1af2f7c60b02e888692e0e48ee215",
+    "formal/BlockChecks.lean": "7f757f9749d26926f2e81b3bcddc2e4c0709a5d5792ef81613f054b2f2be14eb",
+    "formal/LocalInverse.lean": "b3c7d261f2925a533160de896c5b1712cf05664e7d85dba40a2b823b41fd630d",
+    "formal/Stages.lean": "d18f1f5a8a13b7b3fd8fe17d266db2fb088cc284ff8dbc2120aa8905815ff9eb",
+    "formal/InverseGlobal.lean": "b47e946cdc92b33825d075fcf37709fa7ed114680448bf4fcf0da8a4dec44c8e",
+    "formal/ForwardProgress.lean": "ac4cc1a2a8abb7c52ef53ab98f48a3bb94a59aa1a0aa5f06de41ecfefb7c5a5b",
+    "formal/Pipeline.lean": "f8d06c187c79c75d1e2b725728cd11b15b3f2663da621ad306d4dc1b09430874",
+    "formal/TraceMain.lean": "dd615045b082f61a3b30e2d642f5b957a970491489c2f1f357693fb72725d299",
+    "formal/Audit.lean": "b58ba6709a26fad6105ec0101b2bf6e5ac4dfd1eee8477c06f985aab79c90b37"
+  },
+  "spans": [
+    {
+      "name": "forward_root",
+      "lines": [
+        1001,
+        1010
+      ],
+      "sha256": "a3357bd6d43605a5a2895ae5ddeee20f8a11814036be44086fc22d0fb5aa4e11",
+      "model": "forwardRootOp"
+    },
+    {
+      "name": "forward_binary",
+      "lines": [
+        1015,
+        1037
+      ],
+      "sha256": "d1f88e2b466ca4c4bd5cbf3cdb66b4fbe413f632c83f6493284d290d420f84ca",
+      "model": "forwardMiddle/forwardBinaryOp"
+    },
+    {
+      "name": "forward_cubic",
+      "lines": [
+        1042,
+        1061
+      ],
+      "sha256": "47ac6e2efe29551e0ee5c7452ce19e06c93abd0690a2c501554d6247b657661f",
+      "model": "forwardCubicOp"
+    },
+    {
+      "name": "inverse_cubic",
+      "lines": [
+        1089,
+        1108
+      ],
+      "sha256": "eca7c39f129270d7b0226caf4a645d5e453a7df504f2d133e340f4da577ca04d",
+      "model": "inverseCubicOp"
+    },
+    {
+      "name": "inverse_binary",
+      "lines": [
+        1113,
+        1135
+      ],
+      "sha256": "2eb7a7c664a6168cb6b68f5bc2ab7a92837589681f30d451bc9507b14f11dd8f",
+      "model": "inverseMiddle/inverseBinaryOp"
+    },
+    {
+      "name": "inverse_root",
+      "lines": [
+        1140,
+        1149
+      ],
+      "sha256": "4d078b4b2d1a79c17ee1f7496f22a4461456f66cdffcd649061d039e7462d46b",
+      "model": "inverseRootOp"
+    },
+    {
+      "name": "scaling",
+      "lines": [
+        1155,
+        1158
+      ],
+      "sha256": "70094759b239dc36790cb6ab44096ad85dc0b5e7e0095c74b3593b0ff86582c5",
+      "model": "scaleStep"
+    },
+    {
+      "name": "poly_helpers",
+      "lines": [
+        1185,
+        1243
+      ],
+      "sha256": "b86734f3f1e06c2f554bcbe24b15bdf5503dfc5a305d067cdeb6e6ebb606b2a4",
+      "model": "toMontC/montPointC/subtractC"
+    }
+  ],
+  "status": "PINNED_SOURCE_EXPLICIT_TRANSLATION_KERNEL_MODEL_AND_LIMITED_EXECUTION_CONTROLS"
+}

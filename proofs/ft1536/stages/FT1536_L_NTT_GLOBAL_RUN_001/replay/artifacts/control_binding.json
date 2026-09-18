@@ -1,0 +1,50 @@
+{
+  "source_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+  "removed_instrumentation_restores_source": true,
+  "observer_hooks": [
+    [
+      "a[u + hn] = mq_sub(mq_add(a0, a1, Qt), b, Qt);",
+      "ft_snap(\"froot\",0,u+1,hn,a);"
+    ],
+    [
+      "a[v + ht] = mq_sub(a0, a1, Qt);",
+      "ft_snap(\"fbin\",m,u1*ht+v-v1+1,ht,a);"
+    ],
+    [
+      "a[u + 2] = mq_add(fA, mq_add(fB2, fC1, Qt), Qt);",
+      "ft_snap(\"fcube\",0,u/3+1,0,a);"
+    ],
+    [
+      "mq_add(f0, mq_add(f12, f21, Qt), Qt), Qt, Q0It);",
+      "ft_snap(\"icube\",0,u/3+1,0,a);"
+    ],
+    [
+      "mq_sub(a0, a1, Qt), s, Qt, Q0It);",
+      "ft_snap(\"ibin\",m,u1*ht+v-v1+1,ht,a);"
+    ],
+    [
+      "a[u + hn] = mq_add(b, b, Qt);",
+      "ft_snap(\"iroot\",0,u+1,hn,a);"
+    ],
+    [
+      "a[u] = mq_montymul(a[u], ni, Qt, Q0It);",
+      "ft_snap(\"scale\",0,u+1,0,a);"
+    ]
+  ],
+  "variant_sha256": {
+    "observer": "3e5dd3133b1e15dfafe87b56c20b0cdba9b38c9a1c975730bd8222e23c7fa368",
+    "noop": "3e5dd3133b1e15dfafe87b56c20b0cdba9b38c9a1c975730bd8222e23c7fa368",
+    "plain": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+    "labels": "06ca7886119f461864bfde236f5d97c928c93147b9027c57cff01e8785146512",
+    "cubic_order": "66adcccba0cce5bccef9a51cab78ff0c2f959f99c97cc4d364ef0b55fb3811e1",
+    "scale": "cb54d667b2f1de97f9b3621afcdeb841239d1cb90cf7f9664362b0fae855b471",
+    "read_after_write": "00f43be26b4505dfc78189c2e938ee6805571079aa4d8704fc9dffbeff0e2c82"
+  },
+  "mutations": [
+    "matched forward/inverse label swap",
+    "cubic output 1/2 swap",
+    "ni+1",
+    "forward read after first write"
+  ],
+  "note": "labels mutation is deliberately inverse-consistent: roundtrip alone must miss it"
+}

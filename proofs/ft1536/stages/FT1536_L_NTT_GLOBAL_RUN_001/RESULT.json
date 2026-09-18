@@ -1,0 +1,57 @@
+{
+  "schema": "FT1536_L_NTT_GLOBAL_RESULT_V1",
+  "status": "PARTIAL_PROOF",
+  "L_NTT_proved": false,
+  "INVERSE_GLOBAL_proved_for_pinned_model": true,
+  "inverse_forward_instantiated": true,
+  "FORWARD_GLOBAL_proved": false,
+  "forward_product_instantiated": false,
+  "PRODUCT_proved": false,
+  "source_integrated": false,
+  "owner_accepted": false,
+  "full_L_V_proved": false,
+  "source_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+  "source_manifest_sha256": "2553358fbb1144acdb577e1ad371a017ac325306dd901af745295dd17b03bd5a",
+  "predecessor_report_sha256": "b89d618d7c1d3992fa1a9ea0ae8c84dcc348448f035905b87a03c37e20dfd650",
+  "predecessor_outputs_sha256": "f23358ce0426f04196bbd8fd4e814afb2b14541c6df13854a67c994f6074771f",
+  "L_RHO_result_sha256": "612261008c6bce1e56c92e42fde12c4f7e520138ea4d80c41d4590de7d938f9f",
+  "formal_checked_theorems": 351,
+  "new_theorems": 165,
+  "final_modules": 18,
+  "all_final_logs_clean": true,
+  "audit_stdout_sha256": "a15c29db3a739600168af1659ed840492e1ef239849937dace1c76b8d61451f4",
+  "full_types": "logs/final/Audit.stdout",
+  "conditional_pipeline_theorem": "FT1536Global.L_NTT_pending_forward",
+  "remaining_explicit_global_hypotheses": [
+    "forward_product"
+  ],
+  "controls": {
+    "C_Lean_all_prefix_buffers_equal": true,
+    "plain_observer_endpoints_equal": true,
+    "snapshots_per_case": [
+      104,
+      104
+    ],
+    "compared_coefficients": 319488,
+    "mutations_detected": 4,
+    "noop_pass": true,
+    "matched_labels_roundtrip_pass_but_forward_wrong": true,
+    "cases": 2
+  },
+  "sage_controls": {
+    "exact_arithmetic": "GF(18433), Sage polynomial evaluation",
+    "cases": 2,
+    "all_1536_forward_coordinates_equal": true,
+    "roots_distinct_and_roots_of_Phi": true,
+    "prefix_matrices_checked": 202,
+    "matched_label_mutant_rejected": true,
+    "expected_forward_vector_sha256": [
+      "ac78782e0fe222b0e2a74ba9a032dd5c7a7d45abb9e5df1ca46e2980b0c8440b",
+      "73c34e945b4e001100073259a96e4a96db55fd7f129501afb99ed7346406036f"
+    ],
+    "note": "finite controls; not a proof of FORWARD_GLOBAL or forward_product"
+  },
+  "replay_semantic_files_equal": 103,
+  "report_sha256": "d5e5dc7cc65f2d12ade4e1928cc705b947e0203657decac59b352ff8fd1d56e8",
+  "recommended_next_step": "Close source-buffer/CRT forward invariant and forward_product, reusing the now closed inverse_forward."
+}

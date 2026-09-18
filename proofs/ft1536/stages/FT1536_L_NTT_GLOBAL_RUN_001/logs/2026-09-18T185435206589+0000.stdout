@@ -1,0 +1,28 @@
+formal/Pipeline.lean:40:17: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  montPointC ?a ?b
+in the target expression
+  (have H := toMont (forwardC h);
+    have z := montPointC (forwardC r) H;
+    have p := inverseC z;
+    (p, subtractC p c)) =
+    have p := liftInverse (montPoint (liftForward r) (toMont (liftForward h)));
+    (p, subtract p c)
+
+h r c : Vec
+hh : CanonVec h
+hr : CanonVec r
+⊢ (have H := toMont (forwardC h);
+    have z := montPointC (forwardC r) H;
+    have p := inverseC z;
+    (p, subtractC p c)) =
+    have p := liftInverse (montPoint (liftForward r) (toMont (liftForward h)));
+    (p, subtract p c)
+pipelineC_lift : ∀ (h r c : Vec), CanonVec h → CanonVec r → pipelineC h r c = pipeline liftForward liftInverse h r c
+L_NTT_pending_forward : (∀ (h r : FT1536Composition.Vec),
+    liftForward (product h r) = pointMul (liftForward h) (liftForward r)) →
+  ∀ (h r c : Vec), CanonVec h → CanonVec r → CanonVec c → pipelineC h r c = (product h r, subtract (product h r) c)
+'FT1536Global.toMontC_eq' depends on axioms: [propext, Quot.sound]
+'FT1536Global.montPointC_eq' depends on axioms: [propext, Quot.sound]
+'FT1536Global.subtractC_eq' depends on axioms: [propext, Quot.sound]
+'FT1536Global.pipelineC_lift' depends on axioms: [propext, sorryAx, Quot.sound]
+'FT1536Global.L_NTT_pending_forward' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

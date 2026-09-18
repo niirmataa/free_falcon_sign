@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/home/footfalcon/Dokumenty/FT1536_L_NTT_GLOBAL_RUN_001/scripts/control_run.py", line 25, in <module>
+    out=run(f'lean{i}',[lean,'-j1','-M2048','--run','formal/TraceMain.lean',f'checks/input{i}.txt',f'checks/model{i}.trace'],120)
+  File "/home/footfalcon/Dokumenty/FT1536_L_NTT_GLOBAL_RUN_001/scripts/control_run.py", line 19, in run
+    assert not timed and p.returncode==0,(tag,err.decode(errors='replace'))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('lean0', '')

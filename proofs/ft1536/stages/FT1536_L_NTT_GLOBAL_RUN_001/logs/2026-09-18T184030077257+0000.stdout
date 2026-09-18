@@ -1,0 +1,118 @@
+formal/SourceModel.lean:110:45: error: Tactic `subst` failed: invalid equality proof, it is not of the form (x = t) or (t = x)
+  p = (256, 6) ∨ p ∈ []
+
+case inr.inr.inr.inr.inr.inr.inr
+p : Nat × Nat
+h✝ : p = (256, 6) ∨ p ∈ []
+⊢ HalfOK (p.snd / 2)
+formal/SourceModel.lean:109:28: warning: This simp argument is unused:
+  List.mem_singleton
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [List.mem_cons] at hp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+formal/SourceModel.lean:115:45: error: Tactic `subst` failed: invalid equality proof, it is not of the form (x = t) or (t = x)
+  p = (2, 768) ∨ p ∈ []
+
+case inr.inr.inr.inr.inr.inr.inr
+p : Nat × Nat
+h✝ : p = (2, 768) ∨ p ∈ []
+⊢ HalfOK (p.snd / 2)
+formal/SourceModel.lean:114:28: warning: This simp argument is unused:
+  List.mem_singleton
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [List.mem_cons] at hp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+formal/SourceModel.lean:125:89: error: numerals are data in Lean, but the expected type is a proposition
+  ∀ (b : Nat),
+    b < 768 →
+      ∀ (v : Bool → Int),
+        (∀ (k : Bool), 0 ≤ v k ∧ v k < 18433) →
+          ∀ (k : Bool),
+            0 ≤ forwardBinaryOp p.fst (p.snd / 2) b v k ∧ forwardBinaryOp p.fst (p.snd / 2) b v k < 18433 : Prop
+formal/SourceModel.lean:125:97: error: omega could not prove the goal:
+No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.
+formal/SourceModel.lean:137:89: error: numerals are data in Lean, but the expected type is a proposition
+  ∀ (b : Nat),
+    b < 768 →
+      ∀ (v : Bool → Int),
+        (∀ (k : Bool), 0 ≤ v k ∧ v k < 18433) →
+          ∀ (k : Bool),
+            0 ≤ inverseBinaryOp p.fst (p.snd / 2) b v k ∧ inverseBinaryOp p.fst (p.snd / 2) b v k < 18433 : Prop
+formal/SourceModel.lean:137:97: error: omega could not prove the goal:
+No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.
+formal/SourceModel.lean:144:4: error: Type mismatch: After simplification, term
+  hx
+ has type
+  CanonVal x
+but is expected to have type
+  0 ≤ x ∧ x < 18433
+formal/SourceModel.lean:154:62: error: numerals are data in Lean, but the expected type is a proposition
+  ∀ (b : Nat),
+    b < 768 →
+      ∀ (v : Bool → Int),
+        (∀ (k : Bool), 0 ≤ v k ∧ v k < 18433) →
+          ∀ (k : Bool), 0 ≤ forwardRootOp b v k ∧ forwardRootOp b v k < 18433 : Prop
+formal/SourceModel.lean:154:40: error: failed to synthesize
+  Decidable (HalfOK 768)
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+formal/SourceModel.lean:154:70: error: omega could not prove the goal:
+No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.
+formal/SourceModel.lean:158:47: error: numerals are data in Lean, but the expected type is a proposition
+  ∀ (b : Nat),
+    b < 512 →
+      ∀ (v : Fin 3 → Int),
+        (∀ (k : Fin 3), 0 ≤ v k ∧ v k < 18433) →
+          ∀ (k : Fin 3), 0 ≤ forwardCubicOp b v k ∧ forwardCubicOp b v k < 18433 : Prop
+formal/SourceModel.lean:164:49: error: numerals are data in Lean, but the expected type is a proposition
+  ∀ (b : Nat),
+    b < 512 →
+      ∀ (v : Fin 3 → Int),
+        (∀ (k : Fin 3), 0 ≤ v k ∧ v k < 18433) →
+          ∀ (k : Fin 3), 0 ≤ inverseCubicOp b v k ∧ inverseCubicOp b v k < 18433 : Prop
+formal/SourceModel.lean:164:57: error: omega could not prove the goal:
+No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.
+formal/SourceModel.lean:170:62: error: numerals are data in Lean, but the expected type is a proposition
+  ∀ (b : Nat),
+    b < 768 →
+      ∀ (v : Bool → Int),
+        (∀ (k : Bool), 0 ≤ v k ∧ v k < 18433) →
+          ∀ (k : Bool), 0 ≤ inverseRootOp b v k ∧ inverseRootOp b v k < 18433 : Prop
+formal/SourceModel.lean:170:40: error: failed to synthesize
+  Decidable (HalfOK 768)
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+formal/SourceModel.lean:170:70: error: omega could not prove the goal:
+No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.
+formal/SourceModel.lean:185:2: error: Type mismatch: After simplification, term
+  hv ⟨i, hi⟩
+ has type
+  CanonVal (v ⟨i, hi⟩)
+but is expected to have type
+  0 ≤ v ⟨i, ⋯⟩ ∧ v ⟨i, ⋯⟩ < 18433
+forward_canonical : ∀ (s : Mem), CanonMem s → CanonMem (forwardMem s)
+inverse_canonical : ∀ (s : Mem), CanonMem s → CanonMem (inverseMem s)
+liftForward_agrees : ∀ (v : Vec), CanonVec v → liftForward v = forwardC v
+'FT1536Global.addQ_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.subQ_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.mmQ_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.forwardRootOp_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.forwardBinaryOp_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.forwardCubicOp_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.inverseCubicOp_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.inverseBinaryOp_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.inverseRootOp_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.forwardMiddle_canonical' depends on axioms: [propext, sorryAx]
+'FT1536Global.inverseMiddle_canonical' depends on axioms: [propext, sorryAx]
+'FT1536Global.scale_canonical' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536Global.forward_canonical' depends on axioms: [propext, sorryAx]
+'FT1536Global.inverse_canonical' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536Global.forwardC_canonical' depends on axioms: [propext, sorryAx]
+'FT1536Global.inverseC_canonical' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536Global.canonical_fixed' depends on axioms: [propext, Quot.sound]
+'FT1536Global.liftForward_agrees' depends on axioms: [propext, Quot.sound]
+'FT1536Global.liftInverse_agrees' depends on axioms: [propext, Quot.sound]

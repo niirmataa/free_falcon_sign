@@ -1,0 +1,173 @@
+formal/Buffer.lean:78:44: warning: This simp argument is unused:
+  Ne.symm distinct
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [pairStep, store, distinct]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+formal/Buffer.lean:91:14: warning: This simp argument is unused:
+  distinct
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [store, Ne.symm distinct]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+formal/Buffer.lean:133:39: warning: This simp argument is unused:
+  Ne.symm h01
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [tripleStep, store, h01, h02, h12, Ne.symm h02, Ne.symm h12]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+formal/Buffer.lean:133:51: warning: This simp argument is unused:
+  Ne.symm h02
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [tripleStep, store, h01, h02, h12, Ne.symm h01, Ne.symm h12]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+formal/Buffer.lean:133:63: warning: This simp argument is unused:
+  Ne.symm h12
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [tripleStep, store, h01, h02, h12, Ne.symm h01, Ne.symm h02]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+theorem FT1536Global.prefix_invariant : ∀ {K : Type} (count : Nat) (addr : Nat → K → Nat)
+  (op : Nat → (K → Int) → K → Int) (step : Nat → Mem → Mem),
+  (∀ (b : Nat), b < count → ∀ (c : Nat), c < count → ∀ (k l : K), addr b k = addr c l → b = c ∧ k = l) →
+    (∀ (b : Nat), b < count → ∀ (s : Mem) (k : K), step b s (addr b k) = op b (fun l => s (addr b l)) k) →
+      (∀ (b : Nat), b < count → ∀ (s : Mem) (i : Nat), (∀ (k : K), i ≠ addr b k) → step b s i = s i) →
+        ∀ (n : Nat),
+          n ≤ count →
+            ∀ (s : Mem) (b : Nat),
+              b < count →
+                ∀ (k : K),
+                  runSteps step n s (addr b k) = if b < n then op b (fun l => s (addr b l)) k else s (addr b k) :=
+fun {K} count addr op step layout localStep frameStep n =>
+  Nat.recAux (motive := fun n =>
+    n ≤ count →
+      ∀ (s : Mem) (b : Nat),
+        b < count →
+          ∀ (k : K), runSteps step n s (addr b k) = if b < n then op b (fun l => s (addr b l)) k else s (addr b k))
+    (fun hn s b hb k =>
+      of_eq_true
+        (Eq.trans
+          (congrArg (Eq (s (addr b k)))
+            (ite_eq_right_of_eq_false (op b (fun l => s (addr b l)) k) (s (addr b k)) (Nat.not_lt_zero._simp_1 b)))
+          (eq_self (s (addr b k)))))
+    (fun n ih hn s b hb k =>
+      have hn0 := Decidable.byContradiction fun a => prefix_invariant._proof_1_4 count n hn b a;
+      have hn1 := Decidable.byContradiction fun a => prefix_invariant._proof_1_5 count n hn b a;
+      if hbn : b = n then
+        Eq.ndrec (motive := fun b =>
+          b < count →
+            runSteps step (n + 1) s (addr b k) = if b < n + 1 then op b (fun l => s (addr b l)) k else s (addr b k))
+          (fun hb =>
+            Eq.mpr
+              (id
+                (congrArg (fun _a => _a (addr n k) = if n < n + 1 then op n (fun l => s (addr n l)) k else s (addr n k))
+                  (runSteps.eq_2 step s n)))
+              (Eq.mpr
+                (id
+                  (congrArg (fun _a => _a = if n < n + 1 then op n (fun l => s (addr n l)) k else s (addr n k))
+                    (localStep n hn0 (runSteps step n s) k)))
+                (have snapshot :=
+                  funext fun l =>
+                    Eq.mpr (id (congrArg (fun _a => _a = s (addr n l)) (ih hn1 s n hn0 l)))
+                      (of_eq_true
+                        (Eq.trans
+                          (congrFun'
+                            (congrArg Eq
+                              (ite_eq_right_of_eq_false (op n (fun l => s (addr n l)) l) (s (addr n l))
+                                (Nat.lt_irrefl._simp_1 n)))
+                            (s (addr n l)))
+                          (eq_self (s (addr n l)))));
+                Eq.mpr
+                  (id
+                    (congrArg (fun _a => op n _a k = if n < n + 1 then op n (fun l => s (addr n l)) k else s (addr n k))
+                      snapshot))
+                  (of_eq_true
+                    (Eq.trans
+                      (congrArg (Eq (op n (fun l => s (addr n l)) k))
+                        (ite_eq_left_of_eq_true (op n (fun l => s (addr n l)) k) (s (addr n k))
+                          (Nat.lt_add_one._simp_1 n)))
+                      (eq_self (op n (fun l => s (addr n l)) k)))))))
+          (Eq.symm hbn) hb
+      else
+        have away := fun l eq => hbn (layout b hb n hn0 k l eq).left;
+        Eq.mpr
+          (id
+            (congrArg (fun _a => _a (addr b k) = if b < n + 1 then op b (fun l => s (addr b l)) k else s (addr b k))
+              (runSteps.eq_2 step s n)))
+          (Eq.mpr
+            (id
+              (congrArg (fun _a => _a = if b < n + 1 then op b (fun l => s (addr b l)) k else s (addr b k))
+                (frameStep n hn0 (runSteps step n s) (addr b k) away)))
+            (Eq.mpr
+              (id
+                (congrArg (fun _a => _a = if b < n + 1 then op b (fun l => s (addr b l)) k else s (addr b k))
+                  (ih hn1 s b hb k)))
+              (if hlt : b < n then
+                have hlt1 := Decidable.byContradiction fun a => prefix_invariant._proof_1_6 count n b hlt a;
+                of_eq_true
+                  (Eq.trans
+                    (congr
+                      (congrArg Eq
+                        (ite_eq_left_of_eq_true (op b (fun l => s (addr b l)) k) (s (addr b k)) (eq_true hlt)))
+                      (ite_eq_left_of_eq_true (op b (fun l => s (addr b l)) k) (s (addr b k)) (eq_true hlt1)))
+                    (eq_self (op b (fun l => s (addr b l)) k)))
+              else
+                have hlt1 := fun a => prefix_invariant._proof_1_7 count n b hbn hlt a;
+                of_eq_true
+                  (Eq.trans
+                    (congr
+                      (congrArg Eq
+                        (ite_eq_right_of_eq_false (op b (fun l => s (addr b l)) k) (s (addr b k)) (eq_false hlt)))
+                      (ite_eq_right_of_eq_false (op b (fun l => s (addr b l)) k) (s (addr b k)) (eq_false hlt1)))
+                    (eq_self (s (addr b k))))))))
+    n
+theorem FT1536Global.pair_prefix : ∀ (count : Nat) (addr : Nat → Bool → Nat) (op : Nat → (Bool → Int) → Bool → Int),
+  (∀ (b : Nat), b < count → ∀ (c : Nat), c < count → ∀ (k l : Bool), addr b k = addr c l → b = c ∧ k = l) →
+    ∀ (n : Nat),
+      n ≤ count →
+        ∀ (s : Mem) (b : Nat),
+          b < count →
+            ∀ (k : Bool),
+              runSteps (pairStep addr op) n s (addr b k) =
+                if b < n then op b (fun l => s (addr b l)) k else s (addr b k) :=
+fun count addr op layout n hn s b hb k =>
+  prefix_invariant count addr op (pairStep addr op) layout
+    (fun j hj st slot =>
+      pair_local addr op j st
+        (fun eq =>
+          have bad := (layout j hj j hj false true eq).right;
+          Eq.casesOn (motive := fun a t => true = a → bad ≍ t → False) bad
+            (fun h => False.elim (noConfusion_of_Nat Bool.ctorIdx h)) (Eq.refl true) (HEq.refl bad))
+        slot)
+    (fun j hj st i away => pair_frame addr op j st i away) n hn s b hb k
+theorem FT1536Global.triple_prefix : ∀ (count : Nat) (addr : Nat → Fin 3 → Nat)
+  (op : Nat → (Fin 3 → Int) → Fin 3 → Int),
+  (∀ (b : Nat), b < count → ∀ (c : Nat), c < count → ∀ (k l : Fin 3), addr b k = addr c l → b = c ∧ k = l) →
+    ∀ (n : Nat),
+      n ≤ count →
+        ∀ (s : Mem) (b : Nat),
+          b < count →
+            ∀ (k : Fin 3),
+              runSteps (tripleStep addr op) n s (addr b k) =
+                if b < n then op b (fun l => s (addr b l)) k else s (addr b k) :=
+fun count addr op layout n hn s b hb k =>
+  prefix_invariant count addr op (tripleStep addr op) layout
+    (fun j hj st slot => triple_local addr op j st (fun l m eq => (layout j hj j hj l m eq).right) slot)
+    (fun j hj st i away => triple_frame addr op j st i away) n hn s b hb k
+'FT1536Global.store_at' depends on axioms: [propext]
+'FT1536Global.store_away' depends on axioms: [propext]
+'FT1536Global.prefix_invariant' depends on axioms: [propext, Quot.sound]
+'FT1536Global.prefix_frame' depends on axioms: [propext, Quot.sound]
+'FT1536Global.pair_local' depends on axioms: [propext]
+'FT1536Global.pair_frame' depends on axioms: [propext]
+'FT1536Global.pair_first_store' depends on axioms: [propext]
+'FT1536Global.pair_prefix' depends on axioms: [propext, Quot.sound]
+'FT1536Global.triple_local' depends on axioms: [propext, Quot.sound]
+'FT1536Global.triple_frame' depends on axioms: [propext]
+'FT1536Global.triple_prefix' depends on axioms: [propext, Quot.sound]
