@@ -63,8 +63,12 @@ Powiązanie z C99/GCC/LP64 i warunki buforów określa
 Odbiór odtworzył **63 moduły, 472 twierdzenia (109 nowych)** i **217/217**
 plików znaczeniowych ze świeżej kopii archiwum:
 [zapis kontroli FORWARD](validation/2026-09-18-forward/README.md).
-Następny obowiązek matematyczny to pozostały most L_V: parser, centrowanie C,
-dokładność Q i ścisły próg B dla tego samego kandydata. Zapisane statusy
+Następny obowiązek matematyczny to
+[pozostały most L_V](documents/FT1536_ZADANIE_ASTRA_L_V_BRIDGE_2026-09-19.md):
+parser, centrowanie C, dokładność Q i ścisły próg B dla tego samego kandydata.
+Zadanie korzysta z domkniętego L_NTT_rho i zaczyna od raw verifier, następnie
+wiąże oba dekodery oraz pełną akceptację bajtową z ustalonym Ext0.
+Zapisane statusy ukończonego checkpointu L_NTT
 pozostają `source_integrated=false`, `owner_accepted=false`,
 `full_L_V_proved=false`.
 
