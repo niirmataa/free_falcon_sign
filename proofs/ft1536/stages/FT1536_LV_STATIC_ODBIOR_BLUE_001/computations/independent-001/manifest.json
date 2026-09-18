@@ -1,0 +1,158 @@
+{
+  "schema_version": 2,
+  "claim_id": "FT1536_LV_STATIC_FIXED_WITNESS_EXT0",
+  "repository": {
+    "commit": "unavailable",
+    "dirty": true
+  },
+  "command": [
+    "python3",
+    "-B",
+    "checkers/independent_check.py",
+    "inputs",
+    "computations/independent-001/result.json"
+  ],
+  "environment": {
+    "software": [
+      {
+        "name": "runner-python",
+        "version": "3.13.5"
+      },
+      {
+        "name": "CPython",
+        "version": "3.13.5"
+      }
+    ],
+    "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+  },
+  "mathematics": {
+    "assertion_tested": "For the fixed public h, canonical c, and existing STATIC payload, the payload decodes to s=(-20000,0,...,0), Ext0 is congruent to c and has Q=43058711057 >= B=2093922385, while the source pre-NTT word path has Q=400000000 < B.",
+    "coefficient_domain": "Exact Z arithmetic and coefficient reduction modulo q=18433 in Z/qZ[X]/(X^1536-X^768+1)",
+    "conventions": "1536 coefficients indexed from 0; center_q representatives [-9216,9216]; Q0 uses offset-768 A2 blocks; source uint32 add-q then uint16 narrowing modeled exactly",
+    "inputs": [
+      "checkers/independent_check.py",
+      "inputs/canonical_public_key.bin",
+      "inputs/canonical_public_h.txt",
+      "inputs/witness.bin",
+      "inputs/witness_c.txt",
+      "inputs/witness.json"
+    ],
+    "bounds": {
+      "N": 1536,
+      "q": 18433,
+      "B": 2093922385,
+      "witness_count": 1,
+      "payload_bytes": 1931
+    },
+    "non_claims": [
+      "Does not formalize or prove all C semantics",
+      "Does not independently replay private KeyGen",
+      "Does not rule out other extractors",
+      "Does not find a HashToPoint preimage or an EUF-CMA forgery",
+      "Does not refute T2C3 or T5"
+    ]
+  },
+  "randomness": {
+    "used": false,
+    "generator": "",
+    "seed": null
+  },
+  "run": {
+    "started_at": "2026-09-18T14:17:08.333214+00:00",
+    "runtime_seconds": 0.116644,
+    "exit_status": 0,
+    "status": "completed",
+    "timeout_seconds": 30.0,
+    "max_output_bytes": 1048576,
+    "resource_limits": {
+      "memory_bytes": 1073741824,
+      "cpu_seconds": 20,
+      "max_cores": 1,
+      "max_threads": 1
+    },
+    "missing_results": [],
+    "invalid_results": []
+  },
+  "execution_artifacts": [
+    "checkers/independent_check.py",
+    "inputs/canonical_public_key.bin",
+    "inputs/canonical_public_h.txt",
+    "inputs/witness.bin",
+    "inputs/witness_c.txt",
+    "inputs/witness.json"
+  ],
+  "input_artifacts": [
+    {
+      "path": "checkers/independent_check.py",
+      "sha256": "2fbf5dd6ea4600eb322e9044d2dd5d38071a5afa1101378641b5c79be7e7c487",
+      "sha256_after": "2fbf5dd6ea4600eb322e9044d2dd5d38071a5afa1101378641b5c79be7e7c487"
+    },
+    {
+      "path": "inputs/canonical_public_key.bin",
+      "sha256": "57c49fb228013b0bfc4907c754d747dca93c1049d2945ccd6cd686e9f95afc6f",
+      "sha256_after": "57c49fb228013b0bfc4907c754d747dca93c1049d2945ccd6cd686e9f95afc6f"
+    },
+    {
+      "path": "inputs/canonical_public_h.txt",
+      "sha256": "ce1aef69b5998e6f214bc6a45cf6abc36fb1753d595ef1d7b0e6c1cecd9d17f2",
+      "sha256_after": "ce1aef69b5998e6f214bc6a45cf6abc36fb1753d595ef1d7b0e6c1cecd9d17f2"
+    },
+    {
+      "path": "inputs/witness.bin",
+      "sha256": "50468530f25ff63fe5680331d2f2591120a15aae0ba0f63f0b0364fc78289b74",
+      "sha256_after": "50468530f25ff63fe5680331d2f2591120a15aae0ba0f63f0b0364fc78289b74"
+    },
+    {
+      "path": "inputs/witness_c.txt",
+      "sha256": "f715b6c92f574054a52230cbcc337d2b16f5260469788872eb59234d27d1f4fd",
+      "sha256_after": "f715b6c92f574054a52230cbcc337d2b16f5260469788872eb59234d27d1f4fd"
+    },
+    {
+      "path": "inputs/witness.json",
+      "sha256": "2b9ea42771316eaef3cc394462b51f6a4df4e5b6e08630c5eaab0ca052da603b",
+      "sha256_after": "2b9ea42771316eaef3cc394462b51f6a4df4e5b6e08630c5eaab0ca052da603b"
+    }
+  ],
+  "output_directory": "computations/independent-001",
+  "declared_results": [
+    "computations/independent-001/result.json"
+  ],
+  "outputs": [
+    {
+      "path": "computations/independent-001/stdout.txt",
+      "sha256": "658a5185d8f9ce0e05b72a89aff64459c63bb61caea80b02594514f670fe952c",
+      "kind": "log"
+    },
+    {
+      "path": "computations/independent-001/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "log"
+    },
+    {
+      "path": "computations/independent-001/result.json",
+      "sha256": "658a5185d8f9ce0e05b72a89aff64459c63bb61caea80b02594514f670fe952c",
+      "kind": "result"
+    }
+  ],
+  "checks": [
+    {
+      "check": "input hashes unchanged",
+      "passed": true
+    },
+    {
+      "check": "process exited successfully within enforced limits",
+      "passed": true
+    },
+    {
+      "check": "declared result files are present and regular",
+      "passed": true
+    }
+  ],
+  "result": "Run completed; mathematical assertion requires interpretation and review.",
+  "residual_risks": [
+    "Command success does not establish the mathematical interpretation.",
+    "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+    "The thread cap uses conventional environment variables; a child program may ignore them.",
+    "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "claim_id": "FT1536_LV_STATIC_FIXED_WITNESS_EXT0",
+  "mathematics": {
+    "assertion_tested": "For the fixed public h, canonical c, and existing STATIC payload, the payload decodes to s=(-20000,0,...,0), Ext0 is congruent to c and has Q=43058711057 >= B=2093922385, while the source pre-NTT word path has Q=400000000 < B.",
+    "coefficient_domain": "Exact Z arithmetic and coefficient reduction modulo q=18433 in Z/qZ[X]/(X^1536-X^768+1)",
+    "conventions": "1536 coefficients indexed from 0; center_q representatives [-9216,9216]; Q0 uses offset-768 A2 blocks; source uint32 add-q then uint16 narrowing modeled exactly",
+    "inputs": [
+      "checkers/independent_check.py",
+      "inputs/canonical_public_key.bin",
+      "inputs/canonical_public_h.txt",
+      "inputs/witness.bin",
+      "inputs/witness_c.txt",
+      "inputs/witness.json"
+    ],
+    "bounds": {
+      "N": 1536,
+      "q": 18433,
+      "B": 2093922385,
+      "witness_count": 1,
+      "payload_bytes": 1931
+    },
+    "non_claims": [
+      "Does not formalize or prove all C semantics",
+      "Does not independently replay private KeyGen",
+      "Does not rule out other extractors",
+      "Does not find a HashToPoint preimage or an EUF-CMA forgery",
+      "Does not refute T2C3 or T5"
+    ]
+  },
+  "execution_artifacts": [
+    "checkers/independent_check.py",
+    "inputs/canonical_public_key.bin",
+    "inputs/canonical_public_h.txt",
+    "inputs/witness.bin",
+    "inputs/witness_c.txt",
+    "inputs/witness.json"
+  ],
+  "software": [
+    {"name": "CPython", "version": "3.13.5"}
+  ],
+  "randomness": {"used": false, "generator": "", "seed": null}
+}
