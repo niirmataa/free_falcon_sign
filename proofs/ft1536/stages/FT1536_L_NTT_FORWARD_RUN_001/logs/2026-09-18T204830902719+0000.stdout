@@ -1,0 +1,41 @@
+L_NTT : ∀ (h r c : Vec),
+  CanonVec h → CanonVec r → CanonVec c → pipelineC h r c = (product h r, subtract (product h r) c)
+L_NTT_p : ∀ (h r c : Vec), CanonVec h → CanonVec r → CanonVec c → (pipelineC h r c).fst = product h r
+L_NTT_d : ∀ (h r c : Vec), CanonVec h → CanonVec r → CanonVec c → (pipelineC h r c).snd = subtract (product h r) c
+L_NTT_ranges : ∀ (h r c : Vec),
+  CanonVec h → CanonVec r → CanonVec c → CanonVec (pipelineC h r c).fst ∧ CanonVec (pipelineC h r c).snd
+pipeline_intermediate_ranges : ∀ (h r c : Vec),
+  CanonVec h →
+    CanonVec r →
+      CanonVec c →
+        have H0 := forwardC h;
+        have H := toMontC H0;
+        have a0 := forwardC r;
+        have a1 := montPointC a0 H;
+        have p := inverseC a1;
+        CanonVec H0 ∧ CanonVec H ∧ CanonVec a0 ∧ CanonVec a1 ∧ CanonVec p ∧ CanonVec (subtractC p c)
+L_NTT_rho : ∀ (h s c : Vec),
+  CanonVec h →
+    (∀ (i : Fin 1536), FT1536.InInt16 (s i)) →
+      CanonVec c → pipelineC h (rhoVec s) c = (product h s, subtract (product h s) c)
+L_NTT_rho_ranges : ∀ (h s c : Vec),
+  CanonVec h →
+    (∀ (i : Fin 1536), FT1536.InInt16 (s i)) →
+      CanonVec c → CanonVec (pipelineC h (rhoVec s) c).fst ∧ CanonVec (pipelineC h (rhoVec s) c).snd
+'FT1536Forward.L_NTT' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.L_NTT_p' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.L_NTT_d' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.product_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.subtract_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.L_NTT_ranges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.toMontC_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.montPointC_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.subtractC_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.point_prefix_range' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.point_read_bound' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.pipeline_intermediate_ranges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.rhoVec_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.rhoVec_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.L_NTT_rho' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.L_NTT_rho_ranges' depends on axioms: [propext, Classical.choice, Quot.sound]
+Complete 0 0.374

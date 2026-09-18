@@ -1,0 +1,13 @@
+formal/LeafData/C16.lean:5:73: error: Tactic `decide` failed for proposition
+  FT1536Tables.units_16.all leafCheck = true
+because its `Decidable` instance
+  instDecidableEqBool (FT1536Tables.units_16.all leafCheck) true
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `instDecidableEqBool`, `Bool.decEq`, `Int.decEq`, `Int.decLt`, `Int.decNonneg`, and `Int.instDecidableEq`, reduction got stuck at the `Decidable` instance
+  match FT1536Tables.units_16.all leafCheck, true with
+  | false, false => isTrue ⋯
+  | false, true => isFalse ⋯
+  | true, false => isFalse ⋯
+  | true, true => isTrue ⋯
+'FT1536Forward.leaf_checked_16' depends on axioms: [propext, sorryAx, Quot.sound]

@@ -1,0 +1,53 @@
+formal/CRTStages.lean:31:2: error: unsolved goals
+case pos
+h m pos k : Nat
+hh : HalfOK h
+hp : pos < 1536
+hk : k < h
+s : Mem
+hb : pos / (2 * h) * h + k < 768
+div : (pos / (2 * h) * h + k) / h = pos / (2 * h)
+a0 : pairAddr h (pos / (2 * h) * h + k) false = blockBase (2 * h) pos + k
+a1 : pairAddr h (pos / (2 * h) * h + k) true = blockBase (2 * h) pos + (h + k)
+child : blockBase (2 * h) pos + (h + k) = blockBase h pos + k
+hc :
+  pairStage h (forwardBinaryOp m h) s (blockBase (2 * h) pos + k) =
+      (s (blockBase (2 * h) pos + k) + s (blockBase (2 * h) pos + (h + k)) * ordinary (gmAt (m + pos / (2 * h)))) %
+        18433 ∧
+    pairStage h (forwardBinaryOp m h) s (blockBase (2 * h) pos + (h + k)) =
+      (s (blockBase (2 * h) pos + k) - s (blockBase (2 * h) pos + (h + k)) * ordinary (gmAt (m + pos / (2 * h)))) %
+        18433
+side : h ≤ pos % (2 * h)
+⊢ (s (blockBase (2 * h) pos + k) + -(s (blockBase (2 * h) pos + (h + k)) * ordinary (gmAt (m + pos / (2 * h))))) %
+      18433 =
+    (s (blockBase (2 * h) pos + k) + s (blockBase (2 * h) pos + (h + k)) * -ordinary (gmAt (m + pos / (2 * h)))) % 18433
+formal/CRTStages.lean:33:43: warning: This simp argument is unused:
+  Int.neg_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [splitLabel, ite_eq_left side, Int.sub_eq_add_neg, Int.mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+formal/CRTStages.lean:60:6: error: Type mismatch: After simplification, term
+  hr.left
+ has type
+  @Eq Int (pairStage 768 forwardRootOp s k) ((s k + 14649 * s (k + 768)) % 18433)
+but is expected to have type
+  @Eq Int (pairStage 768 forwardRootOp s (k + 0)) ((s k + 14649 * s (k + 768)) % 18433)
+binary_block_eval : ∀ (h m pos : Nat),
+  HalfOK h →
+    pos < 1536 →
+      ∀ (s : Mem) (z : Int),
+        z ^ h % 18433 = splitLabel m h pos % 18433 →
+          blockEval h (blockBase h pos) (pairStage h (forwardBinaryOp m h) s) z =
+            blockEval (2 * h) (blockBase (2 * h) pos) s z
+root_block_eval : ∀ (pos : Nat),
+  pos < 1536 →
+    ∀ (s : Mem) (z : Int),
+      z ^ 768 % 18433 = rootLabel pos % 18433 →
+        blockEval 768 (blockBase 768 pos) (pairStage 768 forwardRootOp s) z = peval 1536 s z
+'FT1536Forward.split_layout' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.binary_block_coefficient' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536Forward.binary_block_eval' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536Forward.root_block_eval' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+CRTStages 1 2.182

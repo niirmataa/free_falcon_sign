@@ -1,0 +1,13 @@
+powFast_correct : ∀ (z : Int) (n : Nat), powFast z n = z ^ n % 18433
+nodeCheck_sound : ∀ (i : Nat) (w : Int) (j : Fin 3),
+  nodeCheck i w j = true →
+    have pos := 3 * (i - 512);
+    have z := nodeFromWord w j;
+    z ^ 768 % 18433 = rootLabel pos % 18433 ∧
+      (∀ (p : Nat × Nat),
+          p ∈ forwardSchedule 9 2 768 → z ^ (p.snd / 2) % 18433 = splitLabel p.fst (p.snd / 2) pos % 18433) ∧
+        PhiZero z ∧ ∀ (k : Fin 3), (cubeFExpr w fW j).eval (basis k) = z ^ ↑k % 18433
+'FT1536Forward.powFast_correct' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.powFuel_correct' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.nodeCheck_sound' depends on axioms: [propext, Quot.sound]
+NodeArithmetic 0 0.5

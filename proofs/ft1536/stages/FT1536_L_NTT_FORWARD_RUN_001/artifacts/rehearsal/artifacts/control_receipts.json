@@ -1,0 +1,94 @@
+[
+  {
+    "tag": "lean",
+    "argv": [
+      "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+      "-j1",
+      "-M2048",
+      "--run",
+      "formal/ControlMain.lean",
+      "checks/lean_values.txt"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_L_NTT_FORWARD_RUN_001/tmp/rehearsal_001",
+    "exit_code": 0,
+    "timeout": false,
+    "limit": 60,
+    "elapsed": 0.37207076500635594,
+    "stdout": "checks/logs/lean.stdout",
+    "stderr": "checks/logs/lean.stderr",
+    "stdout_sha256": "b5364f3645dd95cb912fd33de1019bc5995849325df343c5ef32d780650e89a6",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tag": "gcc",
+    "argv": [
+      "/usr/bin/gcc",
+      "-std=c99",
+      "-O2",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-Isource",
+      "checks/pipeline.c",
+      "-Wl,--gc-sections",
+      "-o",
+      "bin/pipeline_check"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_L_NTT_FORWARD_RUN_001/tmp/rehearsal_001",
+    "exit_code": 0,
+    "timeout": false,
+    "limit": 30,
+    "elapsed": 0.2612371230061399,
+    "stdout": "checks/logs/gcc.stdout",
+    "stderr": "checks/logs/gcc.stderr",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tag": "c0",
+    "argv": [
+      "bin/pipeline_check",
+      "checks/case0.txt"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_L_NTT_FORWARD_RUN_001/tmp/rehearsal_001",
+    "exit_code": 0,
+    "timeout": false,
+    "limit": 30,
+    "elapsed": 0.001413202000549063,
+    "stdout": "checks/c0.txt",
+    "stderr": "checks/logs/c0.stderr",
+    "stdout_sha256": "29cb23db327ea0048704158dd3d85dc0bcff3adee27cca8fd68132047b9a9928",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tag": "c1",
+    "argv": [
+      "bin/pipeline_check",
+      "checks/case1.txt"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_L_NTT_FORWARD_RUN_001/tmp/rehearsal_001",
+    "exit_code": 0,
+    "timeout": false,
+    "limit": 30,
+    "elapsed": 0.0011691279942169785,
+    "stdout": "checks/c1.txt",
+    "stderr": "checks/logs/c1.stderr",
+    "stdout_sha256": "42c252ddd17335facb4b490e9fcf39fde6c661777a6c7ed85582f0ecc609c445",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tag": "sage",
+    "argv": [
+      "/home/footfalcon/.local/bin/sage",
+      "scripts/sage_controls.py"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_L_NTT_FORWARD_RUN_001/tmp/rehearsal_001",
+    "exit_code": 0,
+    "timeout": false,
+    "limit": 90,
+    "elapsed": 4.492550385999493,
+    "stdout": "checks/logs/sage.stdout",
+    "stderr": "checks/logs/sage.stderr",
+    "stdout_sha256": "25284cba5c76005b79ef5988198b865911085c5a2d640f1392f52c904b4ea585",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

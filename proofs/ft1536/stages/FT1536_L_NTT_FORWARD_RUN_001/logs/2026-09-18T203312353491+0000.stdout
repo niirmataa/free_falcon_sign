@@ -1,0 +1,46 @@
+'FT1536Forward.leaf_checked_0' depends on axioms: [propext, Quot.sound]
+LeafData/C00 0 0.324
+'FT1536Forward.leaf_checked_1' depends on axioms: [propext, Quot.sound]
+LeafData/C01 0 0.346
+'FT1536Forward.leaf_checked_2' depends on axioms: [propext, Quot.sound]
+LeafData/C02 0 0.312
+'FT1536Forward.leaf_checked_3' depends on axioms: [propext, Quot.sound]
+LeafData/C03 0 0.292
+'FT1536Forward.leaf_checked_4' depends on axioms: [propext, Quot.sound]
+LeafData/C04 0 0.291
+'FT1536Forward.leaf_checked_5' depends on axioms: [propext, Quot.sound]
+LeafData/C05 0 0.314
+'FT1536Forward.leaf_checked_6' depends on axioms: [propext, Quot.sound]
+LeafData/C06 0 0.299
+'FT1536Forward.leaf_checked_7' depends on axioms: [propext, Quot.sound]
+LeafData/C07 0 0.325
+'FT1536Forward.leaf_checked_8' depends on axioms: [propext, Quot.sound]
+LeafData/C08 0 0.311
+'FT1536Forward.leaf_checked_9' depends on axioms: [propext, Quot.sound]
+LeafData/C09 0 0.405
+'FT1536Forward.leaf_checked_10' depends on axioms: [propext, Quot.sound]
+LeafData/C10 0 0.319
+'FT1536Forward.leaf_checked_11' depends on axioms: [propext, Quot.sound]
+LeafData/C11 0 0.286
+'FT1536Forward.leaf_checked_12' depends on axioms: [propext, Quot.sound]
+LeafData/C12 0 0.285
+'FT1536Forward.leaf_checked_13' depends on axioms: [propext, Quot.sound]
+LeafData/C13 0 0.286
+'FT1536Forward.leaf_checked_14' depends on axioms: [propext, Quot.sound]
+LeafData/C14 0 0.289
+'FT1536Forward.leaf_checked_15' depends on axioms: [propext, Quot.sound]
+LeafData/C15 0 0.287
+formal/LeafData/C16.lean:5:73: error: Tactic `decide` failed for proposition
+  FT1536Tables.units_16.all leafCheck = true
+because its `Decidable` instance
+  instDecidableEqBool (FT1536Tables.units_16.all leafCheck) true
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `instDecidableEqBool`, `Bool.decEq`, `Int.decEq`, `Int.decLt`, `Int.decNonneg`, and `Int.instDecidableEq`, reduction got stuck at the `Decidable` instance
+  match FT1536Tables.units_16.all leafCheck, true with
+  | false, false => isTrue ⋯
+  | false, true => isFalse ⋯
+  | true, false => isFalse ⋯
+  | true, true => isTrue ⋯
+'FT1536Forward.leaf_checked_16' depends on axioms: [propext, sorryAx, Quot.sound]
+LeafData/C16 1 0.257

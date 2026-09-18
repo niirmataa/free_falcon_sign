@@ -1,0 +1,103 @@
+[
+  {
+    "tag": "nodes",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/run.py",
+      "30",
+      "python3",
+      "-B",
+      "scripts/export_leaf_checks.py"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_L_NTT_FORWARD_RUN_001/tmp/rehearsal_001",
+    "exit_code": 0,
+    "wall_limit": 30,
+    "elapsed": 0.18137358699459583,
+    "stdout": "logs/replay_nodes.stdout",
+    "stderr": "logs/replay_nodes.stderr",
+    "stdout_sha256": "cd738b61b4564791b49e693aabc448fd6c043182935b82416b85bd82f5eaa189",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tag": "kernel",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/run.py",
+      "240",
+      "python3",
+      "-B",
+      "scripts/audit.py",
+      "--build"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_L_NTT_FORWARD_RUN_001/tmp/rehearsal_001",
+    "exit_code": 0,
+    "wall_limit": 240,
+    "elapsed": 189.93518339000002,
+    "stdout": "logs/replay_kernel.stdout",
+    "stderr": "logs/replay_kernel.stderr",
+    "stdout_sha256": "df55e5cdd989a1f13b55e2785c240d3e6b4febb9f8c81b1823d4a9b8ed5ceb38",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tag": "fixtures",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/run.py",
+      "30",
+      "python3",
+      "-B",
+      "scripts/prepare_checks.py"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_L_NTT_FORWARD_RUN_001/tmp/rehearsal_001",
+    "exit_code": 0,
+    "wall_limit": 30,
+    "elapsed": 0.1741915420134319,
+    "stdout": "logs/replay_fixtures.stdout",
+    "stderr": "logs/replay_fixtures.stderr",
+    "stdout_sha256": "e72389690e23e36bd028ab57274b7454c20a393758c754c0558e2da7297a2d7f",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tag": "controls",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/run.py",
+      "180",
+      "python3",
+      "-B",
+      "scripts/run_controls.py"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_L_NTT_FORWARD_RUN_001/tmp/rehearsal_001",
+    "exit_code": 0,
+    "wall_limit": 180,
+    "elapsed": 5.325533556009759,
+    "stdout": "logs/replay_controls.stdout",
+    "stderr": "logs/replay_controls.stderr",
+    "stdout_sha256": "bfec87fdf913879fb9c3e3dac138bc192f8894e61f1e5d01261d26afba1c76bf",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tag": "toolchain",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/run.py",
+      "90",
+      "python3",
+      "-B",
+      "scripts/toolchain.py"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_L_NTT_FORWARD_RUN_001/tmp/rehearsal_001",
+    "exit_code": 0,
+    "wall_limit": 90,
+    "elapsed": 3.7440270819934085,
+    "stdout": "logs/replay_toolchain.stdout",
+    "stderr": "logs/replay_toolchain.stderr",
+    "stdout_sha256": "85671481f7b0c953d1ad0d854cf6f6972f35e3075a6ad47622e614a3aafbc938",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

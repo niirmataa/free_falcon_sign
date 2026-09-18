@@ -1,0 +1,89 @@
+{
+  "schema": "FT1536_L_NTT_FORWARD_RESULT_V1",
+  "status": "L_NTT_PROVED_FOR_PINNED_MODEL",
+  "L_NTT_proved": true,
+  "FORWARD_GLOBAL_proved": true,
+  "forward_product_proved": true,
+  "inverse_forward_reused": true,
+  "p_d_and_ranges_proved": true,
+  "rho_substitution_proved_for_int16": true,
+  "remaining_global_hypotheses": [],
+  "source_integrated": false,
+  "owner_accepted": false,
+  "full_L_V_proved": false,
+  "parameters": {
+    "N": 1536,
+    "q": 18433,
+    "ternary": 1,
+    "logn": 10,
+    "Phi": "X^1536-X^768+1",
+    "profile": "full ternary secret / FALCON_COMP_STATIC"
+  },
+  "domain": "All canonical h,r,c with valid aligned/nonaliasing buffers in the pinned GCC14.2.0/C99/Linux x86_64 LP64 model; rho corollary for all signed int16 s.",
+  "source_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+  "source_manifest_sha256": "2553358fbb1144acdb577e1ad371a017ac325306dd901af745295dd17b03bd5a",
+  "task_sha256": "c25ef7c8ec9f066326e8f6f4a97760082f24d625e584a079e25c6dd75e237c9c",
+  "PREV_report_sha256": "d5e5dc7cc65f2d12ade4e1928cc705b947e0203657decac59b352ff8fd1d56e8",
+  "PREV_outputs_sha256": "6095dbfbb616d901e5a7991f608b94bbd7c916167f16baf7d2f50fc3e353b129",
+  "source_models_changed": false,
+  "inherited_formal_files_unchanged": 16,
+  "Rho_proof_alias_adaptation": {
+    "file": "formal/Rho.lean",
+    "old_sha256": "daa68021e0f5bac53cf0384a5e10b0537eb6a8ca9d02f0f2970c6ff6eefc7fe8",
+    "new_sha256": "3fc6f1106bde82d3c5657da11e2c2a781486163491adf5617e6d39db43f15fd2",
+    "change": "Only deprecated if_pos/if_neg aliases; no theorem or definition changes"
+  },
+  "final_theorem": "FT1536Forward.L_NTT",
+  "rho_theorem": "FT1536Forward.L_NTT_rho",
+  "checked_theorems": 472,
+  "new_theorems": 109,
+  "final_modules": 63,
+  "all_final_logs_clean": true,
+  "audit_stdout_sha256": "2591ec617b95ebbe1045bf38aa3b69cc03c19689c6bf1e94d5ec0ad6c694864c",
+  "full_types_sha256": "a134885875d2ad71ba00a67b2dec8e3e1f491bae91b47d8593697c710635af66",
+  "controls": {
+    "status": "PASS",
+    "independent_oracle": "Sage GF(18433)[X]/(X^1536-X^768+1), closed root powers625",
+    "selected_nodes": 15,
+    "root_label_checks": 15,
+    "binary_label_checks": 120,
+    "remMonomial_degrees": [
+      0,
+      1,
+      767,
+      768,
+      1535,
+      1536,
+      1537,
+      2303,
+      2304,
+      2305,
+      3070
+    ],
+    "remMonomial_evaluations": 165,
+    "mutations_detected": [
+      "word+1",
+      "wrong physical index",
+      "wrong split sign",
+      "wrong cubic slot",
+      "wrong high-degree reduction sign"
+    ],
+    "noop_pass": true,
+    "pipeline_cases": [
+      "canonical_dense",
+      "rho_boundaries"
+    ],
+    "pipeline_coefficients_checked": 6144,
+    "pipeline_sha256": [
+      "29cb23db327ea0048704158dd3d85dc0bcff3adee27cca8fd68132047b9a9928",
+      "42c252ddd17335facb4b490e9fcf39fde6c661777a6c7ed85582f0ecc609c445"
+    ],
+    "note": "Limited controls of new bindings, distinct from universal kernel theorems."
+  },
+  "replay_protocol": "standard",
+  "rehearsal_status": "FRESH_REPLAY_PASS",
+  "semantic_files": 217,
+  "frozen_replay_receipt": "artifacts/fresh_replay.json",
+  "report_sha256": "ff172360348004527b7ef2a68c3f70967463619f039145d856f1969d69b866eb",
+  "next_mathematical_step": "Complete remaining L_V bridge: parser, C centering, exact Q and strict B for the same candidate."
+}

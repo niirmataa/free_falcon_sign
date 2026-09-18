@@ -1,0 +1,25 @@
+middle_eval : ∀ (ps : List (Nat × Nat)) (t : Nat),
+  StageChain t ps →
+    ∀ (pos : Nat),
+      pos < 1536 →
+        ∀ (z : Int),
+          (∀ (p : Nat × Nat), p ∈ ps → z ^ (p.snd / 2) % 18433 = splitLabel p.fst (p.snd / 2) pos % 18433) →
+            ∀ (s : Mem), blockEval 3 (blockBase 3 pos) (forwardMiddle ps s) z = blockEval t (blockBase t pos) s z
+FORWARD_GLOBAL : ∀ (v : Vec),
+  CanonVec v →
+    ∀ (b : Fin 512) (j : Fin 3),
+      forwardC v ⟨3 * ↑b + ↑j, ⋯⟩ =
+        (sumN 1536 fun k => fromVec v k * (ordinary (gmAt (512 + ↑b)) * 14648 ^ ↑j) ^ k) % 18433
+liftForward_eval : ∀ (v : Vec) (b : Fin 512) (j : Fin 3),
+  liftForward v ⟨3 * ↑b + ↑j, ⋯⟩ = peval 1536 (fromVec v) (node (↑b) j)
+node_zero : ∀ (b : Nat), b < 512 → ∀ (j : Fin 3), PhiZero (node b j)
+'FT1536Forward.actual_chain' depends on axioms: [propext]
+'FT1536Forward.middle_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.cubic_eval' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.forwardMem_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.forwardC_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.FORWARD_GLOBAL' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.fromVec_canonical_mod' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.liftForward_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.node_zero' depends on axioms: [propext, Quot.sound]
+ForwardGlobal 0 0.51

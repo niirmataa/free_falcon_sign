@@ -1,0 +1,237 @@
+FT1536Forward.FORWARD_GLOBAL : ∀ (v : FT1536Global.Vec) (hv : FT1536Global.CanonVec v)
+  (b : Fin (@OfNat.ofNat.{0} Nat (nat_lit 512) (instOfNatNat (nat_lit 512))))
+  (j : Fin (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))),
+  @Eq.{1} Int
+    (FT1536Global.forwardC v
+      (@Fin.mk (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+            (@Fin.val (@OfNat.ofNat.{0} Nat (nat_lit 512) (instOfNatNat (nat_lit 512))) b))
+          (@Fin.val (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))
+        (have h :
+          @LT.lt.{0} Nat instLTNat (@Fin.val (@OfNat.ofNat.{0} Nat (nat_lit 512) (instOfNatNat (nat_lit 512))) b)
+            (@OfNat.ofNat.{0} Nat (nat_lit 512) (instOfNatNat (nat_lit 512))) :=
+          @Fin.isLt (@OfNat.ofNat.{0} Nat (nat_lit 512) (instOfNatNat (nat_lit 512))) b;
+        have hj :
+          @LT.lt.{0} Nat instLTNat (@Fin.val (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j)
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) :=
+          @Fin.isLt (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j;
+        @Decidable.byContradiction
+          (@LT.lt.{0} Nat instLTNat
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+                (@Fin.val (@OfNat.ofNat.{0} Nat (nat_lit 512) (instOfNatNat (nat_lit 512))) b))
+              (@Fin.val (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+          (Nat.decLt
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+                (@Fin.val (@OfNat.ofNat.{0} Nat (nat_lit 512) (instOfNatNat (nat_lit 512))) b))
+              (@Fin.val (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+          fun
+            (a :
+              Not
+                (@LT.lt.{0} Nat instLTNat
+                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+                      (@Fin.val (@OfNat.ofNat.{0} Nat (nat_lit 512) (instOfNatNat (nat_lit 512))) b))
+                    (@Fin.val (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))) =>
+          FT1536Forward.forwardC_eval._proof_1 b j h hj a)))
+    (@HMod.hMod.{0, 0, 0} Int Int Int (@instHMod.{0} Int Int.instMod)
+      (FT1536Forward.sumN (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) fun (k : Nat) =>
+        @HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) (FT1536Global.fromVec v k)
+          (@HPow.hPow.{0, 0, 0} Int Nat Int (@instHPow.{0, 0} Int Nat (@instPowNat.{0} Int Int.instNatPow))
+            (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+              (FT1536Global.ordinary
+                (FT1536Global.gmAt
+                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                    (@OfNat.ofNat.{0} Nat (nat_lit 512) (instOfNatNat (nat_lit 512)))
+                    (@Fin.val (@OfNat.ofNat.{0} Nat (nat_lit 512) (instOfNatNat (nat_lit 512))) b))))
+              (@HPow.hPow.{0, 0, 0} Int Nat Int (@instHPow.{0, 0} Int Nat (@instPowNat.{0} Int Int.instNatPow))
+                (@OfNat.ofNat.{0} Int (nat_lit 14648) (@instOfNat (nat_lit 14648)))
+                (@Fin.val (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) j)))
+            k))
+      (@OfNat.ofNat.{0} Int (nat_lit 18433) (@instOfNat (nat_lit 18433))))
+FT1536Forward.node_zero : ∀ (b : Nat)
+  (hb : @LT.lt.{0} Nat instLTNat b (@OfNat.ofNat.{0} Nat (nat_lit 512) (instOfNatNat (nat_lit 512))))
+  (j : Fin (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))),
+  FT1536Forward.PhiZero (FT1536Forward.node b j)
+FT1536Forward.forward_product : ∀ (h r : FT1536Global.Vec),
+  @Eq.{1} FT1536Global.Vec (FT1536Global.liftForward (FT1536Composition.product h r))
+    (FT1536Composition.pointMul (FT1536Global.liftForward h) (FT1536Global.liftForward r))
+FT1536Forward.product_canonical_inputs : ∀ (h r : FT1536Global.Vec),
+  @Eq.{1} FT1536Composition.Vec
+    (FT1536Composition.product (FT1536Composition.canonical h) (FT1536Composition.canonical r))
+    (FT1536Composition.product h r)
+FT1536Forward.L_NTT : ∀ (h r c : FT1536Global.Vec) (hh : FT1536Global.CanonVec h) (hr : FT1536Global.CanonVec r)
+  (hc : FT1536Global.CanonVec c),
+  @Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) (FT1536Global.pipelineC h r c)
+    (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec (FT1536Composition.product h r)
+      (FT1536Composition.subtract (FT1536Composition.product h r) c))
+FT1536Forward.L_NTT_p : ∀ (h r c : FT1536Global.Vec) (hh : FT1536Global.CanonVec h) (hr : FT1536Global.CanonVec r)
+  (hc : FT1536Global.CanonVec c),
+  @Eq.{1} FT1536Global.Vec (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Global.pipelineC h r c))
+    (FT1536Composition.product h r)
+FT1536Forward.L_NTT_d : ∀ (h r c : FT1536Global.Vec) (hh : FT1536Global.CanonVec h) (hr : FT1536Global.CanonVec r)
+  (hc : FT1536Global.CanonVec c),
+  @Eq.{1} FT1536Global.Vec (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Global.pipelineC h r c))
+    (FT1536Composition.subtract (FT1536Composition.product h r) c)
+FT1536Forward.L_NTT_ranges : ∀ (h r c : FT1536Global.Vec) (hh : FT1536Global.CanonVec h) (hr : FT1536Global.CanonVec r)
+  (hc : FT1536Global.CanonVec c),
+  And (FT1536Global.CanonVec (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Global.pipelineC h r c)))
+    (FT1536Global.CanonVec (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Global.pipelineC h r c)))
+FT1536Forward.L_NTT_rho : ∀ (h s c : FT1536Global.Vec) (hh : FT1536Global.CanonVec h)
+  (hs : ∀ (i : Fin (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536)))), FT1536.InInt16 (s i))
+  (hc : FT1536Global.CanonVec c),
+  @Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) (FT1536Global.pipelineC h (FT1536Forward.rhoVec s) c)
+    (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec (FT1536Composition.product h s)
+      (FT1536Composition.subtract (FT1536Composition.product h s) c))
+FT1536Forward.L_NTT_rho_ranges : ∀ (h s c : FT1536Global.Vec) (hh : FT1536Global.CanonVec h)
+  (hs : ∀ (i : Fin (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536)))), FT1536.InInt16 (s i))
+  (hc : FT1536Global.CanonVec c),
+  And
+    (FT1536Global.CanonVec
+      (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Global.pipelineC h (FT1536Forward.rhoVec s) c)))
+    (FT1536Global.CanonVec
+      (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Global.pipelineC h (FT1536Forward.rhoVec s) c)))
+theorem FT1536Forward.L_NTT : ∀ (h r c : FT1536Global.Vec) (hh : FT1536Global.CanonVec h) (hr : FT1536Global.CanonVec r)
+  (hc : FT1536Global.CanonVec c),
+  @Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) (FT1536Global.pipelineC h r c)
+    (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec (FT1536Composition.product h r)
+      (FT1536Composition.subtract (FT1536Composition.product h r) c)) :=
+fun (h r c : FT1536Global.Vec) (hh : FT1536Global.CanonVec h) (hr : FT1536Global.CanonVec r)
+    (hc : FT1536Global.CanonVec c) =>
+  FT1536Global.L_NTT_pending_forward FT1536Forward.forward_product h r c hh hr hc
+theorem FT1536Forward.L_NTT_rho : ∀ (h s c : FT1536Global.Vec) (hh : FT1536Global.CanonVec h)
+  (hs : ∀ (i : Fin (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536)))), FT1536.InInt16 (s i))
+  (hc : FT1536Global.CanonVec c),
+  @Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) (FT1536Global.pipelineC h (FT1536Forward.rhoVec s) c)
+    (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec (FT1536Composition.product h s)
+      (FT1536Composition.subtract (FT1536Composition.product h s) c)) :=
+fun (h s c : FT1536Global.Vec) (hh : FT1536Global.CanonVec h)
+    (hs : ∀ (i : Fin (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536)))), FT1536.InInt16 (s i))
+    (hc : FT1536Global.CanonVec c) =>
+  @Eq.mpr.{0}
+    (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) (FT1536Global.pipelineC h (FT1536Forward.rhoVec s) c)
+      (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec (FT1536Composition.product h s)
+        (FT1536Composition.subtract (FT1536Composition.product h s) c)))
+    (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+      (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec
+        (FT1536Composition.product h (FT1536Forward.rhoVec s))
+        (FT1536Composition.subtract (FT1536Composition.product h (FT1536Forward.rhoVec s)) c))
+      (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec (FT1536Composition.product h s)
+        (FT1536Composition.subtract (FT1536Composition.product h s) c)))
+    (@id.{0}
+      (@Eq.{1} Prop
+        (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) (FT1536Global.pipelineC h (FT1536Forward.rhoVec s) c)
+          (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec (FT1536Composition.product h s)
+            (FT1536Composition.subtract (FT1536Composition.product h s) c)))
+        (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+          (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec
+            (FT1536Composition.product h (FT1536Forward.rhoVec s))
+            (FT1536Composition.subtract (FT1536Composition.product h (FT1536Forward.rhoVec s)) c))
+          (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec (FT1536Composition.product h s)
+            (FT1536Composition.subtract (FT1536Composition.product h s) c))))
+      (@congrArg.{1, 1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) Prop
+        (FT1536Global.pipelineC h (FT1536Forward.rhoVec s) c)
+        (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec
+          (FT1536Composition.product h (FT1536Forward.rhoVec s))
+          (FT1536Composition.subtract (FT1536Composition.product h (FT1536Forward.rhoVec s)) c))
+        (fun (_a : Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) =>
+          @Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) _a
+            (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec (FT1536Composition.product h s)
+              (FT1536Composition.subtract (FT1536Composition.product h s) c)))
+        (FT1536Forward.L_NTT h (FT1536Forward.rhoVec s) c hh (FT1536Forward.rhoVec_range s hs) hc)))
+    (@Eq.mpr.{0}
+      (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+        (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec
+          (FT1536Composition.product h (FT1536Forward.rhoVec s))
+          (FT1536Composition.subtract (FT1536Composition.product h (FT1536Forward.rhoVec s)) c))
+        (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec (FT1536Composition.product h s)
+          (FT1536Composition.subtract (FT1536Composition.product h s) c)))
+      (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+        (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec
+          (FT1536Composition.product h (FT1536Composition.canonical s))
+          (FT1536Composition.subtract (FT1536Composition.product h (FT1536Composition.canonical s)) c))
+        (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec (FT1536Composition.product h s)
+          (FT1536Composition.subtract (FT1536Composition.product h s) c)))
+      (@id.{0}
+        (@Eq.{1} Prop
+          (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+            (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec
+              (FT1536Composition.product h (FT1536Forward.rhoVec s))
+              (FT1536Composition.subtract (FT1536Composition.product h (FT1536Forward.rhoVec s)) c))
+            (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec (FT1536Composition.product h s)
+              (FT1536Composition.subtract (FT1536Composition.product h s) c)))
+          (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+            (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec
+              (FT1536Composition.product h (FT1536Composition.canonical s))
+              (FT1536Composition.subtract (FT1536Composition.product h (FT1536Composition.canonical s)) c))
+            (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec (FT1536Composition.product h s)
+              (FT1536Composition.subtract (FT1536Composition.product h s) c))))
+        (@congrArg.{1, 1} FT1536Global.Vec Prop (FT1536Forward.rhoVec s) (FT1536Composition.canonical s)
+          (fun (_a : FT1536Global.Vec) =>
+            @Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+              (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec (FT1536Composition.product h _a)
+                (FT1536Composition.subtract (FT1536Composition.product h _a) c))
+              (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec (FT1536Composition.product h s)
+                (FT1536Composition.subtract (FT1536Composition.product h s) c)))
+          (FT1536Forward.rhoVec_eq s hs)))
+      (have hp :
+        @Eq.{1} FT1536Composition.Vec
+          (FT1536Composition.product (FT1536Composition.canonical h) (FT1536Composition.canonical s))
+          (FT1536Composition.product h s) :=
+        FT1536Forward.product_canonical_inputs h s;
+      @Eq.mpr.{0}
+        (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+          (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec
+            (FT1536Composition.product h (FT1536Composition.canonical s))
+            (FT1536Composition.subtract (FT1536Composition.product h (FT1536Composition.canonical s)) c))
+          (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec (FT1536Composition.product h s)
+            (FT1536Composition.subtract (FT1536Composition.product h s) c)))
+        (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+          (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec (FT1536Composition.product h s)
+            (FT1536Composition.subtract (FT1536Composition.product h s) c))
+          (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec (FT1536Composition.product h s)
+            (FT1536Composition.subtract (FT1536Composition.product h s) c)))
+        (@id.{0}
+          (@Eq.{1} Prop
+            (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+              (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec
+                (FT1536Composition.product h (FT1536Composition.canonical s))
+                (FT1536Composition.subtract (FT1536Composition.product h (FT1536Composition.canonical s)) c))
+              (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec (FT1536Composition.product h s)
+                (FT1536Composition.subtract (FT1536Composition.product h s) c)))
+            (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+              (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec (FT1536Composition.product h s)
+                (FT1536Composition.subtract (FT1536Composition.product h s) c))
+              (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec (FT1536Composition.product h s)
+                (FT1536Composition.subtract (FT1536Composition.product h s) c))))
+          (@congrArg.{1, 1} FT1536Composition.Vec Prop (FT1536Composition.product h (FT1536Composition.canonical s))
+            (FT1536Composition.product h s)
+            (fun (_a : FT1536Composition.Vec) =>
+              @Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec _a (FT1536Composition.subtract _a c))
+                (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec (FT1536Composition.product h s)
+                  (FT1536Composition.subtract (FT1536Composition.product h s) c)))
+            (@Eq.mp.{0}
+              (@Eq.{1} FT1536Composition.Vec
+                (FT1536Composition.product (FT1536Composition.canonical h) (FT1536Composition.canonical s))
+                (FT1536Composition.product h s))
+              (@Eq.{1} FT1536Composition.Vec (FT1536Composition.product h (FT1536Composition.canonical s))
+                (FT1536Composition.product h s))
+              (@congrArg.{1, 1} FT1536Composition.Vec Prop (FT1536Composition.canonical h) h
+                (fun (_a : FT1536Composition.Vec) =>
+                  @Eq.{1} FT1536Composition.Vec (FT1536Composition.product _a (FT1536Composition.canonical s))
+                    (FT1536Composition.product h s))
+                (FT1536Global.canonical_fixed h hh))
+              hp)))
+        (@Eq.refl.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+          (@Prod.mk.{0, 0} FT1536Composition.Vec FT1536Composition.Vec (FT1536Composition.product h s)
+            (FT1536Composition.subtract (FT1536Composition.product h s) c)))))

@@ -1,0 +1,52 @@
+binary_block_eval : ∀ (h m pos : Nat),
+  HalfOK h →
+    pos < 1536 →
+      ∀ (s : Mem) (z : Int),
+        z ^ h % 18433 = splitLabel m h pos % 18433 →
+          blockEval h (blockBase h pos) (pairStage h (forwardBinaryOp m h) s) z =
+            blockEval (2 * h) (blockBase (2 * h) pos) s z
+root_block_eval : ∀ (pos : Nat),
+  pos < 1536 →
+    ∀ (s : Mem) (z : Int),
+      z ^ 768 % 18433 = rootLabel pos % 18433 →
+        blockEval 768 (blockBase 768 pos) (pairStage 768 forwardRootOp s) z = peval 1536 s z
+'FT1536Forward.split_layout' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.binary_block_coefficient' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.binary_block_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.root_block_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+CRTStages 0 2.042
+formal/NodeArithmetic.lean:19:28: error: Tactic `rfl` failed: The left-hand side
+  1
+is not definitionally equal to the right-hand side
+  z ^ 0 % 18433
+
+case ind.isTrue
+z : Int
+ih : ∀ (m : Nat), m < 0 → powFast z m = z ^ m % 18433
+⊢ 1 = z ^ 0 % 18433
+formal/NodeArithmetic.lean:20:4: error: unsolved goals
+case ind.isFalse.inr
+z : Int
+n : Nat
+ih : ∀ (m : Nat), m < n → powFast z m = z ^ m % 18433
+hn : ¬n = 0
+hn' : n / 2 < n
+he : z ^ n = z ^ (n / 2) * z ^ (n / 2) * z ^ (n % 2)
+hm : n % 2 = 1
+⊢ z ^ (n / 2) % 18433 % 18433 * (z ^ (n / 2) % 18433 % 18433) % 18433 % 18433 * (z % 18433 % 18433) % 18433 =
+    z ^ (n / 2) % 18433 % 18433 * (z ^ (n / 2) % 18433 % 18433) % 18433 % 18433 * (z ^ 1 % 18433 % 18433) % 18433
+formal/NodeArithmetic.lean:57:130: error(lean.unknownIdentifier): Unknown constant `Bool.and_eq_true.mp`
+formal/NodeArithmetic.lean:58:18: error(lean.unknownIdentifier): Unknown constant `Bool.and_eq_true.mp`
+formal/NodeArithmetic.lean:58:9: error: Tactic `rcases` failed: `x✝ : ?m.229` is not an inductive datatype
+powFast_correct : ∀ (z : Int) (n : Nat), powFast z n = z ^ n % 18433
+nodeCheck_sound : ∀ (i : Nat) (w : Int) (j : Fin 3),
+  nodeCheck i w j = true →
+    have pos := 3 * (i - 512);
+    have z := nodeFromWord w j;
+    z ^ 768 % 18433 = rootLabel pos % 18433 ∧
+      (∀ (p : Nat × Nat),
+          p ∈ forwardSchedule 9 2 768 → z ^ (p.snd / 2) % 18433 = splitLabel p.fst (p.snd / 2) pos % 18433) ∧
+        PhiZero z ∧ ∀ (k : Fin 3), (cubeFExpr w fW j).eval (basis k) = z ^ ↑k % 18433
+'FT1536Forward.powFast_correct' depends on axioms: [propext, sorryAx, Quot.sound]
+'FT1536Forward.nodeCheck_sound' depends on axioms: [propext, sorryAx, Quot.sound]
+NodeArithmetic 1 0.513

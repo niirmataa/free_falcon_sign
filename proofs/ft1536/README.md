@@ -31,11 +31,42 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 
 | Etap | Werdykt / zakres | Commit checkpointu |
 |---|---|---|
-| L_V-STATIC | kontrprzykład do ustalonego Ext0 | `791f092` |
-| Odbiór Blue | niezależne potwierdzenie kontrprzykładu | `60f574e` |
-| L_RHO | poprawna normalizacja całej dziedziny int16 w przypiętym modelu | `9333a08` |
-| L_NTT | lokalne kontrakty i certyfikaty; globalna kompozycja częściowa | `e1ab6af` |
-| L_NTT_GLOBAL | globalny inverse domknięty; forward_product nadal otwarte | `341d9f7` |
+| L_V-STATIC | kontrprzykład do ustalonego Ext0 | `0b7cc0d` |
+| Odbiór Blue | niezależne potwierdzenie kontrprzykładu | `bf4fb40` |
+| L_RHO | poprawna normalizacja całej dziedziny int16 w przypiętym modelu | `5c2cdcc` |
+| L_NTT | lokalne kontrakty i certyfikaty; globalna kompozycja częściowa | `1d78645` |
+| L_NTT_GLOBAL | globalny inverse; na tym etapie forward_product pozostawało otwarte | `d67228d` |
+| [L_NTT_FORWARD](stages/FT1536_L_NTT_FORWARD_RUN_001/REPORT.md) | **L_NTT_PROVED_FOR_PINNED_MODEL** — forward, iloczyn i pełna kompozycja | commit dodający [wpis katalogu](catalog/FT1536_L_NTT_FORWARD_RUN_001.json) |
+
+Identyfikatory starszych lokalnych commitów są rozliczone w
+[mapie historii publikacji](history/README.md).
+
+### Aktualny wynik L_NTT
+
+Checkpoint FORWARD domyka ostatnią globalną przesłankę poprzedniej kompozycji.
+W `formal/Complete.lean` końcowe twierdzenie ma postać:
+
+```text
+FT1536Forward.L_NTT : ∀ h r c,
+  CanonVec h → CanonVec r → CanonVec c →
+  pipelineC h r c = (product h r, subtract (product h r) c).
+```
+
+Iloczyn pozostaje niezależnym iloczynem współczynnikowym z `remMonomial`.
+Dowiedziono ewaluacji forward w fizycznym porządku `3i+j`, `forward_product`,
+zakresów oraz podstawienia L_RHO dla wszystkich signed int16.
+Pełne typy i termy dowodowe są w
+[AuditTypes.stdout](stages/FT1536_L_NTT_FORWARD_RUN_001/logs/final/AuditTypes.stdout).
+Powiązanie z C99/GCC/LP64 i warunki buforów określa
+[CLAIM](stages/FT1536_L_NTT_FORWARD_RUN_001/CLAIM.md).
+
+Odbiór odtworzył **63 moduły, 472 twierdzenia (109 nowych)** i **217/217**
+plików znaczeniowych ze świeżej kopii archiwum:
+[zapis kontroli FORWARD](validation/2026-09-18-forward/README.md).
+Następny obowiązek matematyczny to pozostały most L_V: parser, centrowanie C,
+dokładność Q i ścisły próg B dla tego samego kandydata. Zapisane statusy
+pozostają `source_integrated=false`, `owner_accepted=false`,
+`full_L_V_proved=false`.
 
 Odtwarzanie z czystego checkoutu Git i ukrytymi oryginałami sprawdzono
 2026-09-18: [zapis kontroli](validation/2026-09-18/README.md).
@@ -60,8 +91,8 @@ Przykład dla lokalnego L_RHO:
 python3 -B proofs/ft1536/tools/archive.py replay FT1536_L_RHO_RUN_001 --run replay-001 --hide-originals
 ```
 
-Analogicznie dla `FT1536_LV_STATIC_RUN_001`, `FT1536_L_NTT_RUN_001`
-i `FT1536_L_NTT_GLOBAL_RUN_001`.
+Analogicznie dla `FT1536_LV_STATIC_RUN_001`, `FT1536_L_NTT_RUN_001`,
+`FT1536_L_NTT_GLOBAL_RUN_001` i `FT1536_L_NTT_FORWARD_RUN_001`.
 Wpis katalogu określa właściwy punkt wejścia. Odbiór Blue jest archiwum
 recenzji i receipts; nie ma zadeklarowanego pojedynczego pełnego runnera.
 

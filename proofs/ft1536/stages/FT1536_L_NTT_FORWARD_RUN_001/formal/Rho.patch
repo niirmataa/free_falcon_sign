@@ -1,0 +1,18 @@
+--- inputs/RHO/Rho.lean
++++ formal/Rho.lean
+@@ -50,12 +50,12 @@
+   unfold InInt16 at hx
+   by_cases hn : x < 0
+   · by_cases hl : x < -18433
+-    · simp only [oldIota, if_pos hn, if_pos hl]
++    · simp only [oldIota, ite_eq_left hn, ite_eq_left hl]
+       omega
+-    · simp only [oldIota, if_pos hn, if_neg hl]
++    · simp only [oldIota, ite_eq_left hn, ite_eq_right hl]
+       omega
+   · have hl : ¬ x < -18433 := by omega
+-    simp only [oldIota, if_neg hn, if_neg hl]
++    simp only [oldIota, ite_eq_right hn, ite_eq_right hl]
+     omega
+ 
+ theorem old_congruence_domain (x : Int) (hx : InInt16 x) :
