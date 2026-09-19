@@ -17,6 +17,13 @@ osiągalność H3, pełne prawo Sign i bajty, spójna konsumpcja R5T, ciaśniejs
 transfer chi-square, symulacja ROM i końcowa kompozycja. Jest materiałem
 do omówienia przed wyborem następnego zadania Astry.
 
+Po omówieniu właściciel wybrał pojemność **4096 bajtów payloadu Sign**
+(nonce 40 bajtów osobno) oraz **parametryczny** cel redukcji.
+[Bieżące zlecenie M0](documents/FT1536_ZADANIE_ASTRA_M0_CONTRACT_2026-09-19.md)
+ma zdefiniować dokładny kontrakt gry i ledger, sprawdzić bound długości
+STATIC oraz przygotować wejście do późniejszego H3. Jest to zlecenie,
+nie raport ukończenia M0 ani deklaracja integracji nowego opakowania.
+
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
 
