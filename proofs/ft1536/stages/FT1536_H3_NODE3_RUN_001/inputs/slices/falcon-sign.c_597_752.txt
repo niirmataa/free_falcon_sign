@@ -1,0 +1,156 @@
+597: static size_t
+598: ffLDL_inner_fft3(fpr *restrict tree, const fpr *restrict g00,
+599: 	const fpr *restrict g10, const fpr *restrict g11,
+600: 	unsigned logn, fpr *restrict tmp)
+601: {
+602: 	size_t n, hn, s;
+603: 	fpr *t0, *t1, *t2;
+604: 
+605: 	n = (size_t)1 << logn;
+606: 	hn = n >> 1;
+607: 
+608: 	if (logn == 1) {
+609: 		/*
+610: 		 * When N = 2, diagonal elements (of D in the LDL
+611: 		 * decomposition) are real numbers (since they are
+612: 		 * auto-adjoint), and there is no need for further
+613: 		 * recursion.
+614: 		 *
+615: 		 * LDL_dim2_fft3() returns d11 (in tmp) and l10
+616: 		 * (two slots, in tree). It will be followed by two
+617: 		 * leaves, corresponding to d00 (which is g00) and d11.
+618: 		 * The two leaves are real numbers (one slot each).
+619: 		 */
+620: 		LDL_dim2_fft3(tmp, tree, g00, g10, g11, logn, 0);
+621: 
+622: 		tree[2] = g00[0];
+623: 		tree[3] = tmp[0];
+624: 		return 4;
+625: 	}
+626: 
+627: 	/*
+628: 	 * Do the LDL, split diagonal elements, and recurse.
+629: 	 * Since d00 = g00, we can do the first recursion
+630: 	 * before the LDL.
+631: 	 */
+632: 	s = n;
+633: 	t0 = tmp;
+634: 	t1 = tmp + hn;
+635: 	t2 = t1 + hn;
+636: 
+637: 	falcon_poly_split_deep_fft3(t0, t1, g00, logn);
+638: 	falcon_poly_adj_fft3(t1, logn - 1, 0);
+639: 	s += ffLDL_inner_fft3(tree + s, t0, t1, t0, logn - 1, t2);
+640: 
+641: 	LDL_dim2_fft3(t2, tree, g00, g10, g11, logn, 0);
+642: 
+643: 	falcon_poly_split_deep_fft3(t0, t1, t2, logn);
+644: 	falcon_poly_adj_fft3(t1, logn - 1, 0);
+645: 	s += ffLDL_inner_fft3(tree + s, t0, t1, t0, logn - 1, t2);
+646: 
+647: 	return s;
+648: }
+649: 
+650: static size_t
+651: ffLDL_depth1_fft3(fpr *restrict tree, const fpr *restrict g00,
+652: 	const fpr *restrict g10, const fpr *restrict g11,
+653: 	const fpr *restrict g20, const fpr *restrict g21,
+654: 	const fpr *restrict g22, unsigned logn, fpr *restrict tmp)
+655: {
+656: 	/*
+657: 	 * At depth 1, we perform a bisection on the elements of the
+658: 	 * input 3x3 matrix.
+659: 	 */
+660: 
+661: 	size_t n, hn, s;
+662: 	fpr *l10, *l20, *l21, *d11, *d22;
+663: 	fpr *t0, *t1, *t2;
+664: 
+665: 	n = (size_t)1 << logn;
+666: 	hn = n >> 1;
+667: 	l10 = tree;
+668: 	l20 = l10 + n;
+669: 	l21 = l20 + n;
+670: 	d11 = tmp;
+671: 	d22 = d11 + n;
+672: 	t0 = d22 + n;
+673: 	t1 = t0 + hn;
+674: 	t2 = t1 + hn;
+675: 	s = 3 * n;
+676: 
+677: 	/*
+678: 	 * LDL decomposition.
+679: 	 */
+680: 	LDL_dim3_fft3(d11, d22, l10, l20, l21,
+681: 		g00, g10, g11, g20, g21, g22, logn, 0, t2);
+682: 
+683: 	/*
+684: 	 * Splits and recursive invocations.
+685: 	 *
+686: 	 * TODO: for N = 6, this would need special code. Right now,
+687: 	 * we simply refuse to handle it, because N = 6 is way too weak
+688: 	 * to have any value anyway.
+689: 	 */
+690: 	falcon_poly_split_deep_fft3(t0, t1, g00, logn);
+691: 	falcon_poly_adj_fft3(t1, logn - 1, 0);
+692: 	s += ffLDL_inner_fft3(tree + s, t0, t1, t0, logn - 1, t2);
+693: 
+694: 	falcon_poly_split_deep_fft3(t0, t1, d11, logn);
+695: 	falcon_poly_adj_fft3(t1, logn - 1, 0);
+696: 	s += ffLDL_inner_fft3(tree + s, t0, t1, t0, logn - 1, t2);
+697: 
+698: 	falcon_poly_split_deep_fft3(t0, t1, d22, logn);
+699: 	falcon_poly_adj_fft3(t1, logn - 1, 0);
+700: 	s += ffLDL_inner_fft3(tree + s, t0, t1, t0, logn - 1, t2);
+701: 
+702: 	return s;
+703: }
+704: 
+705: static size_t
+706: ffLDL_fft3(fpr *restrict tree, const fpr *restrict g00,
+707: 	const fpr *restrict g10, const fpr *restrict g11,
+708: 	unsigned logn, fpr *restrict tmp)
+709: {
+710: 	size_t n, tn, s;
+711: 	fpr *l10, *d11, *t0, *t1, *t2, *t3;
+712: 
+713: 	n = (size_t)3 << (logn - 1);
+714: 	tn = (size_t)1 << (logn - 1);
+715: 	l10 = tree;
+716: 	s = n;
+717: 	t0 = tmp;
+718: 	t1 = t0 + tn;
+719: 	t2 = t1 + tn;
+720: 	t3 = t2 + tn;
+721: 
+722: 	/*
+723: 	 * Formally, we perform the LDL decomposition, _then_ do
+724: 	 * the recursion on split versions of the diagonal elements.
+725: 	 * However, d00 = g00, so we can perform the first recursion
+726: 	 * _before_ computing the LDL; this saves RAM.
+727: 	 */
+728: 
+729: 	/*
+730: 	 * Trisection of d00 for first recursion.
+731: 	 */
+732: 	falcon_poly_split_top_fft3(t0, t1, t2, g00, logn);
+733: 	falcon_poly_adj_fft3(t1, logn - 1, 0);
+734: 	falcon_poly_adj_fft3(t2, logn - 1, 0);
+735: 	s += ffLDL_depth1_fft3(tree + s, t0, t1, t0, t2, t1, t0, logn - 1, t3);
+736: 
+737: 	/*
+738: 	 * Compute LDL decomposition of the top matrix.
+739: 	 */
+740: 	d11 = t3;
+741: 	LDL_dim2_fft3(d11, l10, g00, g10, g11, logn, 1);
+742: 
+743: 	/*
+744: 	 * Trisection of d11 for second recursion.
+745: 	 */
+746: 	falcon_poly_split_top_fft3(t0, t1, t2, d11, logn);
+747: 	falcon_poly_adj_fft3(t1, logn - 1, 0);
+748: 	falcon_poly_adj_fft3(t2, logn - 1, 0);
+749: 	s += ffLDL_depth1_fft3(tree + s, t0, t1, t0, t2, t1, t0, logn - 1, t3);
+750: 
+751: 	return s;
+752: }

@@ -1,0 +1,80 @@
+1243: /* see internal.h */
+1244: void
+1245: falcon_poly_mul_autoadj_fft3(fpr *restrict a,
+1246: 	const fpr *restrict b, unsigned logn, unsigned full)
+1247: {
+1248: 	size_t n, hn, u;
+1249: 
+1250: 	n = MKN(logn, full);
+1251: 	hn = n >> 1;
+1252: 	for (u = 0; u < hn; u ++) {
+1253: 		a[u] = fpr_mul(a[u], b[u]);
+1254: 		a[u + hn] = fpr_mul(a[u + hn], b[u]);
+1255: 	}
+1256: }
+1257: 
+1258: /* see internal.h */
+1259: void
+1260: falcon_poly_div_autoadj_fft3(fpr *restrict a,
+1261: 	const fpr *restrict b, unsigned logn, unsigned full)
+1262: {
+1263: 	size_t n, hn, u;
+1264: 
+1265: 	n = MKN(logn, full);
+1266: 	hn = n >> 1;
+1267: 	for (u = 0; u < hn; u ++) {
+1268: 		a[u] = fpr_div(a[u], b[u]);
+1269: 		a[u + hn] = fpr_div(a[u + hn], b[u]);
+1270: 	}
+1271: }
+1272: 
+1273: /* see internal.h */
+1274: void
+1275: falcon_poly_split_top_fft3(
+1276: 	fpr *restrict f0, fpr *restrict f1, fpr *restrict f2,
+1277: 	const fpr *restrict f, unsigned logn)
+1278: {
+1279: 	size_t n, hn, qn, u, v;
+1280: 
+1281: 	n = (size_t)3 << (logn - 1);
+1282: 	hn = n >> 1;
+1283: 	qn = (size_t)1 << (logn - 2);
+1284: 	for (u = 0, v = 0; u < hn; u += 3, v ++) {
+1285: 		fpr fAr, fAi, fBr, fBi, fCr, fCi, xr, xi;
+1286: 		fpr fB1r, fB1i, fB2r, fB2i, fC1r, fC1i, fC2r, fC2i;
+1287: 		fpr t0r, t0i, t1r, t1i, t2r, t2i;
+1288: 
+1289: 		fAr = f[u];
+1290: 		fAi = f[u + hn];
+1291: 		fBr = f[u + 1];
+1292: 		fBi = f[u + 1 + hn];
+1293: 		fCr = f[u + 2];
+1294: 		fCi = f[u + 2 + hn];
+1295: 
+1296: 		xr = fpr_gm3_cubic[(v << 1) + ((size_t)1 << logn) + 0];
+1297: 		xi = fpr_neg(fpr_gm3_cubic[(v << 1) + ((size_t)1 << logn) + 1]);
+1298: 		FPC_MUL(fB1r, fB1i, fBr, fBi, fpr_W4R, fpr_W4I);
+1299: 		FPC_MUL(fB2r, fB2i, fBr, fBi, fpr_W2R, fpr_W2I);
+1300: 		FPC_MUL(fC1r, fC1i, fCr, fCi, fpr_W4R, fpr_W4I);
+1301: 		FPC_MUL(fC2r, fC2i, fCr, fCi, fpr_W2R, fpr_W2I);
+1302: 
+1303: 		FPC_ADD(fBr, fBi, fBr, fBi, fCr, fCi);
+1304: 		FPC_ADD(t0r, t0i, fAr, fAi, fBr, fBi);
+1305: 
+1306: 		FPC_ADD(fB1r, fB1i, fB1r, fB1i, fC2r, fC2i);
+1307: 		FPC_ADD(fB1r, fB1i, fB1r, fB1i, fAr, fAi);
+1308: 		FPC_MUL(t1r, t1i, xr, xi, fB1r, fB1i);
+1309: 
+1310: 		FPC_SQR(xr, xi, xr, xi);
+1311: 		FPC_ADD(fB2r, fB2i, fB2r, fB2i, fC1r, fC1i);
+1312: 		FPC_ADD(fB2r, fB2i, fB2r, fB2i, fAr, fAi);
+1313: 		FPC_MUL(t2r, t2i, xr, xi, fB2r, fB2i);
+1314: 
+1315: 		f0[v] = fpr_mul(t0r, fpr_inverse_of(3));
+1316: 		f0[v + qn] = fpr_mul(t0i, fpr_inverse_of(3));
+1317: 		f1[v] = fpr_mul(t1r, fpr_inverse_of(3));
+1318: 		f1[v + qn] = fpr_mul(t1i, fpr_inverse_of(3));
+1319: 		f2[v] = fpr_mul(t2r, fpr_inverse_of(3));
+1320: 		f2[v + qn] = fpr_mul(t2i, fpr_inverse_of(3));
+1321: 	}
+1322: }

@@ -1,0 +1,106 @@
+490: /*
+491:  * Perform LDL decomposition of a 2x2 Gram matrix.
+492:  *
+493:  * Input: matrix G = [[g00, g01], [g10, g11]] such that G* = G
+494:  * (hence: adj(g00) = g00, adj(g11) = g11, adj(g01) = g10).
+495:  *
+496:  * Output: L = [[1, 0], [l10, 1]] and D = [[d00, 0], [0, d11]] such
+497:  * that G = L·D·L*.
+498:  *
+499:  * We have d00 = g00, thus that value is omitted from the outputs.
+500:  *
+501:  * All inputs and outputs are in FFT3 representation.
+502:  * Overlap allowed only between the constant inputs (g00, g10, g11).
+503:  */
+504: static void
+505: LDL_dim2_fft3(fpr *restrict d11, fpr *restrict l10,
+506: 	const fpr *restrict g00, const fpr *restrict g10,
+507: 	const fpr *restrict g11, unsigned logn, unsigned full)
+508: {
+509: 	size_t n;
+510: 
+511: 	n = MKN(logn, full);
+512: 
+513: 	/*
+514: 	 * Set l10 = g10/g00.
+515: 	 * Since g00 = adj(g00), FFT representation of g00 contains only
+516: 	 * real numbers.
+517: 	 */
+518: 	memcpy(l10, g10, n * sizeof *g10);
+519: 	falcon_poly_div_autoadj_fft3(l10, g00, logn, full);
+520: 
+521: 	/*
+522: 	 * Set d11 = g11 - g10*adj(g10/g00).
+523: 	 * TODO: g11 = adj(g11), so it should be half-sized (only real
+524: 	 * numbers in FFT representation).
+525: 	 */
+526: 	memcpy(d11, g10, n * sizeof *g10);
+527: 	falcon_poly_muladj_fft3(d11, l10, logn, full);
+528: 	falcon_poly_neg_fft3(d11, logn, full);
+529: 	falcon_poly_add_fft3(d11, g11, logn, full);
+530: }
+531: 
+532: /*
+533:  * Perform LDL decomposition of a Gram 3x3 matrix.
+534:  *
+535:  * Input: matrix G = [[g00, g01, g02], [g10, g11, g12], [g20, g21, g22]]
+536:  * such that G* = G.
+537:  *
+538:  * Output: L = [[1, 0, 0], [l10, 1, 0], [l20, l21, 1]], and
+539:  * D = [[d00, 0, 0], [0, d11, 0], [0, 0, d22]] such that G = L·D·L*.
+540:  *
+541:  * We have d00 = g00, thus that value is omitted from the outputs.
+542:  *
+543:  * All inputs and outputs are in FFT3 representation.
+544:  * Overlap allowed only between the constant inputs (g00, g10, g11).
+545:  * tmp[] must have room for one polynomial.
+546:  */
+547: static void
+548: LDL_dim3_fft3(fpr *restrict d11, fpr *restrict d22,
+549: 	fpr *restrict l10, fpr *restrict l20, fpr *restrict l21,
+550: 	const fpr *restrict g00, const fpr *restrict g10,
+551: 	const fpr *restrict g11, const fpr *restrict g20,
+552: 	const fpr *restrict g21, const fpr *restrict g22,
+553: 	unsigned logn, unsigned full, fpr *restrict tmp)
+554: {
+555: 	size_t n;
+556: 
+557: 	n = MKN(logn, full);
+558: 
+559: 	/*
+560: 	 * l10 = g10/g00
+561: 	 * d11 = g11 - g10*adj(g10/g00)
+562: 	 * These are the same formulas as the LDL decomposition of a 2x2
+563: 	 * matrix.
+564: 	 */
+565: 	LDL_dim2_fft3(d11, l10, g00, g10, g11, logn, full);
+566: 
+567: 	/*
+568: 	 * l20 = g20/g00
+569: 	 */
+570: 	memcpy(l20, g20, n * sizeof *g20);
+571: 	falcon_poly_div_autoadj_fft3(l20, g00, logn, full);
+572: 
+573: 	/*
+574: 	 * l21 = (g21 - g20*adj(g10)/g00) / d11
+575: 	 * Note that d11 = adj(d11)
+576: 	 */
+577: 	memcpy(l21, g20, n * sizeof *g20);
+578: 	falcon_poly_muladj_fft3(l21, g10, logn, full);
+579: 	falcon_poly_div_autoadj_fft3(l21, g00, logn, full);
+580: 	falcon_poly_neg_fft3(l21, logn, full);
+581: 	falcon_poly_add_fft3(l21, g21, logn, full);
+582: 	falcon_poly_div_autoadj_fft3(l21, d11, logn, full);
+583: 
+584: 	/*
+585: 	 * d22 = g22 - l20*adj(g20) - l21*adj(l21)*d11
+586: 	 */
+587: 	memcpy(d22, l20, n * sizeof *l20);
+588: 	falcon_poly_muladj_fft3(d22, g20, logn, full);
+589: 	falcon_poly_neg_fft3(d22, logn, full);
+590: 	falcon_poly_add_fft3(d22, g22, logn, full);
+591: 	memcpy(tmp, l21, n * sizeof *l21);
+592: 	falcon_poly_mulselfadj_fft3(tmp, logn, full);
+593: 	falcon_poly_mul_autoadj_fft3(tmp, d11, logn, full);
+594: 	falcon_poly_sub_fft3(d22, tmp, logn, full);
+595: }

@@ -1,0 +1,56 @@
+formal/NodeConstants.lean:25:12: error: failed to synthesize
+  Decidable (Valid branch0)
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+formal/NodeConstants.lean:25:12: error: failed to synthesize
+  Decidable (Valid branch1)
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+formal/NodeConstants.lean:26:57: error: Tactic `decide` failed for proposition
+  1 / 4 - 1 / 256 > 1 / 8
+because its `Decidable` instance
+  (1 / 8).instDecidableLt (1 / 4 - 1 / 256)
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `instDecidableEqBool`, `Bool.decEq`, `Int.decLt`, `Int.decNonneg`, and `Rat.instDecidableLt`, reduction got stuck at the `Decidable` instance
+  match (1 / 8).blt (1 / 4 - 1 / 256), true with
+  | false, false => isTrue ⋯
+  | false, true => isFalse ⋯
+  | true, false => isFalse ⋯
+  | true, true => isTrue ⋯
+formal/NodeConstants.lean:27:50: error: Tactic `decide` failed for proposition
+  16 - 2 > 8
+because its `Decidable` instance
+  Rat.instDecidableLt 8 (16 - 2)
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `decEq`, `instDecidableEqBool`, `instDecidableEqNat`, `Bool.decEq`, `Int.decEq`, `Int.decLe`, `Int.decLt`, `Int.decNonneg`, `Int.instDecidableEq`, `Nat.decEq`, and `Rat.instDecidableLt`, reduction got stuck at the `Decidable` instance
+  match Rat.blt 8 (16 - 2), true with
+  | false, false => isTrue ⋯
+  | false, true => isFalse ⋯
+  | true, false => isFalse ⋯
+  | true, true => isTrue ⋯
+formal/NodeConstants.lean:31:12: error: Tactic `decide` failed for proposition
+  1 / 16 ≤ branch0.dlo ∧ branch0.dhi < 34359738368
+because its `Decidable` instance
+  instDecidableAnd
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `instDecidableAnd`, `instDecidableEqBool`, `Bool.decEq`, `Int.decLt`, `Int.decNonneg`, and `Rat.instDecidableLe`, reduction got stuck at the `Decidable` instance
+  match branch0.dlo.blt (1 / 16), false with
+  | false, false => isTrue ⋯
+  | false, true => isFalse ⋯
+  | true, false => isFalse ⋯
+  | true, true => isTrue ⋯
+formal/NodeConstants.lean:31:12: error: Tactic `decide` failed for proposition
+  1 / 16 ≤ branch1.dlo ∧ branch1.dhi < 34359738368
+because its `Decidable` instance
+  instDecidableAnd
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `decEq`, `instDecidableAnd`, `instDecidableEqBool`, `instDecidableEqNat`, `Bool.decEq`, `Int.decEq`, `Int.decLe`, `Int.decLt`, `Int.decNonneg`, `Int.instDecidableEq`, `Nat.decEq`, and `Rat.instDecidableLe`, reduction got stuck at the `Decidable` instance
+  match branch1.dlo.blt (1 / 16), false with
+  | false, false => isTrue ⋯
+  | false, true => isFalse ⋯
+  | true, false => isFalse ⋯
+  | true, true => isTrue ⋯

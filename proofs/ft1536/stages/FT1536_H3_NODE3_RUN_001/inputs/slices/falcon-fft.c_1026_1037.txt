@@ -1,0 +1,12 @@
+1026: /* see internal.h */
+1027: void
+1028: falcon_poly_adj_fft3(fpr *a, unsigned logn, unsigned full)
+1029: {
+1030: 	size_t n, hn, u;
+1031: 
+1032: 	n = MKN(logn, full);
+1033: 	hn = n >> 1;
+1034: 	for (u = hn; u < n; u ++) {
+1035: 		a[u] = fpr_neg(a[u]);
+1036: 	}
+1037: }

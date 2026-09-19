@@ -1,0 +1,8 @@
+--- inputs/bootstrap/ROOT/scripts/run.py
++++ scripts/run.py
+@@ -1,4 +1,4 @@
+-"""Bounded H3_ROOT_LDL jobs; only W writable, bootstrap/source read-only."""
++"""Bounded H3_NODE3 jobs, only W writable; bootstrap/source read-only."""
+ import datetime,fcntl,hashlib,json,os,resource,signal,subprocess,sys,time
+ from pathlib import Path
+ W=Path(__file__).absolute().parents[1];limit=int(sys.argv[1]);argv=sys.argv[2:]

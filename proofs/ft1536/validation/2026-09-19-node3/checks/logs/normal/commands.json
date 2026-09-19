@@ -1,0 +1,98 @@
+[
+  {
+    "argv": [
+      "/usr/bin/gcc",
+      "-W",
+      "-Wall",
+      "-O",
+      "-DFPR_IMPL=\"fpr-emulated.h\"",
+      "-DSAMPLER_CODF=0",
+      "-DSAMPLER_CDF=0",
+      "-DCT_BEREXP=1",
+      "-DFT_TERNARY_ADAPTIVE_CDF=1",
+      "-DFT1536_CANDIDATE_PROFILE=1",
+      "-DCLEANSE=1",
+      "-DTRUE_TERNARY_SECRET=1",
+      "-DTRUE_TERNARY_SECRET_MODE=1",
+      "-DTERNARY_KEYGEN_BOUND_SCALE_NUM=1250",
+      "-DTERNARY_KEYGEN_BOUND_SCALE_DEN=100",
+      "-DTERNARY_KEYGEN_MAX_ATTEMPTS=3000000",
+      "-DSIGN_MAX_ATTEMPTS=16",
+      "-std=c99",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-Isource",
+      "checks/node.c",
+      "source/falcon-fft.c",
+      "source/fpr-emulated.c",
+      "-Wl,--gc-sections",
+      "-lm",
+      "-o",
+      "bin/node_normal"
+    ],
+    "cwd": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_H3_NODE3_RUN_001/maintainer-replay-001/seed/tmp/replay",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.44975801499094814,
+    "stdout": "checks/logs/normal/compile.stdout",
+    "stderr": "checks/logs/normal/compile.stderr",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/node_normal",
+      "inverse"
+    ],
+    "cwd": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_H3_NODE3_RUN_001/maintainer-replay-001/seed/tmp/replay",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.0007941960066091269,
+    "stdout": "checks/logs/normal/inverse.stdout",
+    "stderr": "checks/logs/normal/inverse.stderr",
+    "stdout_sha256": "b4f2280a57a07861fb2ddf025a37a4f33e7c3b35e69c24f5a156761b2a0d5c83",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/node_normal",
+      "scalar"
+    ],
+    "cwd": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_H3_NODE3_RUN_001/maintainer-replay-001/seed/tmp/replay",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.0007419839967042208,
+    "stdout": "checks/logs/normal/scalar.stdout",
+    "stderr": "checks/logs/normal/scalar.stderr",
+    "stdout_sha256": "32a8816999f341336082d91329231e315d34aa8b68c3c79345696f8c9a1814e6",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/node_normal",
+      "branch0"
+    ],
+    "cwd": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_H3_NODE3_RUN_001/maintainer-replay-001/seed/tmp/replay",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.002118306001648307,
+    "stdout": "checks/logs/normal/branch0.stdout",
+    "stderr": "checks/logs/normal/branch0.stderr",
+    "stdout_sha256": "f4daf338896ee629de42f78aaefe56aaf7fe92235e55376cae49e9493c88f105",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/node_normal",
+      "branch1"
+    ],
+    "cwd": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_H3_NODE3_RUN_001/maintainer-replay-001/seed/tmp/replay",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.0021391590125858784,
+    "stdout": "checks/logs/normal/branch1.stdout",
+    "stderr": "checks/logs/normal/branch1.stderr",
+    "stdout_sha256": "c09a44880a126d82e2d3872e72a3f2f7f573559d1f2cb9c20e7eedb1b96b7fea",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

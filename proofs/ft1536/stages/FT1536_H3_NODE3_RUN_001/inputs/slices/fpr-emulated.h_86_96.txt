@@ -1,0 +1,11 @@
+86: static inline fpr
+87: fpr_of(int64_t i)
+88: {
+89: 	return fpr_scaled(i, 0);
+90: }
+91: 
+92: static inline fpr
+93: fpr_inverse_of(long i)
+94: {
+95: 	return fpr_div(fpr_one, fpr_of(i));
+96: }

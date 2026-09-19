@@ -1,0 +1,78 @@
+--- inputs/bootstrap/ROOT/scripts/ledger.py
++++ scripts/ledger.py
+@@ -2,39 +2,43 @@
+ from pathlib import Path
+ from replaylib import sha
+ W=Path.cwd();numeric=json.loads((W/'artifacts/numeric_certificate.json').read_text());audit=json.loads((W/'artifacts/formal_audit.json').read_text())
+-assert numeric['status']=='PASS_EXACT_COMPOSITION' and audit['all_final_logs_clean']
++assert numeric['status']=='PASS_UNIFORM_C3_COMPOSITION' and audit['all_final_logs_clean']
+ assert json.loads((W/'artifacts/controls_normal.json').read_text())==json.loads((W/'artifacts/controls_san.json').read_text())
+-status='H3_ROOT_LDL_PROVED_FOR_PINNED_MODEL'
++status='H3_NODE3_PROVED_FOR_PINNED_MODEL'
+ flags=dict(H3_range_proved=False,global_reachability_proved=False,full_internal_tree_proved=False,sampler_law_proved=False,security_reduction_proved=False,
+  baseline_source_integrated=True,source_changed=False,new_source_patch_integrated=False,protocol_wrapper_integrated=False,owner_accepted=False)
+ spec=[
+- ('EMITTED_BINDING','PROVED_SOURCE_ANALYTIC_WITH_EXACT_CERTIFICATE','Emitted same-key decoding implies caps/NTRU/mandatory Gate00_C; serializers and exact final modular check accounted.', ['EMITTED_BINDING.md','artifacts/emitted_certificate.json','artifacts/source_binding.json']),
+- ('FFT_DOMAIN_ERROR','PROVED_SOURCE_ANALYTIC_WITH_EXACT_CERTIFICATE','All N1536 coefficients/frequencies; epsilon_fg=2^-26, epsilon_FG=2^-15; new active-backend domains.', ['ANALYTIC_PROOF.md','artifacts/numeric_certificate.json','formal/RootDiv.lean']),
+- ('ROOT_GRAM','PROVED_SOURCE_ANALYTIC_WITH_EXACT_CERTIFICATE','BB* orientation, errors A<1/1024, C norm<1, J<1024; a/c/j correlations retained.', ['ANALYTIC_PROOF.md','artifacts/numeric_certificate.json','artifacts/emitted_certificate.json']),
+- ('ROOT_DIVISOR','PROVED_SOURCE_ANALYTIC','All g00 real in[1/2,2^23), positive normal; legal div/reciprocal domain and matching gate/loader.', ['EMITTED_BINDING.md','ROOT_FRAME.md','ANALYTIC_PROOF.md']),
+- ('ROOT_MULTIPLIER','PROVED_SOURCE_ANALYTIC_WITH_KERNEL_DIVISION','Actual per-component div; norm L<2^25, norm error<2^14.', ['ANALYTIC_PROOF.md','formal/RootDiv.lean','formal/RootModel.lean']),
+- ('SUBTRACTIVE_SCHUR','PROVED_SOURCE_ANALYTIC_WITH_EXACT_CERTIFICATE','Actual muladj/neg/add; 32<Re(D_C)<2^31, complex error<2^22 versus q²/A.', ['ANALYTIC_PROOF.md','artifacts/numeric_certificate.json','formal/RootBounds.lean']),
+- ('IMAGINARY_ERROR','PROVED_SOURCE_ANALYTIC','g00/g11 imag raw+0 by stores; |Im D_C|<32, not assumed identical zero.', ['ANALYTIC_PROOF.md','artifacts/numeric_certificate.json']),
+- ('ROOT_FRAME','PROVED_SOURCE_ANALYTIC_WITH_KERNEL_STORE_FRAME','Defined actual prefix to root preserves original g00/g10/g11. Earlier subtree numerical correctness remains separate.', ['ROOT_FRAME.md','formal/RootFrame.lean','artifacts/controls_normal.json']),
+- ('RECURSIVE_TREE_OPEN','OPEN','Uniform source split_top/LDL_dim3/split_deep/internal-node positivity/errors with propagated imaginary terms.', ['NEXT_INTERFACE.md']),
+- ('INITIAL_TARGETS_OPEN','OPEN','Source FFT3(c), basis products and inverse(q) target initialization.', ['NEXT_INTERFACE.md','inputs/bootstrap/H3/REACHABILITY.md']),
+- ('ORDERED_REACH_OPEN','OPEN','Emitted/M0 ordered prefix -> NumericCenter, including pre-dss/norm-rejected attempts and fault branches.', ['NEXT_INTERFACE.md','inputs/bootstrap/M0/H3_INTERFACE.md'])]
+-rows=[]
+-for id,s,claim,files in spec:
+- rows.append(dict(id=id,status=s,claim=claim,evidence=[dict(path=r,sha256=sha(W/r)) for r in files]))
+-out=dict(schema='H3_ROOT_BOUND_LEDGER_V1',status=status,rows=rows,constants=numeric['constants'],proof_kind='MIXED_KERNEL_AND_UNIVERSAL_ANALYTICAL_SOURCE_PROOF',full_root_theorem_kernelized=False,**flags)
+-root=dict(schema='H3_ROOT_CERTIFICATE_V1',status=status,required_support='All Emitted_C with source roundtrip of the same sk; proved superset P_key',
+- P_key=['length1536 and ternary f,g','abs(F_i),abs(G_i)<=2047','fG-gF=18433 mod X^1536-X^768+1','actual mandatory Gate00_C, derived from Emitted'],
+- unresolved_numerical_premises=[],api_model_premises=['GCC14.2/C99/Linux x86_64 LP64 active portable FPEMU','legal sizes, buffers, lifetimes and disjoint output/scratch allocations','operational defined successful Emitted_C; same bytes source decoding'],
+- root_slice='of/FFT3; B=[[g,-f],[G,-F]]; source Gram; per-component div; muladj/neg/add',
+- constants=numeric['constants'],fft_map=numeric['fft_map'],correlated_schur_envelope='|D_C-|det(Bhat)|²/a|<=256*2^-48*j, with a/c/j exact Gram of computed FFT values',
+- proof_kind=out['proof_kind'],full_root_theorem_kernelized=False,C_compiler_kernel_refinement=False,
+- evidence=[dict(path=r,sha256=sha(W/r)) for r in ['ANALYTIC_PROOF.md','EMITTED_BINDING.md','ROOT_FRAME.md','artifacts/numeric_certificate.json','artifacts/emitted_certificate.json','artifacts/formal_audit.json']],**flags)
+-ob=dict(schema='H3_ROOT_OBLIGATIONS_V1',local_status=status,local_root_open=[],obligations=rows[8:]+[dict(id='SAMPLER_LAW_OPEN',status='OPEN',claim='Separate distribution/acceptance interface; no automatic global loss or abort.')],
+- optional_kernelization='Complete source-error/root/emitted composition currently proved analytically, not a completed kernel C theorem.',next_lemma_document='NEXT_INTERFACE.md',**flags)
+-for name,data in [('BOUND_LEDGER.json',out),('ROOT_CERTIFICATE.json',root),('OBLIGATIONS.json',ob)]:
+- with (W/name).open('w') as f:json.dump(data,f,indent=2);f.write('\n')
+-lines=['# H3_ROOT_LDL — bound ledger','',status,'','| ID | Status | Claim |','|---|---|---|']
+-lines += ['| '+r['id']+' | '+r['status']+' | '+r['claim']+' |' for r in rows]
+-lines+=['','Full piny evidence i rational constants: BOUND_LEDGER.json / ROOT_CERTIFICATE.json.','Proof mixed analytic/kernel; full_root_theorem_kernelized=false.','Global Reach, internal tree, sampler law i security reduction pozostają false.']
+-(W/'BOUND_LEDGER.md').write_text('\n'.join(lines)+'\n');print(json.dumps(dict(status=status,rows=len(rows),constants=numeric['constants'],**flags),indent=2))
++ ('ROOT_CONSUMPTION','PROVED_REUSED_WITH_PREMISES_DISCHARGED','Unchanged P_key; ROOT correlated spectrum/Gram envelope and chronological g00 facts.', ['ROOT_CONSUMPTION.md','inputs/bootstrap/ROOT/ROOT_CERTIFICATE.json']),
++ ('SPLIT_TOP_MAP','PROVED_ANALYTIC_WITH_EXACT_IDENTITIES','All256 positions; x,x omega,x omega² -> x³, child real j/imag j+256; phased unitary Hermitian Gram.', ['ANALYTIC_PROOF.md','artifacts/numeric_certificate.json','formal/NodeInverse.lean']),
++ ('SPLIT_TOP_ERROR','PROVED_SOURCE_ANALYTIC_WITH_EXACT_CERTIFICATE','Source six kappa multiplications, not ideal1/3; errors1/8192 and1/16.', ['ANALYTIC_PROOF.md','formal/NodeInverse.lean','artifacts/numeric_certificate.json']),
++ ('ADJ_AND_IMAGINARY','PROVED_SOURCE_ANALYTIC_WITH_KERNEL_DATAFLOW','Adj sign flip preserved; diagonal-only projection is a proof object, actual imaginary words remain.', ['ANALYTIC_PROOF.md','formal/NodeDataflow.lean','artifacts/controls_normal.json']),
++ ('FIRST_DIVISOR','PROVED_SOURCE_ANALYTIC','Hermitian comparison eigen lower1/4 or16 gives first real t0 domain before division.', ['ANALYTIC_PROOF.md','artifacts/numeric_certificate.json']),
++ ('NODE3_D11','PROVED_SOURCE_ANALYTIC_WITH_EXACT_CERTIFICATE','Positive real d11 lower1/8 or8, normal and bounded, established before final L21 division.', ['ANALYTIC_PROOF.md','artifacts/numeric_certificate.json','formal/NodeConstants.lean']),
++ ('NODE3_L10_L20_L21','PROVED_SOURCE_ANALYTIC_WITH_EXACT_CERTIFICATE','Actual per-component divisions/order; norms<2,<2,<4, explicit errors to exact reference and H.', ['ANALYTIC_PROOF.md','artifacts/numeric_certificate.json']),
++ ('NODE3_D22','PROVED_SOURCE_ANALYTIC_WITH_EXACT_CERTIFICATE','Actual subtractive d22 with real-slot tmp*d11; positive lower1/8 or8, imaginary/error bounds separate.', ['ANALYTIC_PROOF.md','formal/NodeDataflow.lean','artifacts/numeric_certificate.json']),
++ ('PRIMITIVE_DOMAINS','PROVED_SOURCE_ANALYTIC_WITH_KERNEL_INTEGER_LEMMAS','New div[1/16,2^35], operands<=2^100, exp0/underflow/pack and inverse3 accounted; no complete IEEE assumption.', ['ANALYTIC_PROOF.md','formal/NodeInverse.lean','artifacts/model_values.json']),
++ ('NODE3_FRAME','PROVED_SOURCE_ANALYTIC_WITH_KERNEL_FRAME','All source repeated const aliases, branch1 storage reuse and defined-prefix binding; no lower-tree totality claim.', ['NODE3_FRAME.md','formal/NodeFrame.lean','artifacts/controls_normal.json']),
++ ('LOWER_TREE_OPEN','OPEN','split_deep/inner positive pivots, imaginary propagation and all lower levels.', ['NEXT_INTERFACE.md']),
++ ('INITIAL_TARGETS_OPEN','OPEN','Independent source FFT(c)/basis products/inverse(q) initialization.', ['NEXT_INTERFACE.md','inputs/bootstrap/H3/REACHABILITY.md']),
++ ('ORDERED_REACH_OPEN','OPEN','Full emitted/M0 prefix -> NumericCenter before ZERO residual use, including pre-dss/norm rejection/fault handling.', ['NEXT_INTERFACE.md','inputs/bootstrap/M0/H3_INTERFACE.md'])]
++rows=[dict(id=id,status=s,claim=claim,evidence=[dict(path=r,sha256=sha(W/r)) for r in files]) for id,s,claim,files in spec]
++layer='MIXED_KERNEL_AND_UNIVERSAL_ANALYTICAL_SOURCE_PROOF'
++out=dict(schema='H3_NODE3_BOUND_LEDGER_V1',status=status,rows=rows,constants=numeric['constants'],proof_kind=layer,full_node3_theorem_kernelized=False,**flags)
++node=dict(schema='H3_NODE3_CERTIFICATE_V1',status=status,uniform_record='One fixed c3 with two branch records, independent of p and j.',
++ required_domain='For all Key4 p with the exact ROOT P_key, both b in Fin2 and every j in Fin256; inherited Emitted_C same-STATIC-decode binding.',
++ unresolved_numerical_premises=[],api_model_premises=['GCC14.2/C99/Linux x86_64 LP64 portable FPEMU with pinned Makefile flags','legal sizes/lifetimes; outputs and scratch disjoint from const inputs; repeated const aliases allowed'],
++ source_slice='SplitTop_C(v,10); Adj(t1/t2,9,0); LDL_dim3_C(t0,u1,t0,u2,u1,t0,9,0)',
++ constants=numeric['constants'],inverse3=numeric['inverse3'],split_map=numeric['split_map'],primitive=numeric['primitive'],
++ stronger_comparison=dict(H='Hermitian h=Re(t0), lower u1,u2,u1; proof object, not changed C',eigen_lower=['1/4','16'],
++  symmetry='||u1|-|u2||<=2s; |q2-d|<=4s',source_errors='real d11 error<=64U*h; real d22<=65536U*h; L21 error<=1024U*h/d',
++  imag='tau=Im(t0), |tau|<=h; pivot imaginary parts close to tau; tmp imaginary raw+0'),
++ proof_kind=layer,full_node3_theorem_kernelized=False,C_compiler_kernel_refinement=False,
++ evidence=[dict(path=r,sha256=sha(W/r)) for r in ['ANALYTIC_PROOF.md','ROOT_CONSUMPTION.md','NODE3_FRAME.md','artifacts/numeric_certificate.json','artifacts/formal_audit.json']],**flags)
++ob=dict(schema='H3_NODE3_OBLIGATIONS_V1',local_status=status,local_node3_open=[],obligations=rows[10:]+[dict(id='SAMPLER_LAW_OPEN',status='OPEN',claim='Independent distribution/acceptance/hybrid interface; no automatic loss or abort.')],
++ optional_kernelization='Full universal source spectral/error composition is proved analytically, not a completed kernel C theorem.',next_lemma_document='NEXT_INTERFACE.md',**flags)
++for name,data in [('BOUND_LEDGER.json',out),('NODE3_CERTIFICATE.json',node),('OBLIGATIONS.json',ob)]:
++ (W/name).write_text(json.dumps(data,indent=2)+'\n')
++lines=['# H3_NODE3 — bound ledger','',status,'','| ID | Status | Claim |','|---|---|---|']
++lines+=['| '+r['id']+' | '+r['status']+' | '+r['claim']+' |' for r in rows]
++lines+=['','Pełne c3/evidence/piny: JSON. Mixed analytic/kernel; full_node3_theorem_kernelized=false.','Lower tree, targets, global Reach i sampler law pozostają otwarte.']
++(W/'BOUND_LEDGER.md').write_text('\n'.join(lines)+'\n');print(json.dumps(dict(status=status,rows=len(rows),branches=len(numeric['constants']),**flags),indent=2))

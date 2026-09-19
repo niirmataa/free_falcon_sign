@@ -1,0 +1,227 @@
+{
+  "schema": "H3_ROOT_BOUND_LEDGER_V1",
+  "status": "H3_ROOT_LDL_PROVED_FOR_PINNED_MODEL",
+  "rows": [
+    {
+      "id": "EMITTED_BINDING",
+      "status": "PROVED_SOURCE_ANALYTIC_WITH_EXACT_CERTIFICATE",
+      "claim": "Emitted same-key decoding implies caps/NTRU/mandatory Gate00_C; serializers and exact final modular check accounted.",
+      "evidence": [
+        {
+          "path": "EMITTED_BINDING.md",
+          "sha256": "7dd3be1172eb31f6b497a709d9299492e1731e139e515446c25c271e563a57a5"
+        },
+        {
+          "path": "artifacts/emitted_certificate.json",
+          "sha256": "05bedbc10b633ca0ef0faacc8a36a728e3028e96f2dccb684d8abfb6dc8dba9d"
+        },
+        {
+          "path": "artifacts/source_binding.json",
+          "sha256": "1218b6171d6fac8867b96a5f09a9b7877efb2edfcf4b93338d20318c2ee7dae4"
+        }
+      ]
+    },
+    {
+      "id": "FFT_DOMAIN_ERROR",
+      "status": "PROVED_SOURCE_ANALYTIC_WITH_EXACT_CERTIFICATE",
+      "claim": "All N1536 coefficients/frequencies; epsilon_fg=2^-26, epsilon_FG=2^-15; new active-backend domains.",
+      "evidence": [
+        {
+          "path": "ANALYTIC_PROOF.md",
+          "sha256": "e2caa8b9d7996a241bee2e6bb8a478eadf031279860cdaf586daa3473ed69ef7"
+        },
+        {
+          "path": "artifacts/numeric_certificate.json",
+          "sha256": "5190ddf21d676ebf1045a35c29b9600b26ee461aa86b58e0d2012d6db8564c10"
+        },
+        {
+          "path": "formal/RootDiv.lean",
+          "sha256": "b7a1cfde55f619e306fb1a6bfae21fc3230b65b61f6190598b1acfd1a3ea616d"
+        }
+      ]
+    },
+    {
+      "id": "ROOT_GRAM",
+      "status": "PROVED_SOURCE_ANALYTIC_WITH_EXACT_CERTIFICATE",
+      "claim": "BB* orientation, errors A<1/1024, C norm<1, J<1024; a/c/j correlations retained.",
+      "evidence": [
+        {
+          "path": "ANALYTIC_PROOF.md",
+          "sha256": "e2caa8b9d7996a241bee2e6bb8a478eadf031279860cdaf586daa3473ed69ef7"
+        },
+        {
+          "path": "artifacts/numeric_certificate.json",
+          "sha256": "5190ddf21d676ebf1045a35c29b9600b26ee461aa86b58e0d2012d6db8564c10"
+        },
+        {
+          "path": "artifacts/emitted_certificate.json",
+          "sha256": "05bedbc10b633ca0ef0faacc8a36a728e3028e96f2dccb684d8abfb6dc8dba9d"
+        }
+      ]
+    },
+    {
+      "id": "ROOT_DIVISOR",
+      "status": "PROVED_SOURCE_ANALYTIC",
+      "claim": "All g00 real in[1/2,2^23), positive normal; legal div/reciprocal domain and matching gate/loader.",
+      "evidence": [
+        {
+          "path": "EMITTED_BINDING.md",
+          "sha256": "7dd3be1172eb31f6b497a709d9299492e1731e139e515446c25c271e563a57a5"
+        },
+        {
+          "path": "ROOT_FRAME.md",
+          "sha256": "921d254b6da9d91978e8e44cbfbf11e721b89e12208a91979cfa169157a4d681"
+        },
+        {
+          "path": "ANALYTIC_PROOF.md",
+          "sha256": "e2caa8b9d7996a241bee2e6bb8a478eadf031279860cdaf586daa3473ed69ef7"
+        }
+      ]
+    },
+    {
+      "id": "ROOT_MULTIPLIER",
+      "status": "PROVED_SOURCE_ANALYTIC_WITH_KERNEL_DIVISION",
+      "claim": "Actual per-component div; norm L<2^25, norm error<2^14.",
+      "evidence": [
+        {
+          "path": "ANALYTIC_PROOF.md",
+          "sha256": "e2caa8b9d7996a241bee2e6bb8a478eadf031279860cdaf586daa3473ed69ef7"
+        },
+        {
+          "path": "formal/RootDiv.lean",
+          "sha256": "b7a1cfde55f619e306fb1a6bfae21fc3230b65b61f6190598b1acfd1a3ea616d"
+        },
+        {
+          "path": "formal/RootModel.lean",
+          "sha256": "ba65341926fb6627fd314d5951b4df26f55c01d14af2092f45bd5d76687abb88"
+        }
+      ]
+    },
+    {
+      "id": "SUBTRACTIVE_SCHUR",
+      "status": "PROVED_SOURCE_ANALYTIC_WITH_EXACT_CERTIFICATE",
+      "claim": "Actual muladj/neg/add; 32<Re(D_C)<2^31, complex error<2^22 versus q\u00b2/A.",
+      "evidence": [
+        {
+          "path": "ANALYTIC_PROOF.md",
+          "sha256": "e2caa8b9d7996a241bee2e6bb8a478eadf031279860cdaf586daa3473ed69ef7"
+        },
+        {
+          "path": "artifacts/numeric_certificate.json",
+          "sha256": "5190ddf21d676ebf1045a35c29b9600b26ee461aa86b58e0d2012d6db8564c10"
+        },
+        {
+          "path": "formal/RootBounds.lean",
+          "sha256": "84e07ca306cc2cddb38a24bd55155c7215b2962927b2cb7f44e8d03a6ea96606"
+        }
+      ]
+    },
+    {
+      "id": "IMAGINARY_ERROR",
+      "status": "PROVED_SOURCE_ANALYTIC",
+      "claim": "g00/g11 imag raw+0 by stores; |Im D_C|<32, not assumed identical zero.",
+      "evidence": [
+        {
+          "path": "ANALYTIC_PROOF.md",
+          "sha256": "e2caa8b9d7996a241bee2e6bb8a478eadf031279860cdaf586daa3473ed69ef7"
+        },
+        {
+          "path": "artifacts/numeric_certificate.json",
+          "sha256": "5190ddf21d676ebf1045a35c29b9600b26ee461aa86b58e0d2012d6db8564c10"
+        }
+      ]
+    },
+    {
+      "id": "ROOT_FRAME",
+      "status": "PROVED_SOURCE_ANALYTIC_WITH_KERNEL_STORE_FRAME",
+      "claim": "Defined actual prefix to root preserves original g00/g10/g11. Earlier subtree numerical correctness remains separate.",
+      "evidence": [
+        {
+          "path": "ROOT_FRAME.md",
+          "sha256": "921d254b6da9d91978e8e44cbfbf11e721b89e12208a91979cfa169157a4d681"
+        },
+        {
+          "path": "formal/RootFrame.lean",
+          "sha256": "3ae7cc184f12865bccf8a73af3a76fbb1851a173e240e6b9d1cffb7357b53118"
+        },
+        {
+          "path": "artifacts/controls_normal.json",
+          "sha256": "dcc41cd83d8d8081db0ff65b93fad39450ec515a7a5ae5a8e03b39d83b85f4e7"
+        }
+      ]
+    },
+    {
+      "id": "RECURSIVE_TREE_OPEN",
+      "status": "OPEN",
+      "claim": "Uniform source split_top/LDL_dim3/split_deep/internal-node positivity/errors with propagated imaginary terms.",
+      "evidence": [
+        {
+          "path": "NEXT_INTERFACE.md",
+          "sha256": "1e17e35ecbb91c410ec66f95d773c62933c1e8234283494228aac46223584952"
+        }
+      ]
+    },
+    {
+      "id": "INITIAL_TARGETS_OPEN",
+      "status": "OPEN",
+      "claim": "Source FFT3(c), basis products and inverse(q) target initialization.",
+      "evidence": [
+        {
+          "path": "NEXT_INTERFACE.md",
+          "sha256": "1e17e35ecbb91c410ec66f95d773c62933c1e8234283494228aac46223584952"
+        },
+        {
+          "path": "inputs/bootstrap/H3/REACHABILITY.md",
+          "sha256": "b44ea093f97c66a186abca0ac8c1d8a680bd3feec1f9121e165c5f623f1809e2"
+        }
+      ]
+    },
+    {
+      "id": "ORDERED_REACH_OPEN",
+      "status": "OPEN",
+      "claim": "Emitted/M0 ordered prefix -> NumericCenter, including pre-dss/norm-rejected attempts and fault branches.",
+      "evidence": [
+        {
+          "path": "NEXT_INTERFACE.md",
+          "sha256": "1e17e35ecbb91c410ec66f95d773c62933c1e8234283494228aac46223584952"
+        },
+        {
+          "path": "inputs/bootstrap/M0/H3_INTERFACE.md",
+          "sha256": "2e427f66d242cd4a95f777b9be8948ced315d3c683727d21e965c5fb3934e97c"
+        }
+      ]
+    }
+  ],
+  "constants": {
+    "fft_component_error_fg": "1/67108864",
+    "fft_component_error_FG": "1/32768",
+    "gram_error_A": "1/1024",
+    "gram_error_C_norm": "1",
+    "gram_error_J": "1024",
+    "fft_component_abs_fg": "103079215105/67108864",
+    "fft_component_abs_FG": "103028883457/32768",
+    "source_g10_norm_upper": "34359738368",
+    "source_g11_real_lower": "1/8",
+    "source_g11_real_upper": "35184372088832",
+    "source_g00_real_lower": "1/2",
+    "source_g00_real_upper": "8388608",
+    "source_L_norm_upper": "33554432",
+    "L_error_norm_upper": "16384",
+    "source_D_real_lower": "32",
+    "source_D_real_upper": "2147483648",
+    "source_D_error_norm_upper": "4194304",
+    "source_D_imag_abs_upper": "32"
+  },
+  "proof_kind": "MIXED_KERNEL_AND_UNIVERSAL_ANALYTICAL_SOURCE_PROOF",
+  "full_root_theorem_kernelized": false,
+  "H3_range_proved": false,
+  "global_reachability_proved": false,
+  "full_internal_tree_proved": false,
+  "sampler_law_proved": false,
+  "security_reduction_proved": false,
+  "baseline_source_integrated": true,
+  "source_changed": false,
+  "new_source_patch_integrated": false,
+  "protocol_wrapper_integrated": false,
+  "owner_accepted": false
+}

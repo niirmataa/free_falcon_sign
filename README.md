@@ -27,8 +27,10 @@ and its explicit C model.** M0 now defines the protocol/game/resource contract
 and proves the STATIC capacity bound. **H3_ZERO_SCALAR proves the local
 zero-aware floor/cast/residual interface**, using kernel and universal
 analytical source proofs. **H3_ROOT_LDL certifies the source FFT/Gram and
-subtractive LDL root** for the emitted-key domain. Global reachable-center
-bounds and end-to-end security remain open research objectives.
+subtractive LDL root** for the emitted-key domain. **H3_NODE3 extends this
+to split_top and both first-level LDL3 branches**, with explicit real/imaginary
+and error bounds. Global reachable-center bounds and end-to-end security
+remain open research objectives.
 
 The current build integrates the corrected verifier, SHA-256
 `3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42`.
@@ -130,6 +132,7 @@ integration work; changing their description does not change the old CLI.
 | [H3_RANGE](proofs/ft1536/stages/FT1536_H3_RANGE_RUN_001/REPORT.md) | Local floor/proposal/residual proofs, source-order controls and explicit signed-zero/underflow diagnostics; global reachability open | `PARTIAL_PROOF` |
 | [H3_ZERO_SCALAR](proofs/ft1536/stages/FT1536_H3_ZERO_SCALAR_RUN_001/REPORT.md) | All NumericCenter words, including both zeros/subnormals: floor/cast/s+z, exact of, source sub error and residual bound; mixed kernel/analytical proof | `H3_ZERO_SCALAR_PROVED_FOR_PINNED_MODEL` |
 | [H3_ROOT_LDL](proofs/ft1536/stages/FT1536_H3_ROOT_LDL_RUN_001/REPORT.md) | Emitted-key FFT/Gram and actual subtractive LDL root, positive real divisor/pivot, multiplier/error bounds and conditional frame; mixed proof | `H3_ROOT_LDL_PROVED_FOR_PINNED_MODEL` |
+| [H3_NODE3](proofs/ft1536/stages/FT1536_H3_NODE3_RUN_001/REPORT.md) | Uniform split_top/Adj/LDL3 certificate for both root branches and all 256 slots each; positive pivots, multipliers, real/imaginary errors and frame; mixed proof | `H3_NODE3_PROVED_FOR_PINNED_MODEL` |
 
 The completed L_V bridge establishes, for all canonical h,c and legal finite
 payloads b in the pinned GCC14.2.0/C99/Linux x86_64 LP64 model:
@@ -226,11 +229,17 @@ the mixed analytical/kernel scope. The next interface is
 [split_top to LDL_dim3](proofs/ft1536/stages/FT1536_H3_ROOT_LDL_RUN_001/NEXT_INTERFACE.md)
 for both branches, followed by the lower tree and ordered center reachability.
 
-The next prepared assignment is [H3_NODE3](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_NODE3_2026-09-19.md):
-`split_top -> Adj -> LDL_dim3` on both root branches and every one of their
-256 physical frequencies, with uniform rational bounds for divisors, pivots,
-multipliers and imaginary errors. The [pinned input set](proofs/ft1536/background/H3_NODE3_2026-09-19/README.md)
-contains the root certificates and source models for the fresh worker directory.
+The [H3_NODE3 result](proofs/ft1536/stages/FT1536_H3_NODE3_RUN_001/REPORT.md)
+now closes `split_top -> Adj -> LDL_dim3` on both root branches and all 256
+physical frequencies each. Its single rational c3 gives positive real pivot
+lower bounds 1/8 and 8, multiplier norms `|L10|,|L20|<2`, `|L21|<4`,
+separate imaginary/error bounds and a proved div domain `[1/16,2^35]`.
+The [independent review](proofs/ft1536/validation/2026-09-19-node3/README.md)
+reproduced **123/123 files, 21 modules and 115 theorems (16 new)**.
+Full source composition remains explicitly analytical/kernel mixed.
+The [next interface](proofs/ft1536/stages/FT1536_H3_NODE3_RUN_001/NEXT_INTERFACE.md)
+is the first split_deep/Adj/LDL2 level for six diagonal branches, with 128
+frequencies each; the lower tree and global Reach remain separate obligations.
 
 ### Remaining obligations beyond the verifier
 
@@ -300,7 +309,8 @@ Later maintainer replays and their exact scopes:
 [M0](proofs/ft1536/validation/2026-09-19-m0/README.md),
 [H3 partial](proofs/ft1536/validation/2026-09-19-h3/README.md),
 [H3 zero-aware scalar](proofs/ft1536/validation/2026-09-19-zero-scalar/README.md),
-[H3 root LDL](proofs/ft1536/validation/2026-09-19-root-ldl/README.md).
+[H3 root LDL](proofs/ft1536/validation/2026-09-19-root-ldl/README.md),
+[H3 NODE3](proofs/ft1536/validation/2026-09-19-node3/README.md).
 The independent Blue review has archived evidence, rather than a single
 declared full replay runner.
 
