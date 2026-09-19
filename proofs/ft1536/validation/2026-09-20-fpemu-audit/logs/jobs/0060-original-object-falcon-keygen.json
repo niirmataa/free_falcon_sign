@@ -1,0 +1,62 @@
+{
+  "argv": [
+    "/usr/bin/gcc",
+    "-W",
+    "-Wall",
+    "-O",
+    "-DFPR_IMPL=\"fpr-emulated.h\"",
+    "-DSAMPLER_CODF=0",
+    "-DSAMPLER_CDF=0",
+    "-DCT_BEREXP=1",
+    "-DFT_TERNARY_ADAPTIVE_CDF=1",
+    "-DFT1536_CANDIDATE_PROFILE=1",
+    "-DCLEANSE=1",
+    "-DTRUE_TERNARY_SECRET=1",
+    "-DTRUE_TERNARY_SECRET_MODE=1",
+    "-DTERNARY_KEYGEN_BOUND_SCALE_NUM=1250",
+    "-DTERNARY_KEYGEN_BOUND_SCALE_DEN=100",
+    "-DTERNARY_KEYGEN_MAX_ATTEMPTS=3000000",
+    "-DSIGN_MAX_ATTEMPTS=16",
+    "-std=c99",
+    "-Iinputs/bootstrap/source",
+    "-c",
+    "inputs/bootstrap/source/falcon-keygen.c",
+    "-o",
+    "bin/static/falcon-keygen.o"
+  ],
+  "cwd": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_FPEMU_AUDIT_RUN_001/maintainer-replay-001/seed/tmp/replay",
+  "elapsed_seconds": 0.539799136982765,
+  "environment": {
+    "ASAN_OPTIONS": "detect_leaks=0:abort_on_error=1",
+    "DOT_SAGE": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_FPEMU_AUDIT_RUN_001/maintainer-replay-001/seed/tmp/replay/cache/sage",
+    "HOME": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_FPEMU_AUDIT_RUN_001/maintainer-replay-001/seed/tmp/replay/cache/home",
+    "LEAN_PATH": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_FPEMU_AUDIT_RUN_001/maintainer-replay-001/seed/tmp/replay/formal",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "TMPDIR": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_FPEMU_AUDIT_RUN_001/maintainer-replay-001/seed/tmp/replay/tmp",
+    "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+  },
+  "exit_code": 0,
+  "limits": {
+    "RLIMIT_AS": [
+      8589934592,
+      8589934592
+    ],
+    "RLIMIT_CORE": [
+      0,
+      0
+    ],
+    "RLIMIT_CPU": [
+      90,
+      91
+    ],
+    "RLIMIT_NOFILE": [
+      256,
+      256
+    ]
+  },
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdin_sha256": null,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "timeout_seconds": 180
+}

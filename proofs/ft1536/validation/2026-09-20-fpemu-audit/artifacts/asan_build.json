@@ -1,0 +1,40 @@
+{
+  "binaries": {
+    "scalar": "31c8360f310fb0b0bd14c68130469927cfddd0285dde21bf142331d0f200ab46",
+    "smoke": "63e8cb0b812cf71cae6204235ad37b00988a7b99e7b4eca002e82a7eaac3b289"
+  },
+  "compiler": "/usr/bin/gcc",
+  "compiler_sha256": "a23ecab8ff08f09ad8c80602c2c5df7f49e09c25905cb8975902e101bf72635f",
+  "extra_flags": [
+    "-fsanitize=address,undefined",
+    "-fno-omit-frame-pointer",
+    "-g",
+    "-no-pie"
+  ],
+  "flags": [
+    "-W",
+    "-Wall",
+    "-O",
+    "-DFPR_IMPL=\"fpr-emulated.h\"",
+    "-DSAMPLER_CODF=0",
+    "-DSAMPLER_CDF=0",
+    "-DCT_BEREXP=1",
+    "-DFT_TERNARY_ADAPTIVE_CDF=1",
+    "-DFT1536_CANDIDATE_PROFILE=1",
+    "-DCLEANSE=1",
+    "-DTRUE_TERNARY_SECRET=1",
+    "-DTRUE_TERNARY_SECRET_MODE=1",
+    "-DTERNARY_KEYGEN_BOUND_SCALE_NUM=1250",
+    "-DTERNARY_KEYGEN_BOUND_SCALE_DEN=100",
+    "-DTERNARY_KEYGEN_MAX_ATTEMPTS=3000000",
+    "-DSIGN_MAX_ATTEMPTS=16",
+    "-std=c99",
+    "-Iinputs/bootstrap/source"
+  ],
+  "source_sha256": {
+    "checks/scalar.c": "1c7d1d3c70ad115327b34bab600b4149f228c866c4b995fb710c3e9d4ad35270",
+    "checks/wrappers.c": "bcfc9dacd5439b0dca54ddf9a65700abf94f2e1dabaa38f64b2024220193ae20",
+    "inputs/bootstrap/source/fpr-emulated.c": "7cb06c9ea8f8bfc205a207cd73af367d299005d4bfec26333ced702f1c024e5f",
+    "inputs/bootstrap/source/fpr-emulated.h": "242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa"
+  }
+}

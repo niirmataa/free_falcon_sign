@@ -1,0 +1,977 @@
+{
+  "cases": 140225,
+  "checks": {
+    "NODE3_div": 12709,
+    "ROOT_add": 10321,
+    "ROOT_div": 8785,
+    "ROOT_mul": 10321,
+    "ROOT_sub": 19881,
+    "ZERO_add_error": 25594,
+    "ZERO_r_domain": 250,
+    "conversion_RN": 11363,
+    "high": 20480,
+    "integer_floor": 1822,
+    "integer_rint": 1574,
+    "integer_trunc": 1574,
+    "irsh": 8192,
+    "known_floor_minus_zero": 2,
+    "lt_numeric": 2732,
+    "max_value": 2736,
+    "neg_bits": 456,
+    "norm": 128,
+    "normal_RN_add": 12388,
+    "normal_RN_div": 14127,
+    "normal_RN_double": 434,
+    "normal_RN_half": 434,
+    "normal_RN_inv": 422,
+    "normal_RN_mul": 9980,
+    "normal_RN_sqr": 326,
+    "normal_RN_sub": 22182,
+    "pack_normal_or_flush": 528,
+    "signed_zero_order_observed": 4,
+    "sqrt_RN": 4316,
+    "ulsh": 8192,
+    "ursh": 8192
+  },
+  "corpus_sha256": "a7fcd95e946fc5accba3c48e2da30ddafa5700dd772f518f9e6b87b795696c3e",
+  "delta_cases": 250,
+  "delta_corpus_sha256": "a21641db566ac6445d09c75112a5dca9b17f39fa135ad621487879fef9d9c333",
+  "diagnostics": [
+    {
+      "case": [
+        "half",
+        1,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "double",
+        1,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000001"
+    },
+    {
+      "case": [
+        "sqrt",
+        1,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "add",
+        1,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "sub",
+        1,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "mul",
+        1,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "add",
+        1,
+        9223372036854775808,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "sub",
+        1,
+        9223372036854775808,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "mul",
+        1,
+        9223372036854775808,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "8000000000000000"
+    },
+    {
+      "case": [
+        "add",
+        1,
+        1,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "sub",
+        1,
+        1,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "mul",
+        1,
+        1,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "add",
+        1,
+        9223372036854775809,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "sub",
+        1,
+        9223372036854775809,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "mul",
+        1,
+        9223372036854775809,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "8000000000000000"
+    },
+    {
+      "case": [
+        "add",
+        1,
+        4607182418800017408,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "3ff0000000000000"
+    },
+    {
+      "case": [
+        "sub",
+        1,
+        4607182418800017408,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "bff0000000000000"
+    },
+    {
+      "case": [
+        "mul",
+        1,
+        4607182418800017408,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "add",
+        1,
+        13830554455654793216,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "bff0000000000000"
+    },
+    {
+      "case": [
+        "sub",
+        1,
+        13830554455654793216,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "3ff0000000000000"
+    },
+    {
+      "case": [
+        "mul",
+        1,
+        13830554455654793216,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "8000000000000000"
+    },
+    {
+      "case": [
+        "inv",
+        1,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "7fdffffffffffffe"
+    },
+    {
+      "case": [
+        "sqr",
+        1,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "half",
+        2251799813685247,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "double",
+        2251799813685247,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0007ffffffffffff"
+    },
+    {
+      "case": [
+        "sqrt",
+        2251799813685247,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "add",
+        2251799813685247,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "sub",
+        2251799813685247,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "mul",
+        2251799813685247,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "add",
+        2251799813685247,
+        9223372036854775808,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "sub",
+        2251799813685247,
+        9223372036854775808,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "mul",
+        2251799813685247,
+        9223372036854775808,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "8000000000000000"
+    },
+    {
+      "case": [
+        "add",
+        2251799813685247,
+        2251799813685247,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "sub",
+        2251799813685247,
+        2251799813685247,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "mul",
+        2251799813685247,
+        2251799813685247,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "add",
+        2251799813685247,
+        9225623836668461055,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "sub",
+        2251799813685247,
+        9225623836668461055,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "mul",
+        2251799813685247,
+        9225623836668461055,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "8000000000000000"
+    },
+    {
+      "case": [
+        "add",
+        2251799813685247,
+        4607182418800017408,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "3ff0000000000000"
+    },
+    {
+      "case": [
+        "sub",
+        2251799813685247,
+        4607182418800017408,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "bff0000000000000"
+    },
+    {
+      "case": [
+        "mul",
+        2251799813685247,
+        4607182418800017408,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "add",
+        2251799813685247,
+        13830554455654793216,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "bff0000000000000"
+    },
+    {
+      "case": [
+        "sub",
+        2251799813685247,
+        13830554455654793216,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "3ff0000000000000"
+    },
+    {
+      "case": [
+        "mul",
+        2251799813685247,
+        13830554455654793216,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "8000000000000000"
+    },
+    {
+      "case": [
+        "inv",
+        2251799813685247,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "7fd5555555555556"
+    },
+    {
+      "case": [
+        "sqr",
+        2251799813685247,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "half",
+        2251799813685248,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "double",
+        2251799813685248,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0008000000000000"
+    },
+    {
+      "case": [
+        "sqrt",
+        2251799813685248,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "add",
+        2251799813685248,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "sub",
+        2251799813685248,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "mul",
+        2251799813685248,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "add",
+        2251799813685248,
+        9223372036854775808,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "sub",
+        2251799813685248,
+        9223372036854775808,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "mul",
+        2251799813685248,
+        9223372036854775808,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "8000000000000000"
+    },
+    {
+      "case": [
+        "add",
+        2251799813685248,
+        2251799813685248,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "sub",
+        2251799813685248,
+        2251799813685248,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "mul",
+        2251799813685248,
+        2251799813685248,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "add",
+        2251799813685248,
+        9225623836668461056,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "sub",
+        2251799813685248,
+        9225623836668461056,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "mul",
+        2251799813685248,
+        9225623836668461056,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "8000000000000000"
+    },
+    {
+      "case": [
+        "add",
+        2251799813685248,
+        4607182418800017408,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "3ff0000000000000"
+    },
+    {
+      "case": [
+        "sub",
+        2251799813685248,
+        4607182418800017408,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "bff0000000000000"
+    },
+    {
+      "case": [
+        "mul",
+        2251799813685248,
+        4607182418800017408,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "add",
+        2251799813685248,
+        13830554455654793216,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "bff0000000000000"
+    },
+    {
+      "case": [
+        "sub",
+        2251799813685248,
+        13830554455654793216,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "3ff0000000000000"
+    },
+    {
+      "case": [
+        "mul",
+        2251799813685248,
+        13830554455654793216,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "8000000000000000"
+    },
+    {
+      "case": [
+        "inv",
+        2251799813685248,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "7fd5555555555555"
+    },
+    {
+      "case": [
+        "sqr",
+        2251799813685248,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "half",
+        4503599627370494,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "double",
+        4503599627370494,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "000ffffffffffffe"
+    },
+    {
+      "case": [
+        "sqrt",
+        4503599627370494,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "add",
+        4503599627370494,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "sub",
+        4503599627370494,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "mul",
+        4503599627370494,
+        0,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "add",
+        4503599627370494,
+        9223372036854775808,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "sub",
+        4503599627370494,
+        9223372036854775808,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "mul",
+        4503599627370494,
+        9223372036854775808,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "8000000000000000"
+    },
+    {
+      "case": [
+        "add",
+        4503599627370494,
+        4503599627370494,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "sub",
+        4503599627370494,
+        4503599627370494,
+        0,
+        "edges"
+      ],
+      "kind": "outside_RN_domain",
+      "observed": "0000000000000000"
+    },
+    {
+      "case": [
+        "lt",
+        9223372036854775808,
+        0,
+        0,
+        "edges"
+      ],
+      "expected": "0000000000000000",
+      "kind": "lt_numeric_contract",
+      "observed": "0000000000000001"
+    },
+    {
+      "case": [
+        "lt",
+        9223372036854775808,
+        0,
+        0,
+        "edges"
+      ],
+      "expected": "0000000000000000",
+      "kind": "lt_numeric_contract",
+      "observed": "0000000000000001"
+    }
+  ],
+  "failures": [],
+  "operation_counts": {
+    "add": 12516,
+    "div": 14556,
+    "double": 456,
+    "exp_small": 514,
+    "expm": 257,
+    "floor": 1824,
+    "half": 456,
+    "high": 20480,
+    "inv": 454,
+    "inverse_of": 12,
+    "irsh": 8192,
+    "log": 257,
+    "lt": 2736,
+    "max": 2736,
+    "mul": 12516,
+    "neg": 456,
+    "norm": 128,
+    "of": 7439,
+    "pack": 528,
+    "rint": 1574,
+    "scaled": 5222,
+    "sincos": 257,
+    "sqr": 456,
+    "sqrt": 4321,
+    "sub": 23924,
+    "trunc": 1574,
+    "ulsh": 8192,
+    "ursh": 8192
+  },
+  "status": "PASS_FINITE_SOURCE_CONTRACT_CONTROLS"
+}

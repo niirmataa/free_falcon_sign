@@ -1,0 +1,11 @@
+SUB_CENTER_CONTRACT : Word → Prop
+SUB_RESIDUAL_CONTRACT : Word → Int → Prop
+R_DELTA_DOMAIN : Word → Prop
+CONSUME_SUB_RESIDUAL : ∀ (x : Word),
+  NumericCenter x →
+    ∀ (z : Int),
+      -365 ≤ z ∧ z ≤ 366 →
+        SUB_RESIDUAL_CONTRACT x z → finiteWord (resC x z) ∧ H3Range.Between (valueNum (resC x z)) (366 * D + Eunits)
+'ZeroScalar.zero_raw_endpoints' depends on axioms: [propext, Quot.sound]
+'ZeroScalar.endpoint_one_not_exclusive' depends on axioms: [propext, Quot.sound]
+'ZeroScalar.CONSUME_SUB_RESIDUAL' depends on axioms: [propext, Classical.choice, Quot.sound]

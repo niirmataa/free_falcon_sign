@@ -22,8 +22,8 @@ osiągnięcia, T2C3/T5, kontrakt M0, graf zależności i dalsze obowiązki.
 Pakiet ma 211 członków OUTPUTS i 198 publicznych wejść Git, manifest
 `c3efdcff510983a143946d43ab456656090061cd5b9b4b6847abc7f141c0cfa3`.
 Jest checkpointem dokumentacyjnym (`replay=none`); obecnie archiwum zawiera
-także trzynaście etapów badawczych, w tym późniejsze H3_RANGE,
-H3_ZERO_SCALAR, H3_ROOT_LDL, H3_NODE3 i H3_NODE2.
+także czternaście etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
+H3_ZERO_SCALAR, H3_ROOT_LDL, H3_NODE3, H3_NODE2 i audyt FPEMU.
 
 [Mapa po domknięciu L_V — 2026-09-19](documents/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md)
 przedstawia zależności i proponowaną kolejność: dokładny kontrakt gry,
@@ -93,11 +93,15 @@ dwunastu raw inner7 subtrees. Sam poziom7 lub same local slices dają partial.
 członków. Loader assembly/normalization, initial targets i global Reach mają
 nadal własne dalsze interfejsy.
 
-**Osobne przygotowane zlecenie:** [niezależny audyt FPEMU](documents/FT1536_ZADANIE_ASTRA_FPEMU_AUDIT_2026-09-19.md).
-Właściciel uruchamia drugą Astrę ręcznie w odrębnym W. Audyt obejmuje
-pokrycie arytmetyki/domen, ASan/UBSan, stan dowodów i testów czasowych oraz
-mapę wpływu findings na istniejące wyniki. [Wejścia](background/FPEMU_AUDIT_2026-09-19/README.md)
-mają 126 przypiętych członków; wykonanie i raport audytu są oczekiwane.
+**Odebrany audyt FPEMU:** [raport](stages/FT1536_FPEMU_AUDIT_RUN_001/REPORT.md)
+ma status `CONFIRMED_ISSUE` w zakresie generic numeric fpr_lt(-0,+0)=1
+i operand-dependent compiled floor branch przy GCC14.2/-O, również w Sign.
+[Niezależny odbiór](validation/2026-09-20-fpemu-audit/README.md): 29/29 plików,
+140225 scalar cases i 250 delta cases na tryb normal/ASan+UBSan, 29 historycznych
+modułów Lean. Dudect/ctgrind NOT_RUN; zero prób czasowych.
+[Bieżąca macierz wpływu](validation/2026-09-20-fpemu-audit/CURRENT_IMPACT.md)
+rozlicza późniejszy NODE2 i BINARY_TOWER. Nie znaleziono kontrprzykładu do
+badanych lokalnych arithmetic contracts; source pozostaje niezmienione.
 
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
@@ -146,6 +150,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [H3_ROOT_LDL](stages/FT1536_H3_ROOT_LDL_RUN_001/REPORT.md) | **H3_ROOT_LDL_PROVED_FOR_PINNED_MODEL** — source FFT/Gram, dodatni subtractive root pivot i frame; mieszany dowód | `3d6bf58` |
 | [H3_NODE3](stages/FT1536_H3_NODE3_RUN_001/REPORT.md) | **H3_NODE3_PROVED_FOR_PINNED_MODEL** — uniform split_top/Adj/LDL3, obie branches i 256 slots; mieszany dowód | `afa52d8` |
 | [H3_NODE2](stages/FT1536_H3_NODE2_RUN_001/REPORT.md) | **H3_NODE2_PROVED_FOR_PINNED_MODEL** — pierwszy binary level8, half i upstream imaginary refinement; mieszany dowód | `b27a055` |
+| [FPEMU audit](stages/FT1536_FPEMU_AUDIT_RUN_001/REPORT.md) | **CONFIRMED_ISSUE** — generic signed-zero compare i compiled floor branch; timing NOT_RUN | niniejszy checkpoint |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).
@@ -263,7 +268,7 @@ Analogicznie dla `FT1536_LV_STATIC_RUN_001`, `FT1536_L_NTT_RUN_001`,
 i `FT1536_L_V_BRIDGE_RUN_001`, `FT1536_M0_CONTRACT_RUN_001`
 oraz `FT1536_H3_RANGE_RUN_001`, `FT1536_H3_ZERO_SCALAR_RUN_001`
 i `FT1536_H3_ROOT_LDL_RUN_001`, `FT1536_H3_NODE3_RUN_001`
-oraz `FT1536_H3_NODE2_RUN_001`.
+oraz `FT1536_H3_NODE2_RUN_001` i `FT1536_FPEMU_AUDIT_RUN_001`.
 Wpis katalogu określa właściwy punkt wejścia. Odbiór Blue jest archiwum
 recenzji i receipts; nie ma zadeklarowanego pojedynczego pełnego runnera.
 

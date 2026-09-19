@@ -21,7 +21,7 @@ are required. Every build verifies the
 `2553358fbb1144acdb577e1ad371a017ac325306dd901af745295dd17b03bd5a`.
 See [active-build provenance](provenance/FT1536_ACTIVE_BUILD.md).
 
-**Current status — 2026-09-19:** **L_RHO, the complete L_NTT pipeline and the
+**Current status — 2026-09-20:** **L_RHO, the complete L_NTT pipeline and the
 byte-level L_V verifier bridge are proved for the pinned corrected candidate
 and its explicit C model.** M0 now defines the protocol/game/resource contract
 and proves the STATIC capacity bound. **H3_ZERO_SCALAR proves the local
@@ -32,6 +32,13 @@ to split_top and both first-level LDL3 branches**, with explicit real/imaginary
 and error bounds. **H3_NODE2 certifies the first binary level** and adds
 kernel-checked finite-word half semantics plus an upstream imaginary bound.
 Global reachable-center bounds and end-to-end security remain open research objectives.
+
+**FPEMU audit — confirmed issues:** numeric `fpr_lt(-0,+0)` returns 1, and
+GCC14.2 with the selected `-O` emits an operand-dependent branch in
+`fpr_floor`, including its use in `sampler_large` and BerExp. The
+[independent audit review](proofs/ft1536/validation/2026-09-20-fpemu-audit/README.md)
+records the exact scope. Dudect/ctgrind have **not been run**; no timing-leak
+magnitude or emitted-domain attack is claimed.
 
 The current build integrates the corrected verifier, SHA-256
 `3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42`.
@@ -135,6 +142,7 @@ integration work; changing their description does not change the old CLI.
 | [H3_ROOT_LDL](proofs/ft1536/stages/FT1536_H3_ROOT_LDL_RUN_001/REPORT.md) | Emitted-key FFT/Gram and actual subtractive LDL root, positive real divisor/pivot, multiplier/error bounds and conditional frame; mixed proof | `H3_ROOT_LDL_PROVED_FOR_PINNED_MODEL` |
 | [H3_NODE3](proofs/ft1536/stages/FT1536_H3_NODE3_RUN_001/REPORT.md) | Uniform split_top/Adj/LDL3 certificate for both root branches and all 256 slots each; positive pivots, multipliers, real/imaginary errors and frame; mixed proof | `H3_NODE3_PROVED_FOR_PINNED_MODEL` |
 | [H3_NODE2](proofs/ft1536/stages/FT1536_H3_NODE2_RUN_001/REPORT.md) | First split_deep9/LDL8 level, all 2×3×128 positions; finite-word half proof, refined imaginary envelope and positive pivots; mixed proof | `H3_NODE2_PROVED_FOR_PINNED_MODEL` |
+| [FPEMU audit](proofs/ft1536/stages/FT1536_FPEMU_AUDIT_RUN_001/REPORT.md) | Generic numeric comparison of signed zeros and operand-dependent compiled floor branch; finite arithmetic/sanitizer audit, no timing measurements | `CONFIRMED_ISSUE` |
 
 The completed L_V bridge establishes, for all canonical h,c and legal finite
 payloads b in the pinned GCC14.2.0/C99/Linux x86_64 LP64 model:
@@ -298,12 +306,20 @@ These exact files are also preserved in the proof snapshots. Their presence
 and finite arithmetic checks are distinct from a complete proof of the
 FPEMU/FFT/sampler path; the current NTT work concerns modular integer arithmetic.
 
-An [independent FPEMU audit](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_FPEMU_AUDIT_2026-09-19.md)
-is prepared for a separate Astra session started manually by the owner.
-It examines arithmetic/domain coverage, native/sanitizer checks, timing
-evidence and the impact of findings on existing proof interfaces.
-[Pinned audit inputs](proofs/ft1536/background/FPEMU_AUDIT_2026-09-19/README.md)
-are ready; execution and the audit report are pending.
+The [completed FPEMU audit](proofs/ft1536/stages/FT1536_FPEMU_AUDIT_RUN_001/REPORT.md)
+has an independent **29/29-file replay**, including 140225 scalar and 250
+actual-delta cases per normal/ASan+UBSan mode, 29 historical Lean modules,
+and original-TU assembly reconstruction. It confirms the signed-zero
+comparison issue and the data-dependent floor branch described above.
+No counterexample to the tested ZERO/ROOT/NODE3 numerical contracts was
+found; finite coverage is not a proof of the entire backend.
+
+The [current impact assessment](proofs/ft1536/validation/2026-09-20-fpemu-audit/CURRENT_IMPACT.md)
+maps these findings to the later NODE2 result and BINARY_TOWER assignment.
+The latter retains its arithmetic/domain obligations; CT review and a
+controlled, version-pinned timing campaign are separate next steps.
+The audit's [timing review](proofs/ft1536/stages/FT1536_FPEMU_AUDIT_RUN_001/TIMING_REVIEW.md)
+records **NOT_RUN** for dudect/ctgrind and gives a follow-up measurement protocol.
 
 ## Verify and replay the evidence
 
@@ -338,7 +354,8 @@ Later maintainer replays and their exact scopes:
 [H3 zero-aware scalar](proofs/ft1536/validation/2026-09-19-zero-scalar/README.md),
 [H3 root LDL](proofs/ft1536/validation/2026-09-19-root-ldl/README.md),
 [H3 NODE3](proofs/ft1536/validation/2026-09-19-node3/README.md),
-[H3 NODE2](proofs/ft1536/validation/2026-09-19-node2/README.md).
+[H3 NODE2](proofs/ft1536/validation/2026-09-19-node2/README.md),
+[FPEMU audit](proofs/ft1536/validation/2026-09-20-fpemu-audit/README.md).
 The independent Blue review has archived evidence, rather than a single
 declared full replay runner.
 

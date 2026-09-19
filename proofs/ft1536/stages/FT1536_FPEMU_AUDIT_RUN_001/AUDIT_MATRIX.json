@@ -1,0 +1,3271 @@
+{
+  "common_timing_note": "No statistical timing campaign; see TIMING_REVIEW.md. Pure-core static observations are not universal CT proofs.",
+  "evidence_receipts": [
+    "artifacts/normal_arithmetic.json",
+    "artifacts/asan_arithmetic.json",
+    "artifacts/formal_rebuild.json",
+    "artifacts/rigorous.json",
+    "artifacts/active_calls.json",
+    "artifacts/production_asm.json"
+  ],
+  "historical_coverage": {
+    "NODE3": "reported176 expanded-div pairs and all256 slots of2 branches",
+    "ROOT": "reported334 scalar raw mul/div controls",
+    "ZERO": "reported1160 in-domain controls,70 exclusions",
+    "active_smoke": "12 only"
+  },
+  "rows": [
+    {
+      "active_preprocessed_calls": [],
+      "consumers": "scaled/add/mul/div/sqrt, hence ZERO/ROOT/NODE3",
+      "domain": "s=0/1; m=0 or 2^54<=m<2^55; int exponent arithmetic in range; no overflow exponent",
+      "open_obligations": "General source-to-compiler refinement is not kernelized.",
+      "primitive": "FPR",
+      "proof": [
+        "ZERO/BitErrors.round_error",
+        "ZERO/PackOf.pack_normal_value: base<=1054; 2^52<=q<=2^53",
+        "ROOT/ANALYTIC_PROOF.md:47-51 extends base bound analytically"
+      ],
+      "sanitizer": "same public corpus; ASan+UBSan PASS",
+      "semantics": "RN ties-even via 0xC8; e<-1076 flush; no general IEEE overflow/subnormal pack",
+      "source": {
+        "first_line": 39,
+        "last_line": 55,
+        "path": "source/fpr-emulated.h",
+        "sha256": "242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa",
+        "span_sha256": "92c5fcb3e65912ee20cc2ec7ab199deda3fc293b7e7a4878f9dd27c20c7f720f"
+      },
+      "tests": {
+        "pack": 528
+      },
+      "timing": "STATIC_REVIEW_ONLY"
+    },
+    {
+      "active_preprocessed_calls": [],
+      "consumers": "scaled/add; ZERO.OF_EXACT and SOURCE_ADD_ERROR",
+      "domain": "0<=m<2^64; e adjustments must fit int",
+      "open_obligations": "Proof on Nat transducer plus explicit C mask binding.",
+      "primitive": "FPR_NORM64",
+      "proof": [
+        "ZERO/BitErrors.normalizer_bounds",
+        "ZERO/BitErrors.normalizer_for_add: 0<T<2^57"
+      ],
+      "sanitizer": "same public corpus; ASan+UBSan PASS",
+      "semantics": "six fixed masked shifts, m normalized to [2^63,2^64), or zero; zero subtracts63",
+      "source": {
+        "first_line": 14,
+        "last_line": 54,
+        "path": "source/fpr-emulated.c",
+        "sha256": "7cb06c9ea8f8bfc205a207cd73af367d299005d4bfec26333ced702f1c024e5f",
+        "span_sha256": "6fba4b8272be47c29486a0c3d00df7a13ee22151935b1d13f5efbcf4866b53d9"
+      },
+      "tests": {
+        "norm": 128
+      },
+      "timing": "STATIC_REVIEW_ONLY"
+    },
+    {
+      "active_preprocessed_calls": [],
+      "consumers": "add/rint/floor/trunc",
+      "domain": "n=0..63; uint64/signed64; GCC arithmetic signed right shift",
+      "open_obligations": "n outside0..63 is not a supported shift contract.",
+      "primitive": "fpr_ursh",
+      "proof": [
+        "ZERO/SOURCE_MODEL_BINDING.md:19-39; no standalone universal C theorem"
+      ],
+      "sanitizer": "same public corpus; ASan+UBSan PASS",
+      "semantics": "mathematical shift; left shift modulo2^64; high/low32 decomposition",
+      "source": {
+        "first_line": 18,
+        "last_line": 23,
+        "path": "source/fpr-emulated.h",
+        "sha256": "242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa",
+        "span_sha256": "cb08b8977692b93e07be1c6a960a9ba0cf9037911ba446739fecd2af3cbf25f7"
+      },
+      "tests": {
+        "ursh": 8192
+      },
+      "timing": "STATIC_REVIEW_ONLY"
+    },
+    {
+      "active_preprocessed_calls": [],
+      "consumers": "add/rint/floor/trunc",
+      "domain": "n=0..63; uint64/signed64; GCC arithmetic signed right shift",
+      "open_obligations": "n outside0..63 is not a supported shift contract.",
+      "primitive": "fpr_irsh",
+      "proof": [
+        "ZERO/SOURCE_MODEL_BINDING.md:19-39; no standalone universal C theorem"
+      ],
+      "sanitizer": "same public corpus; ASan+UBSan PASS",
+      "semantics": "mathematical shift; left shift modulo2^64; high/low32 decomposition",
+      "source": {
+        "first_line": 25,
+        "last_line": 30,
+        "path": "source/fpr-emulated.h",
+        "sha256": "242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa",
+        "span_sha256": "a31ae5701d92e8435f717a9cc730cecc05dc167889efd86ce3a1dcebd4a7c25d"
+      },
+      "tests": {
+        "irsh": 8192
+      },
+      "timing": "STATIC_REVIEW_ONLY"
+    },
+    {
+      "active_preprocessed_calls": [],
+      "consumers": "add/rint/floor/trunc",
+      "domain": "n=0..63; uint64/signed64; GCC arithmetic signed right shift",
+      "open_obligations": "n outside0..63 is not a supported shift contract.",
+      "primitive": "fpr_ulsh",
+      "proof": [
+        "ZERO/SOURCE_MODEL_BINDING.md:19-39; no standalone universal C theorem"
+      ],
+      "sanitizer": "same public corpus; ASan+UBSan PASS",
+      "semantics": "mathematical shift; left shift modulo2^64; high/low32 decomposition",
+      "source": {
+        "first_line": 32,
+        "last_line": 37,
+        "path": "source/fpr-emulated.h",
+        "sha256": "242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa",
+        "span_sha256": "fa1217972bcb942b513c4353874fdb360d6d05a993c21e6d529089519ae0b4b9"
+      },
+      "tests": {
+        "ulsh": 8192
+      },
+      "timing": "STATIC_REVIEW_ONLY"
+    },
+    {
+      "active_preprocessed_calls": [
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_scaled",
+          "line": 343
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_scaled",
+          "line": 4481
+        }
+      ],
+      "consumers": "KeyGen poly_big_to_fp (zint_get_top), binary iFFT; fpr_of",
+      "domain": "i!=INT64_MIN; bounded sc and output exponent; OF_EXACT covers only signed32/sc0",
+      "open_obligations": "INT64_MIN absolute-value overflows at line171; no call made. Unbounded sc can overflow int. Wider KeyGen caller proof open.",
+      "primitive": "fpr_scaled",
+      "proof": [
+        "ZERO/PackOf.OF_EXACT restricted to signed32 and sc0"
+      ],
+      "sanitizer": "same public corpus; ASan+UBSan PASS",
+      "semantics": "normalize integer, sticky shrink and FPR; zero -> +0",
+      "source": {
+        "first_line": 150,
+        "last_line": 204,
+        "path": "source/fpr-emulated.c",
+        "sha256": "7cb06c9ea8f8bfc205a207cd73af367d299005d4bfec26333ced702f1c024e5f",
+        "span_sha256": "277482ae97004b2c511c83e6c4c4df06db996a0b4a3cc49a1cd58894ec320af3"
+      },
+      "tests": {
+        "scaled": 5222
+      },
+      "timing": "STATIC_REVIEW_ONLY"
+    },
+    {
+      "active_preprocessed_calls": [
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_of",
+          "line": 509
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_of",
+          "line": 1114
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_of",
+          "line": 5362
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_of",
+          "line": 6748
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_of",
+          "line": 6980
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_of",
+          "line": 6991
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_of",
+          "line": 7100
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_of",
+          "line": 7101
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_of",
+          "line": 7238
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_of",
+          "line": 7435
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_of",
+          "line": 7522
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_of",
+          "line": 7760
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_of",
+          "line": 7958
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_of",
+          "line": 7959
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_of",
+          "line": 7962
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_of",
+          "line": 7963
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_of",
+          "line": 7973
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_of",
+          "line": 7998
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_of",
+          "line": 7999
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_of",
+          "line": 8002
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_of",
+          "line": 8061
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_of",
+          "line": 8062
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_of",
+          "line": 8067
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_of",
+          "line": 8073
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_of",
+          "line": 807
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_of",
+          "line": 876
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_of",
+          "line": 1055
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_of",
+          "line": 1263
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_of",
+          "line": 1308
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_of",
+          "line": 1309
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_of",
+          "line": 1580
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_of",
+          "line": 1581
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_of",
+          "line": 1640
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_of",
+          "line": 1644
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_of",
+          "line": 1875
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_of",
+          "line": 2482
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_of",
+          "line": 2543
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_of",
+          "line": 2548
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_of",
+          "line": 2593
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_of",
+          "line": 2594
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_of",
+          "line": 2865
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_of",
+          "line": 2866
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_of",
+          "line": 2923
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_of",
+          "line": 2940
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_of",
+          "line": 2942
+        }
+      ],
+      "consumers": "FFT/KeyGen/Sign and ZERO/ROOT/NODE3",
+      "domain": "signed32 exact theorem; signed64 excluding INT64_MIN sampled",
+      "open_obligations": "Do not replace the source domain by all int64 including INT64_MIN.",
+      "primitive": "fpr_of",
+      "proof": [
+        "ZERO/PackOf.OF_EXACT: -2^31<=i<=2^31-1"
+      ],
+      "sanitizer": "same public corpus; ASan+UBSan PASS",
+      "semantics": "fpr_scaled(i,0); round integers too wide for53 bits",
+      "source": {
+        "first_line": 86,
+        "last_line": 90,
+        "path": "source/fpr-emulated.h",
+        "sha256": "242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa",
+        "span_sha256": "c4f5d869a63d62934c94dcdc3e0ad814c4d2ea99391a992a5c5e79d88ca5c261"
+      },
+      "tests": {
+        "of": 7439
+      },
+      "timing": "STATIC_REVIEW_ONLY"
+    },
+    {
+      "active_preprocessed_calls": [
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 243
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 244
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 325
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 328
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 358
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 367
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 378
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 451
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 487
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 508
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 538
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 557
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 576
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 597
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 598
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 599
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 627
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 628
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 629
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 630
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 699
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 704
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 735
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 738
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 776
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 804
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 805
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 835
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 836
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 837
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 839
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 840
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 841
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 842
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 843
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 844
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 845
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 846
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 847
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 881
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 882
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 883
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 884
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 886
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 887
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 889
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 890
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 891
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 894
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 895
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 896
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 923
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 926
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 976
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 986
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 997
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1055
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1092
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1113
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1143
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1163
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1183
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1205
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1206
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1207
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1236
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1237
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1238
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1239
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1298
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1299
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1300
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1301
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1303
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1304
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1306
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1307
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1308
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1311
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1312
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1313
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1359
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1364
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1398
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1399
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1400
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1402
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1403
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1404
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1405
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1406
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1407
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1408
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1409
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1410
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1429
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1447
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_add",
+          "line": 1450
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_add",
+          "line": 7183
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_add",
+          "line": 7184
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_add",
+          "line": 7185
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_add",
+          "line": 7186
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_add",
+          "line": 7187
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_add",
+          "line": 7188
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_add",
+          "line": 7189
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_add",
+          "line": 7190
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_add",
+          "line": 7191
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_add",
+          "line": 7192
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_add",
+          "line": 7193
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_add",
+          "line": 7194
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_add",
+          "line": 7505
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_add",
+          "line": 7528
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_add",
+          "line": 7532
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_add",
+          "line": 7975
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_add",
+          "line": 7976
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_add",
+          "line": 8004
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_add",
+          "line": 8005
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_add",
+          "line": 8069
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_add",
+          "line": 8070
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_add",
+          "line": 789
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_add",
+          "line": 814
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_add",
+          "line": 818
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_add",
+          "line": 1643
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_add",
+          "line": 2941
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_add",
+          "line": 2944
+        }
+      ],
+      "consumers": "FFT, KeyGen, Sign; ZERO residuals, ROOT Gram/LDL, NODE3 split/LDL",
+      "domain": "ROOT: finite |x|,|y| <= 2^100; U=2^-48, eta=2^-900; ZERO exponent fields<=1054",
+      "open_obligations": "Universal composition is analytic, not full Lean C theorem; no counterexample to those envelopes found.",
+      "primitive": "fpr_add",
+      "proof": [
+        "ZERO/ANALYTIC_PROOF.md:29-135 SOURCE_ADD_ERROR <2^-20",
+        "ZERO/BitErrors sticky/normalizer/round lemmas",
+        "ROOT/ANALYTIC_PROOF.md:29-52 U*(|x|+|y|)+eta"
+      ],
+      "sanitizer": "same public corpus; ASan+UBSan PASS",
+      "semantics": "signed-magnitude swap, sticky alignment, add/sub unsigned mantissas, normalize/pack; exponent0 decoded at half subnormal value",
+      "source": {
+        "first_line": 448,
+        "last_line": 554,
+        "path": "source/fpr-emulated.c",
+        "sha256": "7cb06c9ea8f8bfc205a207cd73af367d299005d4bfec26333ced702f1c024e5f",
+        "span_sha256": "4b77bf7e7ab0f1c7a1c120add4d9014a7e730ad44c4f6c66d6d52bac0994e4b5"
+      },
+      "tests": {
+        "add": 12516
+      },
+      "timing": "STATIC_REVIEW_ONLY"
+    },
+    {
+      "active_preprocessed_calls": [
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 243
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 246
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 327
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 328
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 390
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 451
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 468
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 487
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 557
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 576
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 627
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 628
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 703
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 704
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 735
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 741
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 804
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 807
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 835
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 836
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 837
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 838
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 839
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 840
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 841
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 881
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 882
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 883
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 884
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 891
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 893
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 896
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 925
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 926
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 953
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 1010
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 1055
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 1072
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 1092
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 1163
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 1183
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 1236
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 1237
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 1298
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 1299
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 1300
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 1301
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 1308
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 1310
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 1313
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 1341
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 1363
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 1364
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 1398
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 1399
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 1400
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 1401
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 1402
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 1403
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 1404
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 1447
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sub",
+          "line": 1452
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_sub",
+          "line": 7183
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_sub",
+          "line": 7184
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_sub",
+          "line": 7185
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_sub",
+          "line": 7186
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_sub",
+          "line": 7187
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_sub",
+          "line": 7188
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_sub",
+          "line": 7189
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_sub",
+          "line": 7190
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_sub",
+          "line": 7191
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_sub",
+          "line": 7192
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_sub",
+          "line": 7193
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_sub",
+          "line": 7194
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_sub",
+          "line": 1640
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_sub",
+          "line": 1644
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_sub",
+          "line": 1646
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_sub",
+          "line": 2482
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_sub",
+          "line": 2543
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_sub",
+          "line": 2593
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_sub",
+          "line": 2594
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_sub",
+          "line": 2865
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_sub",
+          "line": 2923
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_sub",
+          "line": 2931
+        }
+      ],
+      "consumers": "MACHINE_RESIDUAL_366, MACHINE_CENTER_INTERVAL, ORDERED_ZERO_TERMINAL; ROOT/NODE3",
+      "domain": "ZERO: NumericCenter = finite and -2147483283 <= val(x) < 2147483282; ROOT: finite |x|,|y| <= 2^100; U=2^-48, eta=2^-900",
+      "open_obligations": "NumericCenter reachability for the next source call remains open.",
+      "primitive": "fpr_sub",
+      "proof": [
+        "ZERO/LiteralAdd.SUB_CENTER_CONTRACT, SUB_RESIDUAL_CONTRACT, R_DELTA_DOMAIN are definitions",
+        "ZERO/LiteralAdd.CONSUME_SUB_RESIDUAL takes analytic_contract",
+        "ZERO/ANALYTIC_PROOF.md:149-222 discharges error/domain analytically"
+      ],
+      "sanitizer": "same public corpus; ASan+UBSan PASS",
+      "semantics": "sign flip second word, then actual add; signed zeros retained",
+      "source": {
+        "first_line": 151,
+        "last_line": 156,
+        "path": "source/fpr-emulated.h",
+        "sha256": "242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa",
+        "span_sha256": "be651a76428b8e5fe8f1e9652bccfb27a196d28e7c798c7ccd71e2b1a802114e"
+      },
+      "tests": {
+        "sub": 23924
+      },
+      "timing": "STATIC_REVIEW_ONLY"
+    },
+    {
+      "active_preprocessed_calls": [
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_neg",
+          "line": 317
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_neg",
+          "line": 402
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_neg",
+          "line": 417
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_neg",
+          "line": 418
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_neg",
+          "line": 421
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_neg",
+          "line": 432
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_neg",
+          "line": 486
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_neg",
+          "line": 538
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_neg",
+          "line": 557
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_neg",
+          "line": 575
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_neg",
+          "line": 576
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_neg",
+          "line": 627
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_neg",
+          "line": 628
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_neg",
+          "line": 704
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_neg",
+          "line": 880
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_neg",
+          "line": 914
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_neg",
+          "line": 1022
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_neg",
+          "line": 1035
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_neg",
+          "line": 1091
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_neg",
+          "line": 1143
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_neg",
+          "line": 1163
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_neg",
+          "line": 1182
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_neg",
+          "line": 1183
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_neg",
+          "line": 1236
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_neg",
+          "line": 1237
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_neg",
+          "line": 1297
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_neg",
+          "line": 1364
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_neg",
+          "line": 1890
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_neg",
+          "line": 1944
+        }
+      ],
+      "consumers": "FFT conjugation and all LDLs",
+      "domain": "all64-bit words; value negation on finite words",
+      "open_obligations": "No standalone full C proof; trivial exact bit action checked.",
+      "primitive": "fpr_neg",
+      "proof": [],
+      "sanitizer": "same public corpus; ASan+UBSan PASS",
+      "semantics": "XOR sign, including both zeros",
+      "source": {
+        "first_line": 158,
+        "last_line": 163,
+        "path": "source/fpr-emulated.h",
+        "sha256": "242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa",
+        "span_sha256": "5b4032cb4116f2659e92d859e9031cc44c65aea9d4dcf63d8923360c13186e4b"
+      },
+      "tests": {
+        "neg": 456
+      },
+      "timing": "STATIC_REVIEW_ONLY"
+    },
+    {
+      "active_preprocessed_calls": [
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 243
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 328
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 345
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 451
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 468
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sqr",
+          "line": 468
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 487
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sqr",
+          "line": 508
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 521
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sqr",
+          "line": 538
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 557
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sqr",
+          "line": 557
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 576
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sqr",
+          "line": 576
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sqr",
+          "line": 598
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sqr",
+          "line": 599
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 627
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 628
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 644
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 645
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 704
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 735
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 776
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 777
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 804
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 835
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 836
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 837
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 838
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sqr",
+          "line": 838
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 839
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 840
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 841
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 881
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 882
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 883
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 884
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 891
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 893
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sqr",
+          "line": 893
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 896
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 926
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 952
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 963
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1055
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1072
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sqr",
+          "line": 1072
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1092
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sqr",
+          "line": 1113
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1126
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sqr",
+          "line": 1143
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1163
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sqr",
+          "line": 1163
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1183
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sqr",
+          "line": 1183
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sqr",
+          "line": 1206
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sqr",
+          "line": 1207
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1236
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1237
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1253
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1254
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1298
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1299
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1300
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1301
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1308
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1310
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sqr",
+          "line": 1310
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1313
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1315
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1316
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1317
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1318
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1319
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1320
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1339
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1364
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1398
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1399
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1400
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1401
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_sqr",
+          "line": 1401
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1402
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1403
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1404
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1429
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1430
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_mul",
+          "line": 1447
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_mul",
+          "line": 7183
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_mul",
+          "line": 7184
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_mul",
+          "line": 7185
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_mul",
+          "line": 7186
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_mul",
+          "line": 7187
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_mul",
+          "line": 7188
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_mul",
+          "line": 7189
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_mul",
+          "line": 7190
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_mul",
+          "line": 7191
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_mul",
+          "line": 7192
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_mul",
+          "line": 7193
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_mul",
+          "line": 7194
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_mul",
+          "line": 7506
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_mul",
+          "line": 7529
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_mul",
+          "line": 7530
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_mul",
+          "line": 7531
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_mul",
+          "line": 7533
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_mul",
+          "line": 7537
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_mul",
+          "line": 7961
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_sqr",
+          "line": 7975
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_sqr",
+          "line": 7976
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_sqr",
+          "line": 8004
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_sqr",
+          "line": 8005
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_sqr",
+          "line": 8069
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_sqr",
+          "line": 8070
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_mul",
+          "line": 790
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_mul",
+          "line": 815
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_mul",
+          "line": 816
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_mul",
+          "line": 817
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_mul",
+          "line": 819
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_mul",
+          "line": 823
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_mul",
+          "line": 1308
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_mul",
+          "line": 1641
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_mul",
+          "line": 2481
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_mul",
+          "line": 2482
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_mul",
+          "line": 2548
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_sqr",
+          "line": 2548
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_mul",
+          "line": 2593
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_sqr",
+          "line": 2593
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_mul",
+          "line": 2594
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_mul",
+          "line": 2866
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_sqr",
+          "line": 2866
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_mul",
+          "line": 2940
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_mul",
+          "line": 2942
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_sqr",
+          "line": 2943
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_mul",
+          "line": 2944
+        }
+      ],
+      "consumers": "ROOT/Node3 certificates; Sign dss/residual/acceptance; KeyGen FFT/Babai",
+      "domain": "ROOT: finite |x|,|y| <= 2^100; U=2^-48, eta=2^-900",
+      "open_obligations": "Gradual underflow is absent but eta accounts for it under cap2^100. Outside caps no such envelope.",
+      "primitive": "fpr_mul/fpr_sqr",
+      "proof": [
+        "ROOT/ANALYTIC_PROOF.md:54-72 U*|xy|+eta; limb bounds",
+        "ROOT/RootModel.mulC is executable normalized model, not theorem of total RN"
+      ],
+      "sanitizer": "same public corpus; ASan+UBSan PASS",
+      "semantics": "exact53x53 limb25 product then sticky/pack; exponent0 operand -> signed zero; sqr wrapper h183-187",
+      "source": {
+        "first_line": 680,
+        "last_line": 774,
+        "path": "source/fpr-emulated.c",
+        "sha256": "7cb06c9ea8f8bfc205a207cd73af367d299005d4bfec26333ced702f1c024e5f",
+        "span_sha256": "dc623182c31927e38a4e4bf43648751f67a7c20b81ffef444c2926bb248401ee"
+      },
+      "tests": {
+        "mul": 12516,
+        "sqr": 456
+      },
+      "timing": "STATIC_REVIEW_ONLY"
+    },
+    {
+      "active_preprocessed_calls": [
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_div",
+          "line": 538
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_div",
+          "line": 557
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_div",
+          "line": 576
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_div",
+          "line": 659
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_div",
+          "line": 660
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_div",
+          "line": 1143
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_div",
+          "line": 1163
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_div",
+          "line": 1183
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_div",
+          "line": 1268
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_div",
+          "line": 1269
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_div",
+          "line": 7509
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_div",
+          "line": 7534
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_div",
+          "line": 7535
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_div",
+          "line": 7537
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_div",
+          "line": 7763
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_div",
+          "line": 7958
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_div",
+          "line": 7961
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_div",
+          "line": 8072
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_div",
+          "line": 448
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_div",
+          "line": 793
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_div",
+          "line": 820
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_div",
+          "line": 821
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_div",
+          "line": 823
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_div",
+          "line": 879
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_div",
+          "line": 987
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_div",
+          "line": 989
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_div",
+          "line": 1309
+        }
+      ],
+      "consumers": "Root direct component divisions; LDL_dim3; open NODE2 divisions; sampler dss",
+      "domain": "finite |x|<=2^100; ROOT y positive [1/2,2^23]; NODE3 y positive [1/16,2^35]",
+      "open_obligations": "Each new caller must prove its denominator domain before consumption.",
+      "primitive": "fpr_div",
+      "proof": [
+        "ROOT/RootDiv.loop55 assumes 2^52<=u,v<2^53; invariant/remainder, not full numeric div theorem",
+        "ROOT/ANALYTIC_PROOF.md:74-95",
+        "NODE3/ANALYTIC_PROOF.md:29-63",
+        "NODE3/NodeInverse.expanded_div_exponent: ex1..1123,ey1019..1058,w0/1"
+      ],
+      "sanitizer": "same public corpus; ASan+UBSan PASS",
+      "semantics": "55 restoring steps, sticky/pack; exponent0 numerator -> +0 even -0; nonzero denominator assumed",
+      "source": {
+        "first_line": 915,
+        "last_line": 1000,
+        "path": "source/fpr-emulated.c",
+        "sha256": "7cb06c9ea8f8bfc205a207cd73af367d299005d4bfec26333ced702f1c024e5f",
+        "span_sha256": "a177bbfb4b28684a8aa180dba769686e1aaaff5ea007dafa76fcde39e4385c78"
+      },
+      "tests": {
+        "div": 14556
+      },
+      "timing": "STATIC_REVIEW_ONLY"
+    },
+    {
+      "active_preprocessed_calls": [
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_inv",
+          "line": 597
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_inverse_of",
+          "line": 961
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_inv",
+          "line": 1205
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_inverse_of",
+          "line": 1315
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_inverse_of",
+          "line": 1316
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_inverse_of",
+          "line": 1317
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_inverse_of",
+          "line": 1318
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_inverse_of",
+          "line": 1319
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_inverse_of",
+          "line": 1320
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_inverse_of",
+          "line": 1887
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_inverse_of",
+          "line": 1941
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_inv",
+          "line": 2548
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_inv",
+          "line": 2866
+        }
+      ],
+      "consumers": "FFT3 scale1/3 and inverse FFT1/(N/2), Sign dss",
+      "domain": "nonzero normal divisor in claimed envelope; inverse_of integer conversion must be legal",
+      "open_obligations": "kappa=0x3fd5555555555555 = 1/3-1/(3*2^54), never ideal1/3.",
+      "primitive": "fpr_inv/fpr_inverse_of",
+      "proof": [
+        "NODE3/NodeInverse.inverse3_bits",
+        "NODE3/NodeInverse.inverse3_units"
+      ],
+      "sanitizer": "same public corpus; ASan+UBSan PASS",
+      "semantics": "div(1,x) / div(1,of(i)); fpr_inv definition h189-193",
+      "source": {
+        "first_line": 86,
+        "last_line": 96,
+        "path": "source/fpr-emulated.h",
+        "sha256": "242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa",
+        "span_sha256": "2f73b72f8eb5b8cb7f2a258eb7fbf1d4abb57a0e3e77f6ad91f64ca6a365243b"
+      },
+      "tests": {
+        "inv": 454,
+        "inverse_of": 12
+      },
+      "timing": "STATIC_REVIEW_ONLY"
+    },
+    {
+      "active_preprocessed_calls": [
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_sqrt",
+          "line": 7959
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_sqrt",
+          "line": 448
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_sqrt",
+          "line": 988
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_sqrt",
+          "line": 990
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_sqrt",
+          "line": 1308
+        }
+      ],
+      "consumers": "KeyGen bounds and leaf normalization; Sign ffLDL widths",
+      "domain": "normal x>=0 or zero; subnormal inputs are flushed; negatives/NaN excluded",
+      "open_obligations": "4,316 exact sqrt RN comparisons are finite; general source sqrt proof and all caller domains open.",
+      "primitive": "fpr_sqrt",
+      "proof": [
+        "H3/REPORT.md:122-125 endpoint diagnostics only; no universal sqrt proof in supplied projection"
+      ],
+      "sanitizer": "same public corpus; ASan+UBSan PASS",
+      "semantics": "54 fixed restoring-square-root steps, then sticky and pack; zero -> +0",
+      "source": {
+        "first_line": 1182,
+        "last_line": 1257,
+        "path": "source/fpr-emulated.c",
+        "sha256": "7cb06c9ea8f8bfc205a207cd73af367d299005d4bfec26333ced702f1c024e5f",
+        "span_sha256": "30fe676030083718b5d27d67aa68e0cf4869835e89719d782ab4ee939e6d69d4"
+      },
+      "tests": {
+        "sqrt": 4321
+      },
+      "timing": "STATIC_REVIEW_ONLY"
+    },
+    {
+      "active_preprocessed_calls": [
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_half",
+          "line": 700
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_half",
+          "line": 701
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_half",
+          "line": 707
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_half",
+          "line": 708
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_half",
+          "line": 953
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_half",
+          "line": 1341
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_half",
+          "line": 1360
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_half",
+          "line": 1361
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_half",
+          "line": 1367
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_half",
+          "line": 1368
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_half",
+          "line": 7507
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_half",
+          "line": 791
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_half",
+          "line": 1642
+        }
+      ],
+      "consumers": "FFT3 inner split, terminal r0+half(r1), KeyGen/Sign leaf checks; NODE2/lower tree",
+      "domain": "exact halving for encoded exponent>=2 and finite; zeros canonicalized; exponent1 edge differs",
+      "open_obligations": "Prove local normal/zero or suitable absolute error bound; ROOT/NODE3 do not prove the whole half domain.",
+      "primitive": "fpr_half",
+      "proof": [
+        "H3/REPORT.md:62-73 known edge",
+        "ZERO/ANALYTIC_PROOF.md:217-220 leaves E_half open"
+      ],
+      "sanitizer": "same public corpus; ASan+UBSan PASS",
+      "semantics": "subtract exponent bit; minnormal ->0 (known), other exponent1 can produce subnormal with incorrect value",
+      "source": {
+        "first_line": 165,
+        "last_line": 174,
+        "path": "source/fpr-emulated.h",
+        "sha256": "242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa",
+        "span_sha256": "836531b30a1e7f2f8c5c2c092c756eb34a249ab61723040a42f964742d66a780"
+      },
+      "tests": {
+        "half": 456
+      },
+      "timing": "STATIC_REVIEW_ONLY"
+    },
+    {
+      "active_preprocessed_calls": [
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_double",
+          "line": 468
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_double",
+          "line": 838
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_double",
+          "line": 893
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_double",
+          "line": 1072
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_double",
+          "line": 1310
+        },
+        {
+          "file": "falcon-fft.c",
+          "function": "fpr_double",
+          "line": 1401
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_double",
+          "line": 7509
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_double",
+          "line": 7978
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_double",
+          "line": 8007
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_double",
+          "line": 793
+        }
+      ],
+      "consumers": "FPC_SQR and KeyGen norm; inactive log_emu",
+      "domain": "exact for normal encoded exponent1..2045, and zeros; arbitrary subnormal/overflow outside",
+      "open_obligations": "Small-twiddle proof cannot be silently used as universal doubling proof.",
+      "primitive": "fpr_double",
+      "proof": [
+        "ROOT/ANALYTIC_PROOF.md:71-72; NODE3/ANALYTIC_PROOF.md:34-35 only FPC_SQR unit-twiddle use"
+      ],
+      "sanitizer": "same public corpus; ASan+UBSan PASS",
+      "semantics": "increment exponent for nonzero encoded exponent",
+      "source": {
+        "first_line": 176,
+        "last_line": 181,
+        "path": "source/fpr-emulated.h",
+        "sha256": "242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa",
+        "span_sha256": "b358962a30606899ece3265b7916af7347590b5b9a49372f7da864df1d8f4e87"
+      },
+      "tests": {
+        "double": 456
+      },
+      "timing": "STATIC_REVIEW_ONLY"
+    },
+    {
+      "active_preprocessed_calls": [
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_floor",
+          "line": 2481
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_floor",
+          "line": 2542
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_floor",
+          "line": 2864
+        }
+      ],
+      "consumers": "sampler_large:2864 and BerExp:2481; H3 range/zero-aware interface",
+      "domain": "ZERO: NumericCenter = finite and -2147483283 <= val(x) < 2147483282; wider integer-result domain sampled |x|<2^63",
+      "open_obligations": "Arithmetic theorem does not certify constant trace or reachability.",
+      "primitive": "fpr_floor",
+      "proof": [
+        "ZERO/SourceFloor.FLOOR_ZERO",
+        "ZERO/SourceFloor.C_INT_BRIDGE (z=-365..366)",
+        "H3/Floor.floor_refinement excludes negative zero"
+      ],
+      "sanitizer": "same public corpus; ASan+UBSan PASS",
+      "semantics": "source floor=math floor-eps0; floor(-0)=-1; GCC -O inserts exponent<1022 branch",
+      "source": {
+        "first_line": 117,
+        "last_line": 133,
+        "path": "source/fpr-emulated.h",
+        "sha256": "242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa",
+        "span_sha256": "fcea8dc1a96f54ebe04b3bc11f43a6c218acecb25c4939c436568cb02c65283f"
+      },
+      "tests": {
+        "floor": 1824
+      },
+      "timing": "TIMING_EVIDENCE: operand-dependent branch in original Sign TU"
+    },
+    {
+      "active_preprocessed_calls": [
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_rint",
+          "line": 6284
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_rint",
+          "line": 6318
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_rint",
+          "line": 6748
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_rint",
+          "line": 6772
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_rint",
+          "line": 6773
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_rint",
+          "line": 7002
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_rint",
+          "line": 7238
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_rint",
+          "line": 7268
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_rint",
+          "line": 7269
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_rint",
+          "line": 1931
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_rint",
+          "line": 1932
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_rint",
+          "line": 1985
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_rint",
+          "line": 1986
+        }
+      ],
+      "consumers": "rint: KeyGen Babai and Sign pre-cast; trunc: fpr_expm_scaled",
+      "domain": "finite |x|<2^63 with representable integer result",
+      "open_obligations": "Prove caller conversion ranges and source refinement for open Sign-law/Babai consumers.",
+      "primitive": "fpr_rint",
+      "proof": [
+        "No general universal theorem supplied; ZERO floor proof is not a rint/trunc theorem"
+      ],
+      "sanitizer": "same public corpus; ASan+UBSan PASS",
+      "semantics": "nearest-even integer",
+      "source": {
+        "first_line": 98,
+        "last_line": 115,
+        "path": "source/fpr-emulated.h",
+        "sha256": "242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa",
+        "span_sha256": "6d612a7a94eeab23d3b2d5ffaca023de115cbbf0b61439d38917aa30093afafe"
+      },
+      "tests": {
+        "rint": 1574
+      },
+      "timing": "STATIC_REVIEW_ONLY"
+    },
+    {
+      "active_preprocessed_calls": [],
+      "consumers": "rint: KeyGen Babai and Sign pre-cast; trunc: fpr_expm_scaled",
+      "domain": "finite |x|<2^63 with representable integer result",
+      "open_obligations": "Prove caller conversion ranges and source refinement for open Sign-law/Babai consumers.",
+      "primitive": "fpr_trunc",
+      "proof": [
+        "No general universal theorem supplied; ZERO floor proof is not a rint/trunc theorem"
+      ],
+      "sanitizer": "same public corpus; ASan+UBSan PASS",
+      "semantics": "truncate toward zero",
+      "source": {
+        "first_line": 135,
+        "last_line": 149,
+        "path": "source/fpr-emulated.h",
+        "sha256": "242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa",
+        "span_sha256": "dd3753585f5adb1aa0efb9f9f4f2f129a44f87c2a2c8665361ff4c61e1c79968"
+      },
+      "tests": {
+        "trunc": 1574
+      },
+      "timing": "STATIC_REVIEW_ONLY"
+    },
+    {
+      "active_preprocessed_calls": [
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_lt",
+          "line": 7750
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_lt",
+          "line": 7983
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_lt",
+          "line": 8012
+        },
+        {
+          "file": "falcon-keygen.c",
+          "function": "fpr_lt",
+          "line": 8072
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_lt",
+          "line": 865
+        },
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_lt",
+          "line": 2815
+        }
+      ],
+      "consumers": "Gate00 compares with +1/2; adaptive selector compares positive dss with positive coefficients; fpr_max has no active source caller",
+      "domain": "finite numeric compare except mixed signed-zero pair; max value remains correct on both zeros",
+      "open_obligations": "F01: narrow/correct generic contract; actual active comparisons never compare two zeros. No ZERO/ROOT/NODE3 lemma overturned.",
+      "primitive": "fpr_lt/fpr_max",
+      "proof": [
+        "No supplied numeric compare theorem covering mixed zeros"
+      ],
+      "sanitizer": "same public corpus; ASan+UBSan PASS",
+      "semantics": "signed-word ordering corrected when both signs negative; lt(-0,+0)=1 contradicts internal.h:281-282",
+      "source": {
+        "first_line": 195,
+        "last_line": 212,
+        "path": "source/fpr-emulated.h",
+        "sha256": "242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa",
+        "span_sha256": "f227a2c94d93a882cb35064f3a3b41c6b9e46945911dd6dbae0b93fa91f2dd0e"
+      },
+      "tests": {
+        "lt": 2736,
+        "max": 2736
+      },
+      "timing": "STATIC_REVIEW_ONLY"
+    },
+    {
+      "active_preprocessed_calls": [],
+      "consumers": "fpr_expm_scaled -> BerExp -> H3_LIKELIHOOD source instantiation",
+      "domain": "all uint64 pairs",
+      "open_obligations": "20,480 independent big-integer products; no new whole-domain kernel proof.",
+      "primitive": "fpr_mul_high_u64",
+      "proof": [
+        "H3 Comparator proves different unsigned comparators; not this multiply",
+        "Referenced exponential proof not present in bootstrap"
+      ],
+      "sanitizer": "same public corpus; ASan+UBSan PASS",
+      "semantics": "floor(x*y/2^64), 32-bit limb decomposition",
+      "source": {
+        "first_line": 251,
+        "last_line": 268,
+        "path": "source/fpr-emulated.h",
+        "sha256": "242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa",
+        "span_sha256": "5b7ef8d6328a72c70de71addddaaa29f4e7f56f05459d37070435359378e215a"
+      },
+      "tests": {
+        "high": 20480
+      },
+      "timing": "STATIC_REVIEW_ONLY"
+    },
+    {
+      "active_preprocessed_calls": [
+        {
+          "file": "falcon-sign.c",
+          "function": "fpr_expm_scaled",
+          "line": 2507
+        }
+      ],
+      "consumers": "BerExp:2507; H3_LIKELIHOOD/H4_DSS/source acceptance-law",
+      "domain": "0<=r<=binary64(log2); caller reduction domain required",
+      "open_obligations": "F06: obtain exact version-bound whole-domain certificate, including reduction and trunc/high multiplication. RBF257 sampled max error<3562 integer units.",
+      "primitive": "fpr_expm_scaled",
+      "proof": [
+        "Header references rational whole-domain proof; proof/receipt not supplied in this projection"
+      ],
+      "sanitizer": "same public corpus; ASan+UBSan PASS",
+      "semantics": "fixed13-coefficient high-word recurrence; output approximates exp(-r)*2^63 with ccs1",
+      "source": {
+        "first_line": 230,
+        "last_line": 282,
+        "path": "source/fpr-emulated.h",
+        "sha256": "242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa",
+        "span_sha256": "483b287282100d870aecb89dd6be93fa85cff5d66568914a1a4c439223192c89"
+      },
+      "tests": {
+        "expm": 257
+      },
+      "timing": "STATIC_REVIEW_ONLY"
+    },
+    {
+      "active_preprocessed_calls": [],
+      "consumers": "No preprocessed active source caller",
+      "domain": "|x|<=binary64(log2); generic internal.h precision>=50bits",
+      "open_obligations": "514 RBF points meet relative2^-50; no universal theorem; inactive in FT1536.",
+      "primitive": "fpr_exp_small",
+      "proof": [],
+      "sanitizer": "same public corpus; ASan+UBSan PASS",
+      "semantics": "rational polynomial exp approximation",
+      "source": {
+        "first_line": 214,
+        "last_line": 229,
+        "path": "source/fpr-emulated.h",
+        "sha256": "242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa",
+        "span_sha256": "eec06bb13c582a1c9d73b804347143b65f68b9d721975a6196c00291618b5dc8"
+      },
+      "tests": {
+        "exp_small": 514
+      },
+      "timing": "STATIC_REVIEW_ONLY"
+    },
+    {
+      "active_preprocessed_calls": [],
+      "consumers": "fpr_gauss only; TRUE_TERNARY_SECRET=1 removes active call",
+      "domain": "positive normal x; special Gaussian use x=(a+1)/2^32",
+      "open_obligations": "257 RBF diagnostics, no active-profile mathematical dependency.",
+      "primitive": "fpr_log_emu",
+      "proof": [],
+      "sanitizer": "same public corpus; ASan+UBSan PASS",
+      "semantics": "32-term odd reciprocal polynomial with exponent decomposition",
+      "source": {
+        "first_line": 284,
+        "last_line": 327,
+        "path": "source/fpr-emulated.h",
+        "sha256": "242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa",
+        "span_sha256": "463806d80d6bfa4b07ff08b3c3d2b0a08092dc1822ab7928437b30aadaf8612b"
+      },
+      "tests": {
+        "log": 257
+      },
+      "timing": "STATIC_REVIEW_ONLY"
+    },
+    {
+      "active_preprocessed_calls": [],
+      "consumers": "fpr_gauss only, inactive in active profile",
+      "domain": "sincos b uint32; reduced |t|<=pi/4; direct polynomials need same domain",
+      "open_obligations": "257 RBF trig diagnostics; switch depends on b, irrelevant to current active-profile CT claim.",
+      "primitive": "fpr_sin_poly/fpr_cos_poly/fpr_sincos_tick",
+      "proof": [],
+      "sanitizer": "same public corpus; ASan+UBSan PASS",
+      "semantics": "fixed Horner polynomials, quadrant switch",
+      "source": {
+        "first_line": 288,
+        "last_line": 400,
+        "path": "source/fpr-emulated.h",
+        "sha256": "242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa",
+        "span_sha256": "fcc932aca25792c2845fe260f1f8a5241a769640973806fed057ff337cf3d01b"
+      },
+      "tests": {
+        "sincos": 257
+      },
+      "timing": "STATIC_REVIEW_ONLY"
+    },
+    {
+      "active_preprocessed_calls": [],
+      "consumers": "falcon-keygen.c:7895-7929 compiled out by TRUE_TERNARY_SECRET=1",
+      "domain": "public uint32 a,b; finite sigma with safe output scale",
+      "open_obligations": "No new direct gauss test or universal theorem; not an active key-law assumption.",
+      "primitive": "fpr_gauss",
+      "proof": [],
+      "sanitizer": "no new dynamic test for this row",
+      "semantics": "Box-Muller-like pair from log/sqrt/sincos",
+      "source": {
+        "first_line": 402,
+        "last_line": 412,
+        "path": "source/fpr-emulated.h",
+        "sha256": "242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa",
+        "span_sha256": "e0197362b93d852414e95e3254ed962ffc3ad6b53be069262afa81978582ddd5"
+      },
+      "tests": {},
+      "timing": "STATIC_REVIEW_ONLY"
+    },
+    {
+      "active_preprocessed_calls": [],
+      "consumers": "FFT3/LDL root and all descendants; 8192 stored words match exact decimal RN; 1022 used-range pairs independently checked with RBF256",
+      "domain": "FFT3 indices derived from public sizes logn<=10 and valid layout",
+      "open_obligations": "Remaining full FFT/layout/composition proof remains historical; table-value check is not whole FFT proof.",
+      "primitive": "FFT_tables_and_constants",
+      "proof": [
+        "ROOT/ANALYTIC_PROOF.md:97-135; NODE3/ANALYTIC_PROOF.md:65-115"
+      ],
+      "sanitizer": "no new dynamic test for this row",
+      "semantics": "raw binary64 constants; tables h418-4523",
+      "source": {
+        "first_line": 63,
+        "last_line": 4525,
+        "path": "source/fpr-emulated.h",
+        "sha256": "242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa",
+        "span_sha256": "2219f41c829aaa15fb9f4cd045f83fa718855d1b5d600228bcc665a8f33b10dd"
+      },
+      "tests": {},
+      "timing": "STATIC_REVIEW_ONLY"
+    },
+    {
+      "active_preprocessed_calls": [],
+      "consumers": "ft_adaptive_proposal:2813-2821; H3 integer support",
+      "domain": "5 positive binary64 coefficients,512 entries per bank",
+      "open_obligations": "No new universal probability-table proof or full CDF rerun; supplied H3 support proof rebuilt.",
+      "primitive": "adaptive_CDF_constants",
+      "proof": [
+        "H3/REPORT.md:75-81 and formal Proposal/CDF exact support (29,59,118,235,365)"
+      ],
+      "sanitizer": "no new dynamic test for this row",
+      "semantics": "coefficients {1/10,1/40,1/160,1/640,1/1536} rounded once; thresholds are integers",
+      "source": {
+        "first_line": 15,
+        "last_line": 2605,
+        "path": "source/ft1536-adaptive-cdf-tables.h",
+        "sha256": "c16f041a64aba25991b5473111675f1c046ebc38285fca6c052124cf3b7fdf4f",
+        "span_sha256": "2f85eab0edfeaccd13ddb3c553e391b84e199d2cf3434283d0ef81e4e8c023c5"
+      },
+      "tests": {},
+      "timing": "STATIC_REVIEW_ONLY"
+    },
+    {
+      "active_preprocessed_calls": [],
+      "consumers": "No active caller in LP64 build",
+      "domain": "FALCON_ASM_CORTEXM4=1 only; actual=0",
+      "open_obligations": "Not compiled, not executed, no result transferred from portable C.",
+      "primitive": "inactive_ARM",
+      "proof": [],
+      "sanitizer": "no new dynamic test for this row",
+      "semantics": "Separate assembly alternatives for all5 external primitives",
+      "source": {
+        "first_line": 56,
+        "last_line": 1178,
+        "path": "source/fpr-emulated.c",
+        "sha256": "7cb06c9ea8f8bfc205a207cd73af367d299005d4bfec26333ced702f1c024e5f",
+        "span_sha256": "e81f7c4cc41051f69bbfbe8a53af8f100ab6a9171b2e298cabed63b3a04bad86"
+      },
+      "tests": {},
+      "timing": "STATIC_REVIEW_ONLY"
+    },
+    {
+      "active_preprocessed_calls": [],
+      "consumers": "Only decimal table provenance used in this audit",
+      "domain": "inactive FPR_IMPL reference",
+      "open_obligations": "No host-double based proof claim.",
+      "primitive": "reference_fpr_double",
+      "proof": [],
+      "sanitizer": "no new dynamic test for this row",
+      "semantics": "Host-double reference only; not the arithmetic oracle",
+      "source": {
+        "first_line": 32,
+        "last_line": 258,
+        "path": "source/fpr-double.h",
+        "sha256": "5dd9110dd4e77c96e19263488bd0937cea0032623f40cacb289da7e3e1256d56",
+        "span_sha256": "39563374a0f8690cca46c780c4da8e133fd88b1e059dc434796da8049e2b21a8"
+      },
+      "tests": {},
+      "timing": "STATIC_REVIEW_ONLY"
+    }
+  ],
+  "schema": "FT1536_FPEMU_AUDIT_MATRIX_V1",
+  "source_manifest_sha256": "2553358fbb1144acdb577e1ad371a017ac325306dd901af745295dd17b03bd5a"
+}
