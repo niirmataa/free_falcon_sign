@@ -83,6 +83,12 @@ parowanych real/imag values, z zachowaniem mocniejszych korelacji.
 [Bootstrap](background/H3_NODE2_2026-09-19/README.md) ma 120 przypiętych
 członków i gotową kopię w nowym W. To jeden poziom, nie całe niższe drzewo.
 
+**Osobne przygotowane zlecenie:** [niezależny audyt FPEMU](documents/FT1536_ZADANIE_ASTRA_FPEMU_AUDIT_2026-09-19.md).
+Właściciel uruchamia drugą Astrę ręcznie w odrębnym W. Audyt obejmuje
+pokrycie arytmetyki/domen, ASan/UBSan, stan dowodów i testów czasowych oraz
+mapę wpływu findings na istniejące wyniki. [Wejścia](background/FPEMU_AUDIT_2026-09-19/README.md)
+mają 126 przypiętych członków; wykonanie i raport audytu są oczekiwane.
+
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
 

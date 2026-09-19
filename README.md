@@ -285,6 +285,13 @@ These exact files are also preserved in the proof snapshots. Their presence
 and finite arithmetic checks are distinct from a complete proof of the
 FPEMU/FFT/sampler path; the current NTT work concerns modular integer arithmetic.
 
+An [independent FPEMU audit](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_FPEMU_AUDIT_2026-09-19.md)
+is prepared for a separate Astra session started manually by the owner.
+It examines arithmetic/domain coverage, native/sanitizer checks, timing
+evidence and the impact of findings on existing proof interfaces.
+[Pinned audit inputs](proofs/ft1536/background/FPEMU_AUDIT_2026-09-19/README.md)
+are ready; execution and the audit report are pending.
+
 ## Verify and replay the evidence
 
 Archive integrity and tooling tests:
