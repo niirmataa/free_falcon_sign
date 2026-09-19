@@ -209,6 +209,13 @@ Replay reproduced **95/95 files, 17 Lean modules and 97 theorems (48 new)**.
 The next global goal is `Reach_call_C(...) -> NumericCenter(mu)`;
 sampler-law consumption remains a separate obligation.
 
+The next prepared task is [H3_ROOT_LDL](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_ROOT_LDL_2026-09-19.md):
+a uniform source-bound certificate for key FFTs, root Gram inputs and the
+actual subtractive 2x2 LDL root. It targets positive real divisors/pivots,
+bounded multipliers and explicit errors, with a frame argument for the
+source execution order. [Pinned inputs](proofs/ft1536/background/H3_ROOT_LDL_2026-09-19/README.md)
+are ready; recursive tree bounds and ordered center reachability follow later.
+
 ### Remaining obligations beyond the verifier
 
 - **C-to-model correspondence:** the certificates concern explicit models

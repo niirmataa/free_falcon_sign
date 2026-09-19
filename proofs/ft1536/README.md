@@ -57,6 +57,13 @@ Globalne `Reach_call_C -> NumericCenter` i prawo samplera pozostają otwarte.
 [Zlecenie](documents/FT1536_ZADANIE_ASTRA_H3_ZERO_SCALAR_2026-09-19.md) oraz
 [bootstrap](background/H3_ZERO_SCALAR_2026-09-19/README.md) zachowują piny.
 
+**Następne przygotowane zadanie:** [H3_ROOT_LDL](documents/FT1536_ZADANIE_ASTRA_H3_ROOT_LDL_2026-09-19.md)
+— certyfikat źródłowych FFT/Gram i subtractive korzenia LDL2 dla emitted
+support, z dzielnikami/pivotami, L, błędami oraz frame bindingiem.
+[Publiczny zestaw wejść](background/H3_ROOT_LDL_2026-09-19/README.md) ma106
+przypiętych członków i gotową kopię w świeżym W. Niższe poziomy drzewa
+i ordered Reach są kolejnymi obowiązkami.
+
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
 
@@ -100,7 +107,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [L_V_BRIDGE](stages/FT1536_L_V_BRIDGE_RUN_001/REPORT.md) | **L_V_PROVED_FOR_PINNED_MODEL** — pełny most bajtowy Verify → Ext0 dla kandydata | `17f8f8b` |
 | [M0](stages/FT1536_M0_CONTRACT_RUN_001/REPORT.md) | **M0_CONTRACT_DEFINED_FOR_PINNED_CANDIDATE** — gra, budżety, framing i dowód pojemności | `95f8015` |
 | [H3_RANGE](stages/FT1536_H3_RANGE_RUN_001/REPORT.md) | **PARTIAL_PROOF** — lokalne floor/proposal/residual; globalna osiągalność otwarta | `cb99e67` |
-| [H3_ZERO_SCALAR](stages/FT1536_H3_ZERO_SCALAR_RUN_001/REPORT.md) | **H3_ZERO_SCALAR_PROVED_FOR_PINNED_MODEL** — lokalny zero-aware most, błąd 2^-20; mieszany dowód | niniejszy checkpoint |
+| [H3_ZERO_SCALAR](stages/FT1536_H3_ZERO_SCALAR_RUN_001/REPORT.md) | **H3_ZERO_SCALAR_PROVED_FOR_PINNED_MODEL** — lokalny zero-aware most, błąd 2^-20; mieszany dowód | `9a76ecf` |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).

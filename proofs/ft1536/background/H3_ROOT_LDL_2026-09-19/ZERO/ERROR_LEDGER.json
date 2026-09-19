@@ -1,0 +1,222 @@
+{
+  "schema": "FT1536_H3_ZERO_SCALAR_ERROR_LEDGER_V1",
+  "status": "H3_ZERO_SCALAR_PROVED_FOR_PINNED_MODEL",
+  "rows": [
+    {
+      "id": "FLOOR_ZERO",
+      "claim": "NumericCenter implies exponent<=1053 and source floor=floor(val)-eps0, including -0.",
+      "status": "PROVED_KERNEL_WITH_C_TRANSLATION",
+      "domain": "All local finite64-bit words in NumericCenter; no NotNegZero premise.",
+      "evidence": [
+        {
+          "path": "formal/ValueDomain.lean",
+          "sha256": "3899a0b4b03810b6b211cdc39bb5eb99de6dc85650ebd5f3ddac8e39a2059eba"
+        },
+        {
+          "path": "formal/SourceFloor.lean",
+          "sha256": "eb0ac4299fa293c8ba0a4cd2cb7d6cd002b449c27006d8df8910f89ae6c9460c"
+        },
+        {
+          "path": "scripts/fp_literal.py",
+          "sha256": "159883b9ca031cbac9426af3d90d5bba1919b413af7214ba37bf0e6f51e4091c"
+        }
+      ],
+      "remaining_consumption": null
+    },
+    {
+      "id": "C_INT_BRIDGE",
+      "claim": "long->int exact and s_C+z within int32 for all z in[-365,366].",
+      "status": "PROVED_KERNEL_WITH_C_TRANSLATION",
+      "domain": "NumericCenter; successful nonfault proposal return, not sticky0.",
+      "evidence": [
+        {
+          "path": "formal/SourceFloor.lean",
+          "sha256": "eb0ac4299fa293c8ba0a4cd2cb7d6cd002b449c27006d8df8910f89ae6c9460c"
+        },
+        {
+          "path": "inputs/bootstrap/H3/formal/Proposal.lean",
+          "sha256": "003c10372af75e5cbb4953594311f0ce8e405045bee4d8ac49dac343f40af907"
+        }
+      ],
+      "remaining_consumption": null
+    },
+    {
+      "id": "OF_EXACT",
+      "claim": "Source-normalized fpr_of on signed32 returns exact integer value; zero is +0.",
+      "status": "PROVED_KERNEL_WITH_C_TRANSLATION",
+      "domain": "All i in[-2^31,2^31-1].",
+      "evidence": [
+        {
+          "path": "formal/BitErrors.lean",
+          "sha256": "ec214fafcf80626ef657f69bd9aa8623153cd8c55cb7222b395cf2e57cf2aef8"
+        },
+        {
+          "path": "formal/PackOf.lean",
+          "sha256": "0797e5e9677187c183001efd4f8d417e54cede1d3771113fe5d2017d0a432e9a"
+        },
+        {
+          "path": "ANALYTIC_PROOF.md",
+          "sha256": "579b8614c249dc2f1a6938d600f6b234e85ef6a441ef922bde5570e304d93918"
+        }
+      ],
+      "remaining_consumption": null
+    },
+    {
+      "id": "SUB_CENTER",
+      "claim": "r_C finite; |val(r_C)-(val(x)-s_C)|<=1/1048576.",
+      "status": "PROVED_UNIVERSAL_ANALYTIC_WITH_KERNEL_INTEGER_LEMMAS",
+      "domain": "Every NumericCenter word, including zeros/subnormals/underflow.",
+      "evidence": [
+        {
+          "path": "ANALYTIC_PROOF.md",
+          "sha256": "579b8614c249dc2f1a6938d600f6b234e85ef6a441ef922bde5570e304d93918"
+        },
+        {
+          "path": "formal/BitErrors.lean",
+          "sha256": "ec214fafcf80626ef657f69bd9aa8623153cd8c55cb7222b395cf2e57cf2aef8"
+        },
+        {
+          "path": "formal/LiteralAdd.lean",
+          "sha256": "52fe51d622295a30f1c3fd7264ba2f716fb847df842e5e71d55f4729972e918f"
+        },
+        {
+          "path": "artifacts/error_certificate.json",
+          "sha256": "31a66b125b15f3e03327893b33dd14121f2f2f9ed80217d2dff3f243e3ad099c"
+        }
+      ],
+      "remaining_consumption": "Full source-add theorem is not kernelized: kernel consumers explicitly take this analytically proved source contract. No error bound is left unknown in the analytical theorem."
+    },
+    {
+      "id": "SUB_RESIDUAL",
+      "claim": "res_C finite; absolute error versus val(x)-(s_C+z)<=1/1048576.",
+      "status": "PROVED_UNIVERSAL_ANALYTIC_WITH_KERNEL_INTEGER_LEMMAS",
+      "domain": "Every NumericCenter and all z in[-365,366].",
+      "evidence": [
+        {
+          "path": "ANALYTIC_PROOF.md",
+          "sha256": "579b8614c249dc2f1a6938d600f6b234e85ef6a441ef922bde5570e304d93918"
+        },
+        {
+          "path": "formal/ErrorArithmetic.lean",
+          "sha256": "a2726b9aa5fd7930b931424261033cdab1ff252789a8fb4f8737e239ce29fec1"
+        },
+        {
+          "path": "formal/LiteralAdd.lean",
+          "sha256": "52fe51d622295a30f1c3fd7264ba2f716fb847df842e5e71d55f4729972e918f"
+        },
+        {
+          "path": "artifacts/error_certificate.json",
+          "sha256": "31a66b125b15f3e03327893b33dd14121f2f2f9ed80217d2dff3f243e3ad099c"
+        }
+      ],
+      "remaining_consumption": "Same proof-layer distinction as SUB_CENTER; this is not an all-backend IEEE theorem."
+    },
+    {
+      "id": "R_DELTA_DOMAIN",
+      "claim": "r_C and sub_C(1,r_C) are +0 or positive normal, values in[0,1]; endpoint1 not exclusive to -0.",
+      "status": "PROVED_SOURCE_CASE_ANALYSIS_WITH_KERNEL_ENDPOINTS",
+      "domain": "All NumericCenter; no extra normality/zero assumption.",
+      "evidence": [
+        {
+          "path": "ANALYTIC_PROOF.md",
+          "sha256": "579b8614c249dc2f1a6938d600f6b234e85ef6a441ef922bde5570e304d93918"
+        },
+        {
+          "path": "formal/EndpointFacts.lean",
+          "sha256": "c4e638c5a27a0e3dac8e7d7e13b32bf5c7e6d486fdd467caec1b8d30a992f088"
+        },
+        {
+          "path": "formal/LiteralAdd.lean",
+          "sha256": "52fe51d622295a30f1c3fd7264ba2f716fb847df842e5e71d55f4729972e918f"
+        },
+        {
+          "path": "artifacts/controls_normal.json",
+          "sha256": "c3d4d36d07cbe54e9f0ec811bef6a3d72326143c71ba5a582b69633add48376f"
+        }
+      ],
+      "remaining_consumption": null
+    },
+    {
+      "id": "ORDERED_CONSUMPTION",
+      "claim": "rho in closed[0,1], exact residual<=366, machine residual<=366+2^-20; ordered zero-aware terminal bridge.",
+      "status": "PROVED_MIXED_KERNEL_ANALYTIC",
+      "domain": "First NumericCenter, then returned residual, then next center. E_half/E_add explicit.",
+      "evidence": [
+        {
+          "path": "formal/ZeroRho.lean",
+          "sha256": "62c0abb06a9e68c183b56300d80e99946d181fe5c7c417fa993a92a5120e9a4e"
+        },
+        {
+          "path": "formal/ErrorArithmetic.lean",
+          "sha256": "a2726b9aa5fd7930b931424261033cdab1ff252789a8fb4f8737e239ce29fec1"
+        },
+        {
+          "path": "ANALYTIC_PROOF.md",
+          "sha256": "579b8614c249dc2f1a6938d600f6b234e85ef6a441ef922bde5570e304d93918"
+        }
+      ],
+      "remaining_consumption": "Resolve E_half/E_add and the next-center premise on appropriate global paths; do not apply closeness to sticky/fault0."
+    },
+    {
+      "id": "GLOBAL_REACHABILITY_OPEN",
+      "claim": "Emitted-KeyGen/M0 Reach_call_C -> NumericCenter remains unproved; old CenterClass/floor-equality theorem unchanged.",
+      "status": "OPEN_NOT_THIS_LOCAL_THEOREM",
+      "domain": "All emitted keys and actual histories, including pre-dss/norm-rejected attempts.",
+      "evidence": [
+        {
+          "path": "M0_COMPATIBILITY.md",
+          "sha256": "d06d9c89b4e68df1964b05133c6c5f6e08a651b5d9fef21119cd459246e14a5d"
+        },
+        {
+          "path": "inputs/bootstrap/M0/H3_INTERFACE.md",
+          "sha256": "2e427f66d242cd4a95f777b9be8948ced315d3c683727d21e965c5fb3934e97c"
+        },
+        {
+          "path": "inputs/bootstrap/H3/REACHABILITY.md",
+          "sha256": "b44ea093f97c66a186abca0ac8c1d8a680bd3feec1f9121e165c5f623f1809e2"
+        }
+      ],
+      "remaining_consumption": "Uniform emitted/loader/internal LDL/ordered bounds and actual backend error/domain transfer."
+    },
+    {
+      "id": "SAMPLER_LAW_CONSUMPTION_OPEN",
+      "claim": "Zero-aware scalar-law comparison must account for endpoints, errors and changed shifted finite support.",
+      "status": "OPEN_NOT_A_RANGE_COROLLARY",
+      "domain": "For -0 y in[-366,365], for +0 y in[-365,366].",
+      "evidence": [
+        {
+          "path": "M0_COMPATIBILITY.md",
+          "sha256": "d06d9c89b4e68df1964b05133c6c5f6e08a651b5d9fef21119cd459246e14a5d"
+        },
+        {
+          "path": "formal/EndpointFacts.lean",
+          "sha256": "c4e638c5a27a0e3dac8e7d7e13b32bf5c7e6d486fdd467caec1b8d30a992f088"
+        }
+      ],
+      "remaining_consumption": "No automatic H3 arithmetic/H1R/FFO/R5T/M7 closure, no new small global loss or abort assigned."
+    }
+  ],
+  "errors": {
+    "E_r": "1/1048576",
+    "E_res": "1/1048576",
+    "universal_add_envelope": "13*2^-24+2^-1021",
+    "E_half": "OPEN_WHERE_NEEDED",
+    "E_add": "OPEN_WHERE_NEEDED"
+  },
+  "proof_layers": {
+    "A": "kernel",
+    "OF": "kernel normalized C model",
+    "B": "universal analytical source proof + kernel integer lemmas",
+    "C": "mixed kernel/analytical substitution"
+  },
+  "source_add_error_fully_kernelized": false,
+  "H3_range_proved": false,
+  "global_reachability_proved": false,
+  "sampler_law_proved": false,
+  "baseline_source_integrated": true,
+  "source_changed": false,
+  "new_source_patch_integrated": false,
+  "protocol_wrapper_integrated": false,
+  "owner_accepted": false,
+  "security_reduction_proved": false
+}
