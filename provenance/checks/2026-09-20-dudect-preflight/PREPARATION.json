@@ -1,0 +1,156 @@
+{
+  "baseline_git_commit": "1a04145c89e81ba0a51465c32e011880750696b6",
+  "batch_size": 100000,
+  "binary": "attempts/002/build/dudect-ft1536",
+  "case_names": [
+    "negative_floor",
+    "positive_loop",
+    "floor_fixed_positive",
+    "floor_fixed_negative",
+    "floor_random_signed",
+    "add_cancellation",
+    "mul_carry",
+    "div_denominator_bounds",
+    "sqrt_exponent_parity",
+    "rint_ties",
+    "expm_endpoints",
+    "half_boundary",
+    "lt_signed_zero",
+    "scaled_zero"
+  ],
+  "cflags": [
+    "-W",
+    "-Wall",
+    "-O",
+    "-DFPR_IMPL=\"fpr-emulated.h\"",
+    "-DSAMPLER_CODF=0",
+    "-DSAMPLER_CDF=0",
+    "-DCT_BEREXP=1",
+    "-DFT_TERNARY_ADAPTIVE_CDF=1",
+    "-DFT1536_CANDIDATE_PROFILE=1",
+    "-DCLEANSE=1",
+    "-DTRUE_TERNARY_SECRET=1",
+    "-DTRUE_TERNARY_SECRET_MODE=1",
+    "-DTERNARY_KEYGEN_BOUND_SCALE_NUM=1250",
+    "-DTERNARY_KEYGEN_BOUND_SCALE_DEN=100",
+    "-DTERNARY_KEYGEN_MAX_ATTEMPTS=3000000",
+    "-DSIGN_MAX_ATTEMPTS=16",
+    "-std=c99",
+    "-I/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_FPEMU_DUDECT_RUN_001/source"
+  ],
+  "checks": [
+    {
+      "case": "positive_loop",
+      "n": [
+        49993,
+        49996
+      ],
+      "raw_replay": {
+        "batches": 2,
+        "raw_sha256": "1d412154b4efabb0cc725f8ec57ea4bc9337ac6bf104fecb20ef8b93b7206a5f",
+        "replay_stdout_sha256": "d6bab52df7636e2ebfe096d8e974be12a6345ce137271f36b1debadbb63bb6c4",
+        "status": "PASS"
+      },
+      "status": "LEAKAGE_FOUND"
+    },
+    {
+      "case": "negative_floor",
+      "n": [
+        1049886,
+        1049883
+      ],
+      "raw_replay": {
+        "batches": 22,
+        "raw_sha256": "3c4b508438e41d50a6bfcfcf7d744984389bd9ad74cbe853bdcbb08ee4b3a208",
+        "replay_stdout_sha256": "0c19784fbcd1d616d364eaf3ca874e5fb38dc7623e481b656c5d27d585ffba04",
+        "status": "PASS"
+      },
+      "status": "NO_LEAKAGE_EVIDENCE_YET"
+    },
+    {
+      "case": "floor_fixed_positive",
+      "raw_replay": {
+        "batches": 2,
+        "raw_sha256": "c196395e0de1c7c912b88f75174d259079bfaa4c37f2bc684f78897960eb1be1",
+        "replay_stdout_sha256": "490b59ced9dab11513f460916eb7c290a4d9ccbec4a9b31dceaf0fd340a91918",
+        "status": "PASS"
+      },
+      "status": "LEAKAGE_FOUND"
+    },
+    {
+      "case": "timebox",
+      "raw_replay": {
+        "batches": 12,
+        "raw_sha256": "a02dab4ddbdba73e5e669edce88653d3114ba56e894a120fa09fc4988fac2349",
+        "replay_stdout_sha256": "e8ccdf6934b84578daf140fee2a0c28d39efa59c73bb30c8d4086a5b527709c1",
+        "status": "PASS"
+      },
+      "seconds": 0.5425026989832986,
+      "status": "NO_LEAKAGE_EVIDENCE_YET"
+    }
+  ],
+  "cpu": 9,
+  "global_seconds": 28800,
+  "harness": "attempts/002/harness",
+  "log_rate_limit_bytes_per_second": 2097152,
+  "measurement_profile": "EXPLORATORY_SHARED_HOST; affinity, recorded governor/turbo; no exclusive CPU claim",
+  "rounds": 3,
+  "sealed_files": {
+    "attempts/002/build/benchmark.o": "5ecc10325b4b69a8e25362cf278a993f6d429dd3b18480c2fa6738a315210c25",
+    "attempts/002/build/dudect-ft1536": "abeccee1722f9c8a1116a457d5031d8089a9187c7f35a665cb411010c72174a3",
+    "attempts/002/build/fpr-emulated.o": "bbd780778de3993d1bad11040e82c146c6603dcd68f9c7eed8dcc9d3e23afa85",
+    "attempts/002/build/targets.o": "7258fc03d7bc24df9bfb206ff61642260d8b6aebcff9977ac38adb4fe08a6ae3",
+    "attempts/002/harness/README.md": "53880ea30835ffbbeac8844671038c602d6b09e2127f1700d169b7bbb6cb3f82",
+    "attempts/002/harness/benchmark.c": "dd06a9f8f310c6de2ed1778c0abbdaa31eecf2690f7b06a422b638e0e3649b64",
+    "attempts/002/harness/campaign.py": "03d04f56a7ff294e6cdeac46c3acc9ccb685e9d8cb4d15b5cf1d1fc489705968",
+    "attempts/002/harness/launch.py": "9244f43112a22c24c1ef37af79e24da8d3ef14d8a3b576d7722330c40c4696e0",
+    "attempts/002/harness/prepare.py": "916bb6851f2ea31cd586191d23a80866a60044252ecd35f1b83667879d874d43",
+    "attempts/002/harness/targets.c": "7130dafef93783dedd8797448ae9eb072aa5ea049fe5c9380e295b0dac4de409",
+    "source/Makefile": "25cd0345332882ccab4beea68d5139955c871499733ab9f5fa3cc8ef898d5049",
+    "source/falcon-enc.c": "0f7085fa975d41ebbeb96d5db4cb68482c344ef2d602ca8853e20a4d4f04fb05",
+    "source/falcon-fft.c": "06b573b636ae368dcda3eb4d89c3936ab31272123440d0d5362317e55d9ac063",
+    "source/falcon-keygen.c": "0a09b6ed2363308f54584dfd1e2d33ee1b4601a68c77712c50da920b5074a5cf",
+    "source/falcon-sign.c": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8",
+    "source/falcon-vrfy.c": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+    "source/falcon.h": "657ad2b2d45b8932c3b9a703ac718c1f23dad78523036c1a934b8e21cf0f4519",
+    "source/fpr-double.h": "5dd9110dd4e77c96e19263488bd0937cea0032623f40cacb289da7e3e1256d56",
+    "source/fpr-emulated.c": "7cb06c9ea8f8bfc205a207cd73af367d299005d4bfec26333ced702f1c024e5f",
+    "source/fpr-emulated.h": "242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa",
+    "source/frng.c": "4b1289adf0c902abe9408d989b4eb8d292cbb6ea86b92e1325a10fd9c5dfc644",
+    "source/ft1536-adaptive-cdf-tables.h": "c16f041a64aba25991b5473111675f1c046ebc38285fca6c052124cf3b7fdf4f",
+    "source/internal.h": "512629d3b79fa5bd74131ed2ecde06e1d157f5ac58db3f758db96b19131f1ba5",
+    "source/shake.c": "c3e7864bf4139264f8c287053214bf869e242757bf555235da81454e40ea316a",
+    "source/shake.h": "2373a37e09907c8e57a6b1adc05e26499d9cf2752518267a80291de931c2d8df",
+    "source/test_falcon.c": "ecd22c8f0ac8c24df0692c94ebb293b5944fe42fc57d97f2e06f01e5ecc44b4c",
+    "source/tool.c": "920ac2d8a96408c505670eb2f044cde763ca11945d90ec24d8c6f2a048377890",
+    "vendor/LICENSE": "ee7cd5d500ab72e03a6c8aefe69c6311d698c83e732b19d152a6fa38fd521720",
+    "vendor/README.md": "5e94b47c43db9bd42777dfdb95489081b32b163f6fe8389a92ea7bd683de3048",
+    "vendor/dudect.h": "3fb3b2bd7f9e17ae34b7c92518c1311c67342c56facc80da925d85f121b649da"
+  },
+  "source_manifest_sha256": "2553358fbb1144acdb577e1ad371a017ac325306dd901af745295dd17b03bd5a",
+  "status": "PREFLIGHT_PASS",
+  "upstream": {
+    "LICENSE": {
+      "commit": "dc269651fb2567e46755cfb2a13d3875592968b5",
+      "git_blob": "8869bf6ee9134f230f6219537e3b82db4a9371e6",
+      "sha256": "ee7cd5d500ab72e03a6c8aefe69c6311d698c83e732b19d152a6fa38fd521720",
+      "size": 1076,
+      "url": "https://raw.githubusercontent.com/oreparaz/dudect/dc269651fb2567e46755cfb2a13d3875592968b5/LICENSE"
+    },
+    "README.md": {
+      "commit": "dc269651fb2567e46755cfb2a13d3875592968b5",
+      "git_blob": "67bbe9538048c1f4be84e7decb1f355bf47e130b",
+      "sha256": "5e94b47c43db9bd42777dfdb95489081b32b163f6fe8389a92ea7bd683de3048",
+      "size": 8736,
+      "url": "https://raw.githubusercontent.com/oreparaz/dudect/dc269651fb2567e46755cfb2a13d3875592968b5/README.md"
+    },
+    "src/dudect.h": {
+      "commit": "dc269651fb2567e46755cfb2a13d3875592968b5",
+      "git_blob": "ff8cfce31e2d958e5408b19bad0f46841fc1a4a6",
+      "sha256": "3fb3b2bd7f9e17ae34b7c92518c1311c67342c56facc80da925d85f121b649da",
+      "size": 15227,
+      "url": "https://raw.githubusercontent.com/oreparaz/dudect/dc269651fb2567e46755cfb2a13d3875592968b5/src/dudect.h"
+    }
+  },
+  "utc": "2026-09-19T23:39:29.800500+00:00"
+}

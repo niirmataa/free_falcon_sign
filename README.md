@@ -39,8 +39,13 @@ Global reachable-center bounds and end-to-end security remain open research obje
 GCC14.2 with the selected `-O` emits an operand-dependent branch in
 `fpr_floor`, including its use in `sampler_large` and BerExp. The
 [independent audit review](proofs/ft1536/validation/2026-09-20-fpemu-audit/README.md)
-records the exact scope. Dudect/ctgrind have **not been run**; no timing-leak
-magnitude or emitted-domain attack is claimed.
+records the exact scope; timing tools were **NOT_RUN in that frozen audit**.
+The subsequent [official pinned dudect harness](tests/ft1536/dudect/README.md)
+provides public scalar contrasts, controls, full raw records and an eight-hour
+campaign controller. Its [short preflight](provenance/checks/2026-09-20-dudect-preflight/README.md)
+includes arithmetic/domain checks and exact raw-statistics replay.
+This shared-host scalar experiment does not establish an emitted-domain attack
+or an end-to-end constant-time property; ctgrind remains unrun.
 
 The current build integrates the corrected verifier, SHA-256
 `3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42`.

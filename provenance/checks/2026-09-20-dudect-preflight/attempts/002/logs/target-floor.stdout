@@ -1,0 +1,39 @@
+
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_FPEMU_DUDECT_RUN_001/attempts/002/build/dudect-ft1536:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+
+Disassembly of section .plt:
+
+Disassembly of section .plt.got:
+
+Disassembly of section .text:
+
+0000000000002a00 <target_floor>:
+    2a00:	48 89 fa             	mov    %rdi,%rdx
+    2a03:	48 c1 ea 34          	shr    $0x34,%rdx
+    2a07:	81 e2 ff 07 00 00    	and    $0x7ff,%edx
+    2a0d:	48 89 f8             	mov    %rdi,%rax
+    2a10:	48 c1 f8 3f          	sar    $0x3f,%rax
+    2a14:	89 d6                	mov    %edx,%esi
+    2a16:	81 ee fe 03 00 00    	sub    $0x3fe,%esi
+    2a1c:	78 36                	js     2a54 <target_floor+0x54>
+    2a1e:	48 89 f9             	mov    %rdi,%rcx
+    2a21:	48 c1 e1 0a          	shl    $0xa,%rcx
+    2a25:	48 0f ba f1 3f       	btr    $0x3f,%rcx
+    2a2a:	48 0f ba e9 3e       	bts    $0x3e,%rcx
+    2a2f:	48 31 c1             	xor    %rax,%rcx
+    2a32:	48 c1 ef 3f          	shr    $0x3f,%rdi
+    2a36:	48 01 cf             	add    %rcx,%rdi
+    2a39:	b9 3d 04 00 00       	mov    $0x43d,%ecx
+    2a3e:	29 d1                	sub    %edx,%ecx
+    2a40:	48 89 f8             	mov    %rdi,%rax
+    2a43:	48 c1 f8 20          	sar    $0x20,%rax
+    2a47:	f6 c1 20             	test   $0x20,%cl
+    2a4a:	48 0f 44 c7          	cmove  %rdi,%rax
+    2a4e:	83 e1 1f             	and    $0x1f,%ecx
+    2a51:	48 d3 f8             	sar    %cl,%rax
+    2a54:	c3                   	ret
+
+Disassembly of section .fini:
