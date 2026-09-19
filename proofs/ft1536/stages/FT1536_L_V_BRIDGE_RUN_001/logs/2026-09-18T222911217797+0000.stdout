@@ -1,0 +1,39 @@
+formal/Norm64.lean:104:15: error: Type mismatch
+  interleave_sum 1536 ?m.87 ?m.88
+has type
+  (sumN (2 * 1536) fun k => if k % 2 = 0 then ?m.87 (k / 2) else ?m.88 (k / 2)) = sumN 1536 ?m.87 + sumN 1536 ?m.88
+but is expected to have type
+  (sumN 3072 fun k =>
+      if k % 2 = 0 then fromVec a (k / 2) * fromVec a (k / 2) else fromVec b (k / 2) * fromVec b (k / 2)) =
+    (sumN 1536 fun i => fromVec a i * fromVec a i) + sumN 1536 fun i => fromVec b i * fromVec b i
+formal/Norm64.lean:111:15: error: Type mismatch
+  interleave_sum 768 ?m.213 ?m.214
+has type
+  (sumN (2 * 768) fun k => if k % 2 = 0 then ?m.213 (k / 2) else ?m.214 (k / 2)) = sumN 768 ?m.213 + sumN 768 ?m.214
+but is expected to have type
+  (sumN 1536 fun k =>
+      if k % 2 = 0 then fromVec a (k / 2) * fromVec a (k / 2 + 768) else fromVec b (k / 2) * fromVec b (k / 2 + 768)) =
+    (sumN 768 fun i => fromVec a i * fromVec a (i + 768)) + sumN 768 fun i => fromVec b i * fromVec b (i + 768)
+norm_no_overflow : ∀ (a b : Vec),
+  SignedVec a →
+    SignedVec b →
+      ∀ (n : Nat),
+        n < 4608 →
+          -2147483648 ≤ normTerm a b n ∧
+            normTerm a b n ≤ 2147483647 ∧
+              -4947802324992 ≤ normAcc a b n + normTerm a b n ∧
+                normAcc a b n + normTerm a b n ≤ 4947802324992 ∧
+                  -9223372036854775808 < normAcc a b n + normTerm a b n ∧
+                    normAcc a b n + normTerm a b n < 9223372036854775807
+NORM64_EXACT : ∀ (a b : Vec), SignedVec a → SignedVec b → normAcc a b 4608 = Q a b
+STRICT_B : ∀ (a b : Vec), SignedVec a → SignedVec b → (isShort a b = true ↔ Q a b < 2093922385)
+'FT1536Bridge.Q0_neg' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.int16_product' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.normTerm_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.norm_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.norm_no_overflow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.interleave_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.norm_sum' depends on axioms: [propext, sorryAx, Quot.sound]
+'FT1536Bridge.NORM64_EXACT' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536Bridge.STRICT_B' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+Norm64 1 21.647

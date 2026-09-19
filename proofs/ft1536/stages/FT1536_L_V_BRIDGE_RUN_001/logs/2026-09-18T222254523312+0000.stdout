@@ -1,0 +1,20 @@
+CENTER_C : ∀ (d : Int),
+  CanonVal d →
+    centerBeforeStore d = FT1536.center d ∧
+      centerC d = FT1536.center d ∧ -9216 ≤ centerBeforeStore d ∧ centerBeforeStore d ≤ 9216
+center_loop_correct : ∀ (v : Vec), CanonVec v → centerLoop v = fun i => FT1536.center (v i)
+'FT1536Bridge.s16_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.s16_exact' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.s16_bits' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.s32_exact' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.s64_exact' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.center_borrow' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.center_correction' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.CENTER_C' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.center_mod' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.center_congruence' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.center_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.center_prefix' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.center_unread' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.center_loop_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+BridgeWords 0 0.637

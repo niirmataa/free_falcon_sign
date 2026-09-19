@@ -1,0 +1,562 @@
+{
+  "status": "PASS",
+  "verify_cases": 55,
+  "norm_cases": 8,
+  "center_cases": 4,
+  "baseline_source_models_match": true,
+  "plain_observer_decisions_match": true,
+  "asan_ubsan_match": true,
+  "mutations": [
+    {
+      "name": "noop",
+      "detected": false,
+      "differences": []
+    },
+    {
+      "name": "center",
+      "detected": true,
+      "differences": [
+        "verify:center_9216",
+        "center:9216"
+      ]
+    },
+    {
+      "name": "offset",
+      "detected": true,
+      "differences": [
+        "norm:norm_negative_cross",
+        "norm:norm_offset"
+      ]
+    },
+    {
+      "name": "cross",
+      "detected": true,
+      "differences": [
+        "norm:norm_negative_cross"
+      ]
+    },
+    {
+      "name": "bound",
+      "detected": true,
+      "differences": [
+        "verify:bound_1_0",
+        "verify:bound_1_1",
+        "norm:norm_2093922385"
+      ]
+    },
+    {
+      "name": "narrow",
+      "detected": true,
+      "differences": [
+        "verify:raw_0_32768",
+        "verify:raw_1_32768",
+        "verify:raw_0_65535",
+        "verify:raw_1_65535"
+      ]
+    }
+  ],
+  "old_witness": {
+    "name": "old_witness",
+    "verify": 0,
+    "norm": 43058711057,
+    "source_plain_matches": true,
+    "model_decoder_matches": true,
+    "sanitizer_matches": true
+  },
+  "strict_boundary_decisions": [
+    {
+      "name": "bound_0_0",
+      "verify": 1,
+      "norm": 2093922384,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "bound_0_1",
+      "verify": 1,
+      "norm": 2093922384,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "bound_1_0",
+      "verify": 0,
+      "norm": 2093922385,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "bound_1_1",
+      "verify": 0,
+      "norm": 2093922385,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "bound_2_0",
+      "verify": 0,
+      "norm": 2093922386,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "bound_2_1",
+      "verify": 0,
+      "norm": 2093922386,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    }
+  ],
+  "decisions": [
+    {
+      "name": "zero_0",
+      "verify": 1,
+      "norm": 0,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "value_m9216_0",
+      "verify": 1,
+      "norm": 84934656,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "value_9216_0",
+      "verify": 1,
+      "norm": 84934656,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "value_m9217_0",
+      "verify": -1,
+      "norm": null,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "value_9217_0",
+      "verify": -1,
+      "norm": null,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "value_m18433_0",
+      "verify": -1,
+      "norm": null,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "value_18433_0",
+      "verify": -1,
+      "norm": null,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "value_m20000_0",
+      "verify": -1,
+      "norm": null,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "value_m32768_0",
+      "verify": -1,
+      "norm": null,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "value_32767_0",
+      "verify": -1,
+      "norm": null,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "zero_1",
+      "verify": 1,
+      "norm": 0,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "value_m9216_1",
+      "verify": 1,
+      "norm": 84934656,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "value_9216_1",
+      "verify": 1,
+      "norm": 84934656,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "value_m9217_1",
+      "verify": 1,
+      "norm": 84953089,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "value_9217_1",
+      "verify": 1,
+      "norm": 84953089,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "value_m18433_1",
+      "verify": 1,
+      "norm": 339775489,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "value_18433_1",
+      "verify": 1,
+      "norm": 339775489,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "value_m20000_1",
+      "verify": 1,
+      "norm": 400000000,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "value_m32768_1",
+      "verify": 1,
+      "norm": 1073741824,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "value_32767_1",
+      "verify": 1,
+      "norm": 1073676289,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "raw_0_32768",
+      "verify": 1,
+      "norm": 1073741824,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "raw_1_32768",
+      "verify": 1,
+      "norm": 1073741824,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "raw_0_65535",
+      "verify": 1,
+      "norm": 1,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "raw_1_65535",
+      "verify": 1,
+      "norm": 1,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "raw_1_0",
+      "verify": 1,
+      "norm": 0,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "ne255",
+      "verify": 1,
+      "norm": 1,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "ne256",
+      "verify": -1,
+      "norm": null,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "bad_padding",
+      "verify": -1,
+      "norm": null,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "truncated",
+      "verify": -1,
+      "norm": null,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "trailing_zero",
+      "verify": -1,
+      "norm": null,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "trailing_ff",
+      "verify": -1,
+      "norm": null,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "reserved",
+      "verify": -1,
+      "norm": null,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "degree",
+      "verify": -1,
+      "norm": null,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "ternary",
+      "verify": -1,
+      "norm": null,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "comp2",
+      "verify": -1,
+      "norm": null,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "comp3",
+      "verify": -1,
+      "norm": null,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "short_0",
+      "verify": -1,
+      "norm": null,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "short_1",
+      "verify": -1,
+      "norm": null,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "short_2",
+      "verify": -1,
+      "norm": null,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "pk_trailing",
+      "verify": 1,
+      "norm": 0,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "pk_short",
+      "verify": -2,
+      "norm": null,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "pk_truncated",
+      "verify": -2,
+      "norm": null,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "pk_reserved",
+      "verify": -2,
+      "norm": null,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "pk_bad_coeff",
+      "verify": -2,
+      "norm": null,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "center_0",
+      "verify": 1,
+      "norm": 0,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "center_9216",
+      "verify": 1,
+      "norm": 84934656,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "center_9217",
+      "verify": 1,
+      "norm": 84934656,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "center_18432",
+      "verify": 1,
+      "norm": 1,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "bound_0_0",
+      "verify": 1,
+      "norm": 2093922384,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "bound_0_1",
+      "verify": 1,
+      "norm": 2093922384,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "bound_1_0",
+      "verify": 0,
+      "norm": 2093922385,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "bound_1_1",
+      "verify": 0,
+      "norm": 2093922385,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "bound_2_0",
+      "verify": 0,
+      "norm": 2093922386,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "bound_2_1",
+      "verify": 0,
+      "norm": 2093922386,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    },
+    {
+      "name": "old_witness",
+      "verify": 0,
+      "norm": 43058711057,
+      "source_plain_matches": true,
+      "model_decoder_matches": true,
+      "sanitizer_matches": true
+    }
+  ],
+  "PK_trailing_bytes_accepted": true,
+  "maximum_signature_bytes": 3073,
+  "unary_wrap": "Universal UnaryRun/ZeroPrefix/unary_skip_zeros/unary_wrap proof; no hundreds-of-MiB payload materialized.",
+  "oracle": "Sage GF(18433)[X]/Phi plus exact integer A2 norm; no call to source NTT in oracle."
+}

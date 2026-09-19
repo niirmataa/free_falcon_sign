@@ -1,0 +1,17 @@
+formal/DecodeNone.lean:46:4: error: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+none_word_spec : ∀ (hi lo : Byte) (v : Int),
+  noneWord hi lo = some v → v = nonePost (noneRaw hi lo) - 18433 ∧ -9216 ≤ v ∧ v ≤ 9216
+DECODE_NONE : ∀ (d : Bytes) (vs : List Int) (used : Nat),
+  decodeNone d = some (vs, used) →
+    vs.length = 1536 ∧ (∀ (x : Int), x ∈ vs → FT1536.InInt16 x) ∧ used = 3072 ∧ used ≤ List.length d
+'FT1536Bridge.none_raw_range' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.none_extended_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.msb_and' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.none_flag_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.none_word_spec' depends on axioms: [propext, sorryAx]
+'FT1536Bridge.byteAt_in_range' depends on axioms: [propext]
+'FT1536Bridge.none_read_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.none_loop_spec' depends on axioms: [propext, sorryAx, Quot.sound]
+'FT1536Bridge.DECODE_NONE' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

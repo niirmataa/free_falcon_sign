@@ -1,0 +1,12 @@
+unary_terminates : ∀ (d : Bytes) (c : Cursor),
+  Inv d c → UnaryRun d 0 c (unary d c) ∧ ∀ (result : Option (Nat × Cursor)), UnaryRun d 0 c result → result = unary d c
+static_fill_exact : ∀ (d : Bytes) (c : Cursor),
+  Inv d c → ∀ (result : Option Cursor), FillRun 9 d c result ↔ result = fill 2 9 d c
+pk_fill_exact : ∀ (d : Bytes) (c : Cursor),
+  Inv d c → ∀ (result : Option Cursor), FillRun 15 d c result ↔ result = fill 2 15 d c
+'FT1536Bridge.unary_unique' depends on axioms: [propext]
+'FT1536Bridge.unary_terminates' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.fill_unique' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.static_fill_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.pk_fill_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+ParserRefinement 0 0.374

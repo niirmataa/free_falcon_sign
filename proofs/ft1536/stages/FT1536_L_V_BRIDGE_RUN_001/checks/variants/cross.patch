@@ -1,0 +1,19 @@
+--- source/falcon-enc.c
++++ checks/variants/cross_enc.c
+@@ -618,7 +618,7 @@
+ 			s += z * z;
+ 		}
+ 		for (u = 0; u < hn; u ++) {
+-			s += (int32_t)s1[u] * (int32_t)s1[u + hn];
++			s -= (int32_t)s1[u] * (int32_t)s1[u + hn];
+ 			s += (int32_t)s2[u] * (int32_t)s2[u + hn];
+ 		}
+ 
+@@ -663,6 +663,7 @@
+ 			default:
+ 				return 0;
+ 			}
++			/* LV_OBSERVER */ obs_capture(s,bound,s1,s2);
+ 			return s < bound;
+ 		}
+ 	} else {

@@ -1,0 +1,70 @@
+{
+  "status": "PASS",
+  "verify_cases": 55,
+  "norm_cases": 8,
+  "center_cases": 4,
+  "baseline_source_models_match": true,
+  "plain_observer_decisions_match": true,
+  "asan_ubsan_match": true,
+  "mutations": [
+    {
+      "name": "noop",
+      "detected": false,
+      "differences": []
+    },
+    {
+      "name": "center",
+      "detected": true,
+      "differences": [
+        "verify:center_9216",
+        "center:9216"
+      ]
+    },
+    {
+      "name": "offset",
+      "detected": true,
+      "differences": [
+        "norm:norm_negative_cross",
+        "norm:norm_offset"
+      ]
+    },
+    {
+      "name": "cross",
+      "detected": true,
+      "differences": [
+        "norm:norm_negative_cross"
+      ]
+    },
+    {
+      "name": "bound",
+      "detected": true,
+      "differences": [
+        "verify:bound_1_0",
+        "verify:bound_1_1",
+        "norm:norm_2093922385"
+      ]
+    },
+    {
+      "name": "narrow",
+      "detected": true,
+      "differences": [
+        "verify:raw_0_32768",
+        "verify:raw_1_32768",
+        "verify:raw_0_65535",
+        "verify:raw_1_65535"
+      ]
+    }
+  ],
+  "old_witness": {
+    "name": "old_witness",
+    "verify": 0,
+    "norm": 43058711057,
+    "source_plain_matches": true,
+    "model_decoder_matches": true,
+    "sanitizer_matches": true
+  },
+  "PK_trailing_bytes_accepted": true,
+  "maximum_signature_bytes": 3073,
+  "unary_wrap": "Universal UnaryRun/ZeroPrefix/unary_skip_zeros/unary_wrap proof; no hundreds-of-MiB payload materialized.",
+  "oracle": "Sage GF(18433)[X]/Phi plus exact integer A2 norm; no call to source NTT in oracle."
+}

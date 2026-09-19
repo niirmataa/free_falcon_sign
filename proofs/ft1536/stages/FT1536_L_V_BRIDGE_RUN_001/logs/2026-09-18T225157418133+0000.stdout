@@ -1,0 +1,15 @@
+PK_CONSUMED : ∀ (d : Bytes) (vs : List Int) (r : Cursor),
+  pkLoop 1536 d startCursor = some (vs, r) → r.pos = 2880 ∧ r.bits = 0 ∧ r.db = 0
+DECODE_PK : ∀ (d : Bytes) (vs : List Int) (ret : Nat),
+  decodePK d = some (vs, ret) → vs.length = 1536 ∧ (∀ (x : Int), x ∈ vs → CanonVal x) ∧ ret = List.length d ∧ 2880 ≤ ret
+PK_PREPARATION : ∀ (pk : Bytes) (ctx : FTContext),
+  loadFT pk = some ctx → CanonVec ctx.polynomial ∧ ctx.prepared = prepareKey ctx.polynomial
+'FT1536Bridge.byte_concat' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.readPK_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.pk_head_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.pk_head_shifts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.pk_loop_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.PK_CONSUMED' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.DECODE_PK' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.PK_PREPARATION' depends on axioms: [propext, Classical.choice, Quot.sound]
+PublicKey 0 0.782

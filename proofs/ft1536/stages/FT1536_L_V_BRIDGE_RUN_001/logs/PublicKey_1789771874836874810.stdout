@@ -1,0 +1,43 @@
+formal/PublicKey.lean:40:6: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  m ≤ -1
+  l ≥ 0
+  k - l ≥ 1
+  j ≤ 18432
+  i ≥ 0
+  h ≥ 0
+  h - i ≤ 0
+  h ≥ 0
+  15 ≤ g ≤ 22
+  0 ≤ g + 8*h - 8*i ≤ 7
+  0 ≤ e ≤ 4294967295
+  e - l ≥ 0
+  b ≥ 0
+  b + h - i ≥ 0
+  b + h ≥ 0
+  0 ≤ a ≤ 4294967295
+where
+ a := ↑c.db
+ b := ↑f.pos
+ e := ↑f.db
+ g := ↑f.bits
+ h := ↑(List.length d - f.pos)
+ i := ↑(List.length d - c.pos)
+ j := ↑f.db / ↑(2 ^ (f.bits - 15))
+ k := ↑2 ^ (f.bits - 15)
+ l := ↑f.db % ↑(2 ^ (f.bits - 15))
+ m := ↑f.db / 2 ^ (f.bits - 15)
+PK_CONSUMED : ∀ (d : Bytes) (vs : List Int) (r : Cursor),
+  pkLoop 1536 d startCursor = some (vs, r) → r.pos = 2880 ∧ r.bits = 0 ∧ r.db = 0
+DECODE_PK : ∀ (d : Bytes) (vs : List Int) (ret : Nat),
+  decodePK d = some (vs, ret) → vs.length = 1536 ∧ (∀ (x : Int), x ∈ vs → CanonVal x) ∧ ret = List.length d ∧ 2880 ≤ ret
+PK_PREPARATION : ∀ (pk : Bytes) (ctx : FTContext),
+  loadFT pk = some ctx → CanonVec ctx.polynomial ∧ ctx.prepared = prepareKey ctx.polynomial
+'FT1536Bridge.byte_concat' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.readPK_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536Bridge.pk_head_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.pk_head_shifts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.pk_loop_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536Bridge.PK_CONSUMED' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536Bridge.DECODE_PK' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536Bridge.PK_PREPARATION' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

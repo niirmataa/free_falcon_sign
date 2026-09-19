@@ -1,0 +1,36 @@
+formal/DecodeNone.lean:27:4: error: Type mismatch
+  Nat.shiftRight_and_distrib
+has type
+  (a &&& b) >>> 31 = a >>> 31 &&& b >>> 31
+but is expected to have type
+  (a &&& b) / 2147483648 = a / 2147483648 &&& b / 2147483648
+formal/DecodeNone.lean:42:2: error: Tactic `split` failed: Could not split an `if` or `match` expression in the type
+  (have w := nonePost (noneRaw hi lo);
+    if noneFlag w = 0 then none else some (s16 (w - 18433))) =
+    some v
+of `h`
+
+Hint: Use `set_option trace.split.failure true` to display additional diagnostic information
+
+hi lo : Byte
+v : Int
+h :
+  (have w := nonePost (noneRaw hi lo);
+    if noneFlag w = 0 then none else some (s16 (w - 18433))) =
+    some v
+⊢ v = nonePost (noneRaw hi lo) - 18433 ∧ -9216 ≤ v ∧ v ≤ 9216
+none_word_spec : ∀ (hi lo : Byte) (v : Int),
+  noneWord hi lo = some v → v = nonePost (noneRaw hi lo) - 18433 ∧ -9216 ≤ v ∧ v ≤ 9216
+DECODE_NONE : ∀ (d : Bytes) (vs : List Int) (used : Nat),
+  decodeNone d = some (vs, used) →
+    vs.length = 1536 ∧ (∀ (x : Int), x ∈ vs → FT1536.InInt16 x) ∧ used = 3072 ∧ used ≤ List.length d
+'FT1536Bridge.none_raw_range' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.none_extended_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.msb_and' depends on axioms: [propext, sorryAx, Quot.sound]
+'FT1536Bridge.none_flag_range' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536Bridge.none_word_spec' depends on axioms: [propext, sorryAx]
+'FT1536Bridge.byteAt_in_range' depends on axioms: [propext]
+'FT1536Bridge.none_read_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.none_loop_spec' depends on axioms: [propext, sorryAx, Quot.sound]
+'FT1536Bridge.DECODE_NONE' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+DecodeNone 1 2.116

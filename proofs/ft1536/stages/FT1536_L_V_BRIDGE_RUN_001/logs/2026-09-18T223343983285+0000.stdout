@@ -1,0 +1,31 @@
+formal/RawBridge.lean:60:2: error: Type mismatch: After simplification, term
+  hn
+ has type
+  @LT.lt Int Int.instLTInt (Q0 (Ext0Words h c s).fst + Q0 s) 2093922385
+but is expected to have type
+  @LT.lt Int Int.instLTInt (Q0 (Ext0Words h c s).fst + Q0 (Ext0Words h c s).snd) 2093922385
+RAW_VERIFIER_SOUND : ∀ (h c s : Vec),
+  CanonVec h →
+    CanonVec c →
+      SignedVec s →
+        rawVerify (prepareKey h) c s = true →
+          SignedVec (Ext0Words h c s).fst ∧
+            Congruent h c (Ext0Words h c s) ∧ Q (Ext0Words h c s).fst (Ext0Words h c s).snd < 2093922385
+theorem FT1536Bridge.RAW_VERIFIER_SOUND : ∀ (h c s : Vec),
+  CanonVec h →
+    CanonVec c →
+      SignedVec s →
+        rawVerify (prepareKey h) c s = true →
+          SignedVec (Ext0Words h c s).fst ∧
+            Congruent h c (Ext0Words h c s) ∧ Q (Ext0Words h c s).fst (Ext0Words h c s).snd < 2093922385 :=
+fun h c s hh hc hs accept =>
+  have hn := (STRICT_B (rawFirst (prepareKey h) c s) s (raw_signed (prepareKey h) c s) hs).mp accept;
+  sorry hn
+'FT1536Bridge.raw_before_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.raw_signed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.extract_signed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.SIGN_BRIDGE' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.extract_congruence' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.RAW_VERIFIER_SOUND' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536Bridge.raw_reject_at_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+RawBridge 1 0.356

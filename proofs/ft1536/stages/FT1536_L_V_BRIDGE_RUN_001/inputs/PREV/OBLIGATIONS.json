@@ -1,0 +1,351 @@
+{
+  "schema": "FT1536_L_NTT_FORWARD_OBLIGATIONS_V1",
+  "status": "L_NTT_PROVED_FOR_PINNED_MODEL",
+  "source_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+  "previous_matrix_sha256": "63468078c4a2ce3486377799ee88c19b16b418266f285bb90277df219f3a66e4",
+  "obligations": [
+    {
+      "id": "W_ADD",
+      "claim": "forall canonical x,y: mq_add is canonical (x+y) mod q",
+      "previous_status": "REUSED_PROVED_MODEL_WITH_C_TRANSLATION",
+      "origin": "inherited",
+      "status": "REUSED_CLOSED_FROM_PREV",
+      "evidence": [
+        "inputs/PREV/OBLIGATIONS.json#W_ADD",
+        "REUSED_RESULTS.md"
+      ],
+      "gap": null,
+      "note": null
+    },
+    {
+      "id": "W_SUB",
+      "claim": "forall canonical x,y: mq_sub is canonical (x-y) mod q",
+      "previous_status": "REUSED_PROVED_MODEL_WITH_C_TRANSLATION",
+      "origin": "inherited",
+      "status": "REUSED_CLOSED_FROM_PREV",
+      "evidence": [
+        "inputs/PREV/OBLIGATIONS.json#W_SUB",
+        "REUSED_RESULTS.md"
+      ],
+      "gap": null,
+      "note": null
+    },
+    {
+      "id": "W_HALF",
+      "claim": "canonical modular division by 2; supplemental, not used in active ternary transform",
+      "previous_status": "REUSED_PROVED_SUPPLEMENTAL",
+      "origin": "inherited",
+      "status": "REUSED_CLOSED_FROM_PREV",
+      "evidence": [
+        "inputs/PREV/OBLIGATIONS.json#W_HALF",
+        "REUSED_RESULTS.md"
+      ],
+      "gap": null,
+      "note": "Supplemental half contract is inherited, not used by ternary forward."
+    },
+    {
+      "id": "W_MONT",
+      "claim": "forall canonical x,y: canonical x*y*Rinv; exact low16 under uint32 wrap; all ranges",
+      "previous_status": "REUSED_PROVED_MODEL_WITH_C_TRANSLATION",
+      "origin": "inherited",
+      "status": "REUSED_CLOSED_FROM_PREV",
+      "evidence": [
+        "inputs/PREV/OBLIGATIONS.json#W_MONT",
+        "REUSED_RESULTS.md"
+      ],
+      "gap": null,
+      "note": null
+    },
+    {
+      "id": "PRIME_ROOT",
+      "claim": "q prime; required quadratic/cubic root and unit identities for concrete tables",
+      "previous_status": "REUSED_PROVED_REQUIRED_RELATIONS",
+      "origin": "inherited",
+      "status": "REUSED_CLOSED_FROM_PREV",
+      "evidence": [
+        "inputs/PREV/OBLIGATIONS.json#PRIME_ROOT",
+        "REUSED_RESULTS.md"
+      ],
+      "gap": null,
+      "note": null
+    },
+    {
+      "id": "DIV_USED",
+      "claim": "actual addition-chain result and canonical quotient for all three constant division instances used by logn=10",
+      "previous_status": "REUSED_CERTIFIED_REQUIRED_INSTANCES",
+      "origin": "inherited",
+      "status": "REUSED_CLOSED_FROM_PREV",
+      "evidence": [
+        "inputs/PREV/OBLIGATIONS.json#DIV_USED",
+        "REUSED_RESULTS.md"
+      ],
+      "gap": null,
+      "note": null
+    },
+    {
+      "id": "GEN10",
+      "claim": "exact initialized 0..1023 table values, Montgomery interpretation, source recurrence and rev10 order",
+      "previous_status": "REUSED_CERTIFIED_FIXED_GENERATOR",
+      "origin": "inherited",
+      "status": "REUSED_CLOSED_FROM_PREV",
+      "evidence": [
+        "inputs/PREV/OBLIGATIONS.json#GEN10",
+        "REUSED_RESULTS.md"
+      ],
+      "gap": null,
+      "note": null
+    },
+    {
+      "id": "INDEX_INIT",
+      "claim": "fixed address schedule, initialization-before-read for tables, valid transform index spans",
+      "previous_status": "PROVED_MODEL_WITH_REUSED_GENERATOR",
+      "origin": "inherited",
+      "status": "REUSED_CLOSED_FROM_PREV",
+      "evidence": [
+        "inputs/PREV/OBLIGATIONS.json#INDEX_INIT",
+        "REUSED_RESULTS.md"
+      ],
+      "gap": null,
+      "note": null
+    },
+    {
+      "id": "LOCAL_BLOCKS",
+      "claim": "2x2 and 3x3 block identities for all variable block inputs with the certified coefficients",
+      "previous_status": "PROVED_BOUND_SOURCE_EXPRESSIONS",
+      "origin": "inherited",
+      "status": "REUSED_CLOSED_FROM_PREV",
+      "evidence": [
+        "inputs/PREV/OBLIGATIONS.json#LOCAL_BLOCKS",
+        "REUSED_RESULTS.md"
+      ],
+      "gap": null,
+      "note": null
+    },
+    {
+      "id": "FORWARD_GLOBAL",
+      "claim": "forall canonical v: source forward output is evaluation at alpha_i*omega^j in exact physical order 3i+j",
+      "previous_status": "OPEN_WITH_NEW_COEFFICIENT_STAGE_RESULTS",
+      "origin": "new",
+      "status": "PROVED_MODEL_WITH_INHERITED_C_TRANSLATION",
+      "evidence": [
+        "ForwardGlobal.FORWARD_GLOBAL",
+        "ForwardGlobal.middle_eval",
+        "LeafFacts.leaf_facts"
+      ],
+      "gap": null,
+      "note": null
+    },
+    {
+      "id": "INVERSE_GLOBAL",
+      "claim": "forall canonical v: source inverse of source forward equals v, with correct reverse schedule and n scaling",
+      "previous_status": "PROVED_MODEL_WITH_C_TRANSLATION",
+      "origin": "inherited",
+      "status": "REUSED_CLOSED_FROM_PREV",
+      "evidence": [
+        "inputs/PREV/OBLIGATIONS.json#INVERSE_GLOBAL",
+        "REUSED_RESULTS.md"
+      ],
+      "gap": null,
+      "note": null
+    },
+    {
+      "id": "PRODUCT",
+      "claim": "universal coefficient product modulo Phi after mathematical key preparation and point multiplication",
+      "previous_status": "CONDITIONAL_ONLY_ON_FORWARD_PRODUCT",
+      "origin": "new",
+      "status": "PROVED",
+      "evidence": [
+        "Product.productCoefficient_eq",
+        "Monomials.remMonomial_eval",
+        "Product.product_eval",
+        "Product.forward_product",
+        "Complete.L_NTT"
+      ],
+      "gap": null,
+      "note": null
+    },
+    {
+      "id": "SUBTRACT",
+      "claim": "canonical subtraction d=p-c once p is the correct canonical product",
+      "previous_status": "SOURCE_POINTWISE_PROVED_PRODUCT_IDENTIFICATION_CONDITIONAL",
+      "origin": "new",
+      "status": "PROVED",
+      "evidence": [
+        "Complete.L_NTT_d",
+        "Complete.L_NTT_ranges"
+      ],
+      "gap": null,
+      "note": null
+    },
+    {
+      "id": "RHO_SUBSTITUTION",
+      "claim": "r=rho(s) implies r congruent to s; after L_NTT, d=canonical(h*s-c)",
+      "previous_status": "CONDITIONAL_ON_L_NTT",
+      "origin": "new",
+      "status": "PROVED_FOR_INT16_INPUTS",
+      "evidence": [
+        "Rho.rho_contract",
+        "Complete.rhoVec_eq",
+        "Product.product_canonical_inputs",
+        "Complete.L_NTT_rho"
+      ],
+      "gap": null,
+      "note": null
+    },
+    {
+      "id": "SOURCE_BINDING",
+      "claim": "17-file candidate identity, exact source slices and reversible observation-only injection",
+      "previous_status": "VERIFIED_BYTES_AND_EXPLICIT_C_TRANSLATION",
+      "origin": "new",
+      "status": "VERIFIED_UNCHANGED_MODELS_WITH_NEW_FORWARD_LINKS",
+      "evidence": [
+        "artifacts/input_audit.json",
+        "artifacts/source_model_binding.json"
+      ],
+      "gap": null,
+      "note": null
+    },
+    {
+      "id": "IMPLEMENTATION_CHECKS",
+      "claim": "required constants/primitive/pipeline controls, sanitizer, integration case and mutations",
+      "previous_status": "NEW_LIMITED_CONTROLS_AND_FRESH_REPLAY_PASS",
+      "origin": "new",
+      "status": "NEW_LIMITED_CONTROLS_PASSED",
+      "evidence": [
+        "artifacts/controls.json",
+        "CheckerControls.lean"
+      ],
+      "gap": null,
+      "note": null
+    },
+    {
+      "id": "BUFFER_PREFIX",
+      "claim": "Every sequential prefix obeys old-snapshot/per-block/frame invariant",
+      "previous_status": "PROVED_MODEL",
+      "origin": "inherited",
+      "status": "REUSED_CLOSED_FROM_PREV",
+      "evidence": [
+        "inputs/PREV/OBLIGATIONS.json#BUFFER_PREFIX",
+        "REUSED_RESULTS.md"
+      ],
+      "gap": null,
+      "note": null
+    },
+    {
+      "id": "CANONICAL_STATES",
+      "claim": "Every full forward/inverse source-model state is canonical on1536 cells",
+      "previous_status": "PROVED_MODEL",
+      "origin": "inherited",
+      "status": "REUSED_CLOSED_FROM_PREV",
+      "evidence": [
+        "inputs/PREV/OBLIGATIONS.json#CANONICAL_STATES",
+        "REUSED_RESULTS.md"
+      ],
+      "gap": null,
+      "note": null
+    },
+    {
+      "id": "EXPRESSION_SOUNDNESS",
+      "claim": "Finite source-expression coefficient checks imply action on all canonical block inputs",
+      "previous_status": "PROVED_MODEL",
+      "origin": "inherited",
+      "status": "REUSED_CLOSED_FROM_PREV",
+      "evidence": [
+        "inputs/PREV/OBLIGATIONS.json#EXPRESSION_SOUNDNESS",
+        "REUSED_RESULTS.md"
+      ],
+      "gap": null,
+      "note": null
+    },
+    {
+      "id": "DOMAIN_LIFT",
+      "claim": "Explicit canonical lift agrees with source C domain, and inverse_forward holds for all Vec",
+      "previous_status": "PROVED_MODEL",
+      "origin": "inherited",
+      "status": "REUSED_CLOSED_FROM_PREV",
+      "evidence": [
+        "inputs/PREV/OBLIGATIONS.json#DOMAIN_LIFT",
+        "REUSED_RESULTS.md"
+      ],
+      "gap": null,
+      "note": null
+    },
+    {
+      "id": "PIPELINE_BINDING",
+      "claim": "Sequential tomonty/montPoint/subtract source-model loops equal the mathematical composition",
+      "previous_status": "PROVED_MODEL",
+      "origin": "inherited",
+      "status": "REUSED_CLOSED_FROM_PREV",
+      "evidence": [
+        "inputs/PREV/OBLIGATIONS.json#PIPELINE_BINDING",
+        "REUSED_RESULTS.md"
+      ],
+      "gap": null,
+      "note": null
+    },
+    {
+      "id": "EVALUATION_INVARIANT",
+      "claim": "Root and every actual split preserve independent finite polynomial evaluation; induction over eight real stages.",
+      "origin": "new",
+      "status": "PROVED",
+      "evidence": [
+        "Sums.lean",
+        "Evaluation.split_preserves_eval",
+        "CRTStages.lean",
+        "ForwardGlobal.middle_eval"
+      ],
+      "gap": null
+    },
+    {
+      "id": "NODE_CERTIFICATE",
+      "claim": "All1536 physical nodes have actual ancestor labels, PhiZero and source cubic coefficients; no final label hypothesis.",
+      "origin": "new",
+      "status": "PROVED",
+      "evidence": [
+        "NodeArithmetic.powFast_correct/nodeCheck_sound",
+        "LeafChecks.leaf_checked",
+        "LeafFacts.leaf_facts"
+      ],
+      "gap": null
+    },
+    {
+      "id": "MONOMIAL_REDUCTION",
+      "claim": "For every required degree0..3070, unchanged remMonomial evaluates to z^k at each root of Phi.",
+      "origin": "new",
+      "status": "PROVED",
+      "evidence": [
+        "Monomials.remMonomial_eval"
+      ],
+      "gap": null
+    },
+    {
+      "id": "FULL_L_NTT",
+      "claim": "Concrete source pipeline yields canonical product and product-minus-c for every canonical h,r,c.",
+      "origin": "new",
+      "status": "PROVED",
+      "evidence": [
+        "Complete.L_NTT",
+        "Complete.L_NTT_ranges",
+        "Complete.pipeline_intermediate_ranges"
+      ],
+      "gap": null
+    },
+    {
+      "id": "STANDARD_REPLAY",
+      "claim": "Fresh sources and external OUTPUTS pin; local archived inputs only.",
+      "origin": "new",
+      "status": "REHEARSAL_PASS_STANDARD_INTERFACE_READY",
+      "evidence": [
+        "scripts/replay.py",
+        "artifacts/fresh_replay.json",
+        "artifacts/replay_protocol_tests.json"
+      ],
+      "gap": null
+    }
+  ],
+  "blocking": [],
+  "source_integrated": false,
+  "owner_accepted": false,
+  "full_L_V_proved": false,
+  "scope_note": "Remaining parser/centering/norm/strict-B/security obligations belong to full L_V and are outside L_NTT."
+}

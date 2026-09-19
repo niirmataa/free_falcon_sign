@@ -1,0 +1,59 @@
+formal/ByteCursor.lean:24:46: warning: Variable name `hc` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hc
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+formal/ByteCursor.lean:121:48: warning: Variable name `hc` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hc
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+formal/ByteCursor.lean:153:8: error: Tactic `subst` failed: did not find equation for eliminating 'bit'
+
+case h_1
+d : Bytes
+f : Nat
+ih : ∀ (ne : Nat) (c : Cursor), Inv d c → remaining d c ≤ f → UnaryRun d ne c (unaryFuel f d ne c)
+ne : Nat
+c : Cursor
+hc : Inv d c
+hf : remaining d c ≤ f + 1
+bit : Nat
+r : Cursor
+hp : nextBit d c = some (bit, r)
+hs : Inv d r ∧ bit < 2 ∧ c.pos ≤ r.pos ∧ remaining d c = remaining d r + 1
+x✝ : Option (Nat × Cursor)
+hz : some (bit, r) = none
+⊢ UnaryRun d ne c none
+formal/ByteCursor.lean:156:42: error: Application type mismatch: The argument
+  hz
+has type
+  some (bit, r) = some (bit✝, r✝)
+but is expected to have type
+  bit ≠ 0
+in the application
+  UnaryRun.stop ne c bit r hp hz
+fill_source : ∀ (fuel need : Nat) (d : Bytes) (c : Cursor),
+  Valid d c → need ≤ c.bits + 8 * fuel → FillRun need d c (fill fuel need d c)
+nextBit_spec : ∀ (d : Bytes) (c r : Cursor) (bit : Nat),
+  Inv d c → nextBit d c = some (bit, r) → Inv d r ∧ bit < 2 ∧ c.pos ≤ r.pos ∧ remaining d c = remaining d r + 1
+unary_source : ∀ (fuel : Nat) (d : Bytes) (ne : Nat) (c : Cursor),
+  Inv d c → remaining d c ≤ fuel → UnaryRun d ne c (unaryFuel fuel d ne c)
+unary_spec : ∀ (fuel : Nat) (d : Bytes) (ne : Nat) (c : Cursor),
+  Inv d c →
+    ne < 4294967296 →
+      ∀ (out : Nat) (r : Cursor),
+        unaryFuel fuel d ne c = some (out, r) →
+          out < 4294967296 ∧ Inv d r ∧ c.pos ≤ r.pos ∧ remaining d r < remaining d c
+unary_wrap : ∀ (k ne : Nat), ne < 4294967296 → zeroCount k ne = (ne + k) % 4294967296
+'FT1536Bridge.start_valid' depends on axioms: [propext]
+'FT1536Bridge.pull_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.fill_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.fill_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.nextBit_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.nextBit_empty' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.unary_source' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536Bridge.unary_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.unary_wrap' depends on axioms: [propext, Quot.sound]

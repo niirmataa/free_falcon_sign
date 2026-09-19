@@ -1,0 +1,21 @@
+--- source/falcon-vrfy.c
++++ checks/variants/center_vrfy.c
+@@ -1430,7 +1430,7 @@
+ 		int32_t w;
+ 
+ 		w = (int32_t)x[u];
+-		w -= (int32_t)(q & -(((q >> 1) - (uint32_t)w) >> 31));
++		w -= (int32_t)(q & -((((q >> 1) - 1U) - (uint32_t)w) >> 31));
+ 		((int16_t *)x)[u] = (int16_t)w;
+ 	}
+ 
+--- source/falcon-enc.c
++++ checks/variants/center_enc.c
+@@ -663,6 +663,7 @@
+ 			default:
+ 				return 0;
+ 			}
++			/* LV_OBSERVER */ obs_capture(s,bound,s1,s2);
+ 			return s < bound;
+ 		}
+ 	} else {

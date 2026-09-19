@@ -1,0 +1,2258 @@
+FT1536Bridge.CENTER_C : ∀ (d : Int),
+  FT1536Global.CanonVal d →
+    Eq.{1} (FT1536Bridge.centerBeforeStore d) (FT1536.center d) ∧
+      Eq.{1} (FT1536Bridge.centerC d) (FT1536.center d) ∧
+        LE.le.{0} (-9216) (FT1536Bridge.centerBeforeStore d) ∧ LE.le.{0} (FT1536Bridge.centerBeforeStore d) 9216
+FT1536Bridge.NORM64_EXACT : ∀ (a b : FT1536Global.Vec),
+  FT1536Bridge.SignedVec a → FT1536Bridge.SignedVec b → Eq.{1} (FT1536Bridge.normAcc a b 4608) (FT1536Bridge.Q a b)
+FT1536Bridge.STRICT_B : ∀ (a b : FT1536Global.Vec),
+  FT1536Bridge.SignedVec a →
+    FT1536Bridge.SignedVec b → (Eq.{1} (FT1536Bridge.isShort a b) true ↔ LT.lt.{0} (FT1536Bridge.Q a b) 2093922385)
+FT1536Bridge.RAW_VERIFIER_SOUND : ∀ (h c s : FT1536Global.Vec),
+  FT1536Global.CanonVec h →
+    FT1536Global.CanonVec c →
+      FT1536Bridge.SignedVec s →
+        Eq.{1} (FT1536Bridge.rawVerify (FT1536Bridge.prepareKey h) c s) true →
+          FT1536Bridge.SignedVec (Prod.fst.{0, 0} (FT1536Bridge.Ext0Words h c s)) ∧
+            FT1536Bridge.Congruent h c (FT1536Bridge.Ext0Words h c s) ∧
+              LT.lt.{0}
+                (FT1536Bridge.Q (Prod.fst.{0, 0} (FT1536Bridge.Ext0Words h c s))
+                  (Prod.snd.{0, 0} (FT1536Bridge.Ext0Words h c s)))
+                2093922385
+FT1536Bridge.unary_terminates : ∀ (d : FT1536Bridge.Bytes) (c : FT1536Bridge.Cursor),
+  FT1536Bridge.Inv d c →
+    FT1536Bridge.UnaryRun d 0 c (FT1536Bridge.unary d c) ∧
+      ∀ (result : Option.{0} (Prod.{0, 0} Nat FT1536Bridge.Cursor)),
+        FT1536Bridge.UnaryRun d 0 c result → Eq.{1} result (FT1536Bridge.unary d c)
+FT1536Bridge.DECODE_NONE : ∀ (d : FT1536Bridge.Bytes) (vs : List.{0} Int) (used : Nat),
+  Eq.{1} (FT1536Bridge.decodeNone d) (some.{0} (Prod.mk.{0, 0} vs used)) →
+    Eq.{1} (List.length.{0} vs) 1536 ∧
+      (∀ (x : Int), Membership.mem.{0, 0} vs x → FT1536.InInt16 x) ∧
+        Eq.{1} used 3072 ∧ LE.le.{0} used (List.length.{0} d)
+FT1536Bridge.DECODE_STATIC : ∀ (d : FT1536Bridge.Bytes) (vs : List.{0} Int) (used : Nat),
+  Eq.{1} (FT1536Bridge.decodeStatic d) (some.{0} (Prod.mk.{0, 0} vs used)) →
+    Eq.{1} (List.length.{0} vs) 1536 ∧
+      (∀ (x : Int), Membership.mem.{0, 0} vs x → FT1536.InInt16 x) ∧
+        LE.le.{0} 1920 used ∧ LE.le.{0} used (List.length.{0} d)
+FT1536Bridge.PK_PREPARATION : ∀ (pk : FT1536Bridge.Bytes) (ctx : FT1536Bridge.FTContext),
+  Eq.{1} (FT1536Bridge.loadFT pk) (some.{0} ctx) →
+    FT1536Global.CanonVec ctx.polynomial ∧ Eq.{1} ctx.prepared (FT1536Bridge.prepareKey ctx.polynomial)
+FT1536Bridge.L_V_BYTES : ∀ (h c : FT1536Global.Vec),
+  FT1536Global.CanonVec h →
+    FT1536Global.CanonVec c →
+      ∀ (b : FT1536Bridge.Bytes),
+        FT1536Bridge.LegalBytes b →
+          Eq.{1} (FT1536Bridge.V_CAND h c b) 1 →
+            FT1536Bridge.APIBounds b ∧
+              Exists.{1} fun s =>
+                Exists.{1} fun z =>
+                  Eq.{1} (FT1536Bridge.decodeS b) (some.{0} s) ∧
+                    Eq.{1} (FT1536Bridge.Ext0 h c b) (some.{0} z) ∧
+                      Eq.{1} z (FT1536Bridge.Ext0Words h c s) ∧
+                        FT1536Bridge.SignedVec s ∧
+                          FT1536Bridge.SignedVec (Prod.fst.{0, 0} z) ∧
+                            FT1536Bridge.Congruent h c z ∧
+                              LT.lt.{0} (FT1536Bridge.Q (Prod.fst.{0, 0} z) (Prod.snd.{0, 0} z)) 2093922385
+FT1536Bridge.L_V_LOADED : ∀ (pk b : FT1536Bridge.Bytes) (c : FT1536Global.Vec),
+  FT1536Global.CanonVec c →
+    FT1536Bridge.LegalBytes pk →
+      FT1536Bridge.LegalBytes b →
+        Eq.{1} (FT1536Bridge.V_KEY_BYTES pk c b) 1 →
+          FT1536Bridge.APIBounds pk ∧
+            FT1536Bridge.APIBounds b ∧
+              Exists.{1} fun h =>
+                Exists.{1} fun s =>
+                  Exists.{1} fun z =>
+                    FT1536Global.CanonVec h ∧
+                      Eq.{1} (FT1536Bridge.decodeS b) (some.{0} s) ∧
+                        Eq.{1} (FT1536Bridge.Ext0 h c b) (some.{0} z) ∧
+                          Eq.{1} z (FT1536Bridge.Ext0Words h c s) ∧
+                            FT1536Bridge.SignedVec s ∧
+                              FT1536Bridge.SignedVec (Prod.fst.{0, 0} z) ∧
+                                FT1536Bridge.Congruent h c z ∧
+                                  LT.lt.{0} (FT1536Bridge.Q (Prod.fst.{0, 0} z) (Prod.snd.{0, 0} z)) 2093922385
+FT1536Bridge.L_V_SOURCE : ∀ (h c : FT1536Global.Vec),
+  FT1536Global.CanonVec h →
+    FT1536Global.CanonVec c →
+      ∀ (b : FT1536Bridge.Bytes),
+        FT1536Bridge.LegalBytes b →
+          Eq.{1} (FT1536Bridge.V_CAND h c b) 1 →
+            Exists.{1} fun xs =>
+              Exists.{1} fun z =>
+                Eq.{1} (FT1536Bridge.signature b) (some.{0} xs) ∧
+                  Eq.{1} (List.length.{0} xs) 1536 ∧
+                    (∀ (initial : FT1536Global.Mem) (i : Fin 1536),
+                        Eq.{1} (FT1536Bridge.writeDecoded 0 xs initial ↑i) (FT1536Bridge.listVec xs i)) ∧
+                      Eq.{1} (FT1536Bridge.Ext0 h c b) (some.{0} z) ∧
+                        FT1536Bridge.SignedVec (FT1536Bridge.listVec xs) ∧
+                          FT1536Bridge.Congruent h c z ∧
+                            LT.lt.{0} (FT1536Bridge.Q (Prod.fst.{0, 0} z) (Prod.snd.{0, 0} z)) 2093922385 ∧
+                              FT1536Bridge.APIBounds b
+'FT1536Global.store_at' depends on axioms: [propext]
+'FT1536Global.store_away' depends on axioms: [propext]
+'FT1536Global.prefix_invariant' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.prefix_frame' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.pair_local' depends on axioms: [propext]
+'FT1536Global.pair_frame' depends on axioms: [propext]
+'FT1536Global.pair_first_store' depends on axioms: [propext]
+'FT1536Global.pair_prefix' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.fin3_cases' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.triple_local' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.triple_frame' depends on axioms: [propext]
+'FT1536Global.triple_prefix' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.pair_address_bound' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.pair_decode' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.pair_cover' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.pair_layout' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.source_pair_prefix' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.triple_address_bound' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.triple_layout' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.triple_cover' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.source_triple_prefix' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.pair_prefix_canonical' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.triple_prefix_canonical' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.forward_schedule' does not depend on any axioms
+'FT1536Global.inverse_schedule' does not depend on any axioms
+'FT1536Tables.all_sound' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Tables.row2_sound' depends on axioms: [propext]
+'FT1536Tables.row3_sound' depends on axioms: [propext]
+'FT1536Tables.rev_even_range' does not depend on any axioms
+'FT1536Tables.rev_even_involution' does not depend on any axioms
+'FT1536Tables.units_0_checked' depends on axioms: [propext]
+'FT1536Tables.units_1_checked' depends on axioms: [propext]
+'FT1536Tables.units_2_checked' depends on axioms: [propext]
+'FT1536Tables.units_3_checked' depends on axioms: [propext]
+'FT1536Tables.units_4_checked' depends on axioms: [propext]
+'FT1536Tables.units_5_checked' depends on axioms: [propext]
+'FT1536Tables.units_6_checked' depends on axioms: [propext]
+'FT1536Tables.units_7_checked' depends on axioms: [propext]
+'FT1536Tables.units_8_checked' depends on axioms: [propext]
+'FT1536Tables.units_9_checked' depends on axioms: [propext]
+'FT1536Tables.units_10_checked' depends on axioms: [propext]
+'FT1536Tables.units_11_checked' depends on axioms: [propext]
+'FT1536Tables.units_12_checked' depends on axioms: [propext]
+'FT1536Tables.units_13_checked' depends on axioms: [propext]
+'FT1536Tables.units_14_checked' depends on axioms: [propext]
+'FT1536Tables.units_15_checked' depends on axioms: [propext]
+'FT1536Tables.units_16_checked' depends on axioms: [propext]
+'FT1536Tables.units_17_checked' depends on axioms: [propext]
+'FT1536Tables.units_18_checked' depends on axioms: [propext]
+'FT1536Tables.units_19_checked' depends on axioms: [propext]
+'FT1536Tables.units_20_checked' depends on axioms: [propext]
+'FT1536Tables.units_21_checked' depends on axioms: [propext]
+'FT1536Tables.units_22_checked' depends on axioms: [propext]
+'FT1536Tables.units_23_checked' depends on axioms: [propext]
+'FT1536Tables.units_24_checked' depends on axioms: [propext]
+'FT1536Tables.units_25_checked' depends on axioms: [propext]
+'FT1536Tables.units_26_checked' depends on axioms: [propext]
+'FT1536Tables.units_27_checked' depends on axioms: [propext]
+'FT1536Tables.units_28_checked' depends on axioms: [propext]
+'FT1536Tables.units_29_checked' depends on axioms: [propext]
+'FT1536Tables.units_30_checked' depends on axioms: [propext]
+'FT1536Tables.units_31_checked' depends on axioms: [propext]
+'FT1536Tables.sequence_0_checked' depends on axioms: [propext]
+'FT1536Tables.sequence_1_checked' depends on axioms: [propext]
+'FT1536Tables.sequence_2_checked' depends on axioms: [propext]
+'FT1536Tables.sequence_3_checked' depends on axioms: [propext]
+'FT1536Tables.sequence_4_checked' depends on axioms: [propext]
+'FT1536Tables.sequence_5_checked' depends on axioms: [propext]
+'FT1536Tables.sequence_6_checked' depends on axioms: [propext]
+'FT1536Tables.sequence_7_checked' depends on axioms: [propext]
+'FT1536Tables.parents_0_checked' depends on axioms: [propext]
+'FT1536Tables.parents_1_checked' depends on axioms: [propext]
+'FT1536Tables.parents_2_checked' depends on axioms: [propext]
+'FT1536Tables.parents_3_checked' depends on axioms: [propext]
+'FT1536Tables.parents_4_checked' depends on axioms: [propext]
+'FT1536Tables.parents_5_checked' depends on axioms: [propext]
+'FT1536Tables.parents_6_checked' depends on axioms: [propext]
+'FT1536Tables.parents_7_checked' depends on axioms: [propext]
+'FT1536Tables.parents_8_checked' depends on axioms: [propext]
+'FT1536Tables.parents_9_checked' depends on axioms: [propext]
+'FT1536Tables.parents_10_checked' depends on axioms: [propext]
+'FT1536Tables.parents_11_checked' depends on axioms: [propext]
+'FT1536Tables.parents_12_checked' depends on axioms: [propext]
+'FT1536Tables.parents_13_checked' depends on axioms: [propext]
+'FT1536Tables.parents_14_checked' depends on axioms: [propext]
+'FT1536Tables.parents_15_checked' depends on axioms: [propext]
+'FT1536Tables.tree_0_checked' depends on axioms: [propext]
+'FT1536Tables.tree_1_checked' depends on axioms: [propext]
+'FT1536Tables.tree_2_checked' depends on axioms: [propext]
+'FT1536Tables.tree_3_checked' depends on axioms: [propext]
+'FT1536Tables.tree_4_checked' depends on axioms: [propext]
+'FT1536Tables.tree_5_checked' depends on axioms: [propext]
+'FT1536Tables.tree_6_checked' depends on axioms: [propext]
+'FT1536Tables.tree_7_checked' depends on axioms: [propext]
+'FT1536Tables.tree_8_checked' depends on axioms: [propext]
+'FT1536Tables.tree_9_checked' depends on axioms: [propext]
+'FT1536Tables.tree_10_checked' depends on axioms: [propext]
+'FT1536Tables.tree_11_checked' depends on axioms: [propext]
+'FT1536Tables.tree_12_checked' depends on axioms: [propext]
+'FT1536Tables.tree_13_checked' depends on axioms: [propext]
+'FT1536Tables.tree_14_checked' depends on axioms: [propext]
+'FT1536Tables.tree_15_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_0_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_1_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_2_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_3_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_4_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_5_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_6_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_7_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_8_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_9_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_10_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_11_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_12_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_13_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_14_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_15_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_16_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_17_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_18_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_19_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_20_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_21_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_22_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_23_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_24_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_25_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_26_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_27_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_28_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_29_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_30_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_31_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_0_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_1_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_2_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_3_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_4_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_5_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_6_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_7_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_8_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_9_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_10_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_11_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_12_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_13_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_14_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_15_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_16_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_17_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_18_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_19_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_20_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_21_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_22_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_23_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_24_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_25_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_26_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_27_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_28_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_29_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_30_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_31_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_32_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_33_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_34_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_35_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_36_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_37_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_38_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_39_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_40_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_41_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_42_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_43_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_44_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_45_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_46_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_47_checked' depends on axioms: [propext]
+'FT1536Tables.chain_0_checked' depends on axioms: [propext]
+'FT1536Tables.chain_1_checked' depends on axioms: [propext]
+'FT1536Tables.root_and_scale_facts' does not depend on any axioms
+'FT1536NTT.constants' does not depend on any axioms
+'FT1536NTT.fix_contract' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536NTT.add_contract' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536NTT.sub_contract' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536NTT.half_contract' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536NTT.low_bits_preserved' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536NTT.mont_ranges' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536NTT.mont_divisibility' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536NTT.mont_contract_z' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536NTT.product_range' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536NTT.mq_montymul_contract' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536NTT.mq_montysqr_contract' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536NTT.small_divisors' does not depend on any axioms
+'FT1536NTT.prime_factorization' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.unitRows_length' does not depend on any axioms
+'FT1536Global.unitRows_checked' depends on axioms: [propext]
+'FT1536Global.unit_bounds' depends on axioms: [propext]
+'FT1536Global.table_canonical' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.gmAt_canonical' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.igmAt_canonical' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Composition.product_canonical' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Composition.tomont_factor' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Composition.prepared_product' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Composition.prepared_point_product' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Composition.L_NTT_after_global_interfaces' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.addQ_range' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.subQ_range' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.mmQ_range' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.addQ_source' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.subQ_source' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.mmQ_source' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.forwardRootOp_range' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.forwardBinaryOp_range' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.forwardCubicOp_range' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.inverseCubicOp_range' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.inverseBinaryOp_range' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.inverseRootOp_range' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.forward_params_half' depends on axioms: [propext]
+'FT1536Global.inverse_params_half' depends on axioms: [propext]
+'FT1536Global.forwardMiddle_canonical' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.inverseMiddle_canonical' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.store_canonical' depends on axioms: [propext]
+'FT1536Global.scale_canonical' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.forward_canonical' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.inverse_canonical' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.fromVec_canonical' depends on axioms: [propext]
+'FT1536Global.forwardC_canonical' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.inverseC_canonical' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.canonical_fixed' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.liftForward_agrees' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.liftInverse_agrees' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Linear.dot2_compose' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Linear.dot2_congr' depends on axioms: [propext]
+'FT1536Linear.dot3_compose' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Linear.dot3_congr' depends on axioms: [propext]
+'FT1536Linear.three_row_action' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Linear.two_row_inverse' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Linear.final_scaling' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.eval_subst' depends on axioms: [propext]
+'FT1536Global.dot_add' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.dot_sub' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.dot_mm_left' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.dot_mm_right' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.eval_linear' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.eval_diagonal' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.eval_scaled' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.rootF_bind' depends on axioms: [propext]
+'FT1536Global.rootI_bind' depends on axioms: [propext]
+'FT1536Global.binF_bind' depends on axioms: [propext]
+'FT1536Global.binI_bind' depends on axioms: [propext]
+'FT1536Global.cubeF_bind' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.cubeI_bind' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.fin3_mem' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.blockCheck_sound' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.row_ids' depends on axioms: [propext]
+'FT1536Global.unitRow_id' depends on axioms: [propext]
+'FT1536Global.root_checked' depends on axioms: [propext]
+'FT1536Global.local_checked_0' depends on axioms: [propext]
+'FT1536Global.local_checked_1' depends on axioms: [propext]
+'FT1536Global.local_checked_2' depends on axioms: [propext]
+'FT1536Global.local_checked_3' depends on axioms: [propext]
+'FT1536Global.local_checked_4' depends on axioms: [propext]
+'FT1536Global.local_checked_5' depends on axioms: [propext]
+'FT1536Global.local_checked_6' depends on axioms: [propext]
+'FT1536Global.local_checked_7' depends on axioms: [propext]
+'FT1536Global.local_checked_8' depends on axioms: [propext]
+'FT1536Global.local_checked_9' depends on axioms: [propext]
+'FT1536Global.local_checked_10' depends on axioms: [propext]
+'FT1536Global.local_checked_11' depends on axioms: [propext]
+'FT1536Global.local_checked_12' depends on axioms: [propext]
+'FT1536Global.local_checked_13' depends on axioms: [propext]
+'FT1536Global.local_checked_14' depends on axioms: [propext]
+'FT1536Global.local_checked_15' depends on axioms: [propext]
+'FT1536Global.local_checked_16' depends on axioms: [propext]
+'FT1536Global.local_checked_17' depends on axioms: [propext]
+'FT1536Global.local_checked_18' depends on axioms: [propext]
+'FT1536Global.local_checked_19' depends on axioms: [propext]
+'FT1536Global.local_checked_20' depends on axioms: [propext]
+'FT1536Global.local_checked_21' depends on axioms: [propext]
+'FT1536Global.local_checked_22' depends on axioms: [propext]
+'FT1536Global.local_checked_23' depends on axioms: [propext]
+'FT1536Global.local_checked_24' depends on axioms: [propext]
+'FT1536Global.local_checked_25' depends on axioms: [propext]
+'FT1536Global.local_checked_26' depends on axioms: [propext]
+'FT1536Global.local_checked_27' depends on axioms: [propext]
+'FT1536Global.local_checked_28' depends on axioms: [propext]
+'FT1536Global.local_checked_29' depends on axioms: [propext]
+'FT1536Global.local_checked_30' depends on axioms: [propext]
+'FT1536Global.local_checked_31' depends on axioms: [propext]
+'FT1536Global.local_checked' depends on axioms: [propext]
+'FT1536Global.local_at' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.pairInput_slot' depends on axioms: [propext]
+'FT1536Global.pairInput_canonical' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.root_inverse' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.binary_inverse' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.cubic_inverse' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.root_homogeneous' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.binary_homogeneous' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.cubic_homogeneous' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.forward_params_ok' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.schedules_reverse' does not depend on any axioms
+'FT1536Global.scale_at' depends on axioms: [propext]
+'FT1536Global.scale_out' depends on axioms: [propext]
+'FT1536Global.scale_range' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.scale_combine' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.scale_one' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.pair_stage_at' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.triple_stage_at' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.pair_stage_out' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.triple_stage_out' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.pair_stage_inverse' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.triple_stage_inverse' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.pair_stage_homogeneous' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.point_prefix' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.scale_loop' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.scale_cancel' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.fpair_canonical' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.ipair_canonical' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.froot_canonical' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.pair_source_inverse' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.pair_source_homogeneous' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.root_source_inverse' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.root_source_homogeneous' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.cubic_source_inverse' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.inverse_append' depends on axioms: [propext]
+'FT1536Global.middle_homogeneous' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.middle_reverse_inverse' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.inverseMem_forwardMem' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.forwardMiddle_out' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.forward_out' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.forward_from_to' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.inverseC_forwardC' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.canonicalVec' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.inverse_forward' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.mmQ_ordinary' depends on axioms: [propext]
+'FT1536Global.ordinary_root' depends on axioms: [propext]
+'FT1536Global.root_coefficients' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.binary_coefficients' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.initialized_binary_read' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.initialized_cubic_read' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.toMontC_eq' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.montPointC_eq' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.subtractC_eq' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Global.montPoint_canonical' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.pipelineC_lift' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Global.L_NTT_pending_forward' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Forward.sum_congr' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.sum_zero' depends on axioms: [propext]
+'FT1536Forward.sum_add' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.sum_sub' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.sum_scale' depends on axioms: [propext]
+'FT1536Forward.sum_scale_right' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.sum_split' depends on axioms: [propext]
+'FT1536Forward.sum_mod' depends on axioms: [propext]
+'FT1536Forward.sum_congr_mod' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.sum_swap' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.sum_delta' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.sum_ofFn' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.sum_ofFn_congr' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.eval_congr' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.eval_mod_coeff' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.eval_linear' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.eval_sub' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.eval_scale' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.eval_split' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.split_preserves_eval' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.pow_mod' depends on axioms: [propext]
+'FT1536Forward.eval_mod_node' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.eval_delta' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.powM_correct' depends on axioms: [propext]
+'FT1536Forward.split_layout' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Forward.binary_block_coefficient' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Forward.binary_block_eval' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Forward.root_block_eval' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Forward.powFuel_correct' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.powFast_correct' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.nodeCheck_sound' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.leaf_checked_0' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_1' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_2' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_3' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_4' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_5' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_6' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_7' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_8' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_9' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_10' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_11' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_12' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_13' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_14' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_15' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_16' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_17' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_18' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_19' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_20' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_21' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_22' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_23' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_24' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_25' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_26' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_27' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_28' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_29' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_30' depends on axioms: [propext]
+'FT1536Forward.leaf_checked_31' depends on axioms: [propext]
+'FT1536Forward.leaf_checked' depends on axioms: [propext]
+'FT1536Forward.leaf_facts' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.actual_chain' depends on axioms: [propext]
+'FT1536Forward.middle_eval' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Forward.cubic_eval' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.forwardMem_eval' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Forward.forwardC_eval' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Forward.FORWARD_GLOBAL' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Forward.fromVec_canonical_mod' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.liftForward_eval' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Forward.node_zero' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.phi_square' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.phi_cube' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.power_middle' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.power_high' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.remMonomial_eval' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.eval_sum' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.eval_convolution' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.productCoefficient_eq' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.product_raw' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.product_eval' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.forward_product' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Forward.lift_canonical' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Forward.product_canonical_inputs' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536.intermediate_ranges' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536.positive_remainder' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536.rho_contract' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536.result_cast_exact' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536.canonical_unique' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536.old_piecewise' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536.old_congruence_domain' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536.old_canonical_domain' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536.agree_on_old_canonical' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536.vector_contract' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536.loop_progress' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536.center_antisymmetric' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.L_NTT' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Forward.L_NTT_p' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Forward.L_NTT_d' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Forward.product_range' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Forward.subtract_range' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Forward.L_NTT_ranges' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Forward.toMontC_range' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Forward.montPointC_range' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Forward.subtractC_range' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Forward.point_prefix_range' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.point_read_bound' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Forward.pipeline_intermediate_ranges' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Forward.rhoVec_eq' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Forward.rhoVec_range' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Forward.L_NTT_rho' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Forward.L_NTT_rho_ranges' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.s16_range' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.s16_exact' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.s16_bits' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.s32_exact' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.s64_exact' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.u32_range' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.fromVec_signed' does not depend on any axioms
+'FT1536Bridge.center_borrow' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.center_correction' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.CENTER_C' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.center_mod' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.center_congruence' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.center_range' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.center_prefix' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.center_unread' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.center_loop_correct' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.fromVec_neg' depends on axioms: [propext]
+'FT1536Bridge.Q0_neg' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.int16_product' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.normTerm_bound' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.norm_prefix' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.norm_no_overflow' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.interleave_sum' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.norm_sum' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.NORM64_EXACT' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.STRICT_B' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.raw_before_eq' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.raw_signed' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.extract_signed' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.SIGN_BRIDGE' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.extract_congruence' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.RAW_VERIFIER_SOUND' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.raw_reject_at_bound' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.start_valid' depends on axioms: [propext]
+'FT1536Bridge.pull_spec' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.fill_source' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.fill_spec' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.nextBit_spec' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.nextBit_empty' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.unary_source' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.unary_spec' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.unary_wrap' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.zeroCount_shift' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.unary_skip_zeros' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.unary_full_wrap' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.static_value_range' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.static_promotions' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.readStatic_spec' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.static_head_source' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.static_head_shifts' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.static_loop_spec' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.DECODE_STATIC' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.listVec_property' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.static_vector_signed' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.none_raw_range' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.none_extended_range' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.msb_and' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.none_flag_range' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.none_word_spec' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.byteAt_in_range' depends on axioms: [propext]
+'FT1536Bridge.none_read_bounds' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.none_loop_spec' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.DECODE_NONE' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.byte_concat' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.readPK_spec' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.pk_head_source' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.pk_head_shifts' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.pk_loop_spec' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.PK_CONSUMED' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.DECODE_PK' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.PK_PREPARATION' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.small_spec' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.decoder_return_guard' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.header_exact' does not depend on any axioms
+'FT1536Bridge.pk_header_exact' does not depend on any axioms
+'FT1536Bridge.SIGNATURE_DECODE' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.api_bounds' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.context_accept' depends on axioms: [propext]
+'FT1536Bridge.L_V_BYTES' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.L_V_LOADED' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.write_below' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.write_at' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.all_initialized' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.signature_initializes' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.output_store_bounds' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.cursor_counter_bounds' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.gcc_narrow16' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.static_negative_zero' does not depend on any axioms
+'FT1536Bridge.static_minimum_both_signs' does not depend on any axioms
+'FT1536Bridge.static_maximum_magnitude' does not depend on any axioms
+'FT1536Bridge.public_failure_guard' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.L_V_SOURCE' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.logical_shift' depends on axioms: [propext]
+'FT1536Bridge.low_mask' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.sign_mask' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.byte_mask' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.narrow_promoted_negation' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.zero_counter_word' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.consumed_indices' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.unary_unique' depends on axioms: [propext]
+'FT1536Bridge.unary_terminates' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.fill_unique' depends on axioms: [propext, Quot.sound.{u}]
+'FT1536Bridge.static_fill_exact' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'FT1536Bridge.pk_fill_exact' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+BridgeAudit 0 0.309
+FT1536Bridge.CENTER_C : ∀ (d : Int) (hd : FT1536Global.CanonVal d),
+  And (@Eq.{1} Int (FT1536Bridge.centerBeforeStore d) (FT1536.center d))
+    (And (@Eq.{1} Int (FT1536Bridge.centerC d) (FT1536.center d))
+      (And
+        (@LE.le.{0} Int Int.instLEInt
+          (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 9216) (@instOfNat (nat_lit 9216))))
+          (FT1536Bridge.centerBeforeStore d))
+        (@LE.le.{0} Int Int.instLEInt (FT1536Bridge.centerBeforeStore d)
+          (@OfNat.ofNat.{0} Int (nat_lit 9216) (@instOfNat (nat_lit 9216))))))
+FT1536Bridge.NORM64_EXACT : ∀ (a b : FT1536Global.Vec) (ha : FT1536Bridge.SignedVec a) (hb : FT1536Bridge.SignedVec b),
+  @Eq.{1} Int (FT1536Bridge.normAcc a b (@OfNat.ofNat.{0} Nat (nat_lit 4608) (instOfNatNat (nat_lit 4608))))
+    (FT1536Bridge.Q a b)
+FT1536Bridge.STRICT_B : ∀ (a b : FT1536Global.Vec) (ha : FT1536Bridge.SignedVec a) (hb : FT1536Bridge.SignedVec b),
+  Iff (@Eq.{1} Bool (FT1536Bridge.isShort a b) Bool.true)
+    (@LT.lt.{0} Int Int.instLTInt (FT1536Bridge.Q a b)
+      (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385))))
+FT1536Bridge.RAW_VERIFIER_SOUND : ∀ (h c s : FT1536Global.Vec) (hh : FT1536Global.CanonVec h)
+  (hc : FT1536Global.CanonVec c) (hs : FT1536Bridge.SignedVec s)
+  (accept : @Eq.{1} Bool (FT1536Bridge.rawVerify (FT1536Bridge.prepareKey h) c s) Bool.true),
+  And (FT1536Bridge.SignedVec (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Bridge.Ext0Words h c s)))
+    (And (FT1536Bridge.Congruent h c (FT1536Bridge.Ext0Words h c s))
+      (@LT.lt.{0} Int Int.instLTInt
+        (FT1536Bridge.Q (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Bridge.Ext0Words h c s))
+          (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Bridge.Ext0Words h c s)))
+        (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385)))))
+FT1536Bridge.unary_terminates : ∀ (d : FT1536Bridge.Bytes) (c : FT1536Bridge.Cursor) (hc : FT1536Bridge.Inv d c),
+  And (FT1536Bridge.UnaryRun d (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) c (FT1536Bridge.unary d c))
+    (∀ (result : Option.{0} (Prod.{0, 0} Nat FT1536Bridge.Cursor)),
+      FT1536Bridge.UnaryRun d (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) c result →
+        @Eq.{1} (Option.{0} (Prod.{0, 0} Nat FT1536Bridge.Cursor)) result (FT1536Bridge.unary d c))
+FT1536Bridge.DECODE_NONE : ∀ (d : FT1536Bridge.Bytes) (vs : List.{0} Int) (used : Nat)
+  (h :
+    @Eq.{1} (Option.{0} (Prod.{0, 0} (List.{0} Int) Nat)) (FT1536Bridge.decodeNone d)
+      (@Option.some.{0} (Prod.{0, 0} (List.{0} Int) Nat) (@Prod.mk.{0, 0} (List.{0} Int) Nat vs used))),
+  And (@Eq.{1} Nat (@List.length.{0} Int vs) (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+    (And (∀ (x : Int), @Membership.mem.{0, 0} Int (List.{0} Int) (@List.instMembership.{0} Int) vs x → FT1536.InInt16 x)
+      (And (@Eq.{1} Nat used (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+        (@LE.le.{0} Nat instLENat used (@List.length.{0} FT1536Bridge.Byte d))))
+FT1536Bridge.DECODE_STATIC : ∀ (d : FT1536Bridge.Bytes) (vs : List.{0} Int) (used : Nat)
+  (h :
+    @Eq.{1} (Option.{0} (Prod.{0, 0} (List.{0} Int) Nat)) (FT1536Bridge.decodeStatic d)
+      (@Option.some.{0} (Prod.{0, 0} (List.{0} Int) Nat) (@Prod.mk.{0, 0} (List.{0} Int) Nat vs used))),
+  And (@Eq.{1} Nat (@List.length.{0} Int vs) (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+    (And (∀ (x : Int), @Membership.mem.{0, 0} Int (List.{0} Int) (@List.instMembership.{0} Int) vs x → FT1536.InInt16 x)
+      (And (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 1920) (instOfNatNat (nat_lit 1920))) used)
+        (@LE.le.{0} Nat instLENat used (@List.length.{0} FT1536Bridge.Byte d))))
+FT1536Bridge.PK_PREPARATION : ∀ (pk : FT1536Bridge.Bytes) (ctx : FT1536Bridge.FTContext)
+  (h :
+    @Eq.{1} (Option.{0} FT1536Bridge.FTContext) (FT1536Bridge.loadFT pk) (@Option.some.{0} FT1536Bridge.FTContext ctx)),
+  And (FT1536Global.CanonVec (FT1536Bridge.FTContext.polynomial ctx))
+    (@Eq.{1} FT1536Global.Vec (FT1536Bridge.FTContext.prepared ctx)
+      (FT1536Bridge.prepareKey (FT1536Bridge.FTContext.polynomial ctx)))
+FT1536Bridge.L_V_BYTES : ∀ (h c : FT1536Global.Vec) (hh : FT1536Global.CanonVec h) (hc : FT1536Global.CanonVec c)
+  (b : FT1536Bridge.Bytes) (legal : FT1536Bridge.LegalBytes b)
+  (accept : @Eq.{1} Int (FT1536Bridge.V_CAND h c b) (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1)))),
+  And (FT1536Bridge.APIBounds b)
+    (@Exists.{1} FT1536Global.Vec fun (s : FT1536Global.Vec) =>
+      @Exists.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+        fun (z : Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) =>
+        And (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b) (@Option.some.{0} FT1536Global.Vec s))
+          (And
+            (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)) (FT1536Bridge.Ext0 h c b)
+              (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z))
+            (And (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z (FT1536Bridge.Ext0Words h c s))
+              (And (FT1536Bridge.SignedVec s)
+                (And (FT1536Bridge.SignedVec (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                  (And (FT1536Bridge.Congruent h c z)
+                    (@LT.lt.{0} Int Int.instLTInt
+                      (FT1536Bridge.Q (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z)
+                        (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                      (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385))))))))))
+FT1536Bridge.L_V_LOADED : ∀ (pk b : FT1536Bridge.Bytes) (c : FT1536Global.Vec) (hc : FT1536Global.CanonVec c)
+  (pkLegal : FT1536Bridge.LegalBytes pk) (sigLegal : FT1536Bridge.LegalBytes b)
+  (accept : @Eq.{1} Int (FT1536Bridge.V_KEY_BYTES pk c b) (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1)))),
+  And (FT1536Bridge.APIBounds pk)
+    (And (FT1536Bridge.APIBounds b)
+      (@Exists.{1} FT1536Global.Vec fun (h : FT1536Global.Vec) =>
+        @Exists.{1} FT1536Global.Vec fun (s : FT1536Global.Vec) =>
+          @Exists.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+            fun (z : Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) =>
+            And (FT1536Global.CanonVec h)
+              (And
+                (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b) (@Option.some.{0} FT1536Global.Vec s))
+                (And
+                  (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)) (FT1536Bridge.Ext0 h c b)
+                    (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z))
+                  (And (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z (FT1536Bridge.Ext0Words h c s))
+                    (And (FT1536Bridge.SignedVec s)
+                      (And (FT1536Bridge.SignedVec (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                        (And (FT1536Bridge.Congruent h c z)
+                          (@LT.lt.{0} Int Int.instLTInt
+                            (FT1536Bridge.Q (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z)
+                              (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                            (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385))))))))))))
+FT1536Bridge.L_V_SOURCE : ∀ (h c : FT1536Global.Vec) (hh : FT1536Global.CanonVec h) (hc : FT1536Global.CanonVec c)
+  (b : FT1536Bridge.Bytes) (legal : FT1536Bridge.LegalBytes b)
+  (accept : @Eq.{1} Int (FT1536Bridge.V_CAND h c b) (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1)))),
+  @Exists.{1} (List.{0} Int) fun (xs : List.{0} Int) =>
+    @Exists.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+      fun (z : Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) =>
+      And (@Eq.{1} (Option.{0} (List.{0} Int)) (FT1536Bridge.signature b) (@Option.some.{0} (List.{0} Int) xs))
+        (And (@Eq.{1} Nat (@List.length.{0} Int xs) (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+          (And
+            (∀ (initial : FT1536Global.Mem)
+              (i : Fin (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536)))),
+              @Eq.{1} Int
+                (FT1536Bridge.writeDecoded (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) xs initial
+                  (@Fin.val (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) i))
+                (FT1536Bridge.listVec xs i))
+            (And
+              (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)) (FT1536Bridge.Ext0 h c b)
+                (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z))
+              (And (FT1536Bridge.SignedVec (FT1536Bridge.listVec xs))
+                (And (FT1536Bridge.Congruent h c z)
+                  (And
+                    (@LT.lt.{0} Int Int.instLTInt
+                      (FT1536Bridge.Q (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z)
+                        (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                      (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385))))
+                    (FT1536Bridge.APIBounds b)))))))
+theorem FT1536Bridge.RAW_VERIFIER_SOUND : ∀ (h c s : FT1536Global.Vec) (hh : FT1536Global.CanonVec h)
+  (hc : FT1536Global.CanonVec c) (hs : FT1536Bridge.SignedVec s)
+  (accept : @Eq.{1} Bool (FT1536Bridge.rawVerify (FT1536Bridge.prepareKey h) c s) Bool.true),
+  And (FT1536Bridge.SignedVec (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Bridge.Ext0Words h c s)))
+    (And (FT1536Bridge.Congruent h c (FT1536Bridge.Ext0Words h c s))
+      (@LT.lt.{0} Int Int.instLTInt
+        (FT1536Bridge.Q (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Bridge.Ext0Words h c s))
+          (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Bridge.Ext0Words h c s)))
+        (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385))))) :=
+fun (h c s : FT1536Global.Vec) (hh : FT1536Global.CanonVec h) (hc : FT1536Global.CanonVec c)
+    (hs : FT1536Bridge.SignedVec s)
+    (accept : @Eq.{1} Bool (FT1536Bridge.rawVerify (FT1536Bridge.prepareKey h) c s) Bool.true) =>
+  have hn :
+    @LT.lt.{0} Int Int.instLTInt (FT1536Bridge.Q (FT1536Bridge.rawFirst (FT1536Bridge.prepareKey h) c s) s)
+      (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385))) :=
+    @Iff.mp (@Eq.{1} Bool (FT1536Bridge.isShort (FT1536Bridge.rawFirst (FT1536Bridge.prepareKey h) c s) s) Bool.true)
+      (@LT.lt.{0} Int Int.instLTInt (FT1536Bridge.Q (FT1536Bridge.rawFirst (FT1536Bridge.prepareKey h) c s) s)
+        (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385))))
+      (FT1536Bridge.STRICT_B (FT1536Bridge.rawFirst (FT1536Bridge.prepareKey h) c s) s
+        (FT1536Bridge.raw_signed (FT1536Bridge.prepareKey h) c s) hs)
+      accept;
+  @And.intro
+    (FT1536Bridge.SignedVec (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Bridge.Ext0Words h c s)))
+    (And (FT1536Bridge.Congruent h c (FT1536Bridge.Ext0Words h c s))
+      (@LT.lt.{0} Int Int.instLTInt
+        (FT1536Bridge.Q (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Bridge.Ext0Words h c s))
+          (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Bridge.Ext0Words h c s)))
+        (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385)))))
+    (FT1536Bridge.extract_signed h c s)
+    (@And.intro (FT1536Bridge.Congruent h c (FT1536Bridge.Ext0Words h c s))
+      (@LT.lt.{0} Int Int.instLTInt
+        (FT1536Bridge.Q (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Bridge.Ext0Words h c s))
+          (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Bridge.Ext0Words h c s)))
+        (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385))))
+      (FT1536Bridge.extract_congruence h c s)
+      (@id.{0}
+        (@LT.lt.{0} Int Int.instLTInt
+          (FT1536Bridge.Q (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Bridge.Ext0Words h c s))
+            (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Bridge.Ext0Words h c s)))
+          (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385))))
+        (@id.{0}
+          (@LT.lt.{0} Int Int.instLTInt
+            (FT1536Bridge.Q (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Bridge.Ext0Words h c s)) s)
+            (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385))))
+          (@Eq.mp.{0}
+            (@LT.lt.{0} Int Int.instLTInt
+              (FT1536Bridge.Q
+                (FT1536Bridge.negVec
+                  (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Bridge.Ext0Words h c s)))
+                s)
+              (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385))))
+            (@LT.lt.{0} Int Int.instLTInt
+              (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+                (FT1536Bridge.Q0 (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Bridge.Ext0Words h c s)))
+                (FT1536Bridge.Q0 s))
+              (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385))))
+            (@congrFun'.{1, 1} Int Prop
+              (@LT.lt.{0} Int Int.instLTInt
+                (FT1536Bridge.Q
+                  (FT1536Bridge.negVec
+                    (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Bridge.Ext0Words h c s)))
+                  s))
+              (@LT.lt.{0} Int Int.instLTInt
+                (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+                  (FT1536Bridge.Q0 (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Bridge.Ext0Words h c s)))
+                  (FT1536Bridge.Q0 s)))
+              (@congrArg.{1, 1} Int (Int → Prop)
+                (FT1536Bridge.Q
+                  (FT1536Bridge.negVec
+                    (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Bridge.Ext0Words h c s)))
+                  s)
+                (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+                  (FT1536Bridge.Q0 (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Bridge.Ext0Words h c s)))
+                  (FT1536Bridge.Q0 s))
+                (@LT.lt.{0} Int Int.instLTInt)
+                (@congrFun'.{1, 1} Int Int
+                  (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+                    (FT1536Bridge.Q0
+                      (FT1536Bridge.negVec
+                        (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Bridge.Ext0Words h c s)))))
+                  (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+                    (FT1536Bridge.Q0
+                      (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Bridge.Ext0Words h c s))))
+                  (@congrArg.{1, 1} Int (Int → Int)
+                    (FT1536Bridge.Q0
+                      (FT1536Bridge.negVec
+                        (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Bridge.Ext0Words h c s))))
+                    (FT1536Bridge.Q0
+                      (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Bridge.Ext0Words h c s)))
+                    (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd))
+                    (FT1536Bridge.Q0_neg
+                      (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Bridge.Ext0Words h c s))))
+                  (FT1536Bridge.Q0 s)))
+              (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385))))
+            (@Eq.mp.{0}
+              (@LT.lt.{0} Int Int.instLTInt (FT1536Bridge.Q (FT1536Bridge.rawFirst (FT1536Bridge.prepareKey h) c s) s)
+                (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385))))
+              (@LT.lt.{0} Int Int.instLTInt
+                (FT1536Bridge.Q
+                  (FT1536Bridge.negVec
+                    (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Bridge.Ext0Words h c s)))
+                  s)
+                (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385))))
+              (@congrArg.{1, 1} FT1536Global.Vec Prop (FT1536Bridge.rawFirst (FT1536Bridge.prepareKey h) c s)
+                (FT1536Bridge.negVec
+                  (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Bridge.Ext0Words h c s)))
+                (fun (_a : FT1536Global.Vec) =>
+                  @LT.lt.{0} Int Int.instLTInt (FT1536Bridge.Q _a s)
+                    (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385))))
+                (FT1536Bridge.SIGN_BRIDGE h c s hh hc hs))
+              hn)))))
+theorem FT1536Bridge.L_V_BYTES : ∀ (h c : FT1536Global.Vec) (hh : FT1536Global.CanonVec h)
+  (hc : FT1536Global.CanonVec c) (b : FT1536Bridge.Bytes) (legal : FT1536Bridge.LegalBytes b)
+  (accept : @Eq.{1} Int (FT1536Bridge.V_CAND h c b) (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1)))),
+  And (FT1536Bridge.APIBounds b)
+    (@Exists.{1} FT1536Global.Vec fun (s : FT1536Global.Vec) =>
+      @Exists.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+        fun (z : Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) =>
+        And (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b) (@Option.some.{0} FT1536Global.Vec s))
+          (And
+            (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)) (FT1536Bridge.Ext0 h c b)
+              (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z))
+            (And (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z (FT1536Bridge.Ext0Words h c s))
+              (And (FT1536Bridge.SignedVec s)
+                (And (FT1536Bridge.SignedVec (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                  (And (FT1536Bridge.Congruent h c z)
+                    (@LT.lt.{0} Int Int.instLTInt
+                      (FT1536Bridge.Q (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z)
+                        (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                      (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385)))))))))) :=
+fun (h c : FT1536Global.Vec) (hh : FT1536Global.CanonVec h) (hc : FT1536Global.CanonVec c) (b : FT1536Bridge.Bytes)
+    (legal : FT1536Bridge.LegalBytes b)
+    (accept : @Eq.{1} Int (FT1536Bridge.V_CAND h c b) (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1)))) =>
+  @Exists.casesOn.{1} (List.{0} Int)
+    (fun (vs : List.{0} Int) =>
+      And (@Eq.{1} (Option.{0} (List.{0} Int)) (FT1536Bridge.signature b) (@Option.some.{0} (List.{0} Int) vs))
+        (@Eq.{1} Bool
+          (FT1536Bridge.rawVerify
+            (FT1536Bridge.FTContext.prepared (FT1536Bridge.FTContext.mk h (FT1536Bridge.prepareKey h))) c
+            (FT1536Bridge.listVec vs))
+          Bool.true))
+    (fun
+        (x :
+          @Exists.{1} (List.{0} Int) fun (vs : List.{0} Int) =>
+            And (@Eq.{1} (Option.{0} (List.{0} Int)) (FT1536Bridge.signature b) (@Option.some.{0} (List.{0} Int) vs))
+              (@Eq.{1} Bool
+                (FT1536Bridge.rawVerify
+                  (FT1536Bridge.FTContext.prepared (FT1536Bridge.FTContext.mk h (FT1536Bridge.prepareKey h))) c
+                  (FT1536Bridge.listVec vs))
+                Bool.true)) =>
+      And (FT1536Bridge.APIBounds b)
+        (@Exists.{1} FT1536Global.Vec fun (s : FT1536Global.Vec) =>
+          @Exists.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+            fun (z : Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) =>
+            And (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b) (@Option.some.{0} FT1536Global.Vec s))
+              (And
+                (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)) (FT1536Bridge.Ext0 h c b)
+                  (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z))
+                (And (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z (FT1536Bridge.Ext0Words h c s))
+                  (And (FT1536Bridge.SignedVec s)
+                    (And (FT1536Bridge.SignedVec (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                      (And (FT1536Bridge.Congruent h c z)
+                        (@LT.lt.{0} Int Int.instLTInt
+                          (FT1536Bridge.Q (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z)
+                            (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                          (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385)))))))))))
+    (FT1536Bridge.context_accept (FT1536Bridge.FTContext.mk h (FT1536Bridge.prepareKey h)) c b accept)
+    fun (vs : List.{0} Int)
+      (h_1 :
+        And (@Eq.{1} (Option.{0} (List.{0} Int)) (FT1536Bridge.signature b) (@Option.some.{0} (List.{0} Int) vs))
+          (@Eq.{1} Bool
+            (FT1536Bridge.rawVerify
+              (FT1536Bridge.FTContext.prepared (FT1536Bridge.FTContext.mk h (FT1536Bridge.prepareKey h))) c
+              (FT1536Bridge.listVec vs))
+            Bool.true)) =>
+    @And.casesOn.{0}
+      (@Eq.{1} (Option.{0} (List.{0} Int)) (FT1536Bridge.signature b) (@Option.some.{0} (List.{0} Int) vs))
+      (@Eq.{1} Bool
+        (FT1536Bridge.rawVerify
+          (FT1536Bridge.FTContext.prepared (FT1536Bridge.FTContext.mk h (FT1536Bridge.prepareKey h))) c
+          (FT1536Bridge.listVec vs))
+        Bool.true)
+      (fun
+          (x :
+            And (@Eq.{1} (Option.{0} (List.{0} Int)) (FT1536Bridge.signature b) (@Option.some.{0} (List.{0} Int) vs))
+              (@Eq.{1} Bool
+                (FT1536Bridge.rawVerify
+                  (FT1536Bridge.FTContext.prepared (FT1536Bridge.FTContext.mk h (FT1536Bridge.prepareKey h))) c
+                  (FT1536Bridge.listVec vs))
+                Bool.true)) =>
+        And (FT1536Bridge.APIBounds b)
+          (@Exists.{1} FT1536Global.Vec fun (s : FT1536Global.Vec) =>
+            @Exists.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+              fun (z : Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) =>
+              And (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b) (@Option.some.{0} FT1536Global.Vec s))
+                (And
+                  (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)) (FT1536Bridge.Ext0 h c b)
+                    (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z))
+                  (And (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z (FT1536Bridge.Ext0Words h c s))
+                    (And (FT1536Bridge.SignedVec s)
+                      (And (FT1536Bridge.SignedVec (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                        (And (FT1536Bridge.Congruent h c z)
+                          (@LT.lt.{0} Int Int.instLTInt
+                            (FT1536Bridge.Q (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z)
+                              (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                            (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385)))))))))))
+      h_1
+      fun (hdec : @Eq.{1} (Option.{0} (List.{0} Int)) (FT1536Bridge.signature b) (@Option.some.{0} (List.{0} Int) vs))
+        (hraw :
+          @Eq.{1} Bool
+            (FT1536Bridge.rawVerify
+              (FT1536Bridge.FTContext.prepared (FT1536Bridge.FTContext.mk h (FT1536Bridge.prepareKey h))) c
+              (FT1536Bridge.listVec vs))
+            Bool.true) =>
+      have hd :
+        And
+          (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+            (@List.length.{0} FT1536Bridge.Byte b))
+          (And
+            (@Eq.{1} Nat (@List.length.{0} Int vs) (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+            (∀ (x : Int),
+              @Membership.mem.{0, 0} Int (List.{0} Int) (@List.instMembership.{0} Int) vs x → FT1536.InInt16 x)) :=
+        FT1536Bridge.SIGNATURE_DECODE b vs hdec;
+      have hs : FT1536Bridge.SignedVec (FT1536Bridge.listVec vs) :=
+        FT1536Bridge.listVec_property FT1536.InInt16 vs
+          (@And.left
+            (@Eq.{1} Nat (@List.length.{0} Int vs) (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+            (∀ (x : Int),
+              @Membership.mem.{0, 0} Int (List.{0} Int) (@List.instMembership.{0} Int) vs x → FT1536.InInt16 x)
+            (@And.right
+              (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+                (@List.length.{0} FT1536Bridge.Byte b))
+              (And
+                (@Eq.{1} Nat (@List.length.{0} Int vs)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+                (∀ (x : Int),
+                  @Membership.mem.{0, 0} Int (List.{0} Int) (@List.instMembership.{0} Int) vs x → FT1536.InInt16 x))
+              hd))
+          (@And.right
+            (@Eq.{1} Nat (@List.length.{0} Int vs) (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+            (∀ (x : Int),
+              @Membership.mem.{0, 0} Int (List.{0} Int) (@List.instMembership.{0} Int) vs x → FT1536.InInt16 x)
+            (@And.right
+              (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+                (@List.length.{0} FT1536Bridge.Byte b))
+              (And
+                (@Eq.{1} Nat (@List.length.{0} Int vs)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+                (∀ (x : Int),
+                  @Membership.mem.{0, 0} Int (List.{0} Int) (@List.instMembership.{0} Int) vs x → FT1536.InInt16 x))
+              hd));
+      have hr :
+        And
+          (FT1536Bridge.SignedVec
+            (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs))))
+          (And (FT1536Bridge.Congruent h c (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs)))
+            (@LT.lt.{0} Int Int.instLTInt
+              (FT1536Bridge.Q
+                (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                  (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs)))
+                (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                  (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs))))
+              (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385))))) :=
+        FT1536Bridge.RAW_VERIFIER_SOUND h c (FT1536Bridge.listVec vs) hh hc hs hraw;
+      @And.intro (FT1536Bridge.APIBounds b)
+        (@Exists.{1} FT1536Global.Vec fun (s : FT1536Global.Vec) =>
+          @Exists.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+            fun (z : Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) =>
+            And (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b) (@Option.some.{0} FT1536Global.Vec s))
+              (And
+                (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)) (FT1536Bridge.Ext0 h c b)
+                  (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z))
+                (And (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z (FT1536Bridge.Ext0Words h c s))
+                  (And (FT1536Bridge.SignedVec s)
+                    (And (FT1536Bridge.SignedVec (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                      (And (FT1536Bridge.Congruent h c z)
+                        (@LT.lt.{0} Int Int.instLTInt
+                          (FT1536Bridge.Q (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z)
+                            (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                          (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385))))))))))
+        (FT1536Bridge.api_bounds b legal)
+        (@Exists.intro.{1} FT1536Global.Vec
+          (fun (s : FT1536Global.Vec) =>
+            @Exists.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+              fun (z : Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) =>
+              And (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b) (@Option.some.{0} FT1536Global.Vec s))
+                (And
+                  (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)) (FT1536Bridge.Ext0 h c b)
+                    (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z))
+                  (And (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z (FT1536Bridge.Ext0Words h c s))
+                    (And (FT1536Bridge.SignedVec s)
+                      (And (FT1536Bridge.SignedVec (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                        (And (FT1536Bridge.Congruent h c z)
+                          (@LT.lt.{0} Int Int.instLTInt
+                            (FT1536Bridge.Q (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z)
+                              (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                            (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385))))))))))
+          (FT1536Bridge.listVec vs)
+          (@Exists.intro.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+            (fun (z : Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) =>
+              And
+                (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b)
+                  (@Option.some.{0} FT1536Global.Vec (FT1536Bridge.listVec vs)))
+                (And
+                  (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)) (FT1536Bridge.Ext0 h c b)
+                    (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z))
+                  (And
+                    (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z
+                      (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs)))
+                    (And (FT1536Bridge.SignedVec (FT1536Bridge.listVec vs))
+                      (And (FT1536Bridge.SignedVec (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                        (And (FT1536Bridge.Congruent h c z)
+                          (@LT.lt.{0} Int Int.instLTInt
+                            (FT1536Bridge.Q (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z)
+                              (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                            (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385))))))))))
+            (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs))
+            (@And.intro
+              (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b)
+                (@Option.some.{0} FT1536Global.Vec (FT1536Bridge.listVec vs)))
+              (And
+                (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)) (FT1536Bridge.Ext0 h c b)
+                  (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                    (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs))))
+                (And
+                  (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                    (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs))
+                    (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs)))
+                  (And (FT1536Bridge.SignedVec (FT1536Bridge.listVec vs))
+                    (And
+                      (FT1536Bridge.SignedVec
+                        (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                          (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs))))
+                      (And (FT1536Bridge.Congruent h c (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs)))
+                        (@LT.lt.{0} Int Int.instLTInt
+                          (FT1536Bridge.Q
+                            (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                              (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs)))
+                            (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                              (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs))))
+                          (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385)))))))))
+              (@of_eq_true
+                (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b)
+                  (@Option.some.{0} FT1536Global.Vec (FT1536Bridge.listVec vs)))
+                (@Eq.trans.{1} Prop
+                  (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b)
+                    (@Option.some.{0} FT1536Global.Vec (FT1536Bridge.listVec vs)))
+                  (@Eq.{1} (Option.{0} FT1536Global.Vec) (@Option.some.{0} FT1536Global.Vec (FT1536Bridge.listVec vs))
+                    (@Option.some.{0} FT1536Global.Vec (FT1536Bridge.listVec vs)))
+                  True
+                  (@congrFun'.{1, 1} (Option.{0} FT1536Global.Vec) Prop
+                    (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b))
+                    (@Eq.{1} (Option.{0} FT1536Global.Vec)
+                      (@Option.some.{0} FT1536Global.Vec (FT1536Bridge.listVec vs)))
+                    (@congrArg.{1, 1} (Option.{0} FT1536Global.Vec) (Option.{0} FT1536Global.Vec → Prop)
+                      (FT1536Bridge.decodeS b) (@Option.some.{0} FT1536Global.Vec (FT1536Bridge.listVec vs))
+                      (@Eq.{1} (Option.{0} FT1536Global.Vec))
+                      (@congrArg.{1, 1} (Option.{0} (List.{0} Int)) (Option.{0} FT1536Global.Vec)
+                        (FT1536Bridge.signature b) (@Option.some.{0} (List.{0} Int) vs)
+                        (@Option.map.{0, 0} (List.{0} Int) FT1536Global.Vec FT1536Bridge.listVec) hdec))
+                    (@Option.some.{0} FT1536Global.Vec (FT1536Bridge.listVec vs)))
+                  (@eq_self.{1} (Option.{0} FT1536Global.Vec)
+                    (@Option.some.{0} FT1536Global.Vec (FT1536Bridge.listVec vs)))))
+              (@And.intro
+                (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)) (FT1536Bridge.Ext0 h c b)
+                  (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                    (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs))))
+                (And
+                  (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                    (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs))
+                    (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs)))
+                  (And (FT1536Bridge.SignedVec (FT1536Bridge.listVec vs))
+                    (And
+                      (FT1536Bridge.SignedVec
+                        (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                          (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs))))
+                      (And (FT1536Bridge.Congruent h c (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs)))
+                        (@LT.lt.{0} Int Int.instLTInt
+                          (FT1536Bridge.Q
+                            (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                              (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs)))
+                            (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                              (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs))))
+                          (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385))))))))
+                (@of_eq_true
+                  (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)) (FT1536Bridge.Ext0 h c b)
+                    (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                      (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs))))
+                  (@Eq.trans.{1} Prop
+                    (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)) (FT1536Bridge.Ext0 h c b)
+                      (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                        (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs))))
+                    (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec))
+                      (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                        (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs)))
+                      (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                        (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs))))
+                    True
+                    (@congrFun'.{1, 1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)) Prop
+                      (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)) (FT1536Bridge.Ext0 h c b))
+                      (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec))
+                        (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                          (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs))))
+                      (@congrArg.{1, 1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec))
+                        (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) → Prop) (FT1536Bridge.Ext0 h c b)
+                        (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                          (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs)))
+                        (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)))
+                        (@congrArg.{1, 1} (Option.{0} FT1536Global.Vec)
+                          (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)) (FT1536Bridge.decodeS b)
+                          (@Option.some.{0} FT1536Global.Vec (FT1536Bridge.listVec vs))
+                          (@Option.map.{0, 0} FT1536Global.Vec (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                            (FT1536Bridge.Ext0Words h c))
+                          (@congrArg.{1, 1} (Option.{0} (List.{0} Int)) (Option.{0} FT1536Global.Vec)
+                            (FT1536Bridge.signature b) (@Option.some.{0} (List.{0} Int) vs)
+                            (@Option.map.{0, 0} (List.{0} Int) FT1536Global.Vec FT1536Bridge.listVec) hdec)))
+                      (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                        (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs))))
+                    (@eq_self.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec))
+                      (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                        (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs))))))
+                (@And.intro
+                  (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                    (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs))
+                    (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs)))
+                  (And (FT1536Bridge.SignedVec (FT1536Bridge.listVec vs))
+                    (And
+                      (FT1536Bridge.SignedVec
+                        (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                          (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs))))
+                      (And (FT1536Bridge.Congruent h c (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs)))
+                        (@LT.lt.{0} Int Int.instLTInt
+                          (FT1536Bridge.Q
+                            (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                              (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs)))
+                            (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                              (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs))))
+                          (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385)))))))
+                  (@rfl.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                    (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs)))
+                  (@And.intro (FT1536Bridge.SignedVec (FT1536Bridge.listVec vs))
+                    (And
+                      (FT1536Bridge.SignedVec
+                        (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                          (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs))))
+                      (And (FT1536Bridge.Congruent h c (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs)))
+                        (@LT.lt.{0} Int Int.instLTInt
+                          (FT1536Bridge.Q
+                            (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                              (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs)))
+                            (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                              (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs))))
+                          (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385))))))
+                    hs
+                    (@And.intro
+                      (FT1536Bridge.SignedVec
+                        (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                          (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs))))
+                      (And (FT1536Bridge.Congruent h c (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs)))
+                        (@LT.lt.{0} Int Int.instLTInt
+                          (FT1536Bridge.Q
+                            (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                              (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs)))
+                            (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                              (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs))))
+                          (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385)))))
+                      (@And.left
+                        (FT1536Bridge.SignedVec
+                          (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                            (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs))))
+                        (And (FT1536Bridge.Congruent h c (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs)))
+                          (@LT.lt.{0} Int Int.instLTInt
+                            (FT1536Bridge.Q
+                              (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                                (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs)))
+                              (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                                (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs))))
+                            (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385)))))
+                        hr)
+                      (@And.right
+                        (FT1536Bridge.SignedVec
+                          (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                            (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs))))
+                        (And (FT1536Bridge.Congruent h c (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs)))
+                          (@LT.lt.{0} Int Int.instLTInt
+                            (FT1536Bridge.Q
+                              (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                                (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs)))
+                              (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                                (FT1536Bridge.Ext0Words h c (FT1536Bridge.listVec vs))))
+                            (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385)))))
+                        hr))))))))
+theorem FT1536Bridge.L_V_LOADED : ∀ (pk b : FT1536Bridge.Bytes) (c : FT1536Global.Vec) (hc : FT1536Global.CanonVec c)
+  (pkLegal : FT1536Bridge.LegalBytes pk) (sigLegal : FT1536Bridge.LegalBytes b)
+  (accept : @Eq.{1} Int (FT1536Bridge.V_KEY_BYTES pk c b) (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1)))),
+  And (FT1536Bridge.APIBounds pk)
+    (And (FT1536Bridge.APIBounds b)
+      (@Exists.{1} FT1536Global.Vec fun (h : FT1536Global.Vec) =>
+        @Exists.{1} FT1536Global.Vec fun (s : FT1536Global.Vec) =>
+          @Exists.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+            fun (z : Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) =>
+            And (FT1536Global.CanonVec h)
+              (And
+                (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b) (@Option.some.{0} FT1536Global.Vec s))
+                (And
+                  (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)) (FT1536Bridge.Ext0 h c b)
+                    (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z))
+                  (And (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z (FT1536Bridge.Ext0Words h c s))
+                    (And (FT1536Bridge.SignedVec s)
+                      (And (FT1536Bridge.SignedVec (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                        (And (FT1536Bridge.Congruent h c z)
+                          (@LT.lt.{0} Int Int.instLTInt
+                            (FT1536Bridge.Q (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z)
+                              (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                            (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385)))))))))))) :=
+fun (pk b : FT1536Bridge.Bytes) (c : FT1536Global.Vec) (hc : FT1536Global.CanonVec c)
+    (pkLegal : FT1536Bridge.LegalBytes pk) (sigLegal : FT1536Bridge.LegalBytes b)
+    (accept :
+      @Eq.{1} Int (FT1536Bridge.V_KEY_BYTES pk c b) (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1)))) =>
+  @Option.casesOn.{0, 0} FT1536Bridge.FTContext
+    (fun (t : Option.{0} FT1536Bridge.FTContext) =>
+      ∀ (h : @Eq.{1} (Option.{0} FT1536Bridge.FTContext) (FT1536Bridge.loadFT pk) t),
+        And (FT1536Bridge.APIBounds pk)
+          (And (FT1536Bridge.APIBounds b)
+            (@Exists.{1} FT1536Global.Vec fun (h : FT1536Global.Vec) =>
+              @Exists.{1} FT1536Global.Vec fun (s : FT1536Global.Vec) =>
+                @Exists.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                  fun (z : Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) =>
+                  And (FT1536Global.CanonVec h)
+                    (And
+                      (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b)
+                        (@Option.some.{0} FT1536Global.Vec s))
+                      (And
+                        (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)) (FT1536Bridge.Ext0 h c b)
+                          (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z))
+                        (And (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z (FT1536Bridge.Ext0Words h c s))
+                          (And (FT1536Bridge.SignedVec s)
+                            (And (FT1536Bridge.SignedVec (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                              (And (FT1536Bridge.Congruent h c z)
+                                (@LT.lt.{0} Int Int.instLTInt
+                                  (FT1536Bridge.Q (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z)
+                                    (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                                  (@OfNat.ofNat.{0} Int (nat_lit 2093922385)
+                                    (@instOfNat (nat_lit 2093922385)))))))))))))
+    (FT1536Bridge.loadFT pk)
+    (fun
+        (h :
+          @Eq.{1} (Option.{0} FT1536Bridge.FTContext) (FT1536Bridge.loadFT pk)
+            (@Option.none.{0} FT1536Bridge.FTContext)) =>
+      @Eq.ndrec.{0, 1} (Option.{0} FT1536Bridge.FTContext) (@Option.none.{0} FT1536Bridge.FTContext)
+        (fun (x : Option.{0} FT1536Bridge.FTContext) =>
+          ∀ (hp : @Eq.{1} (Option.{0} FT1536Bridge.FTContext) (FT1536Bridge.loadFT pk) x),
+            And (FT1536Bridge.APIBounds pk)
+              (And (FT1536Bridge.APIBounds b)
+                (@Exists.{1} FT1536Global.Vec fun (h : FT1536Global.Vec) =>
+                  @Exists.{1} FT1536Global.Vec fun (s : FT1536Global.Vec) =>
+                    @Exists.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                      fun (z : Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) =>
+                      And (FT1536Global.CanonVec h)
+                        (And
+                          (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b)
+                            (@Option.some.{0} FT1536Global.Vec s))
+                          (And
+                            (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec))
+                              (FT1536Bridge.Ext0 h c b)
+                              (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z))
+                            (And
+                              (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z (FT1536Bridge.Ext0Words h c s))
+                              (And (FT1536Bridge.SignedVec s)
+                                (And (FT1536Bridge.SignedVec (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                                  (And (FT1536Bridge.Congruent h c z)
+                                    (@LT.lt.{0} Int Int.instLTInt
+                                      (FT1536Bridge.Q (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z)
+                                        (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                                      (@OfNat.ofNat.{0} Int (nat_lit 2093922385)
+                                        (@instOfNat (nat_lit 2093922385)))))))))))))
+        (fun
+            (hp :
+              @Eq.{1} (Option.{0} FT1536Bridge.FTContext) (FT1536Bridge.loadFT pk)
+                (@Option.none.{0} FT1536Bridge.FTContext)) =>
+          @Eq.casesOn.{0, 1} Int
+            (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))))
+            (fun (a : Int)
+                (t :
+                  @Eq.{1} Int
+                    (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2)))) a) =>
+              ∀ (h : @Eq.{1} Int (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))) a)
+                (h :
+                  @HEq.{0}
+                    (@Eq.{1} Int
+                      (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))))
+                      (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+                    (@Eq.mp.{0}
+                      (@Eq.{1} Int (FT1536Bridge.verifyContext (FT1536Bridge.loadFT pk) c b)
+                        (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+                      (@Eq.{1} Int
+                        (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))))
+                        (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+                      (@congrFun'.{1, 1} Int Prop
+                        (@Eq.{1} Int (FT1536Bridge.verifyContext (FT1536Bridge.loadFT pk) c b))
+                        (@Eq.{1} Int
+                          (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2)))))
+                        (@congrArg.{1, 1} Int (Int → Prop) (FT1536Bridge.verifyContext (FT1536Bridge.loadFT pk) c b)
+                          (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))))
+                          (@Eq.{1} Int)
+                          (@congrArg.{1, 1} (Option.{0} FT1536Bridge.FTContext) Int (FT1536Bridge.loadFT pk)
+                            (@Option.none.{0} FT1536Bridge.FTContext)
+                            (fun (x : Option.{0} FT1536Bridge.FTContext) =>
+                              FT1536Bridge.verifyContext.match_3.{1}
+                                (fun (ctx : Option.{0} FT1536Bridge.FTContext) => Int) x
+                                (fun (_ : Unit) =>
+                                  @Neg.neg.{0} Int Int.instNegInt
+                                    (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))))
+                                fun (key : FT1536Bridge.FTContext) =>
+                                FT1536Bridge.verifyContext.match_1.{1} (fun (x : Option.{0} (List.{0} Int)) => Int)
+                                  (FT1536Bridge.signature b)
+                                  (fun (_ : Unit) =>
+                                    @Neg.neg.{0} Int Int.instNegInt
+                                      (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+                                  fun (xs : List.{0} Int) =>
+                                  @ite.{1} Int
+                                    (@Eq.{1} Bool
+                                      (FT1536Bridge.rawVerify (FT1536Bridge.FTContext.prepared key) c
+                                        (FT1536Bridge.listVec xs))
+                                      Bool.true)
+                                    (instDecidableEqBool
+                                      (FT1536Bridge.rawVerify (FT1536Bridge.FTContext.prepared key) c
+                                        (FT1536Bridge.listVec xs))
+                                      Bool.true)
+                                    (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1)))
+                                    (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0))))
+                            hp))
+                        (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+                      accept)
+                    (@Eq.{1} Int
+                      (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2)))) a)
+                    t),
+                And (FT1536Bridge.APIBounds pk)
+                  (And (FT1536Bridge.APIBounds b)
+                    (@Exists.{1} FT1536Global.Vec fun (h : FT1536Global.Vec) =>
+                      @Exists.{1} FT1536Global.Vec fun (s : FT1536Global.Vec) =>
+                        @Exists.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                          fun (z : Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) =>
+                          And (FT1536Global.CanonVec h)
+                            (And
+                              (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b)
+                                (@Option.some.{0} FT1536Global.Vec s))
+                              (And
+                                (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec))
+                                  (FT1536Bridge.Ext0 h c b)
+                                  (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z))
+                                (And
+                                  (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z
+                                    (FT1536Bridge.Ext0Words h c s))
+                                  (And (FT1536Bridge.SignedVec s)
+                                    (And (FT1536Bridge.SignedVec (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                                      (And (FT1536Bridge.Congruent h c z)
+                                        (@LT.lt.{0} Int Int.instLTInt
+                                          (FT1536Bridge.Q (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z)
+                                            (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                                          (@OfNat.ofNat.{0} Int (nat_lit 2093922385)
+                                            (@instOfNat (nat_lit 2093922385)))))))))))))
+            (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1)))
+            (@Eq.mp.{0}
+              (@Eq.{1} Int (FT1536Bridge.verifyContext (FT1536Bridge.loadFT pk) c b)
+                (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+              (@Eq.{1} Int (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))))
+                (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+              (@congrFun'.{1, 1} Int Prop (@Eq.{1} Int (FT1536Bridge.verifyContext (FT1536Bridge.loadFT pk) c b))
+                (@Eq.{1} Int
+                  (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2)))))
+                (@congrArg.{1, 1} Int (Int → Prop) (FT1536Bridge.verifyContext (FT1536Bridge.loadFT pk) c b)
+                  (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))))
+                  (@Eq.{1} Int)
+                  (@congrArg.{1, 1} (Option.{0} FT1536Bridge.FTContext) Int (FT1536Bridge.loadFT pk)
+                    (@Option.none.{0} FT1536Bridge.FTContext)
+                    (fun (x : Option.{0} FT1536Bridge.FTContext) =>
+                      FT1536Bridge.verifyContext.match_3.{1} (fun (ctx : Option.{0} FT1536Bridge.FTContext) => Int) x
+                        (fun (_ : Unit) =>
+                          @Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))))
+                        fun (key : FT1536Bridge.FTContext) =>
+                        FT1536Bridge.verifyContext.match_1.{1} (fun (x : Option.{0} (List.{0} Int)) => Int)
+                          (FT1536Bridge.signature b)
+                          (fun (_ : Unit) =>
+                            @Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+                          fun (xs : List.{0} Int) =>
+                          @ite.{1} Int
+                            (@Eq.{1} Bool
+                              (FT1536Bridge.rawVerify (FT1536Bridge.FTContext.prepared key) c (FT1536Bridge.listVec xs))
+                              Bool.true)
+                            (instDecidableEqBool
+                              (FT1536Bridge.rawVerify (FT1536Bridge.FTContext.prepared key) c (FT1536Bridge.listVec xs))
+                              Bool.true)
+                            (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1)))
+                            (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0))))
+                    hp))
+                (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+              accept)
+            (fun
+                (h :
+                  @Eq.{1} Int (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1)))
+                    (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))))) =>
+              @False.elim.{0}
+                (∀
+                  (h :
+                    @HEq.{0}
+                      (@Eq.{1} Int
+                        (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))))
+                        (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+                      (@Eq.mp.{0}
+                        (@Eq.{1} Int (FT1536Bridge.verifyContext (FT1536Bridge.loadFT pk) c b)
+                          (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+                        (@Eq.{1} Int
+                          (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))))
+                          (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+                        (@congrFun'.{1, 1} Int Prop
+                          (@Eq.{1} Int (FT1536Bridge.verifyContext (FT1536Bridge.loadFT pk) c b))
+                          (@Eq.{1} Int
+                            (@Neg.neg.{0} Int Int.instNegInt
+                              (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2)))))
+                          (@congrArg.{1, 1} Int (Int → Prop) (FT1536Bridge.verifyContext (FT1536Bridge.loadFT pk) c b)
+                            (@Neg.neg.{0} Int Int.instNegInt
+                              (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))))
+                            (@Eq.{1} Int)
+                            (@congrArg.{1, 1} (Option.{0} FT1536Bridge.FTContext) Int (FT1536Bridge.loadFT pk)
+                              (@Option.none.{0} FT1536Bridge.FTContext)
+                              (fun (x : Option.{0} FT1536Bridge.FTContext) =>
+                                FT1536Bridge.verifyContext.match_3.{1}
+                                  (fun (ctx : Option.{0} FT1536Bridge.FTContext) => Int) x
+                                  (fun (_ : Unit) =>
+                                    @Neg.neg.{0} Int Int.instNegInt
+                                      (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))))
+                                  fun (key : FT1536Bridge.FTContext) =>
+                                  FT1536Bridge.verifyContext.match_1.{1} (fun (x : Option.{0} (List.{0} Int)) => Int)
+                                    (FT1536Bridge.signature b)
+                                    (fun (_ : Unit) =>
+                                      @Neg.neg.{0} Int Int.instNegInt
+                                        (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+                                    fun (xs : List.{0} Int) =>
+                                    @ite.{1} Int
+                                      (@Eq.{1} Bool
+                                        (FT1536Bridge.rawVerify (FT1536Bridge.FTContext.prepared key) c
+                                          (FT1536Bridge.listVec xs))
+                                        Bool.true)
+                                      (instDecidableEqBool
+                                        (FT1536Bridge.rawVerify (FT1536Bridge.FTContext.prepared key) c
+                                          (FT1536Bridge.listVec xs))
+                                        Bool.true)
+                                      (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1)))
+                                      (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0))))
+                              hp))
+                          (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+                        accept)
+                      (@Eq.{1} Int
+                        (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))))
+                        (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2)))))
+                      (@Eq.refl.{1} Int
+                        (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2)))))),
+                  And (FT1536Bridge.APIBounds pk)
+                    (And (FT1536Bridge.APIBounds b)
+                      (@Exists.{1} FT1536Global.Vec fun (h : FT1536Global.Vec) =>
+                        @Exists.{1} FT1536Global.Vec fun (s : FT1536Global.Vec) =>
+                          @Exists.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                            fun (z : Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) =>
+                            And (FT1536Global.CanonVec h)
+                              (And
+                                (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b)
+                                  (@Option.some.{0} FT1536Global.Vec s))
+                                (And
+                                  (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec))
+                                    (FT1536Bridge.Ext0 h c b)
+                                    (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z))
+                                  (And
+                                    (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z
+                                      (FT1536Bridge.Ext0Words h c s))
+                                    (And (FT1536Bridge.SignedVec s)
+                                      (And
+                                        (FT1536Bridge.SignedVec (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                                        (And (FT1536Bridge.Congruent h c z)
+                                          (@LT.lt.{0} Int Int.instLTInt
+                                            (FT1536Bridge.Q (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z)
+                                              (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                                            (@OfNat.ofNat.{0} Int (nat_lit 2093922385)
+                                              (@instOfNat (nat_lit 2093922385)))))))))))))
+                (@noConfusion_of_Nat.{1} Int Int.ctorIdx (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1)))
+                  (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2)))) h))
+            (@Eq.refl.{1} Int (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+            (@HEq.refl.{0}
+              (@Eq.{1} Int (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))))
+                (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+              (@Eq.mp.{0}
+                (@Eq.{1} Int (FT1536Bridge.verifyContext (FT1536Bridge.loadFT pk) c b)
+                  (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+                (@Eq.{1} Int
+                  (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))))
+                  (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+                (@congrFun'.{1, 1} Int Prop (@Eq.{1} Int (FT1536Bridge.verifyContext (FT1536Bridge.loadFT pk) c b))
+                  (@Eq.{1} Int
+                    (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2)))))
+                  (@congrArg.{1, 1} Int (Int → Prop) (FT1536Bridge.verifyContext (FT1536Bridge.loadFT pk) c b)
+                    (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))))
+                    (@Eq.{1} Int)
+                    (@congrArg.{1, 1} (Option.{0} FT1536Bridge.FTContext) Int (FT1536Bridge.loadFT pk)
+                      (@Option.none.{0} FT1536Bridge.FTContext)
+                      (fun (x : Option.{0} FT1536Bridge.FTContext) =>
+                        FT1536Bridge.verifyContext.match_3.{1} (fun (ctx : Option.{0} FT1536Bridge.FTContext) => Int) x
+                          (fun (_ : Unit) =>
+                            @Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))))
+                          fun (key : FT1536Bridge.FTContext) =>
+                          FT1536Bridge.verifyContext.match_1.{1} (fun (x : Option.{0} (List.{0} Int)) => Int)
+                            (FT1536Bridge.signature b)
+                            (fun (_ : Unit) =>
+                              @Neg.neg.{0} Int Int.instNegInt
+                                (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+                            fun (xs : List.{0} Int) =>
+                            @ite.{1} Int
+                              (@Eq.{1} Bool
+                                (FT1536Bridge.rawVerify (FT1536Bridge.FTContext.prepared key) c
+                                  (FT1536Bridge.listVec xs))
+                                Bool.true)
+                              (instDecidableEqBool
+                                (FT1536Bridge.rawVerify (FT1536Bridge.FTContext.prepared key) c
+                                  (FT1536Bridge.listVec xs))
+                                Bool.true)
+                              (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1)))
+                              (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0))))
+                      hp))
+                  (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+                accept)))
+        (FT1536Bridge.loadFT pk)
+        (@Eq.symm.{1} (Option.{0} FT1536Bridge.FTContext) (FT1536Bridge.loadFT pk)
+          (@Option.none.{0} FT1536Bridge.FTContext) h)
+        (@Eq.refl.{1} (Option.{0} FT1536Bridge.FTContext) (FT1536Bridge.loadFT pk)))
+    (fun (key : FT1536Bridge.FTContext)
+        (h :
+          @Eq.{1} (Option.{0} FT1536Bridge.FTContext) (FT1536Bridge.loadFT pk)
+            (@Option.some.{0} FT1536Bridge.FTContext key)) =>
+      @Eq.ndrec.{0, 1} (Option.{0} FT1536Bridge.FTContext) (@Option.some.{0} FT1536Bridge.FTContext key)
+        (fun (x : Option.{0} FT1536Bridge.FTContext) =>
+          ∀ (hp : @Eq.{1} (Option.{0} FT1536Bridge.FTContext) (FT1536Bridge.loadFT pk) x),
+            And (FT1536Bridge.APIBounds pk)
+              (And (FT1536Bridge.APIBounds b)
+                (@Exists.{1} FT1536Global.Vec fun (h : FT1536Global.Vec) =>
+                  @Exists.{1} FT1536Global.Vec fun (s : FT1536Global.Vec) =>
+                    @Exists.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                      fun (z : Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) =>
+                      And (FT1536Global.CanonVec h)
+                        (And
+                          (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b)
+                            (@Option.some.{0} FT1536Global.Vec s))
+                          (And
+                            (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec))
+                              (FT1536Bridge.Ext0 h c b)
+                              (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z))
+                            (And
+                              (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z (FT1536Bridge.Ext0Words h c s))
+                              (And (FT1536Bridge.SignedVec s)
+                                (And (FT1536Bridge.SignedVec (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                                  (And (FT1536Bridge.Congruent h c z)
+                                    (@LT.lt.{0} Int Int.instLTInt
+                                      (FT1536Bridge.Q (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z)
+                                        (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                                      (@OfNat.ofNat.{0} Int (nat_lit 2093922385)
+                                        (@instOfNat (nat_lit 2093922385)))))))))))))
+        (fun
+            (hp :
+              @Eq.{1} (Option.{0} FT1536Bridge.FTContext) (FT1536Bridge.loadFT pk)
+                (@Option.some.{0} FT1536Bridge.FTContext key)) =>
+          have hk :
+            And (FT1536Global.CanonVec (FT1536Bridge.FTContext.polynomial key))
+              (@Eq.{1} FT1536Global.Vec (FT1536Bridge.FTContext.prepared key)
+                (FT1536Bridge.prepareKey (FT1536Bridge.FTContext.polynomial key))) :=
+            FT1536Bridge.PK_PREPARATION pk key hp;
+          @Exists.casesOn.{1} (List.{0} Int)
+            (fun (vs : List.{0} Int) =>
+              And (@Eq.{1} (Option.{0} (List.{0} Int)) (FT1536Bridge.signature b) (@Option.some.{0} (List.{0} Int) vs))
+                (@Eq.{1} Bool (FT1536Bridge.rawVerify (FT1536Bridge.FTContext.prepared key) c (FT1536Bridge.listVec vs))
+                  Bool.true))
+            (fun
+                (x :
+                  @Exists.{1} (List.{0} Int) fun (vs : List.{0} Int) =>
+                    And
+                      (@Eq.{1} (Option.{0} (List.{0} Int)) (FT1536Bridge.signature b)
+                        (@Option.some.{0} (List.{0} Int) vs))
+                      (@Eq.{1} Bool
+                        (FT1536Bridge.rawVerify (FT1536Bridge.FTContext.prepared key) c (FT1536Bridge.listVec vs))
+                        Bool.true)) =>
+              And (FT1536Bridge.APIBounds pk)
+                (And (FT1536Bridge.APIBounds b)
+                  (@Exists.{1} FT1536Global.Vec fun (h : FT1536Global.Vec) =>
+                    @Exists.{1} FT1536Global.Vec fun (s : FT1536Global.Vec) =>
+                      @Exists.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                        fun (z : Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) =>
+                        And (FT1536Global.CanonVec h)
+                          (And
+                            (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b)
+                              (@Option.some.{0} FT1536Global.Vec s))
+                            (And
+                              (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec))
+                                (FT1536Bridge.Ext0 h c b)
+                                (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z))
+                              (And
+                                (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z
+                                  (FT1536Bridge.Ext0Words h c s))
+                                (And (FT1536Bridge.SignedVec s)
+                                  (And (FT1536Bridge.SignedVec (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                                    (And (FT1536Bridge.Congruent h c z)
+                                      (@LT.lt.{0} Int Int.instLTInt
+                                        (FT1536Bridge.Q (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z)
+                                          (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                                        (@OfNat.ofNat.{0} Int (nat_lit 2093922385)
+                                          (@instOfNat (nat_lit 2093922385)))))))))))))
+            (FT1536Bridge.context_accept key c b
+              (@Eq.mp.{0}
+                (@Eq.{1} Int (FT1536Bridge.verifyContext (FT1536Bridge.loadFT pk) c b)
+                  (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+                (@Eq.{1} Int (FT1536Bridge.verifyContext (@Option.some.{0} FT1536Bridge.FTContext key) c b)
+                  (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+                (@congrArg.{1, 1} (Option.{0} FT1536Bridge.FTContext) Prop (FT1536Bridge.loadFT pk)
+                  (@Option.some.{0} FT1536Bridge.FTContext key)
+                  (fun (_a : Option.{0} FT1536Bridge.FTContext) =>
+                    @Eq.{1} Int (FT1536Bridge.verifyContext _a c b)
+                      (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+                  hp)
+                accept))
+            fun (vs : List.{0} Int)
+              (h :
+                And
+                  (@Eq.{1} (Option.{0} (List.{0} Int)) (FT1536Bridge.signature b) (@Option.some.{0} (List.{0} Int) vs))
+                  (@Eq.{1} Bool
+                    (FT1536Bridge.rawVerify (FT1536Bridge.FTContext.prepared key) c (FT1536Bridge.listVec vs))
+                    Bool.true)) =>
+            @And.casesOn.{0}
+              (@Eq.{1} (Option.{0} (List.{0} Int)) (FT1536Bridge.signature b) (@Option.some.{0} (List.{0} Int) vs))
+              (@Eq.{1} Bool (FT1536Bridge.rawVerify (FT1536Bridge.FTContext.prepared key) c (FT1536Bridge.listVec vs))
+                Bool.true)
+              (fun
+                  (x :
+                    And
+                      (@Eq.{1} (Option.{0} (List.{0} Int)) (FT1536Bridge.signature b)
+                        (@Option.some.{0} (List.{0} Int) vs))
+                      (@Eq.{1} Bool
+                        (FT1536Bridge.rawVerify (FT1536Bridge.FTContext.prepared key) c (FT1536Bridge.listVec vs))
+                        Bool.true)) =>
+                And (FT1536Bridge.APIBounds pk)
+                  (And (FT1536Bridge.APIBounds b)
+                    (@Exists.{1} FT1536Global.Vec fun (h : FT1536Global.Vec) =>
+                      @Exists.{1} FT1536Global.Vec fun (s : FT1536Global.Vec) =>
+                        @Exists.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                          fun (z : Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) =>
+                          And (FT1536Global.CanonVec h)
+                            (And
+                              (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b)
+                                (@Option.some.{0} FT1536Global.Vec s))
+                              (And
+                                (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec))
+                                  (FT1536Bridge.Ext0 h c b)
+                                  (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z))
+                                (And
+                                  (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z
+                                    (FT1536Bridge.Ext0Words h c s))
+                                  (And (FT1536Bridge.SignedVec s)
+                                    (And (FT1536Bridge.SignedVec (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                                      (And (FT1536Bridge.Congruent h c z)
+                                        (@LT.lt.{0} Int Int.instLTInt
+                                          (FT1536Bridge.Q (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z)
+                                            (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                                          (@OfNat.ofNat.{0} Int (nat_lit 2093922385)
+                                            (@instOfNat (nat_lit 2093922385)))))))))))))
+              h
+              fun
+                (hdec :
+                  @Eq.{1} (Option.{0} (List.{0} Int)) (FT1536Bridge.signature b) (@Option.some.{0} (List.{0} Int) vs))
+                (hraw :
+                  @Eq.{1} Bool
+                    (FT1536Bridge.rawVerify (FT1536Bridge.FTContext.prepared key) c (FT1536Bridge.listVec vs))
+                    Bool.true) =>
+              have hd :
+                And
+                  (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+                    (@List.length.{0} FT1536Bridge.Byte b))
+                  (And
+                    (@Eq.{1} Nat (@List.length.{0} Int vs)
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+                    (∀ (x : Int),
+                      @Membership.mem.{0, 0} Int (List.{0} Int) (@List.instMembership.{0} Int) vs x →
+                        FT1536.InInt16 x)) :=
+                FT1536Bridge.SIGNATURE_DECODE b vs hdec;
+              have hs : FT1536Bridge.SignedVec (FT1536Bridge.listVec vs) :=
+                FT1536Bridge.listVec_property FT1536.InInt16 vs
+                  (@And.left
+                    (@Eq.{1} Nat (@List.length.{0} Int vs)
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+                    (∀ (x : Int),
+                      @Membership.mem.{0, 0} Int (List.{0} Int) (@List.instMembership.{0} Int) vs x → FT1536.InInt16 x)
+                    (@And.right
+                      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+                        (@List.length.{0} FT1536Bridge.Byte b))
+                      (And
+                        (@Eq.{1} Nat (@List.length.{0} Int vs)
+                          (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+                        (∀ (x : Int),
+                          @Membership.mem.{0, 0} Int (List.{0} Int) (@List.instMembership.{0} Int) vs x →
+                            FT1536.InInt16 x))
+                      hd))
+                  (@And.right
+                    (@Eq.{1} Nat (@List.length.{0} Int vs)
+                      (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+                    (∀ (x : Int),
+                      @Membership.mem.{0, 0} Int (List.{0} Int) (@List.instMembership.{0} Int) vs x → FT1536.InInt16 x)
+                    (@And.right
+                      (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+                        (@List.length.{0} FT1536Bridge.Byte b))
+                      (And
+                        (@Eq.{1} Nat (@List.length.{0} Int vs)
+                          (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+                        (∀ (x : Int),
+                          @Membership.mem.{0, 0} Int (List.{0} Int) (@List.instMembership.{0} Int) vs x →
+                            FT1536.InInt16 x))
+                      hd));
+              have hr :
+                And
+                  (FT1536Bridge.SignedVec
+                    (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                      (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c (FT1536Bridge.listVec vs))))
+                  (And
+                    (FT1536Bridge.Congruent (FT1536Bridge.FTContext.polynomial key) c
+                      (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c (FT1536Bridge.listVec vs)))
+                    (@LT.lt.{0} Int Int.instLTInt
+                      (FT1536Bridge.Q
+                        (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                          (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c (FT1536Bridge.listVec vs)))
+                        (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                          (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c (FT1536Bridge.listVec vs))))
+                      (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385))))) :=
+                FT1536Bridge.RAW_VERIFIER_SOUND (FT1536Bridge.FTContext.polynomial key) c (FT1536Bridge.listVec vs)
+                  (@And.left (FT1536Global.CanonVec (FT1536Bridge.FTContext.polynomial key))
+                    (@Eq.{1} FT1536Global.Vec (FT1536Bridge.FTContext.prepared key)
+                      (FT1536Bridge.prepareKey (FT1536Bridge.FTContext.polynomial key)))
+                    hk)
+                  hc hs
+                  (@Eq.mp.{0}
+                    (@Eq.{1} Bool
+                      (FT1536Bridge.rawVerify (FT1536Bridge.FTContext.prepared key) c (FT1536Bridge.listVec vs))
+                      Bool.true)
+                    (@Eq.{1} Bool
+                      (FT1536Bridge.rawVerify (FT1536Bridge.prepareKey (FT1536Bridge.FTContext.polynomial key)) c
+                        (FT1536Bridge.listVec vs))
+                      Bool.true)
+                    (@congrArg.{1, 1} FT1536Global.Vec Prop (FT1536Bridge.FTContext.prepared key)
+                      (FT1536Bridge.prepareKey (FT1536Bridge.FTContext.polynomial key))
+                      (fun (_a : FT1536Global.Vec) =>
+                        @Eq.{1} Bool (FT1536Bridge.rawVerify _a c (FT1536Bridge.listVec vs)) Bool.true)
+                      (@And.right (FT1536Global.CanonVec (FT1536Bridge.FTContext.polynomial key))
+                        (@Eq.{1} FT1536Global.Vec (FT1536Bridge.FTContext.prepared key)
+                          (FT1536Bridge.prepareKey (FT1536Bridge.FTContext.polynomial key)))
+                        hk))
+                    hraw);
+              @And.intro (FT1536Bridge.APIBounds pk)
+                (And (FT1536Bridge.APIBounds b)
+                  (@Exists.{1} FT1536Global.Vec fun (h : FT1536Global.Vec) =>
+                    @Exists.{1} FT1536Global.Vec fun (s : FT1536Global.Vec) =>
+                      @Exists.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                        fun (z : Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) =>
+                        And (FT1536Global.CanonVec h)
+                          (And
+                            (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b)
+                              (@Option.some.{0} FT1536Global.Vec s))
+                            (And
+                              (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec))
+                                (FT1536Bridge.Ext0 h c b)
+                                (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z))
+                              (And
+                                (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z
+                                  (FT1536Bridge.Ext0Words h c s))
+                                (And (FT1536Bridge.SignedVec s)
+                                  (And (FT1536Bridge.SignedVec (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                                    (And (FT1536Bridge.Congruent h c z)
+                                      (@LT.lt.{0} Int Int.instLTInt
+                                        (FT1536Bridge.Q (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z)
+                                          (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                                        (@OfNat.ofNat.{0} Int (nat_lit 2093922385)
+                                          (@instOfNat (nat_lit 2093922385))))))))))))
+                (FT1536Bridge.api_bounds pk pkLegal)
+                (@And.intro (FT1536Bridge.APIBounds b)
+                  (@Exists.{1} FT1536Global.Vec fun (h : FT1536Global.Vec) =>
+                    @Exists.{1} FT1536Global.Vec fun (s : FT1536Global.Vec) =>
+                      @Exists.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                        fun (z : Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) =>
+                        And (FT1536Global.CanonVec h)
+                          (And
+                            (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b)
+                              (@Option.some.{0} FT1536Global.Vec s))
+                            (And
+                              (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec))
+                                (FT1536Bridge.Ext0 h c b)
+                                (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z))
+                              (And
+                                (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z
+                                  (FT1536Bridge.Ext0Words h c s))
+                                (And (FT1536Bridge.SignedVec s)
+                                  (And (FT1536Bridge.SignedVec (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                                    (And (FT1536Bridge.Congruent h c z)
+                                      (@LT.lt.{0} Int Int.instLTInt
+                                        (FT1536Bridge.Q (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z)
+                                          (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                                        (@OfNat.ofNat.{0} Int (nat_lit 2093922385)
+                                          (@instOfNat (nat_lit 2093922385)))))))))))
+                  (FT1536Bridge.api_bounds b sigLegal)
+                  (@Exists.intro.{1} FT1536Global.Vec
+                    (fun (h : FT1536Global.Vec) =>
+                      @Exists.{1} FT1536Global.Vec fun (s : FT1536Global.Vec) =>
+                        @Exists.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                          fun (z : Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) =>
+                          And (FT1536Global.CanonVec h)
+                            (And
+                              (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b)
+                                (@Option.some.{0} FT1536Global.Vec s))
+                              (And
+                                (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec))
+                                  (FT1536Bridge.Ext0 h c b)
+                                  (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z))
+                                (And
+                                  (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z
+                                    (FT1536Bridge.Ext0Words h c s))
+                                  (And (FT1536Bridge.SignedVec s)
+                                    (And (FT1536Bridge.SignedVec (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                                      (And (FT1536Bridge.Congruent h c z)
+                                        (@LT.lt.{0} Int Int.instLTInt
+                                          (FT1536Bridge.Q (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z)
+                                            (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                                          (@OfNat.ofNat.{0} Int (nat_lit 2093922385)
+                                            (@instOfNat (nat_lit 2093922385)))))))))))
+                    (FT1536Bridge.FTContext.polynomial key)
+                    (@Exists.intro.{1} FT1536Global.Vec
+                      (fun (s : FT1536Global.Vec) =>
+                        @Exists.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                          fun (z : Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) =>
+                          And (FT1536Global.CanonVec (FT1536Bridge.FTContext.polynomial key))
+                            (And
+                              (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b)
+                                (@Option.some.{0} FT1536Global.Vec s))
+                              (And
+                                (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec))
+                                  (FT1536Bridge.Ext0 (FT1536Bridge.FTContext.polynomial key) c b)
+                                  (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z))
+                                (And
+                                  (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z
+                                    (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c s))
+                                  (And (FT1536Bridge.SignedVec s)
+                                    (And (FT1536Bridge.SignedVec (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                                      (And (FT1536Bridge.Congruent (FT1536Bridge.FTContext.polynomial key) c z)
+                                        (@LT.lt.{0} Int Int.instLTInt
+                                          (FT1536Bridge.Q (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z)
+                                            (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                                          (@OfNat.ofNat.{0} Int (nat_lit 2093922385)
+                                            (@instOfNat (nat_lit 2093922385)))))))))))
+                      (FT1536Bridge.listVec vs)
+                      (@Exists.intro.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                        (fun (z : Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) =>
+                          And (FT1536Global.CanonVec (FT1536Bridge.FTContext.polynomial key))
+                            (And
+                              (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b)
+                                (@Option.some.{0} FT1536Global.Vec (FT1536Bridge.listVec vs)))
+                              (And
+                                (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec))
+                                  (FT1536Bridge.Ext0 (FT1536Bridge.FTContext.polynomial key) c b)
+                                  (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z))
+                                (And
+                                  (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) z
+                                    (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                      (FT1536Bridge.listVec vs)))
+                                  (And (FT1536Bridge.SignedVec (FT1536Bridge.listVec vs))
+                                    (And (FT1536Bridge.SignedVec (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                                      (And (FT1536Bridge.Congruent (FT1536Bridge.FTContext.polynomial key) c z)
+                                        (@LT.lt.{0} Int Int.instLTInt
+                                          (FT1536Bridge.Q (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec z)
+                                            (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec z))
+                                          (@OfNat.ofNat.{0} Int (nat_lit 2093922385)
+                                            (@instOfNat (nat_lit 2093922385)))))))))))
+                        (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c (FT1536Bridge.listVec vs))
+                        (@And.intro (FT1536Global.CanonVec (FT1536Bridge.FTContext.polynomial key))
+                          (And
+                            (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b)
+                              (@Option.some.{0} FT1536Global.Vec (FT1536Bridge.listVec vs)))
+                            (And
+                              (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec))
+                                (FT1536Bridge.Ext0 (FT1536Bridge.FTContext.polynomial key) c b)
+                                (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                                  (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                    (FT1536Bridge.listVec vs))))
+                              (And
+                                (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                                  (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                    (FT1536Bridge.listVec vs))
+                                  (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                    (FT1536Bridge.listVec vs)))
+                                (And (FT1536Bridge.SignedVec (FT1536Bridge.listVec vs))
+                                  (And
+                                    (FT1536Bridge.SignedVec
+                                      (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                                        (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                          (FT1536Bridge.listVec vs))))
+                                    (And
+                                      (FT1536Bridge.Congruent (FT1536Bridge.FTContext.polynomial key) c
+                                        (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                          (FT1536Bridge.listVec vs)))
+                                      (@LT.lt.{0} Int Int.instLTInt
+                                        (FT1536Bridge.Q
+                                          (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                                            (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                              (FT1536Bridge.listVec vs)))
+                                          (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                                            (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                              (FT1536Bridge.listVec vs))))
+                                        (@OfNat.ofNat.{0} Int (nat_lit 2093922385)
+                                          (@instOfNat (nat_lit 2093922385))))))))))
+                          (@And.left (FT1536Global.CanonVec (FT1536Bridge.FTContext.polynomial key))
+                            (@Eq.{1} FT1536Global.Vec (FT1536Bridge.FTContext.prepared key)
+                              (FT1536Bridge.prepareKey (FT1536Bridge.FTContext.polynomial key)))
+                            hk)
+                          (@And.intro
+                            (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b)
+                              (@Option.some.{0} FT1536Global.Vec (FT1536Bridge.listVec vs)))
+                            (And
+                              (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec))
+                                (FT1536Bridge.Ext0 (FT1536Bridge.FTContext.polynomial key) c b)
+                                (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                                  (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                    (FT1536Bridge.listVec vs))))
+                              (And
+                                (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                                  (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                    (FT1536Bridge.listVec vs))
+                                  (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                    (FT1536Bridge.listVec vs)))
+                                (And (FT1536Bridge.SignedVec (FT1536Bridge.listVec vs))
+                                  (And
+                                    (FT1536Bridge.SignedVec
+                                      (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                                        (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                          (FT1536Bridge.listVec vs))))
+                                    (And
+                                      (FT1536Bridge.Congruent (FT1536Bridge.FTContext.polynomial key) c
+                                        (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                          (FT1536Bridge.listVec vs)))
+                                      (@LT.lt.{0} Int Int.instLTInt
+                                        (FT1536Bridge.Q
+                                          (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                                            (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                              (FT1536Bridge.listVec vs)))
+                                          (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                                            (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                              (FT1536Bridge.listVec vs))))
+                                        (@OfNat.ofNat.{0} Int (nat_lit 2093922385)
+                                          (@instOfNat (nat_lit 2093922385)))))))))
+                            (@of_eq_true
+                              (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b)
+                                (@Option.some.{0} FT1536Global.Vec (FT1536Bridge.listVec vs)))
+                              (@Eq.trans.{1} Prop
+                                (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b)
+                                  (@Option.some.{0} FT1536Global.Vec (FT1536Bridge.listVec vs)))
+                                (@Eq.{1} (Option.{0} FT1536Global.Vec)
+                                  (@Option.some.{0} FT1536Global.Vec (FT1536Bridge.listVec vs))
+                                  (@Option.some.{0} FT1536Global.Vec (FT1536Bridge.listVec vs)))
+                                True
+                                (@congrFun'.{1, 1} (Option.{0} FT1536Global.Vec) Prop
+                                  (@Eq.{1} (Option.{0} FT1536Global.Vec) (FT1536Bridge.decodeS b))
+                                  (@Eq.{1} (Option.{0} FT1536Global.Vec)
+                                    (@Option.some.{0} FT1536Global.Vec (FT1536Bridge.listVec vs)))
+                                  (@congrArg.{1, 1} (Option.{0} FT1536Global.Vec) (Option.{0} FT1536Global.Vec → Prop)
+                                    (FT1536Bridge.decodeS b)
+                                    (@Option.some.{0} FT1536Global.Vec (FT1536Bridge.listVec vs))
+                                    (@Eq.{1} (Option.{0} FT1536Global.Vec))
+                                    (@congrArg.{1, 1} (Option.{0} (List.{0} Int)) (Option.{0} FT1536Global.Vec)
+                                      (FT1536Bridge.signature b) (@Option.some.{0} (List.{0} Int) vs)
+                                      (@Option.map.{0, 0} (List.{0} Int) FT1536Global.Vec FT1536Bridge.listVec) hdec))
+                                  (@Option.some.{0} FT1536Global.Vec (FT1536Bridge.listVec vs)))
+                                (@eq_self.{1} (Option.{0} FT1536Global.Vec)
+                                  (@Option.some.{0} FT1536Global.Vec (FT1536Bridge.listVec vs)))))
+                            (@And.intro
+                              (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec))
+                                (FT1536Bridge.Ext0 (FT1536Bridge.FTContext.polynomial key) c b)
+                                (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                                  (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                    (FT1536Bridge.listVec vs))))
+                              (And
+                                (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                                  (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                    (FT1536Bridge.listVec vs))
+                                  (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                    (FT1536Bridge.listVec vs)))
+                                (And (FT1536Bridge.SignedVec (FT1536Bridge.listVec vs))
+                                  (And
+                                    (FT1536Bridge.SignedVec
+                                      (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                                        (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                          (FT1536Bridge.listVec vs))))
+                                    (And
+                                      (FT1536Bridge.Congruent (FT1536Bridge.FTContext.polynomial key) c
+                                        (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                          (FT1536Bridge.listVec vs)))
+                                      (@LT.lt.{0} Int Int.instLTInt
+                                        (FT1536Bridge.Q
+                                          (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                                            (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                              (FT1536Bridge.listVec vs)))
+                                          (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                                            (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                              (FT1536Bridge.listVec vs))))
+                                        (@OfNat.ofNat.{0} Int (nat_lit 2093922385)
+                                          (@instOfNat (nat_lit 2093922385))))))))
+                              (@of_eq_true
+                                (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec))
+                                  (FT1536Bridge.Ext0 (FT1536Bridge.FTContext.polynomial key) c b)
+                                  (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                                    (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                      (FT1536Bridge.listVec vs))))
+                                (@Eq.trans.{1} Prop
+                                  (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec))
+                                    (FT1536Bridge.Ext0 (FT1536Bridge.FTContext.polynomial key) c b)
+                                    (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                                      (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                        (FT1536Bridge.listVec vs))))
+                                  (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec))
+                                    (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                                      (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                        (FT1536Bridge.listVec vs)))
+                                    (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                                      (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                        (FT1536Bridge.listVec vs))))
+                                  True
+                                  (@congrFun'.{1, 1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)) Prop
+                                    (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec))
+                                      (FT1536Bridge.Ext0 (FT1536Bridge.FTContext.polynomial key) c b))
+                                    (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec))
+                                      (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                                        (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                          (FT1536Bridge.listVec vs))))
+                                    (@congrArg.{1, 1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec))
+                                      (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec) → Prop)
+                                      (FT1536Bridge.Ext0 (FT1536Bridge.FTContext.polynomial key) c b)
+                                      (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                                        (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                          (FT1536Bridge.listVec vs)))
+                                      (@Eq.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)))
+                                      (@congrArg.{1, 1} (Option.{0} FT1536Global.Vec)
+                                        (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec))
+                                        (FT1536Bridge.decodeS b)
+                                        (@Option.some.{0} FT1536Global.Vec (FT1536Bridge.listVec vs))
+                                        (@Option.map.{0, 0} FT1536Global.Vec
+                                          (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                                          (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c))
+                                        (@congrArg.{1, 1} (Option.{0} (List.{0} Int)) (Option.{0} FT1536Global.Vec)
+                                          (FT1536Bridge.signature b) (@Option.some.{0} (List.{0} Int) vs)
+                                          (@Option.map.{0, 0} (List.{0} Int) FT1536Global.Vec FT1536Bridge.listVec)
+                                          hdec)))
+                                    (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                                      (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                        (FT1536Bridge.listVec vs))))
+                                  (@eq_self.{1} (Option.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec))
+                                    (@Option.some.{0} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                                      (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                        (FT1536Bridge.listVec vs))))))
+                              (@And.intro
+                                (@Eq.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                                  (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                    (FT1536Bridge.listVec vs))
+                                  (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                    (FT1536Bridge.listVec vs)))
+                                (And (FT1536Bridge.SignedVec (FT1536Bridge.listVec vs))
+                                  (And
+                                    (FT1536Bridge.SignedVec
+                                      (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                                        (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                          (FT1536Bridge.listVec vs))))
+                                    (And
+                                      (FT1536Bridge.Congruent (FT1536Bridge.FTContext.polynomial key) c
+                                        (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                          (FT1536Bridge.listVec vs)))
+                                      (@LT.lt.{0} Int Int.instLTInt
+                                        (FT1536Bridge.Q
+                                          (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                                            (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                              (FT1536Bridge.listVec vs)))
+                                          (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                                            (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                              (FT1536Bridge.listVec vs))))
+                                        (@OfNat.ofNat.{0} Int (nat_lit 2093922385)
+                                          (@instOfNat (nat_lit 2093922385)))))))
+                                (@rfl.{1} (Prod.{0, 0} FT1536Global.Vec FT1536Global.Vec)
+                                  (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                    (FT1536Bridge.listVec vs)))
+                                (@And.intro (FT1536Bridge.SignedVec (FT1536Bridge.listVec vs))
+                                  (And
+                                    (FT1536Bridge.SignedVec
+                                      (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                                        (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                          (FT1536Bridge.listVec vs))))
+                                    (And
+                                      (FT1536Bridge.Congruent (FT1536Bridge.FTContext.polynomial key) c
+                                        (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                          (FT1536Bridge.listVec vs)))
+                                      (@LT.lt.{0} Int Int.instLTInt
+                                        (FT1536Bridge.Q
+                                          (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                                            (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                              (FT1536Bridge.listVec vs)))
+                                          (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                                            (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                              (FT1536Bridge.listVec vs))))
+                                        (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385))))))
+                                  hs
+                                  (@And.intro
+                                    (FT1536Bridge.SignedVec
+                                      (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                                        (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                          (FT1536Bridge.listVec vs))))
+                                    (And
+                                      (FT1536Bridge.Congruent (FT1536Bridge.FTContext.polynomial key) c
+                                        (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                          (FT1536Bridge.listVec vs)))
+                                      (@LT.lt.{0} Int Int.instLTInt
+                                        (FT1536Bridge.Q
+                                          (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                                            (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                              (FT1536Bridge.listVec vs)))
+                                          (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                                            (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                              (FT1536Bridge.listVec vs))))
+                                        (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385)))))
+                                    (@And.left
+                                      (FT1536Bridge.SignedVec
+                                        (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                                          (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                            (FT1536Bridge.listVec vs))))
+                                      (And
+                                        (FT1536Bridge.Congruent (FT1536Bridge.FTContext.polynomial key) c
+                                          (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                            (FT1536Bridge.listVec vs)))
+                                        (@LT.lt.{0} Int Int.instLTInt
+                                          (FT1536Bridge.Q
+                                            (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                                              (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                                (FT1536Bridge.listVec vs)))
+                                            (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                                              (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                                (FT1536Bridge.listVec vs))))
+                                          (@OfNat.ofNat.{0} Int (nat_lit 2093922385)
+                                            (@instOfNat (nat_lit 2093922385)))))
+                                      hr)
+                                    (@And.right
+                                      (FT1536Bridge.SignedVec
+                                        (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                                          (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                            (FT1536Bridge.listVec vs))))
+                                      (And
+                                        (FT1536Bridge.Congruent (FT1536Bridge.FTContext.polynomial key) c
+                                          (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                            (FT1536Bridge.listVec vs)))
+                                        (@LT.lt.{0} Int Int.instLTInt
+                                          (FT1536Bridge.Q
+                                            (@Prod.fst.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                                              (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                                (FT1536Bridge.listVec vs)))
+                                            (@Prod.snd.{0, 0} FT1536Global.Vec FT1536Global.Vec
+                                              (FT1536Bridge.Ext0Words (FT1536Bridge.FTContext.polynomial key) c
+                                                (FT1536Bridge.listVec vs))))
+                                          (@OfNat.ofNat.{0} Int (nat_lit 2093922385)
+                                            (@instOfNat (nat_lit 2093922385)))))
+                                      hr))))))))))))
+        (FT1536Bridge.loadFT pk)
+        (@Eq.symm.{1} (Option.{0} FT1536Bridge.FTContext) (FT1536Bridge.loadFT pk)
+          (@Option.some.{0} FT1536Bridge.FTContext key) h)
+        (@Eq.refl.{1} (Option.{0} FT1536Bridge.FTContext) (FT1536Bridge.loadFT pk)))
+    (@Eq.refl.{1} (Option.{0} FT1536Bridge.FTContext) (FT1536Bridge.loadFT pk))
+BridgeTypes 0 0.384

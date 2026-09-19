@@ -1,0 +1,12 @@
+--- source/falcon-enc.c
++++ checks/variants/bound_enc.c
+@@ -663,7 +663,8 @@
+ 			default:
+ 				return 0;
+ 			}
+-			return s < bound;
++			/* LV_OBSERVER */ obs_capture(s,bound,s1,s2);
++			return s <= bound;
+ 		}
+ 	} else {
+ 		/*

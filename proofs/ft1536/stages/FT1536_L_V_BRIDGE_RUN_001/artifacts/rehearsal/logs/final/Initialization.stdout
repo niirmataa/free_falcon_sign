@@ -1,0 +1,26 @@
+signature_initializes : ∀ (b : Bytes) (xs : List Int),
+  signature b = some xs → ∀ (initial : Mem) (i : Fin 1536), writeDecoded 0 xs initial ↑i = listVec xs i
+L_V_SOURCE : ∀ (h c : Vec),
+  CanonVec h →
+    CanonVec c →
+      ∀ (b : Bytes),
+        LegalBytes b →
+          V_CAND h c b = 1 →
+            ∃ xs z,
+              signature b = some xs ∧
+                xs.length = 1536 ∧
+                  (∀ (initial : Mem) (i : Fin 1536), writeDecoded 0 xs initial ↑i = listVec xs i) ∧
+                    Ext0 h c b = some z ∧
+                      SignedVec (listVec xs) ∧ Congruent h c z ∧ Q z.fst z.snd < 2093922385 ∧ APIBounds b
+'FT1536Bridge.write_below' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.write_at' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.all_initialized' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.signature_initializes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.output_store_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.cursor_counter_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.gcc_narrow16' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.static_negative_zero' does not depend on any axioms
+'FT1536Bridge.static_minimum_both_signs' does not depend on any axioms
+'FT1536Bridge.static_maximum_magnitude' does not depend on any axioms
+'FT1536Bridge.public_failure_guard' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.L_V_SOURCE' depends on axioms: [propext, Classical.choice, Quot.sound]

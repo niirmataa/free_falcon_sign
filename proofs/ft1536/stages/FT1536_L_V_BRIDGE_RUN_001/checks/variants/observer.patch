@@ -1,0 +1,10 @@
+--- source/falcon-enc.c
++++ checks/variants/observer_enc.c
+@@ -663,6 +663,7 @@
+ 			default:
+ 				return 0;
+ 			}
++			/* LV_OBSERVER */ obs_capture(s,bound,s1,s2);
+ 			return s < bound;
+ 		}
+ 	} else {

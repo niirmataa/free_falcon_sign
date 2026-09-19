@@ -1,0 +1,23 @@
+norm_no_overflow : ∀ (a b : Vec),
+  SignedVec a →
+    SignedVec b →
+      ∀ (n : Nat),
+        n < 4608 →
+          -2147483648 ≤ normTerm a b n ∧
+            normTerm a b n ≤ 2147483647 ∧
+              -4947802324992 ≤ normAcc a b n + normTerm a b n ∧
+                normAcc a b n + normTerm a b n ≤ 4947802324992 ∧
+                  -9223372036854775808 < normAcc a b n + normTerm a b n ∧
+                    normAcc a b n + normTerm a b n < 9223372036854775807
+NORM64_EXACT : ∀ (a b : Vec), SignedVec a → SignedVec b → normAcc a b 4608 = Q a b
+STRICT_B : ∀ (a b : Vec), SignedVec a → SignedVec b → (isShort a b = true ↔ Q a b < 2093922385)
+'FT1536Bridge.Q0_neg' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.int16_product' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.normTerm_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.norm_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.norm_no_overflow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.interleave_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.norm_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.NORM64_EXACT' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.STRICT_B' depends on axioms: [propext, Classical.choice, Quot.sound]
+Norm64 0 2.03

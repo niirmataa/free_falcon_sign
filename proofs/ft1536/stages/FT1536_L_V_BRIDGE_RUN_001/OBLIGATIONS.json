@@ -1,0 +1,223 @@
+{
+  "schema": "FT1536_L_V_BRIDGE_OBLIGATIONS_V1",
+  "status": "L_V_PROVED_FOR_PINNED_MODEL",
+  "source_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+  "full_L_V_proved": true,
+  "source_integrated": false,
+  "owner_accepted": false,
+  "obligations": [
+    {
+      "id": "REUSED_RHO_NTT",
+      "origin": "inherited",
+      "status": "REUSED_PROVED",
+      "claim": "L_NTT_rho and definitions unchanged, all59 source dependencies rechecked",
+      "evidence": [
+        "inputs/PREV/REPORT.md",
+        "formal/Complete.lean",
+        "artifacts/formal_audit.json"
+      ],
+      "gap": null
+    },
+    {
+      "id": "CENTER_C",
+      "origin": "new",
+      "status": "PROVED_FOR_PINNED_MODEL",
+      "source": "source/falcon-vrfy.c",
+      "lines": [
+        1429,
+        1435
+      ],
+      "evidence": [
+        "BridgeWords.CENTER_C",
+        "center_prefix",
+        "center_unread",
+        "center_loop_correct"
+      ],
+      "gap": null
+    },
+    {
+      "id": "SIGN_BRIDGE",
+      "origin": "new",
+      "status": "PROVED_FOR_PINNED_MODEL",
+      "source": "source/falcon-vrfy.c",
+      "lines": [
+        1418,
+        1441
+      ],
+      "evidence": [
+        "RawBridge.SIGN_BRIDGE",
+        "Norm64.Q0_neg",
+        "RawBridge.extract_congruence"
+      ],
+      "gap": null
+    },
+    {
+      "id": "NORM64_EXACT",
+      "origin": "new",
+      "status": "PROVED_FOR_PINNED_MODEL",
+      "source": "source/falcon-enc.c",
+      "lines": [
+        597,
+        623
+      ],
+      "evidence": [
+        "Norm64.int16_product",
+        "norm_prefix",
+        "norm_no_overflow",
+        "NORM64_EXACT"
+      ],
+      "gap": null
+    },
+    {
+      "id": "STRICT_B",
+      "origin": "new",
+      "status": "PROVED_FOR_PINNED_MODEL",
+      "source": "source/falcon-enc.c",
+      "lines": [
+        635,
+        666
+      ],
+      "evidence": [
+        "Norm64.STRICT_B",
+        "RawBridge.raw_reject_at_bound"
+      ],
+      "gap": null
+    },
+    {
+      "id": "DECODE_NONE",
+      "origin": "new",
+      "status": "PROVED_FOR_PINNED_MODEL",
+      "source": "source/falcon-enc.c",
+      "lines": [
+        401,
+        456
+      ],
+      "evidence": [
+        "DecodeNone.noneWord",
+        "none_word_spec",
+        "DECODE_NONE",
+        "none_read_bounds"
+      ],
+      "gap": null
+    },
+    {
+      "id": "DECODE_STATIC",
+      "origin": "new",
+      "status": "PROVED_FOR_PINNED_MODEL",
+      "source": "source/falcon-enc.c",
+      "lines": [
+        462,
+        544
+      ],
+      "evidence": [
+        "ByteCursor.fill_source/unary_source/unary_skip_zeros/unary_wrap",
+        "DecodeStatic.readStatic/staticLoop/DECODE_STATIC",
+        "Initialization.gcc_narrow16",
+        "ParserRefinement.unary_terminates"
+      ],
+      "gap": null
+    },
+    {
+      "id": "VERIFY_GUARDS",
+      "origin": "new",
+      "status": "PROVED_FOR_PINNED_MODEL",
+      "source": "source/falcon-vrfy.c",
+      "lines": [
+        1446,
+        1517
+      ],
+      "evidence": [
+        "VerifyBytes.signature/verifyContext",
+        "decoder_return_guard",
+        "header_exact",
+        "SIGNATURE_DECODE"
+      ],
+      "gap": null
+    },
+    {
+      "id": "PK_DECODER",
+      "origin": "new",
+      "status": "PROVED_FOR_PINNED_MODEL",
+      "source": "source/falcon-enc.c",
+      "lines": [
+        216,
+        250
+      ],
+      "evidence": [
+        "PublicKey.byte_concat/readPK/pkLoop",
+        "PK_CONSUMED",
+        "DECODE_PK"
+      ],
+      "gap": null
+    },
+    {
+      "id": "PK_PREPARATION",
+      "origin": "new",
+      "status": "PROVED_FOR_PINNED_MODEL",
+      "source": "source/falcon-vrfy.c",
+      "lines": [
+        1284,
+        1352
+      ],
+      "evidence": [
+        "PublicKey.loadFT",
+        "PK_PREPARATION",
+        "VerifyBytes.pk_header_exact",
+        "Initialization.public_failure_guard"
+      ],
+      "gap": null
+    },
+    {
+      "id": "FINAL_COMPOSITION",
+      "origin": "new",
+      "status": "PROVED_FOR_PINNED_MODEL",
+      "source": "source/falcon-vrfy.c",
+      "lines": [
+        1388,
+        1517
+      ],
+      "evidence": [
+        "RawBridge.RAW_VERIFIER_SOUND",
+        "VerifyBytes.L_V_BYTES/L_V_LOADED",
+        "Initialization.L_V_SOURCE"
+      ],
+      "gap": null
+    },
+    {
+      "id": "OUTPUT_INITIALIZATION",
+      "origin": "new",
+      "status": "PROVED",
+      "evidence": [
+        "Initialization.signature_initializes",
+        "L_V_SOURCE"
+      ],
+      "gap": null
+    },
+    {
+      "id": "UNARY_WRAP_TERMINATION",
+      "origin": "new",
+      "status": "PROVED_ALL_FINITE_LEGAL_LENGTHS",
+      "evidence": [
+        "ByteCursor.unary_source/unary_skip_zeros/unary_wrap",
+        "ParserRefinement.unary_terminates"
+      ],
+      "gap": null
+    },
+    {
+      "id": "CONTROLS_REPLAY",
+      "origin": "new",
+      "status": "PASS",
+      "evidence": [
+        "artifacts/controls.json",
+        "artifacts/fresh_replay.json"
+      ],
+      "gap": null
+    }
+  ],
+  "blocking": [],
+  "limits": [
+    "Pinned GCC model and legal API objects/lifecycle",
+    "FT1536 profile; NONE and STATIC both included",
+    "No sampler, EUF-CMA, hardness, key-distribution or H2P-preimage theorem"
+  ]
+}

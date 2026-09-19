@@ -1,0 +1,199 @@
+SIGNATURE_DECODE : ∀ (b : Bytes) (vs : List Int),
+  signature b = some vs → 2 < List.length b ∧ vs.length = 1536 ∧ ∀ (x : Int), x ∈ vs → FT1536.InInt16 x
+L_V_BYTES : ∀ (h c : Vec),
+  CanonVec h →
+    CanonVec c →
+      ∀ (b : Bytes),
+        LegalBytes b →
+          V_CAND h c b = 1 →
+            APIBounds b ∧
+              ∃ s z,
+                decodeS b = some s ∧
+                  Ext0 h c b = some z ∧
+                    z = Ext0Words h c s ∧ SignedVec s ∧ SignedVec z.fst ∧ Congruent h c z ∧ Q z.fst z.snd < 2093922385
+L_V_LOADED : ∀ (pk b : Bytes) (c : Vec),
+  CanonVec c →
+    LegalBytes pk →
+      LegalBytes b →
+        V_KEY_BYTES pk c b = 1 →
+          APIBounds pk ∧
+            APIBounds b ∧
+              ∃ h s z,
+                CanonVec h ∧
+                  decodeS b = some s ∧
+                    Ext0 h c b = some z ∧
+                      z = Ext0Words h c s ∧ SignedVec s ∧ SignedVec z.fst ∧ Congruent h c z ∧ Q z.fst z.snd < 2093922385
+theorem FT1536Bridge.L_V_BYTES : ∀ (h c : Vec),
+  CanonVec h →
+    CanonVec c →
+      ∀ (b : Bytes),
+        LegalBytes b →
+          V_CAND h c b = 1 →
+            APIBounds b ∧
+              ∃ s z,
+                decodeS b = some s ∧
+                  Ext0 h c b = some z ∧
+                    z = Ext0Words h c s ∧
+                      SignedVec s ∧ SignedVec z.fst ∧ Congruent h c z ∧ Q z.fst z.snd < 2093922385 :=
+fun h c hh hc b legal accept =>
+  Exists.casesOn (context_accept { polynomial := h, prepared := prepareKey h } c b accept) fun vs h_1 =>
+    And.casesOn h_1 fun hdec hraw =>
+      have hd := SIGNATURE_DECODE b vs hdec;
+      have hs := listVec_property FT1536.InInt16 vs hd.right.left hd.right.right;
+      have hr := RAW_VERIFIER_SOUND h c (listVec vs) hh hc hs hraw;
+      ⟨api_bounds b legal,
+        Exists.intro (listVec vs)
+          (Exists.intro (Ext0Words h c (listVec vs))
+            ⟨of_eq_true
+                (Eq.trans (congrFun' (congrArg Eq (congrArg (Option.map listVec) hdec)) (some (listVec vs)))
+                  (eq_self (some (listVec vs)))),
+              ⟨of_eq_true
+                  (Eq.trans
+                    (congrFun'
+                      (congrArg Eq (congrArg (Option.map (Ext0Words h c)) (congrArg (Option.map listVec) hdec)))
+                      (some (Ext0Words h c (listVec vs))))
+                    (eq_self (some (Ext0Words h c (listVec vs))))),
+                ⟨rfl, ⟨hs, ⟨hr.left, hr.right⟩⟩⟩⟩⟩)⟩
+theorem FT1536Bridge.L_V_LOADED : ∀ (pk b : Bytes) (c : Vec),
+  CanonVec c →
+    LegalBytes pk →
+      LegalBytes b →
+        V_KEY_BYTES pk c b = 1 →
+          APIBounds pk ∧
+            APIBounds b ∧
+              ∃ h s z,
+                CanonVec h ∧
+                  decodeS b = some s ∧
+                    Ext0 h c b = some z ∧
+                      z = Ext0Words h c s ∧
+                        SignedVec s ∧ SignedVec z.fst ∧ Congruent h c z ∧ Q z.fst z.snd < 2093922385 :=
+fun pk b c hc pkLegal sigLegal accept =>
+  Option.casesOn (motive := fun t =>
+    loadFT pk = t →
+      APIBounds pk ∧
+        APIBounds b ∧
+          ∃ h s z,
+            CanonVec h ∧
+              decodeS b = some s ∧
+                Ext0 h c b = some z ∧
+                  z = Ext0Words h c s ∧ SignedVec s ∧ SignedVec z.fst ∧ Congruent h c z ∧ Q z.fst z.snd < 2093922385)
+    (loadFT pk)
+    (fun h =>
+      Eq.ndrec (motive := fun x =>
+        loadFT pk = x →
+          APIBounds pk ∧
+            APIBounds b ∧
+              ∃ h s z,
+                CanonVec h ∧
+                  decodeS b = some s ∧
+                    Ext0 h c b = some z ∧
+                      z = Ext0Words h c s ∧
+                        SignedVec s ∧ SignedVec z.fst ∧ Congruent h c z ∧ Q z.fst z.snd < 2093922385)
+        (fun hp =>
+          Eq.casesOn (motive := fun a t =>
+            1 = a →
+              Eq.mp
+                    (congrFun'
+                      (congrArg Eq
+                        (congrArg
+                          (fun x =>
+                            match x with
+                            | none => -2
+                            | some key =>
+                              match signature b with
+                              | none => -1
+                              | some xs => if rawVerify key.prepared c (listVec xs) = true then 1 else 0)
+                          hp))
+                      1)
+                    accept ≍
+                  t →
+                APIBounds pk ∧
+                  APIBounds b ∧
+                    ∃ h s z,
+                      CanonVec h ∧
+                        decodeS b = some s ∧
+                          Ext0 h c b = some z ∧
+                            z = Ext0Words h c s ∧
+                              SignedVec s ∧ SignedVec z.fst ∧ Congruent h c z ∧ Q z.fst z.snd < 2093922385)
+            (Eq.mp
+              (congrFun'
+                (congrArg Eq
+                  (congrArg
+                    (fun x =>
+                      match x with
+                      | none => -2
+                      | some key =>
+                        match signature b with
+                        | none => -1
+                        | some xs => if rawVerify key.prepared c (listVec xs) = true then 1 else 0)
+                    hp))
+                1)
+              accept)
+            (fun h => False.elim (noConfusion_of_Nat Int.ctorIdx h)) (Eq.refl 1)
+            (HEq.refl
+              (Eq.mp
+                (congrFun'
+                  (congrArg Eq
+                    (congrArg
+                      (fun x =>
+                        match x with
+                        | none => -2
+                        | some key =>
+                          match signature b with
+                          | none => -1
+                          | some xs => if rawVerify key.prepared c (listVec xs) = true then 1 else 0)
+                      hp))
+                  1)
+                accept)))
+        (Eq.symm h) (Eq.refl (loadFT pk)))
+    (fun key h =>
+      Eq.ndrec (motive := fun x =>
+        loadFT pk = x →
+          APIBounds pk ∧
+            APIBounds b ∧
+              ∃ h s z,
+                CanonVec h ∧
+                  decodeS b = some s ∧
+                    Ext0 h c b = some z ∧
+                      z = Ext0Words h c s ∧
+                        SignedVec s ∧ SignedVec z.fst ∧ Congruent h c z ∧ Q z.fst z.snd < 2093922385)
+        (fun hp =>
+          have hk := PK_PREPARATION pk key hp;
+          Exists.casesOn (context_accept key c b (Eq.mp (congrArg (fun _a => verifyContext _a c b = 1) hp) accept))
+            fun vs h =>
+            And.casesOn h fun hdec hraw =>
+              have hd := SIGNATURE_DECODE b vs hdec;
+              have hs := listVec_property FT1536.InInt16 vs hd.right.left hd.right.right;
+              have hr :=
+                RAW_VERIFIER_SOUND key.polynomial c (listVec vs) hk.left hc hs
+                  (Eq.mp (congrArg (fun _a => rawVerify _a c (listVec vs) = true) hk.right) hraw);
+              ⟨api_bounds pk pkLegal,
+                ⟨api_bounds b sigLegal,
+                  Exists.intro key.polynomial
+                    (Exists.intro (listVec vs)
+                      (Exists.intro (Ext0Words key.polynomial c (listVec vs))
+                        ⟨hk.left,
+                          ⟨of_eq_true
+                              (Eq.trans
+                                (congrFun' (congrArg Eq (congrArg (Option.map listVec) hdec)) (some (listVec vs)))
+                                (eq_self (some (listVec vs)))),
+                            ⟨of_eq_true
+                                (Eq.trans
+                                  (congrFun'
+                                    (congrArg Eq
+                                      (congrArg (Option.map (Ext0Words key.polynomial c))
+                                        (congrArg (Option.map listVec) hdec)))
+                                    (some (Ext0Words key.polynomial c (listVec vs))))
+                                  (eq_self (some (Ext0Words key.polynomial c (listVec vs))))),
+                              ⟨rfl, ⟨hs, ⟨hr.left, hr.right⟩⟩⟩⟩⟩⟩))⟩⟩)
+        (Eq.symm h) (Eq.refl (loadFT pk)))
+    (Eq.refl (loadFT pk))
+'FT1536Bridge.small_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.decoder_return_guard' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.header_exact' does not depend on any axioms
+'FT1536Bridge.pk_header_exact' does not depend on any axioms
+'FT1536Bridge.SIGNATURE_DECODE' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.api_bounds' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.context_accept' depends on axioms: [propext]
+'FT1536Bridge.L_V_BYTES' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.L_V_LOADED' depends on axioms: [propext, Classical.choice, Quot.sound]

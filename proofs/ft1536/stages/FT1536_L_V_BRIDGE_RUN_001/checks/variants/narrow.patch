@@ -1,0 +1,22 @@
+--- source/falcon-enc.c
++++ checks/variants/narrow_enc.c
+@@ -528,9 +528,9 @@
+ 		}
+ 		lo += (ne << j);
+ 		if (sign) {
+-			x[u] = -(int16_t)lo;
++			x[u] = -(int16_t)(lo > 32767 ? 32767 : lo);
+ 		} else {
+-			x[u] = (int16_t)lo;
++			x[u] = (int16_t)(lo > 32767 ? 32767 : lo);
+ 		}
+ 		if (++ u >= n) {
+ 			/*
+@@ -663,6 +663,7 @@
+ 			default:
+ 				return 0;
+ 			}
++			/* LV_OBSERVER */ obs_capture(s,bound,s1,s2);
+ 			return s < bound;
+ 		}
+ 	} else {

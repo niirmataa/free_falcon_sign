@@ -1,0 +1,18 @@
+--- source/falcon-vrfy.c
++++ checks/variants/noop_vrfy.c
+@@ -1587,3 +1587,5 @@
+ 	}
+ 	return 1;
+ }
++
++/* LV_NOOP */
+--- source/falcon-enc.c
++++ checks/variants/noop_enc.c
+@@ -663,6 +663,7 @@
+ 			default:
+ 				return 0;
+ 			}
++			/* LV_OBSERVER */ obs_capture(s,bound,s1,s2);
+ 			return s < bound;
+ 		}
+ 	} else {

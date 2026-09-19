@@ -1,0 +1,56 @@
+formal/DecodeStatic.lean:37:56: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  i ≥ 8
+  g ≥ 0
+  e ≥ 0
+  b ≥ 0
+  b - e ≥ 0
+  9 ≤ a ≤ 16
+where
+ a := ↑f.bits
+ b := ↑f.pos
+ e := ↑c.pos
+ g := ↑(remaining d c)
+ i := ↑{ pos := f.pos, db := f.db, bits := f.bits - 9 }.bits
+formal/DecodeStatic.lean:50:48: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  k ≥ 0
+  j ≥ 0
+  i ≥ 0
+  i - j ≥ 0
+  0 ≤ h ≤ 255
+  g ≥ 0
+  g - k ≥ 1
+  e ≥ 0
+  e - i ≥ 1
+  b ≥ 0
+  b - e ≥ 0
+  9 ≤ a ≤ 16
+where
+ a := ↑f.bits
+ b := ↑f.pos
+ e := ↑c.pos
+ g := ↑(remaining d { pos := f.pos, db := f.db, bits := f.bits - 9 })
+ h := ↑ne
+ i := ↑r.pos
+ j := ↑{ pos := f.pos, db := f.db, bits := f.bits - 9 }.pos
+ k := ↑(remaining d r)
+formal/DecodeStatic.lean:110:53: error(lean.unknownIdentifier): Unknown identifier `xs`
+DECODE_STATIC : ∀ (d : Bytes) (vs : List Int) (used : Nat),
+  decodeStatic d = some (vs, used) →
+    vs.length = 1536 ∧ (∀ (x : Int), x ∈ vs → FT1536.InInt16 x) ∧ 1920 ≤ used ∧ used ≤ List.length d
+static_loop_spec : ∀ (n : Nat) (d : Bytes) (c r : Cursor) (vs : List Int),
+  Inv d c →
+    staticLoop n d c = some (vs, r) →
+      vs.length = n ∧
+        (∀ (x : Int), x ∈ vs → FT1536.InInt16 x) ∧
+          Inv d r ∧ c.pos ≤ r.pos ∧ remaining d r + 10 * n ≤ remaining d c ∧ r.db % 2 ^ r.bits = 0
+'FT1536Bridge.static_value_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.static_promotions' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.readStatic_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536Bridge.static_head_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.static_head_shifts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.static_loop_spec' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536Bridge.DECODE_STATIC' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536Bridge.listVec_property' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.static_vector_signed' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

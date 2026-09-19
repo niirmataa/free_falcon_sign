@@ -36,7 +36,8 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | L_RHO | poprawna normalizacja całej dziedziny int16 w przypiętym modelu | `5c2cdcc` |
 | L_NTT | lokalne kontrakty i certyfikaty; globalna kompozycja częściowa | `1d78645` |
 | L_NTT_GLOBAL | globalny inverse; na tym etapie forward_product pozostawało otwarte | `d67228d` |
-| [L_NTT_FORWARD](stages/FT1536_L_NTT_FORWARD_RUN_001/REPORT.md) | **L_NTT_PROVED_FOR_PINNED_MODEL** — forward, iloczyn i pełna kompozycja | commit dodający [wpis katalogu](catalog/FT1536_L_NTT_FORWARD_RUN_001.json) |
+| [L_NTT_FORWARD](stages/FT1536_L_NTT_FORWARD_RUN_001/REPORT.md) | **L_NTT_PROVED_FOR_PINNED_MODEL** — forward, iloczyn i pełna kompozycja | `71bbb35` |
+| [L_V_BRIDGE](stages/FT1536_L_V_BRIDGE_RUN_001/REPORT.md) | **L_V_PROVED_FOR_PINNED_MODEL** — pełny most bajtowy Verify → Ext0 dla kandydata | commit dodający [wpis katalogu](catalog/FT1536_L_V_BRIDGE_RUN_001.json) |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).
@@ -63,14 +64,37 @@ Powiązanie z C99/GCC/LP64 i warunki buforów określa
 Odbiór odtworzył **63 moduły, 472 twierdzenia (109 nowych)** i **217/217**
 plików znaczeniowych ze świeżej kopii archiwum:
 [zapis kontroli FORWARD](validation/2026-09-18-forward/README.md).
-Następny obowiązek matematyczny to
-[pozostały most L_V](documents/FT1536_ZADANIE_ASTRA_L_V_BRIDGE_2026-09-19.md):
-parser, centrowanie C, dokładność Q i ścisły próg B dla tego samego kandydata.
-Zadanie korzysta z domkniętego L_NTT_rho i zaczyna od raw verifier, następnie
-wiąże oba dekodery oraz pełną akceptację bajtową z ustalonym Ext0.
-Zapisane statusy ukończonego checkpointu L_NTT
-pozostają `source_integrated=false`, `owner_accepted=false`,
-`full_L_V_proved=false`.
+
+### Aktualny wynik L_V
+
+[Zadanie mostu L_V](documents/FT1536_ZADANIE_ASTRA_L_V_BRIDGE_2026-09-19.md)
+zostało domknięte w checkpointcie **L_V_BRIDGE**. Dla wszystkich canonical h,c
+i legalnych skończonych ciągów bajtów b w przypiętym modelu:
+
+```text
+V_CAND(h,c,b)=1 =>
+  s(b) i Ext0 są zdefiniowane,
+  z1+h*z2=c modulo(q,Phi),
+  Q(z1,z2)<2093922385,
+  gdzie (z1,z2)=Ext0(h,c,b)=(center_q(c-h*s(b)),s(b)).
+```
+
+Dowód konsumuje L_NTT_rho i domyka centrowanie C, znak Ext0, dokładną normę
+int64, ścisły próg, dekodery NONE/STATIC, guards i przygotowanie klucza.
+Obejmuje uint32 wrap dowolnie długiego skończonego unary i narrowing GCC;
+nie dodaje limitu 2049 bajtów. Eksporty formalne: `L_V_BYTES`, `L_V_LOADED`,
+`L_V_SOURCE`; [dokładna teza i model](stages/FT1536_L_V_BRIDGE_RUN_001/CLAIM.md).
+
+Odbiór odtworzył **73 moduły, 570 twierdzeń (104 nowe), 402/402 pliki**,
+w tym kontrole C/Lean/Sage i ASan/UBSan:
+[zapis kontroli L_V](validation/2026-09-19-lv/README.md).
+
+`full_L_V_proved=true` dotyczy wyłącznie kandydata `falcon-vrfy.c` o SHA-256
+`3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42`.
+Jego `source_integrated=false` i `owner_accepted=false` pozostają jawne.
+Historyczny kontrprzykład S17 i wcześniejsze wyniki częściowe zachowują swoje
+zakresy. Pełne L_V nie zamyka samplera, rozkładu kluczy, EUF-CMA, MT-ISIS
+ani warunkowych transferów strat redukcji.
 
 Odtwarzanie z czystego checkoutu Git i ukrytymi oryginałami sprawdzono
 2026-09-18: [zapis kontroli](validation/2026-09-18/README.md).
@@ -96,7 +120,8 @@ python3 -B proofs/ft1536/tools/archive.py replay FT1536_L_RHO_RUN_001 --run repl
 ```
 
 Analogicznie dla `FT1536_LV_STATIC_RUN_001`, `FT1536_L_NTT_RUN_001`,
-`FT1536_L_NTT_GLOBAL_RUN_001` i `FT1536_L_NTT_FORWARD_RUN_001`.
+`FT1536_L_NTT_GLOBAL_RUN_001`, `FT1536_L_NTT_FORWARD_RUN_001`
+i `FT1536_L_V_BRIDGE_RUN_001`.
 Wpis katalogu określa właściwy punkt wejścia. Odbiór Blue jest archiwum
 recenzji i receipts; nie ma zadeklarowanego pojedynczego pełnego runnera.
 

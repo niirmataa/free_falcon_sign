@@ -1,0 +1,29 @@
+formal/ByteCursor.lean:151:17: warning: This simp argument is unused:
+  hp
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+fill_source : ∀ (fuel need : Nat) (d : Bytes) (c : Cursor),
+  Valid d c → need ≤ c.bits + 8 * fuel → FillRun need d c (fill fuel need d c)
+nextBit_spec : ∀ (d : Bytes) (c r : Cursor) (bit : Nat),
+  Inv d c → nextBit d c = some (bit, r) → Inv d r ∧ bit < 2 ∧ c.pos ≤ r.pos ∧ remaining d c = remaining d r + 1
+unary_source : ∀ (fuel : Nat) (d : Bytes) (ne : Nat) (c : Cursor),
+  Inv d c → remaining d c ≤ fuel → UnaryRun d ne c (unaryFuel fuel d ne c)
+unary_spec : ∀ (fuel : Nat) (d : Bytes) (ne : Nat) (c : Cursor),
+  Inv d c →
+    ne < 4294967296 →
+      ∀ (out : Nat) (r : Cursor),
+        unaryFuel fuel d ne c = some (out, r) →
+          out < 4294967296 ∧ Inv d r ∧ c.pos ≤ r.pos ∧ remaining d r < remaining d c
+unary_wrap : ∀ (k ne : Nat), ne < 4294967296 → zeroCount k ne = (ne + k) % 4294967296
+'FT1536Bridge.start_valid' depends on axioms: [propext]
+'FT1536Bridge.pull_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.fill_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.fill_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.nextBit_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.nextBit_empty' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.unary_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.unary_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.unary_wrap' depends on axioms: [propext, Quot.sound]
