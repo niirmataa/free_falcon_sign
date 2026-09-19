@@ -85,6 +85,14 @@ na wszystkich finite words i dodatnie computed pivots.
 [NEXT_INTERFACE](stages/FT1536_H3_NODE2_RUN_001/NEXT_INTERFACE.md) podaje
 level7 i warunki dalszej kompozycji parametrycznego binary step.
 
+**Następne przygotowane zadanie:** [H3_BINARY_TOWER](documents/FT1536_ZADANIE_ASTRA_H3_BINARY_TOWER_2026-09-19.md),
+do ręcznego uruchomienia przez właściciela. Cel: jawny level7, inwariant
+wszystkich pozostałych levels7–1 oraz zdefiniowane kończące się wykonanie
+dwunastu raw inner7 subtrees. Sam poziom7 lub same local slices dają partial.
+[Bootstrap](background/H3_BINARY_TOWER_2026-09-19/README.md) ma 137 przypiętych
+członków. Loader assembly/normalization, initial targets i global Reach mają
+nadal własne dalsze interfejsy.
+
 **Osobne przygotowane zlecenie:** [niezależny audyt FPEMU](documents/FT1536_ZADANIE_ASTRA_FPEMU_AUDIT_2026-09-19.md).
 Właściciel uruchamia drugą Astrę ręcznie w odrębnym W. Audyt obejmuje
 pokrycie arytmetyki/domen, ASan/UBSan, stan dowodów i testów czasowych oraz
@@ -137,7 +145,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [H3_ZERO_SCALAR](stages/FT1536_H3_ZERO_SCALAR_RUN_001/REPORT.md) | **H3_ZERO_SCALAR_PROVED_FOR_PINNED_MODEL** — lokalny zero-aware most, błąd 2^-20; mieszany dowód | `9a76ecf` |
 | [H3_ROOT_LDL](stages/FT1536_H3_ROOT_LDL_RUN_001/REPORT.md) | **H3_ROOT_LDL_PROVED_FOR_PINNED_MODEL** — source FFT/Gram, dodatni subtractive root pivot i frame; mieszany dowód | `3d6bf58` |
 | [H3_NODE3](stages/FT1536_H3_NODE3_RUN_001/REPORT.md) | **H3_NODE3_PROVED_FOR_PINNED_MODEL** — uniform split_top/Adj/LDL3, obie branches i 256 slots; mieszany dowód | `afa52d8` |
-| [H3_NODE2](stages/FT1536_H3_NODE2_RUN_001/REPORT.md) | **H3_NODE2_PROVED_FOR_PINNED_MODEL** — pierwszy binary level8, half i upstream imaginary refinement; mieszany dowód | niniejszy checkpoint |
+| [H3_NODE2](stages/FT1536_H3_NODE2_RUN_001/REPORT.md) | **H3_NODE2_PROVED_FOR_PINNED_MODEL** — pierwszy binary level8, half i upstream imaginary refinement; mieszany dowód | `b27a055` |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).

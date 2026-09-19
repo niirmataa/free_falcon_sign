@@ -254,6 +254,13 @@ The remaining [binary recursion interface](proofs/ft1536/stages/FT1536_H3_NODE2_
 starts at split8/LDL7; a local isolated slice is distinct from total execution
 of its earlier recursive calls.
 
+The next prepared assignment is [H3_BINARY_TOWER](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_BINARY_TOWER_2026-09-19.md),
+for manual launch by the owner: instantiate level7, prove a closed invariant
+through all remaining levels7–1, and bind it to terminating execution of the
+twelve raw inner7 subtrees. Full success requires both the numerical tower
+and recursive source-order/frame composition. The [pinned inputs](proofs/ft1536/background/H3_BINARY_TOWER_2026-09-19/README.md)
+include the stronger upstream margins and the finite-word half proof.
+
 ### Remaining obligations beyond the verifier
 
 - **C-to-model correspondence:** the certificates concern explicit models
