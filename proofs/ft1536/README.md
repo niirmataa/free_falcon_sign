@@ -9,6 +9,26 @@ Kopie źródeł wewnątrz checkpointów dokumentują badane wersje i umożliwiaj
 replay. Integracja zaakceptowanej poprawki do źródeł odbywa się osobnym
 commitem w `Extra/c`, bez przemianowania historycznego katalogu Extra.
 
+## Mapa dalszych działań
+
+[Mapa po domknięciu L_V — 2026-09-19](documents/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md)
+przedstawia zależności i proponowaną kolejność: dokładny kontrakt gry,
+osiągalność H3, pełne prawo Sign i bajty, spójna konsumpcja R5T, ciaśniejszy
+transfer chi-square, symulacja ROM i końcowa kompozycja. Jest materiałem
+do omówienia przed wyborem następnego zadania Astry.
+
+Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
+publiczne opracowania z zachowanymi pinami:
+
+- [ciągłość K0, uporządkowanej bazy i etapów T2C3](documents/FT1536_AUDYT_CIAGLOSCI_KLUCZA_BAZY_T2C3_2026-09-17.md);
+- [późniejsza weryfikacja uzasadnienia D11E2](documents/FT1536_WERYFIKACJA_UZASADNIENIA_D11E2_2026-09-17.md);
+- [mapa twierdzeń T2C3/T5 i ich publicznego pakietu](documents/FT1536_PAPER_TEZA_MAPA_DOWODOW_2026-09-17.md).
+
+T2C3 dotyczy idealnego obrazu po ostrym obcięciu dla jednej kanonicznej
+instancji; T5 jest odrębnym pure/untruncated twierdzeniem dla każdego
+successful-KeyGen output. Datowane opracowania zachowują historyczny zakres;
+aktualne domknięcie L_V kandydata opisuje tabela i sekcja poniżej.
+
 ## Układ
 
 - `stages/<id>/`: wyłącznie OUTPUTS.sha256 i jego członkowie; bez cache,
@@ -37,7 +57,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | L_NTT | lokalne kontrakty i certyfikaty; globalna kompozycja częściowa | `1d78645` |
 | L_NTT_GLOBAL | globalny inverse; na tym etapie forward_product pozostawało otwarte | `d67228d` |
 | [L_NTT_FORWARD](stages/FT1536_L_NTT_FORWARD_RUN_001/REPORT.md) | **L_NTT_PROVED_FOR_PINNED_MODEL** — forward, iloczyn i pełna kompozycja | `71bbb35` |
-| [L_V_BRIDGE](stages/FT1536_L_V_BRIDGE_RUN_001/REPORT.md) | **L_V_PROVED_FOR_PINNED_MODEL** — pełny most bajtowy Verify → Ext0 dla kandydata | commit dodający [wpis katalogu](catalog/FT1536_L_V_BRIDGE_RUN_001.json) |
+| [L_V_BRIDGE](stages/FT1536_L_V_BRIDGE_RUN_001/REPORT.md) | **L_V_PROVED_FOR_PINNED_MODEL** — pełny most bajtowy Verify → Ext0 dla kandydata | `17f8f8b` |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).
