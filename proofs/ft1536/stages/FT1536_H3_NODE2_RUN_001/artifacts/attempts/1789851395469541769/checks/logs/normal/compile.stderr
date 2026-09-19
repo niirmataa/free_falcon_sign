@@ -1,0 +1,26 @@
+checks/binary.c: In function ‘binary_slice’:
+checks/binary.c:19:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   19 |  if(memcmp(saved_parent,parent,sizeof parent)) abort();memcpy(saved_children,s0,sizeof saved_children);
+      |  ^~
+checks/binary.c:19:56: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   19 |  if(memcmp(saved_parent,parent,sizeof parent)) abort();memcpy(saved_children,s0,sizeof saved_children);
+      |                                                        ^~~~~~
+checks/binary.c:21:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   21 |  if(memcmp(saved_children,s0,sizeof saved_children)) abort();checkmarks();
+      |  ^~
+checks/binary.c:21:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   21 |  if(memcmp(saved_children,s0,sizeof saved_children)) abort();checkmarks();
+      |                                                              ^~~~~~~~~~
+checks/binary.c: In function ‘main’:
+checks/binary.c:34:3: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   34 |   for(i=0;i<768;i++) printf("%016" PRIx64 " %016" PRIx64 " %016" PRIx64 " %016" PRIx64 "\n",l[i],l[i+768],d[i],d[i+768]);return 0;
+      |   ^~~
+checks/binary.c:34:122: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   34 |   for(i=0;i<768;i++) printf("%016" PRIx64 " %016" PRIx64 " %016" PRIx64 " %016" PRIx64 "\n",l[i],l[i+768],d[i],d[i+768]);return 0;
+      |                                                                                                                          ^~~~~~
+checks/binary.c:41:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   41 |    if(ffLDL_inner_fft3(tree.v,a,b,a,8,tmp)!=2304||memcmp(expect,tree.v,sizeof expect)||memcmp(saved_children,a,sizeof saved_children)) abort();checkmarks();
+      |    ^~
+checks/binary.c:41:144: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   41 |    if(ffLDL_inner_fft3(tree.v,a,b,a,8,tmp)!=2304||memcmp(expect,tree.v,sizeof expect)||memcmp(saved_children,a,sizeof saved_children)) abort();checkmarks();
+      |                                                                                                                                                ^~~~~~~~~~

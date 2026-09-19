@@ -1,0 +1,45 @@
+1326: falcon_poly_split_deep_fft3(fpr *restrict f0, fpr *restrict f1,
+1327: 	const fpr *restrict f, unsigned logn)
+1328: {
+1329: 	size_t n, hn, qn, u, m;
+1330: 
+1331: 	/*
+1332: 	 * Special code for n = 2.
+1333: 	 */
+1334: 	if (logn == 1) {
+1335: 		fpr re, im, xx;
+1336: 
+1337: 		re = f[0];
+1338: 		im = f[1];
+1339: 		xx = fpr_mul(fpr_IW1I, im);
+1340: 		*f1 = xx;
+1341: 		*f0 = fpr_sub(re, fpr_half(xx));
+1342: 		return;
+1343: 	}
+1344: 
+1345: 	n = (size_t)1 << logn;
+1346: 	hn = n >> 1;
+1347: 	qn = hn >> 1;
+1348: 
+1349: 	m = (size_t)1 << (logn - 1);
+1350: 	for (u = 0; u < qn; u ++) {
+1351: 		fpr a_re, a_im, b_re, b_im;
+1352: 		fpr t_re, t_im;
+1353: 
+1354: 		a_re = f[(u << 1) + 0];
+1355: 		a_im = f[(u << 1) + 0 + hn];
+1356: 		b_re = f[(u << 1) + 1];
+1357: 		b_im = f[(u << 1) + 1 + hn];
+1358: 
+1359: 		FPC_ADD(t_re, t_im, a_re, a_im, b_re, b_im);
+1360: 		f0[u] = fpr_half(t_re);
+1361: 		f0[u + qn] = fpr_half(t_im);
+1362: 
+1363: 		FPC_SUB(t_re, t_im, a_re, a_im, b_re, b_im);
+1364: 		FPC_MUL(t_re, t_im, t_re, t_im,
+1365: 			fpr_gm3_square[((u + m) << 1) + 0],
+1366: 			fpr_neg(fpr_gm3_square[((u + m) << 1) + 1]));
+1367: 		f1[u] = fpr_half(t_re);
+1368: 		f1[u + qn] = fpr_half(t_im);
+1369: 	}
+1370: }

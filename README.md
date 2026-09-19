@@ -29,8 +29,9 @@ zero-aware floor/cast/residual interface**, using kernel and universal
 analytical source proofs. **H3_ROOT_LDL certifies the source FFT/Gram and
 subtractive LDL root** for the emitted-key domain. **H3_NODE3 extends this
 to split_top and both first-level LDL3 branches**, with explicit real/imaginary
-and error bounds. Global reachable-center bounds and end-to-end security
-remain open research objectives.
+and error bounds. **H3_NODE2 certifies the first binary level** and adds
+kernel-checked finite-word half semantics plus an upstream imaginary bound.
+Global reachable-center bounds and end-to-end security remain open research objectives.
 
 The current build integrates the corrected verifier, SHA-256
 `3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42`.
@@ -133,6 +134,7 @@ integration work; changing their description does not change the old CLI.
 | [H3_ZERO_SCALAR](proofs/ft1536/stages/FT1536_H3_ZERO_SCALAR_RUN_001/REPORT.md) | All NumericCenter words, including both zeros/subnormals: floor/cast/s+z, exact of, source sub error and residual bound; mixed kernel/analytical proof | `H3_ZERO_SCALAR_PROVED_FOR_PINNED_MODEL` |
 | [H3_ROOT_LDL](proofs/ft1536/stages/FT1536_H3_ROOT_LDL_RUN_001/REPORT.md) | Emitted-key FFT/Gram and actual subtractive LDL root, positive real divisor/pivot, multiplier/error bounds and conditional frame; mixed proof | `H3_ROOT_LDL_PROVED_FOR_PINNED_MODEL` |
 | [H3_NODE3](proofs/ft1536/stages/FT1536_H3_NODE3_RUN_001/REPORT.md) | Uniform split_top/Adj/LDL3 certificate for both root branches and all 256 slots each; positive pivots, multipliers, real/imaginary errors and frame; mixed proof | `H3_NODE3_PROVED_FOR_PINNED_MODEL` |
+| [H3_NODE2](proofs/ft1536/stages/FT1536_H3_NODE2_RUN_001/REPORT.md) | First split_deep9/LDL8 level, all 2×3×128 positions; finite-word half proof, refined imaginary envelope and positive pivots; mixed proof | `H3_NODE2_PROVED_FOR_PINNED_MODEL` |
 
 The completed L_V bridge establishes, for all canonical h,c and legal finite
 payloads b in the pinned GCC14.2.0/C99/Linux x86_64 LP64 model:
@@ -241,12 +243,16 @@ The [next interface](proofs/ft1536/stages/FT1536_H3_NODE3_RUN_001/NEXT_INTERFACE
 is the first split_deep/Adj/LDL2 level for six diagonal branches, with 128
 frequencies each; the lower tree and global Reach remain separate obligations.
 
-The next prepared assignment is [H3_NODE2](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_NODE2_2026-09-19.md):
-the first `split_deep(logn9) -> Adj -> LDL_dim2(logn8)` level, covering
-all six diagonal branches and 128 frequencies each. It requires a uniform
-c2, the actual FPEMU half semantics and a proved paired real/imaginary
-positivity margin. [Pinned inputs](proofs/ft1536/background/H3_NODE2_2026-09-19/README.md)
-include the stronger NODE3/ROOT relations and are ready in a fresh worker directory.
+The [H3_NODE2 result](proofs/ft1536/stages/FT1536_H3_NODE2_RUN_001/REPORT.md)
+closes the first `split_deep(logn9) -> Adj -> LDL_dim2(logn8)` level for
+all six groups and 128 frequencies each. New results include
+`|Im(D_ROOT_C)|<1`, a kernel-checked `fpr_half` value error `<=2^-1023`
+for every finite word, and positive computed pivot lower bounds 1/32 and 2.
+The [independent review](proofs/ft1536/validation/2026-09-19-node2/README.md)
+reproduced **160/160 files, 26 modules and 131 theorems (16 new)**.
+The remaining [binary recursion interface](proofs/ft1536/stages/FT1536_H3_NODE2_RUN_001/NEXT_INTERFACE.md)
+starts at split8/LDL7; a local isolated slice is distinct from total execution
+of its earlier recursive calls.
 
 ### Remaining obligations beyond the verifier
 
@@ -324,7 +330,8 @@ Later maintainer replays and their exact scopes:
 [H3 partial](proofs/ft1536/validation/2026-09-19-h3/README.md),
 [H3 zero-aware scalar](proofs/ft1536/validation/2026-09-19-zero-scalar/README.md),
 [H3 root LDL](proofs/ft1536/validation/2026-09-19-root-ldl/README.md),
-[H3 NODE3](proofs/ft1536/validation/2026-09-19-node3/README.md).
+[H3 NODE3](proofs/ft1536/validation/2026-09-19-node3/README.md),
+[H3 NODE2](proofs/ft1536/validation/2026-09-19-node2/README.md).
 The independent Blue review has archived evidence, rather than a single
 declared full replay runner.
 

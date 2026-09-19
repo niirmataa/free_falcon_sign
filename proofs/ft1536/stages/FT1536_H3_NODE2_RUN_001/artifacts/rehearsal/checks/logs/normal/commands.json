@@ -1,0 +1,292 @@
+[
+  {
+    "argv": [
+      "/usr/bin/gcc",
+      "-W",
+      "-Wall",
+      "-O",
+      "-DFPR_IMPL=\"fpr-emulated.h\"",
+      "-DSAMPLER_CODF=0",
+      "-DSAMPLER_CDF=0",
+      "-DCT_BEREXP=1",
+      "-DFT_TERNARY_ADAPTIVE_CDF=1",
+      "-DFT1536_CANDIDATE_PROFILE=1",
+      "-DCLEANSE=1",
+      "-DTRUE_TERNARY_SECRET=1",
+      "-DTRUE_TERNARY_SECRET_MODE=1",
+      "-DTERNARY_KEYGEN_BOUND_SCALE_NUM=1250",
+      "-DTERNARY_KEYGEN_BOUND_SCALE_DEN=100",
+      "-DTERNARY_KEYGEN_MAX_ATTEMPTS=3000000",
+      "-DSIGN_MAX_ATTEMPTS=16",
+      "-std=c99",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-Isource",
+      "checks/binary.c",
+      "source/falcon-fft.c",
+      "source/fpr-emulated.c",
+      "-Wl,--gc-sections",
+      "-lm",
+      "-o",
+      "bin/binary_normal"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_NODE2_RUN_001/tmp/rehearsal_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 1.2007693510095123,
+    "stdout": "checks/logs/normal/compile.stdout",
+    "stderr": "checks/logs/normal/compile.stderr",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/binary_normal",
+      "frame"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_NODE2_RUN_001/tmp/rehearsal_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.0016226480074692518,
+    "stdout": "checks/logs/normal/frame.stdout",
+    "stderr": "checks/logs/normal/frame.stderr",
+    "stdout_sha256": "b20a07f00229ed3ff051765b9f8ef8089e21a4c8a627f8ca0dde550475da2de3",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/binary_normal",
+      "half"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_NODE2_RUN_001/tmp/rehearsal_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.0006571320118382573,
+    "stdout": "checks/logs/normal/half.stdout",
+    "stderr": "checks/logs/normal/half.stderr",
+    "stdout_sha256": "bdbe045ec61212dc13d7369e58fe238cc278cf2e2b49dd3849b7b77f5477429d",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/binary_normal",
+      "root"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_NODE2_RUN_001/tmp/rehearsal_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.0018235140014439821,
+    "stdout": "checks/logs/normal/root_imag.stdout",
+    "stderr": "checks/logs/normal/root_imag.stderr",
+    "stdout_sha256": "3691148b4299c27fb3b8fdb1524bc8235887b4d16d8dc725120229c3095eb13e",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/binary_normal",
+      "parents",
+      "0"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_NODE2_RUN_001/tmp/rehearsal_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.0021058770071249455,
+    "stdout": "checks/logs/normal/parent_0_0.stdout",
+    "stderr": "checks/logs/normal/parent_0_0.stderr",
+    "stdout_sha256": "1c8d5b2811f6943bb59d7fb880c36dfe99b80ba32d7f6f6a1dd3213fabf49900",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/binary_normal",
+      "pipeline",
+      "0"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_NODE2_RUN_001/tmp/rehearsal_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.001531043992144987,
+    "stdout": "checks/logs/normal/node_0_0.stdout",
+    "stderr": "checks/logs/normal/node_0_0.stderr",
+    "stdout_sha256": "eda21a8a2a73250cc5bf607e1b3f171e884c701e5b7313e3eec33a64ed7a3541",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/binary_normal",
+      "parents",
+      "1"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_NODE2_RUN_001/tmp/rehearsal_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.001968157012015581,
+    "stdout": "checks/logs/normal/parent_0_1.stdout",
+    "stderr": "checks/logs/normal/parent_0_1.stderr",
+    "stdout_sha256": "220dae12595cd153fb15275d77c80c969f5331dc444e762526c43dcbfa6d8a58",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/binary_normal",
+      "pipeline",
+      "1"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_NODE2_RUN_001/tmp/rehearsal_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.0018432540236972272,
+    "stdout": "checks/logs/normal/node_0_1.stdout",
+    "stderr": "checks/logs/normal/node_0_1.stderr",
+    "stdout_sha256": "cc756dde30b4647f40c9dd0922c3e60ac47aca4d92663fec0c048f6ed3a0d71a",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/binary_normal",
+      "parents",
+      "2"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_NODE2_RUN_001/tmp/rehearsal_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.0016058920009527355,
+    "stdout": "checks/logs/normal/parent_0_2.stdout",
+    "stderr": "checks/logs/normal/parent_0_2.stderr",
+    "stdout_sha256": "ab8df277116466cb412f0b7ab1272abb68c65ce2c0bd31cd98a3a8baba56016a",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/binary_normal",
+      "pipeline",
+      "2"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_NODE2_RUN_001/tmp/rehearsal_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.0018753139884211123,
+    "stdout": "checks/logs/normal/node_0_2.stdout",
+    "stderr": "checks/logs/normal/node_0_2.stderr",
+    "stdout_sha256": "1660c8fa625fdcd9a98c0d452cbd5d4387cbb67681a235cff26b47e4f671716e",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/binary_normal",
+      "parents",
+      "0"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_NODE2_RUN_001/tmp/rehearsal_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.0024552230024710298,
+    "stdout": "checks/logs/normal/parent_1_0.stdout",
+    "stderr": "checks/logs/normal/parent_1_0.stderr",
+    "stdout_sha256": "a04c962b7de7081196b719d6f336aed8f19be9e4cbe66f1e30231d7b4e35616c",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/binary_normal",
+      "pipeline",
+      "0"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_NODE2_RUN_001/tmp/rehearsal_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.0022501559869851917,
+    "stdout": "checks/logs/normal/node_1_0.stdout",
+    "stderr": "checks/logs/normal/node_1_0.stderr",
+    "stdout_sha256": "eaadfc2a2a10505d6d50cf0a8edc4ab7deb9a5025e3eb46833e15e3ec5668f49",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/binary_normal",
+      "parents",
+      "1"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_NODE2_RUN_001/tmp/rehearsal_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.002100539015373215,
+    "stdout": "checks/logs/normal/parent_1_1.stdout",
+    "stderr": "checks/logs/normal/parent_1_1.stderr",
+    "stdout_sha256": "44858129caa81a30790840c0997190f71045ea75356a89e65e5ab9ad3bc6e229",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/binary_normal",
+      "pipeline",
+      "1"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_NODE2_RUN_001/tmp/rehearsal_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.0019293200166430324,
+    "stdout": "checks/logs/normal/node_1_1.stdout",
+    "stderr": "checks/logs/normal/node_1_1.stderr",
+    "stdout_sha256": "20f09354d54bfcbf54bf7e842f56f2775492b7c8ca2dca17b76ced675c831159",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/binary_normal",
+      "parents",
+      "2"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_NODE2_RUN_001/tmp/rehearsal_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.002259957982460037,
+    "stdout": "checks/logs/normal/parent_1_2.stdout",
+    "stderr": "checks/logs/normal/parent_1_2.stderr",
+    "stdout_sha256": "42e606401c8f0f0355f215148143cb7d583f9ad013f2c69c830933b2c89f5efb",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/binary_normal",
+      "pipeline",
+      "2"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_NODE2_RUN_001/tmp/rehearsal_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.0021814109932165593,
+    "stdout": "checks/logs/normal/node_1_2.stdout",
+    "stderr": "checks/logs/normal/node_1_2.stderr",
+    "stdout_sha256": "3554e051dbfc6e76b9812cd6b9bc4d653b656726137bc5c7be2507ad0c9a1ca2",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/binary_normal",
+      "direct"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_NODE2_RUN_001/tmp/rehearsal_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.0011885710118804127,
+    "stdout": "checks/logs/normal/coarse_box.stdout",
+    "stderr": "checks/logs/normal/coarse_box.stderr",
+    "stdout_sha256": "b485e65cf9628fb84efe4e488ce262cf1c165eed7998dea7a28c70872b08381b",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/binary_normal",
+      "direct"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_NODE2_RUN_001/tmp/rehearsal_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.0008005900017451495,
+    "stdout": "checks/logs/normal/subnormal_split.stdout",
+    "stderr": "checks/logs/normal/subnormal_split.stderr",
+    "stdout_sha256": "d5833e0f928cdc7336f93d4716effb0e3a4f9f7ad39903be517d22cece64c9a5",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

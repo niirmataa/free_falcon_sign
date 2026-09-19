@@ -1,0 +1,97 @@
+680: fpr
+681: fpr_mul(fpr x, fpr y)
+682: {
+683: 	uint64_t xu, yu, w, zu, zv;
+684: 	uint32_t x0, x1, y0, y1, z0, z1, z2;
+685: 	int ex, ey, d, e, s;
+686: 
+687: 	/*
+688: 	 * Extract absolute values as scaled unsigned integers. We
+689: 	 * don't extract exponents yet.
+690: 	 */
+691: 	xu = (x & (((uint64_t)1 << 52) - 1)) | ((uint64_t)1 << 52);
+692: 	yu = (y & (((uint64_t)1 << 52) - 1)) | ((uint64_t)1 << 52);
+693: 
+694: 	/*
+695: 	 * We have two 53-bit integers to multiply; we need to split
+696: 	 * each into a lower half and a upper half. Moreover, we
+697: 	 * prefer to have lower halves to be of 25 bits each, for
+698: 	 * reasons explained later on.
+699: 	 */
+700: 	x0 = (uint32_t)xu & 0x01FFFFFF;
+701: 	x1 = (uint32_t)(xu >> 25);
+702: 	y0 = (uint32_t)yu & 0x01FFFFFF;
+703: 	y1 = (uint32_t)(yu >> 25);
+704: 	w = (uint64_t)x0 * (uint64_t)y0;
+705: 	z0 = (uint32_t)w & 0x01FFFFFF;
+706: 	z1 = (uint32_t)(w >> 25);
+707: 	w = (uint64_t)x0 * (uint64_t)y1;
+708: 	z1 += (uint32_t)w & 0x01FFFFFF;
+709: 	z2 = (uint32_t)(w >> 25);
+710: 	w = (uint64_t)x1 * (uint64_t)y0;
+711: 	z1 += (uint32_t)w & 0x01FFFFFF;
+712: 	z2 += (uint32_t)(w >> 25);
+713: 	zu = (uint64_t)x1 * (uint64_t)y1;
+714: 	z2 += (z1 >> 25);
+715: 	z1 &= 0x01FFFFFF;
+716: 	zu += z2;
+717: 
+718: 	/*
+719: 	 * Since xu and yu are both in the 2^52..2^53-1 range, the
+720: 	 * product is in the 2^104..2^106-1 range. We first reassemble
+721: 	 * it and round it into the 2^54..2^56-1 range; the bottom bit
+722: 	 * is made "sticky". Since the low limbs z0 and z1 are 25 bits
+723: 	 * each, we just take the upper part (zu), and consider z0 and
+724: 	 * z1 only for purposes of stickiness.
+725: 	 * (This is the reason why we chose 25-bit limbs above.)
+726: 	 */
+727: 	zu |= ((z0 | z1) + 0x01FFFFFF) >> 25;
+728: 
+729: 	/*
+730: 	 * We normalize zu to the 2^54..s^55-1 range: it could be one
+731: 	 * bit too large at this point. This is done with a conditional
+732: 	 * right-shift that takes into account the sticky bit.
+733: 	 */
+734: 	zv = (zu >> 1) | (zu & 1);
+735: 	w = zu >> 55;
+736: 	zu ^= (zu ^ zv) & -w;
+737: 
+738: 	/*
+739: 	 * Get the aggregate scaling factor:
+740: 	 *
+741: 	 *   - Each exponent is biased by 1023.
+742: 	 *
+743: 	 *   - Integral mantissas are scaled by 2^52, hence an
+744: 	 *     extra 52 bias for each exponent.
+745: 	 *
+746: 	 *   - However, we right-shifted z by 50 bits, and then
+747: 	 *     by 0 or 1 extra bit (depending on the value of w).
+748: 	 *
+749: 	 * In total, we must add the exponents, then subtract
+750: 	 * 2 * (1023 + 52), then add 50 + w.
+751: 	 */
+752: 	ex = (int)((x >> 52) & 0x7FF);
+753: 	ey = (int)((y >> 52) & 0x7FF);
+754: 	e = ex + ey - 2100 + (int)w;
+755: 
+756: 	/*
+757: 	 * Sign bit is the XOR of the operand sign bits.
+758: 	 */
+759: 	s = (int)((x ^ y) >> 63);
+760: 
+761: 	/*
+762: 	 * Corrective actions for zeros: if either of the operands is
+763: 	 * zero, then the computations above were wrong. Test for zero
+764: 	 * is whether ex or ey is zero. We just have to set the mantissa
+765: 	 * (zu) to zero, the FPR() function will normalize e.
+766: 	 */
+767: 	d = ((ex + 0x7FF) & (ey + 0x7FF)) >> 11;
+768: 	zu &= -(uint64_t)d;
+769: 
+770: 	/*
+771: 	 * FPR() packs the result and applies proper rounding.
+772: 	 */
+773: 	return FPR(s, e, zu);
+774: }
+775: 
+776: #endif // yyyASM_CORTEXM4-

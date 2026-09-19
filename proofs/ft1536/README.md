@@ -22,8 +22,8 @@ osiągnięcia, T2C3/T5, kontrakt M0, graf zależności i dalsze obowiązki.
 Pakiet ma 211 członków OUTPUTS i 198 publicznych wejść Git, manifest
 `c3efdcff510983a143946d43ab456656090061cd5b9b4b6847abc7f141c0cfa3`.
 Jest checkpointem dokumentacyjnym (`replay=none`); obecnie archiwum zawiera
-także dwanaście etapów badawczych, w tym późniejsze H3_RANGE,
-H3_ZERO_SCALAR, H3_ROOT_LDL i H3_NODE3.
+także trzynaście etapów badawczych, w tym późniejsze H3_RANGE,
+H3_ZERO_SCALAR, H3_ROOT_LDL, H3_NODE3 i H3_NODE2.
 
 [Mapa po domknięciu L_V — 2026-09-19](documents/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md)
 przedstawia zależności i proponowaną kolejność: dokładny kontrakt gry,
@@ -76,12 +76,14 @@ i imaginary bounds, nowa domena div[1/16,2^35] oraz frame.
 [NEXT_INTERFACE](stages/FT1536_H3_NODE3_RUN_001/NEXT_INTERFACE.md) eksportuje
 sześć diagonal branches do pierwszego split_deep/inner LDL2.
 
-**Następne przygotowane zadanie:** [H3_NODE2](documents/FT1536_ZADANIE_ASTRA_H3_NODE2_2026-09-19.md)
-— pierwszy split_deep(logn9)/Adj/LDL_dim2(logn8), sześć diagonal branches,
-po 128 slots. Wymaga jednego c2, source fpr_half i rzeczywistego marginu
-parowanych real/imag values, z zachowaniem mocniejszych korelacji.
-[Bootstrap](background/H3_NODE2_2026-09-19/README.md) ma 120 przypiętych
-członków i gotową kopię w nowym W. To jeden poziom, nie całe niższe drzewo.
+**Odebrany H3_NODE2:** [raport](stages/FT1536_H3_NODE2_RUN_001/REPORT.md)
+ma status `H3_NODE2_PROVED_FOR_PINNED_MODEL`, dokładnie dla split9/LDL8,
+2×3×128 positions. Nowe wyniki obejmują |Im(root D_C)|<1, kernelowy half
+na wszystkich finite words i dodatnie computed pivots.
+[Odbiór](validation/2026-09-19-node2/README.md): 160/160 plików, 26 modułów,
+131 twierdzeń (16 nowych), z jawnym mixed proof scope.
+[NEXT_INTERFACE](stages/FT1536_H3_NODE2_RUN_001/NEXT_INTERFACE.md) podaje
+level7 i warunki dalszej kompozycji parametrycznego binary step.
 
 **Osobne przygotowane zlecenie:** [niezależny audyt FPEMU](documents/FT1536_ZADANIE_ASTRA_FPEMU_AUDIT_2026-09-19.md).
 Właściciel uruchamia drugą Astrę ręcznie w odrębnym W. Audyt obejmuje
@@ -135,6 +137,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [H3_ZERO_SCALAR](stages/FT1536_H3_ZERO_SCALAR_RUN_001/REPORT.md) | **H3_ZERO_SCALAR_PROVED_FOR_PINNED_MODEL** — lokalny zero-aware most, błąd 2^-20; mieszany dowód | `9a76ecf` |
 | [H3_ROOT_LDL](stages/FT1536_H3_ROOT_LDL_RUN_001/REPORT.md) | **H3_ROOT_LDL_PROVED_FOR_PINNED_MODEL** — source FFT/Gram, dodatni subtractive root pivot i frame; mieszany dowód | `3d6bf58` |
 | [H3_NODE3](stages/FT1536_H3_NODE3_RUN_001/REPORT.md) | **H3_NODE3_PROVED_FOR_PINNED_MODEL** — uniform split_top/Adj/LDL3, obie branches i 256 slots; mieszany dowód | `afa52d8` |
+| [H3_NODE2](stages/FT1536_H3_NODE2_RUN_001/REPORT.md) | **H3_NODE2_PROVED_FOR_PINNED_MODEL** — pierwszy binary level8, half i upstream imaginary refinement; mieszany dowód | niniejszy checkpoint |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).
@@ -251,7 +254,8 @@ Analogicznie dla `FT1536_LV_STATIC_RUN_001`, `FT1536_L_NTT_RUN_001`,
 `FT1536_L_NTT_GLOBAL_RUN_001`, `FT1536_L_NTT_FORWARD_RUN_001`
 i `FT1536_L_V_BRIDGE_RUN_001`, `FT1536_M0_CONTRACT_RUN_001`
 oraz `FT1536_H3_RANGE_RUN_001`, `FT1536_H3_ZERO_SCALAR_RUN_001`
-i `FT1536_H3_ROOT_LDL_RUN_001` oraz `FT1536_H3_NODE3_RUN_001`.
+i `FT1536_H3_ROOT_LDL_RUN_001`, `FT1536_H3_NODE3_RUN_001`
+oraz `FT1536_H3_NODE2_RUN_001`.
 Wpis katalogu określa właściwy punkt wejścia. Odbiór Blue jest archiwum
 recenzji i receipts; nie ma zadeklarowanego pojedynczego pełnego runnera.
 

@@ -1,0 +1,21 @@
+formal/Half.lean:38:2: error: unsolved goals
+case pos
+x : Word
+hz : ex x = 0
+he : halfC x = ⟨0, ⋯⟩
+⊢ ¬↑x / 4503599627370496 % 2048 = 0 →
+    0 =
+      if 9223372036854775808 ≤ ↑x then
+        -if ↑x / 4503599627370496 % 2048 = 1 then ↑↑x % 4503599627370496
+          else mant (↑x % 4503599627370496) * p2 (↑x / 4503599627370496 % 2048 - 2)
+      else
+        if ↑x / 4503599627370496 % 2048 = 1 then ↑↑x % 4503599627370496
+        else mant (↑x % 4503599627370496) * p2 (↑x / 4503599627370496 % 2048 - 2)
+formal/Half.lean:51:4: error: No goals to be solved
+formal/Half.lean:40:18: warning: This simp argument is unused:
+  hz
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [halfNum, valueNum, magNum, sg, frac, ex, signed]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

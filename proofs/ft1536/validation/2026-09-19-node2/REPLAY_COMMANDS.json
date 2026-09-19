@@ -1,0 +1,192 @@
+[
+  {
+    "tag": "kernel",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/run.py",
+      "180",
+      "python3",
+      "-B",
+      "scripts/audit.py",
+      "--build"
+    ],
+    "cwd": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_H3_NODE2_RUN_001/maintainer-replay-001/seed/tmp/replay",
+    "exit_code": 0,
+    "limit": 180,
+    "asan_shadow_reservation": false,
+    "elapsed": 30.587189128011232,
+    "stdout": "logs/replay_kernel.stdout",
+    "stderr": "logs/replay_kernel.stderr",
+    "stdout_sha256": "b312e00122eefa50af4bfd4980ab77504250278190f4a4d90330e2a8c0b51f69",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tag": "normal",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/run.py",
+      "240",
+      "python3",
+      "-B",
+      "scripts/controls.py",
+      "normal"
+    ],
+    "cwd": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_H3_NODE2_RUN_001/maintainer-replay-001/seed/tmp/replay",
+    "exit_code": 0,
+    "limit": 240,
+    "asan_shadow_reservation": false,
+    "elapsed": 1.3653557859943248,
+    "stdout": "logs/replay_normal.stdout",
+    "stderr": "logs/replay_normal.stderr",
+    "stdout_sha256": "c2b11859049263a22b7a630d7fcfcb596f799b0911b6631247b034754ba92ae7",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tag": "sanitizers",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/run.py",
+      "240",
+      "python3",
+      "-B",
+      "scripts/controls.py",
+      "san"
+    ],
+    "cwd": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_H3_NODE2_RUN_001/maintainer-replay-001/seed/tmp/replay",
+    "exit_code": 0,
+    "limit": 240,
+    "asan_shadow_reservation": true,
+    "elapsed": 2.4836242779856548,
+    "stdout": "logs/replay_sanitizers.stdout",
+    "stderr": "logs/replay_sanitizers.stderr",
+    "stdout_sha256": "c2b11859049263a22b7a630d7fcfcb596f799b0911b6631247b034754ba92ae7",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tag": "model_values",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/run.py",
+      "150",
+      "python3",
+      "-B",
+      "scripts/check_lean_values.py"
+    ],
+    "cwd": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_H3_NODE2_RUN_001/maintainer-replay-001/seed/tmp/replay",
+    "exit_code": 0,
+    "limit": 150,
+    "asan_shadow_reservation": false,
+    "elapsed": 0.3030648739950266,
+    "stdout": "logs/replay_model_values.stdout",
+    "stderr": "logs/replay_model_values.stderr",
+    "stdout_sha256": "331212ceb9f5d9dbef074677e9c9ddf160e32234e7391fb9c1c36e5339547802",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tag": "numeric",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/run.py",
+      "120",
+      "/home/footfalcon/.local/bin/sage",
+      "scripts/certificate.py"
+    ],
+    "cwd": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_H3_NODE2_RUN_001/maintainer-replay-001/seed/tmp/replay",
+    "exit_code": 0,
+    "limit": 120,
+    "asan_shadow_reservation": false,
+    "elapsed": 1.4883259249909315,
+    "stdout": "logs/replay_numeric.stdout",
+    "stderr": "logs/replay_numeric.stderr",
+    "stdout_sha256": "688d7fad92e7196449ab525ac67b58e1b4ec1419630559045b2e1825c033f1a2",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tag": "oracle",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/run.py",
+      "120",
+      "/home/footfalcon/.local/bin/sage",
+      "scripts/oracle.py"
+    ],
+    "cwd": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_H3_NODE2_RUN_001/maintainer-replay-001/seed/tmp/replay",
+    "exit_code": 0,
+    "limit": 120,
+    "asan_shadow_reservation": false,
+    "elapsed": 1.526042708021123,
+    "stdout": "logs/replay_oracle.stdout",
+    "stderr": "logs/replay_oracle.stderr",
+    "stdout_sha256": "502928bfa167f321f34bbc195ffd06e95ee40f24c6af72d2eaec634b2679a562",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tag": "binding",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/run.py",
+      "30",
+      "python3",
+      "-B",
+      "scripts/source_binding.py"
+    ],
+    "cwd": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_H3_NODE2_RUN_001/maintainer-replay-001/seed/tmp/replay",
+    "exit_code": 0,
+    "limit": 30,
+    "asan_shadow_reservation": false,
+    "elapsed": 0.0676626359927468,
+    "stdout": "logs/replay_binding.stdout",
+    "stderr": "logs/replay_binding.stderr",
+    "stdout_sha256": "8ad952843be8cf5839a7586096a2fe7b7f1c8ff0c699afe2a0448cbfb1a56b98",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tag": "ledger",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/run.py",
+      "30",
+      "python3",
+      "-B",
+      "scripts/ledger.py"
+    ],
+    "cwd": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_H3_NODE2_RUN_001/maintainer-replay-001/seed/tmp/replay",
+    "exit_code": 0,
+    "limit": 30,
+    "asan_shadow_reservation": false,
+    "elapsed": 0.05155480300891213,
+    "stdout": "logs/replay_ledger.stdout",
+    "stderr": "logs/replay_ledger.stderr",
+    "stdout_sha256": "83161dbd3d522234c021bcf6b1336ac5a4b047c9d6ba3a8d77ca62d361e773d6",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tag": "toolchain",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/run.py",
+      "90",
+      "python3",
+      "-B",
+      "scripts/toolchain.py"
+    ],
+    "cwd": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_H3_NODE2_RUN_001/maintainer-replay-001/seed/tmp/replay",
+    "exit_code": 0,
+    "limit": 90,
+    "asan_shadow_reservation": false,
+    "elapsed": 1.533972867007833,
+    "stdout": "logs/replay_toolchain.stdout",
+    "stderr": "logs/replay_toolchain.stderr",
+    "stdout_sha256": "85671481f7b0c953d1ad0d854cf6f6972f35e3075a6ad47622e614a3aafbc938",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

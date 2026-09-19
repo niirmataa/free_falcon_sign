@@ -1,0 +1,12 @@
+1260: falcon_poly_div_autoadj_fft3(fpr *restrict a,
+1261: 	const fpr *restrict b, unsigned logn, unsigned full)
+1262: {
+1263: 	size_t n, hn, u;
+1264: 
+1265: 	n = MKN(logn, full);
+1266: 	hn = n >> 1;
+1267: 	for (u = 0; u < hn; u ++) {
+1268: 		a[u] = fpr_div(a[u], b[u]);
+1269: 		a[u + hn] = fpr_div(a[u + hn], b[u]);
+1270: 	}
+1271: }
