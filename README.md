@@ -226,6 +226,12 @@ the mixed analytical/kernel scope. The next interface is
 [split_top to LDL_dim3](proofs/ft1536/stages/FT1536_H3_ROOT_LDL_RUN_001/NEXT_INTERFACE.md)
 for both branches, followed by the lower tree and ordered center reachability.
 
+The next prepared assignment is [H3_NODE3](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_NODE3_2026-09-19.md):
+`split_top -> Adj -> LDL_dim3` on both root branches and every one of their
+256 physical frequencies, with uniform rational bounds for divisors, pivots,
+multipliers and imaginary errors. The [pinned input set](proofs/ft1536/background/H3_NODE3_2026-09-19/README.md)
+contains the root certificates and source models for the fresh worker directory.
+
 ### Remaining obligations beyond the verifier
 
 - **C-to-model correspondence:** the certificates concern explicit models

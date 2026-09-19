@@ -67,6 +67,14 @@ FFT/Gram, dodatni root denominator, L i subtractive Schur z
 analityczna/kernelowa. [NEXT_INTERFACE](stages/FT1536_H3_ROOT_LDL_RUN_001/NEXT_INTERFACE.md)
 określa dalszy certyfikat split_top/LDL_dim3 dla obu branches.
 
+**Następne przygotowane zadanie:** [H3_NODE3](documents/FT1536_ZADANIE_ASTRA_H3_NODE3_2026-09-19.md)
+— `split_top -> Adj -> LDL_dim3`, obie root branches i wszystkie 256 slots
+każdej. Cel to jeden uniform rational record dodatnich dzielników/pivotów,
+boundów L10/L20/L21 oraz błędów, w tym imaginary.
+[Bootstrap](background/H3_NODE3_2026-09-19/README.md) ma 108 przypiętych
+członków i jest gotowy w świeżym W. Niższe nodes i ordered Reach pozostają
+dalszymi obowiązkami.
+
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
 
@@ -111,7 +119,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [M0](stages/FT1536_M0_CONTRACT_RUN_001/REPORT.md) | **M0_CONTRACT_DEFINED_FOR_PINNED_CANDIDATE** — gra, budżety, framing i dowód pojemności | `95f8015` |
 | [H3_RANGE](stages/FT1536_H3_RANGE_RUN_001/REPORT.md) | **PARTIAL_PROOF** — lokalne floor/proposal/residual; globalna osiągalność otwarta | `cb99e67` |
 | [H3_ZERO_SCALAR](stages/FT1536_H3_ZERO_SCALAR_RUN_001/REPORT.md) | **H3_ZERO_SCALAR_PROVED_FOR_PINNED_MODEL** — lokalny zero-aware most, błąd 2^-20; mieszany dowód | `9a76ecf` |
-| [H3_ROOT_LDL](stages/FT1536_H3_ROOT_LDL_RUN_001/REPORT.md) | **H3_ROOT_LDL_PROVED_FOR_PINNED_MODEL** — source FFT/Gram, dodatni subtractive root pivot i frame; mieszany dowód | niniejszy checkpoint |
+| [H3_ROOT_LDL](stages/FT1536_H3_ROOT_LDL_RUN_001/REPORT.md) | **H3_ROOT_LDL_PROVED_FOR_PINNED_MODEL** — source FFT/Gram, dodatni subtractive root pivot i frame; mieszany dowód | `3d6bf58` |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).
