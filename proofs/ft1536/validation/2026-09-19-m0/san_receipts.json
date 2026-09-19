@@ -1,0 +1,106 @@
+[
+  {
+    "argv": [
+      "/usr/bin/gcc",
+      "-std=c99",
+      "-W",
+      "-Wall",
+      "-O",
+      "-DFPR_IMPL=\"fpr-emulated.h\"",
+      "-DSAMPLER_CODF=0",
+      "-DSAMPLER_CDF=0",
+      "-DCT_BEREXP=1",
+      "-DFT_TERNARY_ADAPTIVE_CDF=1",
+      "-DFT1536_CANDIDATE_PROFILE=1",
+      "-DCLEANSE=1",
+      "-DTRUE_TERNARY_SECRET=1",
+      "-DTRUE_TERNARY_SECRET_MODE=1",
+      "-DTERNARY_KEYGEN_BOUND_SCALE_NUM=1250",
+      "-DTERNARY_KEYGEN_BOUND_SCALE_DEN=100",
+      "-DTERNARY_KEYGEN_MAX_ATTEMPTS=3000000",
+      "-DSIGN_MAX_ATTEMPTS=16",
+      "-O1",
+      "-g",
+      "-fsanitize=address,undefined",
+      "-fno-sanitize-recover=all",
+      "-fno-omit-frame-pointer",
+      "-no-pie",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-Isource",
+      "checks/baseline_main.c",
+      "-Wl,--gc-sections",
+      "-o",
+      "bin/san_baseline"
+    ],
+    "cwd": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_M0_CONTRACT_RUN_001/maintainer-replay-001/seed/tmp/replay",
+    "exit_code": 0,
+    "timeout": false,
+    "limit_seconds": 60,
+    "elapsed": 0.20639037201181054,
+    "stdout": "checks/logs/san/gcc_baseline.stdout",
+    "stderr": "checks/logs/san/gcc_baseline.stderr",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/san_baseline",
+      "witness"
+    ],
+    "cwd": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_M0_CONTRACT_RUN_001/maintainer-replay-001/seed/tmp/replay",
+    "exit_code": 0,
+    "timeout": false,
+    "limit_seconds": 30,
+    "elapsed": 0.004367047018604353,
+    "stdout": "checks/logs/san/baseline_witness.stdout",
+    "stderr": "checks/logs/san/baseline_witness.stderr",
+    "stdout_sha256": "706e6297864d6d4741b18db0a86264ccd75a030a00d078143387abcd7622e921",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/san_baseline",
+      "exact3073"
+    ],
+    "cwd": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_M0_CONTRACT_RUN_001/maintainer-replay-001/seed/tmp/replay",
+    "exit_code": 0,
+    "timeout": false,
+    "limit_seconds": 30,
+    "elapsed": 0.003932691004592925,
+    "stdout": "checks/logs/san/baseline_exact3073.stdout",
+    "stderr": "checks/logs/san/baseline_exact3073.stderr",
+    "stdout_sha256": "364bf3523f5729713bb5133c3f96cffeb6aa1e3b531e82d0f54109aad145016d",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/san_baseline",
+      "zero"
+    ],
+    "cwd": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_M0_CONTRACT_RUN_001/maintainer-replay-001/seed/tmp/replay",
+    "exit_code": 0,
+    "timeout": false,
+    "limit_seconds": 30,
+    "elapsed": 0.003790241986280307,
+    "stdout": "checks/logs/san/baseline_zero.stdout",
+    "stderr": "checks/logs/san/baseline_zero.stderr",
+    "stdout_sha256": "ab216ae992def895150aa024fc710542c1f59838c99e66eb810bd50866e0bad0",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/san_baseline",
+      "not_short"
+    ],
+    "cwd": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_M0_CONTRACT_RUN_001/maintainer-replay-001/seed/tmp/replay",
+    "exit_code": 0,
+    "timeout": false,
+    "limit_seconds": 30,
+    "elapsed": 0.00352736801141873,
+    "stdout": "checks/logs/san/baseline_not_short.stdout",
+    "stderr": "checks/logs/san/baseline_not_short.stderr",
+    "stdout_sha256": "72f8d13a032f8b0f6b4592ba77bea1b1903eb52b124c06da8d2a21de9a0d5b17",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

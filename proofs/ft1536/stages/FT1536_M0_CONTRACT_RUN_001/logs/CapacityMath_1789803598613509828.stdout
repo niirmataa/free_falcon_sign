@@ -1,0 +1,51 @@
+formal/CapacityMath.lean:16:12: error: Tactic `rfl` failed: No `[refl]` lemma registered for relation
+  LE.le
+
+Hint: Add the `[refl]` attribute to reflexivity lemmas for `LE.le` to use this tactic
+
+case zero
+f g : Nat → Int
+h : ∀ (i : Nat), i < 0 → f i ≤ g i
+⊢ sumN 0 f ≤ sumN 0 f
+formal/CapacityMath.lean:30:10: error(lean.unknownIdentifier): Unknown constant `Int.mul_self_nonneg`
+formal/CapacityMath.lean:29:58: error: unsolved goals
+x y : Int
+⊢ x * x + y * y ≤ 2 * A2 x y
+formal/CapacityMath.lean:40:11: error(lean.unknownIdentifier): Unknown constant `Int.mul_self_nonneg`
+formal/CapacityMath.lean:38:49: error: unsolved goals
+x y : Int
+h : x * x + y * y ≤ 2 * A2 x y
+⊢ 0 ≤ A2 x y
+formal/CapacityMath.lean:61:10: error(lean.unknownIdentifier): Unknown constant `Int.mul_self_nonneg`
+formal/CapacityMath.lean:60:60: error: unsolved goals
+x : Int
+⊢ 3302 * absI x ≤ x * x + 2725801
+formal/CapacityMath.lean:90:2: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  e ≥ 3160
+  0 ≤ 8*e - f ≤ 7
+  0 ≤ d ≤ 9907
+  c ≤ 2093922384
+where
+ c := Q a b
+ d := quotSum b
+ e := (staticBits b + 7) / 8
+ f := staticBits b
+CAPACITY_3160 : ∀ (a b : Vec),
+  Q a b < 2093922385 → staticBits b ≤ 25267 ∧ payloadLength b ≤ 3160 ∧ payloadLength b < 4096
+capacity_after_source_norm : ∀ (a b : Vec),
+  SignedVec a →
+    SignedVec b → isShort a b = true → staticBits b ≤ 25267 ∧ payloadLength b ≤ 3160 ∧ payloadLength b < 4096
+'FT1536M0.sum_le' depends on axioms: [propext, sorryAx, Quot.sound]
+'FT1536M0.sum_nonneg' depends on axioms: [propext, sorryAx, Quot.sound]
+'FT1536M0.sum_const' depends on axioms: [propext]
+'FT1536M0.a2_square_bound' depends on axioms: [sorryAx]
+'FT1536M0.a2_nonnegative' depends on axioms: [sorryAx]
+'FT1536M0.Q0_nonnegative' depends on axioms: [propext, sorryAx, Quot.sound]
+'FT1536M0.square_sum_bound' depends on axioms: [propext, sorryAx, Quot.sound]
+'FT1536M0.abs_majorant' depends on axioms: [sorryAx]
+'FT1536M0.l1_bound' depends on axioms: [propext, sorryAx, Quot.sound]
+'FT1536M0.quotient_bound' depends on axioms: [propext, sorryAx, Quot.sound]
+'FT1536M0.CAPACITY_3160' depends on axioms: [propext, sorryAx, Quot.sound]
+'FT1536M0.capacity_after_source_norm' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536M0.integer_endpoint_checks' does not depend on any axioms

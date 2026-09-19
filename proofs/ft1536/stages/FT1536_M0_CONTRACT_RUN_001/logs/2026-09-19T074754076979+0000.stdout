@@ -1,0 +1,21 @@
+framing_injective : ∀ (r s m n : Bytes),
+  List.length r = 40 → List.length s = 40 → hashInput r m = hashInput s n → r = s ∧ m = n
+repartition_rejected : ∀ (r : Bytes) (a : Byte), List.length r = 39 → nonceOK (r ++ [a]) = true ∧ nonceOK r = false
+parent_shake_budget : ∀ (attempts : Nat), attempts ≤ 16 → parentBytes attempts ≤ 936
+'FT1536M0.framing_injective' depends on axioms: [propext]
+'FT1536M0.transport_roundtrip' depends on axioms: [propext]
+'FT1536M0.repartition_same_input' depends on axioms: [propext]
+'FT1536M0.repartition_rejected' depends on axioms: [propext]
+'FT1536M0.parent_shake_budget' depends on axioms: [propext, Quot.sound]
+'FT1536M0.exact_parent_budget' does not depend on any axioms
+Framing 0 0.364
+witness_norm : Q zeroVec witness = 2093088768
+witness_length : payloadLength witness = 3156
+'FT1536M0.positive_encoder_length' depends on axioms: [propext, Quot.sound]
+'FT1536M0.counter_index_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536M0.witness_signed' does not depend on any axioms
+'FT1536M0.witness_norm' does not depend on any axioms
+'FT1536M0.witness_length' does not depend on any axioms
+'FT1536M0.witness_short' does not depend on any axioms
+'FT1536M0.witness_buffers' does not depend on any axioms
+CapacityEndpoint 0 4.821

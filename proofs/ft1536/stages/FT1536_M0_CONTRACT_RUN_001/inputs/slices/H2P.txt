@@ -1,0 +1,32 @@
+/* see falcon-internal.h */
+void
+falcon_hash_to_point(shake_context *sc, unsigned q, uint16_t *x, unsigned logn)
+{
+	/*
+	 * TODO: make a constant-time version of this process, in case
+	 * the signed data is confidential. We could generate twice as
+	 * many values as necessary, then move proper values into place
+	 * with logn passes that perform conditional swaps.
+	 */
+
+	size_t n;
+	uint32_t lim;
+
+	if (q == 12289) {
+		n = (size_t)1 << logn;
+	} else {
+		n = (size_t)3 << (logn - 1);
+	}
+	lim = (uint32_t)65536 - ((uint32_t)65536 % q);
+	while (n > 0) {
+		unsigned char buf[2];
+		uint32_t w;
+
+		shake_extract(sc, buf, sizeof buf);
+		w = (buf[0] << 8) | buf[1];
+		if (w < lim) {
+			*x ++ = (uint16_t)(w % q);
+			n --;
+		}
+	}
+}

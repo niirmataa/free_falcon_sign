@@ -19,10 +19,12 @@ do omówienia przed wyborem następnego zadania Astry.
 
 Po omówieniu właściciel wybrał pojemność **4096 bajtów payloadu Sign**
 (nonce 40 bajtów osobno) oraz **parametryczny** cel redukcji.
-[Bieżące zlecenie M0](documents/FT1536_ZADANIE_ASTRA_M0_CONTRACT_2026-09-19.md)
-ma zdefiniować dokładny kontrakt gry i ledger, sprawdzić bound długości
-STATIC oraz przygotować wejście do późniejszego H3. Jest to zlecenie,
-nie raport ukończenia M0 ani deklaracja integracji nowego opakowania.
+[Zlecenie M0](documents/FT1536_ZADANIE_ASTRA_M0_CONTRACT_2026-09-19.md)
+zakończyło się wynikiem
+[M0_CONTRACT_DEFINED_FOR_PINNED_CANDIDATE](stages/FT1536_M0_CONTRACT_RUN_001/REPORT.md).
+Kontrakt, 22-wierszowy ledger i dowód payloadu STATIC <=3160 są gotowe.
+Następny interfejs źródłowy to [H3](stages/FT1536_M0_CONTRACT_RUN_001/H3_INTERFACE.md).
+M0 nie jest jeszcze dowodem końcowej redukcji ani integracją opakowania.
 
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
@@ -65,6 +67,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | L_NTT_GLOBAL | globalny inverse; na tym etapie forward_product pozostawało otwarte | `d67228d` |
 | [L_NTT_FORWARD](stages/FT1536_L_NTT_FORWARD_RUN_001/REPORT.md) | **L_NTT_PROVED_FOR_PINNED_MODEL** — forward, iloczyn i pełna kompozycja | `71bbb35` |
 | [L_V_BRIDGE](stages/FT1536_L_V_BRIDGE_RUN_001/REPORT.md) | **L_V_PROVED_FOR_PINNED_MODEL** — pełny most bajtowy Verify → Ext0 dla kandydata | `17f8f8b` |
+| [M0](stages/FT1536_M0_CONTRACT_RUN_001/REPORT.md) | **M0_CONTRACT_DEFINED_FOR_PINNED_CANDIDATE** — gra, budżety, framing i dowód pojemności | commit dodający [wpis katalogu](catalog/FT1536_M0_CONTRACT_RUN_001.json) |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).
@@ -123,6 +126,21 @@ Historyczny kontrprzykład S17 i wcześniejsze wyniki częściowe zachowują swo
 zakresy. Pełne L_V nie zamyka samplera, rozkładu kluczy, EUF-CMA, MT-ISIS
 ani warunkowych transferów strat redukcji.
 
+### Kontrakt i pojemność po M0
+
+[GAME](stages/FT1536_M0_CONTRACT_RUN_001/GAME.md),
+[RESOURCE_MODEL](stages/FT1536_M0_CONTRACT_RUN_001/RESOURCE_MODEL.md) i
+[HOP_LEDGER](stages/FT1536_M0_CONTRACT_RUN_001/HOP_LEDGER.md) definiują
+parametryczny klasyczny cel EUF-CMA. Własne obowiązki źródłowe i rozkładowe
+mają jawne statusy; `security_reduction_proved=false`.
+
+Nowy [dowód pojemności](stages/FT1536_M0_CONTRACT_RUN_001/CAPACITY.md) daje
+po zdefiniowanym source norm acceptance payload STATIC <=3160 bajtów,
+więc wybrany bufor 4096 wystarcza. Syntetyczny short vector wymaga 3156:
+stare pojemności 2049 i 3073 nie wystarczają uniwersalnie. Nonce40 jest osobno.
+[Odbiór M0](validation/2026-09-19-m0/README.md) odtworzył 273/273 pliki,
+67 modułów i 535 twierdzeń (43 nowe), wraz z normal/ASan/UBSan.
+
 Odtwarzanie z czystego checkoutu Git i ukrytymi oryginałami sprawdzono
 2026-09-18: [zapis kontroli](validation/2026-09-18/README.md).
 
@@ -148,7 +166,7 @@ python3 -B proofs/ft1536/tools/archive.py replay FT1536_L_RHO_RUN_001 --run repl
 
 Analogicznie dla `FT1536_LV_STATIC_RUN_001`, `FT1536_L_NTT_RUN_001`,
 `FT1536_L_NTT_GLOBAL_RUN_001`, `FT1536_L_NTT_FORWARD_RUN_001`
-i `FT1536_L_V_BRIDGE_RUN_001`.
+i `FT1536_L_V_BRIDGE_RUN_001` oraz `FT1536_M0_CONTRACT_RUN_001`.
 Wpis katalogu określa właściwy punkt wejścia. Odbiór Blue jest archiwum
 recenzji i receipts; nie ma zadeklarowanego pojedynczego pełnego runnera.
 
