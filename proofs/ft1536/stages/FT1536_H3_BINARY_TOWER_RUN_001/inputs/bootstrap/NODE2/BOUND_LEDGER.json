@@ -1,0 +1,462 @@
+{
+  "schema": "H3_NODE2_BOUND_LEDGER_V1",
+  "status": "H3_NODE2_PROVED_FOR_PINNED_MODEL",
+  "level": {
+    "split_logn": 9,
+    "ldl_logn": 8,
+    "full": 0,
+    "positions": "2*3*128"
+  },
+  "rows": [
+    {
+      "id": "NODE3_CONSUMPTION",
+      "status": "PROVED_REUSE_WITH_DOMAINS",
+      "claim": "Unchanged P_key, NODE3 source/reference and tau bounds with pins; no old box substituted for full record.",
+      "evidence": [
+        {
+          "path": "REUSED_RESULTS.md",
+          "sha256": "de841678937af278b5e092588c4453d5b75d5b2cd86d4143c7db8c67273abe4d"
+        },
+        {
+          "path": "inputs/bootstrap/NODE3/NODE3_CERTIFICATE.json",
+          "sha256": "ed7944b9a015437b527e1c82813e4aa8779af3764bb7a298538f6d753a884ea5"
+        }
+      ]
+    },
+    {
+      "id": "UPSTREAM_REFINEMENT",
+      "status": "PROVED_SOURCE_ANALYTIC_WITH_EXACT_CERTIFICATE",
+      "claim": "New root imag<8U*j<1 and NODE3 imaginary vector refinement, without changing old certificates.",
+      "evidence": [
+        {
+          "path": "UPSTREAM_REFINEMENT.md",
+          "sha256": "040975e5653d79e82eb3584a1732791931ca890302c6dfbeb33a30ee3a5da742"
+        },
+        {
+          "path": "artifacts/numeric_certificate.json",
+          "sha256": "a1b1040aeed3f9101a1f91b49a0fb24a0f8d9fea3fc47443a13a9b8ee976d8b8"
+        }
+      ]
+    },
+    {
+      "id": "SPLIT_DEEP_MAP",
+      "status": "PROVED_ANALYTIC_WITH_KERNEL_INDEX_AND_EXACT_AUDIT",
+      "claim": "All128 pairs x,-x -> x\u00b2, actual square256+f, half scaling, Adj.",
+      "evidence": [
+        {
+          "path": "ANALYTIC_PROOF.md",
+          "sha256": "188f532df7c2706cdd53066bccfdf70975e9bd3c2795a4be8a5b1ca3a0e6b0d0"
+        },
+        {
+          "path": "artifacts/numeric_certificate.json",
+          "sha256": "a1b1040aeed3f9101a1f91b49a0fb24a0f8d9fea3fc47443a13a9b8ee976d8b8"
+        },
+        {
+          "path": "formal/BinaryMargin.lean",
+          "sha256": "93969805bdf5ca4f54bf33e1a7dcde8f455ee24a9463c9f781f54710f21a5b03"
+        }
+      ]
+    },
+    {
+      "id": "HALF_DOMAIN_ERROR",
+      "status": "PROVED_KERNEL_WITH_SOURCE_TRANSLATION",
+      "claim": "All finite words: error<=2^-1023; zeros/exp0, exponent1 subnormal, exponent>=2 exact; raw bits separate.",
+      "evidence": [
+        {
+          "path": "formal/Half.lean",
+          "sha256": "685bb4bacd1cd92e3f53953f50e63097d7c646c3468667471def2f4c5c0e91ee"
+        },
+        {
+          "path": "scripts/half_model.py",
+          "sha256": "fd1a527791e2292303caad3e53cc9147f1e94833dc6a71c351ac2426359d5b10"
+        },
+        {
+          "path": "artifacts/model_values.json",
+          "sha256": "331212ceb9f5d9dbef074677e9c9ddf160e32234e7391fb9c1c36e5339547802"
+        }
+      ]
+    },
+    {
+      "id": "SPLIT_DEEP_ERROR",
+      "status": "PROVED_SOURCE_ANALYTIC_WITH_EXACT_CERTIFICATE",
+      "claim": "Actual add/half and sub/mul/half; delta1/16384 or1/32 including half boundaries.",
+      "evidence": [
+        {
+          "path": "ANALYTIC_PROOF.md",
+          "sha256": "188f532df7c2706cdd53066bccfdf70975e9bd3c2795a4be8a5b1ca3a0e6b0d0"
+        },
+        {
+          "path": "artifacts/numeric_certificate.json",
+          "sha256": "a1b1040aeed3f9101a1f91b49a0fb24a0f8d9fea3fc47443a13a9b8ee976d8b8"
+        }
+      ]
+    },
+    {
+      "id": "PAIRED_REAL_IMAG_MARGIN",
+      "status": "PROVED_SOURCE_ANALYTIC_WITH_KERNEL_IDENTITY",
+      "claim": "ra*rb-(tau_a-tau_b)\u00b2/4 retained; refined bounds give H eigen lower1/16 or4.",
+      "evidence": [
+        {
+          "path": "UPSTREAM_REFINEMENT.md",
+          "sha256": "040975e5653d79e82eb3584a1732791931ca890302c6dfbeb33a30ee3a5da742"
+        },
+        {
+          "path": "ANALYTIC_PROOF.md",
+          "sha256": "188f532df7c2706cdd53066bccfdf70975e9bd3c2795a4be8a5b1ca3a0e6b0d0"
+        },
+        {
+          "path": "formal/BinaryMargin.lean",
+          "sha256": "93969805bdf5ca4f54bf33e1a7dcde8f455ee24a9463c9f781f54710f21a5b03"
+        }
+      ]
+    },
+    {
+      "id": "FIRST_DIVISOR",
+      "status": "PROVED_SOURCE_ANALYTIC",
+      "claim": "Source real s0 in proved existing div[1/16,2^35], before division; no future pivot premise.",
+      "evidence": [
+        {
+          "path": "ANALYTIC_PROOF.md",
+          "sha256": "188f532df7c2706cdd53066bccfdf70975e9bd3c2795a4be8a5b1ca3a0e6b0d0"
+        },
+        {
+          "path": "formal/BinaryConstants.lean",
+          "sha256": "b8475f3ca416b870e0d7ffe11c9832c80b70489112fa0710c404c3ec6fab1eca"
+        }
+      ]
+    },
+    {
+      "id": "NODE2_MULTIPLIER",
+      "status": "PROVED_SOURCE_ANALYTIC_WITH_EXACT_CERTIFICATE",
+      "claim": "Direct real-slot divisions; norm L<2 and explicit reference errors.",
+      "evidence": [
+        {
+          "path": "ANALYTIC_PROOF.md",
+          "sha256": "188f532df7c2706cdd53066bccfdf70975e9bd3c2795a4be8a5b1ca3a0e6b0d0"
+        },
+        {
+          "path": "artifacts/numeric_certificate.json",
+          "sha256": "a1b1040aeed3f9101a1f91b49a0fb24a0f8d9fea3fc47443a13a9b8ee976d8b8"
+        }
+      ]
+    },
+    {
+      "id": "NODE2_SCHUR",
+      "status": "PROVED_SOURCE_ANALYTIC_WITH_EXACT_CERTIFICATE",
+      "claim": "Actual subtractive sequence; real d11 lower1/32 or2, finite normal, explicit complex errors.",
+      "evidence": [
+        {
+          "path": "ANALYTIC_PROOF.md",
+          "sha256": "188f532df7c2706cdd53066bccfdf70975e9bd3c2795a4be8a5b1ca3a0e6b0d0"
+        },
+        {
+          "path": "artifacts/numeric_certificate.json",
+          "sha256": "a1b1040aeed3f9101a1f91b49a0fb24a0f8d9fea3fc47443a13a9b8ee976d8b8"
+        }
+      ]
+    },
+    {
+      "id": "IMAGINARY_PROPAGATION",
+      "status": "PROVED_SOURCE_ANALYTIC_WITH_KERNEL_HALF",
+      "claim": "Imag s0 may be subnormal; generic add bound, no unproved raw sub(x,+0) preservation. Output imag<=1/8192 or9/8.",
+      "evidence": [
+        {
+          "path": "ANALYTIC_PROOF.md",
+          "sha256": "188f532df7c2706cdd53066bccfdf70975e9bd3c2795a4be8a5b1ca3a0e6b0d0"
+        },
+        {
+          "path": "formal/Half.lean",
+          "sha256": "685bb4bacd1cd92e3f53953f50e63097d7c646c3468667471def2f4c5c0e91ee"
+        },
+        {
+          "path": "artifacts/controls_normal.json",
+          "sha256": "5e99d61bda41b6ee1ed22f39496915aea6ba2b2ee1ea4debc7c1cfa9a0f5824e"
+        }
+      ]
+    },
+    {
+      "id": "NODE2_FRAME",
+      "status": "PROVED_SOURCE_ANALYTIC_WITH_KERNEL_FRAME",
+      "claim": "NODE3 diagonal lifetimes, real source read order and defined-prefix input binding; no earlier-recursion totality.",
+      "evidence": [
+        {
+          "path": "NODE2_FRAME.md",
+          "sha256": "5702c4faf80d714aca3474be18977f42ec90b7a1ed984a9a3de1083ee944abb0"
+        },
+        {
+          "path": "formal/BinaryFrame.lean",
+          "sha256": "40cdf25c0ee55323238602a437c605b685bb8b86a6dd563b3f40a9f8899e1eec"
+        },
+        {
+          "path": "artifacts/controls_normal.json",
+          "sha256": "5e99d61bda41b6ee1ed22f39496915aea6ba2b2ee1ea4debc7c1cfa9a0f5824e"
+        }
+      ]
+    },
+    {
+      "id": "LOWER_TREE_OPEN",
+      "status": "OPEN",
+      "claim": "Level7 and all remaining lower nodes require separate domain/margin/frame composition.",
+      "evidence": [
+        {
+          "path": "NEXT_INTERFACE.md",
+          "sha256": "0f05306a0b5680ec9ef2e1e25a8e8ccdce4150e8c235626ebbbc452252385029"
+        }
+      ]
+    },
+    {
+      "id": "INITIAL_TARGETS_OPEN",
+      "status": "OPEN",
+      "claim": "Separate FFT(c)/basis/inverse(q) source initialization.",
+      "evidence": [
+        {
+          "path": "NEXT_INTERFACE.md",
+          "sha256": "0f05306a0b5680ec9ef2e1e25a8e8ccdce4150e8c235626ebbbc452252385029"
+        },
+        {
+          "path": "inputs/bootstrap/H3/REACHABILITY.md",
+          "sha256": "b44ea093f97c66a186abca0ac8c1d8a680bd3feec1f9121e165c5f623f1809e2"
+        }
+      ]
+    },
+    {
+      "id": "ORDERED_REACH_OPEN",
+      "status": "OPEN",
+      "claim": "Full emitted/M0 prefix -> NumericCenter before ZERO; includes pre-dss/norm rejected/fault branches.",
+      "evidence": [
+        {
+          "path": "NEXT_INTERFACE.md",
+          "sha256": "0f05306a0b5680ec9ef2e1e25a8e8ccdce4150e8c235626ebbbc452252385029"
+        },
+        {
+          "path": "inputs/bootstrap/M0/H3_INTERFACE.md",
+          "sha256": "2e427f66d242cd4a95f777b9be8948ced315d3c683727d21e965c5fb3934e97c"
+        }
+      ]
+    }
+  ],
+  "constants": [
+    {
+      "branch": 0,
+      "diagonal": 0,
+      "input_real_lower": "1/8",
+      "input_real_upper": "33554432",
+      "input_imag_abs_upper": "0",
+      "input_complex_cap": "67108864",
+      "split_rounding_norm_error": "1/16384",
+      "split_error_to_exact_reference": "19/16384",
+      "pair_determinant_lower": "1/64",
+      "comparison_eigen_lower": "1/16",
+      "s0_real_lower": "1/16",
+      "s0_real_upper": "67108864",
+      "d11_real_lower": "1/32",
+      "d11_real_upper": "134217728",
+      "s0_imag_abs_upper": "1/8192",
+      "d11_imag_abs_upper": "1/8192",
+      "L_norm_upper": "2",
+      "L_error_norm": "1/16",
+      "d11_error_norm": "1/128",
+      "source_L_error_to_H": "1/140737488355328",
+      "source_d11_real_error_to_H": "1/65536",
+      "source_imag_error_to_split_tau": "1/65536",
+      "half_may_create_subnormal": true,
+      "split_imag_class": "finite, possibly zero/subnormal/normal",
+      "d11_L_class": "finite normal or zero; positive real pivot normal",
+      "div_denominator_interval": [
+        "1/16",
+        "34359738368"
+      ],
+      "operand_abs_cap": "2^100",
+      "intermediate_product_norm_upper": "268435456",
+      "checked_split_round_error": "2714342820967228019883602423080035449292514489567410051590681828032979111102051406534480618310454272326771567966067626988303659586795639827321110200712611164402838561020181497819335060725961883509008960866874425564273908129679877530473333253821430570248805081046372064520052322242643714398748675/669692879491417075592765655662501131600878007315958504652343992731469406953085076558248986759809911329746670573470716765741965803557696277249036098418660925245910485926514436588817162816398196367372136384565404686473871329212422972447846496629816432160699779855408885478776864478289024177325354254336",
+      "checked_eigen_margin": "1023/8192"
+    },
+    {
+      "branch": 0,
+      "diagonal": 1,
+      "input_real_lower": "1/8",
+      "input_real_upper": "33554432",
+      "input_imag_abs_upper": "1/262144",
+      "input_complex_cap": "67108864",
+      "split_rounding_norm_error": "1/16384",
+      "split_error_to_exact_reference": "129/16384",
+      "pair_determinant_lower": "1073741823/68719476736",
+      "comparison_eigen_lower": "1/16",
+      "s0_real_lower": "1/16",
+      "s0_real_upper": "67108864",
+      "d11_real_lower": "1/32",
+      "d11_real_upper": "134217728",
+      "s0_imag_abs_upper": "1/8192",
+      "d11_imag_abs_upper": "1/8192",
+      "L_norm_upper": "2",
+      "L_error_norm": "1/2",
+      "d11_error_norm": "1/16",
+      "source_L_error_to_H": "1/140737488355328",
+      "source_d11_real_error_to_H": "1/65536",
+      "source_imag_error_to_split_tau": "1/65536",
+      "half_may_create_subnormal": true,
+      "split_imag_class": "finite, possibly zero/subnormal/normal",
+      "d11_L_class": "finite normal or zero; positive real pivot normal",
+      "div_denominator_interval": [
+        "1/16",
+        "34359738368"
+      ],
+      "operand_abs_cap": "2^100",
+      "intermediate_product_norm_upper": "268435456",
+      "checked_split_round_error": "2714342820967228019883602423080035449292514489567410051590681828032979111102051406534480618310454272326771567966067626988303659586795639827321110200712611164402838561020181497819335060725961883509008960866874425564273908129679877530473333253821430570248805081046372064520052322242643714398748675/669692879491417075592765655662501131600878007315958504652343992731469406953085076558248986759809911329746670573470716765741965803557696277249036098418660925245910485926514436588817162816398196367372136384565404686473871329212422972447846496629816432160699779855408885478776864478289024177325354254336",
+      "checked_eigen_margin": "32735/262144"
+    },
+    {
+      "branch": 0,
+      "diagonal": 2,
+      "input_real_lower": "1/8",
+      "input_real_upper": "33554432",
+      "input_imag_abs_upper": "1/262144",
+      "input_complex_cap": "67108864",
+      "split_rounding_norm_error": "1/16384",
+      "split_error_to_exact_reference": "2049/16384",
+      "pair_determinant_lower": "1073741823/68719476736",
+      "comparison_eigen_lower": "1/16",
+      "s0_real_lower": "1/16",
+      "s0_real_upper": "67108864",
+      "d11_real_lower": "1/32",
+      "d11_real_upper": "134217728",
+      "s0_imag_abs_upper": "1/8192",
+      "d11_imag_abs_upper": "1/8192",
+      "L_norm_upper": "2",
+      "L_error_norm": "3",
+      "d11_error_norm": "1",
+      "source_L_error_to_H": "1/140737488355328",
+      "source_d11_real_error_to_H": "1/65536",
+      "source_imag_error_to_split_tau": "1/65536",
+      "half_may_create_subnormal": true,
+      "split_imag_class": "finite, possibly zero/subnormal/normal",
+      "d11_L_class": "finite normal or zero; positive real pivot normal",
+      "div_denominator_interval": [
+        "1/16",
+        "34359738368"
+      ],
+      "operand_abs_cap": "2^100",
+      "intermediate_product_norm_upper": "268435456",
+      "checked_split_round_error": "2714342820967228019883602423080035449292514489567410051590681828032979111102051406534480618310454272326771567966067626988303659586795639827321110200712611164402838561020181497819335060725961883509008960866874425564273908129679877530473333253821430570248805081046372064520052322242643714398748675/669692879491417075592765655662501131600878007315958504652343992731469406953085076558248986759809911329746670573470716765741965803557696277249036098418660925245910485926514436588817162816398196367372136384565404686473871329212422972447846496629816432160699779855408885478776864478289024177325354254336",
+      "checked_eigen_margin": "32735/262144"
+    },
+    {
+      "branch": 1,
+      "diagonal": 0,
+      "input_real_lower": "8",
+      "input_real_upper": "17179869184",
+      "input_imag_abs_upper": "17/16",
+      "input_complex_cap": "34359738368",
+      "split_rounding_norm_error": "1/32",
+      "split_error_to_exact_reference": "134217731/32",
+      "pair_determinant_lower": "16095/256",
+      "comparison_eigen_lower": "4",
+      "s0_real_lower": "4",
+      "s0_real_upper": "34359738368",
+      "d11_real_lower": "2",
+      "d11_real_upper": "68719476736",
+      "s0_imag_abs_upper": "9/8",
+      "d11_imag_abs_upper": "9/8",
+      "L_norm_upper": "2",
+      "L_error_norm": "3",
+      "d11_error_norm": "33554432",
+      "source_L_error_to_H": "1/140737488355328",
+      "source_d11_real_error_to_H": "1/128",
+      "source_imag_error_to_split_tau": "1/128",
+      "half_may_create_subnormal": true,
+      "split_imag_class": "finite, possibly zero/subnormal/normal",
+      "d11_L_class": "finite normal or zero; positive real pivot normal",
+      "div_denominator_interval": [
+        "1/16",
+        "34359738368"
+      ],
+      "operand_abs_cap": "2^100",
+      "intermediate_product_norm_upper": "137438953472",
+      "checked_split_round_error": "1389743524335220746180404440616978150037767418658513946414429095952885304884250320145654076574952587431307042798626625018011473708439367591588408422764856916174253343242332926883499551091692484356612587963839705888908240962396097295602346625956572451967388201495742092178356341095598640492284215299/669692879491417075592765655662501131600878007315958504652343992731469406953085076558248986759809911329746670573470716765741965803557696277249036098418660925245910485926514436588817162816398196367372136384565404686473871329212422972447846496629816432160699779855408885478776864478289024177325354254336",
+      "checked_eigen_margin": "55/8"
+    },
+    {
+      "branch": 1,
+      "diagonal": 1,
+      "input_real_lower": "8",
+      "input_real_upper": "17179869184",
+      "input_imag_abs_upper": "545/512",
+      "input_complex_cap": "34359738368",
+      "split_rounding_norm_error": "1/32",
+      "split_error_to_exact_reference": "1073741825/32",
+      "pair_determinant_lower": "16480191/262144",
+      "comparison_eigen_lower": "4",
+      "s0_real_lower": "4",
+      "s0_real_upper": "34359738368",
+      "d11_real_lower": "2",
+      "d11_real_upper": "68719476736",
+      "s0_imag_abs_upper": "9/8",
+      "d11_imag_abs_upper": "9/8",
+      "L_norm_upper": "2",
+      "L_error_norm": "3",
+      "d11_error_norm": "268435456",
+      "source_L_error_to_H": "1/140737488355328",
+      "source_d11_real_error_to_H": "1/128",
+      "source_imag_error_to_split_tau": "1/128",
+      "half_may_create_subnormal": true,
+      "split_imag_class": "finite, possibly zero/subnormal/normal",
+      "d11_L_class": "finite normal or zero; positive real pivot normal",
+      "div_denominator_interval": [
+        "1/16",
+        "34359738368"
+      ],
+      "operand_abs_cap": "2^100",
+      "intermediate_product_norm_upper": "137438953472",
+      "checked_split_round_error": "1389743524335220746180404440616978150037767418658513946414429095952885304884250320145654076574952587431307042798626625018011473708439367591588408422764856916174253343242332926883499551091692484356612587963839705888908240962396097295602346625956572451967388201495742092178356341095598640492284215299/669692879491417075592765655662501131600878007315958504652343992731469406953085076558248986759809911329746670573470716765741965803557696277249036098418660925245910485926514436588817162816398196367372136384565404686473871329212422972447846496629816432160699779855408885478776864478289024177325354254336",
+      "checked_eigen_margin": "3519/512"
+    },
+    {
+      "branch": 1,
+      "diagonal": 2,
+      "input_real_lower": "8",
+      "input_real_upper": "17179869184",
+      "input_imag_abs_upper": "545/512",
+      "input_complex_cap": "34359738368",
+      "split_rounding_norm_error": "1/32",
+      "split_error_to_exact_reference": "17179869185/32",
+      "pair_determinant_lower": "16480191/262144",
+      "comparison_eigen_lower": "4",
+      "s0_real_lower": "4",
+      "s0_real_upper": "34359738368",
+      "d11_real_lower": "2",
+      "d11_real_upper": "68719476736",
+      "s0_imag_abs_upper": "9/8",
+      "d11_imag_abs_upper": "9/8",
+      "L_norm_upper": "2",
+      "L_error_norm": "3",
+      "d11_error_norm": "4294967296",
+      "source_L_error_to_H": "1/140737488355328",
+      "source_d11_real_error_to_H": "1/128",
+      "source_imag_error_to_split_tau": "1/128",
+      "half_may_create_subnormal": true,
+      "split_imag_class": "finite, possibly zero/subnormal/normal",
+      "d11_L_class": "finite normal or zero; positive real pivot normal",
+      "div_denominator_interval": [
+        "1/16",
+        "34359738368"
+      ],
+      "operand_abs_cap": "2^100",
+      "intermediate_product_norm_upper": "137438953472",
+      "checked_split_round_error": "1389743524335220746180404440616978150037767418658513946414429095952885304884250320145654076574952587431307042798626625018011473708439367591588408422764856916174253343242332926883499551091692484356612587963839705888908240962396097295602346625956572451967388201495742092178356341095598640492284215299/669692879491417075592765655662501131600878007315958504652343992731469406953085076558248986759809911329746670573470716765741965803557696277249036098418660925245910485926514436588817162816398196367372136384565404686473871329212422972447846496629816432160699779855408885478776864478289024177325354254336",
+      "checked_eigen_margin": "3519/512"
+    }
+  ],
+  "proof_kind": "MIXED_KERNEL_AND_UNIVERSAL_ANALYTICAL_SOURCE_PROOF",
+  "full_node2_theorem_kernelized": false,
+  "H3_range_proved": false,
+  "global_reachability_proved": false,
+  "full_internal_tree_proved": false,
+  "sampler_law_proved": false,
+  "security_reduction_proved": false,
+  "baseline_source_integrated": true,
+  "source_changed": false,
+  "new_source_patch_integrated": false,
+  "protocol_wrapper_integrated": false,
+  "owner_accepted": false
+}

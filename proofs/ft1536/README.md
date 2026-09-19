@@ -22,8 +22,8 @@ osiągnięcia, T2C3/T5, kontrakt M0, graf zależności i dalsze obowiązki.
 Pakiet ma 211 członków OUTPUTS i 198 publicznych wejść Git, manifest
 `c3efdcff510983a143946d43ab456656090061cd5b9b4b6847abc7f141c0cfa3`.
 Jest checkpointem dokumentacyjnym (`replay=none`); obecnie archiwum zawiera
-także czternaście etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
-H3_ZERO_SCALAR, H3_ROOT_LDL, H3_NODE3, H3_NODE2 i audyt FPEMU.
+także piętnaście etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
+H3_ZERO_SCALAR, H3_ROOT_LDL, H3_NODE3, H3_NODE2, BINARY_TOWER i audyt FPEMU.
 
 [Mapa po domknięciu L_V — 2026-09-19](documents/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md)
 przedstawia zależności i proponowaną kolejność: dokładny kontrakt gry,
@@ -85,13 +85,14 @@ na wszystkich finite words i dodatnie computed pivots.
 [NEXT_INTERFACE](stages/FT1536_H3_NODE2_RUN_001/NEXT_INTERFACE.md) podaje
 level7 i warunki dalszej kompozycji parametrycznego binary step.
 
-**Następne przygotowane zadanie:** [H3_BINARY_TOWER](documents/FT1536_ZADANIE_ASTRA_H3_BINARY_TOWER_2026-09-19.md),
-do ręcznego uruchomienia przez właściciela. Cel: jawny level7, inwariant
-wszystkich pozostałych levels7–1 oraz zdefiniowane kończące się wykonanie
-dwunastu raw inner7 subtrees. Sam poziom7 lub same local slices dają partial.
-[Bootstrap](background/H3_BINARY_TOWER_2026-09-19/README.md) ma 137 przypiętych
-członków. Loader assembly/normalization, initial targets i global Reach mają
-nadal własne dalsze interfejsy.
+**Odebrany BINARY_TOWER:** [raport](stages/FT1536_H3_BINARY_TOWER_RUN_001/REPORT.md)
+ma status `H3_BINARY_TOWER_PROVED_FOR_PINNED_MODEL`: wszystkie levels7–1
+oraz actual defined terminating execution12 raw inner7 subtrees.
+[Odbiór](validation/2026-09-20-binary-tower/README.md):175/175 plików,
+30 modułów,147 twierdzeń (16 nowych), mixed analytical/kernel scope.
+[NEXT_INTERFACE](stages/FT1536_H3_BINARY_TOWER_RUN_001/NEXT_INTERFACE.md)
+zachowuje pełny raw-loader assembly, stable normalization, targets i Reach
+jako dalsze odrębne obowiązki.
 
 **Odebrany audyt FPEMU:** [raport](stages/FT1536_FPEMU_AUDIT_RUN_001/REPORT.md)
 ma status `CONFIRMED_ISSUE` w zakresie generic numeric fpr_lt(-0,+0)=1
@@ -150,7 +151,8 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [H3_ROOT_LDL](stages/FT1536_H3_ROOT_LDL_RUN_001/REPORT.md) | **H3_ROOT_LDL_PROVED_FOR_PINNED_MODEL** — source FFT/Gram, dodatni subtractive root pivot i frame; mieszany dowód | `3d6bf58` |
 | [H3_NODE3](stages/FT1536_H3_NODE3_RUN_001/REPORT.md) | **H3_NODE3_PROVED_FOR_PINNED_MODEL** — uniform split_top/Adj/LDL3, obie branches i 256 slots; mieszany dowód | `afa52d8` |
 | [H3_NODE2](stages/FT1536_H3_NODE2_RUN_001/REPORT.md) | **H3_NODE2_PROVED_FOR_PINNED_MODEL** — pierwszy binary level8, half i upstream imaginary refinement; mieszany dowód | `b27a055` |
-| [FPEMU audit](stages/FT1536_FPEMU_AUDIT_RUN_001/REPORT.md) | **CONFIRMED_ISSUE** — generic signed-zero compare i compiled floor branch; timing NOT_RUN | niniejszy checkpoint |
+| [FPEMU audit](stages/FT1536_FPEMU_AUDIT_RUN_001/REPORT.md) | **CONFIRMED_ISSUE** — generic signed-zero compare i compiled floor branch; timing NOT_RUN | `8bbab81` |
+| [BINARY_TOWER](stages/FT1536_H3_BINARY_TOWER_RUN_001/REPORT.md) | **H3_BINARY_TOWER_PROVED_FOR_PINNED_MODEL** — levels7–1 i12 total raw subtrees; mieszany dowód | niniejszy checkpoint |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).
@@ -268,7 +270,8 @@ Analogicznie dla `FT1536_LV_STATIC_RUN_001`, `FT1536_L_NTT_RUN_001`,
 i `FT1536_L_V_BRIDGE_RUN_001`, `FT1536_M0_CONTRACT_RUN_001`
 oraz `FT1536_H3_RANGE_RUN_001`, `FT1536_H3_ZERO_SCALAR_RUN_001`
 i `FT1536_H3_ROOT_LDL_RUN_001`, `FT1536_H3_NODE3_RUN_001`
-oraz `FT1536_H3_NODE2_RUN_001` i `FT1536_FPEMU_AUDIT_RUN_001`.
+oraz `FT1536_H3_NODE2_RUN_001`, `FT1536_FPEMU_AUDIT_RUN_001`
+i `FT1536_H3_BINARY_TOWER_RUN_001`.
 Wpis katalogu określa właściwy punkt wejścia. Odbiór Blue jest archiwum
 recenzji i receipts; nie ma zadeklarowanego pojedynczego pełnego runnera.
 

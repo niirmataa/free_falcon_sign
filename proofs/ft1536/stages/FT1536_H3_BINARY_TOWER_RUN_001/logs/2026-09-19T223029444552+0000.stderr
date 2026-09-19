@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "/home/footfalcon/miniforge3/envs/sage/bin/sage", line 5, in <module>
+    from sage.cli.__main__ import main
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__main__.py", line 9, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__init__.py", line 56, in main
+    return RunFileCmd(options).run()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/run_file_cmd.py", line 50, in run
+    eval(compile(open(input_file, 'rb').read(), input_file, 'exec'), sage_globals())
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "scripts/oracle.py", line 67, in <module>
+    witness('ideal_harmonic_pivot',r['D'][j],rn(2*ra*rb/(ra+rb)),r,j)
+                                             ~~^^^^^^^^^^^^^^^^^
+  File "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_BINARY_TOWER_RUN_001/scripts/dyadic.py", line 22, in rn
+    s=int(v<0);v=abs(v);k=floorlog(v);shift=max(k-52,-1074)
+          ^^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/fractions.py", line 1045, in __lt__
+    return a._richcmp(b, operator.lt)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/fractions.py", line 1033, in _richcmp
+    return op(self._numerator * other.denominator,
+              ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for *: 'method' and 'int'

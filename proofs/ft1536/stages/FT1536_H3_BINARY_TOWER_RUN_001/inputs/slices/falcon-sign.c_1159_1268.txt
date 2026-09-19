@@ -1,0 +1,110 @@
+1159: load_skey(fpr *restrict sk, unsigned q,
+1160: 	const int16_t *f_src, const int16_t *g_src,
+1161: 	const int16_t *F_src, const int16_t *G_src,
+1162: 	unsigned logn, unsigned ter, fpr *restrict tmp)
+1163: {
+1164: 	size_t n;
+1165: 	fpr *f, *g, *F, *G;
+1166: 	fpr *b00, *b01, *b10, *b11;
+1167: 	fpr *tree;
+1168: 	fpr sigma;
+1169: 
+1170: 	n = MKN(logn, ter);
+1171: 	b00 = sk + skoff_b00(logn, ter);
+1172: 	b01 = sk + skoff_b01(logn, ter);
+1173: 	b10 = sk + skoff_b10(logn, ter);
+1174: 	b11 = sk + skoff_b11(logn, ter);
+1175: 	tree = sk + skoff_tree(logn, ter);
+1176: 
+1177: 	/*
+1178: 	 * We load the private key elements directly into the B0 matrix,
+1179: 	 * since B0 = [[g, -f], [G, -F]].
+1180: 	 */
+1181: 	f = b01;
+1182: 	g = b00;
+1183: 	F = b11;
+1184: 	G = b10;
+1185: 
+1186: 	smallints_to_fpr(f, f_src, logn, ter);
+1187: 	smallints_to_fpr(g, g_src, logn, ter);
+1188: 	smallints_to_fpr(F, F_src, logn, ter);
+1189: 	smallints_to_fpr(G, G_src, logn, ter);
+1190: 
+1191: 	/*
+1192: 	 * Compute the FFT for the key elements, and negate f and F.
+1193: 	 */
+1194: 	if (ter) {
+1195: 		falcon_FFT3(f, logn, 1);
+1196: 		falcon_FFT3(g, logn, 1);
+1197: 		falcon_FFT3(F, logn, 1);
+1198: 		falcon_FFT3(G, logn, 1);
+1199: 		falcon_poly_neg_fft3(f, logn, 1);
+1200: 		falcon_poly_neg_fft3(F, logn, 1);
+1201: 	} else {
+1202: 		falcon_FFT(f, logn);
+1203: 		falcon_FFT(g, logn);
+1204: 		falcon_FFT(F, logn);
+1205: 		falcon_FFT(G, logn);
+1206: 		falcon_poly_neg_fft(f, logn);
+1207: 		falcon_poly_neg_fft(F, logn);
+1208: 	}
+1209: 
+1210: 	/*
+1211: 	 * The Gram matrix is G = B·B*. Formulas are:
+1212: 	 *   g00 = b00*adj(b00) + b01*adj(b01)
+1213: 	 *   g01 = b00*adj(b10) + b01*adj(b11)
+1214: 	 *   g10 = b10*adj(b00) + b11*adj(b01)
+1215: 	 *   g11 = b10*adj(b10) + b11*adj(b11)
+1216: 	 */
+1217: 	if (ter) {
+1218: 		fpr *g00, *g10, *g11, *gxx;
+1219: 		fpr *stable_leaves;
+1220: 		size_t leaf_count, tree_words;
+1221: 		int stable_ok;
+1222: 
+1223: 		if (logn != 10 || n != 1536 || q != 18433) {
+1224: 			return 0;
+1225: 		}
+1226: 
+1227: 		g00 = tmp;
+1228: 		g10 = g00 + n;
+1229: 		g11 = g10 + n;
+1230: 		gxx = g11 + n;
+1231: 
+1232: 		memcpy(g00, b00, n * sizeof *b00);
+1233: 		falcon_poly_mulselfadj_fft3(g00, logn, 1);
+1234: 		memcpy(gxx, b01, n * sizeof *b01);
+1235: 		falcon_poly_mulselfadj_fft3(gxx, logn, 1);
+1236: 		falcon_poly_add_fft3(g00, gxx, logn, 1);
+1237: 
+1238: 		memcpy(g10, b10, n * sizeof *b10);
+1239: 		falcon_poly_muladj_fft3(g10, b00, logn, 1);
+1240: 		memcpy(gxx, b11, n * sizeof *b11);
+1241: 		falcon_poly_muladj_fft3(gxx, b01, logn, 1);
+1242: 		falcon_poly_add_fft3(g10, gxx, logn, 1);
+1243: 
+1244: 		memcpy(g11, b10, n * sizeof *b10);
+1245: 		falcon_poly_mulselfadj_fft3(g11, logn, 1);
+1246: 		memcpy(gxx, b11, n * sizeof *b11);
+1247: 		falcon_poly_mulselfadj_fft3(gxx, logn, 1);
+1248: 		falcon_poly_add_fft3(g11, gxx, logn, 1);
+1249: 
+1250: 		/*
+1251: 		 * Compute the Falcon tree.
+1252: 		 */
+1253: 		ffLDL_fft3(tree, g00, g10, g11, logn, gxx);
+1254: 
+1255: 		/*
+1256: 		 * Rebuild the raw leaves through positive arithmetic and certify the
+1257: 		 * complete physical leaf sequence before applying the candidate
+1258: 		 * signing width. The internal L coefficients remain those of the
+1259: 		 * expanded ffLDL tree.
+1260: 		 */
+1261: 		stable_ok = ft_build_stable_certified_leaves(tmp,
+1262: 			&stable_leaves, f_src, g_src, logn);
+1263: 		sigma = fpr_of(FT1536_SIGNING_SIGMA);
+1264: 		tree_words = ffLDL_ternary_normalize(tree, sigma, logn,
+1265: 			stable_leaves, &leaf_count);
+1266: 		return stable_ok
+1267: 			&& leaf_count == n
+1268: 			&& tree_words == (size_t)12 * n;

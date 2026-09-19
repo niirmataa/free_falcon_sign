@@ -31,6 +31,8 @@ subtractive LDL root** for the emitted-key domain. **H3_NODE3 extends this
 to split_top and both first-level LDL3 branches**, with explicit real/imaginary
 and error bounds. **H3_NODE2 certifies the first binary level** and adds
 kernel-checked finite-word half semantics plus an upstream imaginary bound.
+**H3_BINARY_TOWER certifies the remaining binary levels7–1 and twelve raw
+recursive subtrees**, including defined terminating execution in the declared model.
 Global reachable-center bounds and end-to-end security remain open research objectives.
 
 **FPEMU audit — confirmed issues:** numeric `fpr_lt(-0,+0)` returns 1, and
@@ -142,6 +144,7 @@ integration work; changing their description does not change the old CLI.
 | [H3_ROOT_LDL](proofs/ft1536/stages/FT1536_H3_ROOT_LDL_RUN_001/REPORT.md) | Emitted-key FFT/Gram and actual subtractive LDL root, positive real divisor/pivot, multiplier/error bounds and conditional frame; mixed proof | `H3_ROOT_LDL_PROVED_FOR_PINNED_MODEL` |
 | [H3_NODE3](proofs/ft1536/stages/FT1536_H3_NODE3_RUN_001/REPORT.md) | Uniform split_top/Adj/LDL3 certificate for both root branches and all 256 slots each; positive pivots, multipliers, real/imaginary errors and frame; mixed proof | `H3_NODE3_PROVED_FOR_PINNED_MODEL` |
 | [H3_NODE2](proofs/ft1536/stages/FT1536_H3_NODE2_RUN_001/REPORT.md) | First split_deep9/LDL8 level, all 2×3×128 positions; finite-word half proof, refined imaginary envelope and positive pivots; mixed proof | `H3_NODE2_PROVED_FOR_PINNED_MODEL` |
+| [H3_BINARY_TOWER](proofs/ft1536/stages/FT1536_H3_BINARY_TOWER_RUN_001/REPORT.md) | All remaining levels7–1, uniform numerical invariant and actual terminating execution of12 raw inner7 subtrees; mixed proof | `H3_BINARY_TOWER_PROVED_FOR_PINNED_MODEL` |
 | [FPEMU audit](proofs/ft1536/stages/FT1536_FPEMU_AUDIT_RUN_001/REPORT.md) | Generic numeric comparison of signed zeros and operand-dependent compiled floor branch; finite arithmetic/sanitizer audit, no timing measurements | `CONFIRMED_ISSUE` |
 
 The completed L_V bridge establishes, for all canonical h,c and legal finite
@@ -262,12 +265,16 @@ The remaining [binary recursion interface](proofs/ft1536/stages/FT1536_H3_NODE2_
 starts at split8/LDL7; a local isolated slice is distinct from total execution
 of its earlier recursive calls.
 
-The next prepared assignment is [H3_BINARY_TOWER](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_BINARY_TOWER_2026-09-19.md),
-for manual launch by the owner: instantiate level7, prove a closed invariant
-through all remaining levels7–1, and bind it to terminating execution of the
-twelve raw inner7 subtrees. Full success requires both the numerical tower
-and recursive source-order/frame composition. The [pinned inputs](proofs/ft1536/background/H3_BINARY_TOWER_2026-09-19/README.md)
-include the stronger upstream margins and the finite-word half proof.
+The [H3_BINARY_TOWER result](proofs/ft1536/stages/FT1536_H3_BINARY_TOWER_RUN_001/REPORT.md)
+closes both layers for all remaining levels7–1: 1524 nodes and 768 complex
+positions per level, plus the actual defined terminating execution of12 raw
+inner7 subtrees. It establishes 10752 internal L words and1536 raw leaves,
+with stronger INIT bounds and a source transfer using the loss I²/m.
+[Independent review](proofs/ft1536/validation/2026-09-20-binary-tower/README.md)
+reproduced **175/175 files, 30 modules and147 theorems (16 new)**.
+The [next mathematical interface](proofs/ft1536/stages/FT1536_H3_BINARY_TOWER_RUN_001/NEXT_INTERFACE.md)
+is full raw-loader/tree assembly, followed separately by stable leaf
+replacement/normalization, initial targets and ordered Reach.
 
 ### Remaining obligations beyond the verifier
 
@@ -355,7 +362,8 @@ Later maintainer replays and their exact scopes:
 [H3 root LDL](proofs/ft1536/validation/2026-09-19-root-ldl/README.md),
 [H3 NODE3](proofs/ft1536/validation/2026-09-19-node3/README.md),
 [H3 NODE2](proofs/ft1536/validation/2026-09-19-node2/README.md),
-[FPEMU audit](proofs/ft1536/validation/2026-09-20-fpemu-audit/README.md).
+[FPEMU audit](proofs/ft1536/validation/2026-09-20-fpemu-audit/README.md),
+[BINARY_TOWER](proofs/ft1536/validation/2026-09-20-binary-tower/README.md).
 The independent Blue review has archived evidence, rather than a single
 declared full replay runner.
 

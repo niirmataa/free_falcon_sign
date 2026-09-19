@@ -1,0 +1,57 @@
+52: /*
+53:  * Addition of two complex numbers (d = a + b).
+54:  */
+55: #define FPC_ADD(d_re, d_im, a_re, a_im, b_re, b_im)   do { \
+56: 		fpr fpct_re, fpct_im; \
+57: 		fpct_re = fpr_add(a_re, b_re); \
+58: 		fpct_im = fpr_add(a_im, b_im); \
+59: 		(d_re) = fpct_re; \
+60: 		(d_im) = fpct_im; \
+61: 	} while (0)
+62: 
+63: /*
+64:  * Subtraction of two complex numbers (d = a - b).
+65:  */
+66: #define FPC_SUB(d_re, d_im, a_re, a_im, b_re, b_im)   do { \
+67: 		fpr fpct_re, fpct_im; \
+68: 		fpct_re = fpr_sub(a_re, b_re); \
+69: 		fpct_im = fpr_sub(a_im, b_im); \
+70: 		(d_re) = fpct_re; \
+71: 		(d_im) = fpct_im; \
+72: 	} while (0)
+73: 
+74: /*
+75:  * Multplication of two complex numbers (d = a * b).
+76:  */
+77: #define FPC_MUL(d_re, d_im, a_re, a_im, b_re, b_im)   do { \
+78: 		fpr fpct_a_re, fpct_a_im; \
+79: 		fpr fpct_b_re, fpct_b_im; \
+80: 		fpr fpct_d_re, fpct_d_im; \
+81: 		fpct_a_re = (a_re); \
+82: 		fpct_a_im = (a_im); \
+83: 		fpct_b_re = (b_re); \
+84: 		fpct_b_im = (b_im); \
+85: 		fpct_d_re = fpr_sub( \
+86: 			fpr_mul(fpct_a_re, fpct_b_re), \
+87: 			fpr_mul(fpct_a_im, fpct_b_im)); \
+88: 		fpct_d_im = fpr_add( \
+89: 			fpr_mul(fpct_a_re, fpct_b_im), \
+90: 			fpr_mul(fpct_a_im, fpct_b_re)); \
+91: 		(d_re) = fpct_d_re; \
+92: 		(d_im) = fpct_d_im; \
+93: 	} while (0)
+94: 
+95: /*
+96:  * Squaring of a complex number (d = a * a).
+97:  */
+98: #define FPC_SQR(d_re, d_im, a_re, a_im)   do { \
+99: 		fpr fpct_a_re, fpct_a_im; \
+100: 		fpr fpct_d_re, fpct_d_im; \
+101: 		fpct_a_re = (a_re); \
+102: 		fpct_a_im = (a_im); \
+103: 		fpct_d_re = fpr_sub(fpr_sqr(fpct_a_re), fpr_sqr(fpct_a_im)); \
+104: 		fpct_d_im = fpr_double(fpr_mul(fpct_a_re, fpct_a_im)); \
+105: 		(d_re) = fpct_d_re; \
+106: 		(d_im) = fpct_d_im; \
+107: 	} while (0)
+108: 

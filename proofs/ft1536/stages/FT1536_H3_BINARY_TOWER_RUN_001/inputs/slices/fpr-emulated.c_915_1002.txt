@@ -1,0 +1,88 @@
+915: fpr
+916: fpr_div(fpr x, fpr y)
+917: {
+918: 	uint64_t xu, yu, q, q2, w;
+919: 	int i, ex, ey, e, d, s;
+920: 
+921: 	/*
+922: 	 * Extract mantissas of x and y (unsigned).
+923: 	 */
+924: 	xu = (x & (((uint64_t)1 << 52) - 1)) | ((uint64_t)1 << 52);
+925: 	yu = (y & (((uint64_t)1 << 52) - 1)) | ((uint64_t)1 << 52);
+926: 
+927: 	/*
+928: 	 * Perform bit-by-bit division of xu by yu. We run it for 55 bits.
+929: 	 */
+930: 	q = 0;
+931: 	for (i = 0; i < 55; i ++) {
+932: 		/*
+933: 		 * If yu is less than or equal xu, then subtract it and
+934: 		 * push a 1 in the quotient; otherwise, leave xu unchanged
+935: 		 * and push a 0.
+936: 		 */
+937: 		uint64_t b;
+938: 
+939: 		b = ((xu - yu) >> 63) - 1;
+940: 		xu -= b & yu;
+941: 		q |= b & 1;
+942: 		xu <<= 1;
+943: 		q <<= 1;
+944: 	}
+945: 
+946: 	/*
+947: 	 * We got 55 bits in the quotient, followed by an extra zero. We
+948: 	 * want that 56th bit to be "sticky": it should be a 1 if and
+949: 	 * only if the remainder (xu) is non-zero.
+950: 	 */
+951: 	q |= (xu | -xu) >> 63;
+952: 
+953: 	/*
+954: 	 * Quotient is at most 2^56-1. Its top bit may be zero, but in
+955: 	 * that case the next-to-top bit will be a one, since the
+956: 	 * initial xu and yu were both in the 2^52..2^53-1 range.
+957: 	 * We perform a conditional shift to normalize q to the
+958: 	 * 2^54..2^55-1 range (with the bottom bit being sticky).
+959: 	 */
+960: 	q2 = (q >> 1) | (q & 1);
+961: 	w = q >> 55;
+962: 	q ^= (q ^ q2) & -w;
+963: 
+964: 	/*
+965: 	 * Extract exponents to compute the scaling factor:
+966: 	 *
+967: 	 *   - Each exponent is biased and we scaled them up by
+968: 	 *     52 bits; but these biases will cancel out.
+969: 	 *
+970: 	 *   - The division loop produced a 55-bit shifted result,
+971: 	 *     so we must scale it down by 55 bits.
+972: 	 *
+973: 	 *   - If w = 1, we right-shifted the integer by 1 bit,
+974: 	 *     hence we must add 1 to the scaling.
+975: 	 */
+976: 	ex = (int)((x >> 52) & 0x7FF);
+977: 	ey = (int)((y >> 52) & 0x7FF);
+978: 	e = ex - ey - 55 + (int)w;
+979: 
+980: 	/*
+981: 	 * Sign is the XOR of the signs of the operands.
+982: 	 */
+983: 	s = (int)((x ^ y) >> 63);
+984: 
+985: 	/*
+986: 	 * Corrective actions for zeros: if x = 0, then the computation
+987: 	 * is wrong, and we must clamp e and q to 0. We do not care
+988: 	 * about the case y = 0 (as per assumptions in this module,
+989: 	 * the caller does not perform divisions by zero).
+990: 	 */
+991: 	d = (ex + 0x7FF) >> 11;
+992: 	s &= d;
+993: 	e &= -d;
+994: 	q &= -(uint64_t)d;
+995: 
+996: 	/*
+997: 	 * FPR() packs the result and applies proper rounding.
+998: 	 */
+999: 	return FPR(s, e, q);
+1000: }
+1001: 
+1002: #endif // yyyASM_CORTEXM4-
