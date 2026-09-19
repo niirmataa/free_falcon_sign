@@ -38,6 +38,12 @@ Kontrakt, 22-wierszowy ledger i dowód payloadu STATIC <=3160 są gotowe.
 Następny interfejs źródłowy to [H3](stages/FT1536_M0_CONTRACT_RUN_001/H3_INTERFACE.md).
 M0 nie jest jeszcze dowodem końcowej redukcji ani integracją opakowania.
 
+**Bieżące zadanie Astry:** [H3_RANGE](documents/FT1536_ZADANIE_ASTRA_H3_RANGE_2026-09-19.md)
+— osiągalne centra, semantyka FPEMU/floor i bezpieczne s+z dla emitted-key
+support. [Publiczne wejścia startowe](background/H3_RANGE_2026-09-19/README.md)
+mają osobny manifest; ich dokładna kopia jest przygotowana w nowym W.
+Zlecenie nie nadaje H3 statusu dowiedzionego.
+
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
 

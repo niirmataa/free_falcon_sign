@@ -182,6 +182,8 @@ targets center reachability before `fpr_floor -> int` and `s+z` for emitted
 keys and reachable signing histories. The roadmap then connects the complete
 source signing law, pre-cast/byte/retry behavior, R5T, public simulation and ROM
 composition. New mathematical tasks are explicit checkpoints.
+The [current H3_RANGE assignment](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_RANGE_2026-09-19.md)
+pins this scope and its prepared public input set; H3 is still open.
 
 ### Remaining obligations beyond the verifier
 

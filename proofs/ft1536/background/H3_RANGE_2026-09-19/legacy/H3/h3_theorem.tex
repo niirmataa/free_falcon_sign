@@ -1,0 +1,145 @@
+% Executor candidate theorem. H3 remains OPEN because C_mu is not discharged.
+\begin{theorem}[Conditional reachable exponent/BerExp bridge]\label{thm:H3-conditional}
+Fix a scalar call made by the committed FT1536 ternary signer after an H4
+accepted tree has been decoded.  Let $\mu$ be its binary64 center and impose
+the explicitly named integer-safety premise
+\[
+ \mathsf C_\mu:\qquad
+ -2147483283\le \lfloor\mu\rfloor\le2147483281.
+\]
+Write $s=\lfloor\mu\rfloor$ and let
+\[
+ \rho=\mu-s\in[0,1),\qquad
+ \widehat r=\operatorname{RN}(\rho)\in[0,1]
+\]
+be respectively the exact real fractional part and the committed binary64
+subtraction result.  Then the source \texttt{fpr\_floor} result converts to
+\texttt{int s} safely, \texttt{fpr\_of(s)} is exact, and
+\[
+ |\widehat r-\rho|\le 2^{-53}+2^{-1075}.
+\]
+Every current proposal return $s+z$, for $-365\le z\le366$, is a defined
+\texttt{int} result.  The endpoint $\widehat r=1$ is allowed.
+
+Let $d$ be the exact dyadic represented by the computed binary64
+\texttt{dss}, let $d_0$ be the first eligible coefficient in the committed
+five-bank selector, and let $k$ be the table output.  Put
+\[
+ \delta_0=\rho,\qquad \delta_1=1-\rho,\qquad
+ X=k^2(d-d_0)+(2k\delta_b+\delta_b^2)d.
+\]
+For the finite implemented proposal support, let $K_{\rm prod}$ use the
+actual source values
+\[
+ \widehat\delta_0=\widehat r,\qquad
+ \widehat\delta_1=\operatorname{RN}(1-\widehat r),
+\]
+the production binary64 exponent chain, range reduction, evaluator, prefix
+and comparator.  Let $K_{\rm exact}$ accept the same proposal with exact
+probability $e^{-X}$, so that its rejection identity is centered at the
+original target $s+\rho=\mu$.  Uniformly over the complete H4 width interval,
+both scalar branches, all five selector domains, all table-reachable $k$, and
+all source-reachable binary64 centers satisfying $\mathsf C_\mu$,
+\[
+ \lVert\widehat\pi K_{\rm prod}
+       -\widehat\pi K_{\rm exact}\rVert_1
+ \le D_{\rm H3},\qquad
+ \log_2D_{\rm H3}<-44.9362260.
+\]
+The bound includes the $s\ge64$ source cutoff.  Pointwise on that region the
+discarded exact probability is less than $2^{-63.9999999999998}$.  On the
+main region the complete relative likelihood defect has logarithm below
+$-44.9362286$.
+
+If the exact-kernel acceptance floor $a=9/20$ from H1R is used, then the
+normalized accepted scalar laws obey
+\[
+ \operatorname{TV}\bigl((\widehat\pi K_{\rm prod})_{\rm acc},
+                         (\widehat\pi K_{\rm exact})_{\rm acc}\bigr)
+ \le {D_{\rm H3}\over a-D_{\rm H3}},
+ \qquad
+ \log_2\!\left({D_{\rm H3}\over a-D_{\rm H3}}\right)<-43.7842229.
+\]
+Consequently sequential maximal coupling gives, conditionally on
+$\mathsf C_\mu$ at every adaptive call, logarithmic TV bounds
+$-32.1992604$ for the 3072 outputs of one \texttt{do\_sign} trial and
+$-28.1992604$ for at most 16 trials with an explicit $\bot$ output.
+\end{theorem}
+
+\begin{proof}
+The displayed integer interval and parsed table support make the two source
+integer operations safe.  Correct RN-even subtraction gives
+$|\widehat r-\rho|\le u\rho+\eta\le u+\eta$, for $u=2^{-53}$ and
+$\eta=2^{-1075}$.  The minimum negative subnormal shows that this subtraction
+need not be exact: $\mu=-2^{-1074}$ gives $s=-1$, exact
+$\rho=1-2^{-1074}$ and computed $\widehat r=1$.  For branch zero the delta
+error is at most $u+\eta$; for branch one the additional RN-even subtraction
+gives at most $2(u+\eta)$.  Since all four exact/computed deltas lie in
+$[0,1]$, the resulting semantic exponent displacement is at most
+\[
+ 2(u+\eta)(2k+2)d.
+\]
+
+The H4 endpoint replay, including the terminal $2/\sqrt3$ multiplication,
+gives the exact computed range
+\texttt{dss} in
+\texttt{[0x3f455555c49559f4,0x3fd203d2c1ca3682]}.
+The lower endpoint exceeds the final bank coefficient.  Direct parsing of
+all 512 thresholds in each bank gives maxima
+$k=(29,59,118,235,365)$.
+
+At every finite RN-even operation
+$|\operatorname{RN}(y)-y|\le u|y|+\eta$.  Propagating this inequality through
+the seven displayed source operations, and adding the separate center-split
+semantic displacement above, handles normal, subnormal and zero-rounded
+terms without a universal relative-error assumption.  The complete domain
+gives $\widetilde X$ below the first range-reduction band with $s=394$.  On
+$s\le63$ the revised mixed chain bound has logarithm below $-45.2773722$.
+
+An exact monotone binary64 partition covers every $\widetilde X$ in the 394
+bands $s=0,\ldots,393$.  The stored \texttt{log(2)} and
+\texttt{inv\_log(2)} constants leave nonnegative residuals, with a maximum
+of \texttt{0x3fe62e42fefa3a00}, exactly 17 binary64 points above the stored
+\texttt{fpr\_log2}.  H2 covers the real interval $[0,\ln2)$; direct RIF and
+integer-recurrence evaluation covers those 17 fringe points at the same
+$2^{-50}$ budget.  The main range-reduction displacement has logarithm below
+$-47.6656431$.
+
+For $s\le63$, the prefix succeeds with probability exactly $2^{-s}$ and the
+55-bit comparison succeeds with probability exactly $z/2^{55}$.  Combining
+the split, chain, range and H2 bounds gives the stated relative defect.  For
+$s\ge64$ the source forces zero; the exact first-$s=64$ binary64 threshold
+minus the global displacement gives the stated pointwise cutoff mass.
+Summing absolute accepted-submeasure differences gives $D_{\rm H3}$.
+If the exact mass is at least $a$, the production mass is at least $a-D$ and
+normalization costs at most $D/(a-D)$.  Adaptive sequential coupling proves
+the two multiplicity statements.
+\end{proof}
+
+\begin{remark}[Open integer-reachability premise]
+The committed source checks only that $\mu$ is finite before assigning
+\texttt{fpr\_floor(mu)} to an \texttt{int}; H4 constrains leaves and widths,
+not internal LDL coefficients or centers.  The signer-accepted key population
+does not require KeyGen's Babai representative: the exact shear
+$(F,G)\mapsto(F+kf,G+kg)$ preserves NTRU and H4 while the root center changes
+by an integer convolution.  Coarse source-bound decoder estimates already
+exceed \texttt{INT\_MAX}; the canonical-KeyGen route lacks a uniform
+Babai/FFT/LDL error certificate.  Therefore this theorem remains conditional
+and H3 remains open.
+\end{remark}
+
+\begin{remark}[Future fail-closed route]
+The separately planned task \texttt{S20-H3G-CENTER-RANGE-GATE-001} specifies
+the half-open pre-floor check
+$-2147483283\le\mu<2147483282$, a widened checked \texttt{s+z}, and sticky
+fault propagation to $\bot$.  This executor bundle does not modify source.
+For a future guarded theorem, gate failure must be common $\bot$ on both
+sides and gate success invokes the theorem above.
+\end{remark}
+
+\begin{remark}[Comparator floor and E1/E2 boundaries]
+The comparator probability grid has spacing $2^{-55}$, hence a uniform
+continuous-target architecture cannot beat the half-step floor $2^{-56}$.
+E1's refit and E2's U72 chain are not deployed.  E2's subnormal counterexample
+is why the proof above is mixed absolute rather than universally relative.
+\end{remark}
