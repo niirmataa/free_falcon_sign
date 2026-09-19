@@ -47,6 +47,14 @@ rozlicza negative zero, underflow oraz granice syntetycznych kontroli.
 [Zlecenie](documents/FT1536_ZADANIE_ASTRA_H3_RANGE_2026-09-19.md) i
 [publiczne wejścia](background/H3_RANGE_2026-09-19/README.md) zachowują piny.
 
+**Następne przygotowane zadanie:** [H3_ZERO_SCALAR](documents/FT1536_ZADANIE_ASTRA_H3_ZERO_SCALAR_2026-09-19.md)
+— lokalny zero-aware floor/cast/return/residual bridge oraz źródłowy błąd
+FPEMU of/sub. Jego NumericCenter jest jawną przesłanką; globalny Reach i
+zgodność prawa samplera pozostają odrębnymi obowiązkami.
+[Publiczny bootstrap](background/H3_ZERO_SCALAR_2026-09-19/README.md)
+ma 73 przypięte pliki i jest gotowy w nowym W. Zadanie nie zmienia starej
+tezy H3/M0 ani programu C.
+
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
 
@@ -89,7 +97,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [L_NTT_FORWARD](stages/FT1536_L_NTT_FORWARD_RUN_001/REPORT.md) | **L_NTT_PROVED_FOR_PINNED_MODEL** — forward, iloczyn i pełna kompozycja | `71bbb35` |
 | [L_V_BRIDGE](stages/FT1536_L_V_BRIDGE_RUN_001/REPORT.md) | **L_V_PROVED_FOR_PINNED_MODEL** — pełny most bajtowy Verify → Ext0 dla kandydata | `17f8f8b` |
 | [M0](stages/FT1536_M0_CONTRACT_RUN_001/REPORT.md) | **M0_CONTRACT_DEFINED_FOR_PINNED_CANDIDATE** — gra, budżety, framing i dowód pojemności | `95f8015` |
-| [H3_RANGE](stages/FT1536_H3_RANGE_RUN_001/REPORT.md) | **PARTIAL_PROOF** — lokalne floor/proposal/residual; globalna osiągalność otwarta | niniejszy checkpoint |
+| [H3_RANGE](stages/FT1536_H3_RANGE_RUN_001/REPORT.md) | **PARTIAL_PROOF** — lokalne floor/proposal/residual; globalna osiągalność otwarta | `cb99e67` |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).

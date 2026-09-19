@@ -1,0 +1,299 @@
+{
+  "schema": "FT1536_H3_RANGE_OBLIGATIONS_V1",
+  "status": "PARTIAL_PROOF",
+  "obligations": [
+    {
+      "id": "INPUT_IDENTITY",
+      "status": "VERIFIED",
+      "claim": "All52 bootstrap members/50 origins and17 sources match external pin.",
+      "gap": null,
+      "evidence": [
+        {
+          "path": "artifacts/bootstrap_verified.json",
+          "sha256": "89984b246d1d6d8df506ab4aec775d2b1a57b2ff2a0d0e9d9a5cfd56121e72a6"
+        }
+      ]
+    },
+    {
+      "id": "EMITTED_KEY_BINDING",
+      "status": "LOCAL_KERNEL_AND_SOURCE_ROUTE",
+      "claim": "Success route requires both poly_big_to_small caps; |F_i|,|G_i|<=2047 on that path.",
+      "gap": "Full emitted/encoding/loader semantic refinement retained as required-domain definition; no proof of ideal Babai quotient<=1/2.",
+      "evidence": [
+        {
+          "path": "formal/OrderedResidual.lean",
+          "sha256": "c937e2e655b0d56d56a36f25874dd81de8de51897613aa8a7499be07e4b075a9"
+        },
+        {
+          "path": "inputs/slices/key_cap.txt",
+          "sha256": "0a346273d433392184133ee1158000b51989d1f819ceb5af3d755d4ede0fea55"
+        },
+        {
+          "path": "inputs/slices/key_solve_cap_return.txt",
+          "sha256": "422e68699d97a966cb746bf1fdf936d32a93ff444a4b9405d5aa61ab1b12f10a"
+        },
+        {
+          "path": "inputs/slices/key_emit_path.txt",
+          "sha256": "6b3da729e774313db7e45a1a822acce4d72714abf618e594da274f1ed4036e75"
+        }
+      ]
+    },
+    {
+      "id": "LOADER_TREE_BINDING",
+      "status": "SOURCE_ORDER_BOUND",
+      "claim": "B00=g,B01=-f,B10=G,B11=-F FFT3; subtractive internal tree then1536 stored-width overwrites.",
+      "gap": "Uniform bounds on16896 internal words/divisors and relation to exact Gram. Synthetic tree values are not emitted-key evidence.",
+      "evidence": [
+        {
+          "path": "inputs/slices/loader_tree.txt",
+          "sha256": "3cf1f8750bb05e773bf19b213887c2a252c07ba8d054dedc7db5918e684edaf7"
+        },
+        {
+          "path": "inputs/slices/leaf_normalize.txt",
+          "sha256": "98dbf16f424f866fbf15c04be33c205fd7ffc329819eac7328ee097a82b4f396"
+        },
+        {
+          "path": "artifacts/order_normal.json",
+          "sha256": "7b25c09aace1d50bbb3cf63c957d21716eccb4a6563f0d541de6fe061cf7e4e2"
+        }
+      ]
+    },
+    {
+      "id": "FPR_DOMAIN",
+      "status": "PARTIAL_WITH_NEW_EXTENDED_DIAGNOSTICS",
+      "claim": "Positive/negative zero and exponent0 payloads need actual FPEMU semantics.",
+      "gap": "Reach -> adequate normal/zero/subnormal/underflow class invariant, especially exclusion or explicit handling of negative-zero center.",
+      "evidence": [
+        {
+          "path": "artifacts/fpr_analysis.json",
+          "sha256": "88eaa7d69330f327a418df717f3a3b13d3803364e46f0b6df777e8f7d1c24b68"
+        },
+        {
+          "path": "formal/GuardPrefix.lean",
+          "sha256": "edb8a786fdb6a676057d06100f5dddd10785ea5436d0b27ec216b62522575dff"
+        },
+        {
+          "path": "formal/Floor.lean",
+          "sha256": "cf4e4442f0b188eb32b123a954db9ce8f27f9bca1f0373c13cbfad6f3a7dd9f1"
+        }
+      ]
+    },
+    {
+      "id": "FLOOR_REFINEMENT",
+      "status": "PROVED_LOCAL_MODEL_WITH_C_TRANSLATION",
+      "claim": "Field-normalized source floor equals exact dyadic floor for exponent<=1053 excluding negativezero.",
+      "gap": "Reach -> CenterClass. Source bit-field reduction is documented separately; no complete C compiler theorem.",
+      "evidence": [
+        {
+          "path": "formal/Floor.lean",
+          "sha256": "cf4e4442f0b188eb32b123a954db9ce8f27f9bca1f0373c13cbfad6f3a7dd9f1"
+        },
+        {
+          "path": "artifacts/boundaries_normal.json",
+          "sha256": "024478c6d7b0ac53365ec19b645867560498a1c6fd414d3b91d715a94c75752a"
+        }
+      ]
+    },
+    {
+      "id": "PROPOSAL_SUPPORT",
+      "status": "PROVED_KERNEL_WITH_PINNED_C_BINDING",
+      "claim": "All5 banks maximum29,59,118,235,365; first eligible selection; z in[-365,366].",
+      "gap": null,
+      "evidence": [
+        {
+          "path": "formal/Comparator.lean",
+          "sha256": "93f36ac11bf62e55fdc909a71a2c9b24f3baf675880e7c06129bf9c2cacb077b"
+        },
+        {
+          "path": "formal/Proposal.lean",
+          "sha256": "003c10372af75e5cbb4953594311f0ce8e405045bee4d8ac49dac343f40af907"
+        },
+        {
+          "path": "formal/CDF.lean",
+          "sha256": "d21ee929b96189fc2fd7d98930ac66b0daa78d14cab6cbe98b8319ffa134a035"
+        },
+        {
+          "path": "artifacts/cdf_certificate.json",
+          "sha256": "5f315559f693abc53a7ff26aea98a9f8ca51cf67bc8f76c2fc951d1b5c89284f"
+        },
+        {
+          "path": "artifacts/boundaries_normal.json",
+          "sha256": "024478c6d7b0ac53365ec19b645867560498a1c6fd414d3b91d715a94c75752a"
+        }
+      ]
+    },
+    {
+      "id": "SOURCE_CALL_ORDER",
+      "status": "PROVED_LAYOUT_AND_CHECKED_EXECUTABLE_PROJECTION",
+      "claim": "Right-first source residual dataflow;3072 callbacks; first width index18431; paired then unscaled terminal sigma.",
+      "gap": "Whole Emitted/loader-to-projection proof is not kernelized; local controls do not establish required reachability.",
+      "evidence": [
+        {
+          "path": "formal/OrderedResidual.lean",
+          "sha256": "c937e2e655b0d56d56a36f25874dd81de8de51897613aa8a7499be07e4b075a9"
+        },
+        {
+          "path": "scripts/order_model.py",
+          "sha256": "217ff59cac1c93493440d434343ffbe3c0921122b2b282ae7f9f9baddac5a045"
+        },
+        {
+          "path": "artifacts/order_normal.json",
+          "sha256": "7b25c09aace1d50bbb3cf63c957d21716eccb4a6563f0d541de6fe061cf7e4e2"
+        },
+        {
+          "path": "artifacts/order_mutations.json",
+          "sha256": "b68351b1460fa877b42ef9805f3fda75d8528475d01fbf7abfc553e45fdef00b"
+        }
+      ]
+    },
+    {
+      "id": "RESIDUAL_INDUCTION",
+      "status": "PROVED_CONDITIONAL_NEW_INTERFACE",
+      "claim": "Ordered terminal lemma derives next center only from prior residual and explicit errors.",
+      "gap": "Base/recursive source certificates for center inputs and error terms at every inner/depth1/top node.",
+      "evidence": [
+        {
+          "path": "formal/OrderedResidual.lean",
+          "sha256": "c937e2e655b0d56d56a36f25874dd81de8de51897613aa8a7499be07e4b075a9"
+        }
+      ]
+    },
+    {
+      "id": "ROOT_CENTER",
+      "status": "EXACT_ALGEBRA_ONLY",
+      "claim": "Exact NTRU/Schur identities and coefficient-count bound2304 are verified; actual root center retains(r1-t1)*L.",
+      "gap": "Computed target/tree/root residual and FFT coefficient error transfer. No actual root-center bound follows from this certificate.",
+      "evidence": [
+        {
+          "path": "artifacts/algebra.json",
+          "sha256": "239b48b7a913cb767db7e6ac96ad3e7df2626bead49341c8858fc9f52279a239"
+        }
+      ]
+    },
+    {
+      "id": "INTERNAL_CENTERS",
+      "status": "OPEN_WITH_LOCAL_INSUFFICIENCY_WITNESS",
+      "claim": "Leaf-width premises alone do not control centers; real source local recursion gives next center12884901888 for artificial L=2^32.",
+      "gap": "Uniform source subtractive LDL internal multiplier/pivot certificate for emitted keys and machine error.",
+      "evidence": [
+        {
+          "path": "artifacts/leaf_gap_normal.json",
+          "sha256": "e349ed100e6937dd3efa223d175e27596b1853bb93794d4c700a66340597aae1"
+        }
+      ]
+    },
+    {
+      "id": "MACHINE_ERROR_TRANSFER",
+      "status": "OPEN_GLOBAL",
+      "claim": "Inspect FPR pack/add/mul/div/sqrt/half; exact dyadic oracle checks local normal endpoints and pathological classes.",
+      "gap": "Prove domain and errors for all source operations; a blanket complete-IEEE model is unavailable.",
+      "evidence": [
+        {
+          "path": "artifacts/fpr_analysis.json",
+          "sha256": "88eaa7d69330f327a418df717f3a3b13d3803364e46f0b6df777e8f7d1c24b68"
+        },
+        {
+          "path": "inputs/slices/FPR_pack.txt",
+          "sha256": "92c5fcb3e65912ee20cc2ec7ab199deda3fc293b7e7a4878f9dd27c20c7f720f"
+        },
+        {
+          "path": "inputs/slices/FPR_add.txt",
+          "sha256": "4b77bf7e7ab0f1c7a1c120add4d9014a7e730ad44c4f6c66d6d52bac0994e4b5"
+        },
+        {
+          "path": "inputs/slices/FPR_mul.txt",
+          "sha256": "dc623182c31927e38a4e4bf43648751f67a7c20b81ffef444c2926bb248401ee"
+        },
+        {
+          "path": "inputs/slices/FPR_div.txt",
+          "sha256": "a177bbfb4b28684a8aa180dba769686e1aaaff5ea007dafa76fcde39e4385c78"
+        },
+        {
+          "path": "inputs/slices/FPR_sqrt.txt",
+          "sha256": "30fe676030083718b5d27d67aa68e0cf4869835e89719d782ab4ee939e6d69d4"
+        },
+        {
+          "path": "inputs/slices/FPR_half_neg.txt",
+          "sha256": "37e3eef413fdfedb0160b87ebf11e2769327714225b49fedc3724066c1990bda"
+        }
+      ]
+    },
+    {
+      "id": "H4_T5_CONSUMPTION",
+      "status": "SCOPED_REUSE_NO_PROMOTION",
+      "claim": "Stored widths, exact leaf theorem, paired scale and numerical internal tree are different interfaces.",
+      "gap": "Uniform FPEMU endpoint monotonicity/domain and internal-L transfer are not supplied by two endpoint checks or exact leaf>991.",
+      "evidence": [
+        {
+          "path": "inputs/bootstrap/legacy/H4/report.md",
+          "sha256": "316c652ce9e80d9b7a4297c1f7694a8624e01cf614111e59674f6a7cef6b2478"
+        },
+        {
+          "path": "inputs/bootstrap/legacy/T5/THEOREM.md",
+          "sha256": "21b7e453a3a9529c463f492234d078a3e737105cb539e553adce5e103a6c5784"
+        },
+        {
+          "path": "inputs/bootstrap/legacy/T5/inputs/a1/NUMERICAL_SOUNDNESS.md",
+          "sha256": "af280642cf497f8dfef18a1a651008a0256a95d4bb78039a5b3c6b2c7cb1ccdf"
+        },
+        {
+          "path": "artifacts/fpr_analysis.json",
+          "sha256": "88eaa7d69330f327a418df717f3a3b13d3803364e46f0b6df777e8f7d1c24b68"
+        }
+      ]
+    },
+    {
+      "id": "FAULT_PATHS",
+      "status": "PROVED_PREFIX_MODEL_AND_SOURCE_CONTROL",
+      "claim": "Sticky fault returns before floor; invalid mu/sigma rejected before floor, dss/gap/exponent only afterward.",
+      "gap": "Do not apply residual-closeness theorem after a fault; residual buffers continue through source recursion until generate sees fault.",
+      "evidence": [
+        {
+          "path": "formal/GuardPrefix.lean",
+          "sha256": "edb8a786fdb6a676057d06100f5dddd10785ea5436d0b27ec216b62522575dff"
+        },
+        {
+          "path": "inputs/slices/sampler_guards.txt",
+          "sha256": "2d581dea73ebc336c13ab48f379689f3cac30615a483e60bd93e892c7963a812"
+        },
+        {
+          "path": "artifacts/order_normal.json",
+          "sha256": "7b25c09aace1d50bbb3cf63c957d21716eccb4a6563f0d541de6fe061cf7e4e2"
+        },
+        {
+          "path": "artifacts/probes_normal.json",
+          "sha256": "c36f4ebcba2393b50125623aa34d510b5b72640243583890dc7a6eff9924edcf"
+        }
+      ]
+    },
+    {
+      "id": "FINAL_REACHABILITY_LIFT",
+      "status": "OPEN",
+      "claim": "Required global Reach_call_C -> floor range + exact floor/cast + safe s+z.",
+      "gap": "forall Reach_call_C(...,mu,sigma), CenterClass(mu); must discharge internal bounds, zero-domain and machine errors. Local complete_local_lift is conditional, not a global H3 proof.",
+      "evidence": [
+        {
+          "path": "REACHABILITY.md",
+          "sha256": "b44ea093f97c66a186abca0ac8c1d8a680bd3feec1f9121e165c5f623f1809e2"
+        },
+        {
+          "path": "formal/GuardPrefix.lean",
+          "sha256": "edb8a786fdb6a676057d06100f5dddd10785ea5436d0b27ec216b62522575dff"
+        }
+      ]
+    }
+  ],
+  "blocking": [
+    "FPR_DOMAIN",
+    "INTERNAL_CENTERS",
+    "MACHINE_ERROR_TRANSFER",
+    "FINAL_REACHABILITY_LIFT"
+  ],
+  "next_exact_lemma": "Reach_call_C(E,sk,pk,tau,a,j,S,mu,sigma) -> CenterClass(mu)",
+  "baseline_source_integrated": true,
+  "source_changed": false,
+  "new_source_patch_integrated": false,
+  "protocol_wrapper_integrated": false,
+  "owner_accepted": false,
+  "security_reduction_proved": false
+}

@@ -194,6 +194,14 @@ keys has not been established. The remaining global obligation is
 `Reach_call_C(...) -> CenterClass(mu)`, including internal LDL and machine-error
 bounds; see the [ledger](proofs/ft1536/stages/FT1536_H3_RANGE_RUN_001/BOUND_LEDGER.md).
 
+The next prepared assignment is
+[H3_ZERO_SCALAR](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_ZERO_SCALAR_2026-09-19.md):
+a zero-aware local floor/cast/return/residual bridge with source-specific
+FPEMU error bounds. Its numeric-center premise is explicit; global reachability
+and sampler-law consumption remain separate obligations. Its
+[pinned public inputs](proofs/ft1536/background/H3_ZERO_SCALAR_2026-09-19/README.md)
+are ready for a fresh worker directory.
+
 ### Remaining obligations beyond the verifier
 
 - **C-to-model correspondence:** the certificates concern explicit models
