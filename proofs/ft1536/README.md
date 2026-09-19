@@ -9,6 +9,11 @@ Kopie źródeł wewnątrz checkpointów dokumentują badane wersje i umożliwiaj
 replay. Integracja zaakceptowanej poprawki do źródeł odbywa się osobnym
 commitem w `Extra/c`, bez przemianowania historycznego katalogu Extra.
 
+**Aktywny build na main:** Extra/c zawiera teraz dokładnego kandydata L_RHO,
+manifest `2553358f...`, użytego przez L_NTT/L_V/M0. Komendy i pełna tożsamość:
+[główny README](../../README.md) oraz
+[proweniencja aktywnego builda](../../provenance/FT1536_ACTIVE_BUILD.md).
+
 ## Mapa dalszych działań
 
 [Mapa po domknięciu L_V — 2026-09-19](documents/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md)
@@ -121,7 +126,9 @@ w tym kontrole C/Lean/Sage i ASan/UBSan:
 
 `full_L_V_proved=true` dotyczy wyłącznie kandydata `falcon-vrfy.c` o SHA-256
 `3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42`.
-Jego `source_integrated=false` i `owner_accepted=false` pozostają jawne.
+Historyczny raport zachowuje wykonawcze `source_integrated=false` i
+`owner_accepted=false`; późniejsza integracja tego dokładnego kandydata
+na main jest odrębnym zdarzeniem opisanym w proweniencji aktywnego builda.
 Historyczny kontrprzykład S17 i wcześniejsze wyniki częściowe zachowują swoje
 zakresy. Pełne L_V nie zamyka samplera, rozkładu kluczy, EUF-CMA, MT-ISIS
 ani warunkowych transferów strat redukcji.

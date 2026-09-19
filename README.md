@@ -5,16 +5,33 @@ developed by **Niirmata**, continuing the historical **Falcon EXTRA / ternary**
 implementation. This repository contains the implementation, source-bound
 proof checkpoints, their evidence, and reproducible replay tools.
 
+## Active FT1536 build on `main`
+
+**[Source: `Extra/c/`](Extra/c/) — the exact L_RHO research candidate used by
+the completed L_NTT, L_V and M0 checkpoints, with FPEMU and adaptive CDF.**
+
+```sh
+make FT1536
+make check-FT1536
+```
+
+CLI output: **`.build/FT1536/ft1536`**. Linux, GCC, GNU Make and Python 3.11+
+are required. Every build verifies the
+[17-file candidate manifest](provenance/ft1536-candidate.sha256), SHA-256
+`2553358fbb1144acdb577e1ad371a017ac325306dd901af745295dd17b03bd5a`.
+See [active-build provenance](provenance/FT1536_ACTIVE_BUILD.md).
+
 **Current status — 2026-09-19:** **L_RHO, the complete L_NTT pipeline and the
 byte-level L_V verifier bridge are proved for the pinned corrected candidate
 and its explicit C model.** M0 now defines the protocol/game/resource contract
 and proves the STATIC capacity bound. End-to-end security remains an open
 research objective.
 
-The owner-selected **S17 reference baseline is in `Extra/c/`, including FPEMU
-and adaptive CDF tables**. S17 and the corrected L_RHO candidate are distinct
-source versions: the positive L_V theorem belongs to the candidate snapshot;
-S17 retains the recorded normalization counterexample.
+The current build integrates the corrected verifier, SHA-256
+`3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42`.
+The original S17 remains a hash-pinned historical reference with its recorded
+counterexample. Historical checkpoint flags describe their execution-time
+state; the subsequent source integration is recorded separately.
 
 Start here:
 - [Proof archive and latest results](proofs/ft1536/README.md)
@@ -22,16 +39,9 @@ Start here:
 - [M0 protocol and security game](proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001/GAME.md)
 - [M0 capacity proof](proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001/CAPACITY.md)
 
-## Build FT1536
+## Build details
 
 The source path remains **`Extra/c/`**. **FT1536** names the selected build/profile.
-
-From the repository root on Linux, with GCC, GNU Make and Python 3.11+:
-
-```sh
-make FT1536
-make check-FT1536
-```
 
 Outputs:
 
@@ -54,15 +64,16 @@ its full key-generation/signing benchmark is not part of this focused check.
 The recorded proof model is **GCC 14.2.0 / C99 / Linux x86_64 LP64**.
 Builds with a different toolchain are recorded as such and do not automatically
 inherit the source-bound proof results.
-The [S17 integration check](provenance/checks/2026-09-19-s17/README.md)
+The [active-candidate integration check](provenance/checks/2026-09-19-candidate/README.md)
 preserves the executed commands, results and full build/check streams.
 
-## Source baseline and known verifier issue
+## Source identity and historical correction
 
-The current `Extra/c` is the **exact S17 baseline**, selected by the project
-owner. Its authoritative file list is
-[`provenance/ft1536-s17.sha256`](provenance/ft1536-s17.sha256).
-See [integration and provenance](provenance/FT1536_S17.md).
+The current `Extra/c` is the **exact 17-file L_RHO candidate**, selected as
+the working build on `main`. Its authoritative file list is
+[`provenance/ft1536-candidate.sha256`](provenance/ft1536-candidate.sha256).
+The prior [S17 baseline and its integration history](provenance/FT1536_S17.md)
+remain available with their original manifest.
 
 | Research-profile property | Value |
 |---|---|
@@ -78,22 +89,20 @@ See [integration and provenance](provenance/FT1536_S17.md).
 Successful keys are conditioned on the actual KeyGen checks. The proof
 statements identify their own exact distributions, domains and source versions.
 
-**S17 retains the documented normalization defect:** for the existing
-public synthetic witness, original Verify accepts while the fixed extractor
-`Ext0` is not short. The focused regression deliberately reproduces this
-known result. It is not a new successful-security test or a demonstrated
-HashToPoint preimage / efficient EUF-CMA forgery.
+The original S17 accepted a public synthetic witness for which the fixed
+extractor `Ext0` was not short. **The current build incorporates L_RHO and
+rejects that witness**, with canonical preNTT0=16866 and exact norm43058711057.
+This finite regression checks the corrected behavior; the universal result
+is supplied by the source-bound L_V proof, within its declared model.
 
-The separately pinned **L_RHO candidate** corrects that local normalization
-and rejects this witness. It differs from S17 only in `falcon-vrfy.c` and is
-available in the [candidate snapshot](proofs/ft1536/stages/FT1536_L_RHO_RUN_001/candidate/)
-and its [exact patch](proofs/ft1536/stages/FT1536_L_RHO_RUN_001/candidate.patch).
-That correction is **not integrated into the S17 baseline in `Extra/c`**.
+The candidate differs from S17 only in `falcon-vrfy.c`:
+[snapshot](proofs/ft1536/stages/FT1536_L_RHO_RUN_001/candidate/),
+[exact patch](proofs/ft1536/stages/FT1536_L_RHO_RUN_001/candidate.patch).
 
 | Version / interface | Current role |
 |---|---|
-| `Extra/c`, S17 manifest `03eaa0dd…` | Exact historical reference and default build; recorded counterexample to Ext0 shortness |
-| L_RHO candidate, manifest `2553358f…` | Corrected verifier snapshot used by the completed L_RHO/L_NTT/L_V proofs |
+| `Extra/c`, L_RHO manifest `2553358f…` | **Active/default build on main**, identical to the candidate used by the completed proofs |
+| Historical S17, manifest `03eaa0dd…` | Reference snapshot in the archive and Git history; recorded counterexample to Ext0 shortness |
 | M0 `r40-static4096-parametric-v1` | Defined caller/game contract; its protocol wrapper is not integrated |
 
 The historical CLI still has a 2049-byte signing buffer and accepts external

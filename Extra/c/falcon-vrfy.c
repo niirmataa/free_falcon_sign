@@ -1370,6 +1370,19 @@ falcon_vrfy_update(falcon_vrfy *fv, const void *data, size_t len)
 	shake_inject(&fv->sc, data, len);
 }
 
+/*
+ * FT1536: canonical residue of every decoded int16_t coefficient.
+ * x + 2*q is in [4098,69633], so the C remainder is nonnegative.
+ */
+static uint16_t
+ft1536_normalize_s2(int16_t x)
+{
+	int32_t t;
+
+	t = (int32_t)x + 36866;
+	return (uint16_t)(t % 18433);
+}
+
 /* see internal.h */
 int
 falcon_vrfy_verify_raw(const uint16_t *c0, const int16_t *s2,
@@ -1391,11 +1404,15 @@ falcon_vrfy_verify_raw(const uint16_t *c0, const int16_t *s2,
 	 * Reduce s2 elements modulo q ([0..q-1] range).
 	 */
 	for (u = 0; u < n; u ++) {
-		uint32_t w;
+		if (ternary == 1 && logn == 10) {
+			x[u] = ft1536_normalize_s2(s2[u]);
+		} else {
+			uint32_t w;
 
-		w = (uint32_t)s2[u];
-		w += q & -(w >> 31);
-		x[u] = (uint16_t)w;
+			w = (uint32_t)s2[u];
+			w += q & -(w >> 31);
+			x[u] = (uint16_t)w;
+		}
 	}
 
 	/*

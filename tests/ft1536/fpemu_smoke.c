@@ -1,4 +1,4 @@
-/* Finite, exact-value checks for the selected S17 FPEMU build. */
+/* Finite, exact-value checks for the pinned FT1536 FPEMU build. */
 #include <stdio.h>
 #include <stdint.h>
 #include "internal.h"
@@ -30,6 +30,6 @@ main(void)
 	CHECK(fpr_rint(fpr_add(fpr_one, fpr_onehalf)) == 2);
 	CHECK(fpr_mul_high_u64(UINT64_MAX, UINT64_MAX) == UINT64_MAX - 1);
 	CHECK(fpr_expm_scaled(fpr_zero) == (UINT64_C(1) << 63));
-	printf("{\"scope\":\"finite S17 FPEMU smoke\",\"checks\":%u,\"result\":\"PASS\"}\n", count);
+	printf("{\"scope\":\"finite FT1536 FPEMU smoke\",\"checks\":%u,\"result\":\"PASS\"}\n", count);
 	return 0;
 }
