@@ -1,0 +1,88 @@
+{
+  "schema": "FT1536_DAYBREAK_REVIEW_RESULT_V1",
+  "review_date": "2026-09-18",
+  "reviewer_role": "Codex Daybreak independent acceptance review",
+  "result": "CONFIRMED_COUNTEREXAMPLE_REQUIRED_DOMAIN",
+  "project_acceptance": false,
+  "lemma": "L_V-STATIC",
+  "extractor": "Ext0(h,c,b)=(center_q(c-h*s(b)),s(b))",
+  "parameters": {
+    "N": 1536,
+    "q": 18433,
+    "Phi": "X^1536-X^768+1",
+    "B": 2093922385,
+    "strict": true
+  },
+  "input_pins": {
+    "RUN_001_REPORT_sha256": "c19cda58e928d585bed8c64745ea165b4dce0fbabee2e51edb40d6392a825cfd",
+    "RUN_001_OUTPUTS_sha256": "0223beb04591bd45908c1b167f4bda89b8666ef40901bde7d502f10088c23f87",
+    "S17_commit": "d641ab1037c2fa1dd4a22c258854d79d67b9b46b",
+    "S17_manifest_sha256": "03eaa0dd72bf365102af102959f5a02133b32d0504e7dd5b15145529c6bc3589"
+  },
+  "manifest_audit": {
+    "entries": 170,
+    "hashes_match": true,
+    "scope_exact": true,
+    "duplicates": false,
+    "unsafe_paths": false,
+    "symlinks": false,
+    "frozen_commands_prefix_preserved": true
+  },
+  "witness": {
+    "payload_bytes": 1931,
+    "decoded_bytes_after_header": 1930,
+    "padding_bits": 2,
+    "s0": -20000,
+    "other_s_zero": true,
+    "source_pre_ntt_word0": 63969,
+    "source_pre_ntt_residue0": 8670,
+    "signed_s_residue0": 16866,
+    "challenge_spec_holds": true,
+    "source_verify": 1,
+    "source_raw": 1,
+    "point_calls": 1,
+    "machine_norm": 400000000,
+    "Ext0_first_norm": 42658711057,
+    "Ext0_second_norm": 400000000,
+    "Ext0_norm": 43058711057,
+    "Ext0_excess_over_B": 40964788672,
+    "Ext0_congruence": true,
+    "Ext0_shortness": false
+  },
+  "checks": {
+    "independent_integer_checker": "PASS",
+    "independent_Sage_10_9": "PASS",
+    "C_normal_rebuild_and_replay": "PASS",
+    "C_ASan_UBSan_without_leak_detection": "PASS",
+    "LeakSanitizer_under_ptrace": "ENVIRONMENT_FAILURE",
+    "Lean_4_34_kernel": "PASS",
+    "Lean_literal_binding": "PASS",
+    "pinned_source_identity": "PASS",
+    "public_key_and_h_identity": "PASS",
+    "private_KeyGen_replay": "NOT_RUN_BY_SCOPE"
+  },
+  "formal": {
+    "claim_verdict": "proved as written for concrete witness arithmetic",
+    "file": "formal/WitnessBlocks.lean",
+    "theorems": 26,
+    "literal_pairs": 768,
+    "axioms": ["propext"],
+    "C_semantics_formalized": false,
+    "KeyGen_support_formalized": false
+  },
+  "remaining_premises": [
+    "successful-key-support membership is consumed from pinned historical public KeyGen evidence",
+    "C acceptance is reproducible evidence in the pinned GCC/C99/LP64 model, not a kernel proof of all C semantics"
+  ],
+  "claim_limits": {
+    "other_extractors_ruled_out": false,
+    "HashToPoint_preimage_found": false,
+    "efficient_EUF_CMA_forgery_proved": false,
+    "T2C3_or_T5_refuted": false,
+    "new_key_generated": false,
+    "private_material_read": false
+  },
+  "report": "DAYBREAK_REVIEW.md",
+  "output_scope": "OUTPUT_SCOPE.md",
+  "output_manifest": "OUTPUTS.sha256"
+}

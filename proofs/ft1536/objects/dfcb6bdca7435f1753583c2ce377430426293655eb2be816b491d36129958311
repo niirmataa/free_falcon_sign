@@ -16,13 +16,6 @@ manifest `2553358f...`, użytego przez L_NTT/L_V/M0. Komendy i pełna tożsamoś
 
 ## Mapa dalszych działań
 
-**[Zamrożony punkt pracy po M0](stages/FT1536_POST_M0_FREEZE_RUN_001/REPORT.md)**
-jest obszernym zapisem stanu na aktywnym buildzie main `2959064`: źródła,
-osiągnięcia, T2C3/T5, kontrakt M0, graf zależności i dalsze obowiązki.
-Pakiet ma 211 członków OUTPUTS i 198 publicznych wejść Git, manifest
-`c3efdcff510983a143946d43ab456656090061cd5b9b4b6847abc7f141c0cfa3`.
-Jest checkpointem dokumentacyjnym (`replay=none`), obok ośmiu etapów badawczych.
-
 [Mapa po domknięciu L_V — 2026-09-19](documents/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md)
 przedstawia zależności i proponowaną kolejność: dokładny kontrakt gry,
 osiągalność H3, pełne prawo Sign i bajty, spójna konsumpcja R5T, ciaśniejszy
@@ -79,7 +72,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | L_NTT_GLOBAL | globalny inverse; na tym etapie forward_product pozostawało otwarte | `d67228d` |
 | [L_NTT_FORWARD](stages/FT1536_L_NTT_FORWARD_RUN_001/REPORT.md) | **L_NTT_PROVED_FOR_PINNED_MODEL** — forward, iloczyn i pełna kompozycja | `71bbb35` |
 | [L_V_BRIDGE](stages/FT1536_L_V_BRIDGE_RUN_001/REPORT.md) | **L_V_PROVED_FOR_PINNED_MODEL** — pełny most bajtowy Verify → Ext0 dla kandydata | `17f8f8b` |
-| [M0](stages/FT1536_M0_CONTRACT_RUN_001/REPORT.md) | **M0_CONTRACT_DEFINED_FOR_PINNED_CANDIDATE** — gra, budżety, framing i dowód pojemności | `95f8015` |
+| [M0](stages/FT1536_M0_CONTRACT_RUN_001/REPORT.md) | **M0_CONTRACT_DEFINED_FOR_PINNED_CANDIDATE** — gra, budżety, framing i dowód pojemności | commit dodający [wpis katalogu](catalog/FT1536_M0_CONTRACT_RUN_001.json) |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).

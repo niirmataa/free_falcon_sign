@@ -34,7 +34,6 @@ counterexample. Historical checkpoint flags describe their execution-time
 state; the subsequent source integration is recorded separately.
 
 Start here:
-- **[Frozen post-M0 research state: full proof map, decisions and next obligations](proofs/ft1536/stages/FT1536_POST_M0_FREEZE_RUN_001/REPORT.md)**
 - [Proof archive and latest results](proofs/ft1536/README.md)
 - [Detailed post-L_V roadmap and T2C3/T5 dependency map](proofs/ft1536/documents/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md)
 - [M0 protocol and security game](proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001/GAME.md)
@@ -253,13 +252,6 @@ The independent Blue review has archived evidence, rather than a single
 declared full replay runner.
 
 ## Research workflow
-
-The [post-M0 documentary checkpoint](proofs/ft1536/stages/FT1536_POST_M0_FREEZE_RUN_001/REPORT.md)
-is anchored to the active-build commit `2959064`. Its STATE, dependency graph,
-checkpoint inventory and public Git inputs are sealed by
-[`OUTPUTS.sha256`](proofs/ft1536/stages/FT1536_POST_M0_FREEZE_RUN_001/OUTPUTS.sha256),
-with the external manifest pin in the [catalog](proofs/ft1536/catalog/FT1536_POST_M0_FREEZE_RUN_001.json).
-It is a resumable state record, not an additional security theorem.
 
 Finished tasks receive separate commits after their report, manifest and
 scope are checked. Frozen evidence is archived under `proofs/ft1536/stages/`;

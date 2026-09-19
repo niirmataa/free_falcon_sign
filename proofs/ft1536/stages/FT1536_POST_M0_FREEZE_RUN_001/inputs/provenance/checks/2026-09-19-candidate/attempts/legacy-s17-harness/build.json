@@ -1,0 +1,212 @@
+{
+  "schema": "FT1536_CANDIDATE_BUILD_V1",
+  "profile": "FT1536 / L_RHO candidate / FPEMU",
+  "started_utc": "2026-09-19T09:22:53.640013+00:00",
+  "build_helper_sha256": "1e43aa048f6a35a006f7a3cfa6a6b727994aec5a5266c66c25f214d1ec4a8acd",
+  "source_manifest_sha256": "2553358fbb1144acdb577e1ad371a017ac325306dd901af745295dd17b03bd5a",
+  "source_files": {
+    "Makefile": "25cd0345332882ccab4beea68d5139955c871499733ab9f5fa3cc8ef898d5049",
+    "falcon-enc.c": "0f7085fa975d41ebbeb96d5db4cb68482c344ef2d602ca8853e20a4d4f04fb05",
+    "falcon-fft.c": "06b573b636ae368dcda3eb4d89c3936ab31272123440d0d5362317e55d9ac063",
+    "falcon-keygen.c": "0a09b6ed2363308f54584dfd1e2d33ee1b4601a68c77712c50da920b5074a5cf",
+    "falcon-sign.c": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8",
+    "falcon-vrfy.c": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+    "falcon.h": "657ad2b2d45b8932c3b9a703ac718c1f23dad78523036c1a934b8e21cf0f4519",
+    "fpr-double.h": "5dd9110dd4e77c96e19263488bd0937cea0032623f40cacb289da7e3e1256d56",
+    "fpr-emulated.c": "7cb06c9ea8f8bfc205a207cd73af367d299005d4bfec26333ced702f1c024e5f",
+    "fpr-emulated.h": "242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa",
+    "frng.c": "4b1289adf0c902abe9408d989b4eb8d292cbb6ea86b92e1325a10fd9c5dfc644",
+    "ft1536-adaptive-cdf-tables.h": "c16f041a64aba25991b5473111675f1c046ebc38285fca6c052124cf3b7fdf4f",
+    "internal.h": "512629d3b79fa5bd74131ed2ecde06e1d157f5ac58db3f758db96b19131f1ba5",
+    "shake.c": "c3e7864bf4139264f8c287053214bf869e242757bf555235da81454e40ea316a",
+    "shake.h": "2373a37e09907c8e57a6b1adc05e26499d9cf2752518267a80291de931c2d8df",
+    "test_falcon.c": "ecd22c8f0ac8c24df0692c94ebb293b5944fe42fc57d97f2e06f01e5ecc44b4c",
+    "tool.c": "920ac2d8a96408c505670eb2f044cde763ca11945d90ec24d8c6f2a048377890"
+  },
+  "cflags": "-W -Wall -O -DFPR_IMPL=\\\"fpr-emulated.h\\\" -DSAMPLER_CODF=0 -DSAMPLER_CDF=0 -DCT_BEREXP=1 -DFT_TERNARY_ADAPTIVE_CDF=1 -DFT1536_CANDIDATE_PROFILE=1 -DCLEANSE=1 -DTRUE_TERNARY_SECRET=1 -DTRUE_TERNARY_SECRET_MODE=1 -DTERNARY_KEYGEN_BOUND_SCALE_NUM=1250 -DTERNARY_KEYGEN_BOUND_SCALE_DEN=100 -DTERNARY_KEYGEN_MAX_ATTEMPTS=3000000 -DSIGN_MAX_ATTEMPTS=16 -std=c99",
+  "mode": "check",
+  "run": ".build/FT1536/run-kv1ool0p",
+  "commands": [
+    {
+      "argv": [
+        "/usr/bin/gcc",
+        "--version"
+      ],
+      "cwd": "/tmp/opencode/ft1536-noreply-history/.build/FT1536/run-kv1ool0p/source",
+      "exit_code": 0,
+      "seconds": 0.002,
+      "timed_out": false,
+      "wall_limit_seconds": 600,
+      "stdout": "logs/gcc-version.stdout",
+      "stderr": "logs/gcc-version.stderr",
+      "stdout_sha256": "4dc9a4e32fd9e06d42fb307688c59d6d889f0ff90ce034cbefed21b0d451fd81",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/gcc",
+        "-dumpmachine"
+      ],
+      "cwd": "/tmp/opencode/ft1536-noreply-history/.build/FT1536/run-kv1ool0p/source",
+      "exit_code": 0,
+      "seconds": 0.001,
+      "timed_out": false,
+      "wall_limit_seconds": 600,
+      "stdout": "logs/gcc-target.stdout",
+      "stderr": "logs/gcc-target.stderr",
+      "stdout_sha256": "08cababdf891ccbf96eb376f1e84f279f70302fb13d84e5f98637becdfc6d989",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/make",
+        "-j2",
+        "CC=/usr/bin/gcc",
+        "LD=/usr/bin/gcc",
+        "CFLAGS=-W -Wall -O -DFPR_IMPL=\\\"fpr-emulated.h\\\" -DSAMPLER_CODF=0 -DSAMPLER_CDF=0 -DCT_BEREXP=1 -DFT_TERNARY_ADAPTIVE_CDF=1 -DFT1536_CANDIDATE_PROFILE=1 -DCLEANSE=1 -DTRUE_TERNARY_SECRET=1 -DTRUE_TERNARY_SECRET_MODE=1 -DTERNARY_KEYGEN_BOUND_SCALE_NUM=1250 -DTERNARY_KEYGEN_BOUND_SCALE_DEN=100 -DTERNARY_KEYGEN_MAX_ATTEMPTS=3000000 -DSIGN_MAX_ATTEMPTS=16 -std=c99"
+      ],
+      "cwd": "/tmp/opencode/ft1536-noreply-history/.build/FT1536/run-kv1ool0p/source",
+      "exit_code": 0,
+      "seconds": 0.865,
+      "timed_out": false,
+      "wall_limit_seconds": 600,
+      "stdout": "logs/build.stdout",
+      "stderr": "logs/build.stderr",
+      "stdout_sha256": "0d4fd0100d056b8f5542246ce37ee66bf7d0459f92db2d113b36c3c8ff7dab70",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/gcc",
+        "-W",
+        "-Wall",
+        "-O",
+        "-DFPR_IMPL=\"fpr-emulated.h\"",
+        "-DSAMPLER_CODF=0",
+        "-DSAMPLER_CDF=0",
+        "-DCT_BEREXP=1",
+        "-DFT_TERNARY_ADAPTIVE_CDF=1",
+        "-DFT1536_CANDIDATE_PROFILE=1",
+        "-DCLEANSE=1",
+        "-DTRUE_TERNARY_SECRET=1",
+        "-DTRUE_TERNARY_SECRET_MODE=1",
+        "-DTERNARY_KEYGEN_BOUND_SCALE_NUM=1250",
+        "-DTERNARY_KEYGEN_BOUND_SCALE_DEN=100",
+        "-DTERNARY_KEYGEN_MAX_ATTEMPTS=3000000",
+        "-DSIGN_MAX_ATTEMPTS=16",
+        "-std=c99",
+        "-I",
+        "/tmp/opencode/ft1536-noreply-history/.build/FT1536/run-kv1ool0p/source",
+        "/tmp/opencode/ft1536-noreply-history/tests/ft1536/fpemu_smoke.c",
+        "/tmp/opencode/ft1536-noreply-history/.build/FT1536/run-kv1ool0p/source/fpr-emulated.o",
+        "-lm",
+        "-o",
+        "/tmp/opencode/ft1536-noreply-history/.build/FT1536/run-kv1ool0p/fpemu-smoke"
+      ],
+      "cwd": "/tmp/opencode/ft1536-noreply-history/.build/FT1536/run-kv1ool0p/source",
+      "exit_code": 0,
+      "seconds": 0.064,
+      "timed_out": false,
+      "wall_limit_seconds": 600,
+      "stdout": "logs/build-fpemu-smoke.stdout",
+      "stderr": "logs/build-fpemu-smoke.stderr",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/tmp/opencode/ft1536-noreply-history/.build/FT1536/run-kv1ool0p/fpemu-smoke"
+      ],
+      "cwd": "/tmp/opencode/ft1536-noreply-history/.build/FT1536/run-kv1ool0p/source",
+      "exit_code": 0,
+      "seconds": 0.002,
+      "timed_out": false,
+      "wall_limit_seconds": 600,
+      "stdout": "logs/fpemu-smoke.stdout",
+      "stderr": "logs/fpemu-smoke.stderr",
+      "stdout_sha256": "714e561a24f7cf853c21475e38149b8d532949f89a30cf88c6caddb5f0ae58e8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/tmp/opencode/ft1536-noreply-history/.build/FT1536/run-kv1ool0p/source/falcon"
+      ],
+      "cwd": "/tmp/opencode/ft1536-noreply-history/.build/FT1536/run-kv1ool0p/source",
+      "exit_code": 1,
+      "seconds": 0.001,
+      "timed_out": false,
+      "wall_limit_seconds": 600,
+      "stdout": "logs/cli-usage.stdout",
+      "stderr": "logs/cli-usage.stderr",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "09e329dfee45c8c3af14984dfb8a47f3c5f561598ad7492a4169f1ccb24628d9"
+    },
+    {
+      "argv": [
+        "/usr/bin/gcc",
+        "-W",
+        "-Wall",
+        "-O",
+        "-DFPR_IMPL=\"fpr-emulated.h\"",
+        "-DSAMPLER_CODF=0",
+        "-DSAMPLER_CDF=0",
+        "-DCT_BEREXP=1",
+        "-DFT_TERNARY_ADAPTIVE_CDF=1",
+        "-DFT1536_CANDIDATE_PROFILE=1",
+        "-DCLEANSE=1",
+        "-DTRUE_TERNARY_SECRET=1",
+        "-DTRUE_TERNARY_SECRET_MODE=1",
+        "-DTERNARY_KEYGEN_BOUND_SCALE_NUM=1250",
+        "-DTERNARY_KEYGEN_BOUND_SCALE_DEN=100",
+        "-DTERNARY_KEYGEN_MAX_ATTEMPTS=3000000",
+        "-DSIGN_MAX_ATTEMPTS=16",
+        "-std=c99",
+        "-DLV_MAIN",
+        "-I",
+        "/tmp/opencode/ft1536-noreply-history/.build/FT1536/run-kv1ool0p/source",
+        "/tmp/opencode/ft1536-noreply-history/.build/FT1536/run-kv1ool0p/verify_candidate.c",
+        "/tmp/opencode/ft1536-noreply-history/.build/FT1536/run-kv1ool0p/source/falcon-enc.c",
+        "/tmp/opencode/ft1536-noreply-history/.build/FT1536/run-kv1ool0p/source/shake.c",
+        "-lm",
+        "-o",
+        "/tmp/opencode/ft1536-noreply-history/.build/FT1536/run-kv1ool0p/verify-candidate"
+      ],
+      "cwd": "/tmp/opencode/ft1536-noreply-history/.build/FT1536/run-kv1ool0p/source",
+      "exit_code": 0,
+      "seconds": 0.314,
+      "timed_out": false,
+      "wall_limit_seconds": 600,
+      "stdout": "logs/build-verifier.stdout",
+      "stderr": "logs/build-verifier.stderr",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "b525fbf38309677a9ce01b02f6934e4c208b5b2023368c1e185042cabfd90218"
+    },
+    {
+      "argv": [
+        "/tmp/opencode/ft1536-noreply-history/.build/FT1536/run-kv1ool0p/verify-candidate",
+        "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/stages/FT1536_LV_STATIC_RUN_001/inputs/key/canonical_public_key.bin",
+        "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/stages/FT1536_LV_STATIC_RUN_001/artifacts/witness_c.txt",
+        "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/stages/FT1536_LV_STATIC_RUN_001/artifacts/witness.bin"
+      ],
+      "cwd": "/tmp/opencode/ft1536-noreply-history/.build/FT1536/run-kv1ool0p/source",
+      "exit_code": 4,
+      "seconds": 0.001,
+      "timed_out": false,
+      "wall_limit_seconds": 600,
+      "stdout": "logs/known-verifier-regression.stdout",
+      "stderr": "logs/known-verifier-regression.stderr",
+      "stdout_sha256": "246f3e8740291c6dfd7b9fa7d3d83797e10f9fc5ff1de57a62be92e72a3b444b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "result": "FAIL",
+  "compiler": "gcc (Debian 14.2.0-19) 14.2.0",
+  "target": "x86_64-linux-gnu",
+  "smoke_source_sha256": "15ef113dc8579d74df0b7e67c1f922494e009fa663d9cbdfa9d38b64d4c5ff4d",
+  "fpemu_smoke": {
+    "scope": "finite FT1536 FPEMU smoke",
+    "checks": 12,
+    "result": "PASS"
+  },
+  "error": "known-verifier-regression failed: inspect /tmp/opencode/ft1536-noreply-history/.build/FT1536/run-kv1ool0p/logs/known-verifier-regression.stderr"
+}

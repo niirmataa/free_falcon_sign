@@ -1,0 +1,140 @@
+{
+  "input_tables_sha256": "ee668bf1b63a8cb9a3192b39fee68347ed67481d4c73e948372ffc1db203821e",
+  "source_table_dump_sha256": "176bafee8c1148104fca826fd4a607822ede947e19fdaf0e9e0c188ea15b2e60",
+  "all_1024_row_indices_and_values_bound": true,
+  "formal_sha256": "ee3b0340d58eae77632bcf31fd53a3c84a7c5c51122a554fde8ce8ea57b82a39",
+  "note": "gmAt/igmAt are total models; source index lemmas must exclude fallback on every actual read"
+}
+formal/BlockChecks.lean: 32 batches, checked source expressions over all 1024 reused rows
+Deps/Words clean 1.191
+Deps/Linear clean 0.514
+Deps/Tables clean 26.204
+Deps/Composition clean 0.369
+Buffer clean 0.458
+Layouts clean 3.334
+Twiddles clean 1.24
+SourceModel clean 0.724
+Expressions clean 0.939
+BlockExpressions clean 2.638
+BlockChecks clean 28.728
+LocalInverse clean 0.496
+Stages clean 0.465
+InverseGlobal clean 0.43
+ForwardProgress clean 0.428
+Pipeline clean 0.306
+TraceMain clean 0.368
+Audit clean 0.284
+{
+  "modules": 18,
+  "checked_theorems": 351,
+  "all_final_logs_clean": true,
+  "axioms_allowed": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "audit_stdout_sha256": "a15c29db3a739600168af1659ed840492e1ef239849937dace1c76b8d61451f4",
+  "note": "L_NTT_pending_forward explicitly retains forward_product; inspect its full type"
+}
+{
+  "source_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+  "removed_instrumentation_restores_source": true,
+  "observer_hooks": [
+    [
+      "a[u + hn] = mq_sub(mq_add(a0, a1, Qt), b, Qt);",
+      "ft_snap(\"froot\",0,u+1,hn,a);"
+    ],
+    [
+      "a[v + ht] = mq_sub(a0, a1, Qt);",
+      "ft_snap(\"fbin\",m,u1*ht+v-v1+1,ht,a);"
+    ],
+    [
+      "a[u + 2] = mq_add(fA, mq_add(fB2, fC1, Qt), Qt);",
+      "ft_snap(\"fcube\",0,u/3+1,0,a);"
+    ],
+    [
+      "mq_add(f0, mq_add(f12, f21, Qt), Qt), Qt, Q0It);",
+      "ft_snap(\"icube\",0,u/3+1,0,a);"
+    ],
+    [
+      "mq_sub(a0, a1, Qt), s, Qt, Q0It);",
+      "ft_snap(\"ibin\",m,u1*ht+v-v1+1,ht,a);"
+    ],
+    [
+      "a[u + hn] = mq_add(b, b, Qt);",
+      "ft_snap(\"iroot\",0,u+1,hn,a);"
+    ],
+    [
+      "a[u] = mq_montymul(a[u], ni, Qt, Q0It);",
+      "ft_snap(\"scale\",0,u+1,0,a);"
+    ]
+  ],
+  "variant_sha256": {
+    "observer": "3e5dd3133b1e15dfafe87b56c20b0cdba9b38c9a1c975730bd8222e23c7fa368",
+    "noop": "3e5dd3133b1e15dfafe87b56c20b0cdba9b38c9a1c975730bd8222e23c7fa368",
+    "plain": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+    "labels": "06ca7886119f461864bfde236f5d97c928c93147b9027c57cff01e8785146512",
+    "cubic_order": "66adcccba0cce5bccef9a51cab78ff0c2f959f99c97cc4d364ef0b55fb3811e1",
+    "scale": "cb54d667b2f1de97f9b3621afcdeb841239d1cb90cf7f9664362b0fae855b471",
+    "read_after_write": "00f43be26b4505dfc78189c2e938ee6805571079aa4d8704fc9dffbeff0e2c82"
+  },
+  "mutations": [
+    "matched forward/inverse label swap",
+    "cubic output 1/2 swap",
+    "ni+1",
+    "forward read after first write"
+  ],
+  "note": "labels mutation is deliberately inverse-consistent: roundtrip alone must miss it"
+}
+gcc_observer 0 0.24
+gcc_noop 0 0.237
+gcc_plain 0 0.246
+gcc_labels 0 0.242
+gcc_cubic_order 0 0.248
+gcc_scale 0 0.249
+gcc_read_after_write 0 0.242
+c0 0 0.009
+lean0 0 0.64
+plain0 0 0.001
+c1 0 0.006
+lean1 0 0.648
+plain1 0 0.001
+noop 0 0.01
+labels 0 0.007
+cubic_order 0 0.009
+scale 0 0.009
+read_after_write 0 0.008
+{
+  "C_Lean_all_prefix_buffers_equal": true,
+  "plain_observer_endpoints_equal": true,
+  "snapshots_per_case": [
+    104,
+    104
+  ],
+  "compared_coefficients": 319488,
+  "mutations_detected": 4,
+  "noop_pass": true,
+  "matched_labels_roundtrip_pass_but_forward_wrong": true,
+  "cases": 2
+}
+{
+  "exact_arithmetic": "GF(18433), Sage polynomial evaluation",
+  "cases": 2,
+  "all_1536_forward_coordinates_equal": true,
+  "roots_distinct_and_roots_of_Phi": true,
+  "prefix_matrices_checked": 202,
+  "matched_label_mutant_rejected": true,
+  "expected_forward_vector_sha256": [
+    "ac78782e0fe222b0e2a74ba9a032dd5c7a7d45abb9e5df1ca46e2980b0c8440b",
+    "73c34e945b4e001100073259a96e4a96db55fd7f129501afb99ed7346406036f"
+  ],
+  "note": "finite controls; not a proof of FORWARD_GLOBAL or forward_product"
+}
+{
+  "status": "PASS",
+  "fresh_root": "/tmp/opencode/ft1536-proof-checkout/proofs/ft1536/replay-work/FT1536_L_NTT_GLOBAL_RUN_001/git-replay-001/seed/replay",
+  "no_carried_olean_binary_cache": true,
+  "semantic_files_equal": 103,
+  "baseline_sha256": "bb827f23045c98387681befe2853445a250910c6a4a7c581917b1e3536a991ce",
+  "note": "timings, cwd-bearing receipts and binary/cache products are excluded from semantic equality and retained separately"
+}

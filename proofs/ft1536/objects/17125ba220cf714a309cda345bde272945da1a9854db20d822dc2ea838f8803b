@@ -1,0 +1,61 @@
+# S17 source integration — 2026-09-19
+
+The exact 17-file `Szablon/build` S17 baseline, including FPEMU, was integrated
+in commit `e8aa0fbb61cf3402a4069b1be84973db0058f406`. The owner subsequently
+selected the proved L_RHO candidate as the active build on main; see
+[current-build provenance](FT1536_ACTIVE_BUILD.md). This file preserves the
+S17 reference history.
+
+Authoritative reference manifest: [ft1536-s17.sha256](ft1536-s17.sha256),
+with paths relative to the S17 snapshot
+`proofs/ft1536/stages/FT1536_L_RHO_RUN_001/reference/`
+(or `Extra/c` at commit e8aa0fb), and SHA-256:
+
+```text
+03eaa0dd72bf365102af102959f5a02133b32d0504e7dd5b15145529c6bc3589
+```
+
+Historical source binding:
+
+```text
+commit: d641ab1037c2fa1dd4a22c258854d79d67b9b46b
+path: evidence/_work/PO-01-BASELINE-001-20260803-a1/source_hashes.sha256
+```
+
+The imported bytes were obtained from the already archived, hash-checked
+`proofs/ft1536/stages/FT1536_L_RHO_RUN_001/reference/` tree. All 17 files
+were also compared with the physical `Szablon/build` source. This preserves
+the exact S17 source bytes rather than combining source revisions.
+
+In particular:
+
+| File | SHA-256 |
+|---|---|
+| falcon-vrfy.c | `01c496e5626a37b9d29848c596f0e0efaa328bf9b328649eea4bd1a45fa47f78` |
+| fpr-emulated.c | `7cb06c9ea8f8bfc205a207cd73af367d299005d4bfec26333ced702f1c024e5f` |
+| fpr-emulated.h | `242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa` |
+
+The source directory remains `Extra/c`; FT1536 is the build/profile name.
+The original [S17 integration checks](checks/2026-09-19-s17/README.md)
+record the reference build, flags and public regression before promotion
+of the corrected candidate. Current builds select the candidate manifest.
+
+## Mathematical boundary
+
+S17 is the reference with the documented counterexample to the fixed Ext0
+shortness lemma. The L_RHO candidate has verifier SHA-256
+`3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42`
+and is retained in the proof archive. That patch is now the active source
+in Extra/c; archived S17 bytes and historical proof verdicts remain evidence
+of the earlier version.
+
+The focused build check uses finite public FPEMU arithmetic cases and the
+existing synthetic verifier witness. It does not establish correctness of
+all FPEMU operations, signing/KeyGen, full L_V or end-to-end security.
+
+The corrected candidate now has completed L_NTT and L_V checkpoints, plus
+the M0 contract and STATIC capacity proof. Those results remain tied to its
+`3fe78f8d...` verifier and explicit model. The reference snapshot preserves
+S17 exactly; the positive candidate theorem does not change the recorded
+counterexample for S17. The M0 caller contract (4096-byte payload, nonce40)
+is also distinct from the historical CLI (2049-byte buffer, variable rlen).
