@@ -1,0 +1,27 @@
+static void
+LDL_dim2_fft3(fpr *restrict d11, fpr *restrict l10,
+	const fpr *restrict g00, const fpr *restrict g10,
+	const fpr *restrict g11, unsigned logn, unsigned full)
+{
+	size_t n;
+
+	n = MKN(logn, full);
+
+	/*
+	 * Set l10 = g10/g00.
+	 * Since g00 = adj(g00), FFT representation of g00 contains only
+	 * real numbers.
+	 */
+	memcpy(l10, g10, n * sizeof *g10);
+	falcon_poly_div_autoadj_fft3(l10, g00, logn, full);
+
+	/*
+	 * Set d11 = g11 - g10*adj(g10/g00).
+	 * TODO: g11 = adj(g11), so it should be half-sized (only real
+	 * numbers in FFT representation).
+	 */
+	memcpy(d11, g10, n * sizeof *g10);
+	falcon_poly_muladj_fft3(d11, l10, logn, full);
+	falcon_poly_neg_fft3(d11, logn, full);
+	falcon_poly_add_fft3(d11, g11, logn, full);
+}

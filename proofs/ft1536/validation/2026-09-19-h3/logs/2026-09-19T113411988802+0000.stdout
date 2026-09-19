@@ -1,0 +1,34 @@
+{
+  "status": "LOCAL_CONTROLS_PASS_WITH_EXPLICIT_EXTENDED_DOMAIN_FAILURES",
+  "normal_sanitizer_equal": true,
+  "comparisons": 83,
+  "negative_zero_floor_mismatch": true,
+  "negative_zero_passes_active_guards": true,
+  "universal_u_abs_plus_eta_invalid": true,
+  "required_domain_counterexample": false,
+  "width_endpoints": [
+    {
+      "D_bits": "4090000053700377",
+      "sigma_bits": "4037ffffc16bfe5c",
+      "paired_sigma_bits": "403bb67aa015fd4c",
+      "dss_bits": "3f4c71c7b0c7229a",
+      "paired_dss_bits": "3f455555c49559f4",
+      "oracle": "exact dyadic RN-even integer sqrt"
+    },
+    {
+      "D_bits": "4114444d1a037d50",
+      "sigma_bits": "3ff55311b09aeb8c",
+      "paired_sigma_bits": "3ff89f970c34ebeb",
+      "dss_bits": "3fd203d2c1ca3682",
+      "paired_dss_bits": "3fcb05bc22af51c3",
+      "oracle": "exact dyadic RN-even integer sqrt"
+    }
+  ],
+  "semantic_mutations_detected": [
+    "omitted nonzero rounding error on1+2^-54",
+    "universal IEEE underflow budget",
+    "ignoring negative-zero floor exception"
+  ],
+  "noop_pass": true,
+  "consequence": "No complete-IEEE or canonical-zero invariant may be imported without a reachable-domain proof; endpoints alone are not a universal H4 FPEMU theorem."
+}

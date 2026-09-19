@@ -1,0 +1,36 @@
+formal/OrderedResidual.lean:61:2: error: No goals to be solved
+scalar_residual : ∀ (D mu sf z err E : Int),
+  0 < D →
+    0 ≤ mu - D * sf ∧ mu - D * sf < D →
+      -365 ≤ z ∧ z ≤ 366 → Between err E → Between (mu - D * (sf + z) + err) (366 * D + E)
+terminal_right_then_left : ∀ (D r1 rx r0 pre0 fl0 z0 err2 err3 E1 Eh E2 E3 : Int),
+  0 < D →
+    Between r1 (366 * D + E1) →
+      Between (2 * rx - r1) (2 * Eh) →
+        0 ≤ pre0 - D * fl0 ∧ pre0 - D * fl0 < D →
+          -365 ≤ z0 ∧ z0 ≤ 366 →
+            Between err2 E2 →
+              Between err3 E3 →
+                r0 = pre0 - D * (fl0 + z0) + err2 - rx + err3 →
+                  Between (2 * r0) (1098 * D + E1 + 2 * Eh + 2 * E2 + 2 * E3)
+next_terminal_center : ∀ (t0 r1 rx c err T R Eh Ea : Int),
+  Between t0 T →
+    Between r1 R →
+      Between (2 * rx - r1) (2 * Eh) →
+        Between err Ea → c = t0 + rx + err → Between (2 * c) (2 * T + R + 2 * Eh + 2 * Ea)
+safe_next_center : ∀ (t0 r1 rx c err T R Eh Ea : Int),
+  Between t0 T →
+    Between r1 R →
+      Between (2 * rx - r1) (2 * Eh) →
+        Between err Ea → c = t0 + rx + err → 2 * T + R + 2 * Eh + 2 * Ea ≤ 4294966562 → -2147483281 ≤ c ∧ c ≤ 2147483281
+checked_key_coefficients : ∀ (xs ys : List Int),
+  smallLoop xs = some ys → ys = xs ∧ ∀ (x : Int), x ∈ ys → -2047 ≤ x ∧ x ≤ 2047
+'H3Range.scalar_residual' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H3Range.terminal_right_then_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H3Range.next_terminal_center' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H3Range.safe_next_center' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H3Range.inner_visits_count' depends on axioms: [propext, Quot.sound]
+'H3Range.actual_3072_calls' depends on axioms: [propext, Quot.sound]
+'H3Range.first_terminal_right_first' does not depend on any axioms
+'H3Range.checked_key_coefficients' depends on axioms: [propext, Classical.choice, Quot.sound]
+OrderedResidual 1 0.543

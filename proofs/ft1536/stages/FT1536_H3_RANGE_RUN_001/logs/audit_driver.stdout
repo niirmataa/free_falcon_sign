@@ -1,0 +1,494 @@
+H3Range.floor_refinement : ∀ (s : Bool) (e f : Nat),
+  LE.le.{0} e 1053 →
+    LT.lt.{0} f 4503599627370496 →
+      H3Range.NotNegZero s e f → Eq.{1} (H3Range.floorParts s e f) (H3Range.mathFloor s e f)
+H3Range.negative_zero_exception : Eq.{1} (H3Range.floorParts true 0 0) (-1) ∧ Eq.{1} (H3Range.mathFloor true 0 0) 0
+H3Range.negative_zero_sum_still_safe : ∀ (z : Int),
+  LE.le.{0} (-365) z ∧ LE.le.{0} z 366 →
+    LE.le.{0} (-2147483648) (HAdd.hAdd.{0, 0, 0} (H3Range.floorParts true 0 0) z) ∧
+      LE.le.{0} (HAdd.hAdd.{0, 0, 0} (H3Range.floorParts true 0 0) z) 2147483647
+H3Range.lt128_correct : ∀ (xh xl yh yl : Nat),
+  LT.lt.{0} xh 18446744073709551616 →
+    LT.lt.{0} xl 18446744073709551616 →
+      LT.lt.{0} yh 18446744073709551616 →
+        LT.lt.{0} yl 18446744073709551616 →
+          Eq.{1} (H3Range.lt128 xh xl yh yl)
+            (ite.{1}
+              (LT.lt.{0} (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} xh 18446744073709551616) xl)
+                (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} yh 18446744073709551616) yl))
+              1 0)
+H3Range.all_bank_support : ∀ (i : Fin 5) (r : Nat), LE.le.{0} (H3Range.above r (H3Range.bank i)) 365
+H3Range.proposal_return_safe : ∀ (s : Int),
+  LE.le.{0} (-2147483283) s ∧ LE.le.{0} s 2147483281 →
+    ∀ (k : Nat),
+      LE.le.{0} k 365 →
+        ∀ (b : Bool),
+          LE.le.{0} (-2147483648) (HAdd.hAdd.{0, 0, 0} s (H3Range.proposalZ k b)) ∧
+            LE.le.{0} (HAdd.hAdd.{0, 0, 0} s (H3Range.proposalZ k b)) 2147483647
+H3Range.terminal_right_then_left : ∀ (D r1 rx r0 pre0 fl0 z0 err2 err3 E1 Eh E2 E3 : Int),
+  LT.lt.{0} 0 D →
+    H3Range.Between r1 (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} 366 D) E1) →
+      H3Range.Between (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 rx) r1) (HMul.hMul.{0, 0, 0} 2 Eh) →
+        LE.le.{0} 0 (HSub.hSub.{0, 0, 0} pre0 (HMul.hMul.{0, 0, 0} D fl0)) ∧
+            LT.lt.{0} (HSub.hSub.{0, 0, 0} pre0 (HMul.hMul.{0, 0, 0} D fl0)) D →
+          LE.le.{0} (-365) z0 ∧ LE.le.{0} z0 366 →
+            H3Range.Between err2 E2 →
+              H3Range.Between err3 E3 →
+                Eq.{1} r0
+                    (HAdd.hAdd.{0, 0, 0}
+                      (HSub.hSub.{0, 0, 0}
+                        (HAdd.hAdd.{0, 0, 0}
+                          (HSub.hSub.{0, 0, 0} pre0 (HMul.hMul.{0, 0, 0} D (HAdd.hAdd.{0, 0, 0} fl0 z0))) err2)
+                        rx)
+                      err3) →
+                  H3Range.Between (HMul.hMul.{0, 0, 0} 2 r0)
+                    (HAdd.hAdd.{0, 0, 0}
+                      (HAdd.hAdd.{0, 0, 0}
+                        (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} 1098 D) E1)
+                          (HMul.hMul.{0, 0, 0} 2 Eh))
+                        (HMul.hMul.{0, 0, 0} 2 E2))
+                      (HMul.hMul.{0, 0, 0} 2 E3))
+H3Range.next_terminal_center : ∀ (t0 r1 rx c err T R Eh Ea : Int),
+  H3Range.Between t0 T →
+    H3Range.Between r1 R →
+      H3Range.Between (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 rx) r1) (HMul.hMul.{0, 0, 0} 2 Eh) →
+        H3Range.Between err Ea →
+          Eq.{1} c (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} t0 rx) err) →
+            H3Range.Between (HMul.hMul.{0, 0, 0} 2 c)
+              (HAdd.hAdd.{0, 0, 0}
+                (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 T) R) (HMul.hMul.{0, 0, 0} 2 Eh))
+                (HMul.hMul.{0, 0, 0} 2 Ea))
+H3Range.checked_key_coefficients : ∀ (xs ys : List.{0} Int),
+  Eq.{1} (H3Range.smallLoop xs) (some.{0} ys) →
+    Eq.{1} ys xs ∧ ∀ (x : Int), Membership.mem.{0, 0} ys x → LE.le.{0} (-2047) x ∧ LE.le.{0} x 2047
+H3Range.guards_do_not_imply_floor_refinement : Exists.{1} fun mu =>
+  Exists.{1} fun sigma =>
+    Eq.{1} (H3Range.admitCall 0 mu sigma) (H3Range.Admission.atFloor mu sigma) ∧
+      Ne.{1} (H3Range.floorParts (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+        (H3Range.mathFloor (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+H3Range.complete_local_lift : ∀ (mu : Nat),
+  H3Range.CenterClass mu →
+    ∀ (k : Nat),
+      LE.le.{0} k 365 →
+        ∀ (b : Bool),
+          Eq.{1} (H3Range.floorParts (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+              (H3Range.mathFloor (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu)) ∧
+            LE.le.{0} (-2147483648)
+                (HAdd.hAdd.{0, 0, 0}
+                  (H3Range.floorParts (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+                  (H3Range.proposalZ k b)) ∧
+              LE.le.{0}
+                (HAdd.hAdd.{0, 0, 0}
+                  (H3Range.floorParts (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+                  (H3Range.proposalZ k b))
+                2147483647
+'H3Range.p2_mono' depends on axioms: [propext]
+'H3Range.mant_bounds' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.p2_shift' depends on axioms: [propext]
+'H3Range.normal_floor_refinement' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.subnormal_floor_refinement' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.floor_refinement' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.negative_zero_exception' depends on axioms: [propext]
+'H3Range.signed_zero_guard' does not depend on any axioms
+'H3Range.integer_safety' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.negative_zero_sum_still_safe' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.conditional_H3_local' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.lt64_correct' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.eq64_correct' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.lt128_correct' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.scan_bound' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.max_at_zero' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.select_found' depends on axioms: [propext]
+'H3Range.select_bound' depends on axioms: [propext]
+'H3Range.proposal_support' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.proposal_return_safe' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.bank0_size' does not depend on any axioms
+'H3Range.bank0_max' does not depend on any axioms
+'H3Range.bank0_support' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.bank1_size' does not depend on any axioms
+'H3Range.bank1_max' does not depend on any axioms
+'H3Range.bank1_support' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.bank2_size' does not depend on any axioms
+'H3Range.bank2_max' does not depend on any axioms
+'H3Range.bank2_support' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.bank3_size' does not depend on any axioms
+'H3Range.bank3_max' does not depend on any axioms
+'H3Range.bank3_support' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.bank4_size' does not depend on any axioms
+'H3Range.bank4_max' does not depend on any axioms
+'H3Range.bank4_support' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.all_bank_support' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.scalar_residual' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.terminal_right_then_left' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.next_terminal_center' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.safe_next_center' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.inner_visits_count' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.actual_3072_calls' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.first_terminal_right_first' does not depend on any axioms
+'H3Range.checked_key_coefficients' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.active_guards' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.sticky_path' depends on axioms: [propext]
+'H3Range.negative_zero_admitted' does not depend on any axioms
+'H3Range.guards_do_not_imply_floor_refinement' depends on axioms: [propext]
+'H3Range.complete_local_lift' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+Audit 0 0.26
+H3Range.floor_refinement : ∀ (s : Bool) (e f : Nat)
+  (he : @LE.le.{0} Nat instLENat e (@OfNat.ofNat.{0} Nat (nat_lit 1053) (instOfNatNat (nat_lit 1053))))
+  (hf :
+    @LT.lt.{0} Nat instLTNat f
+      (@OfNat.ofNat.{0} Nat (nat_lit 4503599627370496) (instOfNatNat (nat_lit 4503599627370496))))
+  (hz : H3Range.NotNegZero s e f), @Eq.{1} Int (H3Range.floorParts s e f) (H3Range.mathFloor s e f)
+H3Range.negative_zero_exception : And
+  (@Eq.{1} Int
+    (H3Range.floorParts Bool.true (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+    (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1)))))
+  (@Eq.{1} Int
+    (H3Range.mathFloor Bool.true (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+    (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0))))
+H3Range.negative_zero_sum_still_safe : ∀ (z : Int)
+  (hz :
+    And
+      (@LE.le.{0} Int Int.instLEInt
+        (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 365) (@instOfNat (nat_lit 365)))) z)
+      (@LE.le.{0} Int Int.instLEInt z (@OfNat.ofNat.{0} Int (nat_lit 366) (@instOfNat (nat_lit 366))))),
+  And
+    (@LE.le.{0} Int Int.instLEInt
+      (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2147483648) (@instOfNat (nat_lit 2147483648))))
+      (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+        (H3Range.floorParts Bool.true (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        z))
+    (@LE.le.{0} Int Int.instLEInt
+      (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+        (H3Range.floorParts Bool.true (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        z)
+      (@OfNat.ofNat.{0} Int (nat_lit 2147483647) (@instOfNat (nat_lit 2147483647))))
+H3Range.lt128_correct : ∀ (xh xl yh yl : Nat)
+  (hxh :
+    @LT.lt.{0} Nat instLTNat xh
+      (@OfNat.ofNat.{0} Nat (nat_lit 18446744073709551616) (instOfNatNat (nat_lit 18446744073709551616))))
+  (hxl :
+    @LT.lt.{0} Nat instLTNat xl
+      (@OfNat.ofNat.{0} Nat (nat_lit 18446744073709551616) (instOfNatNat (nat_lit 18446744073709551616))))
+  (hyh :
+    @LT.lt.{0} Nat instLTNat yh
+      (@OfNat.ofNat.{0} Nat (nat_lit 18446744073709551616) (instOfNatNat (nat_lit 18446744073709551616))))
+  (hyl :
+    @LT.lt.{0} Nat instLTNat yl
+      (@OfNat.ofNat.{0} Nat (nat_lit 18446744073709551616) (instOfNatNat (nat_lit 18446744073709551616)))),
+  @Eq.{1} Nat (H3Range.lt128 xh xl yh yl)
+    (@ite.{1} Nat
+      (@LT.lt.{0} Nat instLTNat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) xh
+            (@OfNat.ofNat.{0} Nat (nat_lit 18446744073709551616) (instOfNatNat (nat_lit 18446744073709551616))))
+          xl)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) yh
+            (@OfNat.ofNat.{0} Nat (nat_lit 18446744073709551616) (instOfNatNat (nat_lit 18446744073709551616))))
+          yl))
+      (Nat.decLt
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) xh
+            (@OfNat.ofNat.{0} Nat (nat_lit 18446744073709551616) (instOfNatNat (nat_lit 18446744073709551616))))
+          xl)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) yh
+            (@OfNat.ofNat.{0} Nat (nat_lit 18446744073709551616) (instOfNatNat (nat_lit 18446744073709551616))))
+          yl))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+H3Range.all_bank_support : ∀ (i : Fin (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))) (r : Nat),
+  @LE.le.{0} Nat instLENat (H3Range.above r (H3Range.bank i))
+    (@OfNat.ofNat.{0} Nat (nat_lit 365) (instOfNatNat (nat_lit 365)))
+H3Range.proposal_return_safe : ∀ (s : Int)
+  (hs :
+    And
+      (@LE.le.{0} Int Int.instLEInt
+        (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2147483283) (@instOfNat (nat_lit 2147483283))))
+        s)
+      (@LE.le.{0} Int Int.instLEInt s (@OfNat.ofNat.{0} Int (nat_lit 2147483281) (@instOfNat (nat_lit 2147483281)))))
+  (k : Nat) (hk : @LE.le.{0} Nat instLENat k (@OfNat.ofNat.{0} Nat (nat_lit 365) (instOfNatNat (nat_lit 365))))
+  (b : Bool),
+  And
+    (@LE.le.{0} Int Int.instLEInt
+      (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2147483648) (@instOfNat (nat_lit 2147483648))))
+      (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) s (H3Range.proposalZ k b)))
+    (@LE.le.{0} Int Int.instLEInt
+      (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) s (H3Range.proposalZ k b))
+      (@OfNat.ofNat.{0} Int (nat_lit 2147483647) (@instOfNat (nat_lit 2147483647))))
+H3Range.terminal_right_then_left : ∀ (D r1 rx r0 pre0 fl0 z0 err2 err3 E1 Eh E2 E3 : Int)
+  (hD : @LT.lt.{0} Int Int.instLTInt (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0))) D)
+  (h1 :
+    H3Range.Between r1
+      (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+          (@OfNat.ofNat.{0} Int (nat_lit 366) (@instOfNat (nat_lit 366))) D)
+        E1))
+  (hh :
+    H3Range.Between
+      (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+          (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))) rx)
+        r1)
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+        (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))) Eh))
+  (hf0 :
+    And
+      (@LE.le.{0} Int Int.instLEInt (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0)))
+        (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) pre0
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) D fl0)))
+      (@LT.lt.{0} Int Int.instLTInt
+        (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) pre0
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) D fl0))
+        D))
+  (hz0 :
+    And
+      (@LE.le.{0} Int Int.instLEInt
+        (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 365) (@instOfNat (nat_lit 365)))) z0)
+      (@LE.le.{0} Int Int.instLEInt z0 (@OfNat.ofNat.{0} Int (nat_lit 366) (@instOfNat (nat_lit 366)))))
+  (he2 : H3Range.Between err2 E2) (he3 : H3Range.Between err3 E3)
+  (out :
+    @Eq.{1} Int r0
+      (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+        (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+          (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+            (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) pre0
+              (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) D
+                (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) fl0 z0)))
+            err2)
+          rx)
+        err3)),
+  H3Range.Between
+    (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+      (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))) r0)
+    (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+      (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+        (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+          (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+            (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+              (@OfNat.ofNat.{0} Int (nat_lit 1098) (@instOfNat (nat_lit 1098))) D)
+            E1)
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+            (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))) Eh))
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+          (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))) E2))
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+        (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))) E3))
+H3Range.next_terminal_center : ∀ (t0 r1 rx c err T R Eh Ea : Int) (ht : H3Range.Between t0 T)
+  (hr : H3Range.Between r1 R)
+  (hh :
+    H3Range.Between
+      (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+          (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))) rx)
+        r1)
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+        (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))) Eh))
+  (he : H3Range.Between err Ea)
+  (hc :
+    @Eq.{1} Int c
+      (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+        (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) t0 rx) err)),
+  H3Range.Between
+    (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+      (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))) c)
+    (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+      (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+        (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+            (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))) T)
+          R)
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+          (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))) Eh))
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+        (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))) Ea))
+H3Range.checked_key_coefficients : ∀ (xs ys : List.{0} Int)
+  (h : @Eq.{1} (Option.{0} (List.{0} Int)) (H3Range.smallLoop xs) (@Option.some.{0} (List.{0} Int) ys)),
+  And (@Eq.{1} (List.{0} Int) ys xs)
+    (∀ (x : Int),
+      @Membership.mem.{0, 0} Int (List.{0} Int) (@List.instMembership.{0} Int) ys x →
+        And
+          (@LE.le.{0} Int Int.instLEInt
+            (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2047) (@instOfNat (nat_lit 2047)))) x)
+          (@LE.le.{0} Int Int.instLEInt x (@OfNat.ofNat.{0} Int (nat_lit 2047) (@instOfNat (nat_lit 2047)))))
+H3Range.guards_do_not_imply_floor_refinement : @Exists.{1} Nat fun (mu : Nat) =>
+  @Exists.{1} Nat fun (sigma : Nat) =>
+    And
+      (@Eq.{1} H3Range.Admission
+        (H3Range.admitCall (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) mu sigma)
+        (H3Range.Admission.atFloor mu sigma))
+      (@Ne.{1} Int (H3Range.floorParts (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+        (H3Range.mathFloor (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu)))
+H3Range.complete_local_lift : ∀ (mu : Nat) (hm : H3Range.CenterClass mu) (k : Nat)
+  (hk : @LE.le.{0} Nat instLENat k (@OfNat.ofNat.{0} Nat (nat_lit 365) (instOfNatNat (nat_lit 365)))) (b : Bool),
+  And
+    (@Eq.{1} Int (H3Range.floorParts (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+      (H3Range.mathFloor (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu)))
+    (And
+      (@LE.le.{0} Int Int.instLEInt
+        (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2147483648) (@instOfNat (nat_lit 2147483648))))
+        (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+          (H3Range.floorParts (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+          (H3Range.proposalZ k b)))
+      (@LE.le.{0} Int Int.instLEInt
+        (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+          (H3Range.floorParts (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu)) (H3Range.proposalZ k b))
+        (@OfNat.ofNat.{0} Int (nat_lit 2147483647) (@instOfNat (nat_lit 2147483647)))))
+theorem H3Range.complete_local_lift : ∀ (mu : Nat) (hm : H3Range.CenterClass mu) (k : Nat)
+  (hk : @LE.le.{0} Nat instLENat k (@OfNat.ofNat.{0} Nat (nat_lit 365) (instOfNatNat (nat_lit 365)))) (b : Bool),
+  And
+    (@Eq.{1} Int (H3Range.floorParts (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+      (H3Range.mathFloor (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu)))
+    (And
+      (@LE.le.{0} Int Int.instLEInt
+        (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2147483648) (@instOfNat (nat_lit 2147483648))))
+        (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+          (H3Range.floorParts (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+          (H3Range.proposalZ k b)))
+      (@LE.le.{0} Int Int.instLEInt
+        (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+          (H3Range.floorParts (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu)) (H3Range.proposalZ k b))
+        (@OfNat.ofNat.{0} Int (nat_lit 2147483647) (@instOfNat (nat_lit 2147483647))))) :=
+fun (mu : Nat) (hm : H3Range.CenterClass mu) (k : Nat)
+    (hk : @LE.le.{0} Nat instLENat k (@OfNat.ofNat.{0} Nat (nat_lit 365) (instOfNatNat (nat_lit 365)))) (b : Bool) =>
+  H3Range.conditional_H3_local (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu) (H3Range.proposalZ k b)
+    (@And.left
+      (@LE.le.{0} Nat instLENat (H3Range.exponent mu)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1053) (instOfNatNat (nat_lit 1053))))
+      (And (H3Range.NotNegZero (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+        (And
+          (@LE.le.{0} Int Int.instLEInt
+            (@Neg.neg.{0} Int Int.instNegInt
+              (@OfNat.ofNat.{0} Int (nat_lit 2147483283) (@instOfNat (nat_lit 2147483283))))
+            (H3Range.mathFloor (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu)))
+          (@LE.le.{0} Int Int.instLEInt
+            (H3Range.mathFloor (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+            (@OfNat.ofNat.{0} Int (nat_lit 2147483281) (@instOfNat (nat_lit 2147483281))))))
+      (@And.right
+        (@LT.lt.{0} Nat instLTNat mu
+          (@OfNat.ofNat.{0} Nat (nat_lit 18446744073709551616) (instOfNatNat (nat_lit 18446744073709551616))))
+        (And
+          (@LE.le.{0} Nat instLENat (H3Range.exponent mu)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1053) (instOfNatNat (nat_lit 1053))))
+          (And (H3Range.NotNegZero (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+            (And
+              (@LE.le.{0} Int Int.instLEInt
+                (@Neg.neg.{0} Int Int.instNegInt
+                  (@OfNat.ofNat.{0} Int (nat_lit 2147483283) (@instOfNat (nat_lit 2147483283))))
+                (H3Range.mathFloor (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu)))
+              (@LE.le.{0} Int Int.instLEInt
+                (H3Range.mathFloor (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+                (@OfNat.ofNat.{0} Int (nat_lit 2147483281) (@instOfNat (nat_lit 2147483281)))))))
+        hm))
+    (@Nat.mod_lt mu (@OfNat.ofNat.{0} Nat (nat_lit 4503599627370496) (instOfNatNat (nat_lit 4503599627370496)))
+      (@of_decide_eq_true
+        (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 4503599627370496) (instOfNatNat (nat_lit 4503599627370496))))
+        (Nat.decLt (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 4503599627370496) (instOfNatNat (nat_lit 4503599627370496))))
+        (@id.{0}
+          (@Eq.{1} Bool
+            (@Decidable.decide
+              (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                (@OfNat.ofNat.{0} Nat (nat_lit 4503599627370496) (instOfNatNat (nat_lit 4503599627370496))))
+              (Nat.decLt (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                (@OfNat.ofNat.{0} Nat (nat_lit 4503599627370496) (instOfNatNat (nat_lit 4503599627370496)))))
+            Bool.true)
+          (@Eq.refl.{1} Bool Bool.true))))
+    (@And.left (H3Range.NotNegZero (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+      (And
+        (@LE.le.{0} Int Int.instLEInt
+          (@Neg.neg.{0} Int Int.instNegInt
+            (@OfNat.ofNat.{0} Int (nat_lit 2147483283) (@instOfNat (nat_lit 2147483283))))
+          (H3Range.mathFloor (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu)))
+        (@LE.le.{0} Int Int.instLEInt
+          (H3Range.mathFloor (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+          (@OfNat.ofNat.{0} Int (nat_lit 2147483281) (@instOfNat (nat_lit 2147483281)))))
+      (@And.right
+        (@LE.le.{0} Nat instLENat (H3Range.exponent mu)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1053) (instOfNatNat (nat_lit 1053))))
+        (And (H3Range.NotNegZero (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+          (And
+            (@LE.le.{0} Int Int.instLEInt
+              (@Neg.neg.{0} Int Int.instNegInt
+                (@OfNat.ofNat.{0} Int (nat_lit 2147483283) (@instOfNat (nat_lit 2147483283))))
+              (H3Range.mathFloor (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu)))
+            (@LE.le.{0} Int Int.instLEInt
+              (H3Range.mathFloor (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+              (@OfNat.ofNat.{0} Int (nat_lit 2147483281) (@instOfNat (nat_lit 2147483281))))))
+        (@And.right
+          (@LT.lt.{0} Nat instLTNat mu
+            (@OfNat.ofNat.{0} Nat (nat_lit 18446744073709551616) (instOfNatNat (nat_lit 18446744073709551616))))
+          (And
+            (@LE.le.{0} Nat instLENat (H3Range.exponent mu)
+              (@OfNat.ofNat.{0} Nat (nat_lit 1053) (instOfNatNat (nat_lit 1053))))
+            (And (H3Range.NotNegZero (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+              (And
+                (@LE.le.{0} Int Int.instLEInt
+                  (@Neg.neg.{0} Int Int.instNegInt
+                    (@OfNat.ofNat.{0} Int (nat_lit 2147483283) (@instOfNat (nat_lit 2147483283))))
+                  (H3Range.mathFloor (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu)))
+                (@LE.le.{0} Int Int.instLEInt
+                  (H3Range.mathFloor (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+                  (@OfNat.ofNat.{0} Int (nat_lit 2147483281) (@instOfNat (nat_lit 2147483281)))))))
+          hm)))
+    (@And.right (H3Range.NotNegZero (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+      (And
+        (@LE.le.{0} Int Int.instLEInt
+          (@Neg.neg.{0} Int Int.instNegInt
+            (@OfNat.ofNat.{0} Int (nat_lit 2147483283) (@instOfNat (nat_lit 2147483283))))
+          (H3Range.mathFloor (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu)))
+        (@LE.le.{0} Int Int.instLEInt
+          (H3Range.mathFloor (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+          (@OfNat.ofNat.{0} Int (nat_lit 2147483281) (@instOfNat (nat_lit 2147483281)))))
+      (@And.right
+        (@LE.le.{0} Nat instLENat (H3Range.exponent mu)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1053) (instOfNatNat (nat_lit 1053))))
+        (And (H3Range.NotNegZero (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+          (And
+            (@LE.le.{0} Int Int.instLEInt
+              (@Neg.neg.{0} Int Int.instNegInt
+                (@OfNat.ofNat.{0} Int (nat_lit 2147483283) (@instOfNat (nat_lit 2147483283))))
+              (H3Range.mathFloor (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu)))
+            (@LE.le.{0} Int Int.instLEInt
+              (H3Range.mathFloor (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+              (@OfNat.ofNat.{0} Int (nat_lit 2147483281) (@instOfNat (nat_lit 2147483281))))))
+        (@And.right
+          (@LT.lt.{0} Nat instLTNat mu
+            (@OfNat.ofNat.{0} Nat (nat_lit 18446744073709551616) (instOfNatNat (nat_lit 18446744073709551616))))
+          (And
+            (@LE.le.{0} Nat instLENat (H3Range.exponent mu)
+              (@OfNat.ofNat.{0} Nat (nat_lit 1053) (instOfNatNat (nat_lit 1053))))
+            (And (H3Range.NotNegZero (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+              (And
+                (@LE.le.{0} Int Int.instLEInt
+                  (@Neg.neg.{0} Int Int.instNegInt
+                    (@OfNat.ofNat.{0} Int (nat_lit 2147483283) (@instOfNat (nat_lit 2147483283))))
+                  (H3Range.mathFloor (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu)))
+                (@LE.le.{0} Int Int.instLEInt
+                  (H3Range.mathFloor (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+                  (@OfNat.ofNat.{0} Int (nat_lit 2147483281) (@instOfNat (nat_lit 2147483281)))))))
+          hm)))
+    (H3Range.proposal_support k hk b)
+def H3Range.CenterClass : (mu : Nat) → Prop :=
+fun (mu : Nat) =>
+  And
+    (@LT.lt.{0} Nat instLTNat mu
+      (@OfNat.ofNat.{0} Nat (nat_lit 18446744073709551616) (instOfNatNat (nat_lit 18446744073709551616))))
+    (And
+      (@LE.le.{0} Nat instLENat (H3Range.exponent mu)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1053) (instOfNatNat (nat_lit 1053))))
+      (And (H3Range.NotNegZero (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+        (And
+          (@LE.le.{0} Int Int.instLEInt
+            (@Neg.neg.{0} Int Int.instNegInt
+              (@OfNat.ofNat.{0} Int (nat_lit 2147483283) (@instOfNat (nat_lit 2147483283))))
+            (H3Range.mathFloor (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu)))
+          (@LE.le.{0} Int Int.instLEInt
+            (H3Range.mathFloor (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+            (@OfNat.ofNat.{0} Int (nat_lit 2147483281) (@instOfNat (nat_lit 2147483281)))))))
+Types 0 0.273

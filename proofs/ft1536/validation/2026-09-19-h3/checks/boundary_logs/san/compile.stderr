@@ -1,0 +1,7 @@
+checks/boundaries.c: In function ‘main’:
+checks/boundaries.c:9:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+    9 |  if(argc!=2)return 2;FILE *in=fopen(argv[1],"r");if(!in)return 3;
+      |  ^~
+checks/boundaries.c:9:22: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+    9 |  if(argc!=2)return 2;FILE *in=fopen(argv[1],"r");if(!in)return 3;
+      |                      ^~~~

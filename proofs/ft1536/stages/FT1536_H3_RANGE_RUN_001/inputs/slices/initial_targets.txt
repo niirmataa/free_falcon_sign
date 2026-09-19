@@ -1,0 +1,50 @@
+static void
+do_sign(samplerZ samp, void *samp_ctx,
+	int16_t *restrict s1, int16_t *restrict s2,
+	unsigned q, const fpr *restrict sk, const uint16_t *restrict hm,
+	unsigned logn, unsigned ter, fpr *restrict tmp)
+{
+	size_t n, u;
+	fpr *t0, *t1, *tx, *ty, *tz;
+	const fpr *b00, *b01, *b10, *b11, *tree;
+	fpr ni;
+
+	n = MKN(logn, ter);
+	t0 = tmp;
+	t1 = t0 + n;
+	tx = t1 + n;
+	ty = tx + n;
+	tz = ty + n;
+	b00 = sk + skoff_b00(logn, ter);
+	b01 = sk + skoff_b01(logn, ter);
+	b10 = sk + skoff_b10(logn, ter);
+	b11 = sk + skoff_b11(logn, ter);
+	tree = sk + skoff_tree(logn, ter);
+
+	/*
+	 * Set the target vector to [hm, 0] (hm is the hashed message).
+	 */
+	for (u = 0; u < n; u ++) {
+		t0[u] = fpr_of(hm[u]);
+		/* This is implicit.
+		t1[u] = fpr_of(0);
+		*/
+	}
+
+	if (ter) {
+		/*
+		 * Apply the lattice basis to obtain the real target
+		 * vector (after normalization with regards to modulus).
+		 */
+		falcon_FFT3(t0, logn, 1);
+		ni = fpr_inverse_of(q);
+		memcpy(t1, t0, n * sizeof *t0);
+		falcon_poly_mul_fft3(t1, b01, logn, 1);
+		falcon_poly_mulconst_fft3(t1, fpr_neg(ni), logn, 1);
+		falcon_poly_mul_fft3(t0, b11, logn, 1);
+		falcon_poly_mulconst_fft3(t0, ni, logn, 1);
+
+		/*
+		 * Apply sampling. Output is written back in [tx, ty].
+		 */
+		ffSampling_fft3(samp, samp_ctx, tx, ty, tree, t0, t1, logn, tz);

@@ -1,0 +1,85 @@
+static void
+ffSampling_depth1_fft3(samplerZ samp, void *samp_ctx,
+	fpr *restrict z0, fpr *restrict z1, fpr *restrict z2,
+	const fpr *restrict tree,
+	const fpr *restrict t0, const fpr *restrict t1, const fpr *restrict t2,
+	unsigned logn, fpr *restrict tmp)
+{
+	size_t n, hn;
+	fpr *x0, *x1, *y0, *y1;
+	const fpr *tree0, *tree1, *tree2;
+
+	n = (size_t)1 << logn;
+	hn = n >> 1;
+
+	tree0 = tree + 3 * n;
+	tree1 = tree0 + (logn << (logn - 1));
+	tree2 = tree1 + (logn << (logn - 1));
+	y0 = tmp;
+	y1 = y0 + hn;
+
+	/*
+	 * Split t2, recurse, merge into z2.
+	 */
+	x0 = z2;
+	x1 = x0 + hn;
+	falcon_poly_split_deep_fft3(x0, x1, t2, logn);
+	ffSampling_inner_fft3(samp, samp_ctx,
+		y0, y1, tree2, x0, x1, logn - 1, tmp + n);
+	falcon_poly_merge_deep_fft3(z2, y0, y1, logn);
+
+	/*
+	 * Compute t1b = t1 + z2 * l21 (into tmp[]).
+	 * FIXME: save z2 * l21 instead of recomputing it later on.
+	 */
+	memcpy(tmp, z2, n * sizeof *z2);
+	falcon_poly_mul_fft3(tmp, tree + 2 * n, logn, 0);
+	falcon_poly_add_fft3(tmp, t1, logn, 0);
+
+	/*
+	 * Split t1b, recurse, merge into z1, and subtract z2 * l21.
+	 */
+	x0 = z1;
+	x1 = x0 + hn;
+	falcon_poly_split_deep_fft3(x0, x1, tmp, logn);
+	ffSampling_inner_fft3(samp, samp_ctx,
+		y0, y1, tree1, x0, x1, logn - 1, tmp + n);
+	falcon_poly_merge_deep_fft3(z1, y0, y1, logn);
+	memcpy(tmp, z2, n * sizeof *z2);
+	falcon_poly_mul_fft3(tmp, tree + 2 * n, logn, 0);
+	falcon_poly_sub_fft3(z1, tmp, logn, 0);
+
+	/*
+	 * Compute t0b = t0 + z1 * l10 + z2 * l20 (into z0).
+	 * We use z0 as extra temporary.
+	 * FIXME: save z1 * l10 + z2 * l20 instead of recomputing it later on.
+	 */
+	memcpy(z0, t0, n * sizeof *t0);
+	memcpy(tmp, z1, n * sizeof *z1);
+	falcon_poly_mul_fft3(tmp, tree, logn, 0);
+	falcon_poly_add_fft3(z0, tmp, logn, 0);
+	memcpy(tmp, z2, n * sizeof *z1);
+	falcon_poly_mul_fft3(tmp, tree + n, logn, 0);
+	falcon_poly_add_fft3(z0, tmp, logn, 0);
+
+	/*
+	 * Split t0b, recurse, merge into z0.
+	 */
+	x0 = z0;
+	x1 = x0 + hn;
+	memcpy(tmp, z0, n * sizeof *z0);
+	falcon_poly_split_deep_fft3(x0, x1, tmp, logn);
+	ffSampling_inner_fft3(samp, samp_ctx,
+		y0, y1, tree0, x0, x1, logn - 1, tmp + n);
+	falcon_poly_merge_deep_fft3(z0, y0, y1, logn);
+
+	/*
+	 * Subtract z1 * l10 and z2 * l20 from z0.
+	 */
+	memcpy(tmp, z1, n * sizeof *z1);
+	falcon_poly_mul_fft3(tmp, tree, logn, 0);
+	falcon_poly_sub_fft3(z0, tmp, logn, 0);
+	memcpy(tmp, z2, n * sizeof *z1);
+	falcon_poly_mul_fft3(tmp, tree + n, logn, 0);
+	falcon_poly_sub_fft3(z0, tmp, logn, 0);
+}

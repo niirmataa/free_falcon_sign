@@ -1,0 +1,20 @@
+formal/Proposal.lean:13:11: error: Tactic `rfl` failed: No `[refl]` lemma registered for relation
+  LE.le
+
+Hint: Add the `[refl]` attribute to reflexivity lemmas for `LE.le` to use this tactic
+
+case nil
+r : Nat
+⊢ above r [] ≤ above r []
+scan_bound : ∀ (r : Nat) (ts : List Nat), above r ts ≤ nonzero ts
+select_bound : ∀ (ls : List (Bool × Nat)) (cap : Nat),
+  (∀ (p : Bool × Nat), p ∈ ls → p.snd ≤ cap) → select ls false 0 ≤ cap
+proposal_return_safe : ∀ (s : Int),
+  -2147483283 ≤ s ∧ s ≤ 2147483281 →
+    ∀ (k : Nat), k ≤ 365 → ∀ (b : Bool), -2147483648 ≤ s + proposalZ k b ∧ s + proposalZ k b ≤ 2147483647
+'H3Range.scan_bound' depends on axioms: [propext, sorryAx, Quot.sound]
+'H3Range.max_at_zero' depends on axioms: [propext, Quot.sound]
+'H3Range.select_found' depends on axioms: [propext]
+'H3Range.select_bound' depends on axioms: [propext]
+'H3Range.proposal_support' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H3Range.proposal_return_safe' depends on axioms: [propext, Classical.choice, Quot.sound]

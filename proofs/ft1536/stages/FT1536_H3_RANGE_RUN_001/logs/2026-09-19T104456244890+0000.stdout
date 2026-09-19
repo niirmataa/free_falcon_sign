@@ -1,0 +1,24 @@
+formal/Comparator.lean:12:2: error: 'change' tactic failed, pattern
+  x / 9223372036854775808 ^^^
+      (x / 9223372036854775808 ^^^ y / 9223372036854775808 |||
+        u64diff x y / 9223372036854775808 ^^^ y / 9223372036854775808) =
+    if x < y then 1 else 0
+is not definitionally equal to target
+  (x ^^^ (x ^^^ y ||| u64diff x y ^^^ y)) / 2 ^ 63 = if x < y then 1 else 0
+formal/Comparator.lean:11:13: warning: This simp argument is unused:
+  Nat.shiftRight_xor_distrib
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Nat.shiftRight_or_distrib, Nat.shiftRight_eq_div_pow]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+formal/Comparator.lean:11:40: warning: This simp argument is unused:
+  Nat.shiftRight_or_distrib
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Nat.shiftRight_xor_distrib, Nat.shiftRight_eq_div_pow]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+lt64_correct : ∀ (x y : Nat), x < 18446744073709551616 → y < 18446744073709551616 → lt64 x y = if x < y then 1 else 0
+'H3Range.lt64_correct' depends on axioms: [propext, sorryAx]
+Comparator 1 0.254

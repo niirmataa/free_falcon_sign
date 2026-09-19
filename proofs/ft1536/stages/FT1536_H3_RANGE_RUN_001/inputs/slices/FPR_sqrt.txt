@@ -1,0 +1,76 @@
+fpr
+fpr_sqrt(fpr x)
+{
+	uint64_t xu, q, s, r;
+	int ex, e;
+
+	/*
+	 * Extract the mantissa and the exponent. We don't care about
+	 * the sign: by assumption, the operand is nonnegative.
+	 * We want the "true" exponent corresponding to a mantissa
+	 * in the 1..2 range.
+	 */
+	xu = (x & (((uint64_t)1 << 52) - 1)) | ((uint64_t)1 << 52);
+	ex = (int)((x >> 52) & 0x7FF);
+	e = ex - 1023;
+
+	/*
+	 * If the exponent is odd, double the mantissa and decrement
+	 * the exponent. The exponent is then halved to account for
+	 * the square root.
+	 */
+	xu += xu & -(uint64_t)(e & 1);
+	e >>= 1;
+
+	/*
+	 * Double the mantissa.
+	 */
+	xu <<= 1;
+
+	/*
+	 * We now have a mantissa in the 2^53..2^55-1 range. It
+	 * represents a value between 1 (inclusive) and 4 (exclusive)
+	 * in fixed point notation (with 53 fractional bits). We
+	 * compute the square root bit by bit.
+	 */
+	q = 0;
+	s = 0;
+	r = (uint64_t)1 << 53;
+	for (int i = 0; i < 54; i ++) {
+		uint64_t t, b;
+
+		t = s + r;
+		b = ((xu - t) >> 63) - 1;
+		s += (r << 1) & b;
+		xu -= t & b;
+		q += r & b;
+		xu <<= 1;
+		r >>= 1;
+	}
+
+	/*
+	 * Now, q is a rounded-low 54-bit value, with a leading 1,
+	 * 52 fractional digits, and an additional guard bit. We add
+	 * an extra sticky bit to account for what remains of the operand.
+	 */
+	q <<= 1;
+	q |= (xu | -xu) >> 63;
+
+	/*
+	 * Result q is in the 2^54..2^55-1 range; we bias the exponent
+	 * by 54 bits (the value e at that point contains the "true"
+	 * exponent, but q is now considered an integer, i.e. scaled
+	 * up.
+	 */
+	e -= 54;
+
+	/*
+	 * Corrective action for an operand of value zero.
+	 */
+	q &= -(uint64_t)((ex + 0x7FF) >> 11);
+
+	/*
+	 * Apply rounding and back result.
+	 */
+	return FPR(0, e, q);
+}

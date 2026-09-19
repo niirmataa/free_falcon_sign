@@ -1,0 +1,20 @@
+static inline uint64_t
+fpr_ursh(uint64_t x, int n)
+{
+	x ^= (x ^ (x >> 32)) & -(uint64_t)(n >> 5);
+	return x >> (n & 31);
+}
+
+static inline int64_t
+fpr_irsh(int64_t x, int n)
+{
+	x ^= (x ^ (x >> 32)) & -(int64_t)(n >> 5);
+	return x >> (n & 31);
+}
+
+static inline uint64_t
+fpr_ulsh(uint64_t x, int n)
+{
+	x ^= (x ^ (x << 32)) & -(uint64_t)(n >> 5);
+	return x << (n & 31);
+}

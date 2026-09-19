@@ -1,0 +1,17 @@
+active_guards : ∀ (fault mu sigma : Nat),
+  admitCall fault mu sigma = Admission.atFloor mu sigma →
+    fault = 0 ∧ exponent mu ≠ 2047 ∧ sigma < 9223372036854775808 ∧ exponent sigma ≠ 2047 ∧ sigma ≠ 0
+complete_local_lift : ∀ (mu : Nat),
+  CenterClass mu →
+    ∀ (k : Nat),
+      k ≤ 365 →
+        ∀ (b : Bool),
+          floorParts (signBit mu) (exponent mu) (fraction mu) = mathFloor (signBit mu) (exponent mu) (fraction mu) ∧
+            -2147483648 ≤ floorParts (signBit mu) (exponent mu) (fraction mu) + proposalZ k b ∧
+              floorParts (signBit mu) (exponent mu) (fraction mu) + proposalZ k b ≤ 2147483647
+'H3Range.active_guards' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H3Range.sticky_path' depends on axioms: [propext]
+'H3Range.negative_zero_admitted' does not depend on any axioms
+'H3Range.guards_do_not_imply_floor_refinement' depends on axioms: [propext]
+'H3Range.complete_local_lift' depends on axioms: [propext, Classical.choice, Quot.sound]
+GuardPrefix 0 0.355

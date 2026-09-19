@@ -1,0 +1,23 @@
+/*
+ * Convert a polynomial to small integers. Source values are supposed
+ * to be one-word integers, signed over 31 bits. Returned value is 0
+ * if any of the coefficients exceeds 2047 (in absolute value), or 1
+ * on success.
+ */
+static int
+poly_big_to_small(int16_t *d, const uint32_t *s, unsigned logn, unsigned ter)
+{
+	size_t n, u;
+
+	n = MKN(logn, ter);
+	for (u = 0; u < n; u ++) {
+		int32_t z;
+
+		z = zint_one_to_plain(s + u);
+		if (z < -2047 || z > 2047) {
+			return 0;
+		}
+		d[u] = (int16_t)z;
+	}
+	return 1;
+}

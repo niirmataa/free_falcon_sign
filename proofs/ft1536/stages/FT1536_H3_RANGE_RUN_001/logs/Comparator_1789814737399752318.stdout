@@ -1,0 +1,116 @@
+formal/Comparator.lean:23:14: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 0
+  c ≥ 1
+  0 ≤ b ≤ 18446744073709551615
+  0 ≤ a ≤ 18446744073709551615
+  0 ≤ a ≤ 9223372036854775807
+  0 ≤ a + 18446744073709551616*d ≤ 9223372036854775807
+where
+ a := ↑y
+ b := ↑(u64diff x y)
+ c := ↑(0 ^^^ (0 ^^^ 0 ||| 0 ^^^ 0))
+ d := (↑x - ↑y) / 18446744073709551616
+formal/Comparator.lean:23:14: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  9223372036854775808 ≤ c ≤ 18446744073709551615
+  1 ≤ c ≤ 18446744073709551615
+  c + 18446744073709551616*d ≤ -1
+  0 ≤ b ≤ 18446744073709551615
+  0 ≤ a ≤ 18446744073709551615
+  0 ≤ a ≤ 9223372036854775807
+  0 ≤ a + c + 18446744073709551616*d ≤ 9223372036854775807
+where
+ a := ↑y
+ b := ↑(u64diff x y)
+ c := if (↑x - ↑y) % 18446744073709551616 ≤ 0 then 0 else (↑x - ↑y) % 18446744073709551616
+ d := (↑x - ↑y) / 18446744073709551616
+formal/Comparator.lean:23:14: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  0 ≤ c ≤ 9223372036854775807
+  1 ≤ c ≤ 18446744073709551615
+  c + 18446744073709551616*d ≤ -1
+  0 ≤ b ≤ 18446744073709551615
+  0 ≤ a ≤ 18446744073709551615
+  9223372036854775808 ≤ a ≤ 18446744073709551615
+  0 ≤ a + c + 18446744073709551616*d ≤ 9223372036854775807
+where
+ a := ↑y
+ b := ↑(u64diff x y)
+ c := if (↑x - ↑y) % 18446744073709551616 ≤ 0 then 0 else (↑x - ↑y) % 18446744073709551616
+ d := (↑x - ↑y) / 18446744073709551616
+formal/Comparator.lean:23:14: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  9223372036854775808 ≤ c ≤ 18446744073709551615
+  1 ≤ c ≤ 18446744073709551615
+  c + 18446744073709551616*d ≤ -1
+  0 ≤ b ≤ 18446744073709551615
+  0 ≤ a ≤ 18446744073709551615
+  9223372036854775808 ≤ a ≤ 18446744073709551615
+  0 ≤ a + c + 18446744073709551616*d ≤ 9223372036854775807
+where
+ a := ↑y
+ b := ↑(u64diff x y)
+ c := if (↑x - ↑y) % 18446744073709551616 ≤ 0 then 0 else (↑x - ↑y) % 18446744073709551616
+ d := (↑x - ↑y) / 18446744073709551616
+formal/Comparator.lean:23:14: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 1
+  0 ≤ c ≤ 9223372036854775807
+  1 ≤ c ≤ 18446744073709551615
+  c + 18446744073709551616*e ≥ 0
+  0 ≤ b ≤ 18446744073709551615
+  0 ≤ a ≤ 18446744073709551615
+  0 ≤ a ≤ 9223372036854775807
+  9223372036854775808 ≤ a + c + 18446744073709551616*e ≤ 18446744073709551615
+where
+ a := ↑y
+ b := ↑(u64diff x y)
+ c := if (↑x - ↑y) % 18446744073709551616 ≤ 0 then 0 else (↑x - ↑y) % 18446744073709551616
+ d := ↑(1 ^^^ (1 ^^^ 0 ||| 0 ^^^ 0))
+ e := (↑x - ↑y) / 18446744073709551616
+formal/Comparator.lean:23:14: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 1
+  9223372036854775808 ≤ c ≤ 18446744073709551615
+  1 ≤ c ≤ 18446744073709551615
+  c + 18446744073709551616*e ≥ 0
+  0 ≤ b ≤ 18446744073709551615
+  0 ≤ a ≤ 18446744073709551615
+  0 ≤ a ≤ 9223372036854775807
+  9223372036854775808 ≤ a + c + 18446744073709551616*e ≤ 18446744073709551615
+where
+ a := ↑y
+ b := ↑(u64diff x y)
+ c := if (↑x - ↑y) % 18446744073709551616 ≤ 0 then 0 else (↑x - ↑y) % 18446744073709551616
+ d := ↑(1 ^^^ (1 ^^^ 0 ||| 1 ^^^ 0))
+ e := (↑x - ↑y) / 18446744073709551616
+formal/Comparator.lean:23:14: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 0
+  c ≥ 1
+  0 ≤ b ≤ 18446744073709551615
+  0 ≤ a ≤ 18446744073709551615
+  9223372036854775808 ≤ a ≤ 18446744073709551615
+  9223372036854775808 ≤ a + 18446744073709551616*d ≤ 18446744073709551615
+where
+ a := ↑y
+ b := ↑(u64diff x y)
+ c := ↑(1 ^^^ (1 ^^^ 1 ||| 0 ^^^ 1))
+ d := (↑x - ↑y) / 18446744073709551616
+formal/Comparator.lean:23:14: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  9223372036854775808 ≤ c ≤ 18446744073709551615
+  1 ≤ c ≤ 18446744073709551615
+  c + 18446744073709551616*d ≤ -1
+  0 ≤ b ≤ 18446744073709551615
+  0 ≤ a ≤ 18446744073709551615
+  9223372036854775808 ≤ a ≤ 18446744073709551615
+  9223372036854775808 ≤ a + c + 18446744073709551616*d ≤ 18446744073709551615
+where
+ a := ↑y
+ b := ↑(u64diff x y)
+ c := if (↑x - ↑y) % 18446744073709551616 ≤ 0 then 0 else (↑x - ↑y) % 18446744073709551616
+ d := (↑x - ↑y) / 18446744073709551616
+lt64_correct : ∀ (x y : Nat), x < 18446744073709551616 → y < 18446744073709551616 → lt64 x y = if x < y then 1 else 0
+'H3Range.lt64_correct' depends on axioms: [propext, sorryAx, Quot.sound]

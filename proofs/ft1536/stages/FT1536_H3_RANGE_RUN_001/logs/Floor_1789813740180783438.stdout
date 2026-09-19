@@ -1,0 +1,43 @@
+formal/Floor.lean:44:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  -(?a * ?b)
+in the target expression
+  -1024 * mant f / (1024 * p2 (1075 - e)) = -mant f / p2 (1075 - e)
+
+case neg.true
+e f : Nat
+he0 : 1 ≤ e
+he : e ≤ 1053
+hf : f < 4503599627370496
+hm : 0 < mant f ∧ mant f < 9007199254740992
+hsmall : ¬1085 - e ≥ 64
+hshift : 1085 - e = 10 + (1075 - e)
+⊢ -1024 * mant f / (1024 * p2 (1075 - e)) = -mant f / p2 (1075 - e)
+formal/Floor.lean:42:64: warning: This simp argument is unused:
+  Int.mul_neg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [signed, Bool.false_eq_true, ↓reduceIte, ← Int.neg_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+formal/Floor.lean:55:49: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  a ≥ 9007199254740992
+where
+ a := p2 1074
+formal/Floor.lean:65:87: warning: exponent 1074 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+floor_refinement : ∀ (s : Bool) (e f : Nat),
+  e ≤ 1053 → f < 4503599627370496 → NotNegZero s e f → floorParts s e f = mathFloor s e f
+conditional_H3_local : ∀ (sg : Bool) (e f : Nat) (z : Int),
+  e ≤ 1053 →
+    f < 4503599627370496 →
+      NotNegZero sg e f →
+        -2147483283 ≤ mathFloor sg e f ∧ mathFloor sg e f ≤ 2147483281 →
+          -365 ≤ z ∧ z ≤ 366 →
+            floorParts sg e f = mathFloor sg e f ∧
+              -2147483648 ≤ floorParts sg e f + z ∧ floorParts sg e f + z ≤ 2147483647
+'H3Range.normal_floor_refinement' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'H3Range.subnormal_floor_refinement' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'H3Range.floor_refinement' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'H3Range.negative_zero_exception' does not depend on any axioms
+'H3Range.integer_safety' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H3Range.conditional_H3_local' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

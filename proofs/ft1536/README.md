@@ -21,7 +21,8 @@ jest obszernym zapisem stanu na aktywnym buildzie main `2959064`: źródła,
 osiągnięcia, T2C3/T5, kontrakt M0, graf zależności i dalsze obowiązki.
 Pakiet ma 211 członków OUTPUTS i 198 publicznych wejść Git, manifest
 `c3efdcff510983a143946d43ab456656090061cd5b9b4b6847abc7f141c0cfa3`.
-Jest checkpointem dokumentacyjnym (`replay=none`), obok ośmiu etapów badawczych.
+Jest checkpointem dokumentacyjnym (`replay=none`); obecnie archiwum zawiera
+także dziewięć etapów badawczych, w tym późniejszy H3_RANGE.
 
 [Mapa po domknięciu L_V — 2026-09-19](documents/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md)
 przedstawia zależności i proponowaną kolejność: dokładny kontrakt gry,
@@ -38,11 +39,13 @@ Kontrakt, 22-wierszowy ledger i dowód payloadu STATIC <=3160 są gotowe.
 Następny interfejs źródłowy to [H3](stages/FT1536_M0_CONTRACT_RUN_001/H3_INTERFACE.md).
 M0 nie jest jeszcze dowodem końcowej redukcji ani integracją opakowania.
 
-**Bieżące zadanie Astry:** [H3_RANGE](documents/FT1536_ZADANIE_ASTRA_H3_RANGE_2026-09-19.md)
-— osiągalne centra, semantyka FPEMU/floor i bezpieczne s+z dla emitted-key
-support. [Publiczne wejścia startowe](background/H3_RANGE_2026-09-19/README.md)
-mają osobny manifest; ich dokładna kopia jest przygotowana w nowym W.
-Zlecenie nie nadaje H3 statusu dowiedzionego.
+**Odebrany H3_RANGE:** [raport częściowy](stages/FT1536_H3_RANGE_RUN_001/REPORT.md)
+zachowuje `PARTIAL_PROOF`. Niezależny replay odtworzył 96/96 plików i 49
+twierdzeń. Lokalny proposal/floor/residual interface jest sprawdzony, a
+`Reach_call_C -> CenterClass` pozostaje otwarty. [Odbiór](validation/2026-09-19-h3/README.md)
+rozlicza negative zero, underflow oraz granice syntetycznych kontroli.
+[Zlecenie](documents/FT1536_ZADANIE_ASTRA_H3_RANGE_2026-09-19.md) i
+[publiczne wejścia](background/H3_RANGE_2026-09-19/README.md) zachowują piny.
 
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
@@ -86,6 +89,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [L_NTT_FORWARD](stages/FT1536_L_NTT_FORWARD_RUN_001/REPORT.md) | **L_NTT_PROVED_FOR_PINNED_MODEL** — forward, iloczyn i pełna kompozycja | `71bbb35` |
 | [L_V_BRIDGE](stages/FT1536_L_V_BRIDGE_RUN_001/REPORT.md) | **L_V_PROVED_FOR_PINNED_MODEL** — pełny most bajtowy Verify → Ext0 dla kandydata | `17f8f8b` |
 | [M0](stages/FT1536_M0_CONTRACT_RUN_001/REPORT.md) | **M0_CONTRACT_DEFINED_FOR_PINNED_CANDIDATE** — gra, budżety, framing i dowód pojemności | `95f8015` |
+| [H3_RANGE](stages/FT1536_H3_RANGE_RUN_001/REPORT.md) | **PARTIAL_PROOF** — lokalne floor/proposal/residual; globalna osiągalność otwarta | niniejszy checkpoint |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).
@@ -161,6 +165,20 @@ stare pojemności 2049 i 3073 nie wystarczają uniwersalnie. Nonce40 jest osobno
 [Odbiór M0](validation/2026-09-19-m0/README.md) odtworzył 273/273 pliki,
 67 modułów i 535 twierdzeń (43 nowe), wraz z normal/ASan/UBSan.
 
+### Wynik częściowy H3_RANGE
+
+Lokalne wyniki obejmują support propozycji `[-365,366]`, floor refinement
+w jawnej domenie, right-before-left i 3072 calls oraz error-aware residual
+lemmas. `fpr_floor(-0)=-1` narusza mathematical-floor equality, lecz samo nie
+powoduje overflow s+z. Przykłady underflow wymagają modelu rzeczywistego FPEMU.
+Nie wykazano osiągalności tych syntetycznych przypadków z emitted KeyGen.
+
+[REACHABILITY](stages/FT1536_H3_RANGE_RUN_001/REACHABILITY.md) i
+[ledger](stages/FT1536_H3_RANGE_RUN_001/BOUND_LEDGER.md) zachowują pełny cel:
+zero/domain invariant, internal LDL pivots/L, machine-error transfer i
+emitted/loader refinement pozostają otwarte. Odbiór odtworzył 8 modułów,
+49 nowych twierdzeń oraz 96/96 plików; [receipts](validation/2026-09-19-h3/README.md).
+
 Odtwarzanie z czystego checkoutu Git i ukrytymi oryginałami sprawdzono
 2026-09-18: [zapis kontroli](validation/2026-09-18/README.md).
 
@@ -186,7 +204,8 @@ python3 -B proofs/ft1536/tools/archive.py replay FT1536_L_RHO_RUN_001 --run repl
 
 Analogicznie dla `FT1536_LV_STATIC_RUN_001`, `FT1536_L_NTT_RUN_001`,
 `FT1536_L_NTT_GLOBAL_RUN_001`, `FT1536_L_NTT_FORWARD_RUN_001`
-i `FT1536_L_V_BRIDGE_RUN_001` oraz `FT1536_M0_CONTRACT_RUN_001`.
+i `FT1536_L_V_BRIDGE_RUN_001`, `FT1536_M0_CONTRACT_RUN_001`
+oraz `FT1536_H3_RANGE_RUN_001`.
 Wpis katalogu określa właściwy punkt wejścia. Odbiór Blue jest archiwum
 recenzji i receipts; nie ma zadeklarowanego pojedynczego pełnego runnera.
 

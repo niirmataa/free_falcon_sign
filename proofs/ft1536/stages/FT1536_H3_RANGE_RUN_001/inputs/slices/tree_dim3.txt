@@ -1,0 +1,49 @@
+static void
+LDL_dim3_fft3(fpr *restrict d11, fpr *restrict d22,
+	fpr *restrict l10, fpr *restrict l20, fpr *restrict l21,
+	const fpr *restrict g00, const fpr *restrict g10,
+	const fpr *restrict g11, const fpr *restrict g20,
+	const fpr *restrict g21, const fpr *restrict g22,
+	unsigned logn, unsigned full, fpr *restrict tmp)
+{
+	size_t n;
+
+	n = MKN(logn, full);
+
+	/*
+	 * l10 = g10/g00
+	 * d11 = g11 - g10*adj(g10/g00)
+	 * These are the same formulas as the LDL decomposition of a 2x2
+	 * matrix.
+	 */
+	LDL_dim2_fft3(d11, l10, g00, g10, g11, logn, full);
+
+	/*
+	 * l20 = g20/g00
+	 */
+	memcpy(l20, g20, n * sizeof *g20);
+	falcon_poly_div_autoadj_fft3(l20, g00, logn, full);
+
+	/*
+	 * l21 = (g21 - g20*adj(g10)/g00) / d11
+	 * Note that d11 = adj(d11)
+	 */
+	memcpy(l21, g20, n * sizeof *g20);
+	falcon_poly_muladj_fft3(l21, g10, logn, full);
+	falcon_poly_div_autoadj_fft3(l21, g00, logn, full);
+	falcon_poly_neg_fft3(l21, logn, full);
+	falcon_poly_add_fft3(l21, g21, logn, full);
+	falcon_poly_div_autoadj_fft3(l21, d11, logn, full);
+
+	/*
+	 * d22 = g22 - l20*adj(g20) - l21*adj(l21)*d11
+	 */
+	memcpy(d22, l20, n * sizeof *l20);
+	falcon_poly_muladj_fft3(d22, g20, logn, full);
+	falcon_poly_neg_fft3(d22, logn, full);
+	falcon_poly_add_fft3(d22, g22, logn, full);
+	memcpy(tmp, l21, n * sizeof *l21);
+	falcon_poly_mulselfadj_fft3(tmp, logn, full);
+	falcon_poly_mul_autoadj_fft3(tmp, d11, logn, full);
+	falcon_poly_sub_fft3(d22, tmp, logn, full);
+}

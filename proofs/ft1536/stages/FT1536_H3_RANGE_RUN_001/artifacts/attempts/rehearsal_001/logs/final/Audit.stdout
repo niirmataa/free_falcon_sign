@@ -1,0 +1,133 @@
+H3Range.floor_refinement : ∀ (s : Bool) (e f : Nat),
+  LE.le.{0} e 1053 →
+    LT.lt.{0} f 4503599627370496 →
+      H3Range.NotNegZero s e f → Eq.{1} (H3Range.floorParts s e f) (H3Range.mathFloor s e f)
+H3Range.negative_zero_exception : Eq.{1} (H3Range.floorParts true 0 0) (-1) ∧ Eq.{1} (H3Range.mathFloor true 0 0) 0
+H3Range.negative_zero_sum_still_safe : ∀ (z : Int),
+  LE.le.{0} (-365) z ∧ LE.le.{0} z 366 →
+    LE.le.{0} (-2147483648) (HAdd.hAdd.{0, 0, 0} (H3Range.floorParts true 0 0) z) ∧
+      LE.le.{0} (HAdd.hAdd.{0, 0, 0} (H3Range.floorParts true 0 0) z) 2147483647
+H3Range.lt128_correct : ∀ (xh xl yh yl : Nat),
+  LT.lt.{0} xh 18446744073709551616 →
+    LT.lt.{0} xl 18446744073709551616 →
+      LT.lt.{0} yh 18446744073709551616 →
+        LT.lt.{0} yl 18446744073709551616 →
+          Eq.{1} (H3Range.lt128 xh xl yh yl)
+            (ite.{1}
+              (LT.lt.{0} (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} xh 18446744073709551616) xl)
+                (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} yh 18446744073709551616) yl))
+              1 0)
+H3Range.all_bank_support : ∀ (i : Fin 5) (r : Nat), LE.le.{0} (H3Range.above r (H3Range.bank i)) 365
+H3Range.proposal_return_safe : ∀ (s : Int),
+  LE.le.{0} (-2147483283) s ∧ LE.le.{0} s 2147483281 →
+    ∀ (k : Nat),
+      LE.le.{0} k 365 →
+        ∀ (b : Bool),
+          LE.le.{0} (-2147483648) (HAdd.hAdd.{0, 0, 0} s (H3Range.proposalZ k b)) ∧
+            LE.le.{0} (HAdd.hAdd.{0, 0, 0} s (H3Range.proposalZ k b)) 2147483647
+H3Range.terminal_right_then_left : ∀ (D r1 rx r0 pre0 fl0 z0 err2 err3 E1 Eh E2 E3 : Int),
+  LT.lt.{0} 0 D →
+    H3Range.Between r1 (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} 366 D) E1) →
+      H3Range.Between (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 rx) r1) (HMul.hMul.{0, 0, 0} 2 Eh) →
+        LE.le.{0} 0 (HSub.hSub.{0, 0, 0} pre0 (HMul.hMul.{0, 0, 0} D fl0)) ∧
+            LT.lt.{0} (HSub.hSub.{0, 0, 0} pre0 (HMul.hMul.{0, 0, 0} D fl0)) D →
+          LE.le.{0} (-365) z0 ∧ LE.le.{0} z0 366 →
+            H3Range.Between err2 E2 →
+              H3Range.Between err3 E3 →
+                Eq.{1} r0
+                    (HAdd.hAdd.{0, 0, 0}
+                      (HSub.hSub.{0, 0, 0}
+                        (HAdd.hAdd.{0, 0, 0}
+                          (HSub.hSub.{0, 0, 0} pre0 (HMul.hMul.{0, 0, 0} D (HAdd.hAdd.{0, 0, 0} fl0 z0))) err2)
+                        rx)
+                      err3) →
+                  H3Range.Between (HMul.hMul.{0, 0, 0} 2 r0)
+                    (HAdd.hAdd.{0, 0, 0}
+                      (HAdd.hAdd.{0, 0, 0}
+                        (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} 1098 D) E1)
+                          (HMul.hMul.{0, 0, 0} 2 Eh))
+                        (HMul.hMul.{0, 0, 0} 2 E2))
+                      (HMul.hMul.{0, 0, 0} 2 E3))
+H3Range.next_terminal_center : ∀ (t0 r1 rx c err T R Eh Ea : Int),
+  H3Range.Between t0 T →
+    H3Range.Between r1 R →
+      H3Range.Between (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 rx) r1) (HMul.hMul.{0, 0, 0} 2 Eh) →
+        H3Range.Between err Ea →
+          Eq.{1} c (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} t0 rx) err) →
+            H3Range.Between (HMul.hMul.{0, 0, 0} 2 c)
+              (HAdd.hAdd.{0, 0, 0}
+                (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 T) R) (HMul.hMul.{0, 0, 0} 2 Eh))
+                (HMul.hMul.{0, 0, 0} 2 Ea))
+H3Range.checked_key_coefficients : ∀ (xs ys : List.{0} Int),
+  Eq.{1} (H3Range.smallLoop xs) (some.{0} ys) →
+    Eq.{1} ys xs ∧ ∀ (x : Int), Membership.mem.{0, 0} ys x → LE.le.{0} (-2047) x ∧ LE.le.{0} x 2047
+H3Range.guards_do_not_imply_floor_refinement : Exists.{1} fun mu =>
+  Exists.{1} fun sigma =>
+    Eq.{1} (H3Range.admitCall 0 mu sigma) (H3Range.Admission.atFloor mu sigma) ∧
+      Ne.{1} (H3Range.floorParts (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+        (H3Range.mathFloor (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+H3Range.complete_local_lift : ∀ (mu : Nat),
+  H3Range.CenterClass mu →
+    ∀ (k : Nat),
+      LE.le.{0} k 365 →
+        ∀ (b : Bool),
+          Eq.{1} (H3Range.floorParts (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+              (H3Range.mathFloor (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu)) ∧
+            LE.le.{0} (-2147483648)
+                (HAdd.hAdd.{0, 0, 0}
+                  (H3Range.floorParts (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+                  (H3Range.proposalZ k b)) ∧
+              LE.le.{0}
+                (HAdd.hAdd.{0, 0, 0}
+                  (H3Range.floorParts (H3Range.signBit mu) (H3Range.exponent mu) (H3Range.fraction mu))
+                  (H3Range.proposalZ k b))
+                2147483647
+'H3Range.p2_mono' depends on axioms: [propext]
+'H3Range.mant_bounds' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.p2_shift' depends on axioms: [propext]
+'H3Range.normal_floor_refinement' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.subnormal_floor_refinement' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.floor_refinement' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.negative_zero_exception' depends on axioms: [propext]
+'H3Range.signed_zero_guard' does not depend on any axioms
+'H3Range.integer_safety' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.negative_zero_sum_still_safe' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.conditional_H3_local' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.lt64_correct' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.eq64_correct' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.lt128_correct' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.scan_bound' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.max_at_zero' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.select_found' depends on axioms: [propext]
+'H3Range.select_bound' depends on axioms: [propext]
+'H3Range.proposal_support' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.proposal_return_safe' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.bank0_size' does not depend on any axioms
+'H3Range.bank0_max' does not depend on any axioms
+'H3Range.bank0_support' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.bank1_size' does not depend on any axioms
+'H3Range.bank1_max' does not depend on any axioms
+'H3Range.bank1_support' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.bank2_size' does not depend on any axioms
+'H3Range.bank2_max' does not depend on any axioms
+'H3Range.bank2_support' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.bank3_size' does not depend on any axioms
+'H3Range.bank3_max' does not depend on any axioms
+'H3Range.bank3_support' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.bank4_size' does not depend on any axioms
+'H3Range.bank4_max' does not depend on any axioms
+'H3Range.bank4_support' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.all_bank_support' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.scalar_residual' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.terminal_right_then_left' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.next_terminal_center' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.safe_next_center' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.inner_visits_count' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.actual_3072_calls' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.first_terminal_right_first' does not depend on any axioms
+'H3Range.checked_key_coefficients' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.active_guards' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.sticky_path' depends on axioms: [propext]
+'H3Range.negative_zero_admitted' does not depend on any axioms
+'H3Range.guards_do_not_imply_floor_refinement' depends on axioms: [propext]
+'H3Range.complete_local_lift' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]

@@ -1,0 +1,181 @@
+{
+  "arithmetic": {
+    "checks": {
+      "actual_binary64_B_bits": true,
+      "actual_binary64_B_over_1536_bits": true,
+      "binary64_host_model": true,
+      "decoded_interval_positive_ordered": true,
+      "exact_lower_meets_1_7203": true,
+      "exact_real_B_coefficient": true,
+      "exact_real_B_over_1536_coefficient": true,
+      "exact_upper_below_595_19": true,
+      "stored_binary64_square_below_595_19": true,
+      "stored_binary64_square_meets_1_7203": true,
+      "tree_sigma_at_Dmax_bits_exact": true,
+      "tree_sigma_at_Dmin_bits_exact": true
+    },
+    "lower_comparison": "768^2 / Dmax >= 17203/10000",
+    "lower_from_Dmax_decimal": "1.7763039737838265459612460851953460152712828215029",
+    "lower_from_Dmax_exact": "70368744177664/39615260234861",
+    "required_lower_exact": "17203/10000",
+    "required_upper_exact": "59519/100",
+    "sigma_squared": "589824",
+    "upper_comparison": "768^2 / Dmin < 59519/100",
+    "upper_from_Dmin_decimal": "575.99982096249046073629069816134569832867093464076",
+    "upper_from_Dmin_exact": "864691128455135232/1501200342406781"
+  },
+  "binary64_bound_model": {
+    "B": {
+      "bits_hex": "0x41840c2d358e150b",
+      "decimal": "4.2042790694376073777675628662109375000000000000000e7",
+      "exact": "5642887845778699/134217728"
+    },
+    "B_over_1536": {
+      "bits_hex": "0x40dabae6f212c6b9",
+      "decimal": "27371.608524984421819681301712989807128906250000000",
+      "exact": "7523850461038265/274877906944"
+    },
+    "B_over_1536_repr": "27371.608524984422",
+    "classification": "MODEL_ONLY_NOT_USED_FOR_SOURCE_BOUND_H4",
+    "operation_chain": "((binary64(73732*1536) / sqrt_binary64(8)) * binary64(105)) / binary64(100)"
+  },
+  "binary64_tree_endpoint_replay": {
+    "checks": {
+      "stored_binary64_square_below_595_19": true,
+      "stored_binary64_square_meets_1_7203": true,
+      "tree_sigma_at_Dmax_bits_exact": true,
+      "tree_sigma_at_Dmin_bits_exact": true
+    },
+    "monotonicity": "positive correctly-rounded sqrt is nondecreasing and positive correctly-rounded 768/y is nonincreasing",
+    "operation_chain": "binary64(768) / sqrt_binary64(D_endpoint)",
+    "sigma_at_Dmax": {
+      "bits_hex": "0x3ff55311b09aeb8c",
+      "decimal": "1.3327805422438556703923495661001652479171752929688",
+      "exact": "1500577488354019/1125899906842624"
+    },
+    "sigma_at_Dmax_squared_decimal": "1.7763039737838259491700436027033883636023028654459",
+    "sigma_at_Dmax_squared_exact": "2251732798554856027573873452361/1267650600228229401496703205376",
+    "sigma_at_Dmin": {
+      "bits_hex": "0x4037ffffc16bfe5c",
+      "decimal": "23.999996270051596525263448711484670639038085937500",
+      "exact": "1688849597792151/70368744177664"
+    },
+    "sigma_at_Dmin_squared_decimal": "575.99982096249054572773812188735606469931123619095",
+    "sigma_at_Dmin_squared_exact": "2852212963962710203853797206801/4951760157141521099596496896"
+  },
+  "certificate": "PRIMARY_LEAF_FLOOR",
+  "claim": "For every successful FT1536 key accepted by the checked keygen source, every primary leaf bound into the checked signer tree satisfies 1.7203 <= sigma_i^2 < 595.19.",
+  "decoded_gate": {
+    "max": {
+      "bits_hex": "0x4114444d1a037d50",
+      "decimal": "332051.27540393639355897903442382812500000000000000",
+      "exact": "356537342113749/1073741824"
+    },
+    "min": {
+      "bits_hex": "0x4090000053700377",
+      "decimal": "1024.0003182890047810360556468367576599121093750000",
+      "exact": "4503601027220343/4398046511104"
+    },
+    "semantics": "inclusive D interval; binary64 bit order is numeric order for positive finite values"
+  },
+  "exact_real_norm_model": {
+    "B_exact_real": "(148643712/5)*sqrt(2)",
+    "B_over_1536_exact_real": "(387093/20)*sqrt(2)",
+    "NGS_relation": "for every reciprocal R_j: 1536*R_j <= N_GS < B",
+    "Nraw_relation": "for every primary P_j: 1536*P_j <= N_raw < B",
+    "assumption": "positive exact-real ternary symmetric split followed by binary arithmetic/harmonic splits",
+    "classification": "MODEL_ONLY_NOT_USED_FOR_SOURCE_BOUND_H4",
+    "warning": "This exact-real relation alone is not promoted to a binary64 theorem; the direct bit gate is used."
+  },
+  "failures": [],
+  "inputs": {
+    "keygen": {
+      "expected_sha256": "0a09b6ed2363308f54584dfd1e2d33ee1b4601a68c77712c50da920b5074a5cf",
+      "path": "build/falcon-keygen.c",
+      "sha256": "0a09b6ed2363308f54584dfd1e2d33ee1b4601a68c77712c50da920b5074a5cf",
+      "sha256_check": "PASS"
+    },
+    "sign": {
+      "expected_sha256": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8",
+      "path": "build/falcon-sign.c",
+      "sha256": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8",
+      "sha256_check": "PASS"
+    }
+  },
+  "owner_acceptance_claimed": false,
+  "schema": "FT1536_S20_H4_PRIMARY_SOURCE_BOUND_V3",
+  "source_binding": {
+    "count_guards": "leaf_count == n == 1536 and tree_words == 12*n are mandatory in load_skey",
+    "keygen_sequence": "768 stable primary leaves followed by q^2/P in reverse order; all n=1536 are gated",
+    "sampler_read": "the ternary sampler base case reads sigma = tree[0]",
+    "sign_sequence": "the same stable builder and constants rebuild that sequence from decoded f,g",
+    "status": "SOURCE_BOUND_PASS",
+    "tree_write": "ffLDL_ternary_normalize consumes leaves in order and writes sigma/sqrt(D) to terminal tree words"
+  },
+  "source_checks": {
+    "cross_source_constants_identical": true,
+    "cross_source_stable_binary_identical": true,
+    "cross_source_stable_positive_identical": true,
+    "cross_source_stable_top_identical": true,
+    "keygen_binary_arithmetic_harmonic_split": true,
+    "keygen_bound_scale_den_exact": true,
+    "keygen_bound_scale_num_exact": true,
+    "keygen_dimension_1536_guard": true,
+    "keygen_exact_1536_leaf_construction": true,
+    "keygen_exact_binary64_bound_chain": true,
+    "keygen_ffldl_and_stable_builder_both_called": true,
+    "keygen_full_n_inclusive_gate": true,
+    "keygen_g00_same_fg_input": true,
+    "keygen_gate_call_is_mandatory": true,
+    "keygen_gate_failure_continues": true,
+    "keygen_gate_returns_aggregate": true,
+    "keygen_leaf_certificate_present": true,
+    "keygen_make_present": true,
+    "keygen_mandatory_continue_before_success": true,
+    "keygen_max_bits_exact": true,
+    "keygen_min_bits_exact": true,
+    "keygen_positive_finite_stabilization": true,
+    "keygen_primary_768_builder": true,
+    "keygen_q_squared_exact": true,
+    "keygen_read_and_hash_policy": true,
+    "keygen_reciprocal_reverse_pairing": true,
+    "keygen_stable_binary_present": true,
+    "keygen_stable_positive_present": true,
+    "keygen_stable_top_present": true,
+    "sign_binary_sampler_base_reads_tree": true,
+    "sign_builder_returns_only_aggregate": true,
+    "sign_calls_identical_stable_builder": true,
+    "sign_certified_builder_present": true,
+    "sign_dimension_1536_guard": true,
+    "sign_full_n_inclusive_gate": true,
+    "sign_load_calls_certified_builder": true,
+    "sign_load_failure_rejected_before_key_acceptance": true,
+    "sign_load_requires_gate_leaf_count_and_tree_words": true,
+    "sign_load_skey_present": true,
+    "sign_max_bits_exact": true,
+    "sign_min_bits_exact": true,
+    "sign_normalize_depth1_present": true,
+    "sign_normalize_inner_present": true,
+    "sign_normalize_present": true,
+    "sign_normalize_recursion_covers_all_branches": true,
+    "sign_private_key_setter_present": true,
+    "sign_q_squared_exact": true,
+    "sign_read_and_hash_policy": true,
+    "sign_rebuilds_same_g00_from_fg": true,
+    "sign_reciprocal_reverse_pairing": true,
+    "sign_sigma_768_exact": true,
+    "sign_stable_binary_present": true,
+    "sign_stable_positive_present": true,
+    "sign_stable_top_present": true,
+    "sign_terminal_leaf_reads_are_sequential": true,
+    "sign_terminal_tree_2_is_768_over_sqrt_leaf": true,
+    "sign_terminal_tree_3_is_768_over_sqrt_leaf": true,
+    "sign_ternary_sampler_base_reads_tree": true,
+    "sign_ternary_sampler_present": true,
+    "sign_tree_has_1536_bound_terminal_leaves": true
+  },
+  "task_id": "S20-H4-LEAF-FLOOR-CERT-001",
+  "task_status": "CANDIDATE_READY_FOR_REVIEW",
+  "tree_identity": "SOURCE_BOUND_PASS",
+  "verdict": "PASS"
+}

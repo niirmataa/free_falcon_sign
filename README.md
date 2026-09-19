@@ -24,8 +24,9 @@ See [active-build provenance](provenance/FT1536_ACTIVE_BUILD.md).
 **Current status — 2026-09-19:** **L_RHO, the complete L_NTT pipeline and the
 byte-level L_V verifier bridge are proved for the pinned corrected candidate
 and its explicit C model.** M0 now defines the protocol/game/resource contract
-and proves the STATIC capacity bound. End-to-end security remains an open
-research objective.
+and proves the STATIC capacity bound. H3_RANGE has a replayed **partial proof**
+of local arithmetic interfaces; global reachable-center bounds and end-to-end
+security remain open research objectives.
 
 The current build integrates the corrected verifier, SHA-256
 `3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42`.
@@ -123,6 +124,7 @@ integration work; changing their description does not change the old CLI.
 | [L_NTT_FORWARD](proofs/ft1536/stages/FT1536_L_NTT_FORWARD_RUN_001/REPORT.md) | Global evaluation in physical order, coefficient product, full NTT composition and rho substitution | `L_NTT_PROVED_FOR_PINNED_MODEL` |
 | [L_V_BRIDGE](proofs/ft1536/stages/FT1536_L_V_BRIDGE_RUN_001/REPORT.md) | Both byte decoders, loader/guards, centering, exact norm and extraction from every accepted payload in the declared domain | `L_V_PROVED_FOR_PINNED_MODEL` |
 | [M0](proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001/REPORT.md) | Protocol/game contract, resource ledger, framing and STATIC capacity | `M0_CONTRACT_DEFINED_FOR_PINNED_CANDIDATE` |
+| [H3_RANGE](proofs/ft1536/stages/FT1536_H3_RANGE_RUN_001/REPORT.md) | Local floor/proposal/residual proofs, source-order controls and explicit signed-zero/underflow diagnostics; global reachability open | `PARTIAL_PROOF` |
 
 The completed L_V bridge establishes, for all canonical h,c and legal finite
 payloads b in the pinned GCC14.2.0/C99/Linux x86_64 LP64 model:
@@ -182,8 +184,15 @@ targets center reachability before `fpr_floor -> int` and `s+z` for emitted
 keys and reachable signing histories. The roadmap then connects the complete
 source signing law, pre-cast/byte/retry behavior, R5T, public simulation and ROM
 composition. New mathematical tasks are explicit checkpoints.
-The [current H3_RANGE assignment](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_RANGE_2026-09-19.md)
-pins this scope and its prepared public input set; H3 is still open.
+The [H3_RANGE partial result](proofs/ft1536/stages/FT1536_H3_RANGE_RUN_001/REPORT.md)
+has an independent **96/96-file replay, 8 Lean modules and 49 new theorems**.
+It establishes local proposal support and conditional floor/residual interfaces.
+The actual backend gives `fpr_floor(-0)=-1`; this breaks mathematical-floor
+equality but does not by itself overflow `s+z`. Synthetic underflow diagnostics
+also rule out an unrestricted IEEE error model. Their reachability from emitted
+keys has not been established. The remaining global obligation is
+`Reach_call_C(...) -> CenterClass(mu)`, including internal LDL and machine-error
+bounds; see the [ledger](proofs/ft1536/stages/FT1536_H3_RANGE_RUN_001/BOUND_LEDGER.md).
 
 ### Remaining obligations beyond the verifier
 
@@ -250,7 +259,8 @@ Replaying a partial proof preserves its partial status.
 Later maintainer replays and their exact scopes:
 [full L_NTT](proofs/ft1536/validation/2026-09-18-forward/README.md),
 [L_V](proofs/ft1536/validation/2026-09-19-lv/README.md),
-[M0](proofs/ft1536/validation/2026-09-19-m0/README.md).
+[M0](proofs/ft1536/validation/2026-09-19-m0/README.md),
+[H3 partial](proofs/ft1536/validation/2026-09-19-h3/README.md).
 The independent Blue review has archived evidence, rather than a single
 declared full replay runner.
 

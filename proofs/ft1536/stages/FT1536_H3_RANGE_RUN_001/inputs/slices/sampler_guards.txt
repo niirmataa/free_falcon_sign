@@ -1,0 +1,37 @@
+static int
+sampler_large(void *ctx, fpr mu, fpr sigma)
+{
+	ternary_sampler_context *tsc;
+	prng *p;
+	int s;
+	fpr r, dss;
+
+	tsc = ctx;
+	p = &tsc->p;
+	if (tsc->fault != FT_SAMPLER_FAULT_NONE) {
+		return 0;
+	}
+#if FT_SAMPLER_ADAPTIVE_PROBE
+	ft_sampler_probe_calls ++;
+#endif
+	if (!ft_fpr_is_finite(mu) || !ft_fpr_is_positive_finite(sigma)) {
+		tsc->fault = FT_SAMPLER_FAULT_INVALID_SIGMA;
+#if FT_SAMPLER_ADAPTIVE_PROBE
+		ft_sampler_probe_invalid_sigma ++;
+#endif
+		return 0;
+	}
+
+	s = fpr_floor(mu);
+	r = fpr_sub(mu, fpr_of(s));
+	dss = fpr_inv(fpr_mul(fpr_sqr(sigma), fpr_of(2)));
+#if FT_SAMPLER_ADAPTIVE_PROBE
+	ft_sampler_probe_center_input(mu, r);
+#endif
+	if (!ft_fpr_is_positive_finite(dss)) {
+		tsc->fault = FT_SAMPLER_FAULT_INVALID_SIGMA;
+#if FT_SAMPLER_ADAPTIVE_PROBE
+		ft_sampler_probe_invalid_sigma ++;
+#endif
+		return 0;
+	}

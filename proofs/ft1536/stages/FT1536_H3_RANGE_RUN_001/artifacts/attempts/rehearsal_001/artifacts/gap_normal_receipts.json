@@ -1,0 +1,59 @@
+[
+  {
+    "argv": [
+      "/usr/bin/gcc",
+      "-std=c99",
+      "-W",
+      "-Wall",
+      "-O",
+      "-DFPR_IMPL=\"fpr-emulated.h\"",
+      "-DSAMPLER_CODF=0",
+      "-DSAMPLER_CDF=0",
+      "-DCT_BEREXP=1",
+      "-DFT_TERNARY_ADAPTIVE_CDF=1",
+      "-DFT1536_CANDIDATE_PROFILE=1",
+      "-DCLEANSE=1",
+      "-DTRUE_TERNARY_SECRET=1",
+      "-DTRUE_TERNARY_SECRET_MODE=1",
+      "-DTERNARY_KEYGEN_BOUND_SCALE_NUM=1250",
+      "-DTERNARY_KEYGEN_BOUND_SCALE_DEN=100",
+      "-DTERNARY_KEYGEN_MAX_ATTEMPTS=3000000",
+      "-DSIGN_MAX_ATTEMPTS=16",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-Isource",
+      "checks/leaf_gap.c",
+      "source/fpr-emulated.c",
+      "source/falcon-fft.c",
+      "source/frng.c",
+      "source/shake.c",
+      "-Wl,--gc-sections",
+      "-lm",
+      "-o",
+      "bin/gap_normal"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_RANGE_RUN_001/tmp/rehearsal_001",
+    "exit_code": 0,
+    "timeout": false,
+    "limit": 60,
+    "elapsed": 1.2050224699778482,
+    "stdout": "checks/gap_logs/normal/compile.stdout",
+    "stderr": "checks/gap_logs/normal/compile.stderr",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/gap_normal"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_RANGE_RUN_001/tmp/rehearsal_001",
+    "exit_code": 0,
+    "timeout": false,
+    "limit": 60,
+    "elapsed": 0.000859814987052232,
+    "stdout": "checks/gap_logs/normal/run.stdout",
+    "stderr": "checks/gap_logs/normal/run.stderr",
+    "stdout_sha256": "18638803fede1df077146edcc53f46d011614fd6c41d522ce9234bd66ccdffbf",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

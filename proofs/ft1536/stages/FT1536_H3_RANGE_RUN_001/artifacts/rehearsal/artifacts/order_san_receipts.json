@@ -1,0 +1,126 @@
+[
+  {
+    "argv": [
+      "/usr/bin/gcc",
+      "-std=c99",
+      "-W",
+      "-Wall",
+      "-O",
+      "-DFPR_IMPL=\"fpr-emulated.h\"",
+      "-DSAMPLER_CODF=0",
+      "-DSAMPLER_CDF=0",
+      "-DCT_BEREXP=1",
+      "-DFT_TERNARY_ADAPTIVE_CDF=1",
+      "-DFT1536_CANDIDATE_PROFILE=1",
+      "-DCLEANSE=1",
+      "-DTRUE_TERNARY_SECRET=1",
+      "-DTRUE_TERNARY_SECRET_MODE=1",
+      "-DTERNARY_KEYGEN_BOUND_SCALE_NUM=1250",
+      "-DTERNARY_KEYGEN_BOUND_SCALE_DEN=100",
+      "-DTERNARY_KEYGEN_MAX_ATTEMPTS=3000000",
+      "-DSIGN_MAX_ATTEMPTS=16",
+      "-O1",
+      "-g",
+      "-fsanitize=address,undefined",
+      "-fno-sanitize-recover=all",
+      "-fno-omit-frame-pointer",
+      "-no-pie",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-Isource",
+      "checks/order.c",
+      "source/fpr-emulated.c",
+      "source/falcon-fft.c",
+      "source/frng.c",
+      "source/shake.c",
+      "-Wl,--gc-sections",
+      "-lm",
+      "-o",
+      "bin/order_san"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_RANGE_RUN_001/tmp/rehearsal_002",
+    "exit_code": 0,
+    "timeout": false,
+    "limit": 60,
+    "elapsed": 2.2153168780205306,
+    "stdout": "checks/order_logs/san/compile.stdout",
+    "stderr": "checks/order_logs/san/compile.stderr",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "ae1db45f297731d93092f547255453ca77dfefaecccc5180dd67d8c61946ec00"
+  },
+  {
+    "argv": [
+      "bin/order_san",
+      "baseline"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_RANGE_RUN_001/tmp/rehearsal_002",
+    "exit_code": 0,
+    "timeout": false,
+    "limit": 45,
+    "elapsed": 0.011002668994478881,
+    "stdout": "checks/order_logs/san/baseline.stdout",
+    "stderr": "checks/order_logs/san/baseline.stderr",
+    "stdout_sha256": "4edeb30e87f324d378dd4f110a5a982b24a916a2f1b222032cb4b5abda389faf",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/order_san",
+      "minusL"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_RANGE_RUN_001/tmp/rehearsal_002",
+    "exit_code": 0,
+    "timeout": false,
+    "limit": 45,
+    "elapsed": 0.010566562006715685,
+    "stdout": "checks/order_logs/san/minusL.stdout",
+    "stderr": "checks/order_logs/san/minusL.stderr",
+    "stdout_sha256": "b3fc4717ec25a0a0311c7fdc1b59bd75e1e6f34381896eae68c1f81a865e739c",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/order_san",
+      "fault"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_RANGE_RUN_001/tmp/rehearsal_002",
+    "exit_code": 0,
+    "timeout": false,
+    "limit": 45,
+    "elapsed": 0.010933632001979277,
+    "stdout": "checks/order_logs/san/fault.stdout",
+    "stderr": "checks/order_logs/san/fault.stderr",
+    "stdout_sha256": "6da36b4abd1da342bc8e009ae0c569a861e677a3fe77d3c2b71e0e6edf61c14e",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/order_san",
+      "terminal_negzero"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_RANGE_RUN_001/tmp/rehearsal_002",
+    "exit_code": 0,
+    "timeout": false,
+    "limit": 45,
+    "elapsed": 0.003717699000844732,
+    "stdout": "checks/order_logs/san/terminal_negzero.stdout",
+    "stderr": "checks/order_logs/san/terminal_negzero.stderr",
+    "stdout_sha256": "fa315b7c15a5851888aea71ce7cb20731a75a88775aea5ee5472da103ea2ce7b",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/order_san",
+      "noop"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_RANGE_RUN_001/tmp/rehearsal_002",
+    "exit_code": 0,
+    "timeout": false,
+    "limit": 45,
+    "elapsed": 0.013545111985877156,
+    "stdout": "checks/order_logs/san/noop.stdout",
+    "stderr": "checks/order_logs/san/noop.stderr",
+    "stdout_sha256": "4edeb30e87f324d378dd4f110a5a982b24a916a2f1b222032cb4b5abda389faf",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]
