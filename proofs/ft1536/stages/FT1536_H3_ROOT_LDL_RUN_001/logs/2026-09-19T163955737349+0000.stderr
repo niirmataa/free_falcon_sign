@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/home/footfalcon/miniforge3/envs/sage/bin/sage", line 5, in <module>
+    from sage.cli.__main__ import main
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__main__.py", line 9, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__init__.py", line 56, in main
+    return RunFileCmd(options).run()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/run_file_cmd.py", line 50, in run
+    eval(compile(open(input_file, 'rb').read(), input_file, 'exec'), sage_globals())
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "scripts/oracle.py", line 25, in <module>
+    assert abs(delta.real())<allowance and abs(delta.imag())<allowance,dict(case=case,slot=i,poly=k,root=e,actual=str(actual),exact=str(exact),error=str(delta),allowance=str(allowance))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'case': 1, 'slot': 1, 'poly': 0, 'root': 1537, 'actual': '-0.4996062252879198695154627785086631774902343750000000000000000000000000000000000 - 732.8082865241181025339756160974502563476562500000000000000000000000000000000000*I', 'exact': '[+/- 7.96e+132] + [+/- 7.96e+132]*I', 'error': '[+/- 7.96e+132] + [+/- 7.96e+132]*I', 'allowance': '1.490116119384765625000000000000000000000000000000000000000000000000000000000000e-8'}

@@ -1,0 +1,16 @@
+4493: poly_big_to_small(int16_t *d, const uint32_t *s, unsigned logn, unsigned ter)
+4494: {
+4495: 	size_t n, u;
+4496: 
+4497: 	n = MKN(logn, ter);
+4498: 	for (u = 0; u < n; u ++) {
+4499: 		int32_t z;
+4500: 
+4501: 		z = zint_one_to_plain(s + u);
+4502: 		if (z < -2047 || z > 2047) {
+4503: 			return 0;
+4504: 		}
+4505: 		d[u] = (int16_t)z;
+4506: 	}
+4507: 	return 1;
+4508: }

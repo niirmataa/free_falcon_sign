@@ -1,0 +1,96 @@
+755: #define MKN(logn, full)   ((size_t)(1 + ((full) << 1)) << ((logn) - (full)))
+756: 
+757: /* see internal.h */
+758: void
+759: falcon_FFT3(fpr *a, unsigned logn, unsigned full)
+760: {
+761: 	size_t n, hn, u, t, tmin, m;
+762: 
+763: 	n = MKN(logn, full);
+764: 	hn = n >> 1;
+765: 
+766: 	/*
+767: 	 * First pass, for sub-polynomials of degree 2, each modulo
+768: 	 * X^2-X+1. If w = exp(i*pi/3), then the roots are w and w^5.
+769: 	 * We keep only a(w) = a0 + a1*w.
+770: 	 */
+771: 	for (u = 0; u < hn; u ++) {
+772: 		fpr a0, a1;
+773: 
+774: 		a0 = a[u];
+775: 		a1 = a[u + hn];
+776: 		a[u] = fpr_add(a0, fpr_mul(a1, fpr_W1R));
+777: 		a[u + hn] = fpr_mul(a1, fpr_W1I);
+778: 	}
+779: 
+780: 	/*
+781: 	 * Intermediate steps for doubling the degree.
+782: 	 */
+783: 	t = hn;
+784: 	tmin = 1 + (full << 1);
+785: 	for (m = 2; t > tmin; m <<= 1) {
+786: 		size_t ht, hm, u1, v1;
+787: 
+788: 		ht = t >> 1;
+789: 		hm = m >> 1;
+790: 		for (u1 = 0, v1 = 0; u1 < hm; u1 ++, v1 += t) {
+791: 			size_t v, v2;
+792: 			fpr sr, si;
+793: 
+794: 			sr = fpr_gm3_square[((m + u1) << 1) + 0];
+795: 			si = fpr_gm3_square[((m + u1) << 1) + 1];
+796: 			v2 = v1 + ht;
+797: 			for (v = v1; v < v2; v ++) {
+798: 				fpr a0r, a0i, a1r, a1i;
+799: 
+800: 				a0r = a[v];
+801: 				a0i = a[v + hn];
+802: 				a1r = a[v + ht];
+803: 				a1i = a[v + ht + hn];
+804: 				FPC_MUL(a1r, a1i, a1r, a1i, sr, si);
+805: 				FPC_ADD(a[v], a[v + hn],
+806: 					a0r, a0i, a1r, a1i);
+807: 				FPC_SUB(a[v + ht], a[v + ht + hn],
+808: 					a0r, a0i, a1r, a1i);
+809: 			}
+810: 		}
+811: 		t = ht;
+812: 	}
+813: 
+814: 	/*
+815: 	 * Last step: degree tripling (only if degree is multiple of 3).
+816: 	 */
+817: 	if (full) {
+818: 		size_t v;
+819: 
+820: 		for (u = 0, v = (size_t)1 << logn; u < hn; u += 3, v += 2) {
+821: 			fpr fAr, fAi, fBr, fBi, fCr, fCi;
+822: 			fpr xr, xi;
+823: 			fpr fB0r, fB0i, fB1r, fB1i, fB2r, fB2i;
+824: 			fpr fC0r, fC0i, fC1r, fC1i, fC2r, fC2i;
+825: 
+826: 			fAr = a[u];
+827: 			fAi = a[u + hn];
+828: 			fBr = a[u + 1];
+829: 			fBi = a[u + 1 + hn];
+830: 			fCr = a[u + 2];
+831: 			fCi = a[u + 2 + hn];
+832: 
+833: 			xr = fpr_gm3_cubic[v + 0];
+834: 			xi = fpr_gm3_cubic[v + 1];
+835: 			FPC_MUL(fB0r, fB0i, fBr, fBi, xr, xi);
+836: 			FPC_MUL(fB1r, fB1i, fB0r, fB0i, fpr_W2R, fpr_W2I);
+837: 			FPC_MUL(fB2r, fB2i, fB0r, fB0i, fpr_W4R, fpr_W4I);
+838: 			FPC_SQR(xr, xi, xr, xi);
+839: 			FPC_MUL(fC0r, fC0i, fCr, fCi, xr, xi);
+840: 			FPC_MUL(fC1r, fC1i, fC0r, fC0i, fpr_W2R, fpr_W2I);
+841: 			FPC_MUL(fC2r, fC2i, fC0r, fC0i, fpr_W4R, fpr_W4I);
+842: 			FPC_ADD(fB0r, fB0i, fB0r, fB0i, fC0r, fC0i);
+843: 			FPC_ADD(fB1r, fB1i, fB1r, fB1i, fC2r, fC2i);
+844: 			FPC_ADD(fB2r, fB2i, fB2r, fB2i, fC1r, fC1i);
+845: 			FPC_ADD(a[u + 0], a[u + 0 + hn], fAr, fAi, fB0r, fB0i);
+846: 			FPC_ADD(a[u + 1], a[u + 1 + hn], fAr, fAi, fB1r, fB1i);
+847: 			FPC_ADD(a[u + 2], a[u + 2 + hn], fAr, fAi, fB2r, fB2i);
+848: 		}
+849: 	}
+850: }

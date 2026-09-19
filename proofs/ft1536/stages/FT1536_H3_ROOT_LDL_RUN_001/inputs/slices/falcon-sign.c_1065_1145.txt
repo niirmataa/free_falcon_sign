@@ -1,0 +1,81 @@
+1065: static inline size_t
+1066: skoff_b00(unsigned logn, unsigned ter)
+1067: {
+1068: 	(void)logn;
+1069: 	(void)ter;
+1070: 	return 0;
+1071: }
+1072: 
+1073: static inline size_t
+1074: skoff_b01(unsigned logn, unsigned ter)
+1075: {
+1076: 	return MKN(logn, ter);
+1077: }
+1078: 
+1079: static inline size_t
+1080: skoff_b10(unsigned logn, unsigned ter)
+1081: {
+1082: 	return 2 * MKN(logn, ter);
+1083: }
+1084: 
+1085: static inline size_t
+1086: skoff_b11(unsigned logn, unsigned ter)
+1087: {
+1088: 	return 3 * MKN(logn, ter);
+1089: }
+1090: 
+1091: static inline size_t
+1092: skoff_tree(unsigned logn, unsigned ter)
+1093: {
+1094: 	return 4 * MKN(logn, ter);
+1095: }
+1096: 
+1097: /*
+1098:  * Validate the exact FT1536 private-key domain before any floating-point
+1099:  * expansion. The convolution is reduced directly modulo
+1100:  * X^1536-X^768+1; all coefficients and support checks are aggregated.
+1101:  */
+1102: static int
+1103: ft_validate_ternary_private(const int16_t *f, const int16_t *g,
+1104: 	const int16_t *F, const int16_t *G, int64_t *relation)
+1105: {
+1106: 	const size_t n = 1536;
+1107: 	const size_t hn = 768;
+1108: 	size_t i, j;
+1109: 	uint32_t bad;
+1110: 
+1111: 	memset(relation, 0, n * sizeof *relation);
+1112: 	bad = 0;
+1113: 	for (i = 0; i < n; i ++) {
+1114: 		int32_t fi, gi;
+1115: 
+1116: 		fi = f[i];
+1117: 		gi = g[i];
+1118: 		bad |= (uint32_t)((fi < -1) | (fi > 1));
+1119: 		bad |= (uint32_t)((gi < -1) | (gi > 1));
+1120: 		for (j = 0; j < n; j ++) {
+1121: 			int64_t v;
+1122: 			size_t k, u;
+1123: 
+1124: 			v = (int64_t)fi * (int64_t)G[j]
+1125: 				- (int64_t)gi * (int64_t)F[j];
+1126: 			k = i + j;
+1127: 			if (k < n) {
+1128: 				relation[k] += v;
+1129: 			} else {
+1130: 				u = k - n;
+1131: 				if (u < hn) {
+1132: 					relation[u] -= v;
+1133: 					relation[u + hn] += v;
+1134: 				} else {
+1135: 					relation[u - hn] -= v;
+1136: 				}
+1137: 			}
+1138: 		}
+1139: 	}
+1140: 	relation[0] -= 18433;
+1141: 	for (i = 0; i < n; i ++) {
+1142: 		bad |= (uint32_t)(relation[i] != 0);
+1143: 	}
+1144: 	return bad == 0;
+1145: }

@@ -1,0 +1,11 @@
+1047:  */
+1048: static void
+1049: smallints_to_fpr(fpr *r, const int16_t *t, unsigned logn, unsigned ter)
+1050: {
+1051: 	size_t n, u;
+1052: 
+1053: 	n = MKN(logn, ter);
+1054: 	for (u = 0; u < n; u ++) {
+1055: 		r[u] = fpr_of(t[u]);
+1056: 	}
+1057: }

@@ -1,0 +1,60 @@
+7338: 	/*
+7339: 	 * Final F and G are in fk->tmp, one word per coefficient
+7340: 	 * (signed value over 31 bits).
+7341: 	 */
+7342: 	if (!poly_big_to_small(F, fk->tmp, logn, fk->ternary)
+7343: 		|| !poly_big_to_small(G, fk->tmp + n, logn, fk->ternary))
+7344: 	{
+7345: 		return 0;
+7346: 	}
+7347: 
+7348: 	/*
+7349: 	 * Verify that the NTRU equation is fulfilled. Since all elements
+7350: 	 * have short lengths, verifying modulo a small prime p works, and
+7351: 	 * allows using the NTT.
+7352: 	 */
+7353: 	ft = fk->tmp;
+7354: 	gt = ft + n;
+7355: 	Ft = gt + n;
+7356: 	Gt = Ft + n;
+7357: 	gm = Gt + n;
+7358: 
+7359: 	primes = fk->ternary ? PRIMES3 : PRIMES2;
+7360: 	p = primes[0].p;
+7361: 	p0i = modp_ninv31(p);
+7362: 	if (fk->ternary) {
+7363: 		modp_mkgm3(gm, ft, logn, 1, primes[0].g, p, p0i);
+7364: 	} else {
+7365: 		modp_mkgm2(gm, ft, logn, primes[0].g, p, p0i);
+7366: 	}
+7367: 	for (u = 0; u < n; u ++) {
+7368: 		ft[u] = modp_set(f[u], p);
+7369: 		gt[u] = modp_set(g[u], p);
+7370: 		Ft[u] = modp_set(F[u], p);
+7371: 		Gt[u] = modp_set(G[u], p);
+7372: 	}
+7373: 	if (fk->ternary) {
+7374: 		modp_NTT3(ft, gm, logn, 1, p, p0i);
+7375: 		modp_NTT3(gt, gm, logn, 1, p, p0i);
+7376: 		modp_NTT3(Ft, gm, logn, 1, p, p0i);
+7377: 		modp_NTT3(Gt, gm, logn, 1, p, p0i);
+7378: 		r = modp_montymul(18433, 1, p, p0i);
+7379: 	} else {
+7380: 		modp_NTT2(ft, gm, logn, p, p0i);
+7381: 		modp_NTT2(gt, gm, logn, p, p0i);
+7382: 		modp_NTT2(Ft, gm, logn, p, p0i);
+7383: 		modp_NTT2(Gt, gm, logn, p, p0i);
+7384: 		r = modp_montymul(12289, 1, p, p0i);
+7385: 	}
+7386: 	for (u = 0; u < n; u ++) {
+7387: 		uint32_t z;
+7388: 
+7389: 		z = modp_sub(modp_montymul(ft[u], Gt[u], p, p0i),
+7390: 			modp_montymul(gt[u], Ft[u], p, p0i), p);
+7391: 		if (z != r) {
+7392: 			return 0;
+7393: 		}
+7394: 	}
+7395: 
+7396: 	return 1;
+7397: }

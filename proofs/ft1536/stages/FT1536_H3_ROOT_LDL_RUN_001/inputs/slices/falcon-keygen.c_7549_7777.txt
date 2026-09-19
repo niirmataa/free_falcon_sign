@@ -1,0 +1,229 @@
+7549: static void
+7550: LDL_dim2_fft3_keygen(fpr *restrict d11, fpr *restrict l10,
+7551: 	const fpr *restrict g00, const fpr *restrict g10,
+7552: 	const fpr *restrict g11, unsigned logn, unsigned full)
+7553: {
+7554: 	size_t n;
+7555: 	n = MKN(logn, full);
+7556: 	memcpy(l10, g10, n * sizeof *g10);
+7557: 	falcon_poly_div_autoadj_fft3(l10, g00, logn, full);
+7558: 	memcpy(d11, g10, n * sizeof *g10);
+7559: 	falcon_poly_muladj_fft3(d11, l10, logn, full);
+7560: 	falcon_poly_neg_fft3(d11, logn, full);
+7561: 	falcon_poly_add_fft3(d11, g11, logn, full);
+7562: }
+7563: 
+7564: static void
+7565: LDL_dim3_fft3_keygen(fpr *restrict d11, fpr *restrict d22,
+7566: 	fpr *restrict l10, fpr *restrict l20, fpr *restrict l21,
+7567: 	const fpr *restrict g00, const fpr *restrict g10,
+7568: 	const fpr *restrict g11, const fpr *restrict g20,
+7569: 	const fpr *restrict g21, const fpr *restrict g22,
+7570: 	unsigned logn, unsigned full, fpr *restrict tmp)
+7571: {
+7572: 	size_t n;
+7573: 	n = MKN(logn, full);
+7574: 	LDL_dim2_fft3_keygen(d11, l10, g00, g10, g11, logn, full);
+7575: 	memcpy(l20, g20, n * sizeof *g20);
+7576: 	falcon_poly_div_autoadj_fft3(l20, g00, logn, full);
+7577: 	memcpy(l21, g20, n * sizeof *g20);
+7578: 	falcon_poly_muladj_fft3(l21, g10, logn, full);
+7579: 	falcon_poly_div_autoadj_fft3(l21, g00, logn, full);
+7580: 	falcon_poly_neg_fft3(l21, logn, full);
+7581: 	falcon_poly_add_fft3(l21, g21, logn, full);
+7582: 	falcon_poly_div_autoadj_fft3(l21, d11, logn, full);
+7583: 	memcpy(d22, l20, n * sizeof *l20);
+7584: 	falcon_poly_muladj_fft3(d22, g20, logn, full);
+7585: 	falcon_poly_neg_fft3(d22, logn, full);
+7586: 	falcon_poly_add_fft3(d22, g22, logn, full);
+7587: 	memcpy(tmp, l21, n * sizeof *l21);
+7588: 	falcon_poly_mulselfadj_fft3(tmp, logn, full);
+7589: 	falcon_poly_mul_autoadj_fft3(tmp, d11, logn, full);
+7590: 	falcon_poly_sub_fft3(d22, tmp, logn, full);
+7591: }
+7592: 
+7593: static size_t
+7594: ffLDL_inner_fft3_keygen(fpr *restrict tree, const fpr *restrict g00,
+7595: 	const fpr *restrict g10, const fpr *restrict g11,
+7596: 	unsigned logn, fpr *restrict tmp)
+7597: {
+7598: 	size_t n, hn, s;
+7599: 	fpr *t0, *t1, *t2;
+7600: 	n = (size_t)1 << logn;
+7601: 	hn = n >> 1;
+7602: 	if (logn == 1) {
+7603: 		LDL_dim2_fft3_keygen(tmp, tree, g00, g10, g11, logn, 0);
+7604: 		tree[2] = g00[0];
+7605: 		tree[3] = tmp[0];
+7606: 		return 4;
+7607: 	}
+7608: 	s = n;
+7609: 	t0 = tmp;
+7610: 	t1 = tmp + hn;
+7611: 	t2 = t1 + hn;
+7612: 	falcon_poly_split_deep_fft3(t0, t1, g00, logn);
+7613: 	falcon_poly_adj_fft3(t1, logn - 1, 0);
+7614: 	s += ffLDL_inner_fft3_keygen(tree + s, t0, t1, t0, logn - 1, t2);
+7615: 	LDL_dim2_fft3_keygen(t2, tree, g00, g10, g11, logn, 0);
+7616: 	falcon_poly_split_deep_fft3(t0, t1, t2, logn);
+7617: 	falcon_poly_adj_fft3(t1, logn - 1, 0);
+7618: 	s += ffLDL_inner_fft3_keygen(tree + s, t0, t1, t0, logn - 1, t2);
+7619: 	return s;
+7620: }
+7621: 
+7622: static size_t
+7623: ffLDL_depth1_fft3_keygen(fpr *restrict tree, const fpr *restrict g00,
+7624: 	const fpr *restrict g10, const fpr *restrict g11,
+7625: 	const fpr *restrict g20, const fpr *restrict g21,
+7626: 	const fpr *restrict g22, unsigned logn, fpr *restrict tmp)
+7627: {
+7628: 	size_t n, hn, s;
+7629: 	fpr *l10, *l20, *l21, *d11, *d22;
+7630: 	fpr *t0, *t1, *t2;
+7631: 	n = (size_t)1 << logn;
+7632: 	hn = n >> 1;
+7633: 	l10 = tree;
+7634: 	l20 = l10 + n;
+7635: 	l21 = l20 + n;
+7636: 	d11 = tmp;
+7637: 	d22 = d11 + n;
+7638: 	t0 = d22 + n;
+7639: 	t1 = t0 + hn;
+7640: 	t2 = t1 + hn;
+7641: 	s = 3 * n;
+7642: 	LDL_dim3_fft3_keygen(d11, d22, l10, l20, l21,
+7643: 		g00, g10, g11, g20, g21, g22, logn, 0, t2);
+7644: 	falcon_poly_split_deep_fft3(t0, t1, g00, logn);
+7645: 	falcon_poly_adj_fft3(t1, logn - 1, 0);
+7646: 	s += ffLDL_inner_fft3_keygen(tree + s, t0, t1, t0, logn - 1, t2);
+7647: 	falcon_poly_split_deep_fft3(t0, t1, d11, logn);
+7648: 	falcon_poly_adj_fft3(t1, logn - 1, 0);
+7649: 	s += ffLDL_inner_fft3_keygen(tree + s, t0, t1, t0, logn - 1, t2);
+7650: 	falcon_poly_split_deep_fft3(t0, t1, d22, logn);
+7651: 	falcon_poly_adj_fft3(t1, logn - 1, 0);
+7652: 	s += ffLDL_inner_fft3_keygen(tree + s, t0, t1, t0, logn - 1, t2);
+7653: 	return s;
+7654: }
+7655: 
+7656: static size_t
+7657: ffLDL_fft3_keygen(fpr *restrict tree, const fpr *restrict g00,
+7658: 	const fpr *restrict g10, const fpr *restrict g11,
+7659: 	unsigned logn, fpr *restrict tmp)
+7660: {
+7661: 	size_t n, tn, s;
+7662: 	fpr *l10, *d11, *t0, *t1, *t2, *t3;
+7663: 	n = (size_t)3 << (logn - 1);
+7664: 	tn = (size_t)1 << (logn - 1);
+7665: 	l10 = tree;
+7666: 	s = n;
+7667: 	t0 = tmp;
+7668: 	t1 = t0 + tn;
+7669: 	t2 = t1 + tn;
+7670: 	t3 = t2 + tn;
+7671: 	falcon_poly_split_top_fft3(t0, t1, t2, g00, logn);
+7672: 	falcon_poly_adj_fft3(t1, logn - 1, 0);
+7673: 	falcon_poly_adj_fft3(t2, logn - 1, 0);
+7674: 	s += ffLDL_depth1_fft3_keygen(tree + s, t0, t1, t0, t2, t1, t0, logn - 1, t3);
+7675: 	d11 = t3;
+7676: 	LDL_dim2_fft3_keygen(d11, l10, g00, g10, g11, logn, 1);
+7677: 	falcon_poly_split_top_fft3(t0, t1, t2, d11, logn);
+7678: 	falcon_poly_adj_fft3(t1, logn - 1, 0);
+7679: 	falcon_poly_adj_fft3(t2, logn - 1, 0);
+7680: 	s += ffLDL_depth1_fft3_keygen(tree + s, t0, t1, t0, t2, t1, t0, logn - 1, t3);
+7681: 	return s;
+7682: }
+7683: 
+7684: /*
+7685:  * ====================================================================
+7686:  * FT1536 KEYGEN LEAF CERTIFICATE — MAIN ENGINE
+7687:  * ====================================================================
+7688:  */
+7689: static int
+7690: ft_keygen_leaf_certificate(fpr *tmp,
+7691: 	const int16_t *f, const int16_t *g,
+7692: 	const int16_t *F, const int16_t *G,
+7693: 	unsigned logn, unsigned ter)
+7694: {
+7695: 	size_t n, hn, u;
+7696: 	uint32_t bad;
+7697: 	fpr q_squared;
+7698: 	n = MKN(logn, ter);
+7699: 	hn = n >> 1;
+7700: 	if (logn != 10 || n != 1536 || hn != 768 || ter != 1) {
+7701: 		return 0;
+7702: 	}
+7703: 	bad = 0;
+7704: 	{
+7705: 		fpr *tf, *tg, *tF, *tG;
+7706: 		fpr *g00, *g10, *g11, *gxx;
+7707: 		fpr *tree, *t3, *leaves, *scratch;
+7708: 		size_t treesize;
+7709: 		tf = tmp;
+7710: 		tg = tf + n;
+7711: 		tF = tg + n;
+7712: 		tG = tF + n;
+7713: 		g00 = tG + n;
+7714: 		g10 = g00 + n;
+7715: 		g11 = g10 + n;
+7716: 		gxx = g11 + n;
+7717: 		smallints_to_fpr_keygen(tf, f, logn, 1);
+7718: 		smallints_to_fpr_keygen(tg, g, logn, 1);
+7719: 		smallints_to_fpr_keygen(tF, F, logn, 1);
+7720: 		smallints_to_fpr_keygen(tG, G, logn, 1);
+7721: 		falcon_FFT3(tf, logn, 1);
+7722: 		falcon_FFT3(tg, logn, 1);
+7723: 		falcon_FFT3(tF, logn, 1);
+7724: 		falcon_FFT3(tG, logn, 1);
+7725: 		falcon_poly_neg_fft3(tf, logn, 1);
+7726: 		falcon_poly_neg_fft3(tF, logn, 1);
+7727: 		memcpy(g00, tg, n * sizeof *tg);
+7728: 		falcon_poly_mulselfadj_fft3(g00, logn, 1);
+7729: 		memcpy(gxx, tf, n * sizeof *tf);
+7730: 		falcon_poly_mulselfadj_fft3(gxx, logn, 1);
+7731: 		falcon_poly_add_fft3(g00, gxx, logn, 1);
+7732: 		memcpy(g10, tG, n * sizeof *tG);
+7733: 		falcon_poly_muladj_fft3(g10, tg, logn, 1);
+7734: 		memcpy(gxx, tF, n * sizeof *tF);
+7735: 		falcon_poly_muladj_fft3(gxx, tf, logn, 1);
+7736: 		falcon_poly_add_fft3(g10, gxx, logn, 1);
+7737: 		memcpy(g11, tG, n * sizeof *tG);
+7738: 		falcon_poly_mulselfadj_fft3(g11, logn, 1);
+7739: 		memcpy(gxx, tF, n * sizeof *tF);
+7740: 		falcon_poly_mulselfadj_fft3(gxx, logn, 1);
+7741: 		falcon_poly_add_fft3(g11, gxx, logn, 1);
+7742: 		tree = gxx + n;
+7743: 		treesize = (size_t)12 * n;
+7744: 		t3 = tree + treesize;
+7745: 		ffLDL_fft3_keygen(tree, g00, g10, g11, logn, t3);
+7746: 		for (u = 0; u < hn; u ++) {
+7747: 			uint32_t valid;
+7748: 			uint64_t mask, xb;
+7749: 			valid = (uint32_t)ft_fpr_is_positive_finite_keygen(g00[u]);
+7750: 			valid &= (uint32_t)(1 ^ fpr_lt(g00[u], fpr_onehalf));
+7751: 			bad |= valid ^ 1U;
+7752: 			mask = (uint64_t)0 - (uint64_t)valid;
+7753: 			xb = ft_fpr_bits_keygen(g00[u]);
+7754: 			g00[u] = ft_fpr_from_bits_keygen(
+7755: 				(xb & mask) | (ft_fpr_bits_keygen(fpr_one) & ~mask));
+7756: 		}
+7757: 		leaves = t3;
+7758: 		scratch = leaves + n;
+7759: 		ft_stable_top_branch_keygen(g00, leaves, scratch, &bad);
+7760: 		q_squared = fpr_of(FT1536_KEYGEN_Q_SQUARED);
+7761: 		for (u = 0; u < hn; u ++) {
+7762: 			leaves[n - 1 - u] = ft_stable_positive_keygen(
+7763: 				fpr_div(q_squared, leaves[u]), &bad);
+7764: 		}
+7765: 		for (u = 0; u < n; u ++) {
+7766: 			uint64_t bits;
+7767: 			uint32_t valid;
+7768: 			leaves[u] = ft_stable_positive_keygen(leaves[u], &bad);
+7769: 			bits = ft_fpr_bits_keygen(leaves[u]);
+7770: 			valid = (uint32_t)(1 ^ (uint32_t)((bits
+7771: 				- FT1536_LEAF_MIN_BITS) >> 63));
+7772: 			valid &= (uint32_t)(1 ^ (uint32_t)((FT1536_LEAF_MAX_BITS
+7773: 				- bits) >> 63));
+7774: 			bad |= valid ^ 1U;
+7775: 		}
+7776: 		return bad == 0;
+7777: 	}

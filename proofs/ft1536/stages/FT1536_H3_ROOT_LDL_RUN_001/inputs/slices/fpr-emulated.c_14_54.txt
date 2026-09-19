@@ -1,0 +1,41 @@
+14: /*
+15:  * Normalize a provided unsigned integer to the 2^63..2^64-1 range by
+16:  * left-shifting it if necessary. The exponent e is adjusted accordingly
+17:  * (i.e. if the value was left-shifted by n bits, then n is subtracted
+18:  * from e). If source m is 0, then it remains 0, but e is altered.
+19:  * Both m and e must be simple variables (no expressions allowed).
+20:  */
+21: #define FPR_NORM64(m, e)   do { \
+22: 		uint32_t nt; \
+23:  \
+24: 		(e) -= 63; \
+25:  \
+26: 		nt = (uint32_t)((m) >> 32); \
+27: 		nt = (nt | -nt) >> 31; \
+28: 		(m) ^= ((m) ^ ((m) << 32)) & ((uint64_t)nt - 1); \
+29: 		(e) += (int)(nt << 5); \
+30:  \
+31: 		nt = (uint32_t)((m) >> 48); \
+32: 		nt = (nt | -nt) >> 31; \
+33: 		(m) ^= ((m) ^ ((m) << 16)) & ((uint64_t)nt - 1); \
+34: 		(e) += (int)(nt << 4); \
+35:  \
+36: 		nt = (uint32_t)((m) >> 56); \
+37: 		nt = (nt | -nt) >> 31; \
+38: 		(m) ^= ((m) ^ ((m) <<  8)) & ((uint64_t)nt - 1); \
+39: 		(e) += (int)(nt << 3); \
+40:  \
+41: 		nt = (uint32_t)((m) >> 60); \
+42: 		nt = (nt | -nt) >> 31; \
+43: 		(m) ^= ((m) ^ ((m) <<  4)) & ((uint64_t)nt - 1); \
+44: 		(e) += (int)(nt << 2); \
+45:  \
+46: 		nt = (uint32_t)((m) >> 62); \
+47: 		nt = (nt | -nt) >> 31; \
+48: 		(m) ^= ((m) ^ ((m) <<  2)) & ((uint64_t)nt - 1); \
+49: 		(e) += (int)(nt << 1); \
+50:  \
+51: 		nt = (uint32_t)((m) >> 63); \
+52: 		(m) ^= ((m) ^ ((m) <<  1)) & ((uint64_t)nt - 1); \
+53: 		(e) += (int)(nt); \
+54: 	} while (0)

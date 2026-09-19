@@ -1,0 +1,37 @@
+floor_refinement : ∀ (s : Bool) (e f : Nat),
+  e ≤ 1053 → f < 4503599627370496 → NotNegZero s e f → floorParts s e f = mathFloor s e f
+conditional_H3_local : ∀ (sg : Bool) (e f : Nat) (z : Int),
+  e ≤ 1053 →
+    f < 4503599627370496 →
+      NotNegZero sg e f →
+        -2147483283 ≤ mathFloor sg e f ∧ mathFloor sg e f ≤ 2147483281 →
+          -365 ≤ z ∧ z ≤ 366 →
+            floorParts sg e f = mathFloor sg e f ∧
+              -2147483648 ≤ floorParts sg e f + z ∧ floorParts sg e f + z ≤ 2147483647
+'H3Range.normal_floor_refinement' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H3Range.subnormal_floor_refinement' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H3Range.floor_refinement' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H3Range.negative_zero_exception' depends on axioms: [propext]
+'H3Range.integer_safety' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H3Range.negative_zero_sum_still_safe' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H3Range.conditional_H3_local' depends on axioms: [propext, Classical.choice, Quot.sound]
+Floor 0 0.502
+NumericCenter : Word → Prop
+exponent_from_value : ∀ (x : Word), NumericCenter x → ex x ≤ 1053
+zero_aware_parts : ∀ (x : Word), NumericCenter x → H3Range.floorParts (sg x) (ex x) (frac x) = floorVal x - eps0 x
+'ZeroScalar.p2_pos' depends on axioms: [propext]
+'ZeroScalar.D_pos' depends on axioms: [propext]
+'ZeroScalar.p2_add' depends on axioms: [propext]
+'ZeroScalar.frac_bound' does not depend on any axioms
+'ZeroScalar.exponent_from_value' depends on axioms: [propext, Quot.sound]
+'ZeroScalar.floorVal_old' depends on axioms: [propext, Quot.sound]
+'ZeroScalar.floorVal_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.negzero_fields' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.zero_aware_parts' depends on axioms: [propext, Classical.choice, Quot.sound]
+ValueDomain 0 0.492
+formal/BitErrors.lean:1:0: error: unknown module prefix 'ZeroRho'
+
+No directory 'ZeroRho' or file 'ZeroRho.olean' in the search path entries:
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_ROOT_LDL_RUN_001/formal
+/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean
+BitErrors 1 0.064

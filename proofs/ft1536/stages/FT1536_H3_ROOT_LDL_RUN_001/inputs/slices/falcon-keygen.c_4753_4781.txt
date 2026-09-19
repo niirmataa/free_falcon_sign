@@ -1,0 +1,29 @@
+4753: static void
+4754: sample_true_ternary_secret(falcon_keygen *fk, int16_t *v, size_t n)
+4755: {
+4756: 	size_t u;
+4757: 
+4758: #if TRUE_TERNARY_SECRET_MODE == 1
+4759: 	/* Full independent uniform {-1,0,+1}; 2-bit rejection sampling. */
+4760: 	uint64_t rb;
+4761: 	unsigned rbits;
+4762: 
+4763: 	rb = 0;
+4764: 	rbits = 0;
+4765: 	for (u = 0; u < n; u ++) {
+4766: 		uint32_t x;
+4767: 
+4768: 		for (;;) {
+4769: 			if (rbits < 2) {
+4770: 				rb = get_rng_u64(&fk->rng);
+4771: 				rbits = 64;
+4772: 			}
+4773: 			x = (uint32_t)rb & 3U;
+4774: 			rb >>= 2;
+4775: 			rbits -= 2;
+4776: 			if (x < 3U) {
+4777: 				v[u] = (int16_t)((int)x - 1);
+4778: 				break;
+4779: 			}
+4780: 		}
+4781: 	}

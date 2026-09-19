@@ -1,0 +1,126 @@
+2473: /*
+2474:  * Reduce a small signed integer modulo a small prime. The source
+2475:  * value x MUST be such that -p < x < p.
+2476:  */
+2477: static inline uint32_t
+2478: modp_set(int32_t x, uint32_t p)
+2479: {
+2480: 	uint32_t w;
+2481: 
+2482: 	w = (uint32_t)x;
+2483: 	w += p & -(w >> 31);
+2484: 	return w;
+2485: }
+2486: 
+2487: /*
+2488:  * Normalize a modular integer around 0.
+2489:  */
+2490: static inline int32_t
+2491: modp_norm(uint32_t x, uint32_t p)
+2492: {
+2493: 	return x - (p & (((x - ((p + 1) >> 1)) >> 31) - 1));
+2494: }
+2495: 
+2496: /*
+2497:  * Compute -1/p mod 2^31. This works for all odd integers p that fit
+2498:  * on 32 bits.
+2499:  */
+2500: static uint32_t
+2501: modp_ninv31(uint32_t p)
+2502: {
+2503: 	uint32_t y;
+2504: 
+2505: 	y = 2 - p;
+2506: 	y *= 2 - p * y;
+2507: 	y *= 2 - p * y;
+2508: 	y *= 2 - p * y;
+2509: 	y *= 2 - p * y;
+2510: 	return (uint32_t)0x7FFFFFFF & -y;
+2511: }
+2512: 
+2513: /*
+2514:  * Compute R = 2^31 mod p.
+2515:  */
+2516: static inline uint32_t
+2517: modp_R(uint32_t p)
+2518: {
+2519: 	/*
+2520: 	 * Since 2^30 < p < 2^31, we know that 2^31 mod p is simply
+2521: 	 * 2^31 - p.
+2522: 	 */
+2523: 	return ((uint32_t)1 << 31) - p;
+2524: }
+2525: 
+2526: /*
+2527:  * Addition modulo p.
+2528:  */
+2529: static inline uint32_t
+2530: modp_add(uint32_t a, uint32_t b, uint32_t p)
+2531: {
+2532: 	uint32_t d;
+2533: 
+2534: 	d = a + b - p;
+2535: 	d += p & -(d >> 31);
+2536: 	return d;
+2537: }
+2538: 
+2539: /*
+2540:  * Subtraction modulo p.
+2541:  */
+2542: static inline uint32_t
+2543: modp_sub(uint32_t a, uint32_t b, uint32_t p)
+2544: {
+2545: 	uint32_t d;
+2546: 
+2547: 	d = a - b;
+2548: 	d += p & -(d >> 31);
+2549: 	return d;
+2550: }
+2551: 
+2552: /*
+2553:  * Montgomery multiplication modulo p. The 'p0i' value is -1/p mod 2^31.
+2554:  * It is required that p is an odd integer.
+2555:  */
+2556: static inline uint32_t
+2557: modp_montymul(uint32_t a, uint32_t b, uint32_t p, uint32_t p0i)
+2558: {
+2559: 	uint64_t z, w;
+2560: 	uint32_t d;
+2561: 
+2562: 	z = (uint64_t)a * (uint64_t)b;
+2563: 	w = ((z * p0i) & (uint64_t)0x7FFFFFFF) * p;
+2564: 	d = (uint32_t)((z + w) >> 31) - p;
+2565: 	d += p & -(d >> 31);
+2566: 	return d;
+2567: }
+2568: 
+2569: /*
+2570:  * Compute R2 = 2^62 mod p.
+2571:  */
+2572: static uint32_t
+2573: modp_R2(uint32_t p, uint32_t p0i)
+2574: {
+2575: 	uint32_t z;
+2576: 
+2577: 	/*
+2578: 	 * Compute z = 2^31 mod p (this is the value 1 in Montgomery
+2579: 	 * representation), then double it with an addition.
+2580: 	 */
+2581: 	z = modp_R(p);
+2582: 	z = modp_add(z, z, p);
+2583: 
+2584: 	/*
+2585: 	 * Square it five times to obtain 2^32 in Montgomery representation
+2586: 	 * (i.e. 2^63 mod p).
+2587: 	 */
+2588: 	z = modp_montymul(z, z, p, p0i);
+2589: 	z = modp_montymul(z, z, p, p0i);
+2590: 	z = modp_montymul(z, z, p, p0i);
+2591: 	z = modp_montymul(z, z, p, p0i);
+2592: 	z = modp_montymul(z, z, p, p0i);
+2593: 
+2594: 	/*
+2595: 	 * Halve the value mod p to get 2^62.
+2596: 	 */
+2597: 	z = (z + (p & -(z & 1))) >> 1;
+2598: 	return z;

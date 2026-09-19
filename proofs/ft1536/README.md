@@ -22,7 +22,8 @@ osiągnięcia, T2C3/T5, kontrakt M0, graf zależności i dalsze obowiązki.
 Pakiet ma 211 członków OUTPUTS i 198 publicznych wejść Git, manifest
 `c3efdcff510983a143946d43ab456656090061cd5b9b4b6847abc7f141c0cfa3`.
 Jest checkpointem dokumentacyjnym (`replay=none`); obecnie archiwum zawiera
-także dziesięć etapów badawczych, w tym późniejsze H3_RANGE i H3_ZERO_SCALAR.
+także jedenaście etapów badawczych, w tym późniejsze H3_RANGE,
+H3_ZERO_SCALAR i H3_ROOT_LDL.
 
 [Mapa po domknięciu L_V — 2026-09-19](documents/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md)
 przedstawia zależności i proponowaną kolejność: dokładny kontrakt gry,
@@ -57,12 +58,14 @@ Globalne `Reach_call_C -> NumericCenter` i prawo samplera pozostają otwarte.
 [Zlecenie](documents/FT1536_ZADANIE_ASTRA_H3_ZERO_SCALAR_2026-09-19.md) oraz
 [bootstrap](background/H3_ZERO_SCALAR_2026-09-19/README.md) zachowują piny.
 
-**Następne przygotowane zadanie:** [H3_ROOT_LDL](documents/FT1536_ZADANIE_ASTRA_H3_ROOT_LDL_2026-09-19.md)
-— certyfikat źródłowych FFT/Gram i subtractive korzenia LDL2 dla emitted
-support, z dzielnikami/pivotami, L, błędami oraz frame bindingiem.
-[Publiczny zestaw wejść](background/H3_ROOT_LDL_2026-09-19/README.md) ma106
-przypiętych członków i gotową kopię w świeżym W. Niższe poziomy drzewa
-i ordered Reach są kolejnymi obowiązkami.
+**Odebrany H3_ROOT_LDL:** [raport](stages/FT1536_H3_ROOT_LDL_RUN_001/REPORT.md)
+ma status `H3_ROOT_LDL_PROVED_FOR_PINNED_MODEL`. Wyprowadzono source
+FFT/Gram, dodatni root denominator, L i subtractive Schur z
+`32<Re(D_C)<2^31`, `abs(Im(D_C))<32`, wraz z conditional root frame.
+[Niezależny odbiór](validation/2026-09-19-root-ldl/README.md): 131/131 plików,
+17 modułów i 99 twierdzeń (17 nowych); pełna kompozycja jest mieszana
+analityczna/kernelowa. [NEXT_INTERFACE](stages/FT1536_H3_ROOT_LDL_RUN_001/NEXT_INTERFACE.md)
+określa dalszy certyfikat split_top/LDL_dim3 dla obu branches.
 
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
@@ -108,6 +111,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [M0](stages/FT1536_M0_CONTRACT_RUN_001/REPORT.md) | **M0_CONTRACT_DEFINED_FOR_PINNED_CANDIDATE** — gra, budżety, framing i dowód pojemności | `95f8015` |
 | [H3_RANGE](stages/FT1536_H3_RANGE_RUN_001/REPORT.md) | **PARTIAL_PROOF** — lokalne floor/proposal/residual; globalna osiągalność otwarta | `cb99e67` |
 | [H3_ZERO_SCALAR](stages/FT1536_H3_ZERO_SCALAR_RUN_001/REPORT.md) | **H3_ZERO_SCALAR_PROVED_FOR_PINNED_MODEL** — lokalny zero-aware most, błąd 2^-20; mieszany dowód | `9a76ecf` |
+| [H3_ROOT_LDL](stages/FT1536_H3_ROOT_LDL_RUN_001/REPORT.md) | **H3_ROOT_LDL_PROVED_FOR_PINNED_MODEL** — source FFT/Gram, dodatni subtractive root pivot i frame; mieszany dowód | niniejszy checkpoint |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).
@@ -223,7 +227,8 @@ python3 -B proofs/ft1536/tools/archive.py replay FT1536_L_RHO_RUN_001 --run repl
 Analogicznie dla `FT1536_LV_STATIC_RUN_001`, `FT1536_L_NTT_RUN_001`,
 `FT1536_L_NTT_GLOBAL_RUN_001`, `FT1536_L_NTT_FORWARD_RUN_001`
 i `FT1536_L_V_BRIDGE_RUN_001`, `FT1536_M0_CONTRACT_RUN_001`
-oraz `FT1536_H3_RANGE_RUN_001` i `FT1536_H3_ZERO_SCALAR_RUN_001`.
+oraz `FT1536_H3_RANGE_RUN_001`, `FT1536_H3_ZERO_SCALAR_RUN_001`
+i `FT1536_H3_ROOT_LDL_RUN_001`.
 Wpis katalogu określa właściwy punkt wejścia. Odbiór Blue jest archiwum
 recenzji i receipts; nie ma zadeklarowanego pojedynczego pełnego runnera.
 

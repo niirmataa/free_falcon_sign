@@ -1,0 +1,102 @@
+1015: void
+1016: falcon_poly_neg3(fpr *restrict a, unsigned logn, unsigned full)
+1017: {
+1018: 	size_t n, u;
+1019: 
+1020: 	n = MKN(logn, full);
+1021: 	for (u = 0; u < n; u ++) {
+1022: 		a[u] = fpr_neg(a[u]);
+1023: 	}
+1024: }
+1025: 
+1026: /* see internal.h */
+1027: void
+1028: falcon_poly_adj_fft3(fpr *a, unsigned logn, unsigned full)
+1029: {
+1030: 	size_t n, hn, u;
+1031: 
+1032: 	n = MKN(logn, full);
+1033: 	hn = n >> 1;
+1034: 	for (u = hn; u < n; u ++) {
+1035: 		a[u] = fpr_neg(a[u]);
+1036: 	}
+1037: }
+1038: 
+1039: /* see internal.h */
+1040: void
+1041: falcon_poly_mul_fft3(fpr *restrict a, const fpr *restrict b,
+1042: 	unsigned logn, unsigned full)
+1043: {
+1044: 	size_t n, hn, u;
+1045: 
+1046: 	n = MKN(logn, full);
+1047: 	hn = n >> 1;
+1048: 	for (u = 0; u < hn; u ++) {
+1049: 		fpr a_re, a_im, b_re, b_im;
+1050: 
+1051: 		a_re = a[u];
+1052: 		a_im = a[u + hn];
+1053: 		b_re = b[u];
+1054: 		b_im = b[u + hn];
+1055: 		FPC_MUL(a[u], a[u + hn], a_re, a_im, b_re, b_im);
+1056: 	}
+1057: }
+1058: 
+1059: /* see internal.h */
+1060: void
+1061: falcon_poly_sqr_fft3(fpr *a, unsigned logn, unsigned full)
+1062: {
+1063: 	size_t n, hn, u;
+1064: 
+1065: 	n = MKN(logn, full);
+1066: 	hn = n >> 1;
+1067: 	for (u = 0; u < hn; u ++) {
+1068: 		fpr a_re, a_im;
+1069: 
+1070: 		a_re = a[u];
+1071: 		a_im = a[u + hn];
+1072: 		FPC_SQR(a[u], a[u + hn], a_re, a_im);
+1073: 	}
+1074: }
+1075: 
+1076: /* see internal.h */
+1077: void
+1078: falcon_poly_muladj_fft3(fpr *restrict a, const fpr *restrict b,
+1079: 	unsigned logn, unsigned full)
+1080: {
+1081: 	size_t n, hn, u;
+1082: 
+1083: 	n = MKN(logn, full);
+1084: 	hn = n >> 1;
+1085: 	for (u = 0; u < hn; u ++) {
+1086: 		fpr a_re, a_im, b_re, b_im;
+1087: 
+1088: 		a_re = a[u];
+1089: 		a_im = a[u + hn];
+1090: 		b_re = b[u];
+1091: 		b_im = fpr_neg(b[u + hn]);
+1092: 		FPC_MUL(a[u], a[u + hn], a_re, a_im, b_re, b_im);
+1093: 	}
+1094: }
+1095: 
+1096: /* see internal.h */
+1097: void
+1098: falcon_poly_mulselfadj_fft3(fpr *a, unsigned logn, unsigned full)
+1099: {
+1100: 	/*
+1101: 	 * Since each coefficient is multiplied with its own conjugate,
+1102: 	 * the result contains only real values.
+1103: 	 */
+1104: 	size_t n, hn, u;
+1105: 
+1106: 	n = MKN(logn, full);
+1107: 	hn = n >> 1;
+1108: 	for (u = 0; u < hn; u ++) {
+1109: 		fpr a_re, a_im;
+1110: 
+1111: 		a_re = a[u];
+1112: 		a_im = a[u + hn];
+1113: 		a[u] = fpr_add(fpr_sqr(a_re), fpr_sqr(a_im));
+1114: 		a[u + hn] = fpr_of(0);
+1115: 	}
+1116: }

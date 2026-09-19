@@ -1,0 +1,94 @@
+8094: 		/*
+8095: 		 * Solve the NTRU equation to get F and G.
+8096: 		 */
+8097: 		if (!solve_NTRU(fk, F, G, f, g)) {
+8098: #ifdef FG_DISTRIBUTION_PROBE
+8099: 			if (ter) {
+8100: 				fg_probe_stats.reject_solve ++;
+8101: 				fg_probe_record_attempt(f, g, n, FG_PROBE_REJECT_SOLVE,
+8102: 					probe_raw_norm, probe_gs_norm, probe_bound);
+8103: 			}
+8104: #endif
+8105: 			continue;
+8106: 		}
+8107: 
+8108: 		/* FT1536 KeyGen Leaf Certificate */
+8109: 		if (ter && logn == 10 && n == 1536) {
+8110: 			if (!ft_keygen_leaf_certificate((fpr *)fk->tmp, f, g, F, G,
+8111: 				logn, ter))
+8112: 			{
+8113: #ifdef FG_DISTRIBUTION_PROBE
+8114: 				fg_probe_stats.reject_leaf_cert ++;
+8115: 				fg_probe_record_attempt(f, g, n,
+8116: 					FG_PROBE_REJECT_LEAF_CERT,
+8117: 					probe_raw_norm, probe_gs_norm, probe_bound);
+8118: #endif
+8119: 				continue;
+8120: 			}
+8121: 		}
+8122: 
+8123: #ifdef FG_DISTRIBUTION_PROBE
+8124: 		if (ter) {
+8125: 			fg_probe_record_attempt(f, g, n, FG_PROBE_SUCCESS,
+8126: 				probe_raw_norm, probe_gs_norm, probe_bound);
+8127: 			fg_probe_record_keygen_complete(local_attempts);
+8128: 		}
+8129: #endif
+8130: 
+8131: 		/*
+8132: 		 * Key pair is generated.
+8133: 		 */
+8134: 		break;
+8135: 	}
+8136: 
+8137: 	/*
+8138: 	 * Encode private key.
+8139: 	 */
+8140: 	klen = *privkey_len;
+8141: 	skbuf = privkey;
+8142: 	if (klen < 1) {
+8143: 		return 0;
+8144: 	}
+8145: 	skbuf[0] = (ter << 7) + (comp << 5) + logn;
+8146: 	skoff = 1;
+8147: 	ske[0] = f;
+8148: 	ske[1] = g;
+8149: 	ske[2] = F;
+8150: 	ske[3] = G;
+8151: 	for (i = 0; i < 4; i ++) {
+8152: 		size_t elen;
+8153: 
+8154: 		elen = falcon_encode_small(skbuf + skoff, klen - skoff,
+8155: 			comp, ter ? 18433 : 12289, ske[i], logn);
+8156: 		if (elen == 0) {
+8157: 			return 0;
+8158: 		}
+8159: 		skoff += elen;
+8160: 	}
+8161: 	*privkey_len = skoff;
+8162: 
+8163: 	/*
+8164: 	 * Encode public key.
+8165: 	 */
+8166: 	klen = *pubkey_len;
+8167: 	if (klen < 1) {
+8168: 		return 0;
+8169: 	}
+8170: 	((unsigned char *)pubkey)[0] = (ter << 7) + logn;
+8171: 	if (ter) {
+8172: 		klen = falcon_encode_18433(
+8173: 			(unsigned char *)pubkey + 1, klen - 1, h, logn);
+8174: 	} else {
+8175: 		klen = falcon_encode_12289(
+8176: 			(unsigned char *)pubkey + 1, klen - 1, h, logn);
+8177: 	}
+8178: 	if (klen == 0) {
+8179: 		return 0;
+8180: 	}
+8181: 	*pubkey_len = klen + 1;
+8182: 
+8183: 	/*
+8184: 	 * Success!
+8185: 	 */
+8186: 	return 1;
+8187: }

@@ -1,0 +1,43 @@
+151: static inline fpr
+152: fpr_sub(fpr x, fpr y)
+153: {
+154: 	y ^= (uint64_t)1 << 63;
+155: 	return fpr_add(x, y);
+156: }
+157: 
+158: static inline fpr
+159: fpr_neg(fpr x)
+160: {
+161: 	x ^= (uint64_t)1 << 63;
+162: 	return x;
+163: }
+164: 
+165: static inline fpr
+166: fpr_half(fpr x)
+167: {
+168: 	uint32_t t;
+169: 
+170: 	x -= (uint64_t)1 << 52;
+171: 	t = (((uint32_t)(x >> 52) & 0x7FF) + 1) >> 11;
+172: 	x &= (uint64_t)t - 1;
+173: 	return x;
+174: }
+175: 
+176: static inline fpr
+177: fpr_double(fpr x)
+178: {
+179: 	x += (uint64_t)((((unsigned)(x >> 52) & 0x7FFU) + 0x7FFU) >> 11) << 52;
+180: 	return x;
+181: }
+182: 
+183: static inline fpr
+184: fpr_sqr(fpr x)
+185: {
+186: 	return fpr_mul(x, x);
+187: }
+188: 
+189: static inline fpr
+190: fpr_inv(fpr x)
+191: {
+192: 	return fpr_div(fpr_one, x);
+193: }

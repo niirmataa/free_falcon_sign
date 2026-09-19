@@ -1,0 +1,259 @@
+--- legacy/audit_fft_twiddles.sage
++++ scripts/certificate.py
+@@ -1,156 +1,101 @@
+-#!/usr/bin/env sage
+-"""Read-only exact decoding and root-of-unity audit for used FFT3 twiddles."""
+-
+-import json
+-import hashlib
+-import math
+-import re
+-import struct
+-import sys
++"""Exact QQ error composition and RBF twiddles; complete symbolic linear FFT map."""
++import hashlib,json,sys
+ from pathlib import Path
+-
+-if str(3/2) != "3/2":
+-    raise SystemExit("T5_FAIL:SAGE_PREPARSER_SENTINEL")
+-
+-
+-def require(condition, code):
+-    if not condition:
+-        raise SystemExit("T5_FAIL:" + code)
+-
+-
+-def binary64_exact(word):
+-    sign = -1 if (word >> 63) else 1
+-    exponent = (word >> 52) & 0x7FF
+-    fraction = word & ((1 << 52) - 1)
+-    require(exponent not in (0x7FF,), "NONFINITE_TABLE_VALUE")
+-    if exponent == 0:
+-        return QQ(sign * fraction) * QQ(2)^(-1074)
+-    return QQ(sign * ((1 << 52) + fraction)) * QQ(2)^(ZZ(exponent) - 1023 - 52)
+-
+-
+-def parse_array(text, name):
+-    match = re.search(
+-        r"static const fpr " + re.escape(name) + r"\[\] = \{(.*?)\n\};",
+-        text,
+-        flags=re.S,
+-    )
+-    require(match is not None, "ARRAY_MISSING_" + name)
+-    pairs = []
+-    for left, right in re.findall(
+-        r"FPC\(0x([0-9a-fA-F]{16})ULL,\s*0x([0-9a-fA-F]{16})ULL\)",
+-        match.group(1),
+-    ):
+-        pairs.append((binary64_exact(int(left, 16)), binary64_exact(int(right, 16))))
+-    require(len(pairs) > 0, "ARRAY_EMPTY_" + name)
+-    return pairs
+-
+-
+-def parse_constant(text, name):
+-    match = re.search(
+-        r"static const fpr " + re.escape(name)
+-        + r" = 0x([0-9a-fA-F]{16})ULL;",
+-        text,
+-    )
+-    require(match is not None, "CONSTANT_MISSING_" + name)
+-    return binary64_exact(int(match.group(1), 16))
+-
+-
+-require(len(sys.argv) == 2, "REPO_ROOT_ARGUMENT")
+-root = Path(sys.argv[1]).resolve()
+-source = (root / "build/fpr-emulated.h").read_text(encoding="utf-8")
+-square = parse_array(source, "fpr_gm3_square")
+-cubic = parse_array(source, "fpr_gm3_cubic")
+-require(len(square) >= 384, "SQUARE_LENGTH")
+-require(len(cubic) >= 768, "CUBIC_LENGTH")
+-
+-RBF = RealBallField(256)
+-pi = RBF.pi()
+-step = 2 * pi / 4608
+-
+-
+-def identify(value):
+-    re_q, im_q = value
+-    angle_float = math.atan2(float(im_q), float(re_q))
+-    exponent = int(round(angle_float * 4608 / (2 * math.pi))) % 4608
+-    target_re = (RBF(2) * pi * exponent / 4608).cos()
+-    target_im = (RBF(2) * pi * exponent / 4608).sin()
+-    delta_re = abs(RBF(re_q) - target_re)
+-    delta_im = abs(RBF(im_q) - target_im)
+-    require(delta_re < RBF(2)^(-50), "TWIDDLE_REAL_ERROR")
+-    require(delta_im < RBF(2)^(-50), "TWIDDLE_IMAG_ERROR")
+-    return int(exponent), max(delta_re, delta_im)
+-
+-
+-def bit_reverse(value, bits):
+-    value = int(value)
+-    result = 0
+-    for _ in range(int(bits)):
+-        result = (result << 1) | (value & 1)
+-        value >>= 1
+-    return result
+-
+-
+-square_used = []
+-for m in [2, 4, 8, 16, 32, 64, 128, 256]:
+-    square_used.extend(range(m, m + m // 2))
+-square_used = sorted(set(square_used))
+-cubic_used = list(range(512, 768))
+-
+-max_delta = RBF(0)
+-sqrt3_over_2 = RBF(3).sqrt() / 2
+-constant_targets = {
+-    "fpr_W1R": RBF(1) / 2,
+-    "fpr_W1I": sqrt3_over_2,
+-    "fpr_W2R": -RBF(1) / 2,
+-    "fpr_W2I": sqrt3_over_2,
+-    "fpr_W4R": -RBF(1) / 2,
+-    "fpr_W4I": -sqrt3_over_2,
+-}
+-for name, target in constant_targets.items():
+-    delta = abs(RBF(parse_constant(source, name)) - target)
+-    require(delta < RBF(2)^(-50), "FIXED_CONSTANT_ERROR_" + name)
+-    max_delta = max(max_delta, delta)
+-square_exponents = {}
+-for index in square_used:
+-    exponent, delta = identify(square[index])
+-    square_exponents[str(index)] = exponent
+-    max_delta = max(max_delta, delta)
+-cubic_exponents = {}
+-for index in cubic_used:
+-    exponent, delta = identify(cubic[index])
+-    cubic_exponents[str(index)] = exponent
+-    max_delta = max(max_delta, delta)
+-
+-for m in [2, 4, 8, 16, 32, 64, 128, 256]:
+-    bits = int(m).bit_length() - 2
+-    for j in range(int(m // 2)):
+-        expected = int(768 // m + (4608 // m) * bit_reverse(j, bits))
+-        require(square_exponents[str(int(m + j))] == expected,
+-                "SQUARE_EXPONENT_PATTERN")
+-for j in range(256):
+-    expected = int(1 + 6 * bit_reverse(j, 8))
+-    require(cubic_exponents[str(512 + j)] == expected,
+-            "CUBIC_EXPONENT_PATTERN")
+-
+-square_map_bytes = json.dumps(
+-    square_exponents, sort_keys=True, separators=(",", ":")
+-).encode("ascii")
+-cubic_map_bytes = json.dumps(
+-    cubic_exponents, sort_keys=True, separators=(",", ":")
+-).encode("ascii")
+-
+-out = {
+-    "schema": "FT1536_T5_FFT3_TWIDDLE_AUDIT_V1",
+-    "status": "PASS",
+-    "root_order": int(4608),
+-    "fixed_constant_count": len(constant_targets),
+-    "square_used_count": len(square_used),
+-    "cubic_used_count": len(cubic_used),
+-    "component_error_lt_2^-50": True,
+-    "max_component_error_RBF256": str(max_delta),
+-    "square_exponent_pattern": "768/m+(4608/m)*bit_reverse(j,log2(m/2))",
+-    "cubic_exponent_pattern": "1+6*bit_reverse(j,8)",
+-    "square_exponent_map_sha256": hashlib.sha256(square_map_bytes).hexdigest(),
+-    "cubic_exponent_map_sha256": hashlib.sha256(cubic_map_bytes).hexdigest(),
+-}
+-print(json.dumps(out, indent=int(2), sort_keys=True))
++sys.path.insert(0,str(Path.cwd()/'scripts'))
++from sage.all import QQ,RealBallField
++from root_model import tables
++from dyadic import value
++from replaylib import sha
++W=Path.cwd();square,cubic,fixed=tables(W);R=RealBallField(256);pi=R.pi();eps=QQ(1)/2**50;u=QQ(1)/2**48;eta=QQ(1)/2**900
++def br(j,b):return int(format(j,'0'+str(b)+'b')[::-1],2) if b else 0
++def pair(e):return (2*pi*e/4608).cos(),(2*pi*e/4608).sin()
++sqmap={};cumap={};maxerr=R(0)
++def check(word,e):
++ global maxerr
++ for w,t in zip(word,pair(e)):
++  v=value(w);err=abs(R(QQ(v.numerator)/v.denominator)-t);assert err<R(eps);maxerr=max(maxerr,err)
++for m in [2,4,8,16,32,64,128,256]:
++ for j in range(m//2):
++  e=768//m+(4608//m)*br(j,m.bit_length()-2);sqmap[str(m+j)]=e;check(square[m+j],e)
++for j in range(256):e=1+6*br(j,8);cumap[str(512+j)]=e;check(cubic[512+j],e)
++for word,e in zip(fixed,[768,1536,3072]):check(word,e)
++mapsha=lambda m:hashlib.sha256(json.dumps(m,sort_keys=True,separators=(',',':')).encode()).hexdigest()
++assert mapsha(sqmap)=='d87bea64489acf39ecfd9ac66b31c62917bc4f4a3bc376a4cc83eb2e9dfa553d'
++assert mapsha(cumap)=='b5afac80fb5eacc652e5f40ed5da493d9f80201b6905a7be14ad99f9696d1f76'
++# Every coefficient is symbolic, not a sample vector. Supports are disjoint.
++def shift(p,e):return {k:(v+e)%4608 for k,v in p.items()}
++def union(a,b):assert a.keys().isdisjoint(b);return a|b
++a=[{i:0,i+768:768} for i in range(768)];t=768;m=2
++while t>3:
++ h=t//2
++ for j in range(m//2):
++  for i in range(j*t,j*t+h):
++   left,right=a[i],shift(a[i+h],sqmap[str(m+j)]);a[i]=union(left,right);a[i+h]=union(left,shift(right,2304))
++ t=h;m*=2
++roots=[];checked=0
++for i in range(0,768,3):
++ e=cumap[str(512+i//3)]
++ for k in range(3):
++  r=e+k*1536;p=union(union(a[i],shift(a[i+1],r)),shift(a[i+2],2*r))
++  assert len(p)==1536 and all(v==r*j%4608 for j,v in p.items());checked+=len(p);roots.append(r)
++assert len(set(roots))==768 and {r%4608 for r in roots}|{(-r)%4608 for r in roots}=={i for i in range(4608) if i%6 in (1,5)}
++def cmerr(M,e,d):return 2*M*d+2*e*(1+d)+6*u*(M+e)*(1+d)+4*eta
++def fft_error(cap):
++ M=QQ(2*cap);e=cap*eps+4*u*cap*(1+eps)+3*eta;trace=[e]
++ for _ in range(8):
++  p=cmerr(M,e,eps);e=e+p+u*(2*M+e+p)+eta;M*=2;trace.append(e)
++ eb=cmerr(M,cmerr(M,e,eps),eps)
++ ed=cmerr(QQ(1),eps,eps)
++ ec=cmerr(M,cmerr(M,e,ed),eps)
++ ebc=eb+ec+u*(2*M+eb+ec)+eta
++ e=e+ebc+u*(3*M+e+ebc)+eta
++ return e,trace
++e1,t1=fft_error(1);eF,tF=fft_error(2047);ef=QQ(1)/2**26;eG=QQ(1)/2**15
++assert e1<ef and eF<eG,(str(e1),str(eF))
++N=QQ(1536);H=N*2047;q=QQ(18433);df=2*ef;dF=2*eG
++Amax=2*N*N;Jmax=2*H*H
++da=2*(2*N*df+df*df);dj=2*(2*H*dF+dF*dF);dc=2*(N*dF+H*df+df*dF);ddet=dc
++ahatmax=2*(N+df)**2;jhatmax=2*(H+dF)**2
++assert ddet<1 and da<QQ(1)/1024
++# a,j,c here are EXACT Gram of the computed FFT matrix, not independent boxes.
++gamma=8*u;schur_factor=256*u;schur_round=schur_factor*jhatmax
++assert (1+4*u)*QQ(1)/4+8*eta<QQ(1)/2
++assert (q-ddet)**2>ahatmax/4  # gives j>1/4 by Cauchy/Gram determinant
++assert gamma<QQ(1)/1024
++assert 6*u*u+(72+64*u)*eta<u and 32*eta<4*u
++assert 2*eta<u*(q-ddet)/ahatmax
++# Direct per-component div, not reciprocal multiplication.
++Lround_factor=(u*(1+gamma)+2*gamma)/(1-gamma)+2*eta*ahatmax/(q-ddet)
++assert Lround_factor<32*u
++# Bounds for muladj: propagated input error + operation error.
++Pfactor=gamma+(1+gamma)*32*u+6*u*(1+gamma)*(1+32*u)+32*eta
++assert Pfactor<64*u
++Dfactor=gamma+Pfactor+2*u*(2+gamma+Pfactor)+8*eta
++assert Dfactor<schur_factor
++lower=(q-ddet)**2/ahatmax-schur_round
++upper=4*(q+ddet)**2+schur_round
++assert lower>32 and upper<2**31 and schur_round<32
++assert ahatmax*(1+gamma)<2**23 and da<QQ(1)/4-QQ(1)/8
++# a>=1/4; exact A>=1/8 (a differs by da). Tighter A>=1/4 follows gate+a error.
++assert (QQ(1)/2-8*eta)/(1+4*u)-da>QQ(1)/4
++Lmax=4*(2*(H+dF)) # 2*sqrt(j/a) <=4*sqrt(j) <=8*(H+dF)
++Lerror=128*u*(2*(H+dF))+4*dc+16*H*da
++Derror=4*(2*q*ddet+ddet**2)+16*q*q*da+schur_round
++gramA=da+gamma*ahatmax;gramJ=dj+gamma*jhatmax;gramC=dc+gamma*2*(N+df)*(H+dF)
++assert Lmax<2**25 and Lerror<2**14 and Derror<2**22
++assert gramA<QQ(1)/1024 and gramC<1 and gramJ<1024
++assert (1+gamma)*2*(N+df)*(H+dF)<2**35 and (1+gamma)*jhatmax<2**45 and (1-gamma)/4>QQ(1)/8
++out=dict(schema='H3_ROOT_NUMERIC_CERTIFICATE_V1',status='PASS_EXACT_COMPOSITION',
++ primitive=dict(u=str(u),eta=str(eta),add_input_abs_cap='2^100',mul_input_abs_cap='2^100',div_denominator_interval=['1/2','2^23'],proof='ANALYTIC_PROOF.md'),
++ twiddles=dict(square_count=255,cubic_count=256,fixed_components=6,error_lt=str(eps),max_error_RBF256=str(maxerr),square_map_sha256=mapsha(sqmap),cubic_map_sha256=mapsha(cumap)),
++ fft_map=dict(root_order=4608,roots=roots,checked_symbolic_coefficients=checked,all_1536_coefficients_all_768_slots=True,normalization='unscaled evaluation; real slot i, imaginary slot i+768'),
++ constants=dict(fft_component_error_fg=str(ef),fft_component_error_FG=str(eG),gram_error_A='1/1024',gram_error_C_norm='1',gram_error_J='1024',
++  fft_component_abs_fg=str(N+ef),fft_component_abs_FG=str(H+eG),source_g10_norm_upper='34359738368',source_g11_real_lower='1/8',source_g11_real_upper='35184372088832',
++  source_g00_real_lower='1/2',source_g00_real_upper='8388608',source_L_norm_upper='33554432',L_error_norm_upper='16384',
++  source_D_real_lower='32',source_D_real_upper='2147483648',source_D_error_norm_upper='4194304',source_D_imag_abs_upper='32'),
++ derived={k:str(v) for k,v in dict(fft_error_fg=e1,fft_error_FG=eF,Amax=Amax,Jmax=Jmax,da=da,dj=dj,dc=dc,det_error=ddet,
++  ahatmax=ahatmax,jhatmax=jhatmax,gramA=gramA,gramC=gramC,gramJ=gramJ,schur_round=schur_round,Dlower=lower,Dupper=upper,Lmax=Lmax,Lerror=Lerror,Derror=Derror).items()},
++ backend_complete_IEEE_assumed=False,zero_E2_minus20_reused_outside_domain=False,
++ source_sha256={n:sha(W/'source'/n) for n in ['falcon-fft.c','falcon-sign.c','falcon-keygen.c','fpr-emulated.c','fpr-emulated.h']})
++(W/'artifacts/numeric_certificate.json').write_text(json.dumps(out,indent=2)+'\n')
++print(json.dumps(dict(status=out['status'],symbolic_coefficients=checked,constants=out['constants']),indent=2))

@@ -1,0 +1,171 @@
+[
+  {
+    "argv": [
+      "/usr/bin/gcc",
+      "-W",
+      "-Wall",
+      "-O",
+      "-DFPR_IMPL=\"fpr-emulated.h\"",
+      "-DSAMPLER_CODF=0",
+      "-DSAMPLER_CDF=0",
+      "-DCT_BEREXP=1",
+      "-DFT_TERNARY_ADAPTIVE_CDF=1",
+      "-DFT1536_CANDIDATE_PROFILE=1",
+      "-DCLEANSE=1",
+      "-DTRUE_TERNARY_SECRET=1",
+      "-DTRUE_TERNARY_SECRET_MODE=1",
+      "-DTERNARY_KEYGEN_BOUND_SCALE_NUM=1250",
+      "-DTERNARY_KEYGEN_BOUND_SCALE_DEN=100",
+      "-DTERNARY_KEYGEN_MAX_ATTEMPTS=3000000",
+      "-DSIGN_MAX_ATTEMPTS=16",
+      "-std=c99",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-Isource",
+      "-fsanitize=address,undefined",
+      "-fno-omit-frame-pointer",
+      "-g",
+      "checks/root.c",
+      "source/falcon-fft.c",
+      "source/fpr-emulated.c",
+      "-Wl,--gc-sections",
+      "-lm",
+      "-o",
+      "bin/root_san"
+    ],
+    "cwd": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_H3_ROOT_LDL_RUN_001/maintainer-replay-001/seed/tmp/replay",
+    "exit_code": 0,
+    "wall_limit": 90,
+    "elapsed": 1.4077824160049204,
+    "stdout": "checks/logs/san/compile_root.stdout",
+    "stderr": "checks/logs/san/compile_root.stderr",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "/usr/bin/gcc",
+      "-W",
+      "-Wall",
+      "-O",
+      "-DFPR_IMPL=\"fpr-emulated.h\"",
+      "-DSAMPLER_CODF=0",
+      "-DSAMPLER_CDF=0",
+      "-DCT_BEREXP=1",
+      "-DFT_TERNARY_ADAPTIVE_CDF=1",
+      "-DFT1536_CANDIDATE_PROFILE=1",
+      "-DCLEANSE=1",
+      "-DTRUE_TERNARY_SECRET=1",
+      "-DTRUE_TERNARY_SECRET_MODE=1",
+      "-DTERNARY_KEYGEN_BOUND_SCALE_NUM=1250",
+      "-DTERNARY_KEYGEN_BOUND_SCALE_DEN=100",
+      "-DTERNARY_KEYGEN_MAX_ATTEMPTS=3000000",
+      "-DSIGN_MAX_ATTEMPTS=16",
+      "-std=c99",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-Isource",
+      "-fsanitize=address,undefined",
+      "-fno-omit-frame-pointer",
+      "-g",
+      "checks/keygen_map.c",
+      "source/falcon-fft.c",
+      "source/fpr-emulated.c",
+      "-Wl,--gc-sections",
+      "-lm",
+      "-o",
+      "bin/keygen_map_san"
+    ],
+    "cwd": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_H3_ROOT_LDL_RUN_001/maintainer-replay-001/seed/tmp/replay",
+    "exit_code": 0,
+    "wall_limit": 90,
+    "elapsed": 2.6783741810068022,
+    "stdout": "checks/logs/san/compile_keygen_map.stdout",
+    "stderr": "checks/logs/san/compile_keygen_map.stderr",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/keygen_map_san"
+    ],
+    "cwd": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_H3_ROOT_LDL_RUN_001/maintainer-replay-001/seed/tmp/replay",
+    "exit_code": 0,
+    "wall_limit": 90,
+    "elapsed": 0.0032817309838719666,
+    "stdout": "checks/logs/san/keygen_map.stdout",
+    "stderr": "checks/logs/san/keygen_map.stderr",
+    "stdout_sha256": "9564d33c7741e2cd5f3d204bf6d9fb06462b6185e14e4f46980c9ad3151f39d0",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/root_san",
+      "frame"
+    ],
+    "cwd": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_H3_ROOT_LDL_RUN_001/maintainer-replay-001/seed/tmp/replay",
+    "exit_code": 0,
+    "wall_limit": 90,
+    "elapsed": 0.016110249009216204,
+    "stdout": "checks/logs/san/frame.stdout",
+    "stderr": "checks/logs/san/frame.stderr",
+    "stdout_sha256": "64cdfe9c476892bd3d8e08acf21ec118fef90a88eda2b8c4732903af83465b7d",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/root_san",
+      "scalar"
+    ],
+    "cwd": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_H3_ROOT_LDL_RUN_001/maintainer-replay-001/seed/tmp/replay",
+    "exit_code": 0,
+    "wall_limit": 90,
+    "elapsed": 0.0041183700086548924,
+    "stdout": "checks/logs/san/scalar.stdout",
+    "stderr": "checks/logs/san/scalar.stderr",
+    "stdout_sha256": "46abdab60ecaa8e77b4fabaf51d5b519b0c2cc7644ba6f5cf1a3a6e65ce7b742",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/root_san",
+      "gram"
+    ],
+    "cwd": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_H3_ROOT_LDL_RUN_001/maintainer-replay-001/seed/tmp/replay",
+    "exit_code": 0,
+    "wall_limit": 90,
+    "elapsed": 0.004132658010348678,
+    "stdout": "checks/logs/san/gram.stdout",
+    "stderr": "checks/logs/san/gram.stderr",
+    "stdout_sha256": "ffc8d8b36c5844ce32b990730e8ebafb13a786d4288bd12d5946cecf1d602744",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/root_san",
+      "polys"
+    ],
+    "cwd": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_H3_ROOT_LDL_RUN_001/maintainer-replay-001/seed/tmp/replay",
+    "exit_code": 0,
+    "wall_limit": 90,
+    "elapsed": 0.006805780023569241,
+    "stdout": "checks/logs/san/polys_0.stdout",
+    "stderr": "checks/logs/san/polys_0.stderr",
+    "stdout_sha256": "05ebe30ab4789dec5e150ee5feff3894c4bf56eb3afd2978cdf22e4aafd659b5",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/root_san",
+      "polys"
+    ],
+    "cwd": "/tmp/opencode/ft1536-noreply-history/proofs/ft1536/replay-work/FT1536_H3_ROOT_LDL_RUN_001/maintainer-replay-001/seed/tmp/replay",
+    "exit_code": 0,
+    "wall_limit": 90,
+    "elapsed": 0.007281004975084215,
+    "stdout": "checks/logs/san/polys_1.stdout",
+    "stderr": "checks/logs/san/polys_1.stderr",
+    "stdout_sha256": "39bc2434913724c13c6334e4d9ab1ef8ea43cd843db0f46b259dc5f7acda5681",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

@@ -1,0 +1,55 @@
+150: fpr
+151: fpr_scaled(int64_t i, int sc)
+152: {
+153: 	/*
+154: 	 * To convert from int to float, we have to do the following:
+155: 	 *  1. Get the absolute value of the input, and its sign
+156: 	 *  2. Shift right or left the value as appropriate
+157: 	 *  3. Pack the result
+158: 	 *
+159: 	 * We can assume that the source integer is not -2^63.
+160: 	 */
+161: 	int s, e;
+162: 	uint32_t t;
+163: 	uint64_t m;
+164: 
+165: 	/*
+166: 	 * Extract sign bit.
+167: 	 * We have: -i = 1 + ~i
+168: 	 */
+169: 	s = (int)((uint64_t)i >> 63);
+170: 	i ^= -(int64_t)s;
+171: 	i += s;
+172: 
+173: 	/*
+174: 	 * For now we suppose that i != 0.
+175: 	 * Otherwise, we set m to i and left-shift it as much as needed
+176: 	 * to get a 1 in the top bit. We can do that in a logarithmic
+177: 	 * number of conditional shifts.
+178: 	 */
+179: 	m = (uint64_t)i;
+180: 	e = 9 + sc;
+181: 	FPR_NORM64(m, e);
+182: 
+183: 	/*
+184: 	 * Now m is in the 2^63..2^64-1 range. We must divide it by 512;
+185: 	 * if one of the dropped bits is a 1, this should go into the
+186: 	 * "sticky bit".
+187: 	 */
+188: 	m |= ((uint32_t)m & 0x1FF) + 0x1FF;
+189: 	m >>= 9;
+190: 
+191: 	/*
+192: 	 * Corrective action: if i = 0 then all of the above was
+193: 	 * incorrect, and we clamp e and m down to zero.
+194: 	 */
+195: 	t = (uint32_t)((uint64_t)(i | -i) >> 63);
+196: 	m &= -(uint64_t)t;
+197: 	e &= -(int)t;
+198: 
+199: 	/*
+200: 	 * Assemble back everything. The FPR() function will handle cases
+201: 	 * where e is too low.
+202: 	 */
+203: 	return FPR(s, e, m);
+204: }

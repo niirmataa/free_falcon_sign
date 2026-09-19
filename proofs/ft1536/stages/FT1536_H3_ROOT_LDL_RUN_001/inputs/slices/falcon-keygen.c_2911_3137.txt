@@ -1,0 +1,227 @@
+2911:  * Compute the roots for NTT and inverse NTT (ternary case).
+2912:  *
+2913:  * Degree is 1.5*2^logn if 'full' is 1; otherwise, 'full' is 0 and the
+2914:  * degree is 2^logn.
+2915:  *
+2916:  * Input parameter g is a primitive 2304-th root of 1 modulo p (i.e.
+2917:  * g^1152 = -1 mod p).
+2918:  *
+2919:  * In the full case, for n = 768:
+2920:  *
+2921:  *  - Tables gm[] and igm[] have size 512 entries each.
+2922:  *
+2923:  *  - gm[256..511] contains the values g^k for k = 1 or 5 mod 6 and
+2924:  *    k < 768.
+2925:  *
+2926:  *  - For 1 <= j < 256, gm[j] contains the square of gm[2*j].
+2927:  *
+2928:  *  - gm[0] is a copy of gm[1].
+2929:  *
+2930:  *  - For j >= 1, igm[j] is the inverse of gm[j].
+2931:  *
+2932:  *  - igm[0] is the inverse of 2*gm[1]-1.
+2933:  *
+2934:  * For smaller degrees, everything is scaled down accordingly, and g
+2935:  * is repeatedly squared.
+2936:  *
+2937:  * In the partial case, tables gm[] and igm[] have size 2^logn, and
+2938:  * are the prefixes of the table for the full case for logn+1.
+2939:  */
+2940: static void
+2941: modp_mkgm3(uint32_t *restrict gm, uint32_t *restrict igm,
+2942: 	unsigned logn, unsigned full,
+2943: 	uint32_t g, uint32_t p, uint32_t p0i)
+2944: {
+2945: 	size_t u;
+2946: 	unsigned k;
+2947: 	uint32_t R, R2, w, ig;
+2948: 
+2949: 	R = modp_R(p);
+2950: 	R2 = modp_R2(p, p0i);
+2951: 
+2952: 	/*
+2953: 	 * Square g as needed for the requested degree, and convert it
+2954: 	 * to Montgomery representation. Also set ig = 1/g, also in
+2955: 	 * Montgomery representation.
+2956: 	 */
+2957: 	g = modp_montymul(g, R2, p, p0i);
+2958: 	k = logn;
+2959: 	if (!full) {
+2960: 		g = modp_montymul(g, modp_montymul(g, g, p, p0i), p, p0i);
+2961: 		k ++;
+2962: 	}
+2963: 	while (k ++ < 11) {
+2964: 		g = modp_montymul(g, g, p, p0i);
+2965: 	}
+2966: 	ig = modp_div(R2, g, p, p0i, modp_R(p));
+2967: 
+2968: 	/*
+2969: 	 * Fill the last row, using bit-reversal order.
+2970: 	 */
+2971: 	if (logn == 1) {
+2972: 		gm[1] = g;
+2973: 		igm[1] = ig;
+2974: 	} else {
+2975: 		uint32_t x, ix, g2, g4, ig2, ig4;
+2976: 		size_t b;
+2977: 
+2978: 		x = g;
+2979: 		ix = ig;
+2980: 		g2 = modp_montymul(g, g, p, p0i);
+2981: 		g4 = modp_montymul(g2, g2, p, p0i);
+2982: 		ig2 = modp_montymul(ig, ig, p, p0i);
+2983: 		ig4 = modp_montymul(ig2, ig2, p, p0i);
+2984: 		k = 11 - logn;
+2985: 		b = (size_t)1 << (logn - 1);
+2986: 		for (u = 0; u < b; u += 2) {
+2987: 			gm[b + REV10[u << k]] = x;
+2988: 			igm[b + REV10[u << k]] = ix;
+2989: 			x = modp_montymul(x, g4, p, p0i);
+2990: 			ix = modp_montymul(ix, ig4, p, p0i);
+2991: 			gm[b + REV10[(u + 1) << k]] = x;
+2992: 			igm[b + REV10[(u + 1) << k]] = ix;
+2993: 			x = modp_montymul(x, g2, p, p0i);
+2994: 			ix = modp_montymul(ix, ig2, p, p0i);
+2995: 		}
+2996: 	}
+2997: 
+2998: 	/*
+2999: 	 * If the table is full, then the next-to-last row contains the
+3000: 	 * cubes of the last row.
+3001: 	 */
+3002: 	k = logn - 1;
+3003: 	if (full) {
+3004: 		k --;
+3005: 		for (u = (size_t)1 << k; u < ((size_t)1 << (k + 1)); u ++) {
+3006: 			uint32_t y, z;
+3007: 
+3008: 			y = gm[u << 1];
+3009: 			z = igm[u << 1];
+3010: 			y = modp_montymul(y,
+3011: 				modp_montymul(y, y, p, p0i), p, p0i);
+3012: 			z = modp_montymul(z,
+3013: 				modp_montymul(z, z, p, p0i), p, p0i);
+3014: 			gm[u] = y;
+3015: 			igm[u] = z;
+3016: 		}
+3017: 	}
+3018: 
+3019: 	/*
+3020: 	 * Fill other rows, with squares of the next one.
+3021: 	 */
+3022: 	for (u = ((size_t)1 << k) - 1; u > 0; u --) {
+3023: 		size_t v;
+3024: 
+3025: 		v = u << 1;
+3026: 		gm[u] = modp_montymul(gm[v], gm[v], p, p0i);
+3027: 		igm[u] = modp_montymul(igm[v], igm[v], p, p0i);
+3028: 	}
+3029: 
+3030: 	/*
+3031: 	 * Comute top elements.
+3032: 	 */
+3033: 	gm[0] = gm[1];
+3034: 	w = gm[1];
+3035: 	igm[0] = modp_div(R2, modp_sub(modp_add(w, w, p), R, p), p, p0i, R);
+3036: }
+3037: 
+3038: /*
+3039:  * Compute the NTT over a polynomial (ternary case). If full is 1, then
+3040:  * the degree 1.5*2^logn; otherwise, the degree is 2^logn.
+3041:  */
+3042: static void
+3043: modp_NTT3_ext(uint32_t *a, size_t stride, const uint32_t *gm,
+3044: 	unsigned logn, unsigned full, uint32_t p, uint32_t p0i)
+3045: {
+3046: 	size_t n, hn, u, r, m, t;
+3047: 	uint32_t w;
+3048: 	uint32_t *r1, *r2;
+3049: 
+3050: 	if (logn == 0) {
+3051: 		return;
+3052: 	}
+3053: 	n = MKN(logn, full);
+3054: 	hn = n >> 1;
+3055: 
+3056: 	/*
+3057: 	 * First pass: NTT over individual degree-1 polynomials modulo
+3058: 	 * X^2-X+1. Roots are w (such that w != -1, and w^3 = -1) and w^5.
+3059: 	 * Note that w^2 - w + 1 = 0, thus:
+3060: 	 *
+3061: 	 *  a(w) = a0 + a1*w
+3062: 	 *  a(w^5) = a(-w^2)
+3063: 	 *         = a0 + a1*(-w + 1)
+3064: 	 *         = a0 + a1 - a1*w
+3065: 	 */
+3066: 	w = gm[1];
+3067: 	for (u = 0, r1 = a, r2 = a + hn * stride;
+3068: 		u < hn; u ++, r1 += stride, r2 += stride)
+3069: 	{
+3070: 		uint32_t a0, a1, b;
+3071: 
+3072: 		a0 = *r1;
+3073: 		a1 = *r2;
+3074: 		b = modp_montymul(a1, w, p, p0i);
+3075: 		*r1 = modp_add(a0, b, p);
+3076: 		*r2 = modp_sub(modp_add(a0, a1, p), b, p);
+3077: 	}
+3078: 
+3079: 	/*
+3080: 	 * Intermediate passes, for doubling the degree repeatedly.
+3081: 	 */
+3082: 	t = hn;
+3083: 	for (m = 2; t > (1 + (full << 1)); m <<= 1) {
+3084: 		size_t ht, u1, v1;
+3085: 
+3086: 		ht = t >> 1;
+3087: 		for (u1 = 0, v1 = 0; u1 < m; u1 ++, v1 += t) {
+3088: 			size_t v;
+3089: 			uint32_t s;
+3090: 
+3091: 			s = gm[m + u1];
+3092: 			r1 = a + v1 * stride;
+3093: 			r2 = r1 + ht * stride;
+3094: 			for (v = 0; v < ht; v ++, r1 += stride, r2 += stride) {
+3095: 				uint32_t x, y;
+3096: 
+3097: 				x = *r1;
+3098: 				y = *r2;
+3099: 				y = modp_montymul(y, s, p, p0i);
+3100: 				*r1 = modp_add(x, y, p);
+3101: 				*r2 = modp_sub(x, y, p);
+3102: 			}
+3103: 		}
+3104: 		t = ht;
+3105: 	}
+3106: 
+3107: 	/*
+3108: 	 * Final pass, to triple the degree.
+3109: 	 */
+3110: 	if (full) {
+3111: 		w = modp_montymul(gm[1], gm[1], p, p0i);
+3112: 		for (u = 0, r = (size_t)1 << (logn - 1), r1 = a;
+3113: 			u < n; u += 3, r ++, r1 += 3 * stride)
+3114: 		{
+3115: 			uint32_t fA, fB, fC, fB0, fB1, fB2, fC0, fC1, fC2;
+3116: 			uint32_t x, x2;
+3117: 
+3118: 			x = gm[r];
+3119: 			x2 = modp_montymul(x, x, p, p0i);
+3120: 			fA = *r1;
+3121: 			fB = *(r1 + stride);
+3122: 			fC = *(r1 + 2 * stride);
+3123: 			fB0 = modp_montymul(fB, x, p, p0i);
+3124: 			fB1 = modp_montymul(fB0, w, p, p0i);
+3125: 			fB2 = modp_montymul(fB1, w, p, p0i);
+3126: 			fC0 = modp_montymul(fC, x2, p, p0i);
+3127: 			fC1 = modp_montymul(fC0, w, p, p0i);
+3128: 			fC2 = modp_montymul(fC1, w, p, p0i);
+3129: 			*r1 = modp_add(fA,
+3130: 				modp_add(fB0, fC0, p), p);
+3131: 			*(r1 + stride) = modp_add(fA,
+3132: 				modp_add(fB1, fC2, p), p);
+3133: 			*(r1 + 2 * stride) = modp_add(fA,
+3134: 				modp_add(fB2, fC1, p), p);
+3135: 		}
+3136: 	}
+3137: }
