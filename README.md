@@ -36,6 +36,7 @@ counterexample. Historical checkpoint flags describe their execution-time
 state; the subsequent source integration is recorded separately.
 
 Start here:
+- **[Research paper / specification — Draft 0.2 (PDF)](docs/paper/FT1536_specyfikacja_v0.2.pdf)** — [snapshot and provenance](docs/paper/README.md); covers the frozen post-M0 state.
 - **[Frozen post-M0 research state: full proof map, decisions and next obligations](proofs/ft1536/stages/FT1536_POST_M0_FREEZE_RUN_001/REPORT.md)**
 - [Proof archive and latest results](proofs/ft1536/README.md)
 - [Detailed post-L_V roadmap and T2C3/T5 dependency map](proofs/ft1536/documents/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md)
