@@ -1,0 +1,62 @@
+RHO_CLOSED : ∀ (x : Word), NumericCenter x → 0 ≤ rhoNum x ∧ rhoNum x ≤ D
+EXACT_RESIDUAL_366 : ∀ (x : Word),
+  NumericCenter x →
+    ∀ (z : Int),
+      -365 ≤ z ∧ z ≤ 366 → -366 * D ≤ valueNum x - D * (floorC x + z) ∧ valueNum x - D * (floorC x + z) ≤ 366 * D
+old_new_relation : ∀ (x : Word), NumericCenter x → (H3Range.CenterClass ↑x ↔ ↑x ≠ 9223372036854775808)
+'ZeroScalar.value_negative_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.RHO_CLOSED' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.EXACT_RESIDUAL_366' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.old_new_relation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.old_floor_equality' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.old_implies_numeric' depends on axioms: [propext, Quot.sound]
+ZeroRho 0 0.367
+sticky_interval : ∀ (x k : Nat), sticky x k * 2 ^ k ≤ x + 2 ^ k ∧ x ≤ sticky x k * 2 ^ k + 2 ^ k
+round_error : ∀ (m : Nat), -2 ≤ 4 * ↑(roundMant m) - ↑m ∧ 4 * ↑(roundMant m) - ↑m ≤ 2
+normalizer_bounds : ∀ (m : Nat),
+  m < 18446744073709551616 →
+    (norm64 m).snd ≤ 63 ∧
+      (norm64 m).fst = m * 2 ^ (norm64 m).snd ∧
+        (m = 0 ∨ 9223372036854775808 ≤ (norm64 m).fst) ∧ (norm64 m).fst < 18446744073709551616
+'ZeroScalar.or_one_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.sticky_cases' depends on axioms: [propext, Quot.sound]
+'ZeroScalar.sticky_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.round_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.normalizer_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+BitErrors 0 7.484
+OF_EXACT : ∀ (i : Int), -2147483648 ≤ i ∧ i ≤ 2147483647 → valueNum (ofC i) = i * D
+'ZeroScalar.pack_normal_value' depends on axioms: [propext, Quot.sound]
+'ZeroScalar.round_normal_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.norm_small_shift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.sticky_multiple' depends on axioms: [propext, Quot.sound]
+'ZeroScalar.OF_EXACT' depends on axioms: [propext, Classical.choice, Quot.sound]
+PackOf 0 8.251
+error_budget_composition : ∀ (e : Nat),
+  e ≤ 1054 →
+    ∀ (decodeA decodeB align shrink pack : Int),
+      Between decodeA (p2 177) →
+        Between decodeB (p2 177) →
+          Between align (p2 (e + 122)) →
+            Between shrink (4 * p2 (e + 122)) →
+              Between pack (8 * p2 (e + 122) + p2 178) → Between (decodeA + decodeB + align + shrink + pack) (p2 1180)
+MACHINE_RESIDUAL_366 : ∀ (x : Word),
+  NumericCenter x →
+    ∀ (z v : Int),
+      -365 ≤ z ∧ z ≤ 366 → Between (v - (valueNum x - D * (floorC x + z))) Eunits → Between v (366 * D + Eunits)
+ORDERED_ZERO_TERMINAL : ∀ (r1 rx r0 pre0 sf0 z0 e2 e3 Ehalf Eadd : Int),
+  Between r1 (366 * D + Eunits) →
+    Between (2 * rx - r1) (2 * Ehalf) →
+      0 ≤ pre0 - D * sf0 ∧ pre0 - D * sf0 ≤ D →
+        -365 ≤ z0 ∧ z0 ≤ 366 →
+          Between e2 Eunits →
+            Between e3 Eadd →
+              r0 = pre0 - D * (sf0 + z0) + e2 - rx + e3 →
+                Between (2 * r0) (1098 * D + 3 * Eunits + 2 * Ehalf + 2 * Eadd)
+'ZeroScalar.error_rational' does not depend on any axioms
+'ZeroScalar.error_budget_numeric' does not depend on any axioms
+'ZeroScalar.phase_scale_bound' depends on axioms: [propext, Quot.sound]
+'ZeroScalar.error_budget_composition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.MACHINE_RESIDUAL_366' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.MACHINE_CENTER_INTERVAL' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.ORDERED_ZERO_TERMINAL' depends on axioms: [propext, Classical.choice, Quot.sound]
+ErrorArithmetic 0 0.538

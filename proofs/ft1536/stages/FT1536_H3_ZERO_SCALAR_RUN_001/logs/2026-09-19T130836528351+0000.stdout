@@ -1,0 +1,13 @@
+FLOOR_ZERO : ∀ (x : Word), NumericCenter x → floorC x = floorVal x - eps0 x
+C_INT_BRIDGE : ∀ (x : Word),
+  NumericCenter x →
+    ∀ (z : Int),
+      -365 ≤ z ∧ z ≤ 366 →
+        -2147483648 ≤ floorC x ∧ floorC x ≤ 2147483647 ∧ -2147483648 ≤ floorC x + z ∧ floorC x + z ≤ 2147483647
+'ZeroScalar.raw_mantissa' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.raw_mantissa_int' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.floorC_parts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.FLOOR_ZERO' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.source_floor_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.C_INT_BRIDGE' depends on axioms: [propext, Classical.choice, Quot.sound]
+SourceFloor 0 0.825

@@ -1,0 +1,42 @@
+formal/ValueDomain.lean:31:3: error: unknown tactic
+formal/ValueDomain.lean:30:77: error: unsolved goals
+x : Word
+hx : NumericCenter x
+⊢ ex x ≤ 1053
+formal/ValueDomain.lean:52:6: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  b - c ≥ 1
+  1 ≤ a ≤ 1053
+where
+ a := ↑(ex x)
+ b := p2 (ex x - 1 + (1075 - ex x))
+ c := D
+formal/ValueDomain.lean:55:35: warning: This simp argument is unused:
+  hs
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [signed, Bool.false_eq_true, ↓reduceIte]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+formal/ValueDomain.lean:75:2: error: unsolved goals
+case pos
+x : Word
+hx : NumericCenter x
+he : ex x ≤ 1053
+hz : ↑x = 9223372036854775808
+hs : sg x = true
+he0 : ex x = 0
+hf0 : frac x = 0
+⊢ -1 = 0 - 1
+NumericCenter : Word → Prop
+exponent_from_value : ∀ (x : Word), NumericCenter x → ex x ≤ 1053
+zero_aware_parts : ∀ (x : Word), NumericCenter x → H3Range.floorParts (sg x) (ex x) (frac x) = floorVal x - eps0 x
+'ZeroScalar.p2_pos' depends on axioms: [propext]
+'ZeroScalar.D_pos' depends on axioms: [propext]
+'ZeroScalar.p2_add' depends on axioms: [propext]
+'ZeroScalar.frac_bound' does not depend on any axioms
+'ZeroScalar.exponent_from_value' depends on axioms: [sorryAx]
+'ZeroScalar.floorVal_old' depends on axioms: [propext, sorryAx, Quot.sound]
+'ZeroScalar.floorVal_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.negzero_fields' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.zero_aware_parts' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

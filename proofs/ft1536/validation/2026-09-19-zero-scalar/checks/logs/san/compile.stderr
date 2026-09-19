@@ -1,0 +1,7 @@
+checks/scalar.c: In function ‘main’:
+checks/scalar.c:8:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+    8 |  if(argc!=2)return 2;FILE *in=fopen(argv[1],"r");if(!in)return 3;
+      |  ^~
+checks/scalar.c:8:22: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+    8 |  if(argc!=2)return 2;FILE *in=fopen(argv[1],"r");if(!in)return 3;
+      |                      ^~~~

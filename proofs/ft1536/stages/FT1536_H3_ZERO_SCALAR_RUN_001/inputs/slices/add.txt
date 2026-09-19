@@ -1,0 +1,109 @@
+fpr
+fpr_add(fpr x, fpr y)
+{
+	uint64_t m, xu, yu, za;
+	uint32_t cs;
+	int ex, ey, sx, sy, cc;
+
+	/*
+	 * Make sure that the first operand (x) has the larger absolute
+	 * value. This guarantees that the exponent of y is less than
+	 * or equal to the exponent of x, and, if they are equal, then
+	 * the mantissa of y will not be greater than the mantissa of x.
+	 *
+	 * After this swap, the result will have the sign x, except in
+	 * the following edge case: abs(x) = abs(y), and x and y have
+	 * opposite sign bits; in that case, the result shall be +0
+	 * even if the sign bit of x is 1. To handle this case properly,
+	 * we do the swap is abs(x) = abs(y) AND the sign of x is 1.
+	 */
+	m = ((uint64_t)1 << 63) - 1;
+	za = (x & m) - (y & m);
+	cs = (uint32_t)(za >> 63)
+		| ((1U - (uint32_t)(-za >> 63)) & (uint32_t)(x >> 63));
+	m = (x ^ y) & -(uint64_t)cs;
+	x ^= m;
+	y ^= m;
+
+	/*
+	 * Extract sign bits, exponents and mantissas. The mantissas are
+	 * scaled up to 2^55..2^56-1, and the exponent is unbiased. If
+	 * an operand is zero, its mantissa is set to 0 at this step, and
+	 * its exponent will be -1078.
+	 */
+	ex = (int)(x >> 52);
+	sx = ex >> 11;
+	ex &= 0x7FF;
+	m = (uint64_t)(uint32_t)((ex + 0x7FF) >> 11) << 52;
+	xu = ((x & (((uint64_t)1 << 52) - 1)) | m) << 3;
+	ex -= 1078;
+	ey = (int)(y >> 52);
+	sy = ey >> 11;
+	ey &= 0x7FF;
+	m = (uint64_t)(uint32_t)((ey + 0x7FF) >> 11) << 52;
+	yu = ((y & (((uint64_t)1 << 52) - 1)) | m) << 3;
+	ey -= 1078;
+
+	/*
+	 * x has the larger exponent; hence, we only need to right-shift y.
+	 * If the shift count is larger than 59 bits then we clamp the
+	 * value to zero.
+	 */
+	cc = ex - ey;
+	yu &= -(uint64_t)((uint32_t)(cc - 60) >> 31);
+	cc &= 63;
+
+	/*
+	 * The lowest bit of yu is "sticky".
+	 */
+	m = fpr_ulsh(1, cc) - 1;
+	yu |= (yu & m) + m;
+	yu = fpr_ursh(yu, cc);
+
+	/*
+	 * If the operands have the same sign, then we add the mantissas;
+	 * otherwise, we subtract the mantissas.
+	 */
+	xu += yu - ((yu << 1) & -(uint64_t)(sx ^ sy));
+
+	/*
+	 * The result may be smaller, or slightly larger. We normalize
+	 * it to the 2^63..2^64-1 range (if xu is zero, then it stays
+	 * at zero).
+	 */
+	FPR_NORM64(xu, ex);
+
+	/*
+	 * Scale down the value to 2^54..s^55-1, handling the last bit
+	 * as sticky.
+	 */
+	xu |= ((uint32_t)xu & 0x1FF) + 0x1FF;
+	xu >>= 9;
+	ex += 9;
+
+	/*
+	 * In general, the result has the sign of x. However, if the
+	 * result is exactly zero, then the following situations may
+	 * be encountered:
+	 *   x > 0, y = -x   -> result should be +0
+	 *   x < 0, y = -x   -> result should be +0
+	 *   x = +0, y = +0  -> result should be +0
+	 *   x = -0, y = +0  -> result should be +0
+	 *   x = +0, y = -0  -> result should be +0
+	 *   x = -0, y = -0  -> result should be -0
+	 *
+	 * But at the conditional swap step at the start of the
+	 * function, we ensured that if abs(x) = abs(y) and the
+	 * sign of x was 1, then x and y were swapped. Thus, the
+	 * two following cases cannot actually happen:
+	 *   x < 0, y = -x
+	 *   x = -0, y = +0
+	 * In all other cases, the sign bit of x is conserved, which
+	 * is what the FPR() function does. The FPR() function also
+	 * properly clamps values to zero when the exponent is too
+	 * low, but does not alter the sign in that case.
+	 */
+	return FPR(sx, ex, xu);
+}
+
+#endif // yyyASM_CORTEXM4-

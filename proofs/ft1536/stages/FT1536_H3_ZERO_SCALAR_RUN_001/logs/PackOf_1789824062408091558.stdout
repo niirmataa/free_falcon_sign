@@ -1,0 +1,73 @@
+formal/PackOf.lean:88:8: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  e ≥ 0
+  1 ≤ e - 8*f ≤ 7
+  20 ≤ d ≤ 51
+  c ≥ 0
+  9223372036854775808 ≤ b ≤ 18446744073709551615
+  1 ≤ a ≤ 2147483647
+where
+ a := if 0 ≤ i then i else -i
+ b := ↑i.natAbs * ↑(2 ^ (norm64 i.natAbs).snd)
+ c := ↑i.natAbs * ↑(2 ^ ((norm64 i.natAbs).snd - 9))
+ d := ↑((norm64 i.natAbs).snd - 12)
+ e := ↑i.natAbs * ↑(2 ^ ((norm64 i.natAbs).snd - 12) * 2 ^ 1 * 2 ^ 2)
+ f := ↑(i.natAbs * (2 ^ ((norm64 i.natAbs).snd - 12) * 2 ^ 1 * 2 ^ 2)) / 8
+formal/PackOf.lean:92:6: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  h ≥ 0
+  -3 ≤ 4*g - h ≤ 0
+  f ≥ 0
+  f - g ≥ 1
+  e ≥ 0
+  21 ≤ d ≤ 52
+  c ≥ 0
+  9223372036854775808 ≤ b ≤ 18446744073709551615
+  1 ≤ a ≤ 2147483647
+where
+ a := if 0 ≤ i then i else -i
+ b := ↑i.natAbs * ↑(2 ^ (norm64 i.natAbs).snd)
+ c := ↑i.natAbs * ↑(2 ^ ((norm64 i.natAbs).snd - 9))
+ d := ↑((norm64 i.natAbs).snd - 11)
+ e := ↑(i.natAbs * (2 ^ ((norm64 i.natAbs).snd - 11) * 2 ^ 2)) / 8
+ f := ↑i.natAbs * ↑(2 ^ ((norm64 i.natAbs).snd - 11))
+ g := ↑(i.natAbs * (2 ^ ((norm64 i.natAbs).snd - 11) * 4)) / 4
+ h := ↑i.natAbs * ↑(2 ^ ((norm64 i.natAbs).snd - 11) * 4)
+formal/PackOf.lean:99:8: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  g ≥ 0
+  -511 ≤ 512*f - g ≤ 0
+  23 ≤ e ≤ 54
+  d ≥ 0
+  c ≥ 0
+  c - f ≤ -1
+  9223372036854775808 ≤ b ≤ 18446744073709551615
+  -512 ≤ b - 512*c ≤ 512
+  1 ≤ a ≤ 2147483647
+where
+ a := if 0 ≤ i then i else -i
+ b := ↑i.natAbs * ↑(2 ^ (norm64 i.natAbs).snd)
+ c := ↑i.natAbs * ↑(2 ^ ((norm64 i.natAbs).snd - 9))
+ d := ↑i.natAbs * ↑(2 ^ ((norm64 i.natAbs).snd - 11))
+ e := ↑((norm64 i.natAbs).snd - 9)
+ f := ↑(i.natAbs * (2 ^ ((norm64 i.natAbs).snd - 9) * 2 ^ 9)) / 512
+ g := ↑i.natAbs * ↑(2 ^ ((norm64 i.natAbs).snd - 9) * 2 ^ 9)
+formal/PackOf.lean:118:39: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  e ≥ 0
+  18014398509481984 ≤ d ≤ 36028797018963967
+  9223372036854775808 ≤ c ≤ 18446744073709551615
+  32 ≤ b ≤ 63
+  1 ≤ a ≤ 2147483648
+where
+ a := if 0 ≤ i then i else -i
+ b := ↑(norm64 i.natAbs).snd
+ c := ↑i.natAbs * ↑(2 ^ (norm64 i.natAbs).snd)
+ d := ↑i.natAbs * ↑(2 ^ ((norm64 i.natAbs).snd - 9))
+ e := ↑i.natAbs * ↑(2 ^ ((norm64 i.natAbs).snd - 11))
+OF_EXACT : ∀ (i : Int), -2147483648 ≤ i ∧ i ≤ 2147483647 → valueNum (ofC i) = i * D
+'ZeroScalar.pack_normal_value' depends on axioms: [propext, Quot.sound]
+'ZeroScalar.round_normal_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.norm_small_shift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.sticky_multiple' depends on axioms: [propext, Quot.sound]
+'ZeroScalar.OF_EXACT' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

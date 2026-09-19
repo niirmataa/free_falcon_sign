@@ -1,0 +1,101 @@
+floor_refinement : ∀ (s : Bool) (e f : Nat),
+  e ≤ 1053 → f < 4503599627370496 → NotNegZero s e f → floorParts s e f = mathFloor s e f
+conditional_H3_local : ∀ (sg : Bool) (e f : Nat) (z : Int),
+  e ≤ 1053 →
+    f < 4503599627370496 →
+      NotNegZero sg e f →
+        -2147483283 ≤ mathFloor sg e f ∧ mathFloor sg e f ≤ 2147483281 →
+          -365 ≤ z ∧ z ≤ 366 →
+            floorParts sg e f = mathFloor sg e f ∧
+              -2147483648 ≤ floorParts sg e f + z ∧ floorParts sg e f + z ≤ 2147483647
+'H3Range.normal_floor_refinement' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H3Range.subnormal_floor_refinement' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H3Range.floor_refinement' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H3Range.negative_zero_exception' depends on axioms: [propext]
+'H3Range.integer_safety' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H3Range.negative_zero_sum_still_safe' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H3Range.conditional_H3_local' depends on axioms: [propext, Classical.choice, Quot.sound]
+Floor 0 0.497
+lt64_correct : ∀ (x y : Nat), x < 18446744073709551616 → y < 18446744073709551616 → lt64 x y = if x < y then 1 else 0
+'H3Range.lt64_correct' depends on axioms: [propext, Quot.sound]
+'H3Range.eq64_correct' depends on axioms: [propext, Quot.sound]
+'H3Range.lt128_correct' depends on axioms: [propext, Quot.sound]
+Comparator 0 1.041
+scan_bound : ∀ (r : Nat) (ts : List Nat), above r ts ≤ nonzero ts
+select_bound : ∀ (ls : List (Bool × Nat)) (cap : Nat),
+  (∀ (p : Bool × Nat), p ∈ ls → p.snd ≤ cap) → select ls false 0 ≤ cap
+proposal_return_safe : ∀ (s : Int),
+  -2147483283 ≤ s ∧ s ≤ 2147483281 →
+    ∀ (k : Nat), k ≤ 365 → ∀ (b : Bool), -2147483648 ≤ s + proposalZ k b ∧ s + proposalZ k b ≤ 2147483647
+'H3Range.scan_bound' depends on axioms: [propext, Quot.sound]
+'H3Range.max_at_zero' depends on axioms: [propext, Quot.sound]
+'H3Range.select_found' depends on axioms: [propext]
+'H3Range.select_bound' depends on axioms: [propext]
+'H3Range.proposal_support' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H3Range.proposal_return_safe' depends on axioms: [propext, Classical.choice, Quot.sound]
+Proposal 0 0.409
+'H3Range.bank0_max' does not depend on any axioms
+'H3Range.bank0_support' depends on axioms: [propext, Quot.sound]
+'H3Range.bank1_max' does not depend on any axioms
+'H3Range.bank1_support' depends on axioms: [propext, Quot.sound]
+'H3Range.bank2_max' does not depend on any axioms
+'H3Range.bank2_support' depends on axioms: [propext, Quot.sound]
+'H3Range.bank3_max' does not depend on any axioms
+'H3Range.bank3_support' depends on axioms: [propext, Quot.sound]
+'H3Range.bank4_max' does not depend on any axioms
+'H3Range.bank4_support' depends on axioms: [propext, Quot.sound]
+all_bank_support : ∀ (i : Fin 5) (r : Nat), above r (bank i) ≤ 365
+'H3Range.all_bank_support' depends on axioms: [propext, Quot.sound]
+CDF 0 1.358
+scalar_residual : ∀ (D mu sf z err E : Int),
+  0 < D →
+    0 ≤ mu - D * sf ∧ mu - D * sf < D →
+      -365 ≤ z ∧ z ≤ 366 → Between err E → Between (mu - D * (sf + z) + err) (366 * D + E)
+terminal_right_then_left : ∀ (D r1 rx r0 pre0 fl0 z0 err2 err3 E1 Eh E2 E3 : Int),
+  0 < D →
+    Between r1 (366 * D + E1) →
+      Between (2 * rx - r1) (2 * Eh) →
+        0 ≤ pre0 - D * fl0 ∧ pre0 - D * fl0 < D →
+          -365 ≤ z0 ∧ z0 ≤ 366 →
+            Between err2 E2 →
+              Between err3 E3 →
+                r0 = pre0 - D * (fl0 + z0) + err2 - rx + err3 →
+                  Between (2 * r0) (1098 * D + E1 + 2 * Eh + 2 * E2 + 2 * E3)
+next_terminal_center : ∀ (t0 r1 rx c err T R Eh Ea : Int),
+  Between t0 T →
+    Between r1 R →
+      Between (2 * rx - r1) (2 * Eh) →
+        Between err Ea → c = t0 + rx + err → Between (2 * c) (2 * T + R + 2 * Eh + 2 * Ea)
+safe_next_center : ∀ (t0 r1 rx c err T R Eh Ea : Int),
+  Between t0 T →
+    Between r1 R →
+      Between (2 * rx - r1) (2 * Eh) →
+        Between err Ea → c = t0 + rx + err → 2 * T + R + 2 * Eh + 2 * Ea ≤ 4294966562 → -2147483281 ≤ c ∧ c ≤ 2147483281
+checked_key_coefficients : ∀ (xs ys : List Int),
+  smallLoop xs = some ys → ys = xs ∧ ∀ (x : Int), x ∈ ys → -2047 ≤ x ∧ x ≤ 2047
+'H3Range.scalar_residual' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H3Range.terminal_right_then_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H3Range.next_terminal_center' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H3Range.safe_next_center' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H3Range.inner_visits_count' depends on axioms: [propext, Quot.sound]
+'H3Range.actual_3072_calls' depends on axioms: [propext, Quot.sound]
+'H3Range.first_terminal_right_first' does not depend on any axioms
+'H3Range.checked_key_coefficients' depends on axioms: [propext, Classical.choice, Quot.sound]
+OrderedResidual 0 0.553
+active_guards : ∀ (fault mu sigma : Nat),
+  admitCall fault mu sigma = Admission.atFloor mu sigma →
+    fault = 0 ∧ exponent mu ≠ 2047 ∧ sigma < 9223372036854775808 ∧ exponent sigma ≠ 2047 ∧ sigma ≠ 0
+complete_local_lift : ∀ (mu : Nat),
+  CenterClass mu →
+    ∀ (k : Nat),
+      k ≤ 365 →
+        ∀ (b : Bool),
+          floorParts (signBit mu) (exponent mu) (fraction mu) = mathFloor (signBit mu) (exponent mu) (fraction mu) ∧
+            -2147483648 ≤ floorParts (signBit mu) (exponent mu) (fraction mu) + proposalZ k b ∧
+              floorParts (signBit mu) (exponent mu) (fraction mu) + proposalZ k b ≤ 2147483647
+'H3Range.active_guards' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H3Range.sticky_path' depends on axioms: [propext]
+'H3Range.negative_zero_admitted' does not depend on any axioms
+'H3Range.guards_do_not_imply_floor_refinement' depends on axioms: [propext]
+'H3Range.complete_local_lift' depends on axioms: [propext, Classical.choice, Quot.sound]
+GuardPrefix 0 0.341

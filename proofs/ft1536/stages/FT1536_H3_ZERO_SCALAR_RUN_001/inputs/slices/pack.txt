@@ -1,0 +1,17 @@
+static inline fpr
+FPR(int s, int e, uint64_t m)
+{
+	fpr x;
+	uint32_t t;
+	unsigned f;
+
+	e += 1076;
+	t = (uint32_t)e >> 31;
+	m &= (uint64_t)t - 1;
+	t = (uint32_t)(m >> 54);
+	e &= -(int)t;
+	x = (((uint64_t)s << 63) | (m >> 2)) + ((uint64_t)(uint32_t)e << 52);
+	f = (unsigned)m & 7U;
+	x += (0xC8U >> f) & 1;
+	return x;
+}

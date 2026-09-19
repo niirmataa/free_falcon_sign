@@ -24,8 +24,9 @@ See [active-build provenance](provenance/FT1536_ACTIVE_BUILD.md).
 **Current status — 2026-09-19:** **L_RHO, the complete L_NTT pipeline and the
 byte-level L_V verifier bridge are proved for the pinned corrected candidate
 and its explicit C model.** M0 now defines the protocol/game/resource contract
-and proves the STATIC capacity bound. H3_RANGE has a replayed **partial proof**
-of local arithmetic interfaces; global reachable-center bounds and end-to-end
+and proves the STATIC capacity bound. **H3_ZERO_SCALAR proves the local
+zero-aware floor/cast/residual interface**, using kernel and universal
+analytical source proofs. Global reachable-center bounds and end-to-end
 security remain open research objectives.
 
 The current build integrates the corrected verifier, SHA-256
@@ -125,6 +126,7 @@ integration work; changing their description does not change the old CLI.
 | [L_V_BRIDGE](proofs/ft1536/stages/FT1536_L_V_BRIDGE_RUN_001/REPORT.md) | Both byte decoders, loader/guards, centering, exact norm and extraction from every accepted payload in the declared domain | `L_V_PROVED_FOR_PINNED_MODEL` |
 | [M0](proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001/REPORT.md) | Protocol/game contract, resource ledger, framing and STATIC capacity | `M0_CONTRACT_DEFINED_FOR_PINNED_CANDIDATE` |
 | [H3_RANGE](proofs/ft1536/stages/FT1536_H3_RANGE_RUN_001/REPORT.md) | Local floor/proposal/residual proofs, source-order controls and explicit signed-zero/underflow diagnostics; global reachability open | `PARTIAL_PROOF` |
+| [H3_ZERO_SCALAR](proofs/ft1536/stages/FT1536_H3_ZERO_SCALAR_RUN_001/REPORT.md) | All NumericCenter words, including both zeros/subnormals: floor/cast/s+z, exact of, source sub error and residual bound; mixed kernel/analytical proof | `H3_ZERO_SCALAR_PROVED_FOR_PINNED_MODEL` |
 
 The completed L_V bridge establishes, for all canonical h,c and legal finite
 payloads b in the pinned GCC14.2.0/C99/Linux x86_64 LP64 model:
@@ -194,13 +196,18 @@ keys has not been established. The remaining global obligation is
 `Reach_call_C(...) -> CenterClass(mu)`, including internal LDL and machine-error
 bounds; see the [ledger](proofs/ft1536/stages/FT1536_H3_RANGE_RUN_001/BOUND_LEDGER.md).
 
-The next prepared assignment is
-[H3_ZERO_SCALAR](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_ZERO_SCALAR_2026-09-19.md):
-a zero-aware local floor/cast/return/residual bridge with source-specific
-FPEMU error bounds. Its numeric-center premise is explicit; global reachability
-and sampler-law consumption remain separate obligations. Its
-[pinned public inputs](proofs/ft1536/background/H3_ZERO_SCALAR_2026-09-19/README.md)
-are ready for a fresh worker directory.
+The subsequent [H3_ZERO_SCALAR result](proofs/ft1536/stages/FT1536_H3_ZERO_SCALAR_RUN_001/REPORT.md)
+closes the local interface for every finite word with
+`-2147483283 <= val(x) < 2147483282`, including both zeros and subnormals.
+It proves `s_C=floor(val(x))-eps0(x)`, exact integer conversions, safe `s_C+z`,
+and concrete source-subtraction errors `E_r=E_res=2^-20`.
+The machine residual is bounded by `366+2^-20`; r/delta lie in [0,1].
+Full source-add error composition and r/delta case analysis are analytical,
+supported by kernel lemmas, with this distinction explicit in the
+[independent review](proofs/ft1536/validation/2026-09-19-zero-scalar/README.md).
+Replay reproduced **95/95 files, 17 Lean modules and 97 theorems (48 new)**.
+The next global goal is `Reach_call_C(...) -> NumericCenter(mu)`;
+sampler-law consumption remains a separate obligation.
 
 ### Remaining obligations beyond the verifier
 
@@ -268,7 +275,8 @@ Later maintainer replays and their exact scopes:
 [full L_NTT](proofs/ft1536/validation/2026-09-18-forward/README.md),
 [L_V](proofs/ft1536/validation/2026-09-19-lv/README.md),
 [M0](proofs/ft1536/validation/2026-09-19-m0/README.md),
-[H3 partial](proofs/ft1536/validation/2026-09-19-h3/README.md).
+[H3 partial](proofs/ft1536/validation/2026-09-19-h3/README.md),
+[H3 zero-aware scalar](proofs/ft1536/validation/2026-09-19-zero-scalar/README.md).
 The independent Blue review has archived evidence, rather than a single
 declared full replay runner.
 

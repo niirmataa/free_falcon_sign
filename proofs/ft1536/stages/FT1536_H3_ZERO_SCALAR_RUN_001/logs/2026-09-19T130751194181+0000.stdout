@@ -1,0 +1,63 @@
+formal/SourceFloor.lean:35:2: error: unsolved goals
+case inr
+x : Word
+hx : frac x < 4503599627370496
+hm : ↑x * 1024 % 18446744073709551616 % 9223372036854775808 = ↑x * 1024 % 9223372036854775808
+hlow : ↑x * 1024 % 4611686018427387904 = 1024 * frac x
+hjoin : 4611686018427387904 + 1024 * frac x = 4611686018427387904 ||| 1024 * frac x
+hmask : ∀ (n : Nat), n &&& 9223372036854775807 = n % 9223372036854775808
+hconst : 4611686018427387904 &&& 9223372036854775807 = 4611686018427387904
+htop : ↑x * 1024 % 9223372036854775808 / 4611686018427387904 = 1
+he : ↑x * 1024 % 9223372036854775808 = 4611686018427387904 + 1024 * frac x
+⊢ 4611686018427387904 ||| (4611686018427387904 ||| 1024 * frac x) = 4611686018427387904 ||| 1024 * frac x
+formal/SourceFloor.lean:37:15: warning: This simp argument is unused:
+  Nat.or_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Nat.or_comm, Nat.or_self]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+formal/SourceFloor.lean:37:40: warning: This simp argument is unused:
+  Nat.or_self
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Nat.or_assoc, Nat.or_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+formal/SourceFloor.lean:54:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ((1085 - ↑(ex x)) % 64).toNat
+in the target expression
+  (have t := if sg x = true then 1 else 0;
+    have m := 1024 * mant (frac x);
+    have xi := if t = 0 then m else -m;
+    have cc := 1085 - ↑(ex x);
+    have shifted := xi / p2 (cc % 64).toNat;
+    if (63 - cc) % 4294967296 / 2147483648 = 0 then shifted else -↑t) =
+    if 1085 - ex x ≥ 64 then if sg x = true then -1 else 0 else signed (sg x) (1024 * mant (frac x)) / p2 (1085 - ex x)
+
+x : Word
+hx : NumericCenter x
+he : ex x ≤ 1053
+hw : ↑x < 18446744073709551616
+ht : ↑x / 9223372036854775808 = if sg x = true then 1 else 0
+hcc : ((1085 - ↑(ex x)) % 64).toNat = (1085 - ex x) % 64
+⊢ (have t := if sg x = true then 1 else 0;
+    have m := 1024 * mant (frac x);
+    have xi := if t = 0 then m else -m;
+    have cc := 1085 - ↑(ex x);
+    have shifted := xi / p2 (cc % 64).toNat;
+    if (63 - cc) % 4294967296 / 2147483648 = 0 then shifted else -↑t) =
+    if 1085 - ex x ≥ 64 then if sg x = true then -1 else 0 else signed (sg x) (1024 * mant (frac x)) / p2 (1085 - ex x)
+FLOOR_ZERO : ∀ (x : Word), NumericCenter x → floorC x = floorVal x - eps0 x
+C_INT_BRIDGE : ∀ (x : Word),
+  NumericCenter x →
+    ∀ (z : Int),
+      -365 ≤ z ∧ z ≤ 366 →
+        -2147483648 ≤ floorC x ∧ floorC x ≤ 2147483647 ∧ -2147483648 ≤ floorC x + z ∧ floorC x + z ≤ 2147483647
+'ZeroScalar.raw_mantissa' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'ZeroScalar.raw_mantissa_int' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'ZeroScalar.floorC_parts' depends on axioms: [propext, sorryAx, Quot.sound]
+'ZeroScalar.FLOOR_ZERO' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'ZeroScalar.source_floor_range' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'ZeroScalar.C_INT_BRIDGE' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+SourceFloor 1 0.678

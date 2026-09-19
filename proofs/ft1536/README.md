@@ -22,7 +22,7 @@ osiągnięcia, T2C3/T5, kontrakt M0, graf zależności i dalsze obowiązki.
 Pakiet ma 211 członków OUTPUTS i 198 publicznych wejść Git, manifest
 `c3efdcff510983a143946d43ab456656090061cd5b9b4b6847abc7f141c0cfa3`.
 Jest checkpointem dokumentacyjnym (`replay=none`); obecnie archiwum zawiera
-także dziewięć etapów badawczych, w tym późniejszy H3_RANGE.
+także dziesięć etapów badawczych, w tym późniejsze H3_RANGE i H3_ZERO_SCALAR.
 
 [Mapa po domknięciu L_V — 2026-09-19](documents/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md)
 przedstawia zależności i proponowaną kolejność: dokładny kontrakt gry,
@@ -47,13 +47,15 @@ rozlicza negative zero, underflow oraz granice syntetycznych kontroli.
 [Zlecenie](documents/FT1536_ZADANIE_ASTRA_H3_RANGE_2026-09-19.md) i
 [publiczne wejścia](background/H3_RANGE_2026-09-19/README.md) zachowują piny.
 
-**Następne przygotowane zadanie:** [H3_ZERO_SCALAR](documents/FT1536_ZADANIE_ASTRA_H3_ZERO_SCALAR_2026-09-19.md)
-— lokalny zero-aware floor/cast/return/residual bridge oraz źródłowy błąd
-FPEMU of/sub. Jego NumericCenter jest jawną przesłanką; globalny Reach i
-zgodność prawa samplera pozostają odrębnymi obowiązkami.
-[Publiczny bootstrap](background/H3_ZERO_SCALAR_2026-09-19/README.md)
-ma 73 przypięte pliki i jest gotowy w nowym W. Zadanie nie zmienia starej
-tezy H3/M0 ani programu C.
+**Odebrany H3_ZERO_SCALAR:** [wynik lokalny](stages/FT1536_H3_ZERO_SCALAR_RUN_001/REPORT.md)
+ma status `H3_ZERO_SCALAR_PROVED_FOR_PINNED_MODEL`, z mieszaną warstwą
+Lean/analityczny dowód źródłowy. Domknięto zero-aware floor/cast/s+z i
+of/sub z E_r=E_res=2^-20 dla wszystkich NumericCenter, także obu zer
+i subnormals. [Niezależny odbiór](validation/2026-09-19-zero-scalar/README.md):
+95/95 plików, 17 modułów i 97 twierdzeń (48 nowych).
+Globalne `Reach_call_C -> NumericCenter` i prawo samplera pozostają otwarte.
+[Zlecenie](documents/FT1536_ZADANIE_ASTRA_H3_ZERO_SCALAR_2026-09-19.md) oraz
+[bootstrap](background/H3_ZERO_SCALAR_2026-09-19/README.md) zachowują piny.
 
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
@@ -98,6 +100,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [L_V_BRIDGE](stages/FT1536_L_V_BRIDGE_RUN_001/REPORT.md) | **L_V_PROVED_FOR_PINNED_MODEL** — pełny most bajtowy Verify → Ext0 dla kandydata | `17f8f8b` |
 | [M0](stages/FT1536_M0_CONTRACT_RUN_001/REPORT.md) | **M0_CONTRACT_DEFINED_FOR_PINNED_CANDIDATE** — gra, budżety, framing i dowód pojemności | `95f8015` |
 | [H3_RANGE](stages/FT1536_H3_RANGE_RUN_001/REPORT.md) | **PARTIAL_PROOF** — lokalne floor/proposal/residual; globalna osiągalność otwarta | `cb99e67` |
+| [H3_ZERO_SCALAR](stages/FT1536_H3_ZERO_SCALAR_RUN_001/REPORT.md) | **H3_ZERO_SCALAR_PROVED_FOR_PINNED_MODEL** — lokalny zero-aware most, błąd 2^-20; mieszany dowód | niniejszy checkpoint |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).
@@ -213,7 +216,7 @@ python3 -B proofs/ft1536/tools/archive.py replay FT1536_L_RHO_RUN_001 --run repl
 Analogicznie dla `FT1536_LV_STATIC_RUN_001`, `FT1536_L_NTT_RUN_001`,
 `FT1536_L_NTT_GLOBAL_RUN_001`, `FT1536_L_NTT_FORWARD_RUN_001`
 i `FT1536_L_V_BRIDGE_RUN_001`, `FT1536_M0_CONTRACT_RUN_001`
-oraz `FT1536_H3_RANGE_RUN_001`.
+oraz `FT1536_H3_RANGE_RUN_001` i `FT1536_H3_ZERO_SCALAR_RUN_001`.
 Wpis katalogu określa właściwy punkt wejścia. Odbiór Blue jest archiwum
 recenzji i receipts; nie ma zadeklarowanego pojedynczego pełnego runnera.
 

@@ -1,0 +1,193 @@
+[
+  {
+    "tag": "kernel",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/run.py",
+      "180",
+      "python3",
+      "-B",
+      "scripts/audit.py",
+      "--build"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_ZERO_SCALAR_RUN_001/tmp/rehearsal_001",
+    "exit_code": 0,
+    "limit": 180,
+    "asan_shadow_reservation": false,
+    "elapsed": 23.475356415990973,
+    "stdout": "logs/replay_kernel.stdout",
+    "stderr": "logs/replay_kernel.stderr",
+    "stdout_sha256": "86b0cd831169441d1c10c8da4a83398e398593a9d2e63726c6fb9126f12bb2d2",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tag": "normal",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/run.py",
+      "120",
+      "python3",
+      "-B",
+      "scripts/controls.py",
+      "normal"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_ZERO_SCALAR_RUN_001/tmp/rehearsal_001",
+    "exit_code": 0,
+    "limit": 120,
+    "asan_shadow_reservation": false,
+    "elapsed": 0.25539987700176425,
+    "stdout": "logs/replay_normal.stdout",
+    "stderr": "logs/replay_normal.stderr",
+    "stdout_sha256": "b558f1ddddfe59e630abfd3d5e81c66c7765c3b90c4106a4f6d9057639b87196",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tag": "sanitizers",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/run.py",
+      "120",
+      "python3",
+      "-B",
+      "scripts/controls.py",
+      "san"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_ZERO_SCALAR_RUN_001/tmp/rehearsal_001",
+    "exit_code": 0,
+    "limit": 120,
+    "asan_shadow_reservation": true,
+    "elapsed": 0.3340544849925209,
+    "stdout": "logs/replay_sanitizers.stdout",
+    "stderr": "logs/replay_sanitizers.stderr",
+    "stdout_sha256": "b558f1ddddfe59e630abfd3d5e81c66c7765c3b90c4106a4f6d9057639b87196",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tag": "phases",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/run.py",
+      "90",
+      "python3",
+      "-B",
+      "scripts/check_phases.py"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_ZERO_SCALAR_RUN_001/tmp/rehearsal_001",
+    "exit_code": 0,
+    "limit": 90,
+    "asan_shadow_reservation": false,
+    "elapsed": 0.25512775499373674,
+    "stdout": "logs/replay_phases.stdout",
+    "stderr": "logs/replay_phases.stderr",
+    "stdout_sha256": "b051130924ae27aa6148a7bad78209d495a1a6ed63203a41d47f25915ceebc12",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tag": "model_values",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/run.py",
+      "150",
+      "python3",
+      "-B",
+      "scripts/check_lean_values.py"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_ZERO_SCALAR_RUN_001/tmp/rehearsal_001",
+    "exit_code": 0,
+    "limit": 150,
+    "asan_shadow_reservation": false,
+    "elapsed": 0.3817925790208392,
+    "stdout": "logs/replay_model_values.stdout",
+    "stderr": "logs/replay_model_values.stderr",
+    "stdout_sha256": "1ee3256f63540482812ffe99e68cf3f49c5a1c6347d86dfaf26011433811e28d",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tag": "certificate",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/run.py",
+      "90",
+      "/home/footfalcon/.local/bin/sage",
+      "scripts/certificate.py"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_ZERO_SCALAR_RUN_001/tmp/rehearsal_001",
+    "exit_code": 0,
+    "limit": 90,
+    "asan_shadow_reservation": false,
+    "elapsed": 1.6166128299955744,
+    "stdout": "logs/replay_certificate.stdout",
+    "stderr": "logs/replay_certificate.stderr",
+    "stdout_sha256": "a9159e527d95fc1dcc3b255dda1bff3e2bd88129a29104cef0221636db9a856c",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tag": "binding",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/run.py",
+      "30",
+      "python3",
+      "-B",
+      "scripts/source_bindings.py"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_ZERO_SCALAR_RUN_001/tmp/rehearsal_001",
+    "exit_code": 0,
+    "limit": 30,
+    "asan_shadow_reservation": false,
+    "elapsed": 0.05328188498970121,
+    "stdout": "logs/replay_binding.stdout",
+    "stderr": "logs/replay_binding.stderr",
+    "stdout_sha256": "a49c0655405d3724c0e441920d4e773caf1722341693f62b915081e535614027",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tag": "ledger",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/run.py",
+      "30",
+      "python3",
+      "-B",
+      "scripts/ledger.py"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_ZERO_SCALAR_RUN_001/tmp/rehearsal_001",
+    "exit_code": 0,
+    "limit": 30,
+    "asan_shadow_reservation": false,
+    "elapsed": 0.04961511798319407,
+    "stdout": "logs/replay_ledger.stdout",
+    "stderr": "logs/replay_ledger.stderr",
+    "stdout_sha256": "69542a92029926778414341857ce1135220f634c6eaa9ae77d0320d4eb443c3f",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tag": "toolchain",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/run.py",
+      "90",
+      "python3",
+      "-B",
+      "scripts/toolchain.py"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_ZERO_SCALAR_RUN_001/tmp/rehearsal_001",
+    "exit_code": 0,
+    "limit": 90,
+    "asan_shadow_reservation": false,
+    "elapsed": 1.3961212200229056,
+    "stdout": "logs/replay_toolchain.stdout",
+    "stderr": "logs/replay_toolchain.stderr",
+    "stdout_sha256": "85671481f7b0c953d1ad0d854cf6f6972f35e3075a6ad47622e614a3aafbc938",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

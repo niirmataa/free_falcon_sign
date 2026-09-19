@@ -1,0 +1,381 @@
+ZeroScalar.NumericCenter : ZeroScalar.Word → Prop
+ZeroScalar.exponent_from_value : ∀ (x : ZeroScalar.Word), ZeroScalar.NumericCenter x → LE.le.{0} (ZeroScalar.ex x) 1053
+ZeroScalar.FLOOR_ZERO : ∀ (x : ZeroScalar.Word),
+  ZeroScalar.NumericCenter x →
+    Eq.{1} (ZeroScalar.floorC x) (HSub.hSub.{0, 0, 0} (ZeroScalar.floorVal x) (ZeroScalar.eps0 x))
+ZeroScalar.C_INT_BRIDGE : ∀ (x : ZeroScalar.Word),
+  ZeroScalar.NumericCenter x →
+    ∀ (z : Int),
+      LE.le.{0} (-365) z ∧ LE.le.{0} z 366 →
+        LE.le.{0} (-2147483648) (ZeroScalar.floorC x) ∧
+          LE.le.{0} (ZeroScalar.floorC x) 2147483647 ∧
+            LE.le.{0} (-2147483648) (HAdd.hAdd.{0, 0, 0} (ZeroScalar.floorC x) z) ∧
+              LE.le.{0} (HAdd.hAdd.{0, 0, 0} (ZeroScalar.floorC x) z) 2147483647
+ZeroScalar.OF_EXACT : ∀ (i : Int),
+  LE.le.{0} (-2147483648) i ∧ LE.le.{0} i 2147483647 →
+    Eq.{1} (ZeroScalar.valueNum (ZeroScalar.ofC i)) (HMul.hMul.{0, 0, 0} i ZeroScalar.D)
+ZeroScalar.RHO_CLOSED : ∀ (x : ZeroScalar.Word),
+  ZeroScalar.NumericCenter x → LE.le.{0} 0 (ZeroScalar.rhoNum x) ∧ LE.le.{0} (ZeroScalar.rhoNum x) ZeroScalar.D
+ZeroScalar.EXACT_RESIDUAL_366 : ∀ (x : ZeroScalar.Word),
+  ZeroScalar.NumericCenter x →
+    ∀ (z : Int),
+      LE.le.{0} (-365) z ∧ LE.le.{0} z 366 →
+        LE.le.{0} (HMul.hMul.{0, 0, 0} (-366) ZeroScalar.D)
+            (HSub.hSub.{0, 0, 0} (ZeroScalar.valueNum x)
+              (HMul.hMul.{0, 0, 0} ZeroScalar.D (HAdd.hAdd.{0, 0, 0} (ZeroScalar.floorC x) z))) ∧
+          LE.le.{0}
+            (HSub.hSub.{0, 0, 0} (ZeroScalar.valueNum x)
+              (HMul.hMul.{0, 0, 0} ZeroScalar.D (HAdd.hAdd.{0, 0, 0} (ZeroScalar.floorC x) z)))
+            (HMul.hMul.{0, 0, 0} 366 ZeroScalar.D)
+ZeroScalar.SUB_CENTER_CONTRACT : ZeroScalar.Word → Prop
+ZeroScalar.SUB_RESIDUAL_CONTRACT : ZeroScalar.Word → Int → Prop
+ZeroScalar.R_DELTA_DOMAIN : ZeroScalar.Word → Prop
+ZeroScalar.CONSUME_SUB_RESIDUAL : ∀ (x : ZeroScalar.Word),
+  ZeroScalar.NumericCenter x →
+    ∀ (z : Int),
+      LE.le.{0} (-365) z ∧ LE.le.{0} z 366 →
+        ZeroScalar.SUB_RESIDUAL_CONTRACT x z →
+          ZeroScalar.finiteWord (ZeroScalar.resC x z) ∧
+            H3Range.Between (ZeroScalar.valueNum (ZeroScalar.resC x z))
+              (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} 366 ZeroScalar.D) ZeroScalar.Eunits)
+ZeroScalar.ORDERED_ZERO_TERMINAL : ∀ (r1 rx r0 pre0 sf0 z0 e2 e3 Ehalf Eadd : Int),
+  H3Range.Between r1 (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} 366 ZeroScalar.D) ZeroScalar.Eunits) →
+    H3Range.Between (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 rx) r1) (HMul.hMul.{0, 0, 0} 2 Ehalf) →
+      LE.le.{0} 0 (HSub.hSub.{0, 0, 0} pre0 (HMul.hMul.{0, 0, 0} ZeroScalar.D sf0)) ∧
+          LE.le.{0} (HSub.hSub.{0, 0, 0} pre0 (HMul.hMul.{0, 0, 0} ZeroScalar.D sf0)) ZeroScalar.D →
+        LE.le.{0} (-365) z0 ∧ LE.le.{0} z0 366 →
+          H3Range.Between e2 ZeroScalar.Eunits →
+            H3Range.Between e3 Eadd →
+              Eq.{1} r0
+                  (HAdd.hAdd.{0, 0, 0}
+                    (HSub.hSub.{0, 0, 0}
+                      (HAdd.hAdd.{0, 0, 0}
+                        (HSub.hSub.{0, 0, 0} pre0 (HMul.hMul.{0, 0, 0} ZeroScalar.D (HAdd.hAdd.{0, 0, 0} sf0 z0))) e2)
+                      rx)
+                    e3) →
+                H3Range.Between (HMul.hMul.{0, 0, 0} 2 r0)
+                  (HAdd.hAdd.{0, 0, 0}
+                    (HAdd.hAdd.{0, 0, 0}
+                      (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} 1098 ZeroScalar.D)
+                        (HMul.hMul.{0, 0, 0} 3 ZeroScalar.Eunits))
+                      (HMul.hMul.{0, 0, 0} 2 Ehalf))
+                    (HMul.hMul.{0, 0, 0} 2 Eadd))
+'H3Range.p2_mono' depends on axioms: [propext]
+'H3Range.mant_bounds' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.p2_shift' depends on axioms: [propext]
+'H3Range.normal_floor_refinement' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.subnormal_floor_refinement' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.floor_refinement' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.negative_zero_exception' depends on axioms: [propext]
+'H3Range.signed_zero_guard' does not depend on any axioms
+'H3Range.integer_safety' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.negative_zero_sum_still_safe' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.conditional_H3_local' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.lt64_correct' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.eq64_correct' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.lt128_correct' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.scan_bound' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.max_at_zero' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.select_found' depends on axioms: [propext]
+'H3Range.select_bound' depends on axioms: [propext]
+'H3Range.proposal_support' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.proposal_return_safe' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.bank0_size' does not depend on any axioms
+'H3Range.bank0_max' does not depend on any axioms
+'H3Range.bank0_support' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.bank1_size' does not depend on any axioms
+'H3Range.bank1_max' does not depend on any axioms
+'H3Range.bank1_support' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.bank2_size' does not depend on any axioms
+'H3Range.bank2_max' does not depend on any axioms
+'H3Range.bank2_support' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.bank3_size' does not depend on any axioms
+'H3Range.bank3_max' does not depend on any axioms
+'H3Range.bank3_support' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.bank4_size' does not depend on any axioms
+'H3Range.bank4_max' does not depend on any axioms
+'H3Range.bank4_support' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.all_bank_support' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.scalar_residual' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.terminal_right_then_left' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.next_terminal_center' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.safe_next_center' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.inner_visits_count' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.actual_3072_calls' depends on axioms: [propext, Quot.sound.{u}]
+'H3Range.first_terminal_right_first' does not depend on any axioms
+'H3Range.checked_key_coefficients' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.active_guards' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'H3Range.sticky_path' depends on axioms: [propext]
+'H3Range.negative_zero_admitted' does not depend on any axioms
+'H3Range.guards_do_not_imply_floor_refinement' depends on axioms: [propext]
+'H3Range.complete_local_lift' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.p2_pos' depends on axioms: [propext]
+'ZeroScalar.D_pos' depends on axioms: [propext]
+'ZeroScalar.p2_add' depends on axioms: [propext]
+'ZeroScalar.frac_bound' does not depend on any axioms
+'ZeroScalar.exponent_from_value' depends on axioms: [propext, Quot.sound.{u}]
+'ZeroScalar.floorVal_old' depends on axioms: [propext, Quot.sound.{u}]
+'ZeroScalar.floorVal_range' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.negzero_fields' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.zero_aware_parts' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.raw_mantissa' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.raw_mantissa_int' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.floorC_parts' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.FLOOR_ZERO' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.source_floor_range' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.C_INT_BRIDGE' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.value_negative_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.RHO_CLOSED' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.EXACT_RESIDUAL_366' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.old_new_relation' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.old_floor_equality' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.old_implies_numeric' depends on axioms: [propext, Quot.sound.{u}]
+'ZeroScalar.or_one_bounds' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.sticky_cases' depends on axioms: [propext, Quot.sound.{u}]
+'ZeroScalar.sticky_interval' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.round_error' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.normalizer_bounds' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.normalizer_for_add' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.shrink9_range' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.pack_normal_value' depends on axioms: [propext, Quot.sound.{u}]
+'ZeroScalar.round_normal_range' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.norm_small_shift' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.sticky_multiple' depends on axioms: [propext, Quot.sound.{u}]
+'ZeroScalar.OF_EXACT' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.error_rational' does not depend on any axioms
+'ZeroScalar.error_budget_numeric' does not depend on any axioms
+'ZeroScalar.phase_scale_bound' depends on axioms: [propext, Quot.sound.{u}]
+'ZeroScalar.error_budget_composition' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.MACHINE_RESIDUAL_366' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.MACHINE_CENTER_INTERVAL' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.ORDERED_ZERO_TERMINAL' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.both_zeros_numeric' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.zeros_floor' depends on axioms: [propext]
+'ZeroScalar.zero_rho_endpoints' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.zero_shifted_support' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.positive_pack_half_one' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'ZeroScalar.zero_raw_endpoints' depends on axioms: [propext, Quot.sound.{u}]
+'ZeroScalar.endpoint_one_not_exclusive' depends on axioms: [propext, Quot.sound.{u}]
+'ZeroScalar.CONSUME_SUB_RESIDUAL' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+ZeroAudit 0 0.251
+ZeroScalar.NumericCenter : (x : ZeroScalar.Word) → Prop
+ZeroScalar.exponent_from_value : ∀ (x : ZeroScalar.Word) (hx : ZeroScalar.NumericCenter x),
+  @LE.le.{0} Nat instLENat (ZeroScalar.ex x) (@OfNat.ofNat.{0} Nat (nat_lit 1053) (instOfNatNat (nat_lit 1053)))
+ZeroScalar.FLOOR_ZERO : ∀ (x : ZeroScalar.Word) (hx : ZeroScalar.NumericCenter x),
+  @Eq.{1} Int (ZeroScalar.floorC x)
+    (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) (ZeroScalar.floorVal x) (ZeroScalar.eps0 x))
+ZeroScalar.C_INT_BRIDGE : ∀ (x : ZeroScalar.Word) (hx : ZeroScalar.NumericCenter x) (z : Int)
+  (hz :
+    And
+      (@LE.le.{0} Int Int.instLEInt
+        (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 365) (@instOfNat (nat_lit 365)))) z)
+      (@LE.le.{0} Int Int.instLEInt z (@OfNat.ofNat.{0} Int (nat_lit 366) (@instOfNat (nat_lit 366))))),
+  And
+    (@LE.le.{0} Int Int.instLEInt
+      (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2147483648) (@instOfNat (nat_lit 2147483648))))
+      (ZeroScalar.floorC x))
+    (And
+      (@LE.le.{0} Int Int.instLEInt (ZeroScalar.floorC x)
+        (@OfNat.ofNat.{0} Int (nat_lit 2147483647) (@instOfNat (nat_lit 2147483647))))
+      (And
+        (@LE.le.{0} Int Int.instLEInt
+          (@Neg.neg.{0} Int Int.instNegInt
+            (@OfNat.ofNat.{0} Int (nat_lit 2147483648) (@instOfNat (nat_lit 2147483648))))
+          (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) (ZeroScalar.floorC x) z))
+        (@LE.le.{0} Int Int.instLEInt
+          (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) (ZeroScalar.floorC x) z)
+          (@OfNat.ofNat.{0} Int (nat_lit 2147483647) (@instOfNat (nat_lit 2147483647))))))
+ZeroScalar.OF_EXACT : ∀ (i : Int)
+  (hi :
+    And
+      (@LE.le.{0} Int Int.instLEInt
+        (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2147483648) (@instOfNat (nat_lit 2147483648))))
+        i)
+      (@LE.le.{0} Int Int.instLEInt i (@OfNat.ofNat.{0} Int (nat_lit 2147483647) (@instOfNat (nat_lit 2147483647))))),
+  @Eq.{1} Int (ZeroScalar.valueNum (ZeroScalar.ofC i))
+    (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) i ZeroScalar.D)
+ZeroScalar.RHO_CLOSED : ∀ (x : ZeroScalar.Word) (hx : ZeroScalar.NumericCenter x),
+  And (@LE.le.{0} Int Int.instLEInt (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0))) (ZeroScalar.rhoNum x))
+    (@LE.le.{0} Int Int.instLEInt (ZeroScalar.rhoNum x) ZeroScalar.D)
+ZeroScalar.EXACT_RESIDUAL_366 : ∀ (x : ZeroScalar.Word) (hx : ZeroScalar.NumericCenter x) (z : Int)
+  (hz :
+    And
+      (@LE.le.{0} Int Int.instLEInt
+        (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 365) (@instOfNat (nat_lit 365)))) z)
+      (@LE.le.{0} Int Int.instLEInt z (@OfNat.ofNat.{0} Int (nat_lit 366) (@instOfNat (nat_lit 366))))),
+  And
+    (@LE.le.{0} Int Int.instLEInt
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+        (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 366) (@instOfNat (nat_lit 366)))) ZeroScalar.D)
+      (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) (ZeroScalar.valueNum x)
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) ZeroScalar.D
+          (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) (ZeroScalar.floorC x) z))))
+    (@LE.le.{0} Int Int.instLEInt
+      (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) (ZeroScalar.valueNum x)
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) ZeroScalar.D
+          (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) (ZeroScalar.floorC x) z)))
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+        (@OfNat.ofNat.{0} Int (nat_lit 366) (@instOfNat (nat_lit 366))) ZeroScalar.D))
+ZeroScalar.SUB_CENTER_CONTRACT : (x : ZeroScalar.Word) → Prop
+ZeroScalar.SUB_RESIDUAL_CONTRACT : (x : ZeroScalar.Word) → (z : Int) → Prop
+ZeroScalar.R_DELTA_DOMAIN : (x : ZeroScalar.Word) → Prop
+ZeroScalar.CONSUME_SUB_RESIDUAL : ∀ (x : ZeroScalar.Word) (hx : ZeroScalar.NumericCenter x) (z : Int)
+  (hz :
+    And
+      (@LE.le.{0} Int Int.instLEInt
+        (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 365) (@instOfNat (nat_lit 365)))) z)
+      (@LE.le.{0} Int Int.instLEInt z (@OfNat.ofNat.{0} Int (nat_lit 366) (@instOfNat (nat_lit 366)))))
+  (analytic_contract : ZeroScalar.SUB_RESIDUAL_CONTRACT x z),
+  And (ZeroScalar.finiteWord (ZeroScalar.resC x z))
+    (H3Range.Between (ZeroScalar.valueNum (ZeroScalar.resC x z))
+      (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+          (@OfNat.ofNat.{0} Int (nat_lit 366) (@instOfNat (nat_lit 366))) ZeroScalar.D)
+        ZeroScalar.Eunits))
+ZeroScalar.ORDERED_ZERO_TERMINAL : ∀ (r1 rx r0 pre0 sf0 z0 e2 e3 Ehalf Eadd : Int)
+  (prior_right :
+    H3Range.Between r1
+      (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+          (@OfNat.ofNat.{0} Int (nat_lit 366) (@instOfNat (nat_lit 366))) ZeroScalar.D)
+        ZeroScalar.Eunits))
+  (half_error :
+    H3Range.Between
+      (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+          (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))) rx)
+        r1)
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+        (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))) Ehalf))
+  (closed_rho :
+    And
+      (@LE.le.{0} Int Int.instLEInt (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0)))
+        (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) pre0
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) ZeroScalar.D sf0)))
+      (@LE.le.{0} Int Int.instLEInt
+        (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) pre0
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) ZeroScalar.D sf0))
+        ZeroScalar.D))
+  (proposal :
+    And
+      (@LE.le.{0} Int Int.instLEInt
+        (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 365) (@instOfNat (nat_lit 365)))) z0)
+      (@LE.le.{0} Int Int.instLEInt z0 (@OfNat.ofNat.{0} Int (nat_lit 366) (@instOfNat (nat_lit 366)))))
+  (second_sub_error : H3Range.Between e2 ZeroScalar.Eunits) (last_sub_error : H3Range.Between e3 Eadd)
+  (out :
+    @Eq.{1} Int r0
+      (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+        (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+          (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+            (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) pre0
+              (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) ZeroScalar.D
+                (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) sf0 z0)))
+            e2)
+          rx)
+        e3)),
+  H3Range.Between
+    (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+      (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))) r0)
+    (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+      (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+        (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+            (@OfNat.ofNat.{0} Int (nat_lit 1098) (@instOfNat (nat_lit 1098))) ZeroScalar.D)
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+            (@OfNat.ofNat.{0} Int (nat_lit 3) (@instOfNat (nat_lit 3))) ZeroScalar.Eunits))
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+          (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))) Ehalf))
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+        (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))) Eadd))
+def ZeroScalar.NumericCenter : (x : ZeroScalar.Word) → Prop :=
+fun (x : ZeroScalar.Word) =>
+  And (@LT.lt.{0} Nat instLTNat (ZeroScalar.ex x) (@OfNat.ofNat.{0} Nat (nat_lit 2047) (instOfNatNat (nat_lit 2047))))
+    (And
+      (@LE.le.{0} Int Int.instLEInt
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+          (@Neg.neg.{0} Int Int.instNegInt
+            (@OfNat.ofNat.{0} Int (nat_lit 2147483283) (@instOfNat (nat_lit 2147483283))))
+          ZeroScalar.D)
+        (ZeroScalar.valueNum x))
+      (@LT.lt.{0} Int Int.instLTInt (ZeroScalar.valueNum x)
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+          (@OfNat.ofNat.{0} Int (nat_lit 2147483282) (@instOfNat (nat_lit 2147483282))) ZeroScalar.D)))
+theorem ZeroScalar.FLOOR_ZERO : ∀ (x : ZeroScalar.Word) (hx : ZeroScalar.NumericCenter x),
+  @Eq.{1} Int (ZeroScalar.floorC x)
+    (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) (ZeroScalar.floorVal x) (ZeroScalar.eps0 x)) :=
+fun (x : ZeroScalar.Word) (hx : ZeroScalar.NumericCenter x) =>
+  @Eq.trans.{1} Int (ZeroScalar.floorC x) (H3Range.floorParts (ZeroScalar.sg x) (ZeroScalar.ex x) (ZeroScalar.frac x))
+    (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) (ZeroScalar.floorVal x) (ZeroScalar.eps0 x))
+    (ZeroScalar.floorC_parts x hx) (ZeroScalar.zero_aware_parts x hx)
+theorem ZeroScalar.C_INT_BRIDGE : ∀ (x : ZeroScalar.Word) (hx : ZeroScalar.NumericCenter x) (z : Int)
+  (hz :
+    And
+      (@LE.le.{0} Int Int.instLEInt
+        (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 365) (@instOfNat (nat_lit 365)))) z)
+      (@LE.le.{0} Int Int.instLEInt z (@OfNat.ofNat.{0} Int (nat_lit 366) (@instOfNat (nat_lit 366))))),
+  And
+    (@LE.le.{0} Int Int.instLEInt
+      (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 2147483648) (@instOfNat (nat_lit 2147483648))))
+      (ZeroScalar.floorC x))
+    (And
+      (@LE.le.{0} Int Int.instLEInt (ZeroScalar.floorC x)
+        (@OfNat.ofNat.{0} Int (nat_lit 2147483647) (@instOfNat (nat_lit 2147483647))))
+      (And
+        (@LE.le.{0} Int Int.instLEInt
+          (@Neg.neg.{0} Int Int.instNegInt
+            (@OfNat.ofNat.{0} Int (nat_lit 2147483648) (@instOfNat (nat_lit 2147483648))))
+          (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) (ZeroScalar.floorC x) z))
+        (@LE.le.{0} Int Int.instLEInt
+          (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) (ZeroScalar.floorC x) z)
+          (@OfNat.ofNat.{0} Int (nat_lit 2147483647) (@instOfNat (nat_lit 2147483647)))))) :=
+fun (x : ZeroScalar.Word) (hx : ZeroScalar.NumericCenter x) (z : Int)
+    (hz :
+      And
+        (@LE.le.{0} Int Int.instLEInt
+          (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 365) (@instOfNat (nat_lit 365)))) z)
+        (@LE.le.{0} Int Int.instLEInt z (@OfNat.ofNat.{0} Int (nat_lit 366) (@instOfNat (nat_lit 366))))) =>
+  H3Range.integer_safety (ZeroScalar.floorC x) z (ZeroScalar.source_floor_range x hx) hz
+theorem ZeroScalar.CONSUME_SUB_RESIDUAL : ∀ (x : ZeroScalar.Word) (hx : ZeroScalar.NumericCenter x) (z : Int)
+  (hz :
+    And
+      (@LE.le.{0} Int Int.instLEInt
+        (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 365) (@instOfNat (nat_lit 365)))) z)
+      (@LE.le.{0} Int Int.instLEInt z (@OfNat.ofNat.{0} Int (nat_lit 366) (@instOfNat (nat_lit 366)))))
+  (analytic_contract : ZeroScalar.SUB_RESIDUAL_CONTRACT x z),
+  And (ZeroScalar.finiteWord (ZeroScalar.resC x z))
+    (H3Range.Between (ZeroScalar.valueNum (ZeroScalar.resC x z))
+      (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+          (@OfNat.ofNat.{0} Int (nat_lit 366) (@instOfNat (nat_lit 366))) ZeroScalar.D)
+        ZeroScalar.Eunits)) :=
+fun (x : ZeroScalar.Word) (hx : ZeroScalar.NumericCenter x) (z : Int)
+    (hz :
+      And
+        (@LE.le.{0} Int Int.instLEInt
+          (@Neg.neg.{0} Int Int.instNegInt (@OfNat.ofNat.{0} Int (nat_lit 365) (@instOfNat (nat_lit 365)))) z)
+        (@LE.le.{0} Int Int.instLEInt z (@OfNat.ofNat.{0} Int (nat_lit 366) (@instOfNat (nat_lit 366)))))
+    (analytic_contract : ZeroScalar.SUB_RESIDUAL_CONTRACT x z) =>
+  @And.intro (ZeroScalar.finiteWord (ZeroScalar.resC x z))
+    (H3Range.Between (ZeroScalar.valueNum (ZeroScalar.resC x z))
+      (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+          (@OfNat.ofNat.{0} Int (nat_lit 366) (@instOfNat (nat_lit 366))) ZeroScalar.D)
+        ZeroScalar.Eunits))
+    (@And.left (ZeroScalar.finiteWord (ZeroScalar.resC x z))
+      (H3Range.Between
+        (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) (ZeroScalar.valueNum (ZeroScalar.resC x z))
+          (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) (ZeroScalar.valueNum x)
+            (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) ZeroScalar.D
+              (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) (ZeroScalar.floorC x) z))))
+        ZeroScalar.Eunits)
+      analytic_contract)
+    (ZeroScalar.MACHINE_RESIDUAL_366 x hx z (ZeroScalar.valueNum (ZeroScalar.resC x z)) hz
+      (@And.right (ZeroScalar.finiteWord (ZeroScalar.resC x z))
+        (H3Range.Between
+          (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) (ZeroScalar.valueNum (ZeroScalar.resC x z))
+            (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) (ZeroScalar.valueNum x)
+              (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) ZeroScalar.D
+                (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) (ZeroScalar.floorC x) z))))
+          ZeroScalar.Eunits)
+        analytic_contract))
+ZeroTypes 0 0.257

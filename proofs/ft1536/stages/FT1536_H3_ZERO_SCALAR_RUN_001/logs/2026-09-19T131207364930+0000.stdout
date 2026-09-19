@@ -1,0 +1,13 @@
+formal/ZeroRho.lean:25:43: error(lean.unknownIdentifier): Unknown identifier `ne_of_gt`
+RHO_CLOSED : ∀ (x : Word), NumericCenter x → 0 ≤ rhoNum x ∧ rhoNum x ≤ D
+EXACT_RESIDUAL_366 : ∀ (x : Word),
+  NumericCenter x →
+    ∀ (z : Int),
+      -365 ≤ z ∧ z ≤ 366 → -366 * D ≤ valueNum x - D * (floorC x + z) ∧ valueNum x - D * (floorC x + z) ≤ 366 * D
+old_new_relation : ∀ (x : Word), NumericCenter x → (H3Range.CenterClass ↑x ↔ ↑x ≠ 9223372036854775808)
+'ZeroScalar.value_negative_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.RHO_CLOSED' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'ZeroScalar.EXACT_RESIDUAL_366' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'ZeroScalar.old_new_relation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.old_floor_equality' depends on axioms: [propext, Classical.choice, Quot.sound]
+ZeroRho 1 0.35

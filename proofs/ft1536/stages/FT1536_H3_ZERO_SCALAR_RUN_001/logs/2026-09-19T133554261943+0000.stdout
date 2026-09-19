@@ -1,0 +1,11 @@
+both_zeros_numeric : NumericCenter plusZero ∧ NumericCenter minusZero
+zero_rho_endpoints : rhoNum plusZero = 0 ∧ rhoNum minusZero = D
+zero_shifted_support : ∀ (z : Int),
+  -365 ≤ z ∧ z ≤ 366 →
+    -365 ≤ floorC plusZero + z ∧ floorC plusZero + z ≤ 366 ∧ -366 ≤ floorC minusZero + z ∧ floorC minusZero + z ≤ 365
+'ZeroScalar.both_zeros_numeric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.zeros_floor' depends on axioms: [propext]
+'ZeroScalar.zero_rho_endpoints' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.zero_shifted_support' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.positive_pack_half_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+EndpointFacts 0 0.448
