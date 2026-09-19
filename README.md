@@ -241,6 +241,13 @@ The [next interface](proofs/ft1536/stages/FT1536_H3_NODE3_RUN_001/NEXT_INTERFACE
 is the first split_deep/Adj/LDL2 level for six diagonal branches, with 128
 frequencies each; the lower tree and global Reach remain separate obligations.
 
+The next prepared assignment is [H3_NODE2](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_NODE2_2026-09-19.md):
+the first `split_deep(logn9) -> Adj -> LDL_dim2(logn8)` level, covering
+all six diagonal branches and 128 frequencies each. It requires a uniform
+c2, the actual FPEMU half semantics and a proved paired real/imaginary
+positivity margin. [Pinned inputs](proofs/ft1536/background/H3_NODE2_2026-09-19/README.md)
+include the stronger NODE3/ROOT relations and are ready in a fresh worker directory.
+
 ### Remaining obligations beyond the verifier
 
 - **C-to-model correspondence:** the certificates concern explicit models

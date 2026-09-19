@@ -76,6 +76,13 @@ i imaginary bounds, nowa domena div[1/16,2^35] oraz frame.
 [NEXT_INTERFACE](stages/FT1536_H3_NODE3_RUN_001/NEXT_INTERFACE.md) eksportuje
 sześć diagonal branches do pierwszego split_deep/inner LDL2.
 
+**Następne przygotowane zadanie:** [H3_NODE2](documents/FT1536_ZADANIE_ASTRA_H3_NODE2_2026-09-19.md)
+— pierwszy split_deep(logn9)/Adj/LDL_dim2(logn8), sześć diagonal branches,
+po 128 slots. Wymaga jednego c2, source fpr_half i rzeczywistego marginu
+parowanych real/imag values, z zachowaniem mocniejszych korelacji.
+[Bootstrap](background/H3_NODE2_2026-09-19/README.md) ma 120 przypiętych
+członków i gotową kopię w nowym W. To jeden poziom, nie całe niższe drzewo.
+
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
 
@@ -121,7 +128,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [H3_RANGE](stages/FT1536_H3_RANGE_RUN_001/REPORT.md) | **PARTIAL_PROOF** — lokalne floor/proposal/residual; globalna osiągalność otwarta | `cb99e67` |
 | [H3_ZERO_SCALAR](stages/FT1536_H3_ZERO_SCALAR_RUN_001/REPORT.md) | **H3_ZERO_SCALAR_PROVED_FOR_PINNED_MODEL** — lokalny zero-aware most, błąd 2^-20; mieszany dowód | `9a76ecf` |
 | [H3_ROOT_LDL](stages/FT1536_H3_ROOT_LDL_RUN_001/REPORT.md) | **H3_ROOT_LDL_PROVED_FOR_PINNED_MODEL** — source FFT/Gram, dodatni subtractive root pivot i frame; mieszany dowód | `3d6bf58` |
-| [H3_NODE3](stages/FT1536_H3_NODE3_RUN_001/REPORT.md) | **H3_NODE3_PROVED_FOR_PINNED_MODEL** — uniform split_top/Adj/LDL3, obie branches i 256 slots; mieszany dowód | niniejszy checkpoint |
+| [H3_NODE3](stages/FT1536_H3_NODE3_RUN_001/REPORT.md) | **H3_NODE3_PROVED_FOR_PINNED_MODEL** — uniform split_top/Adj/LDL3, obie branches i 256 slots; mieszany dowód | `afa52d8` |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).

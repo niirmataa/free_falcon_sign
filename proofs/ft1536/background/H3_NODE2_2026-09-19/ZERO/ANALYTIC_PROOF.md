@@ -1,0 +1,222 @@
+# Uniwersalny lokalny dowód FPEMU of/sub — zakres i warstwy
+
+Ten dowód dotyczy literalnych funkcji aktywnej gałęzi C, nie postulowanych
+operacji IEEE. `scripts/fp_literal.py` jest transkrypcją mask/shift/wrap,
+`scripts/dyadic.py` niezależną interpretacją finite word i oracle RN.
+Kernel sprawdza lematy bitowe/całkowitoliczbowe wymienione niżej. Złożenie
+wszystkich faz `fpr_add` i wyspecjalizowany dowód r/delta są **analityczne**;
+nie przedstawia się ich jako w pełni skernelizowanego interpretera C.
+
+## 1. Dziedzina i znaczenie stałych
+
+Word64 ma bity s∈{0,1}, e∈[0,2047], f∈[0,2^52−1]. Dla finite e:
+
+```
+val(x)=(-1)^s*f*2^-1074                         (e=0),
+val(x)=(-1)^s*(2^52+f)*2^(e-1075)             (1<=e<=2046).
+```
+
+Oba zera mają wartość0, lecz różne bity. ValueDomain.valueNum/D, D=2^1074,
+realizuje tę definicję dla całego finite zakresu. NumericCenter wymaga
+jedynie finite word oraz −2147483283<=val(x)<2147483282. Z niej kernel
+wyprowadza e<=1053; nie założono NotNegZero ani normalności.
+
+Niech `E=2^-20=1/1048576`. Wspólna pomocnicza skala U=2^1200 służy tylko
+dowodowi błędów: każdy intermediate quantum poniżej jest całkowity w U-units.
+Wyjściowe błędy w valueNum-units są Eunits=2^1054; error_rational sprawdza
+1048576*Eunits=D i E<1/4.
+
+## 2. Lemat SOURCE_ADD_ERROR — precyzyjna teza
+
+**Dla wszystkich raw words a,b z encoded exponents<=1054:**
+
+```
+o=fpr_add_C(a,b) jest finite i jest signed zero albo normal;
+|val(o)-(val(a)+val(b))| <= 13*2^-24+2^-1021 < E.
+```
+
+Są to warunki na wejściowe pola, nie assumed small error. Obejmują wszystkie
+fractions, oba znaki, zera i subnormals; nie ograniczają się do listy testów.
+Poniższe fazy wyprowadzają każdą stałą bez uniwersalnego IEEE assumption.
+
+### 2.1. Sort i dekodowanie wewnętrzne — source449–492
+
+Absolute raw patterns są <2^63. Branchless swap stawia pierwszy operand
+o większej magnitude; przy równości zamienia, gdy pierwszy sign=1. Stąd
+e_a>=e_b, a przy równych e także f_a>=f_b. Gdy wartości o równych magnitudes
+mają przeciwne znaki, wybrany pierwszy sign jest0. Dotyczy to też +0/−0.
+`za`, xor mask i cs odpowiadają dokładnemu unsigned compare/tie rule;
+cs∈{0,1}, wszystkie shifts/casts mieszczą się w swoich typach.
+
+Źródło tworzy mantissy
+`M(e,f)=8*(f+(if e=0 then0 else2^52))`, zatem0<=M<=2^56−8.
+Wewnętrzna interpretacja to `(-1)^s*M*2^(e-1078)`.
+Dla normal jest dokładnie val. Dla e=0 jest POŁOWĄ wartości subnormal
+(zero pozostaje0): bezwzględny błąd <2^-1023 na operand. Łącznie decode
+wprowadza <2^-1022. Nie utożsamia się subnormal arithmetic z IEEE.
+
+### 2.2. Alignment i sticky — source499–508
+
+d=e_a−e_b∈[0,1054], lambda=2^(e_a−1078)<=2^-24.
+Przy d>=60 maska najpierw zeruje mniejsze M; następne OR/shift pozostawiają0.
+Pominięta magnitude w lambda-units to M_b/2^d<2^56/2^60=1/16.
+
+Przy d<60 ustaw q=floor(M_b/2^d), r=M_b mod2^d. Dosłowne
+`(M_b | ((M_b & (2^d−1))+(2^d−1))) >>d` daje q, gdy r=0,
+oraz q|1, gdy r>0. Równość `sticky_cases` i bound `sticky_interval` są
+kernelowe dla wszystkich x,k. Mamy q<=q|1<=q+1. Zatem alignment error
+w signed value ma moduł<=lambda (dotyczy również odd q i round-down).
+d=0 daje dokładność; nie ma osobnego błędu dla tego przypadku.
+
+### 2.3. Dodanie/odjęcie mantiss — source514
+
+W same-sign branch T=M_a+aligned_b. W opposite-sign branch T=M_a−aligned_b.
+Przy d=0 sort gwarantuje M_a>=M_b i alignment jest exact. Przy d>=1 normalne
+M_a>=2^55, a aligned_b<=floor((2^56−8)/2)+1=2^55−3, albo0. Gdy e_a=0,
+oba e są0 i wracamy do d=0. Zatem T zawsze nieujemne; C unsigned subtraction
+i addition dają właśnie T bez utraty informacji na wyniku. W każdym branch
+`0<=T<2^57`. Nie wykonuje się signed overflow.
+Signed value tego T w lambda units różni się od sumy wewnętrznie zdekodowanych
+operandów wyłącznie policzonym już błędem alignment. Nie dodaje się go dwa razy.
+
+### 2.4. FPR_NORM64 i shrink9 — source521–529
+
+Jeśli T=0, normalize/shrink dają0 i pack zachowuje wybrany znak zera.
+W przeciwnym razie sześć conditional shifts32,16,8,4,2,1 daje
+`N=T*2^h ∈[2^63,2^64)`, 0<=h<=63. Przy T<2^57 mamy h>=7.
+Kernelowe normalizer_bounds obejmuje WSZYSTKIE T<2^64, nie tylko rangi testowe.
+Kod maskujący shift jest równoważny nstep: przesunięcie przy M<2^(64-k),
+zawsze z unsigned modulo. W wybranej gałęzi nie gubi high bits; nieaktywna
+gałąź może zawijać unsigned i jest odmaskowana. e jest zmniejszone o h.
+
+Shrink9 jest dokładnie drugim użyciem sticky z dzielnikiem512. Nowe
+`m=sticky(N,9)` należy do[2^54,2^55), a jego value quantum wynosi
+`lambda'=2^(e_a-1069-h)`. Dzięki h>=7: lambda'<=4lambda.
+Zmiana wartości przez shrink ma moduł<=lambda', czyli<=4lambda.
+Nie przypisano zerowego błędu utraconym9 bitom.
+
+### 2.5. FPR pack — source header39–55
+
+Wejście to sign s, exponent a=e_a−1069−h i mantissa m z poprzedniego kroku.
+Biased base po dodaniu1076: b=e_a+7−h.
+
+- Gdy b<0, maska zeruje m, następnie e; wynik jest signed zero. Ponieważ
+  a<=−1077, z `m<2^55` otrzymujemy pominiętą wartość `<2^-1022`.
+- Gdy b>=0, mamy b<=1054 i m>>54=1. Źródło zwraca
+  `(s<<63)+(b<<52)+q`, gdzie `q=floor(m/4)+((0xC8>>(m mod8))&1)`.
+  Z ośmiu możliwych remainder8 wynika `|4q−m|<=2`; round_error jest
+  kernelowym dowodem dla wszystkich m, nie tylko tablicą wybranych mantiss.
+  Wartość outputu to `(-1)^s*4q*2^a`. pack_normal_value dowodzi dekodowania,
+  także carry q=2^53. Error<=2lambda'<=8lambda.
+
+Encoded exponent outputu nie przekracza b+2<=1056<2047, więc output jest
+finite i normal albo signed zero; nie ma nieudowodnionego overflow/NaN.
+T=0 osobno daje exact signed zero. Wszystkie integer intermediates są w
+zakresie: ex/ey/cc i e są małymi int, M/shift/OR są unsigned64; scalar C nie
+używa tu ARM implementation ani fpr-double.
+
+### 2.6. Złożenie i rzeczywista stała
+
+Sumujemy niezależne fazy:
+
+```
+decode <2^-1022
+alignment <=lambda
+shrink <=4lambda
+pack <=8lambda lub underflow <2^-1022
+łącznie <=13lambda+2^-1021 <=13*2^-24+2^-1021 <2^-20.
+```
+
+Do uniform upper bound wolno dodać oba rozłączne warianty pack jako dodatnie
+majoranty. Kernel ErrorArithmetic sprawdza kompozycję signed errors i dokładną
+nierówność liczbową. Sage certificate sprawdza wszystkie1055 exponentów i
+57 shift counts7..63 (60135 klas), z prawidłowym outward kierunkiem. Zmienna
+fraction NIE jest enumerowana: obejmują ją uniwersalne inequalities z§2.1–2.5.
+Nie jest to extrapolacja z1160 kontrolowanych par.
+
+## 3. fpr_of signed32 jest exact — source151–204
+
+Dla −2^31<=i<=2^31−1 negacja/absolute w int64 jest zdefiniowana. Nie występuje
+zabronione przez komentarz−2^63. i=0 prowadzi przez corrective mask do+0.
+Dla n=|i|>0, n<=2^31, normalize daje N=n*2^h, h∈[32,63]. Shrink9 ma co
+najmniej23 zero bits i jest exact; pack ma co najmniej2 dalsze zero bits,
+więc rounding bit=0. e zaczyna się od9, końcowy biased base to1085−h∈[1022,1053].
+Nie ma underflow ani overflow, val outputu to i dokładnie. OF_EXACT dowodzi
+tej równości dla source-normalized modelu ofC; normalizer/sticky/pack są
+te same konkretne integer fazy, nie definicja `ofC(i)=ideal encoding(i)`.
+Literalna maskowa transkrypcja i native C są kontrolowane raw-bitowo.
+
+## 4. SUB_CENTER i SUB_RESIDUAL
+
+Dla NumericCenter x część A już dowodzi source s=floor(val(x))−eps0(x)
+i signed32 y=s+z dla każdego z∈[−365,366]. §3 daje exact of(s),of(y),
+których encoded exponents<=1054. Z NumericCenter exponent(x)<=1053.
+sub(x,t) jest dosłownie add(x,sign_flip(t)); value sign flip jest negacją
+także dla obu zer. Przesłanki SOURCE_ADD_ERROR są zatem spełnione.
+
+**Uniwersalne wnioski analityczne z konkretnymi stałymi, bez hipotezy E:**
+
+```
+forall NumericCenter x:
+ r_C=sub_C(x,of_C(s_C(x))) finite,
+ |val(r_C)-(val(x)-s_C(x))| <= E_r =1/1048576;
+
+forall NumericCenter x, forall -365<=z<=366:
+ res_C=sub_C(x,of_C(s_C(x)+z)) finite,
+ |val(res_C)-(val(x)-(s_C(x)+z))| <= E_res =1/1048576.
+```
+
+Kernelowi konsumenci MACHINE_RESIDUAL_366 i MACHINE_CENTER_INTERVAL ujawniają
+przesłankę tego analitycznego source-error bridge. Nie ogłasza się tych
+warunkowych konsumentów pełnym kernelowym dowodem fpr_add. Ich przesłankę
+rozlicza powyższy uniwersalny source argument, nie test, aksjomat ani założenie
+żądanego boundu. Source-to-model translation pozostaje jawną warstwą dowodu.
+
+## 5. R_DELTA_DOMAIN — silniejszy wyspecjalizowany zakres
+
+Same ±E bounds nie wystarczają do wykazania[0,1]. Używamy source structure:
+
+1. x=+0: s=0, of(s)=+0, add(+0,−0) daje+0.
+   x=−0: s=−1, sub(−0,−1) daje dokładnie+1.
+2. 0<val(x)<1: s=0. Gdy x normal, add(x,−0) jest dokładnie x (zero lower
+   mantissa; shrink i pack nie tracą użytecznych bitów). Gdy x subnormal,
+   source output jest+0, zgodnie z underflow branch. Wynik należy do[0,1).
+3. Dla val(x)>=1 lub val(x)<=−1, |x| i |s| są normalnymi operands, tej samej
+   orientacji w subtraction, w ratio[1/2,2]. Exponent difference jest0 lub1;
+   alignment mantiss wielokrotności8 jest exact. W difference T są najwyżej
+   53 istotne bity (dla gap1 używamy ratio≤2, T<=aligned smaller<2^55).
+   Normalize/shrink/pack niczego nie tracą. Niezerowa różnica od integer ma
+   moduł>=2^-53 w tej klasie, więc underflow jest niemożliwy. Źródłowy r jest
+   dokładnym rho∈[0,1); cancellation daje+0 przez swap tie rule.
+4. −1<val(x)<=−1/2: ta sama ratio argumentacja z |s|=1; wynik exact∈[0,1/2].
+5. −1/2<val(x)<0: s=−1, większy operand to+1. Po alignment mniejszy unsigned
+   mantissa mieści się w[0,2^54]. Stąd T∈[2^54,2^55] przy lambda=2^-55.
+   Jeśli T<2^55, normalize shift9 i shrink9 dają dokładnie m=T; pack q leży
+   w[2^52,2^53], więc output jest w[1/2,1]. T=2^55 daje dokładnie1.
+   Dotyczy to także negative subnormals (alignment je odrzuca).
+
+W KAŻDYM przypadku `r_C` jest +0 albo positive normal, value∈[0,1].
+Nie ma negative zero ani subnormal r_C. Endpoint1 nie jest wyłączny dla−0:
+np. x=−2^-1074 również daje1 (raw bits3ff0000000000000).
+
+Dla `delta_C=sub_C(1,r_C)`:
+- r=0 daje1, r=1 daje+0;
+- r∈[1/2,1) daje exact normal difference przez tę samą ratio argumentację;
+- r∈(0,1/2) daje T w[2^54,2^55], więc output w[1/2,1].
+Zatem delta_C również jest+0 albo positive normal z value∈[0,1], bez dodatkowej
+normality/NotNegZero premise wejścia NumericCenter.
+
+res_C może być oboma zerami: x=−0,y=0 daje−0, tak samo negative subnormal
+x przy y=0 po underflow. Exact cancellation nonzero normal operands daje+0.
+Nie canonicalizowano żadnego source outputu w celu uzyskania kontraktu.
+
+## 6. Konsumpcja bez kołowego założenia
+
+RHO_CLOSED dowodzi0<=rho<=1 dla source s. Dla z∈[−365,366], rho−z∈[−366,366].
+Z§4 wynika realne `|val(res_C)|<=366+1/1048576`.
+ORDERED_ZERO_TERMINAL podstawia ten konkretny E_res do right i second scalar
+residual. E_half i E_add pozostają jawnymi obowiązkami dla stosownych
+terminalnych/rekurencyjnych operacji i ich domen; nie są przypisane z nazwy.
+Najpierw NumericCenter bieżącego call, potem return/residuum, potem następne
+centrum. Fault return0 nie spełnia założenia successful proposal i nie dostaje
+closeness lemma. Global Reach i prawo samplera pozostają oddzielne.
