@@ -74,6 +74,71 @@
 #define CT_BEREXP   0
 #endif
 
+/*
+ * Experimental FT1536 sampler redesign.
+ *
+ * The historical ternary path uses one fixed half-Gaussian proposal with
+ * nominal sigma0^2 = 5. Full coefficient-ternary trapdoors yield runtime
+ * sigma values above that proposal range. The adaptive path selects the
+ * narrowest proposal from nominal sigma0^2 in { 5, 20, 80, 320, 768 } whose exact
+ * binary64 exponent coefficient is no greater than dss = 1/(2*sigma^2).
+ * Proposal tables are generated from those same binary64 coefficients.
+ * CT-BerExp remains the Bernoulli acceptance kernel.
+ */
+#ifndef FT_TERNARY_ADAPTIVE_CDF
+#define FT_TERNARY_ADAPTIVE_CDF   0
+#endif
+#if CT_BEREXP != 1
+#error This FT1536 branch requires CT-BerExp
+#endif
+#if FT_TERNARY_ADAPTIVE_CDF != 1
+#error This FT1536 branch requires the coefficient-matched adaptive CDF
+#endif
+#if SAMPLER_CODF != 0 || SAMPLER_CDF != 0
+#error This FT1536 branch requires the hardened default scalar CDF path
+#endif
+
+#ifndef SIGN_MAX_ATTEMPTS
+#define SIGN_MAX_ATTEMPTS   16
+#endif
+
+#if !defined(FT1536_CANDIDATE_PROFILE) || FT1536_CANDIDATE_PROFILE != 1
+#error This branch requires the reviewed FT1536 candidate profile
+#endif
+#if SIGN_MAX_ATTEMPTS != 16
+#error The FT1536 candidate retry proof requires SIGN_MAX_ATTEMPTS=16
+#endif
+
+#ifndef FT_SAMPLER_ADAPTIVE_PROBE
+#define FT_SAMPLER_ADAPTIVE_PROBE   0
+#endif
+
+#if FT_TERNARY_ADAPTIVE_CDF
+#include "ft1536-adaptive-cdf-tables.h"
+#endif
+
+#if FT_ADAPTIVE_CDF_LEVELS != 5 || FT_ADAPTIVE_CDF_TABLE_LEN != 512
+#error The FT1536 candidate profile requires the five-level 512-entry CDF bank
+#endif
+
+/*
+ * Candidate global width for the ideal normalized-canonical Mhat_can^(2)
+ * target. This is not keygen scale 12.5, protocol sigma_768=12.5, or the
+ * proposal variance 768. SIG-001 and the numerical sampler transfer are open.
+ */
+#define FT1536_SIGNING_SIGMA       ((int64_t)768)
+#define FT1536_Q_SQUARED           ((int64_t)339775489)
+#define FT1536_LEAF_MIN_BITS       UINT64_C(0x4090000053700377)
+#define FT1536_LEAF_MAX_BITS       UINT64_C(0x4114444d1a037d50)
+
+/* The legacy large proposal remains available for comparison builds. */
+#if FT_TERNARY_ADAPTIVE_CDF \
+	&& (defined(__GNUC__) || defined(__clang__))
+#define FT_LEGACY_UNUSED   __attribute__((unused))
+#else
+#define FT_LEGACY_UNUSED
+#endif
+
 /* =================================================================== */
 
 /*
@@ -81,6 +146,118 @@
  * 'ter' MUST be 0 or 1.
  */
 #define MKN(logn, ter)   ((size_t)(1 + ((ter) << 1)) << ((logn) - (ter)))
+
+#ifdef SIGN_NORM_PROBE
+static uint64_t sign_norm_probe_signatures;
+static uint64_t sign_norm_probe_attempts;
+static uint64_t sign_norm_probe_accepted;
+static uint64_t sign_norm_probe_rejected;
+static int64_t sign_norm_probe_last_norm2;
+static int64_t sign_norm_probe_last_bound2;
+
+static int64_t
+sign_norm_probe_compute(const int16_t *s1, const int16_t *s2,
+	unsigned logn, unsigned ter)
+{
+	size_t n, hn, u;
+	int64_t s;
+
+	if (!ter) {
+		n = (size_t)1 << logn;
+		s = 0;
+		for (u = 0; u < n; u ++) {
+			int32_t z;
+
+			z = s1[u];
+			s += (int64_t)z * (int64_t)z;
+			z = s2[u];
+			s += (int64_t)z * (int64_t)z;
+		}
+		return s;
+	}
+
+	n = (size_t)3 << (logn - 1);
+	hn = n >> 1;
+	s = 0;
+	for (u = 0; u < n; u ++) {
+		int32_t z;
+
+		z = s1[u];
+		s += (int64_t)z * (int64_t)z;
+		z = s2[u];
+		s += (int64_t)z * (int64_t)z;
+	}
+	for (u = 0; u < hn; u ++) {
+		s += (int64_t)s1[u] * (int64_t)s1[u + hn];
+		s += (int64_t)s2[u] * (int64_t)s2[u + hn];
+	}
+	return s;
+}
+
+static int64_t
+sign_norm_probe_bound(unsigned logn, unsigned ter)
+{
+	if (!ter) {
+		return ((uint32_t)7085 * (uint32_t)12289) >> (10 - logn);
+	}
+	switch (logn) {
+	case 3:
+		return 987497;
+	case 4:
+		return 2052189;
+	case 5:
+		return 4258765;
+	case 6:
+		return 8826305;
+	case 7:
+		return 18270159;
+	case 8:
+		return 37775417;
+	case 9:
+		return 78021029;
+	case 10:
+		return FALCON_FT1536_NORM_BOUND2;
+	default:
+		return 0;
+	}
+}
+
+void
+falcon_sign_norm_probe_reset(void)
+{
+	sign_norm_probe_signatures = 0;
+	sign_norm_probe_attempts = 0;
+	sign_norm_probe_accepted = 0;
+	sign_norm_probe_rejected = 0;
+	sign_norm_probe_last_norm2 = 0;
+	sign_norm_probe_last_bound2 = 0;
+}
+
+void
+falcon_sign_norm_probe_snapshot(uint64_t *signatures, uint64_t *attempts,
+	uint64_t *accepted, uint64_t *rejected, int64_t *last_norm2,
+	int64_t *last_bound2)
+{
+	if (signatures != NULL) {
+		*signatures = sign_norm_probe_signatures;
+	}
+	if (attempts != NULL) {
+		*attempts = sign_norm_probe_attempts;
+	}
+	if (accepted != NULL) {
+		*accepted = sign_norm_probe_accepted;
+	}
+	if (rejected != NULL) {
+		*rejected = sign_norm_probe_rejected;
+	}
+	if (last_norm2 != NULL) {
+		*last_norm2 = sign_norm_probe_last_norm2;
+	}
+	if (last_bound2 != NULL) {
+		*last_bound2 = sign_norm_probe_last_bound2;
+	}
+}
+#endif
 
 /* =================================================================== */
 /*
@@ -405,7 +582,7 @@ LDL_dim3_fft3(fpr *restrict d11, fpr *restrict d22,
 	falcon_poly_div_autoadj_fft3(l21, d11, logn, full);
 
 	/*
-	 * d22 = g22 - l20*adj(g20) - l21*adj(l21) / d11
+	 * d22 = g22 - l20*adj(g20) - l21*adj(l21)*d11
 	 */
 	memcpy(d22, l20, n * sizeof *l20);
 	falcon_poly_muladj_fft3(d22, g20, logn, full);
@@ -574,18 +751,218 @@ ffLDL_fft3(fpr *restrict tree, const fpr *restrict g00,
 	return s;
 }
 
-/*
- * Get the size of the LDL tree for an input with polynomials of size
- * 2^logn. The size is expressed in the number of elements.
- */
-static inline unsigned
-ffLDL_ternary_treesize(unsigned logn)
+static uint64_t ft_fpr_bits(fpr x);
+static fpr ft_fpr_from_bits(uint64_t w);
+static int ft_fpr_is_positive_finite(fpr x);
+static void smallints_to_fpr(fpr *r, const int16_t *t,
+	unsigned logn, unsigned ter);
+
+static fpr
+ft_stable_positive(fpr x, uint32_t *bad)
 {
-	return 3 * ((logn + 2) << (logn - 1));
+	uint64_t mask, xb;
+	uint32_t valid;
+
+	valid = (uint32_t)ft_fpr_is_positive_finite(x);
+	*bad |= valid ^ 1U;
+	mask = (uint64_t)0 - (uint64_t)valid;
+	xb = ft_fpr_bits(x);
+	return ft_fpr_from_bits((xb & mask) | (ft_fpr_bits(fpr_one) & ~mask));
 }
 
+static void
+ft_stable_binary_inplace(fpr *values, size_t n,
+	fpr *scratch, uint32_t *bad)
+{
+	size_t hn, u;
+
+	if (n == 1) {
+		values[0] = ft_stable_positive(values[0], bad);
+		return;
+	}
+	hn = n >> 1;
+	for (u = 0; u < hn; u ++) {
+		fpr a, b, product, sum;
+
+		a = ft_stable_positive(values[(u << 1) + 0], bad);
+		b = ft_stable_positive(values[(u << 1) + 1], bad);
+		sum = ft_stable_positive(fpr_add(a, b), bad);
+		product = ft_stable_positive(fpr_mul(a, b), bad);
+		scratch[u] = ft_stable_positive(fpr_half(sum), bad);
+		scratch[u + hn] = ft_stable_positive(
+			fpr_div(fpr_double(product), sum), bad);
+	}
+	memcpy(values, scratch, n * sizeof *values);
+	ft_stable_binary_inplace(values, hn, scratch, bad);
+	ft_stable_binary_inplace(values + hn, hn, scratch, bad);
+}
+
+static void
+ft_stable_top_branch(const fpr *roots, fpr *leaves,
+	fpr *scratch, uint32_t *bad)
+{
+	fpr three;
+	size_t u, v;
+
+	three = fpr_of(3);
+	for (u = 0, v = 0; u < 768; u += 3, v ++) {
+		fpr a, ab, abc, ac, b, bc, c, e1, e2;
+
+		a = ft_stable_positive(roots[u + 0], bad);
+		b = ft_stable_positive(roots[u + 1], bad);
+		c = ft_stable_positive(roots[u + 2], bad);
+		e1 = ft_stable_positive(fpr_add(fpr_add(a, b), c), bad);
+		ab = ft_stable_positive(fpr_mul(a, b), bad);
+		ac = ft_stable_positive(fpr_mul(a, c), bad);
+		bc = ft_stable_positive(fpr_mul(b, c), bad);
+		e2 = ft_stable_positive(fpr_add(fpr_add(ab, ac), bc), bad);
+		abc = ft_stable_positive(fpr_mul(ab, c), bad);
+		leaves[v] = ft_stable_positive(fpr_div(e1, three), bad);
+		leaves[256 + v] = ft_stable_positive(fpr_div(e2, e1), bad);
+		leaves[512 + v] = ft_stable_positive(
+			fpr_div(fpr_mul(three, abc), e2), bad);
+	}
+	ft_stable_binary_inplace(leaves + 0, 256, scratch, bad);
+	ft_stable_binary_inplace(leaves + 256, 256, scratch, bad);
+	ft_stable_binary_inplace(leaves + 512, 256, scratch, bad);
+}
+
+/*
+ * Build the stable positive raw leaves and apply the candidate certificate.
+ * tmp[] has the normal signing scratch size and is no longer needed by the
+ * subtractive ffLDL builder when this function is called.
+ */
+static int
+ft_build_stable_certified_leaves(fpr *tmp, fpr **leaves_out,
+	const int16_t *f_src, const int16_t *g_src, unsigned logn)
+{
+	fpr *f, *g, *leaves, *scratch;
+	fpr q_squared;
+	size_t hn, n, u;
+	uint32_t bad;
+
+	n = MKN(logn, 1);
+	hn = n >> 1;
+	if (logn != 10 || n != 1536 || hn != 768) {
+		return 0;
+	}
+	f = tmp;
+	g = f + n;
+	smallints_to_fpr(f, f_src, logn, 1);
+	smallints_to_fpr(g, g_src, logn, 1);
+	falcon_FFT3(f, logn, 1);
+	falcon_FFT3(g, logn, 1);
+	falcon_poly_mulselfadj_fft3(f, logn, 1);
+	falcon_poly_mulselfadj_fft3(g, logn, 1);
+	falcon_poly_add_fft3(f, g, logn, 1);
+
+	bad = 0;
+	for (u = 0; u < hn; u ++) {
+		uint32_t valid;
+		uint64_t mask, xb;
+
+		valid = (uint32_t)ft_fpr_is_positive_finite(f[u]);
+		valid &= (uint32_t)(1 ^ fpr_lt(f[u], fpr_onehalf));
+		bad |= valid ^ 1U;
+		mask = (uint64_t)0 - (uint64_t)valid;
+		xb = ft_fpr_bits(f[u]);
+		f[u] = ft_fpr_from_bits(
+			(xb & mask) | (ft_fpr_bits(fpr_one) & ~mask));
+	}
+
+	leaves = f + hn;
+	scratch = leaves + n;
+	ft_stable_top_branch(f, leaves, scratch, &bad);
+	q_squared = fpr_of(FT1536_Q_SQUARED);
+	for (u = 0; u < hn; u ++) {
+		leaves[n - 1 - u] = ft_stable_positive(
+			fpr_div(q_squared, leaves[u]), &bad);
+	}
+
+	/* Full aggregate scan: no key-dependent early exit. */
+	for (u = 0; u < n; u ++) {
+		uint64_t bits;
+		uint32_t valid;
+
+		leaves[u] = ft_stable_positive(leaves[u], &bad);
+		bits = ft_fpr_bits(leaves[u]);
+		valid = (uint32_t)(1 ^ (uint32_t)((bits - FT1536_LEAF_MIN_BITS) >> 63));
+		valid &= (uint32_t)(1 ^ (uint32_t)((FT1536_LEAF_MAX_BITS - bits) >> 63));
+		bad |= valid ^ 1U;
+	}
+	*leaves_out = leaves;
+	return bad == 0;
+}
+
+#if FT_SAMPLER_ADAPTIVE_PROBE
+static uint64_t ft_ffldl_probe_ready;
+static uint64_t ft_ffldl_probe_logn;
+static uint64_t ft_ffldl_probe_tree_words;
+static uint64_t ft_ffldl_probe_leaf_count;
+static uint64_t ft_ffldl_probe_invalid_leaf_count;
+static uint64_t ft_ffldl_probe_raw_min_bits;
+static uint64_t ft_ffldl_probe_raw_max_bits;
+static uint64_t ft_ffldl_probe_sigma_min_bits;
+static uint64_t ft_ffldl_probe_sigma_max_bits;
+static uint64_t ft_ffldl_probe_sigma_sign_bits;
+
+static void
+ft_ffldl_probe_reset(unsigned logn, fpr sigma)
+{
+	ft_ffldl_probe_ready = 0;
+	ft_ffldl_probe_logn = logn;
+	ft_ffldl_probe_tree_words = 0;
+	ft_ffldl_probe_leaf_count = 0;
+	ft_ffldl_probe_invalid_leaf_count = 0;
+	ft_ffldl_probe_raw_min_bits = UINT64_MAX;
+	ft_ffldl_probe_raw_max_bits = 0;
+	ft_ffldl_probe_sigma_min_bits = UINT64_MAX;
+	ft_ffldl_probe_sigma_max_bits = 0;
+	ft_ffldl_probe_sigma_sign_bits = ft_fpr_bits(sigma);
+}
+
+static void
+ft_ffldl_probe_record_leaf(fpr raw, fpr sigma)
+{
+	fpr scaled_sigma;
+	uint64_t raw_bits, sigma_bits, scaled_sigma_bits;
+
+	ft_ffldl_probe_leaf_count ++;
+	scaled_sigma = fpr_mul(fpr_IW1I, sigma);
+	if (!ft_fpr_is_positive_finite(raw)
+		|| !ft_fpr_is_positive_finite(sigma)
+		|| !ft_fpr_is_positive_finite(scaled_sigma))
+	{
+		ft_ffldl_probe_invalid_leaf_count ++;
+		return;
+	}
+	raw_bits = ft_fpr_bits(raw);
+	sigma_bits = ft_fpr_bits(sigma);
+	scaled_sigma_bits = ft_fpr_bits(scaled_sigma);
+	if (raw_bits < ft_ffldl_probe_raw_min_bits) {
+		ft_ffldl_probe_raw_min_bits = raw_bits;
+	}
+	if (raw_bits > ft_ffldl_probe_raw_max_bits) {
+		ft_ffldl_probe_raw_max_bits = raw_bits;
+	}
+	if (sigma_bits < ft_ffldl_probe_sigma_min_bits) {
+		ft_ffldl_probe_sigma_min_bits = sigma_bits;
+	}
+	if (sigma_bits > ft_ffldl_probe_sigma_max_bits) {
+		ft_ffldl_probe_sigma_max_bits = sigma_bits;
+	}
+	if (scaled_sigma_bits < ft_ffldl_probe_sigma_min_bits) {
+		ft_ffldl_probe_sigma_min_bits = scaled_sigma_bits;
+	}
+	if (scaled_sigma_bits > ft_ffldl_probe_sigma_max_bits) {
+		ft_ffldl_probe_sigma_max_bits = scaled_sigma_bits;
+	}
+}
+#endif
+
 static size_t
-ffLDL_ternary_normalize_inner(fpr *tree, fpr sigma, unsigned logn)
+ffLDL_ternary_normalize_inner(fpr *tree, fpr sigma, unsigned logn,
+	const fpr *leaves, size_t *leaf_index)
 {
 	size_t s;
 
@@ -595,37 +972,70 @@ ffLDL_ternary_normalize_inner(fpr *tree, fpr sigma, unsigned logn)
 		 * one parent node and two leaves. We normalize the
 		 * leaves.
 		 */
-		tree[2] = fpr_div(sigma, fpr_sqrt(tree[2]));
-		tree[3] = fpr_div(sigma, fpr_sqrt(tree[3]));
+#if FT_SAMPLER_ADAPTIVE_PROBE
+		{
+			fpr raw0, raw1;
+
+			raw0 = leaves[(*leaf_index) ++];
+			raw1 = leaves[(*leaf_index) ++];
+			tree[2] = fpr_div(sigma, fpr_sqrt(raw0));
+			tree[3] = fpr_div(sigma, fpr_sqrt(raw1));
+			ft_ffldl_probe_record_leaf(raw0, tree[2]);
+			ft_ffldl_probe_record_leaf(raw1, tree[3]);
+		}
+#else
+		tree[2] = fpr_div(sigma,
+			fpr_sqrt(leaves[(*leaf_index) ++]));
+		tree[3] = fpr_div(sigma,
+			fpr_sqrt(leaves[(*leaf_index) ++]));
+#endif
 		return 4;
 	}
 
 	s = (size_t)1 << logn;
-	s += ffLDL_ternary_normalize_inner(tree + s, sigma, logn - 1);
-	s += ffLDL_ternary_normalize_inner(tree + s, sigma, logn - 1);
+	s += ffLDL_ternary_normalize_inner(
+		tree + s, sigma, logn - 1, leaves, leaf_index);
+	s += ffLDL_ternary_normalize_inner(
+		tree + s, sigma, logn - 1, leaves, leaf_index);
 	return s;
 }
 
 static size_t
-ffLDL_ternary_normalize_depth1(fpr *tree, fpr sigma, unsigned logn)
+ffLDL_ternary_normalize_depth1(fpr *tree, fpr sigma, unsigned logn,
+	const fpr *leaves, size_t *leaf_index)
 {
 	size_t s;
 
 	s = (size_t)3 << logn;
-	s += ffLDL_ternary_normalize_inner(tree + s, sigma, logn - 1);
-	s += ffLDL_ternary_normalize_inner(tree + s, sigma, logn - 1);
-	s += ffLDL_ternary_normalize_inner(tree + s, sigma, logn - 1);
+	s += ffLDL_ternary_normalize_inner(
+		tree + s, sigma, logn - 1, leaves, leaf_index);
+	s += ffLDL_ternary_normalize_inner(
+		tree + s, sigma, logn - 1, leaves, leaf_index);
+	s += ffLDL_ternary_normalize_inner(
+		tree + s, sigma, logn - 1, leaves, leaf_index);
 	return s;
 }
 
 static size_t
-ffLDL_ternary_normalize(fpr *tree, fpr sigma, unsigned logn)
+ffLDL_ternary_normalize(fpr *tree, fpr sigma, unsigned logn,
+	const fpr *leaves, size_t *leaf_count)
 {
-	size_t s;
+	size_t leaf_index, s;
 
+#if FT_SAMPLER_ADAPTIVE_PROBE
+	ft_ffldl_probe_reset(logn, sigma);
+#endif
+	leaf_index = 0;
 	s = (size_t)3 << (logn - 1);
-	s += ffLDL_ternary_normalize_depth1(tree + s, sigma, logn - 1);
-	s += ffLDL_ternary_normalize_depth1(tree + s, sigma, logn - 1);
+	s += ffLDL_ternary_normalize_depth1(
+		tree + s, sigma, logn - 1, leaves, &leaf_index);
+	s += ffLDL_ternary_normalize_depth1(
+		tree + s, sigma, logn - 1, leaves, &leaf_index);
+#if FT_SAMPLER_ADAPTIVE_PROBE
+	ft_ffldl_probe_tree_words = s;
+	ft_ffldl_probe_ready = 1;
+#endif
+	*leaf_count = leaf_index;
 	return s;
 }
 
@@ -685,6 +1095,56 @@ skoff_tree(unsigned logn, unsigned ter)
 }
 
 /*
+ * Validate the exact FT1536 private-key domain before any floating-point
+ * expansion. The convolution is reduced directly modulo
+ * X^1536-X^768+1; all coefficients and support checks are aggregated.
+ */
+static int
+ft_validate_ternary_private(const int16_t *f, const int16_t *g,
+	const int16_t *F, const int16_t *G, int64_t *relation)
+{
+	const size_t n = 1536;
+	const size_t hn = 768;
+	size_t i, j;
+	uint32_t bad;
+
+	memset(relation, 0, n * sizeof *relation);
+	bad = 0;
+	for (i = 0; i < n; i ++) {
+		int32_t fi, gi;
+
+		fi = f[i];
+		gi = g[i];
+		bad |= (uint32_t)((fi < -1) | (fi > 1));
+		bad |= (uint32_t)((gi < -1) | (gi > 1));
+		for (j = 0; j < n; j ++) {
+			int64_t v;
+			size_t k, u;
+
+			v = (int64_t)fi * (int64_t)G[j]
+				- (int64_t)gi * (int64_t)F[j];
+			k = i + j;
+			if (k < n) {
+				relation[k] += v;
+			} else {
+				u = k - n;
+				if (u < hn) {
+					relation[u] -= v;
+					relation[u + hn] += v;
+				} else {
+					relation[u - hn] -= v;
+				}
+			}
+		}
+	}
+	relation[0] -= 18433;
+	for (i = 0; i < n; i ++) {
+		bad |= (uint32_t)(relation[i] != 0);
+	}
+	return bad == 0;
+}
+
+/*
  * Load a private key and perform precomputations for signing.
  *
  * Number of elements in sk[]:
@@ -695,7 +1155,7 @@ skoff_tree(unsigned logn, unsigned ter)
  *
  * tmp[] must have room for at least seven polynomials.
  */
-static void
+static int
 load_skey(fpr *restrict sk, unsigned q,
 	const int16_t *f_src, const int16_t *g_src,
 	const int16_t *F_src, const int16_t *G_src,
@@ -756,6 +1216,13 @@ load_skey(fpr *restrict sk, unsigned q,
 	 */
 	if (ter) {
 		fpr *g00, *g10, *g11, *gxx;
+		fpr *stable_leaves;
+		size_t leaf_count, tree_words;
+		int stable_ok;
+
+		if (logn != 10 || n != 1536 || q != 18433) {
+			return 0;
+		}
 
 		g00 = tmp;
 		g10 = g00 + n;
@@ -786,17 +1253,19 @@ load_skey(fpr *restrict sk, unsigned q,
 		ffLDL_fft3(tree, g00, g10, g11, logn, gxx);
 
 		/*
-		 * Tree normalization:
-		 *   sigma = 1.32 * sqrt(q/sqrt(2))
+		 * Rebuild the raw leaves through positive arithmetic and certify the
+		 * complete physical leaf sequence before applying the candidate
+		 * signing width. The internal L coefficients remain those of the
+		 * expanded ffLDL tree.
 		 */
-		sigma = fpr_mul(
-			fpr_sqrt(fpr_mul(fpr_of(q), fpr_sqrt(fpr_of(2)))),
-			fpr_div(fpr_of(132), fpr_of(100)));
-
-		/*
-		 * Normalize tree with sigma.
-		 */
-		ffLDL_ternary_normalize(tree, sigma, logn);
+		stable_ok = ft_build_stable_certified_leaves(tmp,
+			&stable_leaves, f_src, g_src, logn);
+		sigma = fpr_of(FT1536_SIGNING_SIGMA);
+		tree_words = ffLDL_ternary_normalize(tree, sigma, logn,
+			stable_leaves, &leaf_count);
+		return stable_ok
+			&& leaf_count == n
+			&& tree_words == (size_t)12 * n;
 	} else {
 		/*
 		 * For historical reasons, this implementation uses
@@ -843,10 +1312,249 @@ load_skey(fpr *restrict sk, unsigned q,
 		 * Normalize tree with sigma.
 		 */
 		ffLDL_binary_normalize(tree, sigma, logn);
+		return 1;
 	}
 }
 
 typedef int (*samplerZ)(void *ctx, fpr mu, fpr sigma);
+
+enum {
+	FT_SAMPLER_FAULT_NONE = 0,
+	FT_SAMPLER_FAULT_INVALID_SIGMA = 1,
+	FT_SAMPLER_FAULT_PROPOSAL_RANGE = 2,
+	FT_SAMPLER_FAULT_NEGATIVE_X = 3
+};
+
+typedef struct {
+	prng p;
+	unsigned fault;
+} ternary_sampler_context;
+
+#if FT_SAMPLER_ADAPTIVE_PROBE
+static uint64_t ft_sampler_probe_calls;
+static uint64_t ft_sampler_probe_proposals;
+static uint64_t ft_sampler_probe_levels[FT_ADAPTIVE_CDF_LEVELS];
+static uint64_t ft_sampler_probe_invalid_sigma;
+static uint64_t ft_sampler_probe_proposal_range;
+static uint64_t ft_sampler_probe_negative_x;
+static uint64_t ft_sampler_probe_min_sigma_bits;
+static uint64_t ft_sampler_probe_max_sigma_bits;
+static uint64_t ft_sampler_probe_min_dss_bits;
+static uint64_t ft_sampler_probe_max_dss_bits;
+static uint64_t ft_sampler_probe_accepted;
+static uint32_t ft_sampler_probe_center_ready;
+static fpr ft_sampler_probe_min_mu;
+static fpr ft_sampler_probe_max_mu;
+static fpr ft_sampler_probe_min_fraction;
+static fpr ft_sampler_probe_max_fraction;
+static fpr ft_sampler_probe_max_residual;
+static int64_t ft_sampler_probe_min_sample;
+static int64_t ft_sampler_probe_max_sample;
+static uint64_t ft_sampler_probe_sign_attempts;
+static uint64_t ft_sampler_probe_norm_rejects;
+static uint64_t ft_sampler_probe_encode_failures;
+static uint64_t ft_sampler_probe_precast_coefficients;
+static uint64_t ft_sampler_probe_precast_outside_int16;
+static uint64_t ft_sampler_probe_precast_outside_half_q;
+static int64_t ft_sampler_probe_precast_min_s1;
+static int64_t ft_sampler_probe_precast_max_s1;
+static int64_t ft_sampler_probe_precast_min_s2;
+static int64_t ft_sampler_probe_precast_max_s2;
+static void ft_sampler_probe_precast(int64_t value,
+	unsigned component, unsigned q);
+
+void
+falcon_ft_sampler_probe_reset(void)
+{
+	ft_sampler_probe_calls = 0;
+	ft_sampler_probe_proposals = 0;
+	memset(ft_sampler_probe_levels, 0, sizeof ft_sampler_probe_levels);
+	ft_sampler_probe_invalid_sigma = 0;
+	ft_sampler_probe_proposal_range = 0;
+	ft_sampler_probe_negative_x = 0;
+	ft_sampler_probe_min_sigma_bits = UINT64_MAX;
+	ft_sampler_probe_max_sigma_bits = 0;
+	ft_sampler_probe_min_dss_bits = UINT64_MAX;
+	ft_sampler_probe_max_dss_bits = 0;
+	ft_sampler_probe_accepted = 0;
+	ft_sampler_probe_center_ready = 0;
+	ft_sampler_probe_min_mu = fpr_zero;
+	ft_sampler_probe_max_mu = fpr_zero;
+	ft_sampler_probe_min_fraction = fpr_zero;
+	ft_sampler_probe_max_fraction = fpr_zero;
+	ft_sampler_probe_max_residual = fpr_zero;
+	ft_sampler_probe_min_sample = INT64_MAX;
+	ft_sampler_probe_max_sample = INT64_MIN;
+	ft_sampler_probe_sign_attempts = 0;
+	ft_sampler_probe_norm_rejects = 0;
+	ft_sampler_probe_encode_failures = 0;
+	ft_sampler_probe_precast_coefficients = 0;
+	ft_sampler_probe_precast_outside_int16 = 0;
+	ft_sampler_probe_precast_outside_half_q = 0;
+	ft_sampler_probe_precast_min_s1 = INT64_MAX;
+	ft_sampler_probe_precast_max_s1 = INT64_MIN;
+	ft_sampler_probe_precast_min_s2 = INT64_MAX;
+	ft_sampler_probe_precast_max_s2 = INT64_MIN;
+}
+
+void
+falcon_ft_sampler_probe_snapshot(uint64_t *calls, uint64_t *proposals,
+	uint64_t levels[FT_ADAPTIVE_CDF_LEVELS], uint64_t *invalid_sigma,
+	uint64_t *proposal_range, uint64_t *negative_x)
+{
+	unsigned u;
+
+	if (calls != NULL) {
+		*calls = ft_sampler_probe_calls;
+	}
+	if (proposals != NULL) {
+		*proposals = ft_sampler_probe_proposals;
+	}
+	if (levels != NULL) {
+		for (u = 0; u < FT_ADAPTIVE_CDF_LEVELS; u ++) {
+			levels[u] = ft_sampler_probe_levels[u];
+		}
+	}
+	if (invalid_sigma != NULL) {
+		*invalid_sigma = ft_sampler_probe_invalid_sigma;
+	}
+	if (proposal_range != NULL) {
+		*proposal_range = ft_sampler_probe_proposal_range;
+	}
+	if (negative_x != NULL) {
+		*negative_x = ft_sampler_probe_negative_x;
+	}
+}
+
+void
+falcon_ft_sampler_probe_sigma_extrema(uint64_t *min_sigma_bits,
+	uint64_t *max_sigma_bits, uint64_t *min_dss_bits,
+	uint64_t *max_dss_bits)
+{
+	if (min_sigma_bits != NULL) {
+		*min_sigma_bits = ft_sampler_probe_min_sigma_bits;
+	}
+	if (max_sigma_bits != NULL) {
+		*max_sigma_bits = ft_sampler_probe_max_sigma_bits;
+	}
+	if (min_dss_bits != NULL) {
+		*min_dss_bits = ft_sampler_probe_min_dss_bits;
+	}
+	if (max_dss_bits != NULL) {
+		*max_dss_bits = ft_sampler_probe_max_dss_bits;
+	}
+}
+
+void
+falcon_ft_sampler_probe_center_snapshot(uint64_t *accepted,
+	uint64_t *min_mu_bits, uint64_t *max_mu_bits,
+	uint64_t *min_fraction_bits, uint64_t *max_fraction_bits,
+	uint64_t *max_residual_bits, int64_t *min_sample, int64_t *max_sample)
+{
+	if (accepted != NULL) {
+		*accepted = ft_sampler_probe_accepted;
+	}
+	if (min_mu_bits != NULL) {
+		*min_mu_bits = ft_fpr_bits(ft_sampler_probe_min_mu);
+	}
+	if (max_mu_bits != NULL) {
+		*max_mu_bits = ft_fpr_bits(ft_sampler_probe_max_mu);
+	}
+	if (min_fraction_bits != NULL) {
+		*min_fraction_bits = ft_fpr_bits(ft_sampler_probe_min_fraction);
+	}
+	if (max_fraction_bits != NULL) {
+		*max_fraction_bits = ft_fpr_bits(ft_sampler_probe_max_fraction);
+	}
+	if (max_residual_bits != NULL) {
+		*max_residual_bits = ft_fpr_bits(ft_sampler_probe_max_residual);
+	}
+	if (min_sample != NULL) {
+		*min_sample = ft_sampler_probe_min_sample;
+	}
+	if (max_sample != NULL) {
+		*max_sample = ft_sampler_probe_max_sample;
+	}
+}
+
+void
+falcon_ft_sampler_probe_wide_snapshot(uint64_t *sign_attempts,
+	uint64_t *norm_rejects, uint64_t *encode_failures,
+	uint64_t *coefficients, uint64_t *outside_int16,
+	uint64_t *outside_half_q, int64_t *min_s1, int64_t *max_s1,
+	int64_t *min_s2, int64_t *max_s2)
+{
+	if (sign_attempts != NULL) {
+		*sign_attempts = ft_sampler_probe_sign_attempts;
+	}
+	if (norm_rejects != NULL) {
+		*norm_rejects = ft_sampler_probe_norm_rejects;
+	}
+	if (encode_failures != NULL) {
+		*encode_failures = ft_sampler_probe_encode_failures;
+	}
+	if (coefficients != NULL) {
+		*coefficients = ft_sampler_probe_precast_coefficients;
+	}
+	if (outside_int16 != NULL) {
+		*outside_int16 = ft_sampler_probe_precast_outside_int16;
+	}
+	if (outside_half_q != NULL) {
+		*outside_half_q = ft_sampler_probe_precast_outside_half_q;
+	}
+	if (min_s1 != NULL) {
+		*min_s1 = ft_sampler_probe_precast_min_s1;
+	}
+	if (max_s1 != NULL) {
+		*max_s1 = ft_sampler_probe_precast_max_s1;
+	}
+	if (min_s2 != NULL) {
+		*min_s2 = ft_sampler_probe_precast_min_s2;
+	}
+	if (max_s2 != NULL) {
+		*max_s2 = ft_sampler_probe_precast_max_s2;
+	}
+}
+
+void
+falcon_ft_sampler_probe_tree_snapshot(uint64_t *ready, uint64_t *logn,
+	uint64_t *tree_words, uint64_t *leaf_count, uint64_t *invalid_leaf_count,
+	uint64_t *raw_min_bits, uint64_t *raw_max_bits,
+	uint64_t *sigma_min_bits, uint64_t *sigma_max_bits,
+	uint64_t *sigma_sign_bits)
+{
+	if (ready != NULL) {
+		*ready = ft_ffldl_probe_ready;
+	}
+	if (logn != NULL) {
+		*logn = ft_ffldl_probe_logn;
+	}
+	if (tree_words != NULL) {
+		*tree_words = ft_ffldl_probe_tree_words;
+	}
+	if (leaf_count != NULL) {
+		*leaf_count = ft_ffldl_probe_leaf_count;
+	}
+	if (invalid_leaf_count != NULL) {
+		*invalid_leaf_count = ft_ffldl_probe_invalid_leaf_count;
+	}
+	if (raw_min_bits != NULL) {
+		*raw_min_bits = ft_ffldl_probe_raw_min_bits;
+	}
+	if (raw_max_bits != NULL) {
+		*raw_max_bits = ft_ffldl_probe_raw_max_bits;
+	}
+	if (sigma_min_bits != NULL) {
+		*sigma_min_bits = ft_ffldl_probe_sigma_min_bits;
+	}
+	if (sigma_max_bits != NULL) {
+		*sigma_max_bits = ft_ffldl_probe_sigma_max_bits;
+	}
+	if (sigma_sign_bits != NULL) {
+		*sigma_sign_bits = ft_ffldl_probe_sigma_sign_bits;
+	}
+}
+#endif
 
 /*
  * Perform Fast Fourier Sampling for target vector t and LDL tree T.
@@ -1210,8 +1918,19 @@ do_sign(samplerZ samp, void *samp_ctx,
 		 * Compute the signature.
 		 */
 		for (u = 0; u < n; u ++) {
+	#if FT_SAMPLER_ADAPTIVE_PROBE
+			int64_t w1, w2;
+
+			w1 = fpr_rint(t0[u]);
+			w2 = fpr_rint(t1[u]);
+			ft_sampler_probe_precast(w1, 1, q);
+			ft_sampler_probe_precast(w2, 2, q);
+			s1[u] = (int16_t)w1;
+			s2[u] = (int16_t)w2;
+	#else
 			s1[u] = (int16_t)fpr_rint(t0[u]);
 			s2[u] = (int16_t)fpr_rint(t1[u]);
+	#endif
 		}
 	} else {
 		/*
@@ -1253,8 +1972,19 @@ do_sign(samplerZ samp, void *samp_ctx,
 		 * Compute the signature.
 		 */
 		for (u = 0; u < n; u ++) {
+	#if FT_SAMPLER_ADAPTIVE_PROBE
+			int64_t w1, w2;
+
+			w1 = (int64_t)hm[u] - fpr_rint(t0[u]);
+			w2 = -fpr_rint(t1[u]);
+			ft_sampler_probe_precast(w1, 1, q);
+			ft_sampler_probe_precast(w2, 2, q);
+			s1[u] = (int16_t)w1;
+			s2[u] = (int16_t)w2;
+	#else
 			s1[u] = (int16_t)(hm[u] - fpr_rint(t0[u]));
 			s2[u] = (int16_t)-fpr_rint(t1[u]);
+	#endif
 		}
 	}
 }
@@ -1349,7 +2079,7 @@ static const uint64_t CoDF_large[] = {
 	18446744073709551615u
 };
 
-static int
+static int FT_LEGACY_UNUSED
 gaussian0_sampler_large(prng *p)
 {
 	int z;
@@ -1471,7 +2201,7 @@ static const z128 CDF_large[] = {
 	{                    0u,                    0u }
 };
 
-static int
+static int FT_LEGACY_UNUSED
 gaussian0_sampler_large(prng *p)
 {
 	uint64_t hi, lo;
@@ -1548,60 +2278,70 @@ static const z128 CDF0[] = {
 /*
  * This function samples a positive integer z along the distribution
  * D(z) = exp(-(z^2)/(2*sigma0^2)) (with sigma0 = 2).
+ *
+ * CT rewrite: always draw all randomness up front (1 + 16 bytes),
+ * use branchless 136-bit comparison against CDF tables.
+ * No secret-dependent branches or memory access patterns.
  */
 static int
 gaussian0_sampler(prng *p)
 {
 	uint8_t msb;
 	uint64_t hi, lo;
-	int z;
+	int z, result;
+	uint64_t not_found, msb_nz;
 
+	/* Always draw all randomness up front — constant PRNG consumption. */
 	msb = falcon_prng_get_u8(p);
-	if (msb != 0x00) {
-		/*
-		 * The loop below return the sample when the byte drawn is 
-		 * equal to the MSBs of at most one CDF image (i.e. msb != 0x00
-		 * by construction of CDF8 and CDFs).
-		 */
-		for (z = 0; z < (int)sizeof CDF8; z ++) {
-			/*
-			 * We conclude directly when the byte drawn differs
-			 * from all CDF images, since 8 bits are enough to 
-			 * compare it to any CDF image.
-			 */
-			if (msb > CDF8[z]) {
-				return z;
-			}
+	hi = falcon_prng_get_u64(p);
+	lo = falcon_prng_get_u64(p);
 
-			/*
-			 * We draw 128 bits more when the byte drawn is equal
-			 * to the MSBs of a CDF image to compare these two.
-			 */
-			if (msb == CDF8[z]) {
-				hi = falcon_prng_get_u64(p);
-				lo = falcon_prng_get_u64(p);
-				if (hi > CDFs[z].hi
-					|| (hi == CDFs[z].hi
-					&& lo >= CDFs[z].lo))
-				{
-					return z;
-				}
-				return z + 1;
-			}
-		}
+	result = 0;
+	not_found = 1;
+
+	/* CDF8+CDFs: z = 0..5, 136-bit comparison (msb:hi:lo vs CDF8:CDFs) */
+	for (z = 0; z < (int)(sizeof CDF8); z ++) {
+		uint64_t d, msb_gt, msb_eq, hi_gt, hi_eq, lo_ge, ge, sel;
+
+		d = (uint64_t)msb - (uint64_t)CDF8[z];
+		msb_gt = ((uint64_t)CDF8[z] - (uint64_t)msb) >> 63;
+		msb_eq = ~(d | (0 - d)) >> 63;
+
+		d = hi - CDFs[z].hi;
+		hi_gt = (CDFs[z].hi - hi) >> 63;
+		hi_eq = ~(d | (0 - d)) >> 63;
+		lo_ge = ~((lo - CDFs[z].lo) >> 63);
+
+		ge = msb_gt | (msb_eq & (hi_gt | (hi_eq & lo_ge)));
+		sel = ge & not_found;
+		result += (int)(sel * (uint64_t)z);
+		not_found &= ~ge;
 	}
 
 	/*
-	 * Otherwise (case msb == 0x00), we draw 128 bits more and compare 
-	 * it with the CDF images whose the 8 MSBs are equal to 0x00.
+	 * CDF0: z = 6..(6+sizeof(CDF0)-1). CDF images here have a zero top
+	 * byte, so the 136-bit comparison reduces to hi:lo vs CDF0 ONLY when
+	 * msb == 0. If msb != 0 (which can reach this loop, e.g. msb == 1 that
+	 * tied CDF8[5] but failed the hi:lo tie-break), the random value is
+	 * >= every CDF0 image, so it belongs to the first tail bucket (z = 6).
+	 * msb_nz forces that; without it the tail was over-sampled.
 	 */
-	hi = falcon_prng_get_u64(p);
-	lo = falcon_prng_get_u64(p);
-	for (z = 0;; z ++) {
-		if (hi > CDF0[z].hi || (hi == CDF0[z].hi && lo >= CDF0[z].lo)) {
-			return z + (int)sizeof CDF8;
-		}
+	msb_nz = (uint64_t)0 - ((0 - (uint64_t)msb) >> 63); /* all-ones if msb != 0 */
+	for (z = 0; z < (int)(sizeof CDF0 / sizeof CDF0[0]); z ++) {
+		uint64_t d, hi_gt, hi_eq, lo_ge, ge, sel;
+
+		d = hi - CDF0[z].hi;
+		hi_gt = (CDF0[z].hi - hi) >> 63;
+		hi_eq = ~(d | (0 - d)) >> 63;
+		lo_ge = ~((lo - CDF0[z].lo) >> 63);
+
+		ge = (msb_nz | (hi_gt | (hi_eq & lo_ge))) & 1;
+		sel = ge & not_found;
+		result += (int)(sel * (uint64_t)(z + (int)(sizeof CDF8)));
+		not_found &= ~ge;
 	}
+
+	return result;
 }
 
 /*
@@ -1650,47 +2390,77 @@ static const z128 CDF0_large[] = {
 	{                    0u,                    0u }
 };
 
-static int
+static int FT_LEGACY_UNUSED
 gaussian0_sampler_large(prng *p)
 {
 	uint8_t msb;
 	uint64_t hi, lo;
-	int z;
+	int z, result;
+	uint64_t not_found, msb_nz;
 
 	msb = falcon_prng_get_u8(p);
-	if (msb != 0x00) {
-		for (z = 0; z < (int)sizeof CDF8_large; z ++) {
-			if (msb > CDF8_large[z]) {
-				return z;
-			}
-			if (msb == CDF8_large[z]) {
-				hi = falcon_prng_get_u64(p);
-				lo = falcon_prng_get_u64(p);
-				if (hi > CDFs_large[z].hi
-					|| (hi == CDFs_large[z].hi
-					&& lo >= CDFs_large[z].lo))
-				{
-					return z;
-				}
-				return z + 1;
-			}
-		}
-	}
-
 	hi = falcon_prng_get_u64(p);
 	lo = falcon_prng_get_u64(p);
-	for (z = 0;; z ++) {
-		if (hi > CDF0_large[z].hi
-			|| (hi == CDF0_large[z].hi && lo >= CDF0_large[z].lo))
-		{
-			return z + (int)sizeof CDF8_large;
-		}
+
+	result = 0;
+	not_found = 1;
+
+	for (z = 0; z < (int)(sizeof CDF8_large); z ++) {
+		uint64_t d, msb_gt, msb_eq, hi_gt, hi_eq, lo_ge, ge, sel;
+
+		d = (uint64_t)msb - (uint64_t)CDF8_large[z];
+		msb_gt = ((uint64_t)CDF8_large[z] - (uint64_t)msb) >> 63;
+		msb_eq = ~(d | (0 - d)) >> 63;
+
+		d = hi - CDFs_large[z].hi;
+		hi_gt = (CDFs_large[z].hi - hi) >> 63;
+		hi_eq = ~(d | (0 - d)) >> 63;
+		lo_ge = ~((lo - CDFs_large[z].lo) >> 63);
+
+		ge = msb_gt | (msb_eq & (hi_gt | (hi_eq & lo_ge)));
+		sel = ge & not_found;
+		result += (int)(sel * (uint64_t)z);
+		not_found &= ~ge;
 	}
+
+	/* See gaussian0_sampler(): CDF0 images have a zero top byte, so a
+	 * nonzero msb reaching this loop means the value is >= every image and
+	 * belongs to the first tail bucket. Force it via msb_nz. */
+	msb_nz = (uint64_t)0 - ((0 - (uint64_t)msb) >> 63); /* all-ones if msb != 0 */
+	for (z = 0; z < (int)(sizeof CDF0_large / sizeof CDF0_large[0]); z ++) {
+		uint64_t d, hi_gt, hi_eq, lo_ge, ge, sel;
+
+		d = hi - CDF0_large[z].hi;
+		hi_gt = (CDF0_large[z].hi - hi) >> 63;
+		hi_eq = ~(d | (0 - d)) >> 63;
+		lo_ge = ~((lo - CDF0_large[z].lo) >> 63);
+
+		ge = (msb_nz | (hi_gt | (hi_eq & lo_ge))) & 1;
+		sel = ge & not_found;
+		result += (int)(sel * (uint64_t)(z + (int)(sizeof CDF8_large)));
+		not_found &= ~ge;
+	}
+
+	return result;
 }
 
 #endif
 
-#if CT_BEREXP
+static void
+ft_berexp_cutoff_state(uint32_t sw, uint32_t *safe_s, uint32_t *over)
+{
+	*over = (63U - sw) >> 31;
+	*safe_s = sw ^ ((sw ^ 63U) & (0U - *over));
+}
+
+#if FT_SAMPLER_ADAPTIVE_PROBE
+void
+falcon_ft_berexp_cutoff_state(uint32_t sw,
+	uint32_t *safe_s, uint32_t *over)
+{
+	ft_berexp_cutoff_state(sw, safe_s, over);
+}
+#endif
 
 /*
  * Sample a bit with probability exp(-x) for some x >= 0.
@@ -1702,27 +2472,22 @@ BerExp(prng *p, fpr x)
 	fpr r;
 	uint64_t w, z;
 	int b;
-	uint32_t sw;
+	uint32_t over, safe_s, sw;
 
 	/*
 	 * Reduce x modulo log(2): x = s*log(2) + r, with s an integer,
 	 * and 0 <= r < log(2).
 	 */
-	s = fpr_floor(fpr_div(x, fpr_log2));
+	s = fpr_floor(fpr_mul(x, fpr_inv_ln2));
 	r = fpr_sub(x, fpr_mul(fpr_of(s), fpr_log2));
 
 	/*
-	 * It may happen (quite rarely) that s >= 64; if sigma = 1.2
-	 * (the minimum value for sigma), r = 0 and b = 1, then we get
-	 * s >= 64 if the half-Gaussian produced a z >= 13, which happens
-	 * with probability about 0.000000000230383991, which is
-	 * approximatively equal to 2^(-32). In any case, if s >= 64,
-	 * then BerExp will be non-zero with probability less than
-	 * 2^(-64), so we can simply saturate s at 63.
+	 * The proved candidate exponent envelope has 0 <= s <= 393. Use a
+	 * safe shift operand for all states, then force acceptance to zero for
+	 * s >= 64. Random consumption and the remaining operations stay fixed.
 	 */
-	sw = s;
-	sw ^= (sw ^ 63) & -((63 - sw) >> 31);
-	s = (int)sw;
+	sw = (uint32_t)s;
+	ft_berexp_cutoff_state(sw, &safe_s, &over);
 
 	/*
 	 * Sample a bit with probability 2^(-s):
@@ -1731,17 +2496,15 @@ BerExp(prng *p, fpr x)
 	 *  - bit is 1 if the result is zero
 	 */
 	w = falcon_prng_get_u64(p);
-	w ^= (w >> s) << s;
+	w ^= (w >> safe_s) << safe_s;
 	b = 1 - (int)((w | -w) >> 63);
+	b &= 1 ^ (int)over;
 
 	/*
-	 * Sample a bit with probability exp(-r). Since |r| < log(2),
-	 * we can use fpr_exp_small(). The value is lower than 1; we
-	 * scale it to 2^55.
-	 * With combine (with AND) that bit with the previous bit, which
-	 * yields the expected result.
+	 * Sample a bit with probability exp(-r). The fixed-point evaluator
+	 * returns exp(-r)*2^63 and is reduced to the 55-bit comparison domain.
 	 */
-	z = (uint64_t)fpr_rint(fpr_mul(fpr_exp_small(fpr_neg(r)), fpr_p55));
+	z = fpr_expm_scaled(r) >> 8;
 	w = falcon_prng_get_u64(p);
 	w &= ((uint64_t)1 << 55) - 1;
 	b &= (int)((w - z) >> 63);
@@ -1749,64 +2512,6 @@ BerExp(prng *p, fpr x)
 	return b;
 }
 
-#else
-
-/*
- * Sample a bit with probability exp(-x) for some x >= 0.
- */
-static int
-BerExp(prng *p, fpr x)
-{
-	int s, i;
-	fpr r;
-	uint32_t sw;
-	uint64_t z, w;
-
-	/*
-	 * Reduce x modulo log(2): x = s*log(2) + r, with s an integer,
-	 * and 0 <= r < log(2).
-	 */
-	s = fpr_floor(fpr_div(x, fpr_log2));
-	r = fpr_sub(x, fpr_mul(fpr_of(s), fpr_log2));
-
-	/*
-	 * It may happen (quite rarely) that s >= 64; if sigma = 1.2
-	 * (the minimum value for sigma), r = 0 and b = 1, then we get
-	 * s >= 64 if the half-Gaussian produced a z >= 13, which happens
-	 * with probability about 0.000000000230383991, which is
-	 * approximatively equal to 2^(-32). In any case, if s >= 64,
-	 * then BerExp will be non-zero with probability less than
-	 * 2^(-64), so we can simply saturate s at 63.
-	 */
-	sw = s;
-	sw ^= (sw ^ 63) & -((63 - sw) >> 31);
-	s = (int)sw;
-
-	/*
-	 * Compute exp(-r). Since |r| < log(2), we can use fpr_exp_small().
-	 * The value is lower than 1; we scale it to 2^64 and store it shifted
-	 * to the right by s bits. The '-1' makes sure that we fit in 64 bits
-	 * even if r = 0; the bias is negligible since 'r' itself only has
-	 * 53 bits of precision.
-	 */
-	z = (((uint64_t)fpr_rint(fpr_mul(
-		fpr_exp_small(fpr_neg(r)), fpr_p63)) << 1) - 1) >> s;
-
-	/*
-	 * Sample a bit with probability exp(-x). Since x = s*log(2) + r,
-	 * exp(-x) = 2^-s * exp(-r), we compare lazily exp(-x) with the
-	 * PRNG output to limit its consumption, the sign of the difference
-	 * yields the expected result.
-	 */
-	i = 64;
-	do {
-		i -= 8;
-		w = falcon_prng_get_u8(p) - ((z >> i) & (uint64_t)0xFF);
-	} while (!w && i > 0);
-	return (int)(w >> 63);
-}
-
-#endif
 
 /*
  * The sampler produces a random integer that follows a discrete Gaussian
@@ -1886,7 +2591,7 @@ sampler(void *ctx, fpr mu, fpr sigma)
 		 * Note that z and b are integer, and we set sigma0 = 2.
 		 */
 		x = fpr_mul(fpr_sqr(fpr_sub(fpr_of(z), r)), dss);
-		x = fpr_sub(x, fpr_div(fpr_of((z - b) * (z - b)), fpr_of(8)));
+		x = fpr_sub(x, fpr_mul(fpr_of((z - b) * (z - b)), fpr_inv_8));
 		if (BerExp(p, x)) {
 			/*
 			 * Rejection sampling was centered on r, but the
@@ -1897,44 +2602,412 @@ sampler(void *ctx, fpr mu, fpr sigma)
 	}
 }
 
+/* Both supported fpr backends store one IEEE-754 binary64 payload. */
+static uint64_t
+ft_fpr_bits(fpr x)
+{
+	uint64_t w;
+
+	memcpy(&w, &x, sizeof w);
+	return w;
+}
+
+static fpr
+ft_fpr_from_bits(uint64_t w)
+{
+	fpr x;
+
+	memcpy(&x, &w, sizeof x);
+	return x;
+}
+
+static int
+ft_fpr_is_positive_finite(fpr x)
+{
+	uint64_t w, e;
+
+	w = ft_fpr_bits(x);
+	e = (w >> 52) & 0x7FF;
+	return (int)((w >> 63) == 0 && e != 0x7FF && (w << 1) != 0);
+}
+
+static int
+ft_fpr_is_finite(fpr x)
+{
+	uint64_t w;
+
+	w = ft_fpr_bits(x);
+	return (int)(((w >> 52) & 0x7FF) != 0x7FF);
+}
+
+static int
+ft_fpr_is_nonnegative_finite(fpr x)
+{
+	uint64_t w, e;
+
+	w = ft_fpr_bits(x);
+	e = (w >> 52) & 0x7FF;
+	return (int)(e != 0x7FF && ((w >> 63) == 0 || (w << 1) == 0));
+}
+
+#if FT_SAMPLER_ADAPTIVE_PROBE
+static void
+ft_sampler_probe_center_input(fpr mu, fpr fraction)
+{
+	if (!ft_sampler_probe_center_ready) {
+		ft_sampler_probe_min_mu = mu;
+		ft_sampler_probe_max_mu = mu;
+		ft_sampler_probe_min_fraction = fraction;
+		ft_sampler_probe_max_fraction = fraction;
+		ft_sampler_probe_center_ready = 1;
+		return;
+	}
+	if (fpr_lt(mu, ft_sampler_probe_min_mu)) {
+		ft_sampler_probe_min_mu = mu;
+	}
+	if (fpr_lt(ft_sampler_probe_max_mu, mu)) {
+		ft_sampler_probe_max_mu = mu;
+	}
+	if (fpr_lt(fraction, ft_sampler_probe_min_fraction)) {
+		ft_sampler_probe_min_fraction = fraction;
+	}
+	if (fpr_lt(ft_sampler_probe_max_fraction, fraction)) {
+		ft_sampler_probe_max_fraction = fraction;
+	}
+}
+
+static void
+ft_sampler_probe_center_output(fpr mu, int64_t sample)
+{
+	fpr residual;
+	uint64_t bits;
+
+	residual = fpr_sub(mu, fpr_of(sample));
+	bits = ft_fpr_bits(residual) & UINT64_C(0x7FFFFFFFFFFFFFFF);
+	residual = ft_fpr_from_bits(bits);
+	if (fpr_lt(ft_sampler_probe_max_residual, residual)) {
+		ft_sampler_probe_max_residual = residual;
+	}
+	if (sample < ft_sampler_probe_min_sample) {
+		ft_sampler_probe_min_sample = sample;
+	}
+	if (sample > ft_sampler_probe_max_sample) {
+		ft_sampler_probe_max_sample = sample;
+	}
+	ft_sampler_probe_accepted ++;
+}
+
+static void
+ft_sampler_probe_precast(int64_t value, unsigned component, unsigned q)
+{
+	int64_t half_q;
+
+	ft_sampler_probe_precast_coefficients ++;
+	ft_sampler_probe_precast_outside_int16 +=
+		(uint64_t)(value < -32768 || value > 32767);
+	half_q = (int64_t)(q >> 1);
+	ft_sampler_probe_precast_outside_half_q +=
+		(uint64_t)(value < -half_q || value > half_q);
+	if (component == 1) {
+		if (value < ft_sampler_probe_precast_min_s1) {
+			ft_sampler_probe_precast_min_s1 = value;
+		}
+		if (value > ft_sampler_probe_precast_max_s1) {
+			ft_sampler_probe_precast_max_s1 = value;
+		}
+	} else {
+		if (value < ft_sampler_probe_precast_min_s2) {
+			ft_sampler_probe_precast_min_s2 = value;
+		}
+		if (value > ft_sampler_probe_precast_max_s2) {
+			ft_sampler_probe_precast_max_s2 = value;
+		}
+	}
+}
+#endif
+
+#if FT_TERNARY_ADAPTIVE_CDF
+
+/* Constant-operation unsigned comparisons used by the fixed CDF scan. */
+static uint64_t
+ft_ct_lt_u64(uint64_t x, uint64_t y)
+{
+	return (x ^ ((x ^ y) | ((x - y) ^ y))) >> 63;
+}
+
+static uint64_t
+ft_ct_eq_u64(uint64_t x, uint64_t y)
+{
+	uint64_t q;
+
+	q = x ^ y;
+	return 1 ^ ((q | (0 - q)) >> 63);
+}
+
+static uint64_t
+ft_ct_lt_u128(uint64_t x_hi, uint64_t x_lo,
+	uint64_t y_hi, uint64_t y_lo)
+{
+	uint64_t hi_lt, hi_eq, lo_lt;
+
+	hi_lt = ft_ct_lt_u64(x_hi, y_hi);
+	hi_eq = ft_ct_eq_u64(x_hi, y_hi);
+	lo_lt = ft_ct_lt_u64(x_lo, y_lo);
+	return hi_lt | (hi_eq & lo_lt);
+}
+
 /*
- * This alternate sampler implementation accepts larger standard
- * deviations, up to sqrt(5) = 2.236...
- * It should be used for the ternary case.
+ * Interpret one uniform 128-bit value through all proposal tables. All
+ * table entries are read on every call; the appropriate sample is selected
+ * arithmetically afterwards.
+ */
+static void
+ft_adaptive_cdf_samples(uint64_t hi, uint64_t lo,
+	int samples[FT_ADAPTIVE_CDF_LEVELS])
+{
+	unsigned level, u;
+
+	for (level = 0; level < FT_ADAPTIVE_CDF_LEVELS; level ++) {
+		uint64_t z;
+
+		z = 0;
+		for (u = 0; u < FT_ADAPTIVE_CDF_TABLE_LEN; u ++) {
+			z += ft_ct_lt_u128(hi, lo,
+				ft_adaptive_cdf[level][u][0],
+				ft_adaptive_cdf[level][u][1]);
+		}
+		samples[level] = (int)z;
+	}
+}
+
+/*
+ * Select the narrowest proposal satisfying sigma0 >= sigma. Selection is
+ * performed in terms of dss = 1/(2*sigma^2):
+ *
+ * The coefficient bank and proposal CDFs are generated together. A fixed
+ * loop covers all levels, including the candidate Vmax = 768 endpoint.
+ */
+static int
+ft_adaptive_proposal(prng *p, fpr dss, int *k,
+	fpr *inv_2sigma0_sq, unsigned *proposal_level)
+{
+	uint64_t coefficient_bits;
+	unsigned found, level, selected_level;
+	int selected_sample;
+	int samples[FT_ADAPTIVE_CDF_LEVELS];
+	uint64_t hi, lo;
+
+	hi = falcon_prng_get_u64(p);
+	lo = falcon_prng_get_u64(p);
+	ft_adaptive_cdf_samples(hi, lo, samples);
+
+	found = 0;
+	selected_level = 0;
+	selected_sample = 0;
+	coefficient_bits = 0;
+	for (level = 0; level < FT_ADAPTIVE_CDF_LEVELS; level ++) {
+		fpr coefficient;
+		uint64_t mask;
+		unsigned ge, take;
+
+		coefficient = ft_fpr_from_bits(
+			ft_adaptive_cdf_inv_2sigma0_sq_bits[level]);
+		ge = (unsigned)(1 ^ fpr_lt(dss, coefficient));
+		take = (1U ^ found) & ge;
+		mask = (uint64_t)0 - (uint64_t)take;
+		selected_sample += samples[level] * (int)take;
+		selected_level += level * take;
+		coefficient_bits |=
+			ft_adaptive_cdf_inv_2sigma0_sq_bits[level] & mask;
+		found |= ge;
+	}
+
+	*k = selected_sample;
+	*inv_2sigma0_sq = ft_fpr_from_bits(coefficient_bits);
+	*proposal_level = selected_level;
+	return (int)found;
+}
+
+#endif
+
+/*
+ * Ternary one-dimensional sampler. The legacy path uses one proposal with
+ * nominal sigma0^2 = 5. The adaptive path selects one of the nominal
+ * levels { 5, 20, 80, 320, 768 }; the generated CDF and correction exponent use
+ * identical binary64 coefficients. CT-BerExp remains the rejection
+ * kernel.
  */
 static int
 sampler_large(void *ctx, fpr mu, fpr sigma)
 {
-	/*
-	 * See sampler() for comments.
-	 * The two only changes here are:
-	 *  - gaussian0_sampler_large() instead of gaussian0_sampler()
-	 *  - sigma0 = sqrt(5) instead of 2, so 2*sigma0^2 = 10.
-	 */
+	ternary_sampler_context *tsc;
 	prng *p;
 	int s;
 	fpr r, dss;
 
-	p = ctx;
+	tsc = ctx;
+	p = &tsc->p;
+	if (tsc->fault != FT_SAMPLER_FAULT_NONE) {
+		return 0;
+	}
+#if FT_SAMPLER_ADAPTIVE_PROBE
+	ft_sampler_probe_calls ++;
+#endif
+	if (!ft_fpr_is_finite(mu) || !ft_fpr_is_positive_finite(sigma)) {
+		tsc->fault = FT_SAMPLER_FAULT_INVALID_SIGMA;
+#if FT_SAMPLER_ADAPTIVE_PROBE
+		ft_sampler_probe_invalid_sigma ++;
+#endif
+		return 0;
+	}
 
 	s = fpr_floor(mu);
 	r = fpr_sub(mu, fpr_of(s));
 	dss = fpr_inv(fpr_mul(fpr_sqr(sigma), fpr_of(2)));
+#if FT_SAMPLER_ADAPTIVE_PROBE
+	ft_sampler_probe_center_input(mu, r);
+#endif
+	if (!ft_fpr_is_positive_finite(dss)) {
+		tsc->fault = FT_SAMPLER_FAULT_INVALID_SIGMA;
+#if FT_SAMPLER_ADAPTIVE_PROBE
+		ft_sampler_probe_invalid_sigma ++;
+#endif
+		return 0;
+	}
+#if FT_SAMPLER_ADAPTIVE_PROBE
+	{
+		uint64_t sigma_bits, dss_bits;
+
+		sigma_bits = ft_fpr_bits(sigma);
+		dss_bits = ft_fpr_bits(dss);
+		if (sigma_bits < ft_sampler_probe_min_sigma_bits) {
+			ft_sampler_probe_min_sigma_bits = sigma_bits;
+		}
+		if (sigma_bits > ft_sampler_probe_max_sigma_bits) {
+			ft_sampler_probe_max_sigma_bits = sigma_bits;
+		}
+		if (dss_bits < ft_sampler_probe_min_dss_bits) {
+			ft_sampler_probe_min_dss_bits = dss_bits;
+		}
+		if (dss_bits > ft_sampler_probe_max_dss_bits) {
+			ft_sampler_probe_max_dss_bits = dss_bits;
+		}
+	}
+#endif
 
 	for (;;) {
 		int z, b;
 		fpr x;
 
+#if FT_TERNARY_ADAPTIVE_CDF
+		int k;
+		int64_t kk;
+		unsigned proposal_level;
+		fpr inv_2sigma0_sq, delta, gap, tail_term;
+
+		if (!ft_adaptive_proposal(p, dss, &k,
+			&inv_2sigma0_sq, &proposal_level))
+		{
+			tsc->fault = FT_SAMPLER_FAULT_PROPOSAL_RANGE;
+#if FT_SAMPLER_ADAPTIVE_PROBE
+			ft_sampler_probe_proposal_range ++;
+#endif
+			return 0;
+		}
+#if FT_SAMPLER_ADAPTIVE_PROBE
+		ft_sampler_probe_proposals ++;
+		ft_sampler_probe_levels[proposal_level] ++;
+#endif
+		b = falcon_prng_get_u8(p) & 1;
+		z = b ? (1 + k) : -k;
+		delta = b ? fpr_sub(fpr_of(1), r) : r;
+
+		/*
+		 * Manifestly non-negative correction:
+		 *
+		 * x = k^2 * (1/(2*sigma^2) - 1/(2*sigma0^2))
+		 *     + (2*k*delta + delta^2)/(2*sigma^2).
+		 */
+		gap = fpr_sub(dss, inv_2sigma0_sq);
+		if (!ft_fpr_is_nonnegative_finite(gap)) {
+			tsc->fault = FT_SAMPLER_FAULT_PROPOSAL_RANGE;
+#if FT_SAMPLER_ADAPTIVE_PROBE
+			ft_sampler_probe_proposal_range ++;
+#endif
+			return 0;
+		}
+		kk = (int64_t)k * (int64_t)k;
+		x = fpr_mul(fpr_of(kk), gap);
+		tail_term = fpr_add(
+			fpr_mul(fpr_of((int64_t)2 * k), delta),
+			fpr_sqr(delta));
+		x = fpr_add(x, fpr_mul(tail_term, dss));
+#else
 		z = gaussian0_sampler_large(p);
 		b = falcon_prng_get_u8(p) & 1;
 		z = b + ((b << 1) - 1) * z;
 		x = fpr_mul(fpr_sqr(fpr_sub(fpr_of(z), r)), dss);
-		x = fpr_sub(x, fpr_div(fpr_of((z - b) * (z - b)), fpr_of(10)));
+		x = fpr_sub(x,
+			fpr_mul(fpr_of((z - b) * (z - b)), fpr_inv_10));
+#endif
+		if (!ft_fpr_is_nonnegative_finite(x)) {
+			tsc->fault = FT_SAMPLER_FAULT_NEGATIVE_X;
+#if FT_SAMPLER_ADAPTIVE_PROBE
+			ft_sampler_probe_negative_x ++;
+#endif
+			return 0;
+		}
 		if (BerExp(p, x)) {
+	#if FT_SAMPLER_ADAPTIVE_PROBE
+			int sample;
+
+			sample = s + z;
+			ft_sampler_probe_center_output(mu, sample);
+			return sample;
+	#else
 			return s + z;
+	#endif
 		}
 	}
 }
+
+#if FT_SAMPLER_ADAPTIVE_PROBE
+/*
+ * Audit-only direct access to the repaired one-dimensional sampler.
+ * This function is not declared in falcon.h and is absent from normal
+ * builds. It permits deterministic distribution and boundary testing at
+ * synthetic (mu, sigma) points without changing the signing interface.
+ */
+int
+falcon_ft_sampler_probe_draw(const void *seed, size_t seed_len,
+	double mu, double sigma, int32_t *out, size_t count)
+{
+	shake_context sc;
+	ternary_sampler_context tsc;
+	fpr fmu, fsigma;
+	size_t u;
+
+	if ((count != 0 && out == NULL) || sizeof(fpr) != sizeof(double)) {
+		return -100;
+	}
+	memcpy(&fmu, &mu, sizeof fmu);
+	memcpy(&fsigma, &sigma, sizeof fsigma);
+	shake_init(&sc, 512);
+	shake_inject(&sc, seed, seed_len);
+	shake_flip(&sc);
+	if (!falcon_prng_init(&tsc.p, &sc, 0)) {
+		return -101;
+	}
+	tsc.fault = FT_SAMPLER_FAULT_NONE;
+	for (u = 0; u < count; u ++) {
+		out[u] = sampler_large(&tsc, fmu, fsigma);
+		if (tsc.fault != FT_SAMPLER_FAULT_NONE) {
+			return -(int)tsc.fault;
+		}
+	}
+	return 0;
+}
+#endif
 
 #if CLEANSE
 /*
@@ -2088,7 +3161,13 @@ falcon_sign_set_private_key(falcon_sign *fs,
 	 * the currently allocated one, we could reuse the buffers
 	 * instead of releasing and reallocating them.
 	 */
+#if FT_SAMPLER_ADAPTIVE_PROBE
+	ft_ffldl_probe_ready = 0;
+#endif
 	clear_private(fs);
+	if (skey == NULL || len < 1) {
+		goto bad_skey;
+	}
 
 	/*
 	 * First byte defines modulus, degree and compression:
@@ -2116,7 +3195,7 @@ falcon_sign_set_private_key(falcon_sign *fs,
 	fs->ternary = fb >> 7;
 	if (fs->ternary) {
 		fs->q = 18433;
-		if (fs->logn < 3 || fs->logn > 11) {
+		if (fs->logn != 10) {
 			goto bad_skey;
 		}
 	} else {
@@ -2178,8 +3257,18 @@ falcon_sign_set_private_key(falcon_sign *fs,
 		goto bad_skey;
 	}
 
-	load_skey(fs->sk, fs->q, ske[0], ske[1], ske[2], ske[3],
-		fs->logn, fs->ternary, fs->tmp);
+	if (fs->ternary
+		&& !ft_validate_ternary_private(ske[0], ske[1], ske[2], ske[3],
+			(int64_t *)(void *)fs->tmp))
+	{
+		goto bad_skey;
+	}
+	memset(fs->tmp, 0, fs->tmp_len);
+	if (!load_skey(fs->sk, fs->q, ske[0], ske[1], ske[2], ske[3],
+		fs->logn, fs->ternary, fs->tmp))
+	{
+		goto bad_skey;
+	}
 	return 1;
 
 bad_skey:
@@ -2235,7 +3324,15 @@ falcon_sign_generate(falcon_sign *fs, void *sig, size_t sig_max_len, int comp)
 	shake_flip(&fs->sc);
 	falcon_hash_to_point(&fs->sc, fs->q, hm, fs->logn);
 
+#if SIGN_MAX_ATTEMPTS != 0
+	uint32_t sign_loop_attempts = 0;
+#endif
 	for (;;) {
+#if SIGN_MAX_ATTEMPTS != 0
+		if (++ sign_loop_attempts > SIGN_MAX_ATTEMPTS) {
+			return 0;
+		}
+#endif
 		/*
 		 * Signature produces short vectors s1 and s2. The
 		 * signature is acceptable only if the aggregate vector
@@ -2247,6 +3344,7 @@ falcon_sign_generate(falcon_sign *fs, void *sig, size_t sig_max_len, int comp)
 		 * and the public key).
 		 */
 		prng p;
+		ternary_sampler_context tsc;
 		samplerZ samp;
 		void *samp_ctx;
 
@@ -2254,15 +3352,28 @@ falcon_sign_generate(falcon_sign *fs, void *sig, size_t sig_max_len, int comp)
 		 * Normal sampling. We use a fast PRNG seeded from our
 		 * SHAKE context ('rng').
 		 */
-		falcon_prng_init(&p, &fs->rng, 0);
-		samp = fs->ternary ? sampler_large : sampler;
-		samp_ctx = &p;
+		if (fs->ternary) {
+			falcon_prng_init(&tsc.p, &fs->rng, 0);
+			tsc.fault = FT_SAMPLER_FAULT_NONE;
+			samp = sampler_large;
+			samp_ctx = &tsc;
+		} else {
+			falcon_prng_init(&p, &fs->rng, 0);
+			samp = sampler;
+			samp_ctx = &p;
+		}
 
 		/*
 		 * Do the actual signature.
 		 */
+	#if FT_SAMPLER_ADAPTIVE_PROBE
+		ft_sampler_probe_sign_attempts ++;
+	#endif
 		do_sign(samp, samp_ctx, s1, s2,
 			fs->q, fs->sk, hm, fs->logn, fs->ternary, fs->tmp);
+		if (fs->ternary && tsc.fault != FT_SAMPLER_FAULT_NONE) {
+			return 0;
+		}
 
 		/*
 		 * Check that the norm is correct. With our chosen
@@ -2271,8 +3382,29 @@ falcon_sign_generate(falcon_sign *fs, void *sig, size_t sig_max_len, int comp)
 		 * end up with an invalidly large signature, in which
 		 * case we just loop.
 		 */
-		if (falcon_is_short(s1, s2, fs->logn, fs->ternary)) {
-			break;
+		{
+			int short_ok;
+
+			short_ok = falcon_is_short(s1, s2, fs->logn, fs->ternary);
+#ifdef SIGN_NORM_PROBE
+			sign_norm_probe_attempts ++;
+			sign_norm_probe_last_norm2 = sign_norm_probe_compute(
+				s1, s2, fs->logn, fs->ternary);
+			sign_norm_probe_last_bound2 = sign_norm_probe_bound(
+				fs->logn, fs->ternary);
+			if (short_ok) {
+				sign_norm_probe_accepted ++;
+				sign_norm_probe_signatures ++;
+			} else {
+				sign_norm_probe_rejected ++;
+			}
+#endif
+			if (short_ok) {
+				break;
+			}
+	#if FT_SAMPLER_ADAPTIVE_PROBE
+			ft_sampler_probe_norm_rejects ++;
+	#endif
 		}
 	}
 
@@ -2280,6 +3412,9 @@ falcon_sign_generate(falcon_sign *fs, void *sig, size_t sig_max_len, int comp)
 	sig_len = falcon_encode_small(sig_buf + 1, sig_max_len - 1,
 		comp, fs->q, s2, fs->logn);
 	if (sig_len == 0) {
+	#if FT_SAMPLER_ADAPTIVE_PROBE
+		ft_sampler_probe_encode_failures ++;
+	#endif
 		return 0;
 	}
 	sig_buf[0] = (fs->ternary << 7) | (comp << 5) | fs->logn;

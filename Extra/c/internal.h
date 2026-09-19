@@ -156,6 +156,13 @@ void falcon_hash_to_point(shake_context *sc, unsigned q,
 	uint16_t *x, unsigned logn);
 
 /*
+ * Fixed FT1536 verification bound. For ternary logn = 10, falcon_is_short()
+ * accepts exactly when the integer quadratic form is strictly below this
+ * value. The derivation is machine-checked by the Gate A5 tests.
+ */
+#define FALCON_FT1536_NORM_BOUND2   ((int64_t)2093922385)
+
+/*
  * Tell whether a given vector (2N coordinates, in two halves) is
  * acceptable as a signature. This compares the appropriate norm of the
  * vector with the acceptance bound. Returned value is 1 on success
@@ -507,8 +514,8 @@ void falcon_poly_merge_fft(fpr *restrict f,
  * the degree is 1.5*2^logn. The 'full' value MUST be 0 or 1 (other
  * non-zero values are not tolerated).
  *
- * When full = 0, logn must be between 1 and 8 (degree 2 to 256).
- * When full = 1, logn must be between 2 and 9 (degree 6 to 768).
+ * When full = 0, logn must be between 1 and 9 (degree 2 to 512).
+ * When full = 1, logn must be between 2 and 10 (degree 6 to 1536).
  */
 
 /*
@@ -516,7 +523,8 @@ void falcon_poly_merge_fft(fpr *restrict f,
  * polynomial (N coefficients); its storage area is reused to store
  * the FFT3 representation of that polynomial (N/2 complex numbers).
  *
- * 'logn' MUST lie between 2 and 9 (inclusive).
+ * For full = 0, 'logn' MUST lie between 1 and 9 (inclusive). For
+ * full = 1, 'logn' MUST lie between 2 and 10 (inclusive).
  */
 void falcon_FFT3(fpr *f, unsigned logn, unsigned full);
 
@@ -526,7 +534,8 @@ void falcon_FFT3(fpr *f, unsigned logn, unsigned full);
  * real polynomial (N coefficients of type 'fpr') is written over the
  * array.
  *
- * 'logn' MUST lie between 2 and 9 (inclusive).
+ * For full = 0, 'logn' MUST lie between 1 and 9 (inclusive). For
+ * full = 1, 'logn' MUST lie between 2 and 10 (inclusive).
  */
 void falcon_iFFT3(fpr *f, unsigned logn, unsigned full);
 
@@ -824,7 +833,11 @@ falcon_prng_get_u64(prng *p)
 	 * unaligned accesses, we can simply read the data where it is.
 	 */
 #if FALCON_LE_U
-	return *(uint64_t *)(p->buf.d + u);
+	{
+		uint64_t x;
+		memcpy(&x, p->buf.d + u, sizeof x);
+		return x;
+	}
 #else
 	return (uint64_t)p->buf.d[u + 0]
 		| ((uint64_t)p->buf.d[u + 1] << 8)

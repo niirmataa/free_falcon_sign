@@ -60,6 +60,463 @@
 
 #define MKN(logn, full)   ((size_t)(1 + ((full) << 1)) << ((logn) - (full)))
 
+#ifndef TERNARY_KEYGEN_BOUND_SCALE_NUM
+#define TERNARY_KEYGEN_BOUND_SCALE_NUM   105
+#endif
+#ifndef TERNARY_KEYGEN_BOUND_SCALE_DEN
+#define TERNARY_KEYGEN_BOUND_SCALE_DEN   100
+#endif
+
+/*
+ * TRUE_TERNARY_SECRET enables coefficient-domain ternary secrets for the
+ * ternary/trinomial top-level key generator. This is deliberately distinct
+ * from the ternary ring flag: the ring may be ternary/trinomial while the
+ * old keygen used Gaussian-like secrets in the FFT3 embedding.
+ *
+ * TRUE_TERNARY_SECRET_MODE:
+ *   1 = full independent uniform {-1,0,+1} coefficients.
+ *   2 = fixed-weight ternary with n/3 +1, n/3 -1, n/3 zero coefficients.
+ */
+#ifndef TRUE_TERNARY_SECRET
+#define TRUE_TERNARY_SECRET   0
+#endif
+#ifndef TRUE_TERNARY_SECRET_MODE
+#define TRUE_TERNARY_SECRET_MODE   1
+#endif
+#if TRUE_TERNARY_SECRET != 1
+#error This FT1536 branch requires full coefficient-domain ternary secrets
+#endif
+#if TRUE_TERNARY_SECRET_MODE != 1
+#error This FT1536 branch requires independent uniform {-1,0,+1} coefficients
+#endif
+#ifndef TERNARY_KEYGEN_MAX_ATTEMPTS
+#define TERNARY_KEYGEN_MAX_ATTEMPTS   3000000
+#endif
+
+#ifdef FG_DISTRIBUTION_PROBE
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+
+#define FG_PROBE_HIST_RADIUS   128
+#define FG_PROBE_HIST_LEN      ((2 * FG_PROBE_HIST_RADIUS) + 3)
+#define FG_PROBE_OUTCOMES      8
+#define FG_PROBE_TERNARY_VALUES   3
+#define FG_PROBE_N_MAX         1536
+
+enum fg_probe_outcome {
+	FG_PROBE_SUCCESS = 0,
+	FG_PROBE_REJECT_RESULTANT_F,
+	FG_PROBE_REJECT_RESULTANT_G,
+	FG_PROBE_REJECT_NORM,
+	FG_PROBE_REJECT_GS,
+	FG_PROBE_REJECT_PUBLIC,
+	FG_PROBE_REJECT_SOLVE,
+	FG_PROBE_REJECT_LEAF_CERT
+};
+
+static const char *const fg_probe_outcome_names[FG_PROBE_OUTCOMES] = {
+	"success", "resultant_f", "resultant_g", "raw_norm",
+	"gs_norm", "public", "solve", "leaf_cert"
+};
+
+struct fg_probe_stats_s {
+	uint64_t keygen_calls;
+	uint64_t attempts;
+	uint64_t reject_resultant_f;
+	uint64_t reject_resultant_g;
+	uint64_t reject_norm;
+	uint64_t reject_gs;
+	uint64_t reject_public;
+	uint64_t reject_solve;
+	uint64_t reject_leaf_cert;
+	uint64_t successes;
+	uint64_t attempt_limit_hits;
+	uint64_t completed_keygens;
+	uint64_t attempts_in_completed_keygens;
+	uint64_t max_attempts_per_keygen;
+	uint64_t outcome_count[FG_PROBE_OUTCOMES];
+	uint64_t outcome_hist[FG_PROBE_OUTCOMES][2][FG_PROBE_TERNARY_VALUES];
+	uint64_t outcome_index[FG_PROBE_OUTCOMES][2]
+		[FG_PROBE_N_MAX][FG_PROBE_TERNARY_VALUES];
+	uint64_t raw_norm_count;
+	uint64_t raw_norm_min_bits;
+	uint64_t raw_norm_max_bits;
+	uint64_t gs_norm_count;
+	uint64_t gs_norm_min_bits;
+	uint64_t gs_norm_max_bits;
+	uint64_t bound_bits;
+	uint64_t coeff_count_f;
+	uint64_t coeff_count_g;
+	long double sum_f;
+	long double sum_g;
+	long double sumsq_f;
+	long double sumsq_g;
+	int max_abs_f;
+	int max_abs_g;
+	uint64_t hist_f[FG_PROBE_HIST_LEN];
+	uint64_t hist_g[FG_PROBE_HIST_LEN];
+};
+
+static struct fg_probe_stats_s fg_probe_stats;
+static FILE *fg_probe_raw_dump;
+static FILE *fg_probe_attempt_csv;
+
+void
+falcon_fg_probe_reset(void)
+{
+	memset(&fg_probe_stats, 0, sizeof fg_probe_stats);
+}
+
+int
+falcon_fg_probe_attempt_csv_open(const char *path)
+{
+	fg_probe_attempt_csv = fopen(path, "w");
+	if (fg_probe_attempt_csv == NULL) {
+		return 0;
+	}
+	fprintf(fg_probe_attempt_csv,
+		"attempt,outcome,raw_norm_bits,gs_norm_bits,bound_bits,"
+		"weight_f,weight_g,sum_f,sum_g\n");
+	return 1;
+}
+
+void
+falcon_fg_probe_attempt_csv_close(void)
+{
+	if (fg_probe_attempt_csv != NULL) {
+		fclose(fg_probe_attempt_csv);
+		fg_probe_attempt_csv = NULL;
+	}
+}
+
+int
+falcon_fg_probe_raw_dump_open(const char *path)
+{
+	fg_probe_raw_dump = fopen(path, "wb");
+	return fg_probe_raw_dump != NULL;
+}
+
+void
+falcon_fg_probe_raw_dump_close(void)
+{
+	if (fg_probe_raw_dump != NULL) {
+		fclose(fg_probe_raw_dump);
+		fg_probe_raw_dump = NULL;
+	}
+}
+
+static size_t
+fg_probe_hist_index(int x)
+{
+	if (x < -FG_PROBE_HIST_RADIUS) {
+		return 0;
+	}
+	if (x > FG_PROBE_HIST_RADIUS) {
+		return FG_PROBE_HIST_LEN - 1;
+	}
+	return (size_t)(x + FG_PROBE_HIST_RADIUS + 1);
+}
+
+static void
+fg_probe_record_poly(const int16_t *x, size_t n, int is_g)
+{
+	size_t u;
+
+	for (u = 0; u < n; u ++) {
+		int z, az;
+
+		z = x[u];
+		az = z < 0 ? -z : z;
+		if (is_g) {
+			fg_probe_stats.coeff_count_g ++;
+			fg_probe_stats.sum_g += (long double)z;
+			fg_probe_stats.sumsq_g += (long double)z * (long double)z;
+			if (az > fg_probe_stats.max_abs_g) {
+				fg_probe_stats.max_abs_g = az;
+			}
+			fg_probe_stats.hist_g[fg_probe_hist_index(z)] ++;
+		} else {
+			fg_probe_stats.coeff_count_f ++;
+			fg_probe_stats.sum_f += (long double)z;
+			fg_probe_stats.sumsq_f += (long double)z * (long double)z;
+			if (az > fg_probe_stats.max_abs_f) {
+				fg_probe_stats.max_abs_f = az;
+			}
+			fg_probe_stats.hist_f[fg_probe_hist_index(z)] ++;
+		}
+	}
+}
+
+static void
+fg_probe_write_i16le(FILE *f, const int16_t *x, size_t n)
+{
+	size_t u;
+
+	for (u = 0; u < n; u ++) {
+		uint16_t w;
+		unsigned char encoded[2];
+
+		w = (uint16_t)x[u];
+		encoded[0] = (unsigned char)w;
+		encoded[1] = (unsigned char)(w >> 8);
+		(void)fwrite(encoded, 1, sizeof encoded, f);
+	}
+}
+
+static void
+fg_probe_record_success(const int16_t *f, const int16_t *g, size_t n)
+{
+	fg_probe_stats.successes ++;
+	fg_probe_record_poly(f, n, 0);
+	fg_probe_record_poly(g, n, 1);
+	if (fg_probe_raw_dump != NULL) {
+		fg_probe_write_i16le(fg_probe_raw_dump, f, n);
+		fg_probe_write_i16le(fg_probe_raw_dump, g, n);
+	}
+}
+
+static void
+fg_probe_update_extrema(uint64_t bits, uint64_t *count,
+	uint64_t *min_bits, uint64_t *max_bits)
+{
+	if (bits == 0) {
+		return;
+	}
+	if (*count == 0 || bits < *min_bits) {
+		*min_bits = bits;
+	}
+	if (*count == 0 || bits > *max_bits) {
+		*max_bits = bits;
+	}
+	(*count) ++;
+}
+
+static void
+fg_probe_record_attempt(const int16_t *f, const int16_t *g, size_t n,
+	enum fg_probe_outcome outcome, fpr raw_norm, fpr gs_norm, fpr bound)
+{
+	size_t u;
+	uint64_t weight_f, weight_g;
+	int64_t sum_f, sum_g;
+
+	fg_probe_stats.attempts ++;
+	fg_probe_stats.outcome_count[outcome] ++;
+	if (n > FG_PROBE_N_MAX) {
+		abort();
+	}
+	weight_f = 0;
+	weight_g = 0;
+	sum_f = 0;
+	sum_g = 0;
+	for (u = 0; u < n; u ++) {
+		int vf, vg;
+
+		vf = f[u];
+		vg = g[u];
+		if (vf < -1 || vf > 1 || vg < -1 || vg > 1)
+		{
+			abort();
+		}
+		fg_probe_stats.outcome_hist[outcome][0][vf + 1] ++;
+		fg_probe_stats.outcome_hist[outcome][1][vg + 1] ++;
+		fg_probe_stats.outcome_index[outcome][0][u][vf + 1] ++;
+		fg_probe_stats.outcome_index[outcome][1][u][vg + 1] ++;
+		weight_f += vf != 0;
+		weight_g += vg != 0;
+		sum_f += vf;
+		sum_g += vg;
+	}
+	fg_probe_update_extrema((uint64_t)raw_norm,
+		&fg_probe_stats.raw_norm_count,
+		&fg_probe_stats.raw_norm_min_bits,
+		&fg_probe_stats.raw_norm_max_bits);
+	fg_probe_update_extrema((uint64_t)gs_norm,
+		&fg_probe_stats.gs_norm_count,
+		&fg_probe_stats.gs_norm_min_bits,
+		&fg_probe_stats.gs_norm_max_bits);
+	if (bound != 0) {
+		fg_probe_stats.bound_bits = (uint64_t)bound;
+	}
+	if (fg_probe_attempt_csv != NULL) {
+		fprintf(fg_probe_attempt_csv,
+			"%llu,%s,0x%016llx,0x%016llx,0x%016llx,%llu,%llu,%lld,%lld\n",
+			(unsigned long long)fg_probe_stats.attempts,
+			fg_probe_outcome_names[outcome],
+			(unsigned long long)(uint64_t)raw_norm,
+			(unsigned long long)(uint64_t)gs_norm,
+			(unsigned long long)(uint64_t)bound,
+			(unsigned long long)weight_f,
+			(unsigned long long)weight_g,
+			(long long)sum_f, (long long)sum_g);
+	}
+	if (outcome == FG_PROBE_SUCCESS) {
+		fg_probe_record_success(f, g, n);
+	}
+}
+
+static void
+fg_probe_record_keygen_complete(uint64_t attempts)
+{
+	fg_probe_stats.completed_keygens ++;
+	fg_probe_stats.attempts_in_completed_keygens += attempts;
+	if (attempts > fg_probe_stats.max_attempts_per_keygen) {
+		fg_probe_stats.max_attempts_per_keygen = attempts;
+	}
+}
+
+static long double
+fg_probe_mean(long double sum, uint64_t n)
+{
+	return n == 0 ? 0 : sum / (long double)n;
+}
+
+static long double
+fg_probe_stddev(long double sum, long double sumsq, uint64_t n)
+{
+	long double mean, var;
+
+	if (n == 0) {
+		return 0;
+	}
+	mean = sum / (long double)n;
+	var = (sumsq / (long double)n) - mean * mean;
+	return var <= 0 ? 0 : sqrtl(var);
+}
+
+static uint64_t
+fg_probe_attempt_hist_total(int is_g, int value_index)
+{
+	size_t outcome;
+	uint64_t total;
+
+	total = 0;
+	for (outcome = 0; outcome < FG_PROBE_OUTCOMES; outcome ++) {
+		total += fg_probe_stats.outcome_hist[outcome][is_g][value_index];
+	}
+	return total;
+}
+
+void
+falcon_fg_probe_write_csv(const char *summary_path, const char *hist_path)
+{
+	FILE *f;
+	size_t u;
+	uint64_t total_rejects;
+
+	total_rejects = fg_probe_stats.reject_resultant_f
+		+ fg_probe_stats.reject_resultant_g
+		+ fg_probe_stats.reject_norm
+		+ fg_probe_stats.reject_gs
+		+ fg_probe_stats.reject_public
+		+ fg_probe_stats.reject_solve;
+
+	f = fopen(summary_path, "w");
+	if (f == NULL) {
+		perror(summary_path);
+		return;
+	}
+	fprintf(f, "metric,value\n");
+	fprintf(f, "keygen_calls,%llu\n", (unsigned long long)fg_probe_stats.keygen_calls);
+	fprintf(f, "attempts,%llu\n", (unsigned long long)fg_probe_stats.attempts);
+	fprintf(f, "successes,%llu\n", (unsigned long long)fg_probe_stats.successes);
+	fprintf(f, "attempt_limit_hits,%llu\n",
+		(unsigned long long)fg_probe_stats.attempt_limit_hits);
+	fprintf(f, "completed_keygens,%llu\n",
+		(unsigned long long)fg_probe_stats.completed_keygens);
+	fprintf(f, "attempts_in_completed_keygens,%llu\n",
+		(unsigned long long)fg_probe_stats.attempts_in_completed_keygens);
+	fprintf(f, "max_attempts_per_keygen,%llu\n",
+		(unsigned long long)fg_probe_stats.max_attempts_per_keygen);
+	fprintf(f, "total_rejects,%llu\n", (unsigned long long)total_rejects);
+	fprintf(f, "reject_resultant_f,%llu\n", (unsigned long long)fg_probe_stats.reject_resultant_f);
+	fprintf(f, "reject_resultant_g,%llu\n", (unsigned long long)fg_probe_stats.reject_resultant_g);
+	fprintf(f, "reject_norm,%llu\n", (unsigned long long)fg_probe_stats.reject_norm);
+	fprintf(f, "reject_gs,%llu\n", (unsigned long long)fg_probe_stats.reject_gs);
+	fprintf(f, "reject_public,%llu\n", (unsigned long long)fg_probe_stats.reject_public);
+	fprintf(f, "reject_solve,%llu\n", (unsigned long long)fg_probe_stats.reject_solve);
+	fprintf(f, "coeff_count_f,%llu\n", (unsigned long long)fg_probe_stats.coeff_count_f);
+	fprintf(f, "coeff_count_g,%llu\n", (unsigned long long)fg_probe_stats.coeff_count_g);
+	fprintf(f, "mean_f,%.18Lf\n", fg_probe_mean(fg_probe_stats.sum_f, fg_probe_stats.coeff_count_f));
+	fprintf(f, "mean_g,%.18Lf\n", fg_probe_mean(fg_probe_stats.sum_g, fg_probe_stats.coeff_count_g));
+	fprintf(f, "stddev_f,%.18Lf\n", fg_probe_stddev(fg_probe_stats.sum_f, fg_probe_stats.sumsq_f, fg_probe_stats.coeff_count_f));
+	fprintf(f, "stddev_g,%.18Lf\n", fg_probe_stddev(fg_probe_stats.sum_g, fg_probe_stats.sumsq_g, fg_probe_stats.coeff_count_g));
+	fprintf(f, "max_abs_f,%d\n", fg_probe_stats.max_abs_f);
+	fprintf(f, "max_abs_g,%d\n", fg_probe_stats.max_abs_g);
+	fprintf(f, "raw_norm_count,%llu\n",
+		(unsigned long long)fg_probe_stats.raw_norm_count);
+	fprintf(f, "raw_norm_min_bits,0x%016llx\n",
+		(unsigned long long)fg_probe_stats.raw_norm_min_bits);
+	fprintf(f, "raw_norm_max_bits,0x%016llx\n",
+		(unsigned long long)fg_probe_stats.raw_norm_max_bits);
+	fprintf(f, "gs_norm_count,%llu\n",
+		(unsigned long long)fg_probe_stats.gs_norm_count);
+	fprintf(f, "gs_norm_min_bits,0x%016llx\n",
+		(unsigned long long)fg_probe_stats.gs_norm_min_bits);
+	fprintf(f, "gs_norm_max_bits,0x%016llx\n",
+		(unsigned long long)fg_probe_stats.gs_norm_max_bits);
+	fprintf(f, "bound_bits,0x%016llx\n",
+		(unsigned long long)fg_probe_stats.bound_bits);
+	fclose(f);
+
+	f = fopen(hist_path, "w");
+	if (f == NULL) {
+		perror(hist_path);
+		return;
+	}
+	fprintf(f, "coefficient,accepted_f_count,accepted_g_count,"
+		"attempt_f_count,attempt_g_count\n");
+	fprintf(f, "UNDERFLOW,%llu,%llu,0,0\n",
+		(unsigned long long)fg_probe_stats.hist_f[0],
+		(unsigned long long)fg_probe_stats.hist_g[0]);
+	for (u = 1; u < FG_PROBE_HIST_LEN - 1; u ++) {
+		int z;
+
+		z = (int)u - FG_PROBE_HIST_RADIUS - 1;
+		fprintf(f, "%d,%llu,%llu,%llu,%llu\n", z,
+			(unsigned long long)fg_probe_stats.hist_f[u],
+			(unsigned long long)fg_probe_stats.hist_g[u],
+			(unsigned long long)(z >= -1 && z <= 1
+				? fg_probe_attempt_hist_total(0, z + 1) : 0),
+			(unsigned long long)(z >= -1 && z <= 1
+				? fg_probe_attempt_hist_total(1, z + 1) : 0));
+		}
+	fprintf(f, "OVERFLOW,%llu,%llu,0,0\n",
+		(unsigned long long)fg_probe_stats.hist_f[FG_PROBE_HIST_LEN - 1],
+		(unsigned long long)fg_probe_stats.hist_g[FG_PROBE_HIST_LEN - 1]);
+	fclose(f);
+}
+
+void
+falcon_fg_probe_write_index_csv(const char *path)
+{
+	FILE *f;
+	size_t outcome, u;
+
+	f = fopen(path, "w");
+	if (f == NULL) {
+		perror(path);
+		return;
+	}
+	fprintf(f, "outcome,index,f_neg1,f_zero,f_pos1,g_neg1,g_zero,g_pos1\n");
+	for (outcome = 0; outcome < FG_PROBE_OUTCOMES; outcome ++) {
+		for (u = 0; u < FG_PROBE_N_MAX; u ++) {
+			fprintf(f, "%s,%zu,%llu,%llu,%llu,%llu,%llu,%llu\n",
+				fg_probe_outcome_names[outcome], u,
+				(unsigned long long)fg_probe_stats.outcome_index[outcome][0][u][0],
+				(unsigned long long)fg_probe_stats.outcome_index[outcome][0][u][1],
+				(unsigned long long)fg_probe_stats.outcome_index[outcome][0][u][2],
+				(unsigned long long)fg_probe_stats.outcome_index[outcome][1][u][0],
+				(unsigned long long)fg_probe_stats.outcome_index[outcome][1][u][1],
+				(unsigned long long)fg_probe_stats.outcome_index[outcome][1][u][2]);
+		}
+	}
+	fclose(f);
+}
+#endif
+
 #if CLEANSE
 /*
  * Cleanse a memory region by overwriting it with zeros.
@@ -2090,16 +2547,6 @@ modp_sub(uint32_t a, uint32_t b, uint32_t p)
 	d = a - b;
 	d += p & -(d >> 31);
 	return d;
-}
-
-/*
- * Halving modulo p.
- */
-static inline uint32_t
-modp_half(uint32_t a, uint32_t p)
-{
-	a += p & -(a & 1);
-	return a >> 1;
 }
 
 /*
@@ -4287,6 +4734,85 @@ get_rng_u64(shake_context *rng)
 #endif
 }
 
+#if TRUE_TERNARY_SECRET
+#if TRUE_TERNARY_SECRET_MODE == 2
+static uint32_t
+get_rng_u32_bounded(shake_context *rng, uint32_t bound)
+{
+	uint32_t r, lim;
+
+	/* Rejection sampling avoids modulo bias. */
+	lim = (uint32_t)(-bound) % bound;
+	do {
+		r = (uint32_t)get_rng_u64(rng);
+	} while (r < lim);
+	return r % bound;
+}
+#endif
+
+static void
+sample_true_ternary_secret(falcon_keygen *fk, int16_t *v, size_t n)
+{
+	size_t u;
+
+#if TRUE_TERNARY_SECRET_MODE == 1
+	/* Full independent uniform {-1,0,+1}; 2-bit rejection sampling. */
+	uint64_t rb;
+	unsigned rbits;
+
+	rb = 0;
+	rbits = 0;
+	for (u = 0; u < n; u ++) {
+		uint32_t x;
+
+		for (;;) {
+			if (rbits < 2) {
+				rb = get_rng_u64(&fk->rng);
+				rbits = 64;
+			}
+			x = (uint32_t)rb & 3U;
+			rb >>= 2;
+			rbits -= 2;
+			if (x < 3U) {
+				v[u] = (int16_t)((int)x - 1);
+				break;
+			}
+		}
+	}
+#elif TRUE_TERNARY_SECRET_MODE == 2
+	{
+		size_t pos, neg;
+
+		/* Ternary-ring degrees are n=3*2^k, so exact thirds exist. */
+		pos = n / 3;
+		neg = n / 3;
+		for (u = 0; u < pos; u ++) {
+			v[u] = 1;
+		}
+		for (; u < pos + neg; u ++) {
+			v[u] = -1;
+		}
+		for (; u < n; u ++) {
+			v[u] = 0;
+		}
+
+		/* Fisher-Yates shuffle with unbiased bounded RNG. */
+		for (u = n; u > 1; u --) {
+			uint32_t j;
+			int16_t t;
+
+			j = get_rng_u32_bounded(&fk->rng, (uint32_t)u);
+			t = v[u - 1];
+			v[u - 1] = v[j];
+			v[j] = t;
+		}
+	}
+#else
+#error Unsupported TRUE_TERNARY_SECRET_MODE
+#endif
+}
+#endif
+
 /*
  * Table below incarnates a discrete Gaussian distribution:
  *    D(x) = exp(-(x^2)/(2*sigma^2))
@@ -4448,6 +4974,16 @@ temp_size(unsigned logn, int ternary)
 	unsigned depth;
 
 	gmax = 0;
+
+	/* Reserve the mandatory FT1536 leaf-certificate workspace in the
+	 * keygen context so key generation has no optional allocation gate. */
+	if (ternary && logn == 10) {
+		size_t n, cur;
+
+		n = MKN(logn, 1);
+		cur = (22 * n + 4 * (n / 3)) * sizeof(fpr);
+		gmax = cur > gmax ? cur : gmax;
+	}
 
 	/*
 	 * Compute memory requirements for make_fg() at each depth.
@@ -4613,8 +5149,11 @@ falcon_keygen_new(unsigned logn, int ternary)
 {
 	falcon_keygen *fk;
 
+	if (ternary != 0 && ternary != 1) {
+		return NULL;
+	}
 	if (ternary) {
-		if (logn < 3 || logn > 11) {
+		if (logn != 10) {
 			return NULL;
 		}
 	} else {
@@ -5739,16 +6278,18 @@ solve_NTRU_intermediate(falcon_keygen *fk,
 		 */
 		max_kx = 0;
 		for (u = 0; u < n; u ++) {
-			int64_t kx;
+				int64_t kx;
+				uint64_t ukx;
 
-			kx = fpr_rint(rt2[u]);
-			if (kx < 0) {
-				kx = -kx;
+				kx = fpr_rint(rt2[u]);
+				ukx = (uint64_t)kx;
+				if (kx < 0) {
+					ukx = (uint64_t)0 - ukx;
+				}
+				if (ukx > max_kx) {
+					max_kx = ukx;
+				}
 			}
-			if ((uint64_t)kx > max_kx) {
-				max_kx = kx;
-			}
-		}
 		if (max_kx >= ((uint64_t)1 << 62)) {
 			return 0;
 		}
@@ -5775,10 +6316,17 @@ solve_NTRU_intermediate(falcon_keygen *fk,
 			int64_t kx, ks;
 
 			kx = fpr_rint(rt2[u]);
-			if (kx < 0) {
-				ks = -(int32_t)((-kx) >> scale_k);
-			} else {
-				ks = (int32_t)(kx >> scale_k);
+			{
+				uint64_t ukx;
+
+				ukx = (uint64_t)kx;
+				if (kx < 0) {
+					ukx = (uint64_t)0 - ukx;
+				}
+				ks = (int32_t)(ukx >> scale_k);
+				if (kx < 0) {
+					ks = -ks;
+				}
 			}
 			k[u] = ks;
 		}
@@ -6878,6 +7426,357 @@ poly_small_mkgauss(falcon_keygen *fk, int16_t *f, unsigned logn)
 	}
 }
 
+static void
+smallints_to_fpr_keygen(fpr *r, const int16_t *t, unsigned logn, unsigned ter)
+{
+	size_t n, u;
+	n = MKN(logn, ter);
+	for (u = 0; u < n; u ++) {
+		r[u] = fpr_of(t[u]);
+	}
+}
+
+/*
+ * ====================================================================
+ * FT1536 LEAF CERTIFICATE — CONSTANTS
+ * ====================================================================
+ */
+#define FT1536_LEAF_MIN_BITS       UINT64_C(0x4090000053700377)
+#define FT1536_LEAF_MAX_BITS       UINT64_C(0x4114444d1a037d50)
+#define FT1536_KEYGEN_Q_SQUARED    ((int64_t)339775489)
+
+/*
+ * ====================================================================
+ * FPR BITCAST HELPERS — DUPLICATED FROM falcon-sign.c
+ * ====================================================================
+ */
+static inline uint64_t
+ft_fpr_bits_keygen(fpr x)
+{
+	uint64_t w;
+	memcpy(&w, &x, sizeof w);
+	return w;
+}
+
+static inline fpr
+ft_fpr_from_bits_keygen(uint64_t w)
+{
+	fpr x;
+	memcpy(&x, &w, sizeof x);
+	return x;
+}
+
+static inline int
+ft_fpr_is_positive_finite_keygen(fpr x)
+{
+	uint64_t w, e;
+	w = ft_fpr_bits_keygen(x);
+	e = (w >> 52) & 0x7FF;
+	return (int)((w >> 63) == 0 && e != 0x7FF && (w << 1) != 0);
+}
+
+static fpr
+ft_stable_positive_keygen(fpr x, uint32_t *bad)
+{
+	uint64_t mask, xb;
+	uint32_t valid;
+	valid = (uint32_t)ft_fpr_is_positive_finite_keygen(x);
+	*bad |= valid ^ 1U;
+	mask = (uint64_t)0 - (uint64_t)valid;
+	xb = ft_fpr_bits_keygen(x);
+	return ft_fpr_from_bits_keygen(
+		(xb & mask) | (ft_fpr_bits_keygen(fpr_one) & ~mask));
+}
+
+static void
+ft_stable_binary_inplace_keygen(fpr *values, size_t n,
+	fpr *scratch, uint32_t *bad)
+{
+	size_t hn, u;
+	if (n == 1) {
+		values[0] = ft_stable_positive_keygen(values[0], bad);
+		return;
+	}
+	hn = n >> 1;
+	for (u = 0; u < hn; u ++) {
+		fpr a, b, product, sum;
+		a = ft_stable_positive_keygen(values[(u << 1) + 0], bad);
+		b = ft_stable_positive_keygen(values[(u << 1) + 1], bad);
+		sum = ft_stable_positive_keygen(fpr_add(a, b), bad);
+		product = ft_stable_positive_keygen(fpr_mul(a, b), bad);
+		scratch[u] = ft_stable_positive_keygen(fpr_half(sum), bad);
+		scratch[u + hn] = ft_stable_positive_keygen(
+			fpr_div(fpr_double(product), sum), bad);
+	}
+	memcpy(values, scratch, n * sizeof *values);
+	ft_stable_binary_inplace_keygen(values, hn, scratch, bad);
+	ft_stable_binary_inplace_keygen(values + hn, hn, scratch, bad);
+}
+
+static void
+ft_stable_top_branch_keygen(const fpr *roots, fpr *leaves,
+	fpr *scratch, uint32_t *bad)
+{
+	fpr three;
+	size_t u, v;
+	three = fpr_of(3);
+	for (u = 0, v = 0; u < 768; u += 3, v ++) {
+		fpr a, ab, abc, ac, b, bc, c, e1, e2;
+		a = ft_stable_positive_keygen(roots[u + 0], bad);
+		b = ft_stable_positive_keygen(roots[u + 1], bad);
+		c = ft_stable_positive_keygen(roots[u + 2], bad);
+		e1 = ft_stable_positive_keygen(fpr_add(fpr_add(a, b), c), bad);
+		ab = ft_stable_positive_keygen(fpr_mul(a, b), bad);
+		ac = ft_stable_positive_keygen(fpr_mul(a, c), bad);
+		bc = ft_stable_positive_keygen(fpr_mul(b, c), bad);
+		e2 = ft_stable_positive_keygen(fpr_add(fpr_add(ab, ac), bc), bad);
+		abc = ft_stable_positive_keygen(fpr_mul(ab, c), bad);
+		leaves[v] = ft_stable_positive_keygen(fpr_div(e1, three), bad);
+		leaves[256 + v] = ft_stable_positive_keygen(fpr_div(e2, e1), bad);
+		leaves[512 + v] = ft_stable_positive_keygen(
+			fpr_div(fpr_mul(three, abc), e2), bad);
+	}
+	ft_stable_binary_inplace_keygen(leaves + 0, 256, scratch, bad);
+	ft_stable_binary_inplace_keygen(leaves + 256, 256, scratch, bad);
+	ft_stable_binary_inplace_keygen(leaves + 512, 256, scratch, bad);
+}
+
+/*
+ * ====================================================================
+ * LDL HELPERS — DUPLICATED FROM falcon-sign.c (with _keygen suffix)
+ * ====================================================================
+ */
+static void
+LDL_dim2_fft3_keygen(fpr *restrict d11, fpr *restrict l10,
+	const fpr *restrict g00, const fpr *restrict g10,
+	const fpr *restrict g11, unsigned logn, unsigned full)
+{
+	size_t n;
+	n = MKN(logn, full);
+	memcpy(l10, g10, n * sizeof *g10);
+	falcon_poly_div_autoadj_fft3(l10, g00, logn, full);
+	memcpy(d11, g10, n * sizeof *g10);
+	falcon_poly_muladj_fft3(d11, l10, logn, full);
+	falcon_poly_neg_fft3(d11, logn, full);
+	falcon_poly_add_fft3(d11, g11, logn, full);
+}
+
+static void
+LDL_dim3_fft3_keygen(fpr *restrict d11, fpr *restrict d22,
+	fpr *restrict l10, fpr *restrict l20, fpr *restrict l21,
+	const fpr *restrict g00, const fpr *restrict g10,
+	const fpr *restrict g11, const fpr *restrict g20,
+	const fpr *restrict g21, const fpr *restrict g22,
+	unsigned logn, unsigned full, fpr *restrict tmp)
+{
+	size_t n;
+	n = MKN(logn, full);
+	LDL_dim2_fft3_keygen(d11, l10, g00, g10, g11, logn, full);
+	memcpy(l20, g20, n * sizeof *g20);
+	falcon_poly_div_autoadj_fft3(l20, g00, logn, full);
+	memcpy(l21, g20, n * sizeof *g20);
+	falcon_poly_muladj_fft3(l21, g10, logn, full);
+	falcon_poly_div_autoadj_fft3(l21, g00, logn, full);
+	falcon_poly_neg_fft3(l21, logn, full);
+	falcon_poly_add_fft3(l21, g21, logn, full);
+	falcon_poly_div_autoadj_fft3(l21, d11, logn, full);
+	memcpy(d22, l20, n * sizeof *l20);
+	falcon_poly_muladj_fft3(d22, g20, logn, full);
+	falcon_poly_neg_fft3(d22, logn, full);
+	falcon_poly_add_fft3(d22, g22, logn, full);
+	memcpy(tmp, l21, n * sizeof *l21);
+	falcon_poly_mulselfadj_fft3(tmp, logn, full);
+	falcon_poly_mul_autoadj_fft3(tmp, d11, logn, full);
+	falcon_poly_sub_fft3(d22, tmp, logn, full);
+}
+
+static size_t
+ffLDL_inner_fft3_keygen(fpr *restrict tree, const fpr *restrict g00,
+	const fpr *restrict g10, const fpr *restrict g11,
+	unsigned logn, fpr *restrict tmp)
+{
+	size_t n, hn, s;
+	fpr *t0, *t1, *t2;
+	n = (size_t)1 << logn;
+	hn = n >> 1;
+	if (logn == 1) {
+		LDL_dim2_fft3_keygen(tmp, tree, g00, g10, g11, logn, 0);
+		tree[2] = g00[0];
+		tree[3] = tmp[0];
+		return 4;
+	}
+	s = n;
+	t0 = tmp;
+	t1 = tmp + hn;
+	t2 = t1 + hn;
+	falcon_poly_split_deep_fft3(t0, t1, g00, logn);
+	falcon_poly_adj_fft3(t1, logn - 1, 0);
+	s += ffLDL_inner_fft3_keygen(tree + s, t0, t1, t0, logn - 1, t2);
+	LDL_dim2_fft3_keygen(t2, tree, g00, g10, g11, logn, 0);
+	falcon_poly_split_deep_fft3(t0, t1, t2, logn);
+	falcon_poly_adj_fft3(t1, logn - 1, 0);
+	s += ffLDL_inner_fft3_keygen(tree + s, t0, t1, t0, logn - 1, t2);
+	return s;
+}
+
+static size_t
+ffLDL_depth1_fft3_keygen(fpr *restrict tree, const fpr *restrict g00,
+	const fpr *restrict g10, const fpr *restrict g11,
+	const fpr *restrict g20, const fpr *restrict g21,
+	const fpr *restrict g22, unsigned logn, fpr *restrict tmp)
+{
+	size_t n, hn, s;
+	fpr *l10, *l20, *l21, *d11, *d22;
+	fpr *t0, *t1, *t2;
+	n = (size_t)1 << logn;
+	hn = n >> 1;
+	l10 = tree;
+	l20 = l10 + n;
+	l21 = l20 + n;
+	d11 = tmp;
+	d22 = d11 + n;
+	t0 = d22 + n;
+	t1 = t0 + hn;
+	t2 = t1 + hn;
+	s = 3 * n;
+	LDL_dim3_fft3_keygen(d11, d22, l10, l20, l21,
+		g00, g10, g11, g20, g21, g22, logn, 0, t2);
+	falcon_poly_split_deep_fft3(t0, t1, g00, logn);
+	falcon_poly_adj_fft3(t1, logn - 1, 0);
+	s += ffLDL_inner_fft3_keygen(tree + s, t0, t1, t0, logn - 1, t2);
+	falcon_poly_split_deep_fft3(t0, t1, d11, logn);
+	falcon_poly_adj_fft3(t1, logn - 1, 0);
+	s += ffLDL_inner_fft3_keygen(tree + s, t0, t1, t0, logn - 1, t2);
+	falcon_poly_split_deep_fft3(t0, t1, d22, logn);
+	falcon_poly_adj_fft3(t1, logn - 1, 0);
+	s += ffLDL_inner_fft3_keygen(tree + s, t0, t1, t0, logn - 1, t2);
+	return s;
+}
+
+static size_t
+ffLDL_fft3_keygen(fpr *restrict tree, const fpr *restrict g00,
+	const fpr *restrict g10, const fpr *restrict g11,
+	unsigned logn, fpr *restrict tmp)
+{
+	size_t n, tn, s;
+	fpr *l10, *d11, *t0, *t1, *t2, *t3;
+	n = (size_t)3 << (logn - 1);
+	tn = (size_t)1 << (logn - 1);
+	l10 = tree;
+	s = n;
+	t0 = tmp;
+	t1 = t0 + tn;
+	t2 = t1 + tn;
+	t3 = t2 + tn;
+	falcon_poly_split_top_fft3(t0, t1, t2, g00, logn);
+	falcon_poly_adj_fft3(t1, logn - 1, 0);
+	falcon_poly_adj_fft3(t2, logn - 1, 0);
+	s += ffLDL_depth1_fft3_keygen(tree + s, t0, t1, t0, t2, t1, t0, logn - 1, t3);
+	d11 = t3;
+	LDL_dim2_fft3_keygen(d11, l10, g00, g10, g11, logn, 1);
+	falcon_poly_split_top_fft3(t0, t1, t2, d11, logn);
+	falcon_poly_adj_fft3(t1, logn - 1, 0);
+	falcon_poly_adj_fft3(t2, logn - 1, 0);
+	s += ffLDL_depth1_fft3_keygen(tree + s, t0, t1, t0, t2, t1, t0, logn - 1, t3);
+	return s;
+}
+
+/*
+ * ====================================================================
+ * FT1536 KEYGEN LEAF CERTIFICATE — MAIN ENGINE
+ * ====================================================================
+ */
+static int
+ft_keygen_leaf_certificate(fpr *tmp,
+	const int16_t *f, const int16_t *g,
+	const int16_t *F, const int16_t *G,
+	unsigned logn, unsigned ter)
+{
+	size_t n, hn, u;
+	uint32_t bad;
+	fpr q_squared;
+	n = MKN(logn, ter);
+	hn = n >> 1;
+	if (logn != 10 || n != 1536 || hn != 768 || ter != 1) {
+		return 0;
+	}
+	bad = 0;
+	{
+		fpr *tf, *tg, *tF, *tG;
+		fpr *g00, *g10, *g11, *gxx;
+		fpr *tree, *t3, *leaves, *scratch;
+		size_t treesize;
+		tf = tmp;
+		tg = tf + n;
+		tF = tg + n;
+		tG = tF + n;
+		g00 = tG + n;
+		g10 = g00 + n;
+		g11 = g10 + n;
+		gxx = g11 + n;
+		smallints_to_fpr_keygen(tf, f, logn, 1);
+		smallints_to_fpr_keygen(tg, g, logn, 1);
+		smallints_to_fpr_keygen(tF, F, logn, 1);
+		smallints_to_fpr_keygen(tG, G, logn, 1);
+		falcon_FFT3(tf, logn, 1);
+		falcon_FFT3(tg, logn, 1);
+		falcon_FFT3(tF, logn, 1);
+		falcon_FFT3(tG, logn, 1);
+		falcon_poly_neg_fft3(tf, logn, 1);
+		falcon_poly_neg_fft3(tF, logn, 1);
+		memcpy(g00, tg, n * sizeof *tg);
+		falcon_poly_mulselfadj_fft3(g00, logn, 1);
+		memcpy(gxx, tf, n * sizeof *tf);
+		falcon_poly_mulselfadj_fft3(gxx, logn, 1);
+		falcon_poly_add_fft3(g00, gxx, logn, 1);
+		memcpy(g10, tG, n * sizeof *tG);
+		falcon_poly_muladj_fft3(g10, tg, logn, 1);
+		memcpy(gxx, tF, n * sizeof *tF);
+		falcon_poly_muladj_fft3(gxx, tf, logn, 1);
+		falcon_poly_add_fft3(g10, gxx, logn, 1);
+		memcpy(g11, tG, n * sizeof *tG);
+		falcon_poly_mulselfadj_fft3(g11, logn, 1);
+		memcpy(gxx, tF, n * sizeof *tF);
+		falcon_poly_mulselfadj_fft3(gxx, logn, 1);
+		falcon_poly_add_fft3(g11, gxx, logn, 1);
+		tree = gxx + n;
+		treesize = (size_t)12 * n;
+		t3 = tree + treesize;
+		ffLDL_fft3_keygen(tree, g00, g10, g11, logn, t3);
+		for (u = 0; u < hn; u ++) {
+			uint32_t valid;
+			uint64_t mask, xb;
+			valid = (uint32_t)ft_fpr_is_positive_finite_keygen(g00[u]);
+			valid &= (uint32_t)(1 ^ fpr_lt(g00[u], fpr_onehalf));
+			bad |= valid ^ 1U;
+			mask = (uint64_t)0 - (uint64_t)valid;
+			xb = ft_fpr_bits_keygen(g00[u]);
+			g00[u] = ft_fpr_from_bits_keygen(
+				(xb & mask) | (ft_fpr_bits_keygen(fpr_one) & ~mask));
+		}
+		leaves = t3;
+		scratch = leaves + n;
+		ft_stable_top_branch_keygen(g00, leaves, scratch, &bad);
+		q_squared = fpr_of(FT1536_KEYGEN_Q_SQUARED);
+		for (u = 0; u < hn; u ++) {
+			leaves[n - 1 - u] = ft_stable_positive_keygen(
+				fpr_div(q_squared, leaves[u]), &bad);
+		}
+		for (u = 0; u < n; u ++) {
+			uint64_t bits;
+			uint32_t valid;
+			leaves[u] = ft_stable_positive_keygen(leaves[u], &bad);
+			bits = ft_fpr_bits_keygen(leaves[u]);
+			valid = (uint32_t)(1 ^ (uint32_t)((bits
+				- FT1536_LEAF_MIN_BITS) >> 63));
+			valid &= (uint32_t)(1 ^ (uint32_t)((FT1536_LEAF_MAX_BITS
+				- bits) >> 63));
+			bad |= valid ^ 1U;
+		}
+		return bad == 0;
+	}
+}
+
 /* see falcon.h */
 int
 falcon_keygen_make(falcon_keygen *fk, int comp,
@@ -6911,10 +7810,25 @@ falcon_keygen_make(falcon_keygen *fk, int comp,
 	unsigned char *skbuf;
 	int16_t *ske[4];
 	int i;
+	uint64_t local_attempts;
+#ifdef FG_DISTRIBUTION_PROBE
+	fpr probe_raw_norm, probe_gs_norm, probe_bound;
+#endif
 
+	local_attempts = 0;
+#ifdef FG_DISTRIBUTION_PROBE
+	probe_raw_norm = 0;
+	probe_gs_norm = 0;
+	probe_bound = 0;
+#endif
 	logn = fk->logn;
 	ter = fk->ternary;
 	n = MKN(logn, ter);
+#ifdef FG_DISTRIBUTION_PROBE
+	if (ter) {
+		fg_probe_stats.keygen_calls ++;
+	}
+#endif
 
 	/*
 	 * Make sure the RNG is properly seeded and ready to output bits.
@@ -6939,57 +7853,97 @@ falcon_keygen_make(falcon_keygen *fk, int comp,
 	 * time, thus we expect sampling new (f,g) about 4 times for that
 	 * step).
 	 *
-	 * In the ternary case, we need a spheroid in the FFT representation,
-	 * thus we use a rounded Gaussian in that representation. Standard
-	 * deviation is then sigma = sqrt(q/sqrt(8)). The vector norms
-	 * are computed over the FFT representation, with common bound
-	 * 2*sqrt(N)*sigma.
+	 * In the original ternary-ring branch, f and g were generated as a
+	 * rounded Gaussian in the FFT3 representation. If TRUE_TERNARY_SECRET
+	 * is enabled, this is replaced by coefficient-domain ternary sampling
+	 * from {-1,0,+1}; in that mode the Gram-Schmidt acceptance bound must
+	 * be tuned explicitly with TERNARY_KEYGEN_BOUND_SCALE_NUM/DEN.
 	 *
 	 * In both cases, we require that Res(f,phi) and Res(g,phi) are
 	 * both odd (the NTRU equation solver requires it).
 	 */
 	for (;;) {
 		if (ter) {
+			local_attempts ++;
+#if TERNARY_KEYGEN_MAX_ATTEMPTS != 0
+			if (local_attempts > TERNARY_KEYGEN_MAX_ATTEMPTS) {
+#ifdef FG_DISTRIBUTION_PROBE
+				fg_probe_stats.attempt_limit_hits ++;
+#endif
+				return 0;
+			}
+#endif
 			fpr *rt1, *rt2, *rt3;
-			size_t hn;
-			fpr sigma, norm, bound;
+			fpr norm, bound;
 
-			hn = n >> 1;
-
-			/*
-			 * Generate f and g in FFT representation (in rt1
-			 * and rt2, respectively); we must then convert
-			 * them back to non-FFT to apply rounding.
-			 */
 			rt1 = (fpr *)fk->tmp;
 			rt2 = rt1 + n;
 			rt3 = rt2 + n;
-			sigma = fpr_sqrt(fpr_div(fpr_of(18433),
-				fpr_sqrt(fpr_of(8))));
-			for (u = 0; u < hn; u ++) {
-				uint32_t a, b;
-				uint64_t c;
 
-				c = get_rng_u64(&fk->rng);
-				a = (uint32_t)c;
-				b = (uint32_t)(c >> 32);
-				fpr_gauss(&rt1[u], &rt1[u + hn], sigma, a, b);
-				c = get_rng_u64(&fk->rng);
-				a = (uint32_t)c;
-				b = (uint32_t)(c >> 32);
-				fpr_gauss(&rt2[u], &rt2[u + hn], sigma, a, b);
+#if TRUE_TERNARY_SECRET
+			/*
+			 * True coefficient-domain ternary secret. This replaces the
+			 * previous rounded-Gaussian-in-FFT3 secret sampler.
+			 */
+			sample_true_ternary_secret(fk, f, n);
+			sample_true_ternary_secret(fk, g, n);
+#ifdef FG_DISTRIBUTION_PROBE
+			probe_raw_norm = 0;
+			probe_gs_norm = 0;
+			probe_bound = 0;
+#endif
+#else
+			{
+				size_t hn;
+				fpr sigma;
+
+				hn = n >> 1;
+
+				/*
+				 * Generate f and g in FFT representation (in rt1
+				 * and rt2, respectively); we must then convert
+				 * them back to non-FFT to apply rounding.
+				 */
+				sigma = fpr_sqrt(fpr_div(fpr_of(18433),
+					fpr_sqrt(fpr_of(8))));
+				for (u = 0; u < hn; u ++) {
+					uint32_t a, b;
+					uint64_t c;
+
+					c = get_rng_u64(&fk->rng);
+					a = (uint32_t)c;
+					b = (uint32_t)(c >> 32);
+					fpr_gauss(&rt1[u], &rt1[u + hn], sigma, a, b);
+					c = get_rng_u64(&fk->rng);
+					a = (uint32_t)c;
+					b = (uint32_t)(c >> 32);
+					fpr_gauss(&rt2[u], &rt2[u + hn], sigma, a, b);
+				}
+				falcon_iFFT3(rt1, logn, 1);
+				falcon_iFFT3(rt2, logn, 1);
+				for (u = 0; u < n; u ++) {
+					f[u] = (int16_t)fpr_rint(rt1[u]);
+					g[u] = (int16_t)fpr_rint(rt2[u]);
+				}
 			}
-			falcon_iFFT3(rt1, logn, 1);
-			falcon_iFFT3(rt2, logn, 1);
-			for (u = 0; u < n; u ++) {
-				f[u] = (int16_t)fpr_rint(rt1[u]);
-				g[u] = (int16_t)fpr_rint(rt2[u]);
-			}
+#endif
 
 			if (mod2_res_ternary(f, logn) == 0) {
+#ifdef FG_DISTRIBUTION_PROBE
+				fg_probe_stats.reject_resultant_f ++;
+				fg_probe_record_attempt(f, g, n,
+					FG_PROBE_REJECT_RESULTANT_F,
+					probe_raw_norm, probe_gs_norm, probe_bound);
+#endif
 				continue;
 			}
 			if (mod2_res_ternary(g, logn) == 0) {
+#ifdef FG_DISTRIBUTION_PROBE
+				fg_probe_stats.reject_resultant_g ++;
+				fg_probe_record_attempt(f, g, n,
+					FG_PROBE_REJECT_RESULTANT_G,
+					probe_raw_norm, probe_gs_norm, probe_bound);
+#endif
 				continue;
 			}
 
@@ -7003,6 +7957,14 @@ falcon_keygen_make(falcon_keygen *fk, int comp,
 			 */
 			bound = fpr_div(fpr_of(73732L * (long)n),
 				fpr_sqrt(fpr_of(8)));
+#if TERNARY_KEYGEN_BOUND_SCALE_NUM != TERNARY_KEYGEN_BOUND_SCALE_DEN
+			bound = fpr_div(fpr_mul(bound,
+				fpr_of(TERNARY_KEYGEN_BOUND_SCALE_NUM)),
+				fpr_of(TERNARY_KEYGEN_BOUND_SCALE_DEN));
+#endif
+#ifdef FG_DISTRIBUTION_PROBE
+			probe_bound = bound;
+#endif
 
 			poly_small_to_fp(rt1, f, logn, 1);
 			poly_small_to_fp(rt2, g, logn, 1);
@@ -7014,8 +7976,16 @@ falcon_keygen_make(falcon_keygen *fk, int comp,
 				norm = fpr_add(norm, fpr_sqr(rt2[u]));
 			}
 			norm = fpr_double(norm);
+#ifdef FG_DISTRIBUTION_PROBE
+			probe_raw_norm = norm;
+#endif
 
 			if (!fpr_lt(norm, bound)) {
+#ifdef FG_DISTRIBUTION_PROBE
+				fg_probe_stats.reject_norm ++;
+				fg_probe_record_attempt(f, g, n, FG_PROBE_REJECT_NORM,
+					probe_raw_norm, probe_gs_norm, probe_bound);
+#endif
 				continue;
 			}
 
@@ -7035,8 +8005,16 @@ falcon_keygen_make(falcon_keygen *fk, int comp,
 				norm = fpr_add(norm, fpr_sqr(rt2[u]));
 			}
 			norm = fpr_double(norm);
+#ifdef FG_DISTRIBUTION_PROBE
+			probe_gs_norm = norm;
+#endif
 
 			if (!fpr_lt(norm, bound)) {
+#ifdef FG_DISTRIBUTION_PROBE
+				fg_probe_stats.reject_gs ++;
+				fg_probe_record_attempt(f, g, n, FG_PROBE_REJECT_GS,
+					probe_raw_norm, probe_gs_norm, probe_bound);
+#endif
 				continue;
 			}
 		} else {
@@ -7103,6 +8081,13 @@ falcon_keygen_make(falcon_keygen *fk, int comp,
 		 * fails, we must restart.
 		 */
 		if (!falcon_compute_public(h, f, g, logn, ter)) {
+#ifdef FG_DISTRIBUTION_PROBE
+			if (ter) {
+				fg_probe_stats.reject_public ++;
+				fg_probe_record_attempt(f, g, n, FG_PROBE_REJECT_PUBLIC,
+					probe_raw_norm, probe_gs_norm, probe_bound);
+			}
+#endif
 			continue;
 		}
 
@@ -7110,8 +8095,38 @@ falcon_keygen_make(falcon_keygen *fk, int comp,
 		 * Solve the NTRU equation to get F and G.
 		 */
 		if (!solve_NTRU(fk, F, G, f, g)) {
+#ifdef FG_DISTRIBUTION_PROBE
+			if (ter) {
+				fg_probe_stats.reject_solve ++;
+				fg_probe_record_attempt(f, g, n, FG_PROBE_REJECT_SOLVE,
+					probe_raw_norm, probe_gs_norm, probe_bound);
+			}
+#endif
 			continue;
 		}
+
+		/* FT1536 KeyGen Leaf Certificate */
+		if (ter && logn == 10 && n == 1536) {
+			if (!ft_keygen_leaf_certificate((fpr *)fk->tmp, f, g, F, G,
+				logn, ter))
+			{
+#ifdef FG_DISTRIBUTION_PROBE
+				fg_probe_stats.reject_leaf_cert ++;
+				fg_probe_record_attempt(f, g, n,
+					FG_PROBE_REJECT_LEAF_CERT,
+					probe_raw_norm, probe_gs_norm, probe_bound);
+#endif
+				continue;
+			}
+		}
+
+#ifdef FG_DISTRIBUTION_PROBE
+		if (ter) {
+			fg_probe_record_attempt(f, g, n, FG_PROBE_SUCCESS,
+				probe_raw_norm, probe_gs_norm, probe_bound);
+			fg_probe_record_keygen_complete(local_attempts);
+		}
+#endif
 
 		/*
 		 * Key pair is generated.

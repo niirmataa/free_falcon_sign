@@ -601,7 +601,7 @@ usage_keygen(void)
 "   -priv fname     write private key into file 'fname'\n"
 "   -pub fname      write public key into file 'fname'\n"
 "   -logn logn      use degree 2^logn (default is 512 = 2^9)\n"
-"   -logt logn      use degree 1.5*2^logn\n"
+"   -logt 10        use the supported FT1536 ternary degree\n"
 "Only one of -logn and -logt may be specified.\n");
 	exit(EXIT_FAILURE);
 }
@@ -678,8 +678,9 @@ do_keygen(int argc, char *argv[])
 				usage_keygen();
 			}
 			x = atoi(argv[i]);
-			if (x < 2 || x > 10) {
-				fprintf(stderr, "unsupported degree\n");
+			if (x != 10) {
+				fprintf(stderr,
+					"unsupported ternary degree: FT1536 requires '-logt 10'\n");
 				usage_keygen();
 			}
 			logn = (unsigned)x;

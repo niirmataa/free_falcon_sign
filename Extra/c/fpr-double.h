@@ -34,6 +34,12 @@
  *
  * ===========================(LICENSE END)=============================
  *
+ * SPDX-License-Identifier: MIT AND AGPL-3.0-or-later
+ *
+ * Modifications (added fpr_inv_ln2, fpr_inv_8, fpr_inv_10, fpr_expm_scaled)
+ * Copyright (C) 2024-2026  FreeFalcon Research
+ * Licensed under AGPL-3.0-or-later (additive to upstream MIT).
+ *
  * @author   Thomas Pornin <thomas.pornin@nccgroup.trust>
  */
 
@@ -92,7 +98,7 @@ static const fpr fpr_W5R = {  0.500000000000000000000000000 };
 static const fpr fpr_W5I = { -0.866025403784438646763723171 };
 
 /*
- * For w = exp(i*pi/3), the coefficient c = Re(w)/Im(w).
+ * For w = exp(i*pi/3), the coefficient c = 1/Im(w) = 2/sqrt(3).
  */
 static const fpr fpr_IW1I = {  1.154700538379251529018297561 };
 
@@ -166,6 +172,16 @@ static inline fpr
 fpr_sqrt(fpr x)
 {
 	return FPR(sqrt(x.v));
+}
+
+static const fpr fpr_inv_ln2 = { 1.442695040888963407359924681001892137426645954152985934135449 }; /* 1/log(2) */
+static const fpr fpr_inv_8   = { 0.125 };
+static const fpr fpr_inv_10  = { 0.1 };
+
+static inline fpr
+fpr_expm_scaled(fpr r)
+{
+	return FPR(ldexp(exp(r.v), 63));
 }
 
 static inline fpr

@@ -1302,7 +1302,7 @@ falcon_vrfy_set_public_key(falcon_vrfy *fv,
 	 *   |
 	 *   +------------- 1 for ternary, 0 for binary
 	 */
-	if (len <= 1) {
+	if (pkey == NULL || len <= 1) {
 		goto bad_pkey;
 	}
 	fb = *buf ++;
@@ -1310,7 +1310,7 @@ falcon_vrfy_set_public_key(falcon_vrfy *fv,
 	fv->logn = fb & 0x0F;
 	if ((fb >> 7) != 0) {
 		fv->ternary = 1;
-		if (fv->logn < 2 || fv->logn > 11) {
+		if (fv->logn < 2 || fv->logn > 10) {
 			goto bad_pkey;
 		}
 	} else {

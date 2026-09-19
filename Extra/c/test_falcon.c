@@ -2640,25 +2640,34 @@ test_falcon_sign(void)
 	test_falcon_sign_self(skey, skey_len, pkey, pkey_len);
 	xfree(skey);
 
-	putchar(32);
-	fflush(stdout);
+	/*
+	 * Ternary signing is tested below with freshly generated full
+	 * coefficient-ternary FT1536 keys. Do not sign with the legacy static
+	 * ternary private vectors: their secret-generation provenance is not
+	 * the contract of this branch.
+	 */
+	{
+		falcon_sign *fs;
 
-	pkey_len = hextobin(pkey, sizeof pkey, ntru_pkey_768);
-	skey = encode_skey(FALCON_COMP_STATIC, 18433,
-		ntru_f_768, ntru_g_768, ntru_F_768, ntru_G_768,
-		9, &skey_len);
-	test_falcon_sign_self(skey, skey_len, pkey, pkey_len);
-	xfree(skey);
-
-	putchar(32);
-	fflush(stdout);
-
-	pkey_len = hextobin(pkey, sizeof pkey, ntru_pkey_1536);
-	skey = encode_skey(FALCON_COMP_STATIC, 18433,
-		ntru_f_1536, ntru_g_1536, ntru_F_1536, ntru_G_1536,
-		10, &skey_len);
-	test_falcon_sign_self(skey, skey_len, pkey, pkey_len);
-	xfree(skey);
+		fs = falcon_sign_new();
+		if (fs == NULL) {
+			fprintf(stderr, "context creation error\n");
+			exit(EXIT_FAILURE);
+		}
+		if (falcon_sign_set_private_key(fs, NULL, 0)) {
+			fprintf(stderr, "empty private key accepted\n");
+			exit(EXIT_FAILURE);
+		}
+		skey = encode_skey(FALCON_COMP_STATIC, 18433,
+			ntru_f_768, ntru_g_768, ntru_F_768, ntru_G_768,
+			9, &skey_len);
+		if (falcon_sign_set_private_key(fs, skey, skey_len)) {
+			fprintf(stderr, "unsupported ternary private key accepted\n");
+			exit(EXIT_FAILURE);
+		}
+		xfree(skey);
+		falcon_sign_free(fs);
+	}
 
 	printf(" done.\n");
 	fflush(stdout);
@@ -2761,7 +2770,26 @@ test_falcon_keygen_ternary(void)
 	printf("Test Falcon keygen (ter): ");
 	fflush(stdout);
 
-	for (logn = 3; logn <= 10; logn ++) {
+	for (logn = 0; logn <= 11; logn ++) {
+		falcon_keygen *fk;
+
+		fk = falcon_keygen_new(logn, 1);
+		if ((fk != NULL) != (logn == 10)) {
+			fprintf(stderr,
+				"ternary keygen scope failure for logn=%u\n", logn);
+			exit(EXIT_FAILURE);
+		}
+		falcon_keygen_free(fk);
+	}
+	if (falcon_keygen_new(10, -1) != NULL
+		|| falcon_keygen_new(10, 2) != NULL)
+	{
+		fprintf(stderr, "ternary keygen flag-domain failure\n");
+		exit(EXIT_FAILURE);
+	}
+
+	logn = 10;
+	{
 		int i;
 
 		printf("[%u]", logn);
@@ -3036,16 +3064,12 @@ main(void)
 	test_falcon_keygen_ternary();
 
 	speed_falcon_keygen(8, 0);
-	speed_falcon_keygen(8, 1);
 	speed_falcon_keygen(9, 0);
-	speed_falcon_keygen(9, 1);
 	speed_falcon_keygen(10, 0);
 	speed_falcon_keygen(10, 1);
 
 	speed_falcon(8, 0);
-	speed_falcon(8, 1);
 	speed_falcon(9, 0);
-	speed_falcon(9, 1);
 	speed_falcon(10, 0);
 	speed_falcon(10, 1);
 

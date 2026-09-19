@@ -213,6 +213,7 @@ void falcon_sign_set_seed(falcon_sign *fs,
 /*
  * Set the private key for signature generation. The encoded private key
  * is provided as pointer 'skey', with encoded length 'len' bytes.
+ * This FT1536 build accepts ternary private keys only at logn = 10.
  *
  * Returned value is 1 on success, 0 on error (invalid private key encoding
  * or memory allocation failure).
@@ -296,10 +297,9 @@ typedef struct falcon_keygen_ falcon_keygen;
  * parameters use logn = 9 or 10; lower values are for reduced test-only
  * versions).
  *
- * In the ternary case (ternary = 1), the 'logn' parameter is the base-2
- * logarithm of 2/3rd of the degree (e.g. logn is 9 for degree 768). In
- * that case, 'logn' must lie between 2 and 9 (normal value is 9, lower
- * values are for reduced test-only versions).
+ * In this FT1536 build, the ternary case (ternary = 1) accepts only
+ * logn = 10, for degree 3*2^9 = 1536. Other ternary degrees require
+ * independently derived and validated parameter sets.
  *
  * Returned value is the new context, or NULL on error. Errors include
  * out-of-range parameters, and memory allocation errors.

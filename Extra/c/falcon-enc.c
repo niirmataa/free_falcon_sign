@@ -627,24 +627,41 @@ falcon_is_short(const int16_t *s1, const int16_t *s2,
 		 */
 
 		/*
-		 * Acceptance bound on the embedding norm is:
-		 *   b = 1.2*1.32*2*N*sqrt(q/sqrt(2))
-		 *
-		 * Since we computed (v^2)/N, we must compare it with:
-		 *   (b^2)/N = ((1.2*1.32*2)^2/sqrt(2))*q*N
-		 *           = (3*(1.2*1.32*2)^2/sqrt(2))*q*2^(logn-1)
-		 *
-		 * We use 100464491 = floor((b^2)/N) when N = 768, and
-		 * scale it down for lower dimensions.
+		 * Candidate ternary verification bounds in the normalized-canonical
+		 * quadratic form above. The active FT1536 value is
+		 * floor(1.075^2 * 2*N * 768^2). SIG-001 and the final norm/security
+		 * selection remain open.
 		 */
 		{
 			int64_t bound;
 
-			bound = 100464491;
-			if (logn < 9) {
-				bound >>= 9 - logn;
-			} else {
-				bound <<= logn - 9;
+			switch (logn) {
+			case 3:
+				bound = 987497;
+				break;
+			case 4:
+				bound = 2052189;
+				break;
+			case 5:
+				bound = 4258765;
+				break;
+			case 6:
+				bound = 8826305;
+				break;
+			case 7:
+				bound = 18270159;
+				break;
+			case 8:
+				bound = 37775417;
+				break;
+			case 9:
+				bound = 78021029;
+				break;
+			case 10:
+				bound = FALCON_FT1536_NORM_BOUND2;
+				break;
+			default:
+				return 0;
 			}
 			return s < bound;
 		}
