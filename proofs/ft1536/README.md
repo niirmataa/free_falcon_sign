@@ -122,6 +122,13 @@ rekalkulacja9771 partii A/B. Nowy17-file pin56974571… jest w
 stage/candidate; produkcyjny Extra/c ma nadal baseline pin2553358f….
 Source integration i dalsze interfejsy matematyczne mają własny zakres.
 
+**Następne przygotowane zadanie:** [H3_RAW_ASSEMBLY](documents/FT1536_ZADANIE_ASTRA_H3_RAW_ASSEMBLY_2026-09-20.md),
+do ręcznego uruchomienia przez właściciela. Cel: source transport na archived
+FLOOR_CT candidate i pełny raw prefix load_skey do powrotu ffLDL_fft3,
+z actual totality, numerical/layout/frame matching i emitted corollary.
+[Bootstrap](background/H3_RAW_ASSEMBLY_2026-09-20/README.md):308 członków,
+17-file pin56974571…. Stable rebuild/normalize jest następnym osobnym etapem.
+
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
 

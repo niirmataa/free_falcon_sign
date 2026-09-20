@@ -67,6 +67,12 @@ This archived candidate has not yet been integrated into the active Extra/c
 build described below; its CT evidence is scoped to the pinned build and
 exploratory shared-host measurements.
 
+**Next prepared owner-run task:** [H3_RAW_ASSEMBLY](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_RAW_ASSEMBLY_2026-09-20.md),
+the complete raw loader/tree prefix through the return of ffLDL_fft3,
+before stable leaf replacement and normalization. Its [pinned inputs](proofs/ft1536/background/H3_RAW_ASSEMBLY_2026-09-20/README.md)
+use the archived floor candidate and require an explicit transport of the
+earlier source-bound certificates. The owner launches this Astra manually.
+
 The current build integrates the corrected verifier, SHA-256
 `3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42`.
 The original S17 remains a hash-pinned historical reference with its recorded
