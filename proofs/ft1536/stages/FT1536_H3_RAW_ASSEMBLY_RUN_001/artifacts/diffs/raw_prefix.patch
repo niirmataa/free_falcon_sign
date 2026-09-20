@@ -1,0 +1,35 @@
+--- source/falcon-sign.c:1158-1253
++++ checks/raw_prefix.inc
+@@ -1,5 +1,5 @@
+ static int
+-load_skey(fpr *restrict sk, unsigned q,
++raw_prefix_slice(fpr *restrict sk, unsigned q,
+ 	const int16_t *f_src, const int16_t *g_src,
+ 	const int16_t *F_src, const int16_t *G_src,
+ 	unsigned logn, unsigned ter, fpr *restrict tmp)
+@@ -8,7 +8,6 @@
+ 	fpr *f, *g, *F, *G;
+ 	fpr *b00, *b01, *b10, *b11;
+ 	fpr *tree;
+-	fpr sigma;
+ 
+ 	n = MKN(logn, ter);
+ 	b00 = sk + skoff_b00(logn, ter);
+@@ -59,9 +58,6 @@
+ 	 */
+ 	if (ter) {
+ 		fpr *g00, *g10, *g11, *gxx;
+-		fpr *stable_leaves;
+-		size_t leaf_count, tree_words;
+-		int stable_ok;
+ 
+ 		if (logn != 10 || n != 1536 || q != 18433) {
+ 			return 0;
+@@ -94,3 +90,7 @@
+ 		 * Compute the Falcon tree.
+ 		 */
+ 		ffLDL_fft3(tree, g00, g10, g11, logn, gxx);
++		return 1; /* observation cut immediately after source1253 */
++	}
++	return 0;
++}

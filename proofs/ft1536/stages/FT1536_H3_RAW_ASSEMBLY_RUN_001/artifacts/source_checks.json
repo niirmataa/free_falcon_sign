@@ -1,0 +1,55 @@
+{
+  "status": "PASS_SOURCE_PINS_READONLY_AND_PROOF_BINDING",
+  "source_files": 17,
+  "public_inputs": 312,
+  "source_readonly_mount_verified": true,
+  "bootstrap_readonly_mount_verified": true,
+  "source_sha256": "56974571b46e8257bdd3b4097c8c70fded6bb4b94c64805f6e35ec80929a0985",
+  "proof_documents": {
+    "CLAIM.md": "9148e43388f21c97399bf85000fbb802557a959d1818a23f3569ee30299081df",
+    "COMPOSITION.md": "a50fa2a84961187518d22d8a90e0e2fb326adc3250ad4415ba489b65a8bc6767",
+    "MEMORY_LAYOUT.md": "28163ad68b3e8e6c8a9198a5cc76246a710ff0d79939f9ff86763b55afcccfc2",
+    "SOURCE_TRANSPORT.md": "e2b51e33cfd399967d5d47af24ac66330bb4b9f5ada4222e2ffb8dd525d122d6",
+    "SOURCE_MODEL_BINDING.md": "08a1915ee544440770f0f3d270e9130dc7ba2766013074c0dda12ae323902baa",
+    "NEXT_INTERFACE.md": "1c373f4eecf4b67b531bc69414f01ce4c2ef28726e980acf07d978e9c438d396",
+    "REUSED_RESULTS.md": "65288510e65630e3a99a63ac761f9406120ee6326b26e74eab23de7ab9db03c3"
+  },
+  "adaptations": [
+    {
+      "input": "inputs/bootstrap/TOWER/checks/tower.c",
+      "input_sha256": "3b70ca6797c7a4ff8e65945a20d40510ddcc5a6ab634155ed3a467ffb250b5c7",
+      "copy": "checks/raw.c",
+      "sha256": "91d303da04ae89afc0b150bb164f2d8bb036265efb97d2195e78042b311f6936",
+      "diff": "artifacts/diffs/binding_raw.patch",
+      "diff_sha256": "6d95d80fabc218ee91af4320713dc9a09f95ffae0a883e375b96398f811ea6d6"
+    },
+    {
+      "input": "inputs/bootstrap/TOWER/scripts/controls.py",
+      "input_sha256": "cf6733c24728f1ebf93ae72a223f801f0f687b6989fd45cf35288239e526f406",
+      "copy": "scripts/controls.py",
+      "sha256": "870170eaa7ae8e4035d40d5f13df1d5f6b400a545d76c89bad6ac0a07f3acc31",
+      "diff": "artifacts/diffs/binding_controls.patch",
+      "diff_sha256": "4156e1bb42c8eaee77f68a8d038da12111a4ae07f6784fb99849200f1d5ace9b"
+    },
+    {
+      "input": "inputs/bootstrap/TOWER/scripts/tower_model.py",
+      "input_sha256": "462a1d65f55f73ebac3df4f7a17976935887edc2cb85eb3a22eb9c9737300d80",
+      "copy": "scripts/raw_model.py",
+      "sha256": "8b7715edd8d08eb774c6922eed0d6bc60e84fea5c0a8ca45f0bfe27c5a678787",
+      "diff": "artifacts/diffs/binding_raw_model.patch",
+      "diff_sha256": "5ee854b0ae18f9420bac7b014c2073f9180ba58a0fc5946253c0a191feef94d7"
+    },
+    {
+      "input": "inputs/bootstrap/TOWER/scripts/backend.py",
+      "input_sha256": "81415d92a73474efcbcc414c9f5ec80c85a3a328dcd377a9d088438bf87fa870",
+      "copy": "scripts/backend.py",
+      "sha256": "a0fddd983723df4eda38071c8e1f9b1f82ec4f49de20c071030731729d72962c",
+      "diff": "artifacts/diffs/binding_backend.patch",
+      "diff_sha256": "302eeb06ef2b028954d4d9f9340c7f5ba8ed6e3b768a6e11f2db9a12a00456e7"
+    }
+  ],
+  "source_changed": false,
+  "production_source_changed": false,
+  "new_source_patch_integrated": false,
+  "owner_accepted": false
+}

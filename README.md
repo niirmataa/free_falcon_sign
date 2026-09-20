@@ -33,6 +33,8 @@ and error bounds. **H3_NODE2 certifies the first binary level** and adds
 kernel-checked finite-word half semantics plus an upstream imaginary bound.
 **H3_BINARY_TOWER certifies the remaining binary levels7–1 and twelve raw
 recursive subtrees**, including defined terminating execution in the declared model.
+**H3_RAW_ASSEMBLY composes the complete raw loader/tree prefix** through the
+return of ffLDL_fft3, before stable leaf replacement and normalization.
 Global reachable-center bounds and end-to-end security remain open research objectives.
 
 **FPEMU audit — confirmed issues:** numeric `fpr_lt(-0,+0)` returns 1, and
@@ -67,11 +69,14 @@ This archived candidate has not yet been integrated into the active Extra/c
 build described below; its CT evidence is scoped to the pinned build and
 exploratory shared-host measurements.
 
-**Next prepared owner-run task:** [H3_RAW_ASSEMBLY](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_RAW_ASSEMBLY_2026-09-20.md),
-the complete raw loader/tree prefix through the return of ffLDL_fft3,
-before stable leaf replacement and normalization. Its [pinned inputs](proofs/ft1536/background/H3_RAW_ASSEMBLY_2026-09-20/README.md)
-use the archived floor candidate and require an explicit transport of the
-earlier source-bound certificates. The owner launches this Astra manually.
+The [H3_RAW_ASSEMBLY result](proofs/ft1536/stages/FT1536_H3_RAW_ASSEMBLY_RUN_001/REPORT.md)
+establishes the complete raw prefix:6144 source basis words and18432 tree
+words, with actual termination, source order, frame and an emitted corollary.
+[Independent review](proofs/ft1536/validation/2026-09-20-raw-assembly/README.md)
+reproduced195/195 files,33 modules and180 theorems (33 new).
+Its analytical/kernel boundary is explicit. The [next-stage scope](proofs/ft1536/validation/2026-09-20-raw-assembly/NEXT_SCOPE.md)
+separates stable computation/normalization from acceptance of the narrower
+stable leaf gates, which need their source-bound emitted certificate.
 
 The [candidate night-run setup](provenance/checks/2026-09-20-dudect-floor-ct-ready/README.md)
 is **STATIC_READY_TIMING_DEFERRED**: source/build/fixture checks passed,
@@ -183,6 +188,7 @@ integration work; changing their description does not change the old CLI.
 | [H3_BINARY_TOWER](proofs/ft1536/stages/FT1536_H3_BINARY_TOWER_RUN_001/REPORT.md) | All remaining levels7–1, uniform numerical invariant and actual terminating execution of12 raw inner7 subtrees; mixed proof | `H3_BINARY_TOWER_PROVED_FOR_PINNED_MODEL` |
 | [FPEMU audit](proofs/ft1536/stages/FT1536_FPEMU_AUDIT_RUN_001/REPORT.md) | Generic numeric comparison of signed zeros and operand-dependent compiled floor branch; finite arithmetic/sanitizer audit, no timing measurements | `CONFIRMED_ISSUE` |
 | [FLOOR_CT candidate](proofs/ft1536/stages/FT1536_FPEMU_FLOOR_CT_RUN_001/REPORT.md) | All-word bit-preserving floor replacement, pinned machine-code review and exploratory A/B; archived candidate, separate source integration | `FLOOR_CT_CANDIDATE_VALIDATED_FOR_PINNED_BUILD` |
+| [H3_RAW_ASSEMBLY](proofs/ft1536/stages/FT1536_H3_RAW_ASSEMBLY_RUN_001/REPORT.md) | Complete raw loader/tree prefix, actual source composition and emitted corollary; mixed proof on the archived floor candidate | `H3_RAW_ASSEMBLY_PROVED_FOR_PINNED_MODEL` |
 
 The completed L_V bridge establishes, for all canonical h,c and legal finite
 payloads b in the pinned GCC14.2.0/C99/Linux x86_64 LP64 model:
@@ -401,7 +407,8 @@ Later maintainer replays and their exact scopes:
 [H3 NODE2](proofs/ft1536/validation/2026-09-19-node2/README.md),
 [FPEMU audit](proofs/ft1536/validation/2026-09-20-fpemu-audit/README.md),
 [BINARY_TOWER](proofs/ft1536/validation/2026-09-20-binary-tower/README.md),
-[FLOOR_CT](proofs/ft1536/validation/2026-09-20-floor-ct/README.md).
+[FLOOR_CT](proofs/ft1536/validation/2026-09-20-floor-ct/README.md),
+[RAW_ASSEMBLY](proofs/ft1536/validation/2026-09-20-raw-assembly/README.md).
 The independent Blue review has archived evidence, rather than a single
 declared full replay runner.
 

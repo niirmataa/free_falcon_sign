@@ -1,0 +1,18 @@
+--- inputs/bootstrap/TOWER/scripts/certificate.py
++++ scripts/tower_certificate.py
+@@ -6,7 +6,7 @@
+ from root_model import tables
+ from dyadic import value
+ from replaylib import sha,verify_manifest
+-W=Path.cwd();I=W/'inputs/bootstrap';verify_manifest(I,'MANIFEST.sha256','9bd79a0179910af92457ce6db5419aa859017499a79c575fb8256b5bfc92d7a1')
++W=Path.cwd();I=W/'inputs/bootstrap';verify_manifest(I,'MANIFEST.sha256','5d6f264525141744278d7944f344190f990f143ab4ecf8d76671da00422ff0a4')
+ U=QQ(1)/2**48;eta=QQ(1)/2**900;eps=QQ(1)/2**50;grid=ZZ(2)**40
+ def down(x):return QQ((x*grid).floor())/grid
+ def up(x):return QQ((x*grid).ceil())/grid
+@@ -105,5 +105,5 @@
+  primitive_domains=dict(input_abs_cap='2^100',positive_divisor=['1/16','2^35'],U=str(U),eta=str(eta),half='NODE2 finite all-word theorem; may create subnormal'),
+  kernel_scope='Numeric scalar lemmas and abstract execution/structure are kernel checked; source/error induction is analytical, not certified by this JSON alone.',
+  upstream_pins={r:sha(I/r) for r in ['NODE2/NODE2_CERTIFICATE.json','NODE2/UPSTREAM_REFINEMENT.md','NODE3/ANALYTIC_PROOF.md','ROOT/ANALYTIC_PROOF.md']})
+-(W/'artifacts/numeric_certificate.json').write_text(json.dumps(out,indent=2)+'\n')
++(W/'artifacts/tower_numeric_certificate.json').write_text(json.dumps(out,indent=2)+'\n')
+ print(json.dumps(dict(status=out['status'],coverage=out['coverage'],uniform_summaries=out['uniform_summaries'],levels=summaries),indent=2))

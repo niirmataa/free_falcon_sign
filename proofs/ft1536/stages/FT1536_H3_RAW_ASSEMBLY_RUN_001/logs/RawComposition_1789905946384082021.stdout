@@ -1,0 +1,1248 @@
+formal/RawComposition.lean:56:19: error: unsolved goals
+P B G C D E W : Type
+o : Ops P B G C D E W
+Pkey : P → Prop
+h : LocalDomains o Pkey
+e : E
+he : h.eightGood e
+a : E
+z : List W × E
+b : E
+ha : o.binary.first e = some a
+hga : h.sevenGood a
+hz : o.binary.ldl e = some z
+hb : o.binary.second z.snd = some b
+hgb : h.sevenGood b
+l : List W
+hl : Tower.execute o.binary 6 a = some l
+r : List W
+hr : Tower.execute o.binary 6 b = some r
+⊢ (do
+      let a ← some a
+      let left ←
+        do
+          let a_1 ← o.binary.first a
+          let left ←
+            do
+              let a ← o.binary.first a_1
+              let left ←
+                do
+                  let a_2 ← o.binary.first a
+                  let left ←
+                    do
+                      let a ← o.binary.first a_2
+                      let left ←
+                        do
+                          let a_3 ← o.binary.first a
+                          let left ←
+                            do
+                              let a ← o.binary.first a_3
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a_3
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl a
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      let z ← o.binary.ldl a_2
+                      let b ← o.binary.second z.snd
+                      let right ←
+                        do
+                          let a ← o.binary.first b
+                          let left ←
+                            do
+                              let a_3 ← o.binary.first a
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a_3
+                                  some (z.fst ++ [o.binary.leaf0 a_3, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl b
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      some (z.fst ++ left ++ right)
+                  let z ← o.binary.ldl a
+                  let b ← o.binary.second z.snd
+                  let right ←
+                    do
+                      let a ← o.binary.first b
+                      let left ←
+                        do
+                          let a_3 ← o.binary.first a
+                          let left ←
+                            do
+                              let a ← o.binary.first a_3
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a_3
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl a
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      let z ← o.binary.ldl b
+                      let b ← o.binary.second z.snd
+                      let right ←
+                        do
+                          let a ← o.binary.first b
+                          let left ←
+                            do
+                              let a_3 ← o.binary.first a
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a_3
+                                  some (z.fst ++ [o.binary.leaf0 a_3, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl b
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      some (z.fst ++ left ++ right)
+                  some (z.fst ++ left ++ right)
+              let z ← o.binary.ldl a_1
+              let b ← o.binary.second z.snd
+              let right ←
+                do
+                  let a ← o.binary.first b
+                  let left ←
+                    do
+                      let a_2 ← o.binary.first a
+                      let left ←
+                        do
+                          let a ← o.binary.first a_2
+                          let left ←
+                            do
+                              let a_3 ← o.binary.first a
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a_3
+                                  some (z.fst ++ [o.binary.leaf0 a_3, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl a_2
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      let z ← o.binary.ldl a
+                      let b ← o.binary.second z.snd
+                      let right ←
+                        do
+                          let a ← o.binary.first b
+                          let left ←
+                            do
+                              let a_3 ← o.binary.first a
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a_3
+                                  some (z.fst ++ [o.binary.leaf0 a_3, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl b
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      some (z.fst ++ left ++ right)
+                  let z ← o.binary.ldl b
+                  let b ← o.binary.second z.snd
+                  let right ←
+                    do
+                      let a ← o.binary.first b
+                      let left ←
+                        do
+                          let a_2 ← o.binary.first a
+                          let left ←
+                            do
+                              let a ← o.binary.first a_2
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a_2
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl a
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      let z ← o.binary.ldl b
+                      let b ← o.binary.second z.snd
+                      let right ←
+                        do
+                          let a ← o.binary.first b
+                          let left ←
+                            do
+                              let a_2 ← o.binary.first a
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a_2
+                                  some (z.fst ++ [o.binary.leaf0 a_2, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl b
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      some (z.fst ++ left ++ right)
+                  some (z.fst ++ left ++ right)
+              some (z.fst ++ left ++ right)
+          let z ← o.binary.ldl a
+          let b ← o.binary.second z.snd
+          let right ←
+            do
+              let a ← o.binary.first b
+              let left ←
+                do
+                  let a_2 ← o.binary.first a
+                  let left ←
+                    do
+                      let a ← o.binary.first a_2
+                      let left ←
+                        do
+                          let a_3 ← o.binary.first a
+                          let left ←
+                            do
+                              let a ← o.binary.first a_3
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a_3
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl a
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      let z ← o.binary.ldl a_2
+                      let b ← o.binary.second z.snd
+                      let right ←
+                        do
+                          let a ← o.binary.first b
+                          let left ←
+                            do
+                              let a_3 ← o.binary.first a
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a_3
+                                  some (z.fst ++ [o.binary.leaf0 a_3, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl b
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      some (z.fst ++ left ++ right)
+                  let z ← o.binary.ldl a
+                  let b ← o.binary.second z.snd
+                  let right ←
+                    do
+                      let a ← o.binary.first b
+                      let left ←
+                        do
+                          let a_3 ← o.binary.first a
+                          let left ←
+                            do
+                              let a ← o.binary.first a_3
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a_3
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl a
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      let z ← o.binary.ldl b
+                      let b ← o.binary.second z.snd
+                      let right ←
+                        do
+                          let a ← o.binary.first b
+                          let left ←
+                            do
+                              let a_3 ← o.binary.first a
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a_3
+                                  some (z.fst ++ [o.binary.leaf0 a_3, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl b
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      some (z.fst ++ left ++ right)
+                  some (z.fst ++ left ++ right)
+              let z ← o.binary.ldl b
+              let b ← o.binary.second z.snd
+              let right ←
+                do
+                  let a ← o.binary.first b
+                  let left ←
+                    do
+                      let a_2 ← o.binary.first a
+                      let left ←
+                        do
+                          let a ← o.binary.first a_2
+                          let left ←
+                            do
+                              let a_3 ← o.binary.first a
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a_3
+                                  some (z.fst ++ [o.binary.leaf0 a_3, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl a_2
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      let z ← o.binary.ldl a
+                      let b ← o.binary.second z.snd
+                      let right ←
+                        do
+                          let a ← o.binary.first b
+                          let left ←
+                            do
+                              let a_3 ← o.binary.first a
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a_3
+                                  some (z.fst ++ [o.binary.leaf0 a_3, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl b
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      some (z.fst ++ left ++ right)
+                  let z ← o.binary.ldl b
+                  let b ← o.binary.second z.snd
+                  let right ←
+                    do
+                      let a ← o.binary.first b
+                      let left ←
+                        do
+                          let a_2 ← o.binary.first a
+                          let left ←
+                            do
+                              let a ← o.binary.first a_2
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a_2
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl a
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      let z ← o.binary.ldl b
+                      let b ← o.binary.second z.snd
+                      let right ←
+                        do
+                          let a ← o.binary.first b
+                          let left ←
+                            do
+                              let a_2 ← o.binary.first a
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a_2
+                                  some (z.fst ++ [o.binary.leaf0 a_2, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl b
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      some (z.fst ++ left ++ right)
+                  some (z.fst ++ left ++ right)
+              some (z.fst ++ left ++ right)
+          some (z.fst ++ left ++ right)
+      let z ← some z
+      let b ← o.binary.second z.snd
+      let right ←
+        do
+          let a ← o.binary.first b
+          let left ←
+            do
+              let a_1 ← o.binary.first a
+              let left ←
+                do
+                  let a ← o.binary.first a_1
+                  let left ←
+                    do
+                      let a_2 ← o.binary.first a
+                      let left ←
+                        do
+                          let a ← o.binary.first a_2
+                          let left ←
+                            do
+                              let a_3 ← o.binary.first a
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a_3
+                                  some (z.fst ++ [o.binary.leaf0 a_3, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl a_2
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      let z ← o.binary.ldl a
+                      let b ← o.binary.second z.snd
+                      let right ←
+                        do
+                          let a ← o.binary.first b
+                          let left ←
+                            do
+                              let a_3 ← o.binary.first a
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a_3
+                                  some (z.fst ++ [o.binary.leaf0 a_3, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl b
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      some (z.fst ++ left ++ right)
+                  let z ← o.binary.ldl a_1
+                  let b ← o.binary.second z.snd
+                  let right ←
+                    do
+                      let a ← o.binary.first b
+                      let left ←
+                        do
+                          let a_2 ← o.binary.first a
+                          let left ←
+                            do
+                              let a ← o.binary.first a_2
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a_2
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl a
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      let z ← o.binary.ldl b
+                      let b ← o.binary.second z.snd
+                      let right ←
+                        do
+                          let a ← o.binary.first b
+                          let left ←
+                            do
+                              let a_2 ← o.binary.first a
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a_2
+                                  some (z.fst ++ [o.binary.leaf0 a_2, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl b
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      some (z.fst ++ left ++ right)
+                  some (z.fst ++ left ++ right)
+              let z ← o.binary.ldl a
+              let b ← o.binary.second z.snd
+              let right ←
+                do
+                  let a ← o.binary.first b
+                  let left ←
+                    do
+                      let a_2 ← o.binary.first a
+                      let left ←
+                        do
+                          let a ← o.binary.first a_2
+                          let left ←
+                            do
+                              let a_3 ← o.binary.first a
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a_3
+                                  some (z.fst ++ [o.binary.leaf0 a_3, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl a_2
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      let z ← o.binary.ldl a
+                      let b ← o.binary.second z.snd
+                      let right ←
+                        do
+                          let a ← o.binary.first b
+                          let left ←
+                            do
+                              let a_3 ← o.binary.first a
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a_3
+                                  some (z.fst ++ [o.binary.leaf0 a_3, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl b
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      some (z.fst ++ left ++ right)
+                  let z ← o.binary.ldl b
+                  let b ← o.binary.second z.snd
+                  let right ←
+                    do
+                      let a ← o.binary.first b
+                      let left ←
+                        do
+                          let a_2 ← o.binary.first a
+                          let left ←
+                            do
+                              let a ← o.binary.first a_2
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a_2
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl a
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      let z ← o.binary.ldl b
+                      let b ← o.binary.second z.snd
+                      let right ←
+                        do
+                          let a ← o.binary.first b
+                          let left ←
+                            do
+                              let a_2 ← o.binary.first a
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a_2
+                                  some (z.fst ++ [o.binary.leaf0 a_2, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl b
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      some (z.fst ++ left ++ right)
+                  some (z.fst ++ left ++ right)
+              some (z.fst ++ left ++ right)
+          let z ← o.binary.ldl b
+          let b ← o.binary.second z.snd
+          let right ←
+            do
+              let a ← o.binary.first b
+              let left ←
+                do
+                  let a_1 ← o.binary.first a
+                  let left ←
+                    do
+                      let a ← o.binary.first a_1
+                      let left ←
+                        do
+                          let a_2 ← o.binary.first a
+                          let left ←
+                            do
+                              let a ← o.binary.first a_2
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a_2
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl a
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      let z ← o.binary.ldl a_1
+                      let b ← o.binary.second z.snd
+                      let right ←
+                        do
+                          let a ← o.binary.first b
+                          let left ←
+                            do
+                              let a_2 ← o.binary.first a
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a_2
+                                  some (z.fst ++ [o.binary.leaf0 a_2, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl b
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      some (z.fst ++ left ++ right)
+                  let z ← o.binary.ldl a
+                  let b ← o.binary.second z.snd
+                  let right ←
+                    do
+                      let a ← o.binary.first b
+                      let left ←
+                        do
+                          let a_2 ← o.binary.first a
+                          let left ←
+                            do
+                              let a ← o.binary.first a_2
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a_2
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl a
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      let z ← o.binary.ldl b
+                      let b ← o.binary.second z.snd
+                      let right ←
+                        do
+                          let a ← o.binary.first b
+                          let left ←
+                            do
+                              let a_2 ← o.binary.first a
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a_2
+                                  some (z.fst ++ [o.binary.leaf0 a_2, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl b
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      some (z.fst ++ left ++ right)
+                  some (z.fst ++ left ++ right)
+              let z ← o.binary.ldl b
+              let b ← o.binary.second z.snd
+              let right ←
+                do
+                  let a ← o.binary.first b
+                  let left ←
+                    do
+                      let a_1 ← o.binary.first a
+                      let left ←
+                        do
+                          let a ← o.binary.first a_1
+                          let left ←
+                            do
+                              let a_2 ← o.binary.first a
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a_2
+                                  some (z.fst ++ [o.binary.leaf0 a_2, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl a_1
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      let z ← o.binary.ldl a
+                      let b ← o.binary.second z.snd
+                      let right ←
+                        do
+                          let a ← o.binary.first b
+                          let left ←
+                            do
+                              let a_2 ← o.binary.first a
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a_2
+                                  some (z.fst ++ [o.binary.leaf0 a_2, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl a
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          let z ← o.binary.ldl b
+                          let b ← o.binary.second z.snd
+                          let right ←
+                            do
+                              let a ← o.binary.first b
+                              let left ←
+                                do
+                                  let z ← o.binary.ldl a
+                                  some (z.fst ++ [o.binary.leaf0 a, o.binary.leaf1 z.snd])
+                              let z ← o.binary.ldl b
+                              let b ← o.binary.second z.snd
+                              let right ←
+                                do
+                                  let z ← o.binary.ldl b
+                                  some (z.fst ++ [o.binary.leaf0 b, o.binary.leaf1 z.snd])
+                              some (z.fst ++ left ++ right)
+                          some (z.fst ++ left ++ right)
+                      some (z.fst ++ left ++ right)
+                  let z ← ⋯
+                  let b ← ⋯
+                  let right ← ⋯
+                  ⋯
+              ⋯
+          ⋯
+      ⋯) =
+    ⋯
+formal/RawComposition.lean:56:50: warning: This simp argument is unused:
+  hl
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Tower.execute, ha, hz, hb, hr, Option.bind_some, Option.pure_def]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+formal/RawComposition.lean:56:56: warning: This simp argument is unused:
+  hb
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Tower.execute, ha, hl, hz, hr, Option.bind_some, Option.pure_def]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+formal/RawComposition.lean:56:59: warning: This simp argument is unused:
+  hr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Tower.execute, ha, hl, hz, hb, Option.bind_some, Option.pure_def]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+formal/RawComposition.lean:56:62: warning: This simp argument is unused:
+  Option.bind_some
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Tower.execute, ha, hl, hz, hb, hr, Option.pure_def]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

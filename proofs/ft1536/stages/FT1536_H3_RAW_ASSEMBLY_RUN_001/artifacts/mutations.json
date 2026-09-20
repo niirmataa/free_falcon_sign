@@ -1,0 +1,100 @@
+{
+  "status": "PASS_EXECUTED_MODEL_MUTATIONS_AND_INVALID_PREFLIGHT",
+  "mutations": [
+    {
+      "mutation": "noop",
+      "expected_rejection": false,
+      "checker_accepts": true,
+      "model_stop": null,
+      "first_word_mismatch": null,
+      "first_root_D_snapshot_mismatch": null,
+      "trace_sha256": "2d735edd25317536e5f62a27c977c33817bf4bb386e0f84767a376f8f3877078",
+      "words_sha256": "33af9ee28c7e6c6b851283970f1ab90a0ceb3ece90c91e5d98a39101cc16d6b6",
+      "snapshots_sha256": "5811a15045e2d6d2a65ac14d0cfaca76cb607a4974d88a69932f2cb5950c9205"
+    },
+    {
+      "mutation": "omit_child",
+      "expected_rejection": true,
+      "checker_accepts": false,
+      "model_stop": "STOP_TREE_COVERAGE",
+      "first_word_mismatch": 9472,
+      "first_root_D_snapshot_mismatch": null,
+      "trace_sha256": "1ddb4449a522684df4deca59c6d4dcba124f00d757606566dd0d297d73038acb",
+      "words_sha256": "165febdf22160475595d5b4aad18c286996f49ae114b1d7b417faca1e3226eca",
+      "snapshots_sha256": "5811a15045e2d6d2a65ac14d0cfaca76cb607a4974d88a69932f2cb5950c9205"
+    },
+    {
+      "mutation": "bad_offset",
+      "expected_rejection": true,
+      "checker_accepts": false,
+      "model_stop": "STOP_TREE_COVERAGE",
+      "first_word_mismatch": 9472,
+      "first_root_D_snapshot_mismatch": null,
+      "trace_sha256": "f5ea53fe586e0ead673de0f9943a773a6864871a15b4f751fff494538a69cd6e",
+      "words_sha256": "c29d4d797b63c1544e62415465cf696757be1dedb0c855c293eda3f10c9d3e09",
+      "snapshots_sha256": "5811a15045e2d6d2a65ac14d0cfaca76cb607a4974d88a69932f2cb5950c9205"
+    },
+    {
+      "mutation": "leaf_permutation",
+      "expected_rejection": true,
+      "checker_accepts": false,
+      "model_stop": null,
+      "first_word_mismatch": 9726,
+      "first_root_D_snapshot_mismatch": null,
+      "trace_sha256": "2d735edd25317536e5f62a27c977c33817bf4bb386e0f84767a376f8f3877078",
+      "words_sha256": "f3ef024e23a0a8292ba9a724d10bed85b208c11bd7b4a59f1b79f492e747b97d",
+      "snapshots_sha256": "5811a15045e2d6d2a65ac14d0cfaca76cb607a4974d88a69932f2cb5950c9205"
+    },
+    {
+      "mutation": "late_snapshot",
+      "expected_rejection": true,
+      "checker_accepts": false,
+      "model_stop": null,
+      "first_word_mismatch": null,
+      "first_root_D_snapshot_mismatch": 0,
+      "trace_sha256": "2d735edd25317536e5f62a27c977c33817bf4bb386e0f84767a376f8f3877078",
+      "words_sha256": "33af9ee28c7e6c6b851283970f1ab90a0ceb3ece90c91e5d98a39101cc16d6b6",
+      "snapshots_sha256": "6405f0e2ad5f311a83d86f638adfb0211238a3faaac6f28fbf0aeb9e5ad8ffec"
+    },
+    {
+      "mutation": "bad_frame",
+      "expected_rejection": true,
+      "checker_accepts": false,
+      "model_stop": "STOP_ROOT_FRAME_VIOLATION",
+      "first_word_mismatch": 6144,
+      "first_root_D_snapshot_mismatch": null,
+      "trace_sha256": "6d5ac0a8ae2bec1451fd004fc4b04a5d9849eef4331ba45929fe13192f977f9d",
+      "words_sha256": "1995826a2ef06d41b68990d49722c8a655a43f0b57d7ba0d850baba13ece4593",
+      "snapshots_sha256": "06d5d3d09088f9fd778e32d35ef158797d61c1c911ea7298a4d9f0dff9ed36f6"
+    }
+  ],
+  "invalid_cases": [
+    {
+      "case": "zero_divisor",
+      "preflight_stop": "STOP_BEFORE_DIV_DOMAIN",
+      "native_called": false,
+      "classification": "outside tested source-operation/buffer domain; not a P_key or emitted counterexample"
+    },
+    {
+      "case": "nonfinite",
+      "preflight_stop": "STOP_NONFINITE_WORD",
+      "native_called": false,
+      "classification": "outside tested source-operation/buffer domain; not a P_key or emitted counterexample"
+    },
+    {
+      "case": "short_coefficients",
+      "preflight_stop": "STOP_COEFFICIENT_LENGTH",
+      "native_called": false,
+      "classification": "outside tested source-operation/buffer domain; not a P_key or emitted counterexample"
+    },
+    {
+      "case": "buffer_end",
+      "preflight_stop": "STOP_WRITE_BOUNDS",
+      "native_called": false,
+      "classification": "outside tested source-operation/buffer domain; not a P_key or emitted counterexample"
+    }
+  ],
+  "layer": "Actual execution changes in the flat-memory model: omitted recursive child, shifted destination, real leaf swap, late physical scratch snapshot and unauthorized root-input write. Native source remains unchanged.",
+  "no_op_native_also_tested": true,
+  "retained_full_traces": true
+}

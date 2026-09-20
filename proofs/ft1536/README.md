@@ -22,8 +22,9 @@ osiągnięcia, T2C3/T5, kontrakt M0, graf zależności i dalsze obowiązki.
 Pakiet ma 211 członków OUTPUTS i 198 publicznych wejść Git, manifest
 `c3efdcff510983a143946d43ab456656090061cd5b9b4b6847abc7f141c0cfa3`.
 Jest checkpointem dokumentacyjnym (`replay=none`); obecnie archiwum zawiera
-także szesnaście etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
-H3_ZERO_SCALAR, H3_ROOT_LDL, H3_NODE3, H3_NODE2, BINARY_TOWER, audyt FPEMU i FLOOR_CT.
+także siedemnaście etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
+H3_ZERO_SCALAR, H3_ROOT_LDL, H3_NODE3, H3_NODE2, BINARY_TOWER, audyt FPEMU,
+FLOOR_CT i RAW_ASSEMBLY.
 
 [Mapa po domknięciu L_V — 2026-09-19](documents/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md)
 przedstawia zależności i proponowaną kolejność: dokładny kontrakt gry,
@@ -122,12 +123,14 @@ rekalkulacja9771 partii A/B. Nowy17-file pin56974571… jest w
 stage/candidate; produkcyjny Extra/c ma nadal baseline pin2553358f….
 Source integration i dalsze interfejsy matematyczne mają własny zakres.
 
-**Następne przygotowane zadanie:** [H3_RAW_ASSEMBLY](documents/FT1536_ZADANIE_ASTRA_H3_RAW_ASSEMBLY_2026-09-20.md),
-do ręcznego uruchomienia przez właściciela. Cel: source transport na archived
-FLOOR_CT candidate i pełny raw prefix load_skey do powrotu ffLDL_fft3,
-z actual totality, numerical/layout/frame matching i emitted corollary.
-[Bootstrap](background/H3_RAW_ASSEMBLY_2026-09-20/README.md):308 członków,
-17-file pin56974571…. Stable rebuild/normalize jest następnym osobnym etapem.
+**Odebrany RAW_ASSEMBLY:** [raport](stages/FT1536_H3_RAW_ASSEMBLY_RUN_001/REPORT.md)
+domyka actual raw prefix do powrotu ffLDL_fft3:6144 basis,18432 raw tree,
+source order/totality/frame i emitted corollary. [Odbiór](validation/2026-09-20-raw-assembly/README.md):
+195/195 plików,33 moduły,180 twierdzeń (33 nowych), mixed analytical/kernel scope.
+Źródła mają pin56974571…; pełny normalized loader pozostaje odrębny.
+[Uwagi do następnego typu](validation/2026-09-20-raw-assembly/NEXT_SCOPE.md)
+rozdzielają P_key/raw computation od narrow stable gate acceptance i wymagają
+źródłowego bridge obowiązkowego certificate udanego KeyGen.
 
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
@@ -178,7 +181,8 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [H3_NODE2](stages/FT1536_H3_NODE2_RUN_001/REPORT.md) | **H3_NODE2_PROVED_FOR_PINNED_MODEL** — pierwszy binary level8, half i upstream imaginary refinement; mieszany dowód | `b27a055` |
 | [FPEMU audit](stages/FT1536_FPEMU_AUDIT_RUN_001/REPORT.md) | **CONFIRMED_ISSUE** — generic signed-zero compare i compiled floor branch; timing NOT_RUN | `8bbab81` |
 | [BINARY_TOWER](stages/FT1536_H3_BINARY_TOWER_RUN_001/REPORT.md) | **H3_BINARY_TOWER_PROVED_FOR_PINNED_MODEL** — levels7–1 i12 total raw subtrees; mieszany dowód | `1a04145` |
-| [FLOOR_CT](stages/FT1536_FPEMU_FLOOR_CT_RUN_001/REPORT.md) | **FLOOR_CT_CANDIDATE_VALIDATED_FOR_PINNED_BUILD** — bit-preserving patch i kwalifikowana walidacja buildu; osobna integracja | niniejszy checkpoint |
+| [FLOOR_CT](stages/FT1536_FPEMU_FLOOR_CT_RUN_001/REPORT.md) | **FLOOR_CT_CANDIDATE_VALIDATED_FOR_PINNED_BUILD** — bit-preserving patch i kwalifikowana walidacja buildu; osobna integracja | `6ed89ca` |
+| [RAW_ASSEMBLY](stages/FT1536_H3_RAW_ASSEMBLY_RUN_001/REPORT.md) | **H3_RAW_ASSEMBLY_PROVED_FOR_PINNED_MODEL** — pełny raw prefix, source transport i emitted corollary; mieszany dowód | niniejszy checkpoint |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).
@@ -297,7 +301,8 @@ i `FT1536_L_V_BRIDGE_RUN_001`, `FT1536_M0_CONTRACT_RUN_001`
 oraz `FT1536_H3_RANGE_RUN_001`, `FT1536_H3_ZERO_SCALAR_RUN_001`
 i `FT1536_H3_ROOT_LDL_RUN_001`, `FT1536_H3_NODE3_RUN_001`
 oraz `FT1536_H3_NODE2_RUN_001`, `FT1536_FPEMU_AUDIT_RUN_001`
-i `FT1536_H3_BINARY_TOWER_RUN_001` oraz `FT1536_FPEMU_FLOOR_CT_RUN_001`.
+i `FT1536_H3_BINARY_TOWER_RUN_001`, `FT1536_FPEMU_FLOOR_CT_RUN_001`
+oraz `FT1536_H3_RAW_ASSEMBLY_RUN_001`.
 Wpis katalogu określa właściwy punkt wejścia. Odbiór Blue jest archiwum
 recenzji i receipts; nie ma zadeklarowanego pojedynczego pełnego runnera.
 
