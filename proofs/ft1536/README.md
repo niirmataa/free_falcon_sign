@@ -141,6 +141,13 @@ klas>1/1536. All-P_key definedness jest proved, narrow gate acceptance nadal
 OPEN_NOT_DISPROVED. Source success event/K_seed pozostają te same.
 Następne typy to INITIAL_TARGETS oraz osobny ORDERED_REACH→NumericCenter.
 
+**Następne zadanie do ręcznego startu:**
+[H3_INITIAL_TARGETS](documents/FT1536_ZADANIE_ASTRA_H3_INITIAL_TARGETS_2026-09-20.md),
+z [bootstrapem198 członków](background/H3_INITIAL_TARGETS_2026-09-20/README.md).
+Cel: actual target prefix do_sign1849–1892 dla wszystkich canonical c,
+source words/domains/errors i key/frame przed ffSampling_fft3. FFT challenge
+domain18432 wymaga nowej instancji; scalar NumericCenter pozostaje osobny.
+
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
 

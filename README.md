@@ -89,6 +89,12 @@ reproduced262/262 files and40 modules/230 theorems (50 new).
 All-P_key computational definedness is proved separately; narrow gate
 acceptance for all P_key remains open, without changing the key law.
 
+**Next prepared owner-run task:** [H3_INITIAL_TARGETS](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_INITIAL_TARGETS_2026-09-20.md),
+the source do_sign target prefix before ffSampling_fft3, for every canonical
+challenge, with source FFT/basis/reciprocal errors and normalized-key frame.
+Its [pinned inputs](proofs/ft1536/background/H3_INITIAL_TARGETS_2026-09-20/README.md)
+preserve ORDERED_REACH to scalar NumericCenter as a separate obligation.
+
 The [candidate night-run setup](provenance/checks/2026-09-20-dudect-floor-ct-ready/README.md)
 is **STATIC_READY_TIMING_DEFERRED**: source/build/fixture checks passed,
 with no new physical timing campaign started. The [floor-ct launcher](tests/ft1536/dudect/README.md)
