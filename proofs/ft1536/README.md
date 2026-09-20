@@ -132,6 +132,14 @@ source order/totality/frame i emitted corollary. [Odbiór](validation/2026-09-20
 rozdzielają P_key/raw computation od narrow stable gate acceptance i wymagają
 źródłowego bridge obowiązkowego certificate udanego KeyGen.
 
+**Następne zadanie do ręcznego startu:**
+[H3_STABLE_NORMALIZATION](documents/FT1536_ZADANIE_ASTRA_H3_STABLE_NORMALIZATION_2026-09-20.md),
+z [bootstrapem272 członków](background/H3_STABLE_NORMALIZATION_2026-09-20/README.md).
+Główny zakres jest jawnie emitted: mandatory stable certificate → bitowe
+matching → actual normalization/stored widths i source sqrt/div/scaling,
+z zachowaniem L/basis. Silniejsze all-P_key acceptance ma osobny status;
+nie dodajemy go do definicji P_key ani nie warunkujemy ponownie K_seed.
+
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
 

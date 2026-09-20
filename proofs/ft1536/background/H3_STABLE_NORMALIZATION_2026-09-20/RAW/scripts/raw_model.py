@@ -1,0 +1,130 @@
+"""Independent integer-transducer/flat-memory model in the actual source call order."""
+from backend import add,sub,mul,div,neg,of,ca,cs,cm,conj,scalar
+from root_model import fft,tables
+from node_model import split_point
+from tower_model import split as split_with_adj
+from dyadic import value
+N=1536;SK=24576;TMP=10752;KMARK=0xa5a5a5a5a5a5a5a5;SMARK=0x5a5a5a5a5a5a5a5a
+def at(p,n):return p[0],p[1]+n
+def size(k,full):return (1+2*full)*2**(k-full)
+def tsize(k):return (k+1)*2**k
+class Machine:
+ def __init__(self,root,mutation=None):
+  self.tab=tables(root);self.mem={'K':[KMARK]*SK,'S':[SMARK]*TMP};self.init={'K':[False]*SK,'S':[False]*TMP}
+  self.events=[];self.high={'K':0,'S':0};self.snapshots={};self.mutation=mutation;self.used=False;self.node_count=0
+ def read(self,p,n):
+  tag,i=p
+  if tag not in self.mem or i<0 or i+n>len(self.mem[tag]) or not all(self.init[tag][i:i+n]):raise ValueError('STOP_UNINITIALIZED_OR_BOUNDS')
+  return self.mem[tag][i:i+n]
+ def write(self,p,v):
+  tag,i=p
+  if tag not in self.mem or i<0 or i+len(v)>len(self.mem[tag]):raise ValueError('STOP_WRITE_BOUNDS')
+  self.mem[tag][i:i+len(v)]=v;self.init[tag][i:i+len(v)]=[True]*len(v);self.high[tag]=max(self.high[tag],i+len(v))
+ def copy(self,a,b,n):self.write(a,self.read(b,n))
+ def emit(self,name,k,f,ptrs,outputs):
+  self.events.append('E '+name+f' {k} {f} {len(ptrs)} '+ ' '.join(f'{p[0]} {p[1]}' for p in ptrs)+f' {len(outputs)}')
+  for v in outputs:self.events.append('V '+str(len(v))+' '+' '.join(f'{x:016x}' for x in v))
+ def op(self,name,a,k,f,b=None):
+  n=size(k,f);x=self.read(a,n);y=self.read(b,n) if b else None;hn=n//2
+  for z in x+(y or []):scalar(z)
+  if name=='FFT':out=fft(x,self.tab)
+  elif name=='NEG':out=[neg(z) for z in x]
+  elif name=='ADJ':out=x[:hn]+[neg(z) for z in x[hn:]]
+  elif name in ['ADD','SUB']:out=[(add if name=='ADD' else sub)(v,w) for v,w in zip(x,y)]
+  elif name=='SELF':out=[add(mul(x[i],x[i]),mul(x[i+hn],x[i+hn])) for i in range(hn)]+[of(0)]*hn
+  elif name=='MULADJ':
+   zs=[cm((x[i],x[i+hn]),conj((y[i],y[i+hn]))) for i in range(hn)];out=[z[0] for z in zs]+[z[1] for z in zs]
+  elif name in ['MULAUTO','DIVAUTO']:
+   fn=mul if name=='MULAUTO' else div;out=[fn(x[i],y[i%hn]) for i in range(n)]
+  else:raise ValueError(name)
+  self.write(a,out);self.emit(name,k,f,[a]+([b] if b else []),[out])
+ def split_top(self,a,b,c,v):
+  x=self.read(v,N);outs=[[] for _ in range(3)];ims=[[] for _ in range(3)]
+  for j in range(256):
+   z=split_point([(x[3*j+h],x[768+3*j+h]) for h in range(3)],j,self.tab)
+   for h in range(3):outs[h].append(z[h][0]);ims[h].append(z[h][1])
+  outs=[o+i for o,i in zip(outs,ims)]
+  for p,z in zip([a,b,c],outs):self.write(p,z)
+  self.emit('TOP',10,1,[a,b,c,v],outs)
+ def split_deep(self,a,b,v,k):
+  x,y=split_with_adj(self.read(v,2**k),k,self.tab);hn=len(y)//2;y=y[:hn]+[neg(z) for z in y[hn:]]
+  self.write(a,x);self.write(b,y);self.emit('SPLIT',k,0,[a,b,v],[x,y])
+ def dim2(self,d,L,a,b,c,k,f):
+  n=size(k,f);self.copy(L,b,n);self.op('DIVAUTO',L,k,f,a)
+  self.copy(d,b,n);self.op('MULADJ',d,k,f,L);self.op('NEG',d,k,f);self.op('ADD',d,k,f,c)
+  self.node_count+=1
+ def dim3(self,d,e,L,a,b,c,k,tmp):
+  n=2**k;l20=at(L,n);l21=at(L,2*n)
+  self.dim2(d,L,a,b,a,k,0)
+  self.copy(l20,c,n);self.op('DIVAUTO',l20,k,0,a)
+  self.copy(l21,c,n);self.op('MULADJ',l21,k,0,b);self.op('DIVAUTO',l21,k,0,a)
+  self.op('NEG',l21,k,0);self.op('ADD',l21,k,0,b);self.op('DIVAUTO',l21,k,0,d)
+  self.copy(e,l20,n);self.op('MULADJ',e,k,0,c);self.op('NEG',e,k,0);self.op('ADD',e,k,0,a)
+  self.copy(tmp,l21,n);self.op('SELF',tmp,k,0);self.op('MULAUTO',tmp,k,0,d);self.op('SUB',e,k,0,tmp)
+ def inner(self,tree,a,b,c,k,tmp,path):
+  n=2**k
+  if k==1:
+   self.dim2(tmp,tree,a,b,c,1,0);v=[self.read(a,1)[0],self.read(tmp,1)[0]]
+   if not all(value(z)>0 for z in v):raise ValueError('STOP_NONPOSITIVE_LEAF')
+   self.write(at(tree,2),v);self.events.append(f'B {tree[1]-6144} {v[0]:016x} {v[1]:016x}');return 4
+  x=tmp;y=at(tmp,n//2);work=at(tmp,n);s=n
+  self.split_deep(x,y,a,k);self.op('ADJ',y,k-1,0)
+  first=at(tree,s)
+  if self.mutation=='bad_offset' and not self.used and k==8:self.used=True;first=at(first,1)
+  if self.mutation=='omit_child' and not self.used and k==8:self.used=True;s+=tsize(k-1)
+  else:s+=self.inner(first,x,y,x,k-1,work,path+'0')
+  self.dim2(work,tree,a,b,c,k,0)
+  self.split_deep(x,y,work,k);self.op('ADJ',y,k-1,0);s+=self.inner(at(tree,s),x,y,x,k-1,work,path+'1')
+  return s
+ def depth(self,tree,a,b,c,tmp,branch):
+  d=tmp;e=at(tmp,512);x=at(tmp,1024);y=at(tmp,1280);work=at(tmp,1536)
+  self.dim3(d,e,tree,a,b,c,9,work);self.snapshots[f'node3_{branch}']=[self.read(p,512) for p in [a,d,e]];s=1536
+  for index,p in enumerate([a,d,e]):
+   assert self.read(p,512)==self.snapshots[f'node3_{branch}'][index]
+   self.split_deep(x,y,p,9);self.op('ADJ',y,8,0);s+=self.inner(at(tree,s),x,y,x,8,work,f'{branch}{index}')
+  return s
+ def top(self,alias=False):
+  tree=('K',6144);a=('S',0);b=('S',N);c=a if alias else ('S',2*N);x=('S',3*N);y=at(x,512);z=at(x,1024);work=at(x,N)
+  self.snapshots['gram']=self.mem['S'][:3*N];s=N
+  self.split_top(x,y,z,a);self.op('ADJ',y,9,0);self.op('ADJ',z,9,0);s+=self.depth(at(tree,s),x,y,z,work,0)
+  if self.mutation=='bad_frame':self.write(a,[self.read(a,1)[0]^1])
+  if self.mem['S'][:3*N]!=self.snapshots['gram']:raise ValueError('STOP_ROOT_FRAME_VIOLATION')
+  self.dim2(work,tree,a,b,c,10,1);self.snapshots['root_D']=self.read(work,N)
+  self.split_top(x,y,z,work);self.op('ADJ',y,9,0);self.op('ADJ',z,9,0);s+=self.depth(at(tree,s),x,y,z,work,1)
+  if self.mutation=='late_snapshot':self.snapshots['root_D']=self.read(work,N)
+  if self.mutation=='leaf_permutation':
+   i=leaf_map()[0]['tree_index'];j=leaf_map()[-1]['tree_index'];self.mem['K'][6144+i],self.mem['K'][6144+j]=self.mem['K'][6144+j],self.mem['K'][6144+i]
+  if not all(self.init['K'][6144:]):raise ValueError('STOP_TREE_COVERAGE')
+  assert s==18432 and self.high['S']==8192 and self.high['K']==24576
+  assert self.mem['S'][:3*N]==self.snapshots['gram'] and self.mem['S'][8192:]==[SMARK]*(TMP-8192)
+  return s
+ def prefix(self,polys):
+  if len(polys)!=4 or any(len(p)!=N for p in polys):raise ValueError('STOP_COEFFICIENT_LENGTH')
+  if any(not -2047<=v<=2047 for p in polys for v in p):raise ValueError('STOP_COEFFICIENT_CAP')
+  for arr,offset in zip(polys,[N,0,3*N,2*N]):
+   vals=[]
+   for v in arr:z=of(v);vals.append(z);self.events.append(f'O {v} {z:016x}')
+   self.write(('K',offset),vals)
+  for offset in [N,0,3*N,2*N]:self.op('FFT',('K',offset),10,1)
+  for offset in [N,3*N]:self.op('NEG',('K',offset),10,1)
+  self.snapshots['basis']=self.mem['K'][:6144]
+  # Original q/logn/n guard is here, AFTER FFT; fixed required parameters satisfy it.
+  A=('S',0);C=('S',N);J=('S',2*N);work=('S',3*N)
+  self.copy(A,('K',0),N);self.op('SELF',A,10,1);self.copy(work,('K',N),N);self.op('SELF',work,10,1);self.op('ADD',A,10,1,work)
+  self.copy(C,('K',2*N),N);self.op('MULADJ',C,10,1,('K',0));self.copy(work,('K',3*N),N);self.op('MULADJ',work,10,1,('K',N));self.op('ADD',C,10,1,work)
+  self.copy(J,('K',2*N),N);self.op('SELF',J,10,1);self.copy(work,('K',3*N),N);self.op('SELF',work,10,1);self.op('ADD',J,10,1,work)
+  count=self.top();assert self.mem['K'][:6144]==self.snapshots['basis'];return count
+def leaf_map():
+ rows=[]
+ def descend(k,off,b,d,e,path):
+  if k==1:
+   for side in [0,1]:rows.append(dict(ordinal=len(rows),tree_index=off+2+side,sk_index=6144+off+2+side,branch=b,diagonal=d,entry_edge=e,path=path,side=side,
+    literal='g00[0]' if side==0 else 'd11[0]'))
+  else:
+   descend(k-1,off+2**k,b,d,e,path+'0');descend(k-1,off+2**k+tsize(k-1),b,d,e,path+'1')
+ for b in range(2):
+  for d in range(3):
+   for e in range(2):descend(7,1536+b*8448+1536+d*2304+256+e*1024,b,d,e,'')
+ assert len(rows)==1536 and len({r['tree_index'] for r in rows})==1536
+ assert [r['tree_index'] for r in rows]==sorted(r['tree_index'] for r in rows)
+ return rows

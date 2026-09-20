@@ -78,6 +78,12 @@ Its analytical/kernel boundary is explicit. The [next-stage scope](proofs/ft1536
 separates stable computation/normalization from acceptance of the narrower
 stable leaf gates, which need their source-bound emitted certificate.
 
+**Next prepared owner-run task:** [H3_STABLE_NORMALIZATION](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_STABLE_NORMALIZATION_2026-09-20.md),
+actual stable rebuild, stored widths, sqrt/div/scaling and memory preservation.
+Its [pinned inputs](proofs/ft1536/background/H3_STABLE_NORMALIZATION_2026-09-20/README.md)
+require an explicit emitted stable-gate bridge; stronger all-P_key acceptance
+has a separate proof status. The owner launches this Astra manually.
+
 The [candidate night-run setup](provenance/checks/2026-09-20-dudect-floor-ct-ready/README.md)
 is **STATIC_READY_TIMING_DEFERRED**: source/build/fixture checks passed,
 with no new physical timing campaign started. The [floor-ct launcher](tests/ft1536/dudect/README.md)
