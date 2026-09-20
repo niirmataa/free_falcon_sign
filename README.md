@@ -35,6 +35,8 @@ kernel-checked finite-word half semantics plus an upstream imaginary bound.
 recursive subtrees**, including defined terminating execution in the declared model.
 **H3_RAW_ASSEMBLY composes the complete raw loader/tree prefix** through the
 return of ffLDL_fft3, before stable leaf replacement and normalization.
+**H3_STABLE_NORMALIZATION certifies the subsequent source widths and
+normalization for emitted keys**, with a source-derived stable-gate bridge.
 Global reachable-center bounds and end-to-end security remain open research objectives.
 
 **FPEMU audit — confirmed issues:** numeric `fpr_lt(-0,+0)` returns 1, and
@@ -78,11 +80,14 @@ Its analytical/kernel boundary is explicit. The [next-stage scope](proofs/ft1536
 separates stable computation/normalization from acceptance of the narrower
 stable leaf gates, which need their source-bound emitted certificate.
 
-**Next prepared owner-run task:** [H3_STABLE_NORMALIZATION](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_STABLE_NORMALIZATION_2026-09-20.md),
-actual stable rebuild, stored widths, sqrt/div/scaling and memory preservation.
-Its [pinned inputs](proofs/ft1536/background/H3_STABLE_NORMALIZATION_2026-09-20/README.md)
-require an explicit emitted stable-gate bridge; stronger all-P_key acceptance
-has a separate proof status. The owner launches this Astra manually.
+The [STABLE_NORMALIZATION result](proofs/ft1536/stages/FT1536_H3_STABLE_NORMALIZATION_RUN_001/REPORT.md)
+closes1536 actual stored widths, source sqrt54/div/scaling and preservation
+of16896 internal L and6144 basis words for emitted keys. Squared stored widths
+are in(1.7763,575.9999), paired squared widths in(2.3684,767.9999); the literal sigma-only
+dss satisfies the final bank coefficient. [Independent review](proofs/ft1536/validation/2026-09-20-stable-normalization/README.md)
+reproduced262/262 files and40 modules/230 theorems (50 new).
+All-P_key computational definedness is proved separately; narrow gate
+acceptance for all P_key remains open, without changing the key law.
 
 The [candidate night-run setup](provenance/checks/2026-09-20-dudect-floor-ct-ready/README.md)
 is **STATIC_READY_TIMING_DEFERRED**: source/build/fixture checks passed,
@@ -195,6 +200,7 @@ integration work; changing their description does not change the old CLI.
 | [FPEMU audit](proofs/ft1536/stages/FT1536_FPEMU_AUDIT_RUN_001/REPORT.md) | Generic numeric comparison of signed zeros and operand-dependent compiled floor branch; finite arithmetic/sanitizer audit, no timing measurements | `CONFIRMED_ISSUE` |
 | [FLOOR_CT candidate](proofs/ft1536/stages/FT1536_FPEMU_FLOOR_CT_RUN_001/REPORT.md) | All-word bit-preserving floor replacement, pinned machine-code review and exploratory A/B; archived candidate, separate source integration | `FLOOR_CT_CANDIDATE_VALIDATED_FOR_PINNED_BUILD` |
 | [H3_RAW_ASSEMBLY](proofs/ft1536/stages/FT1536_H3_RAW_ASSEMBLY_RUN_001/REPORT.md) | Complete raw loader/tree prefix, actual source composition and emitted corollary; mixed proof on the archived floor candidate | `H3_RAW_ASSEMBLY_PROVED_FOR_PINNED_MODEL` |
+| [H3_STABLE_NORMALIZATION](proofs/ft1536/stages/FT1536_H3_STABLE_NORMALIZATION_RUN_001/REPORT.md) | Emitted stable-gate bridge, actual normalized widths, sqrt/div/scaling and preserved basis/internal L; mixed proof | `H3_STABLE_NORMALIZATION_PROVED_FOR_EMITTED_PINNED_MODEL` |
 
 The completed L_V bridge establishes, for all canonical h,c and legal finite
 payloads b in the pinned GCC14.2.0/C99/Linux x86_64 LP64 model:
@@ -414,7 +420,8 @@ Later maintainer replays and their exact scopes:
 [FPEMU audit](proofs/ft1536/validation/2026-09-20-fpemu-audit/README.md),
 [BINARY_TOWER](proofs/ft1536/validation/2026-09-20-binary-tower/README.md),
 [FLOOR_CT](proofs/ft1536/validation/2026-09-20-floor-ct/README.md),
-[RAW_ASSEMBLY](proofs/ft1536/validation/2026-09-20-raw-assembly/README.md).
+[RAW_ASSEMBLY](proofs/ft1536/validation/2026-09-20-raw-assembly/README.md),
+[STABLE_NORMALIZATION](proofs/ft1536/validation/2026-09-20-stable-normalization/README.md).
 The independent Blue review has archived evidence, rather than a single
 declared full replay runner.
 

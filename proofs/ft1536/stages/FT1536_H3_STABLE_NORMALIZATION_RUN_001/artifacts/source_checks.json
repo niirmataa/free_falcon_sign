@@ -1,0 +1,55 @@
+{
+  "status": "PASS_SOURCE_AND_TYPED_PROOF_BINDING",
+  "source_files": 17,
+  "public_inputs": 276,
+  "source_manifest_sha256": "56974571b46e8257bdd3b4097c8c70fded6bb4b94c64805f6e35ec80929a0985",
+  "proof_documents": {
+    "CLAIM.md": "f407201043a51cf519bd57641d250894634dd23e7fe40ae5f3bde9496a925f47",
+    "DOMAIN_AUDIT.md": "9176d7af6bd9372c4ddc540c7db418d636330de0f90916e83e78f929ef16e82a",
+    "EMITTED_STABLE_BINDING.md": "20e37e5143b9e40762d92f0ad7fae983718d9a048df2e9f8b4a3df01fec11f3e",
+    "NORMALIZATION.md": "96444d91d19e82d19e4696fcd6455e75269e115bdc6a25d60d1985c716577c8d",
+    "SQRT_DIV_CONTRACT.md": "39c1f1dcf9f1d01861d9ff4ca37b13664be7be47ad4254663a02f86e0eaf3612",
+    "SOURCE_MODEL_BINDING.md": "ea0a79f313e7dc901bfe053dfaef629361bfbf9e8ba4e1dad91a791aa4e29179",
+    "MEMORY_FRAME.md": "139e06f862b2db897f8ac14dcc89c3fc5efae8569b090e816bbf2e533553fc73",
+    "NEXT_INTERFACE.md": "104ad732d2e5b3a2b8af46ab5d47dda21067b40bfabea5f35f6e4d54d6782a20",
+    "REUSED_RESULTS.md": "fc312b1dcc0b6dd97dc9a283784459c38eaefea792a32bf367a3250a8bf71d66"
+  },
+  "adaptations": [
+    {
+      "input": "inputs/bootstrap/RAW/scripts/backend.py",
+      "input_sha256": "a0fddd983723df4eda38071c8e1f9b1f82ec4f49de20c071030731729d72962c",
+      "copy": "scripts/backend.py",
+      "sha256": "9eec39851843b1728c19cf3d808be805c93ba570a43525c01996066a94e2b69a",
+      "diff": "artifacts/diffs/binding_backend.patch",
+      "diff_sha256": "0a4ba9d254be1088396bf107ebca6b6921f9a50d0357b6b825e23dd1cf88e9f2"
+    },
+    {
+      "input": "inputs/bootstrap/RAW/scripts/controls.py",
+      "input_sha256": "870170eaa7ae8e4035d40d5f13df1d5f6b400a545d76c89bad6ac0a07f3acc31",
+      "copy": "scripts/controls.py",
+      "sha256": "ed08047cfbfbfd8f67d3bf569d207bb11480219eacd984a8db8c5080ac088bf2",
+      "diff": "artifacts/diffs/binding_controls.patch",
+      "diff_sha256": "551fa891ec726811a12e696e93551830eb42da06eed18f5e303be35b466b8221"
+    },
+    {
+      "input": "inputs/bootstrap/RAW/scripts/audit.py",
+      "input_sha256": "07a58ea2941c088a3689986a1d08b22fe7f3ac7dbdfcf8c97d2e5fcf628cb560",
+      "copy": "scripts/audit.py",
+      "sha256": "a93e33fa95be9244b2775166fd3842eeffb49cab0117a1c27a8030af72174d9e",
+      "diff": "artifacts/diffs/binding_audit.patch",
+      "diff_sha256": "87bf22457f3ad19775cf100870fad0f9bad01a3245a4257b7000b895710b4811"
+    },
+    {
+      "input": "inputs/bootstrap/RAW/formal/PackOf.lean",
+      "input_sha256": "0797e5e9677187c183001efd4f8d417e54cede1d3771113fe5d2017d0a432e9a",
+      "copy": "formal/SqrtPack.lean",
+      "sha256": "ac24eccf427998375746f77b9dadc7682f463e31fdd6262a761d69fe6f780b34",
+      "diff": "artifacts/diffs/binding_SqrtPack.patch",
+      "diff_sha256": "7d4a3736c6579918a62d11f073749400ef7d97b6e5c24f76196107fa965f9baa"
+    }
+  ],
+  "source_changed": false,
+  "production_source_changed": false,
+  "new_source_patch_integrated": false,
+  "owner_accepted": false
+}

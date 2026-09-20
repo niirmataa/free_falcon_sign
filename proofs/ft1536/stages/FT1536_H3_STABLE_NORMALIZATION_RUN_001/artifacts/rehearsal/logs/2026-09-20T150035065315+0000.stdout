@@ -1,0 +1,104 @@
+{
+  "status": "PASS_INDEPENDENT_PREFLIGHT_AND_EXACT_ORACLES",
+  "sqrt_words": 40930,
+  "sqrt_exponents": 2046,
+  "random_words": 8192,
+  "public_seed": "4654535441424c45",
+  "sqrt_matches_independent_isqrt_RN_oracle_on_tests": true,
+  "RN_not_assumed_in_universal_contract": true,
+  "lean_sqrt_cases": 4096,
+  "div_pairs": 117,
+  "bit_identity_pairs": 196,
+  "gate_cases": 24,
+  "width_cases": 1033,
+  "sqrt_sticky_mutation": {
+    "raw": "0010000000000002",
+    "expected": "2000000000000001",
+    "without_sticky": "2000000000000000"
+  },
+  "pipelines": [
+    {
+      "name": "roots_flat",
+      "mode": "roots",
+      "stable_ok": true,
+      "operations": 22272,
+      "input_sha256": "889d88dba87b91b458520449f61d89b0e7b3c1570866e43e34f68f35b40d94da",
+      "output_sha256": "bd85cbd144f5dbcb275afd77a08e05839faf1147d8baf5b40af9ea1c0b1f48a8",
+      "preflight": "PASS_SOURCE_DOMAINS_BEFORE_NATIVE",
+      "membership": "Synthetic local helper domain, not P_key/emitted witness"
+    },
+    {
+      "name": "roots_vary",
+      "mode": "roots",
+      "stable_ok": true,
+      "operations": 22272,
+      "input_sha256": "528246fad55b7b25ce4e8449a91cd4693a2ea8b13cff4456993d5d724d810016",
+      "output_sha256": "c436637c87ab8d0f2ece394a616a0aa9697704f3bb22d4c3c143fb74eb43a4b0",
+      "preflight": "PASS_SOURCE_DOMAINS_BEFORE_NATIVE",
+      "membership": "Synthetic local helper domain, not P_key/emitted witness"
+    },
+    {
+      "name": "roots_high",
+      "mode": "roots",
+      "stable_ok": false,
+      "operations": 22272,
+      "input_sha256": "84988c22319b95bafd1a8677cb3b465052a6871f6be105db40a518eae56736f0",
+      "output_sha256": "91d7be1a1f718159875d2fbe9459a6d7ec105c53c122c087f2e0882cfd784924",
+      "preflight": "PASS_SOURCE_DOMAINS_BEFORE_NATIVE",
+      "membership": "Synthetic local helper domain, not P_key/emitted witness"
+    },
+    {
+      "name": "roots_invalid",
+      "mode": "roots",
+      "stable_ok": false,
+      "operations": 22272,
+      "input_sha256": "ec9a297083d86563883f59fd51c9509f6dbe86ac6e1855e118a90f01d9f5dc50",
+      "output_sha256": "af5f296b2eab44a04c8c7b2f6915c56cfd7f7198725afd311f1dc68a1bb4c8a8",
+      "preflight": "PASS_SOURCE_DOMAINS_BEFORE_NATIVE",
+      "membership": "Synthetic local helper domain, not P_key/emitted witness"
+    },
+    {
+      "name": "coeff_flat",
+      "mode": "suffix",
+      "stable_ok": true,
+      "operations": 22272,
+      "input_sha256": "0cea15df709fe6f19faf1e13899739e31859083e8c30e437687741dad440211d",
+      "output_sha256": "4d8ca7f70136a5c96874203e0b2d17b3bd794941186dbc1fd7d2d222317f25ba",
+      "preflight": "PASS_SOURCE_DOMAINS_BEFORE_NATIVE",
+      "membership": "Synthetic local helper domain, not P_key/emitted witness"
+    },
+    {
+      "name": "coeff_zero",
+      "mode": "suffix",
+      "stable_ok": false,
+      "operations": 22272,
+      "input_sha256": "ace7969c7426a309a3a1986cd1638f9e88bf46caf188a2268d8828b2476c18a1",
+      "output_sha256": "003d939f1a9caf3cf55bc2fd75a0a5e5256dfa63c36e956b8472836ef47f4467",
+      "preflight": "PASS_SOURCE_DOMAINS_BEFORE_NATIVE",
+      "membership": "Synthetic local helper domain, not P_key/emitted witness"
+    },
+    {
+      "name": "coeff_alias",
+      "mode": "suffix_alias",
+      "stable_ok": true,
+      "operations": 22272,
+      "input_sha256": "5da9da330776233a817cb20aa13a73ad48ab2a661340d4c0fd16fbfdbd1af234",
+      "output_sha256": "3e0f8d2ba63bb2570c89b7a4f618d475221b82f4a3806f087aaca3261e51a523",
+      "preflight": "PASS_SOURCE_DOMAINS_BEFORE_NATIVE",
+      "membership": "Synthetic local helper domain, not P_key/emitted witness"
+    },
+    {
+      "name": "coeff_vary",
+      "mode": "suffix",
+      "stable_ok": true,
+      "operations": 22272,
+      "input_sha256": "8f55f5b0ef1611a62062864e4b3f75db7be3296970700432e24b8136e7768fd2",
+      "output_sha256": "5ab65ee5d030da77ba320e2a9c7e48f98ce7e5dee556aefb3f7704dc7f370a98",
+      "preflight": "PASS_SOURCE_DOMAINS_BEFORE_NATIVE",
+      "membership": "Synthetic local helper domain, not P_key/emitted witness"
+    }
+  ],
+  "source_bound_sigma2_H4_checked": true,
+  "paired_and_dss_bounds_checked": true,
+  "synthetic_key_membership_claimed": false
+}

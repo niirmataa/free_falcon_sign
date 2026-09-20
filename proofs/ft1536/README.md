@@ -22,9 +22,9 @@ osiągnięcia, T2C3/T5, kontrakt M0, graf zależności i dalsze obowiązki.
 Pakiet ma 211 członków OUTPUTS i 198 publicznych wejść Git, manifest
 `c3efdcff510983a143946d43ab456656090061cd5b9b4b6847abc7f141c0cfa3`.
 Jest checkpointem dokumentacyjnym (`replay=none`); obecnie archiwum zawiera
-także siedemnaście etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
+także osiemnaście etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
 H3_ZERO_SCALAR, H3_ROOT_LDL, H3_NODE3, H3_NODE2, BINARY_TOWER, audyt FPEMU,
-FLOOR_CT i RAW_ASSEMBLY.
+FLOOR_CT, RAW_ASSEMBLY i STABLE_NORMALIZATION.
 
 [Mapa po domknięciu L_V — 2026-09-19](documents/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md)
 przedstawia zależności i proponowaną kolejność: dokładny kontrakt gry,
@@ -132,13 +132,14 @@ source order/totality/frame i emitted corollary. [Odbiór](validation/2026-09-20
 rozdzielają P_key/raw computation od narrow stable gate acceptance i wymagają
 źródłowego bridge obowiązkowego certificate udanego KeyGen.
 
-**Następne zadanie do ręcznego startu:**
-[H3_STABLE_NORMALIZATION](documents/FT1536_ZADANIE_ASTRA_H3_STABLE_NORMALIZATION_2026-09-20.md),
-z [bootstrapem272 członków](background/H3_STABLE_NORMALIZATION_2026-09-20/README.md).
-Główny zakres jest jawnie emitted: mandatory stable certificate → bitowe
-matching → actual normalization/stored widths i source sqrt/div/scaling,
-z zachowaniem L/basis. Silniejsze all-P_key acceptance ma osobny status;
-nie dodajemy go do definicji P_key ani nie warunkujemy ponownie K_seed.
+**Odebrany STABLE_NORMALIZATION:** [raport](stages/FT1536_H3_STABLE_NORMALIZATION_RUN_001/REPORT.md)
+domyka emitted gate bridge, actual1536 stored widths, source sqrt54/div/scaling
+i preserved L/basis. [Odbiór](validation/2026-09-20-stable-normalization/README.md):
+262/262 plików,40 modułów,230 twierdzeń (50 nowych), mixed proof boundary.
+Stored sigma²∈(1.7763,575.9999), paired∈(2.3684,767.9999), literal dss obu
+klas>1/1536. All-P_key definedness jest proved, narrow gate acceptance nadal
+OPEN_NOT_DISPROVED. Source success event/K_seed pozostają te same.
+Następne typy to INITIAL_TARGETS oraz osobny ORDERED_REACH→NumericCenter.
 
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
@@ -190,7 +191,8 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [FPEMU audit](stages/FT1536_FPEMU_AUDIT_RUN_001/REPORT.md) | **CONFIRMED_ISSUE** — generic signed-zero compare i compiled floor branch; timing NOT_RUN | `8bbab81` |
 | [BINARY_TOWER](stages/FT1536_H3_BINARY_TOWER_RUN_001/REPORT.md) | **H3_BINARY_TOWER_PROVED_FOR_PINNED_MODEL** — levels7–1 i12 total raw subtrees; mieszany dowód | `1a04145` |
 | [FLOOR_CT](stages/FT1536_FPEMU_FLOOR_CT_RUN_001/REPORT.md) | **FLOOR_CT_CANDIDATE_VALIDATED_FOR_PINNED_BUILD** — bit-preserving patch i kwalifikowana walidacja buildu; osobna integracja | `6ed89ca` |
-| [RAW_ASSEMBLY](stages/FT1536_H3_RAW_ASSEMBLY_RUN_001/REPORT.md) | **H3_RAW_ASSEMBLY_PROVED_FOR_PINNED_MODEL** — pełny raw prefix, source transport i emitted corollary; mieszany dowód | niniejszy checkpoint |
+| [RAW_ASSEMBLY](stages/FT1536_H3_RAW_ASSEMBLY_RUN_001/REPORT.md) | **H3_RAW_ASSEMBLY_PROVED_FOR_PINNED_MODEL** — pełny raw prefix, source transport i emitted corollary; mieszany dowód | `a53d723` |
+| [STABLE_NORMALIZATION](stages/FT1536_H3_STABLE_NORMALIZATION_RUN_001/REPORT.md) | **H3_STABLE_NORMALIZATION_PROVED_FOR_EMITTED_PINNED_MODEL** — actual widths/gates i source sqrt/div; mieszany dowód | niniejszy checkpoint |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).
@@ -310,7 +312,7 @@ oraz `FT1536_H3_RANGE_RUN_001`, `FT1536_H3_ZERO_SCALAR_RUN_001`
 i `FT1536_H3_ROOT_LDL_RUN_001`, `FT1536_H3_NODE3_RUN_001`
 oraz `FT1536_H3_NODE2_RUN_001`, `FT1536_FPEMU_AUDIT_RUN_001`
 i `FT1536_H3_BINARY_TOWER_RUN_001`, `FT1536_FPEMU_FLOOR_CT_RUN_001`
-oraz `FT1536_H3_RAW_ASSEMBLY_RUN_001`.
+oraz `FT1536_H3_RAW_ASSEMBLY_RUN_001` i `FT1536_H3_STABLE_NORMALIZATION_RUN_001`.
 Wpis katalogu określa właściwy punkt wejścia. Odbiór Blue jest archiwum
 recenzji i receipts; nie ma zadeklarowanego pojedynczego pełnego runnera.
 

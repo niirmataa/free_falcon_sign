@@ -1,0 +1,57 @@
+formal/NormalizeMap.lean:40:39: error: Application type mismatch: The argument
+  hb 3072 ?m.79
+has type
+  RawAssembly.All (fun i => i < 18432) (leafPos 7 3072)
+but is expected to have type
+  RawAssembly.All (fun i => i < 18432)
+    (leafPos 7 3072 ++ leafPos 7 5376 ++ leafPos 7 7680 ++ leafPos 7 11520 ++ leafPos 7 13824)
+in the application
+  RawAssembly.all_append (fun i => i < 18432)
+    (leafPos 7 3072 ++ leafPos 7 5376 ++ leafPos 7 7680 ++ leafPos 7 11520 ++ leafPos 7 13824) (leafPos 7 16128)
+    (hb 3072 ?m.79)
+formal/NormalizeMap.lean:41:36: error: Application type mismatch: The argument
+  hb 5376 ?m.86
+has type
+  RawAssembly.All (fun i => i < 18432) (leafPos 7 5376)
+but is expected to have type
+  RawAssembly.All (fun i => i < 18432) (leafPos 6 (16128 + 2 ^ (6 + 2)))
+in the application
+  RawAssembly.all_append (fun i => i < 18432) (leafPos 6 (16128 + 2 ^ (6 + 2)))
+    (leafPos 6 (16128 + 2 ^ (6 + 2) + Tower.words 6)) (hb 5376 ?m.86)
+formal/NormalizeMap.lean:42:38: error: Application type mismatch: The argument
+  hb 7680 ?m.93
+has type
+  RawAssembly.All (fun i => i < 18432) (leafPos 7 7680)
+but is expected to have type
+  RawAssembly.All (fun i => i < 18432) (leafPos 5 (16128 + 2 ^ (6 + 2) + Tower.words 6 + 2 ^ (5 + 2)))
+in the application
+  RawAssembly.all_append (fun i => i < 18432) (leafPos 5 (16128 + 2 ^ (6 + 2) + Tower.words 6 + 2 ^ (5 + 2)))
+    (leafPos 5 (16128 + 2 ^ (6 + 2) + Tower.words 6 + 2 ^ (5 + 2) + Tower.words 5)) (hb 7680 ?m.93)
+formal/NormalizeMap.lean:43:40: error: Application type mismatch: The argument
+  hb 11520 ?m.100
+has type
+  RawAssembly.All (fun i => i < 18432) (leafPos 7 11520)
+but is expected to have type
+  RawAssembly.All (fun i => i < 18432)
+    (leafPos 4 (16128 + 2 ^ (6 + 2) + Tower.words 6 + 2 ^ (5 + 2) + Tower.words 5 + 2 ^ (4 + 2)))
+in the application
+  RawAssembly.all_append (fun i => i < 18432)
+    (leafPos 4 (16128 + 2 ^ (6 + 2) + Tower.words 6 + 2 ^ (5 + 2) + Tower.words 5 + 2 ^ (4 + 2)))
+    (leafPos 4 (16128 + 2 ^ (6 + 2) + Tower.words 6 + 2 ^ (5 + 2) + Tower.words 5 + 2 ^ (4 + 2) + Tower.words 4))
+    (hb 11520 ?m.100)
+formal/NormalizeMap.lean:44:42: error: Application type mismatch: The argument
+  hb 13824 ?m.107
+has type
+  RawAssembly.All (fun i => i < 18432) (leafPos 7 13824)
+but is expected to have type
+  RawAssembly.All (fun i => i < 18432)
+    (leafPos 3
+      (16128 + 2 ^ (6 + 2) + Tower.words 6 + 2 ^ (5 + 2) + Tower.words 5 + 2 ^ (4 + 2) + Tower.words 4 + 2 ^ (3 + 2)))
+in the application
+  RawAssembly.all_append (fun i => i < 18432)
+    (leafPos 3
+      (16128 + 2 ^ (6 + 2) + Tower.words 6 + 2 ^ (5 + 2) + Tower.words 5 + 2 ^ (4 + 2) + Tower.words 4 + 2 ^ (3 + 2)))
+    (leafPos 3
+      (16128 + 2 ^ (6 + 2) + Tower.words 6 + 2 ^ (5 + 2) + Tower.words 5 + 2 ^ (4 + 2) + Tower.words 4 + 2 ^ (3 + 2) +
+        Tower.words 3))
+    (hb 13824 ?m.107)

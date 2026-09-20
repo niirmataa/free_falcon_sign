@@ -1,0 +1,50 @@
+main : (args : List.{0} String) → IO Unit
+def main : (args : List.{0} String) → IO Unit :=
+fun (args : List.{0} String) =>
+  @Bind.bind.{0, 0} IO (@Monad.toBind.{0, 0} IO (@instMonadEIO IO.Error)) String Unit
+    (IO.FS.readFile
+      (System.FilePath.mk
+        (@GetElem?.getElem!.{0, 0, 0} (List.{0} String) Nat String
+          (fun (as : List.{0} String) (i : Nat) => @LT.lt.{0} Nat instLTNat i (@List.length.{0} String as))
+          (@List.instGetElem?NatLtLength.{0} String) String.instInhabited args
+          (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))))
+    fun (text : String) =>
+    have output : String := "";
+    @Bind.bind.{0, 0} IO (@Monad.toBind.{0, 0} IO (@instMonadEIO IO.Error)) String Unit
+      (@ForIn.forIn.{0, 0, 0, 0} IO (List.{0} String) String
+        (@instForInOfForIn'.{0, 0, 0, 0} IO (List.{0} String) String
+          (@inferInstance.{1} (Membership.{0, 0} String (List.{0} String)) (@List.instMembership.{0} String))
+          (@List.instForIn'InferInstanceMembershipOfMonad.{0, 0, 0} IO String (@instMonadEIO IO.Error)))
+        String (String.splitOn text "\n") output fun (line __s : String) =>
+        have output : String := __s;
+        @ite.{1} (IO (ForInStep.{0} String)) (@Eq.{1} Bool (String.isEmpty line) Bool.true)
+          (instDecidableEqBool (String.isEmpty line) Bool.true)
+          (@Pure.pure.{0, 0} IO
+            (@Applicative.toPure.{0, 0} IO (@Monad.toApplicative.{0, 0} IO (@instMonadEIO IO.Error)))
+            (ForInStep.{0} String) (@ForInStep.yield.{0} String output))
+          (have a : Nat := String.toNat! line;
+          have z : Prod.{0, 0} Nat Nat :=
+            StableSqrt.runBits (@OfNat.ofNat.{0} Nat (nat_lit 53) (instOfNatNat (nat_lit 53)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) a);
+          have output : String :=
+            @HAppend.hAppend.{0, 0, 0} String String String (@instHAppendOfAppend.{0} String instAppendString) output
+              (@HAppend.hAppend.{0, 0, 0} String String String (@instHAppendOfAppend.{0} String instAppendString)
+                (@HAppend.hAppend.{0, 0, 0} String String String (@instHAppendOfAppend.{0} String instAppendString)
+                  (@HAppend.hAppend.{0, 0, 0} String String String (@instHAppendOfAppend.{0} String instAppendString)
+                    (@ToString.toString.{0} Nat instToStringNat (@Prod.fst.{0, 0} Nat Nat z))
+                    (@ToString.toString.{0} String instToStringString " "))
+                  (@ToString.toString.{0} Nat instToStringNat (@Prod.snd.{0, 0} Nat Nat z)))
+                (@ToString.toString.{0} String instToStringString "\n"));
+          @Pure.pure.{0, 0} IO (@Applicative.toPure.{0, 0} IO (@Monad.toApplicative.{0, 0} IO (@instMonadEIO IO.Error)))
+            (ForInStep.{0} String) (@ForInStep.yield.{0} String output)))
+      fun (__s : String) =>
+      have output : String := __s;
+      IO.FS.writeFile
+        (System.FilePath.mk
+          (@GetElem?.getElem!.{0, 0, 0} (List.{0} String) Nat String
+            (fun (as : List.{0} String) (i : Nat) => @LT.lt.{0} Nat instLTNat i (@List.length.{0} String as))
+            (@List.instGetElem?NatLtLength.{0} String) String.instInhabited args
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        output
