@@ -1,0 +1,17 @@
+--- source/falcon-sign.c:1848-1892
++++ checks/target_prefix.inc
+@@ -1,5 +1,5 @@
+ static void
+-do_sign(samplerZ samp, void *samp_ctx,
++target_prefix_slice(samplerZ samp, void *samp_ctx,
+ 	int16_t *restrict s1, int16_t *restrict s2,
+ 	unsigned q, const fpr *restrict sk, const uint16_t *restrict hm,
+ 	unsigned logn, unsigned ter, fpr *restrict tmp)
+@@ -43,3 +43,7 @@
+ 		falcon_poly_mulconst_fft3(t1, fpr_neg(ni), logn, 1);
+ 		falcon_poly_mul_fft3(t0, b11, logn, 1);
+ 		falcon_poly_mulconst_fft3(t0, ni, logn, 1);
++	} /* cut after1892, before any sampler call */
++	(void)samp;(void)samp_ctx;(void)s1;(void)s2;
++	(void)tx;(void)ty;(void)tz;(void)b00;(void)b10;(void)tree;
++}

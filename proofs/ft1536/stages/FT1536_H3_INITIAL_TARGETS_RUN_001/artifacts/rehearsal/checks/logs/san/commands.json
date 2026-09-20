@@ -1,0 +1,210 @@
+[
+  {
+    "argv": [
+      "/usr/bin/gcc",
+      "-W",
+      "-Wall",
+      "-O",
+      "-DFPR_IMPL=\"fpr-emulated.h\"",
+      "-DSAMPLER_CODF=0",
+      "-DSAMPLER_CDF=0",
+      "-DCT_BEREXP=1",
+      "-DFT_TERNARY_ADAPTIVE_CDF=1",
+      "-DFT1536_CANDIDATE_PROFILE=1",
+      "-DCLEANSE=1",
+      "-DTRUE_TERNARY_SECRET=1",
+      "-DTRUE_TERNARY_SECRET_MODE=1",
+      "-DTERNARY_KEYGEN_BOUND_SCALE_NUM=1250",
+      "-DTERNARY_KEYGEN_BOUND_SCALE_DEN=100",
+      "-DTERNARY_KEYGEN_MAX_ATTEMPTS=3000000",
+      "-DSIGN_MAX_ATTEMPTS=16",
+      "-std=c99",
+      "-Isource",
+      "-fsanitize=address,undefined",
+      "-fno-omit-frame-pointer",
+      "-g",
+      "checks/targets.c",
+      "source/falcon-fft.c",
+      "source/fpr-emulated.c",
+      "-lm",
+      "-o",
+      "bin/targets_san"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_INITIAL_TARGETS_RUN_001/tmp/rehearsal_001",
+    "limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.971808358997805,
+    "stdout": "checks/logs/san/compile.stdout",
+    "stderr": "checks/logs/san/compile.stderr",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/targets_san",
+      "coeff"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_INITIAL_TARGETS_RUN_001/tmp/rehearsal_001",
+    "limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.011791231983806938,
+    "stdout": "checks/logs/san/zero_sparse.stdout",
+    "stderr": "checks/logs/san/zero_sparse.stderr",
+    "stdout_sha256": "402bd05ff26ce106367f0313e24367f7543f5d7b92fb556232e44519b86fd3f4",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/targets_san",
+      "coeff"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_INITIAL_TARGETS_RUN_001/tmp/rehearsal_001",
+    "limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.011817540012998506,
+    "stdout": "checks/logs/san/max_extreme.stdout",
+    "stderr": "checks/logs/san/max_extreme.stderr",
+    "stdout_sha256": "3ed334a2bd01fa8719e3abf60af201c3e09046aac72d7aa5fc675c662b68da9f",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/targets_san",
+      "coeff"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_INITIAL_TARGETS_RUN_001/tmp/rehearsal_001",
+    "limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.0076708449923899025,
+    "stdout": "checks/logs/san/alternating_dense.stdout",
+    "stderr": "checks/logs/san/alternating_dense.stderr",
+    "stdout_sha256": "314e55b72e2a6c6f259851b99502cd3f358be08e8afd19986ab2287bdafaa7d0",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/targets_san",
+      "coeff"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_INITIAL_TARGETS_RUN_001/tmp/rehearsal_001",
+    "limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.008064488007221371,
+    "stdout": "checks/logs/san/dense_dense.stdout",
+    "stderr": "checks/logs/san/dense_dense.stderr",
+    "stdout_sha256": "a47923fea31c2c78799d1a9631c30335a81c747e912a72cc9ac61685aef246ca",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/targets_san",
+      "coeff"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_INITIAL_TARGETS_RUN_001/tmp/rehearsal_001",
+    "limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.008791651023784652,
+    "stdout": "checks/logs/san/noop.stdout",
+    "stderr": "checks/logs/san/noop.stderr",
+    "stdout_sha256": "a47923fea31c2c78799d1a9631c30335a81c747e912a72cc9ac61685aef246ca",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/targets_san",
+      "coeff"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_INITIAL_TARGETS_RUN_001/tmp/rehearsal_001",
+    "limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.009170636010821909,
+    "stdout": "checks/logs/san/sparse_edges_sparse.stdout",
+    "stderr": "checks/logs/san/sparse_edges_sparse.stderr",
+    "stdout_sha256": "a91bce663d83551e43dd136c83a1ee6f28997b8ce1f4b385a1b556fcc184fae7",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/targets_san",
+      "coeff"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_INITIAL_TARGETS_RUN_001/tmp/rehearsal_001",
+    "limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.00790354300988838,
+    "stdout": "checks/logs/san/unit_0_sparse.stdout",
+    "stderr": "checks/logs/san/unit_0_sparse.stderr",
+    "stdout_sha256": "6b0a1ae519782b546aa004cc77451785913a24ce89912f71954490d76a59b7c5",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/targets_san",
+      "coeff"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_INITIAL_TARGETS_RUN_001/tmp/rehearsal_001",
+    "limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.009241808991646394,
+    "stdout": "checks/logs/san/unit_767_sparse.stdout",
+    "stderr": "checks/logs/san/unit_767_sparse.stderr",
+    "stdout_sha256": "1f778705eb77ede96dcecd56fe03e09ffc91619c057543d902d879179822de36",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/targets_san",
+      "coeff"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_INITIAL_TARGETS_RUN_001/tmp/rehearsal_001",
+    "limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.009956822003005072,
+    "stdout": "checks/logs/san/unit_768_sparse.stdout",
+    "stderr": "checks/logs/san/unit_768_sparse.stderr",
+    "stdout_sha256": "250efd93dfbcc62b145cb09facba4f49554bc4c090fb3da11c6b41c2da60a919",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/targets_san",
+      "coeff"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_INITIAL_TARGETS_RUN_001/tmp/rehearsal_001",
+    "limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.008934284996939823,
+    "stdout": "checks/logs/san/unit_1535_sparse.stdout",
+    "stderr": "checks/logs/san/unit_1535_sparse.stderr",
+    "stdout_sha256": "5c896638ec3363fa954354b9703cf383b91bfcc67aa6106ee3a5c2fe5f119d09",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/targets_san",
+      "coeff"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_INITIAL_TARGETS_RUN_001/tmp/rehearsal_001",
+    "limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.007660951989237219,
+    "stdout": "checks/logs/san/dense_cancel.stdout",
+    "stderr": "checks/logs/san/dense_cancel.stderr",
+    "stdout_sha256": "4b2a77eb865150623addf29ea11871a9ccd51b8382f3660b30808d390d92b73c",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/targets_san",
+      "words"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_INITIAL_TARGETS_RUN_001/tmp/rehearsal_001",
+    "limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.008223275013733655,
+    "stdout": "checks/logs/san/signed_zero_words.stdout",
+    "stderr": "checks/logs/san/signed_zero_words.stderr",
+    "stdout_sha256": "0150513c3ad5792a421f9c5bf8ec4ac10b45ee63f9e129d892d28b7d8d34889b",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

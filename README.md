@@ -37,6 +37,8 @@ recursive subtrees**, including defined terminating execution in the declared mo
 return of ffLDL_fft3, before stable leaf replacement and normalization.
 **H3_STABLE_NORMALIZATION certifies the subsequent source widths and
 normalization for emitted keys**, with a source-derived stable-gate bridge.
+**H3_INITIAL_TARGETS certifies the actual target preparation before sampling**,
+for every canonical challenge, with explicit source FFT and rounding bounds.
 Global reachable-center bounds and end-to-end security remain open research objectives.
 
 **FPEMU audit — confirmed issues:** numeric `fpr_lt(-0,+0)` returns 1, and
@@ -89,11 +91,13 @@ reproduced262/262 files and40 modules/230 theorems (50 new).
 All-P_key computational definedness is proved separately; narrow gate
 acceptance for all P_key remains open, without changing the key law.
 
-**Next prepared owner-run task:** [H3_INITIAL_TARGETS](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_INITIAL_TARGETS_2026-09-20.md),
-the source do_sign target prefix before ffSampling_fft3, for every canonical
-challenge, with source FFT/basis/reciprocal errors and normalized-key frame.
-Its [pinned inputs](proofs/ft1536/background/H3_INITIAL_TARGETS_2026-09-20/README.md)
-preserve ORDERED_REACH to scalar NumericCenter as a separate obligation.
+The [INITIAL_TARGETS result](proofs/ft1536/stages/FT1536_H3_INITIAL_TARGETS_RUN_001/REPORT.md)
+closes the do_sign prefix before ffSampling_fft3 for all canonical challenges.
+It proves the FFT challenge error<1/8192, literal reciprocal/basis operations,
+both target error layers and normalized-key preservation.
+[Independent review](proofs/ft1536/validation/2026-09-20-initial-targets/README.md)
+reproduced219/219 files,21 modules/129 theorems (30 new). The large frequency
+t0 bound is recorded explicitly; ORDERED_REACH to scalar NumericCenter remains open.
 
 The [candidate night-run setup](provenance/checks/2026-09-20-dudect-floor-ct-ready/README.md)
 is **STATIC_READY_TIMING_DEFERRED**: source/build/fixture checks passed,
@@ -207,6 +211,7 @@ integration work; changing their description does not change the old CLI.
 | [FLOOR_CT candidate](proofs/ft1536/stages/FT1536_FPEMU_FLOOR_CT_RUN_001/REPORT.md) | All-word bit-preserving floor replacement, pinned machine-code review and exploratory A/B; archived candidate, separate source integration | `FLOOR_CT_CANDIDATE_VALIDATED_FOR_PINNED_BUILD` |
 | [H3_RAW_ASSEMBLY](proofs/ft1536/stages/FT1536_H3_RAW_ASSEMBLY_RUN_001/REPORT.md) | Complete raw loader/tree prefix, actual source composition and emitted corollary; mixed proof on the archived floor candidate | `H3_RAW_ASSEMBLY_PROVED_FOR_PINNED_MODEL` |
 | [H3_STABLE_NORMALIZATION](proofs/ft1536/stages/FT1536_H3_STABLE_NORMALIZATION_RUN_001/REPORT.md) | Emitted stable-gate bridge, actual normalized widths, sqrt/div/scaling and preserved basis/internal L; mixed proof | `H3_STABLE_NORMALIZATION_PROVED_FOR_EMITTED_PINNED_MODEL` |
+| [H3_INITIAL_TARGETS](proofs/ft1536/stages/FT1536_H3_INITIAL_TARGETS_RUN_001/REPORT.md) | Actual target prefix for all canonical challenges, source FFT/reciprocal/basis errors and key frame; mixed proof | `H3_INITIAL_TARGETS_PROVED_FOR_EMITTED_PINNED_MODEL` |
 
 The completed L_V bridge establishes, for all canonical h,c and legal finite
 payloads b in the pinned GCC14.2.0/C99/Linux x86_64 LP64 model:
@@ -427,7 +432,8 @@ Later maintainer replays and their exact scopes:
 [BINARY_TOWER](proofs/ft1536/validation/2026-09-20-binary-tower/README.md),
 [FLOOR_CT](proofs/ft1536/validation/2026-09-20-floor-ct/README.md),
 [RAW_ASSEMBLY](proofs/ft1536/validation/2026-09-20-raw-assembly/README.md),
-[STABLE_NORMALIZATION](proofs/ft1536/validation/2026-09-20-stable-normalization/README.md).
+[STABLE_NORMALIZATION](proofs/ft1536/validation/2026-09-20-stable-normalization/README.md),
+[INITIAL_TARGETS](proofs/ft1536/validation/2026-09-20-initial-targets/README.md).
 The independent Blue review has archived evidence, rather than a single
 declared full replay runner.
 

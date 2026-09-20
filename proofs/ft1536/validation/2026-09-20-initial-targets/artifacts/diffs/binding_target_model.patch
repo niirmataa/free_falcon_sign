@@ -1,0 +1,94 @@
+--- inputs/bootstrap/ROOT/scripts/root_model.py
++++ scripts/target_model.py
+@@ -1,44 +1,47 @@
+-"""Source-order FFT3/Gram/root dim2, all 1536 physical slots."""
+-import re
+-from pathlib import Path
+-from backend import add,sub,mul,div,neg,of,ca,cs,cm,cq,conj
+-def tables(root):
+- text=(Path(root)/'source/fpr-emulated.h').read_text()
+- def arr(n):
+-  block=re.search(r'static const fpr '+n+r'\[\] = \{(.*?)\n\};',text,re.S).group(1)
+-  return [(int(a,16),int(b,16)) for a,b in re.findall(r'FPC\(0x([0-9a-fA-F]{16})ULL,\s*0x([0-9a-fA-F]{16})ULL\)',block)]
+- def c(n):return int(re.search(r'static const fpr '+n+r' = 0x([0-9a-fA-F]{16})ULL;',text).group(1),16)
+- return arr('fpr_gm3_square'),arr('fpr_gm3_cubic'),[(c('fpr_W'+s+'R'),c('fpr_W'+s+'I')) for s in ['1','2','4']]
+-def fft(a,tab):
+- square,cubic,(w1,w2,w4)=tab;n=len(a);assert n==1536;hn=n//2;a=list(a)
+- for i in range(hn):
+-  x,y=a[i],a[i+hn];a[i]=add(x,mul(y,w1[0]));a[i+hn]=mul(y,w1[1])
+- def get(i):return a[i],a[i+hn]
+- def put(i,v):a[i],a[i+hn]=v
+- t=hn;m=2
+- while t>3:
+-  ht=t//2
+-  for j in range(m//2):
+-   for i in range(j*t,j*t+ht):
+-    x=get(i);y=cm(get(i+ht),square[m+j]);put(i,ca(x,y));put(i+ht,cs(x,y))
+-  t=ht;m*=2
+- for i in range(0,hn,3):
+-  A,B,C=get(i),get(i+1),get(i+2);x=cubic[512+i//3]
+-  B0=cm(B,x);B1=cm(B0,w2);B2=cm(B0,w4);x=cq(x)
+-  C0=cm(C,x);C1=cm(C0,w2);C2=cm(C0,w4)
+-  for k,b,c in [(0,B0,C0),(1,B1,C2),(2,B2,C1)]:put(i+k,ca(A,ca(b,c)))
+- return a
+-def root_point(a,c_re,c_im,j,j_im=0):
+- L=(div(c_re,a),div(c_im,a));p=cm((c_re,c_im),conj(L));D=(add(neg(p[0]),j),add(neg(p[1]),j_im))
+- return L,D
+-def gram_root(polys,tab):
+- f,g,F,G=[fft([of(int(x)) for x in p],tab) for p in polys];n=1536;hn=768
+- b=[g,[neg(x) for x in f],G,[neg(x) for x in F]]
+- gram=[[],[],[]];imag=[[],[],[]];Lr=[];Li=[];Dr=[];Di=[]
+- for i in range(hn):
+-  a0,a1,b0,b1=[(p[i],p[i+hn]) for p in b]
+-  norm=lambda x:add(mul(x[0],x[0]),mul(x[1],x[1]))
+-  A=add(norm(a0),norm(a1));C=ca(cm(b0,conj(a0)),cm(b1,conj(a1)));J=add(norm(b0),norm(b1))
+-  for k,v in enumerate([(A,0),C,(J,0)]):gram[k].append(v[0]);imag[k].append(v[1])
+-  l,d=root_point(A,*C,J);Lr.append(l[0]);Li.append(l[1]);Dr.append(d[0]);Di.append(d[1])
+- return b+[x+y for x,y in zip(gram,imag)]+[Lr+Li,Dr+Di]
++"""Literal integer FFT/complex/scalar target model, explicit snapshot order."""
++from backend import of,div,mul,neg,cm,scalar
++from root_model import fft,tables
++N=1536;Q=18433
++def canonical(c):
++ if len(c)!=N or any(not isinstance(x,int) or not 0<=x<Q for x in c):raise ValueError('STOP_CANONICAL_CHALLENGE')
++def basis(root,polys):
++ if len(polys)!=4 or any(len(p)!=N for p in polys):raise ValueError('STOP_BASIS_LENGTH')
++ for k,p in enumerate(polys):
++  if any(abs(x)>(1 if k<2 else 2047) for x in p):raise ValueError('STOP_COEFFICIENT_CAP')
++ f,g,F,G=[fft([of(x) for x in p],tables(root)) for p in polys]
++ return g+[neg(x) for x in f]+G+[neg(x) for x in F]
++def complex_mul(a,b):
++ assert len(a)==len(b)==N
++ out=[cm((a[i],a[i+768]),(b[i],b[i+768])) for i in range(768)]
++ return [z[0] for z in out]+[z[1] for z in out]
++def scale(a,c):return [mul(x,c) for x in a]
++def target(root,c,sk,mutation=None):
++ canonical(c)
++ if len(sk)!=24576:raise ValueError('STOP_SK_LENGTH')
++ # Stronger local domain of the finite controls. Universal provenance is separate.
++ for idx,cap in [(1536,2048),(4608,2**22)]:
++  for x in sk[idx:idx+N]:
++   if abs(scalar(x))>=cap:raise ValueError('STOP_BASIS_DOMAIN')
++ if mutation=='centered':c=[x-Q if x>Q//2 else x for x in c]
++ events=[];conv=[of(x) for x in c]
++ for i,(x,w) in enumerate(zip(c,conv)):events.append(f'O {i} {x} {w:016x}')
++ C=fft(conv,tables(root));events+=['F','V '+' '.join(f'{x:016x}' for x in C)]
++ ni=div(of(1),of(Q));events.append(f'I {ni:016x}')
++ copied=list(C)
++ if mutation=='copy_zero':copied=[0]*N
++ early=None
++ if mutation=='copy_late':
++  ep=complex_mul(C,sk[4608:6144]);et=scale(ep,ni);copied=list(et);early=(ep,et)
++  events+=['M 0 4608','V '+' '.join(f'{x:016x}' for x in ep),f'S 0 {ni:016x}','V '+' '.join(f'{x:016x}' for x in et)]
++ b01=sk[1536:3072];b11=sk[4608:6144]
++ if mutation=='wrong_column':b01,b11=b11,b01
++ if mutation=='wrong_alias':b01=C
++ if mutation=='wrong_packing':b01=b01[768:]+b01[:768]
++ events+=['C','V '+' '.join(f'{x:016x}' for x in copied)]
++ p1=complex_mul(copied,b01);s1=neg(of(1)) if mutation=='missing_1q' else ni if mutation=='wrong_sign' else neg(ni);t1=scale(p1,s1)
++ p0=complex_mul(C,b11) if early is None else early[0];s0=of(1) if mutation=='missing_1q' else ni;t0=scale(p0,s0) if early is None else early[1]
++ steps=[('M 1536 1536',p1),(f'S 1536 {s1:016x}',t1)]
++ if early is None:steps += [('M 0 4608',p0),(f'S 0 {s0:016x}',t0)]
++ for label,x in steps:events +=[label,'V '+' '.join(f'{v:016x}' for v in x)]
++ snapshots=dict(converted=conv,fft_c=C,copy_t1=copied,product_t1=p1,t1=t1,product_t0=p0,t0=t0,ni=ni)
++ return snapshots,events

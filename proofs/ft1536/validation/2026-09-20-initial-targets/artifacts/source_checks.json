@@ -1,0 +1,55 @@
+{
+  "status": "PASS_SOURCE_PINS_AND_TARGET_PROOF_BINDING",
+  "source_files": 17,
+  "public_inputs": 202,
+  "source_pin": "56974571b46e8257bdd3b4097c8c70fded6bb4b94c64805f6e35ec80929a0985",
+  "documents": {
+    "CLAIM.md": "bf92c4720c6758da3bb3fddd4160c10787ec9dde8431584ad03ec33dc8005fa3",
+    "TARGET_FORMULAS.md": "f0caf16017e5edaaed3b2fab2a98094fc2636936aa515d60b6f196cf44d560d9",
+    "FFT_CHALLENGE_BOUNDS.md": "1a79b42b99e4ea0770857c0f1876265650d9771495a63507bccc8b7f77fd06a5",
+    "ERROR_LEDGER.md": "87ab63ad5ada6e611d3d83561407498c9a31a88ea87ec55d48848a65742e67a6",
+    "SOURCE_MODEL_BINDING.md": "f5a7030b51f6a87c28af726b828368df3b8c8caf34f460ef07d61271c704e16b",
+    "MEMORY_FRAME.md": "641f1bb8a5997dd85c029c4a448eab3b456e81e7bff2d6e8e0afab0ab682398c",
+    "CALLER_BINDING.md": "05b9df8f34774eeaff8ae1e46395ae4b3c7fccfc9671640f35c1d260eac1623f",
+    "NEXT_INTERFACE.md": "8e997adfafe16b65fb7a30de24ca15fc21cfcf229189394a9e87f69234ce56a1",
+    "REUSED_RESULTS.md": "d35dd4af8aaef49debc871642e83e01d0d02cd8add94f9d97562771fbfaeb191"
+  },
+  "adaptations": [
+    {
+      "input": "inputs/bootstrap/ROOT/scripts/certificate.py",
+      "input_sha256": "dd7635281ab2cf35a740392c59954affae54d0e32da03632615ec2cdabd6f03b",
+      "copy": "scripts/numeric_certificate.py",
+      "sha256": "35b58e3ad97f8f63f1285bd143bef4a1870944b779db9a856cefa6cd2f740c4b",
+      "diff": "artifacts/diffs/binding_numeric_certificate.patch",
+      "diff_sha256": "ae5ad397ea9e5e768f7722e8b55591bc27c459e8324fd91c77d8115f4d888ee0"
+    },
+    {
+      "input": "inputs/bootstrap/ROOT/scripts/controls.py",
+      "input_sha256": "c3fd9b636dc24a947dee49a4ba7b166ac289f9ad35e1d4e4b2b8c035c8900161",
+      "copy": "scripts/controls.py",
+      "sha256": "1be8553bd8e572a9dcf82b67ec000100d1f619944fcbb21062d90447239144fa",
+      "diff": "artifacts/diffs/binding_controls.patch",
+      "diff_sha256": "957523e16d5e5df34689c2ee3c265443a257a27b444de5829b53bd3a21a6c7ff"
+    },
+    {
+      "input": "inputs/bootstrap/NORMALIZED/scripts/audit.py",
+      "input_sha256": "a93e33fa95be9244b2775166fd3842eeffb49cab0117a1c27a8030af72174d9e",
+      "copy": "scripts/audit.py",
+      "sha256": "1d940c7f9d30dad5ece0ac92d1fb3995555c38902a8598f5d147051d15fff134",
+      "diff": "artifacts/diffs/binding_audit.patch",
+      "diff_sha256": "2830bc9c0bb8b665cf50f2ef4b72a5f72d5a63e1408b5fdb6e069be163b8ff0d"
+    },
+    {
+      "input": "inputs/bootstrap/ROOT/scripts/root_model.py",
+      "input_sha256": "7bb30b17f7f73771f6a40b4bed156e8a3005409402da39af6a68b4f7f5f316b3",
+      "copy": "scripts/target_model.py",
+      "sha256": "88e62a2492df712a39a30cb80c805fdfcf80798901a8bf03a20a9ec79a574c4b",
+      "diff": "artifacts/diffs/binding_target_model.patch",
+      "diff_sha256": "b274351415bac0bbba79fd9fc6f779af3bb9d6442f520f57a823d10fc13166ac"
+    }
+  ],
+  "source_changed": false,
+  "production_source_changed": false,
+  "new_source_patch_integrated": false,
+  "owner_accepted": false
+}

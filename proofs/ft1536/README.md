@@ -22,9 +22,9 @@ osiągnięcia, T2C3/T5, kontrakt M0, graf zależności i dalsze obowiązki.
 Pakiet ma 211 członków OUTPUTS i 198 publicznych wejść Git, manifest
 `c3efdcff510983a143946d43ab456656090061cd5b9b4b6847abc7f141c0cfa3`.
 Jest checkpointem dokumentacyjnym (`replay=none`); obecnie archiwum zawiera
-także osiemnaście etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
+także dziewiętnaście etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
 H3_ZERO_SCALAR, H3_ROOT_LDL, H3_NODE3, H3_NODE2, BINARY_TOWER, audyt FPEMU,
-FLOOR_CT, RAW_ASSEMBLY i STABLE_NORMALIZATION.
+FLOOR_CT, RAW_ASSEMBLY, STABLE_NORMALIZATION i INITIAL_TARGETS.
 
 [Mapa po domknięciu L_V — 2026-09-19](documents/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md)
 przedstawia zależności i proponowaną kolejność: dokładny kontrakt gry,
@@ -141,12 +141,12 @@ klas>1/1536. All-P_key definedness jest proved, narrow gate acceptance nadal
 OPEN_NOT_DISPROVED. Source success event/K_seed pozostają te same.
 Następne typy to INITIAL_TARGETS oraz osobny ORDERED_REACH→NumericCenter.
 
-**Następne zadanie do ręcznego startu:**
-[H3_INITIAL_TARGETS](documents/FT1536_ZADANIE_ASTRA_H3_INITIAL_TARGETS_2026-09-20.md),
-z [bootstrapem198 członków](background/H3_INITIAL_TARGETS_2026-09-20/README.md).
-Cel: actual target prefix do_sign1849–1892 dla wszystkich canonical c,
-source words/domains/errors i key/frame przed ffSampling_fft3. FFT challenge
-domain18432 wymaga nowej instancji; scalar NumericCenter pozostaje osobny.
+**Odebrany INITIAL_TARGETS:** [raport](stages/FT1536_H3_INITIAL_TARGETS_RUN_001/REPORT.md)
+domyka actual target prefix1849–1892 dla wszystkich canonical c, nowy FFT18432
+error<1/8192, oba reference/error layers i normalized-key frame.
+[Odbiór](validation/2026-09-20-initial-targets/README.md):219/219 plików,
+21 modułów,129 twierdzeń (30 nowych). Duża majoranta frequency t0 nie jest
+scalar-center counterexample. Następny typ to ordered source Reach→NumericCenter.
 
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
@@ -199,7 +199,8 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [BINARY_TOWER](stages/FT1536_H3_BINARY_TOWER_RUN_001/REPORT.md) | **H3_BINARY_TOWER_PROVED_FOR_PINNED_MODEL** — levels7–1 i12 total raw subtrees; mieszany dowód | `1a04145` |
 | [FLOOR_CT](stages/FT1536_FPEMU_FLOOR_CT_RUN_001/REPORT.md) | **FLOOR_CT_CANDIDATE_VALIDATED_FOR_PINNED_BUILD** — bit-preserving patch i kwalifikowana walidacja buildu; osobna integracja | `6ed89ca` |
 | [RAW_ASSEMBLY](stages/FT1536_H3_RAW_ASSEMBLY_RUN_001/REPORT.md) | **H3_RAW_ASSEMBLY_PROVED_FOR_PINNED_MODEL** — pełny raw prefix, source transport i emitted corollary; mieszany dowód | `a53d723` |
-| [STABLE_NORMALIZATION](stages/FT1536_H3_STABLE_NORMALIZATION_RUN_001/REPORT.md) | **H3_STABLE_NORMALIZATION_PROVED_FOR_EMITTED_PINNED_MODEL** — actual widths/gates i source sqrt/div; mieszany dowód | niniejszy checkpoint |
+| [STABLE_NORMALIZATION](stages/FT1536_H3_STABLE_NORMALIZATION_RUN_001/REPORT.md) | **H3_STABLE_NORMALIZATION_PROVED_FOR_EMITTED_PINNED_MODEL** — actual widths/gates i source sqrt/div; mieszany dowód | `6c233cd` |
+| [INITIAL_TARGETS](stages/FT1536_H3_INITIAL_TARGETS_RUN_001/REPORT.md) | **H3_INITIAL_TARGETS_PROVED_FOR_EMITTED_PINNED_MODEL** — canonical target prefix, source errors i frame; mieszany dowód | niniejszy checkpoint |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).
@@ -319,7 +320,8 @@ oraz `FT1536_H3_RANGE_RUN_001`, `FT1536_H3_ZERO_SCALAR_RUN_001`
 i `FT1536_H3_ROOT_LDL_RUN_001`, `FT1536_H3_NODE3_RUN_001`
 oraz `FT1536_H3_NODE2_RUN_001`, `FT1536_FPEMU_AUDIT_RUN_001`
 i `FT1536_H3_BINARY_TOWER_RUN_001`, `FT1536_FPEMU_FLOOR_CT_RUN_001`
-oraz `FT1536_H3_RAW_ASSEMBLY_RUN_001` i `FT1536_H3_STABLE_NORMALIZATION_RUN_001`.
+oraz `FT1536_H3_RAW_ASSEMBLY_RUN_001`, `FT1536_H3_STABLE_NORMALIZATION_RUN_001`
+i `FT1536_H3_INITIAL_TARGETS_RUN_001`.
 Wpis katalogu określa właściwy punkt wejścia. Odbiór Blue jest archiwum
 recenzji i receipts; nie ma zadeklarowanego pojedynczego pełnego runnera.
 

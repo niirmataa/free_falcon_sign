@@ -49,3 +49,14 @@ Docelowym repozytorium prac jest `free_falcon_sign`.
 - Prywatne klucze, seedy, uwierzytelnienia, cache i robocze binaria nie są
   materiałem commita. Publiczne PK i syntetyczne payloady `.bin` mogą być
   niezbędnymi, przypiętymi wejściami matematycznymi.
+
+## Podsumowanie dla właściciela po każdym zadaniu
+
+- Oprócz statusu, pinów i ścieżek podaj krótką własną ocenę po polsku:
+  co rzeczywiście udało się wykazać, co nie wyszło lub pozostaje otwarte,
+  co wynik zmienia w projekcie i jaki jest następny krok.
+- Wyjaśniaj znaczenie wyniku przystępnie; same nazwy twierdzeń i PASS nie
+  zastępują podsumowania. Rozróżniaj błąd kodu/kontrprzykład, brak dowodu,
+  zbyt luźne oszacowanie oraz cel świadomie pozostawiony poza zakresem.
+- Zachowuj niewygodne wyniki i ograniczenia. Nie promuj diagnostyki,
+  skończonych testów albo zgodności hashy do szerszego twierdzenia.
