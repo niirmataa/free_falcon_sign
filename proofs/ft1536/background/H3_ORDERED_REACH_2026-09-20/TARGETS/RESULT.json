@@ -1,0 +1,105 @@
+{
+  "status": "H3_INITIAL_TARGETS_PROVED_FOR_EMITTED_PINNED_MODEL",
+  "source_pin": "56974571b46e8257bdd3b4097c8c70fded6bb4b94c64805f6e35ec80929a0985",
+  "base_commit": "6c233cdb48e4fd274995dd1882e0de03305771c8",
+  "initial_target_prefix_proved": true,
+  "all_canonical_challenges": true,
+  "source_target_words_matched": true,
+  "fft_challenge_domain_proved": true,
+  "reciprocal_q_proved": true,
+  "ideal_reference_error_proved": true,
+  "rounded_basis_reference_error_proved": true,
+  "normalized_key_preserved": true,
+  "cut": {
+    "first": 1849,
+    "last": 1892,
+    "next_call": 1897,
+    "next_function": "ffSampling_fft3",
+    "source": "falcon-sign.c"
+  },
+  "fft_challenge_component_error": "1/8192",
+  "reciprocal": {
+    "word": "3f0c7161fb1566d0",
+    "value": "500372811634285/9223372036854775808",
+    "exact_reference": "1/18433",
+    "absolute_error": "403/170014416755344082468864",
+    "positive_normal": true,
+    "source": "div_C(one,of_C(18433))",
+    "negation": "XOR bit63"
+  },
+  "coefficient_space_norm_transport": true,
+  "source_iFFT_certified": false,
+  "memory": {
+    "sk_words": 24576,
+    "tmp_words": 10752,
+    "hm_words": 1536,
+    "write_prefix": [
+      0,
+      3072
+    ],
+    "all_sk_preserved": true,
+    "hm_outputs_context_preserved": true,
+    "tmp_suffix_preserved": [
+      3072,
+      10752
+    ],
+    "future_tx_ty_tz_initialized_claimed": false
+  },
+  "caller_binding_scope": "Every legal do_sign entry, including legal entry after norm rejection; canonicality after defined H2P return only. Propagation across unproved sampling/postprocessing remains separate.",
+  "proof_kind": "MIXED_KERNEL_AND_UNIVERSAL_ANALYTICAL_SOURCE_PROOF",
+  "initial_targets_fully_kernelized": false,
+  "C_compiler_verified": false,
+  "kernel_modules": 21,
+  "kernel_theorems": 129,
+  "new_kernel_theorems": 30,
+  "unresolved_required_numerical_or_totality_premises": [],
+  "global_reachability_proved": false,
+  "H3_range_proved": false,
+  "NumericCenter_from_initial_targets_proved": false,
+  "whole_sampler_termination_proved": false,
+  "whole_Sign_termination_proved": false,
+  "sampler_law_proved": false,
+  "security_reduction_proved": false,
+  "full_sign_ct_proved": false,
+  "source_changed": false,
+  "production_source_changed": false,
+  "new_source_patch_integrated": false,
+  "owner_accepted": false,
+  "schema": "FT1536_H3_INITIAL_TARGETS_RESULT_V1",
+  "author": "Niirmata",
+  "certificate_sha256": "89ce68e32fb10a3edd75f182af85843f7ab1e32198e753778d9a96d7dcea51a9",
+  "target_constants": [
+    {
+      "target": "t0",
+      "source_modulus_and_component_upper": "4829216911",
+      "rounding_only_error_outward": "1/8192",
+      "ideal_reference_error_outward": "1/4",
+      "exact_coefficient_abs_upper": "86930620416/18433",
+      "inverse_eval_source_coefficient_l2_error_upper": "1/2"
+    },
+    {
+      "target": "t1",
+      "source_modulus_and_component_upper": "2359169",
+      "rounding_only_error_outward": "1/16777216",
+      "ideal_reference_error_outward": "1/8192",
+      "exact_coefficient_abs_upper": "42467328/18433",
+      "inverse_eval_source_coefficient_l2_error_upper": "1/4096"
+    }
+  ],
+  "semantic_controls": "PASS_11_PUBLIC_SYNTHETIC_PREFIX_CASES",
+  "sanitizers": "PASS_ASan_UBSan",
+  "LSan_claimed": false,
+  "independent_oracles": "PASS_EXACT_DYADIC_ROUNDED_AND_DIRECT_POLYNOMIAL_ROOT_REFERENCES",
+  "source_FFT_symbolic_weights": 1179648,
+  "Phi_monomial_pairs": 2359296,
+  "mutation_controls": "PASS_NOOP_8_EXECUTED_MUTATIONS_AND_REJECTED_OLD_FFT_BOUND",
+  "synthetic_emitted_membership_claimed": false,
+  "replay": {
+    "status": "FRESH_REPLAY_PASS",
+    "semantic_matches": 219,
+    "anchor_sha256": "f5b50b4d21043f515859ed18863a4abbc1d90168a2979eea9d67062503c1352c",
+    "receipt_sha256": "b6f171c70d6642c974ba6f2836ff1c2365cf93fda6ac14771778ecfa44bbbfeb",
+    "cached_project_binaries_or_olean_used": false
+  },
+  "next_required_type": "ORDERED_REACH from the explicit root ffSampling entry, through actual right-before-left/residual/fault/rejection histories, to NumericCenter(mu) before floor/cast/residual"
+}

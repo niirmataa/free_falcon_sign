@@ -148,6 +148,13 @@ error<1/8192, oba reference/error layers i normalized-key frame.
 21 modułów,129 twierdzeń (30 nowych). Duża majoranta frequency t0 nie jest
 scalar-center counterexample. Następny typ to ordered source Reach→NumericCenter.
 
+**Następne zadanie do ręcznego startu:**
+[H3_ORDERED_REACH](documents/FT1536_ZADANIE_ASTRA_H3_ORDERED_REACH_2026-09-20.md),
+z [bootstrapem396 członków](background/H3_ORDERED_REACH_2026-09-20/README.md).
+Cel: actual right-before-left/fault/rejection reach do NumericCenter przed
+floor/cast, bez użycia ZERO jako własnej premise lub utożsamienia frequency
+targets z scalar mu. Whole Sign termination/law pozostają osobnym zakresem.
+
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
 

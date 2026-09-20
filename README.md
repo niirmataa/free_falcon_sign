@@ -99,6 +99,12 @@ both target error layers and normalized-key preservation.
 reproduced219/219 files,21 modules/129 theorems (30 new). The large frequency
 t0 bound is recorded explicitly; ORDERED_REACH to scalar NumericCenter remains open.
 
+**Next prepared owner-run task:** [H3_ORDERED_REACH](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_ORDERED_REACH_2026-09-20.md),
+source-ordered reach to zero-aware NumericCenter before scalar floor/cast,
+with explicit normal returns, rejection stuttering, fault histories and
+memory/error invariants. Its [pinned inputs](proofs/ft1536/background/H3_ORDERED_REACH_2026-09-20/README.md)
+keep finite-prefix safety separate from whole Sign termination and sampler law.
+
 The [candidate night-run setup](provenance/checks/2026-09-20-dudect-floor-ct-ready/README.md)
 is **STATIC_READY_TIMING_DEFERRED**: source/build/fixture checks passed,
 with no new physical timing campaign started. The [floor-ct launcher](tests/ft1536/dudect/README.md)
