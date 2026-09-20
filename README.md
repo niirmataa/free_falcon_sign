@@ -73,6 +73,11 @@ before stable leaf replacement and normalization. Its [pinned inputs](proofs/ft1
 use the archived floor candidate and require an explicit transport of the
 earlier source-bound certificates. The owner launches this Astra manually.
 
+The [candidate night-run setup](provenance/checks/2026-09-20-dudect-floor-ct-ready/README.md)
+is **STATIC_READY_TIMING_DEFERRED**: source/build/fixture checks passed,
+with no new physical timing campaign started. The [floor-ct launcher](tests/ft1536/dudect/README.md)
+performs fresh controls at night before a separate eight-hour run002.
+
 The current build integrates the corrected verifier, SHA-256
 `3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42`.
 The original S17 remains a hash-pinned historical reference with its recorded
