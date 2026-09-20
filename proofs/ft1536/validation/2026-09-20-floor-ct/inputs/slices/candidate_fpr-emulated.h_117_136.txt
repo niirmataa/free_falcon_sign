@@ -1,0 +1,20 @@
+117: static inline long
+118: fpr_floor(fpr x)
+119: {
+120: 	uint64_t t, mask;
+121: 	int64_t xi;
+122: 	int e, cc;
+123: 
+124: 	e = (int)(x >> 52) & 0x7FF;
+125: 	t = x >> 63;
+126: 	xi = (int64_t)(((x << 10) | ((uint64_t)1 << 62))
+127: 		& (((uint64_t)1 << 63) - 1));
+128: 	xi = (xi ^ -(int64_t)t) + (int64_t)t;
+129: 	cc = 1085 - e;
+130: 	xi = fpr_irsh(xi, cc & 63);
+131: 	/* FT1536: preserve the raw-word result with an unsigned selection. */
+132: 	mask = -(uint64_t)((uint32_t)(63 - cc) >> 31);
+133: 	xi = (int64_t)(((uint64_t)xi & ~mask) | ((-t) & mask));
+134: 	return (long)xi;
+135: }
+136: 

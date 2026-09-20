@@ -1,0 +1,5078 @@
+{
+  "status": "PASS_PINNED_FLOOR_FIXED_CONTROL_AND_MEMORY_TRACE",
+  "floor_sites": [
+    {
+      "file": "falcon-sign.c",
+      "line": 2481,
+      "text": "s = fpr_floor(fpr_mul(x, fpr_inv_ln2));"
+    },
+    {
+      "file": "falcon-sign.c",
+      "line": 2542,
+      "text": "s = fpr_floor(mu);"
+    },
+    {
+      "file": "falcon-sign.c",
+      "line": 2864,
+      "text": "s = fpr_floor(mu);"
+    }
+  ],
+  "regions": [
+    {
+      "variant": "baseline",
+      "site": "floor_wrapper",
+      "input_register": "rdi",
+      "disassembly_sha256": "14613cb13a1183835748cfc5e00be46db1d244fd1674527f880cf18f9de6f2b6",
+      "instructions": [
+        {
+          "address": 0,
+          "bytes": "4889fa",
+          "op": "mov",
+          "args": "%rdi,%rdx",
+          "line": "   0:\t48 89 fa             \tmov    %rdi,%rdx",
+          "tainted_inputs": [
+            "rdi"
+          ],
+          "flags_tainted_before": false,
+          "tainted_after": [
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": false
+        },
+        {
+          "address": 3,
+          "bytes": "48c1ea34",
+          "op": "shr",
+          "args": "$0x34,%rdx",
+          "line": "   3:\t48 c1 ea 34          \tshr    $0x34,%rdx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": false,
+          "tainted_after": [
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 7,
+          "bytes": "81e2ff070000",
+          "op": "and",
+          "args": "$0x7ff,%edx",
+          "line": "   7:\t81 e2 ff 07 00 00    \tand    $0x7ff,%edx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 13,
+          "bytes": "4889f8",
+          "op": "mov",
+          "args": "%rdi,%rax",
+          "line": "   d:\t48 89 f8             \tmov    %rdi,%rax",
+          "tainted_inputs": [
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 16,
+          "bytes": "48c1f83f",
+          "op": "sar",
+          "args": "$0x3f,%rax",
+          "line": "  10:\t48 c1 f8 3f          \tsar    $0x3f,%rax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 20,
+          "bytes": "89d6",
+          "op": "mov",
+          "args": "%edx,%esi",
+          "line": "  14:\t89 d6                \tmov    %edx,%esi",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 22,
+          "bytes": "81eefe030000",
+          "op": "sub",
+          "args": "$0x3fe,%esi",
+          "line": "  16:\t81 ee fe 03 00 00    \tsub    $0x3fe,%esi",
+          "tainted_inputs": [
+            "rsi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 28,
+          "bytes": "7836",
+          "op": "js",
+          "args": "54 <floor_wrapper+0x54>",
+          "line": "  1c:\t78 36                \tjs     54 <floor_wrapper+0x54>",
+          "tainted_inputs": [],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 30,
+          "bytes": "4889f9",
+          "op": "mov",
+          "args": "%rdi,%rcx",
+          "line": "  1e:\t48 89 f9             \tmov    %rdi,%rcx",
+          "tainted_inputs": [
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 33,
+          "bytes": "48c1e10a",
+          "op": "shl",
+          "args": "$0xa,%rcx",
+          "line": "  21:\t48 c1 e1 0a          \tshl    $0xa,%rcx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 37,
+          "bytes": "480fbaf13f",
+          "op": "btr",
+          "args": "$0x3f,%rcx",
+          "line": "  25:\t48 0f ba f1 3f       \tbtr    $0x3f,%rcx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 42,
+          "bytes": "480fbae93e",
+          "op": "bts",
+          "args": "$0x3e,%rcx",
+          "line": "  2a:\t48 0f ba e9 3e       \tbts    $0x3e,%rcx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 47,
+          "bytes": "4831c1",
+          "op": "xor",
+          "args": "%rax,%rcx",
+          "line": "  2f:\t48 31 c1             \txor    %rax,%rcx",
+          "tainted_inputs": [
+            "rax",
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 50,
+          "bytes": "48c1ef3f",
+          "op": "shr",
+          "args": "$0x3f,%rdi",
+          "line": "  32:\t48 c1 ef 3f          \tshr    $0x3f,%rdi",
+          "tainted_inputs": [
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 54,
+          "bytes": "4801cf",
+          "op": "add",
+          "args": "%rcx,%rdi",
+          "line": "  36:\t48 01 cf             \tadd    %rcx,%rdi",
+          "tainted_inputs": [
+            "rcx",
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 57,
+          "bytes": "b93d040000",
+          "op": "mov",
+          "args": "$0x43d,%ecx",
+          "line": "  39:\tb9 3d 04 00 00       \tmov    $0x43d,%ecx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 62,
+          "bytes": "29d1",
+          "op": "sub",
+          "args": "%edx,%ecx",
+          "line": "  3e:\t29 d1                \tsub    %edx,%ecx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 64,
+          "bytes": "4889f8",
+          "op": "mov",
+          "args": "%rdi,%rax",
+          "line": "  40:\t48 89 f8             \tmov    %rdi,%rax",
+          "tainted_inputs": [
+            "rax",
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 67,
+          "bytes": "48c1f820",
+          "op": "sar",
+          "args": "$0x20,%rax",
+          "line": "  43:\t48 c1 f8 20          \tsar    $0x20,%rax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 71,
+          "bytes": "f6c120",
+          "op": "test",
+          "args": "$0x20,%cl",
+          "line": "  47:\tf6 c1 20             \ttest   $0x20,%cl",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 74,
+          "bytes": "480f44c7",
+          "op": "cmove",
+          "args": "%rdi,%rax",
+          "line": "  4a:\t48 0f 44 c7          \tcmove  %rdi,%rax",
+          "tainted_inputs": [
+            "rax",
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 78,
+          "bytes": "83e11f",
+          "op": "and",
+          "args": "$0x1f,%ecx",
+          "line": "  4e:\t83 e1 1f             \tand    $0x1f,%ecx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 81,
+          "bytes": "48d3f8",
+          "op": "sar",
+          "args": "%cl,%rax",
+          "line": "  51:\t48 d3 f8             \tsar    %cl,%rax",
+          "tainted_inputs": [
+            "rax",
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 84,
+          "bytes": "c3",
+          "op": "ret",
+          "args": "",
+          "line": "  54:\tc3                   \tret",
+          "tainted_inputs": [],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        }
+      ],
+      "conditional_or_indirect_transfers": [
+        {
+          "address": 28,
+          "op": "js",
+          "tainted_flags": true,
+          "args": "54 <floor_wrapper+0x54>"
+        }
+      ],
+      "memory_operands": [],
+      "integer_divisions": [],
+      "argument": "Only register arithmetic/logical operations and register-source cmov; lea is arithmetic, not a load; fixed ret target belongs to public call frame.",
+      "all_instruction_classes_reviewed": true
+    },
+    {
+      "variant": "baseline",
+      "site": "BerExp",
+      "asm_first_line": 1902,
+      "asm_last_line": 1938,
+      "code_start": 4252,
+      "code_end": 4336,
+      "region_bytes_sha256": "40aee1e41657fdae801e22397b4ad0488059b0e0dac358c01e1ba688bbd7a715",
+      "input_register": "%rax",
+      "instructions": [
+        {
+          "address": 4252,
+          "bytes": "4889c2",
+          "op": "mov",
+          "args": "%rax,%rdx",
+          "line": "    109c:\t48 89 c2             \tmov    %rax,%rdx",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": false,
+          "tainted_after": [
+            "rax",
+            "rdx"
+          ],
+          "flags_tainted_after": false
+        },
+        {
+          "address": 4255,
+          "bytes": "48c1ea34",
+          "op": "shr",
+          "args": "$0x34,%rdx",
+          "line": "    109f:\t48 c1 ea 34          \tshr    $0x34,%rdx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": false,
+          "tainted_after": [
+            "rax",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4259,
+          "bytes": "81e2ff070000",
+          "op": "and",
+          "args": "$0x7ff,%edx",
+          "line": "    10a3:\t81 e2 ff 07 00 00    \tand    $0x7ff,%edx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4265,
+          "bytes": "4989c5",
+          "op": "mov",
+          "args": "%rax,%r13",
+          "line": "    10a9:\t49 89 c5             \tmov    %rax,%r13",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r13",
+            "rax",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4268,
+          "bytes": "49c1fd3f",
+          "op": "sar",
+          "args": "$0x3f,%r13",
+          "line": "    10ac:\t49 c1 fd 3f          \tsar    $0x3f,%r13",
+          "tainted_inputs": [
+            "r13"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r13",
+            "rax",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4272,
+          "bytes": "89d7",
+          "op": "mov",
+          "args": "%edx,%edi",
+          "line": "    10b0:\t89 d7                \tmov    %edx,%edi",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r13",
+            "rax",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4274,
+          "bytes": "81effe030000",
+          "op": "sub",
+          "args": "$0x3fe,%edi",
+          "line": "    10b2:\t81 ef fe 03 00 00    \tsub    $0x3fe,%edi",
+          "tainted_inputs": [
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r13",
+            "rax",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4280,
+          "bytes": "7836",
+          "op": "js",
+          "args": "10f0 <BerExp+0x76>",
+          "line": "    10b8:\t78 36                \tjs     10f0 <BerExp+0x76>",
+          "tainted_inputs": [],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r13",
+            "rax",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4282,
+          "bytes": "4889c1",
+          "op": "mov",
+          "args": "%rax,%rcx",
+          "line": "    10ba:\t48 89 c1             \tmov    %rax,%rcx",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r13",
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4285,
+          "bytes": "48c1e10a",
+          "op": "shl",
+          "args": "$0xa,%rcx",
+          "line": "    10bd:\t48 c1 e1 0a          \tshl    $0xa,%rcx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r13",
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4289,
+          "bytes": "480fbaf13f",
+          "op": "btr",
+          "args": "$0x3f,%rcx",
+          "line": "    10c1:\t48 0f ba f1 3f       \tbtr    $0x3f,%rcx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r13",
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4294,
+          "bytes": "480fbae93e",
+          "op": "bts",
+          "args": "$0x3e,%rcx",
+          "line": "    10c6:\t48 0f ba e9 3e       \tbts    $0x3e,%rcx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r13",
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4299,
+          "bytes": "4c31e9",
+          "op": "xor",
+          "args": "%r13,%rcx",
+          "line": "    10cb:\t4c 31 e9             \txor    %r13,%rcx",
+          "tainted_inputs": [
+            "r13",
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r13",
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4302,
+          "bytes": "48c1e83f",
+          "op": "shr",
+          "args": "$0x3f,%rax",
+          "line": "    10ce:\t48 c1 e8 3f          \tshr    $0x3f,%rax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r13",
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4306,
+          "bytes": "4801c8",
+          "op": "add",
+          "args": "%rcx,%rax",
+          "line": "    10d2:\t48 01 c8             \tadd    %rcx,%rax",
+          "tainted_inputs": [
+            "rax",
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r13",
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4309,
+          "bytes": "b93d040000",
+          "op": "mov",
+          "args": "$0x43d,%ecx",
+          "line": "    10d5:\tb9 3d 04 00 00       \tmov    $0x43d,%ecx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r13",
+            "rax",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4314,
+          "bytes": "29d1",
+          "op": "sub",
+          "args": "%edx,%ecx",
+          "line": "    10da:\t29 d1                \tsub    %edx,%ecx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r13",
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4316,
+          "bytes": "4989c5",
+          "op": "mov",
+          "args": "%rax,%r13",
+          "line": "    10dc:\t49 89 c5             \tmov    %rax,%r13",
+          "tainted_inputs": [
+            "r13",
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r13",
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4319,
+          "bytes": "49c1fd20",
+          "op": "sar",
+          "args": "$0x20,%r13",
+          "line": "    10df:\t49 c1 fd 20          \tsar    $0x20,%r13",
+          "tainted_inputs": [
+            "r13"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r13",
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4323,
+          "bytes": "f6c120",
+          "op": "test",
+          "args": "$0x20,%cl",
+          "line": "    10e3:\tf6 c1 20             \ttest   $0x20,%cl",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r13",
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4326,
+          "bytes": "4c0f44e8",
+          "op": "cmove",
+          "args": "%rax,%r13",
+          "line": "    10e6:\t4c 0f 44 e8          \tcmove  %rax,%r13",
+          "tainted_inputs": [
+            "r13",
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r13",
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4330,
+          "bytes": "83e11f",
+          "op": "and",
+          "args": "$0x1f,%ecx",
+          "line": "    10ea:\t83 e1 1f             \tand    $0x1f,%ecx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r13",
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4333,
+          "bytes": "49d3fd",
+          "op": "sar",
+          "args": "%cl,%r13",
+          "line": "    10ed:\t49 d3 fd             \tsar    %cl,%r13",
+          "tainted_inputs": [
+            "r13",
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r13",
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        }
+      ],
+      "conditional_or_indirect_transfers": [
+        {
+          "address": 4280,
+          "op": "js",
+          "tainted_flags": true,
+          "args": "10f0 <BerExp+0x76>"
+        }
+      ],
+      "memory_operands": [],
+      "integer_divisions": [],
+      "argument": "Only register arithmetic/logical operations and register-source cmov; lea is arithmetic, not a load; fixed ret target belongs to public call frame.",
+      "all_instruction_classes_reviewed": true
+    },
+    {
+      "variant": "baseline",
+      "site": "sampler",
+      "asm_first_line": 2186,
+      "asm_last_line": 2222,
+      "code_start": 4852,
+      "code_end": 4936,
+      "region_bytes_sha256": "958fb2e6eb3be978934fc652ef4c3abe8bcd07fcef920d1c6792e358f7b01af0",
+      "input_register": "%rsi",
+      "instructions": [
+        {
+          "address": 4852,
+          "bytes": "4889f2",
+          "op": "mov",
+          "args": "%rsi,%rdx",
+          "line": "    12f4:\t48 89 f2             \tmov    %rsi,%rdx",
+          "tainted_inputs": [
+            "rsi"
+          ],
+          "flags_tainted_before": false,
+          "tainted_after": [
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": false
+        },
+        {
+          "address": 4855,
+          "bytes": "48c1ea34",
+          "op": "shr",
+          "args": "$0x34,%rdx",
+          "line": "    12f7:\t48 c1 ea 34          \tshr    $0x34,%rdx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": false,
+          "tainted_after": [
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4859,
+          "bytes": "81e2ff070000",
+          "op": "and",
+          "args": "$0x7ff,%edx",
+          "line": "    12fb:\t81 e2 ff 07 00 00    \tand    $0x7ff,%edx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4865,
+          "bytes": "4889f0",
+          "op": "mov",
+          "args": "%rsi,%rax",
+          "line": "    1301:\t48 89 f0             \tmov    %rsi,%rax",
+          "tainted_inputs": [
+            "rsi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4868,
+          "bytes": "48c1f83f",
+          "op": "sar",
+          "args": "$0x3f,%rax",
+          "line": "    1304:\t48 c1 f8 3f          \tsar    $0x3f,%rax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4872,
+          "bytes": "89d1",
+          "op": "mov",
+          "args": "%edx,%ecx",
+          "line": "    1308:\t89 d1                \tmov    %edx,%ecx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4874,
+          "bytes": "81e9fe030000",
+          "op": "sub",
+          "args": "$0x3fe,%ecx",
+          "line": "    130a:\t81 e9 fe 03 00 00    \tsub    $0x3fe,%ecx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4880,
+          "bytes": "7836",
+          "op": "js",
+          "args": "1348 <sampler+0x6b>",
+          "line": "    1310:\t78 36                \tjs     1348 <sampler+0x6b>",
+          "tainted_inputs": [],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4882,
+          "bytes": "4889f1",
+          "op": "mov",
+          "args": "%rsi,%rcx",
+          "line": "    1312:\t48 89 f1             \tmov    %rsi,%rcx",
+          "tainted_inputs": [
+            "rcx",
+            "rsi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4885,
+          "bytes": "48c1e10a",
+          "op": "shl",
+          "args": "$0xa,%rcx",
+          "line": "    1315:\t48 c1 e1 0a          \tshl    $0xa,%rcx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4889,
+          "bytes": "480fbaf13f",
+          "op": "btr",
+          "args": "$0x3f,%rcx",
+          "line": "    1319:\t48 0f ba f1 3f       \tbtr    $0x3f,%rcx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4894,
+          "bytes": "480fbae93e",
+          "op": "bts",
+          "args": "$0x3e,%rcx",
+          "line": "    131e:\t48 0f ba e9 3e       \tbts    $0x3e,%rcx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4899,
+          "bytes": "4831c8",
+          "op": "xor",
+          "args": "%rcx,%rax",
+          "line": "    1323:\t48 31 c8             \txor    %rcx,%rax",
+          "tainted_inputs": [
+            "rax",
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4902,
+          "bytes": "48c1ee3f",
+          "op": "shr",
+          "args": "$0x3f,%rsi",
+          "line": "    1326:\t48 c1 ee 3f          \tshr    $0x3f,%rsi",
+          "tainted_inputs": [
+            "rsi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4906,
+          "bytes": "4801c6",
+          "op": "add",
+          "args": "%rax,%rsi",
+          "line": "    132a:\t48 01 c6             \tadd    %rax,%rsi",
+          "tainted_inputs": [
+            "rax",
+            "rsi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4909,
+          "bytes": "b93d040000",
+          "op": "mov",
+          "args": "$0x43d,%ecx",
+          "line": "    132d:\tb9 3d 04 00 00       \tmov    $0x43d,%ecx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4914,
+          "bytes": "29d1",
+          "op": "sub",
+          "args": "%edx,%ecx",
+          "line": "    1332:\t29 d1                \tsub    %edx,%ecx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4916,
+          "bytes": "4889f0",
+          "op": "mov",
+          "args": "%rsi,%rax",
+          "line": "    1334:\t48 89 f0             \tmov    %rsi,%rax",
+          "tainted_inputs": [
+            "rax",
+            "rsi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4919,
+          "bytes": "48c1f820",
+          "op": "sar",
+          "args": "$0x20,%rax",
+          "line": "    1337:\t48 c1 f8 20          \tsar    $0x20,%rax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4923,
+          "bytes": "f6c120",
+          "op": "test",
+          "args": "$0x20,%cl",
+          "line": "    133b:\tf6 c1 20             \ttest   $0x20,%cl",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4926,
+          "bytes": "480f44c6",
+          "op": "cmove",
+          "args": "%rsi,%rax",
+          "line": "    133e:\t48 0f 44 c6          \tcmove  %rsi,%rax",
+          "tainted_inputs": [
+            "rax",
+            "rsi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4930,
+          "bytes": "83e11f",
+          "op": "and",
+          "args": "$0x1f,%ecx",
+          "line": "    1342:\t83 e1 1f             \tand    $0x1f,%ecx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4933,
+          "bytes": "48d3f8",
+          "op": "sar",
+          "args": "%cl,%rax",
+          "line": "    1345:\t48 d3 f8             \tsar    %cl,%rax",
+          "tainted_inputs": [
+            "rax",
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        }
+      ],
+      "conditional_or_indirect_transfers": [
+        {
+          "address": 4880,
+          "op": "js",
+          "tainted_flags": true,
+          "args": "1348 <sampler+0x6b>"
+        }
+      ],
+      "memory_operands": [],
+      "integer_divisions": [],
+      "argument": "Only register arithmetic/logical operations and register-source cmov; lea is arithmetic, not a load; fixed ret target belongs to public call frame.",
+      "all_instruction_classes_reviewed": true
+    },
+    {
+      "variant": "baseline",
+      "site": "sampler_large",
+      "asm_first_line": 2899,
+      "asm_last_line": 2937,
+      "code_start": 6439,
+      "code_end": 6528,
+      "region_bytes_sha256": "247b195c6e07dc57d978bfbbf9718a04b3de4e0dc8a9f128a4b2bdbea22ca306",
+      "input_register": "%rbp",
+      "instructions": [
+        {
+          "address": 6439,
+          "bytes": "4889ee",
+          "op": "mov",
+          "args": "%rbp,%rsi",
+          "line": "    1927:\t48 89 ee             \tmov    %rbp,%rsi",
+          "tainted_inputs": [
+            "rbp"
+          ],
+          "flags_tainted_before": false,
+          "tainted_after": [
+            "rbp",
+            "rsi"
+          ],
+          "flags_tainted_after": false
+        },
+        {
+          "address": 6442,
+          "bytes": "48c1ee34",
+          "op": "shr",
+          "args": "$0x34,%rsi",
+          "line": "    192a:\t48 c1 ee 34          \tshr    $0x34,%rsi",
+          "tainted_inputs": [
+            "rsi"
+          ],
+          "flags_tainted_before": false,
+          "tainted_after": [
+            "rbp",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6446,
+          "bytes": "81e6ff070000",
+          "op": "and",
+          "args": "$0x7ff,%esi",
+          "line": "    192e:\t81 e6 ff 07 00 00    \tand    $0x7ff,%esi",
+          "tainted_inputs": [
+            "rsi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rbp",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6452,
+          "bytes": "4889e8",
+          "op": "mov",
+          "args": "%rbp,%rax",
+          "line": "    1934:\t48 89 e8             \tmov    %rbp,%rax",
+          "tainted_inputs": [
+            "rbp"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6455,
+          "bytes": "48c1f83f",
+          "op": "sar",
+          "args": "$0x3f,%rax",
+          "line": "    1937:\t48 c1 f8 3f          \tsar    $0x3f,%rax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6459,
+          "bytes": "89f2",
+          "op": "mov",
+          "args": "%esi,%edx",
+          "line": "    193b:\t89 f2                \tmov    %esi,%edx",
+          "tainted_inputs": [
+            "rsi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6461,
+          "bytes": "81eafe030000",
+          "op": "sub",
+          "args": "$0x3fe,%edx",
+          "line": "    193d:\t81 ea fe 03 00 00    \tsub    $0x3fe,%edx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6467,
+          "bytes": "783b",
+          "op": "js",
+          "args": "1980 <sampler_large+0xc6>",
+          "line": "    1943:\t78 3b                \tjs     1980 <sampler_large+0xc6>",
+          "tainted_inputs": [],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6469,
+          "bytes": "4889ea",
+          "op": "mov",
+          "args": "%rbp,%rdx",
+          "line": "    1945:\t48 89 ea             \tmov    %rbp,%rdx",
+          "tainted_inputs": [
+            "rbp",
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6472,
+          "bytes": "48c1e20a",
+          "op": "shl",
+          "args": "$0xa,%rdx",
+          "line": "    1948:\t48 c1 e2 0a          \tshl    $0xa,%rdx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6476,
+          "bytes": "480fbaf23f",
+          "op": "btr",
+          "args": "$0x3f,%rdx",
+          "line": "    194c:\t48 0f ba f2 3f       \tbtr    $0x3f,%rdx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6481,
+          "bytes": "480fbaea3e",
+          "op": "bts",
+          "args": "$0x3e,%rdx",
+          "line": "    1951:\t48 0f ba ea 3e       \tbts    $0x3e,%rdx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6486,
+          "bytes": "4831d0",
+          "op": "xor",
+          "args": "%rdx,%rax",
+          "line": "    1956:\t48 31 d0             \txor    %rdx,%rax",
+          "tainted_inputs": [
+            "rax",
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6489,
+          "bytes": "4889e9",
+          "op": "mov",
+          "args": "%rbp,%rcx",
+          "line": "    1959:\t48 89 e9             \tmov    %rbp,%rcx",
+          "tainted_inputs": [
+            "rbp"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rcx",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6492,
+          "bytes": "48c1e93f",
+          "op": "shr",
+          "args": "$0x3f,%rcx",
+          "line": "    195c:\t48 c1 e9 3f          \tshr    $0x3f,%rcx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rcx",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6496,
+          "bytes": "4801c1",
+          "op": "add",
+          "args": "%rax,%rcx",
+          "line": "    1960:\t48 01 c1             \tadd    %rax,%rcx",
+          "tainted_inputs": [
+            "rax",
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rcx",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6499,
+          "bytes": "ba3d040000",
+          "op": "mov",
+          "args": "$0x43d,%edx",
+          "line": "    1963:\tba 3d 04 00 00       \tmov    $0x43d,%edx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rcx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6504,
+          "bytes": "29f2",
+          "op": "sub",
+          "args": "%esi,%edx",
+          "line": "    1968:\t29 f2                \tsub    %esi,%edx",
+          "tainted_inputs": [
+            "rsi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rcx",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6506,
+          "bytes": "4889c8",
+          "op": "mov",
+          "args": "%rcx,%rax",
+          "line": "    196a:\t48 89 c8             \tmov    %rcx,%rax",
+          "tainted_inputs": [
+            "rax",
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rcx",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6509,
+          "bytes": "48c1f820",
+          "op": "sar",
+          "args": "$0x20,%rax",
+          "line": "    196d:\t48 c1 f8 20          \tsar    $0x20,%rax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rcx",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6513,
+          "bytes": "f6c220",
+          "op": "test",
+          "args": "$0x20,%dl",
+          "line": "    1971:\tf6 c2 20             \ttest   $0x20,%dl",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rcx",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6516,
+          "bytes": "480f44c1",
+          "op": "cmove",
+          "args": "%rcx,%rax",
+          "line": "    1974:\t48 0f 44 c1          \tcmove  %rcx,%rax",
+          "tainted_inputs": [
+            "rax",
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rcx",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6520,
+          "bytes": "83e21f",
+          "op": "and",
+          "args": "$0x1f,%edx",
+          "line": "    1978:\t83 e2 1f             \tand    $0x1f,%edx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rcx",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6523,
+          "bytes": "89d1",
+          "op": "mov",
+          "args": "%edx,%ecx",
+          "line": "    197b:\t89 d1                \tmov    %edx,%ecx",
+          "tainted_inputs": [
+            "rcx",
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rcx",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6525,
+          "bytes": "48d3f8",
+          "op": "sar",
+          "args": "%cl,%rax",
+          "line": "    197d:\t48 d3 f8             \tsar    %cl,%rax",
+          "tainted_inputs": [
+            "rax",
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rcx",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        }
+      ],
+      "conditional_or_indirect_transfers": [
+        {
+          "address": 6467,
+          "op": "js",
+          "tainted_flags": true,
+          "args": "1980 <sampler_large+0xc6>"
+        }
+      ],
+      "memory_operands": [],
+      "integer_divisions": [],
+      "argument": "Only register arithmetic/logical operations and register-source cmov; lea is arithmetic, not a load; fixed ret target belongs to public call frame.",
+      "all_instruction_classes_reviewed": true
+    },
+    {
+      "variant": "baseline",
+      "site": "official_timing_target_floor",
+      "input_register": "rdi",
+      "instructions": [
+        {
+          "address": 10752,
+          "bytes": "4889fa",
+          "op": "mov",
+          "args": "%rdi,%rdx",
+          "line": "    2a00:\t48 89 fa             \tmov    %rdi,%rdx",
+          "tainted_inputs": [
+            "rdi"
+          ],
+          "flags_tainted_before": false,
+          "tainted_after": [
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": false
+        },
+        {
+          "address": 10755,
+          "bytes": "48c1ea34",
+          "op": "shr",
+          "args": "$0x34,%rdx",
+          "line": "    2a03:\t48 c1 ea 34          \tshr    $0x34,%rdx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": false,
+          "tainted_after": [
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10759,
+          "bytes": "81e2ff070000",
+          "op": "and",
+          "args": "$0x7ff,%edx",
+          "line": "    2a07:\t81 e2 ff 07 00 00    \tand    $0x7ff,%edx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10765,
+          "bytes": "4889f8",
+          "op": "mov",
+          "args": "%rdi,%rax",
+          "line": "    2a0d:\t48 89 f8             \tmov    %rdi,%rax",
+          "tainted_inputs": [
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10768,
+          "bytes": "48c1f83f",
+          "op": "sar",
+          "args": "$0x3f,%rax",
+          "line": "    2a10:\t48 c1 f8 3f          \tsar    $0x3f,%rax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10772,
+          "bytes": "89d6",
+          "op": "mov",
+          "args": "%edx,%esi",
+          "line": "    2a14:\t89 d6                \tmov    %edx,%esi",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10774,
+          "bytes": "81eefe030000",
+          "op": "sub",
+          "args": "$0x3fe,%esi",
+          "line": "    2a16:\t81 ee fe 03 00 00    \tsub    $0x3fe,%esi",
+          "tainted_inputs": [
+            "rsi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10780,
+          "bytes": "7836",
+          "op": "js",
+          "args": "2a54 <target_floor+0x54>",
+          "line": "    2a1c:\t78 36                \tjs     2a54 <target_floor+0x54>",
+          "tainted_inputs": [],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10782,
+          "bytes": "4889f9",
+          "op": "mov",
+          "args": "%rdi,%rcx",
+          "line": "    2a1e:\t48 89 f9             \tmov    %rdi,%rcx",
+          "tainted_inputs": [
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10785,
+          "bytes": "48c1e10a",
+          "op": "shl",
+          "args": "$0xa,%rcx",
+          "line": "    2a21:\t48 c1 e1 0a          \tshl    $0xa,%rcx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10789,
+          "bytes": "480fbaf13f",
+          "op": "btr",
+          "args": "$0x3f,%rcx",
+          "line": "    2a25:\t48 0f ba f1 3f       \tbtr    $0x3f,%rcx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10794,
+          "bytes": "480fbae93e",
+          "op": "bts",
+          "args": "$0x3e,%rcx",
+          "line": "    2a2a:\t48 0f ba e9 3e       \tbts    $0x3e,%rcx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10799,
+          "bytes": "4831c1",
+          "op": "xor",
+          "args": "%rax,%rcx",
+          "line": "    2a2f:\t48 31 c1             \txor    %rax,%rcx",
+          "tainted_inputs": [
+            "rax",
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10802,
+          "bytes": "48c1ef3f",
+          "op": "shr",
+          "args": "$0x3f,%rdi",
+          "line": "    2a32:\t48 c1 ef 3f          \tshr    $0x3f,%rdi",
+          "tainted_inputs": [
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10806,
+          "bytes": "4801cf",
+          "op": "add",
+          "args": "%rcx,%rdi",
+          "line": "    2a36:\t48 01 cf             \tadd    %rcx,%rdi",
+          "tainted_inputs": [
+            "rcx",
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10809,
+          "bytes": "b93d040000",
+          "op": "mov",
+          "args": "$0x43d,%ecx",
+          "line": "    2a39:\tb9 3d 04 00 00       \tmov    $0x43d,%ecx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10814,
+          "bytes": "29d1",
+          "op": "sub",
+          "args": "%edx,%ecx",
+          "line": "    2a3e:\t29 d1                \tsub    %edx,%ecx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10816,
+          "bytes": "4889f8",
+          "op": "mov",
+          "args": "%rdi,%rax",
+          "line": "    2a40:\t48 89 f8             \tmov    %rdi,%rax",
+          "tainted_inputs": [
+            "rax",
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10819,
+          "bytes": "48c1f820",
+          "op": "sar",
+          "args": "$0x20,%rax",
+          "line": "    2a43:\t48 c1 f8 20          \tsar    $0x20,%rax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10823,
+          "bytes": "f6c120",
+          "op": "test",
+          "args": "$0x20,%cl",
+          "line": "    2a47:\tf6 c1 20             \ttest   $0x20,%cl",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10826,
+          "bytes": "480f44c7",
+          "op": "cmove",
+          "args": "%rdi,%rax",
+          "line": "    2a4a:\t48 0f 44 c7          \tcmove  %rdi,%rax",
+          "tainted_inputs": [
+            "rax",
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10830,
+          "bytes": "83e11f",
+          "op": "and",
+          "args": "$0x1f,%ecx",
+          "line": "    2a4e:\t83 e1 1f             \tand    $0x1f,%ecx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10833,
+          "bytes": "48d3f8",
+          "op": "sar",
+          "args": "%cl,%rax",
+          "line": "    2a51:\t48 d3 f8             \tsar    %cl,%rax",
+          "tainted_inputs": [
+            "rax",
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10836,
+          "bytes": "c3",
+          "op": "ret",
+          "args": "",
+          "line": "    2a54:\tc3                   \tret",
+          "tainted_inputs": [],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        }
+      ],
+      "conditional_or_indirect_transfers": [
+        {
+          "address": 10780,
+          "op": "js",
+          "tainted_flags": true,
+          "args": "2a54 <target_floor+0x54>"
+        }
+      ],
+      "memory_operands": [],
+      "integer_divisions": [],
+      "argument": "Only register arithmetic/logical operations and register-source cmov; lea is arithmetic, not a load; fixed ret target belongs to public call frame.",
+      "all_instruction_classes_reviewed": true
+    },
+    {
+      "variant": "candidate",
+      "site": "floor_wrapper",
+      "input_register": "rdi",
+      "disassembly_sha256": "c730edcdfe1c9c983600551d5d33ce05b1b6d69e6c2ccb0ad377ef2c19867de5",
+      "instructions": [
+        {
+          "address": 0,
+          "bytes": "4889fa",
+          "op": "mov",
+          "args": "%rdi,%rdx",
+          "line": "   0:\t48 89 fa             \tmov    %rdi,%rdx",
+          "tainted_inputs": [
+            "rdi"
+          ],
+          "flags_tainted_before": false,
+          "tainted_after": [
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": false
+        },
+        {
+          "address": 3,
+          "bytes": "48c1ea34",
+          "op": "shr",
+          "args": "$0x34,%rdx",
+          "line": "   3:\t48 c1 ea 34          \tshr    $0x34,%rdx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": false,
+          "tainted_after": [
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 7,
+          "bytes": "81e2ff070000",
+          "op": "and",
+          "args": "$0x7ff,%edx",
+          "line": "   7:\t81 e2 ff 07 00 00    \tand    $0x7ff,%edx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 13,
+          "bytes": "4889fe",
+          "op": "mov",
+          "args": "%rdi,%rsi",
+          "line": "   d:\t48 89 fe             \tmov    %rdi,%rsi",
+          "tainted_inputs": [
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 16,
+          "bytes": "48c1fe3f",
+          "op": "sar",
+          "args": "$0x3f,%rsi",
+          "line": "  10:\t48 c1 fe 3f          \tsar    $0x3f,%rsi",
+          "tainted_inputs": [
+            "rsi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 20,
+          "bytes": "4889f8",
+          "op": "mov",
+          "args": "%rdi,%rax",
+          "line": "  14:\t48 89 f8             \tmov    %rdi,%rax",
+          "tainted_inputs": [
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 23,
+          "bytes": "48c1e00a",
+          "op": "shl",
+          "args": "$0xa,%rax",
+          "line": "  17:\t48 c1 e0 0a          \tshl    $0xa,%rax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 27,
+          "bytes": "480fbaf03f",
+          "op": "btr",
+          "args": "$0x3f,%rax",
+          "line": "  1b:\t48 0f ba f0 3f       \tbtr    $0x3f,%rax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 32,
+          "bytes": "480fbae83e",
+          "op": "bts",
+          "args": "$0x3e,%rax",
+          "line": "  20:\t48 0f ba e8 3e       \tbts    $0x3e,%rax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 37,
+          "bytes": "4831f0",
+          "op": "xor",
+          "args": "%rsi,%rax",
+          "line": "  25:\t48 31 f0             \txor    %rsi,%rax",
+          "tainted_inputs": [
+            "rax",
+            "rsi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 40,
+          "bytes": "48c1ef3f",
+          "op": "shr",
+          "args": "$0x3f,%rdi",
+          "line": "  28:\t48 c1 ef 3f          \tshr    $0x3f,%rdi",
+          "tainted_inputs": [
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 44,
+          "bytes": "4801c7",
+          "op": "add",
+          "args": "%rax,%rdi",
+          "line": "  2c:\t48 01 c7             \tadd    %rax,%rdi",
+          "tainted_inputs": [
+            "rax",
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 47,
+          "bytes": "b93d040000",
+          "op": "mov",
+          "args": "$0x43d,%ecx",
+          "line": "  2f:\tb9 3d 04 00 00       \tmov    $0x43d,%ecx",
+          "tainted_inputs": [],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 52,
+          "bytes": "29d1",
+          "op": "sub",
+          "args": "%edx,%ecx",
+          "line": "  34:\t29 d1                \tsub    %edx,%ecx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 54,
+          "bytes": "81eafe030000",
+          "op": "sub",
+          "args": "$0x3fe,%edx",
+          "line": "  36:\t81 ea fe 03 00 00    \tsub    $0x3fe,%edx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 60,
+          "bytes": "c1ea1f",
+          "op": "shr",
+          "args": "$0x1f,%edx",
+          "line": "  3c:\tc1 ea 1f             \tshr    $0x1f,%edx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 63,
+          "bytes": "89d2",
+          "op": "mov",
+          "args": "%edx,%edx",
+          "line": "  3f:\t89 d2                \tmov    %edx,%edx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 65,
+          "bytes": "4889f8",
+          "op": "mov",
+          "args": "%rdi,%rax",
+          "line": "  41:\t48 89 f8             \tmov    %rdi,%rax",
+          "tainted_inputs": [
+            "rax",
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 68,
+          "bytes": "48c1f820",
+          "op": "sar",
+          "args": "$0x20,%rax",
+          "line": "  44:\t48 c1 f8 20          \tsar    $0x20,%rax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 72,
+          "bytes": "f6c120",
+          "op": "test",
+          "args": "$0x20,%cl",
+          "line": "  48:\tf6 c1 20             \ttest   $0x20,%cl",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 75,
+          "bytes": "480f44c7",
+          "op": "cmove",
+          "args": "%rdi,%rax",
+          "line": "  4b:\t48 0f 44 c7          \tcmove  %rdi,%rax",
+          "tainted_inputs": [
+            "rax",
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 79,
+          "bytes": "83e11f",
+          "op": "and",
+          "args": "$0x1f,%ecx",
+          "line": "  4f:\t83 e1 1f             \tand    $0x1f,%ecx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 82,
+          "bytes": "48d3f8",
+          "op": "sar",
+          "args": "%cl,%rax",
+          "line": "  52:\t48 d3 f8             \tsar    %cl,%rax",
+          "tainted_inputs": [
+            "rax",
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 85,
+          "bytes": "488d4aff",
+          "op": "lea",
+          "args": "-0x1(%rdx),%rcx",
+          "line": "  55:\t48 8d 4a ff          \tlea    -0x1(%rdx),%rcx",
+          "tainted_inputs": [
+            "rcx",
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 89,
+          "bytes": "4821c8",
+          "op": "and",
+          "args": "%rcx,%rax",
+          "line": "  59:\t48 21 c8             \tand    %rcx,%rax",
+          "tainted_inputs": [
+            "rax",
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 92,
+          "bytes": "48f7da",
+          "op": "neg",
+          "args": "%rdx",
+          "line": "  5c:\t48 f7 da             \tneg    %rdx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 95,
+          "bytes": "4821d6",
+          "op": "and",
+          "args": "%rdx,%rsi",
+          "line": "  5f:\t48 21 d6             \tand    %rdx,%rsi",
+          "tainted_inputs": [
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 98,
+          "bytes": "4809f0",
+          "op": "or",
+          "args": "%rsi,%rax",
+          "line": "  62:\t48 09 f0             \tor     %rsi,%rax",
+          "tainted_inputs": [
+            "rax",
+            "rsi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 101,
+          "bytes": "c3",
+          "op": "ret",
+          "args": "",
+          "line": "  65:\tc3                   \tret",
+          "tainted_inputs": [],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        }
+      ],
+      "conditional_or_indirect_transfers": [],
+      "memory_operands": [],
+      "integer_divisions": [],
+      "argument": "Only register arithmetic/logical operations and register-source cmov; lea is arithmetic, not a load; fixed ret target belongs to public call frame.",
+      "all_instruction_classes_reviewed": true
+    },
+    {
+      "variant": "candidate",
+      "site": "BerExp",
+      "asm_first_line": 1902,
+      "asm_last_line": 1947,
+      "code_start": 4252,
+      "code_end": 4354,
+      "region_bytes_sha256": "4e65c0393a5c4a1741a90030cac4ecc93a7f8746fafd9b447b8a36c00f5fcc63",
+      "input_register": "%rax",
+      "instructions": [
+        {
+          "address": 4252,
+          "bytes": "4889c2",
+          "op": "mov",
+          "args": "%rax,%rdx",
+          "line": "    109c:\t48 89 c2             \tmov    %rax,%rdx",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": false,
+          "tainted_after": [
+            "rax",
+            "rdx"
+          ],
+          "flags_tainted_after": false
+        },
+        {
+          "address": 4255,
+          "bytes": "48c1ea34",
+          "op": "shr",
+          "args": "$0x34,%rdx",
+          "line": "    109f:\t48 c1 ea 34          \tshr    $0x34,%rdx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": false,
+          "tainted_after": [
+            "rax",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4259,
+          "bytes": "81e2ff070000",
+          "op": "and",
+          "args": "$0x7ff,%edx",
+          "line": "    10a3:\t81 e2 ff 07 00 00    \tand    $0x7ff,%edx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4265,
+          "bytes": "4889c7",
+          "op": "mov",
+          "args": "%rax,%rdi",
+          "line": "    10a9:\t48 89 c7             \tmov    %rax,%rdi",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4268,
+          "bytes": "48c1ff3f",
+          "op": "sar",
+          "args": "$0x3f,%rdi",
+          "line": "    10ac:\t48 c1 ff 3f          \tsar    $0x3f,%rdi",
+          "tainted_inputs": [
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4272,
+          "bytes": "4889c1",
+          "op": "mov",
+          "args": "%rax,%rcx",
+          "line": "    10b0:\t48 89 c1             \tmov    %rax,%rcx",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4275,
+          "bytes": "48c1e10a",
+          "op": "shl",
+          "args": "$0xa,%rcx",
+          "line": "    10b3:\t48 c1 e1 0a          \tshl    $0xa,%rcx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4279,
+          "bytes": "480fbaf13f",
+          "op": "btr",
+          "args": "$0x3f,%rcx",
+          "line": "    10b7:\t48 0f ba f1 3f       \tbtr    $0x3f,%rcx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4284,
+          "bytes": "480fbae93e",
+          "op": "bts",
+          "args": "$0x3e,%rcx",
+          "line": "    10bc:\t48 0f ba e9 3e       \tbts    $0x3e,%rcx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4289,
+          "bytes": "4831f9",
+          "op": "xor",
+          "args": "%rdi,%rcx",
+          "line": "    10c1:\t48 31 f9             \txor    %rdi,%rcx",
+          "tainted_inputs": [
+            "rcx",
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4292,
+          "bytes": "48c1e83f",
+          "op": "shr",
+          "args": "$0x3f,%rax",
+          "line": "    10c4:\t48 c1 e8 3f          \tshr    $0x3f,%rax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4296,
+          "bytes": "488d3408",
+          "op": "lea",
+          "args": "(%rax,%rcx,1),%rsi",
+          "line": "    10c8:\t48 8d 34 08          \tlea    (%rax,%rcx,1),%rsi",
+          "tainted_inputs": [
+            "rax",
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4300,
+          "bytes": "b93d040000",
+          "op": "mov",
+          "args": "$0x43d,%ecx",
+          "line": "    10cc:\tb9 3d 04 00 00       \tmov    $0x43d,%ecx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4305,
+          "bytes": "29d1",
+          "op": "sub",
+          "args": "%edx,%ecx",
+          "line": "    10d1:\t29 d1                \tsub    %edx,%ecx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4307,
+          "bytes": "81eafe030000",
+          "op": "sub",
+          "args": "$0x3fe,%edx",
+          "line": "    10d3:\t81 ea fe 03 00 00    \tsub    $0x3fe,%edx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4313,
+          "bytes": "c1ea1f",
+          "op": "shr",
+          "args": "$0x1f,%edx",
+          "line": "    10d9:\tc1 ea 1f             \tshr    $0x1f,%edx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4316,
+          "bytes": "89d0",
+          "op": "mov",
+          "args": "%edx,%eax",
+          "line": "    10dc:\t89 d0                \tmov    %edx,%eax",
+          "tainted_inputs": [
+            "rax",
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4318,
+          "bytes": "4989f4",
+          "op": "mov",
+          "args": "%rsi,%r12",
+          "line": "    10de:\t49 89 f4             \tmov    %rsi,%r12",
+          "tainted_inputs": [
+            "rsi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r12",
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4321,
+          "bytes": "49c1fc20",
+          "op": "sar",
+          "args": "$0x20,%r12",
+          "line": "    10e1:\t49 c1 fc 20          \tsar    $0x20,%r12",
+          "tainted_inputs": [
+            "r12"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r12",
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4325,
+          "bytes": "f6c120",
+          "op": "test",
+          "args": "$0x20,%cl",
+          "line": "    10e5:\tf6 c1 20             \ttest   $0x20,%cl",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r12",
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4328,
+          "bytes": "4c0f44e6",
+          "op": "cmove",
+          "args": "%rsi,%r12",
+          "line": "    10e8:\t4c 0f 44 e6          \tcmove  %rsi,%r12",
+          "tainted_inputs": [
+            "r12",
+            "rsi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r12",
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4332,
+          "bytes": "83e11f",
+          "op": "and",
+          "args": "$0x1f,%ecx",
+          "line": "    10ec:\t83 e1 1f             \tand    $0x1f,%ecx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r12",
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4335,
+          "bytes": "49d3fc",
+          "op": "sar",
+          "args": "%cl,%r12",
+          "line": "    10ef:\t49 d3 fc             \tsar    %cl,%r12",
+          "tainted_inputs": [
+            "r12",
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r12",
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4338,
+          "bytes": "488d50ff",
+          "op": "lea",
+          "args": "-0x1(%rax),%rdx",
+          "line": "    10f2:\t48 8d 50 ff          \tlea    -0x1(%rax),%rdx",
+          "tainted_inputs": [
+            "rax",
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r12",
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4342,
+          "bytes": "4921d4",
+          "op": "and",
+          "args": "%rdx,%r12",
+          "line": "    10f6:\t49 21 d4             \tand    %rdx,%r12",
+          "tainted_inputs": [
+            "r12",
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r12",
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4345,
+          "bytes": "48f7d8",
+          "op": "neg",
+          "args": "%rax",
+          "line": "    10f9:\t48 f7 d8             \tneg    %rax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r12",
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4348,
+          "bytes": "4821c7",
+          "op": "and",
+          "args": "%rax,%rdi",
+          "line": "    10fc:\t48 21 c7             \tand    %rax,%rdi",
+          "tainted_inputs": [
+            "rax",
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r12",
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4351,
+          "bytes": "4909fc",
+          "op": "or",
+          "args": "%rdi,%r12",
+          "line": "    10ff:\t49 09 fc             \tor     %rdi,%r12",
+          "tainted_inputs": [
+            "r12",
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r12",
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        }
+      ],
+      "conditional_or_indirect_transfers": [],
+      "memory_operands": [],
+      "integer_divisions": [],
+      "argument": "Only register arithmetic/logical operations and register-source cmov; lea is arithmetic, not a load; fixed ret target belongs to public call frame.",
+      "all_instruction_classes_reviewed": true
+    },
+    {
+      "variant": "candidate",
+      "site": "sampler",
+      "asm_first_line": 2195,
+      "asm_last_line": 2241,
+      "code_start": 4870,
+      "code_end": 4972,
+      "region_bytes_sha256": "a4871ad06e752975b133727e6904501e69f906591e749bbf331aa8f9f0dd195f",
+      "input_register": "%rsi",
+      "instructions": [
+        {
+          "address": 4870,
+          "bytes": "4889f0",
+          "op": "mov",
+          "args": "%rsi,%rax",
+          "line": "    1306:\t48 89 f0             \tmov    %rsi,%rax",
+          "tainted_inputs": [
+            "rsi"
+          ],
+          "flags_tainted_before": false,
+          "tainted_after": [
+            "rax",
+            "rsi"
+          ],
+          "flags_tainted_after": false
+        },
+        {
+          "address": 4873,
+          "bytes": "48c1e834",
+          "op": "shr",
+          "args": "$0x34,%rax",
+          "line": "    1309:\t48 c1 e8 34          \tshr    $0x34,%rax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": false,
+          "tainted_after": [
+            "rax",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4877,
+          "bytes": "25ff070000",
+          "op": "and",
+          "args": "$0x7ff,%eax",
+          "line": "    130d:\t25 ff 07 00 00       \tand    $0x7ff,%eax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4882,
+          "bytes": "48c1fe3f",
+          "op": "sar",
+          "args": "$0x3f,%rsi",
+          "line": "    1312:\t48 c1 fe 3f          \tsar    $0x3f,%rsi",
+          "tainted_inputs": [
+            "rsi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4886,
+          "bytes": "4889da",
+          "op": "mov",
+          "args": "%rbx,%rdx",
+          "line": "    1316:\t48 89 da             \tmov    %rbx,%rdx",
+          "tainted_inputs": [],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4889,
+          "bytes": "48c1e20a",
+          "op": "shl",
+          "args": "$0xa,%rdx",
+          "line": "    1319:\t48 c1 e2 0a          \tshl    $0xa,%rdx",
+          "tainted_inputs": [],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rsi"
+          ],
+          "flags_tainted_after": false
+        },
+        {
+          "address": 4893,
+          "bytes": "480fbaf23f",
+          "op": "btr",
+          "args": "$0x3f,%rdx",
+          "line": "    131d:\t48 0f ba f2 3f       \tbtr    $0x3f,%rdx",
+          "tainted_inputs": [],
+          "flags_tainted_before": false,
+          "tainted_after": [
+            "rax",
+            "rsi"
+          ],
+          "flags_tainted_after": false
+        },
+        {
+          "address": 4898,
+          "bytes": "480fbaea3e",
+          "op": "bts",
+          "args": "$0x3e,%rdx",
+          "line": "    1322:\t48 0f ba ea 3e       \tbts    $0x3e,%rdx",
+          "tainted_inputs": [],
+          "flags_tainted_before": false,
+          "tainted_after": [
+            "rax",
+            "rsi"
+          ],
+          "flags_tainted_after": false
+        },
+        {
+          "address": 4903,
+          "bytes": "4831f2",
+          "op": "xor",
+          "args": "%rsi,%rdx",
+          "line": "    1327:\t48 31 f2             \txor    %rsi,%rdx",
+          "tainted_inputs": [
+            "rsi"
+          ],
+          "flags_tainted_before": false,
+          "tainted_after": [
+            "rax",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4906,
+          "bytes": "4889df",
+          "op": "mov",
+          "args": "%rbx,%rdi",
+          "line": "    132a:\t48 89 df             \tmov    %rbx,%rdi",
+          "tainted_inputs": [],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4909,
+          "bytes": "48c1ef3f",
+          "op": "shr",
+          "args": "$0x3f,%rdi",
+          "line": "    132d:\t48 c1 ef 3f          \tshr    $0x3f,%rdi",
+          "tainted_inputs": [],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": false
+        },
+        {
+          "address": 4913,
+          "bytes": "4801d7",
+          "op": "add",
+          "args": "%rdx,%rdi",
+          "line": "    1331:\t48 01 d7             \tadd    %rdx,%rdi",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": false,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4916,
+          "bytes": "b93d040000",
+          "op": "mov",
+          "args": "$0x43d,%ecx",
+          "line": "    1334:\tb9 3d 04 00 00       \tmov    $0x43d,%ecx",
+          "tainted_inputs": [],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4921,
+          "bytes": "29c1",
+          "op": "sub",
+          "args": "%eax,%ecx",
+          "line": "    1339:\t29 c1                \tsub    %eax,%ecx",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4923,
+          "bytes": "2dfe030000",
+          "op": "sub",
+          "args": "$0x3fe,%eax",
+          "line": "    133b:\t2d fe 03 00 00       \tsub    $0x3fe,%eax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4928,
+          "bytes": "c1e81f",
+          "op": "shr",
+          "args": "$0x1f,%eax",
+          "line": "    1340:\tc1 e8 1f             \tshr    $0x1f,%eax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4931,
+          "bytes": "89c0",
+          "op": "mov",
+          "args": "%eax,%eax",
+          "line": "    1343:\t89 c0                \tmov    %eax,%eax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4933,
+          "bytes": "4889fa",
+          "op": "mov",
+          "args": "%rdi,%rdx",
+          "line": "    1345:\t48 89 fa             \tmov    %rdi,%rdx",
+          "tainted_inputs": [
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4936,
+          "bytes": "48c1fa20",
+          "op": "sar",
+          "args": "$0x20,%rdx",
+          "line": "    1348:\t48 c1 fa 20          \tsar    $0x20,%rdx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4940,
+          "bytes": "f6c120",
+          "op": "test",
+          "args": "$0x20,%cl",
+          "line": "    134c:\tf6 c1 20             \ttest   $0x20,%cl",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4943,
+          "bytes": "480f44d7",
+          "op": "cmove",
+          "args": "%rdi,%rdx",
+          "line": "    134f:\t48 0f 44 d7          \tcmove  %rdi,%rdx",
+          "tainted_inputs": [
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4947,
+          "bytes": "83e11f",
+          "op": "and",
+          "args": "$0x1f,%ecx",
+          "line": "    1353:\t83 e1 1f             \tand    $0x1f,%ecx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4950,
+          "bytes": "48d3fa",
+          "op": "sar",
+          "args": "%cl,%rdx",
+          "line": "    1356:\t48 d3 fa             \tsar    %cl,%rdx",
+          "tainted_inputs": [
+            "rcx",
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4953,
+          "bytes": "488d48ff",
+          "op": "lea",
+          "args": "-0x1(%rax),%rcx",
+          "line": "    1359:\t48 8d 48 ff          \tlea    -0x1(%rax),%rcx",
+          "tainted_inputs": [
+            "rax",
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4957,
+          "bytes": "4821ca",
+          "op": "and",
+          "args": "%rcx,%rdx",
+          "line": "    135d:\t48 21 ca             \tand    %rcx,%rdx",
+          "tainted_inputs": [
+            "rcx",
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4960,
+          "bytes": "48f7d8",
+          "op": "neg",
+          "args": "%rax",
+          "line": "    1360:\t48 f7 d8             \tneg    %rax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4963,
+          "bytes": "4821c6",
+          "op": "and",
+          "args": "%rax,%rsi",
+          "line": "    1363:\t48 21 c6             \tand    %rax,%rsi",
+          "tainted_inputs": [
+            "rax",
+            "rsi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4966,
+          "bytes": "4809f2",
+          "op": "or",
+          "args": "%rsi,%rdx",
+          "line": "    1366:\t48 09 f2             \tor     %rsi,%rdx",
+          "tainted_inputs": [
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 4969,
+          "bytes": "4989d5",
+          "op": "mov",
+          "args": "%rdx,%r13",
+          "line": "    1369:\t49 89 d5             \tmov    %rdx,%r13",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r13",
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        }
+      ],
+      "conditional_or_indirect_transfers": [],
+      "memory_operands": [],
+      "integer_divisions": [],
+      "argument": "Only register arithmetic/logical operations and register-source cmov; lea is arithmetic, not a load; fixed ret target belongs to public call frame.",
+      "all_instruction_classes_reviewed": true
+    },
+    {
+      "variant": "candidate",
+      "site": "sampler_large",
+      "asm_first_line": 2916,
+      "asm_last_line": 2963,
+      "code_start": 6471,
+      "code_end": 6576,
+      "region_bytes_sha256": "d1ff18abf2f4bf8f7ab41531f0c0fdf28b2c0137e7519035006c8c1154c7c530",
+      "input_register": "%rbp",
+      "instructions": [
+        {
+          "address": 6471,
+          "bytes": "4889e8",
+          "op": "mov",
+          "args": "%rbp,%rax",
+          "line": "    1947:\t48 89 e8             \tmov    %rbp,%rax",
+          "tainted_inputs": [
+            "rbp"
+          ],
+          "flags_tainted_before": false,
+          "tainted_after": [
+            "rax",
+            "rbp"
+          ],
+          "flags_tainted_after": false
+        },
+        {
+          "address": 6474,
+          "bytes": "48c1e834",
+          "op": "shr",
+          "args": "$0x34,%rax",
+          "line": "    194a:\t48 c1 e8 34          \tshr    $0x34,%rax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": false,
+          "tainted_after": [
+            "rax",
+            "rbp"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6478,
+          "bytes": "25ff070000",
+          "op": "and",
+          "args": "$0x7ff,%eax",
+          "line": "    194e:\t25 ff 07 00 00       \tand    $0x7ff,%eax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6483,
+          "bytes": "4889ee",
+          "op": "mov",
+          "args": "%rbp,%rsi",
+          "line": "    1953:\t48 89 ee             \tmov    %rbp,%rsi",
+          "tainted_inputs": [
+            "rbp"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6486,
+          "bytes": "48c1fe3f",
+          "op": "sar",
+          "args": "$0x3f,%rsi",
+          "line": "    1956:\t48 c1 fe 3f          \tsar    $0x3f,%rsi",
+          "tainted_inputs": [
+            "rsi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6490,
+          "bytes": "4889ea",
+          "op": "mov",
+          "args": "%rbp,%rdx",
+          "line": "    195a:\t48 89 ea             \tmov    %rbp,%rdx",
+          "tainted_inputs": [
+            "rbp"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6493,
+          "bytes": "48c1e20a",
+          "op": "shl",
+          "args": "$0xa,%rdx",
+          "line": "    195d:\t48 c1 e2 0a          \tshl    $0xa,%rdx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6497,
+          "bytes": "480fbaf23f",
+          "op": "btr",
+          "args": "$0x3f,%rdx",
+          "line": "    1961:\t48 0f ba f2 3f       \tbtr    $0x3f,%rdx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6502,
+          "bytes": "480fbaea3e",
+          "op": "bts",
+          "args": "$0x3e,%rdx",
+          "line": "    1966:\t48 0f ba ea 3e       \tbts    $0x3e,%rdx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6507,
+          "bytes": "4831f2",
+          "op": "xor",
+          "args": "%rsi,%rdx",
+          "line": "    196b:\t48 31 f2             \txor    %rsi,%rdx",
+          "tainted_inputs": [
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6510,
+          "bytes": "4889ef",
+          "op": "mov",
+          "args": "%rbp,%rdi",
+          "line": "    196e:\t48 89 ef             \tmov    %rbp,%rdi",
+          "tainted_inputs": [
+            "rbp"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6513,
+          "bytes": "48c1ef3f",
+          "op": "shr",
+          "args": "$0x3f,%rdi",
+          "line": "    1971:\t48 c1 ef 3f          \tshr    $0x3f,%rdi",
+          "tainted_inputs": [
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6517,
+          "bytes": "4801d7",
+          "op": "add",
+          "args": "%rdx,%rdi",
+          "line": "    1975:\t48 01 d7             \tadd    %rdx,%rdi",
+          "tainted_inputs": [
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6520,
+          "bytes": "b93d040000",
+          "op": "mov",
+          "args": "$0x43d,%ecx",
+          "line": "    1978:\tb9 3d 04 00 00       \tmov    $0x43d,%ecx",
+          "tainted_inputs": [],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6525,
+          "bytes": "29c1",
+          "op": "sub",
+          "args": "%eax,%ecx",
+          "line": "    197d:\t29 c1                \tsub    %eax,%ecx",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6527,
+          "bytes": "2dfe030000",
+          "op": "sub",
+          "args": "$0x3fe,%eax",
+          "line": "    197f:\t2d fe 03 00 00       \tsub    $0x3fe,%eax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6532,
+          "bytes": "c1e81f",
+          "op": "shr",
+          "args": "$0x1f,%eax",
+          "line": "    1984:\tc1 e8 1f             \tshr    $0x1f,%eax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6535,
+          "bytes": "89c0",
+          "op": "mov",
+          "args": "%eax,%eax",
+          "line": "    1987:\t89 c0                \tmov    %eax,%eax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6537,
+          "bytes": "4889fa",
+          "op": "mov",
+          "args": "%rdi,%rdx",
+          "line": "    1989:\t48 89 fa             \tmov    %rdi,%rdx",
+          "tainted_inputs": [
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6540,
+          "bytes": "48c1fa20",
+          "op": "sar",
+          "args": "$0x20,%rdx",
+          "line": "    198c:\t48 c1 fa 20          \tsar    $0x20,%rdx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6544,
+          "bytes": "f6c120",
+          "op": "test",
+          "args": "$0x20,%cl",
+          "line": "    1990:\tf6 c1 20             \ttest   $0x20,%cl",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6547,
+          "bytes": "480f44d7",
+          "op": "cmove",
+          "args": "%rdi,%rdx",
+          "line": "    1993:\t48 0f 44 d7          \tcmove  %rdi,%rdx",
+          "tainted_inputs": [
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6551,
+          "bytes": "83e11f",
+          "op": "and",
+          "args": "$0x1f,%ecx",
+          "line": "    1997:\t83 e1 1f             \tand    $0x1f,%ecx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6554,
+          "bytes": "48d3fa",
+          "op": "sar",
+          "args": "%cl,%rdx",
+          "line": "    199a:\t48 d3 fa             \tsar    %cl,%rdx",
+          "tainted_inputs": [
+            "rcx",
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6557,
+          "bytes": "488d48ff",
+          "op": "lea",
+          "args": "-0x1(%rax),%rcx",
+          "line": "    199d:\t48 8d 48 ff          \tlea    -0x1(%rax),%rcx",
+          "tainted_inputs": [
+            "rax",
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6561,
+          "bytes": "4821ca",
+          "op": "and",
+          "args": "%rcx,%rdx",
+          "line": "    19a1:\t48 21 ca             \tand    %rcx,%rdx",
+          "tainted_inputs": [
+            "rcx",
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6564,
+          "bytes": "48f7d8",
+          "op": "neg",
+          "args": "%rax",
+          "line": "    19a4:\t48 f7 d8             \tneg    %rax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6567,
+          "bytes": "4821c6",
+          "op": "and",
+          "args": "%rax,%rsi",
+          "line": "    19a7:\t48 21 c6             \tand    %rax,%rsi",
+          "tainted_inputs": [
+            "rax",
+            "rsi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6570,
+          "bytes": "4809f2",
+          "op": "or",
+          "args": "%rsi,%rdx",
+          "line": "    19aa:\t48 09 f2             \tor     %rsi,%rdx",
+          "tainted_inputs": [
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rbp",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 6573,
+          "bytes": "4989d7",
+          "op": "mov",
+          "args": "%rdx,%r15",
+          "line": "    19ad:\t49 89 d7             \tmov    %rdx,%r15",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "r15",
+            "rax",
+            "rbp",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        }
+      ],
+      "conditional_or_indirect_transfers": [],
+      "memory_operands": [],
+      "integer_divisions": [],
+      "argument": "Only register arithmetic/logical operations and register-source cmov; lea is arithmetic, not a load; fixed ret target belongs to public call frame.",
+      "all_instruction_classes_reviewed": true
+    },
+    {
+      "variant": "candidate",
+      "site": "official_timing_target_floor",
+      "input_register": "rdi",
+      "instructions": [
+        {
+          "address": 10752,
+          "bytes": "4889fa",
+          "op": "mov",
+          "args": "%rdi,%rdx",
+          "line": "    2a00:\t48 89 fa             \tmov    %rdi,%rdx",
+          "tainted_inputs": [
+            "rdi"
+          ],
+          "flags_tainted_before": false,
+          "tainted_after": [
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": false
+        },
+        {
+          "address": 10755,
+          "bytes": "48c1ea34",
+          "op": "shr",
+          "args": "$0x34,%rdx",
+          "line": "    2a03:\t48 c1 ea 34          \tshr    $0x34,%rdx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": false,
+          "tainted_after": [
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10759,
+          "bytes": "81e2ff070000",
+          "op": "and",
+          "args": "$0x7ff,%edx",
+          "line": "    2a07:\t81 e2 ff 07 00 00    \tand    $0x7ff,%edx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rdi",
+            "rdx"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10765,
+          "bytes": "4889fe",
+          "op": "mov",
+          "args": "%rdi,%rsi",
+          "line": "    2a0d:\t48 89 fe             \tmov    %rdi,%rsi",
+          "tainted_inputs": [
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10768,
+          "bytes": "48c1fe3f",
+          "op": "sar",
+          "args": "$0x3f,%rsi",
+          "line": "    2a10:\t48 c1 fe 3f          \tsar    $0x3f,%rsi",
+          "tainted_inputs": [
+            "rsi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10772,
+          "bytes": "4889f8",
+          "op": "mov",
+          "args": "%rdi,%rax",
+          "line": "    2a14:\t48 89 f8             \tmov    %rdi,%rax",
+          "tainted_inputs": [
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10775,
+          "bytes": "48c1e00a",
+          "op": "shl",
+          "args": "$0xa,%rax",
+          "line": "    2a17:\t48 c1 e0 0a          \tshl    $0xa,%rax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10779,
+          "bytes": "480fbaf03f",
+          "op": "btr",
+          "args": "$0x3f,%rax",
+          "line": "    2a1b:\t48 0f ba f0 3f       \tbtr    $0x3f,%rax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10784,
+          "bytes": "480fbae83e",
+          "op": "bts",
+          "args": "$0x3e,%rax",
+          "line": "    2a20:\t48 0f ba e8 3e       \tbts    $0x3e,%rax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10789,
+          "bytes": "4831f0",
+          "op": "xor",
+          "args": "%rsi,%rax",
+          "line": "    2a25:\t48 31 f0             \txor    %rsi,%rax",
+          "tainted_inputs": [
+            "rax",
+            "rsi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10792,
+          "bytes": "48c1ef3f",
+          "op": "shr",
+          "args": "$0x3f,%rdi",
+          "line": "    2a28:\t48 c1 ef 3f          \tshr    $0x3f,%rdi",
+          "tainted_inputs": [
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10796,
+          "bytes": "4801c7",
+          "op": "add",
+          "args": "%rax,%rdi",
+          "line": "    2a2c:\t48 01 c7             \tadd    %rax,%rdi",
+          "tainted_inputs": [
+            "rax",
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10799,
+          "bytes": "b93d040000",
+          "op": "mov",
+          "args": "$0x43d,%ecx",
+          "line": "    2a2f:\tb9 3d 04 00 00       \tmov    $0x43d,%ecx",
+          "tainted_inputs": [],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10804,
+          "bytes": "29d1",
+          "op": "sub",
+          "args": "%edx,%ecx",
+          "line": "    2a34:\t29 d1                \tsub    %edx,%ecx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10806,
+          "bytes": "81eafe030000",
+          "op": "sub",
+          "args": "$0x3fe,%edx",
+          "line": "    2a36:\t81 ea fe 03 00 00    \tsub    $0x3fe,%edx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10812,
+          "bytes": "c1ea1f",
+          "op": "shr",
+          "args": "$0x1f,%edx",
+          "line": "    2a3c:\tc1 ea 1f             \tshr    $0x1f,%edx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10815,
+          "bytes": "89d2",
+          "op": "mov",
+          "args": "%edx,%edx",
+          "line": "    2a3f:\t89 d2                \tmov    %edx,%edx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10817,
+          "bytes": "4889f8",
+          "op": "mov",
+          "args": "%rdi,%rax",
+          "line": "    2a41:\t48 89 f8             \tmov    %rdi,%rax",
+          "tainted_inputs": [
+            "rax",
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10820,
+          "bytes": "48c1f820",
+          "op": "sar",
+          "args": "$0x20,%rax",
+          "line": "    2a44:\t48 c1 f8 20          \tsar    $0x20,%rax",
+          "tainted_inputs": [
+            "rax"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10824,
+          "bytes": "f6c120",
+          "op": "test",
+          "args": "$0x20,%cl",
+          "line": "    2a48:\tf6 c1 20             \ttest   $0x20,%cl",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10827,
+          "bytes": "480f44c7",
+          "op": "cmove",
+          "args": "%rdi,%rax",
+          "line": "    2a4b:\t48 0f 44 c7          \tcmove  %rdi,%rax",
+          "tainted_inputs": [
+            "rax",
+            "rdi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10831,
+          "bytes": "83e11f",
+          "op": "and",
+          "args": "$0x1f,%ecx",
+          "line": "    2a4f:\t83 e1 1f             \tand    $0x1f,%ecx",
+          "tainted_inputs": [
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10834,
+          "bytes": "48d3f8",
+          "op": "sar",
+          "args": "%cl,%rax",
+          "line": "    2a52:\t48 d3 f8             \tsar    %cl,%rax",
+          "tainted_inputs": [
+            "rax",
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10837,
+          "bytes": "488d4aff",
+          "op": "lea",
+          "args": "-0x1(%rdx),%rcx",
+          "line": "    2a55:\t48 8d 4a ff          \tlea    -0x1(%rdx),%rcx",
+          "tainted_inputs": [
+            "rcx",
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10841,
+          "bytes": "4821c8",
+          "op": "and",
+          "args": "%rcx,%rax",
+          "line": "    2a59:\t48 21 c8             \tand    %rcx,%rax",
+          "tainted_inputs": [
+            "rax",
+            "rcx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10844,
+          "bytes": "48f7da",
+          "op": "neg",
+          "args": "%rdx",
+          "line": "    2a5c:\t48 f7 da             \tneg    %rdx",
+          "tainted_inputs": [
+            "rdx"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10847,
+          "bytes": "4821d6",
+          "op": "and",
+          "args": "%rdx,%rsi",
+          "line": "    2a5f:\t48 21 d6             \tand    %rdx,%rsi",
+          "tainted_inputs": [
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10850,
+          "bytes": "4809f0",
+          "op": "or",
+          "args": "%rsi,%rax",
+          "line": "    2a62:\t48 09 f0             \tor     %rsi,%rax",
+          "tainted_inputs": [
+            "rax",
+            "rsi"
+          ],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        },
+        {
+          "address": 10853,
+          "bytes": "c3",
+          "op": "ret",
+          "args": "",
+          "line": "    2a65:\tc3                   \tret",
+          "tainted_inputs": [],
+          "flags_tainted_before": true,
+          "tainted_after": [
+            "rax",
+            "rcx",
+            "rdi",
+            "rdx",
+            "rsi"
+          ],
+          "flags_tainted_after": true
+        }
+      ],
+      "conditional_or_indirect_transfers": [],
+      "memory_operands": [],
+      "integer_divisions": [],
+      "argument": "Only register arithmetic/logical operations and register-source cmov; lea is arithmetic, not a load; fixed ret target belongs to public call frame.",
+      "all_instruction_classes_reviewed": true
+    }
+  ],
+  "candidate_regions": 5,
+  "baseline_branch_condition": "encoded exponent<1022, from sign flag of e-1022",
+  "candidate_header_sha256": "6b897d6c217ef25a322e3b5c3d9488b9d6b8d0e369a710d8fce2259f24e6d84f",
+  "source_changed_only_floor": true,
+  "compiler_barrier_used": false,
+  "microarchitecture_latency_proof": false,
+  "whole_caller_or_Sign_CT_claimed": false,
+  "scope": "Reviewed scalar floor operation in these exact GCC14.2 -O objects/binary. Callers retain their own branches, loops and effects."
+}

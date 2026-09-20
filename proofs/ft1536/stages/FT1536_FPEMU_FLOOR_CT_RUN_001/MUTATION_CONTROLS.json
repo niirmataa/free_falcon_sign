@@ -1,0 +1,22 @@
+{
+  "status": "PASS_REAL_VALUE_MUTATIONS",
+  "witnesses": {
+    "zero": {
+      "raw": "8000000000000000",
+      "expected": "ffffffffffffffff",
+      "mutant": "0000000000000000"
+    },
+    "mask": {
+      "raw": "3fd0000000000000",
+      "expected": "0000000000000000",
+      "mutant": "4000000000000000"
+    },
+    "shift": {
+      "raw": "3fe0000000000000",
+      "expected": "0000000000000000",
+      "mutant": "0000000080000000"
+    }
+  },
+  "noop_pass": true,
+  "scope": "Mutated semantic equations, with concrete public raw words; source baseline/candidate left intact."
+}

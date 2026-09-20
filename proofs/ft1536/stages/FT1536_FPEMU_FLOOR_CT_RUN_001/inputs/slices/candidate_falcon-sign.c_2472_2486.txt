@@ -1,0 +1,15 @@
+2472: 	fpr r;
+2473: 	uint64_t w, z;
+2474: 	int b;
+2475: 	uint32_t over, safe_s, sw;
+2476: 
+2477: 	/*
+2478: 	 * Reduce x modulo log(2): x = s*log(2) + r, with s an integer,
+2479: 	 * and 0 <= r < log(2).
+2480: 	 */
+2481: 	s = fpr_floor(fpr_mul(x, fpr_inv_ln2));
+2482: 	r = fpr_sub(x, fpr_mul(fpr_of(s), fpr_log2));
+2483: 
+2484: 	/*
+2485: 	 * The proved candidate exponent envelope has 0 <= s <= 393. Use a
+2486: 	 * safe shift operand for all states, then force acceptance to zero for

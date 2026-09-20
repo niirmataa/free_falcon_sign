@@ -1,0 +1,34 @@
+2841: sampler_large(void *ctx, fpr mu, fpr sigma)
+2842: {
+2843: 	ternary_sampler_context *tsc;
+2844: 	prng *p;
+2845: 	int s;
+2846: 	fpr r, dss;
+2847: 
+2848: 	tsc = ctx;
+2849: 	p = &tsc->p;
+2850: 	if (tsc->fault != FT_SAMPLER_FAULT_NONE) {
+2851: 		return 0;
+2852: 	}
+2853: #if FT_SAMPLER_ADAPTIVE_PROBE
+2854: 	ft_sampler_probe_calls ++;
+2855: #endif
+2856: 	if (!ft_fpr_is_finite(mu) || !ft_fpr_is_positive_finite(sigma)) {
+2857: 		tsc->fault = FT_SAMPLER_FAULT_INVALID_SIGMA;
+2858: #if FT_SAMPLER_ADAPTIVE_PROBE
+2859: 		ft_sampler_probe_invalid_sigma ++;
+2860: #endif
+2861: 		return 0;
+2862: 	}
+2863: 
+2864: 	s = fpr_floor(mu);
+2865: 	r = fpr_sub(mu, fpr_of(s));
+2866: 	dss = fpr_inv(fpr_mul(fpr_sqr(sigma), fpr_of(2)));
+2867: #if FT_SAMPLER_ADAPTIVE_PROBE
+2868: 	ft_sampler_probe_center_input(mu, r);
+2869: #endif
+2870: 	if (!ft_fpr_is_positive_finite(dss)) {
+2871: 		tsc->fault = FT_SAMPLER_FAULT_INVALID_SIGMA;
+2872: #if FT_SAMPLER_ADAPTIVE_PROBE
+2873: 		ft_sampler_probe_invalid_sigma ++;
+2874: #endif

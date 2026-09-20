@@ -1,0 +1,67 @@
+floor_refinement : ∀ (s : Bool) (e f : Nat),
+  e ≤ 1053 → f < 4503599627370496 → NotNegZero s e f → floorParts s e f = mathFloor s e f
+conditional_H3_local : ∀ (sg : Bool) (e f : Nat) (z : Int),
+  e ≤ 1053 →
+    f < 4503599627370496 →
+      NotNegZero sg e f →
+        -2147483283 ≤ mathFloor sg e f ∧ mathFloor sg e f ≤ 2147483281 →
+          -365 ≤ z ∧ z ≤ 366 →
+            floorParts sg e f = mathFloor sg e f ∧
+              -2147483648 ≤ floorParts sg e f + z ∧ floorParts sg e f + z ≤ 2147483647
+'H3Range.normal_floor_refinement' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H3Range.subnormal_floor_refinement' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H3Range.floor_refinement' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H3Range.negative_zero_exception' depends on axioms: [propext]
+'H3Range.integer_safety' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H3Range.negative_zero_sum_still_safe' depends on axioms: [propext, Classical.choice, Quot.sound]
+'H3Range.conditional_H3_local' depends on axioms: [propext, Classical.choice, Quot.sound]
+Floor 0 124.974
+NumericCenter : Word → Prop
+exponent_from_value : ∀ (x : Word), NumericCenter x → ex x ≤ 1053
+zero_aware_parts : ∀ (x : Word), NumericCenter x → H3Range.floorParts (sg x) (ex x) (frac x) = floorVal x - eps0 x
+'ZeroScalar.p2_pos' depends on axioms: [propext]
+'ZeroScalar.D_pos' depends on axioms: [propext]
+'ZeroScalar.p2_add' depends on axioms: [propext]
+'ZeroScalar.frac_bound' does not depend on any axioms
+'ZeroScalar.exponent_from_value' depends on axioms: [propext, Quot.sound]
+'ZeroScalar.floorVal_old' depends on axioms: [propext, Quot.sound]
+'ZeroScalar.floorVal_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.negzero_fields' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.zero_aware_parts' depends on axioms: [propext, Classical.choice, Quot.sound]
+ValueDomain 0 0.546
+FLOOR_ZERO : ∀ (x : Word), NumericCenter x → floorC x = floorVal x - eps0 x
+C_INT_BRIDGE : ∀ (x : Word),
+  NumericCenter x →
+    ∀ (z : Int),
+      -365 ≤ z ∧ z ≤ 366 →
+        -2147483648 ≤ floorC x ∧ floorC x ≤ 2147483647 ∧ -2147483648 ≤ floorC x + z ∧ floorC x + z ≤ 2147483647
+'ZeroScalar.raw_mantissa' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.raw_mantissa_int' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.floorC_parts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.FLOOR_ZERO' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.source_floor_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.C_INT_BRIDGE' depends on axioms: [propext, Classical.choice, Quot.sound]
+SourceFloor 0 0.944
+FloorWord 0 0.664
+FloorConsumers 0 0.277
+FloorMain 0 0.272
+{
+  "status": "PASS_KERNEL_ALL_WORD64_EQUIVALENCE_AND_RANGE_FACTS",
+  "modules": 8,
+  "checked_theorems": 41,
+  "new_theorems": 15,
+  "all_final_logs_clean": true,
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "inherited_modules_unchanged": 3,
+  "audit_stdout_sha256": "6724257763ae73bb0e41c7a6df3c18c3480c73ae1553eff7e6dd40ee2db2a25f",
+  "full_types_terms_sha256": "33f3b50756ea448b4ce1610e79165b3f6e2e6261caf41ac6579a38b813365927",
+  "all_word64_equivalence_proved": true,
+  "source_definedness_range_facts_proved": true,
+  "numeric_center_transport_proved": true,
+  "proof_kind": "KERNEL_INTEGER_BIT_MODEL_WITH_EXPLICIT_C99_GCC_LP64_SOURCE_BINDING",
+  "C_compiler_verified": false
+}

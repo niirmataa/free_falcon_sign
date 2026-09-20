@@ -1,0 +1,28 @@
+{
+  "status": "PASS_PINNED_FLOOR_FIXED_CONTROL_AND_MEMORY_TRACE",
+  "floor_sites": [
+    {
+      "file": "falcon-sign.c",
+      "line": 2481,
+      "text": "s = fpr_floor(fpr_mul(x, fpr_inv_ln2));"
+    },
+    {
+      "file": "falcon-sign.c",
+      "line": 2542,
+      "text": "s = fpr_floor(mu);"
+    },
+    {
+      "file": "falcon-sign.c",
+      "line": 2864,
+      "text": "s = fpr_floor(mu);"
+    }
+  ],
+  "candidate_regions": 5,
+  "baseline_branch_condition": "encoded exponent<1022, from sign flag of e-1022",
+  "candidate_header_sha256": "6b897d6c217ef25a322e3b5c3d9488b9d6b8d0e369a710d8fce2259f24e6d84f",
+  "source_changed_only_floor": true,
+  "compiler_barrier_used": false,
+  "microarchitecture_latency_proof": false,
+  "whole_caller_or_Sign_CT_claimed": false,
+  "scope": "Reviewed scalar floor operation in these exact GCC14.2 -O objects/binary. Callers retain their own branches, loops and effects."
+}

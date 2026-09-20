@@ -1,0 +1,36 @@
+
+bin/portable_001_candidate_wrapper.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <floor_wrapper>:
+   0:	48 89 fa             	mov    %rdi,%rdx
+   3:	48 c1 ea 34          	shr    $0x34,%rdx
+   7:	81 e2 ff 07 00 00    	and    $0x7ff,%edx
+   d:	48 89 fe             	mov    %rdi,%rsi
+  10:	48 c1 fe 3f          	sar    $0x3f,%rsi
+  14:	48 89 f8             	mov    %rdi,%rax
+  17:	48 c1 e0 0a          	shl    $0xa,%rax
+  1b:	48 0f ba f0 3f       	btr    $0x3f,%rax
+  20:	48 0f ba e8 3e       	bts    $0x3e,%rax
+  25:	48 31 f0             	xor    %rsi,%rax
+  28:	48 c1 ef 3f          	shr    $0x3f,%rdi
+  2c:	48 01 c7             	add    %rax,%rdi
+  2f:	b9 3d 04 00 00       	mov    $0x43d,%ecx
+  34:	29 d1                	sub    %edx,%ecx
+  36:	81 ea fe 03 00 00    	sub    $0x3fe,%edx
+  3c:	c1 ea 1f             	shr    $0x1f,%edx
+  3f:	89 d2                	mov    %edx,%edx
+  41:	48 89 f8             	mov    %rdi,%rax
+  44:	48 c1 f8 20          	sar    $0x20,%rax
+  48:	f6 c1 20             	test   $0x20,%cl
+  4b:	48 0f 44 c7          	cmove  %rdi,%rax
+  4f:	83 e1 1f             	and    $0x1f,%ecx
+  52:	48 d3 f8             	sar    %cl,%rax
+  55:	48 8d 4a ff          	lea    -0x1(%rdx),%rcx
+  59:	48 21 c8             	and    %rcx,%rax
+  5c:	48 f7 da             	neg    %rdx
+  5f:	48 21 d6             	and    %rdx,%rsi
+  62:	48 09 f0             	or     %rsi,%rax
+  65:	c3                   	ret

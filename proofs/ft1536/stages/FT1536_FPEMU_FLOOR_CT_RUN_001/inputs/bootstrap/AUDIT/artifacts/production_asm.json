@@ -1,0 +1,38 @@
+{
+  "receipts": [
+    {
+      "assembly_sha256": "047187d30acb1bf0e3e9bc7b38f3b51c83f191365b86b60e769f2ffbd741053e",
+      "object_sha256": "bbd780778de3993d1bad11040e82c146c6603dcd68f9c7eed8dcc9d3e23afa85",
+      "unit": "fpr-emulated"
+    },
+    {
+      "assembly_sha256": "d328ab82ac6db0b78f9d75fe3249e7e85391b1f29138c7493460f213a39125f1",
+      "object_sha256": "96c7119941ccdfff4d1a36379a5f2991e4a7dd4709dc07cc858ba83eeb0efe88",
+      "unit": "falcon-sign"
+    },
+    {
+      "assembly_sha256": "a9bbd385f7bde18e0b6d5115ab3f84a23623445766977acf3ffb5b5c44b9288c",
+      "object_sha256": "d490f53aac4ad52cd2d0817303fecd985691e9c70ac526506dfaa3b0677d099a",
+      "unit": "falcon-fft"
+    },
+    {
+      "assembly_sha256": "6ecc777701d0851f471da862ba3c1256da3358dbd765c43d4773d5cab78b541c",
+      "object_sha256": "b1b319b96c11a2e678f4a91cab40738ea7712dbee01075979b38bdb7b3eb7642",
+      "unit": "falcon-keygen"
+    }
+  ],
+  "sign_floor_excerpts": [
+    {
+      "context": "\tmovabsq\t$4609176140021203710, %rsi\t#, tmp216\n\tmovq\t%rbp, %rdi\t# x,\n\tcall\tfpr_mul@PLT\t#\n# inputs/bootstrap/source/fpr-emulated.h:124: \te = (int)(x >> 52) & 0x7FF;\n\tmovq\t%rax, %rdx\t# _1, _75\n\tshrq\t$52, %rdx\t#, _75\n# inputs/bootstrap/source/fpr-emulated.h:124: \te = (int)(x >> 52) & 0x7FF;\n\tandl\t$2047, %edx\t#, e\n\tmovq\t%rax, %r13\t# _1, _84\n\tsarq\t$63, %r13\t#, _84\n# inputs/bootstrap/source/fpr-emulated.h:131: \txi ^= (xi ^ -(int64_t)t) & -(int64_t)((uint32_t)(63 - cc) >> 31);\n\tmovl\t%edx, %edi\t# e, tmp297\n\tsubl\t$1022, %edi\t#, tmp297\n\tjs\t.L47\t#,\n# inputs/bootstrap/source/fpr-emulated.h:126: \txi = (int64_t)(((x << 10) | ((uint64_t)1 << 62))\n\tmovq\t%rax, %rcx\t# _1, _79\n\tsalq\t$10, %rcx\t#, _79\n# inputs/bootstrap/source/fpr-emulated.h:126: \txi = (int64_t)(((x << 10) | ((uint64_t)1 << 62))\n\tbtrq\t$63, %rcx\t#, _80\n\tbtsq\t$62, %rcx\t#, _81\n# inputs/bootstrap/source/fpr-emulated.h:128: \txi = (xi ^ -(int64_t)t) + (int64_t)t;\n\txorq\t%r13, %rcx\t# _84, _85\n# inputs/bootstrap/source/fpr-emulated.h:125: \tt = x >> 63;\n\tshrq\t$63, %rax\t#, t_78\n# inputs/bootstrap/source/fpr-emulated.h:128: \txi = (xi ^ -(int64_t)t) + (int64_t)t;\n\taddq\t%rcx, %rax\t# _85, xi\n# inputs/bootstrap/source/fpr-emulated.h:129: \tcc = 1085 - e;\n\tmovl\t$1085, %ecx\t#, tmp227\n\tsubl\t%edx, %ecx\t# e, cc\n# inputs/bootstrap/source/fpr-emulated.h:28: \tx ^= (x ^ (x >> 32)) & -(int64_t)(n >> 5);\n\tmovq\t%rax, %r13\t# xi, _90\n\tsarq\t$32, %r13\t#, _90\n# inputs/bootstrap/source/fpr-emulated.h:28: \tx ^= (x ^ (x >> 32)) & -(int64_t)(n >> 5);\n\ttestb\t$32, %cl\t#, cc\n\tcmove\t%rax, %r13\t# _90,, xi, x_96\n# inputs/bootstrap/source/fpr-emulated.h:29: \treturn x >> (n & 31);\n\tandl\t$31, %ecx\t#, _97\n# inputs/bootstrap/source/fpr-emulated.h:29: \treturn x >> (n & 31);\n\tsarq\t%cl, %r13\t# _97, _84\n.L47:\n# inputs/bootstrap/source/falcon-sign.c:2482: \tr = fpr_sub(x, fpr_mul(fpr_of(s), fpr_log2));\n\tmovslq\t%r13d, %rdi\t# _84, _3",
+      "line": 1911
+    },
+    {
+      "context": "\tmovq\t%rdi, %r14\t# tmp300, ctx\n\tmovq\t%rsi, %rbx\t# tmp301, mu\n\tmovq\t%rdx, %rbp\t# tmp302, sigma\n# inputs/bootstrap/source/fpr-emulated.h:124: \te = (int)(x >> 52) & 0x7FF;\n\tmovq\t%rsi, %rdx\t# mu, _54\n\tshrq\t$52, %rdx\t#, _54\n# inputs/bootstrap/source/fpr-emulated.h:124: \te = (int)(x >> 52) & 0x7FF;\n\tandl\t$2047, %edx\t#, e\n\tmovq\t%rsi, %rax\t# mu, _63\n\tsarq\t$63, %rax\t#, _63\n# inputs/bootstrap/source/fpr-emulated.h:131: \txi ^= (xi ^ -(int64_t)t) & -(int64_t)((uint32_t)(63 - cc) >> 31);\n\tmovl\t%edx, %ecx\t# e, tmp317\n\tsubl\t$1022, %ecx\t#, tmp317\n\tjs\t.L56\t#,\n# inputs/bootstrap/source/fpr-emulated.h:126: \txi = (int64_t)(((x << 10) | ((uint64_t)1 << 62))\n\tmovq\t%rsi, %rcx\t# mu, _58\n\tsalq\t$10, %rcx\t#, _58\n# inputs/bootstrap/source/fpr-emulated.h:126: \txi = (int64_t)(((x << 10) | ((uint64_t)1 << 62))\n\tbtrq\t$63, %rcx\t#, _59\n\tbtsq\t$62, %rcx\t#, _60\n# inputs/bootstrap/source/fpr-emulated.h:128: \txi = (xi ^ -(int64_t)t) + (int64_t)t;\n\txorq\t%rcx, %rax\t# _60, _64\n# inputs/bootstrap/source/fpr-emulated.h:125: \tt = x >> 63;\n\tshrq\t$63, %rsi\t#, t_57\n# inputs/bootstrap/source/fpr-emulated.h:128: \txi = (xi ^ -(int64_t)t) + (int64_t)t;\n\taddq\t%rax, %rsi\t# _64, xi\n# inputs/bootstrap/source/fpr-emulated.h:129: \tcc = 1085 - e;\n\tmovl\t$1085, %ecx\t#, tmp238\n\tsubl\t%edx, %ecx\t# e, cc\n# inputs/bootstrap/source/fpr-emulated.h:28: \tx ^= (x ^ (x >> 32)) & -(int64_t)(n >> 5);\n\tmovq\t%rsi, %rax\t# xi, _69\n\tsarq\t$32, %rax\t#, _69\n# inputs/bootstrap/source/fpr-emulated.h:28: \tx ^= (x ^ (x >> 32)) & -(int64_t)(n >> 5);\n\ttestb\t$32, %cl\t#, cc\n\tcmove\t%rsi, %rax\t# _69,, xi, x_75\n# inputs/bootstrap/source/fpr-emulated.h:29: \treturn x >> (n & 31);\n\tandl\t$31, %ecx\t#, _76\n# inputs/bootstrap/source/fpr-emulated.h:29: \treturn x >> (n & 31);\n\tsarq\t%cl, %rax\t# _76, _63\n.L56:\n# inputs/bootstrap/source/falcon-sign.c:2542: \ts = fpr_floor(mu);\n\tmovl\t%eax, %r13d\t# _63, s",
+      "line": 2195
+    },
+    {
+      "context": "\tret\t\n.L93:\n\t.cfi_restore_state\n# inputs/bootstrap/source/fpr-emulated.h:124: \te = (int)(x >> 52) & 0x7FF;\n\tmovq\t%rbp, %rsi\t# mu, _93\n\tshrq\t$52, %rsi\t#, _93\n# inputs/bootstrap/source/fpr-emulated.h:124: \te = (int)(x >> 52) & 0x7FF;\n\tandl\t$2047, %esi\t#, e\n\tmovq\t%rbp, %rax\t# mu, _102\n\tsarq\t$63, %rax\t#, _102\n# inputs/bootstrap/source/fpr-emulated.h:131: \txi ^= (xi ^ -(int64_t)t) & -(int64_t)((uint32_t)(63 - cc) >> 31);\n\tmovl\t%esi, %edx\t# e, tmp329\n\tsubl\t$1022, %edx\t#, tmp329\n\tjs\t.L94\t#,\n# inputs/bootstrap/source/fpr-emulated.h:126: \txi = (int64_t)(((x << 10) | ((uint64_t)1 << 62))\n\tmovq\t%rbp, %rdx\t# mu, _97\n\tsalq\t$10, %rdx\t#, _97\n# inputs/bootstrap/source/fpr-emulated.h:126: \txi = (int64_t)(((x << 10) | ((uint64_t)1 << 62))\n\tbtrq\t$63, %rdx\t#, _98\n\tbtsq\t$62, %rdx\t#, _99\n# inputs/bootstrap/source/fpr-emulated.h:128: \txi = (xi ^ -(int64_t)t) + (int64_t)t;\n\txorq\t%rdx, %rax\t# _99, _103\n# inputs/bootstrap/source/fpr-emulated.h:125: \tt = x >> 63;\n\tmovq\t%rbp, %rcx\t# mu, t_96\n\tshrq\t$63, %rcx\t#, t_96\n# inputs/bootstrap/source/fpr-emulated.h:128: \txi = (xi ^ -(int64_t)t) + (int64_t)t;\n\taddq\t%rax, %rcx\t# _103, xi\n# inputs/bootstrap/source/fpr-emulated.h:129: \tcc = 1085 - e;\n\tmovl\t$1085, %edx\t#, tmp239\n\tsubl\t%esi, %edx\t# e, cc\n# inputs/bootstrap/source/fpr-emulated.h:28: \tx ^= (x ^ (x >> 32)) & -(int64_t)(n >> 5);\n\tmovq\t%rcx, %rax\t# xi, _108\n\tsarq\t$32, %rax\t#, _108\n# inputs/bootstrap/source/fpr-emulated.h:28: \tx ^= (x ^ (x >> 32)) & -(int64_t)(n >> 5);\n\ttestb\t$32, %dl\t#, cc\n\tcmove\t%rcx, %rax\t# _108,, xi, x_114\n# inputs/bootstrap/source/fpr-emulated.h:29: \treturn x >> (n & 31);\n\tandl\t$31, %edx\t#, _115\n# inputs/bootstrap/source/fpr-emulated.h:29: \treturn x >> (n & 31);\n\tmovl\t%edx, %ecx\t# _115, tmp372\n\tsarq\t%cl, %rax\t# tmp372, _102\n.L94:",
+      "line": 2908
+    }
+  ]
+}

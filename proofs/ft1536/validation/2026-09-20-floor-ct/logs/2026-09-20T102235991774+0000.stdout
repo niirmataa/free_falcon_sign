@@ -1,0 +1,77 @@
+{
+  "status": "PASS_IDENTICAL_ENGINE_AND_FIXTURES",
+  "binaries": {
+    "baseline": {
+      "path": "bin/dudect_baseline",
+      "sha256": "ee37482efd4b5ca230747a3afb9f2bbaa03b8e4b728cc10e1b03e30e945c2736"
+    },
+    "candidate": {
+      "path": "bin/dudect_candidate",
+      "sha256": "7d25c5f02efc2d8df1980856424eb0ca29d074ae0d18a63300b656d3fbf9472b"
+    }
+  },
+  "objects": [
+    {
+      "variant": "baseline",
+      "unit": "benchmark",
+      "path": "bin/baseline_benchmark.o",
+      "sha256": "c9a7f9f0f1283706b5cc4e0dfbad10a4052ec04811e3b414501f54b6eef34f33"
+    },
+    {
+      "variant": "baseline",
+      "unit": "targets",
+      "path": "bin/baseline_targets.o",
+      "sha256": "7258fc03d7bc24df9bfb206ff61642260d8b6aebcff9977ac38adb4fe08a6ae3"
+    },
+    {
+      "variant": "baseline",
+      "unit": "fpr",
+      "path": "bin/baseline_fpr.o",
+      "sha256": "bbd780778de3993d1bad11040e82c146c6603dcd68f9c7eed8dcc9d3e23afa85"
+    },
+    {
+      "variant": "candidate",
+      "unit": "benchmark",
+      "path": "bin/candidate_benchmark.o",
+      "sha256": "c9a7f9f0f1283706b5cc4e0dfbad10a4052ec04811e3b414501f54b6eef34f33"
+    },
+    {
+      "variant": "candidate",
+      "unit": "targets",
+      "path": "bin/candidate_targets.o",
+      "sha256": "abe9351460b2bea934d069dc2a4ceaba04b72b2a42f57f4fcd959905c177cf51"
+    },
+    {
+      "variant": "candidate",
+      "unit": "fpr",
+      "path": "bin/candidate_fpr.o",
+      "sha256": "bbd780778de3993d1bad11040e82c146c6603dcd68f9c7eed8dcc9d3e23afa85"
+    }
+  ],
+  "fixture_cases": 5,
+  "round_orders": 3,
+  "per_class": 1024,
+  "vendor_sha256": "3fb3b2bd7f9e17ae34b7c92518c1311c67342c56facc80da925d85f121b649da",
+  "harness": {
+    "benchmark.c": "dd06a9f8f310c6de2ed1778c0abbdaa31eecf2690f7b06a422b638e0e3649b64",
+    "targets.c": "7130dafef93783dedd8797448ae9eb072aa5ea049fe5c9380e295b0dac4de409"
+  },
+  "flags": [
+    "-W",
+    "-Wall",
+    "-O",
+    "-DFPR_IMPL=\"fpr-emulated.h\"",
+    "-DSAMPLER_CODF=0",
+    "-DSAMPLER_CDF=0",
+    "-DCT_BEREXP=1",
+    "-DFT_TERNARY_ADAPTIVE_CDF=1",
+    "-DFT1536_CANDIDATE_PROFILE=1",
+    "-DCLEANSE=1",
+    "-DTRUE_TERNARY_SECRET=1",
+    "-DTRUE_TERNARY_SECRET_MODE=1",
+    "-DTERNARY_KEYGEN_BOUND_SCALE_NUM=1250",
+    "-DTERNARY_KEYGEN_BOUND_SCALE_DEN=100",
+    "-DTERNARY_KEYGEN_MAX_ATTEMPTS=3000000",
+    "-DSIGN_MAX_ATTEMPTS=16"
+  ]
+}

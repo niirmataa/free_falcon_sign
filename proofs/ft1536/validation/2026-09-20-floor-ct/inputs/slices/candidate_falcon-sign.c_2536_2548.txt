@@ -1,0 +1,13 @@
+2536: 	/* assert(fpr_lt(sigma, fpr_of(2))); */
+2537: 
+2538: 	/*
+2539: 	 * Center is mu. We compute mu = s + r where s is an integer
+2540: 	 * and 0 <= r < 1.
+2541: 	 */
+2542: 	s = fpr_floor(mu);
+2543: 	r = fpr_sub(mu, fpr_of(s));
+2544: 
+2545: 	/*
+2546: 	 * dss = 1/(2*sigma^2).
+2547: 	 */
+2548: 	dss = fpr_inv(fpr_mul(fpr_sqr(sigma), fpr_of(2)));

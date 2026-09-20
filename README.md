@@ -54,11 +54,18 @@ All controls behaved as expected. The [selected raw-data recalculation](proofs/f
 reproduced every per-batch test state for9 floor probes and6 controls.
 This is a scoped input projection, with an explicit external raw inventory.
 
-**Prepared owner-run assignment:** [FPEMU_FLOOR_CT](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_FPEMU_FLOOR_CT_2026-09-20.md),
-a bit-preserving floor candidate, all-word semantic equivalence, real-call-site
-assembly review and prespecified baseline/candidate dudect comparison.
-[Pinned inputs](proofs/ft1536/background/FPEMU_FLOOR_CT_2026-09-20/README.md)
-are ready for the owner's manual Astra launch.
+**Validated floor candidate:** [FLOOR_CT](proofs/ft1536/stages/FT1536_FPEMU_FLOOR_CT_RUN_001/REPORT.md)
+replaces the final selection with unsigned AND/OR, preserving all raw-word
+results, including negative zero. The candidate passed source-model equivalence,
+five compiled-region reviews and prespecified A/B (baseline9/9 signals,
+candidate9/9 without detected signal; all controls passed).
+[Independent review](proofs/ft1536/validation/2026-09-20-floor-ct/README.md)
+reproduced **235/235 files,8 modules/41 theorems and all9771 A/B batches**.
+The [candidate sources](proofs/ft1536/stages/FT1536_FPEMU_FLOOR_CT_RUN_001/candidate/source/)
+have manifest `56974571b46e8257bdd3b4097c8c70fded6bb4b94c64805f6e35ec80929a0985`.
+This archived candidate has not yet been integrated into the active Extra/c
+build described below; its CT evidence is scoped to the pinned build and
+exploratory shared-host measurements.
 
 The current build integrates the corrected verifier, SHA-256
 `3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42`.
@@ -164,6 +171,7 @@ integration work; changing their description does not change the old CLI.
 | [H3_NODE2](proofs/ft1536/stages/FT1536_H3_NODE2_RUN_001/REPORT.md) | First split_deep9/LDL8 level, all 2×3×128 positions; finite-word half proof, refined imaginary envelope and positive pivots; mixed proof | `H3_NODE2_PROVED_FOR_PINNED_MODEL` |
 | [H3_BINARY_TOWER](proofs/ft1536/stages/FT1536_H3_BINARY_TOWER_RUN_001/REPORT.md) | All remaining levels7–1, uniform numerical invariant and actual terminating execution of12 raw inner7 subtrees; mixed proof | `H3_BINARY_TOWER_PROVED_FOR_PINNED_MODEL` |
 | [FPEMU audit](proofs/ft1536/stages/FT1536_FPEMU_AUDIT_RUN_001/REPORT.md) | Generic numeric comparison of signed zeros and operand-dependent compiled floor branch; finite arithmetic/sanitizer audit, no timing measurements | `CONFIRMED_ISSUE` |
+| [FLOOR_CT candidate](proofs/ft1536/stages/FT1536_FPEMU_FLOOR_CT_RUN_001/REPORT.md) | All-word bit-preserving floor replacement, pinned machine-code review and exploratory A/B; archived candidate, separate source integration | `FLOOR_CT_CANDIDATE_VALIDATED_FOR_PINNED_BUILD` |
 
 The completed L_V bridge establishes, for all canonical h,c and legal finite
 payloads b in the pinned GCC14.2.0/C99/Linux x86_64 LP64 model:
@@ -381,7 +389,8 @@ Later maintainer replays and their exact scopes:
 [H3 NODE3](proofs/ft1536/validation/2026-09-19-node3/README.md),
 [H3 NODE2](proofs/ft1536/validation/2026-09-19-node2/README.md),
 [FPEMU audit](proofs/ft1536/validation/2026-09-20-fpemu-audit/README.md),
-[BINARY_TOWER](proofs/ft1536/validation/2026-09-20-binary-tower/README.md).
+[BINARY_TOWER](proofs/ft1536/validation/2026-09-20-binary-tower/README.md),
+[FLOOR_CT](proofs/ft1536/validation/2026-09-20-floor-ct/README.md).
 The independent Blue review has archived evidence, rather than a single
 declared full replay runner.
 

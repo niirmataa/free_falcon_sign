@@ -22,8 +22,8 @@ osiągnięcia, T2C3/T5, kontrakt M0, graf zależności i dalsze obowiązki.
 Pakiet ma 211 członków OUTPUTS i 198 publicznych wejść Git, manifest
 `c3efdcff510983a143946d43ab456656090061cd5b9b4b6847abc7f141c0cfa3`.
 Jest checkpointem dokumentacyjnym (`replay=none`); obecnie archiwum zawiera
-także piętnaście etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
-H3_ZERO_SCALAR, H3_ROOT_LDL, H3_NODE3, H3_NODE2, BINARY_TOWER i audyt FPEMU.
+także szesnaście etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
+H3_ZERO_SCALAR, H3_ROOT_LDL, H3_NODE3, H3_NODE2, BINARY_TOWER, audyt FPEMU i FLOOR_CT.
 
 [Mapa po domknięciu L_V — 2026-09-19](documents/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md)
 przedstawia zależności i proponowaną kolejność: dokładny kontrakt gry,
@@ -112,12 +112,15 @@ odtworzyło wszystkie102 stany testów każdej partii dla9 floor probes i6 contr
 To [projekcja wejściowa](background/FPEMU_FLOOR_CT_2026-09-20/README.md),
 nie pełny import raw wszystkich42 prób ani proof CT współdzielonego hosta.
 
-**Następne przygotowane zadanie, do ręcznego startu:**
-[FPEMU_FLOOR_CT](documents/FT1536_ZADANIE_ASTRA_FPEMU_FLOOR_CT_2026-09-20.md).
-Cel: minimalny kandydat floor z zachowaniem wszystkich raw-word wyników,
-definedness, kernelowym dowodem relacji, analizą oryginalnych call sites
-i prespecified A/B. Bootstrap382 członków; żaden nowy patch nie jest jeszcze
-zintegrowany. Odrębne dalsze interfejsy matematyczne zachowują swój zakres.
+**Odebrany kandydat FLOOR_CT:** [raport](stages/FT1536_FPEMU_FLOOR_CT_RUN_001/REPORT.md)
+ma status `FLOOR_CT_CANDIDATE_VALIDATED_FOR_PINNED_BUILD`: all-word bit-equivalence
+i definedness w jawnym GCC/LP64 modelu, pięć real machine regions i prespecified
+A/B (baseline9/9 wykryć, candidate9/9 bez sygnału, controls6/6+6/6).
+[Odbiór](validation/2026-09-20-floor-ct/README.md):235/235 plików,8 modułów,
+41 twierdzeń (15 nowych),1065562 przypadki w normal/sanitizers i pełna
+rekalkulacja9771 partii A/B. Nowy17-file pin56974571… jest w
+stage/candidate; produkcyjny Extra/c ma nadal baseline pin2553358f….
+Source integration i dalsze interfejsy matematyczne mają własny zakres.
 
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
@@ -167,7 +170,8 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [H3_NODE3](stages/FT1536_H3_NODE3_RUN_001/REPORT.md) | **H3_NODE3_PROVED_FOR_PINNED_MODEL** — uniform split_top/Adj/LDL3, obie branches i 256 slots; mieszany dowód | `afa52d8` |
 | [H3_NODE2](stages/FT1536_H3_NODE2_RUN_001/REPORT.md) | **H3_NODE2_PROVED_FOR_PINNED_MODEL** — pierwszy binary level8, half i upstream imaginary refinement; mieszany dowód | `b27a055` |
 | [FPEMU audit](stages/FT1536_FPEMU_AUDIT_RUN_001/REPORT.md) | **CONFIRMED_ISSUE** — generic signed-zero compare i compiled floor branch; timing NOT_RUN | `8bbab81` |
-| [BINARY_TOWER](stages/FT1536_H3_BINARY_TOWER_RUN_001/REPORT.md) | **H3_BINARY_TOWER_PROVED_FOR_PINNED_MODEL** — levels7–1 i12 total raw subtrees; mieszany dowód | niniejszy checkpoint |
+| [BINARY_TOWER](stages/FT1536_H3_BINARY_TOWER_RUN_001/REPORT.md) | **H3_BINARY_TOWER_PROVED_FOR_PINNED_MODEL** — levels7–1 i12 total raw subtrees; mieszany dowód | `1a04145` |
+| [FLOOR_CT](stages/FT1536_FPEMU_FLOOR_CT_RUN_001/REPORT.md) | **FLOOR_CT_CANDIDATE_VALIDATED_FOR_PINNED_BUILD** — bit-preserving patch i kwalifikowana walidacja buildu; osobna integracja | niniejszy checkpoint |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).
@@ -286,7 +290,7 @@ i `FT1536_L_V_BRIDGE_RUN_001`, `FT1536_M0_CONTRACT_RUN_001`
 oraz `FT1536_H3_RANGE_RUN_001`, `FT1536_H3_ZERO_SCALAR_RUN_001`
 i `FT1536_H3_ROOT_LDL_RUN_001`, `FT1536_H3_NODE3_RUN_001`
 oraz `FT1536_H3_NODE2_RUN_001`, `FT1536_FPEMU_AUDIT_RUN_001`
-i `FT1536_H3_BINARY_TOWER_RUN_001`.
+i `FT1536_H3_BINARY_TOWER_RUN_001` oraz `FT1536_FPEMU_FLOOR_CT_RUN_001`.
 Wpis katalogu określa właściwy punkt wejścia. Odbiór Blue jest archiwum
 recenzji i receipts; nie ma zadeklarowanego pojedynczego pełnego runnera.
 

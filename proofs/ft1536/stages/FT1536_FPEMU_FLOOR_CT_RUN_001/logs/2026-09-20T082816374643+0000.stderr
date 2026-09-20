@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_FPEMU_FLOOR_CT_RUN_001/scripts/prepare.py", line 21, in <module>
+    try:fd=os.open(p,os.O_WRONLY);os.close(fd);assert write;result='writable_no_bytes_written'
+           ~~~~~~~^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: '/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_FPEMU_FLOOR_CT_RUN_001/inputs/bootstrap/MANIFEST.sha256'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_FPEMU_FLOOR_CT_RUN_001/scripts/prepare.py", line 22, in <module>
+    except OSError as e:assert not write and e.errno==errno.EROFS;result='EROFS'
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
