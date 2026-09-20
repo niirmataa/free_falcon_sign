@@ -47,6 +47,19 @@ includes arithmetic/domain checks and exact raw-statistics replay.
 This shared-host scalar experiment does not establish an emitted-domain attack
 or an end-to-end constant-time property; ctgrind remains unrun.
 
+The [completed baseline campaign](proofs/ft1536/background/FPEMU_FLOOR_CT_2026-09-20/DUD/REPORT.md)
+ran three rounds (36 target trials plus6 controls) in7h59m42s. All nine floor
+probes detected a timing signal; the other27 trials had no leakage evidence.
+All controls behaved as expected. The [selected raw-data recalculation](proofs/ft1536/background/FPEMU_FLOOR_CT_2026-09-20/DUD/RECEIPT_REVIEW.json)
+reproduced every per-batch test state for9 floor probes and6 controls.
+This is a scoped input projection, with an explicit external raw inventory.
+
+**Prepared owner-run assignment:** [FPEMU_FLOOR_CT](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_FPEMU_FLOOR_CT_2026-09-20.md),
+a bit-preserving floor candidate, all-word semantic equivalence, real-call-site
+assembly review and prespecified baseline/candidate dudect comparison.
+[Pinned inputs](proofs/ft1536/background/FPEMU_FLOOR_CT_2026-09-20/README.md)
+are ready for the owner's manual Astra launch.
+
 The current build integrates the corrected verifier, SHA-256
 `3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42`.
 The original S17 remains a hash-pinned historical reference with its recorded

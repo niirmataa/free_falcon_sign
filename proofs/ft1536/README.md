@@ -99,10 +99,25 @@ ma status `CONFIRMED_ISSUE` w zakresie generic numeric fpr_lt(-0,+0)=1
 i operand-dependent compiled floor branch przy GCC14.2/-O, również w Sign.
 [Niezależny odbiór](validation/2026-09-20-fpemu-audit/README.md): 29/29 plików,
 140225 scalar cases i 250 delta cases na tryb normal/ASan+UBSan, 29 historycznych
-modułów Lean. Dudect/ctgrind NOT_RUN; zero prób czasowych.
+modułów Lean. W tamtym zamrożonym audycie dudect/ctgrind miały NOT_RUN.
 [Bieżąca macierz wpływu](validation/2026-09-20-fpemu-audit/CURRENT_IMPACT.md)
 rozlicza późniejszy NODE2 i BINARY_TOWER. Nie znaleziono kontrprzykładu do
 badanych lokalnych arithmetic contracts; source pozostaje niezmienione.
+
+**Późniejsza kampania dudect zakończona:** [raport baseline](background/FPEMU_FLOOR_CT_2026-09-20/DUD/REPORT.md)
+zapisuje3 rundy/36 prób+6 controls,7h59m42s. Floor:9/9 LEAKAGE_FOUND;
+pozostałe9 kontrastów:27/27 NO_LEAKAGE_EVIDENCE_YET; controls poprawne.
+[Ponowne przeliczenie raw](background/FPEMU_FLOOR_CT_2026-09-20/DUD/RECEIPT_REVIEW.json)
+odtworzyło wszystkie102 stany testów każdej partii dla9 floor probes i6 controls.
+To [projekcja wejściowa](background/FPEMU_FLOOR_CT_2026-09-20/README.md),
+nie pełny import raw wszystkich42 prób ani proof CT współdzielonego hosta.
+
+**Następne przygotowane zadanie, do ręcznego startu:**
+[FPEMU_FLOOR_CT](documents/FT1536_ZADANIE_ASTRA_FPEMU_FLOOR_CT_2026-09-20.md).
+Cel: minimalny kandydat floor z zachowaniem wszystkich raw-word wyników,
+definedness, kernelowym dowodem relacji, analizą oryginalnych call sites
+i prespecified A/B. Bootstrap382 członków; żaden nowy patch nie jest jeszcze
+zintegrowany. Odrębne dalsze interfejsy matematyczne zachowują swój zakres.
 
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
