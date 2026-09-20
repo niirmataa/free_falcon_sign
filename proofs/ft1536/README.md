@@ -22,9 +22,9 @@ osiągnięcia, T2C3/T5, kontrakt M0, graf zależności i dalsze obowiązki.
 Pakiet ma 211 członków OUTPUTS i 198 publicznych wejść Git, manifest
 `c3efdcff510983a143946d43ab456656090061cd5b9b4b6847abc7f141c0cfa3`.
 Jest checkpointem dokumentacyjnym (`replay=none`); obecnie archiwum zawiera
-także dziewiętnaście etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
+także dwadzieścia etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
 H3_ZERO_SCALAR, H3_ROOT_LDL, H3_NODE3, H3_NODE2, BINARY_TOWER, audyt FPEMU,
-FLOOR_CT, RAW_ASSEMBLY, STABLE_NORMALIZATION i INITIAL_TARGETS.
+FLOOR_CT, RAW_ASSEMBLY, STABLE_NORMALIZATION, INITIAL_TARGETS i ORDERED_REACH.
 
 [Mapa po domknięciu L_V — 2026-09-19](documents/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md)
 przedstawia zależności i proponowaną kolejność: dokładny kontrakt gry,
@@ -148,12 +148,17 @@ error<1/8192, oba reference/error layers i normalized-key frame.
 21 modułów,129 twierdzeń (30 nowych). Duża majoranta frequency t0 nie jest
 scalar-center counterexample. Następny typ to ordered source Reach→NumericCenter.
 
-**Następne zadanie do ręcznego startu:**
-[H3_ORDERED_REACH](documents/FT1536_ZADANIE_ASTRA_H3_ORDERED_REACH_2026-09-20.md),
-z [bootstrapem396 członków](background/H3_ORDERED_REACH_2026-09-20/README.md).
-Cel: actual right-before-left/fault/rejection reach do NumericCenter przed
-floor/cast, bez użycia ZERO jako własnej premise lub utożsamienia frequency
-targets z scalar mu. Whole Sign termination/law pozostają osobnym zakresem.
+**Odebrany ORDERED_REACH:** [raport](stages/FT1536_H3_ORDERED_REACH_RUN_001/REPORT.md)
+zachowuje **PARTIAL_PROOF**. Pierwsza wykonywana prawa gałąź root ma forward
+NumericCenter dla1536 active positions, finite |mu|<=156276714, przed floor.
+[Odbiór](validation/2026-09-20-ordered-reach/README.md):225/225 plików,
+28 modułów,179 twierdzeń (23 nowe), mixed analytical/kernel scope. Rozliczono
+normal returns, rejection/nonreturn, sticky fault i conditional memory frames.
+Globalny cel pozostaje otwarty: [LEFT_ROOT_CORRELATED_TRANSFER](stages/FT1536_H3_ORDERED_REACH_RUN_001/NEXT_INTERFACE.md)
+wymaga source weighted residual/metric/root-gain bridge oraz zamkniętej lewej
+gałęzi. Niezamknięta luźna majoranta nie jest błędem C ani required-domain
+counterexample. [Zlecenie](documents/FT1536_ZADANIE_ASTRA_H3_ORDERED_REACH_2026-09-20.md)
+i [bootstrap](background/H3_ORDERED_REACH_2026-09-20/README.md) zachowują piny.
 
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
@@ -207,7 +212,8 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [FLOOR_CT](stages/FT1536_FPEMU_FLOOR_CT_RUN_001/REPORT.md) | **FLOOR_CT_CANDIDATE_VALIDATED_FOR_PINNED_BUILD** — bit-preserving patch i kwalifikowana walidacja buildu; osobna integracja | `6ed89ca` |
 | [RAW_ASSEMBLY](stages/FT1536_H3_RAW_ASSEMBLY_RUN_001/REPORT.md) | **H3_RAW_ASSEMBLY_PROVED_FOR_PINNED_MODEL** — pełny raw prefix, source transport i emitted corollary; mieszany dowód | `a53d723` |
 | [STABLE_NORMALIZATION](stages/FT1536_H3_STABLE_NORMALIZATION_RUN_001/REPORT.md) | **H3_STABLE_NORMALIZATION_PROVED_FOR_EMITTED_PINNED_MODEL** — actual widths/gates i source sqrt/div; mieszany dowód | `6c233cd` |
-| [INITIAL_TARGETS](stages/FT1536_H3_INITIAL_TARGETS_RUN_001/REPORT.md) | **H3_INITIAL_TARGETS_PROVED_FOR_EMITTED_PINNED_MODEL** — canonical target prefix, source errors i frame; mieszany dowód | niniejszy checkpoint |
+| [INITIAL_TARGETS](stages/FT1536_H3_INITIAL_TARGETS_RUN_001/REPORT.md) | **H3_INITIAL_TARGETS_PROVED_FOR_EMITTED_PINNED_MODEL** — canonical target prefix, source errors i frame; mieszany dowód | `99ceb98` |
+| [ORDERED_REACH](stages/FT1536_H3_ORDERED_REACH_RUN_001/REPORT.md) | **PARTIAL_PROOF** — right-root finite-prefix NumericCenter, outcome/frame; left correlated transfer otwarty | niniejszy checkpoint |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).

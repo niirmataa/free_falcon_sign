@@ -39,6 +39,8 @@ return of ffLDL_fft3, before stable leaf replacement and normalization.
 normalization for emitted keys**, with a source-derived stable-gate bridge.
 **H3_INITIAL_TARGETS certifies the actual target preparation before sampling**,
 for every canonical challenge, with explicit source FFT and rounding bounds.
+**H3_ORDERED_REACH proves a finite-prefix center bound for the first executed
+right root branch**, while the correlated transfer into the left branch remains open.
 Global reachable-center bounds and end-to-end security remain open research objectives.
 
 **FPEMU audit — confirmed issues:** numeric `fpr_lt(-0,+0)` returns 1, and
@@ -99,11 +101,16 @@ both target error layers and normalized-key preservation.
 reproduced219/219 files,21 modules/129 theorems (30 new). The large frequency
 t0 bound is recorded explicitly; ORDERED_REACH to scalar NumericCenter remains open.
 
-**Next prepared owner-run task:** [H3_ORDERED_REACH](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_ORDERED_REACH_2026-09-20.md),
-source-ordered reach to zero-aware NumericCenter before scalar floor/cast,
-with explicit normal returns, rejection stuttering, fault histories and
-memory/error invariants. Its [pinned inputs](proofs/ft1536/background/H3_ORDERED_REACH_2026-09-20/README.md)
-keep finite-prefix safety separate from whole Sign termination and sampler law.
+The [ORDERED_REACH result](proofs/ft1536/stages/FT1536_H3_ORDERED_REACH_RUN_001/REPORT.md)
+is **PARTIAL_PROOF**: all1536 active positions of the first executed right
+root branch have finite |mu|<=156276714, before each scalar floor/cast.
+[Independent review](proofs/ft1536/validation/2026-09-20-ordered-reach/README.md)
+reproduced225/225 files,28 modules/179 theorems (23 new), with explicit
+normal/fault/nonreturn semantics and conditional memory frames. The remaining
+[LEFT_ROOT_CORRELATED_TRANSFER](proofs/ft1536/stages/FT1536_H3_ORDERED_REACH_RUN_001/NEXT_INTERFACE.md)
+requires a source-certified weighted residual/root-gain bridge and a closed
+left-branch invariant. The failed loose-bound route is retained; it is not
+a required-domain counterexample or a demonstrated C defect.
 
 The [candidate night-run setup](provenance/checks/2026-09-20-dudect-floor-ct-ready/README.md)
 is **STATIC_READY_TIMING_DEFERRED**: source/build/fixture checks passed,
@@ -218,6 +225,7 @@ integration work; changing their description does not change the old CLI.
 | [H3_RAW_ASSEMBLY](proofs/ft1536/stages/FT1536_H3_RAW_ASSEMBLY_RUN_001/REPORT.md) | Complete raw loader/tree prefix, actual source composition and emitted corollary; mixed proof on the archived floor candidate | `H3_RAW_ASSEMBLY_PROVED_FOR_PINNED_MODEL` |
 | [H3_STABLE_NORMALIZATION](proofs/ft1536/stages/FT1536_H3_STABLE_NORMALIZATION_RUN_001/REPORT.md) | Emitted stable-gate bridge, actual normalized widths, sqrt/div/scaling and preserved basis/internal L; mixed proof | `H3_STABLE_NORMALIZATION_PROVED_FOR_EMITTED_PINNED_MODEL` |
 | [H3_INITIAL_TARGETS](proofs/ft1536/stages/FT1536_H3_INITIAL_TARGETS_RUN_001/REPORT.md) | Actual target prefix for all canonical challenges, source FFT/reciprocal/basis errors and key frame; mixed proof | `H3_INITIAL_TARGETS_PROVED_FOR_EMITTED_PINNED_MODEL` |
+| [H3_ORDERED_REACH](proofs/ft1536/stages/FT1536_H3_ORDERED_REACH_RUN_001/REPORT.md) | Right-root finite-prefix NumericCenter, scalar outcome separation and conditional frames; left correlated transfer open; mixed proof | `PARTIAL_PROOF` |
 
 The completed L_V bridge establishes, for all canonical h,c and legal finite
 payloads b in the pinned GCC14.2.0/C99/Linux x86_64 LP64 model:

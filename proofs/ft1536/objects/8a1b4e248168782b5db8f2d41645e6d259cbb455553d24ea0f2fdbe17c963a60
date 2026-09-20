@@ -1,0 +1,485 @@
+{
+  "status": "PASS_LITERAL_TARGET_CUT_ACTIVE_DEPENDENCIES_AND_CALLER_SPANS",
+  "source_pin": "56974571b46e8257bdd3b4097c8c70fded6bb4b94c64805f6e35ec80929a0985",
+  "slice": {
+    "source": "source/falcon-sign.c",
+    "first": 1848,
+    "last": 1892,
+    "copy": "checks/target_prefix.inc",
+    "sha256": "e2f1f3ec149327fe5ff4a5397f00769208ed264a5f7c6305ccf11c57198855b2",
+    "diff": "artifacts/diffs/target_prefix.patch",
+    "changes": [
+      "function renamed",
+      "scopes closed at cut",
+      "unused post-cut variables/parameters explicitly discarded"
+    ],
+    "no_sampler_call": true
+  },
+  "source_order": [
+    "convert hm to t0",
+    "FFT3(t0)",
+    "inverse(q)",
+    "copy t1=t0",
+    "mul t1,b01",
+    "scale t1,-ni",
+    "mul t0,b11",
+    "scale t0,ni"
+  ],
+  "target_dependencies": [
+    "FPR",
+    "falcon_FFT3",
+    "falcon_poly_mul_fft3",
+    "falcon_poly_mulconst3",
+    "fpr_add",
+    "fpr_div",
+    "fpr_double",
+    "fpr_inverse_of",
+    "fpr_mul",
+    "fpr_neg",
+    "fpr_of",
+    "fpr_scaled",
+    "fpr_sqr",
+    "fpr_sub",
+    "fpr_ulsh",
+    "fpr_ursh",
+    "skoff_b00",
+    "skoff_b01",
+    "skoff_b10",
+    "skoff_b11",
+    "skoff_tree",
+    "target_prefix_slice"
+  ],
+  "call_graph": {
+    "__attribute__": [],
+    "bsearch": [],
+    "fpr_ursh": [],
+    "fpr_irsh": [],
+    "fpr_ulsh": [],
+    "FPR": [],
+    "fpr_of": [
+      "fpr_scaled"
+    ],
+    "fpr_inverse_of": [
+      "fpr_div",
+      "fpr_of"
+    ],
+    "fpr_rint": [
+      "fpr_ulsh",
+      "fpr_ursh"
+    ],
+    "fpr_floor": [
+      "fpr_irsh"
+    ],
+    "fpr_trunc": [
+      "fpr_ursh"
+    ],
+    "fpr_sub": [
+      "fpr_add"
+    ],
+    "fpr_neg": [],
+    "fpr_half": [],
+    "fpr_double": [],
+    "fpr_sqr": [
+      "fpr_mul"
+    ],
+    "fpr_inv": [
+      "fpr_div"
+    ],
+    "fpr_lt": [],
+    "fpr_max": [
+      "fpr_lt"
+    ],
+    "fpr_exp_small": [
+      "fpr_add",
+      "fpr_div",
+      "fpr_half",
+      "fpr_mul",
+      "fpr_sqr",
+      "fpr_sub"
+    ],
+    "fpr_mul_high_u64": [],
+    "fpr_expm_scaled": [
+      "fpr_mul",
+      "fpr_mul_high_u64",
+      "fpr_trunc"
+    ],
+    "fpr_log_emu": [
+      "fpr_add",
+      "fpr_div",
+      "fpr_double",
+      "fpr_mul",
+      "fpr_of",
+      "fpr_sqr",
+      "fpr_sub"
+    ],
+    "fpr_sin_poly": [
+      "fpr_add",
+      "fpr_mul",
+      "fpr_sqr"
+    ],
+    "fpr_cos_poly": [
+      "fpr_add",
+      "fpr_mul",
+      "fpr_sqr"
+    ],
+    "fpr_sincos_tick": [
+      "fpr_cos_poly",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_scaled",
+      "fpr_sin_poly"
+    ],
+    "fpr_gauss": [
+      "fpr_double",
+      "fpr_log_emu",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_scaled",
+      "fpr_sincos_tick",
+      "fpr_sqrt"
+    ],
+    "falcon_prng_get_u64": [],
+    "falcon_prng_get_u8": [],
+    "skoff_b00": [],
+    "skoff_b01": [],
+    "skoff_b10": [],
+    "skoff_b11": [],
+    "skoff_tree": [],
+    "target_prefix_slice": [
+      "falcon_FFT3",
+      "falcon_poly_mul_fft3",
+      "falcon_poly_mulconst3",
+      "fpr_inverse_of",
+      "fpr_neg",
+      "fpr_of",
+      "skoff_b00",
+      "skoff_b01",
+      "skoff_b10",
+      "skoff_b11",
+      "skoff_tree"
+    ],
+    "falcon_FFT": [
+      "fpr_add",
+      "fpr_mul",
+      "fpr_sub"
+    ],
+    "falcon_iFFT": [
+      "fpr_add",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_scaled",
+      "fpr_sub"
+    ],
+    "falcon_poly_add": [
+      "fpr_add"
+    ],
+    "falcon_poly_addconst": [
+      "fpr_add"
+    ],
+    "falcon_poly_addconst_fft": [
+      "fpr_add"
+    ],
+    "falcon_poly_sub": [
+      "fpr_sub"
+    ],
+    "falcon_poly_neg": [
+      "fpr_neg"
+    ],
+    "falcon_poly_adj": [
+      "fpr_neg"
+    ],
+    "falcon_poly_adj_fft": [
+      "fpr_neg"
+    ],
+    "falcon_poly_mul_fft": [
+      "fpr_add",
+      "fpr_mul",
+      "fpr_sub"
+    ],
+    "falcon_poly_sqr_fft": [
+      "fpr_double",
+      "fpr_mul",
+      "fpr_sqr",
+      "fpr_sub"
+    ],
+    "falcon_poly_muladj_fft": [
+      "fpr_add",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_sub"
+    ],
+    "falcon_poly_mulselfadj_fft": [
+      "fpr_add",
+      "fpr_of",
+      "fpr_sqr"
+    ],
+    "falcon_poly_mulconst": [
+      "fpr_mul"
+    ],
+    "falcon_poly_inv_fft": [
+      "fpr_add",
+      "fpr_div",
+      "fpr_neg",
+      "fpr_sqr"
+    ],
+    "falcon_poly_div_fft": [
+      "fpr_add",
+      "fpr_div",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_sqr",
+      "fpr_sub"
+    ],
+    "falcon_poly_divadj_fft": [
+      "fpr_add",
+      "fpr_div",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_sqr",
+      "fpr_sub"
+    ],
+    "falcon_poly_invnorm2_fft": [
+      "fpr_add",
+      "fpr_inv",
+      "fpr_sqr"
+    ],
+    "falcon_poly_add_muladj_fft": [
+      "fpr_add",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_sub"
+    ],
+    "falcon_poly_mul_autoadj_fft": [
+      "fpr_mul"
+    ],
+    "falcon_poly_div_autoadj_fft": [
+      "fpr_div"
+    ],
+    "falcon_poly_split_fft": [
+      "fpr_add",
+      "fpr_half",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_sub"
+    ],
+    "falcon_poly_merge_fft": [
+      "fpr_add",
+      "fpr_mul",
+      "fpr_sub"
+    ],
+    "falcon_FFT3": [
+      "fpr_add",
+      "fpr_double",
+      "fpr_mul",
+      "fpr_sqr",
+      "fpr_sub"
+    ],
+    "falcon_iFFT3": [
+      "fpr_add",
+      "fpr_double",
+      "fpr_half",
+      "fpr_inverse_of",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_sqr",
+      "fpr_sub"
+    ],
+    "falcon_poly_add3": [
+      "fpr_add"
+    ],
+    "falcon_poly_addconst3": [
+      "fpr_add"
+    ],
+    "falcon_poly_addconst_fft3": [
+      "fpr_add"
+    ],
+    "falcon_poly_sub3": [
+      "fpr_sub"
+    ],
+    "falcon_poly_neg3": [
+      "fpr_neg"
+    ],
+    "falcon_poly_adj_fft3": [
+      "fpr_neg"
+    ],
+    "falcon_poly_mul_fft3": [
+      "fpr_add",
+      "fpr_mul",
+      "fpr_sub"
+    ],
+    "falcon_poly_sqr_fft3": [
+      "fpr_double",
+      "fpr_mul",
+      "fpr_sqr",
+      "fpr_sub"
+    ],
+    "falcon_poly_muladj_fft3": [
+      "fpr_add",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_sub"
+    ],
+    "falcon_poly_mulselfadj_fft3": [
+      "fpr_add",
+      "fpr_of",
+      "fpr_sqr"
+    ],
+    "falcon_poly_mulconst3": [
+      "fpr_mul"
+    ],
+    "falcon_poly_inv_fft3": [
+      "fpr_add",
+      "fpr_div",
+      "fpr_neg",
+      "fpr_sqr"
+    ],
+    "falcon_poly_div_fft3": [
+      "fpr_add",
+      "fpr_div",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_sqr",
+      "fpr_sub"
+    ],
+    "falcon_poly_divadj_fft3": [
+      "fpr_add",
+      "fpr_div",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_sqr",
+      "fpr_sub"
+    ],
+    "falcon_poly_invnorm2_fft3": [
+      "fpr_add",
+      "fpr_inv",
+      "fpr_sqr"
+    ],
+    "falcon_poly_add_muladj_fft3": [
+      "fpr_add",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_sub"
+    ],
+    "falcon_poly_mul_autoadj_fft3": [
+      "fpr_mul"
+    ],
+    "falcon_poly_div_autoadj_fft3": [
+      "fpr_div"
+    ],
+    "falcon_poly_split_top_fft3": [
+      "fpr_add",
+      "fpr_double",
+      "fpr_inverse_of",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_sqr",
+      "fpr_sub"
+    ],
+    "falcon_poly_split_deep_fft3": [
+      "fpr_add",
+      "fpr_half",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_sub"
+    ],
+    "falcon_poly_merge_top_fft3": [
+      "fpr_add",
+      "fpr_double",
+      "fpr_mul",
+      "fpr_sqr",
+      "fpr_sub"
+    ],
+    "falcon_poly_merge_deep_fft3": [
+      "fpr_add",
+      "fpr_mul",
+      "fpr_sub"
+    ],
+    "fpr_scaled": [
+      "FPR"
+    ],
+    "fpr_add": [
+      "FPR",
+      "fpr_ulsh",
+      "fpr_ursh"
+    ],
+    "fpr_mul": [
+      "FPR"
+    ],
+    "fpr_div": [
+      "FPR"
+    ],
+    "fpr_sqrt": [
+      "FPR"
+    ]
+  },
+  "body_sha256": {
+    "FPR": "585f0a8ba37b63e8ff391ff231d222884d9e642aab1c2ec007f15b8ee8cf28bb",
+    "falcon_FFT3": "b601cbcef566310f0b6e7e6021915593a26726d56ebb797a85a4f08c32b0906c",
+    "falcon_poly_mul_fft3": "fb479aa17366708001e82074f3a99059d936c495e9711ba64da0cb50332c0592",
+    "falcon_poly_mulconst3": "952e6802686ebdd5de02b52edbb306f494998746b41b0715c237b77030f609c7",
+    "fpr_add": "0aadd6fece0fb732f7f1ea26cf9dc87057be536344d22c36d8f830ab76a4b028",
+    "fpr_div": "fd0077b16dfbf7dd3a15a49289f106ed8cfd5dfe7cde9ec4ab6435e62a2f3a58",
+    "fpr_double": "c245367d6b1c45cdefbb8e615507b1d1422e694ff7c56ffd8f9165e9637934ff",
+    "fpr_inverse_of": "076b831982191b9038f93450952af4c009a6dee3b7bbddcfce465daba70726c1",
+    "fpr_mul": "91d9d67f1f5432feac0c7fc7529eadf09d7a8391e9704d3ed6594d20f12b7d78",
+    "fpr_neg": "c2ee1365648008a879aa900492b7e37c81ed1a4c83e229941890fa8005be7275",
+    "fpr_of": "a8b6ccc33782f914867b3d5193d5113625b466f0cb243a90cb742d4ee37e6fe6",
+    "fpr_scaled": "a493b04eb790d660abc394e172ca17220a220514982cf2d86f7ad615831e8d67",
+    "fpr_sqr": "c67973e1666488f269201f4dacdf9c7b8e690ea30438ebe2ad02ce0f3b1b0af1",
+    "fpr_sub": "b7e8fc7989b8f816a2b5dc2af0b2bf6871978e6d482f52d912f0f7a9e727811f",
+    "fpr_ulsh": "54e520e15d23105ed7e1ce42f13f4fc94cb24929a7414829f9b1410ca3195203",
+    "fpr_ursh": "52b4bff449f394268c3a10766e538c607779527e66e60bb6bf083cb70778f654",
+    "skoff_b00": "3e175545b73197ab454a09bc7ad872bc4945b4e4e72f891e6314379f5ffd41ae",
+    "skoff_b01": "4f8318bf6729d75f8f60b4c7324e6757e24d68271fa9cf5a3196b142ea9cd568",
+    "skoff_b10": "99a23a834c6d612cc8c48c87209e3d997b45af068dfa627e17c05e05f63f285c",
+    "skoff_b11": "e9a73f809fb0613503ea8c027f71600f6816b86d6ad47ff073e289f6a98c2c24",
+    "skoff_tree": "5829394c67dfd4e0075629cd233b0771b91874c80b393c1f651a5b767b22341b",
+    "target_prefix_slice": "5d8a6e8e0bae1483e83785efe306696794db39a093902976ae9ca74f8d7ee5d8"
+  },
+  "flags": [
+    "-W",
+    "-Wall",
+    "-O",
+    "-DFPR_IMPL=\"fpr-emulated.h\"",
+    "-DSAMPLER_CODF=0",
+    "-DSAMPLER_CDF=0",
+    "-DCT_BEREXP=1",
+    "-DFT_TERNARY_ADAPTIVE_CDF=1",
+    "-DFT1536_CANDIDATE_PROFILE=1",
+    "-DCLEANSE=1",
+    "-DTRUE_TERNARY_SECRET=1",
+    "-DTRUE_TERNARY_SECRET_MODE=1",
+    "-DTERNARY_KEYGEN_BOUND_SCALE_NUM=1250",
+    "-DTERNARY_KEYGEN_BOUND_SCALE_DEN=100",
+    "-DTERNARY_KEYGEN_MAX_ATTEMPTS=3000000",
+    "-DSIGN_MAX_ATTEMPTS=16",
+    "-std=c99",
+    "-Isource"
+  ],
+  "source_transport": "Relevant C bodies byte-identical ROOT; old header reconstructed and verified, sole floor change unreachable; normalized basis-preservation pin consumed",
+  "caller": {
+    "allocations": [
+      3242,
+      3257
+    ],
+    "hash_to_point": 3325,
+    "outer_loop": [
+      3330,
+      3409
+    ],
+    "do_sign_call": [
+      3372,
+      3373
+    ],
+    "future_norm_check": 3388,
+    "hash_to_point_source": "falcon-enc.c564-592",
+    "scope": "Legal entry and defined H2P-return binding only; no propagation through unproved sampler/postprocessing or future norm acceptance"
+  },
+  "whole_normalized_sk_preserved": true,
+  "write_footprint": "tmp[0,3072)",
+  "future_scratch_initialized_claimed": false,
+  "source_changed": false,
+  "production_source_changed": false,
+  "new_source_patch_integrated": false,
+  "owner_accepted": false
+}

@@ -1,0 +1,129 @@
+falcon_poly_split_deep_fft3(fpr *restrict f0, fpr *restrict f1,
+	const fpr *restrict f, unsigned logn)
+{
+	size_t n, hn, qn, u, m;
+
+	/*
+	 * Special code for n = 2.
+	 */
+	if (logn == 1) {
+		fpr re, im, xx;
+
+		re = f[0];
+		im = f[1];
+		xx = fpr_mul(fpr_IW1I, im);
+		*f1 = xx;
+		*f0 = fpr_sub(re, fpr_half(xx));
+		return;
+	}
+
+	n = (size_t)1 << logn;
+	hn = n >> 1;
+	qn = hn >> 1;
+
+	m = (size_t)1 << (logn - 1);
+	for (u = 0; u < qn; u ++) {
+		fpr a_re, a_im, b_re, b_im;
+		fpr t_re, t_im;
+
+		a_re = f[(u << 1) + 0];
+		a_im = f[(u << 1) + 0 + hn];
+		b_re = f[(u << 1) + 1];
+		b_im = f[(u << 1) + 1 + hn];
+
+		FPC_ADD(t_re, t_im, a_re, a_im, b_re, b_im);
+		f0[u] = fpr_half(t_re);
+		f0[u + qn] = fpr_half(t_im);
+
+		FPC_SUB(t_re, t_im, a_re, a_im, b_re, b_im);
+		FPC_MUL(t_re, t_im, t_re, t_im,
+			fpr_gm3_square[((u + m) << 1) + 0],
+			fpr_neg(fpr_gm3_square[((u + m) << 1) + 1]));
+		f1[u] = fpr_half(t_re);
+		f1[u + qn] = fpr_half(t_im);
+	}
+}
+
+/* see internal.h */
+void
+falcon_poly_merge_top_fft3(fpr *restrict f,
+	const fpr *restrict f0, const fpr *restrict f1, const fpr *restrict f2,
+	unsigned logn)
+{
+	size_t n, hn, qn, u, v;
+
+	n = (size_t)3 << (logn - 1);
+	hn = n >> 1;
+	qn = (size_t)1 << (logn - 2);
+	for (u = 0, v = 0; u < hn; u += 3, v ++) {
+		fpr fAr, fAi, fBr, fBi, fCr, fCi;
+		fpr xr, xi;
+		fpr fB0r, fB0i, fB1r, fB1i, fB2r, fB2i;
+		fpr fC0r, fC0i, fC1r, fC1i, fC2r, fC2i;
+
+		fAr = f0[v];
+		fAi = f0[v + qn];
+		fBr = f1[v];
+		fBi = f1[v + qn];
+		fCr = f2[v];
+		fCi = f2[v + qn];
+
+		xr = fpr_gm3_cubic[(v << 1) + ((size_t)1 << logn) + 0];
+		xi = fpr_gm3_cubic[(v << 1) + ((size_t)1 << logn) + 1];
+		FPC_MUL(fB0r, fB0i, fBr, fBi, xr, xi);
+		FPC_MUL(fB1r, fB1i, fB0r, fB0i, fpr_W2R, fpr_W2I);
+		FPC_MUL(fB2r, fB2i, fB0r, fB0i, fpr_W4R, fpr_W4I);
+		FPC_SQR(xr, xi, xr, xi);
+		FPC_MUL(fC0r, fC0i, fCr, fCi, xr, xi);
+		FPC_MUL(fC1r, fC1i, fC0r, fC0i, fpr_W2R, fpr_W2I);
+		FPC_MUL(fC2r, fC2i, fC0r, fC0i, fpr_W4R, fpr_W4I);
+		FPC_ADD(fB0r, fB0i, fB0r, fB0i, fC0r, fC0i);
+		FPC_ADD(fB1r, fB1i, fB1r, fB1i, fC2r, fC2i);
+		FPC_ADD(fB2r, fB2i, fB2r, fB2i, fC1r, fC1i);
+		FPC_ADD(f[u + 0], f[u + 0 + hn], fAr, fAi, fB0r, fB0i);
+		FPC_ADD(f[u + 1], f[u + 1 + hn], fAr, fAi, fB1r, fB1i);
+		FPC_ADD(f[u + 2], f[u + 2 + hn], fAr, fAi, fB2r, fB2i);
+	}
+}
+
+/* see internal.h */
+void
+falcon_poly_merge_deep_fft3(fpr *restrict f,
+	const fpr *restrict f0, const fpr *restrict f1, unsigned logn)
+{
+	size_t n, hn, qn, u, m;
+
+	/*
+	 * Special code for n = 2.
+	 */
+	if (logn == 1) {
+		fpr x, y;
+
+		x = *f0;
+		y = *f1;
+		f[0] = fpr_add(x, fpr_mul(y, fpr_W1R));
+		f[1] = fpr_mul(y, fpr_W1I);
+		return;
+	}
+
+	n = (size_t)1 << logn;
+	hn = n >> 1;
+	qn = hn >> 1;
+
+	m = (size_t)1 << (logn - 1);
+	for (u = 0; u < qn; u ++) {
+		fpr a_re, a_im, b_re, b_im;
+		fpr t_re, t_im;
+
+		a_re = f0[u];
+		a_im = f0[u + qn];
+		b_re = f1[u];
+		b_im = f1[u + qn];
+		FPC_MUL(t_re, t_im, b_re, b_im,
+			fpr_gm3_square[((u + m) << 1) + 0],
+			fpr_gm3_square[((u + m) << 1) + 1]);
+		FPC_ADD(f[(u << 1) + 0], f[(u << 1) + 0 + hn],
+			a_re, a_im, t_re, t_im);
+		FPC_SUB(f[(u << 1) + 1], f[(u << 1) + 1 + hn],
+			a_re, a_im, t_re, t_im);
+	}

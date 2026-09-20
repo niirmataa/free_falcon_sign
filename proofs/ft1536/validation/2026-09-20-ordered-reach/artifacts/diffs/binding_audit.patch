@@ -1,0 +1,53 @@
+--- inputs/bootstrap/TARGETS/scripts/audit.py
++++ scripts/audit.py
+@@ -1,7 +1,7 @@
+ import json,re,subprocess,sys
+ from pathlib import Path
+ from replaylib import sha,verify_manifest
+-W=Path.cwd();mods=json.loads((W/'artifacts/kernel_order.json').read_text());new=['TargetWords','TargetAlgebra','TargetFrame','TargetSequence'];decls=[];fresh=[];sources={}
++W=Path.cwd();mods=json.loads((W/'artifacts/kernel_order.json').read_text());new=['ReachOutcomes','ReachFrame'];decls=[];fresh=[];sources={}
+ for m in mods:
+  p=W/'formal'/(m+'.lean');s=p.read_text();sources[p.relative_to(W).as_posix()]=sha(p)
+  assert not re.search(r'^\s*(axiom|opaque)\s',s,re.M) and not re.search(r'\b(sorry|admit|native_decide|Lean.ofReduceBool)\b',s)
+@@ -11,30 +11,27 @@
+   if m in new:fresh.append(name)
+ imports=''.join('import '+m+'\n' for m in mods)
+ a=imports+'set_option pp.universes true\n'+'\n'.join('#print axioms '+n for n in decls)+'\n'
+-t=imports+'set_option pp.all true\n'+'\n'.join('#check @'+n+'\n#print '+n for n in fresh)+'\n'
+-t+='\n'.join('#print InitialTarget.'+n for n in ['ni','convolutionCount','reducedCount','Ops','execute'])+'\n'
+-for name,text in [('TargetAudit',a),('TargetTypes',t)]:
++t=imports+'set_option pp.all true\n'+'\n'.join('#check @'+n+'\n#print '+n for n in fresh)+'\n'+'\n'.join('#print OrderedReach.'+n for n in ['Outcome','nextFault','faults','normalResult','callerStep','scratch','visits'])+'\n'
++for name,text in [('ReachAudit',a),('ReachTypes',t)]:
+  p=W/'formal'/(name+'.lean')
+  if p.exists():assert p.read_text()==text
+  else:p.write_text(text)
+  sources[p.relative_to(W).as_posix()]=sha(p)
+-p=subprocess.run([sys.executable,'-B','scripts/lean.py','TargetAudit','TargetTypes'],capture_output=True,timeout=60)
++p=subprocess.run([sys.executable,'-B','scripts/lean.py','ReachAudit','ReachTypes'],capture_output=True,timeout=60)
+ (W/'logs/audit_driver.stdout').write_bytes(p.stdout);(W/'logs/audit_driver.stderr').write_bytes(p.stderr);assert p.returncode==0,(p.stdout.decode(),p.stderr.decode())
+ latest={r['module']:r for r in map(json.loads,(W/'artifacts/kernel.jsonl').read_text().splitlines())};final=W/'logs/final';final.mkdir(exist_ok=True);receipts=[]
+-for m in mods+['TargetAudit','TargetTypes']:
++for m in mods+['ReachAudit','ReachTypes']:
+  r=latest[m];assert r['exit_code']==0 and not r['timeout'] and r['source_sha256']==sha(W/'formal'/(m+'.lean'))
+  for stream in ['stdout','stderr']:
+   p=W/r[stream];data=p.read_bytes();assert sha(p)==r[stream+'_sha256'] and not re.search(rb'(warning:|error:|sorryAx|Lean.ofReduceBool)',data),(m,stream)
+   (final/(m+'.'+stream)).write_bytes(data)
+  receipts.append(r)
+-text=(final/'TargetAudit.stdout').read_text();allowed={'propext','Classical.choice','Quot.sound'}
++text=(final/'ReachAudit.stdout').read_text();allowed={'propext','Classical.choice','Quot.sound'}
+ for n in decls:assert "'"+n+"'" in text,n
+ for dep in re.findall(r'depends on axioms: \[([^]]*)\]',text):assert {re.sub(r'\.\{[^}]*\}$','',n) for n in dep.split(', ')}<=allowed
+-I=W/'inputs/bootstrap';boot=verify_manifest(I,'MANIFEST.sha256','16977cc646bf5bd5af62f7f86e1c992ab24cafd05188a3c5dbeeae96e2a7a97e')
+-for m in mods:
+- if m not in new:assert sha(W/'formal'/(m+'.lean'))==boot['NORMALIZED/formal/'+m+'.lean']
+-out=dict(status='PASS_KERNEL_TARGET_SOURCE_WORD_ALGEBRA_FRAME_AND_RANGE_LEMMAS',modules=len(mods)+2,checked_theorems=len(decls),new_theorems=len(fresh),inherited_modules_unchanged=len(mods)-len(new),
+- new_declarations=fresh,all_theorems=decls,sources_sha256=sources,all_final_logs_clean=True,allowed_axioms=sorted(allowed),audit_stdout_sha256=sha(final/'TargetAudit.stdout'),types_terms_stdout_sha256=sha(final/'TargetTypes.stdout'),
+- proof_kind='MIXED_KERNEL_AND_UNIVERSAL_ANALYTICAL_SOURCE_PROOF',initial_targets_fully_kernelized=False,C_compiler_verified=False)
+-(W/'artifacts/formal_audit.json').write_text(json.dumps(out,indent=2)+'\n');(W/'artifacts/final_kernel_receipts.json').write_text(json.dumps(receipts,indent=2)+'\n')
+-print(json.dumps({k:v for k,v in out.items() if k not in ['sources_sha256','new_declarations','all_theorems']},indent=2))
++I=W/'inputs/bootstrap';verify_manifest(I,'MANIFEST.sha256','28a57d2c8e1361a7bc035b56426563187cf3903e1aa1cd1fa3ac4eeb5e1a3edc')
++for r in json.loads((W/'artifacts/reuse.json').read_text()):assert sha(W/r['copy'])==sha(W/r['input'])==r['sha256']
++out=dict(status='PASS_KERNEL_OUTCOMES_HALF_FRAME_CONDITIONAL_CENTER_LEMMAS',modules=len(mods)+2,checked_theorems=len(decls),new_theorems=len(fresh),inherited_modules_unchanged=len(mods)-len(new),new_declarations=fresh,all_theorems=decls,sources_sha256=sources,
++ all_final_logs_clean=True,allowed_axioms=sorted(allowed),audit_stdout_sha256=sha(final/'ReachAudit.stdout'),types_terms_stdout_sha256=sha(final/'ReachTypes.stdout'),
++ entire_ordered_reach_kernelized=False,full_global_reach_proved=False,proof_boundary='New kernel lemmas support scalar outcomes/conditional residuals/frame. Numerical right-branch source instantiation analytical; left-root correlation transfer open.')
++(W/'artifacts/formal_audit.json').write_text(json.dumps(out,indent=2)+'\n');(W/'artifacts/final_kernel_receipts.json').write_text(json.dumps(receipts,indent=2)+'\n');print(json.dumps({k:v for k,v in out.items() if k not in ['sources_sha256','new_declarations','all_theorems']},indent=2))
