@@ -160,6 +160,13 @@ gałęzi. Niezamknięta luźna majoranta nie jest błędem C ani required-domain
 counterexample. [Zlecenie](documents/FT1536_ZADANIE_ASTRA_H3_ORDERED_REACH_2026-09-20.md)
 i [bootstrap](background/H3_ORDERED_REACH_2026-09-20/README.md) zachowują piny.
 
+**Następne zadanie do ręcznego startu:**
+[LEFT_ROOT_CORRELATED_TRANSFER](documents/FT1536_ZADANIE_ASTRA_H3_LEFT_ROOT_CORRELATED_TRANSFER_2026-09-20.md),
+z [579 przypiętymi wejściami](background/H3_LEFT_ROOT_CORRELATED_TRANSFER_2026-09-20/README.md).
+Cel: wyprowadzić source bank/metric/energy/root-gain bounds, zamknąć wszystkie
+lewe active centers i skomponować pełny finite-prefix reach, jeśli uzasadniony.
+Idealny weighted diagnostic nie jest premise nowego zadania.
+
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
 
@@ -213,7 +220,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [RAW_ASSEMBLY](stages/FT1536_H3_RAW_ASSEMBLY_RUN_001/REPORT.md) | **H3_RAW_ASSEMBLY_PROVED_FOR_PINNED_MODEL** — pełny raw prefix, source transport i emitted corollary; mieszany dowód | `a53d723` |
 | [STABLE_NORMALIZATION](stages/FT1536_H3_STABLE_NORMALIZATION_RUN_001/REPORT.md) | **H3_STABLE_NORMALIZATION_PROVED_FOR_EMITTED_PINNED_MODEL** — actual widths/gates i source sqrt/div; mieszany dowód | `6c233cd` |
 | [INITIAL_TARGETS](stages/FT1536_H3_INITIAL_TARGETS_RUN_001/REPORT.md) | **H3_INITIAL_TARGETS_PROVED_FOR_EMITTED_PINNED_MODEL** — canonical target prefix, source errors i frame; mieszany dowód | `99ceb98` |
-| [ORDERED_REACH](stages/FT1536_H3_ORDERED_REACH_RUN_001/REPORT.md) | **PARTIAL_PROOF** — right-root finite-prefix NumericCenter, outcome/frame; left correlated transfer otwarty | niniejszy checkpoint |
+| [ORDERED_REACH](stages/FT1536_H3_ORDERED_REACH_RUN_001/REPORT.md) | **PARTIAL_PROOF** — right-root finite-prefix NumericCenter, outcome/frame; left correlated transfer otwarty | `7664277` |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).

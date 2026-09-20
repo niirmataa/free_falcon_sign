@@ -112,6 +112,11 @@ requires a source-certified weighted residual/root-gain bridge and a closed
 left-branch invariant. The failed loose-bound route is retained; it is not
 a required-domain counterexample or a demonstrated C defect.
 
+**Next prepared owner-run task:** [LEFT_ROOT_CORRELATED_TRANSFER](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_LEFT_ROOT_CORRELATED_TRANSFER_2026-09-20.md),
+with [579 pinned input members](proofs/ft1536/background/H3_LEFT_ROOT_CORRELATED_TRANSFER_2026-09-20/README.md).
+Its goal is to derive the missing source bank/metric/energy/root-gain bounds,
+close every left active center, and compose full finite-prefix reach if justified.
+
 The [candidate night-run setup](provenance/checks/2026-09-20-dudect-floor-ct-ready/README.md)
 is **STATIC_READY_TIMING_DEFERRED**: source/build/fixture checks passed,
 with no new physical timing campaign started. The [floor-ct launcher](tests/ft1536/dudect/README.md)
