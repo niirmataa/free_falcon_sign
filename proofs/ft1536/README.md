@@ -191,6 +191,14 @@ narrowing/stored norm/STATIC bytes. Uniwersalny Safe16 nadal OPEN_NOT_DISPROVED;
 local65536→0 nie jest required-domain witness. [Następny typ](stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001/NEXT_INTERFACE.md):
 SOURCE_SAMPLER_LAW/H6P, joint BadPrecast i osobny reference-integer/Sign→Verify bridge.
 
+**Przygotowany pierwszy etap prawa samplera:**
+[SCALAR_KERNEL_IID](documents/FT1536_ZADANIE_ASTRA_H3_SCALAR_KERNEL_IID_2026-09-21.md),
+z [340 przypiętymi wejściami](background/H3_SCALAR_KERNEL_IID_2026-09-21/README.md),
+do ręcznego startu Astry. Exact CDF/BerExp/rejection kernel, uniform acceptance
+floor i conditional fresh-tail/resource interface dotyczą jawnej gry IID_BUFFER.
+Przejście od realnego PRNG, Gaussian comparison i joint BadPrecast mają osobne
+typy; idealizacja refill nie jest ukrytym twierdzeniem o źródłowej losowości.
+
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
 

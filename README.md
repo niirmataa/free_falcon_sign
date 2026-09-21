@@ -146,6 +146,12 @@ open; the local65536→0 witness has no emitted-history membership.
 The next interface is [SOURCE_SAMPLER_LAW/H6P](proofs/ft1536/stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001/NEXT_INTERFACE.md),
 with joint BadPrecast and a separate reference-integer/Sign→Verify bridge.
 
+**Next prepared owner-run task:** [SCALAR_KERNEL_IID](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_SCALAR_KERNEL_IID_2026-09-21.md),
+with [340 pinned input members](proofs/ft1536/background/H3_SCALAR_KERNEL_IID_2026-09-21/README.md).
+It derives the exact scalar CDF/BerExp/rejection law and fresh-tail/resource
+interface in an explicitly idealized IID-refill game. The real-PRNG bridge,
+Gaussian comparison and joint BadPrecast bound remain separate obligations.
+
 The [historical deferred preparation](provenance/checks/2026-09-20-dudect-floor-ct-ready/README.md)
 is retained. The [current floor-ct launcher](tests/ft1536/dudect/README.md)
 supports the owner's **six-hour RUN_002** budget, with fresh controls before
