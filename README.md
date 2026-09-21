@@ -5,6 +5,12 @@ developed by **Niirmata**, continuing the historical **Falcon EXTRA / ternary**
 implementation. This repository contains the implementation, source-bound
 proof checkpoints, their evidence, and reproducible replay tools.
 
+Maintainer's canonical local checkout: **`/home/footfalcon/free_falcon_sign`**,
+on `main`. Builds, proof work and Git publication are performed from this
+durable directory. Project checkouts and evidence are not stored in system
+`/tmp`; [local storage provenance](provenance/FT1536_LOCAL_REPOSITORY.md)
+records the consolidation and preservation of the earlier staged checkout.
+
 ## Active FT1536 build on `main`
 
 **[Source: `Extra/c/`](Extra/c/) — the exact L_RHO + FLOOR_CT candidate used by

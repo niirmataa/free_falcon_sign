@@ -2,6 +2,23 @@
 
 Docelowym repozytorium prac jest `free_falcon_sign`.
 
+## Trwała lokalizacja pracy
+
+- Kanoniczny, aktualizowany checkout `main` znajduje się w
+  `/home/footfalcon/free_falcon_sign`. Stąd wykonuj operacje Git, commity,
+  publikację i buildy. Przed pracą sprawdź katalog oraz gałąź.
+- Nie przechowuj checkoutów projektu, nowych skryptów, receiptów, replayów,
+  cache ani wyników w systemowym `/tmp` lub na tmpfs. Używaj trwałych
+  `proofs/ft1536/work/<id>/`, `proofs/ft1536/replay-work/` i `.build/` tego repo.
+  Ustawiaj HOME/TMPDIR/cache jobów na podkatalogi ich trwałego W.
+- Dodatkowe worktrees, jeśli potrzebne, również mają być na trwałym dysku
+  pod `proofs/ft1536/work/`; nie zastępują kanonicznego checkoutu `main`.
+- Poprzedni checkout z36 zastanymi staged zmianami został zachowany w
+  `proofs/ft1536/work/FT1536_REPOSITORY_RELOCATION_2026-09-21/original-checkout/`.
+  To kopia odzyskiwania na starej gałęzi; zachowaj jej indeks i pliki.
+- Historyczne absolutne ścieżki w zamrożonych pakietach są proweniencją.
+  Nie zmieniaj archiwalnych bajtów/manifestów w celu poprawiania dawnych ścieżek.
+
 ## Punkty kontrolne
 
 - Każdy zakończony etap badawczy, także `PARTIAL_PROOF`, kontrprzykład lub

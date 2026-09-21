@@ -15,9 +15,15 @@ import prepare
 from profiles import PROFILES
 
 
+def temporary_work():
+    root=Path(__file__).resolve().parents[3]/'proofs/ft1536/work/dudect-tests'
+    root.mkdir(parents=True,exist_ok=True)
+    return tempfile.TemporaryDirectory(prefix='ft1536-duration-',dir=root)
+
+
 class DurationChecks(unittest.TestCase):
     def simulate_launch(self, seconds, requested=None, fresh_seconds=None, disk_delta=0):
-        with tempfile.TemporaryDirectory(prefix='ft1536-duration-') as directory:
+        with temporary_work() as directory:
             work=Path(directory)
             prep=dict(status='STATIC_READY_TIMING_DEFERRED',profile='floor-ct',
                       source_profile=PROFILES['floor-ct'],source_manifest_sha256=PROFILES['floor-ct']['sha256'],
@@ -97,7 +103,7 @@ class DurationChecks(unittest.TestCase):
         self.assertFalse(running)
 
     def test_direct_campaign_requires_prepared_budget(self):
-        with tempfile.TemporaryDirectory(prefix='ft1536-duration-') as directory:
+        with temporary_work() as directory:
             work=Path(directory)
             (work/'PREPARATION.json').write_text(json.dumps(dict(
                 status='PREFLIGHT_PASS',cpu=9,global_seconds=21600,sealed_files={})))

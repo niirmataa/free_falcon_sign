@@ -388,6 +388,9 @@ def replay_stage(root, stage, run, timeout, hide_originals=False):
     env = dict(os.environ)
     env['PYTHONOPTIMIZE'] = '0'  # The historical checkers deliberately use assertions.
     env['PYTHONDONTWRITEBYTECODE'] = '1'
+    env['TMPDIR'] = str(seed / 'tmp')
+    env['TMP'] = str(seed / 'tmp')
+    env['TEMP'] = str(seed / 'tmp')
     env.pop('LEAN_PATH', None)   # GLOBAL sets its own local import path in its runner.
     with (destination / 'stdout.txt').open('xb') as out, (destination / 'stderr.txt').open('xb') as err:
         process = subprocess.Popen(argv, cwd=seed, env=env, stdout=out, stderr=err, start_new_session=True)

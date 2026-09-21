@@ -53,7 +53,9 @@ class ProfileChecks(unittest.TestCase):
             self.assertEqual(hashlib.sha256((REPO/'Extra/c'/name).read_bytes()).hexdigest(), expected)
 
     def test_deferred_preparation_cannot_start_measurements(self):
-        with tempfile.TemporaryDirectory(prefix='ft1536-profile-check-') as path:
+        temporary_root = REPO/'proofs/ft1536/work/dudect-tests'
+        temporary_root.mkdir(parents=True,exist_ok=True)
+        with tempfile.TemporaryDirectory(prefix='ft1536-profile-check-',dir=temporary_root) as path:
             work = Path(path)
             (work/'PREPARATION.json').write_text(json.dumps({'status':'STATIC_READY_TIMING_DEFERRED'}))
             with self.assertRaisesRegex(RuntimeError,'preflight is required'):

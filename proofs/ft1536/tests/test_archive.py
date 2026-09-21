@@ -13,7 +13,9 @@ spec.loader.exec_module(archive)
 
 class ArchiveTests(unittest.TestCase):
     def setUp(self):
-        self.temp = tempfile.TemporaryDirectory()
+        temporary_root = Path(__file__).resolve().parents[1] / 'work/tool-tests'
+        temporary_root.mkdir(parents=True, exist_ok=True)
+        self.temp = tempfile.TemporaryDirectory(dir=temporary_root)
         self.addCleanup(self.temp.cleanup)
         self.base = Path(self.temp.name)
         self.root = self.base / 'repository'
