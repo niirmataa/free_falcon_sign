@@ -167,15 +167,20 @@ Reverse chi2(G||K_C) is infinite because of the support gap.
 [Independent review](proofs/ft1536/validation/2026-09-21-scalar-gaussian/README.md)
 reproduced516/516 files,36 modules/234 theorems (26 new), with source-domain,
 normalizer and tail certificates.63 nominal remainder overruns and scoped
-countermodels are retained. The [next interface](proofs/ft1536/stages/FT1536_H3_SCALAR_GAUSSIAN_COMPARISON_RUN_001/NEXT_INTERFACE.md)
-requires adaptive ordered composition and explicit reference support/domain exits;
-local bounds do not establish joint BadPrecast or real-PRNG security.
+countermodels are retained. Its adaptive ordered composition is provided below;
+local bounds alone do not establish joint BadPrecast or real-PRNG security.
 
-**Next prepared owner-run task:** [ORDERED_JOINT_KERNEL](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_ORDERED_JOINT_KERNEL_2026-09-21.md),
-with [755 pinned inputs](proofs/ft1536/background/H3_ORDERED_JOINT_KERNEL_2026-09-21/README.md).
-It targets the actual3072-call adaptive source law in IID_BUFFER, joint directed
-Gaussian bounds with explicit support exits, resource accounting and the
-deterministic postprocessing/event-transfer interface for H6P.
+The [ORDERED_JOINT_KERNEL result](proofs/ft1536/stages/FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001/REPORT.md)
+proves the actual3072-call adaptive root law **in IID_BUFFER**, positive-prefix
+source closure, a.s. root return and resource bounds. Its explicit Q_S/Q_stop
+references satisfy **TV(P,Q)<=2^-25, chi2(P||Q)<2^-48**, with support exit<2^-50.
+[Independent review](proofs/ft1536/validation/2026-09-22-ordered-joint/README.md)
+reproduced359/359 files,114 modules/884 theorems (37 new), native/sanitizer
+controls and exact adaptive-tree checks. Local support conditioning differs
+from whole-call survival conditioning; reverse chi2 against Q_stop is infinite.
+The deterministic POST pushforward yields a typed [H6P event transfer](proofs/ft1536/stages/FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001/H6P_INTERFACE.md).
+Its reference joint BadPrecast probability, real-PRNG bridge and retry/whole-Sign
+composition remain open. The next obligation is **H6P_REFERENCE_BAD_EVENT**.
 
 The [historical deferred preparation](provenance/checks/2026-09-20-dudect-floor-ct-ready/README.md)
 is retained. The [current floor-ct launcher](tests/ft1536/dudect/README.md)
@@ -299,7 +304,8 @@ integration work; changing their description does not change the old CLI.
 | [H3_LEFT_ROOT_CORRELATED_TRANSFER](proofs/ft1536/stages/FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001/REPORT.md) | Source bank/A2/metric/root transfer and closed left invariant; composes full zero-aware root/caller finite-prefix NumericCenter; mixed proof | `H3_LEFT_ROOT_CORRELATED_TRANSFER_PROVED_FOR_EMITTED_PINNED_MODEL` |
 | [SOURCE_POSTPROCESSING_AND_PRECAST](proofs/ft1536/stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001/REPORT.md) | Defined post-return suffix, source iFFT/rint, exact narrowing/norm/STATIC bytes; universal Safe16 open | `PARTIAL_PROOF` |
 | [SCALAR_KERNEL_IID](proofs/ft1536/stages/FT1536_H3_SCALAR_KERNEL_IID_RUN_001/REPORT.md) | Exact conditional scalar law, A>=1/256, IID termination/tail and buffer/resource interface; real-PRNG bridge open | `H3_SCALAR_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL` |
-| [SCALAR_GAUSSIAN_COMPARISON](proofs/ft1536/stages/FT1536_H3_SCALAR_GAUSSIAN_COMPARISON_RUN_001/REPORT.md) | Uniform local TV/forward chi-square bounds to untruncated Gaussian in IID_BUFFER; reverse chi-square infinite; joint composition open | `H3_SCALAR_GAUSSIAN_COMPARISON_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL` |
+| [SCALAR_GAUSSIAN_COMPARISON](proofs/ft1536/stages/FT1536_H3_SCALAR_GAUSSIAN_COMPARISON_RUN_001/REPORT.md) | Uniform local TV/forward chi-square bounds to untruncated Gaussian in IID_BUFFER; reverse chi-square infinite; ordered composition below | `H3_SCALAR_GAUSSIAN_COMPARISON_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL` |
+| [ORDERED_JOINT_KERNEL](proofs/ft1536/stages/FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001/REPORT.md) | Exact adaptive root law, source closure, directed joint comparison, resources and POST event transfer in IID_BUFFER; reference BadPrecast probability open | `H3_ORDERED_JOINT_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL` |
 
 The completed L_V bridge establishes, for all canonical h,c and legal finite
 payloads b in the pinned GCC14.2.0/C99/Linux x86_64 LP64 model:

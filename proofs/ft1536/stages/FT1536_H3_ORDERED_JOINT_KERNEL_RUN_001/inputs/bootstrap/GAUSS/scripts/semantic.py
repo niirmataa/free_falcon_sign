@@ -1,0 +1,7 @@
+import json
+from pathlib import Path
+from replaylib import sha
+W=Path.cwd();paths=set(['TOOLCHAIN.txt','REDUCTION_DOMAIN.json','EXPM_ACCURACY.json','CDF_COMPARISON.json','ERROR_LEDGER.json','ERROR_LEDGER.md','OBLIGATIONS.json','SCALAR_GAUSSIAN_CERTIFICATE.json','artifacts/source_binding.json','artifacts/gaussian_binding.json','artifacts/formal_audit.json','artifacts/fixtures.json','artifacts/kernel_examples.json','artifacts/reduction_boundary_words.json','artifacts/witnesses.json','artifacts/mutations.json','artifacts/kernel_order.json','formal/GaussianData.lean','formal/GaussianAudit.lean','formal/GaussianTypes.lean','artifacts/diffs/center_refinement.patch'])
+for pat in ['artifacts/fixtures/*.input','artifacts/fixtures/*.expected','artifacts/kernels/*.json','artifacts/gaussian/*.json','artifacts/gaussian_oracle_*.json','artifacts/mutations/*.json','artifacts/native_normal_*.json','artifacts/native_sanitized_*.json','logs/native_*.stdout','logs/native_*.stderr','logs/final/*','checks/*.inc','artifacts/diffs/*_observer.patch']:
+ paths.update(p.relative_to(W).as_posix() for p in W.glob(pat))
+rows=[dict(path=r,sha256=sha(W/r)) for r in sorted(paths)];(W/'SEMANTIC_FILES.json').write_text(json.dumps(dict(schema='GAUSSIAN_SEMANTIC_FILES_V1',count=len(rows),files=rows,note='All listed generated outputs deleted before fresh jobs. No project bin/cache/olean seed. Historical failed routes/receipts are preserved separately.'),indent=2)+'\n');print('SEMANTIC_FILES',len(rows))

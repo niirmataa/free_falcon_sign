@@ -1,0 +1,52 @@
+{
+  "cases": [
+    {
+      "name": "root_boundary",
+      "exe": "joint",
+      "mode": "top",
+      "input": "artifacts/fixtures/root_boundary.input",
+      "input_sha256": "083c00cdace723aa34da673e1293092876ebbdca27fc57db8355b836f92d68d3",
+      "preflight": true,
+      "classification": "SYNTHETIC_LOCAL_TREE_TARGETS_PUBLIC_WORD_TAPE_NO_EMITTED_MEMBERSHIP",
+      "expected": "artifacts/fixtures/root_boundary.expected",
+      "expected_sha256": "bcf480624b87b70da9d7a62a7c0100fee969c7ff43b72e3fcef1ea86f230433f"
+    },
+    {
+      "name": "root_boundary_suffix",
+      "exe": "post",
+      "mode": "suffix",
+      "input": "artifacts/fixtures/root_boundary_suffix.input",
+      "input_sha256": "dec2898640a6bcb8350cf90cb56d3c40cbba5a1c51e4afdbd44d7a3ee57f9fdc",
+      "preflight": true,
+      "classification": "SYNTHETIC_LOCAL_TREE_TARGETS_PUBLIC_WORD_TAPE_NO_EMITTED_MEMBERSHIP",
+      "model": "artifacts/controls/root_boundary_suffix.json",
+      "model_sha256": "6304f797c61f7e7893a70562fff9263e72b8dfdcd9a8ceca04ff3a0b81c647fa"
+    },
+    {
+      "name": "root_boundary_codec",
+      "exe": "post",
+      "mode": "codec",
+      "input": "artifacts/fixtures/root_boundary_codec.input",
+      "input_sha256": "c577089e099b4470a88587fae627bc286ae04f8ac78581258d7b96abfd1a763f",
+      "preflight": true,
+      "classification": "SYNTHETIC_LOCAL_TREE_TARGETS_PUBLIC_WORD_TAPE_NO_EMITTED_MEMBERSHIP",
+      "model": "artifacts/controls/root_boundary_codec.json",
+      "model_sha256": "3d86112d025b8b498e4a59ccf163c111ffdd37f1a1dafbff74db7b6c9078f237"
+    }
+  ],
+  "stats": {
+    "name": "root_boundary",
+    "status": "COMPLETED",
+    "calls": 3072,
+    "fault": 0,
+    "high_water": 8702,
+    "pre_floor": 3072,
+    "start_ptr": 4087,
+    "proposals": 3147,
+    "cutoff_rejections": 42,
+    "returned_bytes": 103851,
+    "refills": 26,
+    "discarded": 109,
+    "end_ptr": 1551
+  }
+}

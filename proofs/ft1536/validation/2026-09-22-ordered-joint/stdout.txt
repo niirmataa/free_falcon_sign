@@ -1,0 +1,38 @@
+REPLAY_JOB 0 ['-B', 'scripts/toolchain.py'] 0
+REPLAY_JOB 1 ['-B', 'scripts/order.py'] 0
+REPLAY_JOB 2 ['-B', 'scripts/bounds.py'] 0
+REPLAY_JOB 3 ['/home/footfalcon/.local/bin/sage', 'scripts/probability_trees.py'] 0
+REPLAY_JOB 4 ['scripts/kernel_build.py', '0'] 0
+REPLAY_JOB 5 ['scripts/kernel_build.py', '1'] 0
+REPLAY_JOB 6 ['scripts/kernel_build.py', '2'] 0
+REPLAY_JOB 7 ['scripts/kernel_build.py', '3'] 0
+REPLAY_JOB 8 ['scripts/kernel_build.py', '4'] 0
+REPLAY_JOB 9 ['scripts/kernel_build.py', '5'] 0
+REPLAY_JOB 10 ['-B', 'scripts/binding.py'] 0
+REPLAY_JOB 11 ['scripts/build.py', 'normal'] 0
+REPLAY_JOB 12 ['scripts/build.py', 'sanitized'] 0
+REPLAY_JOB 13 ['scripts/joint_fixtures.py', '0'] 0
+REPLAY_JOB 14 ['scripts/joint_fixtures.py', '1'] 0
+REPLAY_JOB 15 ['scripts/joint_fixtures.py', '2'] 0
+REPLAY_JOB 16 ['scripts/joint_fixtures.py', '3'] 0
+REPLAY_JOB 17 ['-B', 'scripts/finalize_fixtures.py'] 0
+REPLAY_JOB 18 ['scripts/native.py', 'normal'] 0
+REPLAY_JOB 19 ['scripts/native.py', 'sanitized'] 0
+REPLAY_JOB 20 ['-B', 'scripts/mutations.py'] 0
+REPLAY_JOB 21 ['-B', 'scripts/audit.py'] 0
+REPLAY_JOB 22 ['-B', 'scripts/metadata.py'] 0
+{
+  "status": "FRESH_REPLAY_PASS",
+  "game": "IID_BUFFER",
+  "scope": "one required root invocation; actual conditional joint source law; explicit Q_S/Q_stop",
+  "external_manifest_sha256": "da8cfccceea6837fc21edd04e46157351d91ad2d317a37286c05f41f3126e263",
+  "manifest": "OUTPUTS.sha256",
+  "source_members_verified": 2596,
+  "fresh_without_project_cache": true,
+  "expected_files": 359,
+  "matched": 359,
+  "source_scope_unchanged": true,
+  "historical_status": "H3_ORDERED_JOINT_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL",
+  "real_prng_to_iid_bridge_proved": false,
+  "owner_accepted": false
+}

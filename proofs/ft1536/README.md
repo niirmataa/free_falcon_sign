@@ -23,11 +23,11 @@ osiągnięcia, T2C3/T5, kontrakt M0, graf zależności i dalsze obowiązki.
 Pakiet ma 211 członków OUTPUTS i 198 publicznych wejść Git, manifest
 `c3efdcff510983a143946d43ab456656090061cd5b9b4b6847abc7f141c0cfa3`.
 Jest checkpointem dokumentacyjnym (`replay=none`); obecnie archiwum zawiera
-także dwadzieścia cztery etapy badawcze i audytowe, w tym późniejsze H3_RANGE,
+także dwadzieścia pięć etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
 H3_ZERO_SCALAR, H3_ROOT_LDL, H3_NODE3, H3_NODE2, BINARY_TOWER, audyt FPEMU,
 FLOOR_CT, RAW_ASSEMBLY, STABLE_NORMALIZATION, INITIAL_TARGETS, ORDERED_REACH
 i LEFT_ROOT_CORRELATED_TRANSFER, SOURCE_POSTPROCESSING_AND_PRECAST, SCALAR_KERNEL_IID
-i SCALAR_GAUSSIAN_COMPARISON.
+i SCALAR_GAUSSIAN_COMPARISON oraz ORDERED_JOINT_KERNEL.
 
 [Mapa po domknięciu L_V — 2026-09-19](documents/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md)
 przedstawia zależności i proponowaną kolejność: dokładny kontrakt gry,
@@ -207,17 +207,21 @@ z actual mu/sigma words. Reverse chi2(G||K_C)=∞ ma jawny support reason.
 [Odbiór](validation/2026-09-21-scalar-gaussian/README.md):516/516 plików,
 36 modułów,234 twierdzenia (26 nowych),source-domain/normalizer/tail certificates,
 101 rigorous comparisons i zachowane63 nominal overruns/scoped countermodels.
-[Następny typ](stages/FT1536_H3_SCALAR_GAUSSIAN_COMPARISON_RUN_001/NEXT_INTERFACE.md)
-wymaga ordered/shared-history composition i jawnych reference exits; lokalny
-bound nie jest whole-call loss,η_pre ani dowodem realnego PRNG.
+Ordered/shared-history composition z jawnymi reference exits znajduje się niżej;
+sam lokalny bound nie jest whole-call loss,η_pre ani dowodem realnego PRNG.
 
-**Następne zadanie do ręcznego startu:**
-[ORDERED_JOINT_KERNEL](documents/FT1536_ZADANIE_ASTRA_H3_ORDERED_JOINT_KERNEL_2026-09-21.md),
-z [755 przypiętymi wejściami](background/H3_ORDERED_JOINT_KERNEL_2026-09-21/README.md).
-Cel: actual3072-call adaptive joint law w IID_BUFFER, forward domain closure,
-porównanie z jawnymi Q_S/Q_stop i rozliczeniem support exits, zasoby oraz
-deterministic POST pushforward/event transfer dla H6P. Reference BadPrecast
-probability i realny PRNG pozostają dalszymi obowiązkami.
+**Odebrany ORDERED_JOINT_KERNEL:** [raport](stages/FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001/REPORT.md)
+domyka actual3072-call adaptive root law **w IID_BUFFER**, positive-prefix source
+closure, a.s. root return, joint N/Y/revealed-byte law i zasoby.
+[Odbiór](validation/2026-09-22-ordered-joint/README.md):359/359 plików,
+114 modułów,884 twierdzenia (37 nowych),normal/sanitizer controls i exact QQ trees.
+Dla jawnych Q_S/Q_stop: **TV(P,Q)<=2^-25,chi2(P||Q)<2^-48**, support exit<2^-50.
+Q_S nie jest na ogół Q_stop conditioned on whole-call survival; reverse
+chi2(Q_stop||P)=∞. E[T]<=24576, Pr[T>49152]<2^-1024, bez nowego source abortu.
+Deterministic POST pushforward daje [typed H6P transfer](stages/FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001/H6P_INTERFACE.md),
+z nadal otwartym q=reference joint BadPrecast probability.
+Następny konkretny obowiązek to **H6P_REFERENCE_BAD_EVENT**; realny PRNG,
+retry/whole-call composition, Safe16 i Sign→Verify pozostają osobne.
 
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
@@ -277,6 +281,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [SOURCE_POSTPROCESSING_AND_PRECAST](stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001/REPORT.md) | **PARTIAL_PROOF** — operational suffix/iFFT/rint/norm/bytes domknięte; uniwersalny Safe16 otwarty | `481e62b` |
 | [SCALAR_KERNEL_IID](stages/FT1536_H3_SCALAR_KERNEL_IID_RUN_001/REPORT.md) | **H3_SCALAR_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — exact conditional kernel, A>=1/256 i fresh-tail/resources; real-PRNG bridge otwarty | `6f1f34c` |
 | [SCALAR_GAUSSIAN_COMPARISON](stages/FT1536_H3_SCALAR_GAUSSIAN_COMPARISON_RUN_001/REPORT.md) | **H3_SCALAR_GAUSSIAN_COMPARISON_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — local TV/forward chi2; reverse∞ i joint scope jawne | `64af4cb` |
+| [ORDERED_JOINT_KERNEL](stages/FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001/REPORT.md) | **H3_ORDERED_JOINT_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — adaptive root/source closure, directed comparison/resources/POST transfer; reference BadPrecast probability otwarte | bieżący checkpoint |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).

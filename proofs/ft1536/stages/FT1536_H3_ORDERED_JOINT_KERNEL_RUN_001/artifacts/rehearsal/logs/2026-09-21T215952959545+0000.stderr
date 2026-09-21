@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001/scripts/mutations.py", line 18, in <module>
+    base=run(None);record('noop',base,run(None),'fresh deterministic source-transducer no-op')
+                   ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001/scripts/mutations.py", line 10, in record
+    assert (a==b)==same,name;p=D/(name+'.json');p.write_text(json.dumps(dict(name=name,baseline=a,changed=b,equal=a==b,scope=scope),indent=2)+'\n');rows.append(dict(name=name,status='NOOP_PASS' if same else 'DETECTED',path=p.relative_to(W).as_posix(),sha256=sha(p),scope=scope))
+           ^^^^^^^^^^^^
+AssertionError: noop

@@ -1,0 +1,18 @@
+{
+  "schema": "ORDERED_JOINT_SUPPORT_EXIT_V1",
+  "game": "IID_BUFFER",
+  "S_definition": "positive literal table mass AND e_C<64; unique y=s_C-k or s_C+1+k; Z>0",
+  "tau": "25108406941893570520985316636436632133419632284097977125243/115792089237316195423570985008687907853269984665640564039457584007913129639936",
+  "tau_origin": "GAUSS/ERROR_LEDGER.json: entries.G_mass_outside_positive_K_support_upper",
+  "M": 3072,
+  "exit_upper_expression": "1-(1-tau)^M <= M*tau",
+  "exit_rational_upper": "75325220825680711562955949909309896400258896852293931375729/113078212145816597093331040047546785012958969400039613319782796882727665664",
+  "exit_power2_upper": "2^-50",
+  "exit_strictly_positive": true,
+  "exit_interpretation": "reference support exit BEFORE C conversion/update, not a proved UB or source abort",
+  "QS_live_product": "prod_i G_h(y_i)/(1-t_h)",
+  "Qstop_live_product": "prod_i G_h(y_i)",
+  "survival_tilt": "Qstop(y|live)=QS(y)*prod_i(1-t_h)/E_QS[prod_i(1-t_h)]",
+  "QS_is_whole_survival_conditioning": false,
+  "tail_double_counted": false
+}
