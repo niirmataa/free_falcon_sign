@@ -1,0 +1,34 @@
+REPLAY_JOB 0 ['-B', 'scripts/toolchain.py'] 0
+REPLAY_JOB 1 ['scripts/kernel_build.py', '0'] 0
+REPLAY_JOB 2 ['scripts/kernel_build.py', '1'] 0
+REPLAY_JOB 3 ['-B', 'scripts/kernel_certificate.py'] 0
+REPLAY_JOB 4 ['-B', 'scripts/source_binding.py'] 0
+REPLAY_JOB 5 ['scripts/build.py', 'normal'] 0
+REPLAY_JOB 6 ['scripts/build.py', 'sanitized'] 0
+REPLAY_JOB 7 ['-B', 'scripts/fixtures.py'] 0
+REPLAY_JOB 8 ['normal', '0'] 0
+REPLAY_JOB 9 ['normal', '1'] 0
+REPLAY_JOB 10 ['normal', '2'] 0
+REPLAY_JOB 11 ['normal', '3'] 0
+REPLAY_JOB 12 ['sanitized', '0'] 0
+REPLAY_JOB 13 ['sanitized', '1'] 0
+REPLAY_JOB 14 ['sanitized', '2'] 0
+REPLAY_JOB 15 ['sanitized', '3'] 0
+REPLAY_JOB 16 ['/home/footfalcon/.local/bin/sage', 'scripts/rational_oracle.py'] 0
+REPLAY_JOB 17 ['-B', 'scripts/mutations.py'] 0
+REPLAY_JOB 18 ['-B', 'scripts/audit.py'] 0
+REPLAY_JOB 19 ['-B', 'scripts/metadata.py'] 0
+{
+  "status": "FRESH_REPLAY_PASS",
+  "game": "IID_BUFFER",
+  "external_manifest_sha256": "0923f85b0290b4b1e57b4f7af356bd58e327cac68d235805e6a8c78d4e622a8f",
+  "manifest": "OUTPUTS.sha256",
+  "source_members_verified": 1556,
+  "fresh_without_project_cache": true,
+  "expected_files": 364,
+  "matched": 364,
+  "source_scope_unchanged": true,
+  "historical_status": "H3_SCALAR_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL",
+  "real_prng_to_iid_bridge_proved": false,
+  "owner_accepted": false
+}

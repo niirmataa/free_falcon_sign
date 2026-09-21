@@ -1,0 +1,9 @@
+formal/IidCDF.lean:20:11: error: Tactic `rfl` failed: The left-hand side
+  countAbove u ([] ++ b)
+is not definitionally equal to the right-hand side
+  countAbove u [] + countAbove u b
+
+case nil
+u : Nat
+b : List Nat
+⊢ countAbove u ([] ++ b) = countAbove u [] + countAbove u b

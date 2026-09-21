@@ -23,10 +23,10 @@ osiągnięcia, T2C3/T5, kontrakt M0, graf zależności i dalsze obowiązki.
 Pakiet ma 211 członków OUTPUTS i 198 publicznych wejść Git, manifest
 `c3efdcff510983a143946d43ab456656090061cd5b9b4b6847abc7f141c0cfa3`.
 Jest checkpointem dokumentacyjnym (`replay=none`); obecnie archiwum zawiera
-także dwadzieścia dwa etapy badawcze i audytowe, w tym późniejsze H3_RANGE,
+także dwadzieścia trzy etapy badawcze i audytowe, w tym późniejsze H3_RANGE,
 H3_ZERO_SCALAR, H3_ROOT_LDL, H3_NODE3, H3_NODE2, BINARY_TOWER, audyt FPEMU,
 FLOOR_CT, RAW_ASSEMBLY, STABLE_NORMALIZATION, INITIAL_TARGETS, ORDERED_REACH
-i LEFT_ROOT_CORRELATED_TRANSFER oraz SOURCE_POSTPROCESSING_AND_PRECAST.
+i LEFT_ROOT_CORRELATED_TRANSFER, SOURCE_POSTPROCESSING_AND_PRECAST i SCALAR_KERNEL_IID.
 
 [Mapa po domknięciu L_V — 2026-09-19](documents/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md)
 przedstawia zależności i proponowaną kolejność: dokładny kontrakt gry,
@@ -191,13 +191,14 @@ narrowing/stored norm/STATIC bytes. Uniwersalny Safe16 nadal OPEN_NOT_DISPROVED;
 local65536→0 nie jest required-domain witness. [Następny typ](stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001/NEXT_INTERFACE.md):
 SOURCE_SAMPLER_LAW/H6P, joint BadPrecast i osobny reference-integer/Sign→Verify bridge.
 
-**Przygotowany pierwszy etap prawa samplera:**
-[SCALAR_KERNEL_IID](documents/FT1536_ZADANIE_ASTRA_H3_SCALAR_KERNEL_IID_2026-09-21.md),
-z [340 przypiętymi wejściami](background/H3_SCALAR_KERNEL_IID_2026-09-21/README.md),
-do ręcznego startu Astry. Exact CDF/BerExp/rejection kernel, uniform acceptance
-floor i conditional fresh-tail/resource interface dotyczą jawnej gry IID_BUFFER.
-Przejście od realnego PRNG, Gaussian comparison i joint BadPrecast mają osobne
-typy; idealizacja refill nie jest ukrytym twierdzeniem o źródłowej losowości.
+**Odebrany SCALAR_KERNEL_IID:** [raport](stages/FT1536_H3_SCALAR_KERNEL_IID_RUN_001/REPORT.md)
+domyka exact scalar CDF/BerExp/rejection kernel **w jawnej grze IID_BUFFER**,
+A>=1/256, PMF w_y/A, conditional fresh tail oraz tail/mean/resource bounds.
+[Odbiór](validation/2026-09-21-scalar-kernel-iid/README.md):364/364 plików,
+32 moduły,208 twierdzeń (37 nowych),4096 ptrs i54 exact PMFs. Pierwszy timeout
+startu Sage zachowany. [Następne interfejsy](stages/FT1536_H3_SCALAR_KERNEL_IID_RUN_001/NEXT_INTERFACE.md)
+rozdzielają PRNG_REAL_TO_IID_BUFFER, SCALAR_GAUSSIAN_COMPARISON i joint H6P;
+idealizacja refill nie jest dowodem realnego PRNG lub whole Sign law.
 
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
@@ -255,6 +256,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [ORDERED_REACH](stages/FT1536_H3_ORDERED_REACH_RUN_001/REPORT.md) | **PARTIAL_PROOF** — right-root finite-prefix NumericCenter, outcome/frame; left correlated transfer otwarty | `7664277` |
 | [LEFT_ROOT_CORRELATED_TRANSFER](stages/FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001/REPORT.md) | **H3_LEFT_ROOT_CORRELATED_TRANSFER_PROVED_FOR_EMITTED_PINNED_MODEL** — left transfer i kompozycja pełnego zero-aware root/caller finite-prefix NumericCenter; mieszany dowód | `fbf4a5c` |
 | [SOURCE_POSTPROCESSING_AND_PRECAST](stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001/REPORT.md) | **PARTIAL_PROOF** — operational suffix/iFFT/rint/norm/bytes domknięte; uniwersalny Safe16 otwarty | `481e62b` |
+| [SCALAR_KERNEL_IID](stages/FT1536_H3_SCALAR_KERNEL_IID_RUN_001/REPORT.md) | **H3_SCALAR_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — exact conditional kernel, A>=1/256 i fresh-tail/resources; real-PRNG bridge otwarty | niniejszy checkpoint |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).

@@ -1,0 +1,17 @@
+TargetWords 0 0.384
+TargetAlgebra 0 0.63
+TargetFrame 0 0.386
+TargetSequence 0 0.434
+ReachOutcomes 0 0.694
+IidBytes 0 0.459
+IidBerExp 0 0.806
+formal/IidCDF.lean:20:11: error: Tactic `rfl` failed: The left-hand side
+  countAbove u ([] ++ b)
+is not definitionally equal to the right-hand side
+  countAbove u [] + countAbove u b
+
+case nil
+u : Nat
+b : List Nat
+⊢ countAbove u ([] ++ b) = countAbove u [] + countAbove u b
+IidCDF 1 0.421

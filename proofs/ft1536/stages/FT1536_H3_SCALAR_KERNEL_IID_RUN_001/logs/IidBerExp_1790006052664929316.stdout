@@ -1,0 +1,22 @@
+formal/IidBerExp.lean:13:35: warning: Variable name `hd` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hd
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+formal/IidBerExp.lean:33:36: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  4293918784 ≤ b ≤ 4294967359
+  0 ≤ b - 4294967296*c ≤ 4294967295
+  a ≥ 0
+  -2147483647 ≤ 2147483648*a - b + 4294967296*c ≤ 0
+where
+ a := ↑(if 63 < s then 1 else 0)
+ b := ↑(4294967296 + 63 - s)
+ c := ↑(4294967296 + 63 - s) / 4294967296
+formal/IidBerExp.lean:33:2: error: Type mismatch: After simplification, term
+  hh
+ has type
+  @Eq Nat ((4294967296 + 63 - s) % 4294967296 / 2147483648) (if 63 < s then 1 else 0)
+but is expected to have type
+  @Eq Nat ((4294967296 + 63 - s) % 4294967296 / 2147483648) (if s ≥ 64 then 1 else 0)

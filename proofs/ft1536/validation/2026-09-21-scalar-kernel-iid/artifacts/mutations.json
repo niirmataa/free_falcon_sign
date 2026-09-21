@@ -1,0 +1,108 @@
+{
+  "status": "PASS_EXECUTED_MUTATIONS_AND_FINITE_COUNTERMODELS",
+  "game": "IID_BUFFER",
+  "mutations": [
+    {
+      "name": "noop_common_CDF",
+      "status": "NOOP_PASS",
+      "path": "artifacts/mutations/noop_common_CDF.json",
+      "sha256": "c22f512631d6085a235126266565871966f47bad25f6aa4298f95db95b706e4a",
+      "scope": "MODEL_MUTATION_VS_PINNED_SOURCE_WORD_OR_TRACE"
+    },
+    {
+      "name": "non_strict_CDF",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/non_strict_CDF.json",
+      "sha256": "b915761c3021f014112456a355cedc84209a16e44f9ce541f9b2a01f6ba2ed7c",
+      "scope": "MODEL_MUTATION_VS_PINNED_SOURCE_WORD_OR_TRACE"
+    },
+    {
+      "name": "last_instead_first_bank",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/last_instead_first_bank.json",
+      "sha256": "9185de75824a573223f19ff7717ae12f7e5f51789baa623d2f18f405a5fee780",
+      "scope": "MODEL_MUTATION_VS_PINNED_SOURCE_WORD_OR_TRACE"
+    },
+    {
+      "name": "independent_words_each_bank",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/independent_words_each_bank.json",
+      "sha256": "e3fa58c8920214b29ed0eb282054314e8f6a75e598c21967a138b4ec533bc9fd",
+      "scope": "MODEL_MUTATION_VS_PINNED_SOURCE_WORD_OR_TRACE"
+    },
+    {
+      "name": "reuse_Bernoulli_word",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/reuse_Bernoulli_word.json",
+      "sha256": "ec19c4fa066a43fdd8382d18ff4e7d97a31fd304f05efb258567b0c128ac2e7e",
+      "scope": "MODEL_MUTATION_VS_PINNED_SOURCE_WORD_OR_TRACE"
+    },
+    {
+      "name": "omit_saturation",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/omit_saturation.json",
+      "sha256": "53fed452ff4cb2e342c492e68675f5ddcf70615c95729091ff186fc096dcc171",
+      "scope": "EXTENDED_VALID_COMPARATOR_RANGE; no claim this Z is source-reachable"
+    },
+    {
+      "name": "omit_cutoff",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/omit_cutoff.json",
+      "sha256": "26d76dd58dddc0ae9eeae8a04f77caaab4902e974669cab68ff522373a369155",
+      "scope": "MODEL_MUTATION_VS_PINNED_SOURCE_WORD_OR_TRACE"
+    },
+    {
+      "name": "early_return_BerExp_reads",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/early_return_BerExp_reads.json",
+      "sha256": "766c4ad7d146e98eb39286e9ef953fd2e209e6fee6ce6d9bc108b065a77054c3",
+      "scope": "First predicate false or cutoff; actual source still reads second U64"
+    },
+    {
+      "name": "ptr_off_by_one",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/ptr_off_by_one.json",
+      "sha256": "a36cc00e0cc397d3368a6efec29891c76b13c3d81b94bde03be5e255ebf21301",
+      "scope": "actual ptr4087 cutoff versus >4087"
+    },
+    {
+      "name": "big_endian",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/big_endian.json",
+      "sha256": "49bec33c5c05ddeb5a7ea1ad0e3159ab131609c1ccd79caf57494c5f62d22d9b",
+      "scope": "MODEL_MUTATION_VS_PINNED_SOURCE_WORD_OR_TRACE"
+    },
+    {
+      "name": "omit_suffix_drop",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/omit_suffix_drop.json",
+      "sha256": "c1639cabffba5adffc21555a7dfdd0942d95d03f7f689cfbe274ebf43b8177c0",
+      "scope": "MODEL_MUTATION_VS_PINNED_SOURCE_WORD_OR_TRACE"
+    },
+    {
+      "name": "condition_on_unread_buffer",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/condition_on_unread_buffer.json",
+      "sha256": "532d383f3df7009bcf96172291166d2786c3a89d3143bc141779d14572cc3b48",
+      "scope": "EXACT_TWO_BIT_IID_COUNTERMODEL_TO_BAD_CONDITIONING"
+    },
+    {
+      "name": "nonreturn_to_source_zero",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/nonreturn_to_source_zero.json",
+      "sha256": "afddb50d458527b3125b7a096baa654dec12d446fee24aa90350429036839cbc",
+      "scope": "bounded observation of all-zero continuation, whose k29/exponent>=64 proves repeated stutter for this local input"
+    },
+    {
+      "name": "normalize_without_positive_A",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/normalize_without_positive_A.json",
+      "sha256": "df48f807826abe6637e9adae109c277eca2ef3cd85e0d59c23109730305abc0f",
+      "scope": "ABSTRACT_ZERO_WEIGHT_KERNEL; not required source instance"
+    }
+  ],
+  "meaningful_mutations": 13,
+  "noop": 1,
+  "source_changed": false,
+  "required_domain_counterexample": false
+}

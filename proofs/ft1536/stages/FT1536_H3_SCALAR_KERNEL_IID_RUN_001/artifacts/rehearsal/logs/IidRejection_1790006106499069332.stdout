@@ -1,0 +1,24 @@
+formal/IidRejection.lean:11:43: error(lean.unknownIdentifier): Unknown identifier `pow_succ`
+formal/IidRejection.lean:16:11: error: Tactic `rfl` failed: The left-hand side
+  (List.map (fun w => w * c) []).sum
+is not definitionally equal to the right-hand side
+  [].sum * c
+
+case nil
+a c : Nat
+h : [].sum = a
+⊢ (List.map (fun w => w * c) []).sum = [].sum * c
+formal/IidRejection.lean:17:17: error: unsolved goals
+case cons
+a c w : Nat
+ws : List Nat
+ih : ws.sum = a → (List.map (fun w => w * c) ws).sum = ws.sum * c
+h : (w :: ws).sum = a
+⊢ w * c + (List.map (fun w => w * c) ws).sum = w * c + ws.sum * c
+formal/IidRejection.lean:17:59: warning: This simp argument is unused:
+  ih
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [List.map_cons, List.sum_cons, Nat.add_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

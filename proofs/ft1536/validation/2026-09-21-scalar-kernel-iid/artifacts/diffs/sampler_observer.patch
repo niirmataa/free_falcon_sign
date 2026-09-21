@@ -1,0 +1,56 @@
+--- sampler_original.inc
++++ sampler_observer.inc
+@@ -1,5 +1,5 @@
+ static int
+-sampler_large(void *ctx, fpr mu, fpr sigma)
++observed_sampler(void *ctx, fpr mu, fpr sigma)
+ {
+ 	ternary_sampler_context *tsc;
+ 	prng *p;
+@@ -25,6 +25,7 @@
+ 	s = fpr_floor(mu);
+ 	r = fpr_sub(mu, fpr_of(s));
+ 	dss = fpr_inv(fpr_mul(fpr_sqr(sigma), fpr_of(2)));
++	printf("ENTRY %d %016" PRIx64 " %016" PRIx64 "\n",s,r,dss);
+ #if FT_SAMPLER_ADAPTIVE_PROBE
+ 	ft_sampler_probe_center_input(mu, r);
+ #endif
+@@ -66,7 +67,7 @@
+ 		unsigned proposal_level;
+ 		fpr inv_2sigma0_sq, delta, gap, tail_term;
+ 
+-		if (!ft_adaptive_proposal(p, dss, &k,
++		if (!observed_proposal(p, dss, &k,
+ 			&inv_2sigma0_sq, &proposal_level))
+ 		{
+ 			tsc->fault = FT_SAMPLER_FAULT_PROPOSAL_RANGE;
+@@ -79,7 +80,7 @@
+ 		ft_sampler_probe_proposals ++;
+ 		ft_sampler_probe_levels[proposal_level] ++;
+ #endif
+-		b = falcon_prng_get_u8(p) & 1;
++		b = observed_u8(p) & 1;
+ 		z = b ? (1 + k) : -k;
+ 		delta = b ? fpr_sub(fpr_of(1), r) : r;
+ 
+@@ -104,8 +105,8 @@
+ 			fpr_sqr(delta));
+ 		x = fpr_add(x, fpr_mul(tail_term, dss));
+ #else
+-		z = gaussian0_sampler_large(p);
+-		b = falcon_prng_get_u8(p) & 1;
++		z = gaussian0_observed_sampler(p);
++		b = observed_u8(p) & 1;
+ 		z = b + ((b << 1) - 1) * z;
+ 		x = fpr_mul(fpr_sqr(fpr_sub(fpr_of(z), r)), dss);
+ 		x = fpr_sub(x,
+@@ -118,7 +119,8 @@
+ #endif
+ 			return 0;
+ 		}
+-		if (BerExp(p, x)) {
++		printf("IT %d %d %u %016" PRIx64 " %016" PRIx64 " %016" PRIx64 "\n",k,b,proposal_level,delta,gap,x);
++		if (observed_BerExp(p, x)) {
+ 	#if FT_SAMPLER_ADAPTIVE_PROBE
+ 			int sample;
+ 

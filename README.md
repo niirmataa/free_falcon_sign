@@ -152,11 +152,13 @@ open; the local65536→0 witness has no emitted-history membership.
 The next interface is [SOURCE_SAMPLER_LAW/H6P](proofs/ft1536/stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001/NEXT_INTERFACE.md),
 with joint BadPrecast and a separate reference-integer/Sign→Verify bridge.
 
-**Next prepared owner-run task:** [SCALAR_KERNEL_IID](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_SCALAR_KERNEL_IID_2026-09-21.md),
-with [340 pinned input members](proofs/ft1536/background/H3_SCALAR_KERNEL_IID_2026-09-21/README.md).
-It derives the exact scalar CDF/BerExp/rejection law and fresh-tail/resource
-interface in an explicitly idealized IID-refill game. The real-PRNG bridge,
-Gaussian comparison and joint BadPrecast bound remain separate obligations.
+The [SCALAR_KERNEL_IID result](proofs/ft1536/stages/FT1536_H3_SCALAR_KERNEL_IID_RUN_001/REPORT.md)
+proves the exact scalar CDF/BerExp/rejection law **in the explicit IID_BUFFER
+game**, with A>=1/256, returned PMF w_y/A, conditional fresh tail and
+Pr[N>m|PAST]<=(255/256)^m. [Independent review](proofs/ft1536/validation/2026-09-21-scalar-kernel-iid/README.md)
+reproduced364/364 files,32 modules/208 theorems (37 new),4096 buffer positions
+and54 exact PMFs; the initial tool-startup timeout is retained. The real-PRNG
+bridge, Gaussian comparison and joint BadPrecast remain separate obligations.
 
 The [historical deferred preparation](provenance/checks/2026-09-20-dudect-floor-ct-ready/README.md)
 is retained. The [current floor-ct launcher](tests/ft1536/dudect/README.md)
@@ -279,6 +281,7 @@ integration work; changing their description does not change the old CLI.
 | [H3_ORDERED_REACH](proofs/ft1536/stages/FT1536_H3_ORDERED_REACH_RUN_001/REPORT.md) | Right-root finite-prefix NumericCenter, scalar outcome separation and conditional frames; left correlated transfer open; mixed proof | `PARTIAL_PROOF` |
 | [H3_LEFT_ROOT_CORRELATED_TRANSFER](proofs/ft1536/stages/FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001/REPORT.md) | Source bank/A2/metric/root transfer and closed left invariant; composes full zero-aware root/caller finite-prefix NumericCenter; mixed proof | `H3_LEFT_ROOT_CORRELATED_TRANSFER_PROVED_FOR_EMITTED_PINNED_MODEL` |
 | [SOURCE_POSTPROCESSING_AND_PRECAST](proofs/ft1536/stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001/REPORT.md) | Defined post-return suffix, source iFFT/rint, exact narrowing/norm/STATIC bytes; universal Safe16 open | `PARTIAL_PROOF` |
+| [SCALAR_KERNEL_IID](proofs/ft1536/stages/FT1536_H3_SCALAR_KERNEL_IID_RUN_001/REPORT.md) | Exact conditional scalar law, A>=1/256, IID termination/tail and buffer/resource interface; real-PRNG bridge open | `H3_SCALAR_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL` |
 
 The completed L_V bridge establishes, for all canonical h,c and legal finite
 payloads b in the pinned GCC14.2.0/C99/Linux x86_64 LP64 model:
