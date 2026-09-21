@@ -157,9 +157,18 @@ def semantic_rows(receipt):
     require(isinstance(rows, list) and rows, 'Missing semantic replay manifest')
     result = {}
     for row in rows:
-        name, sha = row['path'], row['sha256']
+        name = row['path']
+        if any(k in row for k in ('expected', 'actual', 'match')):
+            sha = row.get('expected')
+            require(row.get('actual') == sha and row.get('match') is True,
+                    'Failed semantic comparison record')
+            require('sha256' not in row or row['sha256'] == sha,
+                    'Conflicting semantic digests')
+        else:
+            sha = row.get('sha256')
         checked_path(name)
-        require(name not in result and DIGEST.fullmatch(sha), 'Invalid/duplicate semantic record')
+        require(name not in result and isinstance(sha, str) and DIGEST.fullmatch(sha),
+                'Invalid/duplicate semantic record')
         result[name] = sha
     return result
 
@@ -213,12 +222,17 @@ def verify_stage(root, stage):
 
 
 def import_stage(root, source, manifest_sha, report_sha, report='REPORT.md',
-                 result_file='RESULT.json', replay='none', stage=None):
+                 result_file='RESULT.json', replay='none', stage=None, replay_receipt=None):
     source = no_symlinks(Path(source).absolute())
     stage = checked_name(stage or source.name)
     checked_path(report); checked_path(result_file)
     require(DIGEST.fullmatch(manifest_sha) and DIGEST.fullmatch(report_sha), 'Expected external SHA-256 pins')
     require(replay in ('none', 'standard', 'lv-static', 'global-crt'), 'Unknown replay protocol')
+    if replay_receipt is not None:
+        checked_path(replay_receipt)
+        require(replay != 'none', 'A replay receipt requires a replay protocol')
+    elif replay != 'none':
+        replay_receipt = 'artifacts/replay_result.json' if replay == 'global-crt' else 'artifacts/fresh_replay.json'
     with writer_lock(root):
         catalog = root / 'catalog' / (stage + '.json')
         target = root / 'stages' / stage
@@ -226,7 +240,8 @@ def import_stage(root, source, manifest_sha, report_sha, report='REPORT.md',
             old = load_record(root, stage)
             require(old['manifest_sha256'] == manifest_sha and old['report_sha256'] == report_sha
                     and old['report'] == report and old['result_file'] == result_file
-                    and old['replay'] == replay, 'Checkpoint already exists with different pins/protocol')
+                    and old['replay'] == replay and old['replay_receipt'] == replay_receipt,
+                    'Checkpoint already exists with different pins/protocol/receipt')
             return dict(**verify_stage(root, stage), already_imported=True)
         require(not target.exists(), f'Unregistered destination already exists: {target}')
         raw = checked_bytes(source / 'OUTPUTS.sha256', manifest_sha)
@@ -262,10 +277,8 @@ def import_stage(root, source, manifest_sha, report_sha, report='REPORT.md',
             frozen = dict(path=name, sha256=entries[name], bytes=len(log), live_prefix_checked=live.exists())
         entry = {'standard': 'scripts/replay.py', 'global-crt': 'scripts/replay.py',
                  'lv-static': 'resume_001/replay_fresh.py'}.get(replay)
-        replay_receipt = None
         if entry:
             require(entry in entries, 'Replay entry is not sealed by OUTPUTS')
-            replay_receipt = 'artifacts/replay_result.json' if replay == 'global-crt' else 'artifacts/fresh_replay.json'
             require(replay_receipt in entries, 'Replay receipt is not sealed by OUTPUTS')
             semantic = semantic_rows(json.loads(read(source / replay_receipt)))
             require(all(entries.get(name) == sha for name, sha in semantic.items()),
@@ -401,7 +414,7 @@ def replay_stage(root, stage, run, timeout, hide_originals=False):
             receipt['semantic_files'] = check_replay_result(base, child, historical, reproduced)
         except (ArchiveError, OSError, ValueError, KeyError) as error:
             validation_error = str(error)
-    allowed = ('PASS',) if protocol == 'global-crt' else ('FRESH_REPLAY_PASS', 'FRESH_REPLAY_MATCH')
+    allowed = ('PASS',) if protocol == 'global-crt' else ('FRESH_REPLAY_PASS', 'FRESH_REPLAY_MATCH', 'PASS_FRESH_REPLAY')
     passed = (process.returncode == 0 and receipt.get('replay_status') in allowed
               and receipt.get('semantic_files', 0) > 0 and validation_error is None)
     receipt['validation_error'] = validation_error
@@ -422,6 +435,7 @@ def main():
     imp.add_argument('--report', default='REPORT.md')
     imp.add_argument('--result', default='RESULT.json')
     imp.add_argument('--replay', choices=['none', 'standard', 'lv-static', 'global-crt'], default='none')
+    imp.add_argument('--replay-receipt', help='Relative receipt path sealed by OUTPUTS; protocol default if omitted')
     imp.add_argument('--id')
     doc = sub.add_parser('document'); doc.add_argument('source', type=Path); doc.add_argument('--sha', required=True)
     verify = sub.add_parser('verify'); verify.add_argument('stage', nargs='?')
@@ -431,7 +445,7 @@ def main():
     args = parser.parse_args()
     if args.command == 'import':
         result = import_stage(ROOT, args.source, args.manifest_sha, args.report_sha,
-                              args.report, args.result, args.replay, args.id)
+                              args.report, args.result, args.replay, args.id, args.replay_receipt)
     elif args.command == 'document':
         result = add_document(ROOT, args.source, args.sha)
     elif args.command == 'replay':

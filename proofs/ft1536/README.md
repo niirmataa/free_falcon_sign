@@ -412,6 +412,13 @@ bez takiego runnera `--replay none`. Przed wyborem protokołu
 przeczytaj REPLAY danego etapu. Inne nazwy raportu/JSON podaje się przez
 `--report` i `--result`.
 
+Jeżeli standardowy pakiet przechowuje historyczny receipt w innej lokalizacji,
+podaj `--replay-receipt RELATIVE_PATH`, np. `artifacts/rehearsal/REPLAY_RESULT.json`.
+Ścieżka i wszystkie wskazane wyniki muszą być zapieczętowane przez OUTPUTS.
+Obsługiwane są zarówno rekordy path/sha256, jak i expected/actual/match;
+w drugim formacie wymagane są zgodne hashe i dosłowne match=true. Każdy
+świeży wynik jest nadal sprawdzany bajtowo z archiwum, bez zmiany starego pakietu.
+
 Adapter `global-crt` pomija w świeżym seed wyłącznie dawny podkatalog replay/
 i metadane jego odtworzenia, które skrypt tworzy ponownie. Pominięcia są
 wymienione w receipt. Wrapper przed wykonaniem weryfikuje pełne archiwum,

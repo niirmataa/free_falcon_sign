@@ -127,6 +127,41 @@ class ArchiveTests(unittest.TestCase):
         with self.assertRaises(archive.ArchiveError):
             archive.check_replay_result(base, child, historical, {'status': 'PASS', 'files': []})
 
+    def test_explicit_sealed_receipt_preserves_the_package_and_recipe(self):
+        receipt = 'artifacts/rehearsal/REPLAY_RESULT.json'
+        sha = archive.digest(self.payload)
+        self.members['scripts/replay.py'] = b'# public replay entry\n'
+        self.members[receipt] = archive.json_bytes({'status': 'PASS_FRESH_REPLAY', 'matches': [
+            {'path': 'inputs/public.txt', 'expected': sha, 'actual': sha, 'match': True}]})
+        self.write_fixture()
+        result = archive.import_stage(self.root, self.source, self.pin, self.report_pin,
+                                      replay='standard', replay_receipt=receipt)
+        self.assertEqual(result['integrity'], 'PASS')
+        self.assertEqual(archive.load_record(self.root, self.source.name)['replay_receipt'], receipt)
+        self.assertEqual((self.root/'stages'/self.source.name/receipt).read_bytes(), self.members[receipt])
+        self.assertTrue(archive.import_stage(self.root, self.source, self.pin, self.report_pin,
+                                            replay='standard', replay_receipt=receipt)['already_imported'])
+        with self.assertRaises(archive.ArchiveError):
+            archive.import_stage(self.root, self.source, self.pin, self.report_pin, replay='standard')
+
+    def test_unsealed_or_escaping_receipts_are_rejected(self):
+        self.members['scripts/replay.py'] = b'# public replay entry\n'
+        self.write_fixture()
+        for path in ('../receipt.json', '/receipt.json', 'artifacts/not-sealed.json'):
+            with self.subTest(path=path), self.assertRaises(archive.ArchiveError):
+                archive.import_stage(self.root, self.source, self.pin, self.report_pin,
+                                     replay='standard', replay_receipt=path)
+            self.assertFalse((self.root/'stages'/self.source.name).exists())
+
+    def test_comparison_rows_cannot_hide_mismatch_or_conflicting_hash(self):
+        sha = archive.digest(self.payload)
+        row = {'path': 'inputs/public.txt', 'expected': sha, 'actual': sha, 'match': True}
+        self.assertEqual(archive.semantic_rows({'matches': [row]}), {'inputs/public.txt': sha})
+        for change in ({'actual': '0'*64}, {'match': False}, {'match': 1},
+                       {'sha256': '0'*64}, {'expected': None, 'actual': None}):
+            with self.subTest(change=change), self.assertRaises(archive.ArchiveError):
+                archive.semantic_rows({'matches': [dict(row, **change)]})
+
 
 if __name__ == '__main__':
     unittest.main()
