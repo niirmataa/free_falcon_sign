@@ -1,0 +1,69 @@
+[
+  {
+    "argv": [
+      "/usr/bin/gcc",
+      "-W",
+      "-Wall",
+      "-O",
+      "-DFPR_IMPL=\"fpr-emulated.h\"",
+      "-DSAMPLER_CODF=0",
+      "-DSAMPLER_CDF=0",
+      "-DCT_BEREXP=1",
+      "-DFT_TERNARY_ADAPTIVE_CDF=1",
+      "-DFT1536_CANDIDATE_PROFILE=1",
+      "-DCLEANSE=1",
+      "-DTRUE_TERNARY_SECRET=1",
+      "-DTRUE_TERNARY_SECRET_MODE=1",
+      "-DTERNARY_KEYGEN_BOUND_SCALE_NUM=1250",
+      "-DTERNARY_KEYGEN_BOUND_SCALE_DEN=100",
+      "-DTERNARY_KEYGEN_MAX_ATTEMPTS=3000000",
+      "-DSIGN_MAX_ATTEMPTS=16",
+      "-std=c99",
+      "-Isource",
+      "checks/terminal.c",
+      "source/falcon-fft.c",
+      "source/fpr-emulated.c",
+      "-lm",
+      "-o",
+      "bin/terminal_normal"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001",
+    "exit_code": 0,
+    "elapsed": 0.314448238001205,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/terminal_normal",
+      "terminal"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001",
+    "exit_code": 0,
+    "elapsed": 0.002046193985734135,
+    "stdout_sha256": "7e135b8b59e49a0d60eb5403d2ea9422535ce91c5e097500048323cad2c10486",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/terminal_normal",
+      "imag"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001",
+    "exit_code": 0,
+    "elapsed": 0.0007025250233709812,
+    "stdout_sha256": "554891de3fff7ff9366bff6d58963cda1807cf5e6beb77e2d2af2de2d5733bd5",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/terminal_normal",
+      "cancel"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001",
+    "exit_code": 0,
+    "elapsed": 0.0009513230179436505,
+    "stdout_sha256": "cdaff1fa205ab992f8e11c9e806397406f8acfb82000e053acafb0d69a16418f",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

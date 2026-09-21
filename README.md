@@ -21,7 +21,7 @@ are required. Every build verifies the
 `2553358fbb1144acdb577e1ad371a017ac325306dd901af745295dd17b03bd5a`.
 See [active-build provenance](provenance/FT1536_ACTIVE_BUILD.md).
 
-**Current status — 2026-09-20:** **L_RHO, the complete L_NTT pipeline and the
+**Current status — 2026-09-21:** **L_RHO, the complete L_NTT pipeline and the
 byte-level L_V verifier bridge are proved for the pinned corrected candidate
 and its explicit C model.** M0 now defines the protocol/game/resource contract
 and proves the STATIC capacity bound. **H3_ZERO_SCALAR proves the local
@@ -40,8 +40,10 @@ normalization for emitted keys**, with a source-derived stable-gate bridge.
 **H3_INITIAL_TARGETS certifies the actual target preparation before sampling**,
 for every canonical challenge, with explicit source FFT and rounding bounds.
 **H3_ORDERED_REACH proves a finite-prefix center bound for the first executed
-right root branch**, while the correlated transfer into the left branch remains open.
-Global reachable-center bounds and end-to-end security remain open research objectives.
+right root branch. H3_LEFT_ROOT_CORRELATED_TRANSFER closes the left branch
+and composes zero-aware NumericCenter for all active pre-floor points from
+certified legal root/caller entries.** Whole Sign termination, source
+postprocessing, sampler law and end-to-end security remain open research objectives.
 
 **FPEMU audit — confirmed issues:** numeric `fpr_lt(-0,+0)` returns 1, and
 GCC14.2 with the selected `-O` emits an operand-dependent branch in
@@ -99,23 +101,33 @@ It proves the FFT challenge error<1/8192, literal reciprocal/basis operations,
 both target error layers and normalized-key preservation.
 [Independent review](proofs/ft1536/validation/2026-09-20-initial-targets/README.md)
 reproduced219/219 files,21 modules/129 theorems (30 new). The large frequency
-t0 bound is recorded explicitly; ORDERED_REACH to scalar NumericCenter remains open.
+t0 bound is recorded explicitly; scalar NumericCenter required the later ordered proof.
 
 The [ORDERED_REACH result](proofs/ft1536/stages/FT1536_H3_ORDERED_REACH_RUN_001/REPORT.md)
 is **PARTIAL_PROOF**: all1536 active positions of the first executed right
 root branch have finite |mu|<=156276714, before each scalar floor/cast.
 [Independent review](proofs/ft1536/validation/2026-09-20-ordered-reach/README.md)
 reproduced225/225 files,28 modules/179 theorems (23 new), with explicit
-normal/fault/nonreturn semantics and conditional memory frames. The remaining
+normal/fault/nonreturn semantics and conditional memory frames. Its then-open
 [LEFT_ROOT_CORRELATED_TRANSFER](proofs/ft1536/stages/FT1536_H3_ORDERED_REACH_RUN_001/NEXT_INTERFACE.md)
-requires a source-certified weighted residual/root-gain bridge and a closed
+required a source-certified weighted residual/root-gain bridge and a closed
 left-branch invariant. The failed loose-bound route is retained; it is not
 a required-domain counterexample or a demonstrated C defect.
 
-**Next prepared owner-run task:** [LEFT_ROOT_CORRELATED_TRANSFER](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_LEFT_ROOT_CORRELATED_TRANSFER_2026-09-20.md),
-with [579 pinned input members](proofs/ft1536/background/H3_LEFT_ROOT_CORRELATED_TRANSFER_2026-09-20/README.md).
-Its goal is to derive the missing source bank/metric/energy/root-gain bounds,
-close every left active center, and compose full finite-prefix reach if justified.
+The [LEFT_ROOT_CORRELATED_TRANSFER result](proofs/ft1536/stages/FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001/REPORT.md)
+closes that gap with source bank/A2 budgets, raw-L/stable-D metric factor<6,
+right-residual reconstruction and actual root gain. It composes
+**H3_ORDERED_NUMERIC_CENTER_PROVED_FOR_EMITTED_PINNED_MODEL**:
+finite **|mu|<=937866518**, margins1209616765/1209616764, including raw negative zero.
+[Independent review](proofs/ft1536/validation/2026-09-21-left-root-transfer/README.md)
+reproduced228/228 files,31 modules/206 theorems (27 new), native/sanitizer controls,
+700 terminal/bank cases and19968 local metric checks. The universal argument
+is explicitly mixed analytical/kernel. Historical ORDERED retains PARTIAL_PROOF.
+
+The [next interfaces](proofs/ft1536/stages/FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001/NEXT_INTERFACE.md)
+are **SOURCE_POSTPROCESSING_AND_PRECAST** and **SOURCE_SAMPLER_LAW**: actual
+basis products/iFFT/rint/narrowing/bytes, followed separately by source joint law
+and its losses. Conditional caller frames do not establish whole Sign totality.
 
 The [candidate night-run setup](provenance/checks/2026-09-20-dudect-floor-ct-ready/README.md)
 is **STATIC_READY_TIMING_DEFERRED**: source/build/fixture checks passed,
@@ -231,6 +243,7 @@ integration work; changing their description does not change the old CLI.
 | [H3_STABLE_NORMALIZATION](proofs/ft1536/stages/FT1536_H3_STABLE_NORMALIZATION_RUN_001/REPORT.md) | Emitted stable-gate bridge, actual normalized widths, sqrt/div/scaling and preserved basis/internal L; mixed proof | `H3_STABLE_NORMALIZATION_PROVED_FOR_EMITTED_PINNED_MODEL` |
 | [H3_INITIAL_TARGETS](proofs/ft1536/stages/FT1536_H3_INITIAL_TARGETS_RUN_001/REPORT.md) | Actual target prefix for all canonical challenges, source FFT/reciprocal/basis errors and key frame; mixed proof | `H3_INITIAL_TARGETS_PROVED_FOR_EMITTED_PINNED_MODEL` |
 | [H3_ORDERED_REACH](proofs/ft1536/stages/FT1536_H3_ORDERED_REACH_RUN_001/REPORT.md) | Right-root finite-prefix NumericCenter, scalar outcome separation and conditional frames; left correlated transfer open; mixed proof | `PARTIAL_PROOF` |
+| [H3_LEFT_ROOT_CORRELATED_TRANSFER](proofs/ft1536/stages/FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001/REPORT.md) | Source bank/A2/metric/root transfer and closed left invariant; composes full zero-aware root/caller finite-prefix NumericCenter; mixed proof | `H3_LEFT_ROOT_CORRELATED_TRANSFER_PROVED_FOR_EMITTED_PINNED_MODEL` |
 
 The completed L_V bridge establishes, for all canonical h,c and legal finite
 payloads b in the pinned GCC14.2.0/C99/Linux x86_64 LP64 model:
@@ -283,20 +296,22 @@ show their dependency paths and exact scopes. The current population sharp-tail
 R5T argument is a separate conditional result requiring a consistent new
 package and final consumption. T5 alone does not supply that truncated bound.
 
-### Next mathematical frontier
+### H3 progression and next mathematical frontier
 
 The [H3 interface](proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001/H3_INTERFACE.md)
 targets center reachability before `fpr_floor -> int` and `s+z` for emitted
 keys and reachable signing histories. The roadmap then connects the complete
 source signing law, pre-cast/byte/retry behavior, R5T, public simulation and ROM
-composition. New mathematical tasks are explicit checkpoints.
+composition. The zero-aware root/caller finite-prefix goal is now composed
+by LEFT_ROOT; source postprocessing/pre-cast and source sampler law are the
+next interfaces. The checkpoints below preserve their historical scopes.
 The [H3_RANGE partial result](proofs/ft1536/stages/FT1536_H3_RANGE_RUN_001/REPORT.md)
 has an independent **96/96-file replay, 8 Lean modules and 49 new theorems**.
 It establishes local proposal support and conditional floor/residual interfaces.
 The actual backend gives `fpr_floor(-0)=-1`; this breaks mathematical-floor
 equality but does not by itself overflow `s+z`. Synthetic underflow diagnostics
 also rule out an unrestricted IEEE error model. Their reachability from emitted
-keys has not been established. The remaining global obligation is
+keys has not been established. That historical package's global obligation is
 `Reach_call_C(...) -> CenterClass(mu)`, including internal LDL and machine-error
 bounds; see the [ledger](proofs/ft1536/stages/FT1536_H3_RANGE_RUN_001/BOUND_LEDGER.md).
 
@@ -310,8 +325,9 @@ Full source-add error composition and r/delta case analysis are analytical,
 supported by kernel lemmas, with this distinction explicit in the
 [independent review](proofs/ft1536/validation/2026-09-19-zero-scalar/README.md).
 Replay reproduced **95/95 files, 17 Lean modules and 97 theorems (48 new)**.
-The next global goal is `Reach_call_C(...) -> NumericCenter(mu)`;
-sampler-law consumption remains a separate obligation.
+Its exported goal `Reach_call_C(...) -> NumericCenter(mu)` is now established
+for certified legal root/caller finite prefixes by LEFT_ROOT; sampler-law
+consumption remains a separate obligation.
 
 The [H3_ROOT_LDL result](proofs/ft1536/stages/FT1536_H3_ROOT_LDL_RUN_001/REPORT.md)
 now establishes a uniform source-bound certificate for key FFTs, root Gram
@@ -452,7 +468,9 @@ Later maintainer replays and their exact scopes:
 [FLOOR_CT](proofs/ft1536/validation/2026-09-20-floor-ct/README.md),
 [RAW_ASSEMBLY](proofs/ft1536/validation/2026-09-20-raw-assembly/README.md),
 [STABLE_NORMALIZATION](proofs/ft1536/validation/2026-09-20-stable-normalization/README.md),
-[INITIAL_TARGETS](proofs/ft1536/validation/2026-09-20-initial-targets/README.md).
+[INITIAL_TARGETS](proofs/ft1536/validation/2026-09-20-initial-targets/README.md),
+[ORDERED_REACH partial](proofs/ft1536/validation/2026-09-20-ordered-reach/README.md),
+[LEFT_ROOT and composed NumericCenter](proofs/ft1536/validation/2026-09-21-left-root-transfer/README.md).
 The independent Blue review has archived evidence, rather than a single
 declared full replay runner.
 

@@ -22,9 +22,10 @@ osiągnięcia, T2C3/T5, kontrakt M0, graf zależności i dalsze obowiązki.
 Pakiet ma 211 członków OUTPUTS i 198 publicznych wejść Git, manifest
 `c3efdcff510983a143946d43ab456656090061cd5b9b4b6847abc7f141c0cfa3`.
 Jest checkpointem dokumentacyjnym (`replay=none`); obecnie archiwum zawiera
-także dwadzieścia etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
+także dwadzieścia jeden etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
 H3_ZERO_SCALAR, H3_ROOT_LDL, H3_NODE3, H3_NODE2, BINARY_TOWER, audyt FPEMU,
-FLOOR_CT, RAW_ASSEMBLY, STABLE_NORMALIZATION, INITIAL_TARGETS i ORDERED_REACH.
+FLOOR_CT, RAW_ASSEMBLY, STABLE_NORMALIZATION, INITIAL_TARGETS, ORDERED_REACH
+i LEFT_ROOT_CORRELATED_TRANSFER.
 
 [Mapa po domknięciu L_V — 2026-09-19](documents/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md)
 przedstawia zależności i proponowaną kolejność: dokładny kontrakt gry,
@@ -55,7 +56,9 @@ Lean/analityczny dowód źródłowy. Domknięto zero-aware floor/cast/s+z i
 of/sub z E_r=E_res=2^-20 dla wszystkich NumericCenter, także obu zer
 i subnormals. [Niezależny odbiór](validation/2026-09-19-zero-scalar/README.md):
 95/95 plików, 17 modułów i 97 twierdzeń (48 nowych).
-Globalne `Reach_call_C -> NumericCenter` i prawo samplera pozostają otwarte.
+Na tym etapie `Reach_call_C -> NumericCenter` i prawo samplera pozostawały
+otwarte; późniejszy LEFT_ROOT domyka pierwszy typ dla certyfikowanych legalnych
+root/caller finite prefixes. Prawo samplera pozostaje odrębnym obowiązkiem.
 [Zlecenie](documents/FT1536_ZADANIE_ASTRA_H3_ZERO_SCALAR_2026-09-19.md) oraz
 [bootstrap](background/H3_ZERO_SCALAR_2026-09-19/README.md) zachowują piny.
 
@@ -154,18 +157,27 @@ NumericCenter dla1536 active positions, finite |mu|<=156276714, przed floor.
 [Odbiór](validation/2026-09-20-ordered-reach/README.md):225/225 plików,
 28 modułów,179 twierdzeń (23 nowe), mixed analytical/kernel scope. Rozliczono
 normal returns, rejection/nonreturn, sticky fault i conditional memory frames.
-Globalny cel pozostaje otwarty: [LEFT_ROOT_CORRELATED_TRANSFER](stages/FT1536_H3_ORDERED_REACH_RUN_001/NEXT_INTERFACE.md)
-wymaga source weighted residual/metric/root-gain bridge oraz zamkniętej lewej
+W tym pakiecie pozostał otwarty [LEFT_ROOT_CORRELATED_TRANSFER](stages/FT1536_H3_ORDERED_REACH_RUN_001/NEXT_INTERFACE.md),
+wymagający source weighted residual/metric/root-gain bridge oraz zamkniętej lewej
 gałęzi. Niezamknięta luźna majoranta nie jest błędem C ani required-domain
 counterexample. [Zlecenie](documents/FT1536_ZADANIE_ASTRA_H3_ORDERED_REACH_2026-09-20.md)
 i [bootstrap](background/H3_ORDERED_REACH_2026-09-20/README.md) zachowują piny.
 
-**Następne zadanie do ręcznego startu:**
-[LEFT_ROOT_CORRELATED_TRANSFER](documents/FT1536_ZADANIE_ASTRA_H3_LEFT_ROOT_CORRELATED_TRANSFER_2026-09-20.md),
-z [579 przypiętymi wejściami](background/H3_LEFT_ROOT_CORRELATED_TRANSFER_2026-09-20/README.md).
-Cel: wyprowadzić source bank/metric/energy/root-gain bounds, zamknąć wszystkie
-lewe active centers i skomponować pełny finite-prefix reach, jeśli uzasadniony.
-Idealny weighted diagnostic nie jest premise nowego zadania.
+**Odebrany LEFT_ROOT_CORRELATED_TRANSFER:** [raport](stages/FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001/REPORT.md)
+domyka source bank/A2 budgets, raw-L/stable-D factor<6, right residual/root gain
+i wszystkie left active centers. Kompozycja daje
+**H3_ORDERED_NUMERIC_CENTER_PROVED_FOR_EMITTED_PINNED_MODEL**:
+finite |mu|<=937866518, margins1209616765/1209616764, także raw−0.
+[Odbiór](validation/2026-09-21-left-root-transfer/README.md):228/228 plików,
+31 modułów,206 twierdzeń (27 nowych), normal/ASan/UBSan,700 terminal cases
+i19968 local metric checks. Mixed source analytical/kernel boundary jest jawny;
+historia ORDERED pozostajePARTIAL. [Zlecenie](documents/FT1536_ZADANIE_ASTRA_H3_LEFT_ROOT_CORRELATED_TRANSFER_2026-09-20.md)
+i [579 wejść](background/H3_LEFT_ROOT_CORRELATED_TRANSFER_2026-09-20/README.md) zachowują piny.
+
+**Następne obowiązki:** [SOURCE_POSTPROCESSING_AND_PRECAST oraz SOURCE_SAMPLER_LAW](stages/FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001/NEXT_INTERFACE.md).
+Pierwszy dotyczy basis products/iFFT/rint/narrowing/bytes; drugi joint source
+law i jego strat. Current-center proof nie daje whole Sign termination ani
+pre-cast safety przez przyszłe norm acceptance.
 
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
@@ -221,6 +233,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [STABLE_NORMALIZATION](stages/FT1536_H3_STABLE_NORMALIZATION_RUN_001/REPORT.md) | **H3_STABLE_NORMALIZATION_PROVED_FOR_EMITTED_PINNED_MODEL** — actual widths/gates i source sqrt/div; mieszany dowód | `6c233cd` |
 | [INITIAL_TARGETS](stages/FT1536_H3_INITIAL_TARGETS_RUN_001/REPORT.md) | **H3_INITIAL_TARGETS_PROVED_FOR_EMITTED_PINNED_MODEL** — canonical target prefix, source errors i frame; mieszany dowód | `99ceb98` |
 | [ORDERED_REACH](stages/FT1536_H3_ORDERED_REACH_RUN_001/REPORT.md) | **PARTIAL_PROOF** — right-root finite-prefix NumericCenter, outcome/frame; left correlated transfer otwarty | `7664277` |
+| [LEFT_ROOT_CORRELATED_TRANSFER](stages/FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001/REPORT.md) | **H3_LEFT_ROOT_CORRELATED_TRANSFER_PROVED_FOR_EMITTED_PINNED_MODEL** — left transfer i kompozycja pełnego zero-aware root/caller finite-prefix NumericCenter; mieszany dowód | niniejszy checkpoint |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).
@@ -307,7 +320,8 @@ Nie wykazano osiągalności tych syntetycznych przypadków z emitted KeyGen.
 [REACHABILITY](stages/FT1536_H3_RANGE_RUN_001/REACHABILITY.md) i
 [ledger](stages/FT1536_H3_RANGE_RUN_001/BOUND_LEDGER.md) zachowują pełny cel:
 zero/domain invariant, internal LDL pivots/L, machine-error transfer i
-emitted/loader refinement pozostają otwarte. Odbiór odtworzył 8 modułów,
+emitted/loader refinement pozostawały tam otwarte; późniejsze etapy powyżej
+domykają wskazane nowe interfejsy, zachowując historyczny status. Odbiór odtworzył 8 modułów,
 49 nowych twierdzeń oraz 96/96 plików; [receipts](validation/2026-09-19-h3/README.md).
 
 Odtwarzanie z czystego checkoutu Git i ukrytymi oryginałami sprawdzono
@@ -341,7 +355,8 @@ i `FT1536_H3_ROOT_LDL_RUN_001`, `FT1536_H3_NODE3_RUN_001`
 oraz `FT1536_H3_NODE2_RUN_001`, `FT1536_FPEMU_AUDIT_RUN_001`
 i `FT1536_H3_BINARY_TOWER_RUN_001`, `FT1536_FPEMU_FLOOR_CT_RUN_001`
 oraz `FT1536_H3_RAW_ASSEMBLY_RUN_001`, `FT1536_H3_STABLE_NORMALIZATION_RUN_001`
-i `FT1536_H3_INITIAL_TARGETS_RUN_001`.
+i `FT1536_H3_INITIAL_TARGETS_RUN_001`, `FT1536_H3_ORDERED_REACH_RUN_001`
+oraz `FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001`.
 Wpis katalogu określa właściwy punkt wejścia. Odbiór Blue jest archiwum
 recenzji i receipts; nie ma zadeklarowanego pojedynczego pełnego runnera.
 

@@ -1,0 +1,8 @@
+--- inputs/bootstrap/ORDERED/scripts/run.py
++++ scripts/run.py
+@@ -1,4 +1,4 @@
+-"""Bounded ORDERED_REACH jobs; W-only writable, bootstrap/source RO."""
++"""Bounded LEFT_ROOT jobs; W-only writable, bootstrap/source RO."""
+ import datetime,fcntl,hashlib,json,os,resource,signal,subprocess,sys,time
+ from pathlib import Path
+ W=Path(__file__).absolute().parents[1];limit=int(sys.argv[1]);argv=sys.argv[2:]

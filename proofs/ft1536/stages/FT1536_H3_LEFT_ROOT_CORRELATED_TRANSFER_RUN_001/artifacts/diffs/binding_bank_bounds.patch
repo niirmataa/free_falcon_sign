@@ -1,0 +1,138 @@
+--- inputs/bootstrap/NORMALIZED/scripts/width_bounds.py
++++ scripts/bank_bounds.py
+@@ -1,85 +1,54 @@
+-"""Exact QQ/RBF source-error enclosures; no RN/legacy H4 premise."""
++"""Actual first-success bank inequalities, paired weighting and terminal A2 defect."""
+ import json,re,sys
+ from pathlib import Path
+ sys.path.insert(0,str(Path.cwd()/'scripts'))
+-from sage.all import QQ,ZZ,RealBallField,PolynomialRing
+-from dyadic import value,rn
++from sage.all import QQ,ZZ,PolynomialRing
++from dyadic import value
+ from replaylib import sha
+-W=Path.cwd();U=QQ(1)/2**48;eta=QQ(1)/2**900;b=2*U;g=QQ(1)/2**40;tiny=QQ(1)/2**800
+-lowbits=0x4090000053700377;highbits=0x4114444d1a037d50
+-def qword(w):
+- v=value(w);return QQ(v.numerator)/v.denominator
+-lo=qword(lowbits);hi=qword(highbits)
+-assert lo==QQ(4503601027220343)/4398046511104 and hi==QQ(356537342113749)/1073741824
+-header=(W/'source/fpr-emulated.h').read_text();c_bits=int(re.search(r'fpr_IW1I = 0x([0-9a-fA-F]+)ULL',header)[1],16);c=qword(c_bits)
+-assert c_bits==0x3ff279a74590331c and abs(c*c-QQ(4)/3)<QQ(1)/2**49
+-table=(W/'source/ft1536-adaptive-cdf-tables.h').read_text();block=table.split('ft_adaptive_cdf_inv_2sigma0_sq_bits',1)[1].split('};',1)[0]
+-bank=[int(x,16) for x in re.findall(r'UINT64_C\(0x([0-9a-fA-F]+)\)',block)];assert len(bank)==5;last=qword(bank[-1]);assert bank[-1]==0x3f45555555555555 and last<QQ(1)/1536
+-# Relative inflation of U|value|+eta in the explicitly established stable domains.
+-assert U+2**112*eta<b
+-ratios=[((1-b)**3,(1+b)**3),((1-b)**4/(1+b)**2,(1+b)**4/(1-b)**2),((1-b)**4/(1+b)**3,(1+b)**4/(1-b)**3),
+- ((1-b),(1+b)),((1-b)**2/(1+b),(1+b)**2/(1-b))]
+-for a,z in ratios:assert 1-g<a and z<1+g
+-primary_lo=QQ(1)/2*(1-g)**9;primary_hi=QQ(2**23)*(1+g)**9
+-assert primary_lo>QQ(1)/4 and primary_hi<2**24
+-q2=QQ(18433**2);recip_lo=q2/2**24*(1-b);recip_hi=q2/(QQ(1)/4)*(1+b)
+-assert recip_lo>QQ(1)/4 and recip_hi<2**31
+-assert QQ(3)/4*(1-b)**3>QQ(1)/2 and 3*QQ(2)**46*(1+b)**3<2**48
+-assert 3*QQ(2)**69*(1+b)**3<2**72 and 2*QQ(2)**48*(1+b)<2**50
+-assert 2**72<2**100 and 2**48<2**80 and QQ(1)/2>QQ(1)/2**16
+-assert (1-U)**2/4>QQ(1)/16 and (1+U)**2*2**31<2**32
+-assert QQ(768)*(1-U)/2**16-eta>QQ(1)/128 and QQ(3072)*(1+U)+eta<4096
+-assert c*(1-U)/128-eta>QQ(1)/128 and c*(1+U)*4096+eta<8192
+-assert 2*QQ(1)/128**2*(1-U)**2-tiny>QQ(1)/2**16 and 2*QQ(8192)**2*(1+U)**2+tiny<2**28
+-# Sqrt kernel floor+sticky+pack gives relative error <=2^-52, relaxed to U here.
+-assert QQ(4)/2**54<=U
+-stored_lo=QQ(768**2)/hi*((1-U)/(1+U))**2-tiny
+-stored_hi=QQ(768**2)/lo*((1+U)/(1-U))**2+tiny
+-paired_lo=c*c*stored_lo*(1-U)**2-tiny
+-paired_hi=c*c*stored_hi*(1+U)**2+tiny
+-assert stored_lo>QQ(17763)/10000 and stored_hi<QQ(5759999)/10000
+-assert paired_lo>QQ(23684)/10000 and paired_hi<QQ(7679999)/10000
+-assert stored_lo>=QQ(17203)/10000 and stored_hi<QQ(59519)/100
+-assert paired_hi<768
+-def outward_sqrt(a,upper):
+- scale=ZZ(2)**96;k=ZZ((a*scale**2).floor()).isqrt()
+- assert QQ(k)**2<=a*scale**2 and a*scale**2<(k+1)**2
+- return QQ(k+int(upper))/scale
+-def bit_interval(a,z):
+- from fractions import Fraction
+- wl=rn(Fraction(int(a.numerator()),int(a.denominator())));wh=rn(Fraction(int(z.numerator()),int(z.denominator())))
+- if qword(wl)>a:wl-=1
+- if qword(wh)<z:wh+=1
+- assert qword(wl)<=a<=z<=qword(wh)
+- return dict(lower=f'{wl:016x}',upper=f'{wh:016x}')
+-def enclosure(low,high):
+- sl=outward_sqrt(low,False);sh=outward_sqrt(high,True)
+- # |sigma|<4096 makes the eta cross terms far smaller than tiny.
+- assert sh<4096 and 2*4096*eta+eta**2<tiny
+- denlo=2*low*(1-U)**2-tiny;denhi=2*high*(1+U)**2+tiny
+- dl=(1-U)/denhi-eta;dh=(1+U)/denlo+eta
+- assert QQ(1)/2**16<denlo and denhi<2**80 and dl>last and dl>QQ(1)/1536
+- return dict(real_square_lower=str(low),real_square_upper=str(high),value_lower=str(sl),value_upper=str(sh),word_interval=bit_interval(sl,sh),
+-  dss_denominator_lower=str(denlo),dss_denominator_upper=str(denhi),dss_lower=str(dl),dss_upper=str(dh),dss_word_interval=bit_interval(dl,dh),
+-  last_coefficient_margin=str(dl-last),margin_above_one_over_1536=str(dl-QQ(1)/1536))
+-stored=enclosure(stored_lo,stored_hi);paired=enclosure(paired_lo,paired_hi)
+-# Exact positivity/range identities for top weighted means and harmonic binary step.
+-P=PolynomialRing(QQ,names=['m','x','y','z','M']);m,x,y,z,M=P.gens();a=m+x;bb=m+y;cc=m+z
+-assert a*bb+a*cc+bb*cc-m*(a+bb+cc)==m*(x+y+z)+x*y+x*z+y*z
+-assert 2*a*bb-m*(a+bb)==m*(x+y)+2*x*y
+-R=RealBallField(256)
+-out=dict(schema='FT1536_SOURCE_WIDTH_BOUNDS_V1',status='PASS_EXACT_SOURCE_ERROR_ENCLOSURES',source_manifest_sha256=sha(W/'inputs/bootstrap/CANDIDATE.sha256'),
+- U=str(U),eta=str(eta),sqrt_relative_error_bound=str(QQ(1)/2**52),scope='All source-gated emitted stable leaves, using sqrt54 integer invariant and source div/mul error contracts; no legacy RN assumption',
+- gate=dict(min_bits=f'{lowbits:016x}',max_bits=f'{highbits:016x}',D_min=str(lo),D_max=str(hi),inclusive=True),
+- stored=stored,paired=paired,IW1I=dict(bits=f'{c_bits:016x}',value=str(c),real_square=str(c*c)),
+- summary=dict(stored_square=['1.7763','575.9999'],paired_square=['2.3684','767.9999'],historical_H4_reestablished=True,paired_variance_strictly_below768=True,
+-  all_dss_ge_actual_last_coefficient=True,stored_square_RBF=[str(R(stored_lo)),str(R(stored_hi))],paired_square_RBF=[str(R(paired_lo)),str(R(paired_hi))]),
+- selector=dict(coefficients_bits=[f'{v:016x}' for v in bank],last_value=str(last),found_for_both_width_classes=True,sigma_only=True,PRNG_or_sampler_prefix_execution_claimed=False),
+- extended_div=dict(numerator_abs_cap='2^100',positive_normal_denominator=['2^-16','2^80'],relative_plus_absolute_error='U*abs(x/y)+eta',numerator_subnormal_error_upper='2^-1006',pack_exponent_upper=1141),
+- broad_P_key=dict(computation_defined=True,stable_gate_acceptance_proved=False,gate_status='OPEN; not in P_key and not derived from broad positive bounds',
+-  root=['1/2','2^23'],per_level_relative=str(g),top_ratio_bounds=[dict(lower=str(a),upper=str(z)) for a,z in ratios[:3]],
+-  binary_ratio_bounds=[dict(lower=str(a),upper=str(z)) for a,z in ratios[3:]],primary_lower=str(primary_lo),primary_upper=str(primary_hi),
+-  reciprocal_lower=str(recip_lo),reciprocal_upper=str(recip_hi),all_stable_leaves=['1/4','2^31'],intermediate_scalar_upper='2^72',largest_stable_divisor_upper='2^48',
+-  normalized_stored_value=['1/128','4096'],normalization_runs_when_gate_fails=True),
+- square_root_model='N=a*2^54;54 binary trials; q^2<=N<(q+1)^2; final xu=2*(N-q^2); guard/sticky and FPR pack error<=4 units')
+-(W/'WIDTH_BOUNDS.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(dict(status=out['status'],summary=out['summary'],stored_word_interval=stored['word_interval'],paired_word_interval=paired['word_interval'],broad_definedness=True,all_P_key_gate=False),indent=2))
++W=Path.cwd();I=W/'inputs/bootstrap';U=QQ(1)/2**48;eta=QQ(1)/2**900;eps=QQ(1)/2**40;epspair=QQ(1)/2**39
++n=json.loads((I/'NORMALIZED/WIDTH_BOUNDS.json').read_text());Dlo=QQ(n['gate']['D_min']);Dhi=QQ(n['gate']['D_max'])
++text=(W/'source/ft1536-adaptive-cdf-tables.h').read_text();block=text.split('ft_adaptive_cdf_inv_2sigma0_sq_bits',1)[1].split('};',1)[0]
++bits=[int(x,16) for x in re.findall(r'UINT64_C\(0x([0-9a-fA-F]+)\)',block)]
++def qv(w):v=value(w);return QQ(v.numerator)/v.denominator
++coeff=list(map(qv,bits));pairs=[tuple(map(int,p)) for p in re.findall(r'\{\s*(\d+)u,\s*(\d+)u\s*\}',text.split('ft_adaptive_cdf[',1)[1])]
++supports=[sum(a!=0 or b!=0 for a,b in pairs[512*j:512*(j+1)]) for j in range(5)];assert supports==[29,59,118,235,365]
++assert all(coeff[j]>coeff[j+1]>0 for j in range(4))
++# Actual dss error is sandwiched relative to 1/(2 S^2); S^2 in(1,1024).
++assert (1-U)/((1+U)**2+QQ(1)/2**790)-2048*eta>1-eps
++assert (1+U)/((1-U)**2-QQ(1)/2**790)+2048*eta<1+eps
++# Actual D*S0^2 and D*S1^2; source sqrt/div/mul enclosures and exact IW1I.
++assert ((1+U)/(1-U))**2+QQ(1)/2**780<1+eps
++assert ((1-U)/(1+U))**2-QQ(1)/2**780>1-eps
++iw=QQ(n['IW1I']['value']);assert iw**2*(1+eps)*(1+2*U)**2<QQ(4)/3*(1+epspair)
++assert iw**2*(1-eps)*(1-2*U)**2>QQ(4)/3*(1-epspair)
++records=[];maxima={}
++for kind,factor,inflation in [('stored',QQ(1),eps),('paired',QQ(4)/3,epspair)]:
++ vlow=QQ(n[kind]['real_square_lower']);vhigh=QQ(n[kind]['real_square_upper']);prod_hi=QQ(768)**2*factor*(1+inflation);prod_lo=QQ(768)**2*factor*(1-inflation)
++ rows=[]
++ for j,k in enumerate(supports):
++  lo=vlow if j==0 else max(vlow,(1-eps)/(2*coeff[j-1]));hi=min(vhigh,(1+eps)/(2*coeff[j]))
++  assert 0<lo<hi
++  R=QQ(k+1)+QQ(1)/2**20;energy=min(Dhi*R**2,prod_hi*R**2/lo)
++  row=dict(width_class=kind,bank=j,support=k,coefficient_bits=f'{bits[j]:016x}',coefficient=str(coeff[j]),
++   failed_previous_coefficient=None if j==0 else str(coeff[j-1]),variance_lower=str(lo),variance_upper=str(hi),lower_strict=True,upper_inclusive=True,
++   inference='first successful ge: dss>=a_j and, for j>0,dss<a_(j-1); source relative dss error explicitly included',
++   D_sigma_squared_lower=str(prod_lo),D_sigma_squared_upper=str(prod_hi),normal_scalar_residual_abs=str(R),D_residual_squared_upper=str(energy),snapshot='after scalar normal return, current NumericCenter already established',
++   source_PC='sampler_large2866; selector2808-2822; terminal1633-1648',domain='Emitted normalized stored/paired width, selected bank j, legal normal-return prefix after current center proof',
++   dependencies=['NORMALIZED/WIDTH_BOUNDS.json','ORDERED/SCALAR_OUTCOMES.md','source adaptive coefficient/table bytes','source dss relative-error enclosure'],discharge='PROVED_BY_SOURCE_COMPARISON_AND_EXACT_ERROR_INEQUALITIES')
++  rows.append(row);records.append(row)
++ maxima[kind]=max(QQ(r['D_residual_squared_upper']) for r in rows)
++half_last_defect=QQ(1)/2**37
++assert U*(367+184)+2*eta+QQ(1)/2**1023<half_last_defect
++R=QQ(366)+QQ(1)/2**20;cross=Dhi*(2*R*half_last_defect+half_last_defect**2)
++terminal=maxima['stored']+QQ(3)/4*maxima['paired']+cross;terminal_integer=ZZ(terminal.ceil())
++P=PolynomialRing(QQ,names=['a','b','d']);a,b,d=P.gens();r0=a-b/2+d
++assert r0*r0+r0*b+b*b==(a+d)**2+QQ(3)/4*b*b
++out=dict(schema='FT1536_SOURCE_BANK_WEIGHTED_V1',status='PASS_SOURCE_BANK_AND_TERMINAL_WEIGHT_ENCLOSURES',source_pin=sha(I/'CANDIDATE.sha256'),
++ width_certificate_sha256=sha(I/'NORMALIZED/WIDTH_BOUNDS.json'),dss_relative_epsilon=str(eps),stored_D_sigma_relative_epsilon=str(eps),paired_D_sigma_relative_epsilon=str(epspair),
++ gate=dict(D_min=str(Dlo),D_max=str(Dhi)),coefficients=[dict(bits=f'{w:016x}',value=str(a)) for w,a in zip(bits,coeff)],records=records,
++ maxima={k:str(v) for k,v in maxima.items()},terminal_half_last_sub_defect=str(half_last_defect),terminal_cross_allowance=str(cross),
++ terminal_A2_energy_exact_upper=str(terminal),terminal_A2_energy_integer_upper=int(terminal_integer),right_768_terminal_budget=int(768*terminal_integer),
++ terminal_identity='Q_A2(r0,r1)=(normal_residual0+half/last-sub defect)^2+3/4*normal_residual1^2',
++ domain='Actual source selected banks and normalized stored/paired widths, after already established current NumericCenter and NORMAL_RETURN; no distribution assumption',
++ paired_raw_squares_not_equally_weighted=True,all_P_key_gate_assumed=False)
++(W/'BANK_WEIGHTED_BOUNDS.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({k:out[k] for k in ['status','maxima','terminal_A2_energy_integer_upper','right_768_terminal_budget','terminal_half_last_sub_defect']},indent=2))
