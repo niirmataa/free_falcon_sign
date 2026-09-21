@@ -211,6 +211,14 @@ z actual mu/sigma words. Reverse chi2(G||K_C)=∞ ma jawny support reason.
 wymaga ordered/shared-history composition i jawnych reference exits; lokalny
 bound nie jest whole-call loss,η_pre ani dowodem realnego PRNG.
 
+**Następne zadanie do ręcznego startu:**
+[ORDERED_JOINT_KERNEL](documents/FT1536_ZADANIE_ASTRA_H3_ORDERED_JOINT_KERNEL_2026-09-21.md),
+z [755 przypiętymi wejściami](background/H3_ORDERED_JOINT_KERNEL_2026-09-21/README.md).
+Cel: actual3072-call adaptive joint law w IID_BUFFER, forward domain closure,
+porównanie z jawnymi Q_S/Q_stop i rozliczeniem support exits, zasoby oraz
+deterministic POST pushforward/event transfer dla H6P. Reference BadPrecast
+probability i realny PRNG pozostają dalszymi obowiązkami.
+
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
 
@@ -268,7 +276,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [LEFT_ROOT_CORRELATED_TRANSFER](stages/FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001/REPORT.md) | **H3_LEFT_ROOT_CORRELATED_TRANSFER_PROVED_FOR_EMITTED_PINNED_MODEL** — left transfer i kompozycja pełnego zero-aware root/caller finite-prefix NumericCenter; mieszany dowód | `fbf4a5c` |
 | [SOURCE_POSTPROCESSING_AND_PRECAST](stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001/REPORT.md) | **PARTIAL_PROOF** — operational suffix/iFFT/rint/norm/bytes domknięte; uniwersalny Safe16 otwarty | `481e62b` |
 | [SCALAR_KERNEL_IID](stages/FT1536_H3_SCALAR_KERNEL_IID_RUN_001/REPORT.md) | **H3_SCALAR_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — exact conditional kernel, A>=1/256 i fresh-tail/resources; real-PRNG bridge otwarty | `6f1f34c` |
-| [SCALAR_GAUSSIAN_COMPARISON](stages/FT1536_H3_SCALAR_GAUSSIAN_COMPARISON_RUN_001/REPORT.md) | **H3_SCALAR_GAUSSIAN_COMPARISON_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — local TV/forward chi2; reverse∞ i joint scope jawne | niniejszy checkpoint |
+| [SCALAR_GAUSSIAN_COMPARISON](stages/FT1536_H3_SCALAR_GAUSSIAN_COMPARISON_RUN_001/REPORT.md) | **H3_SCALAR_GAUSSIAN_COMPARISON_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — local TV/forward chi2; reverse∞ i joint scope jawne | `64af4cb` |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).

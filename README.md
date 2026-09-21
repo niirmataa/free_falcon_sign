@@ -157,8 +157,8 @@ proves the exact scalar CDF/BerExp/rejection law **in the explicit IID_BUFFER
 game**, with A>=1/256, returned PMF w_y/A, conditional fresh tail and
 Pr[N>m|PAST]<=(255/256)^m. [Independent review](proofs/ft1536/validation/2026-09-21-scalar-kernel-iid/README.md)
 reproduced364/364 files,32 modules/208 theorems (37 new),4096 buffer positions
-and54 exact PMFs; the initial tool-startup timeout is retained. The real-PRNG
-bridge, Gaussian comparison and joint BadPrecast remain separate obligations.
+and54 exact PMFs; the initial tool-startup timeout is retained. Gaussian comparison
+is now provided below; the real-PRNG bridge and joint BadPrecast remain open.
 
 The [SCALAR_GAUSSIAN_COMPARISON result](proofs/ft1536/stages/FT1536_H3_SCALAR_GAUSSIAN_COMPARISON_RUN_001/REPORT.md)
 establishes **TV(K_C,G)<=2^-36 and chi2(K_C||G)<=2^-60 in IID_BUFFER**, for the
@@ -170,6 +170,12 @@ normalizer and tail certificates.63 nominal remainder overruns and scoped
 countermodels are retained. The [next interface](proofs/ft1536/stages/FT1536_H3_SCALAR_GAUSSIAN_COMPARISON_RUN_001/NEXT_INTERFACE.md)
 requires adaptive ordered composition and explicit reference support/domain exits;
 local bounds do not establish joint BadPrecast or real-PRNG security.
+
+**Next prepared owner-run task:** [ORDERED_JOINT_KERNEL](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_ORDERED_JOINT_KERNEL_2026-09-21.md),
+with [755 pinned inputs](proofs/ft1536/background/H3_ORDERED_JOINT_KERNEL_2026-09-21/README.md).
+It targets the actual3072-call adaptive source law in IID_BUFFER, joint directed
+Gaussian bounds with explicit support exits, resource accounting and the
+deterministic postprocessing/event-transfer interface for H6P.
 
 The [historical deferred preparation](provenance/checks/2026-09-20-dudect-floor-ct-ready/README.md)
 is retained. The [current floor-ct launcher](tests/ft1536/dudect/README.md)
