@@ -180,7 +180,14 @@ controls and exact adaptive-tree checks. Local support conditioning differs
 from whole-call survival conditioning; reverse chi2 against Q_stop is infinite.
 The deterministic POST pushforward yields a typed [H6P event transfer](proofs/ft1536/stages/FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001/H6P_INTERFACE.md).
 Its reference joint BadPrecast probability, real-PRNG bridge and retry/whole-Sign
-composition remain open. The next obligation is **H6P_REFERENCE_BAD_EVENT**.
+composition remain open.
+
+**Next prepared owner-run task:** [H6P_REFERENCE_BAD_EVENT](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H6P_REFERENCE_BAD_EVENT_2026-09-22.md),
+with [1144 pinned inputs](proofs/ft1536/background/H6P_REFERENCE_BAD_EVENT_2026-09-22/README.md).
+It targets a source-certified joint tail for both pre-narrow vectors under the
+explicit reference process, followed by the one-root IID event transfer.
+[CURRENT_TASK](proofs/ft1536/CURRENT_TASK.md) identifies the new worker directory
+and task pins for starts/resumes; ORDERED_JOINT is completed.
 
 The [historical deferred preparation](provenance/checks/2026-09-20-dudect-floor-ct-ready/README.md)
 is retained. The [current floor-ct launcher](tests/ft1536/dudect/README.md)

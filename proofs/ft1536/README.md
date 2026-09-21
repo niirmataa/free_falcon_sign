@@ -220,8 +220,15 @@ Q_S nie jest na ogół Q_stop conditioned on whole-call survival; reverse
 chi2(Q_stop||P)=∞. E[T]<=24576, Pr[T>49152]<2^-1024, bez nowego source abortu.
 Deterministic POST pushforward daje [typed H6P transfer](stages/FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001/H6P_INTERFACE.md),
 z nadal otwartym q=reference joint BadPrecast probability.
-Następny konkretny obowiązek to **H6P_REFERENCE_BAD_EVENT**; realny PRNG,
-retry/whole-call composition, Safe16 i Sign→Verify pozostają osobne.
+Realny PRNG, retry/whole-call composition, Safe16 i Sign→Verify pozostają osobne.
+
+**Następne zadanie do ręcznego startu:**
+[H6P_REFERENCE_BAD_EVENT](documents/FT1536_ZADANIE_ASTRA_H6P_REFERENCE_BAD_EVENT_2026-09-22.md),
+z [1144 przypiętymi wejściami](background/H6P_REFERENCE_BAD_EVENT_2026-09-22/README.md).
+Cel: source noise/variance/error bridge i joint reference tail dla obu
+pre-narrow vectors, następnie one-root IID event transfer.
+[CURRENT_TASK](CURRENT_TASK.md) jednoznacznie wskazuje nowy TASK_ID, W i piny
+przy starcie/wznowieniu. ORDERED_JOINT jest zakończony.
 
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
@@ -281,7 +288,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [SOURCE_POSTPROCESSING_AND_PRECAST](stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001/REPORT.md) | **PARTIAL_PROOF** — operational suffix/iFFT/rint/norm/bytes domknięte; uniwersalny Safe16 otwarty | `481e62b` |
 | [SCALAR_KERNEL_IID](stages/FT1536_H3_SCALAR_KERNEL_IID_RUN_001/REPORT.md) | **H3_SCALAR_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — exact conditional kernel, A>=1/256 i fresh-tail/resources; real-PRNG bridge otwarty | `6f1f34c` |
 | [SCALAR_GAUSSIAN_COMPARISON](stages/FT1536_H3_SCALAR_GAUSSIAN_COMPARISON_RUN_001/REPORT.md) | **H3_SCALAR_GAUSSIAN_COMPARISON_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — local TV/forward chi2; reverse∞ i joint scope jawne | `64af4cb` |
-| [ORDERED_JOINT_KERNEL](stages/FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001/REPORT.md) | **H3_ORDERED_JOINT_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — adaptive root/source closure, directed comparison/resources/POST transfer; reference BadPrecast probability otwarte | bieżący checkpoint |
+| [ORDERED_JOINT_KERNEL](stages/FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001/REPORT.md) | **H3_ORDERED_JOINT_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — adaptive root/source closure, directed comparison/resources/POST transfer; reference BadPrecast probability otwarte | `22e6dd4` |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).

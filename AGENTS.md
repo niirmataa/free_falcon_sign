@@ -21,6 +21,10 @@ Docelowym repozytorium prac jest `free_falcon_sign`.
 
 ## Punkty kontrolne
 
+- Bieżące zlecenie do ręcznego startu Astry wskazuje
+  `proofs/ft1536/CURRENT_TASK.md`. Przy starcie/wznowieniu porównaj TASK_ID,
+  katalog W i piny z jego lokalnym AGENTS oraz TASK. Historyczne zlecenia
+  nie wybierają aktywnego zadania; ukończonego frozen W nie uruchamiaj ponownie.
 - Każdy zakończony etap badawczy, także `PARTIAL_PROOF`, kontrprzykład lub
   udokumentowana blokada, powinien otrzymać osobny commit po sprawdzeniu
   zakresu, manifestu i raportu.

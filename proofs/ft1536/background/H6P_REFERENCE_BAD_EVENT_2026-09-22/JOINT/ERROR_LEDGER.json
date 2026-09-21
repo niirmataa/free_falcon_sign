@@ -1,0 +1,129 @@
+{
+  "schema": "ORDERED_JOINT_ERROR_LEDGER_V1",
+  "game": "IID_BUFFER",
+  "source_numerical_premises": {
+    "status": "PASS_PINNED_FORWARD_CLOSURE_INSTANCE",
+    "required_domain": "same emitted/canonical normalized root entry as ORDERED/LEFT/POST, legal buffers and entry IID PAST",
+    "positive_support_witness": "one proposal raw33-byte atom with U at lower CDF interval endpoint,b parity chosen,w0=w1=0; any legal ptr; ignore dropped bytes; positive probability at least2^-264",
+    "right_mu_cap": 156276714,
+    "left_mu_cap": 937866518,
+    "terminal_energy": 849346588,
+    "branch_terminal_budget": 652298179584,
+    "raw_stable_metric_factors": [
+      2,
+      6
+    ],
+    "root_U_coefficient_cap": 786308210,
+    "root_U_frequency_cap": 20099472117,
+    "terminal_residual_caps": [
+      552,
+      367
+    ],
+    "rejection_stores_caller": false,
+    "closure_proof": "construct finite actual return witness then source intercall frame/ORDERED/LEFT; paired and stored outcomes consumed in actual source order with same D; no future NumericCenter/fault/termination premise",
+    "dependencies": {
+      "LEFT/LEFT_ROOT_CORRELATED_TRANSFER_CERTIFICATE.json": "8dd030760431dd5e4913f1384be20bbcbd8fb6cb7b215f604a7de7bfc1d97cbc",
+      "LEFT/BANK_WEIGHTED_BOUNDS.json": "9cd886e2e310e8f9a3d7bf3fdf45e9ac041af88fb8eef70cbe9b433317c4ea2c",
+      "LEFT/ORDERED_COMPOSITION.md": "081febced6ea62b28eb58cf4971d384523e646452ec045c11dc93e290625da19",
+      "LEFT/LEFT_INVARIANT.md": "dbfe925fe2f06cca8cc1812d681a0e8fc8c5241c8a17c839859c52a3b46425c4",
+      "LEFT/RIGHT_RESIDUAL_ENERGY.md": "fa6d1bd53183cce4b16200b7b1658443b6cb67229c3ea9f0de25a837caf3ec24",
+      "ORDERED/INVARIANT.md": "9d0313d9ee37c9af3225fc24edef663eee844bd0e0e9bb36b7db56dcc01d9a1a",
+      "ORDERED/SCALAR_OUTCOMES.md": "b48dbaad7807f253467e79d4cdc00cd14e5a73efed357c331daae3b9a7918ed8",
+      "NORMALIZED/WIDTH_BOUNDS.json": "bc9cc8f401f405ac1ba18e7aba96856a53a755aaf109edf0464ab9e6b06dbfe9",
+      "POST/SAMPLING_RETURN_INTERFACE.md": "2d5c11e9f5d57f30188ebe0a486a4d5f7449a9e314e13f92684ef0da6dc4173c"
+    }
+  },
+  "epsilon": "1/68719476736",
+  "kappa": "1/1152921504606846976",
+  "tau": "25108406941893570520985316636436632133419632284097977125243/115792089237316195423570985008687907853269984665640564039457584007913129639936",
+  "M": 3072,
+  "metric_exports": [
+    {
+      "from_law": "P_value",
+      "to_law": "Q_stop",
+      "metric": "chi2",
+      "direction": "forward",
+      "exact_upper_expression": "(1+2^-60)^3072-1",
+      "rational_upper": "3/1125899906842621",
+      "power2_upper": "2^-48",
+      "scope": "one root; all required entries; legal entry PAST; same value prefix parameters"
+    },
+    {
+      "from_law": "P_value",
+      "to_law": "Q_S",
+      "metric": "chi2",
+      "direction": "forward",
+      "exact_upper_expression": "(1+2^-60)^3072-1",
+      "rational_upper": "3/1125899906842621",
+      "power2_upper": "2^-48",
+      "scope": "one root; all required entries; legal entry PAST; same value prefix parameters"
+    },
+    {
+      "from_law": "P_value",
+      "to_law": "Q_stop",
+      "metric": "TV",
+      "upper": "1/33554432",
+      "power2_upper": "2^-25",
+      "alternative_sequential_upper": "3/67108864",
+      "proof": "min of chain second moment and same-prefix adaptive coupling; no double-counted tail"
+    },
+    {
+      "from_law": "P_value",
+      "to_law": "Q_S",
+      "metric": "TV",
+      "upper": "1/33554432",
+      "power2_upper": "2^-25",
+      "alternative_sequential_upper": "3/67108864",
+      "proof": "min of chain second moment and same-prefix adaptive coupling; no double-counted tail"
+    },
+    {
+      "from_law": "Q_S",
+      "to_law": "Q_stop",
+      "metric": "TV",
+      "value_expression": "Q_stop(EXIT)=1-E_QS[product_i(1-t_h_i)]",
+      "upper": "75325220825680711562955949909309896400258896852293931375729/113078212145816597093331040047546785012958969400039613319782796882727665664",
+      "power2_upper": "2^-50"
+    },
+    {
+      "from_law": "Q_stop",
+      "to_law": "P_value",
+      "metric": "chi2",
+      "value": "infinity",
+      "absolute_continuity": false
+    },
+    {
+      "from_law": "Q_S",
+      "to_law": "P_value",
+      "metric": "chi2",
+      "upper_expression": "2^811008-1",
+      "absolute_continuity": true,
+      "utility": "very loose; derived from K_h(y)>=2^-264 for y in S_h, not from reversing scalar forward chi2"
+    }
+  ],
+  "exact_Delta_expression": "(1+2^-60)^3072-1",
+  "Delta_rational_upper": "3/1125899906842621",
+  "TV_export": "2^-25",
+  "exit_upper": "75325220825680711562955949909309896400258896852293931375729/113078212145816597093331040047546785012958969400039613319782796882727665664",
+  "exit_power2": "2^-50",
+  "reference_q_for_BadPrecast": null,
+  "BadPrecast_transfer": "p<=min(1,q+min(2^-25,sqrt(Delta*q*(1-q))))",
+  "real_PRNG_loss": null,
+  "new_M0_epsilon": null,
+  "support_tail_counted_once": true,
+  "resources": {
+    "T": 49152,
+    "returned_bytes": 1622016,
+    "new_refills": 397,
+    "discarded_bytes": 3573,
+    "new_generated_bytes": 1626112,
+    "including_entry_block": 1630208
+  },
+  "resource_tail": "2^-1024",
+  "dependencies": {
+    "SOURCE_ORDER.json": "8e84668aeb1dea264cc164aae16b6b52bd90bdff93e0b9155937df74f544d812",
+    "JOINT_COMPARISON.json": "445988c1d26255aa39fb4b968b5b273d1fae2660a40df8a9526a176e6218f256",
+    "SUPPORT_EXIT.json": "4c286876e7d6786a34451c1d2114985c04927772709a76a1855a3a4385a508c4",
+    "RESOURCE_BOUND.json": "1d3fabdfb7d90b44c83e3a3b145789987ab4c1a0782bbe1e8a096873632a7df7",
+    "artifacts/closure_instance.json": "b86f941ccb726825a3fe34f4bfbd3e2b3866387c5222eacaf5a453a05ec8b266"
+  }
+}
