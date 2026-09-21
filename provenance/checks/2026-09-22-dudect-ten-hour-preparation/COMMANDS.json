@@ -1,0 +1,116 @@
+[
+  {
+    "tag": "unit-tests",
+    "argv": [
+      "/usr/bin/python3",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests/ft1536/dudect",
+      "-p",
+      "test_*.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "elapsed_seconds": 1.5404963240143843,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "8be245888c0cf7054e1201c42ec95f1a013c0069b7bfb70120551d2eec23bfc3"
+  },
+  {
+    "tag": "static-prepare",
+    "argv": [
+      "/usr/bin/python3",
+      "-B",
+      "tests/ft1536/dudect/prepare.py",
+      "--repo",
+      "/home/footfalcon/free_falcon_sign",
+      "--work",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_FPEMU_DUDECT_RUN_002",
+      "--resume",
+      "--profile",
+      "floor-ct",
+      "--defer-timing",
+      "--seconds",
+      "36000"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "elapsed_seconds": 2.3050916159991175,
+    "stdout_sha256": "20019b4de7c59d8bd4733756e44e5ea63927763cca188786d503548ecdb74477",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tag": "native-budget-28800",
+    "argv": [
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_FPEMU_DUDECT_RUN_002/attempts/003/build/dudect-ft1536",
+      "--run",
+      "0",
+      "0",
+      "28800",
+      "-1",
+      "1"
+    ],
+    "exit_code": 2,
+    "expected_exit_code": 2,
+    "elapsed_seconds": 0.000996834016405046,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "b4ac5b073b12d7f2001314ef6b2d999a3876d8fe8b6b78e7317b37ae59694485"
+  },
+  {
+    "tag": "native-budget-36000",
+    "argv": [
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_FPEMU_DUDECT_RUN_002/attempts/003/build/dudect-ft1536",
+      "--run",
+      "0",
+      "0",
+      "36000",
+      "-1",
+      "1"
+    ],
+    "exit_code": 2,
+    "expected_exit_code": 2,
+    "elapsed_seconds": 0.0008804330136626959,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "b4ac5b073b12d7f2001314ef6b2d999a3876d8fe8b6b78e7317b37ae59694485"
+  },
+  {
+    "tag": "native-budget-36001",
+    "argv": [
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_FPEMU_DUDECT_RUN_002/attempts/003/build/dudect-ft1536",
+      "--run",
+      "0",
+      "0",
+      "36001",
+      "-1",
+      "1"
+    ],
+    "exit_code": 2,
+    "expected_exit_code": 2,
+    "elapsed_seconds": 0.0008169430075213313,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "tag": "service-state",
+    "argv": [
+      "systemctl",
+      "--user",
+      "show",
+      "ft1536-dudect-run-002.service",
+      "-p",
+      "LoadState",
+      "-p",
+      "ActiveState",
+      "-p",
+      "MainPID"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "elapsed_seconds": 0.006708964996505529,
+    "stdout_sha256": "449ec8ca36dfeaffcb0635eeebb6d721ea5a397bc9c8f285200f84bfaa5ad3d6",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

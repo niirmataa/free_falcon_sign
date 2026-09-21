@@ -191,9 +191,11 @@ and task pins for starts/resumes; ORDERED_JOINT is completed.
 
 The [historical deferred preparation](provenance/checks/2026-09-20-dudect-floor-ct-ready/README.md)
 is retained. The [current floor-ct launcher](tests/ft1536/dudect/README.md)
-supports the owner's **six-hour RUN_002** budget, with fresh controls before
+supports the owner's **ten-hour RUN_002** budget, with fresh controls before
 service launch and matching controller/systemd limits. Actual campaign status
-is recorded by RUN/RESULT in its local work directory.
+is recorded by RUN/RESULT in its local work directory. The [ten-hour preparation](provenance/checks/2026-09-22-dudect-ten-hour-preparation/README.md)
+requires87.3125GiB free for complete logs and reserve; launch is manual after
+the owner's signal around03:00 CEST.
 
 The current build integrates the corrected verifier, SHA-256
 `3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42`.

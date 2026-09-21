@@ -41,7 +41,9 @@ Future source/checkpoint commits and explicitly requested pushes are made
 from the canonical directory. Run make verify-FT1536-sources there to check
 the active17-file FLOOR_CT manifest56974571….
 
-Dudect RUN_002 remains deferred for the owner's nighttime start signal, with
-the prepared21600-second budget. Its local NIGHT_START.md now uses the canonical
-launcher path. Existing frozen preparations are retained; the launcher still
-requires a fresh physical preflight before any long campaign.
+Dudect RUN_002 remains deferred for the owner's nighttime start signal.
+The21600-second setup at relocation is retained as history. The owner's later
+[ten-hour preparation](checks/2026-09-22-dudect-ten-hour-preparation/README.md)
+uses36000 seconds, with manual start around03:00 CEST. Its local NIGHT_START.md
+uses the canonical launcher path. Frozen preparations are retained; current
+disk capacity and a fresh physical preflight are required before launch.
