@@ -160,6 +160,12 @@ reproduced364/364 files,32 modules/208 theorems (37 new),4096 buffer positions
 and54 exact PMFs; the initial tool-startup timeout is retained. The real-PRNG
 bridge, Gaussian comparison and joint BadPrecast remain separate obligations.
 
+**Next prepared owner-run task:** [SCALAR_GAUSSIAN_COMPARISON](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_SCALAR_GAUSSIAN_COMPARISON_2026-09-21.md),
+with [489 pinned inputs](proofs/ft1536/background/H3_SCALAR_GAUSSIAN_COMPARISON_2026-09-21/README.md).
+It compares exact K_C to an independently defined scalar Gaussian within
+IID_BUFFER, with source reduction/expm domains, table quantization, cutoff,
+normalization and explicit metric directions. A small loss is not assumed.
+
 The [historical deferred preparation](provenance/checks/2026-09-20-dudect-floor-ct-ready/README.md)
 is retained. The [current floor-ct launcher](tests/ft1536/dudect/README.md)
 supports the owner's **six-hour RUN_002** budget, with fresh controls before

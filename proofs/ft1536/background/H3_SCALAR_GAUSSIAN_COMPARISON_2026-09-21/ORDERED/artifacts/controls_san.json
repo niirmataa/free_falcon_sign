@@ -1,0 +1,109 @@
+{
+  "status": "PASS_ORIGINAL_ORDERED_RECURSION_SCRIPTED_RELATION_CONTROLS",
+  "mode": "san",
+  "cases": [
+    {
+      "name": "normal_endpoints",
+      "result": {
+        "status": "COMPLETED",
+        "calls": 3072,
+        "fault": 0,
+        "high_water": 8702,
+        "pre_floor": 3072
+      },
+      "all_ordered_words_and_outcomes_match": true,
+      "stdout_sha256": "e2f9ec55110717747d0fcc1fccc5f065626eb8c3b16c18e6049b2f1525298d97"
+    },
+    {
+      "name": "stutter_then_return",
+      "result": {
+        "status": "COMPLETED",
+        "calls": 3072,
+        "fault": 0,
+        "high_water": 8702,
+        "pre_floor": 3072
+      },
+      "all_ordered_words_and_outcomes_match": true,
+      "stdout_sha256": "618ccb75868a6ebbafa6caf953fedcee9e7545e1ed32591b4d674c235cf87ae5"
+    },
+    {
+      "name": "fault_first",
+      "result": {
+        "status": "COMPLETED",
+        "calls": 3072,
+        "fault": 1,
+        "high_water": 8702,
+        "pre_floor": 1
+      },
+      "all_ordered_words_and_outcomes_match": true,
+      "stdout_sha256": "7c462efd0f184ab46e9ebff1c78f072063ad44855b2cdc980ec4ed4f5b412966"
+    },
+    {
+      "name": "fault_between_pair",
+      "result": {
+        "status": "COMPLETED",
+        "calls": 3072,
+        "fault": 1,
+        "high_water": 8702,
+        "pre_floor": 2
+      },
+      "all_ordered_words_and_outcomes_match": true,
+      "stdout_sha256": "48191eef9d74dd29ec827df639713089ba419bfb38b0dbce64aca3d34b207945"
+    },
+    {
+      "name": "fault_last",
+      "result": {
+        "status": "COMPLETED",
+        "calls": 3072,
+        "fault": 1,
+        "high_water": 8702,
+        "pre_floor": 3072
+      },
+      "all_ordered_words_and_outcomes_match": true,
+      "stdout_sha256": "f21355da7c4d9a0ee23832bea87c423c98d7835f73c3c65385e91d64599787e5"
+    },
+    {
+      "name": "nonreturn_prefix",
+      "result": {
+        "status": "REJECTION_NONRETURN",
+        "calls": 18,
+        "fault": 0,
+        "high_water": 8702,
+        "pre_floor": 18
+      },
+      "all_ordered_words_and_outcomes_match": true,
+      "stdout_sha256": "6b31f29cb50879ff79d15d222d2d4caa886095866575f7bc6d4cb5a4df12d617"
+    },
+    {
+      "name": "base_signed_zero",
+      "result": {
+        "status": "COMPLETED",
+        "calls": 2,
+        "fault": 0,
+        "high_water": 4609,
+        "pre_floor": 2
+      },
+      "all_ordered_words_and_outcomes_match": true,
+      "stdout_sha256": "318546201814f710fa354ae8382ee3da63e978aa5630cd042ba42d68c70fcc91"
+    },
+    {
+      "name": "base_large_fault",
+      "result": {
+        "status": "COMPLETED",
+        "calls": 2,
+        "fault": 1,
+        "high_water": 4609,
+        "pre_floor": 1
+      },
+      "all_ordered_words_and_outcomes_match": true,
+      "stdout_sha256": "44dfee315f3fb3d753de95f8ba73124b637e54fccd0bc6e51b21d352cb473ef6"
+    }
+  ],
+  "all3072_positions_on_completed_top": true,
+  "nonreturn_is_prefix_stop_not_zero": true,
+  "fault_zero_not_normal_residual": true,
+  "tree_root_inputs_and_canaries_preserved": true,
+  "noop_pass": true,
+  "LSan_claimed": false,
+  "actual_Sign_or_real_sampler_law_claimed": false
+}

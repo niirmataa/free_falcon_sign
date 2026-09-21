@@ -200,6 +200,13 @@ startu Sage zachowany. [Następne interfejsy](stages/FT1536_H3_SCALAR_KERNEL_IID
 rozdzielają PRNG_REAL_TO_IID_BUFFER, SCALAR_GAUSSIAN_COMPARISON i joint H6P;
 idealizacja refill nie jest dowodem realnego PRNG lub whole Sign law.
 
+**Następne zadanie do ręcznego startu:**
+[SCALAR_GAUSSIAN_COMPARISON](documents/FT1536_ZADANIE_ASTRA_H3_SCALAR_GAUSSIAN_COMPARISON_2026-09-21.md),
+z [489 przypiętymi wejściami](background/H3_SCALAR_GAUSSIAN_COMPARISON_2026-09-21/README.md).
+Cel: quantified exact K_C→reference Gaussian w IID_BUFFER, source reduction/expm,
+CDF quantization, cutoff/support/normalizer i właściwe kierunki miar. Mały loss
+nie jest premise; duże bounds, domain gaps i countermodels mają być zachowane.
+
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
 
@@ -256,7 +263,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [ORDERED_REACH](stages/FT1536_H3_ORDERED_REACH_RUN_001/REPORT.md) | **PARTIAL_PROOF** — right-root finite-prefix NumericCenter, outcome/frame; left correlated transfer otwarty | `7664277` |
 | [LEFT_ROOT_CORRELATED_TRANSFER](stages/FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001/REPORT.md) | **H3_LEFT_ROOT_CORRELATED_TRANSFER_PROVED_FOR_EMITTED_PINNED_MODEL** — left transfer i kompozycja pełnego zero-aware root/caller finite-prefix NumericCenter; mieszany dowód | `fbf4a5c` |
 | [SOURCE_POSTPROCESSING_AND_PRECAST](stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001/REPORT.md) | **PARTIAL_PROOF** — operational suffix/iFFT/rint/norm/bytes domknięte; uniwersalny Safe16 otwarty | `481e62b` |
-| [SCALAR_KERNEL_IID](stages/FT1536_H3_SCALAR_KERNEL_IID_RUN_001/REPORT.md) | **H3_SCALAR_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — exact conditional kernel, A>=1/256 i fresh-tail/resources; real-PRNG bridge otwarty | niniejszy checkpoint |
+| [SCALAR_KERNEL_IID](stages/FT1536_H3_SCALAR_KERNEL_IID_RUN_001/REPORT.md) | **H3_SCALAR_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — exact conditional kernel, A>=1/256 i fresh-tail/resources; real-PRNG bridge otwarty | `6f1f34c` |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).
