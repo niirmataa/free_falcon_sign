@@ -160,11 +160,16 @@ reproduced364/364 files,32 modules/208 theorems (37 new),4096 buffer positions
 and54 exact PMFs; the initial tool-startup timeout is retained. The real-PRNG
 bridge, Gaussian comparison and joint BadPrecast remain separate obligations.
 
-**Next prepared owner-run task:** [SCALAR_GAUSSIAN_COMPARISON](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_SCALAR_GAUSSIAN_COMPARISON_2026-09-21.md),
-with [489 pinned inputs](proofs/ft1536/background/H3_SCALAR_GAUSSIAN_COMPARISON_2026-09-21/README.md).
-It compares exact K_C to an independently defined scalar Gaussian within
-IID_BUFFER, with source reduction/expm domains, table quantization, cutoff,
-normalization and explicit metric directions. A small loss is not assumed.
+The [SCALAR_GAUSSIAN_COMPARISON result](proofs/ft1536/stages/FT1536_H3_SCALAR_GAUSSIAN_COMPARISON_RUN_001/REPORT.md)
+establishes **TV(K_C,G)<=2^-36 and chi2(K_C||G)<=2^-60 in IID_BUFFER**, for the
+untruncated scalar Gaussian with actual input-word mean and variance.
+Reverse chi2(G||K_C) is infinite because of the support gap.
+[Independent review](proofs/ft1536/validation/2026-09-21-scalar-gaussian/README.md)
+reproduced516/516 files,36 modules/234 theorems (26 new), with source-domain,
+normalizer and tail certificates.63 nominal remainder overruns and scoped
+countermodels are retained. The [next interface](proofs/ft1536/stages/FT1536_H3_SCALAR_GAUSSIAN_COMPARISON_RUN_001/NEXT_INTERFACE.md)
+requires adaptive ordered composition and explicit reference support/domain exits;
+local bounds do not establish joint BadPrecast or real-PRNG security.
 
 The [historical deferred preparation](provenance/checks/2026-09-20-dudect-floor-ct-ready/README.md)
 is retained. The [current floor-ct launcher](tests/ft1536/dudect/README.md)
@@ -288,6 +293,7 @@ integration work; changing their description does not change the old CLI.
 | [H3_LEFT_ROOT_CORRELATED_TRANSFER](proofs/ft1536/stages/FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001/REPORT.md) | Source bank/A2/metric/root transfer and closed left invariant; composes full zero-aware root/caller finite-prefix NumericCenter; mixed proof | `H3_LEFT_ROOT_CORRELATED_TRANSFER_PROVED_FOR_EMITTED_PINNED_MODEL` |
 | [SOURCE_POSTPROCESSING_AND_PRECAST](proofs/ft1536/stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001/REPORT.md) | Defined post-return suffix, source iFFT/rint, exact narrowing/norm/STATIC bytes; universal Safe16 open | `PARTIAL_PROOF` |
 | [SCALAR_KERNEL_IID](proofs/ft1536/stages/FT1536_H3_SCALAR_KERNEL_IID_RUN_001/REPORT.md) | Exact conditional scalar law, A>=1/256, IID termination/tail and buffer/resource interface; real-PRNG bridge open | `H3_SCALAR_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL` |
+| [SCALAR_GAUSSIAN_COMPARISON](proofs/ft1536/stages/FT1536_H3_SCALAR_GAUSSIAN_COMPARISON_RUN_001/REPORT.md) | Uniform local TV/forward chi-square bounds to untruncated Gaussian in IID_BUFFER; reverse chi-square infinite; joint composition open | `H3_SCALAR_GAUSSIAN_COMPARISON_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL` |
 
 The completed L_V bridge establishes, for all canonical h,c and legal finite
 payloads b in the pinned GCC14.2.0/C99/Linux x86_64 LP64 model:

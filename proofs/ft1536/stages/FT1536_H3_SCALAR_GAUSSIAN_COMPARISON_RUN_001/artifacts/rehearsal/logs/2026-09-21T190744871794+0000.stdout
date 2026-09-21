@@ -1,0 +1,29 @@
+Half 0 0.951
+TargetWords 0 0.374
+TargetAlgebra 0 0.643
+TargetFrame 0 0.366
+TargetSequence 0 0.37
+ReachOutcomes 0 0.627
+IidBytes 0 0.444
+IidBerExp 0 0.773
+IidHighWord 0 0.455
+IidRejection 0 0.423
+formal/GaussianMul.lean:18:55: error: Expected type must not contain free variables
+  200 / 2 ^ ↑b % 2 = if ↑b = 3 ∨ ↑b = 6 ∨ ↑b = 7 then 1 else 0
+
+Hint: Use the `+revert` option to automatically clean up and revert free variables
+formal/GaussianMul.lean:21:64: warning: exponent 966 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+formal/GaussianMul.lean:21:64: error: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+formal/GaussianMul.lean:25:38: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  a - b - c ≥ 0
+  a - b - f ≤ 0
+  a - b + f ≤ -1
+where
+ a := q * d
+ b := q * p
+ c := -e * p
+ f := e * p
+GaussianMul 1 0.445

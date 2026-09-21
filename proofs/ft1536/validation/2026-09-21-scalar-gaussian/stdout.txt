@@ -1,0 +1,41 @@
+REPLAY_JOB 0 ['-B', 'scripts/toolchain.py'] 0
+REPLAY_JOB 1 ['-B', 'scripts/reduction_domain.py'] 0
+REPLAY_JOB 2 ['-B', 'scripts/formal_data.py'] 0
+REPLAY_JOB 3 ['scripts/kernel_build.py', '0'] 0
+REPLAY_JOB 4 ['scripts/kernel_build.py', '1'] 0
+REPLAY_JOB 5 ['/home/footfalcon/.local/bin/sage', 'scripts/expm_accuracy.py'] 0
+REPLAY_JOB 6 ['/home/footfalcon/.local/bin/sage', 'scripts/cdf_comparison.py'] 0
+REPLAY_JOB 7 ['/home/footfalcon/.local/bin/sage', 'scripts/comparison_bounds.py'] 0
+REPLAY_JOB 8 ['-B', 'scripts/witnesses.py'] 0
+REPLAY_JOB 9 ['-B', 'scripts/gaussian_binding.py'] 0
+REPLAY_JOB 10 ['scripts/gaussian_build.py', 'normal'] 0
+REPLAY_JOB 11 ['scripts/gaussian_build.py', 'sanitized'] 0
+REPLAY_JOB 12 ['-B', 'scripts/gaussian_fixtures.py'] 0
+REPLAY_JOB 13 ['normal', '0'] 0
+REPLAY_JOB 14 ['normal', '1'] 0
+REPLAY_JOB 15 ['normal', '2'] 0
+REPLAY_JOB 16 ['normal', '3'] 0
+REPLAY_JOB 17 ['sanitized', '0'] 0
+REPLAY_JOB 18 ['sanitized', '1'] 0
+REPLAY_JOB 19 ['sanitized', '2'] 0
+REPLAY_JOB 20 ['sanitized', '3'] 0
+REPLAY_JOB 21 ['scripts/gaussian_oracle.py', '0'] 0
+REPLAY_JOB 22 ['scripts/gaussian_oracle.py', '1'] 0
+REPLAY_JOB 23 ['scripts/gaussian_oracle.py', '2'] 0
+REPLAY_JOB 24 ['/home/footfalcon/.local/bin/sage', 'scripts/mutations.py'] 0
+REPLAY_JOB 25 ['-B', 'scripts/audit.py'] 0
+REPLAY_JOB 26 ['-B', 'scripts/metadata.py'] 0
+{
+  "status": "FRESH_REPLAY_PASS",
+  "game": "IID_BUFFER",
+  "external_manifest_sha256": "c20ea0c260fc5fcb6aec06ed8287335ebceacd31776f3da8633d91e399930f1a",
+  "manifest": "OUTPUTS.sha256",
+  "source_members_verified": 1960,
+  "fresh_without_project_cache": true,
+  "expected_files": 516,
+  "matched": 516,
+  "source_scope_unchanged": true,
+  "historical_status": "H3_SCALAR_GAUSSIAN_COMPARISON_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL",
+  "real_prng_to_iid_bridge_proved": false,
+  "owner_accepted": false
+}

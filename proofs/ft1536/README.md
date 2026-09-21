@@ -23,10 +23,11 @@ osiągnięcia, T2C3/T5, kontrakt M0, graf zależności i dalsze obowiązki.
 Pakiet ma 211 członków OUTPUTS i 198 publicznych wejść Git, manifest
 `c3efdcff510983a143946d43ab456656090061cd5b9b4b6847abc7f141c0cfa3`.
 Jest checkpointem dokumentacyjnym (`replay=none`); obecnie archiwum zawiera
-także dwadzieścia trzy etapy badawcze i audytowe, w tym późniejsze H3_RANGE,
+także dwadzieścia cztery etapy badawcze i audytowe, w tym późniejsze H3_RANGE,
 H3_ZERO_SCALAR, H3_ROOT_LDL, H3_NODE3, H3_NODE2, BINARY_TOWER, audyt FPEMU,
 FLOOR_CT, RAW_ASSEMBLY, STABLE_NORMALIZATION, INITIAL_TARGETS, ORDERED_REACH
-i LEFT_ROOT_CORRELATED_TRANSFER, SOURCE_POSTPROCESSING_AND_PRECAST i SCALAR_KERNEL_IID.
+i LEFT_ROOT_CORRELATED_TRANSFER, SOURCE_POSTPROCESSING_AND_PRECAST, SCALAR_KERNEL_IID
+i SCALAR_GAUSSIAN_COMPARISON.
 
 [Mapa po domknięciu L_V — 2026-09-19](documents/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md)
 przedstawia zależności i proponowaną kolejność: dokładny kontrakt gry,
@@ -200,12 +201,15 @@ startu Sage zachowany. [Następne interfejsy](stages/FT1536_H3_SCALAR_KERNEL_IID
 rozdzielają PRNG_REAL_TO_IID_BUFFER, SCALAR_GAUSSIAN_COMPARISON i joint H6P;
 idealizacja refill nie jest dowodem realnego PRNG lub whole Sign law.
 
-**Następne zadanie do ręcznego startu:**
-[SCALAR_GAUSSIAN_COMPARISON](documents/FT1536_ZADANIE_ASTRA_H3_SCALAR_GAUSSIAN_COMPARISON_2026-09-21.md),
-z [489 przypiętymi wejściami](background/H3_SCALAR_GAUSSIAN_COMPARISON_2026-09-21/README.md).
-Cel: quantified exact K_C→reference Gaussian w IID_BUFFER, source reduction/expm,
-CDF quantization, cutoff/support/normalizer i właściwe kierunki miar. Mały loss
-nie jest premise; duże bounds, domain gaps i countermodels mają być zachowane.
+**Odebrany SCALAR_GAUSSIAN_COMPARISON:** [raport](stages/FT1536_H3_SCALAR_GAUSSIAN_COMPARISON_RUN_001/REPORT.md)
+daje w IID_BUFFER **TV(K_C,G)<=2^-36,chi2(K_C||G)<=2^-60**, dla G na całym Z
+z actual mu/sigma words. Reverse chi2(G||K_C)=∞ ma jawny support reason.
+[Odbiór](validation/2026-09-21-scalar-gaussian/README.md):516/516 plików,
+36 modułów,234 twierdzenia (26 nowych),source-domain/normalizer/tail certificates,
+101 rigorous comparisons i zachowane63 nominal overruns/scoped countermodels.
+[Następny typ](stages/FT1536_H3_SCALAR_GAUSSIAN_COMPARISON_RUN_001/NEXT_INTERFACE.md)
+wymaga ordered/shared-history composition i jawnych reference exits; lokalny
+bound nie jest whole-call loss,η_pre ani dowodem realnego PRNG.
 
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
@@ -264,6 +268,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [LEFT_ROOT_CORRELATED_TRANSFER](stages/FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001/REPORT.md) | **H3_LEFT_ROOT_CORRELATED_TRANSFER_PROVED_FOR_EMITTED_PINNED_MODEL** — left transfer i kompozycja pełnego zero-aware root/caller finite-prefix NumericCenter; mieszany dowód | `fbf4a5c` |
 | [SOURCE_POSTPROCESSING_AND_PRECAST](stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001/REPORT.md) | **PARTIAL_PROOF** — operational suffix/iFFT/rint/norm/bytes domknięte; uniwersalny Safe16 otwarty | `481e62b` |
 | [SCALAR_KERNEL_IID](stages/FT1536_H3_SCALAR_KERNEL_IID_RUN_001/REPORT.md) | **H3_SCALAR_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — exact conditional kernel, A>=1/256 i fresh-tail/resources; real-PRNG bridge otwarty | `6f1f34c` |
+| [SCALAR_GAUSSIAN_COMPARISON](stages/FT1536_H3_SCALAR_GAUSSIAN_COMPARISON_RUN_001/REPORT.md) | **H3_SCALAR_GAUSSIAN_COMPARISON_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — local TV/forward chi2; reverse∞ i joint scope jawne | niniejszy checkpoint |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).

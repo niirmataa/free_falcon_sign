@@ -1,0 +1,116 @@
+{
+  "status": "PASS_EXECUTED_MUTATIONS_WITH_EQUIVALENCE_LIMITATION",
+  "game": "IID_BUFFER",
+  "mutations": [
+    {
+      "name": "noop",
+      "status": "NOOP_PASS",
+      "path": "artifacts/mutations/noop.json",
+      "sha256": "f0aa862235f94a5302da836809278758c1378c97e9cf7edc07ebb5633a3447ba",
+      "scope": "MODEL_MUTATION_VS_PINNED_SOURCE"
+    },
+    {
+      "name": "omit_signed_zero_shift",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/omit_signed_zero_shift.json",
+      "sha256": "af9332f510b03ce1f0ec26e783063273a404bab8b9b0ce55b7c0e07d84c53e4e",
+      "scope": "MODEL_MUTATION_VS_PINNED_SOURCE"
+    },
+    {
+      "name": "nominal_coefficient",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/nominal_coefficient.json",
+      "sha256": "c5eb61f33fe886ce7cf1154641eb739bb15e9889f0d411ead4b9e3fc21c2a091",
+      "scope": "MODEL_MUTATION_VS_PINNED_SOURCE"
+    },
+    {
+      "name": "ignore_table_quantization",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/ignore_table_quantization.json",
+      "sha256": "3b4db3576ddd40b309851f53812a19d631f943cb3f68744f089cf3be7e4779e5",
+      "scope": "certified nonzero literal p0 minus dyadic infinite-half-line q0"
+    },
+    {
+      "name": "nominal_table_transfer",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/nominal_table_transfer.json",
+      "sha256": "8172c417c9014c740ad2a318f8c0f5d972c29b79a098b05e220692ddff6c8192",
+      "scope": "wrong nominal coefficient violates the literal CDF accuracy premise"
+    },
+    {
+      "name": "replace_BerExp_by_ideal_exp",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/replace_BerExp_by_ideal_exp.json",
+      "sha256": "3034e625aa7522b424a99a761a6e804704a21cd3a648e90c58c0212e89382ec8",
+      "scope": "scalar-derived D_env cutoff atom, no Emitted membership"
+    },
+    {
+      "name": "transfer_nominal_remainder_domain",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/transfer_nominal_remainder_domain.json",
+      "sha256": "ddf00cc80647cabca421677ba7a6576eac2c8a52acf2c5f146f7479cd3d479b0",
+      "scope": "actual standalone-normalizer scalar witness versus illicit clamp/domain transfer"
+    },
+    {
+      "name": "remove_cutoff",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/remove_cutoff.json",
+      "sha256": "a549237e023371ab08c151f5bd1b64e6d72b014440f333b9238de4c175c401f6",
+      "scope": "MODEL_MUTATION_VS_PINNED_SOURCE"
+    },
+    {
+      "name": "remove_saturation_on_source",
+      "status": "EQUIVALENT_ON_PROVED_SOURCE_RANGE",
+      "path": "artifacts/mutations/remove_saturation_on_source.json",
+      "sha256": "88da35fa79c17a0ebf8e984df5acf91a95db4b09c3464270bc8c84bded99b83f",
+      "scope": "equivalent on actual source range Z<=2^55, proved from monotone literal Horner coefficients; not a detected source defect"
+    },
+    {
+      "name": "remove_saturation_extended",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/remove_saturation_extended.json",
+      "sha256": "56f756daf67502b6280e61d9d43314b1ea9222eb1ad2f503cda3eaa4f84e3f61",
+      "scope": "extended comparator Z>2^55, unreachable for literal expm coefficients"
+    },
+    {
+      "name": "omit_accepted_normalizer",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/omit_accepted_normalizer.json",
+      "sha256": "5d4faa0be6ae4a6954c37e431f9ec354d9705c830441870bb82cf13bbd6a18f1",
+      "scope": "MODEL_MUTATION_VS_PINNED_SOURCE"
+    },
+    {
+      "name": "omit_infinite_support_tail",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/omit_infinite_support_tail.json",
+      "sha256": "be085d40eb36bb77927abdd7216b3527554ffc69c049bab468c7f9253b717c08",
+      "scope": "G positive outside actual finite K support; includes explicit Gaussian tail enclosure"
+    },
+    {
+      "name": "reverse_chi2_direction",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/reverse_chi2_direction.json",
+      "sha256": "4325e877265431449174128f854ca92b6b228aa2d2e06a08ca1c2042577b23c0",
+      "scope": "MODEL_MUTATION_VS_PINNED_SOURCE"
+    },
+    {
+      "name": "extend_expm_accuracy_to_negative",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/extend_expm_accuracy_to_negative.json",
+      "sha256": "f104eeeafd651e83aab4bc17c7a87e0499aae975331a6e25612a60140733390d",
+      "scope": "EXTENDED_EXPM_INPUT_ONLY; excluded by derived source rB>=0, not a scalar/emitted counterexample"
+    }
+  ],
+  "detected": 12,
+  "noop": 1,
+  "source_saturation_mutation_equivalent": true,
+  "negative_expm_countermodel": {
+    "rB": "bcd0000000000000",
+    "source_scaled_value": "0.36787944118824167057720669893328135913179721683263778686523437500000000000000000000000000000000000000000000000000000000",
+    "reference_exp": "[1.0000000000000008881784197001256267693579449786757307363097095082877110595798092414992365757433747059469801267610022 +/- 5.58e-116]",
+    "gap": "[0.6321205588117592176012130011923454102261477618430929494444751332877110595798092414992365757433747059469801267610022 +/- 5.58e-116]",
+    "lower_gap": "3/5",
+    "scope": "EXTENDED_EXPM_INPUT_ONLY_NOT_CERTIFIED_SCALAR_REMAINDER"
+  },
+  "required_domain_counterexample": false
+}
