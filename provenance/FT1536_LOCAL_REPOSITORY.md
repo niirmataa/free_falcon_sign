@@ -47,3 +47,6 @@ The21600-second setup at relocation is retained as history. The owner's later
 uses36000 seconds, with manual start around03:00 CEST. Its local NIGHT_START.md
 uses the canonical launcher path. Frozen preparations are retained; current
 disk capacity and a fresh physical preflight are required before launch.
+The subsequently prepared [NVMe data volume](FT1536_DATA_STORAGE.md) now holds
+RUN_002 data via its canonical work-directory alias; Git and proof work retain
+the canonical checkout above.

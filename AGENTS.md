@@ -13,6 +13,12 @@ Docelowym repozytorium prac jest `free_falcon_sign`.
   Ustawiaj HOME/TMPDIR/cache jobów na podkatalogi ich trwałego W.
 - Dodatkowe worktrees, jeśli potrzebne, również mają być na trwałym dysku
   pod `proofs/ft1536/work/`; nie zastępują kanonicznego checkoutu `main`.
+- Dane dudect RUN_002 mają zatwierdzony magazyn na NVMe: kanoniczna ścieżka
+  `proofs/ft1536/work/FT1536_FPEMU_DUDECT_RUN_002` jest dowiązaniem do
+  `/media/footfalcon/FT1536_DATA/ft1536-dudect/FT1536_FPEMU_DUDECT_RUN_002`.
+  Sprawdzaj zamontowany UUID `da38b9e9-0e22-4c55-b3e0-c46b9f293eca`;
+  opis w `provenance/FT1536_DATA_STORAGE.md`. Narzędziom odrzucającym dowiązania
+  przekazuj zweryfikowaną fizyczną ścieżkę, bez osłabiania ich walidacji.
 - Poprzedni checkout z36 zastanymi staged zmianami został zachowany w
   `proofs/ft1536/work/FT1536_REPOSITORY_RELOCATION_2026-09-21/original-checkout/`.
   To kopia odzyskiwania na starej gałęzi; zachowaj jej indeks i pliki.
