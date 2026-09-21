@@ -1,0 +1,239 @@
+{
+  "status": "PASS_FINITE_BINDING_CONTROLS",
+  "level": {
+    "split_logn": 9,
+    "ldl_logn": 8,
+    "full": 0
+  },
+  "cases": [
+    {
+      "branch": 0,
+      "diagonal": 0,
+      "positions": 128,
+      "raw_words": 1024,
+      "nonzero_d11_imag": 44,
+      "output_sha256": "eda21a8a2a73250cc5bf607e1b3f171e884c701e5b7313e3eec33a64ed7a3541"
+    },
+    {
+      "branch": 0,
+      "diagonal": 1,
+      "positions": 128,
+      "raw_words": 1024,
+      "nonzero_d11_imag": 79,
+      "output_sha256": "cc756dde30b4647f40c9dd0922c3e60ac47aca4d92663fec0c048f6ed3a0d71a"
+    },
+    {
+      "branch": 0,
+      "diagonal": 2,
+      "positions": 128,
+      "raw_words": 1024,
+      "nonzero_d11_imag": 80,
+      "output_sha256": "1660c8fa625fdcd9a98c0d452cbd5d4387cbb67681a235cff26b47e4f671716e"
+    },
+    {
+      "branch": 1,
+      "diagonal": 0,
+      "positions": 128,
+      "raw_words": 1024,
+      "nonzero_d11_imag": 98,
+      "output_sha256": "eaadfc2a2a10505d6d50cf0a8edc4ab7deb9a5025e3eb46833e15e3ec5668f49"
+    },
+    {
+      "branch": 1,
+      "diagonal": 1,
+      "positions": 128,
+      "raw_words": 1024,
+      "nonzero_d11_imag": 96,
+      "output_sha256": "20f09354d54bfcbf54bf7e842f56f2775492b7c8ca2dca17b76ced675c831159"
+    },
+    {
+      "branch": 1,
+      "diagonal": 2,
+      "positions": 128,
+      "raw_words": 1024,
+      "nonzero_d11_imag": 104,
+      "output_sha256": "3554e051dbfc6e76b9812cd6b9bc4d653b656726137bc5c7be2507ad0c9a1ca2"
+    }
+  ],
+  "half_words": 98,
+  "half_mutants": [
+    {
+      "input": "0000000000000002",
+      "source": "0000000000000000",
+      "ideal": "0000000000000001"
+    },
+    {
+      "input": "0007ffffffffffff",
+      "source": "0000000000000000",
+      "ideal": "0004000000000000"
+    },
+    {
+      "input": "0008000000000000",
+      "source": "0000000000000000",
+      "ideal": "0004000000000000"
+    },
+    {
+      "input": "000ffffffffffffe",
+      "source": "0000000000000000",
+      "ideal": "0007ffffffffffff"
+    },
+    {
+      "input": "000fffffffffffff",
+      "source": "0000000000000000",
+      "ideal": "0008000000000000"
+    },
+    {
+      "input": "0010000000000000",
+      "source": "0000000000000000",
+      "ideal": "0008000000000000"
+    },
+    {
+      "input": "0010000000000001",
+      "source": "0000000000000001",
+      "ideal": "0008000000000000"
+    },
+    {
+      "input": "0010000000000002",
+      "source": "0000000000000002",
+      "ideal": "0008000000000001"
+    },
+    {
+      "input": "0017ffffffffffff",
+      "source": "0007ffffffffffff",
+      "ideal": "000c000000000000"
+    },
+    {
+      "input": "0018000000000000",
+      "source": "0008000000000000",
+      "ideal": "000c000000000000"
+    }
+  ],
+  "post_half_raw_preservation_counterexamples": [
+    {
+      "half": "0000000000000001",
+      "sub_plus_zero": "0000000000000000"
+    },
+    {
+      "half": "0000000000000002",
+      "sub_plus_zero": "0000000000000000"
+    },
+    {
+      "half": "0007ffffffffffff",
+      "sub_plus_zero": "0000000000000000"
+    },
+    {
+      "half": "0008000000000000",
+      "sub_plus_zero": "0000000000000000"
+    },
+    {
+      "half": "000ffffffffffffe",
+      "sub_plus_zero": "0000000000000000"
+    },
+    {
+      "half": "000fffffffffffff",
+      "sub_plus_zero": "0000000000000000"
+    },
+    {
+      "half": "8000000000000001",
+      "sub_plus_zero": "8000000000000000"
+    },
+    {
+      "half": "8000000000000002",
+      "sub_plus_zero": "8000000000000000"
+    },
+    {
+      "half": "8007ffffffffffff",
+      "sub_plus_zero": "8000000000000000"
+    },
+    {
+      "half": "8008000000000000",
+      "sub_plus_zero": "8000000000000000"
+    }
+  ],
+  "maximum_observed_root_imag": "1/16384",
+  "root_imag_controls": 768,
+  "mutations": {
+    "wrong_Adj": {
+      "branch": 0,
+      "diagonal": 0,
+      "slot": 0,
+      "actual": "[(4694252015890814293, 0), (13917623998211133598, 13881878645726734761), (13830554373853166971, 13794738200983888585), (4607182415579840512, 0)]",
+      "mutant": "[(4694252015890814293, 0), (13917623998211133598, 4658506608871958953), (13830554373853166971, 4571366164129112777), (4607182415579840512, 0)]"
+    },
+    "wrong_root_phase": {
+      "branch": 0,
+      "diagonal": 0,
+      "slot": 0,
+      "actual": "[(4694252015890814293, 0), (13917623998211133598, 13881878645726734761), (13830554373853166971, 13794738200983888585), (4607182415579840512, 0)]",
+      "mutant": "[(4694252015890814293, 0), (4658506608871959066, 13917623998211133598), (4571366164129112862, 13830554373853166971), (4607182415579840512, 0)]"
+    },
+    "ideal_harmonic_pivot": {
+      "branch": 0,
+      "diagonal": 0,
+      "slot": 0,
+      "actual": "4607182415579840512",
+      "mutant": "4607182415578794240"
+    },
+    "omit_rounding": {
+      "branch": 0,
+      "diagonal": 0,
+      "slot": 0,
+      "actual": "8589931521/8589934592",
+      "mutant": "3380402810016105153676668759663/3380404018460250778932906819584"
+    },
+    "omit_input_imag": {
+      "branch": 0,
+      "diagonal": 1,
+      "slot": 1,
+      "actual": "[(4613487454788150886, 4454060031469944832), (13795681426049957042, 4608083086529640264), (13789099674288389372, 4601392006130125124), (4612329388663073600, 4454060031469944832)]",
+      "mutant": "[(4613487454788150886, 0), (13795681426117065345, 4608083086529639192), (13789099674384258429, 4601392006130123593), (4612329388663073599, 0)]"
+    },
+    "omit_imag_difference_squared": {
+      "branch": 0,
+      "diagonal": 1,
+      "slot": 1,
+      "actual": "139379549474815797821509568292668896706559/21778071482940061661655974875633165533184",
+      "mutant": "61896953995528657542372455/9671406556917033397649408"
+    },
+    "complex_instead_real_div": {
+      "branch": 0,
+      "diagonal": 1,
+      "slot": 1,
+      "actual": "['-2021203633667903/1152921504606846976', '1930096553054801/4503599627370496']",
+      "mutant": "['-299326611372563443048614662794280435712/170739891398301356334555971516128309542913', '73173572946858679280330642178217487522048/170739891398301356334555971516128309542913']"
+    },
+    "old_ROOT_div_domain": {
+      "branch": 1,
+      "diagonal": 0,
+      "slot": 0,
+      "actual_h": "357920183/2",
+      "old_upper": "8388608",
+      "used_upper": "34359738368"
+    }
+  },
+  "coarse_box": {
+    "classification": "COUNTERMODEL_COARSE_NODE3_BOX_ONLY_NOT_P_KEY_OR_EMITTED",
+    "exact_margin": "-1075",
+    "exact_pivot": "-1075/9",
+    "source_first_pivot": "c05ddc71c71c71c6",
+    "source_first_pivot_value": "-4202577777277155/35184372088832",
+    "legal_first_divisor": "9"
+  },
+  "preflight_stops": [
+    {
+      "case": "zero_first_divisor",
+      "status": "STOP_BEFORE_DIV_DOMAIN",
+      "C_not_called": true
+    }
+  ],
+  "noop_pass": true,
+  "frame_controls": 3,
+  "frame_and_canaries": true,
+  "subnormal_split_control": {
+    "positions": 128,
+    "s0_imag_bits": "0000000000000001",
+    "d11_imag_bits": "0000000000000000",
+    "actual_C_and_model_equal": true
+  },
+  "scope": "Public synthetic inputs and local helpers only. No KeyGen/private loader/Sign. Universal proof separate from finite controls."
+}

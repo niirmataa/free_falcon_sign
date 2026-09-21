@@ -129,6 +129,12 @@ are **SOURCE_POSTPROCESSING_AND_PRECAST** and **SOURCE_SAMPLER_LAW**: actual
 basis products/iFFT/rint/narrowing/bytes, followed separately by source joint law
 and its losses. Conditional caller frames do not establish whole Sign totality.
 
+**Next prepared owner-run task:** [SOURCE_POSTPROCESSING_AND_PRECAST](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_SOURCE_POSTPROCESSING_AND_PRECAST_2026-09-21.md),
+with [897 pinned input members](proofs/ft1536/background/H3_SOURCE_POSTPROCESSING_AND_PRECAST_2026-09-21/README.md).
+It separates source iFFT/rint definedness, value preservation before int16
+narrowing, and exact norm/caller/STATIC bytes. The later norm test cannot
+justify an earlier cast; joint BadPrecast remains a distinct proof obligation.
+
 The [candidate night-run setup](provenance/checks/2026-09-20-dudect-floor-ct-ready/README.md)
 is **STATIC_READY_TIMING_DEFERRED**: source/build/fixture checks passed,
 with no new physical timing campaign started. The [floor-ct launcher](tests/ft1536/dudect/README.md)

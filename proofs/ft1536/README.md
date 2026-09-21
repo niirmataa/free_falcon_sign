@@ -179,6 +179,13 @@ Pierwszy dotyczy basis products/iFFT/rint/narrowing/bytes; drugi joint source
 law i jego strat. Current-center proof nie daje whole Sign termination ani
 pre-cast safety przez przyszłe norm acceptance.
 
+**Przygotowane zadanie do ręcznego startu:**
+[SOURCE_POSTPROCESSING_AND_PRECAST](documents/FT1536_ZADANIE_ASTRA_H3_SOURCE_POSTPROCESSING_AND_PRECAST_2026-09-21.md),
+z [897 przypiętymi wejściami](background/H3_SOURCE_POSTPROCESSING_AND_PRECAST_2026-09-21/README.md).
+Rozdziela defined source iFFT/rint, zachowanie wartości przez int16 narrowing
+oraz exact norm/caller/STATIC bytes. Uniwersalny Safe16 jest osobnym celem;
+otwarty joint BadPrecast nie może zostać ukryty pod proofem samego rzutowania.
+
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
 
@@ -233,7 +240,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [STABLE_NORMALIZATION](stages/FT1536_H3_STABLE_NORMALIZATION_RUN_001/REPORT.md) | **H3_STABLE_NORMALIZATION_PROVED_FOR_EMITTED_PINNED_MODEL** — actual widths/gates i source sqrt/div; mieszany dowód | `6c233cd` |
 | [INITIAL_TARGETS](stages/FT1536_H3_INITIAL_TARGETS_RUN_001/REPORT.md) | **H3_INITIAL_TARGETS_PROVED_FOR_EMITTED_PINNED_MODEL** — canonical target prefix, source errors i frame; mieszany dowód | `99ceb98` |
 | [ORDERED_REACH](stages/FT1536_H3_ORDERED_REACH_RUN_001/REPORT.md) | **PARTIAL_PROOF** — right-root finite-prefix NumericCenter, outcome/frame; left correlated transfer otwarty | `7664277` |
-| [LEFT_ROOT_CORRELATED_TRANSFER](stages/FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001/REPORT.md) | **H3_LEFT_ROOT_CORRELATED_TRANSFER_PROVED_FOR_EMITTED_PINNED_MODEL** — left transfer i kompozycja pełnego zero-aware root/caller finite-prefix NumericCenter; mieszany dowód | niniejszy checkpoint |
+| [LEFT_ROOT_CORRELATED_TRANSFER](stages/FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001/REPORT.md) | **H3_LEFT_ROOT_CORRELATED_TRANSFER_PROVED_FOR_EMITTED_PINNED_MODEL** — left transfer i kompozycja pełnego zero-aware root/caller finite-prefix NumericCenter; mieszany dowód | `fbf4a5c` |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).
