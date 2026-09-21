@@ -9,8 +9,9 @@ Kopie źródeł wewnątrz checkpointów dokumentują badane wersje i umożliwiaj
 replay. Integracja zaakceptowanej poprawki do źródeł odbywa się osobnym
 commitem w `Extra/c`, bez przemianowania historycznego katalogu Extra.
 
-**Aktywny build na main:** Extra/c zawiera teraz dokładnego kandydata L_RHO,
-manifest `2553358f...`, użytego przez L_NTT/L_V/M0. Komendy i pełna tożsamość:
+**Aktywny build na main:** Extra/c zawiera teraz dokładnego kandydata L_RHO +
+FLOOR_CT, manifest `56974571...`, użytego przez nowsze H3. Wcześniejsze
+L_NTT/L_V/M0 zachowują własne piny i jawny transport. Komendy i pełna tożsamość:
 [główny README](../../README.md) oraz
 [proweniencja aktywnego builda](../../provenance/FT1536_ACTIVE_BUILD.md).
 
@@ -123,8 +124,9 @@ A/B (baseline9/9 wykryć, candidate9/9 bez sygnału, controls6/6+6/6).
 [Odbiór](validation/2026-09-20-floor-ct/README.md):235/235 plików,8 modułów,
 41 twierdzeń (15 nowych),1065562 przypadki w normal/sanitizers i pełna
 rekalkulacja9771 partii A/B. Nowy17-file pin56974571… jest w
-stage/candidate; produkcyjny Extra/c ma nadal baseline pin2553358f….
-Source integration i dalsze interfejsy matematyczne mają własny zakres.
+stage/candidate; późniejsza integracja do Extra/c jest opisana w proweniencji
+aktywnego buildu. Archiwalny baseline nadal ma pin2553358f…. Historyczne
+source_integrated=false i zakresy twierdzeń pozostają niezmienione.
 
 **Odebrany RAW_ASSEMBLY:** [raport](stages/FT1536_H3_RAW_ASSEMBLY_RUN_001/REPORT.md)
 domyka actual raw prefix do powrotu ffLDL_fft3:6144 basis,18432 raw tree,
@@ -244,7 +246,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [INITIAL_TARGETS](stages/FT1536_H3_INITIAL_TARGETS_RUN_001/REPORT.md) | **H3_INITIAL_TARGETS_PROVED_FOR_EMITTED_PINNED_MODEL** — canonical target prefix, source errors i frame; mieszany dowód | `99ceb98` |
 | [ORDERED_REACH](stages/FT1536_H3_ORDERED_REACH_RUN_001/REPORT.md) | **PARTIAL_PROOF** — right-root finite-prefix NumericCenter, outcome/frame; left correlated transfer otwarty | `7664277` |
 | [LEFT_ROOT_CORRELATED_TRANSFER](stages/FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001/REPORT.md) | **H3_LEFT_ROOT_CORRELATED_TRANSFER_PROVED_FOR_EMITTED_PINNED_MODEL** — left transfer i kompozycja pełnego zero-aware root/caller finite-prefix NumericCenter; mieszany dowód | `fbf4a5c` |
-| [SOURCE_POSTPROCESSING_AND_PRECAST](stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001/REPORT.md) | **PARTIAL_PROOF** — operational suffix/iFFT/rint/norm/bytes domknięte; uniwersalny Safe16 otwarty | niniejszy checkpoint |
+| [SOURCE_POSTPROCESSING_AND_PRECAST](stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001/REPORT.md) | **PARTIAL_PROOF** — operational suffix/iFFT/rint/norm/bytes domknięte; uniwersalny Safe16 otwarty | `481e62b` |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).

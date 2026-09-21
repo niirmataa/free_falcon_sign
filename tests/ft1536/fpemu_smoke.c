@@ -26,6 +26,13 @@ main(void)
 	CHECK(fpr_div(fpr_one, fpr_two) == fpr_onehalf);
 	CHECK(fpr_sqrt(fpr_of(4)) == fpr_two);
 	CHECK(fpr_floor(fpr_neg(fpr_onehalf)) == -1);
+	/* Preserve both zero words and both sides of the old exponent selector. */
+	CHECK(fpr_floor(UINT64_C(0x0000000000000000)) == 0);
+	CHECK(fpr_floor(UINT64_C(0x8000000000000000)) == -1);
+	CHECK(fpr_floor(UINT64_C(0x3fd0000000000000)) == 0);
+	CHECK(fpr_floor(UINT64_C(0x3fe8000000000000)) == 0);
+	CHECK(fpr_floor(UINT64_C(0xbfd0000000000000)) == -1);
+	CHECK(fpr_floor(UINT64_C(0xbfe8000000000000)) == -1);
 	CHECK(fpr_rint(fpr_onehalf) == 0);
 	CHECK(fpr_rint(fpr_add(fpr_one, fpr_onehalf)) == 2);
 	CHECK(fpr_mul_high_u64(UINT64_MAX, UINT64_MAX) == UINT64_MAX - 1);

@@ -7,8 +7,8 @@ proof checkpoints, their evidence, and reproducible replay tools.
 
 ## Active FT1536 build on `main`
 
-**[Source: `Extra/c/`](Extra/c/) — the exact L_RHO research candidate used by
-the completed L_NTT, L_V and M0 checkpoints, with FPEMU and adaptive CDF.**
+**[Source: `Extra/c/`](Extra/c/) — the exact L_RHO + FLOOR_CT candidate used by
+the newer H3 checkpoints, with FPEMU and adaptive CDF.**
 
 ```sh
 make FT1536
@@ -18,7 +18,7 @@ make check-FT1536
 CLI output: **`.build/FT1536/ft1536`**. Linux, GCC, GNU Make and Python 3.11+
 are required. Every build verifies the
 [17-file candidate manifest](provenance/ft1536-candidate.sha256), SHA-256
-`2553358fbb1144acdb577e1ad371a017ac325306dd901af745295dd17b03bd5a`.
+`56974571b46e8257bdd3b4097c8c70fded6bb4b94c64805f6e35ec80929a0985`.
 See [active-build provenance](provenance/FT1536_ACTIVE_BUILD.md).
 
 **Current status — 2026-09-21:** **L_RHO, the complete L_NTT pipeline and the
@@ -47,9 +47,11 @@ and mapped after actual sampling return, with source iFFT/rint and exact STATIC
 bytes. Universal int16 value preservation, sampler law, whole Sign termination
 and end-to-end security remain open research objectives.
 
-**FPEMU audit — confirmed issues:** numeric `fpr_lt(-0,+0)` returns 1, and
-GCC14.2 with the selected `-O` emits an operand-dependent branch in
-`fpr_floor`, including its use in `sampler_large` and BerExp. The
+**FPEMU audit — confirmed historical baseline issues:** numeric `fpr_lt(-0,+0)`
+returns 1, and the older XOR floor selector compiled to an operand-dependent
+branch under GCC14.2/-O, including in `sampler_large` and BerExp. The floor
+selector is now replaced by the reviewed FLOOR_CT candidate; the generic
+signed-zero comparison issue remains separately scoped. The
 [independent audit review](proofs/ft1536/validation/2026-09-20-fpemu-audit/README.md)
 records the exact scope; timing tools were **NOT_RUN in that frozen audit**.
 The subsequent [official pinned dudect harness](tests/ft1536/dudect/README.md)
@@ -75,9 +77,10 @@ candidate9/9 without detected signal; all controls passed).
 reproduced **235/235 files,8 modules/41 theorems and all9771 A/B batches**.
 The [candidate sources](proofs/ft1536/stages/FT1536_FPEMU_FLOOR_CT_RUN_001/candidate/source/)
 have manifest `56974571b46e8257bdd3b4097c8c70fded6bb4b94c64805f6e35ec80929a0985`.
-This archived candidate has not yet been integrated into the active Extra/c
-build described below; its CT evidence is scoped to the pinned build and
-exploratory shared-host measurements.
+This exact archived candidate is now integrated into the default Extra/c build.
+[Integration provenance](provenance/FT1536_ACTIVE_BUILD.md) records the source
+identity; its CT evidence remains scoped to the pinned build and exploratory
+shared-host measurements.
 
 The [H3_RAW_ASSEMBLY result](proofs/ft1536/stages/FT1536_H3_RAW_ASSEMBLY_RUN_001/REPORT.md)
 establishes the complete raw prefix:6144 source basis words and18432 tree
@@ -143,10 +146,11 @@ open; the local65536→0 witness has no emitted-history membership.
 The next interface is [SOURCE_SAMPLER_LAW/H6P](proofs/ft1536/stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001/NEXT_INTERFACE.md),
 with joint BadPrecast and a separate reference-integer/Sign→Verify bridge.
 
-The [candidate night-run setup](provenance/checks/2026-09-20-dudect-floor-ct-ready/README.md)
-is **STATIC_READY_TIMING_DEFERRED**: source/build/fixture checks passed,
-with no new physical timing campaign started. The [floor-ct launcher](tests/ft1536/dudect/README.md)
-performs fresh controls at night before a separate eight-hour run002.
+The [historical deferred preparation](provenance/checks/2026-09-20-dudect-floor-ct-ready/README.md)
+is retained. The [current floor-ct launcher](tests/ft1536/dudect/README.md)
+supports the owner's **six-hour RUN_002** budget, with fresh controls before
+service launch and matching controller/systemd limits. Actual campaign status
+is recorded by RUN/RESULT in its local work directory.
 
 The current build integrates the corrected verifier, SHA-256
 `3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42`.
@@ -192,7 +196,7 @@ preserves the executed commands, results and full build/check streams.
 
 ## Source identity and historical correction
 
-The current `Extra/c` is the **exact 17-file L_RHO candidate**, selected as
+The current `Extra/c` is the **exact 17-file L_RHO + FLOOR_CT candidate**, selected as
 the working build on `main`. Its authoritative file list is
 [`provenance/ft1536-candidate.sha256`](provenance/ft1536-candidate.sha256).
 The prior [S17 baseline and its integration history](provenance/FT1536_S17.md)
@@ -218,13 +222,17 @@ rejects that witness**, with canonical preNTT0=16866 and exact norm43058711057.
 This finite regression checks the corrected behavior; the universal result
 is supplied by the source-bound L_V proof, within its declared model.
 
-The candidate differs from S17 only in `falcon-vrfy.c`:
+The verifier correction relative to S17 is in `falcon-vrfy.c`:
 [snapshot](proofs/ft1536/stages/FT1536_L_RHO_RUN_001/candidate/),
 [exact patch](proofs/ft1536/stages/FT1536_L_RHO_RUN_001/candidate.patch).
+The subsequent [FLOOR_CT patch](proofs/ft1536/stages/FT1536_FPEMU_FLOOR_CT_RUN_001/PATCH.diff)
+changes only the floor body in `fpr-emulated.h`; all other15 source files remain
+identical to S17. Earlier proof snapshots preserve their own source versions.
 
 | Version / interface | Current role |
 |---|---|
-| `Extra/c`, L_RHO manifest `2553358f…` | **Active/default build on main**, identical to the candidate used by the completed proofs |
+| `Extra/c`, L_RHO + FLOOR_CT manifest `56974571…` | **Active/default build on main**, identical to the candidate used by newer H3 checkpoints |
+| Archived L_RHO manifest `2553358f…` | Previous default and preserved dudect baseline; source of L_NTT/L_V/M0 before explicit transport |
 | Historical S17, manifest `03eaa0dd…` | Reference snapshot in the archive and Git history; recorded counterexample to Ext0 shortness |
 | M0 `r40-static4096-parametric-v1` | Defined caller/game contract; its protocol wrapper is not integrated |
 

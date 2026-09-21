@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the pinned L_RHO research candidate; retain source and execution receipts."""
+"""Build the pinned L_RHO + FLOOR_CT candidate; retain source and execution receipts."""
 import argparse
 import datetime
 import fcntl
@@ -19,7 +19,7 @@ import time
 ROOT = Path(__file__).absolute().parents[1]
 SOURCE = ROOT / 'Extra/c'
 MANIFEST = ROOT / 'provenance/ft1536-candidate.sha256'
-MANIFEST_SHA = '2553358fbb1144acdb577e1ad371a017ac325306dd901af745295dd17b03bd5a'
+MANIFEST_SHA = '56974571b46e8257bdd3b4097c8c70fded6bb4b94c64805f6e35ec80929a0985'
 OUTPUT = ROOT / '.build/FT1536'
 WITNESS = ROOT / 'proofs/ft1536/stages/FT1536_LV_STATIC_RUN_001'
 
@@ -93,7 +93,7 @@ def execute(mode):
                    LC_ALL='C', GIT_OPTIONAL_LOCKS='0')
         flags_line = next(line for line in files['Makefile'][1].decode().splitlines() if line.startswith('CFLAGS = '))
         flags = flags_line.split('=', 1)[1].strip() + ' -std=c99'
-        record = dict(schema='FT1536_CANDIDATE_BUILD_V1', profile='FT1536 / L_RHO candidate / FPEMU',
+        record = dict(schema='FT1536_CANDIDATE_BUILD_V1', profile='FT1536 / L_RHO + FLOOR_CT candidate / FPEMU',
                       started_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),
                       build_helper_sha256=sha(read(Path(__file__).absolute())),
                       source_manifest_sha256=MANIFEST_SHA,
