@@ -1,0 +1,13 @@
+split_preserves_eval : ∀ (n : Nat) (f : Nat → Int) (c z : Int),
+  z ^ n % 18433 = c % 18433 → peval n (fun k => (f k + c * f (n + k)) % 18433) z = peval (n + n) f z
+'FT1536Forward.eval_congr' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.eval_mod_coeff' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.eval_linear' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.eval_sub' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.eval_scale' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.eval_split' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.split_preserves_eval' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.pow_mod' depends on axioms: [propext]
+'FT1536Forward.eval_mod_node' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.eval_delta' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.powM_correct' depends on axioms: [propext]

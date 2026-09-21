@@ -1,0 +1,310 @@
+'FT1536Forward.leaf_checked_25' depends on axioms: [propext]
+LeafData/C25 0 5.909
+'FT1536Forward.leaf_checked_26' depends on axioms: [propext]
+LeafData/C26 0 5.782
+'FT1536Forward.leaf_checked_27' depends on axioms: [propext]
+LeafData/C27 0 5.833
+'FT1536Forward.leaf_checked_28' depends on axioms: [propext]
+LeafData/C28 0 5.987
+'FT1536Forward.leaf_checked_29' depends on axioms: [propext]
+LeafData/C29 0 6.18
+'FT1536Forward.leaf_checked_30' depends on axioms: [propext]
+LeafData/C30 0 6.31
+'FT1536Forward.leaf_checked_31' depends on axioms: [propext]
+LeafData/C31 0 6.284
+'FT1536Forward.leaf_checked' depends on axioms: [propext]
+LeafChecks 0 0.27
+leaf_facts : ∀ (b : Nat),
+  b < 512 →
+    ∀ (j : Fin 3),
+      have pos := 3 * b;
+      have z := node b j;
+      z ^ 768 % 18433 = rootLabel pos % 18433 ∧
+        (∀ (p : Nat × Nat),
+            p ∈ forwardSchedule 9 2 768 → z ^ (p.snd / 2) % 18433 = splitLabel p.fst (p.snd / 2) pos % 18433) ∧
+          PhiZero z ∧ ∀ (k : Fin 3), (cubeFExpr (gmAt (512 + b)) fW j).eval (basis k) = z ^ ↑k % 18433
+'FT1536Forward.leaf_facts' depends on axioms: [propext, Quot.sound]
+LeafFacts 0 0.319
+middle_eval : ∀ (ps : List (Nat × Nat)) (t : Nat),
+  StageChain t ps →
+    ∀ (pos : Nat),
+      pos < 1536 →
+        ∀ (z : Int),
+          (∀ (p : Nat × Nat), p ∈ ps → z ^ (p.snd / 2) % 18433 = splitLabel p.fst (p.snd / 2) pos % 18433) →
+            ∀ (s : Mem), blockEval 3 (blockBase 3 pos) (forwardMiddle ps s) z = blockEval t (blockBase t pos) s z
+FORWARD_GLOBAL : ∀ (v : Vec),
+  CanonVec v →
+    ∀ (b : Fin 512) (j : Fin 3),
+      forwardC v ⟨3 * ↑b + ↑j, ⋯⟩ =
+        (sumN 1536 fun k => fromVec v k * (ordinary (gmAt (512 + ↑b)) * 14648 ^ ↑j) ^ k) % 18433
+liftForward_eval : ∀ (v : Vec) (b : Fin 512) (j : Fin 3),
+  liftForward v ⟨3 * ↑b + ↑j, ⋯⟩ = peval 1536 (fromVec v) (node (↑b) j)
+node_zero : ∀ (b : Nat), b < 512 → ∀ (j : Fin 3), PhiZero (node b j)
+'FT1536Forward.actual_chain' depends on axioms: [propext]
+'FT1536Forward.middle_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.cubic_eval' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.forwardMem_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.forwardC_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.FORWARD_GLOBAL' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.fromVec_canonical_mod' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.liftForward_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.node_zero' depends on axioms: [propext, Quot.sound]
+ForwardGlobal 0 0.499
+remMonomial_eval : ∀ (z : Int),
+  PhiZero z → ∀ (k : Nat), k < 3071 → peval 1536 (FT1536Composition.remMonomial k) z = z ^ k % 18433
+'FT1536Forward.phi_square' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.phi_cube' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.power_middle' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.power_high' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.remMonomial_eval' depends on axioms: [propext, Quot.sound]
+Monomials 0 0.521
+productCoefficient_eq : ∀ (h r : Vec) (k : Fin 1536), FT1536Composition.productCoefficient h r k = rawCoefficient h r ↑k
+product_eval : ∀ (z : Int),
+  PhiZero z →
+    ∀ (h r : Vec),
+      peval 1536 (fromVec (FT1536Composition.product h r)) z =
+        peval 1536 (fromVec h) z * peval 1536 (fromVec r) z % 18433
+forward_product : ∀ (h r : Vec),
+  liftForward (FT1536Composition.product h r) = FT1536Composition.pointMul (liftForward h) (liftForward r)
+product_canonical_inputs : ∀ (h r : Vec),
+  FT1536Composition.product (FT1536Composition.canonical h) (FT1536Composition.canonical r) =
+    FT1536Composition.product h r
+'FT1536Forward.eval_sum' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.eval_convolution' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.productCoefficient_eq' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.product_raw' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.product_eval' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.forward_product' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.lift_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.product_canonical_inputs' depends on axioms: [propext, Classical.choice, Quot.sound]
+Product 0 0.404
+'FT1536.intermediate_ranges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.positive_remainder' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.rho_contract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.result_cast_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.canonical_unique' depends on axioms: [propext, Quot.sound]
+'FT1536.old_piecewise' depends on axioms: [propext, Quot.sound]
+'FT1536.old_congruence_domain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.old_canonical_domain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.agree_on_old_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.vector_contract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.loop_progress' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.center_antisymmetric' depends on axioms: [propext, Quot.sound]
+Rho 0 0.661
+L_NTT : ∀ (h r c : Vec),
+  CanonVec h → CanonVec r → CanonVec c → pipelineC h r c = (product h r, subtract (product h r) c)
+L_NTT_p : ∀ (h r c : Vec), CanonVec h → CanonVec r → CanonVec c → (pipelineC h r c).fst = product h r
+L_NTT_d : ∀ (h r c : Vec), CanonVec h → CanonVec r → CanonVec c → (pipelineC h r c).snd = subtract (product h r) c
+L_NTT_ranges : ∀ (h r c : Vec),
+  CanonVec h → CanonVec r → CanonVec c → CanonVec (pipelineC h r c).fst ∧ CanonVec (pipelineC h r c).snd
+pipeline_intermediate_ranges : ∀ (h r c : Vec),
+  CanonVec h →
+    CanonVec r →
+      CanonVec c →
+        have H0 := forwardC h;
+        have H := toMontC H0;
+        have a0 := forwardC r;
+        have a1 := montPointC a0 H;
+        have p := inverseC a1;
+        CanonVec H0 ∧ CanonVec H ∧ CanonVec a0 ∧ CanonVec a1 ∧ CanonVec p ∧ CanonVec (subtractC p c)
+L_NTT_rho : ∀ (h s c : Vec),
+  CanonVec h →
+    (∀ (i : Fin 1536), FT1536.InInt16 (s i)) →
+      CanonVec c → pipelineC h (rhoVec s) c = (product h s, subtract (product h s) c)
+L_NTT_rho_ranges : ∀ (h s c : Vec),
+  CanonVec h →
+    (∀ (i : Fin 1536), FT1536.InInt16 (s i)) →
+      CanonVec c → CanonVec (pipelineC h (rhoVec s) c).fst ∧ CanonVec (pipelineC h (rhoVec s) c).snd
+'FT1536Forward.L_NTT' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.L_NTT_p' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.L_NTT_d' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.product_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.subtract_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.L_NTT_ranges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.toMontC_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.montPointC_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.subtractC_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.point_prefix_range' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.point_read_bound' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.pipeline_intermediate_ranges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.rhoVec_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.rhoVec_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.L_NTT_rho' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.L_NTT_rho_ranges' depends on axioms: [propext, Classical.choice, Quot.sound]
+Complete 0 0.372
+CENTER_C : ∀ (d : Int),
+  CanonVal d →
+    centerBeforeStore d = FT1536.center d ∧
+      centerC d = FT1536.center d ∧ -9216 ≤ centerBeforeStore d ∧ centerBeforeStore d ≤ 9216
+center_loop_correct : ∀ (v : Vec), CanonVec v → centerLoop v = fun i => FT1536.center (v i)
+'FT1536Bridge.s16_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.s16_exact' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.s16_bits' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.s32_exact' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.s64_exact' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.center_borrow' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.center_correction' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.CENTER_C' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.center_mod' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.center_congruence' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.center_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.center_prefix' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.center_unread' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.center_loop_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+BridgeWords 0 0.641
+norm_no_overflow : ∀ (a b : Vec),
+  SignedVec a →
+    SignedVec b →
+      ∀ (n : Nat),
+        n < 4608 →
+          -2147483648 ≤ normTerm a b n ∧
+            normTerm a b n ≤ 2147483647 ∧
+              -4947802324992 ≤ normAcc a b n + normTerm a b n ∧
+                normAcc a b n + normTerm a b n ≤ 4947802324992 ∧
+                  -9223372036854775808 < normAcc a b n + normTerm a b n ∧
+                    normAcc a b n + normTerm a b n < 9223372036854775807
+NORM64_EXACT : ∀ (a b : Vec), SignedVec a → SignedVec b → normAcc a b 4608 = Q a b
+STRICT_B : ∀ (a b : Vec), SignedVec a → SignedVec b → (isShort a b = true ↔ Q a b < 2093922385)
+'FT1536Bridge.Q0_neg' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.int16_product' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.normTerm_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.norm_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.norm_no_overflow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.interleave_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.norm_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.NORM64_EXACT' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.STRICT_B' depends on axioms: [propext, Classical.choice, Quot.sound]
+Norm64 0 2.162
+RAW_VERIFIER_SOUND : ∀ (h c s : Vec),
+  CanonVec h →
+    CanonVec c →
+      SignedVec s →
+        rawVerify (prepareKey h) c s = true →
+          SignedVec (Ext0Words h c s).fst ∧
+            Congruent h c (Ext0Words h c s) ∧ Q (Ext0Words h c s).fst (Ext0Words h c s).snd < 2093922385
+theorem FT1536Bridge.RAW_VERIFIER_SOUND : ∀ (h c s : Vec),
+  CanonVec h →
+    CanonVec c →
+      SignedVec s →
+        rawVerify (prepareKey h) c s = true →
+          SignedVec (Ext0Words h c s).fst ∧
+            Congruent h c (Ext0Words h c s) ∧ Q (Ext0Words h c s).fst (Ext0Words h c s).snd < 2093922385 :=
+fun h c s hh hc hs accept =>
+  have hn := (STRICT_B (rawFirst (prepareKey h) c s) s (raw_signed (prepareKey h) c s) hs).mp accept;
+  ⟨extract_signed h c s,
+    ⟨extract_congruence h c s,
+      id
+        (id
+          (Eq.mp
+            (congrFun' (congrArg LT.lt (congrFun' (congrArg HAdd.hAdd (Q0_neg (Ext0Words h c s).fst)) (Q0 s)))
+              2093922385)
+            (Eq.mp (congrArg (fun _a => Q _a s < 2093922385) (SIGN_BRIDGE h c s hh hc hs)) hn)))⟩⟩
+'FT1536Bridge.raw_before_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.raw_signed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.extract_signed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.SIGN_BRIDGE' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.extract_congruence' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.RAW_VERIFIER_SOUND' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.raw_reject_at_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+RawBridge 0 0.361
+fill_source : ∀ (fuel need : Nat) (d : Bytes) (c : Cursor),
+  Valid d c → need ≤ c.bits + 8 * fuel → FillRun need d c (fill fuel need d c)
+nextBit_spec : ∀ (d : Bytes) (c r : Cursor) (bit : Nat),
+  Inv d c → nextBit d c = some (bit, r) → Inv d r ∧ bit < 2 ∧ c.pos ≤ r.pos ∧ remaining d c = remaining d r + 1
+unary_source : ∀ (fuel : Nat) (d : Bytes) (ne : Nat) (c : Cursor),
+  Inv d c → remaining d c ≤ fuel → UnaryRun d ne c (unaryFuel fuel d ne c)
+unary_spec : ∀ (fuel : Nat) (d : Bytes) (ne : Nat) (c : Cursor),
+  Inv d c →
+    ne < 4294967296 →
+      ∀ (out : Nat) (r : Cursor),
+        unaryFuel fuel d ne c = some (out, r) →
+          out < 4294967296 ∧ Inv d r ∧ c.pos ≤ r.pos ∧ remaining d r < remaining d c
+unary_wrap : ∀ (k ne : Nat), ne < 4294967296 → zeroCount k ne = (ne + k) % 4294967296
+'FT1536Bridge.start_valid' depends on axioms: [propext]
+'FT1536Bridge.pull_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.fill_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.fill_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.nextBit_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.nextBit_empty' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.unary_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.unary_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.unary_wrap' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.zeroCount_shift' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.unary_skip_zeros' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.unary_full_wrap' depends on axioms: [propext, Quot.sound]
+ByteCursor 0 0.983
+CAPACITY_3160 : ∀ (a b : Vec),
+  Q a b < 2093922385 → staticBits b ≤ 25267 ∧ payloadLength b ≤ 3160 ∧ payloadLength b < 4096
+capacity_after_source_norm : ∀ (a b : Vec),
+  SignedVec a →
+    SignedVec b → isShort a b = true → staticBits b ≤ 25267 ∧ payloadLength b ≤ 3160 ∧ payloadLength b < 4096
+'FT1536M0.sum_le' depends on axioms: [propext, Quot.sound]
+'FT1536M0.sum_nonneg' depends on axioms: [propext, Quot.sound]
+'FT1536M0.sum_const' depends on axioms: [propext]
+'FT1536M0.square_nonnegative' depends on axioms: [propext, Quot.sound]
+'FT1536M0.a2_square_bound' depends on axioms: [propext, Quot.sound]
+'FT1536M0.a2_nonnegative' depends on axioms: [propext, Quot.sound]
+'FT1536M0.Q0_nonnegative' depends on axioms: [propext, Quot.sound]
+'FT1536M0.square_sum_bound' depends on axioms: [propext, Quot.sound]
+'FT1536M0.abs_majorant' depends on axioms: [propext, Quot.sound]
+'FT1536M0.l1_bound' depends on axioms: [propext, Quot.sound]
+'FT1536M0.quotient_bound' depends on axioms: [propext, Quot.sound]
+'FT1536M0.CAPACITY_3160' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536M0.capacity_after_source_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536M0.integer_endpoint_checks' does not depend on any axioms
+CapacityMath 0 0.527
+encoder_count_exact : ∀ (cap : Int) (xs : List Int),
+  listBits xs ≤ 8 * cap → encodeCount cap xs = some ((listBits xs + 7) / 8) ∧ (listBits xs + 7) / 8 ≤ cap
+STATIC_FITS_4096 : ∀ (a b : Vec),
+  SignedVec a →
+    SignedVec b →
+      isShort a b = true →
+        encodeCount 4095 (List.ofFn b) = some (payloadLength b - 1) ∧ payloadLength b ≤ 3160 ∧ payloadLength b < 4096
+'FT1536M0.drain_ok' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536M0.prefix9_ok' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536M0.oneBit_ok' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536M0.manyBits_ok' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536M0.coeff_bits_eq' depends on axioms: [propext, Quot.sound]
+'FT1536M0.list_bits_nonneg' depends on axioms: [propext, Quot.sound]
+'FT1536M0.encoder_body_ok' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536M0.finish_ok' depends on axioms: [propext, Quot.sound]
+'FT1536M0.encoder_count_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536M0.list_bits_append' depends on axioms: [propext]
+'FT1536M0.list_bits_ofFn' depends on axioms: [propext, Quot.sound]
+'FT1536M0.vector_bits' depends on axioms: [propext, Quot.sound]
+'FT1536M0.STATIC_FITS_4096' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536M0.source_ne_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536M0.terminal_bit' depends on axioms: [propext, Quot.sound]
+'FT1536M0.post_decrement_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+EncoderCount 0 1.116
+witness_norm : Q zeroVec witness = 2093088768
+witness_length : payloadLength witness = 3156
+'FT1536M0.positive_encoder_length' depends on axioms: [propext, Quot.sound]
+'FT1536M0.counter_index_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536M0.witness_signed' does not depend on any axioms
+'FT1536M0.witness_norm' does not depend on any axioms
+'FT1536M0.witness_length' does not depend on any axioms
+'FT1536M0.witness_short' does not depend on any axioms
+'FT1536M0.witness_buffers' does not depend on any axioms
+CapacityEndpoint 0 4.925
+DECODE_STATIC : ∀ (d : Bytes) (vs : List Int) (used : Nat),
+  decodeStatic d = some (vs, used) →
+    vs.length = 1536 ∧ (∀ (x : Int), x ∈ vs → FT1536.InInt16 x) ∧ 1920 ≤ used ∧ used ≤ List.length d
+static_loop_spec : ∀ (n : Nat) (d : Bytes) (c r : Cursor) (vs : List Int),
+  Inv d c →
+    staticLoop n d c = some (vs, r) →
+      vs.length = n ∧
+        (∀ (x : Int), x ∈ vs → FT1536.InInt16 x) ∧
+          Inv d r ∧ c.pos ≤ r.pos ∧ remaining d r + 10 * n ≤ remaining d c ∧ r.db % 2 ^ r.bits = 0
+'FT1536Bridge.static_value_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.static_promotions' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.readStatic_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.static_head_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.static_head_shifts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.static_loop_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.DECODE_STATIC' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.listVec_property' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.static_vector_signed' depends on axioms: [propext, Classical.choice, Quot.sound]
+DecodeStatic 0 0.665
+MetricTransport 0 0.359
+LeftClosure 0 0.335

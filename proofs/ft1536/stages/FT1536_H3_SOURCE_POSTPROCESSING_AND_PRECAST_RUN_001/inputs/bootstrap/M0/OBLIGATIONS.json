@@ -1,0 +1,582 @@
+{
+  "schema": "FT1536_M0_OBLIGATIONS_V1",
+  "status": "M0_CONTRACT_DEFINED_FOR_PINNED_CANDIDATE",
+  "obligations": [
+    {
+      "id": "M0_PROFILE_GAME",
+      "status": "DEFINED",
+      "evidence": [
+        "PROFILE.json",
+        "GAME.md",
+        "DECISIONS.md"
+      ],
+      "gap": null
+    },
+    {
+      "id": "CAPACITY",
+      "status": "PROVED_ANALYTIC_KERNEL_COUNT_MODEL_C_BINDING",
+      "evidence": [
+        "CAPACITY.md",
+        "formal/CapacityMath.lean",
+        "formal/EncoderCount.lean",
+        "artifacts/capacity_checks.json"
+      ],
+      "gap": null
+    },
+    {
+      "id": "FRAMING",
+      "status": "PROVED_FOR_FIXED40_DOMAIN",
+      "evidence": [
+        "formal/Framing.lean",
+        "artifacts/capacity_checks.json"
+      ],
+      "gap": null
+    },
+    {
+      "id": "PARAMETRIC_TARGET",
+      "status": "DEFINED_NOT_PROVED",
+      "evidence": [
+        "TARGET_TYPE.md",
+        "HOP_LEDGER.json"
+      ],
+      "gap": "Complete M1-M6 component certificates and M7 proof are open."
+    },
+    {
+      "id": "H3_HANDOFF",
+      "status": "READY_INTERFACE_NOT_EXECUTED",
+      "evidence": [
+        "H3_INTERFACE.md"
+      ],
+      "gap": "Next separately assigned source reachability proof."
+    },
+    {
+      "id": "CONTRACT_CONSISTENCY",
+      "status": "CHECKED",
+      "evidence": [
+        "artifacts/contract_checks.json"
+      ],
+      "gap": null
+    },
+    {
+      "id": "FRAMING",
+      "status": "DEFINED_WITH_PROVED_AUXILIARY",
+      "origin": "ledger",
+      "evidence": [
+        "formal/Framing.lean",
+        "source/tool.c",
+        "source/falcon.h"
+      ],
+      "premises": [
+        {
+          "id": "OWNER_R40",
+          "status": "DECIDED",
+          "requirement": "exact40 required"
+        },
+        {
+          "id": "WRAPPER_IMPLEMENTATION",
+          "status": "OPEN_INTEGRATION",
+          "requirement": "deploy/check nonce gate before library"
+        }
+      ]
+    },
+    {
+      "id": "KEY_LAW",
+      "status": "DEFINED_ANALYTIC_IDENTITY",
+      "origin": "ledger",
+      "evidence": [
+        "source/falcon-keygen.c",
+        "source/frng.c",
+        "source/falcon.h",
+        "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md"
+      ],
+      "premises": [
+        {
+          "id": "P_K_POSITIVE",
+          "status": "PREMISE",
+          "requirement": "conditional law requires p_K>0"
+        },
+        {
+          "id": "KEYGEN_ENV",
+          "status": "DEFINED",
+          "requirement": "public E and uniform32 bytes on entropy success"
+        }
+      ]
+    },
+    {
+      "id": "ENVIRONMENT",
+      "status": "DEFINED_OPEN_PLATFORM_BINDING",
+      "origin": "ledger",
+      "evidence": [
+        "source/frng.c",
+        "source/falcon-sign.c",
+        "source/falcon-keygen.c"
+      ],
+      "premises": [
+        {
+          "id": "E_SHARED",
+          "status": "PREMISE",
+          "requirement": "same exogenous public schedule and uniform entropy law"
+        },
+        {
+          "id": "OS_BINDING",
+          "status": "OPEN",
+          "requirement": "real OS faults/entropy may need separate comparison"
+        }
+      ]
+    },
+    {
+      "id": "RNG_ROOT",
+      "status": "CRYPTO_ASSUMPTION_AND_OPEN_REDUCTION",
+      "origin": "ledger",
+      "evidence": [
+        "source/falcon-sign.c",
+        "source/shake.c",
+        "formal/Framing.lean"
+      ],
+      "premises": [
+        {
+          "id": "ROOT_PRG",
+          "status": "CRYPTO_ASSUMPTION",
+          "requirement": "exact private-seeded SHAKE-256 expander"
+        },
+        {
+          "id": "ROOT_HYBRID",
+          "status": "OPEN",
+          "requirement": "fresh contexts, aborts and shared-key auxiliary input"
+        }
+      ]
+    },
+    {
+      "id": "RNG_PRNG56",
+      "status": "CRYPTO_ASSUMPTION_AND_OPEN_REDUCTION",
+      "origin": "ledger",
+      "evidence": [
+        "source/frng.c",
+        "source/internal.h",
+        "source/falcon-sign.c"
+      ],
+      "premises": [
+        {
+          "id": "PRNG56",
+          "status": "CRYPTO_ASSUMPTION",
+          "requirement": "uniform56-byte initialization of exact source algorithm, key32+IV16+counter8"
+        },
+        {
+          "id": "JOINT_RANDOMNESS_HYBRID",
+          "status": "OPEN",
+          "requirement": "not a448-bit-key standard ChaCha substitution"
+        }
+      ]
+    },
+    {
+      "id": "ANALYTIC_BUDGET",
+      "status": "OPEN",
+      "origin": "ledger",
+      "evidence": [
+        "source/falcon-sign.c",
+        "source/falcon-keygen.c",
+        "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md"
+      ],
+      "premises": [
+        {
+          "id": "TAIL_BUDGET",
+          "status": "OPEN",
+          "requirement": "prove read/time tail bounds or a.s. termination as needed"
+        }
+      ]
+    },
+    {
+      "id": "H3_RANGE",
+      "status": "OPEN_M1",
+      "origin": "ledger",
+      "evidence": [
+        "H3_INTERFACE.md",
+        "source/falcon-sign.c",
+        "source/fpr-emulated.h",
+        "inputs/context/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md"
+      ],
+      "premises": [
+        {
+          "id": "H3_REACHABILITY",
+          "status": "OPEN",
+          "requirement": "H3_INTERFACE.md exact type"
+        },
+        {
+          "id": "EMITTED_KEY_SUPPORT",
+          "status": "REUSED_CONDITIONAL",
+          "requirement": "correct source support, not arbitrary loader keys"
+        }
+      ]
+    },
+    {
+      "id": "PRECAST_BYTES",
+      "status": "OPEN_M2_M3",
+      "origin": "ledger",
+      "evidence": [
+        "source/falcon-sign.c",
+        "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md",
+        "inputs/context/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md"
+      ],
+      "premises": [
+        {
+          "id": "JOINT_PRECAST",
+          "status": "OPEN",
+          "requirement": "actual joint W1,W2 law, not marginal summaries"
+        },
+        {
+          "id": "BYTE_MAP",
+          "status": "OPEN",
+          "requirement": "same observed outputs; never relabel emitted invalid b as source bot"
+        },
+        {
+          "id": "FAULT_HANDLING",
+          "status": "OPEN",
+          "requirement": "all causes represented once in complete response kernel"
+        }
+      ]
+    },
+    {
+      "id": "H3_LIKELIHOOD",
+      "status": "CONDITIONAL_HISTORICAL_INTERFACE",
+      "origin": "ledger",
+      "evidence": [
+        "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md",
+        "inputs/context/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md",
+        "source/falcon-sign.c"
+      ],
+      "premises": [
+        {
+          "id": "H3_RANGE",
+          "status": "OPEN",
+          "requirement": "M1 premise"
+        },
+        {
+          "id": "H4_DSS",
+          "status": "CONDITIONAL",
+          "requirement": "exact computed dyadic dss, positive production atoms"
+        },
+        {
+          "id": "SOURCE_INSTANTIATION",
+          "status": "OPEN",
+          "requirement": "same retry/fault/byte histories"
+        }
+      ]
+    },
+    {
+      "id": "H1R",
+      "status": "CONDITIONAL_HISTORICAL_INTERFACE",
+      "origin": "ledger",
+      "evidence": [
+        "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md",
+        "inputs/context/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md"
+      ],
+      "premises": [
+        {
+          "id": "ACCEPTANCE_FLOOR",
+          "status": "CONDITIONAL",
+          "requirement": "9/20 where required"
+        },
+        {
+          "id": "RARE_MISSING_ATOMS",
+          "status": "CONDITIONAL",
+          "requirement": "retain finite/infinite support distinctions"
+        },
+        {
+          "id": "FULL_SOURCE_LIFT",
+          "status": "OPEN",
+          "requirement": "do not multiply16 twice"
+        }
+      ]
+    },
+    {
+      "id": "FULL_GEOMETRY",
+      "status": "OPEN_M2_M3",
+      "origin": "ledger",
+      "evidence": [
+        "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md",
+        "inputs/context/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md",
+        "source/falcon-sign.c"
+      ],
+      "premises": [
+        {
+          "id": "GEOMETRY",
+          "status": "OPEN",
+          "requirement": "computed dss not automatically ideal geometry"
+        },
+        {
+          "id": "SECRET_ERASURE",
+          "status": "OPEN",
+          "requirement": "ideal response kernel depends only on h,c with stated byte map"
+        }
+      ]
+    },
+    {
+      "id": "CAPACITY",
+      "status": "PROVED_M0_PINNED_COUNT_MODEL",
+      "origin": "ledger",
+      "evidence": [
+        "formal/CapacityMath.lean",
+        "formal/EncoderCount.lean",
+        "source/falcon-enc.c",
+        "source/falcon-sign.c"
+      ],
+      "premises": [
+        {
+          "id": "SIGNED16_NORM",
+          "status": "PROVED_REUSED",
+          "requirement": "source is_short iff Q<B"
+        },
+        {
+          "id": "COUNTER_BINDING",
+          "status": "PROVED_M0_WITH_C_TRANSLATION",
+          "requirement": "EncoderCount mirrors byte writes and cap-1"
+        },
+        {
+          "id": "LEGAL_BUFFER",
+          "status": "DOMAIN",
+          "requirement": "4096 allocated bytes, STATIC/profile fixed"
+        }
+      ]
+    },
+    {
+      "id": "NORM_RETRY",
+      "status": "OPEN_M3",
+      "origin": "ledger",
+      "evidence": [
+        "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md",
+        "inputs/context/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md"
+      ],
+      "premises": [
+        {
+          "id": "IDEAL_ACCEPTANCE",
+          "status": "OPEN",
+          "requirement": "uniform h,c/history premise, empty cosets explicit"
+        }
+      ]
+    },
+    {
+      "id": "ROM_FRESHNESS",
+      "status": "OPEN_M6",
+      "origin": "ledger",
+      "evidence": [
+        "formal/Framing.lean",
+        "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md",
+        "inputs/context/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md"
+      ],
+      "premises": [
+        {
+          "id": "UNIFORM_NONCE",
+          "status": "OPEN_RNG_HOP",
+          "requirement": "not implied statistically by32-byte source seed"
+        },
+        {
+          "id": "FRAMING",
+          "status": "PROVED_M0",
+          "requirement": "fixed40 injectivity"
+        },
+        {
+          "id": "FRESHNESS_COUPLING",
+          "status": "OPEN",
+          "requirement": "conditioning/gates shared and quantified"
+        }
+      ]
+    },
+    {
+      "id": "IMAGE_R5T",
+      "status": "CONDITIONAL_RESULT_NEEDS_NEW_CONSISTENT_PACKAGE_M4",
+      "origin": "ledger",
+      "evidence": [
+        "inputs/context/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md",
+        "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md"
+      ],
+      "premises": [
+        {
+          "id": "R5T_INTERFACES",
+          "status": "CONDITIONAL",
+          "requirement": "reported T_h<2^-138, E<2^-106 under universal premises"
+        },
+        {
+          "id": "R5T_FREEZE",
+          "status": "OPEN",
+          "requirement": "old OUTPUTS279dce... mismatches four files; create a new package"
+        },
+        {
+          "id": "POPULATION",
+          "status": "OPEN_BINDING",
+          "requirement": "fixed-h T2C3 not substituted for all-h accepted image"
+        }
+      ]
+    },
+    {
+      "id": "IMAGE_KERNEL",
+      "status": "OPEN_M5",
+      "origin": "ledger",
+      "evidence": [
+        "inputs/context/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md",
+        "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md"
+      ],
+      "premises": [
+        {
+          "id": "COMMON_INITIAL_LAW",
+          "status": "REQUIRED",
+          "requirement": "same K_seed and E"
+        },
+        {
+          "id": "ABSOLUTE_CONTINUITY",
+          "status": "REQUIRED",
+          "requirement": "S_i<<R_i on all required histories"
+        },
+        {
+          "id": "FULL_COMMON_KERNEL",
+          "status": "OPEN",
+          "requirement": "same nonce, bot, serialization, fresh gates, hidden key and public postprocessing"
+        },
+        {
+          "id": "M4_IMAGE",
+          "status": "OPEN",
+          "requirement": "certified uniform e"
+        }
+      ]
+    },
+    {
+      "id": "PUBLIC_SAMPLER",
+      "status": "OPEN_M6",
+      "origin": "ledger",
+      "evidence": [
+        "inputs/context/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md",
+        "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md"
+      ],
+      "premises": [
+        {
+          "id": "PUBLIC_D_B",
+          "status": "OPEN",
+          "requirement": "construct bounded sampler D^B without sk"
+        },
+        {
+          "id": "ERROR_TIME_PARTITION",
+          "status": "OPEN",
+          "requirement": "do not count same timeout both epsilon_pub and delta_time"
+        }
+      ]
+    },
+    {
+      "id": "ROM_PROGRAMMING",
+      "status": "OPEN_M6",
+      "origin": "ledger",
+      "evidence": [
+        "inputs/context/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md",
+        "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md",
+        "formal/Framing.lean"
+      ],
+      "premises": [
+        {
+          "id": "PROGRAMMING",
+          "status": "OPEN",
+          "requirement": "full adaptive transcript with abort queries entered in SeenSign"
+        },
+        {
+          "id": "TARGET_ASSIGNMENT",
+          "status": "OPEN",
+          "requirement": "nonprogrammed queries + fresh final query use <=Q_H+1 independent targets"
+        }
+      ]
+    },
+    {
+      "id": "L_V_EXTRACTION",
+      "status": "PROVED_REUSED_FOR_PINNED_CANDIDATE",
+      "origin": "ledger",
+      "evidence": [
+        "inputs/PREV/REPORT.md",
+        "inputs/PREV/CLAIM.md",
+        "inputs/PREV/VerifyBytes.lean"
+      ],
+      "premises": [
+        {
+          "id": "L_V",
+          "status": "PROVED_REUSED",
+          "requirement": "full_L_V_source pinned3fe78f8d..."
+        },
+        {
+          "id": "CHALLENGE_BINDING",
+          "status": "OPEN_M6",
+          "requirement": "returned target index is the same H(r*||m*)"
+        }
+      ]
+    },
+    {
+      "id": "MT_ISIS",
+      "status": "CRYPTO_ASSUMPTION",
+      "origin": "ledger",
+      "evidence": [
+        "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md",
+        "inputs/context/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md"
+      ],
+      "premises": [
+        {
+          "id": "MT_HARDNESS",
+          "status": "CRYPTO_ASSUMPTION",
+          "requirement": "unconstrained integer witness relation Q<B, no centered restriction"
+        },
+        {
+          "id": "RESOURCES",
+          "status": "OPEN_M6",
+          "requirement": "actual reduction within declared t_B,w_B,L_B"
+        }
+      ]
+    },
+    {
+      "id": "PUBLIC_XOF_H2P",
+      "status": "OPEN_OUTSIDE_FIRST_ROM_TARGET",
+      "origin": "ledger",
+      "evidence": [
+        "source/falcon-enc.c",
+        "source/shake.c",
+        "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md"
+      ],
+      "premises": [
+        {
+          "id": "PUBLIC_XOF_MODEL",
+          "status": "OPEN",
+          "requirement": "public bit-output adversary interface must be specified"
+        },
+        {
+          "id": "DOMAIN_COUPLING",
+          "status": "OPEN",
+          "requirement": "same SHAKE code also used privately; no free domain-separation theorem"
+        }
+      ]
+    },
+    {
+      "id": "FINAL_COMPOSITION",
+      "status": "OPEN_M7",
+      "origin": "ledger",
+      "evidence": [
+        "inputs/context/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md",
+        "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md"
+      ],
+      "premises": [
+        {
+          "id": "HOP_CERTIFICATES",
+          "status": "OPEN",
+          "requirement": "all pending source/game/kernel bindings"
+        },
+        {
+          "id": "RESOURCE_TRANSLATION",
+          "status": "OPEN",
+          "requirement": "bound solver and primitive distinguishers"
+        },
+        {
+          "id": "NO_DOUBLE_COUNT",
+          "status": "CONTRACT_INVARIANT",
+          "requirement": "abort ownership unique"
+        }
+      ]
+    }
+  ],
+  "security_reduction_proved": false,
+  "M0_ambiguities_remaining": [],
+  "H3_started": false,
+  "source_integrated": false,
+  "protocol_wrapper_integrated": false,
+  "owner_accepted": false
+}

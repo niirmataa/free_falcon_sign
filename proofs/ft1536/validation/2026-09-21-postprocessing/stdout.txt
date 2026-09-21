@@ -1,0 +1,39 @@
+REPLAY_JOB 0 ['-B', 'scripts/toolchain.py'] 0
+REPLAY_JOB 1 ['scripts/kernel_build.py', '0'] 0
+REPLAY_JOB 2 ['scripts/kernel_build.py', '1'] 0
+REPLAY_JOB 3 ['scripts/kernel_build.py', '2'] 0
+REPLAY_JOB 4 ['scripts/kernel_build.py', '3'] 0
+REPLAY_JOB 5 ['scripts/kernel_build.py', '4'] 0
+REPLAY_JOB 6 ['/home/footfalcon/.local/bin/sage', 'scripts/numeric_certificate.py'] 0
+REPLAY_JOB 7 ['-B', 'scripts/source_binding.py'] 0
+REPLAY_JOB 8 ['scripts/build.py', 'normal'] 0
+REPLAY_JOB 9 ['scripts/build.py', 'sanitized'] 0
+REPLAY_JOB 10 ['-B', 'scripts/fixtures.py'] 0
+REPLAY_JOB 11 ['normal', '0'] 0
+REPLAY_JOB 12 ['normal', '1'] 0
+REPLAY_JOB 13 ['normal', '2'] 0
+REPLAY_JOB 14 ['normal', '3'] 0
+REPLAY_JOB 15 ['normal', '4'] 0
+REPLAY_JOB 16 ['sanitized', '0'] 0
+REPLAY_JOB 17 ['sanitized', '1'] 0
+REPLAY_JOB 18 ['sanitized', '2'] 0
+REPLAY_JOB 19 ['sanitized', '3'] 0
+REPLAY_JOB 20 ['sanitized', '4'] 0
+REPLAY_JOB 21 ['/home/footfalcon/.local/bin/sage', 'scripts/inverse_oracle.py'] 0
+REPLAY_JOB 22 ['-B', 'scripts/mutations.py'] 0
+REPLAY_JOB 23 ['-B', 'scripts/audit.py'] 0
+REPLAY_JOB 24 ['-B', 'scripts/metadata.py'] 0
+{
+  "status": "PASS_FRESH_REPLAY",
+  "external_manifest_sha256": "b860e5453a7a72716acd8636cc581ff57b1b9c00dff20baa907e4636344d1401",
+  "manifest": "OUTPUTS.sha256",
+  "source_members_verified": 3141,
+  "fresh_without_project_cache": true,
+  "regenerated_expected_files": 616,
+  "matched": 616,
+  "all_matches": true,
+  "source_scope_unchanged": true,
+  "historical_status": "PARTIAL_PROOF",
+  "operational_subclaim": "H3_SOURCE_POSTPROCESSING_DEFINED_FOR_EMITTED_PINNED_MODEL",
+  "owner_accepted": false
+}

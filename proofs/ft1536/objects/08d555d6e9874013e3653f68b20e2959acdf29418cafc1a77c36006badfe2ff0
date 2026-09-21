@@ -1,0 +1,49 @@
+{
+  "variants": {
+    "plain": {
+      "vrfy_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+      "enc_sha256": "0f7085fa975d41ebbeb96d5db4cb68482c344ef2d602ca8853e20a4d4f04fb05",
+      "main_sha256": "a5f529d0a87f211b46fb12a6b4d79655cdb2e4f84af0ab1bdf41ff2388ad5633"
+    },
+    "observer": {
+      "vrfy_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+      "enc_sha256": "4479b4eb1e99fa7fff65ed34dc22a4b278a58ed3baffcb2e688ec441eb66a340",
+      "main_sha256": "bb881e906ba1e0e684a9595801461cc903c31d5fcd165fcd8c1f39154fca5fca"
+    },
+    "noop": {
+      "vrfy_sha256": "2b8a36ba6883eefad508899dbcb941683baaa7ed7b5e1643db257fd0a4913676",
+      "enc_sha256": "4479b4eb1e99fa7fff65ed34dc22a4b278a58ed3baffcb2e688ec441eb66a340",
+      "main_sha256": "b1bff5d6b73dabb7761799dd2716435e92f59e5ffd24f08e5a809891128aa880"
+    },
+    "center": {
+      "vrfy_sha256": "5e9ffabf82ad9e3bf1ec39eff2b94fd0cd4785560cb25cfa91674bc1e9c53c23",
+      "enc_sha256": "4479b4eb1e99fa7fff65ed34dc22a4b278a58ed3baffcb2e688ec441eb66a340",
+      "main_sha256": "b40b0afdfd82d0cf2797584d3c1fe9951c546f5c58bdcac0535fb1d23b727b59"
+    },
+    "offset": {
+      "vrfy_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+      "enc_sha256": "67aeaa5500862c2e1b755cc973c8e17dd5adfacedd57cd3df8a090785df6ce2a",
+      "main_sha256": "2b9408893edd862d17c11bcc22eb1c15a541d9557f36cf910eabd78e8b8bc1eb"
+    },
+    "cross": {
+      "vrfy_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+      "enc_sha256": "b5dc485c4341b74e4aea29feac102bb68910c5712e4ac4a7d3b07c4f95626f50",
+      "main_sha256": "1600805446391ee1aa578fdd01b502accd3e0a680e565e3cffbb7547738c8428"
+    },
+    "bound": {
+      "vrfy_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+      "enc_sha256": "8b4a56c6de4e7c9ff615348dc981138b94101f9b234d100502b0ba737e41e756",
+      "main_sha256": "20e72caaf49d26c3051a4eb0d88bffe0c1dcc87b037ed6294a1d56fc9bd9fd97"
+    },
+    "narrow": {
+      "vrfy_sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+      "enc_sha256": "0ac6972b8c90e82fa2c5a9f46e4daf88b4bf35d5d4908fde32b4c5cf128bb032",
+      "main_sha256": "133e9e0f75ec470f7d1b87cb530b85678549d39a029ab013e611a5429b6fb79c"
+    }
+  },
+  "observer_removal_restores_enc": true,
+  "explicit_c_hook": "harness macro falcon_hash_to_point -> explicit_point; common domain specialization in plain and observer",
+  "plain": "No norm or center observer; real falcon_vrfy_verify, decoder, loader and raw decisions still execute.",
+  "center_helper": "Exact selected source w-= statement copied into isolated scalar harness.",
+  "sanitizer": "Separate ASan/UBSan jobs need unlimited virtual address space for shadow reservation; CPU/wall limits remain finite."
+}

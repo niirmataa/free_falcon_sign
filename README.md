@@ -42,8 +42,10 @@ for every canonical challenge, with explicit source FFT and rounding bounds.
 **H3_ORDERED_REACH proves a finite-prefix center bound for the first executed
 right root branch. H3_LEFT_ROOT_CORRELATED_TRANSFER closes the left branch
 and composes zero-aware NumericCenter for all active pre-floor points from
-certified legal root/caller entries.** Whole Sign termination, source
-postprocessing, sampler law and end-to-end security remain open research objectives.
+certified legal root/caller entries.** Source postprocessing is now defined
+and mapped after actual sampling return, with source iFFT/rint and exact STATIC
+bytes. Universal int16 value preservation, sampler law, whole Sign termination
+and end-to-end security remain open research objectives.
 
 **FPEMU audit — confirmed issues:** numeric `fpr_lt(-0,+0)` returns 1, and
 GCC14.2 with the selected `-O` emits an operand-dependent branch in
@@ -129,11 +131,17 @@ are **SOURCE_POSTPROCESSING_AND_PRECAST** and **SOURCE_SAMPLER_LAW**: actual
 basis products/iFFT/rint/narrowing/bytes, followed separately by source joint law
 and its losses. Conditional caller frames do not establish whole Sign totality.
 
-**Next prepared owner-run task:** [SOURCE_POSTPROCESSING_AND_PRECAST](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H3_SOURCE_POSTPROCESSING_AND_PRECAST_2026-09-21.md),
-with [897 pinned input members](proofs/ft1536/background/H3_SOURCE_POSTPROCESSING_AND_PRECAST_2026-09-21/README.md).
-It separates source iFFT/rint definedness, value preservation before int16
-narrowing, and exact norm/caller/STATIC bytes. The later norm test cannot
-justify an earlier cast; joint BadPrecast remains a distinct proof obligation.
+The [SOURCE_POSTPROCESSING_AND_PRECAST result](proofs/ft1536/stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001/REPORT.md)
+is **PARTIAL_PROOF**, with operational subclaim
+**H3_SOURCE_POSTPROCESSING_DEFINED_FOR_EMITTED_PINNED_MODEL**.
+[Independent review](proofs/ft1536/validation/2026-09-21-postprocessing/README.md)
+reproduced616/616 files,102 modules/795 theorems (32 new),59 native cases per
+normal/sanitizer build,32224 rint words and all65536 signed16 codec values.
+Source iFFT error<=1/128 and |rint result|<=4572095 establish the actual
+operational map, including narrowing and STATIC bytes. Universal Safe16 remains
+open; the local65536→0 witness has no emitted-history membership.
+The next interface is [SOURCE_SAMPLER_LAW/H6P](proofs/ft1536/stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001/NEXT_INTERFACE.md),
+with joint BadPrecast and a separate reference-integer/Sign→Verify bridge.
 
 The [candidate night-run setup](provenance/checks/2026-09-20-dudect-floor-ct-ready/README.md)
 is **STATIC_READY_TIMING_DEFERRED**: source/build/fixture checks passed,
@@ -250,6 +258,7 @@ integration work; changing their description does not change the old CLI.
 | [H3_INITIAL_TARGETS](proofs/ft1536/stages/FT1536_H3_INITIAL_TARGETS_RUN_001/REPORT.md) | Actual target prefix for all canonical challenges, source FFT/reciprocal/basis errors and key frame; mixed proof | `H3_INITIAL_TARGETS_PROVED_FOR_EMITTED_PINNED_MODEL` |
 | [H3_ORDERED_REACH](proofs/ft1536/stages/FT1536_H3_ORDERED_REACH_RUN_001/REPORT.md) | Right-root finite-prefix NumericCenter, scalar outcome separation and conditional frames; left correlated transfer open; mixed proof | `PARTIAL_PROOF` |
 | [H3_LEFT_ROOT_CORRELATED_TRANSFER](proofs/ft1536/stages/FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001/REPORT.md) | Source bank/A2/metric/root transfer and closed left invariant; composes full zero-aware root/caller finite-prefix NumericCenter; mixed proof | `H3_LEFT_ROOT_CORRELATED_TRANSFER_PROVED_FOR_EMITTED_PINNED_MODEL` |
+| [SOURCE_POSTPROCESSING_AND_PRECAST](proofs/ft1536/stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001/REPORT.md) | Defined post-return suffix, source iFFT/rint, exact narrowing/norm/STATIC bytes; universal Safe16 open | `PARTIAL_PROOF` |
 
 The completed L_V bridge establishes, for all canonical h,c and legal finite
 payloads b in the pinned GCC14.2.0/C99/Linux x86_64 LP64 model:

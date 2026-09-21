@@ -22,10 +22,10 @@ osiągnięcia, T2C3/T5, kontrakt M0, graf zależności i dalsze obowiązki.
 Pakiet ma 211 członków OUTPUTS i 198 publicznych wejść Git, manifest
 `c3efdcff510983a143946d43ab456656090061cd5b9b4b6847abc7f141c0cfa3`.
 Jest checkpointem dokumentacyjnym (`replay=none`); obecnie archiwum zawiera
-także dwadzieścia jeden etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
+także dwadzieścia dwa etapy badawcze i audytowe, w tym późniejsze H3_RANGE,
 H3_ZERO_SCALAR, H3_ROOT_LDL, H3_NODE3, H3_NODE2, BINARY_TOWER, audyt FPEMU,
 FLOOR_CT, RAW_ASSEMBLY, STABLE_NORMALIZATION, INITIAL_TARGETS, ORDERED_REACH
-i LEFT_ROOT_CORRELATED_TRANSFER.
+i LEFT_ROOT_CORRELATED_TRANSFER oraz SOURCE_POSTPROCESSING_AND_PRECAST.
 
 [Mapa po domknięciu L_V — 2026-09-19](documents/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md)
 przedstawia zależności i proponowaną kolejność: dokładny kontrakt gry,
@@ -179,12 +179,15 @@ Pierwszy dotyczy basis products/iFFT/rint/narrowing/bytes; drugi joint source
 law i jego strat. Current-center proof nie daje whole Sign termination ani
 pre-cast safety przez przyszłe norm acceptance.
 
-**Przygotowane zadanie do ręcznego startu:**
-[SOURCE_POSTPROCESSING_AND_PRECAST](documents/FT1536_ZADANIE_ASTRA_H3_SOURCE_POSTPROCESSING_AND_PRECAST_2026-09-21.md),
-z [897 przypiętymi wejściami](background/H3_SOURCE_POSTPROCESSING_AND_PRECAST_2026-09-21/README.md).
-Rozdziela defined source iFFT/rint, zachowanie wartości przez int16 narrowing
-oraz exact norm/caller/STATIC bytes. Uniwersalny Safe16 jest osobnym celem;
-otwarty joint BadPrecast nie może zostać ukryty pod proofem samego rzutowania.
+**Odebrany SOURCE_POSTPROCESSING_AND_PRECAST:** [raport](stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001/REPORT.md)
+zachowuje **PARTIAL_PROOF**, z subclaim
+**H3_SOURCE_POSTPROCESSING_DEFINED_FOR_EMITTED_PINNED_MODEL**.
+[Odbiór](validation/2026-09-21-postprocessing/README.md):616/616 plików,
+102 moduły,795 twierdzeń (32 nowe),59 cases/build,32224 rint words i pełne
+65536 signed16 codec values. Source iFFT error<=1/128, |w|<=4572095, exact
+narrowing/stored norm/STATIC bytes. Uniwersalny Safe16 nadal OPEN_NOT_DISPROVED;
+local65536→0 nie jest required-domain witness. [Następny typ](stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001/NEXT_INTERFACE.md):
+SOURCE_SAMPLER_LAW/H6P, joint BadPrecast i osobny reference-integer/Sign→Verify bridge.
 
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
@@ -241,6 +244,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [INITIAL_TARGETS](stages/FT1536_H3_INITIAL_TARGETS_RUN_001/REPORT.md) | **H3_INITIAL_TARGETS_PROVED_FOR_EMITTED_PINNED_MODEL** — canonical target prefix, source errors i frame; mieszany dowód | `99ceb98` |
 | [ORDERED_REACH](stages/FT1536_H3_ORDERED_REACH_RUN_001/REPORT.md) | **PARTIAL_PROOF** — right-root finite-prefix NumericCenter, outcome/frame; left correlated transfer otwarty | `7664277` |
 | [LEFT_ROOT_CORRELATED_TRANSFER](stages/FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001/REPORT.md) | **H3_LEFT_ROOT_CORRELATED_TRANSFER_PROVED_FOR_EMITTED_PINNED_MODEL** — left transfer i kompozycja pełnego zero-aware root/caller finite-prefix NumericCenter; mieszany dowód | `fbf4a5c` |
+| [SOURCE_POSTPROCESSING_AND_PRECAST](stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001/REPORT.md) | **PARTIAL_PROOF** — operational suffix/iFFT/rint/norm/bytes domknięte; uniwersalny Safe16 otwarty | niniejszy checkpoint |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).

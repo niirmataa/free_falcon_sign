@@ -1,0 +1,18 @@
+DECODE_STATIC : ∀ (d : Bytes) (vs : List Int) (used : Nat),
+  decodeStatic d = some (vs, used) →
+    vs.length = 1536 ∧ (∀ (x : Int), x ∈ vs → FT1536.InInt16 x) ∧ 1920 ≤ used ∧ used ≤ List.length d
+static_loop_spec : ∀ (n : Nat) (d : Bytes) (c r : Cursor) (vs : List Int),
+  Inv d c →
+    staticLoop n d c = some (vs, r) →
+      vs.length = n ∧
+        (∀ (x : Int), x ∈ vs → FT1536.InInt16 x) ∧
+          Inv d r ∧ c.pos ≤ r.pos ∧ remaining d r + 10 * n ≤ remaining d c ∧ r.db % 2 ^ r.bits = 0
+'FT1536Bridge.static_value_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.static_promotions' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.readStatic_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.static_head_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.static_head_shifts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.static_loop_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.DECODE_STATIC' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Bridge.listVec_property' depends on axioms: [propext, Quot.sound]
+'FT1536Bridge.static_vector_signed' depends on axioms: [propext, Classical.choice, Quot.sound]

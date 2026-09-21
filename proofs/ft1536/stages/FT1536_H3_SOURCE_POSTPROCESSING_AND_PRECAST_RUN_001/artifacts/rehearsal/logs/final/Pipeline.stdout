@@ -1,0 +1,9 @@
+pipelineC_lift : ∀ (h r c : Vec), CanonVec h → CanonVec r → pipelineC h r c = pipeline liftForward liftInverse h r c
+L_NTT_pending_forward : (∀ (h r : FT1536Composition.Vec),
+    liftForward (product h r) = pointMul (liftForward h) (liftForward r)) →
+  ∀ (h r c : Vec), CanonVec h → CanonVec r → CanonVec c → pipelineC h r c = (product h r, subtract (product h r) c)
+'FT1536Global.toMontC_eq' depends on axioms: [propext, Quot.sound]
+'FT1536Global.montPointC_eq' depends on axioms: [propext, Quot.sound]
+'FT1536Global.subtractC_eq' depends on axioms: [propext, Quot.sound]
+'FT1536Global.pipelineC_lift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.L_NTT_pending_forward' depends on axioms: [propext, Classical.choice, Quot.sound]

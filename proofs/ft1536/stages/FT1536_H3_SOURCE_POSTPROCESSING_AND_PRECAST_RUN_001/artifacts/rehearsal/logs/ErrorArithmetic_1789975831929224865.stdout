@@ -1,0 +1,28 @@
+error_budget_composition : ∀ (e : Nat),
+  e ≤ 1054 →
+    ∀ (decodeA decodeB align shrink pack : Int),
+      Between decodeA (p2 177) →
+        Between decodeB (p2 177) →
+          Between align (p2 (e + 122)) →
+            Between shrink (4 * p2 (e + 122)) →
+              Between pack (8 * p2 (e + 122) + p2 178) → Between (decodeA + decodeB + align + shrink + pack) (p2 1180)
+MACHINE_RESIDUAL_366 : ∀ (x : Word),
+  NumericCenter x →
+    ∀ (z v : Int),
+      -365 ≤ z ∧ z ≤ 366 → Between (v - (valueNum x - D * (floorC x + z))) Eunits → Between v (366 * D + Eunits)
+ORDERED_ZERO_TERMINAL : ∀ (r1 rx r0 pre0 sf0 z0 e2 e3 Ehalf Eadd : Int),
+  Between r1 (366 * D + Eunits) →
+    Between (2 * rx - r1) (2 * Ehalf) →
+      0 ≤ pre0 - D * sf0 ∧ pre0 - D * sf0 ≤ D →
+        -365 ≤ z0 ∧ z0 ≤ 366 →
+          Between e2 Eunits →
+            Between e3 Eadd →
+              r0 = pre0 - D * (sf0 + z0) + e2 - rx + e3 →
+                Between (2 * r0) (1098 * D + 3 * Eunits + 2 * Ehalf + 2 * Eadd)
+'ZeroScalar.error_rational' does not depend on any axioms
+'ZeroScalar.error_budget_numeric' does not depend on any axioms
+'ZeroScalar.phase_scale_bound' depends on axioms: [propext, Quot.sound]
+'ZeroScalar.error_budget_composition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.MACHINE_RESIDUAL_366' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.MACHINE_CENTER_INTERVAL' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.ORDERED_ZERO_TERMINAL' depends on axioms: [propext, Classical.choice, Quot.sound]
