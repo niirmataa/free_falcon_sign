@@ -1,5 +1,13 @@
 # Stan projektu — punkt wejścia
 
+**2026-09-23 — naprawa narzędzi koordynatora na polecenie właściciela.**
+Frozen binding autora działa w W przed importem. REVIEWED wymaga przypiętego
+odbioru właściwej pary i zgodnych stage'ów; negatywny werdykt zachowuje swój
+status. Checkpoint zapisuje kompletną odebraną parę z objects,STATUS i dziennikiem
+na main jako niirmataa. [Komendy](B20_COORDINATOR_TOOLS.md),
+[dziennik](COORDINATOR_LOG.md). Testy28/28,archiwum34 checkpointów i51 dokumentów
+PASS. Workflow pozostaje work → review → zaakceptowane stages → commit main.
+
 **Najnowsze polecenie właściciela2026-09-22:** wypchnąć bieżący `main`;
 właściciel zapowiedział start B20/P01. Zgoda padła po podaniu stanu `6060f34`
 i pozostałych uwag S01/S06. Bieżący push jest jawnym wyjątkiem od wcześniejszej

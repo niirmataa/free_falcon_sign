@@ -177,7 +177,9 @@ niezmienniki i artefakty, nie przez obserwację pracy. Narzędzia:
 - Bez ręcznego uruchamiania wykonawców i recenzentów; start modeli należy
   do właściciela. Koordynator przygotowuje W/prompt, nie startuje pracy.
 - Bez wydania statusu REVIEWED poza `b20_status_set.py` (setter wymaga
-  sealed REPORT i PASS verify stage'u).
+  sealed recenzji przypisanej do tej pary P/V i dokładnych pinów autora,
+  PASS_SCOPED_REVIEW oraz zgodnych,zweryfikowanych stage'ów autora i recenzenta).
+  CHANGES_REQUIRED/INTEGRITY_FAIL/REPLAY_FAIL/BLOCKED nie stają się REVIEWED.
 - Bez dotykania `stages/`, `objects/`, `validation/` i `catalog/` poza
   importerem i `checkpoint`; bez pomijania hooks i bez amend/force-push.
 - Bez systemowego tmp; wszystkie zapisy pod repo.
@@ -186,8 +188,11 @@ niezmienniki i artefakty, nie przez obserwację pracy. Narzędzia:
 
 `docs/onboarding/COORDINATOR_LOG.md` jest append-only. Po każdej akcji wpis:
 data UTC, akcja + komenda, wynik (hash/status), następny oczekujący krok.
-Wpisy dodaje się w tym samym commicie co efekt akcji. Nie przepisuje się
-starych wpisów; korekta to nowy wpis.
+Wpis przygotuj przed commitem efektu akcji. `archive.py checkpoint` dla B20
+dołącza STATUS i dopisany dziennik do commita odebranej pary wraz z pełną
+closure obiektów wejściowych. Nie przepisuje się starych wpisów;korekta to
+nowy wpis. Robocze akcje mogą zostać zapisane wspólnie przy odbiorze pary;
+nie wymagają osobnych commitów planowania.
 
 ### Rytuał audytu właściciela (kilka minut, po każdym zadaniu)
 
@@ -211,8 +216,22 @@ i po decyzji właściciela.
 
 1. Właściciel startuje wykonawcę; koordynator zapisuje
    `b20_status_set.py Pxx --start --model ... --context ...`.
-2. Po handoff: `archive.py import` → `b20_status_set.py Pxx --final-report`
-   → `b20_review_prompt.py Vxx` → prompt do recenzenta.
-3. Po werdykcie: `b20_status_set.py Pxx --review-verdict ...` →
-   `archive.py checkpoint` → wpis w dzienniku → krótkie podsumowanie
-   dla właściciela (co udowodnione, co otwarte, co dalej).
+2. Po handoff: `b20_status_set.py Pxx --final-report ... --final-outputs ...
+   --report-sha ... --outputs-sha ... --head ...` wiąże frozen W z pinami
+   przekazanymi przez autora,bez importu do stages. Następnie
+   `b20_review_prompt.py Vxx` → prompt do recenzenta wybranego przez właściciela.
+3. Po negatywnym odbiorze setter zapisuje rzeczywisty werdykt z przypiętej
+   recenzji; poprawki i historia pozostają w W.
+4. Po zaakceptowaniu zakresu: `archive.py import` autora i recenzenta
+   (recenzja: `--manifest REVIEW_OUTPUTS.sha256 --report REVIEW.md
+   --result REVIEW_RESULT.json`). Następnie setter z `--review-verdict
+   PASS_SCOPED_REVIEW`,pinami recenzji i oboma stage IDs sprawdza zgodność
+   i zapisuje Pxx=REVIEWED,Vxx=REVIEW_COMPLETE. Statusy matematyczne zachowują
+   rzeczywisty scope,także PARTIAL/kontrprzykład.
+5. Dopisz dziennik,uruchom `archive.py checkpoint B20_001_Pxx_FINAL_001
+   --with-stage B20_001_Vxx_FINAL_001`,oddaj krótkie podsumowanie.
+   Narzędzie używa main i tożsamości niirmataa,zachowuje obcy staging.
+
+Dokładne flagi i wymagane pola JSON:
+`docs/onboarding/B20_COORDINATOR_TOOLS.md`. Nadal **work → review → zaakceptowane
+stages → commit main**,bez nowych gałęzi/worktrees i bez startowania modeli.

@@ -27,6 +27,7 @@ H = Path(os.environ.get('FT1536_HIDE_H',
 # Default wall timeout for a fresh replay; the catalog value of the stage wins.
 DEFAULT_REPLAY_TIMEOUT = int(os.environ.get('FT1536_REPLAY_TIMEOUT', '600'))
 DIGEST = re.compile(r'[0-9a-f]{64}')
+COMMIT_ID = re.compile(r'(?:[0-9a-f]{40}|[0-9a-f]{64})')
 NAME = re.compile(r'[A-Za-z0-9][A-Za-z0-9_.-]*')
 PRIVATE_PARTS = {'.private', 'private_extraction', '.gnupg', '.ssh', '.git', '.config'}
 PRIVATE_MARKERS = (
@@ -216,18 +217,20 @@ def markdown_table(root, stage=None):
 def verify_stage(root, stage):
     record = load_record(root, stage)
     base = root / 'stages' / stage
-    raw = checked_bytes(base / 'OUTPUTS.sha256', record['manifest_sha256'])
+    manifest_name = record.get('manifest', 'OUTPUTS.sha256')
+    checked_path(manifest_name)
+    raw = checked_bytes(base / manifest_name, record['manifest_sha256'])
     entries = manifest(raw)
     for name, sha in entries.items():
         checked_bytes(base / name, sha)
-    require(regular_files(base) == set(entries) | {'OUTPUTS.sha256'},
+    require(regular_files(base) == set(entries) | {manifest_name},
             f'Unexpected or missing snapshot files: {stage}')
     require(record['output_entries'] == len(entries), 'Output count mismatch')
     require(record['report'] in entries and record['result_file'] in entries,
             'Report/result must be members of OUTPUTS')
     require(entries[record['report']] == record['report_sha256'], 'Report pin mismatch')
     result = json.loads(read(base / record['result_file']))
-    require(result.get('result', result.get('status')) == record['claimed_status'], 'Status mismatch')
+    require(result.get('result', result.get('status', result.get('verdict'))) == record['claimed_status'], 'Status mismatch')
     inputs = manifest(read(base / 'INPUTS.sha256'), absolute=True)
     mappings = record['inputs']
     require(len(mappings) == len(inputs), 'Input count mismatch')
@@ -254,10 +257,12 @@ def verify_stage(root, stage):
 
 def import_stage(root, source, manifest_sha, report_sha, report='REPORT.md',
                  result_file='RESULT.json', replay='none', stage=None, replay_receipt=None,
-                 replay_timeout=None):
+                 replay_timeout=None, manifest_name='OUTPUTS.sha256'):
     source = no_symlinks(Path(source).absolute())
     stage = checked_name(stage or source.name)
-    checked_path(report); checked_path(result_file)
+    checked_path(report); checked_path(result_file); checked_path(manifest_name)
+    require(manifest_name in ('OUTPUTS.sha256', 'REVIEW_OUTPUTS.sha256'), 'Unknown output manifest')
+    require(manifest_name == 'OUTPUTS.sha256' or replay == 'none', 'Review archive has no author replay protocol')
     require(DIGEST.fullmatch(manifest_sha) and DIGEST.fullmatch(report_sha), 'Expected external SHA-256 pins')
     require(replay in ('none', 'standard', 'lv-static', 'global-crt'), 'Unknown replay protocol')
     if replay_receipt is not None:
@@ -272,15 +277,16 @@ def import_stage(root, source, manifest_sha, report_sha, report='REPORT.md',
             old = load_record(root, stage)
             require(old['manifest_sha256'] == manifest_sha and old['report_sha256'] == report_sha
                     and old['report'] == report and old['result_file'] == result_file
-                    and old['replay'] == replay and old['replay_receipt'] == replay_receipt,
+                    and old['replay'] == replay and old['replay_receipt'] == replay_receipt
+                    and old.get('manifest', 'OUTPUTS.sha256') == manifest_name,
                     'Checkpoint already exists with different pins/protocol/receipt')
             return dict(**verify_stage(root, stage), already_imported=True)
         require(not target.exists(), f'Unregistered destination already exists: {target}')
-        raw = checked_bytes(source / 'OUTPUTS.sha256', manifest_sha)
+        raw = checked_bytes(source / manifest_name, manifest_sha)
         entries = manifest(raw)
         require(entries.get(report) == report_sha, 'Report does not match external pin')
         require('INPUTS.sha256' in entries and result_file in entries, 'Missing declared inputs/result')
-        require('OUTPUTS.sha256' not in entries, 'Self-including manifest')
+        require(manifest_name not in entries, 'Self-including manifest')
         by_hash = {}
         total_bytes = 0
         for name, sha in entries.items():
@@ -296,7 +302,7 @@ def import_stage(root, source, manifest_sha, report_sha, report='REPORT.md',
             checked_bytes(path, sha)
             input_sources.append((original, sha, path))
         result = json.loads(read(source / result_file))
-        status = result.get('result', result.get('status'))
+        status = result.get('result', result.get('status', result.get('verdict')))
         require(isinstance(status, str) and status, 'Missing explicit mathematical status')
         frozen_paths = [p for p in ('artifacts/COMMANDS.frozen.log', 'COMMANDS.frozen.log') if p in entries]
         require(len(frozen_paths) <= 1, 'Ambiguous frozen journal')
@@ -326,13 +332,15 @@ def import_stage(root, source, manifest_sha, report_sha, report='REPORT.md',
             require(isinstance(replay_timeout, int) and replay_timeout > 0,
                     'Replay timeout must be a positive number of seconds')
             record['replay_timeout_seconds'] = replay_timeout
+        if manifest_name != 'OUTPUTS.sha256':
+            record['manifest'] = manifest_name
         mkdir(root / 'stages'); mkdir(root / 'catalog')
         with tempfile.TemporaryDirectory(prefix='import-', dir=root / 'work') as temp:
             staged = Path(temp) / stage
             mkdir(staged)
             for name, sha in entries.items():
                 put_once(staged / name, checked_bytes(source / name, sha))
-            put_once(staged / 'OUTPUTS.sha256', raw)
+            put_once(staged / manifest_name, raw)
             for _, sha, path in input_sources:
                 put_once(root / 'objects' / sha, checked_bytes(path, sha))
             # All destination bytes are checked before making the checkpoint visible.
@@ -466,24 +474,101 @@ def replay_stage(root, stage, run, timeout, hide_originals=False):
     require(passed, f'Replay did not pass; inspect {destination}')
 
 
-def checkpoint(root, stage, message=None, repo=None):
-    """Verify a finished stage, then commit exactly its bytes on the current branch."""
-    record = load_record(root, stage)
-    verify_stage(root, stage)
+def verify_bundle(source, manifest_name, manifest_sha, report, report_sha, result_file):
+    """Check a frozen W without importing it or changing its declared status."""
+    source = no_symlinks(Path(source).absolute())
+    for name in (manifest_name, report, result_file):
+        checked_path(name)
+    require(DIGEST.fullmatch(manifest_sha) and DIGEST.fullmatch(report_sha), 'Expected external pins')
+    rows = manifest(checked_bytes(source / manifest_name, manifest_sha))
+    require(manifest_name not in rows, 'Self-including manifest')
+    require(rows.get(report) == report_sha and result_file in rows, 'Unsealed report/result')
+    for name, sha in rows.items():
+        checked_bytes(source / name, sha)
+    result = json.loads(read(source / result_file))
+    require(isinstance(result, dict), 'Expected JSON result object')
+    return result
+
+
+def checkpoint(root, stage, message=None, repo=None, with_stages=(), include=()):
+    """Commit verified stages and their input closure; leave unrelated staging alone."""
     repo = Path(repo).absolute() if repo is not None else root.parents[1]
-    rel = os.path.relpath(root, repo)
-    paths = [f'{rel}/stages/{stage}', f'{rel}/catalog/{stage}.json']
+    root = no_symlinks(Path(root).absolute())
+    require(root.is_relative_to(repo), 'Archive must be inside the checkout')
+    rel = root.relative_to(repo).as_posix()
 
     def git(*args):
         return subprocess.check_output(['git', *args], cwd=repo, text=True)
-    status = git('status', '--porcelain', '--', *paths).strip()
-    if not status:
-        return dict(stage=stage, action='nothing-to-commit')
-    git('add', '--', *paths)
-    git('commit', '--only', '-m', message or f'proof: record {stage} checkpoint', '--', *paths)
-    head = git('rev-parse', 'HEAD').strip()
-    return dict(stage=stage, action='committed', commit=head, paths=paths,
-                manifest_sha256=record['manifest_sha256'])
+    require(git('rev-parse', '--show-toplevel').strip() == str(repo), 'Wrong Git checkout')
+    require(git('branch', '--show-current').strip() == 'main', 'Checkpoint requires main')
+    # An initial --only commit includes all staged files: require an existing HEAD.
+    git('rev-parse', '--verify', 'HEAD')
+    stages = list(dict.fromkeys((stage, *with_stages)))
+    allowed_meta = {f'{rel}/README.md', f'{rel}/batches/B20_001/STATUS.json',
+                    'docs/onboarding/STATE.md', 'docs/onboarding/ROADMAP.md',
+                    'docs/onboarding/COORDINATOR_LOG.md'}
+    require(set(include) <= allowed_meta, 'Unexpected checkpoint metadata path')
+    with writer_lock(root):
+        records = {s: load_record(root, s) for s in stages}
+        paths = set(include)
+        is_b20 = any(s.startswith('B20_001_') for s in stages)
+        if is_b20:
+            # Shared verifier rechecks the paired review, exact stage pins and task IDs.
+            import importlib.util
+            spec = importlib.util.spec_from_file_location('b20_status_set', repo / 'tools/b20_status_set.py')
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+            batch = root / 'batches/B20_001'
+            status = json.loads(read(batch / 'STATUS.json'))
+            index = json.loads(read(batch / 'INDEX.json'))
+            for s in stages:
+                if not s.startswith('B20_001_'):
+                    continue
+                match = re.fullmatch(r'B20_001_([PV]\d{2})_FINAL_\d+', s)
+                require(match is not None, 'Expected a B20 final stage ID')
+                ident = match[1]
+                pid = 'P' + ident[1:]
+                try:
+                    pair = module.verify_accepted_row(root, index, status, pid)
+                except module.archive.ArchiveError as error:
+                    raise ArchiveError(str(error)) from error
+                require(s in pair and set(pair) <= set(stages), 'Checkpoint must contain the accepted P/V pair')
+            paths.update((f'{rel}/batches/B20_001/STATUS.json', 'docs/onboarding/COORDINATOR_LOG.md'))
+        for s, record in records.items():
+            verify_stage(root, s)
+            paths.add(f'{rel}/catalog/{s}.json')
+            paths.update(f'{rel}/stages/{s}/{name}' for name in regular_files(root / 'stages' / s))
+            paths.update(f'{rel}/{item["object"]}' for item in record['inputs'])
+        paths = sorted(paths)
+        if not git('status', '--porcelain', '--', *paths).strip():
+            return dict(stage=stage, action='nothing-to-commit')
+        journal = 'docs/onboarding/COORDINATOR_LOG.md'
+        if journal in paths:
+            previous = git('show', 'HEAD:' + journal).encode()
+            current = read(repo / journal)
+            require(current.startswith(previous) and len(current) > len(previous),
+                    'Append a coordinator log entry before checkpointing')
+        # Refuse changes to bytes already archived by HEAD, including shared objects.
+        tracked = set(git('ls-tree', '-r', '--name-only', 'HEAD', '--',
+                          f'{rel}/stages', f'{rel}/catalog', f'{rel}/objects').splitlines())
+        snapshot = {p: read(repo / p) for p in paths}
+        for p in set(paths) & tracked:
+            old = subprocess.check_output(['git', 'show', 'HEAD:' + p], cwd=repo)
+            require(old == snapshot[p], f'Immutable archive changed: {p}')
+        # Exact path list includes ignored sealed logs and only referenced objects.
+        git('add', '-f', '--', *paths)
+        for p, data in snapshot.items():
+            indexed = subprocess.check_output(['git', 'show', ':' + p], cwd=repo)
+            require(indexed == data == read(repo / p), f'Staged bytes changed: {p}')
+        env = dict(os.environ, GIT_AUTHOR_NAME='niirmataa',
+                   GIT_AUTHOR_EMAIL='245027293+niirmataa@users.noreply.github.com',
+                   GIT_COMMITTER_NAME='niirmataa',
+                   GIT_COMMITTER_EMAIL='245027293+niirmataa@users.noreply.github.com')
+        subprocess.run(['git', 'commit', '--only', '-m', message or f'proof: record {stage} checkpoint',
+                        '--', *paths], cwd=repo, env=env, check=True)
+        head = git('rev-parse', 'HEAD').strip()
+        return dict(stage=stage, action='committed', commit=head, paths=paths,
+                    manifest_sha256=records[stage]['manifest_sha256'])
 
 
 def handoff(root, stage):
@@ -491,6 +576,7 @@ def handoff(root, stage):
     record = load_record(root, stage)
     verify_stage(root, stage)
     lines = [f'STAGE={stage}',
+             f"MANIFEST={record.get('manifest', 'OUTPUTS.sha256')}",
              f"REPORT={record['report']}",
              f"REPORT_SHA256={record['report_sha256']}",
              f"OUTPUTS_SHA256={record['manifest_sha256']}",
@@ -516,10 +602,13 @@ def task_init(root, task_id, base=None, task_doc=None):
         name = Path(task_doc).name
         sidecar = root / 'documents' / (name + '.sha256')
         require(sidecar.exists(), f'Missing document sidecar: {sidecar.name}')
-        sha = manifest(read(sidecar))[name]
+        pins = manifest(read(sidecar))
+        require(set(pins) == {name}, 'Task sidecar must pin exactly that document')
+        sha = pins[name]
+        checked_bytes(root / 'documents' / name, sha)
         lines += [f'TASK={root / "documents" / name}', f'TASK SHA={sha}']
     if base is not None:
-        require(DIGEST.fullmatch(base) is not None, 'Expected BASE commit/SHA-256')
+        require(COMMIT_ID.fullmatch(base) is not None, 'Expected full BASE commit ID (40 or 64 hex digits)')
         lines.append(f'BASE={base}')
     mkdir(workspace)
     put_once(workspace / 'AGENTS.md', ('\n'.join(lines) + '\n').encode())
@@ -560,6 +649,8 @@ def main():
     imp.add_argument('--report-sha', required=True)
     imp.add_argument('--report', default='REPORT.md')
     imp.add_argument('--result', default='RESULT.json')
+    imp.add_argument('--manifest', default='OUTPUTS.sha256',
+                     choices=['OUTPUTS.sha256', 'REVIEW_OUTPUTS.sha256'])
     imp.add_argument('--replay', choices=['none', 'standard', 'lv-static', 'global-crt'], default='none')
     imp.add_argument('--replay-receipt', help='Relative receipt path sealed by OUTPUTS; protocol default if omitted')
     imp.add_argument('--replay-timeout', type=int,
@@ -575,6 +666,8 @@ def main():
     lst.add_argument('--markdown', action='store_true',
                      help='Render the status table used by README/STATE from catalog/*.json')
     ck = sub.add_parser('checkpoint'); ck.add_argument('stage'); ck.add_argument('-m', '--message')
+    ck.add_argument('--with-stage', action='append', default=[], help='Commit a paired review stage too')
+    ck.add_argument('--include', action='append', default=[], help='Exact coordinator metadata path')
     ho = sub.add_parser('handoff'); ho.add_argument('stage')
     ti = sub.add_parser('task-init'); ti.add_argument('task_id')
     ti.add_argument('--base'); ti.add_argument('--task-doc')
@@ -584,7 +677,7 @@ def main():
     if args.command == 'import':
         result = import_stage(ROOT, args.source, args.manifest_sha, args.report_sha,
                               args.report, args.result, args.replay, args.id, args.replay_receipt,
-                              args.replay_timeout)
+                              args.replay_timeout, args.manifest)
     elif args.command == 'document':
         result = add_document(ROOT, args.source, args.sha)
     elif args.command == 'replay':
@@ -594,7 +687,7 @@ def main():
         print(markdown_table(ROOT, args.stage), end='')
         return
     elif args.command == 'checkpoint':
-        result = checkpoint(ROOT, args.stage, args.message)
+        result = checkpoint(ROOT, args.stage, args.message, with_stages=args.with_stage, include=args.include)
     elif args.command == 'handoff':
         print(handoff(ROOT, args.stage), end='')
         return
@@ -618,6 +711,6 @@ def main():
 if __name__ == '__main__':
     try:
         main()
-    except (ArchiveError, OSError, ValueError, KeyError) as error:
+    except (ArchiveError, OSError, ValueError, KeyError, subprocess.CalledProcessError) as error:
         print(f'archive: {error}', file=sys.stderr)
         raise SystemExit(1)

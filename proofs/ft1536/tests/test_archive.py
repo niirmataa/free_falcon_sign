@@ -198,25 +198,32 @@ class ArchiveTests(unittest.TestCase):
         sha = archive.digest(b'task body\n')
         meta.write_bytes((sha + '  T.md\n').encode())
         result = archive.task_init(self.root, 'FT1536_TEST_TASK_RUN_001',
-                                   base='a' * 64, task_doc=doc)
+                                   base='a' * 40, task_doc=doc)
         text = (self.root / 'work/FT1536_TEST_TASK_RUN_001/AGENTS.md').read_text()
         self.assertIn('TASK SHA=' + sha, text)
-        self.assertIn('BASE=' + 'a' * 64, text)
+        self.assertIn('BASE=' + 'a' * 40, text)
         self.assertEqual(result['task_sha'], sha)
         with self.assertRaises(archive.ArchiveError):
             archive.task_init(self.root, 'FT1536_TEST_TASK_RUN_001')
         with self.assertRaises(archive.ArchiveError):
             archive.task_init(self.root, 'FT1536_TEST_TASK_RUN_002', base='nothex')
+        (self.root / 'documents/T.md').write_bytes(b'changed after pinning\n')
+        with self.assertRaises(archive.ArchiveError):
+            archive.task_init(self.root, 'FT1536_TEST_TASK_RUN_003', task_doc=doc)
+        self.assertFalse((self.root / 'work/FT1536_TEST_TASK_RUN_003').exists())
 
-    def test_checkpoint_commits_exactly_stage_and_catalog(self):
+    def test_checkpoint_commits_input_closure_and_preserves_other_staging(self):
         self.import_fixture()
         repo = self.base
-        subprocess.run(['git', 'init', '-q'], cwd=repo, check=True)
+        subprocess.run(['git', 'init', '-q', '-b', 'main'], cwd=repo, check=True)
         subprocess.run(['git', '-C', repo, 'config', 'user.email', 't@example.com'], check=True)
         subprocess.run(['git', '-C', repo, 'config', 'user.name', 't'], check=True)
         # --only does not limit the initial commit, so establish HEAD first.
         subprocess.run(['git', '-C', repo, 'commit', '--allow-empty', '-q', '-m', 'init'],
                        check=True)
+        (repo / '.gitignore').write_text('*.log\nobjects/\n')
+        (repo / 'unrelated.txt').write_text('owner staged content\n')
+        subprocess.run(['git', '-C', repo, 'add', 'unrelated.txt'], check=True)
         archive.checkpoint(self.root, 'FT1536_TEST_RUN_001', repo=repo)
         head_tree = subprocess.check_output(
             ['git', '-C', repo, 'show', '--name-only', '--format=', 'HEAD'], text=True).split()
@@ -224,11 +231,46 @@ class ArchiveTests(unittest.TestCase):
         catalog_path = f'{rel}/catalog/FT1536_TEST_RUN_001.json'
         self.assertIn(catalog_path, head_tree)
         stage_prefix = f'{rel}/stages/FT1536_TEST_RUN_001/'
-        self.assertTrue(all(p == catalog_path or p.startswith(stage_prefix)
+        object_path = f'{rel}/objects/{archive.digest(self.payload)}'
+        self.assertTrue(all(p in (catalog_path, object_path) or p.startswith(stage_prefix)
                             for p in head_tree), sorted(head_tree))
         self.assertIn(stage_prefix + 'OUTPUTS.sha256', head_tree)
+        self.assertIn(stage_prefix + 'artifacts/COMMANDS.frozen.log', head_tree)
+        self.assertIn(object_path, head_tree)
+        self.assertEqual(subprocess.check_output(
+            ['git', '-C', repo, 'diff', '--cached', '--name-only'], text=True), 'unrelated.txt\n')
+        self.assertEqual(subprocess.check_output(
+            ['git', '-C', repo, 'log', '-1', '--format=%an <%ae>;%cn <%ce>'], text=True).strip(),
+            'niirmataa <245027293+niirmataa@users.noreply.github.com>;'
+            'niirmataa <245027293+niirmataa@users.noreply.github.com>')
+        clone = self.base / 'clean-clone'
+        subprocess.run(['git', 'clone', '-q', '--no-hardlinks', str(repo), str(clone)], check=True)
+        archive.verify_stage(clone / rel, 'FT1536_TEST_RUN_001')
         second = archive.checkpoint(self.root, 'FT1536_TEST_RUN_001', repo=repo)
         self.assertEqual(second['action'], 'nothing-to-commit')
+        subprocess.run(['git', '-C', repo, 'switch', '-q', '-c', 'other-branch'], check=True)
+        with self.assertRaises(archive.ArchiveError):
+            archive.checkpoint(self.root, 'FT1536_TEST_RUN_001', repo=repo)
+
+    def test_native_review_manifest_import_preserves_original_pins(self):
+        self.members.pop('REPORT.md')
+        self.members.pop('RESULT.json')
+        self.members['REVIEW.md'] = b'# Independent scoped review\n'
+        self.members['REVIEW_RESULT.json'] = b'{"verdict":"PASS_SCOPED_REVIEW"}\n'
+        for name, data in self.members.items():
+            (self.source / name).write_bytes(data)
+        raw = ''.join(archive.digest(data) + '  ' + name + '\n'
+                      for name, data in sorted(self.members.items())).encode()
+        (self.source / 'REVIEW_OUTPUTS.sha256').write_bytes(raw)
+        result = archive.import_stage(self.root, self.source, archive.digest(raw),
+                                      archive.digest(self.members['REVIEW.md']),
+                                      report='REVIEW.md', result_file='REVIEW_RESULT.json',
+                                      stage='FT1536_TEST_REVIEW_001', manifest_name='REVIEW_OUTPUTS.sha256')
+        self.assertEqual(result['claimed_status'], 'PASS_SCOPED_REVIEW')
+        stage = self.root / 'stages/FT1536_TEST_REVIEW_001'
+        self.assertEqual((stage / 'REVIEW_OUTPUTS.sha256').read_bytes(), raw)
+        self.assertFalse((stage / 'OUTPUTS.sha256').exists())
+        archive.verify_stage(self.root, 'FT1536_TEST_REVIEW_001')
 
     def test_handoff_blob_matches_catalog_pins(self):
         self.import_fixture()

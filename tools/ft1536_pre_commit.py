@@ -8,7 +8,7 @@ Refuses staged changes that violate the archive's canonical layout:
 
 This is a fast structural guard, not archive verification; the full
 byte/pin check remains `python3 -B proofs/ft1536/tools/archive.py verify`.
-Unrelated paths never trigger it. Bypass deliberately with --no-verify.
+Unrelated paths never trigger it. Fix rejected staging; do not bypass hooks.
 """
 import subprocess
 import sys
@@ -49,7 +49,7 @@ def main():
     if problems:
         for line in problems:
             print(f'ft1536 pre-commit: {line}', file=sys.stderr)
-        print('ft1536 pre-commit: refused; fix staging or use --no-verify deliberately.',
+        print('ft1536 pre-commit: refused; correct staging and verify the archive before retrying.',
               file=sys.stderr)
         return 1
     return 0

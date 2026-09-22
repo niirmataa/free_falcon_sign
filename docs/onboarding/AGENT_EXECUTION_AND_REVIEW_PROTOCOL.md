@@ -182,6 +182,11 @@ może być odebranym wynikiem,ale zachowuje ten status i otwarte obowiązki.
 Przy CHANGES_REQUIRED autor poprawia nową wersję w W; stare próby i recenzje
 zostają zachowane jako historia. Brak odbioru oznacza brak importu B20 do stages.
 
+Koordynator używa [narzędzi B20](B20_COORDINATOR_TOOLS.md):frozen binding przed
+review bez importu,przypięty werdykt P/V,natywny import REVIEW_OUTPUTS.sha256
+i checkpoint całej odebranej pary z input objects,STATUS i dziennikiem.
+`REVIEWED` nie oznacza automatycznie pełnego PROVED; zachowuje odebrany scope.
+
 Przed KAŻDYM commitem:
 1. `git status --short --branch`,diff,ostatnie commity i staging we wspólnym
     CHECKOUT; sprawdź main,piny źródła i przejęcie roli piszącej Git.
@@ -193,7 +198,9 @@ Przed KAŻDYM commitem:
    commit; przy znanych cudzych staged files użyj exact `commit --only`.
 5. Sprawdź whitespace nowych własnych plików. Historycznych przypiętych bajtów
    nie reformatuj dla kosmetycznego PASS; udokumentuj wyjątek.
-6. Commit:
+6. Dla B20 użyj `archive.py checkpoint B20_001_Pxx_FINAL_001
+   --with-stage B20_001_Vxx_FINAL_001`,po dopisaniu dziennika. Dla innych
+   jawnie przekazanych prac zachowaj tę samą zatwierdzoną tożsamość:
 
 ```sh
 GIT_AUTHOR_NAME=niirmataa \
