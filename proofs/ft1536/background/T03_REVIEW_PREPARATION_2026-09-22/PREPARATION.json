@@ -1,0 +1,89 @@
+{
+  "schema": "FT1536_T03_HANDOFF_PREPARATION_V1",
+  "checked_utc": "2026-09-22T07:09:04.541180+00:00",
+  "scope": "READ_ONLY_HASH_PATH_AND_RECORDED_RECEIPT_BINDING; NO_MATHEMATICAL_REVIEW",
+  "outputs_sha256": "0cafdbb2c746043380081052951cb6438643f6a1765a98028a065fa57b7df6de",
+  "report_sha256": "e01a09789091c9c9322f9727263503063c94441a68ff5f30af952bcc4417785c",
+  "outputs": 85,
+  "outputs_bytes_verified": true,
+  "input_rows": 29,
+  "literal_input_paths_verified": 28,
+  "unresolved_literal_input_paths": [
+    {
+      "path": "TASK_DOCUMENT_provenance",
+      "sha256": "bbd1f59e795beb3bb7e46e62d0ae86f4f1aa7464c9cc70f9f074d86b83af6169"
+    }
+  ],
+  "canonical_task_sha": "bbd1f59e795beb3bb7e46e62d0ae86f4f1aa7464c9cc70f9f074d86b83af6169",
+  "bootstrap": 1275,
+  "source": 17,
+  "semantic_author_receipt_matches": 11,
+  "postfreeze_author_receipt_anchor": "0cafdbb2c746043380081052951cb6438643f6a1765a98028a065fa57b7df6de",
+  "sage_author_recorded_runs": 4,
+  "postfreeze_author_receipts": {
+    "SAGE_RUNS.json": "0445a721ceb790f6b51b3d0e906ee1271e87665211b5089b5ebb1fbb9166e263",
+    "fresh_replay.json": "b62c222e6baec6a98036bc0161a96699dfcf64d2b7035fd219ca3c37c72f8735",
+    "REPLAY_RESULT.json": "b7fa96904473330811a3b39df94a71c96ba5163b06a25e69bf0b13eb10cf49ea"
+  },
+  "v3_manifest_sha": "daf45e8abce867c485a5325529808c69a1b68ccf634b4bfb39b07d212c834f6b",
+  "v3_members": 64,
+  "v3_old_paths_changed_or_removed": [
+    "CLAIM.md",
+    "COMMANDS.log",
+    "FAILED_ROUTES.md",
+    "INPUTS.sha256",
+    "REPLAY.md",
+    "REPORT.md",
+    "SOURCE_MODEL_BINDING.md",
+    "TOOLCHAIN.txt",
+    "checks/c_slice/oracle_result.json",
+    "checks/exact_ring_checks.json",
+    "checks/gap_composition.json",
+    "checks/skeleton_cancellation.json",
+    "checks/z_map_full.json",
+    "scripts/exact_ring_checks.py",
+    "scripts/gap_composition.py",
+    "scripts/replay.py",
+    "scripts/skeleton_cancellation.py"
+  ],
+  "py_crosscheck_byte_bindings": {
+    "py_exact_ring_checks.json": {
+      "v3_path": "checks/exact_ring_checks.json",
+      "regenerated_sha256": "70b59d5a68dc8963d81ac2251ab47102c5e7187bb7176fefa9d6167b8ceb4e00",
+      "v3_sha256": "70b59d5a68dc8963d81ac2251ab47102c5e7187bb7176fefa9d6167b8ceb4e00",
+      "matches_v3_hash": true,
+      "v4_same_path_sha256": "0fa61d6f95dee8525980d0f15e0813d8760a0c546e8d7a5849fae03fbef7e52c"
+    },
+    "py_gap_composition.json": {
+      "v3_path": "checks/gap_composition.json",
+      "regenerated_sha256": "263cf498795b4e7b8f6b9d7f010b7ecee4cc7d927a8ee964c27493f56b001fed",
+      "v3_sha256": "263cf498795b4e7b8f6b9d7f010b7ecee4cc7d927a8ee964c27493f56b001fed",
+      "matches_v3_hash": true,
+      "v4_same_path_sha256": "1a3ab196ca8e43a5632c515154479217a11b9ec477be8113fd4b2784ad527a84"
+    },
+    "py_skeleton_cancellation.json": {
+      "v3_path": "checks/skeleton_cancellation.json",
+      "regenerated_sha256": "8542f40215b78373321a1ea955384cb07081010a08d35d196a7a55c972694915",
+      "v3_sha256": "8542f40215b78373321a1ea955384cb07081010a08d35d196a7a55c972694915",
+      "matches_v3_hash": true,
+      "v4_same_path_sha256": "9aa537feec689368260abf858c85f5c250fd66aa283422942eb8d03989f0a9c1"
+    },
+    "py_z_map_full.json": {
+      "v3_path": "checks/z_map_full.json",
+      "regenerated_sha256": "eac0808a0e372c72db2b14d02b1556e13a81fb8c3f9004a7de37c5c78a0f3387",
+      "v3_sha256": "eac0808a0e372c72db2b14d02b1556e13a81fb8c3f9004a7de37c5c78a0f3387",
+      "matches_v3_hash": true,
+      "v4_same_path_sha256": "4bfab5cbca9fc2c26baa0a3fe602074eca8e35a075b0ddc6943dafa69605c311"
+    }
+  },
+  "current_archive_importable_without_alias_mapping": false,
+  "fresh_replay_executed": false,
+  "mathematical_review_performed": false,
+  "source_changed_by_preparer": false,
+  "preparation_failed_attempts": [
+    {
+      "kind": "PREPARER_PATH_RESOLUTION_ERROR",
+      "detail": "Initial read-only check resolved CANDIDATE members under inputs/bootstrap rather than inputs/bootstrap/source; FileNotFoundError for Makefile. Corrected base path; no author files modified and no proof commands run."
+    }
+  ]
+}

@@ -232,9 +232,12 @@ unreviewed author revision. It closes R1–R7 through justified corrections or
 explicit withdrawals; a separate independent review remains the publication gate.
 
 The [owner-run MiMo proof task](proofs/ft1536/CURRENT_MIMO_TASK.md) addresses
-T03: one-root reference integer recovery, with pinned inputs and explicit
-PROVED/PARTIAL criteria. It is separate from Astra's reviewed retry task and
-from the still-required Family corrections.
+T03: one-root reference integer recovery. Its author returned **PARTIAL_PROOF**:
+the claimed reference/rounding subclaims await independent review, and the
+reported source-error bound about6086.4 does not establish the required gap<1/2.
+The [independent review prompt](proofs/ft1536/CURRENT_REVIEW_TASK.md) is prepared
+for an owner-selected model, including fresh Sage replay and v3→v4 provenance.
+This handoff is separate from the reviewed retry task and Family corrections.
 
 The [historical deferred preparation](provenance/checks/2026-09-20-dudect-floor-ct-ready/README.md)
 is retained. The [current floor-ct launcher](tests/ft1536/dudect/README.md)

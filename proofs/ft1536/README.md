@@ -289,11 +289,14 @@ Zadanie domyka R1–R7 z old→new diffs i spójnym PDF/kodem/replayem; dopuszcz
 jawne wycofanie wadliwego runnera R4 bez nowej kampanii. Ręczny start MiMo po
 handoffie bieżących prac. Pozytywny odbiór innego modelu nadal warunkiem publikacji.
 
-**Nowe zadanie dowodowe MiMo/T03 do ręcznego startu:**
+**Handoff MiMo/T03 — PARTIAL_PROOF / FROZEN_AWAITING_REVIEW:**
 [CURRENT_MIMO_TASK](CURRENT_MIMO_TASK.md) wskazuje one-root reference integer
-recovery, nowy W,przypięte wejścia,TASK z kryteriami PROVED/PARTIAL,replayem
-i dokładnym formatem odpowiedzi. To nie korekty Family/S01 ani odebrane T01
-Astry; nie uruchomiono nowego modelu.
+recovery. Autor deklaruje A/reference+mapping,C/rounding lemma,D conditional;
+B-gap≈6086.4 pozostaje OPEN.85 OUTPUTS mają zgodne piny przekazane przez
+właściciela. [Przygotowany odbiór](CURRENT_REVIEW_TASK.md) wymaga innego modelu,
+własnego fresh replayu,rachunku `sage lemma.sage` i kontroli zmian freeze/portu.
+[Kontrola prowadzącego](background/T03_REVIEW_PREPARATION_2026-09-22/README.md)
+jest wyłącznie integralnościowa; subclaims nie otrzymały statusu REVIEWED.
 
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:

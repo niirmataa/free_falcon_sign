@@ -1,4 +1,27 @@
-# Zakończony niezależny odbiór T01
+# Bieżący niezależny odbiór — T03
+
+**REVIEW_ID=FT1536_REFERENCE_INTEGER_INDEPENDENT_REVIEW_001**.
+Stan2026-09-22: **PREPARED_OWNER_START**. Autor MiMo oddał T03 jako
+`PARTIAL_PROOF`; etap ma **FROZEN_AWAITING_REVIEW**. Recenzenta wybiera
+i ręcznie uruchamia właściciel. Prowadzący sprawdził piny/bajty i przygotował
+prompt, bez własnego odbioru matematycznego lub wykonania replayu.
+
+- [Pełny prompt](documents/FT1536_PROMPT_INDEPENDENT_REVIEW_INTEGER_RECOVERY_2026-09-22.md),
+  SHA `e11122cad75f7b1a0aa41b8f234a34c457c05f0cb2f8be13a805879c7ec0a021`.
+- SOURCE_W: `/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001` (RO).
+- REVIEW_W: `/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_REFERENCE_INTEGER_INDEPENDENT_REVIEW_001`.
+- Author REPORT SHA `e01a09789091c9c9322f9727263503063c94441a68ff5f30af952bcc4417785c`.
+- Author OUTPUTS SHA `0cafdbb2c746043380081052951cb6438643f6a1765a98028a065fa57b7df6de` (85 członków).
+- [Kontrola przygotowawcza i kopie receiptów autora](background/T03_REVIEW_PREPARATION_2026-09-22/README.md),
+  MANIFEST SHA `d82314d4e8b81718c2b6103716da01216761279e0525f0e46330e5ebd2fe6019`.
+
+Recenzent ocenia A/reference+mapping,C/rounding lemma oraz conditional D;
+B-gap≈6086.4 nie osiąga1/2. Wymagane własne fresh replay,rachunek przez
+`sage lemma.sage` i rozliczenie portu v3→v4: zmieniony freeze,INPUTS alias,
+różnica całych plików tabeli Z i exact enclosures. Autorskie11/11 i4 Sage runs
+są zapisanymi receiptami,nie niezależnym odbiorem. TASK/piny: [T03](CURRENT_MIMO_TASK.md).
+
+## Zakończony niezależny odbiór T01 — historia
 
 **REVIEW_ID=FT1536_IID_RETRY_INDEPENDENT_REVIEW_001**.
 Stan2026-09-22: **PASS_SCOPED_REVIEW — ZAKOŃCZONY**, wynik innego modelu

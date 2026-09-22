@@ -3,13 +3,16 @@
 **Aktualizacja2026-09-22:** T01 niezależnie odebrany w `a2cdf317`;
 następnie właściciel poprosił o zadanie korekt S01 przed publikacją.
 Po nim przygotowano na jego prośbę małe T02.1 dla kolejnego ręcznie wybranego modelu.
+Najnowszy handoff: **T03 PARTIAL_PROOF / FROZEN_AWAITING_REVIEW**; przygotowano
+niezależny odbiór dla innego modelu. Kontrola prowadzącego obejmuje tylko
+piny/bajty/zapisane receipty, nie matematykę lub wykonanie replayu.
 Historyczne obserwacje procesów/dudect poniżej pochodzą z około04:33 CEST.
 Stan procesów jest ulotny: sprawdź go ponownie przed pracą. Ten dokument
 aktualizujemy po odbiorze etapu, zmianie wykonawcy lub decyzji właściciela.
 
 Główna kolejka zadań i kryteria: [ROADMAP](ROADMAP.md).
 Astra: **T01 REVIEWED**, pełny **T02 OPEN**, podzadanie **T02.1 PREPARED_OWNER_START**;
-osobny MiMo = **T03**,
+osobny MiMo = **T03 FROZEN_AWAITING_REVIEW**,
 poprawki Family = **S01 PREPARED_OWNER_START_AFTER_HANDOFF**, dudect = **S02**.
 
 ## Decyzje właściciela
@@ -83,9 +86,31 @@ Raport i odbiór:
   failed routes/overlap i strict-tail convention zachowano. owner_accepted=false.
 - Autor i recenzent zakończyli obliczenia. Nie wznawiaj ich W ani relay.
   T02 można teraz przygotować z odebranych zasobów; start wymaga nowego TASK/W
-  i ręcznego polecenia. T03 jest osobnym przygotowanym zadaniem MiMo.
+  i ręcznego polecenia. T03 ma osobny handoff oczekujący na niezależny odbiór.
 - Granica: nie ma boundu Bad|success bez success denominatoru. Real PRNG,H2P,
   whole real Sign,integer recovery,Sign→Verify/security/CT pozostają otwarte.
+
+## T03 — handoff PARTIAL_PROOF, niezależny odbiór przygotowany
+
+`FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001`,one-root,autor MiMo2.6Pro.
+[CURRENT_MIMO_TASK](../../proofs/ft1536/CURRENT_MIMO_TASK.md) wiąże pierwotne
+TASK/bootstrap i nowy [prompt odbioru](../../proofs/ft1536/CURRENT_REVIEW_TASK.md).
+Model recenzenta wybiera i uruchamia właściciel; REVIEW_W odrębny od autora.
+
+- REPORT SHA `e01a09789091c9c9322f9727263503063c94441a68ff5f30af952bcc4417785c`;
+  OUTPUTS SHA `0cafdbb2c746043380081052951cb6438643f6a1765a98028a065fa57b7df6de`.
+- **Deklaracje autora,nie REVIEWED:** A niezależna integralna reference i
+  mapping3072/congruence; C rounding-gap lemma; D conditional consumer.
+  B source-error≈6086.4008 nie osiąga `<1/2`; Safe16/center/norm/bytes otwarte.
+- Prowadzący sprawdził85 OUTPUTS,1275 bootstrap members,17 źródeł i byte-binding
+  autorskich11 semantic files. Postfreeze autora zapisuje4 `sage *.sage`,exit0.
+  To nie nowy replay lub odbiór matematyczny. [Zachowane receipty i kontrola](../../proofs/ft1536/background/T03_REVIEW_PREPARATION_2026-09-22/README.md).
+- Do rozliczenia: INPUTS ma alias `TASK_DOCUMENT_provenance` bez literalnego
+  pliku (zgodny TASK istnieje w documents/); zmieniony freeze v3→v4; różne
+  hashe całych JSON tabeli Z; exact enclosures i zakres zgodności portu.
+- Autor zgłosił koniec obliczeń. Następny krok to niezależny odbiór,w tym własny
+  fresh replay w REVIEW_W. B-gap fix pozostaje propozycją kolejnego tranche,
+  nie zadaniem uruchomionym. Source/owner acceptance/publikacja bez awansu.
 
 ## Małe T02.1 — osobny model, ręczny start
 
@@ -131,8 +156,9 @@ Nie ma w tym snapshotcie pozytywnego odbioru poprawek. Nie uruchamiaj MiMo sam.
 
 Aktualizacja przygotowania2026-09-22: właściciel wybrał dla MiMo NOWY obowiązek
 głównego toru, odrębny od korekt Family. [CURRENT_MIMO_TASK](../../proofs/ft1536/CURRENT_MIMO_TASK.md)
-wskazuje **T03 / one-root REFERENCE_INTEGER_RECOVERY**, PREPARED_OWNER_START,
-osobny nowy W i jednego ręcznego wykonawcę. S01 i blokada publikacji pozostają
+wskazuje **T03 / one-root REFERENCE_INTEGER_RECOVERY**. Przygotowane wcześniej
+W zwrócono jako PARTIAL_PROOF; niezależny odbiór czeka na ręczny start.
+S01 i blokada publikacji pozostają
 otwarte. Nieuruchomiony szkic CORRECTIONS_RUN_002 zachowano lokalnie jako anulowany.
 
 **Nowsze polecenie właściciela po odbiorze T01:** przygotować zadanie MiMo,
@@ -143,7 +169,7 @@ jako UNREVIEWED snapshot (42 pliki,manifest5ee71952…); R4 nadal deklarowane OP
 W czasie przygotowania widziano procesy kampanii estymatora we własnym W;
 nie zatrzymano ich ani nie uruchomiono kolejnego workera. Start S01 następuje
 po kontrolowanym handoffie bieżących prac MiMo. T03 zachowuje swoje W i TASK;
-brak nowego końcowego handoffu/odbioru T03. Publikacja nadal wstrzymana.
+najnowszy handoff i brak niezależnego odbioru opisano wyżej. Publikacja nadal wstrzymana.
 
 ## Build i dudect
 

@@ -1,8 +1,18 @@
-# MiMo — nowe zadanie głównego toru T03
+# MiMo — handoff głównego toru T03 oczekuje na odbiór
 
 **TASK_ID=FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001**.
-ROADMAP_ID=T03, one-root tranche. **PREPARED_OWNER_START**,2026-09-22.
-Start ręczny w jednym oknie MiMo2.6PRO. Nie jest to korekta Family/S01.
+ROADMAP_ID=T03, one-root tranche. **FROZEN_AWAITING_REVIEW**,2026-09-22.
+Właściciel przekazał zakończony handoff MiMo2.6PRO: **PARTIAL_PROOF**.
+[Niezależny odbiór](CURRENT_REVIEW_TASK.md) przygotowany dla innego modelu.
+
+- REPORT SHA `e01a09789091c9c9322f9727263503063c94441a68ff5f30af952bcc4417785c`.
+- OUTPUTS SHA `0cafdbb2c746043380081052951cb6438643f6a1765a98028a065fa57b7df6de`.
+- Piny i85 członków OUTPUTS zgodne. Autor zgłasza A/reference+mapping,
+  C/gap lemma oraz conditional D; B-gap≈6086.4 pozostaje OPEN. Te subclaims
+  oczekują na odbiór. Autor deklaruje zakończone obliczenia/brak jobów.
+- Kontrola bajtów ujawniła INPUTS alias bez literalnego pliku i zmieniony
+  freeze v3→v4; szczegóły w [notatce przygotowawczej](background/T03_REVIEW_PREPARATION_2026-09-22/README.md).
+  Nie importowano pakietu jako odebranego etapu. W autora pozostaje RO.
 
 **Obowiązkowe uzupełnienie właściciela2026-09-22:**
 [rachunek w `.sage` uruchamiany `sage lemma.sage`](documents/FT1536_ZASADA_RACHUNKU_SAGEMATH_2026-09-22.md),
@@ -30,8 +40,9 @@ recovery obu vectors. Małe BadPrecast i H6P E<1095 nie zamykają tego obowiązk
 Kryteria PROVED/PARTIAL/counterexample, kontrole, replay i dokładny format
 odpowiedzi określa TASK. Częściowy wynik z dokładnym missing type jest akceptowany.
 
-[CURRENT_TASK](CURRENT_TASK.md) dotyczy aktywnej Astry/T01. Nie przejmuj jej W,
-nie czytaj roboczych wyników jako dowodów i nie uruchamiaj drugiego workera.
+[CURRENT_TASK](CURRENT_TASK.md) dotyczy zakończonego i odebranego T01.
+T03 nie jest korektą Family/S01. Nie wznawiaj frozen W autora; recenzent ma
+własny REVIEW_W i jeden ręczny start. Nie uruchamiaj drugiego workera.
 Wszystkie zapisy MiMo pod jego nowym W w repo,bez systemowego tmp/tmpfs.
 Bez Git/publikacji/dudect/relay. Właściciel przekazuje końcowy handoff.
 Family/S01 pozostaje osobnym obowiązkiem i bramką publikacji.
