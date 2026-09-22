@@ -41,7 +41,7 @@ Future source/checkpoint commits and explicitly requested pushes are made
 from the canonical directory. Run make verify-FT1536-sources there to check
 the active17-file FLOOR_CT manifest56974571….
 
-Dudect RUN_002 remains deferred for the owner's nighttime start signal.
+Dudect RUN_002 remains deferred for the owner's explicit start signal.
 The21600-second setup at relocation is retained as history. The owner's later
 [ten-hour preparation](checks/2026-09-22-dudect-ten-hour-preparation/README.md)
 uses36000 seconds. The current manual start plan is the morning before the
