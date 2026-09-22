@@ -214,8 +214,10 @@ service launch and matching controller/systemd limits. Actual campaign status
 is recorded by RUN/RESULT in its local work directory. The [ten-hour preparation](provenance/checks/2026-09-22-dudect-ten-hour-preparation/README.md)
 requires87.3125GiB free for complete logs and reserve. The prepared RUN_002
 now uses the [NVMe data volume](provenance/FT1536_DATA_STORAGE.md), with about219.6GiB
-free at setup, through its canonical work-directory alias. Launch is manual
-after the owner's signal around03:00 CEST.
+free at setup, through its canonical work-directory alias. The current plan
+is a manual morning start before the owner leaves for work, after his signal;
+the [refreshed morning preparation](provenance/checks/2026-09-22-dudect-morning-preparation/README.md)
+retains the ten-hour budget and awaits physical preflight.
 
 The current build integrates the corrected verifier, SHA-256
 `3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42`.

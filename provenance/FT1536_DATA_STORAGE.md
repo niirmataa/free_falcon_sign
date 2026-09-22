@@ -60,8 +60,9 @@ findmnt --source UUID=da38b9e9-0e22-4c55-b3e0-c46b9f293eca --output SOURCE,TARGE
 
 Wymagany punkt montowania: `/media/footfalcon/FT1536_DATA`.
 Przed startem sprawdź aktualny dysk/UUID, wolne miejsce, zasilanie AC i koniec
-prac proof/build. Właściciel zaplanował ręczny sygnał około03:00 CEST,
-**10h kampanii po świeżym fizycznym preflight**. Polecenie z kanonicznego repo:
+prac proof/build. Aktualny plan właściciela to ręczny sygnał **rano przed
+wyjściem do pracy**, zastępujący wcześniejsze03:00; **10h kampanii po świeżym
+fizycznym preflight**. Polecenie z kanonicznego repo:
 
 ```sh
 python3 -B tests/ft1536/dudect/launch.py /home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_FPEMU_DUDECT_RUN_002 --seconds 36000

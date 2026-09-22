@@ -44,7 +44,8 @@ the active17-file FLOOR_CT manifest56974571….
 Dudect RUN_002 remains deferred for the owner's nighttime start signal.
 The21600-second setup at relocation is retained as history. The owner's later
 [ten-hour preparation](checks/2026-09-22-dudect-ten-hour-preparation/README.md)
-uses36000 seconds, with manual start around03:00 CEST. Its local NIGHT_START.md
+uses36000 seconds. The current manual start plan is the morning before the
+owner leaves for work, after his signal. Its local NIGHT_START.md
 uses the canonical launcher path. Frozen preparations are retained; current
 disk capacity and a fresh physical preflight are required before launch.
 The subsequently prepared [NVMe data volume](FT1536_DATA_STORAGE.md) now holds
