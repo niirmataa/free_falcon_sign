@@ -164,6 +164,16 @@ class ArchiveTests(unittest.TestCase):
             with self.subTest(change=change), self.assertRaises(archive.ArchiveError):
                 archive.semantic_rows({'matches': [dict(row, **change)]})
 
+    def test_catalog_views_are_regenerable(self):
+        self.import_fixture()
+        view = archive.list_stages(self.root, 'FT1536_TEST_RUN_001')
+        self.assertEqual(view[0]['stage'], 'FT1536_TEST_RUN_001')
+        self.assertEqual(view[0]['status'], 'PARTIAL_PROOF')
+        self.assertEqual(view[0]['manifest_sha256'], self.pin)
+        table = archive.markdown_table(self.root, 'FT1536_TEST_RUN_001')
+        self.assertIn('| FT1536_TEST_RUN_001 | PARTIAL_PROOF | none |', table)
+        self.assertIn(self.pin[:12], table)
+
 
 if __name__ == '__main__':
     unittest.main()

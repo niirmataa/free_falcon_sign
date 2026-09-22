@@ -18,8 +18,14 @@ import tempfile
 import time
 
 ROOT = Path(__file__).absolute().parents[1]
-DOC = Path('/home/footfalcon/Dokumenty')
-H = Path('/media/footfalcon/ad3fb0d5-d7b4-412a-87a3-aaf7a430d371/home/god/Szablon')
+# Replay may hide historical source directories outside the repository. Paths come
+# from the environment so the archive itself stays machine-portable; defaults keep
+# the historical behavior on the original maintainer machine.
+DOC = Path(os.environ.get('FT1536_HIDE_DOC', '/home/footfalcon/Dokumenty'))
+H = Path(os.environ.get('FT1536_HIDE_H',
+                        '/media/footfalcon/ad3fb0d5-d7b4-412a-87a3-aaf7a430d371/home/god/Szablon'))
+# Default wall timeout for a fresh replay; the catalog value of the stage wins.
+DEFAULT_REPLAY_TIMEOUT = int(os.environ.get('FT1536_REPLAY_TIMEOUT', '600'))
 DIGEST = re.compile(r'[0-9a-f]{64}')
 NAME = re.compile(r'[A-Za-z0-9][A-Za-z0-9_.-]*')
 PRIVATE_PARTS = {'.private', 'private_extraction', '.gnupg', '.ssh', '.git', '.config'}
@@ -182,6 +188,31 @@ def check_replay_result(base, child, historical, reproduced):
     return len(expected)
 
 
+def stage_record_view(root, stage):
+    record = load_record(root, stage)
+    return dict(stage=stage, status=record['claimed_status'], replay=record['replay'],
+                manifest_sha256=record['manifest_sha256'], report_sha256=record['report_sha256'])
+
+
+def list_stages(root, stage=None):
+    if stage is not None:
+        checked_name(stage)
+        return [stage_record_view(root, stage)]
+    return [stage_record_view(root, s)
+            for s in sorted(p.stem for p in (root / 'catalog').glob('*.json'))]
+
+
+def markdown_table(root, stage=None):
+    """Render the checkpoint catalog as the status table used by README/STATE."""
+    lines = ['| Etap | Status | Replay | OUTPUTS.sha256 |',
+             '|---|---|---|---|']
+    for row in list_stages(root, stage):
+        pin = row['manifest_sha256'][:12]
+        lines.append("| {} | {} | {} | `{}` |".format(
+            row['stage'], row['status'], row['replay'], pin + '…'))
+    return '\n'.join(lines) + '\n'
+
+
 def verify_stage(root, stage):
     record = load_record(root, stage)
     base = root / 'stages' / stage
@@ -222,7 +253,8 @@ def verify_stage(root, stage):
 
 
 def import_stage(root, source, manifest_sha, report_sha, report='REPORT.md',
-                 result_file='RESULT.json', replay='none', stage=None, replay_receipt=None):
+                 result_file='RESULT.json', replay='none', stage=None, replay_receipt=None,
+                 replay_timeout=None):
     source = no_symlinks(Path(source).absolute())
     stage = checked_name(stage or source.name)
     checked_path(report); checked_path(result_file)
@@ -290,6 +322,10 @@ def import_stage(root, source, manifest_sha, report_sha, report='REPORT.md',
                       output_bytes=total_bytes, frozen_commands=frozen, replay=replay,
                       replay_receipt=replay_receipt,
                       inputs=[dict(original=n, sha256=h, object='objects/' + h) for n, h, _ in input_sources])
+        if replay_timeout is not None:
+            require(isinstance(replay_timeout, int) and replay_timeout > 0,
+                    'Replay timeout must be a positive number of seconds')
+            record['replay_timeout_seconds'] = replay_timeout
         mkdir(root / 'stages'); mkdir(root / 'catalog')
         with tempfile.TemporaryDirectory(prefix='import-', dir=root / 'work') as temp:
             staged = Path(temp) / stage
@@ -342,6 +378,8 @@ def replay_stage(root, stage, run, timeout, hide_originals=False):
     checked_name(run)
     verify_stage(root, stage)
     record = load_record(root, stage)
+    if timeout is None:
+        timeout = record.get('replay_timeout_seconds') or DEFAULT_REPLAY_TIMEOUT
     protocol = record['replay']
     require(protocol != 'none', 'This checkpoint archives a review; no single full replay is declared')
     require(timeout > 0, 'Positive wall timeout required')
@@ -439,28 +477,37 @@ def main():
     imp.add_argument('--result', default='RESULT.json')
     imp.add_argument('--replay', choices=['none', 'standard', 'lv-static', 'global-crt'], default='none')
     imp.add_argument('--replay-receipt', help='Relative receipt path sealed by OUTPUTS; protocol default if omitted')
+    imp.add_argument('--replay-timeout', type=int,
+                     help='Positive wall timeout seconds recorded for future replays of this stage')
     imp.add_argument('--id')
     doc = sub.add_parser('document'); doc.add_argument('source', type=Path); doc.add_argument('--sha', required=True)
     verify = sub.add_parser('verify'); verify.add_argument('stage', nargs='?')
-    sub.add_parser('list')
     run = sub.add_parser('replay'); run.add_argument('stage'); run.add_argument('--run', required=True)
-    run.add_argument('--timeout', type=int, default=600); run.add_argument('--hide-originals', action='store_true')
+    run.add_argument('--timeout', type=int, default=None,
+                     help='Wall timeout seconds; default: catalog replay_timeout_seconds, else 600')
+    run.add_argument('--hide-originals', action='store_true')
+    lst = sub.add_parser('list'); lst.add_argument('stage', nargs='?')
+    lst.add_argument('--markdown', action='store_true',
+                     help='Render the status table used by README/STATE from catalog/*.json')
     args = parser.parse_args()
     if args.command == 'import':
         result = import_stage(ROOT, args.source, args.manifest_sha, args.report_sha,
-                              args.report, args.result, args.replay, args.id, args.replay_receipt)
+                              args.report, args.result, args.replay, args.id, args.replay_receipt,
+                              args.replay_timeout)
     elif args.command == 'document':
         result = add_document(ROOT, args.source, args.sha)
     elif args.command == 'replay':
         replay_stage(ROOT, args.stage, args.run, args.timeout, args.hide_originals)
         return
+    elif args.command == 'list' and args.markdown:
+        print(markdown_table(ROOT, args.stage), end='')
+        return
     else:
-        stages = [args.stage] if getattr(args, 'stage', None) else sorted(
-            p.stem for p in (ROOT / 'catalog').glob('*.json'))
         if args.command == 'list':
-            result = [dict(stage=s, status=load_record(ROOT, s)['claimed_status'],
-                           replay=load_record(ROOT, s)['replay']) for s in stages]
+            result = list_stages(ROOT, args.stage)
         else:
+            stages = [args.stage] if getattr(args, 'stage', None) else sorted(
+                p.stem for p in (ROOT / 'catalog').glob('*.json'))
             result = dict(checkpoints=[verify_stage(ROOT, s) for s in stages],
                           documents=verify_documents(ROOT), originals_required=False)
     print(json.dumps(result, ensure_ascii=False, indent=2))
