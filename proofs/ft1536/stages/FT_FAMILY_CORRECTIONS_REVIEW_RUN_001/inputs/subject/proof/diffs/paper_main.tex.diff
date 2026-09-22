@@ -1,0 +1,53 @@
+--- inputs/bootstrap/CANDIDATE_R2/paper/main.tex	2026-09-22 06:40:58.228835248 +0200
++++ paper/main.tex	2026-09-22 09:08:52.614134152 +0200
+@@ -182,12 +182,18 @@
+ stated measurable criterion; we use, in this order:
+ (i) \emph{acceptance mass}: per-attempt rejection at the level certified in
+ the ideal normalized-canonical model ($Q/\sigma^2\sim\chi^2_{2N}$, i.i.d.\
+-Gaussian before casts/retries): for the baseline margin this tail is
+-$2^{-28.32}$ (independently certified as
+-$[2.9925\ldots\!\cdot\!10^{-9}\pm2.3\!\cdot\!10^{-82}]$), so the criterion
+-is stated at $2^{-28}$ and is met with $0.3$ bits of margin \emph{in that
+-model}; the actual post-cast law remains \OPEN{} (an earlier draft demanded
+-$2^{-40}$, which the ideal model itself refutes);
++Gaussian before casts/retries). With $x=B/(2\sigma^2)=2093922385/1179648$
++the tail is exactly $\Pr[Q\ge B]=e^{-x}\sum_{k=0}^{1535}x^k/k!$ (the
++Erlang/Poisson identity $\Pr[T\ge v]=e^{-v/2}\sum_{j<m}(v/2)^j/j!$ for
++$T\sim\mathrm{Gamma}(m,1/2)$, $m=1536$), recomputed rigorously with exact
++$\mathbb{Z}/\mathbb{Q}$ sums and a \texttt{RealBallField} $e^{-x}$ enclosure
++as $[2.9925\ldots\!\cdot\!10^{-9}\pm{\sim}10^{-305}]$, matching the
++independently certified interval
++$[2.9925\ldots\!\cdot\!10^{-9}\pm2.3\!\cdot\!10^{-82}]$ digit for digit. The
++resulting $2^{-28.32\ldots}$ refutes the earlier $2^{-40}$ demand \emph{in
++that model}. The $2^{-28}$ figure is a \textsf{PROPOSED} model-level
++per-attempt target only --- not an approved project goal and not a security
++level; the actual post-cast law remains \OPEN{};
+ (ii) \emph{geometry}: the key-vector ratio of
+ Section~\ref{sec:geometry} stays within a fixed factor across the family;
+ (iii) \emph{attack budget}: a pinned estimator campaign defines the target.
+@@ -385,7 +391,12 @@
+ step-by-step derivation bound to the FPEMU operation contracts is
+ \OPEN{} (see Section~\ref{sec:limits}); in particular the concrete constant
+ $c$, the full operation domains and the twiddle-error budget
+-$\varepsilon_{tw}$ are not pinned by this argument.
++$\varepsilon_{tw}$ are not pinned by this argument. \emph{Phase/twiddle
++perturbation requires a separate derivation: the multiplier
++$(1+\varepsilon_{tw})^{\ell+1}$ is an assumed placeholder, not a derived
++term} --- replacing the exact twiddle products by perturbed ones changes the
++function being evaluated at each node of the recursion, so a first-order
++operation-count argument does not by itself carry over to ideal phases.
+ \end{proof}
+ 
+ \paragraph{Validation (not a proof).} A source-faithful binary64 port using
+@@ -397,7 +408,10 @@
+ macros): $\max_j|\Delta_j|\le 7.8\cdot 10^{-13}$, and the observed constant
+ $\max|\Delta|/(\ell u\|a\|_1)\le 0.209$ (exact maximum $0.20850\ldots$)
+ against the crude bound $8\ell u\|a\|_1$ in all 12 runs. The all-ones class
+-is exactly the adversarial family of Section~\ref{sec:geometry}.
++is exactly the adversarial family of Section~\ref{sec:geometry}. Twelve
++finite cases establish \emph{neither} a uniform constant $c$ \emph{nor} the
++operation domains \emph{nor} any FPEMU contract; they only record that the
++proposed bound is not refuted on them.
+ 
+ \paragraph{What remains open.} (a) Binding
+ Proposition~\ref{prop:fft3} to the bit-exact FPEMU contracts (the model

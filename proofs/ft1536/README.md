@@ -33,13 +33,14 @@ osiągnięcia, T2C3/T5, kontrakt M0, graf zależności i dalsze obowiązki.
 Pakiet ma 211 członków OUTPUTS i 198 publicznych wejść Git, manifest
 `c3efdcff510983a143946d43ab456656090061cd5b9b4b6847abc7f141c0cfa3`.
 Jest checkpointem dokumentacyjnym (`replay=none`); obecnie archiwum zawiera
-także dwadzieścia dziewięć etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
+także trzydzieści etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
 H3_ZERO_SCALAR, H3_ROOT_LDL, H3_NODE3, H3_NODE2, BINARY_TOWER, audyt FPEMU,
 FLOOR_CT, RAW_ASSEMBLY, STABLE_NORMALIZATION, INITIAL_TARGETS, ORDERED_REACH
 i LEFT_ROOT_CORRELATED_TRANSFER, SOURCE_POSTPROCESSING_AND_PRECAST, SCALAR_KERNEL_IID
 i SCALAR_GAUSSIAN_COMPARISON, ORDERED_JOINT_KERNEL, H6P_REFERENCE_BAD_EVENT
 oraz przegląd FT_FAMILY_SCALING,IID_RETRY_COMPOSITION i częściowy zwrot
-REFERENCE_INTEGER_RECOVERY (binding odbioru wymaga suplementu).
+REFERENCE_INTEGER_RECOVERY (handoff nowego odbioru zapowiedziany przez właściciela).
+Najnowszy odbiór korekt Family RUN_003 zachowuje CHANGES_REQUIRED (I1/I2).
 
 [Mapa po domknięciu L_V — 2026-09-19](documents/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md)
 przedstawia zależności i proponowaną kolejność: dokładny kontrakt gry,
@@ -283,12 +284,22 @@ Archiwizacja obejmuje wartościowy wynik wymagający poprawek; nie podnosi go
 do dowodu bezpieczeństwa lub gotowości FT768/FT3072. Dokumentacyjny
 `replay=none` nie usuwa zachowanych niezależnych kontroli.
 
-**Korekty S01 przygotowane na polecenie właściciela:**
-[CURRENT_FAMILY_TASK](CURRENT_FAMILY_TASK.md) wskazuje nowy CORRECTIONS_RUN_003,
-197 przypiętych wejść i istniejącą nowszą wersję autora jako nieodebrany input.
-Zadanie domyka R1–R7 z old→new diffs i spójnym PDF/kodem/replayem; dopuszcza
-jawne wycofanie wadliwego runnera R4 bez nowej kampanii. Ręczny start MiMo po
-handoffie bieżących prac. Pozytywny odbiór innego modelu nadal warunkiem publikacji.
+**S01 CORRECTIONS_RUN_003 — CHANGES_REQUIRED po własnym odbiorze:**
+[Handoff autora](CURRENT_FAMILY_TASK.md) ma COMPLETE_FOR_REVIEW,100 OUTPUTS,
+zapisany postfreeze18/18 i16/16 exit0. [Osobny niezależny odbiór](CURRENT_FAMILY_REVIEW_TASK.md)
+wykonał GPT-6 Astra na bezpośrednie polecenie właściciela.
+[Raport/archiwum](validation/2026-09-22-family-corrections-independent/README.md):
+18/18 byte matches,16 steps exit0,PDF9 stron,2 własne .sage i13 R4 controls.
+Raw controller exit1 zachowano i rozliczono jako różnicę wyłącznie ścieżki
+source_header w FFT JSON. R4 wycofany zakresowo,R5 core negative potwierdzony,
+R6 proposed. [Wymagane I1/I2](stages/FT_FAMILY_CORRECTIONS_REVIEW_RUN_001/REQUIRED_CORRECTIONS.md):
+R1 scope oracles/Adv oraz R5 claim precyzji. Publikacja nadal wstrzymana.
+
+**S06 — osobna częściowa kampania estymatora:** właściciel potwierdził run
+FT_FAMILY_SEC_ESTIMATE_2026-09-22_RUN_001:70 zapisanych komórek NTRU dla
+FT768/FT1536/FT3072,STATUS DIAGNOSTIC_NOT_CANDIDATE_READY,bez finalnego freeze.
+[STATE](../../docs/onboarding/STATE.md) podaje zakres i snapshot; S01 NOT_RUN
+dotyczy jego własnego zadania,nie tej odrębnej wykonanej kampanii.
 
 **T03 — PARTIAL_PROOF / FROZEN_AWAITING_REVIEW,nowy REVIEW_002:**
 [Zarchiwizowany pakiet autora](stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001/REPORT.md)
@@ -366,6 +377,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [H6P_REFERENCE_BAD_EVENT](stages/FT1536_H6P_REFERENCE_BAD_EVENT_RUN_001/REPORT.md) | **H6P_REFERENCE_BAD_EVENT_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — source map/V/E/MGF i joint tail Q_S<=2^-119, one-root IID<=2^-84 | `1ba7ae0` |
 | [IID_RETRY_COMPOSITION / T01](stages/FT1536_IID_RETRY_COMPOSITION_RUN_001/REPORT.md) | **IID_RETRY_COMPOSITION_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — one post-H2P cap16 IID region,WholeRegionBad<=2^-80,coupling/resources/bytes; independent PASS_SCOPED_REVIEW | `a2cdf317` |
 | [REFERENCE_INTEGER_RECOVERY / T03](stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001/REPORT.md) | **PARTIAL_PROOF** — stary scoped PASS i rozbieżność3 hashy zachowane; B-gap OPEN; nowy pełny REVIEW_002 przygotowany dla innego modelu | archiwum `24449c1` |
+| [FAMILY_CORRECTIONS review / S01](stages/FT_FAMILY_CORRECTIONS_REVIEW_RUN_001/REPORT.md) | **RESEARCH_REVIEW_CHANGES_REQUIRED** — niezależny replay/rachunek potwierdzają rdzeń; R1 game-level scope i R5 precision claim wymagają korekty | lokalny checkpoint2026-09-22 |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).

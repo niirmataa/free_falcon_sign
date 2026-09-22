@@ -1,0 +1,35 @@
+--- inputs/bootstrap/CANDIDATE_R2/ATTACK_PROBLEMS.md	2026-09-22 06:40:58.224835233 +0200
++++ ATTACK_PROBLEMS.md	2026-09-22 09:05:39.065721445 +0200
+@@ -54,6 +54,32 @@
+ 
+ ## 1. Reduction arrows (R1 — direction fixed)
+ 
++Arrows used everywhere in this package (diagram; identical in CLAIMS.md and
++the manuscript):
++
++    bytes/witness level                     relation level
++    -------------------                     --------------
++    Forge(A) ---- accepted bytes b* -----> Extract(L_V) ---- short witness ----+
++         ^                                                                   |
++         |                                                                   v
++         |                                                     Solve_rel  (win: (i,z1,z2))
++         |                                                                   |
++         +---- needs Enc: WITNESS -> accepted bytes (2) <-- OPEN, NOT proved -+
++                                    |
++                                    +--> full M0 reduction (3): ROM/Sign
++                                         simulation, freshness, M7 resources
++                                         -- OPEN, beyond both arrows
++
++    (1) proved:   B = Extract o Forge   =>  Adv_rel(B) >= Adv_cond(G0[E], A)
++        ("hardness of the relation problem bounds forging")
++    (2) OPEN:     Solve_rel -> Forge needs Enc with ACCEPT = 1 (decoder-image
++        surjectivity NOT established)
++    (3) OPEN:     full M0/M7 reduction on top of (1)
++
++Executable controls of these arrows: `results/controls.json` N3 (toy game:
++the forward composition runs and meets its postcondition; a naive Enc is
++executed and its bytes are rejected), N1/N2 for the game definitions below.
++
+ 1. **Proved direction (witness extraction).**
+    `ACCEPT => witness` is the pinned L_V statement. Composing
+    `B = Extract o Forge(A)` (same queries, identity on the transcript) gives

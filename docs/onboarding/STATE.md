@@ -9,6 +9,14 @@ w dziennikach versus frozen źródła: **REVIEW_RECEIVED_SAGE_BINDING_PENDING**.
 Następnie właściciel wybrał ponowny pełny odbiór przez inny model:
 **REVIEW_002 PREPARED_OWNER_START**,T03 **FROZEN_AWAITING_REVIEW**.
 Mały suplement zastąpiono; prowadzący przygotował1429 przypiętych wejść.
+Nowszy zwrot: **S01 COMPLETE_FOR_REVIEW / FROZEN_AWAITING_REVIEW**,
+osobny niezależny odbiór przygotowany. Właściciel potwierdził także częściowy
+run estymatora S06/RUN_001 —70 zapisanych komórek NTRU,bez finalnego freeze.
+**Aktualna decyzja wykonawcza:** właściciel polecił temu prowadzącemu
+osobiście ocenić S01 i S06. S01 zakończono z **CHANGES_REQUIRED**,
+recenzent GPT-6 Astra; S06 pozostaje kolejnym zleceniem. Właściciel
+zapowiedział gotowy handoff recenzji T03 i wyniku T02.1 po zakończeniu S01.
+To jawny wyjątek od wcześniejszego podziału ról,bez delegacji/relay.
 Historyczne obserwacje procesów/dudect poniżej pochodzą z około04:33 CEST.
 Stan procesów jest ulotny: sprawdź go ponownie przed pracą. Ten dokument
 aktualizujemy po odbiorze etapu, zmianie wykonawcy lub decyzji właściciela.
@@ -16,7 +24,8 @@ aktualizujemy po odbiorze etapu, zmianie wykonawcy lub decyzji właściciela.
 Główna kolejka zadań i kryteria: [ROADMAP](ROADMAP.md).
 Astra: **T01 REVIEWED**, pełny **T02 OPEN**, podzadanie **T02.1 PREPARED_OWNER_START**;
 osobny MiMo = **T03 FROZEN_AWAITING_REVIEW / REVIEW_002 PREPARED_OWNER_START**,
-poprawki Family = **S01 PREPARED_OWNER_START_AFTER_HANDOFF**, dudect = **S02**.
+poprawki Family = **S01 CHANGES_REQUIRED**, dudect = **S02**,
+estymator = **S06 PARTIAL_DIAGNOSTIC**, według zapisanego handoffu w pauzie.
 
 ## Decyzje właściciela
 
@@ -175,19 +184,57 @@ Nie ma w tym snapshotcie pozytywnego odbioru poprawek. Nie uruchamiaj MiMo sam.
 Aktualizacja przygotowania2026-09-22: właściciel wybrał dla MiMo NOWY obowiązek
 głównego toru, odrębny od korekt Family. [CURRENT_MIMO_TASK](../../proofs/ft1536/CURRENT_MIMO_TASK.md)
 wskazuje **T03 / one-root REFERENCE_INTEGER_RECOVERY**. Przygotowane wcześniej
-W zwrócono jako PARTIAL_PROOF; nowy REVIEW_002 czeka na ręczny start innego modelu.
+W zwrócono jako PARTIAL_PROOF; właściciel zgłosił już gotową kolejną recenzję
+T03,której handoff/piny przekaże po odbiorze S01.
 S01 i blokada publikacji pozostają
 otwarte. Nieuruchomiony szkic CORRECTIONS_RUN_002 zachowano lokalnie jako anulowany.
 
-**Nowsze polecenie właściciela po odbiorze T01:** przygotować zadanie MiMo,
-które domknie Family przed push. [CURRENT_FAMILY_TASK](../../proofs/ft1536/CURRENT_FAMILY_TASK.md)
-wskazuje nowy **CORRECTIONS_RUN_003**,197 przypiętych wejść i handoff do istniejącego
-okna MiMo. Uwzględniono znaleziony nowszy autorski FAMILY_SCALING_2026-09-22_RUN_002
-jako UNREVIEWED snapshot (42 pliki,manifest5ee71952…); R4 nadal deklarowane OPEN.
-W czasie przygotowania widziano procesy kampanii estymatora we własnym W;
-nie zatrzymano ich ani nie uruchomiono kolejnego workera. Start S01 następuje
-po kontrolowanym handoffie bieżących prac MiMo. T03 zachowuje swoje W i TASK;
-najnowszy odbiór i decyzję o REVIEW_002 opisano wyżej. Publikacja nadal wstrzymana.
+**Zwrot S01 CORRECTIONS_RUN_003:** właściciel przekazał
+FT_FAMILY_CORRECTIONS_COMPLETE_FOR_REVIEW. [CURRENT_FAMILY_TASK](../../proofs/ft1536/CURRENT_FAMILY_TASK.md)
+wiąże TASK/bootstrap i [osobny prompt odbioru](../../proofs/ft1536/CURRENT_FAMILY_REVIEW_TASK.md).
+Właściciel wskazał później tego prowadzącego jako recenzenta. W:
+`proofs/ft1536/work/FT_FAMILY_CORRECTIONS_INDEPENDENT_REVIEW_001`.
+
+**Późniejszy własny odbiór na polecenie właściciela:** GPT-6 Astra zakończył
+review z CHANGES_REQUIRED. [Raport i archiwum](../../proofs/ft1536/validation/2026-09-22-family-corrections-independent/README.md),
+[minimalne poprawki](../../proofs/ft1536/stages/FT_FAMILY_CORRECTIONS_REVIEW_RUN_001/REQUIRED_CORRECTIONS.md).
+I1:R1 typ oracles/nierówności Adv i zakres N3; I2:R5 claim≈1e-305 nie wynika
+z autorskiego Arb256 (≈1.06e-82,written endpoints width1e-50). Core tail
+2^-40<tail<2^-28 poprawny. Własny replay18/18,16/16 exit0,354.775s i PDF9 stron
+potwierdzone; raw controller exit1 jawnie rozlicza tylko transportowe pole
+source_header FFT JSON. Dwa udane własne `.sage`,13 R4 mocks,4/14 Lean.
+REVIEW SHA `6cb263741571922d9326decb7f22cc2713532658cee69bd9a46354423a415dc4`;
+REVIEW_OUTPUTS SHA `7ad83392a6c31762b791517935ccb5f6d042b8f0eac90970f1e7e02f031d1982`.
+Joby zakończone,publikacyjna bramka korekt niespełniona. S06 nie był wykonany
+ani oceniony tym review. Własne failed attempts recenzenta zachowane.
+
+- REPORT SHA `7d2f17cc51126b6dbb03279d7c876c460aa9f48bb581f63b9f512f87adee485d`;
+  OUTPUTS SHA `9e093536dfd684f83ca9bc361049e00064f3d60848f8ecc999aa5481398c397e`.
+- Na etapie przygotowania prowadzący sprawdził100 outputs,197 bootstrap
+  members,source17 i zapisany postfreeze autora. Właściwy własny odbiór
+  wykonano następnie na nowe polecenie właściciela i opisano powyżej.
+- Read-only bundle323 plików,7.6MB; [origins/przygotowanie](../../proofs/ft1536/background/FAMILY_CORRECTIONS_REVIEW_2026-09-22/README.md).
+  Plan odbioru obejmował R1–R7,wycofanie R4,ujemny R5,proposed R6,tabelę/PDF,
+  stale-result guard,semantic-only steps,stary hash lemma_controls i sealed .pyc.
+- Author COMPLETE nie znosi bramki publikacji. Wymagany pozytywny niezależny
+  scoped review,a później osobne polecenie push. T03 REVIEW_002 ma odrębne W.
+
+## S06 — potwierdzony przez właściciela częściowy run estymatora
+
+W: `proofs/ft1536/work/FT_FAMILY_SEC_ESTIMATE_2026-09-22_RUN_001`.
+STATUS=`DIAGNOSTIC_NOT_CANDIDATE_READY`; RESUME_STATE opisuje pauzę i wznowienie
+na polecenie właściciela. Odczyt2026-09-22: ntru_grid.ndjson ma71 rekordów,
+z czego1 metadata +70 zapisanych komórek: FT76824,FT153624,FT307222.
+Docelowa siatka120 obejmuje także kotwice Falcon; brak finalnego report.md
+i OUTPUTS.sha256. To rzeczywiste zapisane oszacowania,jeszcze nie odebrany freeze.
+Snapshot hash siatki: `3f766b1a4f46080f99422f2f7f7c8c270708bc949e25ed01f9a482df95bab4d3`.
+
+S01 estimator_campaign_executed_in_this_task=false nie przeczy temu osobnemu
+runowi. Wyniki mają zakres model-dependent/diagnostic; aktualny SCOPE wymienia
+otwarte modeling/population/lift obligations. Koszty wymagają osobnego odbioru
+po handoffie z pinami i pełnymi wynikami. Historycznej komendy env-python z
+RESUME_STATE nie traktuj jako nowego polecenia startu; nowe rachunki stosują
+obowiązujący tryb Sage. Prowadzący nie wznawiał ani nie zatrzymywał kampanii.
 
 ## Build i dudect
 

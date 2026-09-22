@@ -21,6 +21,8 @@ Docelowym repozytorium prac jest `free_falcon_sign`.
 - Zlecenie korekt Family/S01 wskazuje `proofs/ft1536/CURRENT_FAMILY_TASK.md`.
   Przed jego ręcznym startem MiMo zapisuje stan swoich bieżących prac i jobów;
   przygotowanie S01 nie uruchamia drugiego workera ani nie nadpisuje T03.
+- Niezależny odbiór zwróconych korekt S01 wskazuje
+  `proofs/ft1536/CURRENT_FAMILY_REVIEW_TASK.md`; ma osobny W od T03 REVIEW_002.
 - Małe osobne T02.1 wskazuje `proofs/ft1536/CURRENT_SMALL_TASK.md`.
   Ma własny W i wykonawcę wybieranego przez właściciela; nie przejmuje T03/S01.
 - Podział ról ustalony przez właściciela2026-09-22: ten prowadzący przygotowuje
@@ -28,6 +30,11 @@ Docelowym repozytorium prac jest `free_falcon_sign`.
   wykonuje niezależnie inny model wybrany przez właściciela. Ten prowadzący
   nie uruchamia ich automatycznie ani nie ogłasza własnego odbioru. Kontrole
   pinów i spójności przygotowywanego zlecenia pozostają częścią przygotowania.
+- Późniejsza decyzja właściciela2026-09-22: ten prowadzący ma OSOBIŚCIE
+  wykonać niezależny odbiór dwóch prac MiMo: Family/S01 oraz częściowej
+  kampanii estymatora S06. Najpierw domyka S01 i oddaje werdykt; właściciel
+  następnie przekaże gotową recenzję T03 i handoff T02.1. To jawny wyjątek
+  od poprzedniego podziału,nie zgoda na relay lub automatyczne inne modele.
 
 ## Trwała lokalizacja pracy
 

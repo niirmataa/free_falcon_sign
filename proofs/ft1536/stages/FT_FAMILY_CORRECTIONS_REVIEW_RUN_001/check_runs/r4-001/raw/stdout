@@ -1,0 +1,32 @@
+{
+  "R4_cases": 13,
+  "all_pass": true,
+  "freshness_negative_controls": [
+    {
+      "producer": "noop",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "-c",
+        "pass"
+      ],
+      "exit": 0,
+      "deleted_copied_sha256": "7965503284d85609a9f3dc3a4b082e1c1405cd0a9b789b5e90b0439957b6351f",
+      "target_exists": false,
+      "freshness_guard_accepts": false
+    },
+    {
+      "producer": "failure",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "-c",
+        "raise SystemExit(7)"
+      ],
+      "exit": 7,
+      "deleted_copied_sha256": "7965503284d85609a9f3dc3a4b082e1c1405cd0a9b789b5e90b0439957b6351f",
+      "target_exists": false,
+      "freshness_guard_accepts": false
+    }
+  ]
+}

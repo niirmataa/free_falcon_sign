@@ -1,0 +1,169 @@
+# RESEARCH_NOTES_PL — notatki badawcze rodziny FT (2026-09-22, RUN_002)
+
+## 1. Najważniejsze ustalenia tego cyklu
+
+1. **Metryka Verify jest metryką śladu znormalizowanego.** Forma liczbowa
+   `Q_A2(x,y) = x²+xy+y²` po parach offsetu N/2 to dokładnie
+   `(1/N)Tr(a·ā) = (2/N)Σ|σ_j(a)|²`. To spina „metrykę współczynnikową"
+   zanurzenia z warunkiem `Q < B` w Verify — brakujący most z poprzedniej
+   wersji. Konsekwencje: stałe równoważności `(1/2)‖a‖² ≤ Q_A2 ≤ (3/2)‖a‖²`
+   (ciasne), a pojedyncze zanurzenie wymaga czynnika `N/2`
+   (`|σ_j(a)|² ≤ (N/2)Q_A2(a)`).
+2. **Pierwiastki i pierścień są domknięte dokładnie.** `X^N − X^{N/2} + 1 =
+   Φ_{3N}` dla N = 3·2^k (sprawdzone nad ZZ); poprawne pierwiastki NTT to
+   3532/625/25, a wcześniejsze 8/27/13 mają rząd N i dają `Φ = 3 mod q`.
+   Kernel Lean 4 potwierdza te fakty liczbowe (`lean/FTRoots.lean`).
+3. **Wynik parametryczny: layout drzewa.** `T = (logn+2)N`, `sk = (logn+6)N`,
+   liście `= N`, `tmp = 7N` — dowiedzione w kernelu, z instancjami
+   8448/18432/39936 (drzewo) i 11520/24576/52224 (rozwinięty klucz) dla
+   768/1536/3072. Kod źródłowy ma `treesize = 12n` na sztywno dla logn = 10 —
+   to samo w sobie jest dowodem, że FT768/FT3072 nie są zaimplementowane.
+4. **Poprawna rekurencja błędu FFT3 ma czynnik ‖a‖₁.** Proponowana granica
+   `γ_{c·ℓ}(1+ε_tw)^{ℓ+1}‖a‖₁` (zamiast `ε√N log N` bez normy wejścia;
+   status: do dowiedzenia — stała c i budżet ε_tw nieustalone); walidacja na
+   przypiętych stałych `fpr_gm3_*` z oraclem MPFR 256-bit daje
+   `c_emp ≤ 0,209` (maks. 0,20850) przy wygodnej granicy 8. Kontrprzykład „wszystkie jedynki" (dokładnie
+   1270.261873 przy N=1536 vs wycofane `√N` = 39,19) jest zachowany jako
+   trwałe ostrzeżenie przed granicami opartymi tylko na `max|coeff|`.
+5. **Podpola: liczby są raz na zawsze policzone.** 7 podgrup rzędu 2 (= 7
+   podpól indeksu 2) i 7 podpól kwadratowych dla każdego przewodnika, oraz
+   pełne spisy 142/164/186 podgrup (GAP). „26/29/32" to były dzielniki
+   przewodnika — więcej nie wracają.
+6. **Bezpieczeństwo: wiemy dokładnie, czego nie wiemy.** Estymator nie był
+   uruchamiany; problemy P1 (odzyskanie klucza — prawo TERNARNE), P2
+   (MT-ISIS/bajty, próg B) i P3 (prawo akceptacji) są rozdzielone i
+   zdefiniowane; kampania ma gotowy szkielet i listę warunków wstępnych.
+
+## 2. Nowe hipotezy (wyraźnie NIEDOWIEDZIONE)
+
+- **H-A (próg geometryczny FT768).** Przy stałym q = 18433 stosunek
+  RMS/GH wektora kluczowego jest asymptotycznie N-niezależny
+  (`sqrt(4 pi e/(3q))`), ale dla małych N wartość dokładna rośnie
+  (0.024785 → 0.024834 w naszej tabeli). Hipoteza: dla każdego N z rodziny
+  relacja „klucz o rząd wielkości krótszy od GH" jest zachowana, więc
+  powierzchnia ataku uSVP na odzyskanie klucza maleje łagodnie i nie tworzy
+  osobnego progu przy 768. Sposób sprawdzenia: kampania estymatora P1
+  (NTRU.estimate z ternarnym Xs/Xe) + analiza podciałowa ABD dla każdego z
+  7 podpól indeksu 2.
+- **H-B (σ_N i margines) — WYCOFANA w pierwotnym kształcie po teście
+  niezależnym (odbiór R5).** Dokładny model: **MODEL_CHI2_IDEAL** —
+  znormalizowane współrzędne kanoniczne (tzn. baza ortonormalna formy Q_A2
+  na `(z1,z2)`, w której Q jest zwykłą sumą kwadratów) mają w tym modelu
+  rozkład iid `N(0, σ²)` z `σ = 768` („candidate global width" źródła), bez
+  dyskretnego samplera, odrzuceń, rzutów `rint→int16` i retry normy — czyli
+  idealny rozkład ciągły PRZED prawem Sign. Wtedy `Q/σ² ~ chi²(2N) =
+  chi²(3072)`, a akceptacja `Q < B` to ogon `Pr[χ²₃₀₇₂ ≥ B/σ²]`.
+  **Wyprowadzenie zamkniętej postaci (RUN_003):** `χ²_{2m}` jest rozkładem
+  `Gamma(m, rate 1/2)` (Erlang); dla gęstości
+  `f(t) = t^(m−1) e^(−t/2) / (2^m (m−1)!)` i `m−1` całkowań przez części
+  `Pr[T ≥ v] = e^(−v/2) Σ_{j=0}^{m−1} (v/2)^j/j! = Pr[Poisson(v/2) ≤ m−1]`.
+  Przy `m = 1536`, `v = B/σ²` i `x = v/2 = B/(2·768²) = 2093922385/1179648`
+  mamy dokładnie wymagany wzór
+  `Pr[Q ≥ B] = e^(−x) Σ_{k=0}^{1535} x^k/k!`.
+  **Rygorystyczny rachunek (RUN_003, tryb `.sage` wg zasady właściciela):**
+  `scripts/lemma_chi_tail.sage` — suma Poissona dokładnie w `ZZ/QQ` (jeden
+  mianownik `b^1535·1535!`), `exp(−x)` w obudowie `RealBallField(256)`
+  (outward; ścieżka kontrolna `exp(−δ)^(2^11)` plus dokładny przedział
+  naprzemiennego szeregu Taylora dla `exp(−δ)`, δ = x/2^11) i **dokładne
+  porównania QQ**: `Pr[Q ≥ B] > 2^−40` **certyfikowane** oraz
+  `Pr[Q ≥ B] < 2^−28` **certyfikowane**; centrum
+  `2.99254207360324819728314586108746…e−9` — cyfry identyczne z niezależnym
+  rachunkiem odbioru (`[2.9925420736…e−9 ± 2.32e−82]`; REUSED z pinem).
+  Artefakt: `results/chi_tail.json` (klasa `RIGOROUS_INTERVAL`, CLAIMS C19).
+  Wniosek ujemny pozostaje w mocy: **kryterium „≥ 1 − 2^−40" jest w tym
+  modelu obalone** (ogon `> 2^−40`). To ujemny wynik dla hipotezy w modelu
+  ciągłym — nie atak, nie prawo Sign po castach (M3 otwarte), nie
+  prawdopodobieństwo ataku.
+  **Charakter progi `2^−28` (wymóg TASK S01 R5, jawne):** ogon `≤ 2^−28`
+  jest tu wyłącznie **PROPOSED** modelem docelowym odrzuceń na próbę
+  („model-level target"); **NIE jest zatwierdzonym celem projektu, NIE jest
+  poziomem bezpieczeństwa i NIE jest kryterium akceptacji właściciela**.
+  Obecny margines (2^−28.32…) to zgodność z tym modelem z zapasem ~0.3 bitu;
+  prawdziwe prawo po castach/retry pozostaje osobnym obowiązkiem.
+  Margines 1.075 roli „tailcut_rate" z konwencji Falcon v1.2 (tam 1.1) —
+  mapowanie jawne.
+  **Uwaga o „bitach bezpieczeństwa":** ogon 2^−28.32 to prawdopodobieństwo
+  odrzucenia/ponowienia (właściwość poprawnościowa i wkład do strat
+  Rényiego), **nie poziom bezpieczeństwa**. Bity bezpieczeństwa = koszty
+  ataków P1/P2 — u nas `NOT_RUN` (estymator w tej turze nie jest ruszany).
+  Jedyne istniejące liczby to diagnostyka kampanii S20 (2026-08): FT1536
+  forgery β≈1082 → 315.9/286.7 bitu core-SVP (0.292/0.265β), keyrec β≈1077 →
+  314.5/285.4 — status `DIAGNOSTIC_NOT_CANDIDATE_READY`, modele tamtej
+  kampanii; FT768/FT3072: nie policzone nigdzie.
+- **H-B pierwotny zapis (dla śladu):** „σ=768 i 1.075 da się wyprowadzić z
+  kryterium ≥ 1 − 2^−40 przy χ²_{2N}" — powyższy test obala tę wersję;
+  wyprowadzenie 768/1.075 z założeń pozostaje otwarte.
+- **H-C (stała błędu FFT3).** Empiryczne `c_emp ≤ 0,209` (orakel MPFR
+  256-bit) sugeruje margines rzędu 40× wobec prostej granicy `8ℓ`; hipoteza:
+  prawdziwa stała to `c ≈ 2–3` na poziom. Sposób sprawdzenia: dowód
+  krok-po-kroku po grafie operacji `falcon_FFT3` z kontraktami FPEMU
+  (zależność od ℓ jest liniowa — to już wiadomo).
+- **H-D (próg „overstretched").** Przy q = 18433 i N ≤ 3072 reżim
+  overstretched (ataki podciałowe z normowaniem w dół) nie powinien się
+  zaczynać; warunek jakościowy z literatury (Ducas–van Woerden) dotyczy
+  wykładniczo rosnących q. Do sprawdzenia liczbowo dla każdego z 7 podpól.
+
+## 3. Nierozstrzygnięte pytania (bez eufemizmów)
+
+- Prawo samplera po rzutowaniach, realny PRNG i straty kompozycji
+  (Rényi/χ², wspólne historie) — otwarte w NEXT_INTERFACE etapów repo i tutaj.
+- Wystarczalność precyzji dla FT3072 — otwarte; dla FT1536 mamy jedynie
+  rekurencję FFT3 i walidację, nie pełny dowód algorytmu.
+- Bezpieczeństwo `Q < B → int16` przed rzutowaniem — świadomie poza zakresem.
+- Dlaczego tabela progów `falcon_is_short` dla logn 3–9 ma krok ≈ 1608.2 w
+  `bound/(2N)` — brak wyprowadzenia w źródłach (SIG-001); archeologia
+  w `results/bounds_table.json` łączy to z majowym `160982450`.
+- Czy model „circulant" estymatora przenosi się na pierścień `Φ_{3N}` bez
+  straty/ubytku — warunek wstępny kampanii.
+- Niezależne sprawdzenie: proponujemy, żeby recenzent przeliczył SA1–SA6
+  (skrypty są samodzielne) i sprawdził pliki Lean w czystym środowisku
+  (`lean plik.lean`, czysty log).
+
+## 4. Zadania na następne cykle
+
+1. **Kampania estymatora P1/P2** (właściciel + wykonawca): zamknąć warunki
+   wstępne `estimator_campaign/README.md`, uruchomić z przypiętym SHĄ
+   estymatora, zapisać pełne wejścia/wyjścia; w tabeli najpierw NOT_RUN.
+2. **Prawo samplera po castach dla N=1536** (wykonawca + niezależny replay):
+   symulacja 3072-call adaptive joint law → rzeczywisty stosunek akceptacji i
+   weryfikacja hipotezy H-B.
+3. **Dowód rekurencji błędu z kontraktami FPEMU** (wykonawca): formalizacja
+   poziomów FFT3 w stylu modułów H3 (krok w stronę kernela dla C11).
+4. **Analiza podciałowa ABD dla 7×3 podpół** (wykonawca): dla każdego
+   podciała zdefiniować normowany rozkład i warunki podniesienia (to jest
+   brak, który recenzent wskazał wprost).
+5. **Scenariusz B: kryterium → parametry** (decyzja właściciela): przyjąć
+   kryterium porównania (akceptacja/geometria/koszt), wtedy dobrać
+   `sigma_N/B_N/q_N` dla FT768/FT3072 jako `ALTERNATIVE_PROPOSAL`.
+6. **Benchmarki** dopiero po powyższych: KeyGen/Sign/Verify dla 768/1536 —
+   z rozdzieleniem najgorszy/oczekiwany/mierzony.
+
+## 5. Weryfikacja bibliografii (ślad) i środowisko
+
+**Sage w tym środowisku (SageMath 10.9, nowy CLI):** `sage plik.py` uruchamia
+zwykły Pythona z importowalnym `sage.all` i **bez preparsera** (to odpowiednik
+używanego w kampanii S20 `sage -python`, którego w tej wersji CLI już nie ma);
+`sage plik.sage`, `sage -c` i REPL używają preparsera (literały →
+Integer/Rational); równoważnie: `/home/footfalcon/miniforge3/envs/sage/bin/python
+plik`. Przy odtwarzaniu skryptów z kampanii S20 (celowo pythonowych, z
+`Decimal`) komendę `sage -python scripts/x.sage` tłumaczymy na
+`miniforge3/envs/sage/bin/python scripts/x.sage`, nigdy na `sage x.sage`.
+
+Sprawdzone bezpośrednio w źródłach w dniu 2026-09-21: lista autorów Falcona
+(falcon-sign.info), publikacje T. Presta (tprest.github.io: ASIACRYPT 2017
+Rényi = ePrint 2017/480, ISSAC 2016 z L. Ducasem, EUROCRYPT 2015 z
+V. Lyubashevskym, PKC 2019 z T. Porninem, PQCrypto 2020 z Howe/Ricosset/Rossi,
+praca CRYPTO 2026 o implementacji fixed-point Falcona z De Almeida Bragą,
+Fouque i Lachguelem, praca doktorska 2015), Albrecht–Bai–Ducas ePrint
+2016/127 (tytuł/autorzy z ePrint), ADPS16 = Alkim–Ducas–Pöppelmann–Schwabe,
+USENIX Security 2016 (referencje estymatora), Albrecht–Player–Scott JMC 9(3)
+2015 / ePrint 2015/046 (README estymatora), Kirchner–Fouque EUROCRYPT 2017 i
+Ducas–van Woerden ASIACRYPT 2021 (referencje estymatora), Howgrave-Graham
+CRYPTO 2007 i Wunderer JMC 2019 (referencje estymatora), FIPS 204 = ML-DSA
+(status NIST). **Nie znaleziono** potwierdzenia dla ePrint 2023/1234 i
+2021/567 (usunięte); ePrint 2020/1433 to inna praca (sprawdzone!) — dlatego
+specyfikacja Falcona cytowana jako raport techniczny jej własnego zgłoszenia
+(upstream provenance, bez pozycjonowania FT wobec jakiegokolwiek ciała
+normalizacyjnego — decyzja właściciela 2026-09-22). Pozycje FIPS/standardów
+usunięto z bibliografii i tekstu w tej samej decyzji; niniejszy ślad pozostaje
+wyłącznie dokumentacją weryfikacji bibliograficznej.

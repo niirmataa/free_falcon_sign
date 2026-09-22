@@ -1,0 +1,99 @@
+# COMMANDS.log — FT_FAMILY_SCALING_CORRECTIONS_RUN_003 (S01), 2026-09-22
+# Wykonawca: MiMo 2.6 PRO. Katalog W = ten pakiet. Środowisko per TOOLCHAIN.txt.
+# Zasada rachunku: supplements/FT1536_ZASADA_RACHUNKU_SAGEMATH_2026-09-22.md
+# (sha256 b6afcdcabb811dd8bc31072455ed9a94a4c4773ec68d41d207ac1d7e98eae241).
+# Format: [krok] argv -> exit; wskaznik na log/receipt.
+
+# === 0. Start, wejścia, handoff (przed zleceniem) ==========================
+[0.1] ps -eo pid,ppid,etime,stat,args | grep FT_FAMILY|estimat -> 0
+      (kampania FT_FAMILY_SEC_ESTIMATE: PID 589132/589138 zywa; obserwacja,
+      NIE kill; zapis w PRESTART_STATE.md)
+[0.2] git -C /home/footfalcon/free_falcon_sign status --short --branch -> 0
+      (main, czysty, +16 do origin; bez Git w tym zadaniu)
+[0.3] sha256sum dokumentow TASK/bootstrap pinow -> 0 (piny zgodne)
+[0.4] write HANDOFF.md (W T03), PRESTART_STATE.md -> 0
+[0.5] python3 -B scripts/verify_inputs.py | tee proof/checks/00_verify_inputs.log
+      -> 0 (SUMMARY: 0 checks failed; 197/197, 195 origins, 4967628 B,
+      source17 17/17, exact-set, brak symlinkow/escapes, ./ normalization 42/42)
+[0.6] sha256sum Extra/c (17 plikow) vs REVIEW/inputs/CANDIDATE.sha256 -> 0 MATCH
+      (dowody: proof/checks/00_source17_live.txt / 00_source17_pin.txt)
+
+# === 1. R5 — autorytatywny rachunek (tryb .sage wg zasady) =================
+# SageMath 10.9, launcher /home/footfalcon/.local/bin/sage (prefparser: tak).
+# lemma_chi_tail.sage sha256 20ea5d298570500e980fec72b2797ae80ae2ed2a974f48c99eceb29edb48375d
+[1.1] sage scripts/lemma_chi_tail.sage -> 0 (ewolucja: patrz FAILED_ROUTES 1.1)
+      log: results/check_chi_tail.log; certyfikat: results/chi_tail.json
+      (SUMMARY: 0 checks failed; center = 2.99254207360324819728314586108746...e-9)
+      preflight trybu: parent(1) is ZZ / parent(1/3) is QQ / 2^10 == 1024 PASS
+# lemma_controls.sage sha256 be7622529c82db776c7a50a70cdde2e12ecb31d20560b27deca2a82185f9c414
+[1.2] sage scripts/lemma_controls.sage -> 0 (N1–N7 PASS; N6/N7 po edycjach)
+      log: results/check_controls.log; certyfikat: results/controls.json
+[1.3] port .py -> .sage (decyzja kroku): proof/receipts/port_py_to_sage.json
+      (diffy/re-run/zgodnosc certyfikatow; mismatches: brak)
+
+# === 2. R4 — guarded runner i testy mock ===================================
+[2.1] python3 -B scripts/test_r4_routing.py | tee results/check_r4_routing.log
+      -> 0 (T1–T8 PASS; 0 failed; mock backend, brak sieci/estymatora)
+      certyfikat: results/r4_tests.json
+[2.2] (bez uruchomienia estymatora; kampania NOT_RUN z definicji)
+
+# === 3. Reprodukcja przypietych wynikow CANDIDATE_R2 =======================
+# historyczne przypiete runnery w ich wlasnym trybie (REUSED):
+[3.1] python3 -B scripts/check_geometry.py > results/check_geometry.log -> 0
+[3.2] python3 -B scripts/check_layout.py > results/check_layout.log -> 0
+[3.3] python3 -B scripts/check_bounds_table.py > results/check_bounds_table.log -> 0
+[3.4] sage scripts/sage_exact.sage > results/sage_exact.log -> 0
+      (kod top-level .sage wykonany naprawde; mtime-weryfikowany)
+[3.5] miniforge sage-python scripts/check_fft3_error.py
+      > results/check_fft3_error.log -> 0
+      UWAGA: pierwsza proba `sage scripts/check_fft3_error.py` byla
+      NO-OP (__name__ == "sage.all" w tym CLI; straznik __main__ nie odpalil;
+      wykryte mtime + pusty log; powtorzone w trybie historycznego runnera).
+      Zachowane: FAILED_ROUTES 1.5 + proof/receipts/reproduction_receipt.json
+[3.6] porownanie hashy vs pins CANDIDATE_R2 -> 21/21 bajt-identyczne
+      (proof/receipts/reproduction_receipt.json; mismatches: brak)
+[3.7] mv scripts/historical/README_INVALID_FOR_P2.md
+      scripts/historical/README_invalid_original.md -> 0
+      (sha256 919090d0... = pin)
+
+# === 4. Warstwa kernelowa Lean 4.34.0 (-j1 -M2048) =========================
+[4.1] lean -j1 -M2048 -o .build/lean/FTA2.olean lean/FTA2.lean -> 0 (log 0 B)
+[4.2] lean -j1 -M2048 -o .build/lean/FTLayout.olean lean/FTLayout.lean -> 0
+[4.3] lean -j1 -M2048 -o .build/lean/FTRoots.olean lean/FTRoots.lean -> 0
+[4.4] lean -j1 -M2048 -o .build/lean/FTBounds.olean lean/FTBounds.lean -> 0
+[4.5] lean -j1 -M2048 proof/checkers/AxiomAudit.lean
+      > results/lean_AxiomAudit.log -> 0 (14/14; propext/Quot.sound;
+      sorryAx/admit/warnings: 0) — receipt: proof/receipts/lean_build_receipt.json
+
+# === 5. Edycje R1/R5/R6/R7 + generator tabeli ==============================
+[5.1] python3 -B scripts/gen_layout_table.py -> 0 (results/layout_table.md)
+[5.2] python3 -B scripts/gen_layout_table.py --check PARAMETRIC_TASK_LAYOUT.md
+      -> 0 (PASS layout table check)
+
+# === 6. Manuskrypt =========================================================
+[6.1] pdflatex main.tex; bibtex main; pdflatex; pdflatex -> 0
+      (paper/main.pdf eb7f2217..., 9 stron; compile.log 283225a2...;
+      receipt: proof/receipts/pdf_build_receipt.json)
+
+# === 7. Diffy, dokumentacja, receipty ======================================
+[7.1] diff -u CANDIDATE_R2/* pakiet/* > proof/diffs/*.diff -> 1 (roznice = cel)
+[7.2] docs: REPORT.md, RESULT.json, CLAIMS.md/.json, CORRECTION_MATRIX.md/.json,
+      CORRECTIONS.md §12, MODEL_BOUNDARIES.md, FAILED_ROUTES.md,
+      NEXT_INTERFACE.md, REUSED_RESULTS.md, REPLAY.md, SEMANTIC_FILES.json,
+      OUTPUT_SCOPE.md, PACKAGE.md, TOOLCHAIN.txt, INPUTS.sha256, HANDOFF.md
+[7.3] sha256sum paper/main.pdf paper/compile.log REPORT.md ... -> 0 (receipty)
+
+# === 8. Freeze i replay (standard) =========================================
+[8.1] python3 scripts/replay.py <DEST-rehearsal-001> <pre-freeze manifest sha>
+      -> 0 (FRESH_REPLAY_PASS; sealed: artifacts/fresh_replay.json)
+[8.2] sha256sum OUTPUTS.sha256 (freeze; hash zewnetrzny w postfreeze/ i w
+      komunikacie dla prowadzacego — brak cyklu hashy)
+
+# Zabronione i nieuzyte w tym zadaniu (kontrolnie): siec podczas obliczen
+# (unshare -rn w replayu), instalacje, Git/commit/push, KeyGen/private
+# loader/pelny Sign/do_sign, nowe keys/seedy/sekrety, dudect, relay,
+# `opencode run --session`, drugi worker/subagent, kampania estymatora.
+# Incydenty zachowane: straznik __name__ CLI Sage (3.5), wczesniejsze
+# skasowanie nieedytowanych kopii .md (odtworzone z pinow) i zabladkany
+# katalog site-packages/results (posprzatany; bez unikalnych danych) —
+# szczegoly FAILED_ROUTES.md 1.4–1.5.

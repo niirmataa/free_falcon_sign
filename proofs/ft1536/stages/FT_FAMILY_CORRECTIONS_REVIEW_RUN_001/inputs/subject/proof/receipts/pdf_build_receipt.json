@@ -1,0 +1,14 @@
+{
+  "schema": "FT_FAMILY_PDF_BUILD_RECEIPT_V1",
+  "toolchain": "pdflatex + bibtex (/usr/bin/)",
+  "source": "paper/main.tex (edited vs CANDIDATE_R2: proof/diffs/paper_main.tex.diff)",
+  "commands": "pdflatex; bibtex; pdflatex; pdflatex (nonstopmode)",
+  "exit": 0,
+  "outputs": {
+    "paper/main.pdf": "eb7f221796f82a9182651b7e2f78f405e545bd53ee2b485416a5bcfc374261ee",
+    "paper/compile.log": "283225a2c7f4e05fe81a996ad61345f7be1c27365e4be0fb9c55d255ef5cf0c6",
+    "pages": 9,
+    "pdftotext_sha256": "bb5fa132b2a214b376273e6455957f67d3a402ebef4cfc003e5cf15698712de4"
+  },
+  "semantics": "content must match the sources; byte identity of the PDF is NOT required (date/toolchain). Replay rebuilds the PDF separately from the byte-match set (SEMANTIC_FILES.json) and records pages/text."
+}

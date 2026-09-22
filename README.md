@@ -227,9 +227,13 @@ and claim consistency. Status: **RESEARCH_REVIEW_CHANGES_REQUIRED**; this is
 research evidence for planned FT768/FT3072, not their implementation or security certification.
 
 The owner-requested [Family/S01 correction task](proofs/ft1536/CURRENT_FAMILY_TASK.md)
-is prepared as a new RUN_003, with197 pinned inputs including the later,
-unreviewed author revision. It closes R1–R7 through justified corrections or
-explicit withdrawals; a separate independent review remains the publication gate.
+has returned RUN_003 as COMPLETE_FOR_REVIEW (100 outputs; recorded18/18 replay).
+The owner directed this session to perform the [independent R1–R7 review](proofs/ft1536/validation/2026-09-22-family-corrections-independent/README.md).
+Its verdict is **CHANGES_REQUIRED**: the numerical core/replay are confirmed,
+but the R1 game-bound scope and R5 precision claim need correction. Publication
+remains blocked. The owner also confirmed a partial FT-family estimator
+run (70/120 NTRU grid cells); its diagnostic scope and pending freeze are
+recorded in [STATE](docs/onboarding/STATE.md).
 
 The [owner-run MiMo proof task](proofs/ft1536/CURRENT_MIMO_TASK.md) addresses
 T03: one-root reference integer recovery. Its author returned **PARTIAL_PROOF**:

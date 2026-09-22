@@ -1,0 +1,53 @@
+{
+  "schema": "FT_FAMILY_PORT_PY_TO_SAGE_V1",
+  "rule": "FT1536_ZASADA_RACHUNKU_SAGEMATH_2026-09-22 (copy: supplements/, sha256 b6afcdcabb811dd8bc31072455ed9a94a4c4773ec68d41d207ac1d7e98eae241)",
+  "reason": "owner computation-mode rule adopted at the step boundary; moving an existing own computation requires a diff, a re-run and certificate agreement (not a rename)",
+  "moved": [
+    {
+      "from": "proof/drafts/chi_tail_rigorous_draft.py",
+      "from_sha256": "31e0a2b18acc0c1e429f2d4698a61ac909ccf598be017979c9bf1e3c202d6e4f",
+      "from_mode": "python Fraction + decimal (pre-rule draft)",
+      "to": "scripts/lemma_chi_tail.sage",
+      "to_sha256": "20ea5d298570500e980fec72b2797ae80ae2ed2a974f48c99eceb29edb48375d",
+      "to_mode": "sage lemma_chi_tail.sage (preparser; ZZ/QQ exact sums; RealBallField(256) exp enclosure; QQ comparisons)",
+      "semantic_changes": [
+        "finite Poisson sum: Fraction accumulation -> exact ZZ accumulation over one common denominator (same value, fewer reductions)",
+        "exp enclosure: alternating Taylor + Decimal interval squarings + correctly-rounded Decimal.exp -> RealBallField(256) exp with outward mid/rad bounds, cross-checked by the Taylor bracket at delta = x/2^11 and by the delta-squaring ball path",
+        "literals/division: reviewed under the preparser (parent(1) is ZZ, parent(1/3) is QQ, 2^10 == 1024 asserted in the file)"
+      ],
+      "re_run": {
+        "draft_record": "proof/drafts/chi_tail_draft_py.json (sha256 e5589996f00fc6b2d6ce642ba49c4b104893c2b0210f4100c8cc13ed403b5a9d)",
+        "new_record": "results/chi_tail.json (sha256 7965503284d85609a9f3dc3a4b082e1c1405cd0a9b789b5e90b0439957b6351f)",
+        "x_exact_equal": true,
+        "center_display_50_equal": true,
+        "interval_lo_hi_50_equal": true,
+        "flags_equal": true,
+        "certified_tail_gt_2_pow_neg40": true,
+        "certified_tail_lt_2_pow_neg28": true,
+        "old_criterion_refuted": true,
+        "intervals_overlap": true
+      },
+      "mismatches": []
+    },
+    {
+      "from": "proof/drafts/controls_draft.py",
+      "from_sha256": "1b52282d4f4f5a1326d096be8b9a8a9642578e6cfef8db187ef85c3c26bc9ae8",
+      "from_mode": "python (pre-rule draft; N1-N5 completed PASS, N6/N7 not reached because of the file-structure accident recorded in FAILED_ROUTES.md)",
+      "to": "scripts/lemma_controls.sage",
+      "to_sha256": "be7622529c82db776c7a50a70cdde2e12ecb31d20560b27deca2a82185f9c414",
+      "to_mode": "sage lemma_controls.sage (preparser; ZZ/QQ exact semantics for all models and recomputations)",
+      "semantic_changes": [
+        "toy-model rates and comparisons moved from float/Fraction to exact QQ",
+        "recurrence recomputation (N7) in ZZ with sage ^ power semantics (checked)",
+        "decimal-string parsing made explicit (exact QQ from digits)"
+      ],
+      "re_run": {
+        "draft_verdicts_N1_to_N5": "PASS",
+        "new_verdicts_N1_to_N7": "PASS",
+        "agreement_N1_to_N5": true
+      },
+      "mismatches": []
+    }
+  ],
+  "note": "every mismatch must be preserved; none occurred. Historical pinned checkers (check_*.py, sage_exact.sage) were NOT moved - they keep their real formats and scopes (REUSED_RESULTS.md)."
+}

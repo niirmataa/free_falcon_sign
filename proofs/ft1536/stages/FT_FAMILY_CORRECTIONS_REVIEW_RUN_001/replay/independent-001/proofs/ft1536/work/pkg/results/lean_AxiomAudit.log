@@ -1,0 +1,1221 @@
+'FTFamily.int_sq_nonneg' depends on axioms: [propext]
+FTFamily.int_sq_nonneg : ∀ (a : Int), 0 ≤ a * a
+theorem FTFamily.int_sq_nonneg : ∀ (a : Int), 0 ≤ a * a :=
+fun a =>
+  Or.casesOn (Int.le_total 0 a) (fun h => Int.mul_nonneg h h) fun h =>
+    have h2 := Int.neg_nonneg_of_nonpos h;
+    have h3 := Int.mul_nonneg h2 h2;
+    Eq.mp (congrArg (fun _a => 0 ≤ _a) (Int.neg_mul_neg a a)) h3
+'FTFamily.three_mul' depends on axioms: [propext]
+FTFamily.three_mul : ∀ (a : Int), 3 * a = a + a + a
+theorem FTFamily.three_mul : ∀ (a : Int), 3 * a = a + a + a :=
+fun a =>
+  id
+    (Eq.mpr (id (congrArg (fun _a => _a = a + a + a) (Int.add_mul 2 1 a)))
+      (Eq.mpr (id (congrArg (fun _a => _a + 1 * a = a + a + a) (Int.two_mul a)))
+        (Eq.mpr (id (congrArg (fun _a => a + a + _a = a + a + a) (Int.one_mul a))) (Eq.refl (a + a + a)))))
+'FTFamily.two_a2_eq' depends on axioms: [propext, Quot.sound]
+FTFamily.two_a2_eq : ∀ (x y : Int), 2 * (x * x + x * y + y * y) = x * x + y * y + (x + y) * (x + y)
+theorem FTFamily.two_a2_eq : ∀ (x y : Int), 2 * (x * x + x * y + y * y) = x * x + y * y + (x + y) * (x + y) :=
+fun x y =>
+  Eq.mpr (id (congrArg (fun _a => _a = x * x + y * y + (x + y) * (x + y)) (Int.two_mul (x * x + x * y + y * y))))
+    (Eq.mpr
+      (id
+        (congrArg (fun _a => x * x + x * y + y * y + (x * x + x * y + y * y) = x * x + y * y + _a)
+          (Int.mul_add (x + y) x y)))
+      (Eq.mpr
+        (id
+          (congrArg (Eq (x * x + x * y + y * y + (x * x + x * y + y * y)))
+            (congrArg (HAdd.hAdd (x * x + y * y))
+              (congr
+                (congrArg HAdd.hAdd (Eq.trans (Int.add_mul x y x) (congrArg (HAdd.hAdd (x * x)) (Int.mul_comm y x))))
+                (Int.add_mul x y y)))))
+        (Eq.mpr
+          (id
+            (congr
+              (congrArg Eq
+                (Eq.trans
+                  (congr
+                    (congrArg HAdd.hAdd
+                      (congr
+                        (congrArg HAdd.hAdd
+                          (congr
+                            (congrArg HAdd.hAdd
+                              ((fun x =>
+                                  id
+                                    (Lean.Data.AC.Context.eq_of_norm
+                                      { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                        comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                        vars := [{ value := x, neutral := none }], arbitrary := x }
+                                      ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                      ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                                x))
+                            ((fun x x_1 =>
+                                id
+                                  (Lean.Data.AC.Context.eq_of_norm
+                                    { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                      comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                      vars := [{ value := x, neutral := none }, { value := x_1, neutral := none }],
+                                      arbitrary := x }
+                                    ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1))
+                                    ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1)) (Eq.refl true)))
+                              x y)))
+                        ((fun x =>
+                            id
+                              (Lean.Data.AC.Context.eq_of_norm
+                                { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                  comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                  vars := [{ value := x, neutral := none }], arbitrary := x }
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                          y)))
+                    (congr
+                      (congrArg HAdd.hAdd
+                        (congr
+                          (congrArg HAdd.hAdd
+                            ((fun x =>
+                                id
+                                  (Lean.Data.AC.Context.eq_of_norm
+                                    { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                      comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                      vars := [{ value := x, neutral := none }], arbitrary := x }
+                                    ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                    ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                              x))
+                          ((fun x x_1 =>
+                              id
+                                (Lean.Data.AC.Context.eq_of_norm
+                                  { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                    comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                    vars := [{ value := x, neutral := none }, { value := x_1, neutral := none }],
+                                    arbitrary := x }
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1))
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1)) (Eq.refl true)))
+                            x y)))
+                      ((fun x =>
+                          id
+                            (Lean.Data.AC.Context.eq_of_norm
+                              { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                vars := [{ value := x, neutral := none }], arbitrary := x }
+                              ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                              ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                        y)))
+                  ((fun x x_1 x_2 =>
+                      id
+                        (Lean.Data.AC.Context.eq_of_norm
+                          { op := HAdd.hAdd, assoc := Int.instAssociativeHAdd,
+                            comm := some { down := Int.instCommutativeHAdd }, idem := none,
+                            vars :=
+                              [{ value := x, neutral := none }, { value := x_1, neutral := none },
+                                { value := x_2, neutral := none }],
+                            arbitrary := x }
+                          ((((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1)).op (Lean.Data.AC.Expr.var 2)).op
+                            (((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1)).op (Lean.Data.AC.Expr.var 2)))
+                          ((Lean.Data.AC.Expr.var 0).op
+                            ((Lean.Data.AC.Expr.var 0).op
+                              ((Lean.Data.AC.Expr.var 1).op
+                                ((Lean.Data.AC.Expr.var 1).op
+                                  ((Lean.Data.AC.Expr.var 2).op (Lean.Data.AC.Expr.var 2))))))
+                          (Eq.refl true)))
+                    (x * x) (x * y) (y * y))))
+              (Eq.trans
+                (congr
+                  (congrArg HAdd.hAdd
+                    (congr
+                      (congrArg HAdd.hAdd
+                        ((fun x =>
+                            id
+                              (Lean.Data.AC.Context.eq_of_norm
+                                { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                  comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                  vars := [{ value := x, neutral := none }], arbitrary := x }
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                          x))
+                      ((fun x =>
+                          id
+                            (Lean.Data.AC.Context.eq_of_norm
+                              { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                vars := [{ value := x, neutral := none }], arbitrary := x }
+                              ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                              ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                        y)))
+                  (congr
+                    (congrArg HAdd.hAdd
+                      (congr
+                        (congrArg HAdd.hAdd
+                          ((fun x =>
+                              id
+                                (Lean.Data.AC.Context.eq_of_norm
+                                  { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                    comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                    vars := [{ value := x, neutral := none }], arbitrary := x }
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                            x))
+                        ((fun x x_1 =>
+                            id
+                              (Lean.Data.AC.Context.eq_of_norm
+                                { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                  comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                  vars := [{ value := x, neutral := none }, { value := x_1, neutral := none }],
+                                  arbitrary := x }
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1))
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1)) (Eq.refl true)))
+                          x y)))
+                    (congr
+                      (congrArg HAdd.hAdd
+                        ((fun x x_1 =>
+                            id
+                              (Lean.Data.AC.Context.eq_of_norm
+                                { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                  comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                  vars := [{ value := x, neutral := none }, { value := x_1, neutral := none }],
+                                  arbitrary := x }
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1))
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1)) (Eq.refl true)))
+                          x y))
+                      ((fun x =>
+                          id
+                            (Lean.Data.AC.Context.eq_of_norm
+                              { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                vars := [{ value := x, neutral := none }], arbitrary := x }
+                              ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                              ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                        y))))
+                ((fun x x_1 x_2 =>
+                    id
+                      (Lean.Data.AC.Context.eq_of_norm
+                        { op := HAdd.hAdd, assoc := Int.instAssociativeHAdd,
+                          comm := some { down := Int.instCommutativeHAdd }, idem := none,
+                          vars :=
+                            [{ value := x, neutral := none }, { value := x_1, neutral := none },
+                              { value := x_2, neutral := none }],
+                          arbitrary := x }
+                        (((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 2)).op
+                          (((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1)).op
+                            ((Lean.Data.AC.Expr.var 1).op (Lean.Data.AC.Expr.var 2))))
+                        ((Lean.Data.AC.Expr.var 0).op
+                          ((Lean.Data.AC.Expr.var 0).op
+                            ((Lean.Data.AC.Expr.var 1).op
+                              ((Lean.Data.AC.Expr.var 1).op ((Lean.Data.AC.Expr.var 2).op (Lean.Data.AC.Expr.var 2))))))
+                        (Eq.refl true)))
+                  (x * x) (x * y) (y * y)))))
+          (Eq.refl (x * x + (x * x + (x * y + (x * y + (y * y + y * y)))))))))
+'FTFamily.two_a2_mix' depends on axioms: [propext, Quot.sound]
+FTFamily.two_a2_mix : ∀ (x y : Int), 2 * (x * x + x * y + y * y) = x * x + y * y + (x * x + y * y) + (x * y + y * x)
+theorem FTFamily.two_a2_mix : ∀ (x y : Int),
+  2 * (x * x + x * y + y * y) = x * x + y * y + (x * x + y * y) + (x * y + y * x) :=
+fun x y =>
+  Eq.mpr
+    (id
+      (congrArg (fun _a => _a = x * x + y * y + (x * x + y * y) + (x * y + y * x))
+        (Int.two_mul (x * x + x * y + y * y))))
+    (Eq.mpr
+      (id
+        (congrArg (Eq (x * x + x * y + y * y + (x * x + x * y + y * y)))
+          (congrArg (HAdd.hAdd (x * x + y * y + (x * x + y * y))) (congrArg (HAdd.hAdd (x * y)) (Int.mul_comm y x)))))
+      (Eq.mpr
+        (id
+          (congr
+            (congrArg Eq
+              (Eq.trans
+                (congr
+                  (congrArg HAdd.hAdd
+                    (congr
+                      (congrArg HAdd.hAdd
+                        (congr
+                          (congrArg HAdd.hAdd
+                            ((fun x =>
+                                id
+                                  (Lean.Data.AC.Context.eq_of_norm
+                                    { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                      comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                      vars := [{ value := x, neutral := none }], arbitrary := x }
+                                    ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                    ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                              x))
+                          ((fun x x_1 =>
+                              id
+                                (Lean.Data.AC.Context.eq_of_norm
+                                  { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                    comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                    vars := [{ value := x, neutral := none }, { value := x_1, neutral := none }],
+                                    arbitrary := x }
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1))
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1)) (Eq.refl true)))
+                            x y)))
+                      ((fun x =>
+                          id
+                            (Lean.Data.AC.Context.eq_of_norm
+                              { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                vars := [{ value := x, neutral := none }], arbitrary := x }
+                              ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                              ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                        y)))
+                  (congr
+                    (congrArg HAdd.hAdd
+                      (congr
+                        (congrArg HAdd.hAdd
+                          ((fun x =>
+                              id
+                                (Lean.Data.AC.Context.eq_of_norm
+                                  { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                    comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                    vars := [{ value := x, neutral := none }], arbitrary := x }
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                            x))
+                        ((fun x x_1 =>
+                            id
+                              (Lean.Data.AC.Context.eq_of_norm
+                                { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                  comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                  vars := [{ value := x, neutral := none }, { value := x_1, neutral := none }],
+                                  arbitrary := x }
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1))
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1)) (Eq.refl true)))
+                          x y)))
+                    ((fun x =>
+                        id
+                          (Lean.Data.AC.Context.eq_of_norm
+                            { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                              comm := some { down := Int.instCommutativeHMul }, idem := none,
+                              vars := [{ value := x, neutral := none }], arbitrary := x }
+                            ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                            ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                      y)))
+                ((fun x x_1 x_2 =>
+                    id
+                      (Lean.Data.AC.Context.eq_of_norm
+                        { op := HAdd.hAdd, assoc := Int.instAssociativeHAdd,
+                          comm := some { down := Int.instCommutativeHAdd }, idem := none,
+                          vars :=
+                            [{ value := x, neutral := none }, { value := x_1, neutral := none },
+                              { value := x_2, neutral := none }],
+                          arbitrary := x }
+                        ((((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1)).op (Lean.Data.AC.Expr.var 2)).op
+                          (((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1)).op (Lean.Data.AC.Expr.var 2)))
+                        ((Lean.Data.AC.Expr.var 0).op
+                          ((Lean.Data.AC.Expr.var 0).op
+                            ((Lean.Data.AC.Expr.var 1).op
+                              ((Lean.Data.AC.Expr.var 1).op ((Lean.Data.AC.Expr.var 2).op (Lean.Data.AC.Expr.var 2))))))
+                        (Eq.refl true)))
+                  (x * x) (x * y) (y * y))))
+            (Eq.trans
+              (congr
+                (congrArg HAdd.hAdd
+                  (congr
+                    (congrArg HAdd.hAdd
+                      (congr
+                        (congrArg HAdd.hAdd
+                          ((fun x =>
+                              id
+                                (Lean.Data.AC.Context.eq_of_norm
+                                  { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                    comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                    vars := [{ value := x, neutral := none }], arbitrary := x }
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                            x))
+                        ((fun x =>
+                            id
+                              (Lean.Data.AC.Context.eq_of_norm
+                                { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                  comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                  vars := [{ value := x, neutral := none }], arbitrary := x }
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                          y)))
+                    (congr
+                      (congrArg HAdd.hAdd
+                        ((fun x =>
+                            id
+                              (Lean.Data.AC.Context.eq_of_norm
+                                { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                  comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                  vars := [{ value := x, neutral := none }], arbitrary := x }
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                          x))
+                      ((fun x =>
+                          id
+                            (Lean.Data.AC.Context.eq_of_norm
+                              { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                vars := [{ value := x, neutral := none }], arbitrary := x }
+                              ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                              ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                        y))))
+                (congr
+                  (congrArg HAdd.hAdd
+                    ((fun x x_1 =>
+                        id
+                          (Lean.Data.AC.Context.eq_of_norm
+                            { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                              comm := some { down := Int.instCommutativeHMul }, idem := none,
+                              vars := [{ value := x, neutral := none }, { value := x_1, neutral := none }],
+                              arbitrary := x }
+                            ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1))
+                            ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1)) (Eq.refl true)))
+                      x y))
+                  ((fun x x_1 =>
+                      id
+                        (Lean.Data.AC.Context.eq_of_norm
+                          { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                            comm := some { down := Int.instCommutativeHMul }, idem := none,
+                            vars := [{ value := x, neutral := none }, { value := x_1, neutral := none }],
+                            arbitrary := x }
+                          ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1))
+                          ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1)) (Eq.refl true)))
+                    x y)))
+              ((fun x x_1 x_2 =>
+                  id
+                    (Lean.Data.AC.Context.eq_of_norm
+                      { op := HAdd.hAdd, assoc := Int.instAssociativeHAdd,
+                        comm := some { down := Int.instCommutativeHAdd }, idem := none,
+                        vars :=
+                          [{ value := x, neutral := none }, { value := x_1, neutral := none },
+                            { value := x_2, neutral := none }],
+                        arbitrary := x }
+                      ((((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 2)).op
+                            ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 2))).op
+                        ((Lean.Data.AC.Expr.var 1).op (Lean.Data.AC.Expr.var 1)))
+                      ((Lean.Data.AC.Expr.var 0).op
+                        ((Lean.Data.AC.Expr.var 0).op
+                          ((Lean.Data.AC.Expr.var 1).op
+                            ((Lean.Data.AC.Expr.var 1).op ((Lean.Data.AC.Expr.var 2).op (Lean.Data.AC.Expr.var 2))))))
+                      (Eq.refl true)))
+                (x * x) (x * y) (y * y)))))
+        (Eq.refl (x * x + (x * x + (x * y + (x * y + (y * y + y * y))))))))
+'FTFamily.sq_sub_expansion' depends on axioms: [propext, Quot.sound]
+FTFamily.sq_sub_expansion : ∀ (x y : Int), (x - y) * (x - y) = x * x + y * y - (x * y + y * x)
+theorem FTFamily.sq_sub_expansion : ∀ (x y : Int), (x - y) * (x - y) = x * x + y * y - (x * y + y * x) :=
+fun x y =>
+  Eq.mpr (id (congrArg (fun _a => _a * _a = x * x + y * y - (x * y + y * x)) Int.sub_eq_add_neg))
+    (Eq.mpr (id (congrArg (fun _a => (x + -y) * (x + -y) = _a) Int.sub_eq_add_neg))
+      (Eq.mpr
+        (id
+          (congr
+            (congrArg Eq
+              (Eq.trans (Int.mul_add (x + -y) x (-y))
+                (congr
+                  (congrArg HAdd.hAdd
+                    (Eq.trans (Int.add_mul x (-y) x)
+                      (congrArg (HAdd.hAdd (x * x))
+                        (Eq.trans (Int.neg_mul y x) (congrArg Neg.neg (Int.mul_comm y x))))))
+                  (Eq.trans (Int.mul_neg (x + -y) y)
+                    (Eq.trans
+                      (Eq.trans
+                        (congrArg Neg.neg
+                          (Eq.trans (Int.add_mul x (-y) y) (congrArg (HAdd.hAdd (x * y)) (Int.neg_mul y y))))
+                        Int.neg_add)
+                      (congrArg (HAdd.hAdd (-(x * y))) (Int.neg_neg (y * y))))))))
+            (congrArg (HAdd.hAdd (x * x + y * y))
+              (Eq.trans (congrArg Neg.neg (congrArg (HAdd.hAdd (x * y)) (Int.mul_comm y x))) Int.neg_add))))
+        (Eq.mpr
+          (id
+            (congr
+              (congrArg Eq
+                (Eq.trans
+                  (congr
+                    (congrArg HAdd.hAdd
+                      (congr
+                        (congrArg HAdd.hAdd
+                          ((fun x =>
+                              id
+                                (Lean.Data.AC.Context.eq_of_norm
+                                  { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                    comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                    vars := [{ value := x, neutral := none }], arbitrary := x }
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                            x))
+                        (congrArg Neg.neg
+                          ((fun x x_1 =>
+                              id
+                                (Lean.Data.AC.Context.eq_of_norm
+                                  { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                    comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                    vars := [{ value := x, neutral := none }, { value := x_1, neutral := none }],
+                                    arbitrary := x }
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1))
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1)) (Eq.refl true)))
+                            x y))))
+                    (congr
+                      (congrArg HAdd.hAdd
+                        (congrArg Neg.neg
+                          ((fun x x_1 =>
+                              id
+                                (Lean.Data.AC.Context.eq_of_norm
+                                  { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                    comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                    vars := [{ value := x, neutral := none }, { value := x_1, neutral := none }],
+                                    arbitrary := x }
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1))
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1)) (Eq.refl true)))
+                            x y)))
+                      ((fun x =>
+                          id
+                            (Lean.Data.AC.Context.eq_of_norm
+                              { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                vars := [{ value := x, neutral := none }], arbitrary := x }
+                              ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                              ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                        y)))
+                  ((fun x x_1 x_2 =>
+                      id
+                        (Lean.Data.AC.Context.eq_of_norm
+                          { op := HAdd.hAdd, assoc := Int.instAssociativeHAdd,
+                            comm := some { down := Int.instCommutativeHAdd }, idem := none,
+                            vars :=
+                              [{ value := x, neutral := none }, { value := x_1, neutral := none },
+                                { value := x_2, neutral := none }],
+                            arbitrary := x }
+                          (((Lean.Data.AC.Expr.var 1).op (Lean.Data.AC.Expr.var 0)).op
+                            ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 2)))
+                          ((Lean.Data.AC.Expr.var 0).op
+                            ((Lean.Data.AC.Expr.var 0).op ((Lean.Data.AC.Expr.var 1).op (Lean.Data.AC.Expr.var 2))))
+                          (Eq.refl true)))
+                    (-(x * y)) (x * x) (y * y))))
+              (Eq.trans
+                (congr
+                  (congrArg HAdd.hAdd
+                    (congr
+                      (congrArg HAdd.hAdd
+                        ((fun x =>
+                            id
+                              (Lean.Data.AC.Context.eq_of_norm
+                                { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                  comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                  vars := [{ value := x, neutral := none }], arbitrary := x }
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                          x))
+                      ((fun x =>
+                          id
+                            (Lean.Data.AC.Context.eq_of_norm
+                              { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                vars := [{ value := x, neutral := none }], arbitrary := x }
+                              ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                              ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                        y)))
+                  (congr
+                    (congrArg HAdd.hAdd
+                      (congrArg Neg.neg
+                        ((fun x x_1 =>
+                            id
+                              (Lean.Data.AC.Context.eq_of_norm
+                                { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                  comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                  vars := [{ value := x, neutral := none }, { value := x_1, neutral := none }],
+                                  arbitrary := x }
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1))
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1)) (Eq.refl true)))
+                          x y)))
+                    (congrArg Neg.neg
+                      ((fun x x_1 =>
+                          id
+                            (Lean.Data.AC.Context.eq_of_norm
+                              { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                vars := [{ value := x, neutral := none }, { value := x_1, neutral := none }],
+                                arbitrary := x }
+                              ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1))
+                              ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1)) (Eq.refl true)))
+                        x y))))
+                ((fun x x_1 x_2 =>
+                    id
+                      (Lean.Data.AC.Context.eq_of_norm
+                        { op := HAdd.hAdd, assoc := Int.instAssociativeHAdd,
+                          comm := some { down := Int.instCommutativeHAdd }, idem := none,
+                          vars :=
+                            [{ value := x, neutral := none }, { value := x_1, neutral := none },
+                              { value := x_2, neutral := none }],
+                          arbitrary := x }
+                        (((Lean.Data.AC.Expr.var 1).op (Lean.Data.AC.Expr.var 2)).op
+                          ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)))
+                        ((Lean.Data.AC.Expr.var 0).op
+                          ((Lean.Data.AC.Expr.var 0).op ((Lean.Data.AC.Expr.var 1).op (Lean.Data.AC.Expr.var 2))))
+                        (Eq.refl true)))
+                  (-(x * y)) (x * x) (y * y)))))
+          (Eq.refl (-(x * y) + (-(x * y) + (x * x + y * y)))))))
+'FTFamily.cross_le' depends on axioms: [propext, Quot.sound]
+FTFamily.cross_le : ∀ (x y : Int), x * y + y * x ≤ x * x + y * y
+theorem FTFamily.cross_le : ∀ (x y : Int), x * y + y * x ≤ x * x + y * y :=
+fun x y =>
+  have h :=
+    Eq.mpr (id (congrArg (fun _a => 0 ≤ _a) (Eq.symm (FTFamily.sq_sub_expansion x y))))
+      (FTFamily.int_sq_nonneg (x - y));
+  Int.sub_nonneg.mp h
+'FTFamily.a2_lower' depends on axioms: [propext, Quot.sound]
+FTFamily.a2_lower : ∀ (x y : Int), x * x + y * y ≤ 2 * (x * x + x * y + y * y)
+theorem FTFamily.a2_lower : ∀ (x y : Int), x * x + y * y ≤ 2 * (x * x + x * y + y * y) :=
+fun x y =>
+  Eq.mpr (id (congrArg (fun _a => x * x + y * y ≤ _a) (FTFamily.two_a2_eq x y)))
+    (Int.le_add_of_nonneg_right (FTFamily.int_sq_nonneg (x + y)))
+'FTFamily.two_a2_le_three' depends on axioms: [propext, Quot.sound]
+FTFamily.two_a2_le_three : ∀ (x y : Int), 2 * (x * x + x * y + y * y) ≤ 3 * (x * x + y * y)
+theorem FTFamily.two_a2_le_three : ∀ (x y : Int), 2 * (x * x + x * y + y * y) ≤ 3 * (x * x + y * y) :=
+fun x y =>
+  have hx := FTFamily.cross_le x y;
+  Eq.mpr (id (congrArg (fun _a => _a ≤ 3 * (x * x + y * y)) (FTFamily.two_a2_mix x y)))
+    (Eq.mpr
+      (id
+        (congrArg (fun _a => x * x + y * y + (x * x + y * y) + (x * y + y * x) ≤ _a)
+          (FTFamily.three_mul (x * x + y * y))))
+      (trans
+        (trans
+          (Eq.mpr
+            (id
+              (congr
+                (congrArg Eq
+                  (Eq.trans
+                    (congr
+                      (congrArg HAdd.hAdd
+                        (congr
+                          (congrArg HAdd.hAdd
+                            (congr
+                              (congrArg HAdd.hAdd
+                                ((fun x =>
+                                    id
+                                      (Lean.Data.AC.Context.eq_of_norm
+                                        { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                          comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                          vars := [{ value := x, neutral := none }], arbitrary := x }
+                                        ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                        ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                                  x))
+                              ((fun x =>
+                                  id
+                                    (Lean.Data.AC.Context.eq_of_norm
+                                      { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                        comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                        vars := [{ value := x, neutral := none }], arbitrary := x }
+                                      ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                      ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                                y)))
+                          (congr
+                            (congrArg HAdd.hAdd
+                              ((fun x =>
+                                  id
+                                    (Lean.Data.AC.Context.eq_of_norm
+                                      { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                        comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                        vars := [{ value := x, neutral := none }], arbitrary := x }
+                                      ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                      ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                                x))
+                            ((fun x =>
+                                id
+                                  (Lean.Data.AC.Context.eq_of_norm
+                                    { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                      comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                      vars := [{ value := x, neutral := none }], arbitrary := x }
+                                    ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                    ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                              y))))
+                      (congr
+                        (congrArg HAdd.hAdd
+                          ((fun x x_1 =>
+                              id
+                                (Lean.Data.AC.Context.eq_of_norm
+                                  { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                    comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                    vars := [{ value := x, neutral := none }, { value := x_1, neutral := none }],
+                                    arbitrary := x }
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1))
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1)) (Eq.refl true)))
+                            x y))
+                        ((fun x x_1 =>
+                            id
+                              (Lean.Data.AC.Context.eq_of_norm
+                                { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                  comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                  vars := [{ value := x, neutral := none }, { value := x_1, neutral := none }],
+                                  arbitrary := x }
+                                ((Lean.Data.AC.Expr.var 1).op (Lean.Data.AC.Expr.var 0))
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1)) (Eq.refl true)))
+                          x y)))
+                    ((fun x x_1 x_2 =>
+                        id
+                          (Lean.Data.AC.Context.eq_of_norm
+                            { op := HAdd.hAdd, assoc := Int.instAssociativeHAdd,
+                              comm := some { down := Int.instCommutativeHAdd }, idem := none,
+                              vars :=
+                                [{ value := x, neutral := none }, { value := x_1, neutral := none },
+                                  { value := x_2, neutral := none }],
+                              arbitrary := x }
+                            ((((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 2)).op
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 2))).op
+                              ((Lean.Data.AC.Expr.var 1).op (Lean.Data.AC.Expr.var 1)))
+                            ((Lean.Data.AC.Expr.var 0).op
+                              ((Lean.Data.AC.Expr.var 0).op
+                                ((Lean.Data.AC.Expr.var 1).op
+                                  ((Lean.Data.AC.Expr.var 1).op
+                                    ((Lean.Data.AC.Expr.var 2).op (Lean.Data.AC.Expr.var 2))))))
+                            (Eq.refl true)))
+                      (x * x) (x * y) (y * y))))
+                (Eq.trans
+                  (congr
+                    (congrArg HAdd.hAdd
+                      (congr
+                        (congrArg HAdd.hAdd
+                          ((fun x =>
+                              id
+                                (Lean.Data.AC.Context.eq_of_norm
+                                  { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                    comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                    vars := [{ value := x, neutral := none }], arbitrary := x }
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                            x))
+                        ((fun x =>
+                            id
+                              (Lean.Data.AC.Context.eq_of_norm
+                                { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                  comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                  vars := [{ value := x, neutral := none }], arbitrary := x }
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                          y)))
+                    (congr
+                      (congrArg HAdd.hAdd
+                        (congr
+                          (congrArg HAdd.hAdd
+                            ((fun x =>
+                                id
+                                  (Lean.Data.AC.Context.eq_of_norm
+                                    { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                      comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                      vars := [{ value := x, neutral := none }], arbitrary := x }
+                                    ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                    ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                              x))
+                          ((fun x =>
+                              id
+                                (Lean.Data.AC.Context.eq_of_norm
+                                  { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                    comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                    vars := [{ value := x, neutral := none }], arbitrary := x }
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                            y)))
+                      (congr
+                        (congrArg HAdd.hAdd
+                          ((fun x x_1 =>
+                              id
+                                (Lean.Data.AC.Context.eq_of_norm
+                                  { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                    comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                    vars := [{ value := x, neutral := none }, { value := x_1, neutral := none }],
+                                    arbitrary := x }
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1))
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1)) (Eq.refl true)))
+                            x y))
+                        ((fun x x_1 =>
+                            id
+                              (Lean.Data.AC.Context.eq_of_norm
+                                { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                  comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                  vars := [{ value := x, neutral := none }, { value := x_1, neutral := none }],
+                                  arbitrary := x }
+                                ((Lean.Data.AC.Expr.var 1).op (Lean.Data.AC.Expr.var 0))
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1)) (Eq.refl true)))
+                          x y))))
+                  ((fun x x_1 x_2 =>
+                      id
+                        (Lean.Data.AC.Context.eq_of_norm
+                          { op := HAdd.hAdd, assoc := Int.instAssociativeHAdd,
+                            comm := some { down := Int.instCommutativeHAdd }, idem := none,
+                            vars :=
+                              [{ value := x, neutral := none }, { value := x_1, neutral := none },
+                                { value := x_2, neutral := none }],
+                            arbitrary := x }
+                          (((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 2)).op
+                            (((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 2)).op
+                              ((Lean.Data.AC.Expr.var 1).op (Lean.Data.AC.Expr.var 1))))
+                          ((Lean.Data.AC.Expr.var 0).op
+                            ((Lean.Data.AC.Expr.var 0).op
+                              ((Lean.Data.AC.Expr.var 1).op
+                                ((Lean.Data.AC.Expr.var 1).op
+                                  ((Lean.Data.AC.Expr.var 2).op (Lean.Data.AC.Expr.var 2))))))
+                          (Eq.refl true)))
+                    (x * x) (x * y) (y * y)))))
+            (Eq.refl (x * x + (x * x + (x * y + (x * y + (y * y + y * y)))))))
+          (Int.add_le_add_left (Int.add_le_add_left hx (x * x + y * y)) (x * x + y * y)))
+        (Eq.mpr
+          (id
+            (congr
+              (congrArg Eq
+                (Eq.trans
+                  (congr
+                    (congrArg HAdd.hAdd
+                      (congr
+                        (congrArg HAdd.hAdd
+                          ((fun x =>
+                              id
+                                (Lean.Data.AC.Context.eq_of_norm
+                                  { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                    comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                    vars := [{ value := x, neutral := none }], arbitrary := x }
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                            x))
+                        ((fun x =>
+                            id
+                              (Lean.Data.AC.Context.eq_of_norm
+                                { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                  comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                  vars := [{ value := x, neutral := none }], arbitrary := x }
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                          y)))
+                    (congr
+                      (congrArg HAdd.hAdd
+                        (congr
+                          (congrArg HAdd.hAdd
+                            ((fun x =>
+                                id
+                                  (Lean.Data.AC.Context.eq_of_norm
+                                    { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                      comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                      vars := [{ value := x, neutral := none }], arbitrary := x }
+                                    ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                    ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                              x))
+                          ((fun x =>
+                              id
+                                (Lean.Data.AC.Context.eq_of_norm
+                                  { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                    comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                    vars := [{ value := x, neutral := none }], arbitrary := x }
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                            y)))
+                      (congr
+                        (congrArg HAdd.hAdd
+                          ((fun x =>
+                              id
+                                (Lean.Data.AC.Context.eq_of_norm
+                                  { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                    comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                    vars := [{ value := x, neutral := none }], arbitrary := x }
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                            x))
+                        ((fun x =>
+                            id
+                              (Lean.Data.AC.Context.eq_of_norm
+                                { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                  comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                  vars := [{ value := x, neutral := none }], arbitrary := x }
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                          y))))
+                  ((fun x x_1 =>
+                      id
+                        (Lean.Data.AC.Context.eq_of_norm
+                          { op := HAdd.hAdd, assoc := Int.instAssociativeHAdd,
+                            comm := some { down := Int.instCommutativeHAdd }, idem := none,
+                            vars := [{ value := x, neutral := none }, { value := x_1, neutral := none }],
+                            arbitrary := x }
+                          (((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1)).op
+                            (((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1)).op
+                              ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1))))
+                          ((Lean.Data.AC.Expr.var 0).op
+                            ((Lean.Data.AC.Expr.var 0).op
+                              ((Lean.Data.AC.Expr.var 0).op
+                                ((Lean.Data.AC.Expr.var 1).op
+                                  ((Lean.Data.AC.Expr.var 1).op (Lean.Data.AC.Expr.var 1))))))
+                          (Eq.refl true)))
+                    (x * x) (y * y))))
+              (Eq.trans
+                (congr
+                  (congrArg HAdd.hAdd
+                    (congr
+                      (congrArg HAdd.hAdd
+                        (congr
+                          (congrArg HAdd.hAdd
+                            ((fun x =>
+                                id
+                                  (Lean.Data.AC.Context.eq_of_norm
+                                    { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                      comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                      vars := [{ value := x, neutral := none }], arbitrary := x }
+                                    ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                    ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                              x))
+                          ((fun x =>
+                              id
+                                (Lean.Data.AC.Context.eq_of_norm
+                                  { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                    comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                    vars := [{ value := x, neutral := none }], arbitrary := x }
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                            y)))
+                      (congr
+                        (congrArg HAdd.hAdd
+                          ((fun x =>
+                              id
+                                (Lean.Data.AC.Context.eq_of_norm
+                                  { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                    comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                    vars := [{ value := x, neutral := none }], arbitrary := x }
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                            x))
+                        ((fun x =>
+                            id
+                              (Lean.Data.AC.Context.eq_of_norm
+                                { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                  comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                  vars := [{ value := x, neutral := none }], arbitrary := x }
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                          y))))
+                  (congr
+                    (congrArg HAdd.hAdd
+                      ((fun x =>
+                          id
+                            (Lean.Data.AC.Context.eq_of_norm
+                              { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                vars := [{ value := x, neutral := none }], arbitrary := x }
+                              ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                              ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                        x))
+                    ((fun x =>
+                        id
+                          (Lean.Data.AC.Context.eq_of_norm
+                            { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                              comm := some { down := Int.instCommutativeHMul }, idem := none,
+                              vars := [{ value := x, neutral := none }], arbitrary := x }
+                            ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                            ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                      y)))
+                ((fun x x_1 =>
+                    id
+                      (Lean.Data.AC.Context.eq_of_norm
+                        { op := HAdd.hAdd, assoc := Int.instAssociativeHAdd,
+                          comm := some { down := Int.instCommutativeHAdd }, idem := none,
+                          vars := [{ value := x, neutral := none }, { value := x_1, neutral := none }], arbitrary := x }
+                        ((((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1)).op
+                              ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1))).op
+                          ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 1)))
+                        ((Lean.Data.AC.Expr.var 0).op
+                          ((Lean.Data.AC.Expr.var 0).op
+                            ((Lean.Data.AC.Expr.var 0).op
+                              ((Lean.Data.AC.Expr.var 1).op ((Lean.Data.AC.Expr.var 1).op (Lean.Data.AC.Expr.var 1))))))
+                        (Eq.refl true)))
+                  (x * x) (y * y)))))
+          (Eq.refl (x * x + (x * x + (x * x + (y * y + (y * y + y * y)))))))))
+'FTFamily.a2_upper_eq' depends on axioms: [propext, Quot.sound]
+FTFamily.a2_upper_eq : ∀ (x : Int), 2 * (x * x + x * x + x * x) = 3 * (x * x + x * x)
+theorem FTFamily.a2_upper_eq : ∀ (x : Int), 2 * (x * x + x * x + x * x) = 3 * (x * x + x * x) :=
+fun x =>
+  Eq.mpr (id (congrArg (fun _a => 2 * (x * x + x * x + x * x) = _a) (FTFamily.three_mul (x * x + x * x))))
+    (Eq.mpr
+      (id
+        (congrFun' (congrArg Eq (Int.two_mul (x * x + x * x + x * x)))
+          (x * x + x * x + (x * x + x * x) + (x * x + x * x))))
+      (Eq.mpr
+        (id
+          (congr
+            (congrArg Eq
+              (Eq.trans
+                (congr
+                  (congrArg HAdd.hAdd
+                    (congr
+                      (congrArg HAdd.hAdd
+                        (congr
+                          (congrArg HAdd.hAdd
+                            ((fun x =>
+                                id
+                                  (Lean.Data.AC.Context.eq_of_norm
+                                    { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                      comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                      vars := [{ value := x, neutral := none }], arbitrary := x }
+                                    ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                    ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                              x))
+                          ((fun x =>
+                              id
+                                (Lean.Data.AC.Context.eq_of_norm
+                                  { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                    comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                    vars := [{ value := x, neutral := none }], arbitrary := x }
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                            x)))
+                      ((fun x =>
+                          id
+                            (Lean.Data.AC.Context.eq_of_norm
+                              { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                vars := [{ value := x, neutral := none }], arbitrary := x }
+                              ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                              ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                        x)))
+                  (congr
+                    (congrArg HAdd.hAdd
+                      (congr
+                        (congrArg HAdd.hAdd
+                          ((fun x =>
+                              id
+                                (Lean.Data.AC.Context.eq_of_norm
+                                  { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                    comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                    vars := [{ value := x, neutral := none }], arbitrary := x }
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                            x))
+                        ((fun x =>
+                            id
+                              (Lean.Data.AC.Context.eq_of_norm
+                                { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                  comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                  vars := [{ value := x, neutral := none }], arbitrary := x }
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                          x)))
+                    ((fun x =>
+                        id
+                          (Lean.Data.AC.Context.eq_of_norm
+                            { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                              comm := some { down := Int.instCommutativeHMul }, idem := none,
+                              vars := [{ value := x, neutral := none }], arbitrary := x }
+                            ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                            ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                      x)))
+                ((fun x =>
+                    id
+                      (Lean.Data.AC.Context.eq_of_norm
+                        { op := HAdd.hAdd, assoc := Int.instAssociativeHAdd,
+                          comm := some { down := Int.instCommutativeHAdd }, idem := none,
+                          vars := [{ value := x, neutral := none }], arbitrary := x }
+                        ((((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)).op (Lean.Data.AC.Expr.var 0)).op
+                          (((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)).op (Lean.Data.AC.Expr.var 0)))
+                        ((Lean.Data.AC.Expr.var 0).op
+                          ((Lean.Data.AC.Expr.var 0).op
+                            ((Lean.Data.AC.Expr.var 0).op
+                              ((Lean.Data.AC.Expr.var 0).op ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))))))
+                        (Eq.refl true)))
+                  (x * x))))
+            (Eq.trans
+              (congr
+                (congrArg HAdd.hAdd
+                  (congr
+                    (congrArg HAdd.hAdd
+                      (congr
+                        (congrArg HAdd.hAdd
+                          ((fun x =>
+                              id
+                                (Lean.Data.AC.Context.eq_of_norm
+                                  { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                    comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                    vars := [{ value := x, neutral := none }], arbitrary := x }
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                  ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                            x))
+                        ((fun x =>
+                            id
+                              (Lean.Data.AC.Context.eq_of_norm
+                                { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                  comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                  vars := [{ value := x, neutral := none }], arbitrary := x }
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                          x)))
+                    (congr
+                      (congrArg HAdd.hAdd
+                        ((fun x =>
+                            id
+                              (Lean.Data.AC.Context.eq_of_norm
+                                { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                  comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                  vars := [{ value := x, neutral := none }], arbitrary := x }
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                                ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                          x))
+                      ((fun x =>
+                          id
+                            (Lean.Data.AC.Context.eq_of_norm
+                              { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                                comm := some { down := Int.instCommutativeHMul }, idem := none,
+                                vars := [{ value := x, neutral := none }], arbitrary := x }
+                              ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                              ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                        x))))
+                (congr
+                  (congrArg HAdd.hAdd
+                    ((fun x =>
+                        id
+                          (Lean.Data.AC.Context.eq_of_norm
+                            { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                              comm := some { down := Int.instCommutativeHMul }, idem := none,
+                              vars := [{ value := x, neutral := none }], arbitrary := x }
+                            ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                            ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                      x))
+                  ((fun x =>
+                      id
+                        (Lean.Data.AC.Context.eq_of_norm
+                          { op := HMul.hMul, assoc := Int.instAssociativeHMul,
+                            comm := some { down := Int.instCommutativeHMul }, idem := none,
+                            vars := [{ value := x, neutral := none }], arbitrary := x }
+                          ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))
+                          ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)) (Eq.refl true)))
+                    x)))
+              ((fun x =>
+                  id
+                    (Lean.Data.AC.Context.eq_of_norm
+                      { op := HAdd.hAdd, assoc := Int.instAssociativeHAdd,
+                        comm := some { down := Int.instCommutativeHAdd }, idem := none,
+                        vars := [{ value := x, neutral := none }], arbitrary := x }
+                      ((((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)).op
+                            ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))).op
+                        ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0)))
+                      ((Lean.Data.AC.Expr.var 0).op
+                        ((Lean.Data.AC.Expr.var 0).op
+                          ((Lean.Data.AC.Expr.var 0).op
+                            ((Lean.Data.AC.Expr.var 0).op ((Lean.Data.AC.Expr.var 0).op (Lean.Data.AC.Expr.var 0))))))
+                      (Eq.refl true)))
+                (x * x)))))
+        (Eq.refl (x * x + (x * x + (x * x + (x * x + (x * x + x * x))))))))
+'FTFamily.srec_closed' depends on axioms: [propext]
+FTFamily.srec_closed : ∀ (k : Nat), FTFamily.Srec k = (k + 1) * 2 ^ k
+theorem FTFamily.srec_closed : ∀ (k : Nat), FTFamily.Srec k = (k + 1) * 2 ^ k :=
+fun k =>
+  Nat.recAux (Eq.refl (FTFamily.Srec 0))
+    (fun k ih =>
+      Eq.mpr (id (congrFun' (congrArg Eq (FTFamily.Srec.eq_def (k + 1))) ((k + 1 + 1) * 2 ^ (k + 1))))
+        (Eq.mpr (id (congrArg (fun _a => 2 ^ (k + 1) + 2 * _a = (k + 1 + 1) * 2 ^ (k + 1)) ih))
+          (Eq.mpr (id (congrArg (fun _a => _a + 2 * ((k + 1) * 2 ^ k) = (k + 1 + 1) * _a) (Nat.pow_succ 2 k)))
+            (trans
+              (trans
+                (trans
+                  (Eq.mpr
+                    (id
+                      (congrArg (fun _a => 2 ^ k * 2 + _a = 2 ^ k * 2 + (k + 1) * (2 * 2 ^ k))
+                        (Nat.mul_left_comm 2 (k + 1) (2 ^ k))))
+                    (Eq.refl (2 ^ k * 2 + (k + 1) * (2 * 2 ^ k))))
+                  (Eq.mpr
+                    (id
+                      (congrArg (fun _a => 2 ^ k * 2 + (k + 1) * _a = 2 ^ k * 2 + (k + 1) * (2 ^ k * 2))
+                        (Nat.mul_comm 2 (2 ^ k))))
+                    (Eq.refl (2 ^ k * 2 + (k + 1) * (2 ^ k * 2)))))
+                (Eq.mpr
+                  (id
+                    (congrArg (fun _a => _a = (k + 2) * (2 ^ k * 2))
+                      (Nat.add_comm (2 ^ k * 2) ((k + 1) * (2 ^ k * 2)))))
+                  (Eq.mpr
+                    (id (congrArg (fun _a => _a = (k + 2) * (2 ^ k * 2)) (Eq.symm (Nat.succ_mul (k + 1) (2 ^ k * 2)))))
+                    (Eq.refl ((k + 1).succ * (2 ^ k * 2))))))
+              (Eq.mpr (id (congrArg (fun _a => (k + 2) * (2 ^ k * 2) = (k + 2) * _a) (Nat.pow_succ 2 k)))
+                (Eq.refl ((k + 2) * (2 ^ k * 2))))))))
+    k
+'FTFamily.dfun_closed' depends on axioms: [propext]
+FTFamily.dfun_closed : ∀ (k : Nat), FTFamily.Dfun k = 3 * 2 ^ (k + 1) + 3 * ((k + 1) * 2 ^ k)
+theorem FTFamily.dfun_closed : ∀ (k : Nat), FTFamily.Dfun k = 3 * 2 ^ (k + 1) + 3 * ((k + 1) * 2 ^ k) :=
+fun k =>
+  id
+    (Eq.mpr
+      (id
+        (congrArg (fun _a => 3 * 2 ^ (k + 1) + 3 * _a = 3 * 2 ^ (k + 1) + 3 * ((k + 1) * 2 ^ k))
+          (FTFamily.srec_closed k)))
+      (Eq.refl (3 * 2 ^ (k + 1) + 3 * ((k + 1) * 2 ^ k))))
+'FTFamily.tfun_closed' depends on axioms: [propext, Quot.sound]
+FTFamily.tfun_closed : ∀ (k : Nat), FTFamily.Tfun k = (k + 4) * FTFamily.Ndeg k
+theorem FTFamily.tfun_closed : ∀ (k : Nat), FTFamily.Tfun k = (k + 4) * FTFamily.Ndeg k :=
+fun k =>
+  id
+    (id
+      (id
+        (Eq.mpr
+          (id
+            (congrArg (fun _a => 3 * 2 ^ (k + 1) + 2 * (3 * 2 ^ (k + 1) + 3 * _a) = (k + 4) * (3 * 2 ^ (k + 1)))
+              (FTFamily.srec_closed k)))
+          (have hmid :=
+            Eq.mpr
+              (id (congrArg (fun _a => _a = (k + 1) * (3 * 2 ^ (k + 1))) (Nat.mul_left_comm 2 3 ((k + 1) * 2 ^ k))))
+              (Eq.mpr
+                (id (congrArg (fun _a => 3 * _a = (k + 1) * (3 * 2 ^ (k + 1))) (Nat.mul_left_comm 2 (k + 1) (2 ^ k))))
+                (Eq.mpr
+                  (id (congrArg (fun _a => 3 * ((k + 1) * _a) = (k + 1) * (3 * 2 ^ (k + 1))) (Nat.mul_comm 2 (2 ^ k))))
+                  (Eq.mpr
+                    (id
+                      (congrArg (fun _a => 3 * ((k + 1) * _a) = (k + 1) * (3 * 2 ^ (k + 1)))
+                        (Eq.symm (Nat.pow_succ 2 k))))
+                    (Eq.mpr
+                      (id
+                        (congrArg (fun _a => _a = (k + 1) * (3 * 2 ^ (k + 1)))
+                          (Nat.mul_left_comm 3 (k + 1) (2 ^ (k + 1)))))
+                      (Eq.refl ((k + 1) * (3 * 2 ^ (k + 1))))))));
+          Eq.mpr
+            (id
+              (congrArg (fun _a => 3 * 2 ^ (k + 1) + _a = (k + 4) * (3 * 2 ^ (k + 1)))
+                (Nat.mul_add 2 (3 * 2 ^ (k + 1)) (3 * ((k + 1) * 2 ^ k)))))
+            (Eq.mpr
+              (id
+                (congrArg (fun _a => 3 * 2 ^ (k + 1) + (2 * (3 * 2 ^ (k + 1)) + _a) = (k + 4) * (3 * 2 ^ (k + 1)))
+                  hmid))
+              (have hx :=
+                Eq.mpr
+                  (id
+                    (congrArg (fun _a => 2 * (3 * 2 ^ (k + 1)) + (k + 1) * (3 * 2 ^ (k + 1)) = _a)
+                      (Nat.add_mul 2 (k + 1) (3 * 2 ^ (k + 1)))))
+                  (Eq.refl (2 * (3 * 2 ^ (k + 1)) + (k + 1) * (3 * 2 ^ (k + 1))));
+              Eq.mpr (id (congrArg (fun _a => 3 * 2 ^ (k + 1) + _a = (k + 4) * (3 * 2 ^ (k + 1))) hx))
+                (have hy :=
+                  Eq.mpr
+                    (id
+                      (congrArg (fun _a => _a = (k + 4) * (3 * 2 ^ (k + 1)))
+                        (Nat.add_comm (3 * 2 ^ (k + 1)) ((2 + (k + 1)) * (3 * 2 ^ (k + 1))))))
+                    (Eq.mpr
+                      (id
+                        (congrArg (fun _a => _a = (k + 4) * (3 * 2 ^ (k + 1)))
+                          (Eq.symm (Nat.succ_mul (2 + (k + 1)) (3 * 2 ^ (k + 1))))))
+                      ((fun {α β γ} [HMul α β γ] a a_1 e_a =>
+                          Eq.rec (motive := fun a_2 e_a => ∀ (a_3 a_4 : β), a_3 = a_4 → a * a_3 = a_2 * a_4)
+                            (fun a_2 a_3 e_a => e_a ▸ Eq.refl (a * a_2)) e_a)
+                        (2 + (k + 1)).succ (k + 4)
+                        (Decidable.byContradiction fun a => FTFamily.tfun_closed._proof_1_1 k a) (3 * 2 ^ (k + 1))
+                        (3 * 2 ^ (k + 1)) (Eq.refl (3 * 2 ^ (k + 1)))));
+                Eq.mpr (id (congrArg (fun _a => _a = (k + 4) * (3 * 2 ^ (k + 1))) hy))
+                  (Eq.refl ((k + 4) * (3 * 2 ^ (k + 1)))))))))))
+'FTFamily.leaf_words_eq' depends on axioms: [propext]
+FTFamily.leaf_words_eq : ∀ (k : Nat), 6 * 2 ^ k = FTFamily.Ndeg k
+theorem FTFamily.leaf_words_eq : ∀ (k : Nat), 6 * 2 ^ k = FTFamily.Ndeg k :=
+fun k =>
+  id
+    (have h6 := rfl;
+    Eq.mpr (id (congrArg (fun _a => _a * 2 ^ k = 3 * 2 ^ (k + 1)) h6))
+      (Eq.mpr (id (congrArg (fun _a => _a = 3 * 2 ^ (k + 1)) (Nat.mul_assoc 3 2 (2 ^ k))))
+        (Eq.mpr (id (congrArg (fun _a => 3 * _a = 3 * 2 ^ (k + 1)) (Nat.mul_comm 2 (2 ^ k))))
+          (Eq.mpr (id (congrArg (fun _a => 3 * _a = 3 * 2 ^ (k + 1)) (Eq.symm (Nat.pow_succ 2 k))))
+            (Eq.refl (3 * 2 ^ k.succ))))))
+'FTFamily.wrec_closed' depends on axioms: [propext]
+FTFamily.wrec_closed : ∀ (r : Nat), FTFamily.Wrec (r + 2) = 2 ^ (r + 3)
+theorem FTFamily.wrec_closed : ∀ (r : Nat), FTFamily.Wrec (r + 2) = 2 ^ (r + 3) :=
+fun r =>
+  Nat.recAux (of_decide_eq_true (id (Eq.refl true)))
+    (fun r ih =>
+      have h2 :=
+        Eq.mpr (id (congrArg (fun _a => _a = 2 ^ (r + 4)) (Nat.mul_comm 2 (2 ^ (r + 3)))))
+          (Eq.mpr (id (congrArg (fun _a => _a = 2 ^ (r + 4)) (Eq.symm (Nat.pow_succ 2 (r + 3)))))
+            (Eq.refl (2 ^ (r + 3).succ)));
+      id
+        (Eq.mpr (id (congrArg (fun _a => max (2 ^ (r + 3) + _a) (2 ^ (r + 4)) = 2 ^ (r + 4)) ih))
+          (Eq.mpr (id (congrArg (fun _a => max _a (2 ^ (r + 4)) = 2 ^ (r + 4)) (Eq.symm (Nat.two_mul (2 ^ (r + 3))))))
+            (Eq.mpr (id (congrArg (fun _a => max _a (2 ^ (r + 4)) = 2 ^ (r + 4)) h2))
+              (Eq.mpr (id (congrArg (fun _a => _a = 2 ^ (r + 4)) (Nat.max_self (2 ^ (r + 4)))))
+                (Eq.refl (2 ^ (r + 4))))))))
+    r

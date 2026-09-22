@@ -1,0 +1,35 @@
+{
+  "schema": "FT_FAMILY_REPLAY_TARGETS_V3",
+  "note": "Pre-registered BEFORE the replay (TASK requirement). scripts/replay.py regenerates exactly byte_deterministic and compares each SHA-256 against OUTPUTS.sha256; semantic_only entries are regenerated/inspected without byte matching (rule per entry in REPLAY.md).",
+  "byte_deterministic": [
+    "results/chi_tail.json",
+    "results/controls.json",
+    "results/r4_tests.json",
+    "results/geometry.json",
+    "results/geometry.csv",
+    "results/layout.json",
+    "results/layout.csv",
+    "results/bounds_table.json",
+    "results/layout_table.md",
+    "results/check_geometry.log",
+    "results/check_layout.log",
+    "results/check_bounds_table.log",
+    "results/check_r4_routing.log",
+    "results/lean_FTA2.log",
+    "results/lean_FTBounds.log",
+    "results/lean_FTLayout.log",
+    "results/lean_FTRoots.log",
+    "results/lean_AxiomAudit.log"
+  ],
+  "semantic_only": [
+    {"path": "paper/main.pdf", "rule": "rebuild separately (pdflatex+bibtex); build success + page count and pdftotext text recorded; byte identity NOT required (date/toolchain)"},
+    {"path": "paper/compile.log", "rule": "rebuild log; contains paths/date"},
+    {"path": "results/check_chi_tail.log", "rule": "run log; contains resolved package root path"},
+    {"path": "results/check_controls.log", "rule": "run log; contains resolved package root path"},
+    {"path": "results/check_fft3_error.log", "rule": "historical pinned checker log (its own mode); paths/timing may differ"},
+    {"path": "results/fft3_error.json", "rule": "pinned historical MPFR run reproduced byte-exactly (see proof/receipts/reproduction_receipt.json); excluded from the replay byte list because the historical runner is mode-sensitive"},
+    {"path": "results/sage_exact.json", "rule": "pinned reproduction target compared in proof/receipts/reproduction_receipt.json; optional in replay"},
+    {"path": "results/sage_exact.log", "rule": "run log of sage_exact.sage"},
+    {"path": "proof/checks/00_verify_inputs.log", "rule": "input-validation log; contains resolved input path"}
+  ]
+}

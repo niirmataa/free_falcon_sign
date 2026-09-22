@@ -1,0 +1,27 @@
+--- inputs/bootstrap/CANDIDATE_R2/CORRECTIONS.md	2026-09-22 06:40:58.224835233 +0200
++++ CORRECTIONS.md	2026-09-22 09:07:14.229918204 +0200
+@@ -299,3 +299,24 @@
+ 
+ Dodatkowo (porządek): usunięto plik-debug `.probe_py.py` z pakietu (został
+ w archiwum odbioru jako ślad wersji 09-21).
++
++## 12. RUN_003 (S01) — domknięcie R1–R7 po odbiorze RUN_002
++
++Wersja robocza RUN_002 (CANDIDATE_R2, `UNREVIEWED_WORK_SNAPSHOT`) jest tu
++materiałem wejściowym (REUSED z pinem `5ee71952…`), nie wynikiem tej pracy.
++Poniżej wyłącznie bilans RUN_003; szczegóły w `CORRECTION_MATRIX.md/.json`.
++
++| # | disposition RUN_003 | co nowego |
++|---|---|---|
++| R1 | REUSED (weryfikacja) + nowe kontrole | diagram strzałek w `ATTACK_PROBLEMS.md` §1 zgodny z CLAIMS/paper; wykonawcza kontrola N3 (kierunek dowiedziony działa; odwrotny most wymaga nieistniejącego `Enc`) |
++| R2 | REUSED (weryfikacja) + nowe kontrole | N1 (trywiał wycofanej definicji: stopień wygranej 1 vs 1/q dla celów ROM) i N2 (unia 1/2 vs 3/4) jako wykonawcze modele; union bound po nazwach rozłącznych |
++| R3 | REUSED (weryfikacja) + nowa kontrola źródła | N4 parsuje sygnaturę `falcon_complete_private(G,f,g,F,…)` wprost z przypiętych źródeł; kontr-claim „z (f,g)" obalony sygnaturą |
++| R4 | **NAPRAWIONE (wycofanie w zakresie TASK)** | aktywny interfejs `scripts/estimator_campaign/run_campaign.sage`: jawny `NOT_RUN_MODEL_UNRESOLVED` przed backendem, blokada brak mappingu/SHA/premises, odrzucenie SIS→P2 przed importem backendu; historyczna kopia bajtowa z etykietą `INVALID_FOR_P2/NOT_RUN`; testy mock T1–T8 (brak wywołań + wykrycie mutacji) |
++| R5 | **NAPRAWIONE (rygorystyczny rachunek + jawny charakter progu)** | `scripts/lemma_chi_tail.sage` (ZZ/QQ + RealBallField(256), tryb `.sage`): wyprowadzenie postaci Erlanga/Poissona, `x = 2093922385/1179648`, certyfikowane `ogon > 2^−40` (obalenie dawnej hipotezy zachowane) i `ogon < 2^−28`; próg `2^−28` jawno oznaczony **PROPOSED** (nie cel projektu, nie poziom bezpieczeństwa) |
++| R6 | REUSED (weryfikacja) + wzmocnienie | jawne zdanie w szkicu dowodu: perturbacja faz/twiddles wymaga osobnego wyprowadzenia, mnożnik `(1+ε_tw)^(ℓ+1)` to założony placeholder; 12 przypadków nie ustala c/domenu/FPEMU (jawny dopisek); spójność statusu kontrolą N6 |
++| R7 | REUSED (16384) + jedno źródło tabeli | `scripts/gen_layout_table.py` renderuje wiersze z `results/layout.json` (markery + `--check`); niezależne przeliczenie rekurencji scratch kontrolą N7 (wykrycie mutacji 15360); nowa taksonomia 9 klas w `CLAIMS.md/.json` z eksportami/przesłankami |
++
++Zależne wnioski wycofań (§10) pozostają wycofane; wyniki negatywne
++(trywiał definicji, obalone kryterium 2^−40, kontrprzykład all-ones,
++REJECTED SIS-row) są zachowane jako trwałe. Wszystkie komórki kosztów nadal
++`NOT_RUN`.

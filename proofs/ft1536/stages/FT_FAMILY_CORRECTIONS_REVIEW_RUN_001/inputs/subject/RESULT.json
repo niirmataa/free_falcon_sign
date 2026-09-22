@@ -1,0 +1,113 @@
+{
+  "schema": "FT_FAMILY_SCALING_CORRECTIONS_V3",
+  "task_id": "FT_FAMILY_SCALING_CORRECTIONS_RUN_003",
+  "roadmap_id": "S01",
+  "status": "FT_FAMILY_CORRECTIONS_COMPLETE_FOR_REVIEW",
+  "author": "Niirmata",
+  "executor": "MiMo 2.6 PRO (owner-designated S01 executor)",
+  "date": "2026-09-22",
+  "computation_rule": {
+    "supplement": "supplements/FT1536_ZASADA_RACHUNKU_SAGEMATH_2026-09-22.md",
+    "supplement_sha256": "b6afcdcabb811dd8bc31072455ed9a94a4c4773ec68d41d207ac1d7e98eae241",
+    "mode": "sage lemma_*.sage with preparser (ZZ/QQ, RealBallField); python = organization/runners"
+  },
+  "inputs": {
+    "bootstrap_manifest_sha256": "6294e7829bb8b0254e3cfb2d8c1603712fa6f267aefa6a75aa629bb8a09a9e7e",
+    "bootstrap_members": 197,
+    "bootstrap_origins": 195,
+    "bootstrap_bytes": 4967628,
+    "base_commit": "a2cdf31733ae1af82c5a523b44305e86a716551c",
+    "task_sha256": "7a3515324cb0722dc08e40f196d299ba6021712129aba2b84ed46db2bf82cf93",
+    "review_report_sha256": "3b4160dca5d613a1c8b8ca3d97bc11257e6ca300face029ce199aaa0c5f8898e",
+    "review_outputs_sha256": "0319da9743a81084ee32c2f276c92539b45c89110ae1168af407cdeb891ab99a",
+    "candidate_r2_manifest_sha256": "5ee71952862a0395e9c3d14873f953a9f9a61985d3ff24f2ccf4f34f0dfccd16",
+    "source_manifest_sha256": "56974571b46e8257bdd3b4097c8c70fded6bb4b94c64805f6e35ec80929a0985",
+    "source_files": 17,
+    "t01_certificate_sha256": "2a91dd43cc3c21486aa8968ebb0e4ae211a603a786e647a257d05174ef39ce2b",
+    "all_pins_verified": true
+  },
+  "review_items": {
+    "R1": "REUSED_VERIFIED_PLUS_NEW_CONTROLS",
+    "R2": "REUSED_VERIFIED_PLUS_NEW_CONTROLS",
+    "R3": "REUSED_VERIFIED_PLUS_NEW_SOURCE_CHECK",
+    "R4": "CORRECTED_SCOPE_LIMITED_WITHDRAWAL",
+    "R5": "CORRECTED_RIGOROUS_RERUN_NEGATIVE_RESULT_KEPT",
+    "R6": "REUSED_VERIFIED_PLUS_TEXT_STRENGTHENING",
+    "R7": "REUSED_VERIFIED_PLUS_SINGLE_SOURCE_AND_TAXONOMY"
+  },
+  "all_review_items_resolved": true,
+  "controls": {
+    "semantic_controls": "results/controls.json (N1-N7)",
+    "r4_guard_tests": "results/r4_tests.json (T1-T8)",
+    "negative_results_kept": true,
+    "mutations_detected": true,
+    "noop_controls": true
+  },
+  "formalization": {
+    "lean_version": "4.34.0",
+    "lean_modules": 4,
+    "named_kernel_theorems": 14,
+    "lean_flags": "-j1 -M2048",
+    "clean_kernel_logs": true,
+    "axioms": ["propext", "Quot.sound"],
+    "forbidden_escapes": false,
+    "axiom_audit_log": "results/lean_AxiomAudit.log"
+  },
+  "rigorous_chi_tail": {
+    "claim_id": "C19",
+    "evidence_class": "RIGOROUS_INTERVAL",
+    "x_exact": "2093922385/1179648",
+    "tail_center_display": "2.99254207360324819728314586108746e-9",
+    "certified_tail_gt_2_pow_neg40": true,
+    "old_criterion_refuted": true,
+    "certified_tail_lt_2_pow_neg28": true,
+    "proposed_criterion_2_pow_neg28_status": "PROPOSED model-level target only; NOT an approved project goal and NOT a security level",
+    "review_digits_match": true
+  },
+  "estimator": {
+    "campaign_executed_in_this_task": false,
+    "r4_interface_repaired": true,
+    "historical_runner_label": "INVALID_FOR_P2/NOT_RUN",
+    "all_cost_cells": "NOT_RUN"
+  },
+  "replay": {
+    "mode": "standard scripts/replay.py ABSENT_DEST EXTERNAL_OUTPUTS_SHA256",
+    "fresh_replay": "FRESH_REPLAY_PASS",
+    "sealed": "artifacts/fresh_replay.json",
+    "child_record": "REPLAY_RESULT.json in DEST",
+    "pdf_rebuild": "semantic, separate from byte matches"
+  },
+  "withdrawn_kept": [
+    "0.265*d*log2(q/sigma)-100 family (1970/3633/6551)",
+    "1.7*(N/1536)^0.1",
+    "subgroup counts 26/29/32",
+    "sqrt(N)*max|coeff| bound and >=32-bit margin claims",
+    "binary64-sufficiency and FT3072-numeric-feasibility claims",
+    "48 KiB / ~59 KB memory table and derived conclusions",
+    "pseudo-cycle timing table and derived conclusions",
+    "B = 1811939328 as threshold; scenario-A factor 1.1",
+    "ePrint 2023/1234 and 2021/567 citations",
+    "2^446.2 worksheet value for the ternary family",
+    "accept >= 1 - 2^-40 criterion in MODEL_CHI2_IDEAL (refuted by rigorous rerun)"
+  ],
+  "open": [
+    "real Sign law after casts/retries (sampler law, Ranyi losses)",
+    "real PRNG / SHAKE-ChaCha bridge",
+    "H2P full composition",
+    "integer recovery (T03, separate track)",
+    "Sign->Verify and whole real Sign",
+    "security and constant-time",
+    "SIG-001 (sigma=768, margin 1.075 derivation)",
+    "port<->FPEMU bit equivalence, twiddle perturbation, eps_tw budget",
+    "FT768/FT3072 implementation and per-instance certificates",
+    "all attack costs (estimator campaign NOT_RUN)"
+  ],
+  "flags": {
+    "source_changed": false,
+    "production_source_changed": false,
+    "estimator_campaign_executed_in_this_task": false,
+    "new_profiles_implemented": false,
+    "source_security_proved": false,
+    "owner_accepted": false
+  }
+}

@@ -1,0 +1,48 @@
+--- inputs/bootstrap/CANDIDATE_R2/RESEARCH_NOTES_PL.md	2026-09-22 06:40:58.224835233 +0200
++++ RESEARCH_NOTES_PL.md	2026-09-22 09:05:39.065721445 +0200
+@@ -53,16 +53,35 @@
+   dyskretnego samplera, odrzuceń, rzutów `rint→int16` i retry normy — czyli
+   idealny rozkład ciągły PRZED prawem Sign. Wtedy `Q/σ² ~ chi²(2N) =
+   chi²(3072)`, a akceptacja `Q < B` to ogon `Pr[χ²₃₀₇₂ ≥ B/σ²]`.
+-  Niezależny rachunek przedziałowy (256-bit, odbiór):
+-  `Pr[Q ≥ B] = [2.9925420736…e−9 ± 2.32e−82] = 2^−28.32…`, czyli
+-  **> 2^−40 — kryterium „≥ 1 − 2^−40" jest w tym modelu spełnione z ujemnym
+-  zapasem (nie jest spełnione)**. To ujemny wynik dla hipotezy w modelu
+-  ciągłym — nie atak, nie prawo Sign po castach (M3 otwarte).
+-  **Przyjęte kryterium (decyzja właściciela: „zgodne z modelem"):** masa
+-  akceptacji na poziomie modelu, tzn. ogon idealny `≤ 2^−28` na próbę —
+-  obecny margines spełnia z zapasem 0.3 bitu (2^−28.32); prawdziwe prawo po
+-  castach/retry pozostaje osobnym obowiązkiem. Margines 1.075 roli
+-  „tailcut_rate" z konwencji Falcon v1.2 (tam 1.1) — mapowanie jawne.
++  **Wyprowadzenie zamkniętej postaci (RUN_003):** `χ²_{2m}` jest rozkładem
++  `Gamma(m, rate 1/2)` (Erlang); dla gęstości
++  `f(t) = t^(m−1) e^(−t/2) / (2^m (m−1)!)` i `m−1` całkowań przez części
++  `Pr[T ≥ v] = e^(−v/2) Σ_{j=0}^{m−1} (v/2)^j/j! = Pr[Poisson(v/2) ≤ m−1]`.
++  Przy `m = 1536`, `v = B/σ²` i `x = v/2 = B/(2·768²) = 2093922385/1179648`
++  mamy dokładnie wymagany wzór
++  `Pr[Q ≥ B] = e^(−x) Σ_{k=0}^{1535} x^k/k!`.
++  **Rygorystyczny rachunek (RUN_003, tryb `.sage` wg zasady właściciela):**
++  `scripts/lemma_chi_tail.sage` — suma Poissona dokładnie w `ZZ/QQ` (jeden
++  mianownik `b^1535·1535!`), `exp(−x)` w obudowie `RealBallField(256)`
++  (outward; ścieżka kontrolna `exp(−δ)^(2^11)` plus dokładny przedział
++  naprzemiennego szeregu Taylora dla `exp(−δ)`, δ = x/2^11) i **dokładne
++  porównania QQ**: `Pr[Q ≥ B] > 2^−40` **certyfikowane** oraz
++  `Pr[Q ≥ B] < 2^−28` **certyfikowane**; centrum
++  `2.99254207360324819728314586108746…e−9` — cyfry identyczne z niezależnym
++  rachunkiem odbioru (`[2.9925420736…e−9 ± 2.32e−82]`; REUSED z pinem).
++  Artefakt: `results/chi_tail.json` (klasa `RIGOROUS_INTERVAL`, CLAIMS C19).
++  Wniosek ujemny pozostaje w mocy: **kryterium „≥ 1 − 2^−40" jest w tym
++  modelu obalone** (ogon `> 2^−40`). To ujemny wynik dla hipotezy w modelu
++  ciągłym — nie atak, nie prawo Sign po castach (M3 otwarte), nie
++  prawdopodobieństwo ataku.
++  **Charakter progi `2^−28` (wymóg TASK S01 R5, jawne):** ogon `≤ 2^−28`
++  jest tu wyłącznie **PROPOSED** modelem docelowym odrzuceń na próbę
++  („model-level target"); **NIE jest zatwierdzonym celem projektu, NIE jest
++  poziomem bezpieczeństwa i NIE jest kryterium akceptacji właściciela**.
++  Obecny margines (2^−28.32…) to zgodność z tym modelem z zapasem ~0.3 bitu;
++  prawdziwe prawo po castach/retry pozostaje osobnym obowiązkiem.
++  Margines 1.075 roli „tailcut_rate" z konwencji Falcon v1.2 (tam 1.1) —
++  mapowanie jawne.
+   **Uwaga o „bitach bezpieczeństwa":** ogon 2^−28.32 to prawdopodobieństwo
+   odrzucenia/ponowienia (właściwość poprawnościowa i wkład do strat
+   Rényiego), **nie poziom bezpieczeństwa**. Bity bezpieczeństwa = koszty

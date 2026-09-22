@@ -1,0 +1,27 @@
+# TOOLCHAIN.txt — narzędzia użyte w RUN_003 (S01)
+
+Zapisane wg zasady `FT1536_ZASADA_RACHUNKU_SAGEMATH_2026-09-22`
+(kopia: `supplements/`). Dokładne argv/exit/stdout w `COMMANDS.log`
+i `proof/receipts/`.
+
+- SageMath (autorytatywny rachunek `.sage`, preparser):
+  launcher przypięty `/home/footfalcon/.local/bin/sage`
+  (`sage scripts/lemma_chi_tail.sage`, `sage scripts/lemma_controls.sage`,
+  `sage scripts/sage_exact.sage`, `sage scripts/check_fft3_error.py` —
+  historyczny tryb pinu). Środowisko:
+  `/home/footfalcon/miniforge3/envs/sage` (SageMath 10.9, GAP dla census
+  podgrup, MPFR dla oracla FFT3). Preflight trybu w każdym lemma:
+  `parent(1) is ZZ`, `parent(1/3) is QQ`, `2^10 == 1024` (PASS).
+  Pliki pochodne preparsera: wyłącznie `$TMPDIR` = `tmp/` trwałego W.
+- Lean 4.34.0 (`/home/footfalcon/.elan/toolchains/leanprover--lean4---
+  v4.34.0/bin/lean`, commit 293d5d0c…): `-j1 -M2048`, bez Mathlib;
+  moduły FTA2/FTLayout/FTRoots/FTBounds + `proof/checkers/AxiomAudit.lean`.
+- Python 3 (`/usr/bin/python3`; 3.14 w środowisku Sage dla runnerów):
+  organizacja/hashe/runnery/testy (`scripts/*.py`), standard library.
+- pdflatex + bibtex (`/usr/bin/`): `paper/main.tex` → `paper/main.pdf`.
+- Sandbox: `unshare -rn` (network-off) w replayu; HOME/TMPDIR/DOT_SAGE/
+  cache pod trwałym W (i pod DEST w replayu). Zakaz systemowego /tmp/tmpfs.
+- bwrap dostępny (niewymagany; replay używa `unshare -rn`).
+
+Źródła: `Extra/c` = manifest `56974571…` (17 plików, source17 PASS).
+Nic nie instalowano z sieci; sieć wyłączona dla obliczeń/replayu.

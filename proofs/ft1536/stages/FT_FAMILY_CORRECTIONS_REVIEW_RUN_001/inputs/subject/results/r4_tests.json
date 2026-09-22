@@ -1,0 +1,65 @@
+{
+ "all_ok": true,
+ "cases": [
+  {
+   "details": "exit=3 status=NOT_RUN_MODEL_UNRESOLVED imported=False calls=0",
+   "name": "T1_default_no_backend",
+   "ok": true
+  },
+  {
+   "details": "byte-identical default records",
+   "name": "T8_noop_idempotent",
+   "ok": true
+  },
+  {
+   "details": "exit=4 imported=False calls=0 reason_present=True",
+   "name": "T2_sis_to_p2_rejected_no_backend",
+   "ok": true
+  },
+  {
+   "details": "exit=4 imported=False reason_present=True",
+   "name": "T3_symbol_alias_sis_rejected",
+   "ok": true
+  },
+  {
+   "details": "exit=4 imported=False reason_present=True",
+   "name": "T5_missing_sha_blocks_backend",
+   "ok": true
+  },
+  {
+   "details": "exit=0 calls=6 audit=6 any_sis=False",
+   "name": "T4_resolved_calls_mapped_only",
+   "ok": true
+  },
+  {
+   "details": "historical=2 new=0",
+   "name": "T6_historical_defect_detected",
+   "ok": true
+  },
+  {
+   "details": "mutation findings=1",
+   "name": "T7_mutation_sis_call_detected",
+   "ok": true
+  }
+ ],
+ "claim_id": "C-R4",
+ "evidence_class": "KERNEL_FREE_SEMANTIC_CONTROL",
+ "historical_defect_findings": [
+  {
+   "line": 60,
+   "text": "p2 = SISParameters(n=N, q=Q, length_bound=bnd ** 0.5, m=2 * N,"
+  },
+  {
+   "line": 63,
+   "text": "r2 = SIS.estimate(p2)"
+  }
+ ],
+ "mutation_findings": [
+  {
+   "line": 213,
+   "text": "r2 = SIS.estimate(p2)   # mutation: \"problem\": \"P2\""
+  }
+ ],
+ "new_runner_findings": [],
+ "scope": "guard behaviour with instrumented mock backend only; no real estimator, no measurement; all cost cells stay NOT_RUN"
+}

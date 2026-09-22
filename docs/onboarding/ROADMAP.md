@@ -1,6 +1,6 @@
 # Główna ścieżka twierdzeń i jawny rejestr zadań FT1536
 
-Wersja planu: **2026-09-22 / 7 — ponowny odbiór T03 przez inny model**. To żywy plan prowadzącego, oparty na
+Wersja planu: **2026-09-22 / 9 — S01 CHANGES_REQUIRED po własnym odbiorze**. To żywy plan prowadzącego, oparty na
 [M0 TARGET_TYPE](../../proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001/TARGET_TYPE.md)
 i [M0 HOP_LEDGER](../../proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001/HOP_LEDGER.md).
 Nie zmienia zamrożonego M0 ani statusów starych raportów. Stan pracy na żywo:
@@ -121,12 +121,12 @@ M2/M3. Aktualny proof path może zmienić postać końcowego ledgeru tylko jawni
 
 | ID / status | Cel | Warunek odbioru / zależności |
 |---|---|---|
-| S01 CHANGES_REQUIRED / CORRECTIONS_PREPARED — MiMo family scaling | Nowy [RUN_003/TASK](../../proofs/ft1536/CURRENT_FAMILY_TASK.md),R1–R7,z nieodebraną kopią nowszego pakietu RUN_002; start po handoffie MiMo | Spójna poprawiona wersja + pełny niezależny odbiór innego modelu; warunek właściciela przed jakąkolwiek publikacją |
+| S01 CHANGES_REQUIRED — MiMo family scaling | [Własny odbiór GPT-6 Astra](../../proofs/ft1536/validation/2026-09-22-family-corrections-independent/README.md) na bezpośrednie polecenie właściciela;18/18,16 kroków exit0,PDF/Sage/Lean potwierdzone w scope | [I1/I2](../../proofs/ft1536/stages/FT_FAMILY_CORRECTIONS_REVIEW_RUN_001/REQUIRED_CORRECTIONS.md): doprecyzować R1 game-bound/oracles i poprawić R5 precision claim; ujemny wynik zachowany. Bramka publikacji nadal niespełniona |
 | S02 DEFERRED_OWNER_START — dudect RUN_002 |10h scalar timing na FLOOR_CT | Świeży preflight, pełne raw/controls/replications; interpretacja scoped, brak sygnału≠CT proof; bez proof jobs równolegle |
 | S03 PLANNED — M0_WRAPPER_INTEGRATION | r40/STATIC4096 i API/framing deployment | Osobne upoważnienie integracji, source/tests/refinement; obecny stary CLI nie jest wrapperem M0 |
 | S04 PLANNED — PUBLIC_XOF_H2P | Real public bit-output SHAKE/H2P vs pierwszy direct-output ROM | Jawna publiczna gra, domain interactions/private use i loss; nie darmowa domain separation |
 | S05 PLANNED — QROM | Quantum oracle/reduction target | Osobny cel i proof assumptions; nie przenosić klasycznej symulacji bez dowodu |
-| S06 PLANNED — ATTACK_ESTIMATES | Diagnostic P1/P2/subfield costs | Poprawne gry/metriki/populacje, pinned estimator, pełne inputs/outputs; zależy od S01; nie proof security |
+| S06 PARTIAL_DIAGNOSTIC — ATTACK_ESTIMATES | Właściciel potwierdził FT_FAMILY_SEC_ESTIMATE_2026-09-22_RUN_001;70/120 zapisanych komórek NTRU:FT76824,FT153624,FT307222; STATUS DIAGNOSTIC_NOT_CANDIDATE_READY | [Stan kampanii](STATE.md),wg RESUME_STATE pauza,brak final REPORT/OUTPUTS. Dalszy handoff/odbiór: gry/metriki/populacje,piny estymatora,scope i pełne wyniki; modeling zależy od S01; nie proof security |
 | S07 PLANNED — FULL_IMPLEMENTATION_CT | Zakres rzeczywistej implementacji/kompilacji/platformy | Osobny threat model i dowody/kontrole; dudect ani floor patch nie domykają całości |
 | S08 PLANNED — PLATFORM_BINDING | Usługi OS/entropy/lifetimes do publicznego E | Jawne założenia/środowisko/refinement; theorem modelu E nie jest automatycznie theorem dowolnego OS |
 
@@ -221,3 +221,16 @@ muszą wskazywać ten sam aktywny etap.
   pełny A–D review/fresh replay/własne checkery Sage z bindingiem. Poprzedni
   PASS i jego niespójność zachowane; nieuruchomiony mały suplement zastąpiony.
   Nowy werdykt ma samodzielnie uzasadnić scoped odbiór częściowego wyniku.
+- 2026-09-22/v8: właściciel przekazał S01 CORRECTIONS_RUN_003 COMPLETE_FOR_REVIEW.
+  Przygotowano osobny niezależny odbiór R1–R7 z323 przypiętymi wejściami,własnym
+  W i kontrolą rzeczywistej regeneracji/Sage binding/PDF. Publikacja nadal
+  wstrzymana. Właściciel potwierdził też istniejący częściowy run S06:70/120
+  komórek NTRU,bez finalnego raportu/manifestu; zapisano zakres i pauzę bez
+  startowania lub zatrzymywania jobów. T03 REVIEW_002 zachowuje osobny tor.
+- 2026-09-22/v9: właściciel zmienił rolę prowadzącego,polecając mu osobiście
+  niezależnie ocenić S01 i S06. S01 zakończono z CHANGES_REQUIRED:rdzeń
+  odtworzony,ale R1 wymaga jednoznacznego scope oracles/Adv,a R5 poprawnego
+  claimu precyzji.555-file documentary checkpoint zachowuje552 review members,
+  wszystkie receipts i disclosed projection99/100 (unused .pyc poza Git).
+  S06 nadal kolejne zlecenie; właściciel przekaże gotowy T03/T02.1 handoff
+  po wyniku S01. Nie uruchomiono innych modeli lub timing campaign.

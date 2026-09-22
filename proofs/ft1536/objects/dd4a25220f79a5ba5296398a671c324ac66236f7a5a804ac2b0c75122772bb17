@@ -1,0 +1,206 @@
+{
+ "manifest_sha256": "9e093536dfd684f83ca9bc361049e00064f3d60848f8ecc999aa5481398c397e",
+ "matches": [
+  {
+   "path": "results/chi_tail.json",
+   "sha256": "7965503284d85609a9f3dc3a4b082e1c1405cd0a9b789b5e90b0439957b6351f"
+  },
+  {
+   "path": "results/controls.json",
+   "sha256": "c2c1671eab2066cfc439fabdfba885d8fe94c92972354d7619f5c00dcd1f5c1f"
+  },
+  {
+   "path": "results/r4_tests.json",
+   "sha256": "f41de97bb60d1ece93f794e7a5990bbf5fce1b7879c73030e3a8f2e4e18571f4"
+  },
+  {
+   "path": "results/geometry.json",
+   "sha256": "1818e38e682f6c35458449ae4bbfe285d76f4334ac71a184dc42ba1eac995bd0"
+  },
+  {
+   "path": "results/geometry.csv",
+   "sha256": "10e163621adc0218dcb9e91e5e26353f3cddf16372e0498724ace009aad412ed"
+  },
+  {
+   "path": "results/layout.json",
+   "sha256": "52fed152550cd1dd318200272b3c5db22efbca6aef0c5697efbcdcb46d5dc286"
+  },
+  {
+   "path": "results/layout.csv",
+   "sha256": "3950bb5136ac0f1686ad3f1af9fa26e1b900a5d4bc9f8b49eaa086b5a7a8aff3"
+  },
+  {
+   "path": "results/bounds_table.json",
+   "sha256": "591e45c843825b0984a37a31f045e531f47a1049a5aa6d4c00f447a1b1fcab2e"
+  },
+  {
+   "path": "results/layout_table.md",
+   "sha256": "d8e6cb00dfa8125511e874e0b5bd11472cd66416c1442b66fc1630f8afd51eb0"
+  },
+  {
+   "path": "results/check_geometry.log",
+   "sha256": "becefac02efa1e2443fc726e52ea422d65f700b4ffaaf9d541c7384c090ce707"
+  },
+  {
+   "path": "results/check_layout.log",
+   "sha256": "3d588e949871b41b5e5994c73017d142ccfa8f79f9183c9fad2bb16015d2c8ef"
+  },
+  {
+   "path": "results/check_bounds_table.log",
+   "sha256": "59a56ece44417a04b306c5658beba0a6001c406ba1406af258dd2f8326c4f4b5"
+  },
+  {
+   "path": "results/check_r4_routing.log",
+   "sha256": "cf6e76cd9a1e2d870728c4b2910fa4ded70b2f3f83f5f3cdda3ffa29b17e72a6"
+  },
+  {
+   "path": "results/lean_FTA2.log",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "path": "results/lean_FTBounds.log",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "path": "results/lean_FTLayout.log",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "path": "results/lean_FTRoots.log",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "path": "results/lean_AxiomAudit.log",
+   "sha256": "007da6d6f7b7bd2609503a84c745ac6fe0c133f622155d46ada99778b22743d7"
+  }
+ ],
+ "mismatches": [],
+ "pdf_semantic": {
+  "build_exit": 0,
+  "byte_identical_required": false,
+  "pages_pdftotext_method": 10,
+  "rebuilt": true,
+  "text_equal_to_package_pdf": true,
+  "text_sha256_package_pdf": "bb5fa132b2a214b376273e6455957f67d3a402ebef4cfc003e5cf15698712de4",
+  "text_sha256_rebuilt": "bb5fa132b2a214b376273e6455957f67d3a402ebef4cfc003e5cf15698712de4"
+ },
+ "required_step_failures": [],
+ "result": "FRESH_REPLAY_PASS",
+ "schema": "FT_FAMILY_REPLAY_RESULT_V3",
+ "scope": "regeneration of the pre-registered byte list of SEMANTIC_FILES.json inside a fresh MIRROR with network-off (unshare -rn) and fresh cache; FRESH_REPLAY_PASS = mismatches==[] and all required steps exit 0 (required = producers of the byte list + input validation); the heavy historical semantic reproductions and the PDF rebuild are recorded and judged separately (reproduction_receipt.json, pdf_semantic); no estimator, no keys, no Sign, no dudect",
+ "semantic_step_failures": [],
+ "steps": [
+  {
+   "cmd": "/home/footfalcon/.local/bin/sage scripts/lemma_chi_tail.sage",
+   "exit": 0,
+   "required": true,
+   "sandbox": "network-off:unshare -rn",
+   "step": "lemma_chi_tail"
+  },
+  {
+   "cmd": "/usr/bin/python3 scripts/check_geometry.py",
+   "exit": 0,
+   "required": true,
+   "sandbox": "network-off:unshare -rn",
+   "step": "check_geometry"
+  },
+  {
+   "cmd": "/usr/bin/python3 scripts/check_layout.py",
+   "exit": 0,
+   "required": true,
+   "sandbox": "network-off:unshare -rn",
+   "step": "check_layout"
+  },
+  {
+   "cmd": "/usr/bin/python3 scripts/check_bounds_table.py",
+   "exit": 0,
+   "required": true,
+   "sandbox": "network-off:unshare -rn",
+   "step": "check_bounds_table"
+  },
+  {
+   "cmd": "/usr/bin/python3 scripts/gen_layout_table.py",
+   "exit": 0,
+   "required": true,
+   "sandbox": "network-off:unshare -rn",
+   "step": "gen_layout_table"
+  },
+  {
+   "cmd": "/usr/bin/python3 scripts/gen_layout_table.py --check PARAMETRIC_TASK_LAYOUT.md",
+   "exit": 0,
+   "required": true,
+   "sandbox": "network-off:unshare -rn",
+   "step": "layout_table_check"
+  },
+  {
+   "cmd": "/home/footfalcon/.local/bin/sage scripts/lemma_controls.sage",
+   "exit": 0,
+   "required": true,
+   "sandbox": "network-off:unshare -rn",
+   "step": "lemma_controls"
+  },
+  {
+   "cmd": "/usr/bin/python3 scripts/test_r4_routing.py",
+   "exit": 0,
+   "required": true,
+   "sandbox": "network-off:unshare -rn",
+   "step": "test_r4_routing"
+  },
+  {
+   "cmd": "/home/footfalcon/miniforge3/envs/sage/bin/python scripts/check_fft3_error.py",
+   "exit": 0,
+   "required": false,
+   "sandbox": "network-off:unshare -rn",
+   "step": "check_fft3_error_historical"
+  },
+  {
+   "cmd": "/home/footfalcon/.local/bin/sage scripts/sage_exact.sage",
+   "exit": 0,
+   "required": false,
+   "sandbox": "network-off:unshare -rn",
+   "step": "sage_exact_historical"
+  },
+  {
+   "cmd": "/usr/bin/python3 scripts/verify_inputs.py",
+   "exit": 0,
+   "required": true,
+   "sandbox": "network-off:unshare -rn",
+   "step": "verify_inputs"
+  },
+  {
+   "cmd": "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean -j1 -M2048 -o .build/lean/FTA2.olean lean/FTA2.lean",
+   "exit": 0,
+   "required": true,
+   "sandbox": "network-off:unshare -rn",
+   "step": "lean_FTA2"
+  },
+  {
+   "cmd": "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean -j1 -M2048 -o .build/lean/FTLayout.olean lean/FTLayout.lean",
+   "exit": 0,
+   "required": true,
+   "sandbox": "network-off:unshare -rn",
+   "step": "lean_FTLayout"
+  },
+  {
+   "cmd": "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean -j1 -M2048 -o .build/lean/FTRoots.olean lean/FTRoots.lean",
+   "exit": 0,
+   "required": true,
+   "sandbox": "network-off:unshare -rn",
+   "step": "lean_FTRoots"
+  },
+  {
+   "cmd": "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean -j1 -M2048 -o .build/lean/FTBounds.olean lean/FTBounds.lean",
+   "exit": 0,
+   "required": true,
+   "sandbox": "network-off:unshare -rn",
+   "step": "lean_FTBounds"
+  },
+  {
+   "cmd": "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean -j1 -M2048 proof/checkers/AxiomAudit.lean",
+   "exit": 0,
+   "required": true,
+   "sandbox": "network-off:unshare -rn",
+   "step": "lean_AxiomAudit"
+  }
+ ]
+}

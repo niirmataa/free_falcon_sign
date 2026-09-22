@@ -1,0 +1,50 @@
+{
+ "bound": {
+  "B": 2093922385,
+  "B_formula": "floor((43/40)^2 * 2N * sigma^2)",
+  "B_marginless": 1811939328
+ },
+ "claim_id": "C19",
+ "comparisons": {
+  "certified_tail_gt_2_pow_neg40": true,
+  "certified_tail_lt_2_pow_neg28": true,
+  "old_criterion_accept_ge_1_minus_2_pow_neg40_refuted": true,
+  "proposed_criterion_2_pow_neg28_status": "PROPOSED model-level per-attempt target only; NOT an approved project goal and NOT a security level (TASK S01 R5)"
+ },
+ "cross_check_decimal_150": {
+  "inside_certified_interval_within_rel_tol_1e_minus_120": true,
+  "role": "independent non-rigorous cross-check (rounded x and 150-digit accumulation), not part of the certificate",
+  "tail_display": "2.99254207360324819728314586108746711011415692593120133702340811851596418803192347604804097980907752014878532087416347397271821845869843403479866258373E-9"
+ },
+ "evidence_class": "RIGOROUS_INTERVAL",
+ "log2_tail_bounds_display": {
+  "hi": "-28.315981",
+  "lo": "-28.315981"
+ },
+ "method": {
+  "comparisons": "exact cross-multiplied rational comparisons",
+  "display_only": "decimal strings, log2 bounds and the 150-digit recomputation are display / cross-check only",
+  "exp_enclosure_M1": "exact-Fraction alternating Taylor of exp(-delta), delta = x/2^11 (bracket = consecutive partial sums, gap <= first omitted term < 2^-2300), outward floor/ceil endpoint conversion at 300 significant digits, then 11 interval squarings with +/- 4 ulp widening per step",
+  "exp_enclosure_M2": "x enclosed outward by exact decimals x_lo/x_hi (floor/ceil, 300 significant digits) and monotonicity: exp(-x) in [exp(-x_hi), exp(-x_lo)]; each decimal.exp (correctly rounded per General Decimal Arithmetic spec) widened by +/- 4 ulp",
+  "exp_final": "intersection of M1 and M2 (both outward; overlap asserted)",
+  "finite_sum": "exact integer accumulation over common denominator b^1535 * 1535! (a = num(x), b = den(x))",
+  "taylor_steps": 324
+ },
+ "model": {
+  "N": 1536,
+  "dof": 3072,
+  "name": "MODEL_CHI2_IDEAL",
+  "q": 18433,
+  "scope": "ideal continuous normalized-canonical coordinates, iid N(0, sigma^2) BEFORE casts/retries; NOT the real Sign law, NOT an attack probability, NOT a security level",
+  "sigma": 768
+ },
+ "tail_formula": "Pr[Q >= B] = exp(-x) * sum_{k=0}^{1535} x^k/k!",
+ "tail_interval": {
+  "ball_radius_display_8": "0.00000001",
+  "center_display_50": "0.00000000299254207360324819728314586108746711011416",
+  "hi_decimal_50": "0.00000000299254207360324819728314586108746711011416",
+  "lo_decimal_50": "0.00000000299254207360324819728314586108746711011415"
+ },
+ "x_exact": "2093922385/1179648",
+ "x_formula": "x = B/(2*sigma^2)"
+}

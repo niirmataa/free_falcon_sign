@@ -40,6 +40,7 @@ prawdopodobieństwa BadPrecast z uniwersalnym Safe16 lub Sign→Verify.
 | Główna ścieżka twierdzeń, jawna kolejka i kryteria zadań | [ROADMAP](docs/onboarding/ROADMAP.md) |
 | Osobne bieżące zlecenie MiMo/T03 | [CURRENT_MIMO_TASK](proofs/ft1536/CURRENT_MIMO_TASK.md) |
 | Korekty Family/S01, warunek publikacji | [CURRENT_FAMILY_TASK](proofs/ft1536/CURRENT_FAMILY_TASK.md) |
+| Niezależny odbiór zwróconych korekt S01 | [CURRENT_FAMILY_REVIEW_TASK](proofs/ft1536/CURRENT_FAMILY_REVIEW_TASK.md) |
 | Mały niezależny fragment T02.1 | [CURRENT_SMALL_TASK](proofs/ft1536/CURRENT_SMALL_TASK.md) |
 | Obowiązkowy rachunek `.sage` / `sage lemma.sage` | [Zasada SageMath](proofs/ft1536/documents/FT1536_ZASADA_RACHUNKU_SAGEMATH_2026-09-22.md) |
 | Prompt oczekującego niezależnego odbioru | [CURRENT_REVIEW_TASK](proofs/ft1536/CURRENT_REVIEW_TASK.md) |

@@ -1,0 +1,597 @@
+Scaling Full-Ternary-Secret NTRU Signatures:
+FT1536 as a Baseline for FT768 and FT3072
+Niirmata (project lead); analysis and editorial assistance by MiMo
+September 21, 2026 — working manuscript
+Abstract
+We study how security geometry, numerical stability and implementation cost scale
+across the family of full-ternary-secret NTRU signature profiles N ∈ {768, 1536, 3072} over
+RN = Z[X]/(X N − X N/2 + 1) with q = 18433, taking the implemented FT1536 profile
+as baseline. Three contribations replace a withdrawn draft whose security tables were not
+estimator outputs. First, we give the exact metric transport that the verification predicate uses: the quadratic form
+by falcon_is_short is the normalized trace
+P computed
+2
+2
+QA2 (a) = N1 TrK/Q (aā) =
+i<N/2 (ai + ai ai+N/2 + ai+N/2 ) with sharp equivalence con2
+stants 1/2 ≤ QA2 /∥ · ∥2 ≤ 3/2, and we transport determinant and Gaussian-heuristic radii
+into this metric. Second, we prove and kernel-check the exact layout recurrences of the
+expansion tree, T = (log n + 2)N words, sk = (log n + 6)N , leaf count N , giving tree sizes
+8448/18432/39936 words for the three degrees. Third, we propose an input-norm-carrying
+forward-error bound for the source-order FFT3 (status: proposed, not proved) and check
+it is not refuted on twelve finite cases against the pinned twiddle tables. All attack-cost
+cells are NOT_RUN: the three problems (key recovery, MT-ISIS byte production, sampling
+law) are defined precisely and a pinned estimator campaign is provided but not executed.
+The honest conclusion is that the degree alone leaves geometry and layout parametrically
+controlled, while every numeric domain certificate and all attack costs remain per-instance
+obligations; FT768 and FT3072 are planned profiles, not implemented schemes.
+
+1
+
+Motivation and related work
+
+FT1536 is a research signature profile with full ternary secrets: the NTRU key polynomials
+f, g have all coefficients in {−1, 0, 1}, unlike the Gaussian-like sampling of the classical Falcon
+design [7]. The project treats FT1536 as a heavyweight profile for infrequent operations on
+important objects (data blocks, manifests, checkpoints); FT768 is a lighter compromise and
+FT3072 a long-term research direction. None of the planned profiles is a finished scheme; the
+pinned sources reject every ternary degree but N = 1536 (Section 2).
+This manuscript is the corrected second iteration of a scaling study. The first submission
+was not accepted with cause: its security tables were produced by an ad-hoc formula, not by
+a lattice estimator; it conflated the Gaussian-like key population of a historical worksheet with
+the current ternary family; and it claimed floating-point sufficiency without proof. All such
+numbers are withdrawn together with their dependent conclusions; the present text reports
+only what is established, and states NOT_RUN or OPEN everywhere else.
+Related work used here: the Falcon specification and its sampling and key generation
+framework [7, 11, 8]; NTRU subfield and overstretched-parameter attacks and their refinements [1, 10, 6]; hybrid attacks [9, 14]; the core-SVP cost model of Alkim–Ducas–Pöppelmann–
+Schwabe [4] as implemented in the lattice estimator [2, 3]; Rényi-divergence accounting for
+sampler loss [13, 12]; and recent fixed-point implementation work for Falcon [5], which is the
+closest external analogue of our integer-emulated arithmetic (FPEMU). Positioning: the FT
+family of free_falcon_sign is an independent research family; no standards-body categories
+1
+
+are claimed, mapped or cited as normative for it (owner decision, 2026-09-22). Falcon-512/1024
+appear below strictly as research reference points measured with the same ruler.
+
+2
+
+Family definition and scaling regimes
+
+2.1
+
+The family
+
+For N = 3 · 2k let
+RN = Z[X]/(ΦN ),
+
+ΦN (X) = X N − X N/2 + 1,
+
+q = 18433.
+
+Lemma 1 (cyclotomic identity). For N = 3 · 2k one has ΦN = Φ3N , the (3N )-th cyclotomic
+polynomial; in particular ΦN is irreducible of degree N = φ(3N ).
+Proof sketch; exact coefficient check in the artifacts. Φ6 (Y ) = Y 2 − Y + 1, so ΦN = Φ6 (X N/2 ).
+If ζ is a primitive m-th root with m = 3N , then ζ N/2 has order 6 exactly when gcd(N/2-shift, m)
+forces m = 3N ; more elementarily ζ N − ζ N/2 + 1 = ω − w + 1 = 0 with ω = e2πi/3 , w = eπi/3 ,
+and a degree count closes the claim. Coefficients of Φ2304 , Φ4608 , Φ9216 were compared over Z
+(sage_exact.json, SA1: all equal).
+Since 3N | q − 1 = 211 · 32 , the ring has explicit evaluation (NTT) bases of 3N -th roots.
+Correct primitive roots for the three degrees are 3532, 625, 25 respectively (kernel-checked:
+ΦN (w) = 0 mod q and order exactly 3N ). The values 8, 27, 13 appearing in the withdrawn
+draft have order N and give ΦN (w) = 3 mod q: for ord(w) = N one gets wN/2 = −1, hence
+ΦN (w) = 3. They are usable only with an explicit twist. Our recomputations use the slot-toroot map rj = 1 + 6 revk−1 (j/3) + N (j mod 3) of the source transform (revlog n−2 = revk−1 is
+the bit reversal over log n − 2 bits; one bit fewer would give only 384 distinct roots at N = 1536
+instead of 768).
+What is implemented. The pinned candidate (17-file manifest 56974571...) contains the
+FT1536 profile only: load_skey and the key certificate reject log n ̸= 10, and the tree size is
+hard-coded as 12n (valid only at log n = 10). Test vectors for a historical degree-768 ternary
+variant exist; per the assignment they are not the designed FT768. Table 1 lists the baseline
+parameters and the two planned degrees.
+Table 1: Baseline (pinned) and planned profiles. B is the strict verification threshold in the
+normalized-trace metric; σ is the candidate signing width. Only the FT1536 row is pinned by
+artifacts.
+FT768
+FT1536 (baseline)
+FT3072
+N = 3 · 2log n−1
+768
+1536
+3072
+conductor 3N
+2304
+4608
+9216
+q
+18433
+18433
+18433
+secrets f, g
+raw proposal iid uniform in {−1, 0, 1}; emitted keys conditioned on KeyGen
+σ
+OPEN 768 (SIG-001 OPEN)
+OPEN
+B
+OPEN
+2093922385
+OPEN
+6
+attempt caps
+KeyGen 3 · 10 , Sign 16; 2N scalar samples per attempt
+status
+planned
+implemented
+planned
+The baseline threshold is exactly B = ⌊(43/40)2 · 2N · 7682 ⌋ = 2093922385 (kernel-checked);
+2N · 7682 = 1811939328 is the margin-less expectation that the withdrawn table had used as
+a threshold. The source itself marks the choice σ = 768, margin 1.075 as open (comment
+SIG-001).
+2
+
+2.2
+
+Two scaling regimes
+
+Regime A (change the degree only). Keep q, the ternary proposal law and the current
+arithmetic; enumerate what ceases to work: the log n-specific hard checks reject other degrees;
+the adaptive CDF bank is fixed (5 proposal levels σ02 ∈ {5, 20, 80, 320, 768}, 512 entries, proposal
+support [−365, 366] certified for the FT1536 instance only); the per-log n candidate thresholds
+of falcon_is_short have no derivation in the pinned sources (their ratio bound/(2N ) moves
+in an arithmetic-like sequence of step ≈ 1608.2, consistent with a historical May-2026 value
+160982450, and the baseline breaks the sequence); all H3 numeric domains are per-instance
+certificates. Under Regime A, FT768/FT3072 are not defined schemes.
+Regime B (co-designed parameters). Admit qN , σN , BN together with precision and
+table choices. Parameter selection must follow a stated measurable criterion; we use, in this
+order: (i) acceptance mass: per-attempt rejection at the level certified in the ideal normalized2
+canonical model (Q/σ 2 ∼ χ22N , i.i.d. Gaussian before casts/retries).
+P1535 k With x = B/(2σ ) =
+−x
+2093922385/1179648 the tail
+k=0 x /k! (the Erlang/Poisson
+P is exactlyj Pr[Q ≥ B] = e
+−v/2
+identity Pr[T ≥ v] = e
+j<m (v/2) /j! for T ∼ Gamma(m, 1/2), m = 1536), recomputed
+rigorously with exact Z/Q sums and a RealBallField e−x enclosure as [2.9925 . . . · 10−9 ±
+∼10−305 ], matching the independently certified interval [2.9925 . . .·10−9 ± 2.3·10−82 ] digit for
+digit. The resulting 2−28.32... refutes the earlier 2−40 demand in that model. The 2−28 figure
+is a PROPOSED model-level per-attempt target only — not an approved project goal and not
+a security level; the actual post-cast law remains OPEN; (ii) geometry: the key-vector ratio of
+Section 3 stays within a fixed factor across the family; (iii) attack budget: a pinned estimator
+campaign defines the √
+target. Only after (i)–(iii) may σN , BN be read off. As conditional algebra,
+2 ⌋ then B ∝ N 2 ; this identity alone proves
+if one imposes σN ∝ N and BN = ⌊1.0752 · 2N σN
+N
+nothing about KeyGen feasibility, smoothing, acceptance probability or signing-law accuracy.
+All values other than the baseline are labelled ALTERNATIVE_PROPOSAL.
+
+2.3
+
+Parameter matrix
+parameter
+
+constant
+
+scaled
+
+needs new proof
+
+q
+baseline / A
+qN (B)
+NTT roots, gates
+ring Φ3N
+by degree
+—
+Lemma 1 (done)
+f, g law
+ternary iid
+—
+conditioning facts (open)
+σ, B
+—
+σN , BN
+SIG-001; acceptance mass
+sampler tables
+A: fixed
+B: retuned
+sampler-law loss per N
+FPEMU precision
+A: fixed
+B: retuned
+full error recurrences
+tree layout
+—
+(log n+2)N
+done (Thm. 1)
+A comparable family does emerge from these choices only if Regime B criteria (i)–(iii) are all
+closed; today the matrix shows exactly which obligations are open.
+
+3
+
+Geometry and attack estimates
+
+3.1
+
+Metric transport
+
+Let K = Q(ζ3N ) and embed RN by the N complex embeddings, grouped into N/2 conjugate
+pairs σj . Write QA2 for the quadratic form actually computed by verification.
+
+3
+
+Lemma 2 (trace form of the verification metric). For a ∈ RN ,
+N/2
+1 X
+1
+2 X
+QA2 (a) =
+|σj (a)|2
+ai aj c3N (i − j) =
+Tr
+(aā) =
+N
+N K/Q
+N
+j=1
+i,j<N
+X
+
+2
+2
+=
+ai + ai ai+N/2 + ai+N/2 ,
+i<N/2
+
+where cm are Ramanujan sums. The last expression is literally the loop of falcon_is_short
+(pair offset N/2).
+Proof. Tr(ζ t ) = c3N (t) and cm (t) = 0 unless m/(m, t) is squarefree; for m = 9 · 2j and 0 < |t| <
+N this forces N/2 | t, with cm (0) = N , cm (±N/2) = N/2 (verified exactly for all three m).
+The quadratic form therefore collapses to N/2 blocks x2 + xy + y 2 over pairs (ai , ai+N/2 ), and
+x2 + xy + y 2 = 12 (x2 + y 2 + (x + y)2 ) closes the middle identities.
+Lemma 3 (equivalence constants and single embedding). For all a, 21 ∥a∥22 ≤ QA2 (a) ≤
+3
+2
+2 ∥a∥2 with both extremes attained (a all-ones attains 3/2; ai = −ai+N/2 attains 1/2), and
+maxj |σj (a)|2 ≤ N2 QA2 (a).
+Proof. Each block gives x2 + y 2 ≤ 2(x2 + xy + y 2 ) ≤ 3(x2 + y 2 ), since the differences are (x + y)2
+and (x − y)2 (kernel-checked). The embedding claim is Lemma 2 plus one term of the sum.
+The “single embedding” heuristic used in the withdrawn draft is therefore
+√ false without the
+factor N/2: for a = 1+X +· · ·+X N −1 and a primitive 3N -th root, |a(ζ)| = √ 3/(2 sin(π/(3N ))),
+which at N = 1536 equals 1270.261873 . . . against the withdrawn bound N max |ai | = 39.19
+— a factor 32.4 violation (22.9 and 45.8 at N = 768, 3072).
+
+3.2
+
+Determinants, Gaussian heuristic, key statistics
+
+The NTRU lattice Λh = {(u, v) : u + hv = 0 mod (q, ΦN )} has dimension d = 2N , coefficientmetric determinant q N , and, by Lemma 2, Gram determinant det G = (3/4)N for the QA2 metric
+√
+on (z1 , z2 ), hence covolQA2 (Λh ) = (3/4)N/2 q N , i.e. covol1/d = (3/4)1/4 q. We use the exact
+p
+√
+radius convention GH = Γ(d/2 + 1)1/d det1/d / π (the familiar d/2πe det1/d is its asymptotic
+form; both are tabulated in the artifacts). For raw iid ternary proposals E∥f ∥22 = 2N/3 and
+the key vector is (g, −f ) with E∥(g, −f )∥2 = 4N/3 in both metrics in expectation; per-sample
+the two metrics differ within Lemma 3. Table 2 collects the exact numbers.
+Table
+2: Geometry (exact GH convention; coefficient metric and QA2 metric). Key ratio =
+p
+4N/3/GH for raw ternary proposals (emitted keys are a conditioned population and are not
+covered).
+N
+
+768
+
+1536
+
+3072
+
+GH (coeff.)
+1291.09 1823.56 2577.12
+GH (QA2 )
+1201.49 1697.01 2398.28
+key ratio (coeff.) 0.024785 0.024817 0.024834
+key ratio (QA2 )
+0.026634 0.026667 0.026686
+GH(2N )/GH(N )
+1.4124
+1.4132
+p
+p The key ratio converges to 4πe/(3q) = 0.0248538421 . . . (and the single-f variant to
+2πe/(3q) = 0.0175743203 . . .): at fixed q the ternary key
+√ stays roughly 40× shorter than the
+Gaussian-heuristic radius for every degree, while GH ∝ N (log GH = 12 log N + O(1)). This
+is a statement about geometry, not about attack cost.
+4
+
+3.3
+
+Three problems, kept apart
+
+(1) Key recovery (trapdoor recovery): given h, find any short (u, v) ∈ Λh , in particular
+(g, −f ); the secret law is ternary — never the signing σ. (2) MT-ISIS / accepted bytes:
+given h, c, produce any (z1 , z2 ) in the coset with Q(z1 , z2 ) < BN , where Q is exactly Lemma 2.
+Since BN exceeds the typical coset minimum by a wide margin (Table 2), this search has
+exponentially many solutions and its cost should be reported as finding any coset vector below
+the threshold (e.g. via exact CVP in the coset), not as a generic SIS number. (3) Sampling
+law: the distribution of honest outputs and its divergence accounting — not an attack-cost
+cell at all. The one-sided statement “Verify accepts ⇒ short witness” is proved for the pinned
+candidate (L_V checkpoint); the converse and the byte-level law are separate obligations.
+Attack estimates: NOT_RUN.
+attack class
+
+FT768
+
+primal uSVP/BDD (core-SVP 20.265β q.)
+
+NOT_RUN
+dual / hybrid / MITM
+NOT_RUN
+subfield norm-down (7 index-2, 7 quadratic) NOT_RUN
+overstretched refinements
+NOT_RUN
+
+FT1536
+
+FT3072
+
+NOT_RUN
+NOT_RUN
+NOT_RUN
+NOT_RUN
+
+NOT_RUN
+NOT_RUN
+NOT_RUN
+NOT_RUN
+
+No estimator was run for this manuscript. A pinned campaign skeleton with the exact problem
+parameterizations (ternary U{−1, 1} secrets, threshold-BN coset search) and its preconditions
+is part of the artifacts; per the review process, cells may change from NOT_RUN only to
+recorded campaign output. We note without numbers that at q = 18433 and N ≤ 3072
+the “overstretched” regime of [1, 10, 6] is not expected to begin; verifying this per subfield is
+task (4) of the research notes. All seven index-2 subgroups and all seven quadratic subfields
+were enumerated exactly (group census: 142/164/186 subgroups in total).
+
+4
+
+Numerical stability and sampling
+
+The arithmetic backend is FPEMU: integer-emulated IEEE-754 binary64 with one rounding per
+primitive operation. The central question is whether the correlation-preserving normalization
+technique (raw-L/stable-D) gives parametric control at other degrees. The honest answer splits:
+the structure is parametric, the certified domains are not. Every numeric envelope of the H3
+chain (div ∈ [1/16, 235 ], |ℑDC | < 32 at root and < 1 one level down, raw/stable factor < 6, the
+weighted bank bound 849346588, margins 1209616765/1209616764) is an N = 1536 instance
+certificate; at N = 768 or 3072 each is a new obligation. We propose
+one parametric recurrence
+√
+with its input norm restored (the withdrawn table computed ε N log2 N while its own lemma
+carried ∥x∥). Its status is a proposed bound — plausible direction of argument, not a completed
+analytic result.
+Proposition 1 (FFT3 forward error — proposed bound, to be proved). Let fl(a) be the sourceorder falcon_FFT3(a, log n, 1) in binary64 with twiddle constants of relative accuracy εtw . Then
+every output slot j satisfies
+|fl(a)j − a(ζrj )| ≤ γcℓ (1 + εtw )ℓ+1 ∥a∥1 ,
+
+γt =
+
+tu
+, u = 2−53 , ℓ = log n,
+1 − tu
+
+with c the per-level path length of the recursion (1 first pass, log2 (t/3) doubling levels, one
+tripling level).
+Argument sketch (not a derivation); status: proposed. Each output is a sum of input coefficients multiplied by unit-circle twiddle products along one recursion path; standard first-order
+5
+
+error accumulation gives one γ-unit per rounded operation on the path, and twiddle error
+contributes the (1 + εtw )ℓ+1 factor. The dependence on ℓ is linear — this is the requested
+N -dependent parameter. A full step-by-step derivation bound to the FPEMU operation contracts is OPEN (see Section 6); in particular the concrete constant c, the full operation domains
+and the twiddle-error budget εtw are not pinned by this argument. Phase/twiddle perturbation
+requires a separate derivation: the multiplier (1 + εtw )ℓ+1 is an assumed placeholder, not a
+derived term — replacing the exact twiddle products by perturbed ones changes the function
+being evaluated at each node of the recursion, so a first-order operation-count argument does
+not by itself carry over to ideal phases.
+Validation (not a proof ). A source-faithful binary64 port using the pinned twiddle
+bit patterns of fpr-emulated.h and the slot map rj was checked on four input classes
+(ternary, Gaussian, all-ones, alternating) at all three degrees against a 256-bit MPFR oracle
+(sage.all.RealField(256), correctly rounded cosine/sum, exact integer inputs; the port is
+not proven bit-identical to the FPEMU macros): maxj |∆j | ≤ 7.8 · 10−13 , and the observed
+constant max |∆|/(ℓu∥a∥1 ) ≤ 0.209 (exact maximum 0.20850 . . .) against the crude bound
+8ℓu∥a∥1 in all 12 runs. The all-ones class is exactly the adversarial family of Section 3. Twelve
+finite cases establish neither a uniform constant c nor the operation domains nor any FPEMU
+contract; they only record that the proposed bound is not refuted on them.
+What remains open. (a) Binding Proposition 1 to the bit-exact FPEMU contracts (the
+model above rounds like the FPC macros but their operation order may differ in the last ulp)
+and quantifying εtw from the tables; (b) error recurrences for raw LDL, stabilization, center
+updates, reconstruction and rounding, including cancellation and subnormal behaviour at the
+actual domains; (c) the sampling law after casts, its retry behaviour and Rényi losses over
+shared histories [13]; (d) any argument that the pre-cast values are safe before the later Q < B
+cast — explicitly not claimed. For FT3072 we state the sufficiency conditions under which
+current precision would survive (all recurrences within the certified domains after retuning)
+and the scope of the new obligation; we do not promise the precision is sufficient.
+
+5
+
+Implementation costs
+
+The expansion tree of ffLDL_fft3 is fully parametric.
+Theorem 1 (layout recurrences). With S(r) = (r + 1)2r (inner subtree at log n = r), the
+depth-1 node at log n=k+1 stores D(k) = 3 · 2k+1 + 3S(k) words, the top node at log n=k+2
+stores T (k) = 3 · 2k+1 + 2D(k) = (k+4) · 3 · 2k+1 = (log n + 2)N words, and the whole expanded
+key sk = 4N + T = (log n + 6)N words with exactly N leaf words. The temporary buffer is 7N
+words.
+Proof sketch. Induction over the recursion of ffLDL_inner_fft3_keygen (node = 2r L-words
++ two children, base 2 + 2 words) gives S; the 3x3 level contributes 3 · 2k+1 L-words and three
+inner trees; the trisection top contributes one root L-block and two depth-1 trees. The closed
+forms are kernel-checked (FTLayout.lean), including all instance values.
+Every FT1536 entry reproduces the frozen, independently replayed RAW_ASSEMBLY certificate exactly (basis 6144, tree 18432, leaves 1536, internal L 16896, tmp 10752, scratch 3584,
+high-water 8192). The scratch recurrence counts both consumers of the t2 base — the child recursion and the node’s own d1 1 store of 2r words — as W (r) = max(2r +W (r −1), 2r+1 ), giving
+1792/3584/7168 words at the three degrees with no residual discrepancy. The code constant
+treesize = 12n equals (log n + 2)N only at log n = 10 — at 11n and 13n for the planned
+degrees — which is itself evidence that the tree code is instance-locked. Verification cost is
+6
+
+Table 3: Cost and memory layout (8-byte words). Times are NOT_RUN; the withdrawn pseudocycle table is not replaced by modelled numbers.
+FT768
+
+FT1536
+
+FT3072
+
+tree words
+8448
+18432
+39936
+expanded key = (log n+6)N
+11520
+24576
+52224
+expanded key (KiB)
+90
+192
+408
+tmp buffer 7N (KiB)
+42
+84
+168
+leaf words
+768
+1536
+3072
+scalar samples / attempt
+1536
+3072
+6144
+sign attempts (cap)
+16 (expected count OPEN)
+KeyGen attempt cap
+3 · 106
+KeyGen / Sign / Verify time NOT_RUN NOT_RUN NOT_RUN
+dominated by hashing and one polynomial product (O(N log N ) words/operations class); key
+generation cost is dominated by big-integer NTRU solving and an unbounded (capped) retry
+loop, so the three operations do not scale alike; without measurements we report no times.
+A single-signer/many-verifier deployment amortizes key generation and expands verification
+count; the security – size – memory – latency trade-off cannot be settled before the NOT_RUN
+cells are filled.
+SIMD/AVX vectorization is future work: vectorizing FPEMU semantics-preservingly (one
+rounding per scalar op) versus changing the backend (different rounding points) are different
+experiments, and no speedups are claimed.
+
+6
+
+Evidence and limitations
+
+Evidence classes are kept apart throughout, and the artifact ledger records each claim’s class
+and scope. Kernel-checked (Lean 4, clean logs, no sorry/native_decide): the A2 identities and equivalence constants (Lemma 3 algebra), the layout recurrences and all word counts
+(Theorem 1), the root/order tables and the threshold arithmetic B = 2093922385. Exact computation (Sage/GAP and binary64 controls): the cyclotomic identity, the Ramanujan support
+of Lemma 2, trace-form instances, the subgroup census, the counterexample values and the
+FFT3 validation. Analytic in this text: Lemmas 1–3, the determinant and GH transports,
+Proposition 1 (sketch level). NOT_RUN: every attack cost and every timing. OPEN: sampling
+law and real-PRNG bridge, pre-cast safety, precision sufficiency for FT3072, SIG-001 parameter
+selection.
+Hash agreement of text with any manifest is not mathematical checking; a timing measurement with no signal is not constant-time evidence. Nothing here certifies FT768/FT3072,
+claims a security level, or evaluates deployment in critical infrastructure.
+
+7
+
+Conclusions
+
+What the degree alone changes: the geometry ratios and the whole memory layout are parametric and now closed (Theorem 1, Table 2); the cyclotomic/NTT structure scales cleanly with
+Lemma 1; a proposed bound (Proposition 1, status: to be proved) captures the linear-in-log n
+error growth with a restored ∥a∥1 factor.
+What needs joint parameter selection: σN , BN and possibly qN , under the stated acceptance/geometry/attack criteria; today only the baseline triple is pinned, and even there σ = 768
+and the 1.075 margin are open (SIG-001).
+7
+
+What is actually established: the exact verification metric and its constant-equivalence to the
+trace form; exact root and subgroup tables; the layout theorem; one non-refuted proposed error
+bound (twelve finite cases, MPFR-checked); precise definitions of the three attack problems
+with their negative controls.
+What must still be shown before calling FT768/FT3072 ready profiles: a pinned estimator
+campaign on the correctly defined problems (including the per-subfield analysis of all seven
+index-2 and seven quadratic subfields); new per-instance certificates for every H3 numeric domain at the new degrees; the sampling-law and real-PRNG obligations with Rényi accounting;
+retuned sampler tables and thresholds with derived, not fitted, constants; and measurements.
+A persuasive paper style does not substitute for any of these.
+
+A
+
+Derivation notes
+
+A.1 Ramanujan support. For m = 9 · 2j and 0 < |t| < N , the Ramanujan sum
+cm (t) = µ(m/(m, t))φ(m)/φ(m/(m, t)) vanishes unless m/(m, t) ∈ {1, 2, 3, 6}, i.e. (m, t) ∈
+{m, m/2, m/3, m/6}, which for t in this range
+P means N/2 | t; the surviving values are
+cm (0) = N and cm (±N/2) = N/2. Expanding i,j ai aj cm (i − j) then yields Lemma 2.
+h
+i
+1 1/2 
+A.2 Metric determinant. The Gram matrix of QA2 on (z1 , z2 ) is I2 ⊗ IN/2 ⊗ 1/2 1 ,
+√
+√
+of determinant (3/4)N ; volume scales by det = (3/4)N/2 and det1/2N = (3/4)1/4 q.
+A.3 Bound arithmetic. B = ⌊(43/40)2 · 2N σ 2 ⌋ with N = 1536, σ = 768: numerator
+1849 · 1811939328, denominator 1600, remainder 1472 — all kernel-checked.
+
+B
+
+Artifact bindings
+
+Source baseline: 17-file manifest 56974571b46e... of Extra/c (FLOOR_CT candidate, identical across the examined commits). Recomputation entry points, relative to the package:
+• kernel layer: lean/FTA2.lean, lean/FTLayout.lean, lean/FTRoots.lean, lean/
+FTBounds.lean;
+• computation layer: scripts/check_geometry.py, scripts/check_layout.py, scripts/
+check_bounds_table.py, scripts/check_fft3_error.py, scripts/sage_exact.sage,
+with outputs in results/ (geometry.csv, layout.csv, sage_exact.json, fft3_error.
+json, bounds_table.json);
+• attack campaign: scripts/estimator_campaign/ (status NOT_RUN).
+The claim ledger is CLAIMS.md; the withdrawal ledger is CORRECTIONS.md.
+
+References
+[1] Martin Albrecht, Shi Bai, and Léo Ducas. A subfield lattice attack on overstretched NTRU
+assumptions: Cryptanalysis of some FHE and graded encoding schemes. In Advances in
+Cryptology – CRYPTO 2016, 2016. Cryptology ePrint Archive, Paper 2016/127.
+[2] Martin Albrecht and contributors.
+Security estimates for lattice problems
+(the lattice estimator).
+Software repository, 2020–2026.
+Pinned commit
+3e48ef421ec256afddb3e7d2249a77eab6e9ba12, vendored and byte-verified against a fresh
+upstream clone.
+8
+
+[3] Martin R. Albrecht, Rachel Player, and Sam Scott. On the concrete hardness of learning
+with errors. Journal of Mathematical Cryptology, 9(3):169–203, 2015. Cryptology ePrint
+Archive, Report 2015/046.
+[4] Edem Alkim, Léo Ducas, Thomas Pöppelmann, and Peter Schwabe. Post-quantum key
+exchange – A New Hope. In 25th USENIX Security Symposium (USENIX Security 16),
+pages 327–343. USENIX Association, 2016.
+[5] Daniel De Almeida Braga, Pierre-Alain Fouque, Bachir Lachguel, and Thomas Prest. Toward a secure fixed-point implementation of the Falcon signature scheme. In CRYPTO
+2026, 2026. As listed on the authors’ publication page.
+[6] Léo Ducas and Wessel van Woerden. NTRU fatigue: How stretched is overstretched? In
+Advances in Cryptology – ASIACRYPT 2021, 2021.
+[7] Pierre-Alain Fouque, Jeffrey Hoffstein, Paul Kirchner, Vadim Lyubashevsky, Thomas
+Pornin, Thomas Prest, Thomas Ricosset, Gregor Seiler, William Whyte, and Zhenfei
+Zhang. FALCON: Fast-fourier lattice-based compact signatures over NTRU. Technical
+specification of the Falcon signature scheme (falcon-sign.info/falcon.pdf), 2017–2020. Author list as published at falcon-sign.info.
+[8] James Howe, Thomas Prest, Thomas Ricosset, and Mélissa Rossi. Isochronous Gaussian
+sampling: From inception to implementation. In Post-Quantum Cryptography – PQCrypto
+2020, 2020.
+[9] Nick Howgrave-Graham. A hybrid lattice-reduction and meet-in-the-middle attack against
+NTRU. In Advances in Cryptology – CRYPTO 2007, 2007.
+[10] Paul Kirchner and Pierre-Alain Fouque. Revisiting lattice attacks on overstretched NTRU
+parameters. In Advances in Cryptology – EUROCRYPT 2017, 2017.
+[11] Thomas Pornin and Thomas Prest. More efficient algorithms for the NTRU key generation
+using the field norm. In Public-Key Cryptography – PKC 2019, 2019.
+[12] Thomas Prest. Gaussian Sampling in Lattice-Based Cryptography. PhD thesis, École
+Normale Supérieure, 2015.
+[13] Thomas Prest. Sharper bounds in lattice-based cryptography using the Rényi divergence.
+In Advances in Cryptology – ASIACRYPT 2017, 2017. Cryptology ePrint Archive, Report
+2017/480.
+[14] Thomas Wunderer. A detailed analysis of the hybrid lattice-reduction and meet-in-themiddle attack. Journal of Mathematical Cryptology, 13(1):1–26, 2019.
+
+9
+
+

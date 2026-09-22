@@ -1,9 +1,19 @@
-# S01 — korekty Family do ręcznego startu MiMo
+# S01 — korekty Family odebrane z CHANGES_REQUIRED
 
 **TASK_ID=FT_FAMILY_SCALING_CORRECTIONS_RUN_003**,ROADMAP_ID=S01.
-Stan2026-09-22: **PREPARED_OWNER_START_AFTER_HANDOFF**. Właściciel poprosił o
-zadanie zamykające warunek publikacji. Prowadzący przygotował pliki i piny;
-nie uruchomił modelu ani odbioru.
+Stan2026-09-22: **CHANGES_REQUIRED po niezależnym odbiorze**. Właściciel przekazał zakończony
+handoff autora: **FT_FAMILY_CORRECTIONS_COMPLETE_FOR_REVIEW**.
+[Niezależny odbiór S01](CURRENT_FAMILY_REVIEW_TASK.md) wykonał na późniejsze
+bezpośrednie polecenie właściciela GPT-6 Astra. Wymagane poprawki: zakres
+nierówności game-level/oracles R1 i zgodność precyzji R5 z kodem/certyfikatem.
+
+- REPORT SHA `7d2f17cc51126b6dbb03279d7c876c460aa9f48bb581f63b9f512f87adee485d`.
+- OUTPUTS SHA `9e093536dfd684f83ca9bc361049e00064f3d60848f8ecc999aa5481398c397e`.
+- Piny100 outputs i197 bootstrap members zgodne; zapisany postfreeze autora
+  ma18/18 matches i16/16 exit0. Prowadzący nie wykonywał nowego replayu.
+- Recenzent potwierdził rdzeń R2/R3/R4/R5/R6/R7,własny fresh replay i PDF,
+  lecz wskazał I1/I2 w [REQUIRED_CORRECTIONS](stages/FT_FAMILY_CORRECTIONS_REVIEW_RUN_001/REQUIRED_CORRECTIONS.md).
+  R4 wycofany zakresowo,R5 ujemny,R6 proposed. Blokada publikacji pozostaje.
 
 **Obowiązkowe uzupełnienie właściciela2026-09-22:**
 [rachunek w `.sage` uruchamiany `sage lemma.sage`](documents/FT1536_ZASADA_RACHUNKU_SAGEMATH_2026-09-22.md),
@@ -24,10 +34,11 @@ Przypięto także nowszy autorski `FT_FAMILY_SCALING_2026-09-22_RUN_002`:
 To snapshot **nieodebrany**; deklarowane poprawki trzeba sprawdzić i dokończyć.
 R4 nadal jawnie OPEN w tej wersji. Dawny CORRECTIONS_RUN_002 pozostaje anulowany.
 
-Przekaż zadanie w istniejącym oknie MiMo po jego kontrolowanym handoffie
-bieżących prac. W czasie przygotowania widziano trwającą kampanię estymatora;
-ta obserwacja nie upoważnia do kill/restart. [T03](CURRENT_MIMO_TASK.md) zachowuje
-oddzielne W/zlecenie; nie przejmuj go i nie startuj drugiego workera.
+Autor zgłosił koniec własnych obliczeń. Jego W jest frozen/RO; nowy recenzent
+ma własny katalog. Handoff zawiera historyczne obserwacje kampanii/PID i T03;
+aktualne tory opisuje STATE. [T03](CURRENT_MIMO_TASK.md) zachowuje odrębne
+zlecenie REVIEW_002. Właściciel potwierdził częściowy run estymatora S06;
+jego wykonane wyniki nie są matematycznym odbiorem tego pakietu S01.
 
 S01 wymaga spójnego zamknięcia R1–R7,tekstu/kodu/PDF,kontroli i fresh replayu.
 COMPLETE_FOR_REVIEW oznacza gotowość autora. Następnie inny model wykonuje

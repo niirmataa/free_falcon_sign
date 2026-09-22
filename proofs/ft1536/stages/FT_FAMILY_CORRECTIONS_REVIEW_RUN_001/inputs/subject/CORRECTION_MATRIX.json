@@ -1,0 +1,91 @@
+{
+  "schema": "FT_FAMILY_SCALING_CORRECTION_MATRIX_V3",
+  "source_review": {
+    "checkpoint": "FT_FAMILY_SCALING_REVIEW_RUN_001",
+    "report_sha256": "3b4160dca5d613a1c8b8ca3d97bc11257e6ca300face029ce199aaa0c5f8898e",
+    "verdict": "RESEARCH_REVIEW_CHANGES_REQUIRED"
+  },
+  "base_candidate": {
+    "name": "CANDIDATE_R2",
+    "origin": "work/FT_FAMILY_SCALING_2026-09-22_RUN_002",
+    "manifest_sha256": "5ee71952862a0395e9c3d14873f953a9f9a61985d3ff24f2ccf4f34f0dfccd16",
+    "status": "UNREVIEWED_WORK_SNAPSHOT_NOT_ACCEPTED"
+  },
+  "rows": [
+    {
+      "id": "R1",
+      "finding": "reduction direction inverted (forged bytes => witness vs Extract o Forge)",
+      "old_location": "REVIEW section 3 R1; CANDIDATE_R2 ATTACK_PROBLEMS.md section 1",
+      "new_location": "ATTACK_PROBLEMS.md section 1 (arrows diagram added); scripts/lemma_controls.sage N3",
+      "disposition": "REUSED_VERIFIED_PLUS_NEW_CONTROLS",
+      "evidence": ["results/controls.json:N3", "ATTACK_PROBLEMS.md:section 1"],
+      "dependent_claims": ["C20", "C15"],
+      "remaining_scope": "full M0/M7 reduction (ROM/Sign simulation, freshness, resources) OPEN; reverse byte bridge Enc OPEN"
+    },
+    {
+      "id": "R2",
+      "finding": "trivializable free-target definition; unjustified 1-(1-p)^Q amplification",
+      "old_location": "REVIEW section 3 R2; CANDIDATE_R2 ATTACK_PROBLEMS.md section 0/2",
+      "new_location": "ATTACK_PROBLEMS.md section 0/2 (ROM-table targets, budgets, union bound); scripts/lemma_controls.sage N1/N2",
+      "disposition": "REUSED_VERIFIED_PLUS_NEW_CONTROLS",
+      "evidence": ["results/controls.json:N1", "results/controls.json:N2"],
+      "dependent_claims": ["C20", "C15"],
+      "remaining_scope": "conditional hazard arguments for adaptive targets; ROM simulation OPEN"
+    },
+    {
+      "id": "R3",
+      "finding": "falcon_complete_private computes G from (f,g,F); P1a threshold without population",
+      "old_location": "REVIEW section 3 R3; CANDIDATE_R2 ATTACK_PROBLEMS.md section 3",
+      "new_location": "ATTACK_PROBLEMS.md section 3 (P1a/P1b split, missing (F,G) solve, per-population thresholds); scripts/lemma_controls.sage N4",
+      "disposition": "REUSED_VERIFIED_PLUS_NEW_SOURCE_CHECK",
+      "evidence": ["results/controls.json:N4"],
+      "dependent_claims": ["C14", "C15"],
+      "remaining_scope": "conditions/lengths/cost of the (F,G) solve; EMITTED-population threshold OPEN"
+    },
+    {
+      "id": "R4",
+      "finding": "campaign skeleton still computes rejected homogeneous SIS as P2; ESTIMATOR_COMMIT=None",
+      "old_location": "CANDIDATE_R2 scripts/estimator_campaign/run_campaign.sage lines 58-67",
+      "new_location": "scripts/estimator_campaign/run_campaign.sage (guarded); scripts/historical/INVALID_FOR_P2_run_campaign.sage (byte copy) + scripts/historical/INVALID_FOR_P2.md; results/r4_tests.json",
+      "disposition": "CORRECTED_SCOPE_LIMITED_WITHDRAWAL",
+      "evidence": ["results/r4_tests.json:T1-T8"],
+      "dependent_claims": ["C15", "C21"],
+      "remaining_scope": "estimator NOT_RUN (never executed in this task); run preconditions listed in the campaign README"
+    },
+    {
+      "id": "R5",
+      "finding": "H-B fails its ideal chi-square test (tail > 2^-40)",
+      "old_location": "REVIEW section 3 R5; CANDIDATE_R2 RESEARCH_NOTES_PL.md H-B",
+      "new_location": "RESEARCH_NOTES_PL.md H-B (derivation + PROPOSED marking); scripts/lemma_chi_tail.sage; results/chi_tail.json; paper/main.tex regime B (i)",
+      "disposition": "CORRECTED_RIGOROUS_RERUN_NEGATIVE_RESULT_KEPT",
+      "evidence": ["results/chi_tail.json", "results/controls.json:N5"],
+      "dependent_claims": ["C19"],
+      "remaining_scope": "post-cast/retry Sign law OPEN; 2^-28 is PROPOSED model-level target only; derivation of 768/1.075 OPEN"
+    },
+    {
+      "id": "R6",
+      "finding": "PROPOSED_BOUND status inconsistent; twiddle perturbation hand-waved",
+      "old_location": "REVIEW section 3 R6; CANDIDATE_R2 paper abstract/conclusions/CLAIMS",
+      "new_location": "paper/main.tex (proof sketch: placeholder multiplier, separate derivation required; validation: 12 cases fix nothing); CLAIMS.md C11",
+      "disposition": "REUSED_VERIFIED_PLUS_TEXT_STRENGTHENING",
+      "evidence": ["results/controls.json:N6", "proof/diffs/paper_main.tex.diff"],
+      "dependent_claims": ["C11", "C12"],
+      "remaining_scope": "full precision theorem and eps_tw budget deliberately out of scope (TASK R6)"
+    },
+    {
+      "id": "R7",
+      "finding": "table row 15360 wrong; evidence classes conflated",
+      "old_location": "CANDIDATE_R2 PARAMETRIC_TASK_LAYOUT.md; CLAIMS.md",
+      "new_location": "PARAMETRIC_TASK_LAYOUT.md (marker block); scripts/gen_layout_table.py; CLAIMS.md/CLAIMS.json (9 classes, exports/premises)",
+      "disposition": "REUSED_VERIFIED_PLUS_SINGLE_SOURCE_AND_TAXONOMY",
+      "evidence": ["scripts/gen_layout_table.py --check", "results/controls.json:N7"],
+      "dependent_claims": ["C6", "C1-C21 classification"],
+      "remaining_scope": "none; kernel-vs-C-allocator boundary documented in MODEL_BOUNDARIES.md"
+    }
+  ],
+  "computation_rule": {
+    "supplement": "supplements/FT1536_ZASADA_RACHUNKU_SAGEMATH_2026-09-22.md",
+    "supplement_sha256": "b6afcdcabb811dd8bc31072455ed9a94a4c4773ec68d41d207ac1d7e98eae241",
+    "applied": "R5 and the new checkers run as sage lemma_*.sage (ZZ/QQ, RealBallField); python drafts preserved in proof/drafts/ with port receipt"
+  }
+}

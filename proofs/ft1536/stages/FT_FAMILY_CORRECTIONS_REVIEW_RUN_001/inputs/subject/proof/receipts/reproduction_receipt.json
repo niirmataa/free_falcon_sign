@@ -1,0 +1,30 @@
+{
+  "schema": "FT_FAMILY_REPRODUCTION_RECEIPT_V1",
+  "what": "byte-exact reproduction of the CANDIDATE_R2 advertised results (pins: inputs/bootstrap/CANDIDATE_R2/SHA256SUMS, manifest sha256 5ee71952862a0395e9c3d14873f953a9f9a61985d3ff24f2ccf4f34f0dfccd16)",
+  "mode": "historical pinned runners in their own documented formats (python3 stdlib; sage_exact.sage via sage with preparser; check_fft3_error.py via the Sage-env python, the S20-translation equivalent documented in RESEARCH_NOTES_PL.md section 5)",
+  "byte_identical_to_pins": [
+    "results/geometry.json", "results/geometry.csv", "results/check_geometry.log",
+    "results/layout.json", "results/layout.csv", "results/check_layout.log",
+    "results/bounds_table.json", "results/check_bounds_table.log",
+    "results/fft3_error.json", "results/check_fft3_error.log",
+    "results/sage_exact.json", "results/sage_exact.log",
+    "results/lean_FTA2.log", "results/lean_FTBounds.log",
+    "results/lean_FTLayout.log", "results/lean_FTRoots.log",
+    "scripts/check_geometry.py", "scripts/check_layout.py",
+    "scripts/check_bounds_table.py", "scripts/check_fft3_error.py",
+    "scripts/sage_exact.sage",
+    "scripts/historical/INVALID_FOR_P2_run_campaign.sage (pin 12adfe04...)",
+    "scripts/historical/README_invalid_original.md (pin 919090d0...)"
+  ],
+  "lean_rebuild": "fresh compile of the 4 pinned modules with -j1 -M2048: clean (0-byte) logs, byte-identical to the pinned empty logs; AxiomAudit log regenerated (see lean_build_receipt.json)",
+  "episodes_preserved": [
+    {
+      "episode": "false-positive reproduction of check_fft3_error",
+      "detail": "the first 'reproduction' ran `sage scripts/check_fft3_error.py`; this Sage CLI executes file bodies with __name__ == 'sage.all' (verified probe), so the historical runner's if __name__ == '__main__' guard never fired: the shell-truncated log stayed empty and results/fft3_error.json remained the untouched pinned copy (detected via mtime). The run was redone in the runner's own mode (Sage-env python); the pre-run copy was deleted first so the regenerated files prove execution.",
+      "resolution": "genuine rerun produced byte-identical results/fft3_error.json (99e6e40a...) and results/check_fft3_error.log (ea7e4e36...)",
+      "kept": "FAILED_ROUTES.md section 1.5"
+    }
+  ],
+  "mismatches": [],
+  "note": "sage_exact.sage is top-level .sage code and genuinely ran under the sage CLI (mtime-verified); its outputs are byte-identical to the pins."
+}

@@ -1,0 +1,105 @@
+--- inputs/bootstrap/CANDIDATE_R2/CLAIMS.md	2026-09-22 06:40:58.224835233 +0200
++++ CLAIMS.md	2026-09-22 08:10:24.607738504 +0200
+@@ -1,49 +1,59 @@
+-# CLAIMS — ledger twierdzeń FT_FAMILY_SCALING (2026-09-22, RUN_002)
++# CLAIMS — ledger twierdzeń FT_FAMILY_SCALING (2026-09-22, RUN_003 / S01)
+ 
+-Klasy weryfikacji (zaostrzone po odbiorze R6/R7):
++Klasy dowodowe (wymagany rozdział R7; żadna pozycja nie ma statusu „proved"
++powyżej swojej klasy):
+ 
+-- `KERNEL` — Lean 4, czysty log, brak sorry/admit/native_decide;
+-- `EXACT_INTEGER` — arytmetyka całkowita/dokładna (Sage ZZ, GAP, liczniki);
+-- `FLOAT_CHECK` — kontrola numeryczna zmiennoprzecinkowa o podanej precyzji
+-  (binary64 / Decimal / MPFR 256-bit / complex balls) — **to nie jest
+-  arytmetyka dokładna ani dowód**;
+-- `ANALYTIC` — dowód/szkic w tekście manuskryptu;
+-- `SOURCE_FACT` — dosłowny fakt przypiętych źródeł;
+-- `PROPOSED_BOUND` — proponowana granica do dowiedzenia;
+-- `NOT_RUN`, `OPEN`.
++- `KERNEL` — Lean 4.34, czysty log, brak sorry/admit/native_decide/
++  Lean.ofReduceBool/aksjomatu celu/wyciszania ostrzeżeń;
++- `EXACT_INTEGER/RATIONAL` — arytmetyka całkowita lub dokładna
++  (Sage ZZ/QQ, GAP, Fraction, liczniki);
++- `RIGOROUS_INTERVAL` — arytmetyka przedziałowa z wychodzącymi zaokrągleniami
++  i jawnymi granicami transcendentalnymi (udowodniony margines błędu);
++- `FLOAT_DIAGNOSTIC` — kontrola numeryczna zmiennoprzecinkowa o podanej
++  precyzji (binary64 / MPFR / complex balls) — **to nie jest arytmetyka
++  dokładna ani dowód**;
++- `ANALYTIC` — dowód lub szkic w tekście manuskryptu;
++- `SOURCE_FACT` — dosłowny fakt przypiętych źródeł (manifest `56974571…`)
++  albo, dla kodu własnego pakietu, fakt kodu z eksportem wykonywalnej kontroli;
++- `PROPOSED` — proponowana granica/kryterium do dowiedzenia/zatwierdzenia;
++- `OPEN` — otwarty obowiązek, brak dowodu;
++- `NOT_RUN` — celowo niewykonane obliczenie (brak wyniku, nie wynik zerowy).
+ 
+-Żadna pozycja nie ma statusu „proved" powyżej swojej klasy. Zakres = dokładny
+-model/populacja. Granica kernela jest konsekwentna: np. `7*N = 10752` jest
+-rachunkiem, **nie** dowodem bezpieczeństwa alokatora; pomosty
+-trace/embedding i ich instancja w C mają dodatkowe wiązanie analityczne /
+-źródłowe.
++Granica kernela jest konsekwentna: np. `7*N = 10752` jest rachunkiem, **nie**
++dowodem bezpieczeństwa alokatora C. **Kompilacja lokalnej arytmetyki nie
++dowodzi poprawności ani bezpieczeństwa implementacji C** (patrz
++`MODEL_BOUNDARIES.md`); pomosty trace/embedding i ich instancja w C mają
++dodatkowe wiązanie analityczne/źródłowe.
+ 
+-| # | twierdzenie | klasa | zakres | artefakt |
++| # | twierdzenie | klasa | zakres | eksport / przesłanki |
+ |---|---|---|---|---|
+-| C1 | `X^N − X^(N/2) + 1 = Phi_{3N}(X)` dla N = 3·2^k (768/1536/3072) | EXACT_INTEGER (+ ANALYTIC) | wielomiany nad ZZ | `results/sage_exact.json` SA1; paper Lemat 1 |
+-| C2 | `3N \| q−1`, q = 18433 pierwsze; pierwiastki NTT 3532/625/25 (rząd 3N, `Phi_N = 0 mod q`); 8/27/13 mają rząd N i `Phi_N = 3 mod q` | KERNEL + EXACT_INTEGER | arytmetyka mod q | `lean/FTRoots.lean`, `sage_exact.json` |
+-| C3 | `(1/N)Tr(a*conj a) = sum_{i<N/2} A2(a_i, a_{i+N/2}) = Q_A2(a)`; `Q_A2` = forma liczona przez `falcon_is_short` | ANALYTIC + EXACT_INTEGER + SOURCE_FACT | a ∈ R_N; model = `falcon-enc.c` ter | `lean/FTA2.lean`, SA2/SA3, paper Lemat 2 |
+-| C4 | `(1/2)||a||^2 <= Q_A2(a) <= (3/2)||a||^2`, równości osiągalne; `|sigma_j(a)|^2 <= (N/2) Q_A2(a)` | KERNEL + EXACT_INTEGER | a ∈ Z^N | `lean/FTA2.lean`, SA6, paper Lemat 3 |
+-| C5 | `B_1536 = floor((43/40)^2 * 2N * 768^2) = 2093922385`; `2N*768^2 = 1811939328` (bez marginesu) | KERNEL | arytmetyka całkowita | `lean/FTBounds.lean` |
+-| C6 | `T = (logn+2)N`, `sk = (logn+6)N`, liście `= N`, `tmp = 7N`, scratch `W(r) = max(2^r+W(r-1), 2^(r+1))`, `W_top = 7*2^(ell-1)`; instancje 8448/18432/39936, 11520/24576/52224, 1792/3584/7168, high-water 4096/8192/16384 | KERNEL (+ SOURCE_FACT dla zgodności N=1536) | layout strukturalnie niezmienionych źródeł | `lean/FTLayout.lean`, `results/layout.json`, RAW_ASSEMBLY |
+-| C7 | `det(Lambda_h) = q^N` (wsp.); `det G = (3/4)^N` (Gram Q_A2 na `(z1,z2)`), `covol_Q(Lambda) = (3/4)^(N/2) q^N`, `covol^(1/2N) = (3/4)^(1/4) sqrt(q)` | ANALYTIC | kraty NTRU stopnia N | paper sekcja geometry |
+-| C8 | `E||f||^2 = 2N/3`, `E||(g,-f)||^2 = 4N/3` dla surowych iid ternary; RMS/GH → `sqrt(4 pi e/(3 q)) = 0.0248538421` | ANALYTIC + EXACT_INTEGER + FLOAT_CHECK (stałe) | surowa propozycja (NIE populacja po KeyGen) | `results/geometry.csv` |
+-| C9 | Skalowanie GH: `GH ∝ sqrt(N)` przy stałym q (`GH(2N)/GH(N) → sqrt(2)`) | ANALYTIC + FLOAT_CHECK (binary64) | konwencja dokładna GH | `results/geometry.csv` |
+-| C10 | Kontrprzykład: `|a(zeta)| = sqrt(3)/(2 sin(pi/(3N))) = 1270.261873…` (N=1536) łamie `sqrt(N) max|coeff|` (32,4×) | ANALYTIC + FLOAT_CHECK (MPFR 256-bit) | a = 1+X+…+X^(N−1) | `sage_exact.json` SA5, `fft3_error.json` |
+-| C11 | Granica błędu FFT3: `|fl(a)_j − a(zeta_j)| <= gamma_{c ell} (1+eps_tw)^(ell+1) ||a||_1` | **PROPOSED_BOUND (do dowiedzenia)** — stała c, domeny operacji i eps_tw nieustalone; model: binary64, 1 zaokrąglenie/operację | source-order `falcon_FFT3(full=1)` | paper sekcja stabilności |
+-| C12 | Nieprzeczenie C11: `max|err| <= 8 ell u ||a||_1`, `c_emp <= 0.209` (maks. 0.20850) dla 4 klas wejść × 3 stopnie | FLOAT_CHECK (MPFR 256-bit; kontrola, nie dowód; port nie jest dowiedziono równoważny FPEMU) | port na przypiętych bitach `fpr_gm3_*` | `results/fft3_error.json` |
+-| C13 | Podgrupy Galois: 8 rozwiązań `u^2=1`, 7 podgrup rzędu 2 (= 7 podpól indeksu 2), 7 indeksu 2 (= kwadratowe), suma podgrup 142/164/186 | EXACT_INTEGER (GAP) | `(Z/m)^*`, m = 2304/4608/9216 | `sage_exact.json` SA4 |
+-| C14 | FT768/FT3072: brak implementacji w przypiętych źródłach (twarde `logn != 10` w `load_skey` i `ft_keygen_leaf_certificate`, `treesize = 12n`) | SOURCE_FACT | manifest `56974571…` | SOURCE_MAP §4 |
+-| C15 | Koszty ataków dla P1/P2/P3 | NOT_RUN | — | `ATTACK_PROBLEMS.md`, `scripts/estimator_campaign/` (szkielet niezmieniony w tej turze — decyzja właściciela) |
+-| C16 | Czasy KeyGen/Sign/Verify, wydajność, przepustowość | NOT_RUN | — | brak pomiaru |
+-| C17 | Wystarczalność precyzji dla FT3072; bezpieczeństwo rzutowania `Q<B → int16`; prawo samplera / realny PRNG; η_pre i straty kompozycji | OPEN | — | CORRECTIONS §5 |
+-| C18 | Poprawność, bezpieczeństwo i przydatność wdrożeniowa rodzin FT768/FT3072 | OPEN (poza zakresem) | — | — |
+-| C19 | Ogon MODEL_CHI2_IDEAL (σ=768, iid Gauss w ortonormalnych współrzędnych Q_A2): `Pr[Q >= B] = [2.9925420736…e−9 ± 2.32e−82] = 2^−28.32… > 2^−40` — obala kryterium „≥ 1 − 2^−40" w tym modelu; **nie jest to prawo Sign ani poziom bezpieczeństwa** | FLOAT_CHECK (arytmetyka przedziałowa 256-bit, niezależny odbiór) | wyłącznie idealny model ciągły przed castami/retry | `FT_FAMILY_SCALING_REVIEW_RUN_001/RESULT.json` |
+-| C20 | Kontrmodele definicji P2: N1 (przeciwnik wybiera c ⇒ trywiał `c=0, z=0`) i N2 (powtórzone nazwy ⇒ zależne cele; `(1−p)^Q` nieuprawnione) — stąd cele z tabeli ROM M0 §3 i union bound | ANALYTIC (kontrprzykład/definicja) | gra M0 | `ATTACK_PROBLEMS.md` §2 |
++| C1 | `X^N − X^(N/2) + 1 = Phi_{3N}(X)` dla N = 3·2^k (768/1536/3072) | EXACT_INTEGER/RATIONAL + ANALYTIC | wielomiany nad ZZ | `results/sage_exact.json` SA1; paper Lemat 1; przesłanki: definicja Φ₆ |
++| C2 | `3N \| q−1`, q = 18433 pierwsze; pierwiastki 3532/625/25 (rząd 3N, `Phi_N = 0 mod q`); 8/27/13 mają rząd N i `Phi_N = 3 mod q` | KERNEL + EXACT_INTEGER/RATIONAL | arytmetyka mod q | `lean/FTRoots.lean` (build: `results/lean_FTRoots.log`), `sage_exact.json`; przesłanki: (Z/q)\* cykliczna |
++| C3 | `(1/N)Tr(a*conj a) = Q_A2(a) = Σ_{i<N/2} A2(a_i,a_{i+N/2})`; `Q_A2` = forma liczona przez `falcon_is_short` | ANALYTIC + EXACT_INTEGER/RATIONAL + SOURCE_FACT | a ∈ R_N; model = ter branch `falcon-enc.c` | `lean/FTA2.lean`, `sage_exact.json` SA2/SA3, paper Lemat 2, `Extra/c` (pin `56974571…`) |
++| C4 | `(1/2)\|\|a\|\|² ≤ Q_A2(a) ≤ (3/2)\|\|a\|\|²`, równości osiągalne; `\|σ_j(a)\|² ≤ (N/2) Q_A2(a)` | KERNEL + EXACT_INTEGER/RATIONAL | a ∈ Z^N | `lean/FTA2.lean` (9 nazwanych twierdzeń), `sage_exact.json` SA6 |
++| C5 | `B_1536 = floor((43/40)²·2N·768²) = 2093922385`; `2N·768² = 1811939328` (bez marginesu); reszta 1472/1600 | KERNEL | arytmetyka całkowita | `lean/FTBounds.lean`; przesłanki: komentarz `falcon-enc.c:632` (SIG-001 OPEN) |
++| C6 | Layout: `T=(logn+2)N`, `sk=(logn+6)N`, liście `=N`, `tmp=7N`, scratch `W(r)=max(2^r+W(r-1),2^(r+1))`, `W_top=7·2^(ell-1)`; instancje 8448/18432/39936, 11520/24576/52224, 1792/3584/7168, high-water 4096/8192/**16384** | KERNEL (+ SOURCE_FACT dla zgodności N=1536) | layout strukturalnie niezmienionych źródeł | `lean/FTLayout.lean`, `results/layout.json`, tabela z `scripts/gen_layout_table.py` (jedno źródło), RAW_ASSEMBLY (REUSED z pinem) |
++| C7 | `det(Lambda_h)=q^N` (wsp.); `det G=(3/4)^N`, `covol_Q=(3/4)^(N/2) q^N`, `covol^(1/2N)=(3/4)^(1/4) sqrt(q)` | ANALYTIC | kraty NTRU stopnia N | paper sekcja geometry; `results/geometry.json` G3 |
++| C8 | `E\|\|f\|\|²=2N/3`, `E\|\|(g,−f)\|\|²=4N/3` (surowe iid ternary); RMS/GH → `sqrt(4πe/(3q))=0.0248538421` | ANALYTIC + EXACT_INTEGER/RATIONAL + FLOAT_DIAGNOSTIC (stałe) | surowa propozycja (NIE populacja po KeyGen) | `results/geometry.csv/.json` G2/G5 |
++| C9 | Skalowanie GH przy stałym q: `GH ∝ sqrt(N)` (`GH(2N)/GH(N) → sqrt(2)`); konwencja dokładna GH | ANALYTIC + FLOAT_DIAGNOSTIC | binary64/Decimal 50 | `results/geometry.csv` G4/G6 |
++| C10 | Kontrprzykład: `\|a(ζ)\| = sqrt(3)/(2 sin(π/(3N))) = 1270.261873…` (N=1536) łamie `sqrt(N)·max\|coeff\|` (32,4×) | ANALYTIC + FLOAT_DIAGNOSTIC (MPFR 256-bit) | a = 1+X+…+X^(N−1) | `sage_exact.json` SA5, `results/fft3_error.json` |
++| C11 | Granica błędu FFT3: `\|fl(a)_j − a(ζ_{r_j})\| ≤ γ_{cℓ}(1+ε_tw)^(ℓ+1)\|\|a\|\|₁` | **PROPOSED** (do dowiedzenia) | model binary64, 1 zaokrąglenie/operację, source-order `falcon_FFT3(full=1)` | paper Prop. `prop:fft3` (szkic, jawna uwaga o osobnym dowodzie perturbacji twiddles); stała c, domeny i ε_tw **nieustalone** |
++| C12 | Nieprzeczenie C11: `max\|err\| ≤ 8ℓu\|\|a\|\|₁`, `c_emp ≤ 0.209` (maks. 0.20850) dla 4 klas wejść × 3 stopnie (12 przypadków) | FLOAT_DIAGNOSTIC (MPFR 256-bit; kontrola, nie dowód) | port na przypiętych bitach `fpr_gm3_*`; port NIE jest dowiedziono równoważny FPEMU | `results/fft3_error.json` |
++| C13 | Podgrupy Galois: 8 rozwiązań `u²=1`, 7 podgrup rzędu 2 (= 7 podpól indeksu 2), 7 indeksu 2 (= kwadratowe), suma 142/164/186 | EXACT_INTEGER/RATIONAL (GAP) | `(Z/m)*`, m = 2304/4608/9216 | `sage_exact.json` SA4 |
++| C14 | FT768/FT3072: brak implementacji w przypiętych źródłach (twarde `logn != 10`, `treesize = 12n`) | SOURCE_FACT | manifest `56974571…` | SOURCE_MAP §4; kontrola N4 (`results/controls.json`) |
++| C15 | Koszty ataków P1/P2/P3 | NOT_RUN | — | `ATTACK_PROBLEMS.md`; `scripts/estimator_campaign/` (guarded; `results/r4_tests.json`) |
++| C16 | Czasy KeyGen/Sign/Verify, wydajność | NOT_RUN | — | brak pomiaru |
++| C17 | Wystarczalność precyzji FT3072; bezpieczeństwo `Q<B → int16`; prawo samplera/realny PRNG; η_pre i straty kompozycji | OPEN | — | MODEL_BOUNDARIES.md |
++| C18 | Poprawność/bezpieczeństwo/wdrożenie FT768/FT3072; poziom bezpieczeństwa rodziny | OPEN (poza zakresem) | — | — |
++| C19 | Ogon MODEL_CHI2_IDEAL: `x = B/(2·768²) = 2093922385/1179648`, `Pr[Q≥B] = e^{−x}Σ_{k=0}^{1535} x^k/k! ∈ [2.992542073603248197…e−9 ± ~10^−305]`; **certyfikowane** `ogon > 2^−40` (obala dawne kryterium „≥1−2^−40" w tym modelu) i `ogon < 2^−28`; to ujemny test idealnego modelu ciągłego, **nie** prawo Sign po castach, **nie** prawdopodobieństwo ataku, **nie** poziom bezpieczeństwa | RIGOROUS_INTERVAL | MODEL_CHI2_IDEAL, σ=768, iid Gauss w ortonormalnych współrzędnych Q_A2, PRZED castami/retry | `results/chi_tail.json` (dokładne sumy + obudowy M1/M2 z wychodzącymi granicami); niezależne cyfry recenzji: `FT_FAMILY_SCALING_REVIEW_RUN_001/RESULT.json` (REUSED); przesłanki: postać Erlanga/Poissona (paper/notatki) |
++| C20 | Kontrmodele definicji P2: N1 (przeciwnik wybiera c ⇒ trywiał `c=0,z=0`, stopień wygranej 1 vs 1/q dla celów z tabeli ROM) i N2 (powtórzone nazwy ⇒ zależne cele; `(1−p)^Q` nieuprawnione — unia 1/2 zamiast 3/4); poprawne strzałki redukcji (Extract∘Forge = Solve_rel działa; Solver→Forge wymaga nieistniejącego mostu `Enc`) | ANALYTIC + wykonawcze kontrole | gra M0 na modelach zabawkowych | `results/controls.json` N1/N2/N3; `ATTACK_PROBLEMS.md` §0–§2 |
++| C21 | Naprawiony interfejs kampanii estymatora: bez premises rekord `NOT_RUN_MODEL_UNRESOLVED` **przed** backendem (backend nie jest nawet importowany); brak mappingu/SHA/premises blokuje backend; routing SIS→P2 (po nazwie modelu lub symbolu) odrzucany zanim backend wystartuje; historyczny runner oznaczony INVALID_FOR_P2/NOT_RUN | SOURCE_FACT (kod pakietu) + wykonawcze kontrole | kod tego pakietu; mock backend, nie estymator | `results/r4_tests.json` (T1–T8), `scripts/estimator_campaign/run_campaign.sage`, `scripts/historical/INVALID_FOR_P2.md` |
+ 
+-Uwaga metodyczna: C1–C6, C13 mają kontrolę dokładną (kernel / całkowita);
+-C7–C10 mają warstwę analityczną z kontrolami numerycznymi wskazanymi w
+-klasie; C11 to proponowana granica z nieprzeczeniem C12 — nie wynik
+-analityczny; C19/C20 to wynik ujemny i kontrmodele definicji. Nic z
+-powyższego nie jest deklaracją poziomu bezpieczeństwa ani certyfikatem
+-wdrożenia.
++Uwaga metodyczna: C1–C6, C13 mają kontrolę dokładną (kernel/całkowitą);
++C7–C10 mają warstwę analityczną z kontrolami wskazanymi w klasie; C11 to
++**proponowana** granica z nieprzeczeniem C12; C19 to wynik ujemny
++z certyfikatem przedziałowym; C20/C21 to kontrmodele i kontrole wykonywalne.
++Propozycja poziomu odrzuceń `2^−28` z C19 jest oznaczona jako **PROPOSED**
++model-level target — **nie jest zatwierdzonym celem projektu ani poziomem
++bezpieczeństwa** (wymóg TASK R5). Nic z powyższego nie jest deklaracją
++poziomu bezpieczeństwa ani certyfikatem wdrożenia.
