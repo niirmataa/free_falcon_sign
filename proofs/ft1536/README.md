@@ -257,6 +257,12 @@ i [1270 wejść](background/IID_RETRY_COMPOSITION_2026-09-22/README.md) pozostaj
 niezmienne. Następny T02 dotyczy real SHAKE/ChaCha→IID; H2P/whole real Sign,
 integer recovery,Sign→Verify/security/CT są nadal osobnymi obowiązkami.
 
+**Małe zadanie T02.1 dla kolejnego modelu:**
+[CURRENT_SMALL_TASK](CURRENT_SMALL_TASK.md),39 przypiętych wejść,własny W.
+Cel to deterministic init56/refill4096,actual Word layout,counter/frame i
+consumer zasobów T01; pełny PRNG→IID bridge pozostaje OPEN. Niezależne od
+S01/T03,ręczny start właściciela i późniejszy odbiór przez inny model.
+
 **Zachowane opracowanie FT_FAMILY_SCALING modelu MiMo:**
 [pakiet, PDF i wyniki](stages/FT_FAMILY_SCALING_REVIEW_RUN_001/README.md)
 oraz [niezależna recenzja](stages/FT_FAMILY_SCALING_REVIEW_RUN_001/REPORT.md).

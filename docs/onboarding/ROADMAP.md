@@ -1,6 +1,6 @@
 # Główna ścieżka twierdzeń i jawny rejestr zadań FT1536
 
-Wersja planu: **2026-09-22 / 3 — przygotowanie korekt S01**. To żywy plan prowadzącego, oparty na
+Wersja planu: **2026-09-22 / 4 — małe podzadanie T02.1**. To żywy plan prowadzącego, oparty na
 [M0 TARGET_TYPE](../../proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001/TARGET_TYPE.md)
 i [M0 HOP_LEDGER](../../proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001/HOP_LEDGER.md).
 Nie zmienia zamrożonego M0 ani statusów starych raportów. Stan pracy na żywo:
@@ -78,11 +78,14 @@ F01–F09 to grupy orientacyjne; nie jeden zbiorczy nowy status PROVED.
 `IN_PROGRESS` = istnieje wyznaczony wykonawca; `PLANNED` = cel
 zaplanowany, bez upoważnienia do startu; `REVIEWED` dopiero po niezależnym
 odbiorze. Zależność oznacza wymagany interfejs, nie pozwolenie na założenie tezy.
+`OPEN` przy zadaniu-rodzicu oznacza, że jego pełny interfejs nie jest jeszcze
+domknięty, nawet jeśli podzadanie ma już własny TASK lub odebrany subclaim.
 
 | ID / status | Dokładny cel i wejścia | Wyjście wymagane do odbioru | Zależności |
 |---|---|---|---|
 | **T01 REVIEWED — IID_RETRY_COMPOSITION** | Actual post-H2P region,reached entries,cap16,reset/fault/norm/codec w G_retry_IID | **PASS_SCOPED_REVIEW** innego modelu:492/492,WholeRegionBad≤2^-80,coupling,joint6352-block/26017792-byte budget z failure<2^-1020,STATIC≤3160; mixed proof. [REPORT](../../proofs/ft1536/stages/FT1536_IID_RETRY_COMPOSITION_RUN_001/REPORT.md),commit `a2cdf317` | F04–F09; [niezależny odbiór](../../proofs/ft1536/validation/2026-09-22-iid-retry-independent/README.md) |
-| **T02 PLANNED — PRNG_REAL_TO_IID_BUFFER** | Dokładny root SHAKE32→stream i state56/ChaCha/refills/getters; skończone ghost budgets | Jawne gry, resource-indexed assumptions i reduktory/hybrid losses; zachowana wspólna historia, init/discards/abandoned tails. Nie „448-bit security” | T01 resources, F02,F07,F08 |
+| **T02 OPEN — PRNG_REAL_TO_IID_BUFFER** | Dokładny root SHAKE32→stream i state56/ChaCha/refills/getters; skończone ghost budgets; T02.1 przygotowane | Jawne gry, resource-indexed assumptions i reduktory/hybrid losses; zachowana wspólna historia, init/discards/abandoned tails. Nie „448-bit security”; lokalne T02.1 nie domyka rodzica | T01 resources, F02,F07,F08 |
+| **T02.1 PREPARED_OWNER_START — PRNG_LAYOUT_COUNTER** | Mały fragment frng.c:init56,Word-state,ChaCha refill4096,counter/frame; public fixed fixtures | Universal deterministic source contract + original-C controls/replay; literal lanes/feed-forward,wrap/repeat i406528-block consumer na T01 H. [TASK/W](../../proofs/ft1536/CURRENT_SMALL_TASK.md) | T01 resources,F07,pinned source17; niezależne od S01/T03 |
 | **T03 PREPARED_OWNER_START — REFERENCE_INTEGER_RECOVERY** | Source rounded sampler/basis/iFFT/rint oraz independent reference integer object; osobny one-root TASK MiMo | Warunki i dowód recovery/congruence/rounding gap; wyprowadzone, a nie założone. Osobno Safe16, centered extraction i norm compatibility; partial/counterexample możliwe | F03–F09; T01 do rozszerzenia na retries |
 | **T04 PLANNED — PREFIX_AND_API_BINDING** | Pominięty przez T01 prefix: context/loader/rng_ready/nonce/H2P, usługi E i actual source outcomes | Dokładny zasięg definedness/termination/abort, legal ReadyRetryEntry z API i joint randomness interfaces. Brak ukrytego all-success lub IID premise | F02–F05,T01; T02 dla real-law claims |
 | **T05 PLANNED — GLOBAL_REFERENCE_GEOMETRY** | Actual parameters/tree/rounding oraz wybrane ordered reference law | Most do zadeklarowanego ideal coset Gaussian, z błędami/geometrią/secret dependence; Q_S/Q_stop nie stają się nim przez nazwę | F08,F09,T03; historyczny FULL_GEOMETRY |
@@ -96,10 +99,10 @@ odbiorze. Zależność oznacza wymagany interfejs, nie pozwolenie na założenie
 | **T13 PLANNED — INDEXED_MT_EXTRACTION** | M6 simulator + L_V i dokładna gra MT-ISIS | Accepted forgery→świadek TEGO SAMEGO target index; jawna assumption MT i t_B,w_B,L_B. Nie potrzebuje inverse encoding do tego kierunku | T12,F01,F02 |
 | **T14 PLANNED — M7_FINAL_COMPOSITION** | Wszystkie zatwierdzone certificates/hops/resources | Instancja M0ReductionTarget: jawny końcowy wzór, raz p_K, brak double-count, scope klasycznego ROM; lista pozostających assumptions | T02–T13 |
 
-**Najbliższa kolejność prowadzącego:** po zapisanym niezależnym odbiorze T01
-dopracować TASK T02; T03 ma już osobny przygotowany one-root TASK dla MiMo.
-T02 pozostaje PLANNED, bez automatycznego startu. Każdy wiersz może wymagać
-kilku checkpointów.
+**Najbliższa kolejność prowadzącego:** T02.1 przygotowano na prośbę właściciela
+o mały niezależny fragment dla kolejnego modelu. Pełny T02 game/hybrid pozostaje
+OPEN; jego dalszy TASK skonsumuje odebrany lokalny kontrakt. T03 i S01 mają
+osobne W/zlecenia. Żaden model nie jest uruchamiany automatycznie.
 
 ### Obowiązkowy krok przy rozwijaniu T05/T06/T09/T14
 
@@ -152,6 +155,9 @@ T01 ma już frozen zadanie sprzed wprowadzenia ROADMAP_ID; mapowanie zapisano
 tutaj, bez przepisywania jego pinów. W razie potrzeby podział: T02.1,T02.2 itd.
 Parent pozostaje otwarty, dopóki suma subclaims nie zamknie jego interfejsu.
 Po partial nie przechodź dalej przez założenie brakującego lematu.
+T02.1 obejmuje wyłącznie deterministic source init/refill/layout/counter;
+root-SHAKE law,pełne PRNG games,assumptions i computational losses są pozostałą
+częścią T02 i nie są przesłankami nowego lokalnego zadania.
 
 ## 7. Zmiana planu i statusu
 
@@ -183,3 +189,7 @@ muszą wskazywać ten sam aktywny etap.
   nieodebraną rewizją autora. R4 dopuszcza jawne wycofanie błędnego active runnera
   bez uruchamiania kampanii. Start po handoffie bieżących prac MiMo; T03/W
   zachowane, brak automatycznych wykonań. Warunek publikacji nie został zniesiony.
+- 2026-09-22/v4: właściciel poprosił o małe kolejne zadanie dla innego modelu.
+  Wyodrębniono T02.1 PRNG_LAYOUT_COUNTER,osobny W,39 przypiętych wejść;
+  source kontrakt potrzebny do T02 bez dublowania S01/T03. Parent T02 OPEN;
+  review/replay zwrotu przez inny niezależny model, brak automatycznego startu.

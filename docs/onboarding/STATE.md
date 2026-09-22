@@ -2,12 +2,14 @@
 
 **Aktualizacja2026-09-22:** T01 niezależnie odebrany w `a2cdf317`;
 następnie właściciel poprosił o zadanie korekt S01 przed publikacją.
+Po nim przygotowano na jego prośbę małe T02.1 dla kolejnego ręcznie wybranego modelu.
 Historyczne obserwacje procesów/dudect poniżej pochodzą z około04:33 CEST.
 Stan procesów jest ulotny: sprawdź go ponownie przed pracą. Ten dokument
 aktualizujemy po odbiorze etapu, zmianie wykonawcy lub decyzji właściciela.
 
 Główna kolejka zadań i kryteria: [ROADMAP](ROADMAP.md).
-Astra: **T01 REVIEWED**, następny **T02 PLANNED**; osobny MiMo = **T03**,
+Astra: **T01 REVIEWED**, pełny **T02 OPEN**, podzadanie **T02.1 PREPARED_OWNER_START**;
+osobny MiMo = **T03**,
 poprawki Family = **S01 PREPARED_OWNER_START_AFTER_HANDOFF**, dudect = **S02**.
 
 ## Decyzje właściciela
@@ -77,6 +79,16 @@ Raport i odbiór:
   i ręcznego polecenia. T03 jest osobnym przygotowanym zadaniem MiMo.
 - Granica: nie ma boundu Bad|success bez success denominatoru. Real PRNG,H2P,
   whole real Sign,integer recovery,Sign→Verify/security/CT pozostają otwarte.
+
+## Małe T02.1 — osobny model, ręczny start
+
+[CURRENT_SMALL_TASK](../../proofs/ft1536/CURRENT_SMALL_TASK.md) wskazuje
+`FT1536_PRNG_LAYOUT_COUNTER_RUN_001`,39 przypiętych wejść i nowy W.
+Cel: source-bound deterministic init56,ChaCha block/refill4096,counter/frame
+i przeliczenie odebranego T01 resource envelope. Bez assumed IID init bytes
+lub dowodzenia kryptografii całego SHAKE/ChaCha hopu. T02 pozostaje OPEN.
+Zadanie jest niezależne od S01/T03 i ma własnego jednego wykonawcę wybranego
+przez właściciela; prowadzący przygotował pliki, nie uruchomił modelu.
 
 ### Incydent dwóch wykonawców
 

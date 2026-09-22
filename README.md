@@ -213,6 +213,11 @@ not conditional on successful signing. T02 real-PRNG transport is next in the
 [roadmap](docs/onboarding/ROADMAP.md); H2P,whole real Sign,integer recovery,
 Sign→Verify/security/CT remain open.
 
+A small [T02.1 PRNG layout/counter task](proofs/ft1536/CURRENT_SMALL_TASK.md)
+is prepared for a separate owner-selected model: deterministic init56/refill4096,
+word layout,counter/frame and the T01 block-cost consumer. The full real→IID
+cryptographic bridge remains open.
+
 The separate [FT family scaling research by MiMo](proofs/ft1536/stages/FT_FAMILY_SCALING_REVIEW_RUN_001/README.md)
 is preserved with its [PDF manuscript](proofs/ft1536/stages/FT_FAMILY_SCALING_REVIEW_RUN_001/paper/main.pdf),
 Lean sources, scripts and results. [Independent review](proofs/ft1536/stages/FT_FAMILY_SCALING_REVIEW_RUN_001/REPORT.md)

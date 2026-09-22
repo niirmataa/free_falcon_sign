@@ -21,6 +21,8 @@ Docelowym repozytorium prac jest `free_falcon_sign`.
 - Zlecenie korekt Family/S01 wskazuje `proofs/ft1536/CURRENT_FAMILY_TASK.md`.
   Przed jego ręcznym startem MiMo zapisuje stan swoich bieżących prac i jobów;
   przygotowanie S01 nie uruchamia drugiego workera ani nie nadpisuje T03.
+- Małe osobne T02.1 wskazuje `proofs/ft1536/CURRENT_SMALL_TASK.md`.
+  Ma własny W i wykonawcę wybieranego przez właściciela; nie przejmuje T03/S01.
 - Podział ról ustalony przez właściciela2026-09-22: ten prowadzący przygotowuje
   zadania i prompt odbioru; weryfikację matematyczną i replay zwróconych pakietów
   wykonuje niezależnie inny model wybrany przez właściciela. Ten prowadzący
