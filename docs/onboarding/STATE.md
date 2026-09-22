@@ -1,5 +1,12 @@
 # Stan projektu — punkt wejścia
 
+**Najnowsze polecenie właściciela2026-09-22:** wypchnąć bieżący `main`;
+właściciel zapowiedział start B20/P01. Zgoda padła po podaniu stanu `6060f34`
+i pozostałych uwag S01/S06. Bieżący push jest jawnym wyjątkiem od wcześniejszej
+blokady publikacji; nie zmienia werdyktów i nie upoważnia do kolejnych pushów.
+P01: [TASK](../../proofs/ft1536/batches/B20_001/tasks/P01/TASK.md),
+praca w `work/B20_001/P01`,potem review,zaakceptowane stages i commit main.
+
 **Aktualizacja2026-09-22:** T01 niezależnie odebrany w `a2cdf317`;
 następnie właściciel poprosił o zadanie korekt S01 przed publikacją.
 Nowsza szybka kontrola FIX_001/E1:

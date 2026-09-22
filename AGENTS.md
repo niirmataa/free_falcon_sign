@@ -140,6 +140,10 @@ Docelowym repozytorium prac jest `free_falcon_sign`.
   `proofs/ft1536/stages/FT_FAMILY_SCALING_REVIEW_RUN_001/REPORT.md`.
   Lokalne checkpointy zachowują historię; spełnienie warunku nie zastępuje
   osobnego polecenia publikacji od właściciela.
+- Późniejsze polecenie właściciela2026-09-22: **„wypchnij”** po otrzymaniu
+  stanu `6060f34` i opisu otwartych uwag S01/S06. Upoważnia do bieżącego push
+  main wraz z zapisem tej decyzji,mimo niedomkniętej bramki S01. To zgoda na
+  tę publikację,nie scoped PASS ani stała zgoda na dalsze automatyczne pushe.
 - Prywatne klucze, seedy, uwierzytelnienia, cache i robocze binaria nie są
   materiałem commita. Publiczne PK i syntetyczne payloady `.bin` mogą być
   niezbędnymi, przypiętymi wejściami matematycznymi.
