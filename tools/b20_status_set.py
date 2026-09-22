@@ -114,6 +114,14 @@ def main():
         row['status'] = 'REVIEWED' if '--review-verdict' in args else 'FROZEN_AWAITING_REVIEW'
         changes['final'] = True
 
+    if not changes and '--review-verdict' in args:
+        verdict = args[args.index('--review-verdict') + 1]
+        if not row.get('final_report_sha256'):
+            raise SystemExit(f'{task_id}: no final report bound yet; run --final-report first')
+        row['review_verdict'] = verdict
+        row['status'] = 'REVIEWED'
+        changes['review'] = True
+
     if not changes:
         raise SystemExit(f'{task_id}: nothing to do; pass an action flag')
     status_path.write_text(json.dumps(status, ensure_ascii=False, indent=2) + '\n')
