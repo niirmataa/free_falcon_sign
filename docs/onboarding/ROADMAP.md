@@ -1,6 +1,6 @@
 # Główna ścieżka twierdzeń i jawny rejestr zadań FT1536
 
-Wersja planu: **2026-09-22 / 6 — zwrot odbioru T03, suplement bindingu Sage**. To żywy plan prowadzącego, oparty na
+Wersja planu: **2026-09-22 / 7 — ponowny odbiór T03 przez inny model**. To żywy plan prowadzącego, oparty na
 [M0 TARGET_TYPE](../../proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001/TARGET_TYPE.md)
 i [M0 HOP_LEDGER](../../proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001/HOP_LEDGER.md).
 Nie zmienia zamrożonego M0 ani statusów starych raportów. Stan pracy na żywo:
@@ -88,7 +88,7 @@ ale hashe source/execution w review wymagają rozliczenia przed REVIEWED.
 | **T01 REVIEWED — IID_RETRY_COMPOSITION** | Actual post-H2P region,reached entries,cap16,reset/fault/norm/codec w G_retry_IID | **PASS_SCOPED_REVIEW** innego modelu:492/492,WholeRegionBad≤2^-80,coupling,joint6352-block/26017792-byte budget z failure<2^-1020,STATIC≤3160; mixed proof. [REPORT](../../proofs/ft1536/stages/FT1536_IID_RETRY_COMPOSITION_RUN_001/REPORT.md),commit `a2cdf317` | F04–F09; [niezależny odbiór](../../proofs/ft1536/validation/2026-09-22-iid-retry-independent/README.md) |
 | **T02 OPEN — PRNG_REAL_TO_IID_BUFFER** | Dokładny root SHAKE32→stream i state56/ChaCha/refills/getters; skończone ghost budgets; T02.1 przygotowane | Jawne gry, resource-indexed assumptions i reduktory/hybrid losses; zachowana wspólna historia, init/discards/abandoned tails. Nie „448-bit security”; lokalne T02.1 nie domyka rodzica | T01 resources, F02,F07,F08 |
 | **T02.1 PREPARED_OWNER_START — PRNG_LAYOUT_COUNTER** | Mały fragment frng.c:init56,Word-state,ChaCha refill4096,counter/frame; public fixed fixtures | Universal deterministic source contract + original-C controls/replay; literal lanes/feed-forward,wrap/repeat i406528-block consumer na T01 H. [TASK/W](../../proofs/ft1536/CURRENT_SMALL_TASK.md) | T01 resources,F07,pinned source17; niezależne od S01/T03 |
-| **T03 REVIEW_RECEIVED_SAGE_BINDING_PENDING — REFERENCE_INTEGER_RECOVERY** | [Pakiet/odbiór](../../proofs/ft1536/validation/2026-09-22-integer-recovery-independent/README.md),one-root PARTIAL_PROOF; Muse Spark1.3Free przekazał PASS dla A/C-lemma/conditional D,11/11; B≈6086.4 OPEN | [Suplement3 checkerów](../../proofs/ft1536/CURRENT_REVIEW_TASK.md): wyjaśnić różne hashe w dziennikach i frozen źródłach,pełny source→execution→output binding. Do tego czasu bez REVIEWED; B-gap/Safe16/center/norm/bytes otwarte | F03–F09; T01 do rozszerzenia na retries |
+| **T03 FROZEN_AWAITING_REVIEW — REFERENCE_INTEGER_RECOVERY** | [Pakiet/poprzedni odbiór](../../proofs/ft1536/validation/2026-09-22-integer-recovery-independent/README.md),one-root PARTIAL_PROOF; stary PASS i rozbieżność3 hashy zachowane; B≈6086.4 OPEN | [REVIEW_002 PREPARED_OWNER_START](../../proofs/ft1536/CURRENT_REVIEW_TASK.md): właściciel wybrał inny model do pełnego ponownego A–D,własnego fresh replayu i rachunku Sage z bindingiem.1429 przypiętych wejść. B-gap/Safe16/center/norm/bytes otwarte | F03–F09; T01 do rozszerzenia na retries |
 | **T04 PLANNED — PREFIX_AND_API_BINDING** | Pominięty przez T01 prefix: context/loader/rng_ready/nonce/H2P, usługi E i actual source outcomes | Dokładny zasięg definedness/termination/abort, legal ReadyRetryEntry z API i joint randomness interfaces. Brak ukrytego all-success lub IID premise | F02–F05,T01; T02 dla real-law claims |
 | **T05 PLANNED — GLOBAL_REFERENCE_GEOMETRY** | Actual parameters/tree/rounding oraz wybrane ordered reference law | Most do zadeklarowanego ideal coset Gaussian, z błędami/geometrią/secret dependence; Q_S/Q_stop nie stają się nim przez nazwę | F08,F09,T03; historyczny FULL_GEOMETRY |
 | **T06 PLANNED — COMPLETE_OBSERVED_BYTE_KERNELS** | Source/production/reference kernels, retries, bytes i bot outcomes | Jeden kompletny history-uniform consumer od funkcjonującego API do wskazanego prawa obserwacji; Sign→Verify tylko po T03 i właściwym center/norm bridge | T01–T05,F01,F02,F06 |
@@ -104,8 +104,8 @@ ale hashe source/execution w review wymagają rozliczenia przed REVIEWED.
 **Najbliższa kolejność prowadzącego:** T02.1 przygotowano na prośbę właściciela
 o mały niezależny fragment dla kolejnego modelu. Pełny T02 game/hybrid pozostaje
 OPEN; jego dalszy TASK skonsumuje odebrany lokalny kontrakt. T03 zwrócono jako
-PARTIAL_PROOF; przekazany scoped PASS wymaga suplementu3 hashy Sage przed
-domknięciem odbioru i dalszym B-gap tranche.
+PARTIAL_PROOF; właściciel wybrał pełny ponowny odbiór przez inny model
+(REVIEW_002),zastępując wcześniej przygotowany mały suplement.
 T03 i S01 mają osobne W/zlecenia. Żaden model nie jest uruchamiany automatycznie.
 
 ### Obowiązkowy krok przy rozwijaniu T05/T06/T09/T14
@@ -135,7 +135,7 @@ rozszerzają model pierwszego M7. S01 jest bramką publikacji z decyzji właści
 nie przesłanką matematyczną H6P. Nowe profile FT768/FT3072 są badaniami poza
 gotowością aktualnego FT1536; dalsze zadania dopisuj po odbiorze S01.
 
-**T03 — zwrócony odbiór,suplement bindingu do ręcznego startu:**
+**T03 — pełny ponowny odbiór REVIEW_002 do ręcznego startu:**
 [wskaźnik W/pinów i pełnego TASK](../../proofs/ft1536/CURRENT_MIMO_TASK.md).
 Zakres jednego root pozwala badać ten obowiązek niezależnie od odebranego T01
 Astry. S01 pozostaje osobnym obowiązkiem korekt i bramką publikacji.
@@ -216,3 +216,8 @@ muszą wskazywać ten sam aktywny etap.
   checkerów `.sage` w dzienniku versus frozen źródła. Status integracji
   REVIEW_RECEIVED_SAGE_BINDING_PENDING; przygotowany osobny suplement z3
   powiązanymi uruchomieniami. Prowadzący nie wykonuje za recenzenta rachunku.
+- 2026-09-22/v7: właściciel zdecydował o ponownej weryfikacji T03 innym
+  modelem. Przygotowano REVIEW_002,nowy W i1429 read-only pinned inputs,
+  pełny A–D review/fresh replay/własne checkery Sage z bindingiem. Poprzedni
+  PASS i jego niespójność zachowane; nieuruchomiony mały suplement zastąpiony.
+  Nowy werdykt ma samodzielnie uzasadnić scoped odbiór częściowego wyniku.

@@ -1,23 +1,31 @@
-# T03 — wymagany suplement bindingu trzech checkerów Sage
+# T03 — ponowny niezależny odbiór przez inny model, REVIEW_002
 
-Stan2026-09-22: **REVIEW_RECEIVED_SAGE_BINDING_PENDING**.
-Muse Spark1.3Free przekazał **PASS_SCOPED_REVIEW** dla PARTIAL_PROOF T03.
-Zewnętrzne piny obu pakietów są zgodne. Prowadzący wykrył jednak3 różne hashe
-checkerów między COMMANDS/sage_inputs_sha/REPORT a frozen REVIEW_OUTPUTS.
-Oryginalny werdykt zachowano; T03 czeka na uzupełnienie przed statusem REVIEWED.
+Decyzja właściciela2026-09-22: przekazać T03 do ponownej weryfikacji innemu
+modelowi. **REVIEW_ID=FT1536_REFERENCE_INTEGER_INDEPENDENT_REVIEW_002**,
+status **PREPARED_OWNER_START**. T03: PARTIAL_PROOF / FROZEN_AWAITING_REVIEW.
+Właściciel wybiera i uruchamia model inny niż autor MiMo i recenzent Muse.
 
-## Bieżące zadanie recenzenta — ręczny start
+- [Pełny nowy prompt](documents/FT1536_PROMPT_SECOND_INDEPENDENT_REVIEW_INTEGER_RECOVERY_2026-09-22.md),
+  SHA `83db22afa9fe375be285f3988f413ba87fa580535f0a62de36ab670ed9ce4ecc`.
+- NOWY W: `/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_REFERENCE_INTEGER_INDEPENDENT_REVIEW_002`.
+- Read-only `W/inputs`:1429 członków,36 MB; pełny subject z input closure,
+  poprzednie review jako historia oraz TASK/POLICY.
+- INPUT_BUNDLE/MANIFEST SHA `8019bda3cee5752d797fd9497d10086ff707f2c4a5739965c7aa48aa210c31e7`.
+- [Origins i przygotowanie](background/T03_SECOND_REVIEW_2026-09-22/README.md),
+  metadane MANIFEST SHA `20d6c73c87ed71e2f011042df0da6911995e76e03f86f0b2533a6a8891ab8762`.
 
-**SUPPLEMENT_ID=FT1536_T03_REVIEW_SAGE_BINDING_SUPPLEMENT_001**,
-status **PREPARED_OWNER_START**. Model wybiera i uruchamia właściciel.
+Zakres: pełna własna ocena A–D częściowego pakietu,własny fresh replay,
+niezależne `.sage` i source→execution→output binding. Nowy werdykt ma
+samodzielną podstawę; historyczne problemy Muse pozostają opisane osobno.
+Prowadzący przygotował dane/piny; nowy recenzent jeszcze nie został uruchomiony.
 
-- [Pełny prompt suplementu](documents/FT1536_PROMPT_T03_REVIEW_SAGE_BINDING_SUPPLEMENT_2026-09-22.md),
-  SHA `be1d102ed0210db956f66c05c8359bc3150cca3d987fc43a1009f29924256d01`.
-- NOWY W: `/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_T03_REVIEW_SAGE_BINDING_SUPPLEMENT_001`.
-- [Dokładna rozbieżność hashy](validation/2026-09-22-integer-recovery-independent/BINDING_CHECK.json).
-- Cel: wyjaśnić proweniencję i wykonać3 przypięte `.sage` z pełnym argv,
-  hashami przed/po,exit/raw logs i porównaniem wyników. Stare review pozostaje RO;
-  pełny replay11/11 zachowany. Prowadzący nie wykonuje obliczeń za recenzenta.
+### Zastąpiona propozycja suplementu
+
+`FT1536_T03_REVIEW_SAGE_BINDING_SUPPLEMENT_001` ma status
+**SUPERSEDED_OWNER_REREVIEW**. Przy zmianie decyzji nie był uruchomiony
+(tylko AGENTS,brak aktywnych jobów). [Stary prompt](documents/FT1536_PROMPT_T03_REVIEW_SAGE_BINDING_SUPPLEMENT_2026-09-22.md)
+i SHA `be1d102ed0210db956f66c05c8359bc3150cca3d987fc43a1009f29924256d01`
+zachowano jako historię. Aktualny start dotyczy wyłącznie REVIEW_002 powyżej.
 
 ## Zarchiwizowany pierwotny odbiór T03
 

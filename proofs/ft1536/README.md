@@ -290,7 +290,7 @@ Zadanie domyka R1–R7 z old→new diffs i spójnym PDF/kodem/replayem; dopuszcz
 jawne wycofanie wadliwego runnera R4 bez nowej kampanii. Ręczny start MiMo po
 handoffie bieżących prac. Pozytywny odbiór innego modelu nadal warunkiem publikacji.
 
-**T03 — PARTIAL_PROOF / REVIEW_RECEIVED_SAGE_BINDING_PENDING:**
+**T03 — PARTIAL_PROOF / FROZEN_AWAITING_REVIEW,nowy REVIEW_002:**
 [Zarchiwizowany pakiet autora](stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001/REPORT.md)
 ma85 OUTPUTS i29 INPUTS z pełnym odtworzeniem closure opisanym w
 [archiwum odbioru](validation/2026-09-22-integer-recovery-independent/README.md).
@@ -298,9 +298,10 @@ Muse Spark1.3Free przekazał PASS_SCOPED_REVIEW dla A/reference+mapping,
 C/rounding lemma i conditional D; B-gap≈6086.4 pozostaje OPEN. Jego własny
 replay11/11,około12s i32 członków review zachowano bajtowo. Prowadzący
 stwierdził jednak różnicę hashy3 dodatkowych `.sage` między dziennikiem
-wykonań a frozen źródłami. [Suplement recenzenta](CURRENT_REVIEW_TASK.md)
-ma zamknąć ten binding; T03 nie otrzymał jeszcze REVIEWED. Nie wykonano
-nowego rachunku lub replayu w sesji prowadzącego.
+wykonań a frozen źródłami. Właściciel wybrał [pełny ponowny odbiór innym
+modelem](CURRENT_REVIEW_TASK.md),z własnym A–D/fresh replay/Sage bindingiem.
+Nowy W i [1429 przypiętych wejść](background/T03_SECOND_REVIEW_2026-09-22/README.md)
+gotowe; mały suplement zastąpiony. T03 czeka na nowy samodzielny werdykt.
 
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
@@ -364,7 +365,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [FT_FAMILY_SCALING review](stages/FT_FAMILY_SCALING_REVIEW_RUN_001/REPORT.md) | **RESEARCH_REVIEW_CHANGES_REQUIRED** — zachowany pakiet MiMo, sprawdzone lemmas/layout/obliczenia; korekty game/reduction i zakresów | `0c1ddc1` |
 | [H6P_REFERENCE_BAD_EVENT](stages/FT1536_H6P_REFERENCE_BAD_EVENT_RUN_001/REPORT.md) | **H6P_REFERENCE_BAD_EVENT_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — source map/V/E/MGF i joint tail Q_S<=2^-119, one-root IID<=2^-84 | `1ba7ae0` |
 | [IID_RETRY_COMPOSITION / T01](stages/FT1536_IID_RETRY_COMPOSITION_RUN_001/REPORT.md) | **IID_RETRY_COMPOSITION_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — one post-H2P cap16 IID region,WholeRegionBad<=2^-80,coupling/resources/bytes; independent PASS_SCOPED_REVIEW | `a2cdf317` |
-| [REFERENCE_INTEGER_RECOVERY / T03](stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001/REPORT.md) | **PARTIAL_PROOF** — przekazany scoped PASS dla A/C-lemma/conditional D; B-gap OPEN; integracja REVIEW_RECEIVED_SAGE_BINDING_PENDING dla3 checkerów recenzenta | lokalny checkpoint2026-09-22 |
+| [REFERENCE_INTEGER_RECOVERY / T03](stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001/REPORT.md) | **PARTIAL_PROOF** — stary scoped PASS i rozbieżność3 hashy zachowane; B-gap OPEN; nowy pełny REVIEW_002 przygotowany dla innego modelu | archiwum `24449c1` |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).

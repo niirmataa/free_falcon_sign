@@ -6,14 +6,16 @@ Po nim przygotowano na jego prośbę małe T02.1 dla kolejnego ręcznie wybraneg
 Najnowszy handoff: Muse Spark1.3Free przekazał **PASS_SCOPED_REVIEW** dla
 T03 PARTIAL_PROOF. Archiwizacja wykazała różne hashe3 checkerów recenzenta
 w dziennikach versus frozen źródła: **REVIEW_RECEIVED_SAGE_BINDING_PENDING**.
-Przygotowano osobny suplement. Prowadzący wykonał tylko kontrolę pinów/bajtów.
+Następnie właściciel wybrał ponowny pełny odbiór przez inny model:
+**REVIEW_002 PREPARED_OWNER_START**,T03 **FROZEN_AWAITING_REVIEW**.
+Mały suplement zastąpiono; prowadzący przygotował1429 przypiętych wejść.
 Historyczne obserwacje procesów/dudect poniżej pochodzą z około04:33 CEST.
 Stan procesów jest ulotny: sprawdź go ponownie przed pracą. Ten dokument
 aktualizujemy po odbiorze etapu, zmianie wykonawcy lub decyzji właściciela.
 
 Główna kolejka zadań i kryteria: [ROADMAP](ROADMAP.md).
 Astra: **T01 REVIEWED**, pełny **T02 OPEN**, podzadanie **T02.1 PREPARED_OWNER_START**;
-osobny MiMo = **T03 REVIEW_RECEIVED_SAGE_BINDING_PENDING**,
+osobny MiMo = **T03 FROZEN_AWAITING_REVIEW / REVIEW_002 PREPARED_OWNER_START**,
 poprawki Family = **S01 PREPARED_OWNER_START_AFTER_HANDOFF**, dudect = **S02**.
 
 ## Decyzje właściciela
@@ -87,17 +89,18 @@ Raport i odbiór:
   failed routes/overlap i strict-tail convention zachowano. owner_accepted=false.
 - Autor i recenzent zakończyli obliczenia. Nie wznawiaj ich W ani relay.
   T02 można teraz przygotować z odebranych zasobów; start wymaga nowego TASK/W
-  i ręcznego polecenia. Przekazany odbiór T03 oczekuje na suplement bindingu.
+  i ręcznego polecenia. T03 oczekuje na nowy pełny odbiór przez inny model.
 - Granica: nie ma boundu Bad|success bez success denominatoru. Real PRNG,H2P,
   whole real Sign,integer recovery,Sign→Verify/security/CT pozostają otwarte.
 
-## T03 — PARTIAL_PROOF, przekazany PASS wymaga suplementu bindingu
+## T03 — PARTIAL_PROOF, ponowny odbiór innym modelem przygotowany
 
 `FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001`,one-root,autor MiMo2.6Pro.
 [CURRENT_MIMO_TASK](../../proofs/ft1536/CURRENT_MIMO_TASK.md) wiąże pierwotne
-TASK/bootstrap i [bieżący suplement recenzenta](../../proofs/ft1536/CURRENT_REVIEW_TASK.md).
+TASK/bootstrap i [nowy REVIEW_002](../../proofs/ft1536/CURRENT_REVIEW_TASK.md).
 Właściciel przekazał zakończony odbiór Muse Spark1.3Free. Oryginalne pakiety
-zarchiwizowano z niezmiennymi pinami; nowy W suplementu czeka na ręczny start.
+zarchiwizowano z niezmiennymi pinami. Później właściciel wybrał pełną ponowną
+weryfikację przez model inny niż Muse i autor MiMo; nowy W czeka na ręczny start.
 
 - REPORT SHA `e01a09789091c9c9322f9727263503063c94441a68ff5f30af952bcc4417785c`;
   OUTPUTS SHA `0cafdbb2c746043380081052951cb6438643f6a1765a98028a065fa57b7df6de`.
@@ -114,8 +117,15 @@ zarchiwizowano z niezmiennymi pinami; nowy W suplementu czeka na ręczny start.
   REVIEW_OUTPUTS SHA `9ba196b04a95ec2fa4dadda06d6dabc50c99a2313f6a370e488e9065cb423ccd`.
 - Blocker:3 hashe `.sage` w COMMANDS/sage_inputs_sha/REPORT są inne niż w
   REVIEW_OUTPUTS i plikach. [BINDING_CHECK](../../proofs/ft1536/validation/2026-09-22-integer-recovery-independent/BINDING_CHECK.json)
-  zachowuje obie wersje hashy. Nowy osobny suplement ma wyjaśnić proweniencję
-  i wykonać te3 przypięte checkery z pełnymi receipts; nie nadpisywać freeze.
+  zachowuje obie wersje hashy. Historyczna rozbieżność pozostaje jawna.
+- Bieżący plan: **FT1536_REFERENCE_INTEGER_INDEPENDENT_REVIEW_002** we własnym W,
+  pełna własna ocena A–D,fresh replay i nowe `.sage` z kompletnym bindingiem.
+  Read-only bundle1429 plików (subject1364,prior62,context3),SHA
+  `8019bda3cee5752d797fd9497d10086ff707f2c4a5739965c7aa48aa210c31e7`.
+  [Przygotowanie/origins](../../proofs/ft1536/background/T03_SECOND_REVIEW_2026-09-22/README.md).
+  Wcześniejszy nieuruchomiony suplement ma SUPERSEDED_OWNER_REREVIEW.
+  Nowy poprawny odbiór ma samodzielną podstawę,nie wymaga pozorowanego
+  odtworzenia nieznanych historycznych wersji Muse. Prowadzący nie uruchomił recenzenta.
 - Recenzent rozliczył v3→v4/5 plików,wiersze Z versus cały JSON i fixture counts
   (20110 różnych słów/60384 wykonania). Niewygodne wyniki/uwagi zachowane.
   B-gap fix pozostaje kolejnym proponowanym tranche po domknięciu odbioru.
@@ -165,7 +175,7 @@ Nie ma w tym snapshotcie pozytywnego odbioru poprawek. Nie uruchamiaj MiMo sam.
 Aktualizacja przygotowania2026-09-22: właściciel wybrał dla MiMo NOWY obowiązek
 głównego toru, odrębny od korekt Family. [CURRENT_MIMO_TASK](../../proofs/ft1536/CURRENT_MIMO_TASK.md)
 wskazuje **T03 / one-root REFERENCE_INTEGER_RECOVERY**. Przygotowane wcześniej
-W zwrócono jako PARTIAL_PROOF; przekazany odbiór czeka na suplement3 hashy Sage.
+W zwrócono jako PARTIAL_PROOF; nowy REVIEW_002 czeka na ręczny start innego modelu.
 S01 i blokada publikacji pozostają
 otwarte. Nieuruchomiony szkic CORRECTIONS_RUN_002 zachowano lokalnie jako anulowany.
 
@@ -177,7 +187,7 @@ jako UNREVIEWED snapshot (42 pliki,manifest5ee71952…); R4 nadal deklarowane OP
 W czasie przygotowania widziano procesy kampanii estymatora we własnym W;
 nie zatrzymano ich ani nie uruchomiono kolejnego workera. Start S01 następuje
 po kontrolowanym handoffie bieżących prac MiMo. T03 zachowuje swoje W i TASK;
-najnowszy odbiór i jego pending binding opisano wyżej. Publikacja nadal wstrzymana.
+najnowszy odbiór i decyzję o REVIEW_002 opisano wyżej. Publikacja nadal wstrzymana.
 
 ## Build i dudect
 

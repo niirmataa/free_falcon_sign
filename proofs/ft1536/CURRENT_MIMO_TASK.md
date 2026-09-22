@@ -1,10 +1,10 @@
-# MiMo — T03 zarchiwizowany, odbiór wymaga suplementu Sage
+# MiMo — T03 zarchiwizowany, ponowny odbiór przez nowy model
 
 **TASK_ID=FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001**.
-ROADMAP_ID=T03, one-root tranche. **REVIEW_RECEIVED_SAGE_BINDING_PENDING**,2026-09-22.
-Autor MiMo2.6PRO: **PARTIAL_PROOF**. Właściciel przekazał PASS_SCOPED_REVIEW
-modelu Muse Spark1.3Free; [wymagany suplement](CURRENT_REVIEW_TASK.md) wiąże
-trzy wersje checkerów recenzenta z ich wykonaniami.
+ROADMAP_ID=T03, one-root tranche. **FROZEN_AWAITING_REVIEW**,2026-09-22.
+Autor MiMo2.6PRO: **PARTIAL_PROOF**. Po przekazanym odbiorze Muse i rozbieżności
+hashy właściciel wybrał ponowną weryfikację przez inny model.
+[REVIEW_002](CURRENT_REVIEW_TASK.md) jest przygotowany do ręcznego startu.
 
 - REPORT SHA `e01a09789091c9c9322f9727263503063c94441a68ff5f30af952bcc4417785c`.
 - OUTPUTS SHA `0cafdbb2c746043380081052951cb6438643f6a1765a98028a065fa57b7df6de`.
@@ -14,9 +14,10 @@ trzy wersje checkerów recenzenta z ich wykonaniami.
  32 pliki recenzenta,11/11 zapisanych wyników replayu,pełna closure inputów.
  Recenzent potwierdza A/reference+mapping,C/gap lemma i conditional D;
  B-gap≈6086.4 pozostaje OPEN. T03 jeszcze nie otrzymał REVIEWED.
-- Różne hashe3 dodatkowych `.sage` w dziennikach versus frozen źródła
- wymagają nowego osobnego suplementu recenzenta. Autor i pierwotny recenzent
- zgłosili koniec obliczeń; ich frozen W pozostają RO.
+- Różne hashe3 dodatkowych `.sage` w poprzedniej recenzji pozostają zapisane
+ w historii. Własny pełny odbiór REVIEW_002 ma samodzielnie ocenić A–D,replay
+ i binding. Przygotowany wcześniej mały suplement został zastąpiony decyzją
+ właściciela; frozen W autora i pierwszego recenzenta pozostają RO.
 
 **Obowiązkowe uzupełnienie właściciela2026-09-22:**
 [rachunek w `.sage` uruchamiany `sage lemma.sage`](documents/FT1536_ZASADA_RACHUNKU_SAGEMATH_2026-09-22.md),

@@ -237,8 +237,10 @@ Muse Spark1.3Free returned a scoped PASS for the reference/rounding subclaims
 and conditional consumer, with a recorded11/11 fresh replay. The source-error
 bound about6086.4 does not establish gap<1/2. [Archive binding checks](proofs/ft1536/validation/2026-09-22-integer-recovery-independent/README.md)
 found three reviewer checker hashes differing between execution records and
-frozen sources. Integration is **REVIEW_RECEIVED_SAGE_BINDING_PENDING**;
-the [targeted reviewer supplement](proofs/ft1536/CURRENT_REVIEW_TASK.md) is prepared.
+frozen sources. The owner requested a [full second independent review](proofs/ft1536/CURRENT_REVIEW_TASK.md)
+by another model. REVIEW_002 has a new workspace and1429 pinned input files;
+its own A–D assessment, fresh replay and Sage execution binding will underpin
+the new verdict. T03 remains **FROZEN_AWAITING_REVIEW**.
 
 The [historical deferred preparation](provenance/checks/2026-09-20-dudect-floor-ct-ready/README.md)
 is retained. The [current floor-ct launcher](tests/ft1536/dudect/README.md)
