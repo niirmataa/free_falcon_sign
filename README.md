@@ -5,6 +5,11 @@ developed by **Niirmata**, continuing the historical **Falcon EXTRA / ternary**
 implementation. This repository contains the implementation, source-bound
 proof checkpoints, their evidence, and reproducible replay tools.
 
+**New contributor or fresh model session:** [START_HERE](START_HERE.md).
+The [current state](docs/onboarding/STATE.md), [theorem path and task register](docs/onboarding/ROADMAP.md),
+[proof map](docs/onboarding/PROOF_MAP.md) and [handoff protocol](docs/onboarding/HANDOFF.md)
+provide a compact entry point without loading the entire conversation history.
+
 Maintainer's canonical local checkout: **`/home/footfalcon/free_falcon_sign`**,
 on `main`. Builds, proof work and Git publication are performed from this
 durable directory. Project checkouts and evidence are not stored in system

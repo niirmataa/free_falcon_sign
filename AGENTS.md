@@ -2,6 +2,21 @@
 
 Docelowym repozytorium prac jest `free_falcon_sign`.
 
+## Wejście bez historii rozmowy
+
+- Nowa sesja zaczyna od `START_HERE.md` i `docs/onboarding/STATE.md`, potem
+  czyta tylko TASK i potrzebne zależności według `docs/onboarding/PROOF_MAP.md`.
+- Przekazanie pracy opisuje `docs/onboarding/HANDOFF.md`. Jeden aktywny
+  wykonawca danego W; przed wznowieniem sprawdź właściciela/procesy/logi.
+- `opencode run --session` uruchamia osobnego wykonawcę, nie wkleja wiadomości
+  do otwartego okna. Automatyczny relay/callback został wstrzymany po incydencie
+  równoległych wykonań. Nie wznawiaj go ani nie startuj drugiego workera.
+- Aktualizuj żywy STATE po odbiorze etapu lub decyzji właściciela; nie zmieniaj
+  zamrożonych raportów w celu aktualizowania historii.
+- Główna ścieżka twierdzeń i rejestr zadań: `docs/onboarding/ROADMAP.md`.
+  Nowe zlecenie rozwija wpis Txx/Sxx (zależności, cel, kryteria odbioru),
+  zamiast tworzyć niezależny plan. Zmiany kolejności/zakresu zapisuj jawnie.
+
 ## Trwała lokalizacja pracy
 
 - Kanoniczny, aktualizowany checkout `main` znajduje się w

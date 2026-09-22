@@ -1,5 +1,10 @@
 # FT1536 — wersjonowane punkty kontrolne dowodów
 
+Nowa sesja: [START_HERE](../../START_HERE.md).
+**Główna ścieżka twierdzeń i jawna lista dalszych zadań:**
+[ROADMAP](../../docs/onboarding/ROADMAP.md). Ten indeks opisuje checkpointy;
+ROADMAP określa zależności i kryteria następnych prac.
+
 To archiwum ukończonych etapów FT1536 w docelowym `free_falcon_sign`.
 Każdy wpis `catalog/*.json` wskazuje konkretny raport, zewnętrzny pin
 OUTPUTS oraz niezmienione bajty objęte tym manifestem.

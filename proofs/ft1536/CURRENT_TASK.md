@@ -6,12 +6,20 @@ Stan przygotowania: **PREPARED_OWNER_START** (2026-09-22). To wskaźnik
 zlecenia, nie potwierdzenie uruchomienia lub wynik badania. Rzeczywisty postęp
 i finalny handoff znajdują się w poniższym W.
 
+**Aktualizacja prowadzącego2026-09-22,04:33 CEST: IN_PROGRESS.** Wykonawca
+pracuje w istniejącym oknie Astry. Nie uruchamiaj drugiego. Background relay
+zatrzymany po overlap; automatyczne powiadomienie przez `run --session`
+wstrzymane. Bieżący kontekst: [STATE](../../docs/onboarding/STATE.md).
+
 ```text
 REPO=/home/footfalcon/free_falcon_sign
 W=/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_IID_RETRY_COMPOSITION_RUN_001
 TASK=/home/footfalcon/Dokumenty/FT1536_ZADANIE_ASTRA_IID_RETRY_COMPOSITION_2026-09-22.md
 BASE=1ba7ae07c17d135fc8eff4aac7b56f8c2b3bc88c
 ```
+
+Do odczytu używaj identycznej kopii TASK wewnątrz repo pod linkiem poniżej;
+adres Dokumenty powyżej jest oryginalną proweniencją. SHA pozostaje ten sam.
 
 - [Pełne zlecenie](documents/FT1536_ZADANIE_ASTRA_IID_RETRY_COMPOSITION_2026-09-22.md),
   SHA-256 `f773b8f31f7d307850ee3d1eb948bb05ceacee5589d5c4971e3eaee34c5bed97`.
