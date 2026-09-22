@@ -1,9 +1,14 @@
 # Małe zadanie dla kolejnego modelu — T02.1
 
-**TASK_ID=FT1536_PRNG_LAYOUT_COUNTER_RUN_001**,ROADMAP_ID=T02.1.
-Stan2026-09-22: **AT_REVIEW_PER_OWNER**. Właściciel potwierdził przekazanie
-wyniku T02.1 do weryfikacji. Czekamy na handoff/piny odbioru; nie wznawiaj
-autora ani nie startuj drugiego review. B20/P03 ma jawny pending input contract.
+**Aktualny TASK_ID=FT1536_PRNG_LAYOUT_COUNTER_RUN_003**,ROADMAP_ID=T02.1.
+Stan2026-09-22: **SUPPLEMENT_AWAITING_REVIEW**. Właściciel przekazał poprawki
+F1–F5 do odbioru RUN_002. [Krótki niezależny odbiór](CURRENT_SMALL_REVIEW_TASK.md)
+przygotowany;141/141 outputs i zewnętrzne piny zgodne.
+REPORT `3b7c2b3bbc7f0b72b3a25d3f2cb32623294f1135acb61d8c65b905eefe1a6168`;
+OUTPUTS `e37b1e97ebcfa65d698c52e175c09e826cdbafe565722cc017b5349c00d3f5dc`.
+Source W: `proofs/ft1536/work/FT1536_PRNG_LAYOUT_COUNTER_RUN_003`.
+B20/P03 ma nadal pending input contract i pełną formalizację jako osobny cel.
+Poniżej zachowane pierwotne zlecenie/bootstrap RUN_001; frozen W nie wznawiaj.
 
 **Obowiązkowe uzupełnienie właściciela2026-09-22:**
 [rachunek w `.sage` uruchamiany `sage lemma.sage`](documents/FT1536_ZASADA_RACHUNKU_SAGEMATH_2026-09-22.md),

@@ -147,6 +147,13 @@ odbioru jest późniejsze doprecyzowanie właściciela i zgodny nowy binding.
 
 ## Małe T02.1 — przekazane do weryfikacji przez właściciela
 
+Nowszy handoff: **RUN_003 / SUPPLEMENT_AWAITING_REVIEW**,F1–F5 po uwagach do
+RUN_002. Piny REPORT3b7c2b3b…/OUTPUTSe37b1e97… i141/141 plików sprawdzone.
+[Zlecenie krótkiego odbioru](../../proofs/ft1536/CURRENT_SMALL_REVIEW_TASK.md)
+ma odrębny W. Prowadzący nie wykonywał replayu. Zakres pozostaje historycznie
+mieszany (Lean28 dla arytmetyki,część C/rund poza kernelem); pełny standard
+Lean4+Mathlib/Sage i formalny source binding realizuje B20/P03.
+
 [CURRENT_SMALL_TASK](../../proofs/ft1536/CURRENT_SMALL_TASK.md) wskazuje
 `FT1536_PRNG_LAYOUT_COUNTER_RUN_001`,39 przypiętych wejść i nowy W.
 Cel: source-bound deterministic init56,ChaCha block/refill4096,counter/frame
