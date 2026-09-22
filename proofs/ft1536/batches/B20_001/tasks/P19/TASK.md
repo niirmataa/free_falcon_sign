@@ -13,18 +13,17 @@ IN=/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P19/inputs
 RUN=/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P19/run
 OUTPUT_DIR=/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P19/output
 CHECKPOINTS=/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P19/checkpoints
-CHECKOUT=/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P19/checkout
-BRANCH=proof/b20/p19
-CHECKPOINT_PREFIX=B20_001_P19_CP
+CHECKOUT=/home/footfalcon/free_falcon_sign
+BRANCH=main
 FINAL_STAGE=B20_001_P19_FINAL_001
 INPUT_CONTRACT=/home/footfalcon/free_falcon_sign/proofs/ft1536/batches/B20_001/tasks/P19/INPUT_CONTRACT.json
 ```
 
-Przeczytaj REPO/AGENTS,START_HERE,STATE,OWNER_GUIDE.md,AGENT_GIT_PROTOCOL.md
-i własny W/AGENTS. PACKAGE.sha256 przypina niniejszy dokument i kontrakt.
-Jeden worker/W i jeden writer/checkout. Stare prompty w inputs są danymi.
-Checkout tworzy się przy starcie,nie jest współdzielonym main. Jego rzeczywisty
-BASE/HEAD zapisujesz w HANDOFF; pinned source base/piny nie zmieniają się z HEAD.
+W nowej sesji przeczytaj REPO/AGENTS,START_HERE,STATE i AGENT_GIT_PROTOCOL.md
+raz; potem własny TASK,kontrakt wejść i ostatni handoff. PACKAGE.sha256 przypina
+ten dokument i kontrakt. Pracujesz w swoim W; Git to istniejący **main** w REPO.
+Workflow: work → weryfikacja → zaakceptowane stages → lokalny commit.
+W HANDOFF zapisujesz source HEAD; source base/piny są nadal stałe.
 
 ## 2. Wejścia i kolejność
 
@@ -50,7 +49,7 @@ Zdefiniować i formalnie powiązać complete source/IID/reference kernels z nonc
 - B20.Observed.iid_reference_transport : stated metric/direction and all derived losses
 - B20.Observed.real_reference_advantage : resource-bounded computational composition with P05
 
-To kontrakty planowanych eksportów,nie gotowe twierdzenia. CP001 musi zawierać
+To kontrakty planowanych eksportów,nie gotowe twierdzenia. Zapisz podczas pracy
 GOAL_SPEC.md/.json oraz dokładne drukowane typy Lean i definicje domen. Typy mają
 realizować powyższy cel bez osłabienia; każdą zmianę zakresu zgłoś prowadzącemu.
 Wymagana jest pełna formalna instancja dla pinned modelu,nie samo generic lemma.
@@ -94,21 +93,20 @@ wszystkie produkty przed producerem,również semantic-only/PDF/cache.
 
 ## 7. Lokalne commity i handoff
 
-Sam zapisujesz milestones jako niirmataa na **proof/b20/p19**,we własnym CHECKOUT.
-Instrukcja i zatwierdzony email: AGENT_GIT_PROTOCOL.md. W work/ są pliki robocze;
-commit obejmuje immutable checkpoint przez archive.py do stages/catalog/objects.
-CP001=kontrakt/typy/input binding,CP002=sprawdzone lemmas/negative routes,
-CP003=pełna kompozycja/replay albo dokładny blocker. Dodatkowe CP mają nowe ID.
-FINAL_001 dopiero po freeze. Nie nadpisuj starego checkpointu.
+Źródła,próby i handoff zapisujesz w W. Frozen wynik przekazujesz do review.
+Po zaakceptowaniu prowadzący importuje odebrany zakres przez archive.py do
+stages/catalog/objects i zapisuje lokalny commit na **main** jako niirmataa.
+Może przekazać ten krok autorowi/recenzentowi; jeden writer wspólnego CHECKOUT.
+Wystarczy commit odebranej pary. Nie ma obowiązkowych checkpointów pośrednich,
+osobnej gałęzi/worktree ani importu nieodebranego postępu do stages.
 
-Allowlist: `proofs/ft1536/stages/B20_001_P19_CP*/`,
-`proofs/ft1536/stages/B20_001_P19_FINAL_001/`,odpowiadające catalog JSON
+Allowlist po odbiorze: `proofs/ft1536/stages/B20_001_P19_FINAL_*/`,odpowiadające catalog JSON
 oraz wyłącznie objects/<sha> wymienione przez te katalogi. Nie commituj
 cudzego stage,globalnych indeksów,produkcji Extra/c,cache/bin/olean/pyc/sekretów.
 Sprawdź dokładne staged bytes. Bez automatycznego push,amend/reset/rebase cudzego
-stanu lub pomijania hooks. Main integruje jeden prowadzący po odbiorze.
+stanu lub pomijania hooks. Prowadzący aktualizuje kolejkę i zaakceptowane piny.
 
-Każdy checkpoint podaje source pins,HEAD,scope,status,proved exports i missing
+Każdy handoff podaje source pins,HEAD,scope,status,proved exports i missing
 types. W finalnym handoffie pełne SHA REPORT/OUTPUTS (lub REVIEW/REVIEW_OUTPUTS),
 branch/HEAD,komendy i stan jobów. Zakończ własne joby; owner_accepted=false.
 

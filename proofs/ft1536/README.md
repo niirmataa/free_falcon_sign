@@ -17,7 +17,8 @@ To archiwum ukończonych etapów FT1536 w docelowym `free_falcon_sign`.
 Nowe zadania wymagają SageMath + Lean4 + Mathlib,kernelowych dowodów i formalnego
 source bindingu. Historyczne mixed scopes zachowują swój zakres; w B20 są
 materiałem do formalizacji.40 W przygotowane; zależności/piny decydują o starcie.
-Lokalne milestone commity autora i recenzenta jako niirmataa,we własnych branches.
+Dotychczasowy workflow: work → review → zaakceptowane stages → lokalny commit
+main jako niirmataa. Bez nowych gałęzi/worktrees i obowiązkowych pośrednich CP.
 Każdy wpis `catalog/*.json` wskazuje konkretny raport, zewnętrzny pin
 OUTPUTS oraz niezmienione bajty objęte tym manifestem.
 

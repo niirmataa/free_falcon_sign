@@ -32,12 +32,15 @@ estymator = **S06 CHANGES_REQUIRED / PARTIAL_DIAGNOSTIC**, oryginalny run w pauz
   i [INDEX](../../proofs/ft1536/batches/B20_001/INDEX.json) wybierają kolejne role.
   Właściciel wymaga **SageMath + Lean4 + Mathlib,kernelowo**,bez mixed-proof
   substytutu. [Pełny protokół](AGENT_EXECUTION_AND_REVIEW_PROTOCOL.md) opisuje
-  wykonanie,weryfikację,receipty,freeze i lokalne commity niirmataa w osobnych
-  worktrees/branches. P01 zaczyna od formalnego/toolchain bootstrapu; pozostałe
+  wykonanie,weryfikację,receipty i freeze. **Ostateczne polecenie właściciela:
+  dotychczasowy workflow — work → review → zaakceptowane stages → lokalny
+  commit main jako niirmataa; bez nowych gałęzi/worktrees i obowiązkowych CP.**
+  P01 zaczyna od formalnego/toolchain bootstrapu; pozostałe
   role czekają na konkretne proved exports/frozen pins. T02.1 już jest u
   recenzenta; P03 ma jawny pending binding jego handoffu. Matematyki B20 nie
   uruchomiono. [Wymagania](BATCH_20_REQUIREMENTS.md) zabezpieczają ciągłość po
-  zmianie modelu/limitu. Package SHA `5037ae6ce10746fdf5d2dc1503b09289c34785d340da381fe116ac21c4e19889`.
+  zmianie modelu/limitu. Aktualny manifest rewizji2:
+  [PACKAGE.sha256](../../proofs/ft1536/batches/B20_001/PACKAGE.sha256).
 - Nowy obowiązkowy standard rachunku: **pliki `.sage`, uruchomienie
   `sage lemma.sage` z preparserem SageMath**. Dotyczy nowych rachunków/checkerów
   i niezakończonych S01/T03/T02.1 przez

@@ -25,9 +25,11 @@ Docelowym repozytorium prac jest `free_falcon_sign`.
   Nowe B20 wymaga **SageMath + Lean4 + Mathlib**,formalnych dowodów kernelowych
   i formalnego source bindingu;
   tekst analityczny/Sage/testy nie zastępują brakującego proofu. Autorzy i
-  recenzenci B20 mają lokalne milestone commity jako niirmataa we własnych
-  worktrees/branches; kanoniczny main integruje jeden prowadzący. To zakresowy
-  wyjątek od dawnych TASK bez Git,bez zmiany frozen historii lub zgody na push.
+  recenzenci B20 pracują jak dotychczas: **work → weryfikacja → zaakceptowane
+  stages → lokalny commit na main jako niirmataa**. To ostateczne doprecyzowanie
+  właściciela: bez nowych gałęzi/worktrees i obowiązkowych checkpointów pośrednich.
+  Import/commit wykonuje jeden prowadzący albo agent,któremu przekazał ten krok.
+  Robocze źródła,próby i handoff pozostają w W; frozen historia jest zachowana.
 - Osobny tor MiMo/T03 wskazuje `proofs/ft1536/CURRENT_MIMO_TASK.md`.
   Nie myl go z `CURRENT_TASK.md` Astry/T01; każdy ma inny W i jednego wykonawcę.
 - Zlecenie korekt Family/S01 wskazuje `proofs/ft1536/CURRENT_FAMILY_TASK.md`.

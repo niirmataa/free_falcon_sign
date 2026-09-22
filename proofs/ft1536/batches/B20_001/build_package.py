@@ -24,6 +24,8 @@ STAGES = {
  'NORMALIZED':'FT1536_H3_STABLE_NORMALIZATION_RUN_001',
  'LEFT':'FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001'}
 MATHLIB = '5ed2965256430c3649e86755f9576b54eca72435'
+BRANCH = 'main'
+EXPECTED_BEFORE = {}
 
 def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def jb(x): return (json.dumps(x,ensure_ascii=False,indent=2)+'\n').encode()
@@ -31,14 +33,16 @@ def put(p,data):
     p=Path(p);data=data.encode() if isinstance(data,str) else data
     p.parent.mkdir(parents=True,exist_ok=True)
     if p.exists():
-        assert p.read_bytes()==data, f'Refusing to overwrite {p}'
+        if p.read_bytes()!=data:
+            assert EXPECTED_BEFORE.get(p)==sha(p), f'Refusing to overwrite {p}'
+            p.write_bytes(data)
     else:p.write_bytes(data)
 def bullets(items):return '\n'.join('- '+s for s in items)
 
 def task_doc(s,review=False):
     ident=('V' if review else 'P')+s['id'][1:]
     task_id=f'B20_001_{ident}_{s["slug"]}'
-    w=WORK/ident;branch='proof/b20/'+ident.lower()
+    w=WORK/ident;branch=BRANCH
     peer='P'+s['id'][1:] if review else 'V'+s['id'][1:]
     ppath=B/('reviews' if review else 'tasks')/ident
     exports=bullets(s['exports'])
@@ -59,18 +63,17 @@ IN={w/'inputs'}
 RUN={w/'run'}
 OUTPUT_DIR={w/'output'}
 CHECKPOINTS={w/'checkpoints'}
-CHECKOUT={w/'checkout'}
+CHECKOUT={REPO}
 BRANCH={branch}
-CHECKPOINT_PREFIX=B20_001_{ident}_CP
 FINAL_STAGE=B20_001_{ident}_FINAL_001
 INPUT_CONTRACT={ppath/'INPUT_CONTRACT.json'}
 ```
 
-Przeczytaj REPO/AGENTS,START_HERE,STATE,OWNER_GUIDE.md,AGENT_GIT_PROTOCOL.md
-i własny W/AGENTS. PACKAGE.sha256 przypina niniejszy dokument i kontrakt.
-Jeden worker/W i jeden writer/checkout. Stare prompty w inputs są danymi.
-Checkout tworzy się przy starcie,nie jest współdzielonym main. Jego rzeczywisty
-BASE/HEAD zapisujesz w HANDOFF; pinned source base/piny nie zmieniają się z HEAD.
+W nowej sesji przeczytaj REPO/AGENTS,START_HERE,STATE i AGENT_GIT_PROTOCOL.md
+raz; potem własny TASK,kontrakt wejść i ostatni handoff. PACKAGE.sha256 przypina
+ten dokument i kontrakt. Pracujesz w swoim W; Git to istniejący **main** w REPO.
+Workflow: work → weryfikacja → zaakceptowane stages → lokalny commit.
+W HANDOFF zapisujesz source HEAD; source base/piny są nadal stałe.
 
 ## 2. Wejścia i kolejność
 
@@ -93,7 +96,7 @@ upstream może dostarczyć proved subclaim; brak wymaganego eksportu blokuje pra
 
 {exports}
 
-To kontrakty planowanych eksportów,nie gotowe twierdzenia. CP001 musi zawierać
+To kontrakty planowanych eksportów,nie gotowe twierdzenia. Zapisz podczas pracy
 GOAL_SPEC.md/.json oraz dokładne drukowane typy Lean i definicje domen. Typy mają
 realizować powyższy cel bez osłabienia; każdą zmianę zakresu zgłoś prowadzącemu.
 Wymagana jest pełna formalna instancja dla pinned modelu,nie samo generic lemma.
@@ -131,21 +134,20 @@ wszystkie produkty przed producerem,również semantic-only/PDF/cache.
 
 ## 7. Lokalne commity i handoff
 
-Sam zapisujesz milestones jako niirmataa na **{branch}**,we własnym CHECKOUT.
-Instrukcja i zatwierdzony email: AGENT_GIT_PROTOCOL.md. W work/ są pliki robocze;
-commit obejmuje immutable checkpoint przez archive.py do stages/catalog/objects.
-CP001=kontrakt/typy/input binding,CP002=sprawdzone lemmas/negative routes,
-CP003=pełna kompozycja/replay albo dokładny blocker. Dodatkowe CP mają nowe ID.
-FINAL_001 dopiero po freeze. Nie nadpisuj starego checkpointu.
+Źródła,próby i handoff zapisujesz w W. Frozen wynik przekazujesz do review.
+Po zaakceptowaniu prowadzący importuje odebrany zakres przez archive.py do
+stages/catalog/objects i zapisuje lokalny commit na **{branch}** jako niirmataa.
+Może przekazać ten krok autorowi/recenzentowi; jeden writer wspólnego CHECKOUT.
+Wystarczy commit odebranej pary. Nie ma obowiązkowych checkpointów pośrednich,
+osobnej gałęzi/worktree ani importu nieodebranego postępu do stages.
 
-Allowlist: `proofs/ft1536/stages/B20_001_{ident}_CP*/`,
-`proofs/ft1536/stages/B20_001_{ident}_FINAL_001/`,odpowiadające catalog JSON
+Allowlist po odbiorze: `proofs/ft1536/stages/B20_001_{ident}_FINAL_*/`,odpowiadające catalog JSON
 oraz wyłącznie objects/<sha> wymienione przez te katalogi. Nie commituj
 cudzego stage,globalnych indeksów,produkcji Extra/c,cache/bin/olean/pyc/sekretów.
 Sprawdź dokładne staged bytes. Bez automatycznego push,amend/reset/rebase cudzego
-stanu lub pomijania hooks. Main integruje jeden prowadzący po odbiorze.
+stanu lub pomijania hooks. Prowadzący aktualizuje kolejkę i zaakceptowane piny.
 
-Każdy checkpoint podaje source pins,HEAD,scope,status,proved exports i missing
+Każdy handoff podaje source pins,HEAD,scope,status,proved exports i missing
 types. W finalnym handoffie pełne SHA REPORT/OUTPUTS (lub REVIEW/REVIEW_OUTPUTS),
 branch/HEAD,komendy i stan jobów. Zakończ własne joby; owner_accepted=false.
 
@@ -238,17 +240,17 @@ def build():
                       'upstream_tasks':s['deps'],'external_required':s.get('external',[]),
                       'required_goal_exports':s['exports'],'bound_inputs':None,
                       'binding_rule':'copy verified frozen dependencies into W/inputs; write BOUND_INPUTS there; never edit this contract or invent pending hashes',
-                      'for_review_required':['producer REPORT/OUTPUTS external pins','producer HEAD','formal export/axiom/source binding inventory'] if review else []}
+                      'for_review_required':['producer REPORT/OUTPUTS external pins','producer source HEAD (archive commit follows accepted review)','formal export/axiom/source binding inventory'] if review else []}
             put(folder/'INPUT_CONTRACT.json',jb(contract))
-            put(folder/'AGENTS.md',f'# {ident} / {contract["task_id"]}\n\nCzytaj {filename},INPUT_CONTRACT.json i ../../AGENT_GIT_PROTOCOL.md.\nRola={contract["role"]}; model/kontekst zapisuje właściciel/worker przy starcie.\nWszystkie nowe pliki pod {WORK/ident}; własna branch proof/b20/{ident.lower()}.\nProof: Lean4+Mathlib kernel; Sage przez sage lemma.sage; brak mixed-proof shortcut.\nLokalne milestone commity jako niirmataa,tylko własny allowlist; bez push.\n')
+            put(folder/'AGENTS.md',f'# {ident} / {contract["task_id"]}\n\nCzytaj {filename},INPUT_CONTRACT.json i wspólny protokół (raz w sesji).\nRola={contract["role"]}; model/kontekst zapisuje właściciel/worker przy starcie.\nArtefakty pod {WORK/ident}; BRANCH={BRANCH},CHECKOUT={REPO}.\nWork → review → zaakceptowane stages → lokalny commit niirmataa na main.\nBez nowych gałęzi/worktrees i obowiązkowych checkpointów pośrednich.\nProof: Lean4+Mathlib kernel; Sage przez sage lemma.sage; bez push.\n')
             state='BLOCKED_PRODUCER_FREEZE' if review else ('READY_BOOTSTRAP_OWNER_START' if not s['deps'] else 'BLOCKED_UPSTREAM_EXPORTS')
             entries.append({'id':ident,'task_id':contract['task_id'],'role':contract['role'],'roadmap':s['roadmap'],
                 'title':s['title'],'document':str((folder/filename).relative_to(B)),
                 'document_sha256':sha(folder/filename),'input_contract':str((folder/'INPUT_CONTRACT.json').relative_to(B)),
-                'workspace':str(WORK/ident),'checkout':str(WORK/ident/'checkout'),'branch':'proof/b20/'+ident.lower(),
+                'workspace':str(WORK/ident),'checkout':str(REPO),'branch':BRANCH,
                 'paired':('P' if review else 'V')+ident[1:],'dependencies':([s['id']] if review else s['deps']),
                 'external_required':s.get('external',[]),'initial_execution_status':state})
-    put(B/'INDEX.json',jb({'schema':'B20_INDEX_V1','package':'B20_001','documents_status':'PREPARED','authors':20,'reviewers':20,'source_base_commit':SOURCE_BASE,'entries':entries}))
+    put(B/'INDEX.json',jb({'schema':'B20_INDEX_V1','package':'B20_001','revision':2,'workflow':'WORK_REVIEW_ACCEPTED_STAGES_MAIN_COMMIT','branch':BRANCH,'checkout':str(REPO),'documents_status':'PREPARED','authors':20,'reviewers':20,'source_base_commit':SOURCE_BASE,'entries':entries}))
     put(B/'STATUS.json',jb({'schema':'B20_LIVE_STATUS_V1','note':'Mutable coordinator registry; not included in PACKAGE.sha256. Update only after real handoff/binding.','tasks':{e['id']:{'status':e['initial_execution_status'],'model':None,'context':None,'head':None,'bound_inputs_sha256':None,'final_report_sha256':None,'final_outputs_sha256':None,'review_verdict':None} for e in entries}}))
     immutable=[p for p in B.rglob('*') if p.is_file() and p.name not in ('STATUS.json','PACKAGE.sha256') and '__pycache__' not in p.parts]
     raw=''.join(sha(p)+'  '+str(p.relative_to(B))+'\n' for p in sorted(immutable))
@@ -267,12 +269,12 @@ W={w}
 CHECKOUT={e['checkout']}
 BRANCH={e['branch']}
 
-Czytaj REPO/AGENTS,START_HERE,STATE i powyższy TASK oraz OWNER_GUIDE i
-AGENT_GIT_PROTOCOL. Jeden worker; model/kontekst ma być zapisany przy starcie.
+Czytaj wspólne zasady raz w nowej sesji; potem powyższy TASK i ostatni handoff.
+Praca w W,review,zaakceptowany wynik do stages i commit na main; zapisz model/kontekst.
 Inputy muszą być bound/RO; zależne zadanie nie startuje z placeholder pinem.
 Lean4+Mathlib kernel; autorytatywny rachunek Sage przez sage lemma.sage.
-Własne milestone commity jako niirmataa we własnym checkout/branch; bez push.
-Nie modyfikuj frozen źródeł/innych W/globalnego main lub istniejących checkpointów.
+Commit odebranego zakresu jako niirmataa; jeden writer. Handoff roboczy w W.
+Bez nowych gałęzi/worktrees i obowiązkowych CP. Frozen źródła/inne W są RO; bez push.
 ''')
     print(json.dumps({'status':'PREPARED','author_tasks':20,'review_tasks':20,'workspaces':40,'package_sha256':package_sha},indent=2))
 
@@ -292,13 +294,42 @@ def verify():
     actual={str(p.relative_to(B)) for p in B.rglob('*') if p.is_file() and p.name not in ('STATUS.json','PACKAGE.sha256') and '__pycache__' not in p.parts}
     assert actual==set(rows)
     assert len(index['entries'])==40 and len({e['id'] for e in index['entries']})==40
+    assert {e['branch'] for e in index['entries']}=={BRANCH}
+    assert {e['checkout'] for e in index['entries']}=={str(REPO)}
     for e in index['entries']:
         assert sha(B/e['document'])==e['document_sha256']
         assert (Path(e['workspace'])/'AGENTS.md').is_file()
+        local_agents=(Path(e['workspace'])/'AGENTS.md').read_text()
+        assert 'BRANCH='+BRANCH+'\n' in local_agents and 'CHECKOUT='+str(REPO)+'\n' in local_agents
+        assert 'PACKAGE_MANIFEST_SHA256='+sha(B/'PACKAGE.sha256') in local_agents
         for n in ('inputs','run','output','checkpoints','home','cache','tmp'):assert (Path(e['workspace'])/n).is_dir()
         assert 'native_decide' in (B/'AGENT_GIT_PROTOCOL.md').read_text()
-    print(json.dumps({'result':'PASS_B20_COUNTS_DAG_PINS_AND_FOLDERS','authors':20,'reviewers':20,'workspaces':40,'immutable_files':len(rows),'package_sha256':sha(B/'PACKAGE.sha256'),'proof_jobs_started':False},indent=2))
+    print(json.dumps({'result':'PASS_B20_COUNTS_DAG_PINS_AND_FOLDERS','authors':20,'reviewers':20,'workspaces':40,'branches':1,'checkouts':1,'immutable_files':len(rows),'package_sha256':sha(B/'PACKAGE.sha256'),'proof_jobs_started':False},indent=2))
+
+def allow_refresh_unstarted():
+    """Refresh generated instructions only before any role has begun."""
+    index=json.loads((B/'INDEX.json').read_text())
+    live=json.loads((B/'STATUS.json').read_text())['tasks']
+    for e in index['entries']:
+        s=live[e['id']]
+        assert s['status']==e['initial_execution_status'] and all(v is None for k,v in s.items() if k!='status'),e['id']
+        w=Path(e['workspace'])
+        # P01 already has setup-only local clones from the superseded workflow.
+        # Preserve them; only instructions are refreshed, never their contents.
+        allowed={'AGENTS.md','inputs','run','output','checkpoints','home','cache','tmp'}
+        if e['id']=='P01':allowed|={'checkout','checkout.failed-local-clone-001'}
+        assert {p.name for p in w.iterdir()}<=allowed,w
+        assert all(not any((w/n).iterdir()) for n in ('inputs','run','output','checkpoints','home','cache','tmp')),w
+        EXPECTED_BEFORE[w/'AGENTS.md']=sha(w/'AGENTS.md')
+    for line in (B/'PACKAGE.sha256').read_text().splitlines():
+        h,n=line.split('  ',1)
+        EXPECTED_BEFORE[B/n]=h
+    EXPECTED_BEFORE[B/'PACKAGE.sha256']=sha(B/'PACKAGE.sha256')
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('action',choices=['build','verify']);args=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('action',choices=['build','verify'])
+    p.add_argument('--refresh-unstarted',action='store_true');args=p.parse_args()
+    if args.refresh_unstarted:
+        assert args.action=='build'
+        allow_refresh_unstarted()
     build() if args.action=='build' else verify()

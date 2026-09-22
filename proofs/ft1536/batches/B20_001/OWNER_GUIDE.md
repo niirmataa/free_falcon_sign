@@ -5,6 +5,10 @@ ROADMAP: T02→T03→T04→T05→T06,z koniecznym uzupełnieniem formalizacji st
 fundamentów. Pakiet zawiera dokładnie20 Pxx i20 Vxx. T02.1 jest już u recenzenta;
 jego przyszłych hashy nie zgadujemy. Powiązany P03 czeka na rzeczywisty handoff.
 
+**Workflow jak dotychczas: `work/` → weryfikacja → zaakceptowane `stages/`
+→ lokalny commit na `main` jako `niirmataa`.** Istniejący checkout repo;
+bez nowych gałęzi/worktrees i bez obowiązkowych checkpointów pośrednich.
+
 ## 1. Standard i znaczenie wyniku
 
 **SageMath + Lean4 + Mathlib,kernelowo.** Końcowy PROVED wymaga formalnego
@@ -58,7 +62,7 @@ Dokumenty: `/home/footfalcon/free_falcon_sign/proofs/ft1536/batches/B20_001`.
 Wykonawcy: `proofs/ft1536/work/B20_001/P01` … `P20`.
 Recenzenci: `proofs/ft1536/work/B20_001/V01` … `V20`.
 Każdy W ma inputs/run/output/checkpoints/home/cache/tmp i własny AGENTS.
-`checkout` jest docelową ścieżką worktree,tworzoną dopiero przy starcie.
+Git obsługujemy w istniejącym REPO na `main`. W służy pracy danej roli.
 
 - [AGENT_GIT_PROTOCOL](AGENT_GIT_PROTOCOL.md):dokładne wykonanie,odbiór i commity.
 - [TOOLCHAIN_PINS](TOOLCHAIN_PINS.json):Lean4.34,Sage10.9,Mathlib4 v4.34.0
@@ -74,25 +78,16 @@ Każdy W ma inputs/run/output/checkpoints/home/cache/tmp i własny AGENTS.
 2. Sprawdź brak aktywnego workera. Wypełnij owner/model/context i realne
    input bindings w W/inputs/BOUND_INPUTS.json. Gdy potrzeba przyszłego wyniku,
    czekaj na frozen handoff. Nie uruchamiaj z null/hash-placeholder.
-3. Integrator tworzy własną branch/worktree. Przykład dla P01:
-
-```sh
-REPO=/home/footfalcon/free_falcon_sign
-W="$REPO/proofs/ft1536/work/B20_001/P01"
-git -C "$REPO" worktree add -b proof/b20/p01 "$W/checkout" main
-```
-
-   To przykład do ręcznego wykonania po kontroli ownership. Zastanej branch/W
-   nie resetuj. Main użyty do checkoutu ma zawierać przygotowany pakiet; zapisz
-   jego rzeczywisty HEAD. SOURCE_BASE i przypięte source bytes pozostają stałe.
-4. Przekaż modelowi:
+3. Przekaż modelowi TASK i przygotowany W. W nowej sesji wspólne zasady czyta
+   raz; przy następnym zadaniu wystarczą jego cel,wejścia i ostatni handoff.
 
 ```text
 Wykonujesz P01 z B20_001. Przeczytaj:
 /home/footfalcon/free_falcon_sign/proofs/ft1536/batches/B20_001/tasks/P01/TASK.md
-oraz AGENTS w swoim W. Pracuj we wskazanym checkout/branch,formalnie w
-Lean4+Mathlib,z rachunkiem SageMath zgodnie z TASK. Sam zapisuj lokalne
-milestone commity jako niirmataa. Oddaj frozen handoff z pinami i HEAD.
+oraz AGENTS w swoim W. Pracuj w tym W,formalnie w Lean4+Mathlib,z rachunkiem
+SageMath zgodnie z TASK. Oddaj frozen handoff z pinami i source HEAD.
+Po niezależnym odbiorze zaakceptowany wynik trafi do stages i lokalnego
+commita na main jako niirmataa. Nie twórz gałęzi ani worktree.
 ```
 
 Podstaw ID rzeczywiście wybranego zadania. Nie wysyłaj przez relay lub
@@ -105,13 +100,14 @@ Podstaw ID rzeczywiście wybranego zadania. Nie wysyłaj przez relay lub
 2. Integrator sprawdza piny i materializuje wynik + closure RO w
    `Vxx/inputs/producer`,oraz zależności w `Vxx/inputs/dependencies`.
    W BOUND_INPUTS wpisuje rzeczywiste źródła,piny,HEAD i role.
-3. Uruchamiasz niezależnego recenzenta z właściwym REVIEW_TASK.md. Własny
-   worktree `proof/b20/vxx`,własny context i nowe raw receipts są obowiązkowe.
+3. Uruchamiasz niezależnego recenzenta z właściwym REVIEW_TASK.md. Korzysta
+   z własnego W/kontekstu i tworzy nowe raw receipts.
 4. Vxx oddaje formalną ocenę typów/termów/source applicability i własny replay.
    PASS dotyczy dokładnego scope. PARTIAL upstream może odblokować wyłącznie
    konkretne w pełni proved/odebrane exports,nie nieudowodniony cel.
-5. Integrator aktualizuje STATUS i consumer bindings. Przy CHANGES_REQUIRED
-   autor robi nowy checkpoint/wersję,nie edytuje starego freeze.
+5. Po zaakceptowaniu integrator importuje wynik i odbiór do stages,aktualizuje
+   STATUS/consumer bindings i robi lokalny commit na main. Przy CHANGES_REQUIRED
+   autor poprawia nową wersję w W,zachowując wcześniejsze frozen próby.
 
 ## 6. Bootstrap Mathlib i brak analitycznych skrótów
 
@@ -128,19 +124,17 @@ liczbę theoremów lub tekstowy szkic. Brak formalnego kroku jest jawnym blocker
 
 ## 7. Git,integracja i zmiana prowadzącego
 
-Autorzy i recenzenci sami commitują milestones do swoich gałęzi jako niirmataa.
-Work/ jest ignorowany:checkpointy trafiają przez archive.py do standardowych
-stages/catalog/objects we własnym checkout. Scope/checker/logi/negatywne wyniki
-są częścią checkpointu. Protokół podaje dokładną zatwierdzoną tożsamość.
-
-Jeden integrator zarządza kanonicznym main. Najpierw sprawdza evidence/review,
-potem FF gdy historia pasuje,lub jawny merge bez przepisywania commitów.
-Globalne indeksy aktualizuje dopiero po odbiorze. Produkcja Extra/c i push
-nie wynikają z lokalnego commita dowodu. Family publication gate obowiązuje.
+`work/` przechowuje robocze źródła,próby,logi i handoff. Po niezależnym odbiorze
+prowadzący importuje zaakceptowany zakres przez archive.py do standardowych
+stages/catalog/objects i robi lokalny commit na main jako niirmataa.
+Może przekazać import/commit autorowi lub recenzentowi; zawsze jeden writer.
+Wystarczy commit odebranej pary. Nie wymagamy osobnego commita planu ani
+każdego kroku. PARTIAL/kontrprzykład zachowuje prawdziwy odebrany status.
+Źródła produkcyjne i push mają osobne decyzje. Family publication gate obowiązuje.
 
 Przed końcem limitu/modelu:HANDOFF z ostatnim HEAD,pinami,eksportami,missing
 types i stanem jobów. Kolejny prowadzący czyta ten przewodnik,STATUS,STATE
-i handoff aktywnej roli. Dzięki checkpointom przejmuje konkretny krok zamiast
+i handoff aktywnej roli. Z zapisanych w W źródeł/logów przejmuje konkretny krok zamiast
 odtwarzać rozmowę. Matematyczny blocker pozostaje prawdziwym blockerem;
 zmiana modelu nie uprawnia do osłabienia celu.
 

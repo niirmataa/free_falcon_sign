@@ -129,8 +129,9 @@ otwartym tranche; oczekujemy też na handoff T02.1 zgłoszony jako gotowy.
 T03 i S01 mają osobne W/zlecenia. Żaden model nie jest uruchamiany automatycznie.
 Aktualizacja: T02.1 jest już u recenzenta. B20_001 dokumentuje następne20+20
 według tabeli powyżej; P01 jest gotowy do przydziału/bootstrapu,a pozostałe
-role czekają na wymagane konkretne exports. Autorzy i recenzenci commitują
-lokalne milestones jako niirmataa,we własnych worktrees/branches.
+role czekają na wymagane konkretne exports. Workflow po doprecyzowaniu właściciela:
+work → review → zaakceptowane stages → lokalny commit main jako niirmataa;
+bez nowych gałęzi/worktrees i obowiązkowych checkpointów pośrednich.
 
 ### Obowiązkowy krok przy rozwijaniu T05/T06/T09/T14
 
