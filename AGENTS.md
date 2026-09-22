@@ -18,6 +18,9 @@ Docelowym repozytorium prac jest `free_falcon_sign`.
   zamiast tworzyć niezależny plan. Zmiany kolejności/zakresu zapisuj jawnie.
 - Osobny tor MiMo/T03 wskazuje `proofs/ft1536/CURRENT_MIMO_TASK.md`.
   Nie myl go z `CURRENT_TASK.md` Astry/T01; każdy ma inny W i jednego wykonawcę.
+- Zlecenie korekt Family/S01 wskazuje `proofs/ft1536/CURRENT_FAMILY_TASK.md`.
+  Przed jego ręcznym startem MiMo zapisuje stan swoich bieżących prac i jobów;
+  przygotowanie S01 nie uruchamia drugiego workera ani nie nadpisuje T03.
 - Podział ról ustalony przez właściciela2026-09-22: ten prowadzący przygotowuje
   zadania i prompt odbioru; weryfikację matematyczną i replay zwróconych pakietów
   wykonuje niezależnie inny model wybrany przez właściciela. Ten prowadzący

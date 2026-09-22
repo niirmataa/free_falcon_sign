@@ -1,14 +1,14 @@
 # Stan projektu — punkt wejścia
 
-**Aktualizacja T01: 2026-09-22**, po przekazaniu przez właściciela niezależnego
-PASS_SCOPED_REVIEW; repo HEAD przed tym checkpointem: `4488293`.
+**Aktualizacja2026-09-22:** T01 niezależnie odebrany w `a2cdf317`;
+następnie właściciel poprosił o zadanie korekt S01 przed publikacją.
 Historyczne obserwacje procesów/dudect poniżej pochodzą z około04:33 CEST.
 Stan procesów jest ulotny: sprawdź go ponownie przed pracą. Ten dokument
 aktualizujemy po odbiorze etapu, zmianie wykonawcy lub decyzji właściciela.
 
 Główna kolejka zadań i kryteria: [ROADMAP](ROADMAP.md).
 Astra: **T01 REVIEWED**, następny **T02 PLANNED**; osobny MiMo = **T03**,
-poprawki Family = **S01**, dudect = **S02**.
+poprawki Family = **S01 PREPARED_OWNER_START_AFTER_HANDOFF**, dudect = **S02**.
 
 ## Decyzje właściciela
 
@@ -34,7 +34,7 @@ poprawki Family = **S01**, dudect = **S02**.
 | SCALAR_GAUSSIAN `64af4cb` | IID_BUFFER, lokalnie TV(K,G)≤2^-36, chi2(K\|\|G)≤2^-60; reverse chi2 nieskończone |
 | ORDERED_JOINT `22e6dd4` | Dokładne adaptacyjne3072 calls jednego root, closure/fresh-tail, TV≤2^-25, forward chi2<2^-48, zasoby |
 | H6P_REFERENCE_BAD_EVENT `1ba7ae0` | Uniform joint BadPrecast OBU pre-narrow vectors: Q_S≤2^-119, one-root P_IID≤2^-84 |
-| IID_RETRY_COMPOSITION / T01, niniejszy checkpoint | Niezależny PASS_SCOPED_REVIEW: one post-H2P cap16 region G_retry_IID, WholeRegionBad≤2^-80,coupling,wspólne resources,STATIC bytes |
+| IID_RETRY_COMPOSITION / T01 `a2cdf317` | Niezależny PASS_SCOPED_REVIEW: one post-H2P cap16 region G_retry_IID, WholeRegionBad≤2^-80,coupling,wspólne resources,STATIC bytes |
 
 H6P: niezależny replay **197/197**,73.819s;48 modułów Lean/327 twierdzeń,
 26 nowych. Osobne QQ/RBF768 sprawdzenie rachunku. V<5462457,E<1095.
@@ -114,7 +114,17 @@ Aktualizacja przygotowania2026-09-22: właściciel wybrał dla MiMo NOWY obowią
 głównego toru, odrębny od korekt Family. [CURRENT_MIMO_TASK](../../proofs/ft1536/CURRENT_MIMO_TASK.md)
 wskazuje **T03 / one-root REFERENCE_INTEGER_RECOVERY**, PREPARED_OWNER_START,
 osobny nowy W i jednego ręcznego wykonawcę. S01 i blokada publikacji pozostają
-otwarte. Nieuruchomiony szkic zlecenia korekt S01 zachowano lokalnie jako anulowany.
+otwarte. Nieuruchomiony szkic CORRECTIONS_RUN_002 zachowano lokalnie jako anulowany.
+
+**Nowsze polecenie właściciela po odbiorze T01:** przygotować zadanie MiMo,
+które domknie Family przed push. [CURRENT_FAMILY_TASK](../../proofs/ft1536/CURRENT_FAMILY_TASK.md)
+wskazuje nowy **CORRECTIONS_RUN_003**,197 przypiętych wejść i handoff do istniejącego
+okna MiMo. Uwzględniono znaleziony nowszy autorski FAMILY_SCALING_2026-09-22_RUN_002
+jako UNREVIEWED snapshot (42 pliki,manifest5ee71952…); R4 nadal deklarowane OPEN.
+W czasie przygotowania widziano procesy kampanii estymatora we własnym W;
+nie zatrzymano ich ani nie uruchomiono kolejnego workera. Start S01 następuje
+po kontrolowanym handoffie bieżących prac MiMo. T03 zachowuje swoje W i TASK;
+brak nowego końcowego handoffu/odbioru T03. Publikacja nadal wstrzymana.
 
 ## Build i dudect
 

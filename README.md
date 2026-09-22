@@ -221,6 +221,11 @@ FFT-port cases, while identifying corrections to attack-game/reduction definitio
 and claim consistency. Status: **RESEARCH_REVIEW_CHANGES_REQUIRED**; this is
 research evidence for planned FT768/FT3072, not their implementation or security certification.
 
+The owner-requested [Family/S01 correction task](proofs/ft1536/CURRENT_FAMILY_TASK.md)
+is prepared as a new RUN_003, with197 pinned inputs including the later,
+unreviewed author revision. It closes R1–R7 through justified corrections or
+explicit withdrawals; a separate independent review remains the publication gate.
+
 The [owner-run MiMo proof task](proofs/ft1536/CURRENT_MIMO_TASK.md) addresses
 T03: one-root reference integer recovery, with pinned inputs and explicit
 PROVED/PARTIAL criteria. It is separate from Astra's reviewed retry task and

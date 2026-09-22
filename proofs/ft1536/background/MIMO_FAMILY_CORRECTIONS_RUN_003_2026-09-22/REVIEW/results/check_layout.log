@@ -1,0 +1,30 @@
+=== check_layout.py ===
+S(k) closed form == recursion for k=1..13: True
+T(ell) == (ell+2)*N for ell=3..20: True
+W_inner closed form == max-recursion for r=1..13: True
+W_top(ell) == 7*2^(ell-1) for ell=3..20: True
+
+logn = 9, N = 768:
+  basis 3072 w | tree 8448 w ((ell+2)*N = 11*768) | sk 11520 w ((ell+6)*N = 15*768)
+  tmp 5376 w | leaves 768 w | internal L 7680 w
+  depth1 block 768 w | k-block 1024 w | inner7 448 w | inner8 head 128 w
+  ffLDL scratch from gxx: 1792 w
+  bytes: tree 67584 (66 KiB), sk 92160 (90 KiB), tmp 43008 (42 KiB)
+
+logn = 10, N = 1536:
+  basis 6144 w | tree 18432 w ((ell+2)*N = 12*1536) | sk 24576 w ((ell+6)*N = 16*1536)
+  tmp 10752 w | leaves 1536 w | internal L 16896 w
+  depth1 block 1536 w | k-block 2304 w | inner7 1024 w | inner8 head 256 w
+  ffLDL scratch from gxx: 3584 w
+  bytes: tree 147456 (144 KiB), sk 196608 (192 KiB), tmp 86016 (84 KiB)
+
+logn = 11, N = 3072:
+  basis 12288 w | tree 39936 w ((ell+2)*N = 13*3072) | sk 52224 w ((ell+6)*N = 17*3072)
+  tmp 21504 w | leaves 3072 w | internal L 36864 w
+  depth1 block 3072 w | k-block 5120 w | inner7 2304 w | inner8 head 512 w
+  ffLDL scratch from gxx: 7168 w
+  bytes: tree 319488 (312 KiB), sk 417792 (408 KiB), tmp 172032 (168 KiB)
+
+frozen N=1536 instance checks: {'tree': True, 'basis': True, 'sk': True, 'tmp': True, 'leaves': True, 'internal_L': True, 'depth1_block': True, 'k_block': True, 'inner7': True, 'inner8_head': True, 'scratch_exact': True, 'high_water_exact': True}
+  derived scratch 3584 == frozen 3584 (exact); high-water 3N + W = 8192 == frozen 8192 (exact)
+Wrote layout.json and layout.csv

@@ -271,6 +271,13 @@ Archiwizacja obejmuje wartościowy wynik wymagający poprawek; nie podnosi go
 do dowodu bezpieczeństwa lub gotowości FT768/FT3072. Dokumentacyjny
 `replay=none` nie usuwa zachowanych niezależnych kontroli.
 
+**Korekty S01 przygotowane na polecenie właściciela:**
+[CURRENT_FAMILY_TASK](CURRENT_FAMILY_TASK.md) wskazuje nowy CORRECTIONS_RUN_003,
+197 przypiętych wejść i istniejącą nowszą wersję autora jako nieodebrany input.
+Zadanie domyka R1–R7 z old→new diffs i spójnym PDF/kodem/replayem; dopuszcza
+jawne wycofanie wadliwego runnera R4 bez nowej kampanii. Ręczny start MiMo po
+handoffie bieżących prac. Pozytywny odbiór innego modelu nadal warunkiem publikacji.
+
 **Nowe zadanie dowodowe MiMo/T03 do ręcznego startu:**
 [CURRENT_MIMO_TASK](CURRENT_MIMO_TASK.md) wskazuje one-root reference integer
 recovery, nowy W,przypięte wejścia,TASK z kryteriami PROVED/PARTIAL,replayem
@@ -338,7 +345,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [ORDERED_JOINT_KERNEL](stages/FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001/REPORT.md) | **H3_ORDERED_JOINT_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — adaptive root/source closure, directed comparison/resources/POST transfer; reference BadPrecast probability otwarte | `22e6dd4` |
 | [FT_FAMILY_SCALING review](stages/FT_FAMILY_SCALING_REVIEW_RUN_001/REPORT.md) | **RESEARCH_REVIEW_CHANGES_REQUIRED** — zachowany pakiet MiMo, sprawdzone lemmas/layout/obliczenia; korekty game/reduction i zakresów | `0c1ddc1` |
 | [H6P_REFERENCE_BAD_EVENT](stages/FT1536_H6P_REFERENCE_BAD_EVENT_RUN_001/REPORT.md) | **H6P_REFERENCE_BAD_EVENT_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — source map/V/E/MGF i joint tail Q_S<=2^-119, one-root IID<=2^-84 | `1ba7ae0` |
-| [IID_RETRY_COMPOSITION / T01](stages/FT1536_IID_RETRY_COMPOSITION_RUN_001/REPORT.md) | **IID_RETRY_COMPOSITION_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — one post-H2P cap16 IID region,WholeRegionBad<=2^-80,coupling/resources/bytes; independent PASS_SCOPED_REVIEW | niniejszy checkpoint |
+| [IID_RETRY_COMPOSITION / T01](stages/FT1536_IID_RETRY_COMPOSITION_RUN_001/REPORT.md) | **IID_RETRY_COMPOSITION_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — one post-H2P cap16 IID region,WholeRegionBad<=2^-80,coupling/resources/bytes; independent PASS_SCOPED_REVIEW | `a2cdf317` |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).

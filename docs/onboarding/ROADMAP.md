@@ -1,6 +1,6 @@
 # Główna ścieżka twierdzeń i jawny rejestr zadań FT1536
 
-Wersja planu: **2026-09-22 / 2 — niezależny odbiór T01**. To żywy plan prowadzącego, oparty na
+Wersja planu: **2026-09-22 / 3 — przygotowanie korekt S01**. To żywy plan prowadzącego, oparty na
 [M0 TARGET_TYPE](../../proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001/TARGET_TYPE.md)
 i [M0 HOP_LEDGER](../../proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001/HOP_LEDGER.md).
 Nie zmienia zamrożonego M0 ani statusów starych raportów. Stan pracy na żywo:
@@ -81,7 +81,7 @@ odbiorze. Zależność oznacza wymagany interfejs, nie pozwolenie na założenie
 
 | ID / status | Dokładny cel i wejścia | Wyjście wymagane do odbioru | Zależności |
 |---|---|---|---|
-| **T01 REVIEWED — IID_RETRY_COMPOSITION** | Actual post-H2P region,reached entries,cap16,reset/fault/norm/codec w G_retry_IID | **PASS_SCOPED_REVIEW** innego modelu:492/492,WholeRegionBad≤2^-80,coupling,joint6352-block/26017792-byte budget z failure<2^-1020,STATIC≤3160; mixed proof. [REPORT](../../proofs/ft1536/stages/FT1536_IID_RETRY_COMPOSITION_RUN_001/REPORT.md),niniejszy checkpoint | F04–F09; [niezależny odbiór](../../proofs/ft1536/validation/2026-09-22-iid-retry-independent/README.md) |
+| **T01 REVIEWED — IID_RETRY_COMPOSITION** | Actual post-H2P region,reached entries,cap16,reset/fault/norm/codec w G_retry_IID | **PASS_SCOPED_REVIEW** innego modelu:492/492,WholeRegionBad≤2^-80,coupling,joint6352-block/26017792-byte budget z failure<2^-1020,STATIC≤3160; mixed proof. [REPORT](../../proofs/ft1536/stages/FT1536_IID_RETRY_COMPOSITION_RUN_001/REPORT.md),commit `a2cdf317` | F04–F09; [niezależny odbiór](../../proofs/ft1536/validation/2026-09-22-iid-retry-independent/README.md) |
 | **T02 PLANNED — PRNG_REAL_TO_IID_BUFFER** | Dokładny root SHAKE32→stream i state56/ChaCha/refills/getters; skończone ghost budgets | Jawne gry, resource-indexed assumptions i reduktory/hybrid losses; zachowana wspólna historia, init/discards/abandoned tails. Nie „448-bit security” | T01 resources, F02,F07,F08 |
 | **T03 PREPARED_OWNER_START — REFERENCE_INTEGER_RECOVERY** | Source rounded sampler/basis/iFFT/rint oraz independent reference integer object; osobny one-root TASK MiMo | Warunki i dowód recovery/congruence/rounding gap; wyprowadzone, a nie założone. Osobno Safe16, centered extraction i norm compatibility; partial/counterexample możliwe | F03–F09; T01 do rozszerzenia na retries |
 | **T04 PLANNED — PREFIX_AND_API_BINDING** | Pominięty przez T01 prefix: context/loader/rng_ready/nonce/H2P, usługi E i actual source outcomes | Dokładny zasięg definedness/termination/abort, legal ReadyRetryEntry z API i joint randomness interfaces. Brak ukrytego all-success lub IID premise | F02–F05,T01; T02 dla real-law claims |
@@ -114,7 +114,7 @@ M2/M3. Aktualny proof path może zmienić postać końcowego ledgeru tylko jawni
 
 | ID / status | Cel | Warunek odbioru / zależności |
 |---|---|---|
-| S01 CHANGES_REQUIRED — MiMo family scaling | Poprawki R1–R7 już zapisanej pracy | Nowa wersja + pełny niezależny odbiór; warunek właściciela przed jakąkolwiek publikacją |
+| S01 CHANGES_REQUIRED / CORRECTIONS_PREPARED — MiMo family scaling | Nowy [RUN_003/TASK](../../proofs/ft1536/CURRENT_FAMILY_TASK.md),R1–R7,z nieodebraną kopią nowszego pakietu RUN_002; start po handoffie MiMo | Spójna poprawiona wersja + pełny niezależny odbiór innego modelu; warunek właściciela przed jakąkolwiek publikacją |
 | S02 DEFERRED_OWNER_START — dudect RUN_002 |10h scalar timing na FLOOR_CT | Świeży preflight, pełne raw/controls/replications; interpretacja scoped, brak sygnału≠CT proof; bez proof jobs równolegle |
 | S03 PLANNED — M0_WRAPPER_INTEGRATION | r40/STATIC4096 i API/framing deployment | Osobne upoważnienie integracji, source/tests/refinement; obecny stary CLI nie jest wrapperem M0 |
 | S04 PLANNED — PUBLIC_XOF_H2P | Real public bit-output SHAKE/H2P vs pierwszy direct-output ROM | Jawna publiczna gra, domain interactions/private use i loss; nie darmowa domain separation |
@@ -178,3 +178,8 @@ muszą wskazywać ten sam aktywny etap.
   regionu cap16 w G_retry_IID. Prowadzący archiwizuje piny/raport/receipts;
   nie wykonuje nowego review/replayu. Kolejność T02/T03 i blokada publikacji
   pozostają zgodne z planem; T02 nie został uruchomiony.
+- 2026-09-22/v3: po pytaniu o push właściciel poprosił o zadanie MiMo
+  zamykające S01. Przygotowano nowy CORRECTIONS_RUN_003 z recenzją i przypiętą
+  nieodebraną rewizją autora. R4 dopuszcza jawne wycofanie błędnego active runnera
+  bez uruchamiania kampanii. Start po handoffie bieżących prac MiMo; T03/W
+  zachowane, brak automatycznych wykonań. Warunek publikacji nie został zniesiony.

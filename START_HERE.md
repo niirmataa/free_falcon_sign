@@ -39,6 +39,7 @@ prawdopodobieństwa BadPrecast z uniwersalnym Safe16 lub Sign→Verify.
 | Najnowsze wyniki, aktywne prace, zakaz publikacji | [STATE](docs/onboarding/STATE.md) |
 | Główna ścieżka twierdzeń, jawna kolejka i kryteria zadań | [ROADMAP](docs/onboarding/ROADMAP.md) |
 | Osobne bieżące zlecenie MiMo/T03 | [CURRENT_MIMO_TASK](proofs/ft1536/CURRENT_MIMO_TASK.md) |
+| Korekty Family/S01, warunek publikacji | [CURRENT_FAMILY_TASK](proofs/ft1536/CURRENT_FAMILY_TASK.md) |
 | Prompt oczekującego niezależnego odbioru | [CURRENT_REVIEW_TASK](proofs/ft1536/CURRENT_REVIEW_TASK.md) |
 | Model matematyczny i najważniejsze zależności | [PROOF_MAP](docs/onboarding/PROOF_MAP.md) |
 | Wznowienie/przekazanie, jeden writer, odbiór | [HANDOFF](docs/onboarding/HANDOFF.md) |
