@@ -73,7 +73,8 @@ F01–F09 to grupy orientacyjne; nie jeden zbiorczy nowy status PROVED.
 
 ## 4. Rejestr dalszych zadań — główny tor
 
-**Statusy:** `IN_PROGRESS` = istnieje wyznaczony wykonawca; `PLANNED` = cel
+**Statusy:** `PREPARED_OWNER_START` = przypięty TASK/W gotowy, czeka na ręczny start;
+`IN_PROGRESS` = istnieje wyznaczony wykonawca; `PLANNED` = cel
 zaplanowany, bez upoważnienia do startu; `REVIEWED` dopiero po niezależnym
 odbiorze. Zależność oznacza wymagany interfejs, nie pozwolenie na założenie tezy.
 
@@ -81,7 +82,7 @@ odbiorze. Zależność oznacza wymagany interfejs, nie pozwolenie na założenie
 |---|---|---|---|
 | **T01 IN_PROGRESS — IID_RETRY_COMPOSITION** | Actual post-H2P region, reached entries,16 attempts, reset/fault/norm/codec; F04–F09 | Source-bound applicability H6P przy każdej osiągniętej próbie, WholeRegionBad, coupling, a.s. IID region return i zasoby. Kandydat≤2^-80 dopiero po dowodzie | F04–F09; obecny TASK |
 | **T02 PLANNED — PRNG_REAL_TO_IID_BUFFER** | Dokładny root SHAKE32→stream i state56/ChaCha/refills/getters; skończone ghost budgets | Jawne gry, resource-indexed assumptions i reduktory/hybrid losses; zachowana wspólna historia, init/discards/abandoned tails. Nie „448-bit security” | T01 resources, F02,F07,F08 |
-| **T03 PLANNED — REFERENCE_INTEGER_RECOVERY** | Source rounded sampler/basis/iFFT/rint oraz independent reference integer object | Warunki i dowód recovery/congruence/rounding gap; wyprowadzone, a nie założone. Osobno Safe16, centered extraction i norm compatibility; partial/counterexample możliwe | F03–F09; T01 do rozszerzenia na retries |
+| **T03 PREPARED_OWNER_START — REFERENCE_INTEGER_RECOVERY** | Source rounded sampler/basis/iFFT/rint oraz independent reference integer object; osobny one-root TASK MiMo | Warunki i dowód recovery/congruence/rounding gap; wyprowadzone, a nie założone. Osobno Safe16, centered extraction i norm compatibility; partial/counterexample możliwe | F03–F09; T01 do rozszerzenia na retries |
 | **T04 PLANNED — PREFIX_AND_API_BINDING** | Pominięty przez T01 prefix: context/loader/rng_ready/nonce/H2P, usługi E i actual source outcomes | Dokładny zasięg definedness/termination/abort, legal ReadyRetryEntry z API i joint randomness interfaces. Brak ukrytego all-success lub IID premise | F02–F05,T01; T02 dla real-law claims |
 | **T05 PLANNED — GLOBAL_REFERENCE_GEOMETRY** | Actual parameters/tree/rounding oraz wybrane ordered reference law | Most do zadeklarowanego ideal coset Gaussian, z błędami/geometrią/secret dependence; Q_S/Q_stop nie stają się nim przez nazwę | F08,F09,T03; historyczny FULL_GEOMETRY |
 | **T06 PLANNED — COMPLETE_OBSERVED_BYTE_KERNELS** | Source/production/reference kernels, retries, bytes i bot outcomes | Jeden kompletny history-uniform consumer od funkcjonującego API do wskazanego prawa obserwacji; Sign→Verify tylko po T03 i właściwym center/norm bridge | T01–T05,F01,F02,F06 |
@@ -95,7 +96,7 @@ odbiorze. Zależność oznacza wymagany interfejs, nie pozwolenie na założenie
 | **T14 PLANNED — M7_FINAL_COMPOSITION** | Wszystkie zatwierdzone certificates/hops/resources | Instancja M0ReductionTarget: jawny końcowy wzór, raz p_K, brak double-count, scope klasycznego ROM; lista pozostających assumptions | T02–T13 |
 
 **Najbliższa kolejność prowadzącego:** odebrać T01, następnie dopracować TASK
-T02; T03 jest kolejnym niezależnym kandydatem. Nie jest to obietnica wyniku T01
+T02; T03 ma już osobny przygotowany one-root TASK dla MiMo. Nie jest to obietnica wyniku T01
 ani automatyczny start T02. Każdy wiersz może wymagać kilku checkpointów.
 
 ### Obowiązkowy krok przy rozwijaniu T05/T06/T09/T14
@@ -124,6 +125,11 @@ S03/S08 są potrzebne do odpowiednio szerokiego claimu wdrożeniowego; S04/S05
 rozszerzają model pierwszego M7. S01 jest bramką publikacji z decyzji właściciela,
 nie przesłanką matematyczną H6P. Nowe profile FT768/FT3072 są badaniami poza
 gotowością aktualnego FT1536; dalsze zadania dopisuj po odbiorze S01.
+
+**Rozwinięcie T03 do ręcznego startu MiMo:**
+[wskaźnik W/pinów i pełnego TASK](../../proofs/ft1536/CURRENT_MIMO_TASK.md).
+Zakres jednego root pozwala badać ten obowiązek niezależnie od aktywnego T01
+Astry. S01 pozostaje osobnym obowiązkiem korekt i bramką publikacji.
 
 ## 6. Jak rozwijamy wpis, zamiast wymyślać nowy plan co sesję
 
@@ -158,3 +164,8 @@ muszą wskazywać ten sam aktywny etap.
 - 2026-09-22/v1: scalono istniejący M0 ledger i najnowszy łańcuch H3/H6P
   w jawny rejestr F01–F09,T01–T14,S01–S08 na polecenie właściciela.
   T01 pozostaje aktywnym zadaniem; niczego nowego nie uruchomiono.
+- 2026-09-22: właściciel doprecyzował, że pilot MiMo ma być nowym obowiązkiem
+  głównego toru, nie korektami Family. Wybrano T03 one-root, własny W/TASK,
+  bez zakładania wyniku T01. Anulowany szkic S01 pozostał lokalnym materiałem.
+- 2026-09-22: odbiór matematyczny i replay zwrotów właściciel powierza innemu
+  modelowi; ten prowadzący przygotowuje zadania oraz prompty odbioru.

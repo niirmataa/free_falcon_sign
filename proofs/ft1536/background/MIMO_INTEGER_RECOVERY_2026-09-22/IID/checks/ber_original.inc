@@ -1,0 +1,46 @@
+static int
+BerExp(prng *p, fpr x)
+{
+	int s;
+	fpr r;
+	uint64_t w, z;
+	int b;
+	uint32_t over, safe_s, sw;
+
+	/*
+	 * Reduce x modulo log(2): x = s*log(2) + r, with s an integer,
+	 * and 0 <= r < log(2).
+	 */
+	s = fpr_floor(fpr_mul(x, fpr_inv_ln2));
+	r = fpr_sub(x, fpr_mul(fpr_of(s), fpr_log2));
+
+	/*
+	 * The proved candidate exponent envelope has 0 <= s <= 393. Use a
+	 * safe shift operand for all states, then force acceptance to zero for
+	 * s >= 64. Random consumption and the remaining operations stay fixed.
+	 */
+	sw = (uint32_t)s;
+	ft_berexp_cutoff_state(sw, &safe_s, &over);
+
+	/*
+	 * Sample a bit with probability 2^(-s):
+	 *  - generate a random 64-bit integer
+	 *  - keep only s bits
+	 *  - bit is 1 if the result is zero
+	 */
+	w = falcon_prng_get_u64(p);
+	w ^= (w >> safe_s) << safe_s;
+	b = 1 - (int)((w | -w) >> 63);
+	b &= 1 ^ (int)over;
+
+	/*
+	 * Sample a bit with probability exp(-r). The fixed-point evaluator
+	 * returns exp(-r)*2^63 and is reduced to the 55-bit comparison domain.
+	 */
+	z = fpr_expm_scaled(r) >> 8;
+	w = falcon_prng_get_u64(p);
+	w &= ((uint64_t)1 << 55) - 1;
+	b &= (int)((w - z) >> 63);
+
+	return b;
+}

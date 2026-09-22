@@ -6,11 +6,17 @@ Każdy handoff podaje również `ROADMAP_ID` z [rejestru zadań](ROADMAP.md).
 Aktualne IID_RETRY_COMPOSITION odpowiada T01. Nowy TASK rozwija wpis planu;
 nie zmienia celu końcowego ani zależności bez zapisanego uzasadnienia.
 
-**Prowadzący** przygotowuje zadania, niezależnie odbiera wyniki, importuje
-archiwum i obsługuje Git. **Wykonawca** pracuje w przydzielonym W i oddaje
-frozen handoff; bez Git, jeśli TASK tak stanowi. **Recenzent** czyta przypiętą
-kopię i zapisuje kontrole we własnym W. Ta sama osoba/model może zmieniać rolę,
-ale role i katalogi muszą być jawne.
+**Prowadzący** przygotowuje zadania i prompty odbioru oraz koordynuje archiwum
+i Git. **Wykonawca** pracuje w przydzielonym W i oddaje frozen handoff; bez
+Git, jeśli TASK tak stanowi. **Niezależny recenzent** czyta przypiętą kopię,
+weryfikuje argument, wykonuje replay i zapisuje kontrole we własnym W.
+Role, modele i katalogi muszą być jawne.
+
+**Aktualizacja właściciela2026-09-22:** w bieżącym podziale ten prowadzący
+przygotowuje zadania i prompty weryfikacyjne. Odbiór matematyczny i replay
+realizuje **inny niezależny model wybrany przez właściciela**. Procedura odbioru
+poniżej jest instrukcją dla tego recenzenta, nie automatycznym działaniem
+prowadzącego. Handoff autora nie awansuje statusu do REVIEWED.
 
 Przed wznowieniem sprawdź task ID/piny, repo/branch, stan W i wykonawców.
 PID żyjącego TUI nie dowodzi aktywnego inference; istniejący executor.lock

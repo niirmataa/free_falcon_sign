@@ -16,6 +16,13 @@ Docelowym repozytorium prac jest `free_falcon_sign`.
 - Główna ścieżka twierdzeń i rejestr zadań: `docs/onboarding/ROADMAP.md`.
   Nowe zlecenie rozwija wpis Txx/Sxx (zależności, cel, kryteria odbioru),
   zamiast tworzyć niezależny plan. Zmiany kolejności/zakresu zapisuj jawnie.
+- Osobny tor MiMo/T03 wskazuje `proofs/ft1536/CURRENT_MIMO_TASK.md`.
+  Nie myl go z `CURRENT_TASK.md` Astry/T01; każdy ma inny W i jednego wykonawcę.
+- Podział ról ustalony przez właściciela2026-09-22: ten prowadzący przygotowuje
+  zadania i prompt odbioru; weryfikację matematyczną i replay zwróconych pakietów
+  wykonuje niezależnie inny model wybrany przez właściciela. Ten prowadzący
+  nie uruchamia ich automatycznie ani nie ogłasza własnego odbioru. Kontrole
+  pinów i spójności przygotowywanego zlecenia pozostają częścią przygotowania.
 
 ## Trwała lokalizacja pracy
 

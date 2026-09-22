@@ -212,6 +212,11 @@ FFT-port cases, while identifying corrections to attack-game/reduction definitio
 and claim consistency. Status: **RESEARCH_REVIEW_CHANGES_REQUIRED**; this is
 research evidence for planned FT768/FT3072, not their implementation or security certification.
 
+The [owner-run MiMo proof task](proofs/ft1536/CURRENT_MIMO_TASK.md) addresses
+T03: one-root reference integer recovery, with pinned inputs and explicit
+PROVED/PARTIAL criteria. It is separate from Astra's active retry task and
+from the still-required Family corrections.
+
 The [historical deferred preparation](provenance/checks/2026-09-20-dudect-floor-ct-ready/README.md)
 is retained. The [current floor-ct launcher](tests/ft1536/dudect/README.md)
 supports the owner's **ten-hour RUN_002** budget, with fresh controls before

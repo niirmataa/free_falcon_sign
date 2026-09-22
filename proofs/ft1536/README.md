@@ -260,6 +260,12 @@ Archiwizacja obejmuje wartościowy wynik wymagający poprawek; nie podnosi go
 do dowodu bezpieczeństwa lub gotowości FT768/FT3072. Dokumentacyjny
 `replay=none` nie usuwa zachowanych niezależnych kontroli.
 
+**Nowe zadanie dowodowe MiMo/T03 do ręcznego startu:**
+[CURRENT_MIMO_TASK](CURRENT_MIMO_TASK.md) wskazuje one-root reference integer
+recovery, nowy W,przypięte wejścia,TASK z kryteriami PROVED/PARTIAL,replayem
+i dokładnym formatem odpowiedzi. To nie korekty Family/S01 ani aktywne T01
+Astry; nie uruchomiono nowego modelu.
+
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
 

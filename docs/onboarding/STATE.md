@@ -10,6 +10,10 @@ Bieżąca Astra = **T01**, poprawki MiMo = **S01**, dudect = **S02**.
 
 ## Decyzje właściciela
 
+- Aktualny podział ról: prowadzący przygotowuje zadania i prompty do odbioru.
+  **Weryfikację i replay zwrotów wykonuje inny niezależny model wskazany przez
+  właściciela**. Nowe wyniki czekają na jego raport; ten prowadzący nie wykonuje
+  ich odbioru automatycznie. Starsze opisane niżej odbiory są faktami historycznymi.
 - **Publikacja czegokolwiek na GitHub wstrzymana**, aż MiMo poprawi
   FT_FAMILY_SCALING i poprawiona wersja przejdzie pozytywny niezależny odbiór.
   Późniejszy push nadal wymaga osobnego polecenia. Przy tym snapshotcie main
@@ -85,6 +89,12 @@ trapdoor completion; homogeneous SIS w szkielecie P2; idealna hipoteza chi-squar
 spójność statusu proposed FFT bound; lokalna tabela high-water16384 zamiast15360.
 Nie zastępuj poprawkami zamrożonych bajtów. Nowa wersja wymaga osobnego odbioru.
 Nie ma w tym snapshotcie pozytywnego odbioru poprawek. Nie uruchamiaj MiMo sam.
+
+Aktualizacja przygotowania2026-09-22: właściciel wybrał dla MiMo NOWY obowiązek
+głównego toru, odrębny od korekt Family. [CURRENT_MIMO_TASK](../../proofs/ft1536/CURRENT_MIMO_TASK.md)
+wskazuje **T03 / one-root REFERENCE_INTEGER_RECOVERY**, PREPARED_OWNER_START,
+osobny nowy W i jednego ręcznego wykonawcę. S01 i blokada publikacji pozostają
+otwarte. Nieuruchomiony szkic zlecenia korekt S01 zachowano lokalnie jako anulowany.
 
 ## Build i dudect
 
