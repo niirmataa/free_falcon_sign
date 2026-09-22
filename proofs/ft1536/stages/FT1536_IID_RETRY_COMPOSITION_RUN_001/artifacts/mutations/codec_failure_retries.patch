@@ -1,0 +1,35 @@
+--- checks/retry.c
++++ checks/mutations/codec_failure_retries/retry.c
+@@ -5,10 +5,10 @@
+ #include <inttypes.h>
+ #include <assert.h>
+ #include <setjmp.h>
+-#include "../source/falcon-fft.c"
++#include "../../../source/falcon-fft.c"
+ void forbidden_hash_extract(shake_context *,void *,size_t);
+ #define shake_extract forbidden_hash_extract
+-#include "../source/falcon-enc.c"
++#include "../../../source/falcon-enc.c"
+ #undef shake_extract
+ #define FT_SAMPLER_ADAPTIVE_PROBE 0
+ #include "context.inc"
+--- checks/retry_region.inc
++++ checks/mutations/codec_failure_retries/retry_region.inc
+@@ -1,6 +1,8 @@
+ #if SIGN_MAX_ATTEMPTS != 0
+ 	uint32_t sign_loop_attempts = 0;
+ #endif
++	goto retry_again;
++retry_again:
+ 	for (;;) {
+ #if SIGN_MAX_ATTEMPTS != 0
+ 		if (++ sign_loop_attempts > SIGN_MAX_ATTEMPTS) {
+@@ -89,7 +91,7 @@
+ 	#if FT_SAMPLER_ADAPTIVE_PROBE
+ 		ft_sampler_probe_encode_failures ++;
+ 	#endif
+-		return 0;
++		goto retry_again;
+ 	}
+ 	sig_buf[0] = (fs->ternary << 7) | (comp << 5) | fs->logn;
+ 	return sig_len + 1;

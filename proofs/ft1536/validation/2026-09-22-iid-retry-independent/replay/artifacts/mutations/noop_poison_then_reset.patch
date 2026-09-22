@@ -1,0 +1,25 @@
+--- checks/retry.c
++++ checks/mutations/noop_poison_then_reset/retry.c
+@@ -5,10 +5,10 @@
+ #include <inttypes.h>
+ #include <assert.h>
+ #include <setjmp.h>
+-#include "../source/falcon-fft.c"
++#include "../../../source/falcon-fft.c"
+ void forbidden_hash_extract(shake_context *,void *,size_t);
+ #define shake_extract forbidden_hash_extract
+-#include "../source/falcon-enc.c"
++#include "../../../source/falcon-enc.c"
+ #undef shake_extract
+ #define FT_SAMPLER_ADAPTIVE_PROBE 0
+ #include "context.inc"
+--- checks/retry_region.inc
++++ checks/mutations/noop_poison_then_reset/retry_region.inc
+@@ -19,6 +19,7 @@
+ 		 */
+ 		prng p;
+ 		ternary_sampler_context tsc;
++		tsc.fault = FT_SAMPLER_FAULT_INVALID_SIGMA;
+ 		samplerZ samp;
+ 		void *samp_ctx;
+ 

@@ -1,0 +1,7 @@
+import json,subprocess,sys
+from pathlib import Path
+W=Path.cwd();D=W/'tmp/wrong_external_pin';assert not D.exists()
+p=subprocess.run([sys.executable,'-B','scripts/replay.py',str(D),'0'*64,'--manifest','artifacts/rehearsal_anchor.sha256'],capture_output=True,timeout=30)
+for stream,b in [('stdout',p.stdout),('stderr',p.stderr)]:(W/'logs'/('replay_negative.'+stream)).write_bytes(b)
+assert p.returncode!=0 and b'manifest external pin mismatch' in p.stderr and not D.exists()
+(W/'artifacts/replay_negative.json').write_text(json.dumps(dict(status='PASS_WRONG_EXTERNAL_PIN_REJECTED_BEFORE_DEST',exit_code=p.returncode,destination_created=False),indent=2)+'\n');print('PASS_WRONG_EXTERNAL_PIN_BEFORE_DEST')

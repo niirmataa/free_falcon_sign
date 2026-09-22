@@ -1,0 +1,24 @@
+--- checks/retry.c
++++ checks/mutations/stale_target_scratch/retry.c
+@@ -5,10 +5,10 @@
+ #include <inttypes.h>
+ #include <assert.h>
+ #include <setjmp.h>
+-#include "../source/falcon-fft.c"
++#include "../../../source/falcon-fft.c"
+ void forbidden_hash_extract(shake_context *,void *,size_t);
+ #define shake_extract forbidden_hash_extract
+-#include "../source/falcon-enc.c"
++#include "../../../source/falcon-enc.c"
+ #undef shake_extract
+ #define FT_SAMPLER_ADAPTIVE_PROBE 0
+ #include "context.inc"
+@@ -73,7 +73,7 @@
+ static void scripted_root(samplerZ samp,void *ctx,int16_t *s1,int16_t *s2,unsigned q,const fpr *sk,const uint16_t *hm,unsigned logn,unsigned ter,fpr *tmp){
+  assert(samp==sampler_large && ctx!=NULL && q==18433 && logn==10 && ter==1 && sk==key.a && tmp==scratch.a && hm==challenge);
+  ternary_sampler_context *tsc=ctx;assert(tsc->fault==0 && tsc->p.ptr==0 && tsc->p.type==1);root_count++;assert(root_count==init_count);
+- prepare_targets(tmp,sk,hm,logn,q);assert(memcmp(tmp,expected_targets,sizeof expected_targets)==0);
++ /* incorrectly reuse scratch */assert(memcmp(tmp,expected_targets,sizeof expected_targets)==0);
+  printf("TARGET %u",root_count);for(size_t i=0;i<3072;i++)printf(" %016" PRIx64,tmp[i]);putchar('\n');
+  size_t T=script[root_count-1].proposals;
+  for(size_t j=0;j<T;j++){(void)falcon_prng_get_u64(&tsc->p);(void)falcon_prng_get_u64(&tsc->p);(void)falcon_prng_get_u8(&tsc->p);(void)falcon_prng_get_u64(&tsc->p);(void)falcon_prng_get_u64(&tsc->p);returned+=33;}

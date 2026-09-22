@@ -1,0 +1,23 @@
+{
+  "scope": "independent recomputation from RESULT.json exact rationals",
+  "checks": {
+    "16p_le_2pow_80": true,
+    "uniform_union_eq_16p": true,
+    "hazard_le_16p": true,
+    "hazard_le_2pow_80": true,
+    "tail_note": "per-root strict <2^-1024 each; sum of 16 strict bounds <16*2^-1024 = 2^-1020 exactly; strict convention sound",
+    "r_j_floor_396": true,
+    "ghost_proposals_786432": true,
+    "ghost_additional_6336": true,
+    "ghost_blocks_6352": true,
+    "ghost_bytes_26017792": true,
+    "getter_drops_le_57024": true,
+    "abandoned_61320": true,
+    "tail_bytes_note": "A_reinit<=4088(J-1), U_final<=4088; general rollover-4096 control is not a complete-proposal endpoint per RESOURCE_BOUND.md:26-29"
+  },
+  "lean_forbidden_tactics": "no ^sorry/^admit/native_decide/Lean.ofReduceBool/warning-suppression matches; naive hits were identifier substrings (admitCall) and #print-axioms lines",
+  "formal_modules": 120,
+  "formal_theorems_claim": 922,
+  "formal_new_claim": 26,
+  "formal_audit_status": "PASS_KERNEL_RETRY_STATE_SCALED_STOPPED_SUM_COUPLING_RESOURCES"
+}

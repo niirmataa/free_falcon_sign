@@ -1,0 +1,60 @@
+{
+  "status": "PASS_EXACT_RETRY_INIT_TARGET_SLICES",
+  "source_pin": "56974571b46e8257bdd3b4097c8c70fded6bb4b94c64805f6e35ec80929a0985",
+  "slices": [
+    {
+      "copy": "checks/retry_region.inc",
+      "source": "source/falcon-sign.c",
+      "first": 3327,
+      "last": 3421,
+      "sha256": "3fb230d8b1cd7b536439feefdba364fc551afa9e3b8b8219e20c8495e7f5b455",
+      "exact_bytes": true
+    },
+    {
+      "copy": "checks/context.inc",
+      "source": "source/falcon-sign.c",
+      "first": 1319,
+      "last": 1331,
+      "sha256": "9865a4aa03198958efef502964db97358151c3aa77a2d228a9694aefa18420df",
+      "exact_bytes": true
+    },
+    {
+      "copy": "checks/prng_init.inc",
+      "source": "source/frng.c",
+      "first": 281,
+      "last": 324,
+      "sha256": "a50c61daebef0402dca8b7926868edc442f9dbc258d440fe2dbd980e20a0e40b",
+      "exact_bytes": true
+    },
+    {
+      "copy": "checks/target_fill.inc",
+      "source": "source/falcon-sign.c",
+      "first": 1874,
+      "last": 1879,
+      "sha256": "4016cbd8331780eca1096f7fbe5a642d1abbd81e90623598bf16f91aedba81a5",
+      "exact_bytes": true
+    },
+    {
+      "copy": "checks/target_compute.inc",
+      "source": "source/falcon-sign.c",
+      "first": 1886,
+      "last": 1892,
+      "sha256": "55617d3ceefa095276b881b2574d57734b72c0d133d131c26a3b45be06ee9a6a",
+      "exact_bytes": true
+    }
+  ],
+  "refill_projection": {
+    "source": "source/frng.c",
+    "read_counter_line": 214,
+    "loop_64_bytes_line": 215,
+    "increment_line": 264,
+    "write_counter_line": 277,
+    "pointer_reset_line": 338,
+    "loops": 64,
+    "real_ChaCha_executed": false
+  },
+  "scheduler_do_sign_is_scripted_stub": true,
+  "actual_codec_used": true,
+  "full_Sign_executed": false,
+  "source_changed": false
+}

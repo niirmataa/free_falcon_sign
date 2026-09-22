@@ -45,8 +45,11 @@ CLAIM/certificate i NEXT_INTERFACE danego etapu, dopiero potem formal/scripts.
 | `FT1536_H3_SCALAR_GAUSSIAN_COMPARISON_RUN_001` | TV≤2^-36, forward chi2≤2^-60, A≥1/8, explicit support gap |
 | `FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001` |3072-call conditional joint law, Q_S/Q_stop, source closure, a.s. IID return/resources |
 | `FT1536_H6P_REFERENCE_BAD_EVENT_RUN_001` | one-root joint BadPrecast Q_S≤2^-119, P_IID≤2^-84, source V/E/MGF |
+| `FT1536_IID_RETRY_COMPOSITION_RUN_001` | T01 REVIEWED: one post-H2P cap16 G_retry_IID region,WholeRegionBad≤2^-80,coupling,simultaneous resources i STATIC bytes |
 
-Najkrótsze ścieżki do kontekstu bieżącego retry:
+Najkrótsze ścieżki od odebranego retry do T02:
+- [T01 PRNG_NEXT_INTERFACE](../../proofs/ft1536/stages/FT1536_IID_RETRY_COMPOSITION_RUN_001/PRNG_NEXT_INTERFACE.md)
+- [T01 niezależny odbiór](../../proofs/ft1536/validation/2026-09-22-iid-retry-independent/README.md)
 - [H6P NEXT](../../proofs/ft1536/stages/FT1536_H6P_REFERENCE_BAD_EVENT_RUN_001/NEXT_INTERFACE.md)
 - [JOINT H6P interface](../../proofs/ft1536/stages/FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001/H6P_INTERFACE.md)
 - [POST caller/norm](../../proofs/ft1536/stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001/NORM_AND_CALLER_BINDING.md)
@@ -73,8 +76,9 @@ Najkrótsze ścieżki do kontekstu bieżącego retry:
   H6P coefficients są entry-fixed, centers adapted; brak independence/mean-zero
   assumption. Exact rational beta/Delta ważniejsze od samych rounded exponents.
 - H6P nie rozwiązuje integer recovery/congruence/rounding-gap/Sign→Verify.
-  Retry w toku nie jest jeszcze wynikiem odebranym. Whole real Sign/security/CT
-  i ROM/QROM composition pozostają dalszymi obowiązkami.
+  T01 domyka retry wyłącznie w jednym post-H2P regionie IID; bound nie jest
+  conditional-on-success. Whole real Sign/security/CT i ROM/QROM composition
+  pozostają dalszymi obowiązkami.
 
 ## Historia, do której sięgać tylko gdy potrzebna
 

@@ -28,12 +28,12 @@ osiągnięcia, T2C3/T5, kontrakt M0, graf zależności i dalsze obowiązki.
 Pakiet ma 211 członków OUTPUTS i 198 publicznych wejść Git, manifest
 `c3efdcff510983a143946d43ab456656090061cd5b9b4b6847abc7f141c0cfa3`.
 Jest checkpointem dokumentacyjnym (`replay=none`); obecnie archiwum zawiera
-także dwadzieścia siedem etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
+także dwadzieścia osiem etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
 H3_ZERO_SCALAR, H3_ROOT_LDL, H3_NODE3, H3_NODE2, BINARY_TOWER, audyt FPEMU,
 FLOOR_CT, RAW_ASSEMBLY, STABLE_NORMALIZATION, INITIAL_TARGETS, ORDERED_REACH
 i LEFT_ROOT_CORRELATED_TRANSFER, SOURCE_POSTPROCESSING_AND_PRECAST, SCALAR_KERNEL_IID
 i SCALAR_GAUSSIAN_COMPARISON, ORDERED_JOINT_KERNEL, H6P_REFERENCE_BAD_EVENT
-oraz przegląd FT_FAMILY_SCALING.
+oraz przegląd FT_FAMILY_SCALING i IID_RETRY_COMPOSITION.
 
 [Mapa po domknięciu L_V — 2026-09-19](documents/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md)
 przedstawia zależności i proponowaną kolejność: dokładny kontrakt gry,
@@ -236,18 +236,26 @@ signed tails oraz właściwy kierunek JOINT transfer są rozliczone.
 [Odbiór](validation/2026-09-22-h6p-reference-bad-event/README.md):197/197,
 73.819s,48 modułów/327 twierdzeń (26 nowych),pełne logs i niezależne QQ/RBF768
 sprawdzenie arytmetyki. Zachowano coarse error≈3.681e9 jako luźny failed bound.
-Następny obowiązek: **IID_RETRY_COMPOSITION** z actual cap16/reached entries/
-filtration i postprocessing, przed przypisaniem whole-call lossu.
+Późniejszy **IID_RETRY_COMPOSITION** poniżej domyka actual cap16/reached entries/
+filtration i postprocessing w jednym regionie IID; whole real Sign nadal otwarty.
 
-**Zwrot T01 oczekujący na niezależny odbiór:**
-[IID_RETRY_COMPOSITION](documents/FT1536_ZADANIE_ASTRA_IID_RETRY_COMPOSITION_2026-09-22.md)
-z [1270 przypiętymi wejściami](background/IID_RETRY_COMPOSITION_2026-09-22/README.md).
-Zakres: od jednego legalnego post-H2P entry do return z actual retry/codec
-region, stopping-time applicability H6P, WholeRegionBad, checked-precast
-coupling i zasoby z resetami. Autor zgłosił PROVED/492 matches oraz<=2^-80;
-to deklaracje czekające na potwierdzenie. [CURRENT_REVIEW_TASK](CURRENT_REVIEW_TASK.md)
-wskazuje pełny prompt dla innego modelu i zewnętrzne REPORT/OUTPUTS piny.
-Prowadzący nie wykonał odbioru/replayu; T01 nie jest jeszcze REVIEWED.
+**T01 REVIEWED — PASS_SCOPED_REVIEW:**
+[IID_RETRY_COMPOSITION](stages/FT1536_IID_RETRY_COMPOSITION_RUN_001/REPORT.md)
+domyka jeden legalny post-H2P cap16 region w G_retry_IID:
+**WholeRegionBad<=2^-80**,re-entry/fresh-tail,checked-precast coupling oraz
+exact STATIC payload<=3160. Wspólny event H daje jednocześnie6352 blocks/
+26017792 bytes i pozostałe budgets, z failure<2^-1020. Bad obejmuje obie
+vectors również po norm rejection; bound nie jest conditional-on-success.
+[Niezależny model wybrany przez właściciela](validation/2026-09-22-iid-retry-independent/README.md)
+wykonał492/492,662.514s i review A–F,120 modułów/922 twierdzenia/26 nowych.
+Prowadzący archiwizuje ten przekazany werdykt i pełne receipts, bez nowego
+własnego review matematycznego/replayu. Dwa stale live INPUTS mają dokładne
+sealed kopie; failed routes/overlap i mixed proof boundary zachowane.
+[CURRENT_REVIEW_TASK](CURRENT_REVIEW_TASK.md) wiąże zewnętrzne piny odbioru;
+[zlecenie](documents/FT1536_ZADANIE_ASTRA_IID_RETRY_COMPOSITION_2026-09-22.md)
+i [1270 wejść](background/IID_RETRY_COMPOSITION_2026-09-22/README.md) pozostają
+niezmienne. Następny T02 dotyczy real SHAKE/ChaCha→IID; H2P/whole real Sign,
+integer recovery,Sign→Verify/security/CT są nadal osobnymi obowiązkami.
 
 **Zachowane opracowanie FT_FAMILY_SCALING modelu MiMo:**
 [pakiet, PDF i wyniki](stages/FT_FAMILY_SCALING_REVIEW_RUN_001/README.md)
@@ -266,7 +274,7 @@ do dowodu bezpieczeństwa lub gotowości FT768/FT3072. Dokumentacyjny
 **Nowe zadanie dowodowe MiMo/T03 do ręcznego startu:**
 [CURRENT_MIMO_TASK](CURRENT_MIMO_TASK.md) wskazuje one-root reference integer
 recovery, nowy W,przypięte wejścia,TASK z kryteriami PROVED/PARTIAL,replayem
-i dokładnym formatem odpowiedzi. To nie korekty Family/S01 ani aktywne T01
+i dokładnym formatem odpowiedzi. To nie korekty Family/S01 ani odebrane T01
 Astry; nie uruchomiono nowego modelu.
 
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
@@ -330,6 +338,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [ORDERED_JOINT_KERNEL](stages/FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001/REPORT.md) | **H3_ORDERED_JOINT_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — adaptive root/source closure, directed comparison/resources/POST transfer; reference BadPrecast probability otwarte | `22e6dd4` |
 | [FT_FAMILY_SCALING review](stages/FT_FAMILY_SCALING_REVIEW_RUN_001/REPORT.md) | **RESEARCH_REVIEW_CHANGES_REQUIRED** — zachowany pakiet MiMo, sprawdzone lemmas/layout/obliczenia; korekty game/reduction i zakresów | `0c1ddc1` |
 | [H6P_REFERENCE_BAD_EVENT](stages/FT1536_H6P_REFERENCE_BAD_EVENT_RUN_001/REPORT.md) | **H6P_REFERENCE_BAD_EVENT_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — source map/V/E/MGF i joint tail Q_S<=2^-119, one-root IID<=2^-84 | `1ba7ae0` |
+| [IID_RETRY_COMPOSITION / T01](stages/FT1536_IID_RETRY_COMPOSITION_RUN_001/REPORT.md) | **IID_RETRY_COMPOSITION_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — one post-H2P cap16 IID region,WholeRegionBad<=2^-80,coupling/resources/bytes; independent PASS_SCOPED_REVIEW | niniejszy checkpoint |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).

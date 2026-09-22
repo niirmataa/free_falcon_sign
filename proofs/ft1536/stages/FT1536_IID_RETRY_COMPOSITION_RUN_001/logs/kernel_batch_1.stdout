@@ -1,0 +1,432 @@
+TargetWords 0 0.546
+TargetAlgebra 0 0.992
+TargetFrame 0 0.574
+TargetSequence 0 0.54
+ReachOutcomes 0 0.71
+ReachFrame 0 0.444
+BankEnergy 0 0.509
+@prefix_invariant : ∀ {K : Type} (count : Nat) (addr : Nat → K → Nat) (op : Nat → (K → Int) → K → Int)
+  (step : Nat → Mem → Mem),
+  (∀ (b : Nat), b < count → ∀ (c : Nat), c < count → ∀ (k l : K), addr b k = addr c l → b = c ∧ k = l) →
+    (∀ (b : Nat), b < count → ∀ (s : Mem) (k : K), step b s (addr b k) = op b (fun l => s (addr b l)) k) →
+      (∀ (b : Nat), b < count → ∀ (s : Mem) (i : Nat), (∀ (k : K), i ≠ addr b k) → step b s i = s i) →
+        ∀ (n : Nat),
+          n ≤ count →
+            ∀ (s : Mem) (b : Nat),
+              b < count →
+                ∀ (k : K), runSteps step n s (addr b k) = if b < n then op b (fun l => s (addr b l)) k else s (addr b k)
+pair_prefix : ∀ (count : Nat) (addr : Nat → Bool → Nat) (op : Nat → (Bool → Int) → Bool → Int),
+  (∀ (b : Nat), b < count → ∀ (c : Nat), c < count → ∀ (k l : Bool), addr b k = addr c l → b = c ∧ k = l) →
+    ∀ (n : Nat),
+      n ≤ count →
+        ∀ (s : Mem) (b : Nat),
+          b < count →
+            ∀ (k : Bool),
+              runSteps (pairStep addr op) n s (addr b k) =
+                if b < n then op b (fun l => s (addr b l)) k else s (addr b k)
+triple_prefix : ∀ (count : Nat) (addr : Nat → Fin 3 → Nat) (op : Nat → (Fin 3 → Int) → Fin 3 → Int),
+  (∀ (b : Nat), b < count → ∀ (c : Nat), c < count → ∀ (k l : Fin 3), addr b k = addr c l → b = c ∧ k = l) →
+    ∀ (n : Nat),
+      n ≤ count →
+        ∀ (s : Mem) (b : Nat),
+          b < count →
+            ∀ (k : Fin 3),
+              runSteps (tripleStep addr op) n s (addr b k) =
+                if b < n then op b (fun l => s (addr b l)) k else s (addr b k)
+'FT1536Global.store_at' depends on axioms: [propext]
+'FT1536Global.store_away' depends on axioms: [propext]
+'FT1536Global.prefix_invariant' depends on axioms: [propext, Quot.sound]
+'FT1536Global.prefix_frame' depends on axioms: [propext, Quot.sound]
+'FT1536Global.pair_local' depends on axioms: [propext]
+'FT1536Global.pair_frame' depends on axioms: [propext]
+'FT1536Global.pair_first_store' depends on axioms: [propext]
+'FT1536Global.pair_prefix' depends on axioms: [propext, Quot.sound]
+'FT1536Global.triple_local' depends on axioms: [propext, Quot.sound]
+'FT1536Global.triple_frame' depends on axioms: [propext]
+'FT1536Global.triple_prefix' depends on axioms: [propext, Quot.sound]
+Buffer 0 0.519
+source_pair_prefix : ∀ (h : Nat),
+  HalfOK h →
+    ∀ (op : Nat → (Bool → Int) → Bool → Int) (n : Nat),
+      n ≤ 768 →
+        ∀ (s : Mem) (b : Nat),
+          b < 768 →
+            ∀ (k : Bool),
+              runSteps (pairStep (pairAddr h) op) n s (pairAddr h b k) =
+                if b < n then op b (fun l => s (pairAddr h b l)) k else s (pairAddr h b k)
+source_triple_prefix : ∀ (op : Nat → (Fin 3 → Int) → Fin 3 → Int) (n : Nat),
+  n ≤ 512 →
+    ∀ (s : Mem) (b : Nat),
+      b < 512 →
+        ∀ (k : Fin 3),
+          runSteps (tripleStep tripleAddr op) n s (tripleAddr b k) =
+            if b < n then op b (fun l => s (tripleAddr b l)) k else s (tripleAddr b k)
+pair_prefix_canonical : ∀ (h : Nat),
+  HalfOK h →
+    ∀ (op : Nat → (Bool → Int) → Bool → Int),
+      (∀ (b : Nat),
+          b < 768 →
+            ∀ (v : Bool → Int), (∀ (k : Bool), 0 ≤ v k ∧ v k < 18433) → ∀ (k : Bool), 0 ≤ op b v k ∧ op b v k < 18433) →
+        ∀ (n : Nat), n ≤ 768 → ∀ (s : Mem), CanonMem s → CanonMem (runSteps (pairStep (pairAddr h) op) n s)
+triple_prefix_canonical : ∀ (op : Nat → (Fin 3 → Int) → Fin 3 → Int),
+  (∀ (b : Nat),
+      b < 512 →
+        ∀ (v : Fin 3 → Int), (∀ (k : Fin 3), 0 ≤ v k ∧ v k < 18433) → ∀ (k : Fin 3), 0 ≤ op b v k ∧ op b v k < 18433) →
+    ∀ (n : Nat), n ≤ 512 → ∀ (s : Mem), CanonMem s → CanonMem (runSteps (tripleStep tripleAddr op) n s)
+'FT1536Global.pair_address_bound' depends on axioms: [propext, Quot.sound]
+'FT1536Global.pair_decode' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.pair_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.pair_layout' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.source_pair_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.triple_address_bound' depends on axioms: [propext, Quot.sound]
+'FT1536Global.triple_layout' depends on axioms: [propext, Quot.sound]
+'FT1536Global.triple_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.source_triple_prefix' depends on axioms: [propext, Quot.sound]
+'FT1536Global.pair_prefix_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.triple_prefix_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.forward_schedule' does not depend on any axioms
+'FT1536Global.inverse_schedule' does not depend on any axioms
+Layouts 0 3.583
+'FT1536Tables.all_sound' depends on axioms: [propext, Quot.sound]
+'FT1536Tables.row2_sound' depends on axioms: [propext]
+'FT1536Tables.row3_sound' depends on axioms: [propext]
+'FT1536Tables.rev_even_range' does not depend on any axioms
+'FT1536Tables.rev_even_involution' does not depend on any axioms
+'FT1536Tables.units_0_checked' depends on axioms: [propext]
+'FT1536Tables.units_1_checked' depends on axioms: [propext]
+'FT1536Tables.units_2_checked' depends on axioms: [propext]
+'FT1536Tables.units_3_checked' depends on axioms: [propext]
+'FT1536Tables.units_4_checked' depends on axioms: [propext]
+'FT1536Tables.units_5_checked' depends on axioms: [propext]
+'FT1536Tables.units_6_checked' depends on axioms: [propext]
+'FT1536Tables.units_7_checked' depends on axioms: [propext]
+'FT1536Tables.units_8_checked' depends on axioms: [propext]
+'FT1536Tables.units_9_checked' depends on axioms: [propext]
+'FT1536Tables.units_10_checked' depends on axioms: [propext]
+'FT1536Tables.units_11_checked' depends on axioms: [propext]
+'FT1536Tables.units_12_checked' depends on axioms: [propext]
+'FT1536Tables.units_13_checked' depends on axioms: [propext]
+'FT1536Tables.units_14_checked' depends on axioms: [propext]
+'FT1536Tables.units_15_checked' depends on axioms: [propext]
+'FT1536Tables.units_16_checked' depends on axioms: [propext]
+'FT1536Tables.units_17_checked' depends on axioms: [propext]
+'FT1536Tables.units_18_checked' depends on axioms: [propext]
+'FT1536Tables.units_19_checked' depends on axioms: [propext]
+'FT1536Tables.units_20_checked' depends on axioms: [propext]
+'FT1536Tables.units_21_checked' depends on axioms: [propext]
+'FT1536Tables.units_22_checked' depends on axioms: [propext]
+'FT1536Tables.units_23_checked' depends on axioms: [propext]
+'FT1536Tables.units_24_checked' depends on axioms: [propext]
+'FT1536Tables.units_25_checked' depends on axioms: [propext]
+'FT1536Tables.units_26_checked' depends on axioms: [propext]
+'FT1536Tables.units_27_checked' depends on axioms: [propext]
+'FT1536Tables.units_28_checked' depends on axioms: [propext]
+'FT1536Tables.units_29_checked' depends on axioms: [propext]
+'FT1536Tables.units_30_checked' depends on axioms: [propext]
+'FT1536Tables.units_31_checked' depends on axioms: [propext]
+'FT1536Tables.sequence_0_checked' depends on axioms: [propext]
+'FT1536Tables.sequence_1_checked' depends on axioms: [propext]
+'FT1536Tables.sequence_2_checked' depends on axioms: [propext]
+'FT1536Tables.sequence_3_checked' depends on axioms: [propext]
+'FT1536Tables.sequence_4_checked' depends on axioms: [propext]
+'FT1536Tables.sequence_5_checked' depends on axioms: [propext]
+'FT1536Tables.sequence_6_checked' depends on axioms: [propext]
+'FT1536Tables.sequence_7_checked' depends on axioms: [propext]
+'FT1536Tables.parents_0_checked' depends on axioms: [propext]
+'FT1536Tables.parents_1_checked' depends on axioms: [propext]
+'FT1536Tables.parents_2_checked' depends on axioms: [propext]
+'FT1536Tables.parents_3_checked' depends on axioms: [propext]
+'FT1536Tables.parents_4_checked' depends on axioms: [propext]
+'FT1536Tables.parents_5_checked' depends on axioms: [propext]
+'FT1536Tables.parents_6_checked' depends on axioms: [propext]
+'FT1536Tables.parents_7_checked' depends on axioms: [propext]
+'FT1536Tables.parents_8_checked' depends on axioms: [propext]
+'FT1536Tables.parents_9_checked' depends on axioms: [propext]
+'FT1536Tables.parents_10_checked' depends on axioms: [propext]
+'FT1536Tables.parents_11_checked' depends on axioms: [propext]
+'FT1536Tables.parents_12_checked' depends on axioms: [propext]
+'FT1536Tables.parents_13_checked' depends on axioms: [propext]
+'FT1536Tables.parents_14_checked' depends on axioms: [propext]
+'FT1536Tables.parents_15_checked' depends on axioms: [propext]
+'FT1536Tables.tree_0_checked' depends on axioms: [propext]
+'FT1536Tables.tree_1_checked' depends on axioms: [propext]
+'FT1536Tables.tree_2_checked' depends on axioms: [propext]
+'FT1536Tables.tree_3_checked' depends on axioms: [propext]
+'FT1536Tables.tree_4_checked' depends on axioms: [propext]
+'FT1536Tables.tree_5_checked' depends on axioms: [propext]
+'FT1536Tables.tree_6_checked' depends on axioms: [propext]
+'FT1536Tables.tree_7_checked' depends on axioms: [propext]
+'FT1536Tables.tree_8_checked' depends on axioms: [propext]
+'FT1536Tables.tree_9_checked' depends on axioms: [propext]
+'FT1536Tables.tree_10_checked' depends on axioms: [propext]
+'FT1536Tables.tree_11_checked' depends on axioms: [propext]
+'FT1536Tables.tree_12_checked' depends on axioms: [propext]
+'FT1536Tables.tree_13_checked' depends on axioms: [propext]
+'FT1536Tables.tree_14_checked' depends on axioms: [propext]
+'FT1536Tables.tree_15_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_0_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_1_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_2_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_3_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_4_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_5_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_6_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_7_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_8_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_9_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_10_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_11_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_12_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_13_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_14_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_15_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_16_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_17_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_18_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_19_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_20_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_21_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_22_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_23_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_24_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_25_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_26_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_27_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_28_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_29_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_30_checked' depends on axioms: [propext]
+'FT1536Tables.rows2_31_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_0_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_1_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_2_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_3_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_4_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_5_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_6_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_7_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_8_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_9_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_10_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_11_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_12_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_13_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_14_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_15_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_16_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_17_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_18_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_19_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_20_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_21_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_22_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_23_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_24_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_25_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_26_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_27_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_28_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_29_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_30_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_31_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_32_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_33_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_34_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_35_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_36_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_37_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_38_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_39_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_40_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_41_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_42_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_43_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_44_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_45_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_46_checked' depends on axioms: [propext]
+'FT1536Tables.rows3_47_checked' depends on axioms: [propext]
+'FT1536Tables.chain_0_checked' depends on axioms: [propext]
+'FT1536Tables.chain_1_checked' depends on axioms: [propext]
+'FT1536Tables.root_and_scale_facts' does not depend on any axioms
+Deps/Tables 0 28.031
+'FT1536NTT.constants' does not depend on any axioms
+'FT1536NTT.fix_contract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536NTT.add_contract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536NTT.sub_contract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536NTT.half_contract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536NTT.low_bits_preserved' depends on axioms: [propext, Quot.sound]
+'FT1536NTT.mont_ranges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536NTT.mont_divisibility' depends on axioms: [propext, Quot.sound]
+'FT1536NTT.mont_contract_z' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536NTT.product_range' depends on axioms: [propext, Quot.sound]
+'FT1536NTT.mq_montymul_contract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536NTT.mq_montysqr_contract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536NTT.small_divisors' does not depend on any axioms
+'FT1536NTT.prime_factorization' depends on axioms: [propext, Quot.sound]
+Deps/Words 0 1.437
+table_canonical : ∀ (i : Fin 1024), FT1536NTT.Canon (gm i) ∧ FT1536NTT.Canon (igm i)
+'FT1536Global.unitRows_length' does not depend on any axioms
+'FT1536Global.unitRows_checked' depends on axioms: [propext]
+'FT1536Global.unit_bounds' depends on axioms: [propext]
+'FT1536Global.table_canonical' depends on axioms: [propext, Quot.sound]
+'FT1536Global.gmAt_canonical' depends on axioms: [propext, Quot.sound]
+'FT1536Global.igmAt_canonical' depends on axioms: [propext, Quot.sound]
+Twiddles 0 1.285
+'FT1536Composition.product_canonical' depends on axioms: [propext, Quot.sound]
+'FT1536Composition.tomont_factor' depends on axioms: [propext, Quot.sound]
+'FT1536Composition.prepared_product' depends on axioms: [propext, Quot.sound]
+'FT1536Composition.prepared_point_product' depends on axioms: [propext, Quot.sound]
+'FT1536Composition.L_NTT_after_global_interfaces' depends on axioms: [propext, Quot.sound]
+Deps/Composition 0 0.45
+forward_canonical : ∀ (s : Mem), CanonMem s → CanonMem (forwardMem s)
+inverse_canonical : ∀ (s : Mem), CanonMem s → CanonMem (inverseMem s)
+liftForward_agrees : ∀ (v : Vec), CanonVec v → liftForward v = forwardC v
+'FT1536Global.addQ_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.subQ_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.mmQ_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.forwardRootOp_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.forwardBinaryOp_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.forwardCubicOp_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.inverseCubicOp_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.inverseBinaryOp_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.inverseRootOp_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.forwardMiddle_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.inverseMiddle_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.scale_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.forward_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.inverse_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.forwardC_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.inverseC_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.canonical_fixed' depends on axioms: [propext, Quot.sound]
+'FT1536Global.liftForward_agrees' depends on axioms: [propext, Quot.sound]
+'FT1536Global.liftInverse_agrees' depends on axioms: [propext, Quot.sound]
+SourceModel 0 0.758
+'FT1536Linear.dot2_compose' depends on axioms: [propext, Quot.sound]
+'FT1536Linear.dot2_congr' depends on axioms: [propext]
+'FT1536Linear.dot3_compose' depends on axioms: [propext, Quot.sound]
+'FT1536Linear.dot3_congr' depends on axioms: [propext]
+'FT1536Linear.three_row_action' depends on axioms: [propext, Quot.sound]
+'FT1536Linear.two_row_inverse' depends on axioms: [propext, Quot.sound]
+'FT1536Linear.final_scaling' depends on axioms: [propext, Quot.sound]
+Deps/Linear 0 0.548
+eval_linear : ∀ (e : LExpr) (v : Fin 3 → Int),
+  (∀ (i : Fin 3), CanonVal (v i)) →
+    e.eval v = dot3 (e.eval (basis 0)) (e.eval (basis 1)) (e.eval (basis 2)) (v 0) (v 1) (v 2)
+eval_diagonal : ∀ (e : LExpr) (k : Fin 3) (scale : Int),
+  (∀ (j : Fin 3), e.eval (basis j) = if j = k then scale % 18433 else 0) →
+    ∀ (v : Fin 3 → Int), (∀ (i : Fin 3), CanonVal (v i)) → e.eval v = scale * v k % 18433
+eval_scaled : ∀ (e : LExpr) (c : Int) (v : Fin 3 → Int),
+  (∀ (i : Fin 3), CanonVal (v i)) → e.eval (scaled3 c v) = c * e.eval v % 18433
+'FT1536Global.eval_subst' depends on axioms: [propext]
+'FT1536Global.dot_add' depends on axioms: [propext, Quot.sound]
+'FT1536Global.dot_sub' depends on axioms: [propext, Quot.sound]
+'FT1536Global.dot_mm_left' depends on axioms: [propext, Quot.sound]
+'FT1536Global.dot_mm_right' depends on axioms: [propext, Quot.sound]
+'FT1536Global.eval_linear' depends on axioms: [propext, Quot.sound]
+'FT1536Global.eval_diagonal' depends on axioms: [propext, Quot.sound]
+'FT1536Global.eval_scaled' depends on axioms: [propext, Classical.choice, Quot.sound]
+Expressions 0 1.072
+blockCheck_sound : ∀ (f g : Fin 3 → LExpr) (scale : Int),
+  blockCheck f g scale = true →
+    ∀ (v : Fin 3 → Int),
+      (∀ (j : Fin 3), CanonVal (v j)) → ∀ (k : Fin 3), ((g k).eval fun j => (f j).eval v) = scale * v k % 18433
+'FT1536Global.rootF_bind' depends on axioms: [propext]
+'FT1536Global.rootI_bind' depends on axioms: [propext]
+'FT1536Global.binF_bind' depends on axioms: [propext]
+'FT1536Global.binI_bind' depends on axioms: [propext]
+'FT1536Global.cubeF_bind' depends on axioms: [propext, Quot.sound]
+'FT1536Global.cubeI_bind' depends on axioms: [propext, Quot.sound]
+'FT1536Global.blockCheck_sound' depends on axioms: [propext, Quot.sound]
+'FT1536Global.row_ids' depends on axioms: [propext]
+'FT1536Global.unitRow_id' depends on axioms: [propext]
+'FT1536Global.root_checked' depends on axioms: [propext]
+BlockExpressions 0 2.566
+'FT1536Global.local_checked_0' depends on axioms: [propext]
+'FT1536Global.local_checked_1' depends on axioms: [propext]
+'FT1536Global.local_checked_2' depends on axioms: [propext]
+'FT1536Global.local_checked_3' depends on axioms: [propext]
+'FT1536Global.local_checked_4' depends on axioms: [propext]
+'FT1536Global.local_checked_5' depends on axioms: [propext]
+'FT1536Global.local_checked_6' depends on axioms: [propext]
+'FT1536Global.local_checked_7' depends on axioms: [propext]
+'FT1536Global.local_checked_8' depends on axioms: [propext]
+'FT1536Global.local_checked_9' depends on axioms: [propext]
+'FT1536Global.local_checked_10' depends on axioms: [propext]
+'FT1536Global.local_checked_11' depends on axioms: [propext]
+'FT1536Global.local_checked_12' depends on axioms: [propext]
+'FT1536Global.local_checked_13' depends on axioms: [propext]
+'FT1536Global.local_checked_14' depends on axioms: [propext]
+'FT1536Global.local_checked_15' depends on axioms: [propext]
+'FT1536Global.local_checked_16' depends on axioms: [propext]
+'FT1536Global.local_checked_17' depends on axioms: [propext]
+'FT1536Global.local_checked_18' depends on axioms: [propext]
+'FT1536Global.local_checked_19' depends on axioms: [propext]
+'FT1536Global.local_checked_20' depends on axioms: [propext]
+'FT1536Global.local_checked_21' depends on axioms: [propext]
+'FT1536Global.local_checked_22' depends on axioms: [propext]
+'FT1536Global.local_checked_23' depends on axioms: [propext]
+'FT1536Global.local_checked_24' depends on axioms: [propext]
+'FT1536Global.local_checked_25' depends on axioms: [propext]
+'FT1536Global.local_checked_26' depends on axioms: [propext]
+'FT1536Global.local_checked_27' depends on axioms: [propext]
+'FT1536Global.local_checked_28' depends on axioms: [propext]
+'FT1536Global.local_checked_29' depends on axioms: [propext]
+'FT1536Global.local_checked_30' depends on axioms: [propext]
+'FT1536Global.local_checked_31' depends on axioms: [propext]
+'FT1536Global.local_checked' depends on axioms: [propext]
+BlockChecks 0 30.038
+root_inverse : ∀ (b : Nat) (v : Bool → Int),
+  (∀ (k : Bool), CanonVal (v k)) → ∀ (k : Bool), inverseRootOp b (forwardRootOp b v) k = 2 * v k % 18433
+binary_inverse : ∀ (m ht b : Nat),
+  0 < m + b / ht →
+    m + b / ht < 1024 →
+      ∀ (v : Bool → Int),
+        (∀ (k : Bool), CanonVal (v k)) →
+          ∀ (k : Bool), inverseBinaryOp m ht b (forwardBinaryOp m ht b v) k = 2 * v k % 18433
+cubic_inverse : ∀ (b : Nat),
+  b < 512 →
+    ∀ (v : Fin 3 → Int),
+      (∀ (k : Fin 3), CanonVal (v k)) → ∀ (k : Fin 3), inverseCubicOp b (forwardCubicOp b v) k = 3 * v k % 18433
+'FT1536Global.local_at' depends on axioms: [propext, Quot.sound]
+'FT1536Global.root_inverse' depends on axioms: [propext, Quot.sound]
+'FT1536Global.binary_inverse' depends on axioms: [propext, Quot.sound]
+'FT1536Global.cubic_inverse' depends on axioms: [propext, Quot.sound]
+'FT1536Global.root_homogeneous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.binary_homogeneous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.cubic_homogeneous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.forward_params_ok' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.schedules_reverse' does not depend on any axioms
+LocalInverse 0 0.497
+pair_stage_inverse : ∀ (h : Nat),
+  HalfOK h →
+    ∀ (f g : PairOp) (c : Int),
+      (∀ (b : Nat),
+          b < 768 →
+            ∀ (v : Bool → Int), (∀ (k : Bool), CanonVal (v k)) → ∀ (k : Bool), g b (f b v) k = c * v k % 18433) →
+        ∀ (s : Mem), CanonMem s → pairStage h g (pairStage h f s) = scaleMem c s
+triple_stage_inverse : ∀ (f g : TripleOp) (c : Int),
+  (∀ (b : Nat),
+      b < 512 → ∀ (v : Fin 3 → Int), (∀ (k : Fin 3), CanonVal (v k)) → ∀ (k : Fin 3), g b (f b v) k = c * v k % 18433) →
+    ∀ (s : Mem), CanonMem s → tripleStage g (tripleStage f s) = scaleMem c s
+pair_stage_homogeneous : ∀ (h : Nat),
+  HalfOK h →
+    ∀ (g : PairOp) (c : Int),
+      (∀ (b : Nat),
+          b < 768 →
+            ∀ (v : Bool → Int),
+              (∀ (k : Bool), CanonVal (v k)) → ∀ (k : Bool), g b (fun j => c * v j % 18433) k = c * g b v k % 18433) →
+        ∀ (s : Mem), CanonMem s → pairStage h g (scaleMem c s) = scaleMem c (pairStage h g s)
+point_prefix : ∀ (op : Nat → Int → Int) (n : Nat) (s : Mem) (i : Nat),
+  runSteps (pointStep op) n s i = if i < n then op i (s i) else s i
+'FT1536Global.scale_combine' depends on axioms: [propext, Quot.sound]
+'FT1536Global.scale_one' depends on axioms: [propext, Quot.sound]
+'FT1536Global.pair_stage_at' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.triple_stage_at' depends on axioms: [propext, Quot.sound]
+'FT1536Global.pair_stage_out' depends on axioms: [propext, Quot.sound]
+'FT1536Global.triple_stage_out' depends on axioms: [propext, Quot.sound]
+'FT1536Global.pair_stage_inverse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.triple_stage_inverse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.pair_stage_homogeneous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.point_prefix' depends on axioms: [propext, Quot.sound]
+'FT1536Global.scale_loop' depends on axioms: [propext, Quot.sound]
+'FT1536Global.scale_cancel' depends on axioms: [propext, Quot.sound]
+Stages 0 0.48

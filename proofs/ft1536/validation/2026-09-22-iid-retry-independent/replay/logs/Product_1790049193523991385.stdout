@@ -1,0 +1,19 @@
+productCoefficient_eq : ∀ (h r : Vec) (k : Fin 1536), FT1536Composition.productCoefficient h r k = rawCoefficient h r ↑k
+product_eval : ∀ (z : Int),
+  PhiZero z →
+    ∀ (h r : Vec),
+      peval 1536 (fromVec (FT1536Composition.product h r)) z =
+        peval 1536 (fromVec h) z * peval 1536 (fromVec r) z % 18433
+forward_product : ∀ (h r : Vec),
+  liftForward (FT1536Composition.product h r) = FT1536Composition.pointMul (liftForward h) (liftForward r)
+product_canonical_inputs : ∀ (h r : Vec),
+  FT1536Composition.product (FT1536Composition.canonical h) (FT1536Composition.canonical r) =
+    FT1536Composition.product h r
+'FT1536Forward.eval_sum' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.eval_convolution' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.productCoefficient_eq' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.product_raw' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.product_eval' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.forward_product' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.lift_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.product_canonical_inputs' depends on axioms: [propext, Classical.choice, Quot.sound]

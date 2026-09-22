@@ -1,0 +1,24 @@
+--- checks/retry.c
++++ checks/mutations/reuse_buffer_after_reset/retry.c
+@@ -5,10 +5,10 @@
+ #include <inttypes.h>
+ #include <assert.h>
+ #include <setjmp.h>
+-#include "../source/falcon-fft.c"
++#include "../../../source/falcon-fft.c"
+ void forbidden_hash_extract(shake_context *,void *,size_t);
+ #define shake_extract forbidden_hash_extract
+-#include "../source/falcon-enc.c"
++#include "../../../source/falcon-enc.c"
+ #undef shake_extract
+ #define FT_SAMPLER_ADAPTIVE_PROBE 0
+ #include "context.inc"
+@@ -39,7 +39,7 @@
+  if(!initializing){assert(p->ptr>=4087 && p->ptr<=4096);drops+=4096-p->ptr;extra_blocks++;}
+  for(size_t u=0;u<sizeof p->buf.d;u+=64)cc++;
+  store64(p->state.d+48,cc);assert(memcmp(keep,p->state.d,48)==0);
+- size_t id=blocks++;for(size_t i=0;i<4096;i++)p->buf.d[i]=(unsigned char)((id*101+i*29+(i>>4))%256);p->ptr=0;
++ size_t id=0;blocks++;for(size_t i=0;i<4096;i++)p->buf.d[i]=(unsigned char)((id*101+i*29+(i>>4))%256);p->ptr=0;
+ }
+ #define shake_extract public_state56
+ #define falcon_prng_refill ideal_refill

@@ -1,0 +1,34 @@
+{
+  "schema": "IID_RETRY_SCHEDULER_V1",
+  "source": "source/falcon-sign.c",
+  "region": [
+    3327,
+    3421
+  ],
+  "initial_counter": 0,
+  "cap": 16,
+  "guard": {
+    "line": 3332,
+    "increment_before_test": true,
+    "first_rejecting_counter": 17,
+    "before_init_and_root": true
+  },
+  "init": 3356,
+  "fault_reset": 3357,
+  "root_call": 3372,
+  "root_entry": 1897,
+  "fault_check": 3374,
+  "norm": 3388,
+  "first_accept_break": 3403,
+  "encode": 3412,
+  "encode_failure_return": 3418,
+  "header": 3420,
+  "positive_return": 3421,
+  "norm_on": "stored narrow16 vectors",
+  "norm_predicate": "Q<2093922385",
+  "reached_count": "J=sum_{j=1}^{16} 1_Rj; 1<=J<=16 almost surely; no geometric law assumed",
+  "unreached_source_outputs": false,
+  "encoder_failure_retries": false,
+  "inner_nonreturn_observation": "NONRETURN, not ZERO",
+  "all_future_entries_assumed": false
+}

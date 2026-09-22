@@ -1,0 +1,56 @@
+{
+  "schema": "IID_RETRY_RESOURCE_V1",
+  "game": "G_retry_IID",
+  "scope": "same post-H2P region, at most16 reached init/root calls; source nonreturn remains nonreturn on null tapes",
+  "root_expectation": 24576,
+  "root_proposal_tail": "Pr(T_j>49152 | reached entry PAST)<2^-1024",
+  "root_start_pointer": 0,
+  "reached_roots": "J=sum_j 1_Rj, 1<=J<=16 a.s.",
+  "root_refill_bound": "r_j<=floor((33T_j-8)/4087) ADDITIONAL refills after initial block",
+  "per_root_conservation": "4096*(1+r_j)=33T_j+D_j+(4096-ptr_end_j)",
+  "global_conservation": "4096*(J+sum r_j)=33*T_region+D_getter+A_reinit+U_final",
+  "expectation_bounds": {
+    "roots": 16,
+    "source_SHAKE56_bytes": 896,
+    "proposals": 393216,
+    "returned_bytes": 12976128,
+    "additional_refills": "12976000/4087",
+    "initial_blocks": 16,
+    "total_generated_blocks": "13041392/4087",
+    "generated_bytes": "53417541632/4087",
+    "getter_drops": "116784000/4087",
+    "abandoned_at_reinit": 61320,
+    "final_unused_tail": 4088
+  },
+  "expected_reached_sensitive": {
+    "proposals": "24576*E[J]",
+    "additional_refills": "811000/4087*E[J]",
+    "total_blocks": "815087/4087*E[J]",
+    "SHAKE56": "56*E[J]",
+    "reinit_abandonment": "4088*(E[J]-1)"
+  },
+  "ghost_budget": {
+    "proposals": 786432,
+    "returned_bytes": 25952256,
+    "additional_refills": 6336,
+    "initial_blocks": 16,
+    "total_generated_blocks": 6352,
+    "generated_bytes": 26017792,
+    "getter_drops": 57024,
+    "reinit_abandonments": 15,
+    "abandoned_at_reinit_max": 61320,
+    "final_unused_tail_max": 4088,
+    "source_SHAKE56_bytes": 896
+  },
+  "region_tail_expression": "Pr(T_region>16*49152)<=sum_j Pr(R_j and T_j>49152)<16*2^-1024",
+  "region_tail_power2": "2^-1020",
+  "initial_existing_attempt_block_at_ReadyRetryEntry": false,
+  "nonce40_outside_cut": true,
+  "parent_M0_SHAKE_bytes_with_nonce_upper": 936,
+  "real_state_counter": "each refill adds64 modulo2^64 to state.d[48..55], leaves first48 unchanged; init reads56 actual SHAKE bytes then refills",
+  "state56_is_iid_seed_claimed": false,
+  "ghost_budget_is_source_abort": false,
+  "dependencies": {
+    "JOINT/RESOURCE_BOUND.json": "1d3fabdfb7d90b44c83e3a3b145789987ab4c1a0782bbe1e8a096873632a7df7"
+  }
+}

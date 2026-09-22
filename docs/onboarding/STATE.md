@@ -1,13 +1,14 @@
 # Stan projektu — punkt wejścia
 
-**Aktualizacja T01: 2026-09-22, około05:32 CEST**, po handoffie właściciela;
-repo HEAD przed zapisem tej aktualizacji: `cd7e59335716cde5f78a7c6f927fe6e3064b99b2`.
+**Aktualizacja T01: 2026-09-22**, po przekazaniu przez właściciela niezależnego
+PASS_SCOPED_REVIEW; repo HEAD przed tym checkpointem: `4488293`.
 Historyczne obserwacje procesów/dudect poniżej pochodzą z około04:33 CEST.
 Stan procesów jest ulotny: sprawdź go ponownie przed pracą. Ten dokument
 aktualizujemy po odbiorze etapu, zmianie wykonawcy lub decyzji właściciela.
 
 Główna kolejka zadań i kryteria: [ROADMAP](ROADMAP.md).
-Bieżąca Astra = **T01**, poprawki MiMo = **S01**, dudect = **S02**.
+Astra: **T01 REVIEWED**, następny **T02 PLANNED**; osobny MiMo = **T03**,
+poprawki Family = **S01**, dudect = **S02**.
 
 ## Decyzje właściciela
 
@@ -33,18 +34,19 @@ Bieżąca Astra = **T01**, poprawki MiMo = **S01**, dudect = **S02**.
 | SCALAR_GAUSSIAN `64af4cb` | IID_BUFFER, lokalnie TV(K,G)≤2^-36, chi2(K\|\|G)≤2^-60; reverse chi2 nieskończone |
 | ORDERED_JOINT `22e6dd4` | Dokładne adaptacyjne3072 calls jednego root, closure/fresh-tail, TV≤2^-25, forward chi2<2^-48, zasoby |
 | H6P_REFERENCE_BAD_EVENT `1ba7ae0` | Uniform joint BadPrecast OBU pre-narrow vectors: Q_S≤2^-119, one-root P_IID≤2^-84 |
+| IID_RETRY_COMPOSITION / T01, niniejszy checkpoint | Niezależny PASS_SCOPED_REVIEW: one post-H2P cap16 region G_retry_IID, WholeRegionBad≤2^-80,coupling,wspólne resources,STATIC bytes |
 
 H6P: niezależny replay **197/197**,73.819s;48 modułów Lean/327 twierdzeń,
 26 nowych. Osobne QQ/RBF768 sprawdzenie rachunku. V<5462457,E<1095.
 Dowód mieszany source/analytical/kernel; nie pełna kernelizacja kompilatora/C.
-Nie daje universal Safe16, real-PRNG bridge, retry composition, integer recovery
+Sam H6P nie daje universal Safe16, real-PRNG bridge, retry composition, integer recovery
 ani Sign→Verify. Pełne exact rationals są istotne dla końcowego wykładnika.
 
 Raport i odbiór:
 - [H6P REPORT](../../proofs/ft1536/stages/FT1536_H6P_REFERENCE_BAD_EVENT_RUN_001/REPORT.md)
 - [H6P validation](../../proofs/ft1536/validation/2026-09-22-h6p-reference-bad-event/README.md)
 
-## Zwrot Astry T01 — oczekuje na niezależny odbiór
+## T01 — REVIEWED po niezależnym odbiorze
 
 `FT1536_IID_RETRY_COMPOSITION_RUN_001`, przygotowanie `c4e9d35`.
 
@@ -55,15 +57,26 @@ Raport i odbiór:
   1270 plików/1268 origins; BASE `1ba7ae07c17d135fc8eff4aac7b56f8c2b3bc88c`.
 - Cel: od jednego legalnego post-H2P entry wyprowadzić re-entry/fresh-tail,
   actual16-attempt scheduler/norm/codec, WholeRegionBad, coupling i zasoby.
-- Właściciel przekazał frozen handoff: **FROZEN_AWAITING_INDEPENDENT_REVIEW**.
-  Deklarowane PROVED,492/492,WholeRegionBad<=2^-80,6352 blocks/26017792 bytes,
-  joint budget tail<2^-1020,120 modułów/922 twierdzenia/26 nowych.
-  **To deklaracje wykonawcy, nie nowy odebrany wynik.**
+- Właściciel przekazał **PASS_SCOPED_REVIEW** od innego niezależnego modelu.
+  Jego własny świeży replay:492/492,exit0,662.514s. Review A–F potwierdził
+  post-H2P G_retry_IID cap16,WholeRegionBad<=2^-80,coupling,6352 blocks/
+  26017792 bytes na wspólnym event H,tail<2^-1020 i exact STATIC<=3160.
+  Formalizacja120 modułów/922 twierdzenia/26 nowych; mixed source/analytical/kernel.
 - REPORT SHA `b7164dbbee02db248ea43adce1d63ae0a38ed4493a566c5acd3a2f507db14590`;
   OUTPUTS SHA `3d68249f4f0e017f32eb7edeb0d90f5c4a6cd6b4b9f93307cec6919439525074`.
-- [Prompt i W niezależnego odbioru](../../proofs/ft1536/CURRENT_REVIEW_TASK.md).
-  Prowadzący przygotował prompt bez wykonania weryfikacji/replayu zwrotu.
-  Autor deklaruje koniec własnych obliczeń; nie wznawiaj W i nie startuj T02.
+- [Archiwum niezależnego odbioru](../../proofs/ft1536/validation/2026-09-22-iid-retry-independent/README.md)
+  zachowuje raport,oryginalny manifest12 plików,492 semantic results i pełne
+  dostępne logi/receipts. REVIEW SHA
+  `8523b1ea63faabdf2d78c602ccf1a5f7aaceba9c71ecc3ee6032c1add02344ec`;
+  REVIEW_OUTPUTS SHA `5072eacae41c4eedf6184484385076a5447b538a2f646166e3dc5d872a7ca318`.
+- Prowadzący wykonał import/pin-byte binding i Git; bez powtórnego własnego
+  odbioru matematycznego/replayu. Dwa stale live INPUTS mają zgodne sealed kopie;
+  failed routes/overlap i strict-tail convention zachowano. owner_accepted=false.
+- Autor i recenzent zakończyli obliczenia. Nie wznawiaj ich W ani relay.
+  T02 można teraz przygotować z odebranych zasobów; start wymaga nowego TASK/W
+  i ręcznego polecenia. T03 jest osobnym przygotowanym zadaniem MiMo.
+- Granica: nie ma boundu Bad|success bez success denominatoru. Real PRNG,H2P,
+  whole real Sign,integer recovery,Sign→Verify/security/CT pozostają otwarte.
 
 ### Incydent dwóch wykonawców
 

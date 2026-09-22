@@ -1,0 +1,16 @@
+# CHECKLIST — niezależny odbiór T01
+- [x] Piny zewnętrzne zweryfikowane niezależnie (REPORT/OUTPUTS/TASK/bootstrap/source)
+- [x] Manifest: 2414 członków, brak symlink/traversal/duplikatów
+- [x] SEMANTIC 492 spójne z OUTPUTS
+- [x] Własny fresh replay: FRESH_REPLAY_PASS 492/492, exit 0, 662.5s, sieć off, świeży cache
+- [x] A entry/scheduler/re-entry — potwierdzony
+- [x] B IID filtration — potwierdzony
+- [x] C WholeRegionBad/hazard — potwierdzony + niezależne racjonały
+- [x] D coupling/obserwacje — potwierdzony
+- [x] E budżety/resety (wspólny event H) — potwierdzony + niezależne przeliczenie
+- [x] F bajty/formalizacja (120/922/26, czyste logi) — potwierdzony
+- [x] Mutacje 11+2, kontrole, Sage QQ — receipts zgodne
+- [x] Overlap/failed routes — sprawdzone, zachowane
+- [x] Scope: bez awansu do real-PRNG/H2P/Sign/security/CT/eta_pre
+- [x] SOURCE_W po odbiorze: hashe niezmienione
+- [x] Joby zakończone; brak Git/publikacji/relay/dudect

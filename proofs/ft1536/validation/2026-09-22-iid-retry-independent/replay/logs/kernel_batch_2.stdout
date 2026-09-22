@@ -1,0 +1,134 @@
+middle_reverse_inverse : ∀ (ps : List (Nat × Nat)),
+  (∀ (p : Nat × Nat), p ∈ ps → ParamOK p) →
+    ∀ (s : Mem), CanonMem s → inverseMiddle ps.reverse (forwardMiddle ps s) = scaleMem (2 ^ ps.length) s
+inverseMem_forwardMem : ∀ (s : Mem), CanonMem s → inverseMem (forwardMem s) = s
+inverseC_forwardC : ∀ (v : Vec), CanonVec v → inverseC (forwardC v) = v
+inverse_forward : ∀ (v : Vec), liftInverse (liftForward v) = FT1536Composition.canonical v
+'FT1536Global.pair_source_inverse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.root_source_inverse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.cubic_source_inverse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.middle_homogeneous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.middle_reverse_inverse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.inverseMem_forwardMem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.forward_from_to' depends on axioms: [propext, Quot.sound]
+'FT1536Global.inverseC_forwardC' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.inverse_forward' depends on axioms: [propext, Classical.choice, Quot.sound]
+InverseGlobal 0 0.517
+root_coefficients : ∀ (s : Mem) (i : Nat),
+  i < 768 →
+    pairStage 768 forwardRootOp s i = (s i + 14649 * s (i + 768)) % 18433 ∧
+      pairStage 768 forwardRootOp s (i + 768) = (s i + (1 - 14649) * s (i + 768)) % 18433
+binary_coefficients : ∀ (h m : Nat),
+  HalfOK h →
+    ∀ (s : Mem) (b : Nat),
+      b < 768 →
+        pairStage h (forwardBinaryOp m h) s (pairAddr h b false) =
+            (s (pairAddr h b false) + s (pairAddr h b true) * ordinary (gmAt (m + b / h))) % 18433 ∧
+          pairStage h (forwardBinaryOp m h) s (pairAddr h b true) =
+            (s (pairAddr h b false) - s (pairAddr h b true) * ordinary (gmAt (m + b / h))) % 18433
+'FT1536Global.mmQ_ordinary' depends on axioms: [propext]
+'FT1536Global.ordinary_root' depends on axioms: [propext]
+'FT1536Global.root_coefficients' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.binary_coefficients' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.initialized_binary_read' depends on axioms: [propext, Quot.sound]
+'FT1536Global.initialized_cubic_read' depends on axioms: [propext, Quot.sound]
+ForwardProgress 0 0.414
+pipelineC_lift : ∀ (h r c : Vec), CanonVec h → CanonVec r → pipelineC h r c = pipeline liftForward liftInverse h r c
+L_NTT_pending_forward : (∀ (h r : FT1536Composition.Vec),
+    liftForward (product h r) = pointMul (liftForward h) (liftForward r)) →
+  ∀ (h r c : Vec), CanonVec h → CanonVec r → CanonVec c → pipelineC h r c = (product h r, subtract (product h r) c)
+'FT1536Global.toMontC_eq' depends on axioms: [propext, Quot.sound]
+'FT1536Global.montPointC_eq' depends on axioms: [propext, Quot.sound]
+'FT1536Global.subtractC_eq' depends on axioms: [propext, Quot.sound]
+'FT1536Global.pipelineC_lift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.L_NTT_pending_forward' depends on axioms: [propext, Classical.choice, Quot.sound]
+Pipeline 0 0.309
+sum_congr_mod : ∀ (n : Nat) (f g : Nat → Int),
+  (∀ (i : Nat), i < n → f i % 18433 = g i % 18433) → sumN n f % 18433 = sumN n g % 18433
+sum_swap : ∀ (n m : Nat) (f : Nat → Nat → Int), (sumN n fun i => sumN m (f i)) = sumN m fun j => sumN n fun i => f i j
+sum_ofFn_congr : ∀ (n : Nat) (f : Fin n → Int) (g : Nat → Int),
+  (∀ (i : Fin n), f i = g ↑i) → List.foldl (fun x1 x2 => x1 + x2) 0 (List.ofFn f) = sumN n g
+'FT1536Forward.sum_congr' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.sum_zero' depends on axioms: [propext]
+'FT1536Forward.sum_add' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.sum_sub' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.sum_scale' depends on axioms: [propext]
+'FT1536Forward.sum_scale_right' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.sum_split' depends on axioms: [propext]
+'FT1536Forward.sum_mod' depends on axioms: [propext]
+'FT1536Forward.sum_congr_mod' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.sum_swap' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.sum_delta' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.sum_ofFn' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.sum_ofFn_congr' depends on axioms: [propext, Quot.sound]
+Sums 0 0.39
+split_preserves_eval : ∀ (n : Nat) (f : Nat → Int) (c z : Int),
+  z ^ n % 18433 = c % 18433 → peval n (fun k => (f k + c * f (n + k)) % 18433) z = peval (n + n) f z
+'FT1536Forward.eval_congr' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.eval_mod_coeff' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.eval_linear' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.eval_sub' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.eval_scale' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.eval_split' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.split_preserves_eval' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.pow_mod' depends on axioms: [propext]
+'FT1536Forward.eval_mod_node' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.eval_delta' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.powM_correct' depends on axioms: [propext]
+Evaluation 0 0.366
+binary_block_eval : ∀ (h m pos : Nat),
+  HalfOK h →
+    pos < 1536 →
+      ∀ (s : Mem) (z : Int),
+        z ^ h % 18433 = splitLabel m h pos % 18433 →
+          blockEval h (blockBase h pos) (pairStage h (forwardBinaryOp m h) s) z =
+            blockEval (2 * h) (blockBase (2 * h) pos) s z
+root_block_eval : ∀ (pos : Nat),
+  pos < 1536 →
+    ∀ (s : Mem) (z : Int),
+      z ^ 768 % 18433 = rootLabel pos % 18433 →
+        blockEval 768 (blockBase 768 pos) (pairStage 768 forwardRootOp s) z = peval 1536 s z
+'FT1536Forward.split_layout' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.binary_block_coefficient' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.binary_block_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.root_block_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+CRTStages 0 2.922
+powFast_correct : ∀ (z : Int) (n : Nat), powFast z n = z ^ n % 18433
+nodeCheck_sound : ∀ (i : Nat) (w : Int) (j : Fin 3),
+  nodeCheck i w j = true →
+    have pos := 3 * (i - 512);
+    have z := nodeFromWord w j;
+    z ^ 768 % 18433 = rootLabel pos % 18433 ∧
+      (∀ (p : Nat × Nat),
+          p ∈ forwardSchedule 9 2 768 → z ^ (p.snd / 2) % 18433 = splitLabel p.fst (p.snd / 2) pos % 18433) ∧
+        PhiZero z ∧ ∀ (k : Fin 3), (cubeFExpr w fW j).eval (basis k) = z ^ ↑k % 18433
+'FT1536Forward.powFast_correct' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.powFuel_correct' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.nodeCheck_sound' depends on axioms: [propext, Quot.sound]
+NodeArithmetic 0 0.43
+'FT1536Forward.leaf_checked_0' depends on axioms: [propext]
+LeafData/C00 0 0.261
+'FT1536Forward.leaf_checked_1' depends on axioms: [propext]
+LeafData/C01 0 0.361
+'FT1536Forward.leaf_checked_2' depends on axioms: [propext]
+LeafData/C02 0 1.204
+'FT1536Forward.leaf_checked_3' depends on axioms: [propext]
+LeafData/C03 0 0.297
+'FT1536Forward.leaf_checked_4' depends on axioms: [propext]
+LeafData/C04 0 0.585
+'FT1536Forward.leaf_checked_5' depends on axioms: [propext]
+LeafData/C05 0 0.526
+'FT1536Forward.leaf_checked_6' depends on axioms: [propext]
+LeafData/C06 0 0.242
+'FT1536Forward.leaf_checked_7' depends on axioms: [propext]
+LeafData/C07 0 0.479
+'FT1536Forward.leaf_checked_8' depends on axioms: [propext]
+LeafData/C08 0 0.971
+'FT1536Forward.leaf_checked_9' depends on axioms: [propext]
+LeafData/C09 0 0.255
+'FT1536Forward.leaf_checked_10' depends on axioms: [propext]
+LeafData/C10 0 0.25
+'FT1536Forward.leaf_checked_11' depends on axioms: [propext]
+LeafData/C11 0 0.417
+'FT1536Forward.leaf_checked_12' depends on axioms: [propext]
+LeafData/C12 0 0.737

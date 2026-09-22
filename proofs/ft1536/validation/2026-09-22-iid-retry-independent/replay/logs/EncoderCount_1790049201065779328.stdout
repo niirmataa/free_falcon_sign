@@ -1,0 +1,23 @@
+encoder_count_exact : ∀ (cap : Int) (xs : List Int),
+  listBits xs ≤ 8 * cap → encodeCount cap xs = some ((listBits xs + 7) / 8) ∧ (listBits xs + 7) / 8 ≤ cap
+STATIC_FITS_4096 : ∀ (a b : Vec),
+  SignedVec a →
+    SignedVec b →
+      isShort a b = true →
+        encodeCount 4095 (List.ofFn b) = some (payloadLength b - 1) ∧ payloadLength b ≤ 3160 ∧ payloadLength b < 4096
+'FT1536M0.drain_ok' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536M0.prefix9_ok' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536M0.oneBit_ok' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536M0.manyBits_ok' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536M0.coeff_bits_eq' depends on axioms: [propext, Quot.sound]
+'FT1536M0.list_bits_nonneg' depends on axioms: [propext, Quot.sound]
+'FT1536M0.encoder_body_ok' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536M0.finish_ok' depends on axioms: [propext, Quot.sound]
+'FT1536M0.encoder_count_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536M0.list_bits_append' depends on axioms: [propext]
+'FT1536M0.list_bits_ofFn' depends on axioms: [propext, Quot.sound]
+'FT1536M0.vector_bits' depends on axioms: [propext, Quot.sound]
+'FT1536M0.STATIC_FITS_4096' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536M0.source_ne_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536M0.terminal_bit' depends on axioms: [propext, Quot.sound]
+'FT1536M0.post_decrement_count' depends on axioms: [propext, Classical.choice, Quot.sound]

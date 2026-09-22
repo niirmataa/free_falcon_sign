@@ -1,6 +1,6 @@
 # Główna ścieżka twierdzeń i jawny rejestr zadań FT1536
 
-Wersja planu: **2026-09-22 / 1**. To żywy plan prowadzącego, oparty na
+Wersja planu: **2026-09-22 / 2 — niezależny odbiór T01**. To żywy plan prowadzącego, oparty na
 [M0 TARGET_TYPE](../../proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001/TARGET_TYPE.md)
 i [M0 HOP_LEDGER](../../proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001/HOP_LEDGER.md).
 Nie zmienia zamrożonego M0 ani statusów starych raportów. Stan pracy na żywo:
@@ -29,7 +29,7 @@ ROOT/NODE/TOWER/RAW → NORMALIZED → TARGETS → ORDERED+LEFT
                      └──────────→ POST ←──────┘
 SCALAR_IID → SCALAR_GAUSSIAN → ORDERED_JOINT → H6P
                                               │
-                                 T01 IID_RETRY (ZWROT DO ODBIORU)
+                                 T01 IID_RETRY (REVIEWED, IID SCOPE)
                                               │
              T02 RNG/zasoby ────┬──── T03 integer/correctness
                                │
@@ -81,7 +81,7 @@ odbiorze. Zależność oznacza wymagany interfejs, nie pozwolenie na założenie
 
 | ID / status | Dokładny cel i wejścia | Wyjście wymagane do odbioru | Zależności |
 |---|---|---|---|
-| **T01 FROZEN_AWAITING_REVIEW — IID_RETRY_COMPOSITION** | Actual post-H2P region,reached entries,16 attempts,reset/fault/norm/codec; author handoff2026-09-22 | Deklarowane≤2^-80,492/492 i region/resources wymagają innego niezależnego recenzenta. Prompt w CURRENT_REVIEW_TASK; brak awansu do REVIEWED | F04–F09; [odbiór](../../proofs/ft1536/CURRENT_REVIEW_TASK.md) |
+| **T01 REVIEWED — IID_RETRY_COMPOSITION** | Actual post-H2P region,reached entries,cap16,reset/fault/norm/codec w G_retry_IID | **PASS_SCOPED_REVIEW** innego modelu:492/492,WholeRegionBad≤2^-80,coupling,joint6352-block/26017792-byte budget z failure<2^-1020,STATIC≤3160; mixed proof. [REPORT](../../proofs/ft1536/stages/FT1536_IID_RETRY_COMPOSITION_RUN_001/REPORT.md),niniejszy checkpoint | F04–F09; [niezależny odbiór](../../proofs/ft1536/validation/2026-09-22-iid-retry-independent/README.md) |
 | **T02 PLANNED — PRNG_REAL_TO_IID_BUFFER** | Dokładny root SHAKE32→stream i state56/ChaCha/refills/getters; skończone ghost budgets | Jawne gry, resource-indexed assumptions i reduktory/hybrid losses; zachowana wspólna historia, init/discards/abandoned tails. Nie „448-bit security” | T01 resources, F02,F07,F08 |
 | **T03 PREPARED_OWNER_START — REFERENCE_INTEGER_RECOVERY** | Source rounded sampler/basis/iFFT/rint oraz independent reference integer object; osobny one-root TASK MiMo | Warunki i dowód recovery/congruence/rounding gap; wyprowadzone, a nie założone. Osobno Safe16, centered extraction i norm compatibility; partial/counterexample możliwe | F03–F09; T01 do rozszerzenia na retries |
 | **T04 PLANNED — PREFIX_AND_API_BINDING** | Pominięty przez T01 prefix: context/loader/rng_ready/nonce/H2P, usługi E i actual source outcomes | Dokładny zasięg definedness/termination/abort, legal ReadyRetryEntry z API i joint randomness interfaces. Brak ukrytego all-success lub IID premise | F02–F05,T01; T02 dla real-law claims |
@@ -96,9 +96,10 @@ odbiorze. Zależność oznacza wymagany interfejs, nie pozwolenie na założenie
 | **T13 PLANNED — INDEXED_MT_EXTRACTION** | M6 simulator + L_V i dokładna gra MT-ISIS | Accepted forgery→świadek TEGO SAMEGO target index; jawna assumption MT i t_B,w_B,L_B. Nie potrzebuje inverse encoding do tego kierunku | T12,F01,F02 |
 | **T14 PLANNED — M7_FINAL_COMPOSITION** | Wszystkie zatwierdzone certificates/hops/resources | Instancja M0ReductionTarget: jawny końcowy wzór, raz p_K, brak double-count, scope klasycznego ROM; lista pozostających assumptions | T02–T13 |
 
-**Najbliższa kolejność prowadzącego:** odebrać T01, następnie dopracować TASK
-T02; T03 ma już osobny przygotowany one-root TASK dla MiMo. Nie jest to obietnica wyniku T01
-ani automatyczny start T02. Każdy wiersz może wymagać kilku checkpointów.
+**Najbliższa kolejność prowadzącego:** po zapisanym niezależnym odbiorze T01
+dopracować TASK T02; T03 ma już osobny przygotowany one-root TASK dla MiMo.
+T02 pozostaje PLANNED, bez automatycznego startu. Każdy wiersz może wymagać
+kilku checkpointów.
 
 ### Obowiązkowy krok przy rozwijaniu T05/T06/T09/T14
 
@@ -129,7 +130,7 @@ gotowością aktualnego FT1536; dalsze zadania dopisuj po odbiorze S01.
 
 **Rozwinięcie T03 do ręcznego startu MiMo:**
 [wskaźnik W/pinów i pełnego TASK](../../proofs/ft1536/CURRENT_MIMO_TASK.md).
-Zakres jednego root pozwala badać ten obowiązek niezależnie od aktywnego T01
+Zakres jednego root pozwala badać ten obowiązek niezależnie od odebranego T01
 Astry. S01 pozostaje osobnym obowiązkiem korekt i bramką publikacji.
 
 ## 6. Jak rozwijamy wpis, zamiast wymyślać nowy plan co sesję
@@ -172,3 +173,8 @@ muszą wskazywać ten sam aktywny etap.
   modelowi; ten prowadzący przygotowuje zadania oraz prompty odbioru.
 - 2026-09-22: otrzymano handoff T01 z deklarowanym PROVED/492. Status
   FROZEN_AWAITING_REVIEW; przygotowano prompt, bez wykonania odbioru przez prowadzącego.
+- 2026-09-22/v2: właściciel przekazał niezależny PASS_SCOPED_REVIEW i własny
+  replay recenzenta492/492,662.514s. T01→REVIEWED tylko dla jednego post-H2P
+  regionu cap16 w G_retry_IID. Prowadzący archiwizuje piny/raport/receipts;
+  nie wykonuje nowego review/replayu. Kolejność T02/T03 i blokada publikacji
+  pozostają zgodne z planem; T02 nie został uruchomiony.

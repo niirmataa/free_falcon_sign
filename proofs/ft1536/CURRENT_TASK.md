@@ -1,17 +1,21 @@
-# Zadanie Astry T01 — zwrot oczekuje na niezależny odbiór
+# Zadanie Astry T01 — zakończone i niezależnie odebrane
 
 **TASK_ID: `FT1536_IID_RETRY_COMPOSITION_RUN_001`**
 
-**Stan2026-09-22, zgłoszenie właściciela około05:32 CEST:
-FROZEN_AWAITING_INDEPENDENT_REVIEW.** Astra zadeklarowała zakończenie,
-PROVED i final replay492/492. Prowadzący nie zweryfikował tego zwrotu.
-[CURRENT_REVIEW_TASK](CURRENT_REVIEW_TASK.md) wskazuje prompt dla innego modelu.
-Nie wznawiaj ukończonego W ani relay; nie uruchamiaj T02 przed odbiorem.
+**Stan2026-09-22: REVIEWED — PASS_SCOPED_REVIEW** innego niezależnego modelu,
+przekazany przez właściciela. Jego świeży replay492/492,exit0,662.514s.
+[Zapis odbioru](validation/2026-09-22-iid-retry-independent/README.md) wiąże
+oryginalny review,manifest,receipts i zakres. Prowadzący wykonał archiwizację
+integralności/Git, bez własnego powtórnego odbioru matematycznego/replayu.
+[CURRENT_REVIEW_TASK](CURRENT_REVIEW_TASK.md) wskazuje zakończony odbiór.
+Nie wznawiaj ukończonego W ani relay. Następny **T02 PLANNED** wymaga nowego
+przypiętego TASK/W i ręcznego startu; ten plik nie uruchamia T02.
 
-External piny z handoffu, do sprawdzenia przez recenzenta:
+External piny autora, związane z immutable stage i niezależnym review:
 - REPORT.md: `b7164dbbee02db248ea43adce1d63ae0a38ed4493a566c5acd3a2f507db14590`.
 - OUTPUTS.sha256: `3d68249f4f0e017f32eb7edeb0d90f5c4a6cd6b4b9f93307cec6919439525074`.
-Final receipt autora: `tmp/final_replay_001/REPLAY_RESULT.json` pod W.
+Final receipt autora: `tmp/final_replay_001/REPLAY_RESULT.json` pod W;
+niezależny receipt: validation/2026-09-22-iid-retry-independent/replay/REPLAY_RESULT.json.
 Incydent overlap i wymagania świeżego odbioru: [STATE](../../docs/onboarding/STATE.md).
 
 ```text
@@ -34,6 +38,9 @@ adres Dokumenty powyżej jest oryginalną proweniencją. SHA pozostaje ten sam.
 Cel: source-bound composition do16 osiąganych prób w IID_BUFFER, od legalnego
 post-H2P entry, z conditional H6P applicability, WholeRegionBad, checked-precast
 coupling, zasobami i końcowymi bajtami. Pełny zakres i kryteria określa TASK.
+Odebrano WholeRegionBad<=2^-80,joint6352 blocks/26017792 bytes z tail<2^-1020
+na wspólnym event H i STATIC<=3160. Real PRNG,H2P,whole real Sign,integer
+recovery,Sign→Verify/security/CT pozostają OPEN; brak boundu Bad|success.
 
 Przy starcie/wznowieniu porównaj TASK_ID, W i piny z W/AGENTS.md. Historyczne
 TASK/AGENTS/prompty/runners w stages, background i starych W nie wybierają

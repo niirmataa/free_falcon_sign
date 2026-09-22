@@ -1,0 +1,16 @@
+binary_block_eval : ∀ (h m pos : Nat),
+  HalfOK h →
+    pos < 1536 →
+      ∀ (s : Mem) (z : Int),
+        z ^ h % 18433 = splitLabel m h pos % 18433 →
+          blockEval h (blockBase h pos) (pairStage h (forwardBinaryOp m h) s) z =
+            blockEval (2 * h) (blockBase (2 * h) pos) s z
+root_block_eval : ∀ (pos : Nat),
+  pos < 1536 →
+    ∀ (s : Mem) (z : Int),
+      z ^ 768 % 18433 = rootLabel pos % 18433 →
+        blockEval 768 (blockBase 768 pos) (pairStage 768 forwardRootOp s) z = peval 1536 s z
+'FT1536Forward.split_layout' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.binary_block_coefficient' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.binary_block_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.root_block_eval' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -18,6 +18,13 @@ realizuje **inny niezależny model wybrany przez właściciela**. Procedura odbi
 poniżej jest instrukcją dla tego recenzenta, nie automatycznym działaniem
 prowadzącego. Handoff autora nie awansuje statusu do REVIEWED.
 
+Po przekazaniu przez właściciela zakończonego niezależnego odbioru prowadzący
+wiąże jego zewnętrzne piny z raportem/receiptami, importuje niezmienny pakiet,
+archiwizuje evidence i aktualizuje REVIEWED/Git w dokładnym scope recenzenta.
+To kontrola integralności archiwizacji, nie ponowny własny odbiór matematyczny
+lub automatyczne powtórzenie replayu. Raport recenzenta pozostaje przypięty,
+a tożsamość modelu nie jest zgadywana, jeśli nie została podana.
+
 Przed wznowieniem sprawdź task ID/piny, repo/branch, stan W i wykonawców.
 PID żyjącego TUI nie dowodzi aktywnego inference; istniejący executor.lock
 nie dowodzi sam braku lub obecności workera. Porównaj procesy, aktualne logi

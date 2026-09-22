@@ -185,7 +185,8 @@ controls and exact adaptive-tree checks. Local support conditioning differs
 from whole-call survival conditioning; reverse chi2 against Q_stop is infinite.
 The deterministic POST pushforward yields a typed [H6P event transfer](proofs/ft1536/stages/FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001/H6P_INTERFACE.md).
 Its reference joint BadPrecast probability now has the upper bound reported
-in H6P below; the real-PRNG bridge and retry/whole-Sign composition remain separate obligations.
+in H6P below. The later T01 result composes the IID retry region;
+the real-PRNG bridge and whole-real-Sign composition remain open.
 
 The [H6P_REFERENCE_BAD_EVENT result](proofs/ft1536/stages/FT1536_H6P_REFERENCE_BAD_EVENT_RUN_001/REPORT.md)
 proves **Q_S(BadPrecast)<=2^-119 and P_IID(BadPrecast)<=2^-84 for ONE ROOT**,
@@ -194,16 +195,23 @@ vectors. Source variance proxy<5462457, full rounding error<1095, discrete
 normalizers, adaptive MGF and rint ties are explicitly accounted for.
 [Independent review](proofs/ft1536/validation/2026-09-22-h6p-reference-bad-event/README.md)
 reproduced197/197 files in73.819s,48 modules/327 theorems (26 new), with a
-separate rational/RBF768 verification of the final bounds. The next obligation
-is **IID_RETRY_COMPOSITION**; small one-root probability does not establish
+separate rational/RBF768 verification of the final bounds. The subsequent
+**IID_RETRY_COMPOSITION** result is below; small one-root probability does not establish
 universal Safe16, real-PRNG security, integer recovery or Sign→Verify.
 
-**IID_RETRY_COMPOSITION: frozen handoff awaiting independent review.**
-The author reports a region bound<=2^-80 and492/492 replay matches. These are
-unverified handoff claims, not an accepted checkpoint. The
-[review prompt and pinned handoff](proofs/ft1536/CURRENT_REVIEW_TASK.md)
-are ready for another model selected by the owner. [CURRENT_TASK](proofs/ft1536/CURRENT_TASK.md)
-retains the task/input pins; the completed worker must not be restarted.
+**T01 IID_RETRY_COMPOSITION: REVIEWED — PASS_SCOPED_REVIEW.**
+The [source-bound result](proofs/ft1536/stages/FT1536_IID_RETRY_COMPOSITION_RUN_001/REPORT.md)
+composes one-root H6P through the actual post-H2P cap16 region in G_retry_IID:
+**WholeRegionBad<=2^-80**, checked-precast coupling, simultaneous6352-block/
+26017792-byte ghost budgets with failure<2^-1020, and exact STATIC payload<=3160.
+The [independent model's review](proofs/ft1536/validation/2026-09-22-iid-retry-independent/README.md)
+reproduced492/492 files in662.514s and confirmed the mixed source/analytical/kernel
+scope (120 modules/922 theorems,26 new). The coordinating maintainer archived
+the returned review and receipts without a second mathematical review or replay.
+Changed live-document provenance and failed routes are retained. The bound is
+not conditional on successful signing. T02 real-PRNG transport is next in the
+[roadmap](docs/onboarding/ROADMAP.md); H2P,whole real Sign,integer recovery,
+Sign→Verify/security/CT remain open.
 
 The separate [FT family scaling research by MiMo](proofs/ft1536/stages/FT_FAMILY_SCALING_REVIEW_RUN_001/README.md)
 is preserved with its [PDF manuscript](proofs/ft1536/stages/FT_FAMILY_SCALING_REVIEW_RUN_001/paper/main.pdf),
@@ -215,7 +223,7 @@ research evidence for planned FT768/FT3072, not their implementation or security
 
 The [owner-run MiMo proof task](proofs/ft1536/CURRENT_MIMO_TASK.md) addresses
 T03: one-root reference integer recovery, with pinned inputs and explicit
-PROVED/PARTIAL criteria. It is separate from Astra's active retry task and
+PROVED/PARTIAL criteria. It is separate from Astra's reviewed retry task and
 from the still-required Family corrections.
 
 The [historical deferred preparation](provenance/checks/2026-09-20-dudect-floor-ct-ready/README.md)
@@ -350,6 +358,7 @@ integration work; changing their description does not change the old CLI.
 | [SCALAR_GAUSSIAN_COMPARISON](proofs/ft1536/stages/FT1536_H3_SCALAR_GAUSSIAN_COMPARISON_RUN_001/REPORT.md) | Uniform local TV/forward chi-square bounds to untruncated Gaussian in IID_BUFFER; reverse chi-square infinite; ordered composition below | `H3_SCALAR_GAUSSIAN_COMPARISON_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL` |
 | [ORDERED_JOINT_KERNEL](proofs/ft1536/stages/FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001/REPORT.md) | Exact adaptive root law, source closure, directed joint comparison, resources and POST event transfer in IID_BUFFER; reference BadPrecast probability open | `H3_ORDERED_JOINT_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL` |
 | [H6P_REFERENCE_BAD_EVENT](proofs/ft1536/stages/FT1536_H6P_REFERENCE_BAD_EVENT_RUN_001/REPORT.md) | Source-instantiated joint tail for both pre-narrow vectors: Q_S<=2^-119, one-root IID<=2^-84; retry and real-PRNG bridge separate | `H6P_REFERENCE_BAD_EVENT_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL` |
+| [IID_RETRY_COMPOSITION / T01](proofs/ft1536/stages/FT1536_IID_RETRY_COMPOSITION_RUN_001/REPORT.md) | One post-H2P IID cap16 region: WholeRegionBad<=2^-80,coupling,simultaneous resources and STATIC bytes; independent PASS_SCOPED_REVIEW | `IID_RETRY_COMPOSITION_PROVED_FOR_PINNED_IID_BUFFER_MODEL` |
 
 The completed L_V bridge establishes, for all canonical h,c and legal finite
 payloads b in the pinned GCC14.2.0/C99/Linux x86_64 LP64 model:
