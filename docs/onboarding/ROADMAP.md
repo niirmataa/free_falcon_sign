@@ -29,7 +29,7 @@ ROOT/NODE/TOWER/RAW → NORMALIZED → TARGETS → ORDERED+LEFT
                      └──────────→ POST ←──────┘
 SCALAR_IID → SCALAR_GAUSSIAN → ORDERED_JOINT → H6P
                                               │
-                                 T01 IID_RETRY (W TOKU)
+                                 T01 IID_RETRY (ZWROT DO ODBIORU)
                                               │
              T02 RNG/zasoby ────┬──── T03 integer/correctness
                                │
@@ -74,13 +74,14 @@ F01–F09 to grupy orientacyjne; nie jeden zbiorczy nowy status PROVED.
 ## 4. Rejestr dalszych zadań — główny tor
 
 **Statusy:** `PREPARED_OWNER_START` = przypięty TASK/W gotowy, czeka na ręczny start;
+`FROZEN_AWAITING_REVIEW` = handoff wykonawcy, bez niezależnego potwierdzenia;
 `IN_PROGRESS` = istnieje wyznaczony wykonawca; `PLANNED` = cel
 zaplanowany, bez upoważnienia do startu; `REVIEWED` dopiero po niezależnym
 odbiorze. Zależność oznacza wymagany interfejs, nie pozwolenie na założenie tezy.
 
 | ID / status | Dokładny cel i wejścia | Wyjście wymagane do odbioru | Zależności |
 |---|---|---|---|
-| **T01 IN_PROGRESS — IID_RETRY_COMPOSITION** | Actual post-H2P region, reached entries,16 attempts, reset/fault/norm/codec; F04–F09 | Source-bound applicability H6P przy każdej osiągniętej próbie, WholeRegionBad, coupling, a.s. IID region return i zasoby. Kandydat≤2^-80 dopiero po dowodzie | F04–F09; obecny TASK |
+| **T01 FROZEN_AWAITING_REVIEW — IID_RETRY_COMPOSITION** | Actual post-H2P region,reached entries,16 attempts,reset/fault/norm/codec; author handoff2026-09-22 | Deklarowane≤2^-80,492/492 i region/resources wymagają innego niezależnego recenzenta. Prompt w CURRENT_REVIEW_TASK; brak awansu do REVIEWED | F04–F09; [odbiór](../../proofs/ft1536/CURRENT_REVIEW_TASK.md) |
 | **T02 PLANNED — PRNG_REAL_TO_IID_BUFFER** | Dokładny root SHAKE32→stream i state56/ChaCha/refills/getters; skończone ghost budgets | Jawne gry, resource-indexed assumptions i reduktory/hybrid losses; zachowana wspólna historia, init/discards/abandoned tails. Nie „448-bit security” | T01 resources, F02,F07,F08 |
 | **T03 PREPARED_OWNER_START — REFERENCE_INTEGER_RECOVERY** | Source rounded sampler/basis/iFFT/rint oraz independent reference integer object; osobny one-root TASK MiMo | Warunki i dowód recovery/congruence/rounding gap; wyprowadzone, a nie założone. Osobno Safe16, centered extraction i norm compatibility; partial/counterexample możliwe | F03–F09; T01 do rozszerzenia na retries |
 | **T04 PLANNED — PREFIX_AND_API_BINDING** | Pominięty przez T01 prefix: context/loader/rng_ready/nonce/H2P, usługi E i actual source outcomes | Dokładny zasięg definedness/termination/abort, legal ReadyRetryEntry z API i joint randomness interfaces. Brak ukrytego all-success lub IID premise | F02–F05,T01; T02 dla real-law claims |
@@ -169,3 +170,5 @@ muszą wskazywać ten sam aktywny etap.
   bez zakładania wyniku T01. Anulowany szkic S01 pozostał lokalnym materiałem.
 - 2026-09-22: odbiór matematyczny i replay zwrotów właściciel powierza innemu
   modelowi; ten prowadzący przygotowuje zadania oraz prompty odbioru.
+- 2026-09-22: otrzymano handoff T01 z deklarowanym PROVED/492. Status
+  FROZEN_AWAITING_REVIEW; przygotowano prompt, bez wykonania odbioru przez prowadzącego.

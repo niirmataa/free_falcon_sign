@@ -1,7 +1,8 @@
 # Stan projektu — punkt wejścia
 
-**Snapshot: 2026-09-22, około04:33 CEST**, repo HEAD przed utworzeniem tego
-zestawu: `7d567bd992ef040dc79ebf0c47aa6a8fff7a3758`.
+**Aktualizacja T01: 2026-09-22, około05:32 CEST**, po handoffie właściciela;
+repo HEAD przed zapisem tej aktualizacji: `cd7e59335716cde5f78a7c6f927fe6e3064b99b2`.
+Historyczne obserwacje procesów/dudect poniżej pochodzą z około04:33 CEST.
 Stan procesów jest ulotny: sprawdź go ponownie przed pracą. Ten dokument
 aktualizujemy po odbiorze etapu, zmianie wykonawcy lub decyzji właściciela.
 
@@ -16,8 +17,8 @@ Bieżąca Astra = **T01**, poprawki MiMo = **S01**, dudect = **S02**.
   ich odbioru automatycznie. Starsze opisane niżej odbiory są faktami historycznymi.
 - **Publikacja czegokolwiek na GitHub wstrzymana**, aż MiMo poprawi
   FT_FAMILY_SCALING i poprawiona wersja przejdzie pozytywny niezależny odbiór.
-  Późniejszy push nadal wymaga osobnego polecenia. Przy tym snapshotcie main
-  był11 commitów przed origin/main; sprawdź aktualny Git, nie kopiuj tej liczby.
+  Późniejszy push nadal wymaga osobnego polecenia. Aktualny dystans do origin
+  odczytuj z Git; lokalny checkpoint nie oznacza publikacji.
 - Jeden wykonawca danego W. Właściciel uruchamia/przekazuje zadania jawnie.
   Nie używaj `opencode run --session` jako sposobu wklejenia do otwartego czatu:
   uruchamia to oddzielnego wykonawcę.
@@ -43,7 +44,7 @@ Raport i odbiór:
 - [H6P REPORT](../../proofs/ft1536/stages/FT1536_H6P_REFERENCE_BAD_EVENT_RUN_001/REPORT.md)
 - [H6P validation](../../proofs/ft1536/validation/2026-09-22-h6p-reference-bad-event/README.md)
 
-## Aktywne zadanie Astry — NIE STARTUJ DRUGIEGO WYKONAWCY
+## Zwrot Astry T01 — oczekuje na niezależny odbiór
 
 `FT1536_IID_RETRY_COMPOSITION_RUN_001`, przygotowanie `c4e9d35`.
 
@@ -54,9 +55,15 @@ Raport i odbiór:
   1270 plików/1268 origins; BASE `1ba7ae07c17d135fc8eff4aac7b56f8c2b3bc88c`.
 - Cel: od jednego legalnego post-H2P entry wyprowadzić re-entry/fresh-tail,
   actual16-attempt scheduler/norm/codec, WholeRegionBad, coupling i zasoby.
-- Przy snapshotcie: **IN_PROGRESS, nieodebrane**. Istnieją formal/scripts/logs
-  oraz robocze STOPPED_COMPOSITION/RESOURCE_BOUND; brak końcowego REPORT/OUTPUTS.
-  Robocza liczba2^-80 nie jest jeszcze odebranym twierdzeniem.
+- Właściciel przekazał frozen handoff: **FROZEN_AWAITING_INDEPENDENT_REVIEW**.
+  Deklarowane PROVED,492/492,WholeRegionBad<=2^-80,6352 blocks/26017792 bytes,
+  joint budget tail<2^-1020,120 modułów/922 twierdzenia/26 nowych.
+  **To deklaracje wykonawcy, nie nowy odebrany wynik.**
+- REPORT SHA `b7164dbbee02db248ea43adce1d63ae0a38ed4493a566c5acd3a2f507db14590`;
+  OUTPUTS SHA `3d68249f4f0e017f32eb7edeb0d90f5c4a6cd6b4b9f93307cec6919439525074`.
+- [Prompt i W niezależnego odbioru](../../proofs/ft1536/CURRENT_REVIEW_TASK.md).
+  Prowadzący przygotował prompt bez wykonania weryfikacji/replayu zwrotu.
+  Autor deklaruje koniec własnych obliczeń; nie wznawiaj W i nie startuj T02.
 
 ### Incydent dwóch wykonawców
 

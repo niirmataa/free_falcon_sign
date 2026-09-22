@@ -1,15 +1,18 @@
-# Bieżące zadanie Astry — ręczny start
+# Zadanie Astry T01 — zwrot oczekuje na niezależny odbiór
 
 **TASK_ID: `FT1536_IID_RETRY_COMPOSITION_RUN_001`**
 
-Stan przygotowania: **PREPARED_OWNER_START** (2026-09-22). To wskaźnik
-zlecenia, nie potwierdzenie uruchomienia lub wynik badania. Rzeczywisty postęp
-i finalny handoff znajdują się w poniższym W.
+**Stan2026-09-22, zgłoszenie właściciela około05:32 CEST:
+FROZEN_AWAITING_INDEPENDENT_REVIEW.** Astra zadeklarowała zakończenie,
+PROVED i final replay492/492. Prowadzący nie zweryfikował tego zwrotu.
+[CURRENT_REVIEW_TASK](CURRENT_REVIEW_TASK.md) wskazuje prompt dla innego modelu.
+Nie wznawiaj ukończonego W ani relay; nie uruchamiaj T02 przed odbiorem.
 
-**Aktualizacja prowadzącego2026-09-22,04:33 CEST: IN_PROGRESS.** Wykonawca
-pracuje w istniejącym oknie Astry. Nie uruchamiaj drugiego. Background relay
-zatrzymany po overlap; automatyczne powiadomienie przez `run --session`
-wstrzymane. Bieżący kontekst: [STATE](../../docs/onboarding/STATE.md).
+External piny z handoffu, do sprawdzenia przez recenzenta:
+- REPORT.md: `b7164dbbee02db248ea43adce1d63ae0a38ed4493a566c5acd3a2f507db14590`.
+- OUTPUTS.sha256: `3d68249f4f0e017f32eb7edeb0d90f5c4a6cd6b4b9f93307cec6919439525074`.
+Final receipt autora: `tmp/final_replay_001/REPLAY_RESULT.json` pod W.
+Incydent overlap i wymagania świeżego odbioru: [STATE](../../docs/onboarding/STATE.md).
 
 ```text
 REPO=/home/footfalcon/free_falcon_sign

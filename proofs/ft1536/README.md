@@ -239,12 +239,15 @@ sprawdzenie arytmetyki. Zachowano coarse error≈3.681e9 jako luźny failed boun
 Następny obowiązek: **IID_RETRY_COMPOSITION** z actual cap16/reached entries/
 filtration i postprocessing, przed przypisaniem whole-call lossu.
 
-**Następne zadanie do ręcznego startu:**
+**Zwrot T01 oczekujący na niezależny odbiór:**
 [IID_RETRY_COMPOSITION](documents/FT1536_ZADANIE_ASTRA_IID_RETRY_COMPOSITION_2026-09-22.md)
 z [1270 przypiętymi wejściami](background/IID_RETRY_COMPOSITION_2026-09-22/README.md).
 Zakres: od jednego legalnego post-H2P entry do return z actual retry/codec
 region, stopping-time applicability H6P, WholeRegionBad, checked-precast
-coupling i zasoby z resetami. [CURRENT_TASK](CURRENT_TASK.md) wskazuje nowy W.
+coupling i zasoby z resetami. Autor zgłosił PROVED/492 matches oraz<=2^-80;
+to deklaracje czekające na potwierdzenie. [CURRENT_REVIEW_TASK](CURRENT_REVIEW_TASK.md)
+wskazuje pełny prompt dla innego modelu i zewnętrzne REPORT/OUTPUTS piny.
+Prowadzący nie wykonał odbioru/replayu; T01 nie jest jeszcze REVIEWED.
 
 **Zachowane opracowanie FT_FAMILY_SCALING modelu MiMo:**
 [pakiet, PDF i wyniki](stages/FT_FAMILY_SCALING_REVIEW_RUN_001/README.md)
