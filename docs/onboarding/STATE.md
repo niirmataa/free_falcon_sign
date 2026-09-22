@@ -2,6 +2,12 @@
 
 **Aktualizacja2026-09-22:** T01 niezależnie odebrany w `a2cdf317`;
 następnie właściciel poprosił o zadanie korekt S01 przed publikacją.
+Nowsza szybka kontrola FIX_001/E1:
+[ustalenia](../../proofs/ft1536/validation/2026-09-22-fix001-e1-quickcheck/README.md).
+S01:116/116 plików,rdzeń R1/R5 poprawiony i liczby potwierdzone; pozostaje
+świeżość semantic/PDF w replayu oraz drobna sprzeczność radius/half-width.
+Finalnego scoped PASS nie wydano. S06/E1:13 finite β i8 no-crossing do capu,
+niezależny Sage/MPFI potwierdza tabelę; E2–E5 nadal w toku.
 Po nim przygotowano na jego prośbę małe T02.1 dla kolejnego ręcznie wybranego modelu.
 Najnowszy odbiór: **T03 REVIEWED — PARTIAL_PROOF**,na podstawie REVIEW_002
 z PASS_SCOPED_REVIEW. Autor MiMo2.6Pro; recenzent Muse Spark1.3 xhigh w świeżym
