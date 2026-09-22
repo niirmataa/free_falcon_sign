@@ -1,8 +1,10 @@
 """Tests exercise immutable imports and their integrity boundary, not proof validity."""
 import importlib.util
 import json
+import os
 from pathlib import Path
 import shutil
+import subprocess
 import tempfile
 import unittest
 
@@ -163,6 +165,77 @@ class ArchiveTests(unittest.TestCase):
                        {'sha256': '0'*64}, {'expected': None, 'actual': None}):
             with self.subTest(change=change), self.assertRaises(archive.ArchiveError):
                 archive.semantic_rows({'matches': [dict(row, **change)]})
+
+    def test_bootstrap_seals_manifest_and_origins(self):
+        source = self.base / 'bseed'
+        source.mkdir()
+        (source / 'a.txt').write_bytes(b'A\n')
+        sub = source / 'd'
+        sub.mkdir()
+        (sub / 'b.json').write_bytes(b'{}\n')
+        plan = self.base / 'plan.json'
+        plan.write_text(json.dumps([
+            {'copy': 'd/b.json', 'path': str(sub / 'b.json')},
+            {'copy': 'a.txt', 'path': str(source / 'a.txt'), 'original': 'git:dead:Extra/a.txt'},
+        ]))
+        target = self.base / 'bootstrap-out'
+        result = archive.bootstrap(self.root, target, plan)
+        self.assertEqual(result['files'], 2)
+        manifest_rows = archive.manifest((target / 'MANIFEST.sha256').read_bytes())
+        self.assertEqual(manifest_rows['a.txt'], archive.digest(b'A\n'))
+        self.assertEqual(manifest_rows['d/b.json'], archive.digest(b'{}\n'))
+        origins = json.loads((target / 'ORIGINS.json').read_bytes())
+        self.assertEqual(origins['files'][0]['original'], 'git:dead:Extra/a.txt')
+        (target / 'a.txt').write_bytes(b'corrupted')
+        with self.assertRaises(archive.ArchiveError):
+            archive.bootstrap(self.root, target, plan)
+
+    def test_task_init_writes_bound_agents_file(self):
+        doc = self.root / 'documents' / 'T.md'
+        doc.parent.mkdir(parents=True, exist_ok=True)
+        doc.write_bytes(b'task body\n')
+        meta = self.root / 'documents' / 'T.md.sha256'
+        sha = archive.digest(b'task body\n')
+        meta.write_bytes((sha + '  T.md\n').encode())
+        result = archive.task_init(self.root, 'FT1536_TEST_TASK_RUN_001',
+                                   base='a' * 64, task_doc=doc)
+        text = (self.root / 'work/FT1536_TEST_TASK_RUN_001/AGENTS.md').read_text()
+        self.assertIn('TASK SHA=' + sha, text)
+        self.assertIn('BASE=' + 'a' * 64, text)
+        self.assertEqual(result['task_sha'], sha)
+        with self.assertRaises(archive.ArchiveError):
+            archive.task_init(self.root, 'FT1536_TEST_TASK_RUN_001')
+        with self.assertRaises(archive.ArchiveError):
+            archive.task_init(self.root, 'FT1536_TEST_TASK_RUN_002', base='nothex')
+
+    def test_checkpoint_commits_exactly_stage_and_catalog(self):
+        self.import_fixture()
+        repo = self.base
+        subprocess.run(['git', 'init', '-q'], cwd=repo, check=True)
+        subprocess.run(['git', '-C', repo, 'config', 'user.email', 't@example.com'], check=True)
+        subprocess.run(['git', '-C', repo, 'config', 'user.name', 't'], check=True)
+        # --only does not limit the initial commit, so establish HEAD first.
+        subprocess.run(['git', '-C', repo, 'commit', '--allow-empty', '-q', '-m', 'init'],
+                       check=True)
+        archive.checkpoint(self.root, 'FT1536_TEST_RUN_001', repo=repo)
+        head_tree = subprocess.check_output(
+            ['git', '-C', repo, 'show', '--name-only', '--format=', 'HEAD'], text=True).split()
+        rel = os.path.relpath(self.root, repo)
+        catalog_path = f'{rel}/catalog/FT1536_TEST_RUN_001.json'
+        self.assertIn(catalog_path, head_tree)
+        stage_prefix = f'{rel}/stages/FT1536_TEST_RUN_001/'
+        self.assertTrue(all(p == catalog_path or p.startswith(stage_prefix)
+                            for p in head_tree), sorted(head_tree))
+        self.assertIn(stage_prefix + 'OUTPUTS.sha256', head_tree)
+        second = archive.checkpoint(self.root, 'FT1536_TEST_RUN_001', repo=repo)
+        self.assertEqual(second['action'], 'nothing-to-commit')
+
+    def test_handoff_blob_matches_catalog_pins(self):
+        self.import_fixture()
+        blob = archive.handoff(self.root, 'FT1536_TEST_RUN_001')
+        self.assertIn('OUTPUTS_SHA256=' + self.pin, blob)
+        self.assertIn('REPORT_SHA256=' + self.report_pin, blob)
+        self.assertIn('STATUS=PARTIAL_PROOF', blob)
 
     def test_catalog_views_are_regenerable(self):
         self.import_fixture()

@@ -466,6 +466,91 @@ def replay_stage(root, stage, run, timeout, hide_originals=False):
     require(passed, f'Replay did not pass; inspect {destination}')
 
 
+def checkpoint(root, stage, message=None, repo=None):
+    """Verify a finished stage, then commit exactly its bytes on the current branch."""
+    record = load_record(root, stage)
+    verify_stage(root, stage)
+    repo = Path(repo).absolute() if repo is not None else root.parents[1]
+    rel = os.path.relpath(root, repo)
+    paths = [f'{rel}/stages/{stage}', f'{rel}/catalog/{stage}.json']
+
+    def git(*args):
+        return subprocess.check_output(['git', *args], cwd=repo, text=True)
+    status = git('status', '--porcelain', '--', *paths).strip()
+    if not status:
+        return dict(stage=stage, action='nothing-to-commit')
+    git('add', '--', *paths)
+    git('commit', '--only', '-m', message or f'proof: record {stage} checkpoint', '--', *paths)
+    head = git('rev-parse', 'HEAD').strip()
+    return dict(stage=stage, action='committed', commit=head, paths=paths,
+                manifest_sha256=record['manifest_sha256'])
+
+
+def handoff(root, stage):
+    """Emit the reviewer pin blob for a verified checkpoint."""
+    record = load_record(root, stage)
+    verify_stage(root, stage)
+    lines = [f'STAGE={stage}',
+             f"REPORT={record['report']}",
+             f"REPORT_SHA256={record['report_sha256']}",
+             f"OUTPUTS_SHA256={record['manifest_sha256']}",
+             f"STATUS={record['claimed_status']}",
+             f"REPLAY={record['replay']}"]
+    if record.get('frozen_commands'):
+        lines.append(f"FROZEN_COMMANDS_SHA256={record['frozen_commands']['sha256']}")
+    return '\n'.join(lines) + '\n'
+
+
+def task_init(root, task_id, base=None, task_doc=None):
+    """Create a fresh workspace with an AGENTS.md bound to the pinned task document."""
+    checked_name(task_id)
+    workspace = root / 'work' / task_id
+    require(not workspace.exists(), f'Workspace already exists: {workspace}')
+    lines = [f'# {task_id}', '',
+             'Jeden wykonawca wybrany i uruchomiony przez właściciela. Osobny W,',
+             'bez subagentów/relay i bez systemowego tmp/tmpfs. Wszystkie zapisy',
+             'wyłącznie pod W w repo.',
+             f'REPO={root.parents[1]}',
+             f'W={workspace}']
+    if task_doc is not None:
+        name = Path(task_doc).name
+        sidecar = root / 'documents' / (name + '.sha256')
+        require(sidecar.exists(), f'Missing document sidecar: {sidecar.name}')
+        sha = manifest(read(sidecar))[name]
+        lines += [f'TASK={root / "documents" / name}', f'TASK SHA={sha}']
+    if base is not None:
+        require(DIGEST.fullmatch(base) is not None, 'Expected BASE commit/SHA-256')
+        lines.append(f'BASE={base}')
+    mkdir(workspace)
+    put_once(workspace / 'AGENTS.md', ('\n'.join(lines) + '\n').encode())
+    return dict(workspace=str(workspace), task_id=task_id, task_sha=sha if task_doc else None)
+
+
+def bootstrap(root, dest, plan):
+    """Materialize inputs/bootstrap from a JSON plan and seal MANIFEST/ORIGINS.
+
+    The plan is a JSON list of {copy, path, original?}: bytes are read from
+    path, written to dest/copy, and recorded with their SHA-256 and origin.
+    """
+    dest = no_symlinks(Path(dest).absolute())
+    rows = []
+    for item in json.loads(read(plan)):
+        copy = checked_path(item['copy'])
+        source = Path(item['path'])
+        source = source if source.is_absolute() else Path.cwd() / source
+        data = checked_bytes(source)
+        rows.append(dict(copy=copy.as_posix(), original=item.get('original', str(source)),
+                         sha256=digest(data), bytes=len(data)))
+        put_once(dest / copy, data)
+    rows.sort(key=lambda row: row['copy'])
+    raw = ''.join(f"{row['sha256']}  {row['copy']}\n" for row in rows).encode()
+    put_once(dest / 'MANIFEST.sha256', raw)
+    put_once(dest / 'ORIGINS.json', json_bytes(dict(files=rows)))
+    for name, sha in manifest(raw).items():
+        checked_bytes(dest / name, sha)
+    return dict(dest=str(dest), files=len(rows), manifest_sha256=digest(raw))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest='command', required=True)
@@ -489,6 +574,12 @@ def main():
     lst = sub.add_parser('list'); lst.add_argument('stage', nargs='?')
     lst.add_argument('--markdown', action='store_true',
                      help='Render the status table used by README/STATE from catalog/*.json')
+    ck = sub.add_parser('checkpoint'); ck.add_argument('stage'); ck.add_argument('-m', '--message')
+    ho = sub.add_parser('handoff'); ho.add_argument('stage')
+    ti = sub.add_parser('task-init'); ti.add_argument('task_id')
+    ti.add_argument('--base'); ti.add_argument('--task-doc')
+    bs = sub.add_parser('bootstrap'); bs.add_argument('dest', type=Path)
+    bs.add_argument('--plan', required=True, type=Path)
     args = parser.parse_args()
     if args.command == 'import':
         result = import_stage(ROOT, args.source, args.manifest_sha, args.report_sha,
@@ -501,6 +592,17 @@ def main():
         return
     elif args.command == 'list' and args.markdown:
         print(markdown_table(ROOT, args.stage), end='')
+        return
+    elif args.command == 'checkpoint':
+        result = checkpoint(ROOT, args.stage, args.message)
+    elif args.command == 'handoff':
+        print(handoff(ROOT, args.stage), end='')
+        return
+    elif args.command == 'task-init':
+        result = task_init(ROOT, args.task_id, args.base, args.task_doc)
+    elif args.command == 'bootstrap':
+        result = bootstrap(ROOT, args.dest, args.plan)
+        print(json.dumps(result, ensure_ascii=False, indent=2))
         return
     else:
         if args.command == 'list':
