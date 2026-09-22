@@ -1,0 +1,19 @@
+=== check_geometry.py ===
+G1  floor(1.075^2 * 2N * sigma^2) = 2093922385 (expect 2093922385)  |  2N*sigma^2 = 1811939328 (expect 1811939328)
+G2  N=768: E||f||^2 = 512 (=2N/3), E||(g,-f)||^2 = 1024 (=4N/3) for raw iid ternary
+G2  N=1536: E||f||^2 = 1024 (=2N/3), E||(g,-f)||^2 = 2048 (=4N/3) for raw iid ternary
+G2  N=3072: E||f||^2 = 2048 (=2N/3), E||(g,-f)||^2 = 4096 (=4N/3) for raw iid ternary
+G3-G5  N=768: det^(1/d) coeff = 135.768185, Q_A2 = 126.346532;
+        GH exact (coeff) = 1291.087107, asym = 1287.527294;  Q_A2: 1201.491936 / 1198.179156
+        RMS(key)/GH = 0.0247853145 (coeff), 0.0266335537 (Q_A2); RMS(f)/GH = 0.0175258640
+G3-G5  N=1536: det^(1/d) coeff = 135.768185, Q_A2 = 126.346532;
+        GH exact (coeff) = 1823.559676, asym = 1820.838561;  Q_A2: 1697.013496 / 1694.481212
+        RMS(key)/GH = 0.0248167552 (coeff), 0.0266673389 (Q_A2); RMS(f)/GH = 0.0175480959
+G3-G5  N=3072: det^(1/d) coeff = 135.768185, Q_A2 = 126.346532;
+        GH exact (coeff) = 2577.123344, asym = 2575.054588;  Q_A2: 2398.283507 / 2396.358312
+        RMS(key)/GH = 0.0248338909 (coeff), 0.0266857525 (Q_A2); RMS(f)/GH = 0.0175602127
+G5  asymptotic constants: sqrt(4 pi e/(3q)) = 0.0248538421  (review: 0.0248538421)
+                            sqrt(2 pi e/(3q)) = 0.0175743203  (review: 0.0176)
+G6  GH(2N)/GH(N) at N=768 -> 1536: exact 1.412422, asym 1.414214  (sqrt2 = 1.414214)
+G6  GH(2N)/GH(N) at N=1536 -> 3072: exact 1.413238, asym 1.414214  (sqrt2 = 1.414214)
+Wrote geometry.json and geometry.csv

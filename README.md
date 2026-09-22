@@ -189,6 +189,14 @@ explicit reference process, followed by the one-root IID event transfer.
 [CURRENT_TASK](proofs/ft1536/CURRENT_TASK.md) identifies the new worker directory
 and task pins for starts/resumes; ORDERED_JOINT is completed.
 
+The separate [FT family scaling research by MiMo](proofs/ft1536/stages/FT_FAMILY_SCALING_REVIEW_RUN_001/README.md)
+is preserved with its [PDF manuscript](proofs/ft1536/stages/FT_FAMILY_SCALING_REVIEW_RUN_001/paper/main.pdf),
+Lean sources, scripts and results. [Independent review](proofs/ft1536/stages/FT_FAMILY_SCALING_REVIEW_RUN_001/REPORT.md)
+confirmed4 Lean modules/14 named theorems,5 reproduced JSON/CSV files and12
+FFT-port cases, while identifying corrections to attack-game/reduction definitions
+and claim consistency. Status: **RESEARCH_REVIEW_CHANGES_REQUIRED**; this is
+research evidence for planned FT768/FT3072, not their implementation or security certification.
+
 The [historical deferred preparation](provenance/checks/2026-09-20-dudect-floor-ct-ready/README.md)
 is retained. The [current floor-ct launcher](tests/ft1536/dudect/README.md)
 supports the owner's **ten-hour RUN_002** budget, with fresh controls before
@@ -209,6 +217,7 @@ Start here:
 - **[Research paper / specification — Draft 0.2 (PDF)](docs/paper/FT1536_specyfikacja_v0.2.pdf)** — [snapshot and provenance](docs/paper/README.md); covers the frozen post-M0 state.
 - **[Frozen post-M0 research state: full proof map, decisions and next obligations](proofs/ft1536/stages/FT1536_POST_M0_FREEZE_RUN_001/REPORT.md)**
 - [Proof archive and latest results](proofs/ft1536/README.md)
+- [FT768/FT1536/FT3072 scaling study and review](proofs/ft1536/stages/FT_FAMILY_SCALING_REVIEW_RUN_001/README.md)
 - [Detailed post-L_V roadmap and T2C3/T5 dependency map](proofs/ft1536/documents/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md)
 - [M0 protocol and security game](proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001/GAME.md)
 - [M0 capacity proof](proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001/CAPACITY.md)

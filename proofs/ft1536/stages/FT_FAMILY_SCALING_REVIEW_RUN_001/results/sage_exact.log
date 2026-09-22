@@ -1,0 +1,35 @@
+=== sage_exact.sage (SageMath version below) ===
+sage version: [2, 17, 3]
+SA1  N=768: Phi_2304(X) == X^768 - X^384 + 1 : True  (deg 768, phi(3N) = 768)
+SA1  N=1536: Phi_4608(X) == X^1536 - X^768 + 1 : True  (deg 1536, phi(3N) = 1536)
+SA1  N=3072: Phi_9216(X) == X^3072 - X^1536 + 1 : True  (deg 3072, phi(3N) = 3072)
+SA2  N=768: c_m(0) = 768 (=N), c_m(N/2) = 384 (=N/2), zeros elsewhere in (0,N): True
+SA2  N=1536: c_m(0) = 1536 (=N), c_m(N/2) = 768 (=N/2), zeros elsewhere in (0,N): True
+SA2  N=3072: c_m(0) = 3072 (=N), c_m(N/2) = 1536 (=N/2), zeros elsewhere in (0,N): True
+SA3  N=768: (1/N)Tr(a*conj a) == sum_i A2(a_i, a_(i+N/2)) : True  (4 exact cases)
+SA3  N=1536: (1/N)Tr(a*conj a) == sum_i A2(a_i, a_(i+N/2)) : True  (4 exact cases)
+SA3  N=3072: (1/N)Tr(a*conj a) == sum_i A2(a_i, a_(i+N/2)) : True  (4 exact cases)
+SA4  N=768, m=2304: u^2=1 solutions = 8 (nontrivial 7: [127, 1025, 1151, 1153, 1279, 2177, 2303])
+     GAP: |G| = 768, total subgroups = 142, order-2 subgroups = 7 (= index-2 subfields), index-2 subgroups = 7 (= quadratic subfields)
+SA4  N=1536, m=4608: u^2=1 solutions = 8 (nontrivial 7: [1025, 1279, 2303, 2305, 3329, 3583, 4607])
+     GAP: |G| = 1536, total subgroups = 164, order-2 subgroups = 7 (= index-2 subfields), index-2 subgroups = 7 (= quadratic subfields)
+SA4  N=3072, m=9216: u^2=1 solutions = 8 (nontrivial 7: [1025, 3583, 4607, 4609, 5633, 8191, 9215])
+     GAP: |G| = 3072, total subgroups = 186, order-2 subgroups = 7 (= index-2 subfields), index-2 subgroups = 7 (= quadratic subfields)
+SA5  sqrt(4 pi e/(3 q)) = 0.015074617217013606341715231751759449405521182551253801950449*e^(1/2)
+     sqrt(2 pi e/(3 q)) = 0.010659364057941802136615677802341883464001874813705883950456*e^(1/2)
+     N=768: all-ones |a(zeta)| = 635.13108433577397959358171593310487563378340325588251909082
+              asymptotic (3 sqrt3/(2 pi)) N = 635.13088752590444103704812605654079648978922538237003202487
+              withdrawn sqrt(N) = 27.712812921102036696439141464093957871084884060966090048893
+              GH_asym (coeff) = 2122.7736359291408743520245600152112362884128360406154891154*e^(-1/2)
+     N=1536: all-ones |a(zeta)| = 1270.2618734567276425169770881293926269565384292320296897177
+              asymptotic (3 sqrt3/(2 pi)) N = 1270.2617750518088820740962521130815929795784507647400640497
+              withdrawn sqrt(N) = 39.191835884530849571156545195294262271455159690506722054923
+              GH_asym (coeff) = 3002.0552657790378288090921220197402834381300131752971795802*e^(-1/2)
+     N=3072: all-ones |a(zeta)| = 2540.5235993060751432655774591316091185449038685960600464609
+              asymptotic (3 sqrt3/(2 pi)) N = 2540.5235501036177641481925042261631859591569015294801280995
+              withdrawn sqrt(N) = 55.425625842204073392878282928187915742169768121932180097786
+              GH_asym (coeff) = 4245.5472718582817487040491200304224725768256720812309782309*e^(-1/2)
+SA6  N=768: Q_A2(all ones) = 1152 = (3/2)||a||^2 = 1152 -> True; Q_A2(+/-) = 384 = (1/2)||a||^2 = 384 -> True
+SA6  N=1536: Q_A2(all ones) = 2304 = (3/2)||a||^2 = 2304 -> True; Q_A2(+/-) = 768 = (1/2)||a||^2 = 768 -> True
+SA6  N=3072: Q_A2(all ones) = 4608 = (3/2)||a||^2 = 4608 -> True; Q_A2(+/-) = 1536 = (1/2)||a||^2 = 1536 -> True
+Wrote sage_exact.json

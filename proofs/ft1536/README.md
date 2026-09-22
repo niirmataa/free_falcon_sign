@@ -23,11 +23,11 @@ osiągnięcia, T2C3/T5, kontrakt M0, graf zależności i dalsze obowiązki.
 Pakiet ma 211 członków OUTPUTS i 198 publicznych wejść Git, manifest
 `c3efdcff510983a143946d43ab456656090061cd5b9b4b6847abc7f141c0cfa3`.
 Jest checkpointem dokumentacyjnym (`replay=none`); obecnie archiwum zawiera
-także dwadzieścia pięć etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
+także dwadzieścia sześć etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
 H3_ZERO_SCALAR, H3_ROOT_LDL, H3_NODE3, H3_NODE2, BINARY_TOWER, audyt FPEMU,
 FLOOR_CT, RAW_ASSEMBLY, STABLE_NORMALIZATION, INITIAL_TARGETS, ORDERED_REACH
 i LEFT_ROOT_CORRELATED_TRANSFER, SOURCE_POSTPROCESSING_AND_PRECAST, SCALAR_KERNEL_IID
-i SCALAR_GAUSSIAN_COMPARISON oraz ORDERED_JOINT_KERNEL.
+i SCALAR_GAUSSIAN_COMPARISON, ORDERED_JOINT_KERNEL oraz przegląd FT_FAMILY_SCALING.
 
 [Mapa po domknięciu L_V — 2026-09-19](documents/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md)
 przedstawia zależności i proponowaną kolejność: dokładny kontrakt gry,
@@ -230,6 +230,20 @@ pre-narrow vectors, następnie one-root IID event transfer.
 [CURRENT_TASK](CURRENT_TASK.md) jednoznacznie wskazuje nowy TASK_ID, W i piny
 przy starcie/wznowieniu. ORDERED_JOINT jest zakończony.
 
+**Zachowane opracowanie FT_FAMILY_SCALING modelu MiMo:**
+[pakiet, PDF i wyniki](stages/FT_FAMILY_SCALING_REVIEW_RUN_001/README.md)
+oraz [niezależna recenzja](stages/FT_FAMILY_SCALING_REVIEW_RUN_001/REPORT.md).
+Status **RESEARCH_REVIEW_CHANGES_REQUIRED**. Potwierdzono4 moduły Lean,
+14 nazwanych twierdzeń,5 odtworzonych JSON/CSV i12 kontroli portu FFT.
+Zachowano43 manifest-listed pliki autora wraz z oryginalnym manifestem,
+PDF/LaTeX, kodem i logami. Recenzja wskazuje m.in. kierunek redukcji, definicję
+celów ROM, brakujące F przy trapdoor recovery, odrzucony SIS w szkielecie
+estymatora oraz ujemny idealny test hipotezy chi-square.
+[Indeks odbioru](validation/2026-09-22-ft-family/README.md) wiąże piny i zakres.
+Archiwizacja obejmuje wartościowy wynik wymagający poprawek; nie podnosi go
+do dowodu bezpieczeństwa lub gotowości FT768/FT3072. Dokumentacyjny
+`replay=none` nie usuwa zachowanych niezależnych kontroli.
+
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
 
@@ -289,6 +303,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [SCALAR_KERNEL_IID](stages/FT1536_H3_SCALAR_KERNEL_IID_RUN_001/REPORT.md) | **H3_SCALAR_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — exact conditional kernel, A>=1/256 i fresh-tail/resources; real-PRNG bridge otwarty | `6f1f34c` |
 | [SCALAR_GAUSSIAN_COMPARISON](stages/FT1536_H3_SCALAR_GAUSSIAN_COMPARISON_RUN_001/REPORT.md) | **H3_SCALAR_GAUSSIAN_COMPARISON_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — local TV/forward chi2; reverse∞ i joint scope jawne | `64af4cb` |
 | [ORDERED_JOINT_KERNEL](stages/FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001/REPORT.md) | **H3_ORDERED_JOINT_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — adaptive root/source closure, directed comparison/resources/POST transfer; reference BadPrecast probability otwarte | `22e6dd4` |
+| [FT_FAMILY_SCALING review](stages/FT_FAMILY_SCALING_REVIEW_RUN_001/REPORT.md) | **RESEARCH_REVIEW_CHANGES_REQUIRED** — zachowany pakiet MiMo, sprawdzone lemmas/layout/obliczenia; korekty game/reduction i zakresów | bieżący checkpoint |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).

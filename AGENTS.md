@@ -73,6 +73,12 @@ Docelowym repozytorium prac jest `free_falcon_sign`.
   i nie zmieniaj konfiguracji Git bez polecenia.
 - Zachowaj historię: bez amend, force-push, pomijania hooks i automatycznego
   push. Publikacja oraz integracja źródeł wymagają osobnego polecenia.
+- Warunek właściciela z2026-09-22: publikacja czegokolwiek na GitHub jest
+  wstrzymana do poprawienia FT_FAMILY_SCALING przez MiMo i pozytywnego
+  niezależnego odbioru poprawionego pakietu. Obecna recenzja R1–R7 jest w
+  `proofs/ft1536/stages/FT_FAMILY_SCALING_REVIEW_RUN_001/REPORT.md`.
+  Lokalne checkpointy zachowują historię; spełnienie warunku nie zastępuje
+  osobnego polecenia publikacji od właściciela.
 - Prywatne klucze, seedy, uwierzytelnienia, cache i robocze binaria nie są
   materiałem commita. Publiczne PK i syntetyczne payloady `.bin` mogą być
   niezbędnymi, przypiętymi wejściami matematycznymi.
