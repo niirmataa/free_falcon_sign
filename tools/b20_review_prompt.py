@@ -104,6 +104,23 @@ Wyniki nieudanych tras zachowuj — są częścią raportu.
 def main():
     if len(sys.argv) < 2 or sys.argv[1].startswith('-h'):
         raise SystemExit(__doc__)
+    if sys.argv[1] == '--all':
+        outdir = Path(sys.argv[sys.argv.index('--outdir') + 1]) if '--outdir' in sys.argv \
+            else B.parents[1] / 'work/B20_001/prompts'
+        outdir.mkdir(parents=True, exist_ok=True)
+        index = json.loads((B / 'INDEX.json').read_text())
+        written = []
+        for entry in index['entries']:
+            if entry['role'] != 'reviewer':
+                continue
+            _, entry, peer, bound = load_pair(entry['id'])
+            target = outdir / f"{entry['id']}_PROMPT.md"
+            target.write_text(render(index, entry, peer, bound))
+            written.append(dict(reviewer=entry['id'], paired=peer['id'],
+                                author_bound=bool(bound.get('final_report_sha256')),
+                                file=str(target)))
+        print(json.dumps(written, ensure_ascii=False, indent=2))
+        return
     vid = sys.argv[1].upper()
     index, entry, peer, bound = load_pair(vid)
     text = render(index, entry, peer, bound)
