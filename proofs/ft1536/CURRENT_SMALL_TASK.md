@@ -1,13 +1,16 @@
 # Małe zadanie dla kolejnego modelu — T02.1
 
 **Aktualny TASK_ID=FT1536_PRNG_LAYOUT_COUNTER_RUN_003**,ROADMAP_ID=T02.1.
-Stan2026-09-22: **SUPPLEMENT_AWAITING_REVIEW**. Właściciel przekazał poprawki
-F1–F5 do odbioru RUN_002. [Krótki niezależny odbiór](CURRENT_SMALL_REVIEW_TASK.md)
-przygotowany;141/141 outputs i zewnętrzne piny zgodne.
+Stan2026-09-22: **REVIEWED / PASS_SCOPED_SUPPLEMENT**. Właściciel przekazał
+końcowy odbiór MiMo V2.6 Flash w świeżym kontekście. F1–F5 zamknięte;
+[archiwum odbioru](validation/2026-09-22-prng-layout-supplement/README.md).
+Autor141/141,recenzja48/48,replay recenzenta17/17,525.24s.
 REPORT `3b7c2b3bbc7f0b72b3a25d3f2cb32623294f1135acb61d8c65b905eefe1a6168`;
 OUTPUTS `e37b1e97ebcfa65d698c52e175c09e826cdbafe565722cc017b5349c00d3f5dc`.
 Source W: `proofs/ft1536/work/FT1536_PRNG_LAYOUT_COUNTER_RUN_003`.
-B20/P03 ma nadal pending input contract i pełną formalizację jako osobny cel.
+Archiwum autora: `stages/FT1536_PRNG_LAYOUT_COUNTER_RUN_003`.
+B20/P03 ma dostępny T02.1 handoff w żywym STATUS; czeka na P01/P02 i wymaga
+pełnej formalizacji jako osobnego celu. kernel_complete=false.
 Poniżej zachowane pierwotne zlecenie/bootstrap RUN_001; frozen W nie wznawiaj.
 
 **Obowiązkowe uzupełnienie właściciela2026-09-22:**

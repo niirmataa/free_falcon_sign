@@ -1,0 +1,109 @@
+{
+  "schema": "FT1536_T021_REVIEW_RESULT_V1",
+  "review_id": "FT1536_PRNG_LAYOUT_COUNTER_INDEPENDENT_REVIEW_001",
+  "source_task": "FT1536_PRNG_LAYOUT_COUNTER_RUN_002",
+  "continues_from": "FT1536_PRNG_LAYOUT_COUNTER_RUN_001",
+  "roadmap_id": "T02.1",
+  "reviewer_model": "MiMo V2.6 Pro (xiaomi-token-plan-ams/mimo-v2.6-pro, thinking)",
+  "reviewer_independence": "model rozny od wykonawcy pakietu, swiezy kontekst, wybor i reczny start przez wlasciciela; zero subagentow (rownowaznosc model+effort nie do potwierdzenia)",
+  "verdict": "CHANGES_REQUIRED",
+  "verdict_scope": "wylacznie sprostowania zakresu/dokumentacji (F1-F4); matematyka A/B/C, kernel Lean 28 thm, wiązanie C (3 buildy), KAT 5/5, mutacje 6+2, consumer i moj fresh replay 17/17 sa POTWIERDZONE; brak luki matematycznej; bez zmian liczb 396/25408/406528/896/936",
+  "confirmed": [
+    "integrity: 7/7 pins (przed+po replayu+finalnie), OUTPUTS 142/142, INPUTS 61/61, bootstrap 39/39 (5750423 B, 37 origins BASE c90233c1), source17 17/17, semantic17<->OUTPUTS, RUN_001 153/153 untouched",
+    "own_fresh_replay: FRESH_REPLAY_PASS 17/17, exit 0, 28.9 s, byte-identical (own checker, not runner PASS)",
+    "lean_kernel: 28 named theorems, core-only, clean logs; my #print axioms for all 28: 23x [propext, Quot.sound], 4x [propext], 1x none; no Classical.choice/sorryAx",
+    "sage_traps: no C-style ^ as XOR (^^ everywhere), int()/str() JSON wrappers (strict-parse test on 6 artifacts), start reduced mod 2^64 in all counter re-derivations",
+    "c_binding: 3 own rebuilds (clean stderr), dumps byte-identical to sealed; whole buf4096/state256 + ptr/type/counter + canaries/poison/stub(1,56) + types {0,1,2,3,-1,99,2^20} + determinism + type0==type1; 1-byte stdout diff normal-vs-altbranch = falcon_le_u tag byte only",
+    "kat: own OpenSSL CLI 5/5 + both literals (RFC 8439 2.3.2, classic all-zero); fixtures = public constants (SHAKE stub), not randomness",
+    "mutations: 6 MEANINGFUL KILLED (counter32 == [F0,F2] low-counter class; xor_to_add == [F0]) + 2 NO_OP clean 7/7",
+    "consumer (own .sage, exact ZZ): r_max 396, 25408, 6336, 6352, 406528, 896, 936; T01 ghost budget 11/11; q-refill floor/mod; wrap flags F4 [after_init], F6 [after_refill1], F5 [] correct"
+  ],
+  "findings": [
+    {
+      "id": "F1",
+      "severity": "medium",
+      "kind": "nieprawdziwy zakres w sealed artefakcie",
+      "where": "model/prng_checker.sage:300 -> artifacts/checker_result.json scope.open",
+      "what": "'Lean not used (optional in TASK)' - zdanie z RUN_001 jest w RUN_002 falszywe (kernel Lean 28 thm istnieje)",
+      "impact": "zaniezenie obrazu formalizacji dla konsumenta tego artefaktu; matematyka nienaruszona",
+      "fix": "suplement/nowy checkpoint ze sprostowaniem tekstu scope; bez edycji frozen bajtow i bez zmian matematyki"
+    },
+    {
+      "id": "F2",
+      "severity": "low",
+      "kind": "rozmycie scope kernela",
+      "where": "REPORT.md:23, SOURCE_MODEL_BINDING.md:23-24",
+      "what": "'kernel (typeOut, offsets, frame)' / 'offsets layoutu56 i ramki' - kernel ma arytmetyke ramki (frame_tail_nonempty, refill_blocks_per_buffer); niepisalnosc state[56..255] jest argumentem strukturalnym (A.4) + kontrola poison, nie twierdzeniem kernelowym",
+      "impact": "minimalny zawyz pokrycia kernela w dwoch zdaniach",
+      "fix": "doprecyzowanie 'frame' (frame-arithmetic w kernelu; niepisalnosc strukturalnie + poison)"
+    },
+    {
+      "id": "F3",
+      "severity": "low",
+      "kind": "blad dokumentacyjny",
+      "where": "REPLAY.md:9, REPLAY.md:24",
+      "what": "'porownuje 15 plikow z SEMANTIC_FILES.json' - faktycznie 17; komorka '(ponizej)' nie wskazuje receiptu post-freeze (SOURCE_W/tmp/postfreeze-001/REPLAY_RESULT.json)",
+      "impact": "zadny merytoryczny",
+      "fix": "15->17 + wskazanie receiptu post-freeze"
+    },
+    {
+      "id": "F4",
+      "severity": "low",
+      "kind": "precyzja danych T01",
+      "where": "model/prng_model.sage:441,447,452 (+ model/prng_checker.sage:244-251, RESOURCE_INTERFACE.json received_T01)",
+      "what": "abandoned_bytes/final_unused_bytes zrzucaja sufiks _max z pinned T01 (abandoned_at_reinit_max=61320, final_unused_tail_max=4088) i asserts traktuja je jak dokladne",
+      "impact": "zaden na 396/25408/406528/896/936",
+      "fix": "przywrocic nazwy _max lub jawne '<='"
+    },
+    {
+      "id": "F5",
+      "severity": "info",
+      "kind": "niejednolite etykiety",
+      "where": "LAYOUT.json:3, SEMANTIC_FILES.json:3 vs RESULT.json:3, PRNG_LAYOUT_CERTIFICATE.json:4",
+      "what": "task_id=...RUN_001 vs ...RUN_002 (kontynuacja) w roznych artefaktach",
+      "impact": "zaden merytoryczny",
+      "fix": "ujednolicic etykiety w przyszlym checkpoincie"
+    },
+    {
+      "id": "F6-author-finding-confirmed",
+      "severity": "finding autora (potwierdzony)",
+      "kind": "komentarz vs instrukcje",
+      "where": "source/frng.c:198 vs frng.c:222-223",
+      "what": "komentarz 'XORed into the first 8 bytes of the IV' niezgodny z instrukcjami (state[14]/state[15] = offsets 40..47 = OSTATNIE 8 B IV); mutacja counter_lanes_state12_13 KILLED",
+      "impact": "zaden na dowod; zachowany bez zmiany C zgodnie z TASK",
+      "fix": "komentarz do sprostowania przy najblizszej zmianie zrodel (poza tym pakietem)"
+    }
+  ],
+  "own_replay": {
+    "argv": "python3 -B SOURCE_W/scripts/replay.py REVIEW_W/seed/tmp/independent_001 8eda4cb98b754c5f20c8db2a34ff5055bffd535f626dc12d87b56c816406e5a7",
+    "status": "FRESH_REPLAY_PASS",
+    "matched": "17/17",
+    "exit_code": 0,
+    "elapsed_seconds": 28.9,
+    "receipt": "logs/receipt_INDEPENDENT_001_REPLAY_RESULT.json",
+    "independent_byte_comparison": "checkers/REPLAY_CHECKS.json (PASS)"
+  },
+  "kernel_audit": {
+    "module": "formal/CounterLayout.lean",
+    "theorems": 28,
+    "lean": "4.34.0",
+    "axioms_all_theorems": "23x [propext, Quot.sound], 4x [propext], 1x none (refill_post)",
+    "forbidden_tokens": "brak",
+    "clean_logs": true,
+    "chacha_rounds_kernelized": false,
+    "boundary_declared": true
+  },
+  "not_covered": [
+    "real_PRNG_to_IID_bridge",
+    "SHAKE_ChaCha_security_and_distributions",
+    "whole_real_Sign",
+    "KeyGen_secrets",
+    "big_endian_hardware",
+    "T02_parent_goal"
+  ],
+  "correction_pattern": "nowy checkpoint/suplement; bez edycji frozen bajtow SOURCE_W; bez zmian matematyki",
+  "next_step": "bez automatycznego startu; decyzja wlasciciela",
+  "source_unchanged": true,
+  "run_001_untouched": true,
+  "owner_accepted": false
+}

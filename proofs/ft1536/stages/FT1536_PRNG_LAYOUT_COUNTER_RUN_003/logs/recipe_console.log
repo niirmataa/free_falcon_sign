@@ -1,0 +1,133 @@
+>>> python3 scripts/preflight.py
+{
+  "schema": "PRNG_T021_INPUT_VALIDATION_V1",
+  "replay_role": false,
+  "task_sha256": "7b0007c095c51b1fe4c5d94b0b1a0012227aba4df0d1c59cfa8fcd92589fe5f1",
+  "sagemath_rule_sha256": "b6afcdcabb811dd8bc31072455ed9a94a4c4773ec68d41d207ac1d7e98eae241",
+  "bootstrap_manifest_sha256": "03b0612cbe3b18e487bee6399c71c238e5ff3a0527818a7c4330d007b72abae2",
+  "base_commit": "c90233c171265e050930958fb29bafa9338f81ff",
+  "members": 39,
+  "source_members": 17,
+  "member_bytes": 5750423,
+  "origins_files": 37,
+  "candidate_matches_manifest": true,
+  "status": "PASS"
+}
+>>> python3 scripts/gen_fixtures.py
+FIXTURES 7 5115f3f98234c182f36d0ae926a21b3f069e9b287bb2e1aeb371037743a8a790
+>>> python3 scripts/gen_kat.py
+KAT OpenSSL 3.5.7 9 Jun 2026 (Library: OpenSSL 3.5.7 9 Jun 2026) 5
+>>> python3 scripts/build_native.py
+[
+  {
+    "name": "normal",
+    "flags": [
+      "c99",
+      "-W",
+      "-Wall",
+      "-O"
+    ],
+    "exit_code": 0,
+    "binary": "prng-harness-normal",
+    "binary_sha256": "c18b11adfcc78d985c66c3cd596a9340acf99a6fc22ef5f0d41f51674280209e",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "clean_log": true
+  },
+  {
+    "name": "sanitized",
+    "flags": [
+      "c99",
+      "-W",
+      "-Wall",
+      "-O1",
+      "-g",
+      "-fsanitize=address,undefined",
+      "-fno-sanitize-recover=all"
+    ],
+    "exit_code": 0,
+    "binary": "prng-harness-sanitized",
+    "binary_sha256": "7b3eceb90223bf4f6de8375e7f853d7cfe0ba5725b50c863faeb492c5794cea2",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "clean_log": true
+  },
+  {
+    "name": "altbranch",
+    "flags": [
+      "c99",
+      "-W",
+      "-Wall",
+      "-O",
+      "-DFALCON_LE_U=0"
+    ],
+    "exit_code": 0,
+    "binary": "prng-harness-altbranch",
+    "binary_sha256": "37cb0dbd191f15b6252196de8277d1bf88ae32f0778e11e4b0b6081f56a835ec",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "clean_log": true
+  }
+]
+>>> python3 scripts/run_native.py
+[
+  {
+    "name": "normal",
+    "artifact": "artifacts/harness_dump.json",
+    "artifact_sha256": "72401466d578aa9b7625b493ac243cbc39ddb0fce98de02c8d49bd1dd4b40998",
+    "exit_code": 0,
+    "stdout_sha256": "72401466d578aa9b7625b493ac243cbc39ddb0fce98de02c8d49bd1dd4b40998",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sanitizer": false,
+    "address_space_limit_8gib": true
+  },
+  {
+    "name": "sanitized",
+    "artifact": "artifacts/harness_dump_sanitized.json",
+    "artifact_sha256": "72401466d578aa9b7625b493ac243cbc39ddb0fce98de02c8d49bd1dd4b40998",
+    "exit_code": 0,
+    "stdout_sha256": "72401466d578aa9b7625b493ac243cbc39ddb0fce98de02c8d49bd1dd4b40998",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sanitizer": true,
+    "address_space_limit_8gib": false
+  },
+  {
+    "name": "altbranch",
+    "artifact": "artifacts/harness_dump_altbranch.json",
+    "artifact_sha256": "b0dee8bc15ae2b6ff37d6efcc5249392fc7e375f3787fbebd294b5b9209a283e",
+    "exit_code": 0,
+    "stdout_sha256": "b0dee8bc15ae2b6ff37d6efcc5249392fc7e375f3787fbebd294b5b9209a283e",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sanitizer": false,
+    "address_space_limit_8gib": true
+  }
+]
+>>> python3 scripts/run_sage.py
+[
+  {
+    "name": "model",
+    "script": "model/prng_model.sage",
+    "script_sha256": "2c158b3e971843149f87458c81cc710b53cb262b97bf8f529ea1de49d3a19432",
+    "exit_code": 0,
+    "timeout": false,
+    "stdout_sha256": "705a320ed19b233924ab7a1c8dddc34ab442e386385531c35f62f69de5cf504a",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "checker",
+    "script": "model/prng_checker.sage",
+    "script_sha256": "9b3d2fc71204d1f22345bbdeffe4ea78b43dd423f9acbcf073f65edf38d583b7",
+    "exit_code": 0,
+    "timeout": false,
+    "stdout_sha256": "d738585a2aa6c4b0076eded4b643fd6ee2337c3ac0245077c55a607e2222cc35",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]
+>>> python3 scripts/build_lean.py
+LEAN_OK
+>>> python3 scripts/claims.py
+claims written: LAYOUT.json RESOURCE_INTERFACE.json PRNG_LAYOUT_CERTIFICATE.json RESULT.json TOOLCHAIN.txt INPUTS.sha256 (61 input records)
+>>> python3 scripts/semantic.py
+SEMANTIC_FILES 17
+RECIPE_OK
+recipe exit=0

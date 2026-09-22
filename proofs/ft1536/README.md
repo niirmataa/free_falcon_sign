@@ -12,6 +12,12 @@ ROADMAP określa zależności i kryteria następnych prac.
 
 To archiwum ukończonych etapów FT1536 w docelowym `free_falcon_sign`.
 
+**T02.1 RUN_003 odebrany zakresowo:** [REPORT](stages/FT1536_PRNG_LAYOUT_COUNTER_RUN_003/REPORT.md),
+[PASS_SCOPED_SUPPLEMENT](validation/2026-09-22-prng-layout-supplement/README.md).
+F1–F5 zamknięte;autor141 plików,review48,replay recenzenta17/17.
+Kernel28 dla arytmetyki; pełna kernelizacja/source binding pozostaje B20/P03,
+który otrzymuje realne piny handoffu w STATUS i nadal potrzebuje P01/P02.
+
 **Gotowy następny pakiet20+20:** [B20 OWNER_GUIDE](batches/B20_001/OWNER_GUIDE.md),
 [INDEX](batches/B20_001/INDEX.json),[protokół agentów](batches/B20_001/AGENT_GIT_PROTOCOL.md).
 Nowe zadania wymagają SageMath + Lean4 + Mathlib,kernelowych dowodów i formalnego

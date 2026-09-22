@@ -1,0 +1,59 @@
+{
+  "schema": "FT1536_T021_REVIEW_TRAP_CHECKS_V1",
+  "reviewer": "MiMo V2.6 Pro (independent review, own .sage checker)",
+  "entry": "sage trap_scan.sage <model/> (standard preparser)",
+  "scanned": [
+    "prng_checker.sage",
+    "prng_model.sage"
+  ],
+  "checks_count": 9,
+  "checks": [
+    {
+      "check": "files",
+      "status": "PASS",
+      "detail": "['prng_checker.sage', 'prng_model.sage']"
+    },
+    {
+      "check": "trap1.no_c_style_xor.prng_checker.sage",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "trap2.wrappers_used.prng_checker.sage",
+      "status": "PASS",
+      "detail": "int()/str() uzyte przy zapisach JSON"
+    },
+    {
+      "check": "trap2.json_scalars_only.prng_checker.sage",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "trap3.mod2p64_reductions.prng_checker.sage",
+      "status": "PASS",
+      "detail": "znalezionych redukcji: 6"
+    },
+    {
+      "check": "trap1.no_c_style_xor.prng_model.sage",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "trap2.wrappers_used.prng_model.sage",
+      "status": "PASS",
+      "detail": "int()/str() uzyte przy zapisach JSON"
+    },
+    {
+      "check": "trap2.json_scalars_only.prng_model.sage",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "trap3.mod2p64_reductions.prng_model.sage",
+      "status": "PASS",
+      "detail": "znalezionych redukcji: 6"
+    }
+  ],
+  "note": "trzy historyczne bledy RUN_001 (^ jako XOR, brak int() przy JSON, brak redukcji startu mod 2^64) potwierdzone nieobecne takze przegladem kodu, nie PASS-em runnera",
+  "verdict": "PASS"
+}

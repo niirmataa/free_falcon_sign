@@ -1,0 +1,57 @@
+{
+  "schema": "PRNG_T021_BUILD_V1",
+  "driver": "c99",
+  "gcc": "14.2.0-19",
+  "flags_note": "literal pinned Makefile -W -Wall -O plus sanitizer/branch controls",
+  "builds": [
+    {
+      "name": "normal",
+      "flags": [
+        "c99",
+        "-W",
+        "-Wall",
+        "-O"
+      ],
+      "exit_code": 0,
+      "binary": "prng-harness-normal",
+      "binary_sha256": "ef1b6b11b72f26ca165d466f91c8829fc2076dbc70fa0f577c0b58a5ea9acd8a",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "clean_log": true
+    },
+    {
+      "name": "sanitized",
+      "flags": [
+        "c99",
+        "-W",
+        "-Wall",
+        "-O1",
+        "-g",
+        "-fsanitize=address,undefined",
+        "-fno-sanitize-recover=all"
+      ],
+      "exit_code": 0,
+      "binary": "prng-harness-sanitized",
+      "binary_sha256": "dc91f9bbc388e581eecbe4d1ce66e4eafc3f170409ba48bc5b22acb3b7edb338",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "clean_log": true
+    },
+    {
+      "name": "altbranch",
+      "flags": [
+        "c99",
+        "-W",
+        "-Wall",
+        "-O",
+        "-DFALCON_LE_U=0"
+      ],
+      "exit_code": 0,
+      "binary": "prng-harness-altbranch",
+      "binary_sha256": "d529309dbcd78eecc3266b9e4ab010a9cfe26344c8f0ea6f558074ae4b121d88",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "clean_log": true
+    }
+  ]
+}

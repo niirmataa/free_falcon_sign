@@ -1,0 +1,59 @@
+{
+  "schema": "PRNG_T021_IETF_CHACHA20_KAT_V1",
+  "tag": "INDEPENDENT_OPENSSL_ORACLE",
+  "openssl": "OpenSSL 3.5.7 9 Jun 2026 (Library: OpenSSL 3.5.7 9 Jun 2026)",
+  "argv_template": [
+    "/usr/bin/openssl",
+    "enc",
+    "-chacha20",
+    "-K",
+    "<key_hex>",
+    "-iv",
+    "<counter_le32>||<nonce96>"
+  ],
+  "rfc8439_2_3_2_hex": "10f1e7e4d13b5915500fdd1fa32071c4c7d1f4c733c068030422aa9ac3d46c4ed2826446079faa0914c2d705d98b02a2b5129cd1de164eb9cbd083e8a2503c4e",
+  "classic_all_zero_hex": "76b8e0ada0f13d90405d6ae55386bd28bdd219b8a08ded1aa836efcc8b770dc7da41597c5157488d7724e03fb8d84a376a43b8f41518a11cc387b669b2ee6586",
+  "count": 5,
+  "vectors": [
+    {
+      "id": "V_CTR0",
+      "key_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "nonce96_hex": "000000090000004a00000000",
+      "counter": 0,
+      "blocks": 1,
+      "keystream_hex": "8adc91fd9ff4f0f51b0fad50ff15d637e40efda206cc52c783a74200503c1582cd9833367d0a54d57d3c9e998f490ee69ca34c1ff9e939a75584c52d690a35d4"
+    },
+    {
+      "id": "V_CTR1",
+      "key_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "nonce96_hex": "000000090000004a00000000",
+      "counter": 1,
+      "blocks": 1,
+      "keystream_hex": "10f1e7e4d13b5915500fdd1fa32071c4c7d1f4c733c068030422aa9ac3d46c4ed2826446079faa0914c2d705d98b02a2b5129cd1de164eb9cbd083e8a2503c4e"
+    },
+    {
+      "id": "V_CTR2",
+      "key_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "nonce96_hex": "000000090000004a00000000",
+      "counter": 2,
+      "blocks": 1,
+      "keystream_hex": "0a88837739d7bf4ef8ccacb0ea2bb9d69d56c394aa351dfda5bf459f0a2e9fe8e721f89255f9c486bf21679c683d4f9c5cf2fa27865526005b06ca374c86af3b"
+    },
+    {
+      "id": "V_ZERO_ALL",
+      "key_hex": "0000000000000000000000000000000000000000000000000000000000000000",
+      "nonce96_hex": "000000000000000000000000",
+      "counter": 0,
+      "blocks": 1,
+      "keystream_hex": "76b8e0ada0f13d90405d6ae55386bd28bdd219b8a08ded1aa836efcc8b770dc7da41597c5157488d7724e03fb8d84a376a43b8f41518a11cc387b669b2ee6586"
+    },
+    {
+      "id": "V_MULTI4",
+      "key_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "nonce96_hex": "000000000000000000000000",
+      "counter": 0,
+      "blocks": 4,
+      "keystream_hex": "39fd2b7dd9c5196a8dbd0377b8dc4a498a35d86fbcde6accb2cc7d4cd8ea24922b23cce7a26023ab3f0eef693ac87f64258235eab1f7a32dc22762a0485b410c18b84231ade6a6d113615c61af434e27f8b1f3f5e1ad5b5cecf8fc122a35755c7208086dd1ee3c5d9d815824640e003c9ba0f65ede5d59ce0d2a4a7f31955acd42f22ddca74a92d56ca78aef298e723b60237f3647eabeb7f3e09c30ce80e3e284a8021b8a5c0b2494cd3c8d5b13507ec7e7a0784df4a3e2ea8162d261c59d23e7ab11c0f73c3b7eb0983950b3e2c4a08f843da95fb7fcb3f13456816b51b7824df2f9bd5613d4b4ed952fd858cd1b984acbf8ff1fd1a7c806d81ca8e4ae3b2c"
+    }
+  ]
+}

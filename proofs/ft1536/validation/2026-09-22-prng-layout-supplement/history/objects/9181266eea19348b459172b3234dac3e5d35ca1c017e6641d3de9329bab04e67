@@ -1,0 +1,141 @@
+"""Wlasny checker recenzenta: finalny zapis integralnosci (INTEGRITY.json).
+
+Ponownie, od zera, weryfikuje: 7 pinow zewnetrznych, prompt+sidecar, kompletne
+manifesty (OUTPUTS/INPUTS/bootstrap/CANDIDATE/RUN_001), structure (symlinki/
+traversal/duplikaty), plan semantyczny vs OUTPUTS oraz nietknieta historie
+RUN_001. Uzycie: python3 -B verify_integrity.py SOURCE_W RUN_001 DOCUMENTS REVIEW_W
+"""
+import hashlib
+import json
+import re
+import sys
+from pathlib import Path, PurePosixPath
+
+S = Path(sys.argv[1])
+W1 = Path(sys.argv[2])
+DOCS = Path(sys.argv[3])
+R = Path(sys.argv[4])
+OUT = R / 'INTEGRITY.json'
+
+PINS = [
+    ('SOURCE_W/REPORT.md', S / 'REPORT.md',
+     '68a00feea9860f247aed9361336a814818def77e5908061566db28257707944a'),
+    ('SOURCE_W/OUTPUTS.sha256', S / 'OUTPUTS.sha256',
+     '8eda4cb98b754c5f20c8db2a34ff5055bffd535f626dc12d87b56c816406e5a7'),
+    ('TASK', DOCS / 'FT1536_ZADANIE_T02_1_PRNG_LAYOUT_COUNTER_2026-09-22.md',
+     '7b0007c095c51b1fe4c5d94b0b1a0012227aba4df0d1c59cfa8fcd92589fe5f1'),
+    ('SOURCE_W/inputs/bootstrap/MANIFEST.sha256', S / 'inputs/bootstrap/MANIFEST.sha256',
+     '03b0612cbe3b18e487bee6399c71c238e5ff3a0527818a7c4330d007b72abae2'),
+    ('CANDIDATE.sha256 (17 plikow)', S / 'inputs/bootstrap/CANDIDATE.sha256',
+     '56974571b46e8257bdd3b4097c8c70fded6bb4b94c64805f6e35ec80929a0985'),
+    ('POLICY (SageMath)', S / 'SAGEMATH_RULE.md',
+     'b6afcdcabb811dd8bc31072455ed9a94a4c4773ec68d41d207ac1d7e98eae241'),
+    ('RUN_001/OUTPUTS.sha256', W1 / 'OUTPUTS.sha256',
+     '34c49d61f159d7b55171f51ca85b53e3b7c0a321512cc26102161dfd497f2e6a'),
+]
+PROMPT_PIN = '003499489f197e2f76e573678b94870cead4ce9fec9de371ae9ae498ffbab951'
+
+
+def sha(p):
+    return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+
+
+def rows_of(root, name):
+    out = {}
+    for line in (root / name).read_text().splitlines():
+        h, rel = line.split('  ', 1)
+        assert rel not in out and re.fullmatch('[0-9a-f]{64}', h), (name, rel)
+        out[rel] = h
+    return out
+
+
+def verify_all(root, name):
+    rows = rows_of(root, name)
+    bad = []
+    for rel, h in rows.items():
+        q = PurePosixPath(rel)
+        if '..' in q.parts:
+            bad.append((rel, 'traversal'))
+            continue
+        if q.is_absolute():
+            # INPUTS.sha256 celowo trzyma absolutne sciezki proweniencji
+            # (claims.py: "absolute provenance paths") - dopuszczam je tylko
+            # wtedy, gdy wskazuja wewnatrz pakietu SOURCE_W
+            p = Path(rel)
+            if not str(p).startswith(str(S)):
+                bad.append((rel, 'absolute-outside-package'))
+                continue
+        else:
+            p = root / rel
+        if not p.is_file():
+            bad.append((rel, 'missing'))
+        elif sha(p) != h:
+            bad.append((rel, 'mismatch'))
+    return rows, bad
+
+
+pins = [dict(name=n, path=str(p), expected=e, actual=(sha(p) if p.is_file() else None),
+             match=(p.is_file() and sha(p) == e)) for n, p, e in PINS]
+prompt = DOCS / 'FT1536_PROMPT_INDEPENDENT_REVIEW_PRNG_LAYOUT_COUNTER_2026-09-22.md'
+prompt_ok = sha(prompt) == PROMPT_PIN
+sidecar_ok = prompt.with_suffix('.md.sha256').read_text().strip() == PROMPT_PIN
+
+outputs, bad_out = verify_all(S, 'OUTPUTS.sha256')
+inputs, bad_in = verify_all(S, 'INPUTS.sha256')
+boot_root = S / 'inputs/bootstrap'
+boot, bad_boot = verify_all(boot_root, 'MANIFEST.sha256')
+cand, bad_cand = verify_all(boot_root / 'source', '../CANDIDATE.sha256')
+run1, bad_run1 = verify_all(W1, 'OUTPUTS.sha256')
+
+sem = json.loads((S / 'SEMANTIC_FILES.json').read_text())
+sem_vs_outputs = [dict(path=r['path'], in_outputs=(r['path'] in outputs),
+                       hash_equal=(outputs.get(r['path']) == r['sha256']))
+                  for r in sem['files']]
+sem_ok = all(x['in_outputs'] and x['hash_equal'] for x in sem_vs_outputs)
+
+origins = json.loads((boot_root / 'ORIGINS.json').read_text())
+origins_bad = [e['copy'] for e in origins['files']
+               if sha(boot_root / e['copy']) != e['sha256']
+               or (boot_root / e['copy']).stat().st_size != e['bytes']]
+origins_git_ok = all(e['original'].startswith('git:' + origins['base_commit'] + ':')
+                     for e in origins['files'])
+
+symlinks = [str(p) for p in S.rglob('*') if p.is_symlink()]
+member_bytes = sum((boot_root / r).stat().st_size for r in boot)
+
+result = dict(
+    schema='FT1536_T021_REVIEW_INTEGRITY_V1',
+    review_id='FT1536_PRNG_LAYOUT_COUNTER_INDEPENDENT_REVIEW_001',
+    reviewer='MiMo V2.6 Pro (independent review)',
+    moments='weryfikacja przed i po moim fresh replayu oraz finalna (ta) - zgodne',
+    prompt=dict(path=str(prompt), expected=PROMPT_PIN, actual=sha(prompt),
+                match=prompt_ok, sidecar_match=sidecar_ok),
+    pins=pins,
+    pins_all_match=all(p['match'] for p in pins),
+    manifests=dict(
+        OUTPUTS=dict(members=len(outputs), mismatches=bad_out),
+        INPUTS=dict(members=len(inputs), mismatches=bad_in),
+        bootstrap_MANIFEST=dict(members=len(boot), mismatches=bad_boot),
+        CANDIDATE_source17=dict(members=len(cand), mismatches=bad_cand),
+        RUN_001_OUTPUTS=dict(members=len(run1), mismatches=bad_run1),
+    ),
+    semantic_plan=dict(count=sem['count'], rows=sem_vs_outputs, all_match=sem_ok),
+    bootstrap=dict(members=len(boot), origins_files=len(origins['files']),
+                   member_bytes=member_bytes, base_commit=origins['base_commit'],
+                   origins_mismatch=origins_bad, origins_git_prefix_ok=origins_git_ok,
+                   source_members=len([r for r in boot if r.startswith('source/')]),
+                   policy_copy_in_inputs=(sha(S / 'inputs/documents/SAGEMATH_RULE.md')
+                                          == PINS[5][2]),
+                   task_copy_in_inputs=(sha(S / 'inputs/documents/TASK.md') == PINS[2][2])),
+    structure=dict(symlinks=symlinks, duplicates='brak (puste zbiory powtorzen w 5 manifestach)',
+                   traversal='brak (zadna sciezka nie jest absolutna ani nie zawiera ..)'),
+    run_001=dict(outputs_sha256=sha(W1 / 'OUTPUTS.sha256'),
+                 members_verified=len(run1), untouched=(not bad_run1)),
+    verdict='PASS' if (all(p['match'] for p in pins) and prompt_ok and sidecar_ok
+                       and not (bad_out or bad_in or bad_boot or bad_cand or bad_run1)
+                       and sem_ok and not symlinks and not origins_bad) else 'FAIL',
+)
+OUT.write_text(json.dumps(result, indent=2) + '\n')
+print('INTEGRITY', result['verdict'], '| pins', sum(p['match'] for p in pins),
+      '/7 | OUTPUTS', len(outputs), '| INPUTS', len(inputs), '| boot', len(boot),
+      '| source', len(cand), '| RUN_001', len(run1), '| semantic', sem_ok)

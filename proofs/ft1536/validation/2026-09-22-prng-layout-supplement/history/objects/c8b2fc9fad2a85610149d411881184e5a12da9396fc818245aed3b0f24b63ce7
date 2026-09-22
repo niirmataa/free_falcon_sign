@@ -1,0 +1,364 @@
+{
+  "schema": "FT1536_T021_REVIEW_NUMERIC_CHECKS_V1",
+  "reviewer": "MiMo V2.6 Pro (independent review, own .sage checker)",
+  "entry": "sage consumer_check.sage <T01/RESOURCE_BOUND.json> (standard preparser, exact ZZ)",
+  "domain": "ZZ exact; ^ = power (preparser kontrolny 2^10==1024); XOR zapisany ^^ (nie uzyto)",
+  "consumer": {
+    "r_max": "396",
+    "blocks_per_reached_context": "25408",
+    "additional_refills_limit": "6336",
+    "all_blocks": "6352",
+    "region_block_evaluations": "406528",
+    "requested_parent_SHAKE56_bytes": "896",
+    "with_nonce40_upper": "936"
+  },
+  "wrap_fixtures": {
+    "F4_IV_ASYM_CTR64M1": {
+      "cc0": "18446744073709551615",
+      "wrap_stages": [
+        "after_init"
+      ],
+      "stages": [
+        {
+          "stage": "after_init",
+          "cc_start": "18446744073709551615",
+          "cc_last": "62",
+          "wrap_in_stage": true,
+          "equals_last_lt_first": true
+        },
+        {
+          "stage": "after_refill1",
+          "cc_start": "63",
+          "cc_last": "126",
+          "wrap_in_stage": false,
+          "equals_last_lt_first": false
+        },
+        {
+          "stage": "after_refill2",
+          "cc_start": "127",
+          "cc_last": "190",
+          "wrap_in_stage": false,
+          "equals_last_lt_first": false
+        },
+        {
+          "post_counter_stage0": "63"
+        }
+      ],
+      "post_counter_stage0": "63"
+    },
+    "F5_IV_ASYM_CTR64M64": {
+      "cc0": "18446744073709551552",
+      "wrap_stages": [],
+      "stages": [
+        {
+          "stage": "after_init",
+          "cc_start": "18446744073709551552",
+          "cc_last": "18446744073709551615",
+          "wrap_in_stage": false,
+          "equals_last_lt_first": false
+        },
+        {
+          "stage": "after_refill1",
+          "cc_start": "0",
+          "cc_last": "63",
+          "wrap_in_stage": false,
+          "equals_last_lt_first": false
+        },
+        {
+          "stage": "after_refill2",
+          "cc_start": "64",
+          "cc_last": "127",
+          "wrap_in_stage": false,
+          "equals_last_lt_first": false
+        },
+        {
+          "post_counter_stage0": "0"
+        }
+      ],
+      "post_counter_stage0": "0"
+    },
+    "F6_IV_ASYM_CTR64M65": {
+      "cc0": "18446744073709551551",
+      "wrap_stages": [
+        "after_refill1"
+      ],
+      "stages": [
+        {
+          "stage": "after_init",
+          "cc_start": "18446744073709551551",
+          "cc_last": "18446744073709551614",
+          "wrap_in_stage": false,
+          "equals_last_lt_first": false
+        },
+        {
+          "stage": "after_refill1",
+          "cc_start": "18446744073709551615",
+          "cc_last": "62",
+          "wrap_in_stage": true,
+          "equals_last_lt_first": true
+        },
+        {
+          "stage": "after_refill2",
+          "cc_start": "63",
+          "cc_last": "126",
+          "wrap_in_stage": false,
+          "equals_last_lt_first": false
+        },
+        {
+          "post_counter_stage0": "18446744073709551615"
+        }
+      ],
+      "post_counter_stage0": "18446744073709551615"
+    }
+  },
+  "checks_count": 49,
+  "checks": [
+    {
+      "check": "consumer.r_max",
+      "status": "PASS",
+      "detail": "396"
+    },
+    {
+      "check": "consumer.blocks_per_reached_context",
+      "status": "PASS",
+      "detail": "25408"
+    },
+    {
+      "check": "consumer.additional_refills_limit",
+      "status": "PASS",
+      "detail": "6336"
+    },
+    {
+      "check": "consumer.all_blocks",
+      "status": "PASS",
+      "detail": "6352"
+    },
+    {
+      "check": "consumer.region_blocks",
+      "status": "PASS",
+      "detail": "406528"
+    },
+    {
+      "check": "consumer.shake56",
+      "status": "PASS",
+      "detail": "896"
+    },
+    {
+      "check": "consumer.shake56_with_nonce40",
+      "status": "PASS",
+      "detail": "936"
+    },
+    {
+      "check": "consumer.monotone_r0_396",
+      "status": "PASS",
+      "detail": "r = 0..396"
+    },
+    {
+      "check": "consumer.r_formula_matches_T01_bound",
+      "status": "PASS",
+      "detail": "T01 root_refill_bound"
+    },
+    {
+      "check": "t01.ghost_budget.abandoned_at_reinit_max",
+      "status": "PASS",
+      "detail": "61320"
+    },
+    {
+      "check": "t01.ghost_budget.additional_refills",
+      "status": "PASS",
+      "detail": "6336"
+    },
+    {
+      "check": "t01.ghost_budget.final_unused_tail_max",
+      "status": "PASS",
+      "detail": "4088"
+    },
+    {
+      "check": "t01.ghost_budget.generated_bytes",
+      "status": "PASS",
+      "detail": "26017792"
+    },
+    {
+      "check": "t01.ghost_budget.getter_drops",
+      "status": "PASS",
+      "detail": "57024"
+    },
+    {
+      "check": "t01.ghost_budget.initial_blocks",
+      "status": "PASS",
+      "detail": "16"
+    },
+    {
+      "check": "t01.ghost_budget.proposals",
+      "status": "PASS",
+      "detail": "786432"
+    },
+    {
+      "check": "t01.ghost_budget.reinit_abandonments",
+      "status": "PASS",
+      "detail": "15"
+    },
+    {
+      "check": "t01.ghost_budget.returned_bytes",
+      "status": "PASS",
+      "detail": "25952256"
+    },
+    {
+      "check": "t01.ghost_budget.source_SHAKE56_bytes",
+      "status": "PASS",
+      "detail": "896"
+    },
+    {
+      "check": "t01.ghost_budget.total_generated_blocks",
+      "status": "PASS",
+      "detail": "6352"
+    },
+    {
+      "check": "t01.consistency.additional",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "t01.consistency.all_blocks",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "t01.consistency.generated_bytes",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "t01.consistency.getter_drops",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "t01.consistency.abandoned_max",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "t01.consistency.final_tail_max",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "t01.consistency.returned",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "t01.consistency.shake56",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "t01.nonce40_outside_cut",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "t01.parent_M0_upper_936",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "t01.pr_Hc_stays_in_T01",
+      "status": "PASS",
+      "detail": "Pr(H^c) < 2^-1020 - dane T01, nie dowodzone tutaj"
+    },
+    {
+      "check": "qrefill.floor_mod_identity",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "qrefill.exhaustive",
+      "status": "PASS",
+      "detail": "q = 0..5000 + punkty graniczne: refills=floor(q/4096), ptr=q mod 4096"
+    },
+    {
+      "check": "wrap.F4_IV_ASYM_CTR64M1.after_init.equivalence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "wrap.F4_IV_ASYM_CTR64M1.after_refill1.equivalence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "wrap.F4_IV_ASYM_CTR64M1.after_refill2.equivalence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "wrap.F4_IV_ASYM_CTR64M1.flags",
+      "status": "PASS",
+      "detail": "['after_init']"
+    },
+    {
+      "check": "wrap.F5_IV_ASYM_CTR64M64.after_init.equivalence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "wrap.F5_IV_ASYM_CTR64M64.after_refill1.equivalence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "wrap.F5_IV_ASYM_CTR64M64.after_refill2.equivalence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "wrap.F5_IV_ASYM_CTR64M64.flags",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "wrap.F6_IV_ASYM_CTR64M65.after_init.equivalence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "wrap.F6_IV_ASYM_CTR64M65.after_refill1.equivalence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "wrap.F6_IV_ASYM_CTR64M65.after_refill2.equivalence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "wrap.F6_IV_ASYM_CTR64M65.flags",
+      "status": "PASS",
+      "detail": "['after_refill1']"
+    },
+    {
+      "check": "wrap.F5.ends_exactly_at_wrap",
+      "status": "PASS",
+      "detail": "F5: koniec dokladnie na 2^64-1, flaga wrapu [] - poprawnie"
+    },
+    {
+      "check": "wrap.F4.wraps_inside_stage0",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "wrap.F5.post_0",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "wrap.repeat_vs_wrap",
+      "status": "PASS",
+      "detail": "192 roznych licznikow na kontekst mimo wrapu (brak powtorzen)"
+    }
+  ],
+  "scope": "deterministyczny consumer odebranego eventu H T01; Pr(H^c)<2^-1020, dystrybucje, real->IID hop i security pozostaja poza zakresem (T02 OPEN)",
+  "verdict": "PASS"
+}

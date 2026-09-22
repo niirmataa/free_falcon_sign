@@ -106,7 +106,7 @@ ale hashe source/execution w review wymagają rozliczenia przed REVIEWED.
 |---|---|---|---|
 | **T01 REVIEWED — IID_RETRY_COMPOSITION** | Actual post-H2P region,reached entries,cap16,reset/fault/norm/codec w G_retry_IID | **PASS_SCOPED_REVIEW** innego modelu:492/492,WholeRegionBad≤2^-80,coupling,joint6352-block/26017792-byte budget z failure<2^-1020,STATIC≤3160; mixed proof. [REPORT](../../proofs/ft1536/stages/FT1536_IID_RETRY_COMPOSITION_RUN_001/REPORT.md),commit `a2cdf317` | F04–F09; [niezależny odbiór](../../proofs/ft1536/validation/2026-09-22-iid-retry-independent/README.md) |
 | **T02 OPEN — PRNG_REAL_TO_IID_BUFFER** | Dokładny root SHAKE32→stream i state56/ChaCha/refills/getters; skończone ghost budgets; T02.1 przygotowane | Jawne gry, resource-indexed assumptions i reduktory/hybrid losses; zachowana wspólna historia, init/discards/abandoned tails. Nie „448-bit security”; lokalne T02.1 nie domyka rodzica | T01 resources, F02,F07,F08 |
-| **T02.1 AT_REVIEW_PER_OWNER — PRNG_LAYOUT_COUNTER** | Właściciel potwierdził przekazanie do weryfikacji;frng.c init56/layout/refill/counter/resource contract | Oczekujemy na handoff/piny odbioru. B20/P03 konsumuje je wyłącznie po bindingu i formalizuje wymagany zakres kernelowo. [TASK/W](../../proofs/ft1536/CURRENT_SMALL_TASK.md) | T01 resources,F07,pinned source17; niezależne od S01/T03 |
+| **T02.1 REVIEWED_SCOPED — PRNG_LAYOUT_COUNTER** | RUN_003 suplement F1–F5 odebrany przez MiMo V2.6 Flash; replay17/17,checker13/13 | PASS_SCOPED_SUPPLEMENT; kernel28 obejmuje arytmetykę,pełny source refinement/rundy domyka B20/P03. Realne piny w STATUS B20. [Odbiór](../../proofs/ft1536/validation/2026-09-22-prng-layout-supplement/README.md) | T01 resources,F07,pinned source17; T02 parent OPEN |
 | **T03 REVIEWED — PARTIAL_PROOF / REFERENCE_INTEGER_RECOVERY** | [Odebrany REVIEW_002](../../proofs/ft1536/validation/2026-09-22-integer-recovery-review-002/README.md):MiMo2.6Pro autor,Muse Spark1.3 xhigh w świeżym kontekście recenzent wg właściciela;11/11,15s,3 finalne bindings zgodne | Odebrane A/reference+mapping/congruence,C-lemma,D conditional. **B≈6086.4≥1/2 nadal OPEN**,podobnie Safe16/center/norm/bytes i pełny recovery. Następny tranche B-gap wymaga osobnego TASK | F03–F09; T01 do rozszerzenia na retries |
 | **T04 PLANNED — PREFIX_AND_API_BINDING** | Pominięty przez T01 prefix: context/loader/rng_ready/nonce/H2P, usługi E i actual source outcomes | Dokładny zasięg definedness/termination/abort, legal ReadyRetryEntry z API i joint randomness interfaces. Brak ukrytego all-success lub IID premise | F02–F05,T01; T02 dla real-law claims |
 | **T05 PLANNED — GLOBAL_REFERENCE_GEOMETRY** | Actual parameters/tree/rounding oraz wybrane ordered reference law | Most do zadeklarowanego ideal coset Gaussian, z błędami/geometrią/secret dependence; Q_S/Q_stop nie stają się nim przez nazwę | F08,F09,T03; historyczny FULL_GEOMETRY |
@@ -125,9 +125,9 @@ o mały niezależny fragment dla kolejnego modelu. Pełny T02 game/hybrid pozost
 OPEN; jego dalszy TASK skonsumuje odebrany lokalny kontrakt. T03 zwrócono jako
 PARTIAL_PROOF i odebrano przez REVIEW_002. Właściciel doprecyzował role:
 MiMo autor,Muse xhigh recenzent w świeżym kontekście. B-gap pozostaje kolejnym
-otwartym tranche; oczekujemy też na handoff T02.1 zgłoszony jako gotowy.
+otwartym tranche; końcowy handoff/odbiór suplementu T02.1 już przyjęto zakresowo.
 T03 i S01 mają osobne W/zlecenia. Żaden model nie jest uruchamiany automatycznie.
-Aktualizacja: T02.1 jest już u recenzenta. B20_001 dokumentuje następne20+20
+Aktualizacja: T02.1/RUN_003 ma PASS_SCOPED_SUPPLEMENT. B20_001 dokumentuje następne20+20
 według tabeli powyżej; P01 jest gotowy do przydziału/bootstrapu,a pozostałe
 role czekają na wymagane konkretne exports. Workflow po doprecyzowaniu właściciela:
 work → review → zaakceptowane stages → lokalny commit main jako niirmataa;

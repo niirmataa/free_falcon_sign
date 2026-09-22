@@ -1,0 +1,45 @@
+# COMMANDS.log — FT1536_PRNG_LAYOUT_COUNTER_INDEPENDENT_REVIEW_001
+# recenzent: MiMo V2.6 Pro (xiaomi-token-plan-ams/mimo-v2.6-pro, thinking)
+# rola: niezalezny weryfikator, recznie uruchomiony przez wlasciciela
+# subagenty: NIE UZYTO (regula wlasciciela: tylko ten sam model + ten sam effort;
+#   rownowaznosci dla subagentow nie da sie potwierdzic - zatem zero subagentow)
+# zasady: bez systemowego /tmp/tmpfs, bez Git/push/publikacji, bez sieci/instalacji,
+#   bez dudect/KeyGen/sekretow/pelnego Sign; SOURCE_W i RUN_001 wylacznie do odczytu
+# format: [kolejnosc] argv | exit | wynik | surowe logi
+# pelne surowe logi/receipts: REVIEW_W/logs/, receipts w REPLAY_RESULT.json
+
+[01] ls REVIEW_W; ps aux (szukaj replay/sage/lean/frng) | 0 | REVIEW_W nie istnieje (brak 2. odbioru), brak aktywnych jobow | -
+[02] mkdir -p REVIEW_W/{home,tmp,cache,bin,logs,replay,artifacts,checkers,scripts,seed,formal} | 0 | utworzono REVIEW_W | -
+[03] sha256sum REPORT.md OUTPUTS.sha256 inputs/bootstrap/MANIFEST.sha256 inputs/bootstrap/CANDIDATE.sha256 SAGEMATH_RULE.md inputs/documents/SAGEMATH_RULE.md documents/TASK RUN_001/OUTPUTS.sha256 | 0 | 7/7 pinow zgodne z §2 | -
+[04] sha256sum -c OUTPUTS.sha256 (cwd=SOURCE_W) | 0 | 142/142 DOBRZE | logs/verify_OUTPUTS.sha256_before.txt
+[05] sha256sum -c INPUTS.sha256 (cwd=SOURCE_W) | 0 | 61/61 DOBRZE | logs/verify_INPUTS.sha256_before.txt
+[06] sha256sum -c MANIFEST.sha256 (cwd=inputs/bootstrap) | 0 | 39/39 DOBRZE | logs/verify_MANIFEST.sha256_before.txt
+[07] sha256sum -c ../CANDIDATE.sha256 (cwd=inputs/bootstrap/source) | 0 | 17/17 DOBRZE | logs/verify_CANDIDATE.sha256_before.txt
+[08] sha256sum -c OUTPUTS.sha256 (cwd=RUN_001) | 0 | 153/153 DOBRZE (RUN_001 nietkniece) | logs/verify_RUN001_OUTPUTS.txt
+[09] find (symlinki) + awk (traversal/duplikaty w 5 manifestach) | 0 | brak symlinkow/traversal/duplikatow | -
+[10] python3 -B (ORIGINS.json: liczba plikow/BASE/bajty) | 0 | 37 origins, BASE c90233c1..., 5750423 B bootstrap | -
+[11] sha256sum scripts/*.py (przed) + cp RO do REVIEW_W/scripts/author_ro | 0 | 16 skryptow, RO-kopie | logs/scripts_sha_before.txt
+[12] python3 -B SOURCE_W/scripts/replay.py REVIEW_W/seed/tmp/independent_001 8eda4cb9... | 0 | FRESH_REPLAY_PASS 17/17, 28.9 s | logs/fresh_replay.{stdout,stderr,meta.txt}, logs/receipt_INDEPENDENT_001_REPLAY_RESULT.json
+[13] python3 -B checkers/verify_replay.py SOURCE_W DEST | 0 | PASS: 17/17 bajtowo identycznych, SEMANTIC_FILES rowne | checkers/REPLAY_CHECKS.json
+[14] ponowne piny + OUTPUTS (142/142) + skrypty (16/16) po replayu | 0 | zgodne, SOURCE_W niezmieniony | logs/verify_OUTPUTS_after.txt, logs/scripts_sha_after_check.txt
+[15] FA1* lean -j1 -M2048 --root=formal formal/CounterLayout.lean (zly cwd) | 1 | no such file or directory | (stderr nadpisany - FAILED_ATTEMPTS.md FA1)
+[16] lean (kopia nieskazona, cwd=REVIEW_W) | 0 | stdout IDENTYCZNY z sealed, stderr 0 B | logs/lean_pristine_copy.{stdout,stderr}
+[17] lean formal/CounterLayoutAudit.lean (28 x #print axioms) | 0 | 23x [propext,Quot.sound], 4x [propext], 1x brak; stderr 0 B | logs/lean_axiom_audit.{stdout,stderr}
+[18] c99 -W -Wall -O (normal) / -O1 -g -fsanitize=address,undefined -fno-sanitize-recover=all / -O -DFALCON_LE_U=0 | 0 0 0 | 3 czyste buildy (0 B stderr) | logs/build_*.stdout/.stderr
+[19] FA2 bash literowka `2> < /dev/null` w bloku altbranch | 2 | blok przerwany; buildy+normal+sanitized z bloku zachowane | FAILED_ATTEMPTS.md FA2
+[20] run normal (ulimit -c 0 -v 8388608) | 0 | IDENTYCZNIE z artifacts/harness_dump.json | logs/run_normal.stdout
+[21] run normal powtorka | 0 | determinizm TAK (stdout rowne) | logs/run_normal2.stdout
+[22] run sanitized (ASAN_OPTIONS=abort_on_error=1:detect_leaks=0:allocator_may_return_null=1 UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1) | 0 | IDENTYCZNIE z harness_dump_sanitized.json, stderr 0 B | logs/run_sanitized.*
+[23] run altbranch | 0 | IDENTYCZNIE z harness_dump_altbranch.json | logs/run_altbranch.*
+[24] cmp -l run_normal run_altbranch | 0 | 1 rozniacych sie bajt: poz.141 = 61/60 okt = '1'/'0' (tag falcon_le_u); pola semantyczne identyczne | -
+[25] FA3 KAT przez xxd (brak narzedzia) | 1 | fałszywe NIE; powtorzone pythonem | FAILED_ATTEMPTS.md FA3
+[26] python3 -B: openssl enc -chacha20 dla 5 wektorow kat_vectors.json | 0 | 5/5 moj OpenSSL == sealed | -
+[27] python3 -B: literaly RFC 8439 2.3.2 + classic all-zero vs moj OpenSSL | 0 | TAK/TAK; literaly == gen_kat.py == kat_vectors.json | -
+[28] sage checkers/consumer_check.sage <T01/RESOURCE_BOUND.json> | 0 | NUMERIC_CHECKS PASS 49 checks (396/25408/6336/6352/406528/896/936; F5 flaga []) | logs/sage_consumer_check.*, checkers/NUMERIC_CHECKS.json
+[29] FA4-6* sage checkers/trap_scan.sage (3 poprawki mojego skanera) | 1 1 | assertiony: ^^ bez lookbehind; heurystyk bool(); ^= w stringu | logs/sage_trap_scan.stderr (ostatni), FAILED_ATTEMPTS.md FA4-6
+[30] sage checkers/trap_scan.sage (po poprawkach) | 0 | TRAP_CHECKS PASS 9 checks | logs/sage_trap_scan.stdout, checkers/TRAP_CHECKS.json
+[31] FA7* python3 -B checkers/verify_integrity.py (v1: false traversal na INPUTS) | 0 | INTEGRITY FAIL - moj blad walidacji | FAILED_ATTEMPTS.md FA7
+[32] python3 -B checkers/verify_integrity.py (v2) | 0 | INTEGRITY PASS: 7/7 pinow, 142/61/39/17/153, semantic<->OUTPUTS | INTEGRITY.json
+[33] sha256sum (REVIEW_OUTPUTS.sha256) + finalne piny SOURCE_W | 0 | patrz REVIEW.md / REVIEW_RESULT.json | REVIEW_OUTPUTS.sha256
+
+# koniec wlasnych obliczen; joby zakonczone; owner_accepted=false

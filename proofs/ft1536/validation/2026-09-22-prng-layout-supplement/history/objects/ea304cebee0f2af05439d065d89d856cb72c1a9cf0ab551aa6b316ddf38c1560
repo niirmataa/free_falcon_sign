@@ -1,0 +1,45 @@
+# FAILED_ATTEMPTS — moje nieudane przebiegi (REVIEW_001)
+
+Zgodnie z §5/§7 promptu zachowuję własne ślepe próby. Uwaga techniczna:
+surowe stderr'y przebiegów oznaczonych * zostaly nadpisane kolejnymi
+przebiegami w plikach `logs/sage_trap_scan.stderr` / `logs/lean_pristine_copy.stderr`
+(ta sama nazwa logu). Komunikaty i wnioski sa zapisane ponizej (z transcriptu
+wlasciwych przebiegow). Pozostale surowe logi (`logs/*`) sa kompletnie.
+
+## FA1* — Lean bez ustawionego cwd (exit 1)
+`$ lean -j1 -M2048 --root=formal formal/CounterLayout.lean` wywolane z katalogu
+glownego sesji zamiast REVIEW_W. stderr: `no such file or directory (error code: 2)
+file: formal/CounterLayout.lean`. Powtorzone z cwd=REVIEW_W — PASS.
+
+## FA2 — literówka w składni bash (exit 2)
+`( ulimit ...; ./bin/prng-harness-altbranch ... ) > ../logs/run_altbranch.stdout
+2> < /dev/null` — `błąd składni przy nieoczekiwanym znaczniku '<'`. Blok
+przerwany przed altbranchem; dokończony w osobnym przebiegu (altbranch
+IDENTYCZNIE z sealed). Wcześniejsze buildy/runy z tego bloku zachowane.
+
+## FA3 — KAT przez `xxd` (narzędzie nieobecne)
+`head -c 64 /dev/zero | openssl enc -chacha20 ... | xxd -p` — `xxd: nie
+znaleziono polecenia` + `bad encrypt`/Broken pipe w OpenSSL (zamknięte stdout).
+Porównanie literałów przez ten tor wyszło fałszywie `NIE`. Powtórzone czystym
+pythonem: oba literały == mój OpenSSL (TAK/TAK).
+
+## FA4* — trap_scan.sage: regex bez lookbehind (assertion)
+`(?!\^)` łapał drugi znak `^^`. AssertionError: `trap1.no_c_style_xor.prng_checker.sage`
+z 8 trafieniami na `^^`. Naprawa: `(?<!\^)\^(?!\^)`.
+
+## FA5* — trap_scan.sage: heurystyk wymagał `bool(` (assertion)
+`trap2.json_wrapped.prng_checker.sage` — checker sensownie nie używa `bool(`.
+Naprawa: trap2 zastąpione testem mechanicznym (scisle parsowanie JSON-ów
+artefaktow + obecnosc wrapperow int()/str()).
+
+## FA6* — trap_scan.sage: `^=` w literale tekstowym (assertion)
+`trap1.no_c_style_xor.prng_model.sage`, linia 356 (opis C w stringu layoutu).
+Naprawa: pomijanie literałów stringów przed skanem.
+
+## FA7* — verify_integrity.py: false 'traversal' na INPUTS
+INPUTS.sha256 celowo trzyma absolutne sciezki proweniencji (claims.py:
+"absolute provenance paths"); pierwsza wersja checkera uznawala je za traversal.
+Naprawa: sciezki absolutne dopuszczone tylko wewnatrz pakietu SOURCE_W.
+Wynik po naprawie: INTEGRITY PASS.
+
+Zadna z tych prób nie zmieniła SOURCE_W ani RUN_001 (wylacznie zapisy pod REVIEW_W).

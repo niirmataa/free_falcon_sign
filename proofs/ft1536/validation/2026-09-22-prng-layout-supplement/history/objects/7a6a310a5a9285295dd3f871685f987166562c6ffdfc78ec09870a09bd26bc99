@@ -1,0 +1,160 @@
+"""Wlasny checker recenzenta FT1536_PRNG_LAYOUT_COUNTER_INDEPENDENT_REVIEW_001.
+
+NieZALEZNE przeliczenie consumera T02.1 w dokladnym ZZ (zgodnie z zasada
+SageMath: wejscie `sage consumer_check.sage`, standard preparser):
+  * r_max = floor((33*49152-8)/4087), 25408, 406528, 896, 936;
+  * spojnosc z odebranym ghost budget T01 (czytany z pinned
+    inputs/bootstrap/T01/RESOURCE_BOUND.json - wartosci sa DANYMI T01,
+    Pr(H^c)<2^-1020 pozostaje w T01 i nie jest tu dowodzone);
+  * q-refill: refills=floor(q/4096), ptr=q mod 4096;
+  * flagi wrapu fixture'ow: wrap wewnatrz stage (F4/F6) vs koniec na wrapie
+    (F5, flaga [] - poprawnie).
+
+Dyscyplina preparsera: `^` to potega (kontrola ponizej), XOR tylko `^^`;
+wartosci do JSON wylacznie przez int()/str()/bool. Wynik: NUMERIC_CHECKS.json.
+
+Uzycie: sage consumer_check.sage SCIEZKA_DO_T01_RESOURCE_BOUND_JSON
+"""
+import json
+import sys
+from pathlib import Path
+
+assert parent(1) is ZZ
+assert parent(1 / 3) is QQ
+assert 2^10 == 1024          # preparser: ^ jest potega (nie XOR)
+
+t01_path = Path(sys.argv[1])
+out_path = Path('.').absolute() / 'NUMERIC_CHECKS.json'
+checks = []
+
+
+def check(name, ok, detail=''):
+    assert ok, (name, detail)
+    checks.append(dict(check=str(name), status='PASS', detail=str(detail)))
+
+
+# ---------------------------------------------------------- consumer (ZZ)
+T_MAX = ZZ(49152)
+J_MAX = ZZ(16)
+r_max = (ZZ(33) * T_MAX - ZZ(8)) // ZZ(4087)
+check('consumer.r_max', r_max == ZZ(396), str(r_max))
+blocks_per_context = ZZ(64) * (ZZ(1) + r_max)
+check('consumer.blocks_per_reached_context', blocks_per_context == ZZ(25408), str(blocks_per_context))
+additional = J_MAX * r_max
+check('consumer.additional_refills_limit', additional == ZZ(6336), str(additional))
+all_blocks = J_MAX + additional
+check('consumer.all_blocks', all_blocks == ZZ(6352), str(all_blocks))
+region_blocks = ZZ(64) * all_blocks
+check('consumer.region_blocks', region_blocks == ZZ(406528), str(region_blocks))
+shake56 = ZZ(56) * J_MAX
+check('consumer.shake56', shake56 == ZZ(896), str(shake56))
+check('consumer.shake56_with_nonce40', shake56 + ZZ(40) == ZZ(936), str(shake56 + ZZ(40)))
+check('consumer.monotone_r0_396',
+      all(ZZ(64) * (ZZ(1) + r) <= blocks_per_context for r in range(0, 397)), 'r = 0..396')
+check('consumer.r_formula_matches_T01_bound',
+      'floor((33T_j-8)/4087)' in json.loads(t01_path.read_text())['root_refill_bound'],
+      'T01 root_refill_bound')
+
+# ------------------------------------------- ghost budget T01 (dane odebrane)
+gb = json.loads(t01_path.read_text())['ghost_budget']
+expect = dict(proposals=ZZ(786432), returned_bytes=ZZ(25952256),
+              additional_refills=ZZ(6336), initial_blocks=ZZ(16),
+              total_generated_blocks=ZZ(6352), generated_bytes=ZZ(26017792),
+              getter_drops=ZZ(57024), reinit_abandonments=ZZ(15),
+              abandoned_at_reinit_max=ZZ(61320), final_unused_tail_max=ZZ(4088),
+              source_SHAKE56_bytes=ZZ(896))
+for k in sorted(expect):
+    check('t01.ghost_budget.' + k, ZZ(gb[k]) == expect[k], str(gb[k]))
+check('t01.consistency.additional', ZZ(gb['additional_refills']) == additional)
+check('t01.consistency.all_blocks', ZZ(gb['total_generated_blocks']) == all_blocks)
+check('t01.consistency.generated_bytes', ZZ(gb['generated_bytes']) == all_blocks * ZZ(4096))
+check('t01.consistency.getter_drops', ZZ(gb['getter_drops']) == ZZ(9) * additional)
+check('t01.consistency.abandoned_max', ZZ(gb['abandoned_at_reinit_max']) == ZZ(gb['reinit_abandonments']) * ZZ(4088))
+check('t01.consistency.final_tail_max', ZZ(gb['final_unused_tail_max']) == ZZ(4096) - ZZ(8))
+check('t01.consistency.returned', ZZ(gb['returned_bytes']) == ZZ(33) * ZZ(gb['proposals']))
+check('t01.consistency.shake56', ZZ(gb['source_SHAKE56_bytes']) == shake56)
+t01_json = json.loads(t01_path.read_text())
+check('t01.nonce40_outside_cut', t01_json['nonce40_outside_cut'] is True)
+check('t01.parent_M0_upper_936', ZZ(t01_json['parent_M0_SHAKE_bytes_with_nonce_upper']) == ZZ(936))
+check('t01.pr_Hc_stays_in_T01', t01_json['region_tail_power2'] == '2^-1020',
+      'Pr(H^c) < 2^-1020 - dane T01, nie dowodzone tutaj')
+
+# ------------------------------------------------------------- q-refill rule
+def stream(q):
+    ptr = ZZ(0)
+    refills = ZZ(0)
+    for _ in range(q):
+        ptr += ZZ(1)
+        if ptr == ZZ(4096):
+            refills += ZZ(1)
+            ptr = ZZ(0)
+    return refills, ptr
+
+for q in list(range(0, 5001)) + [8191, 8192, 8193, 20000, 25408, 25409, 40960]:
+    r, p = stream(q)
+    assert r == ZZ(q) // ZZ(4096) and p == ZZ(q) % ZZ(4096), q
+check('qrefill.floor_mod_identity', ZZ(25408) // ZZ(4096) * ZZ(4096) + ZZ(25408) % ZZ(4096) == ZZ(25408))
+check('qrefill.exhaustive', True, 'q = 0..5000 + punkty graniczne: refills=floor(q/4096), ptr=q mod 4096')
+
+# ------------------------------------------- flagi wrapu: F4/F5/F6 (fixture)
+MOD64 = ZZ(2)^ZZ(64)
+names = ['after_init', 'after_refill1', 'after_refill2']
+fixtures_wrap = dict(
+    F4_IV_ASYM_CTR64M1=MOD64 - ZZ(1),
+    F5_IV_ASYM_CTR64M64=MOD64 - ZZ(64),
+    F6_IV_ASYM_CTR64M65=MOD64 - ZZ(65),
+)
+expected_wrap = dict(F4_IV_ASYM_CTR64M1=['after_init'],
+                     F5_IV_ASYM_CTR64M64=[],
+                     F6_IV_ASYM_CTR64M65=['after_refill1'])
+wrap_out = {}
+for fid in sorted(fixtures_wrap):
+    cc0 = fixtures_wrap[fid]
+    flags = []
+    rows = []
+    for s in range(3):
+        start = (cc0 + ZZ(64) * ZZ(s)) % MOD64
+        last = (cc0 + ZZ(64) * ZZ(s) + ZZ(63)) % MOD64
+        wrap = (start + ZZ(63) >= MOD64)
+        if wrap:
+            flags.append(names[s])
+        rows.append(dict(stage=str(names[s]), cc_start=str(start), cc_last=str(last),
+                         wrap_in_stage=bool(wrap),
+                         equals_last_lt_first=bool(last < start)))
+        check('wrap.%s.%s.equivalence' % (fid, names[s]), wrap == (last < start))
+    check('wrap.%s.flags' % fid, flags == expected_wrap[fid], str(flags))
+    post0 = (cc0 + ZZ(64)) % MOD64
+    rows.append(dict(post_counter_stage0=str(post0)))
+    wrap_out[fid] = dict(cc0=str(cc0), wrap_stages=flags, stages=rows, post_counter_stage0=str(post0))
+
+check('wrap.F5.ends_exactly_at_wrap', wrap_out['F5_IV_ASYM_CTR64M64']['stages'][0]['cc_last'] == str(MOD64 - ZZ(1))
+      and wrap_out['F5_IV_ASYM_CTR64M64']['wrap_stages'] == [],
+      'F5: koniec dokladnie na 2^64-1, flaga wrapu [] - poprawnie')
+check('wrap.F4.wraps_inside_stage0', wrap_out['F4_IV_ASYM_CTR64M1']['post_counter_stage0'] == '63')
+check('wrap.F5.post_0', wrap_out['F5_IV_ASYM_CTR64M64']['post_counter_stage0'] == '0')
+check('wrap.repeat_vs_wrap',
+      all(len(set([(ZZ(cc0) + ZZ(k)) % MOD64 for k in range(192)])) == 192
+          for cc0 in fixtures_wrap.values()),
+      '192 roznych licznikow na kontekst mimo wrapu (brak powtorzen)')
+
+result = dict(
+    schema='FT1536_T021_REVIEW_NUMERIC_CHECKS_V1',
+    reviewer='MiMo V2.6 Pro (independent review, own .sage checker)',
+    entry='sage consumer_check.sage <T01/RESOURCE_BOUND.json> (standard preparser, exact ZZ)',
+    domain='ZZ exact; ^ = power (preparser kontrolny 2^10==1024); XOR zapisany ^^ (nie uzyto)',
+    consumer=dict(r_max=str(r_max), blocks_per_reached_context=str(blocks_per_context),
+                  additional_refills_limit=str(additional), all_blocks=str(all_blocks),
+                  region_block_evaluations=str(region_blocks),
+                  requested_parent_SHAKE56_bytes=str(shake56),
+                  with_nonce40_upper=str(shake56 + ZZ(40))),
+    wrap_fixtures=wrap_out,
+    checks_count=int(len(checks)),
+    checks=checks,
+    scope='deterministyczny consumer odebranego eventu H T01; Pr(H^c)<2^-1020, dystrybucje, '
+          'real->IID hop i security pozostaja poza zakresem (T02 OPEN)',
+    verdict='PASS',
+)
+out_path.write_text(json.dumps(result, indent=2) + '\n')
+print('NUMERIC_CHECKS PASS:', int(len(checks)), 'checks')
+print('consumer:', result['consumer'])
+print('wrap:', {k: v['wrap_stages'] for k, v in sorted(wrap_out.items())})

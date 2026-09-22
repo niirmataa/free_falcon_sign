@@ -16,7 +16,10 @@ S01:116/116 plików,rdzeń R1/R5 poprawiony i liczby potwierdzone; pozostaje
 Finalnego scoped PASS nie wydano. S06/E1:13 finite β i8 no-crossing do capu,
 niezależny Sage/MPFI potwierdza tabelę; E2–E5 nadal w toku.
 Po nim przygotowano na jego prośbę małe T02.1 dla kolejnego ręcznie wybranego modelu.
-Najnowszy odbiór: **T03 REVIEWED — PARTIAL_PROOF**,na podstawie REVIEW_002
+Najnowszy odbiór: **T02.1 RUN_003 REVIEWED / PASS_SCOPED_SUPPLEMENT** —
+MiMo V2.6 Flash,świeży kontekst; piny/48 plików review i141 autora zgodne,
+replay recenzenta17/17,525.24s. Szczegóły w sekcji T02.1 poniżej.
+Wcześniejszy odbiór: **T03 REVIEWED — PARTIAL_PROOF**,na podstawie REVIEW_002
 z PASS_SCOPED_REVIEW. Autor MiMo2.6Pro; recenzent Muse Spark1.3 xhigh w świeżym
 kontekście według doprecyzowania właściciela.78 plików i3 finalne bindings
 zgodne; replay recenzenta11/11,15s. Historia rozbieżności REVIEW_001 zachowana.
@@ -26,14 +29,14 @@ run estymatora S06/RUN_001 —70 zapisanych komórek NTRU,bez finalnego freeze.
 **Aktualna decyzja wykonawcza:** właściciel polecił temu prowadzącemu
 osobiście ocenić S01 i S06. Oba odbiory zakończono z **CHANGES_REQUIRED**,
 recenzent GPT-6 Astra; S06 obejmuje częściowy snapshot,nie pełne120 komórek. Właściciel
-przekazał REVIEW_002 T03; oczekujemy jeszcze na zapowiedziany handoff T02.1.
+przekazał REVIEW_002 T03 oraz końcowy odbiór suplementu T02.1.
 To jawny wyjątek od wcześniejszego podziału ról,bez delegacji/relay.
 Historyczne obserwacje procesów/dudect poniżej pochodzą z około04:33 CEST.
 Stan procesów jest ulotny: sprawdź go ponownie przed pracą. Ten dokument
 aktualizujemy po odbiorze etapu, zmianie wykonawcy lub decyzji właściciela.
 
 Główna kolejka zadań i kryteria: [ROADMAP](ROADMAP.md).
-Astra: **T01 REVIEWED**, pełny **T02 OPEN**, podzadanie **T02.1 AT_REVIEW_PER_OWNER**;
+Astra: **T01 REVIEWED**, pełny **T02 OPEN**, podzadanie **T02.1 REVIEWED_SCOPED**;
 osobny MiMo = **T03 REVIEWED / PARTIAL_PROOF, B-gap OPEN**,
 poprawki Family = **S01 CHANGES_REQUIRED**, dudect = **S02**,
 estymator = **S06 CHANGES_REQUIRED / PARTIAL_DIAGNOSTIC**, oryginalny run w pauzie.
@@ -49,9 +52,9 @@ estymator = **S06 CHANGES_REQUIRED / PARTIAL_DIAGNOSTIC**, oryginalny run w pauz
   dotychczasowy workflow — work → review → zaakceptowane stages → lokalny
   commit main jako niirmataa; bez nowych gałęzi/worktrees i obowiązkowych CP.**
   P01 zaczyna od formalnego/toolchain bootstrapu; pozostałe
-  role czekają na konkretne proved exports/frozen pins. T02.1 już jest u
-  recenzenta; P03 ma jawny pending binding jego handoffu. Matematyki B20 nie
-  uruchomiono. [Wymagania](BATCH_20_REQUIREMENTS.md) zabezpieczają ciągłość po
+  role czekają na konkretne proved exports/frozen pins. Odebrany handoff T02.1
+  ma realne piny w żywym STATUS B20; P03 nadal potrzebuje P01/P02 i własnej
+  kernelizacji. Właściciel zapowiedział start P01. [Wymagania](BATCH_20_REQUIREMENTS.md) zabezpieczają ciągłość po
   zmianie modelu/limitu. Aktualny manifest rewizji2:
   [PACKAGE.sha256](../../proofs/ft1536/batches/B20_001/PACKAGE.sha256).
 - Nowy obowiązkowy standard rachunku: **pliki `.sage`, uruchomienie
@@ -161,24 +164,28 @@ odbioru jest późniejsze doprecyzowanie właściciela i zgodny nowy binding.
   (20110 różnych słów/60384 wykonania). Niewygodne wyniki/uwagi zachowane.
   B-gap fix jest następnym proponowanym tranche; niczego nowego nie uruchomiono.
 
-## Małe T02.1 — przekazane do weryfikacji przez właściciela
+## T02.1 — REVIEWED / PASS_SCOPED_SUPPLEMENT
 
-Nowszy handoff: **RUN_003 / SUPPLEMENT_AWAITING_REVIEW**,F1–F5 po uwagach do
-RUN_002. Piny REPORT3b7c2b3b…/OUTPUTSe37b1e97… i141/141 plików sprawdzone.
-[Zlecenie krótkiego odbioru](../../proofs/ft1536/CURRENT_SMALL_REVIEW_TASK.md)
-ma odrębny W. Prowadzący nie wykonywał replayu. Zakres pozostaje historycznie
-mieszany (Lean28 dla arytmetyki,część C/rund poza kernelem); pełny standard
-Lean4+Mathlib/Sage i formalny source binding realizuje B20/P03.
+[RUN_003 w stages](../../proofs/ft1536/stages/FT1536_PRNG_LAYOUT_COUNTER_RUN_003/REPORT.md)
+oraz [archiwum odbioru](../../proofs/ft1536/validation/2026-09-22-prng-layout-supplement/README.md).
+Recenzent MiMo V2.6 Flash w świeżym kontekście potwierdził F1–F5 po RUN_002.
+Autor141/141 i61 inputs; review48/48 i46 inputs. Własny replay recenzenta17/17,
+exit0,525.24s; checker Sage13/13. Prowadzący sprawdził piny,17 trójstronnych
+matches i2 Sage source/receipt/log bindings,bez ponownego proofu/replayu.
 
-[CURRENT_SMALL_TASK](../../proofs/ft1536/CURRENT_SMALL_TASK.md) wskazuje
-`FT1536_PRNG_LAYOUT_COUNTER_RUN_001`,39 przypiętych wejść i nowy W.
-Cel: source-bound deterministic init56,ChaCha block/refill4096,counter/frame
-i przeliczenie odebranego T01 resource envelope. Bez assumed IID init bytes
-lub dowodzenia kryptografii całego SHAKE/ChaCha hopu. T02 pozostaje OPEN.
-Zadanie jest niezależne od S01/T03 i ma własnego jednego wykonawcę wybranego
-przez właściciela; prowadzący przygotował pliki, nie uruchomił modelu.
-Właściciel potwierdził przekazanie T02.1 do recenzenta. Czekamy na wynik
-z zewnętrznymi pinami; nie startujemy ponownie autora lub drugiej weryfikacji.
+REPORT `3b7c2b3bbc7f0b72b3a25d3f2cb32623294f1135acb61d8c65b905eefe1a6168`;
+OUTPUTS `e37b1e97ebcfa65d698c52e175c09e826cdbafe565722cc017b5349c00d3f5dc`;
+REVIEW `31a7353d052bb36e422672de7e60e429932fe10a5733a9906a3de95f5b61f24b`;
+REVIEW_OUTPUTS `344520eeee07b089a8a611942fec2646fdbd27665121ee37cda41e11485e4f30`.
+
+Odebrany zakres historyczny: init/layout/counter/resource model,Lean28 dla
+arytmetyki,Sage/C controls; 396/25408/406528/896/936 i maxima61320/4088.
+**kernel_complete=false,B20_P03_formalization_required=true.** Rundy ChaCha,
+frame source refinement i uniwersalność pętli wymagają pełnej formalizacji.
+T02 parent/real PRNG→IID/security nadal OPEN. B20/P03 ma dostępny zewnętrzny
+handoff w STATUS,ale pozostaje zależny od odebranych P01/P02.
+Historie RUN_001/RUN_002 i review210 plików zachowane; resztki R1–R3 i opis
+failed attempts pozostają jawne. Zakończonych workerów nie wznawiaj.
 
 ### Incydent dwóch wykonawców
 

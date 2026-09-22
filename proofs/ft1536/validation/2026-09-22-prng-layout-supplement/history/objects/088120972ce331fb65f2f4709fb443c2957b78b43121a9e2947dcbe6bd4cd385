@@ -1,0 +1,301 @@
+{
+  "schema": "PRNG_T021_MODEL_RESULT_V1",
+  "tag": "INDEPENDENT_SAGE_MODEL",
+  "launcher": "sage prng_model.sage (standard preparser entry)",
+  "domain": {
+    "preflight": [
+      "parent(1) is ZZ",
+      "parent(1/3) is QQ",
+      "2^10 == 1024"
+    ],
+    "arithmetic": "exact integer arithmetic with explicit 2^32/2^64 masks; ZZ used for the resource and counter inequalities; no float/RDF anywhere",
+    "semantics": "literal Word32/XOR/shift/modulo operations as in source/frng.c"
+  },
+  "layout": {
+    "stream_bytes": 56,
+    "key_bytes": "offsets 0..31 -> state words 0..7 (little-endian Word32)",
+    "iv_bytes": "offsets 32..47 -> state words 8..11",
+    "counter_field": "offsets 48..55 -> little-endian Word64 initial counter cc0",
+    "refill_saved_words": "state[4..13] = stream words 0..9; state[14] = stream word 10 (offsets 40..43); state[15] = stream word 11 (offsets 44..47)",
+    "counter_xor_lanes": "state[14] ^= cc mod 2^32 and state[15] ^= floor(cc/2^32): offsets 40..47, i.e. the LAST 8 bytes of the 16-byte IV field, not offsets 32..39",
+    "counter_field_after_refill": "state.d[48..55] = (cc0+64) mod 2^64 little-endian; state.d[0..47] unchanged",
+    "comment_discrepancy": "frng.c:198 says the counter is XORed into the first 8 bytes of the IV; the instruction stream XORs state[14]/state[15] = offsets 40..47. Preserved as a finding; no source change.",
+    "type_dispatch": "type 0 -> PRNG_CHACHA20 (1); type 1 accepted; every other int returns 0 before any write and before the 56-byte extract",
+    "call_order": "shake_extract(56 bytes) -> p->type = type -> initial falcon_prng_refill -> p->ptr = 0 -> return type",
+    "frame": "init writes state.d[0..55]; refill writes buf.d[0..4095], state.d[48..55], ptr=0; state.d[56..255] never written",
+    "alignment": "buf/state unions carry uint64_t dummy members (8-byte alignment); the uint32/uint64 casts in frng.c are therefore aligned",
+    "alternate_branch": "LE-host scope (pinned x86_64 LP64 model): with FALCON_LE_U=0 the same 56 bytes are re-decoded into the same word values and the counter is rebuilt as the same Word64, so on a little-endian host every compared output byte equals the FALCON_LE_U=1 build (verified: harness dumps differ only in the falcon_le_u tag byte). Cross-host portability is analytical, not tested here: the FALCON_LE_U=0 build additionally yields the portable LE stream on any host, while the FALCON_LE_U=1 build (raw memcpy init/output, native u64 counter read-back) is little-endian-host-only by design and diverges on big-endian hardware. Running the second branch on this LE host is not a big-endian hardware test (TASK section 3)."
+  },
+  "kat": {
+    "oracle": "OpenSSL 3.5.7 9 Jun 2026 (Library: OpenSSL 3.5.7 9 Jun 2026)",
+    "vectors": 5,
+    "all_match": true,
+    "details": [
+      {
+        "id": "V_CTR0",
+        "counter": 0,
+        "blocks": 1,
+        "match": true,
+        "keystream_sha256": "09d4e2d1ccd62104af1f17328d768cebf88921a573aadf428061a2207ff3926e"
+      },
+      {
+        "id": "V_CTR1",
+        "counter": 1,
+        "blocks": 1,
+        "match": true,
+        "keystream_sha256": "c77ed898301e57815e68f8ca5a2e78bc9b021b7ac9a7cf300a7a3b19a34bb29e"
+      },
+      {
+        "id": "V_CTR2",
+        "counter": 2,
+        "blocks": 1,
+        "match": true,
+        "keystream_sha256": "1fdde0173125c83eb7834b949363ba88a21666024beb6d3a9f809ac2a802b60e"
+      },
+      {
+        "id": "V_ZERO_ALL",
+        "counter": 0,
+        "blocks": 1,
+        "match": true,
+        "keystream_sha256": "29adad25af52c72ae3ed97fcbc4b8561bf0281b40d3c7fc3cdaded3f7cc424e9"
+      },
+      {
+        "id": "V_MULTI4",
+        "counter": 0,
+        "blocks": 4,
+        "match": true,
+        "keystream_sha256": "ec79b7a536038d2e8602bb95c785efe8f3a8a762c676a98cd20ab28af4824f10"
+      }
+    ],
+    "rfc8439_2_3_2_match": true,
+    "classic_all_zero_match": true,
+    "scope": "validates the shared Word32 core arithmetic, not the Falcon layout"
+  },
+  "counter": {
+    "rows": [
+      {
+        "fixture": "F0_ALLZERO",
+        "cc0": "0",
+        "count": 192,
+        "distinct": 192,
+        "wrap_stages": [],
+        "counters_all_distinct": true
+      },
+      {
+        "fixture": "F1_ASCENDING",
+        "cc0": "3978425819141910832",
+        "count": 192,
+        "distinct": 192,
+        "wrap_stages": [],
+        "counters_all_distinct": true
+      },
+      {
+        "fixture": "F2_IV_ASYM_CTR0",
+        "cc0": "0",
+        "count": 192,
+        "distinct": 192,
+        "wrap_stages": [],
+        "counters_all_distinct": true
+      },
+      {
+        "fixture": "F3_IV_ASYM_CTR32M1",
+        "cc0": "4294967295",
+        "count": 192,
+        "distinct": 192,
+        "wrap_stages": [],
+        "counters_all_distinct": true
+      },
+      {
+        "fixture": "F4_IV_ASYM_CTR64M1",
+        "cc0": "18446744073709551615",
+        "count": 192,
+        "distinct": 192,
+        "wrap_stages": [
+          "after_init"
+        ],
+        "counters_all_distinct": true
+      },
+      {
+        "fixture": "F5_IV_ASYM_CTR64M64",
+        "cc0": "18446744073709551552",
+        "count": 192,
+        "distinct": 192,
+        "wrap_stages": [],
+        "counters_all_distinct": true
+      },
+      {
+        "fixture": "F6_IV_ASYM_CTR64M65",
+        "cc0": "18446744073709551551",
+        "count": 192,
+        "distinct": 192,
+        "wrap_stages": [
+          "after_refill1"
+        ],
+        "counters_all_distinct": true
+      }
+    ],
+    "blocks_per_refill": 64,
+    "blocks_total": 1344,
+    "wrap_crossings": {
+      "F0_ALLZERO": 0,
+      "F1_ASCENDING": 0,
+      "F2_IV_ASYM_CTR0": 0,
+      "F3_IV_ASYM_CTR32M1": 0,
+      "F4_IV_ASYM_CTR64M1": 1,
+      "F5_IV_ASYM_CTR64M64": 1,
+      "F6_IV_ASYM_CTR64M65": 1
+    },
+    "wrapped_fixtures": [
+      "F4_IV_ASYM_CTR64M1",
+      "F5_IV_ASYM_CTR64M64",
+      "F6_IV_ASYM_CTR64M65"
+    ],
+    "same_fixture_distinct": "all 192 counters of every fixture are pairwise distinct (asserted)",
+    "elementary_lemma": "for one fixed context the live counter takes cc0, cc0+1, ..., cc0+N-1 modulo 2^64 over N <= 2^64 consecutive blocks; for 0 <= i < j < N the difference is j-i with 0 < j-i < 2^64, so no value repeats even when the range wraps; a full state repeats only after a complete 2^64 block cycle",
+    "wrap_vs_repeat": "wrap means the counter passes 2^64; it is not a repetition: the entries stay distinct (asserted) and each wrapped fixture crosses exactly once in the covered 192 blocks",
+    "cross_context": "different contexts may share cc0 (F0_ALLZERO and F2_IV_ASYM_CTR0 both 0) and then produce different buffers; the deterministic identical-init example is a limitation of the future game, not a statistical attack or an Emitted witness"
+  },
+  "q_refill": {
+    "checks": [
+      {
+        "bytes_requested": 0,
+        "refills": 0,
+        "ptr": 0,
+        "block_evaluations": 0
+      },
+      {
+        "bytes_requested": 1,
+        "refills": 0,
+        "ptr": 1,
+        "block_evaluations": 0
+      },
+      {
+        "bytes_requested": 4095,
+        "refills": 0,
+        "ptr": 4095,
+        "block_evaluations": 0
+      },
+      {
+        "bytes_requested": 4096,
+        "refills": 1,
+        "ptr": 0,
+        "block_evaluations": 64
+      },
+      {
+        "bytes_requested": 4097,
+        "refills": 1,
+        "ptr": 1,
+        "block_evaluations": 64
+      },
+      {
+        "bytes_requested": 8192,
+        "refills": 2,
+        "ptr": 0,
+        "block_evaluations": 128
+      },
+      {
+        "bytes_requested": 25408,
+        "refills": 6,
+        "ptr": 832,
+        "block_evaluations": 384
+      }
+    ],
+    "exhaustive_range": "0..20000 exact",
+    "formula": "refills = floor(q/4096), ptr = q mod 4096, block evaluations = 64*floor(q/4096), dropped bytes = 0",
+    "scope": "corollary of the received getter rules (IID/BYTE_SCHEDULE internal.h:856-866), not a new schedule; u64 getter drops stay covered by T01 D_j and are not re-derived"
+  },
+  "resources": {
+    "event_H": "every reached context has T_j <= 49152 and r_j <= 396 ADDITIONAL refills, J <= 16",
+    "r_max": "396",
+    "blocks_per_reached_context": "25408",
+    "additional_refills_limit": "6336",
+    "region_block_evaluations": "406528",
+    "requested_parent_SHAKE56_bytes": "896",
+    "with_nonce40_upper": "936",
+    "received_T01": {
+      "proposals": "786432",
+      "returned_bytes": "25952256",
+      "initial_blocks": "16",
+      "additional_blocks": "6336",
+      "all_blocks": "6352",
+      "generated_bytes": "26017792",
+      "getter_drops": "57024",
+      "reinit_abandonments": "15",
+      "abandoned_bytes": "61320",
+      "final_unused_bytes": "4088",
+      "source_SHAKE56_bytes": "896"
+    },
+    "consistency_checks": "all equalities above asserted in ZZ; derived quantities are deterministic implications of the received event, and Pr(H^c) < 2^-1020 stays T01 data (not moved to the real PRNG here)"
+  },
+  "examples": {
+    "identical_init56_identical_buffers": true,
+    "identical_init56_note": "a fresh instance with the same 56 public bytes reproduces the identical 4096-byte buffer and post state (asserted in the model; the harness runs the same control on the original C)",
+    "same_cc0_different_context": "F0_ALLZERO and F2_IV_ASYM_CTR0 share cc0 = 0 and differ from offset 0; the counter value alone does not determine the keystream"
+  },
+  "mutations": "artifacts/mutations.json",
+  "mutations_summary": [
+    {
+      "id": "counter_lanes_state12_13",
+      "verdict": "KILLED",
+      "equivalent_on": []
+    },
+    {
+      "id": "xor_to_add",
+      "verdict": "KILLED",
+      "equivalent_on": [
+        "F0_ALLZERO"
+      ]
+    },
+    {
+      "id": "counter32",
+      "verdict": "KILLED",
+      "equivalent_on": [
+        "F0_ALLZERO",
+        "F2_IV_ASYM_CTR0"
+      ]
+    },
+    {
+      "id": "skip_initial_refill",
+      "verdict": "KILLED",
+      "equivalent_on": []
+    },
+    {
+      "id": "feed_forward_original_words",
+      "verdict": "KILLED",
+      "equivalent_on": []
+    },
+    {
+      "id": "serialize_be",
+      "verdict": "KILLED",
+      "equivalent_on": []
+    },
+    {
+      "id": "noop_bytewise_le",
+      "verdict": "NO_OP",
+      "equivalent_on": [
+        "F0_ALLZERO",
+        "F1_ASCENDING",
+        "F2_IV_ASYM_CTR0",
+        "F3_IV_ASYM_CTR32M1",
+        "F4_IV_ASYM_CTR64M1",
+        "F5_IV_ASYM_CTR64M64",
+        "F6_IV_ASYM_CTR64M65"
+      ]
+    },
+    {
+      "id": "noop_feedforward_order",
+      "verdict": "NO_OP",
+      "equivalent_on": [
+        "F0_ALLZERO",
+        "F1_ASCENDING",
+        "F2_IV_ASYM_CTR0",
+        "F3_IV_ASYM_CTR32M1",
+        "F4_IV_ASYM_CTR64M1",
+        "F5_IV_ASYM_CTR64M64",
+        "F6_IV_ASYM_CTR64M65"
+      ]
+    }
+  ],
+  "model_dump_sha256": "8177447f744e68bc90c2a82652579566c574d3ba5354581272d8fe2acc464f88",
+  "scope": "deterministic layout/block/counter contract for the pinned source model; SHAKE/ChaCha output distribution, security and the real->IID hop remain OPEN (T02)"
+}

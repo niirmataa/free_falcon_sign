@@ -1,0 +1,116 @@
+{
+ "schema": "FT1536_T021_REVIEW_INTEGRITY_V1",
+ "review_id": "FT1536_PRNG_LAYOUT_COUNTER_SUPPLEMENT_REVIEW_001",
+ "checked_stages": [
+  "przed replayem",
+  "po replayu",
+  "finalnie (biezacy odczyt)"
+ ],
+ "external_pins": {
+  "prompt": {
+   "sha256": "f861be76aae60774ee54e3fb747f4815092405d269d3e8d758649287e63aaca3",
+   "expected": "f861be76aae60774ee54e3fb747f4815092405d269d3e8d758649287e63aaca3"
+  },
+  "source_report": {
+   "sha256": "3b7c2b3bbc7f0b72b3a25d3f2cb32623294f1135acb61d8c65b905eefe1a6168",
+   "expected": "3b7c2b3bbc7f0b72b3a25d3f2cb32623294f1135acb61d8c65b905eefe1a6168"
+  },
+  "source_outputs": {
+   "sha256": "e37b1e97ebcfa65d698c52e175c09e826cdbafe565722cc017b5349c00d3f5dc",
+   "expected": "e37b1e97ebcfa65d698c52e175c09e826cdbafe565722cc017b5349c00d3f5dc"
+  },
+  "task": {
+   "sha256": "7b0007c095c51b1fe4c5d94b0b1a0012227aba4df0d1c59cfa8fcd92589fe5f1",
+   "expected": "7b0007c095c51b1fe4c5d94b0b1a0012227aba4df0d1c59cfa8fcd92589fe5f1"
+  },
+  "bootstrap_manifest": {
+   "sha256": "03b0612cbe3b18e487bee6399c71c238e5ff3a0527818a7c4330d007b72abae2",
+   "expected": "03b0612cbe3b18e487bee6399c71c238e5ff3a0527818a7c4330d007b72abae2"
+  },
+  "candidate_source17": {
+   "sha256": "56974571b46e8257bdd3b4097c8c70fded6bb4b94c64805f6e35ec80929a0985",
+   "expected": "56974571b46e8257bdd3b4097c8c70fded6bb4b94c64805f6e35ec80929a0985"
+  },
+  "sage_policy": {
+   "sha256": "b6afcdcabb811dd8bc31072455ed9a94a4c4773ec68d41d207ac1d7e98eae241",
+   "expected": "b6afcdcabb811dd8bc31072455ed9a94a4c4773ec68d41d207ac1d7e98eae241"
+  },
+  "run001_outputs": {
+   "sha256": "34c49d61f159d7b55171f51ca85b53e3b7c0a321512cc26102161dfd497f2e6a",
+   "expected": "34c49d61f159d7b55171f51ca85b53e3b7c0a321512cc26102161dfd497f2e6a"
+  },
+  "run002_outputs": {
+   "sha256": "8eda4cb98b754c5f20c8db2a34ff5055bffd535f626dc12d87b56c816406e5a7",
+   "expected": "8eda4cb98b754c5f20c8db2a34ff5055bffd535f626dc12d87b56c816406e5a7"
+  },
+  "prior_review": {
+   "sha256": "2e9630e595ce95898ad1fb595e8f88bf734297f205090b91490e80328d68ed2c",
+   "expected": "2e9630e595ce95898ad1fb595e8f88bf734297f205090b91490e80328d68ed2c"
+  },
+  "prior_review_outputs": {
+   "sha256": "907586d4e86eeeede8a64f8a8100cbb84d2bd879ffc70cabb7295f7856f77f78",
+   "expected": "907586d4e86eeeede8a64f8a8100cbb84d2bd879ffc70cabb7295f7856f77f78"
+  }
+ },
+ "member_checks": {
+  "source_w_outputs": {
+   "ok": 141,
+   "fail": 0,
+   "manifest": "OUTPUTS.sha256"
+  },
+  "source_w_inputs": {
+   "ok": 61,
+   "fail": 0,
+   "manifest": "INPUTS.sha256"
+  },
+  "run001_outputs": {
+   "ok": 153,
+   "fail": 0,
+   "manifest": "OUTPUTS.sha256"
+  },
+  "run002_outputs": {
+   "ok": 142,
+   "fail": 0,
+   "manifest": "OUTPUTS.sha256"
+  },
+  "prior_review_outputs": {
+   "ok": 210,
+   "fail": 0,
+   "manifest": "REVIEW_OUTPUTS.sha256"
+  },
+  "my_copy_outputs": {
+   "ok": 141,
+   "fail": 0,
+   "manifest": "OUTPUTS.sha256"
+  },
+  "bootstrap_members": {
+   "ok": 39,
+   "fail": 0,
+   "manifest": "inputs/bootstrap/MANIFEST.sha256",
+   "fresh_log": "logs/bootstrap_manifest_check.log"
+  },
+  "candidate_source17": {
+   "ok": 17,
+   "fail": 0,
+   "manifest": "inputs/bootstrap/CANDIDATE.sha256",
+   "cwd": "SOURCE_W/source",
+   "fresh_log": "logs/candidate_source17_check.log"
+  },
+  "review_inputs_manifest": {
+   "ok": 46,
+   "fail": 0,
+   "manifest": "REVIEW_W/INPUTS.sha256",
+   "fresh_log": "logs/review_inputs_check.log"
+  }
+ },
+ "copy_checks": {
+  "input_closure_in_copy": {
+   "ok": 61,
+   "fail": 0,
+   "note": "wiersze INPUTS sa absolutne (proweniencja SOURCE_W); kopia sprawdzona rowniez mapperem relatywnym:61/61"
+  }
+ },
+ "source_w_untouched_after_replay": true,
+ "stray_writes": "brak: zadne zapisy poza REVIEW_W; /tmp_x nigdy nie powstal (brak uprawnien); probe .sage pod W/checkers usuniete",
+ "final_observation": "SOURCE_W REPORT/OUTPUTS po replayu: 3b7c2b3bbc7f / e37b1e97ebcf (zgodne z pinami); kopia wlasna przed i po replayu: 141/141/0 fail i 141/141/0 fail; SHA skryptow/formal/model/harness/source/inputs BEFORE==AFTER identyczne (logs/before|after_replay_inputs_sha256.txt); swiez\u043e ponowienie na finalnym etapie: bootstrap 39/39 DOBRZE, CANDIDATE 17/17 DOBRZE, REVIEW INPUTS 46/46 DOBRZE; piny przeliczone od nowa z plikow (zgodne z external_pins)"
+}

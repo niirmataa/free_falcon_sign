@@ -1,0 +1,36 @@
+# T02.1 — kontynuacja kernelowa Lean (RUN_002)
+
+Autor projektu Niirmata; zachowaj Falcon Project / Thomas Pornin i licencje.
+Jeden model wybrany i uruchomiony przez właściciela. Osobny W,bez subagentów/relay.
+REPO=/home/footfalcon/free_falcon_sign
+W=/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_PRNG_LAYOUT_COUNTER_RUN_002
+TASK=/home/footfalcon/free_falcon_sign/proofs/ft1536/documents/FT1536_ZADANIE_T02_1_PRNG_LAYOUT_COUNTER_2026-09-22.md
+TASK SHA=7b0007c095c51b1fe4c5d94b0b1a0012227aba4df0d1c59cfa8fcd92589fe5f1
+BASE=c90233c171265e050930958fb29bafa9338f81ff
+IN=W/inputs/bootstrap
+MANIFEST SHA=03b0612cbe3b18e487bee6399c71c238e5ff3a0527818a7c4330d007b72abae2
+Poprzednik: ../FT1536_PRNG_LAYOUT_COUNTER_RUN_001 (FROZEN, OUTPUTS
+34c49d61f159d7b55171f51ca85b53e3b7c0a321512cc26102161dfd497f2e6a).
+Ten W dobudowuje kernel Lean 4 (licznik + layout + zasoby) na jego miejsce;
+RUN_001 nietknięty. Decyzja właściciela: forma kernelowa zamiast mieszanej.
+
+Zakres Lean (kernel, core-only, bez Mathlib): sekwencje licznika mod 2^64
+(brak powtórzeń, post counter, wrap vs repeat), mapa layout56/dispatch/ramka
+jako definicje z lematami, consumer zasobów i q-refill w Nat.
+Rundy ChaCha Word32 pozostają w Sage exact + wiązaniu C (pełna
+kernelizacja bloku poza zakresem; jawna granica w SOURCE_MODEL_BINDING.md).
+Lean4.34,j1/-M2048,clean logs/types/terms/axioms,bez sorry/admit/
+native_decide/Lean.ofReduceBool/aksjomatu celu/suppression.
+
+Zapisy,HOME/TMPDIR/cache/olean/bin/logs/replaye tylko pod W,zakaz systemowego
+/tmp,/tmp/opencode/tmpfs. Network-off,input RO,bounded single-worker,normal8GiB,
+ASan osobno z shadow. Bez sieci/instalacji/Git/push,subagentów,relay,dudect.
+Nie zmieniaj źródeł, frozen RUN_001 ani cudzych W. Standard scripts/replay.py
+ABSENT_DEST EXTERNAL_OUTPUTS_SHA,fresh project build,pełny manifest przed DEST,
+sealed fresh_replay.json i child REPLAY_RESULT.json.
+
+Rachunek: `sage model.sage` dla arytmetyki + `lean formal/CounterLayout.lean`
+dla kernela; `.py` tylko organizacja (hashe/manifesty/logi/replay).
+Status docelowy bez zmian: PRNG_LAYOUT_COUNTER_PROVED_FOR_PINNED_SOURCE_MODEL,
+teraz z granicą kernelową; flagi jak w RUN_001. Odbiór wykonuje później inny
+niezależny model właściciela.

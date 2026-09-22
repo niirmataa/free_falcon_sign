@@ -1,0 +1,92 @@
+# CHECKLIST — FT1536_PRNG_LAYOUT_COUNTER_INDEPENDENT_REVIEW_001
+
+Legenda: ✓ potwierdzone własnym przebiegiem; ✗ rozbieżność (patrz findings);
+(–) świadome poza zakresem.
+
+## §1 Identyfikacja i role
+- ✓ REVIEW_ID zgodne; SOURCE_W tylko do odczytu (nietknięty po odbiorze — §13).
+- ✓ Wszystkie zapisy, HOME/TMPDIR/TMP/TEMP/DOT_SAGE/XDG_CACHE_HOME/cache/bin/logi
+  i replay pod REVIEW_W; systemowy /tmp, /tmp/opencode i tmpfs nieużywane.
+- ✓ Jeden recenzent, jeden job naraz; bez relay/drugiej sesji; bez Git, push,
+  publikacji, dudect, KeyGen/sekretów, pełnego Sign, sieci/instalacji.
+- ✓ Brak subagentów (reguła właściciela: tylko ten sam model + ten sam effort;
+  nie dało się tego potwierdzić dla subagentów → zero subagentów).
+- ✓ Przed startem: REVIEW_W nie istniał, brak drugiego odbioru, brak jobów.
+
+## §2 Piny zewnętrzne (7/7, przed i po moim replayu + finalnie)
+- ✓ REPORT `68a00fee…`, OUTPUTS `8eda4cb9…`, TASK `7b0007c0…`,
+  MANIFEST `03b0612c…`, CANDIDATE `56974571…`, POLICY `b6afcdca…`
+  (3 kopie identyczne: W/SAGEMATH_RULE.md, inputs/documents/, documents/),
+  RUN_001/OUTPUTS `34c49d61…`. Prompt+sidecar `00349948…` ✓.
+
+## §3 Tezy-deklaracje vs fakty
+- ✓ kernel Lean 28 twierdzeń (policzone), aksjomaty [propext, Quot.sound],
+  core-only, czyste logi;
+- ✓ Sage exact + wiązanie C byte-identical (7 fixtures × 3 stages = 21),
+  405 checks / 105 pól (policzone), KAT 5/5, mutacje 6 KILLED + 2 NO_OP,
+  3 buildy C (normal / ASan+UBSan / altbranch);
+- ✓ finding frng.c:198 (komentarz vs instrukcje) — prawdziwy i zachowany;
+- ✓ T02 jako całość OPEN; real→IID hop/security/dystrybucje poza zakresem.
+
+## §4 Integralność
+- ✓ OUTPUTS 142/142 członków; INPUTS 61/61 (w tym kopia POLICY
+  `inputs/documents/SAGEMATH_RULE.md` i TASK); bootstrap 39/39 (5 750 423 B,
+  37 ORIGINS z BASE `c90233c1…`), source17 17/17;
+- ✓ brak symlinków / traversal / duplikatów / mismatchów (INPUTS: absolutne
+  ścieżki proweniencji — celowe, zawierają się w pakiecie);
+- ✓ SEMANTIC_FILES.json (17) ↔ OUTPUTS: pełne pokrycie, te same hashe;
+- ✓ RUN_001: OUTPUTS `34c49d61…` + 153/153 członków zweryfikowane — nietknięty,
+  nie recenzowany.
+
+## §5 Mój fresh replay
+- ✓ własny seed/absent DEST pod REVIEW_W (`seed/tmp/independent_001`),
+  pełny manifest + zewnętrzny SHA PRZED tworzeniem DEST (w skrypcie i u mnie);
+- ✓ bwrap network-off, SOURCE_W i obce drzewa ukryte, świeży cache/build,
+  bounded single-worker (RLIMIT_CPU 2400, -j1, timeout);
+- ✓ `python3 -B scripts/replay.py ABSENT_DEST 8eda4cb9…` → FRESH_REPLAY_PASS
+  17/17, exit 0, 28.9 s; receipt w DEST + kopia w REVIEW_W/logs;
+- ✓ 17 plików semantycznych odtworzonych i porównanych bajtowo MOIM checkerem
+  (verify_replay.py) — 17/17 identyczne, niezależnie od PASS runnera;
+- ✓ exit/czas/stdout/stderr/argv/wersje/SHA skryptów zapisane; failed attempts
+  zachowane (FAILED_ATTEMPTS.md).
+
+## §6 Odbiór matematyczny
+- ✓ Kernel: 28 thm (`^theorem `), typy/termy przez kernel Lean 4.34, brak
+  sorry/admit/native_decide/Lean.ofReduceBool/aksjomatu celu/supresji;
+  `#print axioms` WSZYSTKICH 28 (mój audyt): 23 × [propext, Quot.sound],
+  4 × [propext], 1 × brak aksjomatów (refill_post = rfl); bez Classical.choice
+  (FAILED_ROUTES §8 — split wrapu na dwie implikacje potwierdzony);
+- ✓ Rundy ChaCha SĄ poza kernelem i granica jest jawna (SOURCE_MODEL_BINDING
+  „Poza kernelem (celowo): 20 rund ChaCha…"); uwaga F2 do doprecyzowania „frame".
+- ✓ Pułapki Sage (przegląd kodu + mój trap_scan.sage): brak C-stylowego `^`
+  w roli XOR (XOR = `^^` w 17+8 miejscach), int()/str() przy każdym wyjściu
+  JSON (mój test: 6 artefaktów parsuje się ściśle, same skalary), rederywacje
+  licznika redukują start mod 2^64 (prng_checker.sage:211 z komentarzem o bugu).
+- ✓ Wiązanie C: 3 przebudowane harnessy u mnie (czyste stderr), dump normal =
+  sealed, sanitized = sealed, altbranch = sealed; całe buf4096/state256 +
+  ptr/type/counter + canaries/poison + stub_calls==1, len 56 + typy
+  {0,1,2,3,−1,99,2^20} + determinizm + type0==type1 — 405 checks policzone;
+  1-bajtowa różnica stdout normal-vs-altbranch wyjaśniona: poz. 141 = `'1'`/`'0'`
+  = tag `falcon_le_u`, pola semantyczne identyczne.
+- ✓ KAT/fixtures: mój OpenSSL CLI = 5/5 wektorów + oba literały
+  (RFC 8439 §2.3.2, classic all-zero); fixtures = publiczne stałe (stub SHAKE),
+  nie losowość; mutacje 6 meaningful KILLED z klasami (counter32 ≡ [F0,F2],
+  xor_to_add ≡ [F0]) + 2 NO_OP czyste 7/7.
+- ✓ Consumer (mój consumer_check.sage, exact ZZ, `sage file.sage`):
+  r_max 396, 25408, 406528, 896/936, monotoniczność r=0..396, q-refill
+  (0..5000 + punkty), spójność z ghost budget T01 11/11 z pinned
+  T01/RESOURCE_BOUND.json; Pr(H^c)<2^-1020 zostaje w T01;
+  wrap wewnątrz stage (F4 `['after_init']`, F6 `['after_refill1']`) vs koniec
+  na wrapie (F5 `[]` — poprawnie).
+- ✓ Zakazy awansu: nigdzie 56 B ≠ „klucz 448-bit", small block count ≠
+  pseudorandomness, determinizm ≠ atak (przeciwnie: jawne „limitation of the
+  future game"); brak tez o real→IID hop, security, całym Sign, T02;
+  wszystkie flagi awansu = false.
+
+## §7 Artefakty
+- ✓ REVIEW.md, REVIEW_RESULT.json, CHECKLIST.md, INTEGRITY.json,
+  REPLAY_CHECKS.json, NUMERIC_CHECKS.json, TRAP_CHECKS.json,
+  checkers/{verify_replay.py, verify_integrity.py, consumer_check.sage,
+  trap_scan.sage}, COMMANDS.log, FAILED_ATTEMPTS.md, pełne logi/receipts,
+  REVIEW_OUTPUTS.sha256 (bez cache/olean/bin/sekretów).
+- ✓ subclaim→evidence związany w REVIEW.md; findings i failed routes zachowane.

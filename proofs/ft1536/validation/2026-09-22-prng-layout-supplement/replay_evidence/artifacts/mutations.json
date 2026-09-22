@@ -1,0 +1,653 @@
+{
+  "schema": "PRNG_T021_MUTATIONS_V1",
+  "reference": "artifacts/model_dump.json (source-faithful model); the checker compares it byte-for-byte against the pinned C harness, so a mutant differing from the reference also differs from the C outputs",
+  "count": 8,
+  "mutations": [
+    {
+      "id": "counter_lanes_state12_13",
+      "kind": "MEANINGFUL",
+      "description": "XOR the 64-bit counter into state[12]/state[13] instead of the source lanes state[14]/state[15]; feed-forward unchanged.",
+      "expected": "KILLED",
+      "verdict": "KILLED",
+      "killed_by": [
+        "F0_ALLZERO",
+        "F1_ASCENDING",
+        "F2_IV_ASYM_CTR0",
+        "F3_IV_ASYM_CTR32M1",
+        "F4_IV_ASYM_CTR64M1",
+        "F5_IV_ASYM_CTR64M64",
+        "F6_IV_ASYM_CTR64M65"
+      ],
+      "equivalent_on": [],
+      "per_fixture": [
+        {
+          "fixture": "F0_ALLZERO",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 64,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F1_ASCENDING",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 0,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F2_IV_ASYM_CTR0",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 64,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F3_IV_ASYM_CTR32M1",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 0,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F4_IV_ASYM_CTR64M1",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 0,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F5_IV_ASYM_CTR64M64",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 0,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F6_IV_ASYM_CTR64M65",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 0,
+            "stage": "after_init"
+          }
+        }
+      ]
+    },
+    {
+      "id": "xor_to_add",
+      "kind": "MEANINGFUL",
+      "description": "Add the counter halves into state[14]/state[15] modulo 2^32 instead of the source XOR.",
+      "expected": "KILLED",
+      "verdict": "KILLED",
+      "killed_by": [
+        "F1_ASCENDING",
+        "F2_IV_ASYM_CTR0",
+        "F3_IV_ASYM_CTR32M1",
+        "F4_IV_ASYM_CTR64M1",
+        "F5_IV_ASYM_CTR64M64",
+        "F6_IV_ASYM_CTR64M65"
+      ],
+      "equivalent_on": [
+        "F0_ALLZERO"
+      ],
+      "per_fixture": [
+        {
+          "fixture": "F0_ALLZERO",
+          "differs": false,
+          "equal": true,
+          "first_difference": null
+        },
+        {
+          "fixture": "F1_ASCENDING",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 0,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F2_IV_ASYM_CTR0",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 257,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F3_IV_ASYM_CTR32M1",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 0,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F4_IV_ASYM_CTR64M1",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 0,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F5_IV_ASYM_CTR64M64",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 0,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F6_IV_ASYM_CTR64M65",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 0,
+            "stage": "after_init"
+          }
+        }
+      ]
+    },
+    {
+      "id": "counter32",
+      "kind": "MEANINGFUL",
+      "description": "32-bit counter: state[14] receives only the low half, state[15] stays untouched, feed-forward drops the high-word XOR, counter advances modulo 2^32.",
+      "expected": "KILLED_WITH_LOW_COUNTER_EQUIVALENCE",
+      "verdict": "KILLED",
+      "killed_by": [
+        "F1_ASCENDING",
+        "F3_IV_ASYM_CTR32M1",
+        "F4_IV_ASYM_CTR64M1",
+        "F5_IV_ASYM_CTR64M64",
+        "F6_IV_ASYM_CTR64M65"
+      ],
+      "equivalent_on": [
+        "F0_ALLZERO",
+        "F2_IV_ASYM_CTR0"
+      ],
+      "per_fixture": [
+        {
+          "fixture": "F0_ALLZERO",
+          "differs": false,
+          "equal": true,
+          "first_difference": null
+        },
+        {
+          "fixture": "F1_ASCENDING",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "state_hex",
+            "first_diff_offset": 52,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F2_IV_ASYM_CTR0",
+          "differs": false,
+          "equal": true,
+          "first_difference": null
+        },
+        {
+          "fixture": "F3_IV_ASYM_CTR32M1",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "state_hex",
+            "first_diff_offset": 52,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F4_IV_ASYM_CTR64M1",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 0,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F5_IV_ASYM_CTR64M64",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 0,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F6_IV_ASYM_CTR64M65",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "state_hex",
+            "first_diff_offset": 52,
+            "stage": "after_init"
+          }
+        }
+      ]
+    },
+    {
+      "id": "skip_initial_refill",
+      "kind": "MEANINGFUL",
+      "description": "falcon_prng_init returns after the 56-byte extract without the initial refill: buffer and pointer untouched, counter unadvanced.",
+      "expected": "KILLED",
+      "verdict": "KILLED",
+      "killed_by": [
+        "F0_ALLZERO",
+        "F1_ASCENDING",
+        "F2_IV_ASYM_CTR0",
+        "F3_IV_ASYM_CTR32M1",
+        "F4_IV_ASYM_CTR64M1",
+        "F5_IV_ASYM_CTR64M64",
+        "F6_IV_ASYM_CTR64M65"
+      ],
+      "equivalent_on": [],
+      "per_fixture": [
+        {
+          "fixture": "F0_ALLZERO",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "state_hex",
+            "first_diff_offset": 48,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F1_ASCENDING",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "state_hex",
+            "first_diff_offset": 48,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F2_IV_ASYM_CTR0",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "state_hex",
+            "first_diff_offset": 48,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F3_IV_ASYM_CTR32M1",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "state_hex",
+            "first_diff_offset": 48,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F4_IV_ASYM_CTR64M1",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "state_hex",
+            "first_diff_offset": 48,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F5_IV_ASYM_CTR64M64",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "state_hex",
+            "first_diff_offset": 48,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F6_IV_ASYM_CTR64M65",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "state_hex",
+            "first_diff_offset": 48,
+            "stage": "after_init"
+          }
+        }
+      ]
+    },
+    {
+      "id": "feed_forward_original_words",
+      "kind": "MEANINGFUL",
+      "description": "Feed-forward adds the original saved words into state[14]/state[15] without the counter XOR (standard ChaCha feed-forward).",
+      "expected": "KILLED",
+      "verdict": "KILLED",
+      "killed_by": [
+        "F0_ALLZERO",
+        "F1_ASCENDING",
+        "F2_IV_ASYM_CTR0",
+        "F3_IV_ASYM_CTR32M1",
+        "F4_IV_ASYM_CTR64M1",
+        "F5_IV_ASYM_CTR64M64",
+        "F6_IV_ASYM_CTR64M65"
+      ],
+      "equivalent_on": [],
+      "per_fixture": [
+        {
+          "fixture": "F0_ALLZERO",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 120,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F1_ASCENDING",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 56,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F2_IV_ASYM_CTR0",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 120,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F3_IV_ASYM_CTR32M1",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 56,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F4_IV_ASYM_CTR64M1",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 56,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F5_IV_ASYM_CTR64M64",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 56,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F6_IV_ASYM_CTR64M65",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 56,
+            "stage": "after_init"
+          }
+        }
+      ]
+    },
+    {
+      "id": "serialize_be",
+      "kind": "MEANINGFUL",
+      "description": "Big-endian serialization of the 16 state words instead of the source little-endian memcpy.",
+      "expected": "KILLED",
+      "verdict": "KILLED",
+      "killed_by": [
+        "F0_ALLZERO",
+        "F1_ASCENDING",
+        "F2_IV_ASYM_CTR0",
+        "F3_IV_ASYM_CTR32M1",
+        "F4_IV_ASYM_CTR64M1",
+        "F5_IV_ASYM_CTR64M64",
+        "F6_IV_ASYM_CTR64M65"
+      ],
+      "equivalent_on": [],
+      "per_fixture": [
+        {
+          "fixture": "F0_ALLZERO",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 0,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F1_ASCENDING",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 0,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F2_IV_ASYM_CTR0",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 0,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F3_IV_ASYM_CTR32M1",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 0,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F4_IV_ASYM_CTR64M1",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 0,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F5_IV_ASYM_CTR64M64",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 0,
+            "stage": "after_init"
+          }
+        },
+        {
+          "fixture": "F6_IV_ASYM_CTR64M65",
+          "differs": true,
+          "equal": false,
+          "first_difference": {
+            "field": "buf_hex",
+            "first_diff_offset": 0,
+            "stage": "after_init"
+          }
+        }
+      ]
+    },
+    {
+      "id": "noop_bytewise_le",
+      "kind": "NO_OP_BY_CONSTRUCTION",
+      "description": "Little-endian serialization via an explicit per-byte loop instead of memcpy: identical bytes on the pinned LP64 model.",
+      "expected": "NO_OP",
+      "verdict": "NO_OP",
+      "killed_by": [],
+      "equivalent_on": [
+        "F0_ALLZERO",
+        "F1_ASCENDING",
+        "F2_IV_ASYM_CTR0",
+        "F3_IV_ASYM_CTR32M1",
+        "F4_IV_ASYM_CTR64M1",
+        "F5_IV_ASYM_CTR64M64",
+        "F6_IV_ASYM_CTR64M65"
+      ],
+      "per_fixture": [
+        {
+          "fixture": "F0_ALLZERO",
+          "differs": false,
+          "equal": true,
+          "first_difference": null
+        },
+        {
+          "fixture": "F1_ASCENDING",
+          "differs": false,
+          "equal": true,
+          "first_difference": null
+        },
+        {
+          "fixture": "F2_IV_ASYM_CTR0",
+          "differs": false,
+          "equal": true,
+          "first_difference": null
+        },
+        {
+          "fixture": "F3_IV_ASYM_CTR32M1",
+          "differs": false,
+          "equal": true,
+          "first_difference": null
+        },
+        {
+          "fixture": "F4_IV_ASYM_CTR64M1",
+          "differs": false,
+          "equal": true,
+          "first_difference": null
+        },
+        {
+          "fixture": "F5_IV_ASYM_CTR64M64",
+          "differs": false,
+          "equal": true,
+          "first_difference": null
+        },
+        {
+          "fixture": "F6_IV_ASYM_CTR64M65",
+          "differs": false,
+          "equal": true,
+          "first_difference": null
+        }
+      ]
+    },
+    {
+      "id": "noop_feedforward_order",
+      "kind": "NO_OP_BY_CONSTRUCTION",
+      "description": "Feed-forward additions performed in a different lane order: lanes are independent sums modulo 2^32.",
+      "expected": "NO_OP",
+      "verdict": "NO_OP",
+      "killed_by": [],
+      "equivalent_on": [
+        "F0_ALLZERO",
+        "F1_ASCENDING",
+        "F2_IV_ASYM_CTR0",
+        "F3_IV_ASYM_CTR32M1",
+        "F4_IV_ASYM_CTR64M1",
+        "F5_IV_ASYM_CTR64M64",
+        "F6_IV_ASYM_CTR64M65"
+      ],
+      "per_fixture": [
+        {
+          "fixture": "F0_ALLZERO",
+          "differs": false,
+          "equal": true,
+          "first_difference": null
+        },
+        {
+          "fixture": "F1_ASCENDING",
+          "differs": false,
+          "equal": true,
+          "first_difference": null
+        },
+        {
+          "fixture": "F2_IV_ASYM_CTR0",
+          "differs": false,
+          "equal": true,
+          "first_difference": null
+        },
+        {
+          "fixture": "F3_IV_ASYM_CTR32M1",
+          "differs": false,
+          "equal": true,
+          "first_difference": null
+        },
+        {
+          "fixture": "F4_IV_ASYM_CTR64M1",
+          "differs": false,
+          "equal": true,
+          "first_difference": null
+        },
+        {
+          "fixture": "F5_IV_ASYM_CTR64M64",
+          "differs": false,
+          "equal": true,
+          "first_difference": null
+        },
+        {
+          "fixture": "F6_IV_ASYM_CTR64M65",
+          "differs": false,
+          "equal": true,
+          "first_difference": null
+        }
+      ]
+    }
+  ]
+}

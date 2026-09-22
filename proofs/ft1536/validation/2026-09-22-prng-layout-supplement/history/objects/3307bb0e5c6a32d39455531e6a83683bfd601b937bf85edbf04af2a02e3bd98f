@@ -1,0 +1,19 @@
+# NEXT_INTERFACE — eksport dla przyszłego T02
+
+Consumer: przyszły dowód gry/hybrydy `PRNG_REAL_TO_IID_BUFFER` otrzymuje:
+
+1. Dokładny layout init56 (key32/IV16/counter64 LE, offsets, dispatch typów,
+   kolejność extract→type→refill→ptr, ramkę) — LAYOUT.json.
+2. Koszty blokowe: 64 ChaCha block evaluations na refill4096 (init wliczony);
+   na H: ≤25408 na reached context, 406528 na region — RESOURCE_INTERFACE.json.
+3. Fakty licznikowe: per-block `(cc0+k) mod 2^64`; post `+64 mod 2^64`;
+   wrap ≠ repeat w kontekście; reuse między kontekstami możliwy (F0/F2);
+   deterministyczny ident-init56 → ident-buf.
+4. Jawne dziury do domknięcia w T02: SHAKE-extract law (stub!), korelacje
+   56-bajtowych inicjalizacji, ChaCha repeated states/counters, miara
+   distinguishingu i loss (`Adv_…` nieustalone), kompozycja nonce/H2P/success,
+   real-game termination. `real_prng_to_iid_bridge_proved=false`.
+5. T02 pozostaje OPEN po T02.1. Statusy T01/T05/T06 bez zmian.
+
+Odbiór tego pakietu (review + replay) wykonuje inny niezależny model
+wybrany przez właściciela; ten W jest jego wejściem (frozen).

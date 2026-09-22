@@ -1,0 +1,78 @@
+{
+  "schema": "PRNG_T021_RESOURCE_INTERFACE_V1",
+  "event": "H from T01: every reached context has T_j<=49152, r_j<=396, J<=16",
+  "derived": {
+    "r_max": "396",
+    "blocks_per_reached_context": "25408",
+    "additional_refills_limit": "6336",
+    "region_block_evaluations": "406528",
+    "requested_parent_SHAKE56_bytes": "896",
+    "with_nonce40_upper": "936"
+  },
+  "received_T01": {
+    "proposals": "786432",
+    "returned_bytes": "25952256",
+    "initial_blocks": "16",
+    "additional_blocks": "6336",
+    "all_blocks": "6352",
+    "generated_bytes": "26017792",
+    "getter_drops": "57024",
+    "reinit_abandonments": "15",
+    "abandoned_bytes_max": "61320",
+    "final_unused_bytes_max": "4088",
+    "source_SHAKE56_bytes": "896"
+  },
+  "q_refill": {
+    "checks": [
+      {
+        "bytes_requested": 0,
+        "refills": 0,
+        "ptr": 0,
+        "block_evaluations": 0
+      },
+      {
+        "bytes_requested": 1,
+        "refills": 0,
+        "ptr": 1,
+        "block_evaluations": 0
+      },
+      {
+        "bytes_requested": 4095,
+        "refills": 0,
+        "ptr": 4095,
+        "block_evaluations": 0
+      },
+      {
+        "bytes_requested": 4096,
+        "refills": 1,
+        "ptr": 0,
+        "block_evaluations": 64
+      },
+      {
+        "bytes_requested": 4097,
+        "refills": 1,
+        "ptr": 1,
+        "block_evaluations": 64
+      },
+      {
+        "bytes_requested": 8192,
+        "refills": 2,
+        "ptr": 0,
+        "block_evaluations": 128
+      },
+      {
+        "bytes_requested": 25408,
+        "refills": 6,
+        "ptr": 832,
+        "block_evaluations": 384
+      }
+    ],
+    "exhaustive_range": "0..20000 exact",
+    "formula": "refills = floor(q/4096), ptr = q mod 4096, block evaluations = 64*floor(q/4096), dropped bytes = 0",
+    "scope": "corollary of the received getter rules (IID/BYTE_SCHEDULE internal.h:856-866), not a new schedule; u64 getter drops stay covered by T01 D_j and are not re-derived"
+  },
+  "block_size": 64,
+  "buffer_size": 4096,
+  "refill_blocks": 64,
+  "scope": "deterministic consumer of the received T01 event; no re-proof of T01/H6P and no real-game probability claim"
+}

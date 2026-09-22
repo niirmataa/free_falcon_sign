@@ -1,0 +1,35 @@
+# CLAIM — FT1536_PRNG_LAYOUT_COUNTER_RUN_003 (T02.1, suplement F1–F5)
+
+Autor projektu: Niirmata. Falcon Project / Thomas Pornin attribution i licencje
+zachowane. Suplement do odbioru RUN_002 (CHANGES_REQUIRED, tylko F1–F5);
+matematyka bez zmian. Status:
+**PRNG_LAYOUT_COUNTER_PROVED_FOR_PINNED_SOURCE_MODEL** — z granicą kernelową.
+
+## Tezy (zakres: pinned source model — GCC14.2/C99/x86_64 LP64 LE, źródła pin
+`56974571…`, BASE `c90233c1…`)
+
+- **A.** Mapa init56→12 słów + Word64 (LE), dispatch typów (0→1, 1→1, reszta→0
+  przed zapisem/extractem), kolejność extract→type→refill→ptr→return, ramka
+  (init: state[0..55]; refill: buf + state[48..55] + ptr=0; [56..255] nigdy).
+- **B.** Exact refill4096: 64 bloki z licznikami cc0+k mod 2^64; XOR lanes
+  14/15 (offsets 40..47 — OSTATNIE 8 B IV; komentarz C rozbieżny — finding);
+  feed-forward z XOR licznika; serializacja LE; post counter +64 mod 2^64;
+  pierwsze 48 B zachowane; wrap ≠ repeat; q-refill corollary z odebranych reguł.
+- **C.** Consumer H: r_max 396, ≤25408 bloków/kontekst, 406528/region,
+  ≤896 B SHAKE (+40 nonce poza cutem); spójne z ghost budget T01.
+
+## Dowód vs kontrola
+
+Kernel Lean (`formal/CounterLayout.lean`, 28 twierdzeń): arytmetyka licznika,
+layout, zasoby, q-refill. Uniwersalny argument źródłowy:
+SOURCE_MODEL_BINDING.md (struktura pętli, funkcje całkowite, wyczerpujący
+switch; granica kernelowa jawna). Kontrole wiążące: 7 fixtures × 3 stages
+byte-identical (C slice normal/ASan+UBSan/altbranch + model Sage +
+spot-implementacja), KAT 5/5 rdzenia, 8 mutacji (6 KILLED + 2 NO_OP),
+canaries/poison/stub/unsupported/determinizm.
+
+## Flagi
+
+`real_prng_to_iid_bridge_proved=false`, `SHAKE/ChaCha_security_proved=false`,
+`whole_real_Sign_proved=false`, `source_changed=false`, `owner_accepted=false`,
+`T02_parent_open=true`. Dystrybucje, IID, security, KeyGen, pełny Sign: OPEN.

@@ -1,0 +1,148 @@
+{
+  "status": "FRESH_REPLAY_PASS",
+  "task_id": "FT1536_PRNG_LAYOUT_COUNTER_RUN_001",
+  "event": "T02.1 A+B+C pinned-source-model layout/block/counter contract",
+  "scope": "deterministic source contract; not SHAKE/ChaCha security, not the real->IID hop",
+  "external_manifest": "OUTPUTS.sha256",
+  "external_manifest_sha256": "8eda4cb98b754c5f20c8db2a34ff5055bffd535f626dc12d87b56c816406e5a7",
+  "package": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_PRNG_LAYOUT_COUNTER_RUN_002",
+  "destination": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_PRNG_LAYOUT_COUNTER_REVIEW_001/seed/tmp/independent_001",
+  "expected_files": 17,
+  "matches": [
+    {
+      "path": "artifacts/fixtures.bin",
+      "sha256": "5115f3f98234c182f36d0ae926a21b3f069e9b287bb2e1aeb371037743a8a790"
+    },
+    {
+      "path": "artifacts/fixtures.json",
+      "sha256": "9ff15d60c1b6e010049ba72fb603fd1c2fdc771b7f951d0241aad032dc85966c"
+    },
+    {
+      "path": "artifacts/kat_vectors.json",
+      "sha256": "d1b2e0d6b9c3bc8c8d19d2b855d5d99e79024416a98b422aa8241bb077ff0f34"
+    },
+    {
+      "path": "artifacts/harness_dump.json",
+      "sha256": "72401466d578aa9b7625b493ac243cbc39ddb0fce98de02c8d49bd1dd4b40998"
+    },
+    {
+      "path": "artifacts/harness_dump_sanitized.json",
+      "sha256": "72401466d578aa9b7625b493ac243cbc39ddb0fce98de02c8d49bd1dd4b40998"
+    },
+    {
+      "path": "artifacts/harness_dump_altbranch.json",
+      "sha256": "b0dee8bc15ae2b6ff37d6efcc5249392fc7e375f3787fbebd294b5b9209a283e"
+    },
+    {
+      "path": "artifacts/model_dump.json",
+      "sha256": "8177447f744e68bc90c2a82652579566c574d3ba5354581272d8fe2acc464f88"
+    },
+    {
+      "path": "artifacts/model_result.json",
+      "sha256": "088120972ce331fb65f2f4709fb443c2957b78b43121a9e2947dcbe6bd4cd385"
+    },
+    {
+      "path": "artifacts/mutations.json",
+      "sha256": "342d669f868915f6fc92d8169926f2eda40a30988afd3ae474cebd3f57b62f29"
+    },
+    {
+      "path": "artifacts/checker_result.json",
+      "sha256": "ee395188c6126254d20a55a4445555b3631181b3626d5759b594b8440ee302f1"
+    },
+    {
+      "path": "LAYOUT.json",
+      "sha256": "33bc94cbec8aadc7647e15e85704cbf0e70a02bd2dab860d9c9b52db5d0fd655"
+    },
+    {
+      "path": "RESOURCE_INTERFACE.json",
+      "sha256": "bbd2b8644ab19064bdda8f41c0bb4b4009551fc0d80906a5d1ff3daa87e96653"
+    },
+    {
+      "path": "PRNG_LAYOUT_CERTIFICATE.json",
+      "sha256": "3942c484921bb18cbc0f41ac1f49406b10e337829ead651b4eb164859e6fe01f"
+    },
+    {
+      "path": "RESULT.json",
+      "sha256": "03a673c8e7279380c0b12257c1246ff21af775081124cb7d569936ff7a115944"
+    },
+    {
+      "path": "TOOLCHAIN.txt",
+      "sha256": "ab66b380ffbc3fd0753066e27e0e8fb422766608c313abc159fd33fe8bd0b089"
+    },
+    {
+      "path": "formal/CounterLayout.lean",
+      "sha256": "64384dffc511182ac34ebdb530a66179b848cb272c6c208614afecf60604eb15"
+    },
+    {
+      "path": "logs/lean_counter_layout.stdout",
+      "sha256": "75713141acfa50c2e6fa8ec3b9529c62c117b4ca45efcca6f8b08872a31be591"
+    }
+  ],
+  "mismatches": [],
+  "controller_argv": [
+    "/usr/bin/bwrap",
+    "--die-with-parent",
+    "--unshare-net",
+    "--unshare-pid",
+    "--ro-bind",
+    "/",
+    "/",
+    "--ro-bind",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_PRNG_LAYOUT_COUNTER_REVIEW_001/seed/tmp/independent_001/cache/hidden_work",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/work",
+    "--ro-bind",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_PRNG_LAYOUT_COUNTER_REVIEW_001/seed/tmp/independent_001/cache/hidden_work",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/replay-work",
+    "--ro-bind",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_PRNG_LAYOUT_COUNTER_REVIEW_001/seed/tmp/independent_001/cache/hidden_empty",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages",
+    "--ro-bind",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_PRNG_LAYOUT_COUNTER_REVIEW_001/seed/tmp/independent_001/cache/hidden_empty",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/background",
+    "--ro-bind",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_PRNG_LAYOUT_COUNTER_REVIEW_001/seed/tmp/independent_001/cache/hidden_empty",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/documents",
+    "--ro-bind",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_PRNG_LAYOUT_COUNTER_REVIEW_001/seed/tmp/independent_001/cache/hidden_empty",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/objects",
+    "--ro-bind",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_PRNG_LAYOUT_COUNTER_REVIEW_001/seed/tmp/independent_001/cache/hidden_empty",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/validation",
+    "--ro-bind",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_PRNG_LAYOUT_COUNTER_REVIEW_001/seed/tmp/independent_001/cache/hidden_empty",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/catalog",
+    "--ro-bind",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_PRNG_LAYOUT_COUNTER_REVIEW_001/seed/tmp/independent_001/cache/hidden_empty",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/history",
+    "--ro-bind",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_PRNG_LAYOUT_COUNTER_REVIEW_001/seed/tmp/independent_001/cache/hidden_empty",
+    "/home/footfalcon/free_falcon_sign/Extra",
+    "--bind",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_PRNG_LAYOUT_COUNTER_REVIEW_001/seed/tmp/independent_001",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_PRNG_LAYOUT_COUNTER_REVIEW_001/seed/tmp/independent_001",
+    "--ro-bind",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_PRNG_LAYOUT_COUNTER_REVIEW_001/seed/tmp/independent_001/source",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_PRNG_LAYOUT_COUNTER_REVIEW_001/seed/tmp/independent_001/source",
+    "--ro-bind",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_PRNG_LAYOUT_COUNTER_REVIEW_001/seed/tmp/independent_001/inputs",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_PRNG_LAYOUT_COUNTER_REVIEW_001/seed/tmp/independent_001/inputs",
+    "--proc",
+    "/proc",
+    "--dev",
+    "/dev",
+    "--chdir",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_PRNG_LAYOUT_COUNTER_REVIEW_001/seed/tmp/independent_001",
+    "--",
+    "python3",
+    "-B",
+    "scripts/recipe.py"
+  ],
+  "controller_exit_code": 0,
+  "elapsed_seconds": 28.889433915000154,
+  "matched": 17,
+  "fresh_project_cache": true,
+  "original_trees_hidden": true,
+  "only_destination_written": true,
+  "source_inputs_readonly": true,
+  "network_off": true
+}

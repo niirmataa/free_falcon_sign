@@ -1,0 +1,14 @@
+PASS R2 abandoned_bytes == R3 abandoned_bytes_max == 61320 R2=61320 R3=61320
+PASS R2 final_unused_bytes == R3 final_unused_bytes_max == 4088 R2=4088 R3=4088
+PASS pin T01 ghost_budget.abandoned_at_reinit_max == 61320 
+PASS pin T01 ghost_budget.final_unused_tail_max == 4088 
+PASS r_max = floor((33*49152-8)/4087) = 396 396
+PASS 64*(1+r_max) = 25408 
+PASS 64*(16+6336) = 406528 
+PASS 56*16 = 896 
+PASS 896 + 40 nonce = 936 
+PASS bloki*4096 = 26017792 (generated) 
+PASS 15 * 4088 = 61320 
+PASS 4096 - 8 = 4088 
+PASS RESOURCE_INTERFACE: wspólne klucze R2==R3 []
+SUMMARY 13 checks, 13 passed -> PASS

@@ -1,0 +1,41 @@
+{
+  "schema": "PRNG_T021_LAYOUT_V1",
+  "task_id": "FT1536_PRNG_LAYOUT_COUNTER_RUN_001",
+  "roadmap_id": "T02.1",
+  "base_commit": "c90233c171265e050930958fb29bafa9338f81ff",
+  "source_pins": {
+    "frng_c": "4b1289adf0c902abe9408d989b4eb8d292cbb6ea86b92e1325a10fd9c5dfc644",
+    "internal_h": "512629d3b79fa5bd74131ed2ecde06e1d157f5ac58db3f758db96b19131f1ba5"
+  },
+  "pinned_abi": {
+    "model": "GCC 14.2 / C99 driver / x86_64 LP64 / FALCON_LE_U=1",
+    "alignof_prng": 8,
+    "offsetof_buf": 0,
+    "offsetof_ptr": 4096,
+    "offsetof_state": 4104,
+    "offsetof_type": 4360,
+    "sizeof_buf": 4096,
+    "sizeof_prng": 4368,
+    "sizeof_state": 256
+  },
+  "map": {
+    "stream_bytes": 56,
+    "key_bytes": "offsets 0..31 -> state words 0..7 (little-endian Word32)",
+    "iv_bytes": "offsets 32..47 -> state words 8..11",
+    "counter_field": "offsets 48..55 -> little-endian Word64 initial counter cc0",
+    "refill_saved_words": "state[4..13] = stream words 0..9; state[14] = stream word 10 (offsets 40..43); state[15] = stream word 11 (offsets 44..47)",
+    "counter_xor_lanes": "state[14] ^= cc mod 2^32 and state[15] ^= floor(cc/2^32): offsets 40..47, i.e. the LAST 8 bytes of the 16-byte IV field, not offsets 32..39",
+    "counter_field_after_refill": "state.d[48..55] = (cc0+64) mod 2^64 little-endian; state.d[0..47] unchanged",
+    "comment_discrepancy": "frng.c:198 says the counter is XORed into the first 8 bytes of the IV; the instruction stream XORs state[14]/state[15] = offsets 40..47. Preserved as a finding; no source change.",
+    "type_dispatch": "type 0 -> PRNG_CHACHA20 (1); type 1 accepted; every other int returns 0 before any write and before the 56-byte extract",
+    "call_order": "shake_extract(56 bytes) -> p->type = type -> initial falcon_prng_refill -> p->ptr = 0 -> return type",
+    "frame": "init writes state.d[0..55]; refill writes buf.d[0..4095], state.d[48..55], ptr=0; state.d[56..255] never written",
+    "alignment": "buf/state unions carry uint64_t dummy members (8-byte alignment); the uint32/uint64 casts in frng.c are therefore aligned",
+    "alternate_branch": "LE-host scope (pinned x86_64 LP64 model): with FALCON_LE_U=0 the same 56 bytes are re-decoded into the same word values and the counter is rebuilt as the same Word64, so on a little-endian host every compared output byte equals the FALCON_LE_U=1 build (verified: harness dumps differ only in the falcon_le_u tag byte). Cross-host portability is analytical, not tested here: the FALCON_LE_U=0 build additionally yields the portable LE stream on any host, while the FALCON_LE_U=1 build (raw memcpy init/output, native u64 counter read-back) is little-endian-host-only by design and diverges on big-endian hardware. Running the second branch on this LE host is not a big-endian hardware test (TASK section 3)."
+  },
+  "fixture_binding": {
+    "fixtures": 7,
+    "stages": 21,
+    "note": "whole 4096-byte buffer and 256-byte state compared field-by-field; see artifacts/checker_result.json"
+  }
+}

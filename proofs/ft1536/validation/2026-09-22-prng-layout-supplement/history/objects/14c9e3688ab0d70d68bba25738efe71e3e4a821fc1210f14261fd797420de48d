@@ -1,0 +1,78 @@
+"""Wlasny checker recenzenta: niezalezne porownanie bajtowe 17 plikow
+semantycznych miedzy moim DEST (fresh replay) a frozen SOURCE_W oraz z
+pinami z SEMANTIC_FILES.json. Nie ufa PASS runnera replay.py.
+
+Uzycie: python3 -B verify_replay.py SOURCE_W DEST
+Wynik: REPLAY_CHECKS.json (obok skryptu, w REVIEW_W/checkers).
+"""
+import hashlib
+import json
+import sys
+from pathlib import Path
+
+
+def sha(p):
+    return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+
+
+def main():
+    src = Path(sys.argv[1])
+    dest = Path(sys.argv[2])
+    out = Path(__file__).absolute().parent / 'REPLAY_CHECKS.json'
+
+    sealed = json.loads((src / 'SEMANTIC_FILES.json').read_text())
+    regen = json.loads((dest / 'SEMANTIC_FILES.json').read_text())
+    rows = []
+    ok = True
+    for rec in sealed['files']:
+        rel = rec['path']
+        s = src / rel
+        d = dest / rel
+        hs = sha(s) if s.is_file() else None
+        hd = sha(d) if d.is_file() else None
+        row = dict(
+            path=rel,
+            pinned=rec['sha256'],
+            source_sha256=hs,
+            replay_sha256=hd,
+            source_matches_pin=(hs == rec['sha256']),
+            replay_matches_pin=(hd == rec['sha256']),
+            byte_identical=(hs is not None and hs == hd),
+            source_bytes=(s.stat().st_size if s.is_file() else None),
+            replay_bytes=(d.stat().st_size if d.is_file() else None),
+        )
+        ok = ok and row['byte_identical'] and row['source_matches_pin'] and row['replay_matches_pin']
+        rows.append(row)
+
+    sem_eq = (sealed == regen)
+    receipt = json.loads((dest / 'REPLAY_RESULT.json').read_text())
+    result = dict(
+        schema='FT1536_T021_REVIEW_REPLAY_CHECKS_V1',
+        reviewer='MiMo V2.6 Pro (independent review, own checker)',
+        sealed_semantic_count=sealed['count'],
+        regenerated_semantic_count=regen['count'],
+        semantic_files_json_identical=sem_eq,
+        files=rows,
+        all_byte_identical=bool(ok),
+        runner_receipt_status=receipt.get('status'),
+        runner_matched=receipt.get('matched'),
+        runner_mismatches=receipt.get('mismatches'),
+        runner_only_destination_written=receipt.get('only_destination_written'),
+        runner_network_off=receipt.get('network_off'),
+        runner_original_trees_hidden=receipt.get('original_trees_hidden'),
+        runner_controller_exit=receipt.get('controller_exit_code'),
+        runner_elapsed_seconds=receipt.get('elapsed_seconds'),
+        note='porownanie wykonane niezaleznie od PASS runnera; mismatch plik oznacza CHANGES_REQUIRED',
+    )
+    result['verdict'] = 'PASS' if (ok and sem_eq and receipt.get('status') == 'FRESH_REPLAY_PASS'
+                                   and not receipt.get('mismatches')) else 'FAIL'
+    out.write_text(json.dumps(result, indent=2) + '\n')
+    print(json.dumps(dict(verdict=result['verdict'], files=len(rows),
+                          all_byte_identical=result['all_byte_identical'],
+                          semantic_files_json_identical=sem_eq,
+                          runner_status=receipt.get('status')), indent=2))
+    return 0 if result['verdict'] == 'PASS' else 1
+
+
+if __name__ == '__main__':
+    sys.exit(main())

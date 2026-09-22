@@ -1,0 +1,36 @@
+{
+  "schema": "PRNG_T021_NATIVE_RUN_V1",
+  "fixtures": 7,
+  "runs": [
+    {
+      "name": "normal",
+      "artifact": "artifacts/harness_dump.json",
+      "artifact_sha256": "72401466d578aa9b7625b493ac243cbc39ddb0fce98de02c8d49bd1dd4b40998",
+      "exit_code": 0,
+      "stdout_sha256": "72401466d578aa9b7625b493ac243cbc39ddb0fce98de02c8d49bd1dd4b40998",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sanitizer": false,
+      "address_space_limit_8gib": true
+    },
+    {
+      "name": "sanitized",
+      "artifact": "artifacts/harness_dump_sanitized.json",
+      "artifact_sha256": "72401466d578aa9b7625b493ac243cbc39ddb0fce98de02c8d49bd1dd4b40998",
+      "exit_code": 0,
+      "stdout_sha256": "72401466d578aa9b7625b493ac243cbc39ddb0fce98de02c8d49bd1dd4b40998",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sanitizer": true,
+      "address_space_limit_8gib": false
+    },
+    {
+      "name": "altbranch",
+      "artifact": "artifacts/harness_dump_altbranch.json",
+      "artifact_sha256": "b0dee8bc15ae2b6ff37d6efcc5249392fc7e375f3787fbebd294b5b9209a283e",
+      "exit_code": 0,
+      "stdout_sha256": "b0dee8bc15ae2b6ff37d6efcc5249392fc7e375f3787fbebd294b5b9209a283e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sanitizer": false,
+      "address_space_limit_8gib": true
+    }
+  ]
+}

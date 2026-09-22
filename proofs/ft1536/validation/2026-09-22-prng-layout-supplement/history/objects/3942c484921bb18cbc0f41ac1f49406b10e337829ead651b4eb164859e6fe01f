@@ -1,0 +1,104 @@
+{
+  "schema": "PRNG_T021_CERTIFICATE_V1",
+  "status": "PRNG_LAYOUT_COUNTER_PROVED_FOR_PINNED_SOURCE_MODEL",
+  "task_id": "FT1536_PRNG_LAYOUT_COUNTER_RUN_002",
+  "continues_from": "FT1536_PRNG_LAYOUT_COUNTER_RUN_001",
+  "predecessor_outputs_sha256": "34c49d61f159d7b55171f51ca85b53e3b7c0a321512cc26102161dfd497f2e6a",
+  "road_map_id": "T02.1",
+  "author": "Niirmata (project author)",
+  "source_attribution": "Falcon Project / Thomas Pornin; original licenses preserved",
+  "base_commit": "c90233c171265e050930958fb29bafa9338f81ff",
+  "task_sha256": "7b0007c095c51b1fe4c5d94b0b1a0012227aba4df0d1c59cfa8fcd92589fe5f1",
+  "sagemath_rule_sha256": "b6afcdcabb811dd8bc31072455ed9a94a4c4773ec68d41d207ac1d7e98eae241",
+  "bootstrap_manifest_sha256": "03b0612cbe3b18e487bee6399c71c238e5ff3a0527818a7c4330d007b72abae2",
+  "contract_A": {
+    "proved": true,
+    "subject": "56-byte init layout, type dispatch, call order, frame",
+    "evidence": [
+      "model/prng_model.sage layout section",
+      "model/prng_checker.sage layout.*, fixture.*.type_returned, unsupported.*, frame controls",
+      "SOURCE_MODEL_BINDING.md A"
+    ]
+  },
+  "contract_B": {
+    "proved": true,
+    "subject": "exact 64-block refill, counter lanes, feed-forward, LE serialization, post counter/frame",
+    "evidence": [
+      "model/prng_model.sage falcon_block/falcon_refill",
+      "model/prng_checker.sage byte binding and counter formulas",
+      "KAT core cross-check vs OpenSSL and RFC 8439 section 2.3.2",
+      "SOURCE_MODEL_BINDING.md B"
+    ]
+  },
+  "contract_C": {
+    "proved": true,
+    "subject": "T01 budget consumer and q-refill corollary",
+    "evidence": [
+      "model/prng_model.sage ZZ resource consumer",
+      "model/prng_checker.sage resources.* rederivation",
+      "RESOURCE_INTERFACE.json"
+    ]
+  },
+  "counter": {
+    "per_block": "cc0+k mod 2^64 for 0<=k<64 per refill",
+    "post_refill": "cc0+64 mod 2^64",
+    "first_48_bytes_preserved": true,
+    "ptr_after_refill": 0,
+    "distinct_within_context": true,
+    "wrap_not_repeat": true,
+    "wrap_fixtures": [
+      "F4_IV_ASYM_CTR64M1",
+      "F5_IV_ASYM_CTR64M64",
+      "F6_IV_ASYM_CTR64M65"
+    ],
+    "cross_context_reuse_possible": true
+  },
+  "mutations": {
+    "killed": [
+      "counter_lanes_state12_13",
+      "xor_to_add",
+      "counter32",
+      "skip_initial_refill",
+      "feed_forward_original_words",
+      "serialize_be"
+    ],
+    "no_op_by_construction": [
+      "noop_bytewise_le",
+      "noop_feedforward_order"
+    ],
+    "detail": "artifacts/mutations.json"
+  },
+  "kat": {
+    "vectors": 5,
+    "oracle": "OpenSSL 3.5.7 9 Jun 2026 (Library: OpenSSL 3.5.7 9 Jun 2026)",
+    "rfc8439_2_3_2": true,
+    "classic_all_zero": true
+  },
+  "proof_files": {
+    "artifacts/fixtures.bin": "5115f3f98234c182f36d0ae926a21b3f069e9b287bb2e1aeb371037743a8a790",
+    "artifacts/fixtures.json": "9ff15d60c1b6e010049ba72fb603fd1c2fdc771b7f951d0241aad032dc85966c",
+    "artifacts/kat_vectors.json": "d1b2e0d6b9c3bc8c8d19d2b855d5d99e79024416a98b422aa8241bb077ff0f34",
+    "artifacts/harness_dump.json": "72401466d578aa9b7625b493ac243cbc39ddb0fce98de02c8d49bd1dd4b40998",
+    "artifacts/harness_dump_sanitized.json": "72401466d578aa9b7625b493ac243cbc39ddb0fce98de02c8d49bd1dd4b40998",
+    "artifacts/harness_dump_altbranch.json": "b0dee8bc15ae2b6ff37d6efcc5249392fc7e375f3787fbebd294b5b9209a283e",
+    "artifacts/model_dump.json": "8177447f744e68bc90c2a82652579566c574d3ba5354581272d8fe2acc464f88",
+    "artifacts/model_result.json": "088120972ce331fb65f2f4709fb443c2957b78b43121a9e2947dcbe6bd4cd385",
+    "artifacts/mutations.json": "342d669f868915f6fc92d8169926f2eda40a30988afd3ae474cebd3f57b62f29",
+    "artifacts/checker_result.json": "ee395188c6126254d20a55a4445555b3631181b3626d5759b594b8440ee302f1",
+    "LAYOUT.json": "33bc94cbec8aadc7647e15e85704cbf0e70a02bd2dab860d9c9b52db5d0fd655",
+    "RESOURCE_INTERFACE.json": "bbd2b8644ab19064bdda8f41c0bb4b4009551fc0d80906a5d1ff3daa87e96653",
+    "formal/CounterLayout.lean": "64384dffc511182ac34ebdb530a66179b848cb272c6c208614afecf60604eb15",
+    "logs/lean_counter_layout.stdout": "75713141acfa50c2e6fa8ec3b9529c62c117b4ca45efcca6f8b08872a31be591"
+  },
+  "flags": {
+    "real_prng_to_iid_bridge_proved": false,
+    "SHAKE_security_proved": false,
+    "ChaCha_security_proved": false,
+    "whole_real_Sign_proved": false,
+    "source_changed": false,
+    "production_source_changed": false,
+    "owner_accepted": false,
+    "T02_parent_open": true
+  },
+  "scope": "A+B+C of T02.1 for the pinned source model only; fixture equality is binding evidence, the universal-legal-input argument lives in SOURCE_MODEL_BINDING.md; kernel: counter/layout/resource/q-refill lemmas in formal/CounterLayout.lean (Lean 4.34, core-only, clean logs, axioms [propext, Quot.sound]); ChaCha Word32 rounds stay in the Sage exact model + original-C binding (explicit non-kernelized boundary)"
+}

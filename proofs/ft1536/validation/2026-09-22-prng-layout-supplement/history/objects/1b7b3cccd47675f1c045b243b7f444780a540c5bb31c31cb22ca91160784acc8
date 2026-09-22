@@ -1,0 +1,26 @@
+{
+  "schema": "PRNG_T021_SAGE_RUN_V1",
+  "launcher": "/home/footfalcon/.local/bin/sage",
+  "entry": "sage <file>.sage (standard preparser)",
+  "version_output": "10.9",
+  "scripts": [
+    {
+      "name": "model",
+      "script": "model/prng_model.sage",
+      "script_sha256": "9974fba61b97b23582fc5a0fad4b8db3085682447e178613683d2e7e033b6144",
+      "exit_code": 0,
+      "timeout": false,
+      "stdout_sha256": "705a320ed19b233924ab7a1c8dddc34ab442e386385531c35f62f69de5cf504a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "checker",
+      "script": "model/prng_checker.sage",
+      "script_sha256": "d260209c437ef942e28b832002bdd000836ee9a8d8fec68298fc3c4f54fe4d11",
+      "exit_code": 0,
+      "timeout": false,
+      "stdout_sha256": "d738585a2aa6c4b0076eded4b643fd6ee2337c3ac0245077c55a607e2222cc35",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

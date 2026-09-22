@@ -1,0 +1,97 @@
+"""Wlasny checker recenzenta: mechaniczny skan 3 historycznych pulepek RUN_001
+w autorytatywnych plikach .sage RUN_002 (przeglad kodu, nie wiara w PASS):
+
+  1. brak C-stylowego `^` w roli XOR (preparser czyta `^` jako potege; XOR = `^^`);
+  2. wartosci calkowite trafiajace do JSON sa opakowane w int()/str()/bool;
+  3. rederywacje licznika redukuja start modulo 2^64 (% MOD64 / % ZZ(MOD64)).
+
+Uzycie: sage trap_scan.sage <katalog model/>
+Wynik: TRAP_CHECKS.json (obok skryptu, w katalogu uruchomienia).
+"""
+import json
+import re
+import sys
+from pathlib import Path
+
+assert parent(1) is ZZ
+assert 2^10 == 1024
+
+model_dir = Path(sys.argv[1])
+out_path = Path('.').absolute() / 'TRAP_CHECKS.json'
+checks = []
+
+
+def check(name, ok, detail=''):
+    assert ok, (name, detail)
+    checks.append(dict(check=str(name), status='PASS', detail=str(detail)))
+
+
+files = sorted(model_dir.glob('*.sage'))
+check('files', len(files) == 2, [f.name for f in files])
+
+POWER_OK = re.compile(r'\b\d+\^\d+\b|\bZZ\(\d+\)\^ZZ\(\d+\)|2\^10|2\^64|H\^c|2\^-1020')
+for f in files:
+    text = f.read_text()
+    code_lines = []
+    for i, line in enumerate(text.splitlines(), 1):
+        stripped = line.strip()
+        if stripped.startswith('#'):
+            continue
+        code_lines.append((i, line))
+    # 1. pojedynczy ^ poza docstringiem/komentarzem musi byc potega/kontrola preparsera
+    offenders = []
+    in_doc = False
+    for i, line in enumerate(text.splitlines(), 1):
+        s = line.strip()
+        if s.startswith('"""') or s.endswith('"""'):
+            in_doc = not in_doc or s.startswith('"""') and s.endswith('"""') and len(s) > 3
+            continue
+        if in_doc or s.startswith('#'):
+            continue
+        code = re.sub(r"'[^']*'|\"[^\"]*\"", 'STR', line)  # pomin literaly tekstowe (proza o C)
+        for m in re.finditer(r'(?<!\^)\^(?!\^)', code):
+            frag = code[max(0, m.start() - 12):m.end() + 12]
+            if not POWER_OK.search(frag):
+                offenders.append((i, frag))
+    check('trap1.no_c_style_xor.%s' % f.name, not offenders, offenders)
+    # 2. wygenerowane artefakty JSON musza sie scisle parsowac ze skalarami
+    #    pythonowymi - przeciek Sage Integer/ZZ roznilby json.dumps (TypeError)
+    #    lub zapisalby wartosc niescalarna; tu weryfikujemy oba warunki
+    if f.name in ('prng_model.sage', 'prng_checker.sage'):
+        wrapped = ('int(' in text and 'str(' in text)
+        check('trap2.wrappers_used.%s' % f.name, wrapped, 'int()/str() uzyte przy zapisach JSON')
+        bad = []
+        for art in ('model_dump.json', 'model_result.json', 'mutations.json',
+                    'checker_result.json', 'fixtures.json', 'kat_vectors.json'):
+            ap = model_dir.parent / 'artifacts' / art
+            if not ap.is_file():
+                continue
+            obj = json.loads(ap.read_text())
+            stack = [obj]
+            while stack:
+                x = stack.pop()
+                if isinstance(x, dict):
+                    stack.extend(x.values())
+                elif isinstance(x, list):
+                    stack.extend(x)
+                elif not (x is None or isinstance(x, (int, float, str, bool))):
+                    bad.append((art, type(x).__name__))
+        check('trap2.json_scalars_only.%s' % f.name, not bad, bad)
+    # 3. redukcja mod 2^64 przy rederywacjach licznika
+    if f.name in ('prng_model.sage', 'prng_checker.sage'):
+        mods = len(re.findall(r'%\s*(ZZ\(MOD64\)|MOD64)', text))
+        check('trap3.mod2p64_reductions.%s' % f.name, mods >= 3, 'znalezionych redukcji: %d' % mods)
+
+result = dict(
+    schema='FT1536_T021_REVIEW_TRAP_CHECKS_V1',
+    reviewer='MiMo V2.6 Pro (independent review, own .sage checker)',
+    entry='sage trap_scan.sage <model/> (standard preparser)',
+    scanned=[f.name for f in files],
+    checks_count=int(len(checks)),
+    checks=checks,
+    note='trzy historyczne bledy RUN_001 (^ jako XOR, brak int() przy JSON, brak redukcji '
+         'startu mod 2^64) potwierdzone nieobecne takze przegladem kodu, nie PASS-em runnera',
+    verdict='PASS',
+)
+out_path.write_text(json.dumps(result, indent=2) + '\n')
+print('TRAP_CHECKS PASS:', int(len(checks)), 'checks')

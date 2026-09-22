@@ -1,0 +1,25 @@
+"""SEMANTIC_FILES.json: the deterministic files the fresh replay must rebuild
+byte-identically in its own DEST."""
+import json
+from pathlib import Path
+from replaylib import sha
+from common import W
+SEMANTIC=['artifacts/fixtures.bin','artifacts/fixtures.json','artifacts/kat_vectors.json',
+ 'artifacts/harness_dump.json','artifacts/harness_dump_sanitized.json',
+ 'artifacts/harness_dump_altbranch.json','artifacts/model_dump.json',
+ 'artifacts/model_result.json','artifacts/mutations.json','artifacts/checker_result.json',
+ 'LAYOUT.json','RESOURCE_INTERFACE.json','PRNG_LAYOUT_CERTIFICATE.json','RESULT.json','TOOLCHAIN.txt']
+def rows(root=W):
+    out=[]
+    for p in SEMANTIC:
+        q=root/p
+        assert q.is_file() and not q.is_symlink(),p
+        out.append(dict(path=p,sha256=sha(q)))
+    return out
+def main():
+    rs=rows()
+    (W/'SEMANTIC_FILES.json').write_text(json.dumps(dict(
+        schema='PRNG_T021_SEMANTIC_FILES_V1',task_id='FT1536_PRNG_LAYOUT_COUNTER_RUN_001',
+        tag='DETERMINISTIC_REPLAY_OUTPUTS',count=len(rs),files=rs),indent=2)+'\n')
+    print('SEMANTIC_FILES',len(rs))
+if __name__=='__main__':main()

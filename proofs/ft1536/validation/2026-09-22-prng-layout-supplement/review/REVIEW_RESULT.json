@@ -1,0 +1,119 @@
+{
+ "schema": "FT1536_T021_REVIEW_RESULT_V2_SUPPLEMENT",
+ "review_id": "FT1536_PRNG_LAYOUT_COUNTER_SUPPLEMENT_REVIEW_001",
+ "source_task": "FT1536_PRNG_LAYOUT_COUNTER_RUN_003",
+ "continues_from": "FT1536_PRNG_LAYOUT_COUNTER_RUN_002",
+ "roadmap_id": "T02.1",
+ "reviewer_model": "MiMo V2.6 Flash (opencode/mimo-v2.6-flash-free)",
+ "reviewer_independence": "swiezy kontekst; recenzent wybrany i recznie uruchomiony przez wlasciciela; inny niz wykonawca suplementu (tozsamosci wykonawcy nie zgaduje); poprzedni odbiorce RUN_002 byl MiMo V2.6 Pro (inny model/kontekst, REVIEW_001); zero subagentow (regu\u0142a wlasciciela)",
+ "verdict": "PASS_SCOPED_SUPPLEMENT",
+ "verdict_scope": "zakres historyczny: suplement F1-F5 poprawia wylacznie zakres/dokumentacje etykiet wobec odbioru RUN_002 (CHANGES_REQUIRED); pelny diff R2->R3 rozliczony \u201426 wierszy zmienionych +1 usunietych,115 identycznych, rachunek niezmieniony; moj fresh replay17/17 PASS; moj sage13/13; zadeklarowane unchanged numbers396/25408/406528/896/936 potwierdzone wzgledem pinu poprzednika",
+ "kernel_complete": false,
+ "B20_P03_formalization_required": true,
+ "f1_f5": {
+  "F1": "FIXED \u2014 scope.open w model/prng_checker.sage i sealed checker_result.json: kernel28 thm (counter/layout/resource/q-refill) + jawne \u201eChaCha Word32 rounds stay outside the kernel\"; zgodne z faktem (28 twierdzen policzonych, core-only)",
+  "F2": "FIXED \u2014 REPORT.md \u00beearytmetyka ramki\" (\"(typeOut, offsets; arytmetyka ramki)\"); SOURCE_MODEL_BINDING: granice ramki w kernelu, niepisalnosc state[56..255] jawnie strukturalnie (A.4) + poison, nie twierdzeniem kernela; grep \u00berefinement\" w REPORT.md/SOURCE_MODEL_BINDING.md = 0 trafien \u2014 poison/C fixtures nie sa prezentowane jako refinement proof; rundy ChaCha jawne poza kernelem (F1)",
+  "F3": "FIXED \u2014 REPLAY.md \u201e17 plikow\"; receipts rzeczywiste: rehearsal e85f95f3\u2026136 members PASS17/17 exit0 26.0s, postfreeze tmp/postfreeze-001/REPLAY_RESULT.json PASS17/17 exit0 25.54s z external pin e37b1e97\u2026; liczby prawdziwe (OUTPUTS141, SEMANTIC17, bootstrap39/39, source17)",
+  "F4": "FIXED \u2014 abandoned_bytes_max=61320 i final_unused_bytes_max=4088 przywrocone (prng_model.sage, prng_checker.sage, RESOURCE_INTERFACE.json, model_result.json); wartosci rowne poprzednikowi i pinowi T01 ghost_budget (abandoned_at_reinit_max/final_unused_tail_max); to sa maksima, nie rownosci",
+  "F5": "FIXED (wg kryterium zadania) \u2014 LAYOUT.json i SEMANTIC_FILES.json task_id=RUN_003 obok RESULT/CERT=RUN_003, continues_from=RUN_002; historyczne ID zachowane (TASK.md=RUN_001, inputs/documents nie zmienione, SOURCE_MODEL_BINDING kontynuacja RUN_001) bez przepisywania historii"
+ },
+ "residuals_info": [
+  {
+   "id": "R1",
+   "severity": "info",
+   "where": "artifacts/freeze.json:3, artifacts/fresh_replay.json:3, receipts/REPLAY_RESULT.json:3",
+   "what": "task_id=\u2026RUN_001 \u2014 staly kod w niezmienionych scripts/freeze.py:33 i scripts/replay.py:33; identycznie bylo w RUN_002 (zachowane niezmienione bo poza deklarowanym zakresem5 poprawek)",
+   "impact": "zaden merytoryczny; poza zestawem4 artefaktow wskazanych w kryterium F5",
+   "suggestion": "ujednolicic przy najblizszym checkpointzie / w B20_P03"
+  },
+  {
+   "id": "R2",
+   "severity": "info",
+   "where": "SOURCE_MODEL_BINDING.md:1",
+   "what": "naglowek \u201e(RUN_002, kernel)\" i \u201eKontynuacja \u2026RUN_001\" \u2014 tresc poprawiona wg F2, naglowek nazwy checkpointu niezmieniony (zgodnie z zakazem przepisywania historii)",
+   "impact": "zaden merytoryczny",
+   "suggestion": "jak wyzej"
+  },
+  {
+   "id": "R3",
+   "severity": "info",
+   "where": "REPLAY.md:24 komorka \u201epo freeze\"",
+   "what": "odsy\u0142a liczby do handoffu; w repo handoff podaje141/141 pinow, a liczby replayu post-freeze zostaja w receipt DEST (przeze mnie zweryfikowane:17/17 exit0 25.54s)",
+   "impact": "zaden merytoryczny; receipt rzeczywisty i odnaleziony",
+   "suggestion": "opcjonalnie wpisac liczby do tabeli przy checkpointzie B20"
+  }
+ ],
+ "own_replay": {
+  "argv": "python3 -B scripts/replay.py /home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_PRNG_LAYOUT_COUNTER_SUPPLEMENT_REVIEW_001/replay/INDEPENDENT_001 e37b1e97ebcfa65d698c52e175c09e826cdbafe565722cc017b5349c00d3f5dc",
+  "package": "WLASNA skopiowana i zweryfikowana kopia W/seed/pkg_003 (141/141 + input closure61/61), NIE SOURCE_W",
+  "status": "FRESH_REPLAY_PASS",
+  "matched": "17/17",
+  "exit_code": 0,
+  "elapsed_seconds": 525.24,
+  "flags": [
+   "fresh_project_cache=True",
+   "original_trees_hidden=True",
+   "only_destination_written=True",
+   "source_inputs_readonly=True",
+   "network_off=True (bwrap --unshare-net)"
+  ],
+  "seed": "bez wlasnego seeda outputow: swiezy projekt+cache (fresh_project_cache=True z receiptu), oryginalne drzewa ukryte (original_trees_hidden=True), zapis tylko do DEST, source_inputs_readonly=True; 17 plikow semantycznych wyprodukowanych od zera w DEST",
+  "note_czas": "czas dluzszy niz26s u autora \u2014 w trakcie replayu wystapil restart sesji/serwera; proces przezyl, nie uruchamialem drugiego workera; kontrola po fakcie: PASS",
+  "receipt": "receipts/INDEPENDENT_001_REPLAY_RESULT.json (kopia z DEST)",
+  "independent_byte_comparison": "checkers/REPLAY_CHECKS.json \u201417/17 trojstronnie identyczne (DEST\u2194kopia\u2194SOURCE_W)",
+  "dest_logs": "logs/dest_logs/ \u2014 wszystkie stderr0 B; lean stdout = sealed; theorem count w DEST:28"
+ },
+ "own_numeric_check": {
+  "command": "sage check_numbers.sage",
+  "checks": "13/13 PASS",
+  "exit": 0,
+  "stderr_bytes": 0,
+  "scope": "unchanged numbers396/25408/406528/896/936 +61320/4088 vs poprzednik i pin T01, exact ZZ"
+ },
+ "math_unchanged_evidence": [
+  "115 identycznych wierszy OUTPUTS, w tym formal/CounterLayout.lean (64384dffc511182ac34ebdb530a66179b848cb272c6c208614afecf60604eb15), fixtures/kat/mutations/model_dump/harness_dumps, TASK.md, SAGEMATH_RULE.md; source/harness/inputs nie sa wierszami OUTPUTS \u2014 potwierdzone osobno i swiezo: INPUTS 61/61 (0 zmian tresci), CANDIDATE source17 17/17, bootstrap MANIFEST 39/39",
+  "stdout Sage model (705a320e\u2026) i checker (d738585a\u2026) identyczne R2<->R3; checker PASS405 checks/105 fields w obu",
+  "stdout Lean (75713141\u2026) identyczne;28 twierdz; aksjomaty w stdout [propext, Quot.sound]",
+  "stdouty C dump normal+sanitized (72401466\u2026) i altbranch (b0dee8bc\u2026) identyczne R2<->R3 (COMMANDS.frozen.log); binaria rozni\u0105 si\u0119 normal/altbranch 21 B, sanitized 275 B (sciezki/debug); dump-y harness identyczne",
+  "zmiany .sage/.py: wylacznie *_max (te wartosci), task_id/predecessor, tekst scope.open",
+  "swiezy rebuild Lean w moim DEST:28 twierdz, aksjomaty [propext, Quot.sound] w stdout, stderr0 B"
+ ],
+ "declared_flags": {
+  "real_prng_to_iid_bridge_proved": false,
+  "SHAKE_security_proved": false,
+  "ChaCha_security_proved": false,
+  "whole_real_Sign_proved": false,
+  "source_changed": false,
+  "production_source_changed": false,
+  "T02_parent_open": true,
+  "owner_accepted": false,
+  "push_authorized": false
+ },
+ "not_covered": [
+  "real_PRNG_to_IID_bridge",
+  "SHAKE_ChaCha_security_and_distributions",
+  "chacha_rounds_kernelization",
+  "unwritability_state_56_255_as_theorem",
+  "whole_real_Sign",
+  "KeyGen_secrets",
+  "big_endian_hardware",
+  "T02_parent_goal"
+ ],
+ "b20_p03_note": "PASS_SCOPED_SUPPLEMENT NIE jest KERNEL_COMPLETE: rdzen28 twierdz obejmuje arytmetyke licznika/layoutu/zasobow/q-refill dla pinned source model; rundy ChaCha Word32, niepisalnosc ramki (struktura+poison) i uniwersalnosc petli64-blokowej pozostaja poza kernelem. Pelny source binding i kernelizacja wg SageMath+Lean4+Mathlib domykaja B20/P03.",
+ "subagents_used": "brak",
+ "git_used": "brak (zakaz w zleceniu)",
+ "network_used": "brak",
+ "jobs_finished": true,
+ "other_executor_note": "aktywne procesy Lean nalezne do B20_001/P01 (inny wykonawca) \u2014 nie ruszane; w moim W brak jobow",
+ "next_step": "decyzja wlasciciela (odbior/replay/dalszy tor B20_P03); bez automatycznego startu",
+ "source_unchanged": true,
+ "run001_untouched": true,
+ "run002_untouched": true,
+ "owner_accepted": false,
+ "fresh_member_checks": {
+  "bootstrap_manifest": "39/39 DOBRZE (logs/bootstrap_manifest_check.log)",
+  "candidate_source17": "17/17 DOBRZE z katalogu source/ (logs/candidate_source17_check.log)",
+  "review_inputs_manifest": "46/46 DOBRZE (logs/review_inputs_check.log)"
+ },
+ "push_authorized": false
+}

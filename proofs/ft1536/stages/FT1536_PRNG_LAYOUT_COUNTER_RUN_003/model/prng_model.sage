@@ -1,0 +1,505 @@
+"""T02.1 authoritative arithmetic model (SageMath, run as `sage prng_model.sage`).
+
+Sections
+  A. domain/preparser preflight (ZZ/QQ/^)
+  B. generic IETF ChaCha20 Word32 core validated against
+     artifacts/kat_vectors.json (OpenSSL CLI oracle plus the RFC 8439
+     section 2.3.2 keystream literal)
+  C. Falcon refill core: exact state assembly, XOR counter lanes,
+     feed-forward and little-endian serialization bound to source/frng.c
+  D. 56-byte layout map, type dispatch and memory frame
+  E. counter arithmetic modulo 2^64 (wrap vs repeat), q-refill corollary
+  F. T01 resource consumer: 64 block evaluations per refill etc.
+  G. model dump for all public fixtures (compared with the original C
+     harness by prng_checker.sage) and a mutation battery
+     (meaningful mutations and no-ops) in artifacts/mutations.json
+
+Only this file and prng_checker.sage are authoritative for arithmetic;
+scripts/*.py only organize execution, hashing and logging.
+Sage semantics note: under `sage file.sage` the preparser reads `^` as POWER
+(preflight 2^10 == 1024), so every C-style XOR is written `^^` (Sage xor);
+`>>`/`<<` stay shifts, `%` stays modulo. A C `^` left in place would silently
+compute a power (x^0 == 1 on all-zero data, unbounded bigint hangs otherwise).
+Falcon Project / Thomas Pornin attribution and licenses preserved.
+"""
+import json
+import os
+import hashlib
+from pathlib import Path
+
+# ---------------------------------------------------------------- A. preflight
+assert parent(1) is ZZ
+assert parent(1/3) is QQ
+assert 2^10 == 1024
+
+W = Path('.').absolute()
+A = W / 'artifacts'
+
+MASK32 = int('ffffffff', 16)
+MOD32 = int('100000000', 16)
+MOD64 = int('10000000000000000', 16)
+CW = (int('61707865', 16), int('3320646e', 16),
+      int('79622d32', 16), int('6b206574', 16))
+POISON = 165  # 0xA5, matches the C harness poison byte
+
+def m32(x):
+    return int(x) & MASK32
+
+def rotl32(x, s):
+    x = int(x) & MASK32
+    return ((x << s) | (x >> (32 - s))) & MASK32
+
+def u32le(b, off):
+    return int.from_bytes(bytes(b[off:off + 4]), 'little')
+
+def u64le(b, off):
+    return int.from_bytes(bytes(b[off:off + 8]), 'little')
+
+def qround(st, a, b, c, d):
+    # frng.c:226-239 (QROUND macro): adds modulo 2^32, then XOR and
+    # 32-bit rotation (x << s) | (x >> (32-s)).
+    st[a] = m32(st[a] + st[b])
+    st[d] = rotl32(st[d] ^^ st[a], 16)
+    st[c] = m32(st[c] + st[d])
+    st[b] = rotl32(st[b] ^^ st[c], 12)
+    st[a] = m32(st[a] + st[b])
+    st[d] = rotl32(st[d] ^^ st[a], 8)
+    st[c] = m32(st[c] + st[d])
+    st[b] = rotl32(st[b] ^^ st[c], 7)
+
+def double_round(st):
+    # literal source order, frng.c:241-248
+    qround(st, 0, 4, 8, 12)
+    qround(st, 1, 5, 9, 13)
+    qround(st, 2, 6, 10, 14)
+    qround(st, 3, 7, 11, 15)
+    qround(st, 0, 5, 10, 15)
+    qround(st, 1, 6, 11, 12)
+    qround(st, 2, 7, 8, 13)
+    qround(st, 3, 4, 9, 14)
+
+# ------------------------------------------------- B. generic IETF ChaCha20 core
+def ietf_block(key32, nonce12, counter):
+    """Standard IETF layout: st[12] = 32-bit counter, st[13..15] = nonce,
+    standard feed-forward.  Used only for the KAT cross-check."""
+    st = list(CW) + [u32le(key32, 4*i) for i in range(8)]
+    st = st + [int(counter) & MASK32] + [u32le(nonce12, 4*i) for i in range(3)]
+    saved = list(st)
+    for _ in range(10):
+        double_round(st)
+    for v in range(16):
+        st[v] = m32(st[v] + saved[v])
+    return b''.join(int(w).to_bytes(4, 'little') for w in st)
+
+kat = json.loads((A / 'kat_vectors.json').read_text())
+kat_details = []
+for vec in kat['vectors']:
+    key = bytes.fromhex(vec['key_hex'])
+    nonce = bytes.fromhex(vec['nonce96_hex'])
+    ks = b''.join(ietf_block(key, nonce, vec['counter'] + k)
+                  for k in range(vec['blocks']))
+    ok = ks.hex() == vec['keystream_hex']
+    assert ok, ('KAT mismatch', vec['id'])
+    kat_details.append(dict(id=vec['id'], counter=vec['counter'],
+                            blocks=vec['blocks'], match=True,
+                            keystream_sha256=hashlib.sha256(ks).hexdigest()))
+rfc = [v for v in kat['vectors'] if v['id'] == 'V_CTR1'][0]
+assert rfc['keystream_hex'] == kat['rfc8439_2_3_2_hex']
+assert [v for v in kat['vectors'] if v['id'] == 'V_ZERO_ALL'][0]['keystream_hex'] == kat['classic_all_zero_hex']
+print('KAT ok:', len(kat_details), 'vectors; RFC8439 2.3.2 literal matches OpenSSL')
+
+# ------------------------------------- C. Falcon refill core (frng.c:200-278)
+def falcon_block(saved, cc):
+    """One 64-byte output block for the saved 12 stream words.
+
+    Bound to source/frng.c:
+      * state[0..3] = CW; state[4..15] = saved[0..11]   (frng.c:220-221)
+      * state[14] ^= (u32)cc; state[15] ^= (u32)(cc>>32) (frng.c:222-223)
+      * 10 double rounds in the literal QROUND order   (frng.c:224-252)
+      * feed-forward: lanes 0..3 add CW, lanes 4..13 add saved[0..9],
+        lane 14 adds saved[10] ^ (u32)cc, lane 15 adds
+        saved[11] ^ (u32)(cc>>32)                      (frng.c:254-263)
+      * serialization is little-endian                   (frng.c:266-275)
+    All adds are unsigned modulo 2^32; rotations are the source
+    (x << s) | (x >> (32-s)) form on the 32-bit domain.
+    """
+    st = list(CW) + list(saved)
+    lo = int(cc) & MASK32
+    hi = (int(cc) >> 32) & MASK32
+    st[14] = m32(st[14] ^^ lo)
+    st[15] = m32(st[15] ^^ hi)
+    for _ in range(10):
+        double_round(st)
+    for v in range(4):
+        st[v] = m32(st[v] + CW[v])
+    for v in range(4, 14):
+        st[v] = m32(st[v] + saved[v - 4])
+    st[14] = m32(st[14] + (saved[10] ^^ lo))
+    st[15] = m32(st[15] + (saved[11] ^^ hi))
+    return b''.join(int(w).to_bytes(4, 'little') for w in st)
+
+def falcon_refill(state56, cc_start):
+    """One full 4096-byte refill: 64 consecutive 64-byte blocks with
+    counters (cc_start + k) mod 2^64 for 0 <= k < 64 (frng.c:215-277).
+    Returns (buffer, counter_after, counter_sequence)."""
+    saved = [u32le(state56, 4*i) for i in range(12)]
+    cc = int(cc_start) % MOD64
+    parts = []
+    counters = []
+    for _ in range(64):
+        counters.append(cc)
+        parts.append(falcon_block(saved, cc))
+        cc = (cc + 1) % MOD64
+    return b''.join(parts), cc, counters
+
+fixtures = json.loads((A / 'fixtures.json').read_text())
+assert fixtures['count'] == 7
+assert [f['id'] for f in fixtures['fixtures']][0] == 'F0_ALLZERO'
+
+def fixture_stages(init56):
+    """init + two refills under the source model, with the C harness poison
+    pattern retained in state.d[56..255] (never written by the source)."""
+    cc0 = u64le(init56, 48)
+    state = bytearray(init56) + bytearray([POISON]) * int(256 - 56)
+    cc = cc0
+    stages = []
+    all_counters = []
+    for name in ('after_init', 'after_refill1', 'after_refill2'):
+        buf, cc, counters = falcon_refill(bytes(state[0:56]), cc)
+        all_counters.extend(counters)
+        state[48:56] = int(cc).to_bytes(8, 'little')
+        stages.append(dict(stage=name, state_hex=bytes(state).hex(),
+                           buf_hex=buf.hex(), ptr=int(0), type=int(1),
+                           cc_after=str(cc), blocks=int(64),
+                           cc_start=str(counters[0]),
+                           cc_last=str(counters[-1]),
+                           wrap_in_stage=((counters[0] + 63) >= MOD64)))
+    return cc0, stages, all_counters
+
+reference_stages = {}
+model_fixtures = []
+counter_rows = []
+for f in fixtures['fixtures']:
+    init56 = bytes.fromhex(f['init56_hex'])
+    assert hashlib.sha256(init56).hexdigest() == f['sha256'], f['id']
+    cc0, stages, counters = fixture_stages(init56)
+    assert str(cc0) == f['cc0'], f['id']
+    reference_stages[f['id']] = stages
+    model_fixtures.append(dict(id=f['id'], index=f['index'],
+                               init56_hex=f['init56_hex'], cc0=str(cc0),
+                               type_requested=int(0), type_returned=int(1),
+                               stages=stages))
+    assert len(counters) == 192 and len(set(counters)) == 192, f['id']
+    counter_rows.append(dict(fixture=f['id'], cc0=str(cc0), count=len(counters),
+                             distinct=len(set(counters)),
+                             wrap_stages=[s['stage'] for s in stages if s['wrap_in_stage']],
+                             counters_all_distinct=True))
+(A / 'model_dump.json').write_text(json.dumps(dict(
+    schema='PRNG_T021_MODEL_DUMP_V1', tag='INDEPENDENT_SAGE_MODEL',
+    producer='model/prng_model.sage (sage prng_model.sage)',
+    counter_rows=counter_rows, fixtures=model_fixtures), indent=2) + '\n')
+print('model dump:', len(model_fixtures), 'fixtures x 3 stages')
+
+# ------------------------------------------------------- G. mutation battery
+def refill_variant(variant, state56, cc_start, nblocks=64):
+    """64-block refill under a mutation variant.  The reference semantics is
+    exactly falcon_refill; each variant changes one bound element."""
+    saved = [u32le(state56, 4*i) for i in range(12)]
+    cc = int(cc_start) % MOD64
+    parts = []
+    counters = []
+    for _ in range(nblocks):
+        counters.append(int(cc))
+        lo = cc & MASK32
+        hi = (cc >> 32) & MASK32
+        st = list(CW) + list(saved)
+        if variant == 'counter_lanes_state12_13':
+            st[12] = m32(st[12] ^^ lo)
+            st[13] = m32(st[13] ^^ hi)
+        elif variant == 'xor_to_add':
+            st[14] = m32(st[14] + lo)
+            st[15] = m32(st[15] + hi)
+        elif variant == 'counter32':
+            st[14] = m32(st[14] ^^ lo)
+        else:
+            st[14] = m32(st[14] ^^ lo)
+            st[15] = m32(st[15] ^^ hi)
+        for _ in range(10):
+            double_round(st)
+        if variant == 'noop_feedforward_order':
+            st[14] = m32(st[14] + (saved[10] ^^ lo))
+            st[15] = m32(st[15] + (saved[11] ^^ hi))
+            for v in range(4):
+                st[v] = m32(st[v] + CW[v])
+            for v in range(4, 14):
+                st[v] = m32(st[v] + saved[v - 4])
+        else:
+            for v in range(4):
+                st[v] = m32(st[v] + CW[v])
+            for v in range(4, 14):
+                st[v] = m32(st[v] + saved[v - 4])
+            if variant == 'feed_forward_original_words':
+                st[14] = m32(st[14] + saved[10])
+                st[15] = m32(st[15] + saved[11])
+            elif variant == 'counter32':
+                st[14] = m32(st[14] + (saved[10] ^^ lo))
+                st[15] = m32(st[15] + saved[11])
+            else:
+                st[14] = m32(st[14] + (saved[10] ^^ lo))
+                st[15] = m32(st[15] + (saved[11] ^^ hi))
+        if variant == 'serialize_be':
+            parts.append(b''.join(int(w).to_bytes(4, 'big') for w in st))
+        elif variant == 'noop_bytewise_le':
+            blk = bytearray()
+            for w in st:
+                w = int(w)
+                blk += bytes([w & 255, (w >> 8) & 255,
+                              (w >> 16) & 255, (w >> 24) & 255])
+            parts.append(bytes(blk))
+        else:
+            parts.append(b''.join(int(w).to_bytes(4, 'little') for w in st))
+        cc = (cc + 1) % (MOD32 if variant == 'counter32' else MOD64)
+    return b''.join(parts), cc, counters
+
+def stage_variant(init56, variant):
+    cc0 = u64le(init56, 48)
+    state = bytearray(init56) + bytearray([POISON]) * int(256 - 56)
+    cc = cc0
+    stages = []
+    for idx, name in enumerate(('after_init', 'after_refill1', 'after_refill2')):
+        if variant == 'skip_initial_refill' and idx == 0:
+            stages.append(dict(stage=name, state_hex=bytes(state).hex(),
+                               buf_hex=(bytes([POISON]) * int(4096)).hex(),
+                               ptr=None, type=int(1), cc_after=str(cc)))
+            continue
+        buf, cc, counters = refill_variant(variant, bytes(state[0:56]), cc)
+        state[48:56] = int(cc % MOD64).to_bytes(8, 'little')
+        stages.append(dict(stage=name, state_hex=bytes(state).hex(),
+                           buf_hex=buf.hex(), ptr=int(0), type=int(1), cc_after=str(cc)))
+    return stages
+
+def first_difference(ref, var):
+    for field in ('state_hex', 'buf_hex', 'cc_after', 'type', 'ptr'):
+        if ref[field] == var[field]:
+            continue
+        off = None
+        if field in ('state_hex', 'buf_hex'):
+            rb = bytes.fromhex(ref[field])
+            vb = bytes.fromhex(var[field])
+            off = next(i for i in range(min(len(rb), len(vb))) if rb[i] != vb[i])
+        return dict(field=field, first_diff_offset=off)
+    return None
+
+MUTATIONS = [
+    dict(id='counter_lanes_state12_13', kind='MEANINGFUL', expected='KILLED',
+         description='XOR the 64-bit counter into state[12]/state[13] instead of the source lanes state[14]/state[15]; feed-forward unchanged.'),
+    dict(id='xor_to_add', kind='MEANINGFUL', expected='KILLED',
+         description='Add the counter halves into state[14]/state[15] modulo 2^32 instead of the source XOR.'),
+    dict(id='counter32', kind='MEANINGFUL', expected='KILLED_WITH_LOW_COUNTER_EQUIVALENCE',
+         description='32-bit counter: state[14] receives only the low half, state[15] stays untouched, feed-forward drops the high-word XOR, counter advances modulo 2^32.'),
+    dict(id='skip_initial_refill', kind='MEANINGFUL', expected='KILLED',
+         description='falcon_prng_init returns after the 56-byte extract without the initial refill: buffer and pointer untouched, counter unadvanced.'),
+    dict(id='feed_forward_original_words', kind='MEANINGFUL', expected='KILLED',
+         description='Feed-forward adds the original saved words into state[14]/state[15] without the counter XOR (standard ChaCha feed-forward).'),
+    dict(id='serialize_be', kind='MEANINGFUL', expected='KILLED',
+         description='Big-endian serialization of the 16 state words instead of the source little-endian memcpy.'),
+    dict(id='noop_bytewise_le', kind='NO_OP_BY_CONSTRUCTION', expected='NO_OP',
+         description='Little-endian serialization via an explicit per-byte loop instead of memcpy: identical bytes on the pinned LP64 model.'),
+    dict(id='noop_feedforward_order', kind='NO_OP_BY_CONSTRUCTION', expected='NO_OP',
+         description='Feed-forward additions performed in a different lane order: lanes are independent sums modulo 2^32.'),
+]
+
+
+mutation_rows = []
+for mut in MUTATIONS:
+    per_fixture = []
+    for f in fixtures['fixtures']:
+        init56 = bytes.fromhex(f['init56_hex'])
+        var = stage_variant(init56, mut['id'])
+        diff = None
+        for rs, vs in zip(reference_stages[f['id']], var):
+            diff = first_difference(rs, vs)
+            if diff is not None:
+                diff['stage'] = rs['stage']
+                break
+        per_fixture.append(dict(fixture=f['id'], differs=(diff is not None),
+                                equal=(diff is None), first_difference=diff))
+    killed = [r['fixture'] for r in per_fixture if r['differs']]
+    equal = [r['fixture'] for r in per_fixture if r['equal']]
+    verdict = 'KILLED' if killed else 'NO_OP'
+    if mut['expected'] == 'NO_OP':
+        assert verdict == 'NO_OP', ('unexpected: no-op killed', mut['id'], killed)
+    else:
+        assert verdict == 'KILLED', ('meaningful mutation survived', mut['id'])
+    if mut['expected'] == 'KILLED_WITH_LOW_COUNTER_EQUIVALENCE':
+        assert equal, ('expected a low-counter equivalence class', mut['id'])
+    mutation_rows.append(dict(id=mut['id'], kind=mut['kind'],
+                              description=mut['description'],
+                              expected=mut['expected'], verdict=verdict,
+                              killed_by=killed, equivalent_on=equal,
+                              per_fixture=per_fixture))
+(A / 'mutations.json').write_text(json.dumps(dict(
+    schema='PRNG_T021_MUTATIONS_V1',
+    reference='artifacts/model_dump.json (source-faithful model); the checker '
+              'compares it byte-for-byte against the pinned C harness, so a '
+              'mutant differing from the reference also differs from the C outputs',
+    count=len(mutation_rows), mutations=mutation_rows), indent=2) + '\n')
+print('mutations:', [(m['id'], m['verdict']) for m in mutation_rows])
+
+# ------------------------------- D. layout map and type-dispatch algebra
+layout = dict(
+    stream_bytes=int(56),
+    key_bytes='offsets 0..31 -> state words 0..7 (little-endian Word32)',
+    iv_bytes='offsets 32..47 -> state words 8..11',
+    counter_field='offsets 48..55 -> little-endian Word64 initial counter cc0',
+    refill_saved_words='state[4..13] = stream words 0..9; state[14] = stream word 10 (offsets 40..43); state[15] = stream word 11 (offsets 44..47)',
+    counter_xor_lanes='state[14] ^= cc mod 2^32 and state[15] ^= floor(cc/2^32): offsets 40..47, i.e. the LAST 8 bytes of the 16-byte IV field, not offsets 32..39',
+    counter_field_after_refill='state.d[48..55] = (cc0+64) mod 2^64 little-endian; state.d[0..47] unchanged',
+    comment_discrepancy='frng.c:198 says the counter is XORed into the first 8 bytes of the IV; the instruction stream XORs state[14]/state[15] = offsets 40..47. Preserved as a finding; no source change.',
+    type_dispatch='type 0 -> PRNG_CHACHA20 (1); type 1 accepted; every other int returns 0 before any write and before the 56-byte extract',
+    call_order='shake_extract(56 bytes) -> p->type = type -> initial falcon_prng_refill -> p->ptr = 0 -> return type',
+    frame='init writes state.d[0..55]; refill writes buf.d[0..4095], state.d[48..55], ptr=0; state.d[56..255] never written',
+    alignment='buf/state unions carry uint64_t dummy members (8-byte alignment); the uint32/uint64 casts in frng.c are therefore aligned',
+    alternate_branch='LE-host scope (pinned x86_64 LP64 model): with FALCON_LE_U=0 the same 56 bytes are re-decoded into the same word values and the counter is rebuilt as the same Word64, so on a little-endian host every compared output byte equals the FALCON_LE_U=1 build (verified: harness dumps differ only in the falcon_le_u tag byte). Cross-host portability is analytical, not tested here: the FALCON_LE_U=0 build additionally yields the portable LE stream on any host, while the FALCON_LE_U=1 build (raw memcpy init/output, native u64 counter read-back) is little-endian-host-only by design and diverges on big-endian hardware. Running the second branch on this LE host is not a big-endian hardware test (TASK section 3).',
+)
+assert 4 * 8 == 32 and 4 * 10 == 40 and 4 * 11 == 44 and 4 * 12 == 48 and 48 + 8 == 56
+assert layout['counter_xor_lanes'].count('40..47') == 1
+assert layout['type_dispatch'].startswith('type 0')
+
+# ------------------------------- E. counter arithmetic modulo 2^64
+by_fixture = {}
+all_counters = []
+for f in fixtures['fixtures']:
+    cs = fixture_stages(bytes.fromhex(f['init56_hex']))[2]
+    by_fixture[f['id']] = cs
+    all_counters.extend(cs)
+    for i in range(len(cs) - 1):
+        assert ZZ(cs[i] + 1) % ZZ(MOD64) == ZZ(cs[i + 1])
+    assert len(set(cs)) == 192, f['id']
+crossings = {fid: int(sum(1 for c in cs if c == MOD64 - 1)) for fid, cs in by_fixture.items()}
+wrapped = sorted(fid for fid, n in crossings.items() if n > 0)
+assert wrapped == ['F4_IV_ASYM_CTR64M1', 'F5_IV_ASYM_CTR64M64',
+                   'F6_IV_ASYM_CTR64M65'], wrapped
+assert len(set(all_counters)) < len(all_counters)  # values recur ACROSS contexts
+for d in (ZZ(1), ZZ(2), ZZ(MOD32), ZZ(MOD64) - 1):
+    assert d != 0 and d % ZZ(MOD64) == d
+counter_section = dict(
+    rows=counter_rows, blocks_per_refill=int(64), blocks_total=int(7 * 192),
+    wrap_crossings=crossings, wrapped_fixtures=wrapped,
+    same_fixture_distinct='all 192 counters of every fixture are pairwise distinct (asserted)',
+    elementary_lemma='for one fixed context the live counter takes cc0, cc0+1, ..., cc0+N-1 modulo 2^64 over N <= 2^64 consecutive blocks; for 0 <= i < j < N the difference is j-i with 0 < j-i < 2^64, so no value repeats even when the range wraps; a full state repeats only after a complete 2^64 block cycle',
+    wrap_vs_repeat='wrap means the counter passes 2^64; it is not a repetition: the entries stay distinct (asserted) and each wrapped fixture crosses exactly once in the covered 192 blocks',
+    cross_context='different contexts may share cc0 (F0_ALLZERO and F2_IV_ASYM_CTR0 both 0) and then produce different buffers; the deterministic identical-init example is a limitation of the future game, not a statistical attack or an Emitted witness',
+)
+
+# ------------------------------- F. q-refill corollary (byte-stream consumer)
+def u8_stream(q):
+    """falcon_prng_get_u8 schedule (internal.h:856-866) from ptr = 0:
+    read byte[ptr], increment, refill exactly when ptr reaches 4096."""
+    ptr = 0
+    refills = 0
+    for _ in range(q):
+        ptr += 1
+        if ptr == 4096:
+            refills += 1
+            ptr = 0
+    return refills, ptr
+
+q_checks = []
+for q in (0, 1, 4095, 4096, 4097, 8192, 25408):
+    r, p = u8_stream(q)
+    assert ZZ(r) == ZZ(q) // ZZ(4096) and ZZ(p) == ZZ(q) % ZZ(4096), q
+    q_checks.append(dict(bytes_requested=int(q), refills=int(r), ptr=int(p),
+                         block_evaluations=int(64 * r)))
+for q in range(0, 20001):
+    r, p = u8_stream(q)
+    assert ZZ(r) == ZZ(q) // ZZ(4096) and ZZ(p) == ZZ(q) % ZZ(4096), q
+q_refill = dict(
+    checks=q_checks, exhaustive_range='0..20000 exact',
+    formula='refills = floor(q/4096), ptr = q mod 4096, block evaluations = 64*floor(q/4096), dropped bytes = 0',
+    scope='corollary of the received getter rules (IID/BYTE_SCHEDULE internal.h:856-866), not a new schedule; u64 getter drops stay covered by T01 D_j and are not re-derived',
+)
+
+# ------------------------------- G. T01 budget consumer (exact ZZ)
+T_MAX = ZZ(49152)
+J_MAX = ZZ(16)
+r_max = (ZZ(33) * T_MAX - ZZ(8)) // ZZ(4087)
+assert r_max == 396, r_max
+blocks_per_reached_context = ZZ(64) * (ZZ(1) + r_max)
+assert blocks_per_reached_context == 25408
+additional_refills_limit = J_MAX * r_max
+assert additional_refills_limit == 6336
+region_blocks = ZZ(64) * (J_MAX + additional_refills_limit)
+assert region_blocks == 406528
+shake56_bytes = ZZ(56) * J_MAX
+assert shake56_bytes == 896
+assert shake56_bytes + ZZ(40) == 936
+t01 = dict(proposals=ZZ(786432), returned_bytes=ZZ(25952256),
+           initial_blocks=ZZ(16), additional_blocks=ZZ(6336),
+           all_blocks=ZZ(6352), generated_bytes=ZZ(26017792),
+           getter_drops=ZZ(57024), reinit_abandonments=ZZ(15),
+           abandoned_bytes_max=ZZ(61320), final_unused_bytes_max=ZZ(4088),
+           source_SHAKE56_bytes=ZZ(896))
+assert t01['additional_blocks'] == additional_refills_limit
+assert t01['all_blocks'] == J_MAX + additional_refills_limit
+assert t01['generated_bytes'] == t01['all_blocks'] * ZZ(4096)
+assert t01['getter_drops'] == ZZ(9) * additional_refills_limit
+assert t01['abandoned_bytes_max'] == t01['reinit_abandonments'] * ZZ(4088)
+assert t01['reinit_abandonments'] == J_MAX - 1
+assert t01['initial_blocks'] == J_MAX
+assert t01['source_SHAKE56_bytes'] == shake56_bytes
+assert t01['returned_bytes'] == ZZ(33) * t01['proposals']
+assert t01['final_unused_bytes_max'] == ZZ(4096) - ZZ(8)
+assert ZZ(64) * t01['all_blocks'] == region_blocks
+assert all(ZZ(64) * (ZZ(1) + r) <= blocks_per_reached_context
+           for r in range(0, 397))
+resource_section = dict(
+    event_H='every reached context has T_j <= 49152 and r_j <= 396 ADDITIONAL refills, J <= 16',
+    r_max=str(r_max), blocks_per_reached_context=str(blocks_per_reached_context),
+    additional_refills_limit=str(additional_refills_limit),
+    region_block_evaluations=str(region_blocks),
+    requested_parent_SHAKE56_bytes=str(shake56_bytes),
+    with_nonce40_upper=str(shake56_bytes + ZZ(40)),
+    received_T01={k: str(v) for k, v in t01.items()},
+    consistency_checks='all equalities above asserted in ZZ; derived quantities are deterministic implications of the received event, and Pr(H^c) < 2^-1020 stays T01 data (not moved to the real PRNG here)',
+)
+
+# ------------------------------- H. deterministic examples
+f0 = [f for f in fixtures['fixtures'] if f['id'] == 'F0_ALLZERO'][0]
+f2 = [f for f in fixtures['fixtures'] if f['id'] == 'F2_IV_ASYM_CTR0'][0]
+assert f0['cc0'] == f2['cc0'] == '0'
+assert reference_stages['F0_ALLZERO'] == fixture_stages(bytes.fromhex(f0['init56_hex']))[1]
+d0 = bytes.fromhex(reference_stages['F0_ALLZERO'][0]['buf_hex'])
+d2 = bytes.fromhex(reference_stages['F2_IV_ASYM_CTR0'][0]['buf_hex'])
+assert d0 != d2
+first_off = next(i for i in range(4096) if d0[i] != d2[i])
+examples = dict(
+    identical_init56_identical_buffers=True,
+    identical_init56_note='a fresh instance with the same 56 public bytes reproduces the identical 4096-byte buffer and post state (asserted in the model; the harness runs the same control on the original C)',
+    same_cc0_different_context='F0_ALLZERO and F2_IV_ASYM_CTR0 share cc0 = 0 and differ from offset %d; the counter value alone does not determine the keystream' % first_off,
+)
+
+model_result = dict(
+    schema='PRNG_T021_MODEL_RESULT_V1', tag='INDEPENDENT_SAGE_MODEL',
+    launcher='sage prng_model.sage (standard preparser entry)',
+    domain=dict(preflight=['parent(1) is ZZ', 'parent(1/3) is QQ', '2^10 == 1024'],
+                arithmetic='exact integer arithmetic with explicit 2^32/2^64 masks; ZZ used for the resource and counter inequalities; no float/RDF anywhere',
+                semantics='literal Word32/XOR/shift/modulo operations as in source/frng.c'),
+    layout=layout, kat=dict(oracle=kat['openssl'], vectors=len(kat_details),
+                            all_match=True, details=kat_details,
+                            rfc8439_2_3_2_match=True,
+                            classic_all_zero_match=True,
+                            scope='validates the shared Word32 core arithmetic, not the Falcon layout'),
+    counter=counter_section, q_refill=q_refill, resources=resource_section,
+    examples=examples, mutations='artifacts/mutations.json',
+    mutations_summary=[dict(id=m['id'], verdict=m['verdict'],
+                            equivalent_on=m['equivalent_on']) for m in mutation_rows],
+    model_dump_sha256=hashlib.sha256((A / 'model_dump.json').read_bytes()).hexdigest(),
+    scope='deterministic layout/block/counter contract for the pinned source model; '
+          'SHAKE/ChaCha output distribution, security and the real->IID hop remain OPEN (T02)',
+)
+(A / 'model_result.json').write_text(json.dumps(model_result, indent=2) + '\n')
+print('model result sections: layout, kat, counter, q_refill, resources, examples, mutations')
+print('r_max=%s blocks_per_context=%s region_blocks=%s shake56=%s' % (
+    r_max, blocks_per_reached_context, region_blocks, shake56_bytes))
+

@@ -17,8 +17,9 @@ Docelowym repozytorium prac jest `free_falcon_sign`.
   Nowe zlecenie rozwija wpis Txx/Sxx (zależności, cel, kryteria odbioru),
   zamiast tworzyć niezależny plan. Zmiany kolejności/zakresu zapisuj jawnie.
 - Następny pakiet B20_001: przygotowano20 kolejnych zadań i20 sparowanych
-  weryfikacji,według ROADMAP. T02.1 już przekazano do odbioru; zależny P03
-  czeka na jego piny. Główny przewodnik: `proofs/ft1536/batches/B20_001/OWNER_GUIDE.md`.
+  weryfikacji,według ROADMAP. T02.1/RUN_003 odebrano jako PASS_SCOPED_SUPPLEMENT;
+  jego piny dla P03 są w żywym STATUS B20. P03 nadal potrzebuje P01/P02 i pełnej
+  kernelizacji. Główny przewodnik: `proofs/ft1536/batches/B20_001/OWNER_GUIDE.md`.
   Wymagania:
   `docs/onboarding/BATCH_20_REQUIREMENTS.md`; pełny protokół wykonania/odbioru:
   `docs/onboarding/AGENT_EXECUTION_AND_REVIEW_PROTOCOL.md`.
