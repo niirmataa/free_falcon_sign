@@ -162,3 +162,57 @@ Docelowym repozytorium prac jest `free_falcon_sign`.
   zbyt luźne oszacowanie oraz cel świadomie pozostawiony poza zakresem.
 - Zachowuj niewygodne wyniki i ograniczenia. Nie promuj diagnostyki,
   skończonych testów albo zgodności hashy do szerszego twierdzenia.
+
+## Koordynator B20 — delegowany nadzór (2026-09-22)
+
+Jeden agent-koordynator obsługuje papierologię pakietu B20_001: importy,
+STATUS, prompty recenzentów, checkpointy. Nadzór właściciela odbywa się przez
+niezmienniki i artefakty, nie przez obserwację pracy. Narzędzia:
+`tools/b20_status_set.py`, `tools/b20_review_prompt.py`,
+`proofs/ft1536/tools/archive.py` (import/handoff/checkpoint/list/verify).
+
+### Twarde granice koordynatora
+
+- Bez push na origin — wyłącznie po jawnym poleceniu właściciela.
+- Bez ręcznego uruchamiania wykonawców i recenzentów; start modeli należy
+  do właściciela. Koordynator przygotowuje W/prompt, nie startuje pracy.
+- Bez wydania statusu REVIEWED poza `b20_status_set.py` (setter wymaga
+  sealed REPORT i PASS verify stage'u).
+- Bez dotykania `stages/`, `objects/`, `validation/` i `catalog/` poza
+  importerem i `checkpoint`; bez pomijania hooks i bez amend/force-push.
+- Bez systemowego tmp; wszystkie zapisy pod repo.
+
+### Dziennik koordynatora
+
+`docs/onboarding/COORDINATOR_LOG.md` jest append-only. Po każdej akcji wpis:
+data UTC, akcja + komenda, wynik (hash/status), następny oczekujący krok.
+Wpisy dodaje się w tym samym commicie co efekt akcji. Nie przepisuje się
+starych wpisów; korekta to nowy wpis.
+
+### Rytuał audytu właściciela (kilka minut, po każdym zadaniu)
+
+```sh
+python3 -B proofs/ft1536/tools/archive.py verify   # wszystkie checkpointy PASS
+python3 -B proofs/ft1536/tools/archive.py list --markdown
+git log --format='%h %an %s' -15 && git status -s
+```
+
+Zgodność tabeli i dziennika z oczekiwaniami = nadzór wykonany. Cokolwiek
+nie gra → pytanie do koordynatora o wyjaśnienie przed dalszymi krokami.
+
+### Stop-and-report
+
+Przy każdym nieprzewidzianym wyniku (hash mismatch, verify FAIL, brak pliku,
+rozjazd STATUS↔stages) koordynator zatrzymuje się, zachowuje stan i raportuje.
+Zakaz cichych napraw i obejść; naprawa tylko przez kanoniczne narzędzia
+i po decyzji właściciela.
+
+### Przebieg jednej pary Pxx/Vxx
+
+1. Właściciel startuje wykonawcę; koordynator zapisuje
+   `b20_status_set.py Pxx --start --model ... --context ...`.
+2. Po handoff: `archive.py import` → `b20_status_set.py Pxx --final-report`
+   → `b20_review_prompt.py Vxx` → prompt do recenzenta.
+3. Po werdykcie: `b20_status_set.py Pxx --review-verdict ...` →
+   `archive.py checkpoint` → wpis w dzienniku → krótkie podsumowanie
+   dla właściciela (co udowodnione, co otwarte, co dalej).
