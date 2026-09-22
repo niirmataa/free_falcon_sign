@@ -193,6 +193,12 @@ separate rational/RBF768 verification of the final bounds. The next obligation
 is **IID_RETRY_COMPOSITION**; small one-root probability does not establish
 universal Safe16, real-PRNG security, integer recovery or Sign→Verify.
 
+**Next prepared owner-run task:** [IID_RETRY_COMPOSITION](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_IID_RETRY_COMPOSITION_2026-09-22.md),
+with [1270 pinned inputs](proofs/ft1536/background/IID_RETRY_COMPOSITION_2026-09-22/README.md).
+It targets legal reached entries, actual cap16/reset/norm/codec semantics,
+whole-region IID BadPrecast, checked-precast coupling and resource accounting.
+[CURRENT_TASK](proofs/ft1536/CURRENT_TASK.md) identifies its new W and pins.
+
 The separate [FT family scaling research by MiMo](proofs/ft1536/stages/FT_FAMILY_SCALING_REVIEW_RUN_001/README.md)
 is preserved with its [PDF manuscript](proofs/ft1536/stages/FT_FAMILY_SCALING_REVIEW_RUN_001/paper/main.pdf),
 Lean sources, scripts and results. [Independent review](proofs/ft1536/stages/FT_FAMILY_SCALING_REVIEW_RUN_001/REPORT.md)

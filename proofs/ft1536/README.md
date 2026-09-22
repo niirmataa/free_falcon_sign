@@ -234,6 +234,13 @@ sprawdzenie arytmetyki. Zachowano coarse error≈3.681e9 jako luźny failed boun
 Następny obowiązek: **IID_RETRY_COMPOSITION** z actual cap16/reached entries/
 filtration i postprocessing, przed przypisaniem whole-call lossu.
 
+**Następne zadanie do ręcznego startu:**
+[IID_RETRY_COMPOSITION](documents/FT1536_ZADANIE_ASTRA_IID_RETRY_COMPOSITION_2026-09-22.md)
+z [1270 przypiętymi wejściami](background/IID_RETRY_COMPOSITION_2026-09-22/README.md).
+Zakres: od jednego legalnego post-H2P entry do return z actual retry/codec
+region, stopping-time applicability H6P, WholeRegionBad, checked-precast
+coupling i zasoby z resetami. [CURRENT_TASK](CURRENT_TASK.md) wskazuje nowy W.
+
 **Zachowane opracowanie FT_FAMILY_SCALING modelu MiMo:**
 [pakiet, PDF i wyniki](stages/FT_FAMILY_SCALING_REVIEW_RUN_001/README.md)
 oraz [niezależna recenzja](stages/FT_FAMILY_SCALING_REVIEW_RUN_001/REPORT.md).
@@ -308,7 +315,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [SCALAR_GAUSSIAN_COMPARISON](stages/FT1536_H3_SCALAR_GAUSSIAN_COMPARISON_RUN_001/REPORT.md) | **H3_SCALAR_GAUSSIAN_COMPARISON_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — local TV/forward chi2; reverse∞ i joint scope jawne | `64af4cb` |
 | [ORDERED_JOINT_KERNEL](stages/FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001/REPORT.md) | **H3_ORDERED_JOINT_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — adaptive root/source closure, directed comparison/resources/POST transfer; reference BadPrecast probability otwarte | `22e6dd4` |
 | [FT_FAMILY_SCALING review](stages/FT_FAMILY_SCALING_REVIEW_RUN_001/REPORT.md) | **RESEARCH_REVIEW_CHANGES_REQUIRED** — zachowany pakiet MiMo, sprawdzone lemmas/layout/obliczenia; korekty game/reduction i zakresów | `0c1ddc1` |
-| [H6P_REFERENCE_BAD_EVENT](stages/FT1536_H6P_REFERENCE_BAD_EVENT_RUN_001/REPORT.md) | **H6P_REFERENCE_BAD_EVENT_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — source map/V/E/MGF i joint tail Q_S<=2^-119, one-root IID<=2^-84 | bieżący checkpoint |
+| [H6P_REFERENCE_BAD_EVENT](stages/FT1536_H6P_REFERENCE_BAD_EVENT_RUN_001/REPORT.md) | **H6P_REFERENCE_BAD_EVENT_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — source map/V/E/MGF i joint tail Q_S<=2^-119, one-root IID<=2^-84 | `1ba7ae0` |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).
