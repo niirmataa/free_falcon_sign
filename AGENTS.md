@@ -35,6 +35,10 @@ Docelowym repozytorium prac jest `free_falcon_sign`.
   kampanii estymatora S06. Najpierw domyka S01 i oddaje werdykt; właściciel
   następnie przekaże gotową recenzję T03 i handoff T02.1. To jawny wyjątek
   od poprzedniego podziału,nie zgoda na relay lub automatyczne inne modele.
+- Doprecyzowanie właściciela dla T03/REVIEW_002: autorem był MiMo2.6Pro,
+  recenzentem Muse Spark1.3 xhigh w świeżym kontekście. To przyjęta podstawa
+  niezależności od autora. Nie wymaga kolejnej zmiany modelu między recenzjami
+  Muse; zachowaj historyczne etykiety/piny i dokładny PARTIAL scope.
 
 ## Trwała lokalizacja pracy
 

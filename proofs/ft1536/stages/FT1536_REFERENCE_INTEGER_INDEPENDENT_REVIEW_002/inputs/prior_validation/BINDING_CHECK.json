@@ -1,0 +1,35 @@
+{
+  "schema": "FT1536_REVIEW_EXECUTION_BINDING_V1",
+  "check_kind": "hash_binding_only_no_mathematical_review",
+  "external_review_pins_match": true,
+  "review_manifest_members_verified": 32,
+  "reviewer_verdict": "PASS_SCOPED_REVIEW",
+  "integration_status": "REVIEW_RECEIVED_SAGE_BINDING_PENDING",
+  "sources_of_recorded_hashes": [
+    "review/COMMANDS.log",
+    "review/sage_checks/logs/sage_inputs_sha.txt",
+    "review/REVIEW.md (prefixes)"
+  ],
+  "checks": [
+    {
+      "path": "sage_checks/review_gap_recompute.sage",
+      "recorded_execution_sha256": "8357f9426959f1c069d967248fb5a8a670f963b471f64128b0979246da2cd38c",
+      "sealed_source_sha256": "c38cc42d5166cc4bd9d1a45189ff2d32029960a282d973201f8c82cd74123d73",
+      "match": false
+    },
+    {
+      "path": "sage_checks/review_ring_independent.sage",
+      "recorded_execution_sha256": "7cf23506872c86edf52018ca7cc6dcde0107ee23d425cea4a65aa45d14e38b35",
+      "sealed_source_sha256": "0838dc9cab9d32cc41195508b9a631b368c4154923f60115d0dc1b7bc320c723",
+      "match": false
+    },
+    {
+      "path": "sage_checks/review_zmap_bijection.sage",
+      "recorded_execution_sha256": "ebdb6208f44b8d230a18c41377c0e2207bfa86f8e5e4d56df55d5943b0a90cf4",
+      "sealed_source_sha256": "0b4406680a588308fb395e51974cee127ee70c4914d3cca224b3d55aadd8fa10",
+      "match": false
+    }
+  ],
+  "timestamp_is_not_execution_identity": true,
+  "required_action": "Reviewer separate immutable supplement: explain mismatch and bind three exact .sage executions to sealed source versions; original frozen review unchanged."
+}

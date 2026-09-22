@@ -33,13 +33,13 @@ osiągnięcia, T2C3/T5, kontrakt M0, graf zależności i dalsze obowiązki.
 Pakiet ma 211 członków OUTPUTS i 198 publicznych wejść Git, manifest
 `c3efdcff510983a143946d43ab456656090061cd5b9b4b6847abc7f141c0cfa3`.
 Jest checkpointem dokumentacyjnym (`replay=none`); obecnie archiwum zawiera
-także trzydzieści jeden etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
+także trzydzieści dwa etapy badawcze i audytowe, w tym późniejsze H3_RANGE,
 H3_ZERO_SCALAR, H3_ROOT_LDL, H3_NODE3, H3_NODE2, BINARY_TOWER, audyt FPEMU,
 FLOOR_CT, RAW_ASSEMBLY, STABLE_NORMALIZATION, INITIAL_TARGETS, ORDERED_REACH
 i LEFT_ROOT_CORRELATED_TRANSFER, SOURCE_POSTPROCESSING_AND_PRECAST, SCALAR_KERNEL_IID
 i SCALAR_GAUSSIAN_COMPARISON, ORDERED_JOINT_KERNEL, H6P_REFERENCE_BAD_EVENT
 oraz przegląd FT_FAMILY_SCALING,IID_RETRY_COMPOSITION i częściowy zwrot
-REFERENCE_INTEGER_RECOVERY (handoff nowego odbioru zapowiedziany przez właściciela).
+REFERENCE_INTEGER_RECOVERY (PARTIAL niezależnie odebrany przez REVIEW_002).
 Najnowszy odbiór korekt Family RUN_003 zachowuje CHANGES_REQUIRED (I1/I2).
 
 [Mapa po domknięciu L_V — 2026-09-19](documents/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md)
@@ -304,18 +304,18 @@ napraw E1–E4 (subfield n,units/mixed minima,status/repair,convention).
 Pięć własnych `.sage`,186-file documentary checkpoint; pełnych120 komórek
 nie odtwarzano. S01 NOT_RUN dotyczy jego własnego zadania,nie tej kampanii.
 
-**T03 — PARTIAL_PROOF / FROZEN_AWAITING_REVIEW,nowy REVIEW_002:**
+**T03 — REVIEWED / PARTIAL_PROOF po REVIEW_002:**
 [Zarchiwizowany pakiet autora](stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001/REPORT.md)
 ma85 OUTPUTS i29 INPUTS z pełnym odtworzeniem closure opisanym w
-[archiwum odbioru](validation/2026-09-22-integer-recovery-independent/README.md).
-Muse Spark1.3Free przekazał PASS_SCOPED_REVIEW dla A/reference+mapping,
-C/rounding lemma i conditional D; B-gap≈6086.4 pozostaje OPEN. Jego własny
-replay11/11,około12s i32 członków review zachowano bajtowo. Prowadzący
-stwierdził jednak różnicę hashy3 dodatkowych `.sage` między dziennikiem
-wykonań a frozen źródłami. Właściciel wybrał [pełny ponowny odbiór innym
-modelem](CURRENT_REVIEW_TASK.md),z własnym A–D/fresh replay/Sage bindingiem.
-Nowy W i [1429 przypiętych wejść](background/T03_SECOND_REVIEW_2026-09-22/README.md)
-gotowe; mały suplement zastąpiony. T03 czeka na nowy samodzielny werdykt.
+[pierwszym archiwum](validation/2026-09-22-integer-recovery-independent/README.md).
+[REVIEW_002](validation/2026-09-22-integer-recovery-review-002/README.md) przyniósł
+PASS_SCOPED_REVIEW,78 plików,3 zgodne finalne Sage bindings i własny replay
+recenzenta11/11,exit0,15s. Właściciel doprecyzował role:MiMo2.6Pro autor,
+Muse Spark1.3 xhigh w świeżym kontekście recenzent. Odebrano A/reference+
+mapping/congruence,C/rounding lemma,D conditional. **B-gap≈6086.4 nadal OPEN**,
+podobnie Safe16/center/norm/bytes i pełne recovery. Oryginalne etykiety/piny
+oraz problemy REVIEW_001 zachowane. Prowadzący wykonał archiwizację/binding,
+bez nowego własnego review matematycznego/replayu T03.
 
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
@@ -379,9 +379,10 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [FT_FAMILY_SCALING review](stages/FT_FAMILY_SCALING_REVIEW_RUN_001/REPORT.md) | **RESEARCH_REVIEW_CHANGES_REQUIRED** — zachowany pakiet MiMo, sprawdzone lemmas/layout/obliczenia; korekty game/reduction i zakresów | `0c1ddc1` |
 | [H6P_REFERENCE_BAD_EVENT](stages/FT1536_H6P_REFERENCE_BAD_EVENT_RUN_001/REPORT.md) | **H6P_REFERENCE_BAD_EVENT_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — source map/V/E/MGF i joint tail Q_S<=2^-119, one-root IID<=2^-84 | `1ba7ae0` |
 | [IID_RETRY_COMPOSITION / T01](stages/FT1536_IID_RETRY_COMPOSITION_RUN_001/REPORT.md) | **IID_RETRY_COMPOSITION_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — one post-H2P cap16 IID region,WholeRegionBad<=2^-80,coupling/resources/bytes; independent PASS_SCOPED_REVIEW | `a2cdf317` |
-| [REFERENCE_INTEGER_RECOVERY / T03](stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001/REPORT.md) | **PARTIAL_PROOF** — stary scoped PASS i rozbieżność3 hashy zachowane; B-gap OPEN; nowy pełny REVIEW_002 przygotowany dla innego modelu | archiwum `24449c1` |
+| [REFERENCE_INTEGER_RECOVERY / T03](stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001/REPORT.md) | **REVIEWED PARTIAL_PROOF** — odebrane A/C-lemma/conditional D przez REVIEW_002; B-gap/Safe16/center/norm/bytes OPEN | author archiwum `24449c1`; odbiór2026-09-22 |
 | [FAMILY_CORRECTIONS review / S01](stages/FT_FAMILY_CORRECTIONS_REVIEW_RUN_001/REPORT.md) | **RESEARCH_REVIEW_CHANGES_REQUIRED** — niezależny replay/rachunek potwierdzają rdzeń; R1 game-level scope i R5 precision claim wymagają korekty | lokalny checkpoint2026-09-22 |
 | [FAMILY_SEC_ESTIMATE review / S06](stages/FT_FAMILY_SEC_ESTIMATE_REVIEW_RUN_001/REPORT.md) | **RESEARCH_REVIEW_CHANGES_REQUIRED** — częściowa diagnostyka potwierdzona w scope; E1–E4 wymagają napraw przed domknięciem kampanii | lokalny checkpoint2026-09-22 |
+| [T03 REVIEW_002](stages/FT1536_REFERENCE_INTEGER_INDEPENDENT_REVIEW_002/REVIEW.md) | **PASS_SCOPED_REVIEW** — autor MiMo,recenzent Muse xhigh w świeżym kontekście wg właściciela; odbiór PARTIAL z poprawnym bindingiem finalnych skryptów | lokalny checkpoint2026-09-22 |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).

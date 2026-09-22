@@ -1,0 +1,10 @@
+# FT1536_REFERENCE_INTEGER_INDEPENDENT_REVIEW_002 -- executed commands
+# W-only, network-off (bwrap --unshare-net), HOME/TMPDIR/XDG/DOT_SAGE under W, single-worker
+verify_bundle: python3 -B (manifest exact set/hash, 1429 members, 36095923 bytes, no symlinks)
+seed_build: cp -a inputs/subject/. seed/ (1364 files, OUTPUTS 85 verified, COMMANDS.log preserved)
+replay: bwrap --unshare-net --die-with-parent --ro-bind / / --proc /proc --dev /dev --bind W W --ro-bind W/empty_ro /home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001 --ro-bind W/empty_ro /home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_REFERENCE_INTEGER_INDEPENDENT_REVIEW_001 --tmpfs /tmp --setenv HOME W/home/replay --setenv TMPDIR W/seed/tmp --chdir W/seed /usr/bin/python3 -B scripts/replay.py W/seed/tmp/independent-001 0cafdbb2c746043380081052951cb6438643f6a1765a98028a065fa57b7df6de
+sage_gap: HOME=W/home/sage DOT_SAGE=W/dot_sage XDG_CACHE_HOME=W/xdg_cache TMPDIR=W/tmp /home/footfalcon/.local/bin/sage sage_checks/review_gap_recompute_002.sage
+sage_zmap: HOME=W/home/sage DOT_SAGE=W/dot_sage XDG_CACHE_HOME=W/xdg_cache TMPDIR=W/tmp /home/footfalcon/.local/bin/sage sage_checks/review_zmap_bijection_002.sage
+sage_ring: HOME=W/home/sage DOT_SAGE=W/dot_sage XDG_CACHE_HOME=W/xdg_cache TMPDIR=W/tmp /home/footfalcon/.local/bin/sage sage_checks/review_ring_independent_002.sage
+# sage mode: sage lemma.sage (preparser on), ZZ/QQ/RIF256 outward, exact bound^2>=p
+# lean/c_slice rebuilt fresh inside replay DEST (Lean -j1 -M2048, gcc -O/ASan/UBSan)

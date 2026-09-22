@@ -3,19 +3,17 @@
 **Aktualizacja2026-09-22:** T01 niezależnie odebrany w `a2cdf317`;
 następnie właściciel poprosił o zadanie korekt S01 przed publikacją.
 Po nim przygotowano na jego prośbę małe T02.1 dla kolejnego ręcznie wybranego modelu.
-Najnowszy handoff: Muse Spark1.3Free przekazał **PASS_SCOPED_REVIEW** dla
-T03 PARTIAL_PROOF. Archiwizacja wykazała różne hashe3 checkerów recenzenta
-w dziennikach versus frozen źródła: **REVIEW_RECEIVED_SAGE_BINDING_PENDING**.
-Następnie właściciel wybrał ponowny pełny odbiór przez inny model:
-**REVIEW_002 PREPARED_OWNER_START**,T03 **FROZEN_AWAITING_REVIEW**.
-Mały suplement zastąpiono; prowadzący przygotował1429 przypiętych wejść.
+Najnowszy odbiór: **T03 REVIEWED — PARTIAL_PROOF**,na podstawie REVIEW_002
+z PASS_SCOPED_REVIEW. Autor MiMo2.6Pro; recenzent Muse Spark1.3 xhigh w świeżym
+kontekście według doprecyzowania właściciela.78 plików i3 finalne bindings
+zgodne; replay recenzenta11/11,15s. Historia rozbieżności REVIEW_001 zachowana.
 Nowszy zwrot: **S01 COMPLETE_FOR_REVIEW / FROZEN_AWAITING_REVIEW**,
 osobny niezależny odbiór przygotowany. Właściciel potwierdził także częściowy
 run estymatora S06/RUN_001 —70 zapisanych komórek NTRU,bez finalnego freeze.
 **Aktualna decyzja wykonawcza:** właściciel polecił temu prowadzącemu
 osobiście ocenić S01 i S06. Oba odbiory zakończono z **CHANGES_REQUIRED**,
 recenzent GPT-6 Astra; S06 obejmuje częściowy snapshot,nie pełne120 komórek. Właściciel
-zapowiedział gotowy handoff recenzji T03 i wyniku T02.1 po zakończeniu S01.
+przekazał REVIEW_002 T03; oczekujemy jeszcze na zapowiedziany handoff T02.1.
 To jawny wyjątek od wcześniejszego podziału ról,bez delegacji/relay.
 Historyczne obserwacje procesów/dudect poniżej pochodzą z około04:33 CEST.
 Stan procesów jest ulotny: sprawdź go ponownie przed pracą. Ten dokument
@@ -23,7 +21,7 @@ aktualizujemy po odbiorze etapu, zmianie wykonawcy lub decyzji właściciela.
 
 Główna kolejka zadań i kryteria: [ROADMAP](ROADMAP.md).
 Astra: **T01 REVIEWED**, pełny **T02 OPEN**, podzadanie **T02.1 PREPARED_OWNER_START**;
-osobny MiMo = **T03 FROZEN_AWAITING_REVIEW / REVIEW_002 PREPARED_OWNER_START**,
+osobny MiMo = **T03 REVIEWED / PARTIAL_PROOF, B-gap OPEN**,
 poprawki Family = **S01 CHANGES_REQUIRED**, dudect = **S02**,
 estymator = **S06 CHANGES_REQUIRED / PARTIAL_DIAGNOSTIC**, oryginalny run w pauzie.
 
@@ -40,6 +38,9 @@ estymator = **S06 CHANGES_REQUIRED / PARTIAL_DIAGNOSTIC**, oryginalny run w pauz
   **Weryfikację i replay zwrotów wykonuje inny niezależny model wskazany przez
   właściciela**. Nowe wyniki czekają na jego raport; ten prowadzący nie wykonuje
   ich odbioru automatycznie. Starsze opisane niżej odbiory są faktami historycznymi.
+- T03/REVIEW_002: właściciel doprecyzował,że MiMo2.6Pro był autorem,a Muse
+  Spark1.3 xhigh recenzentem w świeżym kontekście. Przyjęto niezależność od
+  autora; nie przypisuje się zmiany modelu między dwiema recenzjami Muse.
 - **Publikacja czegokolwiek na GitHub wstrzymana**, aż MiMo poprawi
   FT_FAMILY_SCALING i poprawiona wersja przejdzie pozytywny niezależny odbiór.
   Późniejszy push nadal wymaga osobnego polecenia. Aktualny dystans do origin
@@ -59,6 +60,7 @@ estymator = **S06 CHANGES_REQUIRED / PARTIAL_DIAGNOSTIC**, oryginalny run w pauz
 | ORDERED_JOINT `22e6dd4` | Dokładne adaptacyjne3072 calls jednego root, closure/fresh-tail, TV≤2^-25, forward chi2<2^-48, zasoby |
 | H6P_REFERENCE_BAD_EVENT `1ba7ae0` | Uniform joint BadPrecast OBU pre-narrow vectors: Q_S≤2^-119, one-root P_IID≤2^-84 |
 | IID_RETRY_COMPOSITION / T01 `a2cdf317` | Niezależny PASS_SCOPED_REVIEW: one post-H2P cap16 region G_retry_IID, WholeRegionBad≤2^-80,coupling,wspólne resources,STATIC bytes |
+| REFERENCE_INTEGER_RECOVERY / T03, REVIEW_002 | REVIEWED PARTIAL:A independent reference/mapping/congruence,C rounding-gap lemma,D conditional; B≈6086.4≥1/2 i pełny recovery OPEN |
 
 H6P: niezależny replay **197/197**,73.819s;48 modułów Lean/327 twierdzeń,
 26 nowych. Osobne QQ/RBF768 sprawdzenie rachunku. V<5462457,E<1095.
@@ -98,46 +100,39 @@ Raport i odbiór:
   failed routes/overlap i strict-tail convention zachowano. owner_accepted=false.
 - Autor i recenzent zakończyli obliczenia. Nie wznawiaj ich W ani relay.
   T02 można teraz przygotować z odebranych zasobów; start wymaga nowego TASK/W
-  i ręcznego polecenia. T03 oczekuje na nowy pełny odbiór przez inny model.
+  i ręcznego polecenia. T03 odebrano w zakresie PARTIAL przez REVIEW_002.
 - Granica: nie ma boundu Bad|success bez success denominatoru. Real PRNG,H2P,
   whole real Sign,integer recovery,Sign→Verify/security/CT pozostają otwarte.
 
-## T03 — PARTIAL_PROOF, ponowny odbiór innym modelem przygotowany
+## T03 — REVIEWED / PARTIAL_PROOF po REVIEW_002
 
 `FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001`,one-root,autor MiMo2.6Pro.
 [CURRENT_MIMO_TASK](../../proofs/ft1536/CURRENT_MIMO_TASK.md) wiąże pierwotne
 TASK/bootstrap i [nowy REVIEW_002](../../proofs/ft1536/CURRENT_REVIEW_TASK.md).
-Właściciel przekazał zakończony odbiór Muse Spark1.3Free. Oryginalne pakiety
-zarchiwizowano z niezmiennymi pinami. Później właściciel wybrał pełną ponowną
-weryfikację przez model inny niż Muse i autor MiMo; nowy W czeka na ręczny start.
+Właściciel przekazał REVIEW_002 i doprecyzował role:MiMo2.6Pro autor,
+Muse Spark1.3 xhigh recenzent w świeżym kontekście. Raport zachowuje własną
+etykietę Free i przyznanie braku zmiany modelu względem REVIEW_001; podstawą
+odbioru jest późniejsze doprecyzowanie właściciela i zgodny nowy binding.
 
 - REPORT SHA `e01a09789091c9c9322f9727263503063c94441a68ff5f30af952bcc4417785c`;
   OUTPUTS SHA `0cafdbb2c746043380081052951cb6438643f6a1765a98028a065fa57b7df6de`.
-- **Przekazany scoped PASS:** A niezależna integralna reference i mapping3072/
+- **Odebrany scoped PASS:** A niezależna integralna reference i mapping3072/
   congruence; C rounding-gap lemma; D conditional consumer. B≈6086.4008 nie
-  osiąga `<1/2`; Safe16/center/norm/bytes otwarte. Status REVIEWED wstrzymany
-  do rozliczenia niespójności dokumentacji wykonań recenzenta.
-- [Archiwum odbioru](../../proofs/ft1536/validation/2026-09-22-integer-recovery-independent/README.md):
-  32 członków review,11 zapisanych semantic files i dostępne logi własnego
-  replayu recenzenta11/11,exit0,około12s. Prowadzący związał je z bajtami,
-  bez nowego wykonania replayu/matematyki. Author stage85 OUTPUTS/29 INPUTS;
-  materializacja closure1278 plików rozlicza bootstrap,POLICY i alias TASK.
-- REVIEW SHA `0d9402eeef00994a54cf58fb656092501bf599b13c10a9fead7b94d2b82c6e36`;
-  REVIEW_OUTPUTS SHA `9ba196b04a95ec2fa4dadda06d6dabc50c99a2313f6a370e488e9065cb423ccd`.
-- Blocker:3 hashe `.sage` w COMMANDS/sage_inputs_sha/REPORT są inne niż w
-  REVIEW_OUTPUTS i plikach. [BINDING_CHECK](../../proofs/ft1536/validation/2026-09-22-integer-recovery-independent/BINDING_CHECK.json)
-  zachowuje obie wersje hashy. Historyczna rozbieżność pozostaje jawna.
-- Bieżący plan: **FT1536_REFERENCE_INTEGER_INDEPENDENT_REVIEW_002** we własnym W,
-  pełna własna ocena A–D,fresh replay i nowe `.sage` z kompletnym bindingiem.
-  Read-only bundle1429 plików (subject1364,prior62,context3),SHA
-  `8019bda3cee5752d797fd9497d10086ff707f2c4a5739965c7aa48aa210c31e7`.
-  [Przygotowanie/origins](../../proofs/ft1536/background/T03_SECOND_REVIEW_2026-09-22/README.md).
-  Wcześniejszy nieuruchomiony suplement ma SUPERSEDED_OWNER_REREVIEW.
-  Nowy poprawny odbiór ma samodzielną podstawę,nie wymaga pozorowanego
-  odtworzenia nieznanych historycznych wersji Muse. Prowadzący nie uruchomił recenzenta.
+  osiąga `<1/2`; Safe16/center/norm/bytes i pełny recovery pozostają otwarte.
+- [Archiwum REVIEW_002](../../proofs/ft1536/validation/2026-09-22-integer-recovery-review-002/README.md):
+ 78 członków review,bundle1429+manifest,11 wyników i dostępne raw logs.
+ Finalne3 Sage source/receipt/output hashes zgodne; własny replay recenzenta
+ 11/11,exit0,15s. Prowadzący wykonał archiwalne kontrole integralności,
+ bez nowego własnego review matematycznego/replayu T03.
+- REVIEW SHA `2df1b7fa36921d14ea84e41c35e8a60707e044bd6d19688c41e4d79ea172b75f`;
+ REVIEW_OUTPUTS SHA `9ea0274b78bfd5c0123a9502644ce081e3cc11dc9b59843c40597a6f5e76ef04`.
+- [Historia REVIEW_001](../../proofs/ft1536/validation/2026-09-22-integer-recovery-independent/README.md)
+ zachowuje rozbieżność3 hashy. Nowy werdykt nie opiera się na tamtych receiptach.
+ Uwagi do kompletności historii failed-source/stderr oraz deklaracji kontekstu
+ zachowano w nowym archiwum,bez dopisywania brakujących danych.
 - Recenzent rozliczył v3→v4/5 plików,wiersze Z versus cały JSON i fixture counts
   (20110 różnych słów/60384 wykonania). Niewygodne wyniki/uwagi zachowane.
-  B-gap fix pozostaje kolejnym proponowanym tranche po domknięciu odbioru.
+  B-gap fix jest następnym proponowanym tranche; niczego nowego nie uruchomiono.
 
 ## Małe T02.1 — osobny model, ręczny start
 
@@ -184,8 +179,8 @@ Nie ma w tym snapshotcie pozytywnego odbioru poprawek. Nie uruchamiaj MiMo sam.
 Aktualizacja przygotowania2026-09-22: właściciel wybrał dla MiMo NOWY obowiązek
 głównego toru, odrębny od korekt Family. [CURRENT_MIMO_TASK](../../proofs/ft1536/CURRENT_MIMO_TASK.md)
 wskazuje **T03 / one-root REFERENCE_INTEGER_RECOVERY**. Przygotowane wcześniej
-W zwrócono jako PARTIAL_PROOF; właściciel zgłosił już gotową kolejną recenzję
-T03,której handoff/piny przekaże po odbiorze S01.
+W zwrócono jako PARTIAL_PROOF; REVIEW_002 przekazano i odebrano po
+doprecyzowaniu ról MiMo/świeży kontekst Muse. Dokładny zakres opisano wyżej.
 S01 i blokada publikacji pozostają
 otwarte. Nieuruchomiony szkic CORRECTIONS_RUN_002 zachowano lokalnie jako anulowany.
 

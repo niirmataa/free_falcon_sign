@@ -1,17 +1,26 @@
-# T03 — ponowny niezależny odbiór przez inny model, REVIEW_002
+# T03 — REVIEW_002 odebrany: PASS_SCOPED_REVIEW / PARTIAL_PROOF
 
 Osobny odbiór poprawionego **Family/S01** wskazuje
 [CURRENT_FAMILY_REVIEW_TASK](CURRENT_FAMILY_REVIEW_TASK.md),z własnym W.
 Poniższy REVIEW_002 pozostaje zleceniem T03.
 
-Aktualizacja właściciela2026-09-22: zgłosił gotową niezależną recenzję T03
-oraz wynik T02.1 gotowy do audytu; handoff/piny przekaże po zakończeniu S01.
-Oczekujemy na te dane,bez ponownego startu poprzednich wykonawców.
+Aktualizacja właściciela2026-09-22: REVIEW_002 przekazano i odebrano.
+Autor dowodu: MiMo2.6Pro. Recenzent: Muse Spark1.3 xhigh w świeżym kontekście,
+zgodnie z doprecyzowaniem właściciela. T02.1 nadal czeka na zapowiedziany handoff.
 
-Decyzja właściciela2026-09-22: przekazać T03 do ponownej weryfikacji innemu
-modelowi. **REVIEW_ID=FT1536_REFERENCE_INTEGER_INDEPENDENT_REVIEW_002**,
-status **PREPARED_OWNER_START**. T03: PARTIAL_PROOF / FROZEN_AWAITING_REVIEW.
-Właściciel wybiera i uruchamia model inny niż autor MiMo i recenzent Muse.
+**REVIEW_ID=FT1536_REFERENCE_INTEGER_INDEPENDENT_REVIEW_002**.
+Status: **PASS_SCOPED_REVIEW — ZAKOŃCZONY**. T03: **REVIEWED / PARTIAL_PROOF**.
+Podstawa niezależności: recenzent różny od autora i nowy kontekst potwierdzony
+przez właściciela. Historyczne sformułowanie o innym modelu niż REVIEW_001
+pozostaje w frozen prompt/raporcie; nie wymaga nowego uruchomienia.
+
+- [Odebrany raport i zakres](validation/2026-09-22-integer-recovery-review-002/README.md).
+- REVIEW SHA `2df1b7fa36921d14ea84e41c35e8a60707e044bd6d19688c41e4d79ea172b75f`.
+- REVIEW_OUTPUTS SHA `9ea0274b78bfd5c0123a9502644ce081e3cc11dc9b59843c40597a6f5e76ef04`.
+- Zweryfikowano78/78 plików,3 finalne source/receipt/output bindings i zapisany
+  własny replay recenzenta11/11,exit0,15s. Odbiór obejmuje A,C-lemma,D conditional;
+  B-gap≈6086.4,Safe16,center/norm,bytes i pełne recovery pozostają OPEN.
+- Prowadzący archiwizuje przekazany werdykt,bez nowego własnego replayu/matematyki T03.
 
 - [Pełny nowy prompt](documents/FT1536_PROMPT_SECOND_INDEPENDENT_REVIEW_INTEGER_RECOVERY_2026-09-22.md),
   SHA `83db22afa9fe375be285f3988f413ba87fa580535f0a62de36ab670ed9ce4ecc`.
@@ -25,7 +34,8 @@ Właściciel wybiera i uruchamia model inny niż autor MiMo i recenzent Muse.
 Zakres: pełna własna ocena A–D częściowego pakietu,własny fresh replay,
 niezależne `.sage` i source→execution→output binding. Nowy werdykt ma
 samodzielną podstawę; historyczne problemy Muse pozostają opisane osobno.
-Prowadzący przygotował dane/piny; nowy recenzent jeszcze nie został uruchomiony.
+Recenzent zakończył pracę. Piny i źródła pozostały niezmienne; ograniczenia
+historycznych receiptów opisano w archiwum odbioru.
 
 ### Zastąpiona propozycja suplementu
 
@@ -33,7 +43,7 @@ Prowadzący przygotował dane/piny; nowy recenzent jeszcze nie został uruchomio
 **SUPERSEDED_OWNER_REREVIEW**. Przy zmianie decyzji nie był uruchomiony
 (tylko AGENTS,brak aktywnych jobów). [Stary prompt](documents/FT1536_PROMPT_T03_REVIEW_SAGE_BINDING_SUPPLEMENT_2026-09-22.md)
 i SHA `be1d102ed0210db956f66c05c8359bc3150cca3d987fc43a1009f29924256d01`
-zachowano jako historię. Aktualny start dotyczy wyłącznie REVIEW_002 powyżej.
+zachowano jako historię. REVIEW_002 również zakończony; frozen W nie wznawiaj.
 
 ## Zarchiwizowany pierwotny odbiór T03
 
@@ -51,7 +61,7 @@ zachowano jako historię. Aktualny start dotyczy wyłącznie REVIEW_002 powyżej
 
 Przekazany partial scope:A/reference+mapping,C/rounding lemma,D conditional;
 B-gap≈6086.4 nadal OPEN. Własny replay recenzenta11/11,exit0,około12s jest
-zachowany wraz z bajtami wyników. Nowa luka dotyczy bindingu3 jego dodatkowych
+zachowany wraz z bajtami wyników. Historyczna luka dotyczy bindingu3 jego dodatkowych
 checkerów. TASK/piny autora:[T03](CURRENT_MIMO_TASK.md). B-gap/Safe16/center/norm/
 bytes pozostają otwarte. Blokada publikacji obowiązuje.
 

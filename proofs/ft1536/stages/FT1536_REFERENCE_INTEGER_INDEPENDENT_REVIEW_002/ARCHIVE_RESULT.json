@@ -1,0 +1,69 @@
+{
+  "schema": "T03_REVIEW_002_ARCHIVE_ACCEPTANCE_V1",
+  "result": "PASS_SCOPED_REVIEW",
+  "project_status": "REVIEWED_PARTIAL",
+  "mathematical_status": "PARTIAL_PROOF",
+  "review_id": "FT1536_REFERENCE_INTEGER_INDEPENDENT_REVIEW_002",
+  "author_model": "MiMo 2.6 Pro",
+  "reviewer_label_in_frozen_report": "Muse Spark 1.3 Free (OpenCode)",
+  "reviewer_identification_by_owner": "Muse Spark 1.3 xhigh",
+  "new_context_confirmed_by_owner": true,
+  "reviewer_differs_from_author": true,
+  "reviewer_model_changed_between_001_and_002": false,
+  "independence_basis": "different author/reviewer models plus owner-confirmed fresh context; latest owner clarification governs",
+  "owner_clarifications": [
+    "Muse Spark ale nowy kontekst",
+    "T03 pierwotnie cale zadanie robil MiMo 2.6 Pro a weryfikacje Muse Spark 1.3 xhigh swiezy kontekst4"
+  ],
+  "accepted_scope": [
+    "A independent integral reference/mapping/congruence",
+    "C rounding-gap lemma, application conditional on B",
+    "D conditional consumer recovery and Safe16"
+  ],
+  "open": [
+    "B gap < 1/2",
+    "Safe16",
+    "center/norm",
+    "bytes",
+    "full integer recovery",
+    "Sign->Verify"
+  ],
+  "binding_checks": [
+    {
+      "source": "sage_checks/review_gap_recompute_002.sage",
+      "source_sha256": "a27021f011fa0b6ae5b899dcc0c615c2a9f2fa8da0a0719ce9d7b27d381575cd",
+      "output": "sage_checks/review_gap_recompute_002.json",
+      "output_sha256": "fbdad76031e2e900737e73f0fdecdafebeffa5cc8e6bdedc7876d13772b7a00e",
+      "exit_code": 0,
+      "final_binding": "MATCH"
+    },
+    {
+      "source": "sage_checks/review_zmap_bijection_002.sage",
+      "source_sha256": "2ae23ed2ce48fc7b767dd56b1c0434e7aecbde2ce8e0d322383c493b8c134b48",
+      "output": "sage_checks/review_zmap_bijection_002.json",
+      "output_sha256": "2c20bb0ab22439cd513b890ba8ca0c441477f5541ecadd38c02420c2a1f3106f",
+      "exit_code": 0,
+      "final_binding": "MATCH"
+    },
+    {
+      "source": "sage_checks/review_ring_independent_002.sage",
+      "source_sha256": "759c11b76afe9262d939065f0392e50be566cc0bb3a5ed474b3f4b53b62ffb91",
+      "output": "sage_checks/review_ring_independent_002.json",
+      "output_sha256": "a5d41d7cbe09b5caf1ea781ddd6cb171ee3bfefa1052831b906c1302fdfc1f59",
+      "exit_code": 0,
+      "final_binding": "MATCH"
+    }
+  ],
+  "saved_replay_byte_matches": 11,
+  "reported_replay_seconds": 15,
+  "new_mathematical_review_by_archivist": false,
+  "new_replay_by_archivist": false,
+  "procedural_notes": [
+    "Failed-attempt logs/hashes preserved in 78-member review; no separate old .sage source copies in that manifest.",
+    "COMMANDS lists --tmpfs /tmp with work-local TMPDIR; historical full-write behavior not independently audited.",
+    "Original runner captures C-slice stderr to PIPE without persisting it; outer empty stderr is not evidence for every child stream."
+  ],
+  "owner_accepted": false,
+  "production_source_changed": false,
+  "push_authorized": false
+}

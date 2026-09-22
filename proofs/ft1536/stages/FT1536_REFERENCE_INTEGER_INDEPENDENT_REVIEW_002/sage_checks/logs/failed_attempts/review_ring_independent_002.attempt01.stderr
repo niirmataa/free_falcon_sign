@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "/home/footfalcon/miniforge3/envs/sage/bin/sage", line 5, in <module>
+    from sage.cli.__main__ import main
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__main__.py", line 9, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__init__.py", line 56, in main
+    return RunFileCmd(options).run()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/run_file_cmd.py", line 50, in run
+    eval(compile(open(input_file, 'rb').read(), input_file, 'exec'), sage_globals())
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_REFERENCE_INTEGER_INDEPENDENT_REVIEW_002/tmp/sage_uphy1poc/review_ring_independent_002f51vngg2.sage.py", line 168, in <module>
+    rA = check_family(fA, gA, FA, GA, "famA_f1")
+  File "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_REFERENCE_INTEGER_INDEPENDENT_REVIEW_002/tmp/sage_uphy1poc/review_ring_independent_002f51vngg2.sage.py", line 133, in check_family
+    hlist = [ZZ(int(c)) for c in hF.list()]
+                                 ^^^^^^^
+  File "sage/structure/element.pyx", line 494, in sage.structure.element.Element.__getattr__
+    return self.getattr_from_category(name)
+  File "sage/structure/element.pyx", line 507, in sage.structure.element.Element.getattr_from_category
+    return getattr_from_other_class(self, cls, name)
+  File "sage/cpython/getattr.pyx", line 362, in sage.cpython.getattr.getattr_from_other_class
+    raise AttributeError(dummy_error_message)
+AttributeError: 'sage.rings.fraction_field_FpT.FpTElement' object has no attribute 'list'

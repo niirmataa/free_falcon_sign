@@ -1,0 +1,16 @@
+# provenance (replay.py is self-contained and does NOT read this file)
+verify:  python3 -B scripts/verify_inputs.py
+consts:  python3 -B scripts/extract_constants.py
+ring:    /home/footfalcon/.local/bin/sage checks/sage/exact_ring_checks.sage
+skel:    /home/footfalcon/.local/bin/sage checks/sage/skeleton_cancellation.sage
+gap:     /home/footfalcon/.local/bin/sage checks/sage/gap_composition.sage
+oracle:  /home/footfalcon/.local/bin/sage checks/sage/rint_oracle.sage
+# powyżej: autorytatywny rachunek wg FT1536_ZASADA_RACHUNKU_SAGEMATH_2026-09-22;
+# argv/SHA .sage/exit codes: SAGE_RUNS.json w receiptach replay + logs/1x_sage_*
+lean:    $LEAN -j1 -M2048 --root=formal formal/SkeletonCancel.lean
+lean:    $LEAN -j1 -M2048 --root=formal formal/RintGap.lean
+cslice:  make -C checks/c_slice (targets: harness_rint{,_asan,_ubsan}; -O literal)
+run:     ./harness_rint{,_asan,_ubsan} > out_{normal,asan,ubsan}.txt
+# (historyczny oracle .py: checks/c_slice/oracle_check.py, zastąpiony rint_oracle.sage)
+replay:  python3 -B scripts/replay.py <ABSENT_DEST> <EXTERNAL_OUTPUTS_SHA>
+env:     HOME/TMPDIR/TMP/TEMP under W; no network; no Git; inputs/source RO

@@ -1,0 +1,59 @@
+{
+ "schema": "ft1536.reference_integer_recovery.error_ledger/1",
+ "entries": {
+  "A1_challenge_fft_words": {
+   "bound": "1/8192*sqrt(4/3)",
+   "discharge": "PROVED_UNIFORM_OUTWARD",
+   "src": "TARGETS/INITIAL_TARGET_CERTIFICATE"
+  },
+  "A2_det_error_x_challenge": {
+   "bound": "Cwcap/q*eps_det*sqrt(4/3)",
+   "eps_det": "844218775904257/4503599627370496",
+   "discharge": "PROVED_UNIFORM_OUTWARD",
+   "src": "ROOT/ROOT_CERTIFICATE"
+  },
+  "A3_target_rounding_layer": {
+   "discharge": "PROVED_UNIFORM_OUTWARD",
+   "src": "TARGETS rounding_only_error_outward"
+  },
+  "A4_word_errors_x_target": {
+   "discharge": "PROVED_UNIFORM_OUTWARD",
+   "src": "ROOT x TARGETS caps"
+  },
+  "B_word_residuals_x_Z": {
+   "discharge": "PROVED_UNIFORM_OUTWARD",
+   "src": "ROOT word errors x returned caps"
+  },
+  "C1_tree_reconstruction": {
+   "discharge": "PROVED_UNIFORM_OUTWARD",
+   "src": "H6P ERROR_LEDGER graph_basis_coefficient_error (correlated triangular)"
+  },
+  "C2_terminal_box": {
+   "etaT": "953676273951487/1000000000000000000 approx (Er+Eh+Elast exact in H6P)",
+   "discharge": "PROVED_UNIFORM_OUTWARD",
+   "src": "H6P terminal errors x P_key coeff caps"
+  },
+  "C3_defect_x_word_errors": {
+   "discharge": "PROVED_UNIFORM_OUTWARD"
+  },
+  "D_suffix_CM_add": {
+   "discharge": "PROVED_UNIFORM_OUTWARD",
+   "src": "H6P post_CM_add_coefficient_error"
+  },
+  "E_ifft": {
+   "bound": "1/128",
+   "discharge": "PROVED_UNIFORM_OUTWARD",
+   "src": "POST/H6P source_iFFT_error"
+  },
+  "Safe16": {
+   "discharge": "OPEN",
+   "src": "POST precast_disposition (out of scope here)"
+  }
+ },
+ "composed_total": {
+  "float": 6086.4008,
+  "required": "< 1/2",
+  "met": false
+ },
+ "exact_source": "checks/gap_composition.json"
+}

@@ -239,16 +239,14 @@ also requires changes:subfield dimension,aggregation units/model grouping,
 status/repair handling and summary conventions. The declared model arithmetic
 was checked in native Sage; the full120-cell grid was not rerun.
 
-The [owner-run MiMo proof task](proofs/ft1536/CURRENT_MIMO_TASK.md) addresses
-T03: one-root reference integer recovery. Its author returned **PARTIAL_PROOF**:
-Muse Spark1.3Free returned a scoped PASS for the reference/rounding subclaims
-and conditional consumer, with a recorded11/11 fresh replay. The source-error
-bound about6086.4 does not establish gap<1/2. [Archive binding checks](proofs/ft1536/validation/2026-09-22-integer-recovery-independent/README.md)
-found three reviewer checker hashes differing between execution records and
-frozen sources. The owner requested a [full second independent review](proofs/ft1536/CURRENT_REVIEW_TASK.md)
-by another model. REVIEW_002 has a new workspace and1429 pinned input files;
-its own A–D assessment, fresh replay and Sage execution binding will underpin
-the new verdict. T03 remains **FROZEN_AWAITING_REVIEW**.
+The [MiMo-authored T03 task](proofs/ft1536/CURRENT_MIMO_TASK.md) is now
+**REVIEWED — PARTIAL_PROOF** through [REVIEW_002](proofs/ft1536/validation/2026-09-22-integer-recovery-review-002/README.md).
+The owner identifies the reviewer as Muse Spark1.3 xhigh in a fresh context,
+distinct from the author MiMo2.6Pro. All78 review members and three final Sage
+execution bindings match; the recorded reviewer replay is11/11,exit0,15s.
+The accepted scope is the reference/mapping/congruence,rounding lemma and
+conditional consumer. The source-error bound about6086.4 still does not establish
+gap<1/2; full recovery,Safe16,center/norm,bytes and Sign→Verify remain open.
 
 The [historical deferred preparation](provenance/checks/2026-09-20-dudect-floor-ct-ready/README.md)
 is retained. The [current floor-ct launcher](tests/ft1536/dudect/README.md)

@@ -1,0 +1,78 @@
+{
+  "schema": "FT1536_H3_ZERO_SCALAR_RESULT_V1",
+  "stage_id": "FT1536_H3_ZERO_SCALAR_RUN_001",
+  "status": "H3_ZERO_SCALAR_PROVED_FOR_PINNED_MODEL",
+  "local_A_B_C_proved": true,
+  "local_proof_kind": "MIXED_KERNEL_AND_UNIVERSAL_ANALYTICAL_SOURCE_PROOF",
+  "source_add_error_fully_kernelized": false,
+  "consumer_analytic_premise_explicit": true,
+  "domain": "All finite Word64 x with -2147483283 <= val(x) < 2147483282, including both zeros and subnormals; all integer z in [-365,366].",
+  "claims": {
+    "floor": "s_C(x) = floor(val(x)) - eps0(x), eps0 iff raw negative zero",
+    "integer": "long-to-int exact; s_C+z within signed32",
+    "of": "Exact for all signed32 inputs, integer zero maps to +0",
+    "sub": "r_C and res_C finite; exact-value absolute errors <= E_r and E_res",
+    "r_delta": "Both +0 or positive normal, values in [0,1]; endpoint1 not exclusive to -0",
+    "residual": "|val(res_C)| <= 366 + 1/1048576; signed zero preserved",
+    "ordered": "Current NumericCenter precedes return/residual and next center; E_half/E_add explicit; no fault0 closeness"
+  },
+  "errors": {
+    "E_r": "1/1048576",
+    "E_res": "1/1048576",
+    "universal_add_envelope": "13*2^-24+2^-1021",
+    "E_half": "OPEN_WHERE_NEEDED",
+    "E_add": "OPEN_WHERE_NEEDED"
+  },
+  "proof_layers": {
+    "A": "kernel",
+    "OF": "kernel normalized C model",
+    "B": "universal analytical source proof + kernel integer lemmas",
+    "C": "mixed kernel/analytical substitution"
+  },
+  "pins": {
+    "base": "cb99e67ae6f7cfa1c79be23d70c8fbfbe6874f13",
+    "task_sha256": "0c039d00fdb229b909e6eee76b53ecb340a02c3c3b1b0cc3203bcf1332bf9fdd",
+    "bootstrap_manifest_sha256": "e8eb2b091e9396d08afbdd3f8b4adebbebf97e7a0890306c5cf07c8e7beb4099",
+    "candidate_manifest_sha256": "2553358fbb1144acdb577e1ad371a017ac325306dd901af745295dd17b03bd5a",
+    "report_sha256": "d7e59a782a3b89bf7adfe1bc0894595a18e907a11019e557ecd55d588befaec8",
+    "analytic_proof_sha256": "579b8614c249dc2f1a6938d600f6b234e85ef6a441ef922bde5570e304d93918"
+  },
+  "checks": {
+    "lean_modules_including_audits": 17,
+    "checked_theorems": 97,
+    "new_theorems": 48,
+    "all_final_lean_logs_clean": true,
+    "word_patterns": 246,
+    "inside_pairs": 1160,
+    "outside_pairs_stopped_before_sum": 70,
+    "native_normal_and_asan_ubsan": "PASS",
+    "lean_literal_native_raw_bits": "PASS",
+    "phase_transcripts": 3480,
+    "finite_checks_are_not_universal_proof": true
+  },
+  "replay": {
+    "pre_freeze_status": "FRESH_REPLAY_PASS",
+    "semantic_matches": 95,
+    "semantic_manifest_sha256": "a8e12dd3c55d8af56a419b2dda877d776a79b96d5a01a08616437a9febdd0ea7",
+    "protocol": "python3 -B scripts/replay.py ABSENT_DEST EXPECTED_OUTPUTS_SHA256",
+    "post_freeze_receipt": "tmp/final_standard_001/REPLAY_RESULT.json",
+    "post_freeze_receipt_in_outputs": false,
+    "note": "Post-freeze execution uses the final external pin. Its outcome is recorded in the fresh destination, without modifying this frozen metadata."
+  },
+  "local_A_B_C_open": [],
+  "open_obligations": [
+    "GLOBAL_REACHABILITY_OPEN",
+    "SAMPLER_LAW_CONSUMPTION_OPEN"
+  ],
+  "next_lemma": "forall E,sk,pk,history,attempt,call,state,mu_bits,sigma_bits, Reach_call_C(E,sk,pk,history,attempt,call,state,mu_bits,sigma_bits) -> NumericCenter(mu_bits)",
+  "next_lemma_scope": "Operational H3/M0 Reach, not a completed kernel interpreter; binder domains and complete source-prefix conditions are in REPORT section7 and the pinned H3/REACHABILITY.md.",
+  "H3_range_proved": false,
+  "global_reachability_proved": false,
+  "sampler_law_proved": false,
+  "baseline_source_integrated": true,
+  "source_changed": false,
+  "new_source_patch_integrated": false,
+  "protocol_wrapper_integrated": false,
+  "owner_accepted": false,
+  "security_reduction_proved": false
+}

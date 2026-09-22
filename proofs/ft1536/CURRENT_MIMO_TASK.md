@@ -1,23 +1,22 @@
-# MiMo — T03 zarchiwizowany, ponowny odbiór przez nowy model
+# MiMo — T03 niezależnie odebrany w zakresie PARTIAL_PROOF
 
 **TASK_ID=FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001**.
-ROADMAP_ID=T03, one-root tranche. **FROZEN_AWAITING_REVIEW**,2026-09-22.
-Autor MiMo2.6PRO: **PARTIAL_PROOF**. Po przekazanym odbiorze Muse i rozbieżności
-hashy właściciel wybrał ponowną weryfikację przez inny model.
-[REVIEW_002](CURRENT_REVIEW_TASK.md) jest przygotowany do ręcznego startu.
+ROADMAP_ID=T03, one-root tranche. **REVIEWED — PARTIAL_PROOF**,2026-09-22.
+Autor: MiMo2.6Pro. Recenzent: Muse Spark1.3 xhigh w świeżym kontekście,
+zgodnie z doprecyzowaniem właściciela. [REVIEW_002](CURRENT_REVIEW_TASK.md)
+ma PASS_SCOPED_REVIEW; piny i3 finalne bindingi skryptów zgodne.
 
 - REPORT SHA `e01a09789091c9c9322f9727263503063c94441a68ff5f30af952bcc4417785c`.
 - OUTPUTS SHA `0cafdbb2c746043380081052951cb6438643f6a1765a98028a065fa57b7df6de`.
 - [Pakiet autora](stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001/REPORT.md):
  85 OUTPUTS/29 INPUTS,import przez identyczny seed z jawnym aliasem TASK.
-- [Archiwum review](validation/2026-09-22-integer-recovery-independent/README.md):
- 32 pliki recenzenta,11/11 zapisanych wyników replayu,pełna closure inputów.
- Recenzent potwierdza A/reference+mapping,C/gap lemma i conditional D;
- B-gap≈6086.4 pozostaje OPEN. T03 jeszcze nie otrzymał REVIEWED.
-- Różne hashe3 dodatkowych `.sage` w poprzedniej recenzji pozostają zapisane
- w historii. Własny pełny odbiór REVIEW_002 ma samodzielnie ocenić A–D,replay
- i binding. Przygotowany wcześniej mały suplement został zastąpiony decyzją
- właściciela; frozen W autora i pierwszego recenzenta pozostają RO.
+- [Odebrany REVIEW_002](validation/2026-09-22-integer-recovery-review-002/README.md):
+ 78 członków review,3 zgodne końcowe Sage bindings,replay recenzenta11/11,
+ exit0,15s. Zakres:A/reference+mapping+congruence,C/gap lemma,D conditional.
+ B-gap≈6086.4 nadal OPEN; pełnego integer recovery nie wykazano.
+- [REVIEW_001](validation/2026-09-22-integer-recovery-independent/README.md)
+ i jego rozbieżność3 hashy pozostają historią. Nowy odbiór ma własne wyniki;
+ kontekst/tryb xhigh potwierdził właściciel. Frozen W są zakończone i RO.
 
 **Obowiązkowe uzupełnienie właściciela2026-09-22:**
 [rachunek w `.sage` uruchamiany `sage lemma.sage`](documents/FT1536_ZASADA_RACHUNKU_SAGEMATH_2026-09-22.md),

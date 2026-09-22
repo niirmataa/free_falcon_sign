@@ -1,0 +1,28 @@
+Traceback (most recent call last):
+  File "sage/rings/polynomial/multi_polynomial.pyx", line 2008, in sage.rings.polynomial.multi_polynomial.MPolynomial.inverse_mod
+    XY = P.one().lift((self,) + tuple(B))
+  File "sage/rings/polynomial/multi_polynomial_libsingular.pyx", line 4823, in sage.rings.polynomial.multi_polynomial_libsingular.MPolynomial_libsingular.lift
+    raise ValueError(msg)
+ValueError: polynomial is not in the ideal
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/footfalcon/miniforge3/envs/sage/bin/sage", line 5, in <module>
+    from sage.cli.__main__ import main
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__main__.py", line 9, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__init__.py", line 56, in main
+    return RunFileCmd(options).run()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/run_file_cmd.py", line 50, in run
+    eval(compile(open(input_file, 'rb').read(), input_file, 'exec'), sage_globals())
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_REFERENCE_INTEGER_INDEPENDENT_REVIEW_002/tmp/sage_3gr9oifz/review_ring_independent_002igotrz5l.sage.py", line 73, in <module>
+    finv = RF(f).inverse_mod(PHIF)
+  File "sage/rings/polynomial/polynomial_element.pyx", line 1625, in sage.rings.polynomial.polynomial_element.Polynomial.inverse_mod
+    return P(R(a).inverse_mod(R.ideal(m)))
+  File "sage/rings/polynomial/multi_polynomial.pyx", line 2011, in sage.rings.polynomial.multi_polynomial.MPolynomial.inverse_mod
+    raise ArithmeticError("element is non-invertible")
+ArithmeticError: element is non-invertible
