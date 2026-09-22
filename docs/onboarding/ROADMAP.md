@@ -1,6 +1,6 @@
 # Główna ścieżka twierdzeń i jawny rejestr zadań FT1536
 
-Wersja planu: **2026-09-22 / 9 — S01 CHANGES_REQUIRED po własnym odbiorze**. To żywy plan prowadzącego, oparty na
+Wersja planu: **2026-09-22 / 10 — S01 i częściowy S06 odebrane z CHANGES_REQUIRED**. To żywy plan prowadzącego, oparty na
 [M0 TARGET_TYPE](../../proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001/TARGET_TYPE.md)
 i [M0 HOP_LEDGER](../../proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001/HOP_LEDGER.md).
 Nie zmienia zamrożonego M0 ani statusów starych raportów. Stan pracy na żywo:
@@ -126,7 +126,7 @@ M2/M3. Aktualny proof path może zmienić postać końcowego ledgeru tylko jawni
 | S03 PLANNED — M0_WRAPPER_INTEGRATION | r40/STATIC4096 i API/framing deployment | Osobne upoważnienie integracji, source/tests/refinement; obecny stary CLI nie jest wrapperem M0 |
 | S04 PLANNED — PUBLIC_XOF_H2P | Real public bit-output SHAKE/H2P vs pierwszy direct-output ROM | Jawna publiczna gra, domain interactions/private use i loss; nie darmowa domain separation |
 | S05 PLANNED — QROM | Quantum oracle/reduction target | Osobny cel i proof assumptions; nie przenosić klasycznej symulacji bez dowodu |
-| S06 PARTIAL_DIAGNOSTIC — ATTACK_ESTIMATES | Właściciel potwierdził FT_FAMILY_SEC_ESTIMATE_2026-09-22_RUN_001;70/120 zapisanych komórek NTRU:FT76824,FT153624,FT307222; STATUS DIAGNOSTIC_NOT_CANDIDATE_READY | [Stan kampanii](STATE.md),wg RESUME_STATE pauza,brak final REPORT/OUTPUTS. Dalszy handoff/odbiór: gry/metriki/populacje,piny estymatora,scope i pełne wyniki; modeling zależy od S01; nie proof security |
+| S06 CHANGES_REQUIRED / PARTIAL_DIAGNOSTIC — ATTACK_ESTIMATES | [Odbiór częściowego runu](../../proofs/ft1536/validation/2026-09-22-family-estimator-independent/README.md):70/120 entries;12 model rows,21 moments,132 cost values+12 błędów oraz3 usvp samples sprawdzone | E1 zły subfield n;E2 raw rop jako log2/mixed minima;E3 status/repair;E4 weakest-link/targets. Naprawy i pełny freeze nadal wymagane; modeling/Emitted/lift OPEN,nie proof security |
 | S07 PLANNED — FULL_IMPLEMENTATION_CT | Zakres rzeczywistej implementacji/kompilacji/platformy | Osobny threat model i dowody/kontrole; dudect ani floor patch nie domykają całości |
 | S08 PLANNED — PLATFORM_BINDING | Usługi OS/entropy/lifetimes do publicznego E | Jawne założenia/środowisko/refinement; theorem modelu E nie jest automatycznie theorem dowolnego OS |
 
@@ -234,3 +234,9 @@ muszą wskazywać ten sam aktywny etap.
   wszystkie receipts i disclosed projection99/100 (unused .pyc poza Git).
   S06 nadal kolejne zlecenie; właściciel przekaże gotowy T03/T02.1 handoff
   po wyniku S01. Nie uruchomiono innych modeli lub timing campaign.
+- 2026-09-22/v10: ten sam recenzent wykonał także zlecony odbiór S06,bez
+  wznawiania oryginalnej kampanii. CHANGES_REQUIRED dla częściowego snapshotu:
+  potwierdzony rdzeń liczbowy,wykryty subfield dimension bug,aggregation units/
+  model mixing,statusy MATZOV i błędna konwencja minima/targets.186-file review
+  checkpoint zachowuje122-file snapshot i wszystkie lokalne próby. Oba
+  zlecone odbiory zakończone; oczekujemy na zapowiedziane handoffy T03/T02.1.

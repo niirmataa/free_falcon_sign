@@ -1,0 +1,70 @@
+{
+  "schema": "S06_PARTIAL_INDEPENDENT_REVIEW_V1",
+  "result": "RESEARCH_REVIEW_CHANGES_REQUIRED",
+  "verdict": "CHANGES_REQUIRED",
+  "review_id": "FT_FAMILY_SEC_ESTIMATE_INDEPENDENT_REVIEW_001",
+  "roadmap_id": "S06",
+  "model": "GPT-6 Astra",
+  "model_id": "openai/gpt-6-astra",
+  "author_status": "DIAGNOSTIC_NOT_CANDIDATE_READY",
+  "author_final_report_or_outputs_present": false,
+  "snapshot_sha256": "6a03a50a06167045b72a9aebfa3afa5269102a4e251f3d4e9f1de82d02349df4",
+  "grid_cells_present": 70,
+  "grid_cells_planned": 120,
+  "empty_cells_marked_OK": 5,
+  "all_costs_nonfinite_cells": 13,
+  "equation_rows_verified": 12,
+  "moment_rows_verified": 21,
+  "cost_surface_values_verified": 132,
+  "cost_surface_errors_reproduced": 12,
+  "actual_ntru_usvp_samples": [
+    {
+      "attack": "usvp",
+      "beta": "479",
+      "cost_model": "ADPS16_classical",
+      "dimension": "1426",
+      "log2_rop": "139.867999999999997785184373025688656414632883123215957598",
+      "matches": true,
+      "rop": "1.27193065231125e42",
+      "scheme": "FT768",
+      "shape": "default_GSA",
+      "stored_log2_delta": "2.90807944562652856615258425863342324189196704328909790078e-15"
+    },
+    {
+      "attack": "usvp",
+      "beta": "1103",
+      "cost_model": "ADPS16_classical",
+      "dimension": "2749",
+      "log2_rop": "322.075999999999960187877741224187537962603389533651258221",
+      "matches": true,
+      "rop": "9.00610245929753e96",
+      "scheme": "FT1536",
+      "shape": "default_GSA",
+      "stored_log2_delta": "4.83196097213624089976583787557016602634678950977020455411e-15"
+    },
+    {
+      "attack": "usvp",
+      "cost_model": "ADPS16_classical",
+      "matches": true,
+      "meaning": "no finite result from this tool/attack model; not a hardness lower bound",
+      "rop": "oo",
+      "scheme": "FT3072",
+      "shape": "default_GSA"
+    }
+  ],
+  "full_grid_rerun": false,
+  "native_sage_successful_runs": 5,
+  "native_sage_failed_attempts": 3,
+  "findings": [
+    "E1_wrong_subfield_dimension_and_overstated_negative_result",
+    "E2_rop_vs_log2_rop_and_mixed_model_minimum",
+    "E3_empty_error_infinity_and_MATZOV_repair_accounting",
+    "E4_weakest_link_and_multi_target_cost_convention"
+  ],
+  "source_unchanged_after_review": true,
+  "original_campaign_resumed": false,
+  "owner_accepted": false,
+  "push_authorized": false,
+  "jobs_finished": true,
+  "completed_utc": "2026-09-22T10:37:14.665522+00:00"
+}

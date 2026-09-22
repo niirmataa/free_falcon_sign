@@ -1,0 +1,242 @@
+{
+  "all_bindings_found": true,
+  "bindings": {
+    "adaptive_cdf_bank": {
+      "file": "Extra/c/falcon-sign.c",
+      "file_sha256": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8",
+      "line": 120,
+      "value": true,
+      "verbatim": "#if FT_ADAPTIVE_CDF_LEVELS != 5 || FT_ADAPTIVE_CDF_TABLE_LEN != 512"
+    },
+    "instance_lock": {
+      "file": "Extra/c/falcon-sign.c",
+      "file_sha256": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8",
+      "line": 1223,
+      "value": true,
+      "verbatim": "if (logn != 10 || n != 1536 || q != 18433) {"
+    },
+    "keygen_max_attempts": {
+      "context": [
+        "#ifndef TERNARY_KEYGEN_MAX_ATTEMPTS",
+        "#define TERNARY_KEYGEN_MAX_ATTEMPTS   3000000",
+        "#endif"
+      ],
+      "file": "Extra/c/falcon-keygen.c",
+      "file_sha256": "0a09b6ed2363308f54584dfd1e2d33ee1b4601a68c77712c50da920b5074a5cf",
+      "line": 93,
+      "value": 3000000,
+      "verbatim": "#define TERNARY_KEYGEN_MAX_ATTEMPTS   3000000"
+    },
+    "margin_formula_comment": {
+      "context": [
+        "\t\t * Candidate ternary verification bounds in the normalized-canonical",
+        "\t\t * quadratic form above. The active FT1536 value is",
+        "\t\t * floor(1.075^2 * 2*N * 768^2). SIG-001 and the final norm/security",
+        "\t\t * selection remain open.",
+        "\t\t */"
+      ],
+      "file": "Extra/c/falcon-enc.c",
+      "file_sha256": "0f7085fa975d41ebbeb96d5db4cb68482c344ef2d602ca8853e20a4d4f04fb05",
+      "line": 632,
+      "value": true,
+      "verbatim": "* floor(1.075^2 * 2*N * 768^2). SIG-001 and the final norm/security"
+    },
+    "metric_pairing_loop": {
+      "file": "Extra/c/falcon-enc.c",
+      "file_sha256": "0f7085fa975d41ebbeb96d5db4cb68482c344ef2d602ca8853e20a4d4f04fb05",
+      "line": 621,
+      "value": true,
+      "verbatim": "s += (int32_t)s1[u] * (int32_t)s1[u + hn];"
+    },
+    "metric_square_loop": {
+      "file": "Extra/c/falcon-enc.c",
+      "file_sha256": "0f7085fa975d41ebbeb96d5db4cb68482c344ef2d602ca8853e20a4d4f04fb05",
+      "line": 615,
+      "value": true,
+      "verbatim": "z = s1[u];"
+    },
+    "mkn": {
+      "file": "Extra/c/falcon-sign.c",
+      "file_sha256": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8",
+      "line": 148,
+      "value": true,
+      "verbatim": "#define MKN(logn, ter)   ((size_t)(1 + ((ter) << 1)) << ((logn) - (ter)))"
+    },
+    "norm_bound2": {
+      "context": [
+        " */",
+        "#define FALCON_FT1536_NORM_BOUND2   ((int64_t)2093922385)",
+        ""
+      ],
+      "file": "Extra/c/internal.h",
+      "file_sha256": "512629d3b79fa5bd74131ed2ecde06e1d157f5ac58db3f758db96b19131f1ba5",
+      "line": 163,
+      "value": 2093922385,
+      "verbatim": "#define FALCON_FT1536_NORM_BOUND2   ((int64_t)2093922385)"
+    },
+    "proposal_variances_comment": {
+      "file": "Extra/c/falcon-sign.c",
+      "file_sha256": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8",
+      "line": 83,
+      "value": true,
+      "verbatim": "* narrowest proposal from nominal sigma0^2 in { 5, 20, 80, 320, 768 } whose exact"
+    },
+    "q_guard": {
+      "context": [
+        "",
+        "\t\tif (logn != 10 || n != 1536 || q != 18433) {",
+        "\t\t\treturn 0;"
+      ],
+      "file": "Extra/c/falcon-sign.c",
+      "file_sha256": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8",
+      "line": 1223,
+      "value": 18433,
+      "verbatim": "if (logn != 10 || n != 1536 || q != 18433) {"
+    },
+    "q_relation_literal": {
+      "context": [
+        "\t}",
+        "\trelation[0] -= 18433;",
+        "\tfor (i = 0; i < n; i ++) {"
+      ],
+      "file": "Extra/c/falcon-sign.c",
+      "file_sha256": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8",
+      "line": 1140,
+      "value": 18433,
+      "verbatim": "relation[0] -= 18433;"
+    },
+    "sig001_open_comment": {
+      "context": [
+        "\t\t * quadratic form above. The active FT1536 value is",
+        "\t\t * floor(1.075^2 * 2*N * 768^2). SIG-001 and the final norm/security",
+        "\t\t * selection remain open."
+      ],
+      "file": "Extra/c/falcon-enc.c",
+      "file_sha256": "0f7085fa975d41ebbeb96d5db4cb68482c344ef2d602ca8853e20a4d4f04fb05",
+      "line": 632,
+      "value": true,
+      "verbatim": "* floor(1.075^2 * 2*N * 768^2). SIG-001 and the final norm/security"
+    },
+    "sign_max_attempts": {
+      "context": [
+        "",
+        "#ifndef SIGN_MAX_ATTEMPTS",
+        "#define SIGN_MAX_ATTEMPTS   16",
+        "#endif",
+        ""
+      ],
+      "file": "Extra/c/falcon-sign.c",
+      "file_sha256": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8",
+      "line": 102,
+      "value": 16,
+      "verbatim": "#define SIGN_MAX_ATTEMPTS   16"
+    },
+    "signing_sigma": {
+      "context": [
+        " * proposal variance 768. SIG-001 and the numerical sampler transfer are open.",
+        " */",
+        "#define FT1536_SIGNING_SIGMA       ((int64_t)768)",
+        "#define FT1536_Q_SQUARED           ((int64_t)339775489)",
+        "#define FT1536_LEAF_MIN_BITS       UINT64_C(0x4090000053700377)"
+      ],
+      "file": "Extra/c/falcon-sign.c",
+      "file_sha256": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8",
+      "line": 129,
+      "value": 768,
+      "verbatim": "#define FT1536_SIGNING_SIGMA       ((int64_t)768)"
+    }
+  },
+  "manifest_all_verified": true,
+  "manifest_entries": [
+    {
+      "file": "Makefile",
+      "sha256": "25cd0345332882ccab4beea68d5139955c871499733ab9f5fa3cc8ef898d5049",
+      "verified": true
+    },
+    {
+      "file": "falcon-enc.c",
+      "sha256": "0f7085fa975d41ebbeb96d5db4cb68482c344ef2d602ca8853e20a4d4f04fb05",
+      "verified": true
+    },
+    {
+      "file": "falcon-fft.c",
+      "sha256": "06b573b636ae368dcda3eb4d89c3936ab31272123440d0d5362317e55d9ac063",
+      "verified": true
+    },
+    {
+      "file": "falcon-keygen.c",
+      "sha256": "0a09b6ed2363308f54584dfd1e2d33ee1b4601a68c77712c50da920b5074a5cf",
+      "verified": true
+    },
+    {
+      "file": "falcon-sign.c",
+      "sha256": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8",
+      "verified": true
+    },
+    {
+      "file": "falcon-vrfy.c",
+      "sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+      "verified": true
+    },
+    {
+      "file": "falcon.h",
+      "sha256": "657ad2b2d45b8932c3b9a703ac718c1f23dad78523036c1a934b8e21cf0f4519",
+      "verified": true
+    },
+    {
+      "file": "fpr-double.h",
+      "sha256": "5dd9110dd4e77c96e19263488bd0937cea0032623f40cacb289da7e3e1256d56",
+      "verified": true
+    },
+    {
+      "file": "fpr-emulated.c",
+      "sha256": "7cb06c9ea8f8bfc205a207cd73af367d299005d4bfec26333ced702f1c024e5f",
+      "verified": true
+    },
+    {
+      "file": "fpr-emulated.h",
+      "sha256": "6b897d6c217ef25a322e3b5c3d9488b9d6b8d0e369a710d8fce2259f24e6d84f",
+      "verified": true
+    },
+    {
+      "file": "frng.c",
+      "sha256": "4b1289adf0c902abe9408d989b4eb8d292cbb6ea86b92e1325a10fd9c5dfc644",
+      "verified": true
+    },
+    {
+      "file": "ft1536-adaptive-cdf-tables.h",
+      "sha256": "c16f041a64aba25991b5473111675f1c046ebc38285fca6c052124cf3b7fdf4f",
+      "verified": true
+    },
+    {
+      "file": "internal.h",
+      "sha256": "512629d3b79fa5bd74131ed2ecde06e1d157f5ac58db3f758db96b19131f1ba5",
+      "verified": true
+    },
+    {
+      "file": "shake.c",
+      "sha256": "c3e7864bf4139264f8c287053214bf869e242757bf555235da81454e40ea316a",
+      "verified": true
+    },
+    {
+      "file": "shake.h",
+      "sha256": "2373a37e09907c8e57a6b1adc05e26499d9cf2752518267a80291de931c2d8df",
+      "verified": true
+    },
+    {
+      "file": "test_falcon.c",
+      "sha256": "ecd22c8f0ac8c24df0692c94ebb293b5944fe42fc57d97f2e06f01e5ecc44b4c",
+      "verified": true
+    },
+    {
+      "file": "tool.c",
+      "sha256": "920ac2d8a96408c505670eb2f044cde763ca11945d90ec24d8c6f2a048377890",
+      "verified": true
+    }
+  ],
+  "manifest_file": "provenance/ft1536-candidate.sha256",
+  "missing_bindings": [],
+  "q_consistent": true,
+  "schema": "FT_FAMILY_BUILD_INPUTS_V1",
+  "source_build": "Extra/c (active build of this repository)"
+}

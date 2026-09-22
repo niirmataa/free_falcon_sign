@@ -1,0 +1,85 @@
+{
+  "schema": "FT_FAMILY_SEC_ESTIMATE_INPUTS_V1",
+  "date": "2026-09-22",
+  "provenance": {
+    "repo_source_manifest": "56974571b46e8257bdd3b4097c8c70fded6bb4b94c64805f6e35ec80929a0985",
+    "family_docs": "proofs/ft1536/work/FT_FAMILY_SCALING_2026-09-22_RUN_002 (ATTACK_PROBLEMS.md, CLAIMS.md C2-C7, C19)",
+    "estimator_upstream_commit": "3e48ef421ec256afddb3e7d2249a77eab6e9ba12",
+    "falcon_reference": "falcon-specification.pdf + falcon-round3.zip (parameters.py verified as exact ZIP member), pins copied from S20-SEC-ESTIMATE-001-20260827-a1/inputs"
+  },
+  "problem_definitions": {
+    "P1_key_recovery": "ATTACK_PROBLEMS.md Sec.3 P1a, RAW iid ternary law; coefficient metric; EMITTED conditioning OPEN",
+    "P2_forgery": "ATTACK_PROBLEMS.md Sec.2, inhomogeneous coset at Q_A2 threshold B_N (targets from the M0 ROM table); homogeneous SIS is a REJECTED control only",
+    "multi_target": "targets=Q_H+1 table values, union bound over distinct names (no independence assumption)"
+  },
+  "family": {
+    "q": 18433,
+    "margin": {"num": 43, "den": 40},
+    "margin_decimal": "1.075",
+    "signing_sigma_baseline": 768,
+    "key_sigma_variance": {"num": 2, "den": 3},
+    "key_distribution": "iid uniform {-1,0,+1} raw proposal (pre-gate)",
+    "metric_block_det": {"num": 3, "den": 4},
+    "signature_metric": "N/2 copies of Gram [[1,1/2],[1/2,1]] per polynomial, two polynomials (Q_A2)",
+    "schemes": [
+      {"tag": "FT768",  "N": 768,  "logn": 9,  "conductor": 2304,
+       "strict_bound_squared": null,
+       "sigma_variants": {
+         "V_A_fixed_width": {"sigma": 768, "status": "ALTERNATIVE_PROPOSAL"},
+         "V_B_sqrtN_scaled": {"sigma_expr": "768*sqrt(N/1536)", "status": "ALTERNATIVE_PROPOSAL"}}},
+      {"tag": "FT1536", "N": 1536, "logn": 10, "conductor": 4608,
+       "strict_bound_squared": 2093922385,
+       "strict_bound_pinned": true,
+       "sigma_variants": {
+         "PINNED": {"sigma": 768, "status": "PINNED_KERNEL_FTBounds"}}},
+      {"tag": "FT3072", "N": 3072, "logn": 11, "conductor": 9216,
+       "strict_bound_squared": null,
+       "sigma_variants": {
+         "V_A_fixed_width": {"sigma": 768, "status": "ALTERNATIVE_PROPOSAL"},
+         "V_B_sqrtN_scaled": {"sigma_expr": "768*sqrt(N/1536)", "status": "ALTERNATIVE_PROPOSAL"}}}
+    ]
+  },
+  "falcon_anchors": {
+    "Falcon-1024": {
+      "ring_degree": 1024, "ambient_dimension": 2048, "q": 12289,
+      "bound_squared": 70265242, "equation_2_4_radius": 8382,
+      "key_gs_multiplier": "1.17",
+      "key_sigma_effective": "1.17*sqrt(q/(2*n))",
+      "signature_metric": "Euclidean",
+      "validation_anchors": {"keyrec_block": 936, "forgery_block": 952}
+    },
+    "Falcon-512": {
+      "ring_degree": 512, "ambient_dimension": 1024, "q": 12289,
+      "key_gs_multiplier": "1.17",
+      "key_sigma_effective": "1.17*sqrt(q/(2*n))",
+      "signature_metric": "Euclidean",
+      "radius_rule": "floor(1.1*sqrt(2*n)*sigma), sigma from official parameters.py formulas (smooth*gs_norm); computed, recorded",
+      "validation_anchors": null
+    }
+  },
+  "cost_models": {
+    "sieve_0.292": {"coefficient": "0.292", "description": "classical Core-SVP in Falcon parameters.py (BDGL16)"},
+    "bdgl_0.265": {"coefficient": "0.265", "description": "legacy Falcon quantum table convention (Laarhoven)"},
+    "enum_CN12": {
+      "beta_log_beta_coefficient": "0.270188776350190",
+      "beta_coefficient": "-1.0192050451318417",
+      "constant": "16.10253135200765",
+      "node_cycles": 100,
+      "svp_repeat_dimension_factor": 8,
+      "description": "lattice-estimator CheNgu12 enumeration-node fit including its repeat and LLL terms"
+    }
+  },
+  "estimator_grid": {
+    "attacks": ["usvp", "dsd", "bdd", "bdd_hybrid", "bdd_mitm_hybrid"],
+    "red_cost_models": [
+      "RC.MATZOV(nn='ListDecoding')", "RC.MATZOV(nn='quantum')",
+      "RC.GJ21", "RC.ChaLoy21", "RC.ABFKSW20", "RC.ABLR21",
+      "RC.ADPS16(mode='classical')", "RC.ADPS16(mode='quantum')",
+      "RC.ADPS16(mode='paranoid')",
+      "RC.BDGL16", "RC.LaaMosPol14", "RC.CheNgu12"
+    ],
+    "red_shape_models": ["GSA", "zgsa"],
+    "secret_law": "estimator.nd.Ternary for both Xs and Xe (RAW ternary)",
+    "ntru_type": "circulant"
+  }
+}

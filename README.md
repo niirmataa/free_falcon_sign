@@ -234,6 +234,10 @@ but the R1 game-bound scope and R5 precision claim need correction. Publication
 remains blocked. The owner also confirmed a partial FT-family estimator
 run (70/120 NTRU grid cells); its diagnostic scope and pending freeze are
 recorded in [STATE](docs/onboarding/STATE.md).
+Its [independent partial review](proofs/ft1536/validation/2026-09-22-family-estimator-independent/README.md)
+also requires changes:subfield dimension,aggregation units/model grouping,
+status/repair handling and summary conventions. The declared model arithmetic
+was checked in native Sage; the full120-cell grid was not rerun.
 
 The [owner-run MiMo proof task](proofs/ft1536/CURRENT_MIMO_TASK.md) addresses
 T03: one-root reference integer recovery. Its author returned **PARTIAL_PROOF**:

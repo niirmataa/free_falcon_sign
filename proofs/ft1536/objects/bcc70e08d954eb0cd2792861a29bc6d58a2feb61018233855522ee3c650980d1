@@ -1,0 +1,19 @@
+# COMMANDS.log — wykonane kroki kampanii (2026-09-22)
+# Wszystkie z katalogu kampanii; skrypty przez pythona env Sage (bez
+# preparsera) zgodnie z TOOLCHAIN.txt.
+
+python3 scripts/extract_build_inputs.py
+python3 scripts/verify_vendor.py
+git clone https://github.com/malb/lattice-estimator.git inputs/tools/upstream
+git -C inputs/tools/upstream checkout 3e48ef421ec256afddb3e7d2249a77eab6e9ba12
+python3 scripts/verify_vendor.py --upstream inputs/tools/upstream
+/home/footfalcon/miniforge3/envs/sage/bin/python scripts/sec_estimate.sage
+/home/footfalcon/miniforge3/envs/sage/bin/python scripts/sis_models.sage
+python3 scripts/hostile_envelope.py
+/home/footfalcon/miniforge3/envs/sage/bin/python scripts/subfield_normdown.sage
+/home/footfalcon/miniforge3/envs/sage/bin/python scripts/a2_isis_embedding.sage
+/home/footfalcon/miniforge3/envs/sage/bin/python scripts/ntru_models.sage   # grid, dlugi
+/home/footfalcon/miniforge3/envs/sage/bin/python scripts/aggregate.py
+
+# Zapisane przebiegi (stdout/stderr) tych uruchomień są w results_*.log oraz
+# wypisach w artifacts/*.json (pola "ts" przy rekordach przyrostowych).

@@ -33,7 +33,7 @@ osiągnięcia, T2C3/T5, kontrakt M0, graf zależności i dalsze obowiązki.
 Pakiet ma 211 członków OUTPUTS i 198 publicznych wejść Git, manifest
 `c3efdcff510983a143946d43ab456656090061cd5b9b4b6847abc7f141c0cfa3`.
 Jest checkpointem dokumentacyjnym (`replay=none`); obecnie archiwum zawiera
-także trzydzieści etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
+także trzydzieści jeden etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
 H3_ZERO_SCALAR, H3_ROOT_LDL, H3_NODE3, H3_NODE2, BINARY_TOWER, audyt FPEMU,
 FLOOR_CT, RAW_ASSEMBLY, STABLE_NORMALIZATION, INITIAL_TARGETS, ORDERED_REACH
 i LEFT_ROOT_CORRELATED_TRANSFER, SOURCE_POSTPROCESSING_AND_PRECAST, SCALAR_KERNEL_IID
@@ -295,11 +295,14 @@ source_header w FFT JSON. R4 wycofany zakresowo,R5 core negative potwierdzony,
 R6 proposed. [Wymagane I1/I2](stages/FT_FAMILY_CORRECTIONS_REVIEW_RUN_001/REQUIRED_CORRECTIONS.md):
 R1 scope oracles/Adv oraz R5 claim precyzji. Publikacja nadal wstrzymana.
 
-**S06 — osobna częściowa kampania estymatora:** właściciel potwierdził run
+**S06 — częściowy run odebrany z CHANGES_REQUIRED:** właściciel potwierdził run
 FT_FAMILY_SEC_ESTIMATE_2026-09-22_RUN_001:70 zapisanych komórek NTRU dla
 FT768/FT1536/FT3072,STATUS DIAGNOSTIC_NOT_CANDIDATE_READY,bez finalnego freeze.
-[STATE](../../docs/onboarding/STATE.md) podaje zakres i snapshot; S01 NOT_RUN
-dotyczy jego własnego zadania,nie tej odrębnej wykonanej kampanii.
+[Niezależny odbiór](validation/2026-09-22-family-estimator-independent/README.md)
+potwierdza12 model rows/21 moments/132 cost values i3 usvp samples,ale wymaga
+napraw E1–E4 (subfield n,units/mixed minima,status/repair,convention).
+Pięć własnych `.sage`,186-file documentary checkpoint; pełnych120 komórek
+nie odtwarzano. S01 NOT_RUN dotyczy jego własnego zadania,nie tej kampanii.
 
 **T03 — PARTIAL_PROOF / FROZEN_AWAITING_REVIEW,nowy REVIEW_002:**
 [Zarchiwizowany pakiet autora](stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001/REPORT.md)
@@ -378,6 +381,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [IID_RETRY_COMPOSITION / T01](stages/FT1536_IID_RETRY_COMPOSITION_RUN_001/REPORT.md) | **IID_RETRY_COMPOSITION_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — one post-H2P cap16 IID region,WholeRegionBad<=2^-80,coupling/resources/bytes; independent PASS_SCOPED_REVIEW | `a2cdf317` |
 | [REFERENCE_INTEGER_RECOVERY / T03](stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001/REPORT.md) | **PARTIAL_PROOF** — stary scoped PASS i rozbieżność3 hashy zachowane; B-gap OPEN; nowy pełny REVIEW_002 przygotowany dla innego modelu | archiwum `24449c1` |
 | [FAMILY_CORRECTIONS review / S01](stages/FT_FAMILY_CORRECTIONS_REVIEW_RUN_001/REPORT.md) | **RESEARCH_REVIEW_CHANGES_REQUIRED** — niezależny replay/rachunek potwierdzają rdzeń; R1 game-level scope i R5 precision claim wymagają korekty | lokalny checkpoint2026-09-22 |
+| [FAMILY_SEC_ESTIMATE review / S06](stages/FT_FAMILY_SEC_ESTIMATE_REVIEW_RUN_001/REPORT.md) | **RESEARCH_REVIEW_CHANGES_REQUIRED** — częściowa diagnostyka potwierdzona w scope; E1–E4 wymagają napraw przed domknięciem kampanii | lokalny checkpoint2026-09-22 |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).

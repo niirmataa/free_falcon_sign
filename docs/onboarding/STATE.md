@@ -13,8 +13,8 @@ Nowszy zwrot: **S01 COMPLETE_FOR_REVIEW / FROZEN_AWAITING_REVIEW**,
 osobny niezależny odbiór przygotowany. Właściciel potwierdził także częściowy
 run estymatora S06/RUN_001 —70 zapisanych komórek NTRU,bez finalnego freeze.
 **Aktualna decyzja wykonawcza:** właściciel polecił temu prowadzącemu
-osobiście ocenić S01 i S06. S01 zakończono z **CHANGES_REQUIRED**,
-recenzent GPT-6 Astra; S06 pozostaje kolejnym zleceniem. Właściciel
+osobiście ocenić S01 i S06. Oba odbiory zakończono z **CHANGES_REQUIRED**,
+recenzent GPT-6 Astra; S06 obejmuje częściowy snapshot,nie pełne120 komórek. Właściciel
 zapowiedział gotowy handoff recenzji T03 i wyniku T02.1 po zakończeniu S01.
 To jawny wyjątek od wcześniejszego podziału ról,bez delegacji/relay.
 Historyczne obserwacje procesów/dudect poniżej pochodzą z około04:33 CEST.
@@ -25,7 +25,7 @@ Główna kolejka zadań i kryteria: [ROADMAP](ROADMAP.md).
 Astra: **T01 REVIEWED**, pełny **T02 OPEN**, podzadanie **T02.1 PREPARED_OWNER_START**;
 osobny MiMo = **T03 FROZEN_AWAITING_REVIEW / REVIEW_002 PREPARED_OWNER_START**,
 poprawki Family = **S01 CHANGES_REQUIRED**, dudect = **S02**,
-estymator = **S06 PARTIAL_DIAGNOSTIC**, według zapisanego handoffu w pauzie.
+estymator = **S06 CHANGES_REQUIRED / PARTIAL_DIAGNOSTIC**, oryginalny run w pauzie.
 
 ## Decyzje właściciela
 
@@ -219,7 +219,17 @@ ani oceniony tym review. Własne failed attempts recenzenta zachowane.
 - Author COMPLETE nie znosi bramki publikacji. Wymagany pozytywny niezależny
   scoped review,a później osobne polecenie push. T03 REVIEW_002 ma odrębne W.
 
-## S06 — potwierdzony przez właściciela częściowy run estymatora
+## S06 — niezależny odbiór częściowego runu: CHANGES_REQUIRED
+
+[Pełny odbiór i piny](../../proofs/ft1536/validation/2026-09-22-family-estimator-independent/README.md)
+wykonał GPT-6 Astra po S01,na to samo bezpośrednie polecenie właściciela.
+Pięć natywnych `.sage`:12 model rows/pola,21 exact moments +mean checks,
+132 cost values+12 error rows,3 wybrane NTRU usvp samples i kontrtest agregatora.
+Wymagane E1:subfield n=N/2 (kod używaN),E2:rop/log2 i grouping modeli,
+E3:MATZOV/EMPTY/inf/repair accounting,E4:weakest-link i multi-target convention.
+Joby zakończone,oryginalnej kampanii nie wznowiono. Nie jest to pełny replay70/120.
+REVIEW SHA `49fabdfaff749a54a651b9d11e8d56dbc118762fcfe25fdb3c3d32a95c327fdf`;
+REVIEW_OUTPUTS SHA `f1605f5f4d1418248dff5725559c310b973bd90dcf775380b84e83f860de73df`.
 
 W: `proofs/ft1536/work/FT_FAMILY_SEC_ESTIMATE_2026-09-22_RUN_001`.
 STATUS=`DIAGNOSTIC_NOT_CANDIDATE_READY`; RESUME_STATE opisuje pauzę i wznowienie
@@ -231,8 +241,8 @@ Snapshot hash siatki: `3f766b1a4f46080f99422f2f7f7c8c270708bc949e25ed01f9a482df9
 
 S01 estimator_campaign_executed_in_this_task=false nie przeczy temu osobnemu
 runowi. Wyniki mają zakres model-dependent/diagnostic; aktualny SCOPE wymienia
-otwarte modeling/population/lift obligations. Koszty wymagają osobnego odbioru
-po handoffie z pinami i pełnymi wynikami. Historycznej komendy env-python z
+otwarte modeling/population/lift obligations. Pełne domknięcie kampanii wymaga
+napraw z odbioru oraz handoffu z pinami i kompletnymi wynikami. Komendy env-python z
 RESUME_STATE nie traktuj jako nowego polecenia startu; nowe rachunki stosują
 obowiązujący tryb Sage. Prowadzący nie wznawiał ani nie zatrzymywał kampanii.
 

@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/home/footfalcon/miniforge3/envs/sage/bin/sage", line 5, in <module>
+    from sage.cli.__main__ import main
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__main__.py", line 9, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__init__.py", line 56, in main
+    return RunFileCmd(options).run()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/run_file_cmd.py", line 50, in run
+    eval(compile(open(input_file, 'rb').read(), input_file, 'exec'), sage_globals())
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT_FAMILY_SEC_ESTIMATE_INDEPENDENT_REVIEW_001/check_runs/fields-001/tmp/sage_xcav6up4/field_auditojx8eaim.sage.py", line 21, in <module>
+    assert abs(df-I(dq(r['delta_falcon']))).upper()<I(_sage_const_1 )/_sage_const_10 **_sage_const_38
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "sage/structure/element.pyx", line 1103, in sage.structure.element.Element.__richcmp__
+    return coercion_model.richcmp(self, other, op)
+  File "sage/structure/coerce.pyx", line 2070, in sage.structure.coerce.CoercionModel.richcmp
+    raise bin_op_exception('<', x, y)
+TypeError: unsupported operand parent(s) for <: 'Real Field with 384 bits of precision and rounding RNDU' and 'Real Interval Field with 384 bits of precision'
