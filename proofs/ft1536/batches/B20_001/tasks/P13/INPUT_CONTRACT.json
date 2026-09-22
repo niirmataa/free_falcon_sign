@@ -1,0 +1,40 @@
+{
+  "id": "P13",
+  "task_id": "B20_001_P13_GAUSSIAN_COMPARISON_KERNEL",
+  "role": "author",
+  "producer": null,
+  "fixed_base_inputs": {
+    "GAUSS": {
+      "stage": "FT1536_H3_SCALAR_GAUSSIAN_COMPARISON_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_SCALAR_GAUSSIAN_COMPARISON_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "4c39d1ae9690b6dbc7926f4c169f8728b460d7f34c7dd3dd19aeb167da037842",
+      "outputs_sha256": "c20ea0c260fc5fcb6aec06ed8287335ebceacd31776f3da8633d91e399930f1a",
+      "historical_status": "H3_SCALAR_GAUSSIAN_COMPARISON_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "SCALAR": {
+      "stage": "FT1536_H3_SCALAR_KERNEL_IID_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_SCALAR_KERNEL_IID_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "28a46ed15039e7cb8fc610874ce64cc87436eeeba4ba110beb9ba3152033d903",
+      "outputs_sha256": "0923f85b0290b4b1e57b4f7af356bd58e327cac68d235805e6a8c78d4e622a8f",
+      "historical_status": "H3_SCALAR_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    }
+  },
+  "upstream_tasks": [
+    "P01",
+    "P12"
+  ],
+  "external_required": [],
+  "required_goal_exports": [
+    "B20.Gaussian.normalizer_and_tail_certificates : uniform legal μ/σ → checked bounds on infinite sums",
+    "B20.Gaussian.scalar_TV : TV(K_C,G)≤2^-36,jeśli pełny certyfikat to wykaże",
+    "B20.Gaussian.scalar_forward_chi2 : χ²(K_C||G)≤2^-60,jeśli osiągalne w required domain",
+    "B20.Gaussian.reverse_support_obstruction : G on Z versus finite K support gives stated reverse obstruction"
+  ],
+  "bound_inputs": null,
+  "binding_rule": "copy verified frozen dependencies into W/inputs; write BOUND_INPUTS there; never edit this contract or invent pending hashes",
+  "for_review_required": []
+}

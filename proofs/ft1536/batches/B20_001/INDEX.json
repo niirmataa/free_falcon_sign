@@ -1,0 +1,834 @@
+{
+  "schema": "B20_INDEX_V1",
+  "package": "B20_001",
+  "documents_status": "PREPARED",
+  "authors": 20,
+  "reviewers": 20,
+  "source_base_commit": "ef62824a10a69962dc8347410ee3f424bfa2b12e",
+  "entries": [
+    {
+      "id": "P01",
+      "task_id": "B20_001_P01_FORMAL_FOUNDATIONS",
+      "role": "author",
+      "roadmap": "F02–F09; formalny fundament T02–T06",
+      "title": "Formalny fundament, semantyka źródła i kontrakt certyfikatów",
+      "document": "tasks/P01/TASK.md",
+      "document_sha256": "5c58b7245b93f635938453945e1c8567e0ae3c24cebd7f26e70da92b797346b0",
+      "input_contract": "tasks/P01/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/checkout",
+      "branch": "proof/b20/p01",
+      "paired": "V01",
+      "dependencies": [],
+      "external_required": [],
+      "initial_execution_status": "READY_BOOTSTRAP_OWNER_START"
+    },
+    {
+      "id": "V01",
+      "task_id": "B20_001_V01_FORMAL_FOUNDATIONS",
+      "role": "reviewer",
+      "roadmap": "F02–F09; formalny fundament T02–T06",
+      "title": "Formalny fundament, semantyka źródła i kontrakt certyfikatów",
+      "document": "reviews/V01/REVIEW_TASK.md",
+      "document_sha256": "7e3c02cf03d66f0ba61a53fd54cfb43c1a316edaaa39a126a10e200add9105ad",
+      "input_contract": "reviews/V01/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V01",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V01/checkout",
+      "branch": "proof/b20/v01",
+      "paired": "P01",
+      "dependencies": [
+        "P01"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_PRODUCER_FREEZE"
+    },
+    {
+      "id": "P02",
+      "task_id": "B20_001_P02_WORD_FPEMU_REFINEMENT",
+      "role": "author",
+      "roadmap": "F03–F06; formalny primitive/source binding",
+      "title": "Słowa maszynowe i kontrakty FPEMU powiązane z C",
+      "document": "tasks/P02/TASK.md",
+      "document_sha256": "26d7796dbaeba5afb717c626ecf9dd74e1ed1160c9299a50e423d80034a6a1d9",
+      "input_contract": "tasks/P02/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/checkout",
+      "branch": "proof/b20/p02",
+      "paired": "V02",
+      "dependencies": [
+        "P01"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_UPSTREAM_EXPORTS"
+    },
+    {
+      "id": "V02",
+      "task_id": "B20_001_V02_WORD_FPEMU_REFINEMENT",
+      "role": "reviewer",
+      "roadmap": "F03–F06; formalny primitive/source binding",
+      "title": "Słowa maszynowe i kontrakty FPEMU powiązane z C",
+      "document": "reviews/V02/REVIEW_TASK.md",
+      "document_sha256": "48cd3f41bd6c0e7a343265119a6d7b1f127818bb0c8aeb7bac9a489bd3756ea8",
+      "input_contract": "reviews/V02/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V02",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V02/checkout",
+      "branch": "proof/b20/v02",
+      "paired": "P02",
+      "dependencies": [
+        "P02"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_PRODUCER_FREEZE"
+    },
+    {
+      "id": "P03",
+      "task_id": "B20_001_P03_PRNG_LAYOUT_KERNEL",
+      "role": "author",
+      "roadmap": "T02.1 → T02",
+      "title": "Kernelowy kontrakt init/refill/layout/counter rzeczywistego frng.c",
+      "document": "tasks/P03/TASK.md",
+      "document_sha256": "80676fb1739d88b5d0b46ee046e09e51da054040912a063f3259f453143790b3",
+      "input_contract": "tasks/P03/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P03",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P03/checkout",
+      "branch": "proof/b20/p03",
+      "paired": "V03",
+      "dependencies": [
+        "P01",
+        "P02"
+      ],
+      "external_required": [
+        "T02.1_REVIEWED_HANDOFF"
+      ],
+      "initial_execution_status": "BLOCKED_UPSTREAM_EXPORTS"
+    },
+    {
+      "id": "V03",
+      "task_id": "B20_001_V03_PRNG_LAYOUT_KERNEL",
+      "role": "reviewer",
+      "roadmap": "T02.1 → T02",
+      "title": "Kernelowy kontrakt init/refill/layout/counter rzeczywistego frng.c",
+      "document": "reviews/V03/REVIEW_TASK.md",
+      "document_sha256": "c4367cd6dea7c529bb8a8c2a7fab1e4c080d6ec724fe6c9034e3286d148756f8",
+      "input_contract": "reviews/V03/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V03",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V03/checkout",
+      "branch": "proof/b20/v03",
+      "paired": "P03",
+      "dependencies": [
+        "P03"
+      ],
+      "external_required": [
+        "T02.1_REVIEWED_HANDOFF"
+      ],
+      "initial_execution_status": "BLOCKED_PRODUCER_FREEZE"
+    },
+    {
+      "id": "P04",
+      "task_id": "B20_001_P04_RESET_RESOURCE_KERNEL",
+      "role": "author",
+      "roadmap": "T01 resources → T02",
+      "title": "Formalne zachowanie bufora,getters i budżetów przy resetach",
+      "document": "tasks/P04/TASK.md",
+      "document_sha256": "6cdbad3f422d69612d0c315aaa8c5e356042e843b91d9641a005bf84d8e46af8",
+      "input_contract": "tasks/P04/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P04",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P04/checkout",
+      "branch": "proof/b20/p04",
+      "paired": "V04",
+      "dependencies": [
+        "P01",
+        "P03"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_UPSTREAM_EXPORTS"
+    },
+    {
+      "id": "V04",
+      "task_id": "B20_001_V04_RESET_RESOURCE_KERNEL",
+      "role": "reviewer",
+      "roadmap": "T01 resources → T02",
+      "title": "Formalne zachowanie bufora,getters i budżetów przy resetach",
+      "document": "reviews/V04/REVIEW_TASK.md",
+      "document_sha256": "cee19ad45562c84233154879ae03cdb643a9bce2413eb336ed7e5e1726e3ddd2",
+      "input_contract": "reviews/V04/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V04",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V04/checkout",
+      "branch": "proof/b20/v04",
+      "paired": "P04",
+      "dependencies": [
+        "P04"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_PRODUCER_FREEZE"
+    },
+    {
+      "id": "P05",
+      "task_id": "B20_001_P05_REAL_RNG_GAME_BRIDGE",
+      "role": "author",
+      "roadmap": "T02",
+      "title": "Formalny computational hop real SHAKE/ChaCha → skończony widok IID",
+      "document": "tasks/P05/TASK.md",
+      "document_sha256": "b43dd775dcd8853b131ed63df49136cdb758de8cde9e4d276ea08160949187d0",
+      "input_contract": "tasks/P05/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P05",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P05/checkout",
+      "branch": "proof/b20/p05",
+      "paired": "V05",
+      "dependencies": [
+        "P01",
+        "P03",
+        "P04"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_UPSTREAM_EXPORTS"
+    },
+    {
+      "id": "V05",
+      "task_id": "B20_001_V05_REAL_RNG_GAME_BRIDGE",
+      "role": "reviewer",
+      "roadmap": "T02",
+      "title": "Formalny computational hop real SHAKE/ChaCha → skończony widok IID",
+      "document": "reviews/V05/REVIEW_TASK.md",
+      "document_sha256": "305fe4081990918bfcce8c7c061b8bffc52a904f0d3de70338575fc756302001",
+      "input_contract": "reviews/V05/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V05",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V05/checkout",
+      "branch": "proof/b20/v05",
+      "paired": "P05",
+      "dependencies": [
+        "P05"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_PRODUCER_FREEZE"
+    },
+    {
+      "id": "P06",
+      "task_id": "B20_001_P06_INTEGER_REFERENCE_KERNEL",
+      "role": "author",
+      "roadmap": "T03 A",
+      "title": "Pełna formalizacja exact reference i mappingu3072 zwrotów",
+      "document": "tasks/P06/TASK.md",
+      "document_sha256": "12b7fda4cb54a8b85478e9af32aa6adf051580b11d1f22181678dbd686e5e6ec",
+      "input_contract": "tasks/P06/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P06",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P06/checkout",
+      "branch": "proof/b20/p06",
+      "paired": "V06",
+      "dependencies": [
+        "P01",
+        "P02"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_UPSTREAM_EXPORTS"
+    },
+    {
+      "id": "V06",
+      "task_id": "B20_001_V06_INTEGER_REFERENCE_KERNEL",
+      "role": "reviewer",
+      "roadmap": "T03 A",
+      "title": "Pełna formalizacja exact reference i mappingu3072 zwrotów",
+      "document": "reviews/V06/REVIEW_TASK.md",
+      "document_sha256": "9617eb3d07ceec52e82c6eb7648378246f3f30a3befbc7c3bfd014bf960cd6b9",
+      "input_contract": "reviews/V06/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V06",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V06/checkout",
+      "branch": "proof/b20/v06",
+      "paired": "P06",
+      "dependencies": [
+        "P06"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_PRODUCER_FREEZE"
+    },
+    {
+      "id": "P07",
+      "task_id": "B20_001_P07_STORED_BASIS_RESIDUALS",
+      "role": "author",
+      "roadmap": "T03 B — immutable FFT words",
+      "title": "Uniformne residualy stored FFT basis words",
+      "document": "tasks/P07/TASK.md",
+      "document_sha256": "ab48f56d26a2c52e2f60e2117322e58cd436ee68d498ce964d3cedff4b5ba336",
+      "input_contract": "tasks/P07/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P07",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P07/checkout",
+      "branch": "proof/b20/p07",
+      "paired": "V07",
+      "dependencies": [
+        "P01",
+        "P02",
+        "P06"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_UPSTREAM_EXPORTS"
+    },
+    {
+      "id": "V07",
+      "task_id": "B20_001_V07_STORED_BASIS_RESIDUALS",
+      "role": "reviewer",
+      "roadmap": "T03 B — immutable FFT words",
+      "title": "Uniformne residualy stored FFT basis words",
+      "document": "reviews/V07/REVIEW_TASK.md",
+      "document_sha256": "fadabe9a55f33a61a701e85a4a81418cc4914dcd6a2e54b6187c24b5301ffcc1",
+      "input_contract": "reviews/V07/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V07",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V07/checkout",
+      "branch": "proof/b20/v07",
+      "paired": "P07",
+      "dependencies": [
+        "P07"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_PRODUCER_FREEZE"
+    },
+    {
+      "id": "P08",
+      "task_id": "B20_001_P08_TREE_DEFECT_KERNEL",
+      "role": "author",
+      "roadmap": "T03 B — δ/eroot; F03–F05 domains",
+      "title": "Formalny defekt rekonstrukcji drzewa i legalność parametrów",
+      "document": "tasks/P08/TASK.md",
+      "document_sha256": "6428e79b2e455a99163c11c29243e30cd2314b9024c7b57ff4879fc804309373",
+      "input_contract": "tasks/P08/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P08",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P08/checkout",
+      "branch": "proof/b20/p08",
+      "paired": "V08",
+      "dependencies": [
+        "P01",
+        "P02",
+        "P07"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_UPSTREAM_EXPORTS"
+    },
+    {
+      "id": "V08",
+      "task_id": "B20_001_V08_TREE_DEFECT_KERNEL",
+      "role": "reviewer",
+      "roadmap": "T03 B — δ/eroot; F03–F05 domains",
+      "title": "Formalny defekt rekonstrukcji drzewa i legalność parametrów",
+      "document": "reviews/V08/REVIEW_TASK.md",
+      "document_sha256": "2498b137e553fb2f6130bdb74383ef0f7e4dd10182e386cc80426e54db9a26a6",
+      "input_contract": "reviews/V08/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V08",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V08/checkout",
+      "branch": "proof/b20/v08",
+      "paired": "P08",
+      "dependencies": [
+        "P08"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_PRODUCER_FREEZE"
+    },
+    {
+      "id": "P09",
+      "task_id": "B20_001_P09_TARGET_ERROR_TRANSPORT",
+      "role": "author",
+      "roadmap": "T03 B — ηt; F05 ordered reach",
+      "title": "Formalny transport target/terminal errors przez3072 calls",
+      "document": "tasks/P09/TASK.md",
+      "document_sha256": "a73af4128a2676a5bf74e08550771737ff65d91cd058749fa6028047c02b993a",
+      "input_contract": "tasks/P09/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P09",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P09/checkout",
+      "branch": "proof/b20/p09",
+      "paired": "V09",
+      "dependencies": [
+        "P01",
+        "P02",
+        "P06",
+        "P07",
+        "P08"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_UPSTREAM_EXPORTS"
+    },
+    {
+      "id": "V09",
+      "task_id": "B20_001_V09_TARGET_ERROR_TRANSPORT",
+      "role": "reviewer",
+      "roadmap": "T03 B — ηt; F05 ordered reach",
+      "title": "Formalny transport target/terminal errors przez3072 calls",
+      "document": "reviews/V09/REVIEW_TASK.md",
+      "document_sha256": "114a72f81d2fbc531c513812f0f944d42a3fe2af5d1f930097832d5607bc4689",
+      "input_contract": "reviews/V09/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V09",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V09/checkout",
+      "branch": "proof/b20/v09",
+      "paired": "P09",
+      "dependencies": [
+        "P09"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_PRODUCER_FREEZE"
+    },
+    {
+      "id": "P10",
+      "task_id": "B20_001_P10_INTEGER_RECOVERY_FULL",
+      "role": "author",
+      "roadmap": "T03 B+C",
+      "title": "Końcowy kernelowy gap<1/2 i actual wide-rint recovery",
+      "document": "tasks/P10/TASK.md",
+      "document_sha256": "c8cc201d57fae6cc0c51fcba3ec4ef460330ebe528a3b18f83ddbe8a82fad38b",
+      "input_contract": "tasks/P10/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P10",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P10/checkout",
+      "branch": "proof/b20/p10",
+      "paired": "V10",
+      "dependencies": [
+        "P01",
+        "P02",
+        "P06",
+        "P07",
+        "P08",
+        "P09"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_UPSTREAM_EXPORTS"
+    },
+    {
+      "id": "V10",
+      "task_id": "B20_001_V10_INTEGER_RECOVERY_FULL",
+      "role": "reviewer",
+      "roadmap": "T03 B+C",
+      "title": "Końcowy kernelowy gap<1/2 i actual wide-rint recovery",
+      "document": "reviews/V10/REVIEW_TASK.md",
+      "document_sha256": "769ea779ab9a147bf3228e9eaa62c41dbf47f4436438ccd7c827e9a2bf76606e",
+      "input_contract": "reviews/V10/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V10",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V10/checkout",
+      "branch": "proof/b20/v10",
+      "paired": "P10",
+      "dependencies": [
+        "P10"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_PRODUCER_FREEZE"
+    },
+    {
+      "id": "P11",
+      "task_id": "B20_001_P11_PREFIX_API_BINDING",
+      "role": "author",
+      "roadmap": "T04",
+      "title": "Formalny prefix API,nonce/H2P i wejście ReadyRetryEntry",
+      "document": "tasks/P11/TASK.md",
+      "document_sha256": "5502f14648b0b1064c2b1a3a080d736e84947b72389e14c52d198e28189ca0bf",
+      "input_contract": "tasks/P11/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P11",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P11/checkout",
+      "branch": "proof/b20/p11",
+      "paired": "V11",
+      "dependencies": [
+        "P01",
+        "P02",
+        "P03"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_UPSTREAM_EXPORTS"
+    },
+    {
+      "id": "V11",
+      "task_id": "B20_001_V11_PREFIX_API_BINDING",
+      "role": "reviewer",
+      "roadmap": "T04",
+      "title": "Formalny prefix API,nonce/H2P i wejście ReadyRetryEntry",
+      "document": "reviews/V11/REVIEW_TASK.md",
+      "document_sha256": "0fe6afee01fd152b210db321f26d8e10489601a3ea5b37ac7431e40ee2a3b19b",
+      "input_contract": "reviews/V11/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V11",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V11/checkout",
+      "branch": "proof/b20/v11",
+      "paired": "P11",
+      "dependencies": [
+        "P11"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_PRODUCER_FREEZE"
+    },
+    {
+      "id": "P12",
+      "task_id": "B20_001_P12_SCALAR_IID_KERNEL",
+      "role": "author",
+      "roadmap": "F07 formal debt; T05",
+      "title": "Formalny scalar IID rejection kernel i fresh unread tail",
+      "document": "tasks/P12/TASK.md",
+      "document_sha256": "091bbf2d2cc3f70abdfec3a56133846c110cc7955969592678028ab5b5a35dc0",
+      "input_contract": "tasks/P12/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P12",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P12/checkout",
+      "branch": "proof/b20/p12",
+      "paired": "V12",
+      "dependencies": [
+        "P01",
+        "P02",
+        "P03",
+        "P09"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_UPSTREAM_EXPORTS"
+    },
+    {
+      "id": "V12",
+      "task_id": "B20_001_V12_SCALAR_IID_KERNEL",
+      "role": "reviewer",
+      "roadmap": "F07 formal debt; T05",
+      "title": "Formalny scalar IID rejection kernel i fresh unread tail",
+      "document": "reviews/V12/REVIEW_TASK.md",
+      "document_sha256": "fac296432fc9fc14a05ac56ca9e307906e0d12e8ab6afc62b7e027ef52ed9e64",
+      "input_contract": "reviews/V12/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V12",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V12/checkout",
+      "branch": "proof/b20/v12",
+      "paired": "P12",
+      "dependencies": [
+        "P12"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_PRODUCER_FREEZE"
+    },
+    {
+      "id": "P13",
+      "task_id": "B20_001_P13_GAUSSIAN_COMPARISON_KERNEL",
+      "role": "author",
+      "roadmap": "F07 formal debt; T05",
+      "title": "Formalny directed TV/χ² scalar comparison i support",
+      "document": "tasks/P13/TASK.md",
+      "document_sha256": "53f020b3c648a8758fd69d93ef885cd6c961a18569db1c5e350b92f31c00105e",
+      "input_contract": "tasks/P13/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P13",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P13/checkout",
+      "branch": "proof/b20/p13",
+      "paired": "V13",
+      "dependencies": [
+        "P01",
+        "P12"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_UPSTREAM_EXPORTS"
+    },
+    {
+      "id": "V13",
+      "task_id": "B20_001_V13_GAUSSIAN_COMPARISON_KERNEL",
+      "role": "reviewer",
+      "roadmap": "F07 formal debt; T05",
+      "title": "Formalny directed TV/χ² scalar comparison i support",
+      "document": "reviews/V13/REVIEW_TASK.md",
+      "document_sha256": "cabdc7e197575fe4308046658d3849f647cc3e4c0b57eb1f24e76c4e9b51ac2c",
+      "input_contract": "reviews/V13/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V13",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V13/checkout",
+      "branch": "proof/b20/v13",
+      "paired": "P13",
+      "dependencies": [
+        "P13"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_PRODUCER_FREEZE"
+    },
+    {
+      "id": "P14",
+      "task_id": "B20_001_P14_ORDERED_JOINT_KERNEL",
+      "role": "author",
+      "roadmap": "F08 formal debt; T05",
+      "title": "Formalna adaptacyjna kompozycja3072 calls jednego root",
+      "document": "tasks/P14/TASK.md",
+      "document_sha256": "683c5e3c596f0858c0652bf22e6a247b566ceb03c35a74e86d2244ba230bdad2",
+      "input_contract": "tasks/P14/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P14",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P14/checkout",
+      "branch": "proof/b20/p14",
+      "paired": "V14",
+      "dependencies": [
+        "P01",
+        "P08",
+        "P09",
+        "P12",
+        "P13"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_UPSTREAM_EXPORTS"
+    },
+    {
+      "id": "V14",
+      "task_id": "B20_001_V14_ORDERED_JOINT_KERNEL",
+      "role": "reviewer",
+      "roadmap": "F08 formal debt; T05",
+      "title": "Formalna adaptacyjna kompozycja3072 calls jednego root",
+      "document": "reviews/V14/REVIEW_TASK.md",
+      "document_sha256": "2f8348c188a0d4a52d882c8ce216eaf84d6d7e2c5d6a8f29652b2ff08d8ea13b",
+      "input_contract": "reviews/V14/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V14",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V14/checkout",
+      "branch": "proof/b20/v14",
+      "paired": "P14",
+      "dependencies": [
+        "P14"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_PRODUCER_FREEZE"
+    },
+    {
+      "id": "P15",
+      "task_id": "B20_001_P15_H6_RETRY_FORMAL_COMPOSITION",
+      "role": "author",
+      "roadmap": "F09 + T01 formal debt",
+      "title": "Kernelowy H6 tail i zatrzymana kompozycja cap16",
+      "document": "tasks/P15/TASK.md",
+      "document_sha256": "2ff6715400095c399c59749e95a98d207576cc49233f9ae0fbe7ca3dc259ff12",
+      "input_contract": "tasks/P15/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P15",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P15/checkout",
+      "branch": "proof/b20/p15",
+      "paired": "V15",
+      "dependencies": [
+        "P01",
+        "P02",
+        "P04",
+        "P11",
+        "P14"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_UPSTREAM_EXPORTS"
+    },
+    {
+      "id": "V15",
+      "task_id": "B20_001_V15_H6_RETRY_FORMAL_COMPOSITION",
+      "role": "reviewer",
+      "roadmap": "F09 + T01 formal debt",
+      "title": "Kernelowy H6 tail i zatrzymana kompozycja cap16",
+      "document": "reviews/V15/REVIEW_TASK.md",
+      "document_sha256": "e4275fb249e1233724070efe9e930915863105e4331a942e7a758e2c5683d5cd",
+      "input_contract": "reviews/V15/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V15",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V15/checkout",
+      "branch": "proof/b20/v15",
+      "paired": "P15",
+      "dependencies": [
+        "P15"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_PRODUCER_FREEZE"
+    },
+    {
+      "id": "P16",
+      "task_id": "B20_001_P16_GLOBAL_REFERENCE_GEOMETRY",
+      "role": "author",
+      "roadmap": "T05",
+      "title": "Formalny most ordered reference → zadeklarowany Gaussian kosetu",
+      "document": "tasks/P16/TASK.md",
+      "document_sha256": "fee915d2614b8f5e0e84f3f829495106f596d00903cfb8c9593115472d61ec9e",
+      "input_contract": "tasks/P16/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P16",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P16/checkout",
+      "branch": "proof/b20/p16",
+      "paired": "V16",
+      "dependencies": [
+        "P01",
+        "P06",
+        "P07",
+        "P08",
+        "P09",
+        "P13",
+        "P14"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_UPSTREAM_EXPORTS"
+    },
+    {
+      "id": "V16",
+      "task_id": "B20_001_V16_GLOBAL_REFERENCE_GEOMETRY",
+      "role": "reviewer",
+      "roadmap": "T05",
+      "title": "Formalny most ordered reference → zadeklarowany Gaussian kosetu",
+      "document": "reviews/V16/REVIEW_TASK.md",
+      "document_sha256": "6bcede9630c8d875d65675f3cca2284272e7d0c3a63df373eae316ade5e21b4f",
+      "input_contract": "reviews/V16/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V16",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V16/checkout",
+      "branch": "proof/b20/v16",
+      "paired": "P16",
+      "dependencies": [
+        "P16"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_PRODUCER_FREEZE"
+    },
+    {
+      "id": "P17",
+      "task_id": "B20_001_P17_PRECAST_CODEC_REFINEMENT",
+      "role": "author",
+      "roadmap": "F06 + T06",
+      "title": "Formalny checked-precast observer,norm i byte codec",
+      "document": "tasks/P17/TASK.md",
+      "document_sha256": "cf13895e97ca4a3c787e24746e4419f36d8291178a0f6ff395ef06b357796c13",
+      "input_contract": "tasks/P17/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P17",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P17/checkout",
+      "branch": "proof/b20/p17",
+      "paired": "V17",
+      "dependencies": [
+        "P01",
+        "P02",
+        "P11",
+        "P15"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_UPSTREAM_EXPORTS"
+    },
+    {
+      "id": "V17",
+      "task_id": "B20_001_V17_PRECAST_CODEC_REFINEMENT",
+      "role": "reviewer",
+      "roadmap": "F06 + T06",
+      "title": "Formalny checked-precast observer,norm i byte codec",
+      "document": "reviews/V17/REVIEW_TASK.md",
+      "document_sha256": "0e9a10dc1807c9b29aad0a4da979e2babdb83f3d2683ef5955a1f14a883695e0",
+      "input_contract": "reviews/V17/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V17",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V17/checkout",
+      "branch": "proof/b20/v17",
+      "paired": "P17",
+      "dependencies": [
+        "P17"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_PRODUCER_FREEZE"
+    },
+    {
+      "id": "P18",
+      "task_id": "B20_001_P18_VERIFY_CENTER_COMPATIBILITY",
+      "role": "author",
+      "roadmap": "T03 D → T06",
+      "title": "Formalny most do Verify z rzeczywistym centering/norm accounting",
+      "document": "tasks/P18/TASK.md",
+      "document_sha256": "483cb09dff13b03db4f897451fd6df0c92d6a2201ae708a569f0a3d096fd3a4c",
+      "input_contract": "tasks/P18/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P18",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P18/checkout",
+      "branch": "proof/b20/p18",
+      "paired": "V18",
+      "dependencies": [
+        "P01",
+        "P06",
+        "P10",
+        "P15",
+        "P16",
+        "P17"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_UPSTREAM_EXPORTS"
+    },
+    {
+      "id": "V18",
+      "task_id": "B20_001_V18_VERIFY_CENTER_COMPATIBILITY",
+      "role": "reviewer",
+      "roadmap": "T03 D → T06",
+      "title": "Formalny most do Verify z rzeczywistym centering/norm accounting",
+      "document": "reviews/V18/REVIEW_TASK.md",
+      "document_sha256": "3b4ab98f3426779366e2998c1d72c7209cc4607e01fbcaa03ee37fb92524f0a9",
+      "input_contract": "reviews/V18/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V18",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V18/checkout",
+      "branch": "proof/b20/v18",
+      "paired": "P18",
+      "dependencies": [
+        "P18"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_PRODUCER_FREEZE"
+    },
+    {
+      "id": "P19",
+      "task_id": "B20_001_P19_COMPLETE_OBSERVED_KERNELS",
+      "role": "author",
+      "roadmap": "T06",
+      "title": "Pełne history-dependent observed byte kernels jednego Sign call",
+      "document": "tasks/P19/TASK.md",
+      "document_sha256": "168d9c177522b90dc2b7ce0128557bb18e0d137907bec0e56afd8088ada0ee0c",
+      "input_contract": "tasks/P19/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P19",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P19/checkout",
+      "branch": "proof/b20/p19",
+      "paired": "V19",
+      "dependencies": [
+        "P01",
+        "P05",
+        "P10",
+        "P11",
+        "P15",
+        "P16",
+        "P17",
+        "P18"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_UPSTREAM_EXPORTS"
+    },
+    {
+      "id": "V19",
+      "task_id": "B20_001_V19_COMPLETE_OBSERVED_KERNELS",
+      "role": "reviewer",
+      "roadmap": "T06",
+      "title": "Pełne history-dependent observed byte kernels jednego Sign call",
+      "document": "reviews/V19/REVIEW_TASK.md",
+      "document_sha256": "9091aca46c97d515ceac3c7f070a80bd1d4f0d3d537b8fee407f2d35f388981c",
+      "input_contract": "reviews/V19/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V19",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V19/checkout",
+      "branch": "proof/b20/v19",
+      "paired": "P19",
+      "dependencies": [
+        "P19"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_PRODUCER_FREEZE"
+    },
+    {
+      "id": "P20",
+      "task_id": "B20_001_P20_FORMAL_COMPOSITION_CHECKPOINT",
+      "role": "author",
+      "roadmap": "T02–T06 formal checkpoint; interface to T07–T14",
+      "title": "Końcowa formalna kompozycja i typed interfejs dalszego M7",
+      "document": "tasks/P20/TASK.md",
+      "document_sha256": "11766136a9583d0825bc660331133f7bddd666521424e0cc91c3a7380a7b825b",
+      "input_contract": "tasks/P20/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P20",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P20/checkout",
+      "branch": "proof/b20/p20",
+      "paired": "V20",
+      "dependencies": [
+        "P01",
+        "P04",
+        "P05",
+        "P10",
+        "P11",
+        "P15",
+        "P16",
+        "P17",
+        "P18",
+        "P19"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_UPSTREAM_EXPORTS"
+    },
+    {
+      "id": "V20",
+      "task_id": "B20_001_V20_FORMAL_COMPOSITION_CHECKPOINT",
+      "role": "reviewer",
+      "roadmap": "T02–T06 formal checkpoint; interface to T07–T14",
+      "title": "Końcowa formalna kompozycja i typed interfejs dalszego M7",
+      "document": "reviews/V20/REVIEW_TASK.md",
+      "document_sha256": "13dc626d214942726ab0975c09959d92e33020427e638ea84d155ec66a9419e5",
+      "input_contract": "reviews/V20/INPUT_CONTRACT.json",
+      "workspace": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V20",
+      "checkout": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V20/checkout",
+      "branch": "proof/b20/v20",
+      "paired": "P20",
+      "dependencies": [
+        "P20"
+      ],
+      "external_required": [],
+      "initial_execution_status": "BLOCKED_PRODUCER_FREEZE"
+    }
+  ]
+}

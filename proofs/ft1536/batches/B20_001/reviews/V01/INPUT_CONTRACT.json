@@ -1,0 +1,50 @@
+{
+  "id": "V01",
+  "task_id": "B20_001_V01_FORMAL_FOUNDATIONS",
+  "role": "reviewer",
+  "producer": "P01",
+  "fixed_base_inputs": {
+    "M0": {
+      "stage": "FT1536_M0_CONTRACT_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "b71d71e8d89022ea321241d0ddabdddf4a3b81bfc9fe4faca08476baf6e71c29",
+      "outputs_sha256": "08c9b6afe630e11bd98f33a910476950442854e5925efaa7f8fa1d0d8c8d695d",
+      "historical_status": "M0_CONTRACT_DEFINED_FOR_PINNED_CANDIDATE",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "POST": {
+      "stage": "FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "4cd7ab1a6f63256ed6c015f3ba9bbef97597d7a68bb948bfd8c9264bab307662",
+      "outputs_sha256": "b860e5453a7a72716acd8636cc581ff57b1b9c00dff20baa907e4636344d1401",
+      "historical_status": "PARTIAL_PROOF",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "JOINT": {
+      "stage": "FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "b150ca1284600dbda3a40ae3656a2058d8a6c0f3b7cfb1e38d15a9ccc5e78c59",
+      "outputs_sha256": "da8cfccceea6837fc21edd04e46157351d91ad2d317a37286c05f41f3126e263",
+      "historical_status": "H3_ORDERED_JOINT_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    }
+  },
+  "upstream_tasks": [],
+  "external_required": [],
+  "required_goal_exports": [
+    "B20.Foundation.CExec : Program → State → Outcome → Prop, z konstruktorami dla używanego fragmentu C i wszystkich error/nonreturn outcomes",
+    "B20.Foundation.SourceBinding : PinnedSource → Program → Prop; checker_sound wiążący zaakceptowane tokeny/AST z tą semantyką",
+    "B20.Foundation.CertificateSound : checked rational/interval certificate → odpowiadające twierdzenie matematyczne",
+    "B20.Foundation.ObservedKernel oraz formalne TV/directed-chi2/conditional-history definitions z konkretnymi instancjami bibliotek"
+  ],
+  "bound_inputs": null,
+  "binding_rule": "copy verified frozen dependencies into W/inputs; write BOUND_INPUTS there; never edit this contract or invent pending hashes",
+  "for_review_required": [
+    "producer REPORT/OUTPUTS external pins",
+    "producer HEAD",
+    "formal export/axiom/source binding inventory"
+  ]
+}

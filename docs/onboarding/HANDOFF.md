@@ -12,6 +12,15 @@ Git, jeśli TASK tak stanowi. **Niezależny recenzent** czyta przypiętą kopię
 weryfikuje argument, wykonuje replay i zapisuje kontrole we własnym W.
 Role, modele i katalogi muszą być jawne.
 
+Dla zleconego pakietu B20 obowiązuje szczegółowy
+[protokół wykonania,formalnego odbioru i lokalnych commitów](AGENT_EXECUTION_AND_REVIEW_PROTOCOL.md).
+Właściciel polecił lokalne milestone commity także wykonawcom i recenzentom,
+jako niirmataa,we własnych worktrees/branches. Kanoniczny main zachowuje
+jednego integratora. [20+20 wymagania](BATCH_20_REQUIREMENTS.md) są wejściem
+następnej sesji; T02.1 już jest w odbiorze,a B20 ma gotowe40 zleceń i W.
+[OWNER_GUIDE](../../proofs/ft1536/batches/B20_001/OWNER_GUIDE.md) i żywy STATUS
+pozwalają przejąć kolejkę bez odzyskiwania historii rozmowy Astry.
+
 **Aktualizacja właściciela2026-09-22:** w bieżącym podziale ten prowadzący
 przygotowuje zadania i prompty weryfikacyjne. Odbiór matematyczny i replay
 realizuje **inny niezależny model wybrany przez właściciela**. Procedura odbioru

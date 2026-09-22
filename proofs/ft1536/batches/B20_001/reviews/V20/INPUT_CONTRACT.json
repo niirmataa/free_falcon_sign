@@ -1,0 +1,61 @@
+{
+  "id": "V20",
+  "task_id": "B20_001_V20_FORMAL_COMPOSITION_CHECKPOINT",
+  "role": "reviewer",
+  "producer": "P20",
+  "fixed_base_inputs": {
+    "M0": {
+      "stage": "FT1536_M0_CONTRACT_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "b71d71e8d89022ea321241d0ddabdddf4a3b81bfc9fe4faca08476baf6e71c29",
+      "outputs_sha256": "08c9b6afe630e11bd98f33a910476950442854e5925efaa7f8fa1d0d8c8d695d",
+      "historical_status": "M0_CONTRACT_DEFINED_FOR_PINNED_CANDIDATE",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "T01": {
+      "stage": "FT1536_IID_RETRY_COMPOSITION_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_IID_RETRY_COMPOSITION_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "b7164dbbee02db248ea43adce1d63ae0a38ed4493a566c5acd3a2f507db14590",
+      "outputs_sha256": "3d68249f4f0e017f32eb7edeb0d90f5c4a6cd6b4b9f93307cec6919439525074",
+      "historical_status": "IID_RETRY_COMPOSITION_PROVED_FOR_PINNED_IID_BUFFER_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "T03": {
+      "stage": "FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "e01a09789091c9c9322f9727263503063c94441a68ff5f30af952bcc4417785c",
+      "outputs_sha256": "0cafdbb2c746043380081052951cb6438643f6a1765a98028a065fa57b7df6de",
+      "historical_status": "PARTIAL_PROOF",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    }
+  },
+  "upstream_tasks": [
+    "P01",
+    "P04",
+    "P05",
+    "P10",
+    "P11",
+    "P15",
+    "P16",
+    "P17",
+    "P18",
+    "P19"
+  ],
+  "external_required": [],
+  "required_goal_exports": [
+    "B20.Final.FT1536_SourceToReference : fully instantiated theorem for the stated games,observations,domains and resource parameters",
+    "B20.Final.ErrorOwnership : each event/loss appears in its declared place and metric",
+    "B20.Final.ResourceInstantiation : concrete finite primitive/byte budgets with proved sufficient events",
+    "B20.Final.NextM7Interface : typed list of still-unproved obligations,not axioms closing this theorem"
+  ],
+  "bound_inputs": null,
+  "binding_rule": "copy verified frozen dependencies into W/inputs; write BOUND_INPUTS there; never edit this contract or invent pending hashes",
+  "for_review_required": [
+    "producer REPORT/OUTPUTS external pins",
+    "producer HEAD",
+    "formal export/axiom/source binding inventory"
+  ]
+}

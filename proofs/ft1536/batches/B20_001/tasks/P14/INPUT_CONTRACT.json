@@ -1,0 +1,52 @@
+{
+  "id": "P14",
+  "task_id": "B20_001_P14_ORDERED_JOINT_KERNEL",
+  "role": "author",
+  "producer": null,
+  "fixed_base_inputs": {
+    "JOINT": {
+      "stage": "FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "b150ca1284600dbda3a40ae3656a2058d8a6c0f3b7cfb1e38d15a9ccc5e78c59",
+      "outputs_sha256": "da8cfccceea6837fc21edd04e46157351d91ad2d317a37286c05f41f3126e263",
+      "historical_status": "H3_ORDERED_JOINT_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "LEFT": {
+      "stage": "FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "ceaf6d1a76c56b34ab020322eb2023f616814224532b38750702db54f8beef01",
+      "outputs_sha256": "e61abbf536787aef11764d44f673baa549641208f350d09f58b5f6fe564a61ee",
+      "historical_status": "H3_LEFT_ROOT_CORRELATED_TRANSFER_PROVED_FOR_EMITTED_PINNED_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "POST": {
+      "stage": "FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "4cd7ab1a6f63256ed6c015f3ba9bbef97597d7a68bb948bfd8c9264bab307662",
+      "outputs_sha256": "b860e5453a7a72716acd8636cc581ff57b1b9c00dff20baa907e4636344d1401",
+      "historical_status": "PARTIAL_PROOF",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    }
+  },
+  "upstream_tasks": [
+    "P01",
+    "P08",
+    "P09",
+    "P12",
+    "P13"
+  ],
+  "external_required": [],
+  "required_goal_exports": [
+    "B20.Joint.source_order_and_reach : every positive source prefix → next legal call or specified exit",
+    "B20.Joint.root_kernel_composition : actual3072 adaptive calls = composed conditional scalar kernels",
+    "B20.Joint.directed_bounds : correctly typed TV/chi2 comparisons for Q_S and Q_stop",
+    "B20.Joint.proposal_resource_tail : E[T]≤24576 and Pr[T>49152]<2^-1024,if certified"
+  ],
+  "bound_inputs": null,
+  "binding_rule": "copy verified frozen dependencies into W/inputs; write BOUND_INPUTS there; never edit this contract or invent pending hashes",
+  "for_review_required": []
+}

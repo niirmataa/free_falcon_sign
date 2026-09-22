@@ -1,0 +1,59 @@
+{
+  "id": "P11",
+  "task_id": "B20_001_P11_PREFIX_API_BINDING",
+  "role": "author",
+  "producer": null,
+  "fixed_base_inputs": {
+    "M0": {
+      "stage": "FT1536_M0_CONTRACT_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "b71d71e8d89022ea321241d0ddabdddf4a3b81bfc9fe4faca08476baf6e71c29",
+      "outputs_sha256": "08c9b6afe630e11bd98f33a910476950442854e5925efaa7f8fa1d0d8c8d695d",
+      "historical_status": "M0_CONTRACT_DEFINED_FOR_PINNED_CANDIDATE",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "NORMALIZED": {
+      "stage": "FT1536_H3_STABLE_NORMALIZATION_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_STABLE_NORMALIZATION_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "ba2b455711b9a3d4241f70637ee0529f4c2d59df37d23eec55d262cf714c26dd",
+      "outputs_sha256": "c383e4bb9a8acf045c39aa1e3114ce5da95f4fef0c08c6630012c4e42db6a333",
+      "historical_status": "H3_STABLE_NORMALIZATION_PROVED_FOR_EMITTED_PINNED_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "TARGETS": {
+      "stage": "FT1536_H3_INITIAL_TARGETS_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_INITIAL_TARGETS_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "cc44b63bd1c0ea747da2948dcf0487c1819bd25419c294af5a9c0c9ab2bd1a5f",
+      "outputs_sha256": "d133f9a352eb1cb8264a03dcee827e040eb9eba0647799d7c2c528d06cc6f6d6",
+      "historical_status": "H3_INITIAL_TARGETS_PROVED_FOR_EMITTED_PINNED_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "T01": {
+      "stage": "FT1536_IID_RETRY_COMPOSITION_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_IID_RETRY_COMPOSITION_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "b7164dbbee02db248ea43adce1d63ae0a38ed4493a566c5acd3a2f507db14590",
+      "outputs_sha256": "3d68249f4f0e017f32eb7edeb0d90f5c4a6cd6b4b9f93307cec6919439525074",
+      "historical_status": "IID_RETRY_COMPOSITION_PROVED_FOR_PINNED_IID_BUFFER_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    }
+  },
+  "upstream_tasks": [
+    "P01",
+    "P02",
+    "P03"
+  ],
+  "external_required": [],
+  "required_goal_exports": [
+    "B20.Api.prefix_refines : legal caller/service trace → PRE_ABORT | ReadyRetryEntry | specified nonreturn",
+    "B20.Api.nonce_h2p_frame : same message/nonce/table/source buffers and canonical challenge",
+    "B20.Api.ready_entry_from_source : actual successful prefix → legal retry entry with no future assumptions",
+    "B20.Api.prefix_resources : exact byte/query/space costs separate from post-H2P budget"
+  ],
+  "bound_inputs": null,
+  "binding_rule": "copy verified frozen dependencies into W/inputs; write BOUND_INPUTS there; never edit this contract or invent pending hashes",
+  "for_review_required": []
+}

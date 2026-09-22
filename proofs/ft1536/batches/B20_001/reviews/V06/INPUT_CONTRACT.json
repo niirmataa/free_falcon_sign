@@ -1,0 +1,62 @@
+{
+  "id": "V06",
+  "task_id": "B20_001_V06_INTEGER_REFERENCE_KERNEL",
+  "role": "reviewer",
+  "producer": "P06",
+  "fixed_base_inputs": {
+    "T03": {
+      "stage": "FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "e01a09789091c9c9322f9727263503063c94441a68ff5f30af952bcc4417785c",
+      "outputs_sha256": "0cafdbb2c746043380081052951cb6438643f6a1765a98028a065fa57b7df6de",
+      "historical_status": "PARTIAL_PROOF",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "TARGETS": {
+      "stage": "FT1536_H3_INITIAL_TARGETS_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_INITIAL_TARGETS_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "cc44b63bd1c0ea747da2948dcf0487c1819bd25419c294af5a9c0c9ab2bd1a5f",
+      "outputs_sha256": "d133f9a352eb1cb8264a03dcee827e040eb9eba0647799d7c2c528d06cc6f6d6",
+      "historical_status": "H3_INITIAL_TARGETS_PROVED_FOR_EMITTED_PINNED_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "NORMALIZED": {
+      "stage": "FT1536_H3_STABLE_NORMALIZATION_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_STABLE_NORMALIZATION_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "ba2b455711b9a3d4241f70637ee0529f4c2d59df37d23eec55d262cf714c26dd",
+      "outputs_sha256": "c383e4bb9a8acf045c39aa1e3114ce5da95f4fef0c08c6630012c4e42db6a333",
+      "historical_status": "H3_STABLE_NORMALIZATION_PROVED_FOR_EMITTED_PINNED_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "LEFT": {
+      "stage": "FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "ceaf6d1a76c56b34ab020322eb2023f616814224532b38750702db54f8beef01",
+      "outputs_sha256": "e61abbf536787aef11764d44f673baa549641208f350d09f58b5f6fe564a61ee",
+      "historical_status": "H3_LEFT_ROOT_CORRELATED_TRANSFER_PROVED_FOR_EMITTED_PINNED_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    }
+  },
+  "upstream_tasks": [
+    "P01",
+    "P02"
+  ],
+  "external_required": [],
+  "required_goal_exports": [
+    "B20.Reference.Z : OrderedReturns3072 → RingPair,with kernel bijection/sign/order proof",
+    "B20.Reference.exact_shadow_cancellation : exact source-shadow execution → residual=t_ref−Z(Y)",
+    "B20.Reference.integral_and_congruent : v_ref=[c,0]−Z(Y)B ∈ R² ∧ v1+h*v2=c mod(q,Phi)",
+    "B20.Reference.source_call_index_binding : every source call/read maps to the stated Z slot"
+  ],
+  "bound_inputs": null,
+  "binding_rule": "copy verified frozen dependencies into W/inputs; write BOUND_INPUTS there; never edit this contract or invent pending hashes",
+  "for_review_required": [
+    "producer REPORT/OUTPUTS external pins",
+    "producer HEAD",
+    "formal export/axiom/source binding inventory"
+  ]
+}

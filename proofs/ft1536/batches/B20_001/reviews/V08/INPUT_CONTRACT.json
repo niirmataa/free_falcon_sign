@@ -1,0 +1,54 @@
+{
+  "id": "V08",
+  "task_id": "B20_001_V08_TREE_DEFECT_KERNEL",
+  "role": "reviewer",
+  "producer": "P08",
+  "fixed_base_inputs": {
+    "T03": {
+      "stage": "FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "e01a09789091c9c9322f9727263503063c94441a68ff5f30af952bcc4417785c",
+      "outputs_sha256": "0cafdbb2c746043380081052951cb6438643f6a1765a98028a065fa57b7df6de",
+      "historical_status": "PARTIAL_PROOF",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "NORMALIZED": {
+      "stage": "FT1536_H3_STABLE_NORMALIZATION_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_STABLE_NORMALIZATION_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "ba2b455711b9a3d4241f70637ee0529f4c2d59df37d23eec55d262cf714c26dd",
+      "outputs_sha256": "c383e4bb9a8acf045c39aa1e3114ce5da95f4fef0c08c6630012c4e42db6a333",
+      "historical_status": "H3_STABLE_NORMALIZATION_PROVED_FOR_EMITTED_PINNED_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "LEFT": {
+      "stage": "FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "ceaf6d1a76c56b34ab020322eb2023f616814224532b38750702db54f8beef01",
+      "outputs_sha256": "e61abbf536787aef11764d44f673baa549641208f350d09f58b5f6fe564a61ee",
+      "historical_status": "H3_LEFT_ROOT_CORRELATED_TRANSFER_PROVED_FOR_EMITTED_PINNED_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    }
+  },
+  "upstream_tasks": [
+    "P01",
+    "P02",
+    "P07"
+  ],
+  "external_required": [],
+  "required_goal_exports": [
+    "B20.Tree.emitted_tree_frame : source expansion/gates → initialized immutable tree and legal widths",
+    "B20.Tree.reconstruction_defect : every required node/slot has the stated exact residual/error",
+    "B20.Tree.delta_eroot_bound : source tree → proved δ,eroot certificate",
+    "B20.Tree.caller_parameter_domains : concrete domains for ordered scalar/kernel consumers"
+  ],
+  "bound_inputs": null,
+  "binding_rule": "copy verified frozen dependencies into W/inputs; write BOUND_INPUTS there; never edit this contract or invent pending hashes",
+  "for_review_required": [
+    "producer REPORT/OUTPUTS external pins",
+    "producer HEAD",
+    "formal export/axiom/source binding inventory"
+  ]
+}

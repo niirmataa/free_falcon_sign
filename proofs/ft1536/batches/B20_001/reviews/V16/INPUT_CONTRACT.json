@@ -1,0 +1,76 @@
+{
+  "id": "V16",
+  "task_id": "B20_001_V16_GLOBAL_REFERENCE_GEOMETRY",
+  "role": "reviewer",
+  "producer": "P16",
+  "fixed_base_inputs": {
+    "M0": {
+      "stage": "FT1536_M0_CONTRACT_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "b71d71e8d89022ea321241d0ddabdddf4a3b81bfc9fe4faca08476baf6e71c29",
+      "outputs_sha256": "08c9b6afe630e11bd98f33a910476950442854e5925efaa7f8fa1d0d8c8d695d",
+      "historical_status": "M0_CONTRACT_DEFINED_FOR_PINNED_CANDIDATE",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "GAUSS": {
+      "stage": "FT1536_H3_SCALAR_GAUSSIAN_COMPARISON_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_SCALAR_GAUSSIAN_COMPARISON_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "4c39d1ae9690b6dbc7926f4c169f8728b460d7f34c7dd3dd19aeb167da037842",
+      "outputs_sha256": "c20ea0c260fc5fcb6aec06ed8287335ebceacd31776f3da8633d91e399930f1a",
+      "historical_status": "H3_SCALAR_GAUSSIAN_COMPARISON_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "JOINT": {
+      "stage": "FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "b150ca1284600dbda3a40ae3656a2058d8a6c0f3b7cfb1e38d15a9ccc5e78c59",
+      "outputs_sha256": "da8cfccceea6837fc21edd04e46157351d91ad2d317a37286c05f41f3126e263",
+      "historical_status": "H3_ORDERED_JOINT_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "H6P": {
+      "stage": "FT1536_H6P_REFERENCE_BAD_EVENT_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H6P_REFERENCE_BAD_EVENT_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "3c425b1c1e863c7bfb3cbde6284b299a926cb2fb51e89279035e2ce1da0081cd",
+      "outputs_sha256": "a11735ac8fbc76aaa72d220f02acfd6f7254ee72ecfac8ab1004cbb843bda7d5",
+      "historical_status": "H6P_REFERENCE_BAD_EVENT_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "T03": {
+      "stage": "FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "e01a09789091c9c9322f9727263503063c94441a68ff5f30af952bcc4417785c",
+      "outputs_sha256": "0cafdbb2c746043380081052951cb6438643f6a1765a98028a065fa57b7df6de",
+      "historical_status": "PARTIAL_PROOF",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    }
+  },
+  "upstream_tasks": [
+    "P01",
+    "P06",
+    "P07",
+    "P08",
+    "P09",
+    "P13",
+    "P14"
+  ],
+  "external_required": [],
+  "required_goal_exports": [
+    "B20.Geometry.CosetGaussian : key,c,σ → normalized law on exact integer coset",
+    "B20.Geometry.tree_to_lattice_coordinates : formal geometry/metric/Jacobian and source parameter mapping",
+    "B20.Geometry.reference_kernel_comparison : Q_S or Q_stop → stated coset law with proved metric/direction/loss",
+    "B20.Geometry.normalizer_and_empty_support_interface : exact normalization/support obligations"
+  ],
+  "bound_inputs": null,
+  "binding_rule": "copy verified frozen dependencies into W/inputs; write BOUND_INPUTS there; never edit this contract or invent pending hashes",
+  "for_review_required": [
+    "producer REPORT/OUTPUTS external pins",
+    "producer HEAD",
+    "formal export/axiom/source binding inventory"
+  ]
+}

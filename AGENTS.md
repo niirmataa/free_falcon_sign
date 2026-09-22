@@ -16,6 +16,18 @@ Docelowym repozytorium prac jest `free_falcon_sign`.
 - Główna ścieżka twierdzeń i rejestr zadań: `docs/onboarding/ROADMAP.md`.
   Nowe zlecenie rozwija wpis Txx/Sxx (zależności, cel, kryteria odbioru),
   zamiast tworzyć niezależny plan. Zmiany kolejności/zakresu zapisuj jawnie.
+- Następny pakiet B20_001: przygotowano20 kolejnych zadań i20 sparowanych
+  weryfikacji,według ROADMAP. T02.1 już przekazano do odbioru; zależny P03
+  czeka na jego piny. Główny przewodnik: `proofs/ft1536/batches/B20_001/OWNER_GUIDE.md`.
+  Wymagania:
+  `docs/onboarding/BATCH_20_REQUIREMENTS.md`; pełny protokół wykonania/odbioru:
+  `docs/onboarding/AGENT_EXECUTION_AND_REVIEW_PROTOCOL.md`.
+  Nowe B20 wymaga **SageMath + Lean4 + Mathlib**,formalnych dowodów kernelowych
+  i formalnego source bindingu;
+  tekst analityczny/Sage/testy nie zastępują brakującego proofu. Autorzy i
+  recenzenci B20 mają lokalne milestone commity jako niirmataa we własnych
+  worktrees/branches; kanoniczny main integruje jeden prowadzący. To zakresowy
+  wyjątek od dawnych TASK bez Git,bez zmiany frozen historii lub zgody na push.
 - Osobny tor MiMo/T03 wskazuje `proofs/ft1536/CURRENT_MIMO_TASK.md`.
   Nie myl go z `CURRENT_TASK.md` Astry/T01; każdy ma inny W i jednego wykonawcę.
 - Zlecenie korekt Family/S01 wskazuje `proofs/ft1536/CURRENT_FAMILY_TASK.md`.

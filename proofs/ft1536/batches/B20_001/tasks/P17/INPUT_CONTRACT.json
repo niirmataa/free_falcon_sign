@@ -1,0 +1,60 @@
+{
+  "id": "P17",
+  "task_id": "B20_001_P17_PRECAST_CODEC_REFINEMENT",
+  "role": "author",
+  "producer": null,
+  "fixed_base_inputs": {
+    "POST": {
+      "stage": "FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "4cd7ab1a6f63256ed6c015f3ba9bbef97597d7a68bb948bfd8c9264bab307662",
+      "outputs_sha256": "b860e5453a7a72716acd8636cc581ff57b1b9c00dff20baa907e4636344d1401",
+      "historical_status": "PARTIAL_PROOF",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "T01": {
+      "stage": "FT1536_IID_RETRY_COMPOSITION_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_IID_RETRY_COMPOSITION_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "b7164dbbee02db248ea43adce1d63ae0a38ed4493a566c5acd3a2f507db14590",
+      "outputs_sha256": "3d68249f4f0e017f32eb7edeb0d90f5c4a6cd6b4b9f93307cec6919439525074",
+      "historical_status": "IID_RETRY_COMPOSITION_PROVED_FOR_PINNED_IID_BUFFER_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "M0": {
+      "stage": "FT1536_M0_CONTRACT_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "b71d71e8d89022ea321241d0ddabdddf4a3b81bfc9fe4faca08476baf6e71c29",
+      "outputs_sha256": "08c9b6afe630e11bd98f33a910476950442854e5925efaa7f8fa1d0d8c8d695d",
+      "historical_status": "M0_CONTRACT_DEFINED_FOR_PINNED_CANDIDATE",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "LV": {
+      "stage": "FT1536_L_V_BRIDGE_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_L_V_BRIDGE_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "81702fa89ee516f162a37db86e2abb03ae0bb57a49a5723ed63eab5a17a69296",
+      "outputs_sha256": "13fa5a9f706a962434c8ac479212af5ef33d91e1ececd6c948d68ed42871a74e",
+      "historical_status": "L_V_PROVED_FOR_PINNED_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    }
+  },
+  "upstream_tasks": [
+    "P01",
+    "P02",
+    "P11",
+    "P15"
+  ],
+  "external_required": [],
+  "required_goal_exports": [
+    "B20.Bytes.wide_narrow_stored_refinement : exact source cast/order and stored norm semantics",
+    "B20.Bytes.equal_until_bad : shared execution outside joint BadPrecast → same source/checked public outcome",
+    "B20.Bytes.static_codec_roundtrip_and_capacity : norm-accepted stored pair → correct STATIC bytes and payload≤3160",
+    "B20.Bytes.public_projection_bound : proved event coupling → observable-kernel bound"
+  ],
+  "bound_inputs": null,
+  "binding_rule": "copy verified frozen dependencies into W/inputs; write BOUND_INPUTS there; never edit this contract or invent pending hashes",
+  "for_review_required": []
+}

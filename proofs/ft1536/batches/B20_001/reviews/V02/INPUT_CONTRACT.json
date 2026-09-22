@@ -1,0 +1,52 @@
+{
+  "id": "V02",
+  "task_id": "B20_001_V02_WORD_FPEMU_REFINEMENT",
+  "role": "reviewer",
+  "producer": "P02",
+  "fixed_base_inputs": {
+    "POST": {
+      "stage": "FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "4cd7ab1a6f63256ed6c015f3ba9bbef97597d7a68bb948bfd8c9264bab307662",
+      "outputs_sha256": "b860e5453a7a72716acd8636cc581ff57b1b9c00dff20baa907e4636344d1401",
+      "historical_status": "PARTIAL_PROOF",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "NORMALIZED": {
+      "stage": "FT1536_H3_STABLE_NORMALIZATION_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_STABLE_NORMALIZATION_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "ba2b455711b9a3d4241f70637ee0529f4c2d59df37d23eec55d262cf714c26dd",
+      "outputs_sha256": "c383e4bb9a8acf045c39aa1e3114ce5da95f4fef0c08c6630012c4e42db6a333",
+      "historical_status": "H3_STABLE_NORMALIZATION_PROVED_FOR_EMITTED_PINNED_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "LEFT": {
+      "stage": "FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "ceaf6d1a76c56b34ab020322eb2023f616814224532b38750702db54f8beef01",
+      "outputs_sha256": "e61abbf536787aef11764d44f673baa549641208f350d09f58b5f6fe564a61ee",
+      "historical_status": "H3_LEFT_ROOT_CORRELATED_TRANSFER_PROVED_FOR_EMITTED_PINNED_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    }
+  },
+  "upstream_tasks": [
+    "P01"
+  ],
+  "external_required": [],
+  "required_goal_exports": [
+    "B20.Word.load_store_le_refines : legal memory → CExec load/store ↔ specified BitVec semantics",
+    "B20.Fpr.add_sub_mul_div_sqrt_refines : Domain(op,args) → CExec primitive → formal rounded result/error contract",
+    "B20.Fpr.floor_rint_refines : legal finite word → literal floor/rint result, including signed-zero/subnormal/ties",
+    "B20.Fpr.reachable_domain_interfaces : nazwane obligation types dla każdego call-site konsumentów"
+  ],
+  "bound_inputs": null,
+  "binding_rule": "copy verified frozen dependencies into W/inputs; write BOUND_INPUTS there; never edit this contract or invent pending hashes",
+  "for_review_required": [
+    "producer REPORT/OUTPUTS external pins",
+    "producer HEAD",
+    "formal export/axiom/source binding inventory"
+  ]
+}

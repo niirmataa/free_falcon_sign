@@ -20,13 +20,24 @@ Stan procesów jest ulotny: sprawdź go ponownie przed pracą. Ten dokument
 aktualizujemy po odbiorze etapu, zmianie wykonawcy lub decyzji właściciela.
 
 Główna kolejka zadań i kryteria: [ROADMAP](ROADMAP.md).
-Astra: **T01 REVIEWED**, pełny **T02 OPEN**, podzadanie **T02.1 PREPARED_OWNER_START**;
+Astra: **T01 REVIEWED**, pełny **T02 OPEN**, podzadanie **T02.1 AT_REVIEW_PER_OWNER**;
 osobny MiMo = **T03 REVIEWED / PARTIAL_PROOF, B-gap OPEN**,
 poprawki Family = **S01 CHANGES_REQUIRED**, dudect = **S02**,
 estymator = **S06 CHANGES_REQUIRED / PARTIAL_DIAGNOSTIC**, oryginalny run w pauzie.
 
 ## Decyzje właściciela
 
+- **B20_001 przygotowany:**20 następnych zadań według ROADMAP +20 sparowanych
+  odbiorów,40 własnych W. [OWNER_GUIDE](../../proofs/ft1536/batches/B20_001/OWNER_GUIDE.md)
+  i [INDEX](../../proofs/ft1536/batches/B20_001/INDEX.json) wybierają kolejne role.
+  Właściciel wymaga **SageMath + Lean4 + Mathlib,kernelowo**,bez mixed-proof
+  substytutu. [Pełny protokół](AGENT_EXECUTION_AND_REVIEW_PROTOCOL.md) opisuje
+  wykonanie,weryfikację,receipty,freeze i lokalne commity niirmataa w osobnych
+  worktrees/branches. P01 zaczyna od formalnego/toolchain bootstrapu; pozostałe
+  role czekają na konkretne proved exports/frozen pins. T02.1 już jest u
+  recenzenta; P03 ma jawny pending binding jego handoffu. Matematyki B20 nie
+  uruchomiono. [Wymagania](BATCH_20_REQUIREMENTS.md) zabezpieczają ciągłość po
+  zmianie modelu/limitu. Package SHA `5037ae6ce10746fdf5d2dc1503b09289c34785d340da381fe116ac21c4e19889`.
 - Nowy obowiązkowy standard rachunku: **pliki `.sage`, uruchomienie
   `sage lemma.sage` z preparserem SageMath**. Dotyczy nowych rachunków/checkerów
   i niezakończonych S01/T03/T02.1 przez
@@ -134,7 +145,7 @@ odbioru jest późniejsze doprecyzowanie właściciela i zgodny nowy binding.
   (20110 różnych słów/60384 wykonania). Niewygodne wyniki/uwagi zachowane.
   B-gap fix jest następnym proponowanym tranche; niczego nowego nie uruchomiono.
 
-## Małe T02.1 — osobny model, ręczny start
+## Małe T02.1 — przekazane do weryfikacji przez właściciela
 
 [CURRENT_SMALL_TASK](../../proofs/ft1536/CURRENT_SMALL_TASK.md) wskazuje
 `FT1536_PRNG_LAYOUT_COUNTER_RUN_001`,39 przypiętych wejść i nowy W.
@@ -143,6 +154,8 @@ i przeliczenie odebranego T01 resource envelope. Bez assumed IID init bytes
 lub dowodzenia kryptografii całego SHAKE/ChaCha hopu. T02 pozostaje OPEN.
 Zadanie jest niezależne od S01/T03 i ma własnego jednego wykonawcę wybranego
 przez właściciela; prowadzący przygotował pliki, nie uruchomił modelu.
+Właściciel potwierdził przekazanie T02.1 do recenzenta. Czekamy na wynik
+z zewnętrznymi pinami; nie startujemy ponownie autora lub drugiej weryfikacji.
 
 ### Incydent dwóch wykonawców
 

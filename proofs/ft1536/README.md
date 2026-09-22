@@ -11,6 +11,13 @@ Nowa sesja: [START_HERE](../../START_HERE.md).
 ROADMAP określa zależności i kryteria następnych prac.
 
 To archiwum ukończonych etapów FT1536 w docelowym `free_falcon_sign`.
+
+**Gotowy następny pakiet20+20:** [B20 OWNER_GUIDE](batches/B20_001/OWNER_GUIDE.md),
+[INDEX](batches/B20_001/INDEX.json),[protokół agentów](batches/B20_001/AGENT_GIT_PROTOCOL.md).
+Nowe zadania wymagają SageMath + Lean4 + Mathlib,kernelowych dowodów i formalnego
+source bindingu. Historyczne mixed scopes zachowują swój zakres; w B20 są
+materiałem do formalizacji.40 W przygotowane; zależności/piny decydują o starcie.
+Lokalne milestone commity autora i recenzenta jako niirmataa,we własnych branches.
 Każdy wpis `catalog/*.json` wskazuje konkretny raport, zewnętrzny pin
 OUTPUTS oraz niezmienione bajty objęte tym manifestem.
 

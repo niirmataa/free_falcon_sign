@@ -1,0 +1,51 @@
+{
+  "id": "P12",
+  "task_id": "B20_001_P12_SCALAR_IID_KERNEL",
+  "role": "author",
+  "producer": null,
+  "fixed_base_inputs": {
+    "SCALAR": {
+      "stage": "FT1536_H3_SCALAR_KERNEL_IID_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_SCALAR_KERNEL_IID_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "28a46ed15039e7cb8fc610874ce64cc87436eeeba4ba110beb9ba3152033d903",
+      "outputs_sha256": "0923f85b0290b4b1e57b4f7af356bd58e327cac68d235805e6a8c78d4e622a8f",
+      "historical_status": "H3_SCALAR_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "NORMALIZED": {
+      "stage": "FT1536_H3_STABLE_NORMALIZATION_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_STABLE_NORMALIZATION_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "ba2b455711b9a3d4241f70637ee0529f4c2d59df37d23eec55d262cf714c26dd",
+      "outputs_sha256": "c383e4bb9a8acf045c39aa1e3114ce5da95f4fef0c08c6630012c4e42db6a333",
+      "historical_status": "H3_STABLE_NORMALIZATION_PROVED_FOR_EMITTED_PINNED_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "LEFT": {
+      "stage": "FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "ceaf6d1a76c56b34ab020322eb2023f616814224532b38750702db54f8beef01",
+      "outputs_sha256": "e61abbf536787aef11764d44f673baa549641208f350d09f58b5f6fe564a61ee",
+      "historical_status": "H3_LEFT_ROOT_CORRELATED_TRANSFER_PROVED_FOR_EMITTED_PINNED_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    }
+  },
+  "upstream_tasks": [
+    "P01",
+    "P02",
+    "P03",
+    "P09"
+  ],
+  "external_required": [],
+  "required_goal_exports": [
+    "B20.Scalar.source_proposal_berexp_law : legal words/history → exact proposal/acceptance weights",
+    "B20.Scalar.stopped_pmf : A>0 → Law(returnY)=wY/A and a.s. return",
+    "B20.Scalar.uniform_acceptance_lower : required domain → A≥1/256",
+    "B20.Scalar.fresh_tail_and_resources : stopped prefix → conditional unread iid tail and proved tail/mean bounds"
+  ],
+  "bound_inputs": null,
+  "binding_rule": "copy verified frozen dependencies into W/inputs; write BOUND_INPUTS there; never edit this contract or invent pending hashes",
+  "for_review_required": []
+}

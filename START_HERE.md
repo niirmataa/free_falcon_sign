@@ -38,6 +38,8 @@ prawdopodobieństwa BadPrecast z uniwersalnym Safe16 lub Sign→Verify.
 |---|---|
 | Najnowsze wyniki, aktywne prace, zakaz publikacji | [STATE](docs/onboarding/STATE.md) |
 | Główna ścieżka twierdzeń, jawna kolejka i kryteria zadań | [ROADMAP](docs/onboarding/ROADMAP.md) |
+| Gotowy pakiet20 zadań +20 odbiorów — przewodnik właściciela | [B20 OWNER_GUIDE](proofs/ft1536/batches/B20_001/OWNER_GUIDE.md) |
+| Jak agent wykonuje,weryfikuje i commituje zadania B20 | [AGENT_EXECUTION_AND_REVIEW_PROTOCOL](docs/onboarding/AGENT_EXECUTION_AND_REVIEW_PROTOCOL.md) |
 | Osobne bieżące zlecenie MiMo/T03 | [CURRENT_MIMO_TASK](proofs/ft1536/CURRENT_MIMO_TASK.md) |
 | Korekty Family/S01, warunek publikacji | [CURRENT_FAMILY_TASK](proofs/ft1536/CURRENT_FAMILY_TASK.md) |
 | Niezależny odbiór zwróconych korekt S01 | [CURRENT_FAMILY_REVIEW_TASK](proofs/ft1536/CURRENT_FAMILY_REVIEW_TASK.md) |

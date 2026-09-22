@@ -1,0 +1,42 @@
+{
+  "id": "P03",
+  "task_id": "B20_001_P03_PRNG_LAYOUT_KERNEL",
+  "role": "author",
+  "producer": null,
+  "fixed_base_inputs": {
+    "T01": {
+      "stage": "FT1536_IID_RETRY_COMPOSITION_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_IID_RETRY_COMPOSITION_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "b7164dbbee02db248ea43adce1d63ae0a38ed4493a566c5acd3a2f507db14590",
+      "outputs_sha256": "3d68249f4f0e017f32eb7edeb0d90f5c4a6cd6b4b9f93307cec6919439525074",
+      "historical_status": "IID_RETRY_COMPOSITION_PROVED_FOR_PINNED_IID_BUFFER_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "SCALAR": {
+      "stage": "FT1536_H3_SCALAR_KERNEL_IID_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_SCALAR_KERNEL_IID_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "28a46ed15039e7cb8fc610874ce64cc87436eeeba4ba110beb9ba3152033d903",
+      "outputs_sha256": "0923f85b0290b4b1e57b4f7af356bd58e327cac68d235805e6a8c78d4e622a8f",
+      "historical_status": "H3_SCALAR_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    }
+  },
+  "upstream_tasks": [
+    "P01",
+    "P02"
+  ],
+  "external_required": [
+    "T02.1_REVIEWED_HANDOFF"
+  ],
+  "required_goal_exports": [
+    "B20.Prng.init56_refines : ∀ state56, source init = specified state followed by initial refill",
+    "B20.Prng.refill4096_refines : ∀ legal state, source output/state = block specification and counter update",
+    "B20.Prng.counter_frame : modification set,counter wrap and repeat conditions",
+    "B20.Prng.block_input_identity : dokładny warunek równości wejść block primitive"
+  ],
+  "bound_inputs": null,
+  "binding_rule": "copy verified frozen dependencies into W/inputs; write BOUND_INPUTS there; never edit this contract or invent pending hashes",
+  "for_review_required": []
+}

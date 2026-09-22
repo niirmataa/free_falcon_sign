@@ -1,0 +1,62 @@
+{
+  "id": "P18",
+  "task_id": "B20_001_P18_VERIFY_CENTER_COMPATIBILITY",
+  "role": "author",
+  "producer": null,
+  "fixed_base_inputs": {
+    "T03": {
+      "stage": "FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "e01a09789091c9c9322f9727263503063c94441a68ff5f30af952bcc4417785c",
+      "outputs_sha256": "0cafdbb2c746043380081052951cb6438643f6a1765a98028a065fa57b7df6de",
+      "historical_status": "PARTIAL_PROOF",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "POST": {
+      "stage": "FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "4cd7ab1a6f63256ed6c015f3ba9bbef97597d7a68bb948bfd8c9264bab307662",
+      "outputs_sha256": "b860e5453a7a72716acd8636cc581ff57b1b9c00dff20baa907e4636344d1401",
+      "historical_status": "PARTIAL_PROOF",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "LV": {
+      "stage": "FT1536_L_V_BRIDGE_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_L_V_BRIDGE_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "81702fa89ee516f162a37db86e2abb03ae0bb57a49a5723ed63eab5a17a69296",
+      "outputs_sha256": "13fa5a9f706a962434c8ac479212af5ef33d91e1ececd6c948d68ed42871a74e",
+      "historical_status": "L_V_PROVED_FOR_PINNED_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "M0": {
+      "stage": "FT1536_M0_CONTRACT_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "b71d71e8d89022ea321241d0ddabdddf4a3b81bfc9fe4faca08476baf6e71c29",
+      "outputs_sha256": "08c9b6afe630e11bd98f33a910476950442854e5925efaa7f8fa1d0d8c8d695d",
+      "historical_status": "M0_CONTRACT_DEFINED_FOR_PINNED_CANDIDATE",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    }
+  },
+  "upstream_tasks": [
+    "P01",
+    "P06",
+    "P10",
+    "P15",
+    "P16",
+    "P17"
+  ],
+  "external_required": [],
+  "required_goal_exports": [
+    "B20.Verify.produced_bytes_consumer : proved recovery/safety/compatibility → actual verifier accepts produced bytes",
+    "B20.Verify.center_norm_condition : exact sufficient condition with source derivation",
+    "B20.Verify.bad_verification_event : explicit event/law and proved bound,if deterministic compatibility fails",
+    "B20.Verify.countermodel_boundary : formal local countermodel to unjustified centering monotonicity"
+  ],
+  "bound_inputs": null,
+  "binding_rule": "copy verified frozen dependencies into W/inputs; write BOUND_INPUTS there; never edit this contract or invent pending hashes",
+  "for_review_required": []
+}

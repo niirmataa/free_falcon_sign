@@ -1,0 +1,202 @@
+[
+  {
+    "id":"P01","slug":"FORMAL_FOUNDATIONS","roadmap":"F02–F09; formalny fundament T02–T06","deps":[],"base":["M0","POST","JOINT"],
+    "title":"Formalny fundament, semantyka źródła i kontrakt certyfikatów",
+    "goal":"Zbudować kompilowalny wspólny fundament nowych dowodów: dokładne typy słów, pamięci, śladów i wyników, matematyczne obiekty probability/kernel oraz sprawdzanie certyfikatów. Jawnie ustalić język i granicę formalnej semantyki C/ABI, do której będą odnoszone następne twierdzenia.",
+    "exports":["B20.Foundation.CExec : Program → State → Outcome → Prop, z konstruktorami dla używanego fragmentu C i wszystkich error/nonreturn outcomes","B20.Foundation.SourceBinding : PinnedSource → Program → Prop; checker_sound wiążący zaakceptowane tokeny/AST z tą semantyką","B20.Foundation.CertificateSound : checked rational/interval certificate → odpowiadające twierdzenie matematyczne","B20.Foundation.ObservedKernel oraz formalne TV/directed-chi2/conditional-history definitions z konkretnymi instancjami bibliotek"],
+    "obligations":["Przypnij Lean4.34 i każdą bibliotekę. Mathlib nie znaleziono w trzech sprawdzonych typowych lokalizacjach; zlokalizuj istniejące zasoby albo zgłoś dokładny bootstrap blocker. Nie twórz zastępczych aksjomatów prawdopodobieństwa/celu.","Formalnie zdefiniuj fixed ABI, unsigned modular arithmetic, memory regions, call outcomes, fault i różnicę STUCK/abort/nonreturn. Świadomie określ, czy theorem dotyczy C semantics czy kodu maszynowego.","Formalny source binding ma obejmować poprawność translacji używanego fragmentu, nie tylko checksum pliku. Udokumentuj każdy element pozostający w trusted computing base.","Implementuj i udowodnij dźwięczność formatu exact rational/interval certificates oraz transportu indeksów/rozmiarów; liczby Sage są danymi wejściowymi checkera.","Przygotuj mały rzeczywisty przykład end-to-end: pinned source fragment → model → kernel theorem → receipt. Nie używaj go zamiast dowodu ogólnej poprawności zastosowanego checkera."],
+    "controls":["Zmiana operatora lub stałej źródła musi zrywać binding.","Fałszywa nierówność,odwrócony endpoint i brakujący denominator certificate muszą zostać odrzucone.","Skan i #print axioms każdego eksportu; brak zależności od aksjomatu celu."],
+    "review_focus":"Zweryfikuj rzeczywisty trusted base, definicje semantyki i measure/kernel, dźwięczność parsera/checkera oraz brak ukrytych desired premises. Sam kompilowalny interfejs bez instancji nie domyka P01.",
+    "limit":"Dalsze zadania mogą startować tylko z formalnie odebranymi eksportami. Dostępność biblioteki nie jest dowodem jej konkretnego użycia; missing toolchain daje BLOCKED_TOOLCHAIN."
+  },
+  {
+    "id":"P02","slug":"WORD_FPEMU_REFINEMENT","roadmap":"F03–F06; formalny primitive/source binding","deps":["P01"],"base":["POST","NORMALIZED","LEFT"],
+    "title":"Słowa maszynowe i kontrakty FPEMU powiązane z C",
+    "goal":"Udowodnić formalne kontrakty używanych operacji word/FPEMU dla przypiętych źródeł i jawnych domen; dostarczyć konkretne source refinement lemmas dla konsumentów, z rozliczeniem definedness.",
+    "exports":["B20.Word.load_store_le_refines : legal memory → CExec load/store ↔ specified BitVec semantics","B20.Fpr.add_sub_mul_div_sqrt_refines : Domain(op,args) → CExec primitive → formal rounded result/error contract","B20.Fpr.floor_rint_refines : legal finite word → literal floor/rint result, including signed-zero/subnormal/ties","B20.Fpr.reachable_domain_interfaces : nazwane obligation types dla każdego call-site konsumentów"],
+    "obligations":["Zidentyfikuj wszystkie operacje rzeczywiście używane przez następne zadania; każdy wymagany primitive ma proved refinement albo jawny unresolved type.","Formalizuj IEEE-like word interpretation, rounding i wyjątkowe słowa zgodnie z FPEMU, nie przez domyślny host double model.","Rozlicz C promotions,shifts,overflow,casts i memory accesses. Wykaż warunki definedness,nie zakładaj ich dla nieudowodnionych reached operands.","Stare Lean lemmas można reuse po sprawdzeniu exact types/axioms/source pins; ich analityczne otoczenie ma zostać sformalizowane.","Oddziel kontrakt warunkowy prymitywu od przyszłego dowodu caller→Domain; każdy consumer musi instancjować warunek."],
+    "controls":["Boundary words,oba zera,subnormals,cancellation,ties po obu stronach integer.","Mutacje shift/sign/rounding i original-C normal/ASan/UBSan przy preflight domain.","Fresh kernel build wszystkich użytych source-refinement exports."],
+    "review_focus":"Sprawdź równoważność literalnych operatorów C i modelu,pełność domen oraz każdy assumed caller range. Dobre fixtures nie zastępują all-word/domain theorem.",
+    "limit":"Brak source primitive lub caller domain blokuje odpowiednie zastosowanie; nie ogłaszaj compiler verification,jeżeli theorem dotyczy tylko C/ABI modelu."
+  },
+  {
+    "id":"P03","slug":"PRNG_LAYOUT_KERNEL","roadmap":"T02.1 → T02","deps":["P01","P02"],"external":["T02.1_REVIEWED_HANDOFF"],"base":["T01","SCALAR"],
+    "title":"Kernelowy kontrakt init/refill/layout/counter rzeczywistego frng.c",
+    "goal":"Sformalizować deterministyczny kontrakt PRNG z rzeczywistym układem słów i licznikiem; skonsumować odbiór T02.1 dopiero po otrzymaniu jego zewnętrznych pinów.",
+    "exports":["B20.Prng.init56_refines : ∀ state56, source init = specified state followed by initial refill","B20.Prng.refill4096_refines : ∀ legal state, source output/state = block specification and counter update","B20.Prng.counter_frame : modification set,counter wrap and repeat conditions","B20.Prng.block_input_identity : dokładny warunek równości wejść block primitive"],
+    "obligations":["Przypnij frng.c,typy i przekazany T02.1; zgłoszona gotowość bez REPORT/OUTPUTS/review pins daje BLOCKED_INPUTS.","Udowodnij literalne lanes,XOR,round order,rotations,feed-forward i serialization,łącznie z initial refill.","Zidentyfikuj i formalnie policz wszystkie block evaluations na refill. Counter modulo2^64,przepełnienie i modyfikowane pola są częścią tezy.","Nie zastępuj XOR-lane injection standardowym nonce/counter concatenation. Collision/injectivity theorem musi odnosić się do faktycznego input tuple.","Pokaż actual source instancję generic BitVec lemmas oraz preservation pozostałych pól/pamięci."],
+    "controls":["Known fixed inputs,two refills,near-wrap i XOR-versus-add mutation.","Mutacje lane/endianness/feed-forward oraz pominięcie initial refill.","C harness i formal theorem na tych samych publicznych fixtures."],
+    "review_focus":"Pełny source refinement i counter/frame,nie tylko zgodność block samples. Odbiór T02.1 nie jest automatycznie kernelizacją nowego twierdzenia.",
+    "limit":"Brak claimu o uniformności init bytes,bezpieczeństwie SHAKE/ChaCha lub równości real PRNG z IID."
+  },
+  {
+    "id":"P04","slug":"RESET_RESOURCE_KERNEL","roadmap":"T01 resources → T02","deps":["P01","P03"],"base":["T01","JOINT","SCALAR"],
+    "title":"Formalne zachowanie bufora,getters i budżetów przy resetach",
+    "goal":"Udowodnić deterministyczny resource envelope dla source trace,łącznie z resetami,porzuconymi ogonami i wspólnym sufficient event; oddzielić go od dowodu prawdopodobieństwa tego eventu.",
+    "exports":["B20.Resource.getters_refine : ptr/read/drop/refill transitions for all legal positions","B20.Resource.reset_conservation : exact accounting per reached attempt and across reinitializations","B20.Resource.good_counts_imply_joint_budget : H_counts → blocks≤6352 ∧ bytes≤26017792 ∧ block_evals≤406528","B20.Resource.observation_trace_bound : charge actual generated/consumed bytes and primitive queries once"],
+    "obligations":["Zdefiniuj reached attempts J≤16 i H_counts jako wszystkie reached proposal counts≤49152; nie zastępuj go tylko globalną sumą counts.","Formalnie wyprowadź floors/additive terms,initial blocks,get_u8/get_u64 drops,re-init abandonment i final unused tail.","Zwiąż liczniki modelu z C trace i P03,bez nowego runtime abortu.","Udowodnij równoczesność wszystkich budżetów na TYM SAMYM evencie. Statystyczny tail H_counts pozostaje osobnym eksportem P15.","Eksportuj oddzielnie nonce/prefix potrzeby; post-H2P envelope nie obejmuje całego API za darmo."],
+    "controls":["Reset przy niepustym ogonie,wszystkie istotne ptr boundaries i no-op reset.","Countermodel dla nieuprawnionego pooled-total→per-attempt inference.","Certyfikat liczb ZZ/QQ w Sage i jego konsumpcja przez Lean."],
+    "review_focus":"Sprawdź event ownership,reset accounting i tożsamość block/refill units. Dokładne liczby mają być kernel-checked,nie wyłącznie policzone w skrypcie.",
+    "limit":"To deterministyczny conditional resource theorem; probability of H_counts zostanie dowiedzione w P15."
+  },
+  {
+    "id":"P05","slug":"REAL_RNG_GAME_BRIDGE","roadmap":"T02","deps":["P01","P03","P04"],"base":["M0","T01","SCALAR"],
+    "title":"Formalny computational hop real SHAKE/ChaCha → skończony widok IID",
+    "goal":"Zdefiniować dokładne gry i formalnie dowieść redukcji dla bounded observed view,ze wspólną historią,resource-indexed primitive assumptions i collision/budget losses.",
+    "exports":["B20.Rng.RealGame,IdealXofGame,IidBufferGame : konkretne history-dependent games","B20.Rng.hybrid_reduction : bounded distinguisher advantage ≤ named primitive advantages + proved bad-event terms","B20.Rng.query_resource_accounting : exact query/byte/time interface from P04","B20.Rng.same_history_initialization : root/nonce/init/reset law preserved across hops"],
+    "obligations":["Modeluj jedno root seed32 i rzeczywiste squeeze order; init56 nie staje się iid przez definicję.","Użyj assumptions o dokładnie przypiętym block construction i XOF interface; pokaż reduktory i koszty,nie tylko nazwę standardowego PRG.","Derive collision/wrap conditions z P03 actual input equality,XOR lanes i P04; nie zakładaj darmowej domain separation.","Rozdziel computational indistinguishability od TV. Finite deterministic expansion nie ma małej information-theoretic TV do długiego uniform string z samej hipotezy PRG.","Budget failure pozostaje jawnym symbolicznym składnikiem do instancji przez P15; nie ustawiaj nieudowodnionego loss na zero."],
+    "controls":["Toy finite PRG pokazujący różnicę computational/statistical claimów.","Powtórzone actual block input i zła domain-separation mutation.","Kontrola typów oracles i resource charges w termach redukcji."],
+    "review_focus":"Czy theorem jest rzeczywistą redukcją z właściwym oracle access,metric i resource bounds? Weryfikuj named assumptions i brak ukrytej tezy IID/desired loss.",
+    "limit":"Primitive hardness jest jawnym założeniem,nie twierdzeniem tego zadania. Whole public H2P i EUF-CMA nie są tu domknięte."
+  },
+  {
+    "id":"P06","slug":"INTEGER_REFERENCE_KERNEL","roadmap":"T03 A","deps":["P01","P02"],"base":["T03","TARGETS","NORMALIZED","LEFT"],
+    "title":"Pełna formalizacja exact reference i mappingu3072 zwrotów",
+    "goal":"Zastąpić mieszaną granicę T03-A formalnym source-order argumentem od rzeczywistych recursive slots do integer reference i kongruencji.",
+    "exports":["B20.Reference.Z : OrderedReturns3072 → RingPair,with kernel bijection/sign/order proof","B20.Reference.exact_shadow_cancellation : exact source-shadow execution → residual=t_ref−Z(Y)","B20.Reference.integral_and_congruent : v_ref=[c,0]−Z(Y)B ∈ R² ∧ v1+h*v2=c mod(q,Phi)","B20.Reference.source_call_index_binding : every source call/read maps to the stated Z slot"],
+    "obligations":["Zdefiniuj R=Z[X]/(X^1536−X^768+1),B=[[g,−f],[G,−F]],det=q,h tego samego klucza i t_ref=[−cF/q,cf/q].","Formalnie rozlicz root/binary right-before-left,cubic2→1→0,terminal mu1→updatedmu0,split/merge/twiddle signs.","Zbuduj exact shadow tego samego AST z fixed actual L; dowiedź cancellation/recomputed-products bez zakładania ideal LDL.","Prove full recursion/frame/slot uniqueness,nie tylko per-slot Int identity lub enumerację tabeli.","v_ref zależy wyłącznie od exact key,c,Y; nigdy od source rint output."],
+    "controls":["Swapped order/sign/terminal pair i dropped-update mutations.","Bijection wszystkich3072 calls i symboliczne ring identities w niezależnym .sage.","Test source-output-as-reference ma wykryć niedozwoloną definicję także poza idealnym skeletonem."],
+    "review_focus":"Sprawdź uniwersalną instancję source recursion,nie utożsamiaj integer cancellation lemma z całym FFT samplerem. Syntetyczne keys nie mają Emitted membership z samego fixture.",
+    "limit":"Rint equality nie wynika z A; actual floating/source error jest celem P07–P10."
+  },
+  {
+    "id":"P07","slug":"STORED_BASIS_RESIDUALS","roadmap":"T03 B — immutable FFT words","deps":["P01","P02","P06"],"base":["T03","TARGETS","NORMALIZED"],
+    "title":"Uniformne residualy stored FFT basis words",
+    "goal":"Wyprowadzić i sformalizować ciasne residual bounds rzeczywiście przechowywanych słów f,g,F,G względem exact basis; sprawdzić przydatność do budżetu T03-B.",
+    "exports":["B20.Basis.emitted_inputs_domain : source emitted/validated key → wymagane integer/range/frame facts","B20.Basis.fft_words_residual : ∀ required key,stored basis residual≤proved ε_fg/ε_FG","B20.Basis.twiddle_certificate_sound : pinned bit tables → rigorous phase/value enclosures","B20.Basis.budget_contribution : exact transfer residuals into SOURCE_ERROR components"],
+    "obligations":["Wyprowadź domenę z actual key validation/expansion,nie wpisuj małych residualów do definicji legal key.","Formalize source-order FFT graph,normalization,twiddle errors i absolute/relative/subnormal cases; generic gamma_n bez konkretnej instancji nie wystarcza.","T03§3 sugeruje ε_fg około3.3e-13 i ε_FG około6.8e-10; traktuj je jako cele do sprawdzenia,nie jako przesłanki.","Sage generuje outward rational certificates; Lean dowodzi poprawności i źródłowego użycia wszystkich granic.","Eksportuj uzyskane dokładne ε i sensitivity contribution. Jeśli nie mieszczą się w potrzebnym budżecie,zachowaj bound jako partial,nie zamykaj B-gap."],
+    "controls":["Worst-case signs,cancellation i twiddle mutation.","Exact inputs przeciw original-C FFT slices; random maximum pozostaje diagnostic.","Odrzucenie certyfikatu ze zmienionym bankiem stałych lub przesuniętym endpointem."],
+    "review_focus":"Sprawdź quantification po całej required populacji,source operand domains i actual tightness. Relative-only error nie pokrywa automatycznie cancellation/subnormals.",
+    "limit":"PROVED eksport range może być odebrany osobno; brak wystarczającego ε blokuje końcowy P10."
+  },
+  {
+    "id":"P08","slug":"TREE_DEFECT_KERNEL","roadmap":"T03 B — δ/eroot; F03–F05 domains","deps":["P01","P02","P07"],"base":["T03","NORMALIZED","LEFT"],
+    "title":"Formalny defekt rekonstrukcji drzewa i legalność parametrów",
+    "goal":"Dowieść source-instantiated bounds δ/eroot dla rzeczywistego expanded/normalized tree oraz formalne domeny wszystkich odczytywanych parametrów.",
+    "exports":["B20.Tree.emitted_tree_frame : source expansion/gates → initialized immutable tree and legal widths","B20.Tree.reconstruction_defect : every required node/slot has the stated exact residual/error","B20.Tree.delta_eroot_bound : source tree → proved δ,eroot certificate","B20.Tree.caller_parameter_domains : concrete domains for ordered scalar/kernel consumers"],
+    "obligations":["Formalizuj root/cubic/binary LDL,stabilization i scaling w actual order; raw L i stable D nie są tym samym idealnym obiektem.","Rozlicz dowody dodatniości denominatorów,małych pivots,rounding/cancellation oraz source frame.","Udowodnij correlated reconstruction recurrence; nie mnoż niezależnych boxów zamiast zależności użytych w argumencie.","Cele δ≈3.3e-6,eroot≈3.7e-5 pochodzą z sensitivity T03; ich osiągnięcie trzeba wykazać formalnie.","Eksport domains może zostać odebrany mimo otwartego tightness; każda taka granica ma jawny status/consumer."],
+    "controls":["Node/branch permutation,stale L lub D,signed-zero i denominator-bound mutations.","Source tree fixtures i niezależne exact/interval certificates.","Formal rejection of a certificate containing only assumed small δ."],
+    "review_focus":"Prześledź actual stored operands i indukcję wszystkich node classes. Nie zastępuj source tree założonym exact LDL tree.",
+    "limit":"Brak dostatecznie małego defektu oznacza PARTIAL dla B-gap; nie zmieniaj key gates lub global σ."
+  },
+  {
+    "id":"P09","slug":"TARGET_ERROR_TRANSPORT","roadmap":"T03 B — ηt; F05 ordered reach","deps":["P01","P02","P06","P07","P08"],"base":["T03","TARGETS","LEFT","JOINT"],
+    "title":"Formalny transport target/terminal errors przez3072 calls",
+    "goal":"Dowieść skorelowany transport błędów actual ordered sampler do niezależnej referencji integer,łącznie z reach/domain każdego call-site.",
+    "exports":["B20.Target.reached_call_domain : every legal completed prefix → next actual operands satisfy P02/P12 domain","B20.Target.terminal_error_transport : local source defects → vector coefficient error with proved weights","B20.Target.eta_t_bound : required histories → exact ηt bound","B20.Target.initial_to_suffix_ledger : joint error decomposition relative to P06 v_ref"],
+    "obligations":["Formalize initial FFT/ni/targets,paired terminal half/sub i actual left-target updates.","Utrzymaj ten sam Y/source history w exact shadow; nie sampluj ponownie i nie zakładaj niezależności zdeterminowanych korelacji.","Zwiąż rozkład/stan dss i center class z każdym reached call,bez future-success conditioning.","Przelicz transport3072 defektów z formalnym uzasadnieniem macierzy/wag. Sam box C2 lub source iFFT1/128 nie jest full error theorem.","Cel ηt≈1/31457280 ma być wyprowadzony; eksportuj także pełną ledger contribution i jawne niewystarczające trasy."],
+    "controls":["Omitted initial/basis term,stale snapshot i wrong paired update mutations.","Skrajne legalne μ/Y oraz cancellation; fixtures nie uzasadniają uniformity.","Sprawdzenie odrębności H6 innovation reference i integer reference P06."],
+    "review_focus":"Sprawdź,że wszystkie składniki porównują te same obiekty i mają source-derived operands. Generic error recurrence pod assumed η nie zamyka P09.",
+    "limit":"Jeśli uniform target jest fałszywy,podaj formalny required-domain witness; nie zastępuj go syntetycznym przykładem bez membership."
+  },
+  {
+    "id":"P10","slug":"INTEGER_RECOVERY_FULL","roadmap":"T03 B+C","deps":["P01","P02","P06","P07","P08","P09"],"base":["T03","POST"],
+    "title":"Końcowy kernelowy gap<1/2 i actual wide-rint recovery",
+    "goal":"Skomponować source bounds do niezależnego v_ref i formalnie rozstrzygnąć pełne one-root integer recovery dla wymaganej domeny.",
+    "exports":["B20.Recovery.full_gap : ∀ required completed H, ∀ coefficient,|pre_rint−v_ref|<1/2","B20.Recovery.actual_wide_pair_eq_reference : source wide rint pair=v_ref","B20.Recovery.tie_orientation : osobne obie granice i parity,jeśli potrzebne","B20.Recovery.interface : exact scope,source pins,assumptions and remaining narrowing obligations"],
+    "obligations":["Zsumuj wszystkie składniki na jednym sufficient event/domenie i wykaż strict inequality w kernelu.","Każde ε/δ/η pochodzi z odebranego konkretnego eksportu P07–P09; brakujące wartości nie mogą stać się assumed small premise.","Instancjuj literal fpr_rint refinement dla obu1536 vectors i właściwej orientacji ties/±0.","Zachowaj historyczny6086.4 bound i wyjaśnij co rzeczywiście poprawiono. Duży bound nie jest kontrprzykładem.","Jeśli cel nie zachodzi,oddaj PARTIAL z exact missing type lub formalny counterexample z required-domain membership. Zmiana celu na probabilistyczny wymaga jawnego nowego kontraktu."],
+    "controls":["Gap=1/2 z obydwu stron,parzyste/nieparzyste v,oba znaki.","Composition omitting a positive error term musi zostać odrzucona.","Fresh C rint controls oraz kernel theorem application trace."],
+    "review_focus":"Sprawdź wszystkie concrete premises i ścisłość <1/2. Sam formalny rounding lemma lub suma zadanych liczb nie daje actual recovery.",
+    "limit":"Safe16,center/norm i Verify nie wynikają z samego wide-rint recovery. Ich cele są w P17/P18."
+  },
+  {
+    "id":"P11","slug":"PREFIX_API_BINDING","roadmap":"T04","deps":["P01","P02","P03"],"base":["M0","NORMALIZED","TARGETS","T01"],
+    "title":"Formalny prefix API,nonce/H2P i wejście ReadyRetryEntry",
+    "goal":"Związać rzeczywisty prefix Sign/API z wejściem regionu retries i pełną przestrzenią outcomes według M0,bez zakładania sukcesu usług lub zakończenia każdej ścieżki.",
+    "exports":["B20.Api.prefix_refines : legal caller/service trace → PRE_ABORT | ReadyRetryEntry | specified nonreturn","B20.Api.nonce_h2p_frame : same message/nonce/table/source buffers and canonical challenge","B20.Api.ready_entry_from_source : actual successful prefix → legal retry entry with no future assumptions","B20.Api.prefix_resources : exact byte/query/space costs separate from post-H2P budget"],
+    "obligations":["Formalize context allocation,loader,rng_ready,start/update,nonce40 i hm/H2P boundary.","Uwzględnij PRE/POST abort,zero-return i nonreturn zgodnie ze źródłem; STUCK nie może być relabelowany jako source abort.","Rozdziel source public SHAKE/H2P od direct-output ROM interface M0. Ewentualna idealizacja H2P jest jawną granicą do S04.","Wykaż memory/init/immutability frame key/hm i określ dokładny moment entry PAST.","Powiąż prawo/zasoby prefixu z P05 wyłącznie w zadeklarowanym modelu randomness; nie zakładaj uniform nonce za darmo."],
+    "controls":["Allocation/entropy/loader failure paths i invalid caller buffers.","Nonce/header/domain-separation alias mutations.","Brak future norm/return conditioning w formalnym Entry type."],
+    "review_focus":"Czy ReadyRetryEntry wynika z rzeczywistego prefixu,a nie z definicji zawierającej cel? Czy public H2P i private PRNG mają różne,jasne interfejsy?",
+    "limit":"Pierwszy M0 target używa direct-output ROM; osobny public-XOF theorem nie może być domyślnie uznany za rozwiązany."
+  },
+  {
+    "id":"P12","slug":"SCALAR_IID_KERNEL","roadmap":"F07 formal debt; T05","deps":["P01","P02","P03","P09"],"base":["SCALAR","NORMALIZED","LEFT"],
+    "title":"Formalny scalar IID rejection kernel i fresh unread tail",
+    "goal":"Zbudować kompletny kernelowy dowód literalnego scalar sampler law w IID_BUFFER,z definicją zatrzymania,normalizacją i source-domain application.",
+    "exports":["B20.Scalar.source_proposal_berexp_law : legal words/history → exact proposal/acceptance weights","B20.Scalar.stopped_pmf : A>0 → Law(returnY)=wY/A and a.s. return","B20.Scalar.uniform_acceptance_lower : required domain → A≥1/256","B20.Scalar.fresh_tail_and_resources : stopped prefix → conditional unread iid tail and proved tail/mean bounds"],
+    "obligations":["Formalize actual table/CDF,Word thresholds,BerExp comparisons,getters and rejection loop.","Instantiate legal μ/σ/domain from P09/P08 exports; no opaque claim Reach⇒Domain.","Zdefiniuj finite/infinite tape probability space i stopping time w konkretnej bibliotece formalnej.","Udowodnij normalizer positivity,geometric summation,a.s. termination i fresh-tail law bez future conditioning.","Preserve literal floor(-0),signed zero,proposal support i actual counters; ideal Gaussian comparison jest osobnym P13."],
+    "controls":["CDF boundary,zero/nonzero normalizer,rare acceptance i getter-tail mutations.","No-op versus meaningful BernExp threshold mutations.","Formal checker rejects using real seeded tape as IID premise."],
+    "review_focus":"Źródłowe PMF/acceptance i measure construction muszą być kernel-checked. Szczególnie sprawdź conditioning po stopped prefix i zastosowanie boundu1/256.",
+    "limit":"Scalar IID law nie jest real PRNG theorem ani whole Sign kernel."
+  },
+  {
+    "id":"P13","slug":"GAUSSIAN_COMPARISON_KERNEL","roadmap":"F07 formal debt; T05","deps":["P01","P12"],"base":["GAUSS","SCALAR"],
+    "title":"Formalny directed TV/χ² scalar comparison i support",
+    "goal":"Dowieść w kernelu uniform porównanie source scalar IID kernel z dokładnie zdefiniowanym dyskretnym Gaussianem,z normalizerami,ogonami i poprawnym kierunkiem miary.",
+    "exports":["B20.Gaussian.normalizer_and_tail_certificates : uniform legal μ/σ → checked bounds on infinite sums","B20.Gaussian.scalar_TV : TV(K_C,G)≤2^-36,jeśli pełny certyfikat to wykaże","B20.Gaussian.scalar_forward_chi2 : χ²(K_C||G)≤2^-60,jeśli osiągalne w required domain","B20.Gaussian.reverse_support_obstruction : G on Z versus finite K support gives stated reverse obstruction"],
+    "obligations":["Zdefiniuj G z actual parameter words i właściwą normalizacją,nie przez nominalne σ bez source mapping.","Sprawdź wszystkie zakresy center,width,tailcut i clipped support uniformnie.","Sage ma wygenerować rational/Taylor/interval certificates; formal consumer dowodzi ich znaczenia dla exp/sum/tail.","TV2^-36 i forwardχ²2^-60 są historycznymi celami do formalnego wykazania,nie przesłankami.","Rozlicz zero mass,absolute continuity i reverse∞; nie zamień kierunku divergence przy kompozycji."],
+    "controls":["Wrong divergence direction,missing normalizer i support mutation.","Boundary parameter words i negative-zero cases.","Złe endpointy lub ucięty tail certificate muszą odpaść w Lean."],
+    "review_focus":"Czy formal proof dotyczy wszystkich legal words,a nie skończonej siatki? Czy sumy nieskończone i tails są dowiedzione,nie przypisane Sage jako aksjomat?",
+    "limit":"Jeśli budżety historyczne nie przechodzą,oddaj udowodnione boundy z PARTIAL; nie powiększaj ich po cichu w consumerze."
+  },
+  {
+    "id":"P14","slug":"ORDERED_JOINT_KERNEL","roadmap":"F08 formal debt; T05","deps":["P01","P08","P09","P12","P13"],"base":["JOINT","LEFT","POST"],
+    "title":"Formalna adaptacyjna kompozycja3072 calls jednego root",
+    "goal":"Dowieść actual ordered root law,joint innovations/returns/byte tape oraz reference exits i directed comparison w pełnym kernelowym łańcuchu.",
+    "exports":["B20.Joint.source_order_and_reach : every positive source prefix → next legal call or specified exit","B20.Joint.root_kernel_composition : actual3072 adaptive calls = composed conditional scalar kernels","B20.Joint.directed_bounds : correctly typed TV/chi2 comparisons for Q_S and Q_stop","B20.Joint.proposal_resource_tail : E[T]≤24576 and Pr[T>49152]<2^-1024,if certified"],
+    "obligations":["Zachowaj literal paired/cubic/binary/root order i history-dependent centers/widths.","Pokaż source-law applicability na KAŻDYM osiągniętym prefixie; nie zakładaj niezależnych Y lub future success.","Q_S,Q_stop i exit tags mają osobne definicje. Q_S nie jest automatycznie Q_stop conditioned on survival.","Formalize product/kernel change-of-measure i cumulative losses wraz z support cost.","Resource tail i mean mają uwzględniać stopping/rejection,a nie ghost runtime caps."],
+    "controls":["Wrong call order,omitted exit mass,conditioning-on-survival i reused-unread-tape mutations.","Exact finite toy kernels do niezależnego sprawdzenia orientation.","Konsumpcja P09 domains i P12 fresh-tail exports sprawdzana po typach."],
+    "review_focus":"Zweryfikuj całe history-dependent composition,nie tylko generic product theorem. Każdy constant/loss musi być rzeczywiście zinstancjowany.",
+    "limit":"One-root IID law; pełny API/retry/real randomness to osobne consumer lemmas."
+  },
+  {
+    "id":"P15","slug":"H6_RETRY_FORMAL_COMPOSITION","roadmap":"F09 + T01 formal debt","deps":["P01","P02","P04","P11","P14"],"base":["H6P","T01","JOINT","POST"],
+    "title":"Kernelowy H6 tail i zatrzymana kompozycja cap16",
+    "goal":"Formalnie odtworzyć source-bound joint BadPrecast i jego kompozycję przez actual retry region wraz ze wspólnym eventem resource budget.",
+    "exports":["B20.H6.source_affine_reference_and_error : actual coefficients related to innovation reference","B20.H6.conditional_mgf_and_signed_tails : full support/normalizer costs → Q_S(BadPrecast) bound","B20.Retry.stopped_bad_bound : one legal post-H2P region → WholeRegionBad≤2^-80,if concrete certificates pass","B20.Retry.joint_budget_probability : Pr(not H_counts)<2^-1020 and P04 budgets hold together"],
+    "obligations":["Formalize coefficientwise source map,variance/error certificates and all6144 signed tails for both vectors.","Keep innovation reference distinct from P06 integer reference; H6 E<1095 does not prove recovery.","Instantiate correct P14 directed transfer; historical Q_S2^-119/P_IID2^-84 are targets,not axioms.","Prove actual cap16 scheduler,entry preservation,re-entry,fault/norm/codec order and stopped-history union/hazard argument.","Bad includes reached norm-rejected attempts. Separate Bad∧success from Bad|success; latter requires an explicit positive denominator.","Use the same H_counts for all resource claims,strict/nonstrict tail conventions and reset accounting."],
+    "controls":["Wrong chi2 direction,one-vector-only event,future-success conditioning and missing rejected-attempt mutations.","Pooled-resource countermodel and no-op event padding.","Certifier checker rejects dropped tail/remainder or source error term."],
+    "review_focus":"Czy zarówno probability theorem,jak actual source instancja i scheduler są formalne? Sprawdź pełny directed loss/event ownership i wspólne budget event.",
+    "limit":"WholeRegionBad dotyczy IID/post-H2P regionu. Real RNG używa P05,a pełny Sign observation kernel P19/P20."
+  },
+  {
+    "id":"P16","slug":"GLOBAL_REFERENCE_GEOMETRY","roadmap":"T05","deps":["P01","P06","P07","P08","P09","P13","P14"],"base":["M0","GAUSS","JOINT","H6P","T03"],
+    "title":"Formalny most ordered reference → zadeklarowany Gaussian kosetu",
+    "goal":"Zdefiniować globalny reference law na tej samej kracie/metric i dowieść właściwego porównania z ordered reference,bez utożsamiania ich przez nazwę.",
+    "exports":["B20.Geometry.CosetGaussian : key,c,σ → normalized law on exact integer coset","B20.Geometry.tree_to_lattice_coordinates : formal geometry/metric/Jacobian and source parameter mapping","B20.Geometry.reference_kernel_comparison : Q_S or Q_stop → stated coset law with proved metric/direction/loss","B20.Geometry.normalizer_and_empty_support_interface : exact normalization/support obligations"],
+    "obligations":["Formalize R_N,A2/trace metric,basis determinant and same-key/coset relation using P06.","Account for true versus stored tree,width/center errors,discrete conditional normalizers and adaptive history.","Prove actual change-of-coordinates and distribution comparison; a chi-square proxy or low BadPrecast does not identify the lattice Gaussian.","Define empty support/exits and prove each loss,including any tail truncation needed for uniformity.","Export exact certified loss/function in a stated metric and required domain. If only a conditional generic geometry theorem is obtained,mark actual instantiation OPEN."],
+    "controls":["Wrong A2 volume factor,ideal LDL substituted for stored tree,omitted normalizers and support conditioning.","Toy exact lattices with nonconstant conditional Gaussian normalizers.","Counterexamples must distinguish extended and required domains."],
+    "review_focus":"Przede wszystkim identyfikacja prawa i normalizerów. Sam linear algebra mapping lub momenty nie są distribution theorem.",
+    "limit":"To nie ideal norm/retry acceptance theorem ani R5T/image theorem; dalsze T07–T14 pozostają odrębne."
+  },
+  {
+    "id":"P17","slug":"PRECAST_CODEC_REFINEMENT","roadmap":"F06 + T06","deps":["P01","P02","P11","P15"],"base":["POST","T01","M0","LV"],
+    "title":"Formalny checked-precast observer,norm i byte codec",
+    "goal":"Dowieść source postprocessing/codec semantics oraz equality-until-bad checked-precast coupling dla actual observed bytes,bez założenia uniwersalnego Safe16.",
+    "exports":["B20.Bytes.wide_narrow_stored_refinement : exact source cast/order and stored norm semantics","B20.Bytes.equal_until_bad : shared execution outside joint BadPrecast → same source/checked public outcome","B20.Bytes.static_codec_roundtrip_and_capacity : norm-accepted stored pair → correct STATIC bytes and payload≤3160","B20.Bytes.public_projection_bound : proved event coupling → observable-kernel bound"],
+    "obligations":["Formalize iFFT/rint/narrowing,implementation-defined casts under pinned ABI,source norm order,fault and encode failure outcomes.","Wide integers i stored int16 są różnymi obiektami; nie wyprowadzaj Safe16 z późniejszego stored norm.","Prove capacity/header/length/padding and decode roundtrip for actual STATIC producer; nonce40 osobno.","Ghost PRECAST_EXIT nie jest nowym C abortem; define observations so source behavior is preserved until bad.","Use P15 for probability,not an assumed deterministic no-bad premise to claim full safety."],
+    "controls":["Cast overflow,header/capacity boundary,negative values,padding and wrong-buffer mutations.","No-op ghost observation and actual source error returns.","C slices with sanitizers plus kernel-definedness/application proof."],
+    "review_focus":"Sprawdź moment obserwacji przed stores,pełny memory/frame i codec refinement. Uniform Safe16 nie może zostać dopisane jako wygodne założenie.",
+    "limit":"Congruence/recovery i verifier centering pozostają celami P10/P18; codec roundtrip sam ich nie zapewnia."
+  },
+  {
+    "id":"P18","slug":"VERIFY_CENTER_COMPATIBILITY","roadmap":"T03 D → T06","deps":["P01","P06","P10","P15","P16","P17"],"base":["T03","POST","LV","M0"],
+    "title":"Formalny most do Verify z rzeczywistym centering/norm accounting",
+    "goal":"Rozstrzygnąć potrzebny center/norm bridge dla source-positive outputs i formalnie wyprowadzić dokładny zakres Sign→Verify lub jawny bad-event/counterexample wynik.",
+    "exports":["B20.Verify.produced_bytes_consumer : proved recovery/safety/compatibility → actual verifier accepts produced bytes","B20.Verify.center_norm_condition : exact sufficient condition with source derivation","B20.Verify.bad_verification_event : explicit event/law and proved bound,if deterministic compatibility fails","B20.Verify.countermodel_boundary : formal local countermodel to unjustified centering monotonicity"],
+    "obligations":["Prove actual verifier reconstruction center_q(c−h*s2),same-key NTT/congruence and codec composition.","A2 has cross terms; centering is not unconditionally norm-monotone. Preserve known local countermodel.","Derive compatibility from reached source data or bound its violation in a specified game; do not insert desired compatibility as the final theorem premise.","If using a smaller centered-coordinate tail threshold,derive its own bound; BadPrecast at int16 threshold is not the same event.","Keep recovery failure,Safe16 failure,centering and byte failures explicit,without future-acceptance conditioning or a new runtime gate."],
+    "controls":["Known A2 centering countermodel and wrong-sign/cross-term mutations.","Source-produced versus arbitrary congruent witness distinction.","Formal membership for any claimed actual-source counterexample."],
+    "review_focus":"Czy warunki consumeru rzeczywiście dowiedziono lub ich failure został oszacowany? Warunkowy lemma jest wartościowy,ale nie zamyka actual Sign→Verify.",
+    "limit":"Brak nontrivial source-instantiated compatibility/result oznacza PARTIAL. Nie narzucaj fałszywego universal correctness theorem."
+  },
+  {
+    "id":"P19","slug":"COMPLETE_OBSERVED_KERNELS","roadmap":"T06","deps":["P01","P05","P10","P11","P15","P16","P17","P18"],"base":["M0","T01","T03","POST"],
+    "title":"Pełne history-dependent observed byte kernels jednego Sign call",
+    "goal":"Zdefiniować i formalnie powiązać complete source/IID/reference kernels z nonce,bytes,abort i nonreturn outcomes dla rzeczywistego API i cap16.",
+    "exports":["B20.Observed.SourceSignKernel,IidSignKernel,ReferenceSignKernel : complete observation kernels","B20.Observed.source_program_refines_kernel : actual API semantics → defined kernel","B20.Observed.iid_reference_transport : stated metric/direction and all derived losses","B20.Observed.real_reference_advantage : resource-bounded computational composition with P05"],
+    "obligations":["One shared K_seed[E],same public service plan,message/nonce/table and all source outcomes; KeyGen conditioning/p_K accounted once.","Combine prefix/retry/post/codec through exact state interfaces,not only successful final signatures.","Keep mass of PRE_ABORT,POST_ABORT,nonreturn and reference exits; no post-sign Verify filter added to source.","Statistical IID losses and computational real-RNG assumptions have separate formal types. Do not claim TV(real,IID) from a PRG assumption.","Instantiate every needed recovery/geometry/centering bound. An unresolved value is not zero and prevents the concrete full claim."],
+    "controls":["Drop abort mass,double-count or renormalize success,discard invalid positive output,wrong nonce/history mutations.","Finite toy kernels check complete mass and observation projection.","Fresh source-kernel replay and kernel exports are both required."],
+    "review_focus":"Prześledź każdy outcome i transition boundary,common key law oraz metric composition. Brakujące P10/P16/P18 instancje nie mogą być ukryte w interface type.",
+    "limit":"First target is explicitly SourceSign in the M0 direct-output ROM; real public bit-XOF/H2P requires S04. Full EUF-CMA/M7 is not claimed."
+  },
+  {
+    "id":"P20","slug":"FORMAL_COMPOSITION_CHECKPOINT","roadmap":"T02–T06 formal checkpoint; interface to T07–T14","deps":["P01","P04","P05","P10","P11","P15","P16","P17","P18","P19"],"base":["M0","T01","T03"],
+    "title":"Końcowa formalna kompozycja i typed interfejs dalszego M7",
+    "goal":"Zamknąć jeden sprawdzalny kernelowy composition theorem z konkretnymi instancjami wyników pakietu oraz dokładnie wyeksportować to,czego nadal potrzebują T07–T14.",
+    "exports":["B20.Final.FT1536_SourceToReference : fully instantiated theorem for the stated games,observations,domains and resource parameters","B20.Final.ErrorOwnership : each event/loss appears in its declared place and metric","B20.Final.ResourceInstantiation : concrete finite primitive/byte budgets with proved sufficient events","B20.Final.NextM7Interface : typed list of still-unproved obligations,not axioms closing this theorem"],
+    "obligations":["Import only exact reviewed Lean exports with recorded term/type/axiom hashes and source pins; no conversion of mixed text claims into theorem assumptions.","Construct actual theorem instance,not merely a theorem conditional on all desired conclusions.","Map old M0 ledger rows to new certificates; identify replaced/nonoverlapping terms and preserve order of directed comparisons.","Discharge concrete arithmetic in Lean using checked certificates. Report computational assumptions with distinguisher resources explicitly.","List remaining ideal norm/retry,image/R5T,public sampler,freshness,ROM simulator,indexed extraction and final M7 obligations from ROADMAP. Do not call this batch a full security proof.","If upstream exports are insufficient,freeze a precise PARTIAL dependency certificate and blocker,not a paper-only conclusion."],
+    "controls":["Missing/wrong-direction loss,duplicated p_K,wrong source revision and absent export mutations.","Build from an empty project cache using only sealed dependency packages.","Print final theorem type/term/axioms and mechanically compare with required goal contract."],
+    "review_focus":"Final consumer must be a real kernel-checked instance with no unresolved internal premises. Verify all metric/resource/event boundaries and honest remaining M7 scope.",
+    "limit":"Twenty tasks form the next formal tranche,not a promise that all open cryptographic assumptions or T07–T14 are solved. Full PROVED requires the exact declared consumer; otherwise PARTIAL/BLOCKED."
+  }
+]

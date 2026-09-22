@@ -1,0 +1,61 @@
+{
+  "id": "P15",
+  "task_id": "B20_001_P15_H6_RETRY_FORMAL_COMPOSITION",
+  "role": "author",
+  "producer": null,
+  "fixed_base_inputs": {
+    "H6P": {
+      "stage": "FT1536_H6P_REFERENCE_BAD_EVENT_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H6P_REFERENCE_BAD_EVENT_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "3c425b1c1e863c7bfb3cbde6284b299a926cb2fb51e89279035e2ce1da0081cd",
+      "outputs_sha256": "a11735ac8fbc76aaa72d220f02acfd6f7254ee72ecfac8ab1004cbb843bda7d5",
+      "historical_status": "H6P_REFERENCE_BAD_EVENT_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "T01": {
+      "stage": "FT1536_IID_RETRY_COMPOSITION_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_IID_RETRY_COMPOSITION_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "b7164dbbee02db248ea43adce1d63ae0a38ed4493a566c5acd3a2f507db14590",
+      "outputs_sha256": "3d68249f4f0e017f32eb7edeb0d90f5c4a6cd6b4b9f93307cec6919439525074",
+      "historical_status": "IID_RETRY_COMPOSITION_PROVED_FOR_PINNED_IID_BUFFER_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "JOINT": {
+      "stage": "FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "b150ca1284600dbda3a40ae3656a2058d8a6c0f3b7cfb1e38d15a9ccc5e78c59",
+      "outputs_sha256": "da8cfccceea6837fc21edd04e46157351d91ad2d317a37286c05f41f3126e263",
+      "historical_status": "H3_ORDERED_JOINT_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "POST": {
+      "stage": "FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "4cd7ab1a6f63256ed6c015f3ba9bbef97597d7a68bb948bfd8c9264bab307662",
+      "outputs_sha256": "b860e5453a7a72716acd8636cc581ff57b1b9c00dff20baa907e4636344d1401",
+      "historical_status": "PARTIAL_PROOF",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    }
+  },
+  "upstream_tasks": [
+    "P01",
+    "P02",
+    "P04",
+    "P11",
+    "P14"
+  ],
+  "external_required": [],
+  "required_goal_exports": [
+    "B20.H6.source_affine_reference_and_error : actual coefficients related to innovation reference",
+    "B20.H6.conditional_mgf_and_signed_tails : full support/normalizer costs → Q_S(BadPrecast) bound",
+    "B20.Retry.stopped_bad_bound : one legal post-H2P region → WholeRegionBad≤2^-80,if concrete certificates pass",
+    "B20.Retry.joint_budget_probability : Pr(not H_counts)<2^-1020 and P04 budgets hold together"
+  ],
+  "bound_inputs": null,
+  "binding_rule": "copy verified frozen dependencies into W/inputs; write BOUND_INPUTS there; never edit this contract or invent pending hashes",
+  "for_review_required": []
+}

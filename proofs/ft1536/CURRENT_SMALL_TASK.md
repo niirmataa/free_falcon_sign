@@ -1,7 +1,9 @@
 # Małe zadanie dla kolejnego modelu — T02.1
 
 **TASK_ID=FT1536_PRNG_LAYOUT_COUNTER_RUN_001**,ROADMAP_ID=T02.1.
-Stan2026-09-22: **PREPARED_OWNER_START**. Model wybiera i uruchamia właściciel.
+Stan2026-09-22: **AT_REVIEW_PER_OWNER**. Właściciel potwierdził przekazanie
+wyniku T02.1 do weryfikacji. Czekamy na handoff/piny odbioru; nie wznawiaj
+autora ani nie startuj drugiego review. B20/P03 ma jawny pending input contract.
 
 **Obowiązkowe uzupełnienie właściciela2026-09-22:**
 [rachunek w `.sage` uruchamiany `sage lemma.sage`](documents/FT1536_ZASADA_RACHUNKU_SAGEMATH_2026-09-22.md),

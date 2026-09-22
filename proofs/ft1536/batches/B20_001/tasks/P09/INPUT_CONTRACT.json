@@ -1,0 +1,61 @@
+{
+  "id": "P09",
+  "task_id": "B20_001_P09_TARGET_ERROR_TRANSPORT",
+  "role": "author",
+  "producer": null,
+  "fixed_base_inputs": {
+    "T03": {
+      "stage": "FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "e01a09789091c9c9322f9727263503063c94441a68ff5f30af952bcc4417785c",
+      "outputs_sha256": "0cafdbb2c746043380081052951cb6438643f6a1765a98028a065fa57b7df6de",
+      "historical_status": "PARTIAL_PROOF",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "TARGETS": {
+      "stage": "FT1536_H3_INITIAL_TARGETS_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_INITIAL_TARGETS_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "cc44b63bd1c0ea747da2948dcf0487c1819bd25419c294af5a9c0c9ab2bd1a5f",
+      "outputs_sha256": "d133f9a352eb1cb8264a03dcee827e040eb9eba0647799d7c2c528d06cc6f6d6",
+      "historical_status": "H3_INITIAL_TARGETS_PROVED_FOR_EMITTED_PINNED_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "LEFT": {
+      "stage": "FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_LEFT_ROOT_CORRELATED_TRANSFER_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "ceaf6d1a76c56b34ab020322eb2023f616814224532b38750702db54f8beef01",
+      "outputs_sha256": "e61abbf536787aef11764d44f673baa549641208f350d09f58b5f6fe564a61ee",
+      "historical_status": "H3_LEFT_ROOT_CORRELATED_TRANSFER_PROVED_FOR_EMITTED_PINNED_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "JOINT": {
+      "stage": "FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "b150ca1284600dbda3a40ae3656a2058d8a6c0f3b7cfb1e38d15a9ccc5e78c59",
+      "outputs_sha256": "da8cfccceea6837fc21edd04e46157351d91ad2d317a37286c05f41f3126e263",
+      "historical_status": "H3_ORDERED_JOINT_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    }
+  },
+  "upstream_tasks": [
+    "P01",
+    "P02",
+    "P06",
+    "P07",
+    "P08"
+  ],
+  "external_required": [],
+  "required_goal_exports": [
+    "B20.Target.reached_call_domain : every legal completed prefix → next actual operands satisfy P02/P12 domain",
+    "B20.Target.terminal_error_transport : local source defects → vector coefficient error with proved weights",
+    "B20.Target.eta_t_bound : required histories → exact ηt bound",
+    "B20.Target.initial_to_suffix_ledger : joint error decomposition relative to P06 v_ref"
+  ],
+  "bound_inputs": null,
+  "binding_rule": "copy verified frozen dependencies into W/inputs; write BOUND_INPUTS there; never edit this contract or invent pending hashes",
+  "for_review_required": []
+}
