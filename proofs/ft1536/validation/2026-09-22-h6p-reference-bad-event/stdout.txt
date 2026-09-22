@@ -1,0 +1,45 @@
+REPLAY_JOB 0 ['-B', 'scripts/toolchain.py'] 0
+REPLAY_JOB 1 ['/home/footfalcon/.local/bin/sage', 'scripts/numeric_certificate.py'] 0
+REPLAY_JOB 2 ['-B', 'scripts/noise_structure.py'] 0
+REPLAY_JOB 3 ['scripts/kernel_build.py', '0'] 0
+REPLAY_JOB 4 ['scripts/kernel_build.py', '1'] 0
+REPLAY_JOB 5 ['scripts/kernel_build.py', '2'] 0
+REPLAY_JOB 6 ['-B', 'scripts/binding.py'] 0
+REPLAY_JOB 7 ['scripts/build.py', 'normal'] 0
+REPLAY_JOB 8 ['scripts/build.py', 'sanitized'] 0
+REPLAY_JOB 9 ['scripts/fixtures.py', '0'] 0
+REPLAY_JOB 10 ['scripts/fixtures.py', '1'] 0
+REPLAY_JOB 11 ['scripts/fixtures.py', '2'] 0
+REPLAY_JOB 12 ['scripts/fixtures.py', '3'] 0
+REPLAY_JOB 13 ['normal', '0'] 0
+REPLAY_JOB 14 ['normal', '1'] 0
+REPLAY_JOB 15 ['normal', '2'] 0
+REPLAY_JOB 16 ['normal', '3'] 0
+REPLAY_JOB 17 ['sanitized', '0'] 0
+REPLAY_JOB 18 ['sanitized', '1'] 0
+REPLAY_JOB 19 ['sanitized', '2'] 0
+REPLAY_JOB 20 ['sanitized', '3'] 0
+REPLAY_JOB 21 ['scripts/map_oracle.py', '0'] 0
+REPLAY_JOB 22 ['scripts/map_oracle.py', '1'] 0
+REPLAY_JOB 23 ['/home/footfalcon/.local/bin/sage', 'scripts/mgf_controls.py'] 0
+REPLAY_JOB 24 ['/home/footfalcon/.local/bin/sage', 'scripts/mutations.py'] 0
+REPLAY_JOB 25 ['-B', 'scripts/audit.py'] 0
+REPLAY_JOB 26 ['-B', 'scripts/metadata.py'] 0
+{
+  "status": "FRESH_REPLAY_PASS",
+  "task_id": "FT1536_H6P_REFERENCE_BAD_EVENT_RUN_001",
+  "game": "IID_BUFFER",
+  "reference": "Q_S",
+  "event": "joint BadPrecast of both pre-narrow vectors, Live only",
+  "scope": "every required ONE_ROOT entry and entry PAST; reference2^-119 and P_IID2^-84",
+  "external_manifest_sha256": "a11735ac8fbc76aaa72d220f02acfd6f7254ee72ecfac8ab1004cbb843bda7d5",
+  "manifest": "OUTPUTS.sha256",
+  "source_members_verified": 2225,
+  "fresh_without_project_cache": true,
+  "expected_files": 197,
+  "matched": 197,
+  "source_scope_unchanged": true,
+  "historical_status": "H6P_REFERENCE_BAD_EVENT_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL",
+  "real_prng_to_iid_bridge_proved": false,
+  "owner_accepted": false
+}

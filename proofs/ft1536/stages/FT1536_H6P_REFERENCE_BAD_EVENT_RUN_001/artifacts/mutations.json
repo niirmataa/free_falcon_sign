@@ -1,0 +1,101 @@
+{
+  "status": "PASS_EXECUTED_H6P_MUTATIONS_AND_COARSE_ROUTES",
+  "game": "IID_BUFFER",
+  "reference": "Q_S",
+  "mutations": [
+    {
+      "name": "noop_variance_recompute",
+      "status": "NOOP_PASS",
+      "path": "artifacts/mutations/noop_variance_recompute.json",
+      "sha256": "dd35bcb2760b5871f492e90d1f596c3d352b10c644071d4e0127b75c171e74e5",
+      "scope": "LOCAL_CONTROL_OR_PROOF_CONSUMER"
+    },
+    {
+      "name": "raw_L_equals_ideal",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/raw_L_equals_ideal.json",
+      "sha256": "17767cea63ae505cc46f2dc9a2118ca82395fc5df2391e534e71592d5b3edc0c",
+      "scope": "synthetic local constant basis; original source division has nonzero exact error, no Emitted membership"
+    },
+    {
+      "name": "omit_paired_variance",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/omit_paired_variance.json",
+      "sha256": "f197bf2b730ebf358c21ef59571627aa36d3202199d5fc3009f1cbd92904e5a6",
+      "scope": "LOCAL_CONTROL_OR_PROOF_CONSUMER"
+    },
+    {
+      "name": "A2_is_Euclidean",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/A2_is_Euclidean.json",
+      "sha256": "b0dd2d3cf74eac81316eabbdb9d2d45883019a0b6910ec9bb46390047bbfa57a",
+      "scope": "inverse A2 diagonal for each coefficient, not ordinary l2 variance"
+    },
+    {
+      "name": "omit_all_source_roundoff",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/omit_all_source_roundoff.json",
+      "sha256": "de64643ee3b971fd451aa82ae7e6908da3b8dd8d148944ce88c9da21a2269232",
+      "scope": "LOCAL_CONTROL_OR_PROOF_CONSUMER"
+    },
+    {
+      "name": "discrete_normalizer_ratio_one",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/discrete_normalizer_ratio_one.json",
+      "sha256": "4942b95414e8464a6a6afb57c5430bba9f4a8443b2cc3c4065ed65a888e8ba9d",
+      "scope": "LOCAL_CONTROL_OR_PROOF_CONSUMER"
+    },
+    {
+      "name": "omit_support_conditioning",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/omit_support_conditioning.json",
+      "sha256": "5661610adfb955fbb95f1e7910291e67bcdc6968503c285c3150f8f02b26a976",
+      "scope": "EXTENDED_TOY_SUPPORT_{0,1}; refutes generic missing-factor inequality, not required source instance"
+    },
+    {
+      "name": "independent_innovation_marginals",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/independent_innovation_marginals.json",
+      "sha256": "5cc45d392bc883e89d2563b17e631529bf4a228e7d95a4f4b197f9a24dff544a",
+      "scope": "LOCAL_CONTROL_OR_PROOF_CONSUMER"
+    },
+    {
+      "name": "exact_mean_zero_innovation",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/exact_mean_zero_innovation.json",
+      "sha256": "3944ae7bd1b13b7dc38544fb510961ed82ef8b7223a7411c7169e2106ad543e8",
+      "scope": "LOCAL_CONTROL_OR_PROOF_CONSUMER"
+    },
+    {
+      "name": "one_vector_instead_joint",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/one_vector_instead_joint.json",
+      "sha256": "e178baad1da548ffcf444e18729fedef11d8768dc9a0f517ac2e3bcadffa9630",
+      "scope": "EXTENDED_STANDALONE_PRECAST_EVENT; kernel/formal countermodel, not emitted history"
+    },
+    {
+      "name": "negative_rint_tie_away",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/negative_rint_tie_away.json",
+      "sha256": "13d72250076732456f8753e9fb53a7aaf19c99ce7a849520a9180c28f7cb21b5",
+      "scope": "LOCAL_CONTROL_OR_PROOF_CONSUMER"
+    },
+    {
+      "name": "positive_rint_tie_safe",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/positive_rint_tie_safe.json",
+      "sha256": "c6a67b6c7b103890917962505947b6ae6aea1960481aa3b04d33782c461f31de",
+      "scope": "LOCAL_CONTROL_OR_PROOF_CONSUMER"
+    },
+    {
+      "name": "reverse_chi2",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/reverse_chi2.json",
+      "sha256": "f82822d7cfc09dde6dfb793c4929204ed37dde848e9f921b8dc2d01b57a789d6",
+      "scope": "EXACT_TWO_POINT_PROBABILITY_COUNTERMODEL; no emitted membership; JOINT forward bound cannot simply be reversed"
+    }
+  ],
+  "detected": 12,
+  "noop": 1,
+  "required_domain_counterexample": false
+}

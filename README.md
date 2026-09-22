@@ -179,15 +179,19 @@ reproduced359/359 files,114 modules/884 theorems (37 new), native/sanitizer
 controls and exact adaptive-tree checks. Local support conditioning differs
 from whole-call survival conditioning; reverse chi2 against Q_stop is infinite.
 The deterministic POST pushforward yields a typed [H6P event transfer](proofs/ft1536/stages/FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001/H6P_INTERFACE.md).
-Its reference joint BadPrecast probability, real-PRNG bridge and retry/whole-Sign
-composition remain open.
+Its reference joint BadPrecast probability now has the upper bound reported
+in H6P below; the real-PRNG bridge and retry/whole-Sign composition remain separate obligations.
 
-**Next prepared owner-run task:** [H6P_REFERENCE_BAD_EVENT](proofs/ft1536/documents/FT1536_ZADANIE_ASTRA_H6P_REFERENCE_BAD_EVENT_2026-09-22.md),
-with [1144 pinned inputs](proofs/ft1536/background/H6P_REFERENCE_BAD_EVENT_2026-09-22/README.md).
-It targets a source-certified joint tail for both pre-narrow vectors under the
-explicit reference process, followed by the one-root IID event transfer.
-[CURRENT_TASK](proofs/ft1536/CURRENT_TASK.md) identifies the new worker directory
-and task pins for starts/resumes; ORDERED_JOINT is completed.
+The [H6P_REFERENCE_BAD_EVENT result](proofs/ft1536/stages/FT1536_H6P_REFERENCE_BAD_EVENT_RUN_001/REPORT.md)
+proves **Q_S(BadPrecast)<=2^-119 and P_IID(BadPrecast)<=2^-84 for ONE ROOT**,
+uniformly over required entries and legal past histories, for both pre-narrow
+vectors. Source variance proxy<5462457, full rounding error<1095, discrete
+normalizers, adaptive MGF and rint ties are explicitly accounted for.
+[Independent review](proofs/ft1536/validation/2026-09-22-h6p-reference-bad-event/README.md)
+reproduced197/197 files in73.819s,48 modules/327 theorems (26 new), with a
+separate rational/RBF768 verification of the final bounds. The next obligation
+is **IID_RETRY_COMPOSITION**; small one-root probability does not establish
+universal Safe16, real-PRNG security, integer recovery or Sign→Verify.
 
 The separate [FT family scaling research by MiMo](proofs/ft1536/stages/FT_FAMILY_SCALING_REVIEW_RUN_001/README.md)
 is preserved with its [PDF manuscript](proofs/ft1536/stages/FT_FAMILY_SCALING_REVIEW_RUN_001/paper/main.pdf),
@@ -326,6 +330,7 @@ integration work; changing their description does not change the old CLI.
 | [SCALAR_KERNEL_IID](proofs/ft1536/stages/FT1536_H3_SCALAR_KERNEL_IID_RUN_001/REPORT.md) | Exact conditional scalar law, A>=1/256, IID termination/tail and buffer/resource interface; real-PRNG bridge open | `H3_SCALAR_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL` |
 | [SCALAR_GAUSSIAN_COMPARISON](proofs/ft1536/stages/FT1536_H3_SCALAR_GAUSSIAN_COMPARISON_RUN_001/REPORT.md) | Uniform local TV/forward chi-square bounds to untruncated Gaussian in IID_BUFFER; reverse chi-square infinite; ordered composition below | `H3_SCALAR_GAUSSIAN_COMPARISON_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL` |
 | [ORDERED_JOINT_KERNEL](proofs/ft1536/stages/FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001/REPORT.md) | Exact adaptive root law, source closure, directed joint comparison, resources and POST event transfer in IID_BUFFER; reference BadPrecast probability open | `H3_ORDERED_JOINT_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL` |
+| [H6P_REFERENCE_BAD_EVENT](proofs/ft1536/stages/FT1536_H6P_REFERENCE_BAD_EVENT_RUN_001/REPORT.md) | Source-instantiated joint tail for both pre-narrow vectors: Q_S<=2^-119, one-root IID<=2^-84; retry and real-PRNG bridge separate | `H6P_REFERENCE_BAD_EVENT_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL` |
 
 The completed L_V bridge establishes, for all canonical h,c and legal finite
 payloads b in the pinned GCC14.2.0/C99/Linux x86_64 LP64 model:

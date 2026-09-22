@@ -23,11 +23,12 @@ osiągnięcia, T2C3/T5, kontrakt M0, graf zależności i dalsze obowiązki.
 Pakiet ma 211 członków OUTPUTS i 198 publicznych wejść Git, manifest
 `c3efdcff510983a143946d43ab456656090061cd5b9b4b6847abc7f141c0cfa3`.
 Jest checkpointem dokumentacyjnym (`replay=none`); obecnie archiwum zawiera
-także dwadzieścia sześć etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
+także dwadzieścia siedem etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
 H3_ZERO_SCALAR, H3_ROOT_LDL, H3_NODE3, H3_NODE2, BINARY_TOWER, audyt FPEMU,
 FLOOR_CT, RAW_ASSEMBLY, STABLE_NORMALIZATION, INITIAL_TARGETS, ORDERED_REACH
 i LEFT_ROOT_CORRELATED_TRANSFER, SOURCE_POSTPROCESSING_AND_PRECAST, SCALAR_KERNEL_IID
-i SCALAR_GAUSSIAN_COMPARISON, ORDERED_JOINT_KERNEL oraz przegląd FT_FAMILY_SCALING.
+i SCALAR_GAUSSIAN_COMPARISON, ORDERED_JOINT_KERNEL, H6P_REFERENCE_BAD_EVENT
+oraz przegląd FT_FAMILY_SCALING.
 
 [Mapa po domknięciu L_V — 2026-09-19](documents/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md)
 przedstawia zależności i proponowaną kolejność: dokładny kontrakt gry,
@@ -219,16 +220,19 @@ Dla jawnych Q_S/Q_stop: **TV(P,Q)<=2^-25,chi2(P||Q)<2^-48**, support exit<2^-50.
 Q_S nie jest na ogół Q_stop conditioned on whole-call survival; reverse
 chi2(Q_stop||P)=∞. E[T]<=24576, Pr[T>49152]<2^-1024, bez nowego source abortu.
 Deterministic POST pushforward daje [typed H6P transfer](stages/FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001/H6P_INTERFACE.md),
-z nadal otwartym q=reference joint BadPrecast probability.
-Realny PRNG, retry/whole-call composition, Safe16 i Sign→Verify pozostają osobne.
+którego reference q domyka kolejny checkpoint poniżej. Realny PRNG,
+retry/whole-call composition, universal Safe16 i Sign→Verify pozostają osobne.
 
-**Następne zadanie do ręcznego startu:**
-[H6P_REFERENCE_BAD_EVENT](documents/FT1536_ZADANIE_ASTRA_H6P_REFERENCE_BAD_EVENT_2026-09-22.md),
-z [1144 przypiętymi wejściami](background/H6P_REFERENCE_BAD_EVENT_2026-09-22/README.md).
-Cel: source noise/variance/error bridge i joint reference tail dla obu
-pre-narrow vectors, następnie one-root IID event transfer.
-[CURRENT_TASK](CURRENT_TASK.md) jednoznacznie wskazuje nowy TASK_ID, W i piny
-przy starcie/wznowieniu. ORDERED_JOINT jest zakończony.
+**Odebrany H6P_REFERENCE_BAD_EVENT:** [raport](stages/FT1536_H6P_REFERENCE_BAD_EVENT_RUN_001/REPORT.md)
+daje uniform **Q_S(BadPrecast)<=2^-119, P_IID(BadPrecast)<=2^-84 dla ONE ROOT**,
+obu pre-narrow vectors i legalnej entry PAST. Source coefficientwise proxy
+V<5462457 i pełny E<1095,conditional MGF z normalizerami/support cost,6144
+signed tails oraz właściwy kierunek JOINT transfer są rozliczone.
+[Odbiór](validation/2026-09-22-h6p-reference-bad-event/README.md):197/197,
+73.819s,48 modułów/327 twierdzeń (26 nowych),pełne logs i niezależne QQ/RBF768
+sprawdzenie arytmetyki. Zachowano coarse error≈3.681e9 jako luźny failed bound.
+Następny obowiązek: **IID_RETRY_COMPOSITION** z actual cap16/reached entries/
+filtration i postprocessing, przed przypisaniem whole-call lossu.
 
 **Zachowane opracowanie FT_FAMILY_SCALING modelu MiMo:**
 [pakiet, PDF i wyniki](stages/FT_FAMILY_SCALING_REVIEW_RUN_001/README.md)
@@ -303,7 +307,8 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [SCALAR_KERNEL_IID](stages/FT1536_H3_SCALAR_KERNEL_IID_RUN_001/REPORT.md) | **H3_SCALAR_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — exact conditional kernel, A>=1/256 i fresh-tail/resources; real-PRNG bridge otwarty | `6f1f34c` |
 | [SCALAR_GAUSSIAN_COMPARISON](stages/FT1536_H3_SCALAR_GAUSSIAN_COMPARISON_RUN_001/REPORT.md) | **H3_SCALAR_GAUSSIAN_COMPARISON_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — local TV/forward chi2; reverse∞ i joint scope jawne | `64af4cb` |
 | [ORDERED_JOINT_KERNEL](stages/FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001/REPORT.md) | **H3_ORDERED_JOINT_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — adaptive root/source closure, directed comparison/resources/POST transfer; reference BadPrecast probability otwarte | `22e6dd4` |
-| [FT_FAMILY_SCALING review](stages/FT_FAMILY_SCALING_REVIEW_RUN_001/REPORT.md) | **RESEARCH_REVIEW_CHANGES_REQUIRED** — zachowany pakiet MiMo, sprawdzone lemmas/layout/obliczenia; korekty game/reduction i zakresów | bieżący checkpoint |
+| [FT_FAMILY_SCALING review](stages/FT_FAMILY_SCALING_REVIEW_RUN_001/REPORT.md) | **RESEARCH_REVIEW_CHANGES_REQUIRED** — zachowany pakiet MiMo, sprawdzone lemmas/layout/obliczenia; korekty game/reduction i zakresów | `0c1ddc1` |
+| [H6P_REFERENCE_BAD_EVENT](stages/FT1536_H6P_REFERENCE_BAD_EVENT_RUN_001/REPORT.md) | **H6P_REFERENCE_BAD_EVENT_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — source map/V/E/MGF i joint tail Q_S<=2^-119, one-root IID<=2^-84 | bieżący checkpoint |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).

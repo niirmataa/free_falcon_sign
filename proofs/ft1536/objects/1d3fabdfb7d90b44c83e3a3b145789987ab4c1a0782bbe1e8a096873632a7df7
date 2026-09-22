@@ -1,0 +1,43 @@
+{
+  "schema": "ORDERED_JOINT_RESOURCE_V1",
+  "game": "IID_BUFFER",
+  "M": 3072,
+  "A_lower": "1/8",
+  "local_tail": "Pr(N_i>m | PAST_i)<=(7/8)^m",
+  "expected_T": 24576,
+  "returned_bytes_per_proposal": 33,
+  "expected_returned_bytes": 811008,
+  "expected_new_refills_upper": "815095/4087",
+  "expected_discarded_upper": "7335855/4087",
+  "expected_new_generated_bytes_upper": "3338629120/4087",
+  "exact_schedule": "iterate literal 8,8,1,8,8 getters from entry ptr; no reset between calls; q,R,D functions of ptr and T alone",
+  "schedule_conservation": "ptr+33T+D=4096R+q, 0<=D<=9R, 8<=q<=4094",
+  "refill_upper": "min(T,1+floor(33T/4087))",
+  "union_tail": {
+    "formula": "Pr(T>M*m)<=Pr(exists i:N_i>m)<=M*(7/8)^m",
+    "m": 768,
+    "T_cap": 2359296,
+    "power2_tail_upper": "2^-136"
+  },
+  "mgf": {
+    "range": "1<z<8/7",
+    "formula": "E[z^T]<=[z/(8-7z)]^M",
+    "independence_not_assumed": true,
+    "z": "17/16",
+    "chernoff_factor": "18446744073709551616/25761807463588342137",
+    "T_cap": 49152,
+    "tail_expression": "[(17/9)*(16/17)^16]^3072 <(3/4)^3072 <2^-1024",
+    "tail_power2": "2^-1024"
+  },
+  "ghost_budget": {
+    "T": 49152,
+    "returned_bytes": 1622016,
+    "new_refills": 397,
+    "discarded_bytes": 3573,
+    "new_generated_bytes": 1626112,
+    "including_entry_block": 1630208
+  },
+  "ghost_is_source_abort": false,
+  "root_a_s_return_IID": true,
+  "real_termination_proved": false
+}

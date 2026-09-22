@@ -1,0 +1,40 @@
+{
+  "cases": [
+    {
+      "name": "constant_basis",
+      "exe": "map",
+      "mode": "top",
+      "input": "artifacts/fixtures/constant_basis.input",
+      "input_sha256": "9187c1c8393bb50580443af385755b7f892a49dfb2826e10da5cd3810964a6f7",
+      "scope": "SYNTHETIC_LOCAL_PUBLIC_MAP_FIXTURE; no Emitted/canonical-key membership",
+      "preflight": true,
+      "expected": "artifacts/fixtures/constant_basis.expected",
+      "expected_sha256": "6812993fee5b559a4f13951774c4cba896852f88008acb49c76b14386bbe9074"
+    },
+    {
+      "name": "constant_basis_post",
+      "exe": "post",
+      "mode": "suffix",
+      "input": "artifacts/fixtures/constant_basis_post.input",
+      "input_sha256": "ee6e5efa5f36148bfafbe332315dba6dfeb90bada7f4b82ae48d326e877a92be",
+      "scope": "SYNTHETIC_LOCAL_PUBLIC_MAP_FIXTURE; no Emitted/canonical-key membership",
+      "preflight": true,
+      "model": "artifacts/controls/constant_basis_post.json",
+      "model_sha256": "88dd07cabbc8dcd094da23679610c7761dbb8b51e48551782f1e568b00dcbe9a"
+    },
+    {
+      "name": "rint_event_boundaries",
+      "exe": "post",
+      "mode": "rint",
+      "input": "artifacts/fixtures/rint_event_boundaries.input",
+      "input_sha256": "22db280e45cf3a1a729f53e67bbddab5f4e1acb717675541cfb10898e59e5ce6",
+      "scope": "SYNTHETIC_LOCAL_PUBLIC_MAP_FIXTURE; no Emitted/canonical-key membership",
+      "preflight": true,
+      "expected": "artifacts/fixtures/rint_event_boundaries.expected",
+      "expected_sha256": "b99564629aa192254ccb2d0599f293553d2a318c00f10785160a550f0be7c85d"
+    }
+  ],
+  "fixture": "constant_basis",
+  "source_calls": 3072,
+  "all_returns_in_actual_local_support": true
+}
