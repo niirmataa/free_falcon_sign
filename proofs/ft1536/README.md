@@ -33,12 +33,13 @@ osiągnięcia, T2C3/T5, kontrakt M0, graf zależności i dalsze obowiązki.
 Pakiet ma 211 członków OUTPUTS i 198 publicznych wejść Git, manifest
 `c3efdcff510983a143946d43ab456656090061cd5b9b4b6847abc7f141c0cfa3`.
 Jest checkpointem dokumentacyjnym (`replay=none`); obecnie archiwum zawiera
-także dwadzieścia osiem etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
+także dwadzieścia dziewięć etapów badawczych i audytowych, w tym późniejsze H3_RANGE,
 H3_ZERO_SCALAR, H3_ROOT_LDL, H3_NODE3, H3_NODE2, BINARY_TOWER, audyt FPEMU,
 FLOOR_CT, RAW_ASSEMBLY, STABLE_NORMALIZATION, INITIAL_TARGETS, ORDERED_REACH
 i LEFT_ROOT_CORRELATED_TRANSFER, SOURCE_POSTPROCESSING_AND_PRECAST, SCALAR_KERNEL_IID
 i SCALAR_GAUSSIAN_COMPARISON, ORDERED_JOINT_KERNEL, H6P_REFERENCE_BAD_EVENT
-oraz przegląd FT_FAMILY_SCALING i IID_RETRY_COMPOSITION.
+oraz przegląd FT_FAMILY_SCALING,IID_RETRY_COMPOSITION i częściowy zwrot
+REFERENCE_INTEGER_RECOVERY (binding odbioru wymaga suplementu).
 
 [Mapa po domknięciu L_V — 2026-09-19](documents/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md)
 przedstawia zależności i proponowaną kolejność: dokładny kontrakt gry,
@@ -289,14 +290,17 @@ Zadanie domyka R1–R7 z old→new diffs i spójnym PDF/kodem/replayem; dopuszcz
 jawne wycofanie wadliwego runnera R4 bez nowej kampanii. Ręczny start MiMo po
 handoffie bieżących prac. Pozytywny odbiór innego modelu nadal warunkiem publikacji.
 
-**Handoff MiMo/T03 — PARTIAL_PROOF / FROZEN_AWAITING_REVIEW:**
-[CURRENT_MIMO_TASK](CURRENT_MIMO_TASK.md) wskazuje one-root reference integer
-recovery. Autor deklaruje A/reference+mapping,C/rounding lemma,D conditional;
-B-gap≈6086.4 pozostaje OPEN.85 OUTPUTS mają zgodne piny przekazane przez
-właściciela. [Przygotowany odbiór](CURRENT_REVIEW_TASK.md) wymaga innego modelu,
-własnego fresh replayu,rachunku `sage lemma.sage` i kontroli zmian freeze/portu.
-[Kontrola prowadzącego](background/T03_REVIEW_PREPARATION_2026-09-22/README.md)
-jest wyłącznie integralnościowa; subclaims nie otrzymały statusu REVIEWED.
+**T03 — PARTIAL_PROOF / REVIEW_RECEIVED_SAGE_BINDING_PENDING:**
+[Zarchiwizowany pakiet autora](stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001/REPORT.md)
+ma85 OUTPUTS i29 INPUTS z pełnym odtworzeniem closure opisanym w
+[archiwum odbioru](validation/2026-09-22-integer-recovery-independent/README.md).
+Muse Spark1.3Free przekazał PASS_SCOPED_REVIEW dla A/reference+mapping,
+C/rounding lemma i conditional D; B-gap≈6086.4 pozostaje OPEN. Jego własny
+replay11/11,około12s i32 członków review zachowano bajtowo. Prowadzący
+stwierdził jednak różnicę hashy3 dodatkowych `.sage` między dziennikiem
+wykonań a frozen źródłami. [Suplement recenzenta](CURRENT_REVIEW_TASK.md)
+ma zamknąć ten binding; T03 nie otrzymał jeszcze REVIEWED. Nie wykonano
+nowego rachunku lub replayu w sesji prowadzącego.
 
 Mapa pokazuje również całe historyczne ścieżki T2C3 i T5. Szczegółowe
 publiczne opracowania z zachowanymi pinami:
@@ -360,6 +364,7 @@ Nie jest ona nowym dowodem matematycznym: raport zachowuje swój zakres i werdyk
 | [FT_FAMILY_SCALING review](stages/FT_FAMILY_SCALING_REVIEW_RUN_001/REPORT.md) | **RESEARCH_REVIEW_CHANGES_REQUIRED** — zachowany pakiet MiMo, sprawdzone lemmas/layout/obliczenia; korekty game/reduction i zakresów | `0c1ddc1` |
 | [H6P_REFERENCE_BAD_EVENT](stages/FT1536_H6P_REFERENCE_BAD_EVENT_RUN_001/REPORT.md) | **H6P_REFERENCE_BAD_EVENT_BOUND_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — source map/V/E/MGF i joint tail Q_S<=2^-119, one-root IID<=2^-84 | `1ba7ae0` |
 | [IID_RETRY_COMPOSITION / T01](stages/FT1536_IID_RETRY_COMPOSITION_RUN_001/REPORT.md) | **IID_RETRY_COMPOSITION_PROVED_FOR_PINNED_IID_BUFFER_MODEL** — one post-H2P cap16 IID region,WholeRegionBad<=2^-80,coupling/resources/bytes; independent PASS_SCOPED_REVIEW | `a2cdf317` |
+| [REFERENCE_INTEGER_RECOVERY / T03](stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001/REPORT.md) | **PARTIAL_PROOF** — przekazany scoped PASS dla A/C-lemma/conditional D; B-gap OPEN; integracja REVIEW_RECEIVED_SAGE_BINDING_PENDING dla3 checkerów recenzenta | lokalny checkpoint2026-09-22 |
 
 Identyfikatory starszych lokalnych commitów są rozliczone w
 [mapie historii publikacji](history/README.md).

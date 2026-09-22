@@ -1,18 +1,22 @@
-# MiMo — handoff głównego toru T03 oczekuje na odbiór
+# MiMo — T03 zarchiwizowany, odbiór wymaga suplementu Sage
 
 **TASK_ID=FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001**.
-ROADMAP_ID=T03, one-root tranche. **FROZEN_AWAITING_REVIEW**,2026-09-22.
-Właściciel przekazał zakończony handoff MiMo2.6PRO: **PARTIAL_PROOF**.
-[Niezależny odbiór](CURRENT_REVIEW_TASK.md) przygotowany dla innego modelu.
+ROADMAP_ID=T03, one-root tranche. **REVIEW_RECEIVED_SAGE_BINDING_PENDING**,2026-09-22.
+Autor MiMo2.6PRO: **PARTIAL_PROOF**. Właściciel przekazał PASS_SCOPED_REVIEW
+modelu Muse Spark1.3Free; [wymagany suplement](CURRENT_REVIEW_TASK.md) wiąże
+trzy wersje checkerów recenzenta z ich wykonaniami.
 
 - REPORT SHA `e01a09789091c9c9322f9727263503063c94441a68ff5f30af952bcc4417785c`.
 - OUTPUTS SHA `0cafdbb2c746043380081052951cb6438643f6a1765a98028a065fa57b7df6de`.
-- Piny i85 członków OUTPUTS zgodne. Autor zgłasza A/reference+mapping,
-  C/gap lemma oraz conditional D; B-gap≈6086.4 pozostaje OPEN. Te subclaims
-  oczekują na odbiór. Autor deklaruje zakończone obliczenia/brak jobów.
-- Kontrola bajtów ujawniła INPUTS alias bez literalnego pliku i zmieniony
-  freeze v3→v4; szczegóły w [notatce przygotowawczej](background/T03_REVIEW_PREPARATION_2026-09-22/README.md).
-  Nie importowano pakietu jako odebranego etapu. W autora pozostaje RO.
+- [Pakiet autora](stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001/REPORT.md):
+ 85 OUTPUTS/29 INPUTS,import przez identyczny seed z jawnym aliasem TASK.
+- [Archiwum review](validation/2026-09-22-integer-recovery-independent/README.md):
+ 32 pliki recenzenta,11/11 zapisanych wyników replayu,pełna closure inputów.
+ Recenzent potwierdza A/reference+mapping,C/gap lemma i conditional D;
+ B-gap≈6086.4 pozostaje OPEN. T03 jeszcze nie otrzymał REVIEWED.
+- Różne hashe3 dodatkowych `.sage` w dziennikach versus frozen źródła
+ wymagają nowego osobnego suplementu recenzenta. Autor i pierwotny recenzent
+ zgłosili koniec obliczeń; ich frozen W pozostają RO.
 
 **Obowiązkowe uzupełnienie właściciela2026-09-22:**
 [rachunek w `.sage` uruchamiany `sage lemma.sage`](documents/FT1536_ZASADA_RACHUNKU_SAGEMATH_2026-09-22.md),

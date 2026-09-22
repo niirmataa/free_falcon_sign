@@ -1,0 +1,38 @@
+{
+ "schema": "ft1536.reference_integer_recovery.reference_integer_map/1",
+ "ring": "Z[X]/(X^1536-X^768+1)",
+ "q": 18433,
+ "B": {
+  "row0": [
+   "g",
+   "-f"
+  ],
+  "row1": [
+   "G",
+   "-F"
+  ],
+  "det": "fG-gF = q"
+ },
+ "t_ref": [
+  "-cF/q",
+  "cf/q"
+ ],
+ "v_ref": "[c,0] - Z(Y)*B = (c - a*g - b*G, a*f + b*F)",
+ "Z_map": {
+  "form": "signed permutation (+1) of 3072 integer returns",
+  "order": "root right(b)->left(a); cubic 2->1->0; binary right->left; terminal Y1(mu1)->Y0(mu0')",
+  "merge_conventions": {
+   "binary": "out[2i]=u0[i], out[2i+1]=u1[i]",
+   "cubic": "out[3i+c]=v_c[i]"
+  },
+  "table": "checks/z_map_full.json",
+  "bijective": true
+ },
+ "independent_of_source_output": true,
+ "evidence": [
+  "EXACT_SKELETON.md",
+  "checks/skeleton_cancellation.json",
+  "checks/exact_ring_checks.json",
+  "formal/SkeletonCancel.lean"
+ ]
+}

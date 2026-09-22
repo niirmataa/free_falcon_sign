@@ -1,0 +1,65 @@
+{
+  "schema": "ft1536.reference_integer_recovery.source_error/1",
+  "task_id": "FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001",
+  "status_component_B": "OPEN_NO_UNIFORM_SUB_HALF_GAP_BOUND",
+  "transport_convention": "coeff <= sqrt(4/3) * pointwise-root bound (pinned H6P A2; crosschecked against graph_basis_coefficient_error)",
+  "required_gap": "strictly below 1/2 per coefficient, both 1536-vectors",
+  "composed_gap_bound": {
+    "exact": "see checks/gap_composition.json TOTAL_gap_bound",
+    "float": 6086.4008,
+    "gap_met": false
+  },
+  "terms_float": {
+    "A1_challenge_fft_words": 0.00014095,
+    "A2_det_error_x_challenge": 332.45453,
+    "A3_target_rounding_layer": 0.43291,
+    "A4_word_errors_x_target": 166.2273,
+    "A_total_refined": 499.11488,
+    "A_coarse_pinned_route": 887.02641,
+    "B_word_residuals_x_Z": 4489.9163,
+    "C1_tree_reconstruction_pinned": 1078.6942,
+    "C1_formula_crosscheck": 1078.6942,
+    "C1_alt_independent_boxes": 1165.4104,
+    "C2_terminal_box": 3.0000062,
+    "C3_defect_x_word_errors": 1.32399e-6,
+    "C_failed_convolution_route": 160471.46,
+    "D_suffix_CM_add": 15.667499,
+    "E_ifft": 0.0078125
+  },
+  "dominant_terms": [
+    "B_word_residuals_x_Z: immutable stored basis word errors (ROOT 2^-26/2^-15) x residual caps |a(zeta)|<=2.021e10, |b(zeta)|<=1.175e8",
+    "C1_tree_reconstruction: delta=0.0357 through sqrt(Pperp)=26069 in the correlated triangular frame",
+    "A2_det_error: eps_det=0.18745 x |Cw/q|<=1536.04"
+  ],
+  "minimal_missing_type": {
+    "stored_basis_word_residuals": {
+      "eps_fg_needed": 3.31880599586257e-13,
+      "eps_FG_needed": 6.796914679526544e-10,
+      "relative_to_value_caps": 2.1617365222799919e-16,
+      "pinned_have": {"eps_fg": 1.4901161193847656e-8, "eps_FG": 3.0517578125e-5}
+    },
+    "reconstruction_defect": {"delta_needed": 3.3e-6, "eroot_needed": 3.7e-5,
+      "pinned_have": {"delta": 0.0357087427, "eroot": 0.0003801651}},
+    "terminal_rounding_transport": {"etaT_needed": 3.178914388020833e-8,
+      "pinned_have": {"etaT": 9.53676273951487e-7},
+      "note": "coefficient-convolution box (1536*2048*etaT) needs a correlation-aware transport or per-instance folding; even true worst-case sub_C on the mu scale (~2.1e-7) exceeds the box threshold"}
+  },
+  "failed_or_looser_routes_preserved": [
+    {"route": "A_coarse pinned ideal_reference_error 1/4", "bound": 887.02641},
+    {"route": "C1 independent product boxes", "bound": 1165.4104},
+    {"route": "C convolution box via ||G||_1", "bound": 160471.46},
+    {"route": "H6P independent |Lroot|<=2^25 box (pinned citation)", "bound": 3.681e9}
+  ],
+  "not_a_counterexample": "observed fixture source errors ~6e-13 are orders below the boxes; the pinned ROOT/LEFT constants are loose worst cases. Equality is unproved, not refuted; no required-domain witness exists.",
+  "dependencies_sha256": {
+    "checks/gap_composition.json": "computed in-replay",
+    "H6P/ERROR_LEDGER.json": "pinned via inputs/bootstrap/MANIFEST.sha256",
+    "ROOT/ROOT_CERTIFICATE.json": "pinned via inputs/bootstrap/MANIFEST.sha256",
+    "TARGETS/INITIAL_TARGET_CERTIFICATE.json": "pinned via inputs/bootstrap/MANIFEST.sha256",
+    "POST/artifacts/numeric_certificate.json": "pinned via inputs/bootstrap/MANIFEST.sha256"
+  },
+  "source_changed": false,
+  "production_source_changed": false,
+  "new_source_patch_integrated": false,
+  "owner_accepted": false
+}

@@ -1,0 +1,29 @@
+{
+ "Z_form": "Z(Y)[slot] = +1 * Y[call] (signed permutation; signs +1 under these merge conventions)",
+ "all_pass": true,
+ "call_order": "root right(t1/b) before left(t0/a); cubic child2->1->0; binary right before left; terminal mu1-return before updated-mu0 return (falcon-sign.c 1616-1839)",
+ "checks": {
+  "E1_reduced_K3_exact_rational_identity": true,
+  "E1b_suffix_identity_equals_c_minus_ZB": true,
+  "E2_call_order_cubic_2_1_0": true,
+  "E2_call_order_right_branch_first_1536": true,
+  "E2_full_K9_integer_identity": true,
+  "E2_full_map_bijective": true,
+  "E2_terminal_pair_mu1_then_mu0": true
+ },
+ "merge_conventions": {
+  "binary": "out[2i]=u0[i], out[2i+1]=u1[i] (f = u0(X^2)+X*u1(X^2))",
+  "cubic": "out[3i+c]=v_c[i] (f = v0(X^3)+X*v1(X^3)+X^2*v2(X^3))",
+  "source": "falcon-fft.c falcon_poly_merge_fft/merge_deep_fft3/merge_top_fft3 eval shadows; H6P SOURCE_NOISE_MAP exact reference merge"
+ },
+ "mutations_detected": {
+  "EQUIVALENT_on_exact_skeleton_source_output_as_reference": true,
+  "M_drop_final_subtraction": true,
+  "M_source_output_as_reference_detected_with_rounding": true,
+  "M_swap_root_branch_order": true,
+  "M_swap_terminal_pair_order": true,
+  "M_wrong_sign_mapping": true,
+  "NOOP_dict_rebuild": true
+ },
+ "schema": "ft1536.reference_integer_recovery.skeleton_cancellation/1"
+}
