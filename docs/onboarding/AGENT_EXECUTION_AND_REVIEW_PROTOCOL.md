@@ -91,8 +91,11 @@ z zewnętrznymi hashami REPORT/OUTPUTS i commitem,nie ogólny folder „latest�
 
 ## 4. Rzeczywiste wykonanie i receipty
 
-Autorytatywny rachunek: **`sage lemma.sage`**,standardowy preparser,ZZ/QQ,
+Autorytatywny rachunek: **`sage <nazwa_pliku>.sage`**,standardowy preparser,ZZ/QQ,
 rigorous balls/intervals z jawnymi endpointami/remainder i precyzją.
+Właściciel doprecyzował,że `lemma.sage` użyte w zadaniach jest przykładową
+nazwą,nie wymaganiem nazwania pliku/modułu. Stosuj nazwę odpowiadającą treści,
+np. `sage check_bounds.sage` lub `sage scripts/subfield_normdown_v2.sage`.
 Właściwe formuły mają być w `.sage`. Python organizuje procesy/manifesty/logi;
 nie zastępuje nowego rachunku. Formalny checker w Lean konsumuje certyfikaty
 wymagane do zamknięcia twierdzenia.

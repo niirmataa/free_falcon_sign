@@ -114,8 +114,11 @@ Docelowym repozytorium prac jest `free_falcon_sign`.
 - Nowe i edytowane pliki Lean mają mieć czysty log, bez wyciszania ostrzeżeń.
   Historyczne zależności zachowuj z pinami i opisem ich ostrzeżeń.
 - Decyzja właściciela2026-09-22: autorytatywny rachunek matematyczny i nowe
-  checkery mają być w `.sage`, uruchamiane **`sage lemma.sage`** ze standardowym
-  preparserem. `sage --python/-python`, `sage lemma.py` i Python `Fraction`
+  checkery mają być w `.sage`, uruchamiane **`sage <nazwa_pliku>.sage`** ze standardowym
+  preparserem. Właściciel doprecyzował: `lemma.sage` w TASK/protokołach to
+  wyłącznie przykładowa nazwa; dobieraj nazwy do treści, np. `sage check_bounds.sage`.
+  Wymagany jest tryb wykonania,nie literalna nazwa pliku lub modułu.
+  `sage --python/-python`, `sage lemma.py` i Python `Fraction`
   nie zastępują wymaganego trybu. `.py` służy organizacji,hashom/logom/runnerom.
   Exact domains `ZZ`/`QQ`; real bounds przez rygorystyczne balls/intervals.
   Pełna zasada i uzupełnienie trwających TASK:
