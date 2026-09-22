@@ -150,6 +150,10 @@ Każdy nowy TASK zaczyna się od `ROADMAP_ID=Txx/Sxx` i zawiera:
    oznacza PARTIAL lub BLOCKED; membership dla counterexample.
 5. **Ownership:** jeden wykonawca, nowy W, start przez właściciela i handoff.
 6. **Consumer:** następny wiersz planu, który faktycznie użyje wyniku.
+7. **Rachunek SageMath:** nowe autorytatywne obliczenia/checkery jako `.sage`
+   uruchamiane `sage lemma.sage`; exact `ZZ`/`QQ` lub rygorystyczne przedziały,
+   jawny receipt/preparser check. Obowiązuje
+   [uzupełnienie właściciela2026-09-22](../../proofs/ft1536/documents/FT1536_ZASADA_RACHUNKU_SAGEMATH_2026-09-22.md).
 
 T01 ma już frozen zadanie sprzed wprowadzenia ROADMAP_ID; mapowanie zapisano
 tutaj, bez przepisywania jego pinów. W razie potrzeby podział: T02.1,T02.2 itd.
@@ -193,3 +197,6 @@ muszą wskazywać ten sam aktywny etap.
   Wyodrębniono T02.1 PRNG_LAYOUT_COUNTER,osobny W,39 przypiętych wejść;
   source kontrakt potrzebny do T02 bez dublowania S01/T03. Parent T02 OPEN;
   review/replay zwrotu przez inny niezależny model, brak automatycznego startu.
+- 2026-09-22: właściciel wymaga rzeczywistego trybu `sage lemma.sage` dla
+  rachunku matematycznego. Dodano przypięte uzupełnienie S01/T03/T02.1 i zasadę
+  przyszłych zleceń/odbiorów; poprzednie TASK/bootstrap/raporty pozostają bez zmian.

@@ -4,6 +4,13 @@
 ROADMAP_ID=T03, one-root tranche. **PREPARED_OWNER_START**,2026-09-22.
 Start ręczny w jednym oknie MiMo2.6PRO. Nie jest to korekta Family/S01.
 
+**Obowiązkowe uzupełnienie właściciela2026-09-22:**
+[rachunek w `.sage` uruchamiany `sage lemma.sage`](documents/FT1536_ZASADA_RACHUNKU_SAGEMATH_2026-09-22.md),
+SHA `b6afcdcabb811dd8bc31072455ed9a94a4c4773ec68d41d207ac1d7e98eae241`.
+Dotyczy nowych/zmienianych rachunków i checkerów; istniejący wykonawca
+przyjmuje je na granicy kroku i dopina do INPUTS. Frozen W wymaga osobnego
+suplementu, bez edycji starego freeze. Pierwotne TASK/bootstrap piny zachowane.
+
 ```text
 REPO=/home/footfalcon/free_falcon_sign
 W=/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001

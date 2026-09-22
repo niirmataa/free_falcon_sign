@@ -1,5 +1,10 @@
 # FT1536 — wersjonowane punkty kontrolne dowodów
 
+**Standard nowych rachunków2026-09-22:** autorytatywne pliki `.sage`
+uruchamiane `sage lemma.sage` z preparserem. [Przypięte uzupełnienie](documents/FT1536_ZASADA_RACHUNKU_SAGEMATH_2026-09-22.md)
+obejmuje nowe checkery i niezakończone T02.1/T03/S01; Python organizuje
+wykonanie/manifesty/logi. Historyczne raporty i piny zachowują swój zakres.
+
 Nowa sesja: [START_HERE](../../START_HERE.md).
 **Główna ścieżka twierdzeń i jawna lista dalszych zadań:**
 [ROADMAP](../../docs/onboarding/ROADMAP.md). Ten indeks opisuje checkpointy;

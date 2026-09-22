@@ -14,6 +14,13 @@ poprawki Family = **S01 PREPARED_OWNER_START_AFTER_HANDOFF**, dudect = **S02**.
 
 ## Decyzje właściciela
 
+- Nowy obowiązkowy standard rachunku: **pliki `.sage`, uruchomienie
+  `sage lemma.sage` z preparserem SageMath**. Dotyczy nowych rachunków/checkerów
+  i niezakończonych S01/T03/T02.1 przez
+  [przypięte uzupełnienie](../../proofs/ft1536/documents/FT1536_ZASADA_RACHUNKU_SAGEMATH_2026-09-22.md).
+  `.py` organizuje procesy/manifesty/logi. Pierwotne TASK/bootstrap oraz stare
+  wyniki pozostają niezmienne. Właściciel przekazuje zasadę obecnym wykonawcom;
+  prowadzący nie uruchamia ich ponownie.
 - Aktualny podział ról: prowadzący przygotowuje zadania i prompty do odbioru.
   **Weryfikację i replay zwrotów wykonuje inny niezależny model wskazany przez
   właściciela**. Nowe wyniki czekają na jego raport; ten prowadzący nie wykonuje

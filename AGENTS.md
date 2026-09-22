@@ -88,6 +88,15 @@ Docelowym repozytorium prac jest `free_falcon_sign`.
   przez Git. Po freeze import do stages/ tworzy wersjonowany checkpoint.
 - Nowe i edytowane pliki Lean mają mieć czysty log, bez wyciszania ostrzeżeń.
   Historyczne zależności zachowuj z pinami i opisem ich ostrzeżeń.
+- Decyzja właściciela2026-09-22: autorytatywny rachunek matematyczny i nowe
+  checkery mają być w `.sage`, uruchamiane **`sage lemma.sage`** ze standardowym
+  preparserem. `sage --python/-python`, `sage lemma.py` i Python `Fraction`
+  nie zastępują wymaganego trybu. `.py` służy organizacji,hashom/logom/runnerom.
+  Exact domains `ZZ`/`QQ`; real bounds przez rygorystyczne balls/intervals.
+  Pełna zasada i uzupełnienie trwających TASK:
+  `proofs/ft1536/documents/FT1536_ZASADA_RACHUNKU_SAGEMATH_2026-09-22.md`.
+  Zachowaj historyczne piny; istniejący wykonawca przyjmuje uzupełnienie na
+  granicy kroku. Nie uruchamiaj nowego workera lub replayu zamrożonego etapu.
 
 ## Commity
 

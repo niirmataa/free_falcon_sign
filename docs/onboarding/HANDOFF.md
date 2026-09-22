@@ -25,6 +25,13 @@ To kontrola integralności archiwizacji, nie ponowny własny odbiór matematyczn
 lub automatyczne powtórzenie replayu. Raport recenzenta pozostaje przypięty,
 a tożsamość modelu nie jest zgadywana, jeśli nie została podana.
 
+**Rachunek matematyczny:** obowiązuje przypięte
+[uzupełnienie SageMath](../../proofs/ft1536/documents/FT1536_ZASADA_RACHUNKU_SAGEMATH_2026-09-22.md):
+autorytatywne `.sage` uruchamiane `sage lemma.sage`,z rzeczywistym argv/wersją/
+hashami/exit/logami i kontrolą preparsera. `.py` może organizować wykonanie.
+Wykonawca dopina uzupełnienie do INPUTS; recenzent sprawdza tryb także w fresh
+replayu. Zmiana nie nadpisuje historycznego TASK lub zakończonego freeze.
+
 Przed wznowieniem sprawdź task ID/piny, repo/branch, stan W i wykonawców.
 PID żyjącego TUI nie dowodzi aktywnego inference; istniejący executor.lock
 nie dowodzi sam braku lub obecności workera. Porównaj procesy, aktualne logi
