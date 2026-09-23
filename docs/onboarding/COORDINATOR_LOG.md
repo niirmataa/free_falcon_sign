@@ -153,3 +153,17 @@ w historii. Następny krok po zakończeniu: ocena wyniku i checkpoint przy PASS.
   na commit,ale musi przypiąć otrzymane eksporty. Worker nie obsługuje Git.
 - Następny krok: praca właściciela/wykonawcy nad P02; potem niezależny V02.
   Nie uruchamiano nowego dowodu/replayu ani modeli z sesji koordynatora.
+
+## 2026-09-23T02:12:44Z — jawne polecenie push
+
+- Właściciel polecił „zrob push” po otrzymaniu podsumowania checkpointu
+  `d9b6e96a4c5c5a7898ceda988924fe39bb12ac67` (main13 commitów przed origin).
+  Zgoda obejmuje bieżący main i zapis tego polecenia; zakresy matematyczne
+  oraz otwarte uwagi S01/S06 zachowują dotychczasowy status.
+- Komenda publikacji: `git push --porcelain origin refs/heads/main:refs/heads/main`.
+  Cel:`https://github.com/niirmataa/free_falcon_sign.git`,bez force.
+  Następnie kontrola `git ls-remote --heads origin refs/heads/main` względem HEAD.
+  Rzeczywisty wynik/komendy zostaną zachowane pod
+  `proofs/ft1536/work/B20_001/_coordination/PUBLISH_2026-09-23_001/`.
+- Następny krok po publikacji: dalsza praca P02/V02 zgodnie z odebranym scope;
+  kolejne pushe wymagają odrębnego polecenia.
