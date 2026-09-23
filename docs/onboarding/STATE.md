@@ -1,13 +1,17 @@
 # Stan projektu — punkt wejścia
 
-**2026-09-23 — P01 handoff otrzymany; przygotowanie V01 zatrzymane.**
-Claim autora:PROVED4/4,REPORT5ce98acc…/OUTPUTSacd1aec6…;40/40 outputs i7930
-inputs zgodne. Przy porównaniu replay source snapshot z output brak Debug.lean
-iRedTest.lean (role do rozliczenia). Sterownik replayu i konfiguracja Lake
-są poza freeze i odwołują się do W autora. Potrzebne uzupełnienie closure
-przez autora/nowe piny przed kontynuacją.[Dziennik](COORDINATOR_LOG.md),
-szczegóły:`proofs/ft1536/work/B20_001/_coordination/P01_handoff_001/PRECHECK.md`.
-STATUS i stages nie awansowano; P02 wymaga odebranego P01/V01.
+**2026-09-23 — P01 v2 FROZEN_AWAITING_REVIEW; V01 przygotowany.**
+REPORT `e7431aa06716e2960a86fd60bebea2ea213e770dd3f61b39a00292ac80ddd888`,
+OUTPUTS `ebd4cff87995d34d318fa86512aef266a3c3c05f6147c81b8bac307cb2553386`.
+Koordynator potwierdził62/62 outputs,7930 inputs,21 źródeł exact-set,12 raw logs
+i5 product checks zgodnych z receiptami. V1 zachowane; poprzednia blokada
+kompletności źródeł/configów/logów replayu usunięta. Claim PROVED4/4 podlega V01.
+Setter wiąże nowe piny w STATUS. Weryfikator ma kopię7994 plików w
+`proofs/ft1536/work/B20_001/V01/inputs/producer_v2/`,własne BOUND_INPUTS oraz
+`run/REVIEW_PROMPT_001.md` i `run/REVIEW_FOCUS_001.md`; start przez V01/AGENTS.md.
+Właściciel wybiera model/świeży kontekst i uruchamia recenzenta. Dalsza ocena
+source binding/conditional-history i izolacji replayu pozostaje obowiązkiem V01.
+P02 czeka na odebrane eksporty. [Dziennik](COORDINATOR_LOG.md) zachowuje historię v1/v2.
 
 **2026-09-23 — naprawa narzędzi koordynatora na polecenie właściciela.**
 Frozen binding autora działa w W przed importem. REVIEWED wymaga przypiętego

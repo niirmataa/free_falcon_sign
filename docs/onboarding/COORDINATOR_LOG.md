@@ -47,3 +47,44 @@ Każdy wpis trafia w tym samym commicie co efekt akcji. Stare wpisy się nie prz
   `proofs/ft1536/work/B20_001/_coordination/P01_handoff_001/PRECHECK.md`.
 - Następny krok: decyzja właściciela/nowy poprawiony handoff autora z kompletną
   closure replayu; potem binding iV01. P02 nadal czeka na odebrane eksporty.
+
+## 2026-09-23T01:41:42Z — P01 v2 bound; V01 przygotowany
+
+- Właściciel przekazał poprawiony output_v2. Zewnętrzne piny:
+  REPORT `e7431aa06716e2960a86fd60bebea2ea213e770dd3f61b39a00292ac80ddd888`,
+  OUTPUTS `ebd4cff87995d34d318fa86512aef266a3c3c05f6147c81b8bac307cb2553386`,
+  HANDOFF `fef71b6ad36df51fde6e38991adfccb343300efb2b8f5602ed1f6ee2b8284a67`.
+  Source HEAD85b8e7c; model autora opencode/mimo-v2.6-pro wg HANDOFF.
+- Read-only preflight:archive.verify_bundle/manifest/checked_bytes →62/62
+  outputs,7930/7930 inputs względem W,21 źródeł w exact-set snapshotu before/after,
+  12 sealed raw logs i5 product_checks zgodnych z receiptami6 jobów exit0.
+  11 formalnych źródeł i3 certyfikaty identyczne z v1; v1 manifest40/40 zgodny.
+  Nie stwierdzono aktywnych jobów obliczeniowych P01. Nowego replayu nie wykonano.
+- Poprzednia blokada kompletności source/config/log closure usunięta w v2.
+  Semantykę definicji,TCB/reuse biblioteki,izolację wykonania i zakres PROVED
+  oceni V01; nie nadano matematycznego PASS.
+- Kanoniczne akcje: `b20_status_set.py P01 --start --model opencode/mimo-v2.6-pro
+  --context <retrospektywny wpis HANDOFF> --bound-inputs <P01/inputs/BOUND_INPUTS.json>`;
+  `b20_status_set.py P01 --final-report <output_v2/REPORT.md>
+  --final-outputs <output_v2/OUTPUTS.sha256> --report-sha e7431aa0…
+  --outputs-sha ebd4cff8… --head 85b8e7c4659685ef885e0121164b61e2421a926a`
+  →FROZEN_AWAITING_REVIEW. `--start` odnotowuje zakończony przydział,nie startuje procesu.
+- `archive.bootstrap(root,V01/inputs/producer_v2,BOOTSTRAP_PLAN_001.json)`:
+  7994 pliki (62 outputs+OUTPUTS+HANDOFF+7930 inputs),kopie bajtowo zgodne,
+  readonly; manifest `7e26e2fd558e541d06c4f5e5170cfaadb0a387503529b0c03722d4c6b01624ab`.
+  ORIGINS zachowuje mapowanie. Względne INPUTS skopiowano pod root kopii,
+  bez przepisywania autorskich manifestów.
+- `b20_status_set.py V01 --bound-inputs <V01/inputs/BOUND_INPUTS.json>`:
+  SHA `faae7bf95c4cac01fd039921485909b57a3a51caa8c386bf6a2fa2177720caaf`.
+  Model V01 pozostaje do wyboru właściciela; początkowy status roli zostanie
+  zmieniony przez --start dopiero przy rzeczywistym przydziale.
+- `b20_review_prompt.py V01 --out <V01/run/REVIEW_PROMPT_001.md>` + jawne
+  wskazanie FOCUS/BOUND_INPUTS. Finalny prompt
+  SHA `cff6922d65a5eb5142a0db1af47ed4d900f89a8ba059970146599ba41cf0cd73`;
+  REVIEW_FOCUS_001.md SHA `ef838fd620c0d451b3e9592169671d6878fe6ce51b9d50f302c0febc3e16beea`.
+  Wskazano poprawny entry tools/restore_replay.py i kwestie do oceny:conditionalHistory,
+  source-binding return-constant,certyfikaty,Mathlib provenance,manifest/EXPECTED
+  przed wykonaniem oraz rzeczywisty RO/network-off sandbox (find-newer to kontrola pomocnicza).
+- Następny krok: właściciel wybiera niezależnego recenzenta V01 w świeżym
+  kontekście; start od V01/AGENTS.md i promptu. P02 czeka na odebrane eksporty.
+  Tylko lokalny commit metadanych przygotowania; stages/import i push nie wykonano.
