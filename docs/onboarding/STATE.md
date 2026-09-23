@@ -1,12 +1,17 @@
 # Stan projektu — punkt wejścia
 
-**2026-09-23 — dudect przygotowany,czeka WYŁĄCZNIE na znak właściciela.**
-Rzeczywisty preflight attempts/006: **PREFLIGHT_PASS**,CPU11,profil floor-ct,
-budżet36000s (10h),6 kontroli i ich raw replay PASS. Kampania nie działa;
-brak RUN/LAUNCH. Właściciel potwierdził start dopiero przy odejściu od komputera.
+**2026-09-23 — dudect RUN_002 zakończony: COMPLETED_SCHEDULE.**
+Start **07:53:08 CEST**,koniec **17:52:50 CEST**,elapsed35982.034s
+(9h59m42s),CPU11,floor-ct. **3 rundy,36/36 prób produkcyjnych bez wykrytego
+sygnału**,6 kontroli zgodnych z oczekiwaniem,max raportowane końcowe |t|=3.57049
+przy progu10. Controller stderr pusty. Usługa inactive,MainPID0,inhibitor zwolniony.
+[Końcowe dane kontrolera](../../provenance/checks/2026-09-23-dudect-completed/COMPLETION.json),
+[raport](../../provenance/checks/2026-09-23-dudect-completed/REPORT.md).
+To wynik diagnostyczny dla zapisanych kontrastów/hosta,nie proof CT; pełna
+niezależna kontrola raw timings pozostaje osobnym odbiorem. Raw są na NVMe.
 [Zapis przygotowania](../../provenance/checks/2026-09-23-dudect-ready/README.md).
-Do zakończenia kampanii po starcie nie uruchamiać proof/build/review jobs.
-P02 i niezależny odbiór matematyczny czekają na dalsze polecenie po pracy.
+Blokada równoległych proof jobs wynikająca z trwania pomiaru wygasła.
+P02 i niezależny odbiór matematyczny można kontynuować na polecenie właściciela.
 
 **Wstępnie odebrane handoffy,bez matematycznego PASS:**
 - T12.1:PARTIAL_PROOF,zgodne4461/4461 oraz REPORTfa6bbac7…/OUTPUTSa9e3af2e…;
@@ -359,14 +364,17 @@ Extra/c: aktywny kandydat L_RHO+FLOOR_CT, manifest17 plików
 FLOOR_CT zintegrowany w `fe6f92a`; fpr_floor zachowuje floor(-0)=-1.
 F01 numeric fpr_lt(-0,+0)=1 nie jest ogólnie naprawione.
 
-RUN_002: snapshot2026-09-23 **PREFLIGHT_PASS**,usługa nieuruchomiona,brak
-RUN.json/LAUNCH.json. Budżet36000s,CPU11,attempt006,PREPARATION SHA
+RUN_002: **COMPLETED_SCHEDULE**,2026-09-23 07:53:08→17:52:50 CEST;
+usługa ft1536-dudect-run-002.service inactive,MainPID0,inhibitor zwolniony.
+Budżet36000s,CPU11,attempt006,PREPARATION SHA
 `2621ed0121f981c1149236de98a00261e3b55cb651f55fec7dfe7d6e9ccff74c`.
 Magazyn NVMe UUID da38b9e9… zgodny,AC online; wolne235815215104 bajty,
 wymagane93751083008. Kontrole positive/negative/3 floor/timebox i raw replay
 PASS; brak aktywnych Lean/Sage/C/estymatora przy preflighcie.
 [Instrukcja magazynu/startu](../../provenance/FT1536_DATA_STORAGE.md).
-Start tylko na nowy znak właściciela; przed nim sprawdź bieżące warunki.
+Właściciel wydał znak „odpalaj dudect komp czysty”; start potwierdzony w RUN/LAUNCH.
+36/36 prób produkcyjnych NO_LEAKAGE_EVIDENCE_YET;6 kontroli zgodnych.
+Nie wznawiaj zakończonej kampanii. Dalsze proof jobs mogą być przydzielone przez właściciela.
 
 ## Co aktualizować po zmianie stanu
 

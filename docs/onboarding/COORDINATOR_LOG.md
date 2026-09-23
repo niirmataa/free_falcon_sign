@@ -231,3 +231,43 @@ w historii. Następny krok po zakończeniu: ocena wyniku i checkpoint przy PASS.
   na jego znak**. Kampanii nie uruchomiono (brak RUN/LAUNCH). Następny krok:
   czekać na znak,sprawdzić aktualne warunki i uruchomić istniejący launch.py.
   Podczas kampanii bez równoległych proof/review/build/estimator jobs; bez push.
+
+## 2026-09-23T05:53:08Z — dudect RUN_002 uruchomiony na znak właściciela
+
+- Polecenie właściciela: „dobra odpalaj dudect komp czysty”. Sprawdzono
+  clean Git,UUID NVMe,zasilanie AC,wolne miejsce i brak konkurujących jobów.
+- `python3 -B tests/ft1536/dudect/launch.py
+  /home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_FPEMU_DUDECT_RUN_002
+  --seconds 36000` →exit0,usługa active/running,RUN.status=RUNNING.
+- ft1536-dudect-run-002.service;MainPID288543,controller PID288546;
+  InvocationID b68ee975a9d9441c8f04c8a9a2690210,RuntimeMaxSec36000,
+  KillMode control-group,TimeoutStopSec5. Inhibitor sleep:idle aktywny.
+- Rzeczywisty start2026-09-23T05:53:08.791945Z,deadline15:53:08.791960Z
+  (07:53:08→17:53:08 CEST),CPU11,floor-ct. Pierwsza dodatnia kontrola
+  wykryła sygnał,zgodnie z oczekiwaniem. Nie jest to wynik kontrastów produkcyjnych.
+- Harness HEAD20aeb28a58ac055af4329f54f3b3f9d22c092996,
+  PREPARATION2621ed0121f981c1149236de98a00261e3b55cb651f55fec7dfe7d6e9ccff74c.
+  Receipty:NVMe W/LAUNCH.json,RUN.json,service-start.txt;
+  kontrola prowadzącego:work/DUDECT_START_PREPARATION_2026-09-23/LAUNCH_VERIFIED.json.
+- Następny krok: po zakończeniu sprawdzić RESULT/REPORT/controls/raw receipts.
+  Teraz bez proof/build/review/estimator jobs. Wpis startu i STATE zapisano
+  lokalnie; commit metadanych zostaje na okres po pomiarze,bez push.
+
+## 2026-09-23T16:04:41Z — dudect zakończony,wynik kontrolera zachowany
+
+- Na pytanie właściciela sprawdzono RUN/ACTIVE/RESULT/REPORT oraz
+  `systemctl --user show ft1536-dudect-run-002.service`:inactive/dead,
+  MainPID0,Result success,ExecMainStatus0. Inhibitor FT1536-dudect zwolniony.
+- Koniec2026-09-23T15:52:50.826097Z (17:52:50 CEST),elapsed35982.034s.
+  COMPLETED_SCHEDULE,3 rundy,36 prób NO_LEAKAGE_EVIDENCE_YET;3 dodatnie
+  kontrole wykrywają sygnał,3 ujemne nie,max końcowe |t|=3.57048622587966.
+  Controller stderr0 bajtów. To odczyt wyniku kontrolera,bez nowego pełnego
+  przeliczenia raw timings i bez nadania statusu formalnego CT proof.
+- Zachowano niewielkie końcowe metadane w
+  provenance/checks/2026-09-23-dudect-completed; cały raw corpus pozostaje
+  na NVMe w campaign/. RESULT SHA
+  `ec73ca6791eaff81a42949d0136e0dd7c0b213595a8288069da8565b49898411`,
+  REPORT SHA `acbc9846545989cb2055cf91f9d732ff8773813886e606a53df417671a36c107`.
+- Wpis startu odłożony podczas pomiaru i ten zapis końca trafiają do lokalnego
+  commita razem. Bez push. Następne kroki: odbiór danych dudect oraz wznowienie
+  P02/przygotowanie niezależnego odbioru T12.1 według decyzji właściciela.
