@@ -33,6 +33,12 @@ Docelowym repozytorium prac jest `free_falcon_sign`.
   Robocze źródła,próby i handoff pozostają w W; frozen historia jest zachowana.
 - Osobny tor MiMo/T03 wskazuje `proofs/ft1536/CURRENT_MIMO_TASK.md`.
   Nie myl go z `CURRENT_TASK.md` Astry/T01; każdy ma inny W i jednego wykonawcę.
+- Właściciel zlecił osobnej Astrze matematyczny podetap **T12.1**,równoległy
+  do B20/P02: `proofs/ft1536/CURRENT_MATH_TASK.md`. Cel: pełne matematyczne
+  prawo Sign,publiczna symulacja i kernelowy warunkowy lemat EUF-CMA→MT-ISIS,
+  zgodnie z T07–T14. Własny W; start przez właściciela. Wykonawca bez Git/push;
+  koordynator importuje i commituje po niezależnym odbiorze. Nie myl tego
+  zadania z zakończonym T01 ani z pełnym dowodem bezpieczeństwa kodu.
 - Zlecenie korekt Family/S01 wskazuje `proofs/ft1536/CURRENT_FAMILY_TASK.md`.
   Przed jego ręcznym startem MiMo zapisuje stan swoich bieżących prac i jobów;
   przygotowanie S01 nie uruchamia drugiego workera ani nie nadpisuje T03.

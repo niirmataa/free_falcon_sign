@@ -167,3 +167,25 @@ w historii. Następny krok po zakończeniu: ocena wyniku i checkpoint przy PASS.
   `proofs/ft1536/work/B20_001/_coordination/PUBLISH_2026-09-23_001/`.
 - Następny krok po publikacji: dalsza praca P02/V02 zgodnie z odebranym scope;
   kolejne pushe wymagają odrębnego polecenia.
+
+## 2026-09-23T02:37:39Z — prompt Astry dla matematycznego toru T12.1
+
+- Właściciel polecił podać prompt osobnej Astrze dla matematycznej redukcji
+  EUF-CMA→MT-ISIS,równoległej do P02. Utworzono
+  FT1536_MATH_EUFCMA_MTISIS_RUN_001 i CURRENT_MATH_TASK,rozszerzono ROADMAP T12.1.
+- `archive.py document` + `task-init` + `bootstrap`: TASK SHA
+  `0fe2ad810e476e44e6cc3a1bca0bcc409004810cfe4b5424523ba914ac9e0cc3`,
+  BASE `c5faaeb6395c8238724494e8000eb6df55e65baf`,25 wybranych wejść,
+  MANIFEST `a1fe3416478599c3f19200cdfeedc80e98a1291678dd1c871b3f6e6511d28b15`.
+  Kopie:W/inputs/bootstrap oraz background/MATH_EUFCMA_MTISIS_2026-09-23.
+- Zakres: najpierw matematyczny Sign/Emit/aborty i publiczny joint law;
+  potem formalny lemat warunkowy z adaptive chi2,Phi,konfliktami programowania,
+  indeksem MT targetu i zasobami. Jawny scope Sigma_math versus implementacja,
+  centrowanie A2,klucz losowany raz,kierunek dywergencji,otwarte instancjacje.
+- Próby pozyskania dwóch wskazanych oficjalnych PDF przez urllib.request
+  zakończone HTTP403; pobieranie zatrzymano,bez ponawiania/obchodzenia odmowy.
+  Wynik zachowany w references/ACQUISITION_RESULT.json i bibliografii bootstrapu;
+  nie przypisano nieistniejących PDF pinów. TASK zawiera samodzielny kontrakt.
+- Nie uruchamiano modelu,dowodu ani replayu; output pusty. Następny krok:
+  właściciel przekazuje prompt Astrze w świeżym kontekście i uruchamia zadanie.
+  Wykonawca pracuje w W,po zwrocie niezależny review i dopiero import/commit main.

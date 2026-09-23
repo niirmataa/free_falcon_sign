@@ -124,6 +124,7 @@ ale hashe source/execution w review wymagają rozliczenia przed REVIEWED.
 | **T10 PLANNED — BOUNDED_PUBLIC_SAMPLER** | Publiczne D^B bez sekretu, transport bajtowy | Konkretny bounded public algorithm, jego distribution error/cost i rozłączny timeout/budget ownership | T05–T08,F02 |
 | **T11 PLANNED — ROM_FRESHNESS** | Jeden klucz, r40, wspólna tablica H, adaptive queries i abort observations | Collision/prequery coupling z właściwym uniform nonce hop i kosztami; bez conditioning na brak kolizji za darmo | T02,T04,F02; interfejs T06 |
 | **T12 PLANNED — CLASSICAL_ROM_SIMULATOR** | Public sampler, freshness, kompletne observed kernels | Simulator z SeenSign także dla aborts, programowaniem i ≤Q_H+1 indexed targets; pełne koszty i błędy | T09–T11,F02 |
+| **T12.1 PREPARED_OWNER_START — MATH_EUFCMA_MTISIS** | Osobna Astra: konkretne matematyczne Sign/joint law,publiczny interfejs samplera i konstrukcja redukcji ROM; [TASK/W](../../proofs/ft1536/CURRENT_MATH_TASK.md) | Kernelowy lemat warunkowy:history-uniform chi2,cap16/abort/support,konflikty ROM,indexed extraction,Phi i koszty; osobna lista rzeczywiście zrealizowanych przesłanek | Przypięte M0/L_V i wąski P01/V01 jako kontekst; niezależne od ukończenia P02/GCC. Zastosowanie do FT1536 wymaga nadal odpowiednich T07–T14 i mostów implementacyjnych |
 | **T13 PLANNED — INDEXED_MT_EXTRACTION** | M6 simulator + L_V i dokładna gra MT-ISIS | Accepted forgery→świadek TEGO SAMEGO target index; jawna assumption MT i t_B,w_B,L_B. Nie potrzebuje inverse encoding do tego kierunku | T12,F01,F02 |
 | **T14 PLANNED — M7_FINAL_COMPOSITION** | Wszystkie zatwierdzone certificates/hops/resources | Instancja M0ReductionTarget: jawny końcowy wzór, raz p_K, brak double-count, scope klasycznego ROM; lista pozostających assumptions | T02–T13 |
 
@@ -200,6 +201,12 @@ root-SHAKE law,pełne PRNG games,assumptions i computational losses są pozosta�
 częścią T02 i nie są przesłankami nowego lokalnego zadania.
 
 ## 7. Zmiana planu i statusu
+
+2026-09-23: na polecenie właściciela wyodrębniono T12.1 dla osobnej Astry,
+równolegle do P02. Najpierw ścisłe matematyczne Sign i publiczny joint law,
+potem formalna warunkowa redukcja ordinary EUF-CMA do MT-ISIS. To rozwinięcie
+T07–T14; nie awansuje rodziców ani source security bez instancjacji przesłanek.
+Przygotowanie TASK/bootstrap zakończone,wykonawcę uruchamia właściciel.
 
 Zmianę zapisuj w tym dokumencie w lokalnym commicie: data, stary wpis, powód,
 nowe zależności, wpływ na twierdzenie i polecenie właściciela jeśli wymagane.

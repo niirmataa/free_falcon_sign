@@ -42,6 +42,7 @@ prawdopodobieństwa BadPrecast z uniwersalnym Safe16 lub Sign→Verify.
 | Jak agent wykonuje,weryfikuje i commituje zadania B20 | [AGENT_EXECUTION_AND_REVIEW_PROTOCOL](docs/onboarding/AGENT_EXECUTION_AND_REVIEW_PROTOCOL.md) |
 | Narzędzia koordynatora B20 — piny,statusy,review i commit pary | [B20_COORDINATOR_TOOLS](docs/onboarding/B20_COORDINATOR_TOOLS.md) |
 | Osobne bieżące zlecenie MiMo/T03 | [CURRENT_MIMO_TASK](proofs/ft1536/CURRENT_MIMO_TASK.md) |
+| Osobna Astra — matematyczne Sign i redukcja EUF-CMA→MT-ISIS (T12.1) | [CURRENT_MATH_TASK](proofs/ft1536/CURRENT_MATH_TASK.md) |
 | Korekty Family/S01, warunek publikacji | [CURRENT_FAMILY_TASK](proofs/ft1536/CURRENT_FAMILY_TASK.md) |
 | Niezależny odbiór zwróconych korekt S01 | [CURRENT_FAMILY_REVIEW_TASK](proofs/ft1536/CURRENT_FAMILY_REVIEW_TASK.md) |
 | Odbiór częściowej kampanii estymatora S06 | [S06 review](proofs/ft1536/validation/2026-09-22-family-estimator-independent/README.md) |

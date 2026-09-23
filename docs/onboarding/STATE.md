@@ -1,5 +1,12 @@
 # Stan projektu — punkt wejścia
 
+**2026-09-23 — przygotowany osobny tor Astry T12.1.**
+[CURRENT_MATH_TASK](../../proofs/ft1536/CURRENT_MATH_TASK.md):pełne matematyczne
+prawo Sign,publiczny symulator i kernelowy warunkowy lemat EUF-CMA→MT-ISIS.
+TASK i25 wejść przypięte,osobny W; PREPARED_OWNER_START,ręczny start właściciela.
+Praca równoległa do B20/P02,według T07–T14 ROADMAP. Instancjacja samplera,
+małych błędów i mostów do kodu ma pozostać jawnie odrębna od lematu warunkowego.
+
 **2026-09-23 — P01 v2 REVIEWED; V01 PASS_SCOPED_REVIEW w wąskim zakresie.**
 **Import,binding i pełne archive verify PASS:**36 checkpointów,51 dokumentów,
 exit0,61.28s. Po początkowym timeout120s właściciel zatwierdził ponowienie
