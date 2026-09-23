@@ -1,0 +1,52 @@
+{
+  "cases": [
+    {
+      "name": "root_extra_rejections",
+      "exe": "joint",
+      "mode": "top",
+      "input": "artifacts/fixtures/root_extra_rejections.input",
+      "input_sha256": "9562ec28344a90052beb215fa6bc67af1321221d439e7e1558eebdb80dcec011",
+      "preflight": true,
+      "classification": "SYNTHETIC_LOCAL_TREE_TARGETS_PUBLIC_WORD_TAPE_NO_EMITTED_MEMBERSHIP",
+      "expected": "artifacts/fixtures/root_extra_rejections.expected",
+      "expected_sha256": "3aca5d429fff3ec85a691094825620587767bd9f0650b5780ce78cf14a7a522c"
+    },
+    {
+      "name": "root_extra_rejections_suffix",
+      "exe": "post",
+      "mode": "suffix",
+      "input": "artifacts/fixtures/root_extra_rejections_suffix.input",
+      "input_sha256": "dec2898640a6bcb8350cf90cb56d3c40cbba5a1c51e4afdbd44d7a3ee57f9fdc",
+      "preflight": true,
+      "classification": "SYNTHETIC_LOCAL_TREE_TARGETS_PUBLIC_WORD_TAPE_NO_EMITTED_MEMBERSHIP",
+      "model": "artifacts/controls/root_extra_rejections_suffix.json",
+      "model_sha256": "6304f797c61f7e7893a70562fff9263e72b8dfdcd9a8ceca04ff3a0b81c647fa"
+    },
+    {
+      "name": "root_extra_rejections_codec",
+      "exe": "post",
+      "mode": "codec",
+      "input": "artifacts/fixtures/root_extra_rejections_codec.input",
+      "input_sha256": "c577089e099b4470a88587fae627bc286ae04f8ac78581258d7b96abfd1a763f",
+      "preflight": true,
+      "classification": "SYNTHETIC_LOCAL_TREE_TARGETS_PUBLIC_WORD_TAPE_NO_EMITTED_MEMBERSHIP",
+      "model": "artifacts/controls/root_extra_rejections_codec.json",
+      "model_sha256": "3d86112d025b8b498e4a59ccf163c111ffdd37f1a1dafbff74db7b6c9078f237"
+    }
+  ],
+  "stats": {
+    "name": "root_extra_rejections",
+    "status": "COMPLETED",
+    "calls": 3072,
+    "fault": 0,
+    "high_water": 8702,
+    "pre_floor": 3072,
+    "start_ptr": 4086,
+    "proposals": 6219,
+    "cutoff_rejections": 1576,
+    "returned_bytes": 205227,
+    "refills": 51,
+    "discarded": 202,
+    "end_ptr": 619
+  }
+}

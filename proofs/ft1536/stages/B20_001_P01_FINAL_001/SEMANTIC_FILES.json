@@ -1,0 +1,40 @@
+{
+  "schema": "B20_P01_SEMANTIC_FILES_V2",
+  "note": "pliki niosące treść matematyczną/semantyczną wyniku (w odróżnieniu od manifestów/receiptów); v2 dodaje aux/ z opisanymi rolami",
+  "semantic": [
+    "formal/B20/Foundation/Core.lean",
+    "formal/B20/Foundation/CExec.lean",
+    "formal/B20/Foundation/SourceBinding.lean",
+    "formal/B20/Foundation/CertificateInput.lean",
+    "formal/B20/Foundation/Certificate.lean",
+    "formal/B20/Foundation/CertificateTransport.lean",
+    "formal/B20/Foundation/Probability.lean",
+    "formal/B20/Foundation/EndToEnd.lean",
+    "certificates/gen_sqrt2_certificate.sage",
+    "certificates/check_certificate.sage"
+  ],
+  "auxiliary_with_roles": {
+    "note": "poza twierdzeniami i budowaniem; role opisane w aux/README.md (uwaga recenzenta: snapshot nie może obejmować plików nieobecnych w pakiecie — wszystkie są w aux/)",
+    "aux/Debug.lean": "inspektor pipeline'u checkera (#eval tokeny/encode/decode/checkSource/translateStmt); diagnostyka FAILED_ROUTES#8-10",
+    "aux/RedTest.lean": "pozytywny probe redukcji kernelowej — podstawa wyboru List Char dla translateStmt; odtwarzany w replayu (job lean_probe_reduction)",
+    "aux/RedTestStringFailures.lean": "negatywny probe (String.* nie redukuje kernelowo) — materiał dowodowy FAILED_ROUTES#8; celowo nie kompiluje się, nie budowany ani skanowany"
+  },
+  "derived_or_manifest": [
+    "formal/FT1536P01.lean (axiom scan driver)",
+    "formal/PrintedTypes.lean (type print driver)",
+    "CERTIFICATES/sqrt2_interval.json",
+    "CERTIFICATES/sqrt2_interval.report.txt",
+    "CERTIFICATES/check_certificate.report.txt",
+    "build/lakefile.toml", "build/lake-manifest.json", "build/lean-toolchain",
+    "tools/restore_replay.py",
+    "replay/REPLAY_RESULT.json", "replay/logs/*",
+    "EXPECTED.json",
+    "INPUTS.sha256", "OUTPUTS.sha256", "AXIOMS.json", "FORMAL_EXPORTS.json",
+    "EXECUTION_RECEIPTS.json", "SAGE_RUNS.json", "COMMANDS.log", "TOOLCHAIN.txt"
+  ],
+  "prose_explanatory": [
+    "REPORT.md", "CLAIM.md", "GOAL_SPEC.md", "SOURCE_MODEL_BINDING.md",
+    "ASSUMPTIONS.json", "FAILED_ROUTES.md", "NEXT_INTERFACE.md", "REPLAY.md",
+    "OUTPUT_SCOPE.md", "aux/README.md", "HANDOFF.md"
+  ]
+}

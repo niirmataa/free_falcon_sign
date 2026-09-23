@@ -1,0 +1,94 @@
+# P01 v2 — HANDOFF (frozen, COMPLETE_FOR_REVIEW → V01)
+
+TASK_ID=B20_001_P01_FORMAL_FOUNDATIONS, ROADMAP_ID=F02–F09.
+FINAL_STAGE=B20_001_P01_FINAL_001, para recenzencka: **V01**.
+Właściciel: Niirmata. owner_accepted=**false** (werdykt należy do V01).
+
+**Rewizja v2** — uzupełnienie po 3 uwagach recenzenta do v1; freeze v1
+(`output/`) zachowany bez zmian (REPORT `5ce98acc…`, OUTPUTS `acd1aec6…`),
+dowody matematyczne i certyfikaty bez zmian (produkty bajtowo identyczne).
+Do odbioru V01: **`output_v2/`** z pinami poniżej.
+
+## Identyfikacja wykonawcy
+
+- Wykonawca: MiMo V2.6 Pro (opencode/mimo-v2.6-pro); kontynuacja po
+  poprzednim wykonawcy P01 (przejęte po `cleanup_overlap_001` — 0 obcych
+  jobów lake/lean w chwili startu).
+- CHECKOUT=/home/footfalcon/free_falcon_sign, BRANCH=main,
+  **HEAD=85b8e7c4659685ef885e0121164b61e2421a926a** (main…origin/main +10).
+
+## Piny v2 (freeze obowiązujące dla V01)
+
+- REPORT.md = `e7431aa06716e2960a86fd60bebea2ea213e770dd3f61b39a00292ac80ddd888`
+- OUTPUTS.sha256 = `ebd4cff87995d34d318fa86512aef266a3c3c05f6147c81b8bac307cb2553386`
+  (62/62 members OK; manifest nie obejmuje siebie ani HANDOFF — jedyne
+  spójne domknięcie: HANDOFF niesie SHA manifestu).
+- TASK_SHA256=`842abf85eb84d8b6b9eb4a0e4160f37b1fd1e88a965faa04e28db5efde7664e6`,
+  PACKAGE_MANIFEST_SHA256=`e5921b01b4f03f189627c8a0ed8e78e3716e5efe5f2eaa36cfb80d34631633b2`.
+- SOURCE_BASE=`ef62824a10a69962dc8347410ee3f424bfa2b12e`; source17 manifest
+  `56974571b46e8257bdd3b4097c8c70fded6bb4b94c64805f6e35ec80929a0985`
+  (17/17); M0/POST/JOINT piny jak w BOUND_INPUTS.json (INPUTS.sha256, 7930).
+- Certyfikaty (identyczne v1 ≡ v2): `33cf2381…a60a0` (sqrt2_interval.json),
+  `a6c06215…6ddbf` (report), `16d4ca49…9e57` (check report).
+- Toolchain: Lean4.34.0 / Mathlib4@`5ed2965…72435` / SageMath10.9
+  (TOOLCHAIN.txt); piny build: build/lakefile.toml + lake-manifest.json
+  (rev-y 9 pakietów) + lean-toolchain.
+
+## Co naprawia v2 (uwagi recenzenta → adresacja)
+
+1. **Sterownik/configi/logi replayu poza manifestami** → w pakiecie i w
+   OUTPUTS.sha256: `tools/restore_replay.py`, `build/{lakefile.toml,
+   lake-manifest.json, lean-toolchain}`, `replay/REPLAY_RESULT.json` +
+   `replay/logs/*` (12 logów).
+2. **Replay destrukcyjny w W autora** → `tools/restore_replay.py` wymaga
+   świeżego DEST i odtwarza tam pakiet; W autora tylko do odczytu.
+   Dowód czystości: brama `find <lib_root> -newer <marker>` = **0 zapisów**
+   do W autora (także przez symlinki) w obu replayach; zapisane w
+   `REPLAY_RESULT.json.author_W_writes`.
+3. **Snapshot z Debug.lean/RedTest.lean nieobecnymi w output** → pliki są w
+   `aux/` **z opisanymi rolami** (aux/README.md): Debug.lean = inspektor
+   pipeline'u checkera (#eval), RedTest.lean = pozytywny probe redukcji
+   kernelowej (podstawa wyboru List Char), RedTestStringFailures.lean =
+   negatywny probe (materiał dowodowy FAILED_ROUTES#8; celowo nie budowany).
+   Snapshot replayu = exact set `formal/ aux/ build/ certificates/ tools/`,
+   czyli wyłącznie pliki obecne w pakiecie.
+
+## Status i zakres (bez zmian względem v1)
+
+PROVED dla 4/4 wymaganych eksportów (CExec, SourceBinding+checker_sound,
+CertificateSound, ObservedKernel z pełną instancją pinned modelu) +
+end-to-end chain + transport liczb + komplet kontroli negatywnych §5.
+Sage: producer 21/21, niezależny checker 9/9. Skan aksjomatów: 36
+eksportów, 0 aksjomatów celu, 0 zakazanych skrótów. Semantyka: **C
+abstrakcyjna modelowanego fragmentu, NIE kod maszynowy** (SOURCE_MODEL_
+BINDING.md). Missing types jawne w NEXT_INTERFACE.md (translacja fragmentów
+bogatych w operatory, C→machine, pełny front-end C, real PRNG/SHAKE/ChaCha).
+
+## Replay v2 (dla V01)
+
+```sh
+cd /home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/output_v2
+python3 tools/restore_replay.py /bezwzględna/nowa/ścieżka/DO/DEST
+```
+6 jobów, oczekiwanie: `semantic_match=true`, `sources_unchanged=true`,
+`author_W_writes.clean=true`, 6/6 exit=0, 5/5 product_checks. Ostatni replay
+autora (B, tryb porównawczy) pinowany w `replay/REPLAY_RESULT.json`;
+wcześniejszy A (zbieranie produktów, identyczność z v1) w REPLAY.md.
+Produkty odtwarzalne: EXPECTED.json.
+
+## Joby i stan
+
+Wszystkie joby zakończone (6/6 replay B + 6/6 replay A; brak procesów
+lake/lean/sage). Nieudane trasy (18, w tym 3 uwagi v1): FAILED_ROUTES.md +
+failed_attempts/.
+
+## Następny krok
+
+1. Koordynator: `b20_status_set.py P01 --final-report … --report-sha
+   e7431aa0… --outputs-sha ebd4cff8… --head 85b8e7c` (wiąże frozen W/output_v2).
+2. `b20_review_prompt.py V01` → prompt dla recenzenta (inny model, świeży
+   kontekst) — z pinami v2 powyżej i adresem `output_v2/`.
+3. V01: `tools/restore_replay.py` do własnego DEST + niezależne kontrole.
+4. Po PASS_SCOPED_REVIEW: `archive.py import` autora i recenzenta,
+   `checkpoint B20_001_P01_FINAL_001 --with-stage B20_001_V01_FINAL_001`,
+   commit main jako niirmataa (jeden writer). Bez push (bramka publikacji).

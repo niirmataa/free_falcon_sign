@@ -1,0 +1,20 @@
+--- proposal_original.inc
++++ proposal_observer.inc
+@@ -1,5 +1,5 @@
+ static int
+-ft_adaptive_proposal(prng *p, fpr dss, int *k,
++observed_proposal(prng *p, fpr dss, int *k,
+ 	fpr *inv_2sigma0_sq, unsigned *proposal_level)
+ {
+ 	uint64_t coefficient_bits;
+@@ -8,8 +8,8 @@
+ 	int samples[FT_ADAPTIVE_CDF_LEVELS];
+ 	uint64_t hi, lo;
+ 
+-	hi = falcon_prng_get_u64(p);
+-	lo = falcon_prng_get_u64(p);
++	hi = observed_u64(p);
++	lo = observed_u64(p);
+ 	ft_adaptive_cdf_samples(hi, lo, samples);
+ 
+ 	found = 0;

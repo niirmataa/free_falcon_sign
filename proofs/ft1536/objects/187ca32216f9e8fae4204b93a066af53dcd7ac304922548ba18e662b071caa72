@@ -1,0 +1,157 @@
+	const char *hexnonce;
+	unsigned char *skey;
+	size_t skey_len;
+	unsigned char *nonce;
+	size_t nonce_len;
+	falcon_sign *fs;
+	FILE *df;
+	unsigned char sig[2049];
+	size_t sig_len;
+
+	fname_key = NULL;
+	fname_in = NULL;
+	fname_out = NULL;
+	hexnonce = NULL;
+	for (i = 0; i < argc; i ++) {
+		const char *opt;
+
+		opt = argv[i];
+		if (eqstr(opt, "-key")) {
+			if (++ i >= argc) {
+				fprintf(stderr, "missing arg for '-key'\n");
+				usage_sign();
+			}
+			if (fname_key != NULL) {
+				fprintf(stderr, "duplicate '-key'\n");
+				usage_sign();
+			}
+			fname_key = argv[i];
+		} else if (eqstr(opt, "-in")) {
+			if (++ i >= argc) {
+				fprintf(stderr, "missing arg for '-in'\n");
+				usage_sign();
+			}
+			if (fname_in != NULL) {
+				fprintf(stderr, "duplicate '-in'\n");
+				usage_sign();
+			}
+			fname_in = argv[i];
+		} else if (eqstr(opt, "-out")) {
+			if (++ i >= argc) {
+				fprintf(stderr, "missing arg for '-out'\n");
+				usage_sign();
+			}
+			if (fname_out != NULL) {
+				fprintf(stderr, "duplicate '-out'\n");
+				usage_sign();
+			}
+			fname_out = argv[i];
+		} else if (eqstr(opt, "-nonce")) {
+			if (++ i >= argc) {
+				fprintf(stderr, "missing arg for '-nonce'\n");
+				usage_sign();
+			}
+			if (hexnonce != NULL) {
+				fprintf(stderr, "duplicate '-nonce'\n");
+				usage_sign();
+			}
+			hexnonce = argv[i];
+		} else {
+			fprintf(stderr, "unknown option: '%s'\n", opt);
+			usage_sign();
+		}
+	}
+
+	if (fname_key == NULL) {
+		fprintf(stderr, "no private key specified\n");
+		usage_sign();
+	}
+	skey = read_file(fname_key, &skey_len);
+	if (hexnonce != NULL) {
+		nonce = hextobin(hexnonce, &nonce_len);
+	} else {
+		nonce = NULL;
+	}
+
+	fs = falcon_sign_new();
+	if (fs == NULL) {
+		fprintf(stderr, "memory allocation error\n");
+		exit(EXIT_FAILURE);
+	}
+
+	if (!falcon_sign_set_private_key(fs, skey, skey_len)) {
+		fprintf(stderr, "error loading private key\n");
+		exit(EXIT_FAILURE);
+	}
+
+	/*
+	 * We get the degree from the first key byte (this is for the
+	 * 'recording' test feature).
+	 */
+	xfree(skey);
+
+	if (nonce == NULL) {
+		unsigned char r[40];
+		size_t u;
+
+		if (!falcon_sign_start(fs, r)) {
+			fprintf(stderr, "RNG seeding failed\n");
+			exit(EXIT_FAILURE);
+		}
+		for (u = 0; u < sizeof r; u ++) {
+			printf("%02x", r[u]);
+		}
+		printf("\n");
+	} else {
+		falcon_sign_start_external_nonce(fs, nonce, nonce_len);
+		xfree(nonce);
+	}
+
+	/*
+	 * Read and hash data to sign.
+	 */
+	if (fname_in != NULL) {
+		df = fopen(fname_in, "rb");
+		if (df == NULL) {
+			fprintf(stderr, "error opening file '%s'\n", fname_in);
+			exit(EXIT_FAILURE);
+		}
+	} else {
+		df = stdin;
+	}
+	for (;;) {
+		unsigned char tmp[4096];
+		size_t rlen;
+
+		rlen = fread(tmp, 1, sizeof tmp, df);
+		if (rlen == 0) {
+			break;
+		}
+		falcon_sign_update(fs, tmp, rlen);
+	}
+	if (df != stdin) {
+		fclose(df);
+	}
+
+	/*
+	 * Obtain signature.
+	 */
+	sig_len = falcon_sign_generate(fs,
+		sig, sizeof sig, FALCON_COMP_STATIC);
+	if (sig_len == 0) {
+		fprintf(stderr, "signature failure\n");
+		exit(EXIT_FAILURE);
+	}
+
+	if (fname_out == NULL) {
+		size_t u;
+
+		for (u = 0; u < sig_len; u ++) {
+			printf("%02x", sig[u]);
+		}
+		printf("\n");
+	} else {
+		write_file(fname_out, sig, sig_len);
+	}
+
+	falcon_sign_free(fs);

@@ -1,0 +1,40 @@
+void
+falcon_keygen_set_seed(falcon_keygen *fk,
+	const void *seed, size_t len, int replace)
+{
+	if (replace) {
+		shake_init(&fk->rng, 512);
+		shake_inject(&fk->rng, seed, len);
+		fk->seeded = 1;
+		fk->flipped = 0;
+		return;
+	}
+	if (fk->flipped) {
+		unsigned char tmp[32];
+
+		shake_extract(&fk->rng, tmp, sizeof tmp);
+		shake_init(&fk->rng, 512);
+		shake_inject(&fk->rng, tmp, sizeof tmp);
+		fk->flipped = 0;
+	}
+	shake_inject(&fk->rng, seed, len);
+}
+
+static int
+rng_ready(falcon_keygen *fk)
+{
+	if (!fk->seeded) {
+		unsigned char tmp[32];
+
+		if (!falcon_get_seed(tmp, sizeof tmp)) {
+			return 0;
+		}
+		falcon_keygen_set_seed(fk, tmp, sizeof tmp, 0);
+		fk->seeded = 1;
+	}
+	if (!fk->flipped) {
+		shake_flip(&fk->rng);
+		fk->flipped = 1;
+	}
+	return 1;
+}

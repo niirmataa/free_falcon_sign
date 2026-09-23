@@ -12,6 +12,19 @@ ROADMAP określa zależności i kryteria następnych prac.
 
 To archiwum ukończonych etapów FT1536 w docelowym `free_falcon_sign`.
 
+**B20/P01 v2 — REVIEWED w wąskim zakresie:**
+[REPORT](stages/B20_001_P01_FINAL_001/REPORT.md),
+[V01 PASS_SCOPED_REVIEW](stages/B20_001_V01_FINAL_001/REVIEW.md).
+62 pliki autora i30 review; replay recenzenta6/6,5 porównań produktów,
+niezależny Sage22/22. Odebrano abstrakcyjne CExec,soundness,parser return-constant,
+checker√2/transport i definicje probabilistyczne/self-zero. Braki wskazane przez
+V01 (abort/konwers,source refinement,obserwacyjne conditioning,nietrywialne
+TV/chi²) pozostają obowiązkami dalszych konsumentów. Autorski status PROVED
+w katalogu nie poszerza review_scope w STATUS.
+`replay=none` katalogu oznacza brak protokołu dispatchera archive.py:
+ten pakiet używa własnego `tools/restore_replay.py DEST`; rzeczywisty replay
+recenzenta i jego raw logs są zapieczętowane w V01.
+
 **T02.1 RUN_003 odebrany zakresowo:** [REPORT](stages/FT1536_PRNG_LAYOUT_COUNTER_RUN_003/REPORT.md),
 [PASS_SCOPED_SUPPLEMENT](validation/2026-09-22-prng-layout-supplement/README.md).
 F1–F5 zamknięte;autor141 plików,review48,replay recenzenta17/17.

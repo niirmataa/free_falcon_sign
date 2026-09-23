@@ -88,3 +88,68 @@ Każdy wpis trafia w tym samym commicie co efekt akcji. Stare wpisy się nie prz
 - Następny krok: właściciel wybiera niezależnego recenzenta V01 w świeżym
   kontekście; start od V01/AGENTS.md i promptu. P02 czeka na odebrane eksporty.
   Tylko lokalny commit metadanych przygotowania; stages/import i push nie wykonano.
+
+## 2026-09-23 — import P01/V01; global verify przerwany limitem120s
+
+- Otrzymano PASS_SCOPED_REVIEW od Muse Spark1.3 Free
+  (`opencode/muse-spark-1.3-contributor-free`),świeży kontekst wg HANDOFF.
+  REVIEW `2a0e18baecd18af09dc382872582b71044bfb69b1f1d79762f7d67091c0b2106`,
+  REVIEW_OUTPUTS `acd37b12408e9fa6f6ab3c2d01d022b3f6bbeae54a3933c27257ab9b72492441`.
+  Piny P01 v2 e7431aa0…/ebd4cff8… zgodne; review30/30,12 inputs.
+- W raw receipcie21 źródeł zgodnych z manifestem,12 logów6 jobów exit0,
+  5 product checks zgodnych. Opis review podaje22 źródła — jawna errata
+  liczby,bez zmiany frozen raportu. Niezależny Sage ma przypięty source/log22/22;
+  jego skrócony receipt nie zawiera oddzielnego source-at-run SHA (nie dorobiono).
+- `archive.bootstrap` utworzył jawny transport review do
+  `work/B20_001/_coordination/PAIR01_IMPORT_001/review`,40 plików,
+  manifest `5d12014c04a5e5574e980974b5c72024da9badf92b5401a07a9009ca5d83fad6`.
+  Względne INPUTS materializowane z V01 W; frozen bajty bez zmian.
+- `archive.import_stage` autora z `V01/inputs/producer_v2` →
+  B20_001_P01_FINAL_001,PASS62 outputs/7930 inputs; recenzji z transportu →
+  B20_001_V01_FINAL_001,PASS30 outputs/12 inputs,natywny REVIEW_OUTPUTS.
+  `replay=none`:właściwy entry to tools/restore_replay.py DEST; autorskie
+  wskazanie --replay standard nie odpowiada dispatcherowi scripts/replay.py.
+- Setter:retrospektywny `V01 --start --model opencode/muse-spark-1.3-contributor-free
+  --context <fresh wg HANDOFF>`; `V01 --final-report … --final-outputs …
+  --report-sha 2a0e18ba… --outputs-sha acd37b12… --head 8b759c2d41e0bd76c2dcbe18ce4a863a62a3e969
+  --stage B20_001_V01_FINAL_001`; `P01 --review-verdict PASS_SCOPED_REVIEW`
+  z pełnymi pinami ioboma stage IDs →P01 REVIEWED,V01 REVIEW_COMPLETE.
+  Jawny review_scope zachowuje brak abort/konwersu,refinementu operatorów,
+  warunkowania obserwacyjnego i nietrywialnych boundów TV/chi².
+- `python3 -B proofs/ft1536/tools/archive.py verify` przez wrapper
+  subprocess.run(timeout=120) →TimeoutExpired,bez globalnego PASS/FAIL.
+  Zatrzymano dalsze czynności zgodnie z AGENTS. Receipt przerwania:
+  `work/B20_001/_coordination/PAIR01_IMPORT_001/GLOBAL_VERIFY_TIMEOUT.json`.
+  Nie wykonano commita/push; żadne frozen dane nie zostały poprawione.
+- Następny krok: decyzja właściciela o zwiększeniu limitu tej samej kontroli,
+  następnie po PASS checkpoint pary z STATUS/dziennikiem/STATE/ROADMAP/README.
+
+### Zgoda właściciela — ponowienie global verify do600s
+
+Właściciel wybrał „Kontynuuj”: ta sama kontrola hashy z limitem600s,
+następnie lokalny commit pary po PASS; bez ponownego wykonywania dowodów
+i bez push. Uruchomiono `python3 -B proofs/ft1536/tools/archive.py verify`
+w osobnym przebiegu `work/B20_001/_coordination/PAIR01_IMPORT_001/global_verify_002/`.
+stdout/stderr są zapisywane bezpośrednio do plików; końcowy receipt zachowa
+argv,czas,exit/timeout i hash wersji weryfikatora. Poprzedni timeout pozostaje
+w historii. Następny krok po zakończeniu: ocena wyniku i checkpoint przy PASS.
+
+## 2026-09-23T02:08:06Z — global verify PASS; checkpoint odebranej pary
+
+- Powtórne `python3 -B proofs/ft1536/tools/archive.py verify` zakończone
+  exit0,bez timeoutu,w61.283s:36 checkpointów i51 dokumentów PASS.
+  stdout SHA `e21a4ebcd93db6e57ce3602aaf657017669005dcf97c5762401a9d9f3d2f98b8`;
+  stderr pusty; kod weryfikatora przed/po
+  `7f2723af07c5da52cd96f2416c31de2e0280d2f702c0a92c06a8f652b42dd0e4`.
+- Checkpoint obejmujący ten wpis:
+  `python3 -B proofs/ft1536/tools/archive.py checkpoint B20_001_P01_FINAL_001
+  --with-stage B20_001_V01_FINAL_001 --include docs/onboarding/STATE.md
+  --include docs/onboarding/ROADMAP.md --include proofs/ft1536/README.md`.
+  Piny/statusy pary rewalidowane przez narzędzie; pełna closure1617 input
+  objects (716 nowych),94 pliki stage'ów z manifestami,oba catalog entries,
+  STATUS i append-only dziennik. Author/committer niirmataa,main,bez push.
+- Właściciel zapytał o P02: potwierdzono możliwość startu w jego własnym W
+  z odebranym wąskim zakresem P01 i jawnymi missing types. P02 nie musi czekać
+  na commit,ale musi przypiąć otrzymane eksporty. Worker nie obsługuje Git.
+- Następny krok: praca właściciela/wykonawcy nad P02; potem niezależny V02.
+  Nie uruchamiano nowego dowodu/replayu ani modeli z sesji koordynatora.

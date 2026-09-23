@@ -1,0 +1,49 @@
+{
+ "schema": "B20_P01_SAGE_RUNS_V2",
+ "mode": "sage <file>.sage with preparser; ZZ/QQ; RealBallField/RealIntervalField; output via FT1536_P01_OUT",
+ "jobs": [
+  {
+   "name": "sage_gen_certificate",
+   "argv": [
+    "/home/footfalcon/.local/bin/sage",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/replay-work/B20_001_P01_RESTORE_B/run/certificates/gen_sqrt2_certificate.sage"
+   ],
+   "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/replay-work/B20_001_P01_RESTORE_B/run",
+   "network": "off",
+   "wall_limit_s": 1800,
+   "start": "2026-09-23T03:15:18+02:00",
+   "stop": "2026-09-23T03:15:19+02:00",
+   "elapsed_s": 1.423,
+   "exit_code": 0,
+   "stdout": "replay/logs/sage_gen_certificate.stdout",
+   "stdout_sha256": "d491e967e1fd7015998aebc144ab92bd2c23e081501101edb15d9bf0c08fa705",
+   "stderr": "replay/logs/sage_gen_certificate.stderr",
+   "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "producer_outputs": {
+    "CERTIFICATES/sqrt2_interval.json": "33cf2381bab2f9b43afad254335a22e4b131c4f204e4b91409bf2412b91a60a0",
+    "CERTIFICATES/sqrt2_interval.report.txt": "a6c06215f430ae041a803077e3056ea9406e696cccbf32d86ac328a9e136ddbf"
+   }
+  },
+  {
+   "name": "sage_check_certificate",
+   "argv": [
+    "/home/footfalcon/.local/bin/sage",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/replay-work/B20_001_P01_RESTORE_B/run/certificates/check_certificate.sage"
+   ],
+   "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/replay-work/B20_001_P01_RESTORE_B/run",
+   "network": "off",
+   "wall_limit_s": 1800,
+   "start": "2026-09-23T03:15:19+02:00",
+   "stop": "2026-09-23T03:15:21+02:00",
+   "elapsed_s": 1.524,
+   "exit_code": 0,
+   "stdout": "replay/logs/sage_check_certificate.stdout",
+   "stdout_sha256": "6574171d7ba6d8741daa5e380c6b9dcb2c0e21a55780b120a1eaf3008f57a839",
+   "stderr": "replay/logs/sage_check_certificate.stderr",
+   "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "producer_outputs": {
+    "CERTIFICATES/check_certificate.report.txt": "16d4ca49e2e5a0bfa354619abfb420833c27c0c6b0d7fdd6283635d837889e57"
+   }
+  }
+ ]
+}

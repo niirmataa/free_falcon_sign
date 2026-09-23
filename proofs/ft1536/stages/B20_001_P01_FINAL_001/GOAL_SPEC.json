@@ -1,0 +1,49 @@
+{
+  "schema": "B20_P01_GOAL_SPEC_V1",
+  "task_id": "B20_001_P01_FORMAL_FOUNDATIONS",
+  "roadmap_id": "F02-F09",
+  "required_goal_exports": [
+    {
+      "id": "B20.Foundation.CExec",
+      "printed_type": "B20.Foundation.CExec : B20.Foundation.Program → B20.Foundation.State → B20.Foundation.Outcome → Prop",
+      "domain_defs": "Program=CStmt (skip/assign/storeU64/seq/ret/assumeFalse/unimplemented); State={mem:Memory, locals:String→Option Word64}; Outcome=returned/stuck/abort/nonreturn/fault; Memory.bytes:Nat→Option (BitVec 8); Word64=BitVec 64",
+      "constructors": ["skip", "assign_ok", "assign_err", "store_ok", "store_err", "ret_ok", "ret_err", "seq_returned", "seq_stuck", "seq_abort", "seq_nonreturn", "seq_fault", "assume_false", "unimplemented"],
+      "error_nonreturn_outcomes_covered": ["stuck", "abort", "nonreturn", "fault"],
+      "semantics_scope": "abstract C fragment semantics, NOT machine code",
+      "supporting_exports": ["evalStmt_sound", "CExec_complete", "compile_refines", "Outcome.*_ne_*", "u64Add_toNat"]
+    },
+    {
+      "id": "B20.Foundation.SourceBinding",
+      "printed_type": "B20.Foundation.SourceBinding : B20.Foundation.PinnedSource → B20.Foundation.CStmt → Prop",
+      "domain_defs": "PinnedSource={name,fileSha256,fragment:String,tokens:List SourceToken}; SourceToken=name(String)|num(Nat)",
+      "checker": "checkSource src p = decide (tokens = encodeStmt p) && decide (decodeStmt tokens = some p)",
+      "soundness": "checker_sound : checkSource src p = true → SourceBinding src p",
+      "translation_correctness": "translateStmt (used fragment grammar `return <decimal>;`) proven for pinned fragment; NOT only file checksum",
+      "mutation_controls": ["mutated_constant_rejected", "mutated_constant_translation_rejected", "mutated_operator_rejected", "mutated_operator_translation_rejected"],
+      "synthetic_witness_labelled_separately": "syntheticShapeFragment / syntheticShape_binding"
+    },
+    {
+      "id": "B20.Foundation.CertificateSound",
+      "printed_type": "B20.Foundation.CertificateSound : ∀ (i : B20.Foundation.RationalInterval), i.checkSqrt2 = true → (i.lower : ℝ) < Real.sqrt 2 ∧ Real.sqrt 2 < (i.upper : ℝ)",
+      "domain_defs": "RationalInterval={lowerNum,lowerDen,upperNum,upperDen:Int}; Certifies = positivity ∧ lower²<2·lowerDen² ∧ 2·upperDen²<upperNum² ∧ ordered endpoints (exact ℤ)",
+      "negative_controls_rejected": ["false_inequality_rejected", "reversed_endpoint_rejected", "missing_denominator_rejected", "certificate_checker_discriminates"],
+      "transport": "Transport.decodeNat_encodeNat : decodeNat (encodeNat n) = n; field binds *_transport : decodeNat <digits> = CertificateInput.<field>"
+    },
+    {
+      "id": "B20.Foundation.ObservedKernel",
+      "printed_type": "B20.Foundation.ObservedKernel : (α β : Type*) → Type",
+      "domain_defs": "ObservedKernel={step:α→PMF β, observation:β→Bool, fallback:β}; totalVariation:half ℓ¹ of ENNReal.toReal masses; directedChi2:⊤ iff p escapes supp(q); conditionalHistory:resume from recorded state else fallback",
+      "concrete_library_instances": "Mathlib PMF/ENNReal/Fintype; generic lemmas totalVariation_self_zero, directedChi2_self_zero",
+      "pinned_model_instance": {
+        "model": "deterministic CExec execution of source17ReturnZeroProgram, observation \"returned 0\"",
+        "exports": ["pinnedKernel", "pinnedObserved", "pinned_observation_initState", "pinned_observed_initState", "pinned_observed_step_apply", "pinned_observed_eq", "pinned_tv_self", "pinned_chi2_self", "pinned_conditionalHistory_state", "pinned_conditionalHistory_fresh"]
+      }
+    }
+  ],
+  "end_to_end": {
+    "id": "endToEnd_chain",
+    "chain": "pinned source fragment (text) → translateStmt → program → CExec kernel theorem (ret_ok) → checkSqrt2 certificate accepted",
+    "exports": ["EndToEndReceipt", "endToEnd_receipt_valid", "source17ReturnZero_exec", "endToEnd_chain"]
+  },
+  "printed_types_log": "formal_printed_types.txt (pełny zapis #check dla43 nazw)"
+}

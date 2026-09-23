@@ -1,0 +1,88 @@
+{
+  "schema": "B20_P01_FORMAL_EXPORTS_V1",
+  "note": "pełny typ, nazwa, plik/source SHA, receipt dowodu/aksjomatów, status i konkretni consumers",
+  "exports": [
+    {
+      "name": "B20.Foundation.CExec",
+      "full_type": "B20.Foundation.Program → B20.Foundation.State → B20.Foundation.Outcome → Prop",
+      "file": "formal/B20/Foundation/CExec.lean",
+      "proof": "inductive definition; kernel-checked constructors (14)",
+      "axioms": ["propext"],
+      "status": "PROVED (definition + complete constructor coverage)",
+      "consumers": ["P02", "P03", "later T02-T06 foundations"]
+    },
+    {
+      "name": "B20.Foundation.evalStmt_sound / CExec_complete",
+      "full_type": "∀ (p : CStmt) (s : State), CExec p s (evalStmt p s)",
+      "file": "formal/B20/Foundation/CExec.lean",
+      "proof": "structural induction via evalStmt_sound_gen (equality form)",
+      "axioms": ["propext"],
+      "status": "PROVED",
+      "consumers": ["EndToEnd", "pinned model instance"]
+    },
+    {
+      "name": "B20.Foundation.checker_sound",
+      "full_type": "∀ (src : PinnedSource) (p : CStmt), checkSource src p = true → SourceBinding src p",
+      "file": "formal/B20/Foundation/SourceBinding.lean",
+      "proof": "of_decide_eq_true on both check conjuncts + compile_refines",
+      "axioms": ["propext"],
+      "status": "PROVED (generic in program)",
+      "consumers": ["source17ReturnZero_binding", "syntheticShape_binding", "P02/P03 source binding"]
+    },
+    {
+      "name": "B20.Foundation.source17ReturnZero_translation",
+      "full_type": "SourceTranslation source17ReturnZeroFragment source17ReturnZeroProgram",
+      "file": "formal/B20/Foundation/SourceBinding.lean",
+      "proof": "decide over List Char translator (kernel-reducible)",
+      "axioms": ["propext", "Classical.choice", "Quot.sound"],
+      "status": "PROVED (used fragment grammar `return <decimal>;`)",
+      "consumers": ["endToEnd_chain", "P02/P03 fragment extensions"]
+    },
+    {
+      "name": "B20.Foundation.certificate_sound / CertificateSound",
+      "full_type": "∀ (i : RationalInterval), i.checkSqrt2 = true → (i.lower : ℝ) < Real.sqrt 2 ∧ Real.sqrt 2 < (i.upper : ℝ)",
+      "file": "formal/B20/Foundation/Certificate.lean",
+      "proof": "decide-certificate → ℤ inequalities → nlinarith/div_lt_iff₀ → Real.sqrt lemmas",
+      "axioms": ["propext", "Classical.choice", "Quot.sound"],
+      "status": "PROVED",
+      "consumers": ["sqrt2Witness_sound", "P02/P03 rational/interval certificates"]
+    },
+    {
+      "name": "B20.Foundation.Transport.decodeNat_encodeNat",
+      "full_type": "∀ (n : Nat), decodeNat (encodeNat n) = n",
+      "file": "formal/B20/Foundation/CertificateTransport.lean",
+      "proof": "strong induction on fuel via decodeNat_encodeNatAux",
+      "axioms": ["propext", "Quot.sound"],
+      "status": "PROVED (soundness of index/size/numeral transport)",
+      "consumers": ["*_transport field binds", "P02/P03 certificate transport"]
+    },
+    {
+      "name": "B20.Foundation.totalVariation / directedChi2 / conditionalHistory / ObservedKernel",
+      "full_type": "see formal_printed_types.txt",
+      "file": "formal/B20/Foundation/Probability.lean",
+      "proof": "definitions over Mathlib PMF + generic lemmas (self-zero) + FULL pinned-model instance (pinnedKernel, pinnedObserved, pinned_tv_self, pinned_chi2_self, pinned_conditionalHistory_*)",
+      "axioms": ["propext", "Classical.choice", "Quot.sound"],
+      "status": "PROVED (definition + generic lemmas + concrete pinned instance)",
+      "consumers": ["P02/P03 probabilistic kernels", "T02-T06 game definitions"]
+    },
+    {
+      "name": "B20.Foundation.endToEnd_chain",
+      "full_type": "SourceTranslation … ∧ CExec source17ReturnZeroProgram initState (Outcome.returned (some 0) initState) ∧ sqrt2Witness.checkSqrt2 = true",
+      "file": "formal/B20/Foundation/EndToEnd.lean",
+      "proof": "composition of translation + ret_ok + certificate",
+      "axioms": ["propext", "Classical.choice", "Quot.sound"],
+      "status": "PROVED (small real end-to-end example: fragment → model → kernel theorem → receipt)",
+      "consumers": ["template for P02/P03 end-to-end receipts"]
+    }
+  ],
+  "negative_controls": [
+    {"name": "mutated_constant_rejected / _translation_rejected", "file": "formal/B20/Foundation/SourceBinding.lean", "axioms": ["propext"], "status": "REJECTED as required"},
+    {"name": "mutated_operator_rejected / _translation_rejected", "file": "formal/B20/Foundation/SourceBinding.lean", "axioms": ["propext", "Classical.choice", "Quot.sound"], "status": "REJECTED as required"},
+    {"name": "false_inequality_rejected", "file": "formal/B20/Foundation/Certificate.lean", "axioms": [], "status": "REJECTED as required"},
+    {"name": "reversed_endpoint_rejected", "file": "formal/B20/Foundation/Certificate.lean", "axioms": [], "status": "REJECTED as required"},
+    {"name": "missing_denominator_rejected", "file": "formal/B20/Foundation/Certificate.lean", "axioms": [], "status": "REJECTED as required"}
+  ],
+  "axioms_receipt": "AXIOMS.json (36 scanned, 0 target axioms)",
+  "source_sha_receipt": "INPUTS.sha256 + BOUND_INPUTS.json (source17 manifest 56974571…)",
+  "separated_closed_and_open": {"closed": "4 required exports + end-to-end + transport + controls", "open": "RESULT.json missing_types"}
+}

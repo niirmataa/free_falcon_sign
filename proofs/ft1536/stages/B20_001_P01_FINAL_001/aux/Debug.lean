@@ -1,0 +1,9 @@
+import B20.Foundation.SourceBinding
+
+open B20.Foundation
+
+#eval source17ReturnZeroFragment.tokens
+#eval encodeStmt source17ReturnZeroProgram
+#eval decodeStmt source17ReturnZeroFragment.tokens
+#eval checkSource source17ReturnZeroFragment source17ReturnZeroProgram
+#eval translateStmt source17ReturnZeroFragment.fragment

@@ -1,17 +1,35 @@
 # Stan projektu — punkt wejścia
 
-**2026-09-23 — P01 v2 FROZEN_AWAITING_REVIEW; V01 przygotowany.**
+**2026-09-23 — P01 v2 REVIEWED; V01 PASS_SCOPED_REVIEW w wąskim zakresie.**
+**Import,binding i pełne archive verify PASS:**36 checkpointów,51 dokumentów,
+exit0,61.28s. Po początkowym timeout120s właściciel zatwierdził ponowienie
+z limitem600s. Logi i oba przebiegi zachowane w
+`work/B20_001/_coordination/PAIR01_IMPORT_001/` (wynik:global_verify_002).
+Para wraz z objects,STATUS i dziennikiem jest objęta lokalnym checkpointem main.
 REPORT `e7431aa06716e2960a86fd60bebea2ea213e770dd3f61b39a00292ac80ddd888`,
 OUTPUTS `ebd4cff87995d34d318fa86512aef266a3c3c05f6147c81b8bac307cb2553386`.
-Koordynator potwierdził62/62 outputs,7930 inputs,21 źródeł exact-set,12 raw logs
-i5 product checks zgodnych z receiptami. V1 zachowane; poprzednia blokada
-kompletności źródeł/configów/logów replayu usunięta. Claim PROVED4/4 podlega V01.
-Setter wiąże nowe piny w STATUS. Weryfikator ma kopię7994 plików w
-`proofs/ft1536/work/B20_001/V01/inputs/producer_v2/`,własne BOUND_INPUTS oraz
-`run/REVIEW_PROMPT_001.md` i `run/REVIEW_FOCUS_001.md`; start przez V01/AGENTS.md.
-Właściciel wybiera model/świeży kontekst i uruchamia recenzenta. Dalsza ocena
-source binding/conditional-history i izolacji replayu pozostaje obowiązkiem V01.
-P02 czeka na odebrane eksporty. [Dziennik](COORDINATOR_LOG.md) zachowuje historię v1/v2.
+Recenzent Muse Spark1.3 Free (`opencode/muse-spark-1.3-contributor-free`),
+świeży kontekst wg HANDOFF. REVIEW
+`2a0e18baecd18af09dc382872582b71044bfb69b1f1d79762f7d67091c0b2106`,
+REVIEW_OUTPUTS `acd37b12408e9fa6f6ab3c2d01d022b3f6bbeae54a3933c27257ab9b72492441`.
+[Autor w stages](../../proofs/ft1536/stages/B20_001_P01_FINAL_001/REPORT.md),
+[pełny odbiór](../../proofs/ft1536/stages/B20_001_V01_FINAL_001/REVIEW.md).
+Potwierdzono62/62 autora,30/30 review,12 wejść recenzji i powiązania21 źródeł,
+12 raw logs,5 produktów/porównań z własnego replayu recenzenta6/6 exit0.
+Sage niezależny22/22 według przypiętych logów. W opisie review liczba22 źródeł
+jest erratą: rzeczywisty receipt zawiera21 zgodnych. Koordynator nie powtarzał obliczeń.
+
+**Odebrane:** abstrakcyjne CExec i soundness,parser `return <decimal>;`,checker
+√2 i transport,definicje kernel/TV/chi² oraz self-zero/resume po stanie.
+**Otwarte:** bazowe abort,konwers/determinizm CExec,source refinement operatorów
+i wydobycia fragmentu z pliku,warunkowanie po obserwacjach,nietrywialne TV/chi²,
+maszyna/pełny front-end/real PRNG. `compile=id` nie daje dowodu kompilacji.
+Katalog zachowuje autorski PROVED; wiążący zakres konsumpcji określa review_scope
+w STATUS oraz V01/REVIEW_RESULT.json. P02 może przygotować wejścia z tych
+odebranych eksportów i musi sformalizować potrzebne braki. Właściciel otrzymał
+potwierdzenie możliwości startu P02; wybór/model i start należą do niego,
+worker pracuje w W,P02 bez operacji Git.
+[Dziennik](COORDINATOR_LOG.md) zachowuje pełną historię v1/v2 i importu pary.
 
 **2026-09-23 — naprawa narzędzi koordynatora na polecenie właściciela.**
 Frozen binding autora działa w W przed importem. REVIEWED wymaga przypiętego

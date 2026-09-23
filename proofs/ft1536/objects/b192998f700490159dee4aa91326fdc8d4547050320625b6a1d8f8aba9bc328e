@@ -1,0 +1,29 @@
+{
+  "schema":"B20_TOOLCHAIN_REQUIREMENTS_V1",
+  "required_stack":["SageMath","Lean4","Mathlib4"],
+  "lean":{"version":"4.34.0","toolchain":"leanprover/lean4:v4.34.0","observed_path":"/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean"},
+  "sage":{"version":"10.9","launcher":"/home/footfalcon/.local/bin/sage","math_invocation":"sage lemma.sage","preparser_required":true},
+  "mathlib":{
+    "repository":"https://github.com/leanprover-community/mathlib4",
+    "tag":"v4.34.0",
+    "commit":"5ed2965256430c3649e86755f9576b54eca72435",
+    "lean_toolchain_at_commit":"leanprover/lean4:v4.34.0",
+    "metadata_verified_via":["https://api.github.com/repos/leanprover-community/mathlib4/git/ref/tags/v4.34.0","https://raw.githubusercontent.com/leanprover-community/mathlib4/5ed2965256430c3649e86755f9576b54eca72435/lean-toolchain","https://raw.githubusercontent.com/leanprover-community/mathlib4/5ed2965256430c3649e86755f9576b54eca72435/lake-manifest.json"],
+    "metadata_verification_date":"2026-09-22",
+    "local_materialization":"P01_BOOTSTRAP_REQUIRED; not found in three checked common locations; no blanket assertion about every filesystem location",
+    "packages":[
+      {"name":"plausible","url":"https://github.com/leanprover-community/plausible","rev":"118aa17ee84656b8bd727fef7c458ee8c833385c"},
+      {"name":"LeanSearchClient","url":"https://github.com/leanprover-community/LeanSearchClient","rev":"ddf04cf3949fa556442341e87d47f9f6e6074707"},
+      {"name":"importGraph","url":"https://github.com/leanprover-community/import-graph","rev":"e928b72544873815af278d38681b31c0293588e3"},
+      {"name":"proofwidgets","url":"https://github.com/leanprover-community/ProofWidgets4","rev":"106ff4fafc74ef4ac99d81dbf3ab399118f497a5"},
+      {"name":"aesop","url":"https://github.com/leanprover-community/aesop","rev":"355695d523e41d0554926416cba2a2b3544fbbc9"},
+      {"name":"Qq","url":"https://github.com/leanprover-community/quote4","rev":"6a489d9af5d0c47e5b259e2e8bcdfc1811b5a259"},
+      {"name":"batteries","url":"https://github.com/leanprover-community/batteries","rev":"f2effa3d803fda822b1f97b806c47cf2adfbcbc2"},
+      {"name":"Cli","url":"https://github.com/leanprover/lean4-cli","rev":"e92c9f15fdfacc8536f31cfb3b7ad26c3c8cd204"}
+    ]
+  },
+  "bootstrap_rule":"P01 locates or materializes these exact public source revisions under durable W/bootstrap. Acquisition is a separate coordinator-controlled preparation step, with hashes/logs and no mathematical claim. Build/proof/replay run network-off; no silent version upgrade.",
+  "library_reuse":"Immutable pinned library build may be reused after provenance/hash verification; the task's own proof project is always freshly rebuilt. Final theorem axioms must be audited transitively.",
+  "forbidden_proof_shortcuts":["sorry","admit","native_decide","Lean.ofReduceBool","target axiom","warning suppression","unchecked analytical premise","Sage PASS used as theorem"],
+  "default_limits":{"normal_memory_gib":8,"lean_flags":["-j1","-M2048"],"one_compute_worker_per_task":true,"dudect_exclusive":true}
+}

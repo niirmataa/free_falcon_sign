@@ -1,0 +1,91 @@
+{
+  "schema": "B20_BOUND_INPUTS_V1",
+  "task_id": "B20_001_P01_FORMAL_FOUNDATIONS",
+  "owner": "Niirmata",
+  "assigned_by": "owner in current conversation",
+  "model": "Xiaomi MiMo; exact runtime model ID not present in the prompt",
+  "context": "fresh Codex session; P01 assigned explicitly by owner",
+  "checkout": "/home/footfalcon/free_falcon_sign",
+  "branch": "main",
+  "source_base_commit": "ef62824a10a69962dc8347410ee3f424bfa2b12e",
+  "source17": {
+    "manifest_sha256": "56974571b46e8257bdd3b4097c8c70fded6bb4b94c64805f6e35ec80929a0985",
+    "manifest_path": "inputs/source17/CANDIDATE.sha256",
+    "source_closure": "inputs/source17/source",
+    "entries": {
+      "Makefile": "25cd0345332882ccab4beea68d5139955c871499733ab9f5fa3cc8ef898d5049",
+      "falcon-enc.c": "0f7085fa975d41ebbeb96d5db4cb68482c344ef2d602ca8853e20a4d4f04fb05",
+      "falcon-fft.c": "06b573b636ae368dcda3eb4d89c3936ab31272123440d0d5362317e55d9ac063",
+      "falcon-keygen.c": "0a09b6ed2363308f54584dfd1e2d33ee1b4601a68c77712c50da920b5074a5cf",
+      "falcon-sign.c": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8",
+      "falcon-vrfy.c": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+      "falcon.h": "657ad2b2d45b8932c3b9a703ac718c1f23dad78523036c1a934b8e21cf0f4519",
+      "fpr-double.h": "5dd9110dd4e77c96e19263488bd0937cea0032623f40cacb289da7e3e1256d56",
+      "fpr-emulated.c": "7cb06c9ea8f8bfc205a207cd73af367d299005d4bfec26333ced702f1c024e5f",
+      "fpr-emulated.h": "6b897d6c217ef25a322e3b5c3d9488b9d6b8d0e369a710d8fce2259f24e6d84f",
+      "frng.c": "4b1289adf0c902abe9408d989b4eb8d292cbb6ea86b92e1325a10fd9c5dfc644",
+      "ft1536-adaptive-cdf-tables.h": "c16f041a64aba25991b5473111675f1c046ebc38285fca6c052124cf3b7fdf4f",
+      "internal.h": "512629d3b79fa5bd74131ed2ecde06e1d157f5ac58db3f758db96b19131f1ba5",
+      "shake.c": "c3e7864bf4139264f8c287053214bf869e242757bf555235da81454e40ea316a",
+      "shake.h": "2373a37e09907c8e57a6b1adc05e26499d9cf2752518267a80291de931c2d8df",
+      "test_falcon.c": "ecd22c8f0ac8c24df0692c94ebb293b5944fe42fc57d97f2e06f01e5ecc44b4c",
+      "tool.c": "920ac2d8a96408c505670eb2f044cde763ca11945d90ec24d8c6f2a048377890"
+    }
+  },
+  "stages": {
+    "M0": {
+      "id": "FT1536_M0_CONTRACT_RUN_001",
+      "report_sha256": "b71d71e8d89022ea321241d0ddabdddf4a3b81bfc9fe4faca08476baf6e71c29",
+      "outputs_sha256": "08c9b6afe630e11bd98f33a910476950442854e5925efaa7f8fa1d0d8c8d695d",
+      "historical_status": "M0_CONTRACT_DEFINED_FOR_PINNED_CANDIDATE",
+      "output_entries": 1325,
+      "input_entries": 97,
+      "output_closure": "inputs/stages/M0/outputs",
+      "input_object_closure": "inputs/closure/objects",
+      "report_path": "inputs/stages/M0/outputs/REPORT.md",
+      "outputs_manifest_path": "inputs/stages/M0/manifests/OUTPUTS.sha256",
+      "inputs_manifest_path": "inputs/stages/M0/manifests/INPUTS.sha256"
+    },
+    "POST": {
+      "id": "FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001",
+      "report_sha256": "4cd7ab1a6f63256ed6c015f3ba9bbef97597d7a68bb948bfd8c9264bab307662",
+      "outputs_sha256": "b860e5453a7a72716acd8636cc581ff57b1b9c00dff20baa907e4636344d1401",
+      "historical_status": "PARTIAL_PROOF",
+      "output_entries": 3141,
+      "input_entries": 901,
+      "output_closure": "inputs/stages/POST/outputs",
+      "input_object_closure": "inputs/closure/objects",
+      "report_path": "inputs/stages/POST/outputs/REPORT.md",
+      "outputs_manifest_path": "inputs/stages/POST/manifests/OUTPUTS.sha256",
+      "inputs_manifest_path": "inputs/stages/POST/manifests/INPUTS.sha256"
+    },
+    "JOINT": {
+      "id": "FT1536_H3_ORDERED_JOINT_KERNEL_RUN_001",
+      "report_sha256": "b150ca1284600dbda3a40ae3656a2058d8a6c0f3b7cfb1e38d15a9ccc5e78c59",
+      "outputs_sha256": "da8cfccceea6837fc21edd04e46157351d91ad2d317a37286c05f41f3126e263",
+      "historical_status": "H3_ORDERED_JOINT_KERNEL_PROVED_FOR_PINNED_IID_BUFFER_MODEL",
+      "output_entries": 2596,
+      "input_entries": 759,
+      "output_closure": "inputs/stages/JOINT/outputs",
+      "input_object_closure": "inputs/closure/objects",
+      "report_path": "inputs/stages/JOINT/outputs/REPORT.md",
+      "outputs_manifest_path": "inputs/stages/JOINT/manifests/OUTPUTS.sha256",
+      "inputs_manifest_path": "inputs/stages/JOINT/manifests/INPUTS.sha256"
+    }
+  },
+  "closure_index": {
+    "path": "inputs/closure/INDEX.json",
+    "unique_objects": 836
+  },
+  "governance": {
+    "path": "inputs/governance/FT1536_ZASADA_RACHUNKU_SAGEMATH_2026-09-22.md",
+    "sha256": "b6afcdcabb811dd8bc31072455ed9a94a4c4773ec68d41d207ac1d7e98eae241"
+  },
+  "external_required": {},
+  "verification": {
+    "archive_stage_integrity": "PASS",
+    "report_and_output_external_pins": "PASS",
+    "source17_manifest": "PASS",
+    "read_only_after_prepare": true
+  }
+}

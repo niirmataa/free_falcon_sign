@@ -1,0 +1,22 @@
+{
+  "schema": "B20_V01_REPLAY_CHECKS_V1",
+  "entry": "inputs/producer_v2/tools/restore_replay.py (run from V01 copy; REPLAY.md cd/prefix notes in REVIEW.md)",
+  "dest": "V01/run/replay_DEST_001 (fresh, W-only sandbox, HOME/TMPDIR/XDG under V01)",
+  "result_file": "raw_logs/V01_REPLAY_RESULT.json",
+  "jobs": 6,
+  "jobs_all_exit_zero": true,
+  "elapsed": {"sage_gen_certificate": 1.426, "sage_check_certificate": 1.374, "lean_rebuild_all": 14.6, "lean_probe_reduction": 0.6, "lean_printed_types": 3.1, "lean_axiom_scan": 3.0},
+  "semantic_match": true,
+  "sources_unchanged": true,
+  "sources_snapshot_files": 22,
+  "author_W_writes_clean": true,
+  "author_W_gate": "find <lib_root> -newer <marker> empty (re-checked after run)",
+  "product_checks": "5/5 vs EXPECTED.json (4 product hashes + axiom_scan stats)",
+  "produced_products": {"CERTIFICATES/sqrt2_interval.json": "33cf2381bab2f9b43afad254335a22e4b131c4f204e4b91409bf2412b91a60a0", "CERTIFICATES/sqrt2_interval.report.txt": "a6c06215f430ae041a803077e3056ea9406e696cccbf32d86ac328a9e136ddbf", "CERTIFICATES/check_certificate.report.txt": "16d4ca49e2e5a0bfa354619abfb420833c27c0c6b0d7fdd6283635d837889e57", "replay/logs/lean_printed_types.stdout": "f755363c70d62395df3343754c9815af50636df7e929db7f13761461b80217f0"},
+  "axiom_scan_stats": {"exports": 36, "axiom_free": 10, "sets": ["propext", "propext, Classical.choice, Quot.sound", "propext, Quot.sound"]},
+  "logs_sealed_in_output": "replay_logs/ (12 files) + raw_logs/V01_REPLAY_RESULT.json",
+  "benign_diff": "lean_rebuild_all.stdout differs only in build counters/timings/order (fresh compile, not copied targets; 10 own olean newer than marker)",
+  "identical": ["lean_axiom_scan.stdout", "lean_printed_types.stdout", "sage_gen stdout/stderr", "sage_check stdout/stderr", "CERTIFICATES json/reports"],
+  "collection_mode_not_used": true,
+  "verdict": "REPLAY_PASS (fresh DEST, no copied targets, no-op matches excluded by fresh olean + EXPECTED comparison)"
+}

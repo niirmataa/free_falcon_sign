@@ -1,0 +1,66 @@
+binary_block_eval : ∀ (h m pos : Nat),
+  HalfOK h →
+    pos < 1536 →
+      ∀ (s : Mem) (z : Int),
+        z ^ h % 18433 = splitLabel m h pos % 18433 →
+          blockEval h (blockBase h pos) (pairStage h (forwardBinaryOp m h) s) z =
+            blockEval (2 * h) (blockBase (2 * h) pos) s z
+root_block_eval : ∀ (pos : Nat),
+  pos < 1536 →
+    ∀ (s : Mem) (z : Int),
+      z ^ 768 % 18433 = rootLabel pos % 18433 →
+        blockEval 768 (blockBase 768 pos) (pairStage 768 forwardRootOp s) z = peval 1536 s z
+'FT1536Forward.split_layout' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.binary_block_coefficient' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.binary_block_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.root_block_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+CRTStages 0 2.033
+powFast_correct : ∀ (z : Int) (n : Nat), powFast z n = z ^ n % 18433
+nodeCheck_sound : ∀ (i : Nat) (w : Int) (j : Fin 3),
+  nodeCheck i w j = true →
+    have pos := 3 * (i - 512);
+    have z := nodeFromWord w j;
+    z ^ 768 % 18433 = rootLabel pos % 18433 ∧
+      (∀ (p : Nat × Nat),
+          p ∈ forwardSchedule 9 2 768 → z ^ (p.snd / 2) % 18433 = splitLabel p.fst (p.snd / 2) pos % 18433) ∧
+        PhiZero z ∧ ∀ (k : Fin 3), (cubeFExpr w fW j).eval (basis k) = z ^ ↑k % 18433
+'FT1536Forward.powFast_correct' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.powFuel_correct' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.nodeCheck_sound' depends on axioms: [propext, Quot.sound]
+NodeArithmetic 0 0.435
+'FT1536Forward.leaf_checked_0' depends on axioms: [propext]
+LeafData/C00 0 0.26
+'FT1536Forward.leaf_checked_1' depends on axioms: [propext]
+LeafData/C01 0 0.279
+'FT1536Forward.leaf_checked_2' depends on axioms: [propext]
+LeafData/C02 0 0.263
+'FT1536Forward.leaf_checked_3' depends on axioms: [propext]
+LeafData/C03 0 0.251
+'FT1536Forward.leaf_checked_4' depends on axioms: [propext]
+LeafData/C04 0 0.252
+'FT1536Forward.leaf_checked_5' depends on axioms: [propext]
+LeafData/C05 0 0.259
+'FT1536Forward.leaf_checked_6' depends on axioms: [propext]
+LeafData/C06 0 0.264
+'FT1536Forward.leaf_checked_7' depends on axioms: [propext]
+LeafData/C07 0 0.271
+'FT1536Forward.leaf_checked_8' depends on axioms: [propext]
+LeafData/C08 0 0.273
+'FT1536Forward.leaf_checked_9' depends on axioms: [propext]
+LeafData/C09 0 0.262
+'FT1536Forward.leaf_checked_10' depends on axioms: [propext]
+LeafData/C10 0 0.267
+'FT1536Forward.leaf_checked_11' depends on axioms: [propext]
+LeafData/C11 0 0.276
+'FT1536Forward.leaf_checked_12' depends on axioms: [propext]
+LeafData/C12 0 0.256
+'FT1536Forward.leaf_checked_13' depends on axioms: [propext]
+LeafData/C13 0 0.252
+'FT1536Forward.leaf_checked_14' depends on axioms: [propext]
+LeafData/C14 0 0.257
+'FT1536Forward.leaf_checked_15' depends on axioms: [propext]
+LeafData/C15 0 0.273
+'FT1536Forward.leaf_checked_16' depends on axioms: [propext]
+LeafData/C16 0 4.342
+'FT1536Forward.leaf_checked_17' depends on axioms: [propext]
+LeafData/C17 0 4.423

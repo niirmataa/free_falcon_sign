@@ -1,0 +1,153 @@
+{
+ "schema": "B20_P01_EXECUTION_RECEIPTS_V2",
+ "note": "receipty replayu odtworzeniowego do nowego DEST (replay/REPLAY_RESULT.json w pakiecie)",
+ "toolchain": {
+  "lean": "4.34.0",
+  "lake": "5.0.0-src+293d5d0",
+  "sage": "10.9",
+  "mathlib": "5ed2965256430c3649e86755f9576b54eca72435",
+  "git_packages": {
+   "plausible": "118aa17ee84656b8bd727fef7c458ee8c833385c",
+   "LeanSearchClient": "ddf04cf3949fa556442341e87d47f9f6e6074707",
+   "importGraph": "e928b72544873815af278d38681b31c0293588e3",
+   "proofwidgets": "106ff4fafc74ef4ac99d81dbf3ab399118f497a5",
+   "aesop": "355695d523e41d0554926416cba2a2b3544fbbc9",
+   "Qq": "6a489d9af5d0c47e5b259e2e8bcdfc1811b5a259",
+   "batteries": "f2effa3d803fda822b1f97b806c47cf2adfbcbc2",
+   "Cli": "e92c9f15fdfacc8536f31cfb3b7ad26c3c8cd204"
+  }
+ },
+ "jobs": [
+  {
+   "name": "sage_gen_certificate",
+   "argv": [
+    "/home/footfalcon/.local/bin/sage",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/replay-work/B20_001_P01_RESTORE_B/run/certificates/gen_sqrt2_certificate.sage"
+   ],
+   "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/replay-work/B20_001_P01_RESTORE_B/run",
+   "network": "off",
+   "wall_limit_s": 1800,
+   "start": "2026-09-23T03:15:18+02:00",
+   "stop": "2026-09-23T03:15:19+02:00",
+   "elapsed_s": 1.423,
+   "exit_code": 0,
+   "stdout": "replay/logs/sage_gen_certificate.stdout",
+   "stdout_sha256": "d491e967e1fd7015998aebc144ab92bd2c23e081501101edb15d9bf0c08fa705",
+   "stderr": "replay/logs/sage_gen_certificate.stderr",
+   "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "producer_outputs": {
+    "CERTIFICATES/sqrt2_interval.json": "33cf2381bab2f9b43afad254335a22e4b131c4f204e4b91409bf2412b91a60a0",
+    "CERTIFICATES/sqrt2_interval.report.txt": "a6c06215f430ae041a803077e3056ea9406e696cccbf32d86ac328a9e136ddbf"
+   }
+  },
+  {
+   "name": "sage_check_certificate",
+   "argv": [
+    "/home/footfalcon/.local/bin/sage",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/replay-work/B20_001_P01_RESTORE_B/run/certificates/check_certificate.sage"
+   ],
+   "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/replay-work/B20_001_P01_RESTORE_B/run",
+   "network": "off",
+   "wall_limit_s": 1800,
+   "start": "2026-09-23T03:15:19+02:00",
+   "stop": "2026-09-23T03:15:21+02:00",
+   "elapsed_s": 1.524,
+   "exit_code": 0,
+   "stdout": "replay/logs/sage_check_certificate.stdout",
+   "stdout_sha256": "6574171d7ba6d8741daa5e380c6b9dcb2c0e21a55780b120a1eaf3008f57a839",
+   "stderr": "replay/logs/sage_check_certificate.stderr",
+   "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "producer_outputs": {
+    "CERTIFICATES/check_certificate.report.txt": "16d4ca49e2e5a0bfa354619abfb420833c27c0c6b0d7fdd6283635d837889e57"
+   }
+  },
+  {
+   "name": "lean_rebuild_all",
+   "argv": [
+    "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lake",
+    "build",
+    "B20",
+    "B20.Foundation.Certificate",
+    "B20.Foundation.Probability",
+    "B20.Foundation.EndToEnd",
+    "B20.Foundation.CertificateTransport",
+    "FT1536P01"
+   ],
+   "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/replay-work/B20_001_P01_RESTORE_B/run",
+   "network": "off",
+   "wall_limit_s": 1800,
+   "start": "2026-09-23T03:15:21+02:00",
+   "stop": "2026-09-23T03:15:34+02:00",
+   "elapsed_s": 12.944,
+   "exit_code": 0,
+   "stdout": "replay/logs/lean_rebuild_all.stdout",
+   "stdout_sha256": "2460c567441963516c3e1e34422d09f417342a4e63026bdfc178f274fb6a26a1",
+   "stderr": "replay/logs/lean_rebuild_all.stderr",
+   "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "producer_outputs": {}
+  },
+  {
+   "name": "lean_probe_reduction",
+   "argv": [
+    "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lake",
+    "env",
+    "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/replay-work/B20_001_P01_RESTORE_B/aux/RedTest.lean"
+   ],
+   "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/replay-work/B20_001_P01_RESTORE_B/run",
+   "network": "off",
+   "wall_limit_s": 1800,
+   "start": "2026-09-23T03:15:34+02:00",
+   "stop": "2026-09-23T03:15:34+02:00",
+   "elapsed_s": 0.616,
+   "exit_code": 0,
+   "stdout": "replay/logs/lean_probe_reduction.stdout",
+   "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "stderr": "replay/logs/lean_probe_reduction.stderr",
+   "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "producer_outputs": {}
+  },
+  {
+   "name": "lean_printed_types",
+   "argv": [
+    "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lake",
+    "env",
+    "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/replay-work/B20_001_P01_RESTORE_B/run/formal/PrintedTypes.lean"
+   ],
+   "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/replay-work/B20_001_P01_RESTORE_B/run",
+   "network": "off",
+   "wall_limit_s": 1800,
+   "start": "2026-09-23T03:15:34+02:00",
+   "stop": "2026-09-23T03:15:37+02:00",
+   "elapsed_s": 3.071,
+   "exit_code": 0,
+   "stdout": "replay/logs/lean_printed_types.stdout",
+   "stdout_sha256": "f755363c70d62395df3343754c9815af50636df7e929db7f13761461b80217f0",
+   "stderr": "replay/logs/lean_printed_types.stderr",
+   "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "producer_outputs": {}
+  },
+  {
+   "name": "lean_axiom_scan",
+   "argv": [
+    "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lake",
+    "env",
+    "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+    "/home/footfalcon/free_falcon_sign/proofs/ft1536/replay-work/B20_001_P01_RESTORE_B/run/formal/FT1536P01.lean"
+   ],
+   "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/replay-work/B20_001_P01_RESTORE_B/run",
+   "network": "off",
+   "wall_limit_s": 1800,
+   "start": "2026-09-23T03:15:37+02:00",
+   "stop": "2026-09-23T03:15:40+02:00",
+   "elapsed_s": 3.02,
+   "exit_code": 0,
+   "stdout": "replay/logs/lean_axiom_scan.stdout",
+   "stdout_sha256": "ec7047afaabdc854c449ef9da4ebe6e3183c4d79c91c3d90f366c52b9c1a2e0c",
+   "stderr": "replay/logs/lean_axiom_scan.stderr",
+   "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "producer_outputs": {}
+  }
+ ]
+}

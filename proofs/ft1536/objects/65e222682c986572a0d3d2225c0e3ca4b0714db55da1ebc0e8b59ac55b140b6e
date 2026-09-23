@@ -1,0 +1,64 @@
+formal/EncoderCount.lean:38:72: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  8*d - e ≥ 0
+  c ≥ 0
+  b ≥ 8
+  b - 8*c ≤ 15
+  a ≥ 0
+  a - d ≤ -1
+  8*a + b - 8*f - g ≥ 1
+where
+ a := s.used
+ b := s.bits
+ c := ↑k
+ d := cap
+ e := weight s
+ f := { used := s.used + 1, bits := s.bits - 8 }.used
+ g := { used := s.used + 1, bits := s.bits - 8 }.bits
+formal/EncoderCount.lean:46:68: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  8*c + d - 8*e - f ≥ -8
+  8*a - b ≥ 9
+where
+ a := cap
+ b := weight s
+ c := s.used
+ d := s.bits
+ e := { used := s.used, bits := s.bits + 9 }.used
+ f := { used := s.used, bits := s.bits + 9 }.bits
+formal/EncoderCount.lean:95:11: error: Tactic `rfl` failed: No `[refl]` lemma registered for relation
+  LE.le
+
+Hint: Add the `[refl]` attribute to reflexivity lemmas for `LE.le` to use this tactic
+
+case nil
+⊢ 0 ≤ 0
+formal/EncoderCount.lean:165:28: error(lean.unknownIdentifier): Unknown constant `Int.add_sub_cancel_left`
+formal/EncoderCount.lean:165:2: error: Type mismatch: After simplification, term
+  he.left
+ has type
+  encodeCount 4095 (List.ofFn b) = some ((staticBits b + 7) / 8)
+but is expected to have type
+  encodeCount 4095 (List.ofFn b) = some (1 + (staticBits b + 7) / 8 - 1)
+encoder_count_exact : ∀ (cap : Int) (xs : List Int),
+  listBits xs ≤ 8 * cap → encodeCount cap xs = some ((listBits xs + 7) / 8) ∧ (listBits xs + 7) / 8 ≤ cap
+STATIC_FITS_4096 : ∀ (a b : Vec),
+  SignedVec a →
+    SignedVec b →
+      isShort a b = true →
+        encodeCount 4095 (List.ofFn b) = some (payloadLength b - 1) ∧ payloadLength b ≤ 3160 ∧ payloadLength b < 4096
+'FT1536M0.drain_ok' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536M0.prefix9_ok' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536M0.oneBit_ok' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536M0.manyBits_ok' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536M0.coeff_bits_eq' depends on axioms: [propext, Quot.sound]
+'FT1536M0.list_bits_nonneg' depends on axioms: [propext, sorryAx, Quot.sound]
+'FT1536M0.encoder_body_ok' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536M0.finish_ok' depends on axioms: [propext, Quot.sound]
+'FT1536M0.encoder_count_exact' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536M0.list_bits_append' depends on axioms: [propext]
+'FT1536M0.list_bits_ofFn' depends on axioms: [propext, Quot.sound]
+'FT1536M0.vector_bits' depends on axioms: [propext, Quot.sound]
+'FT1536M0.STATIC_FITS_4096' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536M0.source_ne_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536M0.terminal_bit' depends on axioms: [propext, Quot.sound]

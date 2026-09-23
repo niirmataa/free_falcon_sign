@@ -1,0 +1,8 @@
+--- inputs/bootstrap/GAUSS/scripts/run.py
++++ scripts/run.py
+@@ -1,4 +1,4 @@
+-"""Bounded single-worker Gaussian comparison; durable W only, source/IN RO."""
++"""Bounded single-worker ordered joint proof; durable W only, source/IN RO."""
+ import datetime,fcntl,hashlib,json,os,resource,signal,subprocess,sys,time
+ from pathlib import Path
+ W=Path(__file__).absolute().parents[1];limit=int(sys.argv[1]);argv=sys.argv[2:];assert argv and 1<=limit<=240

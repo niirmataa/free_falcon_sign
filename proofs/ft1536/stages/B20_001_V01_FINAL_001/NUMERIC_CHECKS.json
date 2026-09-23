@@ -1,0 +1,23 @@
+{
+  "schema": "B20_V01_NUMERIC_CHECKS_V1",
+  "mode": "sage <file>.sage with preparser; ZZ/QQ; RealBallField/RealIntervalField; output via review output dir",
+  "reviewer_file": "sage/v01_numeric_check.sage",
+  "reviewer_file_sha256": "e8b520982c267124c5fdb3c03102016e4a6634a33e53950d1881b63adfa7c725",
+  "reviewer_report": "v01_numeric_report.txt",
+  "reviewer_report_sha256": "86e310c0fc77f32f08e27a582a6aebf9d729534aff6090c563ca34cea76cbc1b",
+  "reviewer_stdout": "raw_logs/v01_numeric.stdout",
+  "reviewer_stdout_sha256": "d71ad2de16845e1f8ec657e1067ccf8c6433acfe2c5f9be19857bf622965547f",
+  "reviewer_stderr": "raw_logs/v01_numeric.stderr",
+  "reviewer_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "checks_total": 22,
+  "checks_pass": 22,
+  "witness": {"lower": [1414213562373095, 1000000000000000], "upper": [1414213562373096, 1000000000000000]},
+  "zz_inequalities": {"lower_sq_lt": "1999999999999999861967979879025 < 2000000000000000000000000000000", "upper_sq_gt": "2000000000000000000000000000000 < 2000000000000002690395104625216", "ordered": true},
+  "rigorous": {"ball_rad": "1.7272337e-77", "ball_bound": "rad < 2^-200", "ball_brackets": true, "rif_brackets": true},
+  "digits_match_lean_json": true,
+  "negatives_rejected": ["3/2 false", "3/2 vs 7/5 reversed", "denominator 0"],
+  "reviewer_countertests": ["degenerate interval rejected", "plus2ulp lower fails ZZ (decided, not assumed)", "[2,3] rejected", "negative numerator rejected"],
+  "producer_reproduced": {"gen_sqrt2_certificate": "21/21 PASS (replay_logs/sage_gen_certificate.stdout d491e967…)", "check_certificate": "9/9 PASS (replay_logs/sage_check_certificate.stdout 6574171d…)"},
+  "formal_consumer": "sqrt2Witness_checked + *_transport + certificate_checker_discriminates (decide, kernel-checked in fresh rebuild)",
+  "verdict": "NUMERIC_PASS_SCOPED (witness exact-ZZ + RIF confirmed; Sage numbers are checker inputs re-checked kernel-side)"
+}

@@ -1,0 +1,20 @@
+CAPACITY_3160 : ∀ (a b : Vec),
+  Q a b < 2093922385 → staticBits b ≤ 25267 ∧ payloadLength b ≤ 3160 ∧ payloadLength b < 4096
+capacity_after_source_norm : ∀ (a b : Vec),
+  SignedVec a →
+    SignedVec b → isShort a b = true → staticBits b ≤ 25267 ∧ payloadLength b ≤ 3160 ∧ payloadLength b < 4096
+'FT1536M0.sum_le' depends on axioms: [propext, Quot.sound]
+'FT1536M0.sum_nonneg' depends on axioms: [propext, Quot.sound]
+'FT1536M0.sum_const' depends on axioms: [propext]
+'FT1536M0.square_nonnegative' depends on axioms: [propext, Quot.sound]
+'FT1536M0.a2_square_bound' depends on axioms: [propext, Quot.sound]
+'FT1536M0.a2_nonnegative' depends on axioms: [propext, Quot.sound]
+'FT1536M0.Q0_nonnegative' depends on axioms: [propext, Quot.sound]
+'FT1536M0.square_sum_bound' depends on axioms: [propext, Quot.sound]
+'FT1536M0.abs_majorant' depends on axioms: [propext, Quot.sound]
+'FT1536M0.l1_bound' depends on axioms: [propext, Quot.sound]
+'FT1536M0.quotient_bound' depends on axioms: [propext, Quot.sound]
+'FT1536M0.CAPACITY_3160' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536M0.capacity_after_source_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536M0.integer_endpoint_checks' does not depend on any axioms
+CapacityMath 0 0.533

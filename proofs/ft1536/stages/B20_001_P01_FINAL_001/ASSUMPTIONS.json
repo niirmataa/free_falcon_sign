@@ -1,0 +1,48 @@
+{
+  "schema": "B20_P01_ASSUMPTIONS_V1",
+  "named_assumptions": [
+    {
+      "id": "A1_ABI_FIX",
+      "statement": "Fixed ABI (64-bit pointers/size_t, 8-bit char, little-endian) is a declared parameter of the model; conformance of any real hardware/compiler is NOT proved here.",
+      "kind": "platform parameter",
+      "conditional_in": "Core.ABI / Core.lemmas"
+    },
+    {
+      "id": "A2_C_FRAGMENT_SEMANTICS",
+      "statement": "Theorems are about abstract C semantics of the modelled fragment (CExec), NOT machine code. Translation C→machine code and its correctness are outside P01; the C compiler stays in TCB.",
+      "kind": "scope boundary",
+      "explicit_per_TASK": "TASK §4: 'Świadomie określ, czy theorem dotyczy C semantics czy kodu maszynowego'"
+    },
+    {
+      "id": "A3_USED_FRAGMENT_GRAMMAR",
+      "statement": "Translation correctness covers the declared used fragment grammar `return <decimal>;` (plus a separately-labelled synthetic shape witness). Translation of operator-rich source17 fragments (e.g. fpr_ursh) is an explicit missing type for downstream tasks, not an assumed lemma.",
+      "kind": "scope declaration",
+      "see": "NEXT_INTERFACE.md"
+    },
+    {
+      "id": "A4_NO_CRYPTO_ASSUMPTIONS",
+      "statement": "No cryptographic assumptions are made or smuggled: real PRNG/SHAKE/ChaCha/KeyGen/Sign are outside P01 and appear in no theorem premise.",
+      "kind": "absence declaration"
+    },
+    {
+      "id": "A5_LIBRARY_TRUST",
+      "statement": "Trusted computing base: Lean4.34.0 kernel + pinned Mathlib4@5ed2965 definitions (PMF, ENNReal, Real.sqrt) + SageMath10.9 only as certificate producer (all numbers re-checked kernel-side by decide in Lean: sqrt2Witness_checked, *_transport).",
+      "kind": "TCB list"
+    },
+    {
+      "id": "A6_OBSERVATION_SPACES",
+      "statement": "totalVariation/directedChi2 quantified over Fintype observation spaces; the pinned instance uses Bool (Fintype). Infinite state spaces are handled only through pure/deterministic steps.",
+      "kind": "mathematical precondition"
+    }
+  ],
+  "forbidden_shortcuts_checked": {
+    "sorry": false,
+    "admit": false,
+    "native_decide": false,
+    "Lean.ofReduceBool": false,
+    "target_axiom": false,
+    "warning_suppression": false,
+    "unchecked_analytical_premise": false,
+    "sage_pass_used_as_theorem": false
+  }
+}

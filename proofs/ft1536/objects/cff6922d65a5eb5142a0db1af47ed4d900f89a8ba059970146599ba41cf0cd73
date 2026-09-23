@@ -1,0 +1,82 @@
+# V01 — Formalny fundament, semantyka źródła i kontrakt certyfikatów — niezależna weryfikacja
+
+Autor projektu Niirmata. Pakiet B20_001, rewizja 2.
+Rola: RECENZENT. ROADMAP_ID=F02–F09; formalny fundament T02–T06. TASK_ID=B20_001_V01_FORMAL_FOUNDATIONS. Para=P01.
+Nie jesteś wykonawcą dowodu. Ocenasz wynik, odtwarzasz obliczenia i szukasz luk;
+nie dążysz do PASS za wszelką cenę.
+
+**Wejście do tego konkretnego odbioru:** przeczytaj także `../AGENTS.md`,
+`REVIEW_FOCUS_001.md` (obok niniejszego promptu) i `../inputs/BOUND_INPUTS.json`.
+Pakiet P01 v2 z pełną kopią wejść jest w `../inputs/producer_v2/`.
+Wskazówki FOCUS rozliczają poprzedni blocker i miejsca wymagające oceny V01.
+
+## 1. Identyfikacja
+
+```text
+REPO=/home/footfalcon/free_falcon_sign
+SOURCE_BASE=ef62824a10a69962dc8347410ee3f424bfa2b12e
+W=/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V01
+TASK=/home/footfalcon/free_falcon_sign/proofs/ft1536/batches/B20_001/reviews/V01/REVIEW_TASK.md
+TASK_SHA256=477e41e16cee6df9a440be056c270c6761226446540ff39e8aa933750fff5bae
+PEER_TASK=/home/footfalcon/free_falcon_sign/proofs/ft1536/batches/B20_001/tasks/P01/TASK.md
+PEER_TASK_SHA256=842abf85eb84d8b6b9eb4a0e4160f37b1fd1e88a965faa04e28db5efde7664e6
+```
+
+Czytaj REPO/AGENTS.md, START_HERE, STATE i AGENT_GIT_PROTOCOL.md wyłącznie dla
+orientacji; potem własny TASK, kontrakt wejść i handoff autora. Wszystkie zapisy
+tylko pod W; bez systemowego tmp/tmpfs. Jeden recenzent/jeden job naraz, bez
+subagentów/relay/drugiej sesji. Bez Git push, publikacji, dudect i sieci.
+
+## 2. Zewnętrzne piny przekazane przez właściciela
+
+```text
+P01 REPORT_SHA256: e7431aa06716e2960a86fd60bebea2ea213e770dd3f61b39a00292ac80ddd888
+P01 OUTPUTS_SHA256: ebd4cff87995d34d318fa86512aef266a3c3c05f6147c81b8bac307cb2553386
+P01 HEAD: 85b8e7c4659685ef885e0121164b61e2421a926a
+P01 REPORT: /home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/output_v2/REPORT.md
+P01 OUTPUTS: /home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/output_v2/OUTPUTS.sha256
+```
+
+Piny pochodzą z handoffu autora. Zweryfikuj je niezależnie przed i po własnym
+replayu; rozbieżność = raport, nie ciche dopasowanie.
+
+## 3. Tezy do oceny
+
+Zakres i wymagane eksporty definiuje proofs/ft1536/batches/B20_001/reviews/V01/REVIEW_TASK.md oraz
+INPUT_CONTRACT. Na wejściu traktuj deklaracje autora wyłącznie jako deklaracje.
+Oceń: kompletność eksportów kontraktu, poprawność dowodu w zadeklarowanym
+zakresie (SageMath/Lean4/Mathlib, kernelowo, bez mixed-proof substytutu),
+integralność OUTPUTS/INPUTS oraz świeży replay we własnym W.
+
+## 4. Integralność i replay
+
+Zweryfikuj pełny OUTPUTS autora (manifest + bajty), TASK, INPUTS i bootstrap;
+brak traversal/symlinków/duplikatów/mismatchów. Wykonaj własny replay zgodnie
+z REPLAY etapu i porównaj semantyczne pliki z zarchiwizowanym receiptem.
+Wyniki nieudanych tras zachowuj — są częścią raportu.
+
+## 5. Format odpowiedzi
+
+- VERDICT: PASS_SCOPED_REVIEW / CHANGES_REQUIRED / INTEGRITY_FAIL /
+  REPLAY_FAIL / EXECUTION_BLOCKED / BLOCKED (+ dokładny zakres)
+- Binding: wszystkie piny i HEAD, które potwierdziłeś
+- Replay: liczba plików semantic, exit code, czas
+- Luki: numerowana lista z kontrprzykładami lub wskazaniem brakującego lematu
+
+Oddaj REVIEW.md, REVIEW_RESULT.json, INPUTS.sha256 i REVIEW_OUTPUTS.sha256
+z checkerami,receiptami i raw logs według REVIEW_TASK. Manifesty mają dokładne
+ścieżki względne (bez `./`),bez samoodwołań. W REVIEW_RESULT.json obowiązkowo:
+
+```json
+{
+  "review_id": "B20_001_V01_FORMAL_FOUNDATIONS",
+  "source_task": "B20_001_P01_FORMAL_FOUNDATIONS",
+  "source_report_sha256": "e7431aa06716e2960a86fd60bebea2ea213e770dd3f61b39a00292ac80ddd888",
+  "source_outputs_sha256": "ebd4cff87995d34d318fa86512aef266a3c3c05f6147c81b8bac307cb2553386",
+  "verdict": "<rzeczywisty werdykt>",
+  "verdict_scope": "<dokładny odebrany zakres i otwarte obowiązki>"
+}
+```
+
+Pozostałe dowody,eksporty i pola określa TASK. Recenzja powstaje w W;
+po zaakceptowaniu zakresu prowadzący importuje parę do stages i commituje na main.

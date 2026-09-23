@@ -81,6 +81,13 @@ Dokumenty i40 W przygotowane; gotowość uruchomienia zależy od konkretnych
 odebranych eksportów/pinów. Wymóg właściciela: **SageMath + Lean4 + Mathlib,
 kernelowo**,bez mixed analytical proof jako zamknięcia nowego zadania.
 
+Aktualizacja2026-09-23: **P01/V01 odebrano zakresowo** —
+[recenzja](../../proofs/ft1536/stages/B20_001_V01_FINAL_001/REVIEW.md).
+P02 otrzymuje istniejące definicje/soundness,parser return-constant i checker√2;
+nie może zakładać brakującego abort/konwersu,refinementu operatorów ani
+warunkowania po obserwacjach. TV/chi² P01 to definicje i self-zero,nie
+nietrywialny transfer między różnymi prawami. Właściwy scope/piny są w STATUS.
+
 | Część B20 | Rozwinięcie bieżącej kolejności |
 |---|---|
 | P01–P05 / V01–V05 | formalny bootstrap/source semantics,word/FPEMU,PRNG layout,reset resources,computational RNG bridge (T02) |

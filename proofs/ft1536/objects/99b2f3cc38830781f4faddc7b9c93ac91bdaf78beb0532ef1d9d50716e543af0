@@ -1,0 +1,11 @@
+--- source/falcon-enc.c
++++ checks/variants/terminator_enc.c
+@@ -352,7 +352,7 @@
+ 		/*
+ 		 * Second part: 'ne' bits of value 0, and one bit of value 1.
+ 		 */
+-		while (ne -- >= 0) {
++		while (ne -- > 0) {
+ 			acc <<= 1;
+ 			acc += ((unsigned)ne >> 15) & 1;
+ 			if (++ acc_len == 8) {
