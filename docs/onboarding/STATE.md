@@ -1,5 +1,27 @@
 # Stan projektu — punkt wejścia
 
+**2026-09-23 — dudect przygotowany,czeka WYŁĄCZNIE na znak właściciela.**
+Rzeczywisty preflight attempts/006: **PREFLIGHT_PASS**,CPU11,profil floor-ct,
+budżet36000s (10h),6 kontroli i ich raw replay PASS. Kampania nie działa;
+brak RUN/LAUNCH. Właściciel potwierdził start dopiero przy odejściu od komputera.
+[Zapis przygotowania](../../provenance/checks/2026-09-23-dudect-ready/README.md).
+Do zakończenia kampanii po starcie nie uruchamiać proof/build/review jobs.
+P02 i niezależny odbiór matematyczny czekają na dalsze polecenie po pracy.
+
+**Wstępnie odebrane handoffy,bez matematycznego PASS:**
+- T12.1:PARTIAL_PROOF,zgodne4461/4461 oraz REPORTfa6bbac7…/OUTPUTSa9e3af2e…;
+  101 twierdzeń to claim autora. Otwarty interpreter/prawa gry/bit-cost;
+  kontrprzykład centrowania zachowany. [CURRENT_MATH_TASK](../../proofs/ft1536/CURRENT_MATH_TASK.md).
+  Przy późniejszym imporcie wymaga rozliczenia nazwa publicznego
+  REPLAY_SEED.sha256 odrzucana przez filtr nazw archiwizatora.
+- P02: **IN_PROGRESS** zapisane kanonicznym setterem; wykonawca
+  openai/gpt-6-astra-fast,sesja ses_f33f9f0afffeLad43JuCwKBDk2.
+  WORD_HELPERS_001:176/176 plików zgodnych,REPORT
+  `cac19467943635fb007a86f3dbff31305528b29dde11cc3bacae5639d0c7701f`,
+  PROGRESS_MANIFEST `30df495f351cd53a6bf45f27481e5f5a16de46e342c2dd17de0ab80b8758ed3a`.
+  Roboczy komponent w W,nie final P02. Następne:literalne dec64le/enc64le,
+  floor/rint,FPEMU i domeny. V02/P03 nie odblokowano przez ten snapshot.
+
 **2026-09-23 — przygotowany osobny tor Astry T12.1.**
 [CURRENT_MATH_TASK](../../proofs/ft1536/CURRENT_MATH_TASK.md):pełne matematyczne
 prawo Sign,publiczny symulator i kernelowy warunkowy lemat EUF-CMA→MT-ISIS.
@@ -337,13 +359,14 @@ Extra/c: aktywny kandydat L_RHO+FLOOR_CT, manifest17 plików
 FLOOR_CT zintegrowany w `fe6f92a`; fpr_floor zachowuje floor(-0)=-1.
 F01 numeric fpr_lt(-0,+0)=1 nie jest ogólnie naprawione.
 
-RUN_002: przy snapshotcie **STATIC_READY_TIMING_DEFERRED**, usługa inactive,
-MainPID0, brak długiego runu. Budżet36000s. Najnowsze preparation attempt005,
-SHA `dc8e400802efcb25e745f175508950f093a83be2c3ddfd77937d98eebc12a268`.
-Kanoniczny alias W na NVMe; wymagane87.3125GiB, przy przygotowaniu około219.6GiB
-wolnego. [Instrukcja magazynu/startu](../../provenance/FT1536_DATA_STORAGE.md).
-Przed startem ponownie sprawdź UUID, AC, miejsce, koniec innych prac i fresh
-preflight. Nie uruchamiaj tylko dlatego, że przeczytałeś tę instrukcję.
+RUN_002: snapshot2026-09-23 **PREFLIGHT_PASS**,usługa nieuruchomiona,brak
+RUN.json/LAUNCH.json. Budżet36000s,CPU11,attempt006,PREPARATION SHA
+`2621ed0121f981c1149236de98a00261e3b55cb651f55fec7dfe7d6e9ccff74c`.
+Magazyn NVMe UUID da38b9e9… zgodny,AC online; wolne235815215104 bajty,
+wymagane93751083008. Kontrole positive/negative/3 floor/timebox i raw replay
+PASS; brak aktywnych Lean/Sage/C/estymatora przy preflighcie.
+[Instrukcja magazynu/startu](../../provenance/FT1536_DATA_STORAGE.md).
+Start tylko na nowy znak właściciela; przed nim sprawdź bieżące warunki.
 
 ## Co aktualizować po zmianie stanu
 

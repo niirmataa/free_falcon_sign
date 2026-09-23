@@ -189,3 +189,45 @@ w historii. Następny krok po zakończeniu: ocena wyniku i checkpoint przy PASS.
 - Nie uruchamiano modelu,dowodu ani replayu; output pusty. Następny krok:
   właściciel przekazuje prompt Astrze w świeżym kontekście i uruchamia zadanie.
   Wykonawca pracuje w W,po zwrocie niezależny review i dopiero import/commit main.
+
+## 2026-09-23T05:33:55Z — wstępne handoffy i przygotowanie dudect na sygnał
+
+- T12.1:REPORT `fa6bbac7b379d80c256ceb2875a67106a1d7322d84e7ee0cc6b8bddecec7de9a`,
+  OUTPUTS `a9e3af2ebccc221035024fabc7631fa47a93b841c1611e3e79f28ccf5ee5c98f`.
+  Wstępna kontrola SHA/regular files/path sets:4461/4461,52929087 bajtów,
+  bez extra members. PARTIAL_PROOF; brak pełnej gry/semantic law binding/kosztu.
+  Nazwa REPLAY_SEED.sha256 jest odrzucana przez ogólny filtr archiwizatora;
+  sam plik jest przypiętym publicznym manifestem replayu. Bez zmiany filtra,
+  bez importu; sposób późniejszej archiwizacji wymaga jawnego rozliczenia.
+- P02 WORD_HELPERS_001:176/176,REPORT
+  `cac19467943635fb007a86f3dbff31305528b29dde11cc3bacae5639d0c7701f`,
+  PROGRESS_MANIFEST `30df495f351cd53a6bf45f27481e5f5a16de46e342c2dd17de0ab80b8758ed3a`.
+  `b20_status_set.py P02 --start --model openai/gpt-6-astra-fast --context
+  <retrospektywny owner-start ses_f33f9f0afffeLad43JuCwKBDk2> --bound-inputs
+  <P02/inputs/BOUND_INPUTS.json>` →IN_PROGRESS,binding
+  `567f57ac135d0c766f95dfbc53b5dfedcd9d4eb15993d78ab896d4bead936278`.
+  To roboczy komponent,nie FINAL/REVIEWED; V02/P03 nie uruchomiono.
+- Właściciel polecił wstępne sprawdzenie i przygotowanie dawnej kampanii dudect;
+  pozostałe odbiory po powrocie z pracy. Sprawdzono NVMe UUID
+  da38b9e9-0e22-4c55-b3e0-c46b9f293eca,AC online,brak aktywnych proof/build
+  jobs i usługi run002. Poprzednie33 sealed files i harness/source17 zgodne.
+- Za wyraźną zgodą właściciela przeniesiono kopię edytora nano.42829.save
+  do work/OWNER_EDITOR_BACKUPS_2026-09-23.84752 bajty,SHA
+  `07d39e89fc897aca048add195d8ed003d8b1e577335c6da0010058937a4f6f1c`,mtime
+  zachowane. ORIGIN.json zapisuje pochodzenie; nie pomijano clean-Git gate.
+- Komenda krótkiego preflightu: `timeout --kill-after=5s 180s python3 -B
+  tests/ft1536/dudect/prepare.py --repo /home/footfalcon/free_falcon_sign
+  --work /media/footfalcon/FT1536_DATA/ft1536-dudect/FT1536_FPEMU_DUDECT_RUN_002
+  --resume --profile floor-ct --seconds 36000` →exit0,13.35s,
+  attempts/006 **PREFLIGHT_PASS**,CPU11,PREPARATION SHA
+  `2621ed0121f981c1149236de98a00261e3b55cb651f55fec7dfe7d6e9ccff74c`.
+  Positive control LEAKAGE_FOUND (oczekiwane),negative i3 floor contrasts
+  NO_LEAKAGE_EVIDENCE_YET (około1.05M/klasę),timebox0.503s;6 raw replays PASS.
+  28672 fixture checks i testy truncated records wykonane przez istniejący
+  przypięty harness,bez zmiany silnika/progów ani nowego dowodu matematycznego.
+- Zapis:provenance/checks/2026-09-23-dudect-ready oraz pełne dane NVMe attempts/006.
+  Wolne235815215104 bajty,wymagane93751083008; budżet36000s.
+- Właściciel doprecyzował: **włączyć dopiero przy jego odejściu od komputera,
+  na jego znak**. Kampanii nie uruchomiono (brak RUN/LAUNCH). Następny krok:
+  czekać na znak,sprawdzić aktualne warunki i uruchomić istniejący launch.py.
+  Podczas kampanii bez równoległych proof/review/build/estimator jobs; bez push.

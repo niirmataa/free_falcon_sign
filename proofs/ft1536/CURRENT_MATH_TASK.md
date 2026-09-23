@@ -1,7 +1,17 @@
 # Astra — osobny matematyczny tor EUF-CMA → MT-ISIS
 
 TASK_ID=FT1536_MATH_EUFCMA_MTISIS_RUN_001. ROADMAP_ID=T12.1.
-Status2026-09-23: **PREPARED_OWNER_START**. Astrę wybiera i uruchamia właściciel.
+Status2026-09-23: **PARTIAL_PROOF / FROZEN_AWAITING_INDEPENDENT_REVIEW**.
+Właściciel przekazał zakończony run Astry Fast. Wstępnie potwierdzono4461/4461
+członków manifestu; niezależny odbiór zostanie przygotowany po kampanii dudect.
+REPORT `fa6bbac7b379d80c256ceb2875a67106a1d7322d84e7ee0cc6b8bddecec7de9a`,
+OUTPUTS `a9e3af2ebccc221035024fabc7631fa47a93b841c1611e3e79f28ccf5ee5c98f`.
+Pakiet: W/output; pełny handoff: W/HANDOFF.md. Zakończonego runu nie wznawiaj.
+Claim:101 twierdzeń w15 modułach,finite-box G16,chi2/Phi/adaptive i operacje
+reduktora. Pełny interpreter gry,powiązanie praw warunkowych i bit-cost OPEN.
+Przed importem trzeba rozliczyć filtr nazw archive.py dla publicznego
+`REPLAY_SEED.sha256`; to zgodny bajtowo manifest replayu,nie pin prywatnego seedu.
+Nie zmieniono frozen pakietu ani narzędzia archiwizacji.
 
 - [Pełny TASK](documents/FT1536_ZADANIE_ASTRA_MATH_EUFCMA_MTISIS_2026-09-23.md),
   SHA `0fe2ad810e476e44e6cc3a1bca0bcc409004810cfe4b5424523ba914ac9e0cc3`.
