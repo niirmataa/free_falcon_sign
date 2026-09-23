@@ -1,5 +1,14 @@
 # Stan projektu — punkt wejścia
 
+**2026-09-23 — P01 handoff otrzymany; przygotowanie V01 zatrzymane.**
+Claim autora:PROVED4/4,REPORT5ce98acc…/OUTPUTSacd1aec6…;40/40 outputs i7930
+inputs zgodne. Przy porównaniu replay source snapshot z output brak Debug.lean
+iRedTest.lean (role do rozliczenia). Sterownik replayu i konfiguracja Lake
+są poza freeze i odwołują się do W autora. Potrzebne uzupełnienie closure
+przez autora/nowe piny przed kontynuacją.[Dziennik](COORDINATOR_LOG.md),
+szczegóły:`proofs/ft1536/work/B20_001/_coordination/P01_handoff_001/PRECHECK.md`.
+STATUS i stages nie awansowano; P02 wymaga odebranego P01/V01.
+
 **2026-09-23 — naprawa narzędzi koordynatora na polecenie właściciela.**
 Frozen binding autora działa w W przed importem. REVIEWED wymaga przypiętego
 odbioru właściwej pary i zgodnych stage'ów; negatywny werdykt zachowuje swój
