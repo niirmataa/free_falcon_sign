@@ -1,5 +1,14 @@
 # Stan projektu — punkt wejścia
 
+**2026-09-23 — konkretna kontynuacja matematyczna dla Astry: RUN_002.**
+[CURRENT_MATH_TASK](../../proofs/ft1536/CURRENT_MATH_TASK.md) wskazuje jedno
+zlecenie A1→A2→A3 według oceny właściciela i Astry Pro: interpreter gry,
+powiązanie praw/≤Q_s płatnych kroków,zasoby i właściwa redukcja forall A,exists B.
+Cap/Emit oraz dodatnia masa BadVerify są częścią A2. Jeden W,jeden finalny
+handoff; bez ponownego wyprowadzania Phi i bez pętli odbiorów komponentów.
+RUN_001 pozostaje frozen PARTIAL; odziedziczone źródła trzeba przebudować
+i audytować w nowym runie. Status RUN_002:PREPARED_OWNER_START.
+
 **2026-09-23 — dudect RUN_002 zakończony: COMPLETED_SCHEDULE.**
 Start **07:53:08 CEST**,koniec **17:52:50 CEST**,elapsed35982.034s
 (9h59m42s),CPU11,floor-ct. **3 rundy,36/36 prób produkcyjnych bez wykrytego

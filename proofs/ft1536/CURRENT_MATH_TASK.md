@@ -1,9 +1,32 @@
 # Astra — osobny matematyczny tor EUF-CMA → MT-ISIS
 
+## Aktualne zlecenie: RUN_002 — A1→A2→A3
+
+TASK_ID=FT1536_MATH_EUFCMA_MTISIS_RUN_002. ROADMAP_ID=T12.1.
+Status: **PREPARED_OWNER_START** — właściciel zlecił konkretne zadania
+według wspólnej oceny z Astrą Pro,bez pętli administracyjnych.
+[Pełny TASK](documents/FT1536_ZADANIE_ASTRA_INTERACTIVE_GAME_BINDING_2026-09-23.md).
+TASK SHA `b4c11e3cf2a8cf3939a88400a2ea157b9d835e52c02aa974494b93b5f1376e45`.
+W: `proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_002`.
+Bootstrap31 wybranych plików w W/inputs/bootstrap,MANIFEST SHA
+`fe10e6e2f05022bbe0f699551ff09d9c22c5a00cfea8f6a744d85355d61a8aad`.
+
+1. A1: interpreter EUF-CMA/MT-ISIS i publiczny konstruktor reduktora.
+2. A2: law bindings,lazy sampling,≤Q_s płatnych przejść,cap/Emit i correctness.
+3. A3: udowodnione zasoby i właściwe forall A,exists B z końcową nierównością.
+
+Jedna sesja,jeden W,jeden końcowy handoff. Lean4+Mathlib,kernelowo; Sage w .sage.
+Istniejących Phi/chi2 nie dowodzić od nowa. Sampler i małe błędy mogą zostać
+jawnymi parametrami warunkowego twierdzenia,bez założenia samego celu.
+
+## Poprzednik: RUN_001 — zachowany PARTIAL
+
 TASK_ID=FT1536_MATH_EUFCMA_MTISIS_RUN_001. ROADMAP_ID=T12.1.
 Status2026-09-23: **PARTIAL_PROOF / FROZEN_AWAITING_INDEPENDENT_REVIEW**.
 Właściciel przekazał zakończony run Astry Fast. Wstępnie potwierdzono4461/4461
-członków manifestu; niezależny odbiór zostanie przygotowany po kampanii dudect.
+członków manifestu. Otrzymano [ocenę statyczną właściciela/Astry Pro](documents/FT1536_MATH_EUFCMA_MTISIS_ocena_20260923.md).
+Nie był to nowy kernelowy replay; RUN_002 obejmie odziedziczone źródła
+we własnym clean rebuild i końcowym niezależnym odbiorze.
 REPORT `fa6bbac7b379d80c256ceb2875a67106a1d7322d84e7ee0cc6b8bddecec7de9a`,
 OUTPUTS `a9e3af2ebccc221035024fabc7631fa47a93b841c1611e3e79f28ccf5ee5c98f`.
 Pakiet: W/output; pełny handoff: W/HANDOFF.md. Zakończonego runu nie wznawiaj.

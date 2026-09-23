@@ -271,3 +271,30 @@ w historii. Następny krok po zakończeniu: ocena wyniku i checkpoint przy PASS.
 - Wpis startu odłożony podczas pomiaru i ten zapis końca trafiają do lokalnego
   commita razem. Bez push. Następne kroki: odbiór danych dudect oraz wznowienie
   P02/przygotowanie niezależnego odbioru T12.1 według decyzji właściciela.
+
+## 2026-09-23T16:45:32Z — RUN_002 Astry: A1→A2→A3 bez pętli administracyjnych
+
+- Przeczytano ocenę właściciela/Astry Pro z Pobrane. MODEL.md i TraceBound.lean
+  identyczne z frozen RUN_001. Ocena została zachowana przez archive.document,
+  SHA `1c92b1c068a967178d73da8b0fca0953ce35798f6d01218a84d9a46b4798ec52`.
+  ZIP/checkers z zewnętrznych linków sandbox nie są dostępne w Pobrane;
+  nie deklarowano ich sprawdzenia. To przegląd statyczny,bez nowego Lean replayu.
+- Wstępny `sage check_emit.sage`:2 tożsamości funkcji wymiernych i25 mieszanin
+  z brzegami/support mismatch PASS; wartości kontrprzykładu centrowania
+  potwierdzone w ZZ. Exit0,4.42s,czysty stderr,sandbox RO/network-off,RW tylko
+  work/FT1536_MATH_ASTRA_PRO_NOTES_2026-09-23. Nie nadano formalnego PASS T12.1.
+  Źródła/logi/receipt zachowane przez archive.bootstrap w
+  background/MATH_ASTRA_PRO_NOTES_2026-09-23,9 plików,manifest
+  `e625ce16a2d89f257660086c07fba77cea4a0e686505fd793c831ce4bcaf758f`.
+- Na polecenie „dajmy konkretne zadania dla ASTRY wg mojego podsumowania
+  bez robienia loopow” przygotowano FT1536_MATH_EUFCMA_MTISIS_RUN_002.
+  A1:interpreter i programB. A2:prawa gier,lazy sampling,≤Q_s płatnych przejść,
+  cap/Emit i dodatnia masa BadVerify. A3:bit-cost i forall A,exists B.
+  Istniejące Phi/chi2 wykorzystać; jeden W,jeden finalny handoff/review całości.
+- `archive.document/task_init/bootstrap`: TASK SHA
+  `b4c11e3cf2a8cf3939a88400a2ea157b9d835e52c02aa974494b93b5f1376e45`,
+  BASE5992d48416496020b51dab183982698def65a425;31 wybranych wejść,
+  MANIFEST `fe10e6e2f05022bbe0f699551ff09d9c22c5a00cfea8f6a744d85355d61a8aad`.
+  Poprzednik RO,bez zmiany jego pinów/statusu. Worker nieuruchomiony.
+- Następny krok:właściciel uruchamia Astrę z CURRENT_MATH_TASK; wykonawca
+  przechodzi kolejno A1–A3,właśnie w RUN_002. Bez Git/push po stronie workera.
