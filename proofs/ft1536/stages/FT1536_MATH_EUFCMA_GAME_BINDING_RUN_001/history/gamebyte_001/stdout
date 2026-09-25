@@ -1,0 +1,120 @@
+FT1536/GameByte.lean:44:29: error: Type mismatch
+  LT.lt.le b.isLt
+has type
+  ↑b ≤ 256
+but is expected to have type
+  ↑b ≤ 255
+FT1536/GameByte.lean:45:45: error: Function expected at
+  Nat.pow_pos ?m.49
+but this term has type
+  0 < ?m.47 ^ ?m.48
+
+Note: Expected a function because this term is being applied to the argument
+  rest.length
+FT1536/GameByte.lean:45:58: error: unsolved goals
+b : Byte
+rest : List Byte
+ih : bytesVal rest < 256 ^ rest.length
+hb : ↑b ≤ 255
+⊢ 0 < ?m.47
+FT1536/GameByte.lean:48:6: error: linarith failed to find a contradiction
+b : Byte
+rest : List Byte
+ih : bytesVal rest < 256 ^ rest.length
+hb : ↑b ≤ 255
+hz : 0 < 256 ^ rest.length
+this : bytesVal rest ≤ 256 ^ rest.length
+a✝ : 255 + 256 * (256 ^ rest.length - 1) < ↑b + 256 * bytesVal rest
+⊢ False
+failed
+FT1536/GameByte.lean:50:6: error: linarith failed to find a contradiction
+case h1
+b : Byte
+rest : List Byte
+ih : bytesVal rest < 256 ^ rest.length
+hb : ↑b ≤ 255
+hz : 0 < 256 ^ rest.length
+hstep : ↑b + 256 * bytesVal rest ≤ 255 + 256 * (256 ^ rest.length - 1)
+a✝ : 255 + 256 * (256 ^ rest.length - 1) < 256 * 256 ^ rest.length - 1
+⊢ False
+failed
+FT1536/GameByte.lean:64:15: error: Type mismatch
+  h2
+has type
+  a * (r / a) + r % a = r
+but is expected to have type
+  r / a * a + r % a = r
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+FT1536/GameByte.lean:63:33: error: unsolved goals
+r a b : ℕ
+ha : 0 < a
+hb : 0 < b
+h1 : a * b * (r / (a * b)) + r % (a * b) = r
+h2 : a * (r / a) + r % a = r
+h3 : b * (r / a / b) + r / a % b = r / a
+hassoc : r / (a * b) = r / a / b
+⊢ b * ((b * (r / a / b) + r / a % b) / b) * a + a * ((b * (r / a / b) + r / a % b) % b) + r % a =
+    b * (r / a / b) * a + r / a % b * a + r % a
+FT1536/GameByte.lean:65:38: error: Application type mismatch: The argument
+  Eq.symm deco
+has type
+  r = r / (a * b) * (a * b) + (r % a + a * (r / a % b))
+but is expected to have type
+  r = a * b * (r / (a * b)) + (r % a + a * (r / a % b))
+in the application
+  Eq.trans h1 (Eq.symm deco)
+FT1536/GameByte.lean:69:9: error: unsolved goals
+case zero
+r : ℕ
+⊢ 0 = r % 1
+FT1536/GameByte.lean:80:10: error(lean.unknownIdentifier): Unknown constant `Nat.add_mul_mod_self`
+FT1536/GameByte.lean:92:40: error(lean.unknownIdentifier): Unknown identifier `pow_pow`
+FT1536/GameByte.lean:91:46: error: unsolved goals
+⊢ (2 ^ 8) ^ 40 = 2 ^ 320
+FT1536/GameByte.lean:102:22: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  40
+in the target expression
+  bytesVal l < 2 ^ 320
+
+l : List Byte
+h : l.length = 40
+⊢ bytesVal l < 2 ^ 320
+FT1536/GameByte.lean:107:25: warning: declaration uses `sorry`
+FT1536/GameByte.lean:141:58: error: missing end of character literal
+FT1536/GameByte.lean:141:40: error: Type mismatch
+  nonceBytes p.1
+has type
+  List Byte
+but is expected to have type
+  ℕ
+FT1536/GameByte.lean:141:7: error: Missing cases:
+FT1536/GameByte.lean:138:25: error: unsolved goals
+p p' : Nonce × Message
+h : nonceBytes p.1 ++ p.2 = nonceBytes p'.1 ++ p'.2
+hlen : sorry
+⊢ p = p'
+FT1536/GameByte.lean:181:6: error: Tactic `rfl` failed: The left-hand side
+  NameKind.sign r m
+is not definitionally equal to the right-hand side
+  NameKind.sign r m'
+
+case sign.sign
+r : Nonce
+m m' : Message
+hm : m = m'
+h : nonceBytes r ++ m = nonceBytes r ++ m'
+hlen : (nonceBytes r).length = (nonceBytes r).length
+hf : nonceBytes r = nonceBytes r
+⊢ NameKind.sign r m = NameKind.sign r m'
+FT1536/GameByte.lean:175:25: warning: This simp argument is unused:
+  signName
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [render] at h
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

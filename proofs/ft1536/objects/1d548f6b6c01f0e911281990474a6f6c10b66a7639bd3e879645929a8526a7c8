@@ -1,0 +1,29 @@
+Kontynuuj FT1536_MATH_EUFCMA_MTISIS_RUN_001 według załączonego zlecenia
+FT1536_ZADANIE_EUFCMA_GAME_BINDING_2026-09-23.md.
+
+Cel: INTERACTIVE_GAME_AND_RESOURCE_BINDING — matematyczna redukcja ordinary
+EUF-CMA -> MT-ISIS w klasycznym ROM, dla tej samej Sigma_math E0 /
+coefficient-valued finite-box G16.
+
+Zacznij od weryfikacji zamrożonego poprzednika:
+REPORT SHA256:
+fa6bbac7b379d80c256ceb2875a67106a1d7322d84e7ee0cc6b8bddecec7de9a
+OUTPUTS SHA256:
+a9e3af2ebccc221035024fabc7631fa47a93b841c1611e3e79f28ccf5ee5c98f
+
+Pracuj wyłącznie w NOWYM
+proofs/ft1536/work/FT1536_MATH_EUFCMA_GAME_BINDING_RUN_001/.
+Poprzedni output, źródła i biblioteki pozostają RO. Przeczytaj pełne zlecenie,
+MODEL/NEXT_INTERFACE i typy konsumowanych eksportów, potem wykonaj zadanie.
+
+Nie buduj ponownie rachunku Phi. Zdefiniuj program A, trzy gry i B=reduce(A,S),
+powiąż rzeczywiste prawa z lematami, wyprowadź Q_H+1 celów i najwyżej Q_s
+płatnych przejść, konflikt nonce, ekstrakcję i koszt reduktora.
+Publiczny sampler, jego lokalny certyfikat prawa/kosztu oraz e mogą pozostać
+jawnymi parametrami; nie wymagamy teraz małych strat ani sampler instantiation.
+Globalne powiązania gier i zasobów B nie mogą zostać założone w certyfikacie.
+
+Nie zmieniaj Emit/Verify ani modelu kluczy, nie dodawaj source/QROM/security
+claims. Zachowaj kontrprzykład centrowania. Oddaj dowód na papierze, formalne
+źródła, pełne typy/axioms, piny i fresh replay. Przy realnej luce zachowaj
+PARTIAL_PROOF i wypisz dokładny brakujący typ. Bez Git/push lub zmian innych W.

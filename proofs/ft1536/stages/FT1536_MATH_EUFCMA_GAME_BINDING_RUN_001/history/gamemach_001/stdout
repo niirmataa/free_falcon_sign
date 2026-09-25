@@ -1,0 +1,164 @@
+FT1536/GameMach.lean:103:8: error(lean.unknownIdentifier): Unknown identifier `lookup`
+FT1536/GameMach.lean:106:45: error(lean.invalidField): Invalid field notation: Type of
+  e
+is not known; cannot resolve field `value`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `ForInStep.value`
+  • `Lean.DefinitionVal.value`
+  • `Lean.LeanOption.value`
+  • `Lean.LocalDecl.value`
+  • `Lean.OpaqueVal.value`
+  • `Lean.Ptr.value`
+  • `Lean.TheoremVal.value`
+  • `ROM.Entry.value`
+  • `Lean.Elab.BodyProcessedSnapshot.value`
+  • `Lean.Elab.CustomInfo.value`
+  • `Lean.Elab.DefView.value`
+  • `Lean.Elab.InlayHintLabelPart.value`
+  • `Lean.Elab.PreDefinition.value`
+  • `Lean.KeyedDeclsAttribute.AttributeEntry.value`
+  • `Lean.Lsp.CompletionItemKind.value`
+  • `Lean.Lsp.InlayHintLabelPart.value`
+  • `Lean.Lsp.MarkupContent.value`
+  • `Lean.Lsp.ProgressParams.value`
+  • `Lean.Lsp.SnippetString.value`
+  • `Lean.Meta.Hypothesis.value`
+  • `Lean.Compiler.LCNF.Decl.value`
+  • `Lean.Compiler.LCNF.FunDecl.value`
+  • `Lean.Compiler.LCNF.LetDecl.value`
+  • `Lean.Data.AC.Variable.value`
+  • `Lean.Elab.ConfigEval.ConfigItem.value`
+  • `Lean.Elab.Tactic.ConfigItemView.value`
+  • `Lean.Elab.Term.LetIdDeclView.value`
+  • `Lean.Meta.Closure.MkValueTypeClosureResult.value`
+  • `Mathlib.Tactic.Ring.RatCoeff.value`
+  • `Lean.Meta.Tactic.TryThis.SuggestionStyle.value`
+FT1536/GameMach.lean:128:17: error(lean.unknownIdentifier): Unknown identifier `submit`
+FT1536/GameMach.lean:132:62: error: Application type mismatch: The argument
+  m
+has type
+  Mach C
+but is expected to have type
+  Message
+in the application
+  signName r m
+FT1536/GameMach.lean:148:2: error: No goals to be solved
+FT1536/GameMach.lean:143:0: warning: automatically included section variable(s) unused in theorem `FT1536.GameMach.stepBounded_eq_step_of_within`:
+  [DecidableEq C]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq C] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+FT1536/GameMach.lean:155:2: error: Tactic `split` failed: Could not split an `if` or `match` expression in the goal
+
+Hint: Use `set_option trace.split.failure true` to display additional diagnostic information
+
+C : Type
+inst✝ : DecidableEq C
+mode : Mode
+st : ROM.State NameBody Message C
+r : Nonce
+m : Message
+env : Env C
+⊢ sorry.1.seen = st.seen
+FT1536/GameMach.lean:154:13: warning: declaration uses `sorry`
+FT1536/GameMach.lean:165:58: warning: `if_false` has been deprecated: Use `ite_false` instead
+FT1536/GameMach.lean:165:13: warning: declaration uses `sorry`
+FT1536/GameMach.lean:165:13: warning: declaration uses `sorry`
+FT1536/GameMach.lean:161:8: warning: declaration uses `sorry`
+FT1536/GameMach.lean:165:43: warning: This simp argument is unused:
+  Bool.false_or
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [step, h.1, h.2, Bool.or_self, if_false]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+FT1536/GameMach.lean:165:58: warning: This simp argument is unused:
+  if_false
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [step, h.1, h.2, Bool.or_self, Bool.false_or]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+FT1536/GameMach.lean:167:2: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+FT1536/GameMach.lean:166:2: warning: Unused tactic linter: `rw [signStep_seen]` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+FT1536/GameMach.lean:167:2: warning: Unused tactic linter: `exact submitted_even_on_abort msg m.st` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+FT1536/GameMach.lean:173:8: warning: declaration uses `sorry`
+FT1536/GameMach.lean:173:8: warning: declaration uses `sorry`
+FT1536/GameMach.lean:170:8: warning: declaration uses `sorry`
+FT1536/GameMach.lean:181:24: error: Function expected at
+  submit
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  msg
+
+Hint: The identifier `submit` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+FT1536/GameMach.lean:183:24: error: Function expected at
+  submit
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  msg
+
+Hint: The identifier `submit` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+FT1536/GameMach.lean:184:8: warning: declaration uses `sorry`
+FT1536/GameMach.lean:184:8: warning: declaration uses `sorry`
+FT1536/GameMach.lean:196:20: error: Tactic `rcases` failed: `h : m.stopped = true ∨ m.over = true → False` is not an inductive datatype
+FT1536/GameMach.lean:197:26: warning: `if_false` has been deprecated: Use `ite_false` instead
+FT1536/GameMach.lean:197:15: warning: declaration uses `sorry`
+FT1536/GameMach.lean:197:15: warning: declaration uses `sorry`
+FT1536/GameMach.lean:195:34: warning: This simp argument is unused:
+  Bool.not_or
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Bool.or_eq_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+FT1536/GameMach.lean:197:26: warning: This simp argument is unused:
+  if_false
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [step, hne]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+FT1536/GameMach.lean:216:2: error: Tactic `split` failed: Could not split an `if` or `match` expression in the goal
+
+Hint: Use `set_option trace.split.failure true` to display additional diagnostic information
+
+C : Type
+inst✝ : DecidableEq C
+mode : Mode
+st : ROM.State NameBody Message C
+r : Nonce
+m : Message
+env : Env C
+⊢ sorry.1.table.length ≤ st.table.length + 1
+FT1536/GameMach.lean:215:13: warning: declaration uses `sorry`
+FT1536/GameMach.lean:228:58: warning: `if_false` has been deprecated: Use `ite_false` instead
+FT1536/GameMach.lean:231:4: error: `simp` made no progress
+FT1536/GameMach.lean:228:13: warning: declaration uses `sorry`
+FT1536/GameMach.lean:228:13: warning: declaration uses `sorry`
+FT1536/GameMach.lean:228:43: warning: This simp argument is unused:
+  Bool.false_or
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [step, h.1, h.2, Bool.or_self, if_false] at hv
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+FT1536/GameMach.lean:228:58: warning: This simp argument is unused:
+  if_false
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [step, h.1, h.2, Bool.or_self, Bool.false_or] at hv
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

@@ -1,0 +1,9 @@
+FT1536/GameMach.lean:263:4: error: Type mismatch
+  hv'.left
+has type
+  msg ∉ (ROM.hash targets (tableAddr (signName r msg)) m.st).2.seen ∧
+    verdict (ROM.hash targets (tableAddr (signName r msg)) m.st).1 msg (sigVec sg) = true
+but is expected to have type
+  (decide (msg ∉ (ROM.hash targets (tableAddr (signName r msg)) m.st).2.seen) &&
+      verdict (ROM.hash targets (tableAddr (signName r msg)) m.st).1 msg (sigVec sg)) =
+    true

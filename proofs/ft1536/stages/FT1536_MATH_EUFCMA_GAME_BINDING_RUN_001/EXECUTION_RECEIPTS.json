@@ -1,0 +1,18 @@
+{
+  "schema": "FT1536_GAME_BINDING_EXECUTION_RECEIPTS_V1",
+  "fresh_replay": {"status": "PASS", "jobs": 24, "exit0": 24, "manifest_members": 30,
+    "library_modules": 3456, "library_artifacts": 17280,
+    "products_matched": "3/3 (predeclared EXPECTED)", "exports_audited": 201,
+    "own_cache_fresh": true, "network": "bwrap --unshare-net",
+    "dest": "run/replays/replay_001 (durable, outside bundle and repo)",
+    "replay_seed_pin": "6e6c8bf4cb949eb7164168a76bf5a7eac7ef91dc6e0d4e0e747bd818ed99e99a"},
+  "negative_driver_guards": {"status": "PASS", "passed": 7, "total": 7,
+    "controls": ["correct_noop_passes", "wrong_external_pin", "modified_member",
+                 "incomplete_manifest", "existing_dest", "disallowed_path_tmp",
+                 "disallowed_path_repo"]},
+  "sage_controls": {"status": "PASS", "invocation": "sage check_games.sage",
+    "negative_semantics_controls": "8/8", "mode": "SageMath 10.9 preparser, ZZ/QQ, RBF256"},
+  "development_trials_preserved": "history/ (13 Lean attempts incl. failures, 7 sage runs, 3 full builds)",
+  "jobs_running_at_freeze": false,
+  "note": "Author's own replay and controls, not an independent review."
+}

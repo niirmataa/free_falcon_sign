@@ -1,0 +1,9 @@
+FT1536/GameMach.lean:262:4: error: Type mismatch: After simplification, term
+  hv
+ has type
+  (msg ∉ (ROM.hash targets (tableAddr (signName r msg)) m.st).2.seen ∧
+      verdict (ROM.hash targets (tableAddr (signName r msg)) m.st).1 msg (sigVec sg) = true) ∧
+    (ROM.hash targets (tableAddr (signName r msg)) m.st).1 = cv
+but is expected to have type
+  msg ∉ (ROM.hash targets (tableAddr (signName r msg)) m.st).2.seen ∧
+    verdict (ROM.hash targets (tableAddr (signName r msg)) m.st).1 msg (sigVec sg) = true

@@ -1,0 +1,190 @@
+FT1536/PaidSteps.lean:45:75: error: unsolved goals
+paid : ℕ → Prop
+inst✝ : DecidablePred paid
+n : ℕ
+⊢ #({x ∈ range (n + 1) | paid x}) = #({x ∈ range n | paid x}) + if paid n then 1 else 0
+FT1536/PaidSteps.lean:46:19: warning: This simp argument is unused:
+  sum_range_succ
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [countPaid]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+FT1536/PaidSteps.lean:64:9: error: unsolved goals
+case zero
+α : Type
+inst✝¹ : Fintype α
+j p : (n : ℕ) → Hist α n → Law α
+paid : ℕ → Prop
+inst✝ : DecidablePred paid
+e : ℝ
+he : 0 ≤ e
+hshared : ∀ (i : ℕ) (x : Hist α i), ¬paid i → j i x = p i x
+hpaid : ∀ (i : ℕ) (x : Hist α i), paid i → second (j i x) (p i x) ≤ 1 + e
+h1 : second (transcript j 0) (transcript p 0) = 1
+⊢ 1 ≤ (1 + e) ^ 0
+FT1536/PaidSteps.lean:88:8: error: Type mismatch
+  mul_le_mul_of_nonneg_right ih
+    (le_of_not_gt fun a =>
+      Mathlib.Tactic.Linarith.lt_irrefl
+        (Eq.mp
+          (congrArg (fun _a => _a < 0)
+            (Mathlib.Tactic.Ring.of_eq
+              (Mathlib.Tactic.Ring.Common.add_congr
+                (Mathlib.Tactic.Ring.Common.add_congr
+                  (Mathlib.Tactic.Ring.Common.add_congr
+                    (Mathlib.Tactic.Ring.Common.neg_congr
+                      (Mathlib.Tactic.Ring.cast_pos (Mathlib.Meta.NormNum.isNat_ofNat ℝ Nat.cast_one))
+                      (Mathlib.Tactic.Ring.Common.neg_add
+                        (Mathlib.Meta.NormNum.IsInt.to_raw_eq
+                          (Mathlib.Meta.NormNum.isInt_neg (Eq.refl Neg.neg)
+                            (Mathlib.Meta.NormNum.IsNat.to_isInt (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 1))
+                            (Eq.refl (Int.negOfNat 1))))
+                        Mathlib.Tactic.Ring.Common.neg_zero))
+                    (Mathlib.Tactic.Ring.Common.sub_congr
+                      (Mathlib.Tactic.Ring.cast_zero (Mathlib.Meta.NormNum.isNat_ofNat ℝ Nat.cast_zero))
+                      (Mathlib.Tactic.Ring.Common.atom_pf e rfl
+                        (Eq.mpr
+                          (id
+                            (congrArg (fun _a => e ^ Nat.rawCast 1 * Nat.rawCast 1 = e ^ Nat.rawCast 1 * _a)
+                              (Eq.symm rfl)))
+                          (Eq.refl (e ^ Nat.rawCast 1 * Nat.rawCast 1))))
+                      (Mathlib.Tactic.Ring.Common.sub_pf
+                        (Mathlib.Tactic.Ring.Common.neg_add
+                          (Mathlib.Tactic.Ring.Common.neg_mul e (Nat.rawCast 1)
+                            (Mathlib.Meta.NormNum.IsInt.to_raw_eq
+                              (Mathlib.Meta.NormNum.isInt_neg (Eq.refl Neg.neg)
+                                (Mathlib.Meta.NormNum.IsNat.to_isInt (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 1))
+                                (Eq.refl (Int.negOfNat 1)))))
+                          Mathlib.Tactic.Ring.Common.neg_zero)
+                        (Mathlib.Tactic.Ring.Common.add_pf_zero_add
+                          (e ^ Nat.rawCast 1 * (Int.negOfNat 1).rawCast + 0))))
+                    (Mathlib.Tactic.Ring.Common.add_pf_add_lt (Int.negOfNat 1).rawCast
+                      (Mathlib.Tactic.Ring.Common.add_pf_zero_add (e ^ Nat.rawCast 1 * (Int.negOfNat 1).rawCast + 0))))
+                  (Mathlib.Tactic.Ring.Common.neg_congr
+                    (Mathlib.Tactic.Ring.Common.sub_congr
+                      (Mathlib.Tactic.Ring.Common.atom_pf (if paid n then 1 + e else 1) rfl
+                        (Eq.mpr
+                          (id
+                            (congrArg
+                              (fun _a =>
+                                (if paid n then 1 + e else 1) ^ Nat.rawCast 1 * Nat.rawCast 1 =
+                                  (if paid n then 1 + e else 1) ^ Nat.rawCast 1 * _a)
+                              (Eq.symm rfl)))
+                          (Eq.refl ((if paid n then 1 + e else 1) ^ Nat.rawCast 1 * Nat.rawCast 1))))
+                      (Mathlib.Tactic.Ring.Common.add_congr
+                        (Mathlib.Tactic.Ring.cast_pos (Mathlib.Meta.NormNum.isNat_ofNat ℝ Nat.cast_one))
+                        (Mathlib.Tactic.Ring.Common.atom_pf e rfl
+                          (Eq.mpr
+                            (id
+                              (congrArg (fun _a => e ^ Nat.rawCast 1 * Nat.rawCast 1 = e ^ Nat.rawCast 1 * _a)
+                                (Eq.symm rfl)))
+                            (Eq.refl (e ^ Nat.rawCast 1 * Nat.rawCast 1))))
+                        (Mathlib.Tactic.Ring.Common.add_pf_add_lt (Nat.rawCast 1)
+                          (Mathlib.Tactic.Ring.Common.add_pf_zero_add (e ^ Nat.rawCast 1 * Nat.rawCast 1 + 0))))
+                      (Mathlib.Tactic.Ring.Common.sub_pf
+                        (Mathlib.Tactic.Ring.Common.neg_add
+                          (Mathlib.Meta.NormNum.IsInt.to_raw_eq
+                            (Mathlib.Meta.NormNum.isInt_neg (Eq.refl Neg.neg)
+                              (Mathlib.Meta.NormNum.IsNat.to_isInt (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 1))
+                              (Eq.refl (Int.negOfNat 1))))
+                          (Mathlib.Tactic.Ring.Common.neg_add
+                            (Mathlib.Tactic.Ring.Common.neg_mul e (Nat.rawCast 1)
+                              (Mathlib.Meta.NormNum.IsInt.to_raw_eq
+                                (Mathlib.Meta.NormNum.isInt_neg (Eq.refl Neg.neg)
+                                  (Mathlib.Meta.NormNum.IsNat.to_isInt (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 1))
+                                  (Eq.refl (Int.negOfNat 1)))))
+                            Mathlib.Tactic.Ring.Common.neg_zero))
+                        (Mathlib.Tactic.Ring.Common.add_pf_add_gt (Int.negOfNat 1).rawCast
+                          (Mathlib.Tactic.Ring.Common.add_pf_add_gt (e ^ Nat.rawCast 1 * (Int.negOfNat 1).rawCast)
+                            (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                              ((if paid n then 1 + e else 1) ^ Nat.rawCast 1 * Nat.rawCast 1 + 0))))))
+                    (Mathlib.Tactic.Ring.Common.neg_add
+                      (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                        (Mathlib.Meta.NormNum.IsInt.to_isNat
+                          (Mathlib.Meta.NormNum.isInt_neg (Eq.refl Neg.neg)
+                            (Mathlib.Meta.NormNum.IsInt.of_raw ℝ (Int.negOfNat 1)) (Eq.refl (Int.ofNat 1)))))
+                      (Mathlib.Tactic.Ring.Common.neg_add
+                        (Mathlib.Tactic.Ring.Common.neg_mul e (Nat.rawCast 1)
+                          (Mathlib.Meta.NormNum.IsNat.to_raw_eq
+                            (Mathlib.Meta.NormNum.IsInt.to_isNat
+                              (Mathlib.Meta.NormNum.isInt_neg (Eq.refl Neg.neg)
+                                (Mathlib.Meta.NormNum.IsInt.of_raw ℝ (Int.negOfNat 1)) (Eq.refl (Int.ofNat 1))))))
+                        (Mathlib.Tactic.Ring.Common.neg_add
+                          (Mathlib.Tactic.Ring.Common.neg_mul (if paid n then 1 + e else 1) (Nat.rawCast 1)
+                            (Mathlib.Meta.NormNum.IsInt.to_raw_eq
+                              (Mathlib.Meta.NormNum.isInt_neg (Eq.refl Neg.neg)
+                                (Mathlib.Meta.NormNum.IsNat.to_isInt (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 1))
+                                (Eq.refl (Int.negOfNat 1)))))
+                          Mathlib.Tactic.Ring.Common.neg_zero))))
+                  (Mathlib.Tactic.Ring.Common.add_pf_add_overlap_zero
+                    (Mathlib.Meta.NormNum.IsInt.to_isNat
+                      (Mathlib.Meta.NormNum.isInt_add (Eq.refl HAdd.hAdd)
+                        (Mathlib.Meta.NormNum.IsInt.of_raw ℝ (Int.negOfNat 1))
+                        (Mathlib.Meta.NormNum.IsNat.to_isInt (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 1))
+                        (Eq.refl (Int.ofNat 0))))
+                    (Mathlib.Tactic.Ring.Common.add_pf_add_overlap_zero
+                      (Mathlib.Tactic.Ring.Common.add_overlap_pf_zero e (Nat.rawCast 1)
+                        (Mathlib.Meta.NormNum.IsInt.to_isNat
+                          (Mathlib.Meta.NormNum.isInt_add (Eq.refl HAdd.hAdd)
+                            (Mathlib.Meta.NormNum.IsInt.of_raw ℝ (Int.negOfNat 1))
+                            (Mathlib.Meta.NormNum.IsNat.to_isInt (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 1))
+                            (Eq.refl (Int.ofNat 0)))))
+                      (Mathlib.Tactic.Ring.Common.add_pf_zero_add
+                        ((if paid n then 1 + e else 1) ^ Nat.rawCast 1 * (Int.negOfNat 1).rawCast + 0)))))
+                (Mathlib.Tactic.Ring.Common.sub_congr
+                  (Mathlib.Tactic.Ring.Common.atom_pf (if paid n then 1 + e else 1) rfl
+                    (Eq.mpr
+                      (id
+                        (congrArg
+                          (fun _a =>
+                            (if paid n then 1 + e else 1) ^ Nat.rawCast 1 * Nat.rawCast 1 =
+                              (if paid n then 1 + e else 1) ^ Nat.rawCast 1 * _a)
+                          (Eq.symm rfl)))
+                      (Eq.refl ((if paid n then 1 + e else 1) ^ Nat.rawCast 1 * Nat.rawCast 1))))
+                  (Mathlib.Tactic.Ring.cast_zero (Mathlib.Meta.NormNum.isNat_ofNat ℝ Nat.cast_zero))
+                  (Mathlib.Tactic.Ring.Common.sub_pf Mathlib.Tactic.Ring.Common.neg_zero
+                    (Mathlib.Tactic.Ring.Common.add_pf_add_zero
+                      ((if paid n then 1 + e else 1) ^ Nat.rawCast 1 * Nat.rawCast 1 + 0))))
+                (Mathlib.Tactic.Ring.Common.add_pf_add_overlap_zero
+                  (Mathlib.Tactic.Ring.Common.add_overlap_pf_zero (if paid n then 1 + e else 1) (Nat.rawCast 1)
+                    (Mathlib.Meta.NormNum.IsInt.to_isNat
+                      (Mathlib.Meta.NormNum.isInt_add (Eq.refl HAdd.hAdd)
+                        (Mathlib.Meta.NormNum.IsInt.of_raw ℝ (Int.negOfNat 1))
+                        (Mathlib.Meta.NormNum.IsNat.to_isInt (Mathlib.Meta.NormNum.IsNat.of_raw ℝ 1))
+                        (Eq.refl (Int.ofNat 0)))))
+                  (Mathlib.Tactic.Ring.Common.add_pf_zero_add 0)))
+              (Mathlib.Tactic.Ring.cast_zero (Mathlib.Meta.NormNum.isNat_ofNat ℝ Nat.cast_zero))))
+          (Mathlib.Tactic.Linarith.add_neg
+            (Mathlib.Tactic.Linarith.lt_of_lt_of_eq
+              (Mathlib.Tactic.Linarith.add_lt_of_neg_of_le (neg_neg_of_pos Mathlib.Tactic.Linarith.zero_lt_one)
+                (Mathlib.Tactic.Linarith.sub_nonpos_of_le he))
+              (neg_eq_zero.mpr (sub_eq_zero_of_eq hif)))
+            (Mathlib.Tactic.Linarith.sub_neg_of_lt a))))
+has type
+  (second (transcript j n) (transcript p n) * if paid n then 1 + e else 1) ≤
+    (1 + e) ^ countPaid paid n * if paid n then 1 + e else 1
+but is expected to have type
+  second (transcript j n) (transcript p n) * (1 + e) ≤ (1 + e) * (1 + e) ^ countPaid paid n
+FT1536/PaidSteps.lean:106:30: error: linarith failed to find a contradiction
+α : Type
+inst✝¹ : Fintype α
+j p : (n : ℕ) → Hist α n → Law α
+paid : ℕ → Prop
+inst✝ : DecidablePred paid
+e : ℝ
+he : 0 ≤ e
+Qs : ℕ
+hshared : ∀ (i : ℕ) (x : Hist α i), ¬paid i → j i x = p i x
+hpaid : ∀ (i : ℕ) (x : Hist α i), paid i → second (j i x) (p i x) ≤ 1 + e
+hcount : ∀ (n : ℕ), countPaid paid n ≤ Qs
+n : ℕ
+a✝ : ?m.53 ≤ 1
+⊢ False
+failed
+FT1536/PaidSteps.lean:170:9: error(lean.unknownIdentifier): Unknown identifier `GameNames.pair_framing`
+FT1536/PaidSteps.lean:182:65: error: not a positivity goal
+FT1536/PaidSteps.lean:182:8: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  GroupWithZero ℕ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.

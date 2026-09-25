@@ -1,0 +1,86 @@
+FT1536/GameMach.lean:155:6: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+FT1536/GameMach.lean:140:0: warning: automatically included section variable(s) unused in theorem `FT1536.GameMach.step_eq`:
+  [DecidableEq C]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq C] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+FT1536/GameMach.lean:170:6: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+FT1536/GameMach.lean:171:4: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case hnc
+C : Type
+b : Budget
+targets : ℕ → C
+verdict : Verdict C
+m : Mach C
+op : Op
+env : Env C
+h : m.hq ≤ b.QH ∧ m.sq ≤ b.Qs ∧ m.hq + m.sq < b.maxSteps
+⊢ ¬(b.QH < m.hq ∨ b.Qs < m.sq ∨ b.maxSteps ≤ m.hq + m.sq)
+FT1536/GameMach.lean:172:2: error: No goals to be solved
+FT1536/GameMach.lean:176:0: warning: automatically included section variable(s) unused in theorem `FT1536.GameMach.signStep_seen`:
+  [DecidableEq C]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq C] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+FT1536/GameMach.lean:200:6: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+FT1536/GameMach.lean:196:0: warning: automatically included section variable(s) unused in theorem `FT1536.GameMach.stopped_absorbing`:
+  [DecidableEq C]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq C] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+FT1536/GameMach.lean:211:69: error: unsolved goals
+C : Type
+inst✝ : DecidableEq C
+targets : ℕ → C
+verdict : Verdict C
+m : Mach C
+msg : Message
+env : Env C
+h : m.stopped = false ∧ m.over = false
+⊢ (match Op.sq msg with
+        | Op.hq k =>
+          ({ st := (ROM.hash targets (tableAddr (render k)) m.st).2, mode := m.mode, stopped := m.stopped,
+              over := m.over, hq := m.hq + 1, sq := m.sq },
+            Reply.hval (ROM.hash targets (tableAddr (render k)) m.st).1)
+        | Op.sq msg =>
+          have ss := signStep m.mode (ROM.submit msg m.st) env.nonce msg env;
+          ({ st := ss.1, mode := m.mode, stopped := ss.2.2, over := m.over, hq := m.hq, sq := m.sq + 1 }, ss.2.1)
+        | Op.fin r msg sg =>
+          ({ st := (ROM.hash targets (tableAddr (signName r msg)) m.st).2, mode := m.mode, stopped := m.stopped,
+              over := true, hq := m.hq, sq := m.sq },
+            Reply.verdict
+              (decide (msg ∉ (ROM.hash targets (tableAddr (signName r msg)) m.st).2.seen) &&
+                verdict (ROM.hash targets (tableAddr (signName r msg)) m.st).1 msg (sigVec sg)))).2 =
+      (signStep m.mode (ROM.submit msg m.st) env.nonce msg env).2.1 ∧
+    (match Op.sq msg with
+          | Op.hq k =>
+            ({ st := (ROM.hash targets (tableAddr (render k)) m.st).2, mode := m.mode, stopped := m.stopped,
+                over := m.over, hq := m.hq + 1, sq := m.sq },
+              Reply.hval (ROM.hash targets (tableAddr (render k)) m.st).1)
+          | Op.sq msg =>
+            have ss := signStep m.mode (ROM.submit msg m.st) env.nonce msg env;
+            ({ st := ss.1, mode := m.mode, stopped := ss.2.2, over := m.over, hq := m.hq, sq := m.sq + 1 }, ss.2.1)
+          | Op.fin r msg sg =>
+            ({ st := (ROM.hash targets (tableAddr (signName r msg)) m.st).2, mode := m.mode, stopped := m.stopped,
+                over := true, hq := m.hq, sq := m.sq },
+              Reply.verdict
+                (decide (msg ∉ (ROM.hash targets (tableAddr (signName r msg)) m.st).2.seen) &&
+                  verdict (ROM.hash targets (tableAddr (signName r msg)) m.st).1 msg (sigVec sg)))).1.st =
+      (signStep m.mode (ROM.submit msg m.st) env.nonce msg env).1
+FT1536/GameMach.lean:223:6: error: `simp` made no progress
+FT1536/GameMach.lean:230:71: error(lean.invalidField): Invalid field `st`: The environment does not contain `FT1536.ROM.State.st`, so it is not possible to project the field `st` from an expression
+  (signStep m.mode (ROM.submit msg m.st) env.nonce msg env).1
+of type `ROM.State NameBody Message C`
+FT1536/GameMach.lean:236:0: warning: automatically included section variable(s) unused in theorem `FT1536.GameMach.signStep_table`:
+  [DecidableEq C]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq C] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+FT1536/GameMach.lean:256:27: error(lean.unknownIdentifier): Unknown constant `Bool.and_eq_true.mp`

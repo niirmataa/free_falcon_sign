@@ -1,0 +1,22 @@
+FT1536/PaidSteps.lean:108:30: error: linarith failed to find a contradiction
+α : Type
+inst✝¹ : Fintype α
+j p : (n : ℕ) → Hist α n → Law α
+paid : ℕ → Prop
+inst✝ : DecidablePred paid
+e : ℝ
+he : 0 ≤ e
+Qs : ℕ
+hshared : ∀ (i : ℕ) (x : Hist α i), ¬paid i → j i x = p i x
+hpaid : ∀ (i : ℕ) (x : Hist α i), paid i → second (j i x) (p i x) ≤ 1 + e
+hcount : ∀ (n : ℕ), countPaid paid n ≤ Qs
+n : ℕ
+a✝ : ?m.53 ≤ 1
+⊢ False
+failed
+FT1536/PaidSteps.lean:172:9: error(lean.unknownIdentifier): Unknown identifier `GameNames.pair_framing`
+FT1536/PaidSteps.lean:184:65: error: not a positivity goal
+FT1536/PaidSteps.lean:184:8: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  GroupWithZero ℕ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.

@@ -330,3 +330,30 @@ w historii. Następny krok po zakończeniu: ocena wyniku i checkpoint przy PASS.
   bit-cost, sampler publiczny, małe błędy; kontrprzykład centrowania zachowany.
   Nazwa REPLAY_SEED.sha256 rozliczona wyjątkiem z wpisu poprzedniego.
 - Następny krok: checkpoint A2 v2.1 (errata RESULT.json), potem A5.
+
+## 2026-09-25T21:38:39Z — checkpoint FT1536_MATH_EUFCMA_GAME_BINDING_RUN_001 (v2.1 errata)
+
+- STOP-and-report: zamrożony RESULT.json freezu v2 (/Obrazy, OUTPUTS
+  cc01337d093029458d07946088066b1ffeae93ac59a0896b8e26968d8c215269) był
+  niepoprawnym JSON-em: jeden surowy backslash w stringu (wiersz 46 kol. 170,
+  sekwencja \  w „build /\ AdvEUF<=”). Bajty v2 zgodne z pinem — wada pakietu
+  autora. Decyzja właściciela: errata v2.1 z nowymi pinami; v2/v1 zostają
+  historią (rozliczenie w ERRATA.md w pakiecie).
+- v2.1 = kopia v2 + 1 bajt (escape backslasha w tym stringu; treść po
+  parsowaniu identyczna) + ERRATA.md (295 członków). Piny v2.1: OUTPUTS
+  c80b3e542288fe22f60cdb8d8d14465a1c41695cba923b3c87b68b6ac2581a10,
+  REPORT e593d91ed0e827bd240a145a31d2767407c4ea55eafd34e9a07252b49cd10d7c
+  (bez zmian), RESULT.json d603455d6c7716bb27c7d6776d80b7af14a426ca0558d7562e4af1bf9058798f.
+- Import: 295 członków, 6 wejść bootstrapu zlecenia (origin rozliczony przez
+  shim hash-zgodny z INPUTS), integrity PASS, status PARTIAL_PROOF (bez zmian).
+  replay=none dispatcher archive.py (własny tools/replay.py autora; jego świeży
+  replay 32/32 + 3/3 + guards 7/7 jest w OUTPUTS).
+- Zakres (claim autora, bez podbijania): 9 domkniętych typów wiążących kernelowo
+  (one_key_lift, lazy_sampling_refinement, game_kernel_identification,
+  adversary_fold_paid_flag_binding+PathCounter, cost_interpreter,
+  cost_composition, reducer_bit_cost_bound, hist_extraction_implication
+  Win→MT, collision core kernelOf_halt_mass ≤ K/2^320); audyt 289 eksportów.
+  Niezależny odbiór: BRAK. Resztki badAt_ordinal_union_bound i
+  end_to_end_assembled_theorem_statement v2 rozlicza jako DISCHARGED przez
+  RUN_002 (ich StoppingLoss/ConcreteReduction) — to claim autora v2, nie odbiór.
+- Następny krok: checkpoint A5 CENTERING_CLOSURE.

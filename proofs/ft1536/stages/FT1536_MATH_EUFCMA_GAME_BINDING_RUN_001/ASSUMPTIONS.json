@@ -1,0 +1,40 @@
+{
+  "schema": "FT1536_GAME_BINDING_ASSUMPTIONS_V1",
+  "status": "PARTIAL_PROOF",
+  "target_axioms_added": false,
+  "allowed_kernel_axioms": ["propext", "Classical.choice", "Quot.sound"],
+  "parameters_of_the_conditional_statement": [
+    "normalized one-shot muKey with public marginal muH (never uniform)",
+    "local full joint law certificate of one fresh S.run call: AC(J_S, P) and second(J_S, P) <= 1+e on the full (c,o) pair incl. POST_ABORT",
+    "local bit-cost certificates of A and of S.run (metatheorem premises about those programs only)",
+    "explicit adversary budget beta; alphabets follow from budgets",
+    "separate MT-ISIS hardness at (muH, Q_H+1 targets, certified resources)"
+  ],
+  "proved_in_this_run": [
+    "byte/name bijections and collision/truncation freeness",
+    "one interpreter for the three games; atomic Sign; SeenSign on aborts; internal absorbing STOP; budget transparency within budget",
+    "target discipline: cached H and Sign consume none, final fresh name at most one",
+    "second p p = 1 and the paid-step counter lemma second <= (1+e)^(#paid)",
+    "event transfer and the clipped min 1 (eps + Phi((1+e)^Q_s-1, b)) shape",
+    "per-call nonce conflict risk from real table sizes and the exact eps_coll sum",
+    "verdict freshness; inherited indexed extraction connects accepted forgeries to ShortPreimage at the exact target index"
+  ],
+  "uninstantiated_or_open": [
+    "game_kernel_identification (Hist kernels = interpreter laws incl. one-key muKey integration)",
+    "lazy_sampling_refinement (input target vector = sequential draws = lazy oracle at the law level)",
+    "one_key_lift (latent sk/h integration)",
+    "reducer_bit_cost_bound (typed cost interpreter and composition)",
+    "efficient public sampler with cost/law certificate; small e_img/e_sign",
+    "finite-box G16 to full M0, byte codec/Verify and C/PRNG/H2P bridges",
+    "MT-ISIS hardness at the correct key distribution (explicitly separate hypothesis)"
+  ],
+  "numeric_security_parameters_selected": false,
+  "historical_scalar_bound_reversed": false,
+  "uniform_public_key_assumed": false,
+  "global_transcript_chi2_assumed": false,
+  "extraction_success_assumed": false,
+  "resources_bound_assumed": false,
+  "final_inequality_assumed": false,
+  "owner_accepted": false,
+  "independently_reviewed": false
+}

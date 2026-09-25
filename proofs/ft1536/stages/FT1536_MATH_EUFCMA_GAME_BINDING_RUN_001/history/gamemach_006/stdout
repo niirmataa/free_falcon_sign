@@ -1,0 +1,18 @@
+FT1536/GameMach.lean:262:16: error: unexpected token 'using'; expected ')', ',' or ':'
+FT1536/GameMach.lean:258:73: error: unsolved goals
+C : Type
+targets : ℕ → C
+verdict : Verdict C
+m : Mach C
+r : Nonce
+msg : Message
+sg : BoxVec
+env : Env C
+h : m.stopped = false ∧ m.over = false
+cv : C
+hv : (step targets verdict m (Op.fin r msg sg) env).2 = Reply.verdict true cv
+hv2 :
+  (decide (msg ∉ (ROM.hash targets (tableAddr (signName r msg)) m.st).2.seen) &&
+      verdict (ROM.hash targets (tableAddr (signName r msg)) m.st).1 msg (sigVec sg)) =
+    true
+⊢ msg ∉ (ROM.hash targets (tableAddr (signName r msg)) m.st).2.seen

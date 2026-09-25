@@ -1,0 +1,15 @@
+FT1536/GameNames.lean:169:45: error: don't know how to synthesize placeholder for argument `h`
+context:
+r : Nonce
+m : Message
+hlen : 40 ≤ List.length (signName r m)
+ht : List.take 40 (signName r m) = nonceBytes r
+hd : List.drop 40 (signName r m) = m
+⊢ (List.take 40 (signName r m)).length = 40
+FT1536/GameNames.lean:158:49: error: unsolved goals
+r : Nonce
+m : Message
+hlen : 40 ≤ List.length (signName r m)
+ht : List.take 40 (signName r m) = nonceBytes r
+hd : List.drop 40 (signName r m) = m
+⊢ embedName (NameKind.sign (nonceOf (List.take 40 (signName r m)) ⋯) (List.drop 40 (signName r m))) = (Sum.inr r, m)

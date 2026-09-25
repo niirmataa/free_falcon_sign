@@ -1,0 +1,30 @@
+FT1536/GameNames.lean:50:2: error: unsolved goals
+case pos
+n : Name
+h : List.length n < 40
+⊢ render (NameKind.short n h) = n
+FT1536/GameNames.lean:166:11: error: Function expected at
+  List.take_left
+but this term has type
+  List.take (List.length ?m.62) (?m.62 ++ ?m.63) = ?m.62
+
+Note: Expected a function because this term is being applied to the argument
+  (nonceBytes r)
+FT1536/GameNames.lean:166:44: error: Function expected at
+  List.drop_left
+but this term has type
+  List.drop (List.length ?m.66) (?m.66 ++ ?m.67) = ?m.67
+
+Note: Expected a function because this term is being applied to the argument
+  (nonceBytes r)
+FT1536/GameNames.lean:157:49: error: unsolved goals
+r : Nonce
+m : Message
+hlen : 40 ≤ List.length (signName r m)
+ht : List.take 40 (signName r m) = nonceBytes r
+hd : List.drop 40 (signName r m) = m
+⊢ embedName (NameKind.sign (nonceOf (List.take 40 (signName r m)) ⋯) (List.drop 40 (signName r m))) = (Sum.inr r, m)
+FT1536/GameNames.lean:175:55: error: unsolved goals
+b : Name
+hb : List.length b < 40
+⊢ embedName (NameKind.short b hb) = (Sum.inl ⟨b, hb⟩, [])

@@ -1,0 +1,23 @@
+FT1536/GameNames.lean:32:2: error: No goals to be solved
+FT1536/GameNames.lean:49:2: error: Type mismatch
+  bytesLE_bytesVal (List.take 40 l)
+has type
+  bytesLE (bytesVal (List.take 40 l)) (List.take 40 l).length = List.take 40 l
+but is expected to have type
+  bytesLE (bytesVal (List.take (List.take 40 l).length l)) (List.take 40 l).length = List.take (List.take 40 l).length l
+FT1536/GameNames.lean:185:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  40
+in the target expression
+  List.take (nonceBytes r).length (nonceBytes r ++ m) = nonceBytes r
+
+r : Nonce
+m : Message
+⊢ List.take (nonceBytes r).length (nonceBytes r ++ m) = nonceBytes r
+FT1536/GameNames.lean:191:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  40
+in the target expression
+  List.drop (nonceBytes r).length (nonceBytes r ++ m) = m
+
+r : Nonce
+m : Message
+⊢ List.drop (nonceBytes r).length (nonceBytes r ++ m) = m

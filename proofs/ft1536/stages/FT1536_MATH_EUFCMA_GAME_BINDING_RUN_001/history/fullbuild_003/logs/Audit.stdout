@@ -1,0 +1,1006 @@
+@FT1536.Law.event_nonneg.{u_1} : ∀ {α : Type u_1} [inst : Fintype.{u_1} α] (p : FT1536.Law.{u_1} α) (E : α → Prop)
+  [inst_1 : DecidablePred.{u_1 + 1} E], LE.le.{0} 0 (FT1536.Law.event.{u_1} p E)
+'FT1536.Law.event_nonneg' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.Law.event_le_one.{u_1} : ∀ {α : Type u_1} [inst : Fintype.{u_1} α] (p : FT1536.Law.{u_1} α) (E : α → Prop)
+  [inst_1 : DecidablePred.{u_1 + 1} E], LE.le.{0} (FT1536.Law.event.{u_1} p E) 1
+'FT1536.Law.event_le_one' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.Law.event_mono.{u_1} : ∀ {α : Type u_1} [inst : Fintype.{u_1} α] (p : FT1536.Law.{u_1} α) (E F : α → Prop)
+  [inst_1 : DecidablePred.{u_1 + 1} E] [inst_2 : DecidablePred.{u_1 + 1} F],
+  (∀ (x : α), E x → F x) → LE.le.{0} (FT1536.Law.event.{u_1} p E) (FT1536.Law.event.{u_1} p F)
+'FT1536.Law.event_mono' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.Law.remove_bad_bound.{u_1} : ∀ {α : Type u_1} [inst : Fintype.{u_1} α] (p : FT1536.Law.{u_1} α)
+  (Win Bad : α → Prop) [inst_1 : DecidablePred.{u_1 + 1} Win] [inst_2 : DecidablePred.{u_1 + 1} Bad],
+  LE.le.{0} (FT1536.Law.event.{u_1} p Win)
+    (HAdd.hAdd.{0, 0, 0} (FT1536.Law.event.{u_1} p fun x => Win x ∧ ¬Bad x) (FT1536.Law.event.{u_1} p Bad))
+'FT1536.Law.remove_bad_bound' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.MathSign.cap_none.{u_1} : ∀ {α : Type u_1} [inst : Fintype.{u_1} α] [inst_1 : DecidableEq.{u_1 + 1} α]
+  (trial : FT1536.Law.{u_1} (Option.{u_1} α)) (n : ℕ),
+  Eq.{1} (FT1536.Law.mass.{u_1} (FT1536.MathSign.cap.{u_1} trial n) none.{u_1})
+    (HPow.hPow.{0, 0, 0} (FT1536.Law.mass.{u_1} trial none.{u_1}) n)
+'FT1536.MathSign.cap_none' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.MathSign.cap_some.{u_1} : ∀ {α : Type u_1} [inst : Fintype.{u_1} α] [inst_1 : DecidableEq.{u_1 + 1} α]
+  (trial : FT1536.Law.{u_1} (Option.{u_1} α)) (n : ℕ) (x : α),
+  Eq.{1} (FT1536.Law.mass.{u_1} (FT1536.MathSign.cap.{u_1} trial n) (some.{u_1} x))
+    (HMul.hMul.{0, 0, 0} (∑ i ∈ Finset.range n, HPow.hPow.{0, 0, 0} (FT1536.Law.mass.{u_1} trial none.{u_1}) i)
+      (FT1536.Law.mass.{u_1} trial (some.{u_1} x)))
+'FT1536.MathSign.cap_some' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.MathSign.full_reply_law.{u_1} : ∀ {α : Type u_1} [inst : Fintype.{u_1} α] [inst_1 : DecidableEq.{u_1 + 1} α]
+  (trial : FT1536.Law.{u_1} (Option.{u_1} α)) (n : ℕ),
+  Eq.{1} (∑ o, FT1536.Law.mass.{u_1} (FT1536.MathSign.cap.{u_1} trial n) o) 1 ∧
+    Eq.{1} (FT1536.Law.mass.{u_1} (FT1536.MathSign.cap.{u_1} trial n) none.{u_1})
+        (HPow.hPow.{0, 0, 0} (FT1536.Law.mass.{u_1} trial none.{u_1}) n) ∧
+      ∀ (x : α),
+        Eq.{1} (FT1536.Law.mass.{u_1} (FT1536.MathSign.cap.{u_1} trial n) (some.{u_1} x))
+          (HMul.hMul.{0, 0, 0} (∑ i ∈ Finset.range n, HPow.hPow.{0, 0, 0} (FT1536.Law.mass.{u_1} trial none.{u_1}) i)
+            (FT1536.Law.mass.{u_1} trial (some.{u_1} x)))
+'FT1536.MathSign.full_reply_law' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.MathSign.cap16_exhaustion.{u_1} : ∀ {α : Type u_1} [inst : Fintype.{u_1} α] [inst_1 : DecidableEq.{u_1 + 1} α]
+  (trial : FT1536.Law.{u_1} (Option.{u_1} α)),
+  Eq.{1} (FT1536.Law.mass.{u_1} (FT1536.MathSign.cap.{u_1} trial 16) none.{u_1})
+    (HPow.hPow.{0, 0, 0} (HSub.hSub.{0, 0, 0} 1 (HSub.hSub.{0, 0, 0} 1 (FT1536.Law.mass.{u_1} trial none.{u_1}))) 16)
+'FT1536.MathSign.cap16_exhaustion' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.MathSign.pre_abort_has_no_nonce.{u_1, u_2,
+    u_3} : ∀ {α : Type u_1} {β : Type u_2} {R : Type u_3} [inst : Fintype.{u_1} α] [inst_1 : Fintype.{u_2} β]
+  [inst_2 : DecidableEq.{u_2 + 1} β] [inst_3 : Fintype.{u_3} R] [inst_4 : DecidableEq.{u_3 + 1} R]
+  (nonce : FT1536.Law.{u_3} R) (body : R → FT1536.Law.{u_1} (Option.{u_1} α)) (encode : α → Option.{u_2} β),
+  Eq.{1}
+    (FT1536.Law.mass.{max u_2 u_3} (FT1536.MathSign.observe.{u_1, u_2, u_3} false nonce body encode) none.{max u_2 u_3})
+    1
+'FT1536.MathSign.pre_abort_has_no_nonce' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.MathSign.positive_reply_not_filtered.{u_1,
+    u_2} : ∀ {α : Type u_1} {β : Type u_2} (encode : α → Option.{u_2} β) (x : α),
+  Eq.{u_2 + 1} (FT1536.MathSign.emit.{u_1, u_2} encode (some.{u_1} x)) (encode x)
+'FT1536.MathSign.positive_reply_not_filtered' does not depend on any axioms
+FT1536.Geometry.block_nonneg : ∀ (x y : ℤ), LE.le.{0} 0 (FT1536.Geometry.block x y)
+'FT1536.Geometry.block_nonneg' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.Geometry.coord_square_le_twice : ∀ (x y : ℤ),
+  LE.le.{0} (HPow.hPow.{0, 0, 0} x 2) (HMul.hMul.{0, 0, 0} 2 (FT1536.Geometry.block x y))
+'FT1536.Geometry.coord_square_le_twice' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.Geometry.Q0_nonneg : ∀ (v : FT1536.Geometry.Vec), LE.le.{0} 0 (FT1536.Geometry.Q0 v)
+'FT1536.Geometry.Q0_nonneg' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.Geometry.coord_bound : ∀ (v w : FT1536.Geometry.Vec) (i : Fin 768),
+  LT.lt.{0} (FT1536.Geometry.Q (Prod.mk.{0, 0} v w)) FT1536.Geometry.B →
+    LE.le.{0} (-65535) (v i).1 ∧ LE.le.{0} (v i).1 65535
+'FT1536.Geometry.coord_bound' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.Geometry.Q0_swap : ∀ (v : FT1536.Geometry.Vec),
+  Eq.{1} (FT1536.Geometry.Q0 (FT1536.Geometry.swap v)) (FT1536.Geometry.Q0 v)
+'FT1536.Geometry.Q0_swap' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.Geometry.all_coord_bounds : ∀ (v w : FT1536.Geometry.Vec),
+  LT.lt.{0} (FT1536.Geometry.Q (Prod.mk.{0, 0} v w)) FT1536.Geometry.B →
+    ∀ (i : Fin 768),
+      (LE.le.{0} (-65535) (v i).1 ∧ LE.le.{0} (v i).1 65535) ∧
+        (LE.le.{0} (-65535) (v i).2 ∧ LE.le.{0} (v i).2 65535) ∧
+          (LE.le.{0} (-65535) (w i).1 ∧ LE.le.{0} (w i).1 65535) ∧ LE.le.{0} (-65535) (w i).2 ∧ LE.le.{0} (w i).2 65535
+'FT1536.Geometry.all_coord_bounds' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.Geometry.Q0_spike : ∀ (x y : ℤ),
+  Eq.{1} (FT1536.Geometry.Q0 (FT1536.Geometry.spike x y)) (FT1536.Geometry.block x y)
+'FT1536.Geometry.Q0_spike' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.Geometry.center_spike : ∀ (x y : ℤ),
+  Eq.{1} (FT1536.Geometry.centerVec (FT1536.Geometry.spike x y))
+    (FT1536.Geometry.spike (FT1536.Geometry.center x) (FT1536.Geometry.center y))
+'FT1536.Geometry.center_spike' depends on axioms: [propext, Quot.sound.{u}]
+FT1536.Geometry.centering_can_break_acceptance : LT.lt.{0}
+    (FT1536.Geometry.Q (Prod.mk.{0, 0} (FT1536.Geometry.spike 9217 (-5000)) (FT1536.Geometry.spike 32767 18000)))
+    FT1536.Geometry.B ∧
+  ¬LT.lt.{0}
+      (FT1536.Geometry.Q
+        (Prod.mk.{0, 0} (FT1536.Geometry.centerVec (FT1536.Geometry.spike 9217 (-5000)))
+          (FT1536.Geometry.spike 32767 18000)))
+      FT1536.Geometry.B
+'FT1536.Geometry.centering_can_break_acceptance' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.Divergence.support_mismatch.{u_1} : ∀ {α : Type u_1} [inst : Fintype.{u_1} α] (j p : FT1536.Law.{u_1} α)
+  (x : α),
+  Eq.{1} (FT1536.Law.mass.{u_1} p x) 0 →
+    Ne.{1} (FT1536.Law.mass.{u_1} j x) 0 → Eq.{1} (FT1536.Divergence.chi2.{u_1} j p) Top.top.{0}
+'FT1536.Divergence.support_mismatch' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.Divergence.density_mean.{u_1} : ∀ {α : Type u_1} [inst : Fintype.{u_1} α] (j p : FT1536.Law.{u_1} α)
+  (d : FT1536.Divergence.Density.{u_1} j p),
+  Eq.{1} (∑ x, HMul.hMul.{0, 0, 0} (FT1536.Law.mass.{u_1} p x) (FT1536.Divergence.Density.ratio.{u_1} d x)) 1
+'FT1536.Divergence.density_mean' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.Divergence.energy_eq_second.{u_1} : ∀ {α : Type u_1} [inst : Fintype.{u_1} α] (j p : FT1536.Law.{u_1} α)
+  (d : FT1536.Divergence.Density.{u_1} j p),
+  Eq.{1} (FT1536.Divergence.energy.{u_1} p (FT1536.Divergence.Density.ratio.{u_1} d))
+    (FT1536.Divergence.second.{u_1} j p)
+'FT1536.Divergence.energy_eq_second' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.Divergence.centered_energy.{u_1} : ∀ {α : Type u_1} [inst : Fintype.{u_1} α] (j p : FT1536.Law.{u_1} α)
+  (d : FT1536.Divergence.Density.{u_1} j p),
+  Eq.{1}
+    (∑ x,
+      HMul.hMul.{0, 0, 0} (FT1536.Law.mass.{u_1} p x)
+        (HPow.hPow.{0, 0, 0} (HSub.hSub.{0, 0, 0} (FT1536.Divergence.Density.ratio.{u_1} d x) 1) 2))
+    (HSub.hSub.{0, 0, 0} (FT1536.Divergence.energy.{u_1} p (FT1536.Divergence.Density.ratio.{u_1} d)) 1)
+'FT1536.Divergence.centered_energy' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.Divergence.weighted_cauchy.{u_1} : ∀ {α : Type u_1} [inst : Fintype.{u_1} α] (p : FT1536.Law.{u_1} α)
+  (u v : α → ℝ),
+  LE.le.{0}
+    (HPow.hPow.{0, 0, 0} (∑ x, HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} (FT1536.Law.mass.{u_1} p x) (u x)) (v x)) 2)
+    (HMul.hMul.{0, 0, 0} (∑ x, HMul.hMul.{0, 0, 0} (FT1536.Law.mass.{u_1} p x) (HPow.hPow.{0, 0, 0} (u x) 2))
+      (∑ x, HMul.hMul.{0, 0, 0} (FT1536.Law.mass.{u_1} p x) (HPow.hPow.{0, 0, 0} (v x) 2)))
+'FT1536.Divergence.weighted_cauchy' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.Divergence.energy_ge_one.{u_1} : ∀ {α : Type u_1} [inst : Fintype.{u_1} α] (j p : FT1536.Law.{u_1} α)
+  (d : FT1536.Divergence.Density.{u_1} j p),
+  LE.le.{0} 1 (FT1536.Divergence.energy.{u_1} p (FT1536.Divergence.Density.ratio.{u_1} d))
+'FT1536.Divergence.energy_ge_one' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.Divergence.chi2_toReal.{u_1} : ∀ {α : Type u_1} [inst : Fintype.{u_1} α] (j p : FT1536.Law.{u_1} α),
+  FT1536.Divergence.AC.{u_1} j p →
+    Eq.{1} (FT1536.Divergence.chi2.{u_1} j p).toReal (HSub.hSub.{0, 0, 0} (FT1536.Divergence.second.{u_1} j p) 1)
+'FT1536.Divergence.chi2_toReal' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.Divergence.chi2_finite.{u_1} : ∀ {α : Type u_1} [inst : Fintype.{u_1} α] (j p : FT1536.Law.{u_1} α),
+  FT1536.Divergence.AC.{u_1} j p → Ne.{1} (FT1536.Divergence.chi2.{u_1} j p) Top.top.{0}
+'FT1536.Divergence.chi2_finite' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.Divergence.joint_chi2.{u_1,
+    u_2} : ∀ {α : Type u_1} {β : Type u_2} [inst : Fintype.{u_1} α] [inst_1 : Fintype.{u_2} β]
+  (j p : FT1536.Law.{u_1} α) (l k : α → FT1536.Law.{u_2} β),
+  Eq.{1}
+    (FT1536.Divergence.second.{max u_2 u_1} (FT1536.Divergence.joint.{u_1, u_2} j l)
+      (FT1536.Divergence.joint.{u_1, u_2} p k))
+    (∑ x,
+      HMul.hMul.{0, 0, 0}
+        (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} (FT1536.Law.mass.{u_1} j x) 2) (FT1536.Law.mass.{u_1} p x))
+        (FT1536.Divergence.second.{u_2} (l x) (k x)))
+'FT1536.Divergence.joint_chi2' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.Divergence.joint_ac.{u_1,
+    u_2} : ∀ {α : Type u_1} {β : Type u_2} [inst : Fintype.{u_1} α] [inst_1 : Fintype.{u_2} β]
+  (j p : FT1536.Law.{u_1} α) (l k : α → FT1536.Law.{u_2} β),
+  FT1536.Divergence.AC.{u_1} j p →
+    (∀ (x : α), Ne.{1} (FT1536.Law.mass.{u_1} j x) 0 → FT1536.Divergence.AC.{u_2} (l x) (k x)) →
+      FT1536.Divergence.AC.{max u_2 u_1} (FT1536.Divergence.joint.{u_1, u_2} j l)
+        (FT1536.Divergence.joint.{u_1, u_2} p k)
+'FT1536.Divergence.joint_ac' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.Divergence.joint_chi2_finite.{u_1,
+    u_2} : ∀ {α : Type u_1} {β : Type u_2} [inst : Fintype.{u_1} α] [inst_1 : Fintype.{u_2} β]
+  (j p : FT1536.Law.{u_1} α) (l k : α → FT1536.Law.{u_2} β),
+  FT1536.Divergence.AC.{u_1} j p →
+    (∀ (x : α), Ne.{1} (FT1536.Law.mass.{u_1} j x) 0 → FT1536.Divergence.AC.{u_2} (l x) (k x)) →
+      Eq.{1}
+        (HAdd.hAdd.{0, 0, 0} 1
+          (FT1536.Divergence.chi2.{max u_2 u_1} (FT1536.Divergence.joint.{u_1, u_2} j l)
+              (FT1536.Divergence.joint.{u_1, u_2} p k)).toReal)
+        (∑ x,
+          HMul.hMul.{0, 0, 0}
+            (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} (FT1536.Law.mass.{u_1} j x) 2) (FT1536.Law.mass.{u_1} p x))
+            (HAdd.hAdd.{0, 0, 0} 1 (FT1536.Divergence.chi2.{u_2} (l x) (k x)).toReal))
+'FT1536.Divergence.joint_chi2_finite' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.Divergence.joint_bound.{u_1,
+    u_2} : ∀ {α : Type u_1} {β : Type u_2} [inst : Fintype.{u_1} α] [inst_1 : Fintype.{u_2} β]
+  (j p : FT1536.Law.{u_1} α) (l k : α → FT1536.Law.{u_2} β) (C : ℝ),
+  (∀ (x : α), Ne.{1} (FT1536.Law.mass.{u_1} j x) 0 → LE.le.{0} (FT1536.Divergence.second.{u_2} (l x) (k x)) C) →
+    LE.le.{0}
+      (FT1536.Divergence.second.{max u_2 u_1} (FT1536.Divergence.joint.{u_1, u_2} j l)
+        (FT1536.Divergence.joint.{u_1, u_2} p k))
+      (HMul.hMul.{0, 0, 0} (FT1536.Divergence.second.{u_1} j p) C)
+'FT1536.Divergence.joint_bound' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.Divergence.image_conditional_bound.{u_1,
+    u_2} : ∀ {α : Type u_1} {β : Type u_2} [inst : Fintype.{u_1} α] [inst_1 : Fintype.{u_2} β]
+  (j p : FT1536.Law.{u_1} α) (l k : α → FT1536.Law.{u_2} β) (eImg eSign : ℝ),
+  LE.le.{0} (FT1536.Divergence.second.{u_1} j p) (HAdd.hAdd.{0, 0, 0} 1 eImg) →
+    LE.le.{0} 0 (HAdd.hAdd.{0, 0, 0} 1 eSign) →
+      (∀ (x : α),
+          Ne.{1} (FT1536.Law.mass.{u_1} j x) 0 →
+            LE.le.{0} (FT1536.Divergence.second.{u_2} (l x) (k x)) (HAdd.hAdd.{0, 0, 0} 1 eSign)) →
+        LE.le.{0}
+          (HSub.hSub.{0, 0, 0}
+            (FT1536.Divergence.second.{max u_2 u_1} (FT1536.Divergence.joint.{u_1, u_2} j l)
+              (FT1536.Divergence.joint.{u_1, u_2} p k))
+            1)
+          (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} 1 eImg) (HAdd.hAdd.{0, 0, 0} 1 eSign)) 1)
+'FT1536.Divergence.image_conditional_bound' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.EventTransfer.event_quadratic.{u_1} : ∀ {α : Type u_1} [inst : Fintype.{u_1} α] (j p : FT1536.Law.{u_1} α)
+  (d : FT1536.Divergence.Density.{u_1} j p) (E : α → Prop) [inst_1 : DecidablePred.{u_1 + 1} E] (D : ℝ),
+  LE.le.{0} (HSub.hSub.{0, 0, 0} (FT1536.Divergence.energy.{u_1} p (FT1536.Divergence.Density.ratio.{u_1} d)) 1) D →
+    LE.le.{0} (HPow.hPow.{0, 0, 0} (HSub.hSub.{0, 0, 0} (FT1536.Law.event.{u_1} p E) (FT1536.Law.event.{u_1} j E)) 2)
+      (HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} D (FT1536.Law.event.{u_1} p E))
+        (HSub.hSub.{0, 0, 0} 1 (FT1536.Law.event.{u_1} p E)))
+'FT1536.EventTransfer.event_quadratic' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.EventTransfer.discriminant_nonneg : ∀ {D b : ℝ},
+  LE.le.{0} 0 D →
+    LE.le.{0} 0 b →
+      LE.le.{0} b 1 →
+        LE.le.{0} 0
+          (HAdd.hAdd.{0, 0, 0} (HPow.hPow.{0, 0, 0} D 2)
+            (HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} 4 D) b) (HSub.hSub.{0, 0, 0} 1 b)))
+'FT1536.EventTransfer.discriminant_nonneg' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.EventTransfer.phi_bound : ∀ {a b D : ℝ},
+  LE.le.{0} 0 D →
+    LE.le.{0} 0 b →
+      LE.le.{0} b 1 →
+        LE.le.{0} (HPow.hPow.{0, 0, 0} (HSub.hSub.{0, 0, 0} a b) 2)
+            (HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} D a) (HSub.hSub.{0, 0, 0} 1 a)) →
+          LE.le.{0} a (FT1536.EventTransfer.phi D b)
+'FT1536.EventTransfer.phi_bound' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.EventTransfer.phi_zero_delta : ∀ (b : ℝ), Eq.{1} (FT1536.EventTransfer.phi 0 b) b
+'FT1536.EventTransfer.phi_zero_delta' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.EventTransfer.phi_at_zero : ∀ {D : ℝ},
+  LE.le.{0} 0 D → Eq.{1} (FT1536.EventTransfer.phi D 0) (HDiv.hDiv.{0, 0, 0} D (HAdd.hAdd.{0, 0, 0} 1 D))
+'FT1536.EventTransfer.phi_at_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.EventTransfer.phi_at_one : ∀ {D : ℝ}, LE.le.{0} 0 D → Eq.{1} (FT1536.EventTransfer.phi D 1) 1
+'FT1536.EventTransfer.phi_at_one' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.EventTransfer.phi_ge_b : ∀ {D b : ℝ},
+  LE.le.{0} 0 D → LE.le.{0} 0 b → LE.le.{0} b 1 → LE.le.{0} b (FT1536.EventTransfer.phi D b)
+'FT1536.EventTransfer.phi_ge_b' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.EventTransfer.phi_le_one : ∀ {D b : ℝ},
+  LE.le.{0} 0 D → LE.le.{0} 0 b → LE.le.{0} b 1 → LE.le.{0} (FT1536.EventTransfer.phi D b) 1
+'FT1536.EventTransfer.phi_le_one' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.EventTransfer.phi_satisfies : ∀ {D b : ℝ},
+  LE.le.{0} 0 D →
+    LE.le.{0} 0 b →
+      LE.le.{0} b 1 →
+        Eq.{1} (HPow.hPow.{0, 0, 0} (HSub.hSub.{0, 0, 0} (FT1536.EventTransfer.phi D b) b) 2)
+          (HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} D (FT1536.EventTransfer.phi D b))
+            (HSub.hSub.{0, 0, 0} 1 (FT1536.EventTransfer.phi D b)))
+'FT1536.EventTransfer.phi_satisfies' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.EventTransfer.phi_mono : ∀ {D b c : ℝ},
+  LE.le.{0} 0 D →
+    LE.le.{0} 0 b →
+      LE.le.{0} b c → LE.le.{0} c 1 → LE.le.{0} (FT1536.EventTransfer.phi D b) (FT1536.EventTransfer.phi D c)
+'FT1536.EventTransfer.phi_mono' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.Divergence.transcript_ac : ∀ {α : Type} [inst : Fintype.{0} α]
+  (j p : (n : ℕ) → FT1536.Divergence.Hist α n → FT1536.Law.{0} α),
+  (∀ (n : ℕ) (x : FT1536.Divergence.Hist α n), FT1536.Divergence.AC.{0} (j n x) (p n x)) →
+    ∀ (n : ℕ), FT1536.Divergence.AC.{0} (FT1536.Divergence.transcript j n) (FT1536.Divergence.transcript p n)
+'FT1536.Divergence.transcript_ac' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.Divergence.stopped_adaptive_chi2 : ∀ {α : Type} [inst : Fintype.{0} α]
+  (j p : (n : ℕ) → FT1536.Divergence.Hist α n → FT1536.Law.{0} α) (C : ℕ → ℝ),
+  (∀ (n : ℕ), LE.le.{0} 0 (C n)) →
+    (∀ (n : ℕ) (x : FT1536.Divergence.Hist α n), LE.le.{0} (FT1536.Divergence.second.{0} (j n x) (p n x)) (C n)) →
+      ∀ (n : ℕ),
+        LE.le.{0} (FT1536.Divergence.second.{0} (FT1536.Divergence.transcript j n) (FT1536.Divergence.transcript p n))
+          (∏ i ∈ Finset.range n, C i)
+'FT1536.Divergence.stopped_adaptive_chi2' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.Divergence.constant_adaptive_chi2 : ∀ {α : Type} [inst : Fintype.{0} α]
+  (j p : (n : ℕ) → FT1536.Divergence.Hist α n → FT1536.Law.{0} α) (e : ℝ),
+  LE.le.{0} 0 e →
+    (∀ (n : ℕ) (x : FT1536.Divergence.Hist α n),
+        LE.le.{0} (FT1536.Divergence.second.{0} (j n x) (p n x)) (HAdd.hAdd.{0, 0, 0} 1 e)) →
+      ∀ (n : ℕ),
+        LE.le.{0}
+          (HSub.hSub.{0, 0, 0}
+            (FT1536.Divergence.second.{0} (FT1536.Divergence.transcript j n) (FT1536.Divergence.transcript p n)) 1)
+          (HSub.hSub.{0, 0, 0} (HPow.hPow.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} 1 e) n) 1)
+'FT1536.Divergence.constant_adaptive_chi2' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.Divergence.stopped_transcript_event_bound : ∀ {α : Type} [inst : Fintype.{0} α]
+  (j p : (n : ℕ) → FT1536.Divergence.Hist α n → FT1536.Law.{0} α) (e : ℝ),
+  LE.le.{0} 0 e →
+    (∀ (n : ℕ) (x : FT1536.Divergence.Hist α n), FT1536.Divergence.AC.{0} (j n x) (p n x)) →
+      (∀ (n : ℕ) (x : FT1536.Divergence.Hist α n),
+          LE.le.{0} (FT1536.Divergence.second.{0} (j n x) (p n x)) (HAdd.hAdd.{0, 0, 0} 1 e)) →
+        ∀ (n : ℕ) (E : FT1536.Divergence.Hist α n → Prop) [inst_1 : DecidablePred.{1} E],
+          LE.le.{0} (FT1536.Law.event.{0} (FT1536.Divergence.transcript p n) E)
+            (FT1536.EventTransfer.phi (HSub.hSub.{0, 0, 0} (HPow.hPow.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} 1 e) n) 1)
+              (FT1536.Law.event.{0} (FT1536.Divergence.transcript j n) E))
+'FT1536.Divergence.stopped_transcript_event_bound' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.MathSign.geometric_acceptance : ∀ (f : ℝ) (n : ℕ),
+  Eq.{1} (HMul.hMul.{0, 0, 0} (∑ i ∈ Finset.range n, HPow.hPow.{0, 0, 0} f i) (HSub.hSub.{0, 0, 0} 1 f))
+    (HSub.hSub.{0, 0, 0} 1 (HPow.hPow.{0, 0, 0} f n))
+'FT1536.MathSign.geometric_acceptance' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.MathSign.cap_mixture.{u_1} : ∀ {α : Type u_1} [inst : Fintype.{u_1} α] [inst_1 : DecidableEq.{u_1 + 1} α]
+  (trial : FT1536.Law.{u_1} (Option.{u_1} α)) (l : FT1536.Law.{u_1} α),
+  (∀ (x : α),
+      Eq.{1} (FT1536.Law.mass.{u_1} trial (some.{u_1} x))
+        (HMul.hMul.{0, 0, 0} (HSub.hSub.{0, 0, 0} 1 (FT1536.Law.mass.{u_1} trial none.{u_1}))
+          (FT1536.Law.mass.{u_1} l x))) →
+    ∀ (n : ℕ),
+      Eq.{1} (FT1536.Law.mass.{u_1} (FT1536.MathSign.cap.{u_1} trial n) none.{u_1})
+          (HPow.hPow.{0, 0, 0} (FT1536.Law.mass.{u_1} trial none.{u_1}) n) ∧
+        ∀ (x : α),
+          Eq.{1} (FT1536.Law.mass.{u_1} (FT1536.MathSign.cap.{u_1} trial n) (some.{u_1} x))
+            (HMul.hMul.{0, 0, 0}
+              (HSub.hSub.{0, 0, 0} 1 (HPow.hPow.{0, 0, 0} (FT1536.Law.mass.{u_1} trial none.{u_1}) n))
+              (FT1536.Law.mass.{u_1} l x))
+'FT1536.MathSign.cap_mixture' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.MathSign.cap16_success_probability : ∀ (a : ℝ),
+  LE.le.{0} 0 a →
+    LE.le.{0} a 1 →
+      LE.le.{0} 0 (HSub.hSub.{0, 0, 0} 1 (HPow.hPow.{0, 0, 0} (HSub.hSub.{0, 0, 0} 1 a) 16)) ∧
+        LE.le.{0} (HSub.hSub.{0, 0, 0} 1 (HPow.hPow.{0, 0, 0} (HSub.hSub.{0, 0, 0} 1 a) 16)) 1
+'FT1536.MathSign.cap16_success_probability' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.MathSign.success_vs_capped_second.{u_1} : ∀ {α : Type u_1} [inst : Fintype.{u_1} α] (p : ℝ) (hp : LT.lt.{0} 0 p)
+  (hp1 : LE.le.{0} p 1) (l : FT1536.Law.{u_1} α),
+  Eq.{1}
+    (FT1536.Divergence.second.{u_1} (FT1536.MathSign.successOnly.{u_1} l) (FT1536.MathSign.withAbort.{u_1} p ⋯ hp1 l))
+    (HDiv.hDiv.{0, 0, 0} 1 p)
+'FT1536.MathSign.success_vs_capped_second' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.MathSign.zero_success_support_mismatch.{u_1} : ∀ {α : Type u_1} [inst : Fintype.{u_1} α]
+  (l : FT1536.Law.{u_1} α) (x : α),
+  Ne.{1} (FT1536.Law.mass.{u_1} l x) 0 →
+    Eq.{1}
+      (FT1536.Divergence.chi2.{u_1} (FT1536.MathSign.successOnly.{u_1} l) (FT1536.MathSign.withAbort.{u_1} 0 ⋯ ⋯ l))
+      Top.top.{0}
+'FT1536.MathSign.zero_success_support_mismatch' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.ROM.lookup_miss : ∀ {R M C : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M]
+  (x : FT1536.ROM.Name R M) (s : FT1536.ROM.State R M C),
+  Eq.{1} (FT1536.ROM.lookup x s) none.{0} → x ∉ List.map.{0, 0} FT1536.ROM.Entry.name s.table
+'FT1536.ROM.lookup_miss' depends on axioms: [propext, Quot.sound.{u}]
+@FT1536.ROM.empty_good : ∀ {R M C : Type} (targets : ℕ → C), FT1536.ROM.Good targets FT1536.ROM.empty
+'FT1536.ROM.empty_good' depends on axioms: [propext]
+@FT1536.ROM.hash_good : ∀ {R M C : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M] (targets : ℕ → C)
+  (x : FT1536.ROM.Name R M) (s : FT1536.ROM.State R M C),
+  FT1536.ROM.Good targets s → FT1536.ROM.Good targets (FT1536.ROM.hash targets x s).2
+'FT1536.ROM.hash_good' depends on axioms: [propext]
+@FT1536.ROM.hash_used_le : ∀ {R M C : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M] (targets : ℕ → C)
+  (x : FT1536.ROM.Name R M) (s : FT1536.ROM.State R M C),
+  LE.le.{0} (FT1536.ROM.hash targets x s).2.used (HAdd.hAdd.{0, 0, 0} s.used 1)
+'FT1536.ROM.hash_used_le' does not depend on any axioms
+@FT1536.ROM.hash_unique : ∀ {R M C : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M] (targets : ℕ → C)
+  (x : FT1536.ROM.Name R M) (s : FT1536.ROM.State R M C),
+  FT1536.ROM.Unique s → FT1536.ROM.Unique (FT1536.ROM.hash targets x s).2
+'FT1536.ROM.hash_unique' depends on axioms: [propext, Quot.sound.{u}]
+@FT1536.ROM.submit_good : ∀ {R M C : Type} (targets : ℕ → C) (m : M) (s : FT1536.ROM.State R M C),
+  FT1536.ROM.Good targets s → FT1536.ROM.Good targets (FT1536.ROM.submit m s)
+'FT1536.ROM.submit_good' does not depend on any axioms
+@FT1536.ROM.submitted_even_on_abort : ∀ {R M C : Type} (m : M) (s : FT1536.ROM.State R M C),
+  Membership.mem.{0, 0} (FT1536.ROM.submit m s).seen m
+'FT1536.ROM.submitted_even_on_abort' depends on axioms: [propext]
+@FT1536.ROM.program_good : ∀ {R M C : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M] (targets : ℕ → C)
+  (x : FT1536.ROM.Name R M) (c : C) (s s' : FT1536.ROM.State R M C),
+  FT1536.ROM.Good targets s →
+    Membership.mem.{0, 0} s.seen x.2 →
+      Eq.{1} (FT1536.ROM.program x c s) (some.{0} s') → FT1536.ROM.Good targets s' ∧ Eq.{1} s'.used s.used
+'FT1536.ROM.program_good' depends on axioms: [propext]
+@FT1536.ROM.program_unique : ∀ {R M C : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M]
+  (x : FT1536.ROM.Name R M) (c : C) (s s' : FT1536.ROM.State R M C),
+  FT1536.ROM.Unique s → Eq.{1} (FT1536.ROM.program x c s) (some.{0} s') → FT1536.ROM.Unique s'
+'FT1536.ROM.program_unique' depends on axioms: [propext, Quot.sound.{u}]
+@FT1536.ROM.lookup_mem : ∀ {R M C : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M]
+  (x : FT1536.ROM.Name R M) (s : FT1536.ROM.State R M C) (e : FT1536.ROM.Entry R M C),
+  Eq.{1} (FT1536.ROM.lookup x s) (some.{0} e) → Membership.mem.{0, 0} s.table e ∧ Eq.{1} e.name x
+'FT1536.ROM.lookup_mem' depends on axioms: [propext]
+@FT1536.ROM.indexed_entry : ∀ {R M C : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M] (targets : ℕ → C)
+  (s : FT1536.ROM.State R M C) (x : FT1536.ROM.Name R M) (e : FT1536.ROM.Entry R M C),
+  FT1536.ROM.Good targets s →
+    x.2 ∉ s.seen →
+      Eq.{1} (FT1536.ROM.lookup x s) (some.{0} e) →
+        ∃ j, Eq.{1} e.target (some.{0} j) ∧ LT.lt.{0} j s.used ∧ Eq.{1} e.value (targets j)
+'FT1536.ROM.indexed_entry' depends on axioms: [propext]
+@FT1536.ROM.final_hash_index : ∀ {R M C : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M]
+  (targets : ℕ → C) (s : FT1536.ROM.State R M C) (x : FT1536.ROM.Name R M),
+  FT1536.ROM.Good targets s →
+    x.2 ∉ s.seen →
+      ∃ j, LT.lt.{0} j (FT1536.ROM.hash targets x s).2.used ∧ Eq.{1} (FT1536.ROM.hash targets x s).1 (targets j)
+'FT1536.ROM.final_hash_index' depends on axioms: [propext]
+@FT1536.ROM.target_count_le_QH_add_one : ∀ {R M C : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M]
+  (targets : ℕ → C) (s : FT1536.ROM.State R M C) (x : FT1536.ROM.Name R M) (QH : ℕ),
+  LE.le.{0} s.used QH → LE.le.{0} (FT1536.ROM.hash targets x s).2.used (HAdd.hAdd.{0, 0, 0} QH 1)
+'FT1536.ROM.target_count_le_QH_add_one' does not depend on any axioms
+@FT1536.ROM.hash_cached : ∀ {R M C : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M] (targets : ℕ → C)
+  (s : FT1536.ROM.State R M C) (x : FT1536.ROM.Name R M) (e : FT1536.ROM.Entry R M C),
+  Eq.{1} (FT1536.ROM.lookup x s) (some.{0} e) → Eq.{1} (FT1536.ROM.hash targets x s) (Prod.mk.{0, 0} e.value s)
+'FT1536.ROM.hash_cached' depends on axioms: [propext]
+@FT1536.ROM.hash_nonanticipating : ∀ {R M C : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M]
+  (t u : ℕ → C) (s : FT1536.ROM.State R M C) (x : FT1536.ROM.Name R M),
+  Eq.{1} (t s.used) (u s.used) → Eq.{1} (FT1536.ROM.hash t x s) (FT1536.ROM.hash u x s)
+'FT1536.ROM.hash_nonanticipating' depends on axioms: [propext]
+@FT1536.ROM.fixed_length_framing : ∀ {Byte : Type} (r r' m m' : List.{0} Byte),
+  Eq.{1} (List.length.{0} r) (List.length.{0} r') →
+    Eq.{1} (HAppend.hAppend.{0, 0, 0} r m) (HAppend.hAppend.{0, 0, 0} r' m') → Eq.{1} r r' ∧ Eq.{1} m m'
+'FT1536.ROM.fixed_length_framing' depends on axioms: [propext]
+@FT1536.ROM.reachable_invariants : ∀ {R M C : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M]
+  (targets : ℕ → C) {n : ℕ} {s : FT1536.ROM.State R M C},
+  FT1536.ROM.Reachable targets n s → FT1536.ROM.Good targets s ∧ LE.le.{0} s.used n
+'FT1536.ROM.reachable_invariants' depends on axioms: [propext]
+@FT1536.ROM.reachable_unique : ∀ {R M C : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M]
+  (targets : ℕ → C) {n : ℕ} {s : FT1536.ROM.State R M C}, FT1536.ROM.Reachable targets n s → FT1536.ROM.Unique s
+'FT1536.ROM.reachable_unique' depends on axioms: [propext, Quot.sound.{u}]
+@FT1536.ROM.uniform_event_card.{u_1} : ∀ {R : Type u_1} [inst : Fintype.{u_1} R] [inst_1 : Nonempty.{u_1 + 1} R]
+  (E : R → Prop) [inst_2 : DecidablePred.{u_1 + 1} E],
+  Eq.{1} (FT1536.Law.event.{u_1} FT1536.Law.uniform.{u_1} E)
+    (HDiv.hDiv.{0, 0, 0} ↑(Finset.card.{u_1} (Finset.filter.{u_1} E Finset.univ.{u_1})) ↑(Fintype.card.{u_1} R))
+'FT1536.ROM.uniform_event_card' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.ROM.fresh_nonce_conflict.{u_1,
+    u_2} : ∀ {R : Type u_1} {X : Type u_2} [inst : Fintype.{u_1} R] [inst_1 : Nonempty.{u_1 + 1} R]
+  [inst_2 : DecidableEq.{u_2 + 1} X] (frame : R → X),
+  Function.Injective.{u_1 + 1, u_2 + 1} frame →
+    ∀ (table : Finset.{u_2} X),
+      LE.le.{0} (FT1536.Law.event.{u_1} FT1536.Law.uniform.{u_1} fun r => Membership.mem.{u_2, u_2} table (frame r))
+        (HDiv.hDiv.{0, 0, 0} ↑(Finset.card.{u_2} table) ↑(Fintype.card.{u_1} R))
+'FT1536.ROM.fresh_nonce_conflict' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.ROM.adaptive_average.{u_1} : ∀ {H : Type u_1} [inst : Fintype.{u_1} H] (p : FT1536.Law.{u_1} H) (risk : H → ℝ)
+  (bound : ℝ),
+  (∀ (hist : H), LE.le.{0} (risk hist) bound) →
+    LE.le.{0} (∑ hist, HMul.hMul.{0, 0, 0} (FT1536.Law.mass.{u_1} p hist) (risk hist)) bound
+'FT1536.ROM.adaptive_average' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.ROM.event_union_bound.{u_1} : ∀ {Ω : Type u_1} [inst : Fintype.{u_1} Ω] (p : FT1536.Law.{u_1} Ω) (n : ℕ)
+  (E : ℕ → Ω → Prop) [inst_1 : (i : ℕ) → DecidablePred.{u_1 + 1} (E i)],
+  LE.le.{0} (FT1536.Law.event.{u_1} p fun x => ∃ i, Membership.mem.{0, 0} (Finset.range n) i ∧ E i x)
+    (∑ i ∈ Finset.range n, FT1536.Law.event.{u_1} p (E i))
+'FT1536.ROM.event_union_bound' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.ROM.programming_conflict_bound.{u_1, u_2,
+    u_3} : ∀ {R : Type u_1} {X : Type u_2} {H : Type u_3} [inst : Fintype.{u_1} R] [inst_1 : Nonempty.{u_1 + 1} R]
+  [inst_2 : DecidableEq.{u_2 + 1} X] (frame : H → R → X),
+  (∀ (hist : H), Function.Injective.{u_1 + 1, u_2 + 1} (frame hist)) →
+    ∀ [inst_3 : Fintype.{u_3} H] (histLaw : FT1536.Law.{u_3} H) (table : H → Finset.{u_2} X) (K : ℕ),
+      (∀ (hist : H), LE.le.{0} (Finset.card.{u_2} (table hist)) K) →
+        LE.le.{0}
+          (∑ hist,
+            HMul.hMul.{0, 0, 0} (FT1536.Law.mass.{u_3} histLaw hist)
+              (FT1536.Law.event.{u_1} FT1536.Law.uniform.{u_1} fun r =>
+                Membership.mem.{u_2, u_2} (table hist) (frame hist r)))
+          (HDiv.hDiv.{0, 0, 0} ↑K ↑(Fintype.card.{u_1} R))
+'FT1536.ROM.programming_conflict_bound' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.ROM.collision_sum : ∀ (qs qh : ℕ),
+  Eq.{1} (∑ i ∈ Finset.range qs, ↑(HAdd.hAdd.{0, 0, 0} qh i))
+    (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} ↑qs ↑qh)
+      (HDiv.hDiv.{0, 0, 0} (HMul.hMul.{0, 0, 0} ↑qs ↑(HSub.hSub.{0, 0, 0} qs 1)) 2))
+'FT1536.ROM.collision_sum' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.ROM.accumulated_conflicts.{u_1} : ∀ {Ω : Type u_1} [inst : Fintype.{u_1} Ω] (p : FT1536.Law.{u_1} Ω) (qs qh : ℕ)
+  (E : ℕ → Ω → Prop) [inst_1 : (i : ℕ) → DecidablePred.{u_1 + 1} (E i)],
+  (∀ (i : ℕ),
+      Membership.mem.{0, 0} (Finset.range qs) i →
+        LE.le.{0} (FT1536.Law.event.{u_1} p (E i))
+          (HDiv.hDiv.{0, 0, 0} (↑(HAdd.hAdd.{0, 0, 0} qh i)) (HPow.hPow.{0, 0, 0} 2 320))) →
+    LE.le.{0} (FT1536.Law.event.{u_1} p fun x => ∃ i, Membership.mem.{0, 0} (Finset.range qs) i ∧ E i x)
+      (min.{0} 1
+        (HDiv.hDiv.{0, 0, 0}
+          (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} ↑qs ↑qh)
+            (HDiv.hDiv.{0, 0, 0} (HMul.hMul.{0, 0, 0} ↑qs ↑(HSub.hSub.{0, 0, 0} qs 1)) 2))
+          (HPow.hPow.{0, 0, 0} 2 320)))
+'FT1536.ROM.accumulated_conflicts' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.PublicSimulation.decode_encodeCoord : ∀ (x : ℤ) (hx : LE.le.{0} (-65535) x ∧ LE.le.{0} x 65535),
+  Eq.{1} (HSub.hSub.{0, 0, 0} (↑↑(FT1536.PublicSimulation.encodeCoord x hx)) 65535) x
+'FT1536.PublicSimulation.decode_encodeCoord' depends on axioms: [propext, Quot.sound.{u}]
+FT1536.PublicSimulation.decode_encodeVec : ∀ (v : FT1536.Geometry.Vec)
+  (hv :
+    ∀ (i : Fin 768),
+      (LE.le.{0} (-65535) (v i).1 ∧ LE.le.{0} (v i).1 65535) ∧ LE.le.{0} (-65535) (v i).2 ∧ LE.le.{0} (v i).2 65535),
+  Eq.{1} (FT1536.PublicSimulation.decodeVec (FT1536.PublicSimulation.encodeVec v hv)) v
+'FT1536.PublicSimulation.decode_encodeVec' depends on axioms: [propext, Quot.sound.{u}]
+FT1536.PublicSimulation.full_norm_support_in_box : ∀ (v w : FT1536.Geometry.Vec),
+  LT.lt.{0} (FT1536.Geometry.Q (Prod.mk.{0, 0} v w)) FT1536.Geometry.B →
+    ∃ z, Eq.{1} (FT1536.PublicSimulation.decode z) (Prod.mk.{0, 0} v w)
+'FT1536.PublicSimulation.full_norm_support_in_box' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.PublicSimulation.zero_norm : Eq.{1}
+  (FT1536.Geometry.Q (FT1536.PublicSimulation.decode FT1536.PublicSimulation.zeroPair)) 0
+'FT1536.PublicSimulation.zero_norm' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.PublicSimulation.boundedWeight_nonneg : ∀ (z : FT1536.PublicSimulation.BoxPair),
+  LE.le.{0} 0 (FT1536.PublicSimulation.boundedWeight z)
+'FT1536.PublicSimulation.boundedWeight_nonneg' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.PublicSimulation.bounded_normalizer_pos : LT.lt.{0} 0 (∑ z, FT1536.PublicSimulation.boundedWeight z)
+'FT1536.PublicSimulation.bounded_normalizer_pos' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.PublicSimulation.boundedGaussian_support : ∀ (z : FT1536.PublicSimulation.BoxPair),
+  Ne.{1} (FT1536.Law.mass.{0} FT1536.PublicSimulation.boundedGaussian z) 0 ↔
+    LT.lt.{0} (FT1536.Geometry.Q (FT1536.PublicSimulation.decode z)) FT1536.Geometry.B
+'FT1536.PublicSimulation.boundedGaussian_support' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.PublicSimulation.joint_law.{u_1} : ∀ {C : Type u_1} [inst : Fintype.{u_1} C] [inst_1 : DecidableEq.{u_1 + 1} C]
+  (A : FT1536.PublicSimulation.BoxPair → C),
+  Eq.{1} (∑ co, FT1536.Law.mass.{u_1} (FT1536.PublicSimulation.publicJoint.{u_1} A) co) 1
+'FT1536.PublicSimulation.joint_law' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.PublicSimulation.fiberWeight_nonneg.{u_1} : ∀ {C : Type u_1} [inst : DecidableEq.{u_1 + 1} C]
+  (A : FT1536.PublicSimulation.BoxPair → C) (c : C) (z : FT1536.PublicSimulation.BoxPair),
+  LE.le.{0} 0 (FT1536.PublicSimulation.fiberWeight.{u_1} A c z)
+'FT1536.PublicSimulation.fiberWeight_nonneg' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.PublicSimulation.signBody_normalized.{u_1} : ∀ {C : Type u_1} [inst : DecidableEq.{u_1 + 1} C]
+  (A : FT1536.PublicSimulation.BoxPair → C) (c : C),
+  Eq.{1} (∑ o, FT1536.Law.mass.{0} (FT1536.PublicSimulation.signBody.{u_1} A c) o) 1
+'FT1536.PublicSimulation.signBody_normalized' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.PublicSimulation.simSign_invariants : ∀ {H History M R C S : Type} [inst : DecidableEq.{1} M]
+  [inst_1 : DecidableEq.{1} R] (sam : FT1536.PublicSimulation.PublicSampler H History M R C (Option.{0} S))
+  (project : FT1536.ROM.State R M C → History) (h : H) (s : FT1536.ROM.State R M C) (m : M) (ready : Bool) (r : R)
+  (coins : Fin sam.coinCount) (targets : ℕ → C),
+  FT1536.ROM.Good targets s →
+    FT1536.ROM.Good targets (FT1536.PublicSimulation.simSign sam project h s m ready r coins).1 ∧
+      Eq.{1} (FT1536.PublicSimulation.simSign sam project h s m ready r coins).1.used s.used ∧
+        Membership.mem.{0, 0} (FT1536.PublicSimulation.simSign sam project h s m ready r coins).1.seen m
+'FT1536.PublicSimulation.simSign_invariants' depends on axioms: [propext]
+@FT1536.PublicSimulation.simSign_table_growth : ∀ {H History M R C S : Type} [inst : DecidableEq.{1} M]
+  [inst_1 : DecidableEq.{1} R] (sam : FT1536.PublicSimulation.PublicSampler H History M R C (Option.{0} S))
+  (project : FT1536.ROM.State R M C → History) (h : H) (s : FT1536.ROM.State R M C) (m : M) (ready : Bool) (r : R)
+  (coins : Fin sam.coinCount),
+  LE.le.{0} (List.length.{0} (FT1536.PublicSimulation.simSign sam project h s m ready r coins).1.table)
+    (HAdd.hAdd.{0, 0, 0} (List.length.{0} s.table) 1)
+'FT1536.PublicSimulation.simSign_table_growth' does not depend on any axioms
+FT1536.Relation.reduce_center : ∀ (c : FT1536.Relation.Rq),
+  Eq.{1} (FT1536.Relation.reduceVec (FT1536.Relation.centerRq c)) c
+'FT1536.Relation.reduce_center' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.Relation.extraction_equation : ∀ (h c : FT1536.Relation.Rq) (s : FT1536.Geometry.Vec),
+  Eq.{1} (FT1536.Relation.A h (FT1536.Relation.extract h c s)) c
+'FT1536.Relation.extraction_equation' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.Relation.accepted_extracts : ∀ (h c : FT1536.Relation.Rq) (s : FT1536.Geometry.Vec),
+  FT1536.Relation.Verify h c s → FT1536.Relation.ShortPreimage h c (FT1536.Relation.extract h c s)
+'FT1536.Relation.accepted_extracts' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.Reduction.indexed_extraction : ∀ {R M : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M]
+  (targets : ℕ → FT1536.Relation.Rq) (h : FT1536.Relation.Rq) (s : FT1536.ROM.State R M FT1536.Relation.Rq)
+  (x : FT1536.ROM.Name R M) (signature : FT1536.Geometry.Vec) (QH : ℕ),
+  FT1536.ROM.Good targets s →
+    x.2 ∉ s.seen →
+      LE.le.{0} s.used QH →
+        FT1536.Relation.Verify h (FT1536.ROM.hash targets x s).1 signature →
+          ∃ j,
+            LT.lt.{0} j (HAdd.hAdd.{0, 0, 0} QH 1) ∧
+              FT1536.Relation.ShortPreimage h (targets j)
+                (FT1536.Relation.extract h (FT1536.ROM.hash targets x s).1 signature)
+'FT1536.Reduction.indexed_extraction' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.SigmaMath.sign_normalized : ∀ (h : FT1536.Relation.Rq)
+  (H : FT1536.SigmaMath.Nonce → FT1536.SigmaMath.Message → FT1536.Relation.Rq) (m : FT1536.SigmaMath.Message),
+  Eq.{1} (∑ o, FT1536.Law.mass.{0} (FT1536.SigmaMath.sign h H m) o) 1
+'FT1536.SigmaMath.sign_normalized' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.SigmaMath.key_marginal_normalized : ∀ {SK : Type} [inst : Fintype.{0} SK]
+  (muKey : FT1536.Law.{0} (Prod.{0, 0} SK FT1536.Relation.Rq)),
+  Eq.{1} (∑ h, FT1536.Law.mass.{0} (FT1536.SigmaMath.muH muKey) h) 1
+'FT1536.SigmaMath.key_marginal_normalized' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.Reduction.finite_trace_bound : ∀ {α : Type} [inst : Fintype.{0} α]
+  (j p : (n : ℕ) → FT1536.Divergence.Hist α n → FT1536.Law.{0} α) (e : ℝ),
+  LE.le.{0} 0 e →
+    (∀ (n : ℕ) (x : FT1536.Divergence.Hist α n), FT1536.Divergence.AC.{0} (j n x) (p n x)) →
+      (∀ (n : ℕ) (x : FT1536.Divergence.Hist α n),
+          LE.le.{0} (FT1536.Divergence.second.{0} (j n x) (p n x)) (HAdd.hAdd.{0, 0, 0} 1 e)) →
+        ∀ (n : ℕ) (Win Bad MT : FT1536.Divergence.Hist α n → Prop) [inst_1 : DecidablePred.{1} Win]
+          [inst_2 : DecidablePred.{1} Bad] [inst_3 : DecidablePred.{1} MT],
+          (∀ (x : FT1536.Divergence.Hist α n), Win x ∧ ¬Bad x → MT x) →
+            ∀ (eps : ℝ),
+              LE.le.{0} (FT1536.Law.event.{0} (FT1536.Divergence.transcript p n) Bad) eps →
+                LE.le.{0} (FT1536.Law.event.{0} (FT1536.Divergence.transcript p n) Win)
+                  (min.{0} 1
+                    (HAdd.hAdd.{0, 0, 0} eps
+                      (FT1536.EventTransfer.phi
+                        (HSub.hSub.{0, 0, 0} (HPow.hPow.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} 1 e) n) 1)
+                        (FT1536.Law.event.{0} (FT1536.Divergence.transcript j n) MT))))
+'FT1536.Reduction.finite_trace_bound' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.Reduction.hardness_substitution : ∀ {a eps D b epsilonMT : ℝ},
+  LE.le.{0} 0 D →
+    LE.le.{0} 0 b →
+      LE.le.{0} b epsilonMT →
+        LE.le.{0} epsilonMT 1 →
+          LE.le.{0} a (min.{0} 1 (HAdd.hAdd.{0, 0, 0} eps (FT1536.EventTransfer.phi D b))) →
+            LE.le.{0} a (min.{0} 1 (HAdd.hAdd.{0, 0, 0} eps (FT1536.EventTransfer.phi D epsilonMT)))
+'FT1536.Reduction.hardness_substitution' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.Reduction.one_key_unconditional : ∀ {pK a bound : ℝ},
+  LE.le.{0} 0 pK → LE.le.{0} a bound → LE.le.{0} (HMul.hMul.{0, 0, 0} pK a) (HMul.hMul.{0, 0, 0} pK bound)
+'FT1536.Reduction.one_key_unconditional' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.Reduction.zero_key_success : ∀ (a : ℝ), Eq.{1} (HMul.hMul.{0, 0, 0} 0 a) 0
+'FT1536.Reduction.zero_key_success' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.Certificate.centering_values : Eq.{1}
+    (HAdd.hAdd.{0, 0, 0} (FT1536.Geometry.block 9217 (-5000)) (FT1536.Geometry.block 32767 18000)) 2051350378 ∧
+  Eq.{1} (HAdd.hAdd.{0, 0, 0} (FT1536.Geometry.block (-9216) (-5000)) (FT1536.Geometry.block 32767 18000)) 2143496945
+'FT1536.Certificate.centering_values' depends on axioms: [propext, Quot.sound.{u}]
+FT1536.Certificate.nontrivial_directional_chi2 : Eq.{1}
+    (HSub.hSub.{0, 0, 0}
+      (HAdd.hAdd.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} (1 / 2) 2) (1 / 3))
+        (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} (1 / 2) 2) (2 / 3)))
+      1)
+    (1 / 8) ∧
+  Eq.{1}
+    (HSub.hSub.{0, 0, 0}
+      (HAdd.hAdd.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} (1 / 3) 2) (1 / 2))
+        (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} (2 / 3) 2) (1 / 2)))
+      1)
+    (1 / 9)
+'FT1536.Certificate.nontrivial_directional_chi2' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.Certificate.adaptive_exact_value : Eq.{1}
+  (HSub.hSub.{0, 0, 0}
+    (HAdd.hAdd.{0, 0, 0}
+      (HAdd.hAdd.{0, 0, 0}
+        (HAdd.hAdd.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} (1 / 4) 2) (1 / 12))
+          (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} (1 / 4) 2) (1 / 4)))
+        (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} (3 / 8) 2) (4 / 9)))
+      (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} (1 / 8) 2) (2 / 9)))
+    1)
+  (99 / 256)
+'FT1536.Certificate.adaptive_exact_value' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameByte.Byte : Type
+'FT1536.GameByte.Byte' does not depend on any axioms
+FT1536.GameByte.Name : Type
+'FT1536.GameByte.Name' does not depend on any axioms
+FT1536.GameByte.Message : Type
+'FT1536.GameByte.Message' does not depend on any axioms
+FT1536.GameByte.bytesLE : ℕ → ℕ → List.{0} FT1536.GameByte.Byte
+'FT1536.GameByte.bytesLE' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameByte.bytesVal : List.{0} FT1536.GameByte.Byte → ℕ
+'FT1536.GameByte.bytesVal' does not depend on any axioms
+FT1536.GameByte.length_bytesLE : ∀ (r n : ℕ), Eq.{1} (List.length.{0} (FT1536.GameByte.bytesLE r n)) n
+'FT1536.GameByte.length_bytesLE' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameByte.bytesVal_lt : ∀ (l : List.{0} FT1536.GameByte.Byte),
+  LT.lt.{0} (FT1536.GameByte.bytesVal l) (HPow.hPow.{0, 0, 0} 256 (List.length.{0} l))
+'FT1536.GameByte.bytesVal_lt' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameByte.mod_mul_digits : ∀ (r a b : ℕ),
+  Eq.{1} (HMod.hMod.{0, 0, 0} r (HMul.hMul.{0, 0, 0} a b))
+    (HAdd.hAdd.{0, 0, 0} (HMod.hMod.{0, 0, 0} r a)
+      (HMul.hMul.{0, 0, 0} a (HMod.hMod.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} r a) b)))
+'FT1536.GameByte.mod_mul_digits' depends on axioms: [propext]
+FT1536.GameByte.bytesVal_bytesLE : ∀ (r n : ℕ),
+  Eq.{1} (FT1536.GameByte.bytesVal (FT1536.GameByte.bytesLE r n)) (HMod.hMod.{0, 0, 0} r (HPow.hPow.{0, 0, 0} 256 n))
+'FT1536.GameByte.bytesVal_bytesLE' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameByte.bytesLE_bytesVal : ∀ (l : List.{0} FT1536.GameByte.Byte),
+  Eq.{1} (FT1536.GameByte.bytesLE (FT1536.GameByte.bytesVal l) (List.length.{0} l)) l
+'FT1536.GameByte.bytesLE_bytesVal' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameByte.Nonce : Type
+'FT1536.GameByte.Nonce' depends on axioms: [propext]
+FT1536.GameByte.pow256_40 : Eq.{1} (HPow.hPow.{0, 0, 0} 256 40) (HPow.hPow.{0, 0, 0} 2 320)
+'FT1536.GameByte.pow256_40' depends on axioms: [propext]
+FT1536.GameByte.nonceBytes : FT1536.GameByte.Nonce → List.{0} FT1536.GameByte.Byte
+'FT1536.GameByte.nonceBytes' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameByte.nonceBytes_length : ∀ (r : FT1536.GameByte.Nonce),
+  Eq.{1} (List.length.{0} (FT1536.GameByte.nonceBytes r)) 40
+'FT1536.GameByte.nonceBytes_length' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameByte.nonceBytes_val : ∀ (r : FT1536.GameByte.Nonce),
+  Eq.{1} (FT1536.GameByte.bytesVal (FT1536.GameByte.nonceBytes r)) ↑r
+'FT1536.GameByte.nonceBytes_val' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameByte.nonceOf : (l : List.{0} FT1536.GameByte.Byte) → Eq.{1} (List.length.{0} l) 40 → FT1536.GameByte.Nonce
+'FT1536.GameByte.nonceOf' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameByte.nonceBytes_nonceOf : ∀ (l : List.{0} FT1536.GameByte.Byte) (h : Eq.{1} (List.length.{0} l) 40),
+  Eq.{1} (FT1536.GameByte.nonceBytes (FT1536.GameByte.nonceOf l h)) l
+'FT1536.GameByte.nonceBytes_nonceOf' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameByte.nonceOf_nonceBytes : ∀ (r : FT1536.GameByte.Nonce),
+  Eq.{1} (FT1536.GameByte.nonceOf (FT1536.GameByte.nonceBytes r) ⋯) r
+'FT1536.GameByte.nonceOf_nonceBytes' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameByte.nonceBytes_injective : Function.Injective.{1, 1} FT1536.GameByte.nonceBytes
+'FT1536.GameByte.nonceBytes_injective' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameByte.NameKind : Type
+'FT1536.GameByte.NameKind' depends on axioms: [propext]
+FT1536.GameByte.signName : FT1536.GameByte.Nonce → FT1536.GameByte.Message → FT1536.GameByte.Name
+'FT1536.GameByte.signName' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameByte.render : FT1536.GameByte.NameKind → FT1536.GameByte.Name
+'FT1536.GameByte.render' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameByte.signName_length : ∀ (r : FT1536.GameByte.Nonce) (m : FT1536.GameByte.Message),
+  Eq.{1} (List.length.{0} (FT1536.GameByte.signName r m)) (HAdd.hAdd.{0, 0, 0} 40 (List.length.{0} m))
+'FT1536.GameByte.signName_length' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameByte.render_sign_frame : ∀ (r : FT1536.GameByte.Nonce) (m : FT1536.GameByte.Message),
+  Eq.{1} (FT1536.GameByte.render (FT1536.GameByte.NameKind.sign r m))
+      (HAppend.hAppend.{0, 0, 0} (FT1536.GameByte.nonceBytes r) m) ∧
+    Eq.{1} (List.length.{0} (FT1536.GameByte.render (FT1536.GameByte.NameKind.sign r m)))
+      (HAdd.hAdd.{0, 0, 0} 40 (List.length.{0} m))
+'FT1536.GameByte.render_sign_frame' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameByte.pair_framing : ∀ (r s : FT1536.GameByte.Nonce) (m m' : FT1536.GameByte.Message),
+  Eq.{1} (FT1536.GameByte.signName r m) (FT1536.GameByte.signName s m') → Eq.{1} r s ∧ Eq.{1} m m'
+'FT1536.GameByte.pair_framing' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameByte.signName_injective : Function.Injective.{1, 1} fun p => FT1536.GameByte.signName p.1 p.2
+'FT1536.GameByte.signName_injective' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameByte.short_ne_sign : ∀ (b : FT1536.GameByte.Name),
+  LT.lt.{0} (List.length.{0} b) 40 →
+    ∀ (r : FT1536.GameByte.Nonce) (m : FT1536.GameByte.Message), Ne.{1} b (FT1536.GameByte.signName r m)
+'FT1536.GameByte.short_ne_sign' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameByte.render_injective : Function.Injective.{1, 1} FT1536.GameByte.render
+'FT1536.GameByte.render_injective' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameByte.long_names_distinct : ∀ (r s : FT1536.GameByte.Nonce) (m m' : FT1536.GameByte.Message),
+  Ne.{1} (List.length.{0} m) (List.length.{0} m') →
+    Ne.{1} (FT1536.GameByte.signName r m) (FT1536.GameByte.signName s m')
+'FT1536.GameByte.long_names_distinct' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameNames.NameBody : Type
+'FT1536.GameNames.NameBody' depends on axioms: [propext]
+FT1536.GameNames.take40_len : ∀ (n : FT1536.GameByte.Name),
+  LE.le.{0} 40 (List.length.{0} n) → Eq.{1} (List.length.{0} (List.take.{0} 40 n)) 40
+'FT1536.GameNames.take40_len' depends on axioms: [propext]
+FT1536.GameNames.length_take40 : ∀ (n : FT1536.GameByte.Name), LE.le.{0} (List.length.{0} (List.take.{0} 40 n)) 40
+'FT1536.GameNames.length_take40' depends on axioms: [propext]
+FT1536.GameNames.nonceOfBytes : FT1536.GameByte.Name → FT1536.GameByte.Nonce
+'FT1536.GameNames.nonceOfBytes' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameNames.bytesLE_bytesVal40 : ∀ (l : List.{0} FT1536.GameByte.Byte),
+  Eq.{1} (List.length.{0} l) 40 → Eq.{1} (FT1536.GameByte.bytesLE (FT1536.GameByte.bytesVal l) 40) l
+'FT1536.GameNames.bytesLE_bytesVal40' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameNames.nonceBytes_nonceOfBytes : ∀ (l : FT1536.GameByte.Name),
+  LE.le.{0} 40 (List.length.{0} l) →
+    Eq.{1} (FT1536.GameByte.nonceBytes (FT1536.GameNames.nonceOfBytes l)) (List.take.{0} 40 l)
+'FT1536.GameNames.nonceBytes_nonceOfBytes' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameNames.nonceOfBytes_nonceBytes : ∀ (r : FT1536.GameByte.Nonce),
+  Eq.{1} (FT1536.GameNames.nonceOfBytes (FT1536.GameByte.nonceBytes r)) r
+'FT1536.GameNames.nonceOfBytes_nonceBytes' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameNames.decodeName : FT1536.GameByte.Name → FT1536.GameByte.NameKind
+'FT1536.GameNames.decodeName' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameNames.decodeName_short : ∀ (n : FT1536.GameByte.Name) (h : LT.lt.{0} (List.length.{0} n) 40),
+  Eq.{1} (FT1536.GameNames.decodeName n) (FT1536.GameByte.NameKind.short n h)
+'FT1536.GameNames.decodeName_short' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameNames.decodeName_sign : ∀ (n : FT1536.GameByte.Name),
+  LE.le.{0} 40 (List.length.{0} n) →
+    Eq.{1} (FT1536.GameNames.decodeName n)
+      (FT1536.GameByte.NameKind.sign (FT1536.GameNames.nonceOfBytes n) (List.drop.{0} 40 n))
+'FT1536.GameNames.decodeName_sign' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameNames.render_decodeName : ∀ (n : FT1536.GameByte.Name),
+  Eq.{1} (FT1536.GameByte.render (FT1536.GameNames.decodeName n)) n
+'FT1536.GameNames.render_decodeName' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameNames.decodeName_render : ∀ (k : FT1536.GameByte.NameKind),
+  Eq.{1} (FT1536.GameNames.decodeName (FT1536.GameByte.render k)) k
+'FT1536.GameNames.decodeName_render' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameNames.nameKind_bijection : (∀ (n : FT1536.GameByte.Name),
+    Eq.{1} (FT1536.GameByte.render (FT1536.GameNames.decodeName n)) n) ∧
+  (∀ (k : FT1536.GameByte.NameKind), Eq.{1} (FT1536.GameNames.decodeName (FT1536.GameByte.render k)) k) ∧
+    Function.Injective.{1, 1} FT1536.GameByte.render
+'FT1536.GameNames.nameKind_bijection' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameNames.embedName : FT1536.GameByte.NameKind → Prod.{0, 0} FT1536.GameNames.NameBody FT1536.GameByte.Message
+'FT1536.GameNames.embedName' depends on axioms: [propext]
+FT1536.GameNames.paint : Prod.{0, 0} FT1536.GameNames.NameBody FT1536.GameByte.Message → FT1536.GameByte.Name
+'FT1536.GameNames.paint' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameNames.WF : Prod.{0, 0} FT1536.GameNames.NameBody FT1536.GameByte.Message → Prop
+'FT1536.GameNames.WF' depends on axioms: [propext]
+FT1536.GameNames.paint_embedName : ∀ (k : FT1536.GameByte.NameKind),
+  Eq.{1} (FT1536.GameNames.paint (FT1536.GameNames.embedName k)) (FT1536.GameByte.render k)
+'FT1536.GameNames.paint_embedName' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameNames.embedName_injective : Function.Injective.{1, 1} FT1536.GameNames.embedName
+'FT1536.GameNames.embedName_injective' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameNames.embedName_wf : ∀ (k : FT1536.GameByte.NameKind), FT1536.GameNames.WF (FT1536.GameNames.embedName k)
+'FT1536.GameNames.embedName_wf' depends on axioms: [propext]
+@FT1536.GameNames.paint_injective_wf : ∀ {p q : Prod.{0, 0} FT1536.GameNames.NameBody FT1536.GameByte.Message},
+  FT1536.GameNames.WF p →
+    FT1536.GameNames.WF q → Eq.{1} (FT1536.GameNames.paint p) (FT1536.GameNames.paint q) → Eq.{1} p q
+'FT1536.GameNames.paint_injective_wf' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameNames.tableAddr : FT1536.GameByte.Name → Prod.{0, 0} FT1536.GameNames.NameBody FT1536.GameByte.Message
+'FT1536.GameNames.tableAddr' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameNames.tableAddr_wf : ∀ (n : FT1536.GameByte.Name), FT1536.GameNames.WF (FT1536.GameNames.tableAddr n)
+'FT1536.GameNames.tableAddr_wf' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameNames.paint_tableAddr : ∀ (n : FT1536.GameByte.Name),
+  Eq.{1} (FT1536.GameNames.paint (FT1536.GameNames.tableAddr n)) n
+'FT1536.GameNames.paint_tableAddr' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameNames.tableAddr_injective : Function.Injective.{1, 1} FT1536.GameNames.tableAddr
+'FT1536.GameNames.tableAddr_injective' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameNames.take40_sign : ∀ (r : FT1536.GameByte.Nonce) (m : FT1536.GameByte.Message),
+  Eq.{1} (List.take.{0} 40 (FT1536.GameByte.signName r m)) (FT1536.GameByte.nonceBytes r)
+'FT1536.GameNames.take40_sign' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameNames.drop40_sign : ∀ (r : FT1536.GameByte.Nonce) (m : FT1536.GameByte.Message),
+  Eq.{1} (List.drop.{0} 40 (FT1536.GameByte.signName r m)) m
+'FT1536.GameNames.drop40_sign' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameNames.nonceOfBytes_sign : ∀ (r : FT1536.GameByte.Nonce) (m : FT1536.GameByte.Message),
+  Eq.{1} (FT1536.GameNames.nonceOfBytes (FT1536.GameByte.signName r m)) r
+'FT1536.GameNames.nonceOfBytes_sign' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameNames.tableAddr_sign : ∀ (r : FT1536.GameByte.Nonce) (m : FT1536.GameByte.Message),
+  Eq.{1} (FT1536.GameNames.tableAddr (FT1536.GameByte.signName r m)) (Prod.mk.{0, 0} (Sum.inr.{0, 0} r) m)
+'FT1536.GameNames.tableAddr_sign' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameNames.tableAddr_short : ∀ (b : FT1536.GameByte.Name) (hb : LT.lt.{0} (List.length.{0} b) 40),
+  Eq.{1} (FT1536.GameNames.tableAddr b) (Prod.mk.{0, 0} (Sum.inl.{0, 0} (Subtype.mk.{1} b hb)) List.nil.{0})
+'FT1536.GameNames.tableAddr_short' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameNames.short_addr_ne_sign : ∀ (b : FT1536.GameByte.Name),
+  LT.lt.{0} (List.length.{0} b) 40 →
+    ∀ (r : FT1536.GameByte.Nonce) (m : FT1536.GameByte.Message),
+      Ne.{1} (FT1536.GameNames.tableAddr b) (Prod.mk.{0, 0} (Sum.inr.{0, 0} r) m)
+'FT1536.GameNames.short_addr_ne_sign' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameMach.Budget : Type
+'FT1536.GameMach.Budget' does not depend on any axioms
+FT1536.GameMach.Mode : Type
+'FT1536.GameMach.Mode' does not depend on any axioms
+FT1536.GameMach.Reply : Type → Type
+'FT1536.GameMach.Reply' depends on axioms: [propext]
+FT1536.GameMach.Op : Type
+'FT1536.GameMach.Op' depends on axioms: [propext]
+FT1536.GameMach.Env : Type → Type
+'FT1536.GameMach.Env' depends on axioms: [propext]
+FT1536.GameMach.Mach : Type → Type
+'FT1536.GameMach.Mach' depends on axioms: [propext]
+@FT1536.GameMach.init : {C : Type} → FT1536.GameMach.Mode → FT1536.GameMach.Mach C
+'FT1536.GameMach.init' depends on axioms: [propext]
+FT1536.GameMach.sigVec : FT1536.PublicSimulation.BoxVec → FT1536.Geometry.Vec
+'FT1536.GameMach.sigVec' does not depend on any axioms
+FT1536.GameMach.Verdict : Type → Type
+'FT1536.GameMach.Verdict' does not depend on any axioms
+@FT1536.GameMach.signStep : {C : Type} →
+  FT1536.GameMach.Mode →
+    FT1536.ROM.State FT1536.GameNames.NameBody FT1536.GameByte.Message C →
+      FT1536.GameByte.Nonce →
+        FT1536.GameByte.Message →
+          FT1536.GameMach.Env C →
+            Prod.{0, 0} (FT1536.ROM.State FT1536.GameNames.NameBody FT1536.GameByte.Message C)
+              (Prod.{0, 0} (FT1536.GameMach.Reply C) Bool)
+'FT1536.GameMach.signStep' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.GameMach.step : {C : Type} →
+  (ℕ → C) →
+    FT1536.GameMach.Verdict C →
+      FT1536.GameMach.Mach C →
+        FT1536.GameMach.Op → FT1536.GameMach.Env C → Prod.{0, 0} (FT1536.GameMach.Mach C) (FT1536.GameMach.Reply C)
+'FT1536.GameMach.step' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.GameMach.step_eq : ∀ {C : Type} (targets : ℕ → C) (verdict : FT1536.GameMach.Verdict C)
+  (m : FT1536.GameMach.Mach C) (op : FT1536.GameMach.Op) (env : FT1536.GameMach.Env C),
+  Eq.{1} m.stopped false ∧ Eq.{1} m.over false →
+    Eq.{1} (FT1536.GameMach.step targets verdict m op env)
+      (match op with
+      | FT1536.GameMach.Op.hq k =>
+        Prod.mk.{0, 0}
+          { st := (FT1536.ROM.hash targets (FT1536.GameNames.tableAddr (FT1536.GameByte.render k)) m.st).2,
+            mode := m.mode, stopped := m.stopped, over := m.over, hq := HAdd.hAdd.{0, 0, 0} m.hq 1, sq := m.sq }
+          (FT1536.GameMach.Reply.hval
+            (FT1536.ROM.hash targets (FT1536.GameNames.tableAddr (FT1536.GameByte.render k)) m.st).1)
+      | FT1536.GameMach.Op.sq msg =>
+        have ss := FT1536.GameMach.signStep m.mode (FT1536.ROM.submit msg m.st) env.nonce msg env;
+        Prod.mk.{0, 0}
+          { st := ss.1, mode := m.mode, stopped := ss.2.2, over := m.over, hq := m.hq,
+            sq := HAdd.hAdd.{0, 0, 0} m.sq 1 }
+          ss.2.1
+      | FT1536.GameMach.Op.fin r msg sg =>
+        Prod.mk.{0, 0}
+          { st := (FT1536.ROM.hash targets (FT1536.GameNames.tableAddr (FT1536.GameByte.signName r msg)) m.st).2,
+            mode := m.mode, stopped := m.stopped, over := true, hq := m.hq, sq := m.sq }
+          (FT1536.GameMach.Reply.verdict
+            (decide
+                (msg ∉
+                  (FT1536.ROM.hash targets (FT1536.GameNames.tableAddr (FT1536.GameByte.signName r msg))
+                        m.st).2.seen) &&
+              verdict (FT1536.ROM.hash targets (FT1536.GameNames.tableAddr (FT1536.GameByte.signName r msg)) m.st).1 msg
+                (FT1536.GameMach.sigVec sg))))
+'FT1536.GameMach.step_eq' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.GameMach.stepBounded : {C : Type} →
+  FT1536.GameMach.Budget →
+    (ℕ → C) →
+      FT1536.GameMach.Verdict C →
+        FT1536.GameMach.Mach C →
+          FT1536.GameMach.Op → FT1536.GameMach.Env C → Prod.{0, 0} (FT1536.GameMach.Mach C) (FT1536.GameMach.Reply C)
+'FT1536.GameMach.stepBounded' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.GameMach.stepBounded_eq_step_of_within : ∀ {C : Type} (b : FT1536.GameMach.Budget) (targets : ℕ → C)
+  (verdict : FT1536.GameMach.Verdict C) (m : FT1536.GameMach.Mach C) (op : FT1536.GameMach.Op)
+  (env : FT1536.GameMach.Env C),
+  LE.le.{0} m.hq b.QH ∧ LE.le.{0} m.sq b.Qs ∧ LT.lt.{0} (HAdd.hAdd.{0, 0, 0} m.hq m.sq) b.maxSteps →
+    Eq.{1} (FT1536.GameMach.stepBounded b targets verdict m op env) (FT1536.GameMach.step targets verdict m op env)
+'FT1536.GameMach.stepBounded_eq_step_of_within' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.GameMach.signStep_seen : ∀ {C : Type} (mode : FT1536.GameMach.Mode)
+  (st : FT1536.ROM.State FT1536.GameNames.NameBody FT1536.GameByte.Message C) (r : FT1536.GameByte.Nonce)
+  (m : FT1536.GameByte.Message) (env : FT1536.GameMach.Env C),
+  Eq.{1} (FT1536.GameMach.signStep mode st r m env).1.seen st.seen
+'FT1536.GameMach.signStep_seen' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.GameMach.signStep_used : ∀ {C : Type} (mode : FT1536.GameMach.Mode)
+  (st : FT1536.ROM.State FT1536.GameNames.NameBody FT1536.GameByte.Message C) (r : FT1536.GameByte.Nonce)
+  (m : FT1536.GameByte.Message) (env : FT1536.GameMach.Env C),
+  Eq.{1} (FT1536.GameMach.signStep mode st r m env).1.used st.used
+'FT1536.GameMach.signStep_used' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.GameMach.step_sq_seen : ∀ {C : Type} (targets : ℕ → C) (verdict : FT1536.GameMach.Verdict C)
+  (m : FT1536.GameMach.Mach C) (msg : FT1536.GameByte.Message) (env : FT1536.GameMach.Env C),
+  Eq.{1} m.stopped false ∧ Eq.{1} m.over false →
+    Membership.mem.{0, 0} (FT1536.GameMach.step targets verdict m (FT1536.GameMach.Op.sq msg) env).1.st.seen msg
+'FT1536.GameMach.step_sq_seen' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.GameMach.stopped_absorbing : ∀ {C : Type} (targets : ℕ → C) (verdict : FT1536.GameMach.Verdict C)
+  (m : FT1536.GameMach.Mach C) (op : FT1536.GameMach.Op) (env : FT1536.GameMach.Env C),
+  Eq.{1} m.stopped true ∨ Eq.{1} m.over true →
+    Eq.{1} (FT1536.GameMach.step targets verdict m op env) (Prod.mk.{0, 0} m FT1536.GameMach.Reply.halt)
+'FT1536.GameMach.stopped_absorbing' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.GameMach.sign_atomic : ∀ {C : Type} (targets : ℕ → C) (verdict : FT1536.GameMach.Verdict C)
+  (m : FT1536.GameMach.Mach C) (msg : FT1536.GameByte.Message) (env : FT1536.GameMach.Env C),
+  Eq.{1} m.stopped false ∧ Eq.{1} m.over false →
+    Eq.{1} (FT1536.GameMach.step targets verdict m (FT1536.GameMach.Op.sq msg) env).2
+        (FT1536.GameMach.signStep m.mode (FT1536.ROM.submit msg m.st) env.nonce msg env).2.1 ∧
+      Eq.{1} (FT1536.GameMach.step targets verdict m (FT1536.GameMach.Op.sq msg) env).1.st
+        (FT1536.GameMach.signStep m.mode (FT1536.ROM.submit msg m.st) env.nonce msg env).1
+'FT1536.GameMach.sign_atomic' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.GameMach.used_le_of_step : ∀ {C : Type} (targets : ℕ → C) (verdict : FT1536.GameMach.Verdict C)
+  (m : FT1536.GameMach.Mach C) (op : FT1536.GameMach.Op) (env : FT1536.GameMach.Env C),
+  LE.le.{0} (FT1536.GameMach.step targets verdict m op env).1.st.used (HAdd.hAdd.{0, 0, 0} m.st.used 1)
+'FT1536.GameMach.used_le_of_step' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.GameMach.signStep_table : ∀ {C : Type} (mode : FT1536.GameMach.Mode)
+  (st : FT1536.ROM.State FT1536.GameNames.NameBody FT1536.GameByte.Message C) (r : FT1536.GameByte.Nonce)
+  (m : FT1536.GameByte.Message) (env : FT1536.GameMach.Env C),
+  LE.le.{0} (List.length.{0} (FT1536.GameMach.signStep mode st r m env).1.table)
+    (HAdd.hAdd.{0, 0, 0} (List.length.{0} st.table) 1)
+'FT1536.GameMach.signStep_table' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.GameMach.verdict_fresh : ∀ {C : Type} (targets : ℕ → C) (verdict : FT1536.GameMach.Verdict C)
+  (m : FT1536.GameMach.Mach C) (r : FT1536.GameByte.Nonce) (msg : FT1536.GameByte.Message)
+  (sg : FT1536.PublicSimulation.BoxVec) (env : FT1536.GameMach.Env C),
+  Eq.{1} m.stopped false ∧ Eq.{1} m.over false →
+    Eq.{1} (FT1536.GameMach.step targets verdict m (FT1536.GameMach.Op.fin r msg sg) env).2
+        (FT1536.GameMach.Reply.verdict true) →
+      msg ∉ (FT1536.ROM.hash targets (FT1536.GameNames.tableAddr (FT1536.GameByte.signName r msg)) m.st).2.seen
+'FT1536.GameMach.verdict_fresh' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.PaidSteps.second_self : ∀ {α : Type} [inst : Fintype.{0} α] (p : FT1536.Law.{0} α),
+  Eq.{1} (FT1536.Divergence.second.{0} p p) 1
+'FT1536.PaidSteps.second_self' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.PaidSteps.second_of_eq : ∀ {α : Type} [inst : Fintype.{0} α] (j p : FT1536.Law.{0} α),
+  Eq.{1} j p → Eq.{1} (FT1536.Divergence.second.{0} j p) 1
+'FT1536.PaidSteps.second_of_eq' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.PaidSteps.countPaid : (paid : ℕ → Prop) → [DecidablePred.{1} paid] → ℕ → ℕ
+'FT1536.PaidSteps.countPaid' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.PaidSteps.countPaid_succ : ∀ (paid : ℕ → Prop) [inst : DecidablePred.{1} paid] (n : ℕ),
+  Eq.{1} (FT1536.PaidSteps.countPaid paid (HAdd.hAdd.{0, 0, 0} n 1))
+    (HAdd.hAdd.{0, 0, 0} (FT1536.PaidSteps.countPaid paid n) (ite.{1} (paid n) 1 0))
+'FT1536.PaidSteps.countPaid_succ' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.PaidSteps.countPaid_zero : ∀ (paid : ℕ → Prop) [inst : DecidablePred.{1} paid],
+  Eq.{1} (FT1536.PaidSteps.countPaid paid 0) 0
+'FT1536.PaidSteps.countPaid_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.PaidSteps.paid_counter_chi2 : ∀ {α : Type} [inst : Fintype.{0} α]
+  (j p : (n : ℕ) → FT1536.Divergence.Hist α n → FT1536.Law.{0} α) (paid : ℕ → Prop) [inst_1 : DecidablePred.{1} paid]
+  (e : ℝ),
+  LE.le.{0} 0 e →
+    (∀ (i : ℕ) (x : FT1536.Divergence.Hist α i), ¬paid i → Eq.{1} (j i x) (p i x)) →
+      (∀ (i : ℕ) (x : FT1536.Divergence.Hist α i),
+          paid i → LE.le.{0} (FT1536.Divergence.second.{0} (j i x) (p i x)) (HAdd.hAdd.{0, 0, 0} 1 e)) →
+        ∀ (n : ℕ),
+          LE.le.{0} (FT1536.Divergence.second.{0} (FT1536.Divergence.transcript j n) (FT1536.Divergence.transcript p n))
+            (HPow.hPow.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} 1 e) (FT1536.PaidSteps.countPaid paid n))
+'FT1536.PaidSteps.paid_counter_chi2' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.PaidSteps.paid_counter_le : ∀ {α : Type} [inst : Fintype.{0} α]
+  (j p : (n : ℕ) → FT1536.Divergence.Hist α n → FT1536.Law.{0} α) (paid : ℕ → Prop) [inst_1 : DecidablePred.{1} paid]
+  (e : ℝ),
+  LE.le.{0} 0 e →
+    ∀ (Qs : ℕ),
+      (∀ (i : ℕ) (x : FT1536.Divergence.Hist α i), ¬paid i → Eq.{1} (j i x) (p i x)) →
+        (∀ (i : ℕ) (x : FT1536.Divergence.Hist α i),
+            paid i → LE.le.{0} (FT1536.Divergence.second.{0} (j i x) (p i x)) (HAdd.hAdd.{0, 0, 0} 1 e)) →
+          (∀ (n : ℕ), LE.le.{0} (FT1536.PaidSteps.countPaid paid n) Qs) →
+            ∀ (n : ℕ),
+              LE.le.{0}
+                (FT1536.Divergence.second.{0} (FT1536.Divergence.transcript j n) (FT1536.Divergence.transcript p n))
+                (HPow.hPow.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} 1 e) Qs)
+'FT1536.PaidSteps.paid_counter_le' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.PaidSteps.paid_event_bound : ∀ {α : Type} [inst : Fintype.{0} α]
+  (j p : (n : ℕ) → FT1536.Divergence.Hist α n → FT1536.Law.{0} α) (paid : ℕ → Prop) [inst_1 : DecidablePred.{1} paid]
+  (e : ℝ),
+  LE.le.{0} 0 e →
+    ∀ (Qs : ℕ),
+      (∀ (i : ℕ) (x : FT1536.Divergence.Hist α i), ¬paid i → Eq.{1} (j i x) (p i x)) →
+        (∀ (i : ℕ) (x : FT1536.Divergence.Hist α i),
+            paid i → LE.le.{0} (FT1536.Divergence.second.{0} (j i x) (p i x)) (HAdd.hAdd.{0, 0, 0} 1 e)) →
+          (∀ (n : ℕ), LE.le.{0} (FT1536.PaidSteps.countPaid paid n) Qs) →
+            (∀ (n : ℕ) (x : FT1536.Divergence.Hist α n), FT1536.Divergence.AC.{0} (j n x) (p n x)) →
+              ∀ (n : ℕ) (E : FT1536.Divergence.Hist α n → Prop) [inst_2 : DecidablePred.{1} E],
+                LE.le.{0} (FT1536.Law.event.{0} (FT1536.Divergence.transcript p n) E)
+                  (FT1536.EventTransfer.phi (HSub.hSub.{0, 0, 0} (HPow.hPow.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} 1 e) Qs) 1)
+                    (FT1536.Law.event.{0} (FT1536.Divergence.transcript j n) E))
+'FT1536.PaidSteps.paid_event_bound' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.PaidSteps.paid_trace_bound : ∀ {α : Type} [inst : Fintype.{0} α]
+  (j p : (n : ℕ) → FT1536.Divergence.Hist α n → FT1536.Law.{0} α) (paid : ℕ → Prop) [inst_1 : DecidablePred.{1} paid]
+  (e : ℝ),
+  LE.le.{0} 0 e →
+    ∀ (Qs : ℕ),
+      (∀ (i : ℕ) (x : FT1536.Divergence.Hist α i), ¬paid i → Eq.{1} (j i x) (p i x)) →
+        (∀ (i : ℕ) (x : FT1536.Divergence.Hist α i),
+            paid i → LE.le.{0} (FT1536.Divergence.second.{0} (j i x) (p i x)) (HAdd.hAdd.{0, 0, 0} 1 e)) →
+          (∀ (n : ℕ), LE.le.{0} (FT1536.PaidSteps.countPaid paid n) Qs) →
+            (∀ (n : ℕ) (x : FT1536.Divergence.Hist α n), FT1536.Divergence.AC.{0} (j n x) (p n x)) →
+              ∀ (n : ℕ) (Win Bad MT : FT1536.Divergence.Hist α n → Prop) [inst_2 : DecidablePred.{1} Win]
+                [inst_3 : DecidablePred.{1} Bad] [inst_4 : DecidablePred.{1} MT],
+                (∀ (x : FT1536.Divergence.Hist α n), Win x ∧ ¬Bad x → MT x) →
+                  ∀ (eps : ℝ),
+                    LE.le.{0} (FT1536.Law.event.{0} (FT1536.Divergence.transcript p n) Bad) eps →
+                      LE.le.{0} (FT1536.Law.event.{0} (FT1536.Divergence.transcript p n) Win)
+                        (min.{0} 1
+                          (HAdd.hAdd.{0, 0, 0} eps
+                            (FT1536.EventTransfer.phi
+                              (HSub.hSub.{0, 0, 0} (HPow.hPow.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} 1 e) Qs) 1)
+                              (FT1536.Law.event.{0} (FT1536.Divergence.transcript j n) MT))))
+'FT1536.PaidSteps.paid_trace_bound' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.PaidSteps.sign_frame_injective : ∀ (msg : FT1536.GameByte.Message),
+  Function.Injective.{1, 1} fun r => FT1536.GameNames.tableAddr (FT1536.GameByte.signName r msg)
+'FT1536.PaidSteps.sign_frame_injective' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.PaidSteps.sign_conflict_risk : ∀ {X : Type} [Fintype.{0} X] [inst : DecidableEq.{1} X]
+  (frame : Fin (HPow.hPow.{0, 0, 0} 2 320) → X),
+  Function.Injective.{1, 1} frame →
+    ∀ (table : Finset.{0} X) (K : ℕ),
+      LE.le.{0} (Finset.card.{0} table) K →
+        LE.le.{0} (FT1536.Law.event.{0} FT1536.Law.uniform.{0} fun r => Membership.mem.{0, 0} table (frame r))
+          (HDiv.hDiv.{0, 0, 0} (↑K) (HPow.hPow.{0, 0, 0} 2 320))
+'FT1536.PaidSteps.sign_conflict_risk' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.PaidSteps.conflict_bound_shape : ∀ {Ω : Type} [inst : Fintype.{0} Ω] (p : FT1536.Law.{0} Ω) (qs qh : ℕ)
+  (E : ℕ → Ω → Prop) [inst_1 : (i : ℕ) → DecidablePred.{1} (E i)],
+  (∀ (i : ℕ),
+      Membership.mem.{0, 0} (Finset.range qs) i →
+        LE.le.{0} (FT1536.Law.event.{0} p (E i))
+          (HDiv.hDiv.{0, 0, 0} (↑(HAdd.hAdd.{0, 0, 0} qh i)) (HPow.hPow.{0, 0, 0} 2 320))) →
+    LE.le.{0} (FT1536.Law.event.{0} p fun x => ∃ i, Membership.mem.{0, 0} (Finset.range qs) i ∧ E i x)
+      (min.{0} 1
+        (HDiv.hDiv.{0, 0, 0}
+          (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} ↑qs ↑qh)
+            (HDiv.hDiv.{0, 0, 0} (HMul.hMul.{0, 0, 0} ↑qs ↑(HSub.hSub.{0, 0, 0} qs 1)) 2))
+          (HPow.hPow.{0, 0, 0} 2 320)))
+'FT1536.PaidSteps.conflict_bound_shape' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@FT1536.PaidSteps.zero_paid_boundary : ∀ {α : Type} [inst : Fintype.{0} α]
+  (j p : (n : ℕ) → FT1536.Divergence.Hist α n → FT1536.Law.{0} α),
+  (∀ (i : ℕ) (x : FT1536.Divergence.Hist α i), Eq.{1} (j i x) (p i x)) →
+    ∀ (n : ℕ),
+      Eq.{1} (FT1536.Divergence.second.{0} (FT1536.Divergence.transcript j n) (FT1536.Divergence.transcript p n)) 1 ∧
+        Eq.{1} (HSub.hSub.{0, 0, 0} (HPow.hPow.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} 1 0) 0) 1) 0 ∧
+          Eq.{1} (FT1536.EventTransfer.phi (HSub.hSub.{0, 0, 0} (HPow.hPow.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} 1 0) 0) 1) 0)
+            0
+'FT1536.PaidSteps.zero_paid_boundary' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameCertificate.byte_frame_identity : Eq.{1} (HPow.hPow.{0, 0, 0} 256 40) (HPow.hPow.{0, 0, 0} 2 320) ∧
+  Eq.{1} (HPow.hPow.{0, 0, 0} 256 2) (HPow.hPow.{0, 0, 0} 2 16)
+'FT1536.GameCertificate.byte_frame_identity' depends on axioms: [propext]
+FT1536.GameCertificate.paid_counter_exact : Eq.{1} (HPow.hPow.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} 1 (1 / 4)) 2) (25 / 16) ∧
+  Eq.{1} (HPow.hPow.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} 1 (1 / 4)) 4) (625 / 256) ∧
+    LT.lt.{0} (HPow.hPow.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} 1 (1 / 4)) 2)
+      (HPow.hPow.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} 1 (1 / 4)) 4)
+'FT1536.GameCertificate.paid_counter_exact' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameCertificate.conflict_sum_exact : Eq.{1}
+    (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} 3 2)
+      (HDiv.hDiv.{0, 0, 0} (HMul.hMul.{0, 0, 0} 3 (HSub.hSub.{0, 0, 0} 3 1)) 2))
+    9 ∧
+  Eq.{1}
+    (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 2)
+      (HDiv.hDiv.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 (HSub.hSub.{0, 0, 0} 2 1)) 2))
+    5
+'FT1536.GameCertificate.conflict_sum_exact' depends on axioms: [propext]
+FT1536.GameCertificate.shared_step_identity : Eq.{1}
+    (HAdd.hAdd.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} (1 / 2) 2) (1 / 2))
+      (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} (1 / 2) 2) (1 / 2)))
+    1 ∧
+  Eq.{1}
+    (HAdd.hAdd.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} (1 / 3) 2) (1 / 3))
+      (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} (2 / 3) 2) (2 / 3)))
+    1
+'FT1536.GameCertificate.shared_step_identity' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameCertificate.lazy_uniform_three : Eq.{1} (HMul.hMul.{0, 0, 0} (1 / 3) (1 / 3)) (1 / 9) ∧
+  Eq.{1} (HMul.hMul.{0, 0, 0} (2 / 3) (1 / 3)) (2 / 9)
+'FT1536.GameCertificate.lazy_uniform_three' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+FT1536.GameCertificate.centering_values_game : Eq.{1}
+    (HAdd.hAdd.{0, 0, 0} (FT1536.Geometry.block 9217 (-5000)) (FT1536.Geometry.block 32767 18000)) 2051350378 ∧
+  Eq.{1} (HAdd.hAdd.{0, 0, 0} (FT1536.Geometry.block (-9216) (-5000)) (FT1536.Geometry.block 32767 18000)) 2143496945
+'FT1536.GameCertificate.centering_values_game' depends on axioms: [propext, Quot.sound.{u}]
