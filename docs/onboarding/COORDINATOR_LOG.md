@@ -298,3 +298,22 @@ w historii. Następny krok po zakończeniu: ocena wyniku i checkpoint przy PASS.
   Poprzednik RO,bez zmiany jego pinów/statusu. Worker nieuruchomiony.
 - Następny krok:właściciel uruchamia Astrę z CURRENT_MATH_TASK; wykonawca
   przechodzi kolejno A1–A3,właśnie w RUN_002. Bez Git/push po stronie workera.
+
+## 2026-09-25T21:37:19Z — przeniesienie na NVMe, wyjątek REPLAY_SEED, importy A1/A2v2.1/A5
+
+- Decyzja właściciela 2026-09-25: kanoniczna lokalizacja pracy to od teraz
+  /media/footfalcon/FT1536_DATA/free_falcon_sign (HEAD 2026-09-25T21:37:19Z przed akcją 5f81706,
+  +7 do origin, gałąź main, tożsamość niirmataa). Sesja prowadzącego przeniesiona
+  przez session_move. Stary /home/footfalcon/free_falcon_sign = porzucone mirror.
+- Wyjątek filtra nazw archive.py dla literalnego REPLAY_SEED.sha256 (publiczny
+  manifest hashy wejść replayu T12.1, nie sekret; treść nadal skanowana pod kątem
+  markerów kluczy). Test test_replay_seed_manifest_name_is_exactly_exempted;
+  komenda: python3 -B -m unittest discover -s proofs/ft1536/tests -p 'test_*.py'
+  → 29/29 OK (28 + nowy). Inne nazwy seed/secret nadal odrzucane.
+- Kopia W /home/footfalcon/Obrazy/FT1536_MATH_EUFCMA_GAME_BINDING_RUN_001
+  (83MB, kopia bajt-w-bajt cp -a) do work/FT1536_MATH_EUFCMA_GAME_BINDING_RUN_001_OBRAZY;
+  shim originów importowych work/.../import-source (6 plików bootstrapu zlecenia
+  z inputs/bootstrap/, hash-zgodne z INPUTS). Cudzizna /home/footfalcon/FT1536_*
+  nietknięta. Binaria .so (radial_engine) wykluczone z freezu jako robocze.
+- Następne kroki w tym cyklu: commity checkpointami (załącznie z tym wpisem),
+  opisy STATE/README, push wg polecenia właściciela „po wszystkim push na gh".

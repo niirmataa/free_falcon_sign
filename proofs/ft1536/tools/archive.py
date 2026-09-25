@@ -62,8 +62,14 @@ def checked_path(value, absolute=False):
     require(not (set(p.lower() for p in parts) & PRIVATE_PARTS), f'Private path: {value}')
     require(path.suffix.lower() not in ('.sk', '.priv', '.key', '.pem'), f'Key file: {value}')
     require(path.name != '.env' and not path.name.startswith('.env.'), f'Environment file: {value}')
-    require(not re.search(r'(^|[-_.])(secret|seed)([-_.]|$)', path.name, re.I),
-            f'Sensitive input name: {value}')
+    # Owner decision 2026-09-25: the exact literal REPLAY_SEED.sha256 is the
+    # public replay-input hash manifest of frozen T12.1 packages (MTISIS_RUN_001,
+    # GAME_BINDING_RUN_001), not secret material. Only this literal file name is
+    # exempt; every other seed-like name stays rejected. The content scan for
+    # private-key markers in checked_bytes is unaffected.
+    if path.name != 'REPLAY_SEED.sha256':
+        require(not re.search(r'(^|[-_.])(secret|seed)([-_.]|$)', path.name, re.I),
+                f'Sensitive input name: {value}')
     return path
 
 

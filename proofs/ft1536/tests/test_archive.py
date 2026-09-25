@@ -77,6 +77,23 @@ class ArchiveTests(unittest.TestCase):
         with self.assertRaises(archive.ArchiveError):
             archive.manifest((sha + '  a\n' + sha + '  a\n').encode())
 
+    def test_replay_seed_manifest_name_is_exactly_exempted(self):
+        # Owner decision 2026-09-25: REPLAY_SEED.sha256 is the public replay-input
+        # hash manifest of frozen T12.1 packages. Only the literal file name is
+        # exempt; every other seed-like name keeps failing the sensitive filter.
+        sha = '0' * 64
+        archive.checked_path('REPLAY_SEED.sha256')
+        archive.checked_path('outputs/REPLAY_SEED.sha256')
+        for name in ('REPLAY_SEED.txt', 'replay_seed.sha256', 'MY_SEED.sha256',
+                     'seed', 'REPLAY_SEED', 'REPLAY_SEED.sha256.bak'):
+            with self.subTest(name=name), self.assertRaises(archive.ArchiveError):
+                archive.checked_path(name)
+        self.members['REPLAY_SEED.sha256'] = (sha + '  inputs/public.txt\n').encode()
+        self.write_fixture()
+        self.import_fixture()
+        checked = archive.verify_stage(self.root, self.source.name)
+        self.assertEqual(checked['output_entries'], len(self.members))
+
     def test_symlink_member_is_rejected(self):
         path = self.source / 'inputs/public.txt'
         path.unlink()
