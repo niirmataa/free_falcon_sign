@@ -1,0 +1,13 @@
+CENTERING_CLOSURE/formal/ThetaBox.lean:173:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?m.127 ∈ ?m.125 ×ˢ ?m.126
+in the target expression
+  p ∈ ↑(Finset.Icc (-N) N ×ˢ Finset.Icc (-N) N)
+
+case refine_3
+s : ℝ
+p : ℤ × ℤ
+hp : p ∈ ↑(Finset.Icc (-N) N ×ˢ Finset.Icc (-N) N)
+⊢ p ∈ (fun d => (dec d.1, dec d.2)) '' ↑Finset.univ
+CENTERING_CLOSURE/formal/ThetaBox.lean:161:0: error: linter Lean.Linter.constructorNameAsVariable failed: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information

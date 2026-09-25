@@ -1,0 +1,26 @@
+CENTERING_CLOSURE/formal/ThetaBox.lean:362:8: error: Type mismatch
+  mul_nonneg (le_refl 0) (LT.lt.le (exp_pos ?m.576))
+has type
+  0 ≤ 0 * rexp ?m.576
+but is expected to have type
+  0 * rexp (-(s / 2) * ↑j ^ 2) ≤ rexp (-(s / 2) * ↑i ^ 2) * rexp (-(s / 2) * ↑j ^ 2)
+CENTERING_CLOSURE/formal/ThetaBox.lean:364:8: error: No goals to be solved
+CENTERING_CLOSURE/formal/ThetaBox.lean:383:50: error: unsolved goals
+s : ℝ
+hs : 0 < s
+j : ℤ
+hj : j ∈ Finset.Icc (-N) N
+hpt :
+  ∀ (i : ℤ),
+    (if i ∈ Finset.Icc (-N) N then 0 else rexp (-s * ↑(block i j))) ≤
+      (if i ∈ Finset.Icc (-N) N then 0 else rexp (-(s / 2) * ↑i ^ 2)) * rexp (-(s / 2) * ↑j ^ 2)
+hs2 : 0 < s / 2
+hge : Summable fun i => rexp (-(s / 2) * ↑i ^ 2)
+hmaj : Summable fun i => rexp (-(s / 2) * ↑i ^ 2) * rexp (-(s / 2) * ↑j ^ 2)
+hsA : Summable fun i => (if i ∈ Finset.Icc (-N) N then 0 else rexp (-(s / 2) * ↑i ^ 2)) * rexp (-(s / 2) * ↑j ^ 2)
+hsB : Summable fun i => if i ∈ Finset.Icc (-N) N then 0 else rexp (-s * ↑(block i j))
+hle :
+  (∑' (i : ℤ), if i ∈ Finset.Icc (-N) N then 0 else rexp (-s * ↑(block i j))) ≤
+    ∑' (i : ℤ), (if i ∈ Finset.Icc (-N) N then 0 else rexp (-(s / 2) * ↑i ^ 2)) * rexp (-(s / 2) * ↑j ^ 2)
+⊢ (∑' (x : ℤ), if x ∈ Finset.Icc (-N) N then 0 else rexp (-(s / 2) * ↑x ^ 2)) * rexp (-(s / 2) * ↑j ^ 2) =
+    Tg s * rexp (-(s / 2) * ↑j ^ 2)

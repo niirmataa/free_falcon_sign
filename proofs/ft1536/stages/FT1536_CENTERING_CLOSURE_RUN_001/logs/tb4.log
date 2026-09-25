@@ -1,0 +1,15 @@
+CENTERING_CLOSURE/formal/ThetaBox.lean:92:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ∑ i ∈ Finset.Icc (-N) N, if i ∈ Finset.Icc (-N) N then rexp (-s * ↑(block i j)) else 0
+in the target expression
+  ∑ i ∈ Finset.Icc (-N) N, rexp (-s * ↑(block i j)) =
+    ∑' (i : ℤ), if i ∈ Finset.Icc (-N) N then rexp (-s * ↑(block i j)) else 0
+
+s : ℝ
+hs : 0 < s
+j : ℤ
+hj : j ∈ Finset.Icc (-N) N
+hts :
+  (∑' (i : ℤ), if i ∈ Finset.Icc (-N) N then rexp (-s * ↑(block i j)) else 0) =
+    ∑ i ∈ Finset.Icc (-N) N, if i ∈ Finset.Icc (-N) N then rexp (-s * ↑(block i j)) else 0
+⊢ ∑ i ∈ Finset.Icc (-N) N, rexp (-s * ↑(block i j)) =
+    ∑' (i : ℤ), if i ∈ Finset.Icc (-N) N then rexp (-s * ↑(block i j)) else 0

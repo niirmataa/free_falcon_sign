@@ -1,0 +1,91 @@
+CENTERING_CLOSURE/formal/ThetaFinal.lean:117:31: error(lean.unknownIdentifier): Unknown identifier `log_four_le_two`
+CENTERING_CLOSURE/formal/ThetaFinal.lean:128:36: error: Application type mismatch: The argument
+  hX
+has type
+  log 4 ≤ π ^ 2 / (3 * s)
+but is expected to have type
+  π ^ 2 / (3 * s) ≤ log 4
+in the application
+  neg_le_neg hX
+CENTERING_CLOSURE/formal/ThetaFinal.lean:133:30: error: Application type mismatch: The argument
+  hexp
+has type
+  rexp (-log 4) ≤ rexp (-(π ^ 2 / (3 * s)))
+but is expected to have type
+  rexp (-(π ^ 2 / (3 * s))) ≤ rexp (-log 4)
+in the application
+  mul_le_mul_of_nonneg_left hexp
+CENTERING_CLOSURE/formal/ThetaFinal.lean:182:6: error: Type mismatch
+  this
+has type
+  0 ≤ S0 (3 * s)
+but is expected to have type
+  0 ≤ S0 s
+CENTERING_CLOSURE/formal/ThetaFinal.lean:200:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (?a * ?b) ^ ?n
+in the target expression
+  √(π / s) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) * (√(π / (3 * s)) * (1 - 4 * rexp (-(π ^ 2 / (3 * s))))) =
+    √(π / s) * √(π / (3 * s)) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) ^ 2
+
+s : ℝ
+hs : 0 < s
+hs1 : s ≤ 1
+h3s : 0 < 3 * s
+h3s9 : 3 * s ≤ 9
+hs9 : s ≤ 9
+hA1 : √(π / s) ≤ S0 s
+hB1 : √(π / (3 * s)) ≤ S0 (3 * s)
+hA2 : √(π / s) * (1 - 4 * rexp (-(π ^ 2 / s))) ≤ S1 s
+hB2 : √(π / (3 * s)) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) ≤ S1 (3 * s)
+hM0 : 0 ≤ 4 * rexp (-(π ^ 2 / (3 * s)))
+hMle : 4 * rexp (-(π ^ 2 / (3 * s))) ≤ 1
+hca : 4 * rexp (-(π ^ 2 / s)) ≤ 4 * rexp (-(π ^ 2 / (3 * s)))
+hA3 : √(π / s) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) ≤ S1 s
+hS1pos : 0 ≤ S1 s
+hprod0 : √(π / s) * √(π / (3 * s)) ≤ S0 s * S0 (3 * s)
+hprod1 :
+  √(π / s) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) * (√(π / (3 * s)) * (1 - 4 * rexp (-(π ^ 2 / (3 * s))))) ≤
+    S1 s * S1 (3 * s)
+hmul : √(π / s) * √(π / (3 * s)) = π / (s * √3)
+⊢ √(π / s) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) * (√(π / (3 * s)) * (1 - 4 * rexp (-(π ^ 2 / (3 * s))))) =
+    √(π / s) * √(π / (3 * s)) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) ^ 2
+CENTERING_CLOSURE/formal/ThetaFinal.lean:236:20: error(lean.unknownIdentifier): Unknown identifier `le_antisymm'`
+CENTERING_CLOSURE/formal/ThetaFinal.lean:253:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (?a * ?b) ^ ?n
+in the target expression
+  √(π / s) * √(π / (3 * s)) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) ^ 2 =
+    √(π / s) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) * (√(π / (3 * s)) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))))
+
+s : ℝ
+hs : 0 < s
+hs1 : s ≤ 1
+h3s : 0 < 3 * s
+h3s9 : 3 * s ≤ 9
+hs9 : s ≤ 9
+hA1 : √(π / s) ≤ S0 s
+hB1 : √(π / (3 * s)) ≤ S0 (3 * s)
+hA2 : √(π / s) * (1 - 4 * rexp (-(π ^ 2 / s))) ≤ S1 s
+hB2 : √(π / (3 * s)) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) ≤ S1 (3 * s)
+hM0 : 0 ≤ 4 * rexp (-(π ^ 2 / (3 * s)))
+hMle : 4 * rexp (-(π ^ 2 / (3 * s))) ≤ 1
+hca : 4 * rexp (-(π ^ 2 / s)) ≤ 4 * rexp (-(π ^ 2 / (3 * s)))
+hA3 : √(π / s) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) ≤ S1 s
+hS1pos : 0 ≤ S1 s
+hprod0 : √(π / s) * √(π / (3 * s)) ≤ S0 s * S0 (3 * s)
+hprod1 :
+  √(π / s) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) * (√(π / (3 * s)) * (1 - 4 * rexp (-(π ^ 2 / (3 * s))))) ≤
+    S1 s * S1 (3 * s)
+hS1alg :
+  √(π / s) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) * (√(π / (3 * s)) * (1 - 4 * rexp (-(π ^ 2 / (3 * s))))) =
+    π / (s * √3) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) ^ 2
+hkey : π / (s * √3) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) ^ 2 ≤ S1 s * S1 (3 * s)
+hsquare : (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) ^ 2 ≥ 1 - 2 * (4 * rexp (-(π ^ 2 / (3 * s))))
+hfinal :
+  π / (s * √3) + π / (s * √3) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) ^ 2 ≥
+    2 * (π / (s * √3)) * (1 - 4 * rexp (-(π ^ 2 / (3 * s))))
+hchain :
+  2 * (π / (s * √3)) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) ≤
+    π / (s * √3) + π / (s * √3) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) ^ 2
+h4 : π / (s * √3) = √(π / s) * √(π / (3 * s))
+⊢ √(π / s) * √(π / (3 * s)) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) ^ 2 =
+    √(π / s) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) * (√(π / (3 * s)) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))))

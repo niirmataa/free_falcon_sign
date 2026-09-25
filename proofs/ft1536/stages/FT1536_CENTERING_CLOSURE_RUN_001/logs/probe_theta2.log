@@ -1,0 +1,23 @@
+@inv_mul_cancel₀ : ∀ {G₀ : Type u_1} [inst : GroupWithZero G₀] {a : G₀}, a ≠ 0 → a⁻¹ * a = 1
+Real.exp_mul : ∀ (x y : ℝ), Real.exp (x * y) = Real.exp x ^ y
+Real.rpow_natCast : ∀ (x : ℝ) (n : ℕ), x ^ ↑n = x ^ n
+@Real.exp_lt_exp : ∀ {x y : ℝ}, Real.exp x < Real.exp y ↔ x < y
+@Summable.mul_left : ∀ {ι : Type u_1} {α : Type u_2} {L : SummationFilter ι} [inst : NonUnitalNonAssocSemiring α]
+  [inst_1 : TopologicalSpace α] [IsTopologicalSemiring α] {f : ι → α} (a : α),
+  Summable f L → Summable (fun i => a * f i) L
+@tsum_mul_left : ∀ {ι : Type u_1} {α : Type u_2} {L : SummationFilter ι} [inst : DivisionSemiring α]
+  [inst_1 : TopologicalSpace α] [IsTopologicalSemiring α] {f : ι → α} {a : α} [T2Space α],
+  ∑'[L] (x : ι), a * f x = a * ∑'[L] (x : ι), f x
+@pow_succ : ∀ {M : Type u_1} [inst : Monoid M] (a : M) (n : ℕ), a ^ (n + 1) = a ^ n * a
+CENTERING_CLOSURE/logs/probe_theta2.lean:33:16: warning: Unused tactic linter: `(congr 1; ring)` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+CENTERING_CLOSURE/logs/probe_theta2.lean:33:16: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+CENTERING_CLOSURE/logs/probe_theta2.lean:36:17: warning: Variable name `hc` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hc
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`

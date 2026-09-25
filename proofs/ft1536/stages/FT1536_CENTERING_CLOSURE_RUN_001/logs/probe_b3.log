@@ -1,0 +1,35 @@
+CENTERING_CLOSURE/logs/probe_b3.lean:29:14: error: typeclass instance problem is stuck
+  IsOrderedRing ?m.299
+
+Note: Lean will not try to resolve this typeclass instance problem because the first, second, and third type arguments to `IsOrderedRing` are metavariables. These arguments must be fully determined before Lean will try to resolve the typeclass.
+
+Hint: Adding type annotations and supplying implicit arguments to functions can give Lean more information for typeclass resolution. For example, if you have a variable `x` that you intend to be a `Nat`, but Lean reports it as having an unresolved type like `?m`, replacing `x` with `(x : Nat)` can get typeclass resolution un-stuck.
+CENTERING_CLOSURE/logs/probe_b3.lean:32:4: error: Type mismatch
+  this
+has type
+  rexp (-(c * (2 * ↑n + 1))) ≤ rexp (-c)
+but is expected to have type
+  rexp (-c) ≤ rexp (-c * (2 * ↑n + 1))
+CENTERING_CLOSURE/logs/probe_b3.lean:40:4: error: linarith failed to find a contradiction
+c : ℝ
+hc : 0 < c
+hsplit : ∀ (n : ℕ), rexp (-c * ↑n ^ 2) = rexp (-c * (↑n + 1) ^ 2) * rexp (c * (2 * ↑n + 1))
+n : ℕ
+hpos : 0 < rexp (-c * (↑n + 1) ^ 2)
+hmono : rexp (-c) ≤ rexp (-c * (2 * ↑n + 1))
+hexp : (↑n + 1) ^ 2 = ↑n ^ 2 + 2 * ↑n + 1
+h3 : -c * (2 * ↑n + 1) + c * (2 * ↑n + 1) = 0
+a✝ : rexp (-c * (↑n ^ 2 + 2 * ↑n + 1)) * rexp (c * (2 * ↑n + 1)) < rexp (-c + -c * (↑n ^ 2 + 2 * ↑n + 1))
+⊢ False
+failed
+CENTERING_CLOSURE/logs/probe_b3.lean:43:2: error: linarith failed to find a contradiction
+c : ℝ
+hc : 0 < c
+hsplit : ∀ (n : ℕ), rexp (-c * ↑n ^ 2) = rexp (-c * (↑n + 1) ^ 2) * rexp (c * (2 * ↑n + 1))
+n : ℕ
+hpos : 0 < rexp (-c * (↑n + 1) ^ 2)
+hmono : rexp (-c) ≤ rexp (-c * (2 * ↑n + 1))
+hkey : rexp (-c) * rexp (-c * (↑n + 1) ^ 2) ≤ rexp (-c * ↑n ^ 2)
+a✝ : rexp (-c) * rexp (-c * ↑n ^ 2) < rexp (-c * (↑n + 1) ^ 2)
+⊢ False
+failed

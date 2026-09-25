@@ -1,0 +1,137 @@
+CENTERING_CLOSURE/formal/ThetaBox.lean:466:6: error: unsolved goals
+case neg
+s : ℝ
+hs : 0 < s
+hR : Summable fun j => ∑' (i : ℤ), rexp (-s * ↑(block i j))
+hW : Summable fun j => W s j
+hWn : ∀ (j : ℤ), 0 ≤ W s j
+hsub : ∑' (j : ℤ), (∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j) = Theta2 s - boxSum s
+hs1 : Summable fun j => if j ∈ Finset.Icc (-N) N then ∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j else 0
+j : ℤ
+hj : j ∉ Finset.Icc (-N) N
+⊢ ∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j ≤ ∑' (i : ℤ), rexp (-s * ↑(block i j))
+CENTERING_CLOSURE/formal/ThetaBox.lean:481:41: error: Application type mismatch: The argument
+  hj
+has type
+  j ∈ Finset.Icc (-N) N
+but is expected to have type
+  ¬?m.653
+in the application
+  @ite_eq_right ?m.653 ?m.654 hj
+CENTERING_CLOSURE/formal/ThetaBox.lean:540:8: error: No goals to be solved
+CENTERING_CLOSURE/formal/ThetaBox.lean:541:6: error: unsolved goals
+case neg
+s : ℝ
+hs : 0 < s
+hR : Summable fun j => ∑' (i : ℤ), rexp (-s * ↑(block i j))
+hW : Summable fun j => W s j
+hWn : ∀ (j : ℤ), 0 ≤ W s j
+hsub : ∑' (j : ℤ), (∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j) = Theta2 s - boxSum s
+hs1 : Summable fun j => if j ∈ Finset.Icc (-N) N then ∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j else 0
+hs2 : Summable fun j => if j ∈ Finset.Icc (-N) N then 0 else ∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j
+hsplit :
+  ∑' (j : ℤ), (∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j) =
+    (∑' (j : ℤ), if j ∈ Finset.Icc (-N) N then ∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j else 0) +
+      ∑' (j : ℤ), if j ∈ Finset.Icc (-N) N then 0 else ∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j
+hTg0 : 0 ≤ Tg s
+hpt :
+  ∀ (j : ℤ),
+    (if j ∈ Finset.Icc (-N) N then ∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j else 0) ≤
+      if j ∈ Finset.Icc (-N) N then Tg s * rexp (-(s / 2) * ↑j ^ 2) else 0
+hsA : Summable fun j => if j ∈ Finset.Icc (-N) N then Tg s * rexp (-(s / 2) * ↑j ^ 2) else 0
+hle1 :
+  (∑' (i : ℤ), if i ∈ Finset.Icc (-N) N then ∑' (i_1 : ℤ), rexp (-s * ↑(block i_1 i)) - W s i else 0) ≤
+    Tg s * ∑' (j : ℤ), if j ∈ Finset.Icc (-N) N then rexp (-(s / 2) * ↑j ^ 2) else 0
+hcm :
+  ∀ (j : ℤ),
+    (if j ∈ Finset.Icc (-N) N then Tg s * rexp (-(s / 2) * ↑j ^ 2) else 0) =
+      Tg s * if j ∈ Finset.Icc (-N) N then rexp (-(s / 2) * ↑j ^ 2) else 0
+hfac :
+  (∑' (j : ℤ), if j ∈ Finset.Icc (-N) N then Tg s * rexp (-(s / 2) * ↑j ^ 2) else 0) =
+    Tg s * ∑' (j : ℤ), if j ∈ Finset.Icc (-N) N then rexp (-(s / 2) * ↑j ^ 2) else 0
+j : ℤ
+hj : j ∉ Finset.Icc (-N) N
+⊢ 0 ≤ rexp (-(s / 2) * ↑j ^ 2)
+CENTERING_CLOSURE/formal/ThetaBox.lean:547:8: error: unsolved goals
+case pos
+s : ℝ
+hs : 0 < s
+hR : Summable fun j => ∑' (i : ℤ), rexp (-s * ↑(block i j))
+hW : Summable fun j => W s j
+hWn : ∀ (j : ℤ), 0 ≤ W s j
+hsub : ∑' (j : ℤ), (∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j) = Theta2 s - boxSum s
+hs1 : Summable fun j => if j ∈ Finset.Icc (-N) N then ∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j else 0
+hs2 : Summable fun j => if j ∈ Finset.Icc (-N) N then 0 else ∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j
+hsplit :
+  ∑' (j : ℤ), (∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j) =
+    (∑' (j : ℤ), if j ∈ Finset.Icc (-N) N then ∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j else 0) +
+      ∑' (j : ℤ), if j ∈ Finset.Icc (-N) N then 0 else ∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j
+hTg0 : 0 ≤ Tg s
+hpt :
+  ∀ (j : ℤ),
+    (if j ∈ Finset.Icc (-N) N then ∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j else 0) ≤
+      if j ∈ Finset.Icc (-N) N then Tg s * rexp (-(s / 2) * ↑j ^ 2) else 0
+hsA : Summable fun j => if j ∈ Finset.Icc (-N) N then Tg s * rexp (-(s / 2) * ↑j ^ 2) else 0
+hle1 :
+  (∑' (i : ℤ), if i ∈ Finset.Icc (-N) N then ∑' (i_1 : ℤ), rexp (-s * ↑(block i_1 i)) - W s i else 0) ≤
+    Tg s * ∑' (j : ℤ), if j ∈ Finset.Icc (-N) N then rexp (-(s / 2) * ↑j ^ 2) else 0
+hcm :
+  ∀ (j : ℤ),
+    (if j ∈ Finset.Icc (-N) N then Tg s * rexp (-(s / 2) * ↑j ^ 2) else 0) =
+      Tg s * if j ∈ Finset.Icc (-N) N then rexp (-(s / 2) * ↑j ^ 2) else 0
+hfac :
+  (∑' (j : ℤ), if j ∈ Finset.Icc (-N) N then Tg s * rexp (-(s / 2) * ↑j ^ 2) else 0) =
+    Tg s * ∑' (j : ℤ), if j ∈ Finset.Icc (-N) N then rexp (-(s / 2) * ↑j ^ 2) else 0
+hpt2 : ∀ (j : ℤ), (if j ∈ Finset.Icc (-N) N then rexp (-(s / 2) * ↑j ^ 2) else 0) ≤ rexp (-(s / 2) * ↑j ^ 2)
+j : ℤ
+hj : j ∈ Finset.Icc (-N) N
+⊢ 0 ≤ rexp (-(s / 2) * ↑j ^ 2)
+CENTERING_CLOSURE/formal/ThetaBox.lean:549:10: error: No goals to be solved
+CENTERING_CLOSURE/formal/ThetaBox.lean:552:10: error: No goals to be solved
+CENTERING_CLOSURE/formal/ThetaBox.lean:553:8: error: unsolved goals
+case neg
+s : ℝ
+hs : 0 < s
+hR : Summable fun j => ∑' (i : ℤ), rexp (-s * ↑(block i j))
+hW : Summable fun j => W s j
+hWn : ∀ (j : ℤ), 0 ≤ W s j
+hsub : ∑' (j : ℤ), (∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j) = Theta2 s - boxSum s
+hs1 : Summable fun j => if j ∈ Finset.Icc (-N) N then ∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j else 0
+hs2 : Summable fun j => if j ∈ Finset.Icc (-N) N then 0 else ∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j
+hsplit :
+  ∑' (j : ℤ), (∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j) =
+    (∑' (j : ℤ), if j ∈ Finset.Icc (-N) N then ∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j else 0) +
+      ∑' (j : ℤ), if j ∈ Finset.Icc (-N) N then 0 else ∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j
+hTg0 : 0 ≤ Tg s
+hpt :
+  ∀ (j : ℤ),
+    (if j ∈ Finset.Icc (-N) N then ∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j else 0) ≤
+      if j ∈ Finset.Icc (-N) N then Tg s * rexp (-(s / 2) * ↑j ^ 2) else 0
+hsA : Summable fun j => if j ∈ Finset.Icc (-N) N then Tg s * rexp (-(s / 2) * ↑j ^ 2) else 0
+hle1 :
+  (∑' (i : ℤ), if i ∈ Finset.Icc (-N) N then ∑' (i_1 : ℤ), rexp (-s * ↑(block i_1 i)) - W s i else 0) ≤
+    Tg s * ∑' (j : ℤ), if j ∈ Finset.Icc (-N) N then rexp (-(s / 2) * ↑j ^ 2) else 0
+hcm :
+  ∀ (j : ℤ),
+    (if j ∈ Finset.Icc (-N) N then Tg s * rexp (-(s / 2) * ↑j ^ 2) else 0) =
+      Tg s * if j ∈ Finset.Icc (-N) N then rexp (-(s / 2) * ↑j ^ 2) else 0
+hfac :
+  (∑' (j : ℤ), if j ∈ Finset.Icc (-N) N then Tg s * rexp (-(s / 2) * ↑j ^ 2) else 0) =
+    Tg s * ∑' (j : ℤ), if j ∈ Finset.Icc (-N) N then rexp (-(s / 2) * ↑j ^ 2) else 0
+hpt2 : ∀ (j : ℤ), (if j ∈ Finset.Icc (-N) N then rexp (-(s / 2) * ↑j ^ 2) else 0) ≤ rexp (-(s / 2) * ↑j ^ 2)
+j : ℤ
+hj : j ∉ Finset.Icc (-N) N
+⊢ 0 ≤ rexp (-(s / 2) * ↑j ^ 2)
+CENTERING_CLOSURE/formal/ThetaBox.lean:556:57: error: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+CENTERING_CLOSURE/formal/ThetaBox.lean:556:19: error: Application type mismatch: The argument
+  mul_le_mul_of_nonneg_left hbox hTg0
+has type
+  (Tg s * ∑' (i : ℤ), if i ∈ Finset.Icc (-N) N then rexp (-(s / 2) * ↑i ^ 2) else 0) ≤
+    Tg s * ∑' (i : ℤ), rexp (-(s / 2) * ↑i ^ 2)
+but is expected to have type
+  (∑' (j : ℤ), if j ∈ Finset.Icc (-N) N then ∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j else 0) ≤
+    ∑' (i : ℤ), if i ∈ Finset.Icc (-N) N then ∑' (i_1 : ℤ), rexp (-s * ↑(block i_1 i)) - W s i else 0
+in the application
+  le_trans (mul_le_mul_of_nonneg_left hbox hTg0)

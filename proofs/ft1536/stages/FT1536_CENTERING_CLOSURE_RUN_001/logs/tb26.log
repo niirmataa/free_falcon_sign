@@ -1,0 +1,29 @@
+CENTERING_CLOSURE/formal/ThetaBox.lean:234:68: error: unsolved goals
+s : ℝ
+hs : 0 < s
+i : ℤ
+hi : i ∉ Finset.Icc (-N) N
+hci : i < -N ∨ N < i
+hci2 : i ≤ -65536 ∨ 65536 ≤ i
+hi2 : 65536 ^ 2 ≤ i ^ 2
+hi2r : 65536 ^ 2 ≤ ↑i ^ 2
+⊢ rexp (-(s / 4) * 65536 ^ 2 + -(s / 4) * ↑i ^ 2) = rexp (-(s / 4) * ↑i ^ 2 + -(s / 4) * 65536 ^ 2)
+CENTERING_CLOSURE/formal/ThetaBox.lean:253:8: error: No goals to be solved
+CENTERING_CLOSURE/formal/ThetaBox.lean:260:50: error: unsolved goals
+s : ℝ
+hs : 0 < s
+hpt :
+  ∀ (i : ℤ),
+    (if i ∈ Finset.Icc (-N) N then 0 else rexp (-(s / 2) * ↑i ^ 2)) ≤
+      rexp (-(s / 4) * 65536 ^ 2) * rexp (-(s / 4) * ↑i ^ 2)
+hsum : Summable fun i => if i ∈ Finset.Icc (-N) N then 0 else rexp (-(s / 2) * ↑i ^ 2)
+hle :
+  (∑' (i : ℤ), if i ∈ Finset.Icc (-N) N then 0 else rexp (-(s / 2) * ↑i ^ 2)) ≤
+    ∑' (i : ℤ), rexp (-(s / 4) * 65536 ^ 2) * rexp (-(s / 4) * ↑i ^ 2)
+⊢ rexp (-(s / 4) * 65536 ^ 2) * ∑' (x : ℤ), rexp (-(s / 4) * ↑x ^ 2) = rexp (-(s / 4) * 65536 ^ 2) * S0 (s / 4)
+CENTERING_CLOSURE/formal/ThetaBox.lean:276:12: error: typeclass instance problem is stuck
+  SummationFilter.NeBot ?m.130
+
+Note: Lean will not try to resolve this typeclass instance problem because the first and second type arguments to `SummationFilter.NeBot` are metavariables. These arguments must be fully determined before Lean will try to resolve the typeclass.
+
+Hint: Adding type annotations and supplying implicit arguments to functions can give Lean more information for typeclass resolution. For example, if you have a variable `x` that you intend to be a `Nat`, but Lean reports it as having an unresolved type like `?m`, replacing `x` with `(x : Nat)` can get typeclass resolution un-stuck.

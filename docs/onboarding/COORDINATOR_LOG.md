@@ -357,3 +357,26 @@ w historii. Następny krok po zakończeniu: ocena wyniku i checkpoint przy PASS.
   end_to_end_assembled_theorem_statement v2 rozlicza jako DISCHARGED przez
   RUN_002 (ich StoppingLoss/ConcreteReduction) — to claim autora v2, nie odbiór.
 - Następny krok: checkpoint A5 CENTERING_CLOSURE.
+
+## 2026-09-25T21:38:53Z — checkpoint FT1536_CENTERING_CLOSURE_RUN_001 (freeze koordynatorski)
+
+- Material: W GAME_BINDING/CENTERING_CLOSURE (autor MiMo V2.6 Pro, sesje W).
+  Autor nie zostawil formalnego freeze; koordynator opakowal freeze na polecenie
+  wlasciciela (integracja /Obrazy do rygoru). Piny freeze: OUTPUTS
+  2b74c9cde8ab9e21b56b975e7c6a2ec602646d4a0f9f4b553d8363b70c84045c,
+  REPORT 3554641683800b6f6228a484e744f104fc13e8b34249043d69d5eb885346ef0e,
+  266 czlonkow, 6 wejsc (5 modulow Lean z rebuilt closure FT1536.Basic/MathSign/
+  Geometry/Divergence/PublicSimulation + rekord liczbowy RUN_002
+  cac1c4f2c178... zgodny z pinem input_sha256 w PINNED.json), integrity PASS.
+- Zakres (PARTIAL_PROOF): pelny lemat 2 BEZ premises
+  (full_rejection_bound_no_premises: Rejection <= 1/2^24; audyt axioms czysty),
+  kanapka theta Fazy A-D zamkniete (thetaBounds), hnum kernelowo. Warunkowo dla
+  wszystkich kluczy z Adm: 1265/10^27 < delta(h) < 127/10^26 przy nazwanych
+  przeslankach hraw (spiecie rawLo/rawHi z RUN_002) i hbridge (transport mostka).
+  Sprostowanie: starszy HANDOFF w korzeniu W zapowiadał Faze D jako otwarta —
+  material ja zamyka (rozliczone w REPORT freezu).
+- Wykluczenia jawne: binarium repro/radial_engine...so (robocze, odtwarzalne
+  z .c/.pyx + engine_build_receipt), home//tmp/ cache. Wszystkie209 logi autora
+  (lacznie z probami skladni) w freeze. Niezalezny odbior: BRAK.
+- Następny krok: opisy zbiorcze (STATE, indeks README), materialy B5/B6
+  (zlecenie do documents/, dudect prep do provenance/), push.

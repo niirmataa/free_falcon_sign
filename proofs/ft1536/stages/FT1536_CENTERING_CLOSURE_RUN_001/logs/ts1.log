@@ -1,0 +1,20 @@
+CENTERING_CLOSURE/formal/Theta2Split.lean:80:64: error: unsolved goals
+G : ℤ → ℝ
+hG : Function.Even G
+hs : Summable G
+m : ℕ
+h1 : Int.negSucc m = -(↑m + 1)
+⊢ G (↑m + 1) = G (↑m + 1)
+CENTERING_CLOSURE/formal/Theta2Split.lean:100:22: error: Application type mismatch: The argument
+  Function.Injective.comp (add_right_injective 1) (mul_right_injective₀ (two_ne_zero' ℤ))
+has type
+  Function.Injective ((fun x => 1 + x) ∘ fun x => 2 * x)
+but is expected to have type
+  Function.Injective fun k => 2 * k + 1
+in the application
+  Summable.comp_injective hs (Function.Injective.comp (add_right_injective 1) (mul_right_injective₀ (two_ne_zero' ℤ)))
+CENTERING_CLOSURE/formal/Theta2Split.lean:77:0: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.

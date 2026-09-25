@@ -1,0 +1,32 @@
+@tsum_eq_zero_add' : ∀ {M : Type u_1} [inst : AddCommMonoid M] [inst_1 : TopologicalSpace M] [T2Space M]
+  [ContinuousAdd M] {f : ℕ → M}, (Summable fun n => f (n + 1)) → ∑' (b : ℕ), f b = f 0 + ∑' (b : ℕ), f (b + 1)
+@tsum_congr : ∀ {α : Type u_1} {β : Type u_2} [inst : AddCommMonoid α] [inst_1 : TopologicalSpace α]
+  {L : SummationFilter β} {f g : β → α}, (∀ (b : β), f b = g b) → ∑'[L] (b : β), f b = ∑'[L] (b : β), g b
+@tsum_even_add_odd : ∀ {M : Type u_1} [inst : AddCommMonoid M] [inst_1 : TopologicalSpace M] [T2Space M]
+  [ContinuousAdd M] {f : ℕ → M},
+  (Summable fun k => f (2 * k)) →
+    (Summable fun k => f (2 * k + 1)) → ∑' (k : ℕ), f (2 * k) + ∑' (k : ℕ), f (2 * k + 1) = ∑' (k : ℕ), f k
+@Nat.cast_injective : ∀ {R : Type u_1} [inst : AddMonoidWithOne R] [CharZero R], Function.Injective Nat.cast
+@Int.negSucc.inj : ∀ {a a_1 : ℕ}, Int.negSucc a = Int.negSucc a_1 → a = a_1
+@tsum_int_eq_zero_add_two_mul_tsum_pnat : ∀ {G : Type u_1} [inst : AddCommGroup G] [inst_1 : UniformSpace G]
+  [IsUniformAddGroup G] [CompleteSpace G] [T2Space G] {f : ℤ → G},
+  Function.Even f → Summable f → ∑' (n : ℤ), f n = f 0 + 2 • ∑' (n : ℕ+), f ↑↑n
+CENTERING_CLOSURE/logs/probe_b2.lean:16:21: warning: Variable name `hs` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hs
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+CENTERING_CLOSURE/logs/probe_b2.lean:25:2: error: No goals to be solved
+CENTERING_CLOSURE/logs/probe_b2.lean:31:64: error: unsolved goals
+G : ℤ → ℝ
+hG : Function.Even G
+hs : Summable G
+n : ℤ
+⊢ G n = Int.rec (fun n => G ↑n) (fun m => G (-(↑m + 1))) n
+CENTERING_CLOSURE/logs/probe_b2.lean:29:59: error: unsolved goals
+G : ℤ → ℝ
+hG : Function.Even G
+hs : Summable G
+hrec : (fun n => G n) = fun t => Int.rec (fun n => G ↑n) (fun m => G (-(↑m + 1))) t
+⊢ ∑' (n : ℤ), G n = ∑' (n : ℕ), G ↑n + ∑' (n : ℕ), G (↑n + 1)

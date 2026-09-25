@@ -1,0 +1,20 @@
+CENTERING_CLOSURE/formal/ThetaBox.lean:776:55: error: unsolved goals
+hs : 0 < 1 / (2 * 768 ^ 2)
+h1 :
+  Theta2 (1 / (2 * 768 ^ 2)) - boxSum (1 / (2 * 768 ^ 2)) ≤
+    2 * S0 (1 / (2 * 768 ^ 2) / 2) * (rexp (-(1 / (2 * 768 ^ 2) / 4) * 65536 ^ 2) * S0 (1 / (2 * 768 ^ 2) / 4))
+hA : S0 (1 / (2 * 768 ^ 2) / 2) ≤ 5454
+hB : S0 (1 / (2 * 768 ^ 2) / 4) ≤ 7712
+hE : rexp (-(1 / (2 * 768 ^ 2) / 4) * 65536 ^ 2) ≤ (2 ^ 340)⁻¹
+hposA : 0 ≤ S0 (1 / (2 * 768 ^ 2) / 2)
+hposB : 0 ≤ S0 (1 / (2 * 768 ^ 2) / 4)
+hposE : 0 ≤ rexp (-(1 / (2 * 768 ^ 2) / 4) * 65536 ^ 2)
+h2 : rexp (-(1 / (2 * 768 ^ 2) / 4) * 65536 ^ 2) * S0 (1 / (2 * 768 ^ 2) / 4) ≤ (2 ^ 340)⁻¹ * 7712
+hcmp :
+  2 * S0 (1 / (2 * 768 ^ 2) / 2) * (rexp (-(1 / (2 * 768 ^ 2) / 4) * 65536 ^ 2) * S0 (1 / (2 * 768 ^ 2) / 4)) ≤
+    2 * 5454 * ((2 ^ 340)⁻¹ * 7712)
+haux : 2 * 5454 * 7712 ≤ 2 ^ 40
+h340 : 2 ^ 340 = 2 ^ 40 * 2 ^ 300
+hp40 : 2 ^ 40 ≠ 0
+⊢ 2 ^ 40 * ((2 ^ 40)⁻¹ * (2 ^ 300)⁻¹) = 2 ^ 40 * ((2 ^ 300)⁻¹ * (2 ^ 40)⁻¹)
+CENTERING_CLOSURE/formal/ThetaBox.lean:777:58: warning: exponent 300 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold

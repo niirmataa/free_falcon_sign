@@ -1,0 +1,32 @@
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:82:22: error: Application type mismatch: The argument
+  hneg
+has type
+  ∀ (n : ℕ), rexp (-c * ↑n ^ 2) = rexp (-c * (-↑↑n) ^ 2)
+but is expected to have type
+  ∀ (b : ℕ), rexp (-c * ↑b ^ 2) = rexp (-c * ↑(-↑b) ^ 2)
+in the application
+  Summable.congr hn hneg
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:105:2: error: `simp` made no progress
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:214:12: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  √(?m.338 * ?m.340)
+in the target expression
+  √(u / π) * √(π / u) = √(u / π * (π / u))
+
+u : ℝ
+hu : 0 < u
+h : ∑' (n : ℤ), rexp (-u * ↑n ^ 2) = 1 / (u / π) ^ (1 / 2) * ∑' (n : ℤ), rexp (-π / (u / π) * ↑n ^ 2)
+hconv : ∀ (n : ℤ), -π * (u / π) * ↑n ^ 2 = -u * ↑n ^ 2
+hfun : (fun n => rexp (-π * (u / π) * ↑n ^ 2)) = fun n => rexp (-u * ↑n ^ 2)
+h1 : (u / π) ^ (1 / 2) = √(u / π)
+⊢ √(u / π) * √(π / u) = √(u / π * (π / u))
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:214:46: error: not a positivity goal
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:220:10: error(lean.unknownIdentifier): Unknown identifier `inv_eq_of_mul_eq_one`
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:240:8: error: Invalid rewrite argument: Expected an equality or iff proof or definition name, but `?m.91` is a value of type
+  ?m.90
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:240:9: error: Function expected at
+  one_le_div_iff
+but this term has type
+  1 ≤ ?m.100 / ?m.101 ↔ 0 < ?m.101 ∧ ?m.101 ≤ ?m.100 ∨ ?m.101 < 0 ∧ ?m.100 ≤ ?m.101
+
+Note: Expected a function because this term is being applied to the argument
+  hu

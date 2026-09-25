@@ -1,0 +1,42 @@
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:80:2: error: linarith failed to find a contradiction
+c : ℝ
+hc : 1 ≤ c
+hsplit : ∀ (n : ℕ), rexp (-c * ↑n ^ 2) = rexp (-c * (↑n + 1) ^ 2) * rexp (c * (2 * ↑n + 1))
+n : ℕ
+hnc : 1 ≤ c * (2 * ↑n + 1)
+hmono : rexp 1 ≤ rexp (c * (2 * ↑n + 1))
+hpos : 0 < rexp (-c * (↑n + 1) ^ 2)
+hkey : 2 * rexp (-c * (↑n + 1) ^ 2) ≤ rexp (-c * ↑n ^ 2)
+a✝ : 1 / 2 * rexp (-c * ↑n ^ 2) < rexp (-c * ↑(n + 1) ^ 2)
+⊢ False
+failed
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:93:22: error: Application type mismatch: The argument
+  hneg
+has type
+  ∀ (n : ℕ), rexp (-c * (-↑n) ^ 2) = rexp (-c * ↑n ^ 2)
+but is expected to have type
+  ∀ (b : ℕ), rexp (-c * ↑b ^ 2) = rexp (-c * ↑(-↑b) ^ 2)
+in the application
+  Summable.congr hn hneg
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:115:2: error: Type mismatch
+  Summable.le_tsum (exp_sq_summable c hc) 0 ?m.23
+has type
+  rexp (-c * ↑0 ^ 2) ≤ ∑' (i : ℤ), rexp (-c * ↑i ^ 2)
+but is expected to have type
+  1 ≤ thetaQ c
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:210:61: error: unexpected token ')'; expected ':=' or '|'
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:235:4: error: No goals to be solved
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:240:6: error: Failed to rewrite using equation theorems for `S0`
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:274:8: error: Function expected at
+  one_le_div_iff
+but this term has type
+  1 ≤ ?m.81 / ?m.82 ↔ 0 < ?m.82 ∧ ?m.82 ≤ ?m.81 ∨ ?m.82 < 0 ∧ ?m.81 ≤ ?m.82
+
+Note: Expected a function because this term is being applied to the argument
+  hu
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:282:4: error: Type mismatch
+  le_mul_of_one_le_left (le_of_lt hu) (thetaQ_ge_one (π ^ 2 / u) hc)
+has type
+  u ≤ thetaQ (π ^ 2 / u) * u
+but is expected to have type
+  √(π / u) ≤ √(π / u) * thetaQ (π ^ 2 / u)

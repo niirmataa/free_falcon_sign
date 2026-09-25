@@ -1,0 +1,15 @@
+CENTERING_CLOSURE/logs/bs_113.lean:78:67: error: unsolved goals
+G : ℤ → ℝ
+hG : Function.Even G
+hs : Summable G
+hnegG' : ∀ (m : ℕ), G (Int.negSucc m) = G (↑m + 1)
+hnegG2' : ∀ (m : ℕ), G (2 * Int.negSucc m) = G (2 * ↑(m + 1))
+hnegG3' : ∀ (m : ℕ), G (2 * Int.negSucc m + 1) = G (2 * ↑m + 1)
+hsumNat : Summable fun n => G ↑n
+hs2 : Summable fun k => G (2 * k)
+hs3 : Summable fun k => G (2 * k + 1)
+hsumNat2 : Summable fun n => G (2 * ↑n)
+hA : ∑' (n : ℤ), G n = ∑' (n : ℕ), G ↑n + ∑' (m : ℕ), G ↑(m + 1)
+hB : ∑' (n : ℤ), G (2 * n) = ∑' (n : ℕ), G (2 * ↑n) + ∑' (m : ℕ), G (2 * ↑(m + 1))
+hC : ∑' (n : ℤ), G (2 * n + 1) = ∑' (n : ℕ), G (2 * ↑n + 1) + ∑' (m : ℕ), G (2 * ↑m + 1)
+⊢ ∑' (n : ℤ), G n = ∑' (k : ℤ), G (2 * k) + ∑' (k : ℤ), G (2 * k + 1)

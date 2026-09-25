@@ -1,0 +1,99 @@
+CENTERING_CLOSURE/formal/ThetaFinal.lean:120:26: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?m.204 / u * u
+in the target expression
+  π ^ 2 ≤ π ^ 2 / u * (3 * u)
+
+u : ℝ
+hu : 0 < u
+h1 : 0 < 3 * u
+h2 : 3 * u ≥ u
+h3 : π ^ 2 ≥ 0
+⊢ π ^ 2 ≤ π ^ 2 / u * (3 * u)
+CENTERING_CLOSURE/formal/ThetaFinal.lean:138:64: error: Application type mismatch: The argument
+  hs9
+has type
+  s ≤ 3
+but is expected to have type
+  s ≤ 9
+in the application
+  S0_bounds s hs hs9
+CENTERING_CLOSURE/formal/ThetaFinal.lean:140:28: error: Application type mismatch: The argument
+  hs9
+has type
+  s ≤ 3
+but is expected to have type
+  s ≤ 9
+in the application
+  s1_lower s hs hs9
+CENTERING_CLOSURE/formal/ThetaFinal.lean:148:4: error: No goals to be solved
+CENTERING_CLOSURE/formal/ThetaFinal.lean:156:10: error: linarith failed to find a contradiction
+s : ℝ
+hs : 0 < s
+hs9 : s ≤ 3
+h3s : 0 < 3 * s
+h3s9 : 3 * s ≤ 9
+hs4 : 0 < s / 4
+hs49 : s / 4 ≤ 9
+h3s4 : 0 < 3 * s / 4
+h3s49 : 3 * s / 4 ≤ 9
+M : ℝ := 4 * rexp (-(π ^ 2 / (3 * s)))
+hMdef : M = 4 * rexp (-(π ^ 2 / (3 * s)))
+hA1 : √(π / s) ≤ S0 s
+hB1 : √(π / (3 * s)) ≤ S0 (3 * s)
+hA2 : √(π / s) * (1 - 4 * rexp (-(π ^ 2 / s))) ≤ S1 s
+hB2 : √(π / (3 * s)) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) ≤ S1 (3 * s)
+hca : 4 * rexp (-(π ^ 2 / s)) ≤ M
+hcb : 4 * rexp (-(π ^ 2 / (3 * s))) ≤ M
+hM0 : 0 ≤ M
+a✝ : √(π / (3 * s)) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) < 0
+⊢ False
+failed
+CENTERING_CLOSURE/formal/ThetaFinal.lean:156:41: error: linarith failed to find a contradiction
+s : ℝ
+hs : 0 < s
+hs9 : s ≤ 3
+h3s : 0 < 3 * s
+h3s9 : 3 * s ≤ 9
+hs4 : 0 < s / 4
+hs49 : s / 4 ≤ 9
+h3s4 : 0 < 3 * s / 4
+h3s49 : 3 * s / 4 ≤ 9
+M : ℝ := 4 * rexp (-(π ^ 2 / (3 * s)))
+hMdef : M = 4 * rexp (-(π ^ 2 / (3 * s)))
+hA1 : √(π / s) ≤ S0 s
+hB1 : √(π / (3 * s)) ≤ S0 (3 * s)
+hA2 : √(π / s) * (1 - 4 * rexp (-(π ^ 2 / s))) ≤ S1 s
+hB2 : √(π / (3 * s)) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) ≤ S1 (3 * s)
+hca : 4 * rexp (-(π ^ 2 / s)) ≤ M
+hcb : 4 * rexp (-(π ^ 2 / (3 * s))) ≤ M
+hM0 : 0 ≤ M
+a✝ : S1 s < 0
+⊢ False
+failed
+CENTERING_CLOSURE/formal/ThetaFinal.lean:166:4: error: linarith failed to find a contradiction
+s : ℝ
+hs : 0 < s
+hs9 : s ≤ 3
+h3s : 0 < 3 * s
+h3s9 : 3 * s ≤ 9
+hs4 : 0 < s / 4
+hs49 : s / 4 ≤ 9
+h3s4 : 0 < 3 * s / 4
+h3s49 : 3 * s / 4 ≤ 9
+M : ℝ := 4 * rexp (-(π ^ 2 / (3 * s)))
+hMdef : M = 4 * rexp (-(π ^ 2 / (3 * s)))
+hA1 : √(π / s) ≤ S0 s
+hB1 : √(π / (3 * s)) ≤ S0 (3 * s)
+hA2 : √(π / s) * (1 - 4 * rexp (-(π ^ 2 / s))) ≤ S1 s
+hB2 : √(π / (3 * s)) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) ≤ S1 (3 * s)
+hca : 4 * rexp (-(π ^ 2 / s)) ≤ M
+hcb : 4 * rexp (-(π ^ 2 / (3 * s))) ≤ M
+hM0 : 0 ≤ M
+hp1 : π / (s * √3) * ((1 - 4 * rexp (-(π ^ 2 / s))) * (1 - 4 * rexp (-(π ^ 2 / (3 * s))))) ≤ S1 s * S1 (3 * s)
+hexp :
+  √(π / s) * (1 - 4 * rexp (-(π ^ 2 / s))) * (√(π / (3 * s)) * (1 - 4 * rexp (-(π ^ 2 / (3 * s))))) =
+    √(π / s) * √(π / (3 * s)) * ((1 - 4 * rexp (-(π ^ 2 / s))) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))))
+a✝ : (1 - 4 * rexp (-(π ^ 2 / s))) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) < 1 - 2 * M
+⊢ False
+failed
+CENTERING_CLOSURE/formal/ThetaFinal.lean:188:43: error: failed to prove positivity/nonnegativity/nonzeroness

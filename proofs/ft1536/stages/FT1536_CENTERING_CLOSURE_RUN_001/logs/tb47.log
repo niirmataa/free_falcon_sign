@@ -1,0 +1,29 @@
+CENTERING_CLOSURE/formal/ThetaBox.lean:599:29: error: unsolved goals
+s : ℝ
+hs : 0 < s
+hR : Summable fun j => ∑' (i : ℤ), rexp (-s * ↑(block i j))
+hW : Summable fun j => W s j
+hWn : ∀ (j : ℤ), 0 ≤ W s j
+hsub : ∑' (j : ℤ), (∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j) = Theta2 s - boxSum s
+hs1 : Summable fun j => if j ∈ Finset.Icc (-N) N then ∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j else 0
+hs2 : Summable fun j => if j ∈ Finset.Icc (-N) N then 0 else ∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j
+hsplit :
+  ∑' (j : ℤ), (∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j) =
+    (∑' (j : ℤ), if j ∈ Finset.Icc (-N) N then ∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j else 0) +
+      ∑' (j : ℤ), if j ∈ Finset.Icc (-N) N then 0 else ∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j
+hp1 :
+  (∑' (j : ℤ), if j ∈ Finset.Icc (-N) N then ∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j else 0) ≤ Tg s * S0 (s / 2)
+hS00 : 0 ≤ S0 (s / 2)
+hpt :
+  ∀ (j : ℤ),
+    (if j ∈ Finset.Icc (-N) N then 0 else ∑' (i : ℤ), rexp (-s * ↑(block i j)) - W s j) ≤
+      if j ∈ Finset.Icc (-N) N then 0 else S0 (s / 2) * rexp (-(s / 2) * ↑j ^ 2)
+hsC : Summable fun j => if j ∈ Finset.Icc (-N) N then 0 else S0 (s / 2) * rexp (-(s / 2) * ↑j ^ 2)
+hle3 :
+  (∑' (i : ℤ), if i ∈ Finset.Icc (-N) N then 0 else ∑' (i_1 : ℤ), rexp (-s * ↑(block i_1 i)) - W s i) ≤
+    ∑' (i : ℤ), if i ∈ Finset.Icc (-N) N then 0 else S0 (s / 2) * rexp (-(s / 2) * ↑i ^ 2)
+hcm :
+  ∀ (j : ℤ),
+    (if j ∈ Finset.Icc (-N) N then 0 else S0 (s / 2) * rexp (-(s / 2) * ↑j ^ 2)) =
+      S0 (s / 2) * if j ∈ Finset.Icc (-N) N then 0 else rexp (-(s / 2) * ↑j ^ 2)
+⊢ (S0 (s / 2) * ∑' (x : ℤ), if x ∈ Finset.Icc (-N) N then 0 else rexp (-(s / 2) * ↑x ^ 2)) = S0 (s / 2) * Tg s

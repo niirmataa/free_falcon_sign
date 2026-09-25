@@ -1,0 +1,21 @@
+CENTERING_CLOSURE/formal/Theta2Split.lean:161:25: error: unsolved goals
+u : ℝ
+hu : 0 < u
+hG : Function.Even fun n => rexp (-(u / 4) * ↑n ^ 2)
+hs : Summable fun n => rexp (-(u / 4) * ↑n ^ 2)
+hsplit :
+  ∑' (n : ℤ), rexp (-(u / 4) * ↑n ^ 2) =
+    ∑' (k : ℤ), rexp (-(u / 4) * ↑(2 * k) ^ 2) + ∑' (k : ℤ), rexp (-(u / 4) * ↑(2 * k + 1) ^ 2)
+k : ℤ
+⊢ -(2 ^ 2 * ↑k ^ 2) = -(4 * ↑k ^ 2)
+CENTERING_CLOSURE/formal/Theta2Split.lean:167:25: error: unsolved goals
+u : ℝ
+hu : 0 < u
+hG : Function.Even fun n => rexp (-(u / 4) * ↑n ^ 2)
+hs : Summable fun n => rexp (-(u / 4) * ↑n ^ 2)
+hsplit :
+  ∑' (n : ℤ), rexp (-(u / 4) * ↑n ^ 2) =
+    ∑' (k : ℤ), rexp (-(u / 4) * ↑(2 * k) ^ 2) + ∑' (k : ℤ), rexp (-(u / 4) * ↑(2 * k + 1) ^ 2)
+hp1 : ∑' (k : ℤ), rexp (-(u / 4) * ↑(2 * k) ^ 2) = ∑' (k : ℤ), rexp (-u * ↑k ^ 2)
+k : ℤ
+⊢ -(2 ^ 2 * (2 * ↑k + 1) ^ 2) = -(4 * (2 * ↑k + 1) ^ 2)

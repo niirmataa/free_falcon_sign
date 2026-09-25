@@ -1,0 +1,24 @@
+CENTERING_CLOSURE/formal/ThetaBox.lean:349:28: error: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+CENTERING_CLOSURE/formal/ThetaBox.lean:382:56: error: unsolved goals
+s : ℝ
+hs : 0 < s
+j : ℤ
+hj : j ∉ Finset.Icc (-N) N
+hpt : ∀ (i : ℤ), rexp (-s * ↑(block i j)) ≤ rexp (-(s / 2) * ↑i ^ 2) * rexp (-(s / 2) * ↑j ^ 2)
+hsum : Summable fun i => rexp (-(s / 2) * ↑i ^ 2) * rexp (-(s / 2) * ↑j ^ 2)
+hle : ∑' (i : ℤ), rexp (-s * ↑(block i j)) ≤ ∑' (i : ℤ), rexp (-(s / 2) * ↑i ^ 2) * rexp (-(s / 2) * ↑j ^ 2)
+⊢ (∑' (x : ℤ), rexp (-(s / 2) * ↑x ^ 2)) * rexp (-(s / 2) * ↑j ^ 2) = S0 (s / 2) * rexp (-(s / 2) * ↑j ^ 2)
+CENTERING_CLOSURE/formal/ThetaBox.lean:400:12: error: No goals to be solved
+CENTERING_CLOSURE/formal/ThetaBox.lean:413:24: error: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+CENTERING_CLOSURE/formal/ThetaBox.lean:413:19: error: Application type mismatch: The argument
+  hTg0
+has type
+  Tg s * rexp (-(s / 2) * ↑j ^ 2) ≤ S0 (s / 2) * rexp (-(s / 2) * ↑j ^ 2)
+but is expected to have type
+  ∑' (i : ℤ), rexp (-s * ↑(block i j)) ≤ ∑' (i : ℤ), rexp (-s * ↑(block i j))
+in the application
+  le_trans hTg0

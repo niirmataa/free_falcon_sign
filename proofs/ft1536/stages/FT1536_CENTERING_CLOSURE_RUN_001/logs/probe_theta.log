@@ -1,0 +1,29 @@
+@summable_geometric_of_lt_one : ∀ {r : ℝ}, 0 ≤ r → r < 1 → Summable fun n => r ^ n
+@tsum_geometric_of_lt_one : ∀ {r : ℝ}, 0 ≤ r → r < 1 → ∑' (n : ℕ), r ^ n = (1 - r)⁻¹
+CENTERING_CLOSURE/logs/probe_theta.lean:12:8: error(lean.unknownIdentifier): Unknown constant `Real.exp_lt_one`
+@Equiv.tsum_eq : ∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [inst : AddCommMonoid α] [inst_1 : TopologicalSpace α]
+  (e : γ ≃ β) (f : β → α), ∑' (c : γ), f (e c) = ∑' (b : β), f b
+@two_nsmul : ∀ {M : Type u_1} [inst : AddMonoid M] (a : M), 2 • a = a + a
+@le_div_iff₀ : ∀ {G₀ : Type u_1} [inst : GroupWithZero G₀] [inst_1 : PartialOrder G₀] [MulPosReflectLT G₀] {a b c : G₀},
+  0 < c → (a ≤ b / c ↔ a * c ≤ b)
+Real.exp_neg : ∀ (x : ℝ), Real.exp (-x) = (Real.exp x)⁻¹
+@Summable.tsum_le_tsum : ∀ {ι : Type u_1} {α : Type u_2} {L : SummationFilter ι} [inst : AddCommMonoid α]
+  [inst_1 : Preorder α] [IsOrderedAddMonoid α] [inst_3 : TopologicalSpace α] [OrderClosedTopology α] {f g : ι → α}
+  [L.NeBot], (∀ (i : ι), f i ≤ g i) → Summable f L → Summable g L → ∑'[L] (i : ι), f i ≤ ∑'[L] (i : ι), g i
+CENTERING_CLOSURE/logs/probe_theta.lean:22:30: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  Group ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+CENTERING_CLOSURE/logs/probe_theta.lean:31:41: error: unexpected token ':='; expected ')', ',' or ':'
+CENTERING_CLOSURE/logs/probe_theta.lean:51:20: error: typeclass instance problem is stuck
+  IsOrderedRing ?m.285
+
+Note: Lean will not try to resolve this typeclass instance problem because the first, second, and third type arguments to `IsOrderedRing` are metavariables. These arguments must be fully determined before Lean will try to resolve the typeclass.
+
+Hint: Adding type annotations and supplying implicit arguments to functions can give Lean more information for typeclass resolution. For example, if you have a variable `x` that you intend to be a `Nat`, but Lean reports it as having an unresolved type like `?m`, replacing `x` with `(x : Nat)` can get typeclass resolution un-stuck.
+CENTERING_CLOSURE/logs/probe_theta.lean:41:5: error: unsolved goals
+c : ℝ
+hc : 1 ≤ c
+h0 : Real.exp (-c * 0 ^ 2) = 1
+hn : Summable fun n => Real.exp (-c * ↑n ^ 2)
+⊢ (Summable fun n => Real.exp (-c * ↑↑n ^ 2)) ∧ Summable fun n => Real.exp (-c * ↑(-↑n) ^ 2)

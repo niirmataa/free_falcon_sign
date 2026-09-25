@@ -1,0 +1,9 @@
+'FT1536.ThetaAssembly.full_rejection_bound_no_premises' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.ThetaAssembly.thetaBounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.ThetaAssembly.hnum_cert' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.ThetaFinal.theta2_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.ThetaFinal.theta2_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+FT1536.ThetaAssembly.full_rejection_bound_no_premises : FT1536.RejectionBound.Rejection (fun x => ()) () ≤ 1 / 2 ^ 24
+FT1536.ThetaAssembly.thetaBounds : FT1536.BlockTheta.ThetaBounds
+FT1536.ThetaFinal.theta2_upper (s : ℝ) (hs : 0 < s) (hs1 : s ≤ 1) :
+  FT1536.Theta2Split.Theta2 s ≤ 2 * (Real.pi / (s * √3)) * (1 + 24 * Real.exp (-(Real.pi ^ 2 / (3 * s))))

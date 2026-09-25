@@ -1,0 +1,10 @@
+CENTERING_CLOSURE/logs/test_min3.lean:74:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  rexp (-c * 0 ^ 2)
+in the target expression
+  rexp (-c * ↑0 ^ 2) ≤ ∑' (i : ℤ), rexp (-c * ↑i ^ 2)
+
+c : ℝ
+hc : 1 ≤ c
+h0 : rexp (-c * 0 ^ 2) = 1
+h : rexp (-c * ↑0 ^ 2) ≤ ∑' (i : ℤ), rexp (-c * ↑i ^ 2)
+⊢ 1 ≤ thetaQ c

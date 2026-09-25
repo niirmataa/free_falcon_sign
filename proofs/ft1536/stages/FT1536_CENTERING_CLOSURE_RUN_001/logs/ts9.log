@@ -1,0 +1,11 @@
+CENTERING_CLOSURE/formal/Theta2Split.lean:242:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  fun i => rexp (-s * ↑(block i (-j)))
+in the target expression
+  (fun j => ∑' (i : ℤ), rexp (-s * ↑(block i j))) (-j) = (fun j => ∑' (i : ℤ), rexp (-s * ↑(block i j))) j
+
+s : ℝ
+j : ℤ
+h : ∀ (i : ℤ), ↑(block i (-j)) = ↑(block (-i) j)
+hfun : (fun i => rexp (-s * ↑(block i (-j)))) = fun i => rexp (-s * ↑(block (-i) j))
+negeq : ℤ ≃ ℤ
+⊢ (fun j => ∑' (i : ℤ), rexp (-s * ↑(block i j))) (-j) = (fun j => ∑' (i : ℤ), rexp (-s * ↑(block i j))) j

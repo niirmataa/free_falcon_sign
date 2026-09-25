@@ -1,0 +1,142 @@
+CENTERING_CLOSURE/formal/ThetaFinal.lean:272:12: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?m.185 ≤ ?m.186 / s
+in the target expression
+  4 * π ^ 2 / s ≥ π ^ 2 / (3 * s)
+
+u s : ℝ
+hs : 0 < s
+hu : u = s
+⊢ 4 * π ^ 2 / s ≥ π ^ 2 / (3 * s)
+CENTERING_CLOSURE/formal/ThetaFinal.lean:281:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?m.206 ≤ ?m.207 / (3 * s)
+in the target expression
+  4 * π ^ 2 / (3 * s) ≥ π ^ 2 / (3 * s)
+
+case inr
+u s : ℝ
+hs : 0 < s
+hu : u = 3 * s
+h1 : 0 < 3 * s
+⊢ 4 * π ^ 2 / (3 * s) ≥ π ^ 2 / (3 * s)
+CENTERING_CLOSURE/formal/ThetaFinal.lean:342:10: error: No goals to be solved
+CENTERING_CLOSURE/formal/ThetaFinal.lean:345:8: error: linarith failed to find a contradiction
+s : ℝ
+hs : 0 < s
+hs1 : s ≤ 1
+h3s : 0 < 3 * s
+h3s9 : 3 * s ≤ 9
+hs9 : s ≤ 9
+hA0 : S0 s ≤ √(π / s) * (1 + 4 * rexp (-(π ^ 2 / s)))
+hB0 : S0 (3 * s) ≤ √(π / (3 * s)) * (1 + 4 * rexp (-(π ^ 2 / (3 * s))))
+hA2 : S1 s ≤ √(π / s) * (1 + 8 * rexp (-(4 * π ^ 2 / s)))
+hB2 : S1 (3 * s) ≤ √(π / (3 * s)) * (1 + 8 * rexp (-(4 * π ^ 2 / (3 * s))))
+hA2l : √(π / s) * (1 - 4 * rexp (-(π ^ 2 / s))) ≤ S1 s
+hM0 : 0 ≤ 4 * rexp (-(π ^ 2 / (3 * s)))
+hMle : 4 * rexp (-(π ^ 2 / (3 * s))) ≤ 1
+hca : 4 * rexp (-(π ^ 2 / s)) ≤ 4 * rexp (-(π ^ 2 / (3 * s)))
+hea : 8 * rexp (-(4 * π ^ 2 / s)) ≤ 8 * rexp (-(π ^ 2 / (3 * s)))
+heb : 8 * rexp (-(4 * π ^ 2 / (3 * s))) ≤ 8 * rexp (-(π ^ 2 / (3 * s)))
+hA0b : S0 s ≤ √(π / s) * (1 + 4 * rexp (-(π ^ 2 / (3 * s))))
+hA2b : S1 s ≤ √(π / s) * (1 + 8 * rexp (-(π ^ 2 / (3 * s))))
+hB2b : S1 (3 * s) ≤ √(π / (3 * s)) * (1 + 8 * rexp (-(π ^ 2 / (3 * s))))
+hS1pos : 0 ≤ S1 s
+h : √(π / (3 * s)) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) ≤ S1 (3 * s)
+this : π ^ 2 / (3 * (3 * s)) ≥ π ^ 2 / (3 * s * 3)
+hMle3 : 4 * rexp (-(π ^ 2 / (3 * s))) ≤ 1
+hmono : π ^ 2 / (3 * s * 3) ≥ π ^ 2 / (3 * s * 3)
+a✝ : 1 < 4 * rexp (-(π ^ 2 / (3 * (3 * s))))
+⊢ False
+failed
+CENTERING_CLOSURE/formal/ThetaFinal.lean:346:6: error: linarith failed to find a contradiction
+s : ℝ
+hs : 0 < s
+hs1 : s ≤ 1
+h3s : 0 < 3 * s
+h3s9 : 3 * s ≤ 9
+hs9 : s ≤ 9
+hA0 : S0 s ≤ √(π / s) * (1 + 4 * rexp (-(π ^ 2 / s)))
+hB0 : S0 (3 * s) ≤ √(π / (3 * s)) * (1 + 4 * rexp (-(π ^ 2 / (3 * s))))
+hA2 : S1 s ≤ √(π / s) * (1 + 8 * rexp (-(4 * π ^ 2 / s)))
+hB2 : S1 (3 * s) ≤ √(π / (3 * s)) * (1 + 8 * rexp (-(4 * π ^ 2 / (3 * s))))
+hA2l : √(π / s) * (1 - 4 * rexp (-(π ^ 2 / s))) ≤ S1 s
+hM0 : 0 ≤ 4 * rexp (-(π ^ 2 / (3 * s)))
+hMle : 4 * rexp (-(π ^ 2 / (3 * s))) ≤ 1
+hca : 4 * rexp (-(π ^ 2 / s)) ≤ 4 * rexp (-(π ^ 2 / (3 * s)))
+hea : 8 * rexp (-(4 * π ^ 2 / s)) ≤ 8 * rexp (-(π ^ 2 / (3 * s)))
+heb : 8 * rexp (-(4 * π ^ 2 / (3 * s))) ≤ 8 * rexp (-(π ^ 2 / (3 * s)))
+hA0b : S0 s ≤ √(π / s) * (1 + 4 * rexp (-(π ^ 2 / (3 * s))))
+hA2b : S1 s ≤ √(π / s) * (1 + 8 * rexp (-(π ^ 2 / (3 * s))))
+hB2b : S1 (3 * s) ≤ √(π / (3 * s)) * (1 + 8 * rexp (-(π ^ 2 / (3 * s))))
+hS1pos : 0 ≤ S1 s
+h : √(π / (3 * s)) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) ≤ S1 (3 * s)
+hMle2 : 4 * rexp (-(π ^ 2 / (3 * (3 * s)))) ≤ 1
+a✝ : √(π / (3 * s)) * (1 - 4 * rexp (-(π ^ 2 / (3 * s * 3)))) < 0
+⊢ False
+failed
+CENTERING_CLOSURE/formal/ThetaFinal.lean:347:22: error: Application type mismatch: The argument
+  h
+has type
+  √(π / (3 * s)) * (1 - 4 * rexp (-(π ^ 2 / (3 * s)))) ≤ S1 (3 * s)
+but is expected to have type
+  √(π / (3 * s)) * (1 - 4 * rexp (-(π ^ 2 / (3 * s * 3)))) ≤ S1 (3 * s)
+in the application
+  le_trans h3 h
+CENTERING_CLOSURE/formal/ThetaFinal.lean:359:22: error: Application type mismatch: The argument
+  tsum_nonneg fun i => LT.lt.le (exp_pos (?m.1784 i))
+has type
+  0 ≤ ∑'[?m.1771] (i : ?m.1769), rexp (?m.1784 i)
+but is expected to have type
+  0 ≤ √(π / s) * (1 + 4 * rexp (-(π ^ 2 / (3 * s))))
+in the application
+  mul_le_mul hA0b hB0 ?m.1768 (tsum_nonneg fun i => LT.lt.le (exp_pos (?m.1784 i)))
+CENTERING_CLOSURE/formal/ThetaFinal.lean:359:10: error: failed to prove positivity/nonnegativity/nonzeroness
+CENTERING_CLOSURE/formal/ThetaFinal.lean:372:33: error: Application type mismatch: The argument
+  hS1pos
+has type
+  0 ≤ S1 s
+but is expected to have type
+  0 ≤ √(π / s) * (1 + 8 * rexp (-(π ^ 2 / (3 * s))))
+in the application
+  mul_le_mul hA2b hB2b ?m.2038 hS1pos
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+CENTERING_CLOSURE/formal/ThetaFinal.lean:400:62: error: unsolved goals
+s : ℝ
+hs : 0 < s
+hs1 : s ≤ 1
+h3s : 0 < 3 * s
+h3s9 : 3 * s ≤ 9
+hs9 : s ≤ 9
+hA0 : S0 s ≤ √(π / s) * (1 + 4 * rexp (-(π ^ 2 / s)))
+hB0 : S0 (3 * s) ≤ √(π / (3 * s)) * (1 + 4 * rexp (-(π ^ 2 / (3 * s))))
+hA2 : S1 s ≤ √(π / s) * (1 + 8 * rexp (-(4 * π ^ 2 / s)))
+hB2 : S1 (3 * s) ≤ √(π / (3 * s)) * (1 + 8 * rexp (-(4 * π ^ 2 / (3 * s))))
+hA2l : √(π / s) * (1 - 4 * rexp (-(π ^ 2 / s))) ≤ S1 s
+hM0 : 0 ≤ 4 * rexp (-(π ^ 2 / (3 * s)))
+hMle : 4 * rexp (-(π ^ 2 / (3 * s))) ≤ 1
+hca : 4 * rexp (-(π ^ 2 / s)) ≤ 4 * rexp (-(π ^ 2 / (3 * s)))
+hea : 8 * rexp (-(4 * π ^ 2 / s)) ≤ 8 * rexp (-(π ^ 2 / (3 * s)))
+heb : 8 * rexp (-(4 * π ^ 2 / (3 * s))) ≤ 8 * rexp (-(π ^ 2 / (3 * s)))
+hA0b : S0 s ≤ √(π / s) * (1 + 4 * rexp (-(π ^ 2 / (3 * s))))
+hA2b : S1 s ≤ √(π / s) * (1 + 8 * rexp (-(π ^ 2 / (3 * s))))
+hB2b : S1 (3 * s) ≤ √(π / (3 * s)) * (1 + 8 * rexp (-(π ^ 2 / (3 * s))))
+hS1pos : 0 ≤ S1 s
+hS13pos : 0 ≤ S1 (3 * s)
+hS0 : S0 s * S0 (3 * s) ≤ π / (s * √3) * (1 + 4 * rexp (-(π ^ 2 / (3 * s)))) ^ 2
+hS1 : S1 s * S1 (3 * s) ≤ π / (s * √3) * (1 + 8 * rexp (-(π ^ 2 / (3 * s)))) ^ 2
+hpos : 0 ≤ π / (s * √3)
+hpoly :
+  (1 + 4 * rexp (-(π ^ 2 / (3 * s)))) ^ 2 + (1 + 8 * rexp (-(π ^ 2 / (3 * s)))) ^ 2 ≤
+    2 + 11 * (4 * rexp (-(π ^ 2 / (3 * s))))
+h :
+  π / (s * √3) * ((1 + 4 * rexp (-(π ^ 2 / (3 * s)))) ^ 2 + (1 + 8 * rexp (-(π ^ 2 / (3 * s)))) ^ 2) =
+    π / (s * √3) * (1 + 4 * rexp (-(π ^ 2 / (3 * s)))) ^ 2 + π / (s * √3) * (1 + 8 * rexp (-(π ^ 2 / (3 * s)))) ^ 2
+h2 :
+  π / (s * √3) * ((1 + 4 * rexp (-(π ^ 2 / (3 * s)))) ^ 2 + (1 + 8 * rexp (-(π ^ 2 / (3 * s)))) ^ 2) ≤
+    π / (s * √3) * (2 + 11 * (4 * rexp (-(π ^ 2 / (3 * s)))))
+⊢ π * s⁻¹ * (√3)⁻¹ * 2 + π * s⁻¹ * (√3)⁻¹ * rexp (π ^ 2 * s⁻¹ * (-1 / 3)) * 44 =
+    π * s⁻¹ * (√3)⁻¹ * 2 + π * s⁻¹ * (√3)⁻¹ * rexp (π ^ 2 * s⁻¹ * (-1 / 3)) * 48

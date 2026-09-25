@@ -1,0 +1,63 @@
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:67:2: error: linarith failed to find a contradiction
+c : ℝ
+hc : 1 ≤ c
+hsplit : ∀ (n : ℕ), rexp (-c * ↑n ^ 2) = rexp (-c * (↑n + 1) ^ 2) * rexp (c * (2 * ↑n + 1))
+n : ℕ
+hnc : 1 ≤ c * (2 * ↑n + 1)
+hmono : rexp 1 ≤ rexp (c * (2 * ↑n + 1))
+hpos : 0 < rexp (-c * (↑n + 1) ^ 2)
+hkey : 2 * rexp (-c * (↑n + 1) ^ 2) ≤ rexp (-c * ↑n ^ 2)
+a✝ : 1 / 2 * rexp (-c * ↑n ^ 2) < rexp (-c * ↑(n + 1) ^ 2)
+⊢ False
+failed
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:81:22: error: Application type mismatch: The argument
+  hneg
+has type
+  ∀ (n : ℕ), rexp (-c * ↑n ^ 2) = rexp (-c * (-↑n) ^ 2)
+but is expected to have type
+  ∀ (b : ℕ), rexp (-c * ↑b ^ 2) = rexp (-c * ↑(-↑b) ^ 2)
+in the application
+  Summable.congr hn hneg
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:98:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  rexp (-c * ↑0 ^ 2)
+in the target expression
+  1 ≤ thetaQ c
+
+c : ℝ
+hc : 1 ≤ c
+h0 : rexp (-c * ↑0 ^ 2) = 1
+h : rexp (-c * ↑0 ^ 2) ≤ ∑' (i : ℤ), rexp (-c * ↑i ^ 2)
+⊢ 1 ≤ thetaQ c
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:104:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?a • ?b
+in the target expression
+  ∑' (n : ℤ), rexp (-c * ↑n ^ 2) = rexp (-c * ↑0 ^ 2) + 2 • ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2)
+
+c : ℝ
+hc : 1 ≤ c
+hsum : Summable fun n => rexp (-c * ↑n ^ 2)
+hdecomp : ∑' (n : ℤ), rexp (-c * ↑n ^ 2) = rexp (-c * ↑0 ^ 2) + 2 • ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2)
+⊢ thetaQ c ≤ 1 + 4 * rexp (-c)
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:213:12: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  √(?m.338 * ?m.340)
+in the target expression
+  √(u / π) * √(π / u) = √(u / π * (π / u))
+
+u : ℝ
+hu : 0 < u
+h : ∑' (n : ℤ), rexp (-u * ↑n ^ 2) = 1 / (u / π) ^ (1 / 2) * ∑' (n : ℤ), rexp (-π / (u / π) * ↑n ^ 2)
+hconv : ∀ (n : ℤ), -π * (u / π) * ↑n ^ 2 = -u * ↑n ^ 2
+hfun : (fun n => rexp (-π * (u / π) * ↑n ^ 2)) = fun n => rexp (-u * ↑n ^ 2)
+h1 : (u / π) ^ (1 / 2) = √(u / π)
+⊢ √(u / π) * √(π / u) = √(u / π * (π / u))
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:213:46: error: not a positivity goal
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:219:10: error(lean.unknownIdentifier): Unknown identifier `inv_eq_of_mul_eq_one`
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:239:8: error: Invalid rewrite argument: Expected an equality or iff proof or definition name, but `?m.91` is a value of type
+  ?m.90
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:239:9: error: Function expected at
+  one_le_div_iff
+but this term has type
+  1 ≤ ?m.100 / ?m.101 ↔ 0 < ?m.101 ∧ ?m.101 ≤ ?m.100 ∨ ?m.101 < 0 ∧ ?m.100 ≤ ?m.101
+
+Note: Expected a function because this term is being applied to the argument
+  hu

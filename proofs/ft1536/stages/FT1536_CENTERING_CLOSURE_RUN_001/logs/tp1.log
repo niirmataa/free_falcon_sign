@@ -1,0 +1,114 @@
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:37:60: error: unsolved goals
+c : ℝ
+n : ℤ
+⊢ rexp (-c * ↑(-n) ^ 2) = rexp (-c * ↑n ^ 2)
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:39:13: warning: This simp argument is unused:
+  neg_sq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:53:57: error: unexpected token ':'; expected ':=' or '|'
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:48:37: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  HAdd Type ℕ Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:49:37: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  HAdd Type ℕ Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:83:41: warning: This simp argument is unused:
+  neg_sq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:87:64: error: unexpected token ':='; expected ')', ',' or ':'
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:109:4: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  a ≥ 1
+where
+ a := ↑↑n
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:107:25: warning: This simp argument is unused:
+  Subtype.coe_mk
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [PNat.val]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:111:25: warning: This simp argument is unused:
+  Subtype.coe_mk
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [PNat.val]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:115:47: error: unsolved goals
+k : ℕ
+⊢ ↑({ toFun := fun n => ↑n - 1, invFun := fun k => ⟨k + 1, ⋯⟩, left_inv := ⋯, right_inv := pnatEquiv._proof_3 }.symm
+        k) =
+    k + 1
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:116:8: warning: declaration uses `sorry`
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:124:2: error: Type mismatch
+  Summable.le_tsum (exp_sq_summable c hc) 0 ?m.23
+has type
+  rexp (-c * ↑0 ^ 2) ≤ ∑' (i : ℤ), rexp (-c * ↑i ^ 2)
+but is expected to have type
+  1 ≤ thetaQ c
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:132:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?a • ?b
+in the target expression
+  ∑' (n : ℤ), rexp (-c * ↑n ^ 2) = rexp (-c * ↑0 ^ 2) + 2 • ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2)
+
+c : ℝ
+hc : 1 ≤ c
+hsum : Summable fun n => rexp (-c * ↑n ^ 2)
+hdecomp : ∑' (n : ℤ), rexp (-c * ↑n ^ 2) = rexp (-c * ↑0 ^ 2) + 2 • ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2)
+⊢ thetaQ c ≤ 1 + 4 * rexp (-c)
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:234:12: error: Invalid rewrite argument: Expected an equality or iff proof or definition name, but `div_pos hu pi_pos` is a proof of
+  0 < u / π
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:240:4: error: No goals to be solved
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:254:12: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  √(?m.303 * ?m.305)
+in the target expression
+  √(u / π) * √(π / u) = √(u / π * (π / u))
+
+u : ℝ
+hu : 0 < u
+h : ∑' (n : ℤ), rexp (-u * ↑n ^ 2) = 1 / (u / π) ^ (1 / 2) * ∑' (n : ℤ), rexp (-π / (u / π) * ↑n ^ 2)
+hconv : ∀ (n : ℤ), -π * (u / π) * ↑n ^ 2 = -u * ↑n ^ 2
+hfun : (fun n => rexp (-π * (u / π) * ↑n ^ 2)) = fun n => rexp (-u * ↑n ^ 2)
+h1 : (u / π) ^ (1 / 2) = √(u / π)
+⊢ √(u / π) * √(π / u) = √(u / π * (π / u))
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:254:46: error: not a positivity goal
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:260:10: error(lean.unknownIdentifier): Unknown identifier `inv_eq_of_mul_eq_one`
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:267:4: error: No goals to be solved
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:273:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  1 / (u / π) ^ (1 / 2)
+in the target expression
+  ∑' (n : ℤ), rexp (-u * ↑n ^ 2) = √(π / u) * thetaQ (π ^ 2 / u)
+
+u : ℝ
+hu : 0 < u
+h : ∑' (n : ℤ), rexp (-u * ↑n ^ 2) = 1 / (u / π) ^ (1 / 2) * ∑' (n : ℤ), rexp (-π / (u / π) * ↑n ^ 2)
+hconv : ∀ (n : ℤ), -π * (u / π) * ↑n ^ 2 = -u * ↑n ^ 2
+hfun : (fun n => rexp (-π * (u / π) * ↑n ^ 2)) = fun n => rexp (-u * ↑n ^ 2)
+hpowconv : 1 / (u / π) ^ (1 / 2) = √(π / u)
+hpi_conv : ∀ (n : ℤ), -π / (u / π) * ↑n ^ 2 = -(π ^ 2 / u) * ↑n ^ 2
+hfun2 : (fun n => rexp (-π / (u / π) * ↑n ^ 2)) = fun n => rexp (-(π ^ 2 / u) * ↑n ^ 2)
+⊢ ∑' (n : ℤ), rexp (-u * ↑n ^ 2) = √(π / u) * thetaQ (π ^ 2 / u)
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:281:8: error: Function expected at
+  one_le_div_iff
+but this term has type
+  1 ≤ ?m.81 / ?m.82 ↔ 0 < ?m.82 ∧ ?m.82 ≤ ?m.81 ∨ ?m.82 < 0 ∧ ?m.81 ≤ ?m.82
+
+Note: Expected a function because this term is being applied to the argument
+  hu
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:288:4: error: Type mismatch
+  le_mul_of_one_le_left (le_of_lt hu) (thetaQ_ge_one (π ^ 2 / u) hc)
+has type
+  u ≤ thetaQ (π ^ 2 / u) * u
+but is expected to have type
+  √(π / u) ≤ √(π / u) * thetaQ (π ^ 2 / u)

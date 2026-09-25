@@ -1,0 +1,107 @@
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:75:34: error: unexpected token ':'; expected ')'
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:75:6: error: type expected, got
+  (rexp (-c * ↑↑n) : ℝ)
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:74:7: error: Missing cases:
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:71:59: error: unsolved goals
+c : ℝ
+hc : 1 ≤ c
+hn : Summable fun n => rexp (-c * ↑n ^ 2)
+hneg : sorry
+⊢ (Summable fun n => rexp (-c * ↑↑n ^ 2)) ∧ Summable fun n => rexp (-c * ↑(-↑n) ^ 2)
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:112:55: error: unsolved goals
+case e_f
+c : ℝ
+hc : 1 ≤ c
+hsum : Summable fun n => rexp (-c * ↑n ^ 2)
+hdecomp : ∑' (n : ℤ), rexp (-c * ↑n ^ 2) = rexp (-c * ↑0 ^ 2) + 2 * ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2)
+hsmul : ∀ (x : ℝ), 2 • x = 2 * x
+he : ∑' (c_1 : ℕ), rexp (-c * ↑↑↑(Equiv.pnatEquivNat.symm c_1) ^ 2) = ∑' (b : ℕ+), rexp (-c * ↑↑↑b ^ 2)
+k : ℕ
+⊢ rexp (-(c * ↑↑(Equiv.pnatEquivNat.symm k) ^ 2)) = rexp (-c - c * ↑k * 2 - c * ↑k ^ 2)
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:121:8: error(lean.unknownIdentifier): Unknown identifier `inv_le_inv`
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:144:24: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?x ^ ↑?n
+in the target expression
+  rexp (-c) ^ (↑k + 1) = rexp (-c) * rexp (-c) ^ k
+
+c : ℝ
+hc : 1 ≤ c
+hsum : Summable fun n => rexp (-c * ↑n ^ 2)
+hdecomp : ∑' (n : ℤ), rexp (-c * ↑n ^ 2) = rexp (-c * ↑0 ^ 2) + 2 * ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2)
+hsmul : ∀ (x : ℝ), 2 • x = 2 * x
+hreidx : ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2) = ∑' (k : ℕ), rexp (-c * (↑k + 1) ^ 2)
+hexp_inv : (rexp 1)⁻¹ ≤ 1 / 2
+hexpc : rexp (-c) ≤ 1 / 2
+k : ℕ
+hkm : ↑k + 1 ≤ (↑k + 1) ^ 2
+h1 : -c * (↑k + 1) ^ 2 ≤ -c * (↑k + 1)
+h2 : rexp (-c * (↑k + 1) ^ 2) ≤ rexp (-c * (↑k + 1))
+⊢ rexp (-c) ^ (↑k + 1) = rexp (-c) * rexp (-c) ^ k
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:148:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  rexp (-c * (↑k + 1))
+in the target expression
+  rexp (-c * (↑k + 1) ^ 2) ≤ rexp (-c) * rexp (-c) ^ k
+
+c : ℝ
+hc : 1 ≤ c
+hsum : Summable fun n => rexp (-c * ↑n ^ 2)
+hdecomp : ∑' (n : ℤ), rexp (-c * ↑n ^ 2) = rexp (-c * ↑0 ^ 2) + 2 * ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2)
+hsmul : ∀ (x : ℝ), 2 • x = 2 * x
+hreidx : ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2) = ∑' (k : ℕ), rexp (-c * (↑k + 1) ^ 2)
+hexp_inv : (rexp 1)⁻¹ ≤ 1 / 2
+hexpc : rexp (-c) ≤ 1 / 2
+k : ℕ
+hkm : ↑k + 1 ≤ (↑k + 1) ^ 2
+h1 : -c * (↑k + 1) ^ 2 ≤ -c * (↑k + 1)
+h2 : rexp (-c * (↑k + 1) ^ 2) ≤ rexp (-c * (↑k + 1))
+hpow : rexp (-c * (↑k + 1)) = rexp (-c) * rexp (-c) ^ k
+⊢ rexp (-c * (↑k + 1) ^ 2) ≤ rexp (-c) * rexp (-c) ^ k
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:151:4: error: Function expected at
+  summable_geometric_of_lt_one ?m.542 ?m.543
+but this term has type
+  Summable fun n => ?m.540 ^ n
+
+Note: Expected a function because this term is being applied to the argument
+  (Or.inl (by left; linarith))
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:152:7: error(lean.unknownIdentifier): Unknown constant `Real.exp_lt_one`
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:151:33: error: Application type mismatch: The argument
+  exp_pos ?m.541
+has type
+  0 < rexp ?m.541
+but is expected to have type
+  0 ≤ ?m.540
+in the application
+  summable_geometric_of_lt_one (exp_pos ?m.541)
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:219:12: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  √(?m.338 * ?m.340)
+in the target expression
+  √(u / π) * √(π / u) = √(u / π * (π / u))
+
+u : ℝ
+hu : 0 < u
+h : ∑' (n : ℤ), rexp (-u * ↑n ^ 2) = 1 / (u / π) ^ (1 / 2) * ∑' (n : ℤ), rexp (-π / (u / π) * ↑n ^ 2)
+hconv : ∀ (n : ℤ), -π * (u / π) * ↑n ^ 2 = -u * ↑n ^ 2
+hfun : (fun n => rexp (-π * (u / π) * ↑n ^ 2)) = fun n => rexp (-u * ↑n ^ 2)
+h1 : (u / π) ^ (1 / 2) = √(u / π)
+⊢ √(u / π) * √(π / u) = √(u / π * (π / u))
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:219:46: error: not a positivity goal
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:229:39: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?m.477⁻¹ * ?m.477
+in the target expression
+  (√(u / π))⁻¹ * √(u / π) * √(π / u) = 1 * √(π / u)
+
+u : ℝ
+hu : 0 < u
+h : ∑' (n : ℤ), rexp (-u * ↑n ^ 2) = 1 / (u / π) ^ (1 / 2) * ∑' (n : ℤ), rexp (-π / (u / π) * ↑n ^ 2)
+hconv : ∀ (n : ℤ), -π * (u / π) * ↑n ^ 2 = -u * ↑n ^ 2
+hfun : (fun n => rexp (-π * (u / π) * ↑n ^ 2)) = fun n => rexp (-u * ↑n ^ 2)
+h1 : (u / π) ^ (1 / 2) = √(u / π)
+h2 : √(u / π) * √(π / u) = 1
+hpos_sqrt : √(u / π) ≠ 0
+⊢ (√(u / π))⁻¹ * √(u / π) * √(π / u) = 1 * √(π / u)

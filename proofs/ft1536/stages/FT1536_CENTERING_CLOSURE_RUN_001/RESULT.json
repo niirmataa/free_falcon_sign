@@ -1,0 +1,29 @@
+{
+  "schema": "FT1536_CENTERING_CLOSURE_RESULT_V1",
+  "task_id": "FT1536_CENTERING_CLOSURE_RUN_001",
+  "parent_work": "FT1536_MATH_EUFCMA_GAME_BINDING_RUN_001 / CENTERING_CLOSURE",
+  "author": "MiMo V2.6 Pro (xiaomi-token-plan-ams/mimo-v2.6-pro), sesje W GAME_BINDING",
+  "freeze_packaged_by": "koordynator 2026-09-25, na polecenie wlasciciela (integracja /Obrazy do rygoru repo)",
+  "status": "PARTIAL_PROOF",
+  "claims": {
+    "full_rejection_bound_no_premises": "KERNEL (full_rejection_bound_no_premises : Rejection (fun _ => ()) () <= 1/2^24; lemat 2 BEZ premises; #print axioms: [propext, Classical.choice, Quot.sound] - logs/ta1_audit.log)",
+    "theta_sandwich_phases_A_D": "KERNEL (ThetaPoisson->Theta2Split->ThetaBox->ThetaFinal->ThetaAssembly: theta2_lower/theta2_upper, blockSum_eq_boxSum, boxSum_le_theta2, tail_le_pow300 <= 2^-300, thetaBounds, hnum_cert)",
+    "hnum_dimensional_certificate": "KERNEL (hnum_rational: norm_num na Rrat^1536; exp_neg_239_le/exp_neg_f_le/exp_neg_lamB_le)",
+    "all_keys_bridge_closure": "CONDITIONAL (all_keys_bridge_closure/all_keys_headline: dla kazdego klucza z Adm 1265/10^27 < delta(h) < 127/10^26; premises: hraw, hbridge; Adm = abstrakcyjny predykat, bez wiazania do realnego C-KeyGen)"
+  },
+  "named_premises": {
+    "hraw": "liczbowe spiecie rawLo <= rawBad <= rawHi (produkt radialny RUN_002 + poprawki aliases/input_tail/multiple_changes/norm_reject/signed16_emit/theta z centering_interval_closure.PINNED.json); kernelowe wiazanie produktow/ogonow = otwarty punkt M6 po stronie RUN_002",
+    "hbridge": "analityczny transport mostka dla kazdego dopuszczonego klucza (T5 dual theta + porownanie mas cosetow Poissona + transport MGF normy/wspolrzednych + cap16 po Emit)",
+    "Adm": "abstrakcyjny predykat 'klucz z powodzeniem emitowany przez istniejacy KeyGen'; wiazanie do realnego C-KeyGen poza zakresem"
+  },
+  "sprostowanie": "HANDOFF.md w korzeniu W (starszy) zapowiadał Faze D jako otwarta; stan faktyczny wg README.md + WORK_STATE.md: Faza D ZAMKNIETA (ThetaAssembly + hnum_cert + pelny lemat 2 bez premises).",
+  "excluded_from_freeze": [
+    "repro/radial_engine.cpython-314-x86_64-linux-gnu.so (binarium robocze, odtwarzalne z radial_engine.c/.pyx + engine_build_receipt.json)",
+    "home/, tmp/ (cache)"
+  ],
+  "open_obligations": "fiber_transport/bridge do C poza zakresem; complete_new_kernel_source_binding=false; pelna bezpieczenstwo kodu/PRNG poza zakresem",
+  "toolchain": "Lean 4.34.0 (/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0), Mathlib 5ed2965256430c3649e86755f9576b54eca72435, SageMath 10.9 (sage <plik>.sage, preparser)",
+  "sorry_admit_native_decide_used": false,
+  "independently_reviewed": false,
+  "owner_accepted": false
+}

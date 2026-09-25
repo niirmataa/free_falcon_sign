@@ -1,0 +1,137 @@
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:29:2: error: 'show' tactic failed, pattern
+  rexp (-c * (-↑n) ^ 2) = rexp (-c * ↑n ^ 2)
+is not definitionally equal to target
+  (fun n => rexp (-c * ↑n ^ 2)) (-n) = (fun n => rexp (-c * ↑n ^ 2)) n
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:79:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (-↑↑n) ^ 2
+in the target expression
+  rexp (-c * ↑n ^ 2) = rexp (-c * ↑(-↑n) ^ 2)
+
+case right
+c : ℝ
+hc : 1 ≤ c
+hn : Summable fun n => rexp (-c * ↑n ^ 2)
+n : ℕ
+h : (-↑↑n) ^ 2 = ↑↑n ^ 2
+⊢ rexp (-c * ↑n ^ 2) = rexp (-c * ↑(-↑n) ^ 2)
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:95:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  rexp (-c * 0 ^ 2)
+in the target expression
+  rexp (-c * ↑0 ^ 2) ≤ ∑' (i : ℤ), rexp (-c * ↑i ^ 2)
+
+c : ℝ
+hc : 1 ≤ c
+h0 : rexp (-c * 0 ^ 2) = 1
+h : rexp (-c * ↑0 ^ 2) ≤ ∑' (i : ℤ), rexp (-c * ↑i ^ 2)
+⊢ 1 ≤ thetaQ c
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:104:67: error: unsolved goals
+c : ℝ
+hc : 1 ≤ c
+hsum : Summable fun n => rexp (-c * ↑n ^ 2)
+hdecomp : ∑' (n : ℤ), rexp (-c * ↑n ^ 2) = rexp (-c * ↑0 ^ 2) + 2 • ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2)
+⊢ 2 * ∑' (n : ℕ+), rexp (-(c * ↑↑n ^ 2)) = ∑' (n : ℕ+), rexp (-(c * ↑↑n ^ 2)) + ∑' (n : ℕ+), rexp (-(c * ↑↑n ^ 2))
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:114:57: error: unsolved goals
+case e_f
+c : ℝ
+hc : 1 ≤ c
+hsum : Summable fun n => rexp (-c * ↑n ^ 2)
+hdecomp : ∑' (n : ℤ), rexp (-c * ↑n ^ 2) = rexp (-c * ↑0 ^ 2) + 2 * ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2)
+hsmul : 2 • ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2) = ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2) + ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2)
+hsplit : ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2) + ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2) = 2 * ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2)
+he : ∑' (c_1 : ℕ), rexp (-c * ↑↑↑(Equiv.pnatEquivNat.symm c_1) ^ 2) = ∑' (b : ℕ+), rexp (-c * ↑↑↑b ^ 2)
+k : ℕ
+⊢ rexp (-(c * ↑↑(Equiv.pnatEquivNat.symm k) ^ 2)) = rexp (-c - c * ↑k * 2 - c * ↑k ^ 2)
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:127:52: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  Group ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:151:24: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?x ^ ↑?n
+in the target expression
+  rexp (-c) ^ (↑k + 1) = rexp (-c) * rexp (-c) ^ k
+
+c : ℝ
+hc : 1 ≤ c
+hsum : Summable fun n => rexp (-c * ↑n ^ 2)
+hdecomp : ∑' (n : ℤ), rexp (-c * ↑n ^ 2) = rexp (-c * ↑0 ^ 2) + 2 * ∑' (k : ℕ), rexp (-c * (↑k + 1) ^ 2)
+hsmul : 2 • ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2) = ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2) + ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2)
+hsplit : ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2) + ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2) = 2 * ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2)
+hreidx : ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2) = ∑' (k : ℕ), rexp (-c * (↑k + 1) ^ 2)
+hexpc : rexp (-c) ≤ 1 / 2
+k : ℕ
+hkm : ↑k + 1 ≤ (↑k + 1) ^ 2
+h1 : -c * (↑k + 1) ^ 2 ≤ -c * (↑k + 1)
+h2 : rexp (-c * (↑k + 1) ^ 2) ≤ rexp (-c * (↑k + 1))
+⊢ rexp (-c) ^ (↑k + 1) = rexp (-c) * rexp (-c) ^ k
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:155:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  rexp (-c * (↑k + 1))
+in the target expression
+  rexp (-c * (↑k + 1) ^ 2) ≤ rexp (-c) * rexp (-c) ^ k
+
+c : ℝ
+hc : 1 ≤ c
+hsum : Summable fun n => rexp (-c * ↑n ^ 2)
+hdecomp : ∑' (n : ℤ), rexp (-c * ↑n ^ 2) = rexp (-c * ↑0 ^ 2) + 2 * ∑' (k : ℕ), rexp (-c * (↑k + 1) ^ 2)
+hsmul : 2 • ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2) = ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2) + ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2)
+hsplit : ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2) + ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2) = 2 * ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2)
+hreidx : ∑' (n : ℕ+), rexp (-c * ↑↑↑n ^ 2) = ∑' (k : ℕ), rexp (-c * (↑k + 1) ^ 2)
+hexpc : rexp (-c) ≤ 1 / 2
+k : ℕ
+hkm : ↑k + 1 ≤ (↑k + 1) ^ 2
+h1 : -c * (↑k + 1) ^ 2 ≤ -c * (↑k + 1)
+h2 : rexp (-c * (↑k + 1) ^ 2) ≤ rexp (-c * (↑k + 1))
+hpow : rexp (-c * (↑k + 1)) = rexp (-c) * rexp (-c) ^ k
+⊢ rexp (-c * (↑k + 1) ^ 2) ≤ rexp (-c) * rexp (-c) ^ k
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:159:4: error: Function expected at
+  summable_geometric_of_lt_one ?m.808 ?m.809
+but this term has type
+  Summable fun n => ?m.806 ^ n
+
+Note: Expected a function because this term is being applied to the argument
+  (Or.inl (by left; linarith))
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:160:7: error(lean.unknownIdentifier): Unknown constant `Real.exp_lt_one`
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:159:33: error: Application type mismatch: The argument
+  exp_pos ?m.807
+has type
+  0 < rexp ?m.807
+but is expected to have type
+  0 ≤ ?m.806
+in the application
+  summable_geometric_of_lt_one (exp_pos ?m.807)
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:227:12: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  √(?m.338 * ?m.340)
+in the target expression
+  √(u / π) * √(π / u) = √(u / π * (π / u))
+
+u : ℝ
+hu : 0 < u
+h : ∑' (n : ℤ), rexp (-u * ↑n ^ 2) = 1 / (u / π) ^ (1 / 2) * ∑' (n : ℤ), rexp (-π / (u / π) * ↑n ^ 2)
+hconv : ∀ (n : ℤ), -π * (u / π) * ↑n ^ 2 = -u * ↑n ^ 2
+hfun : (fun n => rexp (-π * (u / π) * ↑n ^ 2)) = fun n => rexp (-u * ↑n ^ 2)
+h1 : (u / π) ^ (1 / 2) = √(u / π)
+⊢ √(u / π) * √(π / u) = √(u / π * (π / u))
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:227:46: error: not a positivity goal
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:234:6: error: Tactic `apply` failed: could not unify the conclusion of `(div_eq_iff (ne_of_gt ?m.389)).mpr`
+  ?m.382 / ?m.387 = ?m.384
+with the goal
+  (√(u / π))⁻¹ = √(π / u)
+
+Note: The full type of `(div_eq_iff (ne_of_gt ?m.389)).mpr` is
+  ?m.382 = ?m.384 * ?m.387 → ?m.382 / ?m.387 = ?m.384
+
+u : ℝ
+hu : 0 < u
+h : ∑' (n : ℤ), rexp (-u * ↑n ^ 2) = 1 / (u / π) ^ (1 / 2) * ∑' (n : ℤ), rexp (-π / (u / π) * ↑n ^ 2)
+hconv : ∀ (n : ℤ), -π * (u / π) * ↑n ^ 2 = -u * ↑n ^ 2
+hfun : (fun n => rexp (-π * (u / π) * ↑n ^ 2)) = fun n => rexp (-u * ↑n ^ 2)
+h1 : (u / π) ^ (1 / 2) = √(u / π)
+h2 : √(u / π) * √(π / u) = 1
+⊢ (√(u / π))⁻¹ = √(π / u)
+CENTERING_CLOSURE/formal/ThetaPoisson.lean:236:12: error: Invalid rewrite argument: Expected an equality or iff proof or definition name, but `div_pos hu pi_pos` is a proof of
+  0 < u / π
