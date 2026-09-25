@@ -1,0 +1,34 @@
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/sage_001/tmp/sage_qr5ikdai/check_boundsob0ds47v.sage.py:12: DeprecationWarning: Use sage.version.version instead.
+See https://github.com/sagemath/sage/issues/39015 for details.
+  assert str(version()).startswith('SageMath version 10.9')
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/sage_001/tmp/sage_qr5ikdai/check_boundsob0ds47v.sage.py:88: DeprecationWarning: Use sage.version.version instead.
+See https://github.com/sagemath/sage/issues/39015 for details.
+  result = dict(schema='T12_1_EXACT_CONTROLS_V1',sage=version(),preparser=True,
+Traceback (most recent call last):
+  File "/home/footfalcon/miniforge3/envs/sage/bin/sage", line 5, in <module>
+    from sage.cli.__main__ import main
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__main__.py", line 9, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__init__.py", line 56, in main
+    return RunFileCmd(options).run()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/run_file_cmd.py", line 50, in run
+    eval(compile(open(input_file, 'rb').read(), input_file, 'exec'), sage_globals())
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/sage_001/tmp/sage_qr5ikdai/check_boundsob0ds47v.sage.py", line 94, in <module>
+    Path('certificates.json').write_text(json.dumps(result,indent=_sage_const_2 ,sort_keys=True)+'\n')
+                                         ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/json/__init__.py", line 242, in dumps
+    **kw).encode(obj)
+          ~~~~~~^^^^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/json/encoder.py", line 202, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/json/encoder.py", line 263, in iterencode
+    return _iterencode(o, 0)
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/json/encoder.py", line 182, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+                    f'is not JSON serializable')
+TypeError: Object of type Integer is not JSON serializable
+when serializing dict item 'event_masks_checked'
+when serializing dict item 'adaptive'

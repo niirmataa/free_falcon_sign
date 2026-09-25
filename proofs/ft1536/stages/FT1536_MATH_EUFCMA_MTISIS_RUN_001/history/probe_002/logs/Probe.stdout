@@ -1,0 +1,6 @@
+Real.sqrt (x : ℝ) : ℝ
+Finset.sum_pos'.{u_1, u_4} {ι : Type u_1} {M : Type u_4} [AddCommMonoid M] [Preorder M] [IsOrderedCancelAddMonoid M]
+  {f : ι → M} {s : Finset ι} [AddLeftStrictMono M] (h : ∀ i ∈ s, 0 ≤ f i) (hs : ∃ i ∈ s, 0 < f i) : 0 < ∑ i ∈ s, f i
+Finset.sum_pos.{u_1, u_4} {ι : Type u_1} {M : Type u_4} [AddCommMonoid M] [Preorder M] [IsOrderedCancelAddMonoid M]
+  {f : ι → M} {s : Finset ι} [AddLeftStrictMono M] (h : ∀ i ∈ s, 0 < f i) (hs : s.Nonempty) : 0 < ∑ i ∈ s, f i
+Finset.mem_univ.{u_1} {α : Type u_1} [Fintype α] (x : α) : x ∈ Finset.univ

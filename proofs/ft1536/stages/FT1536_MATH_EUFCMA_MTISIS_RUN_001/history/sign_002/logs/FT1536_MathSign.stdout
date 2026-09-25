@@ -1,0 +1,28 @@
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/sign_002/formal/FT1536/MathSign.lean:38:4: error: linarith failed to find a contradiction
+case succ.h1
+α : Type u_1
+inst✝¹ : Fintype α
+inst✝ : DecidableEq α
+trial : Law (Option α)
+x : α
+n : ℕ
+ih : (cap trial n).mass (some x) = (∑ i ∈ range n, trial.mass none ^ i) * trial.mass (some x)
+geo : trial.mass none * ∑ i ∈ range n, trial.mass none ^ i + 1 = ∑ i ∈ range (n + 1), trial.mass none ^ i
+a✝ :
+  trial.mass none * ((∑ i ∈ range n, trial.mass none ^ i) * trial.mass (some x)) + trial.mass (some x) <
+    (∑ i ∈ range (n + 1), trial.mass none ^ i) * trial.mass (some x)
+⊢ False
+failed
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/sign_002/formal/FT1536/MathSign.lean:65:0: warning: automatically included section variable(s) unused in theorem `FT1536.MathSign.pre_abort_has_no_nonce`:
+  [DecidableEq α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/sign_002/formal/FT1536/MathSign.lean:70:0: warning: automatically included section variable(s) unused in theorem `FT1536.MathSign.positive_reply_not_filtered`:
+  [Fintype α]
+  [DecidableEq α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype α] [DecidableEq α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`

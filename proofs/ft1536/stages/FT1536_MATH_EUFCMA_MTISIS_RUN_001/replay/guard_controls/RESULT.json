@@ -1,0 +1,101 @@
+{
+  "time": "2026-09-23T03:23:02.668932+00:00",
+  "tests": [
+    {
+      "name": "wrong_external_pin",
+      "argv": [
+        "python3",
+        "-B",
+        "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/output/tools/replay.py",
+        "--bundle",
+        "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/output",
+        "--dest",
+        "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/guard_controls_001/never_created1",
+        "--manifest",
+        "REPLAY_SEED.sha256",
+        "--manifest-sha",
+        "0000000000000000000000000000000000000000000000000000000000000000"
+      ],
+      "exit_code": 1,
+      "expected_failure": "EXTERNAL_MANIFEST_PIN_MISMATCH",
+      "pass_control": true,
+      "dest_created": false,
+      "stdout": "wrong_external_pin.stdout",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "wrong_external_pin.stderr",
+      "stderr_sha256": "86445d4fc8652e19899b398ba88cd6aeed99e7831829818f2713781be6fc6626"
+    },
+    {
+      "name": "existing_dest",
+      "argv": [
+        "python3",
+        "-B",
+        "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/output/tools/replay.py",
+        "--bundle",
+        "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/output",
+        "--dest",
+        "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/fresh_replay_001",
+        "--manifest",
+        "REPLAY_SEED.sha256",
+        "--manifest-sha",
+        "a5ff7f1a2f34dd0735b35c1b84afb915773c226e797f16b0b767bea777b4b707"
+      ],
+      "exit_code": 1,
+      "expected_failure": "DEST_MUST_BE_NEW",
+      "pass_control": true,
+      "dest_created": null,
+      "stdout": "existing_dest.stdout",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "existing_dest.stderr",
+      "stderr_sha256": "dc791eb60be953718bc79eccd793f4f0447cd531c51c05e892347fd6cdc4803b"
+    },
+    {
+      "name": "modified_member",
+      "argv": [
+        "python3",
+        "-B",
+        "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/output/tools/replay.py",
+        "--bundle",
+        "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/guard_controls_001/fixture",
+        "--dest",
+        "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/guard_controls_001/never_created2",
+        "--manifest",
+        "MANIFEST.sha256",
+        "--manifest-sha",
+        "99781e8cccd9164a1b2dfea29d339e4671246ce0a7675342ed7796c9ec18b571"
+      ],
+      "exit_code": 1,
+      "expected_failure": "MEMBER_PIN_MISMATCH",
+      "pass_control": true,
+      "dest_created": false,
+      "stdout": "modified_member.stdout",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "modified_member.stderr",
+      "stderr_sha256": "d35ddbea4fed6c7a056b48281bdfc895be7e40e88e890a26d0aa2b99dc9643ff"
+    },
+    {
+      "name": "incomplete_manifest",
+      "argv": [
+        "python3",
+        "-B",
+        "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/output/tools/replay.py",
+        "--bundle",
+        "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/guard_controls_001/fixture",
+        "--dest",
+        "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/guard_controls_001/never_created3",
+        "--manifest",
+        "MANIFEST.sha256",
+        "--manifest-sha",
+        "99781e8cccd9164a1b2dfea29d339e4671246ce0a7675342ed7796c9ec18b571"
+      ],
+      "exit_code": 1,
+      "expected_failure": "MANIFEST_OMITS_REPLAY_INPUTS",
+      "pass_control": true,
+      "dest_created": false,
+      "stdout": "incomplete_manifest.stdout",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "incomplete_manifest.stderr",
+      "stderr_sha256": "f0bce22b0fc57690925389c6d47f28981f6545ff146d566c603f3057d46d285e"
+    }
+  ]
+}

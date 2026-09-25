@@ -1,0 +1,22 @@
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/relation_001/formal/FT1536/Relation.lean:14:63: error: unsolved goals
+case fst
+c : Rq
+i : Fin 768
+⊢ ↑(((c i).1.cast + 9216) % 18433) - 9216 = (c i).1
+
+case snd
+c : Rq
+i : Fin 768
+⊢ ↑(((c i).2.cast + 9216) % 18433) - 9216 = (c i).2
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/relation_001/formal/FT1536/Relation.lean:16:56: warning: This simp argument is unused:
+  ZMod.intCast_mod
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [reduceVec, centerRq, center]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/relation_001/formal/FT1536/Relation.lean:20:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'semiring', which is 'noncomputable'
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/relation_001/formal/FT1536/Relation.lean:22:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'instAdd', which is 'noncomputable'
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/relation_001/formal/FT1536/Relation.lean:49:9: warning: Ambiguous namespace `Relation`: it is interpreted as `_root_.FT1536.Relation` because this `open` occurs inside `namespace FT1536.Reduction`, while `_root_.Relation` is silently not opened. Specify the namespace unambiguously, e.g. `_root_.FT1536.Relation`. The warning can sometimes also be addressed by moving the `open` outside of the surrounding `namespace`.
+
+Note: This linter can be disabled with `set_option linter.ambiguousOpen false`

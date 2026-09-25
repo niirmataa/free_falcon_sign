@@ -1,0 +1,103 @@
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/sign_001/formal/FT1536/MathSign.lean:31:34: warning: `if_false` has been deprecated: Use `ite_false` instead
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/sign_001/formal/FT1536/MathSign.lean:32:39: warning: `if_true` has been deprecated: Use `ite_true` instead
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/sign_001/formal/FT1536/MathSign.lean:38:4: error: linarith failed to find a contradiction
+case succ.h1
+α : Type u_1
+inst✝¹ : Fintype α
+inst✝ : DecidableEq α
+trial : Law (Option α)
+x : α
+n : ℕ
+ih : (cap trial n).mass (some x) = (∑ i ∈ range n, trial.mass none ^ i) * trial.mass (some x)
+geo : trial.mass none * ∑ i ∈ range n, trial.mass none ^ i + 1 = ∑ i ∈ range (n + 1), trial.mass none ^ i
+a✝ :
+  (trial.mass none * ((∑ i ∈ range n, trial.mass none ^ i) * trial.mass (some x)) +
+      ∑ x_1, if x = x_1 then trial.mass (some x_1) else 0) <
+    (∑ i ∈ range (n + 1), trial.mass none ^ i) * trial.mass (some x)
+⊢ False
+failed
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/sign_001/formal/FT1536/MathSign.lean:31:34: warning: This simp argument is unused:
+  if_false
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Option.some.injEq, Option.some_ne_none, mul_ite, mul_one, mul_zero, sum_ite_eq', mem_univ, if_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/sign_001/formal/FT1536/MathSign.lean:31:44: warning: This simp argument is unused:
+  Option.some_ne_none
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Option.some.injEq, if_false, mul_ite, mul_one, mul_zero, sum_ite_eq', mem_univ, if_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/sign_001/formal/FT1536/MathSign.lean:32:16: warning: This simp argument is unused:
+  sum_ite_eq'
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Option.some.injEq, if_false, Option.some_ne_none, mul_ite, mul_one, mul_zero, mem_univ, if_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/sign_001/formal/FT1536/MathSign.lean:32:29: warning: This simp argument is unused:
+  mem_univ
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Option.some.injEq, if_false, Option.some_ne_none, mul_ite, mul_one, mul_zero, sum_ite_eq', if_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/sign_001/formal/FT1536/MathSign.lean:32:39: warning: This simp argument is unused:
+  if_true
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Option.some.injEq, if_false, Option.some_ne_none, mul_ite, mul_one, mul_zero, sum_ite_eq',
+    mem_univ]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/sign_001/formal/FT1536/MathSign.lean:37:27: warning: This simp argument is unused:
+  ← mul_pow
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [pow_zero, pow_succ', ← mul_sum]
+
+Note: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/sign_001/formal/FT1536/MathSign.lean:60:5: error: unexpected token 'prefix'; expected '_' or identifier
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/sign_001/formal/FT1536/MathSign.lean:60:13: error: unexpected identifier; expected prec
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/sign_001/formal/FT1536/MathSign.lean:62:11: error: unexpected token 'then'; expected ':'
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/sign_001/formal/FT1536/MathSign.lean:67:5: error: Function expected at
+  observe
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  false
+
+Hint: The identifier `observe` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/sign_001/formal/FT1536/MathSign.lean:68:8: error: Invalid argument: Variable `observe` is not a proposition or let-declaration
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/sign_001/formal/FT1536/MathSign.lean:67:55: error: unsolved goals
+α : Type u_1
+β : Type u_2
+R : Type u_3
+inst✝⁵ : Fintype α
+inst✝⁴ : DecidableEq α
+x✝ : Sort u_4
+observe : x✝
+inst✝³ : Fintype β
+inst✝² : DecidableEq β
+inst✝¹ : Fintype R
+inst✝ : DecidableEq R
+nonce : Law R
+body : R → Law (Option α)
+encode : α → Option β
+⊢ sorry () = 1
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/sign_001/formal/FT1536/MathSign.lean:68:17: warning: This simp argument is unused:
+  Law.pure
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [observe]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/sign_001/formal/FT1536/MathSign.lean:71:4: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  DecidableEq β
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.

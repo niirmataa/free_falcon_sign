@@ -1,0 +1,47 @@
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/event_001/formal/FT1536/EventTransfer.lean:72:64: error: unsolved goals
+D : ℝ
+hD : 0 ≤ D
+⊢ D * (2 + D * 2)⁻¹ + √(D ^ 2) * (2 + D * 2)⁻¹ = D * (1 + D)⁻¹
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/event_001/formal/FT1536/EventTransfer.lean:73:28: warning: This simp argument is unused:
+  add_zero
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [phi, mul_zero, Real.sqrt_sq_eq_abs, abs_of_nonneg hD, zero_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/event_001/formal/FT1536/EventTransfer.lean:73:38: warning: This simp argument is unused:
+  Real.sqrt_sq_eq_abs
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [phi, mul_zero, add_zero, abs_of_nonneg hD, zero_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/event_001/formal/FT1536/EventTransfer.lean:73:59: warning: This simp argument is unused:
+  abs_of_nonneg hD
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [phi, mul_zero, add_zero, Real.sqrt_sq_eq_abs, zero_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/event_001/formal/FT1536/EventTransfer.lean:81:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_001/run/event_001/formal/FT1536/EventTransfer.lean:104:2: error: linarith failed to find a contradiction
+case h1
+D b : ℝ
+hD : 0 ≤ D
+hb : 0 ≤ b
+hb1 : b ≤ 1
+hs : √(D ^ 2 + 4 * D * b * (1 - b)) ^ 2 = D ^ 2 + 4 * D * b * (1 - b)
+hd : 2 * (1 + D) ≠ 0
+a✝ :
+  (2 * b + D + √(D * (D + b * 4 * (1 - b))) - 2 * b * (1 + D)) ^ 2 <
+    D * (2 * b + D + √(D * (D + b * 4 * (1 - b)))) * (2 * (1 + D) - (2 * b + D + √(D * (D + b * 4 * (1 - b)))))
+⊢ False
+failed

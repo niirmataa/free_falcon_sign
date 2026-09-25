@@ -1,0 +1,13 @@
+{
+  "schema": "T12_1_RESOURCE_SPEC_V1",
+  "status": "OPEN_TYPED_MACHINE_BINDING",
+  "domains": {"Qs":"Nat", "QH":"Nat", "t":"Nat bit steps", "w":"Nat bits", "L":"Nat bytes"},
+  "targets": "QH+1",
+  "table_entries": "QH+Qs+1",
+  "tB_spec": "t + Qs*(C_pub+C_A+C_emit) + C_verify(L)+C_extract(L)+C_table(M,L_key)+C_challenge_IO(QH+1)",
+  "wB_spec": "w+W_table+W_pub+W_A+W_extract+W_challenge",
+  "LB_spec": "L+40*(Qs+1)+3072*(QH+1)+8*1536+index_bytes(QH+1)+sampler_port_bytes",
+  "machine_cost_theorem_export": null,
+  "sampler_cost_certificate": null,
+  "timeout_or_sampler_error_assumed_zero": false
+}

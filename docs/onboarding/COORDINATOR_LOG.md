@@ -317,3 +317,16 @@ w historii. Następny krok po zakończeniu: ocena wyniku i checkpoint przy PASS.
   nietknięta. Binaria .so (radial_engine) wykluczone z freezu jako robocze.
 - Następne kroki w tym cyklu: commity checkpointami (załącznie z tym wpisem),
   opisy STATE/README, push wg polecenia właściciela „po wszystkim push na gh".
+
+## 2026-09-25T21:37:34Z — checkpoint FT1536_MATH_EUFCMA_MTISIS_RUN_001 (T12.1 RUN_001)
+
+- Import archive.py z external pinami autora: OUTPUTS a9e3af2ebccc221035024fabc7631fa47a93b841c1611e3e79f28ccf5ee5c98f,
+  REPORT fa6bbac7b379d80c256ceb2875a67106a1d7322d84e7ee0cc6b8bddecec7de9a.
+  Wynik: 4461 członków OUTPUTS, 27 wejść (closure w objects/), integrity PASS,
+  status PARTIAL_PROOF (bez zmian;101 twierdzeń = claim autora). replay=none
+  dispatcher archive.py: pakiet używa własnego tools/replay.py; świeży replay
+  autora 19/19 + 3/3 produkty + 4/4 guards jest w OUTPUTS.
+- Otwarte wg HANDOFF autora: pełne prawo Sign/interpreter gry/prawa/certified
+  bit-cost, sampler publiczny, małe błędy; kontrprzykład centrowania zachowany.
+  Nazwa REPLAY_SEED.sha256 rozliczona wyjątkiem z wpisu poprzedniego.
+- Następny krok: checkpoint A2 v2.1 (errata RESULT.json), potem A5.

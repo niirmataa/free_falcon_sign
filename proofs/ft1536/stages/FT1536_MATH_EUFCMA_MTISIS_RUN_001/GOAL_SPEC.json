@@ -1,0 +1,416 @@
+{
+  "before_proof_spec": "GOAL_SPEC.md",
+  "checked_declarations": [
+    {
+      "lean_type": "@FT1536.Law.event_nonneg.{u_1} : \u2200 {\u03b1 : Type u_1} [inst : Fintype.{u_1} \u03b1] (p : FT1536.Law.{u_1} \u03b1) (E : \u03b1 \u2192 Prop)\n  [inst_1 : DecidablePred.{u_1 + 1} E], LE.le.{0} 0 (FT1536.Law.event.{u_1} p E)",
+      "name": "FT1536.Law.event_nonneg"
+    },
+    {
+      "lean_type": "@FT1536.Law.event_le_one.{u_1} : \u2200 {\u03b1 : Type u_1} [inst : Fintype.{u_1} \u03b1] (p : FT1536.Law.{u_1} \u03b1) (E : \u03b1 \u2192 Prop)\n  [inst_1 : DecidablePred.{u_1 + 1} E], LE.le.{0} (FT1536.Law.event.{u_1} p E) 1",
+      "name": "FT1536.Law.event_le_one"
+    },
+    {
+      "lean_type": "@FT1536.Law.event_mono.{u_1} : \u2200 {\u03b1 : Type u_1} [inst : Fintype.{u_1} \u03b1] (p : FT1536.Law.{u_1} \u03b1) (E F : \u03b1 \u2192 Prop)\n  [inst_1 : DecidablePred.{u_1 + 1} E] [inst_2 : DecidablePred.{u_1 + 1} F],\n  (\u2200 (x : \u03b1), E x \u2192 F x) \u2192 LE.le.{0} (FT1536.Law.event.{u_1} p E) (FT1536.Law.event.{u_1} p F)",
+      "name": "FT1536.Law.event_mono"
+    },
+    {
+      "lean_type": "@FT1536.Law.remove_bad_bound.{u_1} : \u2200 {\u03b1 : Type u_1} [inst : Fintype.{u_1} \u03b1] (p : FT1536.Law.{u_1} \u03b1)\n  (Win Bad : \u03b1 \u2192 Prop) [inst_1 : DecidablePred.{u_1 + 1} Win] [inst_2 : DecidablePred.{u_1 + 1} Bad],\n  LE.le.{0} (FT1536.Law.event.{u_1} p Win)\n    (HAdd.hAdd.{0, 0, 0} (FT1536.Law.event.{u_1} p fun x => Win x \u2227 \u00acBad x) (FT1536.Law.event.{u_1} p Bad))",
+      "name": "FT1536.Law.remove_bad_bound"
+    },
+    {
+      "lean_type": "@FT1536.MathSign.cap_none.{u_1} : \u2200 {\u03b1 : Type u_1} [inst : Fintype.{u_1} \u03b1] [inst_1 : DecidableEq.{u_1 + 1} \u03b1]\n  (trial : FT1536.Law.{u_1} (Option.{u_1} \u03b1)) (n : \u2115),\n  Eq.{1} (FT1536.Law.mass.{u_1} (FT1536.MathSign.cap.{u_1} trial n) none.{u_1})\n    (HPow.hPow.{0, 0, 0} (FT1536.Law.mass.{u_1} trial none.{u_1}) n)",
+      "name": "FT1536.MathSign.cap_none"
+    },
+    {
+      "lean_type": "@FT1536.MathSign.cap_some.{u_1} : \u2200 {\u03b1 : Type u_1} [inst : Fintype.{u_1} \u03b1] [inst_1 : DecidableEq.{u_1 + 1} \u03b1]\n  (trial : FT1536.Law.{u_1} (Option.{u_1} \u03b1)) (n : \u2115) (x : \u03b1),\n  Eq.{1} (FT1536.Law.mass.{u_1} (FT1536.MathSign.cap.{u_1} trial n) (some.{u_1} x))\n    (HMul.hMul.{0, 0, 0} (\u2211 i \u2208 Finset.range n, HPow.hPow.{0, 0, 0} (FT1536.Law.mass.{u_1} trial none.{u_1}) i)\n      (FT1536.Law.mass.{u_1} trial (some.{u_1} x)))",
+      "name": "FT1536.MathSign.cap_some"
+    },
+    {
+      "lean_type": "@FT1536.MathSign.full_reply_law.{u_1} : \u2200 {\u03b1 : Type u_1} [inst : Fintype.{u_1} \u03b1] [inst_1 : DecidableEq.{u_1 + 1} \u03b1]\n  (trial : FT1536.Law.{u_1} (Option.{u_1} \u03b1)) (n : \u2115),\n  Eq.{1} (\u2211 o, FT1536.Law.mass.{u_1} (FT1536.MathSign.cap.{u_1} trial n) o) 1 \u2227\n    Eq.{1} (FT1536.Law.mass.{u_1} (FT1536.MathSign.cap.{u_1} trial n) none.{u_1})\n        (HPow.hPow.{0, 0, 0} (FT1536.Law.mass.{u_1} trial none.{u_1}) n) \u2227\n      \u2200 (x : \u03b1),\n        Eq.{1} (FT1536.Law.mass.{u_1} (FT1536.MathSign.cap.{u_1} trial n) (some.{u_1} x))\n          (HMul.hMul.{0, 0, 0} (\u2211 i \u2208 Finset.range n, HPow.hPow.{0, 0, 0} (FT1536.Law.mass.{u_1} trial none.{u_1}) i)\n            (FT1536.Law.mass.{u_1} trial (some.{u_1} x)))",
+      "name": "FT1536.MathSign.full_reply_law"
+    },
+    {
+      "lean_type": "@FT1536.MathSign.cap16_exhaustion.{u_1} : \u2200 {\u03b1 : Type u_1} [inst : Fintype.{u_1} \u03b1] [inst_1 : DecidableEq.{u_1 + 1} \u03b1]\n  (trial : FT1536.Law.{u_1} (Option.{u_1} \u03b1)),\n  Eq.{1} (FT1536.Law.mass.{u_1} (FT1536.MathSign.cap.{u_1} trial 16) none.{u_1})\n    (HPow.hPow.{0, 0, 0} (HSub.hSub.{0, 0, 0} 1 (HSub.hSub.{0, 0, 0} 1 (FT1536.Law.mass.{u_1} trial none.{u_1}))) 16)",
+      "name": "FT1536.MathSign.cap16_exhaustion"
+    },
+    {
+      "lean_type": "@FT1536.MathSign.pre_abort_has_no_nonce.{u_1, u_2,\n    u_3} : \u2200 {\u03b1 : Type u_1} {\u03b2 : Type u_2} {R : Type u_3} [inst : Fintype.{u_1} \u03b1] [inst_1 : Fintype.{u_2} \u03b2]\n  [inst_2 : DecidableEq.{u_2 + 1} \u03b2] [inst_3 : Fintype.{u_3} R] [inst_4 : DecidableEq.{u_3 + 1} R]\n  (nonce : FT1536.Law.{u_3} R) (body : R \u2192 FT1536.Law.{u_1} (Option.{u_1} \u03b1)) (encode : \u03b1 \u2192 Option.{u_2} \u03b2),\n  Eq.{1}\n    (FT1536.Law.mass.{max u_2 u_3} (FT1536.MathSign.observe.{u_1, u_2, u_3} false nonce body encode) none.{max u_2 u_3})\n    1",
+      "name": "FT1536.MathSign.pre_abort_has_no_nonce"
+    },
+    {
+      "lean_type": "@FT1536.MathSign.positive_reply_not_filtered.{u_1,\n    u_2} : \u2200 {\u03b1 : Type u_1} {\u03b2 : Type u_2} (encode : \u03b1 \u2192 Option.{u_2} \u03b2) (x : \u03b1),\n  Eq.{u_2 + 1} (FT1536.MathSign.emit.{u_1, u_2} encode (some.{u_1} x)) (encode x)",
+      "name": "FT1536.MathSign.positive_reply_not_filtered"
+    },
+    {
+      "lean_type": "FT1536.Geometry.block_nonneg : \u2200 (x y : \u2124), LE.le.{0} 0 (FT1536.Geometry.block x y)",
+      "name": "FT1536.Geometry.block_nonneg"
+    },
+    {
+      "lean_type": "FT1536.Geometry.coord_square_le_twice : \u2200 (x y : \u2124),\n  LE.le.{0} (HPow.hPow.{0, 0, 0} x 2) (HMul.hMul.{0, 0, 0} 2 (FT1536.Geometry.block x y))",
+      "name": "FT1536.Geometry.coord_square_le_twice"
+    },
+    {
+      "lean_type": "FT1536.Geometry.Q0_nonneg : \u2200 (v : FT1536.Geometry.Vec), LE.le.{0} 0 (FT1536.Geometry.Q0 v)",
+      "name": "FT1536.Geometry.Q0_nonneg"
+    },
+    {
+      "lean_type": "FT1536.Geometry.coord_bound : \u2200 (v w : FT1536.Geometry.Vec) (i : Fin 768),\n  LT.lt.{0} (FT1536.Geometry.Q (Prod.mk.{0, 0} v w)) FT1536.Geometry.B \u2192\n    LE.le.{0} (-65535) (v i).1 \u2227 LE.le.{0} (v i).1 65535",
+      "name": "FT1536.Geometry.coord_bound"
+    },
+    {
+      "lean_type": "FT1536.Geometry.Q0_swap : \u2200 (v : FT1536.Geometry.Vec),\n  Eq.{1} (FT1536.Geometry.Q0 (FT1536.Geometry.swap v)) (FT1536.Geometry.Q0 v)",
+      "name": "FT1536.Geometry.Q0_swap"
+    },
+    {
+      "lean_type": "FT1536.Geometry.all_coord_bounds : \u2200 (v w : FT1536.Geometry.Vec),\n  LT.lt.{0} (FT1536.Geometry.Q (Prod.mk.{0, 0} v w)) FT1536.Geometry.B \u2192\n    \u2200 (i : Fin 768),\n      (LE.le.{0} (-65535) (v i).1 \u2227 LE.le.{0} (v i).1 65535) \u2227\n        (LE.le.{0} (-65535) (v i).2 \u2227 LE.le.{0} (v i).2 65535) \u2227\n          (LE.le.{0} (-65535) (w i).1 \u2227 LE.le.{0} (w i).1 65535) \u2227 LE.le.{0} (-65535) (w i).2 \u2227 LE.le.{0} (w i).2 65535",
+      "name": "FT1536.Geometry.all_coord_bounds"
+    },
+    {
+      "lean_type": "FT1536.Geometry.Q0_spike : \u2200 (x y : \u2124),\n  Eq.{1} (FT1536.Geometry.Q0 (FT1536.Geometry.spike x y)) (FT1536.Geometry.block x y)",
+      "name": "FT1536.Geometry.Q0_spike"
+    },
+    {
+      "lean_type": "FT1536.Geometry.center_spike : \u2200 (x y : \u2124),\n  Eq.{1} (FT1536.Geometry.centerVec (FT1536.Geometry.spike x y))\n    (FT1536.Geometry.spike (FT1536.Geometry.center x) (FT1536.Geometry.center y))",
+      "name": "FT1536.Geometry.center_spike"
+    },
+    {
+      "lean_type": "FT1536.Geometry.centering_can_break_acceptance : LT.lt.{0}\n    (FT1536.Geometry.Q (Prod.mk.{0, 0} (FT1536.Geometry.spike 9217 (-5000)) (FT1536.Geometry.spike 32767 18000)))\n    FT1536.Geometry.B \u2227\n  \u00acLT.lt.{0}\n      (FT1536.Geometry.Q\n        (Prod.mk.{0, 0} (FT1536.Geometry.centerVec (FT1536.Geometry.spike 9217 (-5000)))\n          (FT1536.Geometry.spike 32767 18000)))\n      FT1536.Geometry.B",
+      "name": "FT1536.Geometry.centering_can_break_acceptance"
+    },
+    {
+      "lean_type": "@FT1536.Divergence.support_mismatch.{u_1} : \u2200 {\u03b1 : Type u_1} [inst : Fintype.{u_1} \u03b1] (j p : FT1536.Law.{u_1} \u03b1)\n  (x : \u03b1),\n  Eq.{1} (FT1536.Law.mass.{u_1} p x) 0 \u2192\n    Ne.{1} (FT1536.Law.mass.{u_1} j x) 0 \u2192 Eq.{1} (FT1536.Divergence.chi2.{u_1} j p) Top.top.{0}",
+      "name": "FT1536.Divergence.support_mismatch"
+    },
+    {
+      "lean_type": "@FT1536.Divergence.density_mean.{u_1} : \u2200 {\u03b1 : Type u_1} [inst : Fintype.{u_1} \u03b1] (j p : FT1536.Law.{u_1} \u03b1)\n  (d : FT1536.Divergence.Density.{u_1} j p),\n  Eq.{1} (\u2211 x, HMul.hMul.{0, 0, 0} (FT1536.Law.mass.{u_1} p x) (FT1536.Divergence.Density.ratio.{u_1} d x)) 1",
+      "name": "FT1536.Divergence.density_mean"
+    },
+    {
+      "lean_type": "@FT1536.Divergence.energy_eq_second.{u_1} : \u2200 {\u03b1 : Type u_1} [inst : Fintype.{u_1} \u03b1] (j p : FT1536.Law.{u_1} \u03b1)\n  (d : FT1536.Divergence.Density.{u_1} j p),\n  Eq.{1} (FT1536.Divergence.energy.{u_1} p (FT1536.Divergence.Density.ratio.{u_1} d))\n    (FT1536.Divergence.second.{u_1} j p)",
+      "name": "FT1536.Divergence.energy_eq_second"
+    },
+    {
+      "lean_type": "@FT1536.Divergence.centered_energy.{u_1} : \u2200 {\u03b1 : Type u_1} [inst : Fintype.{u_1} \u03b1] (j p : FT1536.Law.{u_1} \u03b1)\n  (d : FT1536.Divergence.Density.{u_1} j p),\n  Eq.{1}\n    (\u2211 x,\n      HMul.hMul.{0, 0, 0} (FT1536.Law.mass.{u_1} p x)\n        (HPow.hPow.{0, 0, 0} (HSub.hSub.{0, 0, 0} (FT1536.Divergence.Density.ratio.{u_1} d x) 1) 2))\n    (HSub.hSub.{0, 0, 0} (FT1536.Divergence.energy.{u_1} p (FT1536.Divergence.Density.ratio.{u_1} d)) 1)",
+      "name": "FT1536.Divergence.centered_energy"
+    },
+    {
+      "lean_type": "@FT1536.Divergence.weighted_cauchy.{u_1} : \u2200 {\u03b1 : Type u_1} [inst : Fintype.{u_1} \u03b1] (p : FT1536.Law.{u_1} \u03b1)\n  (u v : \u03b1 \u2192 \u211d),\n  LE.le.{0}\n    (HPow.hPow.{0, 0, 0} (\u2211 x, HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} (FT1536.Law.mass.{u_1} p x) (u x)) (v x)) 2)\n    (HMul.hMul.{0, 0, 0} (\u2211 x, HMul.hMul.{0, 0, 0} (FT1536.Law.mass.{u_1} p x) (HPow.hPow.{0, 0, 0} (u x) 2))\n      (\u2211 x, HMul.hMul.{0, 0, 0} (FT1536.Law.mass.{u_1} p x) (HPow.hPow.{0, 0, 0} (v x) 2)))",
+      "name": "FT1536.Divergence.weighted_cauchy"
+    },
+    {
+      "lean_type": "@FT1536.Divergence.energy_ge_one.{u_1} : \u2200 {\u03b1 : Type u_1} [inst : Fintype.{u_1} \u03b1] (j p : FT1536.Law.{u_1} \u03b1)\n  (d : FT1536.Divergence.Density.{u_1} j p),\n  LE.le.{0} 1 (FT1536.Divergence.energy.{u_1} p (FT1536.Divergence.Density.ratio.{u_1} d))",
+      "name": "FT1536.Divergence.energy_ge_one"
+    },
+    {
+      "lean_type": "@FT1536.Divergence.chi2_toReal.{u_1} : \u2200 {\u03b1 : Type u_1} [inst : Fintype.{u_1} \u03b1] (j p : FT1536.Law.{u_1} \u03b1),\n  FT1536.Divergence.AC.{u_1} j p \u2192\n    Eq.{1} (FT1536.Divergence.chi2.{u_1} j p).toReal (HSub.hSub.{0, 0, 0} (FT1536.Divergence.second.{u_1} j p) 1)",
+      "name": "FT1536.Divergence.chi2_toReal"
+    },
+    {
+      "lean_type": "@FT1536.Divergence.chi2_finite.{u_1} : \u2200 {\u03b1 : Type u_1} [inst : Fintype.{u_1} \u03b1] (j p : FT1536.Law.{u_1} \u03b1),\n  FT1536.Divergence.AC.{u_1} j p \u2192 Ne.{1} (FT1536.Divergence.chi2.{u_1} j p) Top.top.{0}",
+      "name": "FT1536.Divergence.chi2_finite"
+    },
+    {
+      "lean_type": "@FT1536.Divergence.joint_chi2.{u_1,\n    u_2} : \u2200 {\u03b1 : Type u_1} {\u03b2 : Type u_2} [inst : Fintype.{u_1} \u03b1] [inst_1 : Fintype.{u_2} \u03b2]\n  (j p : FT1536.Law.{u_1} \u03b1) (l k : \u03b1 \u2192 FT1536.Law.{u_2} \u03b2),\n  Eq.{1}\n    (FT1536.Divergence.second.{max u_2 u_1} (FT1536.Divergence.joint.{u_1, u_2} j l)\n      (FT1536.Divergence.joint.{u_1, u_2} p k))\n    (\u2211 x,\n      HMul.hMul.{0, 0, 0}\n        (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} (FT1536.Law.mass.{u_1} j x) 2) (FT1536.Law.mass.{u_1} p x))\n        (FT1536.Divergence.second.{u_2} (l x) (k x)))",
+      "name": "FT1536.Divergence.joint_chi2"
+    },
+    {
+      "lean_type": "@FT1536.Divergence.joint_ac.{u_1,\n    u_2} : \u2200 {\u03b1 : Type u_1} {\u03b2 : Type u_2} [inst : Fintype.{u_1} \u03b1] [inst_1 : Fintype.{u_2} \u03b2]\n  (j p : FT1536.Law.{u_1} \u03b1) (l k : \u03b1 \u2192 FT1536.Law.{u_2} \u03b2),\n  FT1536.Divergence.AC.{u_1} j p \u2192\n    (\u2200 (x : \u03b1), Ne.{1} (FT1536.Law.mass.{u_1} j x) 0 \u2192 FT1536.Divergence.AC.{u_2} (l x) (k x)) \u2192\n      FT1536.Divergence.AC.{max u_2 u_1} (FT1536.Divergence.joint.{u_1, u_2} j l)\n        (FT1536.Divergence.joint.{u_1, u_2} p k)",
+      "name": "FT1536.Divergence.joint_ac"
+    },
+    {
+      "lean_type": "@FT1536.Divergence.joint_chi2_finite.{u_1,\n    u_2} : \u2200 {\u03b1 : Type u_1} {\u03b2 : Type u_2} [inst : Fintype.{u_1} \u03b1] [inst_1 : Fintype.{u_2} \u03b2]\n  (j p : FT1536.Law.{u_1} \u03b1) (l k : \u03b1 \u2192 FT1536.Law.{u_2} \u03b2),\n  FT1536.Divergence.AC.{u_1} j p \u2192\n    (\u2200 (x : \u03b1), Ne.{1} (FT1536.Law.mass.{u_1} j x) 0 \u2192 FT1536.Divergence.AC.{u_2} (l x) (k x)) \u2192\n      Eq.{1}\n        (HAdd.hAdd.{0, 0, 0} 1\n          (FT1536.Divergence.chi2.{max u_2 u_1} (FT1536.Divergence.joint.{u_1, u_2} j l)\n              (FT1536.Divergence.joint.{u_1, u_2} p k)).toReal)\n        (\u2211 x,\n          HMul.hMul.{0, 0, 0}\n            (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} (FT1536.Law.mass.{u_1} j x) 2) (FT1536.Law.mass.{u_1} p x))\n            (HAdd.hAdd.{0, 0, 0} 1 (FT1536.Divergence.chi2.{u_2} (l x) (k x)).toReal))",
+      "name": "FT1536.Divergence.joint_chi2_finite"
+    },
+    {
+      "lean_type": "@FT1536.Divergence.joint_bound.{u_1,\n    u_2} : \u2200 {\u03b1 : Type u_1} {\u03b2 : Type u_2} [inst : Fintype.{u_1} \u03b1] [inst_1 : Fintype.{u_2} \u03b2]\n  (j p : FT1536.Law.{u_1} \u03b1) (l k : \u03b1 \u2192 FT1536.Law.{u_2} \u03b2) (C : \u211d),\n  (\u2200 (x : \u03b1), Ne.{1} (FT1536.Law.mass.{u_1} j x) 0 \u2192 LE.le.{0} (FT1536.Divergence.second.{u_2} (l x) (k x)) C) \u2192\n    LE.le.{0}\n      (FT1536.Divergence.second.{max u_2 u_1} (FT1536.Divergence.joint.{u_1, u_2} j l)\n        (FT1536.Divergence.joint.{u_1, u_2} p k))\n      (HMul.hMul.{0, 0, 0} (FT1536.Divergence.second.{u_1} j p) C)",
+      "name": "FT1536.Divergence.joint_bound"
+    },
+    {
+      "lean_type": "@FT1536.Divergence.image_conditional_bound.{u_1,\n    u_2} : \u2200 {\u03b1 : Type u_1} {\u03b2 : Type u_2} [inst : Fintype.{u_1} \u03b1] [inst_1 : Fintype.{u_2} \u03b2]\n  (j p : FT1536.Law.{u_1} \u03b1) (l k : \u03b1 \u2192 FT1536.Law.{u_2} \u03b2) (eImg eSign : \u211d),\n  LE.le.{0} (FT1536.Divergence.second.{u_1} j p) (HAdd.hAdd.{0, 0, 0} 1 eImg) \u2192\n    LE.le.{0} 0 (HAdd.hAdd.{0, 0, 0} 1 eSign) \u2192\n      (\u2200 (x : \u03b1),\n          Ne.{1} (FT1536.Law.mass.{u_1} j x) 0 \u2192\n            LE.le.{0} (FT1536.Divergence.second.{u_2} (l x) (k x)) (HAdd.hAdd.{0, 0, 0} 1 eSign)) \u2192\n        LE.le.{0}\n          (HSub.hSub.{0, 0, 0}\n            (FT1536.Divergence.second.{max u_2 u_1} (FT1536.Divergence.joint.{u_1, u_2} j l)\n              (FT1536.Divergence.joint.{u_1, u_2} p k))\n            1)\n          (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} 1 eImg) (HAdd.hAdd.{0, 0, 0} 1 eSign)) 1)",
+      "name": "FT1536.Divergence.image_conditional_bound"
+    },
+    {
+      "lean_type": "@FT1536.EventTransfer.event_quadratic.{u_1} : \u2200 {\u03b1 : Type u_1} [inst : Fintype.{u_1} \u03b1] (j p : FT1536.Law.{u_1} \u03b1)\n  (d : FT1536.Divergence.Density.{u_1} j p) (E : \u03b1 \u2192 Prop) [inst_1 : DecidablePred.{u_1 + 1} E] (D : \u211d),\n  LE.le.{0} (HSub.hSub.{0, 0, 0} (FT1536.Divergence.energy.{u_1} p (FT1536.Divergence.Density.ratio.{u_1} d)) 1) D \u2192\n    LE.le.{0} (HPow.hPow.{0, 0, 0} (HSub.hSub.{0, 0, 0} (FT1536.Law.event.{u_1} p E) (FT1536.Law.event.{u_1} j E)) 2)\n      (HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} D (FT1536.Law.event.{u_1} p E))\n        (HSub.hSub.{0, 0, 0} 1 (FT1536.Law.event.{u_1} p E)))",
+      "name": "FT1536.EventTransfer.event_quadratic"
+    },
+    {
+      "lean_type": "@FT1536.EventTransfer.discriminant_nonneg : \u2200 {D b : \u211d},\n  LE.le.{0} 0 D \u2192\n    LE.le.{0} 0 b \u2192\n      LE.le.{0} b 1 \u2192\n        LE.le.{0} 0\n          (HAdd.hAdd.{0, 0, 0} (HPow.hPow.{0, 0, 0} D 2)\n            (HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} 4 D) b) (HSub.hSub.{0, 0, 0} 1 b)))",
+      "name": "FT1536.EventTransfer.discriminant_nonneg"
+    },
+    {
+      "lean_type": "@FT1536.EventTransfer.phi_bound : \u2200 {a b D : \u211d},\n  LE.le.{0} 0 D \u2192\n    LE.le.{0} 0 b \u2192\n      LE.le.{0} b 1 \u2192\n        LE.le.{0} (HPow.hPow.{0, 0, 0} (HSub.hSub.{0, 0, 0} a b) 2)\n            (HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} D a) (HSub.hSub.{0, 0, 0} 1 a)) \u2192\n          LE.le.{0} a (FT1536.EventTransfer.phi D b)",
+      "name": "FT1536.EventTransfer.phi_bound"
+    },
+    {
+      "lean_type": "FT1536.EventTransfer.phi_zero_delta : \u2200 (b : \u211d), Eq.{1} (FT1536.EventTransfer.phi 0 b) b",
+      "name": "FT1536.EventTransfer.phi_zero_delta"
+    },
+    {
+      "lean_type": "@FT1536.EventTransfer.phi_at_zero : \u2200 {D : \u211d},\n  LE.le.{0} 0 D \u2192 Eq.{1} (FT1536.EventTransfer.phi D 0) (HDiv.hDiv.{0, 0, 0} D (HAdd.hAdd.{0, 0, 0} 1 D))",
+      "name": "FT1536.EventTransfer.phi_at_zero"
+    },
+    {
+      "lean_type": "@FT1536.EventTransfer.phi_at_one : \u2200 {D : \u211d}, LE.le.{0} 0 D \u2192 Eq.{1} (FT1536.EventTransfer.phi D 1) 1",
+      "name": "FT1536.EventTransfer.phi_at_one"
+    },
+    {
+      "lean_type": "@FT1536.EventTransfer.phi_ge_b : \u2200 {D b : \u211d},\n  LE.le.{0} 0 D \u2192 LE.le.{0} 0 b \u2192 LE.le.{0} b 1 \u2192 LE.le.{0} b (FT1536.EventTransfer.phi D b)",
+      "name": "FT1536.EventTransfer.phi_ge_b"
+    },
+    {
+      "lean_type": "@FT1536.EventTransfer.phi_le_one : \u2200 {D b : \u211d},\n  LE.le.{0} 0 D \u2192 LE.le.{0} 0 b \u2192 LE.le.{0} b 1 \u2192 LE.le.{0} (FT1536.EventTransfer.phi D b) 1",
+      "name": "FT1536.EventTransfer.phi_le_one"
+    },
+    {
+      "lean_type": "@FT1536.EventTransfer.phi_satisfies : \u2200 {D b : \u211d},\n  LE.le.{0} 0 D \u2192\n    LE.le.{0} 0 b \u2192\n      LE.le.{0} b 1 \u2192\n        Eq.{1} (HPow.hPow.{0, 0, 0} (HSub.hSub.{0, 0, 0} (FT1536.EventTransfer.phi D b) b) 2)\n          (HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} D (FT1536.EventTransfer.phi D b))\n            (HSub.hSub.{0, 0, 0} 1 (FT1536.EventTransfer.phi D b)))",
+      "name": "FT1536.EventTransfer.phi_satisfies"
+    },
+    {
+      "lean_type": "@FT1536.EventTransfer.phi_mono : \u2200 {D b c : \u211d},\n  LE.le.{0} 0 D \u2192\n    LE.le.{0} 0 b \u2192\n      LE.le.{0} b c \u2192 LE.le.{0} c 1 \u2192 LE.le.{0} (FT1536.EventTransfer.phi D b) (FT1536.EventTransfer.phi D c)",
+      "name": "FT1536.EventTransfer.phi_mono"
+    },
+    {
+      "lean_type": "@FT1536.Divergence.transcript_ac : \u2200 {\u03b1 : Type} [inst : Fintype.{0} \u03b1]\n  (j p : (n : \u2115) \u2192 FT1536.Divergence.Hist \u03b1 n \u2192 FT1536.Law.{0} \u03b1),\n  (\u2200 (n : \u2115) (x : FT1536.Divergence.Hist \u03b1 n), FT1536.Divergence.AC.{0} (j n x) (p n x)) \u2192\n    \u2200 (n : \u2115), FT1536.Divergence.AC.{0} (FT1536.Divergence.transcript j n) (FT1536.Divergence.transcript p n)",
+      "name": "FT1536.Divergence.transcript_ac"
+    },
+    {
+      "lean_type": "@FT1536.Divergence.stopped_adaptive_chi2 : \u2200 {\u03b1 : Type} [inst : Fintype.{0} \u03b1]\n  (j p : (n : \u2115) \u2192 FT1536.Divergence.Hist \u03b1 n \u2192 FT1536.Law.{0} \u03b1) (C : \u2115 \u2192 \u211d),\n  (\u2200 (n : \u2115), LE.le.{0} 0 (C n)) \u2192\n    (\u2200 (n : \u2115) (x : FT1536.Divergence.Hist \u03b1 n), LE.le.{0} (FT1536.Divergence.second.{0} (j n x) (p n x)) (C n)) \u2192\n      \u2200 (n : \u2115),\n        LE.le.{0} (FT1536.Divergence.second.{0} (FT1536.Divergence.transcript j n) (FT1536.Divergence.transcript p n))\n          (\u220f i \u2208 Finset.range n, C i)",
+      "name": "FT1536.Divergence.stopped_adaptive_chi2"
+    },
+    {
+      "lean_type": "@FT1536.Divergence.constant_adaptive_chi2 : \u2200 {\u03b1 : Type} [inst : Fintype.{0} \u03b1]\n  (j p : (n : \u2115) \u2192 FT1536.Divergence.Hist \u03b1 n \u2192 FT1536.Law.{0} \u03b1) (e : \u211d),\n  LE.le.{0} 0 e \u2192\n    (\u2200 (n : \u2115) (x : FT1536.Divergence.Hist \u03b1 n),\n        LE.le.{0} (FT1536.Divergence.second.{0} (j n x) (p n x)) (HAdd.hAdd.{0, 0, 0} 1 e)) \u2192\n      \u2200 (n : \u2115),\n        LE.le.{0}\n          (HSub.hSub.{0, 0, 0}\n            (FT1536.Divergence.second.{0} (FT1536.Divergence.transcript j n) (FT1536.Divergence.transcript p n)) 1)\n          (HSub.hSub.{0, 0, 0} (HPow.hPow.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} 1 e) n) 1)",
+      "name": "FT1536.Divergence.constant_adaptive_chi2"
+    },
+    {
+      "lean_type": "@FT1536.Divergence.stopped_transcript_event_bound : \u2200 {\u03b1 : Type} [inst : Fintype.{0} \u03b1]\n  (j p : (n : \u2115) \u2192 FT1536.Divergence.Hist \u03b1 n \u2192 FT1536.Law.{0} \u03b1) (e : \u211d),\n  LE.le.{0} 0 e \u2192\n    (\u2200 (n : \u2115) (x : FT1536.Divergence.Hist \u03b1 n), FT1536.Divergence.AC.{0} (j n x) (p n x)) \u2192\n      (\u2200 (n : \u2115) (x : FT1536.Divergence.Hist \u03b1 n),\n          LE.le.{0} (FT1536.Divergence.second.{0} (j n x) (p n x)) (HAdd.hAdd.{0, 0, 0} 1 e)) \u2192\n        \u2200 (n : \u2115) (E : FT1536.Divergence.Hist \u03b1 n \u2192 Prop) [inst_1 : DecidablePred.{1} E],\n          LE.le.{0} (FT1536.Law.event.{0} (FT1536.Divergence.transcript p n) E)\n            (FT1536.EventTransfer.phi (HSub.hSub.{0, 0, 0} (HPow.hPow.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} 1 e) n) 1)\n              (FT1536.Law.event.{0} (FT1536.Divergence.transcript j n) E))",
+      "name": "FT1536.Divergence.stopped_transcript_event_bound"
+    },
+    {
+      "lean_type": "FT1536.MathSign.geometric_acceptance : \u2200 (f : \u211d) (n : \u2115),\n  Eq.{1} (HMul.hMul.{0, 0, 0} (\u2211 i \u2208 Finset.range n, HPow.hPow.{0, 0, 0} f i) (HSub.hSub.{0, 0, 0} 1 f))\n    (HSub.hSub.{0, 0, 0} 1 (HPow.hPow.{0, 0, 0} f n))",
+      "name": "FT1536.MathSign.geometric_acceptance"
+    },
+    {
+      "lean_type": "@FT1536.MathSign.cap_mixture.{u_1} : \u2200 {\u03b1 : Type u_1} [inst : Fintype.{u_1} \u03b1] [inst_1 : DecidableEq.{u_1 + 1} \u03b1]\n  (trial : FT1536.Law.{u_1} (Option.{u_1} \u03b1)) (l : FT1536.Law.{u_1} \u03b1),\n  (\u2200 (x : \u03b1),\n      Eq.{1} (FT1536.Law.mass.{u_1} trial (some.{u_1} x))\n        (HMul.hMul.{0, 0, 0} (HSub.hSub.{0, 0, 0} 1 (FT1536.Law.mass.{u_1} trial none.{u_1}))\n          (FT1536.Law.mass.{u_1} l x))) \u2192\n    \u2200 (n : \u2115),\n      Eq.{1} (FT1536.Law.mass.{u_1} (FT1536.MathSign.cap.{u_1} trial n) none.{u_1})\n          (HPow.hPow.{0, 0, 0} (FT1536.Law.mass.{u_1} trial none.{u_1}) n) \u2227\n        \u2200 (x : \u03b1),\n          Eq.{1} (FT1536.Law.mass.{u_1} (FT1536.MathSign.cap.{u_1} trial n) (some.{u_1} x))\n            (HMul.hMul.{0, 0, 0}\n              (HSub.hSub.{0, 0, 0} 1 (HPow.hPow.{0, 0, 0} (FT1536.Law.mass.{u_1} trial none.{u_1}) n))\n              (FT1536.Law.mass.{u_1} l x))",
+      "name": "FT1536.MathSign.cap_mixture"
+    },
+    {
+      "lean_type": "FT1536.MathSign.cap16_success_probability : \u2200 (a : \u211d),\n  LE.le.{0} 0 a \u2192\n    LE.le.{0} a 1 \u2192\n      LE.le.{0} 0 (HSub.hSub.{0, 0, 0} 1 (HPow.hPow.{0, 0, 0} (HSub.hSub.{0, 0, 0} 1 a) 16)) \u2227\n        LE.le.{0} (HSub.hSub.{0, 0, 0} 1 (HPow.hPow.{0, 0, 0} (HSub.hSub.{0, 0, 0} 1 a) 16)) 1",
+      "name": "FT1536.MathSign.cap16_success_probability"
+    },
+    {
+      "lean_type": "@FT1536.MathSign.success_vs_capped_second.{u_1} : \u2200 {\u03b1 : Type u_1} [inst : Fintype.{u_1} \u03b1] (p : \u211d) (hp : LT.lt.{0} 0 p)\n  (hp1 : LE.le.{0} p 1) (l : FT1536.Law.{u_1} \u03b1),\n  Eq.{1}\n    (FT1536.Divergence.second.{u_1} (FT1536.MathSign.successOnly.{u_1} l) (FT1536.MathSign.withAbort.{u_1} p \u22ef hp1 l))\n    (HDiv.hDiv.{0, 0, 0} 1 p)",
+      "name": "FT1536.MathSign.success_vs_capped_second"
+    },
+    {
+      "lean_type": "@FT1536.MathSign.zero_success_support_mismatch.{u_1} : \u2200 {\u03b1 : Type u_1} [inst : Fintype.{u_1} \u03b1]\n  (l : FT1536.Law.{u_1} \u03b1) (x : \u03b1),\n  Ne.{1} (FT1536.Law.mass.{u_1} l x) 0 \u2192\n    Eq.{1}\n      (FT1536.Divergence.chi2.{u_1} (FT1536.MathSign.successOnly.{u_1} l) (FT1536.MathSign.withAbort.{u_1} 0 \u22ef \u22ef l))\n      Top.top.{0}",
+      "name": "FT1536.MathSign.zero_success_support_mismatch"
+    },
+    {
+      "lean_type": "@FT1536.ROM.lookup_miss : \u2200 {R M C : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M]\n  (x : FT1536.ROM.Name R M) (s : FT1536.ROM.State R M C),\n  Eq.{1} (FT1536.ROM.lookup x s) none.{0} \u2192 x \u2209 List.map.{0, 0} FT1536.ROM.Entry.name s.table",
+      "name": "FT1536.ROM.lookup_miss"
+    },
+    {
+      "lean_type": "@FT1536.ROM.empty_good : \u2200 {R M C : Type} (targets : \u2115 \u2192 C), FT1536.ROM.Good targets FT1536.ROM.empty",
+      "name": "FT1536.ROM.empty_good"
+    },
+    {
+      "lean_type": "@FT1536.ROM.hash_good : \u2200 {R M C : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M] (targets : \u2115 \u2192 C)\n  (x : FT1536.ROM.Name R M) (s : FT1536.ROM.State R M C),\n  FT1536.ROM.Good targets s \u2192 FT1536.ROM.Good targets (FT1536.ROM.hash targets x s).2",
+      "name": "FT1536.ROM.hash_good"
+    },
+    {
+      "lean_type": "@FT1536.ROM.hash_used_le : \u2200 {R M C : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M] (targets : \u2115 \u2192 C)\n  (x : FT1536.ROM.Name R M) (s : FT1536.ROM.State R M C),\n  LE.le.{0} (FT1536.ROM.hash targets x s).2.used (HAdd.hAdd.{0, 0, 0} s.used 1)",
+      "name": "FT1536.ROM.hash_used_le"
+    },
+    {
+      "lean_type": "@FT1536.ROM.hash_unique : \u2200 {R M C : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M] (targets : \u2115 \u2192 C)\n  (x : FT1536.ROM.Name R M) (s : FT1536.ROM.State R M C),\n  FT1536.ROM.Unique s \u2192 FT1536.ROM.Unique (FT1536.ROM.hash targets x s).2",
+      "name": "FT1536.ROM.hash_unique"
+    },
+    {
+      "lean_type": "@FT1536.ROM.submit_good : \u2200 {R M C : Type} (targets : \u2115 \u2192 C) (m : M) (s : FT1536.ROM.State R M C),\n  FT1536.ROM.Good targets s \u2192 FT1536.ROM.Good targets (FT1536.ROM.submit m s)",
+      "name": "FT1536.ROM.submit_good"
+    },
+    {
+      "lean_type": "@FT1536.ROM.submitted_even_on_abort : \u2200 {R M C : Type} (m : M) (s : FT1536.ROM.State R M C),\n  Membership.mem.{0, 0} (FT1536.ROM.submit m s).seen m",
+      "name": "FT1536.ROM.submitted_even_on_abort"
+    },
+    {
+      "lean_type": "@FT1536.ROM.program_good : \u2200 {R M C : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M] (targets : \u2115 \u2192 C)\n  (x : FT1536.ROM.Name R M) (c : C) (s s' : FT1536.ROM.State R M C),\n  FT1536.ROM.Good targets s \u2192\n    Membership.mem.{0, 0} s.seen x.2 \u2192\n      Eq.{1} (FT1536.ROM.program x c s) (some.{0} s') \u2192 FT1536.ROM.Good targets s' \u2227 Eq.{1} s'.used s.used",
+      "name": "FT1536.ROM.program_good"
+    },
+    {
+      "lean_type": "@FT1536.ROM.program_unique : \u2200 {R M C : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M]\n  (x : FT1536.ROM.Name R M) (c : C) (s s' : FT1536.ROM.State R M C),\n  FT1536.ROM.Unique s \u2192 Eq.{1} (FT1536.ROM.program x c s) (some.{0} s') \u2192 FT1536.ROM.Unique s'",
+      "name": "FT1536.ROM.program_unique"
+    },
+    {
+      "lean_type": "@FT1536.ROM.lookup_mem : \u2200 {R M C : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M]\n  (x : FT1536.ROM.Name R M) (s : FT1536.ROM.State R M C) (e : FT1536.ROM.Entry R M C),\n  Eq.{1} (FT1536.ROM.lookup x s) (some.{0} e) \u2192 Membership.mem.{0, 0} s.table e \u2227 Eq.{1} e.name x",
+      "name": "FT1536.ROM.lookup_mem"
+    },
+    {
+      "lean_type": "@FT1536.ROM.indexed_entry : \u2200 {R M C : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M] (targets : \u2115 \u2192 C)\n  (s : FT1536.ROM.State R M C) (x : FT1536.ROM.Name R M) (e : FT1536.ROM.Entry R M C),\n  FT1536.ROM.Good targets s \u2192\n    x.2 \u2209 s.seen \u2192\n      Eq.{1} (FT1536.ROM.lookup x s) (some.{0} e) \u2192\n        \u2203 j, Eq.{1} e.target (some.{0} j) \u2227 LT.lt.{0} j s.used \u2227 Eq.{1} e.value (targets j)",
+      "name": "FT1536.ROM.indexed_entry"
+    },
+    {
+      "lean_type": "@FT1536.ROM.final_hash_index : \u2200 {R M C : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M]\n  (targets : \u2115 \u2192 C) (s : FT1536.ROM.State R M C) (x : FT1536.ROM.Name R M),\n  FT1536.ROM.Good targets s \u2192\n    x.2 \u2209 s.seen \u2192\n      \u2203 j, LT.lt.{0} j (FT1536.ROM.hash targets x s).2.used \u2227 Eq.{1} (FT1536.ROM.hash targets x s).1 (targets j)",
+      "name": "FT1536.ROM.final_hash_index"
+    },
+    {
+      "lean_type": "@FT1536.ROM.target_count_le_QH_add_one : \u2200 {R M C : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M]\n  (targets : \u2115 \u2192 C) (s : FT1536.ROM.State R M C) (x : FT1536.ROM.Name R M) (QH : \u2115),\n  LE.le.{0} s.used QH \u2192 LE.le.{0} (FT1536.ROM.hash targets x s).2.used (HAdd.hAdd.{0, 0, 0} QH 1)",
+      "name": "FT1536.ROM.target_count_le_QH_add_one"
+    },
+    {
+      "lean_type": "@FT1536.ROM.hash_cached : \u2200 {R M C : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M] (targets : \u2115 \u2192 C)\n  (s : FT1536.ROM.State R M C) (x : FT1536.ROM.Name R M) (e : FT1536.ROM.Entry R M C),\n  Eq.{1} (FT1536.ROM.lookup x s) (some.{0} e) \u2192 Eq.{1} (FT1536.ROM.hash targets x s) (Prod.mk.{0, 0} e.value s)",
+      "name": "FT1536.ROM.hash_cached"
+    },
+    {
+      "lean_type": "@FT1536.ROM.hash_nonanticipating : \u2200 {R M C : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M]\n  (t u : \u2115 \u2192 C) (s : FT1536.ROM.State R M C) (x : FT1536.ROM.Name R M),\n  Eq.{1} (t s.used) (u s.used) \u2192 Eq.{1} (FT1536.ROM.hash t x s) (FT1536.ROM.hash u x s)",
+      "name": "FT1536.ROM.hash_nonanticipating"
+    },
+    {
+      "lean_type": "@FT1536.ROM.fixed_length_framing : \u2200 {Byte : Type} (r r' m m' : List.{0} Byte),\n  Eq.{1} (List.length.{0} r) (List.length.{0} r') \u2192\n    Eq.{1} (HAppend.hAppend.{0, 0, 0} r m) (HAppend.hAppend.{0, 0, 0} r' m') \u2192 Eq.{1} r r' \u2227 Eq.{1} m m'",
+      "name": "FT1536.ROM.fixed_length_framing"
+    },
+    {
+      "lean_type": "@FT1536.ROM.reachable_invariants : \u2200 {R M C : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M]\n  (targets : \u2115 \u2192 C) {n : \u2115} {s : FT1536.ROM.State R M C},\n  FT1536.ROM.Reachable targets n s \u2192 FT1536.ROM.Good targets s \u2227 LE.le.{0} s.used n",
+      "name": "FT1536.ROM.reachable_invariants"
+    },
+    {
+      "lean_type": "@FT1536.ROM.reachable_unique : \u2200 {R M C : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M]\n  (targets : \u2115 \u2192 C) {n : \u2115} {s : FT1536.ROM.State R M C}, FT1536.ROM.Reachable targets n s \u2192 FT1536.ROM.Unique s",
+      "name": "FT1536.ROM.reachable_unique"
+    },
+    {
+      "lean_type": "@FT1536.ROM.uniform_event_card.{u_1} : \u2200 {R : Type u_1} [inst : Fintype.{u_1} R] [inst_1 : Nonempty.{u_1 + 1} R]\n  (E : R \u2192 Prop) [inst_2 : DecidablePred.{u_1 + 1} E],\n  Eq.{1} (FT1536.Law.event.{u_1} FT1536.Law.uniform.{u_1} E)\n    (HDiv.hDiv.{0, 0, 0} \u2191(Finset.card.{u_1} (Finset.filter.{u_1} E Finset.univ.{u_1})) \u2191(Fintype.card.{u_1} R))",
+      "name": "FT1536.ROM.uniform_event_card"
+    },
+    {
+      "lean_type": "@FT1536.ROM.fresh_nonce_conflict.{u_1,\n    u_2} : \u2200 {R : Type u_1} {X : Type u_2} [inst : Fintype.{u_1} R] [inst_1 : Nonempty.{u_1 + 1} R]\n  [inst_2 : DecidableEq.{u_2 + 1} X] (frame : R \u2192 X),\n  Function.Injective.{u_1 + 1, u_2 + 1} frame \u2192\n    \u2200 (table : Finset.{u_2} X),\n      LE.le.{0} (FT1536.Law.event.{u_1} FT1536.Law.uniform.{u_1} fun r => Membership.mem.{u_2, u_2} table (frame r))\n        (HDiv.hDiv.{0, 0, 0} \u2191(Finset.card.{u_2} table) \u2191(Fintype.card.{u_1} R))",
+      "name": "FT1536.ROM.fresh_nonce_conflict"
+    },
+    {
+      "lean_type": "@FT1536.ROM.adaptive_average.{u_1} : \u2200 {H : Type u_1} [inst : Fintype.{u_1} H] (p : FT1536.Law.{u_1} H) (risk : H \u2192 \u211d)\n  (bound : \u211d),\n  (\u2200 (hist : H), LE.le.{0} (risk hist) bound) \u2192\n    LE.le.{0} (\u2211 hist, HMul.hMul.{0, 0, 0} (FT1536.Law.mass.{u_1} p hist) (risk hist)) bound",
+      "name": "FT1536.ROM.adaptive_average"
+    },
+    {
+      "lean_type": "@FT1536.ROM.event_union_bound.{u_1} : \u2200 {\u03a9 : Type u_1} [inst : Fintype.{u_1} \u03a9] (p : FT1536.Law.{u_1} \u03a9) (n : \u2115)\n  (E : \u2115 \u2192 \u03a9 \u2192 Prop) [inst_1 : (i : \u2115) \u2192 DecidablePred.{u_1 + 1} (E i)],\n  LE.le.{0} (FT1536.Law.event.{u_1} p fun x => \u2203 i, Membership.mem.{0, 0} (Finset.range n) i \u2227 E i x)\n    (\u2211 i \u2208 Finset.range n, FT1536.Law.event.{u_1} p (E i))",
+      "name": "FT1536.ROM.event_union_bound"
+    },
+    {
+      "lean_type": "@FT1536.ROM.programming_conflict_bound.{u_1, u_2,\n    u_3} : \u2200 {R : Type u_1} {X : Type u_2} {H : Type u_3} [inst : Fintype.{u_1} R] [inst_1 : Nonempty.{u_1 + 1} R]\n  [inst_2 : DecidableEq.{u_2 + 1} X] (frame : H \u2192 R \u2192 X),\n  (\u2200 (hist : H), Function.Injective.{u_1 + 1, u_2 + 1} (frame hist)) \u2192\n    \u2200 [inst_3 : Fintype.{u_3} H] (histLaw : FT1536.Law.{u_3} H) (table : H \u2192 Finset.{u_2} X) (K : \u2115),\n      (\u2200 (hist : H), LE.le.{0} (Finset.card.{u_2} (table hist)) K) \u2192\n        LE.le.{0}\n          (\u2211 hist,\n            HMul.hMul.{0, 0, 0} (FT1536.Law.mass.{u_3} histLaw hist)\n              (FT1536.Law.event.{u_1} FT1536.Law.uniform.{u_1} fun r =>\n                Membership.mem.{u_2, u_2} (table hist) (frame hist r)))\n          (HDiv.hDiv.{0, 0, 0} \u2191K \u2191(Fintype.card.{u_1} R))",
+      "name": "FT1536.ROM.programming_conflict_bound"
+    },
+    {
+      "lean_type": "FT1536.ROM.collision_sum : \u2200 (qs qh : \u2115),\n  Eq.{1} (\u2211 i \u2208 Finset.range qs, \u2191(HAdd.hAdd.{0, 0, 0} qh i))\n    (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} \u2191qs \u2191qh)\n      (HDiv.hDiv.{0, 0, 0} (HMul.hMul.{0, 0, 0} \u2191qs \u2191(HSub.hSub.{0, 0, 0} qs 1)) 2))",
+      "name": "FT1536.ROM.collision_sum"
+    },
+    {
+      "lean_type": "@FT1536.ROM.accumulated_conflicts.{u_1} : \u2200 {\u03a9 : Type u_1} [inst : Fintype.{u_1} \u03a9] (p : FT1536.Law.{u_1} \u03a9) (qs qh : \u2115)\n  (E : \u2115 \u2192 \u03a9 \u2192 Prop) [inst_1 : (i : \u2115) \u2192 DecidablePred.{u_1 + 1} (E i)],\n  (\u2200 (i : \u2115),\n      Membership.mem.{0, 0} (Finset.range qs) i \u2192\n        LE.le.{0} (FT1536.Law.event.{u_1} p (E i))\n          (HDiv.hDiv.{0, 0, 0} (\u2191(HAdd.hAdd.{0, 0, 0} qh i)) (HPow.hPow.{0, 0, 0} 2 320))) \u2192\n    LE.le.{0} (FT1536.Law.event.{u_1} p fun x => \u2203 i, Membership.mem.{0, 0} (Finset.range qs) i \u2227 E i x)\n      (min.{0} 1\n        (HDiv.hDiv.{0, 0, 0}\n          (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} \u2191qs \u2191qh)\n            (HDiv.hDiv.{0, 0, 0} (HMul.hMul.{0, 0, 0} \u2191qs \u2191(HSub.hSub.{0, 0, 0} qs 1)) 2))\n          (HPow.hPow.{0, 0, 0} 2 320)))",
+      "name": "FT1536.ROM.accumulated_conflicts"
+    },
+    {
+      "lean_type": "FT1536.PublicSimulation.decode_encodeCoord : \u2200 (x : \u2124) (hx : LE.le.{0} (-65535) x \u2227 LE.le.{0} x 65535),\n  Eq.{1} (HSub.hSub.{0, 0, 0} (\u2191\u2191(FT1536.PublicSimulation.encodeCoord x hx)) 65535) x",
+      "name": "FT1536.PublicSimulation.decode_encodeCoord"
+    },
+    {
+      "lean_type": "FT1536.PublicSimulation.decode_encodeVec : \u2200 (v : FT1536.Geometry.Vec)\n  (hv :\n    \u2200 (i : Fin 768),\n      (LE.le.{0} (-65535) (v i).1 \u2227 LE.le.{0} (v i).1 65535) \u2227 LE.le.{0} (-65535) (v i).2 \u2227 LE.le.{0} (v i).2 65535),\n  Eq.{1} (FT1536.PublicSimulation.decodeVec (FT1536.PublicSimulation.encodeVec v hv)) v",
+      "name": "FT1536.PublicSimulation.decode_encodeVec"
+    },
+    {
+      "lean_type": "FT1536.PublicSimulation.full_norm_support_in_box : \u2200 (v w : FT1536.Geometry.Vec),\n  LT.lt.{0} (FT1536.Geometry.Q (Prod.mk.{0, 0} v w)) FT1536.Geometry.B \u2192\n    \u2203 z, Eq.{1} (FT1536.PublicSimulation.decode z) (Prod.mk.{0, 0} v w)",
+      "name": "FT1536.PublicSimulation.full_norm_support_in_box"
+    },
+    {
+      "lean_type": "FT1536.PublicSimulation.zero_norm : Eq.{1}\n  (FT1536.Geometry.Q (FT1536.PublicSimulation.decode FT1536.PublicSimulation.zeroPair)) 0",
+      "name": "FT1536.PublicSimulation.zero_norm"
+    },
+    {
+      "lean_type": "FT1536.PublicSimulation.boundedWeight_nonneg : \u2200 (z : FT1536.PublicSimulation.BoxPair),\n  LE.le.{0} 0 (FT1536.PublicSimulation.boundedWeight z)",
+      "name": "FT1536.PublicSimulation.boundedWeight_nonneg"
+    },
+    {
+      "lean_type": "FT1536.PublicSimulation.bounded_normalizer_pos : LT.lt.{0} 0 (\u2211 z, FT1536.PublicSimulation.boundedWeight z)",
+      "name": "FT1536.PublicSimulation.bounded_normalizer_pos"
+    },
+    {
+      "lean_type": "FT1536.PublicSimulation.boundedGaussian_support : \u2200 (z : FT1536.PublicSimulation.BoxPair),\n  Ne.{1} (FT1536.Law.mass.{0} FT1536.PublicSimulation.boundedGaussian z) 0 \u2194\n    LT.lt.{0} (FT1536.Geometry.Q (FT1536.PublicSimulation.decode z)) FT1536.Geometry.B",
+      "name": "FT1536.PublicSimulation.boundedGaussian_support"
+    },
+    {
+      "lean_type": "@FT1536.PublicSimulation.joint_law.{u_1} : \u2200 {C : Type u_1} [inst : Fintype.{u_1} C] [inst_1 : DecidableEq.{u_1 + 1} C]\n  (A : FT1536.PublicSimulation.BoxPair \u2192 C),\n  Eq.{1} (\u2211 co, FT1536.Law.mass.{u_1} (FT1536.PublicSimulation.publicJoint.{u_1} A) co) 1",
+      "name": "FT1536.PublicSimulation.joint_law"
+    },
+    {
+      "lean_type": "@FT1536.PublicSimulation.fiberWeight_nonneg.{u_1} : \u2200 {C : Type u_1} [inst : DecidableEq.{u_1 + 1} C]\n  (A : FT1536.PublicSimulation.BoxPair \u2192 C) (c : C) (z : FT1536.PublicSimulation.BoxPair),\n  LE.le.{0} 0 (FT1536.PublicSimulation.fiberWeight.{u_1} A c z)",
+      "name": "FT1536.PublicSimulation.fiberWeight_nonneg"
+    },
+    {
+      "lean_type": "@FT1536.PublicSimulation.signBody_normalized.{u_1} : \u2200 {C : Type u_1} [inst : DecidableEq.{u_1 + 1} C]\n  (A : FT1536.PublicSimulation.BoxPair \u2192 C) (c : C),\n  Eq.{1} (\u2211 o, FT1536.Law.mass.{0} (FT1536.PublicSimulation.signBody.{u_1} A c) o) 1",
+      "name": "FT1536.PublicSimulation.signBody_normalized"
+    },
+    {
+      "lean_type": "@FT1536.PublicSimulation.simSign_invariants : \u2200 {H History M R C S : Type} [inst : DecidableEq.{1} M]\n  [inst_1 : DecidableEq.{1} R] (sam : FT1536.PublicSimulation.PublicSampler H History M R C (Option.{0} S))\n  (project : FT1536.ROM.State R M C \u2192 History) (h : H) (s : FT1536.ROM.State R M C) (m : M) (ready : Bool) (r : R)\n  (coins : Fin sam.coinCount) (targets : \u2115 \u2192 C),\n  FT1536.ROM.Good targets s \u2192\n    FT1536.ROM.Good targets (FT1536.PublicSimulation.simSign sam project h s m ready r coins).1 \u2227\n      Eq.{1} (FT1536.PublicSimulation.simSign sam project h s m ready r coins).1.used s.used \u2227\n        Membership.mem.{0, 0} (FT1536.PublicSimulation.simSign sam project h s m ready r coins).1.seen m",
+      "name": "FT1536.PublicSimulation.simSign_invariants"
+    },
+    {
+      "lean_type": "@FT1536.PublicSimulation.simSign_table_growth : \u2200 {H History M R C S : Type} [inst : DecidableEq.{1} M]\n  [inst_1 : DecidableEq.{1} R] (sam : FT1536.PublicSimulation.PublicSampler H History M R C (Option.{0} S))\n  (project : FT1536.ROM.State R M C \u2192 History) (h : H) (s : FT1536.ROM.State R M C) (m : M) (ready : Bool) (r : R)\n  (coins : Fin sam.coinCount),\n  LE.le.{0} (List.length.{0} (FT1536.PublicSimulation.simSign sam project h s m ready r coins).1.table)\n    (HAdd.hAdd.{0, 0, 0} (List.length.{0} s.table) 1)",
+      "name": "FT1536.PublicSimulation.simSign_table_growth"
+    },
+    {
+      "lean_type": "FT1536.Relation.reduce_center : \u2200 (c : FT1536.Relation.Rq),\n  Eq.{1} (FT1536.Relation.reduceVec (FT1536.Relation.centerRq c)) c",
+      "name": "FT1536.Relation.reduce_center"
+    },
+    {
+      "lean_type": "FT1536.Relation.extraction_equation : \u2200 (h c : FT1536.Relation.Rq) (s : FT1536.Geometry.Vec),\n  Eq.{1} (FT1536.Relation.A h (FT1536.Relation.extract h c s)) c",
+      "name": "FT1536.Relation.extraction_equation"
+    },
+    {
+      "lean_type": "FT1536.Relation.accepted_extracts : \u2200 (h c : FT1536.Relation.Rq) (s : FT1536.Geometry.Vec),\n  FT1536.Relation.Verify h c s \u2192 FT1536.Relation.ShortPreimage h c (FT1536.Relation.extract h c s)",
+      "name": "FT1536.Relation.accepted_extracts"
+    },
+    {
+      "lean_type": "@FT1536.Reduction.indexed_extraction : \u2200 {R M : Type} [inst : DecidableEq.{1} R] [inst_1 : DecidableEq.{1} M]\n  (targets : \u2115 \u2192 FT1536.Relation.Rq) (h : FT1536.Relation.Rq) (s : FT1536.ROM.State R M FT1536.Relation.Rq)\n  (x : FT1536.ROM.Name R M) (signature : FT1536.Geometry.Vec) (QH : \u2115),\n  FT1536.ROM.Good targets s \u2192\n    x.2 \u2209 s.seen \u2192\n      LE.le.{0} s.used QH \u2192\n        FT1536.Relation.Verify h (FT1536.ROM.hash targets x s).1 signature \u2192\n          \u2203 j,\n            LT.lt.{0} j (HAdd.hAdd.{0, 0, 0} QH 1) \u2227\n              FT1536.Relation.ShortPreimage h (targets j)\n                (FT1536.Relation.extract h (FT1536.ROM.hash targets x s).1 signature)",
+      "name": "FT1536.Reduction.indexed_extraction"
+    },
+    {
+      "lean_type": "FT1536.SigmaMath.sign_normalized : \u2200 (h : FT1536.Relation.Rq)\n  (H : FT1536.SigmaMath.Nonce \u2192 FT1536.SigmaMath.Message \u2192 FT1536.Relation.Rq) (m : FT1536.SigmaMath.Message),\n  Eq.{1} (\u2211 o, FT1536.Law.mass.{0} (FT1536.SigmaMath.sign h H m) o) 1",
+      "name": "FT1536.SigmaMath.sign_normalized"
+    },
+    {
+      "lean_type": "@FT1536.SigmaMath.key_marginal_normalized : \u2200 {SK : Type} [inst : Fintype.{0} SK]\n  (muKey : FT1536.Law.{0} (Prod.{0, 0} SK FT1536.Relation.Rq)),\n  Eq.{1} (\u2211 h, FT1536.Law.mass.{0} (FT1536.SigmaMath.muH muKey) h) 1",
+      "name": "FT1536.SigmaMath.key_marginal_normalized"
+    },
+    {
+      "lean_type": "@FT1536.Reduction.finite_trace_bound : \u2200 {\u03b1 : Type} [inst : Fintype.{0} \u03b1]\n  (j p : (n : \u2115) \u2192 FT1536.Divergence.Hist \u03b1 n \u2192 FT1536.Law.{0} \u03b1) (e : \u211d),\n  LE.le.{0} 0 e \u2192\n    (\u2200 (n : \u2115) (x : FT1536.Divergence.Hist \u03b1 n), FT1536.Divergence.AC.{0} (j n x) (p n x)) \u2192\n      (\u2200 (n : \u2115) (x : FT1536.Divergence.Hist \u03b1 n),\n          LE.le.{0} (FT1536.Divergence.second.{0} (j n x) (p n x)) (HAdd.hAdd.{0, 0, 0} 1 e)) \u2192\n        \u2200 (n : \u2115) (Win Bad MT : FT1536.Divergence.Hist \u03b1 n \u2192 Prop) [inst_1 : DecidablePred.{1} Win]\n          [inst_2 : DecidablePred.{1} Bad] [inst_3 : DecidablePred.{1} MT],\n          (\u2200 (x : FT1536.Divergence.Hist \u03b1 n), Win x \u2227 \u00acBad x \u2192 MT x) \u2192\n            \u2200 (eps : \u211d),\n              LE.le.{0} (FT1536.Law.event.{0} (FT1536.Divergence.transcript p n) Bad) eps \u2192\n                LE.le.{0} (FT1536.Law.event.{0} (FT1536.Divergence.transcript p n) Win)\n                  (min.{0} 1\n                    (HAdd.hAdd.{0, 0, 0} eps\n                      (FT1536.EventTransfer.phi\n                        (HSub.hSub.{0, 0, 0} (HPow.hPow.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} 1 e) n) 1)\n                        (FT1536.Law.event.{0} (FT1536.Divergence.transcript j n) MT))))",
+      "name": "FT1536.Reduction.finite_trace_bound"
+    },
+    {
+      "lean_type": "@FT1536.Reduction.hardness_substitution : \u2200 {a eps D b epsilonMT : \u211d},\n  LE.le.{0} 0 D \u2192\n    LE.le.{0} 0 b \u2192\n      LE.le.{0} b epsilonMT \u2192\n        LE.le.{0} epsilonMT 1 \u2192\n          LE.le.{0} a (min.{0} 1 (HAdd.hAdd.{0, 0, 0} eps (FT1536.EventTransfer.phi D b))) \u2192\n            LE.le.{0} a (min.{0} 1 (HAdd.hAdd.{0, 0, 0} eps (FT1536.EventTransfer.phi D epsilonMT)))",
+      "name": "FT1536.Reduction.hardness_substitution"
+    },
+    {
+      "lean_type": "@FT1536.Reduction.one_key_unconditional : \u2200 {pK a bound : \u211d},\n  LE.le.{0} 0 pK \u2192 LE.le.{0} a bound \u2192 LE.le.{0} (HMul.hMul.{0, 0, 0} pK a) (HMul.hMul.{0, 0, 0} pK bound)",
+      "name": "FT1536.Reduction.one_key_unconditional"
+    },
+    {
+      "lean_type": "FT1536.Reduction.zero_key_success : \u2200 (a : \u211d), Eq.{1} (HMul.hMul.{0, 0, 0} 0 a) 0",
+      "name": "FT1536.Reduction.zero_key_success"
+    },
+    {
+      "lean_type": "FT1536.Certificate.centering_values : Eq.{1}\n    (HAdd.hAdd.{0, 0, 0} (FT1536.Geometry.block 9217 (-5000)) (FT1536.Geometry.block 32767 18000)) 2051350378 \u2227\n  Eq.{1} (HAdd.hAdd.{0, 0, 0} (FT1536.Geometry.block (-9216) (-5000)) (FT1536.Geometry.block 32767 18000)) 2143496945",
+      "name": "FT1536.Certificate.centering_values"
+    },
+    {
+      "lean_type": "FT1536.Certificate.nontrivial_directional_chi2 : Eq.{1}\n    (HSub.hSub.{0, 0, 0}\n      (HAdd.hAdd.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} (1 / 2) 2) (1 / 3))\n        (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} (1 / 2) 2) (2 / 3)))\n      1)\n    (1 / 8) \u2227\n  Eq.{1}\n    (HSub.hSub.{0, 0, 0}\n      (HAdd.hAdd.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} (1 / 3) 2) (1 / 2))\n        (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} (2 / 3) 2) (1 / 2)))\n      1)\n    (1 / 9)",
+      "name": "FT1536.Certificate.nontrivial_directional_chi2"
+    },
+    {
+      "lean_type": "FT1536.Certificate.adaptive_exact_value : Eq.{1}\n  (HSub.hSub.{0, 0, 0}\n    (HAdd.hAdd.{0, 0, 0}\n      (HAdd.hAdd.{0, 0, 0}\n        (HAdd.hAdd.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} (1 / 4) 2) (1 / 12))\n          (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} (1 / 4) 2) (1 / 4)))\n        (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} (3 / 8) 2) (4 / 9)))\n      (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} (1 / 8) 2) (2 / 9)))\n    1)\n  (99 / 256)",
+      "name": "FT1536.Certificate.adaptive_exact_value"
+    }
+  ],
+  "checked_types": "formal_types.txt",
+  "checked_types_sha256": "27cbae76165770239b701e53fd66ebd055d1d3e8da2cb887dbb7d0058ce12cb9",
+  "exports": "FORMAL_EXPORTS.json",
+  "goal_status": "PARTIAL_PROOF",
+  "missing_interfaces": "NEXT_INTERFACE.md",
+  "schema": "T12_1_GOALS_V1",
+  "task_sha256": "0fe2ad810e476e44e6cc3a1bca0bcc409004810cfe4b5424523ba914ac9e0cc3"
+}
