@@ -380,3 +380,19 @@ w historii. Następny krok po zakończeniu: ocena wyniku i checkpoint przy PASS.
   (lacznie z probami skladni) w freeze. Niezalezny odbior: BRAK.
 - Następny krok: opisy zbiorcze (STATE, indeks README), materialy B5/B6
   (zlecenie do documents/, dudect prep do provenance/), push.
+
+## 2026-09-25T21:39:26Z — opisy zbiorcze, zlecenie w documents/, dudect prep w provenance/
+
+- STATE.md + indeks proofs/ft1536/README.md: domknięcie luki opisowej trzech
+  freezów z 09-24 (ADAPTIVE_PROPOSAL, MUTATION_WRONG_H, HOLE_CENSUS), opis
+  trzech nowych importów i erraty v2.1, zmiana lokalizacji kanonicznej na NVMe.
+- archive.document: FT1536_ZADANIE_EUFCMA_GAME_BINDING_2026-09-23.md, SHA
+  407c4f8dd0a737fee8b751bd64b08bba1d9e52e700ed6754bc3d5354e8215c1a (+sidecar).
+- provenance/checks/2026-09-23-dudect-start-preparation/: LAUNCH_VERIFIED.json
+  + preflight stdout/stderr z work/DUDECT_START_PREPARATION_2026-09-23; PREFLIGHT
+  bez duplikatu (identyczny sha 423d0d04… w dudect-ready).
+- Kontrola końcowa: archive.py verify PASS (37 checkpointów, 55 dokumentów).
+- Następny krok: push main wg polecenia właściciela „po wszystkim push na gh”.
+  Nie wrzucono (poza zakres/wg rygoru): A3 RUN_002 (NOT_FROZEN), A4 T5 (brak
+  freeze), KAIROS_SUPERVISION (dane treningowe — decyzja właściciela),
+  OWNER_EDITOR_BACKUPS (backup edytora), tool-tests, tar.xz (kopie w work/).

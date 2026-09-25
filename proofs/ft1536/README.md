@@ -12,6 +12,21 @@ ROADMAP określa zależności i kryteria następnych prac.
 
 To archiwum ukończonych etapów FT1536 w docelowym `free_falcon_sign`.
 
+**2026-09-25 — nowe importy T12.1/T5 (PARTIAL_PROOF, bez niezależnego odbioru):**
+[T12.1 RUN_001](stages/FT1536_MATH_EUFCMA_MTISIS_RUN_001/REPORT.md) — prawo
+retry, kierunkowe Phi/chi², ekstrakcja celu; 4461 plików.
+[GAME_BINDING](stages/FT1536_MATH_EUFCMA_GAME_BINDING_RUN_001/REPORT.md) —
+9 typów wiążących kernelowo (gry, lazy, paid counter, BitCost, Win→MT, kolizje);
+295 plików, [ERRATA](stages/FT1536_MATH_EUFCMA_GAME_BINDING_RUN_001/ERRATA.md)
+rozlicza 1-bajtową wadę JSON freezu v2 (decyzja właściciela, v2.1).
+[CENTERING_CLOSURE](stages/FT1536_CENTERING_CLOSURE_RUN_001/REPORT.md) —
+pełny lemat 2 `Rejection ≤ 2^-24` bez premises + warunkowe
+`1265/10^27 < delta(h) < 127/10^26` przy `hraw`/`hbridge`/`Adm`; 266 plików.
+Wcześniej (09-24) zacommitowane freezy: [ADAPTIVE_PROPOSAL](stages/FT1536_ADAPTIVE_PROPOSAL_RUN_001/REPORT.md),
+[MUTATION_WRONG_H](stages/FT1536_MUTATION_WRONG_H_RUN_001/REPORT.md) (kontrprzykład),
+[HOLE_CENSUS](stages/FT1536_HOLE_CENSUS_RUN_001/REPORT.md). Kanoniczna
+lokalizacja pracy: NVMe (`/media/footfalcon/FT1536_DATA/free_falcon_sign`).
+
 **B20/P01 v2 — REVIEWED w wąskim zakresie:**
 [REPORT](stages/B20_001_P01_FINAL_001/REPORT.md),
 [V01 PASS_SCOPED_REVIEW](stages/B20_001_V01_FINAL_001/REVIEW.md).

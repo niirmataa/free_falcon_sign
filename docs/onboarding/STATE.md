@@ -1,5 +1,42 @@
 # Stan projektu — punkt wejścia
 
+**2026-09-25 — import nowości work/ do stages + przeniesienie na NVMe.**
+Kanoniczna lokalizacja pracy to od teraz
+**`/media/footfalcon/FT1536_DATA/free_falcon_sign`** (decyzja właściciela;
+sesja prowadzącego przeniesiona przez session_move). Stary
+`/home/footfalcon/free_falcon_sign` = porzucone mirror, nie commitować stąd.
+Zaimportowano i zacommitowano checkpointami (integrity PASS, wszystkie
+PARTIAL_PROOF, **bez niezależnego odbioru**):
+- `FT1536_MATH_EUFCMA_MTISIS_RUN_001` (T12.1 RUN_001): 4461/27 wejść,
+  OUTPUTS `a9e3af2e…`, REPORT `fa6bbac7…`; prawo retry, Phi/chi² kierunkowe,
+  przypisanie/ekstrakcja celu. Otwarte: interpreter gry, prawa, bit-cost,
+  sampler. Nazwa `REPLAY_SEED.sha256` rozliczona **wyjątkiem w archive.py**
+  (literalna nazwa, publiczny manifest hashy; test w tests/, 29/29).
+- `FT1536_MATH_EUFCMA_GAME_BINDING_RUN_001` (v2.1 errata): 295/6, OUTPUTS
+  `c80b3e54…`, REPORT `e593d91e…`. 9 domkniętych typów wiążących kernelowo
+  (mixture, lazy, game-law, adversary fold + paid counter, BitCost×3,
+  Win→MT, kolizje ≤ K/2^320); audyt 289 eksportów. **Errata v2.1**: zamrożony
+  `RESULT.json` v2 (`cc01337d…`) był niepoprawnym JSON-em (1 surowy backslash);
+  decyzja właściciela — korekta 1 bajta + `ERRATA.md`, v1/v2 zostają historią.
+  v2 rozlicza resztki `badAt_ordinal_union_bound` i `end_to_end…` jako DISCHARGED
+  przez RUN_002 — to claim autora, nie odbiór.
+- `FT1536_CENTERING_CLOSURE_RUN_001`: 266/6, OUTPUTS `2b74c9cd…`, REPORT
+  `35546416…`. **Pełny lemat 2 BEZ premises** (`Rejection ≤ 2^-24`, czyste
+  axioms), kanapka theta Fazy A–D, hnum kernelowo; warunkowo dla kluczy z `Adm`:
+  `1265/10^27 < delta(h) < 127/10^26` przy przesłankach `hraw`/`hbridge`.
+  Freeze opakowany przez koordynatora (autor bez formalnego freezu); sprostowanie
+  w REPORT: Faza D zamknięta mimo starszego HANDOFF. Binaria `.so` wykluczone.
+Źródła: kopia W `/Obrazy/` w `work/…_OBRAZY` (właściciel wskazał ją jako
+kanoniczną; rozbieżność v1 293/v2 294 członków rozliczona wyżej). Materiały:
+zlecenie GAME_BINDING w `documents/`, weryfikacja startu dudect w
+`provenance/checks/2026-09-23-dudect-start-preparation/` (PREFLIGHT bez
+duplikatu — identyczny w dudect-ready). Luka opisowa domknięta też dla trzech
+freezów z 09-24 zacommitowanych wcześniej bez wpisów: ADAPTIVE_PROPOSAL,
+MUTATION_WRONG_H (kontrprzykład M_wrong_h T03), HOLE_CENSUS — po `PARTIAL_PROOF`.
+P02 (B20) nadal `IN_PROGRESS` u wykonawcy; A3 (RUN_002, `NOT_FROZEN`) i A4
+(T5_FLAT_REJECT, brak freeze) **nie importowane** — wymagają freeze wg rygoru.
+Publikacja: push wyłącznie na jawne polecenie właściciela.
+
 **2026-09-23 — konkretna kontynuacja matematyczna dla Astry: RUN_002.**
 [CURRENT_MATH_TASK](../../proofs/ft1536/CURRENT_MATH_TASK.md) wskazuje jedno
 zlecenie A1→A2→A3 według oceny właściciela i Astry Pro: interpreter gry,

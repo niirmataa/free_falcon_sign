@@ -1,0 +1,90 @@
+{
+  "status": "PREFLIGHT_PASS",
+  "cpu": 11,
+  "binary": "attempts/006/build/dudect-ft1536",
+  "harness": "attempts/006/harness",
+  "global_seconds": 36000,
+  "checks": [
+    {
+      "case": "positive_loop",
+      "status": "LEAKAGE_FOUND",
+      "n": [
+        49993,
+        49996
+      ],
+      "raw_replay": {
+        "status": "PASS",
+        "batches": 2,
+        "raw_sha256": "4649358ff10acc1dd99c207bcbdebf3fa3dd5fe54119294a7ac737ab060cbed7",
+        "replay_stdout_sha256": "fcf22e6b5a494a72d126e034021fe6df1020a9cbe379d0085de8e7c2ff700ff7"
+      }
+    },
+    {
+      "case": "negative_floor",
+      "status": "NO_LEAKAGE_EVIDENCE_YET",
+      "n": [
+        1049886,
+        1049883
+      ],
+      "raw_replay": {
+        "status": "PASS",
+        "batches": 22,
+        "raw_sha256": "15d62db7d4eb4d89dd425d3eb9ed2b742272261be3eb8ad813142123c31a4e02",
+        "replay_stdout_sha256": "895a9d7b046c1d5860ffb669a67ade52dc5e175cb7491bd59155c258c03c07a0"
+      }
+    },
+    {
+      "case": "floor_fixed_positive",
+      "status": "NO_LEAKAGE_EVIDENCE_YET",
+      "n": [
+        1049889,
+        1049880
+      ],
+      "raw_replay": {
+        "status": "PASS",
+        "batches": 22,
+        "raw_sha256": "cfe16ad0c092bb8521382798b2b5ee0ccfff89893af2d5d2a098bd4db7612fe8",
+        "replay_stdout_sha256": "4493fcbbb319f9a7d48da1ad991e678d7f483456f90049821be8c00aea450d77"
+      }
+    },
+    {
+      "case": "floor_fixed_negative",
+      "status": "NO_LEAKAGE_EVIDENCE_YET",
+      "n": [
+        1049891,
+        1049878
+      ],
+      "raw_replay": {
+        "status": "PASS",
+        "batches": 22,
+        "raw_sha256": "76594e237568b88338deb5a1dadea3ba2fd9e76207ea19b22a152627b094344f",
+        "replay_stdout_sha256": "91b9da07e3d6eb093c16a3581a4358a4f4438d0093ed27a017c35791d753df16"
+      }
+    },
+    {
+      "case": "floor_random_signed",
+      "status": "NO_LEAKAGE_EVIDENCE_YET",
+      "n": [
+        1049880,
+        1049889
+      ],
+      "raw_replay": {
+        "status": "PASS",
+        "batches": 22,
+        "raw_sha256": "9ba4b2cb29bf2deefefff7daf3cd331bbd63eb7a10c614c87a98cf49a335492c",
+        "replay_stdout_sha256": "2e2e260ad487197742cbad677e6fddc9791bec8e9b0e43104185920a9c878a84"
+      }
+    },
+    {
+      "case": "timebox",
+      "status": "NO_LEAKAGE_EVIDENCE_YET",
+      "seconds": 0.5026653989989427,
+      "raw_replay": {
+        "status": "PASS",
+        "batches": 11,
+        "raw_sha256": "2bbad7585360900dc7104fba70fae10edc70689dc3e4b77f55d2f07d86609658",
+        "replay_stdout_sha256": "2b8986ad6f21c0aeb8d0c45f060e8976d0ae44ea37cf02f7e617264e6ca6e921"
+      }
+    }
+  ]
+}
