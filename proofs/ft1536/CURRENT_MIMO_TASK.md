@@ -1,5 +1,10 @@
 # MiMo — T03 niezależnie odebrany w zakresie PARTIAL_PROOF
 
+**Kontynuacja2026-09-29:** [CURRENT_B_GAP_TASK](CURRENT_B_GAP_TASK.md) wskazuje
+nowy RUN_002,PREPARED_OWNER_START. Pełny ledger obejmuje dodatkowo suffix D
+i target A3 pominięte w warunku wystarczalności starego §3. Ten plik nadal
+opisuje odebrany RUN_001; nowy wykonawca/model nie został uruchomiony.
+
 **TASK_ID=FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001**.
 ROADMAP_ID=T03, one-root tranche. **REVIEWED — PARTIAL_PROOF**,2026-09-22.
 Autor: MiMo2.6Pro. Recenzent: Muse Spark1.3 xhigh w świeżym kontekście,

@@ -396,3 +396,41 @@ w historii. Następny krok po zakończeniu: ocena wyniku i checkpoint przy PASS.
   Nie wrzucono (poza zakres/wg rygoru): A3 RUN_002 (NOT_FROZEN), A4 T5 (brak
   freeze), KAIROS_SUPERVISION (dane treningowe — decyzja właściciela),
   OWNER_EDITOR_BACKUPS (backup edytora), tool-tests, tar.xz (kopie w work/).
+
+## 2026-09-29T09:53:39Z — T03-B: pełny budżet i przygotowany RUN_002
+
+- Właściciel poprosił o „T03 B-gap fix — SOURCE_ERROR §3”. Prowadzący
+  GPT-6 Astra Fast,sesja ses_f137502d0ffe6BYk3HEHU1xxZL,przygotował kontynuację.
+  main/HEAD0f51e327…,tożsamość niirmataa; zastana niezacommitowana zmiana
+  STATE o Qwen3 z09-27 jest osobną pracą i pozostaje poza tym commitem.
+- Kontrola zewnętrznych REPORT/OUTPUTS T03 oraz85 członków zgodna. Nowy
+  `sage check_budget.sage`:run001 exit1 na QQ(decimal string); zatrzymano
+  wykonanie i zgłoszono. Właściciel wybrał „Popraw i kontynuuj (Recommended)”.
+  Dokładne ułamki i nowy run002:exit0,preparser QQ/ZZ,RIF256,stderr pusty,
+  bwrap W-only/network-off,8GiB/120s CPU/180s wall. Obie próby zachowane.
+- Wynik kontroli przygotowawczej:trzy poprawki §3 nie wystarczają przy reszcie
+  ledgeru,D≈15.6675,A3≈0.432907,remaining majorant≈16.10836; share skryptu0.1,
+  podana paraδ/eroot→C1≈0.14172. To nie dolna granica actual error ani nowy
+  source proof/review. B-gap nadal OPEN; przygotowano pełne obowiązki A–E.
+- Kanoniczne komendy:`archive.py document … --sha c10d5030…`,
+  `archive.py task-init FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002
+  --base 0f51e3278eaa484a09b9ce6a77b2d5be35210d3e --task-doc …`,
+  `archive.py bootstrap <W/inputs/bootstrap> --plan <BOOTSTRAP_PLAN.json>`.
+  TASK SHA `c10d50304e8272df1f8367c5e19a432a0746e1239d1d7029c4447b20df75781a`;
+  bootstrap1396/32721541B,SHA
+  `a47dc77e48fb521b17de30115be67dca9e97221063e6b001af5cb4db4bc63f9f`.
+- `archive.py bootstrap background/T03_B_GAP_2026-09-29 --plan …` zachowuje
+  25 plików/743491B przygotowawczego evidence,MANIFEST
+  `c0c79cf713a8ba117fca5653f03cf49e556f190560a1ff5dbdc9b2e61b0b7d54`.
+  Oba exact sets,ORIGINS,hashe i source17 sprawdzone; inputy RO.
+  `archive.py verify` exit0: **42 checkpointy,56 dokumentów PASS**.
+- Piny checker/output/receipt:
+  `9e594eb407a3afc19245dd287d4479003d5f665e78637917566fed1266ee3a8d`,
+  `fef2660a1d45ce5d56fa7a47fec4debf8027aa0bacc6b7e16b3a561164585dea`,
+  `7e6568d26870850bc07bb575c512f5c846a04be9815d2715ea08341ae0ada7a0`.
+- Następny krok:ręczny wybór/start jednego wykonawcy przez właściciela według
+  CURRENT_B_GAP_TASK. Najpierw source/domain exports i pełny ledger, potem
+  D/A3,basis/tree/terminal i kernelowa suma. P02 ma lokalny nowszy handoff
+  z deklarowanym freeze09-25,ale binding/odbiór nie należał do tej pracy.
+  STATUS B20 bez awansu; po frozen zwrocie osobny model wykonuje review.
+  Przygotowanie kończy lokalny commit; nie uruchamiano workera ani push.

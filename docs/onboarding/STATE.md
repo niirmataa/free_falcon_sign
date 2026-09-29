@@ -1,5 +1,20 @@
 # Stan projektu — punkt wejścia
 
+**2026-09-29 — T03 B-gap: przygotowany RUN_002 z pełnym budżetem A–E.**
+[CURRENT_B_GAP_TASK](../../proofs/ft1536/CURRENT_B_GAP_TASK.md) wskazuje nowy
+TASK/W: **PREPARED_OWNER_START**,wykonawca jeszcze nieprzydzielony.
+Na prośbę właściciela sprawdzono spójność ścieżki SOURCE_ERROR§3 w Sage10.9:
+trzy wskazane poprawki same nie wystarczają,bo pozostaje D≈15.6675 oraz
+A3≈0.432907; nawet po wyzerowaniu A2/A4/B/C1/C2/C3 suma pozostałych
+majorant≈16.10836. To brak wystarczającego budżetu,nie kontrprzykład C.
+TASK dodaje jawny source suffix D/target A3 i wspólną kompozycję dla P07–P10;
+B-gap nadal OPEN,historyczny REVIEWED/PARTIAL zachowany. Bootstrap1396 plików,
+MANIFEST `a47dc77e…`; TASK `c10d5030…`. Rachunek przygotowawczy exit0,
+nie nowy review/source proof; nieudaną pierwszą próbę i zgodę na poprawkę QQ
+zachowano w [evidence](../../proofs/ft1536/background/T03_B_GAP_2026-09-29/README.md).
+P02 ma nowszy lokalny HANDOFF z deklarowanym freeze2026-09-25,ale jego odbiór
+i required exports nie zostały związane tym przygotowaniem; STATUS B20 zachowany.
+
 **2026-09-25 — import nowości work/ do stages + przeniesienie na NVMe.**
 Kanoniczna lokalizacja pracy to od teraz
 **`/media/footfalcon/FT1536_DATA/free_falcon_sign`** (decyzja właściciela;
