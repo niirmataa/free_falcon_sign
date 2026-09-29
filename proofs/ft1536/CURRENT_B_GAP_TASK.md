@@ -105,3 +105,8 @@ splitami i3072 defektami. P07 basis/P10 iFFT+rint mają własne otwarte typy.
 Przed nowym zleceniem przypnij potrzebne eksporty i wyznacz własny W;
 zakończonych frozen autora i recenzenta nie wznawiaj. P07–P10 nie odblokowano
 przez ten scoped PASS. owner_accepted=false,publikacja osobnym poleceniem.
+
+**Kolejność właściciela2026-09-29:** P02 ma już output/COMPLETE_FOR_REVIEW.
+Najpierw [uzupełnienie jego freezu i V02](CURRENT_P02_TASK.md),potem nowe
+source proofy według rzeczywiście odebranych eksportów. Przygotowanie
+nowego add/sub zostało odłożone;nie uruchomiono wykonawcy tego proofu.

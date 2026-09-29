@@ -605,3 +605,41 @@ w historii. Następny krok po zakończeniu: ocena wyniku i checkpoint przy PASS.
   poza stagingiem i commitem. Stan mathematical/source recovery bez awansu.
 - Następny krok:właściciel wybiera kontynuację brakujących P02/P06 i
   INTEGER_DEFECT_TRANSPORT. Nie uruchomiono workera lub publikacji.
+
+## 2026-09-29T13:23:47Z — właściciel: najpierw istniejący P02; freeze closure przed V02
+
+- Po poleceniu „idziemy po kolei” prowadzący przygotowywał add/sub,ale
+  właściciel wskazał:„P02 powinno juz byc wykonane i dalej chyba w /work”.
+  Potwierdzono P02/output68/68,COMPLETE_FOR_REVIEW/PARTIAL_PROOF z09-25,
+  joby autora zakończone. Plan nowego proofu odłożony w
+  work/FT1536_P02_ADD_SUB_PREPARATION_2026-09-29/HANDOFF.md,bez TASK/startu.
+- Precheck P02:runner poza OUTPUTS,AuditExports/AuditTerms poza34-entry
+  BUILD_PLAN closure,9 receiptów/raw logs poza freeze;HANDOFF odsyła po
+  final HEAD do OUTPUTS/REPLAY,ale pinu tam nie zapisano. Materiały istnieją
+  w W. Zatrzymano binding/import/start i zgłoszono stop-and-report.
+- Właściciel wybrał „Przygotuj uzupełnienie (Recommended)”:zadanie nowego
+  pakietu istniejącego P02,zachowanie starego freeze i PARTIAL,potem V02.
+  External/previous P02 piny zachowane z wcześniejszego bindingu T03:
+  REPORT98ea050bfe15b39b4ad2a6d26428bcd7e12f22ca33b06b6bc98e9e964bb295a5,
+  OUTPUTS4e8942ccaf46f0971688a0f0cc1d07c5831a46175e6ad2dde903c9f55b046a01.
+- `python3 -B .../P02_INTAKE_2026-09-29/prepare_closure_inputs.py`:
+  7371 input files,9 istniejących runów/144 kroków/288 raw step logs,
+  source snapshots i tekstowe produkty zgodne z receiptami. Bez Lean/Sage/
+  replayu. Materiały poza starym OUTPUTS przypięto teraz jako nowe wejścia,
+  nie przedstawiono ich jako wcześniej frozen.
+- `archive.py document` + `task-init FT1536_P02_FREEZE_CLOSURE_RUN_001`
+  + `bootstrap <W/inputs/bootstrap> --plan CLOSURE_INPUT_PLAN.json`:
+  TASK SHA `ce02389fffec9edf11c5f2430d9e8b7081f612d63ec3f38f761ac97773db259e`;
+  BASEdda4a2a3ec4854e438914a16110cd6ed4cd2f927;8700 inputs/359332583B,
+  MANIFEST `088b407a3be937a49b1a23d4305e83641123d9770040d78b4a43b7cabe14c65f`.
+  Exact set/ORIGINS/hash checks zgodne,files RO,własny W/output pusty.
+  `archive.verify_documents`:58 dokumentów PASS. Model/worker nieprzydzielony.
+- Evidence przez `archive.py bootstrap background/P02_FREEZE_CLOSURE_2026-09-29`:
+  9 plików,manifest `a737ce2e37a7fd450a68b7eac0bc5329125b37b7bbe0aacebb18154a0a4bc7fd`.
+  CURRENT_P02_TASK/STATE/ROADMAP opisują istniejący wynik i kolejną pracę.
+  STATUS B20 bez ręcznej zmiany:final setter wymaga jednoznacznego nowego
+  handoffu i HEAD;nie podstawiono start/snapshot HEAD jako finalnego.
+- Następny krok:ręczny start wykonawcy uzupełnienia F1–F4,portable fresh
+  replay i nowy frozen output z parent task_id P02. Potem canonical setter
+  i generator V02,niezależny odbiór,zaakceptowane stages/main. Bez push,
+  wznowienia zakończonego W lub nowej matematyki add/sub w tym przygotowaniu.

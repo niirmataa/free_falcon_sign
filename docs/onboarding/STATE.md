@@ -1,5 +1,19 @@
 # Stan projektu — punkt wejścia
 
+**2026-09-29 — właściciel: najpierw istniejący P02,uzupełnienie freezu i V02.**
+P02 ma wykonany `output/` z2026-09-25:COMPLETE_FOR_REVIEW/PARTIAL_PROOF,
+68/68 hashy zgodnych,REPORT98ea050b…/OUTPUTS4e8942cc…. Kontrola przygotowania
+V02 ujawniła poza manifestem runner,dwa audit modules oraz9 receiptów/raw
+logs i brak jednoznacznego final HEAD. Materiały istnieją w W;to brak
+kompletnego frozen handoffu,nie ponowne zlecenie całego dowodu P02.
+Po stop-and-report właściciel wybrał „Przygotuj uzupełnienie (Recommended)”.
+[CURRENT_P02_TASK](../../proofs/ft1536/CURRENT_P02_TASK.md):nowy W
+FT1536_P02_FREEZE_CLOSURE_RUN_001,PREPARED_OWNER_START,TASKce02389f…,
+bootstrap8700/088b407a…. Zweryfikowano7371 historycznych inputs oraz9
+przebiegów/144 kroków/288 raw logs. Wykonawca/model nieuruchomiony.
+Nowe add/sub odłożone do odebrania scope P02. STATUS B20 IN_PROGRESS jest
+historycznym wpisem;setter otrzyma nowy komplet piny/HEAD po uzupełnieniu.
+
 **2026-09-29 — T03-B RUN_002 odebrany zakresowo i zaimportowany do stages.**
 GPT-6 Sol Fast (`openai/gpt-6-sol-fast`),świeży kontekst,sesja
 `ses_f13139bc5ffeFI41laN8mgF1PA`: **PASS_SCOPED_REVIEW** dla autorskiego
