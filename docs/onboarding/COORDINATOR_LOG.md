@@ -593,3 +593,15 @@ w historii. Następny krok po zakończeniu: ocena wyniku i checkpoint przy PASS.
 - Następny obowiązek matematyczny:P02 literal arithmetic/real-error/caller
   domain dispatcher,P06 placement/ring,potem INTEGER_DEFECT_TRANSPORT3072.
   Status B20 nie zmieniony. Bez nowych modeli,replayów,push lub source integration.
+
+## 2026-09-29T13:01:51Z — checkpoint T03-B zapisany
+
+- Zapowiedziana komenda archive.py checkpoint zakończyła się exit0:
+  `5ca9abf55b7ea02461463f4253b9b082edade847`,main,author/committer niirmataa,
+  3120 dokładnych pathspeców pary/objects/indeksów;stare archiwa zachowane.
+  Pełne stdout/stderr/receipt w work/FT1536_T03_B_GAP_ACCEPTANCE_2026-09-29.
+- Kolejny lokalny commit zapisuje żywe CURRENT/STATE/PROOF_MAP i przypięte
+  12-elementowe evidence akceptacji. Zastany13-wierszowy wpis Qwen3 pozostaje
+  poza stagingiem i commitem. Stan mathematical/source recovery bez awansu.
+- Następny krok:właściciel wybiera kontynuację brakujących P02/P06 i
+  INTEGER_DEFECT_TRANSPORT. Nie uruchomiono workera lub publikacji.

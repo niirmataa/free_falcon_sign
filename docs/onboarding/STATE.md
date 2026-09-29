@@ -1,5 +1,24 @@
 # Stan projektu — punkt wejścia
 
+**2026-09-29 — T03-B RUN_002 odebrany zakresowo i zaimportowany do stages.**
+GPT-6 Sol Fast (`openai/gpt-6-sol-fast`),świeży kontekst,sesja
+`ses_f13139bc5ffeFI41laN8mgF1PA`: **PASS_SCOPED_REVIEW** dla autorskiego
+**BLOCKED_UPSTREAM_EXPORTS**. [Autor](../../proofs/ft1536/stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002/REPORT.md),
+[recenzja](../../proofs/ft1536/stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002_REVIEW_001/REVIEW.md).
+1939 outputs autora/1437 inputs i115 review outputs/1946 inputs zgodne.
+Własny replay recenzenta7/7 kroków,10/10 produktów;UBSan/ASan3/3 każde,
+własne Sage/Lean exit0. Koordynator sprawdził piny i recorded bindings,
+bez ponownego mathematical review/replayu. **source_gap=null,full_recovery=false**.
+Odebrano15 identities algebra-only,10-termowy ledger,old-target add_C1643
+i warunkową arytmetykę;brak required-domain counterexample. E dodaje się po
+physical inverse I,A1–D są root-space.7 brakujących source interfaces jawne.
+Ograniczenie review:3 wczesne stderr własnych prób Sage nadpisane;opis i
+końcowe źródła/logi/wyniki zachowane,bez twierdzenia o kompletności tamtych prób.
+REVIEW `acad9276…`,REVIEW_OUTPUTS `a4118200…`;owner_accepted=false.
+Checkpoint pary `5ca9abf`,main jako niirmataa;global verify44/57 PASS.
+Następne:P02 real arithmetic/domain dispatcher,P06 mapping,potem pełny
+INTEGER_DEFECT_TRANSPORT. [Żywy status](../../proofs/ft1536/CURRENT_B_GAP_TASK.md).
+
 **2026-09-29 — potwierdzone powiązanie obu W matematycznych.**
 Wskazany GAME_BINDING_RUN_001_V2_1_ERRATA ma295/295 plików zgodnych
 z istniejącym stage’em (PARTIAL_PROOF,bez niezależnego odbioru).

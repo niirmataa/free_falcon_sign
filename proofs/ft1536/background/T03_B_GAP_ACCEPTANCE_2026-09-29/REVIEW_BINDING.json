@@ -1,0 +1,121 @@
+{
+  "schema": "T03_RUN002_ACCEPTED_REVIEW_BINDING_V1",
+  "observed_utc": "2026-09-29T12:52:56.550824+00:00",
+  "status": "PIN_RECEIPT_BINDING_PASS",
+  "pins": {
+    "author_report": "b2e8c9af003edee089b49156541e631e3ab8bb01c93f9cad521edf7b66a59dfc",
+    "author_outputs": "12df61056ddada2f79c1b94b3b17e8f326db2b3a2cbe53d1694754d79d7958cc",
+    "review_report": "acad9276fa7e8ed6924b8a1ada1bbf84052be330d3a0e1641a2850f2e6b5d84e",
+    "review_outputs": "a4118200de729562ad1e6396c0bb252a204d9a1ee0f7d7ce085db1fb11689956"
+  },
+  "author_outputs": 1939,
+  "author_inputs": 1437,
+  "review_outputs": 115,
+  "review_inputs": 1946,
+  "review_output_bytes": 4831391,
+  "reviewer": {
+    "model": "openai/gpt-6-sol-fast",
+    "variant": "Fast",
+    "session_id": "ses_f13139bc5ffeFI41laN8mgF1PA",
+    "context": "fresh, independent of author openai/gpt-6-astra-fast / ses_f13640949ffeJ0RtC7tFAz07UR",
+    "owner_started": true
+  },
+  "verdict": "PASS_SCOPED_REVIEW",
+  "accepted_scope": [
+    "15 clean kernel algebraic identities with source_instantiated=false",
+    "10 signed ledger terms and byte-bound source spans, no uniform source bounds",
+    "old-target update-add defect diagnosis and two local public finite C fixtures without emitted/history membership",
+    "exact-rational historical/conditional numeric diagnostics and seven explicit open interfaces"
+  ],
+  "run_bindings": [
+    {
+      "name": "fresh_001",
+      "receipt_sha256": "be46b34eaf71cbd72e7646f246df95c6768db291b6de4eb9223e49636f423ddf",
+      "exit_code": 1,
+      "steps": 1,
+      "recorded_step_seconds": 0.01453278900589794,
+      "raw_step_logs": 2,
+      "C_command_log_bindings": 0,
+      "source_bindings": 12,
+      "sealed_product_bindings": 0
+    },
+    {
+      "name": "fresh_002",
+      "receipt_sha256": "3f6d13357a19a299cc820c8fefb0b6e0bfcd9c04ceee6be8aec428b4ae2925bd",
+      "exit_code": 0,
+      "steps": 7,
+      "recorded_step_seconds": 452.32968473099754,
+      "raw_step_logs": 14,
+      "C_command_log_bindings": 6,
+      "source_bindings": 12,
+      "sealed_product_bindings": 16
+    },
+    {
+      "name": "ubsan_001",
+      "receipt_sha256": "bae5f65f177d9217d0eb820628c92ac3b6f26c4c9c81bda2d6b4fc5f6e19c0d5",
+      "exit_code": 0,
+      "steps": 3,
+      "recorded_step_seconds": 3.2114299860113533,
+      "raw_step_logs": 6,
+      "C_command_log_bindings": 6,
+      "source_bindings": 12,
+      "sealed_product_bindings": 12
+    },
+    {
+      "name": "asan_001",
+      "receipt_sha256": "1ec8649a1c2bcce98a52c68afd04be07d6f067916211316de7b9e91d72e1c488",
+      "exit_code": 0,
+      "steps": 3,
+      "recorded_step_seconds": 2.7497820549906464,
+      "raw_step_logs": 6,
+      "C_command_log_bindings": 6,
+      "source_bindings": 12,
+      "sealed_product_bindings": 12
+    }
+  ],
+  "semantic_bindings": 10,
+  "own_control_sidecars": [
+    {
+      "name": "input_audit",
+      "recorded_exit": 0,
+      "stdout_sha256": "99b2f304763ce845cb80c63b0cb6de3505d4b33a8dfea59022606cc02dba81f5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "claim_audit",
+      "recorded_exit": 0,
+      "stdout_sha256": "94d0b681b3862e775d1300584b9597f94c2d372497a4b3d2e8f45ef7ab48807b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "reviewer_arithmetic",
+      "recorded_exit": 0,
+      "stdout_sha256": "0294f61604b8a5047937d4bfdebdbf253d07ab1fde1cabea6769473f65b20486",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "reviewer_lean",
+      "recorded_exit": 0,
+      "stdout_sha256": "d99d8a91dfce0f18d0bc6f8f3c5901107a4232e8eaee26f722dfca8cb93d1cee",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "collect_evidence",
+      "recorded_exit": 0,
+      "stdout_sha256": "fadf09c18b4447c14df34a3ef1b5eb9222e3b7e267e6ce0f82272b8c3067bad7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "own_sources_and_result": {
+    "reviewer_arithmetic.sage": "36c77db8f8f4041e136c18193285dfdcb2e83a8faede68e9d90a455dcecd07cd",
+    "Reviewer.lean": "3adac17759c4ab6e02ebe5137aa1298ab85b09841685afeb217a9704f6abcdf8",
+    "REVIEW_SAGE.json": "05d70435f7a8ca9fe9152fc5a7bafe06d5d2d52f4ed86e9573cb3a61cb745080"
+  },
+  "known_evidence_limit": "First three reviewer Sage stderr overwritten; final source/log/exit/result sealed. No fabricated early raw logs or execution-source receipts.",
+  "review_inputs_origin": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002_REVIEW_001/inputs",
+  "review_import_layout": "INPUTS paths are relative to reviewer inputs, not output; create byte-identical import-source with those origins, preserve original manifest.",
+  "process_matches": [],
+  "mathematical_review_repeated": false,
+  "new_replay_performed": false,
+  "owner_accepted": false
+}
