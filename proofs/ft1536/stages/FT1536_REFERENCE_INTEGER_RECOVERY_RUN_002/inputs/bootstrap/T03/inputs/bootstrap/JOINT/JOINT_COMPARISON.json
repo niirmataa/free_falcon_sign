@@ -1,0 +1,79 @@
+{
+  "schema": "ORDERED_JOINT_COMPARISON_V1",
+  "status": "PASS_EXACT_ADAPTIVE_NUMERICAL_INSTANCE",
+  "game": "IID_BUFFER",
+  "M": 3072,
+  "epsilon": "1/68719476736",
+  "kappa": "1/1152921504606846976",
+  "local_QS_identity": "1+chi2(K_h||G_h|S_h)=(1-t_h)(1+chi2(K_h||G_h))",
+  "chain_second_moment": "E_Qstop[L_i^2 | prefix h]=L_prev^2 * sum_y_in_S K_h(y)^2/G_h(y); zero on EXIT",
+  "metrics": [
+    {
+      "from_law": "P_value",
+      "to_law": "Q_stop",
+      "metric": "chi2",
+      "direction": "forward",
+      "exact_upper_expression": "(1+2^-60)^3072-1",
+      "rational_upper": "3/1125899906842621",
+      "power2_upper": "2^-48",
+      "scope": "one root; all required entries; legal entry PAST; same value prefix parameters"
+    },
+    {
+      "from_law": "P_value",
+      "to_law": "Q_S",
+      "metric": "chi2",
+      "direction": "forward",
+      "exact_upper_expression": "(1+2^-60)^3072-1",
+      "rational_upper": "3/1125899906842621",
+      "power2_upper": "2^-48",
+      "scope": "one root; all required entries; legal entry PAST; same value prefix parameters"
+    },
+    {
+      "from_law": "P_value",
+      "to_law": "Q_stop",
+      "metric": "TV",
+      "upper": "1/33554432",
+      "power2_upper": "2^-25",
+      "alternative_sequential_upper": "3/67108864",
+      "proof": "min of chain second moment and same-prefix adaptive coupling; no double-counted tail"
+    },
+    {
+      "from_law": "P_value",
+      "to_law": "Q_S",
+      "metric": "TV",
+      "upper": "1/33554432",
+      "power2_upper": "2^-25",
+      "alternative_sequential_upper": "3/67108864",
+      "proof": "min of chain second moment and same-prefix adaptive coupling; no double-counted tail"
+    },
+    {
+      "from_law": "Q_S",
+      "to_law": "Q_stop",
+      "metric": "TV",
+      "value_expression": "Q_stop(EXIT)=1-E_QS[product_i(1-t_h_i)]",
+      "upper": "75325220825680711562955949909309896400258896852293931375729/113078212145816597093331040047546785012958969400039613319782796882727665664",
+      "power2_upper": "2^-50"
+    },
+    {
+      "from_law": "Q_stop",
+      "to_law": "P_value",
+      "metric": "chi2",
+      "value": "infinity",
+      "absolute_continuity": false
+    },
+    {
+      "from_law": "Q_S",
+      "to_law": "P_value",
+      "metric": "chi2",
+      "upper_expression": "2^811008-1",
+      "absolute_continuity": true,
+      "utility": "very loose; derived from K_h(y)>=2^-264 for y in S_h, not from reversing scalar forward chi2"
+    }
+  ],
+  "reverse_QS_positive_atom_floor": "1/2^264",
+  "reverse_QS_exponent": 811008,
+  "gaussian_ledger_sha256": "5fbeee60d4da281443e0eef54d2b76147eb5a1392c8dbad40ecbed0da62738ae",
+  "source_Gaussian_certificate_sha256": "204b63ba87315ef35eecea608dc7f00c9c2bc400d0bb595512738dd32257ea8c",
+  "no_independent_marginals": true,
+  "no_global_lattice_Gaussian_claim": true
+}

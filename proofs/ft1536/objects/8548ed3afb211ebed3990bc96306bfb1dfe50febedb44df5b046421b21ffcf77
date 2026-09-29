@@ -1,0 +1,3639 @@
+{
+ "schema": "B20_P02_FORMAL_EXPORTS_V1",
+ "scan": {
+  "method": "#check @{name} (printed type) + #print axioms {name} for every named theorem/def of BUILD_PLAN modules",
+  "run": "run/freeze_scan (step 032.stdout), 489 names: 183 theorems, 306 defs",
+  "axiom_totals": {
+   "[propext, Classical.choice, Quot.sound]": 111,
+   "[propext, Quot.sound]": 37,
+   "[propext]": 24,
+   "axiom-free theorems": 11,
+   "target/forbidden axioms": 0
+  }
+ },
+ "primary_exports": [
+  {
+   "name": "B20.Word.load_store_le_refines",
+   "file": "formal/B20/Word/LERefinement.lean",
+   "full_type": "∀ (m : B20.C.Byte.Memory) (p : B20.C.Byte.Pointer) (w : B20.C.Byte.U64),\n  B20.C.Byte.WriteRegion m p →\n    B20.C.Byte.parseFunction (B20.Word.LE.slice B20.Pinned.shakeLines 56 15) = some B20.Word.LE.decProgram ∧\n      B20.C.Byte.parseFunction (B20.Word.LE.slice B20.Pinned.shakeLines 75 15) = some B20.Word.LE.encProgram ∧\n        (∀ (result : Option B20.C.Byte.U64) (final : B20.C.Byte.Memory),\n            B20.C.Byte.CExec B20.Word.LE.decProgram m [B20.C.Byte.Arg.pointer p] result final ↔\n              result = some (B20.Word.LE.join (B20.Word.LE.bufferBytes m p)) ∧ final = m) ∧\n          (∀ (result : Option B20.C.Byte.U64) (final : B20.C.Byte.Memory),\n              B20.C.Byte.CExec B20.Word.LE.encProgram m [B20.C.Byte.Arg.pointer p, B20.C.Byte.Arg.word w] result final ↔\n                result = none ∧ final = B20.Word.LE.stored m p w) ∧\n            B20.C.Byte.RegionBytes (B20.Word.LE.stored m p w) p (B20.Word.LE.byteOf w) ∧\n              B20.C.Byte.CExec B20.Word.LE.decProgram (B20.Word.LE.stored m p w) [B20.C.Byte.Arg.pointer p] (some w)\n                  (B20.Word.LE.stored m p w) ∧\n                (∀ (q : B20.C.Byte.Pointer),\n                    q.block ≠ p.block ∨ q.offset < p.offset ∨ p.offset + 8 ≤ q.offset →\n                      (B20.Word.LE.stored m p w).contents q = m.contents q) ∧\n                  (B20.Word.LE.stored m p w).length = m.length ∧ (B20.Word.LE.stored m p w).writable = m.writable",
+   "axioms": "[propext, Classical.choice, Quot.sound]",
+   "status": "PROVED",
+   "consumers": [
+    "V02",
+    "P03 later lemmas"
+   ],
+   "proof": "kernel-checked theorem (LERefinement.lean): legal memory + LP64 ranges -> pinned dec64le/enc64le CExec execution <-> BitVec LE64 semantics, round-trip, frame outside 8 bytes"
+  },
+  {
+   "name": "B20.Word.load_le_refines",
+   "file": "formal/B20/Word/LERefinement.lean",
+   "full_type": "∀ (m : B20.C.Byte.Memory) (p : B20.C.Byte.Pointer),\n  B20.C.Byte.ReadRegion m p →\n    ∀ (result : Option B20.C.Byte.U64) (final : B20.C.Byte.Memory),\n      B20.C.Byte.CExec B20.Word.LE.decProgram m [B20.C.Byte.Arg.pointer p] result final ↔\n        result = some (B20.Word.LE.join (B20.Word.LE.bufferBytes m p)) ∧ final = m",
+   "axioms": "[propext, Classical.choice, Quot.sound]",
+   "status": "PROVED",
+   "consumers": [
+    "V02"
+   ],
+   "proof": "kernel-checked theorem: load-only half of the LE refinement"
+  },
+  {
+   "name": "B20.Fpr.neg_execution",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (x : BitVec 64),\n  B20.C.Scalar.execute B20.C.Scalar.shiftCalls B20.Fpr.Parsed.negProgram [B20.C.Val.u64 x] =\n    some (B20.C.Val.u64 (B20.Fpr.negSpec x))",
+   "axioms": "[propext, Classical.choice, Quot.sound]",
+   "status": "PROVED",
+   "consumers": [
+    "V02"
+   ],
+   "proof": "kernel-checked: parsed negProgram (pinned fpr-emulated.h) -> negSpec bit flip"
+  },
+  {
+   "name": "B20.Fpr.double_execution",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (x : BitVec 64),\n  B20.C.Scalar.execute B20.C.Scalar.shiftCalls B20.Fpr.Parsed.doubleProgram [B20.C.Val.u64 x] =\n    some (B20.C.Val.u64 (B20.Fpr.doubleSpec x))",
+   "axioms": "[propext, Classical.choice, Quot.sound]",
+   "status": "PROVED",
+   "consumers": [
+    "V02"
+   ],
+   "proof": "kernel-checked literal-BitVec spec"
+  },
+  {
+   "name": "B20.Fpr.half_execution",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (x : BitVec 64),\n  B20.C.Scalar.execute B20.C.Scalar.shiftCalls B20.Fpr.Parsed.halfProgram [B20.C.Val.u64 x] =\n    some (B20.C.Val.u64 (B20.Fpr.halfSpec x))",
+   "axioms": "[propext, Classical.choice, Quot.sound]",
+   "status": "PROVED",
+   "consumers": [
+    "V02"
+   ],
+   "proof": "kernel-checked literal-BitVec spec"
+  },
+  {
+   "name": "B20.Fpr.pack_execution",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (s e : BitVec 32) (m : BitVec 64),\n  B20.Fpr.packDomain s e →\n    B20.C.Scalar.execute B20.C.Scalar.shiftCalls B20.Fpr.Parsed.packProgram\n        [B20.C.Val.i32 s, B20.C.Val.i32 e, B20.C.Val.u64 m] =\n      some (B20.C.Val.u64 (B20.Fpr.packSpec s e m))",
+   "axioms": "[propext, Classical.choice, Quot.sound]",
+   "status": "PROVED (packDomain)",
+   "consumers": [
+    "V02"
+   ],
+   "proof": "kernel-checked literal-BitVec spec under explicit packDomain(e) int-overflow guard"
+  },
+  {
+   "name": "B20.Fpr.rint_execution",
+   "file": "formal/B20/Fpr/RintExec.lean",
+   "full_type": "∀ (x : BitVec 64),\n  B20.Fpr.rintDomain x →\n    B20.C.Scalar.execute B20.C.Scalar.shiftCalls B20.Fpr.Parsed.rintProgram [B20.C.Val.u64 x] =\n      some (B20.C.Val.i64 (B20.Fpr.rintSpec x))",
+   "axioms": "[propext, Classical.choice, Quot.sound]",
+   "status": "PROVED (rintDomain: mantissa <= 1072)",
+   "consumers": [
+    "V02",
+    "P03"
+   ],
+   "proof": "kernel-checked literal-BitVec spec incl. mask/range lemmas; fpr_ulsh/ursh call sites discharged through Fin-64 interfaces"
+  },
+  {
+   "name": "B20.Fpr.floor_execution",
+   "file": "formal/B20/Fpr/FloorExec.lean",
+   "full_type": "∀ (x : BitVec 64),\n  B20.Fpr.floorDomain x →\n    B20.C.Scalar.execute B20.C.Scalar.shiftCalls B20.Fpr.Parsed.floorProgram [B20.C.Val.u64 x] =\n      some (B20.C.Val.i64 (B20.Fpr.floorSpec x))",
+   "axioms": "[propext, Classical.choice, Quot.sound]",
+   "status": "PROVED (floorDomain: mantissa <= 1072 and x != raw -0)",
+   "consumers": [
+    "V02",
+    "P03"
+   ],
+   "proof": "kernel-checked literal-BitVec spec incl. raw -0 exclusion (implementation returns -1 there) and fpr_irsh call site"
+  },
+  {
+   "name": "B20.Fpr.sub_execution",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (calls : B20.C.Scalar.Calls) (x y w : BitVec 64),\n  calls \"fpr_add\".toList [B20.C.Val.u64 x, B20.C.Val.u64 (y ^^^ 1 <<< 63)] = some (B20.C.Val.u64 w) →\n    B20.C.Scalar.execute calls B20.Fpr.Parsed.subProgram [B20.C.Val.u64 x, B20.C.Val.u64 y] = some (B20.C.Val.u64 w)",
+   "axioms": "[propext, Classical.choice, Quot.sound]",
+   "status": "PROVED (conditional on fpr_add call)",
+   "consumers": [
+    "V02"
+   ],
+   "proof": "kernel-checked: subProgram executes iff caller supplies fpr_add call value"
+  },
+  {
+   "name": "B20.Fpr.sub_refines_via_add_obligation",
+   "file": "formal/B20/Fpr/Domain.lean",
+   "full_type": "∀ (x y w : BitVec 64),\n  B20.Fpr.AddCallObligation x (y ^^^ 1 <<< 63) w →\n    B20.C.Scalar.execute B20.C.Scalar.shiftCalls B20.Fpr.Parsed.subProgram [B20.C.Val.u64 x, B20.C.Val.u64 y] =\n      some (B20.C.Val.u64 w)",
+   "axioms": "[propext, Classical.choice, Quot.sound]",
+   "status": "PROVED (conditional on AddCallObligation)",
+   "consumers": [
+    "V02"
+   ],
+   "proof": "sub_execution restated through the MS2 obligation interface"
+  },
+  {
+   "name": "B20.Fpr.rint_ulsh_domain",
+   "file": "formal/B20/Fpr/Domain.lean",
+   "full_type": "∀ (x : BitVec 64),\n  0 ≤ (B20.Fpr.rint_e2 x).toInt ∧ (B20.Fpr.rint_e2 x).toInt ≤ 63 →\n    B20.Fpr.UlshDomain (B20.Fpr.rint_m1 x) (63#32 - B20.Fpr.rint_e2 x)",
+   "axioms": "[propext, Classical.choice, Quot.sound]",
+   "status": "PROVED",
+   "consumers": [
+    "V02"
+   ],
+   "proof": "caller instance from current he2int premise"
+  },
+  {
+   "name": "B20.Fpr.rint_ursh_domain",
+   "file": "formal/B20/Fpr/Domain.lean",
+   "full_type": "∀ (x : BitVec 64), B20.Fpr.UrshDomain (B20.Fpr.rint_m1 x) (B20.Fpr.rint_e2 x)",
+   "axioms": "[propext, Quot.sound]",
+   "status": "PROVED",
+   "consumers": [
+    "V02"
+   ],
+   "proof": "unconditional (e &&& 63 < 64)"
+  },
+  {
+   "name": "B20.Fpr.floor_irsh_domain",
+   "file": "formal/B20/Fpr/Domain.lean",
+   "full_type": "∀ (x : BitVec 64), B20.Fpr.IrshDomain (B20.Fpr.floor_xi0 x) (B20.Fpr.rint_e2 x)",
+   "axioms": "[propext, Quot.sound]",
+   "status": "PROVED",
+   "consumers": [
+    "V02"
+   ],
+   "proof": "unconditional (cc &&& 63 < 64)"
+  }
+ ],
+ "unresolved_types": [
+  {
+   "name": "B20.Fpr.AddCallObligation",
+   "full_type": "BitVec 64 → BitVec 64 → BitVec 64 → Prop",
+   "status": "UNRESOLVED TYPE (no instance; consumed by fpr_sub)",
+   "consumers": [
+    "fpr_sub caller obligations",
+    "future fpr_add refinement task"
+   ]
+  },
+  {
+   "name": "B20.Fpr.MulObligation",
+   "full_type": "BitVec 64 → BitVec 64 → BitVec 64 → Prop",
+   "status": "UNRESOLVED TYPE (no instance; no parsed call site yet)",
+   "consumers": [
+    "fpr_sqr and future mul refinement"
+   ]
+  },
+  {
+   "name": "B20.Fpr.DivObligation",
+   "full_type": "BitVec 64 → BitVec 64 → BitVec 64 → Prop",
+   "status": "UNRESOLVED TYPE (no instance)",
+   "consumers": [
+    "fpr_inv/fpr_inverse_of and future div refinement"
+   ]
+  },
+  {
+   "name": "B20.Fpr.SqrtObligation",
+   "full_type": "BitVec 64 → BitVec 64 → Prop",
+   "status": "UNRESOLVED TYPE (no instance)",
+   "consumers": [
+    "future sqrt refinement"
+   ]
+  }
+ ],
+ "closed_vs_open": {
+  "closed": [
+   "word/LE refinement family",
+   "3 shift helpers end-to-end",
+   "scalar literal execution family: neg, double, half, pack, rint, floor",
+   "sub conditional on fpr_add",
+   "shift caller-domain interfaces",
+   "CExec converse/determinism (P01 import)"
+  ],
+  "open": [
+   "fpr_add/mul/div/sqrt arithmetic+error contracts (unresolved types above)",
+   "nearest-ties-even rint mathematical contract on reals (literal BitVec spec only)",
+   "raw -0 floor exception (observed -1, out of contract)",
+   "machine-code refinement",
+   "sign/emulation of FP special values beyond literal words"
+  ]
+ },
+ "full_scan": [
+  {
+   "name": "B20.C.Byte.CExec",
+   "kind": "def",
+   "file": "formal/B20/C/ByteMemory.lean",
+   "full_type": "B20.C.Byte.Function →\n  B20.C.Byte.Memory → List B20.C.Byte.Arg → Option B20.C.Byte.U64 → B20.C.Byte.Memory → Prop",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.Pointer.add",
+   "kind": "def",
+   "file": "formal/B20/C/ByteMemory.lean",
+   "full_type": "B20.C.Byte.Pointer → ℕ → B20.C.Byte.Pointer",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.ReadRegion",
+   "kind": "def",
+   "file": "formal/B20/C/ByteMemory.lean",
+   "full_type": "B20.C.Byte.Memory → B20.C.Byte.Pointer → Prop",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.RegionBytes",
+   "kind": "def",
+   "file": "formal/B20/C/ByteMemory.lean",
+   "full_type": "B20.C.Byte.Memory → B20.C.Byte.Pointer → (Fin 8 → B20.C.Byte.U8) → Prop",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.Value.toWord",
+   "kind": "def",
+   "file": "formal/B20/C/ByteMemory.lean",
+   "full_type": "B20.C.Byte.Value → B20.C.Byte.U64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.WriteRegion",
+   "kind": "def",
+   "file": "formal/B20/C/ByteMemory.lean",
+   "full_type": "B20.C.Byte.Memory → B20.C.Byte.Pointer → Prop",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.access_inBounds",
+   "kind": "theorem",
+   "file": "formal/B20/C/ByteMemory.lean",
+   "full_type": "∀ (m : B20.C.Byte.Memory) (p : B20.C.Byte.Pointer),\n  B20.C.Byte.ReadRegion m p → ∀ (i : Fin 8), B20.C.Byte.inBounds m (p.add ↑i)",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.C.Byte.bindArgs",
+   "kind": "def",
+   "file": "formal/B20/C/ByteMemory.lean",
+   "full_type": "B20.C.Byte.Memory → List B20.C.Byte.Param → List B20.C.Byte.Arg → Option B20.C.Byte.State",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.body",
+   "kind": "def",
+   "file": "formal/B20/C/ByteParser.lean",
+   "full_type": "ℕ → List B20.C.Token → Option (List B20.C.Byte.Statement × List B20.C.Token)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.decimal",
+   "kind": "def",
+   "file": "formal/B20/C/ByteParser.lean",
+   "full_type": "B20.C.Token → Option ℕ",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.evalBody",
+   "kind": "def",
+   "file": "formal/B20/C/ByteMemory.lean",
+   "full_type": "Bool →\n  List B20.C.Byte.Statement → B20.C.Byte.State → Option (Option B20.C.Byte.U64 × B20.C.Byte.Memory)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.evalExpr",
+   "kind": "def",
+   "file": "formal/B20/C/ByteMemory.lean",
+   "full_type": "B20.C.Byte.State → B20.C.Byte.Expr → Option B20.C.Byte.Value",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.execute",
+   "kind": "def",
+   "file": "formal/B20/C/ByteMemory.lean",
+   "full_type": "B20.C.Byte.Function →\n  B20.C.Byte.Memory → List B20.C.Byte.Arg → Option (Option B20.C.Byte.U64 × B20.C.Byte.Memory)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.expression",
+   "kind": "def",
+   "file": "formal/B20/C/ByteParser.lean",
+   "full_type": "ℕ → B20.C.Byte.Parser",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.inBounds",
+   "kind": "def",
+   "file": "formal/B20/C/ByteMemory.lean",
+   "full_type": "B20.C.Byte.Memory → B20.C.Byte.Pointer → Prop",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.orTail",
+   "kind": "def",
+   "file": "formal/B20/C/ByteParser.lean",
+   "full_type": "B20.C.Byte.Parser → ℕ → B20.C.Byte.Expr → B20.C.Byte.Parser",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.param",
+   "kind": "def",
+   "file": "formal/B20/C/ByteParser.lean",
+   "full_type": "List B20.C.Token → Option (B20.C.Byte.Param × List B20.C.Token)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.params",
+   "kind": "def",
+   "file": "formal/B20/C/ByteParser.lean",
+   "full_type": "ℕ → List B20.C.Token → Option (List B20.C.Byte.Param × List B20.C.Token)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.parenthesized",
+   "kind": "def",
+   "file": "formal/B20/C/ByteParser.lean",
+   "full_type": "B20.C.Byte.Parser → List B20.C.Token → Option (B20.C.Byte.Expr × List B20.C.Token)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.parseFunction",
+   "kind": "def",
+   "file": "formal/B20/C/ByteParser.lean",
+   "full_type": "List Char → Option B20.C.Byte.Function",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.parseFunctionTokens",
+   "kind": "def",
+   "file": "formal/B20/C/ByteParser.lean",
+   "full_type": "List B20.C.Token → Option B20.C.Byte.Function",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.parseStatement",
+   "kind": "def",
+   "file": "formal/B20/C/ByteParser.lean",
+   "full_type": "List B20.C.Token → Option (B20.C.Byte.Statement × List B20.C.Token)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.putByte",
+   "kind": "def",
+   "file": "formal/B20/C/ByteMemory.lean",
+   "full_type": "B20.C.Byte.Memory → B20.C.Byte.Pointer → B20.C.Byte.U8 → B20.C.Byte.Memory",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.put_frame",
+   "kind": "theorem",
+   "file": "formal/B20/C/ByteMemory.lean",
+   "full_type": "∀ (m : B20.C.Byte.Memory) (p q : B20.C.Byte.Pointer) (b : B20.C.Byte.U8),\n  q ≠ p → (B20.C.Byte.putByte m p b).contents q = m.contents q",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.C.Byte.put_preserves_read",
+   "kind": "theorem",
+   "file": "formal/B20/C/ByteMemory.lean",
+   "full_type": "∀ (m : B20.C.Byte.Memory) (p q : B20.C.Byte.Pointer) (b : B20.C.Byte.U8),\n  B20.C.Byte.ReadRegion m p → B20.C.Byte.ReadRegion (B20.C.Byte.putByte m q b) p",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.C.Byte.put_preserves_write",
+   "kind": "theorem",
+   "file": "formal/B20/C/ByteMemory.lean",
+   "full_type": "∀ (m : B20.C.Byte.Memory) (p q : B20.C.Byte.Pointer) (b : B20.C.Byte.U8),\n  B20.C.Byte.WriteRegion m p → B20.C.Byte.WriteRegion (B20.C.Byte.putByte m q b) p",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.C.Byte.readByte",
+   "kind": "def",
+   "file": "formal/B20/C/ByteMemory.lean",
+   "full_type": "B20.C.Byte.Memory → B20.C.Byte.Pointer → Option B20.C.Byte.U8",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.read_region_byte",
+   "kind": "theorem",
+   "file": "formal/B20/C/ByteMemory.lean",
+   "full_type": "∀ (m : B20.C.Byte.Memory) (p : B20.C.Byte.Pointer) (bytes : Fin 8 → B20.C.Byte.U8),\n  B20.C.Byte.ReadRegion m p →\n    B20.C.Byte.RegionBytes m p bytes → ∀ (i : Fin 8), B20.C.Byte.readByte m (p.add ↑i) = some (bytes i)",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.C.Byte.shiftTail",
+   "kind": "def",
+   "file": "formal/B20/C/ByteParser.lean",
+   "full_type": "ℕ → B20.C.Byte.Expr → B20.C.Byte.Parser",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.shifts",
+   "kind": "def",
+   "file": "formal/B20/C/ByteParser.lean",
+   "full_type": "B20.C.Byte.Parser → B20.C.Byte.Parser",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.step",
+   "kind": "def",
+   "file": "formal/B20/C/ByteMemory.lean",
+   "full_type": "B20.C.Byte.State → B20.C.Byte.Statement → Option B20.C.Byte.State",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.unary",
+   "kind": "def",
+   "file": "formal/B20/C/ByteParser.lean",
+   "full_type": "B20.C.Byte.Parser → ℕ → B20.C.Byte.Parser",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.updatePointer",
+   "kind": "def",
+   "file": "formal/B20/C/ByteMemory.lean",
+   "full_type": "B20.C.Byte.State → B20.C.Name → Bool × Option B20.C.Byte.Pointer → B20.C.Byte.State",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.writeByte",
+   "kind": "def",
+   "file": "formal/B20/C/ByteMemory.lean",
+   "full_type": "B20.C.Byte.Memory → B20.C.Byte.Pointer → B20.C.Byte.U8 → Option B20.C.Byte.Memory",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Byte.write_region_byte",
+   "kind": "theorem",
+   "file": "formal/B20/C/ByteMemory.lean",
+   "full_type": "∀ (m : B20.C.Byte.Memory) (p : B20.C.Byte.Pointer) (b : B20.C.Byte.U8),\n  B20.C.Byte.WriteRegion m p →\n    ∀ (i : Fin 8), B20.C.Byte.writeByte m (p.add ↑i) b = some (B20.C.Byte.putByte m (p.add ↑i) b)",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.C.CExec",
+   "kind": "def",
+   "file": "formal/B20/C/Syntax.lean",
+   "full_type": "B20.C.Function → List B20.C.Val → B20.C.Val → Prop",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.CExec_deterministic",
+   "kind": "theorem",
+   "file": "formal/B20/C/Syntax.lean",
+   "full_type": "∀ (f : B20.C.Function) (args : List B20.C.Val) (x y : B20.C.Val),\n  B20.C.CExec f args x → B20.C.CExec f args y → x = y",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.C.Scalar.CExec",
+   "kind": "def",
+   "file": "formal/B20/C/Scalar.lean",
+   "full_type": "B20.C.Scalar.Calls → B20.C.Scalar.Function → List B20.C.Val → B20.C.Val → Prop",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.CExec_deterministic",
+   "kind": "theorem",
+   "file": "formal/B20/C/Scalar.lean",
+   "full_type": "∀ (calls : B20.C.Scalar.Calls) (f : B20.C.Scalar.Function) (args : List B20.C.Val)\n  (x y : B20.C.Val), B20.C.Scalar.CExec calls f args x → B20.C.Scalar.CExec calls f args y → x = y",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.C.Scalar.assign",
+   "kind": "def",
+   "file": "formal/B20/C/Scalar.lean",
+   "full_type": "B20.C.Scalar.State → B20.C.Name → B20.C.Val → Option B20.C.Scalar.State",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.bindArgs",
+   "kind": "def",
+   "file": "formal/B20/C/Scalar.lean",
+   "full_type": "List (B20.C.Ty × B20.C.Name) → List B20.C.Val → Option B20.C.Scalar.State",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.body",
+   "kind": "def",
+   "file": "formal/B20/C/ScalarParser.lean",
+   "full_type": "ℕ → List B20.C.Token → Option (List B20.C.Scalar.Stmt × List B20.C.Token)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.declareMany",
+   "kind": "def",
+   "file": "formal/B20/C/Scalar.lean",
+   "full_type": "B20.C.Scalar.State → B20.C.Ty → List B20.C.Name → Option B20.C.Scalar.State",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.declareOne",
+   "kind": "def",
+   "file": "formal/B20/C/Scalar.lean",
+   "full_type": "B20.C.Scalar.State → B20.C.Ty → B20.C.Name → Option B20.C.Scalar.State",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.digitValue",
+   "kind": "def",
+   "file": "formal/B20/C/ScalarParser.lean",
+   "full_type": "Char → ℕ",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.emptyState",
+   "kind": "def",
+   "file": "formal/B20/C/Scalar.lean",
+   "full_type": "B20.C.Scalar.State",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.evalBody",
+   "kind": "def",
+   "file": "formal/B20/C/Scalar.lean",
+   "full_type": "B20.C.Scalar.Calls → B20.C.Ty → List B20.C.Scalar.Stmt → B20.C.Scalar.State → Option B20.C.Val",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.evalExpr",
+   "kind": "def",
+   "file": "formal/B20/C/Scalar.lean",
+   "full_type": "B20.C.Scalar.Calls → B20.C.Env → ℕ → B20.C.Scalar.Expr → Option B20.C.Val",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.execute",
+   "kind": "def",
+   "file": "formal/B20/C/Scalar.lean",
+   "full_type": "B20.C.Scalar.Calls → B20.C.Scalar.Function → List B20.C.Val → Option B20.C.Val",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.expression",
+   "kind": "def",
+   "file": "formal/B20/C/ScalarParser.lean",
+   "full_type": "ℕ → B20.C.Scalar.Parser",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.functionCore",
+   "kind": "def",
+   "file": "formal/B20/C/ScalarParser.lean",
+   "full_type": "List B20.C.Token → Option B20.C.Scalar.Function",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.hexDigit",
+   "kind": "def",
+   "file": "formal/B20/C/ScalarParser.lean",
+   "full_type": "Char → Bool",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.irsh_call",
+   "kind": "theorem",
+   "file": "formal/B20/C/ScalarCalls.lean",
+   "full_type": "∀ (x : BitVec 64) (n : Fin 64),\n  B20.C.Scalar.shiftCalls \"fpr_irsh\".toList [B20.C.Val.i64 x, B20.C.Val.i32 (BitVec.ofNat 32 ↑n)] =\n    some (B20.C.Val.i64 (x.sshiftRight ↑n))",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.C.Scalar.literalType",
+   "kind": "def",
+   "file": "formal/B20/C/ScalarParser.lean",
+   "full_type": "Bool → List Char → ℕ → Option B20.C.Ty",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.names",
+   "kind": "def",
+   "file": "formal/B20/C/ScalarParser.lean",
+   "full_type": "ℕ → List B20.C.Token → Option (List B20.C.Name × List B20.C.Token)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.number",
+   "kind": "def",
+   "file": "formal/B20/C/ScalarParser.lean",
+   "full_type": "B20.C.Token → Option B20.C.Scalar.Expr",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.opInfo",
+   "kind": "def",
+   "file": "formal/B20/C/ScalarParser.lean",
+   "full_type": "B20.C.Token → Option (B20.C.BinOp × ℕ)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.params",
+   "kind": "def",
+   "file": "formal/B20/C/ScalarParser.lean",
+   "full_type": "ℕ → List B20.C.Token → Option (List (B20.C.Ty × B20.C.Name) × List B20.C.Token)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.parseArgs",
+   "kind": "def",
+   "file": "formal/B20/C/ScalarParser.lean",
+   "full_type": "B20.C.Scalar.Parser → ℕ → List B20.C.Token → Option (List B20.C.Scalar.Expr × List B20.C.Token)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.parseExpr",
+   "kind": "def",
+   "file": "formal/B20/C/ScalarParser.lean",
+   "full_type": "ℕ → ℕ → List B20.C.Token → Option (B20.C.Scalar.Expr × List B20.C.Token)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.parseFunction",
+   "kind": "def",
+   "file": "formal/B20/C/ScalarParser.lean",
+   "full_type": "List Char → Option B20.C.Scalar.Function",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.parseFunctionTokens",
+   "kind": "def",
+   "file": "formal/B20/C/ScalarParser.lean",
+   "full_type": "List B20.C.Token → Option B20.C.Scalar.Function",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.parseMore",
+   "kind": "def",
+   "file": "formal/B20/C/ScalarParser.lean",
+   "full_type": "(ℕ → B20.C.Scalar.Parser) →\n  ℕ → ℕ → B20.C.Scalar.Expr → List B20.C.Token → Option (B20.C.Scalar.Expr × List B20.C.Token)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.parseUnary",
+   "kind": "def",
+   "file": "formal/B20/C/ScalarParser.lean",
+   "full_type": "B20.C.Scalar.Parser → ℕ → List B20.C.Token → Option (B20.C.Scalar.Expr × List B20.C.Token)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.shiftCalls",
+   "kind": "def",
+   "file": "formal/B20/C/ScalarCalls.lean",
+   "full_type": "B20.C.Name → List B20.C.Val → Option B20.C.Val",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.skipBlock",
+   "kind": "def",
+   "file": "formal/B20/C/ScalarParser.lean",
+   "full_type": "ℕ → List Char → Option (List Char)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.statement",
+   "kind": "def",
+   "file": "formal/B20/C/ScalarParser.lean",
+   "full_type": "List B20.C.Token → Option (B20.C.Scalar.Stmt × List B20.C.Token)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.step",
+   "kind": "def",
+   "file": "formal/B20/C/Scalar.lean",
+   "full_type": "B20.C.Scalar.Calls → B20.C.Scalar.State → B20.C.Scalar.Stmt → Option B20.C.Scalar.State",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.tokenize",
+   "kind": "def",
+   "file": "formal/B20/C/ScalarParser.lean",
+   "full_type": "ℕ → List Char → Option (List B20.C.Token)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.typeToken",
+   "kind": "def",
+   "file": "formal/B20/C/ScalarParser.lean",
+   "full_type": "B20.C.Token → Option B20.C.Ty",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.ulsh_call",
+   "kind": "theorem",
+   "file": "formal/B20/C/ScalarCalls.lean",
+   "full_type": "∀ (x : BitVec 64) (n : Fin 64),\n  B20.C.Scalar.shiftCalls \"fpr_ulsh\".toList [B20.C.Val.u64 x, B20.C.Val.i32 (BitVec.ofNat 32 ↑n)] =\n    some (B20.C.Val.u64 (x <<< ↑n))",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.C.Scalar.updateOp",
+   "kind": "def",
+   "file": "formal/B20/C/ScalarParser.lean",
+   "full_type": "B20.C.Token → Option B20.C.BinOp",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Scalar.ursh_call",
+   "kind": "theorem",
+   "file": "formal/B20/C/ScalarCalls.lean",
+   "full_type": "∀ (x : BitVec 64) (n : Fin 64),\n  B20.C.Scalar.shiftCalls \"fpr_ursh\".toList [B20.C.Val.u64 x, B20.C.Val.i32 (BitVec.ofNat 32 ↑n)] =\n    some (B20.C.Val.u64 (x >>> ↑n))",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.C.Val.integer",
+   "kind": "def",
+   "file": "formal/B20/C/Integer.lean",
+   "full_type": "B20.C.Val → ℤ",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.Val.ty",
+   "kind": "def",
+   "file": "formal/B20/C/Syntax.lean",
+   "full_type": "B20.C.Val → B20.C.Ty",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.assign",
+   "kind": "def",
+   "file": "formal/B20/C/Syntax.lean",
+   "full_type": "B20.C.Env → B20.C.Name → B20.C.Val → Option B20.C.Env",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.bin",
+   "kind": "def",
+   "file": "formal/B20/C/Syntax.lean",
+   "full_type": "B20.C.BinOp → B20.C.Val → B20.C.Val → Option B20.C.Val",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.bindArgs",
+   "kind": "def",
+   "file": "formal/B20/C/Syntax.lean",
+   "full_type": "List (B20.C.Ty × B20.C.Name) → List B20.C.Val → Option B20.C.Env",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.bitsOp",
+   "kind": "def",
+   "file": "formal/B20/C/Syntax.lean",
+   "full_type": "{n : ℕ} → B20.C.BinOp → BitVec n → BitVec n → Option (BitVec n)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.cast",
+   "kind": "def",
+   "file": "formal/B20/C/Syntax.lean",
+   "full_type": "B20.C.Ty → B20.C.Val → B20.C.Val",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.cast_u32_to_u64",
+   "kind": "theorem",
+   "file": "formal/B20/C/Integer.lean",
+   "full_type": "∀ (x : BitVec 32), (B20.C.cast B20.C.Ty.u64 (B20.C.Val.u32 x)).integer = ↑x.toNat",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.C.commonTy",
+   "kind": "def",
+   "file": "formal/B20/C/Syntax.lean",
+   "full_type": "B20.C.Ty → B20.C.Ty → B20.C.Ty",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.cond_neg_add64",
+   "kind": "theorem",
+   "file": "formal/B20/C/SignedArith.lean",
+   "full_type": "∀ (a s : BitVec 64),\n  s.toNat ≤ 1 →\n    a.toNat < 2 ^ 63 - 1 →\n      B20.C.signedBitsOp B20.C.BinOp.xor a (-s) = B20.C.bitsOp B20.C.BinOp.xor a (-s) ∧\n        ∃ r,\n          B20.C.signedBitsOp B20.C.BinOp.add (a ^^^ -s) s = B20.C.bitsOp B20.C.BinOp.add (a ^^^ -s) s ∧\n            r = (a ^^^ -s) + s ∧ r.toInt = if s.toNat = 0 then a.toInt else -a.toInt",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.C.cond_neg_add64_le",
+   "kind": "theorem",
+   "file": "formal/B20/C/SignedArith.lean",
+   "full_type": "∀ (a s : BitVec 64),\n  s.toNat ≤ 1 →\n    a.toNat ≤ 2 ^ 63 - 1 →\n      B20.C.signedBitsOp B20.C.BinOp.xor a (-s) = B20.C.bitsOp B20.C.BinOp.xor a (-s) ∧\n        ∃ r,\n          B20.C.signedBitsOp B20.C.BinOp.add (a ^^^ -s) s = B20.C.bitsOp B20.C.BinOp.add (a ^^^ -s) s ∧\n            r = (a ^^^ -s) + s ∧ r.toInt = if s.toNat = 0 then a.toInt else -a.toInt",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.C.digit",
+   "kind": "def",
+   "file": "formal/B20/C/Parser.lean",
+   "full_type": "Char → Bool",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.evalBody",
+   "kind": "def",
+   "file": "formal/B20/C/Syntax.lean",
+   "full_type": "B20.C.Ty → List B20.C.Stmt → B20.C.Env → Option B20.C.Val",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.evalExpr",
+   "kind": "def",
+   "file": "formal/B20/C/Syntax.lean",
+   "full_type": "B20.C.Env → B20.C.Expr → Option B20.C.Val",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.execute",
+   "kind": "def",
+   "file": "formal/B20/C/Syntax.lean",
+   "full_type": "B20.C.Function → List B20.C.Val → Option B20.C.Val",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.literalValue",
+   "kind": "def",
+   "file": "formal/B20/C/Integer.lean",
+   "full_type": "B20.C.Ty → ℕ → B20.C.Val",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.neg",
+   "kind": "def",
+   "file": "formal/B20/C/Syntax.lean",
+   "full_type": "B20.C.Val → Option B20.C.Val",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.neg_defined_of_ne",
+   "kind": "theorem",
+   "file": "formal/B20/C/SignedArith.lean",
+   "full_type": "∀ (x : BitVec 64),\n  x ≠ 9223372036854775808 → B20.C.neg (B20.C.Val.i64 x) = some (B20.C.Val.i64 (-x))",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.C.neg_u32",
+   "kind": "theorem",
+   "file": "formal/B20/C/SignedArith.lean",
+   "full_type": "∀ (x : BitVec 32), B20.C.neg (B20.C.Val.u32 x) = some (B20.C.Val.u32 (-x))",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.C.neg_u64",
+   "kind": "theorem",
+   "file": "formal/B20/C/SignedArith.lean",
+   "full_type": "∀ (x : BitVec 64), B20.C.neg (B20.C.Val.u64 x) = some (B20.C.Val.u64 (-x))",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.C.notBits",
+   "kind": "def",
+   "file": "formal/B20/C/Integer.lean",
+   "full_type": "B20.C.Val → B20.C.Val",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.opInfo",
+   "kind": "def",
+   "file": "formal/B20/C/Parser.lean",
+   "full_type": "B20.C.Token → Option (B20.C.BinOp × ℕ)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.parenthesized",
+   "kind": "def",
+   "file": "formal/B20/C/Parser.lean",
+   "full_type": "B20.C.Parser → List B20.C.Token → Option (B20.C.Expr × List B20.C.Token)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.parseExpr",
+   "kind": "def",
+   "file": "formal/B20/C/Parser.lean",
+   "full_type": "ℕ → B20.C.Parser",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.parseFunction",
+   "kind": "def",
+   "file": "formal/B20/C/Parser.lean",
+   "full_type": "List Char → Option B20.C.Function",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.parseFunctionTokens",
+   "kind": "def",
+   "file": "formal/B20/C/Parser.lean",
+   "full_type": "List B20.C.Token → Option B20.C.Function",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.parseLevel",
+   "kind": "def",
+   "file": "formal/B20/C/Parser.lean",
+   "full_type": "B20.C.Parser → ℕ → B20.C.Parser",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.parseParams",
+   "kind": "def",
+   "file": "formal/B20/C/Parser.lean",
+   "full_type": "ℕ → List B20.C.Token → Option (List (B20.C.Ty × B20.C.Name) × List B20.C.Token)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.parseStmts",
+   "kind": "def",
+   "file": "formal/B20/C/Parser.lean",
+   "full_type": "ℕ → List B20.C.Token → Option (List B20.C.Stmt × List B20.C.Token)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.parseTail",
+   "kind": "def",
+   "file": "formal/B20/C/Parser.lean",
+   "full_type": "B20.C.Parser → ℕ → ℕ → B20.C.Expr → B20.C.Parser",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.parseTy",
+   "kind": "def",
+   "file": "formal/B20/C/Parser.lean",
+   "full_type": "B20.C.Token → Option B20.C.Ty",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.parseUnary",
+   "kind": "def",
+   "file": "formal/B20/C/Parser.lean",
+   "full_type": "B20.C.Parser → ℕ → B20.C.Parser",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.safe_add32",
+   "kind": "theorem",
+   "file": "formal/B20/C/SignedArith.lean",
+   "full_type": "∀ (a b : BitVec 32),\n  -2 ^ 31 ≤ a.toInt + b.toInt ∧ a.toInt + b.toInt < 2 ^ 31 →\n    B20.C.signedBitsOp B20.C.BinOp.add a b = B20.C.bitsOp B20.C.BinOp.add a b ∧ (a + b).toInt = a.toInt + b.toInt",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.C.safe_add64",
+   "kind": "theorem",
+   "file": "formal/B20/C/SignedArith.lean",
+   "full_type": "∀ (a b : BitVec 64),\n  -2 ^ 63 ≤ a.toInt + b.toInt ∧ a.toInt + b.toInt < 2 ^ 63 →\n    B20.C.signedBitsOp B20.C.BinOp.add a b = B20.C.bitsOp B20.C.BinOp.add a b ∧ (a + b).toInt = a.toInt + b.toInt",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.C.safe_sub32",
+   "kind": "theorem",
+   "file": "formal/B20/C/SignedArith.lean",
+   "full_type": "∀ (a b : BitVec 32),\n  -2 ^ 31 ≤ a.toInt - b.toInt ∧ a.toInt - b.toInt < 2 ^ 31 →\n    B20.C.signedBitsOp B20.C.BinOp.sub a b = B20.C.bitsOp B20.C.BinOp.sub a b ∧ (a - b).toInt = a.toInt - b.toInt",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.C.safe_sub64",
+   "kind": "theorem",
+   "file": "formal/B20/C/SignedArith.lean",
+   "full_type": "∀ (a b : BitVec 64),\n  -2 ^ 63 ≤ a.toInt - b.toInt ∧ a.toInt - b.toInt < 2 ^ 63 →\n    B20.C.signedBitsOp B20.C.BinOp.sub a b = B20.C.bitsOp B20.C.BinOp.sub a b ∧ (a - b).toInt = a.toInt - b.toInt",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.C.shift",
+   "kind": "def",
+   "file": "formal/B20/C/Syntax.lean",
+   "full_type": "B20.C.BinOp → B20.C.Val → BitVec 32 → Option B20.C.Val",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.signedBitsOp",
+   "kind": "def",
+   "file": "formal/B20/C/Syntax.lean",
+   "full_type": "{n : ℕ} → B20.C.BinOp → BitVec n → BitVec n → Option (BitVec n)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.signedSafe",
+   "kind": "def",
+   "file": "formal/B20/C/Syntax.lean",
+   "full_type": "{n : ℕ} → B20.C.BinOp → BitVec n → BitVec n → Bool",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.signed_add32",
+   "kind": "theorem",
+   "file": "formal/B20/C/Integer.lean",
+   "full_type": "∀ (x y : BitVec 32),\n  -2 ^ 31 ≤ x.toInt + y.toInt ∧ x.toInt + y.toInt < 2 ^ 31 →\n    B20.C.bin B20.C.BinOp.add (B20.C.Val.i32 x) (B20.C.Val.i32 y) = some (B20.C.Val.i32 (x + y))",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.C.signed_add64",
+   "kind": "theorem",
+   "file": "formal/B20/C/Integer.lean",
+   "full_type": "∀ (x y : BitVec 64),\n  -2 ^ 63 ≤ x.toInt + y.toInt ∧ x.toInt + y.toInt < 2 ^ 63 →\n    B20.C.bin B20.C.BinOp.add (B20.C.Val.i64 x) (B20.C.Val.i64 y) = some (B20.C.Val.i64 (x + y))",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.C.signed_overflow_rejected",
+   "kind": "theorem",
+   "file": "formal/B20/C/Integer.lean",
+   "full_type": "B20.C.bin B20.C.BinOp.add (B20.C.Val.i32 2147483647) (B20.C.Val.i32 1) = none ∧\n  B20.C.bin B20.C.BinOp.sub (B20.C.Val.i64 9223372036854775808) (B20.C.Val.i64 1) = none",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.C.tokenize",
+   "kind": "def",
+   "file": "formal/B20/C/Parser.lean",
+   "full_type": "ℕ → List Char → Option (List B20.C.Token)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.unsigned_add32",
+   "kind": "theorem",
+   "file": "formal/B20/C/Integer.lean",
+   "full_type": "∀ (x y : BitVec 32),\n  B20.C.bin B20.C.BinOp.add (B20.C.Val.u32 x) (B20.C.Val.u32 y) = some (B20.C.Val.u32 (x + y))",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.C.unsigned_add64",
+   "kind": "theorem",
+   "file": "formal/B20/C/Integer.lean",
+   "full_type": "∀ (x y : BitVec 64),\n  B20.C.bin B20.C.BinOp.add (B20.C.Val.u64 x) (B20.C.Val.u64 y) = some (B20.C.Val.u64 (x + y))",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.C.update",
+   "kind": "def",
+   "file": "formal/B20/C/Syntax.lean",
+   "full_type": "B20.C.Env → B20.C.Name → B20.C.Val → B20.C.Env",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.wordChar",
+   "kind": "def",
+   "file": "formal/B20/C/Parser.lean",
+   "full_type": "Char → Bool",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.C.xor_neg_bridge",
+   "kind": "theorem",
+   "file": "formal/B20/C/SignedArith.lean",
+   "full_type": "∀ (a s : BitVec 64),\n  B20.C.signedBitsOp B20.C.BinOp.xor a (-s) = B20.C.bitsOp B20.C.BinOp.xor a (-s)",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Foundation.CExec_complete",
+   "kind": "theorem",
+   "file": "formal/B20/Foundation/CExec.lean",
+   "full_type": "∀ (p : B20.Foundation.CStmt) (s : B20.Foundation.State),\n  B20.Foundation.CExec p s (B20.Foundation.evalStmt p s)",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Foundation.CExec_deterministic",
+   "kind": "theorem",
+   "file": "formal/B20/Word/FoundationConverse.lean",
+   "full_type": "∀ {p : B20.Foundation.Program} {s : B20.Foundation.State}\n  {o₁ o₂ : B20.Foundation.Outcome}, B20.Foundation.CExec p s o₁ → B20.Foundation.CExec p s o₂ → o₁ = o₂",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Foundation.CExec_eval",
+   "kind": "theorem",
+   "file": "formal/B20/Word/FoundationConverse.lean",
+   "full_type": "∀ {p : B20.Foundation.Program} {s : B20.Foundation.State} {o : B20.Foundation.Outcome},\n  B20.Foundation.CExec p s o → B20.Foundation.evalStmt p s = o",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Foundation.CExec_iff_eval",
+   "kind": "theorem",
+   "file": "formal/B20/Word/FoundationConverse.lean",
+   "full_type": "∀ (p : B20.Foundation.Program) (s : B20.Foundation.State) (o : B20.Foundation.Outcome),\n  B20.Foundation.CExec p s o ↔ B20.Foundation.evalStmt p s = o",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Foundation.Memory.byteAt",
+   "kind": "def",
+   "file": "formal/B20/Foundation/Core.lean",
+   "full_type": "B20.Foundation.Memory → ℕ → ℕ",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Foundation.Memory.legalU64",
+   "kind": "def",
+   "file": "formal/B20/Foundation/Core.lean",
+   "full_type": "B20.Foundation.Memory → ℕ → Prop",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Foundation.Memory.readU64",
+   "kind": "def",
+   "file": "formal/B20/Foundation/Core.lean",
+   "full_type": "B20.Foundation.Memory → ℕ → Option B20.Foundation.Word64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Foundation.Memory.writeU64",
+   "kind": "def",
+   "file": "formal/B20/Foundation/Core.lean",
+   "full_type": "B20.Foundation.Memory → ℕ → B20.Foundation.Word64 → B20.Foundation.Memory",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Foundation.ModelStmt",
+   "kind": "def",
+   "file": "formal/B20/Foundation/CExec.lean",
+   "full_type": "Type",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Foundation.Outcome.abort_ne_fault",
+   "kind": "theorem",
+   "file": "formal/B20/Foundation/CExec.lean",
+   "full_type": "∀ {r r' : String},\n  B20.Foundation.Outcome.abort r ≠ B20.Foundation.Outcome.fault r'",
+   "axioms": "[]"
+  },
+  {
+   "name": "B20.Foundation.Outcome.abort_ne_nonreturn",
+   "kind": "theorem",
+   "file": "formal/B20/Foundation/CExec.lean",
+   "full_type": "∀ {r r' : String},\n  B20.Foundation.Outcome.abort r ≠ B20.Foundation.Outcome.nonreturn r'",
+   "axioms": "[]"
+  },
+  {
+   "name": "B20.Foundation.Outcome.nonreturn_ne_fault",
+   "kind": "theorem",
+   "file": "formal/B20/Foundation/CExec.lean",
+   "full_type": "∀ {r r' : String},\n  B20.Foundation.Outcome.nonreturn r ≠ B20.Foundation.Outcome.fault r'",
+   "axioms": "[]"
+  },
+  {
+   "name": "B20.Foundation.Outcome.returned_ne_stuck",
+   "kind": "theorem",
+   "file": "formal/B20/Foundation/CExec.lean",
+   "full_type": "∀ {r : Option B20.Foundation.Word64} {s : B20.Foundation.State}\n  {t : String}, B20.Foundation.Outcome.returned r s ≠ B20.Foundation.Outcome.stuck t",
+   "axioms": "[]"
+  },
+  {
+   "name": "B20.Foundation.Outcome.stuck_ne_abort",
+   "kind": "theorem",
+   "file": "formal/B20/Foundation/CExec.lean",
+   "full_type": "∀ {r r' : String},\n  B20.Foundation.Outcome.stuck r ≠ B20.Foundation.Outcome.abort r'",
+   "axioms": "[]"
+  },
+  {
+   "name": "B20.Foundation.Outcome.stuck_ne_fault",
+   "kind": "theorem",
+   "file": "formal/B20/Foundation/CExec.lean",
+   "full_type": "∀ {r r' : String},\n  B20.Foundation.Outcome.stuck r ≠ B20.Foundation.Outcome.fault r'",
+   "axioms": "[]"
+  },
+  {
+   "name": "B20.Foundation.Outcome.stuck_ne_nonreturn",
+   "kind": "theorem",
+   "file": "formal/B20/Foundation/CExec.lean",
+   "full_type": "∀ {r r' : String},\n  B20.Foundation.Outcome.stuck r ≠ B20.Foundation.Outcome.nonreturn r'",
+   "axioms": "[]"
+  },
+  {
+   "name": "B20.Foundation.Region.contains",
+   "kind": "def",
+   "file": "formal/B20/Foundation/Core.lean",
+   "full_type": "B20.Foundation.Region → ℕ → Prop",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Foundation.Region.legal",
+   "kind": "def",
+   "file": "formal/B20/Foundation/Core.lean",
+   "full_type": "B20.Foundation.Region → B20.Foundation.Memory → Prop",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Foundation.SpecExec",
+   "kind": "def",
+   "file": "formal/B20/Foundation/CExec.lean",
+   "full_type": "B20.Foundation.ModelStmt → B20.Foundation.State → B20.Foundation.Outcome → Prop",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Foundation.State.loadLocal",
+   "kind": "def",
+   "file": "formal/B20/Foundation/Core.lean",
+   "full_type": "B20.Foundation.State → String → Option B20.Foundation.Word64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Foundation.compile",
+   "kind": "def",
+   "file": "formal/B20/Foundation/CExec.lean",
+   "full_type": "B20.Foundation.CStmt → B20.Foundation.ModelStmt",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Foundation.compile_refines",
+   "kind": "theorem",
+   "file": "formal/B20/Foundation/CExec.lean",
+   "full_type": "∀ (p : B20.Foundation.CStmt) (s : B20.Foundation.State) (o : B20.Foundation.Outcome),\n  B20.Foundation.CExec p s o ↔ B20.Foundation.SpecExec (B20.Foundation.compile p) s o",
+   "axioms": "[]"
+  },
+  {
+   "name": "B20.Foundation.defaultABI",
+   "kind": "def",
+   "file": "formal/B20/Foundation/Core.lean",
+   "full_type": "B20.Foundation.ABI",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Foundation.evalExpr",
+   "kind": "def",
+   "file": "formal/B20/Foundation/CExec.lean",
+   "full_type": "B20.Foundation.State → B20.Foundation.CExpr → Option B20.Foundation.Word64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Foundation.evalStmt",
+   "kind": "def",
+   "file": "formal/B20/Foundation/CExec.lean",
+   "full_type": "B20.Foundation.CStmt → B20.Foundation.State → B20.Foundation.Outcome",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Foundation.evalStmt_sound",
+   "kind": "theorem",
+   "file": "formal/B20/Foundation/CExec.lean",
+   "full_type": "∀ (p : B20.Foundation.CStmt) (s : B20.Foundation.State),\n  B20.Foundation.CExec p s (B20.Foundation.evalStmt p s)",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Foundation.evalStmt_sound_gen",
+   "kind": "theorem",
+   "file": "formal/B20/Foundation/CExec.lean",
+   "full_type": "∀ (p : B20.Foundation.CStmt) (s : B20.Foundation.State)\n  (o : B20.Foundation.Outcome), B20.Foundation.evalStmt p s = o → B20.Foundation.CExec p s o",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Foundation.initState",
+   "kind": "def",
+   "file": "formal/B20/Foundation/Core.lean",
+   "full_type": "B20.Foundation.State",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Foundation.u64Add",
+   "kind": "def",
+   "file": "formal/B20/Foundation/Core.lean",
+   "full_type": "B20.Foundation.Word64 → B20.Foundation.Word64 → B20.Foundation.Word64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Foundation.u64Add_toNat",
+   "kind": "theorem",
+   "file": "formal/B20/Foundation/Core.lean",
+   "full_type": "∀ (x y : B20.Foundation.Word64),\n  BitVec.toNat (B20.Foundation.u64Add x y) = (BitVec.toNat x + BitVec.toNat y) % 2 ^ 64",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Foundation.u64And",
+   "kind": "def",
+   "file": "formal/B20/Foundation/Core.lean",
+   "full_type": "B20.Foundation.Word64 → B20.Foundation.Word64 → B20.Foundation.Word64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Foundation.u64Neg",
+   "kind": "def",
+   "file": "formal/B20/Foundation/Core.lean",
+   "full_type": "B20.Foundation.Word64 → B20.Foundation.Word64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Foundation.u64ShiftRight",
+   "kind": "def",
+   "file": "formal/B20/Foundation/Core.lean",
+   "full_type": "B20.Foundation.Word64 → ℕ → B20.Foundation.Word64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Foundation.u64Xor",
+   "kind": "def",
+   "file": "formal/B20/Foundation/Core.lean",
+   "full_type": "B20.Foundation.Word64 → B20.Foundation.Word64 → B20.Foundation.Word64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.AddCallObligation",
+   "kind": "def",
+   "file": "formal/B20/Fpr/Domain.lean",
+   "full_type": "BitVec 64 → BitVec 64 → BitVec 64 → Prop",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.DivObligation",
+   "kind": "def",
+   "file": "formal/B20/Fpr/Domain.lean",
+   "full_type": "BitVec 64 → BitVec 64 → BitVec 64 → Prop",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.IrshDomain",
+   "kind": "def",
+   "file": "formal/B20/Fpr/Domain.lean",
+   "full_type": "BitVec 64 → BitVec 32 → Prop",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.MulObligation",
+   "kind": "def",
+   "file": "formal/B20/Fpr/Domain.lean",
+   "full_type": "BitVec 64 → BitVec 64 → BitVec 64 → Prop",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.Parsed.doubleProgram",
+   "kind": "def",
+   "file": "formal/B20/Fpr/ParsedPrograms.lean",
+   "full_type": "B20.C.Scalar.Function",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.Parsed.double_lex",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "B20.C.Scalar.tokenize (B20.Pinned.doubleChars.length + 1) B20.Pinned.doubleChars =\n  some B20.Pinned.doubleTokens",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.double_parses",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "B20.C.Scalar.parseFunction (B20.Fpr.Parsed.slice 177 6) =\n  some B20.Fpr.Parsed.doubleProgram",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.double_slice",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "B20.Fpr.Parsed.slice 177 6 = B20.Pinned.doubleChars",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.double_syntax",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "B20.C.Scalar.parseFunctionTokens B20.Pinned.doubleTokens =\n  some B20.Fpr.Parsed.doubleProgram",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.floorProgram",
+   "kind": "def",
+   "file": "formal/B20/Fpr/ParsedPrograms.lean",
+   "full_type": "B20.C.Scalar.Function",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.Parsed.floor_lex",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "B20.C.Scalar.tokenize (B20.Pinned.floorChars.length + 1) B20.Pinned.floorChars =\n  some B20.Pinned.floorTokens",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.floor_parses",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "B20.C.Scalar.parseFunction (B20.Fpr.Parsed.slice 116 19) =\n  some B20.Fpr.Parsed.floorProgram",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.floor_slice",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "B20.Fpr.Parsed.slice 116 19 = B20.Pinned.floorChars",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.floor_syntax",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "B20.C.Scalar.parseFunctionTokens B20.Pinned.floorTokens = some B20.Fpr.Parsed.floorProgram",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.halfProgram",
+   "kind": "def",
+   "file": "formal/B20/Fpr/ParsedPrograms.lean",
+   "full_type": "B20.C.Scalar.Function",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.Parsed.half_lex",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "B20.C.Scalar.tokenize (B20.Pinned.halfChars.length + 1) B20.Pinned.halfChars =\n  some B20.Pinned.halfTokens",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.half_parses",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "B20.C.Scalar.parseFunction (B20.Fpr.Parsed.slice 166 10) = some B20.Fpr.Parsed.halfProgram",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.half_slice",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "B20.Fpr.Parsed.slice 166 10 = B20.Pinned.halfChars",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.half_syntax",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "B20.C.Scalar.parseFunctionTokens B20.Pinned.halfTokens = some B20.Fpr.Parsed.halfProgram",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.negProgram",
+   "kind": "def",
+   "file": "formal/B20/Fpr/ParsedPrograms.lean",
+   "full_type": "B20.C.Scalar.Function",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.Parsed.neg_lex",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "B20.C.Scalar.tokenize (B20.Pinned.negChars.length + 1) B20.Pinned.negChars =\n  some B20.Pinned.negTokens",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.neg_parses",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "B20.C.Scalar.parseFunction (B20.Fpr.Parsed.slice 159 6) = some B20.Fpr.Parsed.negProgram",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.neg_slice",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "B20.Fpr.Parsed.slice 159 6 = B20.Pinned.negChars",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.neg_syntax",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "B20.C.Scalar.parseFunctionTokens B20.Pinned.negTokens = some B20.Fpr.Parsed.negProgram",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.packProgram",
+   "kind": "def",
+   "file": "formal/B20/Fpr/ParsedPrograms.lean",
+   "full_type": "B20.C.Scalar.Function",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.Parsed.pack_lex",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "B20.C.Scalar.tokenize (B20.Pinned.packChars.length + 1) B20.Pinned.packChars =\n  some B20.Pinned.packTokens",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.pack_parses",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "B20.C.Scalar.parseFunction (B20.Fpr.Parsed.slice 38 17) = some B20.Fpr.Parsed.packProgram",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.pack_slice",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "B20.Fpr.Parsed.slice 38 17 = B20.Pinned.packChars",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.pack_syntax",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "B20.C.Scalar.parseFunctionTokens B20.Pinned.packTokens = some B20.Fpr.Parsed.packProgram",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.rintProgram",
+   "kind": "def",
+   "file": "formal/B20/Fpr/ParsedPrograms.lean",
+   "full_type": "B20.C.Scalar.Function",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.Parsed.rint_lex",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "B20.C.Scalar.tokenize (B20.Pinned.rintChars.length + 1) B20.Pinned.rintChars =\n  some B20.Pinned.rintTokens",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.rint_parses",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "B20.C.Scalar.parseFunction (B20.Fpr.Parsed.slice 97 18) = some B20.Fpr.Parsed.rintProgram",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.rint_slice",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "B20.Fpr.Parsed.slice 97 18 = B20.Pinned.rintChars",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.rint_syntax",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "B20.C.Scalar.parseFunctionTokens B20.Pinned.rintTokens = some B20.Fpr.Parsed.rintProgram",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.slice",
+   "kind": "def",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "ℕ → ℕ → List Char",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.Parsed.subProgram",
+   "kind": "def",
+   "file": "formal/B20/Fpr/ParsedPrograms.lean",
+   "full_type": "B20.C.Scalar.Function",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.Parsed.sub_lex",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "B20.C.Scalar.tokenize (B20.Pinned.subChars.length + 1) B20.Pinned.subChars =\n  some B20.Pinned.subTokens",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.sub_parses",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "B20.C.Scalar.parseFunction (B20.Fpr.Parsed.slice 152 6) = some B20.Fpr.Parsed.subProgram",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.sub_slice",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "B20.Fpr.Parsed.slice 152 6 = B20.Pinned.subChars",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.sub_syntax",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/SourceBinding.lean",
+   "full_type": "B20.C.Scalar.parseFunctionTokens B20.Pinned.subTokens = some B20.Fpr.Parsed.subProgram",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.ShiftCountDomain",
+   "kind": "def",
+   "file": "formal/B20/Fpr/Domain.lean",
+   "full_type": "BitVec 32 → Prop",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.SqrtObligation",
+   "kind": "def",
+   "file": "formal/B20/Fpr/Domain.lean",
+   "full_type": "BitVec 64 → BitVec 64 → Prop",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.UlshDomain",
+   "kind": "def",
+   "file": "formal/B20/Fpr/Domain.lean",
+   "full_type": "BitVec 64 → BitVec 32 → Prop",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.UrshDomain",
+   "kind": "def",
+   "file": "formal/B20/Fpr/Domain.lean",
+   "full_type": "BitVec 64 → BitVec 32 → Prop",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.cast_i32_1_u64",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "B20.C.cast B20.C.Ty.u64 (B20.C.Val.i32 1) = B20.C.Val.u64 1",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Fpr.cast_i32_63_u64",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "B20.C.cast B20.C.Ty.u64 (B20.C.Val.i32 63) = B20.C.Val.u64 63",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Fpr.doubleSpec",
+   "kind": "def",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "BitVec 64 → BitVec 64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.double_execution",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (x : BitVec 64),\n  B20.C.Scalar.execute B20.C.Scalar.shiftCalls B20.Fpr.Parsed.doubleProgram [B20.C.Val.u64 x] =\n    some (B20.C.Val.u64 (B20.Fpr.doubleSpec x))",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.e_toNat_of_range",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (e : BitVec 32),\n  13 ≤ e.toInt ∧ e.toInt ≤ 1085 → ↑e.toNat = e.toInt ∧ 13 ≤ e.toNat ∧ e.toNat ≤ 1085",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.floorDomain",
+   "kind": "def",
+   "file": "formal/B20/Fpr/FloorExec.lean",
+   "full_type": "BitVec 64 → Prop",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.floorSpec",
+   "kind": "def",
+   "file": "formal/B20/Fpr/FloorExec.lean",
+   "full_type": "BitVec 64 → BitVec 64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.floor_execution",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/FloorExec.lean",
+   "full_type": "∀ (x : BitVec 64),\n  B20.Fpr.floorDomain x →\n    B20.C.Scalar.execute B20.C.Scalar.shiftCalls B20.Fpr.Parsed.floorProgram [B20.C.Val.u64 x] =\n      some (B20.C.Val.i64 (B20.Fpr.floorSpec x))",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.floor_irsh_domain",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Domain.lean",
+   "full_type": "∀ (x : BitVec 64), B20.Fpr.IrshDomain (B20.Fpr.floor_xi0 x) (B20.Fpr.rint_e2 x)",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.floor_mask",
+   "kind": "def",
+   "file": "formal/B20/Fpr/FloorExec.lean",
+   "full_type": "BitVec 32 → BitVec 64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.floor_mask_all",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/FloorExec.lean",
+   "full_type": "∀ (cc : BitVec 32),\n  64 ≤ cc.toNat ∧ cc.toNat < 2 ^ 31 → B20.Fpr.floor_mask cc = BitVec.allOnes 64",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.floor_mask_fold",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/FloorExec.lean",
+   "full_type": "∀ (cc : BitVec 32), -BitVec.setWidth 64 ((63#32 - cc) >>> 31) = B20.Fpr.floor_mask cc",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Fpr.floor_mask_zero",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/FloorExec.lean",
+   "full_type": "∀ (cc : BitVec 32), cc.toNat ≤ 63 → B20.Fpr.floor_mask cc = 0#64",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.floor_sub63_safe",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/FloorExec.lean",
+   "full_type": "∀ (cc : BitVec 32),\n  13 ≤ cc.toInt ∧ cc.toInt ≤ 1085 →\n    B20.C.signedBitsOp B20.C.BinOp.sub (63#32) cc = B20.C.bitsOp B20.C.BinOp.sub (63#32) cc ∧\n      (63#32 - cc).toInt = 63 - cc.toInt",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.floor_t",
+   "kind": "def",
+   "file": "formal/B20/Fpr/FloorExec.lean",
+   "full_type": "BitVec 64 → BitVec 64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.floor_t_range",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/FloorExec.lean",
+   "full_type": "∀ (x : BitVec 64), (B20.Fpr.floor_t x).toNat ≤ 1",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.floor_xi0",
+   "kind": "def",
+   "file": "formal/B20/Fpr/FloorExec.lean",
+   "full_type": "BitVec 64 → BitVec 64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.floor_xi1",
+   "kind": "def",
+   "file": "formal/B20/Fpr/FloorExec.lean",
+   "full_type": "BitVec 64 → BitVec 64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.halfSpec",
+   "kind": "def",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "BitVec 64 → BitVec 64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.half_execution",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (x : BitVec 64),\n  B20.C.Scalar.execute B20.C.Scalar.shiftCalls B20.Fpr.Parsed.halfProgram [B20.C.Val.u64 x] =\n    some (B20.C.Val.u64 (B20.Fpr.halfSpec x))",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.irsh_call_of_toNat",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/FloorExec.lean",
+   "full_type": "∀ (a : BitVec 64) (c : BitVec 32),\n  c.toNat < 64 →\n    B20.C.Scalar.shiftCalls \"fpr_irsh\".toList [B20.C.Val.i64 a, B20.C.Val.i32 c] =\n      some (B20.C.Val.i64 (a.sshiftRight c.toNat))",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.lit1085_int",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "(1085#32).toInt = 1085",
+   "axioms": "[]"
+  },
+  {
+   "name": "B20.Fpr.lit_allOnes64",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/RintExec.lean",
+   "full_type": "18446744073709551615#64 = BitVec.allOnes 64",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Fpr.m0_lt",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (x : BitVec 64), (B20.Fpr.rint_m0 x).toNat < 2 ^ 63",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.negSpec",
+   "kind": "def",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "BitVec 64 → BitVec 64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.neg_execution",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (x : BitVec 64),\n  B20.C.Scalar.execute B20.C.Scalar.shiftCalls B20.Fpr.Parsed.negProgram [B20.C.Val.u64 x] =\n    some (B20.C.Val.u64 (B20.Fpr.negSpec x))",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.packDomain",
+   "kind": "def",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "BitVec 32 → BitVec 32 → Prop",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.packSpec",
+   "kind": "def",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "BitVec 32 → BitVec 32 → BitVec 64 → BitVec 64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.pack_add_bits",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (e : BitVec 32),\n  -2 ^ 31 ≤ e.toInt + 1076 ∧ e.toInt + 1076 < 2 ^ 31 →\n    B20.C.signedBitsOp B20.C.BinOp.add e 1076#32 = B20.C.bitsOp B20.C.BinOp.add e 1076#32",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.pack_add_safe",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (e : BitVec 32),\n  -2 ^ 31 ≤ e.toInt + 1076 ∧ e.toInt + 1076 < 2 ^ 31 → B20.C.signedSafe B20.C.BinOp.add e 1076#32 = true",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.pack_and7_lt",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (n : ℕ), n &&& 7 < 32",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.pack_execution",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (s e : BitVec 32) (m : BitVec 64),\n  B20.Fpr.packDomain s e →\n    B20.C.Scalar.execute B20.C.Scalar.shiftCalls B20.Fpr.Parsed.packProgram\n        [B20.C.Val.i32 s, B20.C.Val.i32 e, B20.C.Val.u64 m] =\n      some (B20.C.Val.u64 (B20.Fpr.packSpec s e m))",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.pack_f_range",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (x : BitVec 64), (BitVec.setWidth 32 x &&& 7#32).toNat < 32",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.pack_neg_defined",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (m : BitVec 64),\n  B20.C.neg (B20.C.Val.i32 (BitVec.setWidth 32 (m >>> 54))) = some (B20.C.Val.i32 (-BitVec.setWidth 32 (m >>> 54)))",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.pack_t_range",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (m : BitVec 64), (BitVec.setWidth 32 (m >>> 54)).toNat < 2 ^ 31",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.parsedCallSites",
+   "kind": "def",
+   "file": "formal/B20/Fpr/Domain.lean",
+   "full_type": "List (B20.C.Name × B20.C.Name)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.rintDomain",
+   "kind": "def",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "BitVec 64 → Prop",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.rintSpec",
+   "kind": "def",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "BitVec 64 → BitVec 64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.rint_d",
+   "kind": "def",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "BitVec 64 → BitVec 64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.rint_dd",
+   "kind": "def",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "BitVec 64 → BitVec 32",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.rint_e",
+   "kind": "def",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "BitVec 64 → BitVec 32",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.rint_e2",
+   "kind": "def",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "BitVec 64 → BitVec 32",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.rint_e2_range",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (e : BitVec 32), (e &&& 63#32).toNat < 64 ∧ 0 ≤ (e &&& 63#32).toInt ∧ (e &&& 63#32).toInt ≤ 63",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_e_int",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (x : BitVec 64),\n  (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toInt =\n      ↑1085 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32).toInt ∧\n    -↑962 ≤ (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toInt ∧\n      (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toInt ≤ 1085",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_e_nat",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (x : BitVec 64),\n  B20.Fpr.rintDomain x →\n    ↑(1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toNat =\n        (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toInt ∧\n      13 ≤ (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toNat ∧\n        (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toNat ≤ 1085",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_execution",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/RintExec.lean",
+   "full_type": "∀ (x : BitVec 64),\n  B20.Fpr.rintDomain x →\n    B20.C.Scalar.execute B20.C.Scalar.shiftCalls B20.Fpr.Parsed.rintProgram [B20.C.Val.u64 x] =\n      some (B20.C.Val.i64 (B20.Fpr.rintSpec x))",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_f",
+   "kind": "def",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "BitVec 64 → BitVec 32",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.rint_f_range",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (d : BitVec 64) (dd : BitVec 32),\n  (BitVec.setWidth 32 (d >>> 61) ||| (dd ||| -dd) >>> 31).toNat < 32",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_m0",
+   "kind": "def",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "BitVec 64 → BitVec 64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.rint_m1",
+   "kind": "def",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "BitVec 64 → BitVec 64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.rint_m2",
+   "kind": "def",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "BitVec 64 → BitVec 64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.rint_m2_big",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (x : BitVec 64),\n  B20.Fpr.rintDomain x → ¬(B20.Fpr.rint_e x).toNat < 64 → (B20.Fpr.rint_m2 x).toNat < 2 ^ 63 - 1",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_m2_small",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (x : BitVec 64),\n  B20.Fpr.rintDomain x → (B20.Fpr.rint_e x).toNat < 64 → (B20.Fpr.rint_m2 x).toNat < 2 ^ 63 - 1",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_mask",
+   "kind": "def",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "BitVec 32 → BitVec 64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.rint_mask_all",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (e : BitVec 32), e.toNat < 64 → B20.Fpr.rint_mask e = BitVec.allOnes 64",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_mask_zero",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (e : BitVec 32), 64 ≤ e.toNat ∧ e.toNat < 2 ^ 31 → B20.Fpr.rint_mask e = 0#64",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_s",
+   "kind": "def",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "BitVec 64 → BitVec 32",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.rint_s_range",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (x : BitVec 64), (BitVec.setWidth 32 (x >>> 63)).toNat ≤ 1",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_sub63_count",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (e2 : BitVec 32), 0 ≤ e2.toInt ∧ e2.toInt ≤ 63 → (63#32 - e2).toNat < 64",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_sub63_safe",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (e2 : BitVec 32),\n  0 ≤ e2.toInt ∧ e2.toInt ≤ 63 →\n    B20.C.signedBitsOp B20.C.BinOp.sub (63#32) e2 = B20.C.bitsOp B20.C.BinOp.sub (63#32) e2 ∧\n      (63#32 - e2).toInt = 63 - e2.toInt",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_ulsh_domain",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Domain.lean",
+   "full_type": "∀ (x : BitVec 64),\n  0 ≤ (B20.Fpr.rint_e2 x).toInt ∧ (B20.Fpr.rint_e2 x).toInt ≤ 63 →\n    B20.Fpr.UlshDomain (B20.Fpr.rint_m1 x) (63#32 - B20.Fpr.rint_e2 x)",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_ursh_domain",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Domain.lean",
+   "full_type": "∀ (x : BitVec 64), B20.Fpr.UrshDomain (B20.Fpr.rint_m1 x) (B20.Fpr.rint_e2 x)",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_y",
+   "kind": "def",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "BitVec 64 → BitVec 32",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Fpr.rint_y_int",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (x : BitVec 64),\n  ↑0 ≤ (BitVec.setWidth 32 (x >>> 52) &&& 2047#32).toInt ∧ (BitVec.setWidth 32 (x >>> 52) &&& 2047#32).toInt ≤ 2047",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_y_range",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (x : BitVec 64), (BitVec.setWidth 32 (x >>> 52) &&& 2047#32).toNat < 2048",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.signedBits_band32",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (x y : BitVec 32),\n  B20.C.signedBitsOp B20.C.BinOp.band x y = B20.C.bitsOp B20.C.BinOp.band x y",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.signedBits_band64",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (x y : BitVec 64),\n  B20.C.signedBitsOp B20.C.BinOp.band x y = B20.C.bitsOp B20.C.BinOp.band x y",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.signedBits_xor64",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (x y : BitVec 64),\n  B20.C.signedBitsOp B20.C.BinOp.xor x y = B20.C.bitsOp B20.C.BinOp.xor x y",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.sub_execution",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (calls : B20.C.Scalar.Calls) (x y w : BitVec 64),\n  calls \"fpr_add\".toList [B20.C.Val.u64 x, B20.C.Val.u64 (y ^^^ 1 <<< 63)] = some (B20.C.Val.u64 w) →\n    B20.C.Scalar.execute calls B20.Fpr.Parsed.subProgram [B20.C.Val.u64 x, B20.C.Val.u64 y] = some (B20.C.Val.u64 w)",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.sub_refines_via_add_obligation",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Domain.lean",
+   "full_type": "∀ (x y w : BitVec 64),\n  B20.Fpr.AddCallObligation x (y ^^^ 1 <<< 63) w →\n    B20.C.Scalar.execute B20.C.Scalar.shiftCalls B20.Fpr.Parsed.subProgram [B20.C.Val.u64 x, B20.C.Val.u64 y] =\n      some (B20.C.Val.u64 w)",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.ulsh_call_of_toNat",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (m1 : BitVec 64) (c : BitVec 32),\n  c.toNat < 64 →\n    B20.C.Scalar.shiftCalls \"fpr_ulsh\".toList [B20.C.Val.u64 m1, B20.C.Val.i32 c] =\n      some (B20.C.Val.u64 (m1 <<< c.toNat))",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.ursh_call_of_toNat",
+   "kind": "theorem",
+   "file": "formal/B20/Fpr/Spec.lean",
+   "full_type": "∀ (m1 : BitVec 64) (c : BitVec 32),\n  c.toNat < 64 →\n    B20.C.Scalar.shiftCalls \"fpr_ursh\".toList [B20.C.Val.u64 m1, B20.C.Val.i32 c] =\n      some (B20.C.Val.u64 (m1 >>> c.toNat))",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Pinned.dec64leChars",
+   "kind": "def",
+   "file": "formal/B20/Pinned/LittleEndian.lean",
+   "full_type": "List Char",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.dec64leLines",
+   "kind": "def",
+   "file": "formal/B20/Pinned/LittleEndian.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.dec64leTokens",
+   "kind": "def",
+   "file": "formal/B20/Pinned/LittleEndian.lean",
+   "full_type": "List (List Char)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.doubleChars",
+   "kind": "def",
+   "file": "formal/B20/Pinned/ScalarSlices.lean",
+   "full_type": "List Char",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.doubleLines",
+   "kind": "def",
+   "file": "formal/B20/Pinned/ScalarSlices.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.doubleTokens",
+   "kind": "def",
+   "file": "formal/B20/Pinned/ScalarSlices.lean",
+   "full_type": "List (List Char)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.enc64leChars",
+   "kind": "def",
+   "file": "formal/B20/Pinned/LittleEndian.lean",
+   "full_type": "List Char",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.enc64leLines",
+   "kind": "def",
+   "file": "formal/B20/Pinned/LittleEndian.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.enc64leTokens",
+   "kind": "def",
+   "file": "formal/B20/Pinned/LittleEndian.lean",
+   "full_type": "List (List Char)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.floorChars",
+   "kind": "def",
+   "file": "formal/B20/Pinned/ScalarSlices.lean",
+   "full_type": "List Char",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.floorLines",
+   "kind": "def",
+   "file": "formal/B20/Pinned/ScalarSlices.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.floorTokens",
+   "kind": "def",
+   "file": "formal/B20/Pinned/ScalarSlices.lean",
+   "full_type": "List (List Char)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.halfChars",
+   "kind": "def",
+   "file": "formal/B20/Pinned/ScalarSlices.lean",
+   "full_type": "List Char",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.halfLines",
+   "kind": "def",
+   "file": "formal/B20/Pinned/ScalarSlices.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.halfTokens",
+   "kind": "def",
+   "file": "formal/B20/Pinned/ScalarSlices.lean",
+   "full_type": "List (List Char)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk0",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk1",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk10",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk11",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk12",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk13",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk14",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk15",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk16",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk17",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk18",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk19",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk2",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk20",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk21",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk22",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk23",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk24",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk25",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk26",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk27",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk28",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk29",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk3",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk30",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk31",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk32",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk33",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk34",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk35",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk36",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk37",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk38",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk39",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk4",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk40",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk41",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk42",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk43",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk44",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk45",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk46",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk47",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk48",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk49",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk5",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk50",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk51",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk52",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk53",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk54",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk55",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk56",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk57",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk58",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk59",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk6",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk60",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk61",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk62",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk63",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk64",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk65",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk66",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk67",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk68",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk69",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk7",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk70",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk8",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerChunk9",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.headerLines",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Header.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.irshChars",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Slices.lean",
+   "full_type": "List Char",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.irshTokens",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Slices.lean",
+   "full_type": "List (List Char)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.negChars",
+   "kind": "def",
+   "file": "formal/B20/Pinned/ScalarSlices.lean",
+   "full_type": "List Char",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.negLines",
+   "kind": "def",
+   "file": "formal/B20/Pinned/ScalarSlices.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.negTokens",
+   "kind": "def",
+   "file": "formal/B20/Pinned/ScalarSlices.lean",
+   "full_type": "List (List Char)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.packChars",
+   "kind": "def",
+   "file": "formal/B20/Pinned/ScalarSlices.lean",
+   "full_type": "List Char",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.packLines",
+   "kind": "def",
+   "file": "formal/B20/Pinned/ScalarSlices.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.packTokens",
+   "kind": "def",
+   "file": "formal/B20/Pinned/ScalarSlices.lean",
+   "full_type": "List (List Char)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.rintChars",
+   "kind": "def",
+   "file": "formal/B20/Pinned/ScalarSlices.lean",
+   "full_type": "List Char",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.rintLines",
+   "kind": "def",
+   "file": "formal/B20/Pinned/ScalarSlices.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.rintTokens",
+   "kind": "def",
+   "file": "formal/B20/Pinned/ScalarSlices.lean",
+   "full_type": "List (List Char)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.shakeChunk0",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Shake.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.shakeChunk1",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Shake.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.shakeChunk10",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Shake.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.shakeChunk11",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Shake.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.shakeChunk12",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Shake.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.shakeChunk13",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Shake.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.shakeChunk14",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Shake.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.shakeChunk15",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Shake.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.shakeChunk16",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Shake.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.shakeChunk17",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Shake.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.shakeChunk18",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Shake.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.shakeChunk19",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Shake.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.shakeChunk2",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Shake.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.shakeChunk3",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Shake.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.shakeChunk4",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Shake.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.shakeChunk5",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Shake.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.shakeChunk6",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Shake.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.shakeChunk7",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Shake.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.shakeChunk8",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Shake.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.shakeChunk9",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Shake.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.shakeLines",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Shake.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.subChars",
+   "kind": "def",
+   "file": "formal/B20/Pinned/ScalarSlices.lean",
+   "full_type": "List Char",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.subLines",
+   "kind": "def",
+   "file": "formal/B20/Pinned/ScalarSlices.lean",
+   "full_type": "List String",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.subTokens",
+   "kind": "def",
+   "file": "formal/B20/Pinned/ScalarSlices.lean",
+   "full_type": "List (List Char)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.ulshChars",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Slices.lean",
+   "full_type": "List Char",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.ulshTokens",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Slices.lean",
+   "full_type": "List (List Char)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.urshChars",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Slices.lean",
+   "full_type": "List Char",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Pinned.urshTokens",
+   "kind": "def",
+   "file": "formal/B20/Pinned/Slices.lean",
+   "full_type": "List (List Char)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Word.LE.bufferBytes",
+   "kind": "def",
+   "file": "formal/B20/Word/LESpec.lean",
+   "full_type": "B20.C.Byte.Memory → B20.C.Byte.Pointer → Fin 8 → B20.C.Byte.U8",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Word.LE.bufferBytes_spec",
+   "kind": "theorem",
+   "file": "formal/B20/Word/LESpec.lean",
+   "full_type": "∀ (m : B20.C.Byte.Memory) (p : B20.C.Byte.Pointer),\n  B20.C.Byte.ReadRegion m p → B20.C.Byte.RegionBytes m p (B20.Word.LE.bufferBytes m p)",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Word.LE.byteOf",
+   "kind": "def",
+   "file": "formal/B20/Word/LESpec.lean",
+   "full_type": "B20.C.Byte.U64 → Fin 8 → B20.C.Byte.U8",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Word.LE.decProgram",
+   "kind": "def",
+   "file": "formal/B20/Word/LEPrograms.lean",
+   "full_type": "B20.C.Byte.Function",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Word.LE.decState",
+   "kind": "def",
+   "file": "formal/B20/Word/LEExecution.lean",
+   "full_type": "B20.C.Byte.Memory → B20.C.Byte.Pointer → B20.C.Byte.State",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Word.LE.dec_execution",
+   "kind": "theorem",
+   "file": "formal/B20/Word/LEExecution.lean",
+   "full_type": "∀ (m : B20.C.Byte.Memory) (p : B20.C.Byte.Pointer) (b : Fin 8 → B20.C.Byte.U8),\n  B20.C.Byte.ReadRegion m p →\n    B20.C.Byte.RegionBytes m p b →\n      B20.C.Byte.execute B20.Word.LE.decProgram m [B20.C.Byte.Arg.pointer p] = some (some (B20.Word.LE.join b), m)",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.dec_lex",
+   "kind": "theorem",
+   "file": "formal/B20/Word/LEPrograms.lean",
+   "full_type": "B20.C.tokenize (B20.Pinned.dec64leChars.length + 1) B20.Pinned.dec64leChars =\n  some B20.Pinned.dec64leTokens",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.dec_parses",
+   "kind": "theorem",
+   "file": "formal/B20/Word/LEPrograms.lean",
+   "full_type": "B20.C.Byte.parseFunction (B20.Word.LE.slice B20.Pinned.shakeLines 56 15) =\n  some B20.Word.LE.decProgram",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.dec_prefix",
+   "kind": "theorem",
+   "file": "formal/B20/Word/LEExecution.lean",
+   "full_type": "∀ (m : B20.C.Byte.Memory) (p : B20.C.Byte.Pointer),\n  B20.C.Byte.execute B20.Word.LE.decProgram m [B20.C.Byte.Arg.pointer p] =\n    B20.C.Byte.evalBody true [B20.C.Byte.Statement.ret B20.Word.LE.decodeExpr] (B20.Word.LE.decState m p)",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.dec_slice",
+   "kind": "theorem",
+   "file": "formal/B20/Word/LEPrograms.lean",
+   "full_type": "B20.Word.LE.slice B20.Pinned.shakeLines 56 15 = B20.Pinned.dec64leChars",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.dec_syntax",
+   "kind": "theorem",
+   "file": "formal/B20/Word/LEPrograms.lean",
+   "full_type": "B20.C.Byte.parseFunctionTokens B20.Pinned.dec64leTokens = some B20.Word.LE.decProgram",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.decodeExpr",
+   "kind": "def",
+   "file": "formal/B20/Word/LEPrograms.lean",
+   "full_type": "B20.C.Byte.Expr",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Word.LE.decodeExpr_eval",
+   "kind": "theorem",
+   "file": "formal/B20/Word/LEExecution.lean",
+   "full_type": "∀ (s : B20.C.Byte.State) (b : Fin 8 → B20.C.Byte.U8),\n  (∀ (i : Fin 8),\n      B20.C.Byte.evalExpr s (B20.Word.LE.loadTerm ↑i) =\n        some (B20.C.Byte.Value.word (BitVec.setWidth 64 (b i) <<< (8 * ↑i)))) →\n    B20.C.Byte.evalExpr s B20.Word.LE.decodeExpr = some (B20.C.Byte.Value.word (B20.Word.LE.orWord b))",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.encProgram",
+   "kind": "def",
+   "file": "formal/B20/Word/LEPrograms.lean",
+   "full_type": "B20.C.Byte.Function",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Word.LE.encState",
+   "kind": "def",
+   "file": "formal/B20/Word/LEExecution.lean",
+   "full_type": "B20.C.Byte.Memory → B20.C.Byte.Pointer → B20.C.Byte.U64 → B20.C.Byte.State",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Word.LE.enc_execution",
+   "kind": "theorem",
+   "file": "formal/B20/Word/LEExecution.lean",
+   "full_type": "∀ (m : B20.C.Byte.Memory) (p : B20.C.Byte.Pointer) (w : B20.C.Byte.U64),\n  B20.C.Byte.WriteRegion m p →\n    B20.C.Byte.execute B20.Word.LE.encProgram m [B20.C.Byte.Arg.pointer p, B20.C.Byte.Arg.word w] =\n      some (none, B20.Word.LE.stored m p w)",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.enc_lex",
+   "kind": "theorem",
+   "file": "formal/B20/Word/LEPrograms.lean",
+   "full_type": "B20.C.tokenize (B20.Pinned.enc64leChars.length + 1) B20.Pinned.enc64leChars =\n  some B20.Pinned.enc64leTokens",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.enc_parses",
+   "kind": "theorem",
+   "file": "formal/B20/Word/LEPrograms.lean",
+   "full_type": "B20.C.Byte.parseFunction (B20.Word.LE.slice B20.Pinned.shakeLines 75 15) =\n  some B20.Word.LE.encProgram",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.enc_prefix",
+   "kind": "theorem",
+   "file": "formal/B20/Word/LEExecution.lean",
+   "full_type": "∀ (m : B20.C.Byte.Memory) (p : B20.C.Byte.Pointer) (w : B20.C.Byte.U64),\n  B20.C.Byte.execute B20.Word.LE.encProgram m [B20.C.Byte.Arg.pointer p, B20.C.Byte.Arg.word w] =\n    B20.C.Byte.evalBody false (List.map B20.Word.LE.storeStatement B20.Word.LE.indices) (B20.Word.LE.encState m p w)",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.enc_slice",
+   "kind": "theorem",
+   "file": "formal/B20/Word/LEPrograms.lean",
+   "full_type": "B20.Word.LE.slice B20.Pinned.shakeLines 75 15 = B20.Pinned.enc64leChars",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.enc_syntax",
+   "kind": "theorem",
+   "file": "formal/B20/Word/LEPrograms.lean",
+   "full_type": "B20.C.Byte.parseFunctionTokens B20.Pinned.enc64leTokens = some B20.Word.LE.encProgram",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.indices",
+   "kind": "def",
+   "file": "formal/B20/Word/LESpec.lean",
+   "full_type": "List (Fin 8)",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Word.LE.join",
+   "kind": "def",
+   "file": "formal/B20/Word/LESpec.lean",
+   "full_type": "(Fin 8 → B20.C.Byte.U8) → B20.C.Byte.U64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Word.LE.join_byteOf",
+   "kind": "theorem",
+   "file": "formal/B20/Word/LESpec.lean",
+   "full_type": "∀ (w : B20.C.Byte.U64), B20.Word.LE.join (B20.Word.LE.byteOf w) = w",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.loadTerm",
+   "kind": "def",
+   "file": "formal/B20/Word/LEPrograms.lean",
+   "full_type": "ℕ → B20.C.Byte.Expr",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Word.LE.loadTerm_eval",
+   "kind": "theorem",
+   "file": "formal/B20/Word/LEExecution.lean",
+   "full_type": "∀ (m : B20.C.Byte.Memory) (p : B20.C.Byte.Pointer) (b : Fin 8 → B20.C.Byte.U8),\n  B20.C.Byte.ReadRegion m p →\n    B20.C.Byte.RegionBytes m p b →\n      ∀ (i : Fin 8),\n        B20.C.Byte.evalExpr (B20.Word.LE.decState m p) (B20.Word.LE.loadTerm ↑i) =\n          some (B20.C.Byte.Value.word (BitVec.setWidth 64 (b i) <<< (8 * ↑i)))",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.orWord",
+   "kind": "def",
+   "file": "formal/B20/Word/LESpec.lean",
+   "full_type": "(Fin 8 → B20.C.Byte.U8) → B20.C.Byte.U64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Word.LE.orWord_eq_join",
+   "kind": "theorem",
+   "file": "formal/B20/Word/LESpec.lean",
+   "full_type": "∀ (b : Fin 8 → B20.C.Byte.U8), B20.Word.LE.orWord b = B20.Word.LE.join b",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.or_left_comm",
+   "kind": "theorem",
+   "file": "formal/B20/Word/LESpec.lean",
+   "full_type": "∀ (x y z : B20.C.Byte.U64), x ||| (y ||| z) = y ||| (x ||| z)",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.slice",
+   "kind": "def",
+   "file": "formal/B20/Word/LEPrograms.lean",
+   "full_type": "List String → ℕ → ℕ → List Char",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Word.LE.storeBytes",
+   "kind": "def",
+   "file": "formal/B20/Word/LESpec.lean",
+   "full_type": "B20.C.Byte.Pointer → B20.C.Byte.U64 → List (Fin 8) → B20.C.Byte.Memory → B20.C.Byte.Memory",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Word.LE.storeBytes_frame",
+   "kind": "theorem",
+   "file": "formal/B20/Word/LESpec.lean",
+   "full_type": "∀ (p q : B20.C.Byte.Pointer) (w : B20.C.Byte.U64) (is : List (Fin 8))\n  (m : B20.C.Byte.Memory), (∀ (i : Fin 8), q ≠ p.add ↑i) → (B20.Word.LE.storeBytes p w is m).contents q = m.contents q",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Word.LE.storeBytes_preserves_write",
+   "kind": "theorem",
+   "file": "formal/B20/Word/LESpec.lean",
+   "full_type": "∀ (p : B20.C.Byte.Pointer) (w : B20.C.Byte.U64) (is : List (Fin 8))\n  (m : B20.C.Byte.Memory), B20.C.Byte.WriteRegion m p → B20.C.Byte.WriteRegion (B20.Word.LE.storeBytes p w is m) p",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Word.LE.storeStatement",
+   "kind": "def",
+   "file": "formal/B20/Word/LEExecution.lean",
+   "full_type": "Fin 8 → B20.C.Byte.Statement",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Word.LE.storeTerm",
+   "kind": "def",
+   "file": "formal/B20/Word/LEPrograms.lean",
+   "full_type": "ℕ → B20.C.Byte.Expr",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Word.LE.storeTerm_eval",
+   "kind": "theorem",
+   "file": "formal/B20/Word/LEExecution.lean",
+   "full_type": "∀ (s : B20.C.Byte.State) (w : B20.C.Byte.U64),\n  s.words ['x'] = some w →\n    ∀ (i : Fin 8),\n      B20.C.Byte.evalExpr s (B20.Word.LE.storeTerm ↑i) = some (B20.C.Byte.Value.byte (B20.Word.LE.byteOf w i))",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.store_step",
+   "kind": "theorem",
+   "file": "formal/B20/Word/LEExecution.lean",
+   "full_type": "∀ (s : B20.C.Byte.State) (p : B20.C.Byte.Pointer) (w : B20.C.Byte.U64),\n  s.pointers \"buf\".toList = some (false, some p) →\n    s.words ['x'] = some w →\n      B20.C.Byte.WriteRegion s.memory p →\n        ∀ (i : Fin 8),\n          B20.C.Byte.step s (B20.Word.LE.storeStatement i) =\n            some\n              { memory := B20.C.Byte.putByte s.memory (p.add ↑i) (B20.Word.LE.byteOf w i), pointers := s.pointers,\n                words := s.words }",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.stored",
+   "kind": "def",
+   "file": "formal/B20/Word/LESpec.lean",
+   "full_type": "B20.C.Byte.Memory → B20.C.Byte.Pointer → B20.C.Byte.U64 → B20.C.Byte.Memory",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Word.LE.stored_bytes",
+   "kind": "theorem",
+   "file": "formal/B20/Word/LESpec.lean",
+   "full_type": "∀ (m : B20.C.Byte.Memory) (p : B20.C.Byte.Pointer) (w : B20.C.Byte.U64),\n  B20.C.Byte.RegionBytes (B20.Word.LE.stored m p w) p (B20.Word.LE.byteOf w)",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.stores_execution",
+   "kind": "theorem",
+   "file": "formal/B20/Word/LEExecution.lean",
+   "full_type": "∀ (is : List (Fin 8)) (s : B20.C.Byte.State) (p : B20.C.Byte.Pointer)\n  (w : B20.C.Byte.U64),\n  s.pointers \"buf\".toList = some (false, some p) →\n    s.words ['x'] = some w →\n      B20.C.Byte.WriteRegion s.memory p →\n        B20.C.Byte.evalBody false (List.map B20.Word.LE.storeStatement is) s =\n          some (none, B20.Word.LE.storeBytes p w is s.memory)",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.brokenShiftFunction",
+   "kind": "def",
+   "file": "formal/B20/Word/Negative.lean",
+   "full_type": "ℕ → ℕ → B20.C.Function",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Word.byteAt_write",
+   "kind": "theorem",
+   "file": "formal/B20/Word/Memory.lean",
+   "full_type": "∀ (m : B20.Foundation.Memory) (base : ℕ) (v : B20.Foundation.Word64),\n  ∀ i < 8, (m.writeU64 base v).byteAt (base + i) = BitVec.toNat v / 2 ^ (8 * i) % 256",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.byteExpansion",
+   "kind": "def",
+   "file": "formal/B20/Word/Memory.lean",
+   "full_type": "ℕ → ℕ",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Word.byteExpansion_eq",
+   "kind": "theorem",
+   "file": "formal/B20/Word/Memory.lean",
+   "full_type": "∀ (n : ℕ), B20.Word.byteExpansion n = n % 18446744073709551616",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.c_invalid_count_rejected",
+   "kind": "theorem",
+   "file": "formal/B20/Word/Negative.lean",
+   "full_type": "B20.C.shift B20.C.BinOp.shr (B20.C.Val.u64 1) 64 = none ∧\n  B20.C.shift B20.C.BinOp.shr (B20.C.Val.u64 1) 4294967295 = none",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Word.c_signed_negation_overflow_rejected",
+   "kind": "theorem",
+   "file": "formal/B20/Word/Negative.lean",
+   "full_type": "B20.C.neg (B20.C.Val.i64 9223372036854775808) = none ∧\n  B20.C.neg (B20.C.Val.i32 2147483648) = none",
+   "axioms": "[]"
+  },
+  {
+   "name": "B20.Word.count_mask_mutation_witness",
+   "kind": "theorem",
+   "file": "formal/B20/Word/Negative.lean",
+   "full_type": "B20.C.execute (B20.Word.brokenShiftFunction 32 30)\n      [B20.C.Val.u64 1, B20.C.Val.i32 1] =\n    some (B20.C.Val.u64 1) ∧\n  B20.C.execute B20.Word.urshFunction [B20.C.Val.u64 1, B20.C.Val.i32 1] = some (B20.C.Val.u64 0)",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.foldl_eight",
+   "kind": "theorem",
+   "file": "formal/B20/Word/Memory.lean",
+   "full_type": "∀ (f : ℕ → ℕ),\n  List.foldl (fun acc i => acc + f i) 0 (List.range 8) = 0 + f 0 + f 1 + f 2 + f 3 + f 4 + f 5 + f 6 + f 7",
+   "axioms": "[]"
+  },
+  {
+   "name": "B20.Word.foldl_equal_on",
+   "kind": "theorem",
+   "file": "formal/B20/Word/Memory.lean",
+   "full_type": "∀ (xs : List ℕ) (f g : ℕ → ℕ → ℕ),\n  (∀ (a i : ℕ), i ∈ xs → f a i = g a i) → ∀ (a : ℕ), List.foldl f a xs = List.foldl g a xs",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Word.irsh",
+   "kind": "def",
+   "file": "formal/B20/Word/Shift.lean",
+   "full_type": "BitVec 64 → ℕ → BitVec 64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Word.irshFunction",
+   "kind": "def",
+   "file": "formal/B20/Word/SourceShift.lean",
+   "full_type": "B20.C.Function",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Word.irsh_execution",
+   "kind": "theorem",
+   "file": "formal/B20/Word/SourceShift.lean",
+   "full_type": "∀ (x : BitVec 64) (n : Fin 64),\n  B20.C.execute B20.Word.irshFunction [B20.C.Val.i64 x, B20.C.Val.i32 (BitVec.ofNat 32 ↑n)] =\n    some (B20.C.Val.i64 (B20.Word.irsh x ↑n))",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.irsh_refines",
+   "kind": "theorem",
+   "file": "formal/B20/Word/Shift.lean",
+   "full_type": "∀ (x : BitVec 64), ∀ n < 64, B20.Word.irsh x n = x.sshiftRight n",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.load_le_refines",
+   "kind": "theorem",
+   "file": "formal/B20/Word/LERefinement.lean",
+   "full_type": "∀ (m : B20.C.Byte.Memory) (p : B20.C.Byte.Pointer),\n  B20.C.Byte.ReadRegion m p →\n    ∀ (result : Option B20.C.Byte.U64) (final : B20.C.Byte.Memory),\n      B20.C.Byte.CExec B20.Word.LE.decProgram m [B20.C.Byte.Arg.pointer p] result final ↔\n        result = some (B20.Word.LE.join (B20.Word.LE.bufferBytes m p)) ∧ final = m",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.load_store_le_refines",
+   "kind": "theorem",
+   "file": "formal/B20/Word/LERefinement.lean",
+   "full_type": "∀ (m : B20.C.Byte.Memory) (p : B20.C.Byte.Pointer) (w : B20.C.Byte.U64),\n  B20.C.Byte.WriteRegion m p →\n    B20.C.Byte.parseFunction (B20.Word.LE.slice B20.Pinned.shakeLines 56 15) = some B20.Word.LE.decProgram ∧\n      B20.C.Byte.parseFunction (B20.Word.LE.slice B20.Pinned.shakeLines 75 15) = some B20.Word.LE.encProgram ∧\n        (∀ (result : Option B20.C.Byte.U64) (final : B20.C.Byte.Memory),\n            B20.C.Byte.CExec B20.Word.LE.decProgram m [B20.C.Byte.Arg.pointer p] result final ↔\n              result = some (B20.Word.LE.join (B20.Word.LE.bufferBytes m p)) ∧ final = m) ∧\n          (∀ (result : Option B20.C.Byte.U64) (final : B20.C.Byte.Memory),\n              B20.C.Byte.CExec B20.Word.LE.encProgram m [B20.C.Byte.Arg.pointer p, B20.C.Byte.Arg.word w] result final ↔\n                result = none ∧ final = B20.Word.LE.stored m p w) ∧\n            B20.C.Byte.RegionBytes (B20.Word.LE.stored m p w) p (B20.Word.LE.byteOf w) ∧\n              B20.C.Byte.CExec B20.Word.LE.decProgram (B20.Word.LE.stored m p w) [B20.C.Byte.Arg.pointer p] (some w)\n                  (B20.Word.LE.stored m p w) ∧\n                (∀ (q : B20.C.Byte.Pointer),\n                    q.block ≠ p.block ∨ q.offset < p.offset ∨ p.offset + 8 ≤ q.offset →\n                      (B20.Word.LE.stored m p w).contents q = m.contents q) ∧\n                  (B20.Word.LE.stored m p w).length = m.length ∧ (B20.Word.LE.stored m p w).writable = m.writable",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.model_load_store_roundtrip",
+   "kind": "theorem",
+   "file": "formal/B20/Word/Memory.lean",
+   "full_type": "∀ (s : B20.Foundation.State) (base : ℕ) (v : B20.Foundation.Word64),\n  B20.Foundation.CExec\n    ((B20.Foundation.CStmt.storeU64 base (B20.Foundation.CExpr.const v)).seq\n      (B20.Foundation.CStmt.ret (B20.Foundation.CExpr.loadU64 base)))\n    s (B20.Foundation.Outcome.returned (some v) { mem := s.mem.writeU64 base v, locals := s.locals })",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.parser_unsupported_operator_rejected",
+   "kind": "theorem",
+   "file": "formal/B20/Word/Negative.lean",
+   "full_type": "B20.C.tokenize 10 ['x', '+', '1'] = none",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Word.pinned_irsh_lex",
+   "kind": "theorem",
+   "file": "formal/B20/Word/SourceShift.lean",
+   "full_type": "B20.C.tokenize (B20.Pinned.irshChars.length + 1) B20.Pinned.irshChars =\n  some B20.Pinned.irshTokens",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.pinned_irsh_parses",
+   "kind": "theorem",
+   "file": "formal/B20/Word/SourceShift.lean",
+   "full_type": "B20.C.parseFunction (B20.Word.slice B20.Pinned.headerLines 24 6) =\n  some B20.Word.irshFunction",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.pinned_irsh_refines",
+   "kind": "theorem",
+   "file": "formal/B20/Word/SourceShift.lean",
+   "full_type": "∀ (x : BitVec 64) (n : Fin 64),\n  ∃ f,\n    B20.C.parseFunction (B20.Word.slice B20.Pinned.headerLines 24 6) = some f ∧\n      B20.C.CExec f [B20.C.Val.i64 x, B20.C.Val.i32 (BitVec.ofNat 32 ↑n)] (B20.C.Val.i64 (x.sshiftRight ↑n))",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.pinned_irsh_slice",
+   "kind": "theorem",
+   "file": "formal/B20/Word/SourceShift.lean",
+   "full_type": "B20.Word.slice B20.Pinned.headerLines 24 6 = B20.Pinned.irshChars",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.pinned_irsh_syntax",
+   "kind": "theorem",
+   "file": "formal/B20/Word/SourceShift.lean",
+   "full_type": "B20.C.parseFunctionTokens B20.Pinned.irshTokens = some B20.Word.irshFunction",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.pinned_ulsh_lex",
+   "kind": "theorem",
+   "file": "formal/B20/Word/SourceShift.lean",
+   "full_type": "B20.C.tokenize (B20.Pinned.ulshChars.length + 1) B20.Pinned.ulshChars =\n  some B20.Pinned.ulshTokens",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.pinned_ulsh_parses",
+   "kind": "theorem",
+   "file": "formal/B20/Word/SourceShift.lean",
+   "full_type": "B20.C.parseFunction (B20.Word.slice B20.Pinned.headerLines 31 6) =\n  some B20.Word.ulshFunction",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.pinned_ulsh_refines",
+   "kind": "theorem",
+   "file": "formal/B20/Word/SourceShift.lean",
+   "full_type": "∀ (x : BitVec 64) (n : Fin 64),\n  ∃ f,\n    B20.C.parseFunction (B20.Word.slice B20.Pinned.headerLines 31 6) = some f ∧\n      B20.C.CExec f [B20.C.Val.u64 x, B20.C.Val.i32 (BitVec.ofNat 32 ↑n)] (B20.C.Val.u64 (x <<< ↑n))",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.pinned_ulsh_slice",
+   "kind": "theorem",
+   "file": "formal/B20/Word/SourceShift.lean",
+   "full_type": "B20.Word.slice B20.Pinned.headerLines 31 6 = B20.Pinned.ulshChars",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.pinned_ulsh_syntax",
+   "kind": "theorem",
+   "file": "formal/B20/Word/SourceShift.lean",
+   "full_type": "B20.C.parseFunctionTokens B20.Pinned.ulshTokens = some B20.Word.ulshFunction",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.pinned_ursh_lex",
+   "kind": "theorem",
+   "file": "formal/B20/Word/SourceShift.lean",
+   "full_type": "B20.C.tokenize (B20.Pinned.urshChars.length + 1) B20.Pinned.urshChars =\n  some B20.Pinned.urshTokens",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.pinned_ursh_parses",
+   "kind": "theorem",
+   "file": "formal/B20/Word/SourceShift.lean",
+   "full_type": "B20.C.parseFunction (B20.Word.slice B20.Pinned.headerLines 17 6) =\n  some B20.Word.urshFunction",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.pinned_ursh_refines",
+   "kind": "theorem",
+   "file": "formal/B20/Word/SourceShift.lean",
+   "full_type": "∀ (x : BitVec 64) (n : Fin 64),\n  ∃ f,\n    B20.C.parseFunction (B20.Word.slice B20.Pinned.headerLines 17 6) = some f ∧\n      B20.C.CExec f [B20.C.Val.u64 x, B20.C.Val.i32 (BitVec.ofNat 32 ↑n)] (B20.C.Val.u64 (x >>> ↑n))",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.pinned_ursh_slice",
+   "kind": "theorem",
+   "file": "formal/B20/Word/SourceShift.lean",
+   "full_type": "B20.Word.slice B20.Pinned.headerLines 17 6 = B20.Pinned.urshChars",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.pinned_ursh_syntax",
+   "kind": "theorem",
+   "file": "formal/B20/Word/SourceShift.lean",
+   "full_type": "B20.C.parseFunctionTokens B20.Pinned.urshTokens = some B20.Word.urshFunction",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.radix_eight",
+   "kind": "theorem",
+   "file": "formal/B20/Word/Radix.lean",
+   "full_type": "∀ (n : ℕ),\n  0 + n / 1 % 256 * 1 + n / 256 % 256 * 256 + n / 65536 % 256 * 65536 + n / 16777216 % 256 * 16777216 +\n            n / 4294967296 % 256 * 4294967296 +\n          n / 1099511627776 % 256 * 1099511627776 +\n        n / 281474976710656 % 256 * 281474976710656 +\n      n / 72057594037927936 % 256 * 72057594037927936 =\n    n % 18446744073709551616",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.radix_step",
+   "kind": "theorem",
+   "file": "formal/B20/Word/Radix.lean",
+   "full_type": "∀ (n a : ℕ), n % a + n / a % 256 * a = n % (a * 256)",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.read_write_formula",
+   "kind": "theorem",
+   "file": "formal/B20/Word/Memory.lean",
+   "full_type": "∀ (m : B20.Foundation.Memory) (base : ℕ) (v : B20.Foundation.Word64),\n  (m.writeU64 base v).readU64 base = some (BitVec.ofNat 64 (B20.Word.byteExpansion (BitVec.toNat v)))",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.read_write_roundtrip",
+   "kind": "theorem",
+   "file": "formal/B20/Word/Memory.lean",
+   "full_type": "∀ (m : B20.Foundation.Memory) (base : ℕ) (v : B20.Foundation.Word64),\n  (m.writeU64 base v).readU64 base = some v",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.shift32_mutation_binding_rejected",
+   "kind": "theorem",
+   "file": "formal/B20/Word/Negative.lean",
+   "full_type": "B20.C.parseFunction (B20.Word.slice B20.Pinned.headerLines 17 6) ≠\n  some (B20.Word.brokenShiftFunction 31 31)",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.shift32_mutation_witness",
+   "kind": "theorem",
+   "file": "formal/B20/Word/Negative.lean",
+   "full_type": "B20.C.execute (B20.Word.brokenShiftFunction 31 31)\n      [B20.C.Val.u64 9223372036854775808, B20.C.Val.i32 32] =\n    some (B20.C.Val.u64 4294967296) ∧\n  B20.C.execute B20.Word.urshFunction [B20.C.Val.u64 9223372036854775808, B20.C.Val.i32 32] =\n    some (B20.C.Val.u64 2147483648)",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.shiftFunction",
+   "kind": "def",
+   "file": "formal/B20/Word/SourceShift.lean",
+   "full_type": "B20.C.Ty → B20.C.BinOp → B20.C.Name → B20.C.Function",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Word.signed_shift_differs_from_logical",
+   "kind": "theorem",
+   "file": "formal/B20/Word/Negative.lean",
+   "full_type": "BitVec.sshiftRight 18446744073709551615 1 = 18446744073709551615 ∧\n  18446744073709551615 >>> 1 = 9223372036854775807",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Word.slice",
+   "kind": "def",
+   "file": "formal/B20/Word/SourceShift.lean",
+   "full_type": "List String → ℕ → ℕ → List Char",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Word.split_count",
+   "kind": "theorem",
+   "file": "formal/B20/Word/Shift.lean",
+   "full_type": "∀ n < 64, n / 32 < 2 ∧ n % 32 < 32 ∧ n = 32 * (n / 32) + n % 32",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.ulsh",
+   "kind": "def",
+   "file": "formal/B20/Word/Shift.lean",
+   "full_type": "BitVec 64 → ℕ → BitVec 64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Word.ulshFunction",
+   "kind": "def",
+   "file": "formal/B20/Word/SourceShift.lean",
+   "full_type": "B20.C.Function",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Word.ulsh_execution",
+   "kind": "theorem",
+   "file": "formal/B20/Word/SourceShift.lean",
+   "full_type": "∀ (x : BitVec 64) (n : Fin 64),\n  B20.C.execute B20.Word.ulshFunction [B20.C.Val.u64 x, B20.C.Val.i32 (BitVec.ofNat 32 ↑n)] =\n    some (B20.C.Val.u64 (B20.Word.ulsh x ↑n))",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.ulsh_refines",
+   "kind": "theorem",
+   "file": "formal/B20/Word/Shift.lean",
+   "full_type": "∀ (x : BitVec 64), ∀ n < 64, B20.Word.ulsh x n = x <<< n",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.ursh",
+   "kind": "def",
+   "file": "formal/B20/Word/Shift.lean",
+   "full_type": "BitVec 64 → ℕ → BitVec 64",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Word.urshFunction",
+   "kind": "def",
+   "file": "formal/B20/Word/SourceShift.lean",
+   "full_type": "B20.C.Function",
+   "axioms": "definition"
+  },
+  {
+   "name": "B20.Word.ursh_execution",
+   "kind": "theorem",
+   "file": "formal/B20/Word/SourceShift.lean",
+   "full_type": "∀ (x : BitVec 64) (n : Fin 64),\n  B20.C.execute B20.Word.urshFunction [B20.C.Val.u64 x, B20.C.Val.i32 (BitVec.ofNat 32 ↑n)] =\n    some (B20.C.Val.u64 (B20.Word.ursh x ↑n))",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.ursh_refines",
+   "kind": "theorem",
+   "file": "formal/B20/Word/Shift.lean",
+   "full_type": "∀ (x : BitVec 64), ∀ n < 64, B20.Word.ursh x n = x >>> n",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.write_frame",
+   "kind": "theorem",
+   "file": "formal/B20/Word/Memory.lean",
+   "full_type": "∀ (m : B20.Foundation.Memory) (base : ℕ) (v : B20.Foundation.Word64) (address : ℕ),\n  address < base ∨ base + 8 ≤ address → (m.writeU64 base v).bytes address = m.bytes address",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.write_legal",
+   "kind": "theorem",
+   "file": "formal/B20/Word/Memory.lean",
+   "full_type": "∀ (m : B20.Foundation.Memory) (base : ℕ) (v : B20.Foundation.Word64),\n  (m.writeU64 base v).legalU64 base",
+   "axioms": "[propext, Quot.sound]"
+  }
+ ]
+}

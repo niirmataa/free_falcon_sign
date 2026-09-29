@@ -1,0 +1,42 @@
+{
+ "schema": "ft1536.reference_integer_recovery.obligations/1",
+ "open": [
+  {
+   "id": "B-gap",
+   "type": "uniform source-instantiated pre-rint gap < 1/2",
+   "need": "stored basis word residuals ~2^-52 rel. (eps_fg 3.3e-13, eps_FG 6.8e-10); (delta,eroot) <= 3.3e-6/3.7e-5; etaT <= 3.2e-8 with correlation-aware transport",
+   "blocking": [
+    "C-application",
+    "stored-pair equality"
+   ]
+  },
+  {
+   "id": "C-applic",
+   "type": "wide rint equality for both vectors",
+   "need": "B-gap"
+  },
+  {
+   "id": "Safe16",
+   "type": "precast |w|<=32767 before narrow16",
+   "need": "joint Safe16 proof (POST: OPEN)"
+  },
+  {
+   "id": "D-center-norm",
+   "type": "center/norm compatibility lemma for Verify form A2 with cross terms",
+   "need": "lemma for exact CheckNorm form"
+  },
+  {
+   "id": "bytes",
+   "type": "encoder/STATIC-4096 path from stored pair",
+   "need": "later tranche"
+  }
+ ],
+ "out_of_scope": [
+  "whole_Sign",
+  "Sign_to_Verify full",
+  "retry composition",
+  "real PRNG bridge",
+  "global lattice Gaussian law",
+  "M0 eta_pre"
+ ]
+}

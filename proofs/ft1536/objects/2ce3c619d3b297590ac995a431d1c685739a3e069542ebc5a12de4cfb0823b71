@@ -1,0 +1,10 @@
+{
+  "command": "python3 -B scripts/finalize.py",
+  "exit_code": 1,
+  "error": "AssertionError: truncated term output",
+  "check": "assert '⋯' not in text and '\n...\n' not in text",
+  "frozen_manifest_created": false,
+  "source_snapshot": "run/final_002/source/scripts/finalize.py",
+  "offending_log": "run/final_002/build/FORMAL_TYPES_TERMS.txt",
+  "meaning": "Kernel builds succeeded, but pretty-printer maxSteps omitted proof subterms. Required printed-term artifact incomplete; freeze correctly stopped."
+}

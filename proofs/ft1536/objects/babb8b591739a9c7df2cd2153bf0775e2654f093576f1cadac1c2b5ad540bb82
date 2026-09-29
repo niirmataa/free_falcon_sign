@@ -1,0 +1,200 @@
+{
+  "P02_local_freeze_manifest_sha256": "4e8942ccaf46f0971688a0f0cc1d07c5831a46175e6ad2dde903c9f55b046a01",
+  "P02_local_freeze_reviewed": false,
+  "checked_status": {
+    "P02": {
+      "bound_inputs_path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/BOUND_INPUTS.json",
+      "bound_inputs_sha256": "567f57ac135d0c766f95dfbc53b5dfedcd9d4eb15993d78ab896d4bead936278",
+      "context": "\u015awie\u017cy kontekst, sesja ses_f33f9f0afffeLad43JuCwKBDk2; retrospektywny wpis owner-start i WORD_HELPERS_001 wg HANDOFF z 2026-09-23. Zadanie nadal IN_PROGRESS.",
+      "final_outputs_sha256": null,
+      "final_report_sha256": null,
+      "head": null,
+      "model": "openai/gpt-6-astra-fast",
+      "review_verdict": null,
+      "status": "IN_PROGRESS"
+    },
+    "P06": {
+      "bound_inputs_sha256": null,
+      "context": null,
+      "final_outputs_sha256": null,
+      "final_report_sha256": null,
+      "head": null,
+      "model": null,
+      "review_verdict": null,
+      "status": "BLOCKED_UPSTREAM_EXPORTS"
+    },
+    "V02": {
+      "bound_inputs_sha256": null,
+      "context": null,
+      "final_outputs_sha256": null,
+      "final_report_sha256": null,
+      "head": null,
+      "model": null,
+      "review_verdict": null,
+      "status": "BLOCKED_PRODUCER_FREEZE"
+    }
+  },
+  "consumed_P02_or_P06_theorems": [],
+  "P02_dispatcher_limit": {
+    "evidence_note": "artifacts/P02_DISPATCH_LIMIT.md",
+    "byte_exact_definition": "artifacts/dependency_evidence/P02_ScalarCalls.lean",
+    "origin_and_sha256": "artifacts/dependency_evidence/ORIGIN.json",
+    "fact_from_definition": "Frozen shiftCalls handles only ursh/irsh/ulsh, otherwise none; the four arithmetic PrimObligation types cannot be discharged by this dispatcher as written.",
+    "needed_correction": "A new literal-body-refined arithmetic dispatcher/execution relation plus its finite-domain and real-error theorem, not an assumed instance of the frozen obligation.",
+    "new_kernel_claim": false
+  },
+  "dependencies": [
+    {
+      "accepted_export_pin": null,
+      "blocks": [
+        "B0_source",
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B5"
+      ],
+      "evidence": [
+        {
+          "path": "inputs/dependency_types/P02_Domain.lean",
+          "sha256": "1507feb96d8b207450e1a36ee5810aeff1620d3581afff97ffb63fa3054af593"
+        },
+        {
+          "path": "inputs/supplemental/P02/output/NEXT_INTERFACE.md",
+          "sha256": "44924678623a252186e3a5c60433a25db14c5d56741e31b44b947acf23f8e504"
+        }
+      ],
+      "id": "P02_ARITH",
+      "local_proof": null,
+      "needed_type": "For every reached add/sub/mul/div/sqrt at pinned operands: defined literal C execution, finite result word w, and a proved real-value error inequality on its explicit finite/signed-zero/subnormal domain. P02 PrimObligation fn args res alone requires a callee implementation and execution; no instances for add/mul/div/sqrt and no real-error bridge are supplied.",
+      "producer": "P02",
+      "status": "OPEN_NOT_ASSUMED"
+    },
+    {
+      "accepted_export_pin": null,
+      "blocks": [
+        "B0_source",
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B5"
+      ],
+      "evidence": [
+        {
+          "path": "inputs/supplemental/P02/output/REPORT.md",
+          "sha256": "98ea050bfe15b39b4ad2a6d26428bcd7e12f22ca33b06b6bc98e9e964bb295a5"
+        }
+      ],
+      "id": "P02_REACHED_DOMAIN",
+      "local_proof": null,
+      "needed_type": "forall required H and every actual read before an instruction, OperandSnapshot(H,pc) satisfies the exact callee domain, pointer/frame/nonalias premises, finite and range predicates; raw signed zeros and subnormals retained.",
+      "producer": "P02/P09",
+      "status": "OPEN_NOT_ASSUMED"
+    },
+    {
+      "accepted_export_pin": null,
+      "blocks": [
+        "B0_source",
+        "B2",
+        "B4",
+        "B5"
+      ],
+      "evidence": [
+        {
+          "path": "inputs/bootstrap/planning/P06/INPUT_CONTRACT.json",
+          "sha256": "213bcf52aafb523f864312ebe5323386b15c48517a9b44ff22614272f6efe80c"
+        },
+        {
+          "path": "inputs/supplemental/B20_STATUS.json",
+          "sha256": "ac235a54f03a63deb679fedf765a2abc63ea0f02cc4470ddca8fcb1fd132b536"
+        }
+      ],
+      "id": "P06_REFERENCE",
+      "local_proof": null,
+      "needed_type": "B20.Reference.Z : OrderedReturns3072 -> RingPair, source_call_index_binding, exact_shadow_cancellation, integral_and_congruent for R=ZZ[X]/(X^1536-X^768+1), all required histories and the same ordered Y.",
+      "producer": "P06",
+      "status": "OPEN_NOT_ASSUMED"
+    },
+    {
+      "accepted_export_pin": null,
+      "blocks": [
+        "B0_bounds",
+        "B3",
+        "B4",
+        "B5"
+      ],
+      "evidence": [
+        {
+          "path": "inputs/bootstrap/T03/inputs/bootstrap/H6P/SOURCE_NOISE_MAP.md",
+          "sha256": "9a4bb7b5fea7e1b5e8135539939a7f52f97a8a6331c27a37f4b0b11c8b6300f7"
+        },
+        {
+          "path": "inputs/bootstrap/T03/inputs/bootstrap/LEFT/ERROR_LEDGER.md",
+          "sha256": "b75aff344dfe925144918f569f7ce8f827dc5d928e37011c8608b3e9220038c8"
+        }
+      ],
+      "id": "INTEGER_DEFECT_TRANSPORT",
+      "local_proof": null,
+      "needed_type": "forall H, x_C=t0-Z0(Y)+kappa0+tau0 and y_C=t1-Z1(Y)+kappa1+tau1, where tau transports actual terminal old-target defects (including add_C1643), kappa includes all remaining downward split/update and upward merge/sub defects; prove joint bounds relative to THIS reference. H6P innovation reconstruction bounds do not instantiate this type.",
+      "producer": "new local obligation/P08/P09",
+      "status": "OPEN_NOT_ASSUMED"
+    },
+    {
+      "accepted_export_pin": null,
+      "blocks": [
+        "B2",
+        "B5"
+      ],
+      "evidence": [
+        {
+          "path": "inputs/bootstrap/planning/P07/INPUT_CONTRACT.json",
+          "sha256": "b0e88f44f112a1f721c012a136d19ab1ef58d749d543dbd2b1419bde085fb733"
+        }
+      ],
+      "id": "P07_BASIS",
+      "local_proof": null,
+      "needed_type": "Uniform source-order stored FFT basis residuals for every emitted/same-STATIC normalized key, bound as complex modulus or correctly converted component errors, with immutable raw words, normalization and exact coefficient membership.",
+      "producer": "P07",
+      "status": "OPEN_NOT_ASSUMED"
+    },
+    {
+      "accepted_export_pin": null,
+      "blocks": [
+        "B0_coefficient",
+        "B1",
+        "B5"
+      ],
+      "evidence": [
+        {
+          "path": "inputs/bootstrap/T03/inputs/bootstrap/POST/POSTPROCESSING_MAP.md",
+          "sha256": "3aacdf1f4acafd8a22c79ca9200bcad256b5d686ad64ce7f4600d2aeb0762981"
+        }
+      ],
+      "id": "A2_INVERSE_AND_IFFT",
+      "local_proof": null,
+      "needed_type": "Kernel physical inverse evaluation map I with linearity, coefficient/A2 inequalities, exact evaluation inverse on Phi, and source iFFT_C1914/1915 error for the ACTUAL frequency inputs.",
+      "producer": "P06/P10",
+      "status": "OPEN_NOT_ASSUMED"
+    },
+    {
+      "accepted_export_pin": null,
+      "blocks": [
+        "B5"
+      ],
+      "evidence": [
+        {
+          "path": "inputs/supplemental/P02/output/NEXT_INTERFACE.md",
+          "sha256": "44924678623a252186e3a5c60433a25db14c5d56741e31b44b947acf23f8e504"
+        }
+      ],
+      "id": "P02_REAL_RINT",
+      "local_proof": null,
+      "needed_type": "forall reached finite word w and integer z, abs(val(w)-z)<1/2 -> literal int64 fpr_rint_C(w)=z, with proved execution/range and nearest-even +/-ties, signed-zero/subnormal valuation bridge.",
+      "producer": "P02/P10",
+      "status": "OPEN_NOT_ASSUMED"
+    }
+  ],
+  "owner_accepted": false,
+  "schema": "T03_RUN002_EXPORT_DEPENDENCIES_V1"
+}

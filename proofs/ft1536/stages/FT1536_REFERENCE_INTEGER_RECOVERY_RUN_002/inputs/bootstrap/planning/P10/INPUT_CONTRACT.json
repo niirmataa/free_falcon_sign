@@ -1,0 +1,44 @@
+{
+  "id": "P10",
+  "task_id": "B20_001_P10_INTEGER_RECOVERY_FULL",
+  "role": "author",
+  "producer": null,
+  "fixed_base_inputs": {
+    "T03": {
+      "stage": "FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "e01a09789091c9c9322f9727263503063c94441a68ff5f30af952bcc4417785c",
+      "outputs_sha256": "0cafdbb2c746043380081052951cb6438643f6a1765a98028a065fa57b7df6de",
+      "historical_status": "PARTIAL_PROOF",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    },
+    "POST": {
+      "stage": "FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001",
+      "path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/stages/FT1536_H3_SOURCE_POSTPROCESSING_AND_PRECAST_RUN_001",
+      "report": "REPORT.md",
+      "report_sha256": "4cd7ab1a6f63256ed6c015f3ba9bbef97597d7a68bb948bfd8c9264bab307662",
+      "outputs_sha256": "b860e5453a7a72716acd8636cc581ff57b1b9c00dff20baa907e4636344d1401",
+      "historical_status": "PARTIAL_PROOF",
+      "formal_reuse": "only reviewed exact exports; mixed prose is formalization debt"
+    }
+  },
+  "upstream_tasks": [
+    "P01",
+    "P02",
+    "P06",
+    "P07",
+    "P08",
+    "P09"
+  ],
+  "external_required": [],
+  "required_goal_exports": [
+    "B20.Recovery.full_gap : ∀ required completed H, ∀ coefficient,|pre_rint−v_ref|<1/2",
+    "B20.Recovery.actual_wide_pair_eq_reference : source wide rint pair=v_ref",
+    "B20.Recovery.tie_orientation : osobne obie granice i parity,jeśli potrzebne",
+    "B20.Recovery.interface : exact scope,source pins,assumptions and remaining narrowing obligations"
+  ],
+  "bound_inputs": null,
+  "binding_rule": "copy verified frozen dependencies into W/inputs; write BOUND_INPUTS there; never edit this contract or invent pending hashes",
+  "for_review_required": []
+}

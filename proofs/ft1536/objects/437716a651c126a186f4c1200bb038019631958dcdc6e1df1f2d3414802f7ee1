@@ -1,0 +1,34 @@
+Traceback (most recent call last):
+  File "/home/footfalcon/miniforge3/envs/sage/bin/sage", line 5, in <module>
+    from sage.cli.__main__ import main
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__main__.py", line 9, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__init__.py", line 56, in main
+    return RunFileCmd(options).run()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/run_file_cmd.py", line 50, in run
+    eval(compile(open(input_file, 'rb').read(), input_file, 'exec'), sage_globals())
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002/run/normal_001/tmp/sage_0fiq2z4b/check_slices49x15zfv.sage.py", line 68, in <module>
+    (OUT/'C_DOMAIN_PREFLIGHT.json').write_text(json.dumps({
+                                               ~~~~~~~~~~^^
+        'pass': True, 'sage_version': SAGE_VERSION, 'terminal_cases': len(term),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        'raw_signed_zero_and_subnormal_rint_inputs': True,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        'required_domain_counterexample': False},indent=_sage_const_2 ,sort_keys=True)+'\n')
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/json/__init__.py", line 242, in dumps
+    **kw).encode(obj)
+          ~~~~~~^^^^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/json/encoder.py", line 202, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/json/encoder.py", line 263, in iterencode
+    return _iterencode(o, 0)
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/json/encoder.py", line 182, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+                    f'is not JSON serializable')
+TypeError: Object of type Integer is not JSON serializable
+when serializing dict item 'suffix_slots_each_vector'

@@ -1,6 +1,6 @@
 # Główna ścieżka twierdzeń i jawny rejestr zadań FT1536
 
-Wersja planu: **2026-09-29 / 13 — kontynuacja T03-B z pełnym budżetem A–E**. To żywy plan prowadzącego, oparty na
+Wersja planu: **2026-09-29 / 14 — scoped odbiór T03-B, source recovery OPEN**. To żywy plan prowadzącego, oparty na
 [M0 TARGET_TYPE](../../proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001/TARGET_TYPE.md)
 i [M0 HOP_LEDGER](../../proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001/HOP_LEDGER.md).
 Nie zmienia zamrożonego M0 ani statusów starych raportów. Stan pracy na żywo:
@@ -115,7 +115,7 @@ ale hashe source/execution w review wymagają rozliczenia przed REVIEWED.
 | **T02 OPEN — PRNG_REAL_TO_IID_BUFFER** | Dokładny root SHAKE32→stream i state56/ChaCha/refills/getters; skończone ghost budgets; T02.1 przygotowane | Jawne gry, resource-indexed assumptions i reduktory/hybrid losses; zachowana wspólna historia, init/discards/abandoned tails. Nie „448-bit security”; lokalne T02.1 nie domyka rodzica | T01 resources, F02,F07,F08 |
 | **T02.1 REVIEWED_SCOPED — PRNG_LAYOUT_COUNTER** | RUN_003 suplement F1–F5 odebrany przez MiMo V2.6 Flash; replay17/17,checker13/13 | PASS_SCOPED_SUPPLEMENT; kernel28 obejmuje arytmetykę,pełny source refinement/rundy domyka B20/P03. Realne piny w STATUS B20. [Odbiór](../../proofs/ft1536/validation/2026-09-22-prng-layout-supplement/README.md) | T01 resources,F07,pinned source17; T02 parent OPEN |
 | **T03 REVIEWED — PARTIAL_PROOF / REFERENCE_INTEGER_RECOVERY** | [Odebrany REVIEW_002](../../proofs/ft1536/validation/2026-09-22-integer-recovery-review-002/README.md):MiMo2.6Pro autor,Muse Spark1.3 xhigh w świeżym kontekście recenzent wg właściciela;11/11,15s,3 finalne bindings zgodne | Odebrane A/reference+mapping/congruence,C-lemma,D conditional. **B≈6086.4≥1/2 nadal OPEN**,podobnie Safe16/center/norm/bytes i pełny recovery. Kontynuacja T03-B poniżej | F03–F09; T01 do rozszerzenia na retries |
-| **T03-B FROZEN_AWAITING_REVIEW — RUN_002 / BLOCKED_UPSTREAM_EXPORTS** | [Handoff/piny](../../proofs/ft1536/CURRENT_B_GAP_TASK.md),[odbiór przygotowany](../../proofs/ft1536/CURRENT_B_GAP_REVIEW_TASK.md);1939 plików zgodnych,bez independent review | Claim:15 identities algebra-only,ledger10 termów,diagnoza add_C1643 bez required-domain membership. Nowy source bound=null;warunkowa reszta≈11.5133≥1/2. B0/B1 częściowe,B2–B5 otwarte;weryfikacja zakresu przed stages | F03–F09;P02 arithmetic dispatcher/real-error/caller domains,P06 mapping/ring,pełny INTEGER_DEFECT_TRANSPORT3072. P07–P10 bez awansu |
+| **T03-B REVIEWED_SCOPED — RUN_002 / BLOCKED_UPSTREAM_EXPORTS** | [Autor/piny](../../proofs/ft1536/CURRENT_B_GAP_TASK.md),[PASS_SCOPED_REVIEW](../../proofs/ft1536/stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002_REVIEW_001/REVIEW.md);Sol Fast,świeży kontekst,własny replay7/7 i10/10,UBSan/ASan oraz własne Sage/Lean | Odebrane15 identities algebra-only,ledger10 termów,diagnoza add_C1643 bez required-domain membership. Source gap=null;reszta≈11.5133≥1/2. B0/B1 częściowe,B2–B5 otwarte.3 wczesne stderr recenzenta nadpisane,ograniczenie jawne | F03–F09;P02 arithmetic dispatcher/real-error/caller domains,P06 mapping/ring,pełny INTEGER_DEFECT_TRANSPORT3072. P07–P10 bez awansu |
 | **T04 PLANNED — PREFIX_AND_API_BINDING** | Pominięty przez T01 prefix: context/loader/rng_ready/nonce/H2P, usługi E i actual source outcomes | Dokładny zasięg definedness/termination/abort, legal ReadyRetryEntry z API i joint randomness interfaces. Brak ukrytego all-success lub IID premise | F02–F05,T01; T02 dla real-law claims |
 | **T05 PLANNED — GLOBAL_REFERENCE_GEOMETRY** | Actual parameters/tree/rounding oraz wybrane ordered reference law | Most do zadeklarowanego ideal coset Gaussian, z błędami/geometrią/secret dependence; Q_S/Q_stop nie stają się nim przez nazwę | F08,F09,T03; historyczny FULL_GEOMETRY |
 | **T06 PLANNED — COMPLETE_OBSERVED_BYTE_KERNELS** | Source/production/reference kernels, retries, bytes i bot outcomes | Jeden kompletny history-uniform consumer od funkcjonującego API do wskazanego prawa obserwacji; Sign→Verify tylko po T03 i właściwym center/norm bridge | T01–T05,F01,F02,F06 |
@@ -311,3 +311,9 @@ muszą wskazywać ten sam aktywny etap.
   INTEGER_DEFECT_TRANSPORT są przedmiotem niezależnego odbioru. Przygotowano
   osobny REVIEW_001 z1946 RO inputs,bez uruchomienia modelu/replayu/importu.
   P02/P06 oraz B20 zachowują rzeczywiste statusy. Po scoped odbiorze stages/commit.
+- 2026-09-29/v14: właściciel przekazał PASS_SCOPED_REVIEW Sol Fast dla T03-B
+  BLOCKED_UPSTREAM_EXPORTS. Import autora1939 plików i recenzji115 przez
+  archive.py;scope pozostaje algebra/ledger/diagnoza/warunkowa arytmetyka.
+  Source_gap=null,full_recovery=false. Ograniczenie3 nadpisanych wczesnych
+  stderr Sage recenzenta zachowane. Następne typy:P02 source arithmetic/
+  caller domains,P06 mapping i INTEGER_DEFECT_TRANSPORT. Brak awansu B20.

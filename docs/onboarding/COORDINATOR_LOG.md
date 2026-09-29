@@ -541,3 +541,55 @@ w historii. Następny krok po zakończeniu: ocena wyniku i checkpoint przy PASS.
   T12.1:wykonawca kontynuuje w swoim RUN_002 z oboma przypiętymi wkładami;
   GAME_BINDING v2.1 pozostaje źródłem RO. M6/T5 zachowują opisane otwarte
   interfejsy. Lokalny commit metadanych,bez push;cudzy wpis Qwen poza nim.
+
+## 2026-09-29T12:57:45Z — scoped odbiór T03-B przyjęty; import obu stage'ów
+
+- Właściciel przekazał PASS_SCOPED_REVIEW Sol Fast (`openai/gpt-6-sol-fast`,
+  Fast),świeży kontekst,sesja ses_f13139bc5ffeFI41laN8mgF1PA. Autor:Astra Fast,
+  sesja ses_f13640949ffeJ0RtC7tFAz07UR. Wszystkie joby zgłoszone zakończone;
+  własny odczyt /proc nie wykazał procesu przypisanego do obu W.
+  External REVIEW `acad9276fa7e8ed6924b8a1ada1bbf84052be330d3a0e1641a2850f2e6b5d84e`,
+  REVIEW_OUTPUTS `a4118200de729562ad1e6396c0bb252a204d9a1ee0f7d7ce085db1fb11689956`.
+- `python3 -B proofs/ft1536/work/FT1536_T03_B_GAP_ACCEPTANCE_2026-09-29/
+  check_review.py`:archive.verify_bundle autora1939/1437 i review115/1946,
+  exact review set,subject pins/IDs/scope oraz recorded source/log/product
+  bindings zgodne.10 semantic matches z własnego replayu recenzenta7/7,
+  suma czasów kroków452.33s;UBSan/ASan3/3 każde.28 raw step logs+18 C command
+  bindings;5 końcowych sidecar exits0/puste stderr. To kontrola integralności,
+  nie ponowny mathematical review/replay prowadzącego.
+- Przyjęty zakres:15 identities algebra-only,ledger10 termów,old-target
+  add_C1643,warunkowe rachunki i7 missing interfaces. E dodawać w coefficient-
+  space po physical inverse;A1–D są root-space. Source gap=null,recovery=false,
+  brak required-domain counterexample,owner_accepted=false. Status autora
+  pozostaje BLOCKED_UPSTREAM_EXPORTS.3 wczesne stderr Sage recenzenta zostały
+  nadpisane;ograniczenie jawne w frozen REVIEWER_FAILED_ATTEMPTS,bez fikcyjnych
+  raw logs/source-before-after receiptów. Końcowe źródła/logi/wynik są sealed.
+- Review INPUTS ma ścieżki względem REVIEW_W/inputs. `prepare_import.py`
+  i `archive.py bootstrap .../review-import-source --plan .../REVIEW_IMPORT_PLAN.json`
+  przygotowały2062 byte-identical files z1946 origin copies;manifest projection
+  `5666055ad89cab4911ee04e4d641a579f4ca545d4438677e31bd9d32cae2f8cb`.
+  Frozen output/INPUTS/REVIEW_OUTPUTS nie zmieniono.
+- `archive.py import <AUTHOR_W> --manifest-sha 12df6105… --report-sha b2e8c9af…
+  --replay none`:FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002,1939 outputs,
+  1437 inputs,integrity PASS. `archive.py import <review-import-source>
+  --id FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002_REVIEW_001
+  --manifest REVIEW_OUTPUTS.sha256 --report REVIEW.md --result REVIEW_RESULT.json
+  --manifest-sha a4118200… --report-sha acad9276… --replay none`:115 outputs,
+  1946 inputs,integrity PASS. replay=none oznacza custom dispatcher protocol;
+  wykonany replay i sanitizer evidence recenzenta są przypięte w stage.
+- `python3 -B proofs/ft1536/tools/archive.py verify`:**44 checkpointy,
+  57 dokumentów PASS**,exit0,55.17s,stderr pusty. `archive.py list --markdown`
+  zachowano. REVIEW_BINDING SHA
+  `94a16c8df7410f250ad7088bcec9bb863ef9390df17709eaa36d5290302573e6`.
+  `archive.py bootstrap background/T03_B_GAP_ACCEPTANCE_2026-09-29 --plan …`
+  zachowuje12 receiptów/źródeł/dokumentów,MANIFEST
+  `8fccd9b38e802efb9fed0aae383225638d3e142d09a39b69abd098180d8800fe`.
+- Następna komenda: `archive.py checkpoint FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002
+  --with-stage FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002_REVIEW_001
+  --include docs/onboarding/COORDINATOR_LOG.md --include docs/onboarding/ROADMAP.md
+  --include proofs/ft1536/README.md`. Żywe CURRENT/STATE/PROOF_MAP i evidence
+  zapisane osobnym lokalnym commitem,bo checkpoint ma ścisłą allowlistę,
+  a STATE zawiera zastany cudzy wpis Qwen. Pełna closure przez importer/checkpoint.
+- Następny obowiązek matematyczny:P02 literal arithmetic/real-error/caller
+  domain dispatcher,P06 placement/ring,potem INTEGER_DEFECT_TRANSPORT3072.
+  Status B20 nie zmieniony. Bez nowych modeli,replayów,push lub source integration.

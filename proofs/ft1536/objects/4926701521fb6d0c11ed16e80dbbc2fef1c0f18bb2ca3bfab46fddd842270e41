@@ -1,0 +1,64 @@
+[
+  {
+    "argv": [
+      "/usr/bin/gcc",
+      "--version"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 0.0013100859941914678,
+    "stdout": "c_version.stdout",
+    "stdout_sha256": "4dc9a4e32fd9e06d42fb307688c59d6d889f0ff90ce034cbefed21b0d451fd81",
+    "stderr": "version.stderr",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "/usr/bin/gcc",
+      "-std=c99",
+      "-W",
+      "-Wall",
+      "-O",
+      "-DFPR_IMPL=\"fpr-emulated.h\"",
+      "-DSAMPLER_CODF=0",
+      "-DSAMPLER_CDF=0",
+      "-DCT_BEREXP=1",
+      "-DFT_TERNARY_ADAPTIVE_CDF=1",
+      "-DFT1536_CANDIDATE_PROFILE=1",
+      "-DCLEANSE=1",
+      "-DTRUE_TERNARY_SECRET=1",
+      "-DTRUE_TERNARY_SECRET_MODE=1",
+      "-DTERNARY_KEYGEN_BOUND_SCALE_NUM=1250",
+      "-DTERNARY_KEYGEN_BOUND_SCALE_DEN=100",
+      "-DTERNARY_KEYGEN_MAX_ATTEMPTS=3000000",
+      "-DSIGN_MAX_ATTEMPTS=16",
+      "-fsanitize=address",
+      "-fno-sanitize-recover=all",
+      "-fno-omit-frame-pointer",
+      "-I/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002/inputs/bootstrap/T03/inputs/bootstrap/source",
+      "-I/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002/run/asan_002/build",
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002/run/asan_002/build/local_slices.c",
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002/inputs/bootstrap/T03/inputs/bootstrap/source/fpr-emulated.c",
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002/inputs/bootstrap/T03/inputs/bootstrap/source/falcon-fft.c",
+      "-lm",
+      "-o",
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002/run/asan_002/build/local_slices"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 0.5461095139908139,
+    "stdout": "c_compile.stdout",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "compile.stderr",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002/run/asan_002/build/local_slices"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 0.009134724998148158,
+    "stdout": "C_SLICES.ndjson",
+    "stdout_sha256": "97d170258b644e1a0e020fe5a64de96508276155244e6cd31a86ec45937a1e6a",
+    "stderr": "run.stderr",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

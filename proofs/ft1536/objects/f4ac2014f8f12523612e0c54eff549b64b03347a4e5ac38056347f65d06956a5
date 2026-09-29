@@ -1,0 +1,69 @@
+{
+  "schema": "ft1536.reference_integer_recovery.certificate/1",
+  "task_id": "FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001",
+  "roadmap_id": "T03",
+  "tranche": "one-root",
+  "status": "PARTIAL_PROOF",
+  "status_justification": "A proved (independent exact reference, mapping, integrality, congruence); B open (composed uniform gap bound 6086.4 >= 1/2, minimal missing type + thresholds given); C rounding-gap lemma proved and tie-complete but its application needs B; D conditional consumer + precise Verify obligations. Not promoted to PROVED: no new gate, no Safety premise, no source-output reference.",
+  "domain": {
+    "required": "every emitted/same-STATIC normalized key (P_key caps), canonical c in {0..18432}^1536, legal completed positive-source-support root history H per JOINT; single K_seed[E]/p_K once, nonce 40, STATIC 4096, source gates unchanged",
+    "source_pins": {
+      "CANDIDATE.sha256": "56974571b46e8257bdd3b4097c8c70fded6bb4b94c64805f6e35ec80929a0985",
+      "bootstrap MANIFEST.sha256": "c9695c8032faa84f03e254370e5420254d8b96951e95d75e605fe382107a0e2b",
+      "TASK": "bbd1f59e795beb3bb7e46e62d0ae86f4f1aa7464c9cc70f9f074d86b83af6169",
+      "BASE": "1aed8adebb68105e1517ab441046a0bbc6c424e7"
+    }
+  },
+  "reference_definition": {
+    "ring": "Z[X]/(X^1536-X^768+1), q=18433",
+    "B": "[[g,-f],[G,-F]] exact coefficient secrets, det B = fG-gF = q",
+    "Z_Y": "signed permutation (+1) of the 3072 integer scalar returns into (a,b) coefficient slots, built only from the literal call order and merge conventions",
+    "v_ref": "[c,0] - Z(Y)*B = (c - a*g - b*G, a*f + b*F)",
+    "independent_of_source_output": true
+  },
+  "source_sample_mapping": {
+    "calls": 3072,
+    "order": "root right(t1/b) before left(t0/a); cubic child 2->1->0; binary right before left; terminal mu1-return (Y1) before updated-mu0 return (Y0)",
+    "placement": "merge out[2i]=u0[i],out[2i+1]=u1[i]; cubic out[3i+c]=v_c[i]; signs +1",
+    "table": "checks/z_map_full.json (bijective, machine-checked)"
+  },
+  "integrality": {"status": "PROVED", "scope": "all coefficients of both vectors, all required H", "evidence": "EXACT_SKELETON.md 1-3, CONGRUENCE.md 1; checks/exact_ring_checks A_integrality"},
+  "congruence": {"status": "PROVED", "claim": "v_ref1 + h*v_ref2 = c mod (q,Phi) for public h of the same key", "evidence": "CONGRUENCE.md 2-3 (ring identity + key relations fG-gF=q, f invertible mod q); checks C3/C4/C5"},
+  "recovery": {
+    "status": "OPEN",
+    "lemma": "PROVED: |t-v|<1/2 => rint=v; tie |t-v|=1/2 resolves by parity (v even => v, v odd => v+1), both signs (formal/RintGap.lean)",
+    "application": "needs uniform gap < 1/2 for all 3072 pre-rint words; composed bound = 6086.4 (SOURCE_ERROR.md)",
+    "gap_semantics": "nearest-even, magnitude round + symmetric sign restoration (fpr_rint literal); NOT floor"
+  },
+  "verify_consumer": {
+    "conditional": "recovery AND joint Safe16 (precast before 1931/1932) => stored pair = v_ref => congruence for the stored pair",
+    "open_obligations": [
+      "uniform pre-rint gap < 1/2 (component B)",
+      "Safe16 precast before narrow16 cast (POST precast.Safe16_proved=false; no witness here)",
+      "center/norm compatibility for Verify: congruence + Q(s1,s2)<B does NOT imply Q(center_q(s1),s2)<B for the A2 form with cross terms (explicit local countermodel in COUNTERMODELS.md); no monotonicity postulated",
+      "bytes/encoder path, whole retries, real PRNG bridge, M0 eta_pre: out of scope"
+    ]
+  },
+  "exact_proof_boundary": "kernel: per-slot cancellation (SkeletonCancel.lean) + rounding-gap lemma (RintGap.lean), clean logs, axioms [propext, Quot.sound] only; exact QQ/integer ring checks and full-size skeleton instances machine-checked outside the kernel; source-model binding via pinned certificates and local C slices; no compiler/C kernelisation",
+  "controls": {
+    "exact_ring": "checks/exact_ring_checks.json (2 synthetic key families incl. non-constant f with h*f-g=q*k, 3 Z-trials each; mutations M_wrong_h/M_wrong_sign_in_v2_row/M_wrong_target_sign/M_wrong_basis_swap_rows_det detected; NOOP clean)",
+    "skeleton": "checks/skeleton_cancellation.json (exact rational E1/E1b/E2; mutations incl. dropped cancellation and swapped paired order detected; source-output-as-reference shown equivalent on exact skeleton and detected with rounding jitter)",
+    "gap_ledger": "checks/gap_composition.json (outward rationals; pinned crosscheck C1_formula=C1)",
+    "rint_ties": "1078 boundary cases, 0 mismatch, recovery_fail 0",
+    "c_slice": "fpr_rint public slice: 3 builds (normal/-O literal, ASan, UBSan), byte-identical outputs, 60384 oracle cases, 0 mismatch, domain preflight ex<=1072 before native call",
+    "mutations_noop": "all meaningful mutations detected; no-ops not flagged"
+  },
+  "replay": {"fresh": "artifacts/fresh_replay.json", "post_freeze": "recorded in REPORT.md / REPLAY.md"},
+  "flags": {
+    "whole_Sign": false,
+    "real_PRNG": false,
+    "security": false,
+    "retry": false,
+    "Sign_to_Verify": false,
+    "new_M0_eta_pre": null
+  },
+  "source_changed": false,
+  "production_source_changed": false,
+  "new_source_patch_integrated": false,
+  "owner_accepted": false
+}

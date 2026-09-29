@@ -12,6 +12,20 @@ ROADMAP określa zależności i kryteria następnych prac.
 
 To archiwum ukończonych etapów FT1536 w docelowym `free_falcon_sign`.
 
+**2026-09-29 — T03-B RUN_002: niezależny PASS_SCOPED_REVIEW dla BLOCKED_UPSTREAM_EXPORTS.**
+[Autor](stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002/REPORT.md),
+[odbiór Sol Fast](stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002_REVIEW_001/REVIEW.md),
+[wiążący scope](stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002_REVIEW_001/REVIEW_RESULT.json).
+1939 outputs/1437 inputs autora oraz115 outputs/1946 inputs recenzji.
+Potwierdzone15 identities algebra-only,10-termowy ledger,old-target add_C1643
+i warunkowe rachunki;nowy source gap=null,full recovery=false. Własny replay
+recenzenta7/7 i10/10,UBSan/ASan3/3 każde,własne Sage/Lean exit0.
+3 wczesne stderr własnego Sage zostały nadpisane — jawne ograniczenie w
+[REVIEWER_FAILED_ATTEMPTS](stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002_REVIEW_001/REVIEWER_FAILED_ATTEMPTS.md).
+Oba `replay=none` katalogu oznaczają custom protocol,nie brak replayu;
+oryginalny autorowy REPLAY.md i niezależne receipty są sealed.
+Następne:P02 source arithmetic/domains,P06 mapping,INTEGER_DEFECT_TRANSPORT.
+
 **2026-09-25 — nowe importy T12.1/T5 (PARTIAL_PROOF, bez niezależnego odbioru):**
 [T12.1 RUN_001](stages/FT1536_MATH_EUFCMA_MTISIS_RUN_001/REPORT.md) — prawo
 retry, kierunkowe Phi/chi², ekstrakcja celu; 4461 plików.

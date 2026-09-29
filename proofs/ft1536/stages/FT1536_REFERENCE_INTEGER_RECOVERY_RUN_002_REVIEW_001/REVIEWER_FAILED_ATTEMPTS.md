@@ -1,0 +1,7 @@
+# Próby recenzenta przed końcowym PASS
+
+- `run/fresh_001` (exit1, receipt + raw stderr w `evidence/fresh_001/`): outer bwrap bez własnego `/proc` wystawił `/proc` RO i nested bwrap zakończył `bwrap: setting up uid map: Read-only file system` przed gate. Nie reinterpretowano jako porażki autora. Poprawiona konfiguracja mountów uruchomiona jako `fresh_002` w nowym DEST.
+- Własny `reviewer_arithmetic.sage` miał robocze nieudane odpalenia: Sage ustawia `__file__` na lokalizację preparsera (naprawiono przez jawne `REVIEW_W`), następnie błędne odejmowanie `t0` zamiast odniesienia `t0−y0` w moim oracle (poprawiono po niezależnym odczycie surowych C words), nazwy generatorów PolynomialRing zapisane spacjami zamiast krotką oraz Sage Integer w JSON (`reviewer_arithmetic_failed_serialization.stderr` zachowany). Wcześniejsze trzy stderr były nadpisane przy roboczych powtórzeniach; nie traktuję ich jako kompletnych surowych logów. Końcowy source/log/exit0 i wynik `REVIEW_SAGE.json` są zachowane. Niezgodność `z0−t0` to błąd roboczego checkera recenzenta, nie błąd frozen subject.
+- Nieudane próby autora (`initial_001`, `normal_001`, `finalize_001/002`) mają oryginalne źródła, receipty/rekordy i surowe logi w pinned subject; kontrola `audit_claim.py` sprawdziła te ślady. Nie przepisywano historii autora.
+
+Nie ma niewyrównanych matematycznych failures końcowych. Ograniczenie: robocze wcześniejsze stderr recenzenta nie mają pełnej oddzielnej kopii; ten fakt jest jawną granicą ewidencji.

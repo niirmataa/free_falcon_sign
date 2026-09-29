@@ -1,0 +1,28 @@
+{
+  "schema": "T03_RUN002_REPLAY_PLAN_V1",
+  "defined_before_fresh_replay": true,
+  "baseline": "run/final_002",
+  "fresh_destination": "replay/fresh_003",
+  "baseline_overrides": {
+    "build/FORMAL_TYPES_TERMS.txt": "run/audit_001"
+  },
+  "files": [
+    "build/TOOLCHAIN_GATE.json",
+    "build/LEAN_RUNTIME.sha256",
+    "build/BUDGET_ANALYSIS.json",
+    "build/C_DOMAIN_PREFLIGHT.json",
+    "build/C_SLICES_CHECK.json",
+    "build/C_SOURCE_BINDING.json",
+    "build/C_SLICES.ndjson",
+    "build/public_cases.h",
+    "build/local_slices.c",
+    "build/FORMAL_TYPES_TERMS.txt"
+  ],
+  "nonsemantic": [
+    "wall-clock receipts, absolute command paths and timings",
+    "runtime caches and newly built olean/executable products",
+    "diagnostic failed run artifacts and source snapshots",
+    "sanitizer receipts: separately executed and retained, no false recomputation claim"
+  ],
+  "claim": "A match means this exact file was produced successfully from unchanged source in the new destination; it is not proof of source recovery."
+}

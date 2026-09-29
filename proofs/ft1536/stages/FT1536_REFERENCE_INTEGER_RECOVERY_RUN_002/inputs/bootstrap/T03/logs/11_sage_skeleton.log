@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/home/footfalcon/miniforge3/envs/sage/bin/sage", line 5, in <module>
+    from sage.cli.__main__ import main
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__main__.py", line 9, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__init__.py", line 56, in main
+    return RunFileCmd(options).run()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/run_file_cmd.py", line 50, in run
+    eval(compile(open(input_file, 'rb').read(), input_file, 'exec'), sage_globals())
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_001/tmp/sage_s8c1qc8s/skeleton_cancellationjqo75e6o.sage.py", line 280, in <module>
+    Lm[('bin', side, c, tuple(p))] = [QQ(_sage_const_1 , _sage_const_3 )]
+                                      ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "sage/structure/parent.pyx", line 901, in sage.structure.parent.Parent.__call__
+    return mor._call_with_args(x, args, kwds)
+  File "sage/categories/map.pyx", line 856, in sage.categories.map.Map._call_with_args
+    raise NotImplementedError("_call_with_args not overridden "
+NotImplementedError: _call_with_args not overridden to accept arguments for <class 'sage.rings.rational.Z_to_Q'>
