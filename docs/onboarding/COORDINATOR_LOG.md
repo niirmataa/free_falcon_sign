@@ -742,3 +742,17 @@ w historii. Następny krok po zakończeniu: ocena wyniku i checkpoint przy PASS.
   STATE/PROOF_MAP/evidence osobno z ochroną zastanego wpisu Qwen w STATE.
 - Następny krok po commicie:source dispatcher fpr_add i real-error/caller
   domains,wg odebranego scope i potrzeb T03-B. Bez automatycznego workera/push.
+
+## 2026-09-29T15:47:13Z — checkpoint pary P02/V02 zakończony
+
+- Kanoniczny `prlimit --stack=33554432 -- python3 -B .../archive.py checkpoint
+  B20_001_P02_FINAL_001 --with-stage B20_001_V02_FINAL_001 --include ...`
+  zakończył się exit0,574.50s. Commit
+  `02cb5727a93b1478085e19e11f06440772086ed6`,main,niirmataa,34059 dokładnych
+  pathspeców pary/objects/STATUS/dziennika/indeksów. Pełna closure zachowana.
+- Kod/walidacja archive.py i piny niezmienione. Ograniczenie ARG_MAX rozwiązano
+  udokumentowanym środowiskiem procesu,bez pomijania sprawdzeń lub hooks.
+  stdout/stderr/receipt w work/B20_001/_coordination/PAIR02_IMPORT_001.
+- Następny lokalny commit:żywe CURRENT/STATE/PROOF_MAP/START_HERE i18 plików
+  evidence kontroli;zastany wpis Qwen3 w STATE pozostaje poza commitem.
+  Dalej source arithmetic/caller domains,bez wznowienia frozen workerów.

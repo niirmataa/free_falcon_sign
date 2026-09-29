@@ -47,6 +47,7 @@ CLAIM/certificate i NEXT_INTERFACE danego etapu, dopiero potem formal/scripts.
 | `FT1536_H6P_REFERENCE_BAD_EVENT_RUN_001` | one-root joint BadPrecast Q_S≤2^-119, P_IID≤2^-84, source V/E/MGF |
 | `FT1536_IID_RETRY_COMPOSITION_RUN_001` | T01 REVIEWED: one post-H2P cap16 G_retry_IID region,WholeRegionBad≤2^-80,coupling,simultaneous resources i STATIC bytes |
 | `FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002` + `…_REVIEW_001` | T03-B REVIEWED_SCOPED/BLOCKED_UPSTREAM_EXPORTS:15 identities algebra-only,pełny ledger,old-target update-add diagnosis;source gap/recovery OPEN. Konsumpcja według REVIEW_RESULT/NEXT_INTERFACE recenzji |
+| `B20_001_P02_FINAL_001` + `B20_001_V02_FINAL_001` | REVIEWED/PARTIAL:LE64 i literal-word execution w scoped domenach;no_add_dispatch wyklucza instancję conditional sub. Arithmetic real-error/caller/real-rint OPEN. Dokładny consumer scope w V02/REVIEW_RESULT.json |
 
 Najkrótsze ścieżki od odebranego retry do T02:
 - [T01 PRNG_NEXT_INTERFACE](../../proofs/ft1536/stages/FT1536_IID_RETRY_COMPOSITION_RUN_001/PRNG_NEXT_INTERFACE.md)

@@ -110,5 +110,7 @@ przez ten scoped PASS. owner_accepted=false,publikacja osobnym poleceniem.
 Najpierw [uzupełnienie jego freezu i V02](CURRENT_P02_TASK.md),potem nowe
 source proofy według rzeczywiście odebranych eksportów. Przygotowanie
 nowego add/sub zostało odłożone;nie uruchomiono wykonawcy tego proofu.
-Suplement P02 jest już frozen v2;bieżący start to
-[niezależny V02](CURRENT_P02_REVIEW_TASK.md) w nowym oknie właściciela.
+P02 v2 i [V02](CURRENT_P02_REVIEW_TASK.md) są już odebrane zakresowo.
+No_add_dispatch potwierdził kernelowo brak używalnego AddCallObligation;
+next source arithmetic/error/caller proof nadal potrzebny. Odebrane
+LE64/word exports można wykorzystać w ich dokładnych domenach.

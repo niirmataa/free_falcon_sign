@@ -45,7 +45,7 @@ prawdopodobieństwa BadPrecast z uniwersalnym Safe16 lub Sign→Verify.
 | Kontynuacja T03-B: pełny budżet błędu i integer recovery | [CURRENT_B_GAP_TASK](proofs/ft1536/CURRENT_B_GAP_TASK.md) |
 | Niezależny odbiór frozen T03-B RUN_002 | [CURRENT_B_GAP_REVIEW_TASK](proofs/ft1536/CURRENT_B_GAP_REVIEW_TASK.md) |
 | Wykonany P02 — aktualny frozen pakiet v2 i piny | [CURRENT_P02_TASK](proofs/ft1536/CURRENT_P02_TASK.md) |
-| Niezależny V02 gotowego P02 v2 — start w nowym oknie | [CURRENT_P02_REVIEW_TASK](proofs/ft1536/CURRENT_P02_REVIEW_TASK.md) |
+| Odebrany V02/P02 v2 — scoped eksporty i otwarte interfejsy | [CURRENT_P02_REVIEW_TASK](proofs/ft1536/CURRENT_P02_REVIEW_TASK.md) |
 | Osobna Astra — matematyczne Sign i redukcja EUF-CMA→MT-ISIS (T12.1) | [CURRENT_MATH_TASK](proofs/ft1536/CURRENT_MATH_TASK.md) |
 | Korekty Family/S01, warunek publikacji | [CURRENT_FAMILY_TASK](proofs/ft1536/CURRENT_FAMILY_TASK.md) |
 | Niezależny odbiór zwróconych korekt S01 | [CURRENT_FAMILY_REVIEW_TASK](proofs/ft1536/CURRENT_FAMILY_REVIEW_TASK.md) |

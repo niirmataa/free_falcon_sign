@@ -1,5 +1,25 @@
 # Stan projektu — punkt wejścia
 
+**2026-09-29 — P02 v2 REVIEWED / PARTIAL_PROOF; V02 PASS_SCOPED_REVIEW.**
+[Autor](../../proofs/ft1536/stages/B20_001_P02_FINAL_001/REPORT.md),
+[recenzja](../../proofs/ft1536/stages/B20_001_V02_FINAL_001/REVIEW.md).
+Autor dowodów Astra Fast,recenzent Sol w świeżej sesji
+`ses_f12645f4effei2l7zDf6rzsuJN`. Właściciel doprecyzował niezależność
+względem autora dowodu;wspólny model z pakującym w innej sesji pozostaje jawny.
+30612 outputs autora/29751 inputs i343 review outputs/30633 inputs zgodne.
+Własny replay V02:43/43,16/16,45 child commands,254.708s;własne Sage/Lean/C
+1437 przypadków,10/10 expected exits. Koordynator sprawdził piny/receipty
+i wykonał import,setter:P02=REVIEWED,V02=REVIEW_COMPLETE,bez nowego replayu.
+Odebrane LE64 i literal-word execution tylko w dokładnych domenach V02.
+**no_add_dispatch** potwierdza niespełnialność AddCallObligation;conditional
+sub nie jest używalnym kontraktem arytmetycznym. Real add/mul/div/sqrt,
+real-rint,caller domains i C→machine nadal OPEN,T03-B bez pełnego recovery.
+Zachowano6 nadpisanych old child streams,old HEAD UNRECORDED i granice
+druków/historii recenzenta. REVIEW30a82492…/REVIEW_OUTPUTS792b5fb6…;
+owner_accepted=false. Global verify:46 checkpointów/59 dokumentów PASS.
+Checkpoint pary:`02cb572`,main jako niirmataa,bez push.
+[Dokładny scope i następny interfejs](../../proofs/ft1536/CURRENT_P02_TASK.md).
+
 **2026-09-29 — P02 v2 przyjęty integralnościowo; V02 gotowy do nowego okna.**
 REPORTce3cad72…/OUTPUTSaf60f1b4…,HEAD41216bb…;30612/30612 outputs,
 29751 static inputs,68 poprzednika zgodne. Recorded fresh43/43 i16/16,
