@@ -1,5 +1,18 @@
 # Stan projektu — punkt wejścia
 
+**2026-09-29 — otrzymano frozen T03-B/RUN_002: BLOCKED_UPSTREAM_EXPORTS.**
+Autor GPT-6 Astra Fast,sesja `ses_f13640949ffeJ0RtC7tFAz07UR`,zakończył joby.
+REPORT `b2e8c9af…`;OUTPUTS `12df6105…`. Koordynator potwierdził1939/1939
+outputs,1437 inputs,13 receiptów/57 kroków/114 raw logów,27 poleceń Sage,
+10 semantic bindings i15 eksportów. To integralność,bez nowego review/replayu.
+Wynik autora:15 kernelowych identities algebra-only,ledger10 termów,
+diagnoza add_C1643±2^-25 (lokalne C,bez membership required domain).
+Warunkowa reszta≈11.51331245 nadal przekracza1/2;nowy uniform source bound=null.
+P02/P06 i transport3072 old-target defects pozostają otwarte. Workflow:
+**FROZEN_AWAITING_REVIEW**,bez awansu B20 i bez importu do stages.
+[Osobny odbiór](../../proofs/ft1536/CURRENT_B_GAP_REVIEW_TASK.md) przygotowany,
+1946 RO input files,manifest `6a784862…`;model/świeży kontekst wybiera właściciel.
+
 **2026-09-29 — odczyt stanu T12.1/RUN_002 przed kontynuacją.**
 Właściciel chce kontynuować `FT1536_MATH_EUFCMA_MTISIS_RUN_002`.
 [CURRENT_MATH_TASK](../../proofs/ft1536/CURRENT_MATH_TASK.md) wskazuje teraz

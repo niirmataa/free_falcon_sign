@@ -483,3 +483,40 @@ w historii. Następny krok po zakończeniu: ocena wyniku i checkpoint przy PASS.
   konkretnych brakujących typów; po pracy jeden finalny pakiet W/output,
   niezależny odbiór,zaakceptowane stages i lokalny commit. Zastany wpis
   Qwen3 w STATE pozostaje poza commitem tej aktualizacji.
+
+## 2026-09-29T11:03:31Z — T03-B RUN_002 handoff bound; review przygotowany
+
+- Właściciel przekazał frozen FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002,
+  BLOCKED_UPSTREAM_EXPORTS. Autor:GPT-6 Astra Fast,sesja
+  ses_f13640949ffeJ0RtC7tFAz07UR;freeze10:54:17Z,joby zakończone.
+  External REPORT `b2e8c9af003edee089b49156541e631e3ab8bb01c93f9cad521edf7b66a59dfc`,
+  OUTPUTS `12df61056ddada2f79c1b94b3b17e8f326db2b3a2cbe53d1694754d79d7958cc`.
+- Komenda:`python3 -B work/FT1536_T03_B_GAP_REVIEW_PREPARATION_2026-09-29/
+  check_intake.py` (pełna ścieżka od proofs/ft1536). archive.verify_bundle
+  read-only,bez importu:1939 outputs/75969266B,1437 inputs exact set zgodne;
+  13 receiptów/57 kroków/114 raw logów,27 poleceń Sage,10 trójstronnych
+  semantic matches i15 bindings eksportów zgodne. Historyczny exit1 jawny.
+  /proc:brak dopasowanego jobu autora. INTAKE SHA
+  `c3db57d69e29826c2c357989607b64a6cdefab6b9999053368569df49760f2cb`.
+- Zakres claimu:15 identities algebra-only,ledger10 termów,diagnoza
+  add_C1643±2^-25 bez required-domain membership. Uniform source bound=null;
+  warunkowa pozostała suma≈11.51331245 nadal≥1/2. Ocena matematyczna pending.
+- `archive.py document` + `task-init` + `bootstrap`: przygotowano
+  FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002_REVIEW_001,1946 plików/76241324B.
+  TASK SHA `bac2fb51450551b21c461d79e6c43d9d1a9dce64d42343c49290d9600aee9adf`;
+  IN manifest `6a784862e05cfffec5b691e286ff146c31c88e3be71d4b636456de2c8e3ef9d2`.
+  Exact sets/ORIGINS/hash binding sprawdzone,pliki RO. Pusty mountpoint
+  subject/review_work i W/run przygotowane do custom replayu w izolacji.
+  TASK opisuje zachowanie W.parents[3]/P01 bez edycji źródeł autora.
+- `archive.py bootstrap background/T03_B_GAP_REVIEW_2026-09-29 --plan …`
+  zachowuje7 dokumentów kontroli/przygotowania,manifest
+  `89ea9a2022f0f36dcb135aa66131d2058b01936ebd700ab482df9682d370fe25`.
+  `archive.verify_documents` potwierdził57 przypiętych dokumentów;
+  evidence7+MANIFEST/ORIGINS ma exact set i zgodne hashe.
+  Autor pozostaje w frozen W,workflow FROZEN_AWAITING_REVIEW;żaden stage
+  autora/recenzji nie został importowany. Status B20 bez awansu.
+- Następny krok:właściciel wybiera inny model niż Astra Fast,w świeżym
+  kontekście,i ręcznie startuje R1–R8 z CURRENT_B_GAP_REVIEW_TASK. Własny
+  mathematical review/replay wykona recenzent. Po scoped odbiorze prowadzący
+  wykona import zaakceptowanego zakresu i lokalny commit main jako niirmataa.
+  Obecny commit zapisuje tylko przygotowanie/status;bez push i startu modelu.

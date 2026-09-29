@@ -1,8 +1,17 @@
-# T03-B — RUN_002 przygotowany do ręcznego startu
+# T03-B — RUN_002 frozen, oczekuje niezależnego odbioru
 
-**PREPARED_OWNER_START,2026-09-29.** ROADMAP_ID=T03,
+**FROZEN_AWAITING_REVIEW,2026-09-29.** ROADMAP_ID=T03,
 TASK_ID=FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002.
-Wykonawca/model/kontekst: do wyboru właściciela; nieuruchomiony.
+Status matematyczny autora:**BLOCKED_UPSTREAM_EXPORTS**,częściowa algebra
+B0/B1 i diagnoza;pełny recovery OPEN. Autor:GPT-6 Astra Fast,
+sesja `ses_f13640949ffeJ0RtC7tFAz07UR`,świeży kontekst według HANDOFF.
+Własne joby autora zakończone. Frozen W nie wznawiać.
+
+REPORT `b2e8c9af003edee089b49156541e631e3ab8bb01c93f9cad521edf7b66a59dfc`;
+OUTPUTS `12df61056ddada2f79c1b94b3b17e8f326db2b3a2cbe53d1694754d79d7958cc`.
+1939 plików/75969266B;1437 inputs. Koordynator potwierdził piny/receipty,
+bez własnego mathematical review/replayu. Niezależny odbiór przygotowany:
+**[CURRENT_B_GAP_REVIEW_TASK](CURRENT_B_GAP_REVIEW_TASK.md)**.
 
 **Koordynator wskazany przez właściciela2026-09-29:** GPT-6 Astra Fast,
 `openai/gpt-6-astra-fast`,sesja `ses_f137502d0ffe6BYk3HEHU1xxZL`.
@@ -27,6 +36,14 @@ z jawnymi brakami P02/P06 i dalszych konkretnych source exports.
 wystarczają przy zachowaniu reszty ledgeru: D≈15.6675, A3≈0.432907;
 po idealizowanym wyzerowaniu wskazanych rodzin pozostaje16.10836.
 To wynik rachunku majorant, nie kontrprzykład źródeł. B-gap nadal OPEN.
+
+Zwrot RUN_002:15 kernelowych identities **algebra-only**,10-termowy ledger,
+lokalny defekt add_C1643±2^-25 bez required-domain membership. Warunkowe
+D≈11.07859487,A3≈0.42676412,A1+A3+D+E≈11.51331245 nadal niewystarczające;
+nowy uniform source bound=null. Otwarte źródłowe P02/P06 i transport3072
+old-target defects;dokładne typy w frozen EXPORT_DEPENDENCIES.json.
+Fresh replay autora10/10 i sanitizer controls są przypiętymi claimami do
+niezależnego sprawdzenia. Scoped review nie awansuje tego do recovery/security.
 
 ## Folder wykonawcy i odbiór — decyzja właściciela2026-09-29
 
@@ -60,20 +77,9 @@ koordynator po odbiorze. Publikacja wymaga osobnego polecenia właściciela.
 Ta instrukcja doprecyzowuje organizację pracy; TASK/bootstrap piny i cel
 matematyczny zachowują swój zakres.
 
-## Prompt do ręcznego przekazania wybranemu wykonawcy
+## Następny start
 
-> Pracujesz w `/media/footfalcon/FT1536_DATA/free_falcon_sign` jako wykonawca
-> `FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002` (T03-B). Przeczytaj AGENTS,
-> START_HERE, STATE, CURRENT_B_GAP_TASK, własne W/AGENTS i przypięty TASK.
-> Sprawdź ownership, piny bootstrapu/source17 i required exports. Zapisz swój
-> model/kontekst w HANDOFF. Wykonaj B0–B5 z pełnym budżetem A–E; zacznij od
-> ledgeru i source suffix D/A3. Stare progi §3 nie są proved premises.
-> Wymagane Sage .sage + Lean4/Mathlib kernel i source binding. Wszystkie
-> zapisy pod `proofs/ft1536/work/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002/`,
-> bez Git/push/subagentów/relay. W korzeniu W oddaj REPORT.md,RESULT.json,
-> OUTPUTS.sha256 i HANDOFF.md z pełnymi REPORT/OUTPUTS SHA,rzeczywistym
-> zakresem i zakończonymi jobami. Koordynator przygotuje osobny niezależny
-> odbiór,a po zaakceptowaniu zakresu wykona import do stages i lokalny commit.
-
-Właściciel uruchamia jeden model; po handoffie osobny niezależny odbiór.
-Przygotowanie nie zmienia statusów P07–P10 ani historycznego T03 PARTIAL.
+Właściciel wybiera inny model w świeżym kontekście i przekazuje
+[prompt niezależnego odbioru](CURRENT_B_GAP_REVIEW_TASK.md).
+Po scoped odbiorze koordynator importuje zaakceptowany zakres do stages
+i zapisuje lokalny commit main. P07–P10 nie odblokowano przez ten handoff.
