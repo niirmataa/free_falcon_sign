@@ -1,5 +1,19 @@
 # Stan projektu — punkt wejścia
 
+**2026-09-29 — P02 v2 przyjęty integralnościowo; V02 gotowy do nowego okna.**
+REPORTce3cad72…/OUTPUTSaf60f1b4…,HEAD41216bb…;30612/30612 outputs,
+29751 static inputs,68 poprzednika zgodne. Recorded fresh43/43 i16/16,
+50 source bindings,45 child commands,9 historycznych runów/144 kroków/
+288 raw logs sprawdzone,bez nowego proofu/replayu koordynatora.
+Autor suplementu:Sol,sesja ses_f13139bc5ffeFI41laN8mgF1PA,kontekst
+kontynuowany po T03-B (właściciel potwierdził). Ograniczenia:6 nadpisanych
+old child log paths,old HEAD UNRECORDED,old print skrócony z nowym pełnym
+auditem. P02 **FROZEN_AWAITING_REVIEW / PARTIAL_PROOF** zapisany setterem.
+[V02](../../proofs/ft1536/CURRENT_P02_REVIEW_TASK.md):30626 pinned inputs,
+MANIFEST6b076251…,BOUND_INPUTS15d1ee66…,prompt/suplement gotowe. Właściciel
+zapowiedział verify w nowym oknie;recenzenta tutaj nie uruchomiono.
+Matematyczne add/mul/div/sqrt i real-rint pozostają OPEN;V02 oceni scope.
+
 **2026-09-29 — właściciel: najpierw istniejący P02,uzupełnienie freezu i V02.**
 P02 ma wykonany `output/` z2026-09-25:COMPLETE_FOR_REVIEW/PARTIAL_PROOF,
 68/68 hashy zgodnych,REPORT98ea050b…/OUTPUTS4e8942cc…. Kontrola przygotowania

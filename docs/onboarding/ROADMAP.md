@@ -1,6 +1,6 @@
 # Główna ścieżka twierdzeń i jawny rejestr zadań FT1536
 
-Wersja planu: **2026-09-29 / 15 — istniejący P02: uzupełnienie freezu → V02**. To żywy plan prowadzącego, oparty na
+Wersja planu: **2026-09-29 / 16 — P02 v2 bound; niezależny V02 gotowy**. To żywy plan prowadzącego, oparty na
 [M0 TARGET_TYPE](../../proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001/TARGET_TYPE.md)
 i [M0 HOP_LEDGER](../../proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001/HOP_LEDGER.md).
 Nie zmienia zamrożonego M0 ani statusów starych raportów. Stan pracy na żywo:
@@ -116,7 +116,7 @@ ale hashe source/execution w review wymagają rozliczenia przed REVIEWED.
 | **T02.1 REVIEWED_SCOPED — PRNG_LAYOUT_COUNTER** | RUN_003 suplement F1–F5 odebrany przez MiMo V2.6 Flash; replay17/17,checker13/13 | PASS_SCOPED_SUPPLEMENT; kernel28 obejmuje arytmetykę,pełny source refinement/rundy domyka B20/P03. Realne piny w STATUS B20. [Odbiór](../../proofs/ft1536/validation/2026-09-22-prng-layout-supplement/README.md) | T01 resources,F07,pinned source17; T02 parent OPEN |
 | **T03 REVIEWED — PARTIAL_PROOF / REFERENCE_INTEGER_RECOVERY** | [Odebrany REVIEW_002](../../proofs/ft1536/validation/2026-09-22-integer-recovery-review-002/README.md):MiMo2.6Pro autor,Muse Spark1.3 xhigh w świeżym kontekście recenzent wg właściciela;11/11,15s,3 finalne bindings zgodne | Odebrane A/reference+mapping/congruence,C-lemma,D conditional. **B≈6086.4≥1/2 nadal OPEN**,podobnie Safe16/center/norm/bytes i pełny recovery. Kontynuacja T03-B poniżej | F03–F09; T01 do rozszerzenia na retries |
 | **T03-B REVIEWED_SCOPED — RUN_002 / BLOCKED_UPSTREAM_EXPORTS** | [Autor/piny](../../proofs/ft1536/CURRENT_B_GAP_TASK.md),[PASS_SCOPED_REVIEW](../../proofs/ft1536/stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002_REVIEW_001/REVIEW.md);Sol Fast,świeży kontekst,własny replay7/7 i10/10,UBSan/ASan oraz własne Sage/Lean | Odebrane15 identities algebra-only,ledger10 termów,diagnoza add_C1643 bez required-domain membership. Source gap=null;reszta≈11.5133≥1/2. B0/B1 częściowe,B2–B5 otwarte.3 wczesne stderr recenzenta nadpisane,ograniczenie jawne | F03–F09;P02 arithmetic dispatcher/real-error/caller domains,P06 mapping/ring,pełny INTEGER_DEFECT_TRANSPORT3072. P07–P10 bez awansu |
-| **T03/P02 — FREEZE_CLOSURE PREPARED_OWNER_START** | [Istniejący P02 i zlecenie](../../proofs/ft1536/CURRENT_P02_TASK.md);P02 output68/68,COMPLETE_FOR_REVIEW/PARTIAL,runner/audits/receipts poza starym freeze | Jeden nowy portable successor pakietu z raw evidence i jawnym HEAD,potem niezależny V02;zachowanie starych pinów i scope. Nowe add/sub odłożone do rozliczenia P02 | Rozwinięcie F03–F06/B20 P02;brak nadania REVIEWED lub zastąpienia V02. T03-B pozostaje zależny od faktycznych eksportów |
+| **T03/P02 — v2 FROZEN_AWAITING_REVIEW / PARTIAL_PROOF** | [P02 v2/piny](../../proofs/ft1536/CURRENT_P02_TASK.md),[V02 gotowy](../../proofs/ft1536/CURRENT_P02_REVIEW_TASK.md);30612 outputs zgodnych,43/43 i16/16 recorded fresh | Odbiór rzeczywistego scope P02 i F1–F4 z jawnymi6 overwrite limits/old HEAD;nowe add/sub odłożone do rozliczenia P02. Właściciel startuje V02 w nowym oknie | F03–F06/B20 P02;setter wiąże freeze,nie wydaje REVIEWED. T03-B pozostaje zależny od faktycznych eksportów |
 | **T04 PLANNED — PREFIX_AND_API_BINDING** | Pominięty przez T01 prefix: context/loader/rng_ready/nonce/H2P, usługi E i actual source outcomes | Dokładny zasięg definedness/termination/abort, legal ReadyRetryEntry z API i joint randomness interfaces. Brak ukrytego all-success lub IID premise | F02–F05,T01; T02 dla real-law claims |
 | **T05 PLANNED — GLOBAL_REFERENCE_GEOMETRY** | Actual parameters/tree/rounding oraz wybrane ordered reference law | Most do zadeklarowanego ideal coset Gaussian, z błędami/geometrią/secret dependence; Q_S/Q_stop nie stają się nim przez nazwę | F08,F09,T03; historyczny FULL_GEOMETRY |
 | **T06 PLANNED — COMPLETE_OBSERVED_BYTE_KERNELS** | Source/production/reference kernels, retries, bytes i bot outcomes | Jeden kompletny history-uniform consumer od funkcjonującego API do wskazanego prawa obserwacji; Sign→Verify tylko po T03 i właściwym center/norm bridge | T01–T05,F01,F02,F06 |
@@ -325,3 +325,8 @@ muszą wskazywać ten sam aktywny etap.
   Po stop-and-report właściciel zatwierdził przygotowanie uzupełnienia.
   TASK FT1536_P02_FREEZE_CLOSURE_RUN_001,bootstrap8700/088b407a…;nowy W,
   stary P02 RO. Potem V02 i dopiero kolejny proof według odebranego scope.
+- 2026-09-29/v16: uzupełnienie P02 v2 zwrócone przez Sol w kontynuowanym
+  kontekście,z potwierdzeniem właściciela. Piny30612 outputs i recorded
+  fresh43/43,16/16 zgodne;P02 final binding przez setter i promptV02
+  przez generator. V02 ma30626 RO inputs;start właściciela w nowym oknie.
+  Scope PARTIAL i6 ograniczeń logów/old HEAD zachowane,bez importu stages.

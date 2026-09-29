@@ -643,3 +643,47 @@ w historii. Następny krok po zakończeniu: ocena wyniku i checkpoint przy PASS.
   replay i nowy frozen output z parent task_id P02. Potem canonical setter
   i generator V02,niezależny odbiór,zaakceptowane stages/main. Bez push,
   wznowienia zakończonego W lub nowej matematyki add/sub w tym przygotowaniu.
+
+## 2026-09-29T14:35:02Z — P02 v2 bound; V02 gotowy do nowego okna
+
+- Właściciel przekazał COMPLETE_FOR_REVIEW/PARTIAL_PROOF z
+  work/FT1536_P02_FREEZE_CLOSURE_RUN_001/output. REPORT
+  `ce3cad727ce44894cf633085f87b001cca742a7fe3a0a6dc2c750d6f5ac051e5`,
+  OUTPUTS `af60f1b43843160ded4b977bbdc4ae42d5547a42937ec254f40be8b755f4e44e`,
+  new package HEAD41216bb8d61004bb941a8d1b276f43346df11ce8. Autor dowodów
+  Astra Fast;pakowania Sol/openai/gpt-6-sol,ses_f13139bc5ffeFI41laN8mgF1PA,
+  kontekst kontynuowany po T03-B. Właściciel potwierdził brak nowego kontekstu
+  suplementu i zapowiedział verify „w nowym oknie”. Kontekst autora nie jest V02.
+- `python3 -B .../P02_V2_INTAKE_2026-09-29/check_intake.py`:30612 outputs/
+  572453303B,29751 static inputs,68 poprzednika zgodne;50 źródeł finalnego
+  replayu,43 kroki/16 semantic matches i45 child command bindings zgodne.
+  9 historycznych runów/144 kroki/288 raw step logs oraz6 declared overwrites
+  rozliczone bez podszywania byte-equivalents pod oryginalną path provenance.
+  Old final HEAD UNRECORDED,old AuditTerms print skrócony;nowy full audit sealed.
+  Brak nowego mathematical review/replayu i dopasowanych procesów obu W.
+- Kanoniczne komendy:`b20_status_set.py P02 --final-report <v2/REPORT.md>
+  --final-outputs <v2/OUTPUTS.sha256> --report-sha ce3cad72… --outputs-sha af60f1b4…
+  --head 41216bb8…` →FROZEN_AWAITING_REVIEW. `b20_review_prompt.py V02
+  --out <V02/run/REVIEW_PROMPT_001.md>` →author_bound=true,pełne piny.
+- `archive.py document` przypiął suplement odbioru:
+  `d821b504bf4073f161d452b0c4923b857c59d25464e3994e5a701e4d45da9f3e`.
+  `archive.py bootstrap <V02/inputs> --plan REVIEW_INPUT_PLAN.json`:
+  30626 members/576529089B,MANIFEST
+  `6b07625125728ce3f8888c067e164e94b9c358e493f9ede74bee028abdc711e6`.
+  Exact sets/ORIGINS/hashe zgodne,pliki RO. `b20_status_set.py V02
+  --bound-inputs <V02/inputs/BOUND_INPUTS.json>` →binding
+  `15d1ee66a28743982854bc680ab7c81bf711506686dde8ab940f887a530a0923`.
+  V02/model jeszcze nieprzydzielony;initial status czeka na rzeczywisty --start.
+- Suplement opisuje partial scope i custom replay mount mapping:
+  RO subject pod author/output,RW własny run pod author/run,z proc/dev.
+  Jeden pełny fresh review i wymagane kontrole;powtórzenia tylko gdy potrzebne.
+  Presja kosztu nie nadaje werdyktu przed oceną;scope add/mul/div/sqrt/reals OPEN.
+- Evidence12 plików przez `archive.py bootstrap
+  background/P02_V2_REVIEW_PREPARATION_2026-09-29 --plan …`,manifest
+  `907d9e13b9c2d368bf5162f719afecda4135cbe739d844b1e6eb1df1aa784275`.
+  PACKAGE127/127 i59 documents checked,bez zmian frozen B20. Aktualne
+  CURRENT_P02_TASK/CURRENT_P02_REVIEW_TASK/STATE/ROADMAP oraz W/HANDOFF zapisane.
+- Następny krok:właściciel ręcznie startuje niezależny V02 w nowym oknie,
+  recenzent zapisuje model/session/context;koordynator odnotuje identity.
+  Po frozen review:canonical verdict binding,zaakceptowane stages i checkpoint
+  pary main. Przygotowanie bez importu P02 do stages,push lub startu modelu.
