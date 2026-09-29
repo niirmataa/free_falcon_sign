@@ -756,3 +756,16 @@ w historii. Następny krok po zakończeniu: ocena wyniku i checkpoint przy PASS.
 - Następny lokalny commit:żywe CURRENT/STATE/PROOF_MAP/START_HERE i18 plików
   evidence kontroli;zastany wpis Qwen3 w STATE pozostaje poza commitem.
   Dalej source arithmetic/caller domains,bez wznowienia frozen workerów.
+
+## 2026-09-29T16:08:43Z — jawne polecenie publikacji main
+
+- Właściciel polecił „wypchnij na gh” po zakończeniu odbioru P02/V02.
+  Zgoda obejmuje bieżący main (HEADb589822,11 lokalnych commitów) oraz
+  ten zapis decyzji,mimo historycznej bramki publikacji S01. Nie zmienia
+  matematycznych statusów PARTIAL ani owner acceptance schematu.
+- Cel:origin https://github.com/niirmataa/free_falcon_sign.git,
+  refs/heads/main. Komenda:`git push --porcelain origin refs/heads/main:refs/heads/main`.
+  Bez force,amend lub pomijania hooks. Następnie porównanie remote HEAD
+  przez `git ls-remote --heads origin refs/heads/main`.
+- Zastany13-wierszowy wpis Qwen3 w STATE pozostaje lokalny,poza commitem.
+  Staging przed akcją pusty;publikacja nie upoważnia do przyszłych pushów.
