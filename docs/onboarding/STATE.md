@@ -1,5 +1,21 @@
 # Stan projektu — punkt wejścia
 
+**2026-09-29 — odczyt stanu T12.1/RUN_002 przed kontynuacją.**
+Właściciel chce kontynuować `FT1536_MATH_EUFCMA_MTISIS_RUN_002`.
+[CURRENT_MATH_TASK](../../proofs/ft1536/CURRENT_MATH_TASK.md) wskazuje teraz
+rzeczywisty **WORKING_NOT_FROZEN**,zastępując nieaktualny nagłówek przygotowania.
+Jest konkretna nierówność AdvEUF→AdvMT dla `Reduction.build`; żywe źródło
+i raw logs zgodne z udanym receiptem.24/24 źródeł komponentów zasobowych
+zgodnych z audytem185 eksportów; **globalne Resources całego B nadal OPEN**.
+M6 ma liczbowy przedział dający1.27e-24,lecz pełne `hraw`/numeryczne bindingi
+i all-KeyGen bridge pozostają otwarte. Osobny T5 ma dalsze MGF/Chernoff;
+Gram/source-leaf i końcowy box-tail wymagają domknięcia. CENTERING_CLOSURE
+w stages jest osobnym PARTIAL,nie automatycznym rozwiązaniem tych typów.
+`output/NOT_FROZEN.md` obecny,finalnego OUTPUTS brak; pełny aktualny replay
+i niezależny odbiór pozostają do wykonania. Odczyt10:15:11Z nie wykazał
+jobu przypisanego do RUN_002. To kontrola orientacyjna,bez nowego proofu,
+replayu,importu lub uruchomienia wykonawcy.
+
 **2026-09-29 — właściciel powierzył tej sesji koordynację T03-B.**
 Koordynator: GPT-6 Astra Fast,sesja `ses_f137502d0ffe6BYk3HEHU1xxZL`.
 Wykonawca zapisuje pakiet w `work/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002/`

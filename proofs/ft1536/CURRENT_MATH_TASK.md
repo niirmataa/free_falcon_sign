@@ -1,10 +1,11 @@
 # Astra — osobny matematyczny tor EUF-CMA → MT-ISIS
 
-## Aktualne zlecenie: RUN_002 — A1→A2→A3
+## Aktualne zlecenie: RUN_002 — praca zaawansowana, brak finalnego freeze
 
 TASK_ID=FT1536_MATH_EUFCMA_MTISIS_RUN_002. ROADMAP_ID=T12.1.
-Status: **PREPARED_OWNER_START** — właściciel zlecił konkretne zadania
-według wspólnej oceny z Astrą Pro,bez pętli administracyjnych.
+Status odczytany2026-09-29: **WORKING_NOT_FROZEN**. Właściciel zgłosił chęć
+kontynuacji. To aktualizacja orientacyjna koordynatora na podstawie źródeł,
+WORK_STATE i wybranych receiptów; nie niezależny odbiór matematyczny.
 [Pełny TASK](documents/FT1536_ZADANIE_ASTRA_INTERACTIVE_GAME_BINDING_2026-09-23.md).
 TASK SHA `b4c11e3cf2a8cf3939a88400a2ea157b9d835e52c02aa974494b93b5f1376e45`.
 W: `proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_002`.
@@ -19,7 +20,67 @@ Jedna sesja,jeden W,jeden końcowy handoff. Lean4+Mathlib,kernelowo; Sage w .sag
 Istniejących Phi/chi2 nie dowodzić od nowa. Sampler i małe błędy mogą zostać
 jawnymi parametrami warunkowego twierdzenia,bez założenia samego celu.
 
+### Rzeczywisty punkt wznowienia
+
+Kanoniczny REPO: `/media/footfalcon/FT1536_DATA/free_falcon_sign`.
+Czytaj [WORK_STATE](work/FT1536_MATH_EUFCMA_MTISIS_RUN_002/WORK_STATE.md)
+i aktualne `run/formal/Run2/`,następnie wskazane receipts. `output/` ma
+[NOT_FROZEN](work/FT1536_MATH_EUFCMA_MTISIS_RUN_002/output/NOT_FROZEN.md):
+REPORT/RESULT/HANDOFF są starszym szkicem; brak `output/OUTPUTS.sha256`.
+`clean/` jest uporządkowanym wcześniejszym snapshotem,nie pełnym najnowszym
+freeze. W korzeniu W nie ma finalnego HANDOFF.
+
+- **Gry i redukcja:** `ConcreteReduction.concrete_euf_cma_to_mt_isis` oraz
+  `exists_concrete_reducer` dotyczą zdefiniowanych AdvEUF/AdvMT i
+  `Reduction.build`,przy `LocalJointCertificate`. Źródło
+  `80fb029e…` i oba raw logs zgodne z receiptem `concrete_reduction_002`,exit0.
+  To wynik probabilistyczny; typ nie zawiera jeszcze koniunktu Resources.
+- **A3/zasoby:** komponenty bitowe Verify/ekstrakcji,tablic/nonce,
+  lokalnego kodu A/S i peak-state są zapisane. Audyt
+  `machine_audit_002/MACHINE_COMPONENTS_AUDIT.json` deklaruje185 eksportów
+  w24 modułach; koordynator potwierdził24/24 hash bindings z żywymi źródłami.
+  Pozostaje kompozycja instrumentowanego całego wykonania,globalne t/w/L,
+  robocza pamięć/IO/resume i dołączenie Resources do końcowego twierdzenia.
+- **M6/liczba błędu:** istnieje przedział około
+  `[1.26606846824675;1.26782523071824]·10^-24`,wspólne trzy cyfry1.27e-24.
+  JSON jawnie ma `complete_new_kernel_source_binding=false`. Symboliczne
+  radial/window/binning lemmas i certyfikat counts-fold mają zapisane buildy;
+  counts-fold źródło/logi zgodne z exit0. Pełna numeryczna konsumpcja
+  `hbLo/hbHi` oraz faktów ogonowych nie wynika z samego rejestru interwałów.
+- **T5/zakres kluczy:** wydzielono osobny
+  [W T5_FLAT_REJECT](work/FT1536_T5_FLAT_REJECT_RUN_001/WORK_STATE.md).
+  Są dalsze dowody tower/tilt/MGF i per-coordinate Chernoff. Otwarte:
+  konkretne Gram/Cholesky/source-leaf bindings i końcowy out-of-box transport
+  przez3072 współrzędne do `BoxTransportCert`. Model `successfulKeyGen`
+  nie zastępuje source proofu wiążącego słowa bramki z tym samym kluczem.
+- **Osobny zarchiwizowany wynik:**
+  [CENTERING_CLOSURE](stages/FT1536_CENTERING_CLOSURE_RUN_001/REPORT.md)
+  ma PARTIAL_PROOF,bez niezależnego odbioru. Jego lokalny lemat Rejection
+  nie zamyka automatycznie `rejection h c` RUN_002; all-keys headline
+  nadal ma `hraw`, `hbridge` i abstrakcyjne `Adm`.
+
+Brak pełnego fresh replayu wszystkich aktualnych źródeł i finalnego
+niezależnego odbioru RUN_002. Rachunek wąskiego przedziału nie jest jeszcze
+source-bound twierdzeniem o wszystkich wynikach rzeczywistego C-KeyGen/Sign.
+
+Ownership historyczne: Astra Fast,sesje `ses_f33dcb1cbffe1cK536p26REYAg`,
+później M6 `ses_f2ec4fa0cffe7f5AugjiH8YLBE`; osobny T5:MiMo V2.6 Pro,
+`ses_f2afd6557ffeaDS2QhN7jZNU9b`. Odczyt procesów2026-09-29T10:15:11Z
+nie wykazał jobu przypisanego do RUN_002; to obserwacja chwilowa,nie dowód
+stanu wszystkich sesji modeli. Przed wznowieniem potwierdź jednego wykonawcę
+i aktualny zakres/rytm ciężkich jobów z właścicielem. Koordynator niczego
+nie uruchomił. Właściwy końcowy pakiet nadal powstaje w `W/output/`.
+
+Kontrola orientacyjna/piny:
+`work/FT1536_MATH_RUN002_COORDINATOR_STATUS_2026-09-29/STATUS_CHECK.json`,
+SHA `2c7c0227d80561c1e7f3871c67b997aab61623c3b100c51e3651e9b1a40895fb`.
+
 ## Poprzednik: RUN_001 — zachowany PARTIAL
+
+Aktualizacja archiwalna2026-09-25: RUN_001 jest już w
+[stages](stages/FT1536_MATH_EUFCMA_MTISIS_RUN_001/REPORT.md),PARTIAL_PROOF,
+bez niezależnego odbioru. Poniżej zachowano kontekst jego wcześniejszego handoffu;
+kwestia nazwy REPLAY_SEED została rozliczona późniejszym wyjątkiem archiwizatora.
 
 TASK_ID=FT1536_MATH_EUFCMA_MTISIS_RUN_001. ROADMAP_ID=T12.1.
 Status2026-09-23: **PARTIAL_PROOF / FROZEN_AWAITING_INDEPENDENT_REVIEW**.
