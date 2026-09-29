@@ -1,5 +1,13 @@
 # Stan projektu — punkt wejścia
 
+**2026-09-29 — właściciel powierzył tej sesji koordynację T03-B.**
+Koordynator: GPT-6 Astra Fast,sesja `ses_f137502d0ffe6BYk3HEHU1xxZL`.
+Wykonawca zapisuje pakiet w `work/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002/`
+pod `proofs/ft1536`,następnie oddaje frozen handoff. Koordynator przygotowuje
+osobny niezależny odbiór i po zaakceptowaniu zakresu prowadzi import przez
+`archive.py` do stages oraz lokalny commit main jako niirmataa.
+[Dokładny folder i kolejność](../../proofs/ft1536/CURRENT_B_GAP_TASK.md).
+
 **2026-09-29 — T03 B-gap: przygotowany RUN_002 z pełnym budżetem A–E.**
 [CURRENT_B_GAP_TASK](../../proofs/ft1536/CURRENT_B_GAP_TASK.md) wskazuje nowy
 TASK/W: **PREPARED_OWNER_START**,wykonawca jeszcze nieprzydzielony.

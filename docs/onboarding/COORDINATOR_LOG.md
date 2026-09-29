@@ -434,3 +434,24 @@ w historii. Następny krok po zakończeniu: ocena wyniku i checkpoint przy PASS.
   z deklarowanym freeze09-25,ale binding/odbiór nie należał do tej pracy.
   STATUS B20 bez awansu; po frozen zwrocie osobny model wykonuje review.
   Przygotowanie kończy lokalny commit; nie uruchamiano workera ani push.
+
+## 2026-09-29T10:01:26Z — właściciel przydzielił koordynację T03-B
+
+- Polecenie: wykonawca zapisuje do konkretnego folderu w work,potem odbiór
+  i stages; ta sesja ma wejść w rolę koordynatora. Przyjął GPT-6 Astra Fast,
+  `openai/gpt-6-astra-fast`,sesja `ses_f137502d0ffe6BYk3HEHU1xxZL`.
+- Doprecyzowano CURRENT_B_GAP_TASK i STATE: W autora to
+  `proofs/ft1536/work/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002/`;
+  REPORT/RESULT/OUTPUTS/HANDOFF w jego korzeniu. Po handoffie koordynator
+  przygotowuje odrębny W/prompt niezależnego recenzenta. Start recenzenta
+  należy do właściciela; po scoped akceptacji import przez archive.py,
+  aktualizacja żywego stanu i lokalny commit main jako niirmataa.
+- Komendy kontroli:`git status --short --branch`,`git diff --cached --stat`,
+  `git log -3 --format=...` oraz odczyt CURRENT/HANDOFF. HEAD9e958a3,main,
+  staging pusty; tylko zastany wpis Qwen3 w STATE pozostawał niezacommitowany.
+  Przy obserwacji10:00:38Z w W autora nie było REPORT.md/OUTPUTS.sha256;
+  ostatni zgłoszony status PREPARED_OWNER_START,nie zgłoszono odbioru.
+- Następny krok: zgłoszenie wykonawcy/startu lub frozen handoff autora.
+  Koordynator prowadzi organizację i integralność; niezależny recenzent
+  wykona matematykę/replay. Dokumentacja roli nie nadaje matematycznego PASS.
+  Piny TASK c10d5030…/bootstrap a47dc77e… pozostają obowiązujące.
