@@ -520,3 +520,24 @@ w historii. Następny krok po zakończeniu: ocena wyniku i checkpoint przy PASS.
   mathematical review/replay wykona recenzent. Po scoped odbiorze prowadzący
   wykona import zaakceptowanego zakresu i lokalny commit main jako niirmataa.
   Obecny commit zapisuje tylko przygotowanie/status;bez push i startu modelu.
+
+## 2026-09-29T11:17:01Z — oba W T12.1: frozen MiMo i żywa integracja RUN_002
+
+- Właściciel wskazał kolejno GAME_BINDING_RUN_001_V2_1_ERRATA oraz
+  MATH_EUFCMA_MTISIS_RUN_002. Kontrola `archive.verify_bundle` i hashy
+  W↔stage↔MIMO_INTEGRATION:295/295 członków zgodnych z istniejącym stage,
+  28/28 zintegrowanych modułów zgodnych (13 nowych MiMo+15 odziedziczonych).
+  REPORT e593d91e…,OUTPUTS c80b3e54…,PARTIAL_PROOF,independently_reviewed=false.
+- Nie ma brakującego importu tych13 modułów do żywego RUN_002.
+  OperationTrace.mimo_envelope_on_actual_paths już konsumuje BitCost dla
+  rzeczywistych śladów simulate. Otwarte pozostają kalibracja cen,globalne
+  t/w/L i koniunkt Resources końcowej redukcji;stare opisowe sekcje MiMo
+  nie zastępują aktualnych typów. Uzupełniono CURRENT_MATH_TASK/STATE.
+- Receipt organizacyjny:work/FT1536_T12_1_GAME_BINDING_LINK_2026-09-29/
+  BINDING.json,SHA
+  `e448521335c48063725aefc981a0a19f822729de48c65232d4a57d3c3037e8cd`.
+  Bez nowego proofu/replayu,edycji frozen źródeł lub startu wykonawcy.
+- Odbiór T03-B przygotowany i zapisany wcześniej w0132172. Następny krok
+  T12.1:wykonawca kontynuuje w swoim RUN_002 z oboma przypiętymi wkładami;
+  GAME_BINDING v2.1 pozostaje źródłem RO. M6/T5 zachowują opisane otwarte
+  interfejsy. Lokalny commit metadanych,bez push;cudzy wpis Qwen poza nim.

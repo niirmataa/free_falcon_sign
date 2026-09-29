@@ -75,6 +75,45 @@ Kontrola orientacyjna/piny:
 `work/FT1536_MATH_RUN002_COORDINATOR_STATUS_2026-09-29/STATUS_CHECK.json`,
 SHA `2c7c0227d80561c1e7f3871c67b997aab61623c3b100c51e3651e9b1a40895fb`.
 
+### Dwa wskazane W — GAME_BINDING v2.1 już włączony do RUN_002
+
+Na ponowne wskazanie obu katalogów przez właściciela2026-09-29 koordynator
+potwierdził powiązanie:
+
+- Frozen wkład MiMo:
+  `work/FT1536_MATH_EUFCMA_GAME_BINDING_RUN_001_V2_1_ERRATA/`.
+  295/295 plików zgodnych z
+  `stages/FT1536_MATH_EUFCMA_GAME_BINDING_RUN_001/`.
+  REPORT SHA `e593d91ed0e827bd240a145a31d2767407c4ea55eafd34e9a07252b49cd10d7c`,
+  OUTPUTS SHA `c80b3e542288fe22f60cdb8d8d14465a1c41695cba923b3c87b68b6ac2581a10`.
+  Status PARTIAL_PROOF,independently_reviewed=false. Errata poprawia jeden
+  escape JSON i dodaje ERRATA;źródła Lean są te same co w v2.
+- Miejsce kontynuacji: `work/FT1536_MATH_EUFCMA_MTISIS_RUN_002/`.
+  `run/MIMO_INTEGRATION.json` wskazuje28 modułów:13 nowych MiMo i15 wspólnych
+  odziedziczonych. **28/28 żywych źródeł odpowiada jednocześnie zapisanym
+  pinom integracji i frozen v2.1.** To nie dodatkowy proof/replay.
+
+Punkt zaczepienia A3: `FT1536.BitCost.reducer_bit_cost_bound` jest już
+konsumowany przez `Run2.OperationTrace.mimo_envelope_on_actual_paths`:
+obwiednia deklarowanych cen dotyczy śladów faktycznego simulate,przy
+kernelowych `projection_correct` i `query_counts`. Pozostaje kalibracja
+rzeczywistych procedur bitowych do tych cen,globalny czas/peak memory/IO
+oraz koniunkt `Resources` w ConcreteReduction. Jeśli ceny MiMo są za małe
+dla wybranej maszyny,wyprowadź jawnie skorygowany bound w żywym RUN_002
+z zachowaniem frozen MiMo,nie zakładaj wymaganej nierówności kosztu.
+
+REPORT/RESOURCE_BOUND pakietu MiMo zawierają starsze fragmenty o otwartych
+fold/bit-cost. Aktualny zakres ustala się z typów Lean,RESULT i późniejszych
+sekcji NEXT_INTERFACE. `reducer_bit_cost_bound_proved=true` w RESULT oznacza
+twierdzenie o modelu cen;nie jest samo globalnym Resources konkretnego B.
+Źródła do kontynuacji: `run/formal/FT1536/BitCost.lean`,
+`run/formal/Run2/{MiMoIntegration,OperationTrace,BitReduction,PeakExecution,
+SamplerMachine,AdversaryMachine,ConcreteReduction}.lean`.
+
+Kontrola W↔stage↔RUN_002:
+`work/FT1536_T12_1_GAME_BINDING_LINK_2026-09-29/BINDING.json`,SHA
+`e448521335c48063725aefc981a0a19f822729de48c65232d4a57d3c3037e8cd`.
+
 ## Poprzednik: RUN_001 — zachowany PARTIAL
 
 Aktualizacja archiwalna2026-09-25: RUN_001 jest już w

@@ -1,5 +1,14 @@
 # Stan projektu — punkt wejścia
 
+**2026-09-29 — potwierdzone powiązanie obu W matematycznych.**
+Wskazany GAME_BINDING_RUN_001_V2_1_ERRATA ma295/295 plików zgodnych
+z istniejącym stage’em (PARTIAL_PROOF,bez niezależnego odbioru).
+RUN_002 już zawiera28/28 zgodnych modułów integracji:13 nowych MiMo
+i15 odziedziczonych. Jego OperationTrace konsumuje BitCost na rzeczywistych
+śladach simulate;następny brak A3 to kalibracja cen do procedur bitowych,
+globalne zasoby i Resources w ConcreteReduction. Oba W są uwzględnione
+w [CURRENT_MATH_TASK](../../proofs/ft1536/CURRENT_MATH_TASK.md),z pełnymi pinami.
+
 **2026-09-29 — otrzymano frozen T03-B/RUN_002: BLOCKED_UPSTREAM_EXPORTS.**
 Autor GPT-6 Astra Fast,sesja `ses_f13640949ffeJ0RtC7tFAz07UR`,zakończył joby.
 REPORT `b2e8c9af…`;OUTPUTS `12df6105…`. Koordynator potwierdził1939/1939
