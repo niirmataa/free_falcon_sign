@@ -1,0 +1,107 @@
+'FT1536Forward.leaf_checked_18' depends on axioms: [propext]
+LeafData/C18 0 4.592
+'FT1536Forward.leaf_checked_19' depends on axioms: [propext]
+LeafData/C19 0 4.545
+'FT1536Forward.leaf_checked_20' depends on axioms: [propext]
+LeafData/C20 0 4.689
+'FT1536Forward.leaf_checked_21' depends on axioms: [propext]
+LeafData/C21 0 4.892
+'FT1536Forward.leaf_checked_22' depends on axioms: [propext]
+LeafData/C22 0 5.077
+'FT1536Forward.leaf_checked_23' depends on axioms: [propext]
+LeafData/C23 0 5.204
+'FT1536Forward.leaf_checked_24' depends on axioms: [propext]
+LeafData/C24 0 5.285
+'FT1536Forward.leaf_checked_25' depends on axioms: [propext]
+LeafData/C25 0 5.358
+'FT1536Forward.leaf_checked_26' depends on axioms: [propext]
+LeafData/C26 0 5.268
+'FT1536Forward.leaf_checked_27' depends on axioms: [propext]
+LeafData/C27 0 5.448
+'FT1536Forward.leaf_checked_28' depends on axioms: [propext]
+LeafData/C28 0 5.514
+'FT1536Forward.leaf_checked_29' depends on axioms: [propext]
+LeafData/C29 0 5.727
+'FT1536Forward.leaf_checked_30' depends on axioms: [propext]
+LeafData/C30 0 5.679
+'FT1536Forward.leaf_checked_31' depends on axioms: [propext]
+LeafData/C31 0 5.748
+'FT1536Forward.leaf_checked' depends on axioms: [propext]
+LeafChecks 0 0.252
+leaf_facts : ∀ (b : Nat),
+  b < 512 →
+    ∀ (j : Fin 3),
+      have pos := 3 * b;
+      have z := node b j;
+      z ^ 768 % 18433 = rootLabel pos % 18433 ∧
+        (∀ (p : Nat × Nat),
+            p ∈ forwardSchedule 9 2 768 → z ^ (p.snd / 2) % 18433 = splitLabel p.fst (p.snd / 2) pos % 18433) ∧
+          PhiZero z ∧ ∀ (k : Fin 3), (cubeFExpr (gmAt (512 + b)) fW j).eval (basis k) = z ^ ↑k % 18433
+'FT1536Forward.leaf_facts' depends on axioms: [propext, Quot.sound]
+LeafFacts 0 0.305
+middle_eval : ∀ (ps : List (Nat × Nat)) (t : Nat),
+  StageChain t ps →
+    ∀ (pos : Nat),
+      pos < 1536 →
+        ∀ (z : Int),
+          (∀ (p : Nat × Nat), p ∈ ps → z ^ (p.snd / 2) % 18433 = splitLabel p.fst (p.snd / 2) pos % 18433) →
+            ∀ (s : Mem), blockEval 3 (blockBase 3 pos) (forwardMiddle ps s) z = blockEval t (blockBase t pos) s z
+FORWARD_GLOBAL : ∀ (v : Vec),
+  CanonVec v →
+    ∀ (b : Fin 512) (j : Fin 3),
+      forwardC v ⟨3 * ↑b + ↑j, ⋯⟩ =
+        (sumN 1536 fun k => fromVec v k * (ordinary (gmAt (512 + ↑b)) * 14648 ^ ↑j) ^ k) % 18433
+liftForward_eval : ∀ (v : Vec) (b : Fin 512) (j : Fin 3),
+  liftForward v ⟨3 * ↑b + ↑j, ⋯⟩ = peval 1536 (fromVec v) (node (↑b) j)
+node_zero : ∀ (b : Nat), b < 512 → ∀ (j : Fin 3), PhiZero (node b j)
+'FT1536Forward.actual_chain' depends on axioms: [propext]
+'FT1536Forward.middle_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.cubic_eval' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.forwardMem_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.forwardC_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.FORWARD_GLOBAL' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.fromVec_canonical_mod' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.liftForward_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.node_zero' depends on axioms: [propext, Quot.sound]
+ForwardGlobal 0 0.456
+remMonomial_eval : ∀ (z : Int),
+  PhiZero z → ∀ (k : Nat), k < 3071 → peval 1536 (FT1536Composition.remMonomial k) z = z ^ k % 18433
+'FT1536Forward.phi_square' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.phi_cube' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.power_middle' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.power_high' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.remMonomial_eval' depends on axioms: [propext, Quot.sound]
+Monomials 0 0.516
+productCoefficient_eq : ∀ (h r : Vec) (k : Fin 1536), FT1536Composition.productCoefficient h r k = rawCoefficient h r ↑k
+product_eval : ∀ (z : Int),
+  PhiZero z →
+    ∀ (h r : Vec),
+      peval 1536 (fromVec (FT1536Composition.product h r)) z =
+        peval 1536 (fromVec h) z * peval 1536 (fromVec r) z % 18433
+forward_product : ∀ (h r : Vec),
+  liftForward (FT1536Composition.product h r) = FT1536Composition.pointMul (liftForward h) (liftForward r)
+product_canonical_inputs : ∀ (h r : Vec),
+  FT1536Composition.product (FT1536Composition.canonical h) (FT1536Composition.canonical r) =
+    FT1536Composition.product h r
+'FT1536Forward.eval_sum' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.eval_convolution' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.productCoefficient_eq' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.product_raw' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.product_eval' depends on axioms: [propext, Quot.sound]
+'FT1536Forward.forward_product' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.lift_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Forward.product_canonical_inputs' depends on axioms: [propext, Classical.choice, Quot.sound]
+Product 0 0.386
+'FT1536.intermediate_ranges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.positive_remainder' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.rho_contract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.result_cast_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.canonical_unique' depends on axioms: [propext, Quot.sound]
+'FT1536.old_piecewise' depends on axioms: [propext, Quot.sound]
+'FT1536.old_congruence_domain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.old_canonical_domain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.agree_on_old_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.vector_contract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.loop_progress' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.center_antisymmetric' depends on axioms: [propext, Quot.sound]
+Rho 0 0.649

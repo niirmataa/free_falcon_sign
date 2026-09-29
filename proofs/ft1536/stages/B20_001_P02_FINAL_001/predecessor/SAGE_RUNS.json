@@ -1,0 +1,29 @@
+{
+ "schema": "B20_P02_SAGE_RUNS_V1",
+ "policy": "authoritative arithmetic lives in .sage files executed as `sage <file>.sage` (preparser, ZZ/QQ); Python only organizes processes",
+ "runs": [
+  {
+   "id": "word_helpers.sage (WORD_HELPERS_001 + fresh_word_001)",
+   "invocation": "sage checks/word_helpers.sage",
+   "certificate": "word_oracle.json",
+   "scope": "shift helpers oracle: 12288 valid + 2 rejected cases",
+   "status": "PASS"
+  },
+  {
+   "id": "little_endian.sage (LE controls)",
+   "invocation": "sage checks/little_endian.sage",
+   "certificate": "le_oracle.json",
+   "scope": "LE64 oracle: 3072 cases",
+   "status": "PASS"
+  },
+  {
+   "id": "scalar.sage (MS3)",
+   "invocation": "sage checks/scalar.sage",
+   "certificate": "scalar_oracle.json (P02_SCALAR_ORACLE_V1)",
+   "scope": "exact ZZ mirror of 7 scalar primitives: 19721 in + 21352 obs + 2 rejects",
+   "status": "PASS (run/scalar_controls_006, run/scalar_asan_001)",
+   "note": "own LCG PRNG (deterministic); xor is ^^ under preparser"
+  }
+ ],
+ "formal_consumer": "all kernel theorems proved directly in Lean; Sage oracles are diagnostic controls, never premises (ASSUMPTIONS A8)"
+}

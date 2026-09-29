@@ -1,0 +1,36 @@
+static inline int64_t
+fpr_rint(fpr x)
+{
+	uint64_t m, d;
+	int e;
+	uint32_t s, dd, f;
+
+	m = ((x << 10) | ((uint64_t)1 << 62)) & (((uint64_t)1 << 63) - 1);
+	e = 1085 - ((int)(x >> 52) & 0x7FF);
+	m &= -(uint64_t)((uint32_t)(e - 64) >> 31);
+	e &= 63;
+	d = fpr_ulsh(m, 63 - e);
+	dd = (uint32_t)d | ((uint32_t)(d >> 32) & 0x1FFFFFFF);
+	f = (uint32_t)(d >> 61) | ((dd | -dd) >> 31);
+	m = fpr_ursh(m, e) + (uint64_t)((0xC8U >> f) & 1U);
+	s = (uint32_t)(x >> 63);
+	return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;
+}
+
+static inline long
+fpr_floor(fpr x)
+{
+	uint64_t t;
+	int64_t xi;
+	int e, cc;
+
+	e = (int)(x >> 52) & 0x7FF;
+	t = x >> 63;
+	xi = (int64_t)(((x << 10) | ((uint64_t)1 << 62))
+		& (((uint64_t)1 << 63) - 1));
+	xi = (xi ^ -(int64_t)t) + (int64_t)t;
+	cc = 1085 - e;
+	xi = fpr_irsh(xi, cc & 63);
+	xi ^= (xi ^ -(int64_t)t) & -(int64_t)((uint32_t)(63 - cc) >> 31);
+	return (long)xi;
+}

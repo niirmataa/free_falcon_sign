@@ -1,0 +1,60 @@
+{
+  "F1": {
+    "diff": "replay/RUNNER_DELTA.diff",
+    "original_runner": "replay/original_job.py",
+    "portable_runner": "replay/job.py",
+    "preflight": "INPUTS.sha256 and external predecessor OUTPUTS and optional successor OUTPUTS; no PRIOR_W source reads",
+    "semantic_plan_correction": "For four generator products SEMANTIC_FILES producer_step=3 denotes pipeline completion; REPLAY_RESULT lists exact earlier producing step 1/2 and argv. No semantic hash changed.",
+    "state": "CLOSED",
+    "toolchain_diff": "replay/TOOLCHAIN_DELTA.diff"
+  },
+  "F2": {
+    "audit_modules": [
+      "formal/AuditExports.lean",
+      "formal/AuditTerms.lean"
+    ],
+    "full_printing_limitation": "historical AuditTerms #print output includes 51 omitted ⋯; retained without rewriting history",
+    "full_terms": "formal/AuditTermsFull.lean + replay_evidence/fresh_003/logs/042.stdout, zero omissions, fresh kernel dependencies",
+    "history": "HISTORY_BINDING.json runs snapshots + replay_evidence/fresh_003/logs/040.stdout,041.stdout",
+    "printed_types_axioms": "predecessor/formal_printed_types.txt and predecessor/AXIOMS.json (489-name historical scan)",
+    "sha256": {
+      "AuditExports.lean": "debdfddb36440eb8b23abcd066f39e2d31d899bd6bd01de99a78cf03e04a6daa",
+      "AuditTerms.lean": "93ef6243569e4f8f3e17c66d94f5ce1a86f3fe15f75f02327ebecffc24f54b50"
+    },
+    "state": "CLOSED_FOR_KERNEL_BUILD_AND_SUPPLEMENTAL_FULL_PRINT; historical AuditTerms print truncated"
+  },
+  "F3": {
+    "byte_equivalents": "OVERWRITTEN_LOGS.json",
+    "child_command_receipts": 76,
+    "earlier_attempts": "FAILED_HISTORY_INDEX.json, evidence/earlier_routes/; binaries/caches/unrelated copied upstream snapshots omitted",
+    "new_child_logs": "replay_evidence/fresh_003/logs/child/{word,le,scalar}/ snapshot before basename reuse",
+    "nine_history_receipts": "HISTORY_BINDING.json",
+    "original_replay_001_child_log_path_provenance": "NOT_RECOVERABLE; overwritten bytes retained and equivalent bytes from other pinned runs separately sealed",
+    "overwritten_child_log_paths": 6,
+    "raw_step_logs": 288,
+    "runs": 9,
+    "state": "CLOSED_FOR_BYTE_CLOSURE_WITH_PROVENANCE_LIMIT",
+    "steps": 144
+  },
+  "F4": {
+    "new_head": "41216bb8d61004bb941a8d1b276f43346df11ce8",
+    "new_head_utc": "2026-09-29T14:16:25.913306+00:00",
+    "old_final_head": "UNRECORDED",
+    "package_base": "dda4a2a3ec4854e438914a16110cd6ed4cd2f927",
+    "record": "HEAD_CONTEXT.json",
+    "source_base": "ef62824a10a69962dc8347410ee3f424bfa2b12e",
+    "state": "NEW_HEAD_BOUND_OLD_UNRECORDED"
+  },
+  "new_mathematical_claim": false,
+  "owner_accepted": false,
+  "packaging_task_id": "FT1536_P02_FREEZE_CLOSURE_RUN_001",
+  "parent_task_id": "B20_001_P02_WORD_FPEMU_REFINEMENT",
+  "predecessor": {
+    "output_files": 68,
+    "outputs_sha256": "4e8942ccaf46f0971688a0f0cc1d07c5831a46175e6ad2dde903c9f55b046a01",
+    "report_sha256": "98ea050bfe15b39b4ad2a6d26428bcd7e12f22ca33b06b6bc98e9e964bb295a5"
+  },
+  "replay": "REPLAY_RESULT.json",
+  "revision": "v2",
+  "schema": "P02_FREEZE_CLOSURE_V2"
+}

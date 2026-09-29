@@ -1,0 +1,26 @@
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_064/source/B20/Fpr/Spec.lean:483:65: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  2 ≤ d ≤ 4294967295
+  0 ≤ c ≤ 1
+  0 ≤ b ≤ 1072
+  -962 ≤ a ≤ 1085
+where
+ a := (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toInt
+ b := (rint_y x).toInt
+ c := ↑(BitVec.setWidth 32 (x >>> 63)).toNat
+ d := ↑(rint_s x).toNat
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_064/source/B20/Fpr/Spec.lean:528:39: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  0 ≤ f ≤ 63
+  0 ≤ e ≤ 31
+  0 ≤ d ≤ 1
+  0 ≤ c ≤ 1
+  0 ≤ b ≤ 1021
+  -962 ≤ a ≤ 1085
+where
+ a := (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toInt
+ b := (rint_y x).toInt
+ c := ↑(BitVec.setWidth 32 (x >>> 63)).toNat
+ d := ↑(BitVec.signExtend 64 (rint_s x)).toNat
+ e := ↑(BitVec.setWidth 32 (rint_d x >>> 61) ||| (rint_dd x ||| -rint_dd x) >>> 31).toNat
+ f := ↑(BitVec.toNat ?m.451)

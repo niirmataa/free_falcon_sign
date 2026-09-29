@@ -1,0 +1,69 @@
+{
+  "status": "PASS_SOURCE_PINS_AND_ACTUAL_METRIC_PROOF_BINDING",
+  "source_files": 17,
+  "public_inputs": 583,
+  "source_pin": "56974571b46e8257bdd3b4097c8c70fded6bb4b94c64805f6e35ec80929a0985",
+  "documents": {
+    "CLAIM.md": "e557c99c5ee9d88ee612245d142006d05e43399c83cd83cbac9a7c3d791f9a62",
+    "METRIC_BRIDGE.md": "e6150713fa7d296f4fa5e4dfa5d8ceb65132cf7c4d48c8ce78273559e49e0323",
+    "BANK_WEIGHTED_BOUNDS.md": "1a4d54956f8d178a88882bbbb4d6736a851643fad1df336c91e7997ac330277c",
+    "RIGHT_RESIDUAL_ENERGY.md": "fa6d1bd53183cce4b16200b7b1658443b6cb67229c3ea9f0de25a837caf3ec24",
+    "ROOT_TRANSFER.md": "c993e977dc30959d7d82bbd032b7a70cfb2a20fb5442c4a6a5480538673c1d6e",
+    "LEFT_INVARIANT.md": "dbfe925fe2f06cca8cc1812d681a0e8fc8c5241c8a17c839859c52a3b46425c4",
+    "ORDERED_COMPOSITION.md": "081febced6ea62b28eb58cf4971d384523e646452ec045c11dc93e290625da19",
+    "ERROR_LEDGER.md": "b75aff344dfe925144918f569f7ce8f827dc5d928e37011c8608b3e9220038c8",
+    "SOURCE_MODEL_BINDING.md": "121c103fe121db51ade8c7c3a92181c61a974cce3e90a15c9d827981d4ffa747",
+    "MEMORY_FRAME.md": "61cf9f61d1c4a176b3b140236364ba24f591aae4e96da2a52e10e7e79807bee5",
+    "FAULT_REJECTION.md": "e00d924e6d49395598345c44169b8298f7040dc531561022de8f6f58d4cfc73b",
+    "CALLER_RETRY_BINDING.md": "061583fc0835ac8a09a3d310c84fd0838585f0be35238d3c077686bc900beeb7",
+    "FAILED_ROUTES.md": "18fbcc2ce175456d009cf312c5b49a6f8070a174428796b4dfa5f962e6189550",
+    "NEXT_INTERFACE.md": "20afc1fdde7e3bda811f71fb6c7a14b0c3567e5aac5d07cd43a2e7b2356bfead",
+    "REUSED_RESULTS.md": "ac0cf72484513de9af5c1134c4c53258e93b43a4ed8b4de1ccfeb91f31282d04"
+  },
+  "adaptations": [
+    {
+      "input": "inputs/bootstrap/ORDERED/scripts/bounds.py",
+      "input_sha256": "39a943727e301968443aee8834c53564f6841debb19f3233a7ba2443d55d14d7",
+      "copy": "scripts/energy_transfer.py",
+      "sha256": "98f330b17688b99ee4b4c35b7a21e6a4a580daff848cab94a743ef32bc3b85c9",
+      "diff": "artifacts/diffs/binding_energy_transfer.patch",
+      "diff_sha256": "ae949c8139b0336f9efca02a432f463f04d988291d4e0b6e1410a5bee173bc4a"
+    },
+    {
+      "input": "inputs/bootstrap/ORDERED/scripts/audit.py",
+      "input_sha256": "44a6f8f9bf5ff117b2f5f3000d87c3972b23f44c2c3bba6e9879119a2d4642a8",
+      "copy": "scripts/audit.py",
+      "sha256": "46b1f8981ebbd84834d70060c9b5042622319f813330f8c206a4366daeaf1ed8",
+      "diff": "artifacts/diffs/binding_audit.patch",
+      "diff_sha256": "fa6606a5a1bf4e7635075172819eeaeb1f2d1ab74eb07a76e0d59f223c826830"
+    },
+    {
+      "input": "inputs/bootstrap/ORDERED/scripts/controls.py",
+      "input_sha256": "be3debe0d429451a3f3b8a81d4f1eb9f271f1d91cca9aff89d165b9f7d76592e",
+      "copy": "scripts/controls.py",
+      "sha256": "bdc1cd316ce9346f02399fb050359aa3b33f318630c6b94a48783524249d3a2b",
+      "diff": "artifacts/diffs/binding_controls.patch",
+      "diff_sha256": "0702473cd30305cc45bd117f741e13496721eda494c4cbac30cceefbaeb2666b"
+    },
+    {
+      "input": "inputs/bootstrap/TOWER/scripts/tower_model.py",
+      "input_sha256": "462a1d65f55f73ebac3df4f7a17976935887edc2cb85eb3a22eb9c9737300d80",
+      "copy": "scripts/tree_model.py",
+      "sha256": "e87a9f30fbfda49dcb369f285f414aa520862dd8541fdaf1706150a14869445c",
+      "diff": "artifacts/diffs/binding_tree_model.patch",
+      "diff_sha256": "da9c48ae96bc4ed83ed5bcecd95c9e97cb48243dc8874147a1db55027b11449f"
+    },
+    {
+      "input": "inputs/bootstrap/NORMALIZED/scripts/width_bounds.py",
+      "input_sha256": "468801b18c89a1a40d6a0563a38853cf88e16725107d4a4bd37277e75c539e09",
+      "copy": "scripts/bank_bounds.py",
+      "sha256": "80a3b6695f216bf59ce2d68bd3d63502427b462af6d0dd00f16d596c90380093",
+      "diff": "artifacts/diffs/binding_bank_bounds.patch",
+      "diff_sha256": "9f7929bc0695d60a02cc9be7e2f37b97b60dfa34296e581c80afbd67f816726f"
+    }
+  ],
+  "source_changed": false,
+  "production_source_changed": false,
+  "new_source_patch_integrated": false,
+  "owner_accepted": false
+}

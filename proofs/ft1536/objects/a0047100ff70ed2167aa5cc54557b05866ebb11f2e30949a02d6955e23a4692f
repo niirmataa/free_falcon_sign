@@ -1,0 +1,34 @@
+formal/StableBits.lean:47:83: error: `grind` failed
+case grind.1
+v : Bool
+vs : List Bool
+ih : ∀ (bad : Bool), scan bad vs = false ↔ bad = false ∧ ∀ (v : Bool), v ∈ vs → v = true
+bad : Bool
+left : bad = false
+right : ∀ (v_1 : Bool), v_1 = v ∨ v_1 ∈ vs → v_1 = true
+h_1 : bad = true ∨ v = false ∨ ¬∀ (v : Bool), v ∈ vs → v = true
+h_2 : v = false
+⊢ False
+[grind] Goal diagnostics
+  [facts] Asserted facts
+    [prop] ∀ (bad : Bool), (scan bad vs = false) = (bad = false ∧ ∀ (v : Bool), v ∈ vs → v = true)
+    [prop] bad = false
+    [prop] ∀ (v_1 : Bool), v_1 = v ∨ v_1 ∈ vs → v_1 = true
+    [prop] bad = true ∨ v = false ∨ ¬∀ (v : Bool), v ∈ vs → v = true
+    [prop] v = false
+  [eqc] True propositions
+    [prop] v = false ∨ ¬∀ (v : Bool), v ∈ vs → v = true
+    [prop] bad = true ∨ v = false ∨ ¬∀ (v : Bool), v ∈ vs → v = true
+    [prop] v = false
+    [prop] ∀ (bad : Bool), (scan bad vs = false) = (bad = false ∧ ∀ (v : Bool), v ∈ vs → v = true)
+    [prop] ∀ (v_1 : Bool), v_1 = v ∨ v_1 ∈ vs → v_1 = true
+  [eqc] False propositions
+    [prop] bad = true
+  [eqc] Equivalence classes
+    [eqc] {v, bad, false}
+  [cases] Case analyses
+    [cases] [1/2]: v = false ∨ ¬∀ (v : Bool), v ∈ vs → v = true
+      [cases] source: Initial goal
+  [ematch] E-matching patterns
+    [thm] ih: [scan #0 `[vs]]
+    [thm] right: [@Membership.mem `[Bool] `[List Bool] `[List.instMembership] `[vs] #1]

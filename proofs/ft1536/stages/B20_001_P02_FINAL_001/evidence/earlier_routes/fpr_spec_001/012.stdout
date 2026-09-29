@@ -1,0 +1,279 @@
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:11:8: error: Ambiguous term
+  execute
+Possible interpretations:
+  Scalar.execute : Calls → Scalar.Function → List Val → Option Val
+  
+  C.execute : C.Function → List Val → Option Val
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:11:36: error: Ambiguous term
+  bindArgs
+Possible interpretations:
+  Scalar.bindArgs : List (Ty × Name) → List Val → Option State
+  
+  C.bindArgs : List (Ty × Name) → List Val → Option Env
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:11:70: error: Ambiguous term
+  assign
+Possible interpretations:
+  Scalar.assign : State → Name → Val → Option State
+  
+  C.assign : Env → Name → Val → Option Env
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:12:4: error: Ambiguous term
+  evalBody
+Possible interpretations:
+  Scalar.evalBody : Calls → Ty → List Scalar.Stmt → State → Option Val
+  
+  C.evalBody : Ty → List C.Stmt → Env → Option Val
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:12:33: error: Ambiguous term
+  evalExpr
+Possible interpretations:
+  Scalar.evalExpr : Calls → Env → ℕ → Scalar.Expr → Option Val
+  
+  C.evalExpr : Env → C.Expr → Option Val
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:13:12: error: Ambiguous term
+  cast
+Possible interpretations:
+  _root_.cast : ?m.9 = ?m.10 → ?m.9 → ?m.10
+  
+  C.cast : Ty → Val → Val
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:10:79: error: unsolved goals
+x : BitVec 64
+⊢ Scalar.execute shiftCalls
+      { name := ['f', 'p', 'r', '_', 'n', 'e', 'g'], result := Ty.u64, params := [(Ty.u64, ['x'])],
+        body :=
+          [Stmt.update ['x'] BinOp.xor
+              (Scalar.Expr.bin BinOp.shl (Scalar.Expr.cast Ty.u64 (Scalar.Expr.literal Ty.i32 1))
+                (Scalar.Expr.literal Ty.i32 63)),
+            Scalar.Stmt.ret (Scalar.Expr.var ['x'])] }
+      [Val.u64 x] =
+    some (Val.u64 (x ^^^ 9223372036854775808#64))
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:11:46: warning: This simp argument is unused:
+  emptyState
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [execute, Parsed.negProgram, bindArgs, declareOne, assign, evalBody, step, declareMany, evalExpr,
+    negSpec, bin, shift, bitsOp, commonTy, Val.ty, cast, literalValue, update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:11:58: warning: This simp argument is unused:
+  declareOne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [execute, Parsed.negProgram, bindArgs, emptyState, assign, evalBody, step, declareMany, evalExpr,
+    negSpec, bin, shift, bitsOp, commonTy, Val.ty, cast, literalValue, update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:12:14: warning: This simp argument is unused:
+  step
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [execute, Parsed.negProgram, bindArgs, emptyState, declareOne, assign, evalBody, declareMany, evalExpr,
+    negSpec, bin, shift, bitsOp, commonTy, Val.ty, cast, literalValue, update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:12:20: warning: This simp argument is unused:
+  declareMany
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [execute, Parsed.negProgram, bindArgs, emptyState, declareOne, assign, evalBody, step, evalExpr, negSpec,
+    bin, shift, bitsOp, commonTy, Val.ty, cast, literalValue, update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:12:52: warning: This simp argument is unused:
+  bin
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [execute, Parsed.negProgram, bindArgs, emptyState, declareOne, assign, evalBody, step, declareMany,
+    evalExpr, negSpec, shift, bitsOp, commonTy, Val.ty, cast, literalValue, update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:12:57: warning: This simp argument is unused:
+  shift
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [execute, Parsed.negProgram, bindArgs, emptyState, declareOne, assign, evalBody, step, declareMany,
+    evalExpr, negSpec, bin, bitsOp, commonTy, Val.ty, cast, literalValue, update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:12:64: warning: This simp argument is unused:
+  bitsOp
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [execute, Parsed.negProgram, bindArgs, emptyState, declareOne, assign, evalBody, step, declareMany,
+    evalExpr, negSpec, bin, shift, commonTy, Val.ty, cast, literalValue, update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:12:72: warning: This simp argument is unused:
+  commonTy
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [execute, Parsed.negProgram, bindArgs, emptyState, declareOne, assign, evalBody, step, declareMany,
+    evalExpr, negSpec, bin, shift, bitsOp, Val.ty, cast, literalValue, update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:13:4: warning: This simp argument is unused:
+  Val.ty
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [execute, Parsed.negProgram, bindArgs, emptyState, declareOne, assign, evalBody, step, declareMany,
+    evalExpr, negSpec, bin, shift, bitsOp, commonTy, cast, literalValue, update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:13:18: warning: This simp argument is unused:
+  literalValue
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [execute, Parsed.negProgram, bindArgs, emptyState, declareOne, assign, evalBody, step, declareMany,
+    evalExpr, negSpec, bin, shift, bitsOp, commonTy, Val.ty, cast, update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:13:32: warning: This simp argument is unused:
+  update
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [execute, Parsed.negProgram, bindArgs, emptyState, declareOne, assign, evalBody, step, declareMany,
+    evalExpr, negSpec, bin, shift, bitsOp, commonTy, Val.ty, cast, literalValue]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:20:8: error: Ambiguous term
+  execute
+Possible interpretations:
+  Scalar.execute : Calls → Scalar.Function → List Val → Option Val
+  
+  C.execute : C.Function → List Val → Option Val
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:20:39: error: Ambiguous term
+  bindArgs
+Possible interpretations:
+  Scalar.bindArgs : List (Ty × Name) → List Val → Option State
+  
+  C.bindArgs : List (Ty × Name) → List Val → Option Env
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:20:73: error: Ambiguous term
+  assign
+Possible interpretations:
+  Scalar.assign : State → Name → Val → Option State
+  
+  C.assign : Env → Name → Val → Option Env
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:21:4: error: Ambiguous term
+  evalBody
+Possible interpretations:
+  Scalar.evalBody : Calls → Ty → List Scalar.Stmt → State → Option Val
+  
+  C.evalBody : Ty → List C.Stmt → Env → Option Val
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:21:33: error: Ambiguous term
+  evalExpr
+Possible interpretations:
+  Scalar.evalExpr : Calls → Env → ℕ → Scalar.Expr → Option Val
+  
+  C.evalExpr : Env → C.Expr → Option Val
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:22:12: error: Ambiguous term
+  cast
+Possible interpretations:
+  _root_.cast : ?m.9 = ?m.10 → ?m.9 → ?m.10
+  
+  C.cast : Ty → Val → Val
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:19:85: error: unsolved goals
+x : BitVec 64
+⊢ Scalar.execute shiftCalls
+      { name := ['f', 'p', 'r', '_', 'd', 'o', 'u', 'b', 'l', 'e'], result := Ty.u64, params := [(Ty.u64, ['x'])],
+        body :=
+          [Stmt.update ['x'] BinOp.add
+              (Scalar.Expr.bin BinOp.shl
+                (Scalar.Expr.cast Ty.u64
+                  (Scalar.Expr.bin BinOp.shr
+                    (Scalar.Expr.bin BinOp.add
+                      (Scalar.Expr.bin BinOp.band
+                        (Scalar.Expr.cast Ty.u32
+                          (Scalar.Expr.bin BinOp.shr (Scalar.Expr.var ['x']) (Scalar.Expr.literal Ty.i32 52)))
+                        (Scalar.Expr.literal Ty.u32 2047))
+                      (Scalar.Expr.literal Ty.u32 2047))
+                    (Scalar.Expr.literal Ty.i32 11)))
+                (Scalar.Expr.literal Ty.i32 52)),
+            Scalar.Stmt.ret (Scalar.Expr.var ['x'])] }
+      [Val.u64 x] =
+    some (Val.u64 (x + BitVec.setWidth 64 ((BitVec.setWidth 32 (x >>> 52) &&& 2047#32) + 2047#32) <<< 52))
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:20:49: warning: This simp argument is unused:
+  emptyState
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [execute, Parsed.doubleProgram, bindArgs, declareOne, assign, evalBody, step, declareMany, evalExpr,
+    doubleSpec, bin, shift, bitsOp, commonTy, Val.ty, cast, literalValue, update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:20:61: warning: This simp argument is unused:
+  declareOne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [execute, Parsed.doubleProgram, bindArgs, emptyState, assign, evalBody, step, declareMany, evalExpr,
+    doubleSpec, bin, shift, bitsOp, commonTy, Val.ty, cast, literalValue, update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:21:14: warning: This simp argument is unused:
+  step
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [execute, Parsed.doubleProgram, bindArgs, emptyState, declareOne, assign, evalBody, declareMany,
+    evalExpr, doubleSpec, bin, shift, bitsOp, commonTy, Val.ty, cast, literalValue, update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:21:20: warning: This simp argument is unused:
+  declareMany
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [execute, Parsed.doubleProgram, bindArgs, emptyState, declareOne, assign, evalBody, step, evalExpr,
+    doubleSpec, bin, shift, bitsOp, commonTy, Val.ty, cast, literalValue, update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:21:55: warning: This simp argument is unused:
+  bin
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [execute, Parsed.doubleProgram, bindArgs, emptyState, declareOne, assign, evalBody, step, declareMany,
+    evalExpr, doubleSpec, shift, bitsOp, commonTy, Val.ty, cast, literalValue, update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:21:60: warning: This simp argument is unused:
+  shift
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [execute, Parsed.doubleProgram, bindArgs, emptyState, declareOne, assign, evalBody, step, declareMany,
+    evalExpr, doubleSpec, bin, bitsOp, commonTy, Val.ty, cast, literalValue, update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:21:67: warning: This simp argument is unused:
+  bitsOp
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [execute, Parsed.doubleProgram, bindArgs, emptyState, declareOne, assign, evalBody, step, declareMany,
+    evalExpr, doubleSpec, bin, shift, commonTy, Val.ty, cast, literalValue, update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:21:75: warning: This simp argument is unused:
+  commonTy
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [execute, Parsed.doubleProgram, bindArgs, emptyState, declareOne, assign, evalBody, step, declareMany,
+    evalExpr, doubleSpec, bin, shift, bitsOp, Val.ty, cast, literalValue, update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:22:4: warning: This simp argument is unused:
+  Val.ty
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [execute, Parsed.doubleProgram, bindArgs, emptyState, declareOne, assign, evalBody, step, declareMany,
+    evalExpr, doubleSpec, bin, shift, bitsOp, commonTy, cast, literalValue, update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:22:18: warning: This simp argument is unused:
+  literalValue
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [execute, Parsed.doubleProgram, bindArgs, emptyState, declareOne, assign, evalBody, step, declareMany,
+    evalExpr, doubleSpec, bin, shift, bitsOp, commonTy, Val.ty, cast, update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_001/source/B20/Fpr/Spec.lean:22:32: warning: This simp argument is unused:
+  update
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [execute, Parsed.doubleProgram, bindArgs, emptyState, declareOne, assign, evalBody, step, declareMany,
+    evalExpr, doubleSpec, bin, shift, bitsOp, commonTy, Val.ty, cast, literalValue]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

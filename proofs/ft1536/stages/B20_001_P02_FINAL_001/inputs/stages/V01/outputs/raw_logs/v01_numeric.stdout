@@ -1,0 +1,23 @@
+V01_NUMERIC_OK checks=22
+PASS preparser_mode ZZ/QQ/^ OK
+PASS json_matches_lean_literals [1414213562373095, 1000000000000000]/[1414213562373096, 1000000000000000] vs lean
+PASS witness_pos dodatnie
+PASS witness_lower_sq 1999999999999999861967979879025 < 2000000000000000000000000000000
+PASS witness_upper_sq 2000000000000000000000000000000 < 2000000000000002690395104625216
+PASS witness_ordered lower<upper
+PASS witness_accepted checker akceptuje
+PASS ball_radius_bound rad=1.7272337e-77
+PASS ball_brackets ball lower<sqrt2<upper
+PASS rif_brackets RIF potwierdza
+PASS digits_lowerNum [1, 4, 1, 4, 2, 1, 3, 5, 6, 2, 3, 7, 3, 0, 9, 5]
+PASS digits_lowerDen [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+PASS digits_upperNum [1, 4, 1, 4, 2, 1, 3, 5, 6, 2, 3, 7, 3, 0, 9, 6]
+PASS digits_upperDen [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+PASS digits_match_json JSON cyfry zgodne
+PASS neg_false_inequality 3/2 jako dolna odrzucona
+PASS neg_reversed odwrócone endpointy odrzucone
+PASS neg_missing_den mianownik 0 odrzucony
+PASS counter_degenerate_rejected zdegenerowany przedział odrzucony
+PASS counter_plus2ulp_decided plus2ulp lower²<2d²=False
+PASS counter_wide_false_rejected [2,3] odrzucone
+PASS counter_negative_rejected ujemny licznik odrzucony

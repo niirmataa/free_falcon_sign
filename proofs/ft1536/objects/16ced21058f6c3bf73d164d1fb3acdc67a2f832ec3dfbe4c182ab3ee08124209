@@ -1,0 +1,55 @@
+{
+ "schema": "B20_P02_ASSUMPTIONS_V1",
+ "named_assumptions": [
+  {
+   "id": "A1_ABI_FIX",
+   "statement": "Fixed LP64 ABI (64-bit pointers/size_t, 8-bit char, little-endian) is a declared model parameter; hardware/compiler conformance is NOT proved.",
+   "kind": "platform parameter",
+   "inherited": "P01 A1"
+  },
+  {
+   "id": "A2_C_FRAGMENT_SEMANTICS",
+   "statement": "Theorems concern abstract C semantics (CExec/Scalar evaluators), NOT machine code; the C compiler stays in TCB.",
+   "kind": "scope boundary",
+   "explicit_per_TASK": "TASK section 4",
+   "inherited": "P01 A2"
+  },
+  {
+   "id": "A3_FPR_ADD_EXTERNAL",
+   "statement": "fpr_add execution is supplied by the caller as AddCallObligation; no add arithmetic is assumed or smuggled. sub_execution is conditional on it.",
+   "kind": "explicit unresolved type",
+   "see": "FORMAL_EXPORTS.unresolved_types"
+  },
+  {
+   "id": "A4_RINT_LITERAL_SPEC",
+   "statement": "rint/floor specs are literal BitVec word results, not real-number rounding semantics; no nearest-ties-even property over reals is claimed or assumed.",
+   "kind": "scope declaration",
+   "see": "NEXT_INTERFACE.md"
+  },
+  {
+   "id": "A5_NO_CRYPTO_ASSUMPTIONS",
+   "statement": "No cryptographic assumptions: PRNG/SHAKE/KeyGen/Sign are outside P02 and appear in no premise.",
+   "kind": "absence declaration"
+  },
+  {
+   "id": "A6_SIGNED_SHIFT_IMPL_DEFINED",
+   "statement": "fpr_irsh relies on the pinned implementation's arithmetic right shift; the refinement theorem treats irsh_execution as the pinned C behavior (proved end-to-end in WORD_HELPERS_001), not as ISO-C-portable semantics.",
+   "kind": "implementation binding"
+  },
+  {
+   "id": "A7_RAW_MINUS_ZERO",
+   "statement": "raw -0 (0x8000000000000000) is excluded from floorDomain; the implementation returns -1 there. This is documented behavior, not contract; TASK requires the exception be explicit.",
+   "kind": "declared exception"
+  },
+  {
+   "id": "A8_OBS_ROWS_ARE_DIAGNOSTIC",
+   "statement": "Scalar control obs-rows (y>1072, NaN/Inf, raw -0, extreme pack s) match the total literal spec as consistency evidence only; they are not premises of any theorem.",
+   "kind": "control scope"
+  }
+ ],
+ "absence_declarations": [
+  "no sorry/admit/native_decide in formal sources (AXIOMS.json scan)",
+  "no axioms beyond propext/Classical.choice/Quot.sound (and subsets)",
+  "no silent warning suppression (clean Lean logs; linter outputs preserved and resolved)"
+ ]
+}

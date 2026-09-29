@@ -1,0 +1,14 @@
+blockCheck_sound : ∀ (f g : Fin 3 → LExpr) (scale : Int),
+  blockCheck f g scale = true →
+    ∀ (v : Fin 3 → Int),
+      (∀ (j : Fin 3), CanonVal (v j)) → ∀ (k : Fin 3), ((g k).eval fun j => (f j).eval v) = scale * v k % 18433
+'FT1536Global.rootF_bind' depends on axioms: [propext]
+'FT1536Global.rootI_bind' depends on axioms: [propext]
+'FT1536Global.binF_bind' depends on axioms: [propext]
+'FT1536Global.binI_bind' depends on axioms: [propext]
+'FT1536Global.cubeF_bind' depends on axioms: [propext, Quot.sound]
+'FT1536Global.cubeI_bind' depends on axioms: [propext, Quot.sound]
+'FT1536Global.blockCheck_sound' depends on axioms: [propext, Quot.sound]
+'FT1536Global.row_ids' depends on axioms: [propext]
+'FT1536Global.unitRow_id' depends on axioms: [propext]
+'FT1536Global.root_checked' depends on axioms: [propext]

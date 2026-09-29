@@ -1,0 +1,14 @@
+sticky_interval : ∀ (x k : Nat), sticky x k * 2 ^ k ≤ x + 2 ^ k ∧ x ≤ sticky x k * 2 ^ k + 2 ^ k
+round_error : ∀ (m : Nat), -2 ≤ 4 * ↑(roundMant m) - ↑m ∧ 4 * ↑(roundMant m) - ↑m ≤ 2
+normalizer_bounds : ∀ (m : Nat),
+  m < 18446744073709551616 →
+    (norm64 m).snd ≤ 63 ∧
+      (norm64 m).fst = m * 2 ^ (norm64 m).snd ∧
+        (m = 0 ∨ 9223372036854775808 ≤ (norm64 m).fst) ∧ (norm64 m).fst < 18446744073709551616
+'ZeroScalar.or_one_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.sticky_cases' depends on axioms: [propext, Quot.sound]
+'ZeroScalar.sticky_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.round_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.normalizer_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.normalizer_for_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.shrink9_range' depends on axioms: [propext, Classical.choice, Quot.sound]

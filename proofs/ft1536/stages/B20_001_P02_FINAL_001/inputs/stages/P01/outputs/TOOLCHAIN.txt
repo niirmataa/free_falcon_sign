@@ -1,0 +1,20 @@
+TOOLCHAIN (B20_001/P01) — zgodność z TOOLCHAIN_PINS.json
+=====================================================
+
+lean:   4.34.0 (leanprover/lean4:v4.34.0)
+        /home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean
+lake:   5.0.0-src+293d5d0 (Lean version 4.34.0)
+        /home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lake
+mathlib: 5ed2965256430c3649e86755f9576b54eca72435 (tag v4.34.0)
+        materialized at W/bootstrap/mathlib4 (git rev == pin; gate in replay_driver)
+        packages: plausible 118aa17…, LeanSearchClient ddf04cf…,
+        importGraph e928b72…, proofwidgets 106ff4f…, aesop 355695d…,
+        Qq 6a489d9…, batteries f2effa3…, Cli e92c9f1… (lake-manifest.json)
+sage:   10.9 (SageMath)
+        /home/footfalcon/.local/bin/sage
+        invocation mode: sage <file>.sage (preparser on; ZZ/QQ; RealBallField/RealIntervalField)
+
+network: off for proof/build/replay (elan self-update rejected; FAILED_ROUTES#3)
+limits: single-worker, Lean -j1/-M2048 (lake defaults with project cap recorded),
+        wall 1800s per job, 8 GiB normal memory, HOME/TMPDIR/DOT_SAGE/XDG under W.
+forbidden shortcuts checked: 0 occurrences (ASSUMPTIONS.json).

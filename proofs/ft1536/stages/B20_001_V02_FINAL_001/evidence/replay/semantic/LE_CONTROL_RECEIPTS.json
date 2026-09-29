@@ -1,0 +1,231 @@
+[
+  {
+    "name": "sage_le",
+    "argv": [
+      "/home/footfalcon/.local/bin/sage",
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/run/v02_fresh_001/source/checks/little_endian.sage"
+    ],
+    "start": "2026-09-29T14:44:28.944400+00:00",
+    "stop": "2026-09-29T14:44:30.211689+00:00",
+    "elapsed_s": 1.2673668439965695,
+    "exit_code": 0,
+    "expected_exit": 0,
+    "stdout": "sage_le.stdout",
+    "stderr": "sage_le.stderr",
+    "stdout_sha256": "3df42fadf4773bb35347938ca6c087720135c8c9167e84e1638fb71c3ecc5ca9",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "normal_compile",
+    "argv": [
+      "/usr/bin/gcc",
+      "-std=c99",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/output/inputs/source17",
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/run/v02_fresh_001/source/checks/little_endian.c",
+      "-o",
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/run/v02_fresh_001/build/normal"
+    ],
+    "start": "2026-09-29T14:44:30.212073+00:00",
+    "stop": "2026-09-29T14:44:30.326177+00:00",
+    "elapsed_s": 0.11411053998745047,
+    "exit_code": 0,
+    "expected_exit": 0,
+    "stdout": "normal_compile.stdout",
+    "stderr": "normal_compile.stderr",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "normal_execute",
+    "argv": [
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/run/v02_fresh_001/build/normal",
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/run/v02_fresh_001/build/le_cases.txt"
+    ],
+    "start": "2026-09-29T14:44:30.326425+00:00",
+    "stop": "2026-09-29T14:44:30.327902+00:00",
+    "elapsed_s": 0.0014803569938521832,
+    "exit_code": 0,
+    "expected_exit": 0,
+    "stdout": "normal_execute.stdout",
+    "stderr": "normal_execute.stderr",
+    "stdout_sha256": "07c8dda92dee0f513cc34aaaac0a9c78f6894b37a5518f530cc23b13cd048dbd",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "ubsan_compile",
+    "argv": [
+      "/usr/bin/gcc",
+      "-std=c99",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-fsanitize=undefined",
+      "-fno-sanitize-recover=all",
+      "-I",
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/output/inputs/source17",
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/run/v02_fresh_001/source/checks/little_endian.c",
+      "-o",
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/run/v02_fresh_001/build/ubsan"
+    ],
+    "start": "2026-09-29T14:44:30.328076+00:00",
+    "stop": "2026-09-29T14:44:30.642484+00:00",
+    "elapsed_s": 0.3144217279914301,
+    "exit_code": 0,
+    "expected_exit": 0,
+    "stdout": "ubsan_compile.stdout",
+    "stderr": "ubsan_compile.stderr",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "ubsan_execute",
+    "argv": [
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/run/v02_fresh_001/build/ubsan",
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/run/v02_fresh_001/build/le_cases.txt"
+    ],
+    "start": "2026-09-29T14:44:30.642788+00:00",
+    "stop": "2026-09-29T14:44:30.646469+00:00",
+    "elapsed_s": 0.003689832999953069,
+    "exit_code": 0,
+    "expected_exit": 0,
+    "stdout": "ubsan_execute.stdout",
+    "stderr": "ubsan_execute.stderr",
+    "stdout_sha256": "07c8dda92dee0f513cc34aaaac0a9c78f6894b37a5518f530cc23b13cd048dbd",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "decode_index_compile",
+    "argv": [
+      "/usr/bin/gcc",
+      "-std=c99",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/run/v02_fresh_001/build/decode_index",
+      "-I",
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/output/inputs/source17",
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/run/v02_fresh_001/source/checks/little_endian.c",
+      "-o",
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/run/v02_fresh_001/build/decode_index/control"
+    ],
+    "start": "2026-09-29T14:44:30.646808+00:00",
+    "stop": "2026-09-29T14:44:30.760690+00:00",
+    "elapsed_s": 0.11389167299785186,
+    "exit_code": 0,
+    "expected_exit": 0,
+    "stdout": "decode_index_compile.stdout",
+    "stderr": "decode_index_compile.stderr",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "decode_index_execute",
+    "argv": [
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/run/v02_fresh_001/build/decode_index/control",
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/run/v02_fresh_001/build/le_cases.txt"
+    ],
+    "start": "2026-09-29T14:44:30.760981+00:00",
+    "stop": "2026-09-29T14:44:30.762761+00:00",
+    "elapsed_s": 0.0017843300011008978,
+    "exit_code": 1,
+    "expected_exit": 1,
+    "stdout": "decode_index_execute.stdout",
+    "stderr": "decode_index_execute.stderr",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "120f74ccba83e7b935b5a07ec62492954455b25d758b3c402f246eed9dad037d"
+  },
+  {
+    "name": "encode_shift_compile",
+    "argv": [
+      "/usr/bin/gcc",
+      "-std=c99",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/run/v02_fresh_001/build/encode_shift",
+      "-I",
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/output/inputs/source17",
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/run/v02_fresh_001/source/checks/little_endian.c",
+      "-o",
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/run/v02_fresh_001/build/encode_shift/control"
+    ],
+    "start": "2026-09-29T14:44:30.763045+00:00",
+    "stop": "2026-09-29T14:44:30.927309+00:00",
+    "elapsed_s": 0.16427303399541415,
+    "exit_code": 0,
+    "expected_exit": 0,
+    "stdout": "encode_shift_compile.stdout",
+    "stderr": "encode_shift_compile.stderr",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "encode_shift_execute",
+    "argv": [
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/run/v02_fresh_001/build/encode_shift/control",
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/run/v02_fresh_001/build/le_cases.txt"
+    ],
+    "start": "2026-09-29T14:44:30.927577+00:00",
+    "stop": "2026-09-29T14:44:30.929016+00:00",
+    "elapsed_s": 0.001442666005459614,
+    "exit_code": 1,
+    "expected_exit": 1,
+    "stdout": "encode_shift_execute.stdout",
+    "stderr": "encode_shift_execute.stderr",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "c8816c5b011111eb4e52f616b4b454d56248fd02ab28f5ee793668721cd274f3"
+  },
+  {
+    "name": "encode_frame_compile",
+    "argv": [
+      "/usr/bin/gcc",
+      "-std=c99",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/run/v02_fresh_001/build/encode_frame",
+      "-I",
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/output/inputs/source17",
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/run/v02_fresh_001/source/checks/little_endian.c",
+      "-o",
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/run/v02_fresh_001/build/encode_frame/control"
+    ],
+    "start": "2026-09-29T14:44:30.929517+00:00",
+    "stop": "2026-09-29T14:44:31.043835+00:00",
+    "elapsed_s": 0.11432479100767523,
+    "exit_code": 0,
+    "expected_exit": 0,
+    "stdout": "encode_frame_compile.stdout",
+    "stderr": "encode_frame_compile.stderr",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "encode_frame_execute",
+    "argv": [
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/run/v02_fresh_001/build/encode_frame/control",
+      "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/run/v02_fresh_001/build/le_cases.txt"
+    ],
+    "start": "2026-09-29T14:44:31.044110+00:00",
+    "stop": "2026-09-29T14:44:31.045593+00:00",
+    "elapsed_s": 0.0014856650086585432,
+    "exit_code": 1,
+    "expected_exit": 1,
+    "stdout": "encode_frame_execute.stdout",
+    "stderr": "encode_frame_execute.stderr",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "8d395fdc089f35b246e38648f40fcca9ad447511a00b29cb5446f7e34785477c"
+  }
+]

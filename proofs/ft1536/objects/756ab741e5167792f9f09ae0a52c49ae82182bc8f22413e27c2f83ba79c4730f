@@ -1,0 +1,120 @@
+{
+  "status": "PASS_EXECUTED_STRUCTURAL_SCALAR_AND_FLAG_MUTATIONS",
+  "mutations": [
+    {
+      "mutation": "noop",
+      "checker_accepts": true,
+      "stable_ok": true,
+      "first_leaf_difference": null,
+      "first_sk_difference": null,
+      "trace_sha256": "3530de3ff548ef6f17046558819d8b1f774067280887c8ea68fedb8c418e222f",
+      "sk_sha256": "db9b39ce5732cbfe2a6165aa13440bd58695d8eb3d8a6b58e8515c09377039ed"
+    },
+    {
+      "mutation": "reciprocal_forward",
+      "checker_accepts": false,
+      "stable_ok": true,
+      "first_leaf_difference": 768,
+      "first_sk_difference": 18174,
+      "trace_sha256": "145b593f6e41227ff489e5872ea6660be9c35d14280dc5fa0a3916db37ddf0dc",
+      "sk_sha256": "6d2528cc1894578d1cf9f6b704aec1ef8bf72274445978ee5866b2c4ede02b52"
+    },
+    {
+      "mutation": "leaf_permutation",
+      "checker_accepts": false,
+      "stable_ok": true,
+      "first_leaf_difference": null,
+      "first_sk_difference": 9726,
+      "trace_sha256": "3530de3ff548ef6f17046558819d8b1f774067280887c8ea68fedb8c418e222f",
+      "sk_sha256": "621d2219fd5f6be0b0a9d77134b250ce4a8a6b8770bbc9223a6d16f8ba154720"
+    },
+    {
+      "mutation": "frame_basis",
+      "checker_accepts": false,
+      "stable_ok": true,
+      "first_leaf_difference": null,
+      "first_sk_difference": 0,
+      "trace_sha256": "3530de3ff548ef6f17046558819d8b1f774067280887c8ea68fedb8c418e222f",
+      "sk_sha256": "373a0dc575c32d36d028c79c4ee00e1fdb6c5c11f78790a6edb7f370752ab4d5"
+    },
+    {
+      "mutation": "frame_internal",
+      "checker_accepts": false,
+      "stable_ok": true,
+      "first_leaf_difference": null,
+      "first_sk_difference": 6144,
+      "trace_sha256": "3530de3ff548ef6f17046558819d8b1f774067280887c8ea68fedb8c418e222f",
+      "sk_sha256": "927da57adac667e753eadbcbe37741a210d54fd9cdbf0ef1af008cbd55e84047"
+    },
+    {
+      "mutation": "sticky_reset",
+      "raw": "4090000053700377",
+      "initial_bad": 1,
+      "source": [
+        4652218416473572215,
+        1,
+        0
+      ],
+      "mutant": [
+        4652218416473572215,
+        0,
+        1
+      ],
+      "checker_accepts": false
+    },
+    {
+      "mutation": "gate_off_by_one",
+      "raw": "4090000053700377",
+      "initial_bad": 0,
+      "source": [
+        4652218416473572215,
+        0,
+        1
+      ],
+      "mutant": [
+        4652218416473572215,
+        1,
+        0
+      ],
+      "checker_accepts": false
+    },
+    {
+      "mutation": "sqrt_omit_sticky",
+      "raw": "0010000000000002",
+      "expected": "2000000000000001",
+      "without_sticky": "2000000000000000",
+      "checker_accepts": false
+    },
+    {
+      "mutation": "sqrt_wrong_parity_shift",
+      "raw": "40a0000000000000",
+      "source": "4046a09e667f3bcd",
+      "mutant": "4040000000000000",
+      "checker_accepts": false
+    }
+  ],
+  "invalid_preflight": [
+    {
+      "case": "zero_divisor",
+      "preflight_stop": "STOP_EXTENDED_DIV_DOMAIN",
+      "native_called": false
+    },
+    {
+      "case": "negative_sqrt",
+      "preflight_stop": "STOP_SQRT_NORMAL_DOMAIN",
+      "native_called": false
+    },
+    {
+      "case": "subnormal_sqrt_outside_contract",
+      "preflight_stop": "STOP_SQRT_NORMAL_DOMAIN",
+      "native_called": false
+    },
+    {
+      "case": "wrong_logn",
+      "preflight_stop": "Outside fixed logn10; early helper return need not initialize pointer, so suffix not invoked",
+      "native_called": false
+    }
+  ],
+  "source_modified": false,
+  "layer": "Actual model operations/writes and scalar/flag equations changed; original C is not patched. No-op also exercised natively. Not P_key/emitted counterexamples."
+}

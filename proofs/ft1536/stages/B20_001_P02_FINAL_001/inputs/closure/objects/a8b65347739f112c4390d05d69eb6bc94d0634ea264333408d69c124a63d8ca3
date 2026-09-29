@@ -1,0 +1,598 @@
+{
+  "status": "PASS_DOMAIN_PREFLIGHT_AND_INDEPENDENT_MODELS",
+  "cases": [
+    {
+      "name": "rint_boundaries",
+      "kind": "rint",
+      "input": "artifacts/fixtures/rint_boundaries.input",
+      "input_sha256": "4cb933c786afe4e63b9458aed60f660c61ca342017406f279d75b75bd312bfd5",
+      "model": "artifacts/models/rint_boundaries.json",
+      "model_sha256": "5027402b5ebbee5c3d052781e6fc61be4ca93cd411fae2874fd1b13ff17fb646",
+      "scope": "EXTENDED_ALL_EXPONENTS_0_TO_1072; not source-history witnesses",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "ifft_signed_zeros",
+      "kind": "ifft",
+      "input": "artifacts/fixtures/ifft_signed_zeros.input",
+      "input_sha256": "6eb2789a4363a8f5e05cf96d7073652046567ea0f16f343f301fa55e107cff6b",
+      "model": "artifacts/models/ifft_signed_zeros.json",
+      "model_sha256": "4c630744e51f97ae49b802c58ed98b9df26d8d5364cfb91ad439dda4955d70db",
+      "scope": "PUBLIC_LOCAL_IFFT_DOMAIN_ONLY",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "ifft_dense",
+      "kind": "ifft",
+      "input": "artifacts/fixtures/ifft_dense.input",
+      "input_sha256": "4bce34f720956f569a7482bf44276298c0b061bf2b9d8c1666745e050eb01bb2",
+      "model": "artifacts/models/ifft_dense.json",
+      "model_sha256": "7c334912dd5af590dce8bdf5a88e508d68ee41744ac7edbee2a22a155bcb4ad5",
+      "scope": "PUBLIC_LOCAL_IFFT_DOMAIN_ONLY",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "ifft_large_cancel",
+      "kind": "ifft",
+      "input": "artifacts/fixtures/ifft_large_cancel.input",
+      "input_sha256": "83e749c84aeb001adc04db04bb92c7074225ef0b0109f9a1caca2b8afe5a023d",
+      "model": "artifacts/models/ifft_large_cancel.json",
+      "model_sha256": "b1a42ce7864dd8af48a55753e6210783e7239bdbcae8fe108a3cada11da097ad",
+      "scope": "PUBLIC_LOCAL_IFFT_DOMAIN_ONLY",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "ifft_tiny",
+      "kind": "ifft",
+      "input": "artifacts/fixtures/ifft_tiny.input",
+      "input_sha256": "3afef3445eabf466f309233bb79db4a37f455417e56005d7008057a559732819",
+      "model": "artifacts/models/ifft_tiny.json",
+      "model_sha256": "f203e45bae180851ae62915e7f620b0edaa7f844c0fda9db7705f9639e4e3ff1",
+      "scope": "PUBLIC_LOCAL_IFFT_DOMAIN_ONLY",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "suffix_zero",
+      "kind": "suffix",
+      "input": "artifacts/fixtures/suffix_zero.input",
+      "input_sha256": "d1cbd53bbec170a1e37e2ba989ed34a8f5f4426b7d08861ea11700c872778bfc",
+      "model": "artifacts/models/suffix_zero.json",
+      "model_sha256": "11dc810a2d77a6a97a8bde971d43bc87a540e5a936fd80b79e0985a4dd13f238",
+      "scope": "EXTENDED_LOCAL_SUFFIX; synthetic basis, NO P_key/Emitted/source-history membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "suffix_dense",
+      "kind": "suffix",
+      "input": "artifacts/fixtures/suffix_dense.input",
+      "input_sha256": "e9acadc1f2a6134e23fc05b84a624e6f55e53c4272a1da9804b986e2aff9cff9",
+      "model": "artifacts/models/suffix_dense.json",
+      "model_sha256": "6ad7e0b55c0a6857d15589617bf1df32152dc49c08160e6fc11578d6502ce9db",
+      "scope": "EXTENDED_LOCAL_SUFFIX; synthetic basis, NO P_key/Emitted/source-history membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "suffix_extended_wrap",
+      "kind": "suffix",
+      "input": "artifacts/fixtures/suffix_extended_wrap.input",
+      "input_sha256": "c911260ee9fdfe345c7cd579ec71c58ed0a51044c616ad0937a45c4295404afe",
+      "model": "artifacts/models/suffix_extended_wrap.json",
+      "model_sha256": "439ac694a5f958836978a8cded1bd679944239e0f27b4ce8cae1c6b6c76a176b",
+      "scope": "EXTENDED_LOCAL_SUFFIX; synthetic basis, NO P_key/Emitted/source-history membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_suffix_zero",
+      "kind": "codec",
+      "input": "artifacts/fixtures/codec_suffix_zero.input",
+      "input_sha256": "9be011c1145445027021a53457d943e1169eb09835d6636666c6b4688f2b37c6",
+      "model": "artifacts/models/codec_suffix_zero.json",
+      "model_sha256": "6c18cbafd34f2ba3459db04fdf7419ed51723016541c85f888e616f1e1dd96d6",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_suffix_dense",
+      "kind": "codec",
+      "input": "artifacts/fixtures/codec_suffix_dense.input",
+      "input_sha256": "150d0bb5fac1b21fd8ca2caa7cf1c0d73755f53a71de35f2059cd525b9ae37c8",
+      "model": "artifacts/models/codec_suffix_dense.json",
+      "model_sha256": "41de72f4a002902d296f49f53cb48caaa2bc7ff69ab680c94c101872d4f01850",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_suffix_extended_wrap",
+      "kind": "codec",
+      "input": "artifacts/fixtures/codec_suffix_extended_wrap.input",
+      "input_sha256": "9be011c1145445027021a53457d943e1169eb09835d6636666c6b4688f2b37c6",
+      "model": "artifacts/models/codec_suffix_extended_wrap.json",
+      "model_sha256": "6c18cbafd34f2ba3459db04fdf7419ed51723016541c85f888e616f1e1dd96d6",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_zero",
+      "kind": "codec",
+      "input": "artifacts/fixtures/codec_zero.input",
+      "input_sha256": "9be011c1145445027021a53457d943e1169eb09835d6636666c6b4688f2b37c6",
+      "model": "artifacts/models/codec_zero.json",
+      "model_sha256": "6c18cbafd34f2ba3459db04fdf7419ed51723016541c85f888e616f1e1dd96d6",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_M0_witness",
+      "kind": "codec",
+      "input": "artifacts/fixtures/codec_M0_witness.input",
+      "input_sha256": "2b8d519912a5b9187da4ee2d1bb78113c999c4e0b760878fe4ad5460b18f2f2e",
+      "model": "artifacts/models/codec_M0_witness.json",
+      "model_sha256": "dfa78526ffae3309d4de5dc0c7ff187d1541e05f55bab85d4c04819c357b58dd",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_norm_2093922384",
+      "kind": "codec",
+      "input": "artifacts/fixtures/codec_norm_2093922384.input",
+      "input_sha256": "16a38ccd6ea3f56504098a89524ba9ef553a5abba4b4999657e8345eef3160f3",
+      "model": "artifacts/models/codec_norm_2093922384.json",
+      "model_sha256": "e573ac670bc703c6d11b80f477fb45eaf4433620e561c63bf2e986316fb40eae",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_norm_2093922385",
+      "kind": "codec",
+      "input": "artifacts/fixtures/codec_norm_2093922385.input",
+      "input_sha256": "033bdac78e26fbdcbab32a21b0a877c28eee8ea799b8311b4b3b993c73aa19d7",
+      "model": "artifacts/models/codec_norm_2093922385.json",
+      "model_sha256": "b4bc3bba849e08a6f96511ee334a0857c35fb0b8369a0129ee562fd6775d880a",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_norm_2093922386",
+      "kind": "codec",
+      "input": "artifacts/fixtures/codec_norm_2093922386.input",
+      "input_sha256": "61fe11603ef10034dbbf04372414f5cadf7ba3c6fcf5fa4484fc3ccced0db283",
+      "model": "artifacts/models/codec_norm_2093922386.json",
+      "model_sha256": "504f79230f8dcfdbba17a51e1eac50ae87b884c7fa3fc4b1d1e583bb3428ace2",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_00",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_00.input",
+      "input_sha256": "89257b07b822b6de51717e275f3d47bafd7174c8071ee8f09c7e20acd0299c19",
+      "model": "artifacts/models/codec_all16_00.json",
+      "model_sha256": "dfead82433a0798a82cd54ca010b2e63d6982d0c9e707fcb8a34891c43b5c3d4",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_01",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_01.input",
+      "input_sha256": "3fa52f34ac4dece38bf8dfc75f9c7cc1ad6fd25997b3af9d64030b138a20428e",
+      "model": "artifacts/models/codec_all16_01.json",
+      "model_sha256": "05d2d37c54e1d8e729a94b45fce9dc0c3165af2d4aef86a252fb751959fdbf8f",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_02",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_02.input",
+      "input_sha256": "f866c2544a99f66c5d0e60d60ba66dd4bfb87652bbd5268f4d8094272b0bb2d6",
+      "model": "artifacts/models/codec_all16_02.json",
+      "model_sha256": "dea1789c04cad37615c605f492abb4cede98dac89bcaed1027c8343ede52aa94",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_03",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_03.input",
+      "input_sha256": "f220b3e0a23bb6791c05ffa2633f722a49fc441cc5229781816c73df2c952fef",
+      "model": "artifacts/models/codec_all16_03.json",
+      "model_sha256": "5bbed0d471fbc7de7ca596f069ddf2d59c8edcba3b687a1c05e2b1d2200f6673",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_04",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_04.input",
+      "input_sha256": "1f0f93255132276e63b4a28d1598fb5e0fc27ff282baf43d2af3e91e8a54e907",
+      "model": "artifacts/models/codec_all16_04.json",
+      "model_sha256": "8651c4433fea336ec65c5c2a3f2398821bca4e02c7c28dee02119f8504527bb6",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_05",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_05.input",
+      "input_sha256": "cd333234fc87aa4c9fbd8216efab9655b7ba43235a26d12ba80bfcc15b067de3",
+      "model": "artifacts/models/codec_all16_05.json",
+      "model_sha256": "dee87f677a0c0bb0c82b706d22650785292c323c9b07606c9207b85f21179c57",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_06",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_06.input",
+      "input_sha256": "2ab624e2dea3c812e28d692269207c0a9e986cd08189ea6cbd6aa9bfbc14f535",
+      "model": "artifacts/models/codec_all16_06.json",
+      "model_sha256": "680ea297eb209ce893fe0557c9433d8c9499c4d21973757db771b7c511f03648",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_07",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_07.input",
+      "input_sha256": "078c7259b4baa17573c72f15bc7ea9a09d4d644a033701f2bb641a000367a26d",
+      "model": "artifacts/models/codec_all16_07.json",
+      "model_sha256": "4d91298473d4b8b5b9248950938e508e9b7888cb265eaa5421606d5e190e812d",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_08",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_08.input",
+      "input_sha256": "f374470fa4f37db7294557793f035b5d98401757c5c240ca74d875206f350cb4",
+      "model": "artifacts/models/codec_all16_08.json",
+      "model_sha256": "8ef3a07ad4670dd8086ba1c57f1ffd2f777212e44f34a4132a50d98b2e670dda",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_09",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_09.input",
+      "input_sha256": "8a4eec75f4652f0ffc9b2fb0a2c42a09c495e77acdac1185b71ad1455c80cd41",
+      "model": "artifacts/models/codec_all16_09.json",
+      "model_sha256": "3db1d5dddd63c8284408226120b5f6deb6b5ebdbaaacae7ac92dc7faddd52a8c",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_10",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_10.input",
+      "input_sha256": "0e317dce87abc766f050aa1b315128e38810fbc64df5a0568abe6cd47af23697",
+      "model": "artifacts/models/codec_all16_10.json",
+      "model_sha256": "9b5f6a51ff9a1f98e0bcc9eb06b1d5b6e87ecb3cce2860fb14a92fde0717c507",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_11",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_11.input",
+      "input_sha256": "1537d63b3f9ca1447a979f80141f31013a720bae2955e37ffdb87399d9ece031",
+      "model": "artifacts/models/codec_all16_11.json",
+      "model_sha256": "52a8d78b841772192497a2d1b7bbf28632a256bbccbcbf96b45ea355e4f1b589",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_12",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_12.input",
+      "input_sha256": "cab7ff79e528003c39f81ff5198fd2850809418acb12d963ec692211aeff3521",
+      "model": "artifacts/models/codec_all16_12.json",
+      "model_sha256": "68c3d71e240b675085ca6b16f0d11f95350e50736b06c73b903e1614a5c9dde7",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_13",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_13.input",
+      "input_sha256": "ceca71b0f51ee43ec6547072c1921d0728973367d1a99de3087f1eb41bd3cca6",
+      "model": "artifacts/models/codec_all16_13.json",
+      "model_sha256": "ed15d7f899fa33b3e8aca1279af5719ac57a8b3c0dd2d4336c78f7a3a2eddd79",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_14",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_14.input",
+      "input_sha256": "1585a341515d6f70e05995b4c2b202ba045f9fae16320cbccb6fa0afb9ee0c49",
+      "model": "artifacts/models/codec_all16_14.json",
+      "model_sha256": "1dd6132bc9eb8d8b8d23e43709c3c75408682f38a9d856fc681d4f5531ec10b6",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_15",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_15.input",
+      "input_sha256": "7e59a27f9f0fe7135f3c9e84e5bbf3d752f0d0d93450966395892383f3d6d15a",
+      "model": "artifacts/models/codec_all16_15.json",
+      "model_sha256": "15a70ee69c5d699c5abf5249324157d003be4c70cceba676b4b965aae926e71e",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_16",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_16.input",
+      "input_sha256": "4809067bd491bb53f89339db0b4010962c4842151eebbb64e716e421fb05f775",
+      "model": "artifacts/models/codec_all16_16.json",
+      "model_sha256": "e5bd3fcf2472e7f54e824a835f90935cc27ead187869625b8b2fa93d2986b94b",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_17",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_17.input",
+      "input_sha256": "e5b6590efa436eddc682c385fc21e57f825eb7558717a68f0943f0d8a3a09e48",
+      "model": "artifacts/models/codec_all16_17.json",
+      "model_sha256": "ed310e63f7a8d9619b2ea010f823c10e1455fe825d9ece70015de23cdc5d3bf4",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_18",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_18.input",
+      "input_sha256": "af2491d4220f53d381bf8c69cb271da155898b8a91dc88a2f7e407ef5c111da3",
+      "model": "artifacts/models/codec_all16_18.json",
+      "model_sha256": "93359ecd612ba4d94b02c44df4364ebd6b576e67f42bdf65de8819fc24e5c0cd",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_19",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_19.input",
+      "input_sha256": "4a4099ba47c3eb09f953064f889ee2b8e501229536902ac0d42f28aa9a7ad700",
+      "model": "artifacts/models/codec_all16_19.json",
+      "model_sha256": "75e6e2fc7118bff1d8fdca9275bd8ac8ad54df5159bd59030bab9a0814a1b05f",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_20",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_20.input",
+      "input_sha256": "3c289011bac6a59f2006aef9c9655a055107f58d9b48594ec31a7952a3325a77",
+      "model": "artifacts/models/codec_all16_20.json",
+      "model_sha256": "face33c789daa39190b5de73ba633ef8b9c9639317cc1ad3b84a1c4ab69bf4ae",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_21",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_21.input",
+      "input_sha256": "a49f6cdc5ef09c76c7984b1310ba7a6e367cf3bafc7735c8f547a577034f6136",
+      "model": "artifacts/models/codec_all16_21.json",
+      "model_sha256": "4d008e6de37bd0535ba4edb094e798ad0300d5881f94704b02c7b3d52ad53e95",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_22",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_22.input",
+      "input_sha256": "c0f06e494c4e54c1244c4dcb1a9a0e1a2a8b11d36850281cab2be3bb7bb668c3",
+      "model": "artifacts/models/codec_all16_22.json",
+      "model_sha256": "13d160254a1ba81dd11b9afad1bb2c7ff25474c662e94f60e9ee3b7efc7e9054",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_23",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_23.input",
+      "input_sha256": "6b911fa064a2d049270393b5dfd4f6695f12859fbedd472edd70498ef1beb09f",
+      "model": "artifacts/models/codec_all16_23.json",
+      "model_sha256": "0c1ac45fc01449e6f2f5042ce6291edbcfb2140af10d05b1a1798353c6fa067a",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_24",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_24.input",
+      "input_sha256": "978a260b816ef729a66506fb0cadf76066e7fbaf8775148085f23aaee75ac7b7",
+      "model": "artifacts/models/codec_all16_24.json",
+      "model_sha256": "1666195c1143e31ca0c6c416c725d928676ae2de0b9b94f196e23fb888d84168",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_25",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_25.input",
+      "input_sha256": "404aad4c7cfda5df255f5451bf168c4c4799e2f188e9c2152ef1c6b80f2892b4",
+      "model": "artifacts/models/codec_all16_25.json",
+      "model_sha256": "bd6e4e41aa00aeea6926be4366d6094e46aba5db7281a902c197b7cd8e75845f",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_26",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_26.input",
+      "input_sha256": "2954131b29e00016dbf4a5939f917caab867210cae16c8749878348c7c99773f",
+      "model": "artifacts/models/codec_all16_26.json",
+      "model_sha256": "805673846c4334857c4b283ff4322983d713551262a9bfcd7250b4cb93caf8e3",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_27",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_27.input",
+      "input_sha256": "313e33a7cf7e3648655e298c96ea2f64313fb000dc40f563591b667abf0b8fee",
+      "model": "artifacts/models/codec_all16_27.json",
+      "model_sha256": "b87c962ee50a414a51bee633f8652c15e9323dd62a9dff9e9cf12d6f9741ce56",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_28",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_28.input",
+      "input_sha256": "c8960a67378c21db952f2e2d8ec565f3f201305263723b3e9328fa382afc00b3",
+      "model": "artifacts/models/codec_all16_28.json",
+      "model_sha256": "f0c3c9a836392479553a1ce514893db572d547b2e1f47d8e9c12063d08a7d1ad",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_29",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_29.input",
+      "input_sha256": "51f7759f7ad7a093847e31f8a09e9f04abad13e425bc352f10ad79ddd300610d",
+      "model": "artifacts/models/codec_all16_29.json",
+      "model_sha256": "1193862734598f8f199160a1a13df2e803f4bb0b7af65a70db80bc3e57b9080f",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_30",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_30.input",
+      "input_sha256": "2028719608cac75999a77c471f059a25b822337c081328fdc81369ec033aeff8",
+      "model": "artifacts/models/codec_all16_30.json",
+      "model_sha256": "3201124061a713d46952659d79000a0ed5a6e174a7741fed607404b71aee921c",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_31",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_31.input",
+      "input_sha256": "61da5bbd65bfb986689d2011b2df3551b2869e9fe0bc952f11639f40ee75da83",
+      "model": "artifacts/models/codec_all16_31.json",
+      "model_sha256": "5d9ba4738b283d8ec7961437dd95112c446c0c481a012cad969af3fc17b39b36",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_32",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_32.input",
+      "input_sha256": "f3c5a0b9ca62a8321953c766b49ade58b5468f66da0d0c60cc112b106f9f1983",
+      "model": "artifacts/models/codec_all16_32.json",
+      "model_sha256": "6f4e71f5185c11060c6b2f2b594f88b2bdd45141f2aeef4ee11de6fab0acbc20",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_33",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_33.input",
+      "input_sha256": "36f84e5bfcb71746f37a5e9b5fc5479e28dab764a0d11285224fd8527de41ee3",
+      "model": "artifacts/models/codec_all16_33.json",
+      "model_sha256": "cf5c634d2953e9da3471d873ba15eb5da83c61b718890646038a1d0eccc9aa96",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_34",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_34.input",
+      "input_sha256": "aca4d6ee0253127197055b738e61305781de38d4b3c30c15488c5b89eda1163d",
+      "model": "artifacts/models/codec_all16_34.json",
+      "model_sha256": "e4af600e121aab60933ddef8638a01e53254c28cd6d432eed3982ca752b92593",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_35",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_35.input",
+      "input_sha256": "c7062893cef934bcbf6cdaa2682de4cd82788064f18c199e9889535c377c3a76",
+      "model": "artifacts/models/codec_all16_35.json",
+      "model_sha256": "ea78d0b66104100d1083c5246e004aec17d347064f9adc31ad8b364353110ece",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_36",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_36.input",
+      "input_sha256": "b931bbb3fd75374ca432c57c504a4054776452eabe4e69db4d9478cf3977932b",
+      "model": "artifacts/models/codec_all16_36.json",
+      "model_sha256": "d970cb8ff4b3a2bd35d7844b9abf472dbafb72c6051800e730225f92a433e2ce",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_37",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_37.input",
+      "input_sha256": "a8a004eeed5e6c835a22fa33b9c2cc9fcbbaaac1100d5e78b09f1bfb152a268f",
+      "model": "artifacts/models/codec_all16_37.json",
+      "model_sha256": "ddcb6e593646ecab249693332c2fe9a264e5c2d9f6f6171bdb67e9c6fa110e2f",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_38",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_38.input",
+      "input_sha256": "9dc55efb3a90a4dbb91bd58fe0c6ed368e097fca2755681249024818e79adc15",
+      "model": "artifacts/models/codec_all16_38.json",
+      "model_sha256": "6475688a61eaae383a2e241f4e289a227b5a25e700b3b1b34180c174253ba40f",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_39",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_39.input",
+      "input_sha256": "5ab05bae29a059ccb5fa1b0573a5f946ffb0f748324c9a8fa7b59d71426d2ff5",
+      "model": "artifacts/models/codec_all16_39.json",
+      "model_sha256": "08ae566c57fb22005925c824ec7c9b94fc527700c752b6e5c324c43ad80ac6b2",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_40",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_40.input",
+      "input_sha256": "da6240d7577855ffe141427ae5c47fd35848e32676881904606f55f54a612ab3",
+      "model": "artifacts/models/codec_all16_40.json",
+      "model_sha256": "404c5bcf366a3c74f2fce0d3f4e367282638e4196bdcaa754d8230eb254778f5",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_41",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_41.input",
+      "input_sha256": "ea1c4023d74a39f3919929b595ab1c2fc32b60de314da9486f5b449978b1d7a4",
+      "model": "artifacts/models/codec_all16_41.json",
+      "model_sha256": "b65310d5785b5789bf6329d61864e896d2a5584780f6d5975d08b39f4a6120b5",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    },
+    {
+      "name": "codec_all16_42",
+      "kind": "codec_brief",
+      "input": "artifacts/fixtures/codec_all16_42.input",
+      "input_sha256": "ba60bb9590e0b25823993aceddd8319dee6ee5d3f1d2276ff390cecbc19704ea",
+      "model": "artifacts/models/codec_all16_42.json",
+      "model_sha256": "f8f9efc8e2b9667ca5fd6cad434d4605f3066446a17a051149b31ba1f6dc4e5d",
+      "scope": "ALL_SIGNED16_ENCODER_DOMAIN; norm acceptance checked separately; no emitted membership",
+      "preflight": "all literal primitive operations checked BEFORE native execution"
+    }
+  ],
+  "rint_cases": 32224,
+  "signed16_values_covered": 65536,
+  "source_keys_generated": 0
+}

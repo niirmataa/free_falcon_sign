@@ -1,0 +1,830 @@
+theorem B20.Foundation.CExec_eval : ∀ {p : B20.Foundation.Program} {s : B20.Foundation.State}
+  {o : B20.Foundation.Outcome}, B20.Foundation.CExec p s o → Eq.{1} (B20.Foundation.evalStmt p s) o :=
+fun {p : B20.Foundation.Program} {s : B20.Foundation.State} {o : B20.Foundation.Outcome}
+    (h : B20.Foundation.CExec p s o) =>
+  B20.Foundation.CExec.rec
+    (fun {s : B20.Foundation.State} => Eq.refl.{1} (B20.Foundation.evalStmt B20.Foundation.CStmt.skip s))
+    (fun {s : B20.Foundation.State} {e : B20.Foundation.CExpr} {w : B20.Foundation.Word64} {x : String}
+        (h : Eq.{1} (B20.Foundation.evalExpr s e) (Option.some.{0} w)) =>
+      of_eq_true
+        (Eq.trans.{1}
+          (congrFun'.{1, 1}
+            (congrArg.{1, 1} Eq.{1}
+              (congrArg.{1, 1}
+                (fun (x_1 : Option.{0} B20.Foundation.Word64) =>
+                  match x_1 with
+                  | Option.some.{0} w =>
+                    B20.Foundation.Outcome.returned Option.none.{0}
+                      { mem := s.mem,
+                        locals := fun (y : String) => ite.{1} (Eq.{1} y x) (Option.some.{0} w) (s.locals y) }
+                  | Option.none.{0} => B20.Foundation.Outcome.fault "undefined local expression")
+                h))
+            (B20.Foundation.Outcome.returned Option.none.{0}
+              { mem := s.mem, locals := fun (y : String) => ite.{1} (Eq.{1} y x) (Option.some.{0} w) (s.locals y) }))
+          (eq_self.{1}
+            (B20.Foundation.Outcome.returned Option.none.{0}
+              { mem := s.mem, locals := fun (y : String) => ite.{1} (Eq.{1} y x) (Option.some.{0} w) (s.locals y) }))))
+    (fun {s : B20.Foundation.State} {e : B20.Foundation.CExpr} {x : String}
+        (h : Eq.{1} (B20.Foundation.evalExpr s e) Option.none.{0}) =>
+      of_eq_true
+        (Eq.trans.{1}
+          (congrFun'.{1, 1}
+            (congrArg.{1, 1} Eq.{1}
+              (congrArg.{1, 1}
+                (fun (x_1 : Option.{0} B20.Foundation.Word64) =>
+                  match x_1 with
+                  | Option.some.{0} w =>
+                    B20.Foundation.Outcome.returned Option.none.{0}
+                      { mem := s.mem,
+                        locals := fun (y : String) => ite.{1} (Eq.{1} y x) (Option.some.{0} w) (s.locals y) }
+                  | Option.none.{0} => B20.Foundation.Outcome.fault "undefined local expression")
+                h))
+            (B20.Foundation.Outcome.fault "undefined local expression"))
+          (eq_self.{1} (B20.Foundation.Outcome.fault "undefined local expression"))))
+    (fun {s : B20.Foundation.State} {e : B20.Foundation.CExpr} {w : B20.Foundation.Word64} {base : ℕ}
+        (h : Eq.{1} (B20.Foundation.evalExpr s e) (Option.some.{0} w)) =>
+      of_eq_true
+        (Eq.trans.{1}
+          (congrFun'.{1, 1}
+            (congrArg.{1, 1} Eq.{1}
+              (congrArg.{1, 1}
+                (fun (x : Option.{0} B20.Foundation.Word64) =>
+                  match x with
+                  | Option.some.{0} w =>
+                    B20.Foundation.Outcome.returned Option.none.{0} { mem := s.mem.writeU64 base w, locals := s.locals }
+                  | Option.none.{0} => B20.Foundation.Outcome.fault "undefined store expression")
+                h))
+            (B20.Foundation.Outcome.returned Option.none.{0} { mem := s.mem.writeU64 base w, locals := s.locals }))
+          (eq_self.{1}
+            (B20.Foundation.Outcome.returned Option.none.{0} { mem := s.mem.writeU64 base w, locals := s.locals }))))
+    (fun {s : B20.Foundation.State} {e : B20.Foundation.CExpr} {base : ℕ}
+        (h : Eq.{1} (B20.Foundation.evalExpr s e) Option.none.{0}) =>
+      of_eq_true
+        (Eq.trans.{1}
+          (congrFun'.{1, 1}
+            (congrArg.{1, 1} Eq.{1}
+              (congrArg.{1, 1}
+                (fun (x : Option.{0} B20.Foundation.Word64) =>
+                  match x with
+                  | Option.some.{0} w =>
+                    B20.Foundation.Outcome.returned Option.none.{0} { mem := s.mem.writeU64 base w, locals := s.locals }
+                  | Option.none.{0} => B20.Foundation.Outcome.fault "undefined store expression")
+                h))
+            (B20.Foundation.Outcome.fault "undefined store expression"))
+          (eq_self.{1} (B20.Foundation.Outcome.fault "undefined store expression"))))
+    (fun {s : B20.Foundation.State} {e : B20.Foundation.CExpr} {w : B20.Foundation.Word64}
+        (h : Eq.{1} (B20.Foundation.evalExpr s e) (Option.some.{0} w)) =>
+      of_eq_true
+        (Eq.trans.{1}
+          (congrFun'.{1, 1}
+            (congrArg.{1, 1} Eq.{1}
+              (congrArg.{1, 1}
+                (fun (x : Option.{0} B20.Foundation.Word64) =>
+                  match x with
+                  | Option.some.{0} w => B20.Foundation.Outcome.returned (Option.some.{0} w) s
+                  | Option.none.{0} => B20.Foundation.Outcome.fault "undefined return expression")
+                h))
+            (B20.Foundation.Outcome.returned (Option.some.{0} w) s))
+          (eq_self.{1} (B20.Foundation.Outcome.returned (Option.some.{0} w) s))))
+    (fun {s : B20.Foundation.State} {e : B20.Foundation.CExpr}
+        (h : Eq.{1} (B20.Foundation.evalExpr s e) Option.none.{0}) =>
+      of_eq_true
+        (Eq.trans.{1}
+          (congrFun'.{1, 1}
+            (congrArg.{1, 1} Eq.{1}
+              (congrArg.{1, 1}
+                (fun (x : Option.{0} B20.Foundation.Word64) =>
+                  match x with
+                  | Option.some.{0} w => B20.Foundation.Outcome.returned (Option.some.{0} w) s
+                  | Option.none.{0} => B20.Foundation.Outcome.fault "undefined return expression")
+                h))
+            (B20.Foundation.Outcome.fault "undefined return expression"))
+          (eq_self.{1} (B20.Foundation.Outcome.fault "undefined return expression"))))
+    (fun {p : B20.Foundation.Program} {s : B20.Foundation.State} {r : Option.{0} B20.Foundation.Word64}
+        {s1 : B20.Foundation.State} {q : B20.Foundation.Program} {o : B20.Foundation.Outcome}
+        (a : B20.Foundation.CExec p s (B20.Foundation.Outcome.returned r s1)) (a_1 : B20.Foundation.CExec q s1 o)
+        (ihp : Eq.{1} (B20.Foundation.evalStmt p s) (B20.Foundation.Outcome.returned r s1))
+        (ihq : Eq.{1} (B20.Foundation.evalStmt q s1) o) =>
+      of_eq_true
+        (Eq.trans.{1}
+          (congrFun'.{1, 1}
+            (congrArg.{1, 1} Eq.{1}
+              (Eq.trans.{1}
+                (congrArg.{1, 1}
+                  (fun (x : B20.Foundation.Outcome) =>
+                    match x with
+                    | B20.Foundation.Outcome.returned _r s1 => B20.Foundation.evalStmt q s1
+                    | o => o)
+                  ihp)
+                ihq))
+            o)
+          (eq_self.{1} o)))
+    (fun {p : B20.Foundation.Program} {s : B20.Foundation.State} {r : String} {q : B20.Foundation.CStmt}
+        (a : B20.Foundation.CExec p s (B20.Foundation.Outcome.stuck r))
+        (ih : Eq.{1} (B20.Foundation.evalStmt p s) (B20.Foundation.Outcome.stuck r)) =>
+      of_eq_true
+        (Eq.trans.{1}
+          (congrFun'.{1, 1}
+            (congrArg.{1, 1} Eq.{1}
+              (congrArg.{1, 1}
+                (fun (x : B20.Foundation.Outcome) =>
+                  match x with
+                  | B20.Foundation.Outcome.returned _r s1 => B20.Foundation.evalStmt q s1
+                  | o => o)
+                ih))
+            (B20.Foundation.Outcome.stuck r))
+          (eq_self.{1} (B20.Foundation.Outcome.stuck r))))
+    (fun {p : B20.Foundation.Program} {s : B20.Foundation.State} {r : String} {q : B20.Foundation.CStmt}
+        (a : B20.Foundation.CExec p s (B20.Foundation.Outcome.abort r))
+        (ih : Eq.{1} (B20.Foundation.evalStmt p s) (B20.Foundation.Outcome.abort r)) =>
+      of_eq_true
+        (Eq.trans.{1}
+          (congrFun'.{1, 1}
+            (congrArg.{1, 1} Eq.{1}
+              (congrArg.{1, 1}
+                (fun (x : B20.Foundation.Outcome) =>
+                  match x with
+                  | B20.Foundation.Outcome.returned _r s1 => B20.Foundation.evalStmt q s1
+                  | o => o)
+                ih))
+            (B20.Foundation.Outcome.abort r))
+          (eq_self.{1} (B20.Foundation.Outcome.abort r))))
+    (fun {p : B20.Foundation.Program} {s : B20.Foundation.State} {r : String} {q : B20.Foundation.CStmt}
+        (a : B20.Foundation.CExec p s (B20.Foundation.Outcome.nonreturn r))
+        (ih : Eq.{1} (B20.Foundation.evalStmt p s) (B20.Foundation.Outcome.nonreturn r)) =>
+      of_eq_true
+        (Eq.trans.{1}
+          (congrFun'.{1, 1}
+            (congrArg.{1, 1} Eq.{1}
+              (congrArg.{1, 1}
+                (fun (x : B20.Foundation.Outcome) =>
+                  match x with
+                  | B20.Foundation.Outcome.returned _r s1 => B20.Foundation.evalStmt q s1
+                  | o => o)
+                ih))
+            (B20.Foundation.Outcome.nonreturn r))
+          (eq_self.{1} (B20.Foundation.Outcome.nonreturn r))))
+    (fun {p : B20.Foundation.Program} {s : B20.Foundation.State} {r : String} {q : B20.Foundation.CStmt}
+        (a : B20.Foundation.CExec p s (B20.Foundation.Outcome.fault r))
+        (ih : Eq.{1} (B20.Foundation.evalStmt p s) (B20.Foundation.Outcome.fault r)) =>
+      of_eq_true
+        (Eq.trans.{1}
+          (congrFun'.{1, 1}
+            (congrArg.{1, 1} Eq.{1}
+              (congrArg.{1, 1}
+                (fun (x : B20.Foundation.Outcome) =>
+                  match x with
+                  | B20.Foundation.Outcome.returned _r s1 => B20.Foundation.evalStmt q s1
+                  | o => o)
+                ih))
+            (B20.Foundation.Outcome.fault r))
+          (eq_self.{1} (B20.Foundation.Outcome.fault r))))
+    (fun {tag : String} {s : B20.Foundation.State} =>
+      Eq.refl.{1} (B20.Foundation.evalStmt (B20.Foundation.CStmt.assumeFalse tag) s))
+    (fun {tag : String} {s : B20.Foundation.State} =>
+      Eq.refl.{1} (B20.Foundation.evalStmt (B20.Foundation.CStmt.unimplemented tag) s))
+    h
+theorem B20.Foundation.CExec_iff_eval : ∀ (p : B20.Foundation.Program) (s : B20.Foundation.State)
+  (o : B20.Foundation.Outcome), B20.Foundation.CExec p s o ↔ Eq.{1} (B20.Foundation.evalStmt p s) o :=
+fun (p : B20.Foundation.Program) (s : B20.Foundation.State) (o : B20.Foundation.Outcome) =>
+  { mp := B20.Foundation.CExec_eval, mpr := B20.Foundation.evalStmt_sound_gen p s o }
+theorem B20.Foundation.CExec_deterministic : ∀ {p : B20.Foundation.Program} {s : B20.Foundation.State}
+  {o₁ o₂ : B20.Foundation.Outcome}, B20.Foundation.CExec p s o₁ → B20.Foundation.CExec p s o₂ → Eq.{1} o₁ o₂ :=
+fun {p : B20.Foundation.Program} {s : B20.Foundation.State} {o₁ o₂ : B20.Foundation.Outcome}
+    (h₁ : B20.Foundation.CExec p s o₁) (h₂ : B20.Foundation.CExec p s o₂) =>
+  Eq.trans.{1} (Eq.symm.{1} (B20.Foundation.CExec_eval h₁)) (B20.Foundation.CExec_eval h₂)
+theorem B20.Word.ursh_refines : ∀ (x : BitVec 64) (n : ℕ),
+  LT.lt.{0} n 64 → Eq.{1} (B20.Word.ursh x n) (HShiftRight.hShiftRight.{0, 0, 0} x n) :=
+fun (x : BitVec 64) (n : ℕ) (hn : LT.lt.{0} n 64) =>
+  have h :=
+    Decidable.byContradiction fun (a : ¬(Eq.{1} (HDiv.hDiv.{0, 0, 0} n 32) 0 ∨ Eq.{1} (HDiv.hDiv.{0, 0, 0} n 32) 1)) =>
+      B20.Word.ursh_refines._proof_1_1 n hn a;
+  Or.casesOn h
+    (fun (h : Eq.{1} (HDiv.hDiv.{0, 0, 0} n 32) 0) =>
+      have he :=
+        Decidable.byContradiction fun (a : ¬Eq.{1} (HMod.hMod.{0, 0, 0} n 32) n) =>
+          B20.Word.ursh_refines._proof_1_2 n h a;
+      of_eq_true
+        (Eq.trans.{1}
+          (congrFun'.{1, 1}
+            (congrArg.{1, 1} Eq.{1}
+              (congr.{1, 1}
+                (congrArg.{1, 1} HShiftRight.hShiftRight.{0, 0, 0}
+                  (Eq.trans.{1}
+                    (congrArg.{1, 1} (HXor.hXor.{0, 0, 0} x)
+                      (Eq.trans.{1}
+                        (congrArg.{1, 1}
+                          (HAnd.hAnd.{0, 0, 0} (HXor.hXor.{0, 0, 0} x (HShiftRight.hShiftRight.{0, 0, 0} x 32)))
+                          (Eq.trans.{1} (congrArg.{1, 1} Neg.neg.{0} (congrArg.{1, 1} (BitVec.ofNat 64) h))
+                            (BitVec.neg_zero 64)))
+                        BitVec.and_zero))
+                    BitVec.xor_zero))
+                he))
+            (HShiftRight.hShiftRight.{0, 0, 0} x n))
+          (eq_self.{1} (HShiftRight.hShiftRight.{0, 0, 0} x n))))
+    fun (h : Eq.{1} (HDiv.hDiv.{0, 0, 0} n 32) 1) =>
+    have he :=
+      Decidable.byContradiction fun (a : ¬Eq.{1} (HAdd.hAdd.{0, 0, 0} 32 (HMod.hMod.{0, 0, 0} n 32)) n) =>
+        B20.Word.ursh_refines._proof_1_4 n h a;
+    of_eq_true
+      (Eq.trans.{1}
+        (congrFun'.{1, 1}
+          (congrArg.{1, 1} Eq.{1}
+            (Eq.trans.{1}
+              (Eq.trans.{1}
+                (congrFun'.{1, 1}
+                  (congrArg.{1, 1} HShiftRight.hShiftRight.{0, 0, 0}
+                    (Eq.trans.{1}
+                      (Eq.trans.{1}
+                        (congrArg.{1, 1} (HXor.hXor.{0, 0, 0} x)
+                          (Eq.trans.{1}
+                            (congrArg.{1, 1}
+                              (HAnd.hAnd.{0, 0, 0} (HXor.hXor.{0, 0, 0} x (HShiftRight.hShiftRight.{0, 0, 0} x 32)))
+                              (Eq.trans.{1} (congrArg.{1, 1} Neg.neg.{0} (congrArg.{1, 1} (BitVec.ofNat 64) h))
+                                (have this := of_decide_eq_true (id.{0} (Eq.refl.{1} Bool.true));
+                                this)))
+                            BitVec.and_allOnes))
+                        (B20.Word.ursh_refines._simp_1_5 x x (HShiftRight.hShiftRight.{0, 0, 0} x 32)))
+                      (Eq.trans.{1}
+                        (congrFun'.{1, 1} (congrArg.{1, 1} HXor.hXor.{0, 0, 0} BitVec.xor_self)
+                          (HShiftRight.hShiftRight.{0, 0, 0} x 32))
+                        BitVec.zero_xor)))
+                  (HMod.hMod.{0, 0, 0} n 32))
+                (B20.Word.ursh_refines._simp_1_6 x 32 (HMod.hMod.{0, 0, 0} n 32)))
+              (congrArg.{1, 1} (HShiftRight.hShiftRight.{0, 0, 0} x) he)))
+          (HShiftRight.hShiftRight.{0, 0, 0} x n))
+        (eq_self.{1} (HShiftRight.hShiftRight.{0, 0, 0} x n)))
+theorem B20.Word.irsh_refines : ∀ (x : BitVec 64) (n : ℕ),
+  LT.lt.{0} n 64 → Eq.{1} (B20.Word.irsh x n) (x.sshiftRight n) :=
+fun (x : BitVec 64) (n : ℕ) (hn : LT.lt.{0} n 64) =>
+  have h :=
+    Decidable.byContradiction fun (a : ¬(Eq.{1} (HDiv.hDiv.{0, 0, 0} n 32) 0 ∨ Eq.{1} (HDiv.hDiv.{0, 0, 0} n 32) 1)) =>
+      B20.Word.irsh_refines._proof_1_1 n hn a;
+  Or.casesOn h
+    (fun (h : Eq.{1} (HDiv.hDiv.{0, 0, 0} n 32) 0) =>
+      have he :=
+        Decidable.byContradiction fun (a : ¬Eq.{1} (HMod.hMod.{0, 0, 0} n 32) n) =>
+          B20.Word.irsh_refines._proof_1_2 n h a;
+      of_eq_true
+        (Eq.trans.{1}
+          (congrFun'.{1, 1}
+            (congrArg.{1, 1} Eq.{1}
+              (congr.{1, 1}
+                (congrArg.{1, 1} BitVec.sshiftRight
+                  (Eq.trans.{1}
+                    (congrArg.{1, 1} (HXor.hXor.{0, 0, 0} x)
+                      (Eq.trans.{1}
+                        (congrArg.{1, 1} (HAnd.hAnd.{0, 0, 0} (HXor.hXor.{0, 0, 0} x (x.sshiftRight 32)))
+                          (Eq.trans.{1} (congrArg.{1, 1} Neg.neg.{0} (congrArg.{1, 1} (BitVec.ofNat 64) h))
+                            (BitVec.neg_zero 64)))
+                        BitVec.and_zero))
+                    BitVec.xor_zero))
+                he))
+            (x.sshiftRight n))
+          (eq_self.{1} (x.sshiftRight n))))
+    fun (h : Eq.{1} (HDiv.hDiv.{0, 0, 0} n 32) 1) =>
+    have he :=
+      Decidable.byContradiction fun (a : ¬Eq.{1} (HAdd.hAdd.{0, 0, 0} 32 (HMod.hMod.{0, 0, 0} n 32)) n) =>
+        B20.Word.irsh_refines._proof_1_4 n h a;
+    of_eq_true
+      (Eq.trans.{1}
+        (congrFun'.{1, 1}
+          (congrArg.{1, 1} Eq.{1}
+            (Eq.trans.{1}
+              (Eq.trans.{1}
+                (congrFun'.{1, 1}
+                  (congrArg.{1, 1} BitVec.sshiftRight
+                    (Eq.trans.{1}
+                      (Eq.trans.{1}
+                        (congrArg.{1, 1} (HXor.hXor.{0, 0, 0} x)
+                          (Eq.trans.{1}
+                            (congrArg.{1, 1} (HAnd.hAnd.{0, 0, 0} (HXor.hXor.{0, 0, 0} x (x.sshiftRight 32)))
+                              (Eq.trans.{1} (congrArg.{1, 1} Neg.neg.{0} (congrArg.{1, 1} (BitVec.ofNat 64) h))
+                                (have this := of_decide_eq_true (id.{0} (Eq.refl.{1} Bool.true));
+                                this)))
+                            BitVec.and_allOnes))
+                        (B20.Word.irsh_refines._simp_1_5 x x (x.sshiftRight 32)))
+                      (Eq.trans.{1}
+                        (congrFun'.{1, 1} (congrArg.{1, 1} HXor.hXor.{0, 0, 0} BitVec.xor_self) (x.sshiftRight 32))
+                        BitVec.zero_xor)))
+                  (HMod.hMod.{0, 0, 0} n 32))
+                B20.Word.irsh_refines._simp_1_6)
+              (congrArg.{1, 1} x.sshiftRight he)))
+          (x.sshiftRight n))
+        (eq_self.{1} (x.sshiftRight n)))
+theorem B20.Word.ulsh_refines : ∀ (x : BitVec 64) (n : ℕ),
+  LT.lt.{0} n 64 → Eq.{1} (B20.Word.ulsh x n) (HShiftLeft.hShiftLeft.{0, 0, 0} x n) :=
+fun (x : BitVec 64) (n : ℕ) (hn : LT.lt.{0} n 64) =>
+  have h :=
+    Decidable.byContradiction fun (a : ¬(Eq.{1} (HDiv.hDiv.{0, 0, 0} n 32) 0 ∨ Eq.{1} (HDiv.hDiv.{0, 0, 0} n 32) 1)) =>
+      B20.Word.ulsh_refines._proof_1_1 n hn a;
+  Or.casesOn h
+    (fun (h : Eq.{1} (HDiv.hDiv.{0, 0, 0} n 32) 0) =>
+      have he :=
+        Decidable.byContradiction fun (a : ¬Eq.{1} (HMod.hMod.{0, 0, 0} n 32) n) =>
+          B20.Word.ulsh_refines._proof_1_2 n h a;
+      of_eq_true
+        (Eq.trans.{1}
+          (congrFun'.{1, 1}
+            (congrArg.{1, 1} Eq.{1}
+              (congr.{1, 1}
+                (congrArg.{1, 1} HShiftLeft.hShiftLeft.{0, 0, 0}
+                  (Eq.trans.{1}
+                    (congrArg.{1, 1} (HXor.hXor.{0, 0, 0} x)
+                      (Eq.trans.{1}
+                        (congrArg.{1, 1}
+                          (HAnd.hAnd.{0, 0, 0} (HXor.hXor.{0, 0, 0} x (HShiftLeft.hShiftLeft.{0, 0, 0} x 32)))
+                          (Eq.trans.{1} (congrArg.{1, 1} Neg.neg.{0} (congrArg.{1, 1} (BitVec.ofNat 64) h))
+                            (BitVec.neg_zero 64)))
+                        BitVec.and_zero))
+                    BitVec.xor_zero))
+                he))
+            (HShiftLeft.hShiftLeft.{0, 0, 0} x n))
+          (eq_self.{1} (HShiftLeft.hShiftLeft.{0, 0, 0} x n))))
+    fun (h : Eq.{1} (HDiv.hDiv.{0, 0, 0} n 32) 1) =>
+    have he :=
+      Decidable.byContradiction fun (a : ¬Eq.{1} (HAdd.hAdd.{0, 0, 0} 32 (HMod.hMod.{0, 0, 0} n 32)) n) =>
+        B20.Word.ulsh_refines._proof_1_4 n h a;
+    of_eq_true
+      (Eq.trans.{1}
+        (congrFun'.{1, 1}
+          (congrArg.{1, 1} Eq.{1}
+            (Eq.trans.{1}
+              (Eq.trans.{1}
+                (congrFun'.{1, 1}
+                  (congrArg.{1, 1} HShiftLeft.hShiftLeft.{0, 0, 0}
+                    (Eq.trans.{1}
+                      (Eq.trans.{1}
+                        (congrArg.{1, 1} (HXor.hXor.{0, 0, 0} x)
+                          (Eq.trans.{1}
+                            (congrArg.{1, 1}
+                              (HAnd.hAnd.{0, 0, 0} (HXor.hXor.{0, 0, 0} x (HShiftLeft.hShiftLeft.{0, 0, 0} x 32)))
+                              (Eq.trans.{1} (congrArg.{1, 1} Neg.neg.{0} (congrArg.{1, 1} (BitVec.ofNat 64) h))
+                                (have this := of_decide_eq_true (id.{0} (Eq.refl.{1} Bool.true));
+                                this)))
+                            BitVec.and_allOnes))
+                        (B20.Word.ulsh_refines._simp_1_5 x x (HShiftLeft.hShiftLeft.{0, 0, 0} x 32)))
+                      (Eq.trans.{1}
+                        (congrFun'.{1, 1} (congrArg.{1, 1} HXor.hXor.{0, 0, 0} BitVec.xor_self)
+                          (HShiftLeft.hShiftLeft.{0, 0, 0} x 32))
+                        BitVec.zero_xor)))
+                  (HMod.hMod.{0, 0, 0} n 32))
+                (B20.Word.ulsh_refines._simp_1_6 x 32 (HMod.hMod.{0, 0, 0} n 32)))
+              (congrArg.{1, 1} (HShiftLeft.hShiftLeft.{0, 0, 0} x) he)))
+          (HShiftLeft.hShiftLeft.{0, 0, 0} x n))
+        (eq_self.{1} (HShiftLeft.hShiftLeft.{0, 0, 0} x n)))
+theorem B20.Word.pinned_ursh_parses : Eq.{1} (B20.C.parseFunction (B20.Word.slice B20.Pinned.headerLines 17 6))
+  (Option.some.{0} B20.Word.urshFunction) :=
+Eq.mpr.{0}
+  (id.{0}
+    (congrArg.{1, 1} (fun (_a : Option.{0} B20.C.Function) => Eq.{1} _a (Option.some.{0} B20.Word.urshFunction))
+      (B20.C.parseFunction.eq_1 (B20.Word.slice B20.Pinned.headerLines 17 6))))
+  (Eq.mpr.{0}
+    (id.{0}
+      (congrArg.{1, 1}
+        (fun (_a : List.{0} Char) =>
+          Eq.{1}
+            (Option.bind.{0, 0} (B20.C.tokenize (HAdd.hAdd.{0, 0, 0} (List.length.{0} _a) 1) _a)
+              B20.C.parseFunctionTokens)
+            (Option.some.{0} B20.Word.urshFunction))
+        B20.Word.pinned_ursh_slice))
+    (Eq.mpr.{0}
+      (id.{0}
+        (congrArg.{1, 1}
+          (fun (_a : Option.{0} (List.{0} B20.C.Token)) =>
+            Eq.{1} (Option.bind.{0, 0} _a B20.C.parseFunctionTokens) (Option.some.{0} B20.Word.urshFunction))
+          B20.Word.pinned_ursh_lex))
+      B20.Word.pinned_ursh_syntax))
+theorem B20.Word.pinned_irsh_parses : Eq.{1} (B20.C.parseFunction (B20.Word.slice B20.Pinned.headerLines 24 6))
+  (Option.some.{0} B20.Word.irshFunction) :=
+Eq.mpr.{0}
+  (id.{0}
+    (congrArg.{1, 1} (fun (_a : Option.{0} B20.C.Function) => Eq.{1} _a (Option.some.{0} B20.Word.irshFunction))
+      (B20.C.parseFunction.eq_1 (B20.Word.slice B20.Pinned.headerLines 24 6))))
+  (Eq.mpr.{0}
+    (id.{0}
+      (congrArg.{1, 1}
+        (fun (_a : List.{0} Char) =>
+          Eq.{1}
+            (Option.bind.{0, 0} (B20.C.tokenize (HAdd.hAdd.{0, 0, 0} (List.length.{0} _a) 1) _a)
+              B20.C.parseFunctionTokens)
+            (Option.some.{0} B20.Word.irshFunction))
+        B20.Word.pinned_irsh_slice))
+    (Eq.mpr.{0}
+      (id.{0}
+        (congrArg.{1, 1}
+          (fun (_a : Option.{0} (List.{0} B20.C.Token)) =>
+            Eq.{1} (Option.bind.{0, 0} _a B20.C.parseFunctionTokens) (Option.some.{0} B20.Word.irshFunction))
+          B20.Word.pinned_irsh_lex))
+      B20.Word.pinned_irsh_syntax))
+theorem B20.Word.pinned_ulsh_parses : Eq.{1} (B20.C.parseFunction (B20.Word.slice B20.Pinned.headerLines 31 6))
+  (Option.some.{0} B20.Word.ulshFunction) :=
+Eq.mpr.{0}
+  (id.{0}
+    (congrArg.{1, 1} (fun (_a : Option.{0} B20.C.Function) => Eq.{1} _a (Option.some.{0} B20.Word.ulshFunction))
+      (B20.C.parseFunction.eq_1 (B20.Word.slice B20.Pinned.headerLines 31 6))))
+  (Eq.mpr.{0}
+    (id.{0}
+      (congrArg.{1, 1}
+        (fun (_a : List.{0} Char) =>
+          Eq.{1}
+            (Option.bind.{0, 0} (B20.C.tokenize (HAdd.hAdd.{0, 0, 0} (List.length.{0} _a) 1) _a)
+              B20.C.parseFunctionTokens)
+            (Option.some.{0} B20.Word.ulshFunction))
+        B20.Word.pinned_ulsh_slice))
+    (Eq.mpr.{0}
+      (id.{0}
+        (congrArg.{1, 1}
+          (fun (_a : Option.{0} (List.{0} B20.C.Token)) =>
+            Eq.{1} (Option.bind.{0, 0} _a B20.C.parseFunctionTokens) (Option.some.{0} B20.Word.ulshFunction))
+          B20.Word.pinned_ulsh_lex))
+      B20.Word.pinned_ulsh_syntax))
+theorem B20.Word.ursh_execution : ∀ (x : BitVec 64) (n : Fin 64),
+  Eq.{1}
+    (B20.C.execute B20.Word.urshFunction
+      (List.cons.{0} (B20.C.Val.u64 x) (List.cons.{0} (B20.C.Val.i32 (BitVec.ofNat 32 ↑n)) List.nil.{0})))
+    (Option.some.{0} (B20.C.Val.u64 (B20.Word.ursh x ↑n))) :=
+failed to pretty print expression (use 'set_option pp.rawOnError true' for raw representation)
+theorem B20.Word.irsh_execution : ∀ (x : BitVec 64) (n : Fin 64),
+  Eq.{1}
+    (B20.C.execute B20.Word.irshFunction
+      (List.cons.{0} (B20.C.Val.i64 x) (List.cons.{0} (B20.C.Val.i32 (BitVec.ofNat 32 ↑n)) List.nil.{0})))
+    (Option.some.{0} (B20.C.Val.i64 (B20.Word.irsh x ↑n))) :=
+failed to pretty print expression (use 'set_option pp.rawOnError true' for raw representation)
+theorem B20.Word.ulsh_execution : ∀ (x : BitVec 64) (n : Fin 64),
+  Eq.{1}
+    (B20.C.execute B20.Word.ulshFunction
+      (List.cons.{0} (B20.C.Val.u64 x) (List.cons.{0} (B20.C.Val.i32 (BitVec.ofNat 32 ↑n)) List.nil.{0})))
+    (Option.some.{0} (B20.C.Val.u64 (B20.Word.ulsh x ↑n))) :=
+failed to pretty print expression (use 'set_option pp.rawOnError true' for raw representation)
+theorem B20.Word.pinned_ursh_refines : ∀ (x : BitVec 64) (n : Fin 64),
+  ∃ (f : B20.C.Function),
+    Eq.{1} (B20.C.parseFunction (B20.Word.slice B20.Pinned.headerLines 17 6)) (Option.some.{0} f) ∧
+      B20.C.CExec f (List.cons.{0} (B20.C.Val.u64 x) (List.cons.{0} (B20.C.Val.i32 (BitVec.ofNat 32 ↑n)) List.nil.{0}))
+        (B20.C.Val.u64 (HShiftRight.hShiftRight.{0, 0, 0} x ↑n)) :=
+fun (x : BitVec 64) (n : Fin 64) =>
+  Exists.intro.{1} B20.Word.urshFunction
+    ⟨B20.Word.pinned_ursh_parses,
+      id.{0}
+        (Eq.mpr.{0}
+          (id.{0}
+            (congrArg.{1, 1}
+              (fun (_a : Option.{0} B20.C.Val) =>
+                Eq.{1} _a (Option.some.{0} (B20.C.Val.u64 (HShiftRight.hShiftRight.{0, 0, 0} x ↑n))))
+              (B20.Word.ursh_execution x n)))
+          (Eq.mpr.{0}
+            (id.{0}
+              (congrArg.{1, 1}
+                (fun (_a : BitVec 64) =>
+                  Eq.{1} (Option.some.{0} (B20.C.Val.u64 _a))
+                    (Option.some.{0} (B20.C.Val.u64 (HShiftRight.hShiftRight.{0, 0, 0} x ↑n))))
+                (B20.Word.ursh_refines x (↑n) n.isLt)))
+            (Eq.refl.{1} (Option.some.{0} (B20.C.Val.u64 (HShiftRight.hShiftRight.{0, 0, 0} x ↑n))))))⟩
+theorem B20.Word.pinned_irsh_refines : ∀ (x : BitVec 64) (n : Fin 64),
+  ∃ (f : B20.C.Function),
+    Eq.{1} (B20.C.parseFunction (B20.Word.slice B20.Pinned.headerLines 24 6)) (Option.some.{0} f) ∧
+      B20.C.CExec f (List.cons.{0} (B20.C.Val.i64 x) (List.cons.{0} (B20.C.Val.i32 (BitVec.ofNat 32 ↑n)) List.nil.{0}))
+        (B20.C.Val.i64 (x.sshiftRight ↑n)) :=
+fun (x : BitVec 64) (n : Fin 64) =>
+  Exists.intro.{1} B20.Word.irshFunction
+    ⟨B20.Word.pinned_irsh_parses,
+      id.{0}
+        (Eq.mpr.{0}
+          (id.{0}
+            (congrArg.{1, 1}
+              (fun (_a : Option.{0} B20.C.Val) => Eq.{1} _a (Option.some.{0} (B20.C.Val.i64 (x.sshiftRight ↑n))))
+              (B20.Word.irsh_execution x n)))
+          (Eq.mpr.{0}
+            (id.{0}
+              (congrArg.{1, 1}
+                (fun (_a : BitVec 64) =>
+                  Eq.{1} (Option.some.{0} (B20.C.Val.i64 _a)) (Option.some.{0} (B20.C.Val.i64 (x.sshiftRight ↑n))))
+                (B20.Word.irsh_refines x (↑n) n.isLt)))
+            (Eq.refl.{1} (Option.some.{0} (B20.C.Val.i64 (x.sshiftRight ↑n))))))⟩
+theorem B20.Word.pinned_ulsh_refines : ∀ (x : BitVec 64) (n : Fin 64),
+  ∃ (f : B20.C.Function),
+    Eq.{1} (B20.C.parseFunction (B20.Word.slice B20.Pinned.headerLines 31 6)) (Option.some.{0} f) ∧
+      B20.C.CExec f (List.cons.{0} (B20.C.Val.u64 x) (List.cons.{0} (B20.C.Val.i32 (BitVec.ofNat 32 ↑n)) List.nil.{0}))
+        (B20.C.Val.u64 (HShiftLeft.hShiftLeft.{0, 0, 0} x ↑n)) :=
+fun (x : BitVec 64) (n : Fin 64) =>
+  Exists.intro.{1} B20.Word.ulshFunction
+    ⟨B20.Word.pinned_ulsh_parses,
+      id.{0}
+        (Eq.mpr.{0}
+          (id.{0}
+            (congrArg.{1, 1}
+              (fun (_a : Option.{0} B20.C.Val) =>
+                Eq.{1} _a (Option.some.{0} (B20.C.Val.u64 (HShiftLeft.hShiftLeft.{0, 0, 0} x ↑n))))
+              (B20.Word.ulsh_execution x n)))
+          (Eq.mpr.{0}
+            (id.{0}
+              (congrArg.{1, 1}
+                (fun (_a : BitVec 64) =>
+                  Eq.{1} (Option.some.{0} (B20.C.Val.u64 _a))
+                    (Option.some.{0} (B20.C.Val.u64 (HShiftLeft.hShiftLeft.{0, 0, 0} x ↑n))))
+                (B20.Word.ulsh_refines x (↑n) n.isLt)))
+            (Eq.refl.{1} (Option.some.{0} (B20.C.Val.u64 (HShiftLeft.hShiftLeft.{0, 0, 0} x ↑n))))))⟩
+theorem B20.Word.byteAt_write : ∀ (m : B20.Foundation.Memory) (base : ℕ) (v : B20.Foundation.Word64) (i : ℕ),
+  LT.lt.{0} i 8 →
+    Eq.{1} ((m.writeU64 base v).byteAt (HAdd.hAdd.{0, 0, 0} base i))
+      (HMod.hMod.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (BitVec.toNat v) (HPow.hPow.{0, 0, 0} 2 (HMul.hMul.{0, 0, 0} 8 i)))
+        256) :=
+fun (m : B20.Foundation.Memory) (base : ℕ) (v : B20.Foundation.Word64) (i : ℕ) (hi : LT.lt.{0} i 8) =>
+  have hge :=
+    Decidable.byContradiction fun (a : ¬GE.ge.{0} (HAdd.hAdd.{0, 0, 0} base i) base) =>
+      B20.Word.byteAt_write._proof_1_1 base i hi a;
+  have hsub :=
+    Decidable.byContradiction fun (a : ¬Eq.{1} (HSub.hSub.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} base i) base) i) =>
+      B20.Word.byteAt_write._proof_1_2 base i hge a;
+  of_eq_true
+    (Eq.trans.{1}
+      (congrFun'.{1, 1}
+        (congrArg.{1, 1} Eq.{1}
+          (Eq.trans.{1}
+            (congrArg.{1, 1}
+              (fun (x : Option.{0} B20.Foundation.Word8) =>
+                match x with
+                | Option.some.{0} b => BitVec.toNat b
+                | Option.none.{0} => 0)
+              (Eq.trans.{1}
+                (congrFun'.{1, 1}
+                  (congrArg.{1, 1} B20.Foundation.Memory.bytes
+                    (congrArg.{1, 1} B20.Foundation.Memory.mk
+                      (funext.{1, 1} fun (a : ℕ) =>
+                        dite_congr.{1} ge_iff_le._simp_1.{0}
+                          (fun (h : LE.le.{0} base a) =>
+                            ite_congr.{1} (Eq.refl.{1} (LT.lt.{0} (HSub.hSub.{0, 0, 0} a base) 8))
+                              (fun (a_1 : LT.lt.{0} (HSub.hSub.{0, 0, 0} a base) 8) =>
+                                congrArg.{1, 1} Option.some.{0}
+                                  (congrArg.{1, 1} (BitVec.ofNat 8)
+                                    (congrFun'.{1, 1}
+                                      (congrArg.{1, 1} HMod.hMod.{0, 0, 0}
+                                        (Nat.shiftRight_eq_div_pow (BitVec.toNat v)
+                                          (HMul.hMul.{0, 0, 0} 8 (HSub.hSub.{0, 0, 0} a base))))
+                                      256)))
+                              fun (a_1 : ¬LT.lt.{0} (HSub.hSub.{0, 0, 0} a base) 8) => Eq.refl.{1} (m.bytes a))
+                          fun (h : ¬LE.le.{0} base a) => Eq.refl.{1} (m.bytes a))))
+                  (HAdd.hAdd.{0, 0, 0} base i))
+                (Eq.trans.{1}
+                  (ite_eq_left_of_eq_true.{1}
+                    (ite.{1} (LT.lt.{0} (HSub.hSub.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} base i) base) 8)
+                      (Option.some.{0}
+                        (BitVec.ofNat 8
+                          (HMod.hMod.{0, 0, 0}
+                            (HDiv.hDiv.{0, 0, 0} (BitVec.toNat v)
+                              (HPow.hPow.{0, 0, 0} 2
+                                (HMul.hMul.{0, 0, 0} 8 (HSub.hSub.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} base i) base))))
+                            256)))
+                      (m.bytes (HAdd.hAdd.{0, 0, 0} base i)))
+                    (m.bytes (HAdd.hAdd.{0, 0, 0} base i)) (eq_true hge))
+                  (Eq.trans.{1}
+                    (ite_eq_left_of_eq_true.{1}
+                      (Option.some.{0}
+                        (BitVec.ofNat 8
+                          (HMod.hMod.{0, 0, 0}
+                            (HDiv.hDiv.{0, 0, 0} (BitVec.toNat v)
+                              (HPow.hPow.{0, 0, 0} 2
+                                (HMul.hMul.{0, 0, 0} 8 (HSub.hSub.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} base i) base))))
+                            256)))
+                      (m.bytes (HAdd.hAdd.{0, 0, 0} base i))
+                      (Eq.trans.{1} (congrFun'.{1, 1} (congrArg.{1, 1} LT.lt.{0} hsub) 8) (eq_true hi)))
+                    (congrArg.{1, 1} Option.some.{0}
+                      (congrArg.{1, 1} (BitVec.ofNat 8)
+                        (congrFun'.{1, 1}
+                          (congrArg.{1, 1} HMod.hMod.{0, 0, 0}
+                            (congrArg.{1, 1} (HDiv.hDiv.{0, 0, 0} (BitVec.toNat v))
+                              (congrArg.{1, 1} (HPow.hPow.{0, 0, 0} 2) (congrArg.{1, 1} (HMul.hMul.{0, 0, 0} 8) hsub))))
+                          256)))))))
+            (Eq.trans.{1}
+              (BitVec.toNat_ofNat
+                (HMod.hMod.{0, 0, 0}
+                  (HDiv.hDiv.{0, 0, 0} (BitVec.toNat v) (HPow.hPow.{0, 0, 0} 2 (HMul.hMul.{0, 0, 0} 8 i))) 256)
+                8)
+              (Nat.mod_mod_of_dvd
+                (HDiv.hDiv.{0, 0, 0} (BitVec.toNat v) (HPow.hPow.{0, 0, 0} 2 (HMul.hMul.{0, 0, 0} 8 i)))
+                (of_eq_true (Nat.dvd_refl._simp_1 256))))))
+        (HMod.hMod.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (BitVec.toNat v) (HPow.hPow.{0, 0, 0} 2 (HMul.hMul.{0, 0, 0} 8 i)))
+          256))
+      (eq_self.{1}
+        (HMod.hMod.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (BitVec.toNat v) (HPow.hPow.{0, 0, 0} 2 (HMul.hMul.{0, 0, 0} 8 i)))
+          256)))
+theorem B20.Word.write_frame : ∀ (m : B20.Foundation.Memory) (base : ℕ) (v : B20.Foundation.Word64) (address : ℕ),
+  LT.lt.{0} address base ∨ LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) address →
+    Eq.{1} ((m.writeU64 base v).bytes address) (m.bytes address) :=
+fun (m : B20.Foundation.Memory) (base : ℕ) (v : B20.Foundation.Word64) (address : ℕ)
+    (outside : LT.lt.{0} address base ∨ LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) address) =>
+  Or.casesOn outside
+    (fun (h : LT.lt.{0} address base) =>
+      of_eq_true
+        (Eq.trans.{1}
+          (congrFun'.{1, 1}
+            (congrArg.{1, 1} Eq.{1}
+              (Eq.trans.{1}
+                (congrFun'.{1, 1}
+                  (congrArg.{1, 1} B20.Foundation.Memory.bytes
+                    (congrArg.{1, 1} B20.Foundation.Memory.mk
+                      (funext.{1, 1} fun (a : ℕ) =>
+                        dite_congr.{1} ge_iff_le._simp_1.{0}
+                          (fun (h : LE.le.{0} base a) =>
+                            Eq.refl.{1}
+                              (ite.{1} (LT.lt.{0} (HSub.hSub.{0, 0, 0} a base) 8)
+                                (Option.some.{0}
+                                  (BitVec.ofNat 8
+                                    (HMod.hMod.{0, 0, 0}
+                                      (HShiftRight.hShiftRight.{0, 0, 0} (BitVec.toNat v)
+                                        (HMul.hMul.{0, 0, 0} 8 (HSub.hSub.{0, 0, 0} a base)))
+                                      256)))
+                                (m.bytes a)))
+                          fun (h : ¬LE.le.{0} base a) => Eq.refl.{1} (m.bytes a))))
+                  address)
+                (ite_eq_right_of_eq_false.{1}
+                  (ite.{1} (LT.lt.{0} (HSub.hSub.{0, 0, 0} address base) 8)
+                    (Option.some.{0}
+                      (BitVec.ofNat 8
+                        (HMod.hMod.{0, 0, 0}
+                          (HShiftRight.hShiftRight.{0, 0, 0} (BitVec.toNat v)
+                            (HMul.hMul.{0, 0, 0} 8 (HSub.hSub.{0, 0, 0} address base)))
+                          256)))
+                    (m.bytes address))
+                  (m.bytes address)
+                  (eq_false
+                    (have this := fun (a : GE.ge.{0} address base) => B20.Word.write_frame._proof_1_2 base address h a;
+                    this)))))
+            (m.bytes address))
+          (eq_self.{1} (m.bytes address))))
+    fun (h : LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) address) =>
+    of_eq_true
+      (Eq.trans.{1}
+        (congrFun'.{1, 1}
+          (congrArg.{1, 1} Eq.{1}
+            (Eq.trans.{1}
+              (congrFun'.{1, 1}
+                (congrArg.{1, 1} B20.Foundation.Memory.bytes
+                  (congrArg.{1, 1} B20.Foundation.Memory.mk
+                    (funext.{1, 1} fun (a : ℕ) =>
+                      dite_congr.{1} ge_iff_le._simp_1.{0}
+                        (fun (h : LE.le.{0} base a) =>
+                          Eq.refl.{1}
+                            (ite.{1} (LT.lt.{0} (HSub.hSub.{0, 0, 0} a base) 8)
+                              (Option.some.{0}
+                                (BitVec.ofNat 8
+                                  (HMod.hMod.{0, 0, 0}
+                                    (HShiftRight.hShiftRight.{0, 0, 0} (BitVec.toNat v)
+                                      (HMul.hMul.{0, 0, 0} 8 (HSub.hSub.{0, 0, 0} a base)))
+                                    256)))
+                              (m.bytes a)))
+                        fun (h : ¬LE.le.{0} base a) => Eq.refl.{1} (m.bytes a))))
+                address)
+              (Eq.trans.{1}
+                (ite_eq_left_of_eq_true.{1}
+                  (ite.{1} (LT.lt.{0} (HSub.hSub.{0, 0, 0} address base) 8)
+                    (Option.some.{0}
+                      (BitVec.ofNat 8
+                        (HMod.hMod.{0, 0, 0}
+                          (HShiftRight.hShiftRight.{0, 0, 0} (BitVec.toNat v)
+                            (HMul.hMul.{0, 0, 0} 8 (HSub.hSub.{0, 0, 0} address base)))
+                          256)))
+                    (m.bytes address))
+                  (m.bytes address)
+                  (eq_true
+                    (have this :=
+                      Decidable.byContradiction fun (a : ¬GE.ge.{0} address base) =>
+                        B20.Word.write_frame._proof_1_3 base address h a;
+                    this)))
+                (ite_eq_right_of_eq_false.{1}
+                  (Option.some.{0}
+                    (BitVec.ofNat 8
+                      (HMod.hMod.{0, 0, 0}
+                        (HShiftRight.hShiftRight.{0, 0, 0} (BitVec.toNat v)
+                          (HMul.hMul.{0, 0, 0} 8 (HSub.hSub.{0, 0, 0} address base)))
+                        256)))
+                  (m.bytes address)
+                  (eq_false
+                    (have this := fun (a : LT.lt.{0} (HSub.hSub.{0, 0, 0} address base) 8) =>
+                      B20.Word.write_frame._proof_1_4 base address h a;
+                    this))))))
+          (m.bytes address))
+        (eq_self.{1} (m.bytes address)))
+theorem B20.Word.write_legal : ∀ (m : B20.Foundation.Memory) (base : ℕ) (v : B20.Foundation.Word64),
+  (m.writeU64 base v).legalU64 base :=
+fun (m : B20.Foundation.Memory) (base : ℕ) (v : B20.Foundation.Word64) (i : ℕ) (hi : LT.lt.{0} i 8) =>
+  of_eq_true
+    (Eq.trans.{1}
+      (congrFun'.{1, 1}
+        (congrArg.{1, 1} Eq.{1}
+          (congrArg.{1, 1} Option.isSome.{0}
+            (Eq.trans.{1}
+              (congrFun'.{1, 1}
+                (congrArg.{1, 1} B20.Foundation.Memory.bytes
+                  (congrArg.{1, 1} B20.Foundation.Memory.mk
+                    (funext.{1, 1} fun (a : ℕ) =>
+                      dite_congr.{1} ge_iff_le._simp_1.{0}
+                        (fun (h : LE.le.{0} base a) =>
+                          Eq.refl.{1}
+                            (ite.{1} (LT.lt.{0} (HSub.hSub.{0, 0, 0} a base) 8)
+                              (Option.some.{0}
+                                (BitVec.ofNat 8
+                                  (HMod.hMod.{0, 0, 0}
+                                    (HShiftRight.hShiftRight.{0, 0, 0} (BitVec.toNat v)
+                                      (HMul.hMul.{0, 0, 0} 8 (HSub.hSub.{0, 0, 0} a base)))
+                                    256)))
+                              (m.bytes a)))
+                        fun (h : ¬LE.le.{0} base a) => Eq.refl.{1} (m.bytes a))))
+                (HAdd.hAdd.{0, 0, 0} base i))
+              (Eq.trans.{1}
+                (ite_eq_left_of_eq_true.{1}
+                  (ite.{1} (LT.lt.{0} (HSub.hSub.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} base i) base) 8)
+                    (Option.some.{0}
+                      (BitVec.ofNat 8
+                        (HMod.hMod.{0, 0, 0}
+                          (HShiftRight.hShiftRight.{0, 0, 0} (BitVec.toNat v)
+                            (HMul.hMul.{0, 0, 0} 8 (HSub.hSub.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} base i) base)))
+                          256)))
+                    (m.bytes (HAdd.hAdd.{0, 0, 0} base i)))
+                  (m.bytes (HAdd.hAdd.{0, 0, 0} base i))
+                  (eq_true
+                    (have this :=
+                      Decidable.byContradiction fun (a : ¬GE.ge.{0} (HAdd.hAdd.{0, 0, 0} base i) base) =>
+                        B20.Word.write_legal._proof_1_2 base i hi a;
+                    this)))
+                (Eq.trans.{1}
+                  (ite_eq_left_of_eq_true.{1}
+                    (Option.some.{0}
+                      (BitVec.ofNat 8
+                        (HMod.hMod.{0, 0, 0}
+                          (HShiftRight.hShiftRight.{0, 0, 0} (BitVec.toNat v)
+                            (HMul.hMul.{0, 0, 0} 8 (HSub.hSub.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} base i) base)))
+                          256)))
+                    (m.bytes (HAdd.hAdd.{0, 0, 0} base i))
+                    (Eq.trans.{1}
+                      (congrFun'.{1, 1}
+                        (congrArg.{1, 1} LT.lt.{0}
+                          (have this :=
+                            Decidable.byContradiction
+                              fun (a : ¬Eq.{1} (HSub.hSub.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} base i) base) i) =>
+                              B20.Word.write_legal._proof_1_3 base i hi a;
+                          this))
+                        8)
+                      (eq_true hi)))
+                  (congrArg.{1, 1} Option.some.{0}
+                    (congrArg.{1, 1} (BitVec.ofNat 8)
+                      (congrFun'.{1, 1}
+                        (congrArg.{1, 1} HMod.hMod.{0, 0, 0}
+                          (congrArg.{1, 1} (HShiftRight.hShiftRight.{0, 0, 0} (BitVec.toNat v))
+                            (congrArg.{1, 1} (HMul.hMul.{0, 0, 0} 8)
+                              (have this :=
+                                Decidable.byContradiction
+                                  fun (a : ¬Eq.{1} (HSub.hSub.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} base i) base) i) =>
+                                  B20.Word.write_legal._proof_1_3 base i hi a;
+                              this))))
+                        256))))))))
+        Bool.true)
+      (eq_self.{1} Bool.true))
+theorem B20.Word.read_write_roundtrip : ∀ (m : B20.Foundation.Memory) (base : ℕ) (v : B20.Foundation.Word64),
+  Eq.{1} ((m.writeU64 base v).readU64 base) (Option.some.{0} v) :=
+fun (m : B20.Foundation.Memory) (base : ℕ) (v : B20.Foundation.Word64) =>
+  Eq.mpr.{0}
+    (id.{0}
+      (congrArg.{1, 1} (fun (_a : Option.{0} B20.Foundation.Word64) => Eq.{1} _a (Option.some.{0} v))
+        (B20.Word.read_write_formula m base v)))
+    (Eq.mpr.{0}
+      (id.{0}
+        (congrArg.{1, 1} (fun (_a : ℕ) => Eq.{1} (Option.some.{0} (BitVec.ofNat 64 _a)) (Option.some.{0} v))
+          (B20.Word.byteExpansion_eq (BitVec.toNat v))))
+      (Eq.mpr.{0}
+        (id.{0}
+          (congrArg.{1, 1} (fun (_a : ℕ) => Eq.{1} (Option.some.{0} (BitVec.ofNat 64 _a)) (Option.some.{0} v))
+            (Nat.mod_eq_of_lt (BitVec.isLt v))))
+        (of_eq_true
+          (Eq.trans.{1}
+            (congrFun'.{1, 1}
+              (congrArg.{1, 1} Eq.{1}
+                (congrArg.{1, 1} Option.some.{0} (Eq.trans.{1} (BitVec.ofNat_toNat 64 v) (BitVec.setWidth_eq v))))
+              (Option.some.{0} v))
+            (eq_self.{1} (Option.some.{0} v))))))
+theorem B20.Word.model_load_store_roundtrip : ∀ (s : B20.Foundation.State) (base : ℕ) (v : B20.Foundation.Word64),
+  B20.Foundation.CExec
+    ((B20.Foundation.CStmt.storeU64 base (B20.Foundation.CExpr.const v)).seq
+      (B20.Foundation.CStmt.ret (B20.Foundation.CExpr.loadU64 base)))
+    s (B20.Foundation.Outcome.returned (Option.some.{0} v) { mem := s.mem.writeU64 base v, locals := s.locals }) :=
+fun (s : B20.Foundation.State) (base : ℕ) (v : B20.Foundation.Word64) =>
+  (B20.Foundation.CExec_iff_eval
+        ((B20.Foundation.CStmt.storeU64 base (B20.Foundation.CExpr.const v)).seq
+          (B20.Foundation.CStmt.ret (B20.Foundation.CExpr.loadU64 base)))
+        s
+        (B20.Foundation.Outcome.returned (Option.some.{0} v) { mem := s.mem.writeU64 base v, locals := s.locals })).mpr
+    (of_eq_true
+      (Eq.trans.{1}
+        (congrFun'.{1, 1}
+          (congrArg.{1, 1} Eq.{1}
+            (congrArg.{1, 1}
+              (fun (x : Option.{0} B20.Foundation.Word64) =>
+                match x with
+                | Option.some.{0} w =>
+                  B20.Foundation.Outcome.returned (Option.some.{0} w)
+                    { mem := s.mem.writeU64 base v, locals := s.locals }
+                | Option.none.{0} => B20.Foundation.Outcome.fault "undefined return expression")
+              (B20.Word.read_write_roundtrip s.mem base v)))
+          (B20.Foundation.Outcome.returned (Option.some.{0} v) { mem := s.mem.writeU64 base v, locals := s.locals }))
+        (eq_self.{1}
+          (B20.Foundation.Outcome.returned (Option.some.{0} v) { mem := s.mem.writeU64 base v, locals := s.locals }))))

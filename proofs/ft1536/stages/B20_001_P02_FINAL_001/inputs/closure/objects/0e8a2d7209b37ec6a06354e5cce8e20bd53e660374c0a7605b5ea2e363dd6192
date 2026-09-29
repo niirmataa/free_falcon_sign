@@ -1,0 +1,21 @@
+root_inverse : ∀ (b : Nat) (v : Bool → Int),
+  (∀ (k : Bool), CanonVal (v k)) → ∀ (k : Bool), inverseRootOp b (forwardRootOp b v) k = 2 * v k % 18433
+binary_inverse : ∀ (m ht b : Nat),
+  0 < m + b / ht →
+    m + b / ht < 1024 →
+      ∀ (v : Bool → Int),
+        (∀ (k : Bool), CanonVal (v k)) →
+          ∀ (k : Bool), inverseBinaryOp m ht b (forwardBinaryOp m ht b v) k = 2 * v k % 18433
+cubic_inverse : ∀ (b : Nat),
+  b < 512 →
+    ∀ (v : Fin 3 → Int),
+      (∀ (k : Fin 3), CanonVal (v k)) → ∀ (k : Fin 3), inverseCubicOp b (forwardCubicOp b v) k = 3 * v k % 18433
+'FT1536Global.local_at' depends on axioms: [propext, Quot.sound]
+'FT1536Global.root_inverse' depends on axioms: [propext, Quot.sound]
+'FT1536Global.binary_inverse' depends on axioms: [propext, Quot.sound]
+'FT1536Global.cubic_inverse' depends on axioms: [propext, Quot.sound]
+'FT1536Global.root_homogeneous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.binary_homogeneous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.cubic_homogeneous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.forward_params_ok' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.schedules_reverse' does not depend on any axioms

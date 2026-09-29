@@ -1,0 +1,98 @@
+[
+  {
+    "name": "sage_version",
+    "argv": [
+      "/home/footfalcon/.local/bin/sage",
+      "--version"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/scalar_controls_005/source",
+    "start": "2026-09-24T22:37:39.603183+00:00",
+    "stop": "2026-09-24T22:37:41.421874+00:00",
+    "elapsed_s": 1.818689554995217,
+    "exit_code": 0,
+    "expected_exit": 0,
+    "stdout": "sage_version.stdout",
+    "stdout_sha256": "65c57161b58002a9784f3b056b693ebe515469e80c9a11afe3d4423e671af8a0",
+    "stderr": "sage_version.stderr",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "sage_oracle",
+    "argv": [
+      "/home/footfalcon/.local/bin/sage",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/scalar_controls_005/source/checks/scalar.sage"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/scalar_controls_005/source",
+    "start": "2026-09-24T22:37:41.422286+00:00",
+    "stop": "2026-09-24T22:37:43.440889+00:00",
+    "elapsed_s": 2.0186223549972055,
+    "exit_code": 0,
+    "expected_exit": 0,
+    "stdout": "sage_oracle.stdout",
+    "stdout_sha256": "ff441ce98cd75899638d027ef084fd60697014d9219eb94d3664d66e4f345e9c",
+    "stderr": "sage_oracle.stderr",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "gcc_version",
+    "argv": [
+      "/usr/bin/gcc",
+      "--version"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/scalar_controls_005/source",
+    "start": "2026-09-24T22:37:43.441797+00:00",
+    "stop": "2026-09-24T22:37:43.443877+00:00",
+    "elapsed_s": 0.0020822520018555224,
+    "exit_code": 0,
+    "expected_exit": 0,
+    "stdout": "gcc_version.stdout",
+    "stdout_sha256": "4dc9a4e32fd9e06d42fb307688c59d6d889f0ff90ce034cbefed21b0d451fd81",
+    "stderr": "gcc_version.stderr",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "normal_compile",
+    "argv": [
+      "/usr/bin/gcc",
+      "-std=c99",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-DFPR_IMPL=\"fpr-emulated.h\"",
+      "-I",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/scalar_controls_005/source/checks/scalar_controls.c",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c",
+      "-o",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/scalar_controls_005/build/scalar_normal"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/scalar_controls_005/source",
+    "start": "2026-09-24T22:37:43.685054+00:00",
+    "stop": "2026-09-24T22:37:43.900731+00:00",
+    "elapsed_s": 0.2156509720007307,
+    "exit_code": 0,
+    "expected_exit": 0,
+    "stdout": "normal_compile.stdout",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "normal_compile.stderr",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "normal_execute",
+    "argv": [
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/scalar_controls_005/build/scalar_normal",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/scalar_controls_005/build/scalar_cases.txt"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/scalar_controls_005/source",
+    "start": "2026-09-24T22:37:43.901089+00:00",
+    "stop": "2026-09-24T22:37:43.902820+00:00",
+    "elapsed_s": 0.0017379570053890347,
+    "exit_code": 3,
+    "expected_exit": 0,
+    "stdout": "normal_execute.stdout",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "normal_execute.stderr",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

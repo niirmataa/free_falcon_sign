@@ -1,0 +1,74 @@
+/* see falcon.h */
+falcon_sign *
+falcon_sign_new(void)
+{
+	falcon_sign *fs;
+
+	fs = malloc(sizeof *fs);
+	if (fs == NULL) {
+		return NULL;
+	}
+	fs->seeded = 0;
+	fs->flipped = 0;
+	fs->q = 0;
+	fs->logn = 0;
+	fs->ternary = 0;
+	fs->sk = NULL;
+	fs->sk_len = 0;
+	fs->tmp = NULL;
+	fs->tmp_len = 0;
+	shake_init(&fs->rng, 512);
+	return fs;
+}
+
+/* see falcon.h */
+void
+falcon_sign_free(falcon_sign *fs)
+{
+	if (fs != NULL) {
+		clear_private(fs);
+		free(fs);
+	}
+}
+
+/* see falcon.h */
+void
+falcon_sign_set_seed(falcon_sign *fs,
+	const void *seed, size_t len, int replace)
+{
+	if (replace) {
+		shake_init(&fs->rng, 512);
+		shake_inject(&fs->rng, seed, len);
+		fs->seeded = 1;
+		fs->flipped = 0;
+		return;
+	}
+	if (fs->flipped) {
+		unsigned char tmp[32];
+
+		shake_extract(&fs->rng, tmp, sizeof tmp);
+		shake_init(&fs->rng, 512);
+		shake_inject(&fs->rng, tmp, sizeof tmp);
+		fs->flipped = 0;
+	}
+	shake_inject(&fs->rng, seed, len);
+}
+
+static int
+rng_ready(falcon_sign *fs)
+{
+	if (!fs->seeded) {
+		unsigned char tmp[32];
+
+		if (!falcon_get_seed(tmp, sizeof tmp)) {
+			return 0;
+		}
+		falcon_sign_set_seed(fs, tmp, sizeof tmp, 0);
+		fs->seeded = 1;
+	}
+	if (!fs->flipped) {
+		shake_flip(&fs->rng);
+		fs->flipped = 1;
+	}
+	return 1;
+}

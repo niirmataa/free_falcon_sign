@@ -1,0 +1,44 @@
+/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/V02/run/own_lean_001/source/ReviewChecks.lean:19:62: error: failed to synthesize
+  Decidable (B20.Fpr.rintDomain 9223372036854775808)
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/V02/run/own_lean_001/source/ReviewChecks.lean:22:65: error: failed to synthesize
+  Decidable ¬B20.Fpr.floorDomain 9223372036854775808
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/V02/run/own_lean_001/source/ReviewChecks.lean:25:50: error: failed to synthesize
+  Decidable ¬B20.Fpr.packDomain 0#32 2147483647#32
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+B20.Word.load_store_le_refines : ∀ (m : B20.C.Byte.Memory) (p : B20.C.Byte.Pointer) (w : B20.C.Byte.U64),
+  B20.C.Byte.WriteRegion m p →
+    B20.C.Byte.parseFunction (B20.Word.LE.slice B20.Pinned.shakeLines 56 15) = some B20.Word.LE.decProgram ∧
+      B20.C.Byte.parseFunction (B20.Word.LE.slice B20.Pinned.shakeLines 75 15) = some B20.Word.LE.encProgram ∧
+        (∀ (result : Option B20.C.Byte.U64) (final : B20.C.Byte.Memory),
+            B20.C.Byte.CExec B20.Word.LE.decProgram m [B20.C.Byte.Arg.pointer p] result final ↔
+              result = some (B20.Word.LE.join (B20.Word.LE.bufferBytes m p)) ∧ final = m) ∧
+          (∀ (result : Option B20.C.Byte.U64) (final : B20.C.Byte.Memory),
+              B20.C.Byte.CExec B20.Word.LE.encProgram m [B20.C.Byte.Arg.pointer p, B20.C.Byte.Arg.word w] result final ↔
+                result = none ∧ final = B20.Word.LE.stored m p w) ∧
+            B20.C.Byte.RegionBytes (B20.Word.LE.stored m p w) p (B20.Word.LE.byteOf w) ∧
+              B20.C.Byte.CExec B20.Word.LE.decProgram (B20.Word.LE.stored m p w) [B20.C.Byte.Arg.pointer p] (some w)
+                  (B20.Word.LE.stored m p w) ∧
+                (∀ (q : B20.C.Byte.Pointer),
+                    q.block ≠ p.block ∨ q.offset < p.offset ∨ p.offset + 8 ≤ q.offset →
+                      (B20.Word.LE.stored m p w).contents q = m.contents q) ∧
+                  (B20.Word.LE.stored m p w).length = m.length ∧ (B20.Word.LE.stored m p w).writable = m.writable
+/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/V02/run/own_lean_001/source/ReviewChecks.lean:28:8: error(lean.unknownIdentifier): Unknown identifier `B20.Fpr.rint_execution`
+B20.Fpr.floor_execution : ∀ (x : BitVec 64),
+  B20.Fpr.floorDomain x →
+    B20.C.Scalar.execute B20.C.Scalar.shiftCalls B20.Fpr.Parsed.floorProgram [B20.C.Val.u64 x] =
+      some (B20.C.Val.i64 (B20.Fpr.floorSpec x))
+B20.Fpr.sub_refines_via_add_obligation : ∀ (x y w : BitVec 64),
+  B20.Fpr.AddCallObligation x (y ^^^ 1 <<< 63) w →
+    B20.C.Scalar.execute B20.C.Scalar.shiftCalls B20.Fpr.Parsed.subProgram [B20.C.Val.u64 x, B20.C.Val.u64 y] =
+      some (B20.C.Val.u64 w)
+'B20.Word.load_store_le_refines' depends on axioms: [propext, Classical.choice, Quot.sound]
+/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/V02/run/own_lean_001/source/ReviewChecks.lean:32:14: error(lean.unknownIdentifier): Unknown constant `B20.Fpr.rint_execution`
+'B20.Fpr.floor_execution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.sub_refines_via_add_obligation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'V02.no_add_dispatch' depends on axioms: [propext, Classical.choice, Quot.sound]
+'V02.negative_zero_in_rint' depends on axioms: [propext, sorryAx, Quot.sound]

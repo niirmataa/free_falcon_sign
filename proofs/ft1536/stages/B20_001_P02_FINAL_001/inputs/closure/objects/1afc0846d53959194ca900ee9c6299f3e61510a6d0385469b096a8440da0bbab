@@ -1,0 +1,171 @@
+{
+  "status": "PASS_FULL_DOMAIN_PREFLIGHT_AND_EXPECTED_TRACES",
+  "cases": [
+    {
+      "name": "root_boundary",
+      "exe": "joint",
+      "mode": "top",
+      "input": "artifacts/fixtures/root_boundary.input",
+      "input_sha256": "083c00cdace723aa34da673e1293092876ebbdca27fc57db8355b836f92d68d3",
+      "preflight": true,
+      "classification": "SYNTHETIC_LOCAL_TREE_TARGETS_PUBLIC_WORD_TAPE_NO_EMITTED_MEMBERSHIP",
+      "expected": "artifacts/fixtures/root_boundary.expected",
+      "expected_sha256": "bcf480624b87b70da9d7a62a7c0100fee969c7ff43b72e3fcef1ea86f230433f"
+    },
+    {
+      "name": "root_boundary_suffix",
+      "exe": "post",
+      "mode": "suffix",
+      "input": "artifacts/fixtures/root_boundary_suffix.input",
+      "input_sha256": "dec2898640a6bcb8350cf90cb56d3c40cbba5a1c51e4afdbd44d7a3ee57f9fdc",
+      "preflight": true,
+      "classification": "SYNTHETIC_LOCAL_TREE_TARGETS_PUBLIC_WORD_TAPE_NO_EMITTED_MEMBERSHIP",
+      "model": "artifacts/controls/root_boundary_suffix.json",
+      "model_sha256": "6304f797c61f7e7893a70562fff9263e72b8dfdcd9a8ceca04ff3a0b81c647fa"
+    },
+    {
+      "name": "root_boundary_codec",
+      "exe": "post",
+      "mode": "codec",
+      "input": "artifacts/fixtures/root_boundary_codec.input",
+      "input_sha256": "c577089e099b4470a88587fae627bc286ae04f8ac78581258d7b96abfd1a763f",
+      "preflight": true,
+      "classification": "SYNTHETIC_LOCAL_TREE_TARGETS_PUBLIC_WORD_TAPE_NO_EMITTED_MEMBERSHIP",
+      "model": "artifacts/controls/root_boundary_codec.json",
+      "model_sha256": "3d86112d025b8b498e4a59ccf163c111ffdd37f1a1dafbff74db7b6c9078f237"
+    },
+    {
+      "name": "root_extra_rejections",
+      "exe": "joint",
+      "mode": "top",
+      "input": "artifacts/fixtures/root_extra_rejections.input",
+      "input_sha256": "9562ec28344a90052beb215fa6bc67af1321221d439e7e1558eebdb80dcec011",
+      "preflight": true,
+      "classification": "SYNTHETIC_LOCAL_TREE_TARGETS_PUBLIC_WORD_TAPE_NO_EMITTED_MEMBERSHIP",
+      "expected": "artifacts/fixtures/root_extra_rejections.expected",
+      "expected_sha256": "3aca5d429fff3ec85a691094825620587767bd9f0650b5780ce78cf14a7a522c"
+    },
+    {
+      "name": "root_extra_rejections_suffix",
+      "exe": "post",
+      "mode": "suffix",
+      "input": "artifacts/fixtures/root_extra_rejections_suffix.input",
+      "input_sha256": "dec2898640a6bcb8350cf90cb56d3c40cbba5a1c51e4afdbd44d7a3ee57f9fdc",
+      "preflight": true,
+      "classification": "SYNTHETIC_LOCAL_TREE_TARGETS_PUBLIC_WORD_TAPE_NO_EMITTED_MEMBERSHIP",
+      "model": "artifacts/controls/root_extra_rejections_suffix.json",
+      "model_sha256": "6304f797c61f7e7893a70562fff9263e72b8dfdcd9a8ceca04ff3a0b81c647fa"
+    },
+    {
+      "name": "root_extra_rejections_codec",
+      "exe": "post",
+      "mode": "codec",
+      "input": "artifacts/fixtures/root_extra_rejections_codec.input",
+      "input_sha256": "c577089e099b4470a88587fae627bc286ae04f8ac78581258d7b96abfd1a763f",
+      "preflight": true,
+      "classification": "SYNTHETIC_LOCAL_TREE_TARGETS_PUBLIC_WORD_TAPE_NO_EMITTED_MEMBERSHIP",
+      "model": "artifacts/controls/root_extra_rejections_codec.json",
+      "model_sha256": "3d86112d025b8b498e4a59ccf163c111ffdd37f1a1dafbff74db7b6c9078f237"
+    },
+    {
+      "name": "terminal_plus_zero",
+      "exe": "joint",
+      "mode": "base",
+      "input": "artifacts/fixtures/terminal_plus_zero.input",
+      "input_sha256": "1e39d88fc37d5b6fe02d8c93e392adb9a765311e436a1b17a202580f2ec30f73",
+      "preflight": true,
+      "classification": "SYNTHETIC_LOCAL_TREE_TARGETS_PUBLIC_WORD_TAPE_NO_EMITTED_MEMBERSHIP",
+      "expected": "artifacts/fixtures/terminal_plus_zero.expected",
+      "expected_sha256": "f0640e0a591a170e89e2277e0ab5e30b9456c93d86c94108bc6f169b5adce4b1"
+    },
+    {
+      "name": "terminal_minus_zero",
+      "exe": "joint",
+      "mode": "base",
+      "input": "artifacts/fixtures/terminal_minus_zero.input",
+      "input_sha256": "8aa48105932ccc14fa59fa4ebbca6211a2b7f5f4c79703af60f34fbd94b55693",
+      "preflight": true,
+      "classification": "SYNTHETIC_LOCAL_TREE_TARGETS_PUBLIC_WORD_TAPE_NO_EMITTED_MEMBERSHIP",
+      "expected": "artifacts/fixtures/terminal_minus_zero.expected",
+      "expected_sha256": "a77b01b6d60921b83388af999d662caae8149fe49e7b71662e0a7c274b2c2e0b"
+    },
+    {
+      "name": "getters",
+      "exe": "kernel",
+      "mode": "getters",
+      "input": "artifacts/fixtures/getters.input",
+      "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected": "artifacts/fixtures/getters.expected",
+      "expected_sha256": "7d939316a5649af8b070c6c0729bb91aa53e5dde803f37582ff8db5c3282f94a",
+      "preflight": true,
+      "classification": "ALL_4096_LEGAL_START_PTRS_AND_FINAL_U8_BYTE"
+    }
+  ],
+  "root_and_terminal": [
+    {
+      "name": "root_boundary",
+      "status": "COMPLETED",
+      "calls": 3072,
+      "fault": 0,
+      "high_water": 8702,
+      "pre_floor": 3072,
+      "start_ptr": 4087,
+      "proposals": 3147,
+      "cutoff_rejections": 42,
+      "returned_bytes": 103851,
+      "refills": 26,
+      "discarded": 109,
+      "end_ptr": 1551
+    },
+    {
+      "name": "root_extra_rejections",
+      "status": "COMPLETED",
+      "calls": 3072,
+      "fault": 0,
+      "high_water": 8702,
+      "pre_floor": 3072,
+      "start_ptr": 4086,
+      "proposals": 6219,
+      "cutoff_rejections": 1576,
+      "returned_bytes": 205227,
+      "refills": 51,
+      "discarded": 202,
+      "end_ptr": 619
+    },
+    {
+      "name": "terminal_plus_zero",
+      "status": "COMPLETED",
+      "calls": 2,
+      "fault": 0,
+      "high_water": 4609,
+      "pre_floor": 2,
+      "start_ptr": 4095,
+      "proposals": 5,
+      "cutoff_rejections": 3,
+      "returned_bytes": 165,
+      "refills": 1,
+      "discarded": 1,
+      "end_ptr": 165
+    },
+    {
+      "name": "terminal_minus_zero",
+      "status": "COMPLETED",
+      "calls": 2,
+      "fault": 0,
+      "high_water": 4609,
+      "pre_floor": 2,
+      "start_ptr": 4087,
+      "proposals": 5,
+      "cutoff_rejections": 3,
+      "returned_bytes": 165,
+      "refills": 1,
+      "discarded": 9,
+      "end_ptr": 165
+    }
+  ],
+  "native_batches": 9,
+  "total_scalar_calls": 6148,
+  "total_proposals": 9376,
+  "cutoff_rejections": 1624,
+  "getter_starts": 4096
+}

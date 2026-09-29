@@ -1,0 +1,31 @@
+/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/V02/run/own_sage_004/tmp/sage_1vs_0n_m/check_words8njwagbz.sage.py:144: DeprecationWarning: Use sage.version.version instead.
+See https://github.com/sagemath/sage/issues/39015 for details.
+  summary = dict(schema='V02_EXACT_WORD_CONTROL_V1', sage_version=str(version()),
+Traceback (most recent call last):
+  File "/home/footfalcon/miniforge3/envs/sage/bin/sage", line 5, in <module>
+    from sage.cli.__main__ import main
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__main__.py", line 9, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__init__.py", line 56, in main
+    return RunFileCmd(options).run()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/run_file_cmd.py", line 50, in run
+    eval(compile(open(input_file, 'rb').read(), input_file, 'exec'), sage_globals())
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/V02/run/own_sage_004/tmp/sage_1vs_0n_m/check_words8njwagbz.sage.py", line 150, in <module>
+    (here / 'sage_result.json').write_text(json.dumps(summary, indent=_sage_const_2 , sort_keys=True) + '\n')
+                                           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/json/__init__.py", line 242, in dumps
+    **kw).encode(obj)
+          ~~~~~~^^^^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/json/encoder.py", line 202, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/json/encoder.py", line 263, in iterencode
+    return _iterencode(o, 0)
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/json/encoder.py", line 182, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+                    f'is not JSON serializable')
+TypeError: Object of type Integer is not JSON serializable
+when serializing dict item 'double'
+when serializing dict item 'counts'

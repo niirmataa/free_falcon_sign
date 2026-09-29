@@ -1,0 +1,2625 @@
+{
+  "status": "PASS_SOURCE_TRANSPORT_AND_RAW_CUT",
+  "baseline_manifest_sha256": "2553358fbb1144acdb577e1ad371a017ac325306dd901af745295dd17b03bd5a",
+  "candidate_manifest_sha256": "56974571b46e8257bdd3b4097c8c70fded6bb4b94c64805f6e35ec80929a0985",
+  "changed_file": "fpr-emulated.h",
+  "only_changed_function": "fpr_floor",
+  "other_source_files_identical": 16,
+  "remaining_header_bytes_identical": true,
+  "old_header_sha256": "242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa",
+  "candidate_header_sha256": "6b897d6c217ef25a322e3b5c3d9488b9d6b8d0e369a710d8fce2259f24e6d84f",
+  "floor_patch_sha256": "c95b22821dd54d86f32454ba04774f2c8bb9077fe344c91acc33c72a27b7c684",
+  "raw_prefix_source": {
+    "path": "source/falcon-sign.c",
+    "sha256": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8",
+    "first": 1158,
+    "last": 1253,
+    "copy": "checks/raw_prefix.inc",
+    "copy_sha256": "e9d1bd2db06f9a8125052f1ab404738bf32125a8d5be3275b0a9fb617051dca9",
+    "diff": "artifacts/diffs/raw_prefix.patch",
+    "changes": [
+      "function renamed",
+      "four post-cut-only declarations removed",
+      "closing scopes and return at observation cut added"
+    ],
+    "guard_after_FFT_preserved": true
+  },
+  "active_preprocessing_flags": [
+    "-W",
+    "-Wall",
+    "-O",
+    "-DFPR_IMPL=\"fpr-emulated.h\"",
+    "-DSAMPLER_CODF=0",
+    "-DSAMPLER_CDF=0",
+    "-DCT_BEREXP=1",
+    "-DFT_TERNARY_ADAPTIVE_CDF=1",
+    "-DFT1536_CANDIDATE_PROFILE=1",
+    "-DCLEANSE=1",
+    "-DTRUE_TERNARY_SECRET=1",
+    "-DTRUE_TERNARY_SECRET_MODE=1",
+    "-DTERNARY_KEYGEN_BOUND_SCALE_NUM=1250",
+    "-DTERNARY_KEYGEN_BOUND_SCALE_DEN=100",
+    "-DTERNARY_KEYGEN_MAX_ATTEMPTS=3000000",
+    "-DSIGN_MAX_ATTEMPTS=16",
+    "-std=c99",
+    "-Isource"
+  ],
+  "call_graph": {
+    "fpr_ursh": [],
+    "fpr_irsh": [],
+    "fpr_ulsh": [],
+    "FPR": [],
+    "fpr_of": [
+      "fpr_scaled"
+    ],
+    "fpr_inverse_of": [
+      "fpr_div",
+      "fpr_of"
+    ],
+    "fpr_rint": [
+      "fpr_ulsh",
+      "fpr_ursh"
+    ],
+    "fpr_floor": [
+      "fpr_irsh"
+    ],
+    "fpr_trunc": [
+      "fpr_ursh"
+    ],
+    "fpr_sub": [
+      "fpr_add"
+    ],
+    "fpr_neg": [],
+    "fpr_half": [],
+    "fpr_double": [],
+    "fpr_sqr": [
+      "fpr_mul"
+    ],
+    "fpr_inv": [
+      "fpr_div"
+    ],
+    "fpr_lt": [],
+    "fpr_max": [
+      "fpr_lt"
+    ],
+    "fpr_exp_small": [
+      "fpr_add",
+      "fpr_div",
+      "fpr_half",
+      "fpr_mul",
+      "fpr_sqr",
+      "fpr_sub"
+    ],
+    "fpr_mul_high_u64": [],
+    "fpr_expm_scaled": [
+      "fpr_mul",
+      "fpr_mul_high_u64",
+      "fpr_trunc"
+    ],
+    "fpr_log_emu": [
+      "fpr_add",
+      "fpr_div",
+      "fpr_double",
+      "fpr_mul",
+      "fpr_of",
+      "fpr_sqr",
+      "fpr_sub"
+    ],
+    "fpr_sin_poly": [
+      "fpr_add",
+      "fpr_mul",
+      "fpr_sqr"
+    ],
+    "fpr_cos_poly": [
+      "fpr_add",
+      "fpr_mul",
+      "fpr_sqr"
+    ],
+    "fpr_sincos_tick": [
+      "fpr_cos_poly",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_scaled",
+      "fpr_sin_poly"
+    ],
+    "fpr_gauss": [
+      "fpr_double",
+      "fpr_log_emu",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_scaled",
+      "fpr_sincos_tick",
+      "fpr_sqrt"
+    ],
+    "falcon_prng_get_u64": [
+      "falcon_prng_refill"
+    ],
+    "falcon_prng_get_u8": [
+      "falcon_prng_refill"
+    ],
+    "LDL_fft": [
+      "falcon_poly_adj_fft",
+      "falcon_poly_div_fft",
+      "falcon_poly_mul_fft",
+      "falcon_poly_sub"
+    ],
+    "LDLqc_fft": [
+      "LDL_fft"
+    ],
+    "ffLDL_treesize": [],
+    "ffLDL_fft_inner": [
+      "LDLqc_fft",
+      "falcon_poly_split_fft",
+      "ffLDL_fft_inner",
+      "ffLDL_treesize"
+    ],
+    "ffLDL_fft": [
+      "LDL_fft",
+      "falcon_poly_split_fft",
+      "ffLDL_fft_inner",
+      "ffLDL_treesize"
+    ],
+    "ffLDL_binary_normalize": [
+      "ffLDL_binary_normalize",
+      "ffLDL_treesize",
+      "fpr_div",
+      "fpr_sqrt"
+    ],
+    "LDL_dim2_fft3": [
+      "falcon_poly_add3",
+      "falcon_poly_div_autoadj_fft3",
+      "falcon_poly_muladj_fft3",
+      "falcon_poly_neg3"
+    ],
+    "LDL_dim3_fft3": [
+      "LDL_dim2_fft3",
+      "falcon_poly_add3",
+      "falcon_poly_div_autoadj_fft3",
+      "falcon_poly_mul_autoadj_fft3",
+      "falcon_poly_muladj_fft3",
+      "falcon_poly_mulselfadj_fft3",
+      "falcon_poly_neg3",
+      "falcon_poly_sub3"
+    ],
+    "ffLDL_inner_fft3": [
+      "LDL_dim2_fft3",
+      "falcon_poly_adj_fft3",
+      "falcon_poly_split_deep_fft3",
+      "ffLDL_inner_fft3"
+    ],
+    "ffLDL_depth1_fft3": [
+      "LDL_dim3_fft3",
+      "falcon_poly_adj_fft3",
+      "falcon_poly_split_deep_fft3",
+      "ffLDL_inner_fft3"
+    ],
+    "ffLDL_fft3": [
+      "LDL_dim2_fft3",
+      "falcon_poly_adj_fft3",
+      "falcon_poly_split_top_fft3",
+      "ffLDL_depth1_fft3"
+    ],
+    "ft_stable_positive": [
+      "ft_fpr_bits",
+      "ft_fpr_from_bits",
+      "ft_fpr_is_positive_finite"
+    ],
+    "ft_stable_binary_inplace": [
+      "fpr_add",
+      "fpr_div",
+      "fpr_double",
+      "fpr_half",
+      "fpr_mul",
+      "ft_stable_binary_inplace",
+      "ft_stable_positive"
+    ],
+    "ft_stable_top_branch": [
+      "fpr_add",
+      "fpr_div",
+      "fpr_mul",
+      "fpr_of",
+      "ft_stable_binary_inplace",
+      "ft_stable_positive"
+    ],
+    "ft_build_stable_certified_leaves": [
+      "falcon_FFT3",
+      "falcon_poly_add3",
+      "falcon_poly_mulselfadj_fft3",
+      "fpr_div",
+      "fpr_lt",
+      "fpr_of",
+      "ft_fpr_bits",
+      "ft_fpr_from_bits",
+      "ft_fpr_is_positive_finite",
+      "ft_stable_positive",
+      "ft_stable_top_branch",
+      "smallints_to_fpr"
+    ],
+    "ffLDL_ternary_normalize_inner": [
+      "ffLDL_ternary_normalize_inner",
+      "fpr_div",
+      "fpr_sqrt"
+    ],
+    "ffLDL_ternary_normalize_depth1": [
+      "ffLDL_ternary_normalize_inner"
+    ],
+    "ffLDL_ternary_normalize": [
+      "ffLDL_ternary_normalize_depth1"
+    ],
+    "smallints_to_fpr": [
+      "fpr_of"
+    ],
+    "skoff_b00": [],
+    "skoff_b01": [],
+    "skoff_b10": [],
+    "skoff_b11": [],
+    "skoff_tree": [],
+    "ft_validate_ternary_private": [],
+    "load_skey": [
+      "falcon_FFT",
+      "falcon_FFT3",
+      "falcon_poly_add",
+      "falcon_poly_add3",
+      "falcon_poly_muladj_fft",
+      "falcon_poly_muladj_fft3",
+      "falcon_poly_mulselfadj_fft",
+      "falcon_poly_mulselfadj_fft3",
+      "falcon_poly_neg",
+      "falcon_poly_neg3",
+      "ffLDL_binary_normalize",
+      "ffLDL_fft",
+      "ffLDL_fft3",
+      "ffLDL_ternary_normalize",
+      "fpr_div",
+      "fpr_mul",
+      "fpr_of",
+      "fpr_sqrt",
+      "ft_build_stable_certified_leaves",
+      "skoff_b00",
+      "skoff_b01",
+      "skoff_b10",
+      "skoff_b11",
+      "skoff_tree",
+      "smallints_to_fpr"
+    ],
+    "ffSampling_fft": [
+      "falcon_poly_add",
+      "falcon_poly_merge_fft",
+      "falcon_poly_mul_fft",
+      "falcon_poly_split_fft",
+      "falcon_poly_sub",
+      "ffLDL_treesize",
+      "ffSampling_fft",
+      "fpr_of"
+    ],
+    "ffSampling_inner_fft3": [
+      "falcon_poly_add3",
+      "falcon_poly_merge_deep_fft3",
+      "falcon_poly_mul_fft3",
+      "falcon_poly_split_deep_fft3",
+      "falcon_poly_sub3",
+      "ffSampling_inner_fft3",
+      "fpr_add",
+      "fpr_half",
+      "fpr_mul",
+      "fpr_of",
+      "fpr_sub"
+    ],
+    "ffSampling_depth1_fft3": [
+      "falcon_poly_add3",
+      "falcon_poly_merge_deep_fft3",
+      "falcon_poly_mul_fft3",
+      "falcon_poly_split_deep_fft3",
+      "falcon_poly_sub3",
+      "ffSampling_inner_fft3"
+    ],
+    "ffSampling_fft3": [
+      "falcon_poly_add3",
+      "falcon_poly_merge_top_fft3",
+      "falcon_poly_mul_fft3",
+      "falcon_poly_split_top_fft3",
+      "falcon_poly_sub3",
+      "ffSampling_depth1_fft3"
+    ],
+    "do_sign": [
+      "falcon_FFT",
+      "falcon_FFT3",
+      "falcon_iFFT",
+      "falcon_iFFT3",
+      "falcon_poly_add",
+      "falcon_poly_add3",
+      "falcon_poly_mul_fft",
+      "falcon_poly_mul_fft3",
+      "falcon_poly_mulconst",
+      "falcon_poly_mulconst3",
+      "ffSampling_fft",
+      "ffSampling_fft3",
+      "fpr_inverse_of",
+      "fpr_neg",
+      "fpr_of",
+      "fpr_rint",
+      "skoff_b00",
+      "skoff_b01",
+      "skoff_b10",
+      "skoff_b11",
+      "skoff_tree"
+    ],
+    "gaussian0_sampler": [
+      "falcon_prng_get_u64",
+      "falcon_prng_get_u8"
+    ],
+    "ft_berexp_cutoff_state": [],
+    "BerExp": [
+      "falcon_prng_get_u64",
+      "fpr_expm_scaled",
+      "fpr_floor",
+      "fpr_mul",
+      "fpr_of",
+      "fpr_sub",
+      "ft_berexp_cutoff_state"
+    ],
+    "sampler": [
+      "BerExp",
+      "falcon_prng_get_u8",
+      "fpr_floor",
+      "fpr_inv",
+      "fpr_mul",
+      "fpr_of",
+      "fpr_sqr",
+      "fpr_sub",
+      "gaussian0_sampler"
+    ],
+    "ft_fpr_bits": [],
+    "ft_fpr_from_bits": [],
+    "ft_fpr_is_positive_finite": [
+      "ft_fpr_bits"
+    ],
+    "ft_fpr_is_finite": [
+      "ft_fpr_bits"
+    ],
+    "ft_fpr_is_nonnegative_finite": [
+      "ft_fpr_bits"
+    ],
+    "ft_ct_lt_u64": [],
+    "ft_ct_eq_u64": [],
+    "ft_ct_lt_u128": [
+      "ft_ct_eq_u64",
+      "ft_ct_lt_u64"
+    ],
+    "ft_adaptive_cdf_samples": [
+      "ft_ct_lt_u128"
+    ],
+    "ft_adaptive_proposal": [
+      "falcon_prng_get_u64",
+      "fpr_lt",
+      "ft_adaptive_cdf_samples",
+      "ft_fpr_from_bits"
+    ],
+    "sampler_large": [
+      "BerExp",
+      "falcon_prng_get_u8",
+      "fpr_add",
+      "fpr_floor",
+      "fpr_inv",
+      "fpr_mul",
+      "fpr_of",
+      "fpr_sqr",
+      "fpr_sub",
+      "ft_adaptive_proposal",
+      "ft_fpr_is_finite",
+      "ft_fpr_is_nonnegative_finite",
+      "ft_fpr_is_positive_finite"
+    ],
+    "cleanse": [],
+    "clear_private": [
+      "cleanse"
+    ],
+    "falcon_sign_new": [
+      "shake_init"
+    ],
+    "falcon_sign_free": [
+      "clear_private"
+    ],
+    "falcon_sign_set_seed": [
+      "shake_extract",
+      "shake_init",
+      "shake_inject"
+    ],
+    "rng_ready": [
+      "falcon_get_seed",
+      "falcon_keygen_set_seed",
+      "falcon_sign_set_seed",
+      "shake_flip"
+    ],
+    "falcon_sign_set_private_key": [
+      "clear_private",
+      "falcon_decode_small",
+      "ft_validate_ternary_private",
+      "load_skey"
+    ],
+    "falcon_sign_start": [
+      "falcon_sign_start_external_nonce",
+      "rng_ready",
+      "shake_extract"
+    ],
+    "falcon_sign_start_external_nonce": [
+      "shake_init",
+      "shake_inject"
+    ],
+    "falcon_sign_update": [
+      "shake_inject"
+    ],
+    "falcon_sign_generate": [
+      "do_sign",
+      "falcon_encode_small",
+      "falcon_hash_to_point",
+      "falcon_is_short",
+      "falcon_prng_init",
+      "rng_ready",
+      "shake_flip"
+    ],
+    "raw_prefix_slice": [
+      "falcon_FFT",
+      "falcon_FFT3",
+      "falcon_poly_add3",
+      "falcon_poly_muladj_fft3",
+      "falcon_poly_mulselfadj_fft3",
+      "falcon_poly_neg",
+      "falcon_poly_neg3",
+      "ffLDL_fft3",
+      "skoff_b00",
+      "skoff_b01",
+      "skoff_b10",
+      "skoff_b11",
+      "skoff_tree",
+      "smallints_to_fpr"
+    ],
+    "falcon_FFT": [
+      "fpr_add",
+      "fpr_mul",
+      "fpr_sub"
+    ],
+    "falcon_iFFT": [
+      "fpr_add",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_scaled",
+      "fpr_sub"
+    ],
+    "falcon_poly_add": [
+      "fpr_add"
+    ],
+    "falcon_poly_addconst": [
+      "fpr_add"
+    ],
+    "falcon_poly_addconst_fft": [
+      "fpr_add"
+    ],
+    "falcon_poly_sub": [
+      "fpr_sub"
+    ],
+    "falcon_poly_neg": [
+      "fpr_neg"
+    ],
+    "falcon_poly_adj": [
+      "fpr_neg"
+    ],
+    "falcon_poly_adj_fft": [
+      "fpr_neg"
+    ],
+    "falcon_poly_mul_fft": [
+      "fpr_add",
+      "fpr_mul",
+      "fpr_sub"
+    ],
+    "falcon_poly_sqr_fft": [
+      "fpr_double",
+      "fpr_mul",
+      "fpr_sqr",
+      "fpr_sub"
+    ],
+    "falcon_poly_muladj_fft": [
+      "fpr_add",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_sub"
+    ],
+    "falcon_poly_mulselfadj_fft": [
+      "fpr_add",
+      "fpr_of",
+      "fpr_sqr"
+    ],
+    "falcon_poly_mulconst": [
+      "fpr_mul"
+    ],
+    "falcon_poly_inv_fft": [
+      "fpr_add",
+      "fpr_div",
+      "fpr_neg",
+      "fpr_sqr"
+    ],
+    "falcon_poly_div_fft": [
+      "fpr_add",
+      "fpr_div",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_sqr",
+      "fpr_sub"
+    ],
+    "falcon_poly_divadj_fft": [
+      "fpr_add",
+      "fpr_div",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_sqr",
+      "fpr_sub"
+    ],
+    "falcon_poly_invnorm2_fft": [
+      "fpr_add",
+      "fpr_inv",
+      "fpr_sqr"
+    ],
+    "falcon_poly_add_muladj_fft": [
+      "fpr_add",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_sub"
+    ],
+    "falcon_poly_mul_autoadj_fft": [
+      "fpr_mul"
+    ],
+    "falcon_poly_div_autoadj_fft": [
+      "fpr_div"
+    ],
+    "falcon_poly_split_fft": [
+      "fpr_add",
+      "fpr_half",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_sub"
+    ],
+    "falcon_poly_merge_fft": [
+      "fpr_add",
+      "fpr_mul",
+      "fpr_sub"
+    ],
+    "falcon_FFT3": [
+      "fpr_add",
+      "fpr_double",
+      "fpr_mul",
+      "fpr_sqr",
+      "fpr_sub"
+    ],
+    "falcon_iFFT3": [
+      "fpr_add",
+      "fpr_double",
+      "fpr_half",
+      "fpr_inverse_of",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_sqr",
+      "fpr_sub"
+    ],
+    "falcon_poly_add3": [
+      "fpr_add"
+    ],
+    "falcon_poly_addconst3": [
+      "fpr_add"
+    ],
+    "falcon_poly_addconst_fft3": [
+      "fpr_add"
+    ],
+    "falcon_poly_sub3": [
+      "fpr_sub"
+    ],
+    "falcon_poly_neg3": [
+      "fpr_neg"
+    ],
+    "falcon_poly_adj_fft3": [
+      "fpr_neg"
+    ],
+    "falcon_poly_mul_fft3": [
+      "fpr_add",
+      "fpr_mul",
+      "fpr_sub"
+    ],
+    "falcon_poly_sqr_fft3": [
+      "fpr_double",
+      "fpr_mul",
+      "fpr_sqr",
+      "fpr_sub"
+    ],
+    "falcon_poly_muladj_fft3": [
+      "fpr_add",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_sub"
+    ],
+    "falcon_poly_mulselfadj_fft3": [
+      "fpr_add",
+      "fpr_of",
+      "fpr_sqr"
+    ],
+    "falcon_poly_mulconst3": [
+      "fpr_mul"
+    ],
+    "falcon_poly_inv_fft3": [
+      "fpr_add",
+      "fpr_div",
+      "fpr_neg",
+      "fpr_sqr"
+    ],
+    "falcon_poly_div_fft3": [
+      "fpr_add",
+      "fpr_div",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_sqr",
+      "fpr_sub"
+    ],
+    "falcon_poly_divadj_fft3": [
+      "fpr_add",
+      "fpr_div",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_sqr",
+      "fpr_sub"
+    ],
+    "falcon_poly_invnorm2_fft3": [
+      "fpr_add",
+      "fpr_inv",
+      "fpr_sqr"
+    ],
+    "falcon_poly_add_muladj_fft3": [
+      "fpr_add",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_sub"
+    ],
+    "falcon_poly_mul_autoadj_fft3": [
+      "fpr_mul"
+    ],
+    "falcon_poly_div_autoadj_fft3": [
+      "fpr_div"
+    ],
+    "falcon_poly_split_top_fft3": [
+      "fpr_add",
+      "fpr_double",
+      "fpr_inverse_of",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_sqr",
+      "fpr_sub"
+    ],
+    "falcon_poly_split_deep_fft3": [
+      "fpr_add",
+      "fpr_half",
+      "fpr_mul",
+      "fpr_neg",
+      "fpr_sub"
+    ],
+    "falcon_poly_merge_top_fft3": [
+      "fpr_add",
+      "fpr_double",
+      "fpr_mul",
+      "fpr_sqr",
+      "fpr_sub"
+    ],
+    "falcon_poly_merge_deep_fft3": [
+      "fpr_add",
+      "fpr_mul",
+      "fpr_sub"
+    ],
+    "fpr_scaled": [
+      "FPR"
+    ],
+    "fpr_add": [
+      "FPR",
+      "fpr_ulsh",
+      "fpr_ursh"
+    ],
+    "fpr_mul": [
+      "FPR"
+    ],
+    "fpr_div": [
+      "FPR"
+    ],
+    "fpr_sqrt": [
+      "FPR"
+    ],
+    "mod2_res_ternary": [],
+    "modp_set": [],
+    "modp_norm": [],
+    "modp_ninv31": [],
+    "modp_R": [],
+    "modp_add": [],
+    "modp_sub": [],
+    "modp_montymul": [],
+    "modp_R2": [
+      "modp_R",
+      "modp_add",
+      "modp_montymul"
+    ],
+    "modp_Rx": [
+      "modp_R",
+      "modp_montymul"
+    ],
+    "modp_div": [
+      "modp_montymul"
+    ],
+    "modp_mkgm2": [
+      "modp_R",
+      "modp_R2",
+      "modp_div",
+      "modp_montymul"
+    ],
+    "modp_NTT2_ext": [
+      "modp_add",
+      "modp_montymul",
+      "modp_sub"
+    ],
+    "modp_iNTT2_ext": [
+      "modp_add",
+      "modp_montymul",
+      "modp_sub"
+    ],
+    "modp_mkgm3": [
+      "modp_R",
+      "modp_R2",
+      "modp_add",
+      "modp_div",
+      "modp_montymul",
+      "modp_sub"
+    ],
+    "modp_NTT3_ext": [
+      "modp_add",
+      "modp_montymul",
+      "modp_sub"
+    ],
+    "modp_iNTT3_ext": [
+      "modp_R",
+      "modp_add",
+      "modp_div",
+      "modp_montymul",
+      "modp_sub"
+    ],
+    "modp_poly_rec_res": [
+      "modp_montymul"
+    ],
+    "zint_add": [],
+    "zint_sub": [],
+    "zint_mul_small": [],
+    "zint_mod_small_unsigned": [
+      "modp_add",
+      "modp_montymul"
+    ],
+    "zint_mod_small_signed": [
+      "modp_sub",
+      "zint_mod_small_unsigned"
+    ],
+    "zint_add_mul_small": [],
+    "zint_rshift1": [],
+    "zint_rshift1_mod": [
+      "zint_add",
+      "zint_rshift1"
+    ],
+    "zint_sub_mod": [
+      "zint_add",
+      "zint_sub"
+    ],
+    "zint_ucmp": [],
+    "zint_norm_zero": [
+      "zint_sub"
+    ],
+    "zint_rebuild_CRT": [
+      "modp_R2",
+      "modp_montymul",
+      "modp_ninv31",
+      "modp_sub",
+      "zint_add_mul_small",
+      "zint_mod_small_unsigned",
+      "zint_mul_small",
+      "zint_norm_zero"
+    ],
+    "zint_exact_length": [],
+    "zint_co_reduce": [],
+    "zint_co_reduce_mod": [
+      "zint_add",
+      "zint_sub",
+      "zint_ucmp"
+    ],
+    "zint_reduce": [],
+    "zint_reduce_mod": [
+      "zint_add",
+      "zint_sub",
+      "zint_ucmp"
+    ],
+    "zint_bezout": [
+      "modp_ninv31",
+      "zint_co_reduce",
+      "zint_co_reduce_mod",
+      "zint_exact_length",
+      "zint_reduce",
+      "zint_reduce_mod",
+      "zint_rshift1",
+      "zint_rshift1_mod",
+      "zint_sub",
+      "zint_sub_mod",
+      "zint_ucmp"
+    ],
+    "bitlength": [],
+    "zint_signed_bit_length": [
+      "bitlength"
+    ],
+    "zint_get_top": [],
+    "zint_add_scaled_mul_small": [],
+    "zint_sub_scaled": [],
+    "zint_one_to_plain": [],
+    "poly_max_bitlength": [
+      "zint_signed_bit_length"
+    ],
+    "poly_big_to_fp": [
+      "fpr_scaled",
+      "zint_get_top"
+    ],
+    "poly_big_to_small": [
+      "zint_one_to_plain"
+    ],
+    "poly_sub_scaled": [
+      "zint_add_scaled_mul_small"
+    ],
+    "poly_sub_scaled_ntt": [
+      "modp_NTT2_ext",
+      "modp_NTT3_ext",
+      "modp_R2",
+      "modp_Rx",
+      "modp_iNTT2_ext",
+      "modp_iNTT3_ext",
+      "modp_mkgm2",
+      "modp_mkgm3",
+      "modp_montymul",
+      "modp_ninv31",
+      "modp_set",
+      "zint_mod_small_signed",
+      "zint_rebuild_CRT",
+      "zint_sub_scaled"
+    ],
+    "get_rng_u64": [
+      "shake_extract"
+    ],
+    "sample_true_ternary_secret": [
+      "get_rng_u64"
+    ],
+    "mkgauss": [
+      "get_rng_u64"
+    ],
+    "temp_size": [],
+    "falcon_keygen_new": [
+      "shake_init",
+      "temp_size"
+    ],
+    "falcon_keygen_free": [
+      "cleanse",
+      "temp_size"
+    ],
+    "falcon_keygen_max_privkey_size": [],
+    "falcon_keygen_max_pubkey_size": [],
+    "falcon_keygen_set_seed": [
+      "shake_extract",
+      "shake_init",
+      "shake_inject"
+    ],
+    "poly_small_sqnorm": [],
+    "align_fpr": [],
+    "align_u32": [],
+    "poly_small_to_fp": [
+      "fpr_of"
+    ],
+    "make_fg_step": [
+      "modp_NTT2_ext",
+      "modp_NTT3_ext",
+      "modp_R2",
+      "modp_Rx",
+      "modp_iNTT2_ext",
+      "modp_iNTT3_ext",
+      "modp_mkgm2",
+      "modp_mkgm3",
+      "modp_montymul",
+      "modp_ninv31",
+      "zint_mod_small_signed",
+      "zint_rebuild_CRT"
+    ],
+    "make_fg_ternary_top": [
+      "modp_NTT3_ext",
+      "modp_R2",
+      "modp_iNTT3_ext",
+      "modp_mkgm3",
+      "modp_montymul",
+      "modp_ninv31"
+    ],
+    "make_fg": [
+      "make_fg_step",
+      "make_fg_ternary_top",
+      "modp_NTT2_ext",
+      "modp_NTT3_ext",
+      "modp_mkgm2",
+      "modp_mkgm3",
+      "modp_ninv31",
+      "modp_set"
+    ],
+    "solve_NTRU_deepest": [
+      "make_fg",
+      "zint_bezout",
+      "zint_mul_small",
+      "zint_rebuild_CRT"
+    ],
+    "solve_NTRU_intermediate": [
+      "align_fpr",
+      "align_u32",
+      "bitlength",
+      "falcon_FFT",
+      "falcon_FFT3",
+      "falcon_iFFT",
+      "falcon_iFFT3",
+      "falcon_poly_add",
+      "falcon_poly_add3",
+      "falcon_poly_adj_fft",
+      "falcon_poly_adj_fft3",
+      "falcon_poly_invnorm2_fft",
+      "falcon_poly_invnorm2_fft3",
+      "falcon_poly_mul_autoadj_fft",
+      "falcon_poly_mul_autoadj_fft3",
+      "falcon_poly_mul_fft",
+      "falcon_poly_mul_fft3",
+      "fpr_rint",
+      "make_fg",
+      "modp_NTT2_ext",
+      "modp_NTT3_ext",
+      "modp_R2",
+      "modp_Rx",
+      "modp_iNTT2_ext",
+      "modp_iNTT3_ext",
+      "modp_mkgm2",
+      "modp_mkgm3",
+      "modp_montymul",
+      "modp_ninv31",
+      "poly_big_to_fp",
+      "poly_max_bitlength",
+      "poly_sub_scaled",
+      "poly_sub_scaled_ntt",
+      "zint_mod_small_signed",
+      "zint_rebuild_CRT"
+    ],
+    "solve_NTRU_binary_depth1": [
+      "align_fpr",
+      "falcon_FFT",
+      "falcon_iFFT",
+      "falcon_poly_add_muladj_fft",
+      "falcon_poly_invnorm2_fft",
+      "falcon_poly_mul_autoadj_fft",
+      "falcon_poly_mul_fft",
+      "falcon_poly_sub",
+      "fpr_of",
+      "fpr_rint",
+      "modp_NTT2_ext",
+      "modp_R2",
+      "modp_Rx",
+      "modp_iNTT2_ext",
+      "modp_mkgm2",
+      "modp_montymul",
+      "modp_ninv31",
+      "modp_poly_rec_res",
+      "modp_set",
+      "poly_big_to_fp",
+      "poly_max_bitlength",
+      "zint_mod_small_signed",
+      "zint_rebuild_CRT"
+    ],
+    "solve_NTRU_binary_depth0": [
+      "align_fpr",
+      "falcon_FFT",
+      "falcon_iFFT",
+      "falcon_poly_div_autoadj_fft",
+      "fpr_of",
+      "fpr_rint",
+      "modp_NTT2_ext",
+      "modp_R2",
+      "modp_add",
+      "modp_iNTT2_ext",
+      "modp_mkgm2",
+      "modp_montymul",
+      "modp_ninv31",
+      "modp_norm",
+      "modp_set",
+      "modp_sub",
+      "zint_one_to_plain"
+    ],
+    "solve_NTRU_ternary_depth0": [
+      "align_fpr",
+      "falcon_FFT3",
+      "falcon_iFFT3",
+      "falcon_poly_add3",
+      "falcon_poly_adj_fft3",
+      "falcon_poly_invnorm2_fft3",
+      "falcon_poly_mul_autoadj_fft3",
+      "falcon_poly_mul_fft3",
+      "falcon_poly_sub3",
+      "fpr_add",
+      "fpr_mul",
+      "fpr_of",
+      "fpr_rint",
+      "fpr_sub",
+      "poly_small_to_fp",
+      "zint_one_to_plain"
+    ],
+    "solve_NTRU": [
+      "modp_NTT2_ext",
+      "modp_NTT3_ext",
+      "modp_mkgm2",
+      "modp_mkgm3",
+      "modp_montymul",
+      "modp_ninv31",
+      "modp_set",
+      "modp_sub",
+      "poly_big_to_small",
+      "solve_NTRU_binary_depth0",
+      "solve_NTRU_binary_depth1",
+      "solve_NTRU_deepest",
+      "solve_NTRU_intermediate",
+      "solve_NTRU_ternary_depth0"
+    ],
+    "poly_small_mkgauss": [
+      "mkgauss"
+    ],
+    "smallints_to_fpr_keygen": [
+      "fpr_of"
+    ],
+    "ft_fpr_bits_keygen": [],
+    "ft_fpr_from_bits_keygen": [],
+    "ft_fpr_is_positive_finite_keygen": [
+      "ft_fpr_bits_keygen"
+    ],
+    "ft_stable_positive_keygen": [
+      "ft_fpr_bits_keygen",
+      "ft_fpr_from_bits_keygen",
+      "ft_fpr_is_positive_finite_keygen"
+    ],
+    "ft_stable_binary_inplace_keygen": [
+      "fpr_add",
+      "fpr_div",
+      "fpr_double",
+      "fpr_half",
+      "fpr_mul",
+      "ft_stable_binary_inplace_keygen",
+      "ft_stable_positive_keygen"
+    ],
+    "ft_stable_top_branch_keygen": [
+      "fpr_add",
+      "fpr_div",
+      "fpr_mul",
+      "fpr_of",
+      "ft_stable_binary_inplace_keygen",
+      "ft_stable_positive_keygen"
+    ],
+    "LDL_dim2_fft3_keygen": [
+      "falcon_poly_add3",
+      "falcon_poly_div_autoadj_fft3",
+      "falcon_poly_muladj_fft3",
+      "falcon_poly_neg3"
+    ],
+    "LDL_dim3_fft3_keygen": [
+      "LDL_dim2_fft3_keygen",
+      "falcon_poly_add3",
+      "falcon_poly_div_autoadj_fft3",
+      "falcon_poly_mul_autoadj_fft3",
+      "falcon_poly_muladj_fft3",
+      "falcon_poly_mulselfadj_fft3",
+      "falcon_poly_neg3",
+      "falcon_poly_sub3"
+    ],
+    "ffLDL_inner_fft3_keygen": [
+      "LDL_dim2_fft3_keygen",
+      "falcon_poly_adj_fft3",
+      "falcon_poly_split_deep_fft3",
+      "ffLDL_inner_fft3_keygen"
+    ],
+    "ffLDL_depth1_fft3_keygen": [
+      "LDL_dim3_fft3_keygen",
+      "falcon_poly_adj_fft3",
+      "falcon_poly_split_deep_fft3",
+      "ffLDL_inner_fft3_keygen"
+    ],
+    "ffLDL_fft3_keygen": [
+      "LDL_dim2_fft3_keygen",
+      "falcon_poly_adj_fft3",
+      "falcon_poly_split_top_fft3",
+      "ffLDL_depth1_fft3_keygen"
+    ],
+    "ft_keygen_leaf_certificate": [
+      "falcon_FFT3",
+      "falcon_poly_add3",
+      "falcon_poly_muladj_fft3",
+      "falcon_poly_mulselfadj_fft3",
+      "falcon_poly_neg3",
+      "ffLDL_fft3_keygen",
+      "fpr_div",
+      "fpr_lt",
+      "fpr_of",
+      "ft_fpr_bits_keygen",
+      "ft_fpr_from_bits_keygen",
+      "ft_fpr_is_positive_finite_keygen",
+      "ft_stable_positive_keygen",
+      "ft_stable_top_branch_keygen",
+      "smallints_to_fpr_keygen"
+    ],
+    "falcon_keygen_make": [
+      "falcon_FFT",
+      "falcon_FFT3",
+      "falcon_encode_12289",
+      "falcon_encode_18433",
+      "falcon_encode_small",
+      "falcon_iFFT",
+      "falcon_poly_adj_fft",
+      "falcon_poly_adj_fft3",
+      "falcon_poly_invnorm2_fft",
+      "falcon_poly_invnorm2_fft3",
+      "falcon_poly_mul_autoadj_fft",
+      "falcon_poly_mul_autoadj_fft3",
+      "falcon_poly_mulconst",
+      "falcon_poly_mulconst3",
+      "fpr_add",
+      "fpr_div",
+      "fpr_double",
+      "fpr_lt",
+      "fpr_mul",
+      "fpr_of",
+      "fpr_sqr",
+      "fpr_sqrt",
+      "ft_keygen_leaf_certificate",
+      "mod2_res_ternary",
+      "poly_small_mkgauss",
+      "poly_small_sqnorm",
+      "poly_small_to_fp",
+      "rng_ready",
+      "sample_true_ternary_secret",
+      "solve_NTRU"
+    ],
+    "falcon_encode_12289": [],
+    "falcon_decode_12289": [],
+    "falcon_encode_18433": [],
+    "falcon_decode_18433": [],
+    "compress_none": [],
+    "compress_static": [],
+    "falcon_encode_small": [
+      "compress_none",
+      "compress_static"
+    ],
+    "uncompress_none": [],
+    "uncompress_static": [],
+    "falcon_decode_small": [
+      "uncompress_none",
+      "uncompress_static"
+    ],
+    "falcon_hash_to_point": [
+      "shake_extract"
+    ],
+    "falcon_is_short": [],
+    "urandom_get_seed": [],
+    "falcon_get_seed": [
+      "urandom_get_seed"
+    ],
+    "refill_chacha20": [],
+    "falcon_prng_init": [
+      "falcon_prng_refill",
+      "shake_extract"
+    ],
+    "falcon_prng_refill": [
+      "refill_chacha20"
+    ],
+    "falcon_prng_get_bytes": [
+      "falcon_prng_refill"
+    ],
+    "dec64le": [],
+    "enc64le": [],
+    "xor_block": [
+      "dec64le"
+    ],
+    "process_block": [],
+    "shake_init": [],
+    "shake_inject": [
+      "process_block",
+      "xor_block"
+    ],
+    "shake_flip": [
+      "xor_block"
+    ],
+    "shake_extract": [
+      "enc64le",
+      "process_block"
+    ]
+  },
+  "raw_prefix_transitive_functions": [
+    "FPR",
+    "LDL_dim2_fft3",
+    "LDL_dim3_fft3",
+    "falcon_FFT",
+    "falcon_FFT3",
+    "falcon_poly_add3",
+    "falcon_poly_adj_fft3",
+    "falcon_poly_div_autoadj_fft3",
+    "falcon_poly_mul_autoadj_fft3",
+    "falcon_poly_muladj_fft3",
+    "falcon_poly_mulselfadj_fft3",
+    "falcon_poly_neg",
+    "falcon_poly_neg3",
+    "falcon_poly_split_deep_fft3",
+    "falcon_poly_split_top_fft3",
+    "falcon_poly_sub3",
+    "ffLDL_depth1_fft3",
+    "ffLDL_fft3",
+    "ffLDL_inner_fft3",
+    "fpr_add",
+    "fpr_div",
+    "fpr_double",
+    "fpr_half",
+    "fpr_inverse_of",
+    "fpr_mul",
+    "fpr_neg",
+    "fpr_of",
+    "fpr_scaled",
+    "fpr_sqr",
+    "fpr_sub",
+    "fpr_ulsh",
+    "fpr_ursh",
+    "raw_prefix_slice",
+    "skoff_b00",
+    "skoff_b01",
+    "skoff_b10",
+    "skoff_b11",
+    "skoff_tree",
+    "smallints_to_fpr"
+  ],
+  "emitted_transitive_functions": [
+    "FPR",
+    "LDL_dim2_fft3_keygen",
+    "LDL_dim3_fft3_keygen",
+    "align_fpr",
+    "align_u32",
+    "bitlength",
+    "compress_none",
+    "compress_static",
+    "dec64le",
+    "enc64le",
+    "falcon_FFT",
+    "falcon_FFT3",
+    "falcon_encode_12289",
+    "falcon_encode_18433",
+    "falcon_encode_small",
+    "falcon_get_seed",
+    "falcon_iFFT",
+    "falcon_iFFT3",
+    "falcon_keygen_make",
+    "falcon_keygen_set_seed",
+    "falcon_poly_add",
+    "falcon_poly_add3",
+    "falcon_poly_add_muladj_fft",
+    "falcon_poly_adj_fft",
+    "falcon_poly_adj_fft3",
+    "falcon_poly_div_autoadj_fft",
+    "falcon_poly_div_autoadj_fft3",
+    "falcon_poly_invnorm2_fft",
+    "falcon_poly_invnorm2_fft3",
+    "falcon_poly_mul_autoadj_fft",
+    "falcon_poly_mul_autoadj_fft3",
+    "falcon_poly_mul_fft",
+    "falcon_poly_mul_fft3",
+    "falcon_poly_muladj_fft3",
+    "falcon_poly_mulconst",
+    "falcon_poly_mulconst3",
+    "falcon_poly_mulselfadj_fft3",
+    "falcon_poly_neg3",
+    "falcon_poly_split_deep_fft3",
+    "falcon_poly_split_top_fft3",
+    "falcon_poly_sub",
+    "falcon_poly_sub3",
+    "falcon_sign_set_seed",
+    "ffLDL_depth1_fft3_keygen",
+    "ffLDL_fft3_keygen",
+    "ffLDL_inner_fft3_keygen",
+    "fpr_add",
+    "fpr_div",
+    "fpr_double",
+    "fpr_half",
+    "fpr_inv",
+    "fpr_inverse_of",
+    "fpr_lt",
+    "fpr_mul",
+    "fpr_neg",
+    "fpr_of",
+    "fpr_rint",
+    "fpr_scaled",
+    "fpr_sqr",
+    "fpr_sqrt",
+    "fpr_sub",
+    "fpr_ulsh",
+    "fpr_ursh",
+    "ft_fpr_bits_keygen",
+    "ft_fpr_from_bits_keygen",
+    "ft_fpr_is_positive_finite_keygen",
+    "ft_keygen_leaf_certificate",
+    "ft_stable_binary_inplace_keygen",
+    "ft_stable_positive_keygen",
+    "ft_stable_top_branch_keygen",
+    "get_rng_u64",
+    "make_fg",
+    "make_fg_step",
+    "make_fg_ternary_top",
+    "mkgauss",
+    "mod2_res_ternary",
+    "modp_NTT2_ext",
+    "modp_NTT3_ext",
+    "modp_R",
+    "modp_R2",
+    "modp_Rx",
+    "modp_add",
+    "modp_div",
+    "modp_iNTT2_ext",
+    "modp_iNTT3_ext",
+    "modp_mkgm2",
+    "modp_mkgm3",
+    "modp_montymul",
+    "modp_ninv31",
+    "modp_norm",
+    "modp_poly_rec_res",
+    "modp_set",
+    "modp_sub",
+    "poly_big_to_fp",
+    "poly_big_to_small",
+    "poly_max_bitlength",
+    "poly_small_mkgauss",
+    "poly_small_sqnorm",
+    "poly_small_to_fp",
+    "poly_sub_scaled",
+    "poly_sub_scaled_ntt",
+    "process_block",
+    "rng_ready",
+    "sample_true_ternary_secret",
+    "shake_extract",
+    "shake_flip",
+    "shake_init",
+    "shake_inject",
+    "smallints_to_fpr_keygen",
+    "solve_NTRU",
+    "solve_NTRU_binary_depth0",
+    "solve_NTRU_binary_depth1",
+    "solve_NTRU_deepest",
+    "solve_NTRU_intermediate",
+    "solve_NTRU_ternary_depth0",
+    "urandom_get_seed",
+    "xor_block",
+    "zint_add",
+    "zint_add_mul_small",
+    "zint_add_scaled_mul_small",
+    "zint_bezout",
+    "zint_co_reduce",
+    "zint_co_reduce_mod",
+    "zint_exact_length",
+    "zint_get_top",
+    "zint_mod_small_signed",
+    "zint_mod_small_unsigned",
+    "zint_mul_small",
+    "zint_norm_zero",
+    "zint_one_to_plain",
+    "zint_rebuild_CRT",
+    "zint_reduce",
+    "zint_reduce_mod",
+    "zint_rshift1",
+    "zint_rshift1_mod",
+    "zint_signed_bit_length",
+    "zint_sub",
+    "zint_sub_mod",
+    "zint_sub_scaled",
+    "zint_ucmp"
+  ],
+  "all_floor_callers": [
+    "BerExp",
+    "sampler",
+    "sampler_large"
+  ],
+  "floor_unreachable_in_both": true,
+  "graph_is_syntactic_overapproximation_including_inactive_ter_zero_arm": true,
+  "tables_sha256": {
+    "fpr_gm3_square": "7fb52241d6f91f84e1364ffc23ccdccc119c501b0c889c9a3bfebf08b80ac0c3",
+    "fpr_gm3_cubic": "c643b19d7b53dca1dd826bb2f986844a47f909fb3576eea96ee5acd7051a7938"
+  },
+  "consumed_body_hashes": {
+    "FPR": [
+      {
+        "unit": "checks/transport_unit.c",
+        "sha256": "585f0a8ba37b63e8ff391ff231d222884d9e642aab1c2ec007f15b8ee8cf28bb"
+      },
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "585f0a8ba37b63e8ff391ff231d222884d9e642aab1c2ec007f15b8ee8cf28bb"
+      },
+      {
+        "unit": "source/fpr-emulated.c",
+        "sha256": "585f0a8ba37b63e8ff391ff231d222884d9e642aab1c2ec007f15b8ee8cf28bb"
+      },
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "585f0a8ba37b63e8ff391ff231d222884d9e642aab1c2ec007f15b8ee8cf28bb"
+      },
+      {
+        "unit": "source/falcon-enc.c",
+        "sha256": "585f0a8ba37b63e8ff391ff231d222884d9e642aab1c2ec007f15b8ee8cf28bb"
+      },
+      {
+        "unit": "source/frng.c",
+        "sha256": "585f0a8ba37b63e8ff391ff231d222884d9e642aab1c2ec007f15b8ee8cf28bb"
+      }
+    ],
+    "LDL_dim2_fft3": [
+      {
+        "unit": "checks/transport_unit.c",
+        "sha256": "56a4592a060bd3593c65f37749aa5eed4b6826c9d4acae8b299804bb3743cd8b"
+      }
+    ],
+    "LDL_dim2_fft3_keygen": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "787336cdc9710eb64cdafec4faacab6bf6337f88ad7ea4151277d700c8243035"
+      }
+    ],
+    "LDL_dim3_fft3": [
+      {
+        "unit": "checks/transport_unit.c",
+        "sha256": "d2cf02f0924516bbeb305bba5effd9831bbe56861e7bc7802abcee77c859f90b"
+      }
+    ],
+    "LDL_dim3_fft3_keygen": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "a0c2977f00ee12e6c6fb1d929ae533bf3a001e69da293c9b296e9b6d151fafd2"
+      }
+    ],
+    "align_fpr": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "229232d12d2f46ed1bf7d9827e81d69302824c3e914d57f9a1fce3e3805f49a2"
+      }
+    ],
+    "align_u32": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "3bc8878d7b4f6ffa2fdbbb50dd7d7ed09933e7f28063cbde972c918d06a2863b"
+      }
+    ],
+    "bitlength": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "9a0a31e0a2f01d6e375aa3d87d666c3f0645d8eb7ca62cd0192f8d7777f141e6"
+      }
+    ],
+    "compress_none": [
+      {
+        "unit": "source/falcon-enc.c",
+        "sha256": "ff5a4f71402d1d048bbff9e41a172cf49911195ae6ce05b8d65f416dffb5a659"
+      }
+    ],
+    "compress_static": [
+      {
+        "unit": "source/falcon-enc.c",
+        "sha256": "51a27672aa1dd95e094b8da5335d9aaefb83214f696d25e9279b45b2d9d5add4"
+      }
+    ],
+    "dec64le": [
+      {
+        "unit": "source/shake.c",
+        "sha256": "630ad49d30425f526eab5bd441fb28208a63681ccdc19133de56d5187dc6e068"
+      }
+    ],
+    "enc64le": [
+      {
+        "unit": "source/shake.c",
+        "sha256": "303fd46bd9a870ecba659b518c352fe5e2cd643b856f7ff8745f598b54420501"
+      }
+    ],
+    "falcon_FFT": [
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "f5bc5d95a53f0177ce42550dcb3ecc77fd53906c1afb5d4dd0bb9d4232fdeddf"
+      }
+    ],
+    "falcon_FFT3": [
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "b601cbcef566310f0b6e7e6021915593a26726d56ebb797a85a4f08c32b0906c"
+      }
+    ],
+    "falcon_encode_12289": [
+      {
+        "unit": "source/falcon-enc.c",
+        "sha256": "9831e8fcb3c0211629a04c92ad7c1c0e80652a20dc32ba5b34cd68577a61cb11"
+      }
+    ],
+    "falcon_encode_18433": [
+      {
+        "unit": "source/falcon-enc.c",
+        "sha256": "226a63b5919e9a903cdb0b4e9ef97b6676e704f0a08edf8af7907436371b91ae"
+      }
+    ],
+    "falcon_encode_small": [
+      {
+        "unit": "source/falcon-enc.c",
+        "sha256": "32b015c3b0371dede6b431775618ae8026eaf8539892e8b81cabf2ea02c33a61"
+      }
+    ],
+    "falcon_get_seed": [
+      {
+        "unit": "source/frng.c",
+        "sha256": "0e312883ba1d0cb859f81d22dac633a2fb512476c77c449d366ed86741b058c8"
+      }
+    ],
+    "falcon_iFFT": [
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "45b525f68200557334ac2518344b40310dcb338b55242b7b3651ac26a7f7575c"
+      }
+    ],
+    "falcon_iFFT3": [
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "5d4d03cdf7e39a745ea006b9704d8978bfc1d026d2e58aa4c0ed6223bf721560"
+      }
+    ],
+    "falcon_keygen_make": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "2ce5c323f1a8618b281af16ded80721f6fb10a93a68d647ba0d8469f7273ae99"
+      }
+    ],
+    "falcon_keygen_set_seed": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "c0152457fb64eec16fba9c57ee8207cef7c2021f0d8152972a6a6f39da96f17f"
+      }
+    ],
+    "falcon_poly_add": [
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "d1ceac36e688cb405176930a56f767474e629f9494b1ba913320f5883a49520d"
+      }
+    ],
+    "falcon_poly_add3": [
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "5a52cce75c6e295342bd95c8c79f4fdf14993175fede1ceae7898ec1968bb64d"
+      }
+    ],
+    "falcon_poly_add_muladj_fft": [
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "75a44727168460cb32dc5a1d75cdfbda91a339548cee5d8e65fca89942427ac1"
+      }
+    ],
+    "falcon_poly_adj_fft": [
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "4e53159a1959c09a9909d242bd231237bbd4b0aebda32abf166eb837675081ef"
+      }
+    ],
+    "falcon_poly_adj_fft3": [
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "27e666ac5580efaab2b5abee05d8d282a304b00d0b18745a30403c0396700a9c"
+      }
+    ],
+    "falcon_poly_div_autoadj_fft": [
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "a8e47421829c582440110a18d21c191ac02f1feca6e367885168ca585b5b13d1"
+      }
+    ],
+    "falcon_poly_div_autoadj_fft3": [
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "e9636cadc4eb9c88b6edbad83e94e1f33061f422d3085b96cd25abd44378e43c"
+      }
+    ],
+    "falcon_poly_invnorm2_fft": [
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "91617fcb7b4ac9ce3775302add4e07add23ecff3accb3b9475e108d7eecd6bbf"
+      }
+    ],
+    "falcon_poly_invnorm2_fft3": [
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "71049ccca68ce64e91008722383952d138ce0ef98839df78f278d62bc9add5fa"
+      }
+    ],
+    "falcon_poly_mul_autoadj_fft": [
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "91b971e985e535f2f379fea3aae6bb4a62ddb555cccbbeefe4f6de11bdd863eb"
+      }
+    ],
+    "falcon_poly_mul_autoadj_fft3": [
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "2f80720bd0a68ca2eb25c8820d07eb75da7bb6e64cdec12d303019e814e08c2a"
+      }
+    ],
+    "falcon_poly_mul_fft": [
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "1729aafa30f3044f1b689f56019d366a3f46504fbc05ef6505d18f836c506a1f"
+      }
+    ],
+    "falcon_poly_mul_fft3": [
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "fb479aa17366708001e82074f3a99059d936c495e9711ba64da0cb50332c0592"
+      }
+    ],
+    "falcon_poly_muladj_fft3": [
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "28017c8b5010e3321119f32f97369d98b0025d41c2249331d7733a033b92bf64"
+      }
+    ],
+    "falcon_poly_mulconst": [
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "3cd07c943f6b637bd40e0543a82e1fb1d8987e66bafc782ffd78b838717ee2c5"
+      }
+    ],
+    "falcon_poly_mulconst3": [
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "952e6802686ebdd5de02b52edbb306f494998746b41b0715c237b77030f609c7"
+      }
+    ],
+    "falcon_poly_mulselfadj_fft3": [
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "24596763db5fdc881915abbe2425e5d0b1e299e4433b58bc40571d1e8dc5ec65"
+      }
+    ],
+    "falcon_poly_neg": [
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "21da010f1c3872e66504df0b51bdeca32114bf9be644305a2126d96ea429a693"
+      }
+    ],
+    "falcon_poly_neg3": [
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "6a9a84e4bfb223e3de599c4f1117a4f4b2a160cfa39eb47a12a2550a17157886"
+      }
+    ],
+    "falcon_poly_split_deep_fft3": [
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "9c438e6486190c7cec42ed8705cfee3a1a0b2e13e9d2ef0fa85a359a08013d1a"
+      }
+    ],
+    "falcon_poly_split_top_fft3": [
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "78304c1f24eb8d04d1ad7466e85752d9e1ae058b85782ee431eabafbbcc1f75b"
+      }
+    ],
+    "falcon_poly_sub": [
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "5bf6e7650c7ad0b449783e958d4dd1a95fa6ee5dc6d618cc2dc8969f5a69090a"
+      }
+    ],
+    "falcon_poly_sub3": [
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "e5fe4127e815c00197d87acae49e895d34252bcf9e3af681149bccf56c431c6d"
+      }
+    ],
+    "falcon_sign_set_seed": [
+      {
+        "unit": "checks/transport_unit.c",
+        "sha256": "3bab46395bae93171aa10cbc246fcf6f392256fe70c598ddf952db0099c3361a"
+      }
+    ],
+    "ffLDL_depth1_fft3": [
+      {
+        "unit": "checks/transport_unit.c",
+        "sha256": "db0e2a1ce57de81868ebdf00f4bac102011fbbc997acc2083aad6a38a055b8de"
+      }
+    ],
+    "ffLDL_depth1_fft3_keygen": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "fbe6ac8618cf547039a864de8ffff32ee47a5a2bcdf136ae9246cd9a73677983"
+      }
+    ],
+    "ffLDL_fft3": [
+      {
+        "unit": "checks/transport_unit.c",
+        "sha256": "27db333669f279c32a7d43dc62cc677be5c548711e5e82df427ffef81782b590"
+      }
+    ],
+    "ffLDL_fft3_keygen": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "105261c69df8c5aeb1f73895d6cb03c5193ff04e82976b575bcf4c26daab0965"
+      }
+    ],
+    "ffLDL_inner_fft3": [
+      {
+        "unit": "checks/transport_unit.c",
+        "sha256": "8168835b3f8fba9cc74a1431ab24a7ea9cf32ddc68be8d16f639678e73f29d2e"
+      }
+    ],
+    "ffLDL_inner_fft3_keygen": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "3fb03e5004feb026b549e45c76067f5a299bcd660308e5bc26573aa8e61c91ab"
+      }
+    ],
+    "fpr_add": [
+      {
+        "unit": "source/fpr-emulated.c",
+        "sha256": "0aadd6fece0fb732f7f1ea26cf9dc87057be536344d22c36d8f830ab76a4b028"
+      }
+    ],
+    "fpr_div": [
+      {
+        "unit": "source/fpr-emulated.c",
+        "sha256": "fd0077b16dfbf7dd3a15a49289f106ed8cfd5dfe7cde9ec4ab6435e62a2f3a58"
+      }
+    ],
+    "fpr_double": [
+      {
+        "unit": "checks/transport_unit.c",
+        "sha256": "c245367d6b1c45cdefbb8e615507b1d1422e694ff7c56ffd8f9165e9637934ff"
+      },
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "c245367d6b1c45cdefbb8e615507b1d1422e694ff7c56ffd8f9165e9637934ff"
+      },
+      {
+        "unit": "source/fpr-emulated.c",
+        "sha256": "c245367d6b1c45cdefbb8e615507b1d1422e694ff7c56ffd8f9165e9637934ff"
+      },
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "c245367d6b1c45cdefbb8e615507b1d1422e694ff7c56ffd8f9165e9637934ff"
+      },
+      {
+        "unit": "source/falcon-enc.c",
+        "sha256": "c245367d6b1c45cdefbb8e615507b1d1422e694ff7c56ffd8f9165e9637934ff"
+      },
+      {
+        "unit": "source/frng.c",
+        "sha256": "c245367d6b1c45cdefbb8e615507b1d1422e694ff7c56ffd8f9165e9637934ff"
+      }
+    ],
+    "fpr_half": [
+      {
+        "unit": "checks/transport_unit.c",
+        "sha256": "db5d7bcb8f9a4644f4925960178f2bd4ffca14e06b5dddcea2cbd89b2f504f5d"
+      },
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "db5d7bcb8f9a4644f4925960178f2bd4ffca14e06b5dddcea2cbd89b2f504f5d"
+      },
+      {
+        "unit": "source/fpr-emulated.c",
+        "sha256": "db5d7bcb8f9a4644f4925960178f2bd4ffca14e06b5dddcea2cbd89b2f504f5d"
+      },
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "db5d7bcb8f9a4644f4925960178f2bd4ffca14e06b5dddcea2cbd89b2f504f5d"
+      },
+      {
+        "unit": "source/falcon-enc.c",
+        "sha256": "db5d7bcb8f9a4644f4925960178f2bd4ffca14e06b5dddcea2cbd89b2f504f5d"
+      },
+      {
+        "unit": "source/frng.c",
+        "sha256": "db5d7bcb8f9a4644f4925960178f2bd4ffca14e06b5dddcea2cbd89b2f504f5d"
+      }
+    ],
+    "fpr_inv": [
+      {
+        "unit": "checks/transport_unit.c",
+        "sha256": "381a4ed631488244865720dc6f50046305d7b06d73a64a32d00abe9d8f6afb8e"
+      },
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "381a4ed631488244865720dc6f50046305d7b06d73a64a32d00abe9d8f6afb8e"
+      },
+      {
+        "unit": "source/fpr-emulated.c",
+        "sha256": "381a4ed631488244865720dc6f50046305d7b06d73a64a32d00abe9d8f6afb8e"
+      },
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "381a4ed631488244865720dc6f50046305d7b06d73a64a32d00abe9d8f6afb8e"
+      },
+      {
+        "unit": "source/falcon-enc.c",
+        "sha256": "381a4ed631488244865720dc6f50046305d7b06d73a64a32d00abe9d8f6afb8e"
+      },
+      {
+        "unit": "source/frng.c",
+        "sha256": "381a4ed631488244865720dc6f50046305d7b06d73a64a32d00abe9d8f6afb8e"
+      }
+    ],
+    "fpr_inverse_of": [
+      {
+        "unit": "checks/transport_unit.c",
+        "sha256": "076b831982191b9038f93450952af4c009a6dee3b7bbddcfce465daba70726c1"
+      },
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "076b831982191b9038f93450952af4c009a6dee3b7bbddcfce465daba70726c1"
+      },
+      {
+        "unit": "source/fpr-emulated.c",
+        "sha256": "076b831982191b9038f93450952af4c009a6dee3b7bbddcfce465daba70726c1"
+      },
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "076b831982191b9038f93450952af4c009a6dee3b7bbddcfce465daba70726c1"
+      },
+      {
+        "unit": "source/falcon-enc.c",
+        "sha256": "076b831982191b9038f93450952af4c009a6dee3b7bbddcfce465daba70726c1"
+      },
+      {
+        "unit": "source/frng.c",
+        "sha256": "076b831982191b9038f93450952af4c009a6dee3b7bbddcfce465daba70726c1"
+      }
+    ],
+    "fpr_lt": [
+      {
+        "unit": "checks/transport_unit.c",
+        "sha256": "f663dcb98ccfcde54a79a34df4d33c10e3307abdb565e2bcd884832b0896212b"
+      },
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "f663dcb98ccfcde54a79a34df4d33c10e3307abdb565e2bcd884832b0896212b"
+      },
+      {
+        "unit": "source/fpr-emulated.c",
+        "sha256": "f663dcb98ccfcde54a79a34df4d33c10e3307abdb565e2bcd884832b0896212b"
+      },
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "f663dcb98ccfcde54a79a34df4d33c10e3307abdb565e2bcd884832b0896212b"
+      },
+      {
+        "unit": "source/falcon-enc.c",
+        "sha256": "f663dcb98ccfcde54a79a34df4d33c10e3307abdb565e2bcd884832b0896212b"
+      },
+      {
+        "unit": "source/frng.c",
+        "sha256": "f663dcb98ccfcde54a79a34df4d33c10e3307abdb565e2bcd884832b0896212b"
+      }
+    ],
+    "fpr_mul": [
+      {
+        "unit": "source/fpr-emulated.c",
+        "sha256": "91d9d67f1f5432feac0c7fc7529eadf09d7a8391e9704d3ed6594d20f12b7d78"
+      }
+    ],
+    "fpr_neg": [
+      {
+        "unit": "checks/transport_unit.c",
+        "sha256": "c2ee1365648008a879aa900492b7e37c81ed1a4c83e229941890fa8005be7275"
+      },
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "c2ee1365648008a879aa900492b7e37c81ed1a4c83e229941890fa8005be7275"
+      },
+      {
+        "unit": "source/fpr-emulated.c",
+        "sha256": "c2ee1365648008a879aa900492b7e37c81ed1a4c83e229941890fa8005be7275"
+      },
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "c2ee1365648008a879aa900492b7e37c81ed1a4c83e229941890fa8005be7275"
+      },
+      {
+        "unit": "source/falcon-enc.c",
+        "sha256": "c2ee1365648008a879aa900492b7e37c81ed1a4c83e229941890fa8005be7275"
+      },
+      {
+        "unit": "source/frng.c",
+        "sha256": "c2ee1365648008a879aa900492b7e37c81ed1a4c83e229941890fa8005be7275"
+      }
+    ],
+    "fpr_of": [
+      {
+        "unit": "checks/transport_unit.c",
+        "sha256": "a8b6ccc33782f914867b3d5193d5113625b466f0cb243a90cb742d4ee37e6fe6"
+      },
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "a8b6ccc33782f914867b3d5193d5113625b466f0cb243a90cb742d4ee37e6fe6"
+      },
+      {
+        "unit": "source/fpr-emulated.c",
+        "sha256": "a8b6ccc33782f914867b3d5193d5113625b466f0cb243a90cb742d4ee37e6fe6"
+      },
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "a8b6ccc33782f914867b3d5193d5113625b466f0cb243a90cb742d4ee37e6fe6"
+      },
+      {
+        "unit": "source/falcon-enc.c",
+        "sha256": "a8b6ccc33782f914867b3d5193d5113625b466f0cb243a90cb742d4ee37e6fe6"
+      },
+      {
+        "unit": "source/frng.c",
+        "sha256": "a8b6ccc33782f914867b3d5193d5113625b466f0cb243a90cb742d4ee37e6fe6"
+      }
+    ],
+    "fpr_rint": [
+      {
+        "unit": "checks/transport_unit.c",
+        "sha256": "efe7626ee7a5e8ee1d4c5d7fbb4bb422f7b21c69922614d18b4489e98d045f5d"
+      },
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "efe7626ee7a5e8ee1d4c5d7fbb4bb422f7b21c69922614d18b4489e98d045f5d"
+      },
+      {
+        "unit": "source/fpr-emulated.c",
+        "sha256": "efe7626ee7a5e8ee1d4c5d7fbb4bb422f7b21c69922614d18b4489e98d045f5d"
+      },
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "efe7626ee7a5e8ee1d4c5d7fbb4bb422f7b21c69922614d18b4489e98d045f5d"
+      },
+      {
+        "unit": "source/falcon-enc.c",
+        "sha256": "efe7626ee7a5e8ee1d4c5d7fbb4bb422f7b21c69922614d18b4489e98d045f5d"
+      },
+      {
+        "unit": "source/frng.c",
+        "sha256": "efe7626ee7a5e8ee1d4c5d7fbb4bb422f7b21c69922614d18b4489e98d045f5d"
+      }
+    ],
+    "fpr_scaled": [
+      {
+        "unit": "source/fpr-emulated.c",
+        "sha256": "a493b04eb790d660abc394e172ca17220a220514982cf2d86f7ad615831e8d67"
+      }
+    ],
+    "fpr_sqr": [
+      {
+        "unit": "checks/transport_unit.c",
+        "sha256": "c67973e1666488f269201f4dacdf9c7b8e690ea30438ebe2ad02ce0f3b1b0af1"
+      },
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "c67973e1666488f269201f4dacdf9c7b8e690ea30438ebe2ad02ce0f3b1b0af1"
+      },
+      {
+        "unit": "source/fpr-emulated.c",
+        "sha256": "c67973e1666488f269201f4dacdf9c7b8e690ea30438ebe2ad02ce0f3b1b0af1"
+      },
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "c67973e1666488f269201f4dacdf9c7b8e690ea30438ebe2ad02ce0f3b1b0af1"
+      },
+      {
+        "unit": "source/falcon-enc.c",
+        "sha256": "c67973e1666488f269201f4dacdf9c7b8e690ea30438ebe2ad02ce0f3b1b0af1"
+      },
+      {
+        "unit": "source/frng.c",
+        "sha256": "c67973e1666488f269201f4dacdf9c7b8e690ea30438ebe2ad02ce0f3b1b0af1"
+      }
+    ],
+    "fpr_sqrt": [
+      {
+        "unit": "source/fpr-emulated.c",
+        "sha256": "1c547b73dc32b57c68c9df8333e4a8bfe1ecfdc0c31ec7dc8d7a1486e6a48075"
+      }
+    ],
+    "fpr_sub": [
+      {
+        "unit": "checks/transport_unit.c",
+        "sha256": "b7e8fc7989b8f816a2b5dc2af0b2bf6871978e6d482f52d912f0f7a9e727811f"
+      },
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "b7e8fc7989b8f816a2b5dc2af0b2bf6871978e6d482f52d912f0f7a9e727811f"
+      },
+      {
+        "unit": "source/fpr-emulated.c",
+        "sha256": "b7e8fc7989b8f816a2b5dc2af0b2bf6871978e6d482f52d912f0f7a9e727811f"
+      },
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "b7e8fc7989b8f816a2b5dc2af0b2bf6871978e6d482f52d912f0f7a9e727811f"
+      },
+      {
+        "unit": "source/falcon-enc.c",
+        "sha256": "b7e8fc7989b8f816a2b5dc2af0b2bf6871978e6d482f52d912f0f7a9e727811f"
+      },
+      {
+        "unit": "source/frng.c",
+        "sha256": "b7e8fc7989b8f816a2b5dc2af0b2bf6871978e6d482f52d912f0f7a9e727811f"
+      }
+    ],
+    "fpr_ulsh": [
+      {
+        "unit": "checks/transport_unit.c",
+        "sha256": "54e520e15d23105ed7e1ce42f13f4fc94cb24929a7414829f9b1410ca3195203"
+      },
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "54e520e15d23105ed7e1ce42f13f4fc94cb24929a7414829f9b1410ca3195203"
+      },
+      {
+        "unit": "source/fpr-emulated.c",
+        "sha256": "54e520e15d23105ed7e1ce42f13f4fc94cb24929a7414829f9b1410ca3195203"
+      },
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "54e520e15d23105ed7e1ce42f13f4fc94cb24929a7414829f9b1410ca3195203"
+      },
+      {
+        "unit": "source/falcon-enc.c",
+        "sha256": "54e520e15d23105ed7e1ce42f13f4fc94cb24929a7414829f9b1410ca3195203"
+      },
+      {
+        "unit": "source/frng.c",
+        "sha256": "54e520e15d23105ed7e1ce42f13f4fc94cb24929a7414829f9b1410ca3195203"
+      }
+    ],
+    "fpr_ursh": [
+      {
+        "unit": "checks/transport_unit.c",
+        "sha256": "52b4bff449f394268c3a10766e538c607779527e66e60bb6bf083cb70778f654"
+      },
+      {
+        "unit": "source/falcon-fft.c",
+        "sha256": "52b4bff449f394268c3a10766e538c607779527e66e60bb6bf083cb70778f654"
+      },
+      {
+        "unit": "source/fpr-emulated.c",
+        "sha256": "52b4bff449f394268c3a10766e538c607779527e66e60bb6bf083cb70778f654"
+      },
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "52b4bff449f394268c3a10766e538c607779527e66e60bb6bf083cb70778f654"
+      },
+      {
+        "unit": "source/falcon-enc.c",
+        "sha256": "52b4bff449f394268c3a10766e538c607779527e66e60bb6bf083cb70778f654"
+      },
+      {
+        "unit": "source/frng.c",
+        "sha256": "52b4bff449f394268c3a10766e538c607779527e66e60bb6bf083cb70778f654"
+      }
+    ],
+    "ft_fpr_bits_keygen": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "67ca16dfe5d4dae0d613a6c00aef9093af54cf4805a5171ae5befac4585982d6"
+      }
+    ],
+    "ft_fpr_from_bits_keygen": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "8e86b482b11a49ebe1d475c8cb2dcff1bbec838d0d10c58c07324dbd745d545d"
+      }
+    ],
+    "ft_fpr_is_positive_finite_keygen": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "678b56c905604f775fc67e1be83a13c96406be43c8295c9d57f9e9e75997e5c3"
+      }
+    ],
+    "ft_keygen_leaf_certificate": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "adddbb22ee442c071b18c19edb10c14c3ef6064979ce528f9e1431518342e68f"
+      }
+    ],
+    "ft_stable_binary_inplace_keygen": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "736214cf3adfcb6a9ab200cb134ead1c92f7966b03e53a4f48fe2c4dc6af1fd5"
+      }
+    ],
+    "ft_stable_positive_keygen": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "956d2dc0947cd16f22ff6971f6f3b4a940df03aefd71db4eba002c459f1321b4"
+      }
+    ],
+    "ft_stable_top_branch_keygen": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "b1ac09ad2f789bc418dc201a97e02265912b7978274bb3770668c75550b1a3c0"
+      }
+    ],
+    "get_rng_u64": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "5a3251d86df1cc5e47af982b05d13aa9ccfd447495351d37c5501b179384dfa3"
+      }
+    ],
+    "make_fg": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "4813a4c496d182734ff8f805a8d7fce2ae2aa9e881d178b89b9666d60909f5fc"
+      }
+    ],
+    "make_fg_step": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "c791660bba54c591d27d6a8b10db2c6029dc57095268d96c4e983f118dde94ec"
+      }
+    ],
+    "make_fg_ternary_top": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "1b458109aa7ca503e59e7a024544b5deecaf78f6b5a587a27c5e3d6ec76b2945"
+      }
+    ],
+    "mkgauss": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "32369aca95793be27c0607902b0b379fbb837db18899658193147dcd0f00333a"
+      }
+    ],
+    "mod2_res_ternary": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "efa4d6e5e98402d11b8bcfe444edfe0315a5e2bd279ad4fbc5a446fe85e213b4"
+      }
+    ],
+    "modp_NTT2_ext": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "3b2eac45cff1b8a0a703db9a760d24566770a7c4d33fd547bd2aab0d1f213bb3"
+      }
+    ],
+    "modp_NTT3_ext": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "86c1191a9c57822be3b76c1dfe7452d8eacfc00a9dc959b69c2121cd35bb13e5"
+      }
+    ],
+    "modp_R": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "ced24db45af3e39fe953d91226dbc55461373b8f1a9276e3cf458f4a3a1cd3a8"
+      }
+    ],
+    "modp_R2": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "79cf406daf1abd0485007b104515196b09be2817afb72f4765c4f51b29a37153"
+      }
+    ],
+    "modp_Rx": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "8fd4e459ffb987230acef1e6e3e649cc301ec57e469e6dbee896aa10a5636573"
+      }
+    ],
+    "modp_add": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "b265dea6b78a39c83a4e1fb3fed50b90441c1af93efb70d4f01fe84331820538"
+      }
+    ],
+    "modp_div": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "0667a9899276fff706e1712f1f7f92d59b7b28884d67289f4c3940c44b0c3f9f"
+      }
+    ],
+    "modp_iNTT2_ext": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "b254403605adb39e7ebf34348e8fcb155146965c6257a84aaa8da6231de6b029"
+      }
+    ],
+    "modp_iNTT3_ext": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "b9dcab408d3fd546a775e48110826c1e9f0d0f980d5d6d080fa598ff274a824d"
+      }
+    ],
+    "modp_mkgm2": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "a6813b2fef2e9137ac56aad895b78d7ca5d98b6575648df01abd728ddb4e3f56"
+      }
+    ],
+    "modp_mkgm3": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "1aa1d601efc43c7a2226934e70f4ca81ef08438b36c74eb59c15957c019e7537"
+      }
+    ],
+    "modp_montymul": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "9386cbc047df5d626c6d1adc994a190ea7ddf153d76a04d2e8e74dc0a095f0b4"
+      }
+    ],
+    "modp_ninv31": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "7b504bae896b921b1948d54120e9ad87c2e53b3e25591015d182c9f101476040"
+      }
+    ],
+    "modp_norm": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "b5264cec0f39f50e2d28fa1317bffa17a19d10064705a4b23ece8e367dfdb9d8"
+      }
+    ],
+    "modp_poly_rec_res": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "3406fb81c71a877e811e12756004460e5430e58388bdcdde44b025a515da70d1"
+      }
+    ],
+    "modp_set": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "99ea5d542821352a0fbecc434d666b40c5eaf51d07c2132c1bbf5b3ae7a58238"
+      }
+    ],
+    "modp_sub": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "1e8a13713901807d6da28c5049a4ad7c3e84ca3f41f15cc7d7865192df482373"
+      }
+    ],
+    "poly_big_to_fp": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "6e824b78edcea783a290ad24c893521fed6e8325713538269916d0409124a017"
+      }
+    ],
+    "poly_big_to_small": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "c0b8204157a52f6ab52034f1dc2a3f670f87f0237bcf77c673bc8dd8523d704c"
+      }
+    ],
+    "poly_max_bitlength": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "fef26391e608eed67e69abd83c9d20a4897707c0abb202f1db95e2c68ddeb42f"
+      }
+    ],
+    "poly_small_mkgauss": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "ded24f391e8506512922e657bcb9b6d6a88a67dbf576702a501f7a41dcecb2cb"
+      }
+    ],
+    "poly_small_sqnorm": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "e3e3dca100ece6ec4913cccc7a29c1af6e6adc48f5ba4413e851a95e8d5e2cf5"
+      }
+    ],
+    "poly_small_to_fp": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "0cc5ddc9a710c3b136c1ca748df6cb871f6ea14a2dc072eb09395a7d5883333f"
+      }
+    ],
+    "poly_sub_scaled": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "7bf505edfed2521f8866c9e44ec70c2256c80f6b384aace4a9b48b8106d577ec"
+      }
+    ],
+    "poly_sub_scaled_ntt": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "5dfd38426241153b4d92936e9dd32cd0ac03f266e970f8066030a54c4d885a21"
+      }
+    ],
+    "process_block": [
+      {
+        "unit": "source/shake.c",
+        "sha256": "b2fca920e828027c89eabc30755ef78b146a5c1bbd577e5b29a5a00afbf81b7e"
+      }
+    ],
+    "raw_prefix_slice": [
+      {
+        "unit": "checks/transport_unit.c",
+        "sha256": "be4b326b2fd2ca5b06734f2ad52edd845a685bdebe3be6b99a24f0bf2bfb6a10"
+      }
+    ],
+    "rng_ready": [
+      {
+        "unit": "checks/transport_unit.c",
+        "sha256": "af16aa1f27761e0085cb3932034ea9344cfb73147e452e793626b4a127a83484"
+      },
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "18068168ca53d5ee0e52d004b813792da0dee58c802fe70913cae5e894e7af46"
+      }
+    ],
+    "sample_true_ternary_secret": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "0efe284d1553b8404400defb3714d6a96473ff3827999a7107eb4584efb3d2c7"
+      }
+    ],
+    "shake_extract": [
+      {
+        "unit": "source/shake.c",
+        "sha256": "c75c1f8484e0262fd72d8a6f4ff0bde8406a1c910e820516e8ee8b466b042b2c"
+      }
+    ],
+    "shake_flip": [
+      {
+        "unit": "source/shake.c",
+        "sha256": "bfa92c7ee9cd746ab216226db2ccfd99ba940d5806e73d210d98c5d7bbfc33e0"
+      }
+    ],
+    "shake_init": [
+      {
+        "unit": "source/shake.c",
+        "sha256": "c410237ae6fe61cdc6b3875ec2fe23101a044c06c10a0fb88c42acfdba60fd1e"
+      }
+    ],
+    "shake_inject": [
+      {
+        "unit": "source/shake.c",
+        "sha256": "40dcaa4e6a930eabc71147da61d601b698463478be1bfb7d94703b696475a617"
+      }
+    ],
+    "skoff_b00": [
+      {
+        "unit": "checks/transport_unit.c",
+        "sha256": "3e175545b73197ab454a09bc7ad872bc4945b4e4e72f891e6314379f5ffd41ae"
+      }
+    ],
+    "skoff_b01": [
+      {
+        "unit": "checks/transport_unit.c",
+        "sha256": "4f8318bf6729d75f8f60b4c7324e6757e24d68271fa9cf5a3196b142ea9cd568"
+      }
+    ],
+    "skoff_b10": [
+      {
+        "unit": "checks/transport_unit.c",
+        "sha256": "99a23a834c6d612cc8c48c87209e3d997b45af068dfa627e17c05e05f63f285c"
+      }
+    ],
+    "skoff_b11": [
+      {
+        "unit": "checks/transport_unit.c",
+        "sha256": "e9a73f809fb0613503ea8c027f71600f6816b86d6ad47ff073e289f6a98c2c24"
+      }
+    ],
+    "skoff_tree": [
+      {
+        "unit": "checks/transport_unit.c",
+        "sha256": "5829394c67dfd4e0075629cd233b0771b91874c80b393c1f651a5b767b22341b"
+      }
+    ],
+    "smallints_to_fpr": [
+      {
+        "unit": "checks/transport_unit.c",
+        "sha256": "ffc3409fb81b5f77955cb0114843b3cc95aa6d6c68d7547116c44fba56798a2f"
+      }
+    ],
+    "smallints_to_fpr_keygen": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "5955e8906a0e5208fd2c9ca3f508cec034a21148bf343df769820556ed459bb2"
+      }
+    ],
+    "solve_NTRU": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "89a67e1ce694a07a90cb662e9ea9446df7abc093eb25ee19cc985464b26d831c"
+      }
+    ],
+    "solve_NTRU_binary_depth0": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "68a1ca7d5582014b9216ee66241ac1695ff4a53c96916e45d8e03915ffdb49ee"
+      }
+    ],
+    "solve_NTRU_binary_depth1": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "bbff66c19056a13f3fecdcea3ee803705c701b191242543ad16b5f471a8f028f"
+      }
+    ],
+    "solve_NTRU_deepest": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "fbdfb07cee63c684a474e87c2e1afa43183adf71da666e0baf5e840560eeaab1"
+      }
+    ],
+    "solve_NTRU_intermediate": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "eb36e2e434333aaf45a76b5b6151b0c87dd99e4198dbcc40dfde8a7e7010fd5b"
+      }
+    ],
+    "solve_NTRU_ternary_depth0": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "ddbd06d757754811bcc4f1731c5f7d405a2f63a63d84bee9eb4e2732bdb19d1e"
+      }
+    ],
+    "urandom_get_seed": [
+      {
+        "unit": "source/frng.c",
+        "sha256": "c82e590d5daefdbd6ef6ce5c9f7282a13c9d18f468dad92e9624959811a167d8"
+      }
+    ],
+    "xor_block": [
+      {
+        "unit": "source/shake.c",
+        "sha256": "dedd239f760484e57ff7a3f35d8bdcf1dfe46886f6aa45ea82831fae111c8c0d"
+      }
+    ],
+    "zint_add": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "a1e3e2a9ded7645e76d4b1bca46c2bfa3cb1760ccee12b4625ff9efaa2f0e07d"
+      }
+    ],
+    "zint_add_mul_small": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "e8d863cc2972d5d3a9bcd387d0d34db1a988964377e00357e9c66d55a3c7d9ec"
+      }
+    ],
+    "zint_add_scaled_mul_small": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "573357ca635e839ec2ed6a35f29912945c690a01e86d145f96228694329643ef"
+      }
+    ],
+    "zint_bezout": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "5d221807589f0745abf4f08e7881ddc46d1b1dda7df0cf431984e88738ce944d"
+      }
+    ],
+    "zint_co_reduce": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "250262a55ca09cfb00d4bdf403ea6c2144d63d1b39a7173bd8f90ab6e3433d5d"
+      }
+    ],
+    "zint_co_reduce_mod": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "ed8923e7e030ac722d83d51b3e343b4770a2acc6e8c2cfa87837514569bbddfe"
+      }
+    ],
+    "zint_exact_length": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "56e01efde923d6e23ede85503c144189bded6349e9ff5cda86c098c5241bcd49"
+      }
+    ],
+    "zint_get_top": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "dcbbcbbc73d79744a3bc0337da9ea7b4c528dae43be17c205f19b13383712bee"
+      }
+    ],
+    "zint_mod_small_signed": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "1a915910790c1116ff269594371da9e425e7f2509ee51bea5f893053ec63ee47"
+      }
+    ],
+    "zint_mod_small_unsigned": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "03e66ab0ac1bf854bd16a013fcde6f8082dd5ed57fff0751ed4d70f3de785907"
+      }
+    ],
+    "zint_mul_small": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "0ea4c3f4a5f45bceb4028d27a896606497950e2b83c1566ece5d27f26b45a123"
+      }
+    ],
+    "zint_norm_zero": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "dfb218409d056001e05b1e18bca6421a2f976dae6c15a3b4f0d66054f94d2108"
+      }
+    ],
+    "zint_one_to_plain": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "3039809bcde0686a40b9b7b66a9b5456a76f86654738399e2f88f0a597bd0c89"
+      }
+    ],
+    "zint_rebuild_CRT": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "19def83a1864d9e40c2e3de391eaa4aa2048e7185da30d9e217c6c4965fb5dbb"
+      }
+    ],
+    "zint_reduce": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "aa4dd288c45feb0760dd67f025c4cadfd39f8ac1637fd8137c573425e79bf8a1"
+      }
+    ],
+    "zint_reduce_mod": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "7638a63a67eb281543d3961355dcadc7aa407da02b2179bd797315110a8712ae"
+      }
+    ],
+    "zint_rshift1": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "b83580b4a7be50bab7ae258c163a2a40e63f8dd85ea0a3f5c66f8de73973607b"
+      }
+    ],
+    "zint_rshift1_mod": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "7743d966baf7226d8d89513993bfd45bb9900e5e214b0f9b6cce044dc00feb71"
+      }
+    ],
+    "zint_signed_bit_length": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "8d01e701142d55813fbe2be65ab78f65e4629b6f8653aa47ae3eac3113e6c232"
+      }
+    ],
+    "zint_sub": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "a5474d5f432ea9c2017a681e11d704ce81eb1e76e94c03184223a9bd513d2e89"
+      }
+    ],
+    "zint_sub_mod": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "3db98da6089ca0abb75f928b6387573ef0726c6b45848af3602cfb9b4887cd96"
+      }
+    ],
+    "zint_sub_scaled": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "2f1c948b83d0c918c5b1d647f97aacaa1eb26583bde93e8011553259fb044578"
+      }
+    ],
+    "zint_ucmp": [
+      {
+        "unit": "source/falcon-keygen.c",
+        "sha256": "df08a385b7c52bacb01804257a23dd86f10bb3184326901d2e37953926739189"
+      }
+    ]
+  },
+  "static_name_collisions_handled_by_union": true,
+  "proof_binding": "Same sixteen files and every header byte outside the sole unreachable floor body; same preprocessor profile and pure table/function semantics. No compiler or runtime equality theorem.",
+  "source_changed": false,
+  "production_source_changed": false,
+  "new_source_patch_integrated": false,
+  "owner_accepted": false
+}

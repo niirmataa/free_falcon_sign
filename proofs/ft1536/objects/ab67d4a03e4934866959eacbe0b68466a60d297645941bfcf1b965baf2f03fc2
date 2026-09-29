@@ -1,0 +1,18 @@
+argv: lake build B20.Foundation.Certificate
+cwd: /home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run
+start: 2026-09-22T21:30:50+02:00
+✖ [8924/8924] Building B20.Foundation.Certificate (22s)
+trace: .> LEAN_PATH=/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Cli/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/batteries/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Qq/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/aesop/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/proofwidgets/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/importGraph/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/plausible/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/bootstrap/mathlib4/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/build/lib/lean /home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean /home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/formal/B20/Foundation/Certificate.lean -o /home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/build/lib/lean/B20/Foundation/Certificate.olean -i /home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/build/lib/lean/B20/Foundation/Certificate.ilean -c /home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/build/ir/B20/Foundation/Certificate.c --setup /home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/build/ir/B20/Foundation/Certificate.setup.json --json
+error: formal/B20/Foundation/Certificate.lean:58:4: mod_cast has type
+  i.lowerNum * i.lowerNum < 2 * i.lowerDen * i.lowerDen
+but is expected to have type
+  i.lowerNum ^ 2 < i.lowerDen ^ 2 * 2
+error: formal/B20/Foundation/Certificate.lean:62:4: mod_cast has type
+  2 * i.upperDen * i.upperDen < i.upperNum * i.upperNum
+but is expected to have type
+  2 * i.upperDen ^ 2 < i.upperNum ^ 2
+Some required targets logged failures:
+- B20.Foundation.Certificate
+error: build failed
+stop: 2026-09-22T21:31:15+02:00
+exit: 1

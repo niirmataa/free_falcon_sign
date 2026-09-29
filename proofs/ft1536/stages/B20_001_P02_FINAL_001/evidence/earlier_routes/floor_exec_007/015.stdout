@@ -1,0 +1,172 @@
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/floor_exec_007/source/B20/Fpr/FloorExec.lean:135:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  shiftCalls "fpr_irsh".toList
+    [Val.i64 (((x <<< 10 ||| 4611686018427387904#64) &&& 9223372036854775807#64 ^^^ -x >>> 63) + x >>> 63),
+      Val.i32 (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32) &&& 63#32)]
+in the target expression
+  execute shiftCalls Parsed.floorProgram [Val.u64 x] = some (Val.i64 (floorSpec x))
+
+case pos
+x : BitVec 64
+hdomR : rintDomain x
+hne : x ≠ 9223372036854775808
+hen : ↑(rint_e x).toNat = (rint_e x).toInt ∧ 13 ≤ (rint_e x).toNat ∧ (rint_e x).toNat ≤ 1085
+he_f : (rint_e x).toInt = 1085 - (rint_y x).toInt ∧ -962 ≤ (rint_e x).toInt ∧ (rint_e x).toInt ≤ 1085
+hy_f : 0 ≤ (rint_y x).toInt ∧ (rint_y x).toInt ≤ 2047
+hS_cc :
+  C.signedBitsOp BinOp.sub (1085#32) (BitVec.setWidth 32 (x >>> 52) &&& 2047#32) =
+    bitsOp BinOp.sub (1085#32) (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)
+ht : (floor_t x).toNat ≤ 1
+ht01 : floor_t x = 0#64 ∨ floor_t x = 1#64
+htmin : floor_t x ≠ 9223372036854775808
+hneg_t : neg (Val.i64 (x >>> 63)) = some (Val.i64 (-x >>> 63))
+hm0le : (rint_m0 x).toNat ≤ 2 ^ 63 - 1
+hxor7 :
+  C.signedBitsOp BinOp.xor ((x <<< 10 ||| 4611686018427387904#64) &&& 9223372036854775807#64) (-x >>> 63) =
+    bitsOp BinOp.xor ((x <<< 10 ||| 4611686018427387904#64) &&& 9223372036854775807#64) (-x >>> 63)
+r7 : BitVec 64
+hadd7 :
+  C.signedBitsOp BinOp.add ((x <<< 10 ||| 4611686018427387904#64) &&& 9223372036854775807#64 ^^^ -x >>> 63) (x >>> 63) =
+    bitsOp BinOp.add ((x <<< 10 ||| 4611686018427387904#64) &&& 9223372036854775807#64 ^^^ -x >>> 63) (x >>> 63)
+hrfl7 : r7 = ((x <<< 10 ||| 4611686018427387904#64) &&& 9223372036854775807#64 ^^^ -x >>> 63) + x >>> 63
+hrint7 :
+  r7.toInt =
+    if (x >>> 63).toNat = 0 then ((x <<< 10 ||| 4611686018427387904#64) &&& 9223372036854775807#64).toInt
+    else -((x <<< 10 ||| 4611686018427387904#64) &&& 9223372036854775807#64).toInt
+he2lt : (rint_e2 x).toNat < 64
+hcall9 :
+  shiftCalls "fpr_irsh".toList
+      [Val.i64 (((x <<< 10 ||| 4611686018427387904#64) &&& 9223372036854775807#64 ^^^ -x >>> 63) + x >>> 63),
+        Val.i32 (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32) &&& 63#32)] =
+    some
+      (Val.i64
+        ((((x <<< 10 ||| 4611686018427387904#64) &&& 9223372036854775807#64 ^^^ -x >>> 63) + x >>> 63).sshiftRight
+          (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32) &&& 63#32).toNat))
+hccint : 13 ≤ (rint_e x).toInt ∧ (rint_e x).toInt ≤ 1085
+hsafe :
+  C.signedBitsOp BinOp.sub (63#32) (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)) =
+      bitsOp BinOp.sub (63#32) (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)) ∧
+    (63#32 - (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32))).toInt =
+      63 - (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toInt
+hcase : (rint_e x).toNat < 64
+hmaskF : floor_mask (rint_e x) = 0#64
+⊢ execute shiftCalls Parsed.floorProgram [Val.u64 x] = some (Val.i64 (floorSpec x))
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/floor_exec_007/source/B20/Fpr/FloorExec.lean:146:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  shiftCalls "fpr_irsh".toList
+    [Val.i64 (((x <<< 10 ||| 4611686018427387904#64) &&& 9223372036854775807#64 ^^^ -x >>> 63) + x >>> 63),
+      Val.i32 (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32) &&& 63#32)]
+in the target expression
+  execute shiftCalls Parsed.floorProgram [Val.u64 x] = some (Val.i64 (floorSpec x))
+
+case neg
+x : BitVec 64
+hdomR : rintDomain x
+hne : x ≠ 9223372036854775808
+hen : ↑(rint_e x).toNat = (rint_e x).toInt ∧ 13 ≤ (rint_e x).toNat ∧ (rint_e x).toNat ≤ 1085
+he_f : (rint_e x).toInt = 1085 - (rint_y x).toInt ∧ -962 ≤ (rint_e x).toInt ∧ (rint_e x).toInt ≤ 1085
+hy_f : 0 ≤ (rint_y x).toInt ∧ (rint_y x).toInt ≤ 2047
+hS_cc :
+  C.signedBitsOp BinOp.sub (1085#32) (BitVec.setWidth 32 (x >>> 52) &&& 2047#32) =
+    bitsOp BinOp.sub (1085#32) (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)
+ht : (floor_t x).toNat ≤ 1
+ht01 : floor_t x = 0#64 ∨ floor_t x = 1#64
+htmin : floor_t x ≠ 9223372036854775808
+hneg_t : neg (Val.i64 (x >>> 63)) = some (Val.i64 (-x >>> 63))
+hm0le : (rint_m0 x).toNat ≤ 2 ^ 63 - 1
+hxor7 :
+  C.signedBitsOp BinOp.xor ((x <<< 10 ||| 4611686018427387904#64) &&& 9223372036854775807#64) (-x >>> 63) =
+    bitsOp BinOp.xor ((x <<< 10 ||| 4611686018427387904#64) &&& 9223372036854775807#64) (-x >>> 63)
+r7 : BitVec 64
+hadd7 :
+  C.signedBitsOp BinOp.add ((x <<< 10 ||| 4611686018427387904#64) &&& 9223372036854775807#64 ^^^ -x >>> 63) (x >>> 63) =
+    bitsOp BinOp.add ((x <<< 10 ||| 4611686018427387904#64) &&& 9223372036854775807#64 ^^^ -x >>> 63) (x >>> 63)
+hrfl7 : r7 = ((x <<< 10 ||| 4611686018427387904#64) &&& 9223372036854775807#64 ^^^ -x >>> 63) + x >>> 63
+hrint7 :
+  r7.toInt =
+    if (x >>> 63).toNat = 0 then ((x <<< 10 ||| 4611686018427387904#64) &&& 9223372036854775807#64).toInt
+    else -((x <<< 10 ||| 4611686018427387904#64) &&& 9223372036854775807#64).toInt
+he2lt : (rint_e2 x).toNat < 64
+hcall9 :
+  shiftCalls "fpr_irsh".toList
+      [Val.i64 (((x <<< 10 ||| 4611686018427387904#64) &&& 9223372036854775807#64 ^^^ -x >>> 63) + x >>> 63),
+        Val.i32 (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32) &&& 63#32)] =
+    some
+      (Val.i64
+        ((((x <<< 10 ||| 4611686018427387904#64) &&& 9223372036854775807#64 ^^^ -x >>> 63) + x >>> 63).sshiftRight
+          (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32) &&& 63#32).toNat))
+hccint : 13 ≤ (rint_e x).toInt ∧ (rint_e x).toInt ≤ 1085
+hsafe :
+  C.signedBitsOp BinOp.sub (63#32) (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)) =
+      bitsOp BinOp.sub (63#32) (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)) ∧
+    (63#32 - (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32))).toInt =
+      63 - (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toInt
+hcase : ¬(rint_e x).toNat < 64
+hmaskF : floor_mask (rint_e x) = BitVec.allOnes 64
+⊢ execute shiftCalls Parsed.floorProgram [Val.u64 x] = some (Val.i64 (floorSpec x))
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/floor_exec_007/source/B20/Fpr/FloorExec.lean:133:60: warning: This simp argument is unused:
+  floor_xi1
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [rint_y, rint_e, rint_m0, floor_t, floor_xi0, rint_e2, floorSpec, ← floor_mask_fold,
+    hmaskF] at hS_cc hsafe hneg_t hcall9 hxor7 hadd7 hrfl7 hrint7
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/floor_exec_007/source/B20/Fpr/FloorExec.lean:134:15: warning: This simp argument is unused:
+  floorSpec
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [rint_y, rint_e, rint_m0, floor_t, floor_xi0, floor_xi1, rint_e2, ← floor_mask_fold,
+    hmaskF] at hS_cc hsafe hneg_t hcall9 hxor7 hadd7 hrfl7 hrint7
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/floor_exec_007/source/B20/Fpr/FloorExec.lean:134:26: warning: This simp argument is unused:
+  ← floor_mask_fold
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [rint_y, rint_e, rint_m0, floor_t, floor_xi0, floor_xi1, rint_e2, floorSpec,
+    hmaskF] at hS_cc hsafe hneg_t hcall9 hxor7 hadd7 hrfl7 hrint7
+
+Note: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/floor_exec_007/source/B20/Fpr/FloorExec.lean:134:44: warning: This simp argument is unused:
+  hmaskF
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [rint_y, rint_e, rint_m0, floor_t, floor_xi0, floor_xi1, rint_e2, floorSpec,
+    ← floor_mask_fold] at hS_cc hsafe hneg_t hcall9 hxor7 hadd7 hrfl7 hrint7
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/floor_exec_007/source/B20/Fpr/FloorExec.lean:144:60: warning: This simp argument is unused:
+  floor_xi1
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [rint_y, rint_e, rint_m0, floor_t, floor_xi0, rint_e2, floorSpec, ← floor_mask_fold,
+    hmaskF] at hS_cc hsafe hneg_t hcall9 hxor7 hadd7 hrfl7 hrint7
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/floor_exec_007/source/B20/Fpr/FloorExec.lean:145:15: warning: This simp argument is unused:
+  floorSpec
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [rint_y, rint_e, rint_m0, floor_t, floor_xi0, floor_xi1, rint_e2, ← floor_mask_fold,
+    hmaskF] at hS_cc hsafe hneg_t hcall9 hxor7 hadd7 hrfl7 hrint7
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/floor_exec_007/source/B20/Fpr/FloorExec.lean:145:26: warning: This simp argument is unused:
+  ← floor_mask_fold
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [rint_y, rint_e, rint_m0, floor_t, floor_xi0, floor_xi1, rint_e2, floorSpec,
+    hmaskF] at hS_cc hsafe hneg_t hcall9 hxor7 hadd7 hrfl7 hrint7
+
+Note: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/floor_exec_007/source/B20/Fpr/FloorExec.lean:145:44: warning: This simp argument is unused:
+  hmaskF
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [rint_y, rint_e, rint_m0, floor_t, floor_xi0, floor_xi1, rint_e2, floorSpec,
+    ← floor_mask_fold] at hS_cc hsafe hneg_t hcall9 hxor7 hadd7 hrfl7 hrint7
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

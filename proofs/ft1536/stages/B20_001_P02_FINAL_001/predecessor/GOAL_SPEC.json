@@ -1,0 +1,44 @@
+{
+ "schema": "B20_P02_GOAL_SPEC_V1",
+ "task_exports": [
+  {
+   "required": "B20.Word.load_store_le_refines",
+   "status": "PROVED",
+   "where": "B20/Word/LERefinement.lean",
+   "instance": "pinned shake.c:56-90, legal LP64 memory"
+  },
+  {
+   "required": "B20.Fpr.add_sub_mul_div_sqrt_refines",
+   "status": "PARTIAL_PROOF",
+   "proved": "sub conditional on AddCallObligation (sub_refines_via_add_obligation)",
+   "unresolved": [
+    "AddCallObligation (fpr_add)",
+    "MulObligation",
+    "DivObligation",
+    "SqrtObligation",
+    "real-number rounding/error contracts (missing types, not assumptions)"
+   ],
+   "where": "B20/Fpr/Domain.lean, B20/Fpr/Spec.lean"
+  },
+  {
+   "required": "B20.Fpr.floor_rint_refines",
+   "status": "PROVED (literal-BitVec scope) with declared exception",
+   "scope": "rintDomain: mantissa <= 1072; floorDomain additionally excludes raw -0",
+   "exception": "raw -0 -> impl returns -1 (observed, out of contract)",
+   "missing": "nearest-ties-even contract over reals (explicit missing type)",
+   "where": "B20/Fpr/RintExec.lean, B20/Fpr/FloorExec.lean"
+  },
+  {
+   "required": "B20.Fpr.reachable_domain_interfaces",
+   "status": "PROVED (interface + shift instances; add/mul/div/sqrt as named unresolved types)",
+   "where": "B20/Fpr/Domain.lean"
+  }
+ ],
+ "milestones": [
+  "MS1 SCALAR_EXEC_001",
+  "MS2 DOMAIN_IFACE_001",
+  "MS3 SCALAR_CONTROLS_001",
+  "MS4 FREEZE_001"
+ ],
+ "verdict": "PARTIAL_PROOF (whole TASK) / PROVED in declared narrowed scopes"
+}

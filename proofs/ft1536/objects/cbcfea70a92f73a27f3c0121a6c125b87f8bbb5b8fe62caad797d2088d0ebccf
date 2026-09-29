@@ -1,0 +1,240 @@
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/le_execution_004/source/B20/Word/LEExecution.lean:31:2: error: Tactic `rfl` failed: The left-hand side
+  do
+    let __do_lift ←
+      do
+        let __do_lift ←
+          do
+            let __do_lift ←
+              do
+                let __do_lift ←
+                  do
+                    let __do_lift ←
+                      do
+                        let __do_lift ←
+                          do
+                            let __do_lift ← evalExpr s (loadTerm 0)
+                            let __do_lift_1 ← evalExpr s (loadTerm 1)
+                            match __do_lift, __do_lift_1 with
+                              | Value.word x, Value.word y => pure (Value.word (x ||| y))
+                              | x, x_1 => none
+                        let __do_lift_1 ← evalExpr s (loadTerm 2)
+                        match __do_lift, __do_lift_1 with
+                          | Value.word x, Value.word y => pure (Value.word (x ||| y))
+                          | x, x_1 => none
+                    let __do_lift_1 ← evalExpr s (loadTerm 3)
+                    match __do_lift, __do_lift_1 with
+                      | Value.word x, Value.word y => pure (Value.word (x ||| y))
+                      | x, x_1 => none
+                let __do_lift_1 ← evalExpr s (loadTerm 4)
+                match __do_lift, __do_lift_1 with
+                  | Value.word x, Value.word y => pure (Value.word (x ||| y))
+                  | x, x_1 => none
+            let __do_lift_1 ← evalExpr s (loadTerm 5)
+            match __do_lift, __do_lift_1 with
+              | Value.word x, Value.word y => pure (Value.word (x ||| y))
+              | x, x_1 => none
+        let __do_lift_1 ← evalExpr s (loadTerm 6)
+        match __do_lift, __do_lift_1 with
+          | Value.word x, Value.word y => pure (Value.word (x ||| y))
+          | x, x_1 => none
+    let __do_lift_1 ← evalExpr s (loadTerm 7)
+    match __do_lift, __do_lift_1 with
+      | Value.word x, Value.word y => pure (Value.word (x ||| y))
+      | x, x_1 => none
+is not definitionally equal to the right-hand side
+  some (Value.word (orWord b))
+
+s : State
+b : Fin 8 → U8
+h : ∀ (i : Fin 8), evalExpr s (loadTerm ↑i) = some (Value.word (BitVec.setWidth 64 (b i) <<< (8 * ↑i)))
+⊢ (do
+      let __do_lift ←
+        do
+          let __do_lift ←
+            do
+              let __do_lift ←
+                do
+                  let __do_lift ←
+                    do
+                      let __do_lift ←
+                        do
+                          let __do_lift ←
+                            do
+                              let __do_lift ← evalExpr s (loadTerm 0)
+                              let __do_lift_1 ← evalExpr s (loadTerm 1)
+                              match __do_lift, __do_lift_1 with
+                                | Value.word x, Value.word y => pure (Value.word (x ||| y))
+                                | x, x_1 => none
+                          let __do_lift_1 ← evalExpr s (loadTerm 2)
+                          match __do_lift, __do_lift_1 with
+                            | Value.word x, Value.word y => pure (Value.word (x ||| y))
+                            | x, x_1 => none
+                      let __do_lift_1 ← evalExpr s (loadTerm 3)
+                      match __do_lift, __do_lift_1 with
+                        | Value.word x, Value.word y => pure (Value.word (x ||| y))
+                        | x, x_1 => none
+                  let __do_lift_1 ← evalExpr s (loadTerm 4)
+                  match __do_lift, __do_lift_1 with
+                    | Value.word x, Value.word y => pure (Value.word (x ||| y))
+                    | x, x_1 => none
+              let __do_lift_1 ← evalExpr s (loadTerm 5)
+              match __do_lift, __do_lift_1 with
+                | Value.word x, Value.word y => pure (Value.word (x ||| y))
+                | x, x_1 => none
+          let __do_lift_1 ← evalExpr s (loadTerm 6)
+          match __do_lift, __do_lift_1 with
+            | Value.word x, Value.word y => pure (Value.word (x ||| y))
+            | x, x_1 => none
+      let __do_lift_1 ← evalExpr s (loadTerm 7)
+      match __do_lift, __do_lift_1 with
+        | Value.word x, Value.word y => pure (Value.word (x ||| y))
+        | x, x_1 => none) =
+    some (Value.word (orWord b))
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/le_execution_004/source/B20/Word/LEExecution.lean:30:35: warning: This simp argument is unused:
+  h 0
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [decodeExpr, evalExpr, h 1, h 2, h 3, h 4, h 5, h 6, h 7]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/le_execution_004/source/B20/Word/LEExecution.lean:30:40: warning: This simp argument is unused:
+  h 1
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [decodeExpr, evalExpr, h 0, h 2, h 3, h 4, h 5, h 6, h 7]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/le_execution_004/source/B20/Word/LEExecution.lean:30:45: warning: This simp argument is unused:
+  h 2
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [decodeExpr, evalExpr, h 0, h 1, h 3, h 4, h 5, h 6, h 7]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/le_execution_004/source/B20/Word/LEExecution.lean:30:50: warning: This simp argument is unused:
+  h 3
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [decodeExpr, evalExpr, h 0, h 1, h 2, h 4, h 5, h 6, h 7]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/le_execution_004/source/B20/Word/LEExecution.lean:30:55: warning: This simp argument is unused:
+  h 4
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [decodeExpr, evalExpr, h 0, h 1, h 2, h 3, h 5, h 6, h 7]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/le_execution_004/source/B20/Word/LEExecution.lean:30:60: warning: This simp argument is unused:
+  h 5
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [decodeExpr, evalExpr, h 0, h 1, h 2, h 3, h 4, h 6, h 7]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/le_execution_004/source/B20/Word/LEExecution.lean:30:65: warning: This simp argument is unused:
+  h 6
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [decodeExpr, evalExpr, h 0, h 1, h 2, h 3, h 4, h 5, h 7]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/le_execution_004/source/B20/Word/LEExecution.lean:30:70: warning: This simp argument is unused:
+  h 7
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [decodeExpr, evalExpr, h 0, h 1, h 2, h 3, h 4, h 5, h 6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/le_execution_004/source/B20/Word/LEExecution.lean:64:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  BitVec.setWidth 8 (BitVec.setWidth 64 (byteOf w i))
+in the target expression
+  (do
+      let __x ← some (false, some p)
+      let p ← __x.2
+      if __x.1 = true then none
+        else do
+          let v ← some (Value.byte (byteOf w i))
+          let m ←
+            writeByte s.memory (p.add ↑i)
+                (BitVec.setWidth 8
+                  (match v with
+                  | Value.byte b => BitVec.setWidth 64 b
+                  | Value.word w => w))
+          pure { memory := m, pointers := s.pointers, words := s.words }) =
+    some { memory := putByte s.memory (p.add ↑i) (byteOf w i), pointers := s.pointers, words := s.words }
+
+s : State
+p : Pointer
+w : U64
+hp : s.pointers "buf".toList = some (false, some p)
+hx : s.words ['x'] = some w
+hr : WriteRegion s.memory p
+i : Fin 8
+⊢ (do
+      let __x ← some (false, some p)
+      let p ← __x.2
+      if __x.1 = true then none
+        else do
+          let v ← some (Value.byte (byteOf w i))
+          let m ←
+            writeByte s.memory (p.add ↑i)
+                (BitVec.setWidth 8
+                  (match v with
+                  | Value.byte b => BitVec.setWidth 64 b
+                  | Value.word w => w))
+          pure { memory := m, pointers := s.pointers, words := s.words }) =
+    some { memory := putByte s.memory (p.add ↑i) (byteOf w i), pointers := s.pointers, words := s.words }
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/le_execution_004/source/B20/Word/LEExecution.lean:62:64: warning: This simp argument is unused:
+  Option.bind_some
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [storeStatement, step, hp, storeTerm_eval s w hx i, Bool.false_eq_true, ↓reduceIte, Value.toWord]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/le_execution_004/source/B20/Word/LEExecution.lean:62:82: warning: This simp argument is unused:
+  Bool.false_eq_true
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [storeStatement, step, hp, storeTerm_eval s w hx i, Option.bind_some, ↓reduceIte, Value.toWord]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/le_execution_004/source/B20/Word/LEExecution.lean:63:4: warning: This simp argument is unused:
+  ↓reduceIte
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [storeStatement, step, hp, storeTerm_eval s w hx i, Option.bind_some, Bool.false_eq_true,
+    Value.toWord]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/le_execution_004/source/B20/Word/LEExecution.lean:76:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  step s (storeStatement i)
+in the target expression
+  evalBody false (storeStatement i :: List.map storeStatement is) s = some (none, storeBytes p w (i :: is) s.memory)
+
+case cons
+p : Pointer
+w : U64
+i : Fin 8
+is : List (Fin 8)
+ih :
+  ∀ (s : State),
+    s.pointers "buf".toList = some (false, some p) →
+      s.words ['x'] = some w →
+        WriteRegion s.memory p → evalBody false (List.map storeStatement is) s = some (none, storeBytes p w is s.memory)
+s : State
+hp : s.pointers "buf".toList = some (false, some p)
+hx : s.words ['x'] = some w
+hr : WriteRegion s.memory p
+⊢ evalBody false (storeStatement i :: List.map storeStatement is) s = some (none, storeBytes p w (i :: is) s.memory)
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/le_execution_004/source/B20/Word/LEExecution.lean:75:30: warning: This simp argument is unused:
+  evalBody
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [List.map_cons]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'B20.Word.LE.dec_execution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'B20.Word.LE.enc_execution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'B20.Word.LE.stored_bytes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.LE.join_byteOf' depends on axioms: [propext, Classical.choice, Quot.sound]

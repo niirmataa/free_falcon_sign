@@ -1,0 +1,99 @@
+falcon_keygen *
+falcon_keygen_new(unsigned logn, int ternary)
+{
+	falcon_keygen *fk;
+
+	if (ternary != 0 && ternary != 1) {
+		return NULL;
+	}
+	if (ternary) {
+		if (logn != 10) {
+			return NULL;
+		}
+	} else {
+		if (logn < 1 || logn > 10) {
+			return NULL;
+		}
+	}
+	fk = malloc(sizeof *fk);
+	if (fk == NULL) {
+		return NULL;
+	}
+	fk->logn = logn;
+	fk->ternary = ternary;
+	shake_init(&fk->rng, 512);
+	fk->seeded = 0;
+	fk->flipped = 0;
+
+	fk->tmp_len = temp_size(logn, ternary);
+#if MEMCHECK
+	fk->tmp = malloc(fk->tmp_len + sizeof MEMCHECK_MARK);
+#else
+	fk->tmp = malloc(fk->tmp_len);
+#endif
+	if (fk->tmp == NULL) {
+		free(fk);
+		return NULL;
+	}
+#if MEMCHECK
+	memcpy((unsigned char *)fk->tmp + fk->tmp_len,
+		MEMCHECK_MARK, sizeof MEMCHECK_MARK);
+#endif
+
+	return fk;
+}
+
+/* see falcon.h */
+void
+falcon_keygen_free(falcon_keygen *fk)
+{
+	if (fk != NULL) {
+#if CLEANSE
+		cleanse(fk->tmp, fk->tmp_len);
+#endif
+#if MEMCHECK
+		if (memcmp((unsigned char *)fk->tmp + fk->tmp_len,
+			MEMCHECK_MARK, sizeof MEMCHECK_MARK) != 0)
+		{
+			fprintf(stderr,
+				"buffer overflow! temp_size() is wrong\n");
+			abort();
+		}
+#endif
+		free(fk->tmp);
+		free(fk);
+	}
+}
+
+/* see falcon.h */
+size_t
+falcon_keygen_max_privkey_size(falcon_keygen *fk)
+{
+	/*
+	 * Uncompressed private key is a one-byte header, followed by
+	 * f, g, F and G, each represented as an array of 16-bit values.
+	 */
+	unsigned logn;
+	size_t n;
+
+	logn = fk->logn;
+	n = fk->ternary ? ((size_t)3 << (logn - 1)) : ((size_t)1 << logn);
+	return 1 + (n << 3);
+}
+
+/* see falcon.h */
+size_t
+falcon_keygen_max_pubkey_size(falcon_keygen *fk)
+{
+	/*
+	 * Public key is a one-byte header, followed by the public
+	 * vector h. Each element of h uses 14 bits in the binary case,
+	 * 15 bits in the ternary case.
+	 */
+	unsigned logn;
+	unsigned z;
+
+	logn = fk->logn;
+	z = fk->ternary ? (45U << (logn - 1)) : (14U << logn);
+	return 1 + ((z + 7) >> 3);
+}

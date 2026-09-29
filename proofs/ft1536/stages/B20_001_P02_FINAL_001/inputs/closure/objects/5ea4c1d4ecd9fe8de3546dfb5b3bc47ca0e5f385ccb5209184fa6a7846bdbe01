@@ -1,0 +1,50 @@
+PASS_SOURCE_BINDING 9
+{
+  "status": "PASS_EXACT_ORIGINAL_SLICES",
+  "slices": [
+    {
+      "source": "source/falcon-sign.c",
+      "source_sha256": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8",
+      "first": 1902,
+      "last": 1934,
+      "copy": "checks/suffix_original.inc",
+      "copy_sha256": "8ea9ddf4388c1f69d85867c80f4f4ca4b153edf075999c1f9bf7069fd10c84c8",
+      "exact_bytes": true
+    },
+    {
+      "source": "source/falcon-fft.c",
+      "source_sha256": "06b573b636ae368dcda3eb4d89c3936ab31272123440d0d5362317e55d9ac063",
+      "first": 853,
+      "last": 965,
+      "copy": "checks/ifft_original.inc",
+      "copy_sha256": "e258d2d17acb045d89b338feb5830256834e1d46125b8ed54f19a49422d31303",
+      "exact_bytes": true
+    },
+    {
+      "source": "source/falcon-sign.c",
+      "source_sha256": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8",
+      "first": 3411,
+      "last": 3421,
+      "copy": "checks/caller_original.inc",
+      "copy_sha256": "26b2024cc90f15a7b1671b6956f70e0ad08a41cde3a0b2375fe871b85c707475",
+      "exact_bytes": true
+    },
+    {
+      "source": "source/falcon-enc.c",
+      "source_sha256": "0f7085fa975d41ebbeb96d5db4cb68482c344ef2d602ca8853e20a4d4f04fb05",
+      "first": 609,
+      "last": 623,
+      "copy": "checks/norm_original.inc",
+      "copy_sha256": "14ba78ff7d29014dc53231a2f0eae1138b8fd68e22ad0e04c03c2da9a5451090",
+      "exact_bytes": true
+    }
+  ],
+  "observers": {
+    "ifft": "3f3c84050d897847a73e02310436e5025e9564687c7ea2e456bab87dc7ec4ea6",
+    "suffix": "8d1f859eac148ad1e8c103e48b867d03f32842b4698a36ef47f54f1512cabb0e"
+  },
+  "production_source_changed": false,
+  "full_do_sign_called": false,
+  "probe_active": false
+}
+PASS_JOINT_SOURCE_BINDING

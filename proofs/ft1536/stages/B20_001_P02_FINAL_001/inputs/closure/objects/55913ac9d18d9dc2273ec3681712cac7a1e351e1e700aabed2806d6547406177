@@ -1,0 +1,1120 @@
+{
+  "schema": "FT1536_M0_HOP_LEDGER_V1",
+  "contract_id": "FT1536-M0-r40-static4096-parametric-v1",
+  "rows": [
+    {
+      "id": "FRAMING",
+      "laws": {
+        "from_law": "M0 typed r40 protocol",
+        "to_law": "r[40]||m / r[40]||b encoding"
+      },
+      "direction": "equality within chosen protocol; NOT insecure variable-rlen CLI -> secure M0",
+      "metric": "injectivity, deterministic reject",
+      "status": "DEFINED_WITH_PROVED_AUXILIARY",
+      "key_law": "one common K_seed[E] draw, never per-Sign reconditioning",
+      "history_quantifier": "Every emitted (sk,pk), every reachable matching oracle history and required retry/scalar prefix; latent key may be retained in proof history.",
+      "conditioning": "E_K once at setup; no conditioning on Sign success, good key, distinct nonce or no-abort unless explicitly paid.",
+      "per_call": "zero",
+      "transcript": "zero",
+      "abort_cost_owners": [
+        "NONCE_LENGTH_REJECT"
+      ],
+      "observations": "PRE_ABORT / (r,POST_ABORT) / (r,b); no cause, partial buffer or timing",
+      "computational_cost": "O(|r|+|b|) parsing, no nonce39 library call",
+      "premises": [
+        {
+          "id": "OWNER_R40",
+          "status": "DECIDED",
+          "requirement": "exact40 required"
+        },
+        {
+          "id": "WRAPPER_IMPLEMENTATION",
+          "status": "OPEN_INTEGRATION",
+          "requirement": "deploy/check nonce gate before library"
+        }
+      ],
+      "inputs": [
+        {
+          "path": "formal/Framing.lean",
+          "sha256": "4f8d31b6e69dc67cd62cc689a0e7c111f7fb148d5675ef7d367e7625e4755420"
+        },
+        {
+          "path": "source/tool.c",
+          "sha256": "920ac2d8a96408c505670eb2f044cde763ca11945d90ec24d8c6f2a048377890"
+        },
+        {
+          "path": "source/falcon.h",
+          "sha256": "657ad2b2d45b8932c3b9a703ac718c1f23dad78523036c1a934b8e21cf0f4519"
+        }
+      ],
+      "notes": "C prototype rejects repartition; not a proof of whole CLI security."
+    },
+    {
+      "id": "KEY_LAW",
+      "laws": {
+        "from_law": "one capped source KG_seed execution",
+        "to_law": "K_seed[E]=Law(output | E_K)"
+      },
+      "direction": "Adv_uncond=p_K*Adv_cond",
+      "metric": "exact conditioning identity",
+      "status": "DEFINED_ANALYTIC_IDENTITY",
+      "key_law": "one common K_seed[E] draw, never per-Sign reconditioning",
+      "history_quantifier": "Every emitted (sk,pk), every reachable matching oracle history and required retry/scalar prefix; latent key may be retained in proof history.",
+      "conditioning": "E_K once at setup; no conditioning on Sign success, good key, distinct nonce or no-abort unless explicitly paid.",
+      "per_call": "one KeyGen",
+      "transcript": "one factor p_K",
+      "abort_cost_owners": [
+        "KEYGEN_FAILURE"
+      ],
+      "observations": "PRE_ABORT / (r,POST_ABORT) / (r,b); no cause, partial buffer or timing",
+      "computational_cost": "C_K/E_K sampling costs explicit; never Q_s key samplings",
+      "premises": [
+        {
+          "id": "P_K_POSITIVE",
+          "status": "PREMISE",
+          "requirement": "conditional law requires p_K>0"
+        },
+        {
+          "id": "KEYGEN_ENV",
+          "status": "DEFINED",
+          "requirement": "public E and uniform32 bytes on entropy success"
+        }
+      ],
+      "inputs": [
+        {
+          "path": "source/falcon-keygen.c",
+          "sha256": "0a09b6ed2363308f54584dfd1e2d33ee1b4601a68c77712c50da920b5074a5cf"
+        },
+        {
+          "path": "source/frng.c",
+          "sha256": "4b1289adf0c902abe9408d989b4eb8d292cbb6ea86b92e1325a10fd9c5dfc644"
+        },
+        {
+          "path": "source/falcon.h",
+          "sha256": "657ad2b2d45b8932c3b9a703ac718c1f23dad78523036c1a934b8e21cf0f4519"
+        },
+        {
+          "path": "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md",
+          "sha256": "5b1b0e3e15f14aca63fce9007cebb36c493aa2669ca6e8ad35dccd32023ac11e"
+        }
+      ],
+      "notes": "No K_seed=K_iid; no KeyGen run or p_K estimate in M0."
+    },
+    {
+      "id": "ENVIRONMENT",
+      "laws": {
+        "from_law": "API services under fixed E",
+        "to_law": "same E in compared games"
+      },
+      "direction": "identity only if service/observation schedules are actually shared",
+      "metric": "environment coupling/refinement",
+      "status": "DEFINED_OPEN_PLATFORM_BINDING",
+      "key_law": "one common K_seed[E] draw, never per-Sign reconditioning",
+      "history_quantifier": "Every emitted (sk,pk), every reachable matching oracle history and required retry/scalar prefix; latent key may be retained in proof history.",
+      "conditioning": "E_K once at setup; no conditioning on Sign success, good key, distinct nonce or no-abort unless explicitly paid.",
+      "per_call": "service return as E specifies",
+      "transcript": "no hidden deletion or extra epsilon for shared service failures",
+      "abort_cost_owners": [],
+      "observations": "PRE_ABORT / (r,POST_ABORT) / (r,b); no cause, partial buffer or timing",
+      "computational_cost": "site/query-indexed services, legal stack and buffers",
+      "premises": [
+        {
+          "id": "E_SHARED",
+          "status": "PREMISE",
+          "requirement": "same exogenous public schedule and uniform entropy law"
+        },
+        {
+          "id": "OS_BINDING",
+          "status": "OPEN",
+          "requirement": "real OS faults/entropy may need separate comparison"
+        }
+      ],
+      "inputs": [
+        {
+          "path": "source/frng.c",
+          "sha256": "4b1289adf0c902abe9408d989b4eb8d292cbb6ea86b92e1325a10fd9c5dfc644"
+        },
+        {
+          "path": "source/falcon-sign.c",
+          "sha256": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8"
+        },
+        {
+          "path": "source/falcon-keygen.c",
+          "sha256": "0a09b6ed2363308f54584dfd1e2d33ee1b4601a68c77712c50da920b5074a5cf"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "RNG_ROOT",
+      "laws": {
+        "from_law": "G0: source private Sign root expander",
+        "to_law": "Groot: root936 replaced by fresh uniform stream"
+      },
+      "direction": "absolute difference of event probabilities",
+      "metric": "computational PRG advantage",
+      "status": "CRYPTO_ASSUMPTION_AND_OPEN_REDUCTION",
+      "key_law": "one common K_seed[E] draw, never per-Sign reconditioning",
+      "history_quantifier": "Every emitted (sk,pk), every reachable matching oracle history and required retry/scalar prefix; latent key may be retained in proof history.",
+      "conditioning": "E_K once at setup; no conditioning on Sign success, good key, distinct nonce or no-abort unless explicitly paid.",
+      "per_call": "epsilon_root(32,936;resources)",
+      "transcript": "<=Q_s*epsilon_root with certified hybrid/resources",
+      "abort_cost_owners": [],
+      "observations": "PRE_ABORT / (r,POST_ABORT) / (r,b); no cause, partial buffer or timing",
+      "computational_cost": "Q_s distinguishers; auxiliary K_seed secret/public pair distribution and its cost accounted",
+      "premises": [
+        {
+          "id": "ROOT_PRG",
+          "status": "CRYPTO_ASSUMPTION",
+          "requirement": "exact private-seeded SHAKE-256 expander"
+        },
+        {
+          "id": "ROOT_HYBRID",
+          "status": "OPEN",
+          "requirement": "fresh contexts, aborts and shared-key auxiliary input"
+        }
+      ],
+      "inputs": [
+        {
+          "path": "source/falcon-sign.c",
+          "sha256": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8"
+        },
+        {
+          "path": "source/shake.c",
+          "sha256": "c3e7864bf4139264f8c287053214bf869e242757bf555235da81454e40ea316a"
+        },
+        {
+          "path": "formal/Framing.lean",
+          "sha256": "4f8d31b6e69dc67cd62cc689a0e7c111f7fb148d5675ef7d367e7625e4755420"
+        }
+      ],
+      "notes": "Nonce uniform320 only after this hop; source seed has256 bits. Public H is a different oracle layer."
+    },
+    {
+      "id": "RNG_PRNG56",
+      "laws": {
+        "from_law": "Groot with source Falcon PRNG consumers",
+        "to_law": "G1: budgeted independent scalar random words"
+      },
+      "direction": "absolute difference of event probabilities",
+      "metric": "computational exact-PRNG56 advantage",
+      "status": "CRYPTO_ASSUMPTION_AND_OPEN_REDUCTION",
+      "key_law": "one common K_seed[E] draw, never per-Sign reconditioning",
+      "history_quantifier": "Every emitted (sk,pk), every reachable matching oracle history and required retry/scalar prefix; latent key may be retained in proof history.",
+      "conditioning": "E_K once at setup; no conditioning on Sign success, good key, distinct nonce or no-abort unless explicitly paid.",
+      "per_call": "epsilon_PRNG56(ell_j;t_j,w_j,L_j)",
+      "transcript": "sum over at most16*Q_s initializations",
+      "abort_cost_owners": [],
+      "observations": "PRE_ABORT / (r,POST_ABORT) / (r,b); no cause, partial buffer or timing",
+      "computational_cost": "ell_j counts produced blocks including discarded buffer suffixes; source is uncapped",
+      "premises": [
+        {
+          "id": "PRNG56",
+          "status": "CRYPTO_ASSUMPTION",
+          "requirement": "uniform56-byte initialization of exact source algorithm, key32+IV16+counter8"
+        },
+        {
+          "id": "JOINT_RANDOMNESS_HYBRID",
+          "status": "OPEN",
+          "requirement": "not a448-bit-key standard ChaCha substitution"
+        }
+      ],
+      "inputs": [
+        {
+          "path": "source/frng.c",
+          "sha256": "4b1289adf0c902abe9408d989b4eb8d292cbb6ea86b92e1325a10fd9c5dfc644"
+        },
+        {
+          "path": "source/internal.h",
+          "sha256": "512629d3b79fa5bd74131ed2ecde06e1d157f5ac58db3f758db96b19131f1ba5"
+        },
+        {
+          "path": "source/falcon-sign.c",
+          "sha256": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "ANALYTIC_BUDGET",
+      "laws": {
+        "from_law": "unbounded source / iid-coins execution",
+        "to_law": "same algorithms with declared analysis work/read caps"
+      },
+      "direction": "event change only on first budget exceedance",
+      "metric": "coupling/TV bad-event",
+      "status": "OPEN",
+      "key_law": "one common K_seed[E] draw, never per-Sign reconditioning",
+      "history_quantifier": "Every emitted (sk,pk), every reachable matching oracle history and required retry/scalar prefix; latent key may be retained in proof history.",
+      "conditioning": "E_K once at setup; no conditioning on Sign success, good key, distinct nonce or no-abort unless explicitly paid.",
+      "per_call": "declared per-instance tail bounds",
+      "transcript": "delta_budget (union/first-event partition certified)",
+      "abort_cost_owners": [
+        "SOURCE_BUDGET_EXCEED"
+      ],
+      "observations": "PRE_ABORT / (r,POST_ABORT) / (r,b); no cause, partial buffer or timing",
+      "computational_cost": "finite ell_j and simulator resource definitions required",
+      "premises": [
+        {
+          "id": "TAIL_BUDGET",
+          "status": "OPEN",
+          "requirement": "prove read/time tail bounds or a.s. termination as needed"
+        }
+      ],
+      "inputs": [
+        {
+          "path": "source/falcon-sign.c",
+          "sha256": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8"
+        },
+        {
+          "path": "source/falcon-keygen.c",
+          "sha256": "0a09b6ed2363308f54584dfd1e2d33ee1b4601a68c77712c50da920b5074a5cf"
+        },
+        {
+          "path": "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md",
+          "sha256": "5b1b0e3e15f14aca63fce9007cebb36c493aa2669ca6e8ad35dccd32023ac11e"
+        }
+      ],
+      "notes": "No cap inserted into source. No time disclosure in the main game."
+    },
+    {
+      "id": "H3_RANGE",
+      "laws": {
+        "from_law": "reachable active source scalar state",
+        "to_law": "state satisfying H3 arithmetic domain"
+      },
+      "direction": "source-state invariant / exact refinement",
+      "metric": "no numeric distance until proved",
+      "status": "OPEN_M1",
+      "key_law": "one common K_seed[E] draw, never per-Sign reconditioning",
+      "history_quantifier": "Every emitted (sk,pk), every reachable matching oracle history and required retry/scalar prefix; latent key may be retained in proof history.",
+      "conditioning": "E_K once at setup; no conditioning on Sign success, good key, distinct nonce or no-abort unless explicitly paid.",
+      "per_call": "prove floor(mu) range and s+z",
+      "transcript": "no zero bad-event assigned yet",
+      "abort_cost_owners": [
+        "ARITHMETIC_STUCK"
+      ],
+      "observations": "PRE_ABORT / (r,POST_ABORT) / (r,b); no cause, partial buffer or timing",
+      "computational_cost": "all reachable calls/retries, not a finite campaign",
+      "premises": [
+        {
+          "id": "H3_REACHABILITY",
+          "status": "OPEN",
+          "requirement": "H3_INTERFACE.md exact type"
+        },
+        {
+          "id": "EMITTED_KEY_SUPPORT",
+          "status": "REUSED_CONDITIONAL",
+          "requirement": "correct source support, not arbitrary loader keys"
+        }
+      ],
+      "inputs": [
+        {
+          "path": "H3_INTERFACE.md",
+          "sha256": "2e427f66d242cd4a95f777b9be8948ced315d3c683727d21e965c5fb3934e97c"
+        },
+        {
+          "path": "source/falcon-sign.c",
+          "sha256": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8"
+        },
+        {
+          "path": "source/fpr-emulated.h",
+          "sha256": "242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa"
+        },
+        {
+          "path": "inputs/context/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md",
+          "sha256": "b299acc13ec1bd1b2d5d9906fb403bbd9c35e8db1483eb9671247540731266a1"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "PRECAST_BYTES",
+      "laws": {
+        "from_law": "G1 source with iid coins",
+        "to_law": "P: observed finite-production reference"
+      },
+      "direction": "|Pr_G1(E)-Pr_P(E)|<=g(Q_s,epsilon_byte)",
+      "metric": "history-uniform TV / coupling",
+      "status": "OPEN_M2_M3",
+      "key_law": "one common K_seed[E] draw, never per-Sign reconditioning",
+      "history_quantifier": "Every emitted (sk,pk), every reachable matching oracle history and required retry/scalar prefix; latent key may be retained in proof history.",
+      "conditioning": "E_K once at setup; no conditioning on Sign success, good key, distinct nonce or no-abort unless explicitly paid.",
+      "per_call": "epsilon_byte",
+      "transcript": "g(Q_s,epsilon_byte)=1-(1-epsilon_byte)^Q_s",
+      "abort_cost_owners": [
+        "SOURCE_FAULT_OR_PRECAST_MISMATCH"
+      ],
+      "observations": "PRE_ABORT / (r,POST_ABORT) / (r,b); no cause, partial buffer or timing",
+      "computational_cost": "full FFT/LDL/residual/iFFT/casts + source stopping/serialization cost",
+      "premises": [
+        {
+          "id": "JOINT_PRECAST",
+          "status": "OPEN",
+          "requirement": "actual joint W1,W2 law, not marginal summaries"
+        },
+        {
+          "id": "BYTE_MAP",
+          "status": "OPEN",
+          "requirement": "same observed outputs; never relabel emitted invalid b as source bot"
+        },
+        {
+          "id": "FAULT_HANDLING",
+          "status": "OPEN",
+          "requirement": "all causes represented once in complete response kernel"
+        }
+      ],
+      "inputs": [
+        {
+          "path": "source/falcon-sign.c",
+          "sha256": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8"
+        },
+        {
+          "path": "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md",
+          "sha256": "5b1b0e3e15f14aca63fce9007cebb36c493aa2669ca6e8ad35dccd32023ac11e"
+        },
+        {
+          "path": "inputs/context/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md",
+          "sha256": "b299acc13ec1bd1b2d5d9906fb403bbd9c35e8db1483eb9671247540731266a1"
+        }
+      ],
+      "notes": "H6P no-go for deriving eta_pre from scalar summaries retained; any alternative joint coupling replaces overlapping rows."
+    },
+    {
+      "id": "H3_LIKELIHOOD",
+      "laws": {
+        "from_law": "P finite proposal + production acceptance",
+        "to_law": "M finite proposal + exact acceptance"
+      },
+      "direction": "Pr_P(E)<=exp(Q_s*gamma3)*Pr_M(E)",
+      "metric": "directional D_infinity / likelihood domination",
+      "status": "CONDITIONAL_HISTORICAL_INTERFACE",
+      "key_law": "one common K_seed[E] draw, never per-Sign reconditioning",
+      "history_quantifier": "Every emitted (sk,pk), every reachable matching oracle history and required retry/scalar prefix; latent key may be retained in proof history.",
+      "conditioning": "E_K once at setup; no conditioning on Sign success, good key, distinct nonce or no-abort unless explicitly paid.",
+      "per_call": "gamma3 nats per Sign query, already16*3072 scalar envelope",
+      "transcript": "exp(Q_s*gamma3)",
+      "abort_cost_owners": [],
+      "observations": "PRE_ABORT / (r,POST_ABORT) / (r,b); no cause, partial buffer or timing",
+      "computational_cost": "bounded scalar transcript under separately certified RNG budget",
+      "premises": [
+        {
+          "id": "H3_RANGE",
+          "status": "OPEN",
+          "requirement": "M1 premise"
+        },
+        {
+          "id": "H4_DSS",
+          "status": "CONDITIONAL",
+          "requirement": "exact computed dyadic dss, positive production atoms"
+        },
+        {
+          "id": "SOURCE_INSTANTIATION",
+          "status": "OPEN",
+          "requirement": "same retry/fault/byte histories"
+        }
+      ],
+      "inputs": [
+        {
+          "path": "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md",
+          "sha256": "5b1b0e3e15f14aca63fce9007cebb36c493aa2669ca6e8ad35dccd32023ac11e"
+        },
+        {
+          "path": "inputs/context/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md",
+          "sha256": "b299acc13ec1bd1b2d5d9906fb403bbd9c35e8db1483eb9671247540731266a1"
+        },
+        {
+          "path": "source/falcon-sign.c",
+          "sha256": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8"
+        }
+      ],
+      "notes": "Historical gamma3<4.704837e-9 is not installed as an unconditional M0 number."
+    },
+    {
+      "id": "H1R",
+      "laws": {
+        "from_law": "M finite-exact transcript with bot",
+        "to_law": "Q infinite-exact transcript with bot"
+      },
+      "direction": "absolute event-probability difference",
+      "metric": "direct TV, not reverse Renyi",
+      "status": "CONDITIONAL_HISTORICAL_INTERFACE",
+      "key_law": "one common K_seed[E] draw, never per-Sign reconditioning",
+      "history_quantifier": "Every emitted (sk,pk), every reachable matching oracle history and required retry/scalar prefix; latent key may be retained in proof history.",
+      "conditioning": "E_K once at setup; no conditioning on Sign success, good key, distinct nonce or no-abort unless explicitly paid.",
+      "per_call": "epsilon1 for entire at-most16 Sign query",
+      "transcript": "g(Q_s,epsilon1)",
+      "abort_cost_owners": [],
+      "observations": "PRE_ABORT / (r,POST_ABORT) / (r,b); no cause, partial buffer or timing",
+      "computational_cost": "shared stopping and matched dataflow",
+      "premises": [
+        {
+          "id": "ACCEPTANCE_FLOOR",
+          "status": "CONDITIONAL",
+          "requirement": "9/20 where required"
+        },
+        {
+          "id": "RARE_MISSING_ATOMS",
+          "status": "CONDITIONAL",
+          "requirement": "retain finite/infinite support distinctions"
+        },
+        {
+          "id": "FULL_SOURCE_LIFT",
+          "status": "OPEN",
+          "requirement": "do not multiply16 twice"
+        }
+      ],
+      "inputs": [
+        {
+          "path": "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md",
+          "sha256": "5b1b0e3e15f14aca63fce9007cebb36c493aa2669ca6e8ad35dccd32023ac11e"
+        },
+        {
+          "path": "inputs/context/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md",
+          "sha256": "b299acc13ec1bd1b2d5d9906fb403bbd9c35e8db1483eb9671247540731266a1"
+        }
+      ],
+      "notes": "Historical epsilon1<2^-104.3821 is conditional. Image chi-square lemma does not transfer to this pair of laws."
+    },
+    {
+      "id": "FULL_GEOMETRY",
+      "laws": {
+        "from_law": "Q infinite-exact with computed parameters",
+        "to_law": "G16 ideal coset Gaussian at sigma768"
+      },
+      "direction": "absolute event-probability difference",
+      "metric": "TV / joint coupling",
+      "status": "OPEN_M2_M3",
+      "key_law": "one common K_seed[E] draw, never per-Sign reconditioning",
+      "history_quantifier": "Every emitted (sk,pk), every reachable matching oracle history and required retry/scalar prefix; latent key may be retained in proof history.",
+      "conditioning": "E_K once at setup; no conditioning on Sign success, good key, distinct nonce or no-abort unless explicitly paid.",
+      "per_call": "xi_geom",
+      "transcript": "g(Q_s,xi_geom)",
+      "abort_cost_owners": [],
+      "observations": "PRE_ABORT / (r,POST_ABORT) / (r,b); no cause, partial buffer or timing",
+      "computational_cost": "full vector law and all FPEMU errors, not just scalar outputs",
+      "premises": [
+        {
+          "id": "GEOMETRY",
+          "status": "OPEN",
+          "requirement": "computed dss not automatically ideal geometry"
+        },
+        {
+          "id": "SECRET_ERASURE",
+          "status": "OPEN",
+          "requirement": "ideal response kernel depends only on h,c with stated byte map"
+        }
+      ],
+      "inputs": [
+        {
+          "path": "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md",
+          "sha256": "5b1b0e3e15f14aca63fce9007cebb36c493aa2669ca6e8ad35dccd32023ac11e"
+        },
+        {
+          "path": "inputs/context/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md",
+          "sha256": "b299acc13ec1bd1b2d5d9906fb403bbd9c35e8db1483eb9671247540731266a1"
+        },
+        {
+          "path": "source/falcon-sign.c",
+          "sha256": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "CAPACITY",
+      "laws": {
+        "from_law": "defined source norm-accepted signed16 pair",
+        "to_law": "STATIC encoding with caller4096"
+      },
+      "direction": "exact length/refinement; no capacity failure",
+      "metric": "deterministic equality on stated domain",
+      "status": "PROVED_M0_PINNED_COUNT_MODEL",
+      "key_law": "one common K_seed[E] draw, never per-Sign reconditioning",
+      "history_quantifier": "Every emitted (sk,pk), every reachable matching oracle history and required retry/scalar prefix; latent key may be retained in proof history.",
+      "conditioning": "E_K once at setup; no conditioning on Sign success, good key, distinct nonce or no-abort unless explicitly paid.",
+      "per_call": "payload<=3160; data<=3159",
+      "transcript": "encoding-space bad mass0 AFTER norm acceptance",
+      "abort_cost_owners": [
+        "ENCODING_SPACE"
+      ],
+      "observations": "PRE_ABORT / (r,POST_ABORT) / (r,b); no cause, partial buffer or timing",
+      "computational_cost": "<=25267 encoder bits, variable output; no nonce included",
+      "premises": [
+        {
+          "id": "SIGNED16_NORM",
+          "status": "PROVED_REUSED",
+          "requirement": "source is_short iff Q<B"
+        },
+        {
+          "id": "COUNTER_BINDING",
+          "status": "PROVED_M0_WITH_C_TRANSLATION",
+          "requirement": "EncoderCount mirrors byte writes and cap-1"
+        },
+        {
+          "id": "LEGAL_BUFFER",
+          "status": "DOMAIN",
+          "requirement": "4096 allocated bytes, STATIC/profile fixed"
+        }
+      ],
+      "inputs": [
+        {
+          "path": "formal/CapacityMath.lean",
+          "sha256": "90421ef060822a6ec3508e18af13beba4a3d6df6bb206de8e8808b1e1096b84a"
+        },
+        {
+          "path": "formal/EncoderCount.lean",
+          "sha256": "0078c0033176ed65a1b43b8f092e260e785762c0075a06da40d2558fae2bdad4"
+        },
+        {
+          "path": "source/falcon-enc.c",
+          "sha256": "0f7085fa975d41ebbeb96d5db4cb68482c344ef2d602ca8853e20a4d4f04fb05"
+        },
+        {
+          "path": "source/falcon-sign.c",
+          "sha256": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8"
+        }
+      ],
+      "notes": "Does not close eta_pre, source Sign correctness or H6P. Synthetic3156 is not a sampled signature."
+    },
+    {
+      "id": "NORM_RETRY",
+      "laws": {
+        "from_law": "G16 ideal16 attempts retaining norm exhaustion",
+        "to_law": "Gacc ideal accepted kernel (empty-support bot retained)"
+      },
+      "direction": "event difference bounded by ideal terminal nonempty-coset exhaustion",
+      "metric": "TV/coupling",
+      "status": "OPEN_M3",
+      "key_law": "one common K_seed[E] draw, never per-Sign reconditioning",
+      "history_quantifier": "Every emitted (sk,pk), every reachable matching oracle history and required retry/scalar prefix; latent key may be retained in proof history.",
+      "conditioning": "E_K once at setup; no conditioning on Sign success, good key, distinct nonce or no-abort unless explicitly paid.",
+      "per_call": "a_abort",
+      "transcript": "delta_retry<=Q_s*a_abort, or sharper certified lift",
+      "abort_cost_owners": [
+        "IDEAL_NORM_EXHAUSTION"
+      ],
+      "observations": "PRE_ABORT / (r,POST_ABORT) / (r,b); no cause, partial buffer or timing",
+      "computational_cost": "up to16 ideal attempts vs conditional sampling cost",
+      "premises": [
+        {
+          "id": "IDEAL_ACCEPTANCE",
+          "status": "OPEN",
+          "requirement": "uniform h,c/history premise, empty cosets explicit"
+        }
+      ],
+      "inputs": [
+        {
+          "path": "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md",
+          "sha256": "5b1b0e3e15f14aca63fce9007cebb36c493aa2669ca6e8ad35dccd32023ac11e"
+        },
+        {
+          "path": "inputs/context/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md",
+          "sha256": "b299acc13ec1bd1b2d5d9906fb403bbd9c35e8db1483eb9671247540731266a1"
+        }
+      ],
+      "notes": "Source norm rejections already retained in earlier kernels. Historical2^-383.8 is conditional, not a free M0 constant."
+    },
+    {
+      "id": "ROM_FRESHNESS",
+      "laws": {
+        "from_law": "Gacc with actual ideal-coin nonce/table interactions",
+        "to_law": "R_fresh with explicit common collision/prequery gates"
+      },
+      "direction": "absolute event-probability difference",
+      "metric": "TV/coupling bad-event",
+      "status": "OPEN_M6",
+      "key_law": "one common K_seed[E] draw, never per-Sign reconditioning",
+      "history_quantifier": "Every emitted (sk,pk), every reachable matching oracle history and required retry/scalar prefix; latent key may be retained in proof history.",
+      "conditioning": "E_K once at setup; no conditioning on Sign success, good key, distinct nonce or no-abort unless explicitly paid.",
+      "per_call": "fresh r uniform only in post-RNG game",
+      "transcript": "delta_fresh: disjoint first nonce collision, else prequery event",
+      "abort_cost_owners": [
+        "NONCE_COLLISION_OR_PREQUERY"
+      ],
+      "observations": "PRE_ABORT / (r,POST_ABORT) / (r,b); no cause, partial buffer or timing",
+      "computational_cost": "H table M<=Q_H+Q_s+1, all queried message bytes retained",
+      "premises": [
+        {
+          "id": "UNIFORM_NONCE",
+          "status": "OPEN_RNG_HOP",
+          "requirement": "not implied statistically by32-byte source seed"
+        },
+        {
+          "id": "FRAMING",
+          "status": "PROVED_M0",
+          "requirement": "fixed40 injectivity"
+        },
+        {
+          "id": "FRESHNESS_COUPLING",
+          "status": "OPEN",
+          "requirement": "conditioning/gates shared and quantified"
+        }
+      ],
+      "inputs": [
+        {
+          "path": "formal/Framing.lean",
+          "sha256": "4f8d31b6e69dc67cd62cc689a0e7c111f7fb148d5675ef7d367e7625e4755420"
+        },
+        {
+          "path": "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md",
+          "sha256": "5b1b0e3e15f14aca63fce9007cebb36c493aa2669ca6e8ad35dccd32023ac11e"
+        },
+        {
+          "path": "inputs/context/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md",
+          "sha256": "b299acc13ec1bd1b2d5d9906fb403bbd9c35e8db1483eb9671247540731266a1"
+        }
+      ],
+      "notes": "For Q_s<2^320, candidate delta_nonce<=Q_s(Q_s-1)/2^321, delta_pre<=Q_H*sum_i 1/(2^320-i); clip1. These events are not charged again in programming."
+    },
+    {
+      "id": "IMAGE_R5T",
+      "laws": {
+        "from_law": "accepted-image law P_h^B",
+        "to_law": "uniform U_Rq"
+      },
+      "direction": "chi2(P_h^B||U), not the reverse",
+      "metric": "chi-square image moment",
+      "status": "CONDITIONAL_RESULT_NEEDS_NEW_CONSISTENT_PACKAGE_M4",
+      "key_law": "one common K_seed[E] draw, never per-Sign reconditioning",
+      "history_quantifier": "Every h in public pushforward of successful K_seed; no fixed-key substitution.",
+      "conditioning": "E_K once at setup; no conditioning on Sign success, good key, distinct nonce or no-abort unless explicitly paid.",
+      "per_call": "e uniform over successful h",
+      "transcript": "input e for M5, not itself a transcript theorem",
+      "abort_cost_owners": [],
+      "observations": "PRE_ABORT / (r,POST_ABORT) / (r,b); no cause, partial buffer or timing",
+      "computational_cost": "no sampler implementation or resource bound follows from naming D^B",
+      "premises": [
+        {
+          "id": "R5T_INTERFACES",
+          "status": "CONDITIONAL",
+          "requirement": "reported T_h<2^-138, E<2^-106 under universal premises"
+        },
+        {
+          "id": "R5T_FREEZE",
+          "status": "OPEN",
+          "requirement": "old OUTPUTS279dce... mismatches four files; create a new package"
+        },
+        {
+          "id": "POPULATION",
+          "status": "OPEN_BINDING",
+          "requirement": "fixed-h T2C3 not substituted for all-h accepted image"
+        }
+      ],
+      "inputs": [
+        {
+          "path": "inputs/context/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md",
+          "sha256": "b299acc13ec1bd1b2d5d9906fb403bbd9c35e8db1483eb9671247540731266a1"
+        },
+        {
+          "path": "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md",
+          "sha256": "5b1b0e3e15f14aca63fce9007cebb36c493aa2669ca6e8ad35dccd32023ac11e"
+        }
+      ],
+      "notes": "T2C3 fixed h*: E<2^-89. T5 all successful: pure/untruncated theta<2^-40, theorem-specific delta_key0; neither is the missing accepted-image population theorem."
+    },
+    {
+      "id": "IMAGE_KERNEL",
+      "laws": {
+        "from_law": "R_fresh: U(c) K_h,c with full observation wrapper",
+        "to_law": "S_fresh: P_h^B(c) K_h,c reverse sampling"
+      },
+      "direction": "chi2(S_i(.|tau)||R_i(.|tau))<=e; bound p=R(win) using r=S(win)",
+      "metric": "chi-square in S||R; nonlinear success transfer",
+      "status": "OPEN_M5",
+      "key_law": "one common K_seed[E] draw, never per-Sign reconditioning",
+      "history_quantifier": "Every emitted (sk,pk), every reachable matching oracle history and required retry/scalar prefix; latent key may be retained in proof history.",
+      "conditioning": "All relevant histories of the joint latent-key transcript; conditioning on successful signatures, no collisions or fresh points cannot be silently added.",
+      "per_call": "e per actual image step",
+      "transcript": "Delta=(1+e)^n-1, n<=Q_s; p<=Phi_Delta(r)",
+      "abort_cost_owners": [],
+      "observations": "PRE_ABORT / (r,POST_ABORT) / (r,b); no cause, partial buffer or timing",
+      "computational_cost": "at mostQ_s changed kernels, other transitions common",
+      "premises": [
+        {
+          "id": "COMMON_INITIAL_LAW",
+          "status": "REQUIRED",
+          "requirement": "same K_seed and E"
+        },
+        {
+          "id": "ABSOLUTE_CONTINUITY",
+          "status": "REQUIRED",
+          "requirement": "S_i<<R_i on all required histories"
+        },
+        {
+          "id": "FULL_COMMON_KERNEL",
+          "status": "OPEN",
+          "requirement": "same nonce, bot, serialization, fresh gates, hidden key and public postprocessing"
+        },
+        {
+          "id": "M4_IMAGE",
+          "status": "OPEN",
+          "requirement": "certified uniform e"
+        }
+      ],
+      "inputs": [
+        {
+          "path": "inputs/context/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md",
+          "sha256": "b299acc13ec1bd1b2d5d9906fb403bbd9c35e8db1483eb9671247540731266a1"
+        },
+        {
+          "path": "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md",
+          "sha256": "5b1b0e3e15f14aca63fce9007cebb36c493aa2669ca6e8ad35dccd32023ac11e"
+        }
+      ],
+      "notes": "Phi_Delta(r)=[2r+Delta+sqrt(Delta^2+4Delta*r(1-r))]/[2(1+Delta)]. No reverse D2/H\u00f6lder shortcut; no transfer to H1R."
+    },
+    {
+      "id": "PUBLIC_SAMPLER",
+      "laws": {
+        "from_law": "S_fresh ideal reverse signer",
+        "to_law": "S_hat computational public sampler + same byte map"
+      },
+      "direction": "absolute event-probability difference",
+      "metric": "TV including declared sampler abort",
+      "status": "OPEN_M6",
+      "key_law": "one common K_seed[E] draw, never per-Sign reconditioning",
+      "history_quantifier": "Every emitted (sk,pk), every reachable matching oracle history and required retry/scalar prefix; latent key may be retained in proof history.",
+      "conditioning": "E_K once at setup; no conditioning on Sign success, good key, distinct nonce or no-abort unless explicitly paid.",
+      "per_call": "epsilon_pub with specified work/memory/output semantics",
+      "transcript": "delta_pub=g(Q_s,epsilon_pub) when history-uniform; time part included or disjoint",
+      "abort_cost_owners": [
+        "PUBLIC_SAMPLER_ERROR_OR_TIME"
+      ],
+      "observations": "PRE_ABORT / (r,POST_ABORT) / (r,b); no cause, partial buffer or timing",
+      "computational_cost": "Q_s*C_pub, W_pub and explicit budget certificate",
+      "premises": [
+        {
+          "id": "PUBLIC_D_B",
+          "status": "OPEN",
+          "requirement": "construct bounded sampler D^B without sk"
+        },
+        {
+          "id": "ERROR_TIME_PARTITION",
+          "status": "OPEN",
+          "requirement": "do not count same timeout both epsilon_pub and delta_time"
+        }
+      ],
+      "inputs": [
+        {
+          "path": "inputs/context/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md",
+          "sha256": "b299acc13ec1bd1b2d5d9906fb403bbd9c35e8db1483eb9671247540731266a1"
+        },
+        {
+          "path": "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md",
+          "sha256": "5b1b0e3e15f14aca63fce9007cebb36c493aa2669ca6e8ad35dccd32023ac11e"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "ROM_PROGRAMMING",
+      "laws": {
+        "from_law": "S_hat public reverse oracle",
+        "to_law": "challenge-based classical ROM simulator"
+      },
+      "direction": "same transcript on certified fresh/budget-good paths; residual delta_sim",
+      "metric": "game coupling / exact lazy sampling",
+      "status": "OPEN_M6",
+      "key_law": "one common K_seed[E] draw, never per-Sign reconditioning",
+      "history_quantifier": "Every emitted (sk,pk), every reachable matching oracle history and required retry/scalar prefix; latent key may be retained in proof history.",
+      "conditioning": "E_K once at setup; no conditioning on Sign success, good key, distinct nonce or no-abort unless explicitly paid.",
+      "per_call": "no free per-call equality",
+      "transcript": "delta_sim excludes freshness and public-sampler events already owned",
+      "abort_cost_owners": [
+        "SIMULATOR_RESIDUAL_FAILURE"
+      ],
+      "observations": "PRE_ABORT / (r,POST_ABORT) / (r,b); no cause, partial buffer or timing",
+      "computational_cost": "C_table(M,L_key), W_table, Q_H+1 challenge target reads",
+      "premises": [
+        {
+          "id": "PROGRAMMING",
+          "status": "OPEN",
+          "requirement": "full adaptive transcript with abort queries entered in SeenSign"
+        },
+        {
+          "id": "TARGET_ASSIGNMENT",
+          "status": "OPEN",
+          "requirement": "nonprogrammed queries + fresh final query use <=Q_H+1 independent targets"
+        }
+      ],
+      "inputs": [
+        {
+          "path": "inputs/context/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md",
+          "sha256": "b299acc13ec1bd1b2d5d9906fb403bbd9c35e8db1483eb9671247540731266a1"
+        },
+        {
+          "path": "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md",
+          "sha256": "5b1b0e3e15f14aca63fce9007cebb36c493aa2669ca6e8ad35dccd32023ac11e"
+        },
+        {
+          "path": "formal/Framing.lean",
+          "sha256": "4f8d31b6e69dc67cd62cc689a0e7c111f7fb148d5675ef7d367e7625e4755420"
+        }
+      ],
+      "notes": "Classical, no forking/extra target-guessing factor. QROM is separate."
+    },
+    {
+      "id": "L_V_EXTRACTION",
+      "laws": {
+        "from_law": "accepted M0 candidate forgery",
+        "to_law": "witness for same indexed target c"
+      },
+      "direction": "deterministic implication",
+      "metric": "zero extraction loss on valid frame/canonical challenge",
+      "status": "PROVED_REUSED_FOR_PINNED_CANDIDATE",
+      "key_law": "one common K_seed[E] draw, never per-Sign reconditioning",
+      "history_quantifier": "All canonical h,c and legal accepted b; no Sign-distribution premise.",
+      "conditioning": "E_K once at setup; no conditioning on Sign success, good key, distinct nonce or no-abort unless explicitly paid.",
+      "per_call": "0",
+      "transcript": "0",
+      "abort_cost_owners": [],
+      "observations": "PRE_ABORT / (r,POST_ABORT) / (r,b); no cause, partial buffer or timing",
+      "computational_cost": "C_ext(N,|b*|), includes O(|b*|) decoder; no4096 adversary cap",
+      "premises": [
+        {
+          "id": "L_V",
+          "status": "PROVED_REUSED",
+          "requirement": "full_L_V_source pinned3fe78f8d..."
+        },
+        {
+          "id": "CHALLENGE_BINDING",
+          "status": "OPEN_M6",
+          "requirement": "returned target index is the same H(r*||m*)"
+        }
+      ],
+      "inputs": [
+        {
+          "path": "inputs/PREV/REPORT.md",
+          "sha256": "81702fa89ee516f162a37db86e2abb03ae0bb57a49a5723ed63eab5a17a69296"
+        },
+        {
+          "path": "inputs/PREV/CLAIM.md",
+          "sha256": "e10be7abe58c970bec0a97cb11de9f1c6e3ee021321dffc4111eec86fc342575"
+        },
+        {
+          "path": "inputs/PREV/VerifyBytes.lean",
+          "sha256": "6c33ca86d82c72fd8421d7d52ce5e13ee6a0a2b17e767ca0c308d9a72ede28ac"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "MT_ISIS",
+      "laws": {
+        "from_law": "single-key indexed targets from K_seed[E]",
+        "to_law": "epsilon_MT[E](Q_H+1;t_B,w_B,L_B)"
+      },
+      "direction": "upper bound on solver success",
+      "metric": "computational hardness function",
+      "status": "CRYPTO_ASSUMPTION",
+      "key_law": "one common K_seed[E] draw, never per-Sign reconditioning",
+      "history_quantifier": "Every emitted (sk,pk), every reachable matching oracle history and required retry/scalar prefix; latent key may be retained in proof history.",
+      "conditioning": "E_K once at setup; no conditioning on Sign success, good key, distinct nonce or no-abort unless explicitly paid.",
+      "per_call": "not a signing-query bound",
+      "transcript": "one key, Q_H+1 targets, no additional guessing multiplier",
+      "abort_cost_owners": [],
+      "observations": "PRE_ABORT / (r,POST_ABORT) / (r,b); no cause, partial buffer or timing",
+      "computational_cost": "RESOURCE_MODEL exact units and simulator overhead certificates",
+      "premises": [
+        {
+          "id": "MT_HARDNESS",
+          "status": "CRYPTO_ASSUMPTION",
+          "requirement": "unconstrained integer witness relation Q<B, no centered restriction"
+        },
+        {
+          "id": "RESOURCES",
+          "status": "OPEN_M6",
+          "requirement": "actual reduction within declared t_B,w_B,L_B"
+        }
+      ],
+      "inputs": [
+        {
+          "path": "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md",
+          "sha256": "5b1b0e3e15f14aca63fce9007cebb36c493aa2669ca6e8ad35dccd32023ac11e"
+        },
+        {
+          "path": "inputs/context/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md",
+          "sha256": "b299acc13ec1bd1b2d5d9906fb403bbd9c35e8db1483eb9671247540731266a1"
+        }
+      ],
+      "notes": "Estimator and zero-target floor are diagnostics, not proofs or owner security-level choices."
+    },
+    {
+      "id": "PUBLIC_XOF_H2P",
+      "laws": {
+        "from_law": "real public SHAKE-sc/H2P interface",
+        "to_law": "direct-output ROM main game"
+      },
+      "direction": "separate future computational/simulation relation",
+      "metric": "XOF indifferentiability/RO simulation with rejection transcript",
+      "status": "OPEN_OUTSIDE_FIRST_ROM_TARGET",
+      "key_law": "one common K_seed[E] draw, never per-Sign reconditioning",
+      "history_quantifier": "Every emitted (sk,pk), every reachable matching oracle history and required retry/scalar prefix; latent key may be retained in proof history.",
+      "conditioning": "E_K once at setup; no conditioning on Sign success, good key, distinct nonce or no-abort unless explicitly paid.",
+      "per_call": "source accepts16-bit words<55299 and reduces modq",
+      "transcript": "epsilon_XOF plus explicit time/read budget only after a proved hop",
+      "abort_cost_owners": [
+        "PUBLIC_H2P_BUDGET"
+      ],
+      "observations": "PRE_ABORT / (r,POST_ABORT) / (r,b); no cause, partial buffer or timing",
+      "computational_cost": "uncapped rejection and bit-level queries including rejected words",
+      "premises": [
+        {
+          "id": "PUBLIC_XOF_MODEL",
+          "status": "OPEN",
+          "requirement": "public bit-output adversary interface must be specified"
+        },
+        {
+          "id": "DOMAIN_COUPLING",
+          "status": "OPEN",
+          "requirement": "same SHAKE code also used privately; no free domain-separation theorem"
+        }
+      ],
+      "inputs": [
+        {
+          "path": "source/falcon-enc.c",
+          "sha256": "0f7085fa975d41ebbeb96d5db4cb68482c344ef2d602ca8853e20a4d4f04fb05"
+        },
+        {
+          "path": "source/shake.c",
+          "sha256": "c3e7864bf4139264f8c287053214bf869e242757bf555235da81454e40ea316a"
+        },
+        {
+          "path": "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md",
+          "sha256": "5b1b0e3e15f14aca63fce9007cebb36c493aa2669ca6e8ad35dccd32023ac11e"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "FINAL_COMPOSITION",
+      "laws": {
+        "from_law": "G0 real-ROM conditional EUF-CMA",
+        "to_law": "MT solver bound through certified ordered rows"
+      },
+      "direction": "ordered monotone transforms, not flat epsilon sum",
+      "metric": "typed conditional composition target",
+      "status": "OPEN_M7",
+      "key_law": "one common K_seed[E] draw, never per-Sign reconditioning",
+      "history_quantifier": "Every emitted (sk,pk), every reachable matching oracle history and required retry/scalar prefix; latent key may be retained in proof history.",
+      "conditioning": "E_K once at setup; no conditioning on Sign success, good key, distinct nonce or no-abort unless explicitly paid.",
+      "per_call": "none",
+      "transcript": "see target signature/recurrence; no achieved RHS",
+      "abort_cost_owners": [],
+      "observations": "PRE_ABORT / (r,POST_ABORT) / (r,b); no cause, partial buffer or timing",
+      "computational_cost": "resource translation and all premises must be certified",
+      "premises": [
+        {
+          "id": "HOP_CERTIFICATES",
+          "status": "OPEN",
+          "requirement": "all pending source/game/kernel bindings"
+        },
+        {
+          "id": "RESOURCE_TRANSLATION",
+          "status": "OPEN",
+          "requirement": "bound solver and primitive distinguishers"
+        },
+        {
+          "id": "NO_DOUBLE_COUNT",
+          "status": "CONTRACT_INVARIANT",
+          "requirement": "abort ownership unique"
+        }
+      ],
+      "inputs": [
+        {
+          "path": "inputs/context/FT1536_MAPA_DALSZYCH_DZIALAN_PO_LV_2026-09-19.md",
+          "sha256": "b299acc13ec1bd1b2d5d9906fb403bbd9c35e8db1483eb9671247540731266a1"
+        },
+        {
+          "path": "inputs/context/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md",
+          "sha256": "5b1b0e3e15f14aca63fce9007cebb36c493aa2669ca6e8ad35dccd32023ac11e"
+        }
+      ],
+      "notes": ""
+    }
+  ],
+  "target": {
+    "name": "M0ReductionTarget",
+    "status": "TARGET_TYPE_NOT_PROVED",
+    "parameters": [
+      "E:declared legal public service schedule",
+      "beta=(Q_s,Q_H,t,w,L):Nat^5",
+      "A:classical adversary in A(beta)",
+      "p_K>0",
+      "C:component certificates M1-M6 listed below; FINAL_COMPOSITION is the desired output, never a premise",
+      "primitive advantage functions with declared resources",
+      "epsilon_MT[E] with declared relation/resources"
+    ],
+    "component_certificate_ids": [
+      "H3_RANGE",
+      "PRECAST_BYTES",
+      "H3_LIKELIHOOD",
+      "H1R",
+      "FULL_GEOMETRY",
+      "NORM_RETRY",
+      "ROM_FRESHNESS",
+      "IMAGE_R5T",
+      "IMAGE_KERNEL",
+      "PUBLIC_SAMPLER",
+      "ROM_PROGRAMMING",
+      "ANALYTIC_BUDGET",
+      "RNG_ROOT",
+      "RNG_PRNG56"
+    ],
+    "parameter_domains": {
+      "gamma3": "nonnegative real",
+      "e": "nonnegative real",
+      "n": "natural <=Q_s",
+      "per_call_errors": "epsilon_byte,epsilon1,xi_geom in[0,1]",
+      "event_errors": "delta_budget,delta_fresh,delta_retry,delta_pub,delta_sim in[0,1]",
+      "primitive_bounds": "resource-indexed functions with values in[0,1]",
+      "MT_bound": "epsilon_MT[E](T;t_B,w_B,L_B) in[0,1]",
+      "resource_translators": "Nat^5 x component budgets -> (t_B,w_B,L_B) in Nat^3"
+    },
+    "conclusion": "exists B in MT-ISIS_seed,rel^E(1,Q_H+1) with resources translated by C and Adv_cond(G0,A)<=ComposeOrdered(C,beta,epsilon_MT,primitive bounds); Adv_uncond=p_K*Adv_cond.",
+    "compose_recurrence": [
+      "u10 = epsilon_MT[E](Q_H+1;t_B,w_B,L_B)",
+      "u9 = clip(u10 + delta_sim)",
+      "u8 = clip(u9 + delta_pub)",
+      "u7 = Phi_Delta(u8), Delta=(1+e)^n-1, n<=Q_s",
+      "u6 = clip(u7 + delta_fresh)",
+      "u5 = clip(u6 + delta_retry)",
+      "u4 = clip(u5 + g(Q_s,xi_geom))",
+      "u3 = clip(u4 + g(Q_s,epsilon1))",
+      "u2 = clip(exp(Q_s*gamma3)*u3)",
+      "u1 = clip(u2 + g(Q_s,epsilon_byte))",
+      "u0 = clip(u1 + epsilon_rng + delta_budget)"
+    ],
+    "caveat": "A prospective certificate interface ONLY. Current package does not prove that FT1536 laws satisfy these inequalities. Moving any cost across exp/Phi requires a new certified row/order.",
+    "definitions": {
+      "clip": "min(1,max(0,x))",
+      "g": "1-(1-x)^n for x in[0,1]",
+      "Phi_Delta": "[2r+Delta+sqrt(Delta^2+4*Delta*r*(1-r))]/[2*(1+Delta)]",
+      "epsilon_rng": "certified root plus exact-PRNG56 game hybrid, fixed key law",
+      "delta_fresh": "first nonce collision, else prequery: event partition, not an extra post-image copy",
+      "delta_pub": "includes sampler cap abort; separate delta_pub_time only for disjoint unowned event"
+    }
+  },
+  "statuses_are_distinct": true,
+  "security_reduction_proved": false,
+  "H3_started": false,
+  "image_contract": {
+    "reference": "R_uniform",
+    "reverse": "S_reverse",
+    "divergence_numerator": "S",
+    "divergence_denominator": "R",
+    "desired_probability": "R(win)",
+    "supplied_probability": "S(win)",
+    "shared_full_history_kernels_required": true,
+    "common_initial_key_law": true,
+    "Delta": "(1+e)^n-1",
+    "n_upper_bound": "Q_s",
+    "transform": "[2r+Delta+sqrt(Delta^2+4*Delta*r*(1-r))]/[2*(1+Delta)]"
+  },
+  "past_R5T": {
+    "status": "CONDITIONAL_ANALYSIS_INCONSISTENT_OLD_FREEZE",
+    "old_OUTPUTS_sha256": "279dce6690f9f2d9edbe2f2f625f44d8b783fc4311131ea5e41bca4fbad6d74d",
+    "action": "new M4 package; do not repair history in place"
+  }
+}

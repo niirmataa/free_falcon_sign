@@ -1,0 +1,764 @@
+{
+ "schema": "B20_P02_AXIOMS_V1",
+ "scan_method": "#print axioms for every named theorem of BUILD_PLAN modules (run/freeze_scan 032.stdout)",
+ "theorems_scanned": 183,
+ "axiom_free_theorems": 11,
+ "distinct_axiom_sets": [
+  [],
+  [
+   "propext"
+  ],
+  [
+   "propext",
+   "Quot.sound"
+  ],
+  [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ]
+ ],
+ "target_axioms": [],
+ "forbidden_shortcuts_scan": {
+  "sorry": 0,
+  "admit": 0,
+  "native_decide": 0,
+  "Lean.ofReduceBool": 0,
+  "warning_suppression": 0,
+  "note": "grep over formal sources; no set_option disabling linters"
+ },
+ "entries": [
+  {
+   "name": "B20.C.Byte.access_inBounds",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.C.Byte.put_frame",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.C.Byte.put_preserves_read",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.C.Byte.put_preserves_write",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.C.Byte.read_region_byte",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.C.Byte.write_region_byte",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.C.CExec_deterministic",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.C.Scalar.CExec_deterministic",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.C.Scalar.irsh_call",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.C.Scalar.ulsh_call",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.C.Scalar.ursh_call",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.C.cast_u32_to_u64",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.C.cond_neg_add64",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.C.cond_neg_add64_le",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.C.neg_defined_of_ne",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.C.neg_u32",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.C.neg_u64",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.C.safe_add32",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.C.safe_add64",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.C.safe_sub32",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.C.safe_sub64",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.C.signed_add32",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.C.signed_add64",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.C.signed_overflow_rejected",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.C.unsigned_add32",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.C.unsigned_add64",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.C.xor_neg_bridge",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Foundation.CExec_complete",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Foundation.CExec_deterministic",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Foundation.CExec_eval",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Foundation.CExec_iff_eval",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Foundation.Outcome.abort_ne_fault",
+   "axioms": "[]"
+  },
+  {
+   "name": "B20.Foundation.Outcome.abort_ne_nonreturn",
+   "axioms": "[]"
+  },
+  {
+   "name": "B20.Foundation.Outcome.nonreturn_ne_fault",
+   "axioms": "[]"
+  },
+  {
+   "name": "B20.Foundation.Outcome.returned_ne_stuck",
+   "axioms": "[]"
+  },
+  {
+   "name": "B20.Foundation.Outcome.stuck_ne_abort",
+   "axioms": "[]"
+  },
+  {
+   "name": "B20.Foundation.Outcome.stuck_ne_fault",
+   "axioms": "[]"
+  },
+  {
+   "name": "B20.Foundation.Outcome.stuck_ne_nonreturn",
+   "axioms": "[]"
+  },
+  {
+   "name": "B20.Foundation.compile_refines",
+   "axioms": "[]"
+  },
+  {
+   "name": "B20.Foundation.evalStmt_sound",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Foundation.evalStmt_sound_gen",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Foundation.u64Add_toNat",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.double_lex",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.double_parses",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.double_slice",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.double_syntax",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.floor_lex",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.floor_parses",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.floor_slice",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.floor_syntax",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.half_lex",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.half_parses",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.half_slice",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.half_syntax",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.neg_lex",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.neg_parses",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.neg_slice",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.neg_syntax",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.pack_lex",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.pack_parses",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.pack_slice",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.pack_syntax",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.rint_lex",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.rint_parses",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.rint_slice",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.rint_syntax",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.sub_lex",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.sub_parses",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.sub_slice",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.Parsed.sub_syntax",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.cast_i32_1_u64",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Fpr.cast_i32_63_u64",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Fpr.double_execution",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.e_toNat_of_range",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.floor_execution",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.floor_irsh_domain",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.floor_mask_all",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.floor_mask_fold",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Fpr.floor_mask_zero",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.floor_sub63_safe",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.floor_t_range",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.half_execution",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.irsh_call_of_toNat",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.lit1085_int",
+   "axioms": "[]"
+  },
+  {
+   "name": "B20.Fpr.lit_allOnes64",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Fpr.m0_lt",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.neg_execution",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.pack_add_bits",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.pack_add_safe",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.pack_and7_lt",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.pack_execution",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.pack_f_range",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.pack_neg_defined",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.pack_t_range",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_e2_range",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_e_int",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_e_nat",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_execution",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_f_range",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_m2_big",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_m2_small",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_mask_all",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_mask_zero",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_s_range",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_sub63_count",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_sub63_safe",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_ulsh_domain",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_ursh_domain",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_y_int",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.rint_y_range",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.signedBits_band32",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.signedBits_band64",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.signedBits_xor64",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.sub_execution",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.sub_refines_via_add_obligation",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.ulsh_call_of_toNat",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Fpr.ursh_call_of_toNat",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.bufferBytes_spec",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Word.LE.dec_execution",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.dec_lex",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.dec_parses",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.dec_prefix",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.dec_slice",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.dec_syntax",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.decodeExpr_eval",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.enc_execution",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.enc_lex",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.enc_parses",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.enc_prefix",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.enc_slice",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.enc_syntax",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.join_byteOf",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.loadTerm_eval",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.orWord_eq_join",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.or_left_comm",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.storeBytes_frame",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Word.LE.storeBytes_preserves_write",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Word.LE.storeTerm_eval",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.store_step",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.stored_bytes",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.LE.stores_execution",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.byteAt_write",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.byteExpansion_eq",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.c_invalid_count_rejected",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Word.c_signed_negation_overflow_rejected",
+   "axioms": "[]"
+  },
+  {
+   "name": "B20.Word.count_mask_mutation_witness",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.foldl_eight",
+   "axioms": "[]"
+  },
+  {
+   "name": "B20.Word.foldl_equal_on",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Word.irsh_execution",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.irsh_refines",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.load_le_refines",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.load_store_le_refines",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.model_load_store_roundtrip",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.parser_unsupported_operator_rejected",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Word.pinned_irsh_lex",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.pinned_irsh_parses",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.pinned_irsh_refines",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.pinned_irsh_slice",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.pinned_irsh_syntax",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.pinned_ulsh_lex",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.pinned_ulsh_parses",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.pinned_ulsh_refines",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.pinned_ulsh_slice",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.pinned_ulsh_syntax",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.pinned_ursh_lex",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.pinned_ursh_parses",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.pinned_ursh_refines",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.pinned_ursh_slice",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.pinned_ursh_syntax",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.radix_eight",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.radix_step",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.read_write_formula",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.read_write_roundtrip",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.shift32_mutation_binding_rejected",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.shift32_mutation_witness",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.signed_shift_differs_from_logical",
+   "axioms": "[propext]"
+  },
+  {
+   "name": "B20.Word.split_count",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.ulsh_execution",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.ulsh_refines",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.ursh_execution",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.ursh_refines",
+   "axioms": "[propext, Classical.choice, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.write_frame",
+   "axioms": "[propext, Quot.sound]"
+  },
+  {
+   "name": "B20.Word.write_legal",
+   "axioms": "[propext, Quot.sound]"
+  }
+ ]
+}

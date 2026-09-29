@@ -1,0 +1,50 @@
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/shift_003/source/B20/Word/Shift.lean:21:2: error: unsolved goals
+case inr
+x : BitVec 64
+n : ℕ
+hn : n < 64
+h : n / 32 = 1
+he : 32 + n % 32 = n
+⊢ (x ^^^ (x ^^^ x >>> 32) &&& 18446744073709551615#64) >>> (n % 32) = x >>> n
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/shift_003/source/B20/Word/Shift.lean:22:19: warning: This simp argument is unused:
+  ← BitVec.shiftRight_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ursh, h, he]
+
+Note: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/shift_003/source/B20/Word/Shift.lean:22:44: warning: This simp argument is unused:
+  he
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ursh, h, ← BitVec.shiftRight_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/shift_003/source/B20/Word/Shift.lean:30:2: error: unsolved goals
+case inr
+x : BitVec 64
+n : ℕ
+hn : n < 64
+h : n / 32 = 1
+he : 32 + n % 32 = n
+⊢ (x ^^^ (x ^^^ x <<< 32) &&& 18446744073709551615#64) <<< (n % 32) = x <<< n
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/shift_003/source/B20/Word/Shift.lean:31:19: warning: This simp argument is unused:
+  ← BitVec.shiftLeft_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ulsh, h, he]
+
+Note: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/shift_003/source/B20/Word/Shift.lean:31:43: warning: This simp argument is unused:
+  he
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ulsh, h, ← BitVec.shiftLeft_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'B20.Word.ursh_refines' depends on axioms: [propext, sorryAx, Quot.sound]
+'B20.Word.ulsh_refines' depends on axioms: [propext, sorryAx, Quot.sound]

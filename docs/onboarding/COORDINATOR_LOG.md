@@ -687,3 +687,58 @@ w historii. Następny krok po zakończeniu: ocena wyniku i checkpoint przy PASS.
   recenzent zapisuje model/session/context;koordynator odnotuje identity.
   Po frozen review:canonical verdict binding,zaakceptowane stages i checkpoint
   pary main. Przygotowanie bez importu P02 do stages,push lub startu modelu.
+
+## 2026-09-29T15:33:06Z — V02 PASS_SCOPED_REVIEW przyjęty; para P02/V02 w stages
+
+- Otrzymano frozen V02:REVIEW
+  `30a82492d4e9b385ea2b3b3c991b984b2b8077d0e373b4ad8a9b38a6ace95e8d`,
+  REVIEW_OUTPUTS `792b5fb6c5b7dc42f1a4ffb7d02343f6d6a76f9c7f6921ce2ce1817a17836a6c`.
+  Recenzent Sol/openai/gpt-6-sol,świeża sesja ses_f12645f4effei2l7zDf6rzsuJN;
+  autor dowodów Astra Fast,pakujący Sol w innej sesji. Właściciel wyjaśnił:
+  „ale nigdzie nie jest napisane ze odbierac musi ten sam co wyprowadzil
+  dowod wcesniej wlasnie chodzilo o to zeby to robil niezalkeny model”.
+  Przyjęto niezależność modelową Astra Fast→Sol;overlap z pakującym zachowany
+  jako ograniczenie proweniencji. Nie przypisano owner acceptance schematu.
+- Pierwszy check_review.py przeszedł external piny/inputs,ale własny
+  komparator założył build/ zamiast sealed evidence/replay/semantic/.
+  Zatrzymano i zgłoszono;źródło/stop record zachowane. Po sprawdzeniu
+  sealed build_review_package.py skorygowano tylko mapowanie ścieżek,
+  także flat own_final products. Żadnych zmian frozen autora lub review.
+- `python3 -B .../PAIR02_IMPORT_001/check_review.py` (próba002) →
+  PIN_RECEIPT_BINDING_PASS:30612 outputs autora/29751 inputs,343 review
+  outputs/30633 inputs,43 replay steps/16 semantic matches/45 child commands,
+  50 replay source bindings,10 own-controls expected exits i3 własne
+  source-before/after bindings,6 zapisanych Sage runów. Jobów obu W nie
+  wykryto. Nie wykonywano nowego replayu lub mathematical review.
+  INTAKE SHA `557d2ec15032c9bf8e4aed02e8105edc3366f0798544b668cd23b82915cb8ea4`.
+- `b20_status_set.py V02 --start --model openai/gpt-6-sol --context
+  <retrospektywny owner-start/role/session>` i `--final-report ...` z nowymi
+  review pinami/source HEAD41216bb… wiążą zakończony odbiór,nie startują modelu.
+- `archive.py import <P02_v2/output> --id B20_001_P02_FINAL_001
+  --manifest-sha af60f1b4… --report-sha ce3cad72… --replay none` →integrity PASS.
+  `archive.py import <V02/output> --id B20_001_V02_FINAL_001
+  --manifest REVIEW_OUTPUTS.sha256 --report REVIEW.md --result REVIEW_RESULT.json
+  --manifest-sha 792b5fb6… --report-sha 30a82492… --replay none` →integrity PASS.
+  Custom protocol/replay evidence zachowany. Import wiąże także pełne inputs.
+- `b20_status_set.py P02 --review-verdict PASS_SCOPED_REVIEW` z oboma
+  stage IDs i pełnymi review pinami →**P02 REVIEWED,V02 REVIEW_COMPLETE**.
+  Matematyczny status PARTIAL_PROOF:LE64 i literal-word wykonania w scoped
+  domenach. V02.no_add_dispatch dowodzi braku instancji AddCallObligation;
+  conditional sub nie jest używalnym arithmetic contract. Real-error
+  add/mul/div/sqrt,real-rint/caller/C→machine nadal OPEN.6 old child-overwrites,
+  old HEAD UNRECORDED,granice druków i wczesnych organizacyjnych snapshots
+  recenzenta pozostają jawne. P03 i dalsze zadania nie dostały blanket PASS.
+- `archive.py verify`:**46 checkpointów,59 dokumentów PASS**,exit0,26.03s,
+  stderr pusty. `archive.py list --markdown` zachowane. `archive.py bootstrap
+  background/B20_P02_ACCEPTANCE_2026-09-29 --plan …`:18 plików evidence,
+  manifest `1c62b9e025beffeaa6f66dc7020c904509b1ac3ca09c06dffc7ec9629d6923ee`.
+- Preflight checkpointu:34057 pathspeców,tekst3577665B+pointers272960B,
+  domyślny ARG_MAX2MiB za mały. Sprawdzono `prlimit --stack=33554432`:
+  ARG_MAX6MiB. Nie zmieniono archive.py ani jego walidacji. Checkpoint pary:
+  `prlimit --stack=33554432 -- python3 -B proofs/ft1536/tools/archive.py
+  checkpoint B20_001_P02_FINAL_001 --with-stage B20_001_V02_FINAL_001
+  --include docs/onboarding/ROADMAP.md --include proofs/ft1536/README.md`.
+  STATUS i dopisany dziennik narzędzie dołącza automatycznie. Żywe CURRENT/
+  STATE/PROOF_MAP/evidence osobno z ochroną zastanego wpisu Qwen w STATE.
+- Następny krok po commicie:source dispatcher fpr_add i real-error/caller
+  domains,wg odebranego scope i potrzeb T03-B. Bez automatycznego workera/push.

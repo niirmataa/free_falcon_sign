@@ -1,0 +1,25 @@
+# V01 — CHECKLIST (odbiór P01 v2)
+
+- [x] AGENTS/TASK/CONTRACT/FOCUS/PROMPT/BOUND_INPUTS przeczytane przed runem
+- [x] Piny zewnętrzne zweryfikowane przed i po replayu (REPORT/OUTPUTS/HANDOFF/HEAD/TASK/MANIFEST) — brak rozbieżności
+- [x] Pełny OUTPUTS autora (manifest + bajty, 62/62) — higiena ścieżek, brak traversal/symlinków/duplikatów
+- [x] INPUTS autora (7930) + source17 (17/17, tool.c:753 `return 0;`) — SHA zgodne
+- [x] GOAL_SPEC vs TASK §3 — typy drukowane zgodne (43 nazwy w formal_printed_types.txt)
+- [x] Źródła formalne vs CLAIM — 4 rodziny + end-to-end + transport + kontrole; termy przejrzane
+- [x] Zakazane skróty: 0 (`sorry/admit/native_decide/Lean.ofReduceBool`/wyciszenia)
+- [x] Importy: tylko własne moduły + Mathlib (Certificate/Probability); aux nieimportowane przez eksporty
+- [x] Skan aksjomatów: 36/10, tylko standardowe, 0 celu (log identyczny z autorem)
+- [x] Świeży rebuild bez author cache/olean/bin (DEST, olean nowsze od markera, 10 oleanów)
+- [x] Mathlib/provenance: rev `5ed2965…` + 8 pakietów zgodne, `git status` czysty
+- [x] Własny fresh replay 6/6 exit 0, semantic_match=true, sources_unchanged, author_W_clean
+- [x] Brak copied targets/no-op false matches (liczniki buildu świeże, produkty porównane z EXPECTED 5/5)
+- [x] Sage niezależne: `sage v01_numeric_check.sage` 22/22 (ZZ/QQ/balls/RIF, negatywy, kontrtesty)
+- [x] Producent Sage odtworzony: 21/21 i 9/9, certyfikaty bajtowo identyczne
+- [x] Transport cyfr: digits Lean = JSON = Sage
+- [x] Kontrole negatywne Lean odtworzone + celowy kontrtest błędnej przesłanki (Sage §6)
+- [x] `RedTestStringFailures.lean` potwierdzony jako negatywny probe (błędy `rfl`)
+- [x] Producer inputs niezmienione po replayu V01
+- [x] Frozen autora nieedytowane dla PASS (adapter: uruchomienie z kopii V01, diff ścieżek w REVIEW.md §Replay)
+- [x] Source→receipt→output hashe checkerów potwierdzone; failed routes zachowane (18 tras)
+- [x] Werdykt scoped z jawnymi missing types; PARTIAL nie odblokowuje brakujących przesłanek P02
+- [x] Joby zakończone; brak procesów lake/lean/sage; owner_accepted=false, bez push

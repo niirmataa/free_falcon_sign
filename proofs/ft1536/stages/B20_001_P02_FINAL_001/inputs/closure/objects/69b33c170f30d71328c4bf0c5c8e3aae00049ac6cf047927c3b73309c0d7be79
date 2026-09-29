@@ -1,0 +1,32 @@
+[
+  {
+    "input": "INT64_MIN",
+    "operation": "of/scaled",
+    "reason": "source absolute-value signed overflow"
+  },
+  {
+    "input": "INT_MIN, INT_MAX scale",
+    "operation": "scaled/pack",
+    "reason": "signed exponent adjustment may overflow"
+  },
+  {
+    "input": "zero denominator",
+    "operation": "div/inv",
+    "reason": "caller precondition"
+  },
+  {
+    "input": "negative nonzero",
+    "operation": "sqrt",
+    "reason": "caller precondition"
+  },
+  {
+    "input": "abs(value)>=2^63, NaN, infinity",
+    "operation": "floor/rint/trunc",
+    "reason": "integer conversion domain"
+  },
+  {
+    "input": "n<0 or n>=64",
+    "operation": "shift helpers",
+    "reason": "helper specification n=0..63"
+  }
+]

@@ -1,0 +1,188 @@
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/le_execution_005/source/B20/Word/LEExecution.lean:31:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  evalExpr s (loadTerm ↑0)
+in the target expression
+  (do
+      let __do_lift ←
+        do
+          let __do_lift ←
+            do
+              let __do_lift ←
+                do
+                  let __do_lift ←
+                    do
+                      let __do_lift ←
+                        do
+                          let __do_lift ←
+                            do
+                              let __do_lift ← evalExpr s (loadTerm 0)
+                              let __do_lift_1 ← evalExpr s (loadTerm 1)
+                              match __do_lift, __do_lift_1 with
+                                | Value.word x, Value.word y => pure (Value.word (x ||| y))
+                                | x, x_1 => none
+                          let __do_lift_1 ← evalExpr s (loadTerm 2)
+                          match __do_lift, __do_lift_1 with
+                            | Value.word x, Value.word y => pure (Value.word (x ||| y))
+                            | x, x_1 => none
+                      let __do_lift_1 ← evalExpr s (loadTerm 3)
+                      match __do_lift, __do_lift_1 with
+                        | Value.word x, Value.word y => pure (Value.word (x ||| y))
+                        | x, x_1 => none
+                  let __do_lift_1 ← evalExpr s (loadTerm 4)
+                  match __do_lift, __do_lift_1 with
+                    | Value.word x, Value.word y => pure (Value.word (x ||| y))
+                    | x, x_1 => none
+              let __do_lift_1 ← evalExpr s (loadTerm 5)
+              match __do_lift, __do_lift_1 with
+                | Value.word x, Value.word y => pure (Value.word (x ||| y))
+                | x, x_1 => none
+          let __do_lift_1 ← evalExpr s (loadTerm 6)
+          match __do_lift, __do_lift_1 with
+            | Value.word x, Value.word y => pure (Value.word (x ||| y))
+            | x, x_1 => none
+      let __do_lift_1 ← evalExpr s (loadTerm 7)
+      match __do_lift, __do_lift_1 with
+        | Value.word x, Value.word y => pure (Value.word (x ||| y))
+        | x, x_1 => none) =
+    some (Value.word (orWord b))
+
+s : State
+b : Fin 8 → U8
+h : ∀ (i : Fin 8), evalExpr s (loadTerm ↑i) = some (Value.word (BitVec.setWidth 64 (b i) <<< (8 * ↑i)))
+⊢ (do
+      let __do_lift ←
+        do
+          let __do_lift ←
+            do
+              let __do_lift ←
+                do
+                  let __do_lift ←
+                    do
+                      let __do_lift ←
+                        do
+                          let __do_lift ←
+                            do
+                              let __do_lift ← evalExpr s (loadTerm 0)
+                              let __do_lift_1 ← evalExpr s (loadTerm 1)
+                              match __do_lift, __do_lift_1 with
+                                | Value.word x, Value.word y => pure (Value.word (x ||| y))
+                                | x, x_1 => none
+                          let __do_lift_1 ← evalExpr s (loadTerm 2)
+                          match __do_lift, __do_lift_1 with
+                            | Value.word x, Value.word y => pure (Value.word (x ||| y))
+                            | x, x_1 => none
+                      let __do_lift_1 ← evalExpr s (loadTerm 3)
+                      match __do_lift, __do_lift_1 with
+                        | Value.word x, Value.word y => pure (Value.word (x ||| y))
+                        | x, x_1 => none
+                  let __do_lift_1 ← evalExpr s (loadTerm 4)
+                  match __do_lift, __do_lift_1 with
+                    | Value.word x, Value.word y => pure (Value.word (x ||| y))
+                    | x, x_1 => none
+              let __do_lift_1 ← evalExpr s (loadTerm 5)
+              match __do_lift, __do_lift_1 with
+                | Value.word x, Value.word y => pure (Value.word (x ||| y))
+                | x, x_1 => none
+          let __do_lift_1 ← evalExpr s (loadTerm 6)
+          match __do_lift, __do_lift_1 with
+            | Value.word x, Value.word y => pure (Value.word (x ||| y))
+            | x, x_1 => none
+      let __do_lift_1 ← evalExpr s (loadTerm 7)
+      match __do_lift, __do_lift_1 with
+        | Value.word x, Value.word y => pure (Value.word (x ||| y))
+        | x, x_1 => none) =
+    some (Value.word (orWord b))
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/le_execution_005/source/B20/Word/LEExecution.lean:68:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  s.pointers "buf".toList
+in the target expression
+  (match Statement.store "buf".toList (↑i) (storeTerm ↑i) with
+    | Statement.declarePointer name c =>
+      if (s.pointers name).isSome = true then none else some (updatePointer s name (c, none))
+    | Statement.assignPointer dst src => do
+      let __x ← s.pointers dst
+      match __x with
+        | (dstConst, snd) => do
+          let __x ← s.pointers src
+          match __x with
+            | (srcConst, ptr) => do
+              let p ← ptr
+              if (srcConst && !dstConst) = true then none else pure (updatePointer s dst (dstConst, some p))
+    | Statement.store name index expr => do
+      let __x ← s.pointers name
+      match __x with
+        | (isConst, ptr) => do
+          let p ← ptr
+          if isConst = true then none
+            else do
+              let v ← evalExpr s expr
+              let m ← writeByte s.memory (p.add index) (BitVec.setWidth 8 v.toWord)
+              pure { memory := m, pointers := s.pointers, words := s.words }
+    | Statement.ret value => none) =
+    some { memory := putByte s.memory (p.add ↑i) (byteOf w i), pointers := s.pointers, words := s.words }
+
+s : State
+p : Pointer
+w : U64
+hp : s.pointers "buf".toList = some (false, some p)
+hx : s.words ['x'] = some w
+hr : WriteRegion s.memory p
+i : Fin 8
+⊢ (match Statement.store "buf".toList (↑i) (storeTerm ↑i) with
+    | Statement.declarePointer name c =>
+      if (s.pointers name).isSome = true then none else some (updatePointer s name (c, none))
+    | Statement.assignPointer dst src => do
+      let __x ← s.pointers dst
+      match __x with
+        | (dstConst, snd) => do
+          let __x ← s.pointers src
+          match __x with
+            | (srcConst, ptr) => do
+              let p ← ptr
+              if (srcConst && !dstConst) = true then none else pure (updatePointer s dst (dstConst, some p))
+    | Statement.store name index expr => do
+      let __x ← s.pointers name
+      match __x with
+        | (isConst, ptr) => do
+          let p ← ptr
+          if isConst = true then none
+            else do
+              let v ← evalExpr s expr
+              let m ← writeByte s.memory (p.add index) (BitVec.setWidth 8 v.toWord)
+              pure { memory := m, pointers := s.pointers, words := s.words }
+    | Statement.ret value => none) =
+    some { memory := putByte s.memory (p.add ↑i) (byteOf w i), pointers := s.pointers, words := s.words }
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/le_execution_005/source/B20/Word/LEExecution.lean:86:21: error: Application type mismatch: The argument
+  put_preserves_write s.memory p (p.add ↑i) (byteOf w i) hr
+has type
+  WriteRegion (putByte s.memory (p.add ↑i) (byteOf w i)) p
+but is expected to have type
+  WriteRegion s.memory p
+in the application
+  ih s hp hx (put_preserves_write s.memory p (p.add ↑i) (byteOf w i) hr)
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/le_execution_005/source/B20/Word/LEExecution.lean:86:4: error: Tactic `apply` failed: could not unify the type of `ih s hp hx sorry`
+  evalBody false (List.map storeStatement is) s = some (none, storeBytes p w is s.memory)
+with the goal
+  ((some { memory := putByte s.memory (p.add ↑i) (byteOf w i), pointers := s.pointers, words := s.words }).bind fun t =>
+      evalBody false (List.map storeStatement is) t) =
+    some (none, storeBytes p w (i :: is) s.memory)
+
+case cons
+p : Pointer
+w : U64
+i : Fin 8
+is : List (Fin 8)
+ih :
+  ∀ (s : State),
+    s.pointers "buf".toList = some (false, some p) →
+      s.words ['x'] = some w →
+        WriteRegion s.memory p → evalBody false (List.map storeStatement is) s = some (none, storeBytes p w is s.memory)
+s : State
+hp : s.pointers "buf".toList = some (false, some p)
+hx : s.words ['x'] = some w
+hr : WriteRegion s.memory p
+⊢ ((some { memory := putByte s.memory (p.add ↑i) (byteOf w i), pointers := s.pointers, words := s.words }).bind fun t =>
+      evalBody false (List.map storeStatement is) t) =
+    some (none, storeBytes p w (i :: is) s.memory)
+'B20.Word.LE.dec_execution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'B20.Word.LE.enc_execution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'B20.Word.LE.stored_bytes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.LE.join_byteOf' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,64 @@
+# V01 — wskazówki do odbioru P01 v2
+
+Wykonawca P01: MiMo V2.6 Pro (opencode/mimo-v2.6-pro),wg HANDOFF.
+Recenzenta wybiera i uruchamia właściciel; inny model,świeży kontekst.
+Przeczytaj pełny REVIEW_TASK i wygenerowany REVIEW_PROMPT_001.md.
+`PROVED4/4` jest deklaracją autora do Twojej oceny.
+
+## Przypięte wejście
+
+Własna kopia:`V01/inputs/producer_v2/`. Piny REPORT/OUTPUTS/HANDOFF są
+w `V01/inputs/BOUND_INPUTS.json`. Bootstrap ma7994 pliki,manifest
+SHA `7e26e2fd558e541d06c4f5e5170cfaadb0a387503529b0c03722d4c6b01624ab`.
+Każdy oryginał ma mapowanie w ORIGINS.json. INPUTS autora używa nazw
+względem P01 W; skopiowano je pod `producer_v2/inputs`,bez zmiany bajtów
+INPUTS/OUTPUTS. To jawna materializacja wejść,nie poprawka dowodu.
+
+Kontrole prowadzącego:62/62 outputs,7930/7930 inputs,21 źródeł exact-set
+source snapshotu,12 raw logs i5 product_checks zgodne z receiptami.
+11 formalnych źródeł i3 certyfikaty identyczne z v1. Odtwarzania obliczeń
+prowadzący nie wykonywał. Wcześniejsze uwagi były kontrolą przekazania,
+nie wcześniejszym werdyktem V01.
+
+## Odtwarzanie
+
+REPLAY.md ma niedokładne `cd` (P01 zamiast output_v2),a docstring sterownika
+używa starego prefiksu replay/. Rzeczywisty przypięty entry to
+`inputs/producer_v2/tools/restore_replay.py`. Uruchom z własnej kopii do
+NOWEGO DEST pod V01/run,według §6/§9 REVIEW_TASK.
+
+Przed wykonaniem sprawdź zewnętrzny pin OUTPUTS i wszystkich członków,
+EXPECTED.json i jego kompletność. Runner sam nie przyjmuje zewnętrznego
+pinu i dopuszcza tryb zbierania bez EXPECTED; taki tryb nie stanowi porównania.
+Zapewnij network-off oraz RO źródeł/bibliotek w rzeczywistym sandboxie,z RW
+wyłącznie dla własnego run/cache/home/tmp. `network: off` w JSON i symlink
+do biblioteki nie są mechanizmem izolacji. Sprawdź Mathlib/dependency source
+closure i build provenance; samo `git rev-parse HEAD` nie sprawdza zmian
+w drzewie ani pochodzenia olean. `find -newer` jest kontrolą pomocniczą,
+nie kompletnym dowodem braku zapisów. Ewentualny adapter wykonania zapisz
+oddzielnie z diffem,bez edycji frozen autora i bez zmiany oczekiwanych wyników.
+
+## Obowiązkowa ocena matematyczna względem kontraktu
+
+1. CExec: poprawność i zakres semantyki pamięci/ABI/unsigned/outcomes;
+   rozróżnij definicję relacji od twierdzenia o rzeczywistym fragmencie C.
+2. SourceBinding: czy checker_sound rzeczywiście wiąże tekst źródła z modelem,
+   gdzie kończy się parser `return <stała>;`,a gdzie zaczynają zaufane dane.
+   Nie utożsamiaj encode/decode AST lub hasha z refinementem dowolnego C.
+3. CertificateSound: zakres checkera √2 względem TASK,transport danych Sage
+   do literałów/typów Lean,wszystkie negatywne przypadki i jawny TCB.
+4. Probability: rzeczywiste typy i definicje TV/chi²,przypadki wsparcia oraz
+   sens conditional-history. Obecne `conditionalHistory` wybiera po
+   `h.state = a` i nie używa `h.observations`; sprawdź,czy realizuje wymagany
+   kontrakt zamiast tylko mieć właściwą nazwę. Instancje porównują pinned law
+   z nim samym; oceń adekwatność zakresu wobec P01 i kolejnych konsumentów.
+5. Audytuj wszystkie eksporty/termy/aksjomaty i kompletność failed routes.
+   Debug/RedTest mają teraz jawne role; historyczny negatywny probe nie jest
+   modułem do budowy całego pozytywnego projektu.
+
+Werdykt ma wskazywać dokładne odebrane eksporty i missing types. W razie
+niezgodności kontraktu CHANGES_REQUIRED/PARTIAL scope,bez dopowiadania proofu
+za autora. P02 czeka na pozytywny odbiór eksportów,których wymaga.
+
+W REVIEW_RESULT użyj pól i pełnych identyfikatorów z REVIEW_PROMPT_001.md;
+wyniki do V01/output. INPUTS review obejmuje także tę instrukcję i prompt.

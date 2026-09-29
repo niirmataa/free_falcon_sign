@@ -1,0 +1,90 @@
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_002/source/B20/Fpr/Spec.lean:13:52: error(lean.unknownIdentifier): Unknown identifier `bin`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_002/source/B20/Fpr/Spec.lean:13:57: error(lean.unknownIdentifier): Unknown identifier `shift`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_002/source/B20/Fpr/Spec.lean:13:64: error(lean.unknownIdentifier): Unknown identifier `bitsOp`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_002/source/B20/Fpr/Spec.lean:13:72: error(lean.unknownIdentifier): Unknown identifier `commonTy`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_002/source/B20/Fpr/Spec.lean:14:18: error(lean.unknownIdentifier): Unknown identifier `literalValue`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_002/source/B20/Fpr/Spec.lean:14:32: error(lean.unknownIdentifier): Unknown identifier `update`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_002/source/B20/Fpr/Spec.lean:11:79: error: unsolved goals
+x : BitVec 64
+⊢ (((C.update (fun x => none) ['x'] (C.cast Ty.u64 (Val.u64 x)) ['x']).bind fun a =>
+          (C.bin BinOp.shl (C.cast Ty.u64 (C.literalValue Ty.i32 1)) (C.literalValue Ty.i32 63)).bind fun a_1 =>
+            (C.bin BinOp.xor a a_1).bind fun a =>
+              some
+                { types := fun x => if x = ['x'] then some Ty.u64 else none,
+                  values :=
+                    C.update (C.update (fun x => none) ['x'] (C.cast Ty.u64 (Val.u64 x))) ['x']
+                      (C.cast Ty.u64 a) }).bind
+      fun __do_lift => Option.map (C.cast Ty.u64) (__do_lift.values ['x'])) =
+    some (Val.u64 (x ^^^ 9223372036854775808#64))
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_002/source/B20/Fpr/Spec.lean:13:20: warning: This simp argument is unused:
+  declareMany
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [execute, Parsed.negProgram, bindArgs, emptyState, declareOne, assign, evalBody, step, evalExpr, negSpec,
+    bin, shift, bitsOp, commonTy, Val.ty, cast, literalValue, update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_002/source/B20/Fpr/Spec.lean:14:4: warning: This simp argument is unused:
+  Val.ty
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [execute, Parsed.negProgram, bindArgs, emptyState, declareOne, assign, evalBody, step, declareMany,
+    evalExpr, negSpec, bin, shift, bitsOp, commonTy, cast, literalValue, update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_002/source/B20/Fpr/Spec.lean:14:12: warning: This simp argument is unused:
+  cast
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [execute, Parsed.negProgram, bindArgs, emptyState, declareOne, assign, evalBody, step, declareMany,
+    evalExpr, negSpec, bin, shift, bitsOp, commonTy, Val.ty, literalValue, update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_002/source/B20/Fpr/Spec.lean:22:55: error(lean.unknownIdentifier): Unknown identifier `bin`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_002/source/B20/Fpr/Spec.lean:22:60: error(lean.unknownIdentifier): Unknown identifier `shift`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_002/source/B20/Fpr/Spec.lean:22:67: error(lean.unknownIdentifier): Unknown identifier `bitsOp`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_002/source/B20/Fpr/Spec.lean:22:75: error(lean.unknownIdentifier): Unknown identifier `commonTy`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_002/source/B20/Fpr/Spec.lean:23:18: error(lean.unknownIdentifier): Unknown identifier `literalValue`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_002/source/B20/Fpr/Spec.lean:23:32: error(lean.unknownIdentifier): Unknown identifier `update`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_002/source/B20/Fpr/Spec.lean:20:85: error: unsolved goals
+x : BitVec 64
+⊢ (((C.update (fun x => none) ['x'] (C.cast Ty.u64 (Val.u64 x)) ['x']).bind fun a =>
+          ((((((C.update (fun x => none) ['x'] (C.cast Ty.u64 (Val.u64 x)) ['x']).bind fun a =>
+                                Option.map (C.cast Ty.u32) (C.bin BinOp.shr a (C.literalValue Ty.i32 52))).bind
+                            fun __do_lift => C.bin BinOp.band __do_lift (C.literalValue Ty.u32 2047)).bind
+                        fun __do_lift => C.bin BinOp.add __do_lift (C.literalValue Ty.u32 2047)).bind
+                    fun a => Option.map (C.cast Ty.u64) (C.bin BinOp.shr a (C.literalValue Ty.i32 11))).bind
+                fun __do_lift => C.bin BinOp.shl __do_lift (C.literalValue Ty.i32 52)).bind
+            fun a_1 =>
+            (C.bin BinOp.add a a_1).bind fun a =>
+              some
+                { types := fun x => if x = ['x'] then some Ty.u64 else none,
+                  values :=
+                    C.update (C.update (fun x => none) ['x'] (C.cast Ty.u64 (Val.u64 x))) ['x']
+                      (C.cast Ty.u64 a) }).bind
+      fun __do_lift => Option.map (C.cast Ty.u64) (__do_lift.values ['x'])) =
+    some (Val.u64 (x + BitVec.setWidth 64 ((BitVec.setWidth 32 (x >>> 52) &&& 2047#32) + 2047#32) <<< 52))
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_002/source/B20/Fpr/Spec.lean:22:20: warning: This simp argument is unused:
+  declareMany
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [execute, Parsed.doubleProgram, bindArgs, emptyState, declareOne, assign, evalBody, step, evalExpr,
+    doubleSpec, bin, shift, bitsOp, commonTy, Val.ty, cast, literalValue, update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_002/source/B20/Fpr/Spec.lean:23:4: warning: This simp argument is unused:
+  Val.ty
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [execute, Parsed.doubleProgram, bindArgs, emptyState, declareOne, assign, evalBody, step, declareMany,
+    evalExpr, doubleSpec, bin, shift, bitsOp, commonTy, cast, literalValue, update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_002/source/B20/Fpr/Spec.lean:23:12: warning: This simp argument is unused:
+  cast
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [execute, Parsed.doubleProgram, bindArgs, emptyState, declareOne, assign, evalBody, step, declareMany,
+    evalExpr, doubleSpec, bin, shift, bitsOp, commonTy, Val.ty, literalValue, update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

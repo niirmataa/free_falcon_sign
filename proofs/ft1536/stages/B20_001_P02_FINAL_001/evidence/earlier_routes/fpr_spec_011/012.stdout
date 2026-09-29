@@ -1,0 +1,20 @@
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_011/source/B20/Fpr/Spec.lean:44:85: error: unsolved goals
+calls : Calls
+x y w : BitVec 64
+hadd : calls "fpr_add".toList [Val.u64 x, Val.u64 (y ^^^ 1 <<< 63)] = some (Val.u64 w)
+⊢ ∃ a,
+    calls ['f', 'p', 'r', '_', 'a', 'd', 'd'] [Val.u64 x, Val.u64 (y ^^^ 9223372036854775808#64)] = some a ∧
+      (match a with
+        | Val.u64 x => Val.u64 x
+        | Val.i64 x => Val.u64 x
+        | Val.i32 x => Val.u64 (BitVec.signExtend 64 x)
+        | Val.u32 x => Val.u64 (BitVec.setWidth 64 x)) =
+        Val.u64 w
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_011/source/B20/Fpr/Spec.lean:47:71: warning: This simp argument is unused:
+  hadd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [B20.C.Scalar.execute, Parsed.subProgram, bindArgs, emptyState, declareOne, assign, evalBody,
+    B20.C.Scalar.step, B20.C.Scalar.evalExpr, bin, shift, bitsOp, commonTy, Val.ty, B20.C.cast, literalValue, update]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

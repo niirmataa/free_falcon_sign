@@ -1,0 +1,144 @@
+{
+  "status": "PASS_ACTIVE_SOURCE_STABLE_HELPERS_SCANS_AND_SUFFIX_BINDING",
+  "source_manifest_sha256": "56974571b46e8257bdd3b4097c8c70fded6bb4b94c64805f6e35ec80929a0985",
+  "matched_bodies": [
+    {
+      "function": "ft_fpr_bits",
+      "signer_body_sha256": "2f9f1a480c86b8968cfc67c34468bda0a1ac45ebd18a9a22909adcefbde0306c",
+      "keygen_renamed_body_sha256": "0d3357d171877a1498a4df14d469456dbf16ef20be6361bc612d43b0a20ff62b",
+      "tokens_equal": true
+    },
+    {
+      "function": "ft_fpr_from_bits",
+      "signer_body_sha256": "8a67ad6b6f14f1246e16628247afbe1c36fd8666590cfd6b19c567b9ad3e946e",
+      "keygen_renamed_body_sha256": "7a8035dcac62fe0c9ca59eef94b3bbd7a0d0464c5d225e9c1713986f0cf38fd5",
+      "tokens_equal": true
+    },
+    {
+      "function": "ft_fpr_is_positive_finite",
+      "signer_body_sha256": "57faf8e2f53c3bed69dfe756c67704508650571fe5d9f0ecf59f025e562bc0fa",
+      "keygen_renamed_body_sha256": "de85862b3a891c5c6902bda5ab48b7bb9454bd469b8f47e24f643197f2f9565b",
+      "tokens_equal": true
+    },
+    {
+      "function": "ft_stable_positive",
+      "signer_body_sha256": "1ff9d74aba088f820df7004f5702481efa4b77729d1db2df8e6cf1f0463be118",
+      "keygen_renamed_body_sha256": "8a1b98951cc939e2f5bd2deb3b77bb1267f7aaf25d47294e21cd61f906805da4",
+      "tokens_equal": true
+    },
+    {
+      "function": "ft_stable_binary_inplace",
+      "signer_body_sha256": "586507685ced9fbcfaadad02201967920eb65e30bda1b6806c0d84ff4b758d7b",
+      "keygen_renamed_body_sha256": "a050bbdc77cba1ed0ce09d0acec4e24d917874792440f3451f86b05c1eb2bd9c",
+      "tokens_equal": true
+    },
+    {
+      "function": "ft_stable_top_branch",
+      "signer_body_sha256": "ddcfc8f5c2c7fa1f470ff383cbd0cf524778943dbe40dde2334972c8736518d7",
+      "keygen_renamed_body_sha256": "09163cd5f9145115064e8cf9169d508107dab891318db7d37baee8525c0c9dcc",
+      "tokens_equal": true
+    },
+    {
+      "function": "smallints_to_fpr",
+      "signer_body_sha256": "fa40cd0da7bd1c5baa870f0ccb7a2c5dccd7f7fff797097f4d9e294f99103a5c",
+      "keygen_renamed_body_sha256": "b508b4902742527172c3a127312696dac06f2c28c5a4dc2eaefb22fe33faab39",
+      "tokens_equal": true
+    }
+  ],
+  "gate00_tokens_equal_after_name_map": true,
+  "reverse_reciprocal_tokens_equal": true,
+  "aggregate_scan_tokens_equal": true,
+  "portable_sqrt54_active": true,
+  "probe_disabled": true,
+  "mandatory_success_path": {
+    "certificate_call": [
+      8110,
+      8120
+    ],
+    "accepted_break": 8134,
+    "serializers": [
+      8145,
+      8181
+    ],
+    "success_return": 8186,
+    "meaning": "Only the final successful attempt and both serializers are Emitted; no new success event or conditioning"
+  },
+  "suffix": {
+    "first": 1261,
+    "last": 1268,
+    "copy": "checks/suffix.inc",
+    "sha256": "222fd1d38e8b8de8e93526185d61031878c5976ea72a85c933dbad510c687af2",
+    "normalization_unconditional": true
+  },
+  "mirror": {
+    "helpers_span": [
+      7444,
+      7542
+    ],
+    "scan_span": [
+      7746,
+      7776
+    ],
+    "whole_KeyGen_executed": false
+  },
+  "signer_roots_control": {
+    "span": [
+      860,
+      894
+    ],
+    "copy": "checks/signer_tail.inc",
+    "sha256": "67156daeec803978f02470754402e3f71f4f6e9b4528afede4662d8465fbf364"
+  },
+  "different_root_expressions": {
+    "keygen": "selfadj(FFT(g))+selfadj(-FFT(f))",
+    "signer": "selfadj(FFT(f))+selfadj(FFT(g))",
+    "requires": "StableBits plus source sqrt/div/domain and sign/selfadj/add binding; not ideal equality alone"
+  },
+  "snapshots": {
+    "keygen_g00_preserved_until_gate": "ROOT/EMITTED_BINDING and RAW root-frame transport; successful defined prefix",
+    "signer_tmp_recomputed": true
+  },
+  "consumer_spans": {
+    "leaf_sigma": [
+      1633,
+      1645
+    ],
+    "dss": 2866,
+    "selector": [
+      2804,
+      2828
+    ]
+  },
+  "flags": [
+    "-W",
+    "-Wall",
+    "-O",
+    "-DFPR_IMPL=\"fpr-emulated.h\"",
+    "-DSAMPLER_CODF=0",
+    "-DSAMPLER_CDF=0",
+    "-DCT_BEREXP=1",
+    "-DFT_TERNARY_ADAPTIVE_CDF=1",
+    "-DFT1536_CANDIDATE_PROFILE=1",
+    "-DCLEANSE=1",
+    "-DTRUE_TERNARY_SECRET=1",
+    "-DTRUE_TERNARY_SECRET_MODE=1",
+    "-DTERNARY_KEYGEN_BOUND_SCALE_NUM=1250",
+    "-DTERNARY_KEYGEN_BOUND_SCALE_DEN=100",
+    "-DTERNARY_KEYGEN_MAX_ATTEMPTS=3000000",
+    "-DSIGN_MAX_ATTEMPTS=16",
+    "-std=c99",
+    "-Isource"
+  ],
+  "spans": {
+    "falcon-sign.c": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8",
+    "falcon-keygen.c": "0a09b6ed2363308f54584dfd1e2d33ee1b4601a68c77712c50da920b5074a5cf",
+    "falcon-fft.c": "06b573b636ae368dcda3eb4d89c3936ab31272123440d0d5362317e55d9ac063",
+    "fpr-emulated.c": "7cb06c9ea8f8bfc205a207cd73af367d299005d4bfec26333ced702f1c024e5f",
+    "fpr-emulated.h": "6b897d6c217ef25a322e3b5c3d9488b9d6b8d0e369a710d8fce2259f24e6d84f",
+    "ft1536-adaptive-cdf-tables.h": "c16f041a64aba25991b5473111675f1c046ebc38285fca6c052124cf3b7fdf4f"
+  },
+  "source_changed": false,
+  "production_source_changed": false,
+  "new_source_patch_integrated": false,
+  "owner_accepted": false
+}

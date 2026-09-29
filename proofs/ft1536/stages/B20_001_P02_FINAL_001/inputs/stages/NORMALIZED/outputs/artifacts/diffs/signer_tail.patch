@@ -1,0 +1,17 @@
+--- source/falcon-sign.c:860-894
++++ checks/signer_tail.inc
+@@ -1,3 +1,9 @@
++static int signer_roots_slice(fpr *tmp, fpr **leaves_out, const fpr *roots)
++{
++ size_t n=1536,hn=768,u;
++ uint32_t bad=0;
++ fpr q_squared,*f=tmp,*leaves,*scratch;
++ memcpy(f,roots,1536*sizeof(fpr));
+ 	for (u = 0; u < hn; u ++) {
+ 		uint32_t valid;
+ 		uint64_t mask, xb;
+@@ -33,3 +39,4 @@
+ 	}
+ 	*leaves_out = leaves;
+ 	return bad == 0;
++}

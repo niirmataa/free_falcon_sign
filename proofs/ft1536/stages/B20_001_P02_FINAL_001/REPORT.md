@@ -1,0 +1,20 @@
+# B20/P02 — successor v2: uzupełniony freeze przed V02
+
+**COMPLETE_FOR_REVIEW / PARTIAL_PROOF (zakres starego P02).** packaging_task_id=FT1536_P02_FREEZE_CLOSURE_RUN_001. Projekt Niirmata; Falcon Project / Thomas Pornin, licencje bez zmiany. Autor wcześniejszych twierdzeń GPT-6 Astra Fast / `ses_f33f9f0afffeLad43JuCwKBDk2`; autor suplementu organizacyjnego GPT-6 Sol / `ses_f13139bc5ffeFI41laN8mgF1PA` (kontekst kontynuowany po T03-B, nie nowy niezależny V02).
+
+## Piny i replay
+
+Oryginalny REPORT `98ea050bfe15b39b4ad2a6d26428bcd7e12f22ca33b06b6bc98e9e964bb295a5`, OUTPUTS `4e8942ccaf46f0971688a0f0cc1d07c5831a46175e6ad2dde903c9f55b046a01`; zachowano 68/68 identycznych outputów. Bootstrap `088b407a3be937a49b1a23d4305e83641123d9770040d78b4a43b7cabe14c65f`, nowy static INPUTS `b0a57afa260c403a11901ef29676104729306c02ecd856b07170ec261ab76045`. Source17 `56974571b46e8257bdd3b4097c8c70fded6bb4b94c64805f6e35ec80929a0985`, SOURCE_BASE `ef62824a10a69962dc8347410ee3f424bfa2b12e`. Bieżący `main` HEAD successor `41216bb8d61004bb941a8d1b276f43346df11ce8` odczytany 2026-09-29T14:16:25.913306+00:00 bez uruchamiania Git. Stary *final* HEAD jest nieudokumentowany.
+P02 TASK `9954a8b1b2a73a4f3e475ab45bb7bfe8b9a646b109a8989659a61aa933e5ef1f`, V02 TASK `cfd4d2eb1e4806a6772b6013ad34a6d9d086b906a4bf9cd96f81dc1e0fa4a382`, oba w closure i bez zmiany historycznych danych.
+
+Portable full fresh `run/fresh_003`: **43/43 exit0, 34/34 Lean z BUILD_PLAN (w tym 2 audyty) + pełny audit terms, 16/16 bajtowych semantic matches**, source before/after unchanged; `REPLAY_RESULT.json`, raw logs/receipt i child streams bez kolizji, `replay_evidence/fresh_003/`. Wcześniejsze `fresh_001` 42/42 i 15/15 oraz `fresh_002` 43/43 i 16/16 zachowane osobno; ostatnia korekta runnera preflight naprawiła rozróżnienie top-level OUTPUTS od zagnieżdżonego `predecessor/OUTPUTS.sha256`. Gate sprawdza 9 przypiętych bibliotek P01 i cache; używa direct RO HEAD, historycznych manifestów source/cache i pełnych hashy, bez sieci lub Git. Oracles wykonane rzeczywistym `sage *.sage` z preparserem. Normal word 12288+4 mutants, LE 3072+3, scalar 19721 in/21352 obs+5 mutants; ASan word/LE/scalar są osobnymi *historycznymi* zakończonymi receiptami, bez roszczenia o nowe sanitarne przebiegi.
+
+## F1–F4 i uczciwa granica
+
+F1: sealed original runner + portable runner/diff; przed DEST waliduje piny i exact-set. F2: wszystkie 34 źródła BUILD_PLAN mają producenta i kernel build; dwie brakujące wersje audit odpowiadają dokładnie replay_001. Scan 489 nazw typów/aksjomatów jest historyczny i przypięty; `AuditTerms` historyczny #print ma **51 truncation glyphs `⋯`**, lecz nowy dodatkowy pełny wydruk 20 terms (`logs/042.stdout`) ma zero skrótów i czysty log. F3: w pakiecie 9 historycznych receiptów/144 kroki/288 surowych logów kroków, child command logs i wcześniejsze tekstowe failed routes. Sześć logów child replay_001 ma nadpisaną oryginalną ścieżkę; hash-identyczne bajty z innych przypiętych runów zapisano osobno; pierwotna proweniencja ścieżki nie odzyskana. Nowy runner przechowuje child logs osobno dla każdej kontroli. F4: jednoznaczny *nowy* HEAD powyżej, bez fikcji starego. Szczegóły `FREEZE_CLOSURE.md/.json`, `OVERWRITTEN_LOGS.json`, `HISTORY_BINDING.json`.
+
+## Rzeczywisty zakres matematyczny
+
+LE64 source binding i shift helpers w przyjętym zakresie P01, literal-BitVec neg/double/half/pack/rint/floor z domenami, conditional sub **tylko z przesłanką AddCallObligation**. Frozen `shiftCalls` ma wyłącznie 3 shift callees: fpr_add nie jest wykonywane przez nie jako napisany dispatcher. Raw −0 floor daje −1; pełne real-rint, arytmetyka add/mul/div/sqrt z real-error/caller domains, C→machine/full C frontend pozostają OPEN. Brak nowego twierdzenia source-level Sign/security, source_changed=false, owner_accepted=false; niezależny V02 dopiero nastąpi. Kolejny krok: koordynator sprawdza piny i przygotowuje ręczny start V02, bez automatycznego promowania P02 do pełnego dowodu.
+
+Wszystkie moje joby zakończone. Bez Git/push i zmian frozen starego W.

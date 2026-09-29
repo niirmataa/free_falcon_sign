@@ -1,0 +1,39 @@
+@prefix_invariant : ∀ {K : Type} (count : Nat) (addr : Nat → K → Nat) (op : Nat → (K → Int) → K → Int)
+  (step : Nat → Mem → Mem),
+  (∀ (b : Nat), b < count → ∀ (c : Nat), c < count → ∀ (k l : K), addr b k = addr c l → b = c ∧ k = l) →
+    (∀ (b : Nat), b < count → ∀ (s : Mem) (k : K), step b s (addr b k) = op b (fun l => s (addr b l)) k) →
+      (∀ (b : Nat), b < count → ∀ (s : Mem) (i : Nat), (∀ (k : K), i ≠ addr b k) → step b s i = s i) →
+        ∀ (n : Nat),
+          n ≤ count →
+            ∀ (s : Mem) (b : Nat),
+              b < count →
+                ∀ (k : K), runSteps step n s (addr b k) = if b < n then op b (fun l => s (addr b l)) k else s (addr b k)
+pair_prefix : ∀ (count : Nat) (addr : Nat → Bool → Nat) (op : Nat → (Bool → Int) → Bool → Int),
+  (∀ (b : Nat), b < count → ∀ (c : Nat), c < count → ∀ (k l : Bool), addr b k = addr c l → b = c ∧ k = l) →
+    ∀ (n : Nat),
+      n ≤ count →
+        ∀ (s : Mem) (b : Nat),
+          b < count →
+            ∀ (k : Bool),
+              runSteps (pairStep addr op) n s (addr b k) =
+                if b < n then op b (fun l => s (addr b l)) k else s (addr b k)
+triple_prefix : ∀ (count : Nat) (addr : Nat → Fin 3 → Nat) (op : Nat → (Fin 3 → Int) → Fin 3 → Int),
+  (∀ (b : Nat), b < count → ∀ (c : Nat), c < count → ∀ (k l : Fin 3), addr b k = addr c l → b = c ∧ k = l) →
+    ∀ (n : Nat),
+      n ≤ count →
+        ∀ (s : Mem) (b : Nat),
+          b < count →
+            ∀ (k : Fin 3),
+              runSteps (tripleStep addr op) n s (addr b k) =
+                if b < n then op b (fun l => s (addr b l)) k else s (addr b k)
+'FT1536Global.store_at' depends on axioms: [propext]
+'FT1536Global.store_away' depends on axioms: [propext]
+'FT1536Global.prefix_invariant' depends on axioms: [propext, Quot.sound]
+'FT1536Global.prefix_frame' depends on axioms: [propext, Quot.sound]
+'FT1536Global.pair_local' depends on axioms: [propext]
+'FT1536Global.pair_frame' depends on axioms: [propext]
+'FT1536Global.pair_first_store' depends on axioms: [propext]
+'FT1536Global.pair_prefix' depends on axioms: [propext, Quot.sound]
+'FT1536Global.triple_local' depends on axioms: [propext, Quot.sound]
+'FT1536Global.triple_frame' depends on axioms: [propext]
+'FT1536Global.triple_prefix' depends on axioms: [propext, Quot.sound]

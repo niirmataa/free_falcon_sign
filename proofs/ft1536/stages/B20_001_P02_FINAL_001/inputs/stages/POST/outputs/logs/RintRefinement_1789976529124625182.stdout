@@ -1,0 +1,58 @@
+formal/RintRefinement.lean:12:38: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  g ≥ 0
+  f ≥ 0
+  d ≥ 0
+  d + f - g ≥ 1
+  c ≥ 1
+  c - d ≥ 1
+  b ≥ 1
+  0 ≤ a ≤ 63
+where
+ a := ↑e
+ b := ↑2 ^ (63 - e)
+ c := ↑2 ^ e
+ d := ↑m % ↑(2 ^ e)
+ f := ↑(m / 2 ^ e) * ↑(2 ^ e)
+ g := ↑m
+formal/RintRefinement.lean:21:16: error: Tactic `rewrite` failed: motive is not type correct:
+  fun _a =>
+    increment (m / 2 ^ e % 2 * 9223372036854775808 + m % 2 ^ e * 2 ^ (63 - e)) =
+      if _a ∨ m % 2 ^ e * 2 ^ (63 - e) = 4611686018427387904 ∧ m / 2 ^ e % 2 = 1 then 1 else 0
+Error: Application type mismatch: The argument
+  Nat.decLt 4611686018427387904 (m % 2 ^ e * 2 ^ (63 - e))
+has type
+  Decidable (4611686018427387904 < m % 2 ^ e * 2 ^ (63 - e))
+but is expected to have type
+  Decidable _a
+in the application
+  @instDecidableOr _a (m % 2 ^ e * 2 ^ (63 - e) = 4611686018427387904 ∧ m / 2 ^ e % 2 = 1)
+    (Nat.decLt 4611686018427387904 (m % 2 ^ e * 2 ^ (63 - e)))
+
+Explanation: The rewrite tactic rewrites an expression 'e' using an equality 'a = b' by the following process. First, it looks for all 'a' in 'e'. Second, it tries to abstract these occurrences of 'a' to create a function 'm := fun _a => ...', called the *motive*, with the property that 'm a' is definitionally equal to 'e'. Third, we observe that 'congrArg' implies that 'm a = m b', which can be used with lemmas such as 'Eq.mpr' to change the goal. However, if 'e' depends on specific properties of 'a', then the motive 'm' might not typecheck.
+
+Possible solutions: use rewrite's 'occs' configuration option to limit which occurrences are rewritten, or use 'simp' or 'conv' mode, which have strategies for certain kinds of dependencies (these tactics can handle proofs and 'Decidable' instances whose types depend on the rewritten term, and 'simp' can apply user-defined '@[congr]' theorems as well).
+
+m e : Nat
+he : e ≤ 63
+hd : 2 ^ e * 2 ^ (63 - e) = 9223372036854775808
+hs : 0 < 2 ^ (63 - e)
+hp : 0 < 2 ^ e
+hr : m % 2 ^ e < 2 ^ e
+hm : m = m / 2 ^ e * 2 ^ e + m % 2 ^ e
+hw : m * 2 ^ (63 - e) % 18446744073709551616 = m / 2 ^ e % 2 * 9223372036854775808 + m % 2 ^ e * 2 ^ (63 - e)
+hh :
+  (2 ^ e < 2 * (m % 2 ^ e) ↔ 4611686018427387904 < m % 2 ^ e * 2 ^ (63 - e)) ∧
+    (2 ^ e = 2 * (m % 2 ^ e) ↔ m % 2 ^ e * 2 ^ (63 - e) = 4611686018427387904)
+hb : m % 2 ^ e * 2 ^ (63 - e) < 9223372036854775808
+hi :
+  increment (m / 2 ^ e % 2 * 9223372036854775808 + m % 2 ^ e * 2 ^ (63 - e)) =
+    if
+        4611686018427387904 < m % 2 ^ e * 2 ^ (63 - e) ∨
+          m % 2 ^ e * 2 ^ (63 - e) = 4611686018427387904 ∧ m / 2 ^ e % 2 = 1 then
+      1
+    else 0
+hmod : (m / 2 ^ e % 2 * 9223372036854775808 + m % 2 ^ e * 2 ^ (63 - e)) % 9223372036854775808 = m % 2 ^ e * 2 ^ (63 - e)
+hdiv : (m / 2 ^ e % 2 * 9223372036854775808 + m % 2 ^ e * 2 ^ (63 - e)) / 9223372036854775808 = m / 2 ^ e % 2
+⊢ sourceMagnitude m e = nearestQuotient m (2 ^ e)
+formal/RintRefinement.lean:25:55: error: expected ';' or line break

@@ -1,0 +1,444 @@
+{
+  "schema": "B20_LIVE_STATUS_V1",
+  "note": "Mutable coordinator registry; not included in PACKAGE.sha256. Update only after real handoff/binding.",
+  "external_inputs": {
+    "T02.1_REVIEWED_HANDOFF": {
+      "status": "AVAILABLE_REVIEWED_HISTORICAL_SCOPE",
+      "stage": "proofs/ft1536/stages/FT1536_PRNG_LAYOUT_COUNTER_RUN_003",
+      "report_sha256": "3b7c2b3bbc7f0b72b3a25d3f2cb32623294f1135acb61d8c65b905eefe1a6168",
+      "outputs_sha256": "e37b1e97ebcfa65d698c52e175c09e826cdbafe565722cc017b5349c00d3f5dc",
+      "review_path": "proofs/ft1536/validation/2026-09-22-prng-layout-supplement/review",
+      "review_sha256": "31a7353d052bb36e422672de7e60e429932fe10a5733a9906a3de95f5b61f24b",
+      "review_outputs_sha256": "344520eeee07b089a8a611942fec2646fdbd27665121ee37cda41e11485e4f30",
+      "review_verdict": "PASS_SCOPED_SUPPLEMENT",
+      "reviewer_model": "MiMo V2.6 Flash (opencode/mimo-v2.6-flash-free)",
+      "reviewer_context": "fresh per owner handoff",
+      "kernel_complete": false,
+      "B20_P03_formalization_required": true,
+      "P03_remaining_dependencies": [
+        "P01",
+        "P02"
+      ],
+      "binding_note": "Materialize this reviewed historical input when starting P03; its full BOUND_INPUTS still requires reviewed P01/P02 exports."
+    }
+  },
+  "tasks": {
+    "P01": {
+      "status": "REVIEWED",
+      "model": "opencode/mimo-v2.6-pro",
+      "context": "Wpis retrospektywny z HANDOFF v2: kontynuacja po przejęciu P01; świeże wejście wg HANDOFF v1. Koordynator nie uruchamia workera.",
+      "head": "85b8e7c4659685ef885e0121164b61e2421a926a",
+      "bound_inputs_sha256": "ddadb7e4bd5d129288d1f7a9aac66d733ce542c9f17f80fd551b975fc1c5d8b8",
+      "final_report_sha256": "e7431aa06716e2960a86fd60bebea2ea213e770dd3f61b39a00292ac80ddd888",
+      "final_outputs_sha256": "ebd4cff87995d34d318fa86512aef266a3c3c05f6147c81b8bac307cb2553386",
+      "review_verdict": "PASS_SCOPED_REVIEW",
+      "bound_inputs_path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/inputs/BOUND_INPUTS.json",
+      "final_report_path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/output_v2/REPORT.md",
+      "final_outputs_path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/output_v2/OUTPUTS.sha256",
+      "review_report_path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V01/output/REVIEW.md",
+      "review_outputs_path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V01/output/REVIEW_OUTPUTS.sha256",
+      "review_report_sha256": "2a0e18baecd18af09dc382872582b71044bfb69b1f1d79762f7d67091c0b2106",
+      "review_outputs_sha256": "acd37b12408e9fa6f6ab3c2d01d022b3f6bbeae54a3933c27257ab9b72492441",
+      "review_scope": "4/4 exports kernel-checked in narrow proved scope: CExec abstract-C (abort base missing, completeness one-directional); SourceBinding generic + translateStmt only for `return <decimal>;` with pinned return 0 (fileSha/manual selection in TCB, third conjunct trivial); CertificateSound exact-ZZ sqrt2 + transport + negatives; ObservedKernel/conditionalHistory/TV/chi2 definitions + trivial pinned self-instances only (observations unused, self-vs-self zero). End-to-end as small example. Missing: operator-rich translation, C-to-machine, full C frontend, real PRNG/SHAKE/ChaCha/KeyGen/Sign, abort base, converse determinism, observational conditioning, nontrivial TV/chi2. Downstream may consume only received exports in this scope.",
+      "stage": "B20_001_P01_FINAL_001",
+      "review_stage": "B20_001_V01_FINAL_001"
+    },
+    "V01": {
+      "status": "REVIEW_COMPLETE",
+      "model": "opencode/muse-spark-1.3-contributor-free",
+      "context": "Świeży kontekst wg HANDOFF V01 z 2026-09-23; zapis retrospektywny zakończonego odbioru, bez uruchamiania procesu.",
+      "head": "8b759c2d41e0bd76c2dcbe18ce4a863a62a3e969",
+      "bound_inputs_sha256": "faae7bf95c4cac01fd039921485909b57a3a51caa8c386bf6a2fa2177720caaf",
+      "final_report_sha256": "2a0e18baecd18af09dc382872582b71044bfb69b1f1d79762f7d67091c0b2106",
+      "final_outputs_sha256": "acd37b12408e9fa6f6ab3c2d01d022b3f6bbeae54a3933c27257ab9b72492441",
+      "review_verdict": "PASS_SCOPED_REVIEW",
+      "bound_inputs_path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V01/inputs/BOUND_INPUTS.json",
+      "final_report_path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V01/output/REVIEW.md",
+      "final_outputs_path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/V01/output/REVIEW_OUTPUTS.sha256",
+      "stage": "B20_001_V01_FINAL_001"
+    },
+    "P02": {
+      "status": "FROZEN_AWAITING_REVIEW",
+      "model": "openai/gpt-6-astra-fast",
+      "context": "Świeży kontekst, sesja ses_f33f9f0afffeLad43JuCwKBDk2; retrospektywny wpis owner-start i WORD_HELPERS_001 wg HANDOFF z 2026-09-23. Zadanie nadal IN_PROGRESS.",
+      "head": "41216bb8d61004bb941a8d1b276f43346df11ce8",
+      "bound_inputs_sha256": "567f57ac135d0c766f95dfbc53b5dfedcd9d4eb15993d78ab896d4bead936278",
+      "final_report_sha256": "ce3cad727ce44894cf633085f87b001cca742a7fe3a0a6dc2c750d6f5ac051e5",
+      "final_outputs_sha256": "af60f1b43843160ded4b977bbdc4ae42d5547a42937ec254f40be8b755f4e44e",
+      "review_verdict": null,
+      "bound_inputs_path": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/BOUND_INPUTS.json",
+      "final_report_path": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/output/REPORT.md",
+      "final_outputs_path": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_P02_FREEZE_CLOSURE_RUN_001/output/OUTPUTS.sha256"
+    },
+    "V02": {
+      "status": "BLOCKED_PRODUCER_FREEZE",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "P03": {
+      "status": "BLOCKED_UPSTREAM_EXPORTS",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "V03": {
+      "status": "BLOCKED_PRODUCER_FREEZE",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "P04": {
+      "status": "BLOCKED_UPSTREAM_EXPORTS",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "V04": {
+      "status": "BLOCKED_PRODUCER_FREEZE",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "P05": {
+      "status": "BLOCKED_UPSTREAM_EXPORTS",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "V05": {
+      "status": "BLOCKED_PRODUCER_FREEZE",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "P06": {
+      "status": "BLOCKED_UPSTREAM_EXPORTS",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "V06": {
+      "status": "BLOCKED_PRODUCER_FREEZE",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "P07": {
+      "status": "BLOCKED_UPSTREAM_EXPORTS",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "V07": {
+      "status": "BLOCKED_PRODUCER_FREEZE",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "P08": {
+      "status": "BLOCKED_UPSTREAM_EXPORTS",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "V08": {
+      "status": "BLOCKED_PRODUCER_FREEZE",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "P09": {
+      "status": "BLOCKED_UPSTREAM_EXPORTS",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "V09": {
+      "status": "BLOCKED_PRODUCER_FREEZE",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "P10": {
+      "status": "BLOCKED_UPSTREAM_EXPORTS",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "V10": {
+      "status": "BLOCKED_PRODUCER_FREEZE",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "P11": {
+      "status": "BLOCKED_UPSTREAM_EXPORTS",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "V11": {
+      "status": "BLOCKED_PRODUCER_FREEZE",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "P12": {
+      "status": "BLOCKED_UPSTREAM_EXPORTS",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "V12": {
+      "status": "BLOCKED_PRODUCER_FREEZE",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "P13": {
+      "status": "BLOCKED_UPSTREAM_EXPORTS",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "V13": {
+      "status": "BLOCKED_PRODUCER_FREEZE",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "P14": {
+      "status": "BLOCKED_UPSTREAM_EXPORTS",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "V14": {
+      "status": "BLOCKED_PRODUCER_FREEZE",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "P15": {
+      "status": "BLOCKED_UPSTREAM_EXPORTS",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "V15": {
+      "status": "BLOCKED_PRODUCER_FREEZE",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "P16": {
+      "status": "BLOCKED_UPSTREAM_EXPORTS",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "V16": {
+      "status": "BLOCKED_PRODUCER_FREEZE",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "P17": {
+      "status": "BLOCKED_UPSTREAM_EXPORTS",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "V17": {
+      "status": "BLOCKED_PRODUCER_FREEZE",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "P18": {
+      "status": "BLOCKED_UPSTREAM_EXPORTS",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "V18": {
+      "status": "BLOCKED_PRODUCER_FREEZE",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "P19": {
+      "status": "BLOCKED_UPSTREAM_EXPORTS",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "V19": {
+      "status": "BLOCKED_PRODUCER_FREEZE",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "P20": {
+      "status": "BLOCKED_UPSTREAM_EXPORTS",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    },
+    "V20": {
+      "status": "BLOCKED_PRODUCER_FREEZE",
+      "model": null,
+      "context": null,
+      "head": null,
+      "bound_inputs_sha256": null,
+      "final_report_sha256": null,
+      "final_outputs_sha256": null,
+      "review_verdict": null
+    }
+  }
+}

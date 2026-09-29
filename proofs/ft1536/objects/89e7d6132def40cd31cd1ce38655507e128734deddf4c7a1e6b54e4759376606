@@ -1,0 +1,9 @@
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_047/source/B20/Fpr/Spec.lean:271:26: error: unsolved goals
+e : BitVec 32
+he : 64 ≤ e.toNat ∧ e.toNat < 2 ^ 31
+hsub : (e - 64#32).toNat = (2 ^ 32 - (64#32).toNat + e.toNat) % 2 ^ 32
+h64 : (64#32).toNat = 64
+hV : (BitVec.setWidth 64 (BitVec.setWidth 32 (e - 64#32) >>> 31)).toNat = 0
+h0 : (0#64).toNat = 0
+hX : BitVec.setWidth 64 (BitVec.setWidth 32 (e - 64#32) >>> 31) = 0#64
+⊢ -0#64 = 0#64

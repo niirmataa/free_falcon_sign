@@ -1,0 +1,81 @@
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/signed_arith_003/source/B20/C/SignedArith.lean:82:6: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≤ -9223372036854775809
+  0 ≤ c ≤ 1
+  0 ≤ b ≤ 9223372036854775806
+where
+ b := ↑a.toNat
+ c := ↑(0#64).toNat
+ d := a.toInt
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/signed_arith_003/source/B20/C/SignedArith.lean:83:10: error: Insufficient number of fields for `⟨...⟩` constructor: Constructor `Eq.refl` does not have explicit fields, but 4 were provided
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/signed_arith_003/source/B20/C/SignedArith.lean:85:42: error: unsolved goals
+a : BitVec 64
+ha : a.toNat < 2 ^ 63 - 1
+ha63 : a.toNat < 2 ^ 63
+hane : a ≠ 9223372036854775808
+hs : (1#64).toNat ≤ 1
+hneg1 : -1#64 = 18446744073709551615#64
+⊢ a ^^^ 18446744073709551615#64 = ~~~a
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/signed_arith_003/source/B20/C/SignedArith.lean:94:49: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  9223372036854775809 ≤ c ≤ 18446744073709551615
+  0 ≤ b ≤ 1
+where
+ b := ↑(1#64).toNat
+ c := ↑(2 ^ 64 - (1 + a.toNat))
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/signed_arith_003/source/B20/C/SignedArith.lean:98:6: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≤ -9223372036854775810
+  -9223372036854775807 ≤ c ≤ -1
+  0 ≤ b ≤ 1
+where
+ b := ↑(1#64).toNat
+ c := (~~~a).toInt
+ d := (↑(a.toNat ^^^ 18446744073709551615)).bmod 18446744073709551616
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/signed_arith_003/source/B20/C/SignedArith.lean:99:15: error: unsolved goals
+a : BitVec 64
+ha : a.toNat < 2 ^ 63 - 1
+ha63 : a.toNat < 2 ^ 63
+hane : a ≠ 9223372036854775808
+hs : (1#64).toNat ≤ 1
+hneg1 : -1#64 = 18446744073709551615#64
+hxor : a ^^^ -1#64 = ~~~a
+htoa : a.toInt = ↑a.toNat
+hsafe : signedSafe BinOp.add (a ^^^ -1#64) 1#64 = true
+⊢ signedSafe BinOp.add (a ^^^ 18446744073709551615#64) 1#64 = false →
+    none = bitsOp BinOp.add (a ^^^ 18446744073709551615#64) 1#64
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/signed_arith_003/source/B20/C/SignedArith.lean:85:58: warning: This simp argument is unused:
+  BitVec.xor_allOnes
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hneg1]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/signed_arith_003/source/B20/C/SignedArith.lean:97:24: warning: This simp argument is unused:
+  hxor
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [signedSafe, h1, hnt, htoa]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/signed_arith_003/source/B20/C/SignedArith.lean:97:34: warning: This simp argument is unused:
+  hnt
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [signedSafe, hxor, h1, htoa]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/signed_arith_003/source/B20/C/SignedArith.lean:97:39: warning: This simp argument is unused:
+  htoa
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [signedSafe, hxor, h1, hnt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/signed_arith_003/source/B20/C/SignedArith.lean:99:38: warning: This simp argument is unused:
+  hsafe
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [signedBitsOp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

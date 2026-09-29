@@ -1,0 +1,85 @@
+--- inputs/bootstrap/TOWER/scripts/tower_model.py
++++ scripts/tree_model.py
+@@ -1,35 +1,47 @@
+-"""Source-order recursive inner model, including its real base leaf stores."""
+-from backend import ca,cs,cm,conj
+-from half_model import half
+-from node2_model import dim2
+-def split(v,q,tab):
+- assert 2<=q<=9 and len(v)==2**q
+- square,_,_=tab;hn=len(v)//2;qn=hn//2;a=[];ai=[];b=[];bi=[]
+- for j in range(qn):
+-  x=(v[2*j],v[2*j+hn]);y=(v[2*j+1],v[2*j+1+hn]);s=ca(x,y);d=cm(cs(x,y),conj(square[hn+j]))
+-  z0=(half(s[0]),half(s[1]));z1=conj((half(d[0]),half(d[1])))
+-  a.append(z0[0]);ai.append(z0[1]);b.append(z1[0]);bi.append(z1[1])
+- return a+ai,b+bi
+-def local(a,b):
+- assert len(a)==len(b);hn=len(a)//2;L=[];Li=[];D=[];Di=[]
+- for j in range(hn):
+-  out=dim2((a[j],a[j+hn]),(b[j],b[j+hn]));L.append(out[2][0]);Li.append(out[2][1]);D.append(out[3][0]);Di.append(out[3][1])
+- return L+Li,D+Di
+-def tree_size(k):return (k+1)*2**k
+-def build(k,a,b,tab,offset=0,tmp=0,aref=('A',0),bref=('B',0),path=''):
+- assert 1<=k<=7 and len(a)==len(b)==2**k
+- n=2**k;events=[];nodes=[]
+- if k>1:
+-  events.append(['S',k,'S',tmp,'S',tmp+n//2,aref[0],aref[1]])
+-  x,y=split(a,k,tab)
+-  first,e0,n0=build(k-1,x,y,tab,offset+n,tmp+n,('S',tmp),('S',tmp+n//2),path+'0')
+-  events+=e0;nodes+=n0
+- # The local operation is deliberately after the first recursive call.
+- L,D=local(a,b);events.append(['N',k,offset])
+- nodes.append(dict(level=k,path=path,offset=offset,a=a,b=b,L=L,D=D))
+- if k==1:
+-  events.append(['B',offset,a[0],D[0]])
+-  return L+[a[0],D[0]],events,nodes
+- events.append(['S',k,'S',tmp,'S',tmp+n//2,'S',tmp+n])
+- x,y=split(D,k,tab);second,e1,n1=build(k-1,x,y,tab,offset+n+tree_size(k-1),tmp+n,('S',tmp),('S',tmp+n//2),path+'1')
+- return L+first+second,events+e1,nodes+n1
++"""Raw source tree plus literal positive stable sequence on public Gram fixtures."""
++from backend import add,sub,mul,div,neg,of,sqrt,half,double,cm,ca,conj
++from root_model import tables
++from node_model import slice_words
++from tower_model import split,local
++from dyadic import value
++def words(z):return [x for x,y in z]+[y for x,y in z]
++def dim2(a,c,j):
++ n=len(a);hn=n//2;L=[];D=[]
++ for i in range(hn):
++  h=a[i];l=(div(c[i],h),div(c[i+hn],h));p=cm((c[i],c[i+hn]),conj(l));d=ca((neg(p[0]),neg(p[1])),(j[i],j[i+hn]));L.append(l);D.append(d)
++ return words(L),words(D)
++def raw_tree(root,gram):
++ tab=tables(root);A,C,J=gram;records=[]
++ def inner(k,a,b,off,path):
++  n=2**k
++  if k>1:
++   x,y=split(a,k,tab);left=inner(k-1,x,y,off+n,path+'0')
++  L,D=local(a,b);assert all(value(x)>0 for x in a[:n//2]+D[:n//2]);records.append(dict(kind='binary',level=k,offset=off,path=path,input0=a,input1=b,L=L,D=D))
++  if k==1:return L+[a[0],D[0]]
++  x,y=split(D,k,tab);right=inner(k-1,x,y,off+n+k*2**(k-1),path+'1');return L+left+right
++ def depth(v,off,branch):
++  z=slice_words(v,tab);a,b,c,d,e,l10,l20,l21=z
++  records.append(dict(kind='cubic',offset=off,branch=branch,parent=v,a=a,b=b,c=c,d=d,e=e,L10=l10,L20=l20,L21=l21))
++  out=l10+l20+l21
++  for k,v in enumerate([a,d,e]):
++   x,y=split(v,9,tab);out+=inner(8,x,y,off+1536+k*2304,f'{branch}{k}')
++  return out
++ left=depth(A,1536,0);L,D=dim2(A,C,J);right=depth(D,9984,1)
++ return L+left+right,D,records
++def stable(rootA):
++ assert len(rootA)==1536 and all(value(x)>=value(of(1))/2 for x in rootA[:768]);three=of(3)
++ def binary(v):
++  if len(v)==1:return v
++  a=[];b=[]
++  for i in range(0,len(v),2):
++   x,y=v[i:i+2];s=add(x,y);p=mul(x,y);a.append(half(s));b.append(div(double(p),s))
++  return binary(a)+binary(b)
++ blocks=[[],[],[]]
++ for i in range(0,768,3):
++  a,b,c=rootA[i:i+3];e1=add(add(a,b),c);ab=mul(a,b);ac=mul(a,c);bc=mul(b,c);e2=add(add(ab,ac),bc);abc=mul(ab,c)
++  for dst,z in zip(blocks,[div(e1,three),div(e2,e1),div(mul(three,abc),e2)]):dst.append(z)
++ out=sum([binary(b) for b in blocks],[]);return out+[div(of(18433**2),x) for x in reversed(out)]
++def normalized(raw,D,mapping):
++ tree=list(raw)
++ for r,d in zip(mapping,D):tree[r['tree_index']]=div(of(768),sqrt(d))
++ return tree

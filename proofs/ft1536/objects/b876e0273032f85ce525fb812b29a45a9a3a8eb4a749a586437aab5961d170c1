@@ -1,0 +1,70 @@
+argv: lake build
+cwd: /home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run
+start: 2026-09-22T19:42:27+02:00
+⚠ [12/52] Built B20.Foundation.Core (274ms)
+warning: formal/B20/Foundation/Core.lean:35:9: Variable name `h` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _h
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✖ [30/75] Building B20.Foundation.CExec (489ms)
+trace: .> LEAN_PATH=/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Cli/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/batteries/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Qq/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/aesop/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/proofwidgets/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/importGraph/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/plausible/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/bootstrap/mathlib4/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/build/lib/lean /home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean /home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/formal/B20/Foundation/CExec.lean -o /home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/build/lib/lean/B20/Foundation/CExec.olean -i /home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/build/lib/lean/B20/Foundation/CExec.ilean -c /home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/build/ir/B20/Foundation/CExec.c --setup /home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/build/ir/B20/Foundation/CExec.setup.json --json
+error: formal/B20/Foundation/CExec.lean:5:18: Unknown identifier `CStmt`
+error: formal/B20/Foundation/CExec.lean:36:17: Invalid dotted identifier notation: The expected type of `.skip` could not be determined
+
+Hint: Using one of these would be unambiguous:
+  [apply] `Std.IterStep.skip`
+  [apply] `Std.PlausibleIterStep.skip`
+  [apply] `CStmt.skip`
+  [apply] `Lean.Parser.Tactic.skip`
+  [apply] `Std.IterM.IsPlausibleNthOutputStep.skip`
+  [apply] `Lean.Parser.Tactic.Conv.skip`
+  [apply] `Lean.Parser.Tactic.Grind.skip`
+  [apply] `Std.IterM.IsPlausibleNthOutputStep.below.skip`
+  [apply] `Std.Iterators.Types.FilterMap.PlausibleStep.skip`
+  [apply] `Std.Iterators.Types.Take.PlausibleStep.skip`
+error: formal/B20/Foundation/CExec.lean:38:13: Invalid dotted identifier notation: The expected type of `.assign` could not be determined
+
+Hint: Using `CStmt.assign would be unambiguous:
+  [apply] `CStmt.assign`
+error: formal/B20/Foundation/CExec.lean:39:47: Invalid dotted identifier notation: The expected type of `.assign` could not be determined
+
+Hint: Using `CStmt.assign would be unambiguous:
+  [apply] `CStmt.assign`
+error: formal/B20/Foundation/CExec.lean:41:13: Invalid dotted identifier notation: The expected type of `.storeU64` could not be determined
+
+Hint: Using `CStmt.storeU64 would be unambiguous:
+  [apply] `CStmt.storeU64`
+error: formal/B20/Foundation/CExec.lean:42:46: Invalid dotted identifier notation: The expected type of `.storeU64` could not be determined
+
+Hint: Using `CStmt.storeU64 would be unambiguous:
+  [apply] `CStmt.storeU64`
+error: formal/B20/Foundation/CExec.lean:43:45: Invalid dotted identifier notation: The expected type of `.ret` could not be determined
+
+Hint: Using `CStmt.ret would be unambiguous:
+  [apply] `CStmt.ret`
+error: formal/B20/Foundation/CExec.lean:44:44: Invalid dotted identifier notation: The expected type of `.ret` could not be determined
+
+Hint: Using `CStmt.ret would be unambiguous:
+  [apply] `CStmt.ret`
+error: formal/B20/Foundation/CExec.lean:45:72: Invalid dotted identifier notation: The expected type of `.seq` could not be determined
+
+Hint: Using one of these would be unambiguous:
+  [apply] `Seq.seq`
+  [apply] `CStmt.seq`
+error: formal/B20/Foundation/CExec.lean:46:142: Invalid dotted identifier notation: The expected type of `.seq` could not be determined
+
+Hint: Using one of these would be unambiguous:
+  [apply] `Seq.seq`
+  [apply] `CStmt.seq`
+error: formal/B20/Foundation/CExec.lean:47:26: Invalid dotted identifier notation: The expected type of `.assumeFalse` could not be determined
+
+Hint: Using `CStmt.assumeFalse would be unambiguous:
+  [apply] `CStmt.assumeFalse`
+error: formal/B20/Foundation/CExec.lean:48:27: Invalid dotted identifier notation: The expected type of `.unimplemented` could not be determined
+
+Hint: Using `CStmt.unimplemented would be unambiguous:
+  [apply] `CStmt.unimplemented`
+✔ [8925/8932] Built Mathlib.Probability.Kernel.Invariance (121s)
+✔ [8926/8932] Built Mathlib (179s)

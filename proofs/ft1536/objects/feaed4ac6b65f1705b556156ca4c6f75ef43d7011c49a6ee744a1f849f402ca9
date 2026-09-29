@@ -1,0 +1,17 @@
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_059/source/B20/Fpr/Spec.lean:444:37: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  0 ≤ c ≤ 63
+  13 ≤ b ≤ 1085
+  64 ≤ a ≤ 4294967295
+where
+ a := ↑(rint_e x).toNat
+ b := (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toInt
+ c := ↑(BitVec.toNat ?m.35)
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_059/source/B20/Fpr/Spec.lean:447:4: error: `simp` made no progress
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_059/source/B20/Fpr/Spec.lean:446:24: warning: This simp argument is unused:
+  hmask
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [rint_m1]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

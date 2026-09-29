@@ -1,0 +1,83 @@
+{
+  "name": "shift_003",
+  "start": "2026-09-23T02:23:07.312228+00:00",
+  "wall_limit_per_step_s": 1800,
+  "address_space_bytes": 8589934592,
+  "network": "bwrap --unshare-net",
+  "writable_project_root": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/shift_003",
+  "source_before": {
+    "B20/Word/Shift.lean": "0c28202c539e4faf3d039ed241cedd6378562773873eee61f80f79f6f7c5287e"
+  },
+  "environment": {
+    "LANG": "pl_PL.UTF-8",
+    "TERM": "xterm-256color",
+    "PATH": "/home/footfalcon/.mimocode/bin:/usr/lib/node_modules/@opencode/cli/node_modules/@opencode/cli-linux-x64/bin:       \n     /home/footfalcon/.elan/bin:/home/footfalcon/.local/bin:/home/footfalcon/.opencode/bin:/home/footfalcon/.elan/bin:/home/footfalcon/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games",
+    "HOME": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/shift_003/home",
+    "TMPDIR": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/shift_003/tmp",
+    "TMP": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/shift_003/tmp",
+    "TEMP": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/shift_003/tmp",
+    "DOT_SAGE": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/shift_003/sage",
+    "XDG_CACHE_HOME": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/shift_003/cache",
+    "XDG_CONFIG_HOME": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/shift_003/config",
+    "XDG_DATA_HOME": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/shift_003/data",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "P02_INPUTS": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs",
+    "P02_DEST": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/shift_003",
+    "LEAN_PATH": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/shift_003/build:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/bootstrap/mathlib4/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Cli/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Qq/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/aesop/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/batteries/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/importGraph/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/plausible/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/proofwidgets/.lake/build/lib/lean"
+  },
+  "steps": [
+    {
+      "argv": [
+        "/usr/bin/bwrap",
+        "--die-with-parent",
+        "--unshare-net",
+        "--ro-bind",
+        "/",
+        "/",
+        "--dev-bind",
+        "/dev",
+        "/dev",
+        "--bind",
+        "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/shift_003",
+        "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/shift_003",
+        "--ro-bind",
+        "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/shift_003/source",
+        "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/shift_003/source",
+        "--bind",
+        "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/shift_003/tmp",
+        "/tmp",
+        "--chdir",
+        "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/shift_003/source",
+        "/usr/bin/prlimit",
+        "--as=8589934592",
+        "--",
+        "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "--root=/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/shift_003/source",
+        "-o",
+        "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/shift_003/build/B20/Word/Shift.olean",
+        "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/shift_003/source/B20/Word/Shift.lean"
+      ],
+      "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/shift_003/source",
+      "start": "2026-09-23T02:23:07.312243+00:00",
+      "stop": "2026-09-23T02:23:22.617760+00:00",
+      "elapsed_s": 15.305528021002829,
+      "exit_code": 1,
+      "timeout": false,
+      "stdout": "000.stdout",
+      "stdout_sha256": "4d41a60648f23d863f8adcde420e7ecdfcb77bc46061f23f73e67f0e74f8ec28",
+      "stderr": "000.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "stop": "2026-09-23T02:23:22.618114+00:00",
+  "source_after": {
+    "B20/Word/Shift.lean": "0c28202c539e4faf3d039ed241cedd6378562773873eee61f80f79f6f7c5287e"
+  },
+  "sources_unchanged": true,
+  "products": {},
+  "exit_code": 1
+}

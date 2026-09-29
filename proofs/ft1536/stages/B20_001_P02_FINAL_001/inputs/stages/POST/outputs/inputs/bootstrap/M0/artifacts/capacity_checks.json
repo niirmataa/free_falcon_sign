@@ -1,0 +1,88 @@
+{
+  "status": "PASS",
+  "capacity_bound": 3160,
+  "honest_capacity": 4096,
+  "nonce_bytes": 40,
+  "witness": {
+    "Q": 2093088768,
+    "l1": 2528256,
+    "unary": 9876,
+    "bits": 25236,
+    "payload": 3156,
+    "short": true
+  },
+  "cases": {
+    "witness": {
+      "Q": 2093088768,
+      "l1": 2528256,
+      "unary": 9876,
+      "bits": 25236,
+      "payload": 3156,
+      "short": true
+    },
+    "exact3073": {
+      "Q": 1811939328,
+      "l1": 2359296,
+      "unary": 9216,
+      "bits": 24576,
+      "payload": 3073,
+      "short": true
+    },
+    "zero": {
+      "Q": 0,
+      "l1": 0,
+      "unary": 0,
+      "bits": 15360,
+      "payload": 1921,
+      "short": true
+    },
+    "not_short": {
+      "Q": 2473901162496,
+      "l1": 50331648,
+      "unary": 196608,
+      "bits": 211968,
+      "payload": 26497,
+      "short": false
+    }
+  },
+  "native_query_and_roundtrip": true,
+  "canaries": true,
+  "asan_ubsan_match": true,
+  "noop_pass": true,
+  "mutations": {
+    "terminator": {
+      "detected": true,
+      "payload_query": 2964,
+      "framing": {
+        "same_hash_input_after_repartition": 1,
+        "accept_r40": 1,
+        "accept_r39": 0,
+        "accept_r40_payload5000": 1
+      }
+    },
+    "j7": {
+      "detected": true,
+      "payload_query": 4198,
+      "framing": {
+        "same_hash_input_after_repartition": 1,
+        "accept_r40": 1,
+        "accept_r39": 0,
+        "accept_r40_payload5000": 1
+      }
+    },
+    "framing": {
+      "detected": true,
+      "payload_query": 3156,
+      "framing": {
+        "same_hash_input_after_repartition": 1,
+        "accept_r40": 1,
+        "accept_r39": 1,
+        "accept_r40_payload5000": 1
+      }
+    }
+  },
+  "old_cli_2049_sufficiency": false,
+  "buffer3073_is_universal_STATIC_bound": false,
+  "no_KeyGen_or_Sign_sample_claim": true,
+  "framing_injective_domain": "nonce exactly40 bytes; r39 repartition rejected"
+}

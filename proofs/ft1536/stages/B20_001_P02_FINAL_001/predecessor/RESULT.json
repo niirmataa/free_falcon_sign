@@ -1,0 +1,56 @@
+{
+ "schema": "B20_P02_RESULT_V1",
+ "task_id": "B20_001_P02_WORD_FPEMU_REFINEMENT",
+ "roadmap_id": "F03-F06",
+ "pair": "V02",
+ "final_stage": "B20_001_P02_FINAL_001",
+ "status": "PARTIAL_PROOF",
+ "status_scope": "whole TASK partial; PROVED in declared narrowed scopes: LE64 refinement (pinned shake.c), literal-BitVec execution of neg/double/half/pack/rint/floor with explicit domains, sub conditional on AddCallObligation, reachable-domain interfaces with shift instances",
+ "kernel_complete_for_declared_exports": true,
+ "required_exports": {
+  "B20.Word.load_store_le_refines": "PROVED",
+  "B20.Fpr.add_sub_mul_div_sqrt_refines": "PARTIAL (sub conditional proved; add/mul/div/sqrt unresolved types)",
+  "B20.Fpr.floor_rint_refines": "PROVED literal-BitVec scope (raw -0 exception declared; reals contract missing)",
+  "B20.Fpr.reachable_domain_interfaces": "PROVED (interface + 3 shift instances; 4 unresolved types named)"
+ },
+ "proof_stack": {
+  "lean": "4.34.0",
+  "mathlib": "5ed2965256430c3649e86755f9576b54eca72435",
+  "sage": "10.9 (diagnostic oracles only)"
+ },
+ "formal_modules": 34,
+ "theorem_counts": {
+  "named_exports_scanned": 489,
+  "theorems": 183,
+  "defs": 306,
+  "axiom_free_theorems": 11,
+  "target_axioms": 0
+ },
+ "controls": {
+  "word": "12288 cases + 4 mutants + ASan PASS",
+  "le": "3072 cases + 3 mutants + ASan PASS",
+  "scalar": "19721 in + 21352 obs + 2 rejects, normal/UBSan/ASan PASS, 5 mutants rejected"
+ },
+ "fresh_replay": {
+  "job": "run/replay_001",
+  "steps": 42,
+  "all_exit_zero": true,
+  "sources_unchanged": true
+ },
+ "asan": [
+  "run/word_asan_002",
+  "run/le_asan_002",
+  "run/scalar_asan_001"
+ ],
+ "missing_types": [
+  "fpr_add/mul/div/sqrt arithmetic+error contracts (obligation types exist, no instances)",
+  "nearest-ties-even rint contract over reals (literal word spec only)",
+  "raw -0 floor semantics decision (impl returns -1)",
+  "C-to-machine-code refinement (compiler in TCB)",
+  "full C front-end beyond used fragment"
+ ],
+ "semantics_scope": "abstract C semantics (CExec/Scalar evaluators), NOT machine code",
+ "failed_routes_preserved": true,
+ "owner_accepted": false,
+ "push_authorized": false
+}

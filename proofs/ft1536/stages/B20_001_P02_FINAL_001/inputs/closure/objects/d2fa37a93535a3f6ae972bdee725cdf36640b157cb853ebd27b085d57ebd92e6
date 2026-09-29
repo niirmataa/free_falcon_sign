@@ -1,0 +1,2268 @@
+OrderedJoint.inner_count : ∀ (k : Nat),
+  @Eq.{1} Nat (OrderedJoint.innerCalls k)
+    (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+theorem OrderedJoint.inner_count : ∀ (k : Nat),
+  @Eq.{1} Nat (OrderedJoint.innerCalls k)
+    (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) :=
+fun (k : Nat) =>
+  @Nat.recAux.{0}
+    (fun (k : Nat) =>
+      @Eq.{1} Nat (OrderedJoint.innerCalls k)
+        (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+    (@Eq.refl.{1} Nat (OrderedJoint.innerCalls (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))))
+    (fun (k : Nat)
+        (ih :
+          @Eq.{1} Nat (OrderedJoint.innerCalls k)
+            (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) =>
+      @Eq.mpr.{0}
+        (@Eq.{1} Nat
+          (OrderedJoint.innerCalls
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+          (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+        (@Eq.{1} Nat
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+        (@id.{0}
+          (@Eq.{1} Prop
+            (@Eq.{1} Nat
+              (OrderedJoint.innerCalls
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+              (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+                    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+            (@Eq.{1} Nat
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                  (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+                    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                  (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+                    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))
+          (@congrFun'.{1, 1} Nat Prop
+            (@Eq.{1} Nat
+              (OrderedJoint.innerCalls
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+            (@Eq.{1} Nat
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                  (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+                    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))
+            (@congrArg.{1, 1} Nat (Nat → Prop)
+              (OrderedJoint.innerCalls
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                  (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+                    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+              (@Eq.{1} Nat)
+              (@congrArg.{1, 1} Nat Nat (OrderedJoint.innerCalls k)
+                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                  (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+                    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                ih))
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))
+        (@Decidable.byContradiction
+          (@Eq.{1} Nat
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+          (instDecidableEqNat
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+          fun
+            (a :
+              Not
+                (@Eq.{1} Nat
+                  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+                    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                      (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+                        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+                      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+                  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                      (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+                        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+                      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))) =>
+          OrderedJoint.inner_count._proof_1_4 k a))
+    k
+OrderedJoint.root_count : @Eq.{1} Nat
+  (OrderedJoint.rootCalls (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+  (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072)))
+theorem OrderedJoint.root_count : @Eq.{1} Nat
+  (OrderedJoint.rootCalls (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+  (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))) :=
+@of_decide_eq_true
+  (@Eq.{1} Nat (OrderedJoint.rootCalls (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+  (instDecidableEqNat (OrderedJoint.rootCalls (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+  (@id.{0}
+    (@Eq.{1} Bool
+      (@Decidable.decide
+        (@Eq.{1} Nat (OrderedJoint.rootCalls (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+        (instDecidableEqNat (OrderedJoint.rootCalls (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072)))))
+      Bool.true)
+    (@Eq.refl.{1} Bool Bool.true))
+OrderedJoint.branch_count : @Eq.{1} Nat
+  (OrderedJoint.depthCalls (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+  (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536)))
+theorem OrderedJoint.branch_count : @Eq.{1} Nat
+  (OrderedJoint.depthCalls (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+  (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) :=
+@of_decide_eq_true
+  (@Eq.{1} Nat (OrderedJoint.depthCalls (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+  (instDecidableEqNat (OrderedJoint.depthCalls (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+  (@id.{0}
+    (@Eq.{1} Bool
+      (@Decidable.decide
+        (@Eq.{1} Nat (OrderedJoint.depthCalls (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+        (instDecidableEqNat (OrderedJoint.depthCalls (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536)))))
+      Bool.true)
+    (@Eq.refl.{1} Bool Bool.true))
+OrderedJoint.scratch_size : ∀ (k : Nat),
+  @Eq.{1} Nat
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (OrderedJoint.scratch k)
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+    (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+theorem OrderedJoint.scratch_size : ∀ (k : Nat),
+  @Eq.{1} Nat
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (OrderedJoint.scratch k)
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+    (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))) :=
+fun (k : Nat) =>
+  @Nat.recAux.{0}
+    (fun (k : Nat) =>
+      @Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (OrderedJoint.scratch k)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+    (@Eq.refl.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (OrderedJoint.scratch (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+    (fun (k : Nat)
+        (ih :
+          @Eq.{1} Nat
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (OrderedJoint.scratch k)
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))) =>
+      @id.{0}
+        (@Eq.{1} Nat
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (OrderedJoint.scratch
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+          (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) k
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+        (@Decidable.byContradiction
+          (@Eq.{1} Nat
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                  (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+                    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                (OrderedJoint.scratch k))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+          (instDecidableEqNat
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                  (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+                    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                (OrderedJoint.scratch k))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+                (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+          fun
+            (a :
+              Not
+                (@Eq.{1} Nat
+                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                        (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+                          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+                        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                      (OrderedJoint.scratch k))
+                    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                      (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+                        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) k)
+                      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+                    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))) =>
+          OrderedJoint.scratch_size._proof_1_4 k ih a))
+    k
+OrderedJoint.root_frame : And
+  (@Eq.{1} Nat
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 6144) (instOfNatNat (nat_lit 6144)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 512) (instOfNatNat (nat_lit 512))))
+      (OrderedJoint.scratch (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 8702) (instOfNatNat (nat_lit 8702))))
+  (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8702) (instOfNatNat (nat_lit 8702)))
+    (@OfNat.ofNat.{0} Nat (nat_lit 10752) (instOfNatNat (nat_lit 10752))))
+theorem OrderedJoint.root_frame : And
+  (@Eq.{1} Nat
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 6144) (instOfNatNat (nat_lit 6144)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 512) (instOfNatNat (nat_lit 512))))
+      (OrderedJoint.scratch (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 8702) (instOfNatNat (nat_lit 8702))))
+  (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8702) (instOfNatNat (nat_lit 8702)))
+    (@OfNat.ofNat.{0} Nat (nat_lit 10752) (instOfNatNat (nat_lit 10752)))) :=
+@of_decide_eq_true
+  (And
+    (@Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 6144) (instOfNatNat (nat_lit 6144)))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 512) (instOfNatNat (nat_lit 512))))
+        (OrderedJoint.scratch (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 8702) (instOfNatNat (nat_lit 8702))))
+    (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8702) (instOfNatNat (nat_lit 8702)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 10752) (instOfNatNat (nat_lit 10752)))))
+  (@instDecidableAnd
+    (@Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 6144) (instOfNatNat (nat_lit 6144)))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 512) (instOfNatNat (nat_lit 512))))
+        (OrderedJoint.scratch (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 8702) (instOfNatNat (nat_lit 8702))))
+    (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8702) (instOfNatNat (nat_lit 8702)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 10752) (instOfNatNat (nat_lit 10752))))
+    (instDecidableEqNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 6144) (instOfNatNat (nat_lit 6144)))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 512) (instOfNatNat (nat_lit 512))))
+        (OrderedJoint.scratch (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 8702) (instOfNatNat (nat_lit 8702))))
+    (Nat.decLe (@OfNat.ofNat.{0} Nat (nat_lit 8702) (instOfNatNat (nat_lit 8702)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 10752) (instOfNatNat (nat_lit 10752)))))
+  (@id.{0}
+    (@Eq.{1} Bool
+      (@Decidable.decide
+        (And
+          (@Eq.{1} Nat
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 6144) (instOfNatNat (nat_lit 6144)))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+                (@OfNat.ofNat.{0} Nat (nat_lit 512) (instOfNatNat (nat_lit 512))))
+              (OrderedJoint.scratch (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 8702) (instOfNatNat (nat_lit 8702))))
+          (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8702) (instOfNatNat (nat_lit 8702)))
+            (@OfNat.ofNat.{0} Nat (nat_lit 10752) (instOfNatNat (nat_lit 10752)))))
+        (@instDecidableAnd
+          (@Eq.{1} Nat
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 6144) (instOfNatNat (nat_lit 6144)))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+                (@OfNat.ofNat.{0} Nat (nat_lit 512) (instOfNatNat (nat_lit 512))))
+              (OrderedJoint.scratch (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 8702) (instOfNatNat (nat_lit 8702))))
+          (@LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8702) (instOfNatNat (nat_lit 8702)))
+            (@OfNat.ofNat.{0} Nat (nat_lit 10752) (instOfNatNat (nat_lit 10752))))
+          (instDecidableEqNat
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 6144) (instOfNatNat (nat_lit 6144)))
+                  (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+                (@OfNat.ofNat.{0} Nat (nat_lit 512) (instOfNatNat (nat_lit 512))))
+              (OrderedJoint.scratch (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 8702) (instOfNatNat (nat_lit 8702))))
+          (Nat.decLe (@OfNat.ofNat.{0} Nat (nat_lit 8702) (instOfNatNat (nat_lit 8702)))
+            (@OfNat.ofNat.{0} Nat (nat_lit 10752) (instOfNatNat (nat_lit 10752))))))
+      Bool.true)
+    (@Eq.refl.{1} Bool Bool.true))
+OrderedJoint.call_pair_counts : And
+  (@Eq.{1} Nat
+    (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+      (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+  (@Eq.{1} Nat
+    (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+      (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 768) (instOfNatNat (nat_lit 768))))
+theorem OrderedJoint.call_pair_counts : And
+  (@Eq.{1} Nat
+    (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+      (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+  (@Eq.{1} Nat
+    (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+      (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 768) (instOfNatNat (nat_lit 768)))) :=
+@of_decide_eq_true
+  (And
+    (@Eq.{1} Nat
+      (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+        (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+    (@Eq.{1} Nat
+      (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 768) (instOfNatNat (nat_lit 768)))))
+  (@instDecidableAnd
+    (@Eq.{1} Nat
+      (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+        (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+    (@Eq.{1} Nat
+      (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 768) (instOfNatNat (nat_lit 768))))
+    (instDecidableEqNat
+      (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+        (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+    (instDecidableEqNat
+      (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 768) (instOfNatNat (nat_lit 768)))))
+  (@id.{0}
+    (@Eq.{1} Bool
+      (@Decidable.decide
+        (And
+          (@Eq.{1} Nat
+            (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+              (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+          (@Eq.{1} Nat
+            (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+              (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 768) (instOfNatNat (nat_lit 768)))))
+        (@instDecidableAnd
+          (@Eq.{1} Nat
+            (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+              (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+          (@Eq.{1} Nat
+            (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+              (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 768) (instOfNatNat (nat_lit 768))))
+          (instDecidableEqNat
+            (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+              (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))))
+          (instDecidableEqNat
+            (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+              (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 768) (instOfNatNat (nat_lit 768))))))
+      Bool.true)
+    (@Eq.refl.{1} Bool Bool.true))
+OrderedJoint.correlated_branch_budget : @Eq.{1} Nat
+  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+    (@OfNat.ofNat.{0} Nat (nat_lit 768) (instOfNatNat (nat_lit 768)))
+    (@OfNat.ofNat.{0} Nat (nat_lit 849346588) (instOfNatNat (nat_lit 849346588))))
+  (@OfNat.ofNat.{0} Nat (nat_lit 652298179584) (instOfNatNat (nat_lit 652298179584)))
+theorem OrderedJoint.correlated_branch_budget : @Eq.{1} Nat
+  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+    (@OfNat.ofNat.{0} Nat (nat_lit 768) (instOfNatNat (nat_lit 768)))
+    (@OfNat.ofNat.{0} Nat (nat_lit 849346588) (instOfNatNat (nat_lit 849346588))))
+  (@OfNat.ofNat.{0} Nat (nat_lit 652298179584) (instOfNatNat (nat_lit 652298179584))) :=
+@of_decide_eq_true
+  (@Eq.{1} Nat
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 768) (instOfNatNat (nat_lit 768)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 849346588) (instOfNatNat (nat_lit 849346588))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 652298179584) (instOfNatNat (nat_lit 652298179584))))
+  (instDecidableEqNat
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 768) (instOfNatNat (nat_lit 768)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 849346588) (instOfNatNat (nat_lit 849346588))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 652298179584) (instOfNatNat (nat_lit 652298179584))))
+  (@id.{0}
+    (@Eq.{1} Bool
+      (@Decidable.decide
+        (@Eq.{1} Nat
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 768) (instOfNatNat (nat_lit 768)))
+            (@OfNat.ofNat.{0} Nat (nat_lit 849346588) (instOfNatNat (nat_lit 849346588))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 652298179584) (instOfNatNat (nat_lit 652298179584))))
+        (instDecidableEqNat
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 768) (instOfNatNat (nat_lit 768)))
+            (@OfNat.ofNat.{0} Nat (nat_lit 849346588) (instOfNatNat (nat_lit 849346588))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 652298179584) (instOfNatNat (nat_lit 652298179584)))))
+      Bool.true)
+    (@Eq.refl.{1} Bool Bool.true))
+@OrderedJoint.support_realizes : ∀ {S Y : Type} (step : S → Y → S) (support : S → Y → Prop) (sourceStep : S → S → Prop)
+  (s a : S) (ys : List.{0} Y)
+  (witness : ∀ (b : S) (y : Y), @OrderedJoint.Reach S sourceStep s b → support b y → sourceStep b (step b y))
+  (h : @OrderedJoint.SupportPrefix S Y step support s a ys), @OrderedJoint.Reach S sourceStep s a
+theorem OrderedJoint.support_realizes : ∀ {S Y : Type} (step : S → Y → S) (support : S → Y → Prop)
+  (sourceStep : S → S → Prop) (s a : S) (ys : List.{0} Y)
+  (witness : ∀ (b : S) (y : Y), @OrderedJoint.Reach S sourceStep s b → support b y → sourceStep b (step b y))
+  (h : @OrderedJoint.SupportPrefix S Y step support s a ys), @OrderedJoint.Reach S sourceStep s a :=
+fun {S Y : Type} (step : S → Y → S) (support : S → Y → Prop) (sourceStep : S → S → Prop) (s a : S) (ys : List.{0} Y)
+    (witness : ∀ (b : S) (y : Y), @OrderedJoint.Reach S sourceStep s b → support b y → sourceStep b (step b y))
+    (h : @OrderedJoint.SupportPrefix S Y step support s a ys) =>
+  @OrderedJoint.SupportPrefix.rec S Y step support s
+    (fun (a : S) (ys : List.{0} Y) (h : @OrderedJoint.SupportPrefix S Y step support s a ys) =>
+      @OrderedJoint.Reach S sourceStep s a)
+    (@OrderedJoint.Reach.entry S sourceStep s)
+    (fun {a : S} {ys : List.{0} Y} {y : Y} (h : @OrderedJoint.SupportPrefix S Y step support s a ys) (hs : support a y)
+        (ih : @OrderedJoint.Reach S sourceStep s a) =>
+      @OrderedJoint.Reach.next S sourceStep s a (step a y) ih (witness a y ih hs))
+    a ys h
+@OrderedJoint.before_next : ∀ {S Y : Type} (step : S → Y → S) (support : S → Y → Prop) (sourceStep : S → S → Prop)
+  (legal : S → Prop) (s a : S) (ys : List.{0} Y)
+  (witness : ∀ (b : S) (y : Y), @OrderedJoint.Reach S sourceStep s b → support b y → sourceStep b (step b y))
+  (forward : ∀ (b : S), @OrderedJoint.Reach S sourceStep s b → legal b)
+  (h : @OrderedJoint.SupportPrefix S Y step support s a ys), legal a
+theorem OrderedJoint.before_next : ∀ {S Y : Type} (step : S → Y → S) (support : S → Y → Prop)
+  (sourceStep : S → S → Prop) (legal : S → Prop) (s a : S) (ys : List.{0} Y)
+  (witness : ∀ (b : S) (y : Y), @OrderedJoint.Reach S sourceStep s b → support b y → sourceStep b (step b y))
+  (forward : ∀ (b : S), @OrderedJoint.Reach S sourceStep s b → legal b)
+  (h : @OrderedJoint.SupportPrefix S Y step support s a ys), legal a :=
+fun {S Y : Type} (step : S → Y → S) (support : S → Y → Prop) (sourceStep : S → S → Prop) (legal : S → Prop) (s a : S)
+    (ys : List.{0} Y)
+    (witness : ∀ (b : S) (y : Y), @OrderedJoint.Reach S sourceStep s b → support b y → sourceStep b (step b y))
+    (forward : ∀ (b : S), @OrderedJoint.Reach S sourceStep s b → legal b)
+    (h : @OrderedJoint.SupportPrefix S Y step support s a ys) =>
+  forward a (@OrderedJoint.support_realizes S Y step support sourceStep s a ys witness h)
+@OrderedJoint.same_value_projection : ∀ {S Y : Type} (step : S → Y → S) (s : S) (ys zs : List.{0} Y)
+  (h : @Eq.{1} (List.{0} Y) ys zs),
+  @Eq.{1} S (@OrderedJoint.valueRun S Y step s ys) (@OrderedJoint.valueRun S Y step s zs)
+theorem OrderedJoint.same_value_projection : ∀ {S Y : Type} (step : S → Y → S) (s : S) (ys zs : List.{0} Y)
+  (h : @Eq.{1} (List.{0} Y) ys zs),
+  @Eq.{1} S (@OrderedJoint.valueRun S Y step s ys) (@OrderedJoint.valueRun S Y step s zs) :=
+fun {S Y : Type} (step : S → Y → S) (s : S) (ys zs : List.{0} Y) (h : @Eq.{1} (List.{0} Y) ys zs) =>
+  @Eq.mpr.{0} (@Eq.{1} S (@OrderedJoint.valueRun S Y step s ys) (@OrderedJoint.valueRun S Y step s zs))
+    (@Eq.{1} S (@OrderedJoint.valueRun S Y step s zs) (@OrderedJoint.valueRun S Y step s zs))
+    (@id.{0}
+      (@Eq.{1} Prop (@Eq.{1} S (@OrderedJoint.valueRun S Y step s ys) (@OrderedJoint.valueRun S Y step s zs))
+        (@Eq.{1} S (@OrderedJoint.valueRun S Y step s zs) (@OrderedJoint.valueRun S Y step s zs)))
+      (@congrArg.{1, 1} (List.{0} Y) Prop ys zs
+        (fun (_a : List.{0} Y) =>
+          @Eq.{1} S (@OrderedJoint.valueRun S Y step s _a) (@OrderedJoint.valueRun S Y step s zs))
+        h))
+    (@Eq.refl.{1} S (@OrderedJoint.valueRun S Y step s zs))
+OrderedJoint.zero_atom_not_support : ∀ (n : Nat),
+  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) n →
+    @Ne.{1} Nat n (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+theorem OrderedJoint.zero_atom_not_support : ∀ (n : Nat),
+  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) n →
+    @Ne.{1} Nat n (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) :=
+fun (n : Nat) (a : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) n)
+    (a_1 : @Eq.{1} Nat n (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) =>
+  OrderedJoint.zero_atom_not_support._proof_1_1 n a a_1
+@OrderedJoint.positive_atom_has_element : ∀ {A : Type} (xs : List.{0} A)
+  (h : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (@List.length.{0} A xs)),
+  @Exists.{1} A fun (a : A) => @Membership.mem.{0, 0} A (List.{0} A) (@List.instMembership.{0} A) xs a
+theorem OrderedJoint.positive_atom_has_element : ∀ {A : Type} (xs : List.{0} A)
+  (h : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (@List.length.{0} A xs)),
+  @Exists.{1} A fun (a : A) => @Membership.mem.{0, 0} A (List.{0} A) (@List.instMembership.{0} A) xs a :=
+fun {A : Type} (xs : List.{0} A)
+    (h :
+      @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (@List.length.{0} A xs)) =>
+  @List.casesOn.{0, 0} A
+    (fun (t : List.{0} A) =>
+      ∀ (h : @Eq.{1} (List.{0} A) xs t),
+        @Exists.{1} A fun (a : A) => @Membership.mem.{0, 0} A (List.{0} A) (@List.instMembership.{0} A) xs a)
+    xs
+    (fun (h_1 : @Eq.{1} (List.{0} A) xs (@List.nil.{0} A)) =>
+      @Eq.ndrec.{0, 1} (List.{0} A) (@List.nil.{0} A)
+        (fun (xs : List.{0} A) =>
+          ∀
+            (h :
+              @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                (@List.length.{0} A xs)),
+            @Exists.{1} A fun (a : A) => @Membership.mem.{0, 0} A (List.{0} A) (@List.instMembership.{0} A) xs a)
+        (fun
+            (h :
+              @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                (@List.length.{0} A (@List.nil.{0} A))) =>
+          @False.elim.{0}
+            (@Exists.{1} A fun (a : A) =>
+              @Membership.mem.{0, 0} A (List.{0} A) (@List.instMembership.{0} A) (@List.nil.{0} A) a)
+            (@Eq.mp.{0}
+              (@LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                (@List.length.{0} A (@List.nil.{0} A)))
+              False (Nat.lt_irrefl._simp_1 (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))) h))
+        xs (@Eq.symm.{1} (List.{0} A) xs (@List.nil.{0} A) h_1) h)
+    (fun (a : A) (xs_1 : List.{0} A) (h_1 : @Eq.{1} (List.{0} A) xs (@List.cons.{0} A a xs_1)) =>
+      @Eq.ndrec.{0, 1} (List.{0} A) (@List.cons.{0} A a xs_1)
+        (fun (xs : List.{0} A) =>
+          ∀
+            (h :
+              @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                (@List.length.{0} A xs)),
+            @Exists.{1} A fun (a : A) => @Membership.mem.{0, 0} A (List.{0} A) (@List.instMembership.{0} A) xs a)
+        (fun
+            (h :
+              @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                (@List.length.{0} A (@List.cons.{0} A a xs_1))) =>
+          @Exists.intro.{1} A
+            (fun (a_1 : A) =>
+              @Membership.mem.{0, 0} A (List.{0} A) (@List.instMembership.{0} A) (@List.cons.{0} A a xs_1) a_1)
+            a
+            (@of_eq_true
+              (@Membership.mem.{0, 0} A (List.{0} A) (@List.instMembership.{0} A) (@List.cons.{0} A a xs_1) a)
+              (@Eq.trans.{1} Prop
+                (@Membership.mem.{0, 0} A (List.{0} A) (@List.instMembership.{0} A) (@List.cons.{0} A a xs_1) a)
+                (Or (@Eq.{1} A a a) (@Membership.mem.{0, 0} A (List.{0} A) (@List.instMembership.{0} A) xs_1 a)) True
+                (@List.mem_cons._simp_1.{0} A a xs_1 a)
+                (@Eq.trans.{1} Prop
+                  (Or (@Eq.{1} A a a) (@Membership.mem.{0, 0} A (List.{0} A) (@List.instMembership.{0} A) xs_1 a))
+                  (Or True (@Membership.mem.{0, 0} A (List.{0} A) (@List.instMembership.{0} A) xs_1 a)) True
+                  (@congrFun'.{1, 1} Prop Prop (Or (@Eq.{1} A a a)) (Or True)
+                    (@congrArg.{1, 1} Prop ((b : Prop) → Prop) (@Eq.{1} A a a) True Or (@eq_self.{1} A a))
+                    (@Membership.mem.{0, 0} A (List.{0} A) (@List.instMembership.{0} A) xs_1 a))
+                  (true_or (@Membership.mem.{0, 0} A (List.{0} A) (@List.instMembership.{0} A) xs_1 a))))))
+        xs (@Eq.symm.{1} (List.{0} A) xs (@List.cons.{0} A a xs_1) h_1) h)
+    (@Eq.refl.{1} (List.{0} A) xs)
+OrderedJoint.paired_terminal_identity : ∀ (r0 r1 u e : Int)
+  (h :
+    @Eq.{1} Int
+      (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+          (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))) r0)
+        r1)
+      (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+          (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))) u)
+        e)),
+  @Eq.{1} Int
+    (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+      (@OfNat.ofNat.{0} Int (nat_lit 4) (@instOfNat (nat_lit 4)))
+      (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+        (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) r0 r0)
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) r0 r1))
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) r1 r1)))
+    (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+      (@HPow.hPow.{0, 0, 0} Int Nat Int (@instHPow.{0, 0} Int Nat (@instPowNat.{0} Int Int.instNatPow))
+        (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+            (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))) u)
+          e)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+        (@OfNat.ofNat.{0} Int (nat_lit 3) (@instOfNat (nat_lit 3)))
+        (@HPow.hPow.{0, 0, 0} Int Nat Int (@instHPow.{0, 0} Int Nat (@instPowNat.{0} Int Int.instNatPow)) r1
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))
+theorem OrderedJoint.paired_terminal_identity : ∀ (r0 r1 u e : Int)
+  (h :
+    @Eq.{1} Int
+      (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+          (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))) r0)
+        r1)
+      (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+          (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))) u)
+        e)),
+  @Eq.{1} Int
+    (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+      (@OfNat.ofNat.{0} Int (nat_lit 4) (@instOfNat (nat_lit 4)))
+      (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+        (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) r0 r0)
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) r0 r1))
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) r1 r1)))
+    (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+      (@HPow.hPow.{0, 0, 0} Int Nat Int (@instHPow.{0, 0} Int Nat (@instPowNat.{0} Int Int.instNatPow))
+        (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+            (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))) u)
+          e)
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+        (@OfNat.ofNat.{0} Int (nat_lit 3) (@instOfNat (nat_lit 3)))
+        (@HPow.hPow.{0, 0, 0} Int Nat Int (@instHPow.{0, 0} Int Nat (@instPowNat.{0} Int Int.instNatPow)) r1
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))) :=
+fun (r0 r1 u e : Int)
+    (h :
+      @Eq.{1} Int
+        (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+            (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))) r0)
+          r1)
+        (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+            (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))) u)
+          e)) =>
+  have hh :
+    @Eq.{1} Int
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+        (@OfNat.ofNat.{0} Int (nat_lit 4) (@instOfNat (nat_lit 4)))
+        (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+          (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+            (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) r0 r0)
+            (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) r0 r1))
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) r1 r1)))
+      (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+          (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+            (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+              (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))) u)
+            e)
+          (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+            (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+              (@OfNat.ofNat.{0} Int (nat_lit 2) (@instOfNat (nat_lit 2))) u)
+            e))
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+            (@OfNat.ofNat.{0} Int (nat_lit 3) (@instOfNat (nat_lit 3))) r1)
+          r1)) :=
+    LeftRoot.terminal_defect_identity r0 r1 u e h;
+  OrderedJoint.paired_terminal_identity._proof_1_1 r0 r1 u e h
+OrderedJoint.conditioning_second_moment : ∀ (q t c : Int),
+  @Eq.{1} Int
+    (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+        (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) q t)
+        (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) q c))
+      (@HPow.hPow.{0, 0, 0} Int Nat Int (@instHPow.{0, 0} Int Nat (@instPowNat.{0} Int Int.instNatPow)) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+    (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) q c)
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) t
+        (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) q c)))
+theorem OrderedJoint.conditioning_second_moment : ∀ (q t c : Int),
+  @Eq.{1} Int
+    (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+        (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) q t)
+        (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) q c))
+      (@HPow.hPow.{0, 0, 0} Int Nat Int (@instHPow.{0, 0} Int Nat (@instPowNat.{0} Int Int.instNatPow)) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+    (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) q c)
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) t
+        (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) q c))) :=
+fun (q t c : Int) => OrderedJoint.conditioning_second_moment._proof_1_1 q t c
+OrderedJoint.conditioning_decreases : ∀ (q t c : Int)
+  (ht : @LE.le.{0} Int Int.instLEInt (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0))) t)
+  (hc :
+    @LE.le.{0} Int Int.instLEInt (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0)))
+      (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) q c)),
+  @LE.le.{0} Int Int.instLEInt
+    (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+        (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) q t)
+        (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) q c))
+      (@HPow.hPow.{0, 0, 0} Int Nat Int (@instHPow.{0, 0} Int Nat (@instPowNat.{0} Int Int.instNatPow)) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+    (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) q c)
+theorem OrderedJoint.conditioning_decreases : ∀ (q t c : Int)
+  (ht : @LE.le.{0} Int Int.instLEInt (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0))) t)
+  (hc :
+    @LE.le.{0} Int Int.instLEInt (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0)))
+      (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) q c)),
+  @LE.le.{0} Int Int.instLEInt
+    (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+        (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) q t)
+        (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) q c))
+      (@HPow.hPow.{0, 0, 0} Int Nat Int (@instHPow.{0, 0} Int Nat (@instPowNat.{0} Int Int.instNatPow)) q
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+    (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) q c) :=
+fun (q t c : Int) (ht : @LE.le.{0} Int Int.instLEInt (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0))) t)
+    (hc :
+      @LE.le.{0} Int Int.instLEInt (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0)))
+        (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) q c)) =>
+  have h :
+    @LE.le.{0} Int Int.instLEInt (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0)))
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) t
+        (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) q c)) :=
+    @Int.mul_nonneg t (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) q c) ht hc;
+  @Eq.mpr.{0}
+    (@LE.le.{0} Int Int.instLEInt
+      (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+          (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) q t)
+          (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) q c))
+        (@HPow.hPow.{0, 0, 0} Int Nat Int (@instHPow.{0, 0} Int Nat (@instPowNat.{0} Int Int.instNatPow)) q
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) q c))
+    (@LE.le.{0} Int Int.instLEInt
+      (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) q c)
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) t
+          (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) q c)))
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) q c))
+    (@id.{0}
+      (@Eq.{1} Prop
+        (@LE.le.{0} Int Int.instLEInt
+          (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+            (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+              (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) q t)
+              (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) q c))
+            (@HPow.hPow.{0, 0, 0} Int Nat Int (@instHPow.{0, 0} Int Nat (@instPowNat.{0} Int Int.instNatPow)) q
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) q c))
+        (@LE.le.{0} Int Int.instLEInt
+          (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+            (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) q c)
+            (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) t
+              (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) q c)))
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) q c)))
+      (@congrArg.{1, 1} Int Prop
+        (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+            (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) q t)
+            (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) q c))
+          (@HPow.hPow.{0, 0, 0} Int Nat Int (@instHPow.{0, 0} Int Nat (@instPowNat.{0} Int Int.instNatPow)) q
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))
+        (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) q c)
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) t
+            (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) q c)))
+        (fun (_a : Int) =>
+          @LE.le.{0} Int Int.instLEInt _a (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) q c))
+        (OrderedJoint.conditioning_second_moment q t c)))
+    (@Decidable.byContradiction
+      (@LE.le.{0} Int Int.instLEInt
+        (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) q c)
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) t
+            (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) q c)))
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) q c))
+      (Int.decLe
+        (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) q c)
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) t
+            (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) q c)))
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) q c))
+      fun
+        (a :
+          Not
+            (@LE.le.{0} Int Int.instLEInt
+              (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+                (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) q c)
+                (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) t
+                  (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) q c)))
+              (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) q c))) =>
+      OrderedJoint.conditioning_decreases._proof_1_1 q t c h a)
+OrderedJoint.weighted_step_bound : ∀ (xs : List.{0} (Prod.{0, 0} Int Int)) (B : Int)
+  (h :
+    ∀ (p : Prod.{0, 0} Int Int),
+      @Membership.mem.{0, 0} (Prod.{0, 0} Int Int) (List.{0} (Prod.{0, 0} Int Int))
+          (@List.instMembership.{0} (Prod.{0, 0} Int Int)) xs p →
+        And
+          (@LE.le.{0} Int Int.instLEInt (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0)))
+            (@Prod.fst.{0, 0} Int Int p))
+          (And
+            (@LE.le.{0} Int Int.instLEInt (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0)))
+              (@Prod.snd.{0, 0} Int Int p))
+            (@LE.le.{0} Int Int.instLEInt (@Prod.snd.{0, 0} Int Int p) B))),
+  @LE.le.{0} Int Int.instLEInt
+    (@List.sum.{0} Int Int.instAdd (@Zero.ofOfNat0.{0} Int (@instOfNat (nat_lit 0)))
+      (@List.map.{0, 0} (Prod.{0, 0} Int Int) Int
+        (fun (p : Prod.{0, 0} Int Int) =>
+          @HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) (@Prod.fst.{0, 0} Int Int p)
+            (@Prod.snd.{0, 0} Int Int p))
+        xs))
+    (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) B
+      (@List.sum.{0} Int Int.instAdd (@Zero.ofOfNat0.{0} Int (@instOfNat (nat_lit 0)))
+        (@List.map.{0, 0} (Prod.{0, 0} Int Int) Int (@Prod.fst.{0, 0} Int Int) xs)))
+theorem OrderedJoint.weighted_step_bound : ∀ (xs : List.{0} (Prod.{0, 0} Int Int)) (B : Int)
+  (h :
+    ∀ (p : Prod.{0, 0} Int Int),
+      @Membership.mem.{0, 0} (Prod.{0, 0} Int Int) (List.{0} (Prod.{0, 0} Int Int))
+          (@List.instMembership.{0} (Prod.{0, 0} Int Int)) xs p →
+        And
+          (@LE.le.{0} Int Int.instLEInt (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0)))
+            (@Prod.fst.{0, 0} Int Int p))
+          (And
+            (@LE.le.{0} Int Int.instLEInt (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0)))
+              (@Prod.snd.{0, 0} Int Int p))
+            (@LE.le.{0} Int Int.instLEInt (@Prod.snd.{0, 0} Int Int p) B))),
+  @LE.le.{0} Int Int.instLEInt
+    (@List.sum.{0} Int Int.instAdd (@Zero.ofOfNat0.{0} Int (@instOfNat (nat_lit 0)))
+      (@List.map.{0, 0} (Prod.{0, 0} Int Int) Int
+        (fun (p : Prod.{0, 0} Int Int) =>
+          @HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) (@Prod.fst.{0, 0} Int Int p)
+            (@Prod.snd.{0, 0} Int Int p))
+        xs))
+    (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) B
+      (@List.sum.{0} Int Int.instAdd (@Zero.ofOfNat0.{0} Int (@instOfNat (nat_lit 0)))
+        (@List.map.{0, 0} (Prod.{0, 0} Int Int) Int (@Prod.fst.{0, 0} Int Int) xs))) :=
+fun (xs : List.{0} (Prod.{0, 0} Int Int)) (B : Int)
+    (h :
+      ∀ (p : Prod.{0, 0} Int Int),
+        @Membership.mem.{0, 0} (Prod.{0, 0} Int Int) (List.{0} (Prod.{0, 0} Int Int))
+            (@List.instMembership.{0} (Prod.{0, 0} Int Int)) xs p →
+          And
+            (@LE.le.{0} Int Int.instLEInt (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0)))
+              (@Prod.fst.{0, 0} Int Int p))
+            (And
+              (@LE.le.{0} Int Int.instLEInt (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0)))
+                (@Prod.snd.{0, 0} Int Int p))
+              (@LE.le.{0} Int Int.instLEInt (@Prod.snd.{0, 0} Int Int p) B))) =>
+  @And.right
+    (@LE.le.{0} Int Int.instLEInt
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+        (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0)))
+        (@List.sum.{0} Int Int.instAdd (@Zero.ofOfNat0.{0} Int (@instOfNat (nat_lit 0)))
+          (@List.map.{0, 0} (Prod.{0, 0} Int Int) Int (@Prod.fst.{0, 0} Int Int) xs)))
+      (@List.sum.{0} Int Int.instAdd (@Zero.ofOfNat0.{0} Int (@instOfNat (nat_lit 0)))
+        (@List.map.{0, 0} (Prod.{0, 0} Int Int) Int
+          (fun (p : Prod.{0, 0} Int Int) =>
+            @HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) (@Prod.fst.{0, 0} Int Int p)
+              (@Prod.snd.{0, 0} Int Int p))
+          xs)))
+    (@LE.le.{0} Int Int.instLEInt
+      (@List.sum.{0} Int Int.instAdd (@Zero.ofOfNat0.{0} Int (@instOfNat (nat_lit 0)))
+        (@List.map.{0, 0} (Prod.{0, 0} Int Int) Int
+          (fun (p : Prod.{0, 0} Int Int) =>
+            @HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) (@Prod.fst.{0, 0} Int Int p)
+              (@Prod.snd.{0, 0} Int Int p))
+          xs))
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) B
+        (@List.sum.{0} Int Int.instAdd (@Zero.ofOfNat0.{0} Int (@instOfNat (nat_lit 0)))
+          (@List.map.{0, 0} (Prod.{0, 0} Int Int) Int (@Prod.fst.{0, 0} Int Int) xs))))
+    (GaussianComparison.weighted_bounds xs (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0))) B h)
+OrderedJoint.second_moment_chain : ∀ (v : Nat → Nat) (B : Nat)
+  (h0 :
+    @LE.le.{0} Nat instLENat (v (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+  (step :
+    ∀ (i : Nat),
+      @LE.le.{0} Nat instLENat
+        (v
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (v i) B))
+  (i : Nat),
+  @LE.le.{0} Nat instLENat (v i)
+    (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat)) B i)
+theorem OrderedJoint.second_moment_chain : ∀ (v : Nat → Nat) (B : Nat)
+  (h0 :
+    @LE.le.{0} Nat instLENat (v (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+  (step :
+    ∀ (i : Nat),
+      @LE.le.{0} Nat instLENat
+        (v
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (v i) B))
+  (i : Nat),
+  @LE.le.{0} Nat instLENat (v i)
+    (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat)) B i) :=
+fun (v : Nat → Nat) (B : Nat)
+    (h0 :
+      @LE.le.{0} Nat instLENat (v (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))
+    (step :
+      ∀ (i : Nat),
+        @LE.le.{0} Nat instLENat
+          (v
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (v i) B))
+    (i : Nat) =>
+  @Nat.recAux.{0}
+    (fun (i : Nat) =>
+      @LE.le.{0} Nat instLENat (v i)
+        (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat)) B i))
+    (@id.{0}
+      (@LE.le.{0} Nat instLENat (v (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))
+        (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat)) B
+          (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))))
+      h0)
+    (fun (i : Nat)
+        (ih :
+          @LE.le.{0} Nat instLENat (v i)
+            (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat)) B i)) =>
+      @Nat.le_trans
+        (v
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (v i) B)
+        (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat)) B
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))
+        (step i)
+        (@id.{0}
+          (@LE.le.{0} Nat instLENat (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (v i) B)
+            (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat)) B
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i
+                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))
+          (@Nat.mul_le_mul_right (v i)
+            (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat)) B i) B
+            ih)))
+    i
+OrderedJoint.survival_tilt_cleared : ∀ (p s q D Z : Int)
+  (hq : @Eq.{1} Int q (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) s D))
+  (hp : @Eq.{1} Int (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) p Z) q),
+  @Eq.{1} Int (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) p Z)
+    (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) s D)
+theorem OrderedJoint.survival_tilt_cleared : ∀ (p s q D Z : Int)
+  (hq : @Eq.{1} Int q (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) s D))
+  (hp : @Eq.{1} Int (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) p Z) q),
+  @Eq.{1} Int (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) p Z)
+    (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) s D) :=
+fun (p s q D Z : Int) (hq : @Eq.{1} Int q (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) s D))
+    (hp : @Eq.{1} Int (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) p Z) q) =>
+  @Decidable.byContradiction
+    (@Eq.{1} Int (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) p Z)
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) s D))
+    (Int.instDecidableEq (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) p Z)
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) s D))
+    fun
+      (a :
+        Not
+          (@Eq.{1} Int (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) p Z)
+            (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) s D))) =>
+    OrderedJoint.survival_tilt_cleared._proof_1_1 p s q D Z hq hp a
+@OrderedJoint.reverse_support_same : ∀ {A : Type} (p q : A → Prop) (h : ∀ (a : A), Iff (p a) (q a)),
+  And (∀ (a : A), p a → q a) (∀ (a : A), q a → p a)
+theorem OrderedJoint.reverse_support_same : ∀ {A : Type} (p q : A → Prop) (h : ∀ (a : A), Iff (p a) (q a)),
+  And (∀ (a : A), p a → q a) (∀ (a : A), q a → p a) :=
+fun {A : Type} (p q : A → Prop) (h : ∀ (a : A), Iff (p a) (q a)) =>
+  @And.intro (∀ (a : A), p a → q a) (∀ (a : A), q a → p a) (fun (a : A) => @Iff.mp (p a) (q a) (h a)) fun (a : A) =>
+    @Iff.mpr (p a) (q a) (h a)
+OrderedJoint.numerical_chi_bound : @LT.lt.{0} Nat instLTNat
+  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+    (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+    (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 48) (instOfNatNat (nat_lit 48)))))
+  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+    (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 50) (instOfNatNat (nat_lit 50))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+theorem OrderedJoint.numerical_chi_bound : @LT.lt.{0} Nat instLTNat
+  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+    (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+    (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 48) (instOfNatNat (nat_lit 48)))))
+  (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+    (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 50) (instOfNatNat (nat_lit 50))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))) :=
+@of_decide_eq_true
+  (@LT.lt.{0} Nat instLTNat
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+      (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 48) (instOfNatNat (nat_lit 48)))))
+    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+      (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 50) (instOfNatNat (nat_lit 50))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+  (Nat.decLt
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+      (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 48) (instOfNatNat (nat_lit 48)))))
+    (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+      (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 50) (instOfNatNat (nat_lit 50))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+  (@id.{0}
+    (@Eq.{1} Bool
+      (@Decidable.decide
+        (@LT.lt.{0} Nat instLTNat
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+            (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 48) (instOfNatNat (nat_lit 48)))))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 50) (instOfNatNat (nat_lit 50))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+        (Nat.decLt
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+            (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 48) (instOfNatNat (nat_lit 48)))))
+          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat)
+            (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 50) (instOfNatNat (nat_lit 50))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))))
+      Bool.true)
+    (@Eq.refl.{1} Bool Bool.true))
+OrderedJoint.tv_square_bound : @Eq.{1} Nat
+  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+    (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 50) (instOfNatNat (nat_lit 50)))))
+  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+    (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))
+    (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 48) (instOfNatNat (nat_lit 48)))))
+theorem OrderedJoint.tv_square_bound : @Eq.{1} Nat
+  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+    (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+    (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 50) (instOfNatNat (nat_lit 50)))))
+  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+    (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))
+    (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 48) (instOfNatNat (nat_lit 48))))) :=
+@of_decide_eq_true
+  (@Eq.{1} Nat
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+      (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 50) (instOfNatNat (nat_lit 50)))))
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))
+      (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 48) (instOfNatNat (nat_lit 48))))))
+  (instDecidableEqNat
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+      (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 50) (instOfNatNat (nat_lit 50)))))
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))
+      (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 48) (instOfNatNat (nat_lit 48))))))
+  (@id.{0}
+    (@Eq.{1} Bool
+      (@Decidable.decide
+        (@Eq.{1} Nat
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+            (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 50) (instOfNatNat (nat_lit 50)))))
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))
+            (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 48) (instOfNatNat (nat_lit 48))))))
+        (instDecidableEqNat
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+            (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 50) (instOfNatNat (nat_lit 50)))))
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))
+            (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 48) (instOfNatNat (nat_lit 48)))))))
+      Bool.true)
+    (@Eq.refl.{1} Bool Bool.true))
+OrderedJoint.union_epsilon : @Eq.{1} Nat
+  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+    (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072)))
+    (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 26) (instOfNatNat (nat_lit 26)))))
+  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+    (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+    (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 36) (instOfNatNat (nat_lit 36)))))
+theorem OrderedJoint.union_epsilon : @Eq.{1} Nat
+  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+    (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072)))
+    (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 26) (instOfNatNat (nat_lit 26)))))
+  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+    (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+    (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 36) (instOfNatNat (nat_lit 36))))) :=
+@of_decide_eq_true
+  (@Eq.{1} Nat
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072)))
+      (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 26) (instOfNatNat (nat_lit 26)))))
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+      (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 36) (instOfNatNat (nat_lit 36))))))
+  (instDecidableEqNat
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072)))
+      (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 26) (instOfNatNat (nat_lit 26)))))
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+      (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 36) (instOfNatNat (nat_lit 36))))))
+  (@id.{0}
+    (@Eq.{1} Bool
+      (@Decidable.decide
+        (@Eq.{1} Nat
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072)))
+            (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 26) (instOfNatNat (nat_lit 26)))))
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+            (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 36) (instOfNatNat (nat_lit 36))))))
+        (instDecidableEqNat
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072)))
+            (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 26) (instOfNatNat (nat_lit 26)))))
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+            (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 36) (instOfNatNat (nat_lit 36)))))))
+      Bool.true)
+    (@Eq.refl.{1} Bool Bool.true))
+OrderedJoint.reverse_exponent : @Eq.{1} Nat
+  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+    (@OfNat.ofNat.{0} Nat (nat_lit 264) (instOfNatNat (nat_lit 264)))
+    (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+  (@OfNat.ofNat.{0} Nat (nat_lit 811008) (instOfNatNat (nat_lit 811008)))
+theorem OrderedJoint.reverse_exponent : @Eq.{1} Nat
+  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+    (@OfNat.ofNat.{0} Nat (nat_lit 264) (instOfNatNat (nat_lit 264)))
+    (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+  (@OfNat.ofNat.{0} Nat (nat_lit 811008) (instOfNatNat (nat_lit 811008))) :=
+@of_decide_eq_true
+  (@Eq.{1} Nat
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 264) (instOfNatNat (nat_lit 264)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 811008) (instOfNatNat (nat_lit 811008))))
+  (instDecidableEqNat
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 264) (instOfNatNat (nat_lit 264)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 811008) (instOfNatNat (nat_lit 811008))))
+  (@id.{0}
+    (@Eq.{1} Bool
+      (@Decidable.decide
+        (@Eq.{1} Nat
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 264) (instOfNatNat (nat_lit 264)))
+            (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 811008) (instOfNatNat (nat_lit 811008))))
+        (instDecidableEqNat
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 264) (instOfNatNat (nat_lit 264)))
+            (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 811008) (instOfNatNat (nat_lit 811008)))))
+      Bool.true)
+    (@Eq.refl.{1} Bool Bool.true))
+OrderedJoint.proposal_conservation_compose : ∀ (p q r a b da db ra rb : Nat)
+  (ha :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) p
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33))) a))
+        da)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 4096) (instOfNatNat (nat_lit 4096))) ra)
+        q))
+  (hb :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33))) b))
+        db)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 4096) (instOfNatNat (nat_lit 4096))) rb)
+        r)),
+  @Eq.{1} Nat
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) p
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33)))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a b)))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) da db))
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 4096) (instOfNatNat (nat_lit 4096)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) ra rb))
+      r)
+theorem OrderedJoint.proposal_conservation_compose : ∀ (p q r a b da db ra rb : Nat)
+  (ha :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) p
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33))) a))
+        da)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 4096) (instOfNatNat (nat_lit 4096))) ra)
+        q))
+  (hb :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33))) b))
+        db)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 4096) (instOfNatNat (nat_lit 4096))) rb)
+        r)),
+  @Eq.{1} Nat
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) p
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33)))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a b)))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) da db))
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 4096) (instOfNatNat (nat_lit 4096)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) ra rb))
+      r) :=
+fun (p q r a b da db ra rb : Nat)
+    (ha :
+      @Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) p
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33))) a))
+          da)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 4096) (instOfNatNat (nat_lit 4096))) ra)
+          q))
+    (hb :
+      @Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) q
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33))) b))
+          db)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 4096) (instOfNatNat (nat_lit 4096))) rb)
+          r)) =>
+  @Decidable.byContradiction
+    (@Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) p
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33)))
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a b)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) da db))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 4096) (instOfNatNat (nat_lit 4096)))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) ra rb))
+        r))
+    (instDecidableEqNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) p
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33)))
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a b)))
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) da db))
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 4096) (instOfNatNat (nat_lit 4096)))
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) ra rb))
+        r))
+    fun
+      (a_1 :
+        Not
+          (@Eq.{1} Nat
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) p
+                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33)))
+                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a b)))
+              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) da db))
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 4096) (instOfNatNat (nat_lit 4096)))
+                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) ra rb))
+              r))) =>
+    OrderedJoint.proposal_conservation_compose._proof_1_1 p q r a b da db ra rb ha hb a_1
+OrderedJoint.repeated_getter_bound : ∀ (p q T R D : Nat)
+  (hp : @LE.le.{0} Nat instLENat p (@OfNat.ofNat.{0} Nat (nat_lit 4095) (instOfNatNat (nat_lit 4095))))
+  (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) q)
+  (hd :
+    @LE.le.{0} Nat instLENat D
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))) R))
+  (hc :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) p
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33))) T))
+        D)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 4096) (instOfNatNat (nat_lit 4096))) R)
+        q)),
+  @LE.le.{0} Nat instLENat R
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+      (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33))) T)
+        (@OfNat.ofNat.{0} Nat (nat_lit 4087) (instOfNatNat (nat_lit 4087)))))
+theorem OrderedJoint.repeated_getter_bound : ∀ (p q T R D : Nat)
+  (hp : @LE.le.{0} Nat instLENat p (@OfNat.ofNat.{0} Nat (nat_lit 4095) (instOfNatNat (nat_lit 4095))))
+  (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) q)
+  (hd :
+    @LE.le.{0} Nat instLENat D
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))) R))
+  (hc :
+    @Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) p
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33))) T))
+        D)
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 4096) (instOfNatNat (nat_lit 4096))) R)
+        q)),
+  @LE.le.{0} Nat instLENat R
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+      (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33))) T)
+        (@OfNat.ofNat.{0} Nat (nat_lit 4087) (instOfNatNat (nat_lit 4087))))) :=
+fun (p q T R D : Nat)
+    (hp : @LE.le.{0} Nat instLENat p (@OfNat.ofNat.{0} Nat (nat_lit 4095) (instOfNatNat (nat_lit 4095))))
+    (hq : @LE.le.{0} Nat instLENat (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8))) q)
+    (hd :
+      @LE.le.{0} Nat instLENat D
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))) R))
+    (hc :
+      @Eq.{1} Nat
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) p
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33))) T))
+          D)
+        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 4096) (instOfNatNat (nat_lit 4096))) R)
+          q)) =>
+  @Decidable.byContradiction
+    (@LE.le.{0} Nat instLENat R
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33))) T)
+          (@OfNat.ofNat.{0} Nat (nat_lit 4087) (instOfNatNat (nat_lit 4087))))))
+    (Nat.decLe R
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33))) T)
+          (@OfNat.ofNat.{0} Nat (nat_lit 4087) (instOfNatNat (nat_lit 4087))))))
+    fun
+      (a :
+        Not
+          (@LE.le.{0} Nat instLENat R
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+              (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                  (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33))) T)
+                (@OfNat.ofNat.{0} Nat (nat_lit 4087) (instOfNatNat (nat_lit 4087))))))) =>
+    OrderedJoint.repeated_getter_bound._proof_1_1 p q T R D hp hq hd hc a
+OrderedJoint.geometric_mgf_monotone_cleared : ∀ (a p z d : Int),
+  @Eq.{1} Int
+    (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) p z)
+        (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) d
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+            (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) d a) z)))
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) a z)
+        (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) d
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+            (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) d p) z))))
+    (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+          (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) a p) z)
+        d)
+      (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) z
+        (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1)))))
+theorem OrderedJoint.geometric_mgf_monotone_cleared : ∀ (a p z d : Int),
+  @Eq.{1} Int
+    (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) p z)
+        (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) d
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+            (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) d a) z)))
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) a z)
+        (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) d
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+            (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) d p) z))))
+    (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+        (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+          (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) a p) z)
+        d)
+      (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) z
+        (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))) :=
+fun (a p z d : Int) => OrderedJoint.geometric_mgf_monotone_cleared._proof_1_1 a p z d
+OrderedJoint.expectation_root : And
+  (@Eq.{1} Nat
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 24576) (instOfNatNat (nat_lit 24576))))
+  (@Eq.{1} Nat
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 24576) (instOfNatNat (nat_lit 24576))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 811008) (instOfNatNat (nat_lit 811008))))
+theorem OrderedJoint.expectation_root : And
+  (@Eq.{1} Nat
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 24576) (instOfNatNat (nat_lit 24576))))
+  (@Eq.{1} Nat
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 24576) (instOfNatNat (nat_lit 24576))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 811008) (instOfNatNat (nat_lit 811008)))) :=
+@of_decide_eq_true
+  (And
+    (@Eq.{1} Nat
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 24576) (instOfNatNat (nat_lit 24576))))
+    (@Eq.{1} Nat
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 24576) (instOfNatNat (nat_lit 24576))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 811008) (instOfNatNat (nat_lit 811008)))))
+  (@instDecidableAnd
+    (@Eq.{1} Nat
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 24576) (instOfNatNat (nat_lit 24576))))
+    (@Eq.{1} Nat
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 24576) (instOfNatNat (nat_lit 24576))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 811008) (instOfNatNat (nat_lit 811008))))
+    (instDecidableEqNat
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 24576) (instOfNatNat (nat_lit 24576))))
+    (instDecidableEqNat
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 24576) (instOfNatNat (nat_lit 24576))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 811008) (instOfNatNat (nat_lit 811008)))))
+  (@id.{0}
+    (@Eq.{1} Bool
+      (@Decidable.decide
+        (And
+          (@Eq.{1} Nat
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 24576) (instOfNatNat (nat_lit 24576))))
+          (@Eq.{1} Nat
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 24576) (instOfNatNat (nat_lit 24576))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 811008) (instOfNatNat (nat_lit 811008)))))
+        (@instDecidableAnd
+          (@Eq.{1} Nat
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 24576) (instOfNatNat (nat_lit 24576))))
+          (@Eq.{1} Nat
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 24576) (instOfNatNat (nat_lit 24576))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 811008) (instOfNatNat (nat_lit 811008))))
+          (instDecidableEqNat
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 24576) (instOfNatNat (nat_lit 24576))))
+          (instDecidableEqNat
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 24576) (instOfNatNat (nat_lit 24576))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 811008) (instOfNatNat (nat_lit 811008))))))
+      Bool.true)
+    (@Eq.refl.{1} Bool Bool.true))
+OrderedJoint.budget_root : And
+  (@Eq.{1} Nat
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 49152) (instOfNatNat (nat_lit 49152))))
+  (@Eq.{1} Nat
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 49152) (instOfNatNat (nat_lit 49152))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 1622016) (instOfNatNat (nat_lit 1622016))))
+theorem OrderedJoint.budget_root : And
+  (@Eq.{1} Nat
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 49152) (instOfNatNat (nat_lit 49152))))
+  (@Eq.{1} Nat
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 49152) (instOfNatNat (nat_lit 49152))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 1622016) (instOfNatNat (nat_lit 1622016)))) :=
+@of_decide_eq_true
+  (And
+    (@Eq.{1} Nat
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 49152) (instOfNatNat (nat_lit 49152))))
+    (@Eq.{1} Nat
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 49152) (instOfNatNat (nat_lit 49152))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1622016) (instOfNatNat (nat_lit 1622016)))))
+  (@instDecidableAnd
+    (@Eq.{1} Nat
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 49152) (instOfNatNat (nat_lit 49152))))
+    (@Eq.{1} Nat
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 49152) (instOfNatNat (nat_lit 49152))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1622016) (instOfNatNat (nat_lit 1622016))))
+    (instDecidableEqNat
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 49152) (instOfNatNat (nat_lit 49152))))
+    (instDecidableEqNat
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 49152) (instOfNatNat (nat_lit 49152))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1622016) (instOfNatNat (nat_lit 1622016)))))
+  (@id.{0}
+    (@Eq.{1} Bool
+      (@Decidable.decide
+        (And
+          (@Eq.{1} Nat
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 49152) (instOfNatNat (nat_lit 49152))))
+          (@Eq.{1} Nat
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 49152) (instOfNatNat (nat_lit 49152))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1622016) (instOfNatNat (nat_lit 1622016)))))
+        (@instDecidableAnd
+          (@Eq.{1} Nat
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 49152) (instOfNatNat (nat_lit 49152))))
+          (@Eq.{1} Nat
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 49152) (instOfNatNat (nat_lit 49152))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1622016) (instOfNatNat (nat_lit 1622016))))
+          (instDecidableEqNat
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 49152) (instOfNatNat (nat_lit 49152))))
+          (instDecidableEqNat
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 33) (instOfNatNat (nat_lit 33)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 49152) (instOfNatNat (nat_lit 49152))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1622016) (instOfNatNat (nat_lit 1622016))))))
+      Bool.true)
+    (@Eq.refl.{1} Bool Bool.true))
+OrderedJoint.chernoff_factor : @LT.lt.{0} Nat instLTNat
+  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 17) (instOfNatNat (nat_lit 17))))
+    (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+      (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))))
+  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+    (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+      (@OfNat.ofNat.{0} Nat (nat_lit 17) (instOfNatNat (nat_lit 17)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))))
+theorem OrderedJoint.chernoff_factor : @LT.lt.{0} Nat instLTNat
+  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 17) (instOfNatNat (nat_lit 17))))
+    (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+      (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))))
+  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+    (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+      (@OfNat.ofNat.{0} Nat (nat_lit 17) (instOfNatNat (nat_lit 17)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16))))) :=
+@of_decide_eq_true
+  (@LT.lt.{0} Nat instLTNat
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 17) (instOfNatNat (nat_lit 17))))
+      (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+        (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))))
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+      (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+        (@OfNat.ofNat.{0} Nat (nat_lit 17) (instOfNatNat (nat_lit 17)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16))))))
+  (Nat.decLt
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 17) (instOfNatNat (nat_lit 17))))
+      (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+        (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))))
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+      (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+        (@OfNat.ofNat.{0} Nat (nat_lit 17) (instOfNatNat (nat_lit 17)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16))))))
+  (@id.{0}
+    (@Eq.{1} Bool
+      (@Decidable.decide
+        (@LT.lt.{0} Nat instLTNat
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 17) (instOfNatNat (nat_lit 17))))
+            (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+              (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))))
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+            (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+              (@OfNat.ofNat.{0} Nat (nat_lit 17) (instOfNatNat (nat_lit 17)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16))))))
+        (Nat.decLt
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 17) (instOfNatNat (nat_lit 17))))
+            (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+              (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))))
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))))
+            (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+              (@OfNat.ofNat.{0} Nat (nat_lit 17) (instOfNatNat (nat_lit 17)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))))))
+      Bool.true)
+    (@Eq.refl.{1} Bool Bool.true))
+OrderedJoint.chernoff_block : @LT.lt.{0} Nat instLTNat
+  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+    (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+  (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+    (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))
+    (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+theorem OrderedJoint.chernoff_block : @LT.lt.{0} Nat instLTNat
+  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+    (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+  (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+    (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))
+    (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))) :=
+@of_decide_eq_true
+  (@LT.lt.{0} Nat instLTNat
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+    (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+      (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+  (Nat.decLt
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+    (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+      (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+  (@id.{0}
+    (@Eq.{1} Bool
+      (@Decidable.decide
+        (@LT.lt.{0} Nat instLTNat
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+          (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+            (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))))
+        (Nat.decLt
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+              (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+          (@HPow.hPow.{0, 0, 0} Nat Nat Nat (@instHPow.{0, 0} Nat Nat (@instPowNat.{0} Nat instNatPowNat))
+            (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))))
+      Bool.true)
+    (@Eq.refl.{1} Bool Bool.true))
+OrderedJoint.block_count : @Eq.{1} Nat
+  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+    (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+    (@OfNat.ofNat.{0} Nat (nat_lit 1024) (instOfNatNat (nat_lit 1024))))
+  (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072)))
+theorem OrderedJoint.block_count : @Eq.{1} Nat
+  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+    (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+    (@OfNat.ofNat.{0} Nat (nat_lit 1024) (instOfNatNat (nat_lit 1024))))
+  (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))) :=
+@of_decide_eq_true
+  (@Eq.{1} Nat
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1024) (instOfNatNat (nat_lit 1024))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+  (instDecidableEqNat
+    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1024) (instOfNatNat (nat_lit 1024))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+  (@id.{0}
+    (@Eq.{1} Bool
+      (@Decidable.decide
+        (@Eq.{1} Nat
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1024) (instOfNatNat (nat_lit 1024))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072))))
+        (instDecidableEqNat
+          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+            (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))
+            (@OfNat.ofNat.{0} Nat (nat_lit 1024) (instOfNatNat (nat_lit 1024))))
+          (@OfNat.ofNat.{0} Nat (nat_lit 3072) (instOfNatNat (nat_lit 3072)))))
+      Bool.true)
+    (@Eq.refl.{1} Bool Bool.true))
+OrderedJoint.ghost_frame : And
+  (@Eq.{1} Nat
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+      (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1622016) (instOfNatNat (nat_lit 1622016)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 4087) (instOfNatNat (nat_lit 4087)))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 397) (instOfNatNat (nat_lit 397))))
+  (And
+    (@Eq.{1} Nat
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 397) (instOfNatNat (nat_lit 397))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 3573) (instOfNatNat (nat_lit 3573))))
+    (@Eq.{1} Nat
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 4096) (instOfNatNat (nat_lit 4096)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 397) (instOfNatNat (nat_lit 397))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1626112) (instOfNatNat (nat_lit 1626112)))))
+theorem OrderedJoint.ghost_frame : And
+  (@Eq.{1} Nat
+    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+      (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1622016) (instOfNatNat (nat_lit 1622016)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 4087) (instOfNatNat (nat_lit 4087)))))
+    (@OfNat.ofNat.{0} Nat (nat_lit 397) (instOfNatNat (nat_lit 397))))
+  (And
+    (@Eq.{1} Nat
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 397) (instOfNatNat (nat_lit 397))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 3573) (instOfNatNat (nat_lit 3573))))
+    (@Eq.{1} Nat
+      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 4096) (instOfNatNat (nat_lit 4096)))
+        (@OfNat.ofNat.{0} Nat (nat_lit 397) (instOfNatNat (nat_lit 397))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 1626112) (instOfNatNat (nat_lit 1626112))))) :=
+@of_decide_eq_true
+  (And
+    (@Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1622016) (instOfNatNat (nat_lit 1622016)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 4087) (instOfNatNat (nat_lit 4087)))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 397) (instOfNatNat (nat_lit 397))))
+    (And
+      (@Eq.{1} Nat
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 397) (instOfNatNat (nat_lit 397))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 3573) (instOfNatNat (nat_lit 3573))))
+      (@Eq.{1} Nat
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 4096) (instOfNatNat (nat_lit 4096)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 397) (instOfNatNat (nat_lit 397))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1626112) (instOfNatNat (nat_lit 1626112))))))
+  (@instDecidableAnd
+    (@Eq.{1} Nat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1622016) (instOfNatNat (nat_lit 1622016)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 4087) (instOfNatNat (nat_lit 4087)))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 397) (instOfNatNat (nat_lit 397))))
+    (And
+      (@Eq.{1} Nat
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 397) (instOfNatNat (nat_lit 397))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 3573) (instOfNatNat (nat_lit 3573))))
+      (@Eq.{1} Nat
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 4096) (instOfNatNat (nat_lit 4096)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 397) (instOfNatNat (nat_lit 397))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1626112) (instOfNatNat (nat_lit 1626112)))))
+    (instDecidableEqNat
+      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+          (@OfNat.ofNat.{0} Nat (nat_lit 1622016) (instOfNatNat (nat_lit 1622016)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 4087) (instOfNatNat (nat_lit 4087)))))
+      (@OfNat.ofNat.{0} Nat (nat_lit 397) (instOfNatNat (nat_lit 397))))
+    (@instDecidableAnd
+      (@Eq.{1} Nat
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 397) (instOfNatNat (nat_lit 397))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 3573) (instOfNatNat (nat_lit 3573))))
+      (@Eq.{1} Nat
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 4096) (instOfNatNat (nat_lit 4096)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 397) (instOfNatNat (nat_lit 397))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1626112) (instOfNatNat (nat_lit 1626112))))
+      (instDecidableEqNat
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 397) (instOfNatNat (nat_lit 397))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 3573) (instOfNatNat (nat_lit 3573))))
+      (instDecidableEqNat
+        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+          (@OfNat.ofNat.{0} Nat (nat_lit 4096) (instOfNatNat (nat_lit 4096)))
+          (@OfNat.ofNat.{0} Nat (nat_lit 397) (instOfNatNat (nat_lit 397))))
+        (@OfNat.ofNat.{0} Nat (nat_lit 1626112) (instOfNatNat (nat_lit 1626112))))))
+  (@id.{0}
+    (@Eq.{1} Bool
+      (@Decidable.decide
+        (And
+          (@Eq.{1} Nat
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+              (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+                (@OfNat.ofNat.{0} Nat (nat_lit 1622016) (instOfNatNat (nat_lit 1622016)))
+                (@OfNat.ofNat.{0} Nat (nat_lit 4087) (instOfNatNat (nat_lit 4087)))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 397) (instOfNatNat (nat_lit 397))))
+          (And
+            (@Eq.{1} Nat
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))
+                (@OfNat.ofNat.{0} Nat (nat_lit 397) (instOfNatNat (nat_lit 397))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 3573) (instOfNatNat (nat_lit 3573))))
+            (@Eq.{1} Nat
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 4096) (instOfNatNat (nat_lit 4096)))
+                (@OfNat.ofNat.{0} Nat (nat_lit 397) (instOfNatNat (nat_lit 397))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1626112) (instOfNatNat (nat_lit 1626112))))))
+        (@instDecidableAnd
+          (@Eq.{1} Nat
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+              (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+                (@OfNat.ofNat.{0} Nat (nat_lit 1622016) (instOfNatNat (nat_lit 1622016)))
+                (@OfNat.ofNat.{0} Nat (nat_lit 4087) (instOfNatNat (nat_lit 4087)))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 397) (instOfNatNat (nat_lit 397))))
+          (And
+            (@Eq.{1} Nat
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))
+                (@OfNat.ofNat.{0} Nat (nat_lit 397) (instOfNatNat (nat_lit 397))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 3573) (instOfNatNat (nat_lit 3573))))
+            (@Eq.{1} Nat
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 4096) (instOfNatNat (nat_lit 4096)))
+                (@OfNat.ofNat.{0} Nat (nat_lit 397) (instOfNatNat (nat_lit 397))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1626112) (instOfNatNat (nat_lit 1626112)))))
+          (instDecidableEqNat
+            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)
+              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))
+              (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)
+                (@OfNat.ofNat.{0} Nat (nat_lit 1622016) (instOfNatNat (nat_lit 1622016)))
+                (@OfNat.ofNat.{0} Nat (nat_lit 4087) (instOfNatNat (nat_lit 4087)))))
+            (@OfNat.ofNat.{0} Nat (nat_lit 397) (instOfNatNat (nat_lit 397))))
+          (@instDecidableAnd
+            (@Eq.{1} Nat
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))
+                (@OfNat.ofNat.{0} Nat (nat_lit 397) (instOfNatNat (nat_lit 397))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 3573) (instOfNatNat (nat_lit 3573))))
+            (@Eq.{1} Nat
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 4096) (instOfNatNat (nat_lit 4096)))
+                (@OfNat.ofNat.{0} Nat (nat_lit 397) (instOfNatNat (nat_lit 397))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1626112) (instOfNatNat (nat_lit 1626112))))
+            (instDecidableEqNat
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))
+                (@OfNat.ofNat.{0} Nat (nat_lit 397) (instOfNatNat (nat_lit 397))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 3573) (instOfNatNat (nat_lit 3573))))
+            (instDecidableEqNat
+              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)
+                (@OfNat.ofNat.{0} Nat (nat_lit 4096) (instOfNatNat (nat_lit 4096)))
+                (@OfNat.ofNat.{0} Nat (nat_lit 397) (instOfNatNat (nat_lit 397))))
+              (@OfNat.ofNat.{0} Nat (nat_lit 1626112) (instOfNatNat (nat_lit 1626112)))))))
+      Bool.true)
+    (@Eq.refl.{1} Bool Bool.true))
+@OrderedJoint.exit_preserved : ∀ {A B : Type} (f : A → B) (i : Nat) (h : List.{0} Int) (y : Int),
+  @Eq.{1} (OrderedJoint.Tagged B) (@OrderedJoint.push A B f (@OrderedJoint.Tagged.exit A i h y))
+    (@OrderedJoint.Tagged.exit B i h y)
+theorem OrderedJoint.exit_preserved : ∀ {A B : Type} (f : A → B) (i : Nat) (h : List.{0} Int) (y : Int),
+  @Eq.{1} (OrderedJoint.Tagged B) (@OrderedJoint.push A B f (@OrderedJoint.Tagged.exit A i h y))
+    (@OrderedJoint.Tagged.exit B i h y) :=
+fun {A B : Type} (f : A → B) (i : Nat) (h : List.{0} Int) (y : Int) =>
+  @Eq.refl.{1} (OrderedJoint.Tagged B) (@OrderedJoint.push A B f (@OrderedJoint.Tagged.exit A i h y))
+@OrderedJoint.joint_bad_exact : ∀ {A : Type}
+  (f :
+    A →
+      Prod.{0, 0} (Fin (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) → Int)
+        (Fin (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) → Int))
+  (a : A),
+  Iff (@OrderedJoint.bad A f (@OrderedJoint.Tagged.live A a))
+    (Not
+      (Postprocess.Safe16
+        (@Prod.fst.{0, 0} (Fin (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) → Int)
+          (Fin (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) → Int) (f a))
+        (@Prod.snd.{0, 0} (Fin (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) → Int)
+          (Fin (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) → Int) (f a))))
+theorem OrderedJoint.joint_bad_exact : ∀ {A : Type}
+  (f :
+    A →
+      Prod.{0, 0} (Fin (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) → Int)
+        (Fin (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) → Int))
+  (a : A),
+  Iff (@OrderedJoint.bad A f (@OrderedJoint.Tagged.live A a))
+    (Not
+      (Postprocess.Safe16
+        (@Prod.fst.{0, 0} (Fin (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) → Int)
+          (Fin (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) → Int) (f a))
+        (@Prod.snd.{0, 0} (Fin (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) → Int)
+          (Fin (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) → Int) (f a)))) :=
+fun {A : Type}
+    (f :
+      A →
+        Prod.{0, 0} (Fin (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) → Int)
+          (Fin (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) → Int))
+    (a : A) =>
+  @Iff.rfl (@OrderedJoint.bad A f (@OrderedJoint.Tagged.live A a))
+@OrderedJoint.exit_not_bad : ∀ {A : Type}
+  (f :
+    A →
+      Prod.{0, 0} (Fin (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) → Int)
+        (Fin (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) → Int))
+  (i : Nat) (h : List.{0} Int) (y : Int), Not (@OrderedJoint.bad A f (@OrderedJoint.Tagged.exit A i h y))
+theorem OrderedJoint.exit_not_bad : ∀ {A : Type}
+  (f :
+    A →
+      Prod.{0, 0} (Fin (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) → Int)
+        (Fin (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) → Int))
+  (i : Nat) (h : List.{0} Int) (y : Int), Not (@OrderedJoint.bad A f (@OrderedJoint.Tagged.exit A i h y)) :=
+fun {A : Type}
+    (f :
+      A →
+        Prod.{0, 0} (Fin (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) → Int)
+          (Fin (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) → Int))
+    (i : Nat) (h : List.{0} Int) (y : Int) =>
+  @of_eq_true (Not False) not_false_eq_true
+OrderedJoint.event_variance : ∀ (q d : Int),
+  @Eq.{1} Int
+    (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+        (@HPow.hPow.{0, 0, 0} Int Nat Int (@instHPow.{0, 0} Int Nat (@instPowNat.{0} Int Int.instNatPow))
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) d
+            (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+              (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))) q))
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        q)
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+        (@HPow.hPow.{0, 0, 0} Int Nat Int (@instHPow.{0, 0} Int Nat (@instPowNat.{0} Int Int.instNatPow))
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) (@Neg.neg.{0} Int Int.instNegInt d) q)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+          (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))) q)))
+    (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+        (@HPow.hPow.{0, 0, 0} Int Nat Int (@instHPow.{0, 0} Int Nat (@instPowNat.{0} Int Int.instNatPow)) d
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        q)
+      (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+        (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))) q))
+theorem OrderedJoint.event_variance : ∀ (q d : Int),
+  @Eq.{1} Int
+    (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+        (@HPow.hPow.{0, 0, 0} Int Nat Int (@instHPow.{0, 0} Int Nat (@instPowNat.{0} Int Int.instNatPow))
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) d
+            (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+              (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))) q))
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        q)
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+        (@HPow.hPow.{0, 0, 0} Int Nat Int (@instHPow.{0, 0} Int Nat (@instPowNat.{0} Int Int.instNatPow))
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul) (@Neg.neg.{0} Int Int.instNegInt d) q)
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+          (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))) q)))
+    (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+      (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+        (@HPow.hPow.{0, 0, 0} Int Nat Int (@instHPow.{0, 0} Int Nat (@instPowNat.{0} Int Int.instNatPow)) d
+          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))
+        q)
+      (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+        (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))) q)) :=
+fun (q d : Int) => OrderedJoint.event_variance._proof_1_1 q d
+OrderedJoint.marginal_transfer : ∀ (p q loss : Int)
+  (h :
+    And
+      (@LE.le.{0} Int Int.instLEInt (@Neg.neg.{0} Int Int.instNegInt loss)
+        (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) p q))
+      (@LE.le.{0} Int Int.instLEInt (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) p q) loss)),
+  @LE.le.{0} Int Int.instLEInt p (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) q loss)
+theorem OrderedJoint.marginal_transfer : ∀ (p q loss : Int)
+  (h :
+    And
+      (@LE.le.{0} Int Int.instLEInt (@Neg.neg.{0} Int Int.instNegInt loss)
+        (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) p q))
+      (@LE.le.{0} Int Int.instLEInt (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) p q) loss)),
+  @LE.le.{0} Int Int.instLEInt p (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) q loss) :=
+fun (p q loss : Int)
+    (h :
+      And
+        (@LE.le.{0} Int Int.instLEInt (@Neg.neg.{0} Int Int.instNegInt loss)
+          (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) p q))
+        (@LE.le.{0} Int Int.instLEInt (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) p q) loss)) =>
+  @Decidable.byContradiction
+    (@LE.le.{0} Int Int.instLEInt p (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) q loss))
+    (Int.decLe p (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) q loss))
+    fun
+      (a :
+        Not
+          (@LE.le.{0} Int Int.instLEInt p (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) q loss))) =>
+    OrderedJoint.marginal_transfer._proof_1_1 p q loss h a

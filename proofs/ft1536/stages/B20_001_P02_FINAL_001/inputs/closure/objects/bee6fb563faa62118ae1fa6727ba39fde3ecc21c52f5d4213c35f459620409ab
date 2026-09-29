@@ -1,0 +1,132 @@
+sampler_large(void *ctx, fpr mu, fpr sigma)
+{
+	ternary_sampler_context *tsc;
+	prng *p;
+	int s;
+	fpr r, dss;
+
+	tsc = ctx;
+	p = &tsc->p;
+	if (tsc->fault != FT_SAMPLER_FAULT_NONE) {
+		return 0;
+	}
+#if FT_SAMPLER_ADAPTIVE_PROBE
+	ft_sampler_probe_calls ++;
+#endif
+	if (!ft_fpr_is_finite(mu) || !ft_fpr_is_positive_finite(sigma)) {
+		tsc->fault = FT_SAMPLER_FAULT_INVALID_SIGMA;
+#if FT_SAMPLER_ADAPTIVE_PROBE
+		ft_sampler_probe_invalid_sigma ++;
+#endif
+		return 0;
+	}
+
+	s = fpr_floor(mu);
+	r = fpr_sub(mu, fpr_of(s));
+	dss = fpr_inv(fpr_mul(fpr_sqr(sigma), fpr_of(2)));
+#if FT_SAMPLER_ADAPTIVE_PROBE
+	ft_sampler_probe_center_input(mu, r);
+#endif
+	if (!ft_fpr_is_positive_finite(dss)) {
+		tsc->fault = FT_SAMPLER_FAULT_INVALID_SIGMA;
+#if FT_SAMPLER_ADAPTIVE_PROBE
+		ft_sampler_probe_invalid_sigma ++;
+#endif
+		return 0;
+	}
+#if FT_SAMPLER_ADAPTIVE_PROBE
+	{
+		uint64_t sigma_bits, dss_bits;
+
+		sigma_bits = ft_fpr_bits(sigma);
+		dss_bits = ft_fpr_bits(dss);
+		if (sigma_bits < ft_sampler_probe_min_sigma_bits) {
+			ft_sampler_probe_min_sigma_bits = sigma_bits;
+		}
+		if (sigma_bits > ft_sampler_probe_max_sigma_bits) {
+			ft_sampler_probe_max_sigma_bits = sigma_bits;
+		}
+		if (dss_bits < ft_sampler_probe_min_dss_bits) {
+			ft_sampler_probe_min_dss_bits = dss_bits;
+		}
+		if (dss_bits > ft_sampler_probe_max_dss_bits) {
+			ft_sampler_probe_max_dss_bits = dss_bits;
+		}
+	}
+#endif
+
+	for (;;) {
+		int z, b;
+		fpr x;
+
+#if FT_TERNARY_ADAPTIVE_CDF
+		int k;
+		int64_t kk;
+		unsigned proposal_level;
+		fpr inv_2sigma0_sq, delta, gap, tail_term;
+
+		if (!ft_adaptive_proposal(p, dss, &k,
+			&inv_2sigma0_sq, &proposal_level))
+		{
+			tsc->fault = FT_SAMPLER_FAULT_PROPOSAL_RANGE;
+#if FT_SAMPLER_ADAPTIVE_PROBE
+			ft_sampler_probe_proposal_range ++;
+#endif
+			return 0;
+		}
+#if FT_SAMPLER_ADAPTIVE_PROBE
+		ft_sampler_probe_proposals ++;
+		ft_sampler_probe_levels[proposal_level] ++;
+#endif
+		b = falcon_prng_get_u8(p) & 1;
+		z = b ? (1 + k) : -k;
+		delta = b ? fpr_sub(fpr_of(1), r) : r;
+
+		/*
+		 * Manifestly non-negative correction:
+		 *
+		 * x = k^2 * (1/(2*sigma^2) - 1/(2*sigma0^2))
+		 *     + (2*k*delta + delta^2)/(2*sigma^2).
+		 */
+		gap = fpr_sub(dss, inv_2sigma0_sq);
+		if (!ft_fpr_is_nonnegative_finite(gap)) {
+			tsc->fault = FT_SAMPLER_FAULT_PROPOSAL_RANGE;
+#if FT_SAMPLER_ADAPTIVE_PROBE
+			ft_sampler_probe_proposal_range ++;
+#endif
+			return 0;
+		}
+		kk = (int64_t)k * (int64_t)k;
+		x = fpr_mul(fpr_of(kk), gap);
+		tail_term = fpr_add(
+			fpr_mul(fpr_of((int64_t)2 * k), delta),
+			fpr_sqr(delta));
+		x = fpr_add(x, fpr_mul(tail_term, dss));
+#else
+		z = gaussian0_sampler_large(p);
+		b = falcon_prng_get_u8(p) & 1;
+		z = b + ((b << 1) - 1) * z;
+		x = fpr_mul(fpr_sqr(fpr_sub(fpr_of(z), r)), dss);
+		x = fpr_sub(x,
+			fpr_mul(fpr_of((z - b) * (z - b)), fpr_inv_10));
+#endif
+		if (!ft_fpr_is_nonnegative_finite(x)) {
+			tsc->fault = FT_SAMPLER_FAULT_NEGATIVE_X;
+#if FT_SAMPLER_ADAPTIVE_PROBE
+			ft_sampler_probe_negative_x ++;
+#endif
+			return 0;
+		}
+		if (BerExp(p, x)) {
+	#if FT_SAMPLER_ADAPTIVE_PROBE
+			int sample;
+
+			sample = s + z;
+			ft_sampler_probe_center_output(mu, sample);
+			return sample;
+	#else
+			return s + z;
+	#endif
+		}
+	}
+}

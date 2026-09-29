@@ -1,0 +1,11 @@
+.POSIX:
+
+CC = c99
+# CT-safe: -O only. -O3 -march=native introduced timing jitter in dudect.
+# FPEMU_CT_STRICT uses the branchless default CDF path and CT BerExp.
+CFLAGS = -W -Wall -O -DFPR_IMPL=\"fpr-emulated.h\" -DSAMPLER_CODF=0 -DSAMPLER_CDF=0 -DCT_BEREXP=1 -DFT_TERNARY_ADAPTIVE_CDF=1 -DFT1536_CANDIDATE_PROFILE=1 -DCLEANSE=1 -DTRUE_TERNARY_SECRET=1 -DTRUE_TERNARY_SECRET_MODE=1 -DTERNARY_KEYGEN_BOUND_SCALE_NUM=1250 -DTERNARY_KEYGEN_BOUND_SCALE_DEN=100 -DTERNARY_KEYGEN_MAX_ATTEMPTS=3000000 -DSIGN_MAX_ATTEMPTS=16
+LD = c99
+LDFLAGS =
+LDLIBS = -lm
+
+OBJ = falcon-enc.o falcon-vrfy.o frng.o shake.o fpr-emulated.o falcon-fft.o falcon-keygen.o falcon-sign.o

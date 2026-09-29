@@ -1,0 +1,330 @@
+[
+  {
+    "name": "sage_version",
+    "argv": [
+      "/home/footfalcon/.local/bin/sage",
+      "--version"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/source",
+    "start": "2026-09-24T14:17:10.370579+00:00",
+    "stop": "2026-09-24T14:17:59.425768+00:00",
+    "elapsed_s": 49.05518317700262,
+    "exit_code": 0,
+    "expected_exit": 0,
+    "stdout": "sage_version.stdout",
+    "stdout_sha256": "65c57161b58002a9784f3b056b693ebe515469e80c9a11afe3d4423e671af8a0",
+    "stderr": "sage_version.stderr",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "sage_oracle",
+    "argv": [
+      "/home/footfalcon/.local/bin/sage",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/source/checks/word_helpers.sage"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/source",
+    "start": "2026-09-24T14:17:59.426164+00:00",
+    "stop": "2026-09-24T14:18:01.294249+00:00",
+    "elapsed_s": 1.8680938840007002,
+    "exit_code": 0,
+    "expected_exit": 0,
+    "stdout": "sage_oracle.stdout",
+    "stdout_sha256": "fafe02c0b6c89148280e1591f5c5f75688cc03bf628f53419bfcadbf02c1df77",
+    "stderr": "sage_oracle.stderr",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "gcc_version",
+    "argv": [
+      "/usr/bin/gcc",
+      "--version"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/source",
+    "start": "2026-09-24T14:18:01.294807+00:00",
+    "stop": "2026-09-24T14:18:01.784085+00:00",
+    "elapsed_s": 0.4892845069989562,
+    "exit_code": 0,
+    "expected_exit": 0,
+    "stdout": "gcc_version.stdout",
+    "stdout_sha256": "4dc9a4e32fd9e06d42fb307688c59d6d889f0ff90ce034cbefed21b0d451fd81",
+    "stderr": "gcc_version.stderr",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "normal_compile",
+    "argv": [
+      "/usr/bin/gcc",
+      "-std=c99",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/source/checks/word_helpers.c",
+      "-o",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/build/normal"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/source",
+    "start": "2026-09-24T14:18:01.784518+00:00",
+    "stop": "2026-09-24T14:18:04.505308+00:00",
+    "elapsed_s": 2.7208047749991238,
+    "exit_code": 0,
+    "expected_exit": 0,
+    "stdout": "normal_compile.stdout",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "normal_compile.stderr",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "normal_execute",
+    "argv": [
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/build/normal",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/build/word_cases.txt"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/source",
+    "start": "2026-09-24T14:18:04.505920+00:00",
+    "stop": "2026-09-24T14:18:04.522092+00:00",
+    "elapsed_s": 0.016186779001145624,
+    "exit_code": 0,
+    "expected_exit": 0,
+    "stdout": "normal_execute.stdout",
+    "stdout_sha256": "edf057f94083ed39e61625bd34196d43f2121a5b87b8cb647e53b6a066d31760",
+    "stderr": "normal_execute.stderr",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "ubsan_compile",
+    "argv": [
+      "/usr/bin/gcc",
+      "-std=c99",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-fsanitize=undefined",
+      "-fno-sanitize-recover=all",
+      "-I",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/source/checks/word_helpers.c",
+      "-o",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/build/ubsan"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/source",
+    "start": "2026-09-24T14:18:04.523169+00:00",
+    "stop": "2026-09-24T14:18:04.888792+00:00",
+    "elapsed_s": 0.36561439899742254,
+    "exit_code": 0,
+    "expected_exit": 0,
+    "stdout": "ubsan_compile.stdout",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "ubsan_compile.stderr",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "ubsan_execute",
+    "argv": [
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/build/ubsan",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/build/word_cases.txt"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/source",
+    "start": "2026-09-24T14:18:04.889224+00:00",
+    "stop": "2026-09-24T14:18:04.953634+00:00",
+    "elapsed_s": 0.06441998800073634,
+    "exit_code": 0,
+    "expected_exit": 0,
+    "stdout": "ubsan_execute.stdout",
+    "stdout_sha256": "edf057f94083ed39e61625bd34196d43f2121a5b87b8cb647e53b6a066d31760",
+    "stderr": "ubsan_execute.stderr",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "middle_shift_compile",
+    "argv": [
+      "/usr/bin/gcc",
+      "-std=c99",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/build/mutation_middle_shift",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/source/checks/word_helpers.c",
+      "-o",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/build/mutation_middle_shift/control"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/source",
+    "start": "2026-09-24T14:18:04.955237+00:00",
+    "stop": "2026-09-24T14:18:05.019774+00:00",
+    "elapsed_s": 0.06453604499984067,
+    "exit_code": 0,
+    "expected_exit": 0,
+    "stdout": "middle_shift_compile.stdout",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "middle_shift_compile.stderr",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "middle_shift_execute",
+    "argv": [
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/build/mutation_middle_shift/control",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/build/word_cases.txt"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/source",
+    "start": "2026-09-24T14:18:05.020089+00:00",
+    "stop": "2026-09-24T14:18:05.028097+00:00",
+    "elapsed_s": 0.008014122999156825,
+    "exit_code": 1,
+    "expected_exit": 1,
+    "stdout": "middle_shift_execute.stdout",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "middle_shift_execute.stderr",
+    "stderr_sha256": "af15109acb8baeccb06fdc4188307b6629b905d0f497c97025b806d6de0242af"
+  },
+  {
+    "name": "count_mask_compile",
+    "argv": [
+      "/usr/bin/gcc",
+      "-std=c99",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/build/mutation_count_mask",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/source/checks/word_helpers.c",
+      "-o",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/build/mutation_count_mask/control"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/source",
+    "start": "2026-09-24T14:18:05.028667+00:00",
+    "stop": "2026-09-24T14:18:05.092770+00:00",
+    "elapsed_s": 0.0641101150031318,
+    "exit_code": 0,
+    "expected_exit": 0,
+    "stdout": "count_mask_compile.stdout",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "count_mask_compile.stderr",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "count_mask_execute",
+    "argv": [
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/build/mutation_count_mask/control",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/build/word_cases.txt"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/source",
+    "start": "2026-09-24T14:18:05.093077+00:00",
+    "stop": "2026-09-24T14:18:05.094572+00:00",
+    "elapsed_s": 0.0014974940022511873,
+    "exit_code": 1,
+    "expected_exit": 1,
+    "stdout": "count_mask_execute.stdout",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "count_mask_execute.stderr",
+    "stderr_sha256": "be00f9a2cf57cf202d18446268348d41efb40d1aa627aa1a7a93f2daa8bf1073"
+  },
+  {
+    "name": "noop_compile",
+    "argv": [
+      "/usr/bin/gcc",
+      "-std=c99",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/build/mutation_noop",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/source/checks/word_helpers.c",
+      "-o",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/build/mutation_noop/control"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/source",
+    "start": "2026-09-24T14:18:05.095107+00:00",
+    "stop": "2026-09-24T14:18:05.159182+00:00",
+    "elapsed_s": 0.06409069000073941,
+    "exit_code": 0,
+    "expected_exit": 0,
+    "stdout": "noop_compile.stdout",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "noop_compile.stderr",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "noop_execute",
+    "argv": [
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/build/mutation_noop/control",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/build/word_cases.txt"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/source",
+    "start": "2026-09-24T14:18:05.159723+00:00",
+    "stop": "2026-09-24T14:18:05.161575+00:00",
+    "elapsed_s": 0.0018586580008559395,
+    "exit_code": 1,
+    "expected_exit": 1,
+    "stdout": "noop_execute.stdout",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "noop_execute.stderr",
+    "stderr_sha256": "be00f9a2cf57cf202d18446268348d41efb40d1aa627aa1a7a93f2daa8bf1073"
+  },
+  {
+    "name": "signed_logical_compile",
+    "argv": [
+      "/usr/bin/gcc",
+      "-std=c99",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/build/mutation_signed_logical",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/source/checks/word_helpers.c",
+      "-o",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/build/mutation_signed_logical/control"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/source",
+    "start": "2026-09-24T14:18:05.162486+00:00",
+    "stop": "2026-09-24T14:18:05.226680+00:00",
+    "elapsed_s": 0.06418809199749376,
+    "exit_code": 0,
+    "expected_exit": 0,
+    "stdout": "signed_logical_compile.stdout",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "signed_logical_compile.stderr",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "signed_logical_execute",
+    "argv": [
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/build/mutation_signed_logical/control",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/build/word_cases.txt"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/source",
+    "start": "2026-09-24T14:18:05.227010+00:00",
+    "stop": "2026-09-24T14:18:05.234909+00:00",
+    "elapsed_s": 0.007906843999080593,
+    "exit_code": 1,
+    "expected_exit": 1,
+    "stdout": "signed_logical_execute.stdout",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "signed_logical_execute.stderr",
+    "stderr_sha256": "be2417a145d3c257abfd9d09067b630842838919beafc449f38935a8e4cf6c13"
+  },
+  {
+    "name": "no_producer_rejected",
+    "argv": [
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/build/normal",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/build/empty_cases.txt"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fresh_scalar_le_002/source",
+    "start": "2026-09-24T14:18:05.235275+00:00",
+    "stop": "2026-09-24T14:18:05.236719+00:00",
+    "elapsed_s": 0.001442718999896897,
+    "exit_code": 3,
+    "expected_exit": 3,
+    "stdout": "no_producer_rejected.stdout",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "no_producer_rejected.stderr",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

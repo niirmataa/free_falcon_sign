@@ -1,0 +1,25 @@
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_052/source/B20/Fpr/Spec.lean:388:38: error: unsolved goals
+x : BitVec 64
+hdom : rintDomain x
+hcase : (rint_e x).toNat < 64
+hen :
+  ↑(1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toNat =
+      (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toInt ∧
+    13 ≤ (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toNat ∧
+      (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toNat ≤ 1085
+hm0 : (rint_m0 x).toNat < 2 ^ 63
+hmask : rint_mask (rint_e x) = BitVec.allOnes 64
+⊢ rint_m0 x &&& 18446744073709551615#64 = rint_m0 x
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_052/source/B20/Fpr/Spec.lean:416:4: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  0 ≤ e ≤ 9223372036854775807
+  1125899906842624 ≤ d ≤ 18446744073709551615
+  0 ≤ c ≤ 1
+  0 ≤ b ≤ 63
+  13 ≤ a ≤ 1085
+where
+ a := (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toInt
+ b := ↑(rint_e2 x).toNat
+ c := ↑(BitVec.setWidth 64 (200#32 >>> (rint_f x).toNat &&& 1#32)).toNat
+ d := ↑(rint_m1 x).toNat / ↑(2 ^ (rint_e2 x).toNat)
+ e := ↑(rint_m1 x).toNat

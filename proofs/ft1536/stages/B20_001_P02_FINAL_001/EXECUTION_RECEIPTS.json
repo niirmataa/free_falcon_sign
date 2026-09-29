@@ -1,0 +1,102 @@
+{
+  "fresh_run": {
+    "exit_code": 0,
+    "path": "replay_evidence/fresh_003/receipt.json",
+    "steps": 43
+  },
+  "historical_overwritten_child_logs": "OVERWRITTEN_LOGS.json",
+  "history": {
+    "note": "full DEST trees with raw stdout/stderr, argv, env and source hashes live in run/<id>/; these rows are the freeze index",
+    "runs": [
+      {
+        "all_steps_exit_zero": true,
+        "id": "replay_001",
+        "note": "fresh replay: toolchain gate + transport + controls(word,le,scalar) + 34 Lean modules",
+        "receipt": "run/replay_001/receipt.json",
+        "start": "2026-09-24T23:07:39.781149+00:00",
+        "steps": 42
+      },
+      {
+        "all_steps_exit_zero": true,
+        "id": "freeze_scan",
+        "note": "489-name #check/#print-axioms scan (formal_printed_types.txt / AXIOMS.json)",
+        "receipt": "run/freeze_scan/receipt.json",
+        "start": "2026-09-24T23:02:28.247802+00:00",
+        "steps": 33
+      },
+      {
+        "all_steps_exit_zero": true,
+        "id": "full_domain_001",
+        "note": "34/34 Lean modules green after MS2",
+        "receipt": "run/full_domain_001/receipt.json",
+        "start": "2026-09-24T21:56:05.851505+00:00",
+        "steps": 34
+      },
+      {
+        "all_steps_exit_zero": true,
+        "id": "scalar_controls_006",
+        "note": "MS3 normal+UBSan+5 mutants",
+        "receipt": "run/scalar_controls_006/receipt.json",
+        "start": "2026-09-24T22:42:32.882559+00:00",
+        "steps": 1
+      },
+      {
+        "all_steps_exit_zero": true,
+        "id": "scalar_asan_001",
+        "note": "MS3 ASan",
+        "receipt": "run/scalar_asan_001/receipt.json",
+        "start": "2026-09-24T22:42:44.116455+00:00",
+        "steps": 1
+      },
+      {
+        "all_steps_exit_zero": true,
+        "id": "word_asan_002",
+        "note": "word ASan rerun for freeze",
+        "receipt": "run/word_asan_002/receipt.json",
+        "start": "2026-09-24T23:20:21.924612+00:00",
+        "steps": 1
+      },
+      {
+        "all_steps_exit_zero": true,
+        "id": "le_asan_002",
+        "note": "LE ASan rerun for freeze",
+        "receipt": "run/le_asan_002/receipt.json",
+        "start": "2026-09-24T23:20:26.808532+00:00",
+        "steps": 1
+      },
+      {
+        "all_steps_exit_zero": true,
+        "id": "floor_exec_014",
+        "note": "final floor_execution proof run",
+        "receipt": "run/floor_exec_014/receipt.json",
+        "start": "2026-09-24T20:18:54.514122+00:00",
+        "steps": 16
+      },
+      {
+        "all_steps_exit_zero": true,
+        "id": "fpr_spec_110",
+        "note": "final rint_execution proof run (clean logs)",
+        "receipt": "run/fpr_spec_110/receipt.json",
+        "start": "2026-09-24T18:30:11.697173+00:00",
+        "steps": 15
+      }
+    ],
+    "schema": "B20_P02_EXECUTION_RECEIPTS_V1"
+  },
+  "history_binding": "HISTORY_BINDING.json",
+  "owner_accepted": false,
+  "preceding_trials": [
+    {
+      "exit_code": 0,
+      "path": "replay_evidence/fresh_001/receipt.json",
+      "steps": 42
+    },
+    {
+      "exit_code": 0,
+      "path": "replay_evidence/fresh_002/receipt.json",
+      "steps": 43
+    }
+  ],
+  "predecessor_receipts_sha256": "24952d92a22bf4d4e70fd1c17057de7ae12d78ac20492405d456fb54a27118fa",
+  "schema": "B20_P02_EXECUTION_RECEIPTS_V2"
+}

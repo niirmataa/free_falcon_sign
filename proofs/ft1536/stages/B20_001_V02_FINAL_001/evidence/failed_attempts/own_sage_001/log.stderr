@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/home/footfalcon/miniforge3/envs/sage/bin/sage", line 5, in <module>
+    from sage.cli.__main__ import main
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__main__.py", line 9, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__init__.py", line 56, in main
+    return RunFileCmd(options).run()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/run_file_cmd.py", line 50, in run
+    eval(compile(open(input_file, 'rb').read(), input_file, 'exec'), sage_globals())
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/V02/run/own_sage_001/tmp/sage_slacr8pn/check_words5b4mj0xz.sage.py", line 118, in <module>
+    u64(x + (_sage_const_0x3ff0000000000000  ** SGN)))
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^~~~~
+  File "sage/rings/integer.pyx", line 2274, in sage.rings.integer.Integer.__pow__
+    return (<Integer>left)._pow_(right)
+  File "sage/rings/integer.pyx", line 2353, in sage.rings.integer.Integer._pow_
+    raise OverflowError(f"exponent must be at most {LONG_MAX}")
+OverflowError: exponent must be at most 9223372036854775807

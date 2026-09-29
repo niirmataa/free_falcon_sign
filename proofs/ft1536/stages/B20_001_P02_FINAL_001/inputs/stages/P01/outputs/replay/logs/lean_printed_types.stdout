@@ -1,0 +1,70 @@
+B20.Foundation.CExec : B20.Foundation.Program → B20.Foundation.State → B20.Foundation.Outcome → Prop
+B20.Foundation.evalStmt : B20.Foundation.CStmt → B20.Foundation.State → B20.Foundation.Outcome
+B20.Foundation.evalStmt_sound : ∀ (p : B20.Foundation.CStmt) (s : B20.Foundation.State),
+  B20.Foundation.CExec p s (B20.Foundation.evalStmt p s)
+B20.Foundation.CExec_complete : ∀ (p : B20.Foundation.CStmt) (s : B20.Foundation.State),
+  B20.Foundation.CExec p s (B20.Foundation.evalStmt p s)
+B20.Foundation.compile_refines : ∀ (p : B20.Foundation.CStmt) (s : B20.Foundation.State) (o : B20.Foundation.Outcome),
+  B20.Foundation.CExec p s o ↔ B20.Foundation.SpecExec (B20.Foundation.compile p) s o
+B20.Foundation.u64Add_toNat : ∀ (x y : B20.Foundation.Word64),
+  BitVec.toNat (B20.Foundation.u64Add x y) = (BitVec.toNat x + BitVec.toNat y) % 2 ^ 64
+@B20.Foundation.Outcome.stuck_ne_abort : ∀ {r r' : String},
+  B20.Foundation.Outcome.stuck r ≠ B20.Foundation.Outcome.abort r'
+B20.Foundation.SourceBinding : B20.Foundation.PinnedSource → B20.Foundation.CStmt → Prop
+B20.Foundation.checker_sound : ∀ (src : B20.Foundation.PinnedSource) (p : B20.Foundation.CStmt),
+  B20.Foundation.checkSource src p = true → B20.Foundation.SourceBinding src p
+B20.Foundation.translateStmt : String → Option B20.Foundation.CStmt
+B20.Foundation.SourceTranslation : B20.Foundation.PinnedSource → B20.Foundation.CStmt → Prop
+B20.Foundation.source17ReturnZero_translation : B20.Foundation.SourceTranslation
+  B20.Foundation.source17ReturnZeroFragment B20.Foundation.source17ReturnZeroProgram
+B20.Foundation.source17ReturnZero_binding : B20.Foundation.SourceBinding B20.Foundation.source17ReturnZeroFragment
+  B20.Foundation.source17ReturnZeroProgram
+B20.Foundation.mutated_constant_rejected : ¬B20.Foundation.SourceBinding B20.Foundation.mutatedReturnOne
+    B20.Foundation.source17ReturnZeroProgram
+B20.Foundation.mutated_operator_rejected : ¬B20.Foundation.SourceBinding B20.Foundation.mutatedReturnGoto
+    B20.Foundation.source17ReturnZeroProgram
+B20.Foundation.syntheticShape_binding : B20.Foundation.SourceBinding B20.Foundation.syntheticShapeFragment
+  B20.Foundation.syntheticShapeProgram
+B20.Foundation.RationalInterval.Certifies : B20.Foundation.RationalInterval → Prop
+B20.Foundation.RationalInterval.checkSqrt2 : B20.Foundation.RationalInterval → Bool
+B20.Foundation.certificate_sound : ∀ (i : B20.Foundation.RationalInterval),
+  i.checkSqrt2 = true → ↑i.lower < √2 ∧ √2 < ↑i.upper
+B20.Foundation.CertificateSound : ∀ (i : B20.Foundation.RationalInterval),
+  i.checkSqrt2 = true → ↑i.lower < √2 ∧ √2 < ↑i.upper
+B20.Foundation.sqrt2Witness_sound : ↑B20.Foundation.sqrt2Witness.lower < √2 ∧ √2 < ↑B20.Foundation.sqrt2Witness.upper
+B20.Foundation.false_inequality_rejected : B20.Foundation.falseInequalityCert.checkSqrt2 = false
+B20.Foundation.reversed_endpoint_rejected : B20.Foundation.reversedEndpointCert.checkSqrt2 = false
+B20.Foundation.missing_denominator_rejected : B20.Foundation.missingDenominatorCert.checkSqrt2 = false
+B20.Foundation.Transport.decodeNat : List ℕ → ℕ
+B20.Foundation.Transport.decodeNat_encodeNat : ∀ (n : ℕ),
+  B20.Foundation.Transport.decodeNat (B20.Foundation.Transport.encodeNat n) = n
+B20.Foundation.Transport.decodeInt : Bool → List ℕ → ℤ
+B20.Foundation.ObservedKernel : Type u_1 → Type u_2 → Type (max u_1 u_2)
+@B20.Foundation.conditionalHistory : {α : Type u_1} →
+  {β : Type u_2} → B20.Foundation.ObservedKernel α β → B20.Foundation.History α β → α → PMF β
+@B20.Foundation.totalVariation : {α : Type u_1} → [Fintype α] → PMF α → PMF α → ℝ
+@B20.Foundation.directedChi2 : {α : Type u_1} → [Fintype α] → PMF α → PMF α → WithTop ℝ
+@B20.Foundation.totalVariation_self_zero : ∀ {α : Type u_1} [inst : Fintype α] (p : PMF α),
+  B20.Foundation.totalVariation p p = 0
+@B20.Foundation.directedChi2_self_zero : ∀ {α : Type u_1} [inst : Fintype α] (p : PMF α),
+  B20.Foundation.directedChi2 p p = 0
+B20.Foundation.pinnedKernel : B20.Foundation.ObservedKernel B20.Foundation.State B20.Foundation.Outcome
+B20.Foundation.pinnedObserved : B20.Foundation.State → PMF Bool
+B20.Foundation.pinned_observed_initState : B20.Foundation.pinnedObserved B20.Foundation.initState = PMF.pure true
+B20.Foundation.pinned_tv_self : ∀ (s : B20.Foundation.State),
+  B20.Foundation.totalVariation (B20.Foundation.pinnedObserved s) (B20.Foundation.pinnedObserved s) = 0
+B20.Foundation.pinned_chi2_self : ∀ (s : B20.Foundation.State),
+  B20.Foundation.directedChi2 (B20.Foundation.pinnedObserved s) (B20.Foundation.pinnedObserved s) = 0
+B20.Foundation.pinned_conditionalHistory_state : ∀ (s : B20.Foundation.State)
+  (h : B20.Foundation.History B20.Foundation.State B20.Foundation.Outcome),
+  h.state = s → B20.Foundation.conditionalHistory B20.Foundation.pinnedKernel h s = B20.Foundation.pinnedKernel.step s
+B20.Foundation.endToEndReceipt : B20.Foundation.EndToEndReceipt
+B20.Foundation.endToEnd_receipt_valid : B20.Foundation.SourceBinding B20.Foundation.endToEndReceipt.source
+    B20.Foundation.endToEndReceipt.program ∧
+  B20.Foundation.SourceTranslation B20.Foundation.endToEndReceipt.source B20.Foundation.endToEndReceipt.program ∧
+    B20.Foundation.endToEndReceipt.interval.checkSqrt2 = true
+B20.Foundation.endToEnd_chain : B20.Foundation.SourceTranslation B20.Foundation.source17ReturnZeroFragment
+    B20.Foundation.source17ReturnZeroProgram ∧
+  B20.Foundation.CExec B20.Foundation.source17ReturnZeroProgram B20.Foundation.initState
+      (B20.Foundation.Outcome.returned (some 0#64) B20.Foundation.initState) ∧
+    B20.Foundation.sqrt2Witness.checkSqrt2 = true

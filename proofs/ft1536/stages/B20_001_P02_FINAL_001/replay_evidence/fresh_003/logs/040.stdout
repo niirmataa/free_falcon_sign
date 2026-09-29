@@ -1,0 +1,107 @@
+B20.C.CExec_deterministic : ∀ (f : B20.C.Function) (args : List.{0} B20.C.Val) (x y : B20.C.Val),
+  B20.C.CExec f args x → B20.C.CExec f args y → Eq.{1} x y
+@B20.Foundation.CExec_eval : ∀ {p : B20.Foundation.Program} {s : B20.Foundation.State} {o : B20.Foundation.Outcome},
+  B20.Foundation.CExec p s o → Eq.{1} (B20.Foundation.evalStmt p s) o
+B20.Foundation.CExec_iff_eval : ∀ (p : B20.Foundation.Program) (s : B20.Foundation.State) (o : B20.Foundation.Outcome),
+  B20.Foundation.CExec p s o ↔ Eq.{1} (B20.Foundation.evalStmt p s) o
+@B20.Foundation.CExec_deterministic : ∀ {p : B20.Foundation.Program} {s : B20.Foundation.State}
+  {o₁ o₂ : B20.Foundation.Outcome}, B20.Foundation.CExec p s o₁ → B20.Foundation.CExec p s o₂ → Eq.{1} o₁ o₂
+B20.Word.split_count : ∀ (n : ℕ),
+  LT.lt.{0} n 64 →
+    LT.lt.{0} (HDiv.hDiv.{0, 0, 0} n 32) 2 ∧
+      LT.lt.{0} (HMod.hMod.{0, 0, 0} n 32) 32 ∧
+        Eq.{1} n (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} 32 (HDiv.hDiv.{0, 0, 0} n 32)) (HMod.hMod.{0, 0, 0} n 32))
+B20.Word.ursh_refines : ∀ (x : BitVec 64) (n : ℕ),
+  LT.lt.{0} n 64 → Eq.{1} (B20.Word.ursh x n) (HShiftRight.hShiftRight.{0, 0, 0} x n)
+B20.Word.irsh_refines : ∀ (x : BitVec 64) (n : ℕ), LT.lt.{0} n 64 → Eq.{1} (B20.Word.irsh x n) (x.sshiftRight n)
+B20.Word.ulsh_refines : ∀ (x : BitVec 64) (n : ℕ),
+  LT.lt.{0} n 64 → Eq.{1} (B20.Word.ulsh x n) (HShiftLeft.hShiftLeft.{0, 0, 0} x n)
+B20.Word.pinned_ursh_parses : Eq.{1} (B20.C.parseFunction (B20.Word.slice B20.Pinned.headerLines 17 6))
+  (some.{0} B20.Word.urshFunction)
+B20.Word.pinned_irsh_parses : Eq.{1} (B20.C.parseFunction (B20.Word.slice B20.Pinned.headerLines 24 6))
+  (some.{0} B20.Word.irshFunction)
+B20.Word.pinned_ulsh_parses : Eq.{1} (B20.C.parseFunction (B20.Word.slice B20.Pinned.headerLines 31 6))
+  (some.{0} B20.Word.ulshFunction)
+B20.Word.pinned_ursh_refines : ∀ (x : BitVec 64) (n : Fin 64),
+  ∃ f,
+    Eq.{1} (B20.C.parseFunction (B20.Word.slice B20.Pinned.headerLines 17 6)) (some.{0} f) ∧
+      B20.C.CExec f (List.cons.{0} (B20.C.Val.u64 x) (List.cons.{0} (B20.C.Val.i32 (BitVec.ofNat 32 ↑n)) List.nil.{0}))
+        (B20.C.Val.u64 (HShiftRight.hShiftRight.{0, 0, 0} x ↑n))
+B20.Word.pinned_irsh_refines : ∀ (x : BitVec 64) (n : Fin 64),
+  ∃ f,
+    Eq.{1} (B20.C.parseFunction (B20.Word.slice B20.Pinned.headerLines 24 6)) (some.{0} f) ∧
+      B20.C.CExec f (List.cons.{0} (B20.C.Val.i64 x) (List.cons.{0} (B20.C.Val.i32 (BitVec.ofNat 32 ↑n)) List.nil.{0}))
+        (B20.C.Val.i64 (x.sshiftRight ↑n))
+B20.Word.pinned_ulsh_refines : ∀ (x : BitVec 64) (n : Fin 64),
+  ∃ f,
+    Eq.{1} (B20.C.parseFunction (B20.Word.slice B20.Pinned.headerLines 31 6)) (some.{0} f) ∧
+      B20.C.CExec f (List.cons.{0} (B20.C.Val.u64 x) (List.cons.{0} (B20.C.Val.i32 (BitVec.ofNat 32 ↑n)) List.nil.{0}))
+        (B20.C.Val.u64 (HShiftLeft.hShiftLeft.{0, 0, 0} x ↑n))
+B20.Word.byteAt_write : ∀ (m : B20.Foundation.Memory) (base : ℕ) (v : B20.Foundation.Word64) (i : ℕ),
+  LT.lt.{0} i 8 →
+    Eq.{1} ((m.writeU64 base v).byteAt (HAdd.hAdd.{0, 0, 0} base i))
+      (HMod.hMod.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (BitVec.toNat v) (HPow.hPow.{0, 0, 0} 2 (HMul.hMul.{0, 0, 0} 8 i))) 256)
+B20.Word.write_frame : ∀ (m : B20.Foundation.Memory) (base : ℕ) (v : B20.Foundation.Word64) (address : ℕ),
+  LT.lt.{0} address base ∨ LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) address →
+    Eq.{1} ((m.writeU64 base v).bytes address) (m.bytes address)
+B20.Word.write_legal : ∀ (m : B20.Foundation.Memory) (base : ℕ) (v : B20.Foundation.Word64),
+  (m.writeU64 base v).legalU64 base
+B20.Word.read_write_roundtrip : ∀ (m : B20.Foundation.Memory) (base : ℕ) (v : B20.Foundation.Word64),
+  Eq.{1} ((m.writeU64 base v).readU64 base) (some.{0} v)
+B20.Word.model_load_store_roundtrip : ∀ (s : B20.Foundation.State) (base : ℕ) (v : B20.Foundation.Word64),
+  B20.Foundation.CExec
+    ((B20.Foundation.CStmt.storeU64 base (B20.Foundation.CExpr.const v)).seq
+      (B20.Foundation.CStmt.ret (B20.Foundation.CExpr.loadU64 base)))
+    s (B20.Foundation.Outcome.returned (some.{0} v) { mem := s.mem.writeU64 base v, locals := s.locals })
+B20.Word.shift32_mutation_binding_rejected : Ne.{1} (B20.C.parseFunction (B20.Word.slice B20.Pinned.headerLines 17 6))
+  (some.{0} (B20.Word.brokenShiftFunction 31 31))
+B20.Word.shift32_mutation_witness : Eq.{1}
+    (B20.C.execute (B20.Word.brokenShiftFunction 31 31)
+      (List.cons.{0} (B20.C.Val.u64 9223372036854775808) (List.cons.{0} (B20.C.Val.i32 32) List.nil.{0})))
+    (some.{0} (B20.C.Val.u64 4294967296)) ∧
+  Eq.{1}
+    (B20.C.execute B20.Word.urshFunction
+      (List.cons.{0} (B20.C.Val.u64 9223372036854775808) (List.cons.{0} (B20.C.Val.i32 32) List.nil.{0})))
+    (some.{0} (B20.C.Val.u64 2147483648))
+B20.Word.count_mask_mutation_witness : Eq.{1}
+    (B20.C.execute (B20.Word.brokenShiftFunction 32 30)
+      (List.cons.{0} (B20.C.Val.u64 1) (List.cons.{0} (B20.C.Val.i32 1) List.nil.{0})))
+    (some.{0} (B20.C.Val.u64 1)) ∧
+  Eq.{1}
+    (B20.C.execute B20.Word.urshFunction
+      (List.cons.{0} (B20.C.Val.u64 1) (List.cons.{0} (B20.C.Val.i32 1) List.nil.{0})))
+    (some.{0} (B20.C.Val.u64 0))
+B20.Word.signed_shift_differs_from_logical : Eq.{1} (BitVec.sshiftRight 18446744073709551615 1) 18446744073709551615 ∧
+  Eq.{1} (HShiftRight.hShiftRight.{0, 0, 0} 18446744073709551615 1) 9223372036854775807
+B20.Word.c_invalid_count_rejected : Eq.{1} (B20.C.shift B20.C.BinOp.shr (B20.C.Val.u64 1) 64) none.{0} ∧
+  Eq.{1} (B20.C.shift B20.C.BinOp.shr (B20.C.Val.u64 1) 4294967295) none.{0}
+B20.Word.c_signed_negation_overflow_rejected : Eq.{1} (B20.C.neg (B20.C.Val.i64 9223372036854775808)) none.{0} ∧
+  Eq.{1} (B20.C.neg (B20.C.Val.i32 2147483648)) none.{0}
+B20.Word.parser_unsupported_operator_rejected : Eq.{1}
+  (B20.C.tokenize 10 (List.cons.{0} 'x' (List.cons.{0} '+' (List.cons.{0} '1' List.nil.{0})))) none.{0}
+'B20.C.CExec_deterministic' depends on axioms: [propext, Quot.sound.{u}]
+'B20.Foundation.CExec_eval' depends on axioms: [propext]
+'B20.Foundation.CExec_iff_eval' depends on axioms: [propext]
+'B20.Foundation.CExec_deterministic' depends on axioms: [propext]
+'B20.Word.split_count' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'B20.Word.ursh_refines' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'B20.Word.irsh_refines' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'B20.Word.ulsh_refines' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'B20.Word.pinned_ursh_parses' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'B20.Word.pinned_irsh_parses' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'B20.Word.pinned_ulsh_parses' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'B20.Word.pinned_ursh_refines' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'B20.Word.pinned_irsh_refines' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'B20.Word.pinned_ulsh_refines' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'B20.Word.byteAt_write' depends on axioms: [propext, Quot.sound.{u}]
+'B20.Word.write_frame' depends on axioms: [propext, Quot.sound.{u}]
+'B20.Word.write_legal' depends on axioms: [propext, Quot.sound.{u}]
+'B20.Word.read_write_roundtrip' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'B20.Word.model_load_store_roundtrip' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'B20.Word.shift32_mutation_binding_rejected' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'B20.Word.shift32_mutation_witness' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'B20.Word.count_mask_mutation_witness' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+'B20.Word.signed_shift_differs_from_logical' depends on axioms: [propext]
+'B20.Word.c_invalid_count_rejected' depends on axioms: [propext]
+'B20.Word.c_signed_negation_overflow_rejected' does not depend on any axioms
+'B20.Word.parser_unsupported_operator_rejected' depends on axioms: [propext]

@@ -1,0 +1,241 @@
+[
+  {
+    "argv": [
+      "/usr/bin/gcc",
+      "-W",
+      "-Wall",
+      "-O",
+      "-DFPR_IMPL=\"fpr-emulated.h\"",
+      "-DSAMPLER_CODF=0",
+      "-DSAMPLER_CDF=0",
+      "-DCT_BEREXP=1",
+      "-DFT_TERNARY_ADAPTIVE_CDF=1",
+      "-DFT1536_CANDIDATE_PROFILE=1",
+      "-DCLEANSE=1",
+      "-DTRUE_TERNARY_SECRET=1",
+      "-DTRUE_TERNARY_SECRET_MODE=1",
+      "-DTERNARY_KEYGEN_BOUND_SCALE_NUM=1250",
+      "-DTERNARY_KEYGEN_BOUND_SCALE_DEN=100",
+      "-DTERNARY_KEYGEN_MAX_ATTEMPTS=3000000",
+      "-DSIGN_MAX_ATTEMPTS=16",
+      "-std=c99",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-Isource",
+      "-fsanitize=address,undefined",
+      "-fno-omit-frame-pointer",
+      "-g",
+      "checks/stable.c",
+      "source/falcon-fft.c",
+      "source/fpr-emulated.c",
+      "-Wl,--gc-sections",
+      "-lm",
+      "-o",
+      "bin/stable_san"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_STABLE_NORMALIZATION_RUN_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 1.8477485080074985,
+    "stdout": "checks/logs/san/compile.stdout",
+    "stderr": "checks/logs/san/compile.stderr",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/stable_san",
+      "sqrt"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_STABLE_NORMALIZATION_RUN_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.01557925800443627,
+    "stdout": "checks/logs/san/sqrt.stdout",
+    "stderr": "checks/logs/san/sqrt.stderr",
+    "stdout_sha256": "c6bb4301025ce3652f698c0da021c4d727f56bdfb23fb27e841963b7c67ee2c4",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/stable_san",
+      "div"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_STABLE_NORMALIZATION_RUN_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.0036234020080883056,
+    "stdout": "checks/logs/san/div.stdout",
+    "stderr": "checks/logs/san/div.stderr",
+    "stdout_sha256": "071c9061b6e72f113e3ac523949eec4f5094bbdfd403d192976f73c5dce70f8f",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/stable_san",
+      "bits"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_STABLE_NORMALIZATION_RUN_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.004041098989546299,
+    "stdout": "checks/logs/san/bits.stdout",
+    "stderr": "checks/logs/san/bits.stderr",
+    "stdout_sha256": "59fa4b86d6ed4cc0fcea64c92828fcb891188cdf85eb202634a59695498a1acd",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/stable_san",
+      "gate"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_STABLE_NORMALIZATION_RUN_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.0027799550152849406,
+    "stdout": "checks/logs/san/gate.stdout",
+    "stderr": "checks/logs/san/gate.stderr",
+    "stdout_sha256": "2ed78200f38dfacff084245d53009df4302934c116ee41e9ca0452fca4d9ad3b",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/stable_san",
+      "widths"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_STABLE_NORMALIZATION_RUN_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.0036445820005610585,
+    "stdout": "checks/logs/san/widths.stdout",
+    "stderr": "checks/logs/san/widths.stderr",
+    "stdout_sha256": "d9abf92344322de29ac4e53cb697eef5a7bd235439dd2a3cd9e2f2fdfd14826f",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/stable_san",
+      "roots"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_STABLE_NORMALIZATION_RUN_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.016246201004832983,
+    "stdout": "checks/logs/san/roots_flat.stdout",
+    "stderr": "checks/logs/san/roots_flat.stderr",
+    "stdout_sha256": "bd85cbd144f5dbcb275afd77a08e05839faf1147d8baf5b40af9ea1c0b1f48a8",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/stable_san",
+      "roots"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_STABLE_NORMALIZATION_RUN_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.016572265012655407,
+    "stdout": "checks/logs/san/roots_vary.stdout",
+    "stderr": "checks/logs/san/roots_vary.stderr",
+    "stdout_sha256": "c436637c87ab8d0f2ece394a616a0aa9697704f3bb22d4c3c143fb74eb43a4b0",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/stable_san",
+      "roots"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_STABLE_NORMALIZATION_RUN_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.016650175006361678,
+    "stdout": "checks/logs/san/noop.stdout",
+    "stderr": "checks/logs/san/noop.stderr",
+    "stdout_sha256": "c436637c87ab8d0f2ece394a616a0aa9697704f3bb22d4c3c143fb74eb43a4b0",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/stable_san",
+      "roots"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_STABLE_NORMALIZATION_RUN_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.017505276016891003,
+    "stdout": "checks/logs/san/roots_high.stdout",
+    "stderr": "checks/logs/san/roots_high.stderr",
+    "stdout_sha256": "91d7be1a1f718159875d2fbe9459a6d7ec105c53c122c087f2e0882cfd784924",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/stable_san",
+      "roots"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_STABLE_NORMALIZATION_RUN_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.01877166298800148,
+    "stdout": "checks/logs/san/roots_invalid.stdout",
+    "stderr": "checks/logs/san/roots_invalid.stderr",
+    "stdout_sha256": "af5f296b2eab44a04c8c7b2f6915c56cfd7f7198725afd311f1dc68a1bb4c8a8",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/stable_san",
+      "suffix"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_STABLE_NORMALIZATION_RUN_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.020160243002464995,
+    "stdout": "checks/logs/san/coeff_flat.stdout",
+    "stderr": "checks/logs/san/coeff_flat.stderr",
+    "stdout_sha256": "4d8ca7f70136a5c96874203e0b2d17b3bd794941186dbc1fd7d2d222317f25ba",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/stable_san",
+      "suffix"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_STABLE_NORMALIZATION_RUN_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.024082945979898795,
+    "stdout": "checks/logs/san/coeff_zero.stdout",
+    "stderr": "checks/logs/san/coeff_zero.stderr",
+    "stdout_sha256": "003d939f1a9caf3cf55bc2fd75a0a5e5256dfa63c36e956b8472836ef47f4467",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/stable_san",
+      "suffix_alias"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_STABLE_NORMALIZATION_RUN_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.018464640976162627,
+    "stdout": "checks/logs/san/coeff_alias.stdout",
+    "stderr": "checks/logs/san/coeff_alias.stderr",
+    "stdout_sha256": "3e0f8d2ba63bb2570c89b7a4f618d475221b82f4a3806f087aaca3261e51a523",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "bin/stable_san",
+      "suffix"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/FT1536_H3_STABLE_NORMALIZATION_RUN_001",
+    "wall_limit": 120,
+    "exit_code": 0,
+    "elapsed": 0.018477592995623127,
+    "stdout": "checks/logs/san/coeff_vary.stdout",
+    "stderr": "checks/logs/san/coeff_vary.stderr",
+    "stdout_sha256": "5ab65ee5d030da77ba320e2a9c7e48f98ce7e5dee556aefb3f7704dc7f370a98",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

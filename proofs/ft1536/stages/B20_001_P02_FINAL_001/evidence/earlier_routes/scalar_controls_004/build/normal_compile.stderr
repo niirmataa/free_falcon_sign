@@ -1,0 +1,144 @@
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:151:1: error: redefinition of ‘fpr_scaled’
+  151 | fpr_scaled(int64_t i, int sc)
+      | ^~~~~~~~~~
+In file included from /home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/internal.h:296,
+                 from /home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:12:
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-double.h:68:1: note: previous definition of ‘fpr_scaled’ with type ‘fpr(int64_t,  int)’ {aka ‘fpr(long int,  int)’}
+   68 | fpr_scaled(int64_t i, int sc)
+      | ^~~~~~~~~~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c: In function ‘fpr_scaled’:
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:203:16: error: too many arguments to function ‘FPR’
+  203 |         return FPR(s, e, m);
+      |                ^~~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-double.h:53:1: note: declared here
+   53 | FPR(double v)
+      | ^~~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c: At top level:
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:449:1: error: redefinition of ‘fpr_add’
+  449 | fpr_add(fpr x, fpr y)
+      | ^~~~~~~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-double.h:118:1: note: previous definition of ‘fpr_add’ with type ‘fpr(fpr,  fpr)’
+  118 | fpr_add(fpr x, fpr y)
+      | ^~~~~~~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c: In function ‘fpr_add’:
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:468:17: error: invalid operands to binary & (have ‘fpr’ and ‘uint64_t’ {aka ‘long unsigned int’})
+  468 |         za = (x & m) - (y & m);
+      |                 ^
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:468:27: error: invalid operands to binary & (have ‘fpr’ and ‘uint64_t’ {aka ‘long unsigned int’})
+  468 |         za = (x & m) - (y & m);
+      |                           ^
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:470:64: error: invalid operands to binary >> (have ‘fpr’ and ‘int’)
+  470 |                 | ((1U - (uint32_t)(-za >> 63)) & (uint32_t)(x >> 63));
+      |                                                                ^~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:471:16: error: invalid operands to binary ^ (have ‘fpr’ and ‘fpr’)
+  471 |         m = (x ^ y) & -(uint64_t)cs;
+      |                ^
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:472:11: error: invalid operands to binary ^ (have ‘fpr’ and ‘uint64_t’ {aka ‘long unsigned int’})
+  472 |         x ^= m;
+      |           ^~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:473:11: error: invalid operands to binary ^ (have ‘fpr’ and ‘uint64_t’ {aka ‘long unsigned int’})
+  473 |         y ^= m;
+      |           ^~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:481:22: error: invalid operands to binary >> (have ‘fpr’ and ‘int’)
+  481 |         ex = (int)(x >> 52);
+      |                      ^~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:485:18: error: invalid operands to binary & (have ‘fpr’ and ‘long unsigned int’)
+  485 |         xu = ((x & (((uint64_t)1 << 52) - 1)) | m) << 3;
+      |                  ^
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:487:22: error: invalid operands to binary >> (have ‘fpr’ and ‘int’)
+  487 |         ey = (int)(y >> 52);
+      |                      ^~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:491:18: error: invalid operands to binary & (have ‘fpr’ and ‘long unsigned int’)
+  491 |         yu = ((y & (((uint64_t)1 << 52) - 1)) | m) << 3;
+      |                  ^
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:506:13: error: implicit declaration of function ‘fpr_ulsh’; did you mean ‘fpr_lt’? [-Wimplicit-function-declaration]
+  506 |         m = fpr_ulsh(1, cc) - 1;
+      |             ^~~~~~~~
+      |             fpr_lt
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:508:14: error: implicit declaration of function ‘fpr_ursh’ [-Wimplicit-function-declaration]
+  508 |         yu = fpr_ursh(yu, cc);
+      |              ^~~~~~~~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:553:16: error: too many arguments to function ‘FPR’
+  553 |         return FPR(sx, ex, xu);
+      |                ^~~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-double.h:53:1: note: declared here
+   53 | FPR(double v)
+      | ^~~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c: At top level:
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:681:1: error: redefinition of ‘fpr_mul’
+  681 | fpr_mul(fpr x, fpr y)
+      | ^~~~~~~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-double.h:148:1: note: previous definition of ‘fpr_mul’ with type ‘fpr(fpr,  fpr)’
+  148 | fpr_mul(fpr x, fpr y)
+      | ^~~~~~~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c: In function ‘fpr_mul’:
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:691:17: error: invalid operands to binary & (have ‘fpr’ and ‘long unsigned int’)
+  691 |         xu = (x & (((uint64_t)1 << 52) - 1)) | ((uint64_t)1 << 52);
+      |                 ^
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:692:17: error: invalid operands to binary & (have ‘fpr’ and ‘long unsigned int’)
+  692 |         yu = (y & (((uint64_t)1 << 52) - 1)) | ((uint64_t)1 << 52);
+      |                 ^
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:752:23: error: invalid operands to binary >> (have ‘fpr’ and ‘int’)
+  752 |         ex = (int)((x >> 52) & 0x7FF);
+      |                       ^~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:753:23: error: invalid operands to binary >> (have ‘fpr’ and ‘int’)
+  753 |         ey = (int)((y >> 52) & 0x7FF);
+      |                       ^~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:759:22: error: invalid operands to binary ^ (have ‘fpr’ and ‘fpr’)
+  759 |         s = (int)((x ^ y) >> 63);
+      |                      ^
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:773:16: error: too many arguments to function ‘FPR’
+  773 |         return FPR(s, e, zu);
+      |                ^~~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-double.h:53:1: note: declared here
+   53 | FPR(double v)
+      | ^~~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c: At top level:
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:916:1: error: redefinition of ‘fpr_div’
+  916 | fpr_div(fpr x, fpr y)
+      | ^~~~~~~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-double.h:166:1: note: previous definition of ‘fpr_div’ with type ‘fpr(fpr,  fpr)’
+  166 | fpr_div(fpr x, fpr y)
+      | ^~~~~~~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c: In function ‘fpr_div’:
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:924:17: error: invalid operands to binary & (have ‘fpr’ and ‘long unsigned int’)
+  924 |         xu = (x & (((uint64_t)1 << 52) - 1)) | ((uint64_t)1 << 52);
+      |                 ^
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:925:17: error: invalid operands to binary & (have ‘fpr’ and ‘long unsigned int’)
+  925 |         yu = (y & (((uint64_t)1 << 52) - 1)) | ((uint64_t)1 << 52);
+      |                 ^
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:976:23: error: invalid operands to binary >> (have ‘fpr’ and ‘int’)
+  976 |         ex = (int)((x >> 52) & 0x7FF);
+      |                       ^~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:977:23: error: invalid operands to binary >> (have ‘fpr’ and ‘int’)
+  977 |         ey = (int)((y >> 52) & 0x7FF);
+      |                       ^~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:983:22: error: invalid operands to binary ^ (have ‘fpr’ and ‘fpr’)
+  983 |         s = (int)((x ^ y) >> 63);
+      |                      ^
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:999:16: error: too many arguments to function ‘FPR’
+  999 |         return FPR(s, e, q);
+      |                ^~~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-double.h:53:1: note: declared here
+   53 | FPR(double v)
+      | ^~~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c: At top level:
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:1183:1: error: redefinition of ‘fpr_sqrt’
+ 1183 | fpr_sqrt(fpr x)
+      | ^~~~~~~~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-double.h:172:1: note: previous definition of ‘fpr_sqrt’ with type ‘fpr(fpr)’
+  172 | fpr_sqrt(fpr x)
+      | ^~~~~~~~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c: In function ‘fpr_sqrt’:
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:1194:17: error: invalid operands to binary & (have ‘fpr’ and ‘long unsigned int’)
+ 1194 |         xu = (x & (((uint64_t)1 << 52) - 1)) | ((uint64_t)1 << 52);
+      |                 ^
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:1195:23: error: invalid operands to binary >> (have ‘fpr’ and ‘int’)
+ 1195 |         ex = (int)((x >> 52) & 0x7FF);
+      |                       ^~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-emulated.c:1256:16: error: too many arguments to function ‘FPR’
+ 1256 |         return FPR(0, e, q);
+      |                ^~~
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17/fpr-double.h:53:1: note: declared here
+   53 | FPR(double v)
+      | ^~~

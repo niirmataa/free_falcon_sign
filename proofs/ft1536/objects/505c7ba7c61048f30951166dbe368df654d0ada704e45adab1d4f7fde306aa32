@@ -1,0 +1,32 @@
+# P02 — COMMANDS.log (reprezentatywne komendy; pełne argv w run/*/receipt.json)
+
+# inicjalizacja wejść (po stronie koordynatora), HEAD d9b6e96a…
+# praca: run/job.py NAME MODE args — każdy run nowy DEST, RO snapshot, hash przed/po
+
+# MS1: scalars + rint/floor execution proofs (skrót; historia w FAILED_ROUTES)
+python3 -B proofs/ft1536/work/B20_001/P02/run/job.py fpr_spec_098 lean <14 modułów>   # CP-A split
+python3 -B proofs/ft1536/work/B20_001/P02/run/job.py fpr_spec_110 lean <15+RintExec>   # rint_execution, czysty log
+python3 -B proofs/ft1536/work/B20_001/P02/run/job.py floor_exec_014 lean <16+FloorExec> # floor_execution, czysty log
+python3 -B proofs/ft1536/work/B20_001/P02/run/job.py full_scalar_floor_001 lean <33>   # 33/33
+
+# MS2: domain interfaces
+python3 -B proofs/ft1536/work/B20_001/P02/run/job.py domain_iface_002 lean <17+Domain>
+python3 -B proofs/ft1536/work/B20_001/P02/run/job.py full_domain_001 lean <34>
+
+# MS3: scalar controls (normal+UBSan+mutants), ASan osobno
+python3 -B proofs/ft1536/work/B20_001/P02/run/job.py scalar_controls_006 command /usr/bin/python3 -B "{source}/tools/scalar_controls.py" normal
+python3 -B proofs/ft1536/work/B20_001/P02/run/job.py scalar_asan_001 asan /usr/bin/python3 -B "{source}/tools/scalar_controls.py" asan
+
+# MS4: freeze
+python3 -B proofs/ft1536/work/B20_001/P02/run/job.py freeze_scan lean <32 moduły> ProbeFreezeScan.lean
+python3 -B proofs/ft1536/work/B20_001/P02/run/job.py replay_001 replay        # 42/42 exit 0
+python3 -B proofs/ft1536/work/B20_001/P02/run/job.py word_asan_002 asan /usr/bin/python3 -B "{source}/tools/controls.py" asan
+python3 -B proofs/ft1536/work/B20_001/P02/run/job.py le_asan_002 asan /usr/bin/python3 -B "{source}/tools/le_controls.py" asan
+
+# limity: wall 1800s/krok, Lean -j1 -M2048, 8GiB (ASan exempt), network off
+# realizacja job.py: bwrap --unshare-net, RO /, writable tylko DEST
+
+# Successor v2 commands and exact argv/log/hash for every step: replay_evidence/fresh_003/receipt.json
+python3 -B output/replay/job.py fresh_003 --inputs-sha256 b0a57afa260c403a11901ef29676104729306c02ecd856b07170ec261ab76045
+python3 -B run/check_replay.py fresh_003 # matches actual bytes and raw receipts
+No Git/push/model/subagent execution by packaging agent.

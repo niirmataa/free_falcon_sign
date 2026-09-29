@@ -1,0 +1,7 @@
+# P02 successor v2 — zakres freeze
+
+`OUTPUTS.sha256` obejmuje każdą tekstową/publiczną część tego katalogu poza sobą: stary byte-exact freeze pod `predecessor/` (68/68 + stary manifest), pełne wejścia pod `inputs/` (7371 + MATERIALIZED), historyczne receipty/snapshoty/raw logs pod `evidence/prior_run/`, poprzednie próby tekstowe pod `evidence/earlier_routes/`, sześć zamienników bajtowych pod `evidence/overwritten_log_equivalents/`, źródła/formal/BUILD_PLAN, oryginalny i portable runner oraz diff, kontekst/proweniencję cache i świeży replay tekstowy.
+
+`INPUTS.sha256` osobno wiąże *statyczne* wejścia replayu: `inputs/`, `formal/`, `predecessor/`, `evidence/`, `context/`, `library_provenance/`, `replay/` i `SEMANTIC_FILES.json`. Po utworzeniu INPUTS nie zapisuje się do tych katalogów. Tekstowe logi nowego wykonania znajdują się pod `replay_evidence/`, a manifest OUTPUTS obejmuje je przy freeze. Jego dwufazowy układ eliminuje cykl self-hash.
+
+Zewnętrzny P01 Mathlib/Lean runtime to RO closure z bezwzględnym weryfikowaniem wersji, wcześniejszych manifestów source i cache oraz każdego wymaganego pliku podczas replayu; samo cache nie jest nowym dowodem. Olean, binaria, wyniki kompilacji i scratch HOME/TMP/cache z `W/run` są wyłączone z frozen pakietu; tworzy je fresh replay. Nie kopiujemy prywatnych danych. Historycznych 6 nadpisanych ścieżek raw child logs nie przedstawiamy jako oryginalnie ocalałych: ewidencja `OVERWRITTEN_LOGS.json` wskazuje przechowane bajtowo identyczne odpowiedniki, źródła, hashe i ograniczenie proweniencji.

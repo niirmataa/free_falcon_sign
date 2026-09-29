@@ -1,0 +1,25 @@
+{
+  "schema": "P02_WORD_ORACLE_V1",
+  "sage_version": "10.9",
+  "preparser": true,
+  "domains": [
+    "ZZ",
+    "QQ preparser probe"
+  ],
+  "oracle": "unsigned floor division, modular multiplication, signed Euclidean floor division",
+  "words": 192,
+  "valid_cases": 12288,
+  "rejected_cases": 2,
+  "count_interval": [
+    0,
+    63
+  ],
+  "signed_model": "two-complement arithmetic right shift",
+  "formal_premise": false,
+  "formal_correspondence": [
+    "B20.Word.pinned_ursh_refines",
+    "B20.Word.pinned_ulsh_refines",
+    "B20.Word.pinned_irsh_refines"
+  ],
+  "scope": "finite diagnostic controls supporting, not replacing, the universal kernel theorems"
+}

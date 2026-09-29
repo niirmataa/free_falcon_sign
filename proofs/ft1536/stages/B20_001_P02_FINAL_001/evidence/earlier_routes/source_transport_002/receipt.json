@@ -1,0 +1,92 @@
+{
+  "name": "source_transport_002",
+  "start": "2026-09-23T02:28:41.142279+00:00",
+  "wall_limit_per_step_s": 1800,
+  "address_space_bytes": 8589934592,
+  "network": "bwrap --unshare-net",
+  "writable_project_root": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/source_transport_002",
+  "source_before": {
+    "B20/C/Parser.lean": "d98d00e5b717bcbe105a11d23464231a5d8f2639003b64ba56b41845e5cb3c5e",
+    "B20/C/Syntax.lean": "4b9054e8e0f94c1abccd60134a7ca979b4801be86eff7cd4266d0276b9dcf93f",
+    "B20/Pinned/Header.lean": "61eb3434fa4f2bbda3d00ac8ee29938d18bf8d5bce1e3f3c4048ec2c89911267",
+    "B20/Word/Shift.lean": "9ba553a5fb46d3d513ba65b8235bf60db542cf244c3c1b9d66fb9809c14e668f",
+    "B20/Word/SourceShift.lean": "f362160e83c7c9801adaf9533bfd527e58a097d333e47ecc7a4401cd9bbded94",
+    "tools/embed_source.py": "a02b283fdf5e7b47169f88588632149d013171635b481cf3050cc49a7fe3d6a6"
+  },
+  "environment": {
+    "LANG": "pl_PL.UTF-8",
+    "TERM": "xterm-256color",
+    "PATH": "/home/footfalcon/.mimocode/bin:/usr/lib/node_modules/@opencode/cli/node_modules/@opencode/cli-linux-x64/bin:       \n     /home/footfalcon/.elan/bin:/home/footfalcon/.local/bin:/home/footfalcon/.opencode/bin:/home/footfalcon/.elan/bin:/home/footfalcon/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games",
+    "HOME": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/source_transport_002/home",
+    "TMPDIR": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/source_transport_002/tmp",
+    "TMP": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/source_transport_002/tmp",
+    "TEMP": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/source_transport_002/tmp",
+    "DOT_SAGE": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/source_transport_002/sage",
+    "XDG_CACHE_HOME": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/source_transport_002/cache",
+    "XDG_CONFIG_HOME": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/source_transport_002/config",
+    "XDG_DATA_HOME": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/source_transport_002/data",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "P02_INPUTS": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs",
+    "P02_DEST": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/source_transport_002",
+    "LEAN_PATH": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/source_transport_002/build:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/bootstrap/mathlib4/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Cli/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Qq/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/aesop/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/batteries/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/importGraph/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/plausible/.lake/build/lib/lean:/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/proofwidgets/.lake/build/lib/lean"
+  },
+  "steps": [
+    {
+      "argv": [
+        "/usr/bin/bwrap",
+        "--die-with-parent",
+        "--unshare-net",
+        "--ro-bind",
+        "/",
+        "/",
+        "--dev-bind",
+        "/dev",
+        "/dev",
+        "--bind",
+        "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/source_transport_002",
+        "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/source_transport_002",
+        "--ro-bind",
+        "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/source_transport_002/source",
+        "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/source_transport_002/source",
+        "--bind",
+        "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/source_transport_002/tmp",
+        "/tmp",
+        "--chdir",
+        "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/source_transport_002/source",
+        "/usr/bin/prlimit",
+        "--as=8589934592",
+        "--",
+        "/usr/bin/python3",
+        "-B",
+        "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/source_transport_002/source/tools/embed_source.py"
+      ],
+      "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/source_transport_002/source",
+      "start": "2026-09-23T02:28:41.142293+00:00",
+      "stop": "2026-09-23T02:28:41.236602+00:00",
+      "elapsed_s": 0.09431761299492791,
+      "exit_code": 0,
+      "timeout": false,
+      "stdout": "000.stdout",
+      "stdout_sha256": "ba2b8e9a6f98a7bed95942a1e918fb598bac4b1a2ee5cd8410f2d141cf1de2f0",
+      "stderr": "000.stderr",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "stop": "2026-09-23T02:28:41.236748+00:00",
+  "source_after": {
+    "B20/C/Parser.lean": "d98d00e5b717bcbe105a11d23464231a5d8f2639003b64ba56b41845e5cb3c5e",
+    "B20/C/Syntax.lean": "4b9054e8e0f94c1abccd60134a7ca979b4801be86eff7cd4266d0276b9dcf93f",
+    "B20/Pinned/Header.lean": "61eb3434fa4f2bbda3d00ac8ee29938d18bf8d5bce1e3f3c4048ec2c89911267",
+    "B20/Word/Shift.lean": "9ba553a5fb46d3d513ba65b8235bf60db542cf244c3c1b9d66fb9809c14e668f",
+    "B20/Word/SourceShift.lean": "f362160e83c7c9801adaf9533bfd527e58a097d333e47ecc7a4401cd9bbded94",
+    "tools/embed_source.py": "a02b283fdf5e7b47169f88588632149d013171635b481cf3050cc49a7fe3d6a6"
+  },
+  "sources_unchanged": true,
+  "products": {
+    "build/PinnedHeader.lean": "c74e4a923e7e857b96f9ce995250bb846df2f7f56747387ca191a16743c8f198",
+    "build/SOURCE_TRANSPORT.json": "aed0ce2822bc94dc0338c3ee321209788f6377080766d6ec8bcdb787f6fa832d"
+  },
+  "exit_code": 0
+}

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/scalar_controls_003/source/tools/scalar_controls.py", line 57, in <module>
+    run(name + '_compile', ['/usr/bin/gcc', *flags, *more, '-I', str(INPUTS / 'source17'), str(ROOT / 'checks/scalar_controls.c'), '-o', str(exe)])
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/scalar_controls_003/source/tools/scalar_controls.py", line 39, in run
+    assert p.returncode == expected, (name, err.read_text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('normal_compile', "/usr/bin/ld: /home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/scalar_controls_003/tmp/ccvA8gvt.o: in function `main':\nscalar_controls.c:(.text.startup+0x520): undefined reference to `fpr_add'\n/usr/bin/ld: scalar_controls.c:(.text.startup+0x532): undefined reference to `fpr_add'\ncollect2: error: ld returned 1 exit status\n")

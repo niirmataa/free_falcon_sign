@@ -1,0 +1,26 @@
+{
+  "status": "OPEN_REQUIRED_DOMAIN_NOT_DISPROVED",
+  "definitions": {
+    "Safe16": "forall i<1536, -32768<=w1_i<=32767 and -32768<=w2_i<=32767",
+    "BadPrecast": "not Safe16(w1,w2)",
+    "narrow16": "mathematical (w+32768) mod65536 -32768",
+    "WholeCallBad": "exists j<16: reached_and_completed_legal_attempt(j) and BadPrecast(w1_j,w2_j)"
+  },
+  "strongest_exported_uniform_abs_bound": 4572095,
+  "value_preservation_iff_Safe16": true,
+  "probability_bound": null,
+  "independence_assumed": false,
+  "required_domain_witness": null,
+  "extended_local_witness": {
+    "w1_0": 65536,
+    "w2_0": 65536,
+    "s1_0": 0,
+    "s2_0": 0,
+    "Q": 0,
+    "Safe16": false,
+    "P_key": false,
+    "emitted": false,
+    "source_sampler_history": false
+  },
+  "disposition": "PARTIAL_PROOF; operational map proved, universal Safe16 remains open; no source behavior change"
+}

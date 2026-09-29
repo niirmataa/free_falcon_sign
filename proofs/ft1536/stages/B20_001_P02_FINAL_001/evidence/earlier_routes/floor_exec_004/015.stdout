@@ -1,0 +1,40 @@
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/floor_exec_004/source/B20/Fpr/FloorExec.lean:13:42: error: Function expected at
+  floor_t
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  x
+
+Hint: The identifier `floor_t` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/floor_exec_004/source/B20/Fpr/FloorExec.lean:107:13: error: don't know how to synthesize implicit argument `floor_t`
+  @floor_t_range ?m.85 ?m.86 x
+context:
+x : BitVec 64
+hdomR : rintDomain x
+hne : x ≠ 9223372036854775808
+hen : ↑(rint_e x).toNat = (rint_e x).toInt ∧ 13 ≤ (rint_e x).toNat ∧ (rint_e x).toNat ≤ 1085
+he_f : (rint_e x).toInt = 1085 - (rint_y x).toInt ∧ -962 ≤ (rint_e x).toInt ∧ (rint_e x).toInt ≤ 1085
+hy_f : 0 ≤ (rint_y x).toInt ∧ (rint_y x).toInt ≤ 2047
+hS_cc : C.signedBitsOp BinOp.sub (1085#32) (rint_y x) = bitsOp BinOp.sub (1085#32) (rint_y x)
+⊢ ?m.85
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/floor_exec_004/source/B20/Fpr/FloorExec.lean:107:13: error: don't know how to synthesize implicit argument
+  @floor_t_range ?m.85 ?m.86 x
+context:
+x : BitVec 64
+hdomR : rintDomain x
+hne : x ≠ 9223372036854775808
+hen : ↑(rint_e x).toNat = (rint_e x).toInt ∧ 13 ≤ (rint_e x).toNat ∧ (rint_e x).toNat ≤ 1085
+he_f : (rint_e x).toInt = 1085 - (rint_y x).toInt ∧ -962 ≤ (rint_e x).toInt ∧ (rint_e x).toInt ≤ 1085
+hy_f : 0 ≤ (rint_y x).toInt ∧ (rint_y x).toInt ≤ 2047
+hS_cc : C.signedBitsOp BinOp.sub (1085#32) (rint_y x) = bitsOp BinOp.sub (1085#32) (rint_y x)
+⊢ Sort ?u.42
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/floor_exec_004/source/B20/Fpr/FloorExec.lean:98:35: error: unsolved goals
+x : BitVec 64
+hdomR : rintDomain x
+hne : x ≠ 9223372036854775808
+hen : ↑(rint_e x).toNat = (rint_e x).toInt ∧ 13 ≤ (rint_e x).toNat ∧ (rint_e x).toNat ≤ 1085
+he_f : (rint_e x).toInt = 1085 - (rint_y x).toInt ∧ -962 ≤ (rint_e x).toInt ∧ (rint_e x).toInt ≤ 1085
+hy_f : 0 ≤ (rint_y x).toInt ∧ (rint_y x).toInt ≤ 2047
+hS_cc : C.signedBitsOp BinOp.sub (1085#32) (rint_y x) = bitsOp BinOp.sub (1085#32) (rint_y x)
+⊢ execute shiftCalls Parsed.floorProgram [Val.u64 x] = some (Val.i64 (floorSpec x))

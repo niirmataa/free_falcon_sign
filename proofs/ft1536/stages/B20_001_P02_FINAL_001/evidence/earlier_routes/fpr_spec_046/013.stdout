@@ -1,0 +1,45 @@
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_046/source/B20/Fpr/Spec.lean:236:4: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  2147483648 ≤ c ≤ 4294967295
+  1086 ≤ b ≤ 2047
+  0 ≤ a ≤ 1072
+where
+ a := ↑(BitVec.setWidth 32 (x >>> 52) &&& 2047#32).toNat
+ b := (BitVec.setWidth 32 (x >>> 52) &&& 2047#32).toInt
+ c := ↑(1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toNat
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_046/source/B20/Fpr/Spec.lean:284:71: error: unsolved goals
+e : BitVec 32
+he : 64 ≤ e.toNat ∧ e.toNat < 2 ^ 31
+hsub : (e - 64#32).toNat = (2 ^ 32 - (64#32).toNat + e.toNat) % 2 ^ 32
+h64 : (64#32).toNat = 64
+hV : (BitVec.setWidth 64 (BitVec.setWidth 32 (e - 64#32) >>> 31)).toNat = 0
+⊢ ((4294967232 + e.toNat) % 4294967296 % 18446744073709551616) >>> 31 = 0
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_046/source/B20/Fpr/Spec.lean:271:26: error: unsolved goals
+e : BitVec 32
+he : 64 ≤ e.toNat ∧ e.toNat < 2 ^ 31
+hsub : (e - 64#32).toNat = (2 ^ 32 - (64#32).toNat + e.toNat) % 2 ^ 32
+h64 : (64#32).toNat = 64
+hV : (BitVec.setWidth 64 (BitVec.setWidth 32 (e - 64#32) >>> 31)).toNat = 0
+hX : BitVec.setWidth 64 (BitVec.setWidth 32 (e - 64#32) >>> 31) = 0#64
+⊢ BitVec.setWidth 64 (e - 64#32) >>> 31 = 0#64
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_046/source/B20/Fpr/Spec.lean:279:12: warning: This simp argument is unused:
+  BitVec.toNat_setWidth
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_046/source/B20/Fpr/Spec.lean:286:10: warning: This simp argument is unused:
+  hV
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_046/source/B20/Fpr/Spec.lean:287:19: warning: This simp argument is unused:
+  hX
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [rint_mask]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

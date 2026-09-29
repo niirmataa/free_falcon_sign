@@ -1,0 +1,72 @@
+{
+  "asan": [
+    "run/word_asan_002",
+    "run/le_asan_002",
+    "run/scalar_asan_001"
+  ],
+  "complete_for_review": true,
+  "controls": {
+    "le": "3072 cases + 3 mutants + ASan PASS",
+    "scalar": "19721 in + 21352 obs + 2 rejects, normal/UBSan/ASan PASS, 5 mutants rejected",
+    "word": "12288 cases + 4 mutants + ASan PASS"
+  },
+  "failed_routes_preserved": true,
+  "final_stage": "B20_001_P02_FINAL_001",
+  "formal_modules": 34,
+  "fresh_replay": {
+    "all_exit_zero": true,
+    "build_plan_modules": 34,
+    "job": "replay_evidence/fresh_003",
+    "semantic_matches": 16,
+    "sources_unchanged": true,
+    "steps": 43,
+    "supplemental_full_print_audit": 1
+  },
+  "historical_child_overwrites": 6,
+  "historical_original_overwritten_log_path_provenance_restored": false,
+  "independent_review_performed": false,
+  "kernel_complete_for_declared_exports": true,
+  "missing_types": [
+    "fpr_add/mul/div/sqrt arithmetic+error contracts (obligation types exist, no instances)",
+    "nearest-ties-even rint contract over reals (literal word spec only)",
+    "raw -0 floor semantics decision (impl returns -1)",
+    "C-to-machine-code refinement (compiler in TCB)",
+    "full C front-end beyond used fragment"
+  ],
+  "new_package_head": "41216bb8d61004bb941a8d1b276f43346df11ce8",
+  "new_package_head_read_utc": "2026-09-29T14:16:25.913306+00:00",
+  "old_final_head": "UNRECORDED",
+  "owner_accepted": false,
+  "packaging_task_id": "FT1536_P02_FREEZE_CLOSURE_RUN_001",
+  "pair": "V02",
+  "predecessor_outputs_sha256": "4e8942ccaf46f0971688a0f0cc1d07c5831a46175e6ad2dde903c9f55b046a01",
+  "predecessor_report_sha256": "98ea050bfe15b39b4ad2a6d26428bcd7e12f22ca33b06b6bc98e9e964bb295a5",
+  "proof_stack": {
+    "lean": "4.34.0",
+    "mathlib": "5ed2965256430c3649e86755f9576b54eca72435",
+    "sage": "10.9 (diagnostic oracles only)"
+  },
+  "push_authorized": false,
+  "required_exports": {
+    "B20.Fpr.add_sub_mul_div_sqrt_refines": "PARTIAL (sub conditional proved; add/mul/div/sqrt unresolved types)",
+    "B20.Fpr.floor_rint_refines": "PROVED literal-BitVec scope (raw -0 exception declared; reals contract missing)",
+    "B20.Fpr.reachable_domain_interfaces": "PROVED (interface + 3 shift instances; 4 unresolved types named)",
+    "B20.Word.load_store_le_refines": "PROVED"
+  },
+  "revision": "v2",
+  "roadmap_id": "F03-F06",
+  "schema": "B20_P02_RESULT_V2",
+  "semantics_scope": "abstract C semantics (CExec/Scalar evaluators), NOT machine code",
+  "source_base": "ef62824a10a69962dc8347410ee3f424bfa2b12e",
+  "source_changed": false,
+  "status": "PARTIAL_PROOF",
+  "status_scope": "whole TASK partial; PROVED in declared narrowed scopes: LE64 refinement (pinned shake.c), literal-BitVec execution of neg/double/half/pack/rint/floor with explicit domains, sub conditional on AddCallObligation, reachable-domain interfaces with shift instances",
+  "task_id": "B20_001_P02_WORD_FPEMU_REFINEMENT",
+  "theorem_counts": {
+    "axiom_free_theorems": 11,
+    "defs": 306,
+    "named_exports_scanned": 489,
+    "target_axioms": 0,
+    "theorems": 183
+  }
+}

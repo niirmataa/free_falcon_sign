@@ -1,0 +1,163 @@
+/* see falcon.h */
+void
+falcon_vrfy_start(falcon_vrfy *fv, const void *r, size_t rlen)
+{
+	/*
+	 * We use SHAKE-256, which has an internal capacity of 512 bits.
+	 */
+	shake_init(&fv->sc, 512);
+	shake_inject(&fv->sc, r, rlen);
+}
+
+/* see falcon.h */
+void
+falcon_vrfy_update(falcon_vrfy *fv, const void *data, size_t len)
+{
+	shake_inject(&fv->sc, data, len);
+}
+
+/*
+ * FT1536: canonical residue of every decoded int16_t coefficient.
+ * x + 2*q is in [4098,69633], so the C remainder is nonnegative.
+ */
+static uint16_t
+ft1536_normalize_s2(int16_t x)
+{
+	int32_t t;
+
+	t = (int32_t)x + 36866;
+	return (uint16_t)(t % 18433);
+}
+
+/* see internal.h */
+int
+falcon_vrfy_verify_raw(const uint16_t *c0, const int16_t *s2,
+	const uint16_t *h, unsigned logn, int ternary)
+{
+	uint16_t x[3072];
+	size_t u, n;
+	uint32_t q;
+
+	if (ternary) {
+		n = (size_t)3 << (logn - 1);
+		q = Qt;
+	} else {
+		n = (size_t)1 << logn;
+		q = Qb;
+	}
+
+	/*
+	 * Reduce s2 elements modulo q ([0..q-1] range).
+	 */
+	for (u = 0; u < n; u ++) {
+		if (ternary == 1 && logn == 10) {
+			x[u] = ft1536_normalize_s2(s2[u]);
+		} else {
+			uint32_t w;
+
+			w = (uint32_t)s2[u];
+			w += q & -(w >> 31);
+			x[u] = (uint16_t)w;
+		}
+	}
+
+	/*
+	 * Compute s1 = s2*h - c0 mod phi mod q (in x[]).
+	 */
+	mq_NTT(x, logn, ternary);
+	mq_poly_montymul_ntt(x, h, logn, ternary);
+	mq_iNTT(x, logn, ternary);
+	mq_poly_sub(x, c0, logn, ternary);
+
+	/*
+	 * Normalize s1 elements into the [-q/2..q/2] range.
+	 */
+	for (u = 0; u < n; u ++) {
+		int32_t w;
+
+		w = (int32_t)x[u];
+		w -= (int32_t)(q & -(((q >> 1) - (uint32_t)w) >> 31));
+		((int16_t *)x)[u] = (int16_t)w;
+	}
+
+	/*
+	 * Signature is valid if and only if the aggregate (s1,s2) vector
+	 * is short enough.
+	 */
+	return falcon_is_short((int16_t *)x, s2, logn, ternary);
+}
+
+/* see falcon.h */
+int
+falcon_vrfy_verify(falcon_vrfy *fv, const void *sig, size_t len)
+{
+	const unsigned char *sig_buf;
+	unsigned q;
+	int fb;
+	uint16_t c0[3072];
+	int16_t s2[3072];
+
+	/*
+	 * Public key must have been set.
+	 */
+	if (fv->logn == 0) {
+		return -2;
+	}
+
+	/*
+	 * Signature cannot be too short.
+	 */
+	if (len <= 2) {
+		return -1;
+	}
+
+	/*
+	 * Read first byte: it defines the modulus and degree:
+	 *   t cc 0 dddd
+	 *   ^ ^^ ^ ^^^^
+	 *   |  | |   |
+	 *   |  | |   +----- degree log, over four bits (1 to 10 only)
+	 *   |  | |
+	 *   |  | +--------- reserved, must be 0
+	 *   |  |
+	 *   |  +----------- compression type
+	 *   |
+	 *   +-------------- 1 for ternary, 0 for binary
+	 *
+	 * Compression is:
+	 *   00   uncompressed, 16 bits per integer (signed)
+	 *   01   compressed with static codes
+	 * Other compression values are reserved.
+	 */
+	sig_buf = sig;
+	fb = *sig_buf ++;
+	len --;
+
+	/* Check reserved bit. */
+	if ((fb & 0x10) != 0) {
+		return -1;
+	}
+
+	/* Check degree. */
+	if ((fb & 0x0F) != fv->logn) {
+		return -1;
+	}
+	if ((fb >> 7) != fv->ternary) {
+		return -1;
+	}
+	q = fv->ternary ? Qt : Qb;
+
+	/* Decode value. */
+	if (falcon_decode_small(s2, fv->logn,
+		(fb >> 5) & 0x03, q, sig_buf, len) != len)
+	{
+		return -1;
+	}
+
+	/*
+	 * Hash the message into a vector, then verify the signature.
+	 */
+	shake_flip(&fv->sc);
+	falcon_hash_to_point(&fv->sc, q, c0, fv->logn);
+	return (int)falcon_vrfy_verify_raw(
+		c0, s2, fv->h, fv->logn, fv->ternary);

@@ -1,0 +1,73 @@
+formal/NormalizeMap.lean:11:9: error: unsolved goals
+case zero
+off : Nat
+⊢ [off + 2, off + 3] =
+    List.filterMap onlyLeaf [Tower.Event.localLDL 1 off, Tower.Event.leaf (off + 2), Tower.Event.leaf (off + 3)]
+formal/NormalizeMap.lean:12:14: error: unsolved goals
+case succ
+d : Nat
+ih : ∀ (off : Nat), leafPos d off = List.filterMap onlyLeaf (Tower.trace d off)
+off : Nat
+⊢ List.filterMap onlyLeaf (Tower.trace d (off + 2 ^ (d + 2))) ++
+      List.filterMap onlyLeaf (Tower.trace d (off + 2 ^ (d + 2) + Tower.words d)) =
+    List.filterMap onlyLeaf
+      (Tower.Event.split (d + 2) ::
+        (Tower.trace d (off + 2 ^ (d + 2)) ++
+          Tower.Event.localLDL (d + 2) off ::
+            Tower.Event.split (d + 2) :: Tower.trace d (off + 2 ^ (d + 2) + Tower.words d)))
+formal/NormalizeMap.lean:11:38: warning: This simp argument is unused:
+  onlyLeaf
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [leafPos, Tower.trace]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+formal/NormalizeMap.lean:12:43: warning: This simp argument is unused:
+  onlyLeaf
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [leafPos, Tower.trace, ih]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+formal/NormalizeMap.lean:19:94: error: Tactic `subst` failed: did not find equation for eliminating 'i'
+
+case zero.inr
+i off : Nat
+h : i = off + 3 ∨ i ∈ []
+⊢ off ≤ i ∧ i < off + Tower.words 0
+formal/NormalizeMap.lean:23:46: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  e ≥ 0
+  b ≥ 0
+  a ≥ 0
+  a - b ≤ -1
+  a - b - c ≥ 0
+  a - b - c - e ≤ -1
+where
+ a := ↑i
+ b := ↑off
+ c := ↑2 ^ (d + 2)
+ e := ↑(Tower.words d)
+formal/NormalizeMap.lean:24:46: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  e ≥ 0
+  b ≥ 0
+  a ≥ 0
+  a - b ≤ -1
+  a - b - c - 2*e ≤ -1
+  a - b - c - e ≥ 0
+where
+ a := ↑i
+ b := ↑off
+ c := ↑2 ^ (d + 2)
+ e := ↑(Tower.words d)
+formal/NormalizeMap.lean:19:45: warning: This simp argument is unused:
+  List.mem_singleton
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [leafPos, List.mem_cons] at hi
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+formal/NormalizeMap.lean:31:16: error: Tactic `rcases` failed: `16128 + 2 ^ (6 + 2) + 2 ^ (5 + 2) + 2 ^ (4 + 2) + 2 ^ (3 + 2) + 2 ^ (2 + 2) + 2 ^ (1 + 2) +
+    2 ^ (0 + 2) +
+  2` is not a free variable

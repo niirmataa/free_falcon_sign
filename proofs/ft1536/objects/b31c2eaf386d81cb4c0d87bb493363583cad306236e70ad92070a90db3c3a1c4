@@ -1,0 +1,55 @@
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_063/source/B20/Fpr/Spec.lean:475:75: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  c ≥ 2147484734
+  13 ≤ b ≤ 1085
+  -962 ≤ a ≤ 1085
+where
+ a := (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toInt
+ b := (rint_e x).toInt
+ c := (rint_y x).toInt
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_063/source/B20/Fpr/Spec.lean:476:53: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  13 ≤ b ≤ 1085
+  b - c ≤ -2147483649
+  -962 ≤ a ≤ 1085
+where
+ a := (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toInt
+ b := (rint_e x).toInt
+ c := (64#32).toInt
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_063/source/B20/Fpr/Spec.lean:479:65: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  2 ≤ d ≤ 4294967295
+  0 ≤ c ≤ 1
+  13 ≤ b ≤ 1085
+  -962 ≤ a ≤ 1085
+where
+ a := (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toInt
+ b := (rint_e x).toInt
+ c := ↑(BitVec.setWidth 32 (x >>> 63)).toNat
+ d := ↑(rint_s x).toNat
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_063/source/B20/Fpr/Spec.lean:484:21: error: Tactic `subst` failed: invalid equality proof, it is not of the form (x = t) or (t = x)
+  rint_s x = 0#32
+
+case inl
+x : BitVec 64
+hdom : rintDomain x
+hy : ↑0 ≤ (BitVec.setWidth 32 (x >>> 52) &&& 2047#32).toInt ∧ (BitVec.setWidth 32 (x >>> 52) &&& 2047#32).toInt ≤ 2047
+he :
+  (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toInt =
+      ↑1085 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32).toInt ∧
+    -↑962 ≤ (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toInt ∧
+      (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toInt ≤ 1085
+hen : ↑(rint_e x).toNat = (rint_e x).toInt ∧ 13 ≤ (rint_e x).toNat ∧ (rint_e x).toNat ≤ 1085
+hS2 : C.signedBitsOp BinOp.sub (1085#32) (rint_y x) = bitsOp BinOp.sub (1085#32) (rint_y x)
+hS3 : C.signedBitsOp BinOp.sub (rint_e x) 64#32 = bitsOp BinOp.sub (rint_e x) 64#32
+hs : (BitVec.setWidth 32 (x >>> 63)).toNat ≤ 1
+h✝ : rint_s x = 0#32
+⊢ (BitVec.signExtend 64 (rint_s x)).toNat ≤ 1
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_063/source/B20/Fpr/Spec.lean:534:35: error: Application type mismatch: The argument
+  hcase
+has type
+  64 ≤ (rint_e x).toNat
+but is expected to have type
+  ¬(rint_e x).toNat < 64
+in the application
+  rint_m2_big x hdom hcase

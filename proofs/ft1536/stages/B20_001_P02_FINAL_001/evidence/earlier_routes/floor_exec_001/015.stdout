@@ -1,0 +1,104 @@
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/floor_exec_001/source/B20/Fpr/FloorExec.lean:34:4: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  0 ≤ b ≤ 9223372036854775807
+  1 ≤ b - 1024*c ≤ 1023
+  0 ≤ a ≤ 18014398509481983
+where
+ a := ↑(x <<< 10).toNat / 1024
+ b := ↑(((x <<< 10).toNat ||| 4611686018427387904) &&& 9223372036854775807)
+ c := ↑(rint_m0 x).toNat / 1024
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/floor_exec_001/source/B20/Fpr/FloorExec.lean:144:12: error: unexpected token ':='; expected ')', ',' or ':'
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/floor_exec_001/source/B20/Fpr/FloorExec.lean:122:67: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  2 ≤ c ≤ 18446744073709551615
+  0 ≤ b ≤ 1
+  0 ≤ a ≤ 1072
+where
+ a := (rint_y x).toInt
+ b := ↑(x >>> 63).toNat
+ c := ↑(floor_t x).toNat
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/floor_exec_001/source/B20/Fpr/FloorExec.lean:133:4: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  0 ≤ b ≤ 1
+  0 ≤ a ≤ 1072
+where
+ a := (rint_y x).toInt
+ b := ↑(x >>> 63).toNat
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/floor_exec_001/source/B20/Fpr/FloorExec.lean:142:41: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  64 ≤ e ≤ 4294967295
+  0 ≤ d ≤ 50
+  0 ≤ c ≤ 63
+  0 ≤ b ≤ 9223372036854775806
+  0 ≤ a ≤ 1
+where
+ a := ↑(x >>> 63).toNat
+ b := ↑(rint_m0 x).toNat
+ c := ↑(rint_e2 x).toNat
+ d := (63#32 - rint_e x).toInt
+ e := ↑(BitVec.toNat ?m.291)
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/floor_exec_001/source/B20/Fpr/FloorExec.lean:143:9: error: Missing cases:
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/floor_exec_001/source/B20/Fpr/FloorExec.lean:142:2: error: unsolved goals
+case pos
+x : BitVec 64
+hdomR : rintDomain x
+hne : x ≠ 9223372036854775808
+hen : ↑(rint_e x).toNat = (rint_e x).toInt ∧ 13 ≤ (rint_e x).toNat ∧ (rint_e x).toNat ≤ 1085
+he_f : (rint_e x).toInt = 1085 - (rint_y x).toInt ∧ -962 ≤ (rint_e x).toInt ∧ (rint_e x).toInt ≤ 1085
+hy_f : 0 ≤ (rint_y x).toInt ∧ (rint_y x).toInt ≤ 2047
+hS_cc : C.signedBitsOp BinOp.sub (1085#32) (rint_y x) = bitsOp BinOp.sub (1085#32) (rint_y x)
+ht : (x >>> 63).toNat ≤ 1
+ht01 : floor_t x = 0#64 ∨ floor_t x = 1#64
+htmin : floor_t x ≠ 9223372036854775808
+hneg_t : neg (Val.i64 (floor_t x)) = some (Val.i64 (-floor_t x))
+hm0s : (rint_m0 x).toNat < 2 ^ 63 - 1
+hcond7 :
+  C.signedBitsOp BinOp.xor (rint_m0 x) (-floor_t x) = bitsOp BinOp.xor (rint_m0 x) (-floor_t x) ∧
+    ∃ r,
+      C.signedBitsOp BinOp.add (rint_m0 x ^^^ -floor_t x) (floor_t x) =
+          bitsOp BinOp.add (rint_m0 x ^^^ -floor_t x) (floor_t x) ∧
+        r = (rint_m0 x ^^^ -floor_t x) + floor_t x ∧
+          r.toInt = if (floor_t x).toNat = 0 then (rint_m0 x).toInt else -(rint_m0 x).toInt
+he2lt : (rint_e2 x).toNat < 64
+hcall9 :
+  shiftCalls "fpr_irsh".toList [Val.i64 (floor_xi0 x), Val.i32 (rint_e2 x)] =
+    some (Val.i64 ((floor_xi0 x).sshiftRight (rint_e2 x).toNat))
+hccint : 13 ≤ (rint_e x).toInt ∧ (rint_e x).toInt ≤ 1085
+hsafe :
+  C.signedBitsOp BinOp.sub (63#32) (rint_e x) = bitsOp BinOp.sub (63#32) (rint_e x) ∧
+    (63#32 - rint_e x).toInt = 63 - (rint_e x).toInt
+hcase : (rint_e x).toNat < 64
+hmaskF : floor_mask sorry = 0#64
+hmaskF_exp : -BitVec.setWidth 64 ((63#32 - (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32))) >>> 31) = 0#64
+⊢ execute shiftCalls Parsed.floorProgram [Val.u64 x] = some (Val.i64 (floorSpec x))
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/floor_exec_001/source/B20/Fpr/FloorExec.lean:111:35: error: unsolved goals
+case neg
+x : BitVec 64
+hdomR : rintDomain x
+hne : x ≠ 9223372036854775808
+hen : ↑(rint_e x).toNat = (rint_e x).toInt ∧ 13 ≤ (rint_e x).toNat ∧ (rint_e x).toNat ≤ 1085
+he_f : (rint_e x).toInt = 1085 - (rint_y x).toInt ∧ -962 ≤ (rint_e x).toInt ∧ (rint_e x).toInt ≤ 1085
+hy_f : 0 ≤ (rint_y x).toInt ∧ (rint_y x).toInt ≤ 2047
+hS_cc : C.signedBitsOp BinOp.sub (1085#32) (rint_y x) = bitsOp BinOp.sub (1085#32) (rint_y x)
+ht : (x >>> 63).toNat ≤ 1
+ht01 : floor_t x = 0#64 ∨ floor_t x = 1#64
+htmin : floor_t x ≠ 9223372036854775808
+hneg_t : neg (Val.i64 (floor_t x)) = some (Val.i64 (-floor_t x))
+hm0s : (rint_m0 x).toNat < 2 ^ 63 - 1
+hcond7 :
+  C.signedBitsOp BinOp.xor (rint_m0 x) (-floor_t x) = bitsOp BinOp.xor (rint_m0 x) (-floor_t x) ∧
+    ∃ r,
+      C.signedBitsOp BinOp.add (rint_m0 x ^^^ -floor_t x) (floor_t x) =
+          bitsOp BinOp.add (rint_m0 x ^^^ -floor_t x) (floor_t x) ∧
+        r = (rint_m0 x ^^^ -floor_t x) + floor_t x ∧
+          r.toInt = if (floor_t x).toNat = 0 then (rint_m0 x).toInt else -(rint_m0 x).toInt
+he2lt : (rint_e2 x).toNat < 64
+hcall9 :
+  shiftCalls "fpr_irsh".toList [Val.i64 (floor_xi0 x), Val.i32 (rint_e2 x)] =
+    some (Val.i64 ((floor_xi0 x).sshiftRight (rint_e2 x).toNat))
+hccint : 13 ≤ (rint_e x).toInt ∧ (rint_e x).toInt ≤ 1085
+hsafe :
+  C.signedBitsOp BinOp.sub (63#32) (rint_e x) = bitsOp BinOp.sub (63#32) (rint_e x) ∧
+    (63#32 - rint_e x).toInt = 63 - (rint_e x).toInt
+hcase : ¬(rint_e x).toNat < 64
+⊢ execute shiftCalls Parsed.floorProgram [Val.u64 x] = some (Val.i64 (floorSpec x))

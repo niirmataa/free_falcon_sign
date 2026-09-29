@@ -12,6 +12,21 @@ ROADMAP określa zależności i kryteria następnych prac.
 
 To archiwum ukończonych etapów FT1536 w docelowym `free_falcon_sign`.
 
+**2026-09-29 — B20/P02 v2 REVIEWED / PARTIAL_PROOF po V02.**
+[P02](stages/B20_001_P02_FINAL_001/REPORT.md),
+[V02 PASS_SCOPED_REVIEW](stages/B20_001_V02_FINAL_001/REVIEW.md),
+[wiążący scope](stages/B20_001_V02_FINAL_001/REVIEW_RESULT.json).
+Autor30612 outputs/29751 inputs,recenzja343/30633. Odbiór Sol w świeżej
+sesji,odrębny model od autora dowodów Astra Fast;wspólny model z pakującym
+jest jawny zgodnie z doprecyzowaniem właściciela. Fresh43/43,16/16,45 child
+commands;własne Sage/Lean/C1437 cases. LE64 i wybrane literal-word execution
+odebrane tylko w podanych domenach. **no_add_dispatch** dowodzi,że obecne
+AddCallObligation jest niespełnialne;conditional sub nie daje arithmetic
+contract. Real-error add/mul/div/sqrt,real-rint/caller/C→machine OPEN.
+6 dawnych child-log paths,old HEAD UNRECORDED oraz niepełne wczesne source
+snapshots organizacyjnych prób V02 pozostają jawne. Oba catalog replay=none
+oznaczają custom protocol;fresh replay i pełne final receipts są sealed.
+
 **2026-09-29 — T03-B RUN_002: niezależny PASS_SCOPED_REVIEW dla BLOCKED_UPSTREAM_EXPORTS.**
 [Autor](stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002/REPORT.md),
 [odbiór Sol Fast](stages/FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002_REVIEW_001/REVIEW.md),

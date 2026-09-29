@@ -1,0 +1,55 @@
+{
+  "schema": "B20_P01_RESULT_V2",
+  "revision": "v2 (supersedes v1 for review; v1 freeze preserved in output/; math unchanged — products byte-identical)",
+  "task_id": "B20_001_P01_FORMAL_FOUNDATIONS",
+  "roadmap_id": "F02-F09",
+  "final_stage": "B20_001_P01_FINAL_001",
+  "status": "PROVED",
+  "status_scope": "all 4 required goal exports kernel-checked with concrete pinned-model instances and source binding; PARTIAL_SCOPE declarations in NEXT_INTERFACE.md (operator-rich fragment translation, machine code, full C frontend)",
+  "kernel_complete_for_declared_exports": true,
+  "required_exports_present": 4,
+  "required_exports_total": 4,
+  "proof_stack": {
+    "lean": "4.34.0 (leanprover/lean4:v4.34.0)",
+    "mathlib": "5ed2965256430c3649e86755f9576b54eca72435 (tag v4.34.0)",
+    "sage": "10.9 (producer of checker inputs only)"
+  },
+  "formal_modules": ["Core", "CExec", "SourceBinding", "CertificateInput", "Certificate", "CertificateTransport", "Probability", "EndToEnd"],
+  "theorem_counts": {
+    "named_exports_scanned": 36,
+    "axiom_free_exports": 10,
+    "target_axioms": 0
+  },
+  "controls": {
+    "source_mutation_breaks_binding": true,
+    "translation_mutation_breaks_binding": true,
+    "false_inequality_rejected": true,
+    "reversed_endpoint_rejected": true,
+    "missing_denominator_rejected": true,
+    "synthetic_witness_labelled_separately": true
+  },
+  "sage_runs": {
+    "gen_sqrt2_certificate": "21/21 PASS",
+    "check_certificate": "9/9 PASS (3 negative certificates rejected)"
+  },
+  "fresh_replay": {
+    "procedure": "tools/restore_replay.py <NEW_DEST> — restores package into fresh DEST, author W read-only (clean-write gate: 0 violations)",
+    "jobs": 6,
+    "all_exit_zero": true,
+    "sources_unchanged": true,
+    "semantic_match_vs_EXPECTED": true,
+    "product_checks": "5/5",
+    "v1_products_byte_identical": ["33cf2381bab2f9b4…", "a6c06215f430ae04…", "16d4ca49e2e5a0bf…"],
+    "receipts_pinned": ["tools/restore_replay.py", "build/lakefile.toml", "build/lake-manifest.json", "build/lean-toolchain", "replay/REPLAY_RESULT.json", "replay/logs/*"]
+  },
+  "missing_types": [
+    "translation of operator-rich source17 fragments (e.g. fpr_ursh) to the model",
+    "C-to-machine-code refinement (compiler in TCB)",
+    "full C front-end beyond `return <decimal>;`",
+    "real PRNG/SHAKE/ChaCha/KeyGen/Sign-to-Verify (out of P01 scope)"
+  ],
+  "semantics_scope": "abstract C fragment semantics, NOT machine code (declared per TASK section 4)",
+  "failed_routes_preserved": 17,
+  "owner_accepted": false,
+  "push_authorized": false
+}

@@ -1,0 +1,99 @@
+{
+  "status": "PASS_EXECUTED_MEANINGFUL_MUTATIONS",
+  "detected": 12,
+  "noop": 1,
+  "rows": [
+    {
+      "name": "noop",
+      "status": "NOOP_PASS",
+      "path": "artifacts/mutations/noop.json",
+      "sha256": "16e60c8b3e6fd600e90125efccbffa9149406b71686a20e2b72d9f190c1a5a9d",
+      "scope": "fresh deterministic source-transducer no-op"
+    },
+    {
+      "name": "wrong_root_order",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/wrong_root_order.json",
+      "sha256": "b950d623811ab6dc32d097366b44cd41faee1e08c0ef83e0af5a64f4bf37a7e5",
+      "scope": "synthetic root model actual first two calls; native baseline bound; no Emitted membership"
+    },
+    {
+      "name": "wrong_binary_child_order",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/wrong_binary_child_order.json",
+      "sha256": "d0763d1d56fe98c9a68d1dbc1d0d3a95652311cee3ae448a479fed13ad0195c6",
+      "scope": "synthetic source-transducer swaps child tree pointers"
+    },
+    {
+      "name": "stale_center",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/stale_center.json",
+      "sha256": "b0b3cc80213719790ec0dcf3663d55f4899c3e0c19dc3e81545c1bb7a08b8d11",
+      "scope": "updated terminal center replaced by stale snapshot"
+    },
+    {
+      "name": "late_snapshot",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/late_snapshot.json",
+      "sha256": "374ef061ba0e9de5f7d96139d2b00a8f6103015d57273687c21d9299aa77997e",
+      "scope": "terminal old_mu0 snapshot overwritten with residual1"
+    },
+    {
+      "name": "wrong_getter_cutoff",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/wrong_getter_cutoff.json",
+      "sha256": "23a9d6be67257ff7960cdfc67f768307b99859ffd8006f554e394bf9797b6fea",
+      "scope": "public valid ptr4087; source >=4087 versus wrong >=4088"
+    },
+    {
+      "name": "proposal_window_instead_of_support",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/proposal_window_instead_of_support.json",
+      "sha256": "cd2cce90405d1aab649593642d84d9f65dfbd1001e13e6a709e8eebe007927ba",
+      "scope": "local D_env scalar input,positive proposal mass but forced cutoff; no Emitted claim"
+    },
+    {
+      "name": "independent_marginals",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/independent_marginals.json",
+      "sha256": "b45fff72dd116a556a260c7f6403087f2ac8de27b92555bedf43e7c0742dae99",
+      "scope": "exact QQ adaptive toy law versus product of actual one-dimensional marginals"
+    },
+    {
+      "name": "omit_local_normalization",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/omit_local_normalization.json",
+      "sha256": "676429c61e23e66afd2e65c070e76f4be950412bdb7ecfa3123508fc03c44466",
+      "scope": "sum of QS live mass versus unnormalized Qstop live product"
+    },
+    {
+      "name": "omit_exit_mass",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/omit_exit_mass.json",
+      "sha256": "e611dcebb67da063fdf4908dd9b03df265480ecd97da001fa959284d03ff8afe",
+      "scope": "Qstop mass conservation on exact adaptive toy tree"
+    },
+    {
+      "name": "reverse_chi2",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/reverse_chi2.json",
+      "sha256": "eaccd14d551bb0b6f660bdceb0796d7c9f7deaa33fe3337fdbafc823d0b8db7f",
+      "scope": "direction-sensitive exact toy chi-square"
+    },
+    {
+      "name": "local_equals_whole_survival",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/local_equals_whole_survival.json",
+      "sha256": "b2047edc2fd1d30ccb5fd89deb31dad76be01efbbde5618b6cbc13086c1966ef",
+      "scope": "abstract two-step kernel countermodel; TV1/10, no source Emitted membership"
+    },
+    {
+      "name": "same_values_imply_same_resources",
+      "status": "DETECTED",
+      "path": "artifacts/mutations/same_values_imply_same_resources.json",
+      "sha256": "4a5a52da38b0ded3d343b7031ca8927dd6d03c5a8bb8e0e10b9c85fc32b283c0",
+      "scope": "two original-C root tapes with same all3072 values/centers/widths/POST bytes but differing rejection counts"
+    }
+  ],
+  "required_domain_counterexample": false
+}

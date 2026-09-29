@@ -1,0 +1,128 @@
+falcon_sign_set_private_key(falcon_sign *fs,
+	const void *skey, size_t len)
+{
+	const unsigned char *skey_buf;
+	int comp;
+	int16_t ske[4][3072];
+	int i;
+	int fb, has_G;
+
+	/*
+	 * TODO: when reloading a new private key of the same size as
+	 * the currently allocated one, we could reuse the buffers
+	 * instead of releasing and reallocating them.
+	 */
+#if FT_SAMPLER_ADAPTIVE_PROBE
+	ft_ffldl_probe_ready = 0;
+#endif
+	clear_private(fs);
+	if (skey == NULL || len < 1) {
+		goto bad_skey;
+	}
+
+	/*
+	 * First byte defines modulus, degree and compression:
+	 *   t cc g dddd
+	 *   ^ ^^ ^ ^^^^
+	 *   |  | |   |
+	 *   |  | |   +----- degree log, over four bits (1 to 10 only)
+	 *   |  | |
+	 *   |  | +--------- 0 if G is present, 1 if G is absent
+	 *   |  |
+	 *   |  +----------- compression type
+	 *   |
+	 *   +-------------- 1 if ternary, 0 if binary
+	 *
+	 * Compression is:
+	 *   00   uncompressed, 16 bits per integer (signed)
+	 *   01   compressed with static codes (fixed tables)
+	 * Other compression values are reserved.
+	 */
+	skey_buf = skey;
+	fb = *skey_buf ++;
+	len --;
+	fs->logn = fb & 0x0F;
+	has_G = !(fb & 0x10);
+	fs->ternary = fb >> 7;
+	if (fs->ternary) {
+		fs->q = 18433;
+		if (fs->logn != 10) {
+			goto bad_skey;
+		}
+	} else {
+		fs->q = 12289;
+		if (fs->logn < 1 || fs->logn > 10) {
+			goto bad_skey;
+		}
+	}
+	comp = (fb >> 5) & 0x03;
+
+	/*
+	 * The f, g, F (and optionally G) short vectors should follow in
+	 * due order.
+	 */
+	for (i = 0; i < 3 + has_G; i ++) {
+		size_t elen;
+
+		elen = falcon_decode_small(ske[i], fs->logn,
+			comp, fs->q, skey_buf, len);
+		if (elen == 0) {
+			goto bad_skey;
+		}
+		skey_buf += elen;
+		len -= elen;
+	}
+	if (len != 0) {
+		goto bad_skey;
+	}
+
+	/*
+	 * Recompute G if not provided.
+	 */
+	if (!has_G) {
+		if (!falcon_complete_private(ske[3],
+			ske[0], ske[1], ske[2], fs->logn, fs->ternary))
+		{
+			goto bad_skey;
+		}
+	}
+
+	/*
+	 * Perform pre-computations on private key.
+	 */
+	if (fs->ternary) {
+		fs->sk_len = ((size_t)(3 * (fs->logn + 6)) << (fs->logn - 1))
+			* sizeof(fpr);
+		fs->tmp_len = ((size_t)21 << (fs->logn - 1)) * sizeof(fpr);
+	} else {
+		fs->sk_len = ((size_t)(fs->logn + 5) << fs->logn)
+			* sizeof(fpr);
+		fs->tmp_len = ((size_t)7 << fs->logn) * sizeof(fpr);
+	}
+	fs->sk = malloc(fs->sk_len);
+	if (fs->sk == NULL) {
+		goto bad_skey;
+	}
+	fs->tmp = malloc(fs->tmp_len);
+	if (fs->tmp == NULL) {
+		goto bad_skey;
+	}
+
+	if (fs->ternary
+		&& !ft_validate_ternary_private(ske[0], ske[1], ske[2], ske[3],
+			(int64_t *)(void *)fs->tmp))
+	{
+		goto bad_skey;
+	}
+	memset(fs->tmp, 0, fs->tmp_len);
+	if (!load_skey(fs->sk, fs->q, ske[0], ske[1], ske[2], ske[3],
+		fs->logn, fs->ternary, fs->tmp))
+	{
+		goto bad_skey;
+	}
+	return 1;
+
+bad_skey:
+	clear_private(fs);
+	return 0;
+}

@@ -1,0 +1,19 @@
+TOOLCHAIN (B20_001/P02) — zgodność z TOOLCHAIN_PINS.json (P01 bootstrap)
+
+lean:   4.34.0 (leanprover/lean4:v4.34.0)
+        /home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean
+        flags: -j1 -M2048 --root=<DEST>/source
+mathlib: 5ed2965256430c3649e86755f9576b54eca72435 (tag v4.34.0)
+        shared bootstrap at proofs/ft1536/work/B20_001/P01/bootstrap/mathlib4
+        (rev == pin; gate in toolchain_gate.py per run)
+sage:   10.9 (SageMath)
+        /home/footfalcon/.local/bin/sage
+        invocation: sage <file>.sage (preparser on; ZZ/QQ domains)
+gcc:    system gcc, -std=c99 -O2 -Wall -Wextra -Werror -DFPR_IMPL="fpr-emulated.h"
+        variants: normal, -fsanitize=undefined -fno-sanitize-recover=all,
+        -fsanitize=address (separate asan mode; hard_rss_limit_mb=2048)
+
+network: off for proof/build/replay (bwrap --unshare-net)
+limits: single-worker, Lean -j1/-M2048, wall 1800s/step, 8 GiB address space
+        (ASan exempt: shadow map), HOME/TMPDIR/DOT_SIDE/XDG under DEST.
+forbidden shortcuts checked: 0 occurrences (AXIOMS.json).

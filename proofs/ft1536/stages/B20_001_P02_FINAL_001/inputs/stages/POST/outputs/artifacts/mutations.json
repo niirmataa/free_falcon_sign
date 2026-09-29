@@ -1,0 +1,151 @@
+{
+  "status": "PASS_EXECUTED_MEANINGFUL_MUTATIONS_AND_NOOP",
+  "mutations": [
+    {
+      "name": "noop",
+      "outcome": "NOOP_PASS",
+      "baseline_sha256": "5442454b5d9121131e0d31bd431c9e0d272bd0845fdfb1beb6acb452a2143bf6",
+      "mutated_sha256": "5442454b5d9121131e0d31bd431c9e0d272bd0845fdfb1beb6acb452a2143bf6",
+      "evidence_sha256": "f73f66fc2676838deee24ecd9887204b1b335ddba5470101fc81ced25360a82e",
+      "scope": "SYNTHETIC_LOCAL_ONLY"
+    },
+    {
+      "name": "binary_sign",
+      "outcome": "MUTATION_DETECTED",
+      "baseline_sha256": "3df82d759ad055cef01bad7309efbf7a369537a694dc8d4add738b2d69ccac40",
+      "mutated_sha256": "69633a26fe90ee7574cc2df4ec8ab299f05998a64532694e0ae369401b4b0667",
+      "evidence_sha256": "71867a0949659ce836567f981f619291adff4f76109248ae228f47395bcd23bb",
+      "scope": "SYNTHETIC_LOCAL_ONLY"
+    },
+    {
+      "name": "stale_copy",
+      "outcome": "MUTATION_DETECTED",
+      "baseline_sha256": "3df82d759ad055cef01bad7309efbf7a369537a694dc8d4add738b2d69ccac40",
+      "mutated_sha256": "26343a5b9e59f80b494ec962c8fe97661275c0b35e9805e5a6425c74ddc03f60",
+      "evidence_sha256": "db8a3f7de30f32d02cc4d88d034e6f56a644eb0ba999cf88df9607453eceb56e",
+      "scope": "SYNTHETIC_LOCAL_ONLY"
+    },
+    {
+      "name": "wrong_scale",
+      "outcome": "MUTATION_DETECTED",
+      "baseline_sha256": "3df82d759ad055cef01bad7309efbf7a369537a694dc8d4add738b2d69ccac40",
+      "mutated_sha256": "4dd4f010505a90e0ae5b096b17e8120aed9fdd97a59da761abe28c2bc02fe386",
+      "evidence_sha256": "9b016891a67d75f3961c26254414c12a61a8d8268bc9127ed3636dc7661e18ca",
+      "scope": "SYNTHETIC_LOCAL_ONLY"
+    },
+    {
+      "name": "ifft_wrong_order",
+      "outcome": "MUTATION_DETECTED",
+      "baseline_sha256": "adb934860c1e46841dbb4a20fd3b813686768ccb1cae6202d1eba31d9fcb9c4c",
+      "mutated_sha256": "06faa8d8580c2a4971d499513a35d135fb878aa835660c626bdbd2bb19af862d",
+      "evidence_sha256": "c44f585fdb89b806f57ad94933993fff445bfb87ad3b89142b773f1f6bb7f9de",
+      "scope": "SYNTHETIC_LOCAL_ONLY"
+    },
+    {
+      "name": "ifft_wrong_conjugation",
+      "outcome": "MUTATION_DETECTED",
+      "baseline_sha256": "adb934860c1e46841dbb4a20fd3b813686768ccb1cae6202d1eba31d9fcb9c4c",
+      "mutated_sha256": "218f4305b11e25f2e0f944bba1df628396dac90bcab7edf7085ab21d2382d4c4",
+      "evidence_sha256": "504fc01b90e5dc59aa0bfad77a8f0436ac2f2e58f880a5c28b53833a857da264",
+      "scope": "SYNTHETIC_LOCAL_ONLY"
+    },
+    {
+      "name": "ifft_wrong_scale",
+      "outcome": "MUTATION_DETECTED",
+      "baseline_sha256": "adb934860c1e46841dbb4a20fd3b813686768ccb1cae6202d1eba31d9fcb9c4c",
+      "mutated_sha256": "5e86558da3420d4b86bbcdeebb86b778b9adbd5aa459155af368fc3172d995a0",
+      "evidence_sha256": "13fd3dc4637eb1c3941c4c9b85aecfabfde6ec465925310391b9083f5911c16c",
+      "scope": "SYNTHETIC_LOCAL_ONLY"
+    },
+    {
+      "name": "ties_away",
+      "outcome": "MUTATION_DETECTED",
+      "baseline_sha256": "faa750a15d86e2a878824ec87cada33e23752d099d719da8af81e1d172a5059d",
+      "mutated_sha256": "e25e3edf70ecdb7a33a803a94a432a63469c5592bd1f15e492902fb0ce0f1117",
+      "evidence_sha256": "ce4036ec95d9cda4c7083065bba5be159b1a23fc2420746c468b46a6f9e07255",
+      "scope": "SYNTHETIC_LOCAL_ONLY"
+    },
+    {
+      "name": "omit_narrowing",
+      "outcome": "MUTATION_DETECTED",
+      "baseline_sha256": "33dbae85aede77d411d138d2a080c6705501adf9daae758f37a2e64fe83da2e9",
+      "mutated_sha256": "f093241765f1c69f30aea54286429150389f81363a9cc5a08eb8c12ef17efe3b",
+      "evidence_sha256": "9171596faad0b24f35ccf20f21c630876beee4b8792bff18c185e62d7846f03d",
+      "scope": "SYNTHETIC_LOCAL_ONLY"
+    },
+    {
+      "name": "future_norm_implies_precast",
+      "outcome": "MUTATION_DETECTED",
+      "baseline_sha256": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+      "mutated_sha256": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "evidence_sha256": "4b5480bcfbb51c70de5c857eed48756402cb2d24efa66eb0539dff30dae90dd1",
+      "scope": "EXTENDED_LOCAL_SUFFIX_COUNTERMODEL_NOT_EMITTED: actual source stores have Q<B but not Safe16"
+    },
+    {
+      "name": "j7",
+      "outcome": "MUTATION_DETECTED",
+      "baseline_sha256": "c50af847b8cde4dee91099f4a9d84d79a5195e8857f63b89795c7913f41e0132",
+      "mutated_sha256": "79b3554393b2e104f6fb58e37b5ba7eebcc24c7edecf7f6cf5912aa84940430e",
+      "evidence_sha256": "fb290ad4129a727e196f391b99d17ebd3cb759665fb78afe29b520e3791f4e79",
+      "scope": "SYNTHETIC_LOCAL_ONLY"
+    },
+    {
+      "name": "omit_terminator",
+      "outcome": "MUTATION_DETECTED",
+      "baseline_sha256": "c50af847b8cde4dee91099f4a9d84d79a5195e8857f63b89795c7913f41e0132",
+      "mutated_sha256": "1c738f33b169b75693df8e89b9038307090dfa5d1d990d895f0168b6179ab2cf",
+      "evidence_sha256": "d013be42142400c1c109bc24745a5b71eed3b7425e14f90c86ac727572571f7a",
+      "scope": "SYNTHETIC_LOCAL_ONLY"
+    },
+    {
+      "name": "nonzero_padding",
+      "outcome": "MUTATION_DETECTED",
+      "baseline_sha256": "7b0248616cd6a47c8615da5aea178c9f5920793a3b127ddef32907b9233a8e7a",
+      "mutated_sha256": "f3f50f03d5f0280f2b6fe2317c30d1fd03aba61254c70666670334aa1dcb7bea",
+      "evidence_sha256": "dbce6b936661d7147185163083069db309c8ae1d22b3a60cd609193a5d8c6104",
+      "scope": "SYNTHETIC_LOCAL_ONLY"
+    },
+    {
+      "name": "early_header_on_failure",
+      "outcome": "MUTATION_DETECTED",
+      "baseline_sha256": "6ee80e6a8a90e457db2229217212f25047c111d7b6d60fd9e3a0ba509e9d6d4d",
+      "mutated_sha256": "39a6a748907024b6e740b1dbedc5184c04c5aabc8e25ffa772a3dfb904cdb0c2",
+      "evidence_sha256": "717abe40c13c06dbb1068d2254f1722b2a843eaf22d2e532cd7e1f47256ff66f",
+      "scope": "SYNTHETIC_LOCAL_ONLY"
+    }
+  ],
+  "domain_stops": [
+    {
+      "word": "4310000000000000",
+      "outcome": "STOP_RINT_PROVED_EXPONENT_DOMAIN",
+      "native_called": false
+    },
+    {
+      "word": "7ff0000000000000",
+      "outcome": "STOP_RINT_PROVED_EXPONENT_DOMAIN",
+      "native_called": false
+    },
+    {
+      "word": "7ff0000000000001",
+      "outcome": "STOP_RINT_PROVED_EXPONENT_DOMAIN",
+      "native_called": false
+    },
+    {
+      "word": "ffffffffffffffff",
+      "outcome": "STOP_RINT_PROVED_EXPONENT_DOMAIN",
+      "native_called": false
+    }
+  ],
+  "required_domain_counterexample": false,
+  "extended_local_wrap": {
+    "w1_0": 65536,
+    "w2_0": 65536,
+    "s1_0": 0,
+    "s2_0": 0,
+    "Q": 0,
+    "Safe16": false,
+    "P_key": false,
+    "emitted": false,
+    "source_sampler_history": false
+  }
+}

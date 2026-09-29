@@ -1,0 +1,112 @@
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/signed_arith_005/source/B20/C/SignedArith.lean:89:32: error: unsolved goals
+a : BitVec 64
+ha : a.toNat < 2 ^ 63 - 1
+ha63 : a.toNat < 2 ^ 63
+htoa : a.toInt = ↑a.toNat
+hane : a ≠ BitVec.intMin 64
+h0nat : (0#64).toNat = 0
+h1nat : (1#64).toNat = 1
+hs : (0#64).toNat ≤ 1
+hs0 : signedSafe BinOp.add (a ^^^ 0#64) 0#64 = true
+⊢ signedSafe BinOp.add a 0#64 = false → none = bitsOp BinOp.add a 0#64
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/signed_arith_005/source/B20/C/SignedArith.lean:103:6: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≤ -9223372036854775810
+  -9223372036854775808 ≤ c ≤ -1
+  0 ≤ b ≤ 9223372036854775806
+where
+ b := a.toInt
+ c := (~~~a).toInt
+ d := (↑(a.toNat ^^^ 18446744073709551615)).bmod 18446744073709551616
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/signed_arith_005/source/B20/C/SignedArith.lean:104:49: error: unsolved goals
+a : BitVec 64
+ha : a.toNat < 2 ^ 63 - 1
+ha63 : a.toNat < 2 ^ 63
+htoa : a.toInt = ↑a.toNat
+hane : a ≠ BitVec.intMin 64
+h0nat : (0#64).toNat = 0
+h1nat : (1#64).toNat = 1
+hs : (1#64).toNat ≤ 1
+hneg1 : -1#64 = BitVec.allOnes 64
+hxor : a ^^^ -1#64 = ~~~a
+hmsb : (~~~a).msb = true
+hneg_toInt : (~~~a).toInt < 0
+hsafe : signedSafe BinOp.add (a ^^^ -1#64) 1#64 = true
+⊢ a ^^^ 18446744073709551615#64 = ~~~a
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/signed_arith_005/source/B20/C/SignedArith.lean:106:36: error: unsolved goals
+a : BitVec 64
+ha : a.toNat < 2 ^ 63 - 1
+ha63 : a.toNat < 2 ^ 63
+htoa : a.toInt = ↑a.toNat
+hane : a ≠ BitVec.intMin 64
+h0nat : (0#64).toNat = 0
+h1nat : (1#64).toNat = 1
+hs : (1#64).toNat ≤ 1
+hneg1 : -1#64 = BitVec.allOnes 64
+hxor : a ^^^ -1#64 = ~~~a
+hmsb : (~~~a).msb = true
+hneg_toInt : (~~~a).toInt < 0
+hsafe : signedSafe BinOp.add (a ^^^ -1#64) 1#64 = true
+hsum : (a ^^^ -1#64) + 1#64 = -a
+⊢ signedSafe BinOp.add (a ^^^ 18446744073709551615#64) 1#64 = false →
+    none = bitsOp BinOp.add (a ^^^ 18446744073709551615#64) 1#64
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/signed_arith_005/source/B20/C/SignedArith.lean:91:2: error: unsolved goals
+case inr
+a : BitVec 64
+ha : a.toNat < 2 ^ 63 - 1
+ha63 : a.toNat < 2 ^ 63
+htoa : a.toInt = ↑a.toNat
+hane : a ≠ BitVec.intMin 64
+h0nat : (0#64).toNat = 0
+h1nat : (1#64).toNat = 1
+hs : (1#64).toNat ≤ 1
+hneg1 : -1#64 = BitVec.allOnes 64
+hxor : a ^^^ -1#64 = ~~~a
+hmsb : (~~~a).msb = true
+hneg_toInt : (~~~a).toInt < 0
+hsafe : signedSafe BinOp.add (a ^^^ -1#64) 1#64 = true
+hsum : (a ^^^ -1#64) + 1#64 = -a
+hna : (-a).toInt = -a.toInt
+⊢ (↑(a.toNat ^^^ 18446744073709551615) + 1).bmod 18446744073709551616 = -a.toInt
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/signed_arith_005/source/B20/C/SignedArith.lean:89:55: warning: This simp argument is unused:
+  hs0
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [signedBitsOp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/signed_arith_005/source/B20/C/SignedArith.lean:102:24: warning: This simp argument is unused:
+  hxor
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [signedSafe, h1]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/signed_arith_005/source/B20/C/SignedArith.lean:105:12: warning: This simp argument is unused:
+  hxor
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [BitVec.neg_eq_not_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/signed_arith_005/source/B20/C/SignedArith.lean:106:59: warning: This simp argument is unused:
+  hsafe
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [signedBitsOp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/signed_arith_005/source/B20/C/SignedArith.lean:109:10: warning: This simp argument is unused:
+  hsum
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hna, h1nat]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/signed_arith_005/source/B20/C/SignedArith.lean:109:16: warning: This simp argument is unused:
+  hna
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hsum, h1nat]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

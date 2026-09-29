@@ -1,0 +1,25 @@
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/integer_ops_001/source/B20/C/Integer.lean:26:46: error: unsolved goals
+x : BitVec 32
+⊢ ↑x.toNat % 18446744073709551616 = ↑x.toNat
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/integer_ops_001/source/B20/C/Integer.lean:37:56: error: unsolved goals
+x y : BitVec 64
+h : -2 ^ 63 ≤ x.toInt + y.toInt ∧ x.toInt + y.toInt < 2 ^ 63
+⊢ -9223372036854775808 ≤ x.toInt + y.toInt ∧ x.toInt + y.toInt < 9223372036854775808
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/integer_ops_001/source/B20/C/Integer.lean:38:63: warning: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [bin, commonTy, Val.ty, cast, signedBitsOp, signedSafe, bitsOp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/integer_ops_001/source/B20/C/Integer.lean:42:56: error: unsolved goals
+x y : BitVec 32
+h : -2 ^ 31 ≤ x.toInt + y.toInt ∧ x.toInt + y.toInt < 2 ^ 31
+⊢ -2147483648 ≤ x.toInt + y.toInt ∧ x.toInt + y.toInt < 2147483648
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/integer_ops_001/source/B20/C/Integer.lean:43:63: warning: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [bin, commonTy, Val.ty, cast, signedBitsOp, signedSafe, bitsOp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

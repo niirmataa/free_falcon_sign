@@ -1,0 +1,98 @@
+[
+  {
+    "name": "sage_version",
+    "argv": [
+      "/home/footfalcon/.local/bin/sage",
+      "--version"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/word_asan_001/source",
+    "start": "2026-09-23T02:50:20.251919+00:00",
+    "stop": "2026-09-23T02:50:21.568649+00:00",
+    "elapsed_s": 1.3167228669990436,
+    "exit_code": 0,
+    "expected_exit": 0,
+    "stdout": "sage_version.stdout",
+    "stdout_sha256": "65c57161b58002a9784f3b056b693ebe515469e80c9a11afe3d4423e671af8a0",
+    "stderr": "sage_version.stderr",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "sage_oracle",
+    "argv": [
+      "/home/footfalcon/.local/bin/sage",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/word_asan_001/source/checks/word_helpers.sage"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/word_asan_001/source",
+    "start": "2026-09-23T02:50:21.568852+00:00",
+    "stop": "2026-09-23T02:50:22.885718+00:00",
+    "elapsed_s": 1.3168741229965235,
+    "exit_code": 0,
+    "expected_exit": 0,
+    "stdout": "sage_oracle.stdout",
+    "stdout_sha256": "fafe02c0b6c89148280e1591f5c5f75688cc03bf628f53419bfcadbf02c1df77",
+    "stderr": "sage_oracle.stderr",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "gcc_version",
+    "argv": [
+      "/usr/bin/gcc",
+      "--version"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/word_asan_001/source",
+    "start": "2026-09-23T02:50:22.886023+00:00",
+    "stop": "2026-09-23T02:50:22.887812+00:00",
+    "elapsed_s": 0.001790894995792769,
+    "exit_code": 0,
+    "expected_exit": 0,
+    "stdout": "gcc_version.stdout",
+    "stdout_sha256": "4dc9a4e32fd9e06d42fb307688c59d6d889f0ff90ce034cbefed21b0d451fd81",
+    "stderr": "gcc_version.stderr",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "asan_compile",
+    "argv": [
+      "/usr/bin/gcc",
+      "-std=c99",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-fsanitize=address",
+      "-fno-omit-frame-pointer",
+      "-I",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/inputs/source17",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/word_asan_001/source/checks/word_helpers.c",
+      "-o",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/word_asan_001/build/asan"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/word_asan_001/source",
+    "start": "2026-09-23T02:50:22.887949+00:00",
+    "stop": "2026-09-23T02:50:23.202225+00:00",
+    "elapsed_s": 0.3142845210022642,
+    "exit_code": 0,
+    "expected_exit": 0,
+    "stdout": "asan_compile.stdout",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "asan_compile.stderr",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "asan_execute",
+    "argv": [
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/word_asan_001/build/asan",
+      "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/word_asan_001/build/word_cases.txt"
+    ],
+    "cwd": "/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/word_asan_001/source",
+    "start": "2026-09-23T02:50:23.202447+00:00",
+    "stop": "2026-09-23T02:50:23.316584+00:00",
+    "elapsed_s": 0.11414306799997576,
+    "exit_code": 0,
+    "expected_exit": 0,
+    "stdout": "asan_execute.stdout",
+    "stdout_sha256": "edf057f94083ed39e61625bd34196d43f2121a5b87b8cb647e53b6a066d31760",
+    "stderr": "asan_execute.stderr",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

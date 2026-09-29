@@ -1,0 +1,13 @@
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_038/source/B20/Fpr/Spec.lean:167:30: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  e ≥ 0
+  e - f ≥ 0
+  0 ≤ c ≤ 31
+  0 ≤ b ≤ 31
+  0 ≤ a ≤ 4294967295
+where
+ a := ↑((BitVec.setWidth 32 (d >>> 61)).toNat ||| ((dd ||| -dd) >>> 31).toNat)
+ b := ↑(BitVec.setWidth 32 (d >>> 61)).toNat
+ c := ↑((dd ||| -dd) >>> 31).toNat
+ e := ↑?m.259
+ f := ↑2 ^ ?m.261

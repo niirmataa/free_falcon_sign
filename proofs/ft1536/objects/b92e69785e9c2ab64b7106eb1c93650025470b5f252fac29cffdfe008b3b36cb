@@ -1,0 +1,1101 @@
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_013/source/B20/Fpr/Spec.lean:48:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  calls "fpr_add".toList [Val.u64 x, Val.u64 (y ^^^ 1 <<< 63)]
+in the target expression
+  (do
+      let __do_lift ←
+        do
+          let s ←
+            do
+              let s ← some { types := fun x => none, values := fun x => none }
+              let declared ←
+                if (s.types "y".toList).isSome = true then none
+                  else some { types := fun x => if x = "y".toList then some Ty.u64 else s.types x, values := s.values }
+              let ty ← declared.types "y".toList
+              pure
+                  { types := declared.types,
+                    values :=
+                      update declared.values "y".toList
+                        (match ty with
+                        | Ty.u64 => Val.u64 y
+                        | Ty.i64 => Val.i64 y
+                        | Ty.i32 => Val.i32 (BitVec.setWidth 32 y)
+                        | Ty.u32 => Val.u32 (BitVec.setWidth 32 y)) }
+          let declared ←
+            if (s.types "x".toList).isSome = true then none
+              else some { types := fun x => if x = "x".toList then some Ty.u64 else s.types x, values := s.values }
+          let ty ← declared.types "x".toList
+          pure
+              { types := declared.types,
+                values :=
+                  update declared.values "x".toList
+                    (match ty with
+                    | Ty.u64 => Val.u64 x
+                    | Ty.i64 => Val.i64 x
+                    | Ty.i32 => Val.i32 (BitVec.setWidth 32 x)
+                    | Ty.u32 => Val.u32 (BitVec.setWidth 32 x)) }
+      let __do_lift ←
+        do
+          let __do_lift_1 ← __do_lift.values "y".toList
+          let __do_lift_2 ←
+            do
+              let __do_lift ← Option.map (C.cast Ty.u64) (some (Val.i32 1#32))
+              let __do_lift_2 ← some (Val.i32 63#32)
+              if BinOp.shl = BinOp.shr ∨ True then
+                  match __do_lift_2 with
+                  | Val.i32 n =>
+                    match __do_lift with
+                    | Val.u64 x =>
+                      if n.toNat < 64 then
+                        if BinOp.shl = BinOp.shr then some (Val.u64 (x >>> n.toNat))
+                        else if True then some (Val.u64 (x <<< n.toNat)) else none
+                      else none
+                    | Val.i64 x =>
+                      if n.toNat < 64 ∧ BinOp.shl = BinOp.shr then some (Val.i64 (x.sshiftRight n.toNat)) else none
+                    | Val.i32 x =>
+                      if n.toNat < 32 ∧ BinOp.shl = BinOp.shr then some (Val.i32 (x.sshiftRight n.toNat)) else none
+                    | Val.u32 x =>
+                      if n.toNat < 32 then
+                        if BinOp.shl = BinOp.shr then some (Val.u32 (x >>> n.toNat))
+                        else if True then some (Val.u32 (x <<< n.toNat)) else none
+                      else none
+                  | Val.u32 n =>
+                    match __do_lift with
+                    | Val.u64 x =>
+                      if n.toNat < 64 then
+                        if BinOp.shl = BinOp.shr then some (Val.u64 (x >>> n.toNat))
+                        else if True then some (Val.u64 (x <<< n.toNat)) else none
+                      else none
+                    | Val.i64 x =>
+                      if n.toNat < 64 ∧ BinOp.shl = BinOp.shr then some (Val.i64 (x.sshiftRight n.toNat)) else none
+                    | Val.i32 x =>
+                      if n.toNat < 32 ∧ BinOp.shl = BinOp.shr then some (Val.i32 (x.sshiftRight n.toNat)) else none
+                    | Val.u32 x =>
+                      if n.toNat < 32 then
+                        if BinOp.shl = BinOp.shr then some (Val.u32 (x >>> n.toNat))
+                        else if True then some (Val.u32 (x <<< n.toNat)) else none
+                      else none
+                  | x => none
+                else
+                  match
+                    match __do_lift with
+                    | Val.u64 x =>
+                      match
+                        match
+                          match __do_lift with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32,
+                          match __do_lift_2 with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32 with
+                        | Ty.u64, x => Ty.u64
+                        | x, Ty.u64 => Ty.u64
+                        | Ty.i64, x => Ty.i64
+                        | x, Ty.i64 => Ty.i64
+                        | Ty.u32, x => Ty.u32
+                        | x, Ty.u32 => Ty.u32
+                        | Ty.i32, Ty.i32 => Ty.i32 with
+                      | Ty.u64 => Val.u64 x
+                      | Ty.i64 => Val.i64 x
+                      | Ty.i32 => Val.i32 (BitVec.setWidth 32 x)
+                      | Ty.u32 => Val.u32 (BitVec.setWidth 32 x)
+                    | Val.i64 x =>
+                      match
+                        match
+                          match __do_lift with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32,
+                          match __do_lift_2 with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32 with
+                        | Ty.u64, x => Ty.u64
+                        | x, Ty.u64 => Ty.u64
+                        | Ty.i64, x => Ty.i64
+                        | x, Ty.i64 => Ty.i64
+                        | Ty.u32, x => Ty.u32
+                        | x, Ty.u32 => Ty.u32
+                        | Ty.i32, Ty.i32 => Ty.i32 with
+                      | Ty.u64 => Val.u64 x
+                      | Ty.i64 => Val.i64 x
+                      | Ty.i32 => Val.i32 (BitVec.setWidth 32 x)
+                      | Ty.u32 => Val.u32 (BitVec.setWidth 32 x)
+                    | Val.i32 x =>
+                      match
+                        match
+                          match __do_lift with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32,
+                          match __do_lift_2 with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32 with
+                        | Ty.u64, x => Ty.u64
+                        | x, Ty.u64 => Ty.u64
+                        | Ty.i64, x => Ty.i64
+                        | x, Ty.i64 => Ty.i64
+                        | Ty.u32, x => Ty.u32
+                        | x, Ty.u32 => Ty.u32
+                        | Ty.i32, Ty.i32 => Ty.i32 with
+                      | Ty.u64 => Val.u64 (BitVec.signExtend 64 x)
+                      | Ty.i64 => Val.i64 (BitVec.signExtend 64 x)
+                      | Ty.i32 => Val.i32 x
+                      | Ty.u32 => Val.u32 x
+                    | Val.u32 x =>
+                      match
+                        match
+                          match __do_lift with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32,
+                          match __do_lift_2 with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32 with
+                        | Ty.u64, x => Ty.u64
+                        | x, Ty.u64 => Ty.u64
+                        | Ty.i64, x => Ty.i64
+                        | x, Ty.i64 => Ty.i64
+                        | Ty.u32, x => Ty.u32
+                        | x, Ty.u32 => Ty.u32
+                        | Ty.i32, Ty.i32 => Ty.i32 with
+                      | Ty.u64 => Val.u64 (BitVec.setWidth 64 x)
+                      | Ty.i64 => Val.i64 (BitVec.setWidth 64 x)
+                      | Ty.i32 => Val.i32 x
+                      | Ty.u32 => Val.u32 x,
+                    match __do_lift_2 with
+                    | Val.u64 x =>
+                      match
+                        match
+                          match __do_lift with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32,
+                          match __do_lift_2 with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32 with
+                        | Ty.u64, x => Ty.u64
+                        | x, Ty.u64 => Ty.u64
+                        | Ty.i64, x => Ty.i64
+                        | x, Ty.i64 => Ty.i64
+                        | Ty.u32, x => Ty.u32
+                        | x, Ty.u32 => Ty.u32
+                        | Ty.i32, Ty.i32 => Ty.i32 with
+                      | Ty.u64 => Val.u64 x
+                      | Ty.i64 => Val.i64 x
+                      | Ty.i32 => Val.i32 (BitVec.setWidth 32 x)
+                      | Ty.u32 => Val.u32 (BitVec.setWidth 32 x)
+                    | Val.i64 x =>
+                      match
+                        match
+                          match __do_lift with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32,
+                          match __do_lift_2 with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32 with
+                        | Ty.u64, x => Ty.u64
+                        | x, Ty.u64 => Ty.u64
+                        | Ty.i64, x => Ty.i64
+                        | x, Ty.i64 => Ty.i64
+                        | Ty.u32, x => Ty.u32
+                        | x, Ty.u32 => Ty.u32
+                        | Ty.i32, Ty.i32 => Ty.i32 with
+                      | Ty.u64 => Val.u64 x
+                      | Ty.i64 => Val.i64 x
+                      | Ty.i32 => Val.i32 (BitVec.setWidth 32 x)
+                      | Ty.u32 => Val.u32 (BitVec.setWidth 32 x)
+                    | Val.i32 x =>
+                      match
+                        match
+                          match __do_lift with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32,
+                          match __do_lift_2 with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32 with
+                        | Ty.u64, x => Ty.u64
+                        | x, Ty.u64 => Ty.u64
+                        | Ty.i64, x => Ty.i64
+                        | x, Ty.i64 => Ty.i64
+                        | Ty.u32, x => Ty.u32
+                        | x, Ty.u32 => Ty.u32
+                        | Ty.i32, Ty.i32 => Ty.i32 with
+                      | Ty.u64 => Val.u64 (BitVec.signExtend 64 x)
+                      | Ty.i64 => Val.i64 (BitVec.signExtend 64 x)
+                      | Ty.i32 => Val.i32 x
+                      | Ty.u32 => Val.u32 x
+                    | Val.u32 x =>
+                      match
+                        match
+                          match __do_lift with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32,
+                          match __do_lift_2 with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32 with
+                        | Ty.u64, x => Ty.u64
+                        | x, Ty.u64 => Ty.u64
+                        | Ty.i64, x => Ty.i64
+                        | x, Ty.i64 => Ty.i64
+                        | Ty.u32, x => Ty.u32
+                        | x, Ty.u32 => Ty.u32
+                        | Ty.i32, Ty.i32 => Ty.i32 with
+                      | Ty.u64 => Val.u64 (BitVec.setWidth 64 x)
+                      | Ty.i64 => Val.i64 (BitVec.setWidth 64 x)
+                      | Ty.i32 => Val.i32 x
+                      | Ty.u32 => Val.u32 x with
+                  | Val.u64 a, Val.u64 b => Option.map Val.u64 none
+                  | Val.i64 a, Val.i64 b => Option.map Val.i64 (C.signedBitsOp BinOp.shl a b)
+                  | Val.i32 a, Val.i32 b => Option.map Val.i32 (C.signedBitsOp BinOp.shl a b)
+                  | Val.u32 a, Val.u32 b => Option.map Val.u32 none
+                  | x, x_1 => none
+          let __do_lift_3 ←
+            if BinOp.xor = BinOp.shr ∨ BinOp.xor = BinOp.shl then
+                match __do_lift_2 with
+                | Val.i32 n =>
+                  match __do_lift_1 with
+                  | Val.u64 x =>
+                    if n.toNat < 64 then
+                      if BinOp.xor = BinOp.shr then some (Val.u64 (x >>> n.toNat))
+                      else if BinOp.xor = BinOp.shl then some (Val.u64 (x <<< n.toNat)) else none
+                    else none
+                  | Val.i64 x =>
+                    if n.toNat < 64 ∧ BinOp.xor = BinOp.shr then some (Val.i64 (x.sshiftRight n.toNat)) else none
+                  | Val.i32 x =>
+                    if n.toNat < 32 ∧ BinOp.xor = BinOp.shr then some (Val.i32 (x.sshiftRight n.toNat)) else none
+                  | Val.u32 x =>
+                    if n.toNat < 32 then
+                      if BinOp.xor = BinOp.shr then some (Val.u32 (x >>> n.toNat))
+                      else if BinOp.xor = BinOp.shl then some (Val.u32 (x <<< n.toNat)) else none
+                    else none
+                | Val.u32 n =>
+                  match __do_lift_1 with
+                  | Val.u64 x =>
+                    if n.toNat < 64 then
+                      if BinOp.xor = BinOp.shr then some (Val.u64 (x >>> n.toNat))
+                      else if BinOp.xor = BinOp.shl then some (Val.u64 (x <<< n.toNat)) else none
+                    else none
+                  | Val.i64 x =>
+                    if n.toNat < 64 ∧ BinOp.xor = BinOp.shr then some (Val.i64 (x.sshiftRight n.toNat)) else none
+                  | Val.i32 x =>
+                    if n.toNat < 32 ∧ BinOp.xor = BinOp.shr then some (Val.i32 (x.sshiftRight n.toNat)) else none
+                  | Val.u32 x =>
+                    if n.toNat < 32 then
+                      if BinOp.xor = BinOp.shr then some (Val.u32 (x >>> n.toNat))
+                      else if BinOp.xor = BinOp.shl then some (Val.u32 (x <<< n.toNat)) else none
+                    else none
+                | x => none
+              else
+                match
+                  match __do_lift_1 with
+                  | Val.u64 x =>
+                    match
+                      match
+                        match __do_lift_1 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32,
+                        match __do_lift_2 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32 with
+                      | Ty.u64, x => Ty.u64
+                      | x, Ty.u64 => Ty.u64
+                      | Ty.i64, x => Ty.i64
+                      | x, Ty.i64 => Ty.i64
+                      | Ty.u32, x => Ty.u32
+                      | x, Ty.u32 => Ty.u32
+                      | Ty.i32, Ty.i32 => Ty.i32 with
+                    | Ty.u64 => Val.u64 x
+                    | Ty.i64 => Val.i64 x
+                    | Ty.i32 => Val.i32 (BitVec.setWidth 32 x)
+                    | Ty.u32 => Val.u32 (BitVec.setWidth 32 x)
+                  | Val.i64 x =>
+                    match
+                      match
+                        match __do_lift_1 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32,
+                        match __do_lift_2 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32 with
+                      | Ty.u64, x => Ty.u64
+                      | x, Ty.u64 => Ty.u64
+                      | Ty.i64, x => Ty.i64
+                      | x, Ty.i64 => Ty.i64
+                      | Ty.u32, x => Ty.u32
+                      | x, Ty.u32 => Ty.u32
+                      | Ty.i32, Ty.i32 => Ty.i32 with
+                    | Ty.u64 => Val.u64 x
+                    | Ty.i64 => Val.i64 x
+                    | Ty.i32 => Val.i32 (BitVec.setWidth 32 x)
+                    | Ty.u32 => Val.u32 (BitVec.setWidth 32 x)
+                  | Val.i32 x =>
+                    match
+                      match
+                        match __do_lift_1 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32,
+                        match __do_lift_2 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32 with
+                      | Ty.u64, x => Ty.u64
+                      | x, Ty.u64 => Ty.u64
+                      | Ty.i64, x => Ty.i64
+                      | x, Ty.i64 => Ty.i64
+                      | Ty.u32, x => Ty.u32
+                      | x, Ty.u32 => Ty.u32
+                      | Ty.i32, Ty.i32 => Ty.i32 with
+                    | Ty.u64 => Val.u64 (BitVec.signExtend 64 x)
+                    | Ty.i64 => Val.i64 (BitVec.signExtend 64 x)
+                    | Ty.i32 => Val.i32 x
+                    | Ty.u32 => Val.u32 x
+                  | Val.u32 x =>
+                    match
+                      match
+                        match __do_lift_1 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32,
+                        match __do_lift_2 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32 with
+                      | Ty.u64, x => Ty.u64
+                      | x, Ty.u64 => Ty.u64
+                      | Ty.i64, x => Ty.i64
+                      | x, Ty.i64 => Ty.i64
+                      | Ty.u32, x => Ty.u32
+                      | x, Ty.u32 => Ty.u32
+                      | Ty.i32, Ty.i32 => Ty.i32 with
+                    | Ty.u64 => Val.u64 (BitVec.setWidth 64 x)
+                    | Ty.i64 => Val.i64 (BitVec.setWidth 64 x)
+                    | Ty.i32 => Val.i32 x
+                    | Ty.u32 => Val.u32 x,
+                  match __do_lift_2 with
+                  | Val.u64 x =>
+                    match
+                      match
+                        match __do_lift_1 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32,
+                        match __do_lift_2 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32 with
+                      | Ty.u64, x => Ty.u64
+                      | x, Ty.u64 => Ty.u64
+                      | Ty.i64, x => Ty.i64
+                      | x, Ty.i64 => Ty.i64
+                      | Ty.u32, x => Ty.u32
+                      | x, Ty.u32 => Ty.u32
+                      | Ty.i32, Ty.i32 => Ty.i32 with
+                    | Ty.u64 => Val.u64 x
+                    | Ty.i64 => Val.i64 x
+                    | Ty.i32 => Val.i32 (BitVec.setWidth 32 x)
+                    | Ty.u32 => Val.u32 (BitVec.setWidth 32 x)
+                  | Val.i64 x =>
+                    match
+                      match
+                        match __do_lift_1 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32,
+                        match __do_lift_2 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32 with
+                      | Ty.u64, x => Ty.u64
+                      | x, Ty.u64 => Ty.u64
+                      | Ty.i64, x => Ty.i64
+                      | x, Ty.i64 => Ty.i64
+                      | Ty.u32, x => Ty.u32
+                      | x, Ty.u32 => Ty.u32
+                      | Ty.i32, Ty.i32 => Ty.i32 with
+                    | Ty.u64 => Val.u64 x
+                    | Ty.i64 => Val.i64 x
+                    | Ty.i32 => Val.i32 (BitVec.setWidth 32 x)
+                    | Ty.u32 => Val.u32 (BitVec.setWidth 32 x)
+                  | Val.i32 x =>
+                    match
+                      match
+                        match __do_lift_1 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32,
+                        match __do_lift_2 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32 with
+                      | Ty.u64, x => Ty.u64
+                      | x, Ty.u64 => Ty.u64
+                      | Ty.i64, x => Ty.i64
+                      | x, Ty.i64 => Ty.i64
+                      | Ty.u32, x => Ty.u32
+                      | x, Ty.u32 => Ty.u32
+                      | Ty.i32, Ty.i32 => Ty.i32 with
+                    | Ty.u64 => Val.u64 (BitVec.signExtend 64 x)
+                    | Ty.i64 => Val.i64 (BitVec.signExtend 64 x)
+                    | Ty.i32 => Val.i32 x
+                    | Ty.u32 => Val.u32 x
+                  | Val.u32 x =>
+                    match
+                      match
+                        match __do_lift_1 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32,
+                        match __do_lift_2 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32 with
+                      | Ty.u64, x => Ty.u64
+                      | x, Ty.u64 => Ty.u64
+                      | Ty.i64, x => Ty.i64
+                      | x, Ty.i64 => Ty.i64
+                      | Ty.u32, x => Ty.u32
+                      | x, Ty.u32 => Ty.u32
+                      | Ty.i32, Ty.i32 => Ty.i32 with
+                    | Ty.u64 => Val.u64 (BitVec.setWidth 64 x)
+                    | Ty.i64 => Val.i64 (BitVec.setWidth 64 x)
+                    | Ty.i32 => Val.i32 x
+                    | Ty.u32 => Val.u32 x with
+                | Val.u64 a, Val.u64 b => Option.map Val.u64 (some (a ^^^ b))
+                | Val.i64 a, Val.i64 b => Option.map Val.i64 (C.signedBitsOp BinOp.xor a b)
+                | Val.i32 a, Val.i32 b => Option.map Val.i32 (C.signedBitsOp BinOp.xor a b)
+                | Val.u32 a, Val.u32 b => Option.map Val.u32 (some (a ^^^ b))
+                | x, x_1 => none
+          let ty ← __do_lift.types "y".toList
+          pure
+              { types := __do_lift.types,
+                values :=
+                  update __do_lift.values "y".toList
+                    (match __do_lift_3 with
+                    | Val.u64 x =>
+                      match ty with
+                      | Ty.u64 => Val.u64 x
+                      | Ty.i64 => Val.i64 x
+                      | Ty.i32 => Val.i32 (BitVec.setWidth 32 x)
+                      | Ty.u32 => Val.u32 (BitVec.setWidth 32 x)
+                    | Val.i64 x =>
+                      match ty with
+                      | Ty.u64 => Val.u64 x
+                      | Ty.i64 => Val.i64 x
+                      | Ty.i32 => Val.i32 (BitVec.setWidth 32 x)
+                      | Ty.u32 => Val.u32 (BitVec.setWidth 32 x)
+                    | Val.i32 x =>
+                      match ty with
+                      | Ty.u64 => Val.u64 (BitVec.signExtend 64 x)
+                      | Ty.i64 => Val.i64 (BitVec.signExtend 64 x)
+                      | Ty.i32 => Val.i32 x
+                      | Ty.u32 => Val.u32 x
+                    | Val.u32 x =>
+                      match ty with
+                      | Ty.u64 => Val.u64 (BitVec.setWidth 64 x)
+                      | Ty.i64 => Val.i64 (BitVec.setWidth 64 x)
+                      | Ty.i32 => Val.i32 x
+                      | Ty.u32 => Val.u32 x) }
+      Option.map (C.cast Ty.u64) do
+          let __do_lift_1 ← __do_lift.values "x".toList
+          let __do_lift ← __do_lift.values "y".toList
+          calls "fpr_add".toList [__do_lift_1, __do_lift]) =
+    some (Val.u64 w)
+
+calls : Calls
+x y w : BitVec 64
+hadd : calls "fpr_add".toList [Val.u64 x, Val.u64 (y ^^^ 1 <<< 63)] = some (Val.u64 w)
+⊢ (do
+      let __do_lift ←
+        do
+          let s ←
+            do
+              let s ← some { types := fun x => none, values := fun x => none }
+              let declared ←
+                if (s.types "y".toList).isSome = true then none
+                  else some { types := fun x => if x = "y".toList then some Ty.u64 else s.types x, values := s.values }
+              let ty ← declared.types "y".toList
+              pure
+                  { types := declared.types,
+                    values :=
+                      update declared.values "y".toList
+                        (match ty with
+                        | Ty.u64 => Val.u64 y
+                        | Ty.i64 => Val.i64 y
+                        | Ty.i32 => Val.i32 (BitVec.setWidth 32 y)
+                        | Ty.u32 => Val.u32 (BitVec.setWidth 32 y)) }
+          let declared ←
+            if (s.types "x".toList).isSome = true then none
+              else some { types := fun x => if x = "x".toList then some Ty.u64 else s.types x, values := s.values }
+          let ty ← declared.types "x".toList
+          pure
+              { types := declared.types,
+                values :=
+                  update declared.values "x".toList
+                    (match ty with
+                    | Ty.u64 => Val.u64 x
+                    | Ty.i64 => Val.i64 x
+                    | Ty.i32 => Val.i32 (BitVec.setWidth 32 x)
+                    | Ty.u32 => Val.u32 (BitVec.setWidth 32 x)) }
+      let __do_lift ←
+        do
+          let __do_lift_1 ← __do_lift.values "y".toList
+          let __do_lift_2 ←
+            do
+              let __do_lift ← Option.map (C.cast Ty.u64) (some (Val.i32 1#32))
+              let __do_lift_2 ← some (Val.i32 63#32)
+              if BinOp.shl = BinOp.shr ∨ True then
+                  match __do_lift_2 with
+                  | Val.i32 n =>
+                    match __do_lift with
+                    | Val.u64 x =>
+                      if n.toNat < 64 then
+                        if BinOp.shl = BinOp.shr then some (Val.u64 (x >>> n.toNat))
+                        else if True then some (Val.u64 (x <<< n.toNat)) else none
+                      else none
+                    | Val.i64 x =>
+                      if n.toNat < 64 ∧ BinOp.shl = BinOp.shr then some (Val.i64 (x.sshiftRight n.toNat)) else none
+                    | Val.i32 x =>
+                      if n.toNat < 32 ∧ BinOp.shl = BinOp.shr then some (Val.i32 (x.sshiftRight n.toNat)) else none
+                    | Val.u32 x =>
+                      if n.toNat < 32 then
+                        if BinOp.shl = BinOp.shr then some (Val.u32 (x >>> n.toNat))
+                        else if True then some (Val.u32 (x <<< n.toNat)) else none
+                      else none
+                  | Val.u32 n =>
+                    match __do_lift with
+                    | Val.u64 x =>
+                      if n.toNat < 64 then
+                        if BinOp.shl = BinOp.shr then some (Val.u64 (x >>> n.toNat))
+                        else if True then some (Val.u64 (x <<< n.toNat)) else none
+                      else none
+                    | Val.i64 x =>
+                      if n.toNat < 64 ∧ BinOp.shl = BinOp.shr then some (Val.i64 (x.sshiftRight n.toNat)) else none
+                    | Val.i32 x =>
+                      if n.toNat < 32 ∧ BinOp.shl = BinOp.shr then some (Val.i32 (x.sshiftRight n.toNat)) else none
+                    | Val.u32 x =>
+                      if n.toNat < 32 then
+                        if BinOp.shl = BinOp.shr then some (Val.u32 (x >>> n.toNat))
+                        else if True then some (Val.u32 (x <<< n.toNat)) else none
+                      else none
+                  | x => none
+                else
+                  match
+                    match __do_lift with
+                    | Val.u64 x =>
+                      match
+                        match
+                          match __do_lift with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32,
+                          match __do_lift_2 with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32 with
+                        | Ty.u64, x => Ty.u64
+                        | x, Ty.u64 => Ty.u64
+                        | Ty.i64, x => Ty.i64
+                        | x, Ty.i64 => Ty.i64
+                        | Ty.u32, x => Ty.u32
+                        | x, Ty.u32 => Ty.u32
+                        | Ty.i32, Ty.i32 => Ty.i32 with
+                      | Ty.u64 => Val.u64 x
+                      | Ty.i64 => Val.i64 x
+                      | Ty.i32 => Val.i32 (BitVec.setWidth 32 x)
+                      | Ty.u32 => Val.u32 (BitVec.setWidth 32 x)
+                    | Val.i64 x =>
+                      match
+                        match
+                          match __do_lift with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32,
+                          match __do_lift_2 with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32 with
+                        | Ty.u64, x => Ty.u64
+                        | x, Ty.u64 => Ty.u64
+                        | Ty.i64, x => Ty.i64
+                        | x, Ty.i64 => Ty.i64
+                        | Ty.u32, x => Ty.u32
+                        | x, Ty.u32 => Ty.u32
+                        | Ty.i32, Ty.i32 => Ty.i32 with
+                      | Ty.u64 => Val.u64 x
+                      | Ty.i64 => Val.i64 x
+                      | Ty.i32 => Val.i32 (BitVec.setWidth 32 x)
+                      | Ty.u32 => Val.u32 (BitVec.setWidth 32 x)
+                    | Val.i32 x =>
+                      match
+                        match
+                          match __do_lift with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32,
+                          match __do_lift_2 with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32 with
+                        | Ty.u64, x => Ty.u64
+                        | x, Ty.u64 => Ty.u64
+                        | Ty.i64, x => Ty.i64
+                        | x, Ty.i64 => Ty.i64
+                        | Ty.u32, x => Ty.u32
+                        | x, Ty.u32 => Ty.u32
+                        | Ty.i32, Ty.i32 => Ty.i32 with
+                      | Ty.u64 => Val.u64 (BitVec.signExtend 64 x)
+                      | Ty.i64 => Val.i64 (BitVec.signExtend 64 x)
+                      | Ty.i32 => Val.i32 x
+                      | Ty.u32 => Val.u32 x
+                    | Val.u32 x =>
+                      match
+                        match
+                          match __do_lift with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32,
+                          match __do_lift_2 with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32 with
+                        | Ty.u64, x => Ty.u64
+                        | x, Ty.u64 => Ty.u64
+                        | Ty.i64, x => Ty.i64
+                        | x, Ty.i64 => Ty.i64
+                        | Ty.u32, x => Ty.u32
+                        | x, Ty.u32 => Ty.u32
+                        | Ty.i32, Ty.i32 => Ty.i32 with
+                      | Ty.u64 => Val.u64 (BitVec.setWidth 64 x)
+                      | Ty.i64 => Val.i64 (BitVec.setWidth 64 x)
+                      | Ty.i32 => Val.i32 x
+                      | Ty.u32 => Val.u32 x,
+                    match __do_lift_2 with
+                    | Val.u64 x =>
+                      match
+                        match
+                          match __do_lift with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32,
+                          match __do_lift_2 with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32 with
+                        | Ty.u64, x => Ty.u64
+                        | x, Ty.u64 => Ty.u64
+                        | Ty.i64, x => Ty.i64
+                        | x, Ty.i64 => Ty.i64
+                        | Ty.u32, x => Ty.u32
+                        | x, Ty.u32 => Ty.u32
+                        | Ty.i32, Ty.i32 => Ty.i32 with
+                      | Ty.u64 => Val.u64 x
+                      | Ty.i64 => Val.i64 x
+                      | Ty.i32 => Val.i32 (BitVec.setWidth 32 x)
+                      | Ty.u32 => Val.u32 (BitVec.setWidth 32 x)
+                    | Val.i64 x =>
+                      match
+                        match
+                          match __do_lift with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32,
+                          match __do_lift_2 with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32 with
+                        | Ty.u64, x => Ty.u64
+                        | x, Ty.u64 => Ty.u64
+                        | Ty.i64, x => Ty.i64
+                        | x, Ty.i64 => Ty.i64
+                        | Ty.u32, x => Ty.u32
+                        | x, Ty.u32 => Ty.u32
+                        | Ty.i32, Ty.i32 => Ty.i32 with
+                      | Ty.u64 => Val.u64 x
+                      | Ty.i64 => Val.i64 x
+                      | Ty.i32 => Val.i32 (BitVec.setWidth 32 x)
+                      | Ty.u32 => Val.u32 (BitVec.setWidth 32 x)
+                    | Val.i32 x =>
+                      match
+                        match
+                          match __do_lift with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32,
+                          match __do_lift_2 with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32 with
+                        | Ty.u64, x => Ty.u64
+                        | x, Ty.u64 => Ty.u64
+                        | Ty.i64, x => Ty.i64
+                        | x, Ty.i64 => Ty.i64
+                        | Ty.u32, x => Ty.u32
+                        | x, Ty.u32 => Ty.u32
+                        | Ty.i32, Ty.i32 => Ty.i32 with
+                      | Ty.u64 => Val.u64 (BitVec.signExtend 64 x)
+                      | Ty.i64 => Val.i64 (BitVec.signExtend 64 x)
+                      | Ty.i32 => Val.i32 x
+                      | Ty.u32 => Val.u32 x
+                    | Val.u32 x =>
+                      match
+                        match
+                          match __do_lift with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32,
+                          match __do_lift_2 with
+                          | Val.u64 bits => Ty.u64
+                          | Val.i64 bits => Ty.i64
+                          | Val.i32 bits => Ty.i32
+                          | Val.u32 bits => Ty.u32 with
+                        | Ty.u64, x => Ty.u64
+                        | x, Ty.u64 => Ty.u64
+                        | Ty.i64, x => Ty.i64
+                        | x, Ty.i64 => Ty.i64
+                        | Ty.u32, x => Ty.u32
+                        | x, Ty.u32 => Ty.u32
+                        | Ty.i32, Ty.i32 => Ty.i32 with
+                      | Ty.u64 => Val.u64 (BitVec.setWidth 64 x)
+                      | Ty.i64 => Val.i64 (BitVec.setWidth 64 x)
+                      | Ty.i32 => Val.i32 x
+                      | Ty.u32 => Val.u32 x with
+                  | Val.u64 a, Val.u64 b => Option.map Val.u64 none
+                  | Val.i64 a, Val.i64 b => Option.map Val.i64 (C.signedBitsOp BinOp.shl a b)
+                  | Val.i32 a, Val.i32 b => Option.map Val.i32 (C.signedBitsOp BinOp.shl a b)
+                  | Val.u32 a, Val.u32 b => Option.map Val.u32 none
+                  | x, x_1 => none
+          let __do_lift_3 ←
+            if BinOp.xor = BinOp.shr ∨ BinOp.xor = BinOp.shl then
+                match __do_lift_2 with
+                | Val.i32 n =>
+                  match __do_lift_1 with
+                  | Val.u64 x =>
+                    if n.toNat < 64 then
+                      if BinOp.xor = BinOp.shr then some (Val.u64 (x >>> n.toNat))
+                      else if BinOp.xor = BinOp.shl then some (Val.u64 (x <<< n.toNat)) else none
+                    else none
+                  | Val.i64 x =>
+                    if n.toNat < 64 ∧ BinOp.xor = BinOp.shr then some (Val.i64 (x.sshiftRight n.toNat)) else none
+                  | Val.i32 x =>
+                    if n.toNat < 32 ∧ BinOp.xor = BinOp.shr then some (Val.i32 (x.sshiftRight n.toNat)) else none
+                  | Val.u32 x =>
+                    if n.toNat < 32 then
+                      if BinOp.xor = BinOp.shr then some (Val.u32 (x >>> n.toNat))
+                      else if BinOp.xor = BinOp.shl then some (Val.u32 (x <<< n.toNat)) else none
+                    else none
+                | Val.u32 n =>
+                  match __do_lift_1 with
+                  | Val.u64 x =>
+                    if n.toNat < 64 then
+                      if BinOp.xor = BinOp.shr then some (Val.u64 (x >>> n.toNat))
+                      else if BinOp.xor = BinOp.shl then some (Val.u64 (x <<< n.toNat)) else none
+                    else none
+                  | Val.i64 x =>
+                    if n.toNat < 64 ∧ BinOp.xor = BinOp.shr then some (Val.i64 (x.sshiftRight n.toNat)) else none
+                  | Val.i32 x =>
+                    if n.toNat < 32 ∧ BinOp.xor = BinOp.shr then some (Val.i32 (x.sshiftRight n.toNat)) else none
+                  | Val.u32 x =>
+                    if n.toNat < 32 then
+                      if BinOp.xor = BinOp.shr then some (Val.u32 (x >>> n.toNat))
+                      else if BinOp.xor = BinOp.shl then some (Val.u32 (x <<< n.toNat)) else none
+                    else none
+                | x => none
+              else
+                match
+                  match __do_lift_1 with
+                  | Val.u64 x =>
+                    match
+                      match
+                        match __do_lift_1 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32,
+                        match __do_lift_2 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32 with
+                      | Ty.u64, x => Ty.u64
+                      | x, Ty.u64 => Ty.u64
+                      | Ty.i64, x => Ty.i64
+                      | x, Ty.i64 => Ty.i64
+                      | Ty.u32, x => Ty.u32
+                      | x, Ty.u32 => Ty.u32
+                      | Ty.i32, Ty.i32 => Ty.i32 with
+                    | Ty.u64 => Val.u64 x
+                    | Ty.i64 => Val.i64 x
+                    | Ty.i32 => Val.i32 (BitVec.setWidth 32 x)
+                    | Ty.u32 => Val.u32 (BitVec.setWidth 32 x)
+                  | Val.i64 x =>
+                    match
+                      match
+                        match __do_lift_1 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32,
+                        match __do_lift_2 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32 with
+                      | Ty.u64, x => Ty.u64
+                      | x, Ty.u64 => Ty.u64
+                      | Ty.i64, x => Ty.i64
+                      | x, Ty.i64 => Ty.i64
+                      | Ty.u32, x => Ty.u32
+                      | x, Ty.u32 => Ty.u32
+                      | Ty.i32, Ty.i32 => Ty.i32 with
+                    | Ty.u64 => Val.u64 x
+                    | Ty.i64 => Val.i64 x
+                    | Ty.i32 => Val.i32 (BitVec.setWidth 32 x)
+                    | Ty.u32 => Val.u32 (BitVec.setWidth 32 x)
+                  | Val.i32 x =>
+                    match
+                      match
+                        match __do_lift_1 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32,
+                        match __do_lift_2 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32 with
+                      | Ty.u64, x => Ty.u64
+                      | x, Ty.u64 => Ty.u64
+                      | Ty.i64, x => Ty.i64
+                      | x, Ty.i64 => Ty.i64
+                      | Ty.u32, x => Ty.u32
+                      | x, Ty.u32 => Ty.u32
+                      | Ty.i32, Ty.i32 => Ty.i32 with
+                    | Ty.u64 => Val.u64 (BitVec.signExtend 64 x)
+                    | Ty.i64 => Val.i64 (BitVec.signExtend 64 x)
+                    | Ty.i32 => Val.i32 x
+                    | Ty.u32 => Val.u32 x
+                  | Val.u32 x =>
+                    match
+                      match
+                        match __do_lift_1 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32,
+                        match __do_lift_2 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32 with
+                      | Ty.u64, x => Ty.u64
+                      | x, Ty.u64 => Ty.u64
+                      | Ty.i64, x => Ty.i64
+                      | x, Ty.i64 => Ty.i64
+                      | Ty.u32, x => Ty.u32
+                      | x, Ty.u32 => Ty.u32
+                      | Ty.i32, Ty.i32 => Ty.i32 with
+                    | Ty.u64 => Val.u64 (BitVec.setWidth 64 x)
+                    | Ty.i64 => Val.i64 (BitVec.setWidth 64 x)
+                    | Ty.i32 => Val.i32 x
+                    | Ty.u32 => Val.u32 x,
+                  match __do_lift_2 with
+                  | Val.u64 x =>
+                    match
+                      match
+                        match __do_lift_1 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32,
+                        match __do_lift_2 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32 with
+                      | Ty.u64, x => Ty.u64
+                      | x, Ty.u64 => Ty.u64
+                      | Ty.i64, x => Ty.i64
+                      | x, Ty.i64 => Ty.i64
+                      | Ty.u32, x => Ty.u32
+                      | x, Ty.u32 => Ty.u32
+                      | Ty.i32, Ty.i32 => Ty.i32 with
+                    | Ty.u64 => Val.u64 x
+                    | Ty.i64 => Val.i64 x
+                    | Ty.i32 => Val.i32 (BitVec.setWidth 32 x)
+                    | Ty.u32 => Val.u32 (BitVec.setWidth 32 x)
+                  | Val.i64 x =>
+                    match
+                      match
+                        match __do_lift_1 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32,
+                        match __do_lift_2 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32 with
+                      | Ty.u64, x => Ty.u64
+                      | x, Ty.u64 => Ty.u64
+                      | Ty.i64, x => Ty.i64
+                      | x, Ty.i64 => Ty.i64
+                      | Ty.u32, x => Ty.u32
+                      | x, Ty.u32 => Ty.u32
+                      | Ty.i32, Ty.i32 => Ty.i32 with
+                    | Ty.u64 => Val.u64 x
+                    | Ty.i64 => Val.i64 x
+                    | Ty.i32 => Val.i32 (BitVec.setWidth 32 x)
+                    | Ty.u32 => Val.u32 (BitVec.setWidth 32 x)
+                  | Val.i32 x =>
+                    match
+                      match
+                        match __do_lift_1 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32,
+                        match __do_lift_2 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32 with
+                      | Ty.u64, x => Ty.u64
+                      | x, Ty.u64 => Ty.u64
+                      | Ty.i64, x => Ty.i64
+                      | x, Ty.i64 => Ty.i64
+                      | Ty.u32, x => Ty.u32
+                      | x, Ty.u32 => Ty.u32
+                      | Ty.i32, Ty.i32 => Ty.i32 with
+                    | Ty.u64 => Val.u64 (BitVec.signExtend 64 x)
+                    | Ty.i64 => Val.i64 (BitVec.signExtend 64 x)
+                    | Ty.i32 => Val.i32 x
+                    | Ty.u32 => Val.u32 x
+                  | Val.u32 x =>
+                    match
+                      match
+                        match __do_lift_1 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32,
+                        match __do_lift_2 with
+                        | Val.u64 bits => Ty.u64
+                        | Val.i64 bits => Ty.i64
+                        | Val.i32 bits => Ty.i32
+                        | Val.u32 bits => Ty.u32 with
+                      | Ty.u64, x => Ty.u64
+                      | x, Ty.u64 => Ty.u64
+                      | Ty.i64, x => Ty.i64
+                      | x, Ty.i64 => Ty.i64
+                      | Ty.u32, x => Ty.u32
+                      | x, Ty.u32 => Ty.u32
+                      | Ty.i32, Ty.i32 => Ty.i32 with
+                    | Ty.u64 => Val.u64 (BitVec.setWidth 64 x)
+                    | Ty.i64 => Val.i64 (BitVec.setWidth 64 x)
+                    | Ty.i32 => Val.i32 x
+                    | Ty.u32 => Val.u32 x with
+                | Val.u64 a, Val.u64 b => Option.map Val.u64 (some (a ^^^ b))
+                | Val.i64 a, Val.i64 b => Option.map Val.i64 (C.signedBitsOp BinOp.xor a b)
+                | Val.i32 a, Val.i32 b => Option.map Val.i32 (C.signedBitsOp BinOp.xor a b)
+                | Val.u32 a, Val.u32 b => Option.map Val.u32 (some (a ^^^ b))
+                | x, x_1 => none
+          let ty ← __do_lift.types "y".toList
+          pure
+              { types := __do_lift.types,
+                values :=
+                  update __do_lift.values "y".toList
+                    (match __do_lift_3 with
+                    | Val.u64 x =>
+                      match ty with
+                      | Ty.u64 => Val.u64 x
+                      | Ty.i64 => Val.i64 x
+                      | Ty.i32 => Val.i32 (BitVec.setWidth 32 x)
+                      | Ty.u32 => Val.u32 (BitVec.setWidth 32 x)
+                    | Val.i64 x =>
+                      match ty with
+                      | Ty.u64 => Val.u64 x
+                      | Ty.i64 => Val.i64 x
+                      | Ty.i32 => Val.i32 (BitVec.setWidth 32 x)
+                      | Ty.u32 => Val.u32 (BitVec.setWidth 32 x)
+                    | Val.i32 x =>
+                      match ty with
+                      | Ty.u64 => Val.u64 (BitVec.signExtend 64 x)
+                      | Ty.i64 => Val.i64 (BitVec.signExtend 64 x)
+                      | Ty.i32 => Val.i32 x
+                      | Ty.u32 => Val.u32 x
+                    | Val.u32 x =>
+                      match ty with
+                      | Ty.u64 => Val.u64 (BitVec.setWidth 64 x)
+                      | Ty.i64 => Val.i64 (BitVec.setWidth 64 x)
+                      | Ty.i32 => Val.i32 x
+                      | Ty.u32 => Val.u32 x) }
+      Option.map (C.cast Ty.u64) do
+          let __do_lift_1 ← __do_lift.values "x".toList
+          let __do_lift ← __do_lift.values "y".toList
+          calls "fpr_add".toList [__do_lift_1, __do_lift]) =
+    some (Val.u64 w)

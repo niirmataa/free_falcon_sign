@@ -1,0 +1,148 @@
+--- inputs/bootstrap/ORDERED/scripts/bounds.py
++++ scripts/energy_transfer.py
+@@ -1,66 +1,82 @@
+-"""Exact transfer bounds and documented failed full-root routes; not a numerical search for keys."""
+-import json,re
+-from fractions import Fraction as F
+-from math import isqrt
++"""Residual reconstruction error, source root gain and forward signal/history separation."""
++import json,sys
+ from pathlib import Path
++sys.path.insert(0,str(Path.cwd()/'scripts'))
++from sage.all import QQ,ZZ,PolynomialRing
+ from replaylib import sha
+-from dyadic import value
+-W=Path.cwd();I=W/'inputs/bootstrap';eps=F(1,2**32);G=1+eps
+-def ceil(x):return -(-x.numerator//x.denominator)
+-def add(a,b):return ceil(G*(a+b))+1
+-def mul(a,b):return ceil(G*a*b)+1
+-def split(a,k):return ceil(G*(2 if k==1 else 1)*a)+1
+-def merge(a,b):return ceil(G*(a+b))+1
+-# Absolute eta floors are covered by the explicit +1. Applies to <2^80 operands.
+-# No ZERO result is used until the recursively computed current mu bound passes.
+-def binary(k,a,b,L,records,tag):
++W=Path.cwd();I=W/'inputs/bootstrap';U=QQ(1)/2**48;eta=QQ(1)/2**900;ep=QQ(1)/2**50;gam=QQ(1)/2**36;tau=QQ(1)/2**800;L=1+QQ(1)/2**40
++P=PolynomialRing(QQ,'B');B=P.gen()
++def cmerr(M,e,d):return 2*M*d+2*e*(1+d)+6*U*(M+e)*(1+d)+4*eta
++def covers(e,slope=gam):
++ d=P(tau+slope*B-e);assert all(c>=0 for c in d.list());return str(e)
++ew=2*cmerr(B,0,ep);es=2*ew+U*(2*B+2*ew)+2*eta;es+=U*(3*B+es)+2*eta
++esq=cmerr(QQ(1),ep,ep);pre=2*cmerr(3*B,es,esq);third=QQ(6004799503160661)/18014398509481984
++top=third*pre+3*B*abs(third-QQ(1)/3)+U*third*(3*B+pre)+2*eta
++deep=cmerr(2*B,2*U*B+2*eta,ep)+2*eta
++merge=2*cmerr(B,0,ep)+U*(2*B+2*cmerr(B,0,ep))+2*eta
++mt=2*cmerr(B,2*cmerr(B,0,ep),ep)+2*cmerr(B,2*cmerr(B,0,esq),ep);mt+=U*(2*B+mt)+2*eta;mt+=U*(3*B+mt)+2*eta
++polys={k:covers(v) for k,v in [('top_split',top),('deep_split',deep),('deep_merge',merge),('top_merge',mt)]}
++# Terminal merge and split use exact coefficient reference (1/2,sqrt3/2), and its inverse.
++assert gam>256*U+64*ep and tau>1024*eta
++def ceil(x):return ZZ(x.ceil())
++def up(x):return QQ(ceil(x*2**50))/2**50
++G=1+QQ(1)/2**32
++def capadd(a,b):return QQ(ceil(G*(a+b))+1)
++def capmul(a,b):return QQ(ceil(G*a*b)+1)
++def capmerge(a,b):return QQ(ceil(G*(a+b))+1)
++R=[(QQ(552),QQ(367))];E=[(QQ(0),QQ(0))];steps=[]
++for k in range(1,9):
++ a,b=R[-1];ea,eb=E[-1];right=capmerge(a,b);er=up(ea+eb+gam*(a+b)+tau)
++ product=capmul(right,L);epd=up(L*er+gam*right*L+tau)
++ left=capadd(right,product);el=up(er+epd+gam*(right+product)+tau)
++ R.append((left,right));E.append((el,er));steps.append(dict(level=k,R0=str(left),R1=str(right),E0=str(el),E1=str(er)))
++a,b=R[8];ea,eb=E[8];m=capmerge(a,b);em=up(ea+eb+gam*(a+b)+tau)
++z2=m;e2=em;p21=capmul(z2,4);ep21=up(4*e2+gam*z2*4+tau);z1=capadd(m,p21);e1=up(em+ep21+gam*(m+p21)+tau)
++p10=capmul(z1,2);ep10=up(2*e1+gam*z1*2+tau);p20=capmul(z2,2);ep20=up(2*e2+gam*z2*2+tau)
++s=capadd(m,p10);es=up(em+ep10+gam*(m+p10)+tau);z0=capadd(s,p20);e0=up(es+ep20+gam*(s+p20)+tau)
++zcap=QQ(ceil(G*(z0+z1+z2))+1);zerr=up(e0+e1+e2+gam*(z0+z1+z2)+tau)
++old=json.loads((I/'ORDERED/artifacts/bounds.json').read_text());assert zcap==QQ(old['refined_right']['merged_cap'])
++bank=json.loads((W/'BANK_WEIGHTED_BOUNDS.json').read_text());metric=json.loads((W/'artifacts/metric_bounds.json').read_text())
++kappa=QQ(metric['products'][1]['metric_to_stable_integer_factor']);gain=QQ(metric['root']['source_root_gain_squared_integer_upper']);terminalE=QQ(bank['right_768_terminal_budget']);Lroot=QQ(2**25)
++def rootup(x):return QQ(ZZ(ceil(x)).isqrt()+1)
++energy= kappa*terminalE
++coefcorrection=rootup(2*gain*energy);freqcorrection=rootup(768*gain*energy)
++productcap=freqcorrection+Lroot*zerr
++mulround=6*U*productcap+8*eta;t0cap=QQ(4829216911);addround=U*(t0cap+productcap+mulround)+2*eta
++M=QQ(ceil(t0cap+productcap+mulround+addround))
++initialcoef=QQ(173861259265)/36866
++coefcap=QQ(ceil(initialcoef+coefcorrection+2*Lroot*zerr+2*(mulround+addround)))
++# Actual signal is mathematical inverse-eval of the source U words. Source splitting
++# is checked separately. Signal descendants are coefficient groupings, not rounded FFT.
++def hs(h,k):return up((2 if k==1 else 1)*h+gam*(M+h)+tau)
++def ha(h,p):return up(h+p+gam*(M+h+p)+tau)
++records=[]
++def inner(k,h0,h1,path):
+  if k==0:
+-  mu1=b;mu0=add(a,184);maxmu=max(mu1,mu0)
+-  records.append(dict(path=tag,level=0,mu1=mu1,mu0=mu0,maxmu=maxmu))
+-  return 552,367,maxmu
+- d=split(b,k);r0,r1,mr=binary(k-1,d,d,L,records,tag+'1');z1=merge(r0,r1)
+- prod=mul(z1,L);updated=add(a,prod);d=split(updated,k)
+- l0,l1,ml=binary(k-1,d,d,L,records,tag+'0');z0=add(merge(l0,l1),prod)
+- return z0,z1,max(mr,ml)
+-def cubic(M,L):
+- rs=[];n=9;d=split(M,n);r0,r1,m2=binary(8,d,d,L,rs,'2');z2=merge(r0,r1)
+- p21=mul(z2,4);d=split(add(M,p21),n);r0,r1,m1=binary(8,d,d,L,rs,'1');z1=add(merge(r0,r1),p21)
+- p10=mul(z1,2);p20=mul(z2,2);d=split(add(add(M,p10),p20),n);r0,r1,m0=binary(8,d,d,L,rs,'0');z0=add(add(merge(r0,r1),p10),p20)
+- return dict(input=M,binary_L=str(L),return_caps=[z0,z1,z2],merged_cap=ceil(G*sum([z0,z1,z2]))+1,mu_cap=max(m0,m1,m2),terminal_blocks=rs)
+-target=json.loads((I/'TARGETS/INITIAL_TARGET_CERTIFICATE.json').read_text());t0=4829216911;t1=2359169;M=ceil(G*t1)+1
+-coarse=cubic(M,F(2));refined=cubic(M,1+F(1,2**40));assert len(refined['terminal_blocks'])==768
+-safe=2147483281
+-assert refined['mu_cap']<safe and coarse['mu_cap']<safe
+-# Actual L=c/h (componentwise div); TOWER H positive implies |c|<h.
+-# Its error bound <=2U gives |L_source|<1+2U<1+2^-40, not a new key premise.
+-rootL=2**25;root_update=add(t0,mul(refined['merged_cap'],rootL));nextM=ceil(G*root_update)+1
+-full_independent=cubic(nextM,1+F(1,2**40));assert full_independent['mu_cap']>safe
+-# Even exact initial-target coefficient l2 transport alone does not bound the L-weighted residual.
+-coeff=F(86930620416,18433)+F(1,2);assert coeff<5000000
+-# Source selected bank supports (each count is the number of positive u128 thresholds).
+-text=(W/'source/ft1536-adaptive-cdf-tables.h').read_text();body=text.split('ft_adaptive_cdf[',1)[1]
+-pairs=[tuple(map(int,p)) for p in re.findall(r'\{\s*(\d+)u,\s*(\d+)u\s*\}',body)];assert len(pairs)==2560
+-supports=[sum(hi!=0 or lo!=0 for hi,lo in pairs[512*i:512*(i+1)]) for i in range(5)];assert supports==[29,59,118,235,365]
+-norm=json.loads((I/'NORMALIZED/WIDTH_BOUNDS.json').read_text());Dmin=F(norm['gate']['D_min']);Dmax=F(norm['gate']['D_max'])
+-# Proposed weighted route with precise OPEN source Gram/triangular defect premise.
+-# For bank j>0, failure of previous ge gives S^2 > v_prev up to the pinned source dss error.
+-# Thus R_j^2*D <= (K_j+1+E)^2 *768^2/v_prev times inflation; bank0 uses Dmax.
+-R=[F(k+1)+F(1,2**20) for k in supports];vprev=[None,5,20,80,320];weighted=[]
+-for j in range(5):
+- B=R[j]**2*Dmax if j==0 else R[j]**2*768**2/F(vprev[j])*(1+F(1,2**30))
+- weighted.append(dict(bank=j,support=supports[j],conditional_stored_R2D_upper=str(B),premise='Bank-specific lower variance from source dss/previous coefficient; must be coupled to raw factor metric'))
+-weightedmax=max(F(r['conditional_stored_R2D_upper']) for r in weighted)
+-beta=ceil(weightedmax);jcap=2*(F(3144192)+F(1,16384))**2;root_gain2=jcap/(18433**2)
+-candidate_energy=2*1536*beta # safe overestimate of two scalar errors/A2 and dimensional scale
+-candidate_mu2=root_gain2*candidate_energy
+-candidate_mu=isqrt(ceil(candidate_mu2))+1
+-out=dict(status='PARTIAL_RIGHT_BRANCH_BOUND_WITH_OPEN_ROOT_LEFT_TRANSFER',gamma=str(eps),zero_residual= '366+1/1048576',terminal_caps=dict(normal_residual=367,half=184,returned_r0=552),
+- coarse_right=coarse,refined_right=refined,binary_L_refinement=dict(bound='1+2^-40',proof='TOWER positive actual H=[[h,conj(c)],[c,h]], |c|<h; component div error norm<=2U'),
+- right_active_calls=1536,right_numeric_abs_bound=refined['mu_cap'],right_NumericCenter_lower_margin=2147483283-refined['mu_cap'],right_NumericCenter_upper_margin=2147483282-refined['mu_cap'],
+- full_root_loose_route=dict(root_L=33554432,root_updated_target_cap=root_update,full_mu_majorant=full_independent['mu_cap'],closed=False,classification='loose-bound failure, not C or emitted counterexample'),
+- strongest_initial_coefficient_abs_bound=str(coeff),weighted_candidate=dict(bank_records=weighted,conditional_max_R2D=beta,root_gain_squared=str(root_gain2),conditional_energy_budget=candidate_energy,
+-  conditional_root_correction_cap=candidate_mu,conditional_numeric_margin=2147483282-candidate_mu-5000000,
+-  ideal_scale_diagnostic_only=True,source_energy_comparison_proved=False,source_root_gain_perturbation_bound_proved=False,raw_L_equal_stable_L_assumed=False,
+-  missing_type='Uniform source ordered-residual energy/frame defect bound relative to the actual raw factorization and source stable D weights, including Split1/Merge1 and repeated rounded cancellation; plus transport to every left-subtree center'),
+- scalar_support=supports,finite_prefix_not_termination=True,global_mu_numeric_proved=False)
+-(W/'artifacts/bounds.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({k:v for k,v in out.items() if k not in ['coarse_right','refined_right']},indent=2))
++  mu1=ceil(coefcap+h1);mu0=ceil(coefcap+h0+184+gam*(coefcap+h0+184)+tau)
++  assert mu1<2147483282 and mu0<2147483282
++  records.append(dict(path=path,mu1_cap=int(mu1),mu0_cap=int(mu0),history0=str(h0),history1=str(h1),ZERO_only_after_current_bound=True,
++   source_PC='terminal1637-1645 to sampler_large2864',domain='Required left active finite history after actual right completion faultNONE; signal/history invariant',
++   dependencies=['root actual-U coefficient/frequency caps','signed source split and add defects','previous NORMAL_RETURN residual caps'],discharge='FORWARD_CURRENT_BOUND_BEFORE_ZERO'))
++  return R[0]
++ d=hs(h1,k);a,b=inner(k-1,d,d,path+'1');right=capmerge(a,b);p=capmul(right,L)
++ d=hs(ha(h0,p),k);a,b=inner(k-1,d,d,path+'0');return capadd(capmerge(a,b),p),right
++h=up(gam*M+tau);d=hs(h,9);a,b=inner(8,d,d,'2');c2=capmerge(a,b);p21=capmul(c2,4)
++d=hs(ha(h,p21),9);a,b=inner(8,d,d,'1');c1=capadd(capmerge(a,b),p21)
++d=hs(ha(ha(h,capmul(c1,2)),capmul(c2,2)),9);a,b=inner(8,d,d,'0')
++assert len(records)==768
++leftmax=max(max(r['mu1_cap'],r['mu0_cap']) for r in records);globalmax=max(leftmax,old['right_numeric_abs_bound'])
++assert M<2**36 and max(QQ(r['history0']) for r in records)<2**31
++out=dict(schema='FT1536_LEFT_SOURCE_ENERGY_TRANSFER_V1',status='PASS_NUMERIC_ENERGY_AND_FORWARD_LEFT_ENCLOSURES',gamma=str(gam),tiny_floor=str(tau),error_polynomials=polys,
++ reconstruction=dict(binary_steps=steps,cubic_caps=[str(z0),str(z1),str(z2)],cubic_errors=[str(e0),str(e1),str(e2)],right_source_residual_norm_cap=str(zcap),
++  actual_to_exact_source_L_reconstruction_norm_error=str(zerr),terminal_pairs_are_actual_source_returned_words=True,not_ideal_sample_integers=True),
++ weighted=dict(metric_factor=str(kappa),terminal_budget=str(terminalE),right_reference_Gram_energy_upper=str(energy)),
++ root=dict(source_gain_squared=str(gain),coefficient_correction_cap=str(coefcorrection),frequency_correction_cap=str(freqcorrection),
++  source_CM_rounding_error=str(mulround),source_add_rounding_error=str(addround),actual_U_frequency_cap=str(M),actual_U_inverse_eval_coefficient_cap=str(coefcap),
++  reconstruction_defect_coefficient_allowance=str(2*Lroot*zerr),ideal_root_determinant_not_assumed=True),
++ left_forward=dict(signal='Exact coefficient groupings of mathematical inverse-eval of source U; source operations add separately certified errors and actual normal-return corrections',
++  per_terminal=records,active_positions=1536,mu_abs_upper=int(leftmax),lower_margin=2147483283-int(leftmax),upper_margin=2147483282-int(leftmax),all_current_bounds_checked_before_ZERO=True),
++ full_composition=dict(right_abs_mu=old['right_numeric_abs_bound'],left_abs_mu=int(leftmax),global_abs_mu=int(globalmax),lower_margin=2147483283-int(globalmax),upper_margin=2147483282-int(globalmax)),
++ source_prefix_only=True,whole_rejection_or_Sign_termination=False,
++ dependencies={p:sha(W/p) for p in ['BANK_WEIGHTED_BOUNDS.json','artifacts/metric_bounds.json']})
++(W/'artifacts/energy_transfer.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(dict(status=out['status'],metric_factor=str(kappa),right_reconstruction_error=str(zerr),root_U_frequency_cap=str(M),root_U_coefficient_cap=str(coefcap),left_and_global=out['full_composition']),indent=2))

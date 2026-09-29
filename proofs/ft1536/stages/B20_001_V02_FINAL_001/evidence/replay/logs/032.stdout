@@ -1,0 +1,18 @@
+load_store_le_refines : ∀ (m : Memory) (p : Pointer) (w : U64),
+  WriteRegion m p →
+    parseFunction (LE.slice Pinned.shakeLines 56 15) = some LE.decProgram ∧
+      parseFunction (LE.slice Pinned.shakeLines 75 15) = some LE.encProgram ∧
+        (∀ (result : Option U64) (final : Memory),
+            CExec LE.decProgram m [Arg.pointer p] result final ↔
+              result = some (LE.join (LE.bufferBytes m p)) ∧ final = m) ∧
+          (∀ (result : Option U64) (final : Memory),
+              CExec LE.encProgram m [Arg.pointer p, Arg.word w] result final ↔
+                result = none ∧ final = LE.stored m p w) ∧
+            RegionBytes (LE.stored m p w) p (LE.byteOf w) ∧
+              CExec LE.decProgram (LE.stored m p w) [Arg.pointer p] (some w) (LE.stored m p w) ∧
+                (∀ (q : Pointer),
+                    q.block ≠ p.block ∨ q.offset < p.offset ∨ p.offset + 8 ≤ q.offset →
+                      (LE.stored m p w).contents q = m.contents q) ∧
+                  (LE.stored m p w).length = m.length ∧ (LE.stored m p w).writable = m.writable
+'B20.Word.load_store_le_refines' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.load_le_refines' depends on axioms: [propext, Classical.choice, Quot.sound]

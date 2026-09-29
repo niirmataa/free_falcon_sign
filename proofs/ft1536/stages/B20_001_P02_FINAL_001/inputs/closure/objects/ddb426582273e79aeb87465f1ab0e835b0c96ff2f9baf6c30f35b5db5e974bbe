@@ -1,0 +1,364 @@
+FT1536M0.CAPACITY_3160 : ∀ (a b : FT1536Global.Vec)
+  (short :
+    @LT.lt.{0} Int Int.instLTInt (FT1536Bridge.Q a b)
+      (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385)))),
+  And
+    (@LE.le.{0} Int Int.instLEInt (FT1536M0.staticBits b)
+      (@OfNat.ofNat.{0} Int (nat_lit 25267) (@instOfNat (nat_lit 25267))))
+    (And
+      (@LE.le.{0} Int Int.instLEInt (FT1536M0.payloadLength b)
+        (@OfNat.ofNat.{0} Int (nat_lit 3160) (@instOfNat (nat_lit 3160))))
+      (@LT.lt.{0} Int Int.instLTInt (FT1536M0.payloadLength b)
+        (@OfNat.ofNat.{0} Int (nat_lit 4096) (@instOfNat (nat_lit 4096)))))
+FT1536M0.capacity_after_source_norm : ∀ (a b : FT1536Global.Vec) (ha : FT1536Bridge.SignedVec a)
+  (hb : FT1536Bridge.SignedVec b) (accept : @Eq.{1} Bool (FT1536Bridge.isShort a b) Bool.true),
+  And
+    (@LE.le.{0} Int Int.instLEInt (FT1536M0.staticBits b)
+      (@OfNat.ofNat.{0} Int (nat_lit 25267) (@instOfNat (nat_lit 25267))))
+    (And
+      (@LE.le.{0} Int Int.instLEInt (FT1536M0.payloadLength b)
+        (@OfNat.ofNat.{0} Int (nat_lit 3160) (@instOfNat (nat_lit 3160))))
+      (@LT.lt.{0} Int Int.instLTInt (FT1536M0.payloadLength b)
+        (@OfNat.ofNat.{0} Int (nat_lit 4096) (@instOfNat (nat_lit 4096)))))
+FT1536M0.STATIC_FITS_4096 : ∀ (a b : FT1536Global.Vec) (ha : FT1536Bridge.SignedVec a) (hb : FT1536Bridge.SignedVec b)
+  (accept : @Eq.{1} Bool (FT1536Bridge.isShort a b) Bool.true),
+  And
+    (@Eq.{1} (Option.{0} Int)
+      (FT1536M0.encodeCount (@OfNat.ofNat.{0} Int (nat_lit 4095) (@instOfNat (nat_lit 4095)))
+        (@List.ofFn.{0} Int (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) b))
+      (@Option.some.{0} Int
+        (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) (FT1536M0.payloadLength b)
+          (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))))
+    (And
+      (@LE.le.{0} Int Int.instLEInt (FT1536M0.payloadLength b)
+        (@OfNat.ofNat.{0} Int (nat_lit 3160) (@instOfNat (nat_lit 3160))))
+      (@LT.lt.{0} Int Int.instLTInt (FT1536M0.payloadLength b)
+        (@OfNat.ofNat.{0} Int (nat_lit 4096) (@instOfNat (nat_lit 4096)))))
+FT1536M0.positive_encoder_length : ∀ (a b : FT1536Global.Vec)
+  (short :
+    @LT.lt.{0} Int Int.instLTInt (FT1536Bridge.Q a b)
+      (@OfNat.ofNat.{0} Int (nat_lit 2093922385) (@instOfNat (nat_lit 2093922385)))),
+  @LE.le.{0} Int Int.instLEInt (@OfNat.ofNat.{0} Int (nat_lit 1921) (@instOfNat (nat_lit 1921)))
+    (FT1536M0.payloadLength b)
+FT1536M0.witness_norm : @Eq.{1} Int (FT1536Bridge.Q FT1536M0.zeroVec FT1536M0.witness)
+  (@OfNat.ofNat.{0} Int (nat_lit 2093088768) (@instOfNat (nat_lit 2093088768)))
+FT1536M0.witness_length : @Eq.{1} Int (FT1536M0.payloadLength FT1536M0.witness)
+  (@OfNat.ofNat.{0} Int (nat_lit 3156) (@instOfNat (nat_lit 3156)))
+FT1536M0.framing_injective : ∀ (r s m n : FT1536M0.Bytes)
+  (hr : @Eq.{1} Nat (@List.length.{0} FT1536M0.Byte r) (@OfNat.ofNat.{0} Nat (nat_lit 40) (instOfNatNat (nat_lit 40))))
+  (hs : @Eq.{1} Nat (@List.length.{0} FT1536M0.Byte s) (@OfNat.ofNat.{0} Nat (nat_lit 40) (instOfNatNat (nat_lit 40))))
+  (h : @Eq.{1} FT1536M0.Bytes (FT1536M0.hashInput r m) (FT1536M0.hashInput s n)),
+  And (@Eq.{1} FT1536M0.Bytes r s) (@Eq.{1} FT1536M0.Bytes m n)
+FT1536M0.repartition_rejected : ∀ (r : FT1536M0.Bytes) (a : FT1536M0.Byte)
+  (hr : @Eq.{1} Nat (@List.length.{0} FT1536M0.Byte r) (@OfNat.ofNat.{0} Nat (nat_lit 39) (instOfNatNat (nat_lit 39)))),
+  And
+    (@Eq.{1} Bool
+      (FT1536M0.nonceOK
+        (@HAppend.hAppend.{0, 0, 0} FT1536M0.Bytes (List.{0} FT1536M0.Byte) FT1536M0.Bytes
+          (@instHAppendOfAppend.{0} FT1536M0.Bytes (@List.instAppend.{0} FT1536M0.Byte)) r
+          (@List.cons.{0} FT1536M0.Byte a (@List.nil.{0} FT1536M0.Byte))))
+      Bool.true)
+    (@Eq.{1} Bool (FT1536M0.nonceOK r) Bool.false)
+FT1536M0.parent_shake_budget : ∀ (attempts : Nat)
+  (h : @LE.le.{0} Nat instLENat attempts (@OfNat.ofNat.{0} Nat (nat_lit 16) (instOfNatNat (nat_lit 16)))),
+  @LE.le.{0} Nat instLENat (FT1536M0.parentBytes attempts)
+    (@OfNat.ofNat.{0} Nat (nat_lit 936) (instOfNatNat (nat_lit 936)))
+theorem FT1536M0.STATIC_FITS_4096 : ∀ (a b : FT1536Global.Vec) (ha : FT1536Bridge.SignedVec a)
+  (hb : FT1536Bridge.SignedVec b) (accept : @Eq.{1} Bool (FT1536Bridge.isShort a b) Bool.true),
+  And
+    (@Eq.{1} (Option.{0} Int)
+      (FT1536M0.encodeCount (@OfNat.ofNat.{0} Int (nat_lit 4095) (@instOfNat (nat_lit 4095)))
+        (@List.ofFn.{0} Int (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) b))
+      (@Option.some.{0} Int
+        (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) (FT1536M0.payloadLength b)
+          (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))))
+    (And
+      (@LE.le.{0} Int Int.instLEInt (FT1536M0.payloadLength b)
+        (@OfNat.ofNat.{0} Int (nat_lit 3160) (@instOfNat (nat_lit 3160))))
+      (@LT.lt.{0} Int Int.instLTInt (FT1536M0.payloadLength b)
+        (@OfNat.ofNat.{0} Int (nat_lit 4096) (@instOfNat (nat_lit 4096))))) :=
+fun (a b : FT1536Global.Vec) (ha : FT1536Bridge.SignedVec a) (hb : FT1536Bridge.SignedVec b)
+    (accept : @Eq.{1} Bool (FT1536Bridge.isShort a b) Bool.true) =>
+  have hcap :
+    And
+      (@LE.le.{0} Int Int.instLEInt (FT1536M0.staticBits b)
+        (@OfNat.ofNat.{0} Int (nat_lit 25267) (@instOfNat (nat_lit 25267))))
+      (And
+        (@LE.le.{0} Int Int.instLEInt (FT1536M0.payloadLength b)
+          (@OfNat.ofNat.{0} Int (nat_lit 3160) (@instOfNat (nat_lit 3160))))
+        (@LT.lt.{0} Int Int.instLTInt (FT1536M0.payloadLength b)
+          (@OfNat.ofNat.{0} Int (nat_lit 4096) (@instOfNat (nat_lit 4096))))) :=
+    FT1536M0.capacity_after_source_norm a b ha hb accept;
+  have hbits :
+    @Eq.{1} Int
+      (FT1536M0.listBits (@List.ofFn.{0} Int (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) b))
+      (FT1536M0.staticBits b) :=
+    FT1536M0.vector_bits b;
+  have he :
+    And
+      (@Eq.{1} (Option.{0} Int)
+        (FT1536M0.encodeCount (@OfNat.ofNat.{0} Int (nat_lit 4095) (@instOfNat (nat_lit 4095)))
+          (@List.ofFn.{0} Int (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) b))
+        (@Option.some.{0} Int
+          (@HDiv.hDiv.{0, 0, 0} Int Int Int (@instHDiv.{0} Int Int.instDiv)
+            (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+              (FT1536M0.listBits
+                (@List.ofFn.{0} Int (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) b))
+              (@OfNat.ofNat.{0} Int (nat_lit 7) (@instOfNat (nat_lit 7))))
+            (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8))))))
+      (@LE.le.{0} Int Int.instLEInt
+        (@HDiv.hDiv.{0, 0, 0} Int Int Int (@instHDiv.{0} Int Int.instDiv)
+          (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+            (FT1536M0.listBits
+              (@List.ofFn.{0} Int (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) b))
+            (@OfNat.ofNat.{0} Int (nat_lit 7) (@instOfNat (nat_lit 7))))
+          (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8))))
+        (@OfNat.ofNat.{0} Int (nat_lit 4095) (@instOfNat (nat_lit 4095)))) :=
+    FT1536M0.encoder_count_exact (@OfNat.ofNat.{0} Int (nat_lit 4095) (@instOfNat (nat_lit 4095)))
+      (@List.ofFn.{0} Int (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) b)
+      (@Eq.mpr.{0}
+        (@LE.le.{0} Int Int.instLEInt
+          (FT1536M0.listBits (@List.ofFn.{0} Int (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) b))
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+            (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8)))
+            (@OfNat.ofNat.{0} Int (nat_lit 4095) (@instOfNat (nat_lit 4095)))))
+        (@LE.le.{0} Int Int.instLEInt (FT1536M0.staticBits b)
+          (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+            (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8)))
+            (@OfNat.ofNat.{0} Int (nat_lit 4095) (@instOfNat (nat_lit 4095)))))
+        (@id.{0}
+          (@Eq.{1} Prop
+            (@LE.le.{0} Int Int.instLEInt
+              (FT1536M0.listBits
+                (@List.ofFn.{0} Int (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) b))
+              (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+                (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8)))
+                (@OfNat.ofNat.{0} Int (nat_lit 4095) (@instOfNat (nat_lit 4095)))))
+            (@LE.le.{0} Int Int.instLEInt (FT1536M0.staticBits b)
+              (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+                (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8)))
+                (@OfNat.ofNat.{0} Int (nat_lit 4095) (@instOfNat (nat_lit 4095))))))
+          (@congrArg.{1, 1} Int Prop
+            (FT1536M0.listBits
+              (@List.ofFn.{0} Int (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) b))
+            (FT1536M0.staticBits b)
+            (fun (_a : Int) =>
+              @LE.le.{0} Int Int.instLEInt _a
+                (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+                  (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8)))
+                  (@OfNat.ofNat.{0} Int (nat_lit 4095) (@instOfNat (nat_lit 4095)))))
+            hbits))
+        (@Decidable.byContradiction
+          (@LE.le.{0} Int Int.instLEInt (FT1536M0.staticBits b)
+            (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+              (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8)))
+              (@OfNat.ofNat.{0} Int (nat_lit 4095) (@instOfNat (nat_lit 4095)))))
+          (Int.decLe (FT1536M0.staticBits b)
+            (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+              (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8)))
+              (@OfNat.ofNat.{0} Int (nat_lit 4095) (@instOfNat (nat_lit 4095)))))
+          fun
+            (a :
+              Not
+                (@LE.le.{0} Int Int.instLEInt (FT1536M0.staticBits b)
+                  (@HMul.hMul.{0, 0, 0} Int Int Int (@instHMul.{0} Int Int.instMul)
+                    (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8)))
+                    (@OfNat.ofNat.{0} Int (nat_lit 4095) (@instOfNat (nat_lit 4095)))))) =>
+          FT1536M0.STATIC_FITS_4096._proof_1_1 b hcap hbits a));
+  @And.intro
+    (@Eq.{1} (Option.{0} Int)
+      (FT1536M0.encodeCount (@OfNat.ofNat.{0} Int (nat_lit 4095) (@instOfNat (nat_lit 4095)))
+        (@List.ofFn.{0} Int (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) b))
+      (@Option.some.{0} Int
+        (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) (FT1536M0.payloadLength b)
+          (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))))
+    (And
+      (@LE.le.{0} Int Int.instLEInt (FT1536M0.payloadLength b)
+        (@OfNat.ofNat.{0} Int (nat_lit 3160) (@instOfNat (nat_lit 3160))))
+      (@LT.lt.{0} Int Int.instLTInt (FT1536M0.payloadLength b)
+        (@OfNat.ofNat.{0} Int (nat_lit 4096) (@instOfNat (nat_lit 4096)))))
+    (have hlen :
+      @Eq.{1} Int
+        (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) (FT1536M0.payloadLength b)
+          (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+        (@HDiv.hDiv.{0, 0, 0} Int Int Int (@instHDiv.{0} Int Int.instDiv)
+          (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) (FT1536M0.staticBits b)
+            (@OfNat.ofNat.{0} Int (nat_lit 7) (@instOfNat (nat_lit 7))))
+          (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8)))) :=
+      @id.{0}
+        (@Eq.{1} Int
+          (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) (FT1536M0.payloadLength b)
+            (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+          (@HDiv.hDiv.{0, 0, 0} Int Int Int (@instHDiv.{0} Int Int.instDiv)
+            (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) (FT1536M0.staticBits b)
+              (@OfNat.ofNat.{0} Int (nat_lit 7) (@instOfNat (nat_lit 7))))
+            (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8)))))
+        (@Decidable.byContradiction
+          (@Eq.{1} Int
+            (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+              (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+                (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1)))
+                (@HDiv.hDiv.{0, 0, 0} Int Int Int (@instHDiv.{0} Int Int.instDiv)
+                  (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) (FT1536M0.staticBits b)
+                    (@OfNat.ofNat.{0} Int (nat_lit 7) (@instOfNat (nat_lit 7))))
+                  (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8)))))
+              (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+            (@HDiv.hDiv.{0, 0, 0} Int Int Int (@instHDiv.{0} Int Int.instDiv)
+              (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) (FT1536M0.staticBits b)
+                (@OfNat.ofNat.{0} Int (nat_lit 7) (@instOfNat (nat_lit 7))))
+              (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8)))))
+          (Int.instDecidableEq
+            (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+              (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+                (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1)))
+                (@HDiv.hDiv.{0, 0, 0} Int Int Int (@instHDiv.{0} Int Int.instDiv)
+                  (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) (FT1536M0.staticBits b)
+                    (@OfNat.ofNat.{0} Int (nat_lit 7) (@instOfNat (nat_lit 7))))
+                  (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8)))))
+              (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+            (@HDiv.hDiv.{0, 0, 0} Int Int Int (@instHDiv.{0} Int Int.instDiv)
+              (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) (FT1536M0.staticBits b)
+                (@OfNat.ofNat.{0} Int (nat_lit 7) (@instOfNat (nat_lit 7))))
+              (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8)))))
+          fun
+            (a :
+              Not
+                (@Eq.{1} Int
+                  (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub)
+                    (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+                      (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1)))
+                      (@HDiv.hDiv.{0, 0, 0} Int Int Int (@instHDiv.{0} Int Int.instDiv)
+                        (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) (FT1536M0.staticBits b)
+                          (@OfNat.ofNat.{0} Int (nat_lit 7) (@instOfNat (nat_lit 7))))
+                        (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8)))))
+                    (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+                  (@HDiv.hDiv.{0, 0, 0} Int Int Int (@instHDiv.{0} Int Int.instDiv)
+                    (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) (FT1536M0.staticBits b)
+                      (@OfNat.ofNat.{0} Int (nat_lit 7) (@instOfNat (nat_lit 7))))
+                    (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8)))))) =>
+          FT1536M0.STATIC_FITS_4096._proof_1_2 b a);
+    @Eq.mpr.{0}
+      (@Eq.{1} (Option.{0} Int)
+        (FT1536M0.encodeCount (@OfNat.ofNat.{0} Int (nat_lit 4095) (@instOfNat (nat_lit 4095)))
+          (@List.ofFn.{0} Int (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) b))
+        (@Option.some.{0} Int
+          (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) (FT1536M0.payloadLength b)
+            (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))))
+      (@Eq.{1} (Option.{0} Int)
+        (FT1536M0.encodeCount (@OfNat.ofNat.{0} Int (nat_lit 4095) (@instOfNat (nat_lit 4095)))
+          (@List.ofFn.{0} Int (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) b))
+        (@Option.some.{0} Int
+          (@HDiv.hDiv.{0, 0, 0} Int Int Int (@instHDiv.{0} Int Int.instDiv)
+            (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) (FT1536M0.staticBits b)
+              (@OfNat.ofNat.{0} Int (nat_lit 7) (@instOfNat (nat_lit 7))))
+            (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8))))))
+      (@id.{0}
+        (@Eq.{1} Prop
+          (@Eq.{1} (Option.{0} Int)
+            (FT1536M0.encodeCount (@OfNat.ofNat.{0} Int (nat_lit 4095) (@instOfNat (nat_lit 4095)))
+              (@List.ofFn.{0} Int (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) b))
+            (@Option.some.{0} Int
+              (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) (FT1536M0.payloadLength b)
+                (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))))
+          (@Eq.{1} (Option.{0} Int)
+            (FT1536M0.encodeCount (@OfNat.ofNat.{0} Int (nat_lit 4095) (@instOfNat (nat_lit 4095)))
+              (@List.ofFn.{0} Int (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) b))
+            (@Option.some.{0} Int
+              (@HDiv.hDiv.{0, 0, 0} Int Int Int (@instHDiv.{0} Int Int.instDiv)
+                (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) (FT1536M0.staticBits b)
+                  (@OfNat.ofNat.{0} Int (nat_lit 7) (@instOfNat (nat_lit 7))))
+                (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8)))))))
+        (@congrArg.{1, 1} Int Prop
+          (@HSub.hSub.{0, 0, 0} Int Int Int (@instHSub.{0} Int Int.instSub) (FT1536M0.payloadLength b)
+            (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))
+          (@HDiv.hDiv.{0, 0, 0} Int Int Int (@instHDiv.{0} Int Int.instDiv)
+            (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) (FT1536M0.staticBits b)
+              (@OfNat.ofNat.{0} Int (nat_lit 7) (@instOfNat (nat_lit 7))))
+            (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8))))
+          (fun (_a : Int) =>
+            @Eq.{1} (Option.{0} Int)
+              (FT1536M0.encodeCount (@OfNat.ofNat.{0} Int (nat_lit 4095) (@instOfNat (nat_lit 4095)))
+                (@List.ofFn.{0} Int (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) b))
+              (@Option.some.{0} Int _a))
+          hlen))
+      (@And.left
+        (@Eq.{1} (Option.{0} Int)
+          (FT1536M0.encodeCount (@OfNat.ofNat.{0} Int (nat_lit 4095) (@instOfNat (nat_lit 4095)))
+            (@List.ofFn.{0} Int (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) b))
+          (@Option.some.{0} Int
+            (@HDiv.hDiv.{0, 0, 0} Int Int Int (@instHDiv.{0} Int Int.instDiv)
+              (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) (FT1536M0.staticBits b)
+                (@OfNat.ofNat.{0} Int (nat_lit 7) (@instOfNat (nat_lit 7))))
+              (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8))))))
+        (@LE.le.{0} Int Int.instLEInt
+          (@HDiv.hDiv.{0, 0, 0} Int Int Int (@instHDiv.{0} Int Int.instDiv)
+            (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) (FT1536M0.staticBits b)
+              (@OfNat.ofNat.{0} Int (nat_lit 7) (@instOfNat (nat_lit 7))))
+            (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8))))
+          (@OfNat.ofNat.{0} Int (nat_lit 4095) (@instOfNat (nat_lit 4095))))
+        (@Eq.mp.{0}
+          (And
+            (@Eq.{1} (Option.{0} Int)
+              (FT1536M0.encodeCount (@OfNat.ofNat.{0} Int (nat_lit 4095) (@instOfNat (nat_lit 4095)))
+                (@List.ofFn.{0} Int (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) b))
+              (@Option.some.{0} Int
+                (@HDiv.hDiv.{0, 0, 0} Int Int Int (@instHDiv.{0} Int Int.instDiv)
+                  (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+                    (FT1536M0.listBits
+                      (@List.ofFn.{0} Int (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) b))
+                    (@OfNat.ofNat.{0} Int (nat_lit 7) (@instOfNat (nat_lit 7))))
+                  (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8))))))
+            (@LE.le.{0} Int Int.instLEInt
+              (@HDiv.hDiv.{0, 0, 0} Int Int Int (@instHDiv.{0} Int Int.instDiv)
+                (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd)
+                  (FT1536M0.listBits
+                    (@List.ofFn.{0} Int (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) b))
+                  (@OfNat.ofNat.{0} Int (nat_lit 7) (@instOfNat (nat_lit 7))))
+                (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8))))
+              (@OfNat.ofNat.{0} Int (nat_lit 4095) (@instOfNat (nat_lit 4095)))))
+          (And
+            (@Eq.{1} (Option.{0} Int)
+              (FT1536M0.encodeCount (@OfNat.ofNat.{0} Int (nat_lit 4095) (@instOfNat (nat_lit 4095)))
+                (@List.ofFn.{0} Int (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) b))
+              (@Option.some.{0} Int
+                (@HDiv.hDiv.{0, 0, 0} Int Int Int (@instHDiv.{0} Int Int.instDiv)
+                  (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) (FT1536M0.staticBits b)
+                    (@OfNat.ofNat.{0} Int (nat_lit 7) (@instOfNat (nat_lit 7))))
+                  (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8))))))
+            (@LE.le.{0} Int Int.instLEInt
+              (@HDiv.hDiv.{0, 0, 0} Int Int Int (@instHDiv.{0} Int Int.instDiv)
+                (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) (FT1536M0.staticBits b)
+                  (@OfNat.ofNat.{0} Int (nat_lit 7) (@instOfNat (nat_lit 7))))
+                (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8))))
+              (@OfNat.ofNat.{0} Int (nat_lit 4095) (@instOfNat (nat_lit 4095)))))
+          (@congrArg.{1, 1} Int Prop
+            (FT1536M0.listBits
+              (@List.ofFn.{0} Int (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) b))
+            (FT1536M0.staticBits b)
+            (fun (_a : Int) =>
+              And
+                (@Eq.{1} (Option.{0} Int)
+                  (FT1536M0.encodeCount (@OfNat.ofNat.{0} Int (nat_lit 4095) (@instOfNat (nat_lit 4095)))
+                    (@List.ofFn.{0} Int (@OfNat.ofNat.{0} Nat (nat_lit 1536) (instOfNatNat (nat_lit 1536))) b))
+                  (@Option.some.{0} Int
+                    (@HDiv.hDiv.{0, 0, 0} Int Int Int (@instHDiv.{0} Int Int.instDiv)
+                      (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) _a
+                        (@OfNat.ofNat.{0} Int (nat_lit 7) (@instOfNat (nat_lit 7))))
+                      (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8))))))
+                (@LE.le.{0} Int Int.instLEInt
+                  (@HDiv.hDiv.{0, 0, 0} Int Int Int (@instHDiv.{0} Int Int.instDiv)
+                    (@HAdd.hAdd.{0, 0, 0} Int Int Int (@instHAdd.{0} Int Int.instAdd) _a
+                      (@OfNat.ofNat.{0} Int (nat_lit 7) (@instOfNat (nat_lit 7))))
+                    (@OfNat.ofNat.{0} Int (nat_lit 8) (@instOfNat (nat_lit 8))))
+                  (@OfNat.ofNat.{0} Int (nat_lit 4095) (@instOfNat (nat_lit 4095)))))
+            hbits)
+          he)))
+    (@And.right
+      (@LE.le.{0} Int Int.instLEInt (FT1536M0.staticBits b)
+        (@OfNat.ofNat.{0} Int (nat_lit 25267) (@instOfNat (nat_lit 25267))))
+      (And
+        (@LE.le.{0} Int Int.instLEInt (FT1536M0.payloadLength b)
+          (@OfNat.ofNat.{0} Int (nat_lit 3160) (@instOfNat (nat_lit 3160))))
+        (@LT.lt.{0} Int Int.instLTInt (FT1536M0.payloadLength b)
+          (@OfNat.ofNat.{0} Int (nat_lit 4096) (@instOfNat (nat_lit 4096)))))
+      hcap)

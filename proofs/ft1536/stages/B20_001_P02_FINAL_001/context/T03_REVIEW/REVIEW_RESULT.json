@@ -1,0 +1,71 @@
+{
+  "schema": "FT1536_T03_B_RUN002_INDEPENDENT_REVIEW_V1",
+  "roadmap_id": "T03",
+  "review_id": "FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002_REVIEW_001",
+  "subject_task_id": "FT1536_REFERENCE_INTEGER_RECOVERY_RUN_002",
+  "subject_status": "BLOCKED_UPSTREAM_EXPORTS",
+  "subject_report_sha256": "b2e8c9af003edee089b49156541e631e3ab8bb01c93f9cad521edf7b66a59dfc",
+  "subject_outputs_sha256": "12df61056ddada2f79c1b94b3b17e8f326db2b3a2cbe53d1694754d79d7958cc",
+  "review_task_sha256": "bac2fb51450551b21c461d79e6c43d9d1a9dce64d42343c49290d9600aee9adf",
+  "review_input_manifest_sha256": "6a784862e05cfffec5b691e286ff146c31c88e3be71d4b636456de2c8e3ef9d2",
+  "reviewer": {
+    "model": "openai/gpt-6-sol-fast",
+    "variant": "Fast",
+    "session_id": "ses_f13139bc5ffeFI41laN8mgF1PA",
+    "context": "fresh, independent of author openai/gpt-6-astra-fast / ses_f13640949ffeJ0RtC7tFAz07UR",
+    "owner_started": true
+  },
+  "verdict": "PASS_SCOPED_REVIEW",
+  "accepted_scope": [
+    "15 clean kernel algebraic identities with source_instantiated=false",
+    "10 signed ledger terms and byte-bound source spans, no uniform source bounds",
+    "old-target update-add defect diagnosis and two local public finite C fixtures without emitted/history membership",
+    "exact-rational historical/conditional numeric diagnostics and seven explicit open interfaces"
+  ],
+  "rejected_claims": [
+    "full integer recovery",
+    "new uniform source gap bound",
+    "required-domain counterexample or scheme attack",
+    "P02 local 68/68 as V02 acceptance",
+    "local sanitizer/fixture or hash match as universal C refinement"
+  ],
+  "remaining_obligations": [
+    "P02_ARITH",
+    "P02_REACHED_DOMAIN",
+    "P06_REFERENCE",
+    "INTEGER_DEFECT_TRANSPORT",
+    "P07_BASIS",
+    "A2_INVERSE_AND_IFFT",
+    "P02_REAL_RINT"
+  ],
+  "independent_replay": {
+    "status": "FRESH_REPLAY_PASS",
+    "destination": "run/fresh_002",
+    "receipt": "evidence/fresh_002/receipt.json",
+    "result": "evidence/fresh_002/REPLAY_RESULT.json",
+    "semantic_matches": 10,
+    "producer_steps": 7,
+    "producer_exit_code": 0,
+    "toolchain_gate_pass": true,
+    "sources_unchanged": true,
+    "failed_first_attempt": "run/fresh_001: outer /proc RO broke nested uid map before gate; retained in evidence/fresh_001",
+    "corrected_outer_mount": "--proc /proc --dev-bind /dev /dev, author W mapped RO to subject; own run mapped to review_work"
+  },
+  "controls": {
+    "input_exact_sets": "INPUT_AUDIT.json",
+    "types_axioms_receipts": "CLAIM_AUDIT.json",
+    "sage_preparser_qq_rif": "REVIEW_SAGE.json",
+    "own_kernel_lean": "Reviewer.lean; reviewer_lean.stdout; reviewer_lean.exit=0",
+    "own_raw_C_oracle": "REVIEW_SAGE.json:raw_C_oracle",
+    "normal_C": "evidence/fresh_002/build/C_SLICES_CHECK.json; exit0",
+    "ubsan": "evidence/ubsan_001/receipt.json; exit0",
+    "asan": "evidence/asan_001/receipt.json; exit0",
+    "replay_evidence": "REPLAY_AUDIT.json; evidence/"
+  },
+  "source_gap": null,
+  "full_recovery": false,
+  "required_domain_counterexample": false,
+  "owner_accepted": false,
+  "jobs_completed": true,
+  "new_security_claim": false
+}

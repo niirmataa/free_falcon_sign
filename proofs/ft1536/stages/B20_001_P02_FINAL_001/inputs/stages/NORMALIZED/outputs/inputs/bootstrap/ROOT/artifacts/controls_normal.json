@@ -1,0 +1,124 @@
+{
+  "status": "PASS_FINITE_BINDING_CONTROLS",
+  "scalar_pairs": 334,
+  "root_frequency_slots": 768,
+  "full_degree_polynomial_cases": 2,
+  "polynomial_matches": [
+    {
+      "index": 0,
+      "words": 13824,
+      "output_sha256": "05ebe30ab4789dec5e150ee5feff3894c4bf56eb3afd2978cdf22e4aafd659b5"
+    },
+    {
+      "index": 1,
+      "words": 13824,
+      "output_sha256": "39bc2434913724c13c6334e4d9ab1ef8ea43cd843db0f46b259dc5f7acda5681"
+    }
+  ],
+  "all_raw_bits_equal": true,
+  "input_arrays_unchanged_and_output_canaries": true,
+  "first_subtree_frame_controls": 3,
+  "allowed_input_alias_checked": true,
+  "noop_pass": true,
+  "maximum_observed_errors": {
+    "add": "8388607",
+    "mul": "140737488355328",
+    "div": "70368744177664/3"
+  },
+  "mutations": [
+    {
+      "kind": "replace_subtractive_by_reciprocal",
+      "input": [
+        "3fe0000000000000",
+        "3ff0000000000000",
+        "4000000000000000",
+        "4024000000000000",
+        "0000000000000000"
+      ],
+      "source": "0000000000000000",
+      "replacement": "41c4409001000000"
+    },
+    {
+      "kind": "wrong_conjugation",
+      "right": [
+        "4024000000000000",
+        "0000000000000000"
+      ],
+      "wrong": [
+        "c018000000000000",
+        "4020000000000000"
+      ]
+    },
+    {
+      "kind": "omit_div_error",
+      "input": [
+        "4014000000000000",
+        "40e2004000000000",
+        "0000000000000000",
+        "41b4409001000000",
+        "0000000000000000"
+      ],
+      "actual": [
+        "8106919133918003/1099511627776",
+        "0"
+      ],
+      "exact": [
+        "36866/5",
+        "0"
+      ]
+    },
+    {
+      "kind": "omit_gram_div_sub_error",
+      "input": [
+        "4014000000000000",
+        "40e2004000000000",
+        "0000000000000000",
+        "41b4409001000000",
+        "0000000000000000"
+      ],
+      "D": [
+        "1140097354091725/16777216",
+        "0"
+      ],
+      "exact": [
+        "339775489/5",
+        "0"
+      ]
+    },
+    {
+      "kind": "omit_sub_error",
+      "input": [
+        "4008000000000000",
+        "3ff0000000000000",
+        "4000000000000000",
+        "4024000000000000",
+        "0000000000000000"
+      ],
+      "actual": [
+        "4691249611844267/562949953421312",
+        "0"
+      ],
+      "exact": [
+        "18764998447377067/2251799813685248",
+        "0"
+      ]
+    },
+    {
+      "kind": "illegal_ZERO_bound_above_domain",
+      "x": "42b0000000000000",
+      "y": "3f50000000000000",
+      "exponent": 1067,
+      "error": "1/1024",
+      "rejected_bound": "1/1048576"
+    },
+    {
+      "kind": "omit_gram_error",
+      "case": 0,
+      "slot": 0,
+      "source": "8380418",
+      "exact": "10623441907863456999118126301531230301/1267650600228229401496703205376"
+    }
+  ],
+  "ntt_map_output_sha256": "9564d33c7741e2cd5f3d204bf6d9fb06462b6185e14e4f46980c9ad3151f39d0",
+  "note": "All inputs public synthetic. No KeyGen/private loader/Sign. Polynomial controls do not claim NTRU or emitted membership. Universal proof is separate."
+}

@@ -1,0 +1,15 @@
+middle_reverse_inverse : ∀ (ps : List (Nat × Nat)),
+  (∀ (p : Nat × Nat), p ∈ ps → ParamOK p) →
+    ∀ (s : Mem), CanonMem s → inverseMiddle ps.reverse (forwardMiddle ps s) = scaleMem (2 ^ ps.length) s
+inverseMem_forwardMem : ∀ (s : Mem), CanonMem s → inverseMem (forwardMem s) = s
+inverseC_forwardC : ∀ (v : Vec), CanonVec v → inverseC (forwardC v) = v
+inverse_forward : ∀ (v : Vec), liftInverse (liftForward v) = FT1536Composition.canonical v
+'FT1536Global.pair_source_inverse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.root_source_inverse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.cubic_source_inverse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.middle_homogeneous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.middle_reverse_inverse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.inverseMem_forwardMem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.forward_from_to' depends on axioms: [propext, Quot.sound]
+'FT1536Global.inverseC_forwardC' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536Global.inverse_forward' depends on axioms: [propext, Classical.choice, Quot.sound]

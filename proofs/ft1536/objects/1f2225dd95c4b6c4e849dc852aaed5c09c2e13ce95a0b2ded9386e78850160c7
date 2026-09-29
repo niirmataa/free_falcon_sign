@@ -1,0 +1,77 @@
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_043/source/B20/Fpr/Spec.lean:216:58: error: unsolved goals
+e : BitVec 32
+he : 64 ≤ e.toNat
+he32 : e.toNat < 2 ^ 32
+hsub : (e - 64#32).toNat = (2 ^ 32 - (64#32).toNat + e.toNat) % 2 ^ 32
+h64 : (64#32).toNat = 64
+h1 : (BitVec.setWidth 32 (e - 64#32) >>> 31).toNat = (BitVec.setWidth 32 (e - 64#32)).toNat >>> 31
+⊢ ((4294967232 + e.toNat) % 4294967296 % 18446744073709551616) >>> 31 =
+    ((4294967232 + e.toNat) % 4294967296) >>> 31 % 18446744073709551616
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_043/source/B20/Fpr/Spec.lean:220:4: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  1 ≤ c ≤ 18446744073709551615
+  0 ≤ c ≤ 18446744073709551615
+  0 ≤ c + 18446744073709551616*d ≤ 4294967295
+  0 ≤ b ≤ 4294967295
+  0 ≤ b - 2147483648*c - 39614081257132168796771975168*d ≤ 2147483647
+  0 ≤ b ≤ 4294967295
+  0 ≤ b + 4294967296*f ≤ 4294967295
+  4294967296 ≤ 4294967296*a + b + 4294967296*f ≤ 8589934527
+where
+ a := ↑(2 ^ 32 - (64#32).toNat + e.toNat) / 4294967296
+ b := ↑(BitVec.setWidth 32 (e - 64#32)).toNat
+ c := ↑(BitVec.setWidth 64 (BitVec.setWidth 32 (e - 64#32) >>> 31)).toNat
+ d := ↑(BitVec.setWidth 32 (e - 64#32) >>> 31).toNat / 18446744073709551616
+ f := ↑(e - 64#32).toNat / 4294967296
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_043/source/B20/Fpr/Spec.lean:208:26: error: unsolved goals
+e : BitVec 32
+he : 64 ≤ e.toNat
+he32 : e.toNat < 2 ^ 32
+hsub : (e - 64#32).toNat = (2 ^ 32 - (64#32).toNat + e.toNat) % 2 ^ 32
+h64 : (64#32).toNat = 64
+hshr : (BitVec.setWidth 64 (BitVec.setWidth 32 (e - 64#32) >>> 31)).toNat = 0
+⊢ BitVec.setWidth 64 (e - 64#32) >>> 31 = 0#64
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_043/source/B20/Fpr/Spec.lean:219:12: warning: This simp argument is unused:
+  BitVec.toNat_setWidth
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_043/source/B20/Fpr/Spec.lean:221:19: warning: This simp argument is unused:
+  hshr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [rint_mask]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_043/source/B20/Fpr/Spec.lean:232:58: error: unsolved goals
+e : BitVec 32
+he : e.toNat < 64
+hsub : (e - 64#32).toNat = (2 ^ 32 - (64#32).toNat + e.toNat) % 2 ^ 32
+h64 : (64#32).toNat = 64
+h1 : (BitVec.setWidth 32 (e - 64#32) >>> 31).toNat = (BitVec.setWidth 32 (e - 64#32)).toNat >>> 31
+⊢ ((4294967232 + e.toNat) % 4294967296 % 18446744073709551616) >>> 31 =
+    ((4294967232 + e.toNat) % 4294967296) >>> 31 % 18446744073709551616
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_043/source/B20/Fpr/Spec.lean:224:39: error: unsolved goals
+e : BitVec 32
+he : e.toNat < 64
+hsub : (e - 64#32).toNat = (2 ^ 32 - (64#32).toNat + e.toNat) % 2 ^ 32
+h64 : (64#32).toNat = 64
+hshr : (BitVec.setWidth 64 (BitVec.setWidth 32 (e - 64#32) >>> 31)).toNat = 1
+hall : BitVec.allOnes 64 = -1#64
+⊢ -BitVec.setWidth 64 (e - 64#32) >>> 31 = 18446744073709551615#64
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_043/source/B20/Fpr/Spec.lean:235:12: warning: This simp argument is unused:
+  BitVec.toNat_setWidth
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_043/source/B20/Fpr/Spec.lean:238:19: warning: This simp argument is unused:
+  hshr
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [rint_mask, hall]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

@@ -1,0 +1,26 @@
+Traceback (most recent call last):
+  File "/home/footfalcon/miniforge3/envs/sage/bin/sage", line 5, in <module>
+    from sage.cli.__main__ import main
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__main__.py", line 9, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__init__.py", line 56, in main
+    return RunFileCmd(options).run()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/run_file_cmd.py", line 50, in run
+    eval(compile(open(input_file, 'rb').read(), input_file, 'exec'), sage_globals())
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/V02/run/own_sage_002/tmp/sage_2b4p50hd/check_words1dotp6et.sage.py", line 127, in <module>
+    add('floor', x, _sage_const_0 , _sage_const_0 , literal_floor(x))
+                                                    ~~~~~~~~~~~~~^^^
+  File "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/V02/run/own_sage_002/tmp/sage_2b4p50hd/check_words1dotp6et.sage.py", line 58, in literal_floor
+    return u64((u64(xi) & u64(~mask)) | (u64(-t) & mask))
+                          ~~~^^^^^^^
+  File "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/V02/run/own_sage_002/tmp/sage_2b4p50hd/check_words1dotp6et.sage.py", line 21, in u64
+    return ZZ(x) & M64
+           ~~^^^
+  File "sage/structure/parent.pyx", line 899, in sage.structure.parent.Parent.__call__
+    return mor._call_(x)
+  File "sage/rings/rational.pyx", line 4191, in sage.rings.rational.Q_to_Z._call_
+    raise TypeError("no conversion of this rational to integer")
+TypeError: no conversion of this rational to integer

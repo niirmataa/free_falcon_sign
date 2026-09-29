@@ -1,0 +1,12 @@
+{
+  "schema": "B20_V01_SAGE_RUNS_V1",
+  "mode": "sage <file>.sage with preparser; ZZ/QQ; RealBallField/RealIntervalField",
+  "runs": [
+    {"name": "sage_gen_certificate (producer, reproduced)", "file": "inputs/producer_v2/certificates/gen_sqrt2_certificate.sage", "invocation": "sage run/certificates/gen_sqrt2_certificate.sage", "result": "21/21 PASS", "stdout": "replay_logs/sage_gen_certificate.stdout"},
+    {"name": "sage_check_certificate (producer checker, reproduced)", "file": "inputs/producer_v2/certificates/check_certificate.sage", "invocation": "sage run/certificates/check_certificate.sage", "result": "9/9 PASS", "stdout": "replay_logs/sage_check_certificate.stdout"},
+    {"name": "v01_numeric_check (reviewer independent)", "file": "sage/v01_numeric_check.sage", "invocation": "sage V01/output/sage/v01_numeric_check.sage", "result": "22/22 PASS", "stdout": "raw_logs/v01_numeric.stdout", "report": "v01_numeric_report.txt"}
+  ],
+  "preparser_verified": true,
+  "sage_version": "10.9",
+  "verdict": "SAGE_PASS (authoritative ZZ/QQ/balls; Python Fraction / sage --python not used)"
+}

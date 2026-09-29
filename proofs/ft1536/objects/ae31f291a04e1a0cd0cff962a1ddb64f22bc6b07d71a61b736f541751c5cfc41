@@ -1,0 +1,15 @@
+{
+  "schema": "B20_V01_EXECUTION_RECEIPTS_V1",
+  "toolchain": {"lean": "4.34.0", "lake": "5.0.0-src+293d5d0", "sage": "10.9", "mathlib": "5ed2965256430c3649e86755f9576b54eca72435"},
+  "jobs": [
+    {"name": "sage_gen_certificate", "argv": ["/home/footfalcon/.local/bin/sage", "V01/run/replay_DEST_001/run/certificates/gen_sqrt2_certificate.sage"], "cwd": "V01/run/replay_DEST_001/run", "network": "off", "wall_limit_s": 1800, "exit_code": 0, "stdout": "replay_logs/sage_gen_certificate.stdout", "stdout_sha256": "d491e967e1fd7015998aebc144ab92bd2c23e081501101edb15d9bf0c08fa705", "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+    {"name": "sage_check_certificate", "argv": ["/home/footfalcon/.local/bin/sage", "V01/run/replay_DEST_001/run/certificates/check_certificate.sage"], "cwd": "V01/run/replay_DEST_001/run", "network": "off", "wall_limit_s": 1800, "exit_code": 0, "stdout": "replay_logs/sage_check_certificate.stdout", "stdout_sha256": "6574171d7ba6d8741daa5e380c6b9dcb2c0e21a55780b120a1eaf3008f57a839", "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+    {"name": "lean_rebuild_all", "argv": ["lake", "build", "B20", "B20.Foundation.Certificate", "B20.Foundation.Probability", "B20.Foundation.EndToEnd", "B20.Foundation.CertificateTransport", "FT1536P01"], "cwd": "V01/run/replay_DEST_001/run", "network": "off", "wall_limit_s": 1800, "exit_code": 0, "stdout": "replay_logs/lean_rebuild_all.stdout", "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+    {"name": "lean_probe_reduction", "argv": ["lake", "env", "lean", "aux/RedTest.lean"], "cwd": "V01/run/replay_DEST_001/run", "network": "off", "wall_limit_s": 1800, "exit_code": 0, "stdout": "replay_logs/lean_probe_reduction.stdout"},
+    {"name": "lean_printed_types", "argv": ["lake", "env", "lean", "run/formal/PrintedTypes.lean"], "cwd": "V01/run/replay_DEST_001/run", "network": "off", "wall_limit_s": 1800, "exit_code": 0, "stdout": "replay_logs/lean_printed_types.stdout", "stdout_sha256": "f755363c70d62395df3343754c9815af50636df7e929db7f13761461b80217f0"},
+    {"name": "lean_axiom_scan", "argv": ["lake", "env", "lean", "run/formal/FT1536P01.lean"], "cwd": "V01/run/replay_DEST_001/run", "network": "off", "wall_limit_s": 1800, "exit_code": 0, "stdout": "replay_logs/lean_axiom_scan.stdout", "stdout_sha256": "ec7047afaabdc854c449ef9da4ebe6e3183c4d79c91c3d90f366c52b9c1a2e0c"},
+    {"name": "v01_numeric_check", "argv": ["/home/footfalcon/.local/bin/sage", "V01/output/sage/v01_numeric_check.sage"], "cwd": "V01", "network": "off", "wall_limit_s": 1800, "exit_code": 0, "stdout": "raw_logs/v01_numeric.stdout", "stdout_sha256": "d71ad2de16845e1f8ec657e1067ccf8c6433acfe2c5f9be19857bf622965547f", "checks": "22/22 PASS"}
+  ],
+  "full_receipts": "raw_logs/V01_REPLAY_RESULT.json (6 jobs with real argv/cwd/timing/hashes)",
+  "limits": "single-worker, Lean -j1/-M2048 project cap, wall 1800s per job, 8GiB, W-only sandbox"
+}

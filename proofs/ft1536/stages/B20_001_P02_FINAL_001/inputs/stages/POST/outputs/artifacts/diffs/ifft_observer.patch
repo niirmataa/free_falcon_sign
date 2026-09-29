@@ -1,0 +1,36 @@
+--- ifft_original.inc
++++ ifft_observer.inc
+@@ -1,5 +1,5 @@
+ void
+-falcon_iFFT3(fpr *a, unsigned logn, unsigned full)
++observed_iFFT3(fpr *a, unsigned logn, unsigned full)
+ {
+ 	size_t n, hn, u, t, m;
+ 	fpr ni;
+@@ -44,6 +44,7 @@
+ 			FPC_MUL(a[u + 2], a[u + 2 + hn], xr, xi, f12r, f12i);
+ 		}
+ 	}
++	snapshot("cubic",0,a,1536);
+ 
+ 	/*
+ 	 * Intermediate steps for halving the degree.
+@@ -75,6 +76,7 @@
+ 					a0r, a0i, sr, si);
+ 			}
+ 		}
++		snapshot("binary",(unsigned)t,a,1536);
+ 		t <<= 1;
+ 	}
+ 
+@@ -106,8 +108,10 @@
+ 	/*
+ 	 * We have an accumulated N/2 multiplier to remove.
+ 	 */
++	snapshot("terminal",0,a,1536);
+ 	ni = fpr_inverse_of(n >> 1);
+ 	for (u = 0; u < n; u ++) {
+ 		a[u] = fpr_mul(ni, a[u]);
+ 	}
++	snapshot("scale",0,a,1536);
+ }

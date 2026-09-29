@@ -1,0 +1,224 @@
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_025/source/B20/Fpr/Spec.lean:101:33: error: Invalid argument name `a` for function `Nat.and_le_right`
+
+Hint: Perhaps you meant one of the following parameter names:
+  • `n`: a̵n̲
+  • `m`: a̵m̲
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_025/source/B20/Fpr/Spec.lean:118:65: error: unsolved goals
+s e : BitVec 32
+m : BitVec 64
+hdom : -2 ^ 31 ≤ e.toInt + 1076 ∧ e.toInt + 1076 < 2 ^ 31
+⊢ ((((if
+                    m.toNat % 4294967296 &&&
+                          (18446744073709551615 + ((e.toNat + 1076) % 4294967296 % 18446744073709551616) >>> 31) %
+                            4294967296 &&&
+                        7 <
+                      32 then
+                  some
+                    (Val.u32
+                      (200#32 >>>
+                        (m.toNat % 4294967296 &&&
+                            (18446744073709551615 + ((e.toNat + 1076) % 4294967296 % 18446744073709551616) >>> 31) %
+                              4294967296 &&&
+                          7)))
+                else none).bind
+              fun __do_lift =>
+              match
+                match __do_lift with
+                | Val.u64 x =>
+                  match
+                    match
+                      match __do_lift with
+                      | Val.u64 bits => Ty.u64
+                      | Val.i64 bits => Ty.i64
+                      | Val.i32 bits => Ty.i32
+                      | Val.u32 bits => Ty.u32,
+                      Ty.i32 with
+                    | Ty.u64, x => Ty.u64
+                    | x, Ty.u64 => Ty.u64
+                    | Ty.i64, x => Ty.i64
+                    | x, Ty.i64 => Ty.i64
+                    | Ty.u32, x => Ty.u32
+                    | x, Ty.u32 => Ty.u32
+                    | Ty.i32, Ty.i32 => Ty.i32 with
+                  | Ty.u64 => Val.u64 x
+                  | Ty.i64 => Val.i64 x
+                  | Ty.i32 => Val.i32 (BitVec.setWidth 32 x)
+                  | Ty.u32 => Val.u32 (BitVec.setWidth 32 x)
+                | Val.i64 x =>
+                  match
+                    match
+                      match __do_lift with
+                      | Val.u64 bits => Ty.u64
+                      | Val.i64 bits => Ty.i64
+                      | Val.i32 bits => Ty.i32
+                      | Val.u32 bits => Ty.u32,
+                      Ty.i32 with
+                    | Ty.u64, x => Ty.u64
+                    | x, Ty.u64 => Ty.u64
+                    | Ty.i64, x => Ty.i64
+                    | x, Ty.i64 => Ty.i64
+                    | Ty.u32, x => Ty.u32
+                    | x, Ty.u32 => Ty.u32
+                    | Ty.i32, Ty.i32 => Ty.i32 with
+                  | Ty.u64 => Val.u64 x
+                  | Ty.i64 => Val.i64 x
+                  | Ty.i32 => Val.i32 (BitVec.setWidth 32 x)
+                  | Ty.u32 => Val.u32 (BitVec.setWidth 32 x)
+                | Val.i32 x =>
+                  match
+                    match
+                      match __do_lift with
+                      | Val.u64 bits => Ty.u64
+                      | Val.i64 bits => Ty.i64
+                      | Val.i32 bits => Ty.i32
+                      | Val.u32 bits => Ty.u32,
+                      Ty.i32 with
+                    | Ty.u64, x => Ty.u64
+                    | x, Ty.u64 => Ty.u64
+                    | Ty.i64, x => Ty.i64
+                    | x, Ty.i64 => Ty.i64
+                    | Ty.u32, x => Ty.u32
+                    | x, Ty.u32 => Ty.u32
+                    | Ty.i32, Ty.i32 => Ty.i32 with
+                  | Ty.u64 => Val.u64 (BitVec.signExtend 64 x)
+                  | Ty.i64 => Val.i64 (BitVec.signExtend 64 x)
+                  | Ty.i32 => Val.i32 x
+                  | Ty.u32 => Val.u32 x
+                | Val.u32 x =>
+                  match
+                    match
+                      match __do_lift with
+                      | Val.u64 bits => Ty.u64
+                      | Val.i64 bits => Ty.i64
+                      | Val.i32 bits => Ty.i32
+                      | Val.u32 bits => Ty.u32,
+                      Ty.i32 with
+                    | Ty.u64, x => Ty.u64
+                    | x, Ty.u64 => Ty.u64
+                    | Ty.i64, x => Ty.i64
+                    | x, Ty.i64 => Ty.i64
+                    | Ty.u32, x => Ty.u32
+                    | x, Ty.u32 => Ty.u32
+                    | Ty.i32, Ty.i32 => Ty.i32 with
+                  | Ty.u64 => Val.u64 (BitVec.setWidth 64 x)
+                  | Ty.i64 => Val.i64 (BitVec.setWidth 64 x)
+                  | Ty.i32 => Val.i32 x
+                  | Ty.u32 => Val.u32 x,
+                match
+                  match
+                    match __do_lift with
+                    | Val.u64 bits => Ty.u64
+                    | Val.i64 bits => Ty.i64
+                    | Val.i32 bits => Ty.i32
+                    | Val.u32 bits => Ty.u32,
+                    Ty.i32 with
+                  | Ty.u64, x => Ty.u64
+                  | x, Ty.u64 => Ty.u64
+                  | Ty.i64, x => Ty.i64
+                  | x, Ty.i64 => Ty.i64
+                  | Ty.u32, x => Ty.u32
+                  | x, Ty.u32 => Ty.u32
+                  | Ty.i32, Ty.i32 => Ty.i32 with
+                | Ty.u64 => Val.u64 1#64
+                | Ty.i64 => Val.i64 1#64
+                | Ty.i32 => Val.i32 1#32
+                | Ty.u32 => Val.u32 1#32 with
+              | Val.u64 a, Val.u64 b => some (Val.u64 (a &&& b))
+              | Val.i64 a, Val.i64 b => Option.map Val.i64 (C.signedBitsOp BinOp.band a b)
+              | Val.i32 a, Val.i32 b => some (Val.i32 (a &&& b))
+              | Val.u32 a, Val.u32 b => some (Val.u32 (a &&& b))
+              | x, x_1 => none).bind
+          fun a =>
+          (match
+                Val.u64
+                  ((BitVec.signExtend 64 s <<< 63 ||| (m &&& BitVec.setWidth 64 (e + 1076#32) >>> 31 - 1#64) >>> 2) +
+                    (BitVec.setWidth 64 (e + 1076#32) &&&
+                        BitVec.setWidth 64
+                          (-BitVec.setWidth 32 ((m &&& BitVec.setWidth 64 (e + 1076#32) >>> 31 - 1#64) >>> 54))) <<<
+                      52),
+                match a with
+                | Val.u64 x => Val.u64 x
+                | Val.i64 x => Val.u64 x
+                | Val.i32 x => Val.u64 (BitVec.signExtend 64 x)
+                | Val.u32 x => Val.u64 (BitVec.setWidth 64 x) with
+              | Val.u64 a, Val.u64 b => some (Val.u64 (a + b))
+              | Val.i64 a, Val.i64 b => Option.map Val.i64 (C.signedBitsOp BinOp.add a b)
+              | Val.i32 a, Val.i32 b => Option.map Val.i32 (C.signedBitsOp BinOp.add a b)
+              | Val.u32 a, Val.u32 b => some (Val.u32 (a + b))
+              | x, x_1 => none).bind
+            fun a =>
+            some
+              {
+                types := fun x =>
+                  if x = ['f'] then some Ty.u32
+                  else
+                    if x = ['t'] then some Ty.u32
+                    else
+                      if x = ['x'] then some Ty.u64
+                      else
+                        if x = ['s'] then some Ty.i32
+                        else if x = ['e'] then some Ty.i32 else if x = ['m'] then some Ty.u64 else none,
+                values :=
+                  update
+                    (update
+                      (update
+                        (update
+                          (update
+                            (update
+                              (update
+                                (update
+                                  (update (update (update (fun x => none) ['m'] (Val.u64 m)) ['e'] (Val.i32 e)) ['s']
+                                    (Val.i32 s))
+                                  ['e'] (Val.i32 (e + 1076#32)))
+                                ['t'] (Val.u32 ((e + 1076#32) >>> 31)))
+                              ['m'] (Val.u64 (m &&& BitVec.setWidth 64 (e + 1076#32) >>> 31 - 1#64)))
+                            ['t']
+                            (Val.u32
+                              (BitVec.setWidth 32 ((m &&& BitVec.setWidth 64 (e + 1076#32) >>> 31 - 1#64) >>> 54))))
+                          ['e']
+                          (Val.i32
+                            (e + 1076#32 &&&
+                              -BitVec.setWidth 32 ((m &&& BitVec.setWidth 64 (e + 1076#32) >>> 31 - 1#64) >>> 54))))
+                        ['x']
+                        (Val.u64
+                          ((BitVec.signExtend 64 s <<< 63 |||
+                              (m &&& BitVec.setWidth 64 (e + 1076#32) >>> 31 - 1#64) >>> 2) +
+                            (BitVec.setWidth 64 (e + 1076#32) &&&
+                                BitVec.setWidth 64
+                                  (-BitVec.setWidth 32
+                                      ((m &&& BitVec.setWidth 64 (e + 1076#32) >>> 31 - 1#64) >>> 54))) <<<
+                              52)))
+                      ['f']
+                      (Val.u32
+                        (BitVec.setWidth 32 m &&&
+                            BitVec.setWidth 32 (BitVec.setWidth 64 (e + 1076#32) >>> 31 - 1#64) &&&
+                          7#32)))
+                    ['x']
+                    (match a with
+                    | Val.u64 x => Val.u64 x
+                    | Val.i64 x => Val.u64 x
+                    | Val.i32 x => Val.u64 (BitVec.signExtend 64 x)
+                    | Val.u32 x => Val.u64 (BitVec.setWidth 64 x)) }).bind
+      fun __do_lift => Option.map (C.cast Ty.u64) (__do_lift.values ['x'])) =
+    some
+      (Val.u64
+        ((BitVec.setWidth 64 s <<< 63 ||| (m &&& BitVec.setWidth 64 (e + 1076#32) >>> 31 - 1#64) >>> 2) +
+            (BitVec.setWidth 64 (e + 1076#32) &&&
+                BitVec.setWidth 64
+                  (-BitVec.setWidth 32 ((m &&& BitVec.setWidth 64 (e + 1076#32) >>> 31 - 1#64) >>> 54))) <<<
+              52 +
+          (200#64 >>>
+              (m.toNat % 4294967296 &&&
+                  (18446744073709551615 + ((e.toNat + 1076) % 4294967296 % 18446744073709551616) >>> 31) %
+                    4294967296 &&&
+                7) &&&
+            1#64)))
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_025/source/B20/Fpr/Spec.lean:123:85: warning: This simp argument is unused:
+  pack_f_range
+
+Hint: Omit it from the simp argument list.
+  [apply] simp (config := { maxSteps := 200000 }) [B20.C.Scalar.execute, Parsed.packProgram, bindArgs, emptyState,
+    declareOne, assign, evalBody, B20.C.Scalar.step, declareMany, B20.C.Scalar.evalExpr, packSpec, bin, shift, bitsOp,
+    commonTy, Val.ty, B20.C.cast, literalValue, update, pack_neg_defined, pack_add_bits _ hdom, signedBits_band32]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

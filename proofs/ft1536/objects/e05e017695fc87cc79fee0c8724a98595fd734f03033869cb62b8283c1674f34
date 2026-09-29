@@ -1,0 +1,64 @@
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_030/source/B20/Fpr/Spec.lean:157:10: error(lean.unknownIdentifier): Unknown identifier `lit1085_int`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_030/source/B20/Fpr/Spec.lean:157:24: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  b ≥ 2147484734
+  0 ≤ a ≤ 2047
+where
+ a := (BitVec.setWidth 32 (x >>> 52) &&& 2047#32).toInt
+ b := (↑(x.toNat >>> 52 % 4294967296 &&& 2047)).bmod 4294967296
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_030/source/B20/Fpr/Spec.lean:158:14: error(lean.unknownIdentifier): Unknown identifier `B20.C.safe_sub32`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_030/source/B20/Fpr/Spec.lean:153:71: error: unsolved goals
+x : BitVec 64
+hdom : rintDomain x
+hy : ↑0 ≤ (BitVec.setWidth 32 (x >>> 52) &&& 2047#32).toInt ∧ (BitVec.setWidth 32 (x >>> 52) &&& 2047#32).toInt ≤ 2047
+hb :
+  -2 ^ 31 ≤ (1085#32).toInt - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32).toInt ∧
+    (1085#32).toInt - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32).toInt < 2 ^ 31
+⊢ (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toInt =
+      ↑1085 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32).toInt ∧
+    -↑962 ≤ (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toInt ∧
+      (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toInt ≤ 1085
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_030/source/B20/Fpr/Spec.lean:170:2: error: Type mismatch
+  ulsh_call m1 ⟨c.toNat, hc⟩
+has type
+  shiftCalls "fpr_ulsh".toList [Val.u64 m1, Val.i32 (BitVec.ofNat 32 ↑⟨c.toNat, hc⟩)] =
+    some (Val.u64 (m1 <<< ↑⟨c.toNat, hc⟩))
+but is expected to have type
+  shiftCalls "fpr_ulsh".toList [Val.u64 m1, Val.i32 (BitVec.ofNat 32 c.toNat)] =
+    some (Val.u64 (m1 <<< (BitVec.ofNat 32 c.toNat).toNat))
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_030/source/B20/Fpr/Spec.lean:168:10: warning: This simp argument is unused:
+  BitVec.toNat_ofNat
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hc32]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_030/source/B20/Fpr/Spec.lean:168:30: warning: This simp argument is unused:
+  hc32
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [BitVec.toNat_ofNat]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_030/source/B20/Fpr/Spec.lean:180:2: error: Type mismatch
+  ursh_call m1 ⟨c.toNat, hc⟩
+has type
+  shiftCalls "fpr_ursh".toList [Val.u64 m1, Val.i32 (BitVec.ofNat 32 ↑⟨c.toNat, hc⟩)] =
+    some (Val.u64 (m1 >>> ↑⟨c.toNat, hc⟩))
+but is expected to have type
+  shiftCalls "fpr_ursh".toList [Val.u64 m1, Val.i32 (BitVec.ofNat 32 c.toNat)] =
+    some (Val.u64 (m1 >>> (BitVec.ofNat 32 c.toNat).toNat))
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_030/source/B20/Fpr/Spec.lean:178:10: warning: This simp argument is unused:
+  BitVec.toNat_ofNat
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hc32]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/footfalcon/free_falcon_sign/proofs/ft1536/work/B20_001/P02/run/fpr_spec_030/source/B20/Fpr/Spec.lean:178:30: warning: This simp argument is unused:
+  hc32
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [BitVec.toNat_ofNat]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

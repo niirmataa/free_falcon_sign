@@ -1,0 +1,919 @@
+B20.C.Byte.CExec : B20.C.Byte.Function →
+  B20.C.Byte.Memory → List B20.C.Byte.Arg → Option B20.C.Byte.U64 → B20.C.Byte.Memory → Prop
+B20.C.Byte.Pointer.add : B20.C.Byte.Pointer → ℕ → B20.C.Byte.Pointer
+B20.C.Byte.ReadRegion : B20.C.Byte.Memory → B20.C.Byte.Pointer → Prop
+B20.C.Byte.RegionBytes : B20.C.Byte.Memory → B20.C.Byte.Pointer → (Fin 8 → B20.C.Byte.U8) → Prop
+B20.C.Byte.Value.toWord : B20.C.Byte.Value → B20.C.Byte.U64
+B20.C.Byte.WriteRegion : B20.C.Byte.Memory → B20.C.Byte.Pointer → Prop
+B20.C.Byte.access_inBounds : ∀ (m : B20.C.Byte.Memory) (p : B20.C.Byte.Pointer),
+  B20.C.Byte.ReadRegion m p → ∀ (i : Fin 8), B20.C.Byte.inBounds m (p.add ↑i)
+B20.C.Byte.bindArgs : B20.C.Byte.Memory → List B20.C.Byte.Param → List B20.C.Byte.Arg → Option B20.C.Byte.State
+B20.C.Byte.body : ℕ → List B20.C.Token → Option (List B20.C.Byte.Statement × List B20.C.Token)
+B20.C.Byte.decimal : B20.C.Token → Option ℕ
+B20.C.Byte.evalBody : Bool →
+  List B20.C.Byte.Statement → B20.C.Byte.State → Option (Option B20.C.Byte.U64 × B20.C.Byte.Memory)
+B20.C.Byte.evalExpr : B20.C.Byte.State → B20.C.Byte.Expr → Option B20.C.Byte.Value
+B20.C.Byte.execute : B20.C.Byte.Function →
+  B20.C.Byte.Memory → List B20.C.Byte.Arg → Option (Option B20.C.Byte.U64 × B20.C.Byte.Memory)
+B20.C.Byte.expression : ℕ → B20.C.Byte.Parser
+B20.C.Byte.inBounds : B20.C.Byte.Memory → B20.C.Byte.Pointer → Prop
+B20.C.Byte.orTail : B20.C.Byte.Parser → ℕ → B20.C.Byte.Expr → B20.C.Byte.Parser
+B20.C.Byte.param : List B20.C.Token → Option (B20.C.Byte.Param × List B20.C.Token)
+B20.C.Byte.params : ℕ → List B20.C.Token → Option (List B20.C.Byte.Param × List B20.C.Token)
+B20.C.Byte.parenthesized : B20.C.Byte.Parser → List B20.C.Token → Option (B20.C.Byte.Expr × List B20.C.Token)
+B20.C.Byte.parseFunction : List Char → Option B20.C.Byte.Function
+B20.C.Byte.parseFunctionTokens : List B20.C.Token → Option B20.C.Byte.Function
+B20.C.Byte.parseStatement : List B20.C.Token → Option (B20.C.Byte.Statement × List B20.C.Token)
+B20.C.Byte.putByte : B20.C.Byte.Memory → B20.C.Byte.Pointer → B20.C.Byte.U8 → B20.C.Byte.Memory
+B20.C.Byte.put_frame : ∀ (m : B20.C.Byte.Memory) (p q : B20.C.Byte.Pointer) (b : B20.C.Byte.U8),
+  q ≠ p → (B20.C.Byte.putByte m p b).contents q = m.contents q
+B20.C.Byte.put_preserves_read : ∀ (m : B20.C.Byte.Memory) (p q : B20.C.Byte.Pointer) (b : B20.C.Byte.U8),
+  B20.C.Byte.ReadRegion m p → B20.C.Byte.ReadRegion (B20.C.Byte.putByte m q b) p
+B20.C.Byte.put_preserves_write : ∀ (m : B20.C.Byte.Memory) (p q : B20.C.Byte.Pointer) (b : B20.C.Byte.U8),
+  B20.C.Byte.WriteRegion m p → B20.C.Byte.WriteRegion (B20.C.Byte.putByte m q b) p
+B20.C.Byte.readByte : B20.C.Byte.Memory → B20.C.Byte.Pointer → Option B20.C.Byte.U8
+B20.C.Byte.read_region_byte : ∀ (m : B20.C.Byte.Memory) (p : B20.C.Byte.Pointer) (bytes : Fin 8 → B20.C.Byte.U8),
+  B20.C.Byte.ReadRegion m p →
+    B20.C.Byte.RegionBytes m p bytes → ∀ (i : Fin 8), B20.C.Byte.readByte m (p.add ↑i) = some (bytes i)
+B20.C.Byte.shiftTail : ℕ → B20.C.Byte.Expr → B20.C.Byte.Parser
+B20.C.Byte.shifts : B20.C.Byte.Parser → B20.C.Byte.Parser
+B20.C.Byte.step : B20.C.Byte.State → B20.C.Byte.Statement → Option B20.C.Byte.State
+B20.C.Byte.unary : B20.C.Byte.Parser → ℕ → B20.C.Byte.Parser
+B20.C.Byte.updatePointer : B20.C.Byte.State → B20.C.Name → Bool × Option B20.C.Byte.Pointer → B20.C.Byte.State
+B20.C.Byte.writeByte : B20.C.Byte.Memory → B20.C.Byte.Pointer → B20.C.Byte.U8 → Option B20.C.Byte.Memory
+B20.C.Byte.write_region_byte : ∀ (m : B20.C.Byte.Memory) (p : B20.C.Byte.Pointer) (b : B20.C.Byte.U8),
+  B20.C.Byte.WriteRegion m p →
+    ∀ (i : Fin 8), B20.C.Byte.writeByte m (p.add ↑i) b = some (B20.C.Byte.putByte m (p.add ↑i) b)
+B20.C.CExec : B20.C.Function → List B20.C.Val → B20.C.Val → Prop
+B20.C.CExec_deterministic : ∀ (f : B20.C.Function) (args : List B20.C.Val) (x y : B20.C.Val),
+  B20.C.CExec f args x → B20.C.CExec f args y → x = y
+B20.C.Scalar.CExec : B20.C.Scalar.Calls → B20.C.Scalar.Function → List B20.C.Val → B20.C.Val → Prop
+B20.C.Scalar.CExec_deterministic : ∀ (calls : B20.C.Scalar.Calls) (f : B20.C.Scalar.Function) (args : List B20.C.Val)
+  (x y : B20.C.Val), B20.C.Scalar.CExec calls f args x → B20.C.Scalar.CExec calls f args y → x = y
+B20.C.Scalar.assign : B20.C.Scalar.State → B20.C.Name → B20.C.Val → Option B20.C.Scalar.State
+B20.C.Scalar.bindArgs : List (B20.C.Ty × B20.C.Name) → List B20.C.Val → Option B20.C.Scalar.State
+B20.C.Scalar.body : ℕ → List B20.C.Token → Option (List B20.C.Scalar.Stmt × List B20.C.Token)
+B20.C.Scalar.declareMany : B20.C.Scalar.State → B20.C.Ty → List B20.C.Name → Option B20.C.Scalar.State
+B20.C.Scalar.declareOne : B20.C.Scalar.State → B20.C.Ty → B20.C.Name → Option B20.C.Scalar.State
+B20.C.Scalar.digitValue : Char → ℕ
+B20.C.Scalar.emptyState : B20.C.Scalar.State
+B20.C.Scalar.evalBody : B20.C.Scalar.Calls → B20.C.Ty → List B20.C.Scalar.Stmt → B20.C.Scalar.State → Option B20.C.Val
+B20.C.Scalar.evalExpr : B20.C.Scalar.Calls → B20.C.Env → ℕ → B20.C.Scalar.Expr → Option B20.C.Val
+B20.C.Scalar.execute : B20.C.Scalar.Calls → B20.C.Scalar.Function → List B20.C.Val → Option B20.C.Val
+B20.C.Scalar.expression : ℕ → B20.C.Scalar.Parser
+B20.C.Scalar.functionCore : List B20.C.Token → Option B20.C.Scalar.Function
+B20.C.Scalar.hexDigit : Char → Bool
+B20.C.Scalar.irsh_call : ∀ (x : BitVec 64) (n : Fin 64),
+  B20.C.Scalar.shiftCalls "fpr_irsh".toList [B20.C.Val.i64 x, B20.C.Val.i32 (BitVec.ofNat 32 ↑n)] =
+    some (B20.C.Val.i64 (x.sshiftRight ↑n))
+B20.C.Scalar.literalType : Bool → List Char → ℕ → Option B20.C.Ty
+B20.C.Scalar.names : ℕ → List B20.C.Token → Option (List B20.C.Name × List B20.C.Token)
+B20.C.Scalar.number : B20.C.Token → Option B20.C.Scalar.Expr
+B20.C.Scalar.opInfo : B20.C.Token → Option (B20.C.BinOp × ℕ)
+B20.C.Scalar.params : ℕ → List B20.C.Token → Option (List (B20.C.Ty × B20.C.Name) × List B20.C.Token)
+B20.C.Scalar.parseArgs : B20.C.Scalar.Parser → ℕ → List B20.C.Token → Option (List B20.C.Scalar.Expr × List B20.C.Token)
+B20.C.Scalar.parseExpr : ℕ → ℕ → List B20.C.Token → Option (B20.C.Scalar.Expr × List B20.C.Token)
+B20.C.Scalar.parseFunction : List Char → Option B20.C.Scalar.Function
+B20.C.Scalar.parseFunctionTokens : List B20.C.Token → Option B20.C.Scalar.Function
+B20.C.Scalar.parseMore : (ℕ → B20.C.Scalar.Parser) →
+  ℕ → ℕ → B20.C.Scalar.Expr → List B20.C.Token → Option (B20.C.Scalar.Expr × List B20.C.Token)
+B20.C.Scalar.parseUnary : B20.C.Scalar.Parser → ℕ → List B20.C.Token → Option (B20.C.Scalar.Expr × List B20.C.Token)
+B20.C.Scalar.shiftCalls : B20.C.Name → List B20.C.Val → Option B20.C.Val
+B20.C.Scalar.skipBlock : ℕ → List Char → Option (List Char)
+B20.C.Scalar.statement : List B20.C.Token → Option (B20.C.Scalar.Stmt × List B20.C.Token)
+B20.C.Scalar.step : B20.C.Scalar.Calls → B20.C.Scalar.State → B20.C.Scalar.Stmt → Option B20.C.Scalar.State
+B20.C.Scalar.tokenize : ℕ → List Char → Option (List B20.C.Token)
+B20.C.Scalar.typeToken : B20.C.Token → Option B20.C.Ty
+B20.C.Scalar.ulsh_call : ∀ (x : BitVec 64) (n : Fin 64),
+  B20.C.Scalar.shiftCalls "fpr_ulsh".toList [B20.C.Val.u64 x, B20.C.Val.i32 (BitVec.ofNat 32 ↑n)] =
+    some (B20.C.Val.u64 (x <<< ↑n))
+B20.C.Scalar.updateOp : B20.C.Token → Option B20.C.BinOp
+B20.C.Scalar.ursh_call : ∀ (x : BitVec 64) (n : Fin 64),
+  B20.C.Scalar.shiftCalls "fpr_ursh".toList [B20.C.Val.u64 x, B20.C.Val.i32 (BitVec.ofNat 32 ↑n)] =
+    some (B20.C.Val.u64 (x >>> ↑n))
+B20.C.Val.integer : B20.C.Val → ℤ
+B20.C.Val.ty : B20.C.Val → B20.C.Ty
+B20.C.assign : B20.C.Env → B20.C.Name → B20.C.Val → Option B20.C.Env
+B20.C.bin : B20.C.BinOp → B20.C.Val → B20.C.Val → Option B20.C.Val
+B20.C.bindArgs : List (B20.C.Ty × B20.C.Name) → List B20.C.Val → Option B20.C.Env
+@B20.C.bitsOp : {n : ℕ} → B20.C.BinOp → BitVec n → BitVec n → Option (BitVec n)
+B20.C.cast : B20.C.Ty → B20.C.Val → B20.C.Val
+B20.C.cast_u32_to_u64 : ∀ (x : BitVec 32), (B20.C.cast B20.C.Ty.u64 (B20.C.Val.u32 x)).integer = ↑x.toNat
+B20.C.commonTy : B20.C.Ty → B20.C.Ty → B20.C.Ty
+B20.C.cond_neg_add64 : ∀ (a s : BitVec 64),
+  s.toNat ≤ 1 →
+    a.toNat < 2 ^ 63 - 1 →
+      B20.C.signedBitsOp B20.C.BinOp.xor a (-s) = B20.C.bitsOp B20.C.BinOp.xor a (-s) ∧
+        ∃ r,
+          B20.C.signedBitsOp B20.C.BinOp.add (a ^^^ -s) s = B20.C.bitsOp B20.C.BinOp.add (a ^^^ -s) s ∧
+            r = (a ^^^ -s) + s ∧ r.toInt = if s.toNat = 0 then a.toInt else -a.toInt
+B20.C.cond_neg_add64_le : ∀ (a s : BitVec 64),
+  s.toNat ≤ 1 →
+    a.toNat ≤ 2 ^ 63 - 1 →
+      B20.C.signedBitsOp B20.C.BinOp.xor a (-s) = B20.C.bitsOp B20.C.BinOp.xor a (-s) ∧
+        ∃ r,
+          B20.C.signedBitsOp B20.C.BinOp.add (a ^^^ -s) s = B20.C.bitsOp B20.C.BinOp.add (a ^^^ -s) s ∧
+            r = (a ^^^ -s) + s ∧ r.toInt = if s.toNat = 0 then a.toInt else -a.toInt
+B20.C.digit : Char → Bool
+B20.C.evalBody : B20.C.Ty → List B20.C.Stmt → B20.C.Env → Option B20.C.Val
+B20.C.evalExpr : B20.C.Env → B20.C.Expr → Option B20.C.Val
+B20.C.execute : B20.C.Function → List B20.C.Val → Option B20.C.Val
+B20.C.literalValue : B20.C.Ty → ℕ → B20.C.Val
+B20.C.neg : B20.C.Val → Option B20.C.Val
+B20.C.neg_defined_of_ne : ∀ (x : BitVec 64),
+  x ≠ 9223372036854775808 → B20.C.neg (B20.C.Val.i64 x) = some (B20.C.Val.i64 (-x))
+B20.C.neg_u32 : ∀ (x : BitVec 32), B20.C.neg (B20.C.Val.u32 x) = some (B20.C.Val.u32 (-x))
+B20.C.neg_u64 : ∀ (x : BitVec 64), B20.C.neg (B20.C.Val.u64 x) = some (B20.C.Val.u64 (-x))
+B20.C.notBits : B20.C.Val → B20.C.Val
+B20.C.opInfo : B20.C.Token → Option (B20.C.BinOp × ℕ)
+B20.C.parenthesized : B20.C.Parser → List B20.C.Token → Option (B20.C.Expr × List B20.C.Token)
+B20.C.parseExpr : ℕ → B20.C.Parser
+B20.C.parseFunction : List Char → Option B20.C.Function
+B20.C.parseFunctionTokens : List B20.C.Token → Option B20.C.Function
+B20.C.parseLevel : B20.C.Parser → ℕ → B20.C.Parser
+B20.C.parseParams : ℕ → List B20.C.Token → Option (List (B20.C.Ty × B20.C.Name) × List B20.C.Token)
+B20.C.parseStmts : ℕ → List B20.C.Token → Option (List B20.C.Stmt × List B20.C.Token)
+B20.C.parseTail : B20.C.Parser → ℕ → ℕ → B20.C.Expr → B20.C.Parser
+B20.C.parseTy : B20.C.Token → Option B20.C.Ty
+B20.C.parseUnary : B20.C.Parser → ℕ → B20.C.Parser
+B20.C.safe_add32 : ∀ (a b : BitVec 32),
+  -2 ^ 31 ≤ a.toInt + b.toInt ∧ a.toInt + b.toInt < 2 ^ 31 →
+    B20.C.signedBitsOp B20.C.BinOp.add a b = B20.C.bitsOp B20.C.BinOp.add a b ∧ (a + b).toInt = a.toInt + b.toInt
+B20.C.safe_add64 : ∀ (a b : BitVec 64),
+  -2 ^ 63 ≤ a.toInt + b.toInt ∧ a.toInt + b.toInt < 2 ^ 63 →
+    B20.C.signedBitsOp B20.C.BinOp.add a b = B20.C.bitsOp B20.C.BinOp.add a b ∧ (a + b).toInt = a.toInt + b.toInt
+B20.C.safe_sub32 : ∀ (a b : BitVec 32),
+  -2 ^ 31 ≤ a.toInt - b.toInt ∧ a.toInt - b.toInt < 2 ^ 31 →
+    B20.C.signedBitsOp B20.C.BinOp.sub a b = B20.C.bitsOp B20.C.BinOp.sub a b ∧ (a - b).toInt = a.toInt - b.toInt
+B20.C.safe_sub64 : ∀ (a b : BitVec 64),
+  -2 ^ 63 ≤ a.toInt - b.toInt ∧ a.toInt - b.toInt < 2 ^ 63 →
+    B20.C.signedBitsOp B20.C.BinOp.sub a b = B20.C.bitsOp B20.C.BinOp.sub a b ∧ (a - b).toInt = a.toInt - b.toInt
+B20.C.shift : B20.C.BinOp → B20.C.Val → BitVec 32 → Option B20.C.Val
+@B20.C.signedBitsOp : {n : ℕ} → B20.C.BinOp → BitVec n → BitVec n → Option (BitVec n)
+@B20.C.signedSafe : {n : ℕ} → B20.C.BinOp → BitVec n → BitVec n → Bool
+B20.C.signed_add32 : ∀ (x y : BitVec 32),
+  -2 ^ 31 ≤ x.toInt + y.toInt ∧ x.toInt + y.toInt < 2 ^ 31 →
+    B20.C.bin B20.C.BinOp.add (B20.C.Val.i32 x) (B20.C.Val.i32 y) = some (B20.C.Val.i32 (x + y))
+B20.C.signed_add64 : ∀ (x y : BitVec 64),
+  -2 ^ 63 ≤ x.toInt + y.toInt ∧ x.toInt + y.toInt < 2 ^ 63 →
+    B20.C.bin B20.C.BinOp.add (B20.C.Val.i64 x) (B20.C.Val.i64 y) = some (B20.C.Val.i64 (x + y))
+B20.C.signed_overflow_rejected : B20.C.bin B20.C.BinOp.add (B20.C.Val.i32 2147483647) (B20.C.Val.i32 1) = none ∧
+  B20.C.bin B20.C.BinOp.sub (B20.C.Val.i64 9223372036854775808) (B20.C.Val.i64 1) = none
+B20.C.tokenize : ℕ → List Char → Option (List B20.C.Token)
+B20.C.unsigned_add32 : ∀ (x y : BitVec 32),
+  B20.C.bin B20.C.BinOp.add (B20.C.Val.u32 x) (B20.C.Val.u32 y) = some (B20.C.Val.u32 (x + y))
+B20.C.unsigned_add64 : ∀ (x y : BitVec 64),
+  B20.C.bin B20.C.BinOp.add (B20.C.Val.u64 x) (B20.C.Val.u64 y) = some (B20.C.Val.u64 (x + y))
+B20.C.update : B20.C.Env → B20.C.Name → B20.C.Val → B20.C.Env
+B20.C.wordChar : Char → Bool
+B20.C.xor_neg_bridge : ∀ (a s : BitVec 64),
+  B20.C.signedBitsOp B20.C.BinOp.xor a (-s) = B20.C.bitsOp B20.C.BinOp.xor a (-s)
+B20.Foundation.CExec_complete : ∀ (p : B20.Foundation.CStmt) (s : B20.Foundation.State),
+  B20.Foundation.CExec p s (B20.Foundation.evalStmt p s)
+@B20.Foundation.CExec_deterministic : ∀ {p : B20.Foundation.Program} {s : B20.Foundation.State}
+  {o₁ o₂ : B20.Foundation.Outcome}, B20.Foundation.CExec p s o₁ → B20.Foundation.CExec p s o₂ → o₁ = o₂
+@B20.Foundation.CExec_eval : ∀ {p : B20.Foundation.Program} {s : B20.Foundation.State} {o : B20.Foundation.Outcome},
+  B20.Foundation.CExec p s o → B20.Foundation.evalStmt p s = o
+B20.Foundation.CExec_iff_eval : ∀ (p : B20.Foundation.Program) (s : B20.Foundation.State) (o : B20.Foundation.Outcome),
+  B20.Foundation.CExec p s o ↔ B20.Foundation.evalStmt p s = o
+B20.Foundation.Memory.byteAt : B20.Foundation.Memory → ℕ → ℕ
+B20.Foundation.Memory.legalU64 : B20.Foundation.Memory → ℕ → Prop
+B20.Foundation.Memory.readU64 : B20.Foundation.Memory → ℕ → Option B20.Foundation.Word64
+B20.Foundation.Memory.writeU64 : B20.Foundation.Memory → ℕ → B20.Foundation.Word64 → B20.Foundation.Memory
+B20.Foundation.ModelStmt : Type
+@B20.Foundation.Outcome.abort_ne_fault : ∀ {r r' : String},
+  B20.Foundation.Outcome.abort r ≠ B20.Foundation.Outcome.fault r'
+@B20.Foundation.Outcome.abort_ne_nonreturn : ∀ {r r' : String},
+  B20.Foundation.Outcome.abort r ≠ B20.Foundation.Outcome.nonreturn r'
+@B20.Foundation.Outcome.nonreturn_ne_fault : ∀ {r r' : String},
+  B20.Foundation.Outcome.nonreturn r ≠ B20.Foundation.Outcome.fault r'
+@B20.Foundation.Outcome.returned_ne_stuck : ∀ {r : Option B20.Foundation.Word64} {s : B20.Foundation.State}
+  {t : String}, B20.Foundation.Outcome.returned r s ≠ B20.Foundation.Outcome.stuck t
+@B20.Foundation.Outcome.stuck_ne_abort : ∀ {r r' : String},
+  B20.Foundation.Outcome.stuck r ≠ B20.Foundation.Outcome.abort r'
+@B20.Foundation.Outcome.stuck_ne_fault : ∀ {r r' : String},
+  B20.Foundation.Outcome.stuck r ≠ B20.Foundation.Outcome.fault r'
+@B20.Foundation.Outcome.stuck_ne_nonreturn : ∀ {r r' : String},
+  B20.Foundation.Outcome.stuck r ≠ B20.Foundation.Outcome.nonreturn r'
+B20.Foundation.Region.contains : B20.Foundation.Region → ℕ → Prop
+B20.Foundation.Region.legal : B20.Foundation.Region → B20.Foundation.Memory → Prop
+B20.Foundation.SpecExec : B20.Foundation.ModelStmt → B20.Foundation.State → B20.Foundation.Outcome → Prop
+B20.Foundation.State.loadLocal : B20.Foundation.State → String → Option B20.Foundation.Word64
+B20.Foundation.compile : B20.Foundation.CStmt → B20.Foundation.ModelStmt
+B20.Foundation.compile_refines : ∀ (p : B20.Foundation.CStmt) (s : B20.Foundation.State) (o : B20.Foundation.Outcome),
+  B20.Foundation.CExec p s o ↔ B20.Foundation.SpecExec (B20.Foundation.compile p) s o
+B20.Foundation.defaultABI : B20.Foundation.ABI
+B20.Foundation.evalExpr : B20.Foundation.State → B20.Foundation.CExpr → Option B20.Foundation.Word64
+B20.Foundation.evalStmt : B20.Foundation.CStmt → B20.Foundation.State → B20.Foundation.Outcome
+B20.Foundation.evalStmt_sound : ∀ (p : B20.Foundation.CStmt) (s : B20.Foundation.State),
+  B20.Foundation.CExec p s (B20.Foundation.evalStmt p s)
+B20.Foundation.evalStmt_sound_gen : ∀ (p : B20.Foundation.CStmt) (s : B20.Foundation.State)
+  (o : B20.Foundation.Outcome), B20.Foundation.evalStmt p s = o → B20.Foundation.CExec p s o
+B20.Foundation.initState : B20.Foundation.State
+B20.Foundation.u64Add : B20.Foundation.Word64 → B20.Foundation.Word64 → B20.Foundation.Word64
+B20.Foundation.u64Add_toNat : ∀ (x y : B20.Foundation.Word64),
+  BitVec.toNat (B20.Foundation.u64Add x y) = (BitVec.toNat x + BitVec.toNat y) % 2 ^ 64
+B20.Foundation.u64And : B20.Foundation.Word64 → B20.Foundation.Word64 → B20.Foundation.Word64
+B20.Foundation.u64Neg : B20.Foundation.Word64 → B20.Foundation.Word64
+B20.Foundation.u64ShiftRight : B20.Foundation.Word64 → ℕ → B20.Foundation.Word64
+B20.Foundation.u64Xor : B20.Foundation.Word64 → B20.Foundation.Word64 → B20.Foundation.Word64
+B20.Fpr.AddCallObligation : BitVec 64 → BitVec 64 → BitVec 64 → Prop
+B20.Fpr.DivObligation : BitVec 64 → BitVec 64 → BitVec 64 → Prop
+B20.Fpr.IrshDomain : BitVec 64 → BitVec 32 → Prop
+B20.Fpr.MulObligation : BitVec 64 → BitVec 64 → BitVec 64 → Prop
+B20.Fpr.Parsed.doubleProgram : B20.C.Scalar.Function
+B20.Fpr.Parsed.double_lex : B20.C.Scalar.tokenize (B20.Pinned.doubleChars.length + 1) B20.Pinned.doubleChars =
+  some B20.Pinned.doubleTokens
+B20.Fpr.Parsed.double_parses : B20.C.Scalar.parseFunction (B20.Fpr.Parsed.slice 177 6) =
+  some B20.Fpr.Parsed.doubleProgram
+B20.Fpr.Parsed.double_slice : B20.Fpr.Parsed.slice 177 6 = B20.Pinned.doubleChars
+B20.Fpr.Parsed.double_syntax : B20.C.Scalar.parseFunctionTokens B20.Pinned.doubleTokens =
+  some B20.Fpr.Parsed.doubleProgram
+B20.Fpr.Parsed.floorProgram : B20.C.Scalar.Function
+B20.Fpr.Parsed.floor_lex : B20.C.Scalar.tokenize (B20.Pinned.floorChars.length + 1) B20.Pinned.floorChars =
+  some B20.Pinned.floorTokens
+B20.Fpr.Parsed.floor_parses : B20.C.Scalar.parseFunction (B20.Fpr.Parsed.slice 116 19) =
+  some B20.Fpr.Parsed.floorProgram
+B20.Fpr.Parsed.floor_slice : B20.Fpr.Parsed.slice 116 19 = B20.Pinned.floorChars
+B20.Fpr.Parsed.floor_syntax : B20.C.Scalar.parseFunctionTokens B20.Pinned.floorTokens = some B20.Fpr.Parsed.floorProgram
+B20.Fpr.Parsed.halfProgram : B20.C.Scalar.Function
+B20.Fpr.Parsed.half_lex : B20.C.Scalar.tokenize (B20.Pinned.halfChars.length + 1) B20.Pinned.halfChars =
+  some B20.Pinned.halfTokens
+B20.Fpr.Parsed.half_parses : B20.C.Scalar.parseFunction (B20.Fpr.Parsed.slice 166 10) = some B20.Fpr.Parsed.halfProgram
+B20.Fpr.Parsed.half_slice : B20.Fpr.Parsed.slice 166 10 = B20.Pinned.halfChars
+B20.Fpr.Parsed.half_syntax : B20.C.Scalar.parseFunctionTokens B20.Pinned.halfTokens = some B20.Fpr.Parsed.halfProgram
+B20.Fpr.Parsed.negProgram : B20.C.Scalar.Function
+B20.Fpr.Parsed.neg_lex : B20.C.Scalar.tokenize (B20.Pinned.negChars.length + 1) B20.Pinned.negChars =
+  some B20.Pinned.negTokens
+B20.Fpr.Parsed.neg_parses : B20.C.Scalar.parseFunction (B20.Fpr.Parsed.slice 159 6) = some B20.Fpr.Parsed.negProgram
+B20.Fpr.Parsed.neg_slice : B20.Fpr.Parsed.slice 159 6 = B20.Pinned.negChars
+B20.Fpr.Parsed.neg_syntax : B20.C.Scalar.parseFunctionTokens B20.Pinned.negTokens = some B20.Fpr.Parsed.negProgram
+B20.Fpr.Parsed.packProgram : B20.C.Scalar.Function
+B20.Fpr.Parsed.pack_lex : B20.C.Scalar.tokenize (B20.Pinned.packChars.length + 1) B20.Pinned.packChars =
+  some B20.Pinned.packTokens
+B20.Fpr.Parsed.pack_parses : B20.C.Scalar.parseFunction (B20.Fpr.Parsed.slice 38 17) = some B20.Fpr.Parsed.packProgram
+B20.Fpr.Parsed.pack_slice : B20.Fpr.Parsed.slice 38 17 = B20.Pinned.packChars
+B20.Fpr.Parsed.pack_syntax : B20.C.Scalar.parseFunctionTokens B20.Pinned.packTokens = some B20.Fpr.Parsed.packProgram
+B20.Fpr.Parsed.rintProgram : B20.C.Scalar.Function
+B20.Fpr.Parsed.rint_lex : B20.C.Scalar.tokenize (B20.Pinned.rintChars.length + 1) B20.Pinned.rintChars =
+  some B20.Pinned.rintTokens
+B20.Fpr.Parsed.rint_parses : B20.C.Scalar.parseFunction (B20.Fpr.Parsed.slice 97 18) = some B20.Fpr.Parsed.rintProgram
+B20.Fpr.Parsed.rint_slice : B20.Fpr.Parsed.slice 97 18 = B20.Pinned.rintChars
+B20.Fpr.Parsed.rint_syntax : B20.C.Scalar.parseFunctionTokens B20.Pinned.rintTokens = some B20.Fpr.Parsed.rintProgram
+B20.Fpr.Parsed.slice : ℕ → ℕ → List Char
+B20.Fpr.Parsed.subProgram : B20.C.Scalar.Function
+B20.Fpr.Parsed.sub_lex : B20.C.Scalar.tokenize (B20.Pinned.subChars.length + 1) B20.Pinned.subChars =
+  some B20.Pinned.subTokens
+B20.Fpr.Parsed.sub_parses : B20.C.Scalar.parseFunction (B20.Fpr.Parsed.slice 152 6) = some B20.Fpr.Parsed.subProgram
+B20.Fpr.Parsed.sub_slice : B20.Fpr.Parsed.slice 152 6 = B20.Pinned.subChars
+B20.Fpr.Parsed.sub_syntax : B20.C.Scalar.parseFunctionTokens B20.Pinned.subTokens = some B20.Fpr.Parsed.subProgram
+B20.Fpr.ShiftCountDomain : BitVec 32 → Prop
+B20.Fpr.SqrtObligation : BitVec 64 → BitVec 64 → Prop
+B20.Fpr.UlshDomain : BitVec 64 → BitVec 32 → Prop
+B20.Fpr.UrshDomain : BitVec 64 → BitVec 32 → Prop
+B20.Fpr.cast_i32_1_u64 : B20.C.cast B20.C.Ty.u64 (B20.C.Val.i32 1) = B20.C.Val.u64 1
+B20.Fpr.cast_i32_63_u64 : B20.C.cast B20.C.Ty.u64 (B20.C.Val.i32 63) = B20.C.Val.u64 63
+B20.Fpr.doubleSpec : BitVec 64 → BitVec 64
+B20.Fpr.double_execution : ∀ (x : BitVec 64),
+  B20.C.Scalar.execute B20.C.Scalar.shiftCalls B20.Fpr.Parsed.doubleProgram [B20.C.Val.u64 x] =
+    some (B20.C.Val.u64 (B20.Fpr.doubleSpec x))
+B20.Fpr.e_toNat_of_range : ∀ (e : BitVec 32),
+  13 ≤ e.toInt ∧ e.toInt ≤ 1085 → ↑e.toNat = e.toInt ∧ 13 ≤ e.toNat ∧ e.toNat ≤ 1085
+B20.Fpr.floorDomain : BitVec 64 → Prop
+B20.Fpr.floorSpec : BitVec 64 → BitVec 64
+B20.Fpr.floor_execution : ∀ (x : BitVec 64),
+  B20.Fpr.floorDomain x →
+    B20.C.Scalar.execute B20.C.Scalar.shiftCalls B20.Fpr.Parsed.floorProgram [B20.C.Val.u64 x] =
+      some (B20.C.Val.i64 (B20.Fpr.floorSpec x))
+B20.Fpr.floor_irsh_domain : ∀ (x : BitVec 64), B20.Fpr.IrshDomain (B20.Fpr.floor_xi0 x) (B20.Fpr.rint_e2 x)
+B20.Fpr.floor_mask : BitVec 32 → BitVec 64
+B20.Fpr.floor_mask_all : ∀ (cc : BitVec 32),
+  64 ≤ cc.toNat ∧ cc.toNat < 2 ^ 31 → B20.Fpr.floor_mask cc = BitVec.allOnes 64
+B20.Fpr.floor_mask_fold : ∀ (cc : BitVec 32), -BitVec.setWidth 64 ((63#32 - cc) >>> 31) = B20.Fpr.floor_mask cc
+B20.Fpr.floor_mask_zero : ∀ (cc : BitVec 32), cc.toNat ≤ 63 → B20.Fpr.floor_mask cc = 0#64
+B20.Fpr.floor_sub63_safe : ∀ (cc : BitVec 32),
+  13 ≤ cc.toInt ∧ cc.toInt ≤ 1085 →
+    B20.C.signedBitsOp B20.C.BinOp.sub (63#32) cc = B20.C.bitsOp B20.C.BinOp.sub (63#32) cc ∧
+      (63#32 - cc).toInt = 63 - cc.toInt
+B20.Fpr.floor_t : BitVec 64 → BitVec 64
+B20.Fpr.floor_t_range : ∀ (x : BitVec 64), (B20.Fpr.floor_t x).toNat ≤ 1
+B20.Fpr.floor_xi0 : BitVec 64 → BitVec 64
+B20.Fpr.floor_xi1 : BitVec 64 → BitVec 64
+B20.Fpr.halfSpec : BitVec 64 → BitVec 64
+B20.Fpr.half_execution : ∀ (x : BitVec 64),
+  B20.C.Scalar.execute B20.C.Scalar.shiftCalls B20.Fpr.Parsed.halfProgram [B20.C.Val.u64 x] =
+    some (B20.C.Val.u64 (B20.Fpr.halfSpec x))
+B20.Fpr.irsh_call_of_toNat : ∀ (a : BitVec 64) (c : BitVec 32),
+  c.toNat < 64 →
+    B20.C.Scalar.shiftCalls "fpr_irsh".toList [B20.C.Val.i64 a, B20.C.Val.i32 c] =
+      some (B20.C.Val.i64 (a.sshiftRight c.toNat))
+B20.Fpr.lit1085_int : (1085#32).toInt = 1085
+B20.Fpr.lit_allOnes64 : 18446744073709551615#64 = BitVec.allOnes 64
+B20.Fpr.m0_lt : ∀ (x : BitVec 64), (B20.Fpr.rint_m0 x).toNat < 2 ^ 63
+B20.Fpr.negSpec : BitVec 64 → BitVec 64
+B20.Fpr.neg_execution : ∀ (x : BitVec 64),
+  B20.C.Scalar.execute B20.C.Scalar.shiftCalls B20.Fpr.Parsed.negProgram [B20.C.Val.u64 x] =
+    some (B20.C.Val.u64 (B20.Fpr.negSpec x))
+B20.Fpr.packDomain : BitVec 32 → BitVec 32 → Prop
+B20.Fpr.packSpec : BitVec 32 → BitVec 32 → BitVec 64 → BitVec 64
+B20.Fpr.pack_add_bits : ∀ (e : BitVec 32),
+  -2 ^ 31 ≤ e.toInt + 1076 ∧ e.toInt + 1076 < 2 ^ 31 →
+    B20.C.signedBitsOp B20.C.BinOp.add e 1076#32 = B20.C.bitsOp B20.C.BinOp.add e 1076#32
+B20.Fpr.pack_add_safe : ∀ (e : BitVec 32),
+  -2 ^ 31 ≤ e.toInt + 1076 ∧ e.toInt + 1076 < 2 ^ 31 → B20.C.signedSafe B20.C.BinOp.add e 1076#32 = true
+B20.Fpr.pack_and7_lt : ∀ (n : ℕ), n &&& 7 < 32
+B20.Fpr.pack_execution : ∀ (s e : BitVec 32) (m : BitVec 64),
+  B20.Fpr.packDomain s e →
+    B20.C.Scalar.execute B20.C.Scalar.shiftCalls B20.Fpr.Parsed.packProgram
+        [B20.C.Val.i32 s, B20.C.Val.i32 e, B20.C.Val.u64 m] =
+      some (B20.C.Val.u64 (B20.Fpr.packSpec s e m))
+B20.Fpr.pack_f_range : ∀ (x : BitVec 64), (BitVec.setWidth 32 x &&& 7#32).toNat < 32
+B20.Fpr.pack_neg_defined : ∀ (m : BitVec 64),
+  B20.C.neg (B20.C.Val.i32 (BitVec.setWidth 32 (m >>> 54))) = some (B20.C.Val.i32 (-BitVec.setWidth 32 (m >>> 54)))
+B20.Fpr.pack_t_range : ∀ (m : BitVec 64), (BitVec.setWidth 32 (m >>> 54)).toNat < 2 ^ 31
+B20.Fpr.parsedCallSites : List (B20.C.Name × B20.C.Name)
+B20.Fpr.rintDomain : BitVec 64 → Prop
+B20.Fpr.rintSpec : BitVec 64 → BitVec 64
+B20.Fpr.rint_d : BitVec 64 → BitVec 64
+B20.Fpr.rint_dd : BitVec 64 → BitVec 32
+B20.Fpr.rint_e : BitVec 64 → BitVec 32
+B20.Fpr.rint_e2 : BitVec 64 → BitVec 32
+B20.Fpr.rint_e2_range : ∀ (e : BitVec 32), (e &&& 63#32).toNat < 64 ∧ 0 ≤ (e &&& 63#32).toInt ∧ (e &&& 63#32).toInt ≤ 63
+B20.Fpr.rint_e_int : ∀ (x : BitVec 64),
+  (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toInt =
+      ↑1085 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32).toInt ∧
+    -↑962 ≤ (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toInt ∧
+      (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toInt ≤ 1085
+B20.Fpr.rint_e_nat : ∀ (x : BitVec 64),
+  B20.Fpr.rintDomain x →
+    ↑(1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toNat =
+        (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toInt ∧
+      13 ≤ (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toNat ∧
+        (1085#32 - (BitVec.setWidth 32 (x >>> 52) &&& 2047#32)).toNat ≤ 1085
+B20.Fpr.rint_execution : ∀ (x : BitVec 64),
+  B20.Fpr.rintDomain x →
+    B20.C.Scalar.execute B20.C.Scalar.shiftCalls B20.Fpr.Parsed.rintProgram [B20.C.Val.u64 x] =
+      some (B20.C.Val.i64 (B20.Fpr.rintSpec x))
+B20.Fpr.rint_f : BitVec 64 → BitVec 32
+B20.Fpr.rint_f_range : ∀ (d : BitVec 64) (dd : BitVec 32),
+  (BitVec.setWidth 32 (d >>> 61) ||| (dd ||| -dd) >>> 31).toNat < 32
+B20.Fpr.rint_m0 : BitVec 64 → BitVec 64
+B20.Fpr.rint_m1 : BitVec 64 → BitVec 64
+B20.Fpr.rint_m2 : BitVec 64 → BitVec 64
+B20.Fpr.rint_m2_big : ∀ (x : BitVec 64),
+  B20.Fpr.rintDomain x → ¬(B20.Fpr.rint_e x).toNat < 64 → (B20.Fpr.rint_m2 x).toNat < 2 ^ 63 - 1
+B20.Fpr.rint_m2_small : ∀ (x : BitVec 64),
+  B20.Fpr.rintDomain x → (B20.Fpr.rint_e x).toNat < 64 → (B20.Fpr.rint_m2 x).toNat < 2 ^ 63 - 1
+B20.Fpr.rint_mask : BitVec 32 → BitVec 64
+B20.Fpr.rint_mask_all : ∀ (e : BitVec 32), e.toNat < 64 → B20.Fpr.rint_mask e = BitVec.allOnes 64
+B20.Fpr.rint_mask_zero : ∀ (e : BitVec 32), 64 ≤ e.toNat ∧ e.toNat < 2 ^ 31 → B20.Fpr.rint_mask e = 0#64
+B20.Fpr.rint_s : BitVec 64 → BitVec 32
+B20.Fpr.rint_s_range : ∀ (x : BitVec 64), (BitVec.setWidth 32 (x >>> 63)).toNat ≤ 1
+B20.Fpr.rint_sub63_count : ∀ (e2 : BitVec 32), 0 ≤ e2.toInt ∧ e2.toInt ≤ 63 → (63#32 - e2).toNat < 64
+B20.Fpr.rint_sub63_safe : ∀ (e2 : BitVec 32),
+  0 ≤ e2.toInt ∧ e2.toInt ≤ 63 →
+    B20.C.signedBitsOp B20.C.BinOp.sub (63#32) e2 = B20.C.bitsOp B20.C.BinOp.sub (63#32) e2 ∧
+      (63#32 - e2).toInt = 63 - e2.toInt
+B20.Fpr.rint_ulsh_domain : ∀ (x : BitVec 64),
+  0 ≤ (B20.Fpr.rint_e2 x).toInt ∧ (B20.Fpr.rint_e2 x).toInt ≤ 63 →
+    B20.Fpr.UlshDomain (B20.Fpr.rint_m1 x) (63#32 - B20.Fpr.rint_e2 x)
+B20.Fpr.rint_ursh_domain : ∀ (x : BitVec 64), B20.Fpr.UrshDomain (B20.Fpr.rint_m1 x) (B20.Fpr.rint_e2 x)
+B20.Fpr.rint_y : BitVec 64 → BitVec 32
+B20.Fpr.rint_y_int : ∀ (x : BitVec 64),
+  ↑0 ≤ (BitVec.setWidth 32 (x >>> 52) &&& 2047#32).toInt ∧ (BitVec.setWidth 32 (x >>> 52) &&& 2047#32).toInt ≤ 2047
+B20.Fpr.rint_y_range : ∀ (x : BitVec 64), (BitVec.setWidth 32 (x >>> 52) &&& 2047#32).toNat < 2048
+B20.Fpr.signedBits_band32 : ∀ (x y : BitVec 32),
+  B20.C.signedBitsOp B20.C.BinOp.band x y = B20.C.bitsOp B20.C.BinOp.band x y
+B20.Fpr.signedBits_band64 : ∀ (x y : BitVec 64),
+  B20.C.signedBitsOp B20.C.BinOp.band x y = B20.C.bitsOp B20.C.BinOp.band x y
+B20.Fpr.signedBits_xor64 : ∀ (x y : BitVec 64),
+  B20.C.signedBitsOp B20.C.BinOp.xor x y = B20.C.bitsOp B20.C.BinOp.xor x y
+B20.Fpr.sub_execution : ∀ (calls : B20.C.Scalar.Calls) (x y w : BitVec 64),
+  calls "fpr_add".toList [B20.C.Val.u64 x, B20.C.Val.u64 (y ^^^ 1 <<< 63)] = some (B20.C.Val.u64 w) →
+    B20.C.Scalar.execute calls B20.Fpr.Parsed.subProgram [B20.C.Val.u64 x, B20.C.Val.u64 y] = some (B20.C.Val.u64 w)
+B20.Fpr.sub_refines_via_add_obligation : ∀ (x y w : BitVec 64),
+  B20.Fpr.AddCallObligation x (y ^^^ 1 <<< 63) w →
+    B20.C.Scalar.execute B20.C.Scalar.shiftCalls B20.Fpr.Parsed.subProgram [B20.C.Val.u64 x, B20.C.Val.u64 y] =
+      some (B20.C.Val.u64 w)
+B20.Fpr.ulsh_call_of_toNat : ∀ (m1 : BitVec 64) (c : BitVec 32),
+  c.toNat < 64 →
+    B20.C.Scalar.shiftCalls "fpr_ulsh".toList [B20.C.Val.u64 m1, B20.C.Val.i32 c] =
+      some (B20.C.Val.u64 (m1 <<< c.toNat))
+B20.Fpr.ursh_call_of_toNat : ∀ (m1 : BitVec 64) (c : BitVec 32),
+  c.toNat < 64 →
+    B20.C.Scalar.shiftCalls "fpr_ursh".toList [B20.C.Val.u64 m1, B20.C.Val.i32 c] =
+      some (B20.C.Val.u64 (m1 >>> c.toNat))
+B20.Pinned.dec64leChars : List Char
+B20.Pinned.dec64leLines : List String
+B20.Pinned.dec64leTokens : List (List Char)
+B20.Pinned.doubleChars : List Char
+B20.Pinned.doubleLines : List String
+B20.Pinned.doubleTokens : List (List Char)
+B20.Pinned.enc64leChars : List Char
+B20.Pinned.enc64leLines : List String
+B20.Pinned.enc64leTokens : List (List Char)
+B20.Pinned.floorChars : List Char
+B20.Pinned.floorLines : List String
+B20.Pinned.floorTokens : List (List Char)
+B20.Pinned.halfChars : List Char
+B20.Pinned.halfLines : List String
+B20.Pinned.halfTokens : List (List Char)
+B20.Pinned.headerChunk0 : List String
+B20.Pinned.headerChunk1 : List String
+B20.Pinned.headerChunk10 : List String
+B20.Pinned.headerChunk11 : List String
+B20.Pinned.headerChunk12 : List String
+B20.Pinned.headerChunk13 : List String
+B20.Pinned.headerChunk14 : List String
+B20.Pinned.headerChunk15 : List String
+B20.Pinned.headerChunk16 : List String
+B20.Pinned.headerChunk17 : List String
+B20.Pinned.headerChunk18 : List String
+B20.Pinned.headerChunk19 : List String
+B20.Pinned.headerChunk2 : List String
+B20.Pinned.headerChunk20 : List String
+B20.Pinned.headerChunk21 : List String
+B20.Pinned.headerChunk22 : List String
+B20.Pinned.headerChunk23 : List String
+B20.Pinned.headerChunk24 : List String
+B20.Pinned.headerChunk25 : List String
+B20.Pinned.headerChunk26 : List String
+B20.Pinned.headerChunk27 : List String
+B20.Pinned.headerChunk28 : List String
+B20.Pinned.headerChunk29 : List String
+B20.Pinned.headerChunk3 : List String
+B20.Pinned.headerChunk30 : List String
+B20.Pinned.headerChunk31 : List String
+B20.Pinned.headerChunk32 : List String
+B20.Pinned.headerChunk33 : List String
+B20.Pinned.headerChunk34 : List String
+B20.Pinned.headerChunk35 : List String
+B20.Pinned.headerChunk36 : List String
+B20.Pinned.headerChunk37 : List String
+B20.Pinned.headerChunk38 : List String
+B20.Pinned.headerChunk39 : List String
+B20.Pinned.headerChunk4 : List String
+B20.Pinned.headerChunk40 : List String
+B20.Pinned.headerChunk41 : List String
+B20.Pinned.headerChunk42 : List String
+B20.Pinned.headerChunk43 : List String
+B20.Pinned.headerChunk44 : List String
+B20.Pinned.headerChunk45 : List String
+B20.Pinned.headerChunk46 : List String
+B20.Pinned.headerChunk47 : List String
+B20.Pinned.headerChunk48 : List String
+B20.Pinned.headerChunk49 : List String
+B20.Pinned.headerChunk5 : List String
+B20.Pinned.headerChunk50 : List String
+B20.Pinned.headerChunk51 : List String
+B20.Pinned.headerChunk52 : List String
+B20.Pinned.headerChunk53 : List String
+B20.Pinned.headerChunk54 : List String
+B20.Pinned.headerChunk55 : List String
+B20.Pinned.headerChunk56 : List String
+B20.Pinned.headerChunk57 : List String
+B20.Pinned.headerChunk58 : List String
+B20.Pinned.headerChunk59 : List String
+B20.Pinned.headerChunk6 : List String
+B20.Pinned.headerChunk60 : List String
+B20.Pinned.headerChunk61 : List String
+B20.Pinned.headerChunk62 : List String
+B20.Pinned.headerChunk63 : List String
+B20.Pinned.headerChunk64 : List String
+B20.Pinned.headerChunk65 : List String
+B20.Pinned.headerChunk66 : List String
+B20.Pinned.headerChunk67 : List String
+B20.Pinned.headerChunk68 : List String
+B20.Pinned.headerChunk69 : List String
+B20.Pinned.headerChunk7 : List String
+B20.Pinned.headerChunk70 : List String
+B20.Pinned.headerChunk8 : List String
+B20.Pinned.headerChunk9 : List String
+B20.Pinned.headerLines : List String
+B20.Pinned.irshChars : List Char
+B20.Pinned.irshTokens : List (List Char)
+B20.Pinned.negChars : List Char
+B20.Pinned.negLines : List String
+B20.Pinned.negTokens : List (List Char)
+B20.Pinned.packChars : List Char
+B20.Pinned.packLines : List String
+B20.Pinned.packTokens : List (List Char)
+B20.Pinned.rintChars : List Char
+B20.Pinned.rintLines : List String
+B20.Pinned.rintTokens : List (List Char)
+B20.Pinned.shakeChunk0 : List String
+B20.Pinned.shakeChunk1 : List String
+B20.Pinned.shakeChunk10 : List String
+B20.Pinned.shakeChunk11 : List String
+B20.Pinned.shakeChunk12 : List String
+B20.Pinned.shakeChunk13 : List String
+B20.Pinned.shakeChunk14 : List String
+B20.Pinned.shakeChunk15 : List String
+B20.Pinned.shakeChunk16 : List String
+B20.Pinned.shakeChunk17 : List String
+B20.Pinned.shakeChunk18 : List String
+B20.Pinned.shakeChunk19 : List String
+B20.Pinned.shakeChunk2 : List String
+B20.Pinned.shakeChunk3 : List String
+B20.Pinned.shakeChunk4 : List String
+B20.Pinned.shakeChunk5 : List String
+B20.Pinned.shakeChunk6 : List String
+B20.Pinned.shakeChunk7 : List String
+B20.Pinned.shakeChunk8 : List String
+B20.Pinned.shakeChunk9 : List String
+B20.Pinned.shakeLines : List String
+B20.Pinned.subChars : List Char
+B20.Pinned.subLines : List String
+B20.Pinned.subTokens : List (List Char)
+B20.Pinned.ulshChars : List Char
+B20.Pinned.ulshTokens : List (List Char)
+B20.Pinned.urshChars : List Char
+B20.Pinned.urshTokens : List (List Char)
+B20.Word.LE.bufferBytes : B20.C.Byte.Memory → B20.C.Byte.Pointer → Fin 8 → B20.C.Byte.U8
+B20.Word.LE.bufferBytes_spec : ∀ (m : B20.C.Byte.Memory) (p : B20.C.Byte.Pointer),
+  B20.C.Byte.ReadRegion m p → B20.C.Byte.RegionBytes m p (B20.Word.LE.bufferBytes m p)
+B20.Word.LE.byteOf : B20.C.Byte.U64 → Fin 8 → B20.C.Byte.U8
+B20.Word.LE.decProgram : B20.C.Byte.Function
+B20.Word.LE.decState : B20.C.Byte.Memory → B20.C.Byte.Pointer → B20.C.Byte.State
+B20.Word.LE.dec_execution : ∀ (m : B20.C.Byte.Memory) (p : B20.C.Byte.Pointer) (b : Fin 8 → B20.C.Byte.U8),
+  B20.C.Byte.ReadRegion m p →
+    B20.C.Byte.RegionBytes m p b →
+      B20.C.Byte.execute B20.Word.LE.decProgram m [B20.C.Byte.Arg.pointer p] = some (some (B20.Word.LE.join b), m)
+B20.Word.LE.dec_lex : B20.C.tokenize (B20.Pinned.dec64leChars.length + 1) B20.Pinned.dec64leChars =
+  some B20.Pinned.dec64leTokens
+B20.Word.LE.dec_parses : B20.C.Byte.parseFunction (B20.Word.LE.slice B20.Pinned.shakeLines 56 15) =
+  some B20.Word.LE.decProgram
+B20.Word.LE.dec_prefix : ∀ (m : B20.C.Byte.Memory) (p : B20.C.Byte.Pointer),
+  B20.C.Byte.execute B20.Word.LE.decProgram m [B20.C.Byte.Arg.pointer p] =
+    B20.C.Byte.evalBody true [B20.C.Byte.Statement.ret B20.Word.LE.decodeExpr] (B20.Word.LE.decState m p)
+B20.Word.LE.dec_slice : B20.Word.LE.slice B20.Pinned.shakeLines 56 15 = B20.Pinned.dec64leChars
+B20.Word.LE.dec_syntax : B20.C.Byte.parseFunctionTokens B20.Pinned.dec64leTokens = some B20.Word.LE.decProgram
+B20.Word.LE.decodeExpr : B20.C.Byte.Expr
+B20.Word.LE.decodeExpr_eval : ∀ (s : B20.C.Byte.State) (b : Fin 8 → B20.C.Byte.U8),
+  (∀ (i : Fin 8),
+      B20.C.Byte.evalExpr s (B20.Word.LE.loadTerm ↑i) =
+        some (B20.C.Byte.Value.word (BitVec.setWidth 64 (b i) <<< (8 * ↑i)))) →
+    B20.C.Byte.evalExpr s B20.Word.LE.decodeExpr = some (B20.C.Byte.Value.word (B20.Word.LE.orWord b))
+B20.Word.LE.encProgram : B20.C.Byte.Function
+B20.Word.LE.encState : B20.C.Byte.Memory → B20.C.Byte.Pointer → B20.C.Byte.U64 → B20.C.Byte.State
+B20.Word.LE.enc_execution : ∀ (m : B20.C.Byte.Memory) (p : B20.C.Byte.Pointer) (w : B20.C.Byte.U64),
+  B20.C.Byte.WriteRegion m p →
+    B20.C.Byte.execute B20.Word.LE.encProgram m [B20.C.Byte.Arg.pointer p, B20.C.Byte.Arg.word w] =
+      some (none, B20.Word.LE.stored m p w)
+B20.Word.LE.enc_lex : B20.C.tokenize (B20.Pinned.enc64leChars.length + 1) B20.Pinned.enc64leChars =
+  some B20.Pinned.enc64leTokens
+B20.Word.LE.enc_parses : B20.C.Byte.parseFunction (B20.Word.LE.slice B20.Pinned.shakeLines 75 15) =
+  some B20.Word.LE.encProgram
+B20.Word.LE.enc_prefix : ∀ (m : B20.C.Byte.Memory) (p : B20.C.Byte.Pointer) (w : B20.C.Byte.U64),
+  B20.C.Byte.execute B20.Word.LE.encProgram m [B20.C.Byte.Arg.pointer p, B20.C.Byte.Arg.word w] =
+    B20.C.Byte.evalBody false (List.map B20.Word.LE.storeStatement B20.Word.LE.indices) (B20.Word.LE.encState m p w)
+B20.Word.LE.enc_slice : B20.Word.LE.slice B20.Pinned.shakeLines 75 15 = B20.Pinned.enc64leChars
+B20.Word.LE.enc_syntax : B20.C.Byte.parseFunctionTokens B20.Pinned.enc64leTokens = some B20.Word.LE.encProgram
+B20.Word.LE.indices : List (Fin 8)
+B20.Word.LE.join : (Fin 8 → B20.C.Byte.U8) → B20.C.Byte.U64
+B20.Word.LE.join_byteOf : ∀ (w : B20.C.Byte.U64), B20.Word.LE.join (B20.Word.LE.byteOf w) = w
+B20.Word.LE.loadTerm : ℕ → B20.C.Byte.Expr
+B20.Word.LE.loadTerm_eval : ∀ (m : B20.C.Byte.Memory) (p : B20.C.Byte.Pointer) (b : Fin 8 → B20.C.Byte.U8),
+  B20.C.Byte.ReadRegion m p →
+    B20.C.Byte.RegionBytes m p b →
+      ∀ (i : Fin 8),
+        B20.C.Byte.evalExpr (B20.Word.LE.decState m p) (B20.Word.LE.loadTerm ↑i) =
+          some (B20.C.Byte.Value.word (BitVec.setWidth 64 (b i) <<< (8 * ↑i)))
+B20.Word.LE.orWord : (Fin 8 → B20.C.Byte.U8) → B20.C.Byte.U64
+B20.Word.LE.orWord_eq_join : ∀ (b : Fin 8 → B20.C.Byte.U8), B20.Word.LE.orWord b = B20.Word.LE.join b
+B20.Word.LE.or_left_comm : ∀ (x y z : B20.C.Byte.U64), x ||| (y ||| z) = y ||| (x ||| z)
+B20.Word.LE.slice : List String → ℕ → ℕ → List Char
+B20.Word.LE.storeBytes : B20.C.Byte.Pointer → B20.C.Byte.U64 → List (Fin 8) → B20.C.Byte.Memory → B20.C.Byte.Memory
+B20.Word.LE.storeBytes_frame : ∀ (p q : B20.C.Byte.Pointer) (w : B20.C.Byte.U64) (is : List (Fin 8))
+  (m : B20.C.Byte.Memory), (∀ (i : Fin 8), q ≠ p.add ↑i) → (B20.Word.LE.storeBytes p w is m).contents q = m.contents q
+B20.Word.LE.storeBytes_preserves_write : ∀ (p : B20.C.Byte.Pointer) (w : B20.C.Byte.U64) (is : List (Fin 8))
+  (m : B20.C.Byte.Memory), B20.C.Byte.WriteRegion m p → B20.C.Byte.WriteRegion (B20.Word.LE.storeBytes p w is m) p
+B20.Word.LE.storeStatement : Fin 8 → B20.C.Byte.Statement
+B20.Word.LE.storeTerm : ℕ → B20.C.Byte.Expr
+B20.Word.LE.storeTerm_eval : ∀ (s : B20.C.Byte.State) (w : B20.C.Byte.U64),
+  s.words ['x'] = some w →
+    ∀ (i : Fin 8),
+      B20.C.Byte.evalExpr s (B20.Word.LE.storeTerm ↑i) = some (B20.C.Byte.Value.byte (B20.Word.LE.byteOf w i))
+B20.Word.LE.store_step : ∀ (s : B20.C.Byte.State) (p : B20.C.Byte.Pointer) (w : B20.C.Byte.U64),
+  s.pointers "buf".toList = some (false, some p) →
+    s.words ['x'] = some w →
+      B20.C.Byte.WriteRegion s.memory p →
+        ∀ (i : Fin 8),
+          B20.C.Byte.step s (B20.Word.LE.storeStatement i) =
+            some
+              { memory := B20.C.Byte.putByte s.memory (p.add ↑i) (B20.Word.LE.byteOf w i), pointers := s.pointers,
+                words := s.words }
+B20.Word.LE.stored : B20.C.Byte.Memory → B20.C.Byte.Pointer → B20.C.Byte.U64 → B20.C.Byte.Memory
+B20.Word.LE.stored_bytes : ∀ (m : B20.C.Byte.Memory) (p : B20.C.Byte.Pointer) (w : B20.C.Byte.U64),
+  B20.C.Byte.RegionBytes (B20.Word.LE.stored m p w) p (B20.Word.LE.byteOf w)
+B20.Word.LE.stores_execution : ∀ (is : List (Fin 8)) (s : B20.C.Byte.State) (p : B20.C.Byte.Pointer)
+  (w : B20.C.Byte.U64),
+  s.pointers "buf".toList = some (false, some p) →
+    s.words ['x'] = some w →
+      B20.C.Byte.WriteRegion s.memory p →
+        B20.C.Byte.evalBody false (List.map B20.Word.LE.storeStatement is) s =
+          some (none, B20.Word.LE.storeBytes p w is s.memory)
+B20.Word.brokenShiftFunction : ℕ → ℕ → B20.C.Function
+B20.Word.byteAt_write : ∀ (m : B20.Foundation.Memory) (base : ℕ) (v : B20.Foundation.Word64),
+  ∀ i < 8, (m.writeU64 base v).byteAt (base + i) = BitVec.toNat v / 2 ^ (8 * i) % 256
+B20.Word.byteExpansion : ℕ → ℕ
+B20.Word.byteExpansion_eq : ∀ (n : ℕ), B20.Word.byteExpansion n = n % 18446744073709551616
+B20.Word.c_invalid_count_rejected : B20.C.shift B20.C.BinOp.shr (B20.C.Val.u64 1) 64 = none ∧
+  B20.C.shift B20.C.BinOp.shr (B20.C.Val.u64 1) 4294967295 = none
+B20.Word.c_signed_negation_overflow_rejected : B20.C.neg (B20.C.Val.i64 9223372036854775808) = none ∧
+  B20.C.neg (B20.C.Val.i32 2147483648) = none
+B20.Word.count_mask_mutation_witness : B20.C.execute (B20.Word.brokenShiftFunction 32 30)
+      [B20.C.Val.u64 1, B20.C.Val.i32 1] =
+    some (B20.C.Val.u64 1) ∧
+  B20.C.execute B20.Word.urshFunction [B20.C.Val.u64 1, B20.C.Val.i32 1] = some (B20.C.Val.u64 0)
+B20.Word.foldl_eight : ∀ (f : ℕ → ℕ),
+  List.foldl (fun acc i => acc + f i) 0 (List.range 8) = 0 + f 0 + f 1 + f 2 + f 3 + f 4 + f 5 + f 6 + f 7
+B20.Word.foldl_equal_on : ∀ (xs : List ℕ) (f g : ℕ → ℕ → ℕ),
+  (∀ (a i : ℕ), i ∈ xs → f a i = g a i) → ∀ (a : ℕ), List.foldl f a xs = List.foldl g a xs
+B20.Word.irsh : BitVec 64 → ℕ → BitVec 64
+B20.Word.irshFunction : B20.C.Function
+B20.Word.irsh_execution : ∀ (x : BitVec 64) (n : Fin 64),
+  B20.C.execute B20.Word.irshFunction [B20.C.Val.i64 x, B20.C.Val.i32 (BitVec.ofNat 32 ↑n)] =
+    some (B20.C.Val.i64 (B20.Word.irsh x ↑n))
+B20.Word.irsh_refines : ∀ (x : BitVec 64), ∀ n < 64, B20.Word.irsh x n = x.sshiftRight n
+B20.Word.load_le_refines : ∀ (m : B20.C.Byte.Memory) (p : B20.C.Byte.Pointer),
+  B20.C.Byte.ReadRegion m p →
+    ∀ (result : Option B20.C.Byte.U64) (final : B20.C.Byte.Memory),
+      B20.C.Byte.CExec B20.Word.LE.decProgram m [B20.C.Byte.Arg.pointer p] result final ↔
+        result = some (B20.Word.LE.join (B20.Word.LE.bufferBytes m p)) ∧ final = m
+B20.Word.load_store_le_refines : ∀ (m : B20.C.Byte.Memory) (p : B20.C.Byte.Pointer) (w : B20.C.Byte.U64),
+  B20.C.Byte.WriteRegion m p →
+    B20.C.Byte.parseFunction (B20.Word.LE.slice B20.Pinned.shakeLines 56 15) = some B20.Word.LE.decProgram ∧
+      B20.C.Byte.parseFunction (B20.Word.LE.slice B20.Pinned.shakeLines 75 15) = some B20.Word.LE.encProgram ∧
+        (∀ (result : Option B20.C.Byte.U64) (final : B20.C.Byte.Memory),
+            B20.C.Byte.CExec B20.Word.LE.decProgram m [B20.C.Byte.Arg.pointer p] result final ↔
+              result = some (B20.Word.LE.join (B20.Word.LE.bufferBytes m p)) ∧ final = m) ∧
+          (∀ (result : Option B20.C.Byte.U64) (final : B20.C.Byte.Memory),
+              B20.C.Byte.CExec B20.Word.LE.encProgram m [B20.C.Byte.Arg.pointer p, B20.C.Byte.Arg.word w] result final ↔
+                result = none ∧ final = B20.Word.LE.stored m p w) ∧
+            B20.C.Byte.RegionBytes (B20.Word.LE.stored m p w) p (B20.Word.LE.byteOf w) ∧
+              B20.C.Byte.CExec B20.Word.LE.decProgram (B20.Word.LE.stored m p w) [B20.C.Byte.Arg.pointer p] (some w)
+                  (B20.Word.LE.stored m p w) ∧
+                (∀ (q : B20.C.Byte.Pointer),
+                    q.block ≠ p.block ∨ q.offset < p.offset ∨ p.offset + 8 ≤ q.offset →
+                      (B20.Word.LE.stored m p w).contents q = m.contents q) ∧
+                  (B20.Word.LE.stored m p w).length = m.length ∧ (B20.Word.LE.stored m p w).writable = m.writable
+B20.Word.model_load_store_roundtrip : ∀ (s : B20.Foundation.State) (base : ℕ) (v : B20.Foundation.Word64),
+  B20.Foundation.CExec
+    ((B20.Foundation.CStmt.storeU64 base (B20.Foundation.CExpr.const v)).seq
+      (B20.Foundation.CStmt.ret (B20.Foundation.CExpr.loadU64 base)))
+    s (B20.Foundation.Outcome.returned (some v) { mem := s.mem.writeU64 base v, locals := s.locals })
+B20.Word.parser_unsupported_operator_rejected : B20.C.tokenize 10 ['x', '+', '1'] = none
+B20.Word.pinned_irsh_lex : B20.C.tokenize (B20.Pinned.irshChars.length + 1) B20.Pinned.irshChars =
+  some B20.Pinned.irshTokens
+B20.Word.pinned_irsh_parses : B20.C.parseFunction (B20.Word.slice B20.Pinned.headerLines 24 6) =
+  some B20.Word.irshFunction
+B20.Word.pinned_irsh_refines : ∀ (x : BitVec 64) (n : Fin 64),
+  ∃ f,
+    B20.C.parseFunction (B20.Word.slice B20.Pinned.headerLines 24 6) = some f ∧
+      B20.C.CExec f [B20.C.Val.i64 x, B20.C.Val.i32 (BitVec.ofNat 32 ↑n)] (B20.C.Val.i64 (x.sshiftRight ↑n))
+B20.Word.pinned_irsh_slice : B20.Word.slice B20.Pinned.headerLines 24 6 = B20.Pinned.irshChars
+B20.Word.pinned_irsh_syntax : B20.C.parseFunctionTokens B20.Pinned.irshTokens = some B20.Word.irshFunction
+B20.Word.pinned_ulsh_lex : B20.C.tokenize (B20.Pinned.ulshChars.length + 1) B20.Pinned.ulshChars =
+  some B20.Pinned.ulshTokens
+B20.Word.pinned_ulsh_parses : B20.C.parseFunction (B20.Word.slice B20.Pinned.headerLines 31 6) =
+  some B20.Word.ulshFunction
+B20.Word.pinned_ulsh_refines : ∀ (x : BitVec 64) (n : Fin 64),
+  ∃ f,
+    B20.C.parseFunction (B20.Word.slice B20.Pinned.headerLines 31 6) = some f ∧
+      B20.C.CExec f [B20.C.Val.u64 x, B20.C.Val.i32 (BitVec.ofNat 32 ↑n)] (B20.C.Val.u64 (x <<< ↑n))
+B20.Word.pinned_ulsh_slice : B20.Word.slice B20.Pinned.headerLines 31 6 = B20.Pinned.ulshChars
+B20.Word.pinned_ulsh_syntax : B20.C.parseFunctionTokens B20.Pinned.ulshTokens = some B20.Word.ulshFunction
+B20.Word.pinned_ursh_lex : B20.C.tokenize (B20.Pinned.urshChars.length + 1) B20.Pinned.urshChars =
+  some B20.Pinned.urshTokens
+B20.Word.pinned_ursh_parses : B20.C.parseFunction (B20.Word.slice B20.Pinned.headerLines 17 6) =
+  some B20.Word.urshFunction
+B20.Word.pinned_ursh_refines : ∀ (x : BitVec 64) (n : Fin 64),
+  ∃ f,
+    B20.C.parseFunction (B20.Word.slice B20.Pinned.headerLines 17 6) = some f ∧
+      B20.C.CExec f [B20.C.Val.u64 x, B20.C.Val.i32 (BitVec.ofNat 32 ↑n)] (B20.C.Val.u64 (x >>> ↑n))
+B20.Word.pinned_ursh_slice : B20.Word.slice B20.Pinned.headerLines 17 6 = B20.Pinned.urshChars
+B20.Word.pinned_ursh_syntax : B20.C.parseFunctionTokens B20.Pinned.urshTokens = some B20.Word.urshFunction
+B20.Word.radix_eight : ∀ (n : ℕ),
+  0 + n / 1 % 256 * 1 + n / 256 % 256 * 256 + n / 65536 % 256 * 65536 + n / 16777216 % 256 * 16777216 +
+            n / 4294967296 % 256 * 4294967296 +
+          n / 1099511627776 % 256 * 1099511627776 +
+        n / 281474976710656 % 256 * 281474976710656 +
+      n / 72057594037927936 % 256 * 72057594037927936 =
+    n % 18446744073709551616
+B20.Word.radix_step : ∀ (n a : ℕ), n % a + n / a % 256 * a = n % (a * 256)
+B20.Word.read_write_formula : ∀ (m : B20.Foundation.Memory) (base : ℕ) (v : B20.Foundation.Word64),
+  (m.writeU64 base v).readU64 base = some (BitVec.ofNat 64 (B20.Word.byteExpansion (BitVec.toNat v)))
+B20.Word.read_write_roundtrip : ∀ (m : B20.Foundation.Memory) (base : ℕ) (v : B20.Foundation.Word64),
+  (m.writeU64 base v).readU64 base = some v
+B20.Word.shift32_mutation_binding_rejected : B20.C.parseFunction (B20.Word.slice B20.Pinned.headerLines 17 6) ≠
+  some (B20.Word.brokenShiftFunction 31 31)
+B20.Word.shift32_mutation_witness : B20.C.execute (B20.Word.brokenShiftFunction 31 31)
+      [B20.C.Val.u64 9223372036854775808, B20.C.Val.i32 32] =
+    some (B20.C.Val.u64 4294967296) ∧
+  B20.C.execute B20.Word.urshFunction [B20.C.Val.u64 9223372036854775808, B20.C.Val.i32 32] =
+    some (B20.C.Val.u64 2147483648)
+B20.Word.shiftFunction : B20.C.Ty → B20.C.BinOp → B20.C.Name → B20.C.Function
+B20.Word.signed_shift_differs_from_logical : BitVec.sshiftRight 18446744073709551615 1 = 18446744073709551615 ∧
+  18446744073709551615 >>> 1 = 9223372036854775807
+B20.Word.slice : List String → ℕ → ℕ → List Char
+B20.Word.split_count : ∀ n < 64, n / 32 < 2 ∧ n % 32 < 32 ∧ n = 32 * (n / 32) + n % 32
+B20.Word.ulsh : BitVec 64 → ℕ → BitVec 64
+B20.Word.ulshFunction : B20.C.Function
+B20.Word.ulsh_execution : ∀ (x : BitVec 64) (n : Fin 64),
+  B20.C.execute B20.Word.ulshFunction [B20.C.Val.u64 x, B20.C.Val.i32 (BitVec.ofNat 32 ↑n)] =
+    some (B20.C.Val.u64 (B20.Word.ulsh x ↑n))
+B20.Word.ulsh_refines : ∀ (x : BitVec 64), ∀ n < 64, B20.Word.ulsh x n = x <<< n
+B20.Word.ursh : BitVec 64 → ℕ → BitVec 64
+B20.Word.urshFunction : B20.C.Function
+B20.Word.ursh_execution : ∀ (x : BitVec 64) (n : Fin 64),
+  B20.C.execute B20.Word.urshFunction [B20.C.Val.u64 x, B20.C.Val.i32 (BitVec.ofNat 32 ↑n)] =
+    some (B20.C.Val.u64 (B20.Word.ursh x ↑n))
+B20.Word.ursh_refines : ∀ (x : BitVec 64), ∀ n < 64, B20.Word.ursh x n = x >>> n
+B20.Word.write_frame : ∀ (m : B20.Foundation.Memory) (base : ℕ) (v : B20.Foundation.Word64) (address : ℕ),
+  address < base ∨ base + 8 ≤ address → (m.writeU64 base v).bytes address = m.bytes address
+B20.Word.write_legal : ∀ (m : B20.Foundation.Memory) (base : ℕ) (v : B20.Foundation.Word64),
+  (m.writeU64 base v).legalU64 base
+'B20.C.Byte.access_inBounds' depends on axioms: [propext, Quot.sound]
+'B20.C.Byte.put_frame' depends on axioms: [propext]
+'B20.C.Byte.put_preserves_read' depends on axioms: [propext]
+'B20.C.Byte.put_preserves_write' depends on axioms: [propext]
+'B20.C.Byte.read_region_byte' depends on axioms: [propext, Quot.sound]
+'B20.C.Byte.write_region_byte' depends on axioms: [propext, Quot.sound]
+'B20.C.CExec_deterministic' depends on axioms: [propext, Quot.sound]
+'B20.C.Scalar.CExec_deterministic' depends on axioms: [propext, Quot.sound]
+'B20.C.Scalar.irsh_call' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.C.Scalar.ulsh_call' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.C.Scalar.ursh_call' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.C.cast_u32_to_u64' depends on axioms: [propext, Quot.sound]
+'B20.C.cond_neg_add64' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.C.cond_neg_add64_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.C.neg_defined_of_ne' depends on axioms: [propext]
+'B20.C.neg_u32' depends on axioms: [propext]
+'B20.C.neg_u64' depends on axioms: [propext]
+'B20.C.safe_add32' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.C.safe_add64' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.C.safe_sub32' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.C.safe_sub64' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.C.signed_add32' depends on axioms: [propext, Quot.sound]
+'B20.C.signed_add64' depends on axioms: [propext, Quot.sound]
+'B20.C.signed_overflow_rejected' depends on axioms: [propext, Quot.sound]
+'B20.C.unsigned_add32' depends on axioms: [propext, Quot.sound]
+'B20.C.unsigned_add64' depends on axioms: [propext, Quot.sound]
+'B20.C.xor_neg_bridge' depends on axioms: [propext, Quot.sound]
+'B20.Foundation.CExec_complete' depends on axioms: [propext]
+'B20.Foundation.CExec_deterministic' depends on axioms: [propext]
+'B20.Foundation.CExec_eval' depends on axioms: [propext]
+'B20.Foundation.CExec_iff_eval' depends on axioms: [propext]
+'B20.Foundation.Outcome.abort_ne_fault' does not depend on any axioms
+'B20.Foundation.Outcome.abort_ne_nonreturn' does not depend on any axioms
+'B20.Foundation.Outcome.nonreturn_ne_fault' does not depend on any axioms
+'B20.Foundation.Outcome.returned_ne_stuck' does not depend on any axioms
+'B20.Foundation.Outcome.stuck_ne_abort' does not depend on any axioms
+'B20.Foundation.Outcome.stuck_ne_fault' does not depend on any axioms
+'B20.Foundation.Outcome.stuck_ne_nonreturn' does not depend on any axioms
+'B20.Foundation.compile_refines' does not depend on any axioms
+'B20.Foundation.evalStmt_sound' depends on axioms: [propext]
+'B20.Foundation.evalStmt_sound_gen' depends on axioms: [propext]
+'B20.Foundation.u64Add_toNat' depends on axioms: [propext]
+'B20.Fpr.Parsed.double_lex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.Parsed.double_parses' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.Parsed.double_slice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.Parsed.double_syntax' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.Parsed.floor_lex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.Parsed.floor_parses' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.Parsed.floor_slice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.Parsed.floor_syntax' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.Parsed.half_lex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.Parsed.half_parses' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.Parsed.half_slice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.Parsed.half_syntax' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.Parsed.neg_lex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.Parsed.neg_parses' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.Parsed.neg_slice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.Parsed.neg_syntax' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.Parsed.pack_lex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.Parsed.pack_parses' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.Parsed.pack_slice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.Parsed.pack_syntax' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.Parsed.rint_lex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.Parsed.rint_parses' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.Parsed.rint_slice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.Parsed.rint_syntax' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.Parsed.sub_lex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.Parsed.sub_parses' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.Parsed.sub_slice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.Parsed.sub_syntax' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.cast_i32_1_u64' depends on axioms: [propext]
+'B20.Fpr.cast_i32_63_u64' depends on axioms: [propext]
+'B20.Fpr.double_execution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.e_toNat_of_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.floor_execution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.floor_irsh_domain' depends on axioms: [propext, Quot.sound]
+'B20.Fpr.floor_mask_all' depends on axioms: [propext, Quot.sound]
+'B20.Fpr.floor_mask_fold' depends on axioms: [propext]
+'B20.Fpr.floor_mask_zero' depends on axioms: [propext, Quot.sound]
+'B20.Fpr.floor_sub63_safe' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.floor_t_range' depends on axioms: [propext, Quot.sound]
+'B20.Fpr.half_execution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.irsh_call_of_toNat' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.lit1085_int' does not depend on any axioms
+'B20.Fpr.lit_allOnes64' depends on axioms: [propext]
+'B20.Fpr.m0_lt' depends on axioms: [propext, Quot.sound]
+'B20.Fpr.neg_execution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.pack_add_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.pack_add_safe' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.pack_and7_lt' depends on axioms: [propext, Quot.sound]
+'B20.Fpr.pack_execution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.pack_f_range' depends on axioms: [propext, Quot.sound]
+'B20.Fpr.pack_neg_defined' depends on axioms: [propext, Quot.sound]
+'B20.Fpr.pack_t_range' depends on axioms: [propext, Quot.sound]
+'B20.Fpr.rint_e2_range' depends on axioms: [propext, Quot.sound]
+'B20.Fpr.rint_e_int' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.rint_e_nat' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.rint_execution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.rint_f_range' depends on axioms: [propext, Quot.sound]
+'B20.Fpr.rint_m2_big' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.rint_m2_small' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.rint_mask_all' depends on axioms: [propext, Quot.sound]
+'B20.Fpr.rint_mask_zero' depends on axioms: [propext, Quot.sound]
+'B20.Fpr.rint_s_range' depends on axioms: [propext, Quot.sound]
+'B20.Fpr.rint_sub63_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.rint_sub63_safe' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.rint_ulsh_domain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.rint_ursh_domain' depends on axioms: [propext, Quot.sound]
+'B20.Fpr.rint_y_int' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.rint_y_range' depends on axioms: [propext, Quot.sound]
+'B20.Fpr.signedBits_band32' depends on axioms: [propext, Quot.sound]
+'B20.Fpr.signedBits_band64' depends on axioms: [propext, Quot.sound]
+'B20.Fpr.signedBits_xor64' depends on axioms: [propext, Quot.sound]
+'B20.Fpr.sub_execution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.sub_refines_via_add_obligation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.ulsh_call_of_toNat' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Fpr.ursh_call_of_toNat' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.LE.bufferBytes_spec' depends on axioms: [propext]
+'B20.Word.LE.dec_execution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.LE.dec_lex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.LE.dec_parses' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.LE.dec_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.LE.dec_slice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.LE.dec_syntax' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.LE.decodeExpr_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.LE.enc_execution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.LE.enc_lex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.LE.enc_parses' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.LE.enc_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.LE.enc_slice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.LE.enc_syntax' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.LE.join_byteOf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.LE.loadTerm_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.LE.orWord_eq_join' depends on axioms: [propext, Quot.sound]
+'B20.Word.LE.or_left_comm' depends on axioms: [propext, Quot.sound]
+'B20.Word.LE.storeBytes_frame' depends on axioms: [propext]
+'B20.Word.LE.storeBytes_preserves_write' depends on axioms: [propext]
+'B20.Word.LE.storeTerm_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.LE.store_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.LE.stored_bytes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.LE.stores_execution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.byteAt_write' depends on axioms: [propext, Quot.sound]
+'B20.Word.byteExpansion_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.c_invalid_count_rejected' depends on axioms: [propext]
+'B20.Word.c_signed_negation_overflow_rejected' does not depend on any axioms
+'B20.Word.count_mask_mutation_witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.foldl_eight' does not depend on any axioms
+'B20.Word.foldl_equal_on' depends on axioms: [propext]
+'B20.Word.irsh_execution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.irsh_refines' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.load_le_refines' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.load_store_le_refines' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.model_load_store_roundtrip' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.parser_unsupported_operator_rejected' depends on axioms: [propext]
+'B20.Word.pinned_irsh_lex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.pinned_irsh_parses' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.pinned_irsh_refines' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.pinned_irsh_slice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.pinned_irsh_syntax' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.pinned_ulsh_lex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.pinned_ulsh_parses' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.pinned_ulsh_refines' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.pinned_ulsh_slice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.pinned_ulsh_syntax' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.pinned_ursh_lex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.pinned_ursh_parses' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.pinned_ursh_refines' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.pinned_ursh_slice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.pinned_ursh_syntax' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.radix_eight' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.radix_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.read_write_formula' depends on axioms: [propext, Quot.sound]
+'B20.Word.read_write_roundtrip' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.shift32_mutation_binding_rejected' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.shift32_mutation_witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.signed_shift_differs_from_logical' depends on axioms: [propext]
+'B20.Word.split_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.ulsh_execution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.ulsh_refines' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.ursh_execution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.ursh_refines' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B20.Word.write_frame' depends on axioms: [propext, Quot.sound]
+'B20.Word.write_legal' depends on axioms: [propext, Quot.sound]

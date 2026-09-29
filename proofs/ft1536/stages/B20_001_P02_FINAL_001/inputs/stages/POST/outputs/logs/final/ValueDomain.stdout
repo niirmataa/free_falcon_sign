@@ -1,0 +1,12 @@
+NumericCenter : Word → Prop
+exponent_from_value : ∀ (x : Word), NumericCenter x → ex x ≤ 1053
+zero_aware_parts : ∀ (x : Word), NumericCenter x → H3Range.floorParts (sg x) (ex x) (frac x) = floorVal x - eps0 x
+'ZeroScalar.p2_pos' depends on axioms: [propext]
+'ZeroScalar.D_pos' depends on axioms: [propext]
+'ZeroScalar.p2_add' depends on axioms: [propext]
+'ZeroScalar.frac_bound' does not depend on any axioms
+'ZeroScalar.exponent_from_value' depends on axioms: [propext, Quot.sound]
+'ZeroScalar.floorVal_old' depends on axioms: [propext, Quot.sound]
+'ZeroScalar.floorVal_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.negzero_fields' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZeroScalar.zero_aware_parts' depends on axioms: [propext, Classical.choice, Quot.sound]

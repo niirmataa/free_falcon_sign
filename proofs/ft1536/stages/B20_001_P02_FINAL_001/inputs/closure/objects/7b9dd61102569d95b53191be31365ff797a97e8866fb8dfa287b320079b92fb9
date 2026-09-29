@@ -1,0 +1,91 @@
+{
+  "status": "PASS_ACTIVE_ORDER_OUTCOMES_AND_SOURCE_SLICES",
+  "source_pin": "56974571b46e8257bdd3b4097c8c70fded6bb4b94c64805f6e35ec80929a0985",
+  "spans": {
+    "sampling": {
+      "file": "falcon-sign.c",
+      "first": 1616,
+      "last": 1839,
+      "copy": "checks/sampling.inc",
+      "source_sha256": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8",
+      "slice_sha256": "048f6eefac7782301083cbd82677a1db2a1ac76c5494b73a450c0575c11f5f7f"
+    },
+    "scalar_guard": {
+      "file": "falcon-sign.c",
+      "first": 2841,
+      "last": 2972,
+      "source_sha256": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8",
+      "slice_sha256": "bee6fb563faa62118ae1fa6727ba39fde3ecc21c52f5d4213c35f459620409ab"
+    },
+    "BerExp": {
+      "file": "falcon-sign.c",
+      "first": 2450,
+      "last": 2513,
+      "source_sha256": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8",
+      "slice_sha256": "2dad56f851e330e598120f0de3c824d98bce6e66b94bd493399f6860af554a14"
+    },
+    "caller": {
+      "file": "falcon-sign.c",
+      "first": 3308,
+      "last": 3409,
+      "source_sha256": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8",
+      "slice_sha256": "fe6d8d115ee59ed8dc8999b29e6efda3e5d322df628c5d52b3dc7db2e8039a34"
+    },
+    "terminal_split_merge": {
+      "file": "falcon-fft.c",
+      "first": 1326,
+      "last": 1454,
+      "source_sha256": "06b573b636ae368dcda3eb4d89c3936ab31272123440d0d5362317e55d9ac063",
+      "slice_sha256": "ecea9ab60b1f192d92617641213063e83d742dd22c476ae45a1c39487c4679af"
+    }
+  },
+  "sampling_copy_byte_identical": true,
+  "active_sampler_sha256": "67dc24c659a3053f574d695dc253a553384a5aff0d06e240502f9fb62aacf758",
+  "primitive_headers_sha256": "6b897d6c217ef25a322e3b5c3d9488b9d6b8d0e369a710d8fce2259f24e6d84f",
+  "flags": [
+    "-W",
+    "-Wall",
+    "-O",
+    "-DFPR_IMPL=\"fpr-emulated.h\"",
+    "-DSAMPLER_CODF=0",
+    "-DSAMPLER_CDF=0",
+    "-DCT_BEREXP=1",
+    "-DFT_TERNARY_ADAPTIVE_CDF=1",
+    "-DFT1536_CANDIDATE_PROFILE=1",
+    "-DCLEANSE=1",
+    "-DTRUE_TERNARY_SECRET=1",
+    "-DTRUE_TERNARY_SECRET_MODE=1",
+    "-DTERNARY_KEYGEN_BOUND_SCALE_NUM=1250",
+    "-DTERNARY_KEYGEN_BOUND_SCALE_DEN=100",
+    "-DTERNARY_KEYGEN_MAX_ATTEMPTS=3000000",
+    "-DSIGN_MAX_ATTEMPTS=16",
+    "-std=c99",
+    "-Isource"
+  ],
+  "structural_calls": 3072,
+  "first_branch": 1,
+  "depth_order": [
+    2,
+    1,
+    0
+  ],
+  "binary_order": [
+    1,
+    0
+  ],
+  "terminal_order": [
+    "paired mu1",
+    "half residual",
+    "updated mu0",
+    "subtract rx"
+  ],
+  "sampling_base_logn": 0,
+  "builder_base_logn": 1,
+  "outer_fault_check_after_whole_do_sign": true,
+  "sticky_fault_reset_only_at_next_attempt": true,
+  "no_whole_sign_or_KeyGen_execution": true,
+  "source_changed": false,
+  "production_source_changed": false,
+  "new_source_patch_integrated": false,
+  "owner_accepted": false
+}

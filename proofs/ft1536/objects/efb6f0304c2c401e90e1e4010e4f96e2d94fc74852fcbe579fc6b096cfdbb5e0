@@ -1,0 +1,40 @@
+{
+  "fresh": {
+    "diagnostic_not_kernel_premise": true,
+    "invocations": "sage checks/word_helpers.sage, sage checks/little_endian.sage, sage checks/scalar.sage",
+    "le": "replay_evidence/fresh_003/logs/child/le/LE_CONTROL_RECEIPTS.json",
+    "preparser": true,
+    "scalar": "replay_evidence/fresh_003/logs/child/scalar/SCALAR_CONTROL_RECEIPTS.json",
+    "word": "replay_evidence/fresh_003/logs/child/word/CONTROL_RECEIPTS.json"
+  },
+  "original": {
+    "formal_consumer": "all kernel theorems proved directly in Lean; Sage oracles are diagnostic controls, never premises (ASSUMPTIONS A8)",
+    "policy": "authoritative arithmetic lives in .sage files executed as `sage <file>.sage` (preparser, ZZ/QQ); Python only organizes processes",
+    "runs": [
+      {
+        "certificate": "word_oracle.json",
+        "id": "word_helpers.sage (WORD_HELPERS_001 + fresh_word_001)",
+        "invocation": "sage checks/word_helpers.sage",
+        "scope": "shift helpers oracle: 12288 valid + 2 rejected cases",
+        "status": "PASS"
+      },
+      {
+        "certificate": "le_oracle.json",
+        "id": "little_endian.sage (LE controls)",
+        "invocation": "sage checks/little_endian.sage",
+        "scope": "LE64 oracle: 3072 cases",
+        "status": "PASS"
+      },
+      {
+        "certificate": "scalar_oracle.json (P02_SCALAR_ORACLE_V1)",
+        "id": "scalar.sage (MS3)",
+        "invocation": "sage checks/scalar.sage",
+        "note": "own LCG PRNG (deterministic); xor is ^^ under preparser",
+        "scope": "exact ZZ mirror of 7 scalar primitives: 19721 in + 21352 obs + 2 rejects",
+        "status": "PASS (run/scalar_controls_006, run/scalar_asan_001)"
+      }
+    ],
+    "schema": "B20_P02_SAGE_RUNS_V1"
+  },
+  "schema": "B20_P02_SAGE_RUNS_V2"
+}
