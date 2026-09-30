@@ -5,6 +5,10 @@ pracy oraz przeniesienie małych nowości, których nie ma już w `stages`.
 Aktywny agent nadal kończy swój krok w dotychczasowym W. Ten snapshot
 jest przygotowaniem miejsca, nie automatycznym przejęciem jego pracy.
 
+Kontrola2026-09-30T02:43:37Z wykryła3 późniejsze dopiski autora:
+[HANDOFF_PENDING.json](HANDOFF_PENDING.json). Przy rzeczywistym przekazaniu
+trzeba ponownie sprawdzić delta, bo agent nadal pracuje w starym W.
+
 ## Układ
 
 ```text

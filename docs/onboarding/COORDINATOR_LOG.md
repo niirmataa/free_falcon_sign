@@ -800,3 +800,18 @@ w historii. Następny krok po zakończeniu: ocena wyniku i checkpoint przy PASS.
   Po rozliczeniu dopisków właściciel przekazuje tej samej sesji nowy workspace;
   wtedy aktualizacja ACTIVE/runner paths. Bez relay,nowego workera lub przenosin
   aktywnego W w trakcie jego obliczeń.
+
+## 2026-09-30T02:43:37Z — źródła zapisane; late writes czekają na handoff
+
+- Commity main jako niirmataa: `211dc363` schemat/narzędzie/przygotowanie,
+  `3396e8e0` nowości RUN_002, `b7fe1800` Source3, `b4d11dd3` T5.
+  Każdy source commit sprawdzony przez exact-path staging, diff --check
+  i normalny hook. Wszystkie371 kopie mają zgodne piny;67 refs stages.
+- Kolejne `python3 -B tools/ft1536_dev_sources.py pending source3` wykryło
+  spodziewane dopiski pracującego autora:zmieniony SOURCE_BINDING_GAPS.md,
+  nowe STABLE_BINARY_004_REPORT.md i STABLE_BINARY_004_CLOSURE.json.
+  Zapis w development/T12_1/HANDOFF_PENDING.json; bez merge/przełączenia W.
+- Publikacja:po commicie tego wpisu `git push --porcelain origin
+  refs/heads/main:refs/heads/main`,zgodnie z dzisiejszym poleceniem właściciela.
+  Następnie porównanie local/remote HEAD. Dalszy krok:handoff autora i świeża
+  kontrola delta. Source snapshot pozostaje PREPARED_HANDOFF,bez review/tagu.

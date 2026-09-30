@@ -1,0 +1,18 @@
+{
+  "schema": "FT1536_DEVELOPMENT_HANDOFF_PENDING_V1",
+  "observed_utc": "2026-09-30T02:43:37Z",
+  "component": "source3",
+  "status": "PREPARED_HANDOFF",
+  "command": "python3 -B tools/ft1536_dev_sources.py pending source3",
+  "changes_after_snapshot": [
+    {
+      "path_in_original_W": "SOURCE_BINDING_GAPS.md",
+      "status": "CHANGED_IN_ORIGINAL_W",
+      "baseline_sha256": "90f5ff23aa4ba6315315e64fadf49fe72a411354896f046f497891785aa0a509",
+      "observed_sha256": "917b25ab4acd69610a0df1fe75bfc69e1637591c181fb5f393869490ab48cf62"
+    },
+    {"path_in_original_W": "run/STABLE_BINARY_004_CLOSURE.json", "status": "NEW_IN_ORIGINAL_W"},
+    {"path_in_original_W": "run/STABLE_BINARY_004_REPORT.md", "status": "NEW_IN_ORIGINAL_W"}
+  ],
+  "action": "Repeat pending at actual handoff, review late changes, transfer them explicitly and rebind the runner before marking ACTIVE. The original author continues in the original W. No automatic merge or worker relocation was performed."
+}
