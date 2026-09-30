@@ -1,6 +1,8 @@
 import Run2.RadialBinningSandwich
 import Run2.RawProductLaw
 import Run2.RawRadialEvents
+import Run2.TriangularGaussian
+import Run2.T5ScalarMass
 import MgfProduct
 import FinalTails
 
@@ -605,6 +607,31 @@ theorem hex_twist_shift (s κ x y : ℝ) (hs : s ≠ 0) :
       = -s * ((x + κ/s)*(x + κ/s) + (x + κ/s)*y + y*y) + κ*κ/s := by
   field_simp [hs]
   ring
+
+/-- Wieża A2 z realnym przesunięciem `(u + y/2)` w kanale `x`
+    (LDL-shear niecałkowity — `TriangularGaussian.Tower` to dopuszcza;
+    rozkład `Q(x,y) = (x+y/2)² + 3y²/4` = `a2_scalar_split`). -/
+noncomputable def a2Tower (s u : ℝ) : FT1536.Run2.TriangularGaussian.Tower 2 :=
+  .snoc (.snoc (.nil : FT1536.Run2.TriangularGaussian.Tower 0)
+    (3 * s / (4 * Real.pi)) (fun _ => 0)) (s / Real.pi)
+    (fun p => u + ((p.2 : ℤ) : ℝ) / 2)
+
+/-- Tożsamość atomu punktowo: `atom (a2Tower s u) (((), y), x) = e^{−s·Q(x+u, y)}`. -/
+theorem a2Tower_atom (s u : ℝ) (x y : ℤ) :
+    FT1536.Run2.TriangularGaussian.atom (a2Tower s u) ((((), y), x))
+      = Real.exp (-s * (((x : ℝ) + u) * ((x : ℝ) + u)
+          + ((x : ℝ) + u) * (y : ℝ) + (y : ℝ) * (y : ℝ))) := by
+  simp only [a2Tower, FT1536.Run2.TriangularGaussian.atom]
+  rw [one_mul]
+  have hs : ∀ A B : ℝ, Real.exp A * Real.exp B = Real.exp (A + B) :=
+    fun A B => (Real.exp_add A B).symm
+  rw [hs]
+  congr 1
+  by_cases h : s = 0
+  · simp [h]
+  · have hp : Real.pi ≠ 0 := Real.pi_ne_zero
+    field_simp [h, hp]
+    ring
 
 end FT1536.ConvStruct
 
