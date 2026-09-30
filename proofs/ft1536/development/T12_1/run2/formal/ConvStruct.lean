@@ -955,7 +955,7 @@ theorem region1TwistMass_eq_shifted (ℓ : ℝ) (hs : (c0:ℝ) - ℓ ≠ 0) :
   exact Finset.sum_congr rfl (fun b _ => hcongr b)
 
 /-- The shifted quadratic Boltzmann factor `exp(−s·Q(p₁+u, p₂))` on
-    integer pairs (the summand of the twisted sector sum). -/
+    integer pairs (the summand of the unrestricted twisted sector sum). -/
 noncomputable def shiftedQExp (s u : ℝ) (p : ℤ × ℤ) : ℝ :=
   Real.exp (-s * (((p.1 : ℝ) + u) * ((p.1 : ℝ) + u)
     + ((p.1 : ℝ) + u) * (p.2 : ℝ) + (p.2 : ℝ) * (p.2 : ℝ)))
@@ -1052,7 +1052,8 @@ theorem region1TwistMass_le_shiftedQtsum (ℓ : ℝ) (hs : (c0:ℝ) - ℓ ≠ 0)
     div_nonneg (Real.exp_pos _).le blockNormalizer_pos.le
   exact mul_le_mul_of_nonneg_left (le_trans hall hbox) hk
 
-/-- Tower sandwich of the twisted sector mass (assembly): the sector sum is
+/-- Upper side of the tower sandwich for the twisted sector mass
+    (assembly): the sector sum is
     at most the twist constant times the A2 scale, with the tower-mass error
     `(1 + 2r/(1-r))²` at `r = rowRatio = 2⁻⁴⁸`. -/
 theorem region1TwistMass_le_towerBound (ℓ : ℝ) (hs : (c0:ℝ) - ℓ ≠ 0)

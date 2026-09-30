@@ -51,7 +51,7 @@ toru powstają już tutaj, małymi commitami.
 Kernel pieces in `ConvStruct` (all clean builds 0/0, standard axioms only):
 
 - `weightedWindowMass` + `windowSandwich` — the exact two-sided Cramér
-  sandwich with the variable weight `e^{−λ S}` (owner correction,
+  sandwich with the variable weight `e^{ℓ·S}` (owner correction,
   2026-09-30: no single-factor `e^{−Λ*(T)}` shortcut (the plan shorthand)).
 - `weightedWindowMass_true` — full-window moment = `mgf₁(ℓ)^1535`
   (bridge to the theta layer via `fiber_moment_eq` + `mgf1_eq`).
@@ -110,6 +110,8 @@ twin of L0: `Qc − Q = 18433·δ`, `δ = 18433 − 2a − c` on the sector),
   types (`Points 2` vs `(Unit × ℤ) × ℤ`) — its type-correctness check
   fails on the substituted target. Bridge with `Eq.trans` + `exact … rfl`
   (defeq unification) instead of rewriting (2026-09-30, tower bridge).
+- Beware the name `a2Tower` also existing in GramLDL (different namespace);
+  qualify when both can be in scope.
 - After `funext` the goal may stay in un-beta'd `(f ∘ e) p` form — put a
   `show` with the beta form before any `rw`. Long inline terms inside
   argument lists are parenthesis traps: extract every sub-obligation as its
