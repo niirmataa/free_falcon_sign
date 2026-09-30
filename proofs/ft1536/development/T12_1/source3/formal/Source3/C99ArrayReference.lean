@@ -80,6 +80,7 @@ inductive Stmt where
   | skip
   | scalar (s : CLogic.Stmt)
   | assign (name : Name) (value : Expr)
+  | declarePtr (name : Name)
   | bindPtr (name source : Name) (index : CLogic.Expr)
   | store64 (array : Name) (index : CLogic.Expr) (value : Expr)
   | store32 (array : Name) (index : CLogic.Expr) (value : Expr)
@@ -113,6 +114,9 @@ inductive Exec (program : Program) : Stmt → State → State → Prop where
       (old : Option C99IntegerReference.Value) (v : C99IntegerReference.Value)
       (declared : before.locals name=some (ty,old)) (value : Eval before e v) :
       Exec program (.assign name e) before (bindValue before name ty v)
+  | declarePtr (before : State) (name : Name) :
+      Exec program (.declarePtr name) before
+        {before with arrays := fun n => if n=name then none else before.arrays n}
   | bindPtr (before : State) (name source : Name) (index : CLogic.Expr) (p : ArrayPointer)
       (value : Pointer before source index p) :
       Exec program (.bindPtr name source index) before (bindPointer before name p)
@@ -129,7 +133,10 @@ inductive Exec (program : Program) : Stmt → State → State → Prop where
   | copy (before : State) (after : Memory) (dst src : Name) (di si count : CLogic.Expr)
       (p q : ArrayPointer) (n : BitVec 64)
       (destination : Pointer before dst di p) (source : Pointer before src si q)
-      (length : scalar before count (.uint64 n)) (copy : Memcpy before.heap p q n.toNat after) :
+      (length : scalar before count (.uint64 n))
+      (destinationObject : p.offset+n.toNat≤p.base+p.elementBytes*p.count)
+      (sourceObject : q.offset+n.toNat≤q.base+q.elementBytes*q.count)
+      (copy : Memcpy before.heap p q n.toNat after) :
       Exec program (.copy dst src di si count) before {before with heap := after}
   | seq (a b : Stmt) (before middle after : State)
       (first : Exec program a before middle) (second : Exec program b middle after) :
@@ -157,12 +164,12 @@ inductive Exec (program : Program) : Stmt → State → State → Prop where
 theorem memory_steps (program : Program) (code : Stmt) (before after : State)
     (h : Exec program code before after) : C99InitializationTrace.Steps before.heap after.heap := by
   induction h with
-  | skip | scalar | assign | bindPtr | whileFalse => exact C99InitializationTrace.Steps.done _
+  | skip | scalar | assign | declarePtr | bindPtr | whileFalse => exact C99InitializationTrace.Steps.done _
   | store64 before after array index e p v address value write =>
       exact .write64 before.heap after after p _ write (.done after)
   | store32 before after array index e p v address value write =>
       exact .write32 before.heap after after p _ write (.done after)
-  | copy before after dst src di si count p q n destination source length copy =>
+  | copy before after dst src di si count p q n destination source length destinationObject sourceObject copy =>
       exact .copy before.heap after after p q n.toNat copy (.done after)
   | seq a b before middle after first second ih1 ih2 =>
       exact C99InitializationTrace.steps_trans _ _ _ ih1 ih2

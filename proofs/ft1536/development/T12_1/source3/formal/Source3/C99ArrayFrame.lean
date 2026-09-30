@@ -14,7 +14,7 @@ def only (names : List Name) : Stmt → Bool
   | .store64 name _ _ | .store32 name _ _ => names.contains name
   | .seq a b | .branch _ a b => only names a && only names b
   | .scope _ _ b | .while _ b => only names b
-  | .bindPtr _ _ _ | .copy _ _ _ _ _ | .call _ _ => false
+  | .declarePtr _ | .bindPtr _ _ _ | .copy _ _ _ _ _ | .call _ _ => false
 
 def Outside (s : State) (names : List Name) (block offset : Nat) : Prop :=
   ∀ name∈names, ∀ p, s.arrays name=some p →
@@ -48,6 +48,7 @@ theorem body_frame (program : Program) (code : Stmt) (before after : State)
   induction h with
   | skip | scalar | assign | whileFalse => exact ⟨rfl,fun _ _ _ => rfl⟩
   | bindPtr => simp [only] at checked
+  | declarePtr => simp [only] at checked
   | call => simp [only] at checked
   | copy => simp [only] at checked
   | store64 before after array index e p v address value write =>
