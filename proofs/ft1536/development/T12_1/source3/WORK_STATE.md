@@ -25,13 +25,21 @@ Trzy logiczne commity:
    Word `0x41b4409001000000`, decoded339775489, scratch=t3+12288 bajtów.
    Jobs `certificate_q_sage_001`, `certificate_q_002`,
    `certificate_syntax_memory_002` (syntax), `certificate_memory_003` clean.
-2. Pełny reverse reciprocal768 z snapshotem pierwszej połowy i indeksem1535-u.
+2. Reverse reciprocal768: `CertificateIndex.index_exact/bounds/injective/covers`,
+   `CertificateReverse.loop_exists/finished_complete/initialized/clear_written`.
+   Snapshot pierwszej połowy zachowany, druga inicjalizowana pod1535-u;
+   każdy div witness ma odpowiadający event w rzeczywistym śladzie.
+   Jobs effects002/atoms001/index002/reverse004 accepted/clean.
 3. Byte-memory scan1536/return, pełna kompozycja, source outcomes/reverse_order,
    mutacje i fresh closure oraz raport/handoff; następnie uzgodniony push.
 
 Na początku wykryto job Lean właściciela w run2; nie uruchamiano drugiego
 joba. Edycje źródeł i przygotowanie są niezależne, każde wykonanie ma preflight.
 Zastane AGENTS/STATE/WORK_COMMITS/CURRENT i run2 pozostają cudzą pracą.
+
+Commit1/3: `3939e25e` (q_squared/parser/layout), lokalny; push po trzecim.
+Reverse ma etapowy warunek Snapshot D; końcowa kompozycja ma go wyprowadzić
+z top, nie przenieść do dodatkowych assumptions całego suffixu.
 
 ## Przejęcie2026-09-30
 

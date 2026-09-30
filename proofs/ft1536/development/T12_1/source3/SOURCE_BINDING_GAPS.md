@@ -5,7 +5,11 @@
 Docelowy fragment: keygen7757–7776, n1536/hn768, jawne locals po prefixie.
 Domknięte source q_squared (`0x41b4409001000000`, exact real339775489),
 parser20 linii i byte pointer binding leaves=t3/scratch=t3+12288.
-Otwarte: reverse768/1535-u i snapshot D; byte-memory
+Reverse768/1535-u i snapshot D domknięte etapowo przez
+`CertificateReverse.finished_complete`, `loop_exists`, `initialized`,
+`clear_written`, z niezależnym source div oraz zachowaniem pierwszej połowy.
+Snapshot jest warunkiem wejścia reverse, który top ma dostarczyć w kompozycji.
+Otwarte: byte-memory
 scan1536+inclusive ranges+return; kompozycja top→reverse→scan, pełna
 pamięć/metadata/trace, reference_exists/complete/source_outcome/reverse_order.
 Brak initial leaves/scratch reads; bez positivity/Gram/exact-leaf/delta
