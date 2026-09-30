@@ -1,5 +1,32 @@
 # source3 — żywy rejestr luk
 
+## Root-copy connection — individually checked; full entry still open
+
+`CertificateAfterConversion.root_copy_witness` now extracts the real copy
+of12288 bytes from the parsed7721--7745 execution and derives its following
+memory steps. `CertificatePrefixToSuffix.suffix_entry` combines those steps
+with the independent byte Gate00 loop to derive suffix WellFormed/Legal.
+`accepted_gate` transfers a suffix return1 back to all768 Gate00 checks.
+No supplied g00 values or arbitrary tail trace remain in these local types.
+
+Their entry is still **after the four smallint conversions**, with n1536,
+the actual tg/g00 pointer bindings, allocated workspace and initialized bad.
+The missing enclosing type must derive all these facts from full certificate
+declarations, the M0 guard, actual pointer assignments and four source calls.
+`SmallintsConversion.Loop` has initialization/frame lemmas and a source-body
+pin; its binding to the full procedure execution is not yet supplied.
+Do not replace that missing connection with a final theorem premise.
+
+C99Automatic32/CertificateFrameEntry and the extra prefix frame are current
+drafts. Their replay, plus the generic C99LoopTrace proof and24 export audits,
+is blocked by the shared proof slot (owner-started audit002 active). Progress
+pin `471b58aa02043e416a19de262fe3014d3e84765e81ffc7422e8fdad9144e8409`
+records6/11 individually checked modules and all retained attempts. There is
+no batch004 PASS, full certificate theorem, KeygenM0 execution/attempt
+interface, or final emitted-to-fiber theorem yet. The source NTT equations,
+public inverse, same-attempt preservation and STATIC/public round-trips also
+remain open as specified in the live plan.
+
 ## B1 continuation — complete FFT/LDL table and recursive frame
 
 Fresh internal batch003 is clean:15/15 modules,20 audited exports, receipt

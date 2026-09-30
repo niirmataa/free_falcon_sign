@@ -31,7 +31,14 @@ MODULES_003 = [
     'Source3.C99PointerFootprint', 'Source3.C99ProcedureFootprint', 'Source3.FftProcedureFrames',
     'Source3.KeygenFiber003Audit',
 ]
-BATCH_MODULES = {'001': MODULES, '002': MODULES_002, '003': MODULES_003}
+MODULES_004 = [
+    'Source3.C99NarrowReads', 'Source3.SmallintsConversion', 'Source3.C99ProcedureSequence',
+    'Source3.CertificateAfterConversion', 'Source3.Gate00Initialization',
+    'Source3.CertificatePrefixToSuffix', 'Source3.C99Automatic32',
+    'Source3.CertificateFrameEntry', 'Source3.CertificatePrefixFrame',
+    'Source3.C99LoopTrace', 'Source3.KeygenFiber004Audit',
+]
+BATCH_MODULES = {'001': MODULES, '002': MODULES_002, '003': MODULES_003, '004': MODULES_004}
 
 
 def sha(path):
@@ -73,7 +80,7 @@ def record(label, batch='001'):
     for group in groups:
         assert {a.strip() for a in group.split(',') if a.strip()} <= {'propext', 'Classical.choice', 'Quot.sound'}
     count = len(groups) + audit.count('does not depend on any axioms')
-    assert count == 20, count
+    assert count == (24 if batch == '004' else 20), count
     reused = {e['module']: e for e in inputs['reused']}
     visited, dependencies, boundary = set(), [], set()
 
@@ -105,7 +112,7 @@ def record(label, batch='001'):
     ]
     if batch == '002':
         evidence_inputs.append(('check_keygen_montgomery.sage', 'keygen_montgomery_checks_001', 'KEYGEN_MONTGOMERY_CHECK.json'))
-    if batch == '003':
+    if batch in {'003', '004'}:
         evidence_inputs.append(('check_fft_procedure_bindings.sage', 'keygen_fft_procedure_bindings_001', 'FFT_PROCEDURE_BINDINGS.json'))
     for filename, run, result in evidence_inputs:
         directory = ROOT / '.build/jobs' / run
@@ -161,4 +168,4 @@ if __name__ == '__main__':
     elif len(sys.argv) == 4 and sys.argv[1] == 'record':
         record(sys.argv[2], sys.argv[3])
     else:
-        raise SystemExit('usage: keygen_fiber_batch.py modules [001|002|003] | record UNIQUE_FRESH_JOB [001|002|003]')
+        raise SystemExit('usage: keygen_fiber_batch.py modules [001|002|003|004] | record UNIQUE_FRESH_JOB [001|002|003|004]')

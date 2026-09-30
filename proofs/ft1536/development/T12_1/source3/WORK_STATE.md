@@ -1,5 +1,51 @@
 # T12.1/source3 — żywy stan
 
+## Prefix continuation and shared proof slot — 2026-10-01
+
+**IN_PROGRESS / NOT_REVIEWED — waiting for the shared proof slot.**
+The source3 runner stopped at preflight, without launching Lean, when the
+owner-started `FT1536_SOL61_DEVELOPMENT_T03_AUDIT_002` fresh replay was active.
+Blocked preflights: `keygen_prefix_connection_012` and `_013`; `_008` earlier
+found the independent T03 replay. No processes were stopped, no limits were
+raised, and no parallel proof job or additional agent was started here.
+
+Six continuation modules have matching successful individual checks:
+C99NarrowReads, SmallintsConversion, C99ProcedureSequence,
+CertificateAfterConversion, Gate00Initialization and CertificatePrefixToSuffix.
+In particular, the actual line7727 root copy and all subsequent primitive
+memory transitions now come from execution of the parsed7721--7745 segment.
+Together with byte Gate00 this derives suffix-entry Legal without a supplied
+g00 snapshot or arbitrary tail trace. An accepted suffix also yields all768
+Gate00 checks for that same segment execution.
+
+Five further modules are **drafts awaiting checking**: C99Automatic32,
+CertificateFrameEntry, CertificatePrefixFrame, C99LoopTrace and the combined
+KeygenFiber004Audit. The draft automatic object has actual allocation and
+extent removal; its intended post-return theorem forbids even a stale raw
+pointer load. The generic loop trace draft observes the existing Exec and
+retains the final break attempt. It is not yet the complete KeyGen attempt
+interface: source gates, cap, full body and serializer tail must instantiate it.
+
+Progress pin (NOT a clean-batch receipt):
+`notes/run/KEYGEN_SOURCE_TO_FIBER_001_PROGRESS_004.json`, SHA256
+`471b58aa02043e416a19de262fe3014d3e84765e81ffc7422e8fdad9144e8409`.
+It records all13 prefix attempts, raw streams, source hashes and6/11 matching
+checked modules. The remaining current sources are saved as drafts. Previous
+syntax/elaboration failures are retained; they are not counted as passes.
+
+Local commits so far: `60c47028` (B1 scope), `e00ef2fa` (procedure source
+closure), `e5966d39` (recursive frames and batch003), `5a252dc4` (six checked
+prefix-connection modules). Publication still needs the owner's explicit
+signal. The current unfinished continuation is saved by a further local
+draft checkpoint; obtain its hash from Git.
+
+Next test after the shared slot is free:
+`python3 -B tools/job.py lean UNIQUE_LABEL $(python3 -B tools/keygen_fiber_batch.py modules 004)`.
+The runner performs its normal preflight. Repair any draft failures, then
+record a fresh batch004 only after all11 modules and24 audits pass. Continue
+the source prologue/layout/conversion/Gate00/suffix/teardown composition;
+the whole KEYGEN_SOURCE_TO_FIBER_001 theorem remains the acceptance criterion.
+
 ## B1 continuation — 2026-10-01
 
 **ACTIVE / KEYGEN_SOURCE_TO_FIBER_001 IN_PROGRESS / NOT_REVIEWED**.
