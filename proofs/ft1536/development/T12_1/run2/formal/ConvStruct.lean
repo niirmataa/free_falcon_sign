@@ -877,7 +877,7 @@ theorem blockEnergy_as_real (b : Block) :
 
 /-- Twisted exponent form of the block weight (the exponent-level assembly):
     `exp(−c0·Q)·exp(ℓ·Qc) = exp(ℓ·18433² + κ²/s)·exp(−s·Q(a+κ/s, c))` for
-    `region1` blocks, with `s = c0 − ℓ`, `κ = ℓ·18433`. -/
+    `region1` blocks and `s = c0 − ℓ ≠ 0`, with `κ = ℓ·18433`. -/
 theorem twisted_weight_exp_eq (b : Block) (ℓ : ℝ) (hreg : region1 b)
     (hs : (c0:ℝ) - ℓ ≠ 0) :
     Real.exp (-((c0:ℝ) * ((blockEnergy b : ℤ) : ℝ)))
@@ -909,8 +909,8 @@ theorem twisted_weight_exp_eq (b : Block) (ℓ : ℝ) (hreg : region1 b)
   rw [← Real.exp_add, hqc, ha, hE, Real.exp_add]
 
 /-- Block-level twisted weight (assembly): the centered-energy tilt of the
-    block mass equals the shifted potential up to the two twist constants
-    and the normalizer. -/
+    block mass equals the shifted-potential exponential `exp(−s·Q_shift)` up
+    to the two twist constants and the normalizer. -/
 theorem twisted_block_weight_eq (b : Block) (ℓ : ℝ) (hreg : region1 b)
     (hs : (c0:ℝ) - ℓ ≠ 0) :
     blockLaw.mass b * Real.exp (ℓ * ((centeredEnergy b : ℤ) : ℝ))
@@ -929,7 +929,8 @@ noncomputable def region1TwistMass (ℓ : ℝ) : ℝ :=
 
 /-- Twisted form of the sector sum (pointwise assembly of
     `twisted_block_weight_eq` over `region1`): the tilted sector mass is the
-    twist constant over `blockNormalizer` times the shifted-potential sum. -/
+    twist constant over `blockNormalizer` times the `region1`-restricted sum
+    of shifted-potential exponentials `exp(−s·shiftedBlockQ)`. -/
 theorem region1TwistMass_eq_shifted (ℓ : ℝ) (hs : (c0:ℝ) - ℓ ≠ 0) :
     region1TwistMass ℓ
       = (Real.exp (ℓ*18433^2 + (ℓ*18433)*(ℓ*18433)/((c0:ℝ) - ℓ))
