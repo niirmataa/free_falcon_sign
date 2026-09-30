@@ -921,5 +921,37 @@ theorem twisted_block_weight_eq (b : Block) (ℓ : ℝ) (hreg : region1 b)
   rw [hmass, blockWeight_eq_exp b, div_mul_eq_mul_div,
     twisted_weight_exp_eq b ℓ hreg hs]
 
+/-- The `region1`-tilted mass (twisted sector sum): the centered-energy tilt
+    of the block law restricted to the triangle. -/
+noncomputable def region1TwistMass (ℓ : ℝ) : ℝ :=
+  ∑ b : Block, blockLaw.mass b * indicator (region1 b)
+      * Real.exp (ℓ * ((centeredEnergy b : ℤ) : ℝ))
+
+/-- Twisted form of the sector sum (pointwise assembly of
+    `twisted_block_weight_eq` over `region1`): the tilted sector mass is the
+    twist constant over `blockNormalizer` times the shifted-potential sum. -/
+theorem region1TwistMass_eq_shifted (ℓ : ℝ) (hs : (c0:ℝ) - ℓ ≠ 0) :
+    region1TwistMass ℓ
+      = (Real.exp (ℓ*18433^2 + (ℓ*18433)*(ℓ*18433)/((c0:ℝ) - ℓ))
+          / blockNormalizer)
+          * ∑ b : Block, indicator (region1 b)
+              * Real.exp (-((c0:ℝ) - ℓ) * shiftedBlockQ b ((c0:ℝ) - ℓ) (ℓ*18433)) := by
+  have hcongr : ∀ b : Block,
+      blockLaw.mass b * indicator (region1 b)
+          * Real.exp (ℓ * ((centeredEnergy b : ℤ) : ℝ))
+        = (Real.exp (ℓ*18433^2 + (ℓ*18433)*(ℓ*18433)/((c0:ℝ) - ℓ))
+            / blockNormalizer)
+            * (indicator (region1 b)
+                * Real.exp (-((c0:ℝ) - ℓ) * shiftedBlockQ b ((c0:ℝ) - ℓ) (ℓ*18433))) := by
+    intro b
+    by_cases hreg : region1 b
+    · simp [indicator, hreg]
+      rw [twisted_block_weight_eq b ℓ hreg hs]
+      ring
+    · simp [indicator, hreg]
+  unfold region1TwistMass
+  rw [Finset.mul_sum]
+  exact Finset.sum_congr rfl (fun b _ => hcongr b)
+
 end FT1536.ConvStruct
 
