@@ -138,6 +138,22 @@ Closure `657b907273f0bda6e9ecfc5bbeae24bf169cd1bc8e6965f8662b6501f97cfd56`.
 Scope: statement-suffix na return edge; bez enclosing frame teardown,
 Gate00/prefix/pełnego certificate/KeyGen/M6. Niezależny odbiór oczekuje.
 
+### Rozwinięcie T12.1/source3 — KEYGEN_SOURCE_TO_FIBER_001 (2026-09-30)
+
+Właściciel zlecił tej samej Astrze/sesji większy pakiet integracyjny.
+Kryterium końca: skończone zdefiniowane successful pinned M0 KeyGen →
+ten sam materiał decoded sk/pk (f,g,F,G,h) → pełny mandatory certificate
+tego attemptu → dokładne NTRU/public/inverse → ActualNTRUFiber dla każdego c.
+Plan z rzeczywistymi typami zależności:
+[KEYGEN_SOURCE_TO_FIBER_001_PLAN](../../proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_PLAN.md).
+Konsumuje suffix/top/binary004 jako PROVED_KERNEL_SCOPED / NOT_REVIEWED.
+Prefix, Gate00, source callee contracts, encodings i integer lift są
+wewnętrznymi obowiązkami jednego pakietu. Nie dodaje bramki ani założeń
+wyniku do Legal/Success; stored-word bounds pozostają stored-word bounds.
+Bez przejmowania run2/t5, migracji/scalania lub uruchamiania innych modeli.
+Commity lokalne; wcześniejsza zgoda trzech commitów/push jest wykorzystana.
+Push nowego pakietu wymaga osobnego sygnału. Status początkowy IN_PROGRESS.
+
 **Następne20 zadań wykonawczych i20 odbiorów:**
 [B20 OWNER_GUIDE](../../proofs/ft1536/batches/B20_001/OWNER_GUIDE.md),
 [INDEX](../../proofs/ft1536/batches/B20_001/INDEX.json),

@@ -1,14 +1,20 @@
 # T12.1/source3 — żywy stan
 
-Status: **ACTIVE / CERTIFICATE_SUFFIX_001 PROVED_KERNEL_SCOPED / NOT_REVIEWED**.
+Status: **ACTIVE / KEYGEN_SOURCE_TO_FIBER_001 IN_PROGRESS / NOT_REVIEWED**.
 Wykonawca: GPT-6 Astra / openai/gpt-6-astra.
 Sesja: `ses_f12636605ffeL1FZg4teLUwUf5` (bez nowej sesji/workera).
 
-**Aktualne doprecyzowanie właściciela: „Trzy commity i push”.**
-W pytaniu o sprzeczność z zakazem push we wklejonym TASK właściciel wybrał
-opcję potwierdzającą nową zgodę: po trzech logicznych commitach tego
-podetapu push na origin/main. Nie publikujemy między tymi krokami.
-Poprzedni etap STABLE_TOP_001 pozostaje PROVED_KERNEL_SCOPED / NOT_REVIEWED.
+**Aktualne polecenie właściciela: KEYGEN_SOURCE_TO_FIBER_001.**
+Jeden pakiet integracyjny, nie seria kończonych osobno helperów. Dokładny
+typ końcowy przed rozpoczęciem implementacji oraz zależności zapisano w
+`notes/run/KEYGEN_SOURCE_TO_FIBER_001_PLAN.md`. Commity lokalne, bez push.
+Źródła i runtime nadal source3; run2/t5 mają własnego wykonawcę.
+Piny suffix REPORT/CLOSURE oraz wszystkie17 źródeł PROFILE sprawdzone.
+Preflight: bez aktywnego joba Lean/Sage i bez obcego stagingu; main na b35d08f3.
+Zastane zmiany AGENTS/STATE/WORK_COMMITS/CURRENT_DEVELOPMENT i run2/ConvStruct
+pozostają cudzą pracą. Poprzednie trzy pakiety zachowują
+PROVED_KERNEL_SCOPED / NOT_REVIEWED. Zgoda „Trzy commity i push” została
+wykorzystana przez commity3939e25e/ad72a2d5/b35d08f3 suffixu.
 
 ## CERTIFICATE_SUFFIX_001 — bieżący zakres
 

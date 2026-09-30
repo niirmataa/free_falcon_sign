@@ -1,5 +1,16 @@
 # source3 — żywy rejestr luk
 
+## KEYGEN_SOURCE_TO_FIBER_001 — IN_PROGRESS / NOT_REVIEWED
+
+Cel: successful pinned M0 KeyGen→te same decoded f,g,F,G,h→pełny accepted
+certificate→NTRU/public/inverse→istniejący ActualNTRUFiber, dla każdego c.
+Dokładny typ i mapa zależności: `notes/run/KEYGEN_SOURCE_TO_FIBER_001_PLAN.md`.
+Na wejściu OPEN: pełny certificate prefix/FFT3/raw LDL/frame/teardown,
+Gate00 niezależnie na bajtach, cały attempt/control-flow/serializery,
+source modular check i integer lift, source public NTT/div/inverse.
+Gotowy suffix nie stanowi dowodu tych poprzedzających obowiązków.
+Success nie będzie definiowany przez tezy matematyczne ani acceptance.
+
 ## CERTIFICATE_SUFFIX_001 — PROVED_KERNEL_SCOPED / NOT_REVIEWED
 
 Docelowy fragment: keygen7757–7776, n1536/hn768, jawne locals po prefixie.
