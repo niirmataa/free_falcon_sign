@@ -849,5 +849,20 @@ theorem blockWeight_eq_exp (b : Block) :
   rw [c0_val]
   field_simp
 
+/-- Exponent identity of the twisted weight (pure algebra on real
+    coordinates): with `s = c0' − ℓ`, `κ = ℓ·18433`,
+    `−c0'·Q + ℓ·(Q + 18433·(18433 − 2a − c)) = ℓ·18433² + κ²/s − s·Q(a+κ/s, c)`
+    where `Q(a,c) = a*a + a*c + c*c`. -/
+theorem twist_exponent_identity (a c s κ c0' ℓ : ℝ)
+    (hs : s = c0' - ℓ) (hk : κ = ℓ*18433) (hss : s ≠ 0) :
+    -c0' * (a*a + a*c + c*c)
+        + ℓ * ((a*a + a*c + c*c) + 18433*(18433 - 2*a - c))
+      = ℓ*18433^2 + κ*κ/s
+          - s * ((a + κ/s)*(a + κ/s) + (a + κ/s)*c + c*c) := by
+  have hss' : (c0':ℝ) - ℓ ≠ 0 := by rw [← hs]; exact hss
+  rw [hs, hk]
+  field_simp [hss']
+  ring
+
 end FT1536.ConvStruct
 
