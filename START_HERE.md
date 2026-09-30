@@ -36,6 +36,7 @@ prawdopodobieństwa BadPrecast z uniwersalnym Safe16 lub Sign→Verify.
 
 | Potrzeba | Dokument |
 |---|---|
+| Małe commity development, przekazanie aktywnego W, GitHub i tagi | [WORK_COMMITS](docs/onboarding/WORK_COMMITS.md) |
 | Najnowsze wyniki, aktywne prace, zakaz publikacji | [STATE](docs/onboarding/STATE.md) |
 | Główna ścieżka twierdzeń, jawna kolejka i kryteria zadań | [ROADMAP](docs/onboarding/ROADMAP.md) |
 | Gotowy pakiet20 zadań +20 odbiorów — przewodnik właściciela | [B20 OWNER_GUIDE](proofs/ft1536/batches/B20_001/OWNER_GUIDE.md) |

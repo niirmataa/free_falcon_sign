@@ -1,6 +1,6 @@
 # Główna ścieżka twierdzeń i jawny rejestr zadań FT1536
 
-Wersja planu: **2026-09-29 / 17 — P02/V02 odebrane w zakresie PARTIAL**. To żywy plan prowadzącego, oparty na
+Wersja planu: **2026-09-30 / 18 — małe commity pracy T12.1 od work**. To żywy plan prowadzącego, oparty na
 [M0 TARGET_TYPE](../../proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001/TARGET_TYPE.md)
 i [M0 HOP_LEDGER](../../proofs/ft1536/stages/FT1536_M0_CONTRACT_RUN_001/HOP_LEDGER.md).
 Nie zmienia zamrożonego M0 ani statusów starych raportów. Stan pracy na żywo:
@@ -72,6 +72,14 @@ Dokładne statusy, piny i świadectwa odbioru są w katalogu stages/validation.
 F01–F09 to grupy orientacyjne; nie jeden zbiorczy nowy status PROVED.
 
 ## 4. Rejestr dalszych zadań — główny tor
+
+**Decyzja właściciela2026-09-30:** T12.1/RUN_002, jego kontynuacja RUN_003
+i T5 dostają nowy `development/T12_1` dla małych commitów nowości względem
+stages i bieżącego push main na GitHub. Aktywny agent przejdzie dopiero po
+handoffie i rozliczeniu dopisków; stare W pozostają ignorowane. Końcowy review/import
+stages pozostaje osobnym krokiem z tagiem; nie jest warunkiem commita pracy.
+[Wiążący schemat](WORK_COMMITS.md). Zależności matematyczne i zakresy
+odebranych twierdzeń nie są zmieniane przez publikację źródeł.
 
 **Następne20 zadań wykonawczych i20 odbiorów:**
 [B20 OWNER_GUIDE](../../proofs/ft1536/batches/B20_001/OWNER_GUIDE.md),
@@ -338,3 +346,9 @@ muszą wskazywać ten sam aktywny etap.
   No_add_dispatch zamyka diagnozę niemożliwej przesłanki sub;nie zamyka
   arytmetyki. Następny cel:fpr_add dispatcher/source/error i caller domain,
   z wykorzystaniem odebranych word/LE/slice proofs. T03-B nadal OPEN.
+- 2026-09-30/v18: właściciel wymaga zwykłych małych commitów rzeczywistej
+  pracy od work oraz bieżącej publikacji na GitHub. Wybrał nowy katalog
+  development/T12_1 z nowościami względem stages; źródła rodzica RUN_002,
+  kontynuacji RUN_003 i T5. Aktywny agent przejdzie po handoffie. Stage/review
+  otrzyma osobny commit/tag; nie trzeba czekać na cały wielki etap.
+  Duże generowane certyfikaty mają pin i generator, runtime pozostaje lokalny.

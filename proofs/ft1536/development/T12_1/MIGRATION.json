@@ -1,0 +1,28 @@
+{
+  "schema": "FT1536_DEVELOPMENT_MIGRATION_V1",
+  "recorded_utc": "2026-09-30T02:39:59Z",
+  "roadmap_id": "T12.1",
+  "status": "PREPARED_HANDOFF",
+  "archive_comparison_head": "3a111bfc0e2c74e4b2902a16eacf82dc7da4a4ef",
+  "worker_relocated": false,
+  "original_source_files_modified": false,
+  "mathematical_review_or_replay": "NOT_PERFORMED",
+  "components": [
+    {"name": "run2", "copied_files": 164, "copied_bytes": 898116, "archived_references": 35, "large_untracked": 1},
+    {"name": "source3", "copied_files": 181, "copied_bytes": 1669418, "archived_references": 32, "large_untracked": 0},
+    {"name": "t5", "copied_files": 26, "copied_bytes": 160391, "archived_references": 0, "large_untracked": 0}
+  ],
+  "checks": [
+    "Original source hashes checked twice around capture; file set stable during each capture",
+    "All 371 copied source SHA256 values match their BASELINE entries",
+    "All 67 archived dependency SHA256 values match exact stage bytes",
+    "No archived dependency was copied to its new target",
+    "All intended small sources are visible to Git; legacy work and caches stay ignored",
+    "Five source-handoff tool tests passed, including active edits and overwrite refusal"
+  ],
+  "late_write_check": {
+    "command": "python3 -B tools/ft1536_dev_sources.py pending source3",
+    "changes_after_snapshot": 0,
+    "note": "Point-in-time observation only. Repeat at actual handoff; the author is still active."
+  }
+}

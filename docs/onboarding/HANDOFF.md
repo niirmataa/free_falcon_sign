@@ -1,5 +1,13 @@
 # Mały kontekst, jeden wykonawca, odtwarzalny handoff
 
+**Aktualizacja właściciela2026-09-30:** nowy `development/T12_1` ma zwykłe
+małe commity nowości względem stages i bieżący push main już podczas pracy.
+Aktywny autor przechodzi ze starego W dopiero po zakończeniu kroku i kontroli
+dopisków przez `ft1536_dev_sources.py pending`; stary W pozostaje zachowany.
+[WORK_COMMITS](WORK_COMMITS.md) określa ścieżki, duże artefakty i komendy.
+Poniższy workflow review→stages dotyczy odbioru, po którym powstaje osobny
+commit i tag. Wykonawca z zakazem Git przekazuje zmiany jednemu koordynatorowi.
+
 ## Role i bezpieczne wznowienie
 
 Każdy handoff podaje również `ROADMAP_ID` z [rejestru zadań](ROADMAP.md).

@@ -769,3 +769,34 @@ w historii. Następny krok po zakończeniu: ocena wyniku i checkpoint przy PASS.
   przez `git ls-remote --heads origin refs/heads/main`.
 - Zastany13-wierszowy wpis Qwen3 w STATE pozostaje lokalny,poza commitem.
   Staging przed akcją pusty;publikacja nie upoważnia do przyszłych pushów.
+
+## 2026-09-30T02:39:59Z — małe commity od początku; nowy development/T12_1
+
+- Właściciel polecił normalne małe commity rzeczywistej pracy i bieżący
+  push na GitHub, przed verify/review/stages. Po odbiorze osobny commit/tag.
+  Doprecyzował: nie dodawać starych zmian już istniejących w stages; stworzyć
+  nowy katalog i pracować tam odtąd. Wybrał „Przenieść nowości (Recommended)”.
+  Przypomniał, że agent pracuje: przekazanie dopiero na granicy jego kroku.
+- `python3 -B tools/ft1536_dev_sources.py capture source3|run2|t5`:
+  nowy `proofs/ft1536/development/T12_1`,status PREPARED_HANDOFF.
+  RUN_002:164 nowe pliki/898116B,35 refs stages;Source3:181/1669418B,32 refs;
+  T5:26/160391B. Łącznie371 nowych plików,67 identycznych pominiętych;
+  około2.9MB z metadanymi. BASELINE i ARCHIVED_DEPENDENCIES mają piny bajtów.
+- Duży CountsFoldCertificate113248419B,sha256fff4055996c5c938189212ac02b0dbd68473113adf28738d7a50880bef347447
+  pozostaje poza Git; generator Sage7163B/b52674b70ce38c10605d6fa76404585661edd6e018fc9659cd4ed33420bc4498
+  i sposób odtworzenia są przypięte w LARGE_ARTIFACTS.json.
+- `python3 -B tests/ft1536/test_dev_sources.py`:5/5 PASS. Kontrola wszystkich
+  nowych hashy,referencji stages,braku kopii identycznych i widoczności w Git
+  PASS. `git diff --check` PASS. Bez nowego Lean/Sage/mathematical review.
+  `pending source3` w tej obserwacji:0 zmian od kopii; agent pozostaje aktywny.
+- Początkowy pomysł otwierania starych W wycofano po doprecyzowaniu właściciela.
+  `proofs/ft1536/.gitignore` i hook pozostały dokładnie jak w HEAD. Stare W
+  nie są śledzone ani modyfikowane przez kopiowanie; zamrożone stages bez zmian.
+- Komendy publikacji: exact-path `git add`,osobne zwykłe commity main jako
+  niirmataa,`git push origin main`,potem porównanie HEAD z `git ls-remote`.
+  To zapis źródeł,nie awans statusu matematycznego. Zastany wpis Qwen3 w STATE,
+  backup_work.sh i provenance pozostają poza zakresem tych commitów.
+- Następny krok:autor kończy bieżący krok,handoff i ponowne `pending`.
+  Po rozliczeniu dopisków właściciel przekazuje tej samej sesji nowy workspace;
+  wtedy aktualizacja ACTIVE/runner paths. Bez relay,nowego workera lub przenosin
+  aktywnego W w trakcie jego obliczeń.

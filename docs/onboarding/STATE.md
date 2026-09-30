@@ -1,5 +1,18 @@
 # Stan projektu — punkt wejścia
 
+**2026-09-30 — właściciel: małe commity źródeł od work i bieżący GitHub.**
+Zapis rzeczywistej pracy na main powstaje po małych logicznych krokach,
+przed końcowym verify/review/stages. Po odbiorze osobny checkpoint i tag
+z rzeczywistym scope. [Schemat i komendy](WORK_COMMITS.md).
+Docelowo nowy [development/T12_1](../../proofs/ft1536/development/T12_1/README.md):
+tylko nowości RUN_002, RUN_003 i T5 względem committed stages. Całe stare
+work pozostaje ignorowane. Status **PREPARED_HANDOFF**; aktywny agent kończy
+krok w swoim W. Dopiski sprawdzamy przez `ft1536_dev_sources.py pending`
+i przełączamy go dopiero po handoffie. Kopia nie zatrzymuje ani nie wznawia jobów.
+Właściciel upoważnił do bieżących pushy tych małych commitów. Jeden writer
+Git; wykonawcy z TASK „bez Git” przekazują pliki koordynatorowi.
+Pierwszy zapis jest source baseline aktualnych bajtów, nie nowym odbiorem.
+
 **2026-09-29 — P02 v2 REVIEWED / PARTIAL_PROOF; V02 PASS_SCOPED_REVIEW.**
 [Autor](../../proofs/ft1536/stages/B20_001_P02_FINAL_001/REPORT.md),
 [recenzja](../../proofs/ft1536/stages/B20_001_V02_FINAL_001/REVIEW.md).

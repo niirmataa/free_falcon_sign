@@ -1,5 +1,10 @@
 # FT1536 — wersjonowane punkty kontrolne dowodów
 
+**Od2026-09-30:** nowy [development/T12_1](development/T12_1/README.md) dla
+małych commitów nowości względem stages i bieżącego push main na GitHub.
+Aktywny agent przechodzi po handoffie; stare W pozostają lokalne. Odbiór jest osobnym
+checkpointem stages z tagiem. [Schemat](../../docs/onboarding/WORK_COMMITS.md).
+
 **Standard nowych rachunków2026-09-22:** autorytatywne pliki `.sage`
 uruchamiane `sage lemma.sage` z preparserem. [Przypięte uzupełnienie](documents/FT1536_ZASADA_RACHUNKU_SAGEMATH_2026-09-22.md)
 obejmuje nowe checkery i niezakończone T02.1/T03/S01; Python organizuje

@@ -2,6 +2,26 @@
 
 Docelowym repozytorium prac jest `free_falcon_sign`.
 
+## Aktualna decyzja właściciela — małe commity od work (2026-09-30)
+
+- Źródła rzeczywistej pracy commitujemy normalnie od początku w małych
+  logicznych krokach na `main`, z bieżącym push na GitHub. Właściciel jawnie
+  zlecił ten rytm; nie czekamy z zapisem źródeł na verify/review/stages.
+  To późniejsze upoważnienie do publikacji małych commitów pracy projektu.
+- Właściciel doprecyzował: nowy normalnie śledzony katalog
+  `proofs/ft1536/development/T12_1/`, tylko nowości względem committed stages.
+  Całe historyczne `work/` pozostaje ignorowane. Instrukcja:
+  `docs/onboarding/WORK_COMMITS.md`; duże artefakty przez generator/pin.
+- **Aktywny agent zachowuje swój W do handoffu.** Nowy katalog początkowo
+  PREPARED_HANDOFF; najpierw kończy krok, potem rozliczamy późniejsze zmiany
+  przez `tools/ft1536_dev_sources.py pending`. Dopiero właściciel przekazuje
+  nowe miejsce tej samej sesji. Nie uruchamiaj drugiego workera/relay.
+- Odbiór nadal daje osobny import/checkpoint stages i nowy annotowany tag
+  z dokładnym scope. Commit źródeł nie nadaje statusu REVIEWED.
+- Jeden writer Git; TASK „bez Git” oznacza commit/push przez koordynatora.
+  Poniższe historyczne reguły work→review→stages dotyczą odebranego wyniku,
+  nie blokują już normalnych małych commitów źródeł. Bez amend/force-push.
+
 ## Wejście bez historii rozmowy
 
 - Nowa sesja zaczyna od `START_HERE.md` i `docs/onboarding/STATE.md`, potem
