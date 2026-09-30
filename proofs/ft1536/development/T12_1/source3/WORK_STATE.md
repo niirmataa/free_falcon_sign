@@ -1,5 +1,28 @@
 # T12.1/source3 — żywy stan
 
+## Paused at the owner's request — 2026-09-30
+
+**PAUSED_OWNER_REQUEST / KEYGEN_SOURCE_TO_FIBER_001 IN_PROGRESS / NOT_REVIEWED**.
+The owner paused work because of reported API problems and possible reduced
+performance. Resume only on the owner's instruction, in the same session/W.
+Resume record: `notes/run/KEYGEN_SOURCE_TO_FIBER_001_RESUME.md`.
+
+Batch001 is published: own commits `72483533`, `10d8c17c`, `89e7b885`.
+After checking the actual remote tip, this worker pushed only `89e7b885`;
+the other commits were already reachable from origin/main. At pause preflight,
+main=origin/main=`89e7b88566811dcceaec2e6a2b9ccdf47e16b444`, index empty.
+
+The last owned job, `keygen_prefix_workspace_002`, completed at
+2026-09-30T19:21:44.982489Z. C99InitializationTrace passed; CertificateWorkspace
+failed elaboration at lines50/53; FprPrefixCalls was not reached. No proof
+job remains running from this worker. The read-only NTT research subagent
+also completed; its unverified development formulas are saved in the resume
+record. No reviewer was started. Preserve all failed-attempt snapshots/logs.
+
+The pause checkpoint saves the three new sources unchanged, including the
+failed draft. It is the first local commit of the next three-own-commit batch;
+publication waits for that batch. The complete source bridge remains open.
+
 ## Current work and publication rule — 2026-09-30
 
 KEYGEN_SOURCE_TO_FIBER_001 remains **IN_PROGRESS / NOT_REVIEWED**.
