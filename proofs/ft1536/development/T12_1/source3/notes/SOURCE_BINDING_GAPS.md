@@ -4,7 +4,42 @@ T12.1 pozostaje WORKING / PARTIAL. Końcowy zakres tej kontynuacji nadal
 oznacza **M6 dla całej populacji emitted C-KeyGen, potem C Sign/M7**.
 Niniejszy rejestr nie definiuje nowej populacji kluczy.
 
-## Podetap stable-binary — STABLE_BINARY_003, 2026-09-30
+## Podetap stable-binary — STABLE_BINARY_004, 2026-09-30
+
+**B1–B4 PROVED_KERNEL_SCOPED w autorskiej semantyce fragmentu;
+NOT_REVIEWED / WORKING_NOT_FROZEN.**
+
+- `C99HeaderProof.header_completeness` realizuje pełny dawny typ
+  `HeaderCompleteness`, a `C99PrimitiveProof.primitive_completeness`
+  pełny `PrimitiveCompleteness`. Definicje i komentarze z pinned `_003`
+  pozostają historią; nowe twierdzenia są ich świadkami.
+- `C99HelperReference.PinnedExec` jest niezależną indukcyjną relacją
+  sterowania/pamięci, bez bounded evaluatora w regułach.
+  `C99HelperExists.pinned_inhabited` dowodzi jej niepustości z niezmienionego
+  Legal: dowolne Word64 values, dowolny uint32 bad, scratch bez initial reads.
+- `C99HelperComplete.pinned_complete` zachowuje całą pamięć i metadata
+  przez bijekcję `C99MemoryBridge`, a także dokładny ślad kontroli.
+  `StableBinary004Outcome.source_outcome` daje bezpośrednio reference
+  frame, sticky dowolnego bad≠0 oraz final bad0→initial bad0, każda kontrola
+  positive-finite i bez fallbacku. Brak przesłanek niewykazanej kompletności.
+- Deskryptory/loads/stores, bytewise memcpy, scalar scope/SSA locals,
+  size_t control oraz dozwolone kolejności efektów są opisane i wykazane
+  w `C99MemoryAccess`, `C99HelperObjects`, `C99HelperControl`,
+  `C99HelperOrders`, `C99CheckReference` i mostach.
+- Fresh `stable_binary004_fresh_001`:54/54 accepted/clean,261 twierdzeń,
+  pięć mutacji; closure SHA256
+  `d62d6eb1104879c4b920b9e5a0324d0e2ee78cfcf41f9b8edf434a22d7a1a5e2`.
+  Raport: `run/STABLE_BINARY_004_REPORT.md`; materiał do niezależnego
+  odbioru: `run/STABLE_BINARY_004_REVIEW_TASK.md`.
+
+Granica pozostaje jawna: autorska semantyka wskazanego fragmentu C99/GCC
+i jej wyspecjalizowany frontend/normalizacja prywatnych locals, nie dowód
+całej normy ISO ani kompilatora. Ocenę adekwatności źródłowej musi wykonać
+niezależny odbiorca. Nie jest to nowe założenie matematyczne w eksporcie.
+Cały KeyGen/certificate, FPEMU real-error, FFT/exact Gram, T5, M6 i C Sign
+pozostają poza domkniętym zakresem.
+
+## Podetap stable-binary — historyczny STABLE_BINARY_003, 2026-09-30
 
 W `_003` **zamknięto kernelowo** oba dawne named types:
 `FprAllTotal.all_pinned_fpr_words_defined` i
@@ -105,15 +140,15 @@ types/terms/axioms w source3_progress_audit_001. Receipt zakresu:
    źródłowego success. Capped attempts, legalne wyjście, zachowanie key buffers
    i obie serializacje muszą wynikać z właściwej semantyki wykonania.
 2. Kompozycja całego ft_keygen_leaf_certificate: raw FFT/LDL prefix, Gate00,
-   stable top/binary (z otwartym standard-C completeness i pełnym stable-top), reverse reciprocal
+    stable top/binary (binary ma scoped B w `_004`; nadal otwarte pełne stable-top), reverse reciprocal
    i końcowy scan. Final bad0 ma wymusić bad0 także we wcześniejszych
    bramkach; lokalny stable-binary nie dowodzi braku zapisu/aliasu kasującego
    bad między innymi fragmentami certificate.
 3. Successful solve_NTRU/public-key → dokładne równania NTRU/public relation
    i ten sam materiał klucza. Modulus lifting wymaga boundu współczynników
    oraz correct NTT/Montgomery (PRIMES3[0]=2147355649).
-4. Po dokładnym i totalnym wykonaniu słów add/mul/div pozostają: niezależne
-   C99 completeness, ich real-error/domain oraz sqrt, FFT i stable
+4. Po dokładnym i totalnym wykonaniu słów add/mul/div oraz scoped niezależnej
+    C99 completeness w `_004` pozostają: ich real-error/domain oraz sqrt, FFT i stable
    sequence → exact Gram/liście z odpowiednimi błędami. Historyczne mixed-proof raporty
    nie są brakującymi eksportami kernela. Nie założyć IEEE RN z komentarza.
 5. Konstrukcja wież i box transport T5 dla tej samej populacji; T5 W pozostaje

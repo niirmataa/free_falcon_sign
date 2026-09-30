@@ -1,5 +1,53 @@
 # RUN_003 — source-bound kontynuacja T12.1
 
+## 2026-09-30 — STABLE_BINARY_004, B1–B4 kernelowo scoped, do odbioru
+
+Zakończono bieżący krok B w tej samej sesji
+`ses_f12636605ffeL1FZg4teLUwUf5` (harness: GPT-6 Astra).
+**PROVED_KERNEL_SCOPED / NOT_REVIEWED / WORKING_NOT_FROZEN**.
+
+- `run/STABLE_BINARY_004_REPORT.md`, SHA256
+  `3bc800efe63cc0b829b44d10d19d7d54dfc72678366a7f71c60e27b4b4378f96`.
+- `run/STABLE_BINARY_004_CLOSURE.json`, SHA256
+  `d62d6eb1104879c4b920b9e5a0324d0e2ee78cfcf41f9b8edf434a22d7a1a5e2`.
+- Fresh `stable_binary004_fresh_001`:54/54 moduły accepted/clean,
+  261 twierdzeń (typy/termy/transitive axioms),171.661s,maxRSS5953120KiB.
+  Wyłącznie propext/Classical.choice/Quot.sound lub brak aksjomatów.
+  Pięć meaningful mutations; piny94 reused local i2 frozen dependencies
+  zweryfikowane. Raporty i closure `_002/_003` bez zmian.
+- B1: `C99HeaderProof.header_completeness`; B2:
+  `C99PrimitiveProof.primitive_completeness`, dokładne dawne named types.
+- B3: `C99HelperReference.PinnedExec`, `C99HelperExists.pinned_inhabited`,
+  source/descriptor/scope/control/order lemmas. Semantyka indukcyjna,
+  bez bounded evaluatora lub pożądanego wyniku w konstruktorach.
+- B4: `C99HelperComplete.pinned_complete` i
+  `StableBinary004Outcome.source_outcome`, pełna pamięć+metadata+trace,
+  frame, sticky dowolnego bad≠0, final bad0→initial bad0 i wszystkie
+  faktycznie wykonane kontrole positive-finite/no-fallback.
+- Legal pozostaje niezmieniony, także niezainicjalizowane scratch i
+  dowolne values/bad. A1–A3 konsumowane z przypiętych zależności.
+
+Istotna granica: dowód dotyczy **autorskiej formalizacji wskazanego
+fragmentu C99/GCC-LP64**, z wyspecjalizowaną normalizacją private locals
+do SSA i pure address evaluation. Nie oznacza dowodu ISO C w całości
+lub kompilatora. Ten punkt, jak i source binding/lifetime/effect order,
+jest jawnie wskazany do niezależnego odbioru w
+`run/STABLE_BINARY_004_REVIEW_TASK.md` (PREPARED_OWNER_START).
+
+Następny krok: właściciel wybiera/startuje niezależnego recenzenta.
+Nie uruchomiono recenzenta, subagenta, relay lub nowej sesji; bez zmian
+produkcyjnego C, Git/push i freeze RUN_003. Kontrola po fresh: brak aktywnych
+Lean/Sage/jobów. Zgodnie z nową instrukcją repo aktywny agent zachował W
+do handoffu; przeniesienie nowości do `development/T12_1` i operacje Git
+wykonuje koordynator po decyzji właściciela, nie ten TASK bez Git.
+
+Ocena: zamknięto dawną lukę zgodności B i niepustości referencji helpera.
+To umożliwia dalszą kompozycję source-bound certificate, ale nie dowodzi
+real-error FPEMU, FFT/exact Gram, całego KeyGen, T5, M6 ani C Sign.
+Monolityczne próby z limitem pamięci są zachowane; ostateczny replay
+przeszedł bez zmiany limitów i bez wyciszania ostrzeżeń. Nie ma blokady
+kernelem w oddawanej closure; niezależny odbiór nadal oczekuje.
+
 ## 2026-09-30 — STABLE_BINARY_003, A1–A3 kernelowo, B w toku
 
 Raport bieżącego punktu: `run/STABLE_BINARY_003_REPORT.md`, SHA256

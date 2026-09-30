@@ -1,18 +1,31 @@
 # T12.1 — małe kroki rozwoju
 
-**Status: PREPARED_HANDOFF.** Właściciel2026-09-30 wybrał nowy katalog
-pracy oraz przeniesienie małych nowości, których nie ma już w `stages`.
-Aktywny agent nadal kończy swój krok w dotychczasowym W. Ten snapshot
-jest przygotowaniem miejsca, nie automatycznym przejęciem jego pracy.
+**Status: PREPARED_HANDOFF**, z osobnym stanem komponentów. Właściciel
+2026-09-30 wybrał nowy katalog pracy oraz przeniesienie małych nowości,
+których nie ma już w `stages`.
+
+| Komponent | Stan przekazania |
+|---|---|
+| `source3` | **RECONCILED_AWAITING_WORKER_ACK** — pięć dopisków przeniesionych; następny krok: potwierdzenie tej samej sesji Astry |
+| `run2` | PREPARED_HANDOFF, bez zmiany przy tym rozliczeniu |
+| `t5` | PREPARED_HANDOFF, bez zmiany przy tym rozliczeniu |
+
+Dokładne piny i okno writer Git dla Astry:
+[source3/HANDOFF.md](source3/HANDOFF.md).
+Przygotowanie i rozliczenie kopii nie jest potwierdzeniem ACTIVE za wykonawcę.
 
 **Katalog i podział ról zatwierdzone przez właściciela:** worker po uzgodnieniu
 z nim sam robi małe commity i push podczas pracy. Koordynator prowadzi odbiór,
 import oraz końcowy commit/tag stages. `PREPARED_HANDOFF` dotyczy przekazania
 aktywnej sesji; po przejęciu zgoda zastępuje jej historyczne „bez Git”.
 
-Kontrola2026-09-30T02:43:37Z wykryła3 późniejsze dopiski autora:
-[HANDOFF_PENDING.json](HANDOFF_PENDING.json). Przy rzeczywistym przekazaniu
-trzeba ponownie sprawdzić delta, bo agent nadal pracuje w starym W.
+Historyczna kontrola2026-09-30T02:43:37Z wykryła3 dopiski:
+[HANDOFF_PENDING.json](HANDOFF_PENDING.json). Kolejna kontrola po zakończeniu
+STABLE_BINARY_004 wykazała5; wszystkie przeniesiono i zweryfikowano w
+[receipcie rozliczenia](source3/HANDOFF_RECONCILIATION_20260930_001.json).
+`pending source3` nadal raportuje tę historyczną deltę wobec niezmienionego
+`BASELINE.json`; jej rozliczenie sprawdzamy po receipcie, nie przez wyzerowanie
+baseline. Przed potwierdzeniem przejęcia sprawdź ewentualne nowe dopiski.
 
 ## Układ
 
