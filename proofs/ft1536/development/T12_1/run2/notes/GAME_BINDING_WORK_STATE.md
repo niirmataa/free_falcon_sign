@@ -1,0 +1,53 @@
+# GAME_BINDING — notatki toru matematycznego T12.1
+
+Źródło: zamrożony W wykonawcy GAME_BINDING_RUN_001 (przeniesione wg zasady
+dyskrecji ścieżek — pełna historia w oryginalnym W). Kolejne kroki tego
+toru powstają już tutaj, małymi commitami.
+
+## Zakres toru
+
+Łańcuch delta dla kluczy prawych: `FinalTails` (hchange/htail) →
+`ConvolutionCert`/`ConvStruct` (struktura splotu + boundy Czernowa +
+`mgf1_eq`) → `FinalDelta` (`all_keys_delta`, forma finalna warunkowa od
+`certLo`/`certHi` i `flat`/`reject`).
+
+## Stan (2026-09-30)
+
+- 13 modułów Lean: build 0/0 (czyste logi, 0 sorry/admit/native_decide),
+  audyty `#print axioms` ⊆ [propext, Classical.choice, Quot.sound].
+- L0 (`sage/check_conv_window.sage`, L0_PASS): reprodukcja pinów
+  `arb_radial_result.json` bajt w bajt; geometria sektora — `Qc−Q = 18433·δ`,
+  wyrodnienie okna lo ⟺ `δ = 1` (≡ straż silnika `lhi ≥ llo`), hiWin
+  zawsze otwarte; momenta θ (G zawiera granicę `2π/(α√3)`); margines
+  `certLo` = dokładnie `aliasCap`, wymagany allowance zawijania ≤ 7.83e-10.
+- Kluczowe konstrukcje: `windowMassWin_rest` (okno = splot 1535 bloków),
+  `fiber_moment_eq` (Dirac w slocie 0 ⇒ moment = `mgf₁^1535`),
+  `sum_imp_exp_bound` + `windowMassWin_half_le` (Czernow z implikacją),
+  `mgf1_eq` (mgf₁ = `blockSum (c0−ℓ)/blockSum c0`).
+
+## Lekcje (nie powtarzać błędów)
+
+- Rozbiory rodzin: gotowe `Fin.prod_univ_succ`/`Fin.sum_univ_succ`
+  (grep w `Mathlib/Algebra/BigOperators/Fin` PRZED pisaniem bijekcji!).
+- Formy kastów **w stwierdzeniach**: `((∑ … : ℤ) : ℝ)` per-kawałek vs
+  `↑(Σ+Σ−E)` to różne termy (klasa `Int.cast_sub`).
+- `show … from by simp` zamiast kaskad `unfold`+`simp`; pełne `open`
+  (restrykcyjna lista z jednym złym identyfikatorem wywala całą komendę);
+  nie dokładać taktyk „na wszelki wypadek"; licznik błędów w logach
+  łapie format `error(typ):`.
+
+## Otwarte (kontrakty z torami)
+
+1. `certLo`/`certHi` — droga (b): splot strukturalny kernel-side;
+   REUSE z toru T5: `T5ScalarMass.uniform_shifted_mass_3072`,
+   `TriangularGaussian`, `ShiftedGaussian`, `A2Theta`.
+2. `flat`/`reject` — teza toru T5 (`TASK_T5_FLAT_REJECT`); po jej
+   zamknięciu `all_keys_delta_of_conv_cert` traci przesłanki modelowe.
+3. Styk z source3: `hbLo`/`hbHi` (źródłowa strona silnika) oraz
+   `E_leaf < 33` + `source_binding` → `LeafErrorContract` (REFINE).
+
+## Zasady
+
+Zero sorry/admit/native_decide; logi 0/0 (licznik `error(\(|:)`);
+kompilacja seryjna strzeżona (`tools/original/run_lean_guarded.sh`);
+Sage przez `sage <plik>.sage`; asserty w każdym patchu python.
