@@ -686,5 +686,29 @@ theorem hex_twist_shift_exp (s κ x y : ℝ) (hs : s ≠ 0) :
   rw [hex_twist_shift s κ x y hs, Real.exp_add]
   ring
 
+/-- Box-to-lattice bridge: the box sum over `Fin 131071^2` (coordinates via
+    `blockDecode`) does not exceed the unordered sum over `ℤ × ℤ` for
+    nonnegative summable functions (the image of the box under `blockDecode`
+    is `Icc (-65535) 65535 × Icc (-65535) 65535`, a subset of `ℤ × ℤ`). -/
+theorem box_sum_le_tsum {f : ℤ × ℤ → ℝ}
+    (hf : ∀ p, 0 ≤ f p) (hsum : Summable f) :
+    (∑ b : Block, f (blockDecode b)) ≤ ∑' p : ℤ × ℤ, f p := by
+  classical
+  rw [Fintype.sum_prod_type]
+  have h0 : (∑ a : Fin 131071, ∑ t : Fin 131071, f (blockDecode (a, t)))
+      = (∑ a : Fin 131071, ∑ t : Fin 131071,
+          f (((a.val : ℤ) - 65535, ((t.val : ℤ) - 65535)))) :=
+    Finset.sum_congr rfl (fun a _ => Finset.sum_congr rfl (fun t _ => rfl))
+  rw [h0]
+  rw [sum_fin131071_eq (g := fun x : ℤ => ∑ t : Fin 131071,
+    f ((x, ((t.val : ℤ) - 65535))))]
+  have h2 : (∑ x ∈ Finset.Icc (-65535:ℤ) 65535,
+      ∑ t : Fin 131071, f ((x, ((t.val : ℤ) - 65535))))
+      = (∑ x ∈ Finset.Icc (-65535:ℤ) 65535,
+          ∑ y ∈ Finset.Icc (-65535:ℤ) 65535, f ((x, y))) :=
+    Finset.sum_congr rfl (fun x _ => sum_fin131071_eq (g := fun y : ℤ => f ((x, y))))
+  rw [h2, ← Finset.sum_product]
+  exact hsum.sum_le_tsum _ (fun p _ => hf p)
+
 end FT1536.ConvStruct
 
