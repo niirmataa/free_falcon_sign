@@ -1,6 +1,6 @@
 # T12.1/source3 — żywy stan
 
-Status: **ACTIVE / STABLE_TOP_001 / WORKING_NOT_REVIEWED**.
+Status: **ACTIVE / STABLE_TOP_001 PROVED_KERNEL_SCOPED / NOT_REVIEWED**.
 Wykonawca: GPT-6 Astra / openai/gpt-6-astra.
 Sesja: `ses_f12636605ffeL1FZg4teLUwUf5` (bez nowej sesji/workera).
 
@@ -39,11 +39,14 @@ CLOSURE `d62d6eb1104879c4b920b9e5a0324d0e2ee78cfcf41f9b8edf434a22d7a1a5e2`.
    most pętli `StableTopBodyBridge.loop_complete`: accepted/clean.
    `StableTopLoop.loop_exists/filled_all/counters` dowodzą256 iteracji,
    u=3*v i inicjalizacji768 leaves bez initial leaves/scratch reads.
-4. Legalność/inicjalizacja leaves/scratch, trzy binary256, pełna pamięć/trace.
-5. Istnienie/reference→operational/source outcome, mutacje, fresh closure.
+4. Legalność następnych gałęzi i wspólny scratch: domknięte przez
+   `StableTopBranchLayout`, `StableTopBinaryBridge`, `StableTopBranches`.
+5. Istnienie/reference→operational/source outcome: `StableTop001Outcome`.
+   Fresh23/23 moduły,119 twierdzeń accepted/clean; pełna pamięć/metadata/trace.
 
-Małe commity i push własnych plików po logicznych krokach; okno Git
-przekazane przez właściciela/koordynatora. Bez przyjmowania cudzych zmian,
+Małe lokalne commity własnych plików po logicznych krokach; push wyłącznie
+po nowym sygnale właściciela. Okno Git przekazane przez właściciela/koordynatora.
+Bez przyjmowania cudzych zmian,
 bez amend/force, innych modeli, samodzielnego REVIEWED lub zmian C.
 
 Uruchamianie z katalogu komponentu:
@@ -69,5 +72,29 @@ Pętla: `stable_top_syntax_001`, `stable_top_expr_memory_002` (Expr),
 `stable_top_atoms_001`, `stable_top_body_bridge_002`, `stable_top_body_total_002`,
 `stable_top_loop_002` accepted/clean. Źródłowe12 kontroli/iterację, pełne
 nawiasowanie, Legal oraz przenoszony invariant frame/sticky/clear.
-Następny otwarty krok: kompozycja trzech binary256 i końcowe source outcome;
-cały STABLE_TOP_001 jeszcze nie jest zgłoszony jako domknięty.
+## Wynik STABLE_TOP_001 — do niezależnego odbioru
+
+- `StableTop001Outcome.reference_exists`: każdy legalny before ma
+  niezależne source execution, dowolne roots/bad, bez initial leaves/scratch.
+- `StableTop001Outcome.source_outcome`: exact operational heap/metadata/
+  trace, roots i frame, sticky dowolnego bad≠0, clear→initial clear oraz
+  positive-finite/no-fallback wszystkich kontroli top i trzech binary.
+- Scope: autorska semantyka fragmentu C99/GCC-LP64 i source binding,
+  nie dowód całego ISO/kompilatora ani pełnego M6/KeyGen/Sign.
+- `.build/jobs/stable_top_fresh_001`:23/23 accepted/clean,119 audytowanych
+  twierdzeń,110.151s,maxRSS4224628KiB; standardowe aksjomaty albo brak.
+- `notes/run/STABLE_TOP_001_CLOSURE.json`, SHA256
+  `1447448efc172809c76c56e2f0cfa6ab73054cf5b47003b57994c447e451e33a`.
+  Raport: `notes/run/STABLE_TOP_001_REPORT.md`; materiał odbiorczy:
+  `notes/run/STABLE_TOP_001_REVIEW_TASK.md`.
+  REPORT SHA256 `bff687ddd52b828223a7ee904fe9e0510cbd20eb60c93fcea48e19daa92ba66f`.
+- Sage C probes:18 wykonań normal/UBSan,16/16 wykrytych mutantów,
+  baseline22272 kontroli. Pierwszy probe `_001` nie wykrył mul→add przy
+  c=1/dużym ab (zaokrąglenie); zachowany, dane w `_002` poprawione.
+- `24ef6865`: lokalny commit parser/pętla. Kolejny końcowy commit jest
+  zgłaszany hashem w handoffie. Żadnego push po poleceniu wstrzymania.
+
+Następny krok: właściciel/koordynator organizuje niezależny odbiór;
+recenzenta nie uruchomiono. Brak otwartego typu wymaganego dla tego
+scoped stable-top; reverse reciprocal, pełny certificate, real-error,
+FFT/exact Gram, KeyGen, T5, M6 i C Sign pozostają kolejnymi obowiązkami.

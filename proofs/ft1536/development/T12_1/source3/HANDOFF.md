@@ -15,6 +15,10 @@ Przejęto wyłącznie source3. Źródła: lokalne `formal/`, `sage/`, `tools/`;
 świeży runtime: `.build/`. `WORK_STATE.md` w tym komponencie jest żywy;
 przeniesione `notes/WORK_STATE.md` i wcześniejsze raporty są proweniencją.
 
+Późniejsze polecenie właściciela dla tej sesji: **push dopiero po jego
+jawnym sygnale**. Poniższe historyczne uzgodnienie bieżącego push jest
+od tego momentu ograniczone tym poleceniem; lokalne commity są kontynuowane.
+
 ## Rozliczone dopiski
 
 Przeniesiono bajtowo pięć wskazanych plików z dotychczasowego W RUN_003

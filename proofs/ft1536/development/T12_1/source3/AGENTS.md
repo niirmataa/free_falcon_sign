@@ -5,18 +5,20 @@ Wykonawca: **GPT-6 Astra / openai/gpt-6-astra**, ta sama sesja
 i starych receiptach pozostają proweniencją, nie aktualnym przydziałem.
 
 Przeczytaj `../README.md`, `HANDOFF.md`, AGENTS repo i development oraz
-`docs/onboarding/WORK_COMMITS.md`. Status przy przygotowaniu:
-**RECONCILED_AWAITING_WORKER_ACK**; nie ogłaszaj ACTIVE przed własnym
-potwierdzeniem przejęcia i sprawdzeniem pinów rozliczenia.
+`docs/onboarding/WORK_COMMITS.md`. Status: **ACTIVE** po potwierdzeniu
+przejęcia przez tę samą sesję i sprawdzeniu5/5 kopii według receiptu
+`d6e460b94b858dfbb65bb2d6c725a477d932e3fcbfeb9903bc4ea36524518eb2`.
 
 Docelowe źródła: `proofs/ft1536/development/T12_1/source3/`.
 Następny uzgodniony podetap: **STABLE_TOP_001**, kontynuacja ROADMAP T12.1.
 Instrukcje i raporty w `notes/` oraz skrypty `tools/original/` są historyczne.
 Zaktualizuj rzeczywiste source/runtime paths runnera przed użyciem.
 
-Po handoffie sam wykonujesz małe commity i bieżący push własnych źródeł
-na `main`, po uzgodnieniu kroku z właścicielem i dostępu do indeksu z
-koordynatorem. Ta decyzja zastępuje stare „bez Git” dla development.
+Po handoffie sam wykonujesz małe lokalne commity własnych źródeł na `main`,
+po uzgodnieniu kroku z właścicielem i dostępu do indeksu z koordynatorem.
+**Późniejsze polecenie właściciela: push dopiero po jego jawnym sygnale.**
+Ta decyzja zastępuje wcześniejszą zgodę na bieżący push w tym TASK.
+Małe commity zastępują stare „bez Git” dla development.
 Jeden writer naraz; dokładne pathspecs, zachowanie obcego stagingu i zmian;
 bez amend, force-push i pomijania hooks. Nie commituj starego `work/`.
 

@@ -9,10 +9,12 @@ source fpr_of(3) z C M0 fpr_scaled i norm/FPR, dokładne słowo
 `0x4008000000000000`. Kernelowe source binding + bridge, Sage exact
 cross-check; pozostaje NOT_REVIEWED.
 
-Otwarte typy/cel:
-- trzy source-bound binary256 z zachowaniem Legal następnej gałęzi;
-- ∀ legal before, ∃ reference execution; reference execution→ten sam
-  operational heap/metadata/trace; source frame/roots/sticky/no-fallback.
+Wymagane typy stable-top zostały domknięte kernelowo, NOT_REVIEWED:
+- trzy source-bound binary256 i Legal następnej gałęzi:
+  `StableTopBinaryBridge.complete/exists_execution`, `StableTopBranches`;
+- ∀ legal before, ∃ reference execution: `StableTop001Outcome.reference_exists`;
+- reference→ten sam operational heap/metadata/trace, source frame/roots/
+  sticky/no-fallback: `StableTop001Outcome.source_outcome`.
 
 Parser całego helpera, niezależne Step/Body/Loop, exact Expr bridge i
 pętla u=3*v256 razy mają kernelowe eksporty `StableTopSyntax.pinned_source`,
@@ -20,6 +22,12 @@ pętla u=3*v256 razy mają kernelowe eksporty `StableTopSyntax.pinned_source`,
 `StableTopMemory.Legal` wymaga reads tylko dla roots i bad; zapisy pętli
 wyprowadzają pełną inicjalizację leaves. `StableTopEffects`/`StableTopAtoms`
 przenoszą Legal, byte frame, sticky oraz clear→good checks w pętli.
+
+Fresh23/23 accepted/clean,119 audited theorems, closure
+`1447448efc172809c76c56e2f0cfa6ab73054cf5b47003b57994c447e451e33a`.
+Brak pozostałej niewykazanej completeness lub arbitralnego FprCalls w
+eksportach stable-top. Adekwatność autorskiej semantyki fragmentu i jej
+normalizacji do źródła pozostaje przedmiotem niezależnego odbioru.
 
 Warunki pamięciowe nie przyjmują positivity roots, Gram, exact leaves ani
 delty. Leaves i scratch nie wymagają initial reads. Pełny certificate,

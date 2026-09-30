@@ -103,6 +103,16 @@ o positivity/Gram, dokładnej całej pamięci+metadata+trace, roots/frame
 i sticky bad/no-fallback. Raporty w source3/notes/run/STABLE_TOP_001_*.
 Stan i luki: [source3/WORK_STATE](../../proofs/ft1536/development/T12_1/source3/WORK_STATE.md).
 
+Wynik autora STABLE_TOP_001: **PROVED_KERNEL_SCOPED / NOT_REVIEWED**,
+`StableTop001Outcome.reference_exists/source_outcome`. Fresh23/23 moduły,
+119 twierdzeń, dokładna pamięć/metadata/trace oraz wszystkie wymagane
+source outcomes. Closure SHA256
+`1447448efc172809c76c56e2f0cfa6ab73054cf5b47003b57994c447e451e33a`.
+Raport i materiał niezależnego odbioru są w `source3/notes/run/`.
+Nie zamyka to reverse reciprocal, pełnego certificate, real-error/FFT/
+exact Gram ani M6. Późniejsze polecenie właściciela dla source3:
+lokalne małe commity są kontynuowane, **push dopiero po jawnym sygnale**.
+
 **Następne20 zadań wykonawczych i20 odbiorów:**
 [B20 OWNER_GUIDE](../../proofs/ft1536/batches/B20_001/OWNER_GUIDE.md),
 [INDEX](../../proofs/ft1536/batches/B20_001/INDEX.json),
