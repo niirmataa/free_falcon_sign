@@ -125,6 +125,36 @@ target, independent execution.
 - **this lane (run2/T12.1) = B4 + B5** (statistical certificate and
   assembly), plus S1-S3 groundwork.
 
+### Relation to the original T12.1 math task (nothing dropped)
+
+The end-to-end scope EXTENDS the math task; the EUF-CMA -> MT-ISIS
+conditional lemma is its core, not a casualty. Mapping of the three
+original goals:
+
+- *kernel conditional lemma EUF-CMA -> MT-ISIS* — assembled in abstract
+  form in `Run2/ConcreteReduction` (audit: no counterexample); what remains
+  is exactly its instantiation B4/B5 (`S`, `e` for the real law);
+- *full mathematical law of Sign* — the MT-side law (`Phi`, `AdvMT`) and
+  the sampler law feeding B4 (partially built: block law, tails, delta
+  chain);
+- *public simulation* — the reduction construction (`Games`, `MgfProduct`,
+  `FinalDelta`, partially built).
+
+The target statement of Section 1 IS the EUF-CMA -> MT-ISIS bound made
+real; without the bridge the lemma holds about an abstract sampler, and
+without the lemma the bridge connects to nothing.
+
+### Track coordination (owner decision 2026-09-30)
+
+This lane's lead coordinates the end-to-end track: executor prompts (the
+adapted B1 prompt lives in `run2/notes/PROMPT_KEYGEN_FIBER_B1_ADAPTED.md`),
+rung contracts, SOL 6.1 audit reconciliation into this document, review
+task preparation. Owner keeps modeling decisions, executor starts and
+push signals. The legacy coordinator's tooling (`archive.py`, pin/receipt
+mechanics) stays as tooling regardless of role. Formal retirement of the
+legacy coordinator process is an owner edit in AGENTS/STATE (those files
+carry foreign active changes and are not touched from this lane).
+
 ## 5. Ordered first steps
 
 - **S1 — extract `P(success)` of the C KeyGen restart loop** from the
