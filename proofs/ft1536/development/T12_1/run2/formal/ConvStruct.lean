@@ -528,5 +528,72 @@ theorem weightedWindowMass_true (b : Block) (ℓ : ℝ) :
   rw [Finset.sum_congr rfl (fun z _ => hz z)]
   exact fiber_moment_eq ℓ b
 
+/-- Rozbój wskaźnika koniunkcji: `1[p ∧ q] + 1[p ∧ ¬q] = 1[p]`. -/
+theorem indicator_and_split (p q : Prop) :
+    indicator (p ∧ q) + indicator (p ∧ ¬ q) = (indicator p : ℝ) := by
+  unfold indicator
+  by_cases hp : p
+  · by_cases hq : q <;> simp [hp, hq]
+  · simp [hp]
+
+/-- **Rozbój momentu**: pełny ważony moment = okno + dopełnienie
+    (elementarny krok do `P_λ(I) = 1 − P_λ(I^c)`). -/
+theorem weightedWindowMass_split (b : Block) (W : ℤ → Prop) (ℓ : ℝ) :
+    weightedWindowMass b (fun _ => True) ℓ
+      = weightedWindowMass b W ℓ + weightedWindowMass b (fun e => ¬ W e) ℓ := by
+  classical
+  simp only [weightedWindowMass]
+  rw [← Finset.sum_add_distrib]
+  apply Finset.sum_congr rfl
+  intro z _
+  have hind : (indicator (z.1 0 = b ∧ True) : ℝ)
+      = indicator (z.1 0 = b ∧ W ((∑ j, blockEnergy (z.1 j))
+          + (∑ j, blockEnergy (z.2 j)) - blockEnergy (z.1 0)))
+        + indicator (z.1 0 = b ∧ ¬ W ((∑ j, blockEnergy (z.1 j))
+            + (∑ j, blockEnergy (z.2 j)) - blockEnergy (z.1 0))) := by
+    rw [and_true, indicator_and_split]
+  rw [hind]
+  ring
+
+/-- Lustro Czernowa — dolna półlinia (`f i ≤ T`): dla `ℓ ≥ 0`
+    `∑ w·1[P] ≤ e^{ℓ·T}·∑ (w·1[Q])·e^{−ℓ·f}` przy `P i → Q i ∧ f i ≤ T`. -/
+theorem sum_imp_exp_bound_neg {ι : Type} [Fintype ι] (s : Finset ι)
+    (w : ι → ℝ) (f : ι → ℝ) (P Q : ι → Prop) (T ℓ : ℝ)
+    (hℓ : 0 ≤ ℓ) (hw : ∀ i ∈ s, 0 ≤ w i)
+    (himp : ∀ i ∈ s, P i → Q i ∧ f i ≤ T) :
+    (∑ i ∈ s, w i * indicator (P i))
+      ≤ Real.exp (ℓ * T)
+          * ∑ i ∈ s, ((w i * indicator (Q i)) * Real.exp (-ℓ * f i)) := by
+  classical
+  have hpt : ∀ i ∈ s, w i * indicator (P i)
+      ≤ Real.exp (ℓ * T) * ((w i * indicator (Q i)) * Real.exp (-ℓ * f i)) := by
+    intro i hi
+    rcases em (P i) with hp | hp
+    · obtain ⟨hq, hT⟩ := himp i hi hp
+      rw [show indicator (P i) = (1:ℝ) from by simp [indicator, hp],
+        show indicator (Q i) = (1:ℝ) from by simp [indicator, hq]]
+      simp only [mul_one]
+      have hx : 0 ≤ ℓ * (T - f i) := by nlinarith
+      have he : (1:ℝ) ≤ Real.exp (ℓ * (T - f i)) := Real.one_le_exp hx
+      have hmain : (1:ℝ) * w i ≤ Real.exp (ℓ * (T - f i)) * w i :=
+        mul_le_mul_of_nonneg_right he (hw i hi)
+      calc w i = (1:ℝ) * w i := (one_mul _).symm
+        _ ≤ Real.exp (ℓ * (T - f i)) * w i := hmain
+        _ = Real.exp (ℓ * T) * (w i * Real.exp (-ℓ * f i)) := by
+          have hs : ℓ * (T - f i) = ℓ * T + -ℓ * f i := by ring
+          rw [hs, Real.exp_add]
+          ring
+    · rw [show indicator (P i) = (0:ℝ) from by simp [indicator, hp], mul_zero]
+      exact mul_nonneg (Real.exp_pos _).le
+        (mul_nonneg (mul_nonneg (hw i hi) (indicator_nonnegative _))
+          (Real.exp_pos _).le)
+  calc (∑ i ∈ s, w i * indicator (P i))
+        ≤ ∑ i ∈ s, Real.exp (ℓ * T)
+            * ((w i * indicator (Q i)) * Real.exp (-ℓ * f i)) :=
+          Finset.sum_le_sum hpt
+    _ = Real.exp (ℓ * T)
+          * ∑ i ∈ s, ((w i * indicator (Q i)) * Real.exp (-ℓ * f i)) := by
+          rw [← Finset.mul_sum]
+
 end FT1536.ConvStruct
 
