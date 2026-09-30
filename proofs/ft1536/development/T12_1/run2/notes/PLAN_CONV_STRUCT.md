@@ -55,13 +55,18 @@ Dopuszczone ścieżki (w kolejności rosnącej ryzyka):
   `MgfProduct`/`RejectionBound` + `exp_neg_le_inv_pow3`. **SKALA (analiza
   wstępna): okno ≈ +6σ w ogonie, szerokość ≈ 10⁻³σ — P1 dla dolnego
   boundu loWin NIE działa (bulk siedzi w dolnym ogonie okna); patrz P2′.**
-- **P2′ (przekrzywienie Craméra — REUSE `mgf_product`!)**: tilt wykładniczy
-  λ* przesuwa średnię 1535-sumy na okno (okno staje się bulkiem POD tiltem):
-  `P(S ∈ [T1,T2]) = e^{−Λ*(T)} · P_λ*(S ∈ [T1,T2])`. mgf splotu = potęga
-  mgf jednoblokowej (`MgfProduct.mgf_product` — gotowe!). Reszta: okno
-  wąskie (~10⁻³σ_λ) → potrzebny **dolny bound lokalny** (Fourier:
-  `P_λ*(okno) = ∫ φ_λ*(t)^1535 dt` z |φ| jednoblokowym = theta — REUSE!)
-  albo odwrotna antykoncentracja (Littlewood-Offord/Esseen).
+- **P2′ (przekrzywienie Craméra — REUSE `mgf_product`!)**: DOKŁADNA
+  postać okna (uwaga właściciela 2026-09-30 — nie zacierać zmienności
+  wagi): `P(S ∈ I) = M(λ)^1535 · E_λ[e^{−λS}·1_I]`, więc dla `λ ≥ 0`,
+  `I = [T1,T2]` **kanapka z oboma brzegami**:
+  `M(λ)^1535·e^{−λT2}·P_λ(I) ≤ P(S ∈ I) ≤ M(λ)^1535·e^{−λT1}·P_λ(I)`.
+  Skrót `e^{−Λ*(T)}` = przypadek brzegowy; przy marginesie ~1e-10
+  czynnik `e^{−λS}` ma pozostać zmienny w oknie (kernel: waŜony moment
+  `∑ w·e^{−λS}·1_I` — okno waŜone, nie pojedynczy czynnik).
+  mgf splotu = potęga mgf jednoblokowej (`mgf1_eq` + `rest_moment_factor`
+  — gotowe!). Reszta: `P_λ(I) = 1 − P_λ(I^c)` z ogonami pod tiltem
+  (Chernoff w przekrzywionej mierze) albo bound lokalny
+  (Fourier: `∫ φ_λ^1535`, |φ| jednoblokowe = theta).
 - **P2 (Berry-Esseen z korektą)**: bez korekty ~2,5% (za mało na 0,08%);
   z korektą Edgewortha z rygorystycznym resztem — ciężkie, rezerwa.
 - **P1** — tylko dla boundów GÓRNYCH i okien zawierających bulk
