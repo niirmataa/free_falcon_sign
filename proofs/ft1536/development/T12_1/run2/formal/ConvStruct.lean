@@ -649,5 +649,34 @@ theorem a2Tower_total (s u : ℝ) :
   rcases z with ⟨⟨⟨⟩, y⟩, x⟩
   exact a2Tower_atom s u x y
 
+/-- Kanapka masy wieży A2 (z generycznego `triangular_mass_bounds` przy `n=2`,
+    błąd rzędu `2⁻⁴⁶` — ogromny zapas wobec wymaganych `10⁻¹⁰`). -/
+theorem a2Tower_mass_bounds (s u : ℝ)
+    (hs : 0 < s) (hmax : s / Real.pi ≤ FT1536.Run2.T5ScalarMass.maxCoefficient) :
+    (1 - 2*FT1536.Run2.T5ScalarMass.rowRatio/(1-FT1536.Run2.T5ScalarMass.rowRatio))^2
+        * FT1536.Run2.TriangularGaussian.scale (a2Tower s u)
+      ≤ FT1536.Run2.TriangularGaussian.total (a2Tower s u)
+    ∧ FT1536.Run2.TriangularGaussian.total (a2Tower s u)
+      ≤ (1 + 2*FT1536.Run2.T5ScalarMass.rowRatio/(1-FT1536.Run2.T5ScalarMass.rowRatio))^2
+        * FT1536.Run2.TriangularGaussian.scale (a2Tower s u) := by
+  have hr : 0 < FT1536.Run2.T5ScalarMass.rowRatio :=
+    (FT1536.Run2.T5ScalarMass.dimension_margins).1
+  have hrl : FT1536.Run2.T5ScalarMass.rowRatio < 1 :=
+    (FT1536.Run2.T5ScalarMass.dimension_margins).2.1
+  have hhe : 2*FT1536.Run2.T5ScalarMass.rowRatio
+      /(1-FT1536.Run2.T5ScalarMass.rowRatio) ≤ 1 :=
+    le_trans (FT1536.Run2.T5ScalarMass.dimension_margins).2.2.2.1
+      (FT1536.Run2.T5ScalarMass.dimension_margins).2.2.2.2.1
+  have hcr : FT1536.Run2.T5ScalarMass.CoefficientRange (a2Tower s u) := by
+    have h3 : (0:ℝ) < 3*s/(4*Real.pi) := by positivity
+    have h4 : (3*s/(4*Real.pi) : ℝ) ≤ s/Real.pi := by
+      have hp : 0 < Real.pi := Real.pi_pos
+      rw [div_le_div_iff₀ (by positivity : (0:ℝ) < 4*Real.pi) hp]
+      nlinarith
+    refine ⟨⟨trivial, h3, h4.trans hmax⟩, by positivity, hmax⟩
+  exact FT1536.Run2.TriangularGaussian.triangular_mass_bounds
+    (a2Tower s u) FT1536.Run2.T5ScalarMass.rowRatio hr hrl hhe
+    (FT1536.Run2.T5ScalarMass.local_exponents (a2Tower s u) hcr)
+
 end FT1536.ConvStruct
 
