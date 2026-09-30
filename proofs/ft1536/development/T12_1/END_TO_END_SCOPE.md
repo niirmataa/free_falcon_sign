@@ -34,12 +34,26 @@ With `q_s` signing queries and `AdvMT` the MT-ISIS advantage:
   is taken (see below). Exactly one of the two terms appears, never zero
   without a proof.
 
-Accounting identity to be proven, not assumed:
+Accounting identities to be proven, not assumed (REFINED 2026-10-01 after
+pinning the exact types — the earlier one-line form was blurred; see
+`run2/notes/S3_E_PROVENANCE.md`):
 
-    e^cond  <=  (e^unconditional + Delta_PRG) / P(success)
-
-(or a sharper conditional analysis; the factor 1/P(success) is mandatory
-unless the certificate is built directly under the conditional law).
+- `e` bounds `second sim honestCO <= 1 + e`
+  (`Divergence.second j p = sum j^2/p = chi^2 + 1`) for the FULL `(c,o)`
+  law of one fresh `S.run` call INCLUDING its hit/miss split — the SIGN
+  sampler's law, not the key law;
+- `delta < 1.27e-24` (CenteringClosure, `single_change_modular`, Arb
+  interval [1.2660684e-24, 1.2678251e-24]) bounds the probability that a
+  POSITIVE Sign reply is rejected — a miss-probability bound, NOT a chi^2
+  bound; the **delta -> e composition is the missing B4 bridge**;
+- the key-law conditioning (D1, measured `p_accept = 0.34671`) shapes
+  `SigmaMath.muH muKey` — which law the MT-ISIS hardness is assumed for —
+  not a numeric factor of `e`;
+- conservative kernel transfers (to be proven) for the fallback route:
+  pointwise `(1+-d)` multiplicative bounds give `second <= (1+d)^2`
+  (`e <= (1+d)^2-1`); conditioning `second (j|A) p <= second j p /
+  (mass j A)^2`; hit/miss mass transfer. The intended primary route is a
+  DIRECT analysis of the emitted law (the heavy analytic paths).
 
 ## 2. Owner modeling decisions (2026-09-30)
 

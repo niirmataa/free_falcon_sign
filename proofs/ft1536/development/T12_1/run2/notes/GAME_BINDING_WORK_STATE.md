@@ -160,6 +160,20 @@ exact accounting 15436+8192=23628. Receipt: work/FT1536_FG_PROBE_P_ACCEPT_001/ou
 All values version-invariant under the FLOOR_CT fix. Next: S3 — the
 conditional chi-square lemma and the e-provenance pin.
 
+## 2026-10-01 (night) — S3 part 1 done: e-provenance pinned, accounting corrected
+
+`notes/S3_E_PROVENANCE.md`: the `~1.27e-24` constant = `delta` = the
+probability a POSITIVE Sign reply is rejected (CenteringClosure.lean,
+exactly two named premises `bridge_lb_rawLo`/`honest_upper_lt_claim`,
+Arb interval [1.2660684e-24, 1.2678251e-24], `single_change_modular`) —
+a MISS-probability bound, not chi^2. Exact types pinned: `Divergence.second
+= sum j^2/p`, `GameLaw.LocalCert` (the (c,o) law of one `S.run` incl.
+hit/miss `Option BoxVec`), `ConcreteReduction`'s assembled bound. Scope
+accounting CORRECTED: `e` is the SIGN sampler's chi^2 (delta->e composition
+= the B4 bridge); key conditioning shapes `SigmaMath.muH muKey` (the
+MT-assumption's law), not a constant. Next: the B4 toolkit kernel lemmas
+(`second_le_of_pointwise`, conditioning/hit-miss transfers).
+
 ## Zasady
 
 - **Recenzja przed commitem** (decyzja właściciela 2026-09-30): każdy
