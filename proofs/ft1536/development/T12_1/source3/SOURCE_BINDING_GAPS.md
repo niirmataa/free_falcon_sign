@@ -10,11 +10,16 @@ source fpr_of(3) z C M0 fpr_scaled i norm/FPR, dokładne słowo
 cross-check; pozostaje NOT_REVIEWED.
 
 Otwarte typy/cel:
-- parser całego top i niezależny reference judgment;
-- niezmiennik u=3*v, roots768 reads, leaves768 writes, scratch256 i bad32;
 - trzy source-bound binary256 z zachowaniem Legal następnej gałęzi;
 - ∀ legal before, ∃ reference execution; reference execution→ten sam
   operational heap/metadata/trace; source frame/roots/sticky/no-fallback.
+
+Parser całego helpera, niezależne Step/Body/Loop, exact Expr bridge i
+pętla u=3*v256 razy mają kernelowe eksporty `StableTopSyntax.pinned_source`,
+`StableTopBodyBridge.loop_complete`, `StableTopLoop.loop_exists/filled_all`.
+`StableTopMemory.Legal` wymaga reads tylko dla roots i bad; zapisy pętli
+wyprowadzają pełną inicjalizację leaves. `StableTopEffects`/`StableTopAtoms`
+przenoszą Legal, byte frame, sticky oraz clear→good checks w pętli.
 
 Warunki pamięciowe nie przyjmują positivity roots, Gram, exact leaves ani
 delty. Leaves i scratch nie wymagają initial reads. Pełny certificate,
