@@ -1,0 +1,9 @@
+import Source3.C99HelperReference
+#check @FT1536.Source3.C99HelperReference.Pair.step
+#check @FT1536.Source3.C99HelperReference.Pair.rec
+#check @FT1536.Source3.C99HelperReference.Gram.step
+#check @FT1536.Source3.C99HelperReference.Gram.rec
+#check @FT1536.Source3.C99HelperReference.HalfStore.rec
+#check @FT1536.Source3.C99HelperReference.Suffix.rec
+#check @FT1536.Source3.C99HelperReference.Step.rec
+#check @FT1536.Source3.C99HelperReference.Loop.rec
