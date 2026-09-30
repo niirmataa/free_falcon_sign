@@ -88,11 +88,13 @@ print("POZYCJE_OKIEN_PASS")
 
 # ---- 4. Reprodukcja pinow silnika + margines certLo/certHi ----
 here = Path('.').resolve()
-so = here.parent / 'repro' / 'radial_engine.cpython-314-x86_64-linux-gnu.so'
+import os
+REPRO = Path(os.environ.get('FT1536_REPRO', str(here.parents[3] / 'work/FT1536_GAME_BINDING_RUN_001/repro')))
+so = REPRO / 'radial_engine.cpython-314-x86_64-linux-gnu.so'
 assert so.exists(), so
 spec = importlib.util.spec_from_file_location('radial_engine', so)
 engine = importlib.util.module_from_spec(spec); spec.loader.exec_module(engine)
-pin = json.loads((here.parent / 'repro' / 'arb_radial_result.json').read_text())
+pin = json.loads((REPRO / 'arb_radial_result.json').read_text())
 assert pin['mode'] == 'full' and ZZ(pin['bin_width']) == width
 R1 = RealBallField(128)
 fft = engine.BallRadial(25, 128)

@@ -10,8 +10,30 @@
       "generator": "proofs/ft1536/development/T12_1/run2/sage/extract_counts_certificate.sage",
       "generator_sha256": "b52674b70ce38c10605d6fa76404585661edd6e018fc9659cd4ed33420bc4498",
       "generation": "In a fresh durable directory under proofs/ft1536/replay-work, run sage <absolute path to generator> with HOME, TMPDIR and caches under that directory. The generator embeds its numeric parameters and writes CountsFoldCertificate.lean in its current directory. Verify the file SHA256 before using it.",
-      "requirements": ["SageMath with the standard .sage preparser", "Cython", "GCC", "Lean 4.34.0 for subsequent proof checking"],
+      "requirements": [
+        "SageMath with the standard .sage preparser",
+        "Cython",
+        "GCC",
+        "Lean 4.34.0 for subsequent proof checking"
+      ],
       "existing_local_copy": "proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_002/output/formal/CountsFoldCertificate.lean",
+      "remote_artifact_copy": null,
+      "verification_at_registration": "SHA256 and size of existing source and generator only; no new generation or Lean replay"
+    },
+    {
+      "path": "proofs/ft1536/work/FT1536_GAME_BINDING_RUN_001/repro/radial_engine.cpython-314-x86_64-linux-gnu.so",
+      "bytes": 142280,
+      "sha256": "8ae7dde989ccc2f3490870221159fe2987cc8ae221e122e1c32240e374d1f095",
+      "kind": "generated_cython_module",
+      "generator": "proofs/ft1536/development/T12_1/run2/sage/arb_radial.sage",
+      "generator_sha256": "1b3f597585c04547206880f60b54278de38bc39554abcba5f7130028426ceda2",
+      "generation": "In a fresh durable directory, run sage <absolute path to generator> (mode test/bench/full) with HOME, TMPDIR and caches under that directory. The generator embeds its Cython engine source and compiles it (SageMath, Cython, GCC), writing radial_engine.cpython-314-x86_64-linux-gnu.so and engine_build_receipt.json in its repro directory. Verify the file SHA256 before using it.",
+      "requirements": [
+        "SageMath with the standard .sage preparser",
+        "Cython",
+        "GCC"
+      ],
+      "existing_local_copy": "proofs/ft1536/work/FT1536_GAME_BINDING_RUN_001/repro/radial_engine.cpython-314-x86_64-linux-gnu.so",
       "remote_artifact_copy": null,
       "verification_at_registration": "SHA256 and size of existing source and generator only; no new generation or Lean replay"
     }
