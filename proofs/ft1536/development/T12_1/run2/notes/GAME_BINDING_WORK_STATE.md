@@ -123,6 +123,19 @@ twin of L0: `Qc − Q = 18433·δ`, `δ = 18433 − 2a − c` on the sector),
 - WORK_STATE is updated at every batch (with the review) so the rules above
   stay visible (owner reminder 2026-09-30).
 
+## 2026-09-30 (night) — owner scope decisions D1-D3; lane rerouted
+
+The owner approved three modeling decisions (full text in
+`development/T12_1/END_TO_END_SCOPE.md`): D1 key law CONDITIONAL on
+success (factor 1/P(succ) in the constants), D2 real PRNG (explicit
+Delta_PRG or Adv_PRG term; no silent idealization), D3 the ~1.27e-24
+constant must be PROVEN as e for the conditional real-generator law.
+**Route change: certHi/certLo QQ closure is suspended** until the shape of
+e is settled. First steps: S1 extract P(succ) of the KeyGen restart loop,
+S2 identify the real PRG and choose the D2 route, S3 pin the constant's
+provenance and state the conditional chi-square lemma. Path document is
+the binding scope for all T12.1 claims.
+
 ## Zasady
 
 - **Recenzja przed commitem** (decyzja właściciela 2026-09-30): każdy
