@@ -136,6 +136,18 @@ S2 identify the real PRG and choose the D2 route, S3 pin the constant's
 provenance and state the conditional chi-square lemma. Path document is
 the binding scope for all T12.1 claims.
 
+## 2026-10-01 (night) — S1 done: the per-attempt acceptance structure
+
+`notes/S1_P_ACCEPT_FACTS.md` records the D1 conditioning event extracted
+from the pinned M0 source: Accept = six ordered gates (resultants odd,
+norm, Gram-Schmidt, f-invertible, solve_NTRU, mandatory leaf certificate
+at line 8110), attempt cap `TERNARY_KEYGEN_MAX_ATTEMPTS = 3000000`
+(availability only), the code's own hint ~1/4 pass rate for the norm step
+(binary branch), and the `FG_DISTRIBUTION_PROBE` measurement interface
+(the right estimators already instrumented). Vacuity guard provisionally
+unlikely (blow-up factor single digits). Next: S3 — the conditional
+chi-square lemma and the `e`-provenance pin.
+
 ## Zasady
 
 - **Recenzja przed commitem** (decyzja właściciela 2026-09-30): każdy
