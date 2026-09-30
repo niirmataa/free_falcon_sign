@@ -1,6 +1,6 @@
 # source3 — żywy rejestr luk
 
-## CERTIFICATE_SUFFIX_001 — WORKING
+## CERTIFICATE_SUFFIX_001 — PROVED_KERNEL_SCOPED / NOT_REVIEWED
 
 Docelowy fragment: keygen7757–7776, n1536/hn768, jawne locals po prefixie.
 Domknięte source q_squared (`0x41b4409001000000`, exact real339775489),
@@ -8,13 +8,19 @@ parser20 linii i byte pointer binding leaves=t3/scratch=t3+12288.
 Reverse768/1535-u i snapshot D domknięte etapowo przez
 `CertificateReverse.finished_complete`, `loop_exists`, `initialized`,
 `clear_written`, z niezależnym source div oraz zachowaniem pierwszej połowy.
-Snapshot jest warunkiem wejścia reverse, który top ma dostarczyć w kompozycji.
-Otwarte: byte-memory
-scan1536+inclusive ranges+return; kompozycja top→reverse→scan, pełna
-pamięć/metadata/trace, reference_exists/complete/source_outcome/reverse_order.
+Snapshot jest wyprowadzany z top przez `CertificateCore`.
+Byte-memory scan1536/return i kompozycja top→reverse→scan są domknięte:
+`CertificateSuffix001Outcome.reference_exists/complete/source_outcome/reverse_order`.
+Pełna pamięć/metadata/trace positive+lower+upper, roots/frame/sticky,
+return1→initial bad0 i inclusive1536 bounds oraz realne1024≤value<332054.
+Brak niewykazanych completeness lub arbitralnego FprCalls w eksportach.
+Fresh20/20 moduły,113 twierdzeń, closure
+`657b907273f0bda6e9ecfc5bbeae24bf169cd1bc8e6965f8662b6501f97cfd56`.
 Brak initial leaves/scratch reads; bez positivity/Gram/exact-leaf/delta
 w Legal. Gate00/prefix FFT/LDL/certificate w całości i successful KeyGen
 nie należą do tego suffixu. Realne bounds dotyczą zapisanych słów.
+Snapshot końcowy jest na return edge, przed teardown enclosing frame.
+Adekwatność autorskiej semantyki suffixu jest jawnie przedmiotem odbioru.
 
 ## STABLE_TOP_001 — zakończony krok autora, NOT_REVIEWED
 

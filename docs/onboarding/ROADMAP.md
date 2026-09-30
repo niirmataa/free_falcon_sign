@@ -130,6 +130,14 @@ Właściciel po pytaniu o sprzeczność w TASK potwierdził **„Trzy commity i 
 trzy logiczne kroki, następnie push. Bez migracji/scalania do zakończenia
 wszystkich omawianych prac. Następne obowiązki: reverse snapshot i scan.
 
+Wynik autora CERTIFICATE_SUFFIX_001: **PROVED_KERNEL_SCOPED / NOT_REVIEWED**,
+eksporty `CertificateSuffix001Outcome.reference_exists/complete/source_outcome/reverse_order`.
+Fresh20/20 moduły,113 twierdzeń, actual byte memory/trace/return i dokładny
+reverse1535-u;168 publicznych C probes normal/UBSan,26/26 mutantów wykrytych.
+Closure `657b907273f0bda6e9ecfc5bbeae24bf169cd1bc8e6965f8662b6501f97cfd56`.
+Scope: statement-suffix na return edge; bez enclosing frame teardown,
+Gate00/prefix/pełnego certificate/KeyGen/M6. Niezależny odbiór oczekuje.
+
 **Następne20 zadań wykonawczych i20 odbiorów:**
 [B20 OWNER_GUIDE](../../proofs/ft1536/batches/B20_001/OWNER_GUIDE.md),
 [INDEX](../../proofs/ft1536/batches/B20_001/INDEX.json),

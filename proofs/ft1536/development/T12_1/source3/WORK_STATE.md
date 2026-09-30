@@ -1,6 +1,6 @@
 # T12.1/source3 — żywy stan
 
-Status: **ACTIVE / CERTIFICATE_SUFFIX_001 / WORKING**.
+Status: **ACTIVE / CERTIFICATE_SUFFIX_001 PROVED_KERNEL_SCOPED / NOT_REVIEWED**.
 Wykonawca: GPT-6 Astra / openai/gpt-6-astra.
 Sesja: `ses_f12636605ffeL1FZg4teLUwUf5` (bez nowej sesji/workera).
 
@@ -31,15 +31,39 @@ Trzy logiczne commity:
    każdy div witness ma odpowiadający event w rzeczywistym śladzie.
    Jobs effects002/atoms001/index002/reverse004 accepted/clean.
 3. Byte-memory scan1536/return, pełna kompozycja, source outcomes/reverse_order,
-   mutacje i fresh closure oraz raport/handoff; następnie uzgodniony push.
+   mutacje i fresh closure **domknięte kernelowo**; raport/handoff i trzeci
+   commit przygotowywane, następnie uzgodniony push.
 
 Na początku wykryto job Lean właściciela w run2; nie uruchamiano drugiego
 joba. Edycje źródeł i przygotowanie są niezależne, każde wykonanie ma preflight.
 Zastane AGENTS/STATE/WORK_COMMITS/CURRENT i run2 pozostają cudzą pracą.
 
 Commit1/3: `3939e25e` (q_squared/parser/layout), lokalny; push po trzecim.
-Reverse ma etapowy warunek Snapshot D; końcowa kompozycja ma go wyprowadzić
-z top, nie przenieść do dodatkowych assumptions całego suffixu.
+Commit2/3: `ad72a2d5` (reverse768/1535-u), lokalny; push po trzecim.
+Końcowa kompozycja wyprowadza Snapshot D z top, nie dodaje go do Legal.
+
+## CERTIFICATE_SUFFIX_001 — wynik do niezależnego odbioru
+
+Eksporty `CertificateSuffix001Outcome.reference_exists/complete/source_outcome/reverse_order`
+domykają wszystkie A–D dla statement-suffixu7757–7776 na return edge,
+n1536/hn768. Frame/roots/metadata i trace positive/lower/upper, sticky
+dowolnego bad≠0, return1→initial bad0/good controls/inclusive1536 bounds
+i realne1024≤value<332054. Reverse zachowuje1535-u i actual source div.
+Return edge jest granicą; enclosing frame teardown/prefix/certificate
+w całości nie są objęte tym source theorem.
+
+Fresh `certificate_suffix_fresh_001`:20/20 accepted/clean,113 audytowanych
+twierdzeń,137.946s,maxRSS5342740KiB. Aksjomaty tylko standardowe lub brak.
+Closure `657b907273f0bda6e9ecfc5bbeae24bf169cd1bc8e6965f8662b6501f97cfd56`.
+Raport/closure/review task: `notes/run/CERTIFICATE_SUFFIX_001_*`.
+REPORT SHA256 `7b36b9c4a01056b577e6b60c329646ba5fdee31266b836a42f6d592cc21ed898`.
+Sage ZZ/QQ q-word cross-check i168 syntetycznych wykonań C normal/UBSan;
+26/26 mutantów wykrytych, przypadki return0/return1. Pierwszy mutator C
+nie dopasował tabulatorów i został zachowany jako nieudana próba harnessu.
+
+Brak otwartego typu A–D w tym zakresie. Niezależny odbiór oczekuje;
+recenzenta nie uruchomiono. Gate00/FFT/LDL prefix, cały certificate/KeyGen,
+real-error FPEMU, exact Gram, T5, M6 i C Sign pozostają dalszymi obowiązkami.
 
 ## Przejęcie2026-09-30
 
