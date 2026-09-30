@@ -9,8 +9,10 @@ tylko nowości RUN_002, RUN_003 i T5 względem committed stages. Całe stare
 work pozostaje ignorowane. Status **PREPARED_HANDOFF**; aktywny agent kończy
 krok w swoim W. Dopiski sprawdzamy przez `ft1536_dev_sources.py pending`
 i przełączamy go dopiero po handoffie. Kopia nie zatrzymuje ani nie wznawia jobów.
-Właściciel upoważnił do bieżących pushy tych małych commitów. Jeden writer
-Git; wykonawcy z TASK „bez Git” przekazują pliki koordynatorowi.
+Właściciel zatwierdził katalog i podział: **worker sam robi małe commity/push
+po uzgodnieniu z nim; koordynator prowadzi odbiór i commit/tag stages**.
+Po handoffie zastępuje to historyczne „bez Git” dla źródeł development.
+Worker i koordynator zachowują jeden writer Git naraz.
 Pierwszy zapis jest source baseline aktualnych bajtów, nie nowym odbiorem.
 
 **2026-09-29 — P02 v2 REVIEWED / PARTIAL_PROOF; V02 PASS_SCOPED_REVIEW.**

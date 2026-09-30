@@ -12,12 +12,16 @@ pracę aktywnego agenta. ROADMAP: T12.1/T5. Repo: `free_falcon_sign`, gałąź
 
 1. Autor kończy mały logiczny kawałek i zapisuje pliki: np. faktoryzację MGF,
    lemat pamięci, generator certyfikatu albo udokumentowaną nieudaną próbę.
-2. Koordynator lub właściciel przegląda diff i dodaje **dokładne pliki**.
-   Wykonawca z TASK „bez Git” przekazuje listę plików koordynatorowi.
-3. Zwykły commit na main, np. `proof(T12.1): factor the 1535-block moment`.
+2. Worker uzgadnia mały krok z właścicielem, sam przegląda diff i dodaje
+   **dokładne własne pliki**. Z koordynatorem zachowuje jeden writer Git naraz.
+3. Worker robi zwykły commit na main, np. `proof(T12.1): factor the 1535-block moment`.
    W treści: zakres zmiany, wykonane sprawdzenia albo `not run`, otwarte typy.
-4. Push tego małego commita na `origin/main`. Właściciel zezwolił na taki
+4. Worker wypycha ten mały commit na `origin/main`. Właściciel zezwolił na taki
    bieżący rytm dla pracy projektu; nie potrzeba osobnego odbioru stages.
+
+To zatwierdzony podział ról z2026-09-30. Po przejęciu nowego katalogu worker
+ma zgodę na te operacje mimo historycznego „bez Git” w TASK. Koordynator
+odpowiada za niezależny odbiór, import oraz commit/tag stages.
 
 Commit po logicznym kroku i przed końcem sesji, a nie po każdym wywołaniu
 narzędzia. Nie ma obowiązkowego prefiksu `wip` ani obowiązkowego pełnego
@@ -99,9 +103,10 @@ jako zamiennika historii Git ani wersjonowanego magazynu artefaktów.
 
 ## Odbiór i tag
 
-Po ukończeniu zakresu: freeze → niezależny review → import przez `archive.py`
-→ checkpoint stages na main. Dalej obowiązują piny i wymagania B20.
-Na **commicie odebranego checkpointu** tworzymy tag annotowany, np.:
+Po ukończeniu zakresu koordynator prowadzi: freeze → niezależny review
+→ import przez `archive.py` → checkpoint stages na main. Dalej obowiązują
+piny i wymagania B20. **Koordynator** tworzy annotowany tag na commicie
+odebranego checkpointu, np.:
 
 ```sh
 git tag -a 'ft1536/T12.1/RUN_003/reviewed-001' CHECKPOINT_COMMIT \

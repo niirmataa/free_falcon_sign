@@ -16,9 +16,13 @@ Docelowym repozytorium prac jest `free_falcon_sign`.
   PREPARED_HANDOFF; najpierw kończy krok, potem rozliczamy późniejsze zmiany
   przez `tools/ft1536_dev_sources.py pending`. Dopiero właściciel przekazuje
   nowe miejsce tej samej sesji. Nie uruchamiaj drugiego workera/relay.
-- Odbiór nadal daje osobny import/checkpoint stages i nowy annotowany tag
-  z dokładnym scope. Commit źródeł nie nadaje statusu REVIEWED.
-- Jeden writer Git; TASK „bez Git” oznacza commit/push przez koordynatora.
+- **Zatwierdzony podział:** worker w nowym katalogu sam wykonuje małe commity
+  i bieżący push po uzgodnieniu kroku z właścicielem. Po handoffie ta decyzja
+  zastępuje historyczne „bez Git” dla jego źródeł w development.
+- **Koordynator** prowadzi niezależny odbiór, import przez `archive.py`,
+  końcowy commit stages i annotowany tag z dokładnym scope.
+  Commit źródeł nie nadaje statusu REVIEWED.
+- Jeden writer Git naraz: worker i koordynator uzgadniają dostęp do indeksu.
   Poniższe historyczne reguły work→review→stages dotyczą odebranego wyniku,
   nie blokują już normalnych małych commitów źródeł. Bez amend/force-push.
 

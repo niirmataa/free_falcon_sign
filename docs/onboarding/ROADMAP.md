@@ -78,6 +78,9 @@ i T5 dostają nowy `development/T12_1` dla małych commitów nowości względem
 stages i bieżącego push main na GitHub. Aktywny agent przejdzie dopiero po
 handoffie i rozliczeniu dopisków; stare W pozostają ignorowane. Końcowy review/import
 stages pozostaje osobnym krokiem z tagiem; nie jest warunkiem commita pracy.
+Właściciel zatwierdził podział: małe commity/push wykonuje worker po uzgodnieniu
+z nim, a odbiór/import i commit/tag stages prowadzi koordynator. Jeden writer
+Git naraz; przejęcie nowego katalogu nadal następuje na granicy kroku.
 [Wiążący schemat](WORK_COMMITS.md). Zależności matematyczne i zakresy
 odebranych twierdzeń nie są zmieniane przez publikację źródeł.
 

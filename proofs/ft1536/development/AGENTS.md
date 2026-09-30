@@ -5,8 +5,13 @@ normalnie śledzone w Git od początku; po małym logicznym kroku commit
 i push main, zgodnie z poleceniem właściciela2026-09-30.
 Pełny schemat: `docs/onboarding/WORK_COMMITS.md`.
 
-- Jeden wykonawca danego zakresu i jeden writer Git. Wykonawca z TASK
-  „bez Git” przekazuje listę plików koordynatorowi.
+- **Worker** po uzgodnieniu małego kroku z właścicielem sam przegląda diff,
+  commituje dokładne własne pliki na main i wypycha je na GitHub.
+  Po przejęciu nowego katalogu to upoważnienie zastępuje historyczne
+  „bez Git” w TASK dla źródeł development.
+- **Koordynator** prowadzi odbiór, import przez `archive.py`, commit stages
+  i tag odebranego zakresu. Jeden wykonawca zakresu i jeden writer Git naraz;
+  worker i koordynator uzgadniają dostęp do wspólnego indeksu.
 - Aktywnego wykonawcy w starym W nie przełączamy w trakcie kroku.
   Najpierw handoff i kontrola dopisków od snapshotu; dopiero potem właściciel
   przekazuje mu nowe miejsce pracy. Przygotowanie katalogu nie startuje agenta.

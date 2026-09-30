@@ -815,3 +815,15 @@ w historii. Następny krok po zakończeniu: ocena wyniku i checkpoint przy PASS.
   refs/heads/main:refs/heads/main`,zgodnie z dzisiejszym poleceniem właściciela.
   Następnie porównanie local/remote HEAD. Dalszy krok:handoff autora i świeża
   kontrola delta. Source snapshot pozostaje PREPARED_HANDOFF,bez review/tagu.
+
+## 2026-09-30T02:54:51Z — zatwierdzenie katalogu i podziału Git
+
+- Właściciel zatwierdził: worker w nowym katalogu sam robi małe commity
+  podczas pracy po uzgodnieniu z nim; koordynator prowadzi odbiór i końcowy
+  import/commit/tag stages. Potwierdził „zatwierdzamy wypychamy i jazda”.
+- Zapis w AGENTS,WORK_COMMITS,HANDOFF,STATE,ROADMAP i development/CURRENT.
+  Po handoffie to upoważnienie zastępuje dawne „bez Git” dla źródeł development.
+  Jeden writer Git naraz; aktywna sesja kończy krok w swoim obecnym W.
+- Komendy:exact-path staging z ochroną wpisu Qwen w STATE,`git diff --cached
+  --check`,zwykły commit main jako niirmataa,`git push origin main` i porównanie
+  local/remote HEAD. Zmiana dokumentacyjna; następny krok:handoff workera.

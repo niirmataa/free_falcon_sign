@@ -6,7 +6,9 @@ Aktywny autor przechodzi ze starego W dopiero po zakończeniu kroku i kontroli
 dopisków przez `ft1536_dev_sources.py pending`; stary W pozostaje zachowany.
 [WORK_COMMITS](WORK_COMMITS.md) określa ścieżki, duże artefakty i komendy.
 Poniższy workflow review→stages dotyczy odbioru, po którym powstaje osobny
-commit i tag. Wykonawca z zakazem Git przekazuje zmiany jednemu koordynatorowi.
+commit i tag koordynatora. Zatwierdzony podział: po przejęciu nowego katalogu
+worker sam robi małe commity/push po uzgodnieniu z właścicielem; zastępuje to
+historyczne „bez Git” dla źródeł development. Jeden writer Git naraz.
 
 ## Role i bezpieczne wznowienie
 
