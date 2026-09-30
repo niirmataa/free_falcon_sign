@@ -954,5 +954,27 @@ theorem region1TwistMass_eq_shifted (ℓ : ℝ) (hs : (c0:ℝ) - ℓ ≠ 0) :
   rw [Finset.mul_sum]
   exact Finset.sum_congr rfl (fun b _ => hcongr b)
 
+/-- The shifted quadratic Boltzmann factor `exp(−s·Q(p₁+u, p₂))` on
+    integer pairs (the summand of the twisted sector sum). -/
+noncomputable def shiftedQExp (s u : ℝ) (p : ℤ × ℤ) : ℝ :=
+  Real.exp (-s * (((p.1 : ℝ) + u) * ((p.1 : ℝ) + u)
+    + ((p.1 : ℝ) + u) * (p.2 : ℝ) + (p.2 : ℝ) * (p.2 : ℝ)))
+
+/-- Index identification of the A2 tower with integer pairs (`z.2` is the
+    shifted coordinate, `z.1.2` the free one). -/
+def a2Equiv : ℤ × ℤ ≃ FT1536.Run2.TriangularGaussian.Points 2 :=
+  { toFun := fun p => (((), p.2), p.1)
+    invFun := fun z => (z.2, z.1.2)
+    left_inv := fun p => by rcases p with ⟨x, y⟩; rfl
+    right_inv := fun z => by rcases z with ⟨⟨⟨⟩, y⟩, x⟩; rfl }
+
+/-- The unordered shifted sum is the A2 tower total (reindexing by
+    `a2Equiv` + `a2Tower_total`). -/
+theorem shiftedQtsum_eq_tower (s u : ℝ) :
+    (∑' p : ℤ × ℤ, shiftedQExp s u p)
+      = FT1536.Run2.TriangularGaussian.total (a2Tower s u) := by
+  rw [a2Tower_total, ← a2Equiv.tsum_eq (a2Q s u)]
+  exact tsum_congr (fun p => rfl)
+
 end FT1536.ConvStruct
 
