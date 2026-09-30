@@ -1,4 +1,18 @@
-# source3 — żywy rejestr luk STABLE_TOP_001
+# source3 — żywy rejestr luk
+
+## CERTIFICATE_SUFFIX_001 — WORKING
+
+Docelowy fragment: keygen7757–7776, n1536/hn768, jawne locals po prefixie.
+Domknięte source q_squared (`0x41b4409001000000`, exact real339775489),
+parser20 linii i byte pointer binding leaves=t3/scratch=t3+12288.
+Otwarte: reverse768/1535-u i snapshot D; byte-memory
+scan1536+inclusive ranges+return; kompozycja top→reverse→scan, pełna
+pamięć/metadata/trace, reference_exists/complete/source_outcome/reverse_order.
+Brak initial leaves/scratch reads; bez positivity/Gram/exact-leaf/delta
+w Legal. Gate00/prefix FFT/LDL/certificate w całości i successful KeyGen
+nie należą do tego suffixu. Realne bounds dotyczą zapisanych słów.
+
+## STABLE_TOP_001 — zakończony krok autora, NOT_REVIEWED
 
 Zakres: przypięte `ft_stable_top_branch_keygen`, falcon-keygen.c7516–7542,
 SHA256 `0a09b6ed2363308f54584dfd1e2d33ee1b4601a68c77712c50da920b5074a5cf`.

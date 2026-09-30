@@ -22,6 +22,8 @@ BUILD = ROOT / '.build'
 OLD = REPO / 'proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_002/continuations/FT1536_MATH_EUFCMA_MTISIS_RUN_003'
 CLOSURE_SHA = 'd62d6eb1104879c4b920b9e5a0324d0e2ee78cfcf41f9b8edf434a22d7a1a5e2'
 REPORT_SHA = '3bc800efe63cc0b829b44d10d19d7d54dfc72678366a7f71c60e27b4b4378f96'
+TOP_CLOSURE_SHA = '1447448efc172809c76c56e2f0cfa6ab73054cf5b47003b57994c447e451e33a'
+TOP_REPORT_SHA = 'bff687ddd52b828223a7ee904fe9e0510cbd20eb60c93fcea48e19daa92ba66f'
 SESSION = 'ses_f12636605ffeL1FZg4teLUwUf5'
 
 
@@ -66,6 +68,30 @@ def pinned():
     return c, config, entries
 
 
+def suffix_dependencies():
+    """Additional immutable inputs; keep pinned() compatible with the _001 organizer."""
+    cp=ROOT/'notes/run/STABLE_TOP_001_CLOSURE.json'
+    rp=ROOT/'notes/run/STABLE_TOP_001_REPORT.md'
+    assert sha(cp)==TOP_CLOSURE_SHA and sha(rp)==TOP_REPORT_SHA
+    entries={}
+    for e in json.loads(cp.read_text())['modules']:
+        entries[e['module']]={'source':str(ROOT/e['source']),'source_sha256':e['source_sha256'],
+            'artifact':str(ROOT/e['artifact']),'artifact_sha256':e['artifact_sha256'],'origin':'STABLE_TOP_001 / NOT_REVIEWED'}
+    old_bindings=OLD/'run/SOURCE3_AUDIT_INPUTS.json'
+    assert sha(old_bindings)=='b0cacca9992875074906188b6e09203598e10d6a785a5791b46f8acdb2b8edb8'
+    for e in json.loads(old_bindings.read_text())['modules']:
+        if e['module'] not in {'Source3.LeafRange','Source3.LeafScan','Source3.LeafCertificateSuffix','Source3.LeafWordBounds'}:
+            continue
+        assert sha(OLD/e['source'])==e['source_sha256'] and sha(OLD/e['artifact'])==e['artifact_sha256'],e['module']
+        assert sha(OLD/e['receipt'])==e['receipt_sha256'],e['module']
+        records=json.loads((OLD/e['receipt']).read_text())
+        rec=next(r for r in records if r['name']==e['module'].replace('.','_'))
+        assert rec['accepted'] and rec['clean_log'] and rec['exit_code']==0,e['module']
+        entries[e['module']]={**e,'source':str(OLD/e['source']),'artifact':str(OLD/e['artifact']),
+            'receipt':str(OLD/e['receipt']),'origin':'SOURCE3_PROGRESS / scoped dependency'}
+    return entries
+
+
 def main():
     mode, label, *args = sys.argv[1:]
     if mode not in {'lean', 'sage'} or not re.fullmatch(r'[A-Za-z0-9_]+', label) or not args:
@@ -82,6 +108,7 @@ def main():
             print(json.dumps(processes, indent=2))
             return 2
         closure, config, seeds = pinned()
+        seeds.update(suffix_dependencies())
         engine_source = Path(config['parent_frozen'])/'tools/execution.py'
         assert sha(engine_source)==closure['execution_runner_sha256'], 'execution engine changed'
         spec = importlib.util.spec_from_file_location('pinned_execution', engine_source)
@@ -113,6 +140,7 @@ def main():
 
         selected = set(args) if mode=='lean' else set()
         inputs = {'runner_sha256': sha(Path(__file__)), 'closure004_sha256': CLOSURE_SHA,
+            'stable_top001_closure_sha256': TOP_CLOSURE_SHA,
             'execution_sha256': sha(engine_source), 'sources': [], 'reused': [], 'library_roots': config['library_roots']}
         # One complete namespace tree; outputs never point through a symlink.
         for m, e in bindings.items():

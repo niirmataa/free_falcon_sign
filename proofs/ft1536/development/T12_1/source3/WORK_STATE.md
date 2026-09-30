@@ -1,13 +1,37 @@
 # T12.1/source3 — żywy stan
 
-Status: **ACTIVE / STABLE_TOP_001 PROVED_KERNEL_SCOPED / NOT_REVIEWED**.
+Status: **ACTIVE / CERTIFICATE_SUFFIX_001 / WORKING**.
 Wykonawca: GPT-6 Astra / openai/gpt-6-astra.
 Sesja: `ses_f12636605ffeL1FZg4teLUwUf5` (bez nowej sesji/workera).
 
-**Aktualne polecenie właściciela: push dopiero po jego jawnym sygnale.**
-To zastępuje wcześniejszą zgodę na bieżący push w tym TASK. Małe commity
-pozostają lokalne do takiego sygnału. Przed zmianą polecenia wypchnięto
-`d3e50a19` i `c679746c`; kolejnych push nie zlecono.
+**Aktualne doprecyzowanie właściciela: „Trzy commity i push”.**
+W pytaniu o sprzeczność z zakazem push we wklejonym TASK właściciel wybrał
+opcję potwierdzającą nową zgodę: po trzech logicznych commitach tego
+podetapu push na origin/main. Nie publikujemy między tymi krokami.
+Poprzedni etap STABLE_TOP_001 pozostaje PROVED_KERNEL_SCOPED / NOT_REVIEWED.
+
+## CERTIFICATE_SUFFIX_001 — bieżący zakres
+
+Pozostajemy w source3, bez migracji/scalania/SOURCE_MAP/duplikatów.
+Piny top REPORT `bff687ddd52b828223a7ee904fe9e0510cbd20eb60c93fcea48e19daa92ba66f`
+i CLOSURE `1447448efc172809c76c56e2f0cfa6ab73054cf5b47003b57994c447e451e33a`
+sprawdzone. Baza nadal NOT_REVIEWED.
+
+Trzy logiczne commity:
+1. q_squared z source fpr_of/scaled, parser suffixu i wejściowy layout/profil:
+   PROVED_KERNEL_SCOPED, `CertificateQSquared.source_exists/source_exact`,
+   `exact_real_value`, `CertificateSuffixSyntax.pinned_source`,
+   `CertificateMemory.alias_and_pointer_add/top_legal`.
+   Word `0x41b4409001000000`, decoded339775489, scratch=t3+12288 bajtów.
+   Jobs `certificate_q_sage_001`, `certificate_q_002`,
+   `certificate_syntax_memory_002` (syntax), `certificate_memory_003` clean.
+2. Pełny reverse reciprocal768 z snapshotem pierwszej połowy i indeksem1535-u.
+3. Byte-memory scan1536/return, pełna kompozycja, source outcomes/reverse_order,
+   mutacje i fresh closure oraz raport/handoff; następnie uzgodniony push.
+
+Na początku wykryto job Lean właściciela w run2; nie uruchamiano drugiego
+joba. Edycje źródeł i przygotowanie są niezależne, każde wykonanie ma preflight.
+Zastane AGENTS/STATE/WORK_COMMITS/CURRENT i run2 pozostają cudzą pracą.
 
 ## Przejęcie2026-09-30
 

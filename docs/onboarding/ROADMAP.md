@@ -113,6 +113,23 @@ Nie zamyka to reverse reciprocal, pełnego certificate, real-error/FFT/
 exact Gram ani M6. Późniejsze polecenie właściciela dla source3:
 lokalne małe commity są kontynuowane, **push dopiero po jawnym sygnale**.
 
+### Rozwinięcie T12.1/source3 — CERTIFICATE_SUFFIX_001 (2026-09-30)
+
+Ten sam wykonawca/sesja/katalog source3. Zakres: pinned keygen7757–7776,
+stan wejściowy po prefixie, n1536/hn768, leaves=t3, scratch=leaves+n.
+Konsumuje STABLE_TOP_001 i STABLE_BINARY_004 jako PROVED_KERNEL_SCOPED /
+NOT_REVIEWED. Cel: source q_squared, reverse768 dokładnie1535-u,
+byte-memory scan1536/inclusive MIN–MAX/return, a potem istnienie,
+complete memory/metadata/trace, source outcome i reverse_order.
+Bez początkowych leaves/scratch reads i bez positivity/Gram/delta w Legal.
+Gate00 i FFT/LDL prefix, cały certificate/KeyGen/M6/Sign pozostają poza scope.
+
+Pierwszy krok: `CertificateQSquared.source_exists/source_exact/exact_real_value`,
+`CertificateSuffixSyntax.pinned_source` oraz pointer binding/Top Legal.
+Właściciel po pytaniu o sprzeczność w TASK potwierdził **„Trzy commity i push”**;
+trzy logiczne kroki, następnie push. Bez migracji/scalania do zakończenia
+wszystkich omawianych prac. Następne obowiązki: reverse snapshot i scan.
+
 **Następne20 zadań wykonawczych i20 odbiorów:**
 [B20 OWNER_GUIDE](../../proofs/ft1536/batches/B20_001/OWNER_GUIDE.md),
 [INDEX](../../proofs/ft1536/batches/B20_001/INDEX.json),
