@@ -678,5 +678,13 @@ theorem a2Tower_mass_bounds (s u : ℝ)
     (a2Tower s u) FT1536.Run2.T5ScalarMass.rowRatio hr hrl hhe
     (FT1536.Run2.T5ScalarMass.local_exponents (a2Tower s u) hcr)
 
+/-- Wykładnicza postać zwrotu: `e^{−s·Q(x,y) − κ(2x+y)} = e^{κ²/s}·e^{−s·Q(x+κ/s, y)}`. -/
+theorem hex_twist_shift_exp (s κ x y : ℝ) (hs : s ≠ 0) :
+    Real.exp (-s * (x*x + x*y + y*y) - κ * (2*x + y))
+      = Real.exp (κ*κ/s) * Real.exp (-s * ((x + κ/s)*(x + κ/s)
+          + (x + κ/s)*y + y*y)) := by
+  rw [hex_twist_shift s κ x y hs, Real.exp_add]
+  ring
+
 end FT1536.ConvStruct
 
