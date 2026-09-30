@@ -1,5 +1,29 @@
 # source3 — żywy rejestr luk
 
+## Current obligations after internal batch 001
+
+The whole KEYGEN_SOURCE_TO_FIBER_001 package remains **IN_PROGRESS / NOT_REVIEWED**.
+Receipt: `notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_001.json`, SHA256
+`6efc894f0002e24d4c596e03b1dc0811c90a3fba97b6013c367d2177ddaa2527`.
+The fresh replay covers the internal exports and their pinned mathematical
+imports, not a successful-KeyGen theorem.
+
+| Obligation | Current result | Remaining source connection |
+|---|---|---|
+| Integer lift | Exact residual bound 37748737 and recovery modulo2147355649 in CoefficientQuotient | Derive coefficient bounds and modular congruence from the same source attempt |
+| F/G conversion | KeygenSmallOutput.output_range and KeygenMaterial.converted_material | Connect the modeled conversion call, live array and frame to the full solver/KeyGen execution |
+| Actual fiber | KeygenFiberAssembly.from_modular_check reuses ActualNTRUFiber | Derive public/inverse equations and tie every parameter to emitted bytes |
+| Gate00 | Independent scalar/byte-memory semantics, 768 checks and accepted stores | Full source prefix, loop entry, initialization, frame and normalization adequacy |
+| Suffix return | Scoped handle removal and preserved pre-return snapshot | Actual certificate-frame allocation, lifetime and complete function call |
+| Full certificate prefix | Public synthetic execution probes and pinned call inventory | Kernel source semantics/contracts for smallints, FFT3, polynomial operations and raw LDL |
+| KeyGen and encodings | Actual encoding-tail probes, six helper cases and ten detected encoding mutations | Full attempt/control-flow proof, source round-trip and preservation of the final attempt's material |
+
+Next integration step: construct the certificate prefix's source execution
+and prove the memory invariant consumed by Gate00 and the completed suffix.
+Neither a callee contract nor suffix-entry Legal becomes a premise of the
+requested final successful-KeyGen theorem. The preprocessed call inventory
+is intentionally an over-approximation before runtime profile specialization.
+
 ## KEYGEN_SOURCE_TO_FIBER_001 — IN_PROGRESS / NOT_REVIEWED
 
 Cel: successful pinned M0 KeyGen→te same decoded f,g,F,G,h→pełny accepted

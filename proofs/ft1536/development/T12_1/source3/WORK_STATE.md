@@ -1,5 +1,76 @@
 # T12.1/source3 — żywy stan
 
+## Current work and publication rule — 2026-09-30
+
+KEYGEN_SOURCE_TO_FIBER_001 remains **IN_PROGRESS / NOT_REVIEWED**.
+The owner authorizes a push after each three-own-commit batch. The latest
+clarification reserves review decisions to the owner for this worker;
+automatic batch review applies to another agent. Work subagents are permitted
+under the single-writer/single-proof-job constraints. No reviewer
+has been started by this worker. New text uses English and
+standard terminology. Earlier Polish entries below are retained as history.
+Clarification: each worker pushes only their own commits. Foreign unpublished
+ancestors block a source3 push until their author or the owner publishes them.
+Communicate with the owner in Polish. No shared mixed-author batch is authorized.
+
+The planning commit `c7003724` is already reachable from origin/main after
+updates by the other workstream. Internal batch001 has two own commits:
+`724835338f83b2a77b5f97507281fc29ec16412e` (integer lift, conversion and fiber)
+and `10d8c17caa73d73a5eaa58427f4ba07031b1b89c` (Gate00 and return snapshot).
+The third commit records replay, diagnostics and the current obligations.
+The last local remote-tracking check also had three unpublished run2 ancestors:
+`1488522f`, `9b113e7e`, `f38d1665`. Do not push them. Check the actual remote
+tip before an own-only push; wait for their author or owner if necessary.
+
+Internal results checked in this continuation:
+- `KeygenIntegerLift`: exact reduction modulo X^1536-X^768+1, residual bound
+  37748737 from coefficient bounds 1/2047, and modular-to-integer recovery
+  with p=2147355649. The source NTT check must still establish the congruence.
+- `KeygenSmallOutput` and `KeygenMaterial`: accepted conversion-loop stores
+  yield bounded coefficients in the existing Geometry.Vec representation.
+- `KeygenFiberAssembly.from_modular_check`: consumes those algebraic
+  obligations and the existing ActualNTRUFiber exports. Public/inverse and
+  source binding remain explicit obligations, not proved KeyGen facts.
+- `C99CompareObjects`, `Gate00Scalar`, `Gate00Memory`: byte-copy comparison,
+  independent scalar execution, 768-iteration Gate00 checks and accepted
+  root stores. The source prefix and its memory invariant remain open.
+- `CertificateReturnLifetime`: retains a pre-return snapshot and removes
+  the local-object handle. Full-function allocation and lifetime refinement
+  remain open; this is an adapter for the completed suffix.
+
+Successful jobs: keygen_fiber_imports_001, keygen_algebra_and_small_005
+(integer lift only), keygen_small_fiber_lifetime_007 (first two modules),
+keygen_lifetime_compare_008 (lifetime only), keygen_compare_009,
+keygen_gate_memory_004 (scalar only), keygen_gate_material_006.
+The named multi-module jobs also retain their subsequent failed steps.
+
+Sage: `keygen_helpers_002` checked six public synthetic helper cases and ten
+encoding mutations in normal/UBSan builds; it exercised the full certificate,
+the actual encoding tail, public computation and final modular check, without
+executing private KeyGen or the solver. `keygen_callgraph_002` records a
+preprocessed call inventory (163 functions reachable from make, 42 from the
+certificate). This inventory includes unspecialized runtime branches and is
+not a source-execution proof. All failed attempts and raw logs are retained.
+
+Owner-started review, source prefix/KeyGen control flow, source NTT/public/inverse
+contracts and source serializer round-trip proofs remain pending. The requested
+emitted_to_actual_fiber theorem has not been proved.
+
+Fresh internal replay `keygen_fiber_batch1_fresh_001` subsequently completed:
+all 16 modules accepted with clean logs, including the pinned mathematical
+imports and the internal export audit. This does not close the source KeyGen
+theorem or constitute an independent review. The source execution and
+composition obligations listed above remain active.
+Receipt SHA256: `6efc894f0002e24d4c596e03b1dc0811c90a3fba97b6013c367d2177ddaa2527`.
+Elapsed82.581s, maxRSS2928416KiB; 20 internal export type/term/axiom audits.
+
+Development-only delegation: one read-only subagent derives the actual NTT3
+evaluation invariant and Montgomery/index conventions for the missing solver
+check contract. It may not edit files, run jobs, touch Git or issue a review
+verdict. The main worker continues the non-overlapping certificate prefix.
+At continuation preflight, an owner-started Lean audit job was active in
+FT1536_SOL61_DEVELOPMENT_T03_AUDIT_001; no concurrent proof job was launched.
+
 Status: **ACTIVE / KEYGEN_SOURCE_TO_FIBER_001 IN_PROGRESS / NOT_REVIEWED**.
 Wykonawca: GPT-6 Astra / openai/gpt-6-astra.
 Sesja: `ses_f12636605ffeL1FZg4teLUwUf5` (bez nowej sesji/workera).

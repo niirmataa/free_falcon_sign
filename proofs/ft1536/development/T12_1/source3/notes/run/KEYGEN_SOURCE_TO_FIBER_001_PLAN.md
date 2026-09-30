@@ -1,5 +1,19 @@
 # KEYGEN_SOURCE_TO_FIBER_001 — żywy plan T12.1/source3
 
+## Current execution rule — 2026-09-30
+
+The owner authorizes three-own-commit push batches. The latest clarification
+reserves review decisions to the owner: automatic batch review applies to
+another agent, not this worker. Work subagents are permitted, with one writer
+and one proof job at a time; do not start automatic batch reviewers. This
+replaces the earlier local-only publication instruction and supersedes the
+automatic-review proposal. New text uses English and standard terminology;
+historical Polish text is retained.
+This change does not alter the package's mathematical acceptance criterion.
+Only the worker's own commits may be pushed. Foreign unpublished ancestors
+must first be published by their author or the owner; do not push a mixed
+range from shared main. Conversation with the owner remains in Polish.
+
 Status: IN_PROGRESS / NOT_REVIEWED. Autor GPT-6 Astra, openai/gpt-6-astra,
 sesja ses_f12636605ffeL1FZg4teLUwUf5. Zapis typu przed implementacją.
 Właściciel zlecił cały pakiet; domknięcie helpera nie kończy zlecenia.

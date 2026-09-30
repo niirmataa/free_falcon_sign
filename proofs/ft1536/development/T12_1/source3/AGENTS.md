@@ -1,5 +1,28 @@
 # T12.1 / source3 — aktualne zasady wykonawcy
 
+## Latest owner instruction — 2026-09-30
+
+Push in batches of three OWN commits. The owner clarified that automatic
+batch review applies to a different agent, not this source3 worker. The owner
+decides when to start a review; do not start an automatic batch reviewer.
+Subagents are permitted for work, subject to the existing single-writer and
+single-proof-job constraints. Do not start a duplicate worker or a relay.
+No reviewer has been started by this worker. Record any development-only
+delegation and its non-overlapping scope in WORK_STATE.md.
+Never publish another author's unpublished commits. If such commits
+are ancestors of this batch on shared main, wait for their author or the
+owner to publish them first. Check the exact outgoing range, not merely the
+commit author name (all workstreams may use the approved shared identity).
+The owner confirmed this rule explicitly; it supersedes the earlier local-only
+publication instruction below and the superseded automatic-review proposal.
+The package remains IN_PROGRESS / NOT_REVIEWED until its full source theorem
+and the separately coordinated acceptance procedure are complete.
+New comments, docstrings, commit messages and documentation use English and
+standard terminology. Existing Polish text remains historical context.
+Conversation with the owner remains in Polish.
+Coordinate the shared Git writer window and record the exact outgoing range
+before pushing; preserve other authors' changes and commits.
+
 Wykonawca: **GPT-6 Astra / openai/gpt-6-astra**, ta sama sesja
 `ses_f12636605ffeL1FZg4teLUwUf5`. Historyczne etykiety Sol w `notes/`
 i starych receiptach pozostają proweniencją, nie aktualnym przydziałem.
