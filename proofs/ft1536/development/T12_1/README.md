@@ -1,18 +1,18 @@
 # T12.1 — małe kroki rozwoju
 
-**Status: PREPARED_HANDOFF**, z osobnym stanem komponentów. Właściciel
+**Statusy osobne dla komponentów.** Właściciel
 2026-09-30 wybrał nowy katalog pracy oraz przeniesienie małych nowości,
 których nie ma już w `stages`.
 
 | Komponent | Stan przekazania |
 |---|---|
-| `source3` | **RECONCILED_AWAITING_WORKER_ACK** — pięć dopisków przeniesionych; następny krok: potwierdzenie tej samej sesji Astry |
+| `source3` | **ACTIVE** — przejęty po kontroli5/5 przez Astrę w sesji `ses_f12636605ffeL1FZg4teLUwUf5`; STABLE_TOP_001, runtime `source3/.build/` |
 | `run2` | PREPARED_HANDOFF, bez zmiany przy tym rozliczeniu |
 | `t5` | PREPARED_HANDOFF, bez zmiany przy tym rozliczeniu |
 
 Dokładne piny i okno writer Git dla Astry:
 [source3/HANDOFF.md](source3/HANDOFF.md).
-Przygotowanie i rozliczenie kopii nie jest potwierdzeniem ACTIVE za wykonawcę.
+Potwierdzenie wykonawcy i aktualne ścieżki: [source3/WORK_STATE.md](source3/WORK_STATE.md).
 
 **Katalog i podział ról zatwierdzone przez właściciela:** worker po uzgodnieniu
 z nim sam robi małe commity i push podczas pracy. Koordynator prowadzi odbiór,

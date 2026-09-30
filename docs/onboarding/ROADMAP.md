@@ -84,6 +84,25 @@ Git naraz; przejęcie nowego katalogu nadal następuje na granicy kroku.
 [Wiążący schemat](WORK_COMMITS.md). Zależności matematyczne i zakresy
 odebranych twierdzeń nie są zmieniane przez publikację źródeł.
 
+### Rozwinięcie T12.1/source3 — STABLE_TOP_001 (2026-09-30)
+
+Po handoffie `c358871a` source3 przejęła ta sama sesja Astry
+`ses_f12636605ffeL1FZg4teLUwUf5`; komponent ACTIVE. Cel główny nadal:
+source-bound M6 całej populacji emitted KeyGen, potem C Sign/M7.
+run2 (theta/tails/ConvStruct/ConvolutionCert/FinalDelta) i t5 zachowują
+osobnych właścicieli. Zależność source3: STABLE_BINARY_004
+PROVED_KERNEL_SCOPED / NOT_REVIEWED, closure
+`d62d6eb1104879c4b920b9e5a0324d0e2ee78cfcf41f9b8edf434a22d7a1a5e2`.
+
+Zakres uzgodniony: `ft_stable_top_branch_keygen`, pinned keygen7516–7542.
+Kolejność: fpr_of(3)/scaled closure → parser i niezależny reference →
+pętla u=3*v256 razy → legalność/init leaves i scratch → trzy binary256
+na leaves+0/+256/+512 → source outcome i replay/mutacje. Odbiór wymaga
+istnienia wykonania dla wszystkich legalnych pamięci bez assumptions
+o positivity/Gram, dokładnej całej pamięci+metadata+trace, roots/frame
+i sticky bad/no-fallback. Raporty w source3/notes/run/STABLE_TOP_001_*.
+Stan i luki: [source3/WORK_STATE](../../proofs/ft1536/development/T12_1/source3/WORK_STATE.md).
+
 **Następne20 zadań wykonawczych i20 odbiorów:**
 [B20 OWNER_GUIDE](../../proofs/ft1536/batches/B20_001/OWNER_GUIDE.md),
 [INDEX](../../proofs/ft1536/batches/B20_001/INDEX.json),

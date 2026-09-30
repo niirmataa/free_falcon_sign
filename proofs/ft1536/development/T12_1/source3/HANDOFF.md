@@ -1,9 +1,19 @@
 # source3 — rozliczenie handoffu STABLE_BINARY_004
 
-Status komponentu: **RECONCILED_AWAITING_WORKER_ACK**.
+Status komponentu: **ACTIVE** — przejęcie potwierdzone przez wykonawcę.
 Data: 2026-09-30. Następny wykonawca: **GPT-6 Astra**
 (`openai/gpt-6-astra`), ta sama sesja `ses_f12636605ffeL1FZg4teLUwUf5`.
 Koordynator: sesja `ses_f13464e70ffeuAM6Xf31ztFHAS`.
+
+## Potwierdzenie Astry2026-09-30
+
+Ta sama sesja `ses_f12636605ffeL1FZg4teLUwUf5` sprawdziła receipt o pinie
+poniżej,5/5 kopii bajtowo, niezmieniony BASELINE i rozliczenie wszystkich
+pięciu historycznych różnic pending. HEAD i origin/main wskazywały
+`c358871ab99f4aabfefc78d0b6be873852f2678e`. Właściciel przekazał okno Git.
+Przejęto wyłącznie source3. Źródła: lokalne `formal/`, `sage/`, `tools/`;
+świeży runtime: `.build/`. `WORK_STATE.md` w tym komponencie jest żywy;
+przeniesione `notes/WORK_STATE.md` i wcześniejsze raporty są proweniencją.
 
 ## Rozliczone dopiski
 
