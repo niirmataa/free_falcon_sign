@@ -595,5 +595,16 @@ theorem sum_imp_exp_bound_neg {ι : Type} [Fintype ι] (s : Finset ι)
           * ∑ i ∈ s, ((w i * indicator (Q i)) * Real.exp (-ℓ * f i)) := by
           rw [← Finset.mul_sum]
 
+/-- **Dopełnienie kwadratu dla zwrotu sektorowego**: forma blokowa
+    `Q(x,y) = x²+xy+y²` i zwrot `−κ·(2x+y)` — wektor zwrotu jest
+    gradientem `Q` w kierunku `(1,0)`, więc przesunięcie środka to
+    dokładnie `u = κ/s`:
+    `−s·Q(x,y) − κ(2x+y) = −s·Q(x+κ/s, y) + κ²/s`. -/
+theorem hex_twist_shift (s κ x y : ℝ) (hs : s ≠ 0) :
+    -s * (x*x + x*y + y*y) - κ * (2*x + y)
+      = -s * ((x + κ/s)*(x + κ/s) + (x + κ/s)*y + y*y) + κ*κ/s := by
+  field_simp [hs]
+  ring
+
 end FT1536.ConvStruct
 
