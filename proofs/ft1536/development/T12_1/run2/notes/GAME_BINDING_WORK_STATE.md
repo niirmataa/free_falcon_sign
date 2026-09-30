@@ -51,6 +51,13 @@ toru powstają już tutaj, małymi commitami.
 - **Recenzja przed commitem** (decyzja właściciela 2026-09-30): każdy
   krok przed commitem przechodzi przegląd subagenta (pisownia, literówki,
   spójność nazw i nawiasów); poprawki wdrażane przed zapisem.
+- **Rytm 2026-09-30 (właściciel, wersja późniejsza)**: partia 3 commitów,
+  potem przegląd subagenta CAŁEJ partii i push (recenzja przed pushem, nie
+  przed każdym commitem — oszczędność tokenów).
+- **Język angielski od 2026-09-30**: komentarze/docstringi i treści commitów
+  po angielsku, wyłącznie utrwalony język kryptograficzny (Cramér tilt,
+  Chernoff bound, MGF, lattice, tail bound, sector, window sandwich).
+  Polskie teksty sprzed tej daty zostają jako historia.
 
 Zero sorry/admit/native_decide; logi 0/0 (licznik `error(\(|:)`);
 kompilacja seryjna strzeżona (`tools/original/run_lean_guarded.sh`);
