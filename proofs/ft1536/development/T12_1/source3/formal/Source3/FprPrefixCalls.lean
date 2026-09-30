@@ -96,8 +96,7 @@ theorem lookup_result (name : B20.C.Name) (f : CLogic.Function) (h : lookup name
     f.result=.u64 := by
   unfold lookup at h
   rw [neg_source,sub_source,sqr_source,inv_source,inverse_of_source] at h
-  split_ifs at h <;> simp_all [negCode,subCode,sqrCode,invCode,inverseOfCode,
-    StableBinary.halfProgram,StableBinary.doubleProgram]
+  split_ifs at h <;> cases h <;> rfl
 
 theorem value_call_result (rc : CallRelation) (f : CLogic.Function)
     (args : List C99IntegerReference.Value) (v : C99IntegerReference.Value)

@@ -122,6 +122,8 @@ def main():
                 'origin':'CERTIFICATE_SUFFIX_001 / NOT_REVIEWED'}
         math_file = ROOT/'notes/run/KEYGEN_SOURCE_TO_FIBER_001_MATH_INPUTS.json'
         math_sources = {e['module']:e for e in json.loads(math_file.read_text())['modules']}
+        fft_file = ROOT/'notes/run/KEYGEN_SOURCE_TO_FIBER_001_FFT_INPUTS.json'
+        math_sources.update({e['module']:e for e in json.loads(fft_file.read_text())['modules']})
         for e in math_sources.values():
             assert sha(REPO/e['source'])==e['source_sha256'], 'pinned mathematical source changed: '+e['module']
         engine_source = Path(config['parent_frozen'])/'tools/execution.py'
@@ -160,6 +162,7 @@ def main():
             'stable_top001_closure_sha256': TOP_CLOSURE_SHA,
             'certificate_suffix001_closure_sha256': SUFFIX_CLOSURE_SHA,
             'keygen_math_inputs_sha256':sha(math_file),
+            'keygen_fft_inputs_sha256':sha(fft_file),
             'execution_sha256': sha(engine_source), 'sources': [], 'reused': [], 'library_roots': config['library_roots']}
         # One complete namespace tree; outputs never point through a symlink.
         for m, e in bindings.items():

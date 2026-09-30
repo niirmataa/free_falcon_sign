@@ -47,10 +47,12 @@ theorem initialized_bad_readable (base bad : Nat) (h : Memory) (legal : Legal ba
   choose b hb using hi
   let p : ArrayPointer := ⟨0,bad,1,4,0⟩
   have ha : Allocated h p :=
-    ⟨by decide,legal.badAligned,by decide,by simpa [p] using legal.badExtent,legal.addressBound⟩
+    ⟨by change 0<4; decide,legal.badAligned,by change 0<1; decide,
+      by simpa [p] using legal.badExtent,legal.addressBound⟩
   have hr : Load32 h p (le32 b) := Load32.load h p b ha rfl hb
   have hm := C99MemoryAccess.load32_to_model h p (le32 b) rfl hr
-  simpa only [p,ArrayPointer.offset,Nat.mul_zero,Nat.add_zero,hm] using congrArg Option.isSome hm
+  change flagRead (C99MemoryBridge.encode h) bad=some (le32 b) at hm
+  exact Option.isSome_iff_exists.mpr ⟨le32 b,hm⟩
 
 theorem suffix_legal (base bad : Nat) (h : Memory) (legal : Legal base bad h)
     (roots : Initialized h 0 (slot base 4) 12288) (flag : Initialized h 0 bad 4) :
