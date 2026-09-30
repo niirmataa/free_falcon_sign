@@ -13,7 +13,7 @@ own notes under `notes/`. The main lane owns `formal/ConvStruct.lean`,
 
 ## Goal
 
-Close the analytic lower bound for `certLo` (the Cramer-tilted local factor),
+Close the analytic lower bound for `certLo` (the Cramér-tilted local factor),
 i.e. prove kernel-side a rigorous lower bound for the window probability of
 the 1535-fold convolution in the tilted measure, precise enough to support
 
@@ -29,7 +29,7 @@ with the required relative accuracy **~7.83e-10** (the wrap allowance
       <= M^1535 * e^{-lambda*T1} * P_lambda(I)
 
 with the weight `e^{-lambda S}` kept VARIABLE inside the window (no
-single-factor `e^{-Lambda*}` shortcut). The upper side is already closed in
+single-factor `e^{−Λ*(T)}` shortcut (the plan shorthand)). The upper side is already closed in
 `ConvStruct.windowSandwich` + `weightedWindowMass_le_full` + `mgf1_eq`;
 this window's job is the LOWER side: bound `P_lambda(I)` from below
 (equivalently the complement tails `P_lambda(I^c)` from above) at the

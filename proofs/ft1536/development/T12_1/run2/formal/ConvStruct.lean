@@ -754,7 +754,7 @@ theorem weightedWindowMass_le_full (b : Block) (W : ℤ → Prop) (ℓ : ℝ) :
     (le_of_eq (weightedWindowMass_true b ℓ))
 
 /-- Per-block upper bound of the hi-window gap by the tilted full moment
-    (Cramer upper side of `windowSandwich` + `weightedWindowMass_le_full`). -/
+    (Cramér upper side of `windowSandwich` + `weightedWindowMass_le_full`). -/
 theorem engineGapHi_le (b : Block) (ℓ : ℝ) (hℓ : 0 ≤ ℓ) :
     engineGapHi b
       ≤ Real.exp (-ℓ * (((hiT1 (blockEnergy b) (centeredEnergy b)) : ℤ) : ℝ))
@@ -773,7 +773,7 @@ theorem engineGapHi_le (b : Block) (ℓ : ℝ) (hℓ : 0 ≤ ℓ) :
   exact le_trans hs (mul_le_mul_of_nonneg_left hf (Real.exp_pos _).le)
 
 /-- Threshold monotonicity: `hiT1` rounds up, hence
-    `B − Qc − 1535*15 ≤ hiT1 Q Qc` (from `binLo_spec`). -/
+    `B − Qc − 1535*15 ≤ hiT1 Q Qc` (from `binLo_spec`; the upper-side step for certHi). -/
 theorem hiT1_ge (Q Qc : ℤ) :
     (B - Qc - 1535*15 : ℤ) ≤ hiT1 Q Qc := by
   have h := (binLo_spec (B - Qc - 1535*15 : ℤ)).1
@@ -783,17 +783,17 @@ theorem hiT1_ge (Q Qc : ℤ) :
     `e^{−ℓ·hiT1} ≤ e^{−ℓ(B−Qc−1535·15)}` for `ℓ ≥ 0`. -/
 theorem exp_neg_hiT1_le (Q Qc : ℤ) (ℓ : ℝ) (hℓ : 0 ≤ ℓ) :
     Real.exp (-ℓ * ((hiT1 Q Qc : ℤ) : ℝ))
-      ≤ Real.exp (-ℓ * ((((B - Qc - 1535*15) : ℤ)) : ℝ)) := by
+      ≤ Real.exp (-ℓ * (((B - Qc - 1535*15) : ℤ) : ℝ)) := by
   have h := hiT1_ge Q Qc
   have hc : (((B - Qc - 1535*15) : ℤ) : ℝ) ≤ ((hiT1 Q Qc : ℤ) : ℝ) := by
     exact_mod_cast h
-  have hm : -ℓ * ((hiT1 Q Qc : ℤ) : ℝ) ≤ -ℓ * ((((B - Qc - 1535*15) : ℤ)) : ℝ) :=
+  have hm : -ℓ * ((hiT1 Q Qc : ℤ) : ℝ) ≤ -ℓ * (((B - Qc - 1535*15) : ℤ) : ℝ) :=
     mul_le_mul_of_nonpos_left hc (neg_nonpos.mpr hℓ)
   exact Real.exp_le_exp.mpr hm
 
 /-- Sector identity (kernel twin of the L0 pre-check): for `region1` blocks
     the centered energy satisfies `Qc − Q = 18433·δ` with
-    `δ = 18433 − 2a − b` (`a`, `b` = decoded coordinates), since
+    `δ = 18433 − 2a − c` (`a`, `c` = decoded coordinates), since
     `center a = a − 18433` on the sector range. -/
 theorem centeredEnergy_region1 (b : Block) (hreg : region1 b) :
     centeredEnergy b

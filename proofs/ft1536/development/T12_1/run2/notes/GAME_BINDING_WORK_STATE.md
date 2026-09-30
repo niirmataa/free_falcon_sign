@@ -52,7 +52,7 @@ Kernel pieces in `ConvStruct` (all clean builds 0/0, standard axioms only):
 
 - `weightedWindowMass` + `windowSandwich` — the exact two-sided Cramér
   sandwich with the variable weight `e^{−λ S}` (owner correction,
-  2026-09-30: no single-factor `e^{−Λ*(T)}` shortcut).
+  2026-09-30: no single-factor `e^{−Λ*(T)}` shortcut (the plan shorthand)).
 - `weightedWindowMass_true` — full-window moment = `mgf₁(ℓ)^1535`
   (bridge to the theta layer via `fiber_moment_eq` + `mgf1_eq`).
 - `indicator_and_split` + `weightedWindowMass_split` — the complement split
@@ -75,9 +75,11 @@ vertex arithmetic; required wrap allowance <= 7.83e-10 relative) and L0b
 (route P1 dead by 27 orders of magnitude — coarse U(ℓ*) = 1.2e4 vs 1.27e-23;
 verdict: tilted-local route P2' for BOTH certs).
 
-Assembly target (next): certHi/certLo via windowSandwich upper/lower ->
+Assembly target (next): certHi via windowSandwich upper ->
 weightedWindowMass_le_full -> mgf₁^1535 -> twisted sector sums through
-hex_twist_shift_exp -> box_sum_le_tsum -> a2Tower_mass_bounds -> final QQ
+hex_twist_shift_exp -> box_sum_le_tsum -> a2Tower_mass_bounds; certLo via
+the lower side: weightedWindowMass_split + sum_imp_exp_bound(_neg) ->
+tilted local factor (window PROMPT_CERTLO_LOCAL_FACTOR) -> final QQ
 comparison against the pinned engine literals (engineLo/Hi, aliasCap/missCap).
 Open elsewhere: flat/reject (lane t5), ldl_shape + E_leaf (REFINE/Layer 2).
 
@@ -86,7 +88,7 @@ Open elsewhere: flat/reject (lane t5), ldl_shape + E_leaf (REFINE/Layer 2).
 Assembly pieces landed (ConvStruct, 0/0 each): `engineGapHi_le` (per-block
 upper bound of the hi-gap via the tilted full moment), `hiT1_ge` +
 `exp_neg_hiT1_le` (binLo rounding step), `centeredEnergy_region1` (kernel
-twin of L0: `Qc − Q = 18433·δ`, `δ = 18433 − 2a − b` on the sector),
+twin of L0: `Qc − Q = 18433·δ`, `δ = 18433 − 2a − c` on the sector),
 `hex_twist_shift_exp_delta`, `shiftedBlockQ` + unfolding identity,
 `blockWeight_eq_exp` (exponent bridge via `c0_val`) — in flight at this entry.
 
