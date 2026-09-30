@@ -1,6 +1,19 @@
 # T12.1 / source3 — aktualne zasady wykonawcy
 
-## Latest owner instruction — 2026-09-30
+## Current owner instruction — B1 continuation, 2026-10-01
+
+The adapted KEYGEN_SOURCE_TO_FIBER_001 prompt is the active instruction.
+Continue in this source3 directory and the same session. Make small local
+commits; publication waits for a separate explicit owner signal. Do not
+start subagents, reviewers, new sessions or relays. The prior three-commit
+publication/development-delegation rule below is historical.
+This package supplies rung B1 to B4/B5 under END_TO_END_SCOPE.md. In
+addition to the emitted-material/certificate/equation/fiber theorem, expose
+the actual per-attempt gates, attempt cap and loop-success semantics.
+Probability laws, acceptance probability and PRG security belong to the
+mathematical/assembly lane. Source facts must not silently change the target.
+
+## Historical owner instruction — 2026-09-30
 
 Push in batches of three OWN commits. The owner clarified that automatic
 batch review applies to a different agent, not this source3 worker. The owner

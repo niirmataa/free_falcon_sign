@@ -1,5 +1,31 @@
 # T12.1/source3 — żywy stan
 
+## B1 continuation — 2026-10-01
+
+**ACTIVE / KEYGEN_SOURCE_TO_FIBER_001 IN_PROGRESS / NOT_REVIEWED**.
+The adapted owner prompt is current: local commits, push only after an
+explicit signal, no new subagents/reviewers/sessions. B1 consumers and the
+additional named attempt-interface targets are recorded in the live plan.
+Scope read through D1 refinement commit 1ec29f7b; no edits to run2/t5 or
+the shared end-to-end target. Preflight: no active proof job, empty Git
+index; /home/footfalcon/free_falcon_sign resolves to this NVMe checkout.
+Five foreign unpublished main ancestors and other worktree changes remain.
+
+Continuation before the adapted prompt added C99ProcedureReference/Parser,
+source complex-macro expansion and FftProcedurePrograms (FFT3, split/muladj,
+five raw-LDL bodies, seven leaf signatures). Checked table job
+`keygen_procedure_programs_004`: clean, 124.591s. Previous failed attempts
+remain in .build/jobs; monolithic signature/macro reductions were factored
+without raising limits. The later memcpy subobject-bound change still
+requires a fresh dependency replay. Full prefix execution, frame, lifetime,
+KeyGen loop and emitted-to-fiber composition remain open.
+
+The previous read-only codec research subagent completed without edits,
+proof jobs, Git or a review verdict. It identified the STATIC low-suffix
+invariant, final encoder ne=-2, independently padded f/g/F/G segments, and
+the public decoder's return of supplied length. These are implementation
+guidance, not kernel results. No delegation remains running.
+
 ## Resumed by the owner
 
 **ACTIVE / KEYGEN_SOURCE_TO_FIBER_001 IN_PROGRESS / NOT_REVIEWED**.

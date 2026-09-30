@@ -154,6 +154,18 @@ Bez przejmowania run2/t5, migracji/scalania lub uruchamiania innych modeli.
 Commity lokalne; wcześniejsza zgoda trzech commitów/push jest wykorzystana.
 Push nowego pakietu wymaga osobnego sygnału. Status początkowy IN_PROGRESS.
 
+**B1 contract update — 2026-10-01 (same T12.1/source3 package).**
+The owner adapted this task to
+[END_TO_END_SCOPE](../../proofs/ft1536/development/T12_1/END_TO_END_SCOPE.md).
+B4/B5 consume the same emitted material, full source certificate and exact
+NTRU/public/inverse/fiber results. The added deterministic interface exposes
+per-attempt source gates, cap3000000 and loop success. Acceptance probability,
+conditioning and PRG accounting remain with the mathematical/assembly lane.
+In pinned M0 the loop is at7865--8135; its accepted break precedes output
+capacity checks, so loop success and function return1 remain distinct.
+The live plan records target types; no successful-KeyGen theorem is claimed.
+Local commits only, push after an explicit signal; no new agents/reviewers.
+
 **Następne20 zadań wykonawczych i20 odbiorów:**
 [B20 OWNER_GUIDE](../../proofs/ft1536/batches/B20_001/OWNER_GUIDE.md),
 [INDEX](../../proofs/ft1536/batches/B20_001/INDEX.json),

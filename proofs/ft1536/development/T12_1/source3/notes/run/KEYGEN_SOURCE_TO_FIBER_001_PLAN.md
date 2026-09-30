@@ -1,6 +1,55 @@
 # KEYGEN_SOURCE_TO_FIBER_001 — żywy plan T12.1/source3
 
-## Current execution rule — 2026-09-30
+## Current B1 scope and execution rule — 2026-10-01
+
+The owner's adapted prompt binds this package to rung B1 of
+`../END_TO_END_SCOPE.md` (scope introduced at 0887d033, D1 subsequently
+refined at 1ec29f7b). The final theorem below retains exactly its source
+execution, input-memory and M0 profile premises. B4 consumes the same-key
+source certificate; B5 consumes the decoded material, equations and fiber
+construction. Neither consumer should need extra unproved equations.
+
+Small commits are LOCAL; push requires a separate explicit owner signal.
+No new subagents, reviewers, sessions or relays. The preceding development
+delegations are complete and are retained as research provenance only.
+
+### Additional named attempt interface (required target types)
+
+These names are implementation targets, not exports already available:
+
+```lean
+def KeygenM0.AttemptAccepted (a : KeygenM0.AttemptExecution) : Prop :=
+  a.exit = .breakLoop
+def KeygenM0.AttemptRejected (a : KeygenM0.AttemptExecution) : Prop :=
+  a.exit = .continueLoop
+def KeygenM0.LoopSucceeded (r : KeygenM0.LoopExecution) : Prop :=
+  r.exit = .normal
+theorem KeygenM0.actual_attempt_cap : KeygenM0.attemptCap = 3000000
+theorem KeygenM0.successful_loop_last_attempt
+    (r : KeygenM0.LoopExecution) (h : KeygenM0.LoopSucceeded r) :
+    exists rejected final,
+      r.attempts = rejected ++ [final] /\
+      (forall a, a in rejected -> KeygenM0.AttemptRejected a) /\
+      KeygenM0.AttemptAccepted final /\
+      r.attempts.length <= KeygenM0.attemptCap
+```
+
+`AttemptExecution` and `LoopExecution` must be extracted from defined source
+derivations, not supplied by an abstract callee relation. The actual attempt
+gates include resultants f/g, both FPEMU norm checks, public computation,
+solver and the mandatory leaf certificate. Their outcomes and material
+identity must be linked to the same derivation. Loop success precedes the
+serializers and is distinct from function return 1: insufficient output
+capacity can still return 0 after the accepted attempt. The cap rejects
+before sampling attempt 3000001. This is a deterministic interface; laws,
+`p_accept`, conditioning and PRG accounting remain with B4/B5.
+
+Source line references for M0 are 7865--8135 (attempt loop), 7867--7874
+(cap) and 8140--8186 (encoding tail). References to other revisions in the
+shared scope are not substituted for the pinned M0 code. Any discrepancy
+with D1 is reported for owner reconciliation rather than changed here.
+
+## Historical execution rule — 2026-09-30
 
 The owner authorizes three-own-commit push batches. The latest clarification
 reserves review decisions to the owner: automatic batch review applies to
