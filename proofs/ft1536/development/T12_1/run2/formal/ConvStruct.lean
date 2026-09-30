@@ -864,5 +864,62 @@ theorem twist_exponent_identity (a c s κ c0' ℓ : ℝ)
   field_simp [hss']
   ring
 
+/-- Real expansion of the block energy in the decoded coordinates
+    (`Geometry.block x y = x*x + x*y + y*y` cast to `ℝ`). -/
+theorem blockEnergy_as_real (b : Block) :
+    ((blockEnergy b : ℤ) : ℝ)
+      = (((blockDecode b).1 : ℤ) : ℝ) * (((blockDecode b).1 : ℤ) : ℝ)
+        + (((blockDecode b).1 : ℤ) : ℝ) * (((blockDecode b).2 : ℤ) : ℝ)
+        + (((blockDecode b).2 : ℤ) : ℝ) * (((blockDecode b).2 : ℤ) : ℝ) := by
+  simp only [blockEnergy, Geometry.block]
+  push_cast
+  ring
+
+/-- Twisted exponent form of the block weight (the exponent-level assembly):
+    `exp(−c0·Q)·exp(ℓ·Qc) = exp(ℓ·18433² + κ²/s)·exp(−s·Q(a+κ/s, c))` for
+    `region1` blocks, with `s = c0 − ℓ`, `κ = ℓ·18433`. -/
+theorem twisted_weight_exp_eq (b : Block) (ℓ : ℝ) (hreg : region1 b)
+    (hs : (c0:ℝ) - ℓ ≠ 0) :
+    Real.exp (-((c0:ℝ) * ((blockEnergy b : ℤ) : ℝ)))
+        * Real.exp (ℓ * ((centeredEnergy b : ℤ) : ℝ))
+      = Real.exp (ℓ*18433^2 + (ℓ*18433)*(ℓ*18433)/((c0:ℝ) - ℓ))
+          * Real.exp (-((c0:ℝ) - ℓ) * shiftedBlockQ b ((c0:ℝ) - ℓ) (ℓ*18433)) := by
+  have ha := blockEnergy_as_real b
+  have hqc : ((centeredEnergy b : ℤ) : ℝ)
+      = ((blockEnergy b : ℤ) : ℝ)
+          + 18433 * (18433 - 2 * (((blockDecode b).1 : ℤ) : ℝ)
+            - (((blockDecode b).2 : ℤ) : ℝ)) := by
+    exact_mod_cast centeredEnergy_region1 b hreg
+  have halg := twist_exponent_identity (((blockDecode b).1 : ℤ) : ℝ)
+    (((blockDecode b).2 : ℤ) : ℝ) ((c0:ℝ) - ℓ) (ℓ*18433) (c0:ℝ) ℓ rfl rfl hs
+  have hshift := shiftedBlockQ_eq b ((c0:ℝ) - ℓ) (ℓ*18433)
+  have hE : -((c0:ℝ) * ((((blockDecode b).1 : ℤ) : ℝ)
+        * (((blockDecode b).1 : ℤ) : ℝ)
+        + (((blockDecode b).1 : ℤ) : ℝ) * (((blockDecode b).2 : ℤ) : ℝ)
+        + (((blockDecode b).2 : ℤ) : ℝ) * (((blockDecode b).2 : ℤ) : ℝ)))
+      + ℓ * (((((blockDecode b).1 : ℤ) : ℝ) * (((blockDecode b).1 : ℤ) : ℝ)
+        + (((blockDecode b).1 : ℤ) : ℝ) * (((blockDecode b).2 : ℤ) : ℝ)
+        + (((blockDecode b).2 : ℤ) : ℝ) * (((blockDecode b).2 : ℤ) : ℝ))
+        + 18433 * (18433 - 2 * (((blockDecode b).1 : ℤ) : ℝ)
+          - (((blockDecode b).2 : ℤ) : ℝ)))
+      = ℓ*18433^2 + (ℓ*18433)*(ℓ*18433)/((c0:ℝ) - ℓ)
+          + (-((c0:ℝ) - ℓ) * shiftedBlockQ b ((c0:ℝ) - ℓ) (ℓ*18433)) := by
+    rw [← neg_mul, halg, hshift]
+    ring
+  rw [← Real.exp_add, hqc, ha, hE, Real.exp_add]
+
+/-- Block-level twisted weight (assembly): the centered-energy tilt of the
+    block mass equals the shifted potential up to the two twist constants
+    and the normalizer. -/
+theorem twisted_block_weight_eq (b : Block) (ℓ : ℝ) (hreg : region1 b)
+    (hs : (c0:ℝ) - ℓ ≠ 0) :
+    blockLaw.mass b * Real.exp (ℓ * ((centeredEnergy b : ℤ) : ℝ))
+      = Real.exp (ℓ*18433^2 + (ℓ*18433)*(ℓ*18433)/((c0:ℝ) - ℓ))
+          * Real.exp (-((c0:ℝ) - ℓ) * shiftedBlockQ b ((c0:ℝ) - ℓ) (ℓ*18433))
+          / blockNormalizer := by
+  have hmass : blockLaw.mass b = blockWeight b / blockNormalizer := rfl
+  rw [hmass, blockWeight_eq_exp b, div_mul_eq_mul_div,
+    twisted_weight_exp_eq b ℓ hreg hs]
+
 end FT1536.ConvStruct
 

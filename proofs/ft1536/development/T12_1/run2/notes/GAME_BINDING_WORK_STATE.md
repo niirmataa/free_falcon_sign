@@ -103,6 +103,9 @@ twin of L0: `Qc − Q = 18433·δ`, `δ = 18433 − 2a − c` on the sector),
 - `git commit --only -- <file>` commits the WHOLE file state — you cannot
   split one file's changes across commits without hunk-staging; plan commit
   granularity accordingly.
+- `neg_mul` in this Mathlib runs `-a·b = −(a·b)` (product-of-negation on the
+  LEFT) — to push `−(a·b)` into `(-a)·b` you need `rw [← neg_mul]`. Check
+  lemma directions from the error log, never from memory (2026-09-30, B2).
 - `sorry`/`admit`/`native_decide` remain absolute zero; the pre-compile
   grep is mandatory and the draft-writing habit is the real risk, not the
   math.
