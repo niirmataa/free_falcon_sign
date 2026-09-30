@@ -4,6 +4,7 @@ import Run2.RawRadialEvents
 import Run2.TriangularGaussian
 import Run2.T5ScalarMass
 import MgfProduct
+import ConvolutionCert
 import FinalTails
 
 /-!
@@ -32,6 +33,7 @@ namespace FT1536.ConvStruct
 open Finset
 open FT1536.Geometry
 open FT1536.PublicSimulation
+open FT1536.ConvolutionCert
 open FT1536.MgfProduct
 open FT1536.BlockTheta
 open FT1536.FinalTails
@@ -39,6 +41,8 @@ open FT1536.Run2.RawProductLaw
 open FT1536.Run2.RawRadialEvents
 open FT1536.Run2.RadialWindowSplit
 open FT1536.Run2.RadialBinningSandwich
+open FT1536.Run2.RadialTriangleSplit
+open FT1536.Run2.CenteringTriangle
 
 /-- **Postać splotowa okna (sfibrowana)**: waga = iloczyn 1536 mas
     `blockLaw` ze skasowanym slotem 0 (iloraz — warunkowanie), okno `W`
@@ -748,6 +752,77 @@ theorem weightedWindowMass_le_full (b : Block) (W : ℤ → Prop) (ℓ : ℝ) :
       ≤ (∑ x : Block, blockLaw.mass x * Real.exp (ℓ * blockEnergy x))^1535 :=
   (weightedWindowMass_mono b ℓ (fun _ _ => trivial)).trans
     (le_of_eq (weightedWindowMass_true b ℓ))
+
+/-- Per-block upper bound of the hi-window gap by the tilted full moment
+    (Cramer upper side of `windowSandwich` + `weightedWindowMass_le_full`). -/
+theorem engineGapHi_le (b : Block) (ℓ : ℝ) (hℓ : 0 ≤ ℓ) :
+    engineGapHi b
+      ≤ Real.exp (-ℓ * (((hiT1 (blockEnergy b) (centeredEnergy b)) : ℤ) : ℝ))
+          * (∑ x : Block, blockLaw.mass x * Real.exp (ℓ * blockEnergy x))^1535 := by
+  rw [← windowMassWin_hiWin b]
+  have hW : ∀ e : ℤ, hiWin (blockEnergy b) (centeredEnergy b) e
+      → (((hiT1 (blockEnergy b) (centeredEnergy b)) : ℤ) : ℝ) ≤ ((e:ℤ):ℝ)
+        ∧ ((e:ℤ):ℝ) ≤ (((hiT2 (blockEnergy b) (centeredEnergy b)) : ℤ) : ℝ) := by
+    intro e he
+    rw [hiWin_eq_Icc] at he
+    exact ⟨by exact_mod_cast he.1, by exact_mod_cast he.2⟩
+  have hs := (windowSandwich b (hiWin (blockEnergy b) (centeredEnergy b))
+    (hiT1 (blockEnergy b) (centeredEnergy b)) (hiT2 (blockEnergy b) (centeredEnergy b))
+    ℓ hℓ hW).2
+  have hf := weightedWindowMass_le_full b (hiWin (blockEnergy b) (centeredEnergy b)) ℓ
+  exact le_trans hs (mul_le_mul_of_nonneg_left hf (Real.exp_pos _).le)
+
+/-- Threshold monotonicity: `hiT1` rounds up, hence
+    `B − Qc − 1535*15 ≤ hiT1 Q Qc` (from `binLo_spec`). -/
+theorem hiT1_ge (Q Qc : ℤ) :
+    (B - Qc - 1535*15 : ℤ) ≤ hiT1 Q Qc := by
+  have h := (binLo_spec (B - Qc - 1535*15 : ℤ)).1
+  simpa [hiT1] using h
+
+/-- Exponential form of the threshold step (upper side for certHi):
+    `e^{−ℓ·hiT1} ≤ e^{−ℓ(B−Qc−1535·15)}` for `ℓ ≥ 0`. -/
+theorem exp_neg_hiT1_le (Q Qc : ℤ) (ℓ : ℝ) (hℓ : 0 ≤ ℓ) :
+    Real.exp (-ℓ * ((hiT1 Q Qc : ℤ) : ℝ))
+      ≤ Real.exp (-ℓ * ((((B - Qc - 1535*15) : ℤ)) : ℝ)) := by
+  have h := hiT1_ge Q Qc
+  have hc : (((B - Qc - 1535*15) : ℤ) : ℝ) ≤ ((hiT1 Q Qc : ℤ) : ℝ) := by
+    exact_mod_cast h
+  have hm : -ℓ * ((hiT1 Q Qc : ℤ) : ℝ) ≤ -ℓ * ((((B - Qc - 1535*15) : ℤ)) : ℝ) :=
+    mul_le_mul_of_nonpos_left hc (neg_nonpos.mpr hℓ)
+  exact Real.exp_le_exp.mpr hm
+
+/-- Sector identity (kernel twin of the L0 pre-check): for `region1` blocks
+    the centered energy satisfies `Qc − Q = 18433·δ` with
+    `δ = 18433 − 2a − b` (`a`, `b` = decoded coordinates), since
+    `center a = a − 18433` on the sector range. -/
+theorem centeredEnergy_region1 (b : Block) (hreg : region1 b) :
+    centeredEnergy b
+      = blockEnergy b
+          + 18433 * (18433 - 2*(blockDecode b).1 - (blockDecode b).2) := by
+  have htri : 9217 ≤ (blockDecode b).1 ∧ (blockDecode b).1 ≤ 13824
+      ∧ -9216 ≤ (blockDecode b).2
+      ∧ (blockDecode b).2 ≤ 18432 - 2*(blockDecode b).1 := by
+    simpa [region1, triangle] using hreg
+  have hca : center (blockDecode b).1 = (blockDecode b).1 - 18433 := by
+    unfold center
+    omega
+  have hcb : center (blockDecode b).2 = (blockDecode b).2 := by
+    unfold center
+    omega
+  simp only [centeredEnergy, blockEnergy, hca, hcb, Geometry.block]
+  ring
+
+/-- Sector twist with the delta constant (the assembly form):
+    `e^{−s·Q(a,b) + ℓ·18433² − κ(2a+b)} = e^{ℓ·18433² + κ²/s}·e^{−s·Q(a+κ/s, b)}`
+    for `s ≠ 0` (with `s = c0 − ℓ`, `κ = ℓ·18433` at use site). -/
+theorem hex_twist_shift_exp_delta (s κ ℓ a b : ℝ) (hs : s ≠ 0) :
+    Real.exp (-s * (a*a + a*b + b*b) + ℓ*18433^2 - κ * (2*a + b))
+      = Real.exp (ℓ*18433^2 + κ*κ/s) * Real.exp (-s * ((a + κ/s)*(a + κ/s)
+          + (a + κ/s)*b + b*b)) := by
+  rw [show (-s * (a*a + a*b + b*b) + ℓ*18433^2 - κ * (2*a + b))
+      = ℓ*18433^2 + (-s * (a*a + a*b + b*b) - κ * (2*a + b)) by ring,
+    Real.exp_add, hex_twist_shift_exp s κ a b hs, Real.exp_add]
+  ring
 
 end FT1536.ConvStruct
 
