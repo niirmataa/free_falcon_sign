@@ -50,36 +50,36 @@ toru powstają już tutaj, małymi commitami.
 
 Kernel pieces in `ConvStruct` (all clean builds 0/0, standard axioms only):
 
-- `weightedWindowMass` + `windowSandwich` — the exact two-sided Cramer
-  sandwich with the variable weight `e^{-lambda S}` (owner correction,
-  2026-09-30: no single-factor `e^{-Lambda*}` shortcut).
-- `weightedWindowMass_true` — full-window moment = `mgf_1(lambda)^1535`
+- `weightedWindowMass` + `windowSandwich` — the exact two-sided Cramér
+  sandwich with the variable weight `e^{−λ S}` (owner correction,
+  2026-09-30: no single-factor `e^{−Λ*(T)}` shortcut).
+- `weightedWindowMass_true` — full-window moment = `mgf₁(ℓ)^1535`
   (bridge to the theta layer via `fiber_moment_eq` + `mgf1_eq`).
 - `indicator_and_split` + `weightedWindowMass_split` — the complement split
-  `P_lambda(I) = 1 - P_lambda(I^c)`.
+  `P_λ(I) = 1 − P_λ(I^c)`.
 - `sum_imp_exp_bound` + `sum_imp_exp_bound_neg` — two-sided Chernoff bounds
   for the complement tails (both half-lines).
 - `hex_twist_shift` + `hex_twist_shift_exp` — completing the square for the
-  sector twist (the real shift `u = kappa/s` in the x-channel).
+  sector twist (the real shift `u = κ/s` in the x-channel).
 - `a2Tower` + `a2Tower_atom` + `a2Tower_total` + `a2Tower_mass_bounds` —
   the A2 tower with real LDL shear shift `u + y/2`; `total` = tsum of `a2Q`;
   mass sandwich via the generic `triangular_mass_bounds` at `n=2`
   (error ~2^-46 vs 1e-10 required).
 - `box_sum_le_tsum` — box-to-lattice bridge for nonnegative summable
-  functions (box `Fin 131071^2` under `blockDecode` inside `Z x Z`).
+  functions (box `Fin 131071^2` under `blockDecode` inside `ℤ × ℤ`).
 - `weightedWindowMass_mono` + `weightedWindowMass_le_full` — monotonicity
-  and the upper bound by the full moment (in flight at this entry).
+  and the upper bound by the full moment (landed in this batch).
 
 Numeric pre-checks: L0 (pinned engine reproduction byte-identical; sector
 vertex arithmetic; required wrap allowance <= 7.83e-10 relative) and L0b
-(route P1 dead by 27 orders of magnitude — coarse U(l*) = 1.2e4 vs 1.27e-23;
+(route P1 dead by 27 orders of magnitude — coarse U(ℓ*) = 1.2e4 vs 1.27e-23;
 verdict: tilted-local route P2' for BOTH certs).
 
 Assembly target (next): certHi/certLo via windowSandwich upper/lower ->
-weightedWindowMass_le_full -> mgf1^1535 -> twisted sector sums through
+weightedWindowMass_le_full -> mgf₁^1535 -> twisted sector sums through
 hex_twist_shift_exp -> box_sum_le_tsum -> a2Tower_mass_bounds -> final QQ
 comparison against the pinned engine literals (engineLo/Hi, aliasCap/missCap).
-Open elsewhere: flat/reject (lane t5), ldl_shape + E_leaf (REFINE/Warstwa 2).
+Open elsewhere: flat/reject (lane t5), ldl_shape + E_leaf (REFINE/Layer 2).
 
 ## Zasady
 
@@ -96,7 +96,7 @@ Open elsewhere: flat/reject (lane t5), ldl_shape + E_leaf (REFINE/Warstwa 2).
 
 Zero sorry/admit/native_decide; logi 0/0 (licznik `error(\(|:)`);
 kompilacja seryjna strzeżona (`tools/original/run_lean_guarded.sh`);
-Sage przez `sage <plik>.sage`; asserty w każdym patchu python.
+Sage przez `sage <plik>.sage`; asserty w każdym patchu Pythona.
 
 ## Walidacja nowego workspace (2026-09-30)
 

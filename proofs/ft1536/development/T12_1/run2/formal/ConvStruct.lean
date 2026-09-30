@@ -710,7 +710,7 @@ theorem box_sum_le_tsum {f : ℤ × ℤ → ℝ}
   rw [h2, ← Finset.sum_product]
   exact hsum.sum_le_tsum _ (fun p _ => hf p)
 
-/-- Monotonicity of the weighted window moment in the window predicate:
+/-- Monotonicity of the weighted window moment with respect to the window predicate:
     `W ⊆ W'` implies `weightedWindowMass b W ℓ ≤ weightedWindowMass b W' ℓ`. -/
 theorem weightedWindowMass_mono {W W' : ℤ → Prop} (b : Block) (ℓ : ℝ)
     (h : ∀ e : ℤ, W e → W' e) :
