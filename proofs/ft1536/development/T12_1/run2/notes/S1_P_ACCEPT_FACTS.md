@@ -65,5 +65,29 @@ IN ORDER (the algorithm comment of `falcon_keygen_make` + the six
   `E[w^2 | Accept] / E[w | Accept]^2` (sharper); the six-gate structure
   above is the conditioning to carry.
 
-Open: rigorous `p_accept` bound (kernel) and/or FG_PROBE measurement on
-synthetic inputs (owner-approved control); per-gate conditional rates.
+## MEASURED (owner-approved control, 2026-10-01 — empirical, not proof)
+
+W=`proofs/ft1536/work/FT1536_FG_PROBE_P_ACCEPT_001` (receipt
+`out/RECEIPT.json`). Built with the EXACT derived Makefile profile
+(BOUND_SCALE 1250/100 verbatim — the heavy analytic tuning) plus the
+single instrumentation define `-DFG_DISTRIBUTION_PROBE`; transparency
+control PASS (probe vs clean build, identical seeds -> identical key
+digests, so the instrumentation is observation-only and the measured law
+is the profile law).
+
+- `p_accept = 8192/23628 = 0.34671` (sigma ~ 0.0031); control run 256/739
+  = 0.34641 (consistent). `1/p_accept = 2.88` — SINGLE DIGITS: the D1
+  vacuity guard does not fire.
+- Per-gate rejects over 23628 attempts (exact accounting
+  15436 + 8192 = 23628): `gs = 12303` (79.7% — the Gram-Schmidt gate is
+  the dominant filter), `solve = 1551`, `public = 814`, resultants `768`,
+  `norm = 0` (the 1250/100 bound rejects nothing — the norm gate is
+  effectively pass-through in this profile).
+- Conditional chain (first-failing-gate order): resultants 0.9675 ->
+  norm 1.0 -> gs 0.4618 -> public 0.9229 -> solve 0.8408 = 0.3467.
+- `max_attempts_per_keygen = 24`, `attempt_limit_hits = 0` (cap 3e6 never
+  approached); `stddev_f = 0.818 ~ sqrt(2/3)` (uniform ternary).
+
+Open: rigorous `p_accept` lower bound (kernel, S3/B4) — the measurement
+is a control and a vacuity check, not a proof. Per-gate conditional rates
+above are the conditioning structure to carry into the B4 second moment.

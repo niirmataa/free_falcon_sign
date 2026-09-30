@@ -148,6 +148,18 @@ at line 8110), attempt cap `TERNARY_KEYGEN_MAX_ATTEMPTS = 3000000`
 unlikely (blow-up factor single digits). Next: S3 — the conditional
 chi-square lemma and the `e`-provenance pin.
 
+## 2026-10-01 (night) — S1 measured: p_accept = 0.34671 (control, owner-approved)
+
+FG_PROBE measurement under the EXACT derived Makefile profile (BOUND_SCALE
+1250/100 verbatim; single added define `-DFG_DISTRIBUTION_PROBE`).
+Transparency control PASS (probe vs clean, identical seeds -> identical
+key digests). Result: p_accept = 8192/23628 = 0.34671, 1/p_accept = 2.88
+(single digits — the D1 vacuity guard does NOT fire). Dominant gate:
+Gram-Schmidt (79.7% of rejects); norm gate rejects nothing at 1250/100;
+exact accounting 15436+8192=23628. Receipt: work/FT1536_FG_PROBE_P_ACCEPT_001/out/RECEIPT.json.
+All values version-invariant under the FLOOR_CT fix. Next: S3 — the
+conditional chi-square lemma and the e-provenance pin.
+
 ## Zasady
 
 - **Recenzja przed commitem** (decyzja właściciela 2026-09-30): każdy
