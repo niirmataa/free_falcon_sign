@@ -200,3 +200,29 @@ carry foreign active changes and are not touched from this lane).
 - Timing, cache and fault side channels; hardware entropy quality beyond
   A2; multi-user/adaptive security beyond the single-instance game; any
   claim of "security" without the decomposition of Section 1.
+
+## 7. Version-skew ledger (2026-09-30, owner catch: the M0 floor-CT skew)
+
+- **The pinned M0 profile carries the PRE-FIX `fpr-emulated.h`**
+  (`m0_source/fpr-emulated.h` sha256 `242a7027d854e1317a3382f198271c69d4
+  0f4b34e80192ff896a42a65c83edfa` = the FLOOR_CT baseline header), while
+  live `Extra/c` and the dudect RUN_002 campaign carry the CANDIDATE
+  (`6b897d6c217ef25a322e3b5c3d9488b9d6b8d0e369a710d8fce2259f24e6d84f`).
+  The delta is exactly `fpr_floor`'s final signed XOR-select replaced by an
+  unsigned selection (FT1536_FPEMU_FLOOR_CT_RUN_001, PATCH.diff); the other
+  16 source files are byte-identical.
+- **Consequence for the value-level claims (B1-B5): none.** The patch is
+  bit-preserving over ALL 2^64 raw words, kernel-proven
+  (`formal/FloorWord.lean`: `FloorCT.candidate_bit_equivalence`,
+  `FloorCT.all_word64_equivalence`) — key law, `p_accept`, NTRU equations,
+  encodings and `e` are identical on both versions. REUSE this equivalence
+  as the version bridge; do not re-prove value facts per version.
+- **Consequence for leakage claims: version matters.** M0 has the
+  operand-dependent floor; the fix + dudect RUN_002
+  (NO_LEAKAGE_EVIDENCE_YET, exploratory, explicitly not a CT proof) are
+  the CT-side evidence on the candidate. Side channels stay out of scope
+  (A1); any timing-sensitive deployment must build the CANDIDATE bytes,
+  and the bit-equivalence bridge carries this theorem over unchanged.
+- This skew also vindicates the B1 rule "do not substitute live Extra/c
+  for the pinned profile": `m0_source` differs from `Extra/c` in exactly
+  this one file.
