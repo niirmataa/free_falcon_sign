@@ -353,5 +353,157 @@ theorem mgf1_eq (ℓ : ℝ) :
     ← blockSum_c0_eq]
   rfl
 
+/-- **Ważony moment oknowy** (kanapka Craméra — uwaga właściciela
+    2026-09-30: waga `e^{−λS}` zmienna w oknie): `∑ w_z·1[fib ∧ W]·e^{ℓ·S_z}`;
+    dla `W ≡ True` zbiega się z `fiber_moment_eq` (`= mgf₁(ℓ)^1535`). -/
+noncomputable def weightedWindowMass (b : Block) (W : ℤ → Prop) (ℓ : ℝ) : ℝ :=
+  Finset.sum Finset.univ (fun z : BoxPair =>
+    (((∏ j, blockLaw.mass (z.1 j)) * (∏ j, blockLaw.mass (z.2 j))
+      / blockLaw.mass (z.1 0)))
+      * indicator (z.1 0 = b ∧ W ((∑ j, blockEnergy (z.1 j))
+          + (∑ j, blockEnergy (z.2 j)) - blockEnergy (z.1 0)))
+      * Real.exp (ℓ * ((∑ j, blockEnergy (z.1 j)) + (∑ j, blockEnergy (z.2 j))
+          - blockEnergy (z.1 0))))
+
+/-- Punktowa kanapka wag okna (waga `e^{ℓ·S}` zmienna!): dla `ℓ ≥ 0`
+    i `T1 ≤ S ≤ T2`: `e^{−ℓ·T2}·e^{ℓ·S} ≤ 1 ≤ e^{−ℓ·T1}·e^{ℓ·S}`.
+    Wersja wprost na ℝ (zero kastów w środku). -/
+theorem sandwich_pointwise (T1 T2 S : ℝ) (ℓ : ℝ) (hℓ : 0 ≤ ℓ)
+    (hT1 : T1 ≤ S) (hT2 : S ≤ T2) :
+    Real.exp (-ℓ * T2) * Real.exp (ℓ * S) ≤ (1:ℝ)
+      ∧ (1:ℝ) ≤ Real.exp (-ℓ * T1) * Real.exp (ℓ * S) := by
+  constructor
+  · have hx : ℓ * (S - T2) ≤ 0 := by nlinarith
+    have he : Real.exp (ℓ * (S - T2)) ≤ (1:ℝ) := by
+      rw [← Real.exp_zero]
+      exact Real.exp_le_exp.mpr hx
+    have hcalc : Real.exp (-ℓ * T2) * Real.exp (ℓ * S)
+        = Real.exp (ℓ * (S - T2)) := by
+      have hs : -ℓ * T2 + ℓ * S = ℓ * (S - T2) := by ring
+      rw [← Real.exp_add, hs]
+    rw [hcalc]
+    exact he
+  · have hx : 0 ≤ ℓ * (S - T1) := by nlinarith
+    have he : (1:ℝ) ≤ Real.exp (ℓ * (S - T1)) := Real.one_le_exp hx
+    have hcalc : Real.exp (-ℓ * T1) * Real.exp (ℓ * S)
+        = Real.exp (ℓ * (S - T1)) := by
+      have hs : -ℓ * T1 + ℓ * S = ℓ * (S - T1) := by ring
+      rw [← Real.exp_add, hs]
+    rw [hcalc]
+    exact he
+
+/-- **Dwustronna kanapka okna** (dokładna postać przekrzywienia — waga
+    `e^{ℓ·S}` zmienna, bez skrótu `e^{−Λ*}`): dla `ℓ ≥ 0` i okna w `[T1,T2]`:
+    `e^{−ℓ·T2}·weightedWindowMass ≤ windowMassWin ≤ e^{−ℓ·T1}·weightedWindowMass`. -/
+theorem windowSandwich (b : Block) (W : ℤ → Prop) (T1 T2 : ℤ) (ℓ : ℝ)
+    (hℓ : 0 ≤ ℓ)
+    (hW : ∀ e : ℤ, W e → ((T1:ℤ):ℝ) ≤ ((e:ℤ):ℝ) ∧ ((e:ℤ):ℝ) ≤ ((T2:ℤ):ℝ)) :
+    Real.exp (-ℓ * ((T2:ℤ):ℝ)) * weightedWindowMass b W ℓ
+        ≤ windowMassWin 0 b W
+      ∧ windowMassWin 0 b W
+        ≤ Real.exp (-ℓ * ((T1:ℤ):ℝ)) * weightedWindowMass b W ℓ := by
+  classical
+  simp only [windowMassWin_rest, restWindowMass, weightedWindowMass]
+  have hnonneg : ∀ z : BoxPair, (0:ℝ) ≤ ((∏ j, blockLaw.mass (z.1 j))
+      * (∏ j, blockLaw.mass (z.2 j)) / blockLaw.mass (z.1 0)) := by
+    intro z
+    apply div_nonneg
+    · exact mul_nonneg (Finset.prod_nonneg fun _ _ => blockLaw.nonneg _)
+        (Finset.prod_nonneg fun _ _ => blockLaw.nonneg _)
+    · exact blockLaw.nonneg _
+  have hptL : ∀ z : BoxPair,
+      Real.exp (-ℓ * ((T2:ℤ):ℝ))
+          * (((∏ j, blockLaw.mass (z.1 j)) * (∏ j, blockLaw.mass (z.2 j))
+            / blockLaw.mass (z.1 0))
+            * indicator (z.1 0 = b ∧ W ((∑ j, blockEnergy (z.1 j))
+                + (∑ j, blockEnergy (z.2 j)) - blockEnergy (z.1 0)))
+            * Real.exp (ℓ * ((∑ j, blockEnergy (z.1 j))
+                + (∑ j, blockEnergy (z.2 j)) - blockEnergy (z.1 0))))
+      ≤ ((∏ j, blockLaw.mass (z.1 j)) * (∏ j, blockLaw.mass (z.2 j))
+          / blockLaw.mass (z.1 0))
+          * indicator (z.1 0 = b ∧ W ((∑ j, blockEnergy (z.1 j))
+              + (∑ j, blockEnergy (z.2 j)) - blockEnergy (z.1 0))) := by
+    intro z
+    have hA := hnonneg z
+    rcases em (z.1 0 = b ∧ W ((∑ j, blockEnergy (z.1 j))
+        + (∑ j, blockEnergy (z.2 j)) - blockEnergy (z.1 0))) with hp | hp
+    · rcases hp with ⟨hp1, hp2⟩
+      subst hp1
+      have hsp := sandwich_pointwise ((T1:ℤ):ℝ) ((T2:ℤ):ℝ)
+        (((((∑ j, blockEnergy (z.1 j)) : ℤ) : ℝ)
+          + ((((∑ j, blockEnergy (z.2 j)) : ℤ) : ℝ))
+          - ((((blockEnergy (z.1 0)) : ℤ) : ℝ))))
+        ℓ hℓ (by exact_mod_cast (hW _ hp2).1) (by exact_mod_cast (hW _ hp2).2)
+      rw [show indicator (z.1 0 = z.1 0 ∧ W ((∑ j, blockEnergy (z.1 j))
+          + (∑ j, blockEnergy (z.2 j)) - blockEnergy (z.1 0))) = (1:ℝ) from by
+        simp [indicator, hp2]]
+      simp only [mul_one]
+      calc Real.exp (-ℓ * ((T2:ℤ):ℝ))
+            * (((∏ j, blockLaw.mass (z.1 j)) * (∏ j, blockLaw.mass (z.2 j))
+              / blockLaw.mass (z.1 0)) * Real.exp (ℓ * ((∑ j, blockEnergy (z.1 j))
+                + (∑ j, blockEnergy (z.2 j)) - blockEnergy (z.1 0))))
+          = ((∏ j, blockLaw.mass (z.1 j)) * (∏ j, blockLaw.mass (z.2 j))
+              / blockLaw.mass (z.1 0))
+              * (Real.exp (-ℓ * ((T2:ℤ):ℝ)) * Real.exp (ℓ * ((∑ j, blockEnergy (z.1 j))
+                + (∑ j, blockEnergy (z.2 j)) - blockEnergy (z.1 0)))) := by ring
+        _ ≤ ((∏ j, blockLaw.mass (z.1 j)) * (∏ j, blockLaw.mass (z.2 j))
+              / blockLaw.mass (z.1 0)) * (1:ℝ) :=
+            mul_le_mul_of_nonneg_left hsp.1 hA
+        _ = ((∏ j, blockLaw.mass (z.1 j)) * (∏ j, blockLaw.mass (z.2 j))
+              / blockLaw.mass (z.1 0)) := by ring
+    · rw [show indicator (z.1 0 = b ∧ W ((∑ j, blockEnergy (z.1 j))
+        + (∑ j, blockEnergy (z.2 j)) - blockEnergy (z.1 0))) = (0:ℝ) from by
+        simp [indicator, hp]]
+      simp [mul_zero, zero_mul]
+  have hptU : ∀ z : BoxPair,
+      ((∏ j, blockLaw.mass (z.1 j)) * (∏ j, blockLaw.mass (z.2 j))
+        / blockLaw.mass (z.1 0))
+        * indicator (z.1 0 = b ∧ W ((∑ j, blockEnergy (z.1 j))
+            + (∑ j, blockEnergy (z.2 j)) - blockEnergy (z.1 0)))
+      ≤ Real.exp (-ℓ * ((T1:ℤ):ℝ))
+          * (((∏ j, blockLaw.mass (z.1 j)) * (∏ j, blockLaw.mass (z.2 j))
+            / blockLaw.mass (z.1 0))
+            * indicator (z.1 0 = b ∧ W ((∑ j, blockEnergy (z.1 j))
+                + (∑ j, blockEnergy (z.2 j)) - blockEnergy (z.1 0)))
+            * Real.exp (ℓ * ((∑ j, blockEnergy (z.1 j))
+                + (∑ j, blockEnergy (z.2 j)) - blockEnergy (z.1 0)))) := by
+    intro z
+    have hA := hnonneg z
+    rcases em (z.1 0 = b ∧ W ((∑ j, blockEnergy (z.1 j))
+        + (∑ j, blockEnergy (z.2 j)) - blockEnergy (z.1 0))) with hp | hp
+    · rcases hp with ⟨hp1, hp2⟩
+      subst hp1
+      have hsp := sandwich_pointwise ((T1:ℤ):ℝ) ((T2:ℤ):ℝ)
+        (((((∑ j, blockEnergy (z.1 j)) : ℤ) : ℝ)
+          + ((((∑ j, blockEnergy (z.2 j)) : ℤ) : ℝ))
+          - ((((blockEnergy (z.1 0)) : ℤ) : ℝ))))
+        ℓ hℓ (by exact_mod_cast (hW _ hp2).1) (by exact_mod_cast (hW _ hp2).2)
+      rw [show indicator (z.1 0 = z.1 0 ∧ W ((∑ j, blockEnergy (z.1 j))
+          + (∑ j, blockEnergy (z.2 j)) - blockEnergy (z.1 0))) = (1:ℝ) from by
+        simp [indicator, hp2]]
+      simp only [mul_one]
+      calc ((∏ j, blockLaw.mass (z.1 j)) * (∏ j, blockLaw.mass (z.2 j))
+            / blockLaw.mass (z.1 0))
+          = ((∏ j, blockLaw.mass (z.1 j)) * (∏ j, blockLaw.mass (z.2 j))
+              / blockLaw.mass (z.1 0)) * (1:ℝ) := by ring
+        _ ≤ ((∏ j, blockLaw.mass (z.1 j)) * (∏ j, blockLaw.mass (z.2 j))
+              / blockLaw.mass (z.1 0))
+              * (Real.exp (-ℓ * ((T1:ℤ):ℝ)) * Real.exp (ℓ * ((∑ j, blockEnergy (z.1 j))
+                + (∑ j, blockEnergy (z.2 j)) - blockEnergy (z.1 0)))) :=
+            mul_le_mul_of_nonneg_left hsp.2 hA
+        _ = Real.exp (-ℓ * ((T1:ℤ):ℝ))
+              * (((∏ j, blockLaw.mass (z.1 j)) * (∏ j, blockLaw.mass (z.2 j))
+                / blockLaw.mass (z.1 0)) * Real.exp (ℓ * ((∑ j, blockEnergy (z.1 j))
+                  + (∑ j, blockEnergy (z.2 j)) - blockEnergy (z.1 0)))) := by ring
+    · rw [show indicator (z.1 0 = b ∧ W ((∑ j, blockEnergy (z.1 j))
+        + (∑ j, blockEnergy (z.2 j)) - blockEnergy (z.1 0))) = (0:ℝ) from by
+        simp [indicator, hp]]
+      simp [mul_zero, zero_mul]
+  constructor
+  · rw [Finset.mul_sum]
+    exact Finset.sum_le_sum (fun z _ => hptL z)
+  · rw [Finset.mul_sum]
+    exact Finset.sum_le_sum (fun z _ => hptU z)
+
 end FT1536.ConvStruct
 
