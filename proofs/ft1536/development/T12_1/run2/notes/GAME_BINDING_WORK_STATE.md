@@ -46,6 +46,41 @@ toru powstają już tutaj, małymi commitami.
 3. Styk z source3: `hbLo`/`hbHi` (źródłowa strona silnika) oraz
    `E_leaf < 33` + `source_binding` → `LeafErrorContract` (REFINE).
 
+## 2026-09-30 (later) — analytic-layer toolkit for certLo/certHi
+
+Kernel pieces in `ConvStruct` (all clean builds 0/0, standard axioms only):
+
+- `weightedWindowMass` + `windowSandwich` — the exact two-sided Cramer
+  sandwich with the variable weight `e^{-lambda S}` (owner correction,
+  2026-09-30: no single-factor `e^{-Lambda*}` shortcut).
+- `weightedWindowMass_true` — full-window moment = `mgf_1(lambda)^1535`
+  (bridge to the theta layer via `fiber_moment_eq` + `mgf1_eq`).
+- `indicator_and_split` + `weightedWindowMass_split` — the complement split
+  `P_lambda(I) = 1 - P_lambda(I^c)`.
+- `sum_imp_exp_bound` + `sum_imp_exp_bound_neg` — two-sided Chernoff bounds
+  for the complement tails (both half-lines).
+- `hex_twist_shift` + `hex_twist_shift_exp` — completing the square for the
+  sector twist (the real shift `u = kappa/s` in the x-channel).
+- `a2Tower` + `a2Tower_atom` + `a2Tower_total` + `a2Tower_mass_bounds` —
+  the A2 tower with real LDL shear shift `u + y/2`; `total` = tsum of `a2Q`;
+  mass sandwich via the generic `triangular_mass_bounds` at `n=2`
+  (error ~2^-46 vs 1e-10 required).
+- `box_sum_le_tsum` — box-to-lattice bridge for nonnegative summable
+  functions (box `Fin 131071^2` under `blockDecode` inside `Z x Z`).
+- `weightedWindowMass_mono` + `weightedWindowMass_le_full` — monotonicity
+  and the upper bound by the full moment (in flight at this entry).
+
+Numeric pre-checks: L0 (pinned engine reproduction byte-identical; sector
+vertex arithmetic; required wrap allowance <= 7.83e-10 relative) and L0b
+(route P1 dead by 27 orders of magnitude — coarse U(l*) = 1.2e4 vs 1.27e-23;
+verdict: tilted-local route P2' for BOTH certs).
+
+Assembly target (next): certHi/certLo via windowSandwich upper/lower ->
+weightedWindowMass_le_full -> mgf1^1535 -> twisted sector sums through
+hex_twist_shift_exp -> box_sum_le_tsum -> a2Tower_mass_bounds -> final QQ
+comparison against the pinned engine literals (engineLo/Hi, aliasCap/missCap).
+Open elsewhere: flat/reject (lane t5), ldl_shape + E_leaf (REFINE/Warstwa 2).
+
 ## Zasady
 
 - **Recenzja przed commitem** (decyzja właściciela 2026-09-30): każdy

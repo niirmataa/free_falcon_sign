@@ -710,5 +710,44 @@ theorem box_sum_le_tsum {f : ℤ × ℤ → ℝ}
   rw [h2, ← Finset.sum_product]
   exact hsum.sum_le_tsum _ (fun p _ => hf p)
 
+/-- Monotonicity of the weighted window moment in the window predicate:
+    `W ⊆ W'` implies `weightedWindowMass b W ℓ ≤ weightedWindowMass b W' ℓ`. -/
+theorem weightedWindowMass_mono {W W' : ℤ → Prop} (b : Block) (ℓ : ℝ)
+    (h : ∀ e : ℤ, W e → W' e) :
+    weightedWindowMass b W ℓ ≤ weightedWindowMass b W' ℓ := by
+  classical
+  simp only [weightedWindowMass]
+  apply Finset.sum_le_sum
+  intro z _
+  have hA : (0:ℝ) ≤ ((∏ j, blockLaw.mass (z.1 j)) * (∏ j, blockLaw.mass (z.2 j))
+      / blockLaw.mass (z.1 0)) := by
+    apply div_nonneg
+    · exact mul_nonneg (Finset.prod_nonneg fun _ _ => blockLaw.nonneg _)
+        (Finset.prod_nonneg fun _ _ => blockLaw.nonneg _)
+    · exact blockLaw.nonneg _
+  rcases em (z.1 0 = b ∧ W ((∑ j, blockEnergy (z.1 j))
+      + (∑ j, blockEnergy (z.2 j)) - blockEnergy (z.1 0))) with hp | hp
+  · rcases hp with ⟨hp1, hp2⟩
+    subst hp1
+    have hp2' : W' ((∑ j, blockEnergy (z.1 j))
+        + (∑ j, blockEnergy (z.2 j)) - blockEnergy (z.1 0)) := h _ hp2
+    rw [show indicator (z.1 0 = z.1 0 ∧ W ((∑ j, blockEnergy (z.1 j))
+        + (∑ j, blockEnergy (z.2 j)) - blockEnergy (z.1 0))) = (1:ℝ) from by
+      simp [indicator, hp2]]
+    rw [show indicator (z.1 0 = z.1 0 ∧ W' ((∑ j, blockEnergy (z.1 j))
+        + (∑ j, blockEnergy (z.2 j)) - blockEnergy (z.1 0))) = (1:ℝ) from by
+      simp [indicator, hp2']]
+  · rw [show indicator (z.1 0 = b ∧ W ((∑ j, blockEnergy (z.1 j))
+      + (∑ j, blockEnergy (z.2 j)) - blockEnergy (z.1 0))) = (0:ℝ) from by
+      simp [indicator, hp], mul_zero, zero_mul]
+    exact mul_nonneg (mul_nonneg hA (indicator_nonnegative _)) (Real.exp_pos _).le
+
+/-- The weighted window moment never exceeds the full moment `mgf₁(ℓ)^1535`. -/
+theorem weightedWindowMass_le_full (b : Block) (W : ℤ → Prop) (ℓ : ℝ) :
+    weightedWindowMass b W ℓ
+      ≤ (∑ x : Block, blockLaw.mass x * Real.exp (ℓ * blockEnergy x))^1535 :=
+  (weightedWindowMass_mono b ℓ (fun _ _ => trivial)).trans
+    (le_of_eq (weightedWindowMass_true b ℓ))
+
 end FT1536.ConvStruct
 
