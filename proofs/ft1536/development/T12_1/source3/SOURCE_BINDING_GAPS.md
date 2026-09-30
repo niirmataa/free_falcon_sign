@@ -1,5 +1,25 @@
 # source3 — żywy rejestr luk
 
+## Current continuation — source callees and Montgomery reduction
+
+CertificateWorkspace's draft now compiles. C99ArrayReference derives the
+initialization trace from natural array execution; FftLeafPrograms/Frames
+bind seven full elementary callee bodies and their write footprints to
+the pinned C. The generic Program parameter is internal: the selected leaf
+callee table is built from parsed source, not supplied as a postcondition.
+The full FFT3/raw-LDL table and actual prefix execution remain open.
+
+KeygenMontgomery.source_reduction_contract derives canonical output and
+the congruence `out*2^31 = a*b (mod p)` from the pinned modp_montymul body,
+canonical input bounds and the usual p0i inverse relation. No unproved
+machine no-overflow hypothesis is added: the wrapped product and exact sum
+bounds are handled explicitly. KeygenNinv31.initialized_montgomery_contract
+now derives the p0i condition from source execution at2147355649, rather
+than assuming it in that composed scalar contract. Fresh batch002 receipt:
+`adc2f490a1e683d812941da4bac54179c4b78c0460ba72549be84fce477acb18`.
+Transform/table invariants and the final comparison-to-polynomial
+bridge remain open, so the source NTRU equation is not yet established.
+
 ## Current obligations after internal batch 001
 
 The whole KEYGEN_SOURCE_TO_FIBER_001 package remains **IN_PROGRESS / NOT_REVIEWED**.

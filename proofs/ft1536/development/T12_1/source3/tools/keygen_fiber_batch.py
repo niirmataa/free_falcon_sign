@@ -16,6 +16,13 @@ MODULES = [
     'Source3.KeygenFiberAssembly', 'Source3.C99CompareObjects', 'Source3.Gate00Scalar',
     'Source3.Gate00Memory', 'Source3.CertificateReturnLifetime', 'Source3.KeygenFiber001Audit',
 ]
+MODULES_002 = [
+    'FftBind.FftPin', 'Source3.C99InitializationTrace', 'Source3.CertificateWorkspace',
+    'Source3.FprPrefixCalls', 'Source3.C99ArrayReference', 'Source3.C99ArrayParser',
+    'Source3.C99ArrayFrame', 'Source3.FftLeafPrograms', 'Source3.FftLeafFrames',
+    'Source3.MontgomeryArithmetic', 'Source3.KeygenModpWord', 'Source3.KeygenMontgomery',
+    'Source3.KeygenNinv31', 'Source3.KeygenFiber002Audit',
+]
 
 
 def sha(path):
@@ -31,15 +38,18 @@ def validate_receipt(job, row):
         assert sha(job / row[stream]) == row[stream+'_sha256'], (row['name'], stream)
 
 
-def record(label):
+def record(label, batch='001'):
+    assert batch in {'001', '002'}
+    modules = MODULES if batch == '001' else MODULES_002
+    report = ROOT / ('notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_'+batch+'.json')
     job = ROOT / '.build/jobs' / label
     receipt_file = job / 'RECEIPTS.json'
     receipts = json.loads(receipt_file.read_text())
     inputs = json.loads((job / 'SOURCE_INPUTS.json').read_text())
-    assert [r['name'] for r in receipts] == [m.replace('.', '_') for m in MODULES]
+    assert [r['name'] for r in receipts] == [m.replace('.', '_') for m in modules]
     sources = {e['module']: e for e in inputs['sources']}
     rows = []
-    for module, row in zip(MODULES, receipts):
+    for module, row in zip(modules, receipts):
         validate_receipt(job, row)
         source = Path(sources[module]['path'])
         artifact = job / 'lib' / (module.replace('.', '/')+'.olean')
@@ -77,13 +87,16 @@ def record(label):
         for dep in re.findall(r'^import\s+(\S+)', source.read_text(), re.M):
             visit(dep)
 
-    for module in MODULES:
+    for module in modules:
         visit(module)
     evidence = []
-    for filename, run, result in [
+    evidence_inputs = [
         ('check_keygen_source_helpers.sage', 'keygen_helpers_002', 'KEYGEN_SOURCE_HELPERS.json'),
         ('check_keygen_callgraph.sage', 'keygen_callgraph_002', 'KEYGEN_SOURCE_CALLGRAPH.json'),
-    ]:
+    ]
+    if batch == '002':
+        evidence_inputs.append(('check_keygen_montgomery.sage', 'keygen_montgomery_checks_001', 'KEYGEN_MONTGOMERY_CHECK.json'))
+    for filename, run, result in evidence_inputs:
         directory = ROOT / '.build/jobs' / run
         receipt = json.loads((directory / 'RECEIPTS.json').read_text())[0]
         validate_receipt(directory, receipt)
@@ -99,7 +112,7 @@ def record(label):
     for name, expected in graph['source_pins'].items():
         assert sha(source_root/name) == expected, name
     result = {
-        'task': 'KEYGEN_SOURCE_TO_FIBER_001', 'status': 'IN_PROGRESS / NOT_REVIEWED',
+        'task': 'KEYGEN_SOURCE_TO_FIBER_001', 'batch': batch, 'status': 'IN_PROGRESS / NOT_REVIEWED',
         'scope': 'Checked internal batch; not a full source KeyGen or full certificate theorem',
         'final_source_theorem_proved': False,
         'modules': rows, 'audited_internal_exports': count, 'dependencies': dependencies,
@@ -120,17 +133,21 @@ def record(label):
             'Final emitted_to_actual_fiber composition and its complete mutation coverage',
         ],
     }
-    with REPORT.open('x') as stream:
+    with report.open('x') as stream:
         json.dump(result, stream, indent=2, sort_keys=True)
         stream.write('\n')
-    print(json.dumps({'receipt': str(REPORT.relative_to(ROOT)), 'sha256': sha(REPORT),
+    print(json.dumps({'receipt': str(report.relative_to(ROOT)), 'sha256': sha(report),
                       'elapsed_s': result['elapsed_s'], 'maxrss_kib': result['maxrss_kib']}))
 
 
 if __name__ == '__main__':
     if sys.argv[1:] == ['modules']:
         print(' '.join(MODULES))
+    elif sys.argv[1:] == ['modules', '002']:
+        print(' '.join(MODULES_002))
     elif len(sys.argv) == 3 and sys.argv[1] == 'record':
         record(sys.argv[2])
+    elif len(sys.argv) == 4 and sys.argv[1] == 'record':
+        record(sys.argv[2], sys.argv[3])
     else:
-        raise SystemExit('usage: keygen_fiber_batch.py modules | record UNIQUE_FRESH_JOB')
+        raise SystemExit('usage: keygen_fiber_batch.py modules [002] | record UNIQUE_FRESH_JOB [001|002]')

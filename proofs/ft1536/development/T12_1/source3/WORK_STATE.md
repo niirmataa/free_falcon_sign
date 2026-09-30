@@ -1,5 +1,58 @@
 # T12.1/source3 — żywy stan
 
+## Resumed by the owner
+
+**ACTIVE / KEYGEN_SOURCE_TO_FIBER_001 IN_PROGRESS / NOT_REVIEWED**.
+The owner explicitly resumed this session. The pause checkpoint is
+`08abdeafaba60d014fe80484d25bf6d90650c124` (first own commit of batch002).
+Resume preflight found no active Lean/Sage job and no source3 working-tree
+changes. Shared main also contains four later commits from the other
+workstream; preserve them and check the outgoing range before any push.
+First step: repair the recorded CertificateWorkspace elaboration failures
+and compile FprPrefixCalls. The historical pause record below is retained.
+
+### Checked continuation after resume
+
+- CertificateWorkspace now compiles: the local pointer/Option elaboration
+  errors are fixed. FprPrefixCalls also compiles with the pinned header
+  bodies and fixed source call strata.
+- C99ArrayReference supplies natural array/control execution and derives
+  primitive memory transitions from executed bodies. C99ArrayParser rejects
+  unsupported syntax and normalizes the M0 LP64 `size_t` typedef explicitly.
+- FftLeafPrograms parses seven complete source bodies: add3, sub3, neg3,
+  adj_fft3, mulselfadj_fft3, mul_autoadj_fft3 and div_autoadj_fft3.
+  FftLeafFrames derives their checked write footprints from the parsed code.
+  These results do not yet cover FFT3 itself, complex macros or raw LDL.
+- Checked jobs: keygen_prefix_workspace_003 (workspace),
+  keygen_array_reference_001 (FprPrefixCalls), keygen_fft_leaf_sources_002
+  (reference), keygen_fft_leaf_sources_004 (parser and leaf programs),
+  keygen_fft_leaf_frames_002 (both frame modules). Subsequent failed steps
+  in those jobs remain recorded and are not reported as successful jobs.
+- KeygenModpWord and KeygenMontgomery now give the source Montgomery
+  residue/range contract, including the low31-bit projection of a wrapped
+  64-bit product. MontgomeryArithmetic is a separate exact-integer proof.
+  Checked jobs: keygen_modp_word_001, keygen_montgomery_arithmetic_002 and
+  keygen_montgomery_source_002. Source modp_ninv31 binding subsequently passed
+  in keygen_ninv31_004. The initialized_montgomery_contract derives the p0i
+  condition from the actual initialization call at p=2147355649. Earlier
+  monolithic simplification attempts failed and are retained; limits were
+  not increased.
+
+Fresh `keygen_fiber_batch2_fresh_001`:14/14 accepted/clean,20 internal export
+audits,67.551s,maxRSS2936928KiB. Receipt
+`notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_002.json`, SHA256
+`adc2f490a1e683d812941da4bac54179c4b78c0460ba72549be84fce477acb18`.
+`keygen_montgomery_checks_001` checked72 public operand pairs per variant
+and detected12 mutations across normal/UBSan builds. Source p0i=1869483007.
+The checks and proofs are scalar contracts, not an NTT or KeyGen theorem.
+Own batch002 consists of pause checkpoint `08abdeaf`, array/source-frame
+commit `8a58c578`, and the following Montgomery/evidence commit. Record its
+hash from Git; check the actual remote range before publishing this batch.
+
+No full source certificate or successful-KeyGen theorem has been exported.
+The next source connections remain complex FFT operations, complete raw LDL,
+the enclosing certificate frame and caller/encoding/NTT composition.
+
 ## Paused at the owner's request — 2026-09-30
 
 **PAUSED_OWNER_REQUEST / KEYGEN_SOURCE_TO_FIBER_001 IN_PROGRESS / NOT_REVIEWED**.
