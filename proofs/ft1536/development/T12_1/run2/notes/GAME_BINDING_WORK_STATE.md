@@ -81,6 +81,32 @@ hex_twist_shift_exp -> box_sum_le_tsum -> a2Tower_mass_bounds -> final QQ
 comparison against the pinned engine literals (engineLo/Hi, aliasCap/missCap).
 Open elsewhere: flat/reject (lane t5), ldl_shape + E_leaf (REFINE/Layer 2).
 
+## 2026-09-30 (evening) — sector assembly + hard working rules
+
+Assembly pieces landed (ConvStruct, 0/0 each): `engineGapHi_le` (per-block
+upper bound of the hi-gap via the tilted full moment), `hiT1_ge` +
+`exp_neg_hiT1_le` (binLo rounding step), `centeredEnergy_region1` (kernel
+twin of L0: `Qc − Q = 18433·δ`, `δ = 18433 − 2a − b` on the sector),
+`hex_twist_shift_exp_delta`, `shiftedBlockQ` + unfolding identity,
+`blockWeight_eq_exp` (exponent bridge via `c0_val`) — in flight at this entry.
+
+### Hard working rules (the third `sorry` incident!)
+
+- **No long inline expressions in theorem statements, EVER.** Twice a
+  hand-composed statement produced garbage (`.elim`-nonsense) and once a
+  full `sorry` draft. The pattern that works: define helpers (`def`) first,
+  then small pointwise identities, then compose the theorem from those.
+  On any garbage/`sorry` in an edit: **restore the clean state immediately**
+  (`git restore`), never patch over it.
+- `git commit --only -- <file>` commits the WHOLE file state — you cannot
+  split one file's changes across commits without hunk-staging; plan commit
+  granularity accordingly.
+- `sorry`/`admit`/`native_decide` remain absolute zero; the pre-compile
+  grep is mandatory and the draft-writing habit is the real risk, not the
+  math.
+- WORK_STATE is updated at every batch (with the review) so the rules above
+  stay visible (owner reminder 2026-09-30).
+
 ## Zasady
 
 - **Recenzja przed commitem** (decyzja właściciela 2026-09-30): każdy

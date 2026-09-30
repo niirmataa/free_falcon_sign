@@ -824,5 +824,30 @@ theorem hex_twist_shift_exp_delta (s κ ℓ a b : ℝ) (hs : s ≠ 0) :
     Real.exp_add, hex_twist_shift_exp s κ a b hs, Real.exp_add]
   ring
 
+/-- Twisted block potential at the shifted coordinate: `Q(a + u, c)` where
+    `a`, `c` are the decoded coordinates and `u = κ/s` (the real LDL shift
+    of `hex_twist_shift`). -/
+noncomputable def shiftedBlockQ (b : Block) (s κ : ℝ) : ℝ :=
+  let a : ℝ := (((blockDecode b).1 : ℤ) : ℝ)
+  let c : ℝ := (((blockDecode b).2 : ℤ) : ℝ)
+  let u : ℝ := κ / s
+  (a + u) * (a + u) + (a + u) * c + c * c
+
+/-- Unfolding identity of the shifted potential (no hypotheses). -/
+theorem shiftedBlockQ_eq (b : Block) (s κ : ℝ) :
+    shiftedBlockQ b s κ
+      = (((((blockDecode b).1 : ℤ) : ℝ) + κ/s) * ((((blockDecode b).1 : ℤ) : ℝ) + κ/s)
+        + (((((blockDecode b).1 : ℤ) : ℝ) + κ/s) * (((blockDecode b).2 : ℤ) : ℝ))
+        + (((blockDecode b).2 : ℤ) : ℝ) * (((blockDecode b).2 : ℤ) : ℝ)) := by
+  rfl
+
+/-- Exponent bridge: `blockWeight b = exp(−c0·Q_b)` (the two exponent forms
+    of the block weight differ only by `c0_val`). -/
+theorem blockWeight_eq_exp (b : Block) :
+    blockWeight b = Real.exp (-((c0:ℝ) * ((blockEnergy b : ℤ) : ℝ))) := by
+  unfold blockWeight
+  rw [c0_val]
+  field_simp
+
 end FT1536.ConvStruct
 
