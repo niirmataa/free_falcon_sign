@@ -10,7 +10,7 @@ import FinalTails
 # ConvStruct — (b) splot strukturalny: faktoryzacja okna na splot 1535 bloków.
 
 Cel tego pliku (L2 planu `PLAN_CONV_STRUCT.md`): sprowadzić `windowMassWin`
-(do którego siedzą `engineGapLo/Hi` w `ConvolutionCert`) do jawnej postaci
+(na którym siedzą `engineGapLo/Hi` w `ConvolutionCert`) do jawnej postaci
 iloczynowej na `blockLaw` — kształtu dla narzędzi MGF
 (`MgfProduct.mgf_product`, `vector_product_sum_family`).
 
@@ -18,7 +18,7 @@ Uwaga konstrukcyjna (poprawka v1): `windowMassWin 0 b W` jest SFIBROWANE
 w `z.1 0 = b`, więc postać splotowa zachowuje ten sam wskaźnik fibry
 i tę samą asocjację `(∏·∏)/L` — dzięki czemu faktoryzacja jest punktowo
 `rfl`. Niezależność od `b` i rozbiór Fubiniego na 1535 = osobne lematy
-pod warstwę analityczną (tilt Cramera).
+pod warstwę analityczną (tilt Craméra).
 -/
 
 set_option maxHeartbeats 4000000
@@ -41,7 +41,7 @@ open FT1536.Run2.RadialWindowSplit
 open FT1536.Run2.RadialBinningSandwich
 
 /-- **Postać splotowa okna (sfibrowana)**: waga = iloczyn 1536 mas
-    `blockLaw` z skasowanym slotem 0 (iloraz — warunkowanie), okno `W`
+    `blockLaw` ze skasowanym slotem 0 (iloraz — warunkowanie), okno `W`
     na energii reszty, wskaźnik fibry `z.1 0 = b` jak w `windowMassWin`. -/
 noncomputable def restWindowMass (b : Block) (W : ℤ → Prop) : ℝ :=
   Finset.sum Finset.univ (fun z : BoxPair =>
@@ -80,7 +80,7 @@ theorem windowMassWin_rest (b : Block) (W : ℤ → Prop) :
   intro z _
   rw [mass_prod_pointwise z, restEnergy_eq z]
 
-/-- **Czernow punktowy (elementwise)**: bez probabilistyki —
+/-- **Chernoff punktowy (elementwise)**: bez probabilistyki —
     dla `ℓ ≥ 0` i `T ≤ f i` zachodzi `1 ≤ exp(ℓ·(f i − T))`, więc
     wskaźnik okna półprostego zamienia się na moment wykładniczy.
     To jest postać pod `vector_product_sum_family` (mgf splotu). -/
@@ -158,7 +158,7 @@ theorem sum_succ_split {D M : Type*} [Fintype D] [AddCommMonoid M] {k : ℕ}
     (∑ j : Fin (k+1), t (v j)) = t (v 0) + ∑ i : Fin k, t (v i.succ) :=
   Fin.sum_univ_succ (fun j => t (v j))
 
-/-- Rozbiór rodziny przez głowicę `v 0` (wzorzec biki z `MgfProduct.sum_prod_fn`). -/
+/-- Rozbiór rodziny przez głowicę `v 0` (wzorzec bijekcji z `MgfProduct.sum_prod_fn`). -/
 theorem sum_head_tail {D : Type*} [Fintype D] (h g : D → ℝ) :
     ∀ n : ℕ, (∑ v : Fin (n+1) → D, h (v 0) * ∏ i : Fin n, g (v i.succ))
       = (∑ d : D, h d) * (∑ d : D, g d)^n := by
@@ -261,9 +261,9 @@ theorem fiber_moment_eq (ℓ : ℝ) (b : Block) :
   rw [sum_head_tail (fun x : Block => indicator (x = b)) g 767,
     sum_prod_fn g 768, hdirac, one_mul, ← pow_add]
 
-/-! ## Bound Czernowa (złożenie gotowych kawałków) -/
+/-! ## Bound Chernoffa (złożenie gotowych kawałków) -/
 
-/-- Ogólny bound Czernowa z implikacją `P i → Q i ∧ T ≤ f i`:
+/-- Ogólny bound Chernoffa z implikacją `P i → Q i ∧ T ≤ f i`:
     wskaźnik `P` zamienia się na moment wykładniczy z dodatkowym
     wskaźnikiem `Q` po prawej (tu: fibra `z.1 0 = b` przepływa wprost
     do `fiber_moment_eq`). -/
@@ -305,7 +305,7 @@ theorem sum_imp_exp_bound {ι : Type} [Fintype ι] (s : Finset ι)
           * ∑ i ∈ s, ((w i * indicator (Q i)) * Real.exp (ℓ * f i)) := by
           rw [← Finset.mul_sum]
 
-/-- **Bound Czernowa dla okna półprostego**:
+/-- **Bound Chernoffa dla okna półprostego**:
     `windowMassWin 0 b (T ≤ ·) ≤ e^{−ℓ·T} · mgf₁(ℓ)^1535` dla `ℓ ≥ 0`. -/
 theorem windowMassWin_half_le (b : Block) (T : ℤ) (ℓ : ℝ) (hℓ : 0 ≤ ℓ) :
     windowMassWin 0 b (fun E => T ≤ E)
@@ -530,7 +530,7 @@ theorem weightedWindowMass_true (b : Block) (ℓ : ℝ) :
   rw [Finset.sum_congr rfl (fun z _ => hz z)]
   exact fiber_moment_eq ℓ b
 
-/-- Rozbój wskaźnika koniunkcji: `1[p ∧ q] + 1[p ∧ ¬q] = 1[p]`. -/
+/-- Rozbiór wskaźnika koniunkcji: `1[p ∧ q] + 1[p ∧ ¬q] = 1[p]`. -/
 theorem indicator_and_split (p q : Prop) :
     indicator (p ∧ q) + indicator (p ∧ ¬ q) = (indicator p : ℝ) := by
   unfold indicator
@@ -538,7 +538,7 @@ theorem indicator_and_split (p q : Prop) :
   · by_cases hq : q <;> simp [hp, hq]
   · simp [hp]
 
-/-- **Rozbój momentu**: pełny ważony moment = okno + dopełnienie
+/-- **Rozbiór momentu**: pełny ważony moment = okno + dopełnienie
     (elementarny krok do `P_λ(I) = 1 − P_λ(I^c)`). -/
 theorem weightedWindowMass_split (b : Block) (W : ℤ → Prop) (ℓ : ℝ) :
     weightedWindowMass b (fun _ => True) ℓ
@@ -557,7 +557,7 @@ theorem weightedWindowMass_split (b : Block) (W : ℤ → Prop) (ℓ : ℝ) :
   rw [hind]
   ring
 
-/-- Lustro Czernowa — dolna półlinia (`f i ≤ T`): dla `ℓ ≥ 0`
+/-- Lustro Chernoffa — dolna półprosta (`f i ≤ T`): dla `ℓ ≥ 0`
     `∑ w·1[P] ≤ e^{ℓ·T}·∑ (w·1[Q])·e^{−ℓ·f}` przy `P i → Q i ∧ f i ≤ T`. -/
 theorem sum_imp_exp_bound_neg {ι : Type} [Fintype ι] (s : Finset ι)
     (w : ι → ℝ) (f : ι → ℝ) (P Q : ι → Prop) (T ℓ : ℝ)
@@ -632,6 +632,22 @@ theorem a2Tower_atom (s u : ℝ) (x y : ℤ) :
   · have hp : Real.pi ≠ 0 := Real.pi_ne_zero
     field_simp [h, hp]
     ring
+
+/-- Przekrzywiony potencjał `Q(x+u, y)` w zapisie punktu wieży. -/
+noncomputable def a2Q (s u : ℝ) (z : FT1536.Run2.TriangularGaussian.Points 2) : ℝ :=
+  let X : ℝ := ((z.2 : ℤ) : ℝ) + u
+  let Y : ℝ := ((z.1.2 : ℤ) : ℝ)
+  Real.exp (-s * (X * X + X * Y + Y * Y))
+
+/-- Identyfikacja `total` wieży A2 z sumą nieoznaczoną `a2Q` (atom wieży przepisany punktowo). -/
+theorem a2Tower_total (s u : ℝ) :
+    FT1536.Run2.TriangularGaussian.total (a2Tower s u)
+      = ∑' z : FT1536.Run2.TriangularGaussian.Points 2, a2Q s u z := by
+  unfold FT1536.Run2.TriangularGaussian.total
+  apply tsum_congr
+  intro z
+  rcases z with ⟨⟨⟨⟩, y⟩, x⟩
+  exact a2Tower_atom s u x y
 
 end FT1536.ConvStruct
 

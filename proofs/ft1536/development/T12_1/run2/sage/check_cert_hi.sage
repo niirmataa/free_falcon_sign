@@ -23,7 +23,7 @@ def center(x): return (x + half) % q - half
 def hiT1(_Q, Qc): return binLo(B - Qc - 1535*15) * 16
 def loT1(_Q, Qc): return binLo(B - Qc) * 16
 
-# ---- 1. Literaly silnika (piny RawRadialEnclosure) ----
+# ---- 1. Literały silnika (piny RawRadialEnclosure) ----
 here = Path('.').resolve()
 engineHi = QQ(130388256047913744896577852830398542397) / QQ(10284403483257537763468557390983440656142099160209874159288064)
 aliasCap = QQ(99099791888604981023) / QQ(10^53)
@@ -46,8 +46,6 @@ print('Qc_max=%d w %s  Tmin=hiT1_min=%d' % (Qc_max, Qc_max_pt, Tmin))
 assert Qc_max == block(9217 - q, -9216) and Qc_max_pt == (9217, -9216)
 
 # ---- 3. mgf1(l) = blockSum(c0-l)/blockSum(c0) — theta, podwójna precyzja ----
-R5 = RealBallField(512); C5 = ComplexBallField(512)
-
 def block_sum(s):
     # suma po całym A2: Theta2(s) = suma kwadratowa Gaussa (granica + ogon)
     # postać z gaussian_box (jacobi_theta) jak w close_radial_interval.
@@ -57,7 +55,7 @@ def block_sum(s):
     g = (th[2] * th3[2] + th[1] * th3[1]).real()
     Lb = ZZ(65536); beta = R5(3) * s / 4; rr = (-beta * (2 * Lb + 1)).exp()
     tail = 4 * (1 + (2 * R5.pi()).sqrt() / (2 * s.sqrt())) * (-beta * Lb^2).exp() / (1 - rr)
-    return g + tail   # gorne domkniecie (diagnostyka)
+    return g + tail   # górne domknięcie (diagnostyka)
 
 Z = block_sum(R5(1) / R5(D))   # = blockNormalizer
 def mgf1(l):

@@ -7,7 +7,7 @@ toru powstają już tutaj, małymi commitami.
 ## Zakres toru
 
 Łańcuch delta dla kluczy prawych: `FinalTails` (hchange/htail) →
-`ConvolutionCert`/`ConvStruct` (struktura splotu + boundy Czernowa +
+`ConvolutionCert`/`ConvStruct` (struktura splotu + boundy Chernoffa +
 `mgf1_eq`) → `FinalDelta` (`all_keys_delta`, forma finalna warunkowa od
 `certLo`/`certHi` i `flat`/`reject`).
 
@@ -18,11 +18,11 @@ toru powstają już tutaj, małymi commitami.
 - L0 (`sage/check_conv_window.sage`, L0_PASS): reprodukcja pinów
   `arb_radial_result.json` bajt w bajt; geometria sektora — `Qc−Q = 18433·δ`,
   wyrodnienie okna lo ⟺ `δ = 1` (≡ straż silnika `lhi ≥ llo`), hiWin
-  zawsze otwarte; momenta θ (G zawiera granicę `2π/(α√3)`); margines
-  `certLo` = dokładnie `aliasCap`, wymagany allowance zawijania ≤ 7.83e-10.
+  zawsze otwarte; momenty θ (G zawiera granicę `2π/(α√3)`); margines
+  `certLo` = dokładnie `aliasCap`, wymagane dopuszczenie zawijania ≤ 7.83e-10.
 - Kluczowe konstrukcje: `windowMassWin_rest` (okno = splot 1535 bloków),
   `fiber_moment_eq` (Dirac w slocie 0 ⇒ moment = `mgf₁^1535`),
-  `sum_imp_exp_bound` + `windowMassWin_half_le` (Czernow z implikacją),
+  `sum_imp_exp_bound` + `windowMassWin_half_le` (Chernoff z implikacją),
   `mgf1_eq` (mgf₁ = `blockSum (c0−ℓ)/blockSum c0`).
 
 ## Lekcje (nie powtarzać błędów)
@@ -48,6 +48,10 @@ toru powstają już tutaj, małymi commitami.
 
 ## Zasady
 
+- **Recenzja przed commitem** (decyzja właściciela 2026-09-30): każdy
+  krok przed commitem przechodzi przegląd subagenta (pisownia, literówki,
+  spójność nazw i nawiasów); poprawki wdrażane przed zapisem.
+
 Zero sorry/admit/native_decide; logi 0/0 (licznik `error(\(|:)`);
 kompilacja seryjna strzeżona (`tools/original/run_lean_guarded.sh`);
 Sage przez `sage <plik>.sage`; asserty w każdym patchu python.
@@ -61,6 +65,6 @@ Sage przez `sage <plik>.sage`; asserty w każdym patchu python.
   ignorowanego `.build/check_lib/` z hash-zgodnej kopii buildu (28/28);
   same źródła zostają w stages. Build-cache, nie treść.
 - REUSE pod certHi potwierdzony: `ShiftedGaussian.complex_poisson_shift`/
-  `shiftedMass` (zwrot linkiowy = shift środka), `A2Theta.powerWeight`/
+  `shiftedMass` (zwrot liniowy = shift środka), `A2Theta.powerWeight`/
   `majorant` (`degree = block x y`), `TriangularGaussian.Tower`,
   `T5ScalarMass.row_exponential_bound`.

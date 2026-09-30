@@ -31,10 +31,10 @@ Cel liczbowy: **dolne** oszacowanie `engineTriangleLo` z precyzją ≈ 0,1%
    (na wzór `Tg_le`/„Gauss na pół" z ThetaBox). Suma jednoblokowa na boxie
    = Θ₂-typowa na CAŁEJ kratce z błędem < 10⁻¹⁵⁰⁰ — margines astronomiczny.
 2. **Szereg jednoblokowy = nasza theta**: `∑_{ℤ²} exp(−block(u,v)/D)` to
-   dokładnie `Theta2Split.Theta2` (`block = i²+ij+j² z Geometry`) — mamy
+   dokładnie `Theta2Split.Theta2` (`block = i²+ij+j²` z `Geometry`) — mamy
    `theta2_split`, `S0_bounds`, `s1_upper/lower`, `tail_le_pow300`.
    Suma NIEokrojona 1535-splotu = **potęga zamknięta**: Θ₂(s)^1535.
-3. **Sigma-algebra splotu = strukturalnie**: N_E = [x^E] S(x)^1535 dla
+3. **Sigma-algebra splotu — ujęcie strukturalne**: N_E = [x^E] S(x)^1535 dla
    S = szereg jednoblokowy (wielomian/„theta-q"); własność definiująca
    splotu idzie przez `Polynomial`/`PowerSeries` + `Finset` (wzorce
    `PackedConvolution.split_polynomial`, `eval_injective` — REUSE).
@@ -43,7 +43,7 @@ Cel liczbowy: **dolne** oszacowanie `engineTriangleLo` z precyzją ≈ 0,1%
 
 ## 2. TWARDY RDZEŃ (uczciwie: tu jest ryzyko)
 
-`certLo` wymaga mas okna PROGUJĄCEGO: `∑_{E ≤ T} N_E e^{−E/D}` — to
+`certLo` wymaga mas okna PROGOWEGO: `∑_{E ≤ T} N_E e^{−E/D}` — to
 **niepełna theta / problem okręgu Gaussa** (sumy po powłokach x²+xy+y² ≤ T).
 Brak formy zamkniętej; to jest jedyna realna matematyka okna.
 
@@ -61,8 +61,8 @@ Dopuszczone ścieżki (w kolejności rosnącej ryzyka):
   `I = [T1,T2]` **kanapka z oboma brzegami**:
   `M(λ)^1535·e^{−λT2}·P_λ(I) ≤ P(S ∈ I) ≤ M(λ)^1535·e^{−λT1}·P_λ(I)`.
   Skrót `e^{−Λ*(T)}` = przypadek brzegowy; przy marginesie ~1e-10
-  czynnik `e^{−λS}` ma pozostać zmienny w oknie (kernel: waŜony moment
-  `∑ w·e^{−λS}·1_I` — okno waŜone, nie pojedynczy czynnik).
+  czynnik `e^{−λS}` ma pozostać zmienny w oknie (kernel: ważony moment
+  `∑ w·e^{−λS}·1_I` — okno ważone, nie pojedynczy czynnik).
   mgf splotu = potęga mgf jednoblokowej (`mgf1_eq` + `rest_moment_factor`
   — gotowe!). Reszta: `P_λ(I) = 1 − P_λ(I^c)` z ogonami pod tiltem
   (Chernoff w przekrzywionej mierze) albo bound lokalny
