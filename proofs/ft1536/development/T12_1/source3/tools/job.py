@@ -25,6 +25,8 @@ REPORT_SHA = '3bc800efe63cc0b829b44d10d19d7d54dfc72678366a7f71c60e27b4b4378f96'
 TOP_CLOSURE_SHA = '1447448efc172809c76c56e2f0cfa6ab73054cf5b47003b57994c447e451e33a'
 TOP_REPORT_SHA = 'bff687ddd52b828223a7ee904fe9e0510cbd20eb60c93fcea48e19daa92ba66f'
 SESSION = 'ses_f12636605ffeL1FZg4teLUwUf5'
+SUFFIX_CLOSURE_SHA = '657b907273f0bda6e9ecfc5bbeae24bf169cd1bc8e6965f8662b6501f97cfd56'
+SUFFIX_REPORT_SHA = '7b36b9c4a01056b577e6b60c329646ba5fdee31266b836a42f6d592cc21ed898'
 
 
 def sha(p):
@@ -80,7 +82,9 @@ def suffix_dependencies():
     old_bindings=OLD/'run/SOURCE3_AUDIT_INPUTS.json'
     assert sha(old_bindings)=='b0cacca9992875074906188b6e09203598e10d6a785a5791b46f8acdb2b8edb8'
     for e in json.loads(old_bindings.read_text())['modules']:
-        if e['module'] not in {'Source3.LeafRange','Source3.LeafScan','Source3.LeafCertificateSuffix','Source3.LeafWordBounds'}:
+        if e['module'] not in {'Source3.LeafRange','Source3.LeafScan','Source3.LeafCertificateSuffix',
+                              'Source3.LeafWordBounds','Source3.RootGate00','Source3.CElementLoop',
+                              'Source3.FprCompare','Source3.CObjectScalar'}:
             continue
         assert sha(OLD/e['source'])==e['source_sha256'] and sha(OLD/e['artifact'])==e['artifact_sha256'],e['module']
         assert sha(OLD/e['receipt'])==e['receipt_sha256'],e['module']
@@ -109,6 +113,17 @@ def main():
             return 2
         closure, config, seeds = pinned()
         seeds.update(suffix_dependencies())
+        suffix_file = ROOT/'notes/run/CERTIFICATE_SUFFIX_001_CLOSURE.json'
+        assert sha(suffix_file)==SUFFIX_CLOSURE_SHA
+        assert sha(ROOT/'notes/run/CERTIFICATE_SUFFIX_001_REPORT.md')==SUFFIX_REPORT_SHA
+        for e in json.loads(suffix_file.read_text())['modules']:
+            seeds[e['module']] = {'source':str(ROOT/e['source']), 'source_sha256':e['source_sha256'],
+                'artifact':str(ROOT/e['artifact']), 'artifact_sha256':e['artifact_sha256'],
+                'origin':'CERTIFICATE_SUFFIX_001 / NOT_REVIEWED'}
+        math_file = ROOT/'notes/run/KEYGEN_SOURCE_TO_FIBER_001_MATH_INPUTS.json'
+        math_sources = {e['module']:e for e in json.loads(math_file.read_text())['modules']}
+        for e in math_sources.values():
+            assert sha(REPO/e['source'])==e['source_sha256'], 'pinned mathematical source changed: '+e['module']
         engine_source = Path(config['parent_frozen'])/'tools/execution.py'
         assert sha(engine_source)==closure['execution_runner_sha256'], 'execution engine changed'
         spec = importlib.util.spec_from_file_location('pinned_execution', engine_source)
@@ -136,11 +151,15 @@ def main():
                 return p
             if module in seeds:
                 return Path(seeds[module]['source'])
+            if module in math_sources:
+                return REPO/math_sources[module]['source']
             raise ValueError('source not pinned: '+module)
 
         selected = set(args) if mode=='lean' else set()
         inputs = {'runner_sha256': sha(Path(__file__)), 'closure004_sha256': CLOSURE_SHA,
             'stable_top001_closure_sha256': TOP_CLOSURE_SHA,
+            'certificate_suffix001_closure_sha256': SUFFIX_CLOSURE_SHA,
+            'keygen_math_inputs_sha256':sha(math_file),
             'execution_sha256': sha(engine_source), 'sources': [], 'reused': [], 'library_roots': config['library_roots']}
         # One complete namespace tree; outputs never point through a symlink.
         for m, e in bindings.items():
