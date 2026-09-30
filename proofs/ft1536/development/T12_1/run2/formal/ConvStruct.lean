@@ -505,5 +505,28 @@ theorem windowSandwich (b : Block) (W : ℤ → Prop) (T1 T2 : ℤ) (ℓ : ℝ)
   · rw [Finset.mul_sum]
     exact Finset.sum_le_sum (fun z _ => hptU z)
 
+/-- Spójność: ważony moment okna pełnego (`W ≡ True`) = `mgf₁(ℓ)^1535`
+    (`fiber_moment_eq`) — scala `windowSandwich` z `mgf1_eq`. -/
+theorem weightedWindowMass_true (b : Block) (ℓ : ℝ) :
+    weightedWindowMass b (fun _ => True) ℓ
+      = (∑ x : Block, blockLaw.mass x * Real.exp (ℓ * blockEnergy x))^1535 := by
+  classical
+  simp only [weightedWindowMass]
+  have hz : ∀ z : BoxPair,
+      (((∏ j, blockLaw.mass (z.1 j)) * (∏ j, blockLaw.mass (z.2 j))
+        / blockLaw.mass (z.1 0)))
+        * indicator (z.1 0 = b ∧ True)
+        * Real.exp (ℓ * ((∑ j, blockEnergy (z.1 j)) + (∑ j, blockEnergy (z.2 j))
+            - blockEnergy (z.1 0)))
+      = (((∏ j, blockLaw.mass (z.1 j)) * (∏ j, blockLaw.mass (z.2 j))
+        / blockLaw.mass (z.1 0)))
+        * indicator (z.1 0 = b)
+        * Real.exp (ℓ * ((∑ j, blockEnergy (z.1 j)) + (∑ j, blockEnergy (z.2 j))
+            - blockEnergy (z.1 0))) := by
+    intro z
+    rw [and_true]
+  rw [Finset.sum_congr rfl (fun z _ => hz z)]
+  exact fiber_moment_eq ℓ b
+
 end FT1536.ConvStruct
 
