@@ -10,15 +10,22 @@ Scope read through D1 refinement commit 1ec29f7b; no edits to run2/t5 or
 the shared end-to-end target. Preflight: no active proof job, empty Git
 index; /home/footfalcon/free_falcon_sign resolves to this NVMe checkout.
 Five foreign unpublished main ancestors and other worktree changes remain.
+The B1 plan/ROADMAP update is local commit `60c47028`; only the owned ROADMAP
+hunk was staged, preserving the foreign audit addition.
 
 Continuation before the adapted prompt added C99ProcedureReference/Parser,
 source complex-macro expansion and FftProcedurePrograms (FFT3, split/muladj,
 five raw-LDL bodies, seven leaf signatures). Checked table job
 `keygen_procedure_programs_004`: clean, 124.591s. Previous failed attempts
 remain in .build/jobs; monolithic signature/macro reductions were factored
-without raising limits. The later memcpy subobject-bound change still
-requires a fresh dependency replay. Full prefix execution, frame, lifetime,
-KeyGen loop and emitted-to-fiber composition remain open.
+without raising limits. The memcpy subobject-bound change and complete
+recursive pointer/call frames now passed fresh batch003:15/15 clean,
+20 audits,309.128s, peak5049120KiB. Receipt SHA256
+`0cd3002b2d9e25b4ba967381a8034d2c2ce3cb26265db9f0a575cad1382fae21`.
+Sage checked nine source regions/three aliases; three kernel footprint
+mutations were rejected. Full prefix execution, lifetime, KeyGen loop and
+emitted-to-fiber composition remain open. The next drafts connect the
+actual root-copy trace and byte Gate00 to suffix-entry Legal.
 
 The previous read-only codec research subagent completed without edits,
 proof jobs, Git or a review verdict. It identified the STATIC low-suffix

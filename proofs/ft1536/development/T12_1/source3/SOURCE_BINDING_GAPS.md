@@ -1,5 +1,23 @@
 # source3 — żywy rejestr luk
 
+## B1 continuation — complete FFT/LDL table and recursive frame
+
+Fresh internal batch003 is clean:15/15 modules,20 audited exports, receipt
+`0cd3002b2d9e25b4ba967381a8034d2c2ce3cb26265db9f0a575cad1382fae21`.
+Full FFT3, six complex macros, split/muladj and five raw-LDL bodies now have
+source-bound procedure syntax. C99ProcedureReference covers their returns
+and control flow. FftProcedureFrames derives their recursive byte footprint
+from the closed checked table, including pointer rebinding and bounded
+memcpy. This replaces the older table/frame gap below.
+
+Still required: concrete prefix allocation/layout, four signed16 conversions,
+initialization and same-call composition with Gate00/suffix/teardown. The
+new source root-copy extraction and prefix-to-suffix modules are drafts under
+checking, not yet a full certificate theorem. Additional B1 attempt targets
+are specified in the live plan; actual source loop/byte/callee adequacy,
+same-attempt round-trip and source modular/public/inverse equations remain
+open. `emitted_to_actual_fiber` has not been implemented or proved.
+
 ## Current continuation — source callees and Montgomery reduction
 
 CertificateWorkspace's draft now compiles. C99ArrayReference derives the

@@ -23,6 +23,15 @@ MODULES_002 = [
     'Source3.MontgomeryArithmetic', 'Source3.KeygenModpWord', 'Source3.KeygenMontgomery',
     'Source3.KeygenNinv31', 'Source3.KeygenFiber002Audit',
 ]
+MODULES_003 = [
+    'FftBind.FftGeometry', 'FftBind.FftSemantics',
+    'Source3.C99ArrayReference', 'Source3.C99ArrayParser', 'Source3.C99ArrayFrame',
+    'Source3.FftLeafPrograms', 'Source3.FftLeafFrames', 'Source3.FpcSourceExpansion',
+    'Source3.C99ProcedureReference', 'Source3.C99ProcedureParser', 'Source3.FftProcedurePrograms',
+    'Source3.C99PointerFootprint', 'Source3.C99ProcedureFootprint', 'Source3.FftProcedureFrames',
+    'Source3.KeygenFiber003Audit',
+]
+BATCH_MODULES = {'001': MODULES, '002': MODULES_002, '003': MODULES_003}
 
 
 def sha(path):
@@ -39,8 +48,8 @@ def validate_receipt(job, row):
 
 
 def record(label, batch='001'):
-    assert batch in {'001', '002'}
-    modules = MODULES if batch == '001' else MODULES_002
+    assert batch in BATCH_MODULES
+    modules = BATCH_MODULES[batch]
     report = ROOT / ('notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_'+batch+'.json')
     job = ROOT / '.build/jobs' / label
     receipt_file = job / 'RECEIPTS.json'
@@ -96,6 +105,8 @@ def record(label, batch='001'):
     ]
     if batch == '002':
         evidence_inputs.append(('check_keygen_montgomery.sage', 'keygen_montgomery_checks_001', 'KEYGEN_MONTGOMERY_CHECK.json'))
+    if batch == '003':
+        evidence_inputs.append(('check_fft_procedure_bindings.sage', 'keygen_fft_procedure_bindings_001', 'FFT_PROCEDURE_BINDINGS.json'))
     for filename, run, result in evidence_inputs:
         directory = ROOT / '.build/jobs' / run
         receipt = json.loads((directory / 'RECEIPTS.json').read_text())[0]
@@ -143,11 +154,11 @@ def record(label, batch='001'):
 if __name__ == '__main__':
     if sys.argv[1:] == ['modules']:
         print(' '.join(MODULES))
-    elif sys.argv[1:] == ['modules', '002']:
-        print(' '.join(MODULES_002))
+    elif len(sys.argv) == 3 and sys.argv[1] == 'modules' and sys.argv[2] in BATCH_MODULES:
+        print(' '.join(BATCH_MODULES[sys.argv[2]]))
     elif len(sys.argv) == 3 and sys.argv[1] == 'record':
         record(sys.argv[2])
     elif len(sys.argv) == 4 and sys.argv[1] == 'record':
         record(sys.argv[2], sys.argv[3])
     else:
-        raise SystemExit('usage: keygen_fiber_batch.py modules [002] | record UNIQUE_FRESH_JOB [001|002]')
+        raise SystemExit('usage: keygen_fiber_batch.py modules [001|002|003] | record UNIQUE_FRESH_JOB [001|002|003]')
