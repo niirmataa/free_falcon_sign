@@ -49,15 +49,19 @@ unless the certificate is built directly under the conditional law).
   constant propagates through conditioning (factor `1/P(success)` unless
   re-derived).
 - **D2 — real PRNG.** The theorem is stated over the actual generator, not
-  an idealized random source. Two admissible routes, chosen after
-  identifying the real PRG from the pinned sources:
-  (a) information-theoretic over a uniform seed with an explicit
-  `Delta_PRG` statistical-distance term (possible when the generator admits
-  a rigorous small-bias/chi-square analysis);
-  (b) explicitly conditional on a standard PRF/PRG assumption, with
-  `Adv_PRG` in the bound. Silent idealization is forbidden: measuring the
-  certificate under the ideal measure while claiming the real generator is
-  the exact failure mode this scope exists to prevent.
+  an idealized random source. **Route decided on the record 2026-09-30
+  (owner approval "trasa B --> TAK"), after S2 identification: route (b).**
+  S2 finding: the generator is the portable Falcon PRNG of `Extra/c/frng.c`
+  (ChaCha20 stream, seeded by a SHAKE-256 instance over `/dev/urandom` or
+  CryptGenRandom plus user seed; SSE2/AES-NI variants share the same law).
+  Statistical route (a) is therefore closed by measurement: a ChaCha20
+  stream has statistical distance ~1 from uniform at real output lengths.
+  Route (b): the bound carries `Adv_PRG(ChaCha20)` explicitly and the
+  certificate constant `e^unconditional` is computed for a uniform bit
+  stream (its natural measure), with A2 at the entropy boundary. Silent
+  idealization remains forbidden: measuring the certificate under the ideal
+  measure while claiming the real generator is the exact failure mode this
+  scope exists to prevent.
 - **D3 — the constant is PROVEN as `e`, not assumed.** The numerical value
   currently estimated around `1.27e-24` (exact provenance to be pinned in
   S3) becomes `e` only through a rigorous upper bound on `second - 1` of the
@@ -99,6 +103,27 @@ unless the certificate is built directly under the conditional law).
 - **B5 — assembly.** Instantiate `ConcreteReduction` with B1-B4, state and
   prove `end_to_end_assembled_theorem_statement` (the declaration the audit
   found missing). Owner: this lane, after B1-B4.
+
+### Cross-lane map and contracts (one ladder, separate execution)
+
+Lanes keep separate working directories and never edit each other's files;
+they meet **only** at this document and at named lemma contracts. Shared
+target, independent execution.
+
+- **source3 (Astra) = rung B1 — the critical path.** Contract B1 must
+  deliver to B4/B5: (i) the key law bound to real execution (restart loop
+  semantics), (ii) `P(success)` and the per-attempt failure structure from
+  the `for(;;)` F/G loop (`falcon-keygen.c:6221`) and the solver loop
+  (`:4015`), (iii) the source NTRU-equation bridge (their open item), (iv)
+  emitted-byte ties. This lane's remaining work already points there.
+- **BINBIND/FftBind = rung B3** (verdict/serialization/Verify-path bytes).
+- **t5 (flat/reject) = B1/B4 support** — rejection/failure-rate statistics
+  feeding `P(success)` and the sampler's law.
+- **SOL 6.1 audit (T03, coordinator) = scope reconciliation.** Its findings
+  are reconciled INTO this document; any contradiction with the target
+  shape (Section 1) is an owner decision recorded here, not a silent edit.
+- **this lane (run2/T12.1) = B4 + B5** (statistical certificate and
+  assembly), plus S1-S3 groundwork.
 
 ## 5. Ordered first steps
 
