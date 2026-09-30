@@ -48,6 +48,25 @@ unless the certificate is built directly under the conditional law).
   the first successful attempt. Consequence: every probability/second-moment
   constant propagates through conditioning (factor `1/P(success)` unless
   re-derived).
+- **D1 refinement (2026-09-30, after owner challenge).** Conditioning is
+  the only truthful model and the canonical EUF-CMA completion of a
+  fallible KeyGen (repeat-until-success); its law is exactly
+  `Law(attempt | accepted)`. Three sharpenings, load-bearing:
+  (i) the conditioning event is **per-attempt certificate acceptance**
+  (the emitted key is the first accepted attempt), NOT call-level success;
+  the attempt cap is availability only and does not shape the emitted-key
+  law — the factor is `1/p_accept`;
+  (ii) A1 is elevated to a THEOREM-HYPOTHESIS rank (like the PRG
+  assumption): acceptance correlates with the secret material, so any
+  observable retry trace is secret-dependent leakage; if retries are
+  observable in a deployment, the conditional law alone is insufficient;
+  (iii) vacuity guard: `e^cond` grows like `1/p_accept`; if `p_accept` is
+  small the theorem may become vacuous — that is an honest FINDING to
+  report, never to be smoothed over.
+  Rejected alternatives, recorded: unconditional law with an explicit
+  bottom key (non-standard, weaker); unconditional sampler law ignoring
+  conditioning (FALSE security — the adversary never sees rejected
+  material).
 - **D2 — real PRNG.** The theorem is stated over the actual generator, not
   an idealized random source. **Route decided on the record 2026-09-30
   (owner approval "trasa B --> TAK"), after S2 identification: route (b).**
@@ -71,8 +90,11 @@ unless the certificate is built directly under the conditional law).
 ## 3. Explicit assumptions ledger (assumed, not proven; each needs a home)
 
 - **A1 — no timing/attempt-count leakage from KeyGen.** Keys are generated
-  offline; the adversary does not observe the number of restarts. (If this
-  is ever relaxed, the restart count becomes leakage and D1 needs redoing.)
+  offline; the adversary does not observe the number of restarts. **Rank:
+  theorem hypothesis on par with the PRG assumption** (D1 refinement (ii)):
+  certificate acceptance correlates with the secret material, so any
+  observable retry trace is secret-dependent leakage. (If this is ever
+  relaxed, the restart count becomes leakage and D1 needs redoing.)
 - **A2 — seed uniformity.** The seed is uniform and independent of the
   adversary (hardware entropy source idealized at the seed boundary only).
 - **A3 — `verdict` = `Relation.Verify`.** The formal verdict function
@@ -157,8 +179,11 @@ carry foreign active changes and are not touched from this lane).
 
 ## 5. Ordered first steps
 
-- **S1 — extract `P(success)` of the C KeyGen restart loop** from the
-  pinned sources (and its per-attempt failure structure). Feeds D1
+- **S1 — extract `p_accept`** (the per-attempt acceptance of the mandatory
+  certificate — the D1-refined conditioning event) and the call-level
+  availability `1-(1-p_accept)^cap` from the pinned sources (the `for(;;)`
+  F/G loop `falcon-keygen.c:6221`, solver loop `:4015`, and the built-in
+  FG_PROBE acceptance machinery as the measurement hint). Feeds D1
   accounting and B4's constant propagation.
 - **S2 — identify the real PRG** (algorithm, seed width, consumed
   bit-length per key/signature) and decide D2 route (a)/(b) on the record.
