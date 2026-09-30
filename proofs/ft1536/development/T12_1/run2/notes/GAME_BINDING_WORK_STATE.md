@@ -51,3 +51,16 @@ toru powstają już tutaj, małymi commitami.
 Zero sorry/admit/native_decide; logi 0/0 (licznik `error(\(|:)`);
 kompilacja seryjna strzeżona (`tools/original/run_lean_guarded.sh`);
 Sage przez `sage <plik>.sage`; asserty w każdym patchu python.
+
+## Walidacja nowego workspace (2026-09-30)
+
+- Pełny build przeszedł: closure 27 modułów `Run2.*` (przystosowany
+  `build_run2_closure.py`) + 13/13 modułów toru czysto (0/0).
+- Lekcja: `FT1536.*` to zależności archiwalne (67 plików = referencje do
+  stages, świadomie niekopiowane) — ich **oleany** przywraca się do
+  ignorowanego `.build/check_lib/` z hash-zgodnej kopii buildu (28/28);
+  same źródła zostają w stages. Build-cache, nie treść.
+- REUSE pod certHi potwierdzony: `ShiftedGaussian.complex_poisson_shift`/
+  `shiftedMass` (zwrot linkiowy = shift środka), `A2Theta.powerWeight`/
+  `majorant` (`degree = block x y`), `TriangularGaussian.Tower`,
+  `T5ScalarMass.row_exponential_bound`.
