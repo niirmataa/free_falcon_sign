@@ -399,7 +399,7 @@ theorem sandwich_pointwise (T1 T2 S : ℝ) (ℓ : ℝ) (hℓ : 0 ≤ ℓ)
     exact he
 
 /-- **Dwustronna kanapka okna** (dokładna postać przekrzywienia — waga
-    `e^{ℓ·S}` zmienna, bez skrótu `e^{−Λ*}`): dla `ℓ ≥ 0` i okna w `[T1,T2]`:
+    `e^{ℓ·S}` zmienna, bez skrótu `e^{−Λ*(T)}`): dla `ℓ ≥ 0` i okna w `[T1,T2]`:
     `e^{−ℓ·T2}·weightedWindowMass ≤ windowMassWin ≤ e^{−ℓ·T1}·weightedWindowMass`. -/
 theorem windowSandwich (b : Block) (W : ℤ → Prop) (T1 T2 : ℤ) (ℓ : ℝ)
     (hℓ : 0 ≤ ℓ)
@@ -975,6 +975,82 @@ theorem shiftedQtsum_eq_tower (s u : ℝ) :
       = FT1536.Run2.TriangularGaussian.total (a2Tower s u) := by
   rw [a2Tower_total, ← a2Equiv.tsum_eq (a2Q s u)]
   exact tsum_congr (fun p => rfl)
+
+/-- Summability of the shifted Boltzmann factor (via `tower_summable` at
+    `rowRatio` and the `a2Equiv` bridge). -/
+theorem shiftedQExp_summable (s u : ℝ)
+    (hs : 0 < s) (hmax : s / Real.pi ≤ FT1536.Run2.T5ScalarMass.maxCoefficient) :
+    Summable (shiftedQExp s u) := by
+  have hcr : FT1536.Run2.T5ScalarMass.CoefficientRange (a2Tower s u) := by
+    have h3 : (0:ℝ) < 3*s/(4*Real.pi) := by positivity
+    have h4 : (3*s/(4*Real.pi) : ℝ) ≤ s/Real.pi := by
+      have hp : 0 < Real.pi := Real.pi_pos
+      rw [div_le_div_iff₀ (by positivity : (0:ℝ) < 4*Real.pi) hp]
+      nlinarith
+    refine ⟨⟨trivial, h3, h4.trans hmax⟩, by positivity, hmax⟩
+  have hr : 0 < FT1536.Run2.T5ScalarMass.rowRatio :=
+    (FT1536.Run2.T5ScalarMass.dimension_margins).1
+  have hrl : FT1536.Run2.T5ScalarMass.rowRatio < 1 :=
+    (FT1536.Run2.T5ScalarMass.dimension_margins).2.1
+  have hs2 := FT1536.Run2.TriangularGaussian.tower_summable (a2Tower s u)
+    FT1536.Run2.T5ScalarMass.rowRatio hr hrl
+    (FT1536.Run2.T5ScalarMass.local_exponents (a2Tower s u) hcr)
+  have heq : (FT1536.Run2.TriangularGaussian.atom (a2Tower s u) ∘ a2Equiv)
+      = shiftedQExp s u := by
+    funext p
+    show FT1536.Run2.TriangularGaussian.atom (a2Tower s u) (a2Equiv p)
+      = shiftedQExp s u p
+    exact (a2Tower_atom s u p.1 p.2).trans rfl
+  rw [← heq]
+  exact hs2.comp_injective a2Equiv.injective
+
+/-- The twisted sector mass is at most the twist constant times the full
+    unordered shifted sum (indicator dropped, box folded into the lattice
+    by `box_sum_le_tsum`). -/
+theorem region1TwistMass_le_shiftedQtsum (ℓ : ℝ) (hs : (c0:ℝ) - ℓ ≠ 0)
+    (hspos : 0 < (c0:ℝ) - ℓ)
+    (hmax : (c0:ℝ) - ℓ ≤ FT1536.Run2.T5ScalarMass.maxCoefficient * Real.pi) :
+    region1TwistMass ℓ
+      ≤ (Real.exp (ℓ*18433^2 + (ℓ*18433)*(ℓ*18433)/((c0:ℝ) - ℓ))
+          / blockNormalizer)
+          * ∑' p : ℤ × ℤ,
+              shiftedQExp ((c0:ℝ) - ℓ) ((ℓ*18433)/((c0:ℝ) - ℓ)) p := by
+  rw [region1TwistMass_eq_shifted ℓ hs]
+  have hform : ∀ b : Block,
+      Real.exp (-((c0:ℝ) - ℓ) * shiftedBlockQ b ((c0:ℝ) - ℓ) (ℓ*18433))
+        = shiftedQExp ((c0:ℝ) - ℓ) ((ℓ*18433)/((c0:ℝ) - ℓ)) (blockDecode b) :=
+    fun b => rfl
+  have hind : ∀ b : Block,
+      indicator (region1 b)
+          * shiftedQExp ((c0:ℝ) - ℓ) ((ℓ*18433)/((c0:ℝ) - ℓ)) (blockDecode b)
+        ≤ shiftedQExp ((c0:ℝ) - ℓ) ((ℓ*18433)/((c0:ℝ) - ℓ)) (blockDecode b) := by
+    intro b
+    by_cases hreg : region1 b
+    · simp [indicator, hreg]
+    · simp [indicator, hreg]
+      exact (Real.exp_pos _).le
+  have hall : (∑ b : Block, indicator (region1 b)
+        * Real.exp (-((c0:ℝ) - ℓ) * shiftedBlockQ b ((c0:ℝ) - ℓ) (ℓ*18433)))
+      ≤ ∑ b : Block,
+          shiftedQExp ((c0:ℝ) - ℓ) ((ℓ*18433)/((c0:ℝ) - ℓ)) (blockDecode b) := by
+    apply Finset.sum_le_sum
+    intro b _
+    rw [hform b]
+    exact hind b
+  have hmax' : ((c0:ℝ) - ℓ) / Real.pi
+      ≤ FT1536.Run2.T5ScalarMass.maxCoefficient := by
+    rw [div_le_iff₀ Real.pi_pos]
+    exact hmax
+  have hbox : (∑ b : Block,
+        shiftedQExp ((c0:ℝ) - ℓ) ((ℓ*18433)/((c0:ℝ) - ℓ)) (blockDecode b))
+      ≤ ∑' p : ℤ × ℤ,
+          shiftedQExp ((c0:ℝ) - ℓ) ((ℓ*18433)/((c0:ℝ) - ℓ)) p :=
+    box_sum_le_tsum (fun p => (Real.exp_pos _).le)
+      (shiftedQExp_summable _ _ hspos hmax')
+  have hk : 0 ≤ Real.exp (ℓ*18433^2 + (ℓ*18433)*(ℓ*18433)/((c0:ℝ) - ℓ))
+      / blockNormalizer :=
+    div_nonneg (Real.exp_pos _).le blockNormalizer_pos.le
+  exact mul_le_mul_of_nonneg_left (le_trans hall hbox) hk
 
 end FT1536.ConvStruct
 

@@ -106,6 +106,15 @@ twin of L0: `Qc − Q = 18433·δ`, `δ = 18433 − 2a − c` on the sector),
 - `neg_mul` in this Mathlib runs `-a·b = −(a·b)` (product-of-negation on the
   LEFT) — to push `−(a·b)` into `(-a)·b` you need `rw [← neg_mul]`. Check
   lemma directions from the error log, never from memory (2026-09-30, B2).
+- `rw` rejects equations whose sides inhabit only DEFINITIONALLY equal
+  types (`Points 2` vs `(Unit × ℤ) × ℤ`) — its type-correctness check
+  fails on the substituted target. Bridge with `Eq.trans` + `exact … rfl`
+  (defeq unification) instead of rewriting (2026-09-30, tower bridge).
+- After `funext` the goal may stay in un-beta'd `(f ∘ e) p` form — put a
+  `show` with the beta form before any `rw`. Long inline terms inside
+  argument lists are parenthesis traps: extract every sub-obligation as its
+  own `have` (defs-first), and pass implicits by unification from the
+  statement, not by giant named arguments.
 - `sorry`/`admit`/`native_decide` remain absolute zero; the pre-compile
   grep is mandatory and the draft-writing habit is the real risk, not the
   math.
