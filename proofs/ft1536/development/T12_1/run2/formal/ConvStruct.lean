@@ -1052,5 +1052,39 @@ theorem region1TwistMass_le_shiftedQtsum (ℓ : ℝ) (hs : (c0:ℝ) - ℓ ≠ 0)
     div_nonneg (Real.exp_pos _).le blockNormalizer_pos.le
   exact mul_le_mul_of_nonneg_left (le_trans hall hbox) hk
 
+/-- Tower sandwich of the twisted sector mass (assembly): the sector sum is
+    at most the twist constant times the A2 scale, with the tower-mass error
+    `(1 + 2r/(1-r))²` at `r = rowRatio = 2⁻⁴⁸`. -/
+theorem region1TwistMass_le_towerBound (ℓ : ℝ) (hs : (c0:ℝ) - ℓ ≠ 0)
+    (hspos : 0 < (c0:ℝ) - ℓ)
+    (hmax : (c0:ℝ) - ℓ ≤ FT1536.Run2.T5ScalarMass.maxCoefficient * Real.pi) :
+    region1TwistMass ℓ
+      ≤ (Real.exp (ℓ*18433^2 + (ℓ*18433)*(ℓ*18433)/((c0:ℝ) - ℓ))
+          / blockNormalizer)
+          * ((1 + 2*FT1536.Run2.T5ScalarMass.rowRatio
+                / (1-FT1536.Run2.T5ScalarMass.rowRatio))^2
+              * FT1536.Run2.TriangularGaussian.scale
+                  (a2Tower ((c0:ℝ) - ℓ) ((ℓ*18433)/((c0:ℝ) - ℓ)))) := by
+  have hstep := region1TwistMass_le_shiftedQtsum ℓ hs hspos hmax
+  have hmax' : ((c0:ℝ) - ℓ) / Real.pi
+      ≤ FT1536.Run2.T5ScalarMass.maxCoefficient := by
+    rw [div_le_iff₀ Real.pi_pos]
+    exact hmax
+  have hbounds := a2Tower_mass_bounds ((c0:ℝ) - ℓ) ((ℓ*18433)/((c0:ℝ) - ℓ))
+    hspos hmax'
+  have hq := shiftedQtsum_eq_tower ((c0:ℝ) - ℓ) ((ℓ*18433)/((c0:ℝ) - ℓ))
+  have hchain : (∑' p : ℤ × ℤ,
+        shiftedQExp ((c0:ℝ) - ℓ) ((ℓ*18433)/((c0:ℝ) - ℓ)) p)
+      ≤ (1 + 2*FT1536.Run2.T5ScalarMass.rowRatio
+            / (1-FT1536.Run2.T5ScalarMass.rowRatio))^2
+          * FT1536.Run2.TriangularGaussian.scale
+              (a2Tower ((c0:ℝ) - ℓ) ((ℓ*18433)/((c0:ℝ) - ℓ))) := by
+    rw [hq]
+    exact hbounds.2
+  have hk : 0 ≤ Real.exp (ℓ*18433^2 + (ℓ*18433)*(ℓ*18433)/((c0:ℝ) - ℓ))
+      / blockNormalizer :=
+    div_nonneg (Real.exp_pos _).le blockNormalizer_pos.le
+  exact le_trans hstep (mul_le_mul_of_nonneg_left hchain hk)
+
 end FT1536.ConvStruct
 
