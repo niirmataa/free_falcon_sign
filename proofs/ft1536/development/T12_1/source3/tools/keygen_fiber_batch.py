@@ -38,7 +38,16 @@ MODULES_004 = [
     'Source3.CertificateFrameEntry', 'Source3.CertificatePrefixFrame',
     'Source3.C99LoopTrace', 'Source3.KeygenFiber004Audit',
 ]
-BATCH_MODULES = {'001': MODULES, '002': MODULES_002, '003': MODULES_003, '004': MODULES_004}
+MODULES_005 = [
+    'Source3.C99ProcedureScalars', 'Source3.CertificatePrologue', 'Source3.C99AliasSequence',
+    'Source3.CertificateAliases', 'Source3.C99SequenceInversion', 'Source3.CertificateDeclarations',
+    'Source3.C99NarrowAnnotation', 'Source3.SmallintsProgram', 'Source3.C99CountedWords',
+    'Source3.SmallintsIteration', 'Source3.SmallintsCounter', 'Source3.SmallintsLoopBridge',
+    'Source3.C99ExpressionEnvironment', 'Source3.C99DeclarationCells', 'Source3.MknReference',
+    'Source3.SmallintsPrelude', 'Source3.SmallintsInvocation', 'Source3.CertificateConversions',
+    'Source3.KeygenFiber005Audit',
+]
+BATCH_MODULES = {'001': MODULES, '002': MODULES_002, '003': MODULES_003, '004': MODULES_004, '005': MODULES_005}
 
 
 def sha(path):
@@ -80,7 +89,7 @@ def record(label, batch='001'):
     for group in groups:
         assert {a.strip() for a in group.split(',') if a.strip()} <= {'propext', 'Classical.choice', 'Quot.sound'}
     count = len(groups) + audit.count('does not depend on any axioms')
-    assert count == (24 if batch == '004' else 20), count
+    assert count == {'001': 20, '002': 20, '003': 20, '004': 24, '005': 32}[batch], count
     reused = {e['module']: e for e in inputs['reused']}
     visited, dependencies, boundary = set(), [], set()
 
@@ -112,7 +121,7 @@ def record(label, batch='001'):
     ]
     if batch == '002':
         evidence_inputs.append(('check_keygen_montgomery.sage', 'keygen_montgomery_checks_001', 'KEYGEN_MONTGOMERY_CHECK.json'))
-    if batch in {'003', '004'}:
+    if batch in {'003', '004', '005'}:
         evidence_inputs.append(('check_fft_procedure_bindings.sage', 'keygen_fft_procedure_bindings_001', 'FFT_PROCEDURE_BINDINGS.json'))
     for filename, run, result in evidence_inputs:
         directory = ROOT / '.build/jobs' / run
@@ -168,4 +177,4 @@ if __name__ == '__main__':
     elif len(sys.argv) == 4 and sys.argv[1] == 'record':
         record(sys.argv[2], sys.argv[3])
     else:
-        raise SystemExit('usage: keygen_fiber_batch.py modules [001|002|003|004] | record UNIQUE_FRESH_JOB [001|002|003|004]')
+        raise SystemExit('usage: keygen_fiber_batch.py modules [001|002|003|004|005] | record UNIQUE_FRESH_JOB [001|002|003|004|005]')

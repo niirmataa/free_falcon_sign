@@ -1,5 +1,41 @@
 # T12.1/source3 — żywy stan
 
+## Active source entry and signed16 conversion work — 2026-10-01
+
+The source prologue7695--7702, inner declarations7705--7708 and all eight
+aliases7709--7716 now have kernel source bindings and execution/result
+theorems. The current prologue/declaration consumer uses an explicit scalar
+entry environment; general call-entry composition is still being completed.
+
+C99ArrayReference now has a typed16-bit load with the C integer promotion.
+All26 cached descendants were rebuilt clean in
+`keygen_narrow_array_closure_001`:323.425s, maxRSS4997112KiB, RECEIPTS SHA256
+`1a2fad6fbb559d23c930ad91c3667c8e760076e6336f2e07184adad288bba8fc`;
+SOURCE_INPUTS SHA256
+`1b8476cf6a193dee59bc6161e389d37ac9e89e383c4eec15857e543630ae9410`.
+Earlier batch receipts retain their original source/artifact pins.
+
+SmallintsProgram parses the actual conversion body with signed16 reads.
+SmallintsIteration/Counter/LoopBridge and SmallintsPrelude now derive the
+1536 executed stores and initialization from that body's execution; the
+counter and n are derived from declarations/MKN/initial assignment. This
+removes the former local-loop premise at this callee boundary. MknReference
+uses read-set transport, so unrelated global/local bindings are retained.
+Checked entry job: `keygen_smallints_entry_009` (all3 clean). Closed caller
+binding and the four-call certificate sequence are the current next steps.
+
+The final emitted-KeyGen theorem remains open. There is no final REPORT,
+CLOSURE or REVIEW_TASK for the whole package yet, and no new review or push.
+
+Fresh batch005 subsequently passed19/19 with32 audits,38.071s,
+maxRSS2873544KiB. Receipt SHA256
+`225b5b435dc2606431fd5ecf2ed61a68b4cde6686958cc03a3c9cf20f92f613d`.
+SmallintsInvocation and CertificateConversions now bind all four actual
+callee bodies/caller frames and compose their initialization. The general
+entry prologue/declaration modules also passed individual checks; their
+whole-function composition and metadata after the Gram/LDL prefix remain
+the next steps. The fixed-entry source fragment checkpoint is `373ab0a3`.
+
 ## Owner continuation and waiting rule — 2026-10-01
 
 **ACTIVE / IN_PROGRESS / NOT_REVIEWED.** The owner explicitly directed

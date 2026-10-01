@@ -1,5 +1,6 @@
 import Source3.FprPrefixCalls
 import Source3.C99InitializationTrace
+import Source3.C99NarrowReads
 
 /- Natural semantics for the array/control fragment used by the certificate
    prefix. Calls execute bodies from the supplied source program table; they
@@ -29,6 +30,7 @@ inductive Pointer (s : State) : Name → CLogic.Expr → ArrayPointer → Prop w
 inductive Expr where
   | scalar (e : CLogic.Expr)
   | load (array : Name) (index : CLogic.Expr)
+  | load16 (isSigned : Bool) (array : Name) (index : CLogic.Expr)
   | call1 (name : Name) (a : Expr)
   | call2 (name : Name) (a b : Expr)
   deriving DecidableEq, Repr
@@ -37,6 +39,10 @@ inductive Eval (s : State) : Expr → C99IntegerReference.Value → Prop where
   | scalar (e : CLogic.Expr) (v : C99IntegerReference.Value) (h : scalar s e v) : Eval s (.scalar e) v
   | load (name : Name) (index : CLogic.Expr) (p : ArrayPointer) (w : BitVec 64)
       (address : Pointer s name index p) (read : Load64 s.heap p w) : Eval s (.load name index) (.uint64 w)
+  | load16 (isSigned : Bool) (name : Name) (index : CLogic.Expr) (p : ArrayPointer) (w : BitVec 16)
+      (address : Pointer s name index p) (read : C99NarrowReads.Load16 s.heap p w) :
+      Eval s (.load16 isSigned name index)
+        (if isSigned then C99NarrowReads.signedPromotion w else C99NarrowReads.unsignedPromotion w)
   | call1 (name : Name) (a : Expr) (x z : C99IntegerReference.Value)
       (arg : Eval s a x) (body : FprPrefixCalls.calls name [x] z) : Eval s (.call1 name a) z
   | call2 (name : Name) (a b : Expr) (x y z : C99IntegerReference.Value)

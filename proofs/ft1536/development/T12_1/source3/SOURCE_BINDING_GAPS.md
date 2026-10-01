@@ -1,5 +1,17 @@
 # source3 — żywy rejestr luk
 
+## Source prologue and complete smallint body
+
+CertificatePrologue/Declarations/Aliases now bind and execute the actual
+source entry fragments. The fixed scalar-environment entry still needs the
+general call binding (including unchanged globals) in the enclosing function.
+SmallintsPrelude.output_initialized derives output initialization from the
+complete parsed narrow-typed conversion body, profile arguments and its
+actual pointer bindings. Its n/counter/Loop facts are conclusions of source
+execution. It does not assume the old SmallintsConversion.Loop relation.
+The complete source-entry/four-call/FFT/Gate00/suffix/teardown composition is
+still required; no full-certificate or successful-KeyGen result is asserted.
+
 ## Checked continuation after the waiting checkpoint
 
 Fresh batch004:11/11 clean,24 audits, receipt
