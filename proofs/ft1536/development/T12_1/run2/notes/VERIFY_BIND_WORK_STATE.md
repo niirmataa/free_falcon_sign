@@ -202,7 +202,63 @@ word primitives, `FT1536.Relation`/`FT1536.Geometry` from committed stages.
 4. `falcon_is_short`'s binary branch (q = 12289) is out of the pinned
    profile; only the ternary logn = 10 path is modeled.
 
-### Lekcje (kolejne partie niech korzystają)
+### 2026-10-01 — batch B3/X: the hashTo ROM interface (`formal/VerifyBind/HashTo.lean`)
+
+Closes the open interface flagged by B3-1. All new modules 0 err / 0 warn,
+forbidden-tactic grep before every compile, standard axioms only (Audit
+extended to 24 declarations).
+
+- **Pinned C-side shape** (extraction with exact lines, module doc):
+  `falcon_vrfy_start` (`falcon-vrfy.c:1357-1364`, SHAKE-256 capacity 512,
+  nonce injected FIRST) → `falcon_vrfy_update` (`:1368-1371`) → absorbed
+  stream = `r ++ message` → `shake_flip` + `falcon_hash_to_point`
+  (`:1514-1515`; `falcon-enc.c:563-593`): `n = 3 << (logn-1)` = 1536
+  coefficients, 16-bit BE words (`:587`), acceptance `w < lim` (`:589`),
+  residue `w % q` (`:590`), `lim = 65536 − 65536 % q` (`:581`).
+  Producer side is the identical chain (`falcon-sign.c:3285, 3293-3305,
+  3322-3323`) — challenge map shared by both sides.
+- **Kernel pins**: `lim_eq : lim = 55299`, `lim_three_q : lim = 3·18433`,
+  `challengeCount_eq : 1536 = 3·2^9` (all `rfl`).
+- **Rejection layer semantics** (SHAPE modeled, SHAKE stays a parameter):
+  `scanValue`/`hashToPointOf`/`challengeOf` over a finite word source with
+  `scanValue_sound`, `scanValue_length`, `hashToPointOf_length`,
+  `hashToPointOf_sound`, `challengeOf_length`, `challengeOf_sound`
+  (output residues `< 18433`, exactly 1536 values), totality
+  `challengeOf_none_or_some`; `toRq`/`challengeRqOf` = the B5 plug point.
+- **Interface**: `HashToSpec` (deterministic map `challenge : Bytes → Rq`,
+  `rLen` with `rLen_eq : rLen = 40` per `falcon.h:234`/`falcon-sign.c:3285`).
+- **ROM assumption, single name**: `UniformChallenge (L : Law Rq) : Prop :=
+  L = Law.uniform` — SHA-3/SHAKE-256 as a random oracle at this boundary,
+  A-side (assumed, NOT proven; joins the assumptions ledger on par with A2).
+  Supporting shape: `uniform_challenge_mass`, `uniform_challenge_eq`.
+- **Composition** (theorem re-run at the C-side shape; general form kept in
+  Verdict.lean): `verdictOf` with `streamOf r message`, then
+  `verdictOf_valid_iff`, `verdictOf_valid_decodes`, `verdictOf_key_none`,
+  `verdictOf_key_some_sig_none`, `verdictOf_total`,
+  `verdictOf_decoded_or_rejected`. Key decoding stays OUT (rung B1).
+- **Sign-side extension** (owner's closing item): extraction + coverage map
+  of the producer path in `notes/VERIFY_BIND_SIGN_SIDE_NOTES.md`, including
+  the shared-`falcon_is_short` gate claim and an explicit list of everything
+  NOT covered (do_sign/sampler = B4, PRNG = D2 route (b), key codec = B1,
+  buffer-failure path, attempt cap).
+
+### What B5 must instantiate (explicit)
+
+1. A concrete `HashToSpec.challenge` realization: `challengeRqOf` over the
+   SHAKE-256 (capacity 512) word stream of `streamOf r message` — the
+   stream is the A-side oracle.
+2. `UniformChallenge` for the induced challenge law (the ROM assumption —
+   to be recorded in the scope's assumptions ledger).
+3. The B1 key decoder as `keyDecoder` (unchanged contract).
+
+### Lesson (batch B3/X)
+
+- `subst` domyka cele `rfl`-owe tylko czasem — po `subst` planować jawne
+  `rfl`, a przy „no goals" je usuwać (jedna taka poprawka w tej partii).
+- Reszta wzorców z B3-1 (simp z pełnym zestawem, `show`-mosty defeq,
+  `cases ... with` dla list) zadziałała bez niespodzianek.
+
+### Lekcje B3-1 (kolejne partie niech korzystają)
 
 - `rcases e with - | a b` nie związuje drugiej nazwy (auto `tail✝`) — dla
   list używać `cases hb : e with | nil | cons a bs` (nazwy działają).
