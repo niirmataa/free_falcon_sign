@@ -23,8 +23,9 @@ theorem second_nonneg (j p : Law α) :
   exact sum_nonneg (fun x _ => div_nonneg (sq_nonneg _) (p.nonneg x))
 
 /-- Pointwise multiplicative bound => `second j p <= (1+d)^2`.
-    Workhorse for chi-square certificates: a law within `(1+-d)` of the
-    honest law pointwise has `e <= (1+d)^2 - 1`. -/
+    Workhorse for chi-square certificates: a law within a one-sided factor `1+d`
+    of the honest law pointwise (`j x <= (1+d) * p x`) has
+    `e <= (1+d)^2 - 1`. -/
 theorem second_le_of_pointwise (j p : Law α) (d : ℝ)
     (hd : 0 ≤ d) (hpt : ∀ x, j.mass x ≤ (1 + d) * p.mass x) :
     Divergence.second j p ≤ (1 + d) ^ 2 := by

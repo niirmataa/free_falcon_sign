@@ -10,7 +10,7 @@ The byte-level verification outcome of the pinned FT1536 profile
 `FT1536.Relation.Verify` of the decoded objects (A3 becomes a theorem).
 
 Modeling boundary (recorded in `notes/VERIFY_BIND_WORK_STATE.md`):
-key-material decoding is rung B1 (HERS) and enters as the `keyDecoder`
+key-material decoding is rung B1 (Astra's, source3) and enters as the `keyDecoder`
 parameter; the hash-to-point map `falcon_hash_to_point` over the injected
 stream enters as `hashTo`; the C int16 casts are `wrap16` (A5).
 -/
@@ -249,8 +249,9 @@ theorem malformed_sig (keyDecoder : Bytes → Option FT1536.Relation.Rq)
   · exact absurd hk2 hk
   · exact verdict_key_some_sig_none keyDecoder hashTo pkBytes msg sigBytes h hk2 hd
 
-/-- Verdict totality: every byte input triple falls in exactly one of the
-modeled outcomes — there is no third world. -/
+/-- Verdict totality: every byte input triple falls in one of the
+modeled outcomes (exclusive: `Outcome` has four constructors) — there is no
+third world. -/
 theorem verdict_total (keyDecoder : Bytes → Option FT1536.Relation.Rq)
     (hashTo : Bytes → FT1536.Relation.Rq) (pkBytes msg sigBytes : Bytes) :
     verdict keyDecoder hashTo pkBytes msg sigBytes = Outcome.valid ∨
@@ -298,8 +299,9 @@ theorem decoded_or_rejected (keyDecoder : Bytes → Option FT1536.Relation.Rq)
 /-- Norm invariance under full negation of one vector. The C verifier
 computes `s1 := h·s2 - c` (`falcon-vrfy.c:1419`) while `Relation.extract`
 keeps `c - h·s2`; the two differ by full negation of `s1`, and this lemma
-records that the compared norms (`falcon_is_short` vs `Geometry.Q`)
-coincide, so the sign convention is not a silent assumption. -/
+records the role split `Q` (the `falcon_is_short` form) vs `Geometry.Q0`
+(even under negation): the compared norms coincide, so the sign
+convention is not a silent assumption. -/
 theorem q0_neg (v : FT1536.Geometry.Vec) :
     FT1536.Geometry.Q0 (fun i => (-(v i).1, -(v i).2)) = FT1536.Geometry.Q0 v := by
   simp only [FT1536.Geometry.Q0]

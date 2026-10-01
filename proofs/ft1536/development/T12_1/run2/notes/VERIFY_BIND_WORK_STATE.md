@@ -57,7 +57,7 @@ Adjustments vs the prompt's suggested shape (recorded, not silent):
    the injected stream `msg = r ++ message` (`falcon_vrfy_start` + `update` =
    `shake_inject` of the concatenation). The SHAKE/hash-to-point law itself is
    the ROM interface (A2/B5), consumed here as a parameter — not re-modeled.
-2. Key-material decoding (sk/pk) is rung B1 (HERS, source3). `keyDecoder` is
+2. Key-material decoding (sk/pk) is rung B1 (Astra's, source3). `keyDecoder` is
    a consumed parameter of `verdict`; no key-codec lemmas here.
 3. "Legal memory, source execution" is carried by the REUSE layer
    (`Run2.FileVerifier.decision` = the file/bit verify program with
@@ -144,7 +144,7 @@ guarded serial compiles, forbidden-tactic grep before every compile):
   `malformed_key`/`malformed_sig`, `verdict_total`, `decoded_or_rejected`
   (no third outcome); `wordsOfVec`/`wordsOfVec_represents` bridge to the
   file/bit program; `q0_neg` (s1 sign-convention record).
-- `Audit.lean` — `#print axioms` of 15 key declarations: all within
+- `Audit.lean` — `#print axioms` of 16 key declarations: all within
   `[propext, Classical.choice, Quot.sound]` (two strictly smaller).
 
 Headline statement (realized shape):
@@ -184,7 +184,7 @@ word primitives, `FT1536.Relation`/`FT1536.Geometry` from committed stages.
 - NTT/Montgomery internals identified with the canonical `Rq` operations
   through the consumed REUSE chain (`PolynomialMachine`/`PolynomialReference`
   via `decision_correct`); `formal/FftBind/NttSemantics` covers the tables.
-- Key-material decoding (sk/pk) = rung B1 (HERS): consumed as `keyDecoder`.
+- Key-material decoding (sk/pk) = rung B1 (Astra's, source3): consumed as `keyDecoder`.
 - Hash-to-point (`falcon_hash_to_point` over `r ‖ message`) = ROM interface:
   consumed as `hashTo : Bytes → Rq`. Both remain parameters of `verdict`;
   closing B5 plugs the concrete B1 decoder and the ROM map in.
@@ -206,7 +206,7 @@ word primitives, `FT1536.Relation`/`FT1536.Geometry` from committed stages.
 
 Closes the open interface flagged by B3-1. All new modules 0 err / 0 warn,
 forbidden-tactic grep before every compile, standard axioms only (Audit
-extended to 24 declarations).
+extended to 29 declarations).
 
 - **Pinned C-side shape** (extraction with exact lines, module doc):
   `falcon_vrfy_start` (`falcon-vrfy.c:1357-1364`, SHAKE-256 capacity 512,

@@ -4,7 +4,7 @@ Scope step S1 of `development/T12_1/END_TO_END_SCOPE.md`. Source of truth:
 the pinned M0 `Extra/c/falcon-keygen.c` (sha256 `0a09b6ed...`, byte-identical
 to the M0 profile pin and to live `Extra/c`). All values are
 version-invariant under the FLOOR_CT fix (bit-equivalence over all 2^64
-words, `FloorWord.all_word64_equivalence`).
+words, `FloorCT.all_word64_equivalence`).
 
 ## The per-attempt acceptance predicate (the conditioning event)
 
@@ -58,7 +58,7 @@ IN ORDER (the algorithm comment of `falcon_keygen_make` + the six
   remain in the usable range — the vacuity guard (D1 refinement (iii)) is
   provisionally UNLIKELY to fire, pending measurement/rigorous bound.
 - For B1 (Astra): the attempt-loop semantics deliverable of the adapted
-  B1 prompt = exactly the six gates + cap + return structure above; her
+  B1 prompt = exactly the six gates + cap + return structure above; Astra's
   named predicates should mirror this decomposition.
 - For B4: the conditional second moment can be analyzed either through
   the conservative `1/p_accept` factor or directly as

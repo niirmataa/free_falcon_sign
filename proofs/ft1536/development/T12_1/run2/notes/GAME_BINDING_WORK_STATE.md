@@ -72,7 +72,8 @@ Kernel pieces in `ConvStruct` (all clean builds 0/0, standard axioms only):
 
 Numeric pre-checks: L0 (pinned engine reproduction byte-identical; sector
 vertex arithmetic; required wrap allowance <= 7.83e-10 relative) and L0b
-(route P1 dead by 27 orders of magnitude — coarse U(ℓ*) = 1.2e4 vs 1.27e-23;
+(route P1 dead by 27 orders of magnitude — coarse U(ℓ*) = 1.2e4 vs the
+L0b threshold 1.27e-23 (1.2e4/1.27e-23 ~ 1e27 = the 27 orders);
 verdict: tilted-local route P2' for BOTH certs).
 
 Assembly target (next): certHi via windowSandwich upper ->
@@ -177,7 +178,7 @@ MT-assumption's law), not a constant. Next: the B4 toolkit kernel lemmas
 ## 2026-10-01 (night) — B4 toolkit done: SecondMoment.lean 0/0
 
 `formal/SecondMoment.lean`: `second_nonneg`, `second_le_of_pointwise`
-(pointwise (1+-d) => second <= (1+d)^2), `LawCond`/`LawCond_mass`/
+(pointwise one-sided factor (1+d) => second <= (1+d)^2), `LawCond`/`LawCond_mass`/
 `second_cond_le` (conservative 1/m^2 conditioning transfer),
 `ac_of_pointwise`, and THE certificate constructor
 `localJointCertificate_of_pointwise` (pointwise bound =>

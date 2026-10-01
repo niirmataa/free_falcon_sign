@@ -10,7 +10,7 @@ the style of the VerifyBind modules; no new claims beyond the cited lines.
 1. **Key/context** — `falcon_sign_set_private_key` (`falcon-sign.c:3143+`):
    header `t cc g dddd`, then `falcon_decode_small` of f, g, F (and G) in
    due order (`:3184-3202`), strict consumption (`len != 0` → reject).
-   **NOT formalized here** — key-material codec is rung B1 (HERS).
+   **NOT formalized here** — key-material codec is rung B1 (Astra's, source3).
 2. **Hash chain** — `falcon_sign_start` extracts a 40-byte nonce
    (`:3285`, `falcon.h:234`) and absorbs it; `falcon_sign_start_external_nonce`
    (`:3293-3298`), `falcon_sign_update` (`:3302-3305`): identical SHAKE-256
@@ -50,7 +50,7 @@ the style of the VerifyBind modules; no new claims beyond the cited lines.
   B4 (statistical certificate), plus the sampling law under D1 conditioning.
 - The PRNG (`falcon_prng_init` from the SHAKE context, `:3352-3356`) —
   decision D2 route (b), `Adv_PRG` accounting — other lane.
-- Private-key codec (`falcon_sign_set_private_key`) — rung B1 (HERS).
+- Private-key codec (`falcon_sign_set_private_key`) — rung B1 (Astra's, source3).
 - Output-buffer failure path: `falcon_encode_small` returns 0 when
   `sig_max_len` is exceeded (`falcon-enc.c:111-113, 344-346`) and
   `falcon_sign_generate` then returns 0 (`:3414-3417`). The VerifyBind

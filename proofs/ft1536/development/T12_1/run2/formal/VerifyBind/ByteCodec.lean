@@ -549,9 +549,10 @@ theorem encodeSig_consumed_none (xs : List ℤ) (hlen : xs.length = 1536)
   rw [hif]
   exact hsmall
 
-/-- Producer/consumer consistency (A4): the encoding produced as by
+/-- Producer/consumer consistency (A4): the encoding produced by
 `falcon_sign_generate` is accepted by `decodeSig`; with
-`decodeSig_eq_encode`-style lemmas this makes the codec injective. -/
+the `encodeSig_consumed_*`/`encodeSig_inj_*` lemmas above this makes the
+codec injective. -/
 theorem encodeSig_inj_static (xs ys : List ℤ) (hlenx : xs.length = 1536)
     (hleny : ys.length = 1536) (hx : ∀ x ∈ xs, int16 x) (hy : ∀ y ∈ ys, int16 y)
     (h : encodeSig .static xs = encodeSig .static ys) : xs = ys := by

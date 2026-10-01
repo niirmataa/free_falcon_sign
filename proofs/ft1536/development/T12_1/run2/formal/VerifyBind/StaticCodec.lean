@@ -12,7 +12,7 @@ Per value the C encoder emits (`falcon-enc.c:297-368`): one sign bit
 (1 = negative), the `j` low bits of the magnitude (MSB first), then
 `(|w| >> j)` zero continuation bits and one terminating 1 bit. The decoder
 (`falcon-enc.c:461-545`) reads that code back, rejects more than 255
-continuation zeros, and stores `± lo` through an `int16_t` cast. All 16-bit
+continuation zeros, and stores `± mag` through an `int16_t` cast. All 16-bit
 casts are modeled by `wrap16` (two's complement wrap, machine model A5).
 
 On the reachable range `lo <= 65535` (`ne <= 255` is enforced by the source)
@@ -89,7 +89,7 @@ def ofSignMag : Bool → ℕ → ℤ
   | true, mag => -(mag : ℤ)
   | false, mag => (mag : ℤ)
 
-/-- Value realized by one decoded code word: `± lo` through an int16 cast. -/
+/-- Value realized by one decoded code word: `± mag` through an int16 cast. -/
 def wordValue (neg : Bool) (mag : ℕ) : ℤ := wrap16 (ofSignMag neg mag)
 
 theorem ofSignMag_self (w : ℤ) : ofSignMag (decide (w < 0)) w.natAbs = w := by

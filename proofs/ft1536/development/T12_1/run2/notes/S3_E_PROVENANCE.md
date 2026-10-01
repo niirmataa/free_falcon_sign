@@ -55,10 +55,12 @@ Where each conditioning belongs (correcting the earlier accounting note):
 
 ## B4 toolkit lemmas (kernel, next)
 
-- `second_le_of_pointwise`: `(|j x - p x| <= d * p x)` everywhere, `AC j p`
-  => `second j p <= (1+d)^2` (hence `e <= (1+d)^2 - 1`);
-- conditioning transfer (fallback): `second (j restricted to A / mass j A)
-  p <= second j p / (mass j A)^2`;
+- `second_le_of_pointwise` (IMPLEMENTED): one-sided `j x <= (1+d) * p x`
+  everywhere => `second j p <= (1+d)^2` (hence `e <= (1+d)^2 - 1`);
+  `ac_of_pointwise` derives AC from the same bound;
+- conditioning transfer (fallback, IMPLEMENTED as
+  `LawCond`/`second_cond_le`): `second (LawCond j E) p <=
+  second j p / (j.event E)^2` (positive-mass hypothesis mandatory);
 - hit/miss transfer: moving at most `m` mass to the miss point.
 Primary route stays a DIRECT analysis of the emitted law (the heavy
 analytic paths); the transfers are conservative fallbacks.

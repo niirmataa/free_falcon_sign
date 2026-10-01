@@ -50,9 +50,9 @@ pinning the exact types — the earlier one-line form was blurred; see
   `SigmaMath.muH muKey` — which law the MT-ISIS hardness is assumed for —
   not a numeric factor of `e`;
 - conservative kernel transfers (to be proven) for the fallback route:
-  pointwise `(1+-d)` multiplicative bounds give `second <= (1+d)^2`
+  pointwise one-sided factor-`1+d` bounds give `second <= (1+d)^2`
   (`e <= (1+d)^2-1`); conditioning `second (j|A) p <= second j p /
-  (mass j A)^2`; hit/miss mass transfer. The intended primary route is a
+  (j.event A)^2`; hit/miss mass transfer. The intended primary route is a
   DIRECT analysis of the emitted law (the heavy analytic paths).
 
 ## 2. Owner modeling decisions (2026-09-30)
@@ -111,6 +111,14 @@ pinning the exact types — the earlier one-line form was blurred; see
   relaxed, the restart count becomes leakage and D1 needs redoing.)
 - **A2 — seed uniformity.** The seed is uniform and independent of the
   adversary (hardware entropy source idealized at the seed boundary only).
+  **Named at the hash boundary (B3/X delivery, 2026-10-01): the RED/ROM
+  assumption is the single predicate `UniformChallenge` (run2/formal/
+  VerifyBind/HashTo.lean: `UniformChallenge (L : Law Rq) : Prop :=
+  L = Law.uniform`), with the C-side challenge derived by
+  `challengeRqOf` over the SHAKE-256 word stream of `streamOf r message`
+  (nonce-first, capacity 512, `rLen = 40`); the word stream itself is the
+  A-side oracle and `HashToSpec.challenge` is the total map on `Bytes` (no
+  proven identity — the shape is stated as in the B3/X notes).**
 - **A3 — `verdict` = `Relation.Verify`.** The formal verdict function
   coincides with the semantic verifier on all byte inputs (bridge B3).
 - **A4 — serialization round-trip.** Byte encoding/decoding used by the
@@ -124,17 +132,17 @@ pinning the exact types — the earlier one-line form was blurred; see
   Owner: source3 (`KEYGEN_SOURCE_TO_FIBER_001`, IN_PROGRESS: Montgomery
   contracts done from source, FFT leaf frames bound, NTRU equation bridge
   open). Plus: extraction of `P(success)` from the restart loop.
-- **B2 — PRG identification and accounting.** Identify the real generator
-  from the pinned sources; choose D2 route (a) or (b); prove the `Delta_PRG`
-  or `Adv_PRG` decomposition of the bound. Owner: unassigned (needs source
-  read over Extra/c + BINBIND material) — first concrete probe S2.
+- **B2 — PRG identification and accounting.** S2 DONE (ChaCha20 stream of
+  `Extra/c/frng.c`, SHAKE-256 seeding; D2 route (b) decided on the record);
+  remaining: prove the `Adv_PRG(ChaCha20)` decomposition of the bound (the
+  fair-tape vs real-stream seam of `Games.Sampler.code`).
 - **B3 — game/implementation binding.** `verdict = Relation.Verify`,
   serialization (A3/A4), Verify-path bytes. Owner: BINBIND/FftBind lane
   (partial: FftBind semantics and byte machines exist).
 - **B4 — statistical certificate.** `LocalJointCertificate S e` with a
   concrete public `S` and proven `e^cond` (D3). Machinery ready in the
   T12.1 chain: two-sided Cramer window (`windowSandwich`), twisted sector
-  mass, A2 tower bounds (error 2^-48), `all_keys_delta_of_conv_cert`.
+  mass, A2 tower bounds (rowRatio r = 2^-48; mass error (1+-2r/(1-r))^2 ~ 2^-46), `all_keys_delta_of_conv_cert`.
   Owner: this lane (run2/T12.1).
 - **B5 — assembly.** Instantiate `ConcreteReduction` with B1-B4, state and
   prove `end_to_end_assembled_theorem_statement` (the declaration the audit
@@ -218,8 +226,9 @@ carry foreign active changes and are not touched from this lane).
 ## 7. Version-skew ledger (2026-09-30, owner catch: the M0 floor-CT skew)
 
 - **The pinned M0 profile carries the PRE-FIX `fpr-emulated.h`**
-  (`m0_source/fpr-emulated.h` sha256 `242a7027d854e1317a3382f198271c69d4
-  0f4b34e80192ff896a42a65c83edfa` = the FLOOR_CT baseline header), while
+  (`m0_source/fpr-emulated.h` sha256
+  `242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa` = the
+  FLOOR_CT baseline header), while
   live `Extra/c` and the dudect RUN_002 campaign carry the CANDIDATE
   (`6b897d6c217ef25a322e3b5c3d9488b9d6b8d0e369a710d8fce2259f24e6d84f`).
   The delta is exactly `fpr_floor`'s final signed XOR-select replaced by an

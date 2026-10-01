@@ -36,7 +36,7 @@ Prove, kernel-side, that the real C verify path IS the formal verifier:
    codec) is injective and consistent with what `falcon-sign.c` produces
    and `falcon-vrfy.c` consumes.
 3. **Clean split with rung B1** (source3/Astra, see the cross-lane map in
-   the scope): key-material encoding/decoding (sk/pk) is HERS; the
+   the scope): key-material encoding/decoding (sk/pk) is Astra's (source3); the
    signature/hint path and the verdict function are THIS window's. Do not
    duplicate key-codec lemmas; consume hers once they land.
 
