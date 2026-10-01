@@ -20,7 +20,8 @@ Consequences transported across the decomposition through the pinned
   `(1 + e1) * (1 + e2)`;
 * `second_joint_transport` / `second_joint_transport_le` — comparison of an
   arbitrary law against a joint reference law `Divergence.joint k l`, giving
-  the `second q (joint k l) = second (marginal q) k * (1 + e)` shape.
+  `second q (Divergence.joint k l) ≤ second (marginal q) k * (1 + e)`, with
+  `=` when the conditional ratio is the constant `1 + e`.
 
 All statements are about the pinned types `FT1536.Law` and
 `FT1536.Divergence.second/AC/joint`; no new model is introduced. No
@@ -38,8 +39,8 @@ variable {β : Type} [Fintype β] [DecidableEq β] [Inhabited β]
 /-- The explicit fallback law for the zero-mass case of the conditional
 family: `Law.pure default`, a point mass at the default point of `β`. Any
 fixed law would do (the decomposition multiplies it by a zero marginal), but
-`Law.pure`-style keeps the fallback a genuine law (total mass one) without
-any normalization argument. -/
+a `Law.pure`-style choice keeps the fallback a genuine law (total mass one)
+without any normalization argument. -/
 noncomputable def fallbackLaw : Law β := Law.pure (default : β)
 
 /-- The first marginal of a law on a product. Definitionally
@@ -170,8 +171,8 @@ theorem marginal_joint (k : Law α) (l : α → Law β) :
   show (∑ y : β, k.mass x * (l x).mass y) = k.mass x
   rw [← mul_sum, (l x).total, mul_one]
 
-/-- The conditional family of a joint law is its second factor; at positive
-marginal mass the fallback is never engaged. -/
+/-- At positive marginal mass the conditional family of a joint law is its
+second factor (the fallback is never engaged). -/
 theorem condOf_joint (k : Law α) (l : α → Law β) (x : α) (hx : 0 < k.mass x) :
     condOf (Divergence.joint k l) x = l x := by
   have hxx : 0 < (marginal (Divergence.joint k l)).mass x := by
@@ -215,7 +216,8 @@ theorem second_eq_of_decomposition (q p : Law (α × β)) :
   exact Divergence.joint_chi2 (marginal q) (marginal p) (condOf q) (condOf p)
 
 /-- Inequality form of the decomposition: per-layer bounds `1 + e1`
-(marginals) and `1 + e2` (conditionals) compose to `(1 + e1) * (1 + e2)`. -/
+(marginals) and `1 + e2` (conditionals), given `0 ≤ 1 + e2`, compose to
+`(1 + e1) * (1 + e2)`. -/
 theorem second_le_of_layers (q p : Law (α × β)) (e1 e2 : ℝ)
     (hm : Divergence.second (marginal q) (marginal p) ≤ 1 + e1)
     (hc : ∀ x, Divergence.second (condOf q x) (condOf p x) ≤ 1 + e2)
@@ -260,7 +262,7 @@ theorem second_joint_transport_le (q : Law (α × β)) (k : Law α)
   exact Divergence.joint_bound (marginal q) k (condOf q) l (1 + e)
     (fun x _ => hc x)
 
-/-! ### The joint-bounds constructor for `Run2.LocalJointCertificate` -/
+/-! ### The joint-bounds constructor for `FT1536.Run2.LocalJointCertificate` -/
 
 /-- The honest per-challenge reply family: `FT1536.SigmaMath.freshHonest h`
 decomposes as `Divergence.joint Law.uniform (honestReply h)` (see
