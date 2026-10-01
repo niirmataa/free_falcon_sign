@@ -1,5 +1,21 @@
 # source3 — żywy rejestr luk
 
+## Full certificate reference composition — checked, global entry still being pinned
+
+Batch006 receipt `95acae9a82ba554624b33d2a6dd15f231feec9c234b5c0138421ff027b24fcb6`:
+25/25 clean and25 audits. CertificateFunctionReference/Entry/Witness/Frame,
+ReturnedWords and FunctionOutcome now derive the full certificate facts
+from profile, legal entry workspace and composed source execution.
+Bad initialization/lifetime, actual aliases and root-copy trace, Gate00,
+suffix-entry Legal, stored-word bounds and the caller frame are connected.
+
+Remaining at this function's program-entry boundary: bind its supplied
+global environment to the complete pinned FFT scalar/table initializers.
+Thirteen scalars are bound; all table chunks are under serial checking.
+The complete KeyGen caller, actual cap/source-gate loop interface,
+same-attempt serialization and source NTRU/public/inverse equations remain
+open. The final emitted-to-fiber theorem is not yet available.
+
 ## Source prologue and complete smallint body
 
 CertificatePrologue/Declarations/Aliases now bind and execute the actual

@@ -1,5 +1,29 @@
 # T12.1/source3 — żywy stan
 
+## Certificate composition checked; static tables and KeyGen continue — 2026-10-01
+
+**ACTIVE / KEYGEN_SOURCE_TO_FIBER_001 IN_PROGRESS / NOT_REVIEWED**.
+Batch006 passed25/25 clean with25 export audits,83.823s,
+maxRSS3821804KiB. Receipt SHA256
+`95acae9a82ba554624b33d2a6dd15f231feec9c234b5c0138421ff027b24fcb6`.
+`CertificateFunctionOutcome.accepted/reverse_source` compose the full
+certificate reference execution, derive suffix Legal and actual pointers,
+retain pre-return snapshots, preserve caller bytes outside the workspace,
+and forbid reading bad after its extent is removed. This supersedes the
+earlier standalone-prefix composition gap in the reference environment.
+
+The environment still carries global scalar/table bindings. Thirteen scalar
+constants are source-bound; full static-table parsing/initialization is in
+progress. `keygen_fft_table_chunks_004` checks32-row chunks serially without
+higher limits. A restricted M0 conditional-directive preprocessor for the
+KeyGen body is also drafted. Do not treat these drafts or this internal batch
+as the final KeyGen/encoding/NTRU/fiber theorem. Keep waiting for proof slots
+and continue the full owner task, without new agents or an automatic review.
+
+The complete signed16 conversion checkpoint is local commit `2c12c0c4`.
+New certificate-composition sources and batch006 evidence are being saved
+in further local logical commits. Push still requires an explicit signal.
+
 ## Active source entry and signed16 conversion work — 2026-10-01
 
 The source prologue7695--7702, inner declarations7705--7708 and all eight
