@@ -1,5 +1,47 @@
 # T12.1/source3 — żywy stan
 
+## Static environment and modular-check continuation — 2026-10-01
+
+The complete FFT square/cubic tables are now parsed in checked32-row
+chunks (all3072 pairs), assembled into source words and installed as
+read-only memory blocks. CertificateM0Environment fixes the scalar/table
+environment and derives its initialized-word predicate. Fresh batch007
+passed as `keygen_fiber_batch7_fresh_001`, with the same limits and serial
+execution; the receipt details are below.
+
+KeygenM0Preprocess/KeygenMakePreprocess now bind all407 lines of the make
+function's conditional-directive selection. The original monolithic proof
+exhausted memory;13 source-contiguous pieces and a proved append law passed
+in `keygen_attempt_cap_007` (64.456s for the make module). No limits changed.
+The actual cap increment/branch, MODE1 scalar bound, modp_add/sub and final
+coordinate algebra also passed individual checks. `keygen_final_check_loop_004`
+passed the1536-coordinate local check model. The old loop model still needs
+its source-control refinement, rather than being assumed by the solver.
+
+The C99ModularReference/Parser and KeygenCheckProgram,
+Expression/Gate/Iteration/LoopBridge continuation parses the entire final
+solver-check suffix, including uint32 loads, fixed source callees, local z,
+comparison, loop control and return. `keygen_check_program_001` waited for
+batch007 and then passed the first three modules. The expression/gate/
+iteration/loop bridge also passed subsequent jobs. Supporting expression
+existence, frame, source mutations and the combined Outcome are in checking.
+KeygenModpSet is a separate drafted source conversion/range/congruence lemma.
+
+Batch007 subsequently passed19/19 clean with25 export audits:1334.532s,
+maxRSS4893672KiB; receipt SHA256
+`6ad9a6b64b5d149bfa3a8c5481549a2b4f4acd3c89fb026dfd3a7110531232c1`.
+The parsed check-suffix continuation started with `keygen_check_refinement_002`;
+failed elaborations are retained and later jobs advance its checked scope.
+These new modules are not covered by batch007. The static environment and
+preprocessor/cap sources are local commits `73d42e14` and `f256b438`.
+
+Full B1 remains **ACTIVE / IN_PROGRESS / NOT_REVIEWED**. Pending enclosing
+links include source NTT range/evaluation, final-attempt material identity,
+all attempt gates/cap, public/inverse computation and both source codecs.
+Do not turn the suffix's explicit canonical/input/initializer premises into
+premises of the final emitted-to-fiber theorem. Continue after the queued
+jobs, retain failures and checkpoint only the owned files locally.
+
 ## Certificate composition checked; static tables and KeyGen continue — 2026-10-01
 
 **ACTIVE / KEYGEN_SOURCE_TO_FIBER_001 IN_PROGRESS / NOT_REVIEWED**.

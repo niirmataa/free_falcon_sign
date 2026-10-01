@@ -1,5 +1,21 @@
 # source3 — żywy rejestr luk
 
+## Pinned FFT environment and final solver-check control
+
+Batch007 (`6ad9a6b64b5d149bfa3a8c5481549a2b4f4acd3c89fb026dfd3a7110531232c1`)
+passed19/19 and25 audits. All3072 FFT table pairs are kernel-parsed and
+bound to initialized read-only words. The formerly supplied certificate
+environment now has a concrete M0 instantiation; its enclosing KeyGen call
+still needs to use that same memory/environment.
+
+The actual counter-cap fragment and complete407-line CPP selection are
+checked. This is not yet the full per-attempt/gate interface. The source
+modular primitives and1536-coordinate local check model are checked, with
+canonical-transform and actual initializer premises explicit at this local
+boundary. The parsed7386--7396 suffix and uint32 expression/control bridge
+are in active checking. Source NTT range/evaluation, polynomial lifting,
+public/inverse equations, final-attempt preservation and codecs remain open.
+
 ## Full certificate reference composition — checked, global entry still being pinned
 
 Batch006 receipt `95acae9a82ba554624b33d2a6dd15f231feec9c234b5c0138421ff027b24fcb6`:
