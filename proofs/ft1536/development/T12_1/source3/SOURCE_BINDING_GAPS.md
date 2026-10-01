@@ -1,5 +1,18 @@
 # source3 — żywy rejestr luk
 
+## Checked continuation after the waiting checkpoint
+
+Fresh batch004:11/11 clean,24 audits, receipt
+`a599fcf380359383f6fa32b29d953812282e352ad6c964b5207ff9c06f1c6704`.
+C99Automatic32/CertificateFrameEntry, CertificatePrefixFrame and C99LoopTrace
+are now checked, superseding their draft status below. The latter gives an
+equivalence with the existing loop execution and identifies the final break
+attempt. Actual KeyGen gates/cap/body and emitted-byte identity are still
+required. The automatic-object model proves extent removal and impossibility
+of a stale raw-pointer read, but its complete function binding remains open.
+Prologue/alias execution is being developed to discharge the remaining
+entry facts of CertificateAfterConversion rather than assume them.
+
 ## Root-copy connection — individually checked; full entry still open
 
 `CertificateAfterConversion.root_copy_witness` now extracts the real copy

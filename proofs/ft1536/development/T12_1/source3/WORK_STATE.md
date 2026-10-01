@@ -1,5 +1,25 @@
 # T12.1/source3 — żywy stan
 
+## Owner continuation and waiting rule — 2026-10-01
+
+**ACTIVE / IN_PROGRESS / NOT_REVIEWED.** The owner explicitly directed
+continuation of the entire package and waiting when the shared proof slot
+is occupied. Do not end work because a helper or commit batch is complete.
+The first resumed preflight found the slot free and started
+`keygen_fiber_batch4_fresh_001`. `tools/job_when_available.py` adds event-based
+waiting before the unchanged runner, preserving all preflights and limits.
+The earlier waiting checkpoint below is historical, not an owner pause.
+
+Fresh `keygen_fiber_batch4_fresh_002` now passed11/11 modules and24 audits,
+225.799s, maxRSS3708420KiB. Receipt
+`notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_004.json`, SHA256
+`a599fcf380359383f6fa32b29d953812282e352ad6c964b5207ff9c06f1c6704`.
+The five earlier drafts are individually and jointly checked. The automatic
+frame still needs binding into the full source function; the generic loop
+trace still needs the actual KeyGen body/gates/cap. Current work is the
+source prologue and pointer-layout execution, followed by full certificate
+composition. Package completion and review status are unchanged.
+
 ## Prefix continuation and shared proof slot — 2026-10-01
 
 **IN_PROGRESS / NOT_REVIEWED — waiting for the shared proof slot.**

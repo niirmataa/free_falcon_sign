@@ -38,17 +38,16 @@ theorem entered_allocated (before : Memory) (space : Space before) :
 theorem entered_uninitialized (before : Memory) (b : Fin 4) :
     (enter before).bytes 0 ((pointer before).offset+b.val)=none := by
   have ha := (alignment (before.size 0)).1
-  simp only [enter,pointer,ArrayPointer.offset,address,Nat.mul_zero,Nat.add_zero]
-  rw [ite_eq_left (by exact ⟨rfl,by omega⟩)]
+  have hi : before.size 0≤address before+b.val := by dsimp [address]; omega
+  simp [enter,pointer,ArrayPointer.offset,hi]
 
 theorem enter_preserves_caller (before : Memory) (block offset : Nat) (live : offset<before.size block) :
     (enter before).bytes block offset=before.bytes block offset := by
-  unfold enter
-  split
-  · rename_i h
-    obtain ⟨rfl,h⟩ := h
+  have hn : ¬(block=0 ∧ before.size 0≤offset) := by
+    rintro ⟨rfl,h⟩
     omega
-  · rfl
+  change (if block=0 ∧ before.size 0≤offset then none else before.bytes block offset)=_
+  exact ite_eq_right hn
 
 theorem leave_preserves_caller (before edge : Memory) (block offset : Nat) (live : offset<before.size block) :
     (leave before edge).bytes block offset=edge.bytes block offset := by

@@ -19,7 +19,6 @@ theorem allocated_workspace (base : Nat) (before : Memory) (legal : Legal base b
   have ha := C99Automatic32.alignment (before.size 0)
   refine ⟨legal.aligned,ha.2.2,?_,?_,legal.localSpace,?_,?_⟩
   · dsimp [C99Automatic32.enter]
-    simp only [ite_true]
     dsimp [C99Automatic32.address]
     have hw := legal.workspace
     omega
