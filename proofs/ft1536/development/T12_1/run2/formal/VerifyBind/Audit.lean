@@ -1,4 +1,4 @@
-import VerifyBind.Verdict
+import VerifyBind.HashTo
 
 /-!
 # Axiom audit of the rung B3 package
@@ -22,3 +22,17 @@ at most (`propext`, `Classical.choice`, `Quot.sound`).
 #print axioms FT1536.VerifyBind.verdict_valid_decodes
 #print axioms FT1536.VerifyBind.verdict_total
 #print axioms FT1536.VerifyBind.decoded_or_rejected
+#print axioms FT1536.VerifyBind.q0_neg
+#print axioms FT1536.VerifyBind.scanValue_sound
+#print axioms FT1536.VerifyBind.scanValue_length
+#print axioms FT1536.VerifyBind.hashToPointOf_length
+#print axioms FT1536.VerifyBind.hashToPointOf_sound
+#print axioms FT1536.VerifyBind.challengeOf_length
+#print axioms FT1536.VerifyBind.challengeOf_sound
+#print axioms FT1536.VerifyBind.challengeOf_none_or_some
+#print axioms FT1536.VerifyBind.uniform_challenge_mass
+#print axioms FT1536.VerifyBind.uniform_challenge_eq
+#print axioms FT1536.VerifyBind.verdictOf_valid_iff
+#print axioms FT1536.VerifyBind.verdictOf_valid_decodes
+#print axioms FT1536.VerifyBind.verdictOf_total
+#print axioms FT1536.VerifyBind.verdictOf_decoded_or_rejected
