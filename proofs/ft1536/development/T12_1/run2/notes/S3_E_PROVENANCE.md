@@ -62,3 +62,38 @@ Where each conditioning belongs (correcting the earlier accounting note):
 - hit/miss transfer: moving at most `m` mass to the miss point.
 Primary route stays a DIRECT analysis of the emitted law (the heavy
 analytic paths); the transfers are conservative fallbacks.
+
+## B4 composition plan (concrete, 2026-10-01 night)
+
+The comparison target decomposes EXACTLY as the pinned layers (all from
+`FT1536.PublicSimulation` / `FT1536.Model`, MTISIS stage):
+
+    honestJoint (syndrome h) = Divergence.joint Law.uniform (signBody (syndrome h))
+    signBody A c = (MathSign.cap (trial A c) 16).map (MathSign.emit emit)
+
+so `second_joint_le` (SecondMoment.lean) composes the certificate from two
+layer bounds:
+
+- **Layer 1 (challenge)**: `second` of the sampler's challenge marginal vs
+  `Law.uniform` — supplied by the hashTo/ROM interface (the B3/X window's
+  `HashTo` deliverable) plus the D2-route `Adv_PRG` accounting. Expected
+  `e1 = 0` under the ROM identification.
+- **Layer 2 (reply per challenge)**: `second (real per-c reply law)
+  (signBody (syndrome h) c) <= 1 + e2` — THE heavy core: the T5
+  multiplicative mass bounds (`t5g00 < 1/64`-style, tower error 2^-46),
+  the cap-16 retry (`MathSign.cap` models exactly the C loop:
+  `SIGN_MAX_ATTEMPTS=16` is enforced in the source by `#error` BECAUSE of
+  this model), the box condition (`Q < B` maps out-of-box mass to `none`
+  in the HONEST law too, so support/AC is well-formed), and the wrap-error
+  mass `delta` (CenteringClosure, budgets tauB/rejB/boxB kernelized).
+
+Composition: `e = (1+e1)*(1+e2) - 1` via `second_joint_le`; per-pointwise
+shortcut `e = (1+d)^2 - 1` via `localJointCertificate_of_pointwise`.
+
+Next kernel pieces (ordered):
+1. marginal-joint decomposition of a law on a product (every law =
+   `joint` of its marginal and its conditionals) with `second` transport;
+2. `localJointCertificate_of_joint_bounds` — the constructor consuming the
+   two layer bounds directly;
+3. the Layer-2 analysis pieces (support/AC check for the emit/cap map,
+   then the mass comparison per challenge).
