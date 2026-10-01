@@ -6,7 +6,7 @@ open C99ArrayReference (State)
 open C99ProcedureReference (Result)
 
 def onlyReturn (n : Nat) : Stmt → Bool
-  | .base _ | .assign _ _ => true
+  | .base _ | .assign _ _ | .store32 _ _ _ => true
   | .seq a b | .branch _ a b => onlyReturn n a && onlyReturn n b
   | .scope _ b => onlyReturn n b
   | .loop _ body increment => onlyReturn n body && onlyReturn n increment
@@ -16,7 +16,7 @@ theorem source_flow (n : Nat) (code : Stmt) (before : State) (result : Result)
     (source : Exec code before result) (checked : onlyReturn n code=true) :
     result.flow=.normal ∨ result.flow=.returned (some (C99IntegerReference.convert .int32 n)) := by
   induction source with
-  | base | assign | loopFalse => exact Or.inl rfl
+  | base | assign | store32 | loopFalse => exact Or.inl rfl
   | seqNormal first second before middle result head tail ih1 ih2 =>
       exact ih2 (Bool.and_eq_true_iff.mp checked).2
   | seqExit first second before result head exit ih => exact ih (Bool.and_eq_true_iff.mp checked).1

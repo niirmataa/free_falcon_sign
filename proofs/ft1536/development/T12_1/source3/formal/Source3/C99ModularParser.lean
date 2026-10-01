@@ -21,6 +21,7 @@ def expr : Nat → List Token → Option (Expr×List Token)
       | [',']::rest => do
           let (b,rest) ← expr fuel rest
           match rest with
+          | [')']::rest => pure (.call2 name a b,rest)
           | [',']::rest => do
               let (c,rest) ← expr fuel rest
               match rest with
@@ -36,6 +37,15 @@ def expr : Nat → List Token → Option (Expr×List Token)
   | _+1,rest => (C99ArrayParser.pureExpr rest).map (fun (e,rest) => (.scalar e,rest))
 
 def simple : List Token → Option (Stmt×List Token)
+  | name::['[']::rest => do
+      let (index,rest) ← C99ArrayParser.pureExpr rest
+      match rest with
+      | [']']::['=']::rest => do
+          let (e,rest) ← expr 32 rest
+          match rest with
+          | [';']::rest => pure (.store32 name index e,rest)
+          | _ => none
+      | _ => none
   | name::['=']::rest => do
       let (e,rest) ← expr 32 rest
       match rest with

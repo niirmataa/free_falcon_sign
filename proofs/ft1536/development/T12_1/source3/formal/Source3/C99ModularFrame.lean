@@ -10,6 +10,7 @@ def baseReadOnly : C99ArrayReference.Stmt → Bool
   | _ => false
 def readOnly : Stmt → Bool
   | .base code => baseReadOnly code
+  | .store32 _ _ _ => false
   | .assign _ _ | .ret _ => true
   | .seq a b | .branch _ a b => readOnly a && readOnly b
   | .scope _ body => readOnly body
@@ -23,6 +24,7 @@ theorem source_frame (code : Stmt) (before : State) (result : Result)
       cases execution
       all_goals first | exact ⟨rfl,rfl⟩ | simp [readOnly,baseReadOnly] at checked
   | assign | loopFalse | ret => exact ⟨rfl,rfl⟩
+  | store32 => simp [readOnly] at checked
   | seqNormal first second before middle result head tail ih1 ih2 =>
       obtain ⟨ha,hb⟩ := Bool.and_eq_true_iff.mp checked
       exact ⟨(ih2 hb).1.trans (ih1 ha).1,(ih2 hb).2.trans (ih1 ha).2⟩
