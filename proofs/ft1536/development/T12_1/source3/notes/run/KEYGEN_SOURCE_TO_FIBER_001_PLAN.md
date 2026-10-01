@@ -1,5 +1,14 @@
 # KEYGEN_SOURCE_TO_FIBER_001 — żywy plan T12.1/source3
 
+## Detailed remaining execution plan — 2026-10-01
+
+The owner requested a durable plan for every remaining step through final
+handoff. See [KEYGEN_SOURCE_TO_FIBER_001_EXECUTION_PLAN.md](KEYGEN_SOURCE_TO_FIBER_001_EXECUTION_PLAN.md):
+checked recovery baseline, ordered B1.01--B1.11 implementation targets,
+source/domain obligations, commit boundaries, verification and restart
+protocol. It expands this same T12.1 task. The final type below and the
+approved END_TO_END_SCOPE remain authoritative.
+
 ## Current B1 scope and execution rule — 2026-10-01
 
 The owner's adapted prompt binds this package to rung B1 of

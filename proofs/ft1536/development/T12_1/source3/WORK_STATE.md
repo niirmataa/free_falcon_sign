@@ -1,5 +1,21 @@
 # T12.1/source3 — żywy stan
 
+## Complete remaining plan saved — 2026-10-01
+
+The owner requested a durable implementation plan through the end of B1.
+`notes/run/KEYGEN_SOURCE_TO_FIBER_001_EXECUTION_PLAN.md` now records the
+checked baseline, B1.01--B1.11, exact source/premise obligations, commit
+boundaries, mutations, final artifacts and restart protocol. Proposed names
+are explicitly targets, not existing exports. It develops the current T12.1
+PLAN and preserves END_TO_END_SCOPE, including the B4/B5 law boundary.
+
+Latest completed source checkpoint: `cdc1edb7` (original Vec preservation
+through coefficient conversion), following `0d29f339` (source grammar).
+No owned job is running. Next bounded implementation step: B1.01, the NTT
+word/field algebra adapter, starting with source addition congruence and
+explicit Montgomery representation scale. Save its own local commit after
+checking, then continue the source transform rather than stopping at helpers.
+
 ## Owner resumed work with recoverable step commits — 2026-10-01
 
 The owner explicitly instructed continuation and commits after logical
