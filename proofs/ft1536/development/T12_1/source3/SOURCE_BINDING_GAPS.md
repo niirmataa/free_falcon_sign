@@ -1,5 +1,20 @@
 # source3 — żywy rejestr luk
 
+## Coefficient conversion before NTT — individually checked
+
+The parsed source7367--7372 conversion loop now yields all four arrays of
+canonical residues. KeygenResidueMaterial.source_material traces each
+output word back to the same original signed16 input bytes; source_vectors
+consumes the existing Geometry.Vec representation under its explicit bound.
+Source counter/control, actual modp_set calls, stores, inter-iteration frames
+and input non-aliasing are accounted for. All component jobs010--016 passed;
+the changed modular-reference closure passed15/15 in job009.
+
+The source solver's allocation/alias prefix must still derive the supplied
+input/output layout and entry bindings. NTT must preserve canonical ranges
+and implement evaluation on the correct roots of Phi. The same-material
+KeyGen caller/attempt/codec and public/inverse links remain open.
+
 ## Final solver-check loop is now derived from parsed execution
 
 Batch008 (`64198d2e86af3f48c650cde4868f4db3bad73ae3494233f03a8f70fdd9cf455a`)

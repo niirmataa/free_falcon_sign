@@ -1,5 +1,55 @@
 # T12.1/source3 — żywy stan
 
+## Owner resumed work with recoverable step commits — 2026-10-01
+
+The owner explicitly instructed continuation and commits after logical
+steps, so an interrupted run can resume from saved work. Status is again
+**ACTIVE / IN_PROGRESS / NOT_REVIEWED**. Keep commits small and local;
+publication still requires the separate owner signal. Save the actual
+checked/draft status and next command at every checkpoint.
+
+First resumed actions: checkpoint the previously checked modular-memory
+extension and coefficient-conversion bridge, then retry the corrected
+public Sage helper check as `keygen_modular_suffix_checks_002`. Retain the
+failed `_001` job. The next mathematical work is the source NTT range/
+evaluation link; the complete caller/attempt/encoding chain is still open.
+
+Completed recovery commit: `0d29f339` records the checked modular-memory
+extension and source conversion program. Fourteen current source/cache/log
+bindings were rechecked byte-exact before committing. The corrected Sage
+job `_002` passed (1.918s); result SHA256
+`ed336129760e5178d482150f8f4d34556663b7ac637fa053811867a2ba00327b`,
+receipt SHA256 `e8262316089ab4418721d2ea16033a2363189ac8b45391f78dae890c370c866c`.
+Both normal/UBSan baselines matched; all four synthetic mutations were
+detected in each mode. The separate internal20-export audit passed as
+`keygen_residue_audit_017` (1.526s, standard axioms or none); this is not an
+independent review or fresh replay of every module. Exact audit/evidence
+pins and the resume boundary are in `notes/run/KEYGEN_RESIDUE_CHECKPOINT.md`.
+
+## Budget checkpoint — 2026-10-01
+
+The owner reported a60-percent allowance decrease over roughly90 minutes.
+This worker paused further launches to clarify an affordable continuation;
+the full B1 task is incomplete. No owned proof job remains running.
+
+Latest committed checkpoints: `49ad5794` (parsed solver-check suffix) and
+`ac8c985e` (signed modular conversion and fresh batch008). Subsequent saved,
+uncommitted work extends the modular reference with signed16 reads,
+modp_set calls and uint32 stores. The changed descendant closure passed15/15
+in `keygen_modular_memory_closure_009`. KeygenResidueStore/Trace/Loop/Ranges/
+Frame/Material/Vectors all passed individual jobs010--016. They derive
+canonical converted words and their relation to the same original Vec
+material, under explicit input/output non-aliasing and source entry bindings.
+Batch009 and its audit/receipt have not been prepared or claimed.
+
+The public synthetic Sage/C suffix check completed its assertions but job
+`keygen_modular_suffix_checks_001` failed when serializing Sage integers to
+JSON. Its raw outputs remain retained. The serialization line is corrected
+in the saved `.sage` source; no retry has been launched. No new push/review.
+Before spending further allowance, agree the next bounded scope with the
+owner. NTT polynomial binding, the complete caller/attempt/codec chain,
+public/inverse equations and the final emitted-to-fiber theorem remain open.
+
 ## Parsed final solver check passed — 2026-10-01
 
 Fresh batch008 passed14/14 clean with20 audits:29.379s,maxRSS2731312KiB.
