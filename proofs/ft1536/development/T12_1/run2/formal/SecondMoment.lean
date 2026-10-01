@@ -159,4 +159,36 @@ theorem localJointCertificate_of_pointwise
     rw [← h2]
     exact h1
 
+/-- Layer composition through `Divergence.joint` (via the pinned
+    `joint_chi2`): second moments multiply across layers, so per-layer
+    certificates `(1+e1)`, `(1+e2)` compose to `(1+e1)*(1+e2)`. -/
+theorem second_joint_le {β : Type*} [Fintype β]
+    (j p : Law α) (l k : α → Law β) (e1 e2 : ℝ)
+    (hj : Divergence.second j p ≤ 1 + e1)
+    (hl : ∀ x, Divergence.second (l x) (k x) ≤ 1 + e2)
+    (he2 : 0 ≤ 1 + e2) :
+    Divergence.second (Divergence.joint j l) (Divergence.joint p k)
+      ≤ (1 + e1) * (1 + e2) := by
+  have hterm : ∀ x,
+      (j.mass x ^ 2 / p.mass x) * Divergence.second (l x) (k x)
+        ≤ (j.mass x ^ 2 / p.mass x) * (1 + e2) := by
+    intro x
+    exact mul_le_mul_of_nonneg_left (hl x)
+      (div_nonneg (sq_nonneg _) (p.nonneg x))
+  have h1 : (∑ x, (j.mass x ^ 2 / p.mass x) * Divergence.second (l x) (k x))
+      ≤ ∑ x, (j.mass x ^ 2 / p.mass x) * (1 + e2) :=
+    sum_le_sum (fun x _ => hterm x)
+  have h2 : (∑ x, (j.mass x ^ 2 / p.mass x) * (1 + e2))
+      = Divergence.second j p * (1 + e2) := by
+    show (∑ x, (j.mass x ^ 2 / p.mass x) * (1 + e2))
+      = (∑ x, j.mass x ^ 2 / p.mass x) * (1 + e2)
+    rw [← sum_mul]
+  calc Divergence.second (Divergence.joint j l) (Divergence.joint p k)
+        = ∑ x, (j.mass x ^ 2 / p.mass x)
+            * Divergence.second (l x) (k x) :=
+          Divergence.joint_chi2 j p l k
+    _ ≤ ∑ x, (j.mass x ^ 2 / p.mass x) * (1 + e2) := h1
+    _ = Divergence.second j p * (1 + e2) := h2
+    _ ≤ (1 + e1) * (1 + e2) := mul_le_mul_of_nonneg_right hj he2
+
 end FT1536.SecondMoment
