@@ -174,6 +174,30 @@ accounting CORRECTED: `e` is the SIGN sampler's chi^2 (delta->e composition
 MT-assumption's law), not a constant. Next: the B4 toolkit kernel lemmas
 (`second_le_of_pointwise`, conditioning/hit-miss transfers).
 
+## 2026-10-01 (night) — B4 toolkit done: SecondMoment.lean 0/0
+
+`formal/SecondMoment.lean`: `second_nonneg`, `second_le_of_pointwise`
+(pointwise (1+-d) => second <= (1+d)^2), `LawCond`/`LawCond_mass`/
+`second_cond_le` (conservative 1/m^2 conditioning transfer),
+`ac_of_pointwise`, and THE certificate constructor
+`localJointCertificate_of_pointwise` (pointwise bound =>
+`LocalJointCertificate S ((1+d)^2 - 1)`). Dependency chain rebuilt into
+check_lib: GameInvariants, LazySampling, LawBinding (all 0/0). Lessons:
+- `field_simp` CLOSES field identities on its own — `ring` after it is the
+  `No goals` trap (hit twice);
+- `sum_div` runs quot-of-sums = sum-of-quotients — the folding direction
+  needs `.symm` (hit twice as well);
+- `have h := sum_le_sum ...` needs an explicit type (the finset is not
+  inferable from an unannotated `have`);
+- `LawCond` REQUIRES the positive-mass hypothesis: at `event = 0` the
+  normalization `0/0`-collapses and `total` is unprovable (design catch,
+  not a tactic issue);
+- goals carrying lambda-beta redexes (Law.total of a def) need a `show` of
+  the unfolded form before any `rw`.
+
+Next: the delta -> e composition (pointwise law comparison of the real
+emitted sign-sampler law vs `SigmaMath.freshHonest`).
+
 ## Zasady
 
 - **Recenzja przed commitem** (decyzja właściciela 2026-09-30): każdy
