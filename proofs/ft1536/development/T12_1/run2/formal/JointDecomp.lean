@@ -1,6 +1,7 @@
 import FT1536.Divergence
 import Run2.LawBinding
 import SecondMoment
+import VerifyBind.HashTo
 
 /-! # Marginal-joint decomposition and second-moment transport (rung B4)
 
@@ -258,5 +259,177 @@ theorem second_joint_transport_le (q : Law (α × β)) (k : Law α)
   conv_lhs => rw [← decomposition q]
   exact Divergence.joint_bound (marginal q) k (condOf q) l (1 + e)
     (fun x _ => hc x)
+
+/-! ### The joint-bounds constructor for `Run2.LocalJointCertificate` -/
+
+/-- The honest per-challenge reply family: `FT1536.SigmaMath.freshHonest h`
+decomposes as `Divergence.joint Law.uniform (honestReply h)` (see
+`freshHonest_eq_joint`), and `honestReply h c` is exactly the conditional of
+`freshHonest h` at the challenge `c` (see `freshHonest_condOf`). This is the
+comparison target of layer 2 (reply per challenge). -/
+noncomputable def honestReply (h c : FT1536.Relation.Rq) :
+    Law (Option FT1536.PublicSimulation.BoxVec) :=
+  FT1536.PublicSimulation.signBody (FT1536.SigmaMath.syndrome h) c
+
+/-- The uniform mass is positive at every point. -/
+theorem uniform_mass_pos (c : FT1536.Relation.Rq) :
+    (0:ℝ) < (Law.uniform : Law FT1536.Relation.Rq).mass c := by
+  show (0:ℝ) < 1 / Fintype.card FT1536.Relation.Rq
+  have hn : (0:ℕ) < Fintype.card FT1536.Relation.Rq :=
+    Fintype.card_pos_iff.mpr (by infer_instance)
+  have hn' : (0:ℝ) < Fintype.card FT1536.Relation.Rq := by exact_mod_cast hn
+  exact div_pos (by norm_num) hn'
+
+/-- Absolute continuity against `Law.uniform` is free: the uniform mass is
+positive everywhere. -/
+theorem ac_uniform (q : Law FT1536.Relation.Rq) :
+    Divergence.AC q (Law.uniform : Law FT1536.Relation.Rq) := by
+  intro x hx
+  exact absurd hx (ne_of_gt (uniform_mass_pos x))
+
+/-- `FT1536.SigmaMath.freshHonest h` in its pinned joint form. -/
+theorem freshHonest_eq_joint (h : FT1536.Relation.Rq) :
+    FT1536.SigmaMath.freshHonest h
+      = Divergence.joint (Law.uniform : Law FT1536.Relation.Rq) (honestReply h) :=
+  rfl
+
+/-- `honestReply h c` is the conditional of `FT1536.SigmaMath.freshHonest h`
+at `c`: the marginal of `freshHonest` is `Law.uniform`, positive everywhere,
+so the fallback is never engaged. -/
+theorem freshHonest_condOf (h c : FT1536.Relation.Rq) :
+    condOf (FT1536.SigmaMath.freshHonest h) c = honestReply h c := by
+  rw [freshHonest_eq_joint h]
+  exact condOf_joint (Law.uniform : Law FT1536.Relation.Rq) (honestReply h) c
+    (uniform_mass_pos c)
+
+/-- THE B4 joint-bounds constructor: two layer bounds compose directly into
+a full `FT1536.Run2.LocalJointCertificate` with
+`e = (1 + d1) * (1 + d2) - 1`.
+
+* Layer 1 (challenge): the sampler's challenge marginal
+  `marginal (samplerLaw S h st m r)` (defeq `(...).map Prod.fst`) has second
+  moment at most `1 + d1` against `Law.uniform`; the ROM exact case `d1 = 0`
+  is `localJointCertificate_of_uniform_challenge`;
+* Layer 2 (reply per challenge): the conditional of the sampler law at each
+  challenge `c` has second moment at most `1 + d2` against the honest reply
+  family `honestReply h c`, which IS the conditional of
+  `FT1536.SigmaMath.freshHonest h` (`freshHonest_condOf`);
+* `hac` is the support/AC part of layer 2 — a pure second-moment bound does
+  not see points where the honest mass is zero. -/
+theorem localJointCertificate_of_joint_bounds
+    (S : FT1536.Run2.Sampler) (d1 d2 : ℝ) (hd1 : 0 ≤ d1) (hd2 : 0 ≤ d2)
+    (hmarg : ∀ (h : FT1536.Relation.Rq) (st : FT1536.Run2.State)
+      (m : FT1536.Run2.Bytes) (r : FT1536.Run2.Nonce),
+      Divergence.second (marginal (FT1536.Run2.samplerLaw S h st m r))
+        (Law.uniform : Law FT1536.Relation.Rq) ≤ 1 + d1)
+    (hcond : ∀ (h : FT1536.Relation.Rq) (st : FT1536.Run2.State)
+      (m : FT1536.Run2.Bytes) (r : FT1536.Run2.Nonce) (c : FT1536.Relation.Rq),
+      Divergence.second (condOf (FT1536.Run2.samplerLaw S h st m r) c)
+        (honestReply h c) ≤ 1 + d2)
+    (hac : ∀ (h : FT1536.Relation.Rq) (st : FT1536.Run2.State)
+      (m : FT1536.Run2.Bytes) (r : FT1536.Run2.Nonce) (c : FT1536.Relation.Rq)
+      (z : Option FT1536.PublicSimulation.BoxVec),
+      (honestReply h c).mass z = 0 →
+        (condOf (FT1536.Run2.samplerLaw S h st m r) c).mass z = 0) :
+    FT1536.Run2.LocalJointCertificate S ((1 + d1) * (1 + d2) - 1) where
+  nonnegative := by
+    have h12 : ((1 + d1) * (1 + d2) - 1) = d1 + d2 + d1 * d2 := by ring
+    rw [h12]
+    nlinarith [mul_nonneg hd1 hd2]
+  ac h st m r := by
+    rw [← decomposition (FT1536.Run2.samplerLaw S h st m r),
+      freshHonest_eq_joint h]
+    exact Divergence.joint_ac (marginal (FT1536.Run2.samplerLaw S h st m r))
+      (Law.uniform : Law FT1536.Relation.Rq)
+      (condOf (FT1536.Run2.samplerLaw S h st m r)) (honestReply h)
+      (ac_uniform _) (fun x _ => hac h st m r x)
+  moment h st m r := by
+    have h12 : (1:ℝ) + ((1 + d1) * (1 + d2) - 1) = (1 + d1) * (1 + d2) := by
+      ring
+    rw [h12, ← decomposition (FT1536.Run2.samplerLaw S h st m r),
+      freshHonest_eq_joint h]
+    exact SecondMoment.second_joint_le
+      (marginal (FT1536.Run2.samplerLaw S h st m r))
+      (Law.uniform : Law FT1536.Relation.Rq)
+      (condOf (FT1536.Run2.samplerLaw S h st m r)) (honestReply h) d1 d2
+      (hmarg h st m r) (hcond h st m r) (by linarith [hd2])
+
+/-- The exact case `d1 = 0` of `localJointCertificate_of_joint_bounds`: if
+the challenge marginal satisfies `FT1536.VerifyBind.UniformChallenge` (the
+ROM identification with `Law.uniform`), the composed certificate has
+`e = (1 + 0) * (1 + d2) - 1 = d2`. -/
+theorem localJointCertificate_of_uniform_challenge
+    (S : FT1536.Run2.Sampler) (d2 : ℝ) (hd2 : 0 ≤ d2)
+    (huc : ∀ (h : FT1536.Relation.Rq) (st : FT1536.Run2.State)
+      (m : FT1536.Run2.Bytes) (r : FT1536.Run2.Nonce),
+      FT1536.VerifyBind.UniformChallenge
+        (marginal (FT1536.Run2.samplerLaw S h st m r)))
+    (hcond : ∀ (h : FT1536.Relation.Rq) (st : FT1536.Run2.State)
+      (m : FT1536.Run2.Bytes) (r : FT1536.Run2.Nonce) (c : FT1536.Relation.Rq),
+      Divergence.second (condOf (FT1536.Run2.samplerLaw S h st m r) c)
+        (honestReply h c) ≤ 1 + d2)
+    (hac : ∀ (h : FT1536.Relation.Rq) (st : FT1536.Run2.State)
+      (m : FT1536.Run2.Bytes) (r : FT1536.Run2.Nonce) (c : FT1536.Relation.Rq)
+      (z : Option FT1536.PublicSimulation.BoxVec),
+      (honestReply h c).mass z = 0 →
+        (condOf (FT1536.Run2.samplerLaw S h st m r) c).mass z = 0) :
+    FT1536.Run2.LocalJointCertificate S d2 := by
+  have hr : ((1 + (0:ℝ)) * (1 + d2) - 1) = d2 := by ring
+  rw [← hr]
+  refine localJointCertificate_of_joint_bounds S (0:ℝ) d2 (by norm_num) hd2
+    ?_ hcond hac
+  intro h st m r
+  have h1 : marginal (FT1536.Run2.samplerLaw S h st m r)
+      = (Law.uniform : Law FT1536.Relation.Rq) := huc h st m r
+  rw [h1, second_self]
+  norm_num
+
+/-- Per-pointwise shortcut: one-sided factors `(1 + d1)` and `(1 + d2)` on
+the two layers give the certificate `e = (1 + d1)^2 * (1 + d2)^2 - 1` (via
+`SecondMoment.second_le_of_pointwise`, with the support/AC part of layer 2
+supplied for free by `SecondMoment.ac_of_pointwise`). -/
+theorem localJointCertificate_of_pointwise_bounds
+    (S : FT1536.Run2.Sampler) (d1 d2 : ℝ) (hd1 : 0 ≤ d1) (hd2 : 0 ≤ d2)
+    (hmarg : ∀ (h : FT1536.Relation.Rq) (st : FT1536.Run2.State)
+      (m : FT1536.Run2.Bytes) (r : FT1536.Run2.Nonce) (c : FT1536.Relation.Rq),
+      (marginal (FT1536.Run2.samplerLaw S h st m r)).mass c
+        ≤ (1 + d1) * (Law.uniform : Law FT1536.Relation.Rq).mass c)
+    (hcond : ∀ (h : FT1536.Relation.Rq) (st : FT1536.Run2.State)
+      (m : FT1536.Run2.Bytes) (r : FT1536.Run2.Nonce) (c : FT1536.Relation.Rq)
+      (z : Option FT1536.PublicSimulation.BoxVec),
+      (condOf (FT1536.Run2.samplerLaw S h st m r) c).mass z
+        ≤ (1 + d2) * (honestReply h c).mass z) :
+    FT1536.Run2.LocalJointCertificate S ((1 + d1) ^ 2 * (1 + d2) ^ 2 - 1) := by
+  have hdn1 : (0:ℝ) ≤ (1 + d1) ^ 2 - 1 := by
+    have h : ((1:ℝ) + d1) ^ 2 - 1 = d1 ^ 2 + 2 * d1 := by ring
+    rw [h]
+    exact add_nonneg (sq_nonneg d1) (mul_nonneg (by norm_num) hd1)
+  have hdn2 : (0:ℝ) ≤ (1 + d2) ^ 2 - 1 := by
+    have h : ((1:ℝ) + d2) ^ 2 - 1 = d2 ^ 2 + 2 * d2 := by ring
+    rw [h]
+    exact add_nonneg (sq_nonneg d2) (mul_nonneg (by norm_num) hd2)
+  have hr : ((1 + ((1 + d1) ^ 2 - 1)) * (1 + ((1 + d2) ^ 2 - 1)) - 1)
+      = (1 + d1) ^ 2 * (1 + d2) ^ 2 - 1 := by ring
+  rw [← hr]
+  refine localJointCertificate_of_joint_bounds S ((1 + d1) ^ 2 - 1)
+    ((1 + d2) ^ 2 - 1) hdn1 hdn2 ?_ ?_ ?_
+  · intro h st m r
+    have h1 := SecondMoment.second_le_of_pointwise
+      (marginal (FT1536.Run2.samplerLaw S h st m r))
+      (Law.uniform : Law FT1536.Relation.Rq) d1 hd1 (hmarg h st m r)
+    have hr1 : (1:ℝ) + ((1 + d1) ^ 2 - 1) = (1 + d1) ^ 2 := by ring
+    rw [hr1]
+    exact h1
+  · intro h st m r c
+    have h1 := SecondMoment.second_le_of_pointwise
+      (condOf (FT1536.Run2.samplerLaw S h st m r) c) (honestReply h c) d2 hd2
+      (hcond h st m r c)
+    have hr1 : (1:ℝ) + ((1 + d2) ^ 2 - 1) = (1 + d2) ^ 2 := by ring
+    rw [hr1]
+    exact h1
+  · intro h st m r c z hz
+    exact SecondMoment.ac_of_pointwise
+      (condOf (FT1536.Run2.samplerLaw S h st m r) c) (honestReply h c)
+      (hcond h st m r c) z hz
 
 end FT1536.JointDecomp
