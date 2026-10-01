@@ -1,5 +1,26 @@
 # T12.1/source3 — żywy stan
 
+## Parsed final solver check passed — 2026-10-01
+
+Fresh batch008 passed14/14 clean with20 audits:29.379s,maxRSS2731312KiB.
+Receipt SHA256 `64198d2e86af3f48c650cde4868f4db3bad73ae3494233f03a8f70fdd9cf455a`.
+KeygenCheckOutcome.accepted now derives the1536-coordinate Loop and the
+pointwise modular equations from the entire parsed check suffix, actual
+uint32 reads and primitive source calls, plus observed return1. The same
+heap/pointers survive the suffix. Expression existence and3 source mutation
+rejections also passed. The source modp_set contract now derives canonical
+range/congruence; the missing int32_t frontend spelling is handled by an
+explicit M0 typedef-token normalization, with the failed raw-parser probe
+retained separately.
+
+Source NTT range/evaluation and earlier initializer/entry bindings remain
+explicit enclosing obligations. Next is the conversion/NTT source-memory
+connection, alongside the still-required full KeyGen attempt/caller and
+encoding chain. B1 remains ACTIVE / IN_PROGRESS / NOT_REVIEWED.
+Batch007 and its modular sources were saved locally as `6004ad89`; no push
+was performed by this worker. Foreign work and publication activity are
+preserved. Continue in this same source3 workspace and session.
+
 ## Static environment and modular-check continuation — 2026-10-01
 
 The complete FFT square/cubic tables are now parsed in checked32-row

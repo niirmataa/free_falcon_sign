@@ -1,5 +1,20 @@
 # source3 — żywy rejestr luk
 
+## Final solver-check loop is now derived from parsed execution
+
+Batch008 (`64198d2e86af3f48c650cde4868f4db3bad73ae3494233f03a8f70fdd9cf455a`)
+passed14/14 and20 audits. KeygenCheckOutcome.accepted derives all1536
+actual loaded-coordinate equations from source suffix execution/return1;
+KeygenFinalCheck.Loop is no longer assumed at this boundary. The read-only
+frame, expression existence and F/G/last-check/early-return syntax mutations
+are checked. The source modp_set range/congruence contract is also checked.
+
+Still required: derive suffix bindings, initializer executions and canonical
+transform words from the earlier solver prefix; prove source NTT evaluation
+and invertibility over the polynomial quotient; retain the same f/g/F/G/h
+through the complete caller and actual codecs. These obligations remain out
+of the final theorem's allowed premise list.
+
 ## Pinned FFT environment and final solver-check control
 
 Batch007 (`6ad9a6b64b5d149bfa3a8c5481549a2b4f4acd3c89fb026dfd3a7110531232c1`)

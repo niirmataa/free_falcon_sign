@@ -67,8 +67,15 @@ MODULES_007 = [
     'Source3.KeygenModpAddSub', 'Source3.KeygenFinalCheckAlgebra', 'Source3.KeygenFinalCheck',
     'Source3.KeygenFiber007Audit',
 ]
+MODULES_008 = [
+    'Source3.C99ModularReference', 'Source3.C99ModularParser', 'Source3.KeygenCheckProgram',
+    'Source3.KeygenCheckExpression', 'Source3.KeygenCheckGate', 'Source3.KeygenCheckIteration',
+    'Source3.C99ModularFlow', 'Source3.KeygenCheckLoopBridge', 'Source3.KeygenCheckExpressionSound',
+    'Source3.KeygenCheckMutations', 'Source3.C99ModularFrame', 'Source3.KeygenCheckOutcome',
+    'Source3.KeygenModpSet', 'Source3.KeygenFiber008Audit',
+]
 BATCH_MODULES = {'001': MODULES, '002': MODULES_002, '003': MODULES_003, '004': MODULES_004,
-                 '005': MODULES_005, '006': MODULES_006, '007': MODULES_007}
+                 '005': MODULES_005, '006': MODULES_006, '007': MODULES_007, '008': MODULES_008}
 
 
 def sha(path):
@@ -110,7 +117,7 @@ def record(label, batch='001'):
     for group in groups:
         assert {a.strip() for a in group.split(',') if a.strip()} <= {'propext', 'Classical.choice', 'Quot.sound'}
     count = len(groups) + audit.count('does not depend on any axioms')
-    assert count == {'001': 20, '002': 20, '003': 20, '004': 24, '005': 32, '006': 25, '007': 25}[batch], count
+    assert count == {'001': 20, '002': 20, '003': 20, '004': 24, '005': 32, '006': 25, '007': 25, '008': 20}[batch], count
     reused = {e['module']: e for e in inputs['reused']}
     visited, dependencies, boundary = set(), [], set()
 
@@ -142,7 +149,7 @@ def record(label, batch='001'):
     ]
     if batch == '002':
         evidence_inputs.append(('check_keygen_montgomery.sage', 'keygen_montgomery_checks_001', 'KEYGEN_MONTGOMERY_CHECK.json'))
-    if batch in {'003', '004', '005', '006', '007'}:
+    if batch in {'003', '004', '005', '006', '007', '008'}:
         evidence_inputs.append(('check_fft_procedure_bindings.sage', 'keygen_fft_procedure_bindings_001', 'FFT_PROCEDURE_BINDINGS.json'))
     for filename, run, result in evidence_inputs:
         directory = ROOT / '.build/jobs' / run
@@ -163,6 +170,8 @@ def record(label, batch='001'):
         'task': 'KEYGEN_SOURCE_TO_FIBER_001', 'batch': batch, 'status': 'IN_PROGRESS / NOT_REVIEWED',
         'scope': ('Pinned FFT globals, source attempt cap and modular-check components; full KeyGen remains open'
                   if batch == '007' else
+                  'Parsed final solver-check control and word-to-residue conversion; full KeyGen/NTT remains open'
+                  if batch == '008' else
                   'Checked internal batch; not a full source KeyGen or full certificate theorem'),
         'final_source_theorem_proved': False,
         'modules': rows, 'audited_internal_exports': count, 'dependencies': dependencies,
@@ -176,7 +185,7 @@ def record(label, batch='001'):
         'maxrss_kib': max(r['cumulative_child_maxrss_kib'] for r in receipts),
         'open_obligations': [
             ('Instantiate the checked certificate and its pinned static environment in the same KeyGen invocation'
-             if batch == '007' else
+             if batch in {'007', '008'} else
              'Full source certificate prefix, FFT3/raw LDL, initialization and frame/lifetime binding'),
             'Full source KeyGen execution, final-attempt identity and source encoding/decoding proofs',
             'Source sampler bounds and preservation of the same material across calls',
