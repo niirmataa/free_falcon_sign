@@ -210,6 +210,39 @@ draws via get_u64/get_u8) — a dead pipe TODAY, but a live wire if any
 future profile starts using it. Pinned bytes must not change; this is a
 finding for the FT-family C candidate line.
 
+## 2026-10-02 (evening): T5-pointwise DONE — hattempt's math FULLY closed (commit 95bac2c0)
+
+The collision's happy ending: `T5Pointwise.lean` (1003 lines = window B's
+base `b2b36cad` + window A's fixes/additions; 0/0, 56/56 standard
+axioms). ALL FOUR stage transports proven pointwise
+(TowerRowRoad->TowerWhole, MachineEvalRoad->MachineStage,
+WrapCoordRoad->WrapStage, BoxRetentionRoad->BoxStage) + the composition
+`layer2_of_stageRoad` (attemptFactor < 1+2^-38, second < 1+2^-32). The
+rows->points road closed arithmetically: recorded margins = exactly the
+2-row product (`tower_margin_row2`); 3072 rows force 2^-58-class per-row
+budgets (`road_fit_3072_rows`); full rowBudget per row BUSTS the whole
+budget (`rowwise_fullBudget_busts`).
+
+**Insufficiency is now THEOREM-level, not warning-level:**
+- `massSandwich_not_pointwise` (at the exact margins of ALL four stages):
+  total-mass bounds NEVER give pointwise control;
+- `additiveError_no_machineStage`: additive error without a floor cannot
+  restate multiplicatively — BUT with a floor (`machineFloor` from
+  `t5_leaf_floor_gt`, window A's addition) the bridge
+  `machineStage_of_absErr_floor` closes the additive route CONDITIONALLY.
+
+**`hattempt` now reduces to PURE REALIZATION** (no new mathematics):
+per-row/per-op/per-coordinate data on the real `do_sign` weights
+(B1/source3), delivered as `PointwiseStageRoad` ->
+`attemptWeights_of_stageRoad` -> `layer2_of_stageRoad`. Note for B1: the
+3072-row variant needs the 2^-58-class row bound. After that: merge with
+`layer2_of_stageChain` in Assembly and `end_to_end` closes.
+
+Toolchain lessons added: `prod x : a, body` binds `body` with LIMITED
+binding (`prod i, 1 - b i` silently parses outside the product - ALWAYS
+parenthesize); Rat.cast trap extension: nlinarith/simpa choke on heavy
+local hypotheses - prove small facts in clean context first.
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
