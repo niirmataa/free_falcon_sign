@@ -180,6 +180,36 @@ lemma type is recorded on both sides). Once B1 delivers the transport
 `do_sign -> AttemptShape` + `TowerWhole` realized on target (per point,
 with tail), the whole of B4/3 closes with no new mathematics.
 
+## 2026-10-02 (post-compact): B2/AdvPRG DONE — hprg delivered, route (a) closed BY THEOREM
+
+`AdvPrg.lean` (0/0, 71/71 standard axioms; commit 3870dc50). The final
+assumption is ONE named predicate, `ChaCha20PRFBound` — the standard
+distinguishing game for the ChaCha20 stream of the pinned `Extra/c/frng.c`
+(SHAKE-256 seeding <- /dev/urandom + user seed) vs the uniform tape, at
+total consumption `n = beta.qs * S.bits` bits, budget `deltaPRG`. The SHAPE
+is proven both ways: `ChaCha20PRFBound tau delta <-> AdvPRG tau <= delta`
+(exactly the same delta) — `hprg` plugs into the B5 consumer
+(`assembled_hardness_substitution_chacha`) with zero slack. Consumption is
+kernel-counted: `S.bits` per sampler call (rfl), <= beta.qs calls per
+budget game (structural Program tokens); generator state 56 B = 2^448
+states, block 64 B, refill 4096 B = 64 blocks; nonce 320 bits/query comes
+from SHAKE (A2 boundary, outside the ChaCha20 claim).
+
+**Route (a) is now closed by theorem** (not just by the D2 decision): the
+stream is a function of the 56-byte seed => `1 - 2^448/2^n <= AdvPRG` —
+any delta satisfying the assumption on the real tape is >= `1-2^448/2^n`
+(~1 at real lengths). The statistical reading of deltaPRG is ~1 and
+vacuous; only the COMPUTATIONAL `Adv_PRG(ChaCha20)` at the stated
+consumption is meaningful (route (b)). A future ideal-PRNG theorem would
+delete `deltaPRG` from the assembly entirely.
+
+**C-side audit finding (recorded, not smoothed):** `falcon_prng_get_bytes`
+(`frng.c:355`) copies from the buffer START, unlike the indexed
+`get_u8`/`get_u64`. In the pinned profile nothing calls it (the sampler
+draws via get_u64/get_u8) — a dead pipe TODAY, but a live wire if any
+future profile starts using it. Pinned bytes must not change; this is a
+finding for the FT-family C candidate line.
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
