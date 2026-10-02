@@ -147,6 +147,39 @@ separate.
 Non-arguments (open, recorded): the byte bridge, the additive-error mass
 floor. A2 rides in `huc`; A1/A5 bite into `hkey`; A3/A4 in the byte bridge.
 
+## 2026-10-02 (night, late): AttemptWeights DONE — the heavy core's analytics closed
+
+`AttemptWeights.lean` (781 lines, 0/0, 51/51 standard axioms; commits
+2eec3920/0190943c). `attemptFactor = machineMargin * towerMargin *
+wrapFactor * boxFactor` (exact, `rfl`) with ALL numeric margins proven
+kernel-side (tower < 1+2^-43, machine < 1+2^-42, wrap < 1+1/(2^39-1), box
+< 1+1e-30; composition `attemptFactor_comp_lt` from the stage table).
+
+**Both attempt shapes are now kernelized** (no shape assumed):
+- unconditioned (sample-then-check): `rejB = 2^-24` OUTSIDE the factor,
+  `layer2_of_stageChain` -> `second < 1+2^-32`;
+- acceptance-conditioned: delta EXACTLY `1/(1-rejB)` inside
+  (`conditioned_ratio_le`), `conditionedFactor < 1+2^-23`, `e2 < 2^-17`
+  (`layer2_e2_conditioned`). Truncated weights have zero tail mass — the
+  tail sandwich cannot pass through them (the same counterexample).
+
+**The whole-tail sandwich is proven NECESSARY** (kernel counter-theorems
+`bulkOnly_tail_uncontrolled` / `bulkOnly_normalized_tail_uncontrolled`,
+witnesses `zeroPair`/`liftPair`): any future "tail mass is negligible"
+shortcut is inadmissible in this proof shape. The global tail theorem
+(`regionMass`, `RegionSandwich`, `sandwich_regionMass`,
+`sandwich_tailMass`, `tail_ratio_le`) transfers the sandwiches to EVERY
+region's masses with identical margins.
+
+**`hattempt`'s remaining content is now purely realization (no analytics
+left):** the definitions of the realized weights `target/mach/wrapS/w` and
+their four POINTWISE stage sandwiches — which need (i) the `do_sign` core
+binding (B1/source3) and (ii) the T5/REFINE material RE-STATED POINTWISE
+(their current bounds are TOTAL masses, not pointwise — the exact missing
+lemma type is recorded on both sides). Once B1 delivers the transport
+`do_sign -> AttemptShape` + `TowerWhole` realized on target (per point,
+with tail), the whole of B4/3 closes with no new mathematics.
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
