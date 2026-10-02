@@ -1,0 +1,79 @@
+{
+  "task": "KEYGEN_SOURCE_TO_FIBER_001",
+  "batch": "BATCH_010",
+  "stage": "B1.02 (partial by B1_STAGED_ROADMAP iron rule 3: recoverable mid-point frozen at the 2.1/2.2 window close)",
+  "status": "IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN",
+  "scope": "B1.02 remainder section 2.1 (partial) and 2.2: loop counters and pointer positions from execution for the FIRST pass (u=k, r1=a+k*stride, r2=a+(hn+k)*stride, k<=768) and the TRIPLE pass (u=3k, r=2^9+k, r1=a+k*(3*stride), k<=512), with the stride=1 boundary (2.2) kept unclaimed. Intermediate-pass counter/position derivation (2.1.1 second bullet) and butterfly call-observation extraction (2.1.2) remain open within B1.02.",
+  "session_harness": "MiMo V2.6 Pro (B1 continuation window)",
+  "runner_note": "tools/job.py is byte-identical to the pinned runner (runner_sha256 below); its hardcoded PREFLIGHT 'model'/'session' fields are historical labels of the runner and do NOT describe this window's harness. Documented here rather than editing the pinned runner.",
+  "runner_sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+  "input_pins_reverified": {
+    "protocol": "KEYGEN_RESIDUE_CHECKPOINT.md section 6 step 2, executed before any new claim",
+    "keygen_ntt_frontend_004_RECEIPTS.json": "f2efa0ee078c3d84dc8754829a46ad8e5944d3372a58d2c468499904d9ba621c",
+    "keygen_ntt_frontend_004_SOURCE_INPUTS.json": "63764e25e351c007c512996ccac4270194575e76f3c839c37a7d95d6675237fe",
+    "keygen_ntt_frontend_004_sources": "22/23 MATCH; the single drift is Source3.C99ModularParser (48df50ea... -> 6f6c03e1...), the known regionContext supersession of commit 5ec12a55 whose full cached descendant closure (all 23 frontend_004 modules) was re-proved in keygen_ntt_forward_programs_003 with the current parser",
+    "keygen_ntt_forward_programs_003_RECEIPTS.json": "12beedee53807afa7fa9d329b5d776956bad43f9d38c9a9f5a6e2a02f633fdcc",
+    "keygen_ntt_forward_programs_003_SOURCE_INPUTS.json": "5b7334103f0ae61192e0a70d924667edc23e66ca01b95cc94d75473d9d60b230",
+    "keygen_ntt_forward_programs_003_sources": "24/24 MATCH against working tree before new work",
+    "keygen_ntt_forward_exec_005_RECEIPTS.json": "87fd901fed7228e3022469037c14f6cf6fb19230c87b19ae1bfb782d6a8fa958",
+    "keygen_ntt_forward_exec_005_SOURCE_INPUTS.json": "9dffe32ca8025e2344851c40f16bcc8596f2e52039a5429a7cfb95d681b67e53",
+    "keygen_ntt_forward_exec_005_sources": "1/1 MATCH against working tree before new work",
+    "checkpoint_section_1_2_file_pins": "all 9 committed-file SHA256s MATCH the working tree"
+  },
+  "commits": {
+    "e81051c4": "proof(T12.1): loop-support machinery for forward-NTT pass derivations",
+    "6343029e": "proof(T12.1): first-pass loop counters and pointer positions from execution",
+    "05ef631f": "proof(T12.1): triple-pass loop counters and pointer positions from execution"
+  },
+  "modules": {
+    "Source3.KeygenNttLoopSupport": {
+      "source": "formal/Source3/KeygenNttLoopSupport.lean",
+      "source_sha256": "c305a4e46491b5570f2a64123727ac321b15a04192da948ef3bd743c5c798e7d",
+      "change": "new: statement inversions (bindPtr/store32/scope/assign/update), uint64 counter/offset arithmetic forced by executed evaluations, generic pointer-position equations (pointer_root), local-write frame fold (atom_frame/chain_frame/block_frame)"
+    },
+    "Source3.KeygenNttFirstLoop": {
+      "source": "formal/Source3/KeygenNttFirstLoop.lean",
+      "source_sha256": "1ce8e0634366a1db380f43946af7eb802eabdf015f2b91545a89824673e84c3a",
+      "change": "new: FirstInv/FirstTrace and first_result (2.1.1 first bullet) - u=k, r1=a+k*stride, r2=a+(hn+k)*stride, k<=768 from execution"
+    },
+    "Source3.KeygenNttTripleLoop": {
+      "source": "formal/Source3/KeygenNttTripleLoop.lean",
+      "source_sha256": "aeec1c131af214234a8165dacb41f82b5727a06d61cc182ec57de92d3e86a0da",
+      "change": "new: TripleInv/TripleTrace and triple_result (2.1.1 third bullet) - u=3k, r=2^9+k, r1=a+k*(3*stride), k<=512 from execution"
+    }
+  },
+  "passing_jobs": {
+    "keygen_ntt_loop_support_006": {
+      "modules": 1,
+      "result": "1/1 accepted, logs 0/0, maxRSS 2513828 KiB, 1.718s",
+      "RECEIPTS.json": "d67240e2c195d475cbdef065e7b7579e1369b5b59bc00294d44a47c0a5335b02",
+      "SOURCE_INPUTS.json": "e28cbff75bc9cb6eb81dbeb0cd119e34d1b3f330b0d872e87c9dee7d19632a8f"
+    },
+    "keygen_ntt_first_loop_005": {
+      "modules": 1,
+      "result": "1/1 accepted, logs 0/0, maxRSS 2510248 KiB, 2.370s",
+      "RECEIPTS.json": "ee6b5593b62ba444cf7a9e7193c69953bc0856481e407e0be4169360b91c0496",
+      "SOURCE_INPUTS.json": "70e4e64ec7d70630fe792a5e331c3f021485705f2526156bc640cdef3707086e"
+    },
+    "keygen_ntt_triple_loop_006": {
+      "modules": 1,
+      "result": "1/1 accepted, logs 0/0, maxRSS 2518000 KiB, 6.133s",
+      "RECEIPTS.json": "67b9b545fd86e4b141dbdb318c3ff0c2dc9e21df50fd42ad291cdf6d1e70e000",
+      "SOURCE_INPUTS.json": "1a7bcb934cfb098a9d93ffe9024b52e1e5ef9ddb4a31d8a79d4c2a33a9dda9ad"
+    }
+  },
+  "retained_failed_attempts": [
+    "keygen_ntt_loop_support_001..005 (elaboration/defeq/lint iterations)",
+    "keygen_ntt_first_loop_001..004 (binder keyword `end`, Result-vs-State arguments, induction motive)",
+    "keygen_ntt_triple_loop_001..005 (namespace qualification, atom-order alignment, simp normalization lints)"
+  ],
+  "remaining_in_b1_02": [
+    "2.1.1 second bullet: intermediate passes (u1Loop/vLoop) counters m,t,u1,v1,v and positions r1 = a + v1*stride + v*stride, r2 = r1 + ht*stride + v*stride from the executed bindPtr chain (r2 re-derived from r1 each u1 round via htBind)",
+    "2.1.2: extract FirstCalls/BinaryCalls/TripleCalls from the parsed memory/control bodies firstBody/binaryBody/tripleBody (same shape as KeygenCheckOutcome.accepted)"
+  ],
+  "boundaries": {
+    "2.2_stride_1": "stride=1 is bound to the pinned wrapper argument (wrapper_source); instantiating it through the actual call frame is B1.07 work and is NOT claimed here. All new theorems quantify over a symbolic stride magnitude s with explicit non-overflow premises on the executed size_t index products (768*s < 2^64 for the first pass, 3*s < 2^64 for the triple pass).",
+    "no_value_invariants": "No value/range/polynomial invariant is claimed (those are B1.04).",
+    "no_oracle": "All facts derive from Exec derivations with the fixed Call table; no NTT oracle and no success constructor carries evaluations."
+  }
+}

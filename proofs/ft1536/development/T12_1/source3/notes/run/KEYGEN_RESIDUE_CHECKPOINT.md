@@ -1,171 +1,153 @@
 # KEYGEN_SOURCE_TO_FIBER_001 — residue checkpoint (expanded)
 
 Package status: **IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN**.
-Checkpoint written 2026-10-02 at the B1.02 window close (staged-roadmap
-iron rule 3: the stage is BIG and froze at a recoverable mid-point with
-exact remaining obligations; not a failure). Session harness:
-**MiMo V2.6 Pro** (B1 continuation window; explicit handoff from GPT-6
-Astra per `run2/notes/PROMPT_B1_CONTINUATION.md`). Batch receipt pair:
-`KEYGEN_SOURCE_TO_FIBER_001_BATCH_009.json` + `_BATCH_009_NOTES.md`.
+Checkpoint written 2026-10-02 at the B1.02 2.1/2.2 window close
+(staged-roadmap iron rule 3: the stage is BIG and froze at a recoverable
+mid-point with exact remaining obligations; not a failure). Session
+harness: **MiMo V2.6 Pro** (B1 continuation window). Batch receipt pair:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_010.json` + `_BATCH_010_NOTES.md`.
 This file supersedes the previous expanded checkpoint; carried facts are
-in section 5.
+in section 5. The window executed EXCLUSIVELY sections 2.1/2.2 of the
+then-current remainder, per the section 6 resume protocol.
 
 ## 1. Closed — commits, modules, evidence (verified before commit)
 
-Three local commits on `main`, no push (owner signal):
+Three local commits on `main` this window (no push, owner signal absent),
+on top of the previous window's `a2679fc5`/`5ec12a55`/`c4d02bac`:
 
 | Commit | Scope | Checked by |
 |---|---|---|
-| `a2679fc5` | `C99ModularReference` (retVoid), `C99ModularParser` (forward-NTT grammar), `C99ModularAnnotation`, `C99ModularFlow`, `C99ModularFrame`, `KeygenCheckLoopBridge`, `KeygenResidueLoop` | job `keygen_ntt_frontend_004` |
-| `5ec12a55` | `C99ModularParser` (regionContext), `KeygenNttForwardPrograms` (new) | job `keygen_ntt_forward_programs_003` |
-| `c4d02bac` | `KeygenNttForwardExec` (new) | job `keygen_ntt_forward_exec_005` |
+| `e81051c4` | `KeygenNttLoopSupport` (new): statement inversions, uint64 counter/offset arithmetic from executed evaluations, pointer-root position equations, local-write frame fold | job `keygen_ntt_loop_support_006` |
+| `6343029e` | `KeygenNttFirstLoop` (new): first-pass loop counters/positions — `u ↦ k`, `r1 = a + k*stride`, `r2 = a + (hn+k)*stride`, `k ≤ 768` | job `keygen_ntt_first_loop_005` |
+| `05ef631f` | `KeygenNttTripleLoop` (new): triple-pass loop counters/positions — `u ↦ 3k`, `r ↦ 2^9+k`, `r1 = a + k*(3*stride)`, `k ≤ 512` | job `keygen_ntt_triple_loop_006` |
 
 ### 1.1 What is proved (kernel, no sorries, no oracle)
 
-- **Grammar extension (syntax/control, separate commit).**
-  `C99ModularParser` accepts exactly the pinned `modp_NTT3_ext` control
-  syntax: void `return;` (`Stmt.retVoid` + `Exec.retVoid`),
-  `uint32_t *r1, *r2;` declarations (`declarePtr` chain), pointer
-  assignment/advance through a threaded pointer-name `Context`
-  (`bindPtr`: `r1 = a`, `r2 = a + hn * stride`, `r2 = r1 + ht * stride`,
-  `r1 += stride`), comma-separated for-init/for-increment clauses
-  (`clauses` with terminator token), compound updates (`m <<= 1`,
-  `u += 3`, `v1 += t` via `updateOp`), and the **MKN macro expansion**
-  (`C99ArrayParser.mkn`, never a Call). Pointer `++` is rejected, not
-  mis-parsed. All five consumers of checkpoint 2.3 patched;
-  `KeygenCheckGate.return_literal` needed no change. The full cached
-  descendant closure (23 modules) rebuilt accepted/clean and **every
-  earlier pinned parse is re-proved unchanged** (`region 7386 11`,
-  `region 7367 6` incl. the signed annotation, `region 3070 7`,
-  `region 3095 7`, `region 3115 20`, KeygenCheckMutations rejections).
-- **Complete forward body.** `KeygenNttForwardPrograms` (new):
-  `body_source : C99ModularParser.region 3046 91 = some forwardBody`
-  with `forwardBody = glue prologue (glue firstPass (glue
-  intermediatePass triplePass))` (`glue` = sequence composition modulo
-  the parser's synthetic skip terminator). Parts pinned to their
-  contiguous regions: `prologue_source` (`region 3046 9`),
-  `first_source` (`regionContext ["r1","r2"] 3066 12`),
-  `intermediate_source` (`… 3082 24`), `triple_source` (`… 3110 27`).
-  Every guard retained, including `if (logn == 0) return;`. The wrapper
-  macro `modp_NTT3(…,1,…)` → `modp_NTT3_ext` stays separately pinned
-  (`KeygenNttButterflyPrograms.wrapper_source`).
-- **Prologue execution derivation.** `KeygenNttForwardExec` (new):
-  `prologue_result : lognAt before → fullAt before → Exec prologue before
-  result → result = ⟨ready before, .normal⟩` with `ready_n_slot`
-  (`n ↦ (.uint64, some (.uint64 1536))`) and `ready_hn_slot`
-  (`hn ↦ (.uint64, some (.uint64 768))`). Values come FROM execution:
-  `mkn_value` evaluates the expanded MKN macro through the `size_t` cast
-  and both shifts (helpers `plus_three_value`, `minus_nine_value`,
-  `shl_full_value`, `literal_value`), `half_value` evaluates `n >> 1`,
-  `guard_value` derives the logn0 guard verdict from the actual `logn`
-  slot (branchTrue contradicts the evaluated guard at logn=10). The
-  statement-level extraction rests on var-major inversions
-  (`eval_scalar/cast/arith/shift/compare`, `assign_inv`, `base_inv`,
-  `scalar_inv`, `declarePtr_inv`, `seq_inv`, `branch_inv`,
-  `shift_left_value`, `declarations_result`) so every constructor binder
-  is explicit. No success constructor carries evaluations; calls execute
-  the pinned `Call` bodies only (modp_montymul/add/sub), no NTT oracle.
+- **2.1.1 first bullet — first pass, from execution.**
+  `KeygenNttFirstLoop.first_result`: from `Exec firstLoop before result`
+  plus entry slots (u declared, `hn ↦ 768`, symbolic `stride ↦ σ`,
+  `a ↦ aP`) and `768*σ < 2^64`, one gets `result.flow = .normal` and an
+  initial state with `FirstInv aP σ 0 s0` and a `FirstTrace` whose every
+  node carries `FirstInv aP σ k s`: `u ↦ k`, `r1 = aP + k*σ`,
+  `r2 = aP + (768+k)*σ` (i.e. `a + (hn+k)*stride` at the evaluated
+  stride), `k ≤ 768` derived from the executed guard. Positions come
+  from the executed `bindPtr` chain (`pointer_root`); guard verdicts from
+  the actual `u`/`hn` slots; the butterfly body preserves the loop state
+  (`block_frame`: block-local writes only).
+- **2.1.1 third bullet — triple pass, from execution.**
+  `KeygenNttTripleLoop.triple_result`: from `Exec tripleLoop before
+  result` plus entry slots (u/r declared, `lognAt` (logn=10),
+  `n ↦ 1536`, `stride ↦ σ`, `a ↦ aP`) and `3*σ < 2^64`, one gets a
+  `TripleTrace` whose nodes carry `u ↦ 3k`, `r ↦ 2^9+k` (the executed
+  `(size_t)1 << (logn-1)` value 512, derived by `rinit_value`), and
+  `r1 = aP + k*(3*σ)`, `k ≤ 512` from the executed `u < n` guard (which
+  is literally `C99CountedWords.condition`).
+- **2.2 stride=1 boundary — kept, not claimed.** All new theorems
+  quantify over symbolic σ with explicit non-overflow premises for the
+  executed `size_t` index products only; nothing instantiates stride=1
+  and the wrapper/call-frame binding stays B1.07 work.
+- No value/range/polynomial invariant anywhere in these modules (B1.04).
+  No success constructor carries evaluations; calls execute the pinned
+  `Call` bodies only.
 
 ### 1.2 Evidence pins (verified MATCH against current files)
 
-- Job `keygen_ntt_frontend_004`: 23/23 accepted, logs 0/0
-  (KeygenFiber008Audit/KeygenResidueAudit stdout = intended
-  type/term/axiom audits), maxRSS 3118652 KiB. RECEIPTS.json SHA256
-  `f2efa0ee078c3d84dc8754829a46ad8e5944d3372a58d2c468499904d9ba621c`;
+- Job `keygen_ntt_loop_support_006`: 1/1 accepted, logs 0/0,
+  maxRSS 2513828 KiB. RECEIPTS.json SHA256
+  `d67240e2c195d475cbdef065e7b7579e1369b5b59bc00294d44a47c0a5335b02`;
   SOURCE_INPUTS.json SHA256
-  `63764e25e351c007c512996ccac4270194575e76f3c839c37a7d95d6675237fe`.
-- Job `keygen_ntt_forward_programs_003`: 24/24 accepted, logs 0/0,
-  maxRSS 4462716 KiB. RECEIPTS.json SHA256
-  `12beedee53807afa7fa9d329b5d776956bad43f9d38c9a9f5a6e2a02f633fdcc`;
+  `e28cbff75bc9cb6eb81dbeb0cd119e34d1b3f330b0d872e87c9dee7d19632a8f`.
+- Job `keygen_ntt_first_loop_005`: 1/1 accepted, logs 0/0,
+  maxRSS 2510248 KiB. RECEIPTS.json SHA256
+  `ee6b5593b62ba444cf7a9e7193c69953bc0856481e407e0be4169360b91c0496`;
   SOURCE_INPUTS.json SHA256
-  `5b7334103f0ae61192e0a70d924667edc23e66ca01b95cc94d75473d9d60b230`.
-- Job `keygen_ntt_forward_exec_005`: 1/1 accepted, logs 0/0.
-  RECEIPTS.json SHA256
-  `87fd901fed7228e3022469037c14f6cf6fb19230c87b19ae1bfb782d6a8fa958`;
+  `70e4e64ec7d70630fe792a5e331c3f021485705f2526156bc640cdef3707086e`.
+- Job `keygen_ntt_triple_loop_006`: 1/1 accepted, logs 0/0,
+  maxRSS 2518000 KiB. RECEIPTS.json SHA256
+  `67b9b545fd86e4b141dbdb318c3ff0c2dc9e21df50fd42ad291cdf6d1e70e000`;
   SOURCE_INPUTS.json SHA256
-  `9dffe32ca8025e2344851c40f16bcc8596f2e52039a5429a7cfb95d681b67e53`.
-- Committed file SHA256s: `C99ModularReference.lean`
-  `2dd95f8162c5eebb340f3566fc47947bbbe3d5ace0443795b131bbb6df5be871`;
-  `C99ModularParser.lean`
-  `6f6c03e1c52955bac3b9c3ecefa41bb5bf3539ef3bcde69c89e848935c283fd2`;
-  `C99ModularAnnotation.lean`
-  `3d1e2e06ebe7c61406c696e168697cdfbfe4e66808e6e5e31d4e4f0701230315`;
-  `C99ModularFlow.lean`
-  `f1f3b83748211e854769768632f6b561c30e072234fb921c10a363274a04b3a4`;
-  `C99ModularFrame.lean`
-  `b13531594196b4d92b14c171b91306a6ad2b7bb54c6a45215428936a2076bce7`;
-  `KeygenCheckLoopBridge.lean`
-  `b81027ed026b1e7d28e154c2e488722391b7d1e600c4dd3ae15ae0a3d8b3e97a`;
-  `KeygenResidueLoop.lean`
-  `0f1a874a8d348965fa3c3f8cc1cf3492c94ea2340f6d042be889d076edd199fc`;
-  `KeygenNttForwardPrograms.lean`
-  `789d91a3881f9f9ea217c8a98d574560dde3cc4546da2e77c919e209d68e6513`;
-  `KeygenNttForwardExec.lean`
-  `df271c8494bc3656d5dc2f3ca4a83222f69dc220e70d5e3a01fdf682bf7afbb9`.
-- Input pins re-verified before new work: `keygen_ntt_frontend_002`
-  RECEIPTS `2103761326376591a723f89addd92a3fb1e3c6e07bc2d0d5499d55846f78f5d6`
-  / SOURCE_INPUTS
-  `314649f3121a3ffed190f2db9907b71e151c5124c71e155e67e2813fd9eb6f51`
-  (23/23 sources MATCH) and `keygen_ntt_butterfly_algebra_004` RECEIPTS
-  `38ba136a0b04a9c1e483f2475419591d8994002f0577b2e49542a5c8febc8948`
-  / SOURCE_INPUTS
-  `fcf73a35fab0b6359cea2b10495a126691947e8b38a88719d82266f3082bb8ca`
-  (1/1 MATCH).
-- Retained FAILED attempts (do not cite as PASS): `keygen_ntt_frontend_003`
-  (1/24 then stop), `keygen_ntt_forward_programs_001/002`,
-  `keygen_ntt_forward_exec_001..004`. NOTE: `_002` (failed overall)
-  already contained successful `prologue_source`/`body_source`
-  evaluations; cite the passing `_003` for those claims. The pinned
-  runner `tools/job.py` is byte-identical (sha256 `3bc29bf7…`); its
-  hardcoded PREFLIGHT `model`/`session` fields are historical labels,
-  not this window's harness (documented in BATCH_009, not silently
-  edited).
+  `1a7bcb934cfb098a9d93ffe9024b52e1e5ef9ddb4a31d8a79d4c2a33a9dda9ad`.
+- Committed file SHA256s: `KeygenNttLoopSupport.lean`
+  `c305a4e46491b5570f2a64123727ac321b15a04192da948ef3bd743c5c798e7d`;
+  `KeygenNttFirstLoop.lean`
+  `1ce8e0634366a1db380f43946af7eb802eabdf015f2b91545a89824673e84c3a`;
+  `KeygenNttTripleLoop.lean`
+  `aeec1c131af214234a8165dacb41f82b5727a06d61cc182ec57de92d3e86a0da`.
+- Input pins re-verified BEFORE new work (resume protocol step 2):
+  `keygen_ntt_frontend_004` RECEIPTS `f2efa0ee…` / SOURCE_INPUTS
+  `63764e25…` (22/23 MATCH; the single drift is `C99ModularParser`, the
+  documented regionContext supersession whose full descendant closure
+  was re-proved in `keygen_ntt_forward_programs_003`),
+  `keygen_ntt_forward_programs_003` RECEIPTS `12beedee…` / SOURCE_INPUTS
+  `5b733410…` (24/24 MATCH) and `keygen_ntt_forward_exec_005` RECEIPTS
+  `87fd901f…` / SOURCE_INPUTS `9dffe32c…` (1/1 MATCH). All nine
+  committed-file pins of the previous checkpoint section 1.2 re-verified
+  MATCH.
+- Retained FAILED attempts (do not cite as PASS):
+  `keygen_ntt_loop_support_001..005`, `keygen_ntt_first_loop_001..004`,
+  `keygen_ntt_triple_loop_001..005`. The pinned runner `tools/job.py` is
+  byte-identical (sha256 `3bc29bf7…`); its hardcoded PREFLIGHT
+  `model`/`session` fields are historical labels, not this window's
+  harness (documented in BATCH_009/010, not silently edited).
 
 ## 2. In flight — exact types and state
 
 B1.02 is at its Acceptance boundary minus two derived-observation
-obligations. Grammar, complete-body execution relation and prologue
-values are closed (section 1). The relation `C99ModularReference.Exec`
-over `forwardBody` is source-bound with the fixed `Call` table (actual
-pinned scalar bodies), i.e. the "no abstract NTT oracle" part of the
-Acceptance holds; the per-loop extraction listed below is the remaining
-part of the goal bullets.
+obligations (below). Grammar, complete-body execution relation, prologue
+values AND the first/triple pass counter+position extraction are closed
+(section 1). The relation `C99ModularReference.Exec` over `forwardBody`
+is source-bound with the fixed `Call` table; the remaining parts of the
+goal bullets are exactly 2.1.1-second and 2.1.2.
 
 ### 2.1 B1.02 remainder — exact obligations
 
-1. **Loop counters and pointer positions from execution** (Trace shape of
-   `KeygenResidueLoop.Trace` / `KeygenCheckLoopBridge.complete`, or the
-   `SmallintsCounter` increment shape):
+1. **Loop counters and pointer positions from execution** — PARTIAL:
    - first pass (`firstLoop`, `u < hn`, `u ++, r1 += stride,
-     r2 += stride`): after k iterations `u ↦ k`, `r1 = a + k*stride`,
-     `r2 = a + (hn+k)*stride`, k ≤ 768 (hn from `ready`);
+     r2 += stride`): **CLOSED** (`KeygenNttFirstLoop.first_result`:
+     `u ↦ k`, `r1 = a + k*stride`, `r2 = a + (hn+k)*stride`, `k ≤ 768`);
    - intermediate passes (`u1Loop`/`vLoop`, `m/t` doubling with
      `t = ht = t >> 1` per outer round): counters m,t,u1,v1,v and the
      positions `r1 = a + v1*stride + v*stride`, `r2 = r1 + ht*stride +
      v*stride` from the executed `bindPtr` chain (r2 re-derived from r1
-     each u1 round via `htBind`);
+     each u1 round via `htBind`) — **OPEN**. The nested u1Loop/vLoop
+     composition uses the same support lemmas (`update_result`,
+     `pointer_root`, `block_frame`-style frames for `u1Inner`'s bindPtr
+     atoms, `C99CountedWords`-style guards for `u1 < m`/`v < ht`). The
+     `v1*stride`/`ht*stride` bind products need explicit non-overflow
+     premises; derive `v1 ≤ 2^18`-class bounds from `m ≤ 2^8` and
+     `t ≤ 768` (the round count follows from `t` halving; `t*m=n` stays
+     B1.04 scope and must NOT be used);
    - triple pass (`tripleLoop`, `u < n`, `u += 3, r ++, r1 += 3*stride`):
-     `u ↦ 3k`, `r ↦ 2^9+k`, `r1 = a + k*(3*stride)`.
+     **CLOSED** (`KeygenNttTripleLoop.triple_result`: `u ↦ 3k`,
+     `r ↦ 2^9+k`, `r1 = a + k*(3*stride)`).
    No value/range/polynomial invariant belongs to this obligation (those
-   are B1.04). The increments are `bindPtr` advances; the exact `Exec`
-   inversions are already in `KeygenNttForwardExec`.
+   are B1.04).
 2. **Butterfly call-observation extraction (old 2.4)**: extract
    `FirstCalls`/`BinaryCalls`/`TripleCalls` from the parsed memory/
    control bodies `firstBody`/`binaryBody`/`tripleBody` (same shape as
-   `KeygenCheckOutcome.accepted`). Until then the call premises stay
-   interface, not conclusion.
+   `KeygenCheckOutcome.accepted`) — **OPEN**. Until then the call
+   premises stay interface, not conclusion. The extraction walks each
+   fixed chain with `eval_scalar`/`eval_arith` inversions and
+   `store32_result`, assembling the `KeygenNttButterflyAlgebra` call
+   structures with `Load32`/`Store32` witnesses at the current r1/r2
+   positions (which sections 2.1.1 now pin per iteration).
 
 ### 2.2 stride=1 boundary
 
 `stride = 1` is bound to the pinned wrapper argument
-(`wrapper_source`, literal `1` at the macro's second position). Instantiating
-it through the actual call frame is B1.07 work; this batch does not
-claim it as a derived execution fact.
+(`wrapper_source`, literal `1` at the macro's second position).
+Instantiating it through the actual call frame is B1.07 work; this batch
+does not claim it as a derived execution fact. All counter/position
+theorems are parameterized by the evaluated stride magnitude σ with
+explicit non-overflow premises on executed `size_t` products
+(`768*σ < 2^64` first pass, `3*σ < 2^64` triple pass), which the B1.07
+call frame discharges trivially.
 
 ## 3. Remaining work — order from `KEYGEN_SOURCE_TO_FIBER_001_EXECUTION_PLAN.md`
 
-1. **B1.02 (finish)**: 2.1/2.2 above; then the stage Acceptance is fully
-   met and its window may close as complete.
+1. **B1.02 (finish)**: 2.1.1-second (intermediate passes) and 2.1.2
+   above; then the stage Acceptance is fully met and its window may
+   close as complete.
 2. **B1.03** — source twiddle-table generation and memory layout
    (`modp_mkgm3`): `modp_R`/`modp_R2`, division body, REV10 data;
    per-row exponent/order law and Montgomery scale from executed stores;
@@ -182,8 +164,8 @@ claim it as a derived execution fact.
    the quotient injectivity step.
 4. **B1.05** — source solver success to exact integer NTRU (full active
    call graph source-bound; `poly_big_to_small`/`zint_one_to_plain`
-   bodies; MODE1 sampler bounds 1; material preservation; `exact_ntru_of_modular_check`
-   with residual bound 37748737).
+   bodies; MODE1 sampler bounds 1; material preservation;
+   `exact_ntru_of_modular_check` with residual bound 37748737).
 5. **B1.06** — source public computation and inverse
    (`falcon_compute_public` ternary q18433 branch, `mulRq` equations,
    fInv witness from nonzero evaluations).
@@ -191,7 +173,7 @@ claim it as a derived execution fact.
    gates of `run2/notes/S1_P_ACCEPT_FACTS.md` + attempt-cap semantics;
    LAW BOUNDARY: loop acceptance precedes capacity checks; call-level
    return 1 ≠ per-attempt acceptance; `1-(1-p_accept)^cap` needs a
-   probability law).
+   probability law). Includes the wrapper/stride=1 call-frame binding.
 7. **B1.08** — source secret-key serialization/decoding (accumulator
    low-suffix invariant; terminal `ne = -2`; four segments, header 0xaa;
    length formulas proved, not borrowed).
@@ -209,82 +191,93 @@ success constructors containing evaluations.
 ## 4. Traps encountered (do not re-trigger)
 
 1. **Failed job records look like evidence.** Re-hash the working tree
-   against SOURCE_INPUTS before citing a receipt (carried). New this
-   batch: a FAILED job (`keygen_ntt_forward_programs_002`) contained
-   passing sub-evaluations — cite the PASSING job for any claim.
-2. **Region numbering off-by-three** (carried): region line i = file
-   line i+3; synthetic `}` terminator; `take count` counts raw lines.
+   against SOURCE_INPUTS before citing a receipt (carried). New: a
+   passing job's twin with one superseded module (`frontend_004`'s
+   parser) must be read as historical step, not mismatch panic — check
+   the later job that rebuilt the closure.
+2. **Region numbering off-by-three** (carried).
 3. **Montgomery scale confusion** (carried).
-4. **Adding a Stmt/Exec constructor breaks five consumers** (carried,
-   list in old 2.3 — done this batch for retVoid; `return_literal` was
-   the one needing no patch).
+4. **Adding a Stmt/Exec constructor breaks five consumers** (carried).
 5. **`size_t` is not a `typeToken`** (carried).
-6. **`MKN` is a macro, not a call** (carried; now enforced in
-   `C99ModularParser.expr` as well).
+6. **`MKN` is a macro, not a call** (carried).
 7. **Shared `main`, several writers** (carried): exact pathspecs,
    `-m` before `--`, no amend/force-push, **no push** without an explicit
-   owner signal. Foreign commits landed mid-batch (`559ef949`,
-   `933f741a`, `132098c2`); none were touched.
-8. **Region sub-parses need their continuation context.** Standalone
-   `region` starts with an empty `Context`, so `r1 = a` parses as scalar
-   assign outside the whole body. Pin sub-regions with
-   `regionContext ["r1","r2"]`; keep `region` = `regionContext []` so
-   older pins stay valid.
+   owner signal. Foreign commits landed mid-batch again
+   (`4daec033`, `3870dc50`, `7e72e5ea`, `b36b3180`, `7307ca7a`,
+   `cb679213`, others); none were touched.
+8. **Region sub-parses need their continuation context** (carried).
 9. **Call-premise leakage** (carried): `FirstCalls`/`BinaryCalls`/
    `TripleCalls` remain interface until 2.1.2 extraction exists.
 10. **Attempt-cap law boundary** (carried, B1.07).
-11. **Elaborator shapes (new).** Parenthesize `names.map String.toList`
-    in constructor applications; `chain` is `KeygenNttButterflyPrograms.chain`;
-    `B20.C.Ty.i32` cannot be written `.i32` while `C99IntegerReference.Ty`
-    is open; `((n:Nat):Int)` and Int literals are different terms for
-    `rw`; `he : out = r` needs `subst r`, not `rw [he] at exit`, when
-    the hypothesis mentions `r`; a final `rw` can leave a residual `rfl`
-    goal behind a def (`ready`); `cases` binder lists follow FULL
-    constructor arity when the major premise has variable indices — use
-    var-major inversion lemmas to keep arities predictable.
+11. **Elaborator shapes** (carried).
+12. **A binder named `end` is a Lean keyword** — it breaks inductive
+    declarations and cascades into `autoImplicit` mysteries (new).
+13. **`cases … with` binder lists silently absorb fields that unify
+    with existing context variables** — reference the existing
+    state/result variables or use var-major inversion lemmas (new).
+14. **`simpa […] using h` loses defeq matching when only one side
+    normalizes** — use `show`/`rw` then `exact` for transports through
+    record updates, `u64` cells and `bindPointer` states (new).
+15. **`simp [key]` no-ops when simp pre-normalizes both sides of `key`**
+    (Nat distributivity/associativity) — use `rw [key]` (new).
+16. **`induction` on `Exec` needs a variable statement index** plus an
+    explicit `shape` equation (the `KeygenCheckLoopBridge.complete`
+    pattern); a concrete `.loop …` index rejects `induction` (new).
+17. **`List.Mem` is not `Or`** — bridge via `List.mem_cons`/
+    `List.mem_append` and `contains_iff` (new).
+18. **warningAsError makes unused simp args/tactic no-ops/variables hard
+    errors** — prefer `split_ifs` over `simp [set, hn]` when hypothesis
+    and goal forms differ syntactically (new).
 
 ## 5. Carried facts (earlier checkpoints, still true)
 
+- B1.02 closed items (previous window): grammar extension with all five
+  consumers patched and every earlier pinned parse re-proved unchanged;
+  `KeygenNttForwardPrograms` (`body_source`, four contiguous region
+  pins); `KeygenNttForwardExec` (`prologue_result`, `ready_n_slot`,
+  `ready_hn_slot`, `guard_value` for logn0). Jobs
+  `keygen_ntt_frontend_004` (23/23), `keygen_ntt_forward_programs_003`
+  (24/24), `keygen_ntt_forward_exec_005` (1/1); pins in the previous
+  checkpoint/BATCH_009. Retained FAILED:
+  `keygen_ntt_frontend_003`, `keygen_ntt_forward_programs_001/002`,
+  `keygen_ntt_forward_exec_001..004`.
 - `KeygenResidueVectors.source_vectors` consumes the Geometry.Vec
   representation of the four input arrays and execution of the parsed
   source conversion loop 7367–7372: canonical output residues over the
-  same integer coefficients. Source declarations, signed16 promotion,
-  modp_set calls, uint32 stores, all 1536 iterations and value-preserving
-  frames connected. Input/output non-aliasing and source entry layout
-  remain explicit local premises for the enclosing caller to derive.
+  same integer coefficients. Input/output non-aliasing and source entry
+  layout remain explicit local premises for the enclosing caller.
 - Retained checks: `keygen_modular_memory_closure_009` (15/15),
   `keygen_residue_store_010`..`keygen_residue_vectors_016` (7 modules),
   `keygen_residue_audit_017` (20 type/term/axiom audits; RECEIPTS SHA256
   `98a4a770a4c28c515ae8e1b4716d73d1e5bf58cf9163c0b8da83db467a617101`),
   `keygen_modular_suffix_checks_002` (Sage ZZ diagnostics; result SHA256
   `ed336129760e5178d482150f8f4d34556663b7ac637fa053811867a2ba00327b`).
-  The previous `_001` JSON-serialization failure remains retained. The
-  Sage probes are finite diagnostics, not replacements for kernel
+  The Sage probes are finite diagnostics, not replacements for kernel
   results.
 - B1.01 closed earlier (commits `d5cae83e`, `e53bf9ee`, `aa40bc94`):
-  `KeygenNttWordAlgebra` (radix 2^31 explicit, ordinary vs
-  Montgomery-scaled words distinguished), `KeygenFirstPrime`
-  (`first_entry` pin on the real PRIMES3 record), the
-  pointer-dereference grammar step, the pinned butterfly bodies
+  `KeygenNttWordAlgebra`, `KeygenFirstPrime`, the pointer-dereference
+  grammar step, the pinned butterfly bodies
   (`first_source`/`binary_source`/`triple_source`/`wrapper_source`) and
   `KeygenNttButterflyAlgebra` (`first_values`/`binary_values`/
-  `triple_values` over explicit call-observation structures). PASS jobs:
-  `keygen_ntt_frontend_002`, `keygen_ntt_butterfly_algebra_004` (pins in
-  section 1.2). Retained failed: `keygen_ntt_word_algebra_001`,
-  `keygen_ntt_butterfly_algebra_003`.
+  `triple_values` over explicit call-observation structures).
 
 ## 6. Resume protocol (next window)
 
 1. Read `WORK_STATE.md` (live), this file, the EXECUTION_PLAN and
    `run2/notes/B1_STAGED_ROADMAP.md`. The next window FINISHES B1.02
-   (section 2.1/2.2) — one stage per window; do not start B1.03.
+   (section 2.1.1-second + 2.1.2) — one stage per window; do not start
+   B1.03. Suggested order within the window: 2.1.2 extraction first
+   (three fixed chains, mechanical now that positions are pinned), then
+   the intermediate passes (the nested loop composition).
 2. Verify current pins against SOURCE_INPUTS.json of
-   `keygen_ntt_frontend_004`, `keygen_ntt_forward_programs_003` and
-   `keygen_ntt_forward_exec_005` before any new claim.
+   `keygen_ntt_loop_support_006`, `keygen_ntt_first_loop_005` and
+   `keygen_ntt_triple_loop_006` (plus the three previous-window jobs)
+   before any new claim.
 3. One proof job at a time (`tools/job_when_available.py`), unique
    labels, guarded serial compiles, logs 0/0, limits unchanged. Rebuild
    the FULL cached descendant closure of any changed module in one job
-   (topological order) — the runner asserts stale caches otherwise.
+   (topological order) — e.g. a `KeygenNttLoopSupport` change rebuilds
+   `KeygenNttFirstLoop` + `KeygenNttTripleLoop` in the same job.
 4. Small logical local commits on `main` with exact pathspecs after each
    verified step; NO push until an explicit owner signal. One Git writer
    at a time.

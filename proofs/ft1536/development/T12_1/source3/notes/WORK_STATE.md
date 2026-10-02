@@ -1,5 +1,41 @@
 # RUN_003 — source-bound kontynuacja T12.1
 
+## 2026-10-02 — B1.02 (2.1/2.2) w oknie MiMo: pętle first/triple — liczniki i pozycje wskaźników z wykonania
+
+W oknie kontynuacji B1 (harness: **MiMo V2.6 Pro**) wykonano WYŁĄCZNIE
+sekcje 2.1/2.2 pozostałego zakresu B1.02, z zamknięciem okna w
+odzyskiwalnym punkcie średnim wg iron rule 3
+`run2/notes/B1_STAGED_ROADMAP.md`. **IN_PROGRESS / NOT_REVIEWED**.
+Receipt batcha: `run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_010.json` +
+`_010_NOTES.md`; świeży checkpoint: `run/KEYGEN_RESIDUE_CHECKPOINT.md`.
+
+- Commity lokalne (bez push): `e81051c4` `KeygenNttLoopSupport`
+  (inwersje stwierdzeń, arytmetyka uint64 wymuszona wykonanymi
+  ewaluacjami, równania pozycji z `pointer_root`, fałda ram pisania),
+  `6343029e` `KeygenNttFirstLoop` (2.1.1 bullet 1: `u ↦ k`,
+  `r1 = a + k*stride`, `r2 = a + (hn+k)*stride`, `k ≤ 768`),
+  `05ef631f` `KeygenNttTripleLoop` (2.1.1 bullet 3: `u ↦ 3k`,
+  `r ↦ 2^9+k` z wykonanego `(size_t)1 << (logn-1)`, `r1 = a + k*(3*stride)`,
+  `k ≤ 512`).
+- Joby PASS: `keygen_ntt_loop_support_006`, `keygen_ntt_first_loop_005`,
+  `keygen_ntt_triple_loop_006` — logi 0/0, limity bez zmian. Zachowane
+  nieudane: `keygen_ntt_loop_support_001..005`,
+  `keygen_ntt_first_loop_001..004`, `keygen_ntt_triple_loop_001..005`.
+  Piny wejściowe trzech jobów poprzedniego okna zweryfikowane PRZED
+  nową pracą (jeden rozjazd = udokumentowana supersesja parsera).
+- **Pozostałe w B1.02:** 2.1.1 bullet 2 (pętle pośrednie u1Loop/vLoop:
+  liczniki m,t,u1,v1,v i pozycje z łańcucha `bindPtr`) oraz 2.1.2
+  (ekstrakcja `FirstCalls`/`BinaryCalls`/`TripleCalls` z `firstBody`/
+  `binaryBody`/`tripleBody`). `t*m=n` NIE wolno używać (B1.04).
+- **2.2 utrzymane:** `stride = 1` przypięte argumentem wrappera;
+  instancjacja przez ramę wywołania to B1.07. Wszystkie twierdzenia
+  parametryzowane symbolicznym σ z jawnymi warunkami nieprzepełnienia
+  produktów (`768*σ < 2^64`, `3*σ < 2^64`).
+- Nowe pułapki zapisane w checkpoint sekcji 4 (słowo kluczowe `end` w
+  wiązaniu, absorpcja zmiennych przez `cases`, `simpa` gubiący defeq,
+  `simp [key]` no-op, wzorzec `shape` dla `induction`, `List.Mem ≠ Or`,
+  linty warningAsError).
+
 ## 2026-10-02 — B1.02 w oknie MiMo: gramatyka forward-NTT, kompletne ciało, prolog
 
 W oknie kontynuacji B1 (harness: **MiMo V2.6 Pro**, handoff wg
