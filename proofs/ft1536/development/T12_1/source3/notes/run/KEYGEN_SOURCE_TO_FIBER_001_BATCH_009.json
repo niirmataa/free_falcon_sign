@@ -1,0 +1,114 @@
+{
+  "task": "KEYGEN_SOURCE_TO_FIBER_001",
+  "batch": "BATCH_009",
+  "stage": "B1.02 (partial by B1_STAGED_ROADMAP iron rule 3: recoverable mid-point frozen at the Acceptance boundary)",
+  "status": "IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN",
+  "scope": "Forward-NTT source grammar and execution: modular-frontend syntax extension for modp_NTT3_ext, complete body parse and four-part composition, prologue execution derivation (n=1536, hn=768 from execution). Loop counter/pointer-position derivations remain open within B1.02.",
+  "session_harness": "MiMo V2.6 Pro (B1 continuation window, explicit handoff from GPT-6 Astra per run2/notes/PROMPT_B1_CONTINUATION.md)",
+  "runner_note": "tools/job.py is byte-identical to the pinned runner (runner_sha256 below); its hardcoded PREFLIGHT 'model'/'session' fields are historical labels of the runner and do NOT describe this window's harness. Documented here rather than editing the pinned runner.",
+  "runner_sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+  "input_pins_reverified": {
+    "keygen_ntt_frontend_002_RECEIPTS.json": "2103761326376591a723f89addd92a3fb1e3c6e07bc2d0d5499d55846f78f5d6",
+    "keygen_ntt_frontend_002_SOURCE_INPUTS.json": "314649f3121a3ffed190f2db9907b71e151c5124c71e155e67e2813fd9eb6f51",
+    "keygen_ntt_frontend_002_sources": "23/23 MATCH against working tree before new work",
+    "keygen_ntt_butterfly_algebra_004_RECEIPTS.json": "38ba136a0b04a9c1e483f2475419591d8994002f0577b2e49542a5c8febc8948",
+    "keygen_ntt_butterfly_algebra_004_SOURCE_INPUTS.json": "fcf73a35fab0b6359cea2b10495a126691947e8b38a88719d82266f3082bb8ca",
+    "keygen_ntt_butterfly_algebra_004_sources": "1/1 MATCH against working tree before new work"
+  },
+  "commits": {
+    "a2679fc5": "proof(T12.1): forward-NTT control grammar for the modular frontend (syntax/control, separate commit)",
+    "5ec12a55": "proof(T12.1): complete forward-NTT body parsed and composed from its four source parts",
+    "c4d02bac": "proof(T12.1): prologue execution derivation - n=1536, hn=768 from execution"
+  },
+  "modules": {
+    "Source3.C99ModularReference": {
+      "source": "formal/Source3/C99ModularReference.lean",
+      "source_sha256": "2dd95f8162c5eebb340f3566fc47947bbbe3d5ace0443795b131bbb6df5be871",
+      "change": "Stmt.retVoid + Exec.retVoid (void return); no other semantic change"
+    },
+    "Source3.C99ModularParser": {
+      "source": "formal/Source3/C99ModularParser.lean",
+      "source_sha256": "6f6c03e1c52955bac3b9c3ecefa41bb5bf3539ef3bcde69c89e848935c283fd2",
+      "change": "pointer-name Context threading; return; ; uint32 pointer declarations; pointer assignment/advance via bindPtr; comma-separated for-clauses with compound updates; MKN macro expansion (never a Call); regionContext"
+    },
+    "Source3.C99ModularAnnotation": {
+      "source": "formal/Source3/C99ModularAnnotation.lean",
+      "source_sha256": "3d1e2e06ebe7c61406c696e168697cdfbfe4e66808e6e5e31d4e4f0701230315",
+      "change": "retVoid case"
+    },
+    "Source3.C99ModularFlow": {
+      "source": "formal/Source3/C99ModularFlow.lean",
+      "source_sha256": "f1f3b83748211e854769768632f6b561c30e072234fb921c10a363274a04b3a4",
+      "change": "onlyReturn retVoid=false; source_flow retVoid case"
+    },
+    "Source3.C99ModularFrame": {
+      "source": "formal/Source3/C99ModularFrame.lean",
+      "source_sha256": "b13531594196b4d92b14c171b91306a6ad2b7bb54c6a45215428936a2076bce7",
+      "change": "readOnly retVoid=true; source_frame retVoid case"
+    },
+    "Source3.KeygenCheckLoopBridge": {
+      "source": "formal/Source3/KeygenCheckLoopBridge.lean",
+      "source_sha256": "b81027ed026b1e7d28e154c2e488722391b7d1e600c4dd3ae15ae0a3d8b3e97a",
+      "change": "retVoid added to the complete induction rule list"
+    },
+    "Source3.KeygenResidueLoop": {
+      "source": "formal/Source3/KeygenResidueLoop.lean",
+      "source_sha256": "0f1a874a8d348965fa3c3f8cc1cf3492c94ea2340f6d042be889d076edd199fc",
+      "change": "retVoid added to the complete induction rule list"
+    },
+    "Source3.KeygenNttForwardPrograms": {
+      "source": "formal/Source3/KeygenNttForwardPrograms.lean",
+      "source_sha256": "789d91a3881f9f9ea217c8a98d574560dde3cc4546da2e77c919e209d68e6513",
+      "change": "NEW: prologue/firstPass/intermediatePass/triplePass defs, glue composition, five by-decide source pins"
+    },
+    "Source3.KeygenNttForwardExec": {
+      "source": "formal/Source3/KeygenNttForwardExec.lean",
+      "source_sha256": "df271c8494bc3656d5dc2f3ca4a83222f69dc220e70d5e3a01fdf682bf7afbb9",
+      "change": "NEW: prologue execution derivation (prologue_result, ready_n_slot, ready_hn_slot, guard/mkn/half value lemmas, var-major inversions)"
+    }
+  },
+  "jobs_pass": [
+    {
+      "job": "keygen_ntt_frontend_004",
+      "result": "23/23 accepted, logs 0/0 (KeygenFiber008Audit/KeygenResidueAudit stdout = intended type/term/axiom audits), maxRSS 3118652 KiB",
+      "receipts_sha256": "f2efa0ee078c3d84dc8754829a46ad8e5944d3372a58d2c468499904d9ba621c",
+      "source_inputs_sha256": "63764e25e351c007c512996ccac4270194575e76f3c839c37a7d95d6675237fe",
+      "covers": "full cached descendant closure of the grammar change; all pinned region parses unchanged (7386 11, 7367 6, 3070 7, 3095 7, 3115 20)"
+    },
+    {
+      "job": "keygen_ntt_forward_programs_003",
+      "result": "24/24 accepted, logs 0/0, maxRSS 4462716 KiB",
+      "receipts_sha256": "12beedee53807afa7fa9d329b5d776956bad43f9d38c9a9f5a6e2a02f633fdcc",
+      "source_inputs_sha256": "5b7334103f0ae61192e0a70d924667edc23e66ca01b95cc94d75473d9d60b230",
+      "covers": "closure + KeygenNttForwardPrograms with prologue_source, first_source, intermediate_source, triple_source (regionContext [r1,r2]) and body_source (region 3046 91 = some forwardBody)"
+    },
+    {
+      "job": "keygen_ntt_forward_exec_005",
+      "result": "1/1 accepted, logs 0/0",
+      "receipts_sha256": "87fd901fed7228e3022469037c14f6cf6fb19230c87b19ae1bfb782d6a8fa958",
+      "source_inputs_sha256": "9dffe32ca8025e2344851c40f16bcc8596f2e52039a5429a7cfb95d681b67e53",
+      "covers": "KeygenNttForwardExec: prologue_result and the value/guard derivations"
+    }
+  ],
+  "jobs_failed_retained": [
+    {"job": "keygen_ntt_frontend_003", "result": "1/24 then stop: C99ModularParser tuple-destructuring arity bug (clauses returns a pair)", "accepted": false},
+    {"job": "keygen_ntt_forward_programs_001", "result": "elaboration error names.map String.toList without parentheses; decide stuck on error terms", "accepted": false},
+    {"job": "keygen_ntt_forward_programs_002", "result": "prologue_source and body_source PASSED; first/intermediate/triple sub-region pins false under the empty start context (pointer lhs parsed as scalar)", "accepted": false},
+    {"job": "keygen_ntt_forward_exec_001", "result": "missing C99CountedWords import; B20.C.Ty.i32 dot-notation; coercion shape mismatches", "accepted": false},
+    {"job": "keygen_ntt_forward_exec_002", "result": "chain namespace; anonymous-constructor lambda in resolve_right; rw-at-exit direction; over-general hn_free", "accepted": false},
+    {"job": "keygen_ntt_forward_exec_003", "result": "Int literal vs Nat-cast coercion mismatch in mkn_value count equation; unopened program names", "accepted": false},
+    {"job": "keygen_ntt_forward_exec_004", "result": "single residual refl goal after final rw (ready def behind delta)", "accepted": false}
+  ],
+  "proved": {
+    "grammar": "Stmt.retVoid/Exec.retVoid and exactly the forward-NTT syntax (void return, pointer declarations/assignment/advance with pointer context, comma for-clauses, compound updates, MKN macro) with the five required consumers patched; full descendant closure rebuilt clean and every earlier pinned parse re-proved unchanged",
+    "programs": "C99ModularParser.region 3046 91 = some KeygenNttForwardPrograms.forwardBody where forwardBody = glue prologue (glue firstPass (glue intermediatePass triplePass)); each part pinned to its contiguous region; every guard retained including the logn0 void return; wrapper modp_NTT3(...,1,...) stays separately pinned",
+    "execution": "KeygenNttForwardExec.prologue_result: any Exec derivation of the parsed prologue at logn=10, full=1 ends in ready before with n -> 1536 and hn -> 768 (ready_n_slot/ready_hn_slot), the MKN macro value derived through the cast/shift chain (mkn_value) and the logn0 guard verdict derived (guard_value). No success constructor carries evaluations; callees execute pinned bodies (Call table, no NTT oracle)"
+  },
+  "open_obligations": [
+    "B1.02 remainder: loop counter and pointer-position derivations FROM execution for the first pass (u, r1=a+u*stride, r2=a+(hn+u)*stride over u<hn), the intermediate passes (m/t/u1/v1/v counters with t*... relations and r1/r2 positions) and the triple pass (u/r counters, r1 positions) - Trace/KeygenCheckLoopBridge style, no value/range invariants (those are B1.04)",
+    "B1.02 remainder: extraction of butterfly call observations (FirstCalls/BinaryCalls/TripleCalls) from the parsed memory/control bodies (checkpoint 2.4)",
+    "stride=1 caller-frame instantiation: the pinned wrapper supplies the literal 1; binding it through the actual call frame belongs to B1.07",
+    "B1.03 onward unchanged per EXECUTION_PLAN"
+  ],
+  "forbidden_markers_scan": "all accepted receipts: forbidden_proof_markers []"
+}
