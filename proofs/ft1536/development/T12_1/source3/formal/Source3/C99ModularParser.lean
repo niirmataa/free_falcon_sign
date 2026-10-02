@@ -186,10 +186,12 @@ mutual
         pure (.seq first tail,final,rest)
 end
 
-def region (start count : Nat) : Option Stmt := do
+def regionContext (ctx : Context) (start count : Nat) : Option Stmt := do
   let chars := ((Pinned.keygenLines.drop (start-1)).take count).flatMap String.toList++['}']
   let tokens ← C99ProcedureParser.tokens chars
-  let (code,_,rest) ← body [] 512 tokens
+  let (code,_,rest) ← body ctx 512 tokens
   if rest.isEmpty then pure code else none
+
+def region (start count : Nat) : Option Stmt := regionContext [] start count
 
 end FT1536.Source3.C99ModularParser
