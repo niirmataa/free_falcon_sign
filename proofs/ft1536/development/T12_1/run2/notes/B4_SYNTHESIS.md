@@ -88,6 +88,33 @@ Next: B5 assembly skeleton may consume
 `localJointCertificate_of_named_premises` with exactly these four
 arguments; B1/source3 and one geometry window supply premises 2-4.
 
+## 2026-10-02 (late): O-NONE DISCHARGED UNCONDITIONALLY — two premises left
+
+The O-NONE window proved `hone : ∀ h, HacGlue.ONone (syndrome h)` with NO
+named assumption — stronger than the prompt asked for: `Relation.A`
+depends only on coordinate residues mod 18433, so every fiber is a coset
+of the `18433·Z` residue lattice; `liftPair` shifts a witness to a
+coordinate >= 47103 where `block >= 2*47103^2 = 4437385218 > B =
+2093922385` (2x margin, inside the finite box); a nonempty fiber suffices.
+No NTRU equations needed — B1 supplies NOTHING for this premise.
+
+The window also assembled `localJointCertificate_of_attemptFactor`: the B4
+certificate with O-NONE discharged — **e < 2^-32, THREE named arguments
+instead of four**. The remaining B4 scope is exactly:
+
+1. `hshape : ReplyShapeAt S jatt` — source binding of the attempt law
+   (B1/source3; B1.01 CLOSED with receipts — NTT word algebra over
+   `ZMod 2147355649` with the Montgomery scale in the type and PRIMES3
+   pinned to source bytes; B1.02 prepared analytically in
+   `KEYGEN_RESIDUE_CHECKPOINT.md` section 2: region map `3046..91`, the
+   exact missing grammar list, the five consumers to patch);
+2. `hattempt : AttemptPointwiseAt jatt k` — the two named analytic bounds
+   (`AttemptShape`, `AttemptWeights`).
+
+Open non-arguments unchanged: the byte bridge and the additive-error mass
+floor. B5 skeleton may now target `localJointCertificate_of_attemptFactor`
+directly (see `run2/notes/PROMPT_B5_ASSEMBLY.md`).
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)

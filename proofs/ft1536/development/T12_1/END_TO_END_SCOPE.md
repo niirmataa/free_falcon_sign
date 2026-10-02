@@ -141,18 +141,15 @@ pinning the exact types — the earlier one-line form was blurred; see
   (partial: FftBind semantics and byte machines exist).
 - **B4 — statistical certificate.** `LocalJointCertificate S e` with a
   concrete public `S` and proven `e^cond` (D3).
-  **Status 2026-10-02 (evening): DONE kernel-side — toolkit, decomposition,
-  support/AC (the wrap-error question resolved: `delta` mass lands inside
-  the support), cap/emit mechanics, AND the `AttemptPointwise` reduction
-  with the exact kernel-side `attemptFactor < 1+2^-38`. **`e2 < 2^-32` is
-  ACTUAL (`layer2_e2_actual`)**. The assembled
-  `HacGlue.localJointCertificate_of_named_premises` has EXACTLY four
-  arguments = the remaining B4 scope: `huc` (delivered, B3/X), `hshape`
-  (`ReplyShape`, B1/source3), `hattempt` (`AttemptPointwiseAt` — two named
-  analytic bounds: `AttemptShape` + `AttemptWeights`), `hone` (`O-NONE`,
-  `Relation.A` fiber geometry). Open non-arguments (recorded): the byte
-  bridge and the additive-error mass floor. Full record:
-  `run2/notes/B4_SYNTHESIS.md`.**
+  **Status 2026-10-02 (late): `hone` (O-NONE) DISCHARGED UNCONDITIONALLY
+  (fiber = coset of the 18433-residue lattice; `liftPair` witness at
+  2x margin inside the box; no NTRU equations needed). The packaged
+  `localJointCertificate_of_attemptFactor` has THREE arguments = the
+  remaining scope: `huc` (delivered, B3/X — the only ROM assumption),
+  `hshape` (`ReplyShape`, B1/source3 — B1.01 closed, B1.02 prepared in
+  the checkpoint), `hattempt` (`AttemptPointwiseAt`: `AttemptShape` +
+  `AttemptWeights`). `e < 2^-32` packaged. Open non-arguments: byte
+  bridge, additive-error mass floor. Record: `run2/notes/B4_SYNTHESIS.md`.**
   Owner: this lane (run2/T12.1).
 - **B5 — assembly.** Instantiate `ConcreteReduction` with B1-B4, state and
   prove `end_to_end_assembled_theorem_statement` (the declaration the audit
