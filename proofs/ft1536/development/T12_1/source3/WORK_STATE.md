@@ -1,5 +1,26 @@
 # T12.1/source3 — żywy stan
 
+## NTT word adapter and source butterfly bodies — 2026-10-01
+
+`keygen_ntt_frontend_002` passed23/23 clean (59.973s,maxRSS3114516KiB),
+including the changed pointer-dereference grammar's complete cached
+descendant closure. RECEIPTS SHA256
+`2103761326376591a723f89addd92a3fb1e3c6e07bc2d0d5499d55846f78f5d6`;
+SOURCE_INPUTS SHA256
+`314649f3121a3ffed190f2db9907b71e151c5124c71e155e67e2813fd9eb6f51`.
+
+KeygenNttWordAlgebra derives source addition/subtraction and Montgomery
+operations in ZMod2147355649, explicitly retaining/cancelling the radix
+factor. KeygenFirstPrime parses the actual first PRIMES3 record. Generator
+order and table-generation laws remain open. The three forward butterfly
+inner bodies and the stride1 wrapper are parsed in KeygenNttButterflyPrograms;
+the full forward function/control and extraction of their primitive-call
+observations are still required. The butterfly call-algebra module is a
+separate current check; do not promote its call premises to whole-NTT facts.
+
+Save the checked word adapter and grammar/body bindings as separate local
+commits. Continue B1.02--B1.04 according to the detailed execution plan.
+
 ## Complete remaining plan saved — 2026-10-01
 
 The owner requested a durable implementation plan through the end of B1.
