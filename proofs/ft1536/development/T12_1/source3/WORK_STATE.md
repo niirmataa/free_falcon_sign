@@ -1,5 +1,25 @@
 # T12.1/source3 — żywy stan
 
+## 2.1.2 closed; 2.1.1-second part 1 frozen — 2026-10-02
+
+**ACTIVE / KEYGEN_SOURCE_TO_FIBER_001 IN_PROGRESS / NOT_REVIEWED.**
+Owner-scoped window (EXCLUSIVELY 2.1.2 + 2.1.1-second) closed at a
+staged-roadmap-3 recoverable mid-point. **2.1.2 CLOSED**:
+`KeygenNttButterflyCalls` extracts `FirstCalls`/`BinaryCalls`/
+`TripleCalls` from executions of the parsed butterfly bodies with
+Load32/Store32 witnesses at the pinned r1/r2/gm positions (commit
+`aa86ba27`, job `keygen_ntt_butterfly_calls_009` accepted/clean).
+**2.1.1-second PARTIAL**: `KeygenNttMiddleLoops` gives the v-loop trace
+and the u1Inner bindPtr-chain positions `r1 = a + v1*stride + v*stride`,
+`r2 = r1 + ht*stride + v*stride` (r2 re-derived via htBind) with explicit
+non-overflow premises (commit `d81c257c`, job
+`keygen_ntt_middle_loops_006` accepted/clean). OPEN in 2.1.1-second: the
+u1/m/t counter composition (`u1 ↦ j`, `v1 ↦ j*t`, `m ↦ 2^(i+1)`,
+`t ↦ 768/2^i`) and the `2^18` bound derivation (not `t*m=n`). Exact
+obligations and traps 19-25 in `notes/run/KEYGEN_RESIDUE_CHECKPOINT.md`;
+receipt pair `KEYGEN_SOURCE_TO_FIBER_001_BATCH_011.*`. No push (owner
+signal absent). Next window: finish 2.1.1-second part 2 only.
+
 ## NTT word adapter and source butterfly bodies — 2026-10-01
 
 `keygen_ntt_frontend_002` passed23/23 clean (59.973s,maxRSS3114516KiB),

@@ -1,0 +1,49 @@
+{
+  "task": "KEYGEN_SOURCE_TO_FIBER_001",
+  "batch": "BATCH_011",
+  "stage": "B1.02 (partial by B1_STAGED_ROADMAP iron rule 3: recoverable mid-point frozen after 2.1.2 and the 2.1.1-second v/u1Inner positions)",
+  "status": "IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN",
+  "scope": "Owner-scoped window: EXCLUSIVELY B1.02 remainder sections 2.1.2 and 2.1.1-second. 2.1.2 is CLOSED (FirstCalls/BinaryCalls/TripleCalls extracted from executions of firstBody/binaryBody/tripleBody with Load32/Store32 witnesses at the pinned r1/r2/gm positions; calls stop being interface premises). 2.1.1-second is PARTIAL: the v-loop trace and the u1Inner bindPtr chain give per-v-iteration positions r1 = a + v1*stride + v*stride and r2 = r1 + ht*stride + v*stride (r2 re-derived from r1 every u1 round via htBind) with explicit non-overflow premises for the v1*stride and ht*stride products; the u1/m/t counter composition (u1Loop counters u1,v1 and the doubling outer rounds m,t with t=ht=t>>1) remains open. Forbidden t*m=n not used anywhere.",
+  "session_harness": "MiMo V2.6 Pro (B1 continuation window)",
+  "runner_note": "tools/job.py is byte-identical to the pinned runner (runner_sha256 below); its hardcoded PREFLIGHT 'model'/'session' fields are historical labels of the runner and do NOT describe this window's harness. Documented here rather than editing the pinned runner.",
+  "runner_sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+  "input_pins_reverified": {
+    "protocol": "KEYGEN_RESIDUE_CHECKPOINT.md section 6 step 2, executed before any new work",
+    "keygen_ntt_loop_support_006": "RECEIPTS d67240e2c195d475cbdef065e7b7579e1369b5b59bc00294d44a47c0a5335b02 MATCH; SOURCE_INPUTS e28cbff75bc9cb6eb81dbeb0cd119e34d1b3f330b0d872e87c9dee7d19632a8f MATCH; 348/348 reused closure MATCH",
+    "keygen_ntt_first_loop_005": "RECEIPTS ee6b5593b62ba444cf7a9e7193c69953bc0856481e407e0be4169360b91c0496 MATCH; SOURCE_INPUTS 70e4e64ec7d70630fe792a5e331c3f021485705f2526156bc640cdef3707086e MATCH; 349/349 MATCH",
+    "keygen_ntt_triple_loop_006": "RECEIPTS 67b9b545fd86e4b141dbdb318c3ff0c2dc9e21df50fd42ad291cdf6d1e70e000 MATCH; SOURCE_INPUTS 1a7bcb934cfb098a9d93ffe9024b52e1e5ef9ddb4a31d8a79d4c2a33a9dda9ad MATCH; 350/350 MATCH",
+    "keygen_ntt_frontend_004": "RECEIPTS f2efa0ee... MATCH; SOURCE_INPUTS 63764e25... MATCH; 22/23 sources MATCH, single drift Source3.C99ModularParser (documented regionContext supersession; closure rebuilt in keygen_ntt_forward_programs_003)",
+    "keygen_ntt_forward_programs_003": "RECEIPTS 12beedee... MATCH; SOURCE_INPUTS 5b733410... MATCH; 24/24 MATCH",
+    "keygen_ntt_forward_exec_005": "RECEIPTS 87fd901f... MATCH; SOURCE_INPUTS 9dffe32c... MATCH; 1/1 MATCH",
+    "checkpoint_file_pins": "all 9 committed-file SHA256s of the previous checkpoint re-verified MATCH"
+  },
+  "commits": {
+    "aa86ba27": "proof(T12.1): butterfly call-observation extraction from the parsed bodies (B1.02 2.1.2)",
+    "d81c257c": "proof(T12.1): intermediate-pass v-loop and u1Inner positions from the bindPtr chain (B1.02 2.1.1 second, part 1)"
+  },
+  "modules": {
+    "Source3.KeygenNttButterflyCalls": {
+      "source": "formal/Source3/KeygenNttButterflyCalls.lean",
+      "source_sha256": "28d1e50a63d9d21d22641355e67d0eced689e185aae3c978ac83e3cd09136a87",
+      "change": "new (2.1.2): call inversions without case-binder absorption, evaluation inversions (load_at/pointer_at at u64-exact index magnitudes), fixed primitive-call extraction (mont/add/sub/sub_add/add_add_right), uniform chain-walk packages (declaration_result/assign32_result/store_result), FCtx/TCtx transport, first_chain/first_calls, binary_chain/binary_calls, triple_chain/triple_calls, binary_each/binary_body_result"
+    },
+    "Source3.KeygenNttMiddleLoops": {
+      "source": "formal/Source3/KeygenNttMiddleLoops.lean",
+      "source_sha256": "2af95ae1392b5e712f86c50607b318123b2ae07e9b26706be13c37a01b4780db",
+      "change": "new (2.1.1 second, part 1): generic u64<x guard evaluation, counter_update/step_result, bind_product (target = source + xName*stride), VInv/VTrace/loop_trace/v_result for the v-loop, u1_inner_result for the u1Inner bindPtr chain (r1 = a + v1*stride, r2 = r1 + ht*stride, then per-v positions)"
+    }
+  },
+  "jobs": {
+    "keygen_ntt_butterfly_calls_009": {
+      "receipts_sha256": "7ba24d47c466411ab325288de4a81c8211553899d3f7a13a05200cff77ad086c",
+      "source_inputs_sha256": "1986e5bd6f770436899cb7cf7e7cb1ef73f0043982757375825eb38a0bdb105e",
+      "result": "1/1 accepted, logs 0/0, 27.527s, maxRSS 2584180 KiB"
+    },
+    "keygen_ntt_middle_loops_006": {
+      "receipts_sha256": "6a13b169100564229e53e66fb18a9a084d4ea7667e8df9d960edf307aa24be9c",
+      "source_inputs_sha256": "0e0e76f99c7fc5f8e532346ec28fbe76463cd54cb0c382d3b63839e7311fdff4",
+      "result": "1/1 accepted, logs 0/0, 5.429s, maxRSS 2572244 KiB"
+    },
+    "retained_failed": "keygen_ntt_butterfly_calls_001..008, keygen_ntt_middle_loops_001..005 (elaboration/type/linter failures preserved in .build/jobs; never cited as PASS)"
+  }
+}
