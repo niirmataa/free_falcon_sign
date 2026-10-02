@@ -140,9 +140,16 @@ pinning the exact types — the earlier one-line form was blurred; see
   serialization (A3/A4), Verify-path bytes. Owner: BINBIND/FftBind lane
   (partial: FftBind semantics and byte machines exist).
 - **B4 — statistical certificate.** `LocalJointCertificate S e` with a
-  concrete public `S` and proven `e^cond` (D3). Machinery ready in the
-  T12.1 chain: two-sided Cramer window (`windowSandwich`), twisted sector
-  mass, A2 tower bounds (rowRatio r = 2^-48; mass error (1+-2r/(1-r))^2 ~ 2^-46), `all_keys_delta_of_conv_cert`.
+  concrete public `S` and proven `e^cond` (D3).
+  **Status 2026-10-02: toolkit (`SecondMoment`), the marginal-joint
+  decomposition + two-layer constructor (`JointDecomp`), and the Layer-2
+  support/AC verdict with cap/emit mechanics (`SignLayerSupport`) are DONE
+  kernel-side (assembly record: `run2/notes/B4_SYNTHESIS.md`). The wrap-error
+  question is resolved: `delta` mass lands inside the support, pointwise
+  route applies. Remaining as named, never-assumed premises:
+  `AttemptPointwise` (one-attempt mass comparison; candidate factor
+  < 1+2^-38 -> conditional corollary `e2 < 2^-32`), `ReplyShape` (source
+  binding), `O-NONE`, and the byte bridge.**
   Owner: this lane (run2/T12.1).
 - **B5 — assembly.** Instantiate `ConcreteReduction` with B1-B4, state and
   prove `end_to_end_assembled_theorem_statement` (the declaration the audit
