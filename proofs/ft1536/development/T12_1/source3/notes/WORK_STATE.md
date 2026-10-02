@@ -1,5 +1,41 @@
 # RUN_003 — source-bound kontynuacja T12.1
 
+## 2026-10-02 — B1.02 w oknie MiMo: gramatyka forward-NTT, kompletne ciało, prolog
+
+W oknie kontynuacji B1 (harness: **MiMo V2.6 Pro**, handoff wg
+`run2/notes/PROMPT_B1_CONTINUATION.md`) wykonano WYŁĄCZNIE krok B1.02,
+z zamknięciem okna przy granicy Acceptance wg iron rule 3
+`run2/notes/B1_STAGED_ROADMAP.md` (etap BIG; zamrożono odzyskiwalny
+punkt średni z dokładnymi zobowiązaniami). **IN_PROGRESS / NOT_REVIEWED**.
+Receipt batcha: `run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_009.json` +
+`_009_NOTES.md`; rozszerzony checkpoint: `run/KEYGEN_RESIDUE_CHECKPOINT.md`.
+
+- Commity lokalne (bez push): `a2679fc5` gramatyka/kontrola (retVoid,
+  deklaracje/przypisania wskaźnikowe z contextem, przecinkowe clause-y
+  for, aktualizacje złożone, MKN jako makro; pięciu konsumentów
+  poprawione), `5ec12a55` `KeygenNttForwardPrograms` (region 3046 91 =
+  glue prolog/pierwsze/przejścia/potrójny; wszystkie guarda łącznie z
+  `return;`), `c4d02bac` `KeygenNttForwardExec` (prologue_result: n=1536,
+  hn=768 wyprowadzone Z wykonania, guard_value dla logn0).
+- Joby PASS: `keygen_ntt_frontend_004` (23/23 domknięcie potomne),
+  `keygen_ntt_forward_programs_003` (24/24),
+  `keygen_ntt_forward_exec_005` (1/1) — logi 0/0, limity bez zmian.
+  Wszystkie wcześniejsze pinowane parsowania ponownie dowiedzione bez
+  zmian. Zachowane nieudane: `keygen_ntt_frontend_003`,
+  `keygen_ntt_forward_programs_001/002`, `keygen_ntt_forward_exec_001..004`.
+- **Pozostałe w B1.02:** wyprowadzenia liczników i pozycji wskaźników
+  z wykonania trzech pętli (Trace/KeygenCheckLoopBridge shape, bez
+  inwariantów zakresów — te są B1.04) oraz ekstrakcja obserwacji wywołań
+  motyla (stare 2.4). `stride = 1` jest przypięte argumentem wrappera;
+  instancjacja przez ramę wywołania należy do B1.07.
+- Granica: relacja wykonania `Exec` nad `forwardBody` jest source-bound z
+  tabelą `Call` (faktyczne ciała modp_*), brak wyroczni NTT i brak
+  konstruktorów sukcesu niosących ewaluacje. `emitted_to_actual_fiber`
+  pozostaje niezamieszkane; nic nie jest REVIEWED.
+- Runner `tools/job.py` bajtowo niezmieniony (pin `3bc29bf7…`); jego
+  twarde etykiety PREFLIGHT `model`/`session` są historyczne i nie
+  opisują tego okna — udokumentowane w BATCH_009, bez cichej edycji.
+
 ## 2026-09-30 — STABLE_BINARY_004, B1–B4 kernelowo scoped, do odbioru
 
 Zakończono bieżący krok B w tej samej sesji
