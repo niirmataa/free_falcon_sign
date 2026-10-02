@@ -11,6 +11,7 @@ def onlyReturn (n : Nat) : Stmt → Bool
   | .scope _ b => onlyReturn n b
   | .loop _ body increment => onlyReturn n body && onlyReturn n increment
   | .ret e => e==.scalar (.literal .i32 n)
+  | .retVoid => false
 
 theorem source_flow (n : Nat) (code : Stmt) (before : State) (result : Result)
     (source : Exec code before result) (checked : onlyReturn n code=true) :
@@ -32,5 +33,6 @@ theorem source_flow (n : Nat) (code : Stmt) (before : State) (result : Result)
       subst e
       cases value with
       | scalar _ _ source => cases source; exact Or.inr rfl
+  | retVoid => exact False.elim (Bool.false_ne_true checked)
 
 end FT1536.Source3.C99ModularFlow

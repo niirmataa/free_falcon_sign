@@ -55,7 +55,7 @@ theorem complete (arrays : Arrays) (p0i target : BitVec 32) (code : Stmt) (befor
     (hi : i≤1536) (counter : C99CountedWords.Counter before i) (inputs : Inputs arrays p0i target before)
     (success : result.flow=.normal) : Loop arrays before.heap p0i target i true := by
   induction source generalizing i with
-  | base | assign | store32 | seqNormal | seqExit | scope | branchTrue | branchFalse | ret => cases shape
+  | base | assign | store32 | seqNormal | seqExit | scope | branchTrue | branchFalse | ret | retVoid => cases shape
   | loopFalse condition body increment before v guard zero =>
       cases shape
       exact .done i (C99CountedWords.guard_false before i v hi counter inputs.size guard zero)

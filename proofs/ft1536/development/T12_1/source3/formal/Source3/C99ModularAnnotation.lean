@@ -22,5 +22,6 @@ def statement (names : List Name) : Stmt → Stmt
   | .branch condition yes no => .branch condition (statement names yes) (statement names no)
   | .loop condition body increment => .loop condition (statement names body) (statement names increment)
   | .ret e => .ret (expression names e)
+  | .retVoid => .retVoid
 
 end FT1536.Source3.C99ModularAnnotation

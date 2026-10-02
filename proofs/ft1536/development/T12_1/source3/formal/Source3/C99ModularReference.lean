@@ -71,6 +71,7 @@ inductive Stmt where
   | branch (condition : CLogic.Expr) (yes no : Stmt)
   | loop (condition : CLogic.Expr) (body increment : Stmt)
   | ret (value : Expr)
+  | retVoid
   deriving DecidableEq, Repr
 
 inductive Exec : Stmt → State → Result → Prop where
@@ -111,6 +112,7 @@ inductive Exec : Stmt → State → Result → Prop where
       Exec (.loop condition body increment) before ⟨after,.returned (some value)⟩
   | ret (e : Expr) (before : State) (v : Value) (value : Eval before e v) :
       Exec (.ret e) before ⟨before,.returned (some v)⟩
+  | retVoid (before : State) : Exec .retVoid before ⟨before,.returned none⟩
 
 theorem base_before_tail (code : C99ArrayReference.Stmt) (tail : Stmt) (before : State) (result : Result)
     (source : Exec (.seq (.base code) tail) before result) :
