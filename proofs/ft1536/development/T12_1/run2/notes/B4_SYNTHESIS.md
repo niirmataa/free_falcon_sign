@@ -115,6 +115,38 @@ Open non-arguments unchanged: the byte bridge and the additive-error mass
 floor. B5 skeleton may now target `localJointCertificate_of_attemptFactor`
 directly (see `run2/notes/PROMPT_B5_ASSEMBLY.md`).
 
+## 2026-10-02 (night): B5 SKELETON DONE — the closing list (Assembly.lean, commit 132098c2)
+
+`end_to_end_assembled_theorem_statement` is PROVEN from named premises
+(0/0, 20/20 standard axioms, the argument list printed in
+`.build/audit/AssemblyAudit.log`): the Section-1 bound in full — B4
+certificate (`e = k^32-1`, O-NONE discharged unconditionally) ->
+`concrete_euf_cma_to_mt_isis` over `Reduction.build` -> carried `deltaPRG`
+term. The D2-route-(b) hybrid lives at the Dist/Law level
+(`tape_game_hop` family: `AdvEUF(real stream) <= AdvEUF(uniform tape) +
+deltaPRG`, including the `Law.uniform.map` seam of `Games.Sampler.code`).
+Exports: the literal `+AdvPRG` variant, the `attemptFactor` variant
+(`e < 2^-32`), `exists_assembled_reducer` (the reducer IS
+`Reduction.build beta A S`), `assembled_hardness_substitution`. A1 pinned
+in model scope (`a1_no_retry_interface`). Recorded deviation: `AdvPRG`
+realized on the tape law `tau : Law (Fin S.bits -> Bool)` (distance needs
+a law object); the outer bound carries `deltaPRG`, the literal variant is
+separate.
+
+**THE CLOSING LIST (= the project's checklist):**
+
+| Arg | Content | Owner | State |
+|---|---|---|---|
+| `hk` | arithmetic | kernel | PROVEN (attemptFactor) |
+| `huc` | UniformChallengeAt (the ROM) | B3/X | DELIVERED |
+| `hshape` | ReplyShapeAt (attempt law bound to C) | B1/source3 | in progress (B1.02 window) |
+| `hattempt` | AttemptPointwiseAt (= AttemptShape + AttemptWeights) | B1 + AttemptWeights window | AttemptWeights prompt READY, unlaunched |
+| `hkey` | keyIdent (emitted-key law identification) | B1.10 (`emitted_to_actual_fiber`) | type slot, content owed by B1 |
+| `hprg` | AdvPRG <= deltaPRG (ChaCha20 account) | B2 | **NEW WINDOW NEEDED** (`PROMPT_B2_ADVPRG.md`) |
+
+Non-arguments (open, recorded): the byte bridge, the additive-error mass
+floor. A2 rides in `huc`; A1/A5 bite into `hkey`; A3/A4 in the byte bridge.
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
