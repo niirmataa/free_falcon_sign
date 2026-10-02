@@ -7,8 +7,21 @@ namespace FT1536.Source3.C99ModularParser
 open C99ModularReference (Expr Stmt)
 open B20.C (Token Name)
 
+def dereference : List Token → Option (Name×CLogic.Expr×List Token)
+  | ['(']::rest => do
+      let (pointer,rest) ← C99ProcedureParser.pointerExpr rest
+      match pointer,rest with
+      | .pointer name index,[')']::rest => pure (name,index,rest)
+      | _,_ => none
+  | name::rest => if name.all B20.C.wordChar && !name.isEmpty then
+      some (name,.literal .u64 0,rest) else none
+  | _ => none
+
 def expr : Nat → List Token → Option (Expr×List Token)
   | 0,_ => none
+  | _+1,['*']::rest => do
+      let (name,index,rest) ← dereference rest
+      pure (.load32 name index,rest)
   | _+1,name::['[']::rest => do
       let (index,rest) ← C99ArrayParser.pureExpr rest
       match rest with
@@ -37,6 +50,15 @@ def expr : Nat → List Token → Option (Expr×List Token)
   | _+1,rest => (C99ArrayParser.pureExpr rest).map (fun (e,rest) => (.scalar e,rest))
 
 def simple : List Token → Option (Stmt×List Token)
+  | ['*']::rest => do
+      let (name,index,rest) ← dereference rest
+      match rest with
+      | ['=']::rest => do
+          let (e,rest) ← expr 32 rest
+          match rest with
+          | [';']::rest => pure (.store32 name index e,rest)
+          | _ => none
+      | _ => none
   | name::['[']::rest => do
       let (index,rest) ← C99ArrayParser.pureExpr rest
       match rest with
