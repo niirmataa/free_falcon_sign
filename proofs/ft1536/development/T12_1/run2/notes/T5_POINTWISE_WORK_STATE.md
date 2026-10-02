@@ -8,7 +8,8 @@ this note. Recorded 2026-10-02.
 
 **DONE — `formal/T5Pointwise.lean` builds 0/0** (empty log = 0 errors / 0
 warnings, guarded serial compile `tools/original/run_lean_guarded.sh`, exit 0,
-24 s). Axiom audit: **56/56 declarations (7 structures + 4 defs + 45 theorems)
+24 s). Axiom audit: **56/56 declarations (5 structures + 7 defs + 44 theorems;
+breakdown corrected after independent review 2026-10-02, total unchanged)
 depend only on `[propext, Classical.choice, Quot.sound]`** (`.build/audit/
 T5PointwiseAudit.lean` + `.log`). No unfinished-proof markers. All statements
 on the pinned MTISIS types (`FT1536.PublicSimulation.*`,

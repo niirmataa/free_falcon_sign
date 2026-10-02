@@ -21,6 +21,12 @@ Preservation (coordinator, 20:29):
   `T5Pointwise.windowB-2016.lean` (sha256
   `cdca63cd83e79f65fbb7a04483ac5ed112d3e60aab2356c585e6056c9a57d22a`),
   mixed log snapshotted to `T5Pointwise.windowB-mixed.log`.
+- Window B kept writing after the first snapshot; its later version was
+  snapshotted to `T5Pointwise.windowB-2029.lean` (sha256
+  `b2b36cadc4339108b2ac73a7e23c206c23cc00285e1e88893596b88ca7310fce`;
+  full value recorded after independent review requested it) and is the
+  base of the final `formal/T5Pointwise.lean` (commit 95bac2c0).
+  Both snapshot hashes re-verified post-review 2026-10-02.
 - Window A's version lives in its session (recoverable by that window).
 
 Ruling (owner-delegated, coordinator-recorded):
