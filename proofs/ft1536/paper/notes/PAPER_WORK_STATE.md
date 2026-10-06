@@ -25,11 +25,15 @@ Small exact-path local commits on main; publication requires owner signal.
 - Scaffold build: `make pdf`, latexmk/pdflatex/BibTeX exit 0, three pages.
   The initial long status line was shortened after an overfull-box report.
 
-## Owner decisions needed
+## Owner decisions
 
-1. Title (current title is a conservative working title).
-2. Mission paragraph / author's voice.
-3. Venue target and associated formatting/bibliography requirements.
+1. **Title: DECIDED 2026-10-07** — "Free FT: Ternary Lattice Signatures
+   with a Code-Bound Security Reduction" (owner: "będzie sztosowe").
+   Applied to `main.tex` title + `pdftitle`; the OWNER-TITLE todo is
+   resolved and removed.
+2. Mission paragraph / author's voice — PENDING owner review.
+3. Venue target and associated formatting/bibliography requirements —
+   PENDING (coordinator suggestion: ePrint at closure, then TCHES/CHES).
 
 ## Batch 2 — completed draft and checks
 
