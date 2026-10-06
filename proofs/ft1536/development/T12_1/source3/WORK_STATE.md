@@ -27,10 +27,24 @@ Accepted `keygen_ntt_first_values_003` and `keygen_ntt_polynomial_007`,
 both with 0/0 logs. Input material/table interfaces remain explicit until
 the caller composition consumes the preceding source executions.
 
-In progress: the source-prefix composition and remaining-pass invariants.
-The remaining radix-2/triple composition, physical evaluation order and
-1536-root injectivity remain B1.04 obligations. `t*m=n` is permitted only
-in this stage. Small local commits use the shared writer lock; the package
+`KeygenNttFirstComposition.generated_converted_prefix` consumes the table
+generator, actual coefficient conversion, NTT prologue and first-pass
+executions, retaining the same original Vec and preserving gm. Canonical
+input/output and initialized gm are conclusions of that composition.
+Checked `keygen_ntt_first_composition_002` (0/0 logs).
+
+`KeygenNttGeometry` checks `t*m=1536` at headers 0..8, the distinct
+`ht*m=768` update seam, all binary-cell/twiddle bounds and source exit
+`m=512,t=3` (`keygen_ntt_geometry_002`). `KeygenNttRoots` proves primality,
+the exact physical triple point formula from row9/REV10, 1536 distinct
+roots of Phi and degree-<1536 polynomial/coefficient injectivity
+(`keygen_ntt_roots_003`). Both have clean 0/0 logs. These mathematical
+points still require the complete source-transform evaluation refinement.
+
+In progress: remaining-pass polynomial invariants and source composition.
+The remaining radix-2/triple loop composition and full-transform evaluation
+remain B1.04 obligations. `t*m=n` is used only in this stage's new geometry
+module. Small local commits use the shared writer lock; the package
 remains IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.
 
 ## B1.03 stage (c) — source row laws CLOSED — 2026-10-06
