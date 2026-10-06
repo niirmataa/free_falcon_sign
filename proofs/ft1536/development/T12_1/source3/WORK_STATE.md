@@ -17,7 +17,17 @@ disjoint cells from the existing source butterfly executions. Accepted
 retained. Twiddle values/ranges and input cells are explicit local inputs,
 to be supplied by table/conversion and pass invariants.
 
-In progress: first-pass composition and its polynomial invariant.
+`KeygenNttFirstValues.pass_values` now consumes the actual `gm[1]` read
+and all 768 executed butterflies, concluding canonical cells in the low
+and high physical halves and a disjoint-cell frame. `KeygenNttPolynomial`
+transports the conversion's original Vec representation into these cells,
+proves the exact two degree-<768 polynomial remainders, and checks the
+source root relation `w^2-w+1=0` and the corresponding factorization of Phi.
+Accepted `keygen_ntt_first_values_003` and `keygen_ntt_polynomial_007`,
+both with 0/0 logs. Input material/table interfaces remain explicit until
+the caller composition consumes the preceding source executions.
+
+In progress: the source-prefix composition and remaining-pass invariants.
 The remaining radix-2/triple composition, physical evaluation order and
 1536-root injectivity remain B1.04 obligations. `t*m=n` is permitted only
 in this stage. Small local commits use the shared writer lock; the package
