@@ -8,6 +8,9 @@ not an independent mathematical acceptance or a new Lean replay.
 - Initial read HEAD: `29e6372b`; B1's batch-015 evidence then landed at
   `d5ced420`. Paper scaffold: `901f6333`.
 - Corrected computational package: `6ff3c8381d73c5059597605880d849f1062b1f4a`.
+- Late, explicit evidence update: independent REVIEW_003 and synthesis
+  commits `9b12f04e`/`be610737`, delivered during drafting. Previous 97-pin snapshot
+  is preserved in paper commit `8b98cd39`; this revision has 106 inputs.
 - Byte identity is fixed by **SOURCES.sha256**, which lists every input in
   the inventory below. The hash of that manifest and the built PDF are
   recorded in `build/CHECK.json` and the paper handoff.
@@ -246,7 +249,8 @@ The unrestricted historical PRF-named predicate is statistical in its type.
   not a new general orderOf or NTT correctness theorem.
 - `S/KeygenRev10Cert.lean`: `rawTable_exact`.
 - `SN/KEYGEN_SOURCE_TO_FIBER_001_BATCH_015.json`, `rev10_certificate`, `jobs`;
-  `SN/KEYGEN_RESIDUE_CHECKPOINT.md`, §§1–3;
+  `SN/KEYGEN_RESIDUE_CHECKPOINT.md`, §5 (carried REV10 facts in the updated
+  stage-(b) checkpoint; its new R2 results are not additional paper theorems);
   source3 `.build/jobs/keygen_rev10_cert_004/RECEIPTS.json`.
   1024 entries, eleven parse slices, at most eight lines per slice;
   the eight-line observation is experiment-specific.
@@ -363,8 +367,20 @@ nonnegative epsColl. The k=1/D=0 test does not consume LocalJointCertificate.
   `receipts/k1_002/RECEIPT.json`.
 - `run2/.build/b2b5_e1e5_001/inputs/ENVIRONMENT.json`;
   its two final complete-API audit logs and final evidence selection.
-- `N/B4_SYNTHESIS.md`, final section: **reported** third review of the
-  pre-correction snapshot; not independent acceptance of the corrected package.
+- `work/FT1536_B2B5_COMPUTATIONAL_REVIEW_003/REVIEW.md`,
+  `REVIEW_RESULT.json`, `OUTPUTS.sha256`, `inputs/PREPARE_REPORT.json`,
+  `receipts/clean_indep_001/RECEIPT.json`, `receipts/checks_r3/RECEIPT.json`,
+  and the three `checks/Indep*.lean` modules: independent fresh-context
+  PASS_SCOPED on exactly the same 6ff3c838 source pins; 66 closure modules
+  plus two API audits = 68 successful selected steps; 21 final kernel
+  control declarations. Initial failed controls are recorded separately.
+  The paper uses the precise count in REVIEW §6, not the ambiguous earlier
+  phrasing suggesting two additional module builds.
+- `N/B4_SYNTHESIS.md`, older and latest review updates: the historical
+  pre-correction “third review” is distinct from the now pinned REVIEW_003.
+  Its newest heading says 2026-10-07, while REVIEW_003 and commit 9b12f04e
+  are dated 2026-10-06; the drafting log preserves this date discrepancy
+  without editing the source record.
 - `run2/ARCHIVED_DEPENDENCIES.json`; repository `.gitignore` for work/runtime
   availability boundary. The paper does not claim to reproduce the full proof
   closure or that ignored evidence is recoverable from a public clone.
@@ -423,6 +439,15 @@ nonnegative epsColl. The k=1/D=0 test does not consume LocalJointCertificate.
 7. The updated REV10 checkpoint is included; B1.03 row/value closure is not.
 8. S06 status remains CHANGES_REQUIRED, including the Falcon-anchor model
    conventions. No part of the table is a certified system-security level.
+9. A post-build pin check detected the concurrent synthesis update 9b12f04e.
+   The new independent REVIEW_003 was read and pinned explicitly. Section 9
+   and Annex A now record its scoped verdict while preserving REVIEW_002's
+   author-recheck status. This is an evidence update, not a stronger theorem.
+10. The late pin diff also contains the source3 stage-(b) checkpoint and
+    be610737's clarification of the one-time final archive import. Both diffs
+    were read explicitly. The former preserves the quoted REV10 facts in §5
+    and keeps row/layout laws open; the latter changes release sequencing,
+    not a theorem. Their earlier bytes remain in the previous paper snapshot.
 
 ## Pinned input files
 
@@ -515,6 +540,15 @@ proofs/ft1536/work/FT1536_B2B5_COMPUTATIONAL_REVIEW_002/checks/KOneAndPsi.lean
 proofs/ft1536/work/FT1536_B2B5_COMPUTATIONAL_REVIEW_002/receipts/clean_001/RECEIPT.json
 proofs/ft1536/work/FT1536_B2B5_COMPUTATIONAL_REVIEW_002/receipts/controls_002/RECEIPT.json
 proofs/ft1536/work/FT1536_B2B5_COMPUTATIONAL_REVIEW_002/receipts/k1_002/RECEIPT.json
+proofs/ft1536/work/FT1536_B2B5_COMPUTATIONAL_REVIEW_003/REVIEW.md
+proofs/ft1536/work/FT1536_B2B5_COMPUTATIONAL_REVIEW_003/REVIEW_RESULT.json
+proofs/ft1536/work/FT1536_B2B5_COMPUTATIONAL_REVIEW_003/OUTPUTS.sha256
+proofs/ft1536/work/FT1536_B2B5_COMPUTATIONAL_REVIEW_003/inputs/PREPARE_REPORT.json
+proofs/ft1536/work/FT1536_B2B5_COMPUTATIONAL_REVIEW_003/receipts/clean_indep_001/RECEIPT.json
+proofs/ft1536/work/FT1536_B2B5_COMPUTATIONAL_REVIEW_003/receipts/checks_r3/RECEIPT.json
+proofs/ft1536/work/FT1536_B2B5_COMPUTATIONAL_REVIEW_003/checks/IndepContract.lean
+proofs/ft1536/work/FT1536_B2B5_COMPUTATIONAL_REVIEW_003/checks/IndepInverse.lean
+proofs/ft1536/work/FT1536_B2B5_COMPUTATIONAL_REVIEW_003/checks/IndepKOne.lean
 proofs/ft1536/development/T12_1/run2/.build/b2b5_e1e5_001/inputs/ENVIRONMENT.json
 proofs/ft1536/development/T12_1/run2/.build/b2b5_e1e5_001/receipts/audits_002/001_CompPrgCompleteAudit.log
 proofs/ft1536/development/T12_1/run2/.build/b2b5_e1e5_001/receipts/audits_002/002_AssemblyCompCompleteAudit.log

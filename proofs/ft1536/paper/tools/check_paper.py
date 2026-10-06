@@ -33,6 +33,11 @@ def main():
     for entry in review["sources"]:
         assert hashlib.sha256((ROOT / entry["path"]).read_bytes()).hexdigest() == entry["sha256"], entry["path"]
     assert review["review_kind"] == "AUTHOR_RECHECK" and not review["independent_of_author"]
+    independent = json.loads((ROOT / "proofs/ft1536/work/FT1536_B2B5_COMPUTATIONAL_REVIEW_003/REVIEW_RESULT.json").read_text())
+    assert independent["role"] == "INDEPENDENT_REVIEWER"
+    assert independent["independent_of_author"] and independent["fresh_context"]
+    assert independent["commit"] == review["commit"]
+    assert independent["verdict"] == "PASS_SCOPED" and not independent["changes_required"]
     files = sorted(PAPER.glob("*.tex"))
     text = "\n".join(p.read_text() for p in files)
     sections = sorted(PAPER.glob("sec_*.tex"))

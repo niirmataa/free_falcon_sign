@@ -18,7 +18,7 @@ display arithmetic), then `make check`. The latter checks source pins,
 claim IDs, section structure, table displays and the final LaTeX log.
 It is not a Lean replay or mathematical acceptance of the development.
 See `SOURCES.md` for the 20 statement groups and `SOURCES.sha256` for their
-97 pinned inputs. `notes/PAPER_WORK_STATE.md` contains the handoff and the
+106 pinned inputs. `notes/PAPER_WORK_STATE.md` contains the handoff and the
 three owner decisions. Some original receipts are local ignored artifacts;
 the public-release packaging obligation is explicit in Annex A.
 

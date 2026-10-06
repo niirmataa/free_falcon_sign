@@ -1,6 +1,8 @@
 # Paper v0.1 — window 1
 
 Status: WINDOW_1_COMPLETE / DRAFT_V0_1_FOR_OWNER_REVIEW. Date: 2026-10-06.
+Current handoff: **Batch 3 below**, incorporating the late independent
+REVIEW_003; it supersedes Batch 2's input/PDF pins and pending-review status.
 Owner instruction: `development/T12_1/run2/notes/PROMPT_PAPER.md`.
 Binding outline: `documents/FT1536_PAPER_OUTLINE_2026-10-06.md`.
 All paths in this paragraph are relative to `proofs/ft1536/`.
@@ -68,7 +70,7 @@ Small exact-path local commits on main; publication requires owner signal.
 - No new Lean replay or independent mathematical review is claimed by this
   paper task. Sage here verifies display arithmetic, not S06 hardness.
 
-### Exact handoff pins (SHA-256)
+### Batch 2 pins (SHA-256; superseded by Batch 3 below)
 
 | Artifact, relative to paper/ | SHA-256 |
 |---|---|
@@ -102,3 +104,43 @@ Następny krok: decyzje właściciela o **tytule, akapicie misji i docelowym
 miejscu publikacji**, potem aktualizacja konkretnych TODO po dostarczeniu
 odpowiednich wyników B1/S06. Materiał marcowego dysku do Annex B pozostaje
 oczekującym wejściem. Własne źródła zapisane lokalnie na main; brak push.
+
+## Batch 3 — explicit late review update
+
+Immediately after commit `8b98cd39`, the final source check detected a
+concurrent change in the pinned `B4_SYNTHESIS.md`:
+`d59399c6a31c09e008dd25322bd87ace86f6554c097d8b5b39a275210aafa04a`
+became `c296da9787f19ab5de2fc740a0e0f4adc7a4f6843eb0a72fd03f362239b69437`
+in commit `9b12f04e`. The earlier snapshot remains in the paper commit.
+
+Read the newly delivered REVIEW_003 and its machine result. It is an
+independent fresh-context PASS_SCOPED for the corrected public-simulation
+package, with the same source pins; REVIEW_002 remains AUTHOR_RECHECK.
+Section 9, Annex A and source map were updated explicitly. Added nine
+evidence pins; total **106**. No theorem or remaining honest-Sign premise
+was strengthened. The synthesis heading's 2026-10-07 date differs from
+the review/result and commit dated 2026-10-06; original bytes are preserved.
+
+The subsequent synthesis clarification `be610737` pins the final one-time
+archive import/tag decision; its final source hash is
+`700b447eab357ad560b4b94eb59bbb5c91f567da0606e9bb9b978f6cb27f0193`.
+The source3 live checkpoint also changed to its completed stage-(b) account
+(`a83e83c659b90eb73c8867560c4de9cbf801bc0c473ce8affcaa1ba2a734818b`).
+Both diffs were read: the quoted REV10 facts are carried in §5, row/layout
+laws remain open, and no new R2 theorem is claimed by the paper.
+
+Final rerun: **PASS**, 106/106 pins, 20 source groups, **19 pages**,
+clean TeX/BibTeX logs. Logs: `build/final_002.stdout.log` and empty
+`build/final_002.stderr.log`; updated `build/CHECK.json`.
+The already-passed numerical calculator inputs did not change; its original
+run_001 receipt remains the numerical evidence.
+
+Current manifest SHA-256:
+`c28edbd00cb630e6c58f0e20f7ebbbbc042eee097725851ae165f8bb3308dfb4`.
+Current PDF SHA-256:
+`2d794bb2b5576c2023293af206e7201035c1ccf456651733867ebdac0cf86789`.
+
+Aktualizacja dla właściciela: niezależny odbiór poprawionego B2/B5 jest już
+odnotowany w artykule. Nadal dotyczy gry publicznego symulatora; strzałki
+1–2, konkretna realizacja i końcowy montaż pozostają otwarte. Lista trzech
+decyzji redakcyjnych właściciela nie zmieniła się.

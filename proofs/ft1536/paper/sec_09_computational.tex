@@ -1,5 +1,5 @@
 \section{The computational interface}\label{sec:computational}
-\status{CLOSED conditional public-simulation component; independent acceptance OPEN}
+\status{CLOSED conditional component; independent scoped review recorded}
 \subsection{An admitted class of randomized tests}
 For a finite tape space $X$ and law $\tau$, a \code{CompTest} is a
 function $t:X\to[0,1]$. The operative premise is exactly
@@ -113,7 +113,8 @@ The clipping at zero is necessary.\src{C15,C16}
 The review process exposed three contract defects in earlier exports:
 the experiment was mislabeled as honest Sign, the cost certificate
 was not consumed, and the key proposition was unused. The corrected
-types address those defects for the public experiment. Their
-AUTHOR\_RECHECK verdict is scoped to that correction; the honest
-continuation, its own winning test and its fair-law identity remain
-the first two arrows of Section~\ref{sec:main}.\src{C17}
+types address those defects for the public experiment. REVIEW\_002
+is the author's recheck; the later independent REVIEW\_003 records
+\code{PASS_SCOPED} for the corrected package. The honest continuation,
+its own winning test and its fair-law identity remain the first two
+arrows of Section~\ref{sec:main}.\src{C17}
