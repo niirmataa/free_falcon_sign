@@ -30,9 +30,17 @@ through actual primitive memory transitions. Generator/checker:
 `sage/generate_keygen_row_certificate.sage`, accepted `_index_gen_002`;
 the first run's JSON serialization failure is retained.
 
-Still in progress: last-row source body, loop invariants/initializers and
-the final initialized table theorem. The checked body laws alone do not
-meet B1.03 Acceptance. No owned background job, review or push.
+Third checked step: `LastRow`, `Counters`, `Loops`, `Prelude` and `RowInit`
+(all with prefix `KeygenMkgm3`) close the source last-pair writes, all three
+loop invariants and counters, the once-squared source generator initialization,
+and the complete last-row branch. Latest job `keygen_mkgm3_rowinit_002`
+checks RowInit; `_rowinit_001` checked the changed Loops/Prelude closure.
+All current artifacts and sources matched at the interruption/resume check;
+no proof job remained active. The loop exits retain u=512/512/0 explicitly.
+
+Still in progress: composition through the full-case row, square-loop entry
+and top copy, the final initialized table contract and BATCH_017 audit.
+The final table theorem is not yet claimed. No review or push.
 
 ## B1.03 stage (b) — source modp_R2 value law CLOSED — 2026-10-06
 
