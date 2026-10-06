@@ -1,0 +1,47 @@
+{
+  "task": "KEYGEN_SOURCE_TO_FIBER_001",
+  "batch": "BATCH_013",
+  "stage": "B1.03 phase 1 (frontend extensions, scalar/composite callee bindings, REV10 data, generator order 9216/4608) - frozen at a staged-roadmap iron-rule-3 recoverable mid-point",
+  "status": "IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN",
+  "scope": "Owner-scoped window: EXCLUSIVELY B1.03. The modular frontend gains exactly the syntax used by modp_mkgm3 and its callees: Expr.call5 (modp_div's five arguments), Stmt.storeRev (the mixed index base + REV10[index] stores), the state-exact while (k ++ < 11) desugaring (loop with pre-body increment plus the trailing increment of the failing test), ++/-- statements and -- for-increments. The call strata are non-mutual (the C99ScalarReference.CallRelation pattern): LeafCall over the six pinned scalar leaf bodies (montymul/add/sub/ninv31/set/R), GenEval/GenExec parameterized by the call relation, then ModCall = leaves + the composite modular callees modp_R2/modp_div whose body executions (r2Body/divBody) run under LeafCall. Hand-built r2Code/divCode are checked against the pinned source parse. modp_R is bound through the scalar stratum with an exact 2^31 mod p value law. KeygenGeneratorOrder certifies ord(1907584673 mod 2147355649) = 9216 and ord(g^2) = 4608 by kernel-checked Nat computations (this is the proof obligation of the plan, now checked, not an assumption). KeygenRev10 pins the REV10 table source lines and the bitrev10 model. The mkgm3 program tree (KeygenMkgm3Program.code) is built and its parse binding is retained as failing. 34-module descendant closure rebuilt in one job lane; 17 modules accepted/clean at freeze (see jobs).",
+  "session_harness": "MiMo V2.6 Pro (B1.03 window)",
+  "runner_note": "tools/job.py is byte-identical to the pinned runner (runner_sha256 below); its hardcoded PREFLIGHT 'model'/'session' fields remain historical labels of the runner and do NOT describe this window's harness.",
+  "runner_sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+  "input_pins_reverified": {
+    "protocol": "KEYGEN_RESIDUE_CHECKPOINT.md section 6 step 2, executed before any new work (18/18 named BATCH_011/012 pins MATCH)",
+    "keygen_ntt_middle_rounds_002": "RECEIPTS 3dbc0cfa... MATCH; SOURCE_INPUTS 17b98f37... MATCH (owner-pinned); full closure 353/353 MATCH",
+    "keygen_ntt_butterfly_calls_009": "RECEIPTS 7ba24d47... MATCH; SOURCE_INPUTS 1986e5bd... MATCH; full closure 352/352 MATCH",
+    "keygen_ntt_middle_loops_006": "RECEIPTS 6a13b169... MATCH; SOURCE_INPUTS 0e0e76f9... MATCH; full closure 353/353 MATCH",
+    "keygen_ntt_loop_support_006 / _first_loop_005 / _triple_loop_006": "RECEIPTS+SOURCE_INPUTS MATCH; closures 349/349, 350/350, 351/351 MATCH",
+    "keygen_ntt_frontend_004 / _forward_programs_003 / _forward_exec_005": "RECEIPTS+SOURCE_INPUTS MATCH (documented C99ModularParser drift now superseded by this window's grammar extension)",
+    "module_files": "KeygenNttMiddleRounds dd66ac1a... MATCH; KeygenNttButterflyCalls 28d1e50a... MATCH; KeygenNttMiddleLoops 2af95ae1... MATCH; tools/job.py 3bc29bf7... MATCH",
+    "closures_note": "all six closures re-verified byte-exact before new work: 0 drift, 0 missing"
+  },
+  "jobs": {
+    "keygen_mkgm3_frontend_011": {
+      "receipts_sha256": "3ca613d70be08968f902e729705754f687b5224e0286da1d46578dda4f381cdd",
+      "source_inputs_sha256": "7772a7a79458d5d37281e6c7f7ab8898567232449ad76df909bf4c0eeb0c5ade",
+      "result": "17/34 accepted/clean before stopping at KeygenMkgm3Callees.div_source_bound (logs 0/0 per accepted module)",
+      "accepted_modules": "KeygenModpR 2.9s, KeygenGeneratorOrder 1.1s, C99ModularReference 1.7s, C99ModularParser 2.0s, C99ModularAnnotation 1.0s, KeygenRev10 1.3s, C99ModularFlow 1.0s, C99ModularFrame 1.1s, KeygenCheckProgram 4.5s, KeygenCheckExpression 16.1s, KeygenCheckExpressionSound 1.0s, KeygenCheckGate 1.1s, KeygenCheckIteration 1.1s, KeygenCheckLoopBridge 1.1s, KeygenCheckMutations 1.2s, KeygenCheckOutcome 1.0s, KeygenFiber008Audit 1.3s"
+    },
+    "retained_failed": "keygen_mkgm3_frontend_001..010 preserved in .build/jobs (module-order, offset-4 line pins, simp lints, word_toNat kernel memory, Ty.u32 naming, mutual-induction refusal, 1024-entry decide kernel memory, two missing storeRev alternatives, div parse mismatch); keygen_ntt_middle_rounds_001 and all earlier retained failures unchanged; none cited as PASS"
+  },
+  "modules": {
+    "Source3.KeygenModpR": {"source": "formal/Source3/KeygenModpR.lean", "source_sha256": "d210c1b93bdac1eeea8cd78fe27361384a0776a0ce48e8e5f2e248e2c1a273b1", "change": "new: pinned modp_R body (code/source_parses/model_exact/checked/source_exists/source_exact) and value law word_toNat/value_law ((2^31 - p) = 2^31 mod p on 2^30 < p < 2^31)"},
+    "Source3.KeygenGeneratorOrder": {"source": "formal/Source3/KeygenGeneratorOrder.lean", "source_sha256": "a13deb391bb7fd2da70ba457fb89d68450d908951daf3e76f8e05ad1b6f388ce", "change": "new: kernel-checked generator order at logn10: g^9216 = 1, g^4608 = p-1 != 1, g^3072 != 1 (order exactly 9216 = 2^10*3^2), (g^2)^4608 = 1, (g^2)^2304 = p-1 != 1, (g^2)^1536 != 1 (order exactly 4608 = 2^9*3^2); proof obligation CHECKED, not assumed"},
+    "Source3.KeygenRev10": {"source": "formal/Source3/KeygenRev10.lean", "source_sha256": "018d6b25332e72b15ad385fdf0a4636e8976145aed00a98ce24024b5caf7d353", "change": "new: REV10 source pins (header/tail), bitrev10 model and table extractor rawTable over the pinned 86 lines; the 1024-entry exactness certificate is OPEN (single decide exceeds kernel memory; the certified route is the established checked-chunk decomposition)"},
+    "Source3.C99ModularReference": {"source": "formal/Source3/C99ModularReference.lean", "source_sha256": "8bb828b826d79c94d52bc700431faf0b316e12f2c8241a52ee08baa4b13fe920", "change": "extended: Expr.call5, Stmt.storeRev + Exec rule, chainOf/bindParams, hand-built r2Code/divCode (pinned bodies of modp_R2/modp_div), non-mutual strata LeafCall (six leaf bodies incl. new modp_R) / GenEval / GenExec / r2Body / divBody / ModCall (leaves + composite callees), Eval/Exec as ModCall instantiations; original induction-based consumers keep working"},
+    "Source3.C99ModularParser": {"source": "formal/Source3/C99ModularParser.lean", "source_sha256": "ca38a0e9dc3e4473e52002c4b90e65d24e584790d158be2770bad1779261ce43", "change": "extended: call5 argument arm, return-with-expression case, revStoreTail/storeRev parse (base + REV10[index]] = value;), cmpToken and the state-exact while (name ++ OP bound) desugaring (documented), ++/-- statements and -- for-increment (two single '-' tokens: LeafScan merges only ++)"},
+    "Source3.C99ModularAnnotation": {"source": "formal/Source3/C99ModularAnnotation.lean", "source_sha256": "2c7bc04b24984034b988af421edd8995608d15c91389042177a27aa438bff2aa", "change": "call5 and storeRev cases"},
+    "Source3.KeygenMkgm3Callees": {"source": "formal/Source3/KeygenMkgm3Callees.lean", "source_sha256": "c0600ff8c2471a33ee4a6c8245b97f5054fbcbe8acbae01cb4b76d8cddeedbd4", "change": "new: source pins r2_header/div_header and the parse equalities r2_source_bound (PASS: region 2575 24 = some r2Code) and div_source_bound (OPEN: region 2642 26 != some divCode retained in _010/_011)"},
+    "Source3.KeygenMkgm3Program": {"source": "formal/Source3/KeygenMkgm3Program.lean", "source_sha256": "a1b4116831318222f272bd5710e8746eed07fc67bc2acbac1a56617dcd043544", "change": "new (draft, untested at freeze): the full modp_mkgm3 body tree (declarations, generator conversion, if (!full), while-desugared squaring loop, ig assignment, logn==1 row select, last-row REV10 loop, full-case cubing, upward squaring, top elements) with source_header/source_bound over region 2945 91"},
+    "consumer_patches": "C99ModularFlow/C99ModularFrame (storeRev in onlyReturn/readOnly and Exec case lists), KeygenCheckLoopBridge/KeygenNttFirstLoop/KeygenNttTripleLoop/KeygenResidueLoop/KeygenNttMiddleRounds (storeRev alternative in Exec enumerations); all previously green in _011 through KeygenFiber008Audit"
+  },
+  "open_obligations_B1_03": [
+    "div_source_bound: one statement of the hand-built divCode differs from the parser output of pinned lines 2645..2670 (r2Code matches exactly); candidates: the i-- decrement update shape, the single-clause for-initial wrapping, or the z ^= select expression; compare region 2642 26 output against divCode",
+    "KeygenMkgm3Program.source_bound (same risk family) and the remaining closure (KeygenNtt* family, KeygenResidue* family) re-check in one job",
+    "REV10 exactness certificate via checked-chunk decomposition (32-entry chunks + assembly law)",
+    "r2 exact value law (2^62 mod p) and the Montgomery-scale extraction of the mkgm3 stores",
+    "per-row exponent/order laws and canonical ranges from the executed stores; igm=ft overwrite and preservation of gm/source material; extents and non-overlap from the caller buffer layout"
+  ]
+}

@@ -1,5 +1,27 @@
 # T12.1/source3 — żywy stan
 
+## B1.03 phase 1 — frontend/callees/REV10/order closed, freeze at mid-point — 2026-10-06
+
+**ACTIVE / KEYGEN_SOURCE_TO_FIBER_001 IN_PROGRESS / NOT_REVIEWED.**
+Owner-scoped window (EXCLUSIVELY B1.03) frozen at a staged-roadmap-3
+recoverable mid-point (context soft ceiling). CLOSED and green (job
+`keygen_mkgm3_frontend_011`, 17/34 accepted/clean): the modular frontend
+gains `call5`, `storeRev` (exact `base + REV10[idx]` stores), the
+state-exact `while (k ++ < 11)` desugaring and `++`/`--` support; the
+non-mutual call strata `LeafCall`/`GenEval`/`GenExec`/`ModCall` (trap 33:
+never a `mutual` block — `induction` refuses it); `modp_R` bound with its
+`2^31 mod p` value law; **generator order 9216/4608 kernel-CHECKED**
+(plan proof obligation, not an assumption); REV10 data model; and
+`r2_source_bound` (the hand-built `r2Code` equals the pinned parse).
+OPEN at the exact boundary: `div_source_bound` (one statement of `divCode`
+differs from the parser output), `KeygenMkgm3Program.source_bound`, the
+17 remaining closure modules, the chunked REV10 certificate, and the
+whole row-law/Montgomery-scale/memory-layout part of B1.03. Traps 32-39
+in `notes/run/KEYGEN_RESIDUE_CHECKPOINT.md`; receipt pair
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_013.*`. No push (owner signal absent).
+Next window: continue B1.03 only from the checkpoint section 2.
+
+
 ## 2.1.1-second part 2 closed — B1.02 CLOSED at Acceptance — 2026-10-06
 
 **ACTIVE / KEYGEN_SOURCE_TO_FIBER_001 IN_PROGRESS / NOT_REVIEWED.**
