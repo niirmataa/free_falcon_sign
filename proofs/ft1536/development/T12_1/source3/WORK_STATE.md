@@ -1,5 +1,39 @@
 # T12.1/source3 — żywy stan
 
+## B1.03 stage (c) — source row laws CLOSED — 2026-10-06
+
+**KEYGEN_SOURCE_TO_FIBER_001 IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
+The owner-scoped (c) implementation is complete. `KeygenMkgm3.source_contract`
+and `parsed_contract` derive every initialized gm word's canonical range,
+explicit Montgomery factor and exact root order from the complete existing
+source execution. The 1024-entry certificate covers physical indices;
+source generator conversion consumes BATCH_016, REV10 consumes BATCH_015.
+All three row loops and the final gm[0]=gm[1] copy are composed.
+
+`source_then_overwrite` preserves the same gm table and original four-Vec
+material through the actual igm=ft coefficient-conversion overwrite.
+Caller aliases, the 7168-word/28672-byte required extent, 4096-byte table
+extents, all pairwise output/table separations, original-object footprint
+and read-only REV10 discipline have checked exports. Entry is legal caller
+memory, M0 scalar/pointer bindings, static REV10 bytes and the executed
+p0i initializer; the enclosing allocator/call-frame remains B1.07.
+
+Final contract and audit job: `keygen_mkgm3_contract_002`, both modules
+accepted with 0/0 logs. Audit: **57 definitions/exports, complete types and
+terms, zero elisions, standard axioms only**. All 18 new modules have
+matching accepted source/artifact/receipt bindings. This was incremental
+dependency-ordered checking, not a new whole-project replay.
+`keygen_mkgm3_checks_002`: normal/UBSan baselines agree on all 1024 words
+before and after overwrite; six mutations detected in both modes (14
+executions), original synthetic material and scratch guards preserved.
+
+Source commits: `9c9f75fe`, `8e132c16`, `fa938836`, plus the final assembly
+commit identified in BATCH_017. The BATCH_017 pair and expanded checkpoint
+carry the final pins, retained failures and exact premise boundary.
+**No owned job remains; the (c) window closes here. Next owner step:
+Acceptance B1.03.** B1.04 and t*m=n were not entered. No independent review,
+stage import, owner acceptance or push is implied.
+
 ## B1.03 stage (c) — row laws and layout in progress — 2026-10-06
 
 Owner-scoped window: stage (c) only; BATCH_015/016 and 364 current inputs
