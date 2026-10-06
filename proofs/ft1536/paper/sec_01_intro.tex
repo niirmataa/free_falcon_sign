@@ -1,0 +1,32 @@
+\section{Introduction and purpose}\label{sec:intro}
+\status{CLOSED narrative material; owner voice review pending}
+The objective of the FT1536 development is a security argument whose
+objects can be traced to a specified implementation. Such an argument
+requires more than a reduction between ideal games: the key law,
+sampler law, randomness interface and byte-level acceptance predicate
+must refer to the same experiment. The present artifact contains a
+conditional classical reduction and several source-bound components;
+their final implementation-level composition is unfinished.\src{C01}
+
+This paper develops three parts of that argument. First, it presents the
+conditional reduction and the computed constants of a pointwise sampler
+comparison. Second, it records negative results that rule out shortcuts
+in that comparison. Third, it describes the source-binding and review
+process, including defects in both C code and formal models that the
+process exposed. The artifact is part of the FT1536 evidence
+archive~\cite{ft1536artifact}.\src{C04,C06,C09,C11,C12}
+
+The project's purpose is to make independently inspectable signature
+software available to people who wish to choose and evaluate their own
+cryptographic tools. That purpose requires publishing limitations and
+failed arguments alongside successful proofs, and preserving the
+attribution of the Falcon Project and Thomas Pornin. Accessibility is a
+design aim; it is not evidence for a security claim.
+
+Section~\ref{sec:main} distinguishes the target assembly from the
+theorems already present. Section~\ref{sec:sampler} states the negative
+results as theorems. Sections~\ref{sec:security} and~\ref{sec:limits}
+give the security-accounting convention and the unresolved obligations
+in the body of the paper.
+\todo{OWNER-TITLE}{Approve the working title after reviewing the stated scope.}
+\todo{OWNER-MISSION}{Review the restrained mission paragraph in this section.}

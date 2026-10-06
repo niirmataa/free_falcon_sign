@@ -1,0 +1,79 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,longtable,array}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{target}[theorem]{Target statement (in flight)}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\status}[1]{\par\noindent\textbf{Draft status: #1.}\par\smallskip}
+\newcommand{\todo}[2]{\par\smallskip\noindent\textcolor{red!65!black}{\textbf{TODO [#1]:} #2}\par\smallskip}
+\newcommand{\src}[1]{\textsuperscript{\textsf{[#1]}}}
+\newcommand{\code}[1]{\texttt{\detokenize{#1}}}
+\newcommand{\Adv}{\operatorname{Adv}}
+\newcommand{\Law}{\operatorname{Law}}
+\newcommand{\Second}{\operatorname{second}}
+\newcommand{\AC}{\operatorname{AC}}
+\newcommand{\TV}{\operatorname{TV}}
+\newcommand{\none}{\bot}
+\newcommand{\Rq}{R_q}
+\newcommand{\epscoll}{\varepsilon_{\mathrm{coll}}}
+\newcommand{\dprg}{\delta_{\mathrm{PRG}}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\U}{\mathsf{U}}
+\newcommand{\ind}{\mathbf{1}}
+\title{FT1536: A Kernel-Checked Reduction Framework\\
+  with Explicit Code-Binding Obligations}
+\author{Niirmata\\\small Project draft; author approval pending}
+\date{Version 0.1 --- 6 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We describe a formal reduction framework for FT1536, a research signature
+profile derived from Falcon with ternary secrets. The formal classical
+game has a conditional EUF-CMA to multi-target inhomogeneous short-integer
+solution reduction. A pointwise sampler-comparison framework computes
+an error parameter $e=k^{32}-1<2^{-32}$ for its unconditioned attempt
+shape; the corresponding acceptance-conditioned framework gives
+$e<2^{-17}$. These bounds require the stated law and weight interfaces.
+A separate computational theorem bounds a stream-driven public
+simulation using an admitted class of randomized tests and an explicit
+cost certificate. We present counterexamples to insufficient sampler
+arguments and defects found during source binding. The connection from
+the real signer to these games remains in flight. This draft makes no
+end-to-end implementation-security or QROM claim; its unresolved
+interfaces are listed in the body.\src{C01,C04,C06,C09}
+\end{abstract}
+\noindent\textbf{Reading convention.} CLOSED labels refer to the stated
+formal component, including its premises, rather than to implementation
+security or independent acceptance. IN-FLIGHT and OPEN labels identify
+undischarged work. Superscript identifiers refer to the exact paths,
+declarations and byte pins in the companion \code{SOURCES.md}.
+\input{sec_01_intro}
+\input{sec_02_parameters}
+\input{sec_03_model}
+\input{sec_04_main}
+\input{sec_05_reduction}
+\input{sec_06_sampler}
+\input{sec_07_binding}
+\input{sec_08_security}
+\input{sec_09_computational}
+\input{sec_10_related}
+\input{sec_11_limits}
+\appendix
+\input{annex_a_trust}
+\input{annex_b_origin}
+\bibliographystyle{plain}
+\bibliography{refs}
+\end{document}
