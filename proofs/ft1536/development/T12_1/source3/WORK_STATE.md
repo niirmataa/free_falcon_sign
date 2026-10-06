@@ -30,7 +30,8 @@ the caller composition consumes the preceding source executions.
 `KeygenNttFirstComposition.generated_converted_prefix` consumes the table
 generator, actual coefficient conversion, NTT prologue and first-pass
 executions, retaining the same original Vec and preserving gm. Canonical
-input/output and initialized gm are conclusions of that composition.
+entry cells and initialized gm are derived from preceding source executions;
+same-Vec first-pass cells/remainders and gm preservation are conclusions.
 Checked `keygen_ntt_first_composition_002` (0/0 logs).
 
 `KeygenNttGeometry` checks `t*m=1536` at headers 0..8, the distinct
@@ -61,7 +62,7 @@ modules have accepted source/artifact bindings and 0/0 logs. Sage/C
 three public arrays, direct polynomial evaluation at all1536 physical
 points, normal/UBSan and six detected mutations in each mode (14 runs).
 
-**Window closing at a recoverable midpoint under staged-roadmap rule3.
+**Window CLOSED at a recoverable midpoint under staged-roadmap rule3.
 B1.04 Acceptance is NOT met.** No owned job or unresolved Lean draft
 remains. Next window resumes B1.04 at u1Inner/u1/m memory/value composition,
 twiddle-child polynomial propagation, all512 triple iterations and the
@@ -70,6 +71,11 @@ the resume protocol; BATCH_018 is the new evidence pair. `t*m=n` occurs
 only in this stage's new geometry module. Local exact-path commits use
 the shared writer lock. Status: IN_PROGRESS / NOT_REVIEWED /
 WORKING_NOT_FROZEN; no review, stage import or publication.
+
+BATCH_018 JSON `f4e28b724e588b7e91cdb429646dfefe5939332f307f0ae15dc282369edc72cf`;
+notes `c19d5c9cb893793dd6ff23fa232271fcfe704f0821160de1a1e2065551bd546d`.
+All393 current final-audit inputs matched at sealing;29 attempts/17 failed
+retained. Proof commits: `bb2ca842`, `cd23c3f1`, `6f7cde92`, `1a9f4ef3`.
 
 ## B1.03 stage (c) — source row laws CLOSED — 2026-10-06
 
