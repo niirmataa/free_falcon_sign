@@ -28,8 +28,9 @@ and only standard axioms; output SHA256
 Sage/C finite controls: seven public odd moduli, both halving parities,
 normal/UBSan baseline and three detected mutations in both modes.
 Retained failures and the superseded truncated audit are recorded in
-BATCH_016. The generic word checkpoint is `b3941188`; source composition
-and this state are the next small local commit, followed by the receipt.
+BATCH_016. Source commits: `b3941188` (generic word law) and `1856d911`
+(source composition/exports/audit/controls). The BATCH_016 pair and expanded
+`notes/run/KEYGEN_RESIDUE_CHECKPOINT.md` record the final handoff and pins.
 
 No owned job remains running. This owner window closes at stage (b).
 Next owner window: **(c) row exponent/order laws and canonical ranges**,

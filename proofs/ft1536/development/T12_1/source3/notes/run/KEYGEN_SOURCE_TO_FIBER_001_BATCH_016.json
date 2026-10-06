@@ -1,0 +1,133 @@
+{
+  "task": "KEYGEN_SOURCE_TO_FIBER_001",
+  "batch": "BATCH_016",
+  "stage": "B1.03 stage (b): source modp_R2 value law",
+  "stage_result": "PROVED_KERNEL_SCOPED",
+  "status": "IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN",
+  "scope": "Owner-scoped stage (b) only: canonical 2^62 mod p and its R*R Montgomery scale from the existing source execution. Stage (c) row laws await the next window.",
+  "session_harness": "GPT-6 Astra Ultrafast / openai/gpt-6-astra-ultrafast",
+  "runner_note": "The unchanged runner's model/session fields are historical labels, not this window's harness. One serial proof job and one Git writer at a time; no subagents, review, or push.",
+  "runner_sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+  "input_pins": {
+    "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_013.json": "408b14a3392877da79848cc2f236af93f83dd2d4c4954a9f8dd8bea86d3e85cf",
+    "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_013_NOTES.md": "9c67dbb9a0698bfec85bfe7493043e266afdadfe43dc79d79eace8cf58e6b1bb",
+    "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_014.json": "db561dae070707a12eea817388a982c069edea7cdf13a7abfacc2ff177165d9b",
+    "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_014_NOTES.md": "f383d26ada57296147fd955c2b35973dbd9fcf03ef98390c84d764af1cd7c250",
+    "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_015.json": "b5bb63f5ddfb423ff6a4742dfd2893bcc7587b4cb50f51877b9b3910285be134",
+    "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_015_NOTES.md": "aec981ffab3f9065ac10d6d99f4f931ceccd852f237382e3b0240b64fbe53cd8",
+    ".build/jobs/keygen_mkgm3_frontend_011/RECEIPTS.json": "3ca613d70be08968f902e729705754f687b5224e0286da1d46578dda4f381cdd",
+    ".build/jobs/keygen_mkgm3_frontend_011/SOURCE_INPUTS.json": "7772a7a79458d5d37281e6c7f7ab8898567232449ad76df909bf4c0eeb0c5ade",
+    ".build/jobs/keygen_mkgm3_closure_001/RECEIPTS.json": "97966960f2fe5c9c86008e1a19713ee56736d05693b244fa4c702013ce5cfc87",
+    ".build/jobs/keygen_rev10_cert_004/RECEIPTS.json": "778fa00df3128ef824b7ef853aedda5f6119dc9b72aeffc0aba3c1290f7e909c",
+    ".build/jobs/keygen_rev10_cert_004/SOURCE_INPUTS.json": "f0059207c93cb832acee4b7aefe99016d7e0e93f2c22d08edea77491a87a9ae2",
+    ".build/modp_r2_016/PREFLIGHT.json": "c98771b171901cde2655d8cc5412d24cf099eb9c4623df229d666eabc9dc5a5d"
+  },
+  "baseline_validation": "All 360 current source inputs of keygen_rev10_cert_004 match. Seven current source differences from frontend_011 are exactly the BATCH_014 reference/parser/callee/program/NTT repairs. No baseline source was changed in this window.",
+  "source_m0_sha256": "0a09b6ed2363308f54584dfd1e2d33ee1b4601a68c77712c50da920b5074a5cf",
+  "contracts": {
+    "general_premises": "2^30 < p.toNat < 2^31; p.toNat % 2 = 1; 2^31 divides p.toNat*p0i.toNat+1; actual r2Body execution. No primality premise.",
+    "conclusions": "Returned uint32 word out has out.toNat < p.toNat, out.toNat = 2^62 % p.toNat, and value p out = radix p * radix p in ZMod p.toNat.",
+    "source_binding": "parsed_contract consumes the region 2575 24 parse and the existing GenExec LeafCall judgment; r2_source_bound identifies it with r2Code. No new source semantics or success constructor.",
+    "m0": "initialized_value_law obtains inverse validity from KeygenNinv31.SourceExec prime, then consumes ModCall modp_R2. initialized_to_montgomery derives the scalar conversion a -> R*a from the resulting r2 word and executed multiplication.",
+    "existence": "body_exists/source_exists/call_exists construct execution for every pair of uint32 arguments and arbitrary base state; the arithmetic law's domain is separate.",
+    "invariant": "After doubling and n Montgomery squares: canonical word with residue R*2^(2^n). At n=5 this is 2^63; parity-corrected overflow-free halving gives 2^62."
+  },
+  "accepted_builds": [
+    {
+      "job": "keygen_modp_r2_word_002",
+      "module": "Source3.KeygenModpR2Word",
+      "source": "formal/Source3/KeygenModpR2Word.lean",
+      "source_sha256": "d9e0500f9f4ab2bd7c5fb706550d7488767673b385b54059454a4182313cd33d",
+      "receipt_sha256": "628dbae6713e9d1bb5096905640842049086cd5bd31b9fe1c202954b9c8b25ec",
+      "source_inputs_sha256": "b7fbcf2fdce8e83a57dd88080e67e2baa65916025c94f3070756151a8e8a1e77",
+      "olean_sha256": "275fc8a2078086deaaf5ede297f338f35a339a1a7b9629eeac2791fcaadc29a8",
+      "elapsed_s": 1.618,
+      "maxrss_kib": 2467348
+    },
+    {
+      "job": "keygen_modp_r2_exec_004",
+      "module": "Source3.KeygenModpR2Exec",
+      "source": "formal/Source3/KeygenModpR2Exec.lean",
+      "source_sha256": "1b3393fd05cd123fc1e4144c4c79692f6682b5888d2110fdf13a6ac3d8b7f3e6",
+      "receipt_sha256": "5c9947068405377064dad62185d92bbff9f03d301db74d0b17d0b8ba11737664",
+      "source_inputs_sha256": "bdf566f7f52e71d384b58b73ee2c727ecdd85fd658f0d5d101402d79ecc9c6c2",
+      "olean_sha256": "74558a2abbd32fe57f55dd91f2d07f62da5aa49dce83cb3a0dab783c8bc1f356",
+      "elapsed_s": 14.598,
+      "maxrss_kib": 2515040
+    },
+    {
+      "job": "keygen_modp_r2_contract_001",
+      "module": "Source3.KeygenModpR2",
+      "source": "formal/Source3/KeygenModpR2.lean",
+      "source_sha256": "77197fc66349ac0c02a13052eb8e379c7c25eba6b90d4af23a05018c0003d233",
+      "receipt_sha256": "8455c9c8583f67058ff8b81251566e106d4f9d9ecfe953e43aa1317f752b1d7f",
+      "source_inputs_sha256": "5f8028aedeac22b9429de6ba72b4eff79363ae75b71665695d00d705676a98e1",
+      "olean_sha256": "43fa2596f5a6759649f249816e4237a4d7e42d72cda2d7418b75cb0ad6821869",
+      "elapsed_s": 2.720,
+      "maxrss_kib": 2498728
+    },
+    {
+      "job": "keygen_modp_r2_audit_005",
+      "module": "Source3.KeygenModpR2Audit",
+      "source": "formal/Source3/KeygenModpR2Audit.lean",
+      "source_sha256": "48ab598bbbb5d4d5f66eee452d4e1fdb5ed27f7f7f0920a6c2c60e3f07aaed08",
+      "receipt_sha256": "c3137c8cf542c82f7f94790006b7ae28362f2ab21db8e3d7cd71be534906e850",
+      "source_inputs_sha256": "414bfb7ca03b065184da940f10fe0c3d6e2a50b1adc6ed5efa13702242b76236",
+      "olean_sha256": "c26818a9a24f72d2eca61560df2da75a3fcedb844534549e3c4cb2aec5cb5d23",
+      "elapsed_s": 1.167,
+      "maxrss_kib": 2489156
+    }
+  ],
+  "audit": {
+    "path": ".build/jobs/keygen_modp_r2_audit_005/MODP_R2_AUDIT.json",
+    "sha256": "ab90b96085180b7d1868e405a9456f6b75528d4db491bbc178b8f0ac06af6ade",
+    "entries": 20,
+    "definition_entries": 4,
+    "theorem_entries": 16,
+    "allowed_axioms": ["propext", "Classical.choice", "Quot.sound"],
+    "type_and_term_elisions": 0,
+    "note": "Command-side audit only; kernel proofs are ordinary checked declarations. pp.maxSteps=200000 is an output-rendering budget, not a proof/resource-limit change. Final pretty printing retains proofs, full names and universes without pp.all expansion."
+  },
+  "sage": {
+    "job": "keygen_modp_r2_checks_001",
+    "source": "sage/check_keygen_modp_r2.sage",
+    "source_sha256": "a4704c7bd346291f2bb9892ec211f670cfe1bb78332c9272d128a26e8999cceb",
+    "receipt_sha256": "938fdcdd3fce773b4b6c35eb5bf51876838f2d912b0aef79c470a9cb2b9f790d",
+    "source_inputs_sha256": "ac4d9b17214b98642d331d5cf4877d35cc86ff5ed2e704b15f7566256a7bd4a6",
+    "result": ".build/jobs/keygen_modp_r2_checks_001/MODP_R2_CHECK.json",
+    "result_sha256": "49c8f1b35cdb7561290779e0fd5d3ee20e0bc10b2289ab1e4ca7d00cf3171018",
+    "elapsed_s": 2.521,
+    "maxrss_kib": 217892,
+    "unused_lean_inventory": "The generic Sage runner inventoried the then-current KeygenModpR2Audit from audit_003. Sage imports no Lean modules. Its historical source (41cac3645010915cf8c8d8eb3e2a9011ff606ef9711a0c5f0926d08ce2f0b72e) and olean (c26818a9a24f72d2eca61560df2da75a3fcedb844534549e3c4cb2aec5cb5d23) are retained and matched in that job. The final audit is separately pinned to audit_005; historical SOURCE_INPUTS was not rewritten.",
+    "scope": "Finite pinned-C controls with Sage ZZ modular exponentiation: 7 public odd moduli including composite/edge cases, both pre-halving parities; 8 normal/UBSan variants, 56 scalar observations. Baselines agree and all 3 mutations are detected in both modes. Not a universal proof or compiler theorem."
+  },
+  "logs": {
+    "accepted_stdout_bytes": 0,
+    "accepted_stderr_bytes": 0,
+    "empty_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "limits": "Lean -j1 -M6144; maxRecDepth 32768; maxHeartbeats 2000000; wall 1800s; address space 12 GiB; normal RSS budget 8 GiB; warnings are errors; unchanged runner and execution engine.",
+    "rebuild_scope": "New modules only, in dependency order. No existing reference/parser/consumer source changed, so the old 35-module descendant closure was not rebuilt."
+  },
+  "retained_attempts": [
+    {"job": "keygen_modp_r2_word_001", "status": "FAILED", "receipt_sha256": "84e39c81d3e08ecfade786114c6cd02018e8c51ade1775bcba1396c5dc761de4", "reason": "Normalize BitVec literal toNat before omega, remove solved-goal rfl, expose value definition before rw."},
+    {"job": "keygen_modp_r2_exec_001", "status": "FAILED", "receipt_sha256": "486ad991b29e0d8e53f6aa48716d2803424c1648144877ec326526bd4cc0e329", "reason": "Explicit intermediate states required by dependent seqNormal constructors and by setZ_params."},
+    {"job": "keygen_modp_r2_exec_002", "status": "FAILED", "receipt_sha256": "21a61f4bc0cfa561c9530d75c744779bd154e84ebb74790fda2468bb6a9f20a4", "reason": "List append instance projection not normalized at dependent recursive tail."},
+    {"job": "keygen_modp_r2_exec_003", "status": "FAILED", "receipt_sha256": "b5c93fda3d2985f9d4d325bd8b3b5556bd59d5de4bef1ad9c689704d44e90278", "reason": "Unfolding afterDouble alone did not normalize HAppend.hAppend/Append.append."},
+    {"job": "keygen_modp_r2_audit_001", "status": "FAILED", "receipt_sha256": "285e2349452e22bd160a8e1456eee9b815c7652fae20d89a3eb9b9301bd50869", "reason": "Unqualified liftIO unavailable; use direct IO action lifting in TermElabM."},
+    {"job": "keygen_modp_r2_audit_002", "status": "FAILED", "receipt_sha256": "03d5515b811090df70b2ae43260d2cc6a19fddad526d04e799e2b86ecacbd223", "reason": "ConstantInfo.value? requires allowOpaque=true for theorem bodies."},
+    {"job": "keygen_modp_r2_audit_003", "status": "ACCEPTED_SUPERSEDED_PARTIAL_PRINT", "receipt_sha256": "166f20fe6b79c7541937597d4ddb4980604e9b57a3d386fae243bf9969f1297d", "reason": "Types and axioms checked, but 5 proof-term prints contained ellipses. Not the final complete-term audit."},
+    {"job": "keygen_modp_r2_audit_004", "status": "FAILED", "receipt_sha256": "c1c265a21dca39fc8862c73a6f9c3a2c318d678a49fabd589951e7f63e353826", "reason": "Elision guard caught call_contract with pp.all. Final _005 uses ordinary notation plus explicit proof/full-name/universe printing; no elisions."}
+  ],
+  "open_obligations": [
+    "Stage (c): per-row exponent/order laws and canonical ranges from executed mkgm3 stores; row Montgomery scale is not yet derived.",
+    "igm=ft overwrite preserving gm/source material, then extents and non-overlap from caller buffer layout.",
+    "B1.04: source NTT canonical range and polynomial evaluation; t*m=n belongs there.",
+    "B1.05-B1.11 and emitted_to_actual_fiber remain open."
+  ],
+  "git": {
+    "proof_commits": ["b3941188", "1856d911"],
+    "receipt_commit": "the commit containing this new BATCH_016 pair and updated checkpoint",
+    "push": "none; explicit owner signal absent",
+    "writer": "Existing proofs/ft1536/work/archive.lock held during exact-path Git commits; foreign paper/onboarding changes preserved."
+  }
+}
