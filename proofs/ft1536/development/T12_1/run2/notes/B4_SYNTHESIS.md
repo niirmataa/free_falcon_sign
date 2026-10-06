@@ -352,9 +352,10 @@ probe. 79-vs-64 = API change + log-set choice, not an error.
 
 CLOSING LIST NOW: everything except the four-arrow map's arrows 1-2 -
 the honest-Sign bridge = the B1 realization lane (do_sign/ReplyShape/
-AttemptShape/keyIdent/B1.10) + final assembly. Formal stages-import +
-tag deferred to T12.1 acceptance (one archive.py pass at the end, per
-the owner's rhythm; the acceptance is recorded here and in REVIEW_003).
+AttemptShape/keyIdent/B1.10) + final assembly. **Owner decision
+2026-10-07: the formal stages-import + tag happens ONCE, at T12.1
+acceptance** (single archive.py pass at the end - not per-package stages
+mid-campaign); the B2/B5 acceptance is recorded here and in REVIEW_003.
 
 ## Consumption map
 
