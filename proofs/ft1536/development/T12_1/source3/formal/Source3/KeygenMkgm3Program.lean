@@ -28,7 +28,7 @@ def indexDecl (names : List String) : Stmt :=
 def mont (a b : Expr) : Expr :=
   .call4 "modp_montymul".toList a b (cell "p") (cell "p0i")
 
-def declarations : Stmt := chainOf [
+def declarations : List Stmt := [
   indexDecl ["u"],
   .base (.scalar (.declare .u32 ["k".toList])),
   wordDecl ["R","R2","w","ig"]]
@@ -58,7 +58,7 @@ def lognOne : CLogic.Expr := .cmp .eq (var "logn") (num 1)
 
 def thenOne : Stmt := .scope [] (chainOf [
   .store32 "gm".toList (num 1) (cell "g"),
-  .store32 "igm".toList (num 1) (cell "ig"))])
+  .store32 "igm".toList (num 1) (cell "ig")])
 
 /- `gm[b + REV10[u << k]] = x;` and relatives. -/
 def storeRev (array : String) (index : CLogic.Expr) (value : Expr) : Stmt :=
@@ -142,7 +142,7 @@ def squareLoop : Stmt :=
       (.bin .shl (.cast .u64 (num 1)) (var "k")) (num 1))))
     (.loop (.cmp .gt (var "u") (num 0)) squareBody (dec "u"))
 
-def topElements : Stmt := chainOf [
+def topElements : List Stmt := [
   .store32 "gm".toList (num 0) (load "gm" (num 1)),
   .assign "w".toList (load "gm" (num 1)),
   .store32 "igm".toList (num 0)
@@ -152,20 +152,23 @@ def topElements : Stmt := chainOf [
         (cell "R") (cell "p"))
       (cell "p") (cell "p0i") (cell "R"))]
 
-def code : Stmt := chainOf [
-  declarations,
-  rAssign,
-  r2Assign,
-  gConvert,
-  kFromLogn0,
-  ifNotFull,
-  whileK,
-  igAssign,
-  rowSelect,
-  kFromLogn,
-  ifFull,
-  squareLoop,
-  topElements]
+/- The body tree mirrors the parser's flat seq spine statement by
+   statement: the parser's body recursion yields one right-nested seq
+   chain, so nested chainOf groups (declarations, top elements) are
+   spliced into the same flat list rather than wrapped as single
+   statements. -/
+def code : Stmt := chainOf (declarations ++
+  [rAssign,
+   r2Assign,
+   gConvert,
+   kFromLogn0,
+   ifNotFull,
+   whileK,
+   igAssign,
+   rowSelect,
+   kFromLogn,
+   ifFull,
+   squareLoop] ++ topElements)
 
 theorem source_header :
     Pinned.keygenLines[2940]?=

@@ -35,7 +35,9 @@ def expr : Nat → List Token → Option (Expr×List Token)
       | [']']::rest => pure (.load32 name index,rest)
       | _ => none
   | fuel+1,name::['(']::rest =>
-      if name="MKN".toList then
+      if !name.all B20.C.wordChar then
+        (C99ArrayParser.pureExpr (name::['(']::rest)).map (fun (e,rest) => (.scalar e,rest))
+      else if name="MKN".toList then
         (C99ArrayParser.pureExpr (name::['(']::rest)).map (fun (e,rest) => (.scalar e,rest))
       else do
         let (a,rest) ← expr fuel rest
@@ -72,11 +74,23 @@ def chain : List Stmt → Stmt
    the read-only REV10 table inside a size_t index expression, as in
    `gm[b + REV10[u << k]] = x;`. Accepted form:
    `base + REV10[index]] = value;` where the first `]` closes REV10 and the
-   second closes the destination array. -/
+   second closes the destination array. The base is parsed on the token
+   prefix before the `+ REV10 [` marker: a greedy pure-expression parse
+   folds that `+` into the base and reads REV10 as a scalar variable, so
+   the marker split below is what makes the production fire on real stores
+   (localized by probe keygen_mkgm3_program_probe_003 T4/T5). -/
+def revSplit : List Token → Option (List Token×List Token)
+  | ['+']::['R','E','V','1','0']::['[']::rest =>
+      some ([],['+']::['R','E','V','1','0']::['[']::rest)
+  | t::ts => (revSplit ts).map (fun (pre,tail) => (t::pre,tail))
+  | [] => none
+
 def revStoreTail : List Token → Option (CLogic.Expr×CLogic.Expr×Expr×List Token)
   | ts => do
-      let (base,rest) ← C99ArrayParser.pureExpr ts
-      match rest with
+      let (pre,tail) ← revSplit ts
+      let (base,extra) ← C99ArrayParser.pureExpr pre
+      if extra≠[] then none else do
+      match tail with
       | ['+']::['R','E','V','1','0']::['[']::rest => do
           let (index,rest) ← C99ArrayParser.pureExpr rest
           match rest with
