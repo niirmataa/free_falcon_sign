@@ -1,0 +1,28 @@
+{
+  "task": "KEYGEN_SOURCE_TO_FIBER_001",
+  "batch": "BATCH_014",
+  "stage": "B1.03 continuation (KROK 0 tree repair, div_source_bound binding, KeygenMkgm3Program.source_bound, closure rebuild, row/Montgomery/memory laws, REV10 chunked certificate)",
+  "status": "IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN",
+  "scope": "Owner-scoped window: EXCLUSIVELY B1.03 continuation per KEYGEN_RESIDUE_CHECKPOINT.md section 2 and the EXECUTION_PLAN. B1.04 values/ranges outside row laws and t*m=n stay outside this window (as before).",
+  "session_harness": "MiMo V2.6 Pro (B1.03 continuation window)",
+  "runner_note": "tools/job.py is byte-identical to the pinned runner (runner_sha256 below); its hardcoded PREFLIGHT 'model'/'session' fields remain historical labels of the runner and do NOT describe this window's harness.",
+  "runner_sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+  "input_pins_reverified": {
+    "protocol": "KEYGEN_RESIDUE_CHECKPOINT.md section 6 step 2, executed before any new work",
+    "keygen_mkgm3_frontend_011": "RECEIPTS 3ca613d70be08968f902e729705754f687b5224e0286da1d46578dda4f381cdd MATCH (owner-pinned); SOURCE_INPUTS 7772a7a79458d5d37281e6c7f7ab8898567232449ad76df909bf4c0eeb0c5ade MATCH (owner-pinned)"
+  },
+  "krok_0_tree_repair": {
+    "removed_false_claim": "KeygenMkgm3Callees.div_source_bound : C99ModularParser.region 2642 26 = some C99ModularReference.divCode was DISPROVEN by kernel decide (retained log .build/jobs/keygen_mkgm3_frontend_011/logs/Source3_KeygenMkgm3Callees.stdout) and is REMOVED from the Lean tree; div_header and r2_header/r2_source_bound remain",
+    "divCode_candidate_obligation": "C99ModularReference.divCode (the hand-built modp_div body tree) is a CANDIDATE recorded as an OPEN OBLIGATION here in the receipt, NOT a claim: its parse binding C99ModularParser.region 2642 26 = some divCode is false and the corrected binding sentence is pending. Exactly one statement of the tree differs from the parser output of the pinned body (file lines 2645-2670 = keygenLines 2641-2666); candidates listed in BATCH_013.json (the i-- decrement update shape, the single-clause for-initial wrapping, the z ^= select expression, the modp_montymul(z, 1, ...) literal)"
+  },
+  "jobs": {},
+  "modules": {},
+  "open_obligations_B1_03": [
+    "div_source_bound (corrected binding sentence parser<->divCode, one differing statement) - divCode candidate obligation above",
+    "KeygenMkgm3Program.source_bound (region 2945 91 = some code; draft tree untested)",
+    "closure rebuild of the full changed-descendant set in one job",
+    "REV10 exactness certificate via checked-chunk decomposition (32-entry chunks + assembly law)",
+    "r2 exact value law (2^62 mod p) and the Montgomery-scale extraction of the mkgm3 stores",
+    "per-row exponent/order laws and canonical ranges from the executed stores; igm=ft overwrite and preservation of gm/source material; extents and non-overlap from the caller buffer layout"
+  ]
+}

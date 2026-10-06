@@ -363,6 +363,7 @@ theorem atom_frame (a : Stmt) (writes : List Name) (s : State) (out : Result)
       · rfl
   | store32 name index e before after p v address value write =>
       exact ⟨rfl,rfl,fun _ _ => rfl⟩
+  | storeRev => simp [localOnly] at shape
   | seqNormal first second before middle result head tail => simp [localOnly] at shape
   | seqExit first second before result head exit => simp [localOnly] at shape
   | scope locals body before result inner => simp [localOnly] at shape

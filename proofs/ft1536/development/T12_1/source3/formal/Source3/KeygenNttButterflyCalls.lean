@@ -140,21 +140,21 @@ theorem load_at (s : State) (name : String) (index : CLogic.Expr) (root : ArrayP
    one constructor per callee name; fields that unify with the surrounding
    derivation are referenced directly. -/
 theorem mont_inv {args : List Value} {out : Value}
-    (h : C99ModularReference.Call "modp_montymul".toList args out) :
+    (h : C99ModularReference.ModCall "modp_montymul".toList args out) :
     C99ScalarReference.FunctionExec C99Frontend.noCalls
       (C99Frontend.headerFunction KeygenModpWord.montgomeryCode) args out := by
   cases h with
   | montgomery args out body => exact body
 
 theorem add_inv {args : List Value} {out : Value}
-    (h : C99ModularReference.Call "modp_add".toList args out) :
+    (h : C99ModularReference.ModCall "modp_add".toList args out) :
     C99ScalarReference.FunctionExec C99Frontend.noCalls
       (C99Frontend.headerFunction (KeygenModpAddSub.code .add)) args out := by
   cases h with
   | add args out body => exact body
 
 theorem sub_inv {args : List Value} {out : Value}
-    (h : C99ModularReference.Call "modp_sub".toList args out) :
+    (h : C99ModularReference.ModCall "modp_sub".toList args out) :
     C99ScalarReference.FunctionExec C99Frontend.noCalls
       (C99Frontend.headerFunction (KeygenModpAddSub.code .sub)) args out := by
   cases h with

@@ -175,8 +175,8 @@ theorem loop_trace (aP : ArrayPointer) (σ v1p htp : Nat) (code : Stmt) (before 
     result.flow=.normal ∧ (∀ n, n≠"v".toList → result.state.locals n=before.locals n) ∧
       VTrace aP σ v1p htp k before result.state := by
   induction source generalizing k with
-  | base | assign | store32 | seqNormal | seqExit | scope | branchTrue | branchFalse | ret
-  | retVoid =>
+  | base | assign | store32 | storeRev | seqNormal | seqExit | scope | branchTrue | branchFalse
+  | ret | retVoid =>
       cases shape
   | loopFalse condition body increment before v guard zero =>
       cases shape
