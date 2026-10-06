@@ -1,3 +1,119 @@
 \section{The computational interface}\label{sec:computational}
 \status{CLOSED conditional public-simulation component; independent acceptance OPEN}
-\todo{DRAFT-09}{Give the admitted-class hop, full-run tape and actual cost certificate.}
+\subsection{An admitted class of randomized tests}
+For a finite tape space $X$ and law $\tau$, a \code{CompTest} is a
+function $t:X\to[0,1]$. The operative premise is exactly
+\begin{equation}\label{eq:comp}
+ \code{CompPRGBound}(\mathcal C,\tau,\dprg)
+ \iff\forall t\in\mathcal C,\quad
+ \left|\sum_x(\tau(x)-\U_X(x))t(x)\right|\leq\dprg.
+\end{equation}
+The admitted class $\mathcal C$ and a cost function are parameters.
+Their names do not establish efficient implementability; that must
+be supplied by the intended instantiation.\src{C15}
+
+Given a continuation $F:X\to\code{Dist}(Y)$ and an event $E$, the
+winning test is $t_F(x)=\Pr[F(x)\in E]$. It averages the randomness
+remaining after the tape has been fixed. For the public stream game,
+that randomness includes the public key, adversary coins, nonces and
+fresh ROM replies; adaptive messages remain inside the continuation.
+It is generally not a deterministic indicator on $X$.\src{C15}
+
+\begin{proposition}[Restricted-test game hop]
+If \eqref{eq:comp} holds and $t_F\in\mathcal C$, then
+\[
+ \left|\Pr_{x\leftarrow\tau}[F(x)\in E]
+       -\Pr_{x\leftarrow\U_X}[F(x)\in E]\right|\leq\dprg.
+\]
+\end{proposition}
+This is \code{comp_game_hop_abs}. Its proof rewrites both probabilities
+as finite expectations and applies \eqref{eq:comp} to that test.
+It does not pass through a total-variation bound. In contrast, the
+older predicate named \code{ChaCha20PRFBound} quantifies over all
+events and is proved equivalent to a total-variation bound. Its
+name and comments do not make its quantifier computational.
+The finite-state theorem in Section~\ref{sec:sampler} explains why
+that unrestricted reading cannot give a small error here.\src{C10,C15}
+
+\subsection{One tape for the whole run}
+The stream experiment draws one tape in
+$X=\{0,1\}^{q_s S.\mathrm{bits}}$, not an independent real-generator
+tape at every adaptive query. \code{windowOf} selects a query window;
+\code{windowsOf} and \code{flattenWindows} are inverse maps between
+the whole tape and its table of windows. Uniformity transports through
+this equivalence, including zero-width and zero-query cases.
+The induction \code{simulateStream_uniform} handles the adaptive
+continuations and yields
+\[
+ P_\U=\Pr[\code{lazyGame}=\mathrm{true}]
+      =\Adv_{\mathrm{MT}}(q_h+1,\mu_H,B_A).
+\]
+This identity belongs to the public simulator. It does not identify
+a stream-driven honest signer with \code{Games.runEUF}.\src{C15}
+
+The exact modeled consumption names are
+\[
+ n=q_s S.\mathrm{bits},\qquad
+ b_{\mathrm{bytes}}=(n+7)\mathbin{\mathrm{div}}8,\qquad
+ q_{\mathrm{blocks}}=(b_{\mathrm{bytes}}+63)\mathbin{\mathrm{div}}64.
+\]
+The modeled generator has $64$-byte blocks and a $4096$-byte refill
+buffer. The formal nonce draw is $320$ bits per signing query and is
+outside this ChaCha tape account. These definitions do not prove that
+the C signer's concatenated, potentially reinitialized instances have
+the selected joint tape law; seeding, dependence and addressing remain
+source/operational obligations.\src{C10,C15}
+
+\subsection{The cost and key-law premises must be consumed}
+For the actual winning test $t$, the certificate has two fields:
+\begin{equation}\label{eq:cost}
+ \code{CompWinCert}:\qquad t\in\mathcal C,\qquad
+ \operatorname{cost}(t)\leq T_A+q_{\mathrm{blocks}}c_{\mathrm{block}}.
+\end{equation}
+The stream hop takes this full certificate. Its membership field feeds
+the probability argument, and its cost field is returned as a
+conjunct of the exported result. An unconstrained class-membership
+assertion alone cannot provide the second field. No machine-cost
+semantics is manufactured by the inequality.\src{C15}
+
+The computational assembly also names two laws on secret/public-key
+pairs, $\mu_E$ and $\mu_K$. The stream test uses
+$\code{muH}(\mu_E)$ and the MT experiment uses $\code{muH}(\mu_K)$.
+Its interface is
+\[
+ \code{KeyLawBinding}(K,\mu_E,\mu_K):\qquad K\Longrightarrow\mu_E=\mu_K,
+\]
+together with a proof of $K$. The equality is actually used in the
+export. Taking $K=\mathrm{True}$ still requires that equality; it
+cannot identify arbitrary different laws. Naming a law ``emitted''
+does not prove its source provenance.\src{C15}
+
+\begin{theorem}[Corrected public-simulation assembly]\label{thm:public}
+For the finite types, budget, adversary, sampler and full-run tape law
+above, assume \code{CompPRGBound}, the full certificate
+\eqref{eq:cost} for \code{streamWinTest} under $\code{muH}(\mu_E)$,
+and the key-law binding with a proof of its proposition. Then
+\[
+ P_\tau\leq b_K+\dprg
+ \quad\text{and}\quad
+ \operatorname{cost}(t)\leq T_A+q_{\mathrm{blocks}}c_{\mathrm{block}},
+\]
+where $b_K=\Adv_{\mathrm{MT}}(q_h+1,\code{muH}(\mu_K),B_A)$.
+If $\varepsilon_{\mathrm{stream}}\leq P_\tau$, the corresponding lower
+bound is $\max\{0,\varepsilon_{\mathrm{stream}}-\dprg\}\leq b_K$,
+with the same cost conjunct.
+\end{theorem}
+These are \code{public_sim_stream_bound} and
+\code{advMT_ge_of_public_sim_stream_win}. No sampler-divergence
+parameter is needed for this experiment. The separate $\Phi$-weakening
+exports admit arbitrary $D\geq0$; their inverse lower bound is
+dominated by the clipped direct bound when $\epscoll\geq0$.
+The clipping at zero is necessary.\src{C15,C16}
+
+The review process exposed three contract defects in earlier exports:
+the experiment was mislabeled as honest Sign, the cost certificate
+was not consumed, and the key proposition was unused. The corrected
+types address those defects for the public experiment. Their
+AUTHOR\_RECHECK verdict is scoped to that correction; the honest
+continuation, its own winning test and its fair-law identity remain
+the first two arrows of Section~\ref{sec:main}.\src{C17}

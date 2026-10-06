@@ -1,3 +1,80 @@
 \section{Trust chain and reproducibility}\label{app:trust}
 \status{CLOSED artifact methodology; release packaging OPEN}
-\todo{DRAFT-A}{Document pins, receipts, axiom audits and the actual independence of the reviews.}
+\subsection{What each layer establishes}
+The artifact has four distinct checks. A SHA-256 pin identifies bytes;
+a job receipt relates inputs, command, exit status and outputs; a Lean
+kernel check establishes the stated proposition under its dependencies;
+and a review checks whether that proposition matches the claimed scope.
+None of these steps is interchangeable with the others. In particular,
+matching hashes do not prove a mathematical claim, and a successful
+build does not prove that a premise was meaningfully used.\src{C17}
+
+The companion \code{SOURCES.md} maps each source identifier in this
+draft to exact repository paths and declaration or receipt names.
+\code{SOURCES.sha256} pins those files, including the archived copies
+used through \code{ARCHIVED_DEPENDENCIES.json}. Live-development paths
+are interpreted at the recorded snapshot, not at an unspecified future
+HEAD. The paper's build products are confined to \code{paper/build/}.
+\src{C17}
+
+\subsection{Axiom audits and the review record}
+The corrected computational package records Lean $4.34.0$, with Lean
+and Mathlib revisions in its environment record. Its API audit has
+$79$ distinct names: $63$ in \code{CompPrg} and $16$ in
+\code{AssemblyComp}. These include structure constructors, recursors
+and projections; they are not $79$ theorems. The historical $64$-name
+audit concerns the earlier source version. The corrected audit reports
+only subsets of \code{propext}, \code{Classical.choice} and
+\code{Quot.sound}. These are recorded source/audit results, not a new
+Lean replay performed while typesetting this paper.\src{C17}
+
+The review chronology matters:
+\begin{enumerate}
+ \item REVIEW\_001 reports an independent fresh-context review of the
+ earlier computational package, a $70/70$-step replay, and
+ \code{CHANGES_REQUIRED} for the experiment, cost and key-law defects.
+ \item The corrections were committed at \code{6ff3c838}.
+ REVIEW\_002 reports $70/70$ final base steps and a technical
+ \code{PASS_SCOPED}, but explicitly identifies itself as
+ \code{AUTHOR_RECHECK}, with independence and fresh-context flags false.
+ \item Its $k=1$/inverse supplement adds a clean accepted control step;
+ the final result records $71$ successful selected steps. The supplement
+ does not change the author's lack of independence from the correction.
+\end{enumerate}
+The synthesis also reports a third review of the pre-correction
+snapshot. That reported history is not counted here as independent
+acceptance of the corrected or final implementation claim. In
+particular, the phrase ``three independent reviews'' would require a
+separately pinned independence and scope record before use in a
+release.\src{C17}
+
+\subsection{Counterexamples and retained failures}
+Review controls test semantic consumption as well as compilation:
+class membership without a valid cost line, a proposition without
+key-law equality, and $D=0$ without a local sampler certificate.
+The negative results of Section~\ref{sec:sampler} use explicit
+kernel witnesses. Failed parser bindings and unsuccessful proof or
+audit attempts are retained in the recorded jobs rather than replaced
+by a clean-looking history. A later successful receipt identifies the
+selected final result.\src{C09,C12,C17}
+
+\subsection{Reproduction and release availability}
+From \code{proofs/ft1536/paper}, \code{make check} compiles the PDF,
+checks the cited-byte pins, source identifiers and final TeX log.
+\code{make numbers} runs a byte-identical runtime copy of
+\code{tools/check_numbers.sage} as \code{sage check_numbers.sage}
+with the standard preparser;
+it records its source pins, command and outputs under \code{build/}.
+This arithmetic check is not a replacement for the general Lean
+proofs or for the S06 campaign.\src{C20}
+
+Some receipts and reviews cited here reside in ignored \code{work/}
+or \code{.build/} directories. Local availability and a hash do not
+establish that those bytes are recoverable from a public Git clone.
+The release must provide their archival locations, the proof dependency
+closure and the corresponding replay commands. This draft therefore
+does not claim that every cited runtime artifact is already publicly
+downloadable.\src{C17}
+\todo{ARTIFACT-RELEASE}{Publish or archive the cited runtime evidence with
+immutable retrieval locations, then verify reproduction from a clean
+release checkout. Keep author rechecks distinct from independent reviews.}

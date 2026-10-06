@@ -1,3 +1,91 @@
 \section{The classical reduction}\label{sec:reduction}
 \status{CLOSED conditional reduction}
-\todo{DRAFT-05}{Describe the concrete reducer and directional second-moment comparison.}
+\subsection{One honest reply, including failure}
+The finite candidate space \code{BoxPair} contains two vectors with
+coordinates in $[-65535,65535]$. This is an enclosing box, not a
+centering domain. Every pair with $Q<B$ has a representation in it.
+For the syndrome map $A_h$ and challenge $c$, the reference weight is
+\[
+ g_{h,c}(z)=\ind[A_h(\operatorname{decode}z)=c]\,
+ \exp\!\left(-\frac{Q(\operatorname{decode}z)}{2\cdot768^2}\right).
+\]
+The reference trial normalizes these weights, maps a norm rejection to
+$\none$, and returns $\none$ on an empty fiber. The honest body is
+exactly
+\[
+ \code{signBody}(A_h,c)
+ =\code{cap}(\code{trial}(A_h,c),16)\mathbin{.}\mathrm{map}(\code{emit}).
+\]
+The cap retries trial failure; emission occurs once after the cap and
+returns the second vector only when it is signed-16. The model does
+not perform another centering or Verify check on a positive emission.
+This is a probability-law specification; an efficient exact sampler
+is not inferred from its definition.\src{C05}
+
+For any one-attempt law $t$, let
+$G_{16}(t)=\sum_{i=0}^{15}t(\none)^i$ and let
+$I_t(o)=\sum_{z:\,\mathrm{emit}(z)=o}t(\mathrm{some}\ z)$.
+The exact failure accounting is
+\begin{align*}
+ \code{signBodyOf}(t)(\mathrm{some}\ v)&=G_{16}(t)I_t(\mathrm{some}\ v),\\
+ \code{signBodyOf}(t)(\none)&=t(\none)^{16}+G_{16}(t)I_t(\none).
+\end{align*}
+Thus cap exhaustion and emission failure are both retained. A small
+probability of verifier rejection after positive emission is not itself
+a chi-square certificate.\src{C05,C06}
+
+\subsection{Public simulation and extraction}
+The sampler interface accepts only $h$, the public state, message,
+nonce and a finite tape, and returns a pair $(c,o)$ of challenge and
+reply. The simulator first records the submitted message and draws a
+fresh nonce. If its hash name is occupied, it stops. Otherwise it runs
+$S$, programs that name to the returned challenge, and records the
+reply. The fresh honest law instead draws a uniform challenge and
+uses its reference body. These two laws are compared, not identified.
+\src{C05}
+
+The reducer draws the adversary's coins and executes this simulator
+against a fixed list of $q_h+1$ uniform targets. Fresh adversarial hash
+queries consume target entries; signing-programmed entries carry no
+target index. Final verification may consume one further target.
+The submitted-message freshness check prevents a signing-programmed
+entry from becoming a valid fresh-message forgery. For an accepted
+forgery the reducer returns its recorded target index and
+\code{Relation.extract}; output soundness checks the same relation as
+the MT experiment.\src{C05}
+
+The resulting law identity is
+\[
+ \code{runMT}(q_h+1,\mu_H,B_A)
+ \mathrel{\code{Dist.Same}}
+ \code{lazyGame}(\beta,\mu_H,A,S).
+\]
+Here \code{Dist.Same} is equality of expectations for output functions;
+it does not assert identical hidden execution traces. No independent
+whole-game equality premise is inserted into
+Theorem~\ref{thm:conditional}.\src{C05}
+
+\subsection{Adaptive composition and stopping loss}
+The certificate compares the full $(c,o)$ law at every fresh signing
+point, including $o=\none$. The local comparison consumes its absolute
+continuity and second-moment fields. Induction on the adversary program
+then gives the factor $(1+e)^{q_s}$; hash steps do not pay this factor,
+and a Sign step pays it before following the adaptive continuation.
+This is the content of \code{programComparison} and
+\code{stoppedGameComparison}.\src{C04,C05}
+
+At the event level, the underlying directional inequality is
+$(a-b)^2\leq D a(1-a)$, where $a$ is the honest event probability and
+$b$ the simulated one. Solving its upper branch gives \eqref{eq:phi}.
+The stopped-game theorem applies this comparison with
+$D=(1+e)^{q_s}-1$. Removing the collision stop contributes exactly the
+clipped parameter \eqref{eq:coll}, based on the uniform $320$-bit nonce
+space and the formal query counts. This supplies
+\eqref{eq:conditional}.\src{C04}
+
+The second moment controls a density ratio over the entire observation,
+not merely its expected value or a rejection indicator. Key-law
+conditioning remains in $\mu_H$. The Sign constant $e$ belongs to the
+local sampler comparison, and cannot be replaced by a measured KeyGen
+acceptance rate or by the separately reported centering-error number.
+\src{C01,C04,C06}

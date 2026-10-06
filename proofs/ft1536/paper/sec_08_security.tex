@@ -1,3 +1,69 @@
 \section{Security accounting: lattice estimates and symmetric ceilings}\label{sec:security}
 \status{CLOSED diagnostic record; S06 certification OPEN}
-\todo{DRAFT-08}{Present model-dependent lattice estimates and symmetric ceilings separately.}
+\subsection{Two numbers, followed by a ceiling}
+We report the lattice-model exponent and the symmetric-primitive
+ceiling separately. The diagnostic Core-SVP convention is
+$0.292\beta$ classically and $0.265\beta$ quantumly. For comparable
+ChaCha20/SHAKE-256 deployments, this draft also displays the conventional
+approximately $256$-bit classical and $128$-bit quantum symmetric
+ceilings. The latter uses generic square-root search in the
+$256$-bit key/seed-search setting~\cite{grover1996}; it is not a proof
+of a quantum signature reduction or an exact gate-cost estimate.
+The $448$-bit state-cardinality upper bound in
+Section~\ref{sec:sampler} is a different quantity and is not a
+$448$-bit security claim.\src{C10,C14,C20}
+
+The reporting rule is to retain the weakest applicable component:
+the lattice exponent cannot be advertised as the system level when
+a symmetric component has a smaller ceiling. The table applies the
+same ceiling convention to the Falcon anchors and the FT profiles.
+All numbers are comparison proxies; none is a certified lower bound
+on implementation security. S06 retains \code{CHANGES_REQUIRED};
+the starred FT profiles remain alternative proposals.\src{C14,C20}
+
+\begin{center}\small
+\begin{tabular}{lrrrr}
+\toprule
+ & $\beta_{\mathrm{P1}}/\beta_{\mathrm{P2}}$
+ & Lattice C/Q & Symmetric C/Q & Minimum C/Q \\
+\midrule
+Falcon-512 & $458/411$ & $120.012/108.915$ & $256/128$ & $120.012/108.915$ \\
+Falcon-1024 & $936/952$ & $273.312/248.040$ & $256/128$ & $256/128$ \\
+FT768$^\ast$ & $462/455$ & $132.860/120.575$ & $256/128$ & $132.860/120.575$ \\
+FT1536 & $1077/1082$ & $314.484/285.405$ & $256/128$ & $256/128$ \\
+FT3072$^\ast$ & $2409/2445$ & $703.428/638.385$ & $256/128$ & $256/128$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\noindent $^\ast$ALTERNATIVE\_PROPOSAL. The lattice columns use the
+smaller of the two listed exponents on the same cost line. These are
+the review's P1a raw-ternary and fixed-width P2 relation-proxy rows;
+the Falcon anchors retain its stated radius-floor convention. They
+are not a transcription of official Falcon security categories.
+The FT1536 minimum is P1, not P2. Rounding and minima are reproduced
+by the paper's exact Sage calculator.\src{C14,C20}
+
+\subsection{Why S06 is still uncertified}
+The independent S06 review has verdict \code{CHANGES_REQUIRED} for
+a partial diagnostic checkpoint. It confirmed the stated geometric
+rows within their model, but found a subfield-dimension error, a
+raw-cost versus logarithm error in the proposed aggregator, mixing of
+classical and quantum models, and incorrect handling of empty or
+infinite backend results. It also rejected the assertion that an
+any-target attack cost follows by multiplying a per-target cost by
+the number of targets. A union bound controls probabilities for a
+specified algorithm; it does not justify that unconditional cost rule.
+\src{C14}
+
+Consequently the approximate FT1536 lattice pair $314/285$ is retained
+as a model-dependent diagnostic, not as a security certificate.
+Likewise the displayed $256/128$ minimum is an accounting ceiling,
+not a claimed achieved system level. The reduction still carries
+$\dprg$, and its computational class, resources, source laws and
+honest-Sign interfaces must be instantiated before a concrete
+advantage statement can be evaluated. We do not report the lattice
+number as the system-security level.\src{C01,C14,C15,C20}
+\todo{S06-CERTIFICATE}{Close the independent review's corrections,
+complete and pin the family campaign, and justify the final attack,
+population, multi-target and resource conventions before replacing
+these diagnostic rows by a security declaration.}

@@ -1,4 +1,119 @@
 \section{Main statement and assembly interfaces}\label{sec:main}
 \status{CLOSED conditional components; real-Sign assembly IN-FLIGHT}
-\todo{B1-HONEST-HOP}{Bind a tape-driven honest signer and its certified winning test.}
-\todo{B1-LAWS}{Supply the fair-tape honest-game binding, realized sampler certificate and key-law identification.}
+\subsection{The four-arrow target}
+To expose the two unfinished interfaces, split the public-simulation
+identification into its existing stream and lazy-game components:
+\begin{align*}
+ \text{real Sign on real randomness}
+   &\xrightarrow{\;1\;}\text{same Sign on fair randomness}\\
+   &\xrightarrow{\;2\;}\text{public fair-tape simulation}\\
+   &\xrightarrow{\;3\;}\text{public lazy game}\\
+   &\xrightarrow{\;4\;}\text{MT-ISIS with }\code{Reduction.build}.
+\end{align*}
+Arrow 1 is a computational game hop for an honest signer. Arrow 2
+requires law identification and the directional second-moment
+certificate, with stopping loss. Arrows 3 and 4 are the existing
+\code{streamGame_uniform} and \code{concrete_lazy_game_binding}
+identifications. Arrow 2 denotes an advantage comparison, not equality
+of the honest and public laws.\src{C01,C04,C05,C15}
+
+\todo{B1-HONEST-HOP}{Arrow 1: deliver a source-bound tape-driven honest
+continuation and its own CompWinCert, including the generator/seed
+interface. The public simulator's test does not supply this certificate.}
+\todo{B1-LAWS}{Arrow 2: bind the fair-tape honest continuation to
+Games.runEUF; realize ReplyShape, AttemptShape and PointwiseStageRoad;
+consume LocalJointCertificate in the comparison. B1.10 must also bind
+the emitted-key law to the law used for MT-ISIS.}
+
+\begin{target}[Intended real-signing statement]\label{target:main}
+Let $B_A$ be the reducer \code{Reduction.build beta A S}, and let
+$b=\Adv_{\mathrm{MT}}(q_h+1,\mu_H,B_A)$. After arrows 1--2 and their
+law interfaces have been supplied, the target is
+\begin{equation}\label{eq:target}
+ \varepsilon_{\mathrm{real}}
+ \leq \min\{1,\epscoll+\Phi((1+e)^{q_s}-1,b)\}+\dprg,
+ \qquad e=k^{32}-1.
+\end{equation}
+Here $k$ is the realized attempt factor, $\dprg$ bounds the admitted
+honest winning test at the stated randomness horizon, and the
+unconditioned candidate factor has $e<2^{-32}$. The acceptance-conditioned
+alternative is stated in Remark~\ref{rmk:shape}.
+\end{target}
+This is a target, not a proved theorem about C in this draft.
+In particular, $\varepsilon_{\mathrm{real}}$ is a target experiment name,
+not an alias for the public-simulation advantage.\src{C01,C06,C08}
+
+\subsection{The closed conditional theorem}
+The actual honest-game theorem requires the following local data:
+\begin{equation}\label{eq:cert}
+ \begin{gathered}
+ \code{LocalJointCertificate S e}:\quad e\geq0,\\
+ \forall h,st,m,r:\quad
+  \AC(j_{h,st,m,r},p_h),\qquad
+  \Second(j_{h,st,m,r},p_h)\leq1+e,\\
+ j_{h,st,m,r}=\U_{\{0,1\}^{S.\mathrm{bits}}}\mathbin{.}\mathrm{map}
+       (S.\mathrm{code}\ h\ st\ m\ r),\qquad
+ p_h=\code{SigmaMath.freshHonest}\ h.
+ \end{gathered}
+\end{equation}
+
+\begin{theorem}[Conditional classical reduction]\label{thm:conditional}
+For any finite secret-key type, budget $\beta$, key law $\mu_K$, classical
+adversary $A$, public sampler $S$ and real $e$, a certificate
+\eqref{eq:cert} implies
+\begin{equation}\label{eq:conditional}
+ \Adv_{\mathrm{EUF}}(\beta,\mu_K,A)
+ \leq \min\{1,\epscoll+\Phi((1+e)^{q_s}-1,b)\},
+\end{equation}
+where $\mu_H=\code{SigmaMath.muH}\ \mu_K$, $B_A$ is the constructor
+above, and
+\begin{align}
+ \epscoll&=\min\left\{1,
+ \frac{q_s q_h+q_s(q_s-1)/2}{2^{320}}\right\},\label{eq:coll}\\
+ \Phi(D,b)&=\frac{2b+D+\sqrt{D^2+4Db(1-b)}}{2(1+D)}.
+ \label{eq:phi}
+\end{align}
+The subtraction $q_s-1$ in \eqref{eq:coll} is truncated natural
+subtraction, as in the Lean declaration.
+\end{theorem}
+This is \code{Run2.concrete_euf_cma_to_mt_isis}, with
+\code{exact_collision_parameter}. Its quantifiers supply a concrete
+reducer for each $A,S$; they do not supply an implementation instance of
+$S$, the certificate or a machine-resource bound.\src{C04}
+
+The separate corrected \code{AssemblyComp.public_sim_stream_bound}
+concerns the public experiment $P_\tau$, and yields
+$P_\tau\leq b+\dprg$ with the test-cost conjunct. It is not a proof of
+\eqref{eq:target}. The older \code{Assembly} export adds a nonnegative
+statistical term to \eqref{eq:conditional}; inspection of its proof
+also shows that its proposition-valued \code{hkey} is discarded.
+Its end-to-end name therefore supplies neither missing source binding.
+The corrected computational consumer uses a dependent equality between
+the two named key laws instead.\src{C01,C15}
+
+\subsection{Exact inverse and the scope test}
+\begin{theorem}[Generalized inverse]\label{thm:inverse}
+For $D\geq0$ and $a\leq1$, the formal inverse has the ordinary-real form
+\begin{equation}\label{eq:psi}
+ \psi_D(a)=\begin{cases}
+ 0,& a\leq D/(1+D),\\
+ a-\sqrt{Da(1-a)},&D/(1+D)<a\leq1.
+ \end{cases}
+\end{equation}
+For $0\leq b\leq1$, $a\leq\Phi(D,b)$ implies $\psi_D(a)\leq b$;
+moreover $\psi_D(\Phi(D,b))=b$.
+\end{theorem}
+These are \code{phiInv_piecewise}, \code{phi_inv_le} and
+\code{phiInv_at_phi}. The active branch has a nonnegative radicand;
+the lower branch includes negative $a$. Lean defines the total function
+as $\max\{0,a-\operatorname{Real.sqrt}(Da(1-a))\}$, with its total
+square-root convention. No inverse assertion for $a>1$ is used.
+Tiny positive $a$ below the threshold give zero, not a positive
+MT lower bound.\src{C16}
+
+Substituting $k=1$ makes $D=(1+(k^{32}-1))^{q_s}-1=0$, and
+$\Phi(0,b)=b$. The corrected public-simulation weakening allows this
+choice for arbitrary $S$ because its $D$ is only a weakening parameter.
+That scope test cannot establish a real-sampler certificate. A future
+assembly must demonstrate actual consumption of \eqref{eq:cert}, rather
+than merely contain a $\Phi$ expression.\src{C16,C17}

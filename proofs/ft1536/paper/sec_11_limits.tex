@@ -1,3 +1,79 @@
 \section{Limitations and open work: the honesty ledger}\label{sec:limits}
 \status{CLOSED scope record; listed proof obligations OPEN or IN-FLIGHT}
-\todo{DRAFT-11}{Transcribe the A1--A5 and B1--B5 ledger, including the byte-support and QROM boundaries.}
+\subsection{Assumptions and missing interfaces}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{.16\textwidth}>{\raggedright\arraybackslash}p{.25\textwidth}>{\raggedright\arraybackslash}p{.52\textwidth}@{}}
+\toprule
+Item & Status & Exact boundary \\
+\midrule
+\endhead
+A1 & Model boundary & KeyGen retry counts and timing are absent from the
+adversary interface. A deployment exposing them needs a leakage model;
+offline use is an assumption, not a constant-time theorem. \\
+A2 / ROM & Assumed; source binding open & Seed entropy/independence,
+SHAKE seeding and the exact uniform-challenge interface are named
+separately. The computational tape theorem does not establish them. \\
+A3 / A4 & OPEN globally & The byte verifier, serialization, key decoder,
+caller-visible failure and emitted-law support must compose with the
+same game. Local B3 codec/verdict theorems are not that composition. \\
+A5 & Model boundary & LP64 word/memory contracts with the modeled
+wrapping behavior; no compiler, fault or side-channel security theorem. \\
+B1 / arrows 1--2 & IN-FLIGHT & Source honest continuation, fair-law
+identity, actual attempt shape, pointwise roads, and B1.10 key-law
+identification. \\
+B2 / B5 & CLOSED conditionally for public simulation & The admitted
+test class, test cost and tape law need concrete instantiation. Honest-Sign
+assembly remains open. \\
+B4 & CLOSED conditional transport & Margins and counterexamples are
+proved. The realized per-point source premises are not obtained from
+total-mass bounds or measurements. \\
+S06 / family & Changes required & Lattice rows are diagnostic; FT768
+and FT3072 remain ALTERNATIVE\_PROPOSAL. \\
+QROM & OPEN, not claimed & Coherent oracle access and quantum resource
+and reprogramming arguments require separate theorems. \\
+\bottomrule
+\end{longtable}
+\noindent These entries retain the D1--D3 and A1--A5 scope names while
+using the corrected computational status.\src{C01,C13,C14,C15,C18}
+
+\subsection{Support, error shape and resources}
+The byte bridge has a mathematical consequence, not merely a
+serialization consequence. If a candidate reply law assigns nonzero
+mass to a positive output having no norm-admissible preimage under
+\code{emit} on the relevant fiber, then
+\code{chi2_top_of_out_of_support} gives $\chi^2=+\infty$.
+A small additive probability estimate cannot remove that support
+failure. Conversely, wrap-related verifier rejection within the
+modeled emit image does not automatically cause failure of absolute
+continuity. The support theorem states which case is being used.
+\src{C19}
+
+The additive-to-multiplicative machine lemma is closed only with its
+pointwise floor and error-budget premises. The numeric scalar-leaf
+floor does not discharge a floor on arbitrary weights. Similarly,
+the $2^{-32}$ and $2^{-17}$ bounds attach to different attempt shapes;
+the latter cannot be hidden by labeling the former a universal sampler
+constant. The final source realization must settle that distinction.
+\src{C08,C19}
+
+The formal probability reduction gives a specified reducer, while the
+computational public-game export carries a parametric cost contract.
+Neither statement alone proves a concrete runtime class for the full
+real-world reduction. Nor does the table of security proxies evaluate
+the complete query-dependent bound: the amplification
+$(1+e)^{q_s}-1$, collision loss and PRG term remain explicit.
+\src{C04,C14,C15}
+
+\todo{ASSEMBLY-RELEASE}{After the B1 deliveries, instantiate the honest
+game hop and certificate with the same source pins, inspect the actual
+premise dependencies, and obtain an independent review of the assembled
+statement. Preserve any additional error or resource term.}
+\todo{BYTE-RELEASE}{Complete the global A3/A4 and source-to-observation
+bindings before making a byte-level implementation-security claim.}
+
+\subsection{Conclusion}
+The present contribution is a conditional classical reduction, computed
+sampler-comparison margins, explicit impossibility results for insufficient
+premises, and source-binding work that has found both C and model defects.
+The remaining work is a set of named implementation and law interfaces,
+not an implicit consequence of the theorem names. The intended result
+is independently inspectable cryptographic software for every free person.

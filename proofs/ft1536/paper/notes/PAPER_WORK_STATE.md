@@ -1,6 +1,6 @@
 # Paper v0.1 — window 1
 
-Status: IN_PROGRESS. Date: 2026-10-06.
+Status: WINDOW_1_COMPLETE / DRAFT_V0_1_FOR_OWNER_REVIEW. Date: 2026-10-06.
 Owner instruction: `development/T12_1/run2/notes/PROMPT_PAPER.md`.
 Binding outline: `documents/FT1536_PAPER_OUTLINE_2026-10-06.md`.
 All paths in this paragraph are relative to `proofs/ft1536/`.
@@ -28,3 +28,77 @@ Small exact-path local commits on main; publication requires owner signal.
 1. Title (current title is a conservative working title).
 2. Mission paragraph / author's voice.
 3. Venue target and associated formatting/bibliography requirements.
+
+## Batch 2 — completed draft and checks
+
+- **18-page English article**, `build/main.pdf`; exactly 11 sections and
+  Annexes A/B, with bibliography and visible CLOSED/IN-FLIGHT/OPEN labels.
+- Full first drafts: sections 2–6, 8–9 and Annex A. Section 1 has the draft
+  introduction and one restrained mission paragraph; section 7 has the
+  method, C/model findings and a pinned REV10 snapshot, with final B1 stub.
+- Section 10 has a literature-review stub with explicit follow-up items;
+  section 11 contains the full draft honesty ledger and conclusion.
+  Annex B is an origin-material stub without unverified historical dates.
+- `SOURCES.md`: C01–C20, exact paths/declarations/receipt names and scope
+  reconciliations. `SOURCES.sha256`: **97 input pins**. This includes the
+  corrected computational package, archived dependencies, S06 review,
+  original runtime evidence and the paper's display-calculation receipt.
+- B1 source snapshot: REV10 certificate `29e6372b` plus its batch record
+  `d5ced420`. Later source3 work on shared main is not silently promoted
+  into this snapshot's paper claims; final progress remains a named stub.
+
+### Verification actually performed
+
+- `make numbers`: standard preparser invocation of a byte-identical runtime
+  copy of `tools/check_numbers.sage`; exact `QQ`/`ZZ`; exit 0. Receipt:
+  `build/numbers/run_001/RECEIPT.json`; result `numbers.json` in that directory.
+  Reproduces S06 table displays/minima, probe counts/rounding, the separately
+  archived Falcon padded-size macro, and the displayed geometric witness.
+- Final `make check`: **PASS**, 97/97 pins, all 20 source IDs mapped,
+  section/annex structure correct, display rows matched, corrected review's
+  input hashes/role flags matched, final TeX/BibTeX logs clean. No undefined
+  references/citations, warnings, overfull or underfull boxes.
+- Results: `build/CHECK.json`, `build/final_001.stdout.log`,
+  `build/final_001.stderr.log` (empty). Visual spot-check of title,
+  mathematics, security table and ledger pages completed.
+- Retained typesetting attempts: `build/draft_002..006.*.log`. Attempts
+  003/004 exposed a URL-macro/math-mode incompatibility; restored the
+  ordinary code macro and fixed line layout. These are document-build
+  failures, not mathematical counterexamples. The final build is clean.
+- No new Lean replay or independent mathematical review is claimed by this
+  paper task. Sage here verifies display arithmetic, not S06 hardness.
+
+### Exact handoff pins (SHA-256)
+
+| Artifact, relative to paper/ | SHA-256 |
+|---|---|
+| `SOURCES.md` | `d9ce3fcb82a5c9fad4197610625679d43e4699fd7be21a71c9226f6505e62c0a` |
+| `SOURCES.sha256` | `2ccfcefaac6338106983dfa9b9fccf237161de153db8e33a3595dbbe7bf88e93` |
+| `build/main.pdf` | `dacbcd55e212ba4a1b5f81418e98084b12cda02057ebff80f1a616c56d7123ab` |
+| `build/numbers/run_001/RECEIPT.json` | `df95a4f9aa56c05e9c28aaea919a61564eb6ecc2f3f7234caaa10dc0e8e8c714` |
+
+PDF pin identifies this completed build; later typesetting may change PDF
+metadata. The source pins identify the cited mathematical/evidence snapshot.
+Runtime products are intentionally under the ignored persistent build/.
+Annex A records the outstanding public-release archival availability of
+ignored work/.build receipts instead of asserting that a Git clone has them.
+
+### Ocena i przekazanie dla właściciela (PL)
+
+Powstał kompletny szkic v0.1 do czytania: matematyczny rdzeń, negatywne
+twierdzenia, metoda wiązania kodu, znalezione błędy oraz podwójna deklaracja
+liczb są opisane z identyfikatorami źródeł. Księga ograniczeń jest w treści.
+Najważniejszy wynik redakcyjny: artykuł wyraźnie rozdziela udowodnioną
+warunkową redukcję i publiczną grę obliczeniową od jeszcze niezamkniętego
+mostu do realnego Sign. Zapisanie artykułu nie zmienia statusu dowodów.
+
+Jawnie w locie/otwarte: strzałki 1–2, rzeczywisty AttemptShape i cztery
+PointwiseStageRoad, B1.10, globalne A3/A4, konkretny koszt/klasa testów,
+S06, niezależny odbiór poprawionego pakietu, literatura i materiał pochodzenia.
+Nie ukryto wariantu e2<2^-17 ani faktu, że REVIEW_002 jest AUTHOR_RECHECK.
+Pozostałości te są brakami dowodowymi/zakresowymi, nie wynikiem kompilacji PDF.
+
+Następny krok: decyzje właściciela o **tytule, akapicie misji i docelowym
+miejscu publikacji**, potem aktualizacja konkretnych TODO po dostarczeniu
+odpowiednich wyników B1/S06. Materiał marcowego dysku do Annex B pozostaje
+oczekującym wejściem. Własne źródła zapisane lokalnie na main; brak push.

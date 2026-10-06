@@ -1,3 +1,96 @@
 \section{Preliminaries and threat model}\label{sec:model}
 \status{CLOSED definitions; source instantiation IN-FLIGHT}
-\todo{DRAFT-03}{State the exact relation, classical games and named assumptions.}
+\subsection{The relation and its geometry}
+The formal representation of $\Rq$ is
+$\operatorname{Fin}(768)\to(\Z/18433\Z)^2$.
+Multiplication is specified by polynomial remainder modulo
+$X^{1536}-X^{768}+1$, not by an NTT oracle. Write
+$V=\operatorname{Fin}(768)\to\Z^2$, and define
+\begin{align*}
+ Q_0(v)&=\sum_{i=0}^{767}\bigl(v_{i,1}^2+v_{i,1}v_{i,2}+v_{i,2}^2\bigr),\\
+ Q(u,v)&=Q_0(u)+Q_0(v),\qquad B=2093922385,\\
+ A_h(u,v)&=\operatorname{reduce}(u)+h\operatorname{reduce}(v).
+\end{align*}
+\code{ShortPreimage} is exactly $A_h(u,v)=c\ \wedge\ Q(u,v)<B$.
+The coefficient-valued verifier accepts $s$ precisely when it is signed-16
+and
+$Q(\operatorname{center}(c-h\operatorname{reduce}(s)),s)<B$.
+The centering interval is $[-9216,9216]$.\src{C03}
+
+\begin{proposition}[Accepted coefficients extract a short preimage]
+For every $h,c\in\Rq$ and $s\in V$, if the verifier accepts $s$ for
+$(h,c)$, then the extracted pair is a short preimage for $(h,c)$.
+\end{proposition}
+\begin{proof}
+\code{reduce_center} gives the equation for the extracted pair;
+the norm inequality is the second conjunct of \code{Verify}.
+This is \code{Relation.accepted_extracts}.\src{C03}
+\end{proof}
+
+In the MT-ISIS experiment, $h$ is drawn from a specified public-key law
+$\mu_H$, and the adversary receives $T$ independent uniform targets
+in $\Rq$. It returns an index and a pair; the experiment checks the
+index and the same \code{ShortPreimage} relation. Hardness must therefore
+refer to this key law, target law, quadratic form and resource class.
+An unrelated homogeneous-SIS estimate is not a replacement.\src{C05}
+
+\subsection{Classical interactive games}
+A budget record $\beta$ contains $q_s,q_h$, an adversary coin length and
+a byte parameter. The type \code{Program} enforces the Sign and hash
+query counts structurally: a signing query consumes a token even when
+the reply is a failure. The adversary receives the public key and its
+coins. Hash names are parsed into a $40$-byte nonce and a message when
+long enough, with a separate short-input case. Successful forgery
+requires a message absent from the submitted-message table and a nonce
+of the specified length. The proof does not turn the byte-budget field
+alone into a calibrated runtime bound.\src{C05}
+
+All oracle queries and interactions here are classical. The formal
+\code{UniformChallengeAt S} interface requires the challenge marginal
+of the sampler law to equal the uniform law at each public key, history,
+message and nonce. It names an exact ROM interface, not a proof that
+the concrete SHAKE implementation is a random oracle. No QROM claim is
+made.\src{C01,C18}
+
+\subsection{Conditioning and operational assumptions}
+Decision D1 specifies the emitted key law as
+$\Law(\text{attempt}\mid\mathrm{Accept})$, with public marginal $\mu_H$.
+In the IID per-attempt model with acceptance probability $p>0$, a cap
+$L$ has availability $1-(1-p)^L$ and the first successful attempt,
+conditioned on a success, has that conditional law. These are modeling
+identities recorded by D1/S1; binding the real restarted KeyGen to them
+is a B1 obligation. The empirical reciprocal in
+Section~\ref{sec:parameters} must not be substituted as a proved
+conditioning factor. Key conditioning specifies the law in the MT
+assumption; it is not an extra automatic multiplier of the Sign
+sampler's $e$.\src{C01,C02}
+
+Decision D2 selects a computational change of randomness, using the
+restricted-test premise of Section~\ref{sec:computational}. Decision
+D3 requires a proved sampler constant at the stated interfaces.
+We retain the named operational boundaries:
+\begin{description}
+ \item[A1.] KeyGen timing and restart counts are absent from the
+ adversary's view. This is a deployment assumption, not a timing proof.
+ \item[A2.] Seed entropy and independence are idealized at the seed
+ boundary. ROM uniformity is separately named at the challenge boundary;
+ neither premise proves the other.
+ \item[A3/A4.] The implementation verdict and serialization must match
+ the formal relation and framing. Their final byte-level composition
+ remains open.
+ \item[A5.] Source contracts use the stated LP64 word and wrapping
+ semantics. Faults and side channels are outside this game.
+\end{description}
+The complete ledger appears in Section~\ref{sec:limits}.\src{C01}
+
+\subsection{Directional second moment}
+For finite laws $j,p$, the formal definitions are
+\[
+ \AC(j,p)\iff\forall x,\ p(x)=0\Rightarrow j(x)=0,
+ \qquad \Second(j,p)=\sum_x\frac{j(x)^2}{p(x)}.
+\]
+Under absolute continuity, this is $1+\chi^2(j\Vert p)$.
+The separate absolute-continuity premise is essential: Lean's real
+division is total, while the extended-valued \code{chi2} definition is
+infinite when absolute continuity fails. The direction used below is
+simulation relative to the honest law, not the reverse.\src{C03,C04}

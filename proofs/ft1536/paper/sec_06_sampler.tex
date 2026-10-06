@@ -1,3 +1,222 @@
 \section{Sampler analysis and negative results}\label{sec:sampler}
 \status{CLOSED arithmetic and conditional transports; realized weights IN-FLIGHT}
-\todo{DRAFT-06}{State both attempt shapes and the kernel counterexamples with exact hypotheses.}
+\subsection{From pointwise weights to a reply certificate}
+Let $g=\code{fiberWeight}(A,c)$, and let $w$ be nonnegative attempt
+weights. Write $Z_w=\sum_z w(z)$ and
+$T(w)=\sum_{Q(\operatorname{decode}z)\geq B}w(z)$.
+For $Z_w>0$, \code{attemptOf} has masses
+\[
+ t_w(\mathrm{some}\ z)=\frac{\ind[Q(\operatorname{decode}z)<B]w(z)}{Z_w},
+ \qquad t_w(\none)=\frac{T(w)}{Z_w};
+\]
+if $Z_w=0$, its entire mass is at $\none$.
+\code{AttemptShape} identifies the supplied attempt law with this law.
+\src{C06}
+
+\begin{proposition}[Whole-space sandwich transport]\label{prop:sandwich}
+For nonnegative $g,w$, $0<\ell\leq u$, and
+$\ell g(z)\leq w(z)\leq u g(z)$ at every $z$, one has
+\[
+ \forall o,\quad t_w(o)\leq\frac{u}{\ell}t_g(o).
+\]
+If $k\geq1$, \code{AttemptPointwise} bounds both the some and none
+masses by $k$ times the reference trial, and \code{ReplyShape} identifies
+the reply with \code{signBodyOf} of that attempt law, then
+\begin{gather*}
+ \AC(j,\code{signBody}(A,c)),\qquad
+ \Second(j,\code{signBody}(A,c))\leq1+e_2(k),\\
+ e_2(k)=(k^{16})^2-1=k^{32}-1.
+\end{gather*}
+\end{proposition}
+The first statement is \code{attemptOf_le_of_sandwich}.
+
+The reply bound is \code{layer2_of_obligations}; the exponent identity
+is \code{Assembly.e2_eq}.
+The normalizer is controlled by the lower sandwich; the none mass
+requires the upper sandwich on the whole tail. The cap transports the
+pointwise factor to $k^{16}$, and the recorded second-moment lemma gives
+its square.\src{C06}
+
+The joint law decomposes exactly into its challenge marginal and
+conditional reply law. The second moment of that decomposition is the
+sum of the marginal squared-density terms multiplied by the conditional
+second moments. Under \code{UniformChallengeAt}, the marginal factor is
+one. Consequently the reply bound gives \code{LocalJointCertificate}
+with $e=e_2(k)$, once the named reply and attempt premises hold at every
+signing point.\src{C06}
+
+\subsection{The four computed margins}
+Set $r=2^{-46}$, $v=2^{-48}$, $\tau=2^{-40}$ and
+$\eta=10^{-1000}$. The formal endpoints are
+\[
+ t_-=(1-r)^2,\quad t_+=(1+r)^2,\qquad
+ m_-=(1-v)^{20}(1+v)^{-11},\quad
+ m_+=(1+v)^{20}(1-v)^{-11}.
+\]
+Each row below is a \emph{pointwise premise}, at all candidates including
+the norm-rejected tail. The last column is closed numeric arithmetic,
+not a proof that the C weights satisfy that row.\src{C07}
+
+\begin{center}\small
+\begin{tabular}{lll}
+\toprule
+Stage & Required inequalities & Ratio upper bound \\
+\midrule
+Tower & $t_-g\leq\mathrm{target}\leq t_+g$
+ & $t_+/t_-<1+2^{-43}$ \\
+Machine & $m_-\mathrm{target}\leq\mathrm{mach}\leq m_+\mathrm{target}$
+ & $m_+/m_-<1+2^{-42}$ \\
+Wrap & $(1-\tau)\mathrm{mach}\leq\mathrm{wrapS}\leq(1+\tau)\mathrm{mach}$
+ & $\frac{1+\tau}{1-\tau}<1+\frac1{2^{39}-1}$ \\
+Box & $\mathrm{wrapS}\leq w\leq\mathrm{wrapS}/(1-\eta)$
+ & $\frac1{1-\eta}<1+10^{-30}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The exact identity and its computed bounds are
+\begin{equation}\label{eq:factor}
+ \begin{gathered}
+ k=\code{attemptFactor}
+ =\underbrace{m_+/m_-}_{\mathrm{machineMargin}}
+  \underbrace{t_+/t_-}_{\mathrm{towerMargin}}
+  \underbrace{(1+\tau)/(1-\tau)}_{\mathrm{wrapFactor}}
+  \underbrace{1/(1-\eta)}_{\mathrm{boxFactor}},\\
+ 1\leq k<1+2^{-38},\qquad e_2(k)<2^{-32}.
+ \end{gathered}
+\end{equation}
+\code{attemptFactor_eq}, \code{attemptFactor_comp_lt} and
+\code{e2_comp_lt} establish these statements.
+\code{layer2_of_stageChain} consumes all four rows and both shape
+premises and returns absolute continuity and a strict second-moment
+bound below $1+2^{-32}$.\src{C07}
+
+The stronger \code{PointwiseStageRoad} interface exposes how to establish
+the rows: fiber-supported row products for the tower, $20$
+multiplication-class and $11$ division-class factors for the machine
+stage, $1536$ coordinate factors for wrap, and a whole-space retention
+factor for the box stage. Its transports are proved; the realized
+$\mathrm{target},\mathrm{mach},\mathrm{wrapS},w$ and their pointwise
+facts remain source-binding inputs. In particular, the box premise is
+not arbitrary deletion of tail mass.\src{C07}
+
+The tower margin is exactly a two-row product at budget $r$. The formal
+$3072$-row compatibility result instead uses per-row budget $2^{-58}$:
+\[
+ (1-r)^2\leq(1-2^{-58})^{3072},\qquad
+ (1+2^{-58})^{3072}\leq(1+r)^2.
+\]
+Using the full $r$ at every row violates the composite budget:
+\[
+ 1+2^{-38}<\left(\frac{1+r}{1-r}\right)^{3072}.
+\]
+These are \code{road_fit_3072_rows} and
+\code{rowwise_fullBudget_busts}. The separate scalar total-mass bound
+at scale $2^{-34}$ is not a pointwise replacement.\src{C07}
+
+\begin{remark}[Two attempt shapes]\label{rmk:shape}
+The unconditioned sample-then-check transport gives \eqref{eq:factor}.
+If an attempt instead uses the accepted-region weights
+$w\ind[Q<B]$, the conditioned transport assumes positive reference
+bulk mass and the reference miss budget
+$T(g)\leq\mathrm{rejB}\,Z_g$, with $\mathrm{rejB}=2^{-24}$.
+It uses the exact factor
+\[
+ k_{\mathrm{cond}}=\frac{k}{1-\mathrm{rejB}},\qquad
+ k_{\mathrm{cond}}<1+2^{-23},\qquad e_2(k_{\mathrm{cond}})<2^{-17}.
+\]
+These are bounds, not equalities for the actual error. In
+\code{layer2_e2_conditioned}, the four-stage weight premise, conditioned
+attempt shape, reply shape, positive bulk mass and miss bound are all
+explicit. Which shape describes the realized signer is a B1 deliverable.
+\src{C08}
+\end{remark}
+\todo{B1-ATTEMPT-SHAPE}{Select the realized attempt law from the source
+execution and discharge its exact premises before choosing either
+numeric exponent in the real-signing target.}
+
+\subsection{Support at the failure point}
+\begin{proposition}[A tail witness on every achievable fiber]
+For every $h,c$, an achievable syndrome fiber in \code{BoxPair}
+contains a point with $Q\geq B$. For every $h,c$, in particular,
+\[
+ \code{signBody}(\code{syndrome}\ h,c)(\none)>0.
+\]
+\end{proposition}
+The first assertion is \code{onone_syndrome}; the second is
+\code{signBody_none_pos_syndrome}, also covering empty fibers. The
+construction \code{liftPair} preserves residues modulo $18433$ and
+moves two coordinates of the first vector to at least $47103$ while
+remaining in the finite box. Their block contributes at least
+$2\cdot47103^2=4437385218>B$. This argument needs no NTRU equation
+premise.\src{C19}
+
+\subsection{Negative results as theorems}
+The following statements are general limitations of proposed proof
+premises. They are not empirical attacks on the signer.
+
+\begin{theorem}[Bulk-only control does not control the tail]
+For any real $\ell\leq1\leq u$, there exist nonnegative weights $g,w$
+with $\ell g\leq w\leq ug$ on $Q<B$, but
+$T(w)>uT(g)$. There also exist such weights for which
+\[
+ \neg\left(\frac{T(w)}{Z_w}\leq\frac{u}{\ell}\frac{T(g)}{Z_g}\right).
+\]
+Division uses the formal total-real convention if $\ell=0$.
+\end{theorem}
+\begin{proof}
+The first statement is \code{bulkOnly_tail_uncontrolled}.
+Its normalized counterpart is
+\code{bulkOnly_normalized_tail_uncontrolled}.
+Both use $g=\ind[Q<B]$ and $w=1$. Their bulk values coincide, $T(g)=0$,
+and $T(w)>0$ by \code{liftPair zeroPair}. The normalized left side is
+positive as well.\src{C09}
+\end{proof}
+
+\begin{theorem}[A mass sandwich does not imply a pointwise sandwich]
+For every $0<\ell\leq u$, there are nonnegative $g,w$, with $Z_g>0$,
+such that $\ell Z_g\leq Z_w\leq uZ_g$, but
+$\neg\forall z,\ \ell g(z)\leq w(z)\leq ug(z)$.
+\end{theorem}
+\begin{proof}
+\code{massSandwich_not_pointwise} takes $g$ to have unit weight at
+\code{zeroPair} and $w$ to have weight $u$ at
+\code{liftPair zeroPair}. The weights have the required totals and
+disjoint supports. The module instantiates the result at the exact
+margins of all four stages.\src{C09}
+\end{proof}
+
+\begin{theorem}[Additive accuracy alone does not give the machine stage]
+There exist nonnegative $\mathrm{target},\mathrm{mach}$ with
+$|\mathrm{mach}(z)-\mathrm{target}(z)|\leq1$ for every $z$, for which
+\code{MachineStage target mach} is false.
+\end{theorem}
+\begin{proof}
+\code{additiveError_no_machineStage} uses constant weights
+$\mathrm{target}=10^{-6}$ and $\mathrm{mach}=1+10^{-6}$.
+Their difference is one, while the required machine upper ratio fails.
+\src{C09}
+\end{proof}
+The positive companion \code{machineStage_of_absErr_floor} requires
+$|\mathrm{mach}-\mathrm{target}|\leq E$ and a pointwise floor
+$f\leq\mathrm{target}$, together with
+$E\leq(1-m_-)f$ and $E\leq(m_+-1)f$.
+The numeric \code{machineFloor_gt} proves $\mathrm{machineFloor}>991$;
+it does not by itself prove that this number bounds every realized
+weight from below. That realization is still a premise.\src{C19}
+
+\begin{theorem}[Statistical finite-state PRG route is closed]
+For every law $\nu$ on the modeled \code{FrngState} and every bit length
+$n$, the deterministic tape law satisfies
+\[
+ 1-\frac{2^{448}}{2^n}\leq
+ \TV(\code{frngTapeLaw}(\nu,n),\U_{\{0,1\}^n}).
+\]
+\end{theorem}
+This is \code{AdvPrg.route_a_closed}, with
+\code{Assembly.AdvPRG} defined as total variation. The formal state
+has $2^{448}$ elements, and its image cannot have greater cardinality.
+At lengths well above that state width, a small statistical error
+budget is impossible. The result applies to a tape generated from one
+such state; it does not identify the C signer's sequence of re-seeded
+instances with that law. Computational test-class bounds have a
+different quantifier and are treated next.\src{C10,C15}

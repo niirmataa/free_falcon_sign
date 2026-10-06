@@ -1,3 +1,19 @@
 \section{Related work}\label{sec:related}
 \status{OPEN literature review}
+Falcon's specification~\cite{falcon2020} supplies the immediate design
+and implementation context. This draft compares concrete probability
+laws and named proof interfaces rather than inferring a security
+reduction from a shared design lineage. The artifact also records
+model-dependent estimator outputs; a comparison with published
+estimator conventions must preserve both the attack model and the
+classical/quantum cost units.\src{C13,C14}
 \todo{LITERATURE}{Complete the comparison with GPV, NTRU, BLISS, Falcon reductions, verified compilers and implementation verification.}
+\todo{LITERATURE-VERIFICATION}{Before submission, verify primary references
+and exact comparable guarantees for CompCert, seL4, FaCT and CompCertSSA;
+separate verified source semantics, verified compilation and whole-system
+security. Do not claim novelty from the incomplete survey.}
+\todo{LITERATURE-ESTIMATOR}{Cite the exact lattice-estimator revision and
+published Core-SVP conventions used by the completed S06 campaign.}
+The historical project scope already separates QROM from the classical
+target. A literature discussion of quantum reductions must not promote
+the classical hash-table proof to coherent oracle access.\src{C18}

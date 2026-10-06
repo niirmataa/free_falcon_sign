@@ -1,3 +1,74 @@
 \section{The FT family and parameters}\label{sec:parameters}
 \status{CLOSED profile facts and measurement record; family certification IN-FLIGHT}
-\todo{DRAFT-02}{Transcribe the pinned profile, acceptance measurement and codec scope.}
+\subsection{Profile and family scope}
+FT1536 is the degree-$1536$ ternary profile of the Falcon-derived code in
+\code{Extra/c}. The pinned configuration enables
+\code{TRUE_TERNARY_SECRET=1} and \code{TRUE_TERNARY_SECRET_MODE=1},
+uses the emulated floating-point implementation, and fixes
+\code{SIGN_MAX_ATTEMPTS=16}. Its modulus is $q=18433$ and its strict
+quadratic-form threshold is $B=2093922385$. In the API the profile is
+selected by \code{falcon_keygen_new(10, 1)}; the second argument selects
+the ternary branch, so the first argument alone is not the logarithm of
+the degree of a binary profile.\src{C02,C03}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Profile & Degree & Scope in this draft \\
+\midrule
+FT768 & 768 & ALTERNATIVE\_PROPOSAL \\
+FT1536 & 1536 & Main formal profile; final binding in flight \\
+FT3072 & 3072 & ALTERNATIVE\_PROPOSAL \\
+\bottomrule
+\end{tabular}
+\end{center}
+The family names do not extend the FT1536 theorems to other parameters.
+The alternative profiles remain uncertified pending the family campaign.
+Section~\ref{sec:security} retains their diagnostic estimator rows with
+that status.\src{C14}
+
+\subsection{Acceptance is measured, not postulated}
+The FG\_PROBE record uses deterministic synthetic seeds and the derived
+profile's compiler flags, adding only the probe define. Its measurement
+run records $8192$ successful keys in $23628$ attempts, with
+$15436$ rejected attempts. The reported empirical acceptance rate is
+$\widehat p_{\mathrm{accept}}=0.34671$ and the reciprocal is approximately
+$2.884$. The largest observed attempt count per key is $24$; there are
+no recorded hits of the configured KeyGen cap, $3000000$. These are
+finite-run observations, not a rigorous acceptance lower bound or a
+uniform-seed distribution theorem.\src{C02}
+
+The source notes group acceptance into the resultant, norm,
+Gram--Schmidt, public-key invertibility, NTRU-solve and mandatory leaf
+certificate gates. The receipt has separate resultant counters for
+$f$ and $g$: respectively $376$ and $392$ rejections, followed by
+$0$ norm, $12303$ Gram--Schmidt, $814$ public-key and $1551$ solve
+rejections. It does not give a separate leaf-certificate rejection
+counter. A transparency control compared the clean and instrumented
+builds on $256$ identical synthetic seeds and found identical recorded
+key digests in all cases. This control supports the measurement procedure;
+it does not prove observation-only instrumentation for all executions.
+\src{C02}
+
+\subsection{Encoding and the meaning of a fixed size}
+The B3 model covers the FT1536 coefficient-vector encoding, including
+the header, final zero-bit padding and exact consumption. Its STATIC
+round-trip theorem requires $1536$ coefficients in the signed-$16$-bit
+domain. The raw comp-0 round trip has the narrower domain
+$[-9216,9216]$. STATIC refers to this codec and does not assert a fixed
+signature length or constant-time execution. Encoder injectivity is
+proved on the stated domains; decoder injectivity on all byte strings
+is false, with formal aliases at zero and at $-32768$. These local
+codec results do not discharge the global A3/A4 bridge.\src{C13}
+
+For comparison, the separately pinned Falcon round-3 API defines a
+PADDED format of $666$ bytes for Falcon-512. That API explicitly describes
+padding and restarting generation until the signature fits the selected
+size; it distinguishes PADDED from its CT format. Thus $666$ describes a
+particular framing and retry policy, not the unconditioned length of
+every compressed output. The FT1536 B3 analysis instead states the
+codec domain and consumption requirements, and separately records the
+caller's output-buffer failure path. This is the relevant comparison:
+a byte-length headline does not specify the emitted probability law or
+its failure behavior. No defect in Falcon is inferred from padding
+itself.\src{C13}

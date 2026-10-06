@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-.PHONY: pdf check
+.PHONY: pdf numbers check
 
 pdf:
 	mkdir -p build/home build/tmp build/cache build/texmf-var build/texmf-config
@@ -8,5 +8,11 @@ pdf:
 	 TEXMFCONFIG="$(CURDIR)/build/texmf-config" \
 	 latexmk -pdf -outdir=build -interaction=nonstopmode -halt-on-error -file-line-error main.tex
 
-check: pdf
+numbers:
+	python3 -B tools/run_numbers.py
+
+build/numbers.json: tools/check_numbers.sage tools/run_numbers.py
+	python3 -B tools/run_numbers.py
+
+check: pdf build/numbers.json
 	python3 -B tools/check_paper.py

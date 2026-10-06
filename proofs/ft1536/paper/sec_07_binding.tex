@@ -1,3 +1,87 @@
 \section{Binding to the implementation}\label{sec:binding}
 \status{CLOSED method and recorded findings; B1 IN-FLIGHT}
+\subsection{From source text to executions}
+The source3 method fixes C bytes, parses the supported C99 fragment into
+a statement tree, and proves the equality between the parsed region
+and that tree. Execution theorems then reason about this bound tree
+under explicit state, memory and word-range contracts. This separates
+the source identity from the value-level argument. It is a fragment
+semantics, not a verified general C compiler.\src{C11}
+
+For example, \code{KeygenMkgm3Program.source_bound} states
+\[
+ \code{C99ModularParser.region}\ 2945\ 91=\mathrm{some}\ \code{code}.
+\]
+The B1.02 execution work derives loop counters and pointer positions
+for the first, triple and intermediate loop families of
+\code{modp_NTT3_ext}. Butterfly-call observations are conclusions of
+executions of the parsed bodies; assuming the intended calls would
+leave the source-binding obligation unanswered. These are scoped
+execution results, still subject to their memory and non-overflow
+premises.\src{C11}
+
+The generator certificate is similarly concrete. With
+$p=2147355649$ and $g=1907584673$, the declarations in
+\code{KeygenGeneratorOrder} prove
+\begin{align*}
+ g^{9216}\bmod p&=1,&g^{4608}\bmod p&\ne1,&g^{3072}\bmod p&\ne1,\\
+ (g^2)^{4608}\bmod p&=1,&(g^2)^{2304}\bmod p&\ne1,&
+ (g^2)^{1536}\bmod p&\ne1.
+\end{align*}
+The same module checks $9216=2^{10}3^2$ and $4608=2^9 3^2$.
+These are the exact power tests used as the order certificates for
+$9216$ and $4608$; they do not assume an NTT correctness oracle.
+We quote the literal arithmetic declarations rather than silently
+replacing them by a stronger source-level transform theorem.\src{C11}
+
+\subsection{The verification found bugs}
+\paragraph{F-001: an inherited C buffer-cursor defect.}
+In the pinned \code{falcon_prng_get_bytes}, the available length is
+computed from \code{p->ptr}, but the copy is
+\code{memcpy(buf, p->buf.d, clen)} rather than a copy from
+\code{p->buf.d + p->ptr}. A call beginning at a nonzero cursor can
+therefore copy the buffer prefix instead of the intended stream slice.
+The recorded census found the same statement in seven vendored
+reference/optimized/local copies and no call sites in the examined
+profiles. This is an inherited defect in the upstream lineage as
+vendored here, classified LATENT; it is not evidence about every later
+upstream release. The examined signing path uses the indexed
+\code{get_u8}/\code{get_u64} accessors. A future use of the bulk-byte
+API would activate the faulty path.\src{C12}
+
+\paragraph{A dead REV10 parser branch.}
+The initial store parser never recognized real expressions of the form
+\code{gm[b + REV10[u << k]]}. Its greedy \code{pureExpr} consumed
+\code{+ REV10} as part of a scalar expression, leaving a bracket behind.
+The correction splits at the REV10 marker before parsing the base.
+An apparently plausible row model would otherwise have described an
+unbound program tree. This was a formal-model defect, not a new defect
+in the C table.\src{C12}
+
+\paragraph{Duplicated XOR and a false function call.}
+The candidate \code{divSelect} included an outer XOR with \code{z},
+although the compound update \code{z ^= ...} already supplied that
+operation. Kernel checking rejected the claimed parse equality.
+The correction uses precisely the right-hand side
+\code{(z ^ z2) & -(uint32_t)((e >> i) & 1)}.
+A separate parser pattern treated an opening parenthesis as a function
+name and misread \code{((size_t)1 << k) - 1}; a token-name guard removed
+the false call. The failed bindings and probes are retained in the
+batch record.\src{C12}
+
+\subsection{Proof engineering and current boundary}
+The REV10 certificate now states
+\code{rawTable = some ((List.range 1024).map bitrev10)}.
+Its source-side certificate uses eleven slices, each parsing at most
+eight pinned lines, and composes intermediate equalities without
+re-parsing the entire table. Eight lines was the successful granularity
+in the recorded experiment, not a universal limit of Lean's kernel.
+The final named job is \code{keygen_rev10_cert_004}; the checkpoint
+records a clean accepted run.\src{C11}
+
+These results illustrate why a kernel proof of a model and a proof
+that the model describes the source are distinct obligations. The
+remaining B1 work includes source value/row laws and the eventual
+emitted-material-to-fiber and law interfaces. Their completion cannot
+be inferred from the closed parser or table certificates.\src{C11,C01}
 \todo{B1-FINAL}{Replace this progress stub with the final source-to-law exports after delivery.}
