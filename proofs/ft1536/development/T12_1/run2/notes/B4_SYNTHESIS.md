@@ -262,6 +262,34 @@ obligation), then B1.04 (values/ranges - t*m=n lives there), B1.07
 (stride=1 via the wrapper frame), B1.10 (`emitted_to_actual_fiber` =
  `hkey`).
 
+## 2026-10-06 (evening): B2/B5 package CHANGES_REQUIRED (E1-E5) - the seam's true state
+
+Independent review (own replay 70/70, kernel counterexamples
+`membership_without_cost`, `export_without_key_ident`; pins REVIEW
+a638b45d, OUTPUTS 4a9d8197) verdict: CHANGES_REQUIRED. Traps F/G
+CLEAN: no TV smuggling, the winning test covers the experiment's
+remaining randomness, the simulator/MT-game identification is correct,
+the Phi inversion is sharp and exact. Three real gaps + two descriptive:
+E1 (significant): `P_tau` is the stream-driven PUBLIC SIMULATION - the
+direct bound is the main form FOR THAT experiment; the honest/real-Sign
+-> P_tau bridge with the correct second-moment comparison is MISSING and
+must not be claimed closed (`b <= phi D b` is not that comparison; D is
+only a redundant weakening for P_tau). E2 (significant): `CompWinCert`
+is dangling - membership must feed the hop and the cost line must be in
+the export's type (q tied to `AdvPrg.chachaBlocksTotal beta S`). E3
+(significant): `hkey` is fake-consumed (`intro _hkey`; `True.intro`
+reproduces the export) - bind the key-law identification dependently.
+E4/E5 (descriptive): total piecewise inverse form / negative-radican
+convention, domination for `max 0 (eps-deltaPRG)`; comments reference
+nonexistent `CompTest.ofEvent` etc.; audit bookkeeping 52+4.
+
+Consequence for the public claim: the computational seam is REAL but
+scoped to P_tau; the honest-Sign bridge is now the explicitly recorded
+open interface (overlaps the B1 do_sign/ReplyShape realization and the
+B4 second-moment consumption). Fix window: E1-E5 on the corrected work
+contract (f6561725); one window, statement surgery + wiring, no new
+math campaign.
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
