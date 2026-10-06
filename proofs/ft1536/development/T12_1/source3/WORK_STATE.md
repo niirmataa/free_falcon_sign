@@ -18,8 +18,20 @@ bytes through the actual coefficient-conversion loop (`igm=ft`). Both
 jobs have clean 0/0 logs. The allocation predicate is legal caller memory,
 not a proof of the enclosing allocator; B1.07 supplies that caller frame.
 
-Still in progress: source mkgm3 execution-to-row invariant, REV10 address
-laws and final initialized table theorem. Scalar call lemmas alone do not
+Second checked step: the generated 64x16 kernel certificate covers all
+1024 physical exponents, exact row orders and REV10 address permutation.
+Jobs `keygen_mkgm3_indices_002`, `table_002`, `control_002`, `atoms_004`,
+`upward_004` and `revmem_002` (the latter five share prefix
+`keygen_mkgm3_`) are accepted with 0/0 logs. `cube_body` and `square_body`
+derive their row updates from the actual parsed bodies, including reads,
+nested calls and preservation across the inverse-table store. The read-only
+REV10 memory predicate is tied to BATCH_015's parsed data and transported
+through actual primitive memory transitions. Generator/checker:
+`sage/generate_keygen_row_certificate.sage`, accepted `_index_gen_002`;
+the first run's JSON serialization failure is retained.
+
+Still in progress: last-row source body, loop invariants/initializers and
+the final initialized table theorem. The checked body laws alone do not
 meet B1.03 Acceptance. No owned background job, review or push.
 
 ## B1.03 stage (b) — source modp_R2 value law CLOSED — 2026-10-06
