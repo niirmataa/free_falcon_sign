@@ -1,6 +1,6 @@
 # T12.1/source3 — żywy stan
 
-## B1.03 stage (b) — modp_R2 word law checked; source composition active — 2026-10-06
+## B1.03 stage (b) — source modp_R2 value law CLOSED — 2026-10-06
 
 **ACTIVE / KEYGEN_SOURCE_TO_FIBER_001 IN_PROGRESS / NOT_REVIEWED.**
 Owner assigned this window exclusively to stage (b), after BATCH_015 and
@@ -10,14 +10,32 @@ remain provenance. All 360 current source inputs of the pinned REV10 job
 match; the seven changes since `keygen_mkgm3_frontend_011` are the recorded
 BATCH_014 repairs. Preflight: `.build/modp_r2_016/PREFLIGHT.json`.
 
-`KeygenModpR2Word` passed `keygen_modp_r2_word_002` (1.618s, clean logs).
-For every odd modulus `2^30 < p < 2^31` and valid Montgomery inverse, the
-word algorithm has canonical result `2^62 mod p`, with explicit `R*R`
-representation. Its invariant follows all five squarings and proves the
-bit-mask halving without overflow. The failed `_001` elaboration is retained.
-Source composition with the existing parsed `r2Code` is the next obligation;
-the word law alone is not yet the source-call theorem. No owned job is
-running at this checkpoint. Stage (c) follows in the next owner window.
+`KeygenModpR2Word`, `KeygenModpR2Exec`, and `KeygenModpR2` now close the
+source-call law: canonical `2^62 mod p`, with explicit `R*R` representation,
+for every odd `2^30 < p < 2^31` and valid Montgomery inverse. The proof
+consumes the declaration, `modp_R`, doubling, all five Montgomery squares,
+overflow-free parity halving, assignment and return of the existing parsed
+`r2Code`; executions also exist for every parameter pair. The M0 export
+`initialized_value_law` derives inverse validity from executed `modp_ninv31`.
+`initialized_to_montgomery` exposes the scalar conversion `a -> R*a`.
+
+Accepted jobs: `keygen_modp_r2_word_002` (1.618s), `_exec_004` (14.598s),
+`_contract_001` (2.720s), `_audit_005` (1.167s), `_checks_001` (2.521s).
+All five have empty stdout/stderr and unchanged proof limits. Internal
+audit: 20 definitions/exports with actual types, non-elided proof terms
+and only standard axioms; output SHA256
+`ab90b96085180b7d1868e405a9456f6b75528d4db491bbc178b8f0ac06af6ade`.
+Sage/C finite controls: seven public odd moduli, both halving parities,
+normal/UBSan baseline and three detected mutations in both modes.
+Retained failures and the superseded truncated audit are recorded in
+BATCH_016. The generic word checkpoint is `b3941188`; source composition
+and this state are the next small local commit, followed by the receipt.
+
+No owned job remains running. This owner window closes at stage (b).
+Next owner window: **(c) row exponent/order laws and canonical ranges**,
+then the planned overwrite/layout obligations. B1.03 as a whole and the
+final emitted-to-fiber theorem remain open; no review or publication status
+is granted by these source commits.
 
 ## B1.03 phase 1 — frontend/callees/REV10/order closed, freeze at mid-point — 2026-10-06
 
