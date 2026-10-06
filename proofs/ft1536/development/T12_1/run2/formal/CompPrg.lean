@@ -1,77 +1,39 @@
 import AdvPrg
 
-/-! # CompPrg — window B2/B5: the computational seam, honestly quantified
+/-! # CompPrg — a class-restricted hop for stream-driven public simulation
 
-Window B2/B5 of the run2 lane (`notes/PROMPT_B2B5_COMPUTATIONAL.md`). This
-module closes the two verified gaps of the independent review (2026-10-06)
-against `formal/AdvPrg.lean` + `formal/Assembly.lean`:
+B2/B5, corrections E1–E5 (2026-10-06). `CompPRGBound C tau delta` quantifies
+over an admitted class of [0,1]-valued tests. `comp_game_hop_abs` applies
+that predicate DIRECTLY to the averaged winning test; its proof uses finite
+expectation composition, with no TV hop as an intermediary.
 
-1. **Statistical quantifier in a computational claim.** `AdvPrg.ChaCha20PRFBound`
-   quantifies over ALL events (its point TV distance), so — by
-   `AdvPrg.chacha20PRFBound_delta_ge` combined with `AdvPrg.route_a_closed` —
-   every valid `delta` on the real tape is `>= 1 - 2^448/2^n` (~1 at real `n`).
-   The computational reading is here made an actual QUANTIFIER: the named
-   predicate `CompPRGBound C tau delta` ranges over an ADMITTED CLASS of tests
-   `C` (a PARAMETER — no Turing machines, no cost model invented beyond the
-   seam's accounting line), and the class shape supports exactly what the hop
-   needs: **membership of the game's winning event for a composed adversary**
-   (`CompWinCert` — the named premise, with its resource accounting
-   `cost <= T(A) + q * cost of one ChaCha20 block` recorded as the accounting
-   SHAPE only).
-2. **The PRG term appended, not hopped.** `Assembly.end_to_end_assembled_…`
-   adds `0 <= deltaPRG` to the RHS of the ideal-game bound (`le_add_of_nonneg_right`)
-   and the LHS experiment never changes tape. Here the real game is ON the LHS
-   (`AdvEUFStream`: the EUF game whose signing oracle runs the real
-   `Games.Sampler.code` on the real stream) and `deltaPRG` arrives **via the
-   hop** (`stream_game_hop*` — the `Assembly.tape_game_hop_abs` family applied
-   to the WINNING EVENT of `A`, at winning-probability level, for the admitted
-   class only). The old export stays the abstract honest-game shape;
-   `formal/Assembly.lean` is untouched.
+`streamGame` is PUBLIC SIMULATION: `signSimAt` runs `S.code` and programs
+the ROM, aborting on a used entry. Its success probability is explicitly
+named `AdvPublicSimStream`. On a uniform tape it is `lazyGame` in law and
+its win probability equals `AdvMT(Reduction.build)`. This is not an
+identification with `Games.runEUF` / `Games.signHonest` / `freshHonest`.
+The principal consequence is the direct bound
+`AdvMT >= max 0 (epsilon_stream - deltaPRG)`. The honest-Sign bridge and
+its B4 second-moment comparison remain open for the computational assembly.
 
-## Design choices (recorded — goal 4 of the task)
-
-* **Tape scope.** `n = beta.qs * S.bits` (`tapeWidth`): `beta.qs` is the
-  record FIELD `Budget.qs` (the query budget), so `n` is a PRODUCT of the
-  budget's query count and the per-call width `S.bits` — not a double
-  multiplier. The per-call width `S.bits` vs the whole-run horizon is joined
-  in ONE game definition by the **whole-run tape law with per-call
-  projection** (`windowOf` — call `i` reads window `i` of one whole-run tape;
-  the run's generator usage is one stream, `AdvPrg.frngTapeLaw seed n` at
-  total width `n`). This is the ONE-STREAM reading recorded in
-  `notes/B2_ADVPRG_WORK_STATE.md` §5; a per-call reading would instead
-  compose with a `beta.qs`-fold factor.
-* **Test shape.** A composed adversary is randomized beyond the tape (key,
-  coins, nonces and the ROM draws stay in the one-draw continuation), so its
-  tape-level winning event is its win FUNCTION `x ↦ (F x).event E : [0,1]`.
-  The class therefore carries `CompTest` — [0,1]-valued tests (randomized
-  tests; deterministic tests are the `{0,1}`-valued ones, `CompTest.ofEvent`,
-  whose advantage IS `AdvPrg.distinguishingAdv` of the corresponding event —
-  `compTestAdv_ofEvent`). The task's e.g. predicate on Prop-events is kept
-  verbatim as `CompPRGBoundEvent`, and
-  `compPRGBoundEvent_of_compPRGBound` shows it is the deterministic special
-  case of `CompPRGBound`.
-* **What is NOT done here (kept, recorded):** all TV lemmas and
-  `AdvPrg.route_a_closed` stay as the recorded death of the statistical route
-  (`formal/AdvPrg.lean` §4 — READ-ONLY here); no small TV is derived from the
-  computational assumption (impossible); the seed/SHAKE boundary (A2) and the
-  byte bridge (A3/A4) stay outside; `keyIdent` stays the exact-type slot
-  (B1.10 owns it) and the new exports USE `hkey` structurally (the `gate`
-  pattern — the final identification is the only free point of the slot).
-
-## Honest ledger of THIS window (`notes/B2B5_COMPUTATIONAL_WORK_STATE.md`)
-
-* The computational claim is CONDITIONAL on `CompPRGBound C tau deltaPRG` at
-  the whole-run width together with the named membership premise for the
-  composed winning event. Route (a) stays closed BY THEOREM (`route_a_closed`):
-  the class-free/unbounded reading of `deltaPRG` is ~1 and vacuous, so only
-  the admitted-class reading is operative.
-* The hop is at winning-probability level FOR THE ADMITTED CLASS ONLY (task
-  honesty rule 1) — the exact statement is `comp_game_hop_abs`.
-* `formal/AssemblyComp.lean` re-exports the assembled bound with the
-  real-stream game on the LHS and derives the exact `Phi` inversion
-  `Adv_MT(B) >= max 0 (a - sqrt(D * a * (1 - a)))` with
-  `a = epsilon_real - deltaPRG - epsColl beta` (the review's shape is CHECKED
-  and confirmed to be the exact inverse of `FT1536.EventTransfer.phi`).
+* Whole-run horizon: `n = beta.qs * S.bits`, with `beta.qs` the query-budget
+  field and `S.bits` the per-call width. Call `i` reads window `i`; uniform
+  windows factor independently. A proposed concrete generator law can be
+  substituted for `tau`; its binding to actual signing calls is a separate
+  obligation, including reinitialization and byte addressing.
+* Remaining randomness: key, adversary coins, nonces, ROM draws and the
+  resulting adaptive message choices are inside `streamCont`. `winFun` is
+  their averaged win probability. `CompPRGBoundEvent` separately records
+  the deterministic event-form predicate; no indicator-conversion API is
+  exported here.
+* Each stream hop consumes `CompWinCert` for the actual `streamWinTest`,
+  with `q = AdvPrg.chachaBlocksTotal beta S`, and returns its cost line
+  alongside the probability bound. Cost and the admitted class remain
+  parameters, not a proved machine implementation.
+* `AssemblyComp` transports between explicitly named emitted/model key
+  laws using `KeyLawBinding.identify hkey`. B1.10 supplies that binding;
+  A2 and A3/A4 retain their recorded scope. The statistical lemmas and
+  `AdvPrg.route_a_closed` retain their separate scope.
 -/
 
 namespace FT1536.CompPrg
@@ -258,17 +220,17 @@ noncomputable def compTestAdv {ξ : Type} [Fintype ξ] [Nonempty ξ] (tau : Law 
 `VerifyBind/HashTo.lean`, computational reading): `CompPRGBound C tau delta`
 quantifies over an ADMITTED CLASS of tests `C` — a PARAMETER, no Turing
 machines, no cost model invented beyond the seam's accounting line. This is
-the operative named assumption of the assembled claim; its unbounded variant
-(`C` = all tests) is exactly `AdvPrg.ChaCha20PRFBound` and is vacuous on the
-real tape (`AdvPrg.chacha20PRFBound_delta_ge`) — do NOT weaken to it. -/
+the operative named assumption of the public-simulation claim. Its unbounded
+variant (`C` = all tests) includes every indicator test and regains statistical
+strength, hence is vacuous at small delta on the real tape
+(`AdvPrg.chacha20PRFBound_delta_ge`). -/
 def CompPRGBound {ξ : Type} [Fintype ξ] [Nonempty ξ] (C : Set (CompTest ξ))
     (tau : Law ξ) (delta : ℝ) : Prop :=
   ∀ t ∈ C, compTestAdv tau t ≤ delta
 
-/-- The task's e.g. predicate, verbatim shape: the deterministic (Prop-event)
-tests only, over `AdvPrg.distinguishingAdv`. Kept as the canonical
-event-form; `compPRGBoundEvent_of_compPRGBound` records it as the
-indicator special case of `CompPRGBound`. -/
+/-- The task's example predicate for deterministic Prop-events, over
+`AdvPrg.distinguishingAdv`. This separate definition is not used by the
+randomized-test hop; no conversion theorem is exported here. -/
 def CompPRGBoundEvent {ξ : Type} [Fintype ξ] [Nonempty ξ] (C : Set (ξ → Prop))
     (tau : Law ξ) (delta : ℝ) : Prop :=
   ∀ E ∈ C, distinguishingAdv tau E ≤ delta
@@ -295,11 +257,9 @@ noncomputable def winFun {ξ α : Type} [Fintype ξ] [Fintype α]
   nonneg x := Dist.event_nonneg (F x) E
   le_one x := Dist.event_le_one (F x) E
 
-/-- THE hop at winning-probability level, FOR THE ADMITTED CLASS ONLY (the
-task's honesty rule 1 — `Assembly.tape_game_hop_abs` applied to the WINNING
-EVENT of the composed adversary): replacing the whole-run tape law `tau` by
-the fair tape moves the win event of ANY continuation by at most `delta`,
-provided the composed win test is admitted. -/
+/-- Probability-level hop derived directly from `CompPRGBound`, restricted
+to the admitted averaged win test. This low-level lemma only needs membership;
+the stream consumers below require the full cost-bearing `CompWinCert`. -/
 theorem comp_game_hop_abs {ξ α : Type} [Fintype ξ] [Nonempty ξ] [Fintype α]
     (C : Set (CompTest ξ)) (tau : Law ξ) (delta : ℝ) (hcomp : CompPRGBound C tau delta)
     (F : ξ → FT1536.Run2.Dist α) (E : α → Prop) (hwin : winFun F E ∈ C) :
@@ -328,7 +288,7 @@ theorem comp_game_hop {ξ α : Type} [Fintype ξ] [Nonempty ξ] [Fintype α]
         - ((FT1536.Run2.Dist.draw (Law.uniform : Law ξ)).bind F).event E| := le_abs_self _
   linarith
 
-/-- The hop, fair-side form (the direction the `Phi` inversion consumes). -/
+/-- The reverse one-sided hop, bounding the fair-tape continuation. -/
 theorem comp_game_hop_symm {ξ α : Type} [Fintype ξ] [Nonempty ξ] [Fintype α]
     (C : Set (CompTest ξ)) (tau : Law ξ) (delta : ℝ) (hcomp : CompPRGBound C tau delta)
     (F : ξ → FT1536.Run2.Dist α) (E : α → Prop) (hwin : winFun F E ∈ C) :
@@ -390,7 +350,7 @@ theorem bind_same_const_congr {α β : Type} (p : FT1536.Run2.Dist α)
     (q q' : FT1536.Run2.Dist β) (h : q.Same q') : (p.bind fun _ => q).Same (p.bind fun _ => q') :=
   same_bind_congr p (fun _ => q) (fun _ => q') (fun _ => h)
 
-/-! ## 3. The real-stream EUF game (one whole-run tape, per-call projection) -/
+/-! ## 3. Stream-driven public simulation (one tape, per-call projection) -/
 
 /-- The window read of a per-call tape table at call index `i` (total: the
 constant `false` window out of range — never read when `i < k`). -/
@@ -428,11 +388,9 @@ theorem same_bind_same_left {α β : Type} (p q : FT1536.Run2.Dist α)
   simp only [Dist.expect_bind]
   exact h (fun x => (k x).expect F)
 
-/-- The sampler call of the real signer driven by the tape window `w` —
-`Run2.sample` (`(Dist.draw Law.uniform).map (S.code h st m r)`) with the FAIR
-tape draw replaced by the given window: the `Games.Sampler.code` seam at the
-tape law `tau` (`Assembly.samplerLawAt`). The nonce draw and the ROM lookup
-are unchanged (`Games.signSim`). -/
+/-- A PUBLIC SIMULATOR call driven by window `w`: `Games.signSim` with its
+fair sampler draw replaced by `S.code ... w`. The nonce draw, ROM programming
+and collision abort are those of simulation, not `Games.signHonest`. -/
 noncomputable def signSimAt (S : Sampler) (w : Fin S.bits → Bool) (h : FT1536.Relation.Rq)
     (st : State) (m : Bytes) : FT1536.Run2.Dist (Option (Reply × State)) :=
   (FT1536.Run2.Dist.draw (Law.uniform : Law Nonce)).bind fun r =>
@@ -467,23 +425,18 @@ noncomputable def streamCont (beta : Budget) (muH : Law FT1536.Relation.Rq)
       (simulateStream S hk (winRead (windowsOf x)) initial 0 (A.code hk coins)).bind
         (Games.finishHonest hk)
 
-/-- THE tape-parametrized EUF game (`Games.AdvEUF` with the sampler law mapped
-through `tau`): the `simulateLazy`/`lazyGame` execution of `A`'s program whose
-signing oracle runs the real `Games.Sampler.code` on the per-call windows of
-ONE whole-run tape drawn from `tau` (the one-stream reading at total width
-`tapeWidth beta S = beta.qs * S.bits`). At `tau = Law.uniform` this IS
-`lazyGame` in law (`streamGame_uniform`), whose win event is
-`Games.AdvMT (beta.qh+1) muH (Reduction.build beta A S)`
-(`streamGame_uniform_eq_advMT`). -/
+/-- Tape-parametrized PUBLIC SIMULATION with `S.code` on the windows of one
+whole-run tape. At `tau = Law.uniform` it is `lazyGame` in law, with winning
+probability `Games.AdvMT (beta.qh+1) muH (Reduction.build beta A S)`.
+It has no proved identification with the honest experiment `Games.runEUF`. -/
 noncomputable def streamGame (beta : Budget) (muH : Law FT1536.Relation.Rq)
     (A : ClassicalAdversary beta) (S : Sampler)
     (tau : Law (Fin (tapeWidth beta S) → Bool)) : FT1536.Run2.Dist Bool :=
   (FT1536.Run2.Dist.draw tau).bind (streamCont beta muH A S)
 
-/-- THE real-stream EUF advantage of `A`: the win probability of the
-tape-parametrized game at the real stream law `tau`
-(`AdvPrg.frngTapeLaw seed (tapeWidth beta S)`). -/
-noncomputable def AdvEUFStream (beta : Budget) (muH : Law FT1536.Relation.Rq)
+/-- Winning probability of stream-driven PUBLIC SIMULATION, at law `tau`.
+The name distinguishes this experiment from honest `Games.AdvEUF`. -/
+noncomputable def AdvPublicSimStream (beta : Budget) (muH : Law FT1536.Relation.Rq)
     (A : ClassicalAdversary beta) (S : Sampler)
     (tau : Law (Fin (tapeWidth beta S) → Bool)) : ℝ :=
   (streamGame beta muH A S tau).event (fun b => b = true)
@@ -866,8 +819,8 @@ theorem simulateStream_uniform (S : Sampler) (k : ℕ) (h : FT1536.Relation.Rq) 
     refine same_trans' _ _ _ hhead2 ?_
     exact same_trans' _ _ _ (bind_const_same _ _) htail2
 
-/-- THE real-stream game on the fair tape IS `Run2.lazyGame` (the
-tape-parametrized game at `tau = Law.uniform`): one fair whole-run tape
+/-- Public simulation on the fair tape IS `Run2.lazyGame` in law:
+one fair whole-run tape
 split into per-call windows is a sequence of independent fair per-call
 tapes. -/
 theorem streamGame_uniform (beta : Budget) (muH : Law FT1536.Relation.Rq)
@@ -930,10 +883,9 @@ theorem streamGame_uniform (beta : Budget) (muH : Law FT1536.Relation.Rq)
   rw [hfin] at hall
   exact hall
 
-/-- THE fair-tape identification at the win event: the fair-tape side of the
-real-stream game is exactly `Games.AdvMT (beta.qh+1) muH (Reduction.build
-beta A S)` (via `Run2.concrete_lazy_game_binding` — the reducer's success
-game IS the sampler-oracle EUF game). -/
+/-- The fair-tape PUBLIC SIMULATION win probability is exactly
+`Games.AdvMT (beta.qh+1) muH (Reduction.build beta A S)`, through
+`concrete_lazy_game_binding`. This equality does not concern honest Sign. -/
 theorem streamGame_uniform_eq_advMT (beta : Budget) (muH : Law FT1536.Relation.Rq)
     (A : ClassicalAdversary beta) (S : Sampler) :
     (streamGame beta muH A S (Law.uniform : Law (Fin (tapeWidth beta S) → Bool))).event
@@ -944,43 +896,57 @@ theorem streamGame_uniform_eq_advMT (beta : Budget) (muH : Law FT1536.Relation.R
     (fun b => b = true)).symm
   exact h1.trans h2
 
-/-! ## 5. The chained hop for the real-stream game -/
+/-! ## 5. Certified computational hops for public simulation -/
 
-/-- THE chained hop (goal 2 of the task), two-sided form: under the named
-computational assumption `CompPRGBound C tau delta` and the MEMBERSHIP of the
-composed winning event (`CompWinCert.mem` with its resource accounting line),
-the real-stream EUF advantage and the fair-tape game move by at most `delta`.
-This is `Assembly.tape_game_hop_abs` applied to the WINNING EVENT of `A` —
-at winning-probability level, FOR THE ADMITTED CLASS ONLY. -/
+/-- Two-sided public-simulation hop. The certificate is for the actual
+averaged winning test and exact whole-run block count. Both membership and
+the cost line are consumed; the latter is part of the exported resource
+contract. The probability proof uses `comp_game_hop_abs` directly. -/
 theorem stream_game_hop_abs (beta : Budget) (muH : Law FT1536.Relation.Rq)
     (A : ClassicalAdversary beta) (S : Sampler)
     (C : Set (CompTest (Fin (tapeWidth beta S) → Bool)))
     (tau : Law (Fin (tapeWidth beta S) → Bool)) (delta : ℝ)
-    (hcomp : CompPRGBound C tau delta) (hwin : streamWinTest beta muH A S ∈ C) :
-    |AdvEUFStream beta muH A S tau
-      - AdvEUFStream beta muH A S (Law.uniform : Law (Fin (tapeWidth beta S) → Bool))| ≤ delta :=
-  comp_game_hop_abs C tau delta hcomp (streamCont beta muH A S) (fun b => b = true) hwin
+    (cost : CompTest (Fin (tapeWidth beta S) → Bool) → ℝ) (TA blockCost : ℝ)
+    (hcomp : CompPRGBound C tau delta)
+    (hcert : CompWinCert C cost (streamWinTest beta muH A S) TA blockCost
+      (AdvPrg.chachaBlocksTotal beta S)) :
+    (|AdvPublicSimStream beta muH A S tau
+      - AdvPublicSimStream beta muH A S Law.uniform| ≤ delta) ∧
+    cost (streamWinTest beta muH A S) ≤
+      TA + AdvPrg.chachaBlocksTotal beta S * blockCost :=
+  ⟨comp_game_hop_abs C tau delta hcomp (streamCont beta muH A S)
+    (fun b => b = true) hcert.mem, hcert.costLine⟩
 
-/-- The chained hop, real-stream side. -/
+/-- Certified public-simulation hop, stream side. -/
 theorem stream_game_hop (beta : Budget) (muH : Law FT1536.Relation.Rq)
     (A : ClassicalAdversary beta) (S : Sampler)
     (C : Set (CompTest (Fin (tapeWidth beta S) → Bool)))
     (tau : Law (Fin (tapeWidth beta S) → Bool)) (delta : ℝ)
-    (hcomp : CompPRGBound C tau delta) (hwin : streamWinTest beta muH A S ∈ C) :
-    AdvEUFStream beta muH A S tau ≤
-      AdvEUFStream beta muH A S (Law.uniform : Law (Fin (tapeWidth beta S) → Bool)) + delta :=
-  comp_game_hop C tau delta hcomp (streamCont beta muH A S) (fun b => b = true) hwin
+    (cost : CompTest (Fin (tapeWidth beta S) → Bool) → ℝ) (TA blockCost : ℝ)
+    (hcomp : CompPRGBound C tau delta)
+    (hcert : CompWinCert C cost (streamWinTest beta muH A S) TA blockCost
+      (AdvPrg.chachaBlocksTotal beta S)) :
+    (AdvPublicSimStream beta muH A S tau ≤
+      AdvPublicSimStream beta muH A S Law.uniform + delta) ∧
+    cost (streamWinTest beta muH A S) ≤
+      TA + AdvPrg.chachaBlocksTotal beta S * blockCost :=
+  ⟨comp_game_hop C tau delta hcomp (streamCont beta muH A S)
+    (fun b => b = true) hcert.mem, hcert.costLine⟩
 
-/-- The chained hop, fair-tape side (the direction the `Phi` inversion
-consumes). -/
+/-- Certified public-simulation hop, fair-tape side. -/
 theorem stream_game_hop_symm (beta : Budget) (muH : Law FT1536.Relation.Rq)
     (A : ClassicalAdversary beta) (S : Sampler)
     (C : Set (CompTest (Fin (tapeWidth beta S) → Bool)))
     (tau : Law (Fin (tapeWidth beta S) → Bool)) (delta : ℝ)
-    (hcomp : CompPRGBound C tau delta) (hwin : streamWinTest beta muH A S ∈ C) :
-    AdvEUFStream beta muH A S (Law.uniform : Law (Fin (tapeWidth beta S) → Bool)) ≤
-      AdvEUFStream beta muH A S tau + delta :=
-  comp_game_hop_symm C tau delta hcomp (streamCont beta muH A S) (fun b => b = true) hwin
+    (cost : CompTest (Fin (tapeWidth beta S) → Bool) → ℝ) (TA blockCost : ℝ)
+    (hcomp : CompPRGBound C tau delta)
+    (hcert : CompWinCert C cost (streamWinTest beta muH A S) TA blockCost
+      (AdvPrg.chachaBlocksTotal beta S)) :
+    (AdvPublicSimStream beta muH A S Law.uniform ≤
+      AdvPublicSimStream beta muH A S tau + delta) ∧
+    cost (streamWinTest beta muH A S) ≤
+      TA + AdvPrg.chachaBlocksTotal beta S * blockCost :=
+  ⟨comp_game_hop_symm C tau delta hcomp (streamCont beta muH A S)
+    (fun b => b = true) hcert.mem, hcert.costLine⟩
 
 end FT1536.CompPrg
-

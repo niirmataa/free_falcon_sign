@@ -1,263 +1,268 @@
-# B2/B5 — the computational seam (CompPrg + AssemblyComp)
+# B2/B5 — corrections E1–E5: public simulation, certified cost, key-law transport
 
-Task: `notes/PROMPT_B2B5_COMPUTATIONAL.md` (window B2/B5 — the last
-conceptual seam). Workspace `proofs/ft1536/development/T12_1/run2/`. Own
-files only: `formal/CompPrg.lean`, `formal/AssemblyComp.lean` + this entry.
-Recorded 2026-10-06. Everything else READ-ONLY (including `AdvPrg.lean` and
-`Assembly.lean` — imported and extended, never edited).
+Date: 2026-10-06. Workspace: `proofs/ft1536/development/T12_1/run2/`.
+Owned sources: `formal/CompPrg.lean`, `formal/AssemblyComp.lean`, this note.
+Contract: `notes/PROMPT_B2B5_COMPUTATIONAL.md`, commit `f6561725`, SHA256
+`4a162827dfe7dd6e37019b9021d476c951e7d288ba4ac15f78aacc7241aa47cb`.
+Review: `proofs/ft1536/work/FT1536_B2B5_COMPUTATIONAL_REVIEW_001/REVIEW.md`, §7.
 
-## Status
+## Status and correction of the previous claim
 
-**DONE — `formal/CompPrg.lean` (986 lines) and `formal/AssemblyComp.lean`
-(328 lines) build 0/0** (EMPTY logs = 0 errors/0 warnings, guarded serial
-compile `tools/original/run_lean_guarded.sh`, exit 0, 2s each). Axiom audit:
-**64/64 declarations (defs + theorems) depend only on subsets of
-`[propext, Classical.choice, Quot.sound]`** — 56/56 in `CompPrgAudit`, 8/8 in
-`AssemblyCompAudit`; zero unfinished-proof markers, zero `sorry`. `#print`
-statement evidence in `.build/audit/CompPrgAudit.log` and
-`.build/audit/AssemblyCompAudit.log`.
+**E1–E5 implemented; AUTHOR_CHECKS_PASS_AWAITING_INDEPENDENT_REVIEW.**
+Final owned modules build **0 errors / 0 warnings**, with empty logs.
+The full real/honest EUF-CMA computational assembly is **OPEN**.
 
-## 1. THE final assumption sentence (one predicate name + one resource line)
+The previous assertion that the entire B2/B5 seam was closed is withdrawn.
+The proved stream experiment is **public simulation**, not honest Sign.
+The historical work-state is preserved in commit `e961ca9f` and in
+`.build/b2b5_e1e5_001/inputs/B2B5_COMPUTATIONAL_WORK_STATE.pre_review.md`
+(SHA256 `076f5c77f9280dbb0b2e83ee1ae8915746e7e493145ac9f008a81f8fe9f70408`).
+Its 64 audit entries were **52 explicit definitions/theorems + four
+constructors/recursors in CompPrg**, and eight explicit declarations in
+AssemblyComp; they were not 64 explicit source declarations.
 
-> The real-stream assembled bound is CONDITIONAL on **`CompPRGBound C tau
-> deltaPRG`** — the distinguishing advantage of the pinned `Extra/c/frng.c`
-> whole-run tape law `tau` (width `n = beta.qs * S.bits`, one stream) against
-> the fair tape, budget `deltaPRG`, quantified over an ADMITTED CLASS of tests
-> `C` — together with the named membership premise **`CompWinCert`** for the
-> composed winning event of the game at `A`, whose resource accounting line is
-> `cost(winTest) <= T(A) + q * blockCost` (`q` = `AdvPrg.chachaBlocksTotal
-> beta S`, the ChaCha20 blocks generating the stream).
+## E1 — exact experiment and principal result
 
-Kernel form (the computational shape — the `UniformChallenge` pattern of
-`VerifyBind/HashTo.lean:244`, computational reading):
+`CompPrg.AdvPublicSimStream` replaces the misleading name `AdvEUFStream`.
+`streamGame` draws one tape and uses `signSimAt`: public `S.code`, fresh
+nonce, ROM programming, and abort on an occupied ROM entry. Key, adversary
+coins, nonces, fresh ROM responses and adaptive message choices remain in
+`streamCont`. `Games.runEUF` instead uses `signHonest` / `freshHonest`.
 
-    CompPRGBound (C : Set (CompTest n)) (tau : Law (Fin n -> Bool)) (delta) :=
-      forall t in C, compTestAdv tau t <= delta
-    -- compTestAdv tau t = |sum x, (tau.mass x - uniform.mass x) * t.run x|
-    -- CompTest n = { run : (Fin n -> Bool) -> ℝ // 0 <= run <= 1 }  (randomized
-    --   tests; deterministic tests are the {0,1}-valued ones — indicator case)
+Let
 
-    CompWinCert C cost t TA blockCost q : Prop :=
-      t ∈ C ∧ cost t <= TA + q * blockCost
+```text
+X       = Fin (beta.qs * S.bits) -> Bool
+muE     = SigmaMath.muH muEmitted
+muM     = SigmaMath.muH muKey
+P_tau   = AdvPublicSimStream beta muE A S tau
+P_U     = AdvPublicSimStream beta muE A S Law.uniform
+b_E     = Games.AdvMT (beta.qh+1) muE (Reduction.build beta A S)
+b_M     = Games.AdvMT (beta.qh+1) muM (Reduction.build beta A S)
+```
 
-## 2. THE chained-game statement (goal 2 — the hop CHAINED)
+The exact proved chain is
 
-Real game (`CompPrg.AdvEUFStream`): the EUF game whose signing oracle runs
-the real `Games.Sampler.code` on the per-call windows of ONE whole-run tape
-drawn from `tau` (hash queries and the forgery test stay honest). Fair side:
-`tau = Law.uniform`. Chain (all kernel-checked):
+```text
+|P_tau - P_U| <= deltaPRG       stream_game_hop_abs, using CompWinCert
+P_U = Pr[lazyGame ... = true]  streamGame_uniform, Dist.same_event
+    = b_E                     streamGame_uniform_eq_advMT / concrete_lazy_game_binding
+b_E = b_M                     rewrite by binding.identify hkey
+P_tau <= b_M + deltaPRG        public_sim_stream_bound
+b_M >= max 0 (epsilon_stream - deltaPRG)
+                              advMT_ge_of_public_sim_stream_win
+                              when epsilon_stream <= P_tau
+```
 
-    (hop)      AdvEUFStream tau A <= AdvEUFStream uniform A + deltaPRG
-               -- CompPrg.stream_game_hop (two-sided: stream_game_hop_abs),
-               --   Assembly.tape_game_hop_abs applied to the WINNING EVENT of
-               --   A, at winning-probability level, FOR THE ADMITTED CLASS ONLY
-               --   (honesty rule 1 — no small TV is derived from CompPRGBound;
-               --   route_a_closed stays the recorded death of that route)
-    (identity) AdvEUFStream uniform A = AdvMT (beta.qh+1) muH (Reduction.build)
-               -- CompPrg.streamGame_uniform_eq_advMT, via
-               --   CompPrg.streamGame_uniform (the window-table split
-               --   uniform_table_split + simulateStream_uniform) and
-               --   Run2.concrete_lazy_game_binding
-    (export)   AdvEUFStream tau A
-                 <= min 1 (epsColl beta + phi ((1+e)^beta.qs - 1) (AdvMT ...))
-                    + deltaPRG        -- AssemblyComp.end_to_end_stream_theorem
-               -- with deltaPRG arriving VIA THE HOP (not appended as
-               --   0 <= deltaPRG to the ideal-game bound). The old export
-               --   (Assembly.end_to_end_assembled_theorem_statement) stays the
-               --   abstract honest-game shape; Assembly.lean untouched.
+This direct, clipped bound is the **principal** reduction form for this
+experiment. Each computational export also returns the certified cost line.
+`public_sim_stream_hardness_substitution` substitutes a bound on the same
+`b_M`. All five assembly exports explicitly name `public_sim`.
 
-## 3. THE inverted Phi formula (exact — goal 3)
+`public_sim_stream_phi_weakening` and
+`advMT_ge_of_public_sim_stream_win_phi_weakening` retain the Phi-shaped
+consequences with **arbitrary D >= 0**. They use `b <= phi D b` only to
+weaken the direct bound. D is not a consumed B4 second-moment certificate;
+even D=0 is permitted independently of S. The old four stream-assembly
+exports were replaced, rather than kept under misleading end-to-end names.
 
-The repo's `FT1536.EventTransfer.phi D b = (2b+D+sqrt(D^2+4Db(1-b)))/(2(1+D))`
-is inverted EXACTLY (the review's `max{0, a - sqrt(D*a*(1-a))}` is CHECKED and
-CONFIRMED to be the sharp inverse, not an estimate — `phi_satisfies` gives
-equality at `a = phi D b`):
+### Missing honest-Sign interface (still OPEN)
 
-    phiInv D a = max 0 (a - sqrt(D * a * (1 - a)))
-    phi_inv_le : 0 <= D -> 0 <= b -> b <= 1 -> a <= phi D b -> phiInv D a <= b
+The target real-signing claim needs a tape-driven **honest** continuation
+`R : X -> Run2.Dist Bool`, source-bound to the signer, with a proved binding
 
-Security-claim export (`AssemblyComp.advMT_ge_of_stream_win`), the exact
-`f(epsilon_real, D, deltaPRG, ...)` requested:
+```lean
+((Dist.draw (Law.uniform : Law X)).bind R).Same
+  (Games.runEUF beta muEmitted A false)
+```
 
-    Adv_MT(Reduction.build beta A S) >= max 0 (a - sqrt(D * a * (1 - a)))
-    a = epsilon_real - deltaPRG - StoppingLoss.epsColl beta
-    D = (1 + (k^32 - 1)) ^ beta.qs - 1            (e = k^32 - 1)
+and its own `CompWinCert C cost (winFun R (fun b => b = true)) ...`.
+The computational hop would then land on **H = Games.AdvEUF beta muEmitted A**.
+The already-existing honest comparison is
 
-derived as the contrapositive of the re-exported bound. Boundary sanity:
-`phiInv D (D/(1+D)) = 0` (`phiInv_at_phi_zero`) consistent with the
-already-present `EventTransfer.phi_at_zero : phi D 0 = D/(1+D)`
-(`phi_at_zero_export`). Recorded companion
-(`advMT_ge_of_stream_win_direct`): this chain ALSO yields
-`Adv_MT(B) >= epsilon_real - deltaPRG`, which numerically DOMINATES the
-Phi-form; the Phi-form is exported as the requested exact inversion of the
-assembled SHAPE and keeps the certificate factor `D` visible. Recorded, not
-smoothed.
+```text
+LocalJointCertificate S e
+  -> H <= min 1 (epsColl beta + phi ((1+e)^beta.qs-1) b_E)
+```
 
-## 4. Scope/notation cleanup (goal 4 — recorded)
+via `Run2.concrete_euf_cma_to_mt_isis`: local absolute continuity and the
+second moment, `StoppedComparison`, `stopped_euf_to_concrete_mt`, and
+stopping loss. B4 must provide this actual certificate. A real binding with
+additional approximation error must account for that error explicitly.
+Neither `samplerLawAt ... uniform = samplerLaw ...` nor the public-simulator
+identity supplies this honest binding. This correction does not discharge
+it or A2/A3/A4.
 
-* `n = beta.qs * S.bits` (`CompPrg.tapeWidth`): `beta.qs` is the record FIELD
-  `Budget.qs` (the signing-query budget), so `n` is the PRODUCT of the query
-  budget and the per-call width — not a double multiplier
-  (`tapeWidth_eq`, `tapeWidth_eq_tapeBitsTotal`).
-* Per-call width `S.bits` vs the whole-run horizon: joined in ONE game
-  definition by the **whole-run tape law with per-call projection**
-  (`CompPrg.windowOf` — call `i` reads window `i` of one stream; the
-  `windowsEquiv` relabeling, `sum_windowsOf_ite`, `uniform_windowsOf_mass`
-  and `draw_uniform_windowsOf` factor the FAIR side into independent
-  per-call windows). This is the ONE-STREAM reading recorded in
-  `notes/B2_ADVPRG_WORK_STATE.md` §5; the per-call reading (a
-  `beta.qs`-fold factor) is NOT mixed in.
-* Test shape (recorded): a composed adversary is randomized beyond the tape
-  (the key, the coins, the nonces and the ROM draws live in the one-draw
-  continuation), so its tape-level winning event is the win FUNCTION
-  (`CompPrg.winFun`). `CompTest` is the [0,1]-valued test type (the class
-  shape that "supports exactly what the hop needs: membership of the game's
-  winning event for a composed adversary" — `CompWinCert.mem`); the task's
-  e.g. predicate on Prop-events is kept verbatim as `CompPRGBoundEvent`
-  (deterministic/indicator special case). No Turing machines, no cost model
-  invented beyond the seam's accounting line.
-* All TV lemmas and `AdvPrg.route_a_closed` stay as the recorded death of the
-  statistical route (`formal/AdvPrg.lean` §4, READ-ONLY here).
-* The seed/SHAKE boundary (A2) and the byte bridge (A3/A4) stay outside, as
-  recorded. `keyIdent` stays the exact-type slot (B1.10 owns it) and the new
-  exports USE `hkey` structurally (the `gate` pattern of the old exports — the
-  consumer proof is a function of `keyIdent`, so the final identification is
-  its ONLY free point).
-* Premise honesty (recorded): the assembled named premises
-  `huc`/`hshape`/`hattempt` belong to the honest-game chain of the OLD export
-  (they discharge the B4 certificate there); the new chain (hop + reducer
-  identity) does not consume them, so they are NOT carried — carrying
-  unconsumed premises would be over-assumption. The new argument list is
-  `hk, hkey, hcomp, hwin` over the assembled objects.
+## E2 — one computational predicate and an actual resource contract
 
-## 5. What the seam now honestly supports (and what not)
+**Assumption sentence:** the public-simulation bound is conditional on
+`CompPRGBound C tau deltaPRG`, over an admitted class of randomized tape
+tests, together with `CompWinCert` for the actual `streamWinTest beta muE A S`.
 
-* A reader of the public description may now honestly claim: **"the
-  real-stream EUF advantage of any composed adversary is at most the assembled
-  bound `min 1 (epsColl + phi((1+e)^qs-1, Adv_MT(Reduction.build)))` plus the
-  computational tape term `deltaPRG`, where `deltaPRG` bounds the whole-run
-  ChaCha20 stream against the fair tape FOR THE ADMITTED CLASS of
-  cost-bounded tests containing the composed winning event (accounting
-  `cost <= T(A) + q * blockCost`)"** — and, contrapositively, the exact
-  reduction form `Adv_MT(B) >= max 0 (a - sqrt(D*a*(1-a)))` at
-  `a = epsilon_real - deltaPRG - epsColl`.
-* NOT supported (unchanged, recorded): any claim about ChaCha20 security
-  itself (assumption); any statistical reading of `deltaPRG` (route (a)
-  closed — every unbounded `delta` on the real tape is `>= 1 - 2^448/2^n`,
-  `AdvPrg.chacha20PRFBound_delta_ge`); the A2 seed boundary; the A3/A4 byte
-  bridge; the B1.10 `keyIdent` content; anything about a deployment-side
-  timing/attempt-count adversary (A1, out of model scope).
+```text
+CompPRGBound C tau deltaPRG := forall t in C, compTestAdv tau t <= deltaPRG
+compTestAdv tau t = |sum x, (tau.mass x - uniform.mass x) * t.run x|
+cost (streamWinTest beta muE A S) <= T(A) + q * blockCost
+q = AdvPrg.chachaBlocksTotal beta S
+```
 
-## 6. Receipts
+All three stream hops and all five assembly exports take the full
+`CompWinCert C cost (streamWinTest beta muE A S) TA blockCost q`. Its `mem`
+feeds the hop; its `costLine` is returned as a conjunct. Membership alone
+does not satisfy these signatures. Cost and the class are parameters;
+there is no new machine-cost or ChaCha20-security proof.
 
-* `bash tools/original/run_lean_guarded.sh formal/CompPrg.lean
-  .build/check_lib/CompPrg.olean 900 1800` — exit 0, 2s, log EMPTY (0/0).
-* `bash tools/original/run_lean_guarded.sh formal/AssemblyComp.lean
-  .build/check_lib/AssemblyComp.olean 900 1800` — exit 0, 2s, log EMPTY (0/0).
-* Axiom audit `bash tools/original/run_lean_guarded.sh
-  .build/audit/CompPrgAudit.lean .build/audit/CompPrgAudit.olean 900 1800` —
-  exit 0, log 0 errors; **56/56 declarations, standard axioms only**; the
-  `#print` blocks print the exact shapes of `CompPRGBound`, `CompWinCert`,
-  `comp_game_hop_abs`, `tapeWidth_eq`, `streamGame_uniform_eq_advMT`,
-  `stream_game_hop_abs`.
-* Axiom audit `... .build/audit/AssemblyCompAudit.lean ...` — exit 0, log 0
-  errors; **8/8 declarations (axioms `[propext, Classical.choice,
-  Quot.sound]` only)**; the `#print` blocks print `phiInv`, `phi_inv_le`,
-  `end_to_end_stream_theorem`, `advMT_ge_of_stream_win`.
-* Hashes (sha256/16): `formal/CompPrg.lean` `d0a92b2ab8f1de1f…`,
-  `formal/AssemblyComp.lean` `1412be31ccacf68b…`,
-  `CompPrg.log` `e3b0c44298fc1c14…` (= empty),
-  `AssemblyComp.log` `e3b0c44298fc1c14…` (= empty),
-  `CompPrgAudit.lean` `f6b3a83b60872f98…`, `CompPrgAudit.log`
-  `298de2937125acc3…`, `AssemblyCompAudit.lean` `aea1da3022ac6ddd…`,
-  `AssemblyCompAudit.log` `d22743371e1a53aa…`.
+`comp_game_hop_abs` is the low-level probability lemma derived directly
+from the predicate and membership, by finite expectation composition.
+`Assembly.bind_draw_event` supplies that composition, not a TV bound.
+The statistical hop, `AdvPRG` and `TV` are not intermediaries of the exports.
 
-## 7. Workstate lessons (for the next window)
+The horizon is `n = beta.qs * S.bits`; `beta.qs` is a record field. Uniform
+windows factor independently, including zero-query/zero-width cases.
+The mathematical one-tape experiment does not itself identify a single
+ChaCha instance with C's concatenation of reinitialized signing instances.
+Concrete generator binding, seeding/nonce dependence and byte addressing
+remain source/operational obligations.
 
-* **`simulateLazy`-style matcher equations do NOT reduce definitionally on
-  variables** (dependent `Program s q` matcher). Use `simp only
-  [simulateStream]/[simulateLazy]`-proved `have`-equations and `rw`, never
-  `show`/`rfl` through them.
-* **`bind_comm`'s natural form matters**: `p.bind fun x => q.bind (f x)` vs
-  `q.bind fun y => p.bind fun x => f x y` — when the continuation carries a
-  `match o with`, keep the match UNDER the innermost bind (eta-move first) or
-  the `exact`-unification fails on `bind`/`match` commutation.
-* `Dist.Same` is a `∀ f, expect-eq` Prop — no `.symm`/`.trans` fields; use
-  `same_symm'`/`same_trans'` transport lemmas.
-* `Nat.add_mul_div_left (x z) {y} : (x + y * z) / y = x / y + z` — divisor is
-  the IMPLICIT middle binder; `Nat.div_lt_of_lt_mul : a < b * c → a / c < b`.
-* `linarith` treats compound monomials as atoms only up to degree 2 — keep
-  `D*a*(1-a)`-shaped terms inside `have`-equalities and combine with
-  `mul_nonneg`/`le_of_mul_le_mul_left`, not `nlinarith`.
-* `rw [h]` under a `fun`-binder with the bound variable in the instantiated
-  lemma fails (`hstream (winRead w) st`-style); use `simp_rw [h]` or a
-  quantified `have`.
-* `one_le_pow₀ : 1 ≤ a → 1 ≤ a ^ n` — `1 ≤ 1 + (k^32 - 1)` is `1 ≤ k^32`
-  (needs `one_le_pow₀ hk`), NOT `0 ≤ k^32`.
-* `Finset.sum_product`'s summand must be PAIRED `f (x, y)`-shaped; transport
-  `univ ×ˢ univ = univ` at the `have`-level (`rw [hpu] at hp`), not in the
-  goal (the rewrite hits every `univ`).
+## E3 — concrete law transport, preserving B1.10's exact-type slot
 
-## 8. Podsumowanie dla właściciela (po polsku)
+```text
+KeyLawBinding keyIdent muEmitted muKey : Prop
+  identify : keyIdent -> muEmitted = muKey
+```
 
-**Zadanie B2/B5 (szew obliczeniowy) — zamknięte.** Dwa zweryfikowane luki
-recenzji (2026-10-06) są domknięte kernelowo, pliki `CompPrg.lean` (986
-linii) + `AssemblyComp.lean` (328 linii) budują się 0/0, audyt aksjomatów
-64/64 tylko standardowe.
+The stream experiment and its cost certificate use `muEmitted`; MT uses
+`muKey`. `public_sim_stream_bound` rewrites the latter using
+`binding.identify hkey`. Both `binding` and `hkey` are necessary to this
+transport. Setting `keyIdent := True` still requires the concrete equality
+between the two laws; it cannot identify arbitrary unequal laws. B1.10 must
+instantiate its exact proposition and prove its connection to these laws.
+The name `muEmitted` alone is not a source binding. No source3 result is
+claimed to have been instantiated here.
 
-- **Zdanie założenia (jedna nazwa + jedna linia zasobów):** rachunek jest
-  warunkowy na **`CompPRGBound C tau deltaPRG`** — kwantyfikację po DOPUSZCZONEJ
-  KLASIE testów (parametr, bez maszyn Turinga) nad całobiegową taśmą realnego
-  strumienia ChaCha20 (`n = beta.qs * S.bits`, jeden strumień — `beta.qs` to
-  POLE rekordu budżetu, nie mnożnik) — razem z nazwaną przesłanką członkostwa
-  **`CompWinCert`**: wygrana zdarzenie gry dla złożonego adwersarza jest w klasie,
-  z linią księgowania `cost ≤ T(A) + q * blockCost` (q bloków ChaCha20 generuje
-  strumień). To realna kwantyfikacja obliczeniowa — w przeciwieństwie do starego
-  `ChaCha20PRFBound` (wszystkie zdarzenia), który na realnej taśmie jest próżny
-  (`delta ≥ 1 − 2^448/2^n`, ~1).
-- **Zdanie gry sprzężonej (hop NA STAŁE w eksporcie):** gra strumieniowa
-  `AdvEUFStream` (sygnaturka realnego `Games.Sampler.code` na oknach JEDNEGO
-  strumienia) jest w `deltaPRG` od gry taśmy równej
-  (`stream_game_hop` — rodzina `tape_game_hop_abs` zastosowana do WYGRANEGO
-  ZDARZENIA A, na poziomie prawdopodobieństwa wygranej, TYLKO dla dopuszczonej
-  klasy — zgodnie z regułą uczciwości; żadnego małego TV z założenia
-  obliczeniowego, `route_a_closed` zostaje), a strona taśmy równej jest
-  identycznie identyfikowana z sukcesem reduktora
-  (`AdvMT(Reduction.build)` — przez nowy rozkład okien-tabeli
-  `uniform_table_split` + `simulateStream_uniform` + gotowe
-  `concrete_lazy_game_binding`). Nowy eksport niesie `deltaPRG` WŁAŚNIE PRZEZ
-  HOP, nie doklejone `0 ≤ deltaPRG`; stary eksport zostaje abstrakcyjnym
-  kształtem gry idealnej, `Assembly.lean` nietknięte.
-- **Wzór odwróconego Phi (dokładny):** `f = max 0 (a − sqrt(D·a·(1−a)))` z
-  `a = ε_real − deltaPRG − epsColl` i `D = (1 + (k^32−1))^beta.qs − 1` —
-  hipoteza recenzji SPRAWDZONA i potwierdzona jako ostry odwrotnik
-  (`phi_satisfies` daje równość na `a = phi D b`; brzeg `phiInv D (D/(1+D)) = 0`
-  zgodny z istniejącym `phi D 0 = D/(1+D)`). Eksport bezpieczeństwa:
-  `Adv_MT(Reduction.build) ≥ f(ε_real, D, deltaPRG, …)`. Uczciwie zapisane: ten
-  sam łańcuch daje też mocniejsze `Adv_MT ≥ ε_real − deltaPRG` (bezpośredni
-  hop) — forma Phi jest żądanym dokładnym odwróceniem KSZTAŁTU montażu i jako
-  jedyna pokazuje czynnik certyfikatu `D`.
-- **Co faktycznie wykazaliśmy (mocna część okna):** szew „statystyka vs
-  obliczeniowość” jest teraz kwantyfikatorem, nie komentarzem; hop jest
-  naprawdę wciągnięty w tezę (gra na LHS zmienia taśmę); odwrócenie Phi jest
-  kernelowe i dokładne; porządek szerokości taśm domknięty w jednej definicji
-  gry (whole-run + projekcje per-call, odczyt jeden-strumień).
-- **Czego NIE rozstrzygnęliśmy (otwarte, wprost):** bezpieczeństwa ChaCha20
-  (założenie); statystycznego odczytu `deltaPRG` (trasa (a) zamknięta
-  twierdzeniem); granicy siewu A2, mostka bajtowego A3/A4, treści `keyIdent`
-  (B1.10/source3). Dodatkowo zapisane: przesłanki montażu `huc/hshape/hattempt`
-  należą do łańcucha gry idealnej starego eksportu — nowy łańcuch ich nie
-  zużywa, więc NIE są dalej zakładane (brak nadmiarowych założeń).
-- **Co ten wynik zmienia w projekcie:** ostatni szew B2/B5 jest domknięty —
-  publiczny opis może teraz uczciwie mówić o realnej grze strumieniowej z
-  warunkowym składnikiem obliczeniowym `deltaPRG` na dopuszczoną klasę testów
-  (z linią kosztów), oraz o redukcji EUF-CMA→MT-ISIS w dokładnym wzorze
-  `max 0 (a − sqrt(D·a·(1−a)))`.
-- **Następny krok:** niezależny odbiór okna (recenzent zewnętrzny), potem
-  koordynator importuje i commituje; równoległe tor B1/source3 niezależny.
-  Przy odbiorze warto sprawdzić odnotowane lekcje §7 (dopasowanie `match`
-  w matcherach zależnych, `bind_comm`-forma naturalna) — to najczęstsze
-  pułapki przy kolejnych oknach.
+## E4 — exact inverse, domain and clipped dominance
 
-Małe lokalne commity wykonane według promptu (`git commit --only` o własnych
-plikach), **bez push** (czekam na sygnał właściciela).
+For D >= 0, b in [0,1], and a <= 1, the ordinary-real formula is
+
+```text
+f(D,a) = 0                         if a <= D/(1+D)
+         a - sqrt(D*a*(1-a))       if D/(1+D) < a <= 1.
+```
+
+The upper branch has nonnegative radicand. In Lean the definition remains
+`phiInv D a = max 0 (a - Real.sqrt (D*a*(1-a)))`; `Real.sqrt` is total and
+zero on negative arguments. `phiInv_piecewise` proves the displayed form.
+`phi_inv_le` proves inversion, `phiInv_at_phi` proves exact equality
+`phiInv D (phi D b) = b`, and `phiInv_at_phi_zero` gives the boundary zero.
+
+For the public-simulation weakening, `a = epsilon_stream-deltaPRG-epsColl`.
+Its export proves a <= 1 and retains the cost conjunct; a can be negative.
+`phiInv_le_clipped_direct` proves
+
+```text
+phiInv D (epsilon_stream-deltaPRG-epsColl)
+  <= max 0 (epsilon_stream-deltaPRG),     provided epsColl >= 0.
+```
+
+The raw unclipped RHS need not dominate: epsilon=0, deltaPRG=1, epsColl=0,
+D=0 gives -1 versus inverse 0. The formula never asserts an inverse for a>1.
+
+## E5 — API and audit convention
+
+The three undocumented/nonexistent indicator-conversion names have been
+removed from code comments. `CompPRGBoundEvent` is a separate event-form
+definition; no conversion theorem is claimed. Complete new audits list
+every explicit definition/theorem/structure type plus each structure's
+constructor, recursor and projections. Counts and exact names are recorded
+in `.build/b2b5_e1e5_001/audit/INVENTORY.json`.
+
+Final API audit: **79/79 names** — CompPrg: 54 explicit declarations
+(including two structure types) + nine constructors/recursors/projections;
+AssemblyComp: 13 explicit declarations (including one structure type) + three
+constructors/recursors/projections. All use only subsets of
+`{propext, Classical.choice, Quot.sound}`. No requested name is missing.
+
+## Author verification and retained attempts
+
+Runtime evidence: `.build/b2b5_e1e5_001/`. All generated audit sources,
+HOME/TMPDIR, builds, logs and receipts live there. The guard is a byte-exact
+copy of `tools/original/run_lean_guarded.sh`; no project oleans were copied.
+The dependency closure has 66 local modules, with pinned archived sources.
+Inherited Lean 4.34.0 (commit `293d5d0c0c3f3dded4688b3ccd6a33939ac5102b`)
+and Mathlib cache (HEAD `5ed2965256430c3649e86755f9576b54eca72435`) are
+recorded in `inputs/ENVIRONMENT.json`.
+
+- `clean_001`: all 64 dependencies and CompPrg rebuilt successfully.
+  AssemblyComp had two name-resolution mismatches: the namespace-local
+  `add_le_add_right` orders addition differently. Both were corrected by
+  direct linear arithmetic. Source snapshots and full failed logs retained.
+- `own_002`: both owned modules exit 0, **empty logs (0 errors/0 warnings)**.
+- `own_003`: both exit 0, empty logs, after a comment-only clarification.
+  `own_004` is the final source-bound rebuild after correcting the reverse
+  hop's description: both exit 0, empty logs. Both earlier snapshots remain.
+- `audits_001`, then final `audits_002`: each **4/4 exit 0, 0 errors/0 warnings**.
+  Complete API audit
+  63+16 names; nine regression declarations with standard axioms only;
+  150 dependency answers with checked assertions. All 30 TV-dependency
+  answers are false. Certificate membership/cost projections and key-law
+  binding are present in their intended export dependency graphs.
+- `Run2.FiniteDist` retains its inherited informational `Try this: ring_nf`;
+  its dependency log is not empty. No warning suppression or source edit.
+- Kernel regression controls cover the True-only bypass, membership without
+  cost, class restriction versus TV, the inverse equivalence, negative levels
+  and failure of unclipped dominance. The dependency audit checks actual
+  certificate/key-binding usage and absence of TV intermediaries.
+- The first metadata summarizer excluded apostrophes in two valid Lean
+  names. Its failure and script are retained in `receipts/summary_001/`;
+  corrected parsing matches every raw audit entry. No Lean change or rerun
+  was needed for this receipt-parser correction.
+
+Final selected evidence is **66/66 rebuilt modules + four audits = 70/70
+successful steps**: 64 fresh dependency builds from `clean_001`, then the
+two final owned builds from `own_004`, then `audits_002`. Selected-step
+elapsed time: 102.569 s. Every current source, retained source snapshot,
+log and olean matches its receipt; all 64 read-only dependency pins match.
+The raw/code-only scan of all 66 final sources has zero unfinished-proof
+markers. `FINAL_EVIDENCE_002.json` records the selection rather than disguising
+the initial failed assembly build as successful.
+
+Reproduction commands from run2 (the prepare step requires a fresh runtime):
+
+```sh
+python3 -B .build/b2b5_e1e5_001/rebuild.py prepare
+python3 -B .build/b2b5_e1e5_001/rebuild.py build clean_001
+python3 -B .build/b2b5_e1e5_001/rebuild.py build own_004 --own
+python3 -B .build/b2b5_e1e5_001/make_audits.py
+python3 -B .build/b2b5_e1e5_001/rebuild.py build audits_002 \
+  --source audit/CompPrgCompleteAudit.lean --source audit/AssemblyCompCompleteAudit.lean \
+  --source audit/CorrectionControls.lean --source audit/DependencyAudit.lean
+```
+
+Existing run IDs preserve their artifacts and reject overwriting receipts.
+Each stored command uses the copied guard with 900 s compile / 1800 s wait.
+The inherited informational dependency log is separate from the empty
+owned-module logs; neither warnings nor errors were suppressed.
+
+### Final SHA256 pins
+
+| Artifact (relative to run2 unless noted) | SHA256 |
+|---|---|
+| `formal/CompPrg.lean` | `0b80f096cb6af0d77ef1762f58301af76dc94569e5c5cbcfeb690cc921876f3b` |
+| `formal/AssemblyComp.lean` | `b6112bef9c093439acdd7ee01b9aefa8f797b18738140e99306f045d25795929` |
+| `.build/b2b5_e1e5_001/FINAL_EVIDENCE_002.json` | `bf623c6a271e82e4566b48a7ddfdc86249903ff4f7d0ca151be0ace565937a89` |
+| `receipts/own_004/RECEIPT.json` (runtime-relative) | `8f704425f975b8a5c96ffc62d3636a9228cd966ff57e41329f0f05ee89275fc7` |
+| `receipts/audits_002/RECEIPT.json` (runtime-relative) | `41f9b152843caa9f58b25cfb82998d6db30321f5fb8efa8fca1e01a8f8298752` |
+
+Source checkpoint scope: exactly these three owned files on main, as
+`niirmataa`, local only under this task's NO-push contract. This is an
+author correction checkpoint, not REVIEWED or a stages import.
+
+## Ocena dla właściciela
+
+Najważniejsza poprawka to prawdziwy zakres: mamy warunkową redukcję **gry
+publicznego symulatora** i dokładne odwrócenie Phi. Koszt testu oraz
+identyfikacja wskazanych praw klucza są teraz obecne w typach i konsumowane.
+To usuwa pozorne założenia poprzedniego eksportu. Most od uczciwego Sign
+oraz użycie jego certyfikatu drugiego momentu pozostają otwarte; samo
+osłabienie przez Phi ich nie zastępuje. Następny krok: niezależny odbiór
+zmienionych typów, a następnie właściwy montaż uczciwej gry.

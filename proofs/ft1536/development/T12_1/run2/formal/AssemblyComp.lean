@@ -1,49 +1,32 @@
 import CompPrg
 
-/-! # AssemblyComp — window B2/B5: the real-stream export and the exact `Phi` inversion
+/-! # AssemblyComp — public-simulation bounds and the exact generalized Phi inverse
 
-Window B2/B5 of the run2 lane (`notes/PROMPT_B2B5_COMPUTATIONAL.md`,
-`formal/CompPrg.lean`). Deliverables of THIS module (kernel-checked, zero
-unfinished-proof markers, standard axioms only):
+B2/B5 corrections E1–E5. The principal export
+`advMT_ge_of_public_sim_stream_win` concerns `AdvPublicSimStream`, not honest
+`Games.AdvEUF`. It gives `AdvMT >= max 0 (epsilon_stream - deltaPRG)` together
+with the certified test-cost line. The hop consumes `CompPRGBound` directly,
+then `streamGame_uniform_eq_advMT` identifies the public fair-tape game.
 
-1. **The re-exported assembled bound with the REAL-STREAM game on the LHS**
-   (`end_to_end_stream_theorem`): `deltaPRG` arrives **via the hop**
-   (`CompPrg.stream_game_hop` — the `Assembly.tape_game_hop_abs` family at
-   the WINNING EVENT of `A`, for the admitted class) and the fair-tape side is
-   identified with `Games.AdvMT (beta.qh+1) muH (Reduction.build beta A S)`
-   (`CompPrg.streamGame_uniform_eq_advMT`, through
-   `Run2.concrete_lazy_game_binding`). The old export
-   (`Assembly.end_to_end_assembled_theorem_statement`) stays the abstract
-   honest-game shape; `formal/Assembly.lean` is untouched.
-2. **The exact `Phi` inversion** (`phiInv` / `phi_inv_le`) — the inverse
-   direction actually needed by the security claim: from
-   `a ≤ FT1536.EventTransfer.phi D b` with `0 ≤ D`, `0 ≤ b ≤ 1` one gets
-   `max 0 (a - sqrt(D * a * (1 - a))) ≤ b`. The review's
-   `max{0, a - sqrt(D*a*(1-a))}` is CHECKED against the repo's `phi`
-   (`EventTransfer.phi = (2*b+D+sqrt(D^2+4*D*b*(1-b)))/(2*(1+D))`) and is
-   the SHARP inverse (`EventTransfer.phi_satisfies` at equality,
-   `phiInv_at_phi_zero` at the boundary), not an estimate. The boundary
-   sanity `phi D 0 = D/(1+D)` is already present
-   (`EventTransfer.phi_at_zero`) and re-exported.
-3. **The security-claim export** (`advMT_ge_of_stream_win`): if the real
-   stream game is broken with advantage `epsilon_real`, then
-   `Adv_MT(Reduction.build beta A S) >= f(epsilon_real, D, deltaPRG, ...)`
-   with `f` the exact inversion above and
-   `a = epsilon_real - deltaPRG - StoppingLoss.epsColl beta`, `D = (1 + (k^32-1))
-   ^ beta.qs - 1` — plus the recorded direct companion
-   (`advMT_ge_of_stream_win_direct`), which this chain also yields and which
-   numerically dominates the `Phi`-form; the `Phi`-form is exported as the
-   requested exact inversion of the assembled SHAPE.
+The key laws on the two sides are explicit: the stream game uses `muEmitted`,
+the MT experiment uses `muKey`. `KeyLawBinding.identify hkey` supplies their
+equality and is used to rewrite the MT law. B1.10 owns the eventual exact
+proposition `keyIdent` AND its law-binding proof. Setting `keyIdent := True`
+does not supply a binding between arbitrary unequal key laws.
 
-Premise honesty (recorded): this chain consumes `hk` (the `D >= 0` side
-condition), the computational assumption + membership (`hcomp`/`hwin`) and
-`hkey`. The assembled named premises `huc`/`hshape`/`hattempt` belong to the
-honest-game chain of the OLD export (they discharge the B4 certificate there);
-carrying them here without consuming them would be over-assumption, so they
-are NOT part of the new argument list. `keyIdent` stays the exact-type slot of
-B1.10 (its content is owned by `source3`) and is consumed STRUCTURALLY (the
-`gate` pattern — the consumer proof is a function of `keyIdent`, so the final
-identification is its ONLY free point).
+The exports named `phi_weakening` are deliberately weaker consequences for
+PUBLIC SIMULATION, with arbitrary `D >= 0`. Here D is not a B4 certificate.
+The honest-game comparison instead consumes `LocalJointCertificate S e`
+through `Run2.concrete_euf_cma_to_mt_isis`, giving `D = (1+e)^beta.qs - 1`.
+The computational assembly still needs a tape-parametrized honest signer,
+its certified winning test, and a proved fair-tape binding to `Games.runEUF`.
+Only then can its hop be composed with that second-moment comparison.
+
+`phiInv` is total using Lean's `Real.sqrt` (zero on negative arguments).
+For D >= 0 and a <= 1 its ordinary-real presentation is
+0 if a <= D/(1+D), and a - sqrt(D*a*(1-a)) otherwise; the second branch has
+nonnegative radicand. The direct bound dominates this inverse only after
+clipping the direct bound at zero (`phiInv_le_clipped_direct`).
 -/
 
 namespace FT1536.AssemblyComp
@@ -57,7 +40,9 @@ review's `max{0, a - sqrt(D * a * (1 - a))}` shape, checked against the
 repo's `phi`. For `b ∈ [0,1]` and `D ≥ 0` the equation `a = phi D b` is
 solved exactly by `b = a - sqrt(D * a * (1 - a))` on its branch
 (`EventTransfer.phi_satisfies` with `EventTransfer.phi_ge_b`), clamped at
-zero below the boundary `phi D 0 = D/(1+D)`. -/
+zero below the boundary `phi D 0 = D/(1+D)`. `Real.sqrt` is total and is
+zero on negative arguments; `phiInv_piecewise` gives the ordinary-real
+formula for `D >= 0`, `a <= 1`. No inverse claim is made for `a > 1`. -/
 noncomputable def phiInv (D a : ℝ) : ℝ := max 0 (a - Real.sqrt (D * a * (1 - a)))
 
 /-- THE exact `Phi` inversion (kernelized): `a ≤ phi D b`, `0 ≤ D`,
@@ -142,187 +127,188 @@ theorem phi_at_zero_export {D : ℝ} (hD : 0 ≤ D) :
     EventTransfer.phi D 0 = D / (1 + D) :=
   EventTransfer.phi_at_zero hD
 
-/-! ## 2. The re-exported assembled bound — real-stream LHS, `deltaPRG` via the hop -/
+/-- Sharpness at every point of the Phi branch, not just its zero boundary. -/
+theorem phiInv_at_phi {D b : ℝ} (hD : 0 ≤ D) (hb0 : 0 ≤ b) (hb1 : b ≤ 1) :
+    phiInv D (EventTransfer.phi D b) = b := by
+  have hge := EventTransfer.phi_ge_b hD hb0 hb1
+  have hs : Real.sqrt (D * EventTransfer.phi D b * (1 - EventTransfer.phi D b)) =
+      EventTransfer.phi D b - b := by
+    rw [← EventTransfer.phi_satisfies hD hb0 hb1, Real.sqrt_sq_eq_abs,
+      abs_of_nonneg (sub_nonneg.mpr hge)]
+  simp only [phiInv, hs, sub_sub_cancel, max_eq_right hb0]
 
-/-- THE re-exported assembled bound (goal 2 of the task) with the REAL-STREAM
-game on the LHS and `deltaPRG` arriving VIA THE HOP:
+/-- Total, ordinary-real presentation on the inverse's domain `a <= 1`.
+The lower branch includes negative a; it requires no square root. -/
+theorem phiInv_piecewise {D a : ℝ} (hD : 0 ≤ D) (ha1 : a ≤ 1) :
+    phiInv D a = if a ≤ D / (1 + D) then 0 else a - Real.sqrt (D * a * (1 - a)) := by
+  by_cases ha : a ≤ D / (1 + D)
+  · have hle := phi_inv_le hD (le_refl (0 : ℝ)) (by norm_num : (0 : ℝ) ≤ 1)
+      (ha.trans_eq (EventTransfer.phi_at_zero hD).symm)
+    have hz : phiInv D a = 0 := le_antisymm hle (le_max_left _ _)
+    simp only [ha, ite_true, hz]
+  · have hden : 0 < 1 + D := by linarith
+    have ha0 : 0 ≤ a := (div_nonneg hD (le_of_lt hden)).trans (le_of_lt (lt_of_not_ge ha))
+    have hscale : D < a * (1 + D) := (div_lt_iff₀ hden).mp (lt_of_not_ge ha)
+    have hrad : 0 ≤ D * a * (1 - a) :=
+      mul_nonneg (mul_nonneg hD ha0) (sub_nonneg.mpr ha1)
+    have hmul := mul_le_mul_of_nonneg_left (show D * (1 - a) ≤ a by linarith) ha0
+    have hs := Real.sq_sqrt hrad
+    have hs0 := Real.sqrt_nonneg (D * a * (1 - a))
+    have hroot : Real.sqrt (D * a * (1 - a)) ≤ a := by nlinarith
+    simp only [ha, ite_false, phiInv, max_eq_right (sub_nonneg.mpr hroot)]
 
-    AdvEUFStream beta muH A S tau
-      <= min 1 (epsColl beta + EventTransfer.phi ((1+e)^beta.qs - 1)
-                  (AdvMT (beta.qh+1) muH (Reduction.build beta A S)))
-         + deltaPRG
-
-with `e = k^32 - 1`. The LHS experiment CHANGES TAPE (the signing oracle
-runs `Games.Sampler.code` on the real stream `tau` — one whole-run tape of
-width `tapeWidth beta S = beta.qs * S.bits` with per-call projection); the
-PRG budget `deltaPRG` enters through `CompPrg.stream_game_hop` under the
-named computational assumption `CompPRGBound C tau deltaPRG` and the
-MEMBERSHIP of the composed winning event (`CompWinCert.mem` with its resource
-accounting line), NOT as a bare `0 ≤ deltaPRG` appended to the ideal-game
-bound. The old export (`Assembly.end_to_end_assembled_theorem_statement`)
-stays the abstract honest-game shape. The `keyIdent` slot is consumed
-STRUCTURALLY (the `gate` pattern). -/
-theorem end_to_end_stream_theorem {SK : Type} [Fintype SK]
-    (beta : Budget) (muKey : Law (SK × Rq)) (A : ClassicalAdversary beta)
-    (S : Sampler) (k : ℝ)
-    (tau : Law (Fin (tapeWidth beta S) → Bool)) (deltaPRG : ℝ) (keyIdent : Prop)
-    (C : Set (CompTest (Fin (tapeWidth beta S) → Bool)))
-    (hk : 1 ≤ k)
-    (hkey : keyIdent)
-    (hcomp : CompPRGBound C tau deltaPRG)
-    (hwin : streamWinTest beta (SigmaMath.muH muKey) A S ∈ C) :
-    AdvEUFStream beta (SigmaMath.muH muKey) A S tau ≤
-      min 1 (StoppingLoss.epsColl beta +
-        EventTransfer.phi ((1 + (k ^ 32 - 1)) ^ beta.qs - 1)
-          (Games.AdvMT (beta.qh + 1) (SigmaMath.muH muKey)
-            (Reduction.build beta A S)))
-      + deltaPRG := by
-  have gate : keyIdent → AdvEUFStream beta (SigmaMath.muH muKey) A S tau ≤
-      min 1 (StoppingLoss.epsColl beta +
-        EventTransfer.phi ((1 + (k ^ 32 - 1)) ^ beta.qs - 1)
-          (Games.AdvMT (beta.qh + 1) (SigmaMath.muH muKey)
-            (Reduction.build beta A S)))
-      + deltaPRG := by
-    intro _hkey
-    -- (1) THE hop: the real-stream game within `deltaPRG` of the fair-tape game
-    have hhop := stream_game_hop beta (SigmaMath.muH muKey) A S C tau deltaPRG hcomp hwin
-    -- (2) the fair-tape side IS the reducer's success game
-    have hident : AdvEUFStream beta (SigmaMath.muH muKey) A S
-          (Law.uniform : Law (Fin (tapeWidth beta S) → Bool))
-        = Games.AdvMT (beta.qh + 1) (SigmaMath.muH muKey)
-          (Reduction.build beta A S) :=
-      streamGame_uniform_eq_advMT beta (SigmaMath.muH muKey) A S
-    rw [hident] at hhop
-    set b : ℝ := Games.AdvMT (beta.qh + 1) (SigmaMath.muH muKey)
-      (Reduction.build beta A S)
-    set D : ℝ := (1 + (k ^ 32 - 1)) ^ beta.qs - 1
-    have hb0 : 0 ≤ b := Dist.event_nonneg _ _
-    have hb1 : b ≤ 1 := Dist.event_le_one _ _
-    have hk32 : (1:ℝ) ≤ k ^ 32 := one_le_pow₀ hk
-    have hD : 0 ≤ D := by
-      have h1 : (1:ℝ) ≤ (1 + (k ^ 32 - 1)) ^ beta.qs :=
-        one_le_pow₀ (show (1:ℝ) ≤ 1 + (k ^ 32 - 1) by linarith [hk32])
-      unfold D
-      linarith
-    have hcol : (0:ℝ) ≤ StoppingLoss.epsColl beta :=
-      le_min (by norm_num) (StoppingLoss.loss_nonnegative beta.qs beta.qh 0)
-    -- (3) the assembled shape at the same `AdvMT` argument
-    have hbase : b ≤ EventTransfer.phi D b :=
-      EventTransfer.phi_ge_b hD hb0 hb1
-    have hmt : b ≤ min 1 (StoppingLoss.epsColl beta + EventTransfer.phi D b) := by
-      refine le_min hb1 ?_
-      linarith
-    linarith
-  exact gate hkey
-
-/-- The `concrete_hardness_substitution`-style variant of the real-stream
-export: plug an `AdvMT` bound `epsilon ≤ 1` for the concrete reducer. -/
-theorem end_to_end_stream_hardness_substitution {SK : Type} [Fintype SK]
-    (beta : Budget) (muKey : Law (SK × Rq)) (A : ClassicalAdversary beta)
-    (S : Sampler) (k : ℝ)
-    (tau : Law (Fin (tapeWidth beta S) → Bool)) (deltaPRG : ℝ) (keyIdent : Prop)
-    (C : Set (CompTest (Fin (tapeWidth beta S) → Bool))) (epsilon : ℝ)
-    (hk : 1 ≤ k)
-    (hkey : keyIdent)
-    (hcomp : CompPRGBound C tau deltaPRG)
-    (hwin : streamWinTest beta (SigmaMath.muH muKey) A S ∈ C)
-    (hepsilon : epsilon ≤ 1)
-    (hardness : Games.AdvMT (beta.qh + 1) (SigmaMath.muH muKey)
-      (Reduction.build beta A S) ≤ epsilon) :
-    AdvEUFStream beta (SigmaMath.muH muKey) A S tau ≤
-      min 1 (StoppingLoss.epsColl beta +
-        EventTransfer.phi ((1 + (k ^ 32 - 1)) ^ beta.qs - 1) epsilon)
-      + deltaPRG := by
-  have hbound := end_to_end_stream_theorem beta muKey A S k tau deltaPRG keyIdent C
-    hk hkey hcomp hwin
-  have hk32 : (1:ℝ) ≤ k ^ 32 := one_le_pow₀ hk
-  have hD : (0:ℝ) ≤ (1 + (k ^ 32 - 1)) ^ beta.qs - 1 := by
-    have h1 : (1:ℝ) ≤ (1 + (k ^ 32 - 1)) ^ beta.qs :=
-      one_le_pow₀ (show (1:ℝ) ≤ 1 + (k ^ 32 - 1) by linarith [hk32])
-    linarith
-  have hb0 : (0:ℝ) ≤ Games.AdvMT (beta.qh + 1) (SigmaMath.muH muKey)
-      (Reduction.build beta A S) := Dist.event_nonneg _ _
-  have hmono := EventTransfer.phi_mono hD hb0 hardness hepsilon
-  have hmin : min 1 (StoppingLoss.epsColl beta +
-      EventTransfer.phi ((1 + (k ^ 32 - 1)) ^ beta.qs - 1)
-        (Games.AdvMT (beta.qh + 1) (SigmaMath.muH muKey) (Reduction.build beta A S)))
-      ≤ min 1 (StoppingLoss.epsColl beta +
-        EventTransfer.phi ((1 + (k ^ 32 - 1)) ^ beta.qs - 1) epsilon) := by
-    apply min_le_min
-    · linarith
-    · linarith
+/-- The direct lower bound dominates the inverse only with clipping at zero.
+This comparison uses total `Real.sqrt` and holds even for negative a. -/
+theorem phiInv_le_clipped_direct (D epsilon delta epsColl : ℝ) (hcol : 0 ≤ epsColl) :
+    phiInv D (epsilon - delta - epsColl) ≤ max 0 (epsilon - delta) := by
+  apply max_le (le_max_left _ _)
+  have hs := Real.sqrt_nonneg (D * (epsilon - delta - epsColl) *
+    (1 - (epsilon - delta - epsColl)))
+  have hd := le_max_right (0 : ℝ) (epsilon - delta)
   linarith
 
-/-! ## 3. The security-claim export: `Adv_MT(B) >= f(epsilon_real, D, deltaPRG, ...)` -/
+/-! ## 2. Exact key-law binding and the principal public-simulation exports -/
 
-/-- THE inverse direction actually needed by the security claim (goal 3 of
-the task): if the REAL-STREAM game is broken with advantage at least
-`epsilon_real`, then the MT-ISIS adversary `B = Reduction.build beta A S`
-satisfies
+/-- Consumer interface for B1.10's exact proposition. Its conclusion names
+the two key laws used below; a proof of `keyIdent` must yield their equality.
+The source-to-law identification is an explicit open premise, not inferred
+from a free proposition or from naming a law `muEmitted`. -/
+structure KeyLawBinding {SK : Type} [Fintype SK] (keyIdent : Prop)
+    (muEmitted muKey : Law (SK × Rq)) : Prop where
+  identify : keyIdent → muEmitted = muKey
 
-    Adv_MT(B) >= max 0 (a - sqrt(D * a * (1 - a))),
-    a = epsilon_real - deltaPRG - StoppingLoss.epsColl beta,
-    D = (1 + (k^32 - 1)) ^ beta.qs - 1,
-
-with `e = k^32 - 1` the certificate constant — the EXACT inversion of
-`FT1536.EventTransfer.phi` (`phiInv` / `phi_inv_le`), obtained as the
-contrapositive of `end_to_end_stream_theorem`. -/
-theorem advMT_ge_of_stream_win {SK : Type} [Fintype SK]
-    (beta : Budget) (muKey : Law (SK × Rq)) (A : ClassicalAdversary beta)
-    (S : Sampler) (k : ℝ)
-    (tau : Law (Fin (tapeWidth beta S) → Bool)) (deltaPRG : ℝ) (keyIdent : Prop)
-    (C : Set (CompTest (Fin (tapeWidth beta S) → Bool))) (epsilon_real : ℝ)
-    (hk : 1 ≤ k)
-    (hkey : keyIdent)
-    (hcomp : CompPRGBound C tau deltaPRG)
-    (hwin : streamWinTest beta (SigmaMath.muH muKey) A S ∈ C)
-    (hbreak : epsilon_real ≤ AdvEUFStream beta (SigmaMath.muH muKey) A S tau) :
-    phiInv ((1 + (k ^ 32 - 1)) ^ beta.qs - 1)
-        (epsilon_real - deltaPRG - StoppingLoss.epsColl beta)
-      ≤ Games.AdvMT (beta.qh + 1) (SigmaMath.muH muKey) (Reduction.build beta A S) := by
-  have hbound := end_to_end_stream_theorem beta muKey A S k tau deltaPRG keyIdent C
-    hk hkey hcomp hwin
-  set b : ℝ := Games.AdvMT (beta.qh + 1) (SigmaMath.muH muKey)
-    (Reduction.build beta A S)
-  set D : ℝ := (1 + (k ^ 32 - 1)) ^ beta.qs - 1
-  have hk32 : (1:ℝ) ≤ k ^ 32 := one_le_pow₀ hk
-  have hD : 0 ≤ D := by
-    have h1 : (1:ℝ) ≤ (1 + (k ^ 32 - 1)) ^ beta.qs :=
-      one_le_pow₀ (show (1:ℝ) ≤ 1 + (k ^ 32 - 1) by linarith [hk32])
-    unfold D
-    linarith
-  have hb0 : 0 ≤ b := Dist.event_nonneg _ _
-  have hb1 : b ≤ 1 := Dist.event_le_one _ _
-  have hphi : epsilon_real - deltaPRG - StoppingLoss.epsColl beta
-      ≤ EventTransfer.phi D b := by
-    have hmin := le_trans hbreak hbound
-    have hle : min 1 (StoppingLoss.epsColl beta + EventTransfer.phi D b)
-        ≤ StoppingLoss.epsColl beta + EventTransfer.phi D b := min_le_right _ _
-    linarith
-  exact phi_inv_le hD hb0 hb1 hphi
-
-/-- Recorded companion of the inversion (this chain ALSO yields it): the hop
-lands directly on `Adv_MT(B)`, so `Adv_MT(B) >= epsilon_real - deltaPRG`.
-Numerically this dominates the `Phi`-form above; the `Phi`-form is exported
-as the requested exact inversion of the assembled SHAPE and is the form that
-keeps the certificate factor `D = (1 + e)^beta.qs - 1` visible. -/
-theorem advMT_ge_of_stream_win_direct {SK : Type} [Fintype SK]
-    (beta : Budget) (muKey : Law (SK × Rq)) (A : ClassicalAdversary beta)
-    (S : Sampler)
-    (tau : Law (Fin (tapeWidth beta S) → Bool)) (deltaPRG : ℝ)
+/-- Principal upper bound for PUBLIC SIMULATION, with certified test cost.
+The only key-law identification occurs in the rewrite using `binding` and
+`hkey`; the PRG term enters through the admitted-class hop. -/
+theorem public_sim_stream_bound {SK : Type} [Fintype SK]
+    (beta : Budget) (muEmitted muKey : Law (SK × Rq)) (A : ClassicalAdversary beta)
+    (S : Sampler) (tau : Law (Fin (tapeWidth beta S) → Bool)) (deltaPRG : ℝ)
+    (keyIdent : Prop) (binding : KeyLawBinding keyIdent muEmitted muKey)
     (C : Set (CompTest (Fin (tapeWidth beta S) → Bool)))
-    (hcomp : CompPRGBound C tau deltaPRG)
-    (hwin : streamWinTest beta (SigmaMath.muH muKey) A S ∈ C)
-    (epsilon_real : ℝ)
-    (hbreak : epsilon_real ≤ AdvEUFStream beta (SigmaMath.muH muKey) A S tau) :
-    epsilon_real - deltaPRG ≤ Games.AdvMT (beta.qh + 1) (SigmaMath.muH muKey)
-      (Reduction.build beta A S) := by
-  have hhop := stream_game_hop beta (SigmaMath.muH muKey) A S C tau deltaPRG hcomp hwin
-  have hident : AdvEUFStream beta (SigmaMath.muH muKey) A S
-        (Law.uniform : Law (Fin (tapeWidth beta S) → Bool))
-      = Games.AdvMT (beta.qh + 1) (SigmaMath.muH muKey) (Reduction.build beta A S) :=
-    streamGame_uniform_eq_advMT beta (SigmaMath.muH muKey) A S
+    (cost : CompTest (Fin (tapeWidth beta S) → Bool) → ℝ) (TA blockCost : ℝ)
+    (hkey : keyIdent) (hcomp : CompPRGBound C tau deltaPRG)
+    (hcert : CompWinCert C cost (streamWinTest beta (SigmaMath.muH muEmitted) A S)
+      TA blockCost (AdvPrg.chachaBlocksTotal beta S)) :
+    (AdvPublicSimStream beta (SigmaMath.muH muEmitted) A S tau ≤
+      Games.AdvMT (beta.qh + 1) (SigmaMath.muH muKey) (Reduction.build beta A S) + deltaPRG) ∧
+    cost (streamWinTest beta (SigmaMath.muH muEmitted) A S) ≤
+      TA + AdvPrg.chachaBlocksTotal beta S * blockCost := by
+  obtain ⟨hhop, hcost⟩ := stream_game_hop beta (SigmaMath.muH muEmitted) A S C tau
+    deltaPRG cost TA blockCost hcomp hcert
+  have hident : AdvPublicSimStream beta (SigmaMath.muH muEmitted) A S Law.uniform =
+      Games.AdvMT (beta.qh + 1) (SigmaMath.muH muKey) (Reduction.build beta A S) := by
+    change (streamGame beta (SigmaMath.muH muEmitted) A S Law.uniform).event _ = _
+    rw [streamGame_uniform_eq_advMT, binding.identify hkey]
   rw [hident] at hhop
-  linarith
+  exact ⟨hhop, hcost⟩
+
+/-- Hardness substitution for PUBLIC SIMULATION and the same cost contract. -/
+theorem public_sim_stream_hardness_substitution {SK : Type} [Fintype SK]
+    (beta : Budget) (muEmitted muKey : Law (SK × Rq)) (A : ClassicalAdversary beta)
+    (S : Sampler) (tau : Law (Fin (tapeWidth beta S) → Bool)) (deltaPRG : ℝ)
+    (keyIdent : Prop) (binding : KeyLawBinding keyIdent muEmitted muKey)
+    (C : Set (CompTest (Fin (tapeWidth beta S) → Bool)))
+    (cost : CompTest (Fin (tapeWidth beta S) → Bool) → ℝ) (TA blockCost : ℝ)
+    (hkey : keyIdent) (hcomp : CompPRGBound C tau deltaPRG)
+    (hcert : CompWinCert C cost (streamWinTest beta (SigmaMath.muH muEmitted) A S)
+      TA blockCost (AdvPrg.chachaBlocksTotal beta S))
+    (epsilonMT : ℝ)
+    (hardness : Games.AdvMT (beta.qh + 1) (SigmaMath.muH muKey)
+      (Reduction.build beta A S) ≤ epsilonMT) :
+    (AdvPublicSimStream beta (SigmaMath.muH muEmitted) A S tau ≤ epsilonMT + deltaPRG) ∧
+    cost (streamWinTest beta (SigmaMath.muH muEmitted) A S) ≤
+      TA + AdvPrg.chachaBlocksTotal beta S * blockCost := by
+  obtain ⟨hbound, hcost⟩ := public_sim_stream_bound beta muEmitted muKey A S tau deltaPRG
+    keyIdent binding C cost TA blockCost hkey hcomp hcert
+  exact ⟨by linarith, hcost⟩
+
+/-- MAIN reduction form for PUBLIC SIMULATION. `epsilon_stream` lower-bounds
+this experiment's win probability, not `Games.AdvEUF`. No D is needed. -/
+theorem advMT_ge_of_public_sim_stream_win {SK : Type} [Fintype SK]
+    (beta : Budget) (muEmitted muKey : Law (SK × Rq)) (A : ClassicalAdversary beta)
+    (S : Sampler) (tau : Law (Fin (tapeWidth beta S) → Bool)) (deltaPRG : ℝ)
+    (keyIdent : Prop) (binding : KeyLawBinding keyIdent muEmitted muKey)
+    (C : Set (CompTest (Fin (tapeWidth beta S) → Bool)))
+    (cost : CompTest (Fin (tapeWidth beta S) → Bool) → ℝ) (TA blockCost : ℝ)
+    (hkey : keyIdent) (hcomp : CompPRGBound C tau deltaPRG)
+    (hcert : CompWinCert C cost (streamWinTest beta (SigmaMath.muH muEmitted) A S)
+      TA blockCost (AdvPrg.chachaBlocksTotal beta S))
+    (epsilon_stream : ℝ)
+    (hbreak : epsilon_stream ≤ AdvPublicSimStream beta (SigmaMath.muH muEmitted) A S tau) :
+    (max 0 (epsilon_stream - deltaPRG) ≤
+      Games.AdvMT (beta.qh + 1) (SigmaMath.muH muKey) (Reduction.build beta A S)) ∧
+    cost (streamWinTest beta (SigmaMath.muH muEmitted) A S) ≤
+      TA + AdvPrg.chachaBlocksTotal beta S * blockCost := by
+  obtain ⟨hbound, hcost⟩ := public_sim_stream_bound beta muEmitted muKey A S tau deltaPRG
+    keyIdent binding C cost TA blockCost hkey hcomp hcert
+  exact ⟨max_le (Dist.event_nonneg _ _) (by linarith), hcost⟩
+
+/-! ## 3. Explicitly redundant Phi weakenings for the same public experiment -/
+
+/-- Weaker upper bound for PUBLIC SIMULATION. `D >= 0` is arbitrary;
+`b <= phi D b` is only a weakening, not a second-moment comparison with
+honest Sign. In particular D=0 is allowed independently of S. -/
+theorem public_sim_stream_phi_weakening {SK : Type} [Fintype SK]
+    (beta : Budget) (muEmitted muKey : Law (SK × Rq)) (A : ClassicalAdversary beta)
+    (S : Sampler) (tau : Law (Fin (tapeWidth beta S) → Bool)) (deltaPRG : ℝ)
+    (keyIdent : Prop) (binding : KeyLawBinding keyIdent muEmitted muKey)
+    (C : Set (CompTest (Fin (tapeWidth beta S) → Bool)))
+    (cost : CompTest (Fin (tapeWidth beta S) → Bool) → ℝ) (TA blockCost : ℝ)
+    (hkey : keyIdent) (hcomp : CompPRGBound C tau deltaPRG)
+    (hcert : CompWinCert C cost (streamWinTest beta (SigmaMath.muH muEmitted) A S)
+      TA blockCost (AdvPrg.chachaBlocksTotal beta S)) (D : ℝ) (hD : 0 ≤ D) :
+    (AdvPublicSimStream beta (SigmaMath.muH muEmitted) A S tau ≤
+      min 1 (StoppingLoss.epsColl beta + EventTransfer.phi D
+        (Games.AdvMT (beta.qh + 1) (SigmaMath.muH muKey) (Reduction.build beta A S)))
+      + deltaPRG) ∧
+    cost (streamWinTest beta (SigmaMath.muH muEmitted) A S) ≤
+      TA + AdvPrg.chachaBlocksTotal beta S * blockCost := by
+  obtain ⟨hbound, hcost⟩ := public_sim_stream_bound beta muEmitted muKey A S tau deltaPRG
+    keyIdent binding C cost TA blockCost hkey hcomp hcert
+  have hb0 : 0 ≤ Games.AdvMT (beta.qh + 1) (SigmaMath.muH muKey)
+      (Reduction.build beta A S) := Dist.event_nonneg _ _
+  have hb1 : Games.AdvMT (beta.qh + 1) (SigmaMath.muH muKey)
+      (Reduction.build beta A S) ≤ 1 := Dist.event_le_one _ _
+  have hcol : (0 : ℝ) ≤ StoppingLoss.epsColl beta :=
+    le_min (by norm_num) (StoppingLoss.loss_nonnegative beta.qs beta.qh 0)
+  have hphi := EventTransfer.phi_ge_b hD hb0 hb1
+  have hmt : Games.AdvMT (beta.qh + 1) (SigmaMath.muH muKey) (Reduction.build beta A S) ≤
+      min 1 (StoppingLoss.epsColl beta + EventTransfer.phi D
+        (Games.AdvMT (beta.qh + 1) (SigmaMath.muH muKey) (Reduction.build beta A S))) :=
+    le_min hb1 (by linarith)
+  exact ⟨by linarith, hcost⟩
+
+/-- Exact inversion of the PUBLIC-SIMULATION weakening. The principal direct
+bound above dominates this one after clipping at zero. This export also
+records `a <= 1`, the domain of `phiInv_piecewise`; a may be negative. -/
+theorem advMT_ge_of_public_sim_stream_win_phi_weakening {SK : Type} [Fintype SK]
+    (beta : Budget) (muEmitted muKey : Law (SK × Rq)) (A : ClassicalAdversary beta)
+    (S : Sampler) (tau : Law (Fin (tapeWidth beta S) → Bool)) (deltaPRG : ℝ)
+    (keyIdent : Prop) (binding : KeyLawBinding keyIdent muEmitted muKey)
+    (C : Set (CompTest (Fin (tapeWidth beta S) → Bool)))
+    (cost : CompTest (Fin (tapeWidth beta S) → Bool) → ℝ) (TA blockCost : ℝ)
+    (hkey : keyIdent) (hcomp : CompPRGBound C tau deltaPRG)
+    (hcert : CompWinCert C cost (streamWinTest beta (SigmaMath.muH muEmitted) A S)
+      TA blockCost (AdvPrg.chachaBlocksTotal beta S)) (D : ℝ) (hD : 0 ≤ D)
+    (epsilon_stream : ℝ)
+    (hbreak : epsilon_stream ≤ AdvPublicSimStream beta (SigmaMath.muH muEmitted) A S tau) :
+    (phiInv D (epsilon_stream - deltaPRG - StoppingLoss.epsColl beta) ≤
+      Games.AdvMT (beta.qh + 1) (SigmaMath.muH muKey) (Reduction.build beta A S)) ∧
+    (epsilon_stream - deltaPRG - StoppingLoss.epsColl beta ≤ 1) ∧
+    cost (streamWinTest beta (SigmaMath.muH muEmitted) A S) ≤
+      TA + AdvPrg.chachaBlocksTotal beta S * blockCost := by
+  obtain ⟨hbound, hcost⟩ := public_sim_stream_phi_weakening beta muEmitted muKey A S tau
+    deltaPRG keyIdent binding C cost TA blockCost hkey hcomp hcert D hD
+  have hb0 : 0 ≤ Games.AdvMT (beta.qh + 1) (SigmaMath.muH muKey)
+      (Reduction.build beta A S) := Dist.event_nonneg _ _
+  have hb1 : Games.AdvMT (beta.qh + 1) (SigmaMath.muH muKey)
+      (Reduction.build beta A S) ≤ 1 := Dist.event_le_one _ _
+  have hphi : epsilon_stream - deltaPRG - StoppingLoss.epsColl beta ≤
+      EventTransfer.phi D
+        (Games.AdvMT (beta.qh + 1) (SigmaMath.muH muKey) (Reduction.build beta A S)) := by
+    have hmin := min_le_right (1 : ℝ) (StoppingLoss.epsColl beta + EventTransfer.phi D
+      (Games.AdvMT (beta.qh + 1) (SigmaMath.muH muKey) (Reduction.build beta A S)))
+    linarith
+  exact ⟨phi_inv_le hD hb0 hb1 hphi, hphi.trans (EventTransfer.phi_le_one hD hb0 hb1), hcost⟩
 
 end FT1536.AssemblyComp
