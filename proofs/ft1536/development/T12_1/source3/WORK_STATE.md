@@ -1,5 +1,27 @@
 # T12.1/source3 — żywy stan
 
+## B1.03 stage (c) — row laws and layout in progress — 2026-10-06
+
+Owner-scoped window: stage (c) only; BATCH_015/016 and 364 current inputs
+of the final R2 audit match. Preflight: `.build/mkgm3_rows_017/PREFLIGHT.json`
+(`40445fdd9597426d93a942030f6f6e2abe6a8cf5e1ca415933d9529e3af125c6`).
+Harness: GPT-6 Astra Ultrafast; runner labels remain historical.
+
+First checked components: `KeygenMkgm3Rows` (job `keygen_mkgm3_rows_004`)
+transports the earlier generator certificates into actual ZMod orders
+9216/4608 and proves scaled product/square/cube and last-pair laws from
+source calls, with the initial root conversion consuming BATCH_016.
+`KeygenMkgm3Layout` (job `keygen_mkgm3_layout_004`) binds and executes the
+four caller pointer aliases, derives the 7168-word/28672-byte required
+extent, table/output separation and preservation of gm and original input
+bytes through the actual coefficient-conversion loop (`igm=ft`). Both
+jobs have clean 0/0 logs. The allocation predicate is legal caller memory,
+not a proof of the enclosing allocator; B1.07 supplies that caller frame.
+
+Still in progress: source mkgm3 execution-to-row invariant, REV10 address
+laws and final initialized table theorem. Scalar call lemmas alone do not
+meet B1.03 Acceptance. No owned background job, review or push.
+
 ## B1.03 stage (b) — source modp_R2 value law CLOSED — 2026-10-06
 
 **ACTIVE / KEYGEN_SOURCE_TO_FIBER_001 IN_PROGRESS / NOT_REVIEWED.**
