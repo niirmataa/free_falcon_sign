@@ -1,5 +1,28 @@
 # T12.1/source3 — żywy stan
 
+## B1.04 — source NTT values and polynomial invariants — 2026-10-07
+
+Owner-scoped B1.04 window, GPT-6 Astra Ultrafast. B1.03 Acceptance is
+recorded by `0a72596b` in `run2/notes/B4_SYNTHESIS.md`. Resume preflight
+verified the BATCH_015/016/017 pairs, their module/evidence pins and all
+382 current inputs of `keygen_mkgm3_contract_002`: 1031 distinct file checks,
+no active proof job. `.build/ntt_values_018/PREFLIGHT.json`, SHA256
+`cffb1bdd4684ffe06da48b4bf98d1c6c83ade8faf1879eef786de83ac88cc18f`.
+The checkpoint's resume protocol is now section 5 (formerly section 6).
+
+`KeygenNttCells` now derives canonical ordinary-residue cells, the exact
+first/binary/triple formulas in physical store order, and preservation of
+disjoint cells from the existing source butterfly executions. Accepted
+`keygen_ntt_cells_002` (1.568s, 0/0 logs); the first failed elaboration is
+retained. Twiddle values/ranges and input cells are explicit local inputs,
+to be supplied by table/conversion and pass invariants.
+
+In progress: first-pass composition and its polynomial invariant.
+The remaining radix-2/triple composition, physical evaluation order and
+1536-root injectivity remain B1.04 obligations. `t*m=n` is permitted only
+in this stage. Small local commits use the shared writer lock; the package
+remains IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.
+
 ## B1.03 stage (c) — source row laws CLOSED — 2026-10-06
 
 **KEYGEN_SOURCE_TO_FIBER_001 IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
