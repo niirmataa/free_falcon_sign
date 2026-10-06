@@ -93,11 +93,16 @@ def montZB : Expr := .call4 "modp_montymul".toList
   (.scalar (.var "z".toList)) (.scalar (.var "b".toList))
   (.scalar (.var "p".toList)) (.scalar (.var "p0i".toList))
 
+/- Right-hand side of the compound update `z ^= ...`: exactly
+   `(z ^ z2) & -(uint32_t)((e >> i) & 1)`; the update form contributes the
+   outer xor with z (the previous tree wrongly carried a second outer
+   `xor z`, which is the single parser<->divCode mismatch found by probe
+   keygen_mkgm3_div_probe_001; retained dumps in its job logs). -/
 def divSelect : CLogic.Expr :=
-  .bin .xor (.var "z".toList) (.bin .band
+  .bin .band
     (.bin .xor (.var "z".toList) (.var "z2".toList))
     (.neg (.cast .u32 (.bin .band (.bin .shr (.var "e".toList) (.var "i".toList))
-      (.literal .i32 1)))))
+      (.literal .i32 1))))
 
 def divLoopBody : Stmt := .scope ["z2".toList] (chainOf [
   .base (.scalar (.declare .u32 ["z2".toList])),
