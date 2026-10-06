@@ -33,7 +33,7 @@ theorem complete (arrays : Arrays) (code : Stmt) (before : State) (result : Resu
     result.flow=.normal ∧ Inputs arrays result.state ∧ result.state.arrays=before.arrays ∧
       Trace arrays i before.heap result.state.heap := by
   induction source generalizing i with
-  | base | assign | store32 | seqNormal | seqExit | scope | branchTrue | branchFalse | ret | retVoid => cases shape
+  | base | assign | store32 | storeRev | seqNormal | seqExit | scope | branchTrue | branchFalse | ret | retVoid => cases shape
   | loopFalse condition body increment before v guard zero =>
       cases shape
       exact ⟨rfl,inputs,rfl,.done i before.heap (C99CountedWords.guard_false before i v hi counter inputs.size guard zero)⟩

@@ -12,11 +12,14 @@ def expression (names : List Name) : Expr → Expr
   | .call2 name a b => .call2 name (expression names a) (expression names b)
   | .call3 name a b c => .call3 name (expression names a) (expression names b) (expression names c)
   | .call4 name a b c d => .call4 name (expression names a) (expression names b) (expression names c) (expression names d)
+  | .call5 name a b c d e => .call5 name (expression names a) (expression names b)
+      (expression names c) (expression names d) (expression names e)
   | e => e
 def statement (names : List Name) : Stmt → Stmt
   | .base code => .base code
   | .assign name e => .assign name (expression names e)
   | .store32 name index e => .store32 name index (expression names e)
+  | .storeRev name table base index e => .storeRev name table base index (expression names e)
   | .seq a b => .seq (statement names a) (statement names b)
   | .scope locals body => .scope locals (statement names body)
   | .branch condition yes no => .branch condition (statement names yes) (statement names no)

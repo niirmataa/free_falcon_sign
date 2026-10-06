@@ -53,6 +53,11 @@ def expr : Nat → List Token → Option (Expr×List Token)
                     let (d,rest) ← expr fuel rest
                     match rest with
                     | [')']::rest => pure (.call4 name a b c d,rest)
+                    | [',']::rest => do
+                        let (e,rest) ← expr fuel rest
+                        match rest with
+                        | [')']::rest => pure (.call5 name a b c d e,rest)
+                        | _ => none
                     | _ => none
                 | _ => none
             | _ => none
@@ -63,6 +68,36 @@ def chain : List Stmt → Stmt
   | [] => .base .skip
   | first::rest => .seq first (chain rest)
 
+/- The only mixed index shape used by the pinned sources: a uint16 read from
+   the read-only REV10 table inside a size_t index expression, as in
+   `gm[b + REV10[u << k]] = x;`. Accepted form:
+   `base + REV10[index]] = value;` where the first `]` closes REV10 and the
+   second closes the destination array. -/
+def revStoreTail : List Token → Option (CLogic.Expr×CLogic.Expr×Expr×List Token)
+  | ts => do
+      let (base,rest) ← C99ArrayParser.pureExpr ts
+      match rest with
+      | ['+']::['R','E','V','1','0']::['[']::rest => do
+          let (index,rest) ← C99ArrayParser.pureExpr rest
+          match rest with
+          | [']']::[']']::['=']::rest => do
+              let (value,rest) ← expr 32 rest
+              match rest with
+              | [';']::rest => some (base,index,value,rest)
+              | _ => none
+          | _ => none
+      | _ => none
+
+/- Comparison spelling for the while-condition shape below. -/
+def cmpToken : Token → Option CLogic.Cmp
+  | ['<'] => some .lt
+  | ['>'] => some .gt
+  | ['<','='] => some .le
+  | ['>','='] => some .ge
+  | ['=','='] => some .eq
+  | ['!','='] => some .ne
+  | _ => none
+
 /- One for-clause: scalar assign/update with its ordinary expression, or
    pointer assignment/advance when the destination is a known pointer. A
    pointer increment is rejected rather than mis-parsed as scalar update. -/
@@ -70,6 +105,9 @@ def clause (ctx : Context) : List Token → Option (Stmt×List Token)
   | name::['+','+']::rest =>
       if ctx.contains name then none else
         some (.base (.scalar (.update name .add (.literal .i32 1))),rest)
+  | name::['-']::['-']::rest =>
+      if ctx.contains name then none else
+        some (.base (.scalar (.update name .sub (.literal .i32 1))),rest)
   | name::op::rest =>
       if ctx.contains name then
         (match op with
@@ -106,6 +144,17 @@ def clauses (ctx : Context) (ending : Token) : Nat → List Token → Option (St
 
 def simple (ctx : Context) : List Token → Option (Stmt×Context×List Token)
   | ['r','e','t','u','r','n']::[';']::rest => pure (.retVoid,ctx,rest)
+  | ['r','e','t','u','r','n']::rest => do
+      let (e,rest) ← expr 32 rest
+      match rest with
+      | [';']::rest => pure (.ret e,ctx,rest)
+      | _ => none
+  | name::['+','+']::[';']::rest =>
+      if ctx.contains name then none else
+        some (.base (.scalar (.update name .add (.literal .i32 1))),ctx,rest)
+  | name::['-']::['-']::[';']::rest =>
+      if ctx.contains name then none else
+        some (.base (.scalar (.update name .sub (.literal .i32 1))),ctx,rest)
   | ['*']::rest => do
       let (name,index,rest) ← dereference rest
       match rest with
@@ -115,15 +164,19 @@ def simple (ctx : Context) : List Token → Option (Stmt×Context×List Token)
           | [';']::rest => pure (.store32 name index e,ctx,rest)
           | _ => none
       | _ => none
-  | name::['[']::rest => do
-      let (index,rest) ← C99ArrayParser.pureExpr rest
-      match rest with
-      | [']']::['=']::rest => do
-          let (e,rest) ← expr 32 rest
+  | name::['[']::rest =>
+      match revStoreTail rest with
+      | some (base,index,value,tail) =>
+          some (.storeRev name "REV10".toList base index value,ctx,tail)
+      | none => do
+          let (index,rest) ← C99ArrayParser.pureExpr rest
           match rest with
-          | [';']::rest => pure (.store32 name index e,ctx,rest)
+          | [']']::['=']::rest => do
+              let (e,rest) ← expr 32 rest
+              match rest with
+              | [';']::rest => pure (.store32 name index e,ctx,rest)
+              | _ => none
           | _ => none
-      | _ => none
   | ty::['*']::rest =>
       if B20.C.Scalar.typeToken ty≠some .u32 then none else do
         let (names,rest) ← C99ProcedureParser.pointerNames 32 (['*']::rest)
@@ -151,8 +204,25 @@ def declarations : Stmt → List Name
   | _ => []
 
 mutual
+  /- `while (name ++ OP bound) body`: the post-increment happens during the
+     failing condition evaluation as well. The desugaring below is state-
+     exact: `seq (loop (name OP bound) (seq (name ++) body) skip) (name ++)`
+     places the increment where the source places it (after the condition
+     test and before the body, plus once on the failing test), so every
+     test, every body entry and the final state agree on all variables,
+     even if the body reads or writes the incremented variable. -/
   def statement (ctx : Context) : Nat → List Token → Option (Stmt×Context×List Token)
     | 0,_ => none
+    | fuel+1,['w','h','i','l','e']::['(']::name::['+','+']::op::rest => do
+        let comparison ← cmpToken op
+        let (bound,rest) ← C99ArrayParser.pureExpr rest
+        match rest with
+        | [')']::rest => do
+            let (body,_,rest) ← statement ctx fuel rest
+            let increment : Stmt := .base (.scalar (.update name .add (.literal .i32 1)))
+            pure (.seq (.loop (.cmp comparison (CLogic.Expr.var name) bound)
+              (.seq increment body) (.base .skip)) increment,ctx,rest)
+        | _ => none
     | fuel+1,['f','o','r']::['(']::rest => do
         let (initial,rest) ← clauses ctx [';'] 16 rest
         let (condition,rest) ← if rest.head?=some [';'] then

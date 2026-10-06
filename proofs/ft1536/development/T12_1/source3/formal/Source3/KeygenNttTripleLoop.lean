@@ -461,7 +461,7 @@ theorem loop_trace (aP : ArrayPointer) (σ : Nat) (code : Stmt) (before : State)
     (st : USlot before "stride" σ) (nSlot : USlot before "n" 1536) :
     result.flow=.normal ∧ TripleTrace aP σ k before result.state := by
   induction source generalizing k with
-  | base | assign | store32 | seqNormal | seqExit | scope | branchTrue | branchFalse | ret | retVoid =>
+  | base | assign | store32 | storeRev | seqNormal | seqExit | scope | branchTrue | branchFalse | ret | retVoid =>
       cases shape
   | loopFalse condition body increment before v guard zero =>
       cases shape

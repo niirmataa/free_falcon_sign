@@ -417,7 +417,7 @@ theorem a_loop_keep (cond : CLogic.Expr) (body inc : Stmt) (code : Stmt)
     (p : ArrayPointer) (slot : PSlot before "a" p) :
     result.flow=.normal ∧ PSlot result.state "a" p := by
   induction source generalizing p with
-  | base | assign | store32 | seqNormal | seqExit | scope | branchTrue | branchFalse
+  | base | assign | store32 | storeRev | seqNormal | seqExit | scope | branchTrue | branchFalse
   | ret | retVoid =>
       cases shape
   | loopFalse condition body increment before v guard zero =>
@@ -588,7 +588,7 @@ theorem u1_loop_trace (aP : ArrayPointer) (σ mVal tVal htp : Nat) (code : Stmt)
       (∀ n, n≠"u1".toList ∧ n≠"v1".toList → result.state.locals n=before.locals n) ∧
       U1Trace aP σ mVal tVal htp j before result.state := by
   induction source generalizing j with
-  | base | assign | store32 | seqNormal | seqExit | scope | branchTrue | branchFalse
+  | base | assign | store32 | storeRev | seqNormal | seqExit | scope | branchTrue | branchFalse
   | ret | retVoid =>
       cases shape
   | loopFalse condition body increment before v guard zero =>
@@ -827,7 +827,7 @@ theorem m_loop_trace (aP : ArrayPointer) (σ : Nat) (code : Stmt) (before : Stat
     (ap : PSlot before "a" aP) :
     result.flow=.normal ∧ MTrace aP σ i before result.state := by
   induction source generalizing i with
-  | base | assign | store32 | seqNormal | seqExit | scope | branchTrue | branchFalse
+  | base | assign | store32 | storeRev | seqNormal | seqExit | scope | branchTrue | branchFalse
   | ret | retVoid =>
       cases shape
   | loopFalse condition body increment before v guard zero =>
