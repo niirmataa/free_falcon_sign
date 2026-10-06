@@ -2,53 +2,50 @@
 
 Package status: **IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN**.
 Checkpoint written 2026-10-06 at the close of the owner-scoped window
-"B1.03 continuation (KROK 0 + div/mkgm3 bindings + closure + REV10)".
-Frozen at a staged-roadmap iron-rule-2/3 boundary: KROK 0, the corrected
-`div_source_bound`, the corrected `KeygenMkgm3Program.source_bound`, the
-one-job closure rebuild (35/35) and the REV10 chunked certificate module
-are done; the row/Montgomery/memory-layout laws of B1.03 remain.
-Session harness: **MiMo V2.6 Pro** (B1.03 continuation window). Batch
-receipt pair: `KEYGEN_SOURCE_TO_FIBER_001_BATCH_014.json` + `_014_NOTES.md`.
+"B1.03 stage (a): REV10 exactness certificate closure". Frozen at a
+staged-roadmap iron-rule-2/3 boundary: the REV10 exactness certificate is
+CLOSED (the measured source-binding seam of the previous checkpoint is
+discharged); the row/Montgomery/memory-layout laws of B1.03 remain, with
+the owner window sequencing (b) `modp_R2` value law and (c) row laws.
+Session harness: **MiMo V2.6 Pro** (REV10 closure window). Batch receipt
+pair: `KEYGEN_SOURCE_TO_FIBER_001_BATCH_015.json` + `_015_NOTES.md`.
 This file supersedes the previous expanded checkpoint; carried facts are
 in section 5.
 
 ## 1. Closed this window — commits, modules, evidence (verified before commit)
 
 Local commits on `main` this window (no push, owner signal absent):
-(1) `dc5ecf5c` KROK 0 tree repair + BATCH_014 receipt pair; (2)
-`c3170530` `div_source_bound` closed; (3) `83174c1c`
-`KeygenMkgm3Program.source_bound` closed + one-job closure rebuild.
-(The B2/B5 lane committed to shared `main` concurrently; exact
-pathspecs, one writer at a time.)
+(1) `29e6372b` `formal/Source3/KeygenRev10Cert.lean` — the REV10 exactness
+certificate v4; (2) the batch015 receipt pair + this checkpoint (the
+present commit). The B2/B5 lane committed to shared `main` concurrently
+(`6ff3c838`, `125bfb2c`, `e8a47b79`); exact pathspecs, one writer at a
+time.
 
 | Scope | Content | Checked by |
 |---|---|---|
-| KROK 0 tree repair | false `div_source_bound` removed (kept `div_header`), divCode candidate recorded as a receipt OBLIGATION (discharged later this window); `KeygenNttLoopSupport.atom_frame` storeRev alternative; `KeygenNttMiddleLoops` storeRev grouping; `KeygenNttButterflyCalls` `Call`->`ModCall`; closure green 0/0 BEFORE continuing | `keygen_mkgm3_repair_004/005` (19/19 accepted/clean) |
-| `div_source_bound` (corrected binding sentence) | single parser<->divCode mismatch was the `z ^=` select: candidate `divSelect` carried a duplicated outer `xor z`; corrected; `C99ModularParser.region 2642 26 = some divCode` kernel-proved | probe `keygen_mkgm3_div_probe_001`, job `keygen_mkgm3_div_bound_001` (4/4) |
-| `KeygenMkgm3Program.source_bound` | THREE defects fixed: `thenOne` syntax typo; `revStoreTail` never fired on real `base + REV10[...]` stores (greedy pureExpr ate `+ REV10` as `b + var REV10`; fixed by the `revSplit` marker cut); fake `call1 '(' …` on `((size_t)1 << k) - 1` (call pattern now requires a name token); `code` restructured to the parser's flat seq spine; `region 2945 91 = some code` kernel-proved | probe jobs `keygen_mkgm3_program_probe_001..009`, job `keygen_mkgm3_program_003` |
-| closure rebuild (owner step 3) | **35/35 accepted/clean in ONE job** — full descendant closure of the changed `C99ModularReference`/`C99ModularParser` | `keygen_mkgm3_closure_001` |
-| REV10 exactness certificate | `KeygenRev10Cert` (draft v3, UNCOMMITTED): model side validated green (32 kernel-decided 32-entry chunks vs `bitrev10`); source binding OPEN at a measured seam (kernel granularity ~8 parse lines per decide) — exact missing types in section 2 | probes `keygen_rev10_probe_002`; retained failures `_001.._003` |
+| REV10 exactness certificate (owner stage (a)) | `KeygenRev10Cert` v4: `rawTable_exact : rawTable = some ((List.range 1024).map bitrev10)` kernel-proved. Model side: the 32 kernel-decided 32-entry chunks vs `bitrev10` plus the descending `tail1024..tail0` glue (v3 shapes, structurally sound, kept verbatim except tail992's last step). Source side (the former seam): 11 slice decides `sNN` binding the literal `rowsNN` candidates to the pinned parse, each re-parsing AT MOST 8 pinned table lines (the measured kernel granularity of probe `keygen_rev10_probe_002`), and a `mapM`/`flatten` glue over the slice facts through intermediate statements (`region_split`, `mapM_join`, `flat_lit`, `table_data`) that never re-parses; assembly via `congrArg some`. Literal `tableData`/`rowsNN` are generator output and are re-checked by the kernel on every build. | job `keygen_rev10_cert_004` (accepted/clean, logs 0/0 bytes, 80.701 s, maxrss 3483896 KiB, zero forbidden markers) |
+| v3 helper fixes (old section 2 item 3) | `map_split` zero/succ cases via `Nat.add_zero`/`Nat.add_succ` (no `omega`); `map_some_iff` DROPPED (its `Option.noConfusion` application hit a universe mismatch and the new assembly does not need it); `List.drop_length` applied bare (implicit `{l}`); tail992's final step replaced by `List.append_nil _` (the old `rw [show 32 = 32 + 0 …]` rewrote both `32` occurrences and mangled the goal — trap 46). | probe jobs `keygen_rev10_probe_003..006` |
+| transient probe `KeygenRev10CertProbe` | validated the novel mechanics on two real slices (first-line shape and last-line shape, including the no-trailing-comma line): `take_split` ladder + congrArg/rfl region decomposition, `mapM_append` glue over real slices, the fixed `map_split`, the tail992 replacement step, the drop-length side conditions. `keygen_rev10_probe_003..005` retained FAILED attempts (`take_split` proof shape; traps 46/47 were identified here), `keygen_rev10_probe_006` accepted/clean. Module deleted after use and its runner-cache entry pruned (documented hygiene; compiled copies and outputs retained in the job dirs). | receipts in the job dirs |
 
 ### 1.1 What is proved (kernel, no sorries, no oracle)
 
-- **B1.03 callee binding phase — CLOSED.** `r2_source_bound` and the
-  corrected `div_source_bound` identify the hand-built `r2Code`/`divCode`
-  trees with the parser output on the pinned bytes; `modp_R` keeps its
-  exact value law; generator orders 9216/4608 stay kernel-checked.
-- **`KeygenMkgm3Program.source_bound` — CLOSED.** The full `modp_mkgm3`
-  body tree equals the parser output on the pinned 91 lines. The modular
-  parser now genuinely covers the mkgm3 syntax: REV10 mixed-index stores
-  fire via the marker cut, parenthesized cast-shift expressions parse,
-  and the body spine is flat.
-- **REV10 exactness certificate** (`KeygenRev10Cert`): the pinned 1024
-  table entries are exactly `bitrev10 0..1023`, kernel-checked in
-  32-entry chunks with a source binding and tail glue (see section 2 for
-  the job result at the freeze).
+- **REV10 exactness certificate — CLOSED.**
+  `KeygenRev10Cert.rawTable_exact : rawTable = some ((List.range 1024).map
+  bitrev10)`: the pinned 1024 table entries are exactly `bitrev10 0..1023`,
+  checked by the kernel in 32-entry model chunks, 32-entry literal
+  comparisons and 11 parse slices of at most 8 pinned lines each, with a
+  glue over intermediate facts that never re-parses (traps 34/45
+  respected).
+- **B1.03 callee binding phase — CLOSED (unchanged).** `r2_source_bound`,
+  the corrected `div_source_bound` and `KeygenMkgm3Program.source_bound`
+  identify the hand-built trees with the parser output on the pinned
+  bytes; `modp_R` keeps its exact value law; generator orders 9216/4608
+  stay kernel-checked.
 - **Not claimed (unchanged boundary):** no gm row law, no
   Montgomery-scale identity of the emitted table words, no canonical
   ranges, no `igm=ft` overwrite or memory-layout theorem, no `modp_div`
   value law (its exact quotient law needs modulus primality and is not
-  required for the gm words).
+  required for the gm words), no `modp_R2` value law.
 
 ### 1.2 Evidence pins (verified MATCH against current files)
 
@@ -58,66 +55,53 @@ pathspecs, one writer at a time.)
   `7772a7a79458d5d37281e6c7f7ab8898567232449ad76df909bf4c0eeb0c5ade`
   MATCH (re-verified before new work).
 - Runner byte-identical (`3bc29bf7…`).
+- `formal/Source3/KeygenRev10Cert.lean` (v4, 1419 lines) SHA256
+  `9fd2b27e1138f88e686513f8814d53c23c421caab2fe430353ba2bba89dfb69b`;
+  retained v3 draft byte-copy (job `keygen_rev10_cert_003`, `formal/`)
+  SHA256 `de0dd401d44b32487005110caf960184afa1a22a1187ef0e161c5f9c4b0145af`;
+  candidate generator `.build/rev10cert_gen_001.py` SHA256
+  `f91ae57d4b89c0c9daa4600d4259349216b0dbce8785e0a82cdbda0124097a67`;
+  `formal/Source3/KeygenSource.lean` SHA256
+  `87b529d744eaf2c7c860d35dcc9113220ef3954928e59f41d880f64c0684ce25`;
+  `formal/Source3/KeygenRev10.lean` SHA256
+  `018d6b25332e72b15ad385fdf0a4636e8976145aed00a98ce24024b5caf7d353`.
+- Job `keygen_rev10_cert_004` evidence under `.build/jobs/keygen_rev10_cert_004/`
+  (`RECEIPTS.json`; stdout and stderr SHA256 both
+  `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` —
+  empty logs). BATCH_014 pair pins re-checked:
+  `KEYGEN_SOURCE_TO_FIBER_001_BATCH_014.json` SHA256 `db561dae…`,
+  `_BATCH_014_NOTES.md` SHA256 `f383d26a…`.
 - Retained FAILED attempts (never cited as PASS):
   `keygen_mkgm3_frontend_001..011`, `keygen_mkgm3_repair_001..004`,
-  `keygen_mkgm3_program_001/002`, `keygen_rev10_cert_001`, probe jobs
+  `keygen_mkgm3_program_001/002`, `keygen_rev10_cert_001..003`, probe jobs
   `keygen_mkgm3_div_probe_001`, `keygen_mkgm3_program_probe_001..009`,
-  and all earlier retained failures. The transient probe module
-  `KeygenMkgm3DivProbe` was deleted after use and its runner-cache entry
-  pruned (documented hygiene; compiled copies and outputs retained in
-  the job dirs).
+  `keygen_rev10_probe_001..005`, and all earlier retained failures. The
+  transient probe module `KeygenRev10CertProbe` was deleted after use and
+  its runner-cache entry pruned (documented hygiene; compiled copies and
+  outputs retained in the job dirs).
 
 ## 2. In flight — exact types and state
 
-**REV10 exactness certificate — OPEN at a measured, recoverable seam.**
-Draft module `formal/Source3/KeygenRev10Cert.lean` (generated v3,
-UNCOMMITTED draft preserved in the tree per the interruption rule; the
-committed tree stays green without it). Retained FAILED attempts:
-`keygen_rev10_cert_001` (design A killed after 25 min),
-`keygen_rev10_cert_002` (design B: 1024-entry source decide blew the
-kernel bound; `List.map_congr` not in the import closure),
-`keygen_rev10_cert_003` (design C: chunked source binding, 33/33
-parse-bearing decides blew; helpers needed shape fixes),
-`keygen_rev10_probe_001/002` (granularity probes).
-
-**Exact missing types for `rawTable_exact : rawTable = some ((List.range
-1024).map bitrev10)`:**
-
-1. *Source binding, chunked.* Measured kernel granularity (probe
-   `keygen_rev10_probe_002`): one `decide` may parse **at most ~8 pinned
-   table lines** (1/2/8-line `mapM parseLine` decides green; 86-line
-   decides blow kernel memory even with a trivial `isSome` comparison;
-   comparisons themselves are cheap — 32-entry model-side decides pass).
-   Route: `sNN : ((Pinned.keygenLines.drop (8*NN)).take 8).mapM
-   KeygenRev10.parseLine = some G_NN` (11 slice decides, the last slice
-   6 lines) + a mapM/flatten glue over the slice facts (`rw`-chain +
-   `rfl`; the glue must NOT re-parse).
-2. *Model side* — validated green in `_003`'s run (the 32 `chunkNN`
-   32-entry decides reported no errors; the module as a whole was not
-   accepted due to the later source-binding failures). Re-prove inside
-   the working module.
-3. *Helper fixes* (v3 pitfalls, all local): `map_split`/`map_range_ext`
-   by induction on the FIRST argument with `rfl`-grade base cases (the
-   `omega` calls failed on `Nat.zero`/literal spellings; also `a + 0`
-   does not reduce definitionally for variable `a`); `nomatch` instead
-   of `Option.noConfusion` (universe mismatch on the reduced form);
-   explicit type ascriptions on `List.mapM` (the monad is ambiguous
-   without an expected type) and fully qualified names (bare `line` was
-   auto-bound as a free variable). The `eq_of_split` ladder and the
-   descending `tail1024..tail0` glue shapes in v3 are structurally
-   sound; keep them.
-4. *Assembly*: `tableData_exact` (from `tail0` + `map_range_ext`) and
-   `rawTable_exact` (from the source binding + `congrArg some`) as in
-   v3.
+Nothing in flight at the freeze. The former REV10 seam (section 2 of the
+previous checkpoint) is discharged: `table_data : rawTable = some tableData`
+(source binding `mapM_join` + literal glue `flat_lit`) and
+`tableData_exact : tableData = (List.range 1024).map bitrev10` (model side)
+compose into `rawTable_exact`. The exact missing types listed previously
+(slice decides + mapM/flatten glue + helper fixes + assembly) are all
+landed in `KeygenRev10Cert` v4; the only design change versus the recorded
+route is that `map_some_iff` was dropped rather than fixed (the assembly no
+longer extracts a witness from `rawTable` — the glue goes through the named
+intermediate statements instead).
 
 ## 3. Remaining work — order from `KEYGEN_SOURCE_TO_FIBER_001_EXECUTION_PLAN.md`
 
-1. **B1.03 (continuation)** — r2 exact value law (`2^62 mod p`
-   Montgomery scale); per-row exponent/order laws and canonical ranges
-   from the executed stores; `igm=ft` overwrite with gm/source-material
-   preservation; extents and non-overlap from the caller buffer layout.
-   Acceptance unchanged (initialized source gm words with canonical
-   ranges and exact scaled root identities).
+1. **B1.03 (continuation)** — owner window sequencing: (b) `modp_R2`, the
+   r2 exact value law (`2^62 mod p`, Montgomery scale); (c) per-row
+   exponent/order laws and canonical ranges from the executed stores; then
+   `igm=ft` overwrite with gm/source-material preservation; extents and
+   non-overlap from the caller buffer layout.
+   Acceptance unchanged (initialized source gm words with canonical ranges
+   and exact scaled root identities).
 2. **B1.04** — NTT canonical range and polynomial evaluation (6
    sub-proofs; `t*m=n` lives here and ONLY here).
 3. **B1.05**–**B1.11** as previously recorded.
@@ -129,38 +113,26 @@ success constructors containing evaluations.
 
 ## 4. Traps encountered (do not re-trigger)
 
-1..31 (carried; still apply). 32..39 (previous window; still apply).
+1..31 (carried; still apply). 32..45 (previous windows; still apply).
 New this window:
 
-40. **The runner's cache staleness check is SHALLOW** (source hashes +
-    one level of recorded import artifacts). A rebuilt module whose
-    inductive changed silently breaks stale importers via stuck `match`
-    reduction (`localOnly X =?= some ?m` unification failures look like
-    proof errors in the CONSUMER). The only reliable guard is the full
-    descendant closure rebuild in one job (the checkpoint protocol).
-41. **`revStoreTail`-style split parses cannot use greedy `pureExpr` for
-    the prefix**: `b + REV10[u << k]` parses as `(b + var REV10)` with a
-    dangling `[`. Cut at the literal marker (`+ REV10 [`) FIRST, then
-    parse the prefix with full-consumption.
-42. **`name::['(']` matches punctuation**: guard call patterns with a
-    token-name check (`name.all wordChar`), else `((size_t)1 << k) - 1`
-    degrades into a fake `call1 '(' …` and fails late and confusingly.
-43. **Nested `chainOf` sublists are NOT the parser's tree shape**: the
-    body recursion produces one flat right-nested seq spine (+ one
-    trailing `skip`); splice nested statement groups into the same flat
-    list or the equality fails everywhere after the nest.
-44. **Prefix/line bisection of `region` is misleading at block
-    boundaries** (an empty block swallows the probe's appended `}` and
-    the trailing-consumption check fails). Bisect with synthetic
-    `statement` probes on exact source lines instead.
-45. **A `decide` over `rawTable`/`keygenLines` re-runs the whole pinned
-    parse per theorem, and the KERNEL BOUND is on that parse**: measured
-    (probe `keygen_rev10_probe_002`) at ~8 pinned table lines per
-    `decide` (1/2/8-line parses green, 86-line parse blows kernel memory
-    even with a trivial `isSome` comparison). Comparisons are cheap
-    (32-entry list decides pass). Chunk certificates must parse in
-    <=8-line slices and glue through intermediate facts; never reduce
-    `rawTable` whole inside one `decide`.
+46. **`rw` rewrites ONE instantiated occurrence, not every instance of the
+    pattern.** `rw [List.take_nil]` on a goal with several `take _ []`
+    terms rewrites only the first match (with its substitution) and leaves
+    the others in place. Counting rewrites by hand is fragile; when several
+    instances must all move, use `simp only [<lemmas>]`, or one `rw` per
+    ground instance.
+47. **`Nat.add` recurses on its SECOND argument** in this toolchain:
+    `c + 0` and `a + Nat.succ n` reduce definitionally, but `0 + c` and
+    `Nat.succ n + a` do NOT. Induction base cases over `b + c` must
+    normalize with `Nat.zero_add`/`Nat.succ_add` before `rfl`; never
+    expect `0 + c`-shaped terms to disappear definitionally. (This is the
+    exact mechanism behind the v3 `map_split`/`map_range_ext` failures of
+    the old section 2 item 3.)
+48. **Core lemmas with an implicit list argument apply bare.**
+    `List.drop_length {l : List α} : l.drop l.length = []` is not a
+    function: `exact List.drop_length` (the unifier picks `l` from the
+    goal), never `List.drop_length t`.
 
 ## 5. Carried facts (earlier checkpoints, still true)
 
@@ -177,21 +149,21 @@ New this window:
 
 1. Read `WORK_STATE.md` (live), this file, the EXECUTION_PLAN and
    `run2/notes/B1_STAGED_ROADMAP.md`. The next window continues **B1.03**
-   only (one stage per window) from section 3 item 1 (row/Montgomery/
-   memory-layout laws), plus the REV10 closure check from section 2 if
-   needed.
+   only (one stage per window) from section 3 item 1 — owner sequencing:
+   stage (b), the `modp_R2` value law. The REV10 closure check is DONE and
+   is no longer part of the resume.
 2. Verify current pins against SOURCE_INPUTS.json of
-   `keygen_mkgm3_frontend_011` (plus the BATCH_013/014 pins) before any
+   `keygen_mkgm3_frontend_011` (plus the BATCH_013/014/015 pins) before any
    new claim.
-3. One proof job at a time (`tools/job_when_available.py`; the shared
-   slot had concurrent B2/B5 compiles this window), unique labels,
+3. One proof job at a time (`tools/job_when_available.py`), unique labels,
    topological module order, guarded serial compiles, logs 0/0, limits
    unchanged. Rebuild the FULL cached descendant closure of any changed
-   module in one job (35 modules after this window's parser/reference
-   changes) — trap 40.
+   module in one job (35 modules after the parser/reference changes of the
+   previous window) — trap 40. `KeygenRev10Cert` is a leaf module (no
+   importers) and is now cached from `keygen_rev10_cert_004`.
 4. Small logical local commits on `main` with exact pathspecs after each
    verified step; NO push until an explicit owner signal. One Git writer
    at a time (the B2/B5 lane commits concurrently).
 
-`emitted_to_actual_fiber` is still uninhabited. Nothing in this package
-is REVIEWED; REVIEWED is never self-declared.
+`emitted_to_actual_fiber` is still uninhabited. Nothing in this package is
+REVIEWED; REVIEWED is never self-declared.

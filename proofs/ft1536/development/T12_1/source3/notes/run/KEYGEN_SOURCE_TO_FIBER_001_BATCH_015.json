@@ -1,0 +1,55 @@
+{
+  "task": "KEYGEN_SOURCE_TO_FIBER_001",
+  "batch": "BATCH_015",
+  "stage": "B1.03 stage (a) - REV10 exactness certificate closed (rawTable = some (bitrev10 0..1023))",
+  "status": "IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN",
+  "scope": "Owner-scoped window: EXCLUSIVELY stage (a), the REV10 certificate closure per KEYGEN_RESIDUE_CHECKPOINT.md section 2 (the route of the previous checkpoint). After REV10 the window closes; (b) modp_R2 and (c) row laws are separate following windows (owner sequencing).",
+  "session_harness": "MiMo V2.6 Pro (REV10 closure window)",
+  "runner_note": "tools/job.py is byte-identical to the pinned runner (runner_sha256 below); its hardcoded PREFLIGHT 'model'/'session' fields remain historical labels of the runner and do NOT describe this window's harness.",
+  "runner_sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+  "input_pins_reverified": {
+    "protocol": "KEYGEN_RESIDUE_CHECKPOINT.md section 6 step 2, executed before any new work",
+    "keygen_mkgm3_frontend_011": "RECEIPTS 3ca613d70be08968f902e729705754f687b5224e0286da1d46578dda4f381cdd MATCH (owner-pinned); SOURCE_INPUTS 7772a7a79458d5d37281e6c7f7ab8898567232449ad76df909bf4c0eeb0c5ade MATCH (owner-pinned)",
+    "batch_014_pair": "KEYGEN_SOURCE_TO_FIBER_001_BATCH_014.json db561dae070707a12eea817388a982c069edea7cdf13a7abfacc2ff177165d9b MATCH; _BATCH_014_NOTES.md f383d26ada57296147fd955c2b35973dbd9fcf03ef98390c84d764af1cd7c250 MATCH",
+    "retained_probe_and_failure_jobs_present": "keygen_rev10_cert_001..003, keygen_rev10_probe_001/002 present under .build/jobs (evidence preserved)"
+  },
+  "rev10_certificate": {
+    "module": "Source3.KeygenRev10Cert (v4, 1419 lines)",
+    "theorem": "rawTable_exact : rawTable = some ((List.range 1024).map bitrev10)",
+    "source_sha256": "9fd2b27e1138f88e686513f8814d53c23c421caab2fe430353ba2bba89dfb69b",
+    "model_side": "32 kernel-decided 32-entry chunks vs bitrev10 + descending tail1024..tail0 glue (v3 shapes kept; tail992 final step replaced by List.append_nil)",
+    "source_side": "11 slice decides sNN (at most 8 pinned table lines each - the measured kernel granularity of probe keygen_rev10_probe_002) binding literal rowsNN candidates to the pinned parse; mapM/flatten glue through intermediate statements (region_split, mapM_join, flat_lit, table_data) that never re-parses (traps 34/45 respected)",
+    "assembly": "table_data : rawTable = some tableData (mapM_join + flat_lit via congrArg some); rawTable_exact via tableData_exact",
+    "candidates": "tableData and rowsNN are generator output (untrusted), re-checked by the kernel on every build; generator .build/rev10cert_gen_001.py sha256 f91ae57d4b89c0c9daa4600d4259349216b0dbce8785e0a82cdbda0124097a67; rowsNN extracted from the pinned KeygenSource.lean bytes (region lines 2674..2759) by a plain decimal scan; KeygenSource.lean sha256 87b529d744eaf2c7c860d35dcc9113220ef3954928e59f41d880f64c0684ce25",
+    "retained_v3_draft": "byte-copy in .build/jobs/keygen_rev10_cert_003/formal/Source3/KeygenRev10Cert.lean, sha256 de0dd401d44b32487005110caf960184afa1a22a1187ef0e161c5f9c4b0145af"
+  },
+  "helper_fixes_v3": {
+    "map_split": "zero/succ cases via Nat.add_zero/Nat.add_succ (no omega)",
+    "map_some_iff": "dropped (Option.noConfusion universe mismatch; the new assembly does not extract a witness from rawTable)",
+    "List.drop_length": "applied bare (implicit {l}); v3 applied it as a function",
+    "tail992": "final step is List.append_nil _ (the old rw [show 32 = 32 + 0 ...] rewrote both 32s)"
+  },
+  "jobs": {
+    "keygen_rev10_probe_003": "retained FAILED attempt: take_split base cases written rfl-grade without Nat.add normalization (trap 47); everything else in the probe module elaborated",
+    "keygen_rev10_probe_004": "retained FAILED attempt: take_split succ.nil - rw [List.take_nil] hit only the first instance (trap 46)",
+    "keygen_rev10_probe_005": "retained FAILED attempt: take_split succ.nil - rw [List.drop_nil, List.take_nil] still single-instance (trap 46 confirmed)",
+    "keygen_rev10_probe_006": "accepted/clean (12.491s): transient probe module validated take_split, the congrArg/rfl region ladder, mapM_append glue over real slices (first-line and last-line shapes), fixed map_split, the tail992 replacement step and the drop-length side conditions; module deleted after use and runner-cache entry pruned",
+    "keygen_rev10_cert_004": "accepted/clean (80.701s): Source3.KeygenRev10Cert with rawTable_exact PROVED; logs 0/0 bytes (stdout/stderr sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855), maxrss 3483896 KiB, forbidden_proof_markers []"
+  },
+  "new_traps": [
+    "46: rw rewrites ONE instantiated occurrence, not every instance of the pattern; use simp only for multi-instance moves",
+    "47: Nat.add recurses on its SECOND argument; 0 + c does not reduce definitionally - normalize with Nat.zero_add/Nat.succ_add",
+    "48: core lemmas with an implicit list argument (List.drop_length) apply bare, never as functions"
+  ],
+  "open_obligations_B1_03": [
+    "(b) modp_R2 r2 exact value law (2^62 mod p) and the Montgomery-scale extraction of the mkgm3 stores",
+    "(c) per-row exponent/order laws and canonical ranges from the executed stores",
+    "igm=ft overwrite with preservation of gm and source material; table extents and non-overlap from the caller buffer layout",
+    "B1.04 afterwards: NTT canonical range and polynomial evaluation (t*m=n lives there and ONLY here)"
+  ],
+  "git": {
+    "commits_this_window": ["29e6372b (KeygenRev10Cert v4 - REV10 exactness certificate)", "the present commit (BATCH_015 receipt pair + checkpoint)"],
+    "push": "none - owner signal absent",
+    "concurrent_lane": "B2/B5 lane committed to shared main during this window (6ff3c838, 125bfb2c, e8a47b79); exact pathspecs used, one Git writer at a time"
+  }
+}
