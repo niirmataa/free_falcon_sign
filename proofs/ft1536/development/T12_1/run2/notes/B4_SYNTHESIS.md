@@ -357,6 +357,27 @@ AttemptShape/keyIdent/B1.10) + final assembly. **Owner decision
 acceptance** (single archive.py pass at the end - not per-package stages
 mid-campaign); the B2/B5 acceptance is recorded here and in REVIEW_003.
 
+## 2026-10-07: B1.03 ACCEPTANCE - the complete source table-law layer
+
+All of B1.03's stages closed (commits through f27008de; BATCH_017 pin
+50f35519... exact): syntax frontend + non-mutual strata (trap 33),
+modp_R value law (2^31 mod p), generator order 9216/4608 kernel-VERIFIED,
+REV10 exactness (rawTable = some (bitrev10 0..1023) - all 1024 entries),
+div_source_bound + KeygenMkgm3Program.source_bound (three REAL parser
+bugs found en route: dead revStoreTail, false call on ((size_t)1<<k)-1,
+duplicated outer xor in divSelect), modp_R2 law (2^62 mod p, R^2 scale,
+p0i from the initializer execution), and the row laws (all 1024 gm words
+with ranges, exponents, orders, Montgomery scale; igm=ft; gm behavior +
+source material; sizes + memory non-overlap). Mutation-tested: 6/6
+injected mutations detected in BOTH normal and UBSan builds (the row-law
+checker is not vacuous). Traps 32-48 recorded.
+
+NEXT: B1.04 (values/ranges/polynomial invariants + butterfly cells -
+`t*m=n` lives THERE and only there) = the last heavy rung before
+realization and final assembly. Status remains NOT_REVIEWED (stage
+acceptance is not an independent review - reviews run per the owner's
+schedule).
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
