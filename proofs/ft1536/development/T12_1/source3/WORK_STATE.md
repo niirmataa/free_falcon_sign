@@ -1,5 +1,26 @@
 # T12.1/source3 — żywy stan
 
+## 2.1.1-second part 2 closed — B1.02 CLOSED at Acceptance — 2026-10-06
+
+**ACTIVE / KEYGEN_SOURCE_TO_FIBER_001 IN_PROGRESS / NOT_REVIEWED.**
+Owner-scoped window (EXCLUSIVELY 2.1.1-bullet2 part 2) closed at the
+stage Acceptance (staged-roadmap iron rule 3 clean close).
+`KeygenNttMiddleRounds` (new, commit pair this window, job
+`keygen_ntt_middle_rounds_002` accepted/clean, 3.071s) proves the u1
+counter composition `u1 ↦ j`, `v1 ↦ j*t`, `j ≤ m` (from `u1Step`), the
+doubling outer rounds `m ↦ 2^(i+1)`, `t ↦ 768/2^i` with the executed
+`t = ht = t >> 1` halving, guards `u1 < m` and `mGuard : t > 1+(full<<1)`
+(as `3 < t` on the M0 path), and the derived bounds from the ROUND
+COUNT OF THE T HALVING (`3 < 768/2^i ⇒ i ≤ 7 ⇒ m ≤ 2^8`, `t ≤ 768`,
+`v1`, `ht ≤ 2^18`) so ONE premise `2^18*σ < 2^64` discharges the two
+executed-product fits. `u1_result`/`round_result`/`intermediate_result`
+carry the nested v-runs per round. `t*m=n` NOT used (B1.04 boundary).
+With 2.1.1 + 2.1.2 closed, **B1.02's Acceptance is fully met**.
+Exact obligations/traps 26-31 in `notes/run/KEYGEN_RESIDUE_CHECKPOINT.md`;
+receipt pair `KEYGEN_SOURCE_TO_FIBER_001_BATCH_012.*`. No push (owner
+signal absent). Next window: **B1.03** only (twiddle-table generation
+and memory layout).
+
 ## 2.1.2 closed; 2.1.1-second part 1 frozen — 2026-10-02
 
 **ACTIVE / KEYGEN_SOURCE_TO_FIBER_001 IN_PROGRESS / NOT_REVIEWED.**

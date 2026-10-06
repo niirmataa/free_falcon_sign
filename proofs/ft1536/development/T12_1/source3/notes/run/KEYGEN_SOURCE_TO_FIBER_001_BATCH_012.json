@@ -1,0 +1,41 @@
+{
+  "task": "KEYGEN_SOURCE_TO_FIBER_001",
+  "batch": "BATCH_012",
+  "stage": "B1.02 (2.1.1 second bullet, part 2: u1/m/t counter composition and bounds - CLOSED; B1.02 Acceptance now fully met)",
+  "status": "IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN",
+  "scope": "Owner-scoped window: EXCLUSIVELY 2.1.1-bullet2 part 2. The u1-loop counters u1 -> j, v1 -> j*t per round with j <= m and the doubling outer rounds m -> 2^(i+1), t -> 768/2^i with the executed t = ht = t >> 1 halving are extracted from execution, with guards u1 < m and mGuard : t > 1+(full<<1) (evaluated as 3 < t on the M0 path). Derived bounds come from the round count of the t halving (3 < 768/2^i gives i <= 7, hence m <= 2^8, t <= 768 and the 2^18 class of v1 = j*t and ht = t/2), so ONE premise 2^18*sigma < 2^64 discharges the two non-overflow premises (v1*sigma, ht*sigma) at the pass level. Compositions u1_result, round_result, intermediate_result close 2.1.1-second; their traces carry the nested v-loop runs per round. The relation t*m=n (B1.04) is NOT used anywhere in this window or module.",
+  "session_harness": "MiMo V2.6 Pro (B1 continuation window)",
+  "runner_note": "tools/job.py is byte-identical to the pinned runner (runner_sha256 below); its hardcoded PREFLIGHT 'model'/'session' fields are historical labels of the runner and do NOT describe this window's harness. Documented here rather than editing the pinned runner.",
+  "runner_sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+  "input_pins_reverified": {
+    "protocol": "KEYGEN_RESIDUE_CHECKPOINT.md section 6 step 2, executed before any new work (18/18 named BATCH_011 pins MATCH)",
+    "keygen_ntt_butterfly_calls_009": "RECEIPTS 7ba24d47... MATCH; SOURCE_INPUTS 1986e5bd... MATCH; full closure 352/352 MATCH",
+    "keygen_ntt_middle_loops_006": "RECEIPTS 6a13b169... MATCH; SOURCE_INPUTS 0e0e76f9... MATCH; full closure 353/353 MATCH",
+    "keygen_ntt_loop_support_006": "RECEIPTS d67240e2... MATCH; SOURCE_INPUTS e28cbff7... MATCH; full closure 349/349 MATCH",
+    "keygen_ntt_first_loop_005": "RECEIPTS ee6b5593... MATCH; SOURCE_INPUTS 70e4e64e... MATCH; full closure 350/350 MATCH",
+    "keygen_ntt_triple_loop_006": "RECEIPTS 67b9b545... MATCH; SOURCE_INPUTS 1a7bcb93... MATCH; full closure 351/351 MATCH",
+    "keygen_ntt_frontend_004": "RECEIPTS f2efa0ee... MATCH; SOURCE_INPUTS 63764e25... MATCH (documented C99ModularParser drift unchanged)",
+    "keygen_ntt_forward_programs_003": "RECEIPTS 12beedee... MATCH; SOURCE_INPUTS 5b733410... MATCH",
+    "keygen_ntt_forward_exec_005": "RECEIPTS 87fd901f... MATCH; SOURCE_INPUTS 9dffe32c... MATCH",
+    "module_files": "KeygenNttButterflyCalls.lean 28d1e50a... MATCH; KeygenNttMiddleLoops.lean 2af95ae1... MATCH; tools/job.py 3bc29bf7... MATCH",
+    "closures_note": "all five closures above re-verified byte-exact against current files before new work: 0 drift, 0 missing"
+  },
+  "commits": {
+    "see_git": "proof(T12.1): intermediate-pass u1/m/t counter composition and bounds from the t halving (B1.02 2.1.1 second, part 2); docs(T12.1): batch012 receipt and fresh checkpoint"
+  },
+  "modules": {
+    "Source3.KeygenNttMiddleRounds": {
+      "source": "formal/Source3/KeygenNttMiddleRounds.lean",
+      "source_sha256": "dd66ac1a7c3691a63718c97bc7209fea3f0de0bc3fa570bfafbd726583b403a8",
+      "change": "new (2.1.1 second, part 2): round-count bounds without t*m=n (round_index_bound/m_round_bound/t_round_bound/ht_round_bound/v1_class/v1_round_bound/fit18/lt64_18/halve_eq/pow_double), mGuard evaluation (mguard_value/true/false via plus_three_value), counter steps (add_var_result, u1_step_result, shift_update/mstep_result, assign_nat_result, assign_var_result, ht_assign_result), a-slot survival keepers (ptr_bind_keep/a_update_keep/a_assign_keep/a_declare_keep/a_bind_keep/a_step_keep/a_loop_keep/a_vloop_keep/a_u1_inner_keep/a_u1step_keep/a_u1_loop_keep), U1Run/U1Inv/U1Trace/u1_loop_trace/u1_result (u1 -> j, v1 -> j*t, j <= m, nested v-runs per u1 round), MInv/RoundRun/MTrace/round_result/m_loop_trace (m -> 2^(i+1), t -> 768/2^i, t = ht = t>>1 executed halving), intermediate_result (the full intermediate pass)"
+    }
+  },
+  "jobs": {
+    "keygen_ntt_middle_rounds_002": {
+      "receipts_sha256": "3dbc0cfa444608dc8c77d5d9c6ce95a25c0f94ce9587c02cf18e8bee41d0a274",
+      "source_inputs_sha256": "17b98f3715de911247daa54d8326b736b68bba9f956d7c9d205d84d7ff4af52e",
+      "result": "1/1 accepted, logs 0/0, 3.071s, one module over the 353-entry reused closure"
+    },
+    "retained_failed": "keygen_ntt_middle_rounds_001 (parse/elaboration failures: <=i token, subst-on-projection, omega without hoisted structure fields, MTrace constructor indices, missing loopReturn case; preserved in .build/jobs; never cited as PASS)"
+  }
+}
