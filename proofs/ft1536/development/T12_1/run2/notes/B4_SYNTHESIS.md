@@ -290,6 +290,39 @@ B4 second-moment consumption). Fix window: E1-E5 on the corrected work
 contract (f6561725); one window, statement surgery + wiring, no new
 math campaign.
 
+## 2026-10-06 (night): third independent review - convergence confirmed + premium tools
+
+Third review (snapshot to 844c0d07, i.e. PRE-dating the 6ff3c838 fix)
+CONFIRMS E1-E3 as recorded and validates the synthesis as the most
+reliable status. Three tools added to the project's kit:
+1. **The k=1 scope test** (the standard meaning-test for the export):
+   `end_to_end_stream_theorem` accepts any `1 <= k`, so `k = 1` (D = 0)
+   needs no divergence proof - proof the export does NOT consume the
+   real-Sign statistical certificate. Correct for P_tau; the fixed
+   export must either consume the comparison or say D is a redundant
+   weakening for P_tau (E1 criterion). Use this test in every future
+   assembly review.
+2. **The four-arrow target assembly map** (official closure shape):
+   real Sign on real randomness -(computational hybrid)-> same Sign on
+   fair randomness -(law bindings + certificate)-> public simulation
+   -(extraction)-> MT-ISIS. Arrows 3-4 EXIST (streamGame_uniform +
+   concrete_lazy_game_binding + Reduction.build); arrows 1-2 = the
+   honest-Sign bridge = the B1 realization lane (do_sign/ReplyShape/
+   AttemptShape/keyIdent + LocalJointCertificate S e consumption via
+   `stopped_euf_to_concrete_mt`). CompPRG's tape arrow must NEVER be
+   identified with the generator change in real signing.
+3. **The piecewise publication form of the inverse**: psi_D(a) = 0 for
+   a <= D/(1+D), else a - sqrt(D*a*(1-a)) (E4 enhancement - the
+   piecewise form does not suggest tiny positive advantages give
+   positive guarantees).
+
+Also confirmed: P_tau is the stream-driven PUBLIC SIMULATION (signSimAt:
+nonce+ROM+stop-on-collision+S.code returning challenge AND response ->
+programmedReply; streamCont draws only the public key from muH - no
+secret key in the signing execution). Minor bookkeeping: the older
+WORK_STATE.md header still lists already-fixed items (stale vs
+checkpoint).
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
