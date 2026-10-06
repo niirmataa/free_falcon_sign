@@ -323,6 +323,39 @@ secret key in the signing execution). Minor bookkeeping: the older
 WORK_STATE.md header still lists already-fixed items (stale vs
 checkpoint).
 
+## 2026-10-07: B2/B5 package CLOSED - PASS_SCOPED, independent, zero changes
+
+The computational seam is formally accepted: INDEPENDENT_REVIEWER
+(fresh context, independent of author - different model than the
+6ff3c838/REVIEW_002 author), verdict **PASS_SCOPED with NO
+CHANGES_REQUIRED** across A-G + E1-E5 + F/G non-regression. Evidence
+base (own hands): 68/68 rebuilds exit 0, audit 79/79 1:1 with own
+inventory (zero phantoms, standard-axiom subsets only), zero markers in
+66 sources raw AND comment-stripped, 21 own kernel checks
+(generalized_inverse_iff both ways, psiD = phiInv, k_one_D_zero,
+key_binding_true_iff, membership_without_cost_fails,
+class_restriction_is_load_bearing, sampler_is_not_honest_in_general...),
+7/7 material pins reproduced. Key resolutions:
+- B: D does NOT get lost - (1+e)^qs-1 enters in
+  `concrete_euf_cma_to_mt_isis` (B4 certificate -> second moment); the
+  public chain deliberately carries no D;
+- C: the companion bound is the CORRECT main form for the public game
+  (no second-moment loss lives there); the phi form is kernel-weaker and
+  consistent (max 0 clipping necessary - own counterexample);
+- F: hop direct from CompPRGBound + bind_draw_event (proven Fubini);
+  zero TV traces in the closure;
+- G: signSimAt != signHonest/freshHonest (kernel); the certificate
+  factor lands exactly in D: Comparison (1+e) -> (1+e)^qs -> phi.
+Controls worth reusing: empty class = no bound at AdvPRG = 1/2 (class is
+load-bearing), averaged_test_half (1/2-test), the k=1/D=0 weakening
+probe. 79-vs-64 = API change + log-set choice, not an error.
+
+CLOSING LIST NOW: everything except the four-arrow map's arrows 1-2 -
+the honest-Sign bridge = the B1 realization lane (do_sign/ReplyShape/
+AttemptShape/keyIdent/B1.10) + final assembly. Formal stages-import +
+tag deferred to T12.1 acceptance (one archive.py pass at the end, per
+the owner's rhythm; the acceptance is recorded here and in REVIEW_003).
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
