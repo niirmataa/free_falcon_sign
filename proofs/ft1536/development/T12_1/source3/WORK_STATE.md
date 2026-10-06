@@ -1,5 +1,24 @@
 # T12.1/source3 — żywy stan
 
+## B1.03 stage (b) — modp_R2 word law checked; source composition active — 2026-10-06
+
+**ACTIVE / KEYGEN_SOURCE_TO_FIBER_001 IN_PROGRESS / NOT_REVIEWED.**
+Owner assigned this window exclusively to stage (b), after BATCH_015 and
+`keygen_rev10_cert_004`. Harness: GPT-6 Astra Ultrafast
+(`openai/gpt-6-astra-ultrafast`); historical runner model/session labels
+remain provenance. All 360 current source inputs of the pinned REV10 job
+match; the seven changes since `keygen_mkgm3_frontend_011` are the recorded
+BATCH_014 repairs. Preflight: `.build/modp_r2_016/PREFLIGHT.json`.
+
+`KeygenModpR2Word` passed `keygen_modp_r2_word_002` (1.618s, clean logs).
+For every odd modulus `2^30 < p < 2^31` and valid Montgomery inverse, the
+word algorithm has canonical result `2^62 mod p`, with explicit `R*R`
+representation. Its invariant follows all five squarings and proves the
+bit-mask halving without overflow. The failed `_001` elaboration is retained.
+Source composition with the existing parsed `r2Code` is the next obligation;
+the word law alone is not yet the source-call theorem. No owned job is
+running at this checkpoint. Stage (c) follows in the next owner window.
+
 ## B1.03 phase 1 — frontend/callees/REV10/order closed, freeze at mid-point — 2026-10-06
 
 **ACTIVE / KEYGEN_SOURCE_TO_FIBER_001 IN_PROGRESS / NOT_REVIEWED.**
