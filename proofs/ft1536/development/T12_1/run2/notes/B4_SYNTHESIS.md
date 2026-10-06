@@ -243,6 +243,25 @@ binding (`prod i, 1 - b i` silently parses outside the product - ALWAYS
 parenthesize); Rat.cast trap extension: nlinarith/simpa choke on heavy
 local hypotheses - prove small facts in clean context first.
 
+## 2026-10-06: B1.02 ACCEPTANCE — the complete source-bound execution model
+
+The whole of B1.02 (2.1.1 + 2.1.2) is closed (commits aa86ba27/d81c257c/
+ccf94077 pushed in 69092f01..ccf94077; 56a7ee7b/01eb7fae local): a
+complete source-bound execution model of the `modp_NTT3_ext` body with
+derived counters and pointer positions for ALL THREE loop families
+(first/triple/intermediate) and the butterfly call observations extracted
+as CONCLUSIONS from the parsed bodies (call-premise leakage removed;
+Load32/Store32 witnesses at current positions). The intermediate bounds
+(`i <= 7` from the executed `mGuard` `t > 3`, hence `m <= 2^8`,
+`t <= 768`, `v1 <= 2^18`) are derived from ROUND COUNTS with the
+`t*m=n` ban honored (that identity lives in B1.04 and only there) — one
+premise `2^18*s < 2^64` discharges both product non-overflows. This is
+the boundary where the source binding ends and the mathematics begins.
+Next: B1.03 (modp_mkgm3 root table, order 9216/4608 as a proof
+obligation), then B1.04 (values/ranges - t*m=n lives there), B1.07
+(stride=1 via the wrapper frame), B1.10 (`emitted_to_actual_fiber` =
+ `hkey`).
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
