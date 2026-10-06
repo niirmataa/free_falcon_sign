@@ -65,6 +65,43 @@ Potwierdź, że TV-lematy i `route_a_closed` zachowane (nagroda śmierci
 trasy statystycznej) i że `Assembly.lean`/`AdvPrg.lean` są bajtowo
 nietknięte (`git log -- <ścieżki>`).
 
+## Dodatkowe cele z recenzji kontraktu (2026-10-06, druga niezależna para oczu)
+
+Recenzja promptu wykazała sprzeczność w pierwotnym kontrakcie (punkt 2
+kazał użyć `tape_game_hop_abs`, którego wniosek to TV) i ostrzega przed
+dwoma pułpakami montażu. Autor raportuje, że obu uniknął — ZWERYFIKUJ
+to w kodzie, nie w raporcie:
+
+**F. Brak przemytu TV.** Sprawdź, czy hop obliczeniowy jest wyprowadzony
+WPROST z `CompPRGBound` zastosowanego do skonstruowanego testu wygranej
+`D_A` + świadectwa dopuszczalności — a stary `tape_game_hop_abs` i lemmy
+TV NIE są pośrednikami nowego eksportu (zostają jako osobna ścieżka
+statystyczna). Pułapka: lemat TV wnioskuje `<= AdvPRG tau` i nie ma
+argumentu klasy — gdyby nowy hop przez niego przechodził, eksporcie
+znowu mieszka statystyka. Dodatkowo: test musi obejmować POZOSTAŁĄ
+losowość eksperymentu (klucz, monety A, wiadomość) — dopuszczalna jest
+klasa testów probabilistycznych `Tape -> Dist Bool` albo jawne dodatkowe
+monety z przesłanką złożenia po ich ustaleniu; zamiana losowej kontynuacji
+w pojedyncze deterministyczne zdarzenie na samej taśmie ChaCha20 wymaga
+DOWODU (Fubini po warunkowaniu), nie stwierdzenia.
+
+**G. Uczciwa taśma ≠ idealny Sign (fakt z `Games.lean`).** `sample S h st
+m r` wykonuje `S.code` na taśmie, ale `Games.signHonest` losuje z
+`signBody`/`SigmaMath.freshHonest` i NIE woła `S.code`; `runEUF` idzie
+ścieżką `honest`. Istniejąca tożsamość `samplerLawAt S Law.uniform = ...
+samplerLaw S ...` NIE jest tożsamością z `freshHonest`. Zweryfikuj więc:
+z którym dokładnie eksperymentem jest zgodna nowa gra strumieniowa (okno
+wskazuje `concrete_lazy_game_binding` i twierdzi, że gra reduktora = gra
+EUF z orakulum samplera, a uczciwą grę różni czynnik certyfikatu —
+sprawdź, czy ta identyfikacja jest WYKAZANA i czy czynnik certyfikatu
+trafia w to samo miejsce co D). Zakazane drogi na skróty: nazwanie
+funkcji `AdvEUF_stream` bez identyfikacji; dopisana równość
+z `Games.AdvEUF`.
+
+Prawidłowa kolejność montażu (kształt kontrolny): wspólna taśma całego
+przebiegu → gra od niej zależna → test wygranej → założenie obliczeniowe
+→ wykazane identyfikacje z istniejącą redukcją.
+
 ## Werdykt
 
 `PASS_SCOPED` (z dokładnym zakresem) / `CHANGES_REQUIRED` (numerowane
