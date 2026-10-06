@@ -44,14 +44,27 @@ connected
    resource accounting (cost of the composed test <= T(A) + q * cost of one
    ChaCha20 block — record the accounting shape, do not invent a cost
    model beyond what the seam needs).
-2. **The real game on the LHS, the hop CHAINED:** define the tape-parametrized
-   EUF game (`Games.AdvEUF` with the sampler law mapped through `tau` — the
-   `Law.uniform.map` seam of `Games.Sampler.code` is already understood),
-   and prove the hop `AdvEUF_stream tau A <= AdvEUF A + CompPRG-term` by
-   applying the existing `tape_game_hop_abs` to the WINNING EVENT of `A`
-   (membership in `C` as premise). Then re-export the assembled bound with
-   the real-stream game on the LHS and `deltaPRG` arriving VIA THE HOP.
-   The old export stays as the abstract shape (do not touch `Assembly.lean`).
+2. **The real game on the LHS, the hop CHAINED** *(AMENDED 2026-10-06
+   after contract review — the original text ordered the existing
+   `tape_game_hop_abs`, whose conclusion is TV; literal execution would
+   smuggle the statistical seam back in. Corrected contract:)* —
+   define the tape-parametrized EUF game (the sampler law mapped through
+   `tau` — the `Law.uniform.map` seam of `Games.Sampler.code` is already
+   understood) and prove the hop via a NEW `comp_tape_game_hop_abs`
+   derived DIRECTLY from `CompPRGBound` applied to the constructed
+   winning test `D_A` PLUS its explicit admissibility certificate. The
+   existing `tape_game_hop_abs` and TV lemmas stay as the separate
+   STATISTICAL path and must NOT be intermediaries of the computational
+   export (their conclusion `<= AdvPRG tau` is exactly the seam being
+   fixed). The winning test must cover the experiment's REMAINING
+   randomness (key, A's coins, message): either a probabilistic test
+   class `Tape -> Dist Bool`, or explicit extra coins with a proven
+   composition after fixing them (Fubini by conditioning) — converting
+   the random continuation into a single deterministic tape event
+   requires a PROOF, not an assertion. Then re-export the assembled
+   bound with the real-stream game on the LHS and `deltaPRG` arriving
+   VIA THE HOP. The old export stays as the abstract shape (do not touch
+   `Assembly.lean`).
 3. **The Phi inversion, kernelized.** The repo's `Phi` bounds EUF advantage
    FROM MT-ISIS advantage. Export the inverse direction actually needed by
    the security claim: `Adv_MT(B) >= f(epsilon_real, D, deltaPRG, ...)`.
@@ -69,6 +82,16 @@ connected
 
 ## Honesty rules specific to this task
 
+- **Honest-tape identity trap** *(added 2026-10-06)*: `Games.sample S h st m
+  r` runs `S.code` on the tape, but `Games.signHonest` draws from
+  `signBody`/`SigmaMath.freshHonest` and does NOT call `S.code`;
+  `runEUF` goes through the `honest` path. The identity
+  `samplerLawAt S Law.uniform ... = samplerLaw S ...` is NOT an identity
+  with `freshHonest`. Identify the stream game with a concrete existing
+  experiment BY PROOF (a `concrete_lazy_game_binding`-style lemma naming
+  the exact experiment) — never by naming a function `AdvEUF_stream` or
+  appending an unjustified equality with `Games.AdvEUF`. State which
+  existing lemma covers the winning probability of the game you land on.
 - Do NOT derive small TV from the computational assumption (impossible —
   `route_a_closed` proves it). The hop works at winning-probability level
   for the admitted class only.
