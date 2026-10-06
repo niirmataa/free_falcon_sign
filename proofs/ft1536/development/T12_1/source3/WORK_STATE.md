@@ -1,6 +1,6 @@
 # T12.1/source3 — żywy stan
 
-## B1.04 — source NTT values and polynomial invariants — 2026-10-07
+## B1.04 — recoverable midpoint, first pass and radix-2 blocks — 2026-10-07
 
 Owner-scoped B1.04 window, GPT-6 Astra Ultrafast. B1.03 Acceptance is
 recorded by `0a72596b` in `run2/notes/B4_SYNTHESIS.md`. Resume preflight
@@ -41,11 +41,35 @@ roots of Phi and degree-<1536 polynomial/coefficient injectivity
 (`keygen_ntt_roots_003`). Both have clean 0/0 logs. These mathematical
 points still require the complete source-transform evaluation refinement.
 
-In progress: remaining-pass polynomial invariants and source composition.
-The remaining radix-2/triple loop composition and full-transform evaluation
-remain B1.04 obligations. `t*m=n` is used only in this stage's new geometry
-module. Small local commits use the shared writer lock; the package
-remains IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.
+`KeygenNttBinaryValues.loop_values` and
+`KeygenNttSubpolynomial.source_remainders` now consume the complete actual
+radix-2 v-loop, returning canonical memory cells and the two exact
+degree-<ht remainders, with the remaining cells preserved. The actual
+`gm[m+u1]` load has a scaled-value export. Checked `binary_values_001` and
+`subpolynomial_002`. `KeygenNttEvaluation.equation_of_pointwise` transports
+pointwise equalities through the existing quotient multiply/subtract into
+the coefficient equation over ZMod2147355649; source pointwise equations
+and the integer lift still need the remaining transform/solver composition.
+
+Final internal audit `keygen_ntt_values_audit_005`: **85 exports**, 81 full
+pretty-printed terms, 3 kernel structures with complete constructor types,
+and the full prime-proof DAG (277341 nodes) with serialized JSON/Expr.equal
+round-trip. Flat printing that shared term exhausted memory in two retained
+attempts; the DAG retains every node without changing limits. All11 current
+modules have accepted source/artifact bindings and 0/0 logs. Sage/C
+`keygen_ntt_values_checks_002` checks first/eight middle/final snapshots of
+three public arrays, direct polynomial evaluation at all1536 physical
+points, normal/UBSan and six detected mutations in each mode (14 runs).
+
+**Window closing at a recoverable midpoint under staged-roadmap rule3.
+B1.04 Acceptance is NOT met.** No owned job or unresolved Lean draft
+remains. Next window resumes B1.04 at u1Inner/u1/m memory/value composition,
+twiddle-child polynomial propagation, all512 triple iterations and the
+complete source-transform theorem. The expanded checkpoint section6 is
+the resume protocol; BATCH_018 is the new evidence pair. `t*m=n` occurs
+only in this stage's new geometry module. Local exact-path commits use
+the shared writer lock. Status: IN_PROGRESS / NOT_REVIEWED /
+WORKING_NOT_FROZEN; no review, stage import or publication.
 
 ## B1.03 stage (c) — source row laws CLOSED — 2026-10-06
 
