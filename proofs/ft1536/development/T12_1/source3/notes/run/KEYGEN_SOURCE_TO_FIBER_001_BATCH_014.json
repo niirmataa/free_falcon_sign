@@ -1,7 +1,7 @@
 {
   "task": "KEYGEN_SOURCE_TO_FIBER_001",
   "batch": "BATCH_014",
-  "stage": "B1.03 continuation (KROK 0 tree repair, div_source_bound binding, KeygenMkgm3Program.source_bound, closure rebuild, row/Montgomery/memory laws, REV10 chunked certificate)",
+  "stage": "B1.03 continuation - KROK 0 tree repair, div_source_bound and KeygenMkgm3Program.source_bound closed, closure 35/35 in one job, REV10 chunked exactness certificate",
   "status": "IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN",
   "scope": "Owner-scoped window: EXCLUSIVELY B1.03 continuation per KEYGEN_RESIDUE_CHECKPOINT.md section 2 and the EXECUTION_PLAN. B1.04 values/ranges outside row laws and t*m=n stay outside this window (as before).",
   "session_harness": "MiMo V2.6 Pro (B1.03 continuation window)",
@@ -12,17 +12,42 @@
     "keygen_mkgm3_frontend_011": "RECEIPTS 3ca613d70be08968f902e729705754f687b5224e0286da1d46578dda4f381cdd MATCH (owner-pinned); SOURCE_INPUTS 7772a7a79458d5d37281e6c7f7ab8898567232449ad76df909bf4c0eeb0c5ade MATCH (owner-pinned)"
   },
   "krok_0_tree_repair": {
-    "removed_false_claim": "KeygenMkgm3Callees.div_source_bound : C99ModularParser.region 2642 26 = some C99ModularReference.divCode was DISPROVEN by kernel decide (retained log .build/jobs/keygen_mkgm3_frontend_011/logs/Source3_KeygenMkgm3Callees.stdout) and is REMOVED from the Lean tree; div_header and r2_header/r2_source_bound remain",
-    "divCode_candidate_obligation": "C99ModularReference.divCode (the hand-built modp_div body tree) is a CANDIDATE recorded as an OPEN OBLIGATION here in the receipt, NOT a claim: its parse binding C99ModularParser.region 2642 26 = some divCode is false and the corrected binding sentence is pending. Exactly one statement of the tree differs from the parser output of the pinned body (file lines 2645-2670 = keygenLines 2641-2666); candidates listed in BATCH_013.json (the i-- decrement update shape, the single-clause for-initial wrapping, the z ^= select expression, the modp_montymul(z, 1, ...) literal)"
+    "removed_false_claim": "KeygenMkgm3Callees.div_source_bound (decide-disproven; retained log .build/jobs/keygen_mkgm3_frontend_011/logs/Source3_KeygenMkgm3Callees.stdout) removed from the tree; div_header/r2_header/r2_source_bound kept",
+    "divCode_candidate_obligation_discharged": "C99ModularReference.divCode was recorded here as a candidate/OBLIGATION (not a claim) at KROK 0; the obligation was discharged in this window by fixing divSelect and re-proving div_source_bound (see jobs)",
+    "rebuild_to_zero": "jobs keygen_mkgm3_repair_004 (6/6 accepted/clean) and keygen_mkgm3_repair_005 (13/13 accepted/clean) before continuing",
+    "closure_patches": "KeygenNttLoopSupport.atom_frame storeRev alternative; KeygenNttMiddleLoops storeRev in grouped alternatives; KeygenNttButterflyCalls Call -> ModCall (3 sites)"
   },
-  "jobs": {},
-  "modules": {},
+  "jobs": {
+    "keygen_mkgm3_div_probe_001": "transient Repr probe (module deleted after use; compiled copy + dumps retained): single parser<->divCode difference = the z ^= select expression (duplicated outer xor z in divSelect)",
+    "keygen_mkgm3_div_bound_001": "4/4 accepted/clean: C99ModularReference (divSelect fix), C99ModularParser, C99ModularAnnotation, KeygenMkgm3Callees with div_source_bound PROVED by decide",
+    "keygen_mkgm3_program_001/002": "retained failures: syntax typo in thenOne, then decide-disproven source_bound before parser fixes",
+    "keygen_mkgm3_program_probe_001..009": "retained synthetic diagnostics: region 2945 91 = none localized to revStoreTail not firing (T4/T5) and the call-name pattern matching '(' '(' (T21), then flat-spine grouping (flags 20/20 after restructure)",
+    "keygen_mkgm3_program_003": "accepted/clean: KeygenMkgm3Program with source_bound PROVED by decide",
+    "keygen_mkgm3_closure_001": "35/35 accepted/clean in ONE job - full descendant closure of the changed C99ModularReference/C99ModularParser (frontend, KeygenCheck* consumers, KeygenRev10, KeygenMkgm3Callees, KeygenMkgm3Program, KeygenNtt*, KeygenResidue*); logs 0/0",
+    "keygen_rev10_cert_001": "retained FAILED attempt: design A (decide recomputing rawTable per theorem) killed after 25 min",
+    "keygen_rev10_cert_002": "retained FAILED attempt (design B: literal table + single source decide): source decide blew kernel memory; List.map_congr not in the import closure; chunk/tail shapes validated",
+    "keygen_rev10_cert_003": "retained FAILED attempt (design C: chunked source binding + self-contained helpers): 32 model-side chunk decides clean; 33/33 parse-bearing source decides blew kernel memory; helper shape fixes identified",
+    "keygen_rev10_probe_001/002": "granularity probes: 1/2/8-line mapM parseLine decides GREEN, 86-line decides blow kernel memory even with a trivial isSome comparison - the parse cost per decide, not the comparison size, is the kernel bound"
+  },
+  "modules": {
+    "Source3.C99ModularReference": "divSelect corrected to the exact (z ^ z2) & -(uint32_t)((e >> i) & 1) select right-hand side (the compound update contributes the outer xor)",
+    "Source3.C99ModularParser": "revStoreTail: revSplit marker cut (base + REV10 [) before base parsing; expr call pattern guarded by a token-name check (no fake call1 on '( '(' streams)",
+    "Source3.KeygenMkgm3Callees": "div_source_bound restored and kernel-proved after the divSelect fix",
+    "Source3.KeygenMkgm3Program": "thenOne syntax typo fixed; code restructured as one flat statement list (parser body spine); source_bound kernel-proved",
+    "Source3.KeygenNttLoopSupport": "atom_frame: storeRev alternative (localOnly catch-all)",
+    "Source3.KeygenNttMiddleLoops": "storeRev in the grouped impossible alternatives",
+    "Source3.KeygenNttButterflyCalls": "mont_inv/add_inv/sub_inv updated to C99ModularReference.ModCall",
+    "Source3.KeygenRev10Cert": "OPEN (uncommitted draft preserved in formal/, generated v3): checked-chunk exactness certificate (FFT-table precedent, trap 34). Model side validated green (32 kernel-decided 32-entry chunks vs bitrev10). Source binding OPEN at a measured seam: kernel granularity is ~8 pinned parse lines per decide (probe keygen_rev10_probe_002). Exact missing types and the completion route (11 x 8-line slice decides + mapM/flatten glue through intermediate facts + helper fixes) in KEYGEN_RESIDUE_CHECKPOINT.md section 2"
+  },
   "open_obligations_B1_03": [
-    "div_source_bound (corrected binding sentence parser<->divCode, one differing statement) - divCode candidate obligation above",
-    "KeygenMkgm3Program.source_bound (region 2945 91 = some code; draft tree untested)",
-    "closure rebuild of the full changed-descendant set in one job",
-    "REV10 exactness certificate via checked-chunk decomposition (32-entry chunks + assembly law)",
     "r2 exact value law (2^62 mod p) and the Montgomery-scale extraction of the mkgm3 stores",
-    "per-row exponent/order laws and canonical ranges from the executed stores; igm=ft overwrite and preservation of gm/source material; extents and non-overlap from the caller buffer layout"
-  ]
+    "per-row exponent/order laws and canonical ranges from the executed stores",
+    "igm=ft overwrite with preservation of gm and source material; table extents and non-overlap from the caller buffer layout",
+    "B1.04 afterwards: NTT canonical range and polynomial evaluation (t*m=n lives there and ONLY there)"
+  ],
+  "git": {
+    "commits_this_window": ["dc5ecf5c (KROK 0 tree repair + batch014 receipt pair)", "c3170530 (div_source_bound closed)", "83174c1c (KeygenMkgm3Program.source_bound closed, closure one job)"],
+    "push": "none - owner signal absent",
+    "concurrent_lane": "B2/B5 lane committed to shared main during this window; exact pathspecs used, one Git writer at a time"
+  }
 }

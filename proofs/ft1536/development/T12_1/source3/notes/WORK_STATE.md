@@ -1,5 +1,53 @@
 # RUN_003 — source-bound kontynuacja T12.1
 
+## 2026-10-06 — B1.03 kontynuacja: KROK 0 + wiązania div/mkgm3 + closure + REV10 (okno MiMo)
+
+W oknie kontynuacji B1 (harness: **MiMo V2.6 Pro**) wykonano zakres
+KROK 0 + kroki (1)-(3) polecenia właściciela oraz certyfikat REV10
+kawałkami. **IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN**.
+Receipt batcha: `run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_014.json` +
+`_014_NOTES.md`; świeży checkpoint: `run/KEYGEN_RESIDUE_CHECKPOINT.md`.
+
+- **KROK 0 (naprawa drzewa):** fałszywe `div_source_bound` usunięte
+  (zostaje `div_header`), kandydat `divCode` zapisany w receipcie jako
+  zobowiązanie (nie twierdzenie), closure odbudowany do 0/0 PRZED
+  kontynuacją (jobi `keygen_mkgm3_repair_004/005`, 19/19 clean).
+  Naprawy falloutowe: `storeRev` w `KeygenNttLoopSupport.atom_frame` i
+  `KeygenNttMiddleLoops`, `Call`→`ModCall` w `KeygenNttButterflyCalls`.
+- **(1) div_source_bound — zamknięte** (commit `c3170530`): jedna różnica
+  parser↔`divCode` to zdanie `z ^=` — kandydat `divSelect` miał
+  duplikowany zewnętrzny `xor z`. Poprawione; zdanie wiążące
+  `region 2642 26 = some divCode` dowiedzione kernelowo.
+- **(2) KeygenMkgm3Program.source_bound — zamknięte** (commit
+  `83174c1c`): trzy usterki — literówka `thenOne`; `revStoreTail` nigdy
+  nie odpalał na realnych `gm[b + REV10[u << k]]` (greedy `pureExpr`
+  zjadał `+ REV10`; naprawa: `revSplit` na markerze); fałszywe
+  `call1 '(' …` na `((size_t)1 << k) - 1` (guard nazwy tokenu); plus
+  spłaszczenie grzbietu `seq` w `code`. `region 2945 91 = some code`
+  dowiedzione kernelowo.
+- **(3) closure jednym jobem:** `keygen_mkgm3_closure_001` —
+  **35/35 accepted/clean**, logi 0/0, limity bez zmian.
+- **REV10 (kawałki):** `KeygenRev10Cert` (draft v3 w drzewie,
+  NIEcommitowany) — 32 kawałki po 32 wpisy vs model `bitrev10`
+  zwalidowane zielone; wiązanie źródłowe OTWARTE w zmierzonym szwie:
+  granica kernela ≈ **8 linii parse na `decide`** (sonda
+  `keygen_rev10_probe_002`: 1/2/8 linii zielone, 86 wybucha nawet przy
+  trywialnym porównaniu). Próby `_001.._003` retained; dokładne typy
+  brakujące i trasa dokończenia (11 kawałków po 8 linii + sklejka
+  mapM/flatten przez fakty pośrednie + poprawki helperów) w checkpoint
+  sekcja 2.
+- Nowe pułapki 40-45 w checkpoint sekcji 4 (płytka świeżość cache,
+  greedy pureExpr przy `+ REV10`, `name::['(']`, zagnieżdżone `chainOf`,
+  bisekcja `region` przy blokach, koszt `decide` nad parse).
+- Piny wejściowe zweryfikowane PRZED pracą (RECEIPTS `3ca613d7…`,
+  SOURCE_INPUTS `7772a7a7…` joba `keygen_mkgm3_frontend_011` — MATCH).
+  Runner bajtowo niezmieniony (`3bc29bf7…`). **Bez push** (brak sygnału
+  właściciela); współbieżne commity toru B2/B5 na main nie naruszone.
+- **Pozostałe w B1.03:** r2 exact value law (2^62 mod p Montgomery),
+  prawa wierszy/wykładników + ranges z wykonanych store'ów, `igm=ft`
+  z zachowaniem gm/materiału, extents i niepokrywanie z layoutu
+  wywołującego. Potem B1.04 (`t*m=n` tylko tam).
+
 ## 2026-10-02 — B1.02 (2.1/2.2) w oknie MiMo: pętle first/triple — liczniki i pozycje wskaźników z wykonania
 
 W oknie kontynuacji B1 (harness: **MiMo V2.6 Pro**) wykonano WYŁĄCZNIE
