@@ -1,5 +1,23 @@
 # T12.1/source3 — żywy stan
 
+## B1.05 — source bounds continuation — 2026-10-07
+
+Owner resumed section6 in source3, GPT-6 Astra Ultrafast. Preflight verified
+BATCH_015–020,1594 distinct files, all409 final BATCH_020 inputs and1336
+predecessor pins. `.build/bounds_021/PREFLIGHT.json` SHA256
+`f5826bbb7d8b277751330e6edb717b2a0d9419b653168a46a115ec5c06347303`.
+No proof job was active. Shared main and the foreign working changes were checked.
+
+First checked step: `KeygenSmallSource`, complete parsed poly_big_to_small
+body, explicit int16 stores, and a fixed zint_one_to_plain callee executing
+its parsed load/update prefix and signed32 local-object byte read. No range
+postcondition occurs in the execution rules. Accepted job
+`keygen_small_source_021_007`,0/0 logs. Six failed attempts (including an
+unavailable optional tactic import and parser diagnostics) remain in .build;
+the checked proof uses the existing byte round-trip export. Remaining:
+derive the bounds from these executions, the full sampler/caller bindings
+and full solver graph. B1.05 Acceptance NOT MET; window IN_PROGRESS.
+
 ## B1.05 — CLOSED at recoverable validation midpoint — 2026-10-07
 
 `KeygenSolverValidation.generated_converted_checked` now composes the
