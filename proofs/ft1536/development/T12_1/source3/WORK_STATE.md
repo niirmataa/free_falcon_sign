@@ -42,6 +42,41 @@ congrArg resolved those failures. Raw failed jobs and snapshots are retained,
 including one stale-cache preflight refusal without a receipt. No source
 oracle, probability premise or independent review was introduced.
 
+`KeygenSamplerBounds.source_material` now proves Bound1 for the complete
+finite MODE1 execution, including both loops, all rejected draws, actual
+refills and1536 stores. The write trace permits RNG-memory changes between
+stores and proves retention of every earlier coefficient. Entry premises:
+the typed rng Layout, n1536, actual destination binding/width, a live output
+object and separation from the context object. No random-word or Bound1
+premise occurs. `KeygenSamplerCalls.two_calls` binds n/v parameters and
+derives same-final-heap f/g vectors with Bound1, preserving f through g.
+The concrete fk pointer-to-Layout resolution remains the enclosing caller's
+obligation; this is not yet the entire KeyGen attempt.
+
+`KeygenOutputGateValidation.gate_validated` now feeds the actual short-circuit
+F/G gate into BATCH_020. F/G bounds are derived; the final exact integer NTRU
+equation and retained four-array material follow. Its explicit local inputs
+still include incoming f/g Represents/Bound1, the typed caller fields, legal
+validation entry and executed source fragments on the same heaps. The missing
+search/caller derivation must transport the sampled f/g into this suffix;
+there is no arbitrary search relation or assumed search frame in its place.
+
+Accepted sampler jobs `keygen_sampler_{source,inner,bounds}_022_002`,
+`keygen_sampler_{frame,calls}_022_001` and
+`keygen_output_gate_validation_022_001`, all0/0 logs. Internal audit
+`keygen_execution_audit_022_001`:423 entries (all409 new named declarations
+and14 inherited interfaces),393 full terms/30 inductives, standard axioms
+only, no elisions;433 final inputs. Audit SHA256
+`6a28556d3881f75e3a2f5ba6d9642f1a2aed4e95bf13d64cfb0256da3d7ef878`.
+`keygen_sampler_checks_022_002`:14 normal/UBSan executions,8 independent
+ZZ/FIPS202 Keccak cases and24 two-call sampler cases each; six mutations
+detected in both modes. Actual pinned full falcon_keygen struct, context
+offsets, public SHAKE fixtures, counters and protected fields/arrays checked.
+Sage's `~ZZ` denotes inversion, so the failed first control used the wrong
+operator; the retained correction uses mask xor for a64-bit complement.
+No owned job remains. Preparing the requested BIG recoverable midpoint;
+B1.05 Acceptance NOT MET and B1.06 not entered.
+
 ## B1.05 — CLOSED at recoverable source-bounds midpoint — 2026-10-07
 
 **B1.05 Acceptance NOT MET.** Complete parsed poly_big_to_small now yields
