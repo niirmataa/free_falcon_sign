@@ -1,5 +1,25 @@
 # T12.1/source3 — żywy stan
 
+## B1.05 — execution continuation — 2026-10-07
+
+Owner resumed section6 with GPT-6 Astra Ultrafast. BATCH_015–021 and1840
+distinct files,415 current inputs and1594 predecessor pins verified.
+`.build/execution_022/PREFLIGHT.json` SHA256
+`5947df262145b87a5cbb2c8ccbf79b6a7b2938965c13bb255dd40771be0fa3fc`.
+Shared main, staging and ownership checked; no live proof job at entry.
+
+`KeygenOutputGateSource` parses the actual7342–7346 short-circuit gate,
+including fk->tmp, fk->tmp+n and fk->ternary. Fixed calls execute the full
+small-output body. `KeygenOutputGateBounds` derives both successful Bind
+environments, source indices0/1536, F/G bounded write traces and same-byte
+Bound2047 material, preserving disjoint f/g through both calls. The typed
+read-only Context and caller logn/n/F/G bindings are local entry premises;
+the enclosing full solver must derive them. No full solver claim is made.
+Accepted jobs `keygen_output_gate_source_022_002` and
+`keygen_output_gate_bounds_022_002`,0/0 logs. Two failed attempts retained.
+B1.05 Acceptance NOT MET; full search execution, sampler/refill and final
+same-material composition remain open. Window IN_PROGRESS.
+
 ## B1.05 — CLOSED at recoverable source-bounds midpoint — 2026-10-07
 
 **B1.05 Acceptance NOT MET.** Complete parsed poly_big_to_small now yields
