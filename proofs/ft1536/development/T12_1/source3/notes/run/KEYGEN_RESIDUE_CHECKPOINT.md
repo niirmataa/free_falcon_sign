@@ -1,24 +1,115 @@
-# KEYGEN_SOURCE_TO_FIBER_001 — B1.05 recoverable source-bounds midpoint
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.05 sampler/refill and validation midpoint
 
 **PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
-2026-10-07: owner-scoped B1.05 window **CLOSED_AT_RECOVERABLE_MIDPOINT**
-under `run2/notes/B1_STAGED_ROADMAP.md` rule3. **B1.05 Acceptance NOT MET.**
+2026-10-07: owner-requested BIG B1.05 checkpoint,
+**CLOSED_AT_RECOVERABLE_MIDPOINT** under `run2/notes/B1_STAGED_ROADMAP.md`.
+**B1.05 Acceptance NOT MET.** Full search/solver/root-caller execution remains open.
 The next owner window resumes B1.05. B1.06 has not been entered.
 No owned job or unresolved Lean draft remains. Resume protocol: **section6**.
 
 Harness: GPT-6 Astra Ultrafast (`openai/gpt-6-astra-ultrafast`). Historical
 runner labels remain provenance. Latest pair:
-`KEYGEN_SOURCE_TO_FIBER_001_BATCH_021.json` + `_021_NOTES.md`.
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_022.json` + `_022_NOTES.md`.
 B1.04 Acceptance and its complete NTT theorem remain BATCH_019 dependencies;
 their historical checkpoint is preserved in Git at `2868c49e`/`30359d3b`.
 
-## 1. Closed this window — full small-output bound and actual sampler stores
+## 1. Closed this window — complete local sampler and output-validation suffix
+
+Source commits on main as niirmataa: `7a1d5bc2`, `e617e098`, `9f0e5ef8`.
+The pair/checkpoint has a final local documentation commit. Git uses the
+shared `proofs/ft1536/work/archive.lock` and exact owned paths.
+
+### 1.1 Actual short-circuit F/G gate
+
+`KeygenOutputGateSource` parses7342–7346, including fk->tmp, fk->tmp+n,
+fk->ternary, F then G, short-circuit failure and return0. The fixed calls
+execute the complete BATCH_021 small-output body. `KeygenOutputGateBounds`
+derives both Bind environments, source indices0/1536, retained F/G material
+and Bound2047; the gate preserves disjoint f/g. **The typed read-only Context
+and root caller logn/n/F/G bindings remain local entry premises.** The full
+solver must derive them from its actual member accesses and preceding code.
+
+### 1.2 Complete deterministic refill closure
+
+`ShakeBlock`/`ShakeBlockProgram` execute the full pinned process_block:
+all388 physical loop-body lines,49 kernel-checked source chunks, actual
+C word operations and Load64/Store64. The source partition and scaffold
+preserve every declaration, update and both loop rounds. The derived frame
+preserves arbitrary memory outside A. `ShakeRcBinding` binds all24 RC words
+in12 source/token/initializer pairs, consumed by the fixed static table.
+
+`ShakeEncode` executes all eight byte stores. `ShakeExtractSource` and
+`ShakeExtractBinding` retain the complete extraction body, actual dptr/rate
+reads, process call,25 encodes with six complemented lanes, memcpy, cursor/
+pointer/length updates and final dptr store. `ShakeExtractFrame` derives
+protected-object preservation from pointer provenance and fixed callees.
+
+`KeygenRngSource` executes the M0 LE get_rng_u64 path using a fresh local
+8-byte object, actual extract8, Load64 of those same bytes and teardown.
+It preserves other live objects and caller slots. There is no arbitrary
+word, IID or distribution premise. **The typed LP64 Layout, concrete
+fk->rng resolution, global-table environment and active profile binding
+still have to be supplied by the enclosing actual caller.**
+
+### 1.3 Full MODE1 loops and Bound1
+
+`KeygenSamplerSource` supplies the fixed selected full-body natural
+semantics: all declarations/initializers, both loops, rejection, refill,
+accepted store/break, counter increment and x-scope restoration.
+`KeygenSamplerBounds.source_material` takes exactly:
+
+```text
+ctx : ShakeExtractSource.Layout
+before, after : C99ArrayReference.State
+dst : C99MemoryReference.ArrayPointer
+ctx.block != dst.block
+0 < before.heap.size dst.block
+dst.elementBytes = 2
+C99CountedWords.Limit before                 -- n slot = uint64 1536
+before.arrays "v" = some dst
+KeygenSamplerSource.Exec ctx before after
+```
+
+and concludes `exists v, Represents after.heap dst v and Bound v 1`.
+The write trace permits RNG-memory changes between stores and proves every
+earlier coefficient remains in the final1536-element material. Finite
+execution is the source premise; no termination/probability claim is made.
+
+`KeygenSamplerCalls.two_calls` derives same-final-heap f/g vectors with
+Bound1 from both source calls and their actual v/n parameter bindings.
+The frame preserves f during g. Entry requires n1536 and legal distinct
+f/g/context objects; actual fk resolution remains an outer caller seam.
+**Do not redo the sampler loops/refill or replace them by the old tail-only
+result.** Preservation through intervening KeyGen/search operations is open.
+
+### 1.4 Material connection to BATCH_020
+
+`KeygenOutputGateValidation.gate_validated` derives F/G through the actual
+output gate and supplies the same four vectors to the inherited validation.
+It concludes Bounds(1,1,2047,2047), the exact integer NTRU identity
+`multiply f G - multiply g F = constantCoeffs 18433`, and representation of
+all four vectors in the same final retained arrays.
+
+Its **remaining local inputs** are incoming f/g Represents/Bound1, typed
+root caller fields, legal validation source entry, the fixed executed
+generation/conversion/four-NTT/comparison fragments and common-heap
+equalities. The `Validation` structure lists those inherited premises;
+its complete constructor/type is audited. No F/G bound or NTRU equation is
+assumed. **This is a suffix theorem, not the complete successful solver.**
+The actual search/caller must transport sampled f/g and instantiate its
+bindings; no arbitrary transition/frame fills that missing execution.
+
+## 1A. Inherited BATCH_021 source bounds and BATCH_020 validation
+
+The historical boundaries below describe those batches. The former open
+local sampler/refill and short-circuit-gate obligations are superseded by
+section1 above; active remaining obligations are in section3.
 
 Source commits on main as niirmataa: `f17fe9b2`, `8b55f52f`, `20d4e524`.
 The pair/checkpoint has a final local documentation commit. Git writes use
 `proofs/ft1536/work/archive.lock` with exact owned paths.
 
-### 1.1 Complete poly_big_to_small body
+### 1A.1 Complete poly_big_to_small body
 
 `KeygenSmallSource` binds the COMPLETE4495–4507 body, retaining scalar
 declarations, MKN, counter initialization, loop, actual zint call, signed
@@ -53,7 +144,7 @@ The byte frame and `two_outputs` retain F through a second disjoint bounded
 write trace. **The actual enclosing F/G arguments and short-circuit gate
 are still required**; these helpers do not yet instantiate the whole solver.
 
-### 1.2 MODE1 post-refill tail
+### 1A.2 MODE1 post-refill tail
 
 `KeygenTernaryStore.accepted_store` executes x extraction, rb shift, rbits
 decrement and the actual comparison/store/break. With caller x/u slots and
@@ -62,7 +153,7 @@ in[-1,1]. `rejected_heap` proves the rejected-draw edge has no heap effect.
 There is no RNG or distribution premise in this tail theorem. **Refill,
 both loops, source SHAKE binding and full f/g Vec witnesses remain open**.
 
-### 1.3 Full dependency inventory and controls
+### 1A.3 Full dependency inventory and controls
 
 `notes/run/KEYGEN_SOLVER_GRAPH_021.md` links the full recorded adjacency
 tables:99-node unpruned solver,92-node root-M0-selected overapproximation
@@ -77,7 +168,7 @@ refill/rejection and retained-array checks. The fixture's mock caller has
 only an rng field. These tests do not prove the missing caller layout,
 complete sampler execution, probability law or whole solver correctness.
 
-### 1.4 Inherited BATCH_020 — common-memory solver validation
+### 1A.4 Inherited BATCH_020 — common-memory solver validation
 
 Source commits on main as niirmataa: `b4c2e87f`, `e92271d2`, `ed98536b`.
 The BATCH_020 pair/checkpoint was saved at `1c8c3988`. Writer windows used
@@ -93,7 +184,7 @@ The BATCH_020 pair/checkpoint was saved at `1c8c3988`. Writer windows used
 | `KeygenSolverValidation` | Generation, conversion, four calls, target and successful comparison composed; same original material retained in final memory. |
 | `KeygenSolverValidationAudit` |88 full type/term/axiom entries, including all69 new declarations and19 inherited interfaces. |
 
-#### 1.4.1 Exact inherited theorem boundary
+#### 1A.4.1 Exact inherited theorem boundary
 
 `KeygenSolverValidation.generated_converted_checked` concludes:
 
@@ -129,7 +220,7 @@ there is no arbitrary NTT/solver oracle. The initial caller/profile/bounds
 must still be supplied by the enclosing full source derivation.
 **This helper is not the complete successful-solver theorem.**
 
-#### 1.4.2 Mathematical and memory seams
+#### 1A.4.2 Mathematical and memory seams
 
 The BATCH_019 full NTT theorem now supplies evaluations of the same four
 original polynomials. Canonical value injectivity preserves exact words of
@@ -151,7 +242,49 @@ is proved heap-readonly.
 
 ## 2. Pins and validation
 
-The current preflight verified BATCH_015–020 and1594 distinct files,
+**Current BATCH_022:** preflight verified BATCH_015–021 and1840 distinct
+files,415 final BATCH_021 inputs and1594 predecessor pins. No active job.
+`.build/execution_022/PREFLIGHT.json`:
+`5947df262145b87a5cbb2c8ccbf79b6a7b2938965c13bb255dd40771be0fa3fc`.
+At sealing all433 final-audit inputs and1840 predecessor file pins match.
+Postseal integrity:2317 distinct file pins,433 current inputs and no active
+job. `.build/execution_022/POSTSEAL.json` SHA256
+`98f8b5df9acd2d8bd24a80d9cdb7d14e376e5d58de71c8ce6aa65341e016bf17`.
+
+- **BATCH_022 JSON:** `e891df0f07b936c594130ec258afc31e2d18a0af1d30b63833d2b1b1481a52a8`.
+- **BATCH_022 notes:** `89d81f521e582421c8c62ad7f9f5fc140772f3b4fae8f5dd34cde252868196c3`.
+- Full sampler-bound source: `51957a9fded82953d70f92093e851451369d2b7fac190792000fff7efa78647a`.
+- Two-call source: `0659c5b6ac5aeba16d68c5de5186ebae1abc63cea98f4bad0637216702102b10`.
+- Gate/validation source: `2f400bd7bfcc3e304765accac5f5c0e8c23fd176607046a0922945525114cc85`.
+- `.build/jobs/keygen_execution_audit_022_001/RECEIPTS.json`:
+  `b6ead6d515b08eb6100397c5a1487f1cb632b2363781132842d38ebb384c32d1`.
+- Same job `SOURCE_INPUTS.json`:
+  `9184313d3af8650bed8415ba2fe9b6297fb8958f4dd83bf4410327ea92dc6910`.
+- Same job `EXECUTION_AUDIT.json`:
+  `6a28556d3881f75e3a2f5ba6d9642f1a2aed4e95bf13d64cfb0256da3d7ef878`.
+- `.build/jobs/keygen_sampler_checks_022_002/RECEIPTS.json`:
+  `c96de5a9cfd4dfa88b209d0c419e29b515c0b48ce72f21fab03f2364c11e34c4`.
+- Same job `SAMPLER_REFILL_CHECK.json`:
+  `b447349319d14d9ddabfe3dd45c8e1b15180e8ab97ec96b04448a495252a707b`.
+
+18 current modules have accepted source/snapshot/olean/receipt bindings and
+0/0 logs; max accepted RSS3850748KiB.45 attempts:21 wholly accepted,23
+failed and one stale-cache preflight refusal without a receipt. Individual
+accepted modules in jobs whose later module failed are explicitly bound.
+All failed snapshots/available raw streams remain; the missing preflight
+streams are documented, not invented. Audit423 entries includes all409 new
+named declarations,393 full terms and30 inductives/structures with complete
+constructor types. Standard axioms only, no elisions;3074907 bytes regenerated
+by tracked audit/generator. Unchanged limits; no broad-project replay.
+
+Fresh Sage/ZZ FIPS202 reference with LFSR constants,14 normal/UBSan runs ×8
+Keccak cases and24 two-call sampler cases; all six mutations detected in
+both modes. Real pinned full falcon_keygen struct, public SHAKE labels,
+actual M0 LE macro/layout, exact values/counters/cursor and retained arrays/
+context fields checked. These are finite controls, not a caller/compiler
+proof or a distribution/termination theorem.
+
+**Inherited BATCH_021:** its preflight verified BATCH_015–020 and1594 distinct files,
 including all409 final BATCH_020 inputs and1336 predecessor pins. No active
 job was present. `.build/bounds_021/PREFLIGHT.json`:
 `f5826bbb7d8b277751330e6edb717b2a0d9419b653168a46a115ec5c06347303`.
@@ -252,41 +385,41 @@ an arbitrary heap transformer, return-value oracle or source-completeness
 premise remains forbidden. Retain real failure/return control.
 
 Supply actual PRIMES3[0]/p/p0i, ft/scratch aliases, generation caller binding,
-conversion locals and source fragments to `generated_converted_checked`.
+conversion locals and source fragments to the existing validation boundary.
 The existing first-prime and alias facts are available, but the complete
 source caller derivation has not yet instantiated them.
 
 ### 3.2 Actual caller output bounds and material
 
-The complete executed poly_big_to_small/zint_one_to_plain body boundary is
-NOW CHECKED by the new modules in1.1. Do not redo it or use the older
-`KeygenSmallOutput.Loop` as a substitute for the new source execution.
-Bind both actual caller gates7342–7346: F/fk->tmp/logn/fk->ternary followed
-by G/(fk->tmp+n)/logn/fk->ternary with real short-circuit/failure control.
-Supply these actual bindings/executions to `bound_call`, derive retained
-F/G Vec witnesses with Represents/Bound2047 and use the checked disjoint
-frame through the second conversion. Preserve f/g and carry all four
-vectors into the common-memory BATCH_020 validation.
+The complete poly_big_to_small/zint_one_to_plain body AND the actual
+short-circuit7342–7346 gate are NOW CHECKED. Reuse `gate_material` and
+`gate_validated`; do not redo them or substitute the old abstract Loop.
+Derive the typed `KeygenOutputGateSource.Context`, actual logn/n/F/G slots
+and pointer views from the full root execution. Preserve the original f/g
+through actual search so that their Represents/Bound1 can enter the suffix.
+Instantiate every `Validation` entry/source field and common heap directly
+from that root/callee derivation. No arbitrary heap-frame premise may replace
+the missing search source execution.
 
 ### 3.3 MODE1 sampler and original f/g
 
-Bind the full MODE1 loop4754–4781, refill, rejected2-bit draws, decrement,
-store and break/outer increment. Derive actual f/g material and `Bound1`,
-then preserve it through the intervening search/caller operations.
-Reuse `KeygenTernaryStore.accepted_store` and `rejected_heap` for the
-post-refill tail; the older scalar-only lemma is now consumed there.
-The actual full-loop/source-refill theorem is still absent.
-Use the real deterministic draw interface: the pinned KeyGen helper
-`get_rng_u64`4706–4735 calls `shake_extract` on fk->rng. Do not replace it
-by an IID word oracle or infer a distribution from the bound proof.
+The full local MODE1 loop/refill theorem and two-call f/g Bound1 are NOW
+CHECKED by section1.3. Derive the actual fk->rng Layout, source-profile/LE
+selection, global RC environment and n1536 from the enclosing allowed M0
+entry and its executed initializers. Bind both7888–7889 calls to the same
+context and arrays via `KeygenSamplerCalls.two_calls`. Then prove f/g
+preservation through intervening attempt gates and the actual search.
+The new frame proves preservation across g sampling, not across unexecuted
+search code. The sampler result is deterministic and finite-execution scoped;
+it supplies no IID law, acceptance probability or termination theorem.
 
 ### 3.4 B1.05 Acceptance
 
 The final result must consume actual source sampling/caller/solver
 derivations and legal M0 memory/profile, and conclude the exact integer
 NTRU identity about their same retained material. Discharge the remaining
-`Bounds material` and caller-binding premises above; do not simply rename
-the local validation helper as the successful-solver theorem. The M0 sampler
+f/g material transport and caller-binding premises above; do not simply rename
+`gate_validated` as the successful-solver theorem. The M0 sampler
 history supplies f/g bounds; arbitrary int16 solver inputs do not do so.
 
 ## 4. Later plan order
@@ -297,7 +430,7 @@ B1.11 complete fresh replay/mutations/final handoff.
 `emitted_to_actual_fiber` remains uninhabited. No serializer, solver,
 certificate acceptance or source-completeness premise may fill a gap.
 
-## 5. Traps — prior1–75 in Git, retained76–81, new82–87
+## 5. Traps — prior1–75 in Git, retained76–87, new88–94
 
 76. The outer shell's120s timeout can interrupt a guarded job before its
     receipt. `_equation_020_001` is retained as INTERRUPTED_NO_RECEIPT with
@@ -343,25 +476,54 @@ slots. The source root/permutation and Montgomery scale remain fixed.
     translation units, not necessarily definition files; header inputs must
     remain pinned. GCC raw addresses/hashes are run-specific.
 
+88. Tokenizing/reducing the whole400-line Keccak body exceeded the unchanged
+    recursion/memory limits. Parse physical instruction lines separately,
+    certify49 eight-line chunks and prove the source partition/scaffold.
+    Empty lines remain accounted for; do not silently drop statements.
+89. Aggregate RC parsing and direct rewrite elaboration exhausted memory.
+    Source-line, token and numeric-initializer equalities compose cheaply
+    with congrArg. Their checked composition binds all24 words; no limits
+    or axioms changed. The intermediate failed routes remain in job snapshots.
+90. `IO.FS.appendFile` is unavailable in this Lean closure. Its diagnostic
+    attempt failed and was removed from final sources; progress files that
+    were actually written are pinned, not reconstructed as successful logs.
+91. `scoped` and `initialize` are reserved Lean tokens. Use closedScope and
+    initialization. Space comparisons beginning with an i-name (`0 < inner`)
+    to avoid lexical interpretation as another notation.
+92. For restored scopes use simp only so membership normalization does not
+    erase the syntactic Boolean hypothesis; include Bool.false_eq_true for
+    false guards. State inference from a heap-only conclusion can select
+    the wrong pre-call State: first bind the correctly typed local result.
+93. Sage `~ZZ(0)` means inversion and raises, not64-bit complement. The
+    independent Keccak reference uses mask xor; its failed first attempt is
+    retained and the corrected standard-preparser run passed all controls.
+94. A preflight stale-cache refusal may precede SOURCE_INPUTS/RECEIPTS.
+    Retain its directory and describe the missing streams honestly. Select
+    changed descendants for rebuild; do not bypass the cache guard. Source
+    generation used exact previously accepted binding bytes transiently;
+    final changed bindings and their consumers were rebuilt/audited.
+
 ## 6. Resume protocol
 
 1. Read source3/WORK_STATE, this checkpoint, EXECUTION_PLAN B1.05 and
    `run2/notes/B1_STAGED_ROADMAP.md`. Resume only B1.05; this window closed
    at a recoverable midpoint, not Acceptance.
-2. Verify BATCH_015–021 pairs against section2/WORK_STATE. Verify all current
-   BATCH_021 source/snapshot/olean/receipt/log/audit/control/graph pins and415
-   final SOURCE_INPUTS. Check the1594 predecessor file pins in its preflight.
-   Retain18 BATCH_021 attempts, all19 BATCH_020 attempts (including its
-   no-receipt interruption) and all BATCH_018/019 attempts.
-   `tools/keygen_small_batch.py` documents the checks
+2. Verify BATCH_015–022 pairs against section2/WORK_STATE. Verify all current
+   BATCH_022 source/snapshot/olean/receipt/log/audit/control/generator pins
+   and433 final SOURCE_INPUTS. Check the1840 predecessor file pins in its
+   preflight. Retain all45 BATCH_022 attempts, including the23 failed jobs
+   and no-receipt preflight refusal, plus all BATCH_018–021 history (including
+   BATCH_020's interrupted launch). `tools/keygen_execution_batch.py` documents the checks
    but intentionally refuses to overwrite its historical receipt.
 3. Confirm main, physical repo, ownership, status/staging/log and no live
    owned job. Preserve foreign work and use the shared archive.lock for Git.
    Source3 is the active lane; historical runner labels are provenance.
 4. Resume section3 and KEYGEN_SOLVER_GRAPH_021.md: complete active source
-   solver/caller execution and actual output-call bindings; derive full
-   sampler f/g material using the checked post-refill tail, then consume
-   the checked validation seam. The complete small-output bound is reusable.
+   solver/search/root-caller execution, derive concrete context/member/alias/
+   static-global/profile bindings, and transport sampled f/g through actual
+   intervening source. Reuse the complete sampler/refill/two-call Bound1,
+   actual output gate and gate_validated suffix. Their local entry seams
+   are explicit; they are not a complete successful-solver theorem.
    Use unique labels with `python3 -B tools/job_when_available.py lean LABEL
    Source3.Module...`. One guarded proof job, unchanged limits,0/0 logs.
    Rebuild affected cached descendants after any dependency change.

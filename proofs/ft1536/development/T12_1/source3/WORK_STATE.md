@@ -1,5 +1,32 @@
 # T12.1/source3 — żywy stan
 
+## B1.05 — CLOSED at sampler/refill and validation midpoint — 2026-10-07
+
+**B1.05 Acceptance NOT MET.** The complete local MODE1 loops and real SHAKE
+refill now give Bound1 for the whole1536-coefficient material; both calls
+retain f/g on the same final heap. The actual F/G gate derives Bound2047 and
+connects to BATCH_020's exact NTRU/retained-material validation. **Full active
+solver/search/root-caller execution and sampled f/g transport through that
+code remain open**, including concrete context/member/global/profile binds.
+No arbitrary transition/frame replaces that gap. Next owner window resumes
+B1.05; B1.06 has not been entered.
+
+BATCH_022 JSON `e891df0f07b936c594130ec258afc31e2d18a0af1d30b63833d2b1b1481a52a8`;
+notes `89d81f521e582421c8c62ad7f9f5fc140772f3b4fae8f5dd34cde252868196c3`.
+18 current accepted modules,423 complete audit entries,433 current inputs
+and1840 predecessor pins verified at sealing;0/0 accepted logs, maximum
+accepted RSS3850748KiB.45 attempts:21 wholly accepted,23 failed and one
+preflight refusal without receipt, all retained.14 normal/UBSan controls,
+8 independent ZZ Keccak cases and24 two-call sampler cases each; six
+mutations detected in both modes. Source commits `7a1d5bc2`, `e617e098`,
+`9f0e5ef8`, plus final documentation commit. No owned job or unresolved
+Lean draft remains. Expanded `notes/run/KEYGEN_RESIDUE_CHECKPOINT.md` §6
+is the resume entry. **CLOSED_AT_RECOVERABLE_MIDPOINT**, as requested for
+the BIG stage. No push, independent review, import, migration or new worker.
+Postseal:2317 distinct pinned files and433 current inputs match, no active
+job; `.build/execution_022/POSTSEAL.json` SHA256
+`98f8b5df9acd2d8bd24a80d9cdb7d14e376e5d58de71c8ce6aa65341e016bf17`.
+
 ## B1.05 — execution continuation — 2026-10-07
 
 Owner resumed section6 with GPT-6 Astra Ultrafast. BATCH_015–021 and1840
