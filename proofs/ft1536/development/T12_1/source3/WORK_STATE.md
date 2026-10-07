@@ -28,6 +28,23 @@ G conversion. Accepted `_small_step_021_002`, `_small_bounds_021_002`,
 `_small_calls_021_001` (prefix `keygen`), all0/0 logs. Actual enclosing
 struct-member arguments and source short-circuit gate remain open.
 
+`KeygenTernaryStore.accepted_store` now covers the actual MODE1 post-refill
+draw/shift/decrement/guard/store/break tail, returning the Store16 witness
+and Bound1 scalar facts. Rejected draws preserve the heap. Full refill,
+SHAKE body binding and outer/inner-loop material composition remain open.
+Accepted `_ternary_store_021_001`,0/0 logs. Internal `_small_audit_021_001`:
+107 entries including all98 new declarations,97 full terms/10 inductives,
+standard axioms only, no elisions, all415 current inputs bound. Audit SHA256
+`1cb4f42e0da7ff629f0832c529c071a69c68efdc5a3116f47ad6dd36b3384825`.
+
+`keygen_small_checks_021_001`:14 normal/UBSan executions,36 small-output
+edge cases and24 two-call sampler cases each; six mutations detected in both
+modes. Real pinned shake.c, public fixture labels, exact ZZ reference;
+no private KeyGen or probability claim. `_solver_graph_021_003`:99-node
+unpruned/92-node top-M0-selected solver census and6-node real sampler graph.
+See `notes/run/KEYGEN_SOLVER_GRAPH_021.md`; census does not prove operational
+coverage. No owned job remains; preparing the recoverable BATCH_021 midpoint.
+
 ## B1.05 — CLOSED at recoverable validation midpoint — 2026-10-07
 
 `KeygenSolverValidation.generated_converted_checked` now composes the
