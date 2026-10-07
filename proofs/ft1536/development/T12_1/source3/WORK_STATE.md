@@ -1,5 +1,25 @@
 # T12.1/source3 — żywy stan
 
+## B1.05 — search continuation — 2026-10-08
+
+Owner resumed checkpoint section6 for another BIG recoverable midpoint.
+GPT-6 Astra Ultrafast verified BATCH_015–022,2317 distinct pinned files,
+433 current inputs and1840 predecessor pins; all45 BATCH_022 attempts remain.
+`.build/search_023/PREFLIGHT.json` SHA256
+`c43284c6a1d1f0672eb6f2ed54bab2be7b18d2c60c7d53ffc2a6fa51e6393e1d`.
+Shared physical main, foreign changes/staging and ownership checked; no live
+proof job at entry. Source3 remains the active lane.
+
+`KeygenSearchFft` adds complete source-parsed iFFT3, polynomial multiply and
+inverse-norm bodies to the fixed FFT procedure closure, with kernel-checked
+closed write footprints. Execution uses actual FPEMU word callees and source
+tables. This supplies operational/frame dependencies of ternary_depth0; it
+is not a real-arithmetic FFT theorem or full solver execution. Accepted job
+`keygen_search_fft_023_002`,0/0 logs. The first monolithic inherited audit
+exceeded the unchanged kernel memory budget; separate checked declarations
+resolved it. The failed source snapshot and raw streams are retained.
+B1.05 Acceptance remains NOT_MET. Window IN_PROGRESS.
+
 ## B1.05 — CLOSED at sampler/refill and validation midpoint — 2026-10-07
 
 **B1.05 Acceptance NOT MET.** The complete local MODE1 loops and real SHAKE
