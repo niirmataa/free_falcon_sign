@@ -32,10 +32,34 @@ with0/0 logs. Source pins `3b363707…` / `32a89307…`; receipts
 `d9d2418f34a2daadcc8a7f728a9523f24e09d64e7406663b72898de15af15e3c` /
 `8bf082c1597a361b990f3943c724713d2be7cc5a59399b36f2f0bf2536c3781f`.
 
-Window IN_PROGRESS. Next: identify this complete array with the original
-polynomial evaluations via the source twiddle tree, then consume preceding
-table generation/conversion. B1.04 Acceptance remains open. Small local
-commits use the shared writer lock; no owned job is live at this checkpoint.
+`KeygenNttTwiddleCert` now checks all512 bounded parent candidates in32
+kernel chunks;510 non-top parents have the exact odd-child signed laws.
+Sage generation is byte-identical to the tracked certificate.
+`KeygenNttTwiddleTree` proves the field laws, h^2304=-1, the separate top
+complement and final cube transports. `KeygenNttRoundPolynomial` proves
+every sequential block's polynomial identity and propagates evaluation
+of the original CoefficientQuotient polynomial through all eight rounds.
+
+**B1.04 proof Acceptance is met; final checkpoint sealing is in progress.**
+`KeygenNttTransform.source_transform` concludes all1536 canonical physical
+output words equal to the original Vec polynomial evaluations.
+`generated_converted_transform` consumes table generation, actual conversion
+and the complete forwardBody, deriving canonical inputs and gm from those
+source executions. Legal caller memory, original bounded material, source
+execution and cross-call scalar/pointer/heap bindings remain explicit.
+No transform evaluation, initialized-table or canonical-result premise is
+present in that final composition. Full solver/caller/codec/fiber remains
+later work; the NTT frame preserves disjoint canonical32-bit cells, not yet
+an arbitrary16-bit original-material byte-frame theorem.
+
+Accepted `keygen_ntt_transform_019_001` / `_transform_audit_019_002`,0/0 logs.
+Internal audit:131 entries,128 complete terms and3 kernel structures with
+constructor types, standard axioms only, zero elisions. Audit SHA256
+`b0c28ef18d7adac420967897725867f5e8bc59ab980f0500b4c16558d68e50de`.
+Final transform source `0f60483e60ec1f37664d8fc788894144e8cc7e96f504845f786c4c4ec4f3d68a`.
+The unchanged prime-proof DAG and prior finite C controls remain BATCH_018
+dependencies. No full-project replay was repeated. Small local commits use
+the shared writer lock; no owned proof job is live. B1.05 has not been entered.
 
 ## B1.04 — recoverable midpoint, first pass and radix-2 blocks — 2026-10-07
 
