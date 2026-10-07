@@ -1,5 +1,33 @@
 # T12.1/source3 — żywy stan
 
+## B1.05 — CLOSED at complete depth0/search-frame midpoint — 2026-10-08
+
+**B1.05 Acceptance NOT MET.** Complete local `solve_NTRU_ternary_depth0`
+execution now derives f/g byte preservation and int32 return1. Its composition
+with the actual F/G gate derives Bounds2047 and passes the same four vectors
+to exact NTRU/retained-material validation. **Deepest/intermediate, full root
+caller and sampled f/g transport through all preceding gates/search remain
+open.** The incoming f/g Bounds1 and inherited caller/Validation seams are
+explicit; no arbitrary callee, frame or source-completeness premise fills them.
+
+BATCH_023 JSON `b39218519e349795bad183b6ccc234c89c1aa11c7102d2ff57005a0344274a95`;
+notes `d21ed7413e216eaee69afdbae2abdfc621ec3e04203491328c067af707859592`.
+12 current accepted Lean modules,180 complete audit entries,445 final inputs
+and2317 predecessor file pins verified at sealing;0/0 current logs, maximum
+accepted cumulative RSS5251876KiB.19 attempts:7 wholly accepted,11 failed and
+one non-proof lexer diagnostic, all retained.14 normal/UBSan controls ×7 exact
+ZZ public cases; all six mutations detected in both modes.
+
+Source commits `409c3ae9`, `633c6200`, `f8195a0c`, plus final documentation
+commit; main as niirmataa under archive.lock with exact owned paths.
+Postseal verified2595 distinct file pins and445 current inputs, no active
+job: `.build/search_023/POSTSEAL.json` SHA256
+`3b5680be3317752ba8910996adf1d84e08bcb771cf63ce394d2eb4fd03da152e`.
+No owned job or unresolved Lean draft remains. Expanded
+`notes/run/KEYGEN_RESIDUE_CHECKPOINT.md` section6 is the resume entry.
+**CLOSED_AT_RECOVERABLE_MIDPOINT**; next window resumes B1.05. B1.06 was not
+entered. No push, review, import, migration, subagent or relay.
+
 ## B1.05 — search continuation — 2026-10-08
 
 Owner resumed checkpoint section6 for another BIG recoverable midpoint.
