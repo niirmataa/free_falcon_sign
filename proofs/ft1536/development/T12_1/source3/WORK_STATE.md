@@ -1,5 +1,23 @@
 # T12.1/source3 — żywy stan
 
+## B1.05 — CLOSED at recoverable source-bounds midpoint — 2026-10-07
+
+**B1.05 Acceptance NOT MET.** Complete parsed poly_big_to_small now yields
+same-byte Represents/Bound2047; source MODE1 post-refill stores yield bound1.
+Full solver/caller execution and full sampler/refill/f-g material remain
+open. The existing BATCH_020 validation theorem still requires their bounds
+and actual caller bindings. Graph census99/92/6 is inventory, not a proof
+of full operational coverage. Next owner window resumes B1.05.
+
+BATCH_021 JSON `ed560886f8cacfe513cea222b46552cf3abc717a1232172a1da197753393395a`;
+notes `a08b583aae3dc02996e21717eeab54085470b662b4854eb2dc5fa250b0701b55`.
+Six accepted new modules,107 complete audit entries,415 current inputs and
+1594 predecessor pins verified at sealing;0/0 accepted logs.18 attempts,
+9 failed, all retained. Source commits `f17fe9b2`, `8b55f52f`, `20d4e524`,
+plus final documentation commit. No owned job or unresolved Lean draft.
+Expanded `notes/run/KEYGEN_RESIDUE_CHECKPOINT.md` section6 is the resume
+entry. Window CLOSED_AT_RECOVERABLE_MIDPOINT; no push/review/import/migration.
+
 ## B1.05 — source bounds continuation — 2026-10-07
 
 Owner resumed section6 in source3, GPT-6 Astra Ultrafast. Preflight verified

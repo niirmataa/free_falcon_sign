@@ -1,0 +1,1955 @@
+{
+  "task": "KEYGEN_SOURCE_TO_FIBER_001",
+  "batch": "BATCH_021",
+  "stage": "B1.05",
+  "created_utc": "2026-10-07T18:37:05.540201+00:00",
+  "window": "CLOSED_AT_RECOVERABLE_MIDPOINT",
+  "b1_05_acceptance": "NOT_MET",
+  "stage_result": "PARTIAL_PROOF",
+  "status": "IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN",
+  "harness": "GPT-6 Astra Ultrafast / openai/gpt-6-astra-ultrafast",
+  "runner_note": "Historical runner model/session labels retained as provenance; unchanged serial guarded execution.",
+  "runner": {
+    "path": "tools/job.py",
+    "sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+    "bytes": 12792
+  },
+  "waiter": {
+    "path": "tools/job_when_available.py",
+    "sha256": "525785c5321ebdda583c4e42d0daf5243b29146d10d47bd086d65fd89c53c37b",
+    "bytes": 3870
+  },
+  "organizer": {
+    "path": "tools/keygen_small_batch.py",
+    "sha256": "942d1564456ff7a4215000e01b93399b017bdf3abec9fc589ab75bffcdeb46e1",
+    "bytes": 13527
+  },
+  "organizer_helpers": {
+    "path": "tools/keygen_ntt_batch.py",
+    "sha256": "70aedf6cc132052d6a6a6ca48e400e5c1cccff051d5f5e91b1abf80c8b14717e",
+    "bytes": 15050
+  },
+  "preflight": {
+    "path": ".build/bounds_021/PREFLIGHT.json",
+    "sha256": "f5826bbb7d8b277751330e6edb717b2a0d9419b653168a46a115ec5c06347303",
+    "bytes": 355997
+  },
+  "preflight_program": {
+    "path": ".build/bounds_021/preflight.py",
+    "sha256": "eb8dc83d68b3d89ec593a1e154c0905db55e6e025a39403fb3b251332fafb7a9",
+    "bytes": 3652
+  },
+  "preflight_files_checked": 1594,
+  "preflight_current_inputs": 409,
+  "input_pins": {
+    "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_015.json": "b5bb63f5ddfb423ff6a4742dfd2893bcc7587b4cb50f51877b9b3910285be134",
+    "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_015_NOTES.md": "aec981ffab3f9065ac10d6d99f4f931ceccd852f237382e3b0240b64fbe53cd8",
+    "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_016.json": "cc28381bb1188400d0ea1d15e3c83ba045a2e5476a9644ee4dd0585c58e2b25f",
+    "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_016_NOTES.md": "e323ac9783e41e2143638088af6cfb0453b756a8418273b62bd961c1b0695419",
+    "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_017.json": "50f35519c32d1d16dd6987b781ac43e59cc835dd076ce15f146a1fe9ac9cbc0b",
+    "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_017_NOTES.md": "814660ca606d29600793dc3e61e5903b05ef56e83042b4d6aba131f86c6f28d6",
+    "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_018.json": "f4e28b724e588b7e91cdb429646dfefe5939332f307f0ae15dc282369edc72cf",
+    "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_018_NOTES.md": "c19d5c9cb893793dd6ff23fa232271fcfe704f0821160de1a1e2065551bd546d",
+    "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_019.json": "983a481a10293c01bf80250a9dd4ad2797e351db0a3c5d41825845d80fde6098",
+    "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_019_NOTES.md": "289d85f0ec1f25fe5950ad6b182363afe9ede0484c3053cf0c915d9cd52b1c01",
+    "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_020.json": "6b8a839151d8d174eb1b6a8b09e1b2f02a8f6c20b8c9055d40e687e951602dff",
+    "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_020_NOTES.md": "b402d5035667835182f539ed8ee8a812ad00a75687bd0662950373a098e26c6d"
+  },
+  "proof_head": "20d4e524ac90355fc4ea9a0a327f1a990e354875",
+  "accepted_module_checks": [
+    {
+      "module": "Source3.KeygenSmallSource",
+      "source": {
+        "path": "formal/Source3/KeygenSmallSource.lean",
+        "sha256": "9cbbe3175a481d5e82d171f9dd2c76c39115e854b78a1cc3b21ea76192a01654",
+        "bytes": 10709
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_small_source_021_007/formal/Source3/KeygenSmallSource.lean",
+        "sha256": "9cbbe3175a481d5e82d171f9dd2c76c39115e854b78a1cc3b21ea76192a01654",
+        "bytes": 10709
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_small_source_021_007/lib/Source3/KeygenSmallSource.olean",
+        "sha256": "a5d81219e92d05fe83ce9793688f2e7dfb66019f88b18d36764237d1cec7ec12",
+        "bytes": 16389272
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_small_source_021_007/RECEIPTS.json",
+        "sha256": "d20f0c61e14574e6551a3a67b2444b8f7af3200593317f096b42b7fe0a1dfa2b",
+        "bytes": 2987
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_small_source_021_007/SOURCE_INPUTS.json",
+        "sha256": "ca432bb7b6348d8cf4c4fedb38200f92e4407f0c3a9bbf53e962b4cf84659221",
+        "bytes": 424071
+      },
+      "job": "keygen_small_source_021_007",
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_small_source_021_007/logs/Source3_KeygenSmallSource.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_small_source_021_007/logs/Source3_KeygenSmallSource.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenNttForwardExec": "7dcba0105496cbcfa4d0abf055a58c0db3d6b8e1c65d49194e51c1a4c018a2bf",
+        "Source3.KeygenSmallOutput": "19076f8a851b5aeabbafca1f17c1ace66c2b76ce8aa30f1c8ded72e285432aa4",
+        "Source3.C99ModularFrame": "3d710ce17b31fcf50069376f5fbcdce23ec843754d1badcb39d951a1af6fd9ff",
+        "Source3.StableBinaryByteView": "099b82f558f80b82de3c777764385974ef4f2ba163e9f4f9f02fec34d1192d6b"
+      },
+      "elapsed_s": 7.831,
+      "maxrss_kib": 2832532
+    },
+    {
+      "module": "Source3.KeygenSmallStep",
+      "source": {
+        "path": "formal/Source3/KeygenSmallStep.lean",
+        "sha256": "77478f1aacd6ef48409b89cd157597d736685fc2c50414826e0250f8cdaa5b08",
+        "bytes": 11112
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_small_step_021_002/formal/Source3/KeygenSmallStep.lean",
+        "sha256": "77478f1aacd6ef48409b89cd157597d736685fc2c50414826e0250f8cdaa5b08",
+        "bytes": 11112
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_small_step_021_002/lib/Source3/KeygenSmallStep.olean",
+        "sha256": "c2e82974078a25a4bfa3ebe0f386c46a199b6bb041c8e3e635ea997954fdd2c1",
+        "bytes": 870360
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_small_step_021_002/RECEIPTS.json",
+        "sha256": "bf54d9f200d0f8e7a6088cf6d86cde0e790dc2ac5d3c96ef8e99840e8138ab07",
+        "bytes": 2955
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_small_step_021_002/SOURCE_INPUTS.json",
+        "sha256": "ebf645b32c19795787953f473dcc4ad5e79f6566fc7e5e33454f1e64fcff1866",
+        "bytes": 425428
+      },
+      "job": "keygen_small_step_021_002",
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_small_step_021_002/logs/Source3_KeygenSmallStep.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_small_step_021_002/logs/Source3_KeygenSmallStep.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenSmallSource": "a5d81219e92d05fe83ce9793688f2e7dfb66019f88b18d36764237d1cec7ec12",
+        "Source3.KeygenCheckLoopBridge": "080eec9d174276d0ef4bc63d6f7619c6db8e2bc9c9ba12773fbaa4c73e98ebbc"
+      },
+      "elapsed_s": 1.367,
+      "maxrss_kib": 2508368
+    },
+    {
+      "module": "Source3.KeygenSmallBounds",
+      "source": {
+        "path": "formal/Source3/KeygenSmallBounds.lean",
+        "sha256": "c2fe02ab3e5d9556a9ebffafe1a1467c698524fd53935e5a2d2432f84a1ca677",
+        "bytes": 12320
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_small_bounds_021_002/formal/Source3/KeygenSmallBounds.lean",
+        "sha256": "c2fe02ab3e5d9556a9ebffafe1a1467c698524fd53935e5a2d2432f84a1ca677",
+        "bytes": 12320
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_small_bounds_021_002/lib/Source3/KeygenSmallBounds.olean",
+        "sha256": "1ad0158944332120fb3d1d6055dad121dab53c38fa33dd88e15660424a8db208",
+        "bytes": 784928
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_small_bounds_021_002/RECEIPTS.json",
+        "sha256": "0c561d71cb55441ea0ab10abe24091183167694f741db5b01e38e9e7a3642a25",
+        "bytes": 2987
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_small_bounds_021_002/SOURCE_INPUTS.json",
+        "sha256": "db4628fca05d4daefd1a4d212f1c221272125be8aabbb4623b7f020146354663",
+        "bytes": 426571
+      },
+      "job": "keygen_small_bounds_021_002",
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_small_bounds_021_002/logs/Source3_KeygenSmallBounds.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_small_bounds_021_002/logs/Source3_KeygenSmallBounds.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenSmallStep": "c2e82974078a25a4bfa3ebe0f386c46a199b6bb041c8e3e635ea997954fdd2c1",
+        "Source3.KeygenMaterial": "2976855fbf270a1f0ed62dad67ef0e3b088fc5ce041233f9d92b5927ea1d9143"
+      },
+      "elapsed_s": 1.468,
+      "maxrss_kib": 2740572
+    },
+    {
+      "module": "Source3.KeygenSmallCalls",
+      "source": {
+        "path": "formal/Source3/KeygenSmallCalls.lean",
+        "sha256": "587eec0c6b48a720a2d28fcaa33455deeef328e95916727fb5db4521b0252d42",
+        "bytes": 6791
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_small_calls_021_001/formal/Source3/KeygenSmallCalls.lean",
+        "sha256": "587eec0c6b48a720a2d28fcaa33455deeef328e95916727fb5db4521b0252d42",
+        "bytes": 6791
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_small_calls_021_001/lib/Source3/KeygenSmallCalls.olean",
+        "sha256": "45a63136adb0d1d9b2268ab3534ac4f39089ccad5754fd6bc5685ba4fae8623e",
+        "bytes": 336752
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_small_calls_021_001/RECEIPTS.json",
+        "sha256": "1c19a6be904f96b1dfe350109a252166fa4a2b31bbb696fe0b1ce009db2328ec",
+        "bytes": 2971
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_small_calls_021_001/SOURCE_INPUTS.json",
+        "sha256": "0ed1b3f2b39bd16532dc9964e105bd0507cfebbed5e598cce0ea8f555b7a4441",
+        "bytes": 427711
+      },
+      "job": "keygen_small_calls_021_001",
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_small_calls_021_001/logs/Source3_KeygenSmallCalls.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_small_calls_021_001/logs/Source3_KeygenSmallCalls.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenSmallBounds": "1ad0158944332120fb3d1d6055dad121dab53c38fa33dd88e15660424a8db208",
+        "Source3.KeygenSolverNttCalls": "260bdbcf0f7007ef81a0e826f651818a0568958328a365b82a7a659284f8cc66"
+      },
+      "elapsed_s": 1.267,
+      "maxrss_kib": 2773748
+    },
+    {
+      "module": "Source3.KeygenTernaryStore",
+      "source": {
+        "path": "formal/Source3/KeygenTernaryStore.lean",
+        "sha256": "7fd5038f27fb247e69724b8d18ef4f5f4e41d66944718351b167a27841416fae",
+        "bytes": 8596
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_ternary_store_021_001/formal/Source3/KeygenTernaryStore.lean",
+        "sha256": "7fd5038f27fb247e69724b8d18ef4f5f4e41d66944718351b167a27841416fae",
+        "bytes": 8596
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_ternary_store_021_001/lib/Source3/KeygenTernaryStore.olean",
+        "sha256": "f6db273d80a18b83b9ddb9524ff8d19a192ee647a76f26f33e58b102d4136c8b",
+        "bytes": 620264
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_ternary_store_021_001/RECEIPTS.json",
+        "sha256": "67e2032444eeaffb7c76925d1783229317744c0ff29667178eae3fd6ccfff28c",
+        "bytes": 3002
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_ternary_store_021_001/SOURCE_INPUTS.json",
+        "sha256": "1c4ce63b1614b726fd9ff1ac923dbc918f665f50b0cad26b75beeea3b09dd903",
+        "bytes": 428859
+      },
+      "job": "keygen_ternary_store_021_001",
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_ternary_store_021_001/logs/Source3_KeygenTernaryStore.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_ternary_store_021_001/logs/Source3_KeygenTernaryStore.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenSmallStep": "c2e82974078a25a4bfa3ebe0f386c46a199b6bb041c8e3e635ea997954fdd2c1",
+        "Source3.KeygenTernaryBound": "372fa59bd6b81f684d539d7c9384b72308ff1a150cec99d966f8a26390847555"
+      },
+      "elapsed_s": 2.77,
+      "maxrss_kib": 2572340
+    },
+    {
+      "module": "Source3.KeygenSmallBoundsAudit",
+      "source": {
+        "path": "formal/Source3/KeygenSmallBoundsAudit.lean",
+        "sha256": "e314b2696bbacb8a4e16aa75fcd58abef9c85ba58bfcd080c4d27660a97a6b80",
+        "bytes": 4377
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_small_audit_021_001/formal/Source3/KeygenSmallBoundsAudit.lean",
+        "sha256": "e314b2696bbacb8a4e16aa75fcd58abef9c85ba58bfcd080c4d27660a97a6b80",
+        "bytes": 4377
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_small_audit_021_001/lib/Source3/KeygenSmallBoundsAudit.olean",
+        "sha256": "fd2a242ec574b018e62a0bd520760b572aff6d73165be2ae5629f8d3993d8001",
+        "bytes": 2672
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_small_audit_021_001/RECEIPTS.json",
+        "sha256": "096ef38da8046f839f7f9502bf408c1c1ac730b170a8b1fff81f8ecb6d453d91",
+        "bytes": 3012
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_small_audit_021_001/SOURCE_INPUTS.json",
+        "sha256": "24802776ee7ddf068b1aced540e4ad79986d898b898e3da602952da1defeee70",
+        "bytes": 430019
+      },
+      "job": "keygen_small_audit_021_001",
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_small_audit_021_001/logs/Source3_KeygenSmallBoundsAudit.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_small_audit_021_001/logs/Source3_KeygenSmallBoundsAudit.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenSmallCalls": "45a63136adb0d1d9b2268ab3534ac4f39089ccad5754fd6bc5685ba4fae8623e",
+        "Source3.KeygenTernaryStore": "f6db273d80a18b83b9ddb9524ff8d19a192ee647a76f26f33e58b102d4136c8b"
+      },
+      "elapsed_s": 2.72,
+      "maxrss_kib": 2782020
+    }
+  ],
+  "current_final_audit_inputs": 415,
+  "contracts": {
+    "small_body": "Complete parsed poly_big_to_small execution, M0 logn10/ter1 and destination binding/width imply same-output Represents and Bound2047. Source MKN, u initialization, every guard/increment/store and return are derived; no bound premise.",
+    "plain_callee": "Fixed zint_one_to_plain parsed load/update prefix and signed32 local-object byte read, with checked little-endian object roundtrip; no return-value oracle.",
+    "call_frame": "Actual Bind/nonzero converted return yield successful bounded writes. A disjoint byte frame preserves the same first output through the second write trace.",
+    "ternary_tail": "Post-refill source x extraction/rb shift/rbits decrement, actual comparison, narrow store and break yield a Store16 witness with coefficient in [-1,1]. Rejected draw preserves heap. This does not derive the full f/g Vec yet.",
+    "graph": "99-node unpruned/92-node top-M0-selected transitive compiler graph and6-node sampler closure. Deeper runtime branches are a conservative overapproximation. Inventory only; not formal source execution or a completeness premise.",
+    "open": "Complete solver/search fixed-body execution; actual member/pointer/profile arguments and both short-circuit output calls; complete MODE1 refill/loops with fk->rng/get_rng_u64/shake_extract/Keccak and earlier-material preservation; consume BATCH_020 validation on the same four vectors."
+  },
+  "audit": {
+    "path": ".build/jobs/keygen_small_audit_021_001/SMALL_BOUNDS_AUDIT.json",
+    "sha256": "1cb4f42e0da7ff629f0832c529c071a69c68efdc5a3116f47ad6dd36b3384825",
+    "bytes": 819214,
+    "receipt": {
+      "path": ".build/jobs/keygen_small_audit_021_001/RECEIPTS.json",
+      "sha256": "096ef38da8046f839f7f9502bf408c1c1ac730b170a8b1fff81f8ecb6d453d91",
+      "bytes": 3012
+    },
+    "source_inputs": {
+      "path": ".build/jobs/keygen_small_audit_021_001/SOURCE_INPUTS.json",
+      "sha256": "24802776ee7ddf068b1aced540e4ad79986d898b898e3da602952da1defeee70",
+      "bytes": 430019
+    },
+    "exports": 107,
+    "new_declarations": 98,
+    "full_pretty_terms": 97,
+    "kernel_inductives_with_constructor_types": 10,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "elisions": 0,
+    "generator": "formal/Source3/KeygenSmallBoundsAudit.lean",
+    "independent_review": false
+  },
+  "sage": [
+    {
+      "job": "keygen_small_checks_021_001",
+      "source": {
+        "path": "sage/check_keygen_small_bounds.sage",
+        "sha256": "cdaef25d3f771d370dd57b5ddc97b9baa80e15122cdddc148bc3ccea21d24147",
+        "bytes": 8061
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_small_checks_021_001/sage/check_keygen_small_bounds.sage",
+        "sha256": "cdaef25d3f771d370dd57b5ddc97b9baa80e15122cdddc148bc3ccea21d24147",
+        "bytes": 8061
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_small_checks_021_001/RECEIPTS.json",
+        "sha256": "16da9f8bc4b6feda36f46f723ad0cbb24ebe41e346ec1248df8c80ab1f5b5fac",
+        "bytes": 2284
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_small_checks_021_001/SOURCE_INPUTS.json",
+        "sha256": "0be7208f73b0f9c7fb5fe17e4127303a6717cad129cfdc3de07f7effb2028fc9",
+        "bytes": 429962
+      },
+      "result": {
+        "path": ".build/jobs/keygen_small_checks_021_001/SMALL_BOUNDS_CHECK.json",
+        "sha256": "b7207ef3609c0b0b5b5a669869d7c2442737e7f799c86ffc4078769c902c3a9a",
+        "bytes": 24325
+      },
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_small_checks_021_001/logs/sage.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_small_checks_021_001/logs/sage.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "artifacts": [
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_baseline.c",
+          "sha256": "f88be9c063086cd19f6dacaed2faaf3600904dc77db8b96a91ba29294fc36adc",
+          "bytes": 3778
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_baseline.stdout",
+          "sha256": "cae90df614b715ab038f1ee0e40cc5395d3cd2cbc2af0885ad98c7f0ffeab694",
+          "bytes": 31795
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_baseline.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_baseline.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_baseline.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_widened_bound.c",
+          "sha256": "5820e00eeb4d5f2d3b6ccd95b355c2859b350185d57efd334474201a2c8f54a1",
+          "bytes": 3778
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_widened_bound.stdout",
+          "sha256": "213a9b8b22400be1b453968f44485125a83962109daff8870510e2e05a145a11",
+          "bytes": 31803
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_widened_bound.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_widened_bound.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_widened_bound.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_wrong_sign_bit.c",
+          "sha256": "14f9929265acd596b81e4a05ea93bb8aa372adb0cb636395e2ab518a12ba4bc9",
+          "bytes": 3778
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_wrong_sign_bit.stdout",
+          "sha256": "9af230d44f42fe0a8bbe0f79477f186222565f8615c303b12f04f35d1f886fcf",
+          "bytes": 31838
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_wrong_sign_bit.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_wrong_sign_bit.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_wrong_sign_bit.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_missing_last_store.c",
+          "sha256": "8a3c0e401969a0b9b3a1a8f72ba39b1bebad9727735637c425917866026208e4",
+          "bytes": 3793
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_missing_last_store.stdout",
+          "sha256": "19f492e1492a8ef19d1cf040c815697cd4be451ad28204f9f90fba37938911f7",
+          "bytes": 31795
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_missing_last_store.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_missing_last_store.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_missing_last_store.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_accept_three.c",
+          "sha256": "5e4835ae03b1ca4d25269d1437212d72948ed4c5bbabe3651d0ff72381bfed06",
+          "bytes": 3778
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_accept_three.stdout",
+          "sha256": "357548d260ec5e191d84d218bfc9c1f79c8fd58e3da2a3c96eb54ae7a84dce2e",
+          "bytes": 30755
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_accept_three.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_accept_three.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_accept_three.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_wrong_center.c",
+          "sha256": "4364cb709f7e9960c2507a850899537dec71f30026078dde6a8ff1607ecf4ca0",
+          "bytes": 3778
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_wrong_center.stdout",
+          "sha256": "6b9cff3f971b5249245bf9b1c3fe82e70e546c1bc101393b5c71afdc10e91a6e",
+          "bytes": 27587
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_wrong_center.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_wrong_center.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_wrong_center.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_wrong_shift.c",
+          "sha256": "2913d63bb8d3cd9a191271d44a69b80e1637ddc38db975c3c0980f2d63f1c611",
+          "bytes": 3778
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_wrong_shift.stdout",
+          "sha256": "6ad5412656d2d9bc5e0dcb7b94ca74f7ed809cd6bb58242896817d66f9d92c60",
+          "bytes": 31991
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_wrong_shift.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_wrong_shift.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/normal_wrong_shift.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_baseline.c",
+          "sha256": "f88be9c063086cd19f6dacaed2faaf3600904dc77db8b96a91ba29294fc36adc",
+          "bytes": 3778
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_baseline.stdout",
+          "sha256": "cae90df614b715ab038f1ee0e40cc5395d3cd2cbc2af0885ad98c7f0ffeab694",
+          "bytes": 31795
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_baseline.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_baseline.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_baseline.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_widened_bound.c",
+          "sha256": "5820e00eeb4d5f2d3b6ccd95b355c2859b350185d57efd334474201a2c8f54a1",
+          "bytes": 3778
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_widened_bound.stdout",
+          "sha256": "213a9b8b22400be1b453968f44485125a83962109daff8870510e2e05a145a11",
+          "bytes": 31803
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_widened_bound.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_widened_bound.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_widened_bound.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_wrong_sign_bit.c",
+          "sha256": "14f9929265acd596b81e4a05ea93bb8aa372adb0cb636395e2ab518a12ba4bc9",
+          "bytes": 3778
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_wrong_sign_bit.stdout",
+          "sha256": "9af230d44f42fe0a8bbe0f79477f186222565f8615c303b12f04f35d1f886fcf",
+          "bytes": 31838
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_wrong_sign_bit.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_wrong_sign_bit.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_wrong_sign_bit.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_missing_last_store.c",
+          "sha256": "8a3c0e401969a0b9b3a1a8f72ba39b1bebad9727735637c425917866026208e4",
+          "bytes": 3793
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_missing_last_store.stdout",
+          "sha256": "19f492e1492a8ef19d1cf040c815697cd4be451ad28204f9f90fba37938911f7",
+          "bytes": 31795
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_missing_last_store.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_missing_last_store.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_missing_last_store.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_accept_three.c",
+          "sha256": "5e4835ae03b1ca4d25269d1437212d72948ed4c5bbabe3651d0ff72381bfed06",
+          "bytes": 3778
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_accept_three.stdout",
+          "sha256": "357548d260ec5e191d84d218bfc9c1f79c8fd58e3da2a3c96eb54ae7a84dce2e",
+          "bytes": 30755
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_accept_three.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_accept_three.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_accept_three.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_wrong_center.c",
+          "sha256": "4364cb709f7e9960c2507a850899537dec71f30026078dde6a8ff1607ecf4ca0",
+          "bytes": 3778
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_wrong_center.stdout",
+          "sha256": "6b9cff3f971b5249245bf9b1c3fe82e70e546c1bc101393b5c71afdc10e91a6e",
+          "bytes": 27587
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_wrong_center.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_wrong_center.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_wrong_center.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_wrong_shift.c",
+          "sha256": "2913d63bb8d3cd9a191271d44a69b80e1637ddc38db975c3c0980f2d63f1c611",
+          "bytes": 3778
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_wrong_shift.stdout",
+          "sha256": "6ad5412656d2d9bc5e0dcb7b94ca74f7ed809cd6bb58242896817d66f9d92c60",
+          "bytes": 31991
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_wrong_shift.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_wrong_shift.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/ubsan_wrong_shift.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "job": "keygen_solver_graph_021_003",
+      "source": {
+        "path": "sage/inventory_keygen_solver_graph.sage",
+        "sha256": "cf987294b9e1a105db494805286f5f7497ff425f173ca2d019602e950a1ce187",
+        "bytes": 6485
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_solver_graph_021_003/sage/inventory_keygen_solver_graph.sage",
+        "sha256": "cf987294b9e1a105db494805286f5f7497ff425f173ca2d019602e950a1ce187",
+        "bytes": 6485
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_solver_graph_021_003/RECEIPTS.json",
+        "sha256": "cbf8538dc48dd5309a18cf5ebd0cd09d764b656d8a0458c3ac164ce1af185c4b",
+        "bytes": 2291
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_solver_graph_021_003/SOURCE_INPUTS.json",
+        "sha256": "74569d1cb1a077a5cbfb0639d3c0d7959961dae4ae69b6adcae84e56900b3bad",
+        "bytes": 431131
+      },
+      "result": {
+        "path": ".build/jobs/keygen_solver_graph_021_003/SOLVER_GRAPH.json",
+        "sha256": "dd0e42256a6178bc05d7304d06dfd5a2cea9d34e14ba81999b59958e7ebc3b7c",
+        "bytes": 116108
+      },
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_solver_graph_021_003/logs/sage.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_solver_graph_021_003/logs/sage.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "artifacts": [
+        {
+          "path": ".build/jobs/keygen_solver_graph_021_003/falcon-keygen.c.000i.cgraph",
+          "sha256": "6a335c9f686fb46326a431a58c08f69257c92c0bbe58091699644d8bef92f7d1",
+          "bytes": 460658
+        },
+        {
+          "path": ".build/jobs/keygen_solver_graph_021_003/falcon-keygen.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_solver_graph_021_003/falcon-keygen.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_solver_graph_021_003/falcon-fft.c.000i.cgraph",
+          "sha256": "297719b3892cbaeb937783340400830566b5d949f9f6fda950cdcd5d72bb5f61",
+          "bytes": 245132
+        },
+        {
+          "path": ".build/jobs/keygen_solver_graph_021_003/falcon-fft.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_solver_graph_021_003/falcon-fft.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_solver_graph_021_003/fpr-emulated.c.000i.cgraph",
+          "sha256": "6740349de2db635e39904fbbf43724dafee5e5ffbac631568cabc6a3c1aa860b",
+          "bytes": 27476
+        },
+        {
+          "path": ".build/jobs/keygen_solver_graph_021_003/fpr-emulated.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_solver_graph_021_003/fpr-emulated.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_solver_graph_021_003/shake.c.000i.cgraph",
+          "sha256": "ade919556b0f164864710f12883b17e234b12505a8479fdea3555177ea193d62",
+          "bytes": 31336
+        },
+        {
+          "path": ".build/jobs/keygen_solver_graph_021_003/shake.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_solver_graph_021_003/shake.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_solver_graph_021_003/GCC_VERSION.txt",
+          "sha256": "1363bec747b70a9a1c7c5fa88d3ee5e2b8dd0427cf1baa9aff35e04ffa01e158",
+          "bytes": 240
+        }
+      ]
+    }
+  ],
+  "graph_note": {
+    "path": "notes/run/KEYGEN_SOLVER_GRAPH_021.md",
+    "sha256": "cc32af588b15a16602215701c7bfa4c9c9acf3fca84f33cb36fbe6194554942d",
+    "bytes": 5604
+  },
+  "attempt_history": [
+    {
+      "job": "keygen_small_audit_021_001",
+      "receipt": {
+        "path": ".build/jobs/keygen_small_audit_021_001/RECEIPTS.json",
+        "sha256": "096ef38da8046f839f7f9502bf408c1c1ac730b170a8b1fff81f8ecb6d453d91",
+        "bytes": 3012
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_small_audit_021_001/SOURCE_INPUTS.json",
+        "sha256": "24802776ee7ddf068b1aced540e4ad79986d898b898e3da602952da1defeee70",
+        "bytes": 430019
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_small_audit_021_001/PREFLIGHT.json",
+        "sha256": "77522548de5bd816d442f94b9c2fbfa881a9d191af8b40b9020402a740fc5cce",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_small_audit_021_001/formal/Source3/KeygenSmallBoundsAudit.lean",
+          "sha256": "e314b2696bbacb8a4e16aa75fcd58abef9c85ba58bfcd080c4d27660a97a6b80",
+          "bytes": 4377
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenSmallBoundsAudit",
+          "accepted": true,
+          "clean_log": true,
+          "source_sha256": "e314b2696bbacb8a4e16aa75fcd58abef9c85ba58bfcd080c4d27660a97a6b80",
+          "elapsed_s": 2.72,
+          "maxrss_kib": 2782020,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_small_audit_021_001/logs/Source3_KeygenSmallBoundsAudit.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_small_audit_021_001/logs/Source3_KeygenSmallBoundsAudit.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "status": "ACCEPTED",
+      "products": [
+        {
+          "path": ".build/jobs/keygen_small_audit_021_001/SMALL_BOUNDS_AUDIT.json",
+          "sha256": "1cb4f42e0da7ff629f0832c529c071a69c68efdc5a3116f47ad6dd36b3384825",
+          "bytes": 819214
+        },
+        {
+          "path": ".build/jobs/keygen_small_audit_021_001/SMALL_BOUNDS_AUDIT_PARTIAL.json",
+          "sha256": "1cb4f42e0da7ff629f0832c529c071a69c68efdc5a3116f47ad6dd36b3384825",
+          "bytes": 819214
+        },
+        {
+          "path": ".build/jobs/keygen_small_audit_021_001/SMALL_BOUNDS_AUDIT_PROGRESS.json",
+          "sha256": "2ed46f1ca3645476ef5c2a946887ce0e08cc11b9033511e4fd13ad8e668ec47f",
+          "bytes": 50
+        }
+      ],
+      "wait": {
+        "path": ".build/waits/keygen_small_audit_021_001/WAIT.jsonl",
+        "sha256": "7e4282e93cb132d89ef379d87bd016e704a57d596939ab65bf0bbd17f5b22a6b",
+        "bytes": 97
+      }
+    },
+    {
+      "job": "keygen_small_bounds_021_001",
+      "receipt": {
+        "path": ".build/jobs/keygen_small_bounds_021_001/RECEIPTS.json",
+        "sha256": "a2790f50628767a9093e77a7720985a538c3b9106973c35dc8b1a74e6924d3ed",
+        "bytes": 2900
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_small_bounds_021_001/SOURCE_INPUTS.json",
+        "sha256": "ff6d3a17da7e9ae862cbf0ce4c52334f5e09c9b0d988aef544fed2cadc3d321f",
+        "bytes": 426571
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_small_bounds_021_001/PREFLIGHT.json",
+        "sha256": "20f6387f62cdfcd123b52599d0b2643c1ad817af2486dd6d9800763069fbd238",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_small_bounds_021_001/formal/Source3/KeygenSmallBounds.lean",
+          "sha256": "8ac8aea2a28fc7073955a0b9f8637577433c256df8f1824cd8977922ff348014",
+          "bytes": 12261
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenSmallBounds",
+          "accepted": false,
+          "clean_log": false,
+          "source_sha256": "8ac8aea2a28fc7073955a0b9f8637577433c256df8f1824cd8977922ff348014",
+          "elapsed_s": 2.02,
+          "maxrss_kib": 2726224,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_small_bounds_021_001/logs/Source3_KeygenSmallBounds.stdout",
+              "sha256": "37719e760ded8a011732b2b028d28f0f094479d50ca6acf81175e218fce232f4",
+              "bytes": 2767
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_small_bounds_021_001/logs/Source3_KeygenSmallBounds.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          },
+          "failure_excerpt": [
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_small_bounds_021_001/formal/Source3/KeygenSmallBounds.lean:24:89: error: unexpected token ')'; expected term",
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_small_bounds_021_001/formal/Source3/KeygenSmallBounds.lean:50:67: error: omega could not prove the goal:",
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_small_bounds_021_001/formal/Source3/KeygenSmallBounds.lean:85:69: error: Application type mismatch: The argument",
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_small_bounds_021_001/formal/Source3/KeygenSmallBounds.lean:86:69: error: Application type mismatch: The argument",
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_small_bounds_021_001/formal/Source3/KeygenSmallBounds.lean:94:25: error: Application type mismatch: The argument",
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_small_bounds_021_001/formal/Source3/KeygenSmallBounds.lean:95:66: error: Application type mismatch: The argument",
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_small_bounds_021_001/formal/Source3/KeygenSmallBounds.lean:94:39: error: omega could not prove the goal:"
+          ]
+        }
+      ],
+      "status": "FAILED_RETAINED",
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_small_bounds_021_001/WAIT.jsonl",
+        "sha256": "49a3db1c6d3ce0f311c781af03d91bdb4e39e55ae5c2c1c9730eb79d0a45a4ff",
+        "bytes": 98
+      }
+    },
+    {
+      "job": "keygen_small_bounds_021_002",
+      "receipt": {
+        "path": ".build/jobs/keygen_small_bounds_021_002/RECEIPTS.json",
+        "sha256": "0c561d71cb55441ea0ab10abe24091183167694f741db5b01e38e9e7a3642a25",
+        "bytes": 2987
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_small_bounds_021_002/SOURCE_INPUTS.json",
+        "sha256": "db4628fca05d4daefd1a4d212f1c221272125be8aabbb4623b7f020146354663",
+        "bytes": 426571
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_small_bounds_021_002/PREFLIGHT.json",
+        "sha256": "cf8ec1b3a2c3351ce9dba7ce5168c8d96996b5b7fc9b7ddbcd0f56786b99b212",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_small_bounds_021_002/formal/Source3/KeygenSmallBounds.lean",
+          "sha256": "c2fe02ab3e5d9556a9ebffafe1a1467c698524fd53935e5a2d2432f84a1ca677",
+          "bytes": 12320
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenSmallBounds",
+          "accepted": true,
+          "clean_log": true,
+          "source_sha256": "c2fe02ab3e5d9556a9ebffafe1a1467c698524fd53935e5a2d2432f84a1ca677",
+          "elapsed_s": 1.468,
+          "maxrss_kib": 2740572,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_small_bounds_021_002/logs/Source3_KeygenSmallBounds.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_small_bounds_021_002/logs/Source3_KeygenSmallBounds.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "status": "ACCEPTED",
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_small_bounds_021_002/WAIT.jsonl",
+        "sha256": "c69539d2d47f610e228bc91bdd210780545ff25d2c132099e1f22e52c70df7e7",
+        "bytes": 98
+      }
+    },
+    {
+      "job": "keygen_small_calls_021_001",
+      "receipt": {
+        "path": ".build/jobs/keygen_small_calls_021_001/RECEIPTS.json",
+        "sha256": "1c19a6be904f96b1dfe350109a252166fa4a2b31bbb696fe0b1ce009db2328ec",
+        "bytes": 2971
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_small_calls_021_001/SOURCE_INPUTS.json",
+        "sha256": "0ed1b3f2b39bd16532dc9964e105bd0507cfebbed5e598cce0ea8f555b7a4441",
+        "bytes": 427711
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_small_calls_021_001/PREFLIGHT.json",
+        "sha256": "0fe498bfcb8fedc278637e5d88c988065146998a7d666c9cc1167c40ca23cfde",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_small_calls_021_001/formal/Source3/KeygenSmallCalls.lean",
+          "sha256": "587eec0c6b48a720a2d28fcaa33455deeef328e95916727fb5db4521b0252d42",
+          "bytes": 6791
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenSmallCalls",
+          "accepted": true,
+          "clean_log": true,
+          "source_sha256": "587eec0c6b48a720a2d28fcaa33455deeef328e95916727fb5db4521b0252d42",
+          "elapsed_s": 1.267,
+          "maxrss_kib": 2773748,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_small_calls_021_001/logs/Source3_KeygenSmallCalls.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_small_calls_021_001/logs/Source3_KeygenSmallCalls.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "status": "ACCEPTED",
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_small_calls_021_001/WAIT.jsonl",
+        "sha256": "74dc3f18ee6edf0e63b09318f68cd537a39161d1f6ea8d55221db11e0ba8ebee",
+        "bytes": 97
+      }
+    },
+    {
+      "job": "keygen_small_checks_021_001",
+      "receipt": {
+        "path": ".build/jobs/keygen_small_checks_021_001/RECEIPTS.json",
+        "sha256": "16da9f8bc4b6feda36f46f723ad0cbb24ebe41e346ec1248df8c80ab1f5b5fac",
+        "bytes": 2284
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_small_checks_021_001/SOURCE_INPUTS.json",
+        "sha256": "0be7208f73b0f9c7fb5fe17e4127303a6717cad129cfdc3de07f7effb2028fc9",
+        "bytes": 429962
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_small_checks_021_001/PREFLIGHT.json",
+        "sha256": "2e16fc53b2c9ba8ca61b3ecf25bbc9be549fc6108076ae76d56921516b9a4553",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/sage/check_keygen_small_bounds.sage",
+          "sha256": "cdaef25d3f771d370dd57b5ddc97b9baa80e15122cdddc148bc3ccea21d24147",
+          "bytes": 8061
+        }
+      ],
+      "steps": [
+        {
+          "name": "sage",
+          "accepted": true,
+          "clean_log": true,
+          "source_sha256": "cdaef25d3f771d370dd57b5ddc97b9baa80e15122cdddc148bc3ccea21d24147",
+          "elapsed_s": 4.173,
+          "maxrss_kib": 221176,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_small_checks_021_001/logs/sage.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_small_checks_021_001/logs/sage.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "status": "ACCEPTED",
+      "products": [
+        {
+          "path": ".build/jobs/keygen_small_checks_021_001/SMALL_BOUNDS_CHECK.json",
+          "sha256": "b7207ef3609c0b0b5b5a669869d7c2442737e7f799c86ffc4078769c902c3a9a",
+          "bytes": 24325
+        }
+      ],
+      "wait": {
+        "path": ".build/waits/keygen_small_checks_021_001/WAIT.jsonl",
+        "sha256": "305671fbdd933032cf45f7b77d9ea21173579f4379754e2f4da609a0caa3d439",
+        "bytes": 98
+      }
+    },
+    {
+      "job": "keygen_small_source_021_001",
+      "receipt": {
+        "path": ".build/jobs/keygen_small_source_021_001/RECEIPTS.json",
+        "sha256": "8ad016b6aaabc0028b7f12383250387ac4115814a102d3a59b7dd585f44f4b72",
+        "bytes": 2900
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_small_source_021_001/SOURCE_INPUTS.json",
+        "sha256": "958733021141a767ccc9125f0f63506568d1fc3701ea933cc39e329c8b915f9b",
+        "bytes": 424071
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_small_source_021_001/PREFLIGHT.json",
+        "sha256": "a245da6beb3f233b71fad6582c5bfef8607acf7f748ed89151d5f9b5a1d0d35e",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_small_source_021_001/formal/Source3/KeygenSmallSource.lean",
+          "sha256": "809a77166fc51d0707c623cc4efc99b08a5d30f9cde95542ef2c7a8a7110c59a",
+          "bytes": 10616
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenSmallSource",
+          "accepted": false,
+          "clean_log": false,
+          "source_sha256": "809a77166fc51d0707c623cc4efc99b08a5d30f9cde95542ef2c7a8a7110c59a",
+          "elapsed_s": 0.315,
+          "maxrss_kib": 813284,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_small_source_021_001/logs/Source3_KeygenSmallSource.stdout",
+              "sha256": "6c6ac4a892c67b74746d101ccb4b79de1c8dadcd660caa2fa75f284861360855",
+              "bytes": 388
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_small_source_021_001/logs/Source3_KeygenSmallSource.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          },
+          "failure_excerpt": [
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_small_source_021_001/formal/Source3/KeygenSmallSource.lean:1:0: error: object file '/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/bootstrap/mathlib4/.lake/build/lib/lean/Mathlib/Tactic/BVDecide.olean' of module Mathlib.Tactic.BVDecide does not exist"
+          ]
+        }
+      ],
+      "status": "FAILED_RETAINED",
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_small_source_021_001/WAIT.jsonl",
+        "sha256": "7932b8a810999f513b6a86cb6c0e6e4b5d4141f71ded956ae38b4c7e25a53a39",
+        "bytes": 98
+      }
+    },
+    {
+      "job": "keygen_small_source_021_002",
+      "receipt": {
+        "path": ".build/jobs/keygen_small_source_021_002/RECEIPTS.json",
+        "sha256": "5448684b18eb5e59e46551c7d16c18d708e05d920d136fd5b7c9a9490c2c82f2",
+        "bytes": 2901
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_small_source_021_002/SOURCE_INPUTS.json",
+        "sha256": "be6e53ab35a9b2249c5cd95ed4a710ffad80bd6835b51797df41d7e83d42ad4a",
+        "bytes": 424071
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_small_source_021_002/PREFLIGHT.json",
+        "sha256": "4c225e9cb4d7bd74d903eb8052d454668c0efc4e1da306d978dca75662d9ab22",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_small_source_021_002/formal/Source3/KeygenSmallSource.lean",
+          "sha256": "a6079e09ad874f0dedaed467d1c9ee1fc4acfe6ba35221e787159847c98cf31e",
+          "bytes": 10625
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenSmallSource",
+          "accepted": false,
+          "clean_log": false,
+          "source_sha256": "a6079e09ad874f0dedaed467d1c9ee1fc4acfe6ba35221e787159847c98cf31e",
+          "elapsed_s": 3.783,
+          "maxrss_kib": 2584824,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_small_source_021_002/logs/Source3_KeygenSmallSource.stdout",
+              "sha256": "4a1538edf485ee7ed3677f468f3744ec8b5a74a377490bff772c1ac38020118c",
+              "bytes": 352759
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_small_source_021_002/logs/Source3_KeygenSmallSource.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          },
+          "failure_excerpt": [
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_small_source_021_002/formal/Source3/KeygenSmallSource.lean:18:3: error: unexpected token 'variable'; expected identifier",
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_small_source_021_002/formal/Source3/KeygenSmallSource.lean:24:28: error: unexpected token 'variable'; expected ')', '\u2191', '\u21a5', '\u21d1' or term",
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_small_source_021_002/formal/Source3/KeygenSmallSource.lean:24:36: error: unexpected token; expected '(', '[', '{' or '\u2983'",
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_small_source_021_002/formal/Source3/KeygenSmallSource.lean:26:84: error: Tactic `decide` failed for proposition",
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_small_source_021_002/formal/Source3/KeygenSmallSource.lean:30:78: error: unexpected identifier; expected '}'",
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_small_source_021_002/formal/Source3/KeygenSmallSource.lean:185:43: error: unexpected token 'variable'; expected ')', '\u2191', '\u21a5', '\u21d1' or term",
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_small_source_021_002/formal/Source3/KeygenSmallSource.lean:185:51: error: unexpected token; expected '(', '[', '{' or '\u2983'",
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_small_source_021_002/formal/Source3/KeygenSmallSource.lean:186:21: error: unexpected token; expected '(', '[', '{' or '\u2983'"
+          ]
+        }
+      ],
+      "status": "FAILED_RETAINED",
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_small_source_021_002/WAIT.jsonl",
+        "sha256": "f9848ef039b09a5a86ed0da63a37346d54ad279581cd2bf53bef450a31430cfd",
+        "bytes": 98
+      }
+    },
+    {
+      "job": "keygen_small_source_021_003",
+      "receipt": {
+        "path": ".build/jobs/keygen_small_source_021_003/RECEIPTS.json",
+        "sha256": "1d5c9f64c92dc08c8d85c3eecca5f7641ab1a183fbb8a364e97c8255d070e1ca",
+        "bytes": 2901
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_small_source_021_003/SOURCE_INPUTS.json",
+        "sha256": "1b7319637ec4ebf7107534382b7ef04f8dbe023ff36411a9b30ca628e2c1bfb5",
+        "bytes": 424071
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_small_source_021_003/PREFLIGHT.json",
+        "sha256": "acd9851454c248982ee5e290ee755d661b5b83f4526a5f8ebe7bbe2bc9301c91",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_small_source_021_003/formal/Source3/KeygenSmallSource.lean",
+          "sha256": "930b2e4a29df850209e8826c656202c32981bd1056111fe78a76658bc7765927",
+          "bytes": 10580
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenSmallSource",
+          "accepted": false,
+          "clean_log": false,
+          "source_sha256": "930b2e4a29df850209e8826c656202c32981bd1056111fe78a76658bc7765927",
+          "elapsed_s": 3.624,
+          "maxrss_kib": 2573940,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_small_source_021_003/logs/Source3_KeygenSmallSource.stdout",
+              "sha256": "55c5d273bef3391dcce40d8bfe871072fea4e86f88f875220ee88ab83ea658a0",
+              "bytes": 477
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_small_source_021_003/logs/Source3_KeygenSmallSource.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          },
+          "failure_excerpt": [
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_small_source_021_003/formal/Source3/KeygenSmallSource.lean:30:78: error: unexpected identifier; expected '}'",
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_small_source_021_003/formal/Source3/KeygenSmallSource.lean:201:54: error: Tactic `decide` proved that the proposition"
+          ]
+        }
+      ],
+      "status": "FAILED_RETAINED",
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_small_source_021_003/WAIT.jsonl",
+        "sha256": "75018813f14e1b64102bed1d337490a820e460cdec3712ac5186791caf67a311",
+        "bytes": 98
+      }
+    },
+    {
+      "job": "keygen_small_source_021_004",
+      "receipt": {
+        "path": ".build/jobs/keygen_small_source_021_004/RECEIPTS.json",
+        "sha256": "4e2e3cef44eb3a61cd63b4ae2c9f67bf4ec27537d54d9c46935ca81c3af0dd4c",
+        "bytes": 2901
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_small_source_021_004/SOURCE_INPUTS.json",
+        "sha256": "8c9da446b928877b0a0ccab18a1c144c6a012c86d718435486bf2fbc310ad259",
+        "bytes": 424071
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_small_source_021_004/PREFLIGHT.json",
+        "sha256": "d34a404c4d835a4981043b04fcedd9ca234be0c15bdbedcb1c9d79880e825c18",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_small_source_021_004/formal/Source3/KeygenSmallSource.lean",
+          "sha256": "4452b02b223c44bd4a2ea9862703746b406fdb363bf36798cb2214072ff57c3d",
+          "bytes": 10612
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenSmallSource",
+          "accepted": false,
+          "clean_log": false,
+          "source_sha256": "4452b02b223c44bd4a2ea9862703746b406fdb363bf36798cb2214072ff57c3d",
+          "elapsed_s": 3.673,
+          "maxrss_kib": 2583528,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_small_source_021_004/logs/Source3_KeygenSmallSource.stdout",
+              "sha256": "952f36e098ccc4a60b3ca74086e9e3b113e9d7cb611aa3d472139ade1bdd405c",
+              "bytes": 482
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_small_source_021_004/logs/Source3_KeygenSmallSource.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          },
+          "failure_excerpt": [
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_small_source_021_004/formal/Source3/KeygenSmallSource.lean:30:80: error: unexpected identifier; expected '}'",
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_small_source_021_004/formal/Source3/KeygenSmallSource.lean:202:54: error: Tactic `decide` proved that the proposition"
+          ]
+        }
+      ],
+      "status": "FAILED_RETAINED",
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_small_source_021_004/WAIT.jsonl",
+        "sha256": "2d249d3a3b86a643ba839ce325582b76c2088e830044c2a38d86c4a4eed8e679",
+        "bytes": 98
+      }
+    },
+    {
+      "job": "keygen_small_source_021_005",
+      "receipt": {
+        "path": ".build/jobs/keygen_small_source_021_005/RECEIPTS.json",
+        "sha256": "a40cf4f1b4a7a4cd88cc78135df3b84ea456be3f83fba26b2f101bb072387ec5",
+        "bytes": 2901
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_small_source_021_005/SOURCE_INPUTS.json",
+        "sha256": "fb702f343d3f60aa724e8e79500febfe49be185babf934bd8e16c930965d54f8",
+        "bytes": 424071
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_small_source_021_005/PREFLIGHT.json",
+        "sha256": "b0989943859d710eb7edd95d2e0c7eebf9a31ff590b1e79cb101fc92060646a8",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_small_source_021_005/formal/Source3/KeygenSmallSource.lean",
+          "sha256": "b21fbd71cd13143d1f8886f05847b7c712a4df6e4cb09864e678174ec78c82f1",
+          "bytes": 10748
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenSmallSource",
+          "accepted": false,
+          "clean_log": false,
+          "source_sha256": "b21fbd71cd13143d1f8886f05847b7c712a4df6e4cb09864e678174ec78c82f1",
+          "elapsed_s": 3.722,
+          "maxrss_kib": 2590364,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_small_source_021_005/logs/Source3_KeygenSmallSource.stdout",
+              "sha256": "7c336ebaa6b97e93ebdee8bdf10e9c9104a8c422ae86f00282b4a4647b3d930b",
+              "bytes": 3628
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_small_source_021_005/logs/Source3_KeygenSmallSource.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          },
+          "failure_excerpt": [
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_small_source_021_005/formal/Source3/KeygenSmallSource.lean:208:54: error: Tactic `decide` proved that the proposition"
+          ]
+        }
+      ],
+      "status": "FAILED_RETAINED",
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_small_source_021_005/WAIT.jsonl",
+        "sha256": "7f2b786021184f29286d7e040c6856ec0581acc9ea8a2c96e7c9cee6847fa7c0",
+        "bytes": 98
+      }
+    },
+    {
+      "job": "keygen_small_source_021_006",
+      "receipt": {
+        "path": ".build/jobs/keygen_small_source_021_006/RECEIPTS.json",
+        "sha256": "23df7248f24ebd5c746349704ebda29058e9f9227c2db38e692906ebad1a5bde",
+        "bytes": 2901
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_small_source_021_006/SOURCE_INPUTS.json",
+        "sha256": "759ea918039f6d7b86dd2cddad83c534c680095ac254f10876d1d148812642c4",
+        "bytes": 424071
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_small_source_021_006/PREFLIGHT.json",
+        "sha256": "105d7b12363596094aab8171bd93a5024dd578a2d676aa43dfa4ab35d0013fcf",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_small_source_021_006/formal/Source3/KeygenSmallSource.lean",
+          "sha256": "a06bc81141bcfab103f275cc7e2362bedca1749b12c4e2efa0698263b776dc42",
+          "bytes": 10828
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenSmallSource",
+          "accepted": false,
+          "clean_log": false,
+          "source_sha256": "a06bc81141bcfab103f275cc7e2362bedca1749b12c4e2efa0698263b776dc42",
+          "elapsed_s": 3.774,
+          "maxrss_kib": 2592616,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_small_source_021_006/logs/Source3_KeygenSmallSource.stdout",
+              "sha256": "87d0d8e43b08fe295bf30551912e723b323c9f0f087eebc784bbf97759aab923",
+              "bytes": 3638
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_small_source_021_006/logs/Source3_KeygenSmallSource.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          },
+          "failure_excerpt": [
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_small_source_021_006/formal/Source3/KeygenSmallSource.lean:210:54: error: Tactic `decide` proved that the proposition"
+          ]
+        }
+      ],
+      "status": "FAILED_RETAINED",
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_small_source_021_006/WAIT.jsonl",
+        "sha256": "8c709c398d8173a2265d32614af2932b212e83546e627b8c68f452e403c9a542",
+        "bytes": 98
+      }
+    },
+    {
+      "job": "keygen_small_source_021_007",
+      "receipt": {
+        "path": ".build/jobs/keygen_small_source_021_007/RECEIPTS.json",
+        "sha256": "d20f0c61e14574e6551a3a67b2444b8f7af3200593317f096b42b7fe0a1dfa2b",
+        "bytes": 2987
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_small_source_021_007/SOURCE_INPUTS.json",
+        "sha256": "ca432bb7b6348d8cf4c4fedb38200f92e4407f0c3a9bbf53e962b4cf84659221",
+        "bytes": 424071
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_small_source_021_007/PREFLIGHT.json",
+        "sha256": "19580d50665af8358ddec33d85a4015c66ef20f18aedd63478ebb6f7049b99f9",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_small_source_021_007/formal/Source3/KeygenSmallSource.lean",
+          "sha256": "9cbbe3175a481d5e82d171f9dd2c76c39115e854b78a1cc3b21ea76192a01654",
+          "bytes": 10709
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenSmallSource",
+          "accepted": true,
+          "clean_log": true,
+          "source_sha256": "9cbbe3175a481d5e82d171f9dd2c76c39115e854b78a1cc3b21ea76192a01654",
+          "elapsed_s": 7.831,
+          "maxrss_kib": 2832532,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_small_source_021_007/logs/Source3_KeygenSmallSource.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_small_source_021_007/logs/Source3_KeygenSmallSource.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "status": "ACCEPTED",
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_small_source_021_007/WAIT.jsonl",
+        "sha256": "be3e80488db2d2b30b33c6e34bafd2669045e12fd720d5855d33f3d79585ff93",
+        "bytes": 98
+      }
+    },
+    {
+      "job": "keygen_small_step_021_001",
+      "receipt": {
+        "path": ".build/jobs/keygen_small_step_021_001/RECEIPTS.json",
+        "sha256": "4f1ce6027a5490b59d643ea18de5d4c8cd8f536375c2097ef3ddf9b24a60f213",
+        "bytes": 2868
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_small_step_021_001/SOURCE_INPUTS.json",
+        "sha256": "cb2bd7967a3d8cf257731b88d6d5ff66d08f57e46d32b634bee12b90aee992ee",
+        "bytes": 425428
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_small_step_021_001/PREFLIGHT.json",
+        "sha256": "3881e690f005e0113da9f4ce7a4b174b4beefee28da39ca67775c6092b9d3531",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_small_step_021_001/formal/Source3/KeygenSmallStep.lean",
+          "sha256": "ee7205c349a4b0dfcf60ec26fbcd1d5a2dac504f08b493f5c34616162fab4bb0",
+          "bytes": 11090
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenSmallStep",
+          "accepted": false,
+          "clean_log": true,
+          "source_sha256": "ee7205c349a4b0dfcf60ec26fbcd1d5a2dac504f08b493f5c34616162fab4bb0",
+          "elapsed_s": 1.568,
+          "maxrss_kib": 2495332,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_small_step_021_001/logs/Source3_KeygenSmallStep.stdout",
+              "sha256": "fbd9814a85c7e528fe2dff73be247e563e6d221903efef1b064e91252cc27f7f",
+              "bytes": 404
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_small_step_021_001/logs/Source3_KeygenSmallStep.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          },
+          "failure_excerpt": [
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_small_step_021_001/formal/Source3/KeygenSmallStep.lean:116:15: error(lean.invalidDottedIdent): Invalid dotted identifier notation: The expected type of `.int32` could not be determined"
+          ]
+        }
+      ],
+      "status": "FAILED_RETAINED",
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_small_step_021_001/WAIT.jsonl",
+        "sha256": "5108b38eb8418fd2c49dd6c8e350076b0f8f4fc22ba202dc3780a7785685f2eb",
+        "bytes": 96
+      }
+    },
+    {
+      "job": "keygen_small_step_021_002",
+      "receipt": {
+        "path": ".build/jobs/keygen_small_step_021_002/RECEIPTS.json",
+        "sha256": "bf54d9f200d0f8e7a6088cf6d86cde0e790dc2ac5d3c96ef8e99840e8138ab07",
+        "bytes": 2955
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_small_step_021_002/SOURCE_INPUTS.json",
+        "sha256": "ebf645b32c19795787953f473dcc4ad5e79f6566fc7e5e33454f1e64fcff1866",
+        "bytes": 425428
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_small_step_021_002/PREFLIGHT.json",
+        "sha256": "9bb714216a03a35f4ad8163491545078f1dcda056a65a1cea359926cacd38013",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_small_step_021_002/formal/Source3/KeygenSmallStep.lean",
+          "sha256": "77478f1aacd6ef48409b89cd157597d736685fc2c50414826e0250f8cdaa5b08",
+          "bytes": 11112
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenSmallStep",
+          "accepted": true,
+          "clean_log": true,
+          "source_sha256": "77478f1aacd6ef48409b89cd157597d736685fc2c50414826e0250f8cdaa5b08",
+          "elapsed_s": 1.367,
+          "maxrss_kib": 2508368,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_small_step_021_002/logs/Source3_KeygenSmallStep.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_small_step_021_002/logs/Source3_KeygenSmallStep.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "status": "ACCEPTED",
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_small_step_021_002/WAIT.jsonl",
+        "sha256": "c8a9e760c1d61cfe0e8a28261e4eaff26bdd7f31b25f07445ddfd9284340b4f0",
+        "bytes": 96
+      }
+    },
+    {
+      "job": "keygen_solver_graph_021_001",
+      "receipt": {
+        "path": ".build/jobs/keygen_solver_graph_021_001/RECEIPTS.json",
+        "sha256": "ded59d2bff44d216a3cc529323400dc122461dda35f8feaad480f520abc832bc",
+        "bytes": 2294
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_solver_graph_021_001/SOURCE_INPUTS.json",
+        "sha256": "26d834c27dca19ca303d69410625606752ee4b7b4f16e6984898e87d0f20f45c",
+        "bytes": 429966
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_solver_graph_021_001/PREFLIGHT.json",
+        "sha256": "d1d3200b66257fc491a23e8cbf992b59d4246cb475432e60153452196eef37ca",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_solver_graph_021_001/sage/inventory_keygen_solver_graph.sage",
+          "sha256": "addc18cee43b3758a3220cd7821335b8d9aed0cbe18327d3bf98fa8e3c2e3294",
+          "bytes": 6256
+        }
+      ],
+      "steps": [
+        {
+          "name": "sage",
+          "accepted": false,
+          "clean_log": false,
+          "source_sha256": "addc18cee43b3758a3220cd7821335b8d9aed0cbe18327d3bf98fa8e3c2e3294",
+          "elapsed_s": 2.821,
+          "maxrss_kib": 221092,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_solver_graph_021_001/logs/sage.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_solver_graph_021_001/logs/sage.stderr",
+              "sha256": "e70d52f16e42ba5bb0989a9aa2f1838ae41e06631c3b746e802ae0c07d7caa86",
+              "bytes": 1919
+            }
+          },
+          "failure_excerpt": [
+            "    raise TypeError(f'Object of type {o.__class__.__name__} '",
+            "TypeError: Object of type Integer is not JSON serializable"
+          ]
+        }
+      ],
+      "status": "FAILED_RETAINED",
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_solver_graph_021_001/WAIT.jsonl",
+        "sha256": "985cbfd9b50f5c6175a3adcab6d5520a1cc361abc57863bd988b1644dd248895",
+        "bytes": 98
+      }
+    },
+    {
+      "job": "keygen_solver_graph_021_002",
+      "receipt": {
+        "path": ".build/jobs/keygen_solver_graph_021_002/RECEIPTS.json",
+        "sha256": "1355f889e0c12959cdb75c06364927061e65776fb2d155202a8d8b390a045b87",
+        "bytes": 2291
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_solver_graph_021_002/SOURCE_INPUTS.json",
+        "sha256": "2a4ee3d024f3daaa3cc23472053b76466dec2c3d0f70cf6e5e4e98a5cc16cf2a",
+        "bytes": 429966
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_solver_graph_021_002/PREFLIGHT.json",
+        "sha256": "f9b4eafe29b7a95a7673e68479d60973919399ca078fc7af133c8490f08aa690",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_solver_graph_021_002/sage/inventory_keygen_solver_graph.sage",
+          "sha256": "11adf93f15e7ff97ca5145c7ec83ed5c40bf77f556ded405be44a4cc206ce89a",
+          "bytes": 6261
+        }
+      ],
+      "steps": [
+        {
+          "name": "sage",
+          "accepted": true,
+          "clean_log": true,
+          "source_sha256": "11adf93f15e7ff97ca5145c7ec83ed5c40bf77f556ded405be44a4cc206ce89a",
+          "elapsed_s": 2.27,
+          "maxrss_kib": 220732,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_solver_graph_021_002/logs/sage.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_solver_graph_021_002/logs/sage.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "status": "ACCEPTED",
+      "products": [
+        {
+          "path": ".build/jobs/keygen_solver_graph_021_002/SOLVER_GRAPH.json",
+          "sha256": "10719ad8a5882832b040384fe74e13e3c7a84d0124db58d4bd53db0d2dc5346f",
+          "bytes": 113994
+        }
+      ],
+      "wait": {
+        "path": ".build/waits/keygen_solver_graph_021_002/WAIT.jsonl",
+        "sha256": "a47a63ad7fc1f94d06d54f2a32a0c8d13a8f6626708c17f8daf4e09d70731a3e",
+        "bytes": 98
+      }
+    },
+    {
+      "job": "keygen_solver_graph_021_003",
+      "receipt": {
+        "path": ".build/jobs/keygen_solver_graph_021_003/RECEIPTS.json",
+        "sha256": "cbf8538dc48dd5309a18cf5ebd0cd09d764b656d8a0458c3ac164ce1af185c4b",
+        "bytes": 2291
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_solver_graph_021_003/SOURCE_INPUTS.json",
+        "sha256": "74569d1cb1a077a5cbfb0639d3c0d7959961dae4ae69b6adcae84e56900b3bad",
+        "bytes": 431131
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_solver_graph_021_003/PREFLIGHT.json",
+        "sha256": "709daff8a9ea9edf7610116fb82822b92141a631d13ce81b9525dc8b4bb23ff7",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_solver_graph_021_003/sage/inventory_keygen_solver_graph.sage",
+          "sha256": "cf987294b9e1a105db494805286f5f7497ff425f173ca2d019602e950a1ce187",
+          "bytes": 6485
+        }
+      ],
+      "steps": [
+        {
+          "name": "sage",
+          "accepted": true,
+          "clean_log": true,
+          "source_sha256": "cf987294b9e1a105db494805286f5f7497ff425f173ca2d019602e950a1ce187",
+          "elapsed_s": 2.22,
+          "maxrss_kib": 221036,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_solver_graph_021_003/logs/sage.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_solver_graph_021_003/logs/sage.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "status": "ACCEPTED",
+      "products": [
+        {
+          "path": ".build/jobs/keygen_solver_graph_021_003/SOLVER_GRAPH.json",
+          "sha256": "dd0e42256a6178bc05d7304d06dfd5a2cea9d34e14ba81999b59958e7ebc3b7c",
+          "bytes": 116108
+        }
+      ],
+      "wait": {
+        "path": ".build/waits/keygen_solver_graph_021_003/WAIT.jsonl",
+        "sha256": "4114d4eb0d17c0c471baceb4c27cfd6647c641873bbd323205bf030e0fa70eec",
+        "bytes": 98
+      }
+    },
+    {
+      "job": "keygen_ternary_store_021_001",
+      "receipt": {
+        "path": ".build/jobs/keygen_ternary_store_021_001/RECEIPTS.json",
+        "sha256": "67e2032444eeaffb7c76925d1783229317744c0ff29667178eae3fd6ccfff28c",
+        "bytes": 3002
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_ternary_store_021_001/SOURCE_INPUTS.json",
+        "sha256": "1c4ce63b1614b726fd9ff1ac923dbc918f665f50b0cad26b75beeea3b09dd903",
+        "bytes": 428859
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_ternary_store_021_001/PREFLIGHT.json",
+        "sha256": "24485e08bc852c338cc1422a8d6b61e98b4f9f95a09a3134db44e4432315cad5",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_ternary_store_021_001/formal/Source3/KeygenTernaryStore.lean",
+          "sha256": "7fd5038f27fb247e69724b8d18ef4f5f4e41d66944718351b167a27841416fae",
+          "bytes": 8596
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenTernaryStore",
+          "accepted": true,
+          "clean_log": true,
+          "source_sha256": "7fd5038f27fb247e69724b8d18ef4f5f4e41d66944718351b167a27841416fae",
+          "elapsed_s": 2.77,
+          "maxrss_kib": 2572340,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_ternary_store_021_001/logs/Source3_KeygenTernaryStore.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_ternary_store_021_001/logs/Source3_KeygenTernaryStore.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "status": "ACCEPTED",
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_ternary_store_021_001/WAIT.jsonl",
+        "sha256": "818b5bf44b8d03b323548d7f6c2748da5edfd8a499e23d3c1bc60394630fc6f1",
+        "bytes": 99
+      }
+    }
+  ],
+  "retained_failures": "Nine failed attempts: unavailable optional tactic import; reserved identifier/record-layout errors; parser probes revealing missing int32_t spelling; ambiguous constructor type; induction/field elaboration fixes; Sage Integer JSON conversion. All snapshots/logs retained. The unavailable tactic was replaced by an existing kernel byte-roundtrip export.",
+  "limits": "Unchanged Lean-j1/-M6144, maxRecDepth32768/maxHeartbeats2000000, wall1800s, AS12GiB/RSS8GiB, warnings as errors. pp.maxSteps200000 only for printing. Standard-preparser Sage. Shell waits timeout0.",
+  "build_scope": "Six new Lean modules and their exact pinned reused inputs; no changed historical dependency or unchanged full-project replay.",
+  "next_owner_stage": "Resume B1.05 at checkpoint section6. Full source solver/sampler/caller binding remains; B1.06 not entered.",
+  "git": {
+    "branch": "main",
+    "author": "niirmataa",
+    "writer_lock": "proofs/ft1536/work/archive.lock",
+    "source_commits": [
+      "f17fe9b2",
+      "8b55f52f",
+      "20d4e524ac90355fc4ea9a0a327f1a990e354875"
+    ],
+    "push": "none; owner signal required",
+    "foreign_changes": "preserved"
+  },
+  "active_jobs_at_close": []
+}
