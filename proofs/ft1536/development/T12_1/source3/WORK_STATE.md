@@ -17,10 +17,24 @@ Accepted `keygen_solver_equation_020_003`,0/0 logs. Initial shell timeout
 before a receipt and the subsequent two elaboration errors are retained in
 the distinct `_001`/`_002` job directories. Runner limits are unchanged;
 subsequent shell waits have no outer timeout. No owned proof job is live.
-Next: source call frames and the four sequential transforms, carrying the
-untransformed inputs and previous images through their shared heaps; then
-target initialization, material byte frames, sampler/conversion bounds and
-the complete active solver call graph. Small exact-path local commits use
+`KeygenSolverNttCalls` binds the four parsed call statements, the stride1
+macro and actual parameter environments to the complete NTT body. Its fixed
+execution stratum has no callee oracle or mathematical postconditions.
+`KeygenSolverTransforms` composes all four calls on common heaps, preserving
+both previous Images and the exact canonical words of later input arrays.
+`KeygenSolverTarget` derives the actual Montgomery target call (including
+signed literal to uint32 parameter conversion), check pointer/local bindings
+and the integer equation. Accepted `_calls_020_002`, `_transforms_020_001`,
+`_target_020_003` (prefix `keygen_solver`), all0/0 logs.
+
+`KeygenNttMemoryFrame` separately derives arbitrary outside-scratch byte
+preservation from pointer provenance and actual stores. It transports
+the original16-bit material representation without a canonical-cell premise.
+Accepted `keygen_ntt_memory_frame_020_002`,0/0 logs; first elaboration failure
+retained. The four-transform theorem still takes converted inputs, table
+and Bounds locally; next is the preceding-generation/conversion composition,
+sampler/conversion bounds and complete active solver call graph. No job live.
+Small exact-path local commits use
 the shared writer lock; package remains IN_PROGRESS / NOT_REVIEWED.
 
 ## B1.04 — ACCEPTANCE / complete source NTT — 2026-10-07
