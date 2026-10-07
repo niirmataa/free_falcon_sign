@@ -31,9 +31,11 @@ Small exact-path local commits on main; publication requires owner signal.
    with a Code-Bound Security Reduction" (owner: "będzie sztosowe").
    Applied to `main.tex` title + `pdftitle`; the OWNER-TITLE todo is
    resolved and removed.
-2. Mission paragraph / author's voice — PENDING owner review.
-3. Venue target and associated formatting/bibliography requirements —
-   PENDING (coordinator suggestion: ePrint at closure, then TCHES/CHES).
+2. Mission paragraph: **DRAFTED 2026-10-07** from the owner's framing
+   ("po co powsta\u0142 FT1536?" = the paragraph answers why FT1536
+   exists). Awaiting the owner's signature or rewrite (OWNER-SIGN todo).
+3. **Venue: ePrint DECIDED 2026-10-07** by the owner. Follow-up venue
+   (TCHES/CHES vs Eurocrypt) left open until closure.
 
 ## Batch 2 — completed draft and checks
 
