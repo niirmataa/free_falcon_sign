@@ -1,6 +1,10 @@
 # T12.1/source3 — żywy stan
 
-## B1.04 — memory-connected middle passes — 2026-10-07
+## B1.04 — ACCEPTANCE / complete source NTT — 2026-10-07
+
+**Window CLOSED AT ACCEPTANCE / PROVED_KERNEL_SCOPED.** Enclosing package:
+PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.
+Recovery entry: `notes/run/KEYGEN_RESIDUE_CHECKPOINT.md` section6.
 
 Owner resumed section6 with GPT-6 Astra Ultrafast. BATCH_015–018 pairs,
 their pinned evidence and all393 final-audit inputs match:1204 distinct
@@ -40,7 +44,7 @@ complement and final cube transports. `KeygenNttRoundPolynomial` proves
 every sequential block's polynomial identity and propagates evaluation
 of the original CoefficientQuotient polynomial through all eight rounds.
 
-**B1.04 proof Acceptance is met; final checkpoint sealing is in progress.**
+**B1.04 proof Acceptance is met.**
 `KeygenNttTransform.source_transform` concludes all1536 canonical physical
 output words equal to the original Vec polynomial evaluations.
 `generated_converted_transform` consumes table generation, actual conversion
@@ -60,6 +64,15 @@ Final transform source `0f60483e60ec1f37664d8fc788894144e8cc7e96f504845f786c4c4e
 The unchanged prime-proof DAG and prior finite C controls remain BATCH_018
 dependencies. No full-project replay was repeated. Small local commits use
 the shared writer lock; no owned proof job is live. B1.05 has not been entered.
+
+BATCH_019 JSON `983a481a10293c01bf80250a9dd4ad2797e351db0a3c5d41825845d80fde6098`;
+notes `289d85f0ec1f25fe5950ad6b182363afe9ede0484c3053cf0c915d9cd52b1c01`.
+At sealing all402 final-audit inputs,9 accepted module bindings and1204
+predecessor file pins matched.19 attempts/8 failures retained; maximum
+accepted new-module RSS2864452KiB. Proof commits: `e58e2a51`, `6e6b98d0`,
+`7665543b`. Fresh expanded checkpoint and this pair have a final local
+documentation commit. Next owner stage: B1.05, source solver success to
+the exact integer NTRU equation. No push, independent review or import.
 
 ## B1.04 — recoverable midpoint, first pass and radix-2 blocks — 2026-10-07
 
