@@ -20,6 +20,28 @@ Accepted jobs `keygen_output_gate_source_022_002` and
 B1.05 Acceptance NOT MET; full search execution, sampler/refill and final
 same-material composition remain open. Window IN_PROGRESS.
 
+The deterministic refill closure is now source-bound locally:
+`ShakeBlock`/`ShakeBlockProgram` execute the complete process_block body
+and preserve memory outside A;49 checked chunks retain all388 physical
+loop-body lines. `ShakeEncode` executes all eight actual byte stores.
+`ShakeExtractSource`/`ShakeExtractBinding` retain the complete extraction
+loop, cursor/length updates, complemented lanes, memcpy and final dptr write.
+`ShakeRcBinding` binds all24 constant words in12 kernel-checked pairs.
+`ShakeExtractFrame` derives a protected-object frame from actual pointer
+provenance and those closed calls. `KeygenRngSource` supplies the M0 LE
+get_rng_u64 path with a fresh local8-byte object, actual extract8, Load64
+and teardown; it preserves other live objects and caller slots. Latest jobs:
+`keygen_shake_rc_binding_022_004`, `keygen_shake_extract_frame_022_003`,
+`keygen_rng_source_022_001`, all clean. The concrete caller fk->rng binding
+and sampler loops remain next. The LP64 typed context layout is explicit.
+
+Failed monolithic source reductions and aggregate RC reductions exhausted
+the existing recursion/memory budgets; limits stayed unchanged. Source
+chunk equalities and small source/token/initializer equalities composed by
+congrArg resolved those failures. Raw failed jobs and snapshots are retained,
+including one stale-cache preflight refusal without a receipt. No source
+oracle, probability premise or independent review was introduced.
+
 ## B1.05 — CLOSED at recoverable source-bounds midpoint — 2026-10-07
 
 **B1.05 Acceptance NOT MET.** Complete parsed poly_big_to_small now yields
