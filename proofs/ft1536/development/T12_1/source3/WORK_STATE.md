@@ -1,5 +1,30 @@
 # T12.1/source3 — żywy stan
 
+## B1.04 — memory-connected middle passes — 2026-10-07
+
+Owner resumed section6 with GPT-6 Astra Ultrafast. BATCH_015–018 pairs,
+their pinned evidence and all393 final-audit inputs match:1204 distinct
+file checks, no active proof job. Preflight:
+`.build/ntt_composition_019/PREFLIGHT.json`, SHA256
+`37dfa7eff55c01b8fa269825943301b1d114d52f4f8275956d3b22467647dda1`.
+
+`KeygenNttControl` derives normal flow and scalar/pointer frames, including
+the actual block-local restoration. `KeygenNttMiddleValues.inner_values`
+re-inverts the declarations, gm[m+u1] read, both pointer binds and vLoop;
+`u1_values`, `round_values` and `intermediate_values` compose every block
+and all eight source m rounds. Canonical cells, the source-ordered array
+`rounds a 8`, preserved initialized gm and the disjoint-cell frame are
+conclusions about the same heaps. No nested-trace heap equality is assumed.
+Accepted `keygen_ntt_control_019_004` / `keygen_ntt_middle_values_019_003`,
+both0/0 logs; earlier elaboration failures retained. Middle-values source
+`ee0942b2cf5a61ff98e810795a60329c3551939a1fda2265b94e0ceaa0638e1c`,
+receipt `7a883437489bf0bb6298861d12f808a84574252e27035b334482f265431c56e1`.
+
+Window IN_PROGRESS. Next: the actual wSquared and all512 triple iterations,
+polynomial propagation through the source twiddle tree, then the whole-body
+same-Vec evaluation theorem. B1.04 Acceptance remains open. Small local
+commits use the shared writer lock; no owned job is live at this checkpoint.
+
 ## B1.04 — recoverable midpoint, first pass and radix-2 blocks — 2026-10-07
 
 Owner-scoped B1.04 window, GPT-6 Astra Ultrafast. B1.03 Acceptance is
