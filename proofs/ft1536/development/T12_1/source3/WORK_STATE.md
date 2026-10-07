@@ -20,9 +20,21 @@ both0/0 logs; earlier elaboration failures retained. Middle-values source
 `ee0942b2cf5a61ff98e810795a60329c3551939a1fda2265b94e0ceaa0638e1c`,
 receipt `7a883437489bf0bb6298861d12f808a84574252e27035b334482f265431c56e1`.
 
-Window IN_PROGRESS. Next: the actual wSquared and all512 triple iterations,
-polynomial propagation through the source twiddle tree, then the whole-body
-same-Vec evaluation theorem. B1.04 Acceptance remains open. Small local
+`KeygenNttTripleValues` now derives wSquared from the two actual gm[1]
+reads/Montgomery call and composes all512 executed triples. Each output is
+the corresponding quadratic evaluation in physical source order; gm and
+disjoint cells survive. `KeygenNttExecution.source_values` splits the
+existing parsed forwardBody into the four actual passes through common
+States, derives all required local slots and concludes canonical cells
+equal to the complete source-ordered butterfly array `transform a`.
+Accepted `keygen_ntt_triple_values_019_003` and `keygen_ntt_execution_019_001`
+with0/0 logs. Source pins `3b363707…` / `32a89307…`; receipts
+`d9d2418f34a2daadcc8a7f728a9523f24e09d64e7406663b72898de15af15e3c` /
+`8bf082c1597a361b990f3943c724713d2be7cc5a59399b36f2f0bf2536c3781f`.
+
+Window IN_PROGRESS. Next: identify this complete array with the original
+polynomial evaluations via the source twiddle tree, then consume preceding
+table generation/conversion. B1.04 Acceptance remains open. Small local
 commits use the shared writer lock; no owned job is live at this checkpoint.
 
 ## B1.04 — recoverable midpoint, first pass and radix-2 blocks — 2026-10-07
