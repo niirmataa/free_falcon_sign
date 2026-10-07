@@ -20,6 +20,20 @@ exceeded the unchanged kernel memory budget; separate checked declarations
 resolved it. The failed source snapshot and raw streams are retained.
 B1.05 Acceptance remains NOT_MET. Window IN_PROGRESS.
 
+The search memory layer now executes the full align_fpr scaffold, including
+byte-pointer casts/subtraction, uint64 remainder and k/km branch, followed
+by the real return cast. It derives the write frame for overlapping memmove
+from pre-call bytes. The full poly_small_to_fp body and FPEMU fpr_rint body
+are source-bound; no real-rounding premise is used. The typed LP64 context
+reads logn/ternary/tmp bytes at offsets0/4/432 and checks its pointer encoding.
+`KeygenSearchExec`/`KeygenSearchFrame` supply fixed operational rules and
+syntax-checked preservation for the extra search constructs. Accepted current
+dependencies: `_leaves_023_002`, `_exec_023_002` and `_parser_023_001`
+(only the accepted steps of each job), prefix `keygen_search`.
+The remainder lexer refusal is retained as a checked fact in
+`KeygenSearchProbe`; its initial `none` diagnostic is historical, not a
+current proof log. Final sources have no diagnostic output.
+
 ## B1.05 — CLOSED at sampler/refill and validation midpoint — 2026-10-07
 
 **B1.05 Acceptance NOT MET.** The complete local MODE1 loops and real SHAKE
