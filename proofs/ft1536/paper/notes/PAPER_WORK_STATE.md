@@ -31,9 +31,15 @@ Small exact-path local commits on main; publication requires owner signal.
    with a Code-Bound Security Reduction" (owner: "będzie sztosowe").
    Applied to `main.tex` title + `pdftitle`; the OWNER-TITLE todo is
    resolved and removed.
-2. Mission paragraph: **DRAFTED 2026-10-07** from the owner's framing
-   ("po co powsta\u0142 FT1536?" = the paragraph answers why FT1536
-   exists). Awaiting the owner's signature or rewrite (OWNER-SIGN todo).
+2. Mission paragraph: **SIGNED by the owner 2026-10-07** ("idealna
+   wersja do paperu i do serca"). EN text in `sec_01_intro.tex`; PL
+   original (the heart version):
+   "FT1536 powsta\u0142 dlatego, \u017ce zaufanie do oprogramowania
+   podpisowego powinno bra\u0107 si\u0119 z argumentu, kt\u00f3ry ka\u017cdy
+   mo\u017ce sprawdzi\u0107 \u2014 nie z autorytetu tego, kto skompilowa\u0142
+   binark\u0119. Rodzina ternarna w rodowodzie Falcona \u2014 wolna w wyborze,
+   wolna w audycie, wolna w u\u017cyciu \u2014 dla ludzi, kt\u00f3rzy chc\u0105 sami
+   wybiera\u0107 i ocenia\u0107 swoje narz\u0119dzia kryptograficzne."
 3. **Venue: ePrint DECIDED 2026-10-07** by the owner. Follow-up venue
    (TCHES/CHES vs Eurocrypt) left open until closure.
 
