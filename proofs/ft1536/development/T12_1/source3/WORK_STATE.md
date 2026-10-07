@@ -34,6 +34,27 @@ The remainder lexer refusal is retained as a checked fact in
 `KeygenSearchProbe`; its initial `none` diagnostic is historical, not a
 current proof log. Final sources have no diagnostic output.
 
+`KeygenDepth0Source` now covers the COMPLETE7051–7273 ternary_depth0
+function:218 body lines, five parsed pieces sharing state, checked local
+FPC_MUL definition/undef, real member reads, alignment/casts, memmove,
+small-to-fpr, FFT/iFFT and final rint/stores. `KeygenDepth0Call.frame` and
+`material` derive f/g byte preservation from that execution and legal
+scratch/static-object separation. `call_gate_validated` consumes the actual
+output gate and derives F/G Bound2047 before inherited exact NTRU validation.
+Incoming f/g representations/bounds, typed caller/globals and Validation
+bindings remain explicit: deepest/intermediate and full root transport are
+still missing. `KeygenDepth0Return.return_one` derives int32 return1 from
+the same completed call, rather than assuming its success.
+
+Accepted `_depth0_source_023_002` (source step), `_depth0_call_023_002` and
+`_depth0_return_023_003`, prefix `keygen`, all0/0 current logs.
+`keygen_search_checks_023_001`:14 normal/UBSan runs, each with seven public
+constant-f/g fixtures and independent exact ZZ P(X^3) outputs. All six
+mutations detected in both modes, including input corruption, G alias/store/
+rounding errors and the 2048 output gate. Full C context layout and retained
+arrays/context fields checked. These controls do not execute the missing
+deepest/intermediate calls or supply a compiler/probability theorem.
+
 ## B1.05 — CLOSED at sampler/refill and validation midpoint — 2026-10-07
 
 **B1.05 Acceptance NOT MET.** The complete local MODE1 loops and real SHAKE
