@@ -378,6 +378,24 @@ realization and final assembly. Status remains NOT_REVIEWED (stage
 acceptance is not an independent review - reviews run per the owner's
 schedule).
 
+## 2026-10-07 (later): B1.04 ACCEPTANCE - the full NTT transformation identified
+
+The last heavy rung is CLOSED (commits through 2868c49e; BATCH_019 pin
+983a481a10293c01 exact; 8 non-empty logs verified = preserved FAILED
+ATTEMPTS' error logs, disclosed provenance; accepted jobs 0/0): u1/m
+loops + all 8 rounds + 512 triple iterations; **the complete source NTT
+execution is identified with evaluations of the input Vec polynomial -
+all 1536 results canonical** (`KeygenNttExecution`, `KeygenNttTransform`
++ twiddle tree/cert, round-polynomial); composed with table generation
+and input conversion. Audit 131 exports, 402 consistent inputs.
+`t*m=n` discharged HERE, as designed. Source-NTT <-> polynomial-math
+binding is COMPLETE.
+
+NEXT: B1.05 (solver success -> the exact integral NTRU equation; the
+full solver proof remains open), then B1.07 (stride=1 via the wrapper
+frame), B1.10 (emitted_to_actual_fiber = hkey), B1.11, and the do_sign
+realization (hshape + PointwiseStageRoad) + final assembly (arrows 1-2).
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
