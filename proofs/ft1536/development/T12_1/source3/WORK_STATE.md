@@ -18,6 +18,16 @@ the checked proof uses the existing byte round-trip export. Remaining:
 derive the bounds from these executions, the full sampler/caller bindings
 and full solver graph. B1.05 Acceptance NOT MET; window IN_PROGRESS.
 
+`KeygenSmallStep` extracts signed guard results and actual accepted stores;
+`KeygenSmallBounds.source_material` now derives Represents and Bound2047
+from the complete parsed function execution, M0 logn10/ter1 and destination
+binding/width. n1536, counter initialization/increments, all1536 writes and
+return control are derived. `KeygenSmallCalls.bound_call` adds actual Bind
+and nonzero-return conversion; its two-output/frame exports retain F through
+G conversion. Accepted `_small_step_021_002`, `_small_bounds_021_002`,
+`_small_calls_021_001` (prefix `keygen`), all0/0 logs. Actual enclosing
+struct-member arguments and source short-circuit gate remain open.
+
 ## B1.05 — CLOSED at recoverable validation midpoint — 2026-10-07
 
 `KeygenSolverValidation.generated_converted_checked` now composes the
