@@ -1,6 +1,6 @@
 # T12.1/source3 — żywy stan
 
-## B1.05 — validation composition checked; sealing midpoint — 2026-10-07
+## B1.05 — CLOSED at recoverable validation midpoint — 2026-10-07
 
 `KeygenSolverValidation.generated_converted_checked` now composes the
 source table generator, coefficient conversion, the four actual NTT calls
@@ -33,10 +33,23 @@ showing why validation success is distinct from the complete solver path.
 Controls SHA256 `2e69ed931116fcc622ae9c006502d2594ece9e77ea2d94eb7093314bf1223d28`.
 This is finite supporting evidence, not the missing universal bounds proof.
 
-No owned job remains.19 new attempts include10 failures and one interrupted
-outer-shell launch; raw logs/snapshots retained. Preparing BATCH_020 and
-expanded checkpoint under staged-roadmap rule3 (recoverable B1.05 midpoint).
-Next window resumes B1.05; B1.06 is not entered. No push/review/import.
+No owned job or unresolved Lean draft remains.19 new attempts include10
+failures and one interrupted outer-shell launch; raw logs/snapshots retained.
+**Window CLOSED_AT_RECOVERABLE_MIDPOINT** under staged-roadmap rule3.
+Expanded `notes/run/KEYGEN_RESIDUE_CHECKPOINT.md` section6 is the resume entry.
+BATCH_020 JSON `6b8a839151d8d174eb1b6a8b09e1b2f02a8f6c20b8c9055d40e687e951602dff`;
+notes `b402d5035667835182f539ed8ee8a812ad00a75687bd0662950373a098e26c6d`.
+At sealing409 current final-audit inputs and1336 predecessor files matched;
+all7 modules have accepted current bindings, max RSS3004140KiB. Source
+commits: `b4c2e87f`, `e92271d2`, `ed98536b`, plus final documentation commit.
+**B1.05 Acceptance remains NOT MET**; resume the missing source bounds and
+complete active solver/caller graph. B1.06 not entered. No push/review/import.
+
+External Git observation after sealing: during final documentation checks,
+origin/main had advanced to `ed98536b41de7c1d18455d5e482d622a259dcdb4`.
+Its reflog records `update by push` at2026-10-07T17:17:31Z. This worker
+issued no push command; the observation is recorded separately from the
+local checkpoint operations above.
 
 ## B1.05 — source solver composition in progress — 2026-10-07
 

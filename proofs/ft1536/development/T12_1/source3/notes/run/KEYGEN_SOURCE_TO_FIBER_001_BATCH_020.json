@@ -1,0 +1,2114 @@
+{
+  "task": "KEYGEN_SOURCE_TO_FIBER_001",
+  "batch": "BATCH_020",
+  "stage": "B1.05",
+  "created_utc": "2026-10-07T17:16:19.054169+00:00",
+  "window": "CLOSED_AT_RECOVERABLE_MIDPOINT",
+  "b1_05_acceptance": "NOT_MET",
+  "stage_result": "PARTIAL_PROOF",
+  "status": "IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN",
+  "harness": "GPT-6 Astra Ultrafast / openai/gpt-6-astra-ultrafast",
+  "runner_note": "Historical runner model/session labels retained; unchanged guarded serial execution.",
+  "runner": {
+    "path": "tools/job.py",
+    "sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+    "bytes": 12792
+  },
+  "waiter": {
+    "path": "tools/job_when_available.py",
+    "sha256": "525785c5321ebdda583c4e42d0daf5243b29146d10d47bd086d65fd89c53c37b",
+    "bytes": 3870
+  },
+  "organizer": {
+    "path": "tools/keygen_solver_batch.py",
+    "sha256": "882c9c07f76e7e092cc8ecfbb79e358edd1e10afb54bc0baa73f01cf80e68815",
+    "bytes": 14321
+  },
+  "organizer_helpers": {
+    "path": "tools/keygen_ntt_batch.py",
+    "sha256": "70aedf6cc132052d6a6a6ca48e400e5c1cccff051d5f5e91b1abf80c8b14717e",
+    "bytes": 15050
+  },
+  "preflight": {
+    "path": ".build/solver_020/PREFLIGHT.json",
+    "sha256": "5f0e6d6e1829fd93b5a4c0e1b728351e16b731bec9b0bfec68baa06bf187501a",
+    "bytes": 296057
+  },
+  "preflight_program": {
+    "path": ".build/solver_020/preflight.py",
+    "sha256": "b83120bc63bc836d3ea454fcebed6aed78a266792c89352a20087632ebe9efa6",
+    "bytes": 3391
+  },
+  "preflight_files_checked": 1336,
+  "preflight_current_inputs": 402,
+  "input_pins": {
+    "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_015.json": "b5bb63f5ddfb423ff6a4742dfd2893bcc7587b4cb50f51877b9b3910285be134",
+    "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_015_NOTES.md": "aec981ffab3f9065ac10d6d99f4f931ceccd852f237382e3b0240b64fbe53cd8",
+    "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_016.json": "cc28381bb1188400d0ea1d15e3c83ba045a2e5476a9644ee4dd0585c58e2b25f",
+    "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_016_NOTES.md": "e323ac9783e41e2143638088af6cfb0453b756a8418273b62bd961c1b0695419",
+    "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_017.json": "50f35519c32d1d16dd6987b781ac43e59cc835dd076ce15f146a1fe9ac9cbc0b",
+    "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_017_NOTES.md": "814660ca606d29600793dc3e61e5903b05ef56e83042b4d6aba131f86c6f28d6",
+    "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_018.json": "f4e28b724e588b7e91cdb429646dfefe5939332f307f0ae15dc282369edc72cf",
+    "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_018_NOTES.md": "c19d5c9cb893793dd6ff23fa232271fcfe704f0821160de1a1e2065551bd546d",
+    "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_019.json": "983a481a10293c01bf80250a9dd4ad2797e351db0a3c5d41825845d80fde6098",
+    "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_019_NOTES.md": "289d85f0ec1f25fe5950ad6b182363afe9ede0484c3053cf0c915d9cd52b1c01"
+  },
+  "proof_head": "ed98536b41de7c1d18455d5e482d622a259dcdb4",
+  "accepted_module_checks": [
+    {
+      "module": "Source3.KeygenSolverEquation",
+      "source": {
+        "path": "formal/Source3/KeygenSolverEquation.lean",
+        "sha256": "09fb933660f50960aa33611519a698617beee97098ad11029807e1607f52e5d1",
+        "bytes": 5990
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_solver_equation_020_003/formal/Source3/KeygenSolverEquation.lean",
+        "sha256": "09fb933660f50960aa33611519a698617beee97098ad11029807e1607f52e5d1",
+        "bytes": 5990
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_solver_equation_020_003/lib/Source3/KeygenSolverEquation.olean",
+        "sha256": "d4484077c19ff2b1ee37b3114adc49574cec90335b21924dcad94fd597dd6e66",
+        "bytes": 172392
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_solver_equation_020_003/RECEIPTS.json",
+        "sha256": "6eb42e7cb56c9f6d3b6904631019cd1e31b8dba39030bd07c2ca4fbe97ca1f5b",
+        "bytes": 3035
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_solver_equation_020_003/SOURCE_INPUTS.json",
+        "sha256": "4bf4559862aaef3d17274485d12731d05e76254b725526355593db28622f71d6",
+        "bytes": 416100
+      },
+      "job": "keygen_solver_equation_020_003",
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_solver_equation_020_003/logs/Source3_KeygenSolverEquation.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_solver_equation_020_003/logs/Source3_KeygenSolverEquation.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenNttTransform": "7edb8e3b9d0b3f700581610549c0723afd357adc4efb1fe18e9ef789d4172226",
+        "Source3.KeygenNttEvaluation": "e0ba16e2e1e976a2c9a47ec2045a2b1a283e28cb46cde9c0b684da0ce50cd4c1",
+        "Source3.KeygenCheckLoopBridge": "080eec9d174276d0ef4bc63d6f7619c6db8e2bc9c9ba12773fbaa4c73e98ebbc"
+      },
+      "elapsed_s": 1.367,
+      "maxrss_kib": 2757804
+    },
+    {
+      "module": "Source3.KeygenSolverNttCalls",
+      "source": {
+        "path": "formal/Source3/KeygenSolverNttCalls.lean",
+        "sha256": "38035a106cd749e21c714689fed21c0b28224bbb39c87aafebac6ff8fd817ffa",
+        "bytes": 7921
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_solver_audit_020_005/formal/Source3/KeygenSolverNttCalls.lean",
+        "sha256": "38035a106cd749e21c714689fed21c0b28224bbb39c87aafebac6ff8fd817ffa",
+        "bytes": 7921
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_solver_audit_020_005/lib/Source3/KeygenSolverNttCalls.olean",
+        "sha256": "260bdbcf0f7007ef81a0e826f651818a0568958328a365b82a7a659284f8cc66",
+        "bytes": 494728
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_solver_audit_020_005/RECEIPTS.json",
+        "sha256": "fa26d87d7c85dd5e7d45773dd4a2ea0f36f0fba3523b2f3f828ce67cf1538674",
+        "bytes": 18096
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_solver_audit_020_005/SOURCE_INPUTS.json",
+        "sha256": "b6ab79b9638d1d08d9fe51872575cb08e4a1373c614c9638ba6bcafa9f55ffbe",
+        "bytes": 418840
+      },
+      "job": "keygen_solver_audit_020_005",
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_solver_audit_020_005/logs/Source3_KeygenSolverNttCalls.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_solver_audit_020_005/logs/Source3_KeygenSolverNttCalls.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenNttTransform": "7edb8e3b9d0b3f700581610549c0723afd357adc4efb1fe18e9ef789d4172226",
+        "Source3.C99ProcedureParser": "8ca3f219d69715e9712b32549942f5b06e664cb48f23b20121de970f4ab2c04f"
+      },
+      "elapsed_s": 3.823,
+      "maxrss_kib": 3004140
+    },
+    {
+      "module": "Source3.KeygenSolverTransforms",
+      "source": {
+        "path": "formal/Source3/KeygenSolverTransforms.lean",
+        "sha256": "e4754c08c1b42f622249a543bea7fc7d917a61e78b21102bb6747cbfd088df10",
+        "bytes": 6858
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_solver_audit_020_005/formal/Source3/KeygenSolverTransforms.lean",
+        "sha256": "e4754c08c1b42f622249a543bea7fc7d917a61e78b21102bb6747cbfd088df10",
+        "bytes": 6858
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_solver_audit_020_005/lib/Source3/KeygenSolverTransforms.olean",
+        "sha256": "bd7256e6d631f752a95f384e73b1e15e6a823ded5c9cad9bc3e5ccfd3ca4194e",
+        "bytes": 307232
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_solver_audit_020_005/RECEIPTS.json",
+        "sha256": "fa26d87d7c85dd5e7d45773dd4a2ea0f36f0fba3523b2f3f828ce67cf1538674",
+        "bytes": 18096
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_solver_audit_020_005/SOURCE_INPUTS.json",
+        "sha256": "b6ab79b9638d1d08d9fe51872575cb08e4a1373c614c9638ba6bcafa9f55ffbe",
+        "bytes": 418840
+      },
+      "job": "keygen_solver_audit_020_005",
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_solver_audit_020_005/logs/Source3_KeygenSolverTransforms.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_solver_audit_020_005/logs/Source3_KeygenSolverTransforms.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenSolverNttCalls": "260bdbcf0f7007ef81a0e826f651818a0568958328a365b82a7a659284f8cc66",
+        "Source3.KeygenSolverEquation": "d4484077c19ff2b1ee37b3114adc49574cec90335b21924dcad94fd597dd6e66"
+      },
+      "elapsed_s": 1.367,
+      "maxrss_kib": 3004140
+    },
+    {
+      "module": "Source3.KeygenSolverTarget",
+      "source": {
+        "path": "formal/Source3/KeygenSolverTarget.lean",
+        "sha256": "41023837705e710e459a697f0bea287fffc4b8e8083cf6616e7fe6f7af66c54f",
+        "bytes": 7051
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_solver_audit_020_005/formal/Source3/KeygenSolverTarget.lean",
+        "sha256": "41023837705e710e459a697f0bea287fffc4b8e8083cf6616e7fe6f7af66c54f",
+        "bytes": 7051
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_solver_audit_020_005/lib/Source3/KeygenSolverTarget.olean",
+        "sha256": "134159b998205be4af130edefe614efd17b5685663c4d25e4e2bb5d650140791",
+        "bytes": 545984
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_solver_audit_020_005/RECEIPTS.json",
+        "sha256": "fa26d87d7c85dd5e7d45773dd4a2ea0f36f0fba3523b2f3f828ce67cf1538674",
+        "bytes": 18096
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_solver_audit_020_005/SOURCE_INPUTS.json",
+        "sha256": "b6ab79b9638d1d08d9fe51872575cb08e4a1373c614c9638ba6bcafa9f55ffbe",
+        "bytes": 418840
+      },
+      "job": "keygen_solver_audit_020_005",
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_solver_audit_020_005/logs/Source3_KeygenSolverTarget.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_solver_audit_020_005/logs/Source3_KeygenSolverTarget.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenSolverTransforms": "bd7256e6d631f752a95f384e73b1e15e6a823ded5c9cad9bc3e5ccfd3ca4194e"
+      },
+      "elapsed_s": 4.072,
+      "maxrss_kib": 3004140
+    },
+    {
+      "module": "Source3.KeygenNttMemoryFrame",
+      "source": {
+        "path": "formal/Source3/KeygenNttMemoryFrame.lean",
+        "sha256": "cceb62f3fb2a11a777945db7baacc953d0eec7578c5ae1871c6a4e3ca237a3e8",
+        "bytes": 9720
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_solver_audit_020_005/formal/Source3/KeygenNttMemoryFrame.lean",
+        "sha256": "cceb62f3fb2a11a777945db7baacc953d0eec7578c5ae1871c6a4e3ca237a3e8",
+        "bytes": 9720
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_solver_audit_020_005/lib/Source3/KeygenNttMemoryFrame.olean",
+        "sha256": "c623923f100c8790869aa485c97c1678acd248b87634a5cef9a285c58f4faa86",
+        "bytes": 566368
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_solver_audit_020_005/RECEIPTS.json",
+        "sha256": "fa26d87d7c85dd5e7d45773dd4a2ea0f36f0fba3523b2f3f828ce67cf1538674",
+        "bytes": 18096
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_solver_audit_020_005/SOURCE_INPUTS.json",
+        "sha256": "b6ab79b9638d1d08d9fe51872575cb08e4a1373c614c9638ba6bcafa9f55ffbe",
+        "bytes": 418840
+      },
+      "job": "keygen_solver_audit_020_005",
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_solver_audit_020_005/logs/Source3_KeygenNttMemoryFrame.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_solver_audit_020_005/logs/Source3_KeygenNttMemoryFrame.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenSolverNttCalls": "260bdbcf0f7007ef81a0e826f651818a0568958328a365b82a7a659284f8cc66"
+      },
+      "elapsed_s": 1.367,
+      "maxrss_kib": 3004140
+    },
+    {
+      "module": "Source3.KeygenSolverValidation",
+      "source": {
+        "path": "formal/Source3/KeygenSolverValidation.lean",
+        "sha256": "60faf3802b348e7080d6285a828d6a4e70c42d61f2c8bceec3e9f37e4ecc8baf",
+        "bytes": 12225
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_solver_audit_020_005/formal/Source3/KeygenSolverValidation.lean",
+        "sha256": "60faf3802b348e7080d6285a828d6a4e70c42d61f2c8bceec3e9f37e4ecc8baf",
+        "bytes": 12225
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_solver_audit_020_005/lib/Source3/KeygenSolverValidation.olean",
+        "sha256": "1a65e0c019dc2768cb5d5746234d27ed52c22ad08dafea26d7d7a7ef9942ed87",
+        "bytes": 540928
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_solver_audit_020_005/RECEIPTS.json",
+        "sha256": "fa26d87d7c85dd5e7d45773dd4a2ea0f36f0fba3523b2f3f828ce67cf1538674",
+        "bytes": 18096
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_solver_audit_020_005/SOURCE_INPUTS.json",
+        "sha256": "b6ab79b9638d1d08d9fe51872575cb08e4a1373c614c9638ba6bcafa9f55ffbe",
+        "bytes": 418840
+      },
+      "job": "keygen_solver_audit_020_005",
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_solver_audit_020_005/logs/Source3_KeygenSolverValidation.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_solver_audit_020_005/logs/Source3_KeygenSolverValidation.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenSolverTarget": "134159b998205be4af130edefe614efd17b5685663c4d25e4e2bb5d650140791",
+        "Source3.KeygenNttMemoryFrame": "c623923f100c8790869aa485c97c1678acd248b87634a5cef9a285c58f4faa86"
+      },
+      "elapsed_s": 1.317,
+      "maxrss_kib": 3004140
+    },
+    {
+      "module": "Source3.KeygenSolverValidationAudit",
+      "source": {
+        "path": "formal/Source3/KeygenSolverValidationAudit.lean",
+        "sha256": "1ffe4362c2d1daaa005fd8a1077a868de88340242f60086c9dc6d93a51cf171b",
+        "bytes": 4802
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_solver_audit_020_005/formal/Source3/KeygenSolverValidationAudit.lean",
+        "sha256": "1ffe4362c2d1daaa005fd8a1077a868de88340242f60086c9dc6d93a51cf171b",
+        "bytes": 4802
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_solver_audit_020_005/lib/Source3/KeygenSolverValidationAudit.olean",
+        "sha256": "e9f26ee59cfd4b3c8696dd5e4b0c550d1a1202beb099dbbbad9fae9af6e210af",
+        "bytes": 2552
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_solver_audit_020_005/RECEIPTS.json",
+        "sha256": "fa26d87d7c85dd5e7d45773dd4a2ea0f36f0fba3523b2f3f828ce67cf1538674",
+        "bytes": 18096
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_solver_audit_020_005/SOURCE_INPUTS.json",
+        "sha256": "b6ab79b9638d1d08d9fe51872575cb08e4a1373c614c9638ba6bcafa9f55ffbe",
+        "bytes": 418840
+      },
+      "job": "keygen_solver_audit_020_005",
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_solver_audit_020_005/logs/Source3_KeygenSolverValidationAudit.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_solver_audit_020_005/logs/Source3_KeygenSolverValidationAudit.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenSolverValidation": "1a65e0c019dc2768cb5d5746234d27ed52c22ad08dafea26d7d7a7ef9942ed87"
+      },
+      "elapsed_s": 3.421,
+      "maxrss_kib": 3004140
+    }
+  ],
+  "current_final_audit_inputs": 409,
+  "contracts": {
+    "calls": "The four parsed statements and fixed NTT call stratum bind actual argument evaluations, the stride1 macro and complete forwardBody execution. Caller locals/pointers are restored, only the returned heap changes.",
+    "sequence": "Each transform preserves exact canonical words of later inputs and Images of earlier outputs. All four Images concern the same original vectors through common States.",
+    "target": "The actual r assignment executes modp_montymul(18433,1,p,p0i), with signed source literals converted to uint32 parameters. Check locals, pointers and canonical words are derived.",
+    "equation": "Successful parsed final comparison -> pointwise equations -> coefficient quotient equation -> zero integer residual modulo2147355649 -> exact integer NTRU using37748737.",
+    "byte_frame": "Pointer provenance and actual Store32 boundaries derive preservation outside the scratch object, including original16-bit f/g/F/G bytes. No canonical-cell premise is used for this frame.",
+    "composition": "generated_converted_checked starts at table generation, follows conversion, four source-bound calls and target/check return1, and concludes Equation v plus Represents finalHeap originalInput v for all four slots.",
+    "remaining_premises": "Source generator Entry/legal memory/static REV10; source p0i execution; original four-Vec representation and Bounds(1,1,2047,2047); scratch/input separation; actual generation/conversion/calls/validation executions; caller layout and scalar/pointer slots; equality of generation return and conversion entry heaps.",
+    "open": "Full active solve_NTRU graph and enclosing caller derivation; complete executed poly_big_to_small/zint_one_to_plain; MODE1 draw/rejection/store loop and input-preserving pre-validation search; derivation of the remaining bounds and caller bindings. No solver_correct premise, solver theorem or B1.05 Acceptance is claimed."
+  },
+  "audit": {
+    "path": ".build/jobs/keygen_solver_audit_020_005/SOLVER_VALIDATION_AUDIT.json",
+    "sha256": "c7d037950b751c0287e9dbd15a189aadaa9ef133bf9ea66a862ef424ddbd6abc",
+    "bytes": 1477559,
+    "receipt": {
+      "path": ".build/jobs/keygen_solver_audit_020_005/RECEIPTS.json",
+      "sha256": "fa26d87d7c85dd5e7d45773dd4a2ea0f36f0fba3523b2f3f828ce67cf1538674",
+      "bytes": 18096
+    },
+    "source_inputs": {
+      "path": ".build/jobs/keygen_solver_audit_020_005/SOURCE_INPUTS.json",
+      "sha256": "b6ab79b9638d1d08d9fe51872575cb08e4a1373c614c9638ba6bcafa9f55ffbe",
+      "bytes": 418840
+    },
+    "exports": 88,
+    "new_declarations": 69,
+    "full_pretty_terms": 85,
+    "kernel_structures_with_constructor_types": 3,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "elisions": 0,
+    "generator": "formal/Source3/KeygenSolverValidationAudit.lean",
+    "independent_review": false
+  },
+  "sage": {
+    "job": "keygen_solver_checks_020_001",
+    "source": {
+      "path": "sage/check_keygen_solver_validation.sage",
+      "sha256": "e592a47e3e62678bc51f2a81a5ab89793eec437260d62b2443ae1c38d72e246f",
+      "bytes": 8134
+    },
+    "receipt": {
+      "path": ".build/jobs/keygen_solver_checks_020_001/RECEIPTS.json",
+      "sha256": "0061d34ebcb0421d44c02ea562490b4a5fc6bd5487fd80bfb726cf08ba65a740",
+      "bytes": 2303
+    },
+    "source_inputs": {
+      "path": ".build/jobs/keygen_solver_checks_020_001/SOURCE_INPUTS.json",
+      "sha256": "297612153d3432c3137bf34dbe533acbbfe9499cc6192f6a2891ee1f863cfd07",
+      "bytes": 422972
+    },
+    "result": {
+      "path": ".build/jobs/keygen_solver_checks_020_001/SOLVER_VALIDATION_CHECK.json",
+      "sha256": "2e69ed931116fcc622ae9c006502d2594ece9e77ea2d94eb7093314bf1223d28",
+      "bytes": 24479
+    },
+    "logs": {
+      "stdout": {
+        "path": ".build/jobs/keygen_solver_checks_020_001/logs/sage.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_solver_checks_020_001/logs/sage.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "artifacts": [
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/PUBLIC_FIXTURE.json",
+        "sha256": "d9cc77c74b13c542adf6cf7d8333cb0e3656f9709c46dfcd67b5c7912497c455",
+        "bytes": 422812
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_baseline.c",
+        "sha256": "b567cd4d667370a093ada7a959ae647e17f8972db1a351389b89d6ed327373ba",
+        "bytes": 104984
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_baseline.stdout",
+        "sha256": "8dd09bea8aedbbb7aacbe00b77cc5930a887177d025caf816d5ec795a54cf37e",
+        "bytes": 84
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_baseline.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_baseline.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_baseline.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_wrong_target.c",
+        "sha256": "3514759003f2f242eba453927c90f624935f8139faab3b6a9362a6efd0094c0c",
+        "bytes": 104984
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_wrong_target.stdout",
+        "sha256": "cf19ab1d561d52db958299955f20bf22beb58109c62dd5fd04a29bc7c8d07fc4",
+        "bytes": 84
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_wrong_target.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_wrong_target.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_wrong_target.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_wrong_target_scale.c",
+        "sha256": "7786d7341859dd96936535cfbff5c67dc03c6f334a1beaa7b39989a7759e1c0d",
+        "bytes": 104992
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_wrong_target_scale.stdout",
+        "sha256": "cf19ab1d561d52db958299955f20bf22beb58109c62dd5fd04a29bc7c8d07fc4",
+        "bytes": 84
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_wrong_target_scale.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_wrong_target_scale.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_wrong_target_scale.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_missing_G_transform.c",
+        "sha256": "0ca33bacddbdfe33817eed1f024149b79b57ddddd16a48c36ca7ad57705c7a4c",
+        "bytes": 104958
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_missing_G_transform.stdout",
+        "sha256": "cf19ab1d561d52db958299955f20bf22beb58109c62dd5fd04a29bc7c8d07fc4",
+        "bytes": 84
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_missing_G_transform.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_missing_G_transform.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_missing_G_transform.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_overwrite_ft_on_gt.c",
+        "sha256": "29513be2e4d1ab997ac44c856feac0f50c0b38aa383cb012cf37adc87e819798",
+        "bytes": 104984
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_overwrite_ft_on_gt.stdout",
+        "sha256": "cf19ab1d561d52db958299955f20bf22beb58109c62dd5fd04a29bc7c8d07fc4",
+        "bytes": 84
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_overwrite_ft_on_gt.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_overwrite_ft_on_gt.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_overwrite_ft_on_gt.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_swapped_cross_operands.c",
+        "sha256": "480bb400c5219ca1b3545eff41314b0d91cc7f3d6dc0e8ce8dda5064402e7f24",
+        "bytes": 104984
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_swapped_cross_operands.stdout",
+        "sha256": "cf19ab1d561d52db958299955f20bf22beb58109c62dd5fd04a29bc7c8d07fc4",
+        "bytes": 84
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_swapped_cross_operands.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_swapped_cross_operands.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_swapped_cross_operands.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_ignored_comparison.c",
+        "sha256": "46d0a9a24b7afddd8480daed3bf7da2de91072561e61ad6cd781bddc11a6543c",
+        "bytes": 104989
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_ignored_comparison.stdout",
+        "sha256": "fb9c54043da316f02eae3f34e23ca13df8be50000fc811b1a335045dbf0b678d",
+        "bytes": 84
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_ignored_comparison.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_ignored_comparison.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/normal_ignored_comparison.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_baseline.c",
+        "sha256": "b567cd4d667370a093ada7a959ae647e17f8972db1a351389b89d6ed327373ba",
+        "bytes": 104984
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_baseline.stdout",
+        "sha256": "8dd09bea8aedbbb7aacbe00b77cc5930a887177d025caf816d5ec795a54cf37e",
+        "bytes": 84
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_baseline.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_baseline.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_baseline.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_wrong_target.c",
+        "sha256": "3514759003f2f242eba453927c90f624935f8139faab3b6a9362a6efd0094c0c",
+        "bytes": 104984
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_wrong_target.stdout",
+        "sha256": "cf19ab1d561d52db958299955f20bf22beb58109c62dd5fd04a29bc7c8d07fc4",
+        "bytes": 84
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_wrong_target.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_wrong_target.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_wrong_target.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_wrong_target_scale.c",
+        "sha256": "7786d7341859dd96936535cfbff5c67dc03c6f334a1beaa7b39989a7759e1c0d",
+        "bytes": 104992
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_wrong_target_scale.stdout",
+        "sha256": "cf19ab1d561d52db958299955f20bf22beb58109c62dd5fd04a29bc7c8d07fc4",
+        "bytes": 84
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_wrong_target_scale.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_wrong_target_scale.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_wrong_target_scale.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_missing_G_transform.c",
+        "sha256": "0ca33bacddbdfe33817eed1f024149b79b57ddddd16a48c36ca7ad57705c7a4c",
+        "bytes": 104958
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_missing_G_transform.stdout",
+        "sha256": "cf19ab1d561d52db958299955f20bf22beb58109c62dd5fd04a29bc7c8d07fc4",
+        "bytes": 84
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_missing_G_transform.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_missing_G_transform.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_missing_G_transform.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_overwrite_ft_on_gt.c",
+        "sha256": "29513be2e4d1ab997ac44c856feac0f50c0b38aa383cb012cf37adc87e819798",
+        "bytes": 104984
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_overwrite_ft_on_gt.stdout",
+        "sha256": "cf19ab1d561d52db958299955f20bf22beb58109c62dd5fd04a29bc7c8d07fc4",
+        "bytes": 84
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_overwrite_ft_on_gt.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_overwrite_ft_on_gt.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_overwrite_ft_on_gt.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_swapped_cross_operands.c",
+        "sha256": "480bb400c5219ca1b3545eff41314b0d91cc7f3d6dc0e8ce8dda5064402e7f24",
+        "bytes": 104984
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_swapped_cross_operands.stdout",
+        "sha256": "cf19ab1d561d52db958299955f20bf22beb58109c62dd5fd04a29bc7c8d07fc4",
+        "bytes": 84
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_swapped_cross_operands.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_swapped_cross_operands.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_swapped_cross_operands.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_ignored_comparison.c",
+        "sha256": "46d0a9a24b7afddd8480daed3bf7da2de91072561e61ad6cd781bddc11a6543c",
+        "bytes": 104989
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_ignored_comparison.stdout",
+        "sha256": "fb9c54043da316f02eae3f34e23ca13df8be50000fc811b1a335045dbf0b678d",
+        "bytes": 84
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_ignored_comparison.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_ignored_comparison.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_solver_checks_020_001/ubsan_ignored_comparison.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    ],
+    "executions": 14,
+    "cases_per_execution": 6,
+    "mutation_families": 6,
+    "scope": "Finite public synthetic validation and small-output controls, exact QQ/ZZ Sage and normal/UBSan C; no whole-solver or sampler proof."
+  },
+  "attempt_history": [
+    {
+      "job": "keygen_ntt_memory_frame_020_001",
+      "source_inputs": {
+        "path": ".build/jobs/keygen_ntt_memory_frame_020_001/SOURCE_INPUTS.json",
+        "sha256": "bbcadeff6cceea38b0e5caddd7dca23b603640d8e4e6daed5ed59805cb03b55f",
+        "bytes": 420774
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_ntt_memory_frame_020_001/PREFLIGHT.json",
+        "sha256": "13a17be64903d1f5ca9ac0fa25079429e42a7ca132f865be5b7da295b3aa0288",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_ntt_memory_frame_020_001/formal/Source3/KeygenNttMemoryFrame.lean",
+          "sha256": "d980980f550f33012e1c6b7ed1531284afd958a6689f05c090d221481592611c",
+          "bytes": 9719
+        }
+      ],
+      "receipt": {
+        "path": ".build/jobs/keygen_ntt_memory_frame_020_001/RECEIPTS.json",
+        "sha256": "afb80fc1e7b664377f5d6734c95a328096b734f08793b6a4cb764063fa580b27",
+        "bytes": 2958
+      },
+      "steps": [
+        {
+          "name": "Source3_KeygenNttMemoryFrame",
+          "accepted": false,
+          "clean_log": false,
+          "source_sha256": "d980980f550f33012e1c6b7ed1531284afd958a6689f05c090d221481592611c",
+          "elapsed_s": 1.367,
+          "maxrss_kib": 2758800,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_ntt_memory_frame_020_001/logs/Source3_KeygenNttMemoryFrame.stdout",
+              "sha256": "e7dd207a47efaea958cecfa3f455d8adfc95410760b36abcf489c74f644e6893",
+              "bytes": 2005
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_ntt_memory_frame_020_001/logs/Source3_KeygenNttMemoryFrame.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          },
+          "failure_excerpt": [
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_ntt_memory_frame_020_001/formal/Source3/KeygenNttMemoryFrame.lean:34:2: error: Too many variable names provided at alternative `add`: 9 provided, but 7 expected",
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_ntt_memory_frame_020_001/formal/Source3/KeygenNttMemoryFrame.lean:35:30: error: Application type mismatch: The argument",
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_ntt_memory_frame_020_001/formal/Source3/KeygenNttMemoryFrame.lean:36:12: error(lean.unknownIdentifier): Unknown identifier `within`",
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_ntt_memory_frame_020_001/formal/Source3/KeygenNttMemoryFrame.lean:36:6: error: Tactic `cases` failed: major premise type is not an inductive type"
+          ]
+        }
+      ],
+      "status": "FAILED_RETAINED",
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_ntt_memory_frame_020_001/WAIT.jsonl",
+        "sha256": "db48eee914ffd6a74c0c82fd15d881d60ddc68e2cc530d011d80ccac16158d53",
+        "bytes": 102
+      }
+    },
+    {
+      "job": "keygen_ntt_memory_frame_020_002",
+      "source_inputs": {
+        "path": ".build/jobs/keygen_ntt_memory_frame_020_002/SOURCE_INPUTS.json",
+        "sha256": "8c7b9695780368bd41e0baeb80a838a5f3f62ac55e057a60a3ab3764a5bc4941",
+        "bytes": 420774
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_ntt_memory_frame_020_002/PREFLIGHT.json",
+        "sha256": "999646269d9c30ae801df71e1256a415068938fc1093ff5e25d5ed8fe4d84bac",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_ntt_memory_frame_020_002/formal/Source3/KeygenNttMemoryFrame.lean",
+          "sha256": "cceb62f3fb2a11a777945db7baacc953d0eec7578c5ae1871c6a4e3ca237a3e8",
+          "bytes": 9720
+        }
+      ],
+      "receipt": {
+        "path": ".build/jobs/keygen_ntt_memory_frame_020_002/RECEIPTS.json",
+        "sha256": "5fa82c816caca5f5e95d3f51c1f61bacf2d5e8f7177fb7b41545f0ac4978a717",
+        "bytes": 3044
+      },
+      "steps": [
+        {
+          "name": "Source3_KeygenNttMemoryFrame",
+          "accepted": true,
+          "clean_log": true,
+          "source_sha256": "cceb62f3fb2a11a777945db7baacc953d0eec7578c5ae1871c6a4e3ca237a3e8",
+          "elapsed_s": 1.418,
+          "maxrss_kib": 2769724,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_ntt_memory_frame_020_002/logs/Source3_KeygenNttMemoryFrame.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_ntt_memory_frame_020_002/logs/Source3_KeygenNttMemoryFrame.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "status": "ACCEPTED",
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_ntt_memory_frame_020_002/WAIT.jsonl",
+        "sha256": "c3886b8b213154dcd95fa7f2804216502a86c156e2ead7bc38925e221c0b1152",
+        "bytes": 102
+      }
+    },
+    {
+      "job": "keygen_solver_audit_020_001",
+      "source_inputs": {
+        "path": ".build/jobs/keygen_solver_audit_020_001/SOURCE_INPUTS.json",
+        "sha256": "7ced8b84bc31b0ee6095d489e12e58ce04f07b2ecbb54a65209db023fbd72608",
+        "bytes": 423034
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_solver_audit_020_001/PREFLIGHT.json",
+        "sha256": "0636daf19e3a190728e1b29c94feee630b92fa2a0127b082d7594a0b07dd536c",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_solver_audit_020_001/formal/Source3/KeygenSolverValidationAudit.lean",
+          "sha256": "1ffe4362c2d1daaa005fd8a1077a868de88340242f60086c9dc6d93a51cf171b",
+          "bytes": 4802
+        }
+      ],
+      "receipt": {
+        "path": ".build/jobs/keygen_solver_audit_020_001/RECEIPTS.json",
+        "sha256": "5c768b73374f2d6611adafe5394198fd1c12248274496e2ca570e2475c1f16de",
+        "bytes": 2972
+      },
+      "steps": [
+        {
+          "name": "Source3_KeygenSolverValidationAudit",
+          "accepted": false,
+          "clean_log": false,
+          "source_sha256": "1ffe4362c2d1daaa005fd8a1077a868de88340242f60086c9dc6d93a51cf171b",
+          "elapsed_s": 28.023,
+          "maxrss_kib": 3168972,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_solver_audit_020_001/logs/Source3_KeygenSolverValidationAudit.stdout",
+              "sha256": "9a9a56dfd37d7c74a50833b327f020d57a4949444e5e3d43a09bb76690fb6a23",
+              "bytes": 209
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_solver_audit_020_001/logs/Source3_KeygenSolverValidationAudit.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          },
+          "failure_excerpt": [
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_solver_audit_020_001/formal/Source3/KeygenSolverValidationAudit.lean:14:0: error: Truncated audit text"
+          ]
+        }
+      ],
+      "status": "FAILED_RETAINED",
+      "products": [
+        {
+          "path": ".build/jobs/keygen_solver_audit_020_001/SOLVER_VALIDATION_AUDIT_PARTIAL.json",
+          "sha256": "c43fbe9cca52d3a3d957de9bb3b26a19f78ed34da2cb63a4405fc13e8856c156",
+          "bytes": 44517
+        },
+        {
+          "path": ".build/jobs/keygen_solver_audit_020_001/SOLVER_VALIDATION_AUDIT_PROGRESS.json",
+          "sha256": "be262ce8dacffc3a178701530fd224cbfc6a3c72254fc5b3bceebd725f891e80",
+          "bytes": 51
+        }
+      ],
+      "wait": {
+        "path": ".build/waits/keygen_solver_audit_020_001/WAIT.jsonl",
+        "sha256": "d11572f6539167a53fb7d504ab72e16bb5a43561ecbed6ac8b79eba6771e42f2",
+        "bytes": 98
+      }
+    },
+    {
+      "job": "keygen_solver_audit_020_002",
+      "source_inputs": {
+        "path": ".build/jobs/keygen_solver_audit_020_002/SOURCE_INPUTS.json",
+        "sha256": "12970dec5ff531f56e90157ee7bb9fd11db5890b31bba3370ddf79583619aa30",
+        "bytes": 423034
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_solver_audit_020_002/PREFLIGHT.json",
+        "sha256": "774d728a2448b44045564b80bc8b2a5e4c5261a9198d261344f7628f23cfecd7",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_solver_audit_020_002/formal/Source3/KeygenSolverValidationAudit.lean",
+          "sha256": "256716566e9e984e6b637807f539c634e22018bbe7425c53679af95542b0be48",
+          "bytes": 5383
+        }
+      ],
+      "receipt": {
+        "path": ".build/jobs/keygen_solver_audit_020_002/RECEIPTS.json",
+        "sha256": "15791270a88fc38726eb910a33d3d015caa83769350e2714eca9991d92277bde",
+        "bytes": 2972
+      },
+      "steps": [
+        {
+          "name": "Source3_KeygenSolverValidationAudit",
+          "accepted": false,
+          "clean_log": false,
+          "source_sha256": "256716566e9e984e6b637807f539c634e22018bbe7425c53679af95542b0be48",
+          "elapsed_s": 85.151,
+          "maxrss_kib": 3211744,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_solver_audit_020_002/logs/Source3_KeygenSolverValidationAudit.stdout",
+              "sha256": "6cbca4a0f459cdf59a2e7c1445d7afda3c807c0476bd2398952c0ca63af60c55",
+              "bytes": 243
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_solver_audit_020_002/logs/Source3_KeygenSolverValidationAudit.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          },
+          "failure_excerpt": [
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_solver_audit_020_002/formal/Source3/KeygenSolverValidationAudit.lean:15:0: error: Expression is not a closed annotation-free kernel term"
+          ]
+        }
+      ],
+      "status": "FAILED_RETAINED",
+      "products": [
+        {
+          "path": ".build/jobs/keygen_solver_audit_020_002/SOLVER_VALIDATION_AUDIT_PARTIAL.json",
+          "sha256": "c43fbe9cca52d3a3d957de9bb3b26a19f78ed34da2cb63a4405fc13e8856c156",
+          "bytes": 44517
+        },
+        {
+          "path": ".build/jobs/keygen_solver_audit_020_002/SOLVER_VALIDATION_AUDIT_PROGRESS.json",
+          "sha256": "be262ce8dacffc3a178701530fd224cbfc6a3c72254fc5b3bceebd725f891e80",
+          "bytes": 51
+        }
+      ],
+      "wait": {
+        "path": ".build/waits/keygen_solver_audit_020_002/WAIT.jsonl",
+        "sha256": "4f48f72f820dbb108f39a968402946f7fb8a8411ad26ec68ac358043e0bd2a8f",
+        "bytes": 98
+      }
+    },
+    {
+      "job": "keygen_solver_audit_020_003",
+      "source_inputs": {
+        "path": ".build/jobs/keygen_solver_audit_020_003/SOURCE_INPUTS.json",
+        "sha256": "9bc3830735ff60425f4fb0ac034abb2587d8e1b452c0e72557d6f3df880bceb2",
+        "bytes": 418840
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_solver_audit_020_003/PREFLIGHT.json",
+        "sha256": "6e522d82b2a20b0f306d99202215ea951710e59396422d6006163999c3b03e80",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_solver_audit_020_003/formal/Source3/KeygenSolverNttCalls.lean",
+          "sha256": "cb9cb77ed7c77eb1a850e5c902d83435744766f307bb276be571df16a981d55b",
+          "bytes": 7777
+        },
+        {
+          "path": ".build/jobs/keygen_solver_audit_020_003/formal/Source3/KeygenSolverTransforms.lean",
+          "sha256": "e4754c08c1b42f622249a543bea7fc7d917a61e78b21102bb6747cbfd088df10",
+          "bytes": 6858
+        },
+        {
+          "path": ".build/jobs/keygen_solver_audit_020_003/formal/Source3/KeygenSolverTarget.lean",
+          "sha256": "41023837705e710e459a697f0bea287fffc4b8e8083cf6616e7fe6f7af66c54f",
+          "bytes": 7051
+        },
+        {
+          "path": ".build/jobs/keygen_solver_audit_020_003/formal/Source3/KeygenNttMemoryFrame.lean",
+          "sha256": "cceb62f3fb2a11a777945db7baacc953d0eec7578c5ae1871c6a4e3ca237a3e8",
+          "bytes": 9720
+        },
+        {
+          "path": ".build/jobs/keygen_solver_audit_020_003/formal/Source3/KeygenSolverValidation.lean",
+          "sha256": "60faf3802b348e7080d6285a828d6a4e70c42d61f2c8bceec3e9f37e4ecc8baf",
+          "bytes": 12225
+        },
+        {
+          "path": ".build/jobs/keygen_solver_audit_020_003/formal/Source3/KeygenSolverValidationAudit.lean",
+          "sha256": "1ffe4362c2d1daaa005fd8a1077a868de88340242f60086c9dc6d93a51cf171b",
+          "bytes": 4802
+        }
+      ],
+      "receipt": {
+        "path": ".build/jobs/keygen_solver_audit_020_003/RECEIPTS.json",
+        "sha256": "bd3d0ff5b907dd4baae11bc3390aa9fac6d845cf9c69885c1a9a50290741a455",
+        "bytes": 2921
+      },
+      "steps": [
+        {
+          "name": "Source3_KeygenSolverNttCalls",
+          "accepted": false,
+          "clean_log": true,
+          "source_sha256": "cb9cb77ed7c77eb1a850e5c902d83435744766f307bb276be571df16a981d55b",
+          "elapsed_s": 3.974,
+          "maxrss_kib": 2999068,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_solver_audit_020_003/logs/Source3_KeygenSolverNttCalls.stdout",
+              "sha256": "068108cc607dede1cf9983d3b1b69685fb179d2c1b6fbfbba87b91288dc4dc9b",
+              "bytes": 1088
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_solver_audit_020_003/logs/Source3_KeygenSolverNttCalls.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          },
+          "failure_excerpt": [
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_solver_audit_020_003/formal/Source3/KeygenSolverNttCalls.lean:103:31: error(lean.invalidDottedIdent): Invalid dotted identifier notation: The expected type of `.uint32` could not be determined",
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_solver_audit_020_003/formal/Source3/KeygenSolverNttCalls.lean:104:26: error(lean.invalidDottedIdent): Invalid dotted identifier notation: The expected type of `.uint32` could not be determined"
+          ]
+        }
+      ],
+      "status": "FAILED_RETAINED",
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_solver_audit_020_003/WAIT.jsonl",
+        "sha256": "f38cc9c92cd3ae05783578584ee5032193e10b70231b78e76105d05be081ca83",
+        "bytes": 98
+      }
+    },
+    {
+      "job": "keygen_solver_audit_020_004",
+      "source_inputs": {
+        "path": ".build/jobs/keygen_solver_audit_020_004/SOURCE_INPUTS.json",
+        "sha256": "02bd59b178ab1dc5b65870c121e957ae86a5cbf90c4b9b1f6bff573b2a44a6cd",
+        "bytes": 418840
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_solver_audit_020_004/PREFLIGHT.json",
+        "sha256": "99cccd8ce2becc194d32f6974211a91b3355cda2b14efe85438539ae72449455",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_solver_audit_020_004/formal/Source3/KeygenSolverNttCalls.lean",
+          "sha256": "85b63e4494502a7bd63400c0208336e5e21980d469559ccfad110233058f1d7b",
+          "bytes": 7826
+        },
+        {
+          "path": ".build/jobs/keygen_solver_audit_020_004/formal/Source3/KeygenSolverTransforms.lean",
+          "sha256": "e4754c08c1b42f622249a543bea7fc7d917a61e78b21102bb6747cbfd088df10",
+          "bytes": 6858
+        },
+        {
+          "path": ".build/jobs/keygen_solver_audit_020_004/formal/Source3/KeygenSolverTarget.lean",
+          "sha256": "41023837705e710e459a697f0bea287fffc4b8e8083cf6616e7fe6f7af66c54f",
+          "bytes": 7051
+        },
+        {
+          "path": ".build/jobs/keygen_solver_audit_020_004/formal/Source3/KeygenNttMemoryFrame.lean",
+          "sha256": "cceb62f3fb2a11a777945db7baacc953d0eec7578c5ae1871c6a4e3ca237a3e8",
+          "bytes": 9720
+        },
+        {
+          "path": ".build/jobs/keygen_solver_audit_020_004/formal/Source3/KeygenSolverValidation.lean",
+          "sha256": "60faf3802b348e7080d6285a828d6a4e70c42d61f2c8bceec3e9f37e4ecc8baf",
+          "bytes": 12225
+        },
+        {
+          "path": ".build/jobs/keygen_solver_audit_020_004/formal/Source3/KeygenSolverValidationAudit.lean",
+          "sha256": "1ffe4362c2d1daaa005fd8a1077a868de88340242f60086c9dc6d93a51cf171b",
+          "bytes": 4802
+        }
+      ],
+      "receipt": {
+        "path": ".build/jobs/keygen_solver_audit_020_004/RECEIPTS.json",
+        "sha256": "c583bc3f88a63fba3bbc6417cf15ad85f5d615ff1d8223c37ebb0057a49054f2",
+        "bytes": 2922
+      },
+      "steps": [
+        {
+          "name": "Source3_KeygenSolverNttCalls",
+          "accepted": false,
+          "clean_log": false,
+          "source_sha256": "85b63e4494502a7bd63400c0208336e5e21980d469559ccfad110233058f1d7b",
+          "elapsed_s": 3.772,
+          "maxrss_kib": 2998836,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_solver_audit_020_004/logs/Source3_KeygenSolverNttCalls.stdout",
+              "sha256": "da8c9d0447cc4b92d6867077a5eaa0ebfdea056804e9c3ac524396c354991548",
+              "bytes": 1708
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_solver_audit_020_004/logs/Source3_KeygenSolverNttCalls.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          },
+          "failure_excerpt": [
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_solver_audit_020_004/formal/Source3/KeygenSolverNttCalls.lean:105:22: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+          ]
+        }
+      ],
+      "status": "FAILED_RETAINED",
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_solver_audit_020_004/WAIT.jsonl",
+        "sha256": "f1f1bb06893eab3f7d0bbc8d6a96535207e70bf3589624ab16e3fd46c0d9468d",
+        "bytes": 98
+      }
+    },
+    {
+      "job": "keygen_solver_audit_020_005",
+      "source_inputs": {
+        "path": ".build/jobs/keygen_solver_audit_020_005/SOURCE_INPUTS.json",
+        "sha256": "b6ab79b9638d1d08d9fe51872575cb08e4a1373c614c9638ba6bcafa9f55ffbe",
+        "bytes": 418840
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_solver_audit_020_005/PREFLIGHT.json",
+        "sha256": "b9a3810166041e997f92ff5d9cdc307055bfedfa7f57eee8c045a29ba2fef499",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_solver_audit_020_005/formal/Source3/KeygenSolverNttCalls.lean",
+          "sha256": "38035a106cd749e21c714689fed21c0b28224bbb39c87aafebac6ff8fd817ffa",
+          "bytes": 7921
+        },
+        {
+          "path": ".build/jobs/keygen_solver_audit_020_005/formal/Source3/KeygenSolverTransforms.lean",
+          "sha256": "e4754c08c1b42f622249a543bea7fc7d917a61e78b21102bb6747cbfd088df10",
+          "bytes": 6858
+        },
+        {
+          "path": ".build/jobs/keygen_solver_audit_020_005/formal/Source3/KeygenSolverTarget.lean",
+          "sha256": "41023837705e710e459a697f0bea287fffc4b8e8083cf6616e7fe6f7af66c54f",
+          "bytes": 7051
+        },
+        {
+          "path": ".build/jobs/keygen_solver_audit_020_005/formal/Source3/KeygenNttMemoryFrame.lean",
+          "sha256": "cceb62f3fb2a11a777945db7baacc953d0eec7578c5ae1871c6a4e3ca237a3e8",
+          "bytes": 9720
+        },
+        {
+          "path": ".build/jobs/keygen_solver_audit_020_005/formal/Source3/KeygenSolverValidation.lean",
+          "sha256": "60faf3802b348e7080d6285a828d6a4e70c42d61f2c8bceec3e9f37e4ecc8baf",
+          "bytes": 12225
+        },
+        {
+          "path": ".build/jobs/keygen_solver_audit_020_005/formal/Source3/KeygenSolverValidationAudit.lean",
+          "sha256": "1ffe4362c2d1daaa005fd8a1077a868de88340242f60086c9dc6d93a51cf171b",
+          "bytes": 4802
+        }
+      ],
+      "receipt": {
+        "path": ".build/jobs/keygen_solver_audit_020_005/RECEIPTS.json",
+        "sha256": "fa26d87d7c85dd5e7d45773dd4a2ea0f36f0fba3523b2f3f828ce67cf1538674",
+        "bytes": 18096
+      },
+      "steps": [
+        {
+          "name": "Source3_KeygenSolverNttCalls",
+          "accepted": true,
+          "clean_log": true,
+          "source_sha256": "38035a106cd749e21c714689fed21c0b28224bbb39c87aafebac6ff8fd817ffa",
+          "elapsed_s": 3.823,
+          "maxrss_kib": 3004140,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_solver_audit_020_005/logs/Source3_KeygenSolverNttCalls.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_solver_audit_020_005/logs/Source3_KeygenSolverNttCalls.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        },
+        {
+          "name": "Source3_KeygenSolverTransforms",
+          "accepted": true,
+          "clean_log": true,
+          "source_sha256": "e4754c08c1b42f622249a543bea7fc7d917a61e78b21102bb6747cbfd088df10",
+          "elapsed_s": 1.367,
+          "maxrss_kib": 3004140,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_solver_audit_020_005/logs/Source3_KeygenSolverTransforms.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_solver_audit_020_005/logs/Source3_KeygenSolverTransforms.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        },
+        {
+          "name": "Source3_KeygenSolverTarget",
+          "accepted": true,
+          "clean_log": true,
+          "source_sha256": "41023837705e710e459a697f0bea287fffc4b8e8083cf6616e7fe6f7af66c54f",
+          "elapsed_s": 4.072,
+          "maxrss_kib": 3004140,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_solver_audit_020_005/logs/Source3_KeygenSolverTarget.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_solver_audit_020_005/logs/Source3_KeygenSolverTarget.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        },
+        {
+          "name": "Source3_KeygenNttMemoryFrame",
+          "accepted": true,
+          "clean_log": true,
+          "source_sha256": "cceb62f3fb2a11a777945db7baacc953d0eec7578c5ae1871c6a4e3ca237a3e8",
+          "elapsed_s": 1.367,
+          "maxrss_kib": 3004140,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_solver_audit_020_005/logs/Source3_KeygenNttMemoryFrame.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_solver_audit_020_005/logs/Source3_KeygenNttMemoryFrame.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        },
+        {
+          "name": "Source3_KeygenSolverValidation",
+          "accepted": true,
+          "clean_log": true,
+          "source_sha256": "60faf3802b348e7080d6285a828d6a4e70c42d61f2c8bceec3e9f37e4ecc8baf",
+          "elapsed_s": 1.317,
+          "maxrss_kib": 3004140,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_solver_audit_020_005/logs/Source3_KeygenSolverValidation.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_solver_audit_020_005/logs/Source3_KeygenSolverValidation.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        },
+        {
+          "name": "Source3_KeygenSolverValidationAudit",
+          "accepted": true,
+          "clean_log": true,
+          "source_sha256": "1ffe4362c2d1daaa005fd8a1077a868de88340242f60086c9dc6d93a51cf171b",
+          "elapsed_s": 3.421,
+          "maxrss_kib": 3004140,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_solver_audit_020_005/logs/Source3_KeygenSolverValidationAudit.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_solver_audit_020_005/logs/Source3_KeygenSolverValidationAudit.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "status": "ACCEPTED",
+      "products": [
+        {
+          "path": ".build/jobs/keygen_solver_audit_020_005/SOLVER_VALIDATION_AUDIT.json",
+          "sha256": "c7d037950b751c0287e9dbd15a189aadaa9ef133bf9ea66a862ef424ddbd6abc",
+          "bytes": 1477559
+        },
+        {
+          "path": ".build/jobs/keygen_solver_audit_020_005/SOLVER_VALIDATION_AUDIT_PARTIAL.json",
+          "sha256": "c7d037950b751c0287e9dbd15a189aadaa9ef133bf9ea66a862ef424ddbd6abc",
+          "bytes": 1477559
+        },
+        {
+          "path": ".build/jobs/keygen_solver_audit_020_005/SOLVER_VALIDATION_AUDIT_PROGRESS.json",
+          "sha256": "ba0e2dc8a35e150862c29f09d44c25a2f15aee8f7fd2a55e40d919caef6cb0b5",
+          "bytes": 59
+        }
+      ],
+      "wait": {
+        "path": ".build/waits/keygen_solver_audit_020_005/WAIT.jsonl",
+        "sha256": "bb620a756e1017d160e500a165a09e9039a58ad55f2ec781cf79007dc302c699",
+        "bytes": 98
+      }
+    },
+    {
+      "job": "keygen_solver_calls_020_001",
+      "source_inputs": {
+        "path": ".build/jobs/keygen_solver_calls_020_001/SOURCE_INPUTS.json",
+        "sha256": "7d1d0be9411b316df83d7336443f753b73c870346535cd3739ffe24239285f92",
+        "bytes": 417377
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_solver_calls_020_001/PREFLIGHT.json",
+        "sha256": "33bd30c77d64cd83a2f7e119377206d954476994451893172f3b1809d776a865",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_solver_calls_020_001/formal/Source3/KeygenSolverNttCalls.lean",
+          "sha256": "85e7af07bce359f194e3ded7f6d1041dcc7f808b273b67952fe0991645116fae",
+          "bytes": 7790
+        }
+      ],
+      "receipt": {
+        "path": ".build/jobs/keygen_solver_calls_020_001/RECEIPTS.json",
+        "sha256": "97281f5c73a4f7defcbbf1e3faf30cb76bbc228e8e0bd80ebe8f7bd7a83975e9",
+        "bytes": 2922
+      },
+      "steps": [
+        {
+          "name": "Source3_KeygenSolverNttCalls",
+          "accepted": false,
+          "clean_log": false,
+          "source_sha256": "85e7af07bce359f194e3ded7f6d1041dcc7f808b273b67952fe0991645116fae",
+          "elapsed_s": 4.223,
+          "maxrss_kib": 3000308,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_solver_calls_020_001/logs/Source3_KeygenSolverNttCalls.stdout",
+              "sha256": "6f358a77e6711aa154bcf50dff33f8828eed8eaee5e5efc78375e402aac25f85",
+              "bytes": 525
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_solver_calls_020_001/logs/Source3_KeygenSolverNttCalls.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          },
+          "failure_excerpt": [
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_solver_calls_020_001/formal/Source3/KeygenSolverNttCalls.lean:68:2: error: Type mismatch: After simplification, term"
+          ]
+        }
+      ],
+      "status": "FAILED_RETAINED",
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_solver_calls_020_001/WAIT.jsonl",
+        "sha256": "c76bb4fc9bea67eb7897a646d2d7c61eead1ad817e59cb0667dfed053faaf998",
+        "bytes": 98
+      }
+    },
+    {
+      "job": "keygen_solver_calls_020_002",
+      "source_inputs": {
+        "path": ".build/jobs/keygen_solver_calls_020_002/SOURCE_INPUTS.json",
+        "sha256": "26d17400f6a27c10093cd3b90a465f3f71348ff90e105b9222ffa89655a8fb56",
+        "bytes": 417377
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_solver_calls_020_002/PREFLIGHT.json",
+        "sha256": "a93093647d18e8b8f334d64528714ed6457c94e7b0b22d2a398314610691a92f",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_solver_calls_020_002/formal/Source3/KeygenSolverNttCalls.lean",
+          "sha256": "239e94d3c9a95fb778f666df0833b9b7e630bb47929b27b7ce3ab399fc42029e",
+          "bytes": 7773
+        }
+      ],
+      "receipt": {
+        "path": ".build/jobs/keygen_solver_calls_020_002/RECEIPTS.json",
+        "sha256": "d3069a511536141673564c126ce29e85d4b21a5583801746b309c29db377d185",
+        "bytes": 3008
+      },
+      "steps": [
+        {
+          "name": "Source3_KeygenSolverNttCalls",
+          "accepted": true,
+          "clean_log": true,
+          "source_sha256": "239e94d3c9a95fb778f666df0833b9b7e630bb47929b27b7ce3ab399fc42029e",
+          "elapsed_s": 3.874,
+          "maxrss_kib": 3003724,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_solver_calls_020_002/logs/Source3_KeygenSolverNttCalls.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_solver_calls_020_002/logs/Source3_KeygenSolverNttCalls.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "status": "ACCEPTED",
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_solver_calls_020_002/WAIT.jsonl",
+        "sha256": "7b2c3fe76b479ba50a3096be6d265072191cf4775a8a1fc32eb6166848e60939",
+        "bytes": 98
+      }
+    },
+    {
+      "job": "keygen_solver_checks_020_001",
+      "source_inputs": {
+        "path": ".build/jobs/keygen_solver_checks_020_001/SOURCE_INPUTS.json",
+        "sha256": "297612153d3432c3137bf34dbe533acbbfe9499cc6192f6a2891ee1f863cfd07",
+        "bytes": 422972
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_solver_checks_020_001/PREFLIGHT.json",
+        "sha256": "efbbc035c9dc8d9ce6a085310c3e782d1a479d3015a9a53aa6d0a8f6d538f8c4",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_solver_checks_020_001/sage/check_keygen_solver_validation.sage",
+          "sha256": "e592a47e3e62678bc51f2a81a5ab89793eec437260d62b2443ae1c38d72e246f",
+          "bytes": 8134
+        }
+      ],
+      "receipt": {
+        "path": ".build/jobs/keygen_solver_checks_020_001/RECEIPTS.json",
+        "sha256": "0061d34ebcb0421d44c02ea562490b4a5fc6bd5487fd80bfb726cf08ba65a740",
+        "bytes": 2303
+      },
+      "steps": [
+        {
+          "name": "sage",
+          "accepted": true,
+          "clean_log": true,
+          "source_sha256": "e592a47e3e62678bc51f2a81a5ab89793eec437260d62b2443ae1c38d72e246f",
+          "elapsed_s": 96.974,
+          "maxrss_kib": 2229716,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_solver_checks_020_001/logs/sage.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_solver_checks_020_001/logs/sage.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "status": "ACCEPTED",
+      "products": [
+        {
+          "path": ".build/jobs/keygen_solver_checks_020_001/PUBLIC_FIXTURE.json",
+          "sha256": "d9cc77c74b13c542adf6cf7d8333cb0e3656f9709c46dfcd67b5c7912497c455",
+          "bytes": 422812
+        },
+        {
+          "path": ".build/jobs/keygen_solver_checks_020_001/SOLVER_VALIDATION_CHECK.json",
+          "sha256": "2e69ed931116fcc622ae9c006502d2594ece9e77ea2d94eb7093314bf1223d28",
+          "bytes": 24479
+        }
+      ],
+      "wait": {
+        "path": ".build/waits/keygen_solver_checks_020_001/WAIT.jsonl",
+        "sha256": "41a37d2d1bb88b0ce2dda6f5d6133282d63157a5bb81852ac2ae3d5f3f508b8b",
+        "bytes": 99
+      }
+    },
+    {
+      "job": "keygen_solver_equation_020_001",
+      "source_inputs": {
+        "path": ".build/jobs/keygen_solver_equation_020_001/SOURCE_INPUTS.json",
+        "sha256": "ad0aab32acd7a97270dd2598b70e4061629ae229ffb64876e5d45e1647b85bd4",
+        "bytes": 416100
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_solver_equation_020_001/PREFLIGHT.json",
+        "sha256": "78a3345ddcb24396b031383abb3f5a47049415fcbed5dfe3f25843d473bef2dc",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_solver_equation_020_001/formal/Source3/KeygenSolverEquation.lean",
+          "sha256": "eae84ae14981c402c539614765340ac1700918699ac563a26e98b167c7a6a5ab",
+          "bytes": 6006
+        }
+      ],
+      "status": "INTERRUPTED_NO_RECEIPT",
+      "explanation": {
+        "path": ".build/jobs/keygen_solver_equation_020_001/INTERRUPTED.md",
+        "sha256": "543bf6d7f38195ef67ebdc3a1ec9251a4f51da13ba0d2a5c3e8353c635cb050d",
+        "bytes": 455
+      },
+      "logs": [
+        {
+          "path": ".build/jobs/keygen_solver_equation_020_001/logs/Source3_KeygenSolverEquation.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_solver_equation_020_001/logs/Source3_KeygenSolverEquation.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "job": "keygen_solver_equation_020_002",
+      "source_inputs": {
+        "path": ".build/jobs/keygen_solver_equation_020_002/SOURCE_INPUTS.json",
+        "sha256": "ad0aab32acd7a97270dd2598b70e4061629ae229ffb64876e5d45e1647b85bd4",
+        "bytes": 416100
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_solver_equation_020_002/PREFLIGHT.json",
+        "sha256": "de71f4c2fcbf344cb0fd58949abcb8726aa620d75e098bb41be334ed4909f50e",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_solver_equation_020_002/formal/Source3/KeygenSolverEquation.lean",
+          "sha256": "eae84ae14981c402c539614765340ac1700918699ac563a26e98b167c7a6a5ab",
+          "bytes": 6006
+        }
+      ],
+      "receipt": {
+        "path": ".build/jobs/keygen_solver_equation_020_002/RECEIPTS.json",
+        "sha256": "8ac902cdf94b8c4c821e7f9552c3e0507dde30d455c76a02925635dc1c2ece34",
+        "bytes": 2950
+      },
+      "steps": [
+        {
+          "name": "Source3_KeygenSolverEquation",
+          "accepted": false,
+          "clean_log": false,
+          "source_sha256": "eae84ae14981c402c539614765340ac1700918699ac563a26e98b167c7a6a5ab",
+          "elapsed_s": 72.949,
+          "maxrss_kib": 2788768,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_solver_equation_020_002/logs/Source3_KeygenSolverEquation.stdout",
+              "sha256": "9949c57b4a4507e412cb28493ee9a70ecd06edc4fc5c5232dbe88e6a2b60d9f4",
+              "bytes": 916
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_solver_equation_020_002/logs/Source3_KeygenSolverEquation.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          },
+          "failure_excerpt": [
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_solver_equation_020_002/formal/Source3/KeygenSolverEquation.lean:41:4: error: Type mismatch: After simplification, term",
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_solver_equation_020_002/formal/Source3/KeygenSolverEquation.lean:67:41: error: Application type mismatch: The argument"
+          ]
+        }
+      ],
+      "status": "FAILED_RETAINED",
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_solver_equation_020_002/WAIT.jsonl",
+        "sha256": "f6b64f7f9923c510064811a9a85c1872bbbfc6baed9ce2625daf852015a29da3",
+        "bytes": 101
+      }
+    },
+    {
+      "job": "keygen_solver_equation_020_003",
+      "source_inputs": {
+        "path": ".build/jobs/keygen_solver_equation_020_003/SOURCE_INPUTS.json",
+        "sha256": "4bf4559862aaef3d17274485d12731d05e76254b725526355593db28622f71d6",
+        "bytes": 416100
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_solver_equation_020_003/PREFLIGHT.json",
+        "sha256": "dcf71636d12a8db5093758674e3fb39c2b4df0db2e3c6f6564cb2658c02c05f4",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_solver_equation_020_003/formal/Source3/KeygenSolverEquation.lean",
+          "sha256": "09fb933660f50960aa33611519a698617beee97098ad11029807e1607f52e5d1",
+          "bytes": 5990
+        }
+      ],
+      "receipt": {
+        "path": ".build/jobs/keygen_solver_equation_020_003/RECEIPTS.json",
+        "sha256": "6eb42e7cb56c9f6d3b6904631019cd1e31b8dba39030bd07c2ca4fbe97ca1f5b",
+        "bytes": 3035
+      },
+      "steps": [
+        {
+          "name": "Source3_KeygenSolverEquation",
+          "accepted": true,
+          "clean_log": true,
+          "source_sha256": "09fb933660f50960aa33611519a698617beee97098ad11029807e1607f52e5d1",
+          "elapsed_s": 1.367,
+          "maxrss_kib": 2757804,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_solver_equation_020_003/logs/Source3_KeygenSolverEquation.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_solver_equation_020_003/logs/Source3_KeygenSolverEquation.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "status": "ACCEPTED",
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_solver_equation_020_003/WAIT.jsonl",
+        "sha256": "c46e226562403fea9cbac47ecc68641d1703665603a82fddb48880373cd40d71",
+        "bytes": 101
+      }
+    },
+    {
+      "job": "keygen_solver_target_020_001",
+      "source_inputs": {
+        "path": ".build/jobs/keygen_solver_target_020_001/SOURCE_INPUTS.json",
+        "sha256": "5781251f863141beeb9124f75c1a64986782de5aa7dcb52bc173b5684daa9786",
+        "bytes": 419717
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_solver_target_020_001/PREFLIGHT.json",
+        "sha256": "890469bb2d09d3814f0fbb6c07e25e0cad0643c454b18be12baeebfe0ed51258",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_solver_target_020_001/formal/Source3/KeygenSolverTarget.lean",
+          "sha256": "a279f9dc47b431afecee9ff12353f7b55acd15096365d95868ea608af4bdb6f8",
+          "bytes": 6991
+        }
+      ],
+      "receipt": {
+        "path": ".build/jobs/keygen_solver_target_020_001/RECEIPTS.json",
+        "sha256": "ee5e66d9b008f813611e4629d4941ea763598fa4feb9bdd6b3c838eb5d027414",
+        "bytes": 2917
+      },
+      "steps": [
+        {
+          "name": "Source3_KeygenSolverTarget",
+          "accepted": false,
+          "clean_log": false,
+          "source_sha256": "a279f9dc47b431afecee9ff12353f7b55acd15096365d95868ea608af4bdb6f8",
+          "elapsed_s": 4.276,
+          "maxrss_kib": 2874768,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_solver_target_020_001/logs/Source3_KeygenSolverTarget.stdout",
+              "sha256": "ef93cb534b413a2cc5c5a8d0d63d1e630cf6f53f0ae04bd58da7248123b4ef6a",
+              "bytes": 6250
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_solver_target_020_001/logs/Source3_KeygenSolverTarget.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          },
+          "failure_excerpt": [
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_solver_target_020_001/formal/Source3/KeygenSolverTarget.lean:28:2: error: Too many variable names provided at alternative `call`: 5 provided, but 4 expected",
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_solver_target_020_001/formal/Source3/KeygenSolverTarget.lean:30:6: error: Invalid alternative name `cons`: Expected `skip`, `declare`, `assign`, `seqNormal`, `seqReturn`, `blockNormal`, `blockReturn`, `whileFalse`, `whileTrue`, `whileReturn`, or `ret`",
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_solver_target_020_001/formal/Source3/KeygenSolverTarget.lean:29:6: error: Alternative `seqNormal` has not been provided",
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_solver_target_020_001/formal/Source3/KeygenSolverTarget.lean:29:6: error: Alternative `seqReturn` has not been provided"
+          ]
+        }
+      ],
+      "status": "FAILED_RETAINED",
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_solver_target_020_001/WAIT.jsonl",
+        "sha256": "ec000f97da031b6a6c6c9b0305b9c74dc36f5b28f5eff77c3ea67e45bdc342f8",
+        "bytes": 99
+      }
+    },
+    {
+      "job": "keygen_solver_target_020_002",
+      "source_inputs": {
+        "path": ".build/jobs/keygen_solver_target_020_002/SOURCE_INPUTS.json",
+        "sha256": "e71dff559c7abf4766fc48a290e4f4d663001d9a94317574a41698b39bfd7d17",
+        "bytes": 419717
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_solver_target_020_002/PREFLIGHT.json",
+        "sha256": "70a2f7fb8bce576337fa133cd6e584e0feb053f171236b559d57717bd15054ba",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_solver_target_020_002/formal/Source3/KeygenSolverTarget.lean",
+          "sha256": "94c24cb98570d6437dde287e1abe5a58241d688a274ae7bfe29ce6fe5fba568b",
+          "bytes": 7073
+        }
+      ],
+      "receipt": {
+        "path": ".build/jobs/keygen_solver_target_020_002/RECEIPTS.json",
+        "sha256": "0ec30ffe65a6320b92192132e11551b609fa5dabb615d822fa707cc1e4f45153",
+        "bytes": 2917
+      },
+      "steps": [
+        {
+          "name": "Source3_KeygenSolverTarget",
+          "accepted": false,
+          "clean_log": false,
+          "source_sha256": "94c24cb98570d6437dde287e1abe5a58241d688a274ae7bfe29ce6fe5fba568b",
+          "elapsed_s": 4.073,
+          "maxrss_kib": 2874520,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_solver_target_020_002/logs/Source3_KeygenSolverTarget.stdout",
+              "sha256": "551dca16d8dca792c132fa021eb41eed798628ce78c324ce44f458d5a8806a89",
+              "bytes": 1822
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_solver_target_020_002/logs/Source3_KeygenSolverTarget.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          },
+          "failure_excerpt": [
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_solver_target_020_002/formal/Source3/KeygenSolverTarget.lean:31:16: error(lean.unknownIdentifier): Unknown identifier `tail`",
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_solver_target_020_002/formal/Source3/KeygenSolverTarget.lean:31:10: error: Tactic `cases` failed: major premise type is not an inductive type"
+          ]
+        }
+      ],
+      "status": "FAILED_RETAINED",
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_solver_target_020_002/WAIT.jsonl",
+        "sha256": "4da7ce9ef9b431ecfeced77fb2c4c7295311a18a7b0d6a0bc10aee2f9202297e",
+        "bytes": 99
+      }
+    },
+    {
+      "job": "keygen_solver_target_020_003",
+      "source_inputs": {
+        "path": ".build/jobs/keygen_solver_target_020_003/SOURCE_INPUTS.json",
+        "sha256": "cd6967d4a0989ef945a460e9ad4f9b7f642ed155f44a7852d6ef9254e3a952b3",
+        "bytes": 419717
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_solver_target_020_003/PREFLIGHT.json",
+        "sha256": "39eb0a404efad5492bdceb354a8b93eb042b4f06f54796a73d4f7473721ac394",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_solver_target_020_003/formal/Source3/KeygenSolverTarget.lean",
+          "sha256": "41023837705e710e459a697f0bea287fffc4b8e8083cf6616e7fe6f7af66c54f",
+          "bytes": 7051
+        }
+      ],
+      "receipt": {
+        "path": ".build/jobs/keygen_solver_target_020_003/RECEIPTS.json",
+        "sha256": "f0d536e65f5b575eb722a55e5f0524c7c7d1e3143a236f706f85289b242d1673",
+        "bytes": 3003
+      },
+      "steps": [
+        {
+          "name": "Source3_KeygenSolverTarget",
+          "accepted": true,
+          "clean_log": true,
+          "source_sha256": "41023837705e710e459a697f0bea287fffc4b8e8083cf6616e7fe6f7af66c54f",
+          "elapsed_s": 4.123,
+          "maxrss_kib": 2887268,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_solver_target_020_003/logs/Source3_KeygenSolverTarget.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_solver_target_020_003/logs/Source3_KeygenSolverTarget.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "status": "ACCEPTED",
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_solver_target_020_003/WAIT.jsonl",
+        "sha256": "c450c15dc5ed42bd4e6027ce81d7907556093bb350b50635649b467148ddf2e0",
+        "bytes": 99
+      }
+    },
+    {
+      "job": "keygen_solver_transforms_020_001",
+      "source_inputs": {
+        "path": ".build/jobs/keygen_solver_transforms_020_001/SOURCE_INPUTS.json",
+        "sha256": "343a843cc22a732093b54ca521838fedfd827e05982247674e4ffabfeb5b704d",
+        "bytes": 418542
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_solver_transforms_020_001/PREFLIGHT.json",
+        "sha256": "df187d9bfe08a05b44d73eb09b738674aa224ae70e323097e486b5461e07a708",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_solver_transforms_020_001/formal/Source3/KeygenSolverTransforms.lean",
+          "sha256": "e4754c08c1b42f622249a543bea7fc7d917a61e78b21102bb6747cbfd088df10",
+          "bytes": 6858
+        }
+      ],
+      "receipt": {
+        "path": ".build/jobs/keygen_solver_transforms_020_001/RECEIPTS.json",
+        "sha256": "653ea959d14882742708b1a033a3d854ec6e8b0b0d30ada371de6a12ea42aabe",
+        "bytes": 3067
+      },
+      "steps": [
+        {
+          "name": "Source3_KeygenSolverTransforms",
+          "accepted": true,
+          "clean_log": true,
+          "source_sha256": "e4754c08c1b42f622249a543bea7fc7d917a61e78b21102bb6747cbfd088df10",
+          "elapsed_s": 1.618,
+          "maxrss_kib": 2767116,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_solver_transforms_020_001/logs/Source3_KeygenSolverTransforms.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_solver_transforms_020_001/logs/Source3_KeygenSolverTransforms.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "status": "ACCEPTED",
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_solver_transforms_020_001/WAIT.jsonl",
+        "sha256": "d3ac30507581c7e4f860142eb60848e1ebeac4d02c959d3b3844168489689203",
+        "bytes": 103
+      }
+    },
+    {
+      "job": "keygen_solver_validation_020_001",
+      "source_inputs": {
+        "path": ".build/jobs/keygen_solver_validation_020_001/SOURCE_INPUTS.json",
+        "sha256": "e565f9bbec36c0ba47616a7aaf85056d7bc1c9f0f0639f430c494d3829ca84d6",
+        "bytes": 421843
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_solver_validation_020_001/PREFLIGHT.json",
+        "sha256": "9927f425c3f690960f150dc962683b2c12a1d243b1abde5d93dead2679d75474",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_solver_validation_020_001/formal/Source3/KeygenSolverValidation.lean",
+          "sha256": "6944c6a292ce3b7ba75d6ca34c24127c806e2fe3d9695c4d3809a8d205c231b0",
+          "bytes": 11971
+        }
+      ],
+      "receipt": {
+        "path": ".build/jobs/keygen_solver_validation_020_001/RECEIPTS.json",
+        "sha256": "7b3506c0ecb2a723df43a59efb3e83483a65426af22f33fa641f4e00dcda6b78",
+        "bytes": 2981
+      },
+      "steps": [
+        {
+          "name": "Source3_KeygenSolverValidation",
+          "accepted": false,
+          "clean_log": false,
+          "source_sha256": "6944c6a292ce3b7ba75d6ca34c24127c806e2fe3d9695c4d3809a8d205c231b0",
+          "elapsed_s": 1.317,
+          "maxrss_kib": 2765220,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_solver_validation_020_001/logs/Source3_KeygenSolverValidation.stdout",
+              "sha256": "e1dea333277657074cca98ae4f10f8e0ccda818832753ec6833b17e86c7d2495",
+              "bytes": 7265
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_solver_validation_020_001/logs/Source3_KeygenSolverValidation.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          },
+          "failure_excerpt": [
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_solver_validation_020_001/formal/Source3/KeygenSolverValidation.lean:48:32: error: unsolved goals",
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_solver_validation_020_001/formal/Source3/KeygenSolverValidation.lean:161:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern",
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_solver_validation_020_001/formal/Source3/KeygenSolverValidation.lean:164:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+          ]
+        }
+      ],
+      "status": "FAILED_RETAINED",
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_solver_validation_020_001/WAIT.jsonl",
+        "sha256": "386a96a4fdae2e1977c90e8ee36428af86ade4149917268c2bf5face23650372",
+        "bytes": 103
+      }
+    },
+    {
+      "job": "keygen_solver_validation_020_002",
+      "source_inputs": {
+        "path": ".build/jobs/keygen_solver_validation_020_002/SOURCE_INPUTS.json",
+        "sha256": "9650ae3f6271cc578156b1832948fda6591a6d9b1b47b0ea025d5c515396aaad",
+        "bytes": 421843
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_solver_validation_020_002/PREFLIGHT.json",
+        "sha256": "09f6ee06cf8271f5a823eb4e0b45d8bc5e9d35bca4ba5a8a5d7ef93f45c8ad49",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_solver_validation_020_002/formal/Source3/KeygenSolverValidation.lean",
+          "sha256": "60faf3802b348e7080d6285a828d6a4e70c42d61f2c8bceec3e9f37e4ecc8baf",
+          "bytes": 12225
+        }
+      ],
+      "receipt": {
+        "path": ".build/jobs/keygen_solver_validation_020_002/RECEIPTS.json",
+        "sha256": "16c2c7df9d7fde93d864451fb3b77565801a6c91d4c0c78cd67f07aef52b7b7d",
+        "bytes": 3067
+      },
+      "steps": [
+        {
+          "name": "Source3_KeygenSolverValidation",
+          "accepted": true,
+          "clean_log": true,
+          "source_sha256": "60faf3802b348e7080d6285a828d6a4e70c42d61f2c8bceec3e9f37e4ecc8baf",
+          "elapsed_s": 1.317,
+          "maxrss_kib": 2773660,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_solver_validation_020_002/logs/Source3_KeygenSolverValidation.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_solver_validation_020_002/logs/Source3_KeygenSolverValidation.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "status": "ACCEPTED",
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_solver_validation_020_002/WAIT.jsonl",
+        "sha256": "2e9c6205784dd9f6e419c9aae76342e9f4d8a0537f11fc83c225a4166c809134",
+        "bytes": 103
+      }
+    }
+  ],
+  "retained_failures": "Ten failed attempts and one interrupted outer-shell launch. Audit001 rejected a truncated print; audit002 rejected metadata in the inherited annotation-free DAG exporter. The binding proof was simplified without changing its statement; the final88-entry audit has complete flat terms. All affected descendants were rebuilt. No limits/warnings were relaxed.",
+  "limits": "Unchanged Lean -j1/-M6144, maxRecDepth32768/maxHeartbeats2000000, wall1800s, AS12GiB/RSS8GiB, warnings as errors. pp.maxSteps200000 is rendering only. Sage uses the standard preparser. Outer shell waits after the interrupted attempt have no timeout.",
+  "build_scope": "Incremental new modules, then the complete affected closure after binding-proof simplification; no unchanged whole-project replay.",
+  "next_owner_stage": "Resume B1.05 at the original-material bounds and complete active solver/caller graph, per checkpoint section6. B1.06 not entered.",
+  "git": {
+    "branch": "main",
+    "author": "niirmataa",
+    "writer_lock": "proofs/ft1536/work/archive.lock",
+    "source_commits": [
+      "b4c2e87f",
+      "e92271d2",
+      "ed98536b41de7c1d18455d5e482d622a259dcdb4"
+    ],
+    "push": "none; explicit owner signal required",
+    "foreign_changes": "preserved"
+  },
+  "active_jobs_at_close": []
+}
