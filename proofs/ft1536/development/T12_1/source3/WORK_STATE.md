@@ -1,5 +1,28 @@
 # T12.1/source3 — żywy stan
 
+## B1.05 — source solver composition in progress — 2026-10-07
+
+Owner assigned B1.05 only, under the staged-roadmap window discipline.
+Harness: GPT-6 Astra Ultrafast. Resume section6 verified BATCH_015–019,
+1336 distinct files and all402 final BATCH_019 audit inputs; no active job.
+Preflight `.build/solver_020/PREFLIGHT.json`, SHA256
+`5f0e6d6e1829fd93b5a4c0e1b728351e16b731bec9b0bfec68baa06bf187501a`.
+
+`KeygenSolverEquation` now connects the SAME loaded words of the successful
+parsed final check to the four NTT Images, derives the coefficient equation
+over ZMod2147355649, and applies the existing integer lift. Images and
+Bounds remain explicit local inputs pending the enclosing source composition.
+This is not B1.05 Acceptance or a complete solve_NTRU theorem.
+Accepted `keygen_solver_equation_020_003`,0/0 logs. Initial shell timeout
+before a receipt and the subsequent two elaboration errors are retained in
+the distinct `_001`/`_002` job directories. Runner limits are unchanged;
+subsequent shell waits have no outer timeout. No owned proof job is live.
+Next: source call frames and the four sequential transforms, carrying the
+untransformed inputs and previous images through their shared heaps; then
+target initialization, material byte frames, sampler/conversion bounds and
+the complete active solver call graph. Small exact-path local commits use
+the shared writer lock; package remains IN_PROGRESS / NOT_REVIEWED.
+
 ## B1.04 — ACCEPTANCE / complete source NTT — 2026-10-07
 
 **Window CLOSED AT ACCEPTANCE / PROVED_KERNEL_SCOPED.** Enclosing package:
