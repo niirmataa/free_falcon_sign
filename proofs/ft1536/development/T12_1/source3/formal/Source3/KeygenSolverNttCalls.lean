@@ -96,11 +96,17 @@ theorem binding_entry (before entry : State) (name : String) (p gm : ArrayPointe
                   prime caller.prime pv
                 have hi := C99CountedWords.variable_exact before "p0i".toList .uint32 (.uint32 p0i) inverse caller.inverse iv
                 subst ap gp stride logn full prime inverse
-                constructor <;>
-                  simp [KeygenNttForwardExec.lognAt,KeygenNttForwardExec.fullAt,
-                    KeygenNttButterflyCalls.U32Slot,KeygenNttLoopSupport.USlot,KeygenNttLoopSupport.PSlot,
-                    bindPointer,bindValue,C99ScalarReference.set,C99IntegerReference.convert,
-                    C99IntegerReference.Value.integer,KeygenNttLoopSupport.u64]
+                constructor
+                · rfl
+                · rfl
+                · rfl
+                · change some (C99IntegerReference.Ty.uint32,some (C99IntegerReference.convert .uint32 (Value.uint32 p0i).integer))=
+                    some (C99IntegerReference.Ty.uint32,some (Value.uint32 p0i))
+                  exact congrArg (fun x : Value => some (C99IntegerReference.Ty.uint32,some x))
+                    (C99CountedWords.convert_self (.uint32 p0i))
+                · rfl
+                · rfl
+                · rfl
 
 theorem frame (statement : Stmt) (before after : State) (source : Exec statement before after) :
     after.locals=before.locals ∧ after.arrays=before.arrays ∧

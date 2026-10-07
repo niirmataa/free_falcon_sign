@@ -1,5 +1,43 @@
 # T12.1/source3 — żywy stan
 
+## B1.05 — validation composition checked; sealing midpoint — 2026-10-07
+
+`KeygenSolverValidation.generated_converted_checked` now composes the
+source table generator, coefficient conversion, the four actual NTT calls
+and target/check through common heaps. It concludes the exact integer NTRU
+equation AND preservation of the same original four16-bit material arrays
+in the final memory. Canonical inputs, initialized gm, NTT Images, final
+check bindings and modular residual are derived rather than new premises.
+Original `Bounds(1,1,2047,2047)`, legal/source entry and caller bindings
+remain explicit. **B1.05 Acceptance NOT met**: the enclosing full solver
+graph, source sampler/small-output bounds and their common caller remain open.
+
+Latest accepted closure: `keygen_solver_audit_020_005`, six affected modules
+rebuilt with0/0 logs; unchanged Equation module remains `_equation_020_003`.
+Internal audit:88 exports, all69 new declarations included,85 complete flat
+terms and3 inductives/structures with constructor types, standard axioms
+only, zero elisions. Audit SHA256
+`c7d037950b751c0287e9dbd15a189aadaa9ef133bf9ea66a862ef424ddbd6abc`;
+receipt `fa26d87d7c85dd5e7d45773dd4a2ea0f36f0fba3523b2f3f828ce67cf1538674`.
+The first audit rejected a truncated binding proof; the second rejected
+metadata unsupported by the inherited lossless DAG exporter. A direct
+conversion-identity proof replaced the bulky simplification without changing
+the theorem statement. All affected descendants were rebuilt. Failures remain.
+
+`keygen_solver_checks_020_001`: Sage standard preparser, exact QQ inverse
+and ZZ quotient checks generated a public synthetic valid NTRU fixture
+(maxima f/g/F/G=1/1/41/168).14 normal/UBSan runs ×6 cases passed; six
+mutations detected in both modes. Material, gm and scratch guards preserved.
+The large-G case passes validation but fails the actual small-output gate,
+showing why validation success is distinct from the complete solver path.
+Controls SHA256 `2e69ed931116fcc622ae9c006502d2594ece9e77ea2d94eb7093314bf1223d28`.
+This is finite supporting evidence, not the missing universal bounds proof.
+
+No owned job remains.19 new attempts include10 failures and one interrupted
+outer-shell launch; raw logs/snapshots retained. Preparing BATCH_020 and
+expanded checkpoint under staged-roadmap rule3 (recoverable B1.05 midpoint).
+Next window resumes B1.05; B1.06 is not entered. No push/review/import.
+
 ## B1.05 — source solver composition in progress — 2026-10-07
 
 Owner assigned B1.05 only, under the staged-roadmap window discipline.
