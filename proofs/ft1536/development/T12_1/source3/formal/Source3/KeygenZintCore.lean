@@ -130,6 +130,238 @@ theorem reduce_mod_shape : (KeygenZintCall.calleeParsed .reduceMod).map KeygenZi
 theorem reduce_mod_bitcasts : (KeygenZintCall.calleeParsed .reduceMod).map
     KeygenZintCall.bitcastCount =some 1 := by decide
 
+/- Complete zint_bezout body region 3909-4200 (keygenLines body indices
+   3908-4198, closing brace index 4199), source-bound in eight
+   statement-boundary pieces (KeygenZintCall.bezoutParsed) with the chained
+   scaffold `bezoutCode` as the executed body. The window's new grammar
+   executes: ternary `?:` assignments lowered to explicit
+   branch-of-assignment, memcpy through the sealed byte-copy statement and
+   memset through the Memzero zero-byte rule (both with `sizeof *element`
+   width-4 limb lowering), `for (;;)` with `continue` loop flow, the
+   six-pointer walk declaration with statement-position pointer binds (the
+   for-clause binds keep their ending token for `clauses`), `size_t` scalar
+   declarations and the `v1[0] &= ~(uint32_t)1` compound store. Its six
+   `*(int32_t*)&ux*` pun statements reuse the committed bitcast rule. The
+   shape pins (28,2,0,0) count every family call site (the two
+   `if (zint_reduce(...))` conditions and all four reduce/reduce_mod/
+   co_reduce/co_reduce_mod members included), so no zint call can silently
+   fall through to the word grammar (trap 108). The line partition binds
+   the pieces to the pinned bytes. These are operational/frame results
+   only: no Bezout identity, GCD, parity, range or termination claim. -/
+theorem bezout_header : region 3904 4 = ["static int\n",
+  "zint_bezout(uint32_t *restrict u, uint32_t *restrict v,\n",
+  "\tconst uint32_t *restrict x, const uint32_t *restrict y,\n",
+  "\tsize_t len, uint32_t *restrict tmp)\n"] := by decide
+theorem bezout_close : Pinned.keygenLines[4199]?=some "}\n" := by decide
+theorem bezout_partition : region 3909 291 =
+    region 3909 4 ++ region 3913 33 ++ region 3946 7 ++ region 3953 9 ++
+    region 3962 17 ++ region 3979 15 ++ region 3994 21 ++ region 4015 185 := by decide
+
+/- Per-piece non-vacuous audits (Depth0 pattern): the `map ... = some`
+   statements prove each piece parse SUCCEEDS (a failed parse maps to none),
+   so the shape/bitcast values below cannot be the `skip` fallback. -/
+def bezoutAudit (index : Nat) : Option Bool :=
+  (KeygenZintCall.bezoutParsed index).map (KeygenZintCall.only (KeygenZintCall.writable .bezout))
+theorem bezout_audit0 : bezoutAudit 0=some true := by decide
+theorem bezout_audit1 : bezoutAudit 1=some true := by decide
+theorem bezout_audit2 : bezoutAudit 2=some true := by decide
+theorem bezout_audit3 : bezoutAudit 3=some true := by decide
+theorem bezout_audit4 : bezoutAudit 4=some true := by decide
+theorem bezout_audit5 : bezoutAudit 5=some true := by decide
+theorem bezout_audit6 : bezoutAudit 6=some true := by decide
+theorem bezout_audit7 : bezoutAudit 7=some true := by decide
+
+theorem bezout_parsed_part (index : Nat) (h : bezoutAudit index=some true) :
+    KeygenZintCall.bezoutParsed index=some (KeygenZintCall.bezoutPart index) := by
+  cases hp : KeygenZintCall.bezoutParsed index with
+  | none => simp only [bezoutAudit,hp,Option.map_none] at h; cases h
+  | some p => simp only [KeygenZintCall.bezoutPart,hp,Option.getD_some]
+
+theorem bezout_part_checked (index : Nat) (h : bezoutAudit index=some true) :
+    KeygenZintCall.only (KeygenZintCall.writable .bezout) (KeygenZintCall.bezoutPart index)=true := by
+  have parsed := bezout_parsed_part index h
+  simp only [bezoutAudit,parsed,Option.map_some,Option.some.injEq] at h
+  exact h
+
+theorem bezout_part0_checked : KeygenZintCall.only (KeygenZintCall.writable .bezout)
+    (KeygenZintCall.bezoutPart 0)=true := bezout_part_checked 0 bezout_audit0
+theorem bezout_part1_checked : KeygenZintCall.only (KeygenZintCall.writable .bezout)
+    (KeygenZintCall.bezoutPart 1)=true := bezout_part_checked 1 bezout_audit1
+theorem bezout_part2_checked : KeygenZintCall.only (KeygenZintCall.writable .bezout)
+    (KeygenZintCall.bezoutPart 2)=true := bezout_part_checked 2 bezout_audit2
+theorem bezout_part3_checked : KeygenZintCall.only (KeygenZintCall.writable .bezout)
+    (KeygenZintCall.bezoutPart 3)=true := bezout_part_checked 3 bezout_audit3
+theorem bezout_part4_checked : KeygenZintCall.only (KeygenZintCall.writable .bezout)
+    (KeygenZintCall.bezoutPart 4)=true := bezout_part_checked 4 bezout_audit4
+theorem bezout_part5_checked : KeygenZintCall.only (KeygenZintCall.writable .bezout)
+    (KeygenZintCall.bezoutPart 5)=true := bezout_part_checked 5 bezout_audit5
+theorem bezout_part6_checked : KeygenZintCall.only (KeygenZintCall.writable .bezout)
+    (KeygenZintCall.bezoutPart 6)=true := bezout_part_checked 6 bezout_audit6
+theorem bezout_part7_checked : KeygenZintCall.only (KeygenZintCall.writable .bezout)
+    (KeygenZintCall.bezoutPart 7)=true := bezout_part_checked 7 bezout_audit7
+
+theorem bezout_part_shape (index : Nat) {v : Nat×Nat×Nat×Nat}
+    (ha : bezoutAudit index=some true)
+    (hs : (KeygenZintCall.bezoutParsed index).map KeygenZintCall.callShape=some v) :
+    KeygenZintCall.callShape (KeygenZintCall.bezoutPart index)=v := by
+  have parsed := bezout_parsed_part index ha
+  have both : (KeygenZintCall.bezoutParsed index).map KeygenZintCall.callShape
+      = (some (KeygenZintCall.bezoutPart index)).map KeygenZintCall.callShape :=
+    congrArg (Option.map KeygenZintCall.callShape) parsed
+  have rhs : (some (KeygenZintCall.bezoutPart index)).map KeygenZintCall.callShape
+      = some (KeygenZintCall.callShape (KeygenZintCall.bezoutPart index)) := rfl
+  exact Option.some.inj (((both.trans rhs).symm).trans hs)
+
+theorem bezout_part_bits (index : Nat) {v : Nat} (ha : bezoutAudit index=some true)
+    (hs : (KeygenZintCall.bezoutParsed index).map KeygenZintCall.bitcastCount=some v) :
+    KeygenZintCall.bitcastCount (KeygenZintCall.bezoutPart index)=v := by
+  have parsed := bezout_parsed_part index ha
+  have both : (KeygenZintCall.bezoutParsed index).map KeygenZintCall.bitcastCount
+      = (some (KeygenZintCall.bezoutPart index)).map KeygenZintCall.bitcastCount :=
+    congrArg (Option.map KeygenZintCall.bitcastCount) parsed
+  have rhs : (some (KeygenZintCall.bezoutPart index)).map KeygenZintCall.bitcastCount
+      = some (KeygenZintCall.bitcastCount (KeygenZintCall.bezoutPart index)) := rfl
+  exact Option.some.inj (((both.trans rhs).symm).trans hs)
+
+theorem bezout_shape0_raw : (KeygenZintCall.bezoutParsed 0).map KeygenZintCall.callShape
+    =some (0,0,0,0) := by decide
+theorem bezout_shape1_raw : (KeygenZintCall.bezoutParsed 1).map KeygenZintCall.callShape
+    =some (0,0,0,0) := by decide
+theorem bezout_shape2_raw : (KeygenZintCall.bezoutParsed 2).map KeygenZintCall.callShape
+    =some (2,0,0,0) := by decide
+theorem bezout_shape3_raw : (KeygenZintCall.bezoutParsed 3).map KeygenZintCall.callShape
+    =some (0,0,0,0) := by decide
+theorem bezout_shape4_raw : (KeygenZintCall.bezoutParsed 4).map KeygenZintCall.callShape
+    =some (0,0,0,0) := by decide
+theorem bezout_shape5_raw : (KeygenZintCall.bezoutParsed 5).map KeygenZintCall.callShape
+    =some (0,0,0,0) := by decide
+theorem bezout_shape6_raw : (KeygenZintCall.bezoutParsed 6).map KeygenZintCall.callShape
+    =some (0,0,0,0) := by decide
+theorem bezout_shape7_raw : (KeygenZintCall.bezoutParsed 7).map KeygenZintCall.callShape
+    =some (26,2,0,0) := by decide
+
+theorem bezout_bits0_raw : (KeygenZintCall.bezoutParsed 0).map KeygenZintCall.bitcastCount
+    =some 0 := by decide
+theorem bezout_bits1_raw : (KeygenZintCall.bezoutParsed 1).map KeygenZintCall.bitcastCount
+    =some 0 := by decide
+theorem bezout_bits2_raw : (KeygenZintCall.bezoutParsed 2).map KeygenZintCall.bitcastCount
+    =some 0 := by decide
+theorem bezout_bits3_raw : (KeygenZintCall.bezoutParsed 3).map KeygenZintCall.bitcastCount
+    =some 0 := by decide
+theorem bezout_bits4_raw : (KeygenZintCall.bezoutParsed 4).map KeygenZintCall.bitcastCount
+    =some 0 := by decide
+theorem bezout_bits5_raw : (KeygenZintCall.bezoutParsed 5).map KeygenZintCall.bitcastCount
+    =some 0 := by decide
+theorem bezout_bits6_raw : (KeygenZintCall.bezoutParsed 6).map KeygenZintCall.bitcastCount
+    =some 0 := by decide
+theorem bezout_bits7_raw : (KeygenZintCall.bezoutParsed 7).map KeygenZintCall.bitcastCount
+    =some 6 := by decide
+
+theorem bezout_part0_shape : KeygenZintCall.callShape (KeygenZintCall.bezoutPart 0)=(0,0,0,0) :=
+  bezout_part_shape 0 bezout_audit0 bezout_shape0_raw
+theorem bezout_part1_shape : KeygenZintCall.callShape (KeygenZintCall.bezoutPart 1)=(0,0,0,0) :=
+  bezout_part_shape 1 bezout_audit1 bezout_shape1_raw
+theorem bezout_part2_shape : KeygenZintCall.callShape (KeygenZintCall.bezoutPart 2)=(2,0,0,0) :=
+  bezout_part_shape 2 bezout_audit2 bezout_shape2_raw
+theorem bezout_part3_shape : KeygenZintCall.callShape (KeygenZintCall.bezoutPart 3)=(0,0,0,0) :=
+  bezout_part_shape 3 bezout_audit3 bezout_shape3_raw
+theorem bezout_part4_shape : KeygenZintCall.callShape (KeygenZintCall.bezoutPart 4)=(0,0,0,0) :=
+  bezout_part_shape 4 bezout_audit4 bezout_shape4_raw
+theorem bezout_part5_shape : KeygenZintCall.callShape (KeygenZintCall.bezoutPart 5)=(0,0,0,0) :=
+  bezout_part_shape 5 bezout_audit5 bezout_shape5_raw
+theorem bezout_part6_shape : KeygenZintCall.callShape (KeygenZintCall.bezoutPart 6)=(0,0,0,0) :=
+  bezout_part_shape 6 bezout_audit6 bezout_shape6_raw
+theorem bezout_part7_shape : KeygenZintCall.callShape (KeygenZintCall.bezoutPart 7)=(26,2,0,0) :=
+  bezout_part_shape 7 bezout_audit7 bezout_shape7_raw
+
+theorem bezout_part0_bits : KeygenZintCall.bitcastCount (KeygenZintCall.bezoutPart 0)=0 :=
+  bezout_part_bits 0 bezout_audit0 bezout_bits0_raw
+theorem bezout_part1_bits : KeygenZintCall.bitcastCount (KeygenZintCall.bezoutPart 1)=0 :=
+  bezout_part_bits 1 bezout_audit1 bezout_bits1_raw
+theorem bezout_part2_bits : KeygenZintCall.bitcastCount (KeygenZintCall.bezoutPart 2)=0 :=
+  bezout_part_bits 2 bezout_audit2 bezout_bits2_raw
+theorem bezout_part3_bits : KeygenZintCall.bitcastCount (KeygenZintCall.bezoutPart 3)=0 :=
+  bezout_part_bits 3 bezout_audit3 bezout_bits3_raw
+theorem bezout_part4_bits : KeygenZintCall.bitcastCount (KeygenZintCall.bezoutPart 4)=0 :=
+  bezout_part_bits 4 bezout_audit4 bezout_bits4_raw
+theorem bezout_part5_bits : KeygenZintCall.bitcastCount (KeygenZintCall.bezoutPart 5)=0 :=
+  bezout_part_bits 5 bezout_audit5 bezout_bits5_raw
+theorem bezout_part6_bits : KeygenZintCall.bitcastCount (KeygenZintCall.bezoutPart 6)=0 :=
+  bezout_part_bits 6 bezout_audit6 bezout_bits6_raw
+theorem bezout_part7_bits : KeygenZintCall.bitcastCount (KeygenZintCall.bezoutPart 7)=6 :=
+  bezout_part_bits 7 bezout_audit7 bezout_bits7_raw
+
+theorem only_seq (names : List Name) (a b : KeygenZintCall.Stmt) :
+    KeygenZintCall.only names (.seq a b)
+      = (KeygenZintCall.only names a && KeygenZintCall.only names b) := rfl
+theorem only_skip (names : List Name) : KeygenZintCall.only names KeygenZintCall.skip=true := rfl
+theorem callShape_seq (a b : KeygenZintCall.Stmt) :
+    KeygenZintCall.callShape (.seq a b)
+      = KeygenZintCall.shapeAdd (KeygenZintCall.callShape a) (KeygenZintCall.callShape b) := rfl
+theorem callShape_skip : KeygenZintCall.callShape KeygenZintCall.skip=(0,0,0,0) := rfl
+theorem bitcastCount_seq (a b : KeygenZintCall.Stmt) :
+    KeygenZintCall.bitcastCount (.seq a b)
+      = KeygenZintCall.bitcastCount a + KeygenZintCall.bitcastCount b := rfl
+theorem bitcastCount_skip : KeygenZintCall.bitcastCount KeygenZintCall.skip=0 := rfl
+
+theorem bezout_code_checked : KeygenZintCall.only (KeygenZintCall.writable .bezout)
+    KeygenZintCall.bezoutCode=true := by
+  show KeygenZintCall.only (KeygenZintCall.writable .bezout)
+    (.seq (KeygenZintCall.bezoutPart 0)
+    (.seq (KeygenZintCall.bezoutPart 1)
+    (.seq (KeygenZintCall.bezoutPart 2)
+    (.seq (KeygenZintCall.bezoutPart 3)
+    (.seq (KeygenZintCall.bezoutPart 4)
+    (.seq (KeygenZintCall.bezoutPart 5)
+    (.seq (KeygenZintCall.bezoutPart 6)
+    (.seq (KeygenZintCall.bezoutPart 7) KeygenZintCall.skip))))))))=true
+  rw [only_seq,only_seq,only_seq,only_seq,only_seq,only_seq,only_seq,only_seq]
+  rw [only_skip,bezout_part0_checked,bezout_part1_checked,bezout_part2_checked,
+    bezout_part3_checked,bezout_part4_checked,bezout_part5_checked,
+    bezout_part6_checked,bezout_part7_checked]
+  decide
+
+theorem bezout_shape_code : KeygenZintCall.callShape KeygenZintCall.bezoutCode=(28,2,0,0) := by
+  show KeygenZintCall.callShape
+    (.seq (KeygenZintCall.bezoutPart 0)
+    (.seq (KeygenZintCall.bezoutPart 1)
+    (.seq (KeygenZintCall.bezoutPart 2)
+    (.seq (KeygenZintCall.bezoutPart 3)
+    (.seq (KeygenZintCall.bezoutPart 4)
+    (.seq (KeygenZintCall.bezoutPart 5)
+    (.seq (KeygenZintCall.bezoutPart 6)
+    (.seq (KeygenZintCall.bezoutPart 7) KeygenZintCall.skip))))))))=(28,2,0,0)
+  rw [callShape_seq,callShape_seq,callShape_seq,callShape_seq,callShape_seq,
+    callShape_seq,callShape_seq,callShape_seq]
+  rw [callShape_skip,bezout_part0_shape,bezout_part1_shape,bezout_part2_shape,
+    bezout_part3_shape,bezout_part4_shape,bezout_part5_shape,
+    bezout_part6_shape,bezout_part7_shape]
+  decide
+
+theorem bezout_bitcasts_code : KeygenZintCall.bitcastCount KeygenZintCall.bezoutCode=6 := by
+  show KeygenZintCall.bitcastCount
+    (.seq (KeygenZintCall.bezoutPart 0)
+    (.seq (KeygenZintCall.bezoutPart 1)
+    (.seq (KeygenZintCall.bezoutPart 2)
+    (.seq (KeygenZintCall.bezoutPart 3)
+    (.seq (KeygenZintCall.bezoutPart 4)
+    (.seq (KeygenZintCall.bezoutPart 5)
+    (.seq (KeygenZintCall.bezoutPart 6)
+    (.seq (KeygenZintCall.bezoutPart 7) KeygenZintCall.skip))))))))=6
+  rw [bitcastCount_seq,bitcastCount_seq,bitcastCount_seq,bitcastCount_seq,
+    bitcastCount_seq,bitcastCount_seq,bitcastCount_seq,bitcastCount_seq]
+  rw [bitcastCount_skip,bezout_part0_bits,bezout_part1_bits,bezout_part2_bits,
+    bezout_part3_bits,bezout_part4_bits,bezout_part5_bits,
+    bezout_part6_bits,bezout_part7_bits]
+
+theorem bezout_shape : (KeygenZintCall.calleeParsed .bezout).map KeygenZintCall.callShape
+    =some (28,2,0,0) := congrArg some bezout_shape_code
+theorem bezout_bitcasts : (KeygenZintCall.calleeParsed .bezout).map KeygenZintCall.bitcastCount
+    =some 6 := congrArg some bezout_bitcasts_code
+theorem bezout_audit : (KeygenZintCall.calleeParsed .bezout).map
+    (KeygenZintCall.only (KeygenZintCall.writable .bezout))=some true :=
+  congrArg some bezout_code_checked
+
 theorem parsed_of (kind : Callee)
     (audit : (KeygenZintCall.calleeParsed kind).map (KeygenZintCall.only (KeygenZintCall.writable kind))=some true) :
     KeygenZintCall.calleeParsed kind=some (KeygenZintCall.calleeBody kind) := by
@@ -159,6 +391,7 @@ theorem code_checked : ∀ kind : Callee,
   | coReduceMod => exact checked_of .coReduceMod co_reduce_mod_audit
   | reduce => exact checked_of .reduce reduce_k_audit
   | reduceMod => exact checked_of .reduceMod reduce_mod_audit
+  | bezout => exact checked_of .bezout bezout_audit
 
 theorem material (kind : Callee) (before after : State) (args : List Arg) (v : Option Value)
     (source : KeygenZintCall.Call kind before args after v) (names : List Name)

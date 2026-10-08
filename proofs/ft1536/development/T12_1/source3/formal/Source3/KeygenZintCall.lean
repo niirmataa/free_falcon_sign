@@ -26,7 +26,7 @@ open B20.C (Token)
 inductive Callee where
   | leaf (kind : KeygenZintLeaves.Kind)
   | modSigned | normZero | exactLen | rshiftMod | subMod | rebuildCrt
-  | coReduce | coReduceMod | reduce | reduceMod
+  | coReduce | coReduceMod | reduce | reduceMod | bezout
   deriving DecidableEq, Repr
 
 def calleeName : Callee → Name
@@ -41,6 +41,7 @@ def calleeName : Callee → Name
   | .coReduceMod => "zint_co_reduce_mod".toList
   | .reduce => "zint_reduce".toList
   | .reduceMod => "zint_reduce_mod".toList
+  | .bezout => "zint_bezout".toList
 
 def params : Callee → List Param
   | .leaf kind => KeygenZintLeaves.params kind
@@ -70,6 +71,9 @@ def params : Callee → List Param
   | .reduceMod => [.pointer "a".toList,.pointer "b".toList,
     .pointer "m".toList,.scalar .uint64 "len".toList,
     .scalar .uint32 "m0i".toList,.scalar .int32 "k".toList]
+  | .bezout => [.pointer "u".toList,.pointer "v".toList,
+    .pointer "x".toList,.pointer "y".toList,
+    .scalar .uint64 "len".toList,.pointer "tmp".toList]
 
 def result : Callee → Option Ty
   | .leaf kind => KeygenZintLeaves.result kind
@@ -83,6 +87,7 @@ def result : Callee → Option Ty
   | .coReduceMod => none
   | .reduce => some .int32
   | .reduceMod => none
+  | .bezout => some .int32
 
 def writable : Callee → List Name
   | .leaf kind => KeygenZintLeaves.writable kind
@@ -96,6 +101,12 @@ def writable : Callee → List Name
   | .coReduceMod => ["a".toList,"b".toList]
   | .reduce => ["a".toList]
   | .reduceMod => ["a".toList]
+  -- zint_bezout writes its u/v outputs (u0=u, v0=v) and the four tmp
+  -- lanes reached through the local walk pointers u1, v1, a and b. Both
+  -- the parameters and the local pointer names must be listed: pointer
+  -- binds check their source name and stores check their walk name.
+  | .bezout => ["u".toList,"v".toList,"tmp".toList,
+    "u0".toList,"u1".toList,"v0".toList,"v1".toList,"a".toList,"b".toList]
 
 def extraPointers : Callee → List Name
   | .rebuildCrt => ["x".toList]
@@ -118,6 +129,7 @@ def header : Callee → Nat×Nat
   | .coReduceMod => (3731,3)
   | .reduce => (3808,2)
   | .reduceMod => (3851,3)
+  | .bezout => (3904,4)
 
 /-- Body region as (first body line, closing brace line). -/
 def bodyRegion : Callee → Nat×Nat
@@ -132,12 +144,26 @@ def bodyRegion : Callee → Nat×Nat
   | .coReduceMod => (3735,3802)
   | .reduce => (3811,3845)
   | .reduceMod => (3855,3889)
+  | .bezout => (3909,4200)
 
 inductive CDest where
   | discard
   | into (destination : Name)
   | store (array : Name) (index : CLogic.Expr)
   deriving DecidableEq, Repr
+
+/- memset's zero-byte write of an explicit byte count at a resolved object
+   position. It is the C library operation used by zint_bezout
+   (`memset(dst, 0, n * sizeof *element)` with 4-byte limbs); nonzero byte
+   values are rejected by the parser rather than approximated. The frame is
+   the same outside-footprint law as Memcpy. -/
+def Memzero (before : Memory) (p : ArrayPointer) (bytes : Nat) (after : Memory) : Prop :=
+  p.offset+bytes≤before.size p.block ∧
+  before.size p.block<2^64 ∧ before.writable p.block=true ∧
+  after.size=before.size ∧ after.writable=before.writable ∧
+  (∀ i<bytes, after.bytes p.block (p.offset+i)=some 0) ∧
+  (∀ block offset, block≠p.block ∨ offset<p.offset ∨ p.offset+bytes≤offset →
+    after.bytes block offset=before.bytes block offset)
 
 inductive Stmt where
   | word (code : KeygenWordExec.Stmt)
@@ -148,6 +174,9 @@ inductive Stmt where
   | storePrime (array : Name) (index : CLogic.Expr) (src : Name)
       (srcIndex : CLogic.Expr) (field : KeygenLevelCalls.Field)
   | bitcastInto (dst src : Name) (ty : Ty)
+  | memzero (array : Name) (index count : CLogic.Expr)
+  | breakLoop
+  | continueLoop
   | retVoid
   | seq (first second : Stmt)
   | scope (locals pointers : List Name) (body : Stmt)
@@ -210,6 +239,7 @@ def calleeOf (token : Token) : Option Callee :=
   if token="zint_co_reduce".toList then some .coReduce else
   if token="zint_reduce_mod".toList then some .reduceMod else
   if token="zint_reduce".toList then some .reduce else
+  if token="zint_bezout".toList then some .bezout else
   if token="zint_mod_small_unsigned".toList then some (.leaf .reduce) else
   if token="zint_add_mul_small".toList then some (.leaf .addMul) else
   if token="zint_mul_small".toList then some (.leaf .mul) else
@@ -217,6 +247,38 @@ def calleeOf (token : Token) : Option Callee :=
   if token="zint_sub".toList then some (.leaf .sub) else
   if token="zint_rshift1".toList then some (.leaf .shift) else
   if token="zint_ucmp".toList then some (.leaf .compare) else none
+
+/- Local pointer declarations extend the width environment for word array
+   accesses (`u0[0]`, `a[len-1]`, `sizeof *v1`): every zint-family walk
+   pointer is a `uint32_t *` limb pointer of element width 4. Scalars need
+   no width. `size_t` is the LP64 typedef the shared scalar type table does
+   not carry (trap 84 family); it maps to the 64-bit unsigned word. -/
+def env (types : KeygenWordExpr.Types) (ptrs : List Name) : KeygenWordExpr.Types :=
+  types++ptrs.map (fun n => (n,4))
+
+def zintTypeToken (token : Token) : Option B20.C.Ty :=
+  if token="size_t".toList then some .u64 else KeygenWordExpr.typeToken token
+
+/- `sizeof *element` in memcpy/memset byte counts is lowered by the checked
+   KeygenSearchParser normalizer at the CURRENT width environment, so 4-byte
+   limbs become `* 4ULL` inside the ordinary count expression. -/
+def copyCount (types : KeygenWordExpr.Types) : List Token → Option (CLogic.Expr×List Token) :=
+  fun tokens => do
+    let normalized ← KeygenSearchParser.sizes types tokens
+    let (count,rest) ← C99ArrayParser.pureExpr normalized
+    match rest with
+    | [')']::[';']::tail => some (count,tail)
+    | _ => none
+
+/- Scalar declarations with the extended zint type table (`size_t` under the
+   pinned LP64 profile); the statement shape is the sealed word grammar's
+   declaration, so scope collection is unchanged. -/
+def scalarDeclare : List Token → Option (Stmt×List Token)
+  | ty::rest => do
+    let declared ← zintTypeToken ty
+    let (names,rest) ← B20.C.Scalar.names 32 rest
+    some (.word (.modular (.base (.scalar (.declare declared names)))),rest)
+  | _ => none
 
 /- Parser: new productions first (they are name-dispatched and cannot
    collide with the sealed word grammar), then pointer forms, then the
@@ -245,6 +307,52 @@ def pointerClause (ptrs : List Name) : List Token → Option (Stmt×List Token)
     else none
   | _ => none
 
+/- Statement-position pointer binds (`u0 = u;`, `f += fstride;`) consume
+   their terminating `;`, unlike the for-clause `pointerClause` above whose
+   ending token belongs to `clauses` (rebuild_CRT's `x = xx`/`x += xstride`
+   loop clauses). zint_bezout's six walk-pointer binds are statements. -/
+def pointerStmt (ptrs : List Name) : List Token → Option (Stmt×List Token)
+  | slot::['=']::rest => if ptrs.contains slot then do
+      let (p,rest) ← C99ProcedureParser.pointerExpr rest
+      match p,rest with
+      | .pointer src index,[';']::tail =>
+        some (.word (.modular (.base (.bindPtr slot src index))),tail)
+      | _,_ => none
+    else none
+  | slot::['+','=']::rest => if ptrs.contains slot then do
+      let (index,rest) ← C99ArrayParser.pureExpr rest
+      match rest with
+      | [';']::tail => some (.word (.modular (.base (.bindPtr slot slot index))),tail)
+      | _ => none
+    else none
+  | _ => none
+
+/- Ternary conditional assignment `slot = cond ? a : b;` (the conditional
+   operator is new grammar here). The three subexpressions keep their source
+   order and both arms stay explicit statements: the lowering is a branch of
+   two whole assignments evaluated from the same pre-assignment state. Only
+   scalar destinations qualify; pointer selection (make_fg's
+   `primes = ter ? PRIMES3 : PRIMES2`) has its own rule. -/
+def ternaryAssign (types : KeygenWordExpr.Types) (ptrs : List Name) :
+    List Token → Option (Stmt×List Name×List Token)
+  | slot::['=']::rest => if ptrs.contains slot then none else do
+      let (condition,r1) ← KeygenWordExpr.expression (env types ptrs) rest
+      match r1 with
+      | ['?']::r2 => do
+        let (yes,r3) ← KeygenWordExpr.expression (env types ptrs) r2
+        match r3 with
+        | [':']::r4 => do
+          let (no,r5) ← KeygenWordExpr.expression (env types ptrs) r4
+          match r5 with
+          | [';']::done =>
+            let left : Stmt := .word (.assign slot yes)
+            let right : Stmt := .word (.assign slot no)
+            pure (.branch condition left right,ptrs,done)
+          | _ => none
+        | _ => none
+      | _ => none
+  | _ => none
+
 def primeRead (src : Token) (rest : List Token)
     (finish : CLogic.Expr → KeygenLevelCalls.Field → List Token →
       Option (Stmt×List Name×List Token)) : Option (Stmt×List Name×List Token) :=
@@ -256,10 +364,29 @@ def primeRead (src : Token) (rest : List Token)
     | _ => none
   | _ => none
 
-def fresh (ptrs : List Name) : List Token → Option (Stmt×List Name×List Token)
+def fresh (types : KeygenWordExpr.Types) (ptrs : List Name) :
+    List Token → Option (Stmt×List Name×List Token)
   | slot::['=']::['*']::['(']::ty::['*']::[')']::['&']::src::[';']::rest => do
     let base ← KeygenWordExpr.typeToken ty
     pure (.bitcastInto slot src (C99ValueBridge.type base),ptrs,rest)
+  | ['m','e','m','c','p','y']::['(']::rest => do
+    let (dst,rest) ← C99ProcedureParser.pointerExpr rest
+    match dst,rest with
+    | .pointer d di,[',']::rest => do
+      let (src,rest) ← C99ProcedureParser.pointerExpr rest
+      match src,rest with
+      | .pointer s si,[',']::rest => do
+        let (count,rest) ← copyCount (env types ptrs) rest
+        pure (.word (.modular (.base (.copy d s di si count))),ptrs,rest)
+      | _,_ => none
+    | _,_ => none
+  | ['m','e','m','s','e','t']::['(']::rest => do
+    let (dst,rest) ← C99ProcedureParser.pointerExpr rest
+    match dst,rest with
+    | .pointer d di,[',']::['0']::[',']::rest => do
+      let (count,rest) ← copyCount (env types ptrs) rest
+      pure (.memzero d di count,ptrs,rest)
+    | _,_ => none
   | slot::['=']::callee::['(']::rest => do
     let kind ← calleeOf callee
     let (args,rest) ← C99ProcedureParser.arguments (params kind) rest
@@ -293,23 +420,29 @@ def fresh (ptrs : List Name) : List Token → Option (Stmt×List Name×List Toke
       | _ => none
     | _ => none
   | ['r','e','t','u','r','n']::[';']::rest => pure (.retVoid,ptrs,rest)
+  | ['b','r','e','a','k']::[';']::rest => pure (.breakLoop,ptrs,rest)
+  | ['c','o','n','t','i','n','u','e']::[';']::rest => pure (.continueLoop,ptrs,rest)
   | slot::['=']::src::['[']::rest =>
     primeRead src rest (fun srcIndex field tail =>
       match tail with
       | [';']::done => some (.prime slot src srcIndex field,ptrs,done)
       | _ => none)
-  | tokens => match pointerDeclare ptrs tokens with
-    | some declared => some declared
-    | none => do
-      let (code,rest) ← pointerClause ptrs tokens
-      pure (code,ptrs,rest)
+  | tokens => match ternaryAssign types ptrs tokens with
+    | some conditional => some conditional
+    | none => match pointerDeclare ptrs tokens with
+      | some declared => some declared
+      | none => match scalarDeclare tokens with
+        | some (code,rest) => some (code,ptrs,rest)
+        | none => match pointerStmt ptrs tokens with
+          | some (code,rest) => some (code,ptrs,rest)
+          | none => none
 
 def clause (types : KeygenWordExpr.Types) (ptrs : List Name) :
     List Token → Option (Stmt×List Token)
-  | tokens => match fresh ptrs tokens with
-    | some (code,_,rest) => some (code,rest)
+  | tokens => match pointerClause ptrs tokens with
+    | some (code,rest) => some (code,rest)
     | none => do
-      let (code,rest) ← KeygenWordParser.clause types tokens
+      let (code,rest) ← KeygenWordParser.clause (env types ptrs) tokens
       pure (.word code,rest)
 
 def clauses (types : KeygenWordExpr.Types) (ptrs : List Name) (ending : Token) :
@@ -345,7 +478,7 @@ mutual
       pure (.scope vars.1 vars.2 inner,ptrs,rest)
     | fuel+1,['w','h','i','l','e']::['(']::slot::['-']::['-']::op::rest => do
       let comparison ← C99ModularParser.cmpToken op
-      let (bound,rest) ← KeygenWordExpr.expression types rest
+      let (bound,rest) ← KeygenWordExpr.expression (env types ptrs) rest
       match rest with
       | [')']::rest => do
         let (inner,ptrs,rest) ← parseStatement types ptrs fuel rest
@@ -353,15 +486,18 @@ mutual
           ptrs,rest)
       | _ => none
     | fuel+1,['w','h','i','l','e']::['(']::rest => do
-      let (condition,rest) ← KeygenWordExpr.expression types rest
+      let (condition,rest) ← KeygenWordExpr.expression (env types ptrs) rest
       match rest with
       | [')']::rest => do
         let (inner,ptrs,rest) ← parseStatement types ptrs fuel rest
         pure (.loop condition inner skip,ptrs,rest)
       | _ => none
+    | fuel+1,['f','o','r']::['(']::[';']::[';']::[')']::rest => do
+      let (inner,ptrs,rest) ← parseStatement types ptrs fuel rest
+      pure (.loop (.scalar (.literal .i32 1)) inner skip,ptrs,rest)
     | fuel+1,['f','o','r']::['(']::rest => do
       let (initial,rest) ← clauses types ptrs [';'] 16 rest
-      let (condition,rest) ← KeygenWordExpr.expression types rest
+      let (condition,rest) ← KeygenWordExpr.expression (env types ptrs) rest
       match rest with
       | [';']::rest => do
         let (update,rest) ← clauses types ptrs [')'] 16 rest
@@ -391,7 +527,7 @@ mutual
         | _ => none
       | _ => none
     | fuel+1,['i','f']::['(']::rest => do
-      let (condition,rest) ← KeygenWordExpr.expression types rest
+      let (condition,rest) ← KeygenWordExpr.expression (env types ptrs) rest
       match rest with
       | [')']::rest => do
         let (yes,ptrs,rest) ← parseStatement types ptrs fuel rest
@@ -402,10 +538,10 @@ mutual
         | _ => pure (.branch condition yes skip,ptrs,rest)
       | _ => none
     | _+1,rest =>
-      match fresh ptrs rest with
+      match fresh types ptrs rest with
       | some (code,next,rest) => some (code,next,rest)
       | none => do
-        let (code,rest) ← KeygenWordParser.statement types 64 rest
+        let (code,rest) ← KeygenWordParser.statement (env types ptrs) 64 rest
         pure (.word code,ptrs,rest)
   def parseBody (types : KeygenWordExpr.Types) (ptrs : List Name) :
       Nat → List Token → Option (Stmt×List Name×List Token)
@@ -474,7 +610,7 @@ def tokenize (macros : List (Token×List Token)) : Nat → List Char → Option 
               (tokenize macros fuel rest).map ([c,'=']::·)
             else none
         | _,_ =>
-            if ['(',')','{','}','[',']',';',',','^','&','|','-','+','*','~','=','!','<','>','.'].contains c
+            if ['(',')','{','}','[',']',';',',','^','&','|','-','+','*','~','=','!','<','>','.','?',':'].contains c
             then (tokenize macros fuel cs).map ([c]::·)
             else none
 
@@ -487,9 +623,32 @@ def region (types : KeygenWordExpr.Types) (ptrs : List Name) (start count : Nat)
   let (code,_,rest) ← parseBody types ptrs 512 lexed
   if rest.isEmpty then pure code else none
 
+/- zint_bezout is source-bound in eight statement-boundary pieces with a
+   chained scaffold (kernel memory discipline, traps 88/95/98; the accepted
+   KeygenDepth0Source and ShakeBlockProgram precedents). Piece 0 declares
+   the six walk pointers and pieces 1-7 parse with that pointer environment,
+   exactly as the threaded monolithic parse would see it. `bezoutCode` is
+   the executed body; KeygenZintCore pins the body line partition and every
+   piece parse/audit. -/
+def bezoutPtrs : List Name := ["u0","u1","v0","v1","a","b"].map String.toList
+def bezoutParsed : Nat → Option Stmt
+  | 0 => region (widths .bezout) [] 3909 4
+  | 1 => region (widths .bezout) bezoutPtrs 3913 33
+  | 2 => region (widths .bezout) bezoutPtrs 3946 7
+  | 3 => region (widths .bezout) bezoutPtrs 3953 9
+  | 4 => region (widths .bezout) bezoutPtrs 3962 17
+  | 5 => region (widths .bezout) bezoutPtrs 3979 15
+  | 6 => region (widths .bezout) bezoutPtrs 3994 21
+  | 7 => region (widths .bezout) bezoutPtrs 4015 185
+  | _ => none
+def bezoutPart (index : Nat) : Stmt := (bezoutParsed index).getD skip
+def bezoutCode : Stmt := chain [bezoutPart 0,bezoutPart 1,bezoutPart 2,bezoutPart 3,
+  bezoutPart 4,bezoutPart 5,bezoutPart 6,bezoutPart 7]
+
 def calleeParsed (kind : Callee) : Option Stmt :=
   match kind with
   | .leaf leaf => some (.word (KeygenZintLeaves.code leaf))
+  | .bezout => some bezoutCode
   | _ => region (widths kind) (extraPointers kind) (bodyRegion kind).1
     ((bodyRegion kind).2-(bodyRegion kind).1)
 def calleeBody (kind : Callee) : Stmt := (calleeParsed kind).getD skip
@@ -501,7 +660,7 @@ def shapeAdd (left right : Nat×Nat×Nat×Nat) : Nat×Nat×Nat×Nat :=
    silently fell through to the sealed word grammar would not be counted, so
    the per-body shape audits close that fallback gap. -/
 def callShape : Stmt → Nat×Nat×Nat×Nat
-  | .word _ | .bitcastInto _ _ _ => (0,0,0,0)
+  | .word _ | .bitcastInto _ _ _ | .memzero _ _ _ | .breakLoop | .continueLoop => (0,0,0,0)
   | .call _ _ _ => (1,0,0,0)
   | .callBranch _ _ _ _ a b => shapeAdd (0,1,0,0) (shapeAdd (callShape a) (callShape b))
   | .prime _ _ _ _ => (0,0,1,0)
@@ -527,8 +686,9 @@ def only : List Name → Stmt → Bool
   | names,.callBranch kind args _ _ yes no =>
     C99PointerFootprint.arguments names (writable kind) (params kind) args
       && only names yes && only names no
-  | _,.prime _ _ _ _ | _,.bitcastInto _ _ _ => true
+  | _,.prime _ _ _ _ | _,.bitcastInto _ _ _ | _,.breakLoop | _,.continueLoop => true
   | names,.storePrime array _ _ _ _ => names.contains array
+  | names,.memzero array _ _ => names.contains array
   | _,.retVoid => true
   | names,.seq a b | names,.loop _ a b => only names a && only names b
   | names,.scope _ _ body => only names body
@@ -584,6 +744,15 @@ inductive Exec : Stmt → State → Result → Prop where
       (read : before.locals src=some (held,some v))
       (view : reinterpret ty v=some w) :
       Exec (.bitcastInto dst src ty) before ⟨bindValue before dst ty w,.normal⟩
+  | memzero (before : State) (after : Memory) (array : Name) (index count : CLogic.Expr)
+      (p : ArrayPointer) (n : BitVec 64)
+      (address : Pointer before array index p)
+      (length : C99ArrayReference.scalar before count (.uint64 n))
+      (object : p.offset+n.toNat≤p.base+p.elementBytes*p.count)
+      (zeroed : Memzero before.heap p n.toNat after) :
+      Exec (.memzero array index count) before ⟨{before with heap := after},.normal⟩
+  | breakLoop (before : State) : Exec .breakLoop before ⟨before,.breakLoop⟩
+  | continueLoop (before : State) : Exec .continueLoop before ⟨before,.continueLoop⟩
   | retVoid (before : State) : Exec .retVoid before ⟨before,.returned none⟩
   | seqNormal (a b : Stmt) (before middle : State) (out : Result)
       (head : Exec a before ⟨middle,.normal⟩) (tail : Exec b middle out) : Exec (.seq a b) before out
@@ -612,6 +781,16 @@ inductive Exec : Stmt → State → Result → Prop where
       (v : Value) (ret : Option Value) (guard : KeygenWordExpr.Eval before condition v)
       (nonzero : v.integer≠0) (iteration : Exec body before ⟨after,.returned ret⟩) :
       Exec (.loop condition body increment) before ⟨after,.returned ret⟩
+  | loopBreak (condition : Expr) (body increment : Stmt) (before after : State)
+      (v : Value) (guard : KeygenWordExpr.Eval before condition v)
+      (nonzero : v.integer≠0) (iteration : Exec body before ⟨after,.breakLoop⟩) :
+      Exec (.loop condition body increment) before ⟨after,.normal⟩
+  | loopContinue (condition : Expr) (body increment : Stmt) (before middle next : State)
+      (out : Result) (v : Value) (guard : KeygenWordExpr.Eval before condition v)
+      (nonzero : v.integer≠0) (iteration : Exec body before ⟨middle,.continueLoop⟩)
+      (update : Exec increment middle ⟨next,.normal⟩)
+      (rest : Exec (.loop condition body increment) next out) :
+      Exec (.loop condition body increment) before out
 
 def Call (kind : Callee) (before : State) (args : List Arg) : State → Option Value → Prop :=
   fun after v => ∃ entry out, C99ArrayReference.Bind before (params kind) args entry
@@ -705,12 +884,19 @@ theorem body_frame (calleeChecked : ∀ kind : Callee, only (writable kind) (cal
       simpa only [C99PointerFootprint.TablesOutside] using tables
     obtain ⟨oa,ta,fb⟩ := ih2 names hno base tm
     exact ⟨oa,ta,fb.trans fa⟩
-  | prime | retVoid | loopFalse | bitcastInto => exact ⟨outside,rfl,rfl⟩
+  | prime | retVoid | loopFalse | bitcastInto | breakLoop | continueLoop =>
+    exact ⟨outside,rfl,rfl⟩
   | storePrime array index src srcIndex field before after p w read address write =>
     have member : array∈names := List.contains_iff_mem.mp checked
     have keep := write.2.2.2.2.2.2 block offset
       (C99ArrayFrame.pointer_store_frame before names array index p 4 address member
         write.1 write.2.1 block offset outside)
+    exact ⟨outside,rfl,keep⟩
+  | memzero before after array index count p n address length object zeroed =>
+    have member : array∈names := List.contains_iff_mem.mp checked
+    have keep := zeroed.2.2.2.2.2.2 block offset
+      (C99PointerFootprint.copy_frame before names array index p n.toNat address member
+        object block offset outside)
     exact ⟨outside,rfl,keep⟩
   | seqNormal a b before middle out head tail ih1 ih2 =>
     obtain ⟨ha,hb⟩ := Bool.and_eq_true_iff.mp checked
@@ -745,6 +931,21 @@ theorem body_frame (calleeChecked : ∀ kind : Callee, only (writable kind) (cal
     exact ⟨oc,tc.trans (tb.trans ta),fc.trans (fb.trans fa)⟩
   | loopReturn condition body increment before after v ret guard nonzero iteration ih =>
     exact ih names (Bool.and_eq_true_iff.mp checked).1 outside tables
+  | loopBreak condition body increment before after v guard nonzero iteration ih =>
+    exact ih names (Bool.and_eq_true_iff.mp checked).1 outside tables
+  | loopContinue condition body increment before middle next out v guard nonzero iteration
+      update rest ih1 ih2 ih3 =>
+    obtain ⟨ha,hb⟩ := Bool.and_eq_true_iff.mp checked
+    obtain ⟨oa,ta,fa⟩ := ih1 names ha outside tables
+    change middle.tables=before.tables at ta
+    have tm : C99PointerFootprint.TablesOutside middle block offset := by
+      simpa only [C99PointerFootprint.TablesOutside,ta] using tables
+    obtain ⟨ob,tb,fb⟩ := ih2 names hb oa tm
+    change next.tables=middle.tables at tb
+    have tn : C99PointerFootprint.TablesOutside next block offset := by
+      simpa only [C99PointerFootprint.TablesOutside,tb,ta] using tables
+    obtain ⟨oc,tc,fc⟩ := ih3 names checked ob tn
+    exact ⟨oc,tc.trans (tb.trans ta),fc.trans (fb.trans fa)⟩
 
 theorem call_frame (kind : Callee) (before after : State) (args : List Arg) (v : Option Value)
     (source : Call kind before args after v) (names : List Name) (block offset : Nat)
