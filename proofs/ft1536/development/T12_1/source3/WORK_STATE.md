@@ -1,5 +1,26 @@
 # T12.1/source3 — żywy stan
 
+## B1.05c — intermediate/root continuation — 2026-10-08
+
+Owner resumed checkpoint section 8R with GPT-6 Astra Ultrafast.
+BATCH_029 is IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN;
+B1.05 Acceptance is NOT MET. Before edits/jobs the committed BATCH_028
+verifier checked the BATCH_015–028 closure: 3202 distinct pins, 471 current
+inputs, exact Call/Core supersessions, no active proof job. Entry receipt:
+`.build/levels_029/ENTRY_PINS_029.json`, SHA256
+`68dca17afa1685f9f4d31c022defd52f652c791c1429b9aeb399889e17986f58`.
+Next source dependency: complete poly_sub_scaled_ntt, followed by the
+intermediate body, static tables, root caller and material composition.
+
+`KeygenPolySubNtt` binds the complete 74-line poly_sub_scaled_ntt body in
+four statement-boundary pieces. Both transform families, signed32 k[v],
+the dereferenced zint result store, CRT and the final scaled subtraction
+execute fixed bodies; a byte frame follows from source writes. Job
+`keygen_zint_subntt_029_002` accepted with 0/0 logs (55.798s). The first
+failed attempt is retained: const uint32 pointer declaration and the
+dereferenced zint-call destination needed explicit grammar productions.
+No multiplication/reduction or complete intermediate theorem is claimed.
+
 ## B1.05b-c — CLOSED at complete deepest operational closure — 2026-10-08
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
