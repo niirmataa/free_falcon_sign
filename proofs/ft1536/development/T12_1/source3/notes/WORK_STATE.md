@@ -1,5 +1,42 @@
 # RUN_003 — source-bound kontynuacja T12.1
 
+## 2026-10-08 — B1.05 kontynuacja: dostęp członkowy + zint_rebuild_CRT + rodzina co-reduce/reduce (okno MiMo)
+
+W oknie BIG B1.05 (harness: **MiMo V2.6 Pro**) wykonano kolejność właściciela
+(1)-(2) z checkpointu: reguła tokenizacji dostępu członkowego i pełne
+domknięcie parse `zint_rebuild_CRT`, a następnie gramatyka i ciała rodziny
+co-reduce/reduce. Krok (3) make_fg_step i Bezout pozostały.
+**IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN**; B1.05 Acceptance NOT MET.
+Receipt batcha: `run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_026.json` +
+`_026_NOTES.md`; świeży checkpoint: `run/KEYGEN_RESIDUE_CHECKPOINT.md`.
+
+- Commity lokalne (bez push): `1eb416f0` (reguła `.` w `KeygenZintCall.tokens`,
+  kompletne ciało zint_rebuild_CRT 3581-3633, `rebuild_crt_pending` ZDJĘTY,
+  shape (4,0,3,0) + audit kernelowo), `61d3e3f8` (bitcast `*(T*)&local`
+  z `Value.reinterpret`, zakres makra `#define M`/`#undef M` jako
+  zastępowanie tokenowe, kompletna zint_co_reduce/zint_co_reduce_mod/
+  zint_reduce/zint_reduce_mod z audytami shape/bitcastCount i code_checked
+  dla wszystkich dziesięciu członków Callee).
+- Job PASS: `keygen_zint_crt_026_003` (Call+Core: domknięcie CRT),
+  `keygen_zint_crt_026_004` (probe czysty), `keygen_zint_reduce_026_010`
+  (Call 2.67s + Probe DIAGNOSTIC 1.82s + Core 128.6s, logi 0/0, limity bez
+  zmian). Zachowane nieudane: `_026_001/_002/_007` (odmowy stale-cache bez
+  receiptów, strumieni nie odtwarzano), `_026_005` (rekurencja tokenizatora),
+  `_026_006` (parse-none przed poprawką bitcastu), `_026_008/_009` (sondy
+  lokalizacyjne DIAGNOSTIC).
+- Piny wejściowe BATCH_015-025 zweryfikowane PRZED pracą (2889 plików,
+  `tools/keygen_zint_entry_pins.py`, receipt `e628ced6…`).
+- Nowe pułapki 111-115 w BATCH_026 JSON (kolejność `-m` w commit, straż
+  stale-cache dla modułów po nieudanym buildzie, `int32_t *` z gwiazdką w
+  rzutowaniu bitcastu, paliwo rekurencji przy pod-parse makra, lint/pełna
+  kwalifikacja w sondach).
+- **Pozostałe w B1.05:** zint_bezout (3908-4200: ternary `?:`,
+  memcpy/memset `sizeof *element`, `for (;;)`), bitlength/zint_get_top/
+  poly_max_bitlength/poly_big_to_fp + skalowane odejmowanie, make_fg_step
+  5379-5569 z binarną rodziną mkgm2/NTT2 (2778-2908), kompletne make_fg,
+  closure deepest/intermediate/root i pełny transport materiału.
+  Propozycja podetapów B1.05a/b/c w `run2/notes/B1_STAGED_ROADMAP.md`.
+
 ## 2026-10-06 — B1.03 kontynuacja: KROK 0 + wiązania div/mkgm3 + closure + REV10 (okno MiMo)
 
 W oknie kontynuacji B1 (harness: **MiMo V2.6 Pro**) wykonano zakres

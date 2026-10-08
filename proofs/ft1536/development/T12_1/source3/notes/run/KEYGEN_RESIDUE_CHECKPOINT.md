@@ -1,3 +1,69 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.05 member access / reduce-family midpoint
+
+**PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
+2026-10-08 window (BATCH_026, harness: MiMo V2.6 Pro) closed at a
+recoverable midpoint. **B1.05 Acceptance NOT MET; B1.06 not entered.**
+Resume protocol: section 6R below. Named sub-stages B1.05a/b/c proposed in
+`run2/notes/B1_STAGED_ROADMAP.md`.
+
+## 0R. Closed this window — member-access tokens, zint_rebuild_CRT body, reduce family
+
+Commits on main as niirmataa: `1eb416f0`, `61d3e3f8`; this pair/checkpoint
+gets its own local documentation commit. Writer windows use
+`proofs/ft1536/work/archive.lock` and exact owned paths.
+
+`KeygenZintCall.tokens` is the member-access tokenization rule (trap 110):
+the shared LeafScan surface plus the dot token, kept in the zint family so
+no shared pinned parse or cache closure moves. It also carries C-textual
+`#define`/`#undef` macro scope as token substitution. `Stmt.bitcastInto`
+with `Value.reinterpret` executes the same-width `*(T*)&local` type-pun
+(cast target `T*`; uint32<->int32 and uint64<->int64 only — cross-width
+reads stay outside the rule). New Callees coReduce/coReduceMod/reduce/
+reduceMod have full tables and execute their own parsed bodies.
+
+`KeygenZintCore` (accepted, 128.6s) kernel-checks: **zint_rebuild_CRT
+COMPLETE body 3581-3633** (`rebuild_crt_pending` REMOVED; shape (4,0,3,0),
+only audit, code_checked — `Call .rebuildCrt` is no longer a skip
+placeholder), zint_co_reduce 3670-3724 (shape (0,0,0,0), bitcasts 2),
+zint_co_reduce_mod 3735-3801 (macro M, shape (4,2,0,0), bitcasts 2),
+zint_reduce 3811-3844 (bitcast 1), zint_reduce_mod 3855-3888 (shape
+(2,1,0,0), bitcast 1), each with header/close pins. Operational/frame
+results only: no CRT correctness, Bezout, reduction or Montgomery claim.
+
+BATCH_026 pair: `run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_026.json` +
+`_026_NOTES.md`. Entry pins verified BEFORE work via
+`tools/keygen_zint_entry_pins.py`: BATCH_015-025 pairs, the full 2847-file
+ENTRY_PINS_025 closure and BATCH_025 modules/17 receipts/2 receipt-less
+retained dirs = 2889 distinct pins, `.build/levels_026/ENTRY_PINS_026.json`
+sha `e628ced648ea005663e65961f63a156ad473daa43aa40481836985251d9547de`.
+10 attempt jobs retained (7 receipted, 3 stale-cache refusals with honestly
+absent streams). New traps 111-115 in the BATCH_026 JSON.
+
+## 6R. Resume protocol (next B1.05 window)
+
+1. Read source3/WORK_STATE, this checkpoint, EXECUTION_PLAN B1.05 and
+   `run2/notes/B1_STAGED_ROADMAP.md` (incl. the B1.05a/b/c proposal).
+   Resume only B1.05; B1.05 Acceptance is NOT MET.
+2. Verify BATCH_015-026 pairs and all current source/receipt pins with
+   `python3 -B tools/keygen_zint_entry_pins.py` extended to the BATCH_026
+   pair and its 7 attempt receipts; no active owned job. Retain all failed
+   and receipt-less attempts (traps 94/112: select every changed module in
+   each job).
+3. Next work in plan order: zint_bezout (3908-4200: ternary `?:`,
+   memcpy/memset `sizeof *element` width-4 lowering, `for (;;)`, six-pointer
+   declarations; its four `*(int32_t*)&ux*` puns reuse the committed rule),
+   then bitlength/zint_get_top/poly_max_bitlength/poly_big_to_fp + scaled
+   subtraction, then make_fg_step 5379-5569 with the binary mkgm2/NTT2
+   family (2778-2908 incl. stride-one macros), complete make_fg,
+   deepest/intermediate/root closure and full material transport.
+4. Unique labels `keygen_zint_*_027_*` via `python3 -B
+   tools/job_when_available.py lean LABEL Source3.Module...`; one guarded
+   proof job, unchanged limits, 0/0 logs. Exact calculations use `sage
+   file.sage` with HOME/TMPDIR under the component `.build`.
+5. Save small local commits. Close at B1.05 Acceptance or another expanded
+   recoverable checkpoint with the next JSON/notes pair. No automatic push,
+   review, worker/relay, migration or stages import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.05 signed/reduction CRT midpoint
 
 **PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**

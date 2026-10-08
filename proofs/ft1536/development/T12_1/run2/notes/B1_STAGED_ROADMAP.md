@@ -36,6 +36,17 @@ WINDOW discipline so no session ever runs into its context wall.
 | **B1.03** | twiddle-table generation + memory layout (`modp_mkgm3`, order-9216/4608 proof OBLIGATION not assumption, `igm=ft` alias overwrite) | medium-heavy | large finite-table certs via generator/pin (LARGE_ARTIFACTS pattern) |
 | **B1.04** | NTT canonical range + polynomial evaluation (6 sub-proofs: first pass, radix-2, triple pass, REV10 permutation, CoefficientQuotient relation, 1536 distinct roots of Phi) | heavy | commit passes as separate recoverable steps |
 | **B1.05** | solver call graph -> exact integer NTRU (`poly_big_to_small`, MODE1 sampler bounds 1, material preservation, `exact_ntru_of_modular_check` with residual 37748737) | heavy | no `solver_correct` premise may remain |
+
+### Proposal 2026-10-08: named B1.05 sub-stages (owner-suggested)
+
+B1.05 runs long (BATCH_023-026 and counting). Suggested named sub-stages
+mirroring the owner's 2026-10-08 window order, for context discipline:
+
+| Sub-stage | Content | Status |
+|---|---|---|
+| **B1.05a** — signed/reduction CRT family | call-capable word layer, CRT-family bodies, member-access tokenization, complete zint_rebuild_CRT parse/execution, co-reduce/reduce family with bitcast + `#define M` macro scope | **CLOSED** (BATCH_025/026) |
+| **B1.05b** — Bezout + extraction + big-to-fpr | zint_bezout (ternary `?:`, memcpy/memset `sizeof *element`), bitlength, zint_get_top, poly_max_bitlength, poly_big_to_fp, scaled polynomial subtraction, complete make_fg | open |
+| **B1.05c** — binary make_fg_step + closure + Acceptance | make_fg_step with mkgm2/NTT2 binary bodies and stride-one macros, solve_NTRU_deepest/intermediate/root closure, sampled f/g and full material transport, B1.05 Acceptance | open |
 | **B1.06** | public computation + inverse (`falcon_compute_public` ternary branch, `mulRq` equations, `fInv` witness from nonzero evaluations) | medium-heavy | B3 exports only after exact-type inspection |
 
 After B1.06: the B4 premises `hshape`/`AttemptShape` materials and the

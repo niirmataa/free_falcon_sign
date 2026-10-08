@@ -1,0 +1,75 @@
+{
+  "task": "KEYGEN_SOURCE_TO_FIBER_001",
+  "batch": "BATCH_026",
+  "stage": "B1.05",
+  "window": "CLOSED_AT_RECOVERABLE_MIDPOINT",
+  "b1_05_acceptance": "NOT_MET",
+  "status": "IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN",
+  "stage_result": "PARTIAL_PROOF",
+  "entry_pins_receipt": {
+    "path": ".build/levels_026/ENTRY_PINS_026.json",
+    "sha256": "e628ced648ea005663e65961f63a156ad473daa43aa40481836985251d9547de",
+    "checked": "BATCH_015-025 pairs (11 external pair pins), full ENTRY_PINS_025 closure (2847 files), BATCH_025 accepted-module sources and 17 attempt RECEIPTS + 2 receipt-less retained dirs; 2889 distinct pinned files, 459 current inputs, no active job"
+  },
+  "accepted_modules": {
+    "KeygenZintCall": {
+      "source": "formal/Source3/KeygenZintCall.lean",
+      "sha256": "b1cb051f85b5bad34877e468a5558825ddc6879e7a6e3d62a641422bbd29fedc",
+      "contract": "member-access tokenization rule (dot token, trap 110) plus C-textual #define/#undef macro scope as token substitution; same-width *(T*)&local bitcast statement with Value.reinterpret; Callee extensions coReduce/coReduceMod/reduce/reduceMod with complete tables"
+    },
+    "KeygenZintCore": {
+      "source": "formal/Source3/KeygenZintCore.lean",
+      "sha256": "cb9114ddb017a04b2bbe21ac8d8c640b97125bb08931e5a744666ce81057dc89",
+      "contract": "zint_rebuild_CRT complete body 3581-3633 (rebuild_crt_pending REMOVED; shape (4,0,3,0) + only audit + code_checked) and complete co-reduce/reduce bodies: zint_co_reduce 3670-3724, zint_co_reduce_mod 3735-3801 (macro M), zint_reduce 3811-3844, zint_reduce_mod 3855-3888, each with header/close pins, only audit, callShape and bitcastCount"
+    },
+    "KeygenZintProbe": {
+      "source": "formal/Source3/KeygenZintProbe.lean",
+      "sha256": "d1c63c46929a79ffeaef21ff4c3809c8667319c0289cbac1a834f1006edec807",
+      "contract": "DIAGNOSTIC only (nonempty stdout); localization evidence for the member-access rule and the bitcast token stream; never proof evidence"
+    }
+  },
+  "audits": {
+    "rebuild_crt": "callShape (4,0,3,0), bitcastCount 0, only(writable)=true",
+    "co_reduce": "callShape (0,0,0,0), bitcastCount 2, only=true",
+    "co_reduce_mod": "callShape (4,2,0,0), bitcastCount 2, only=true",
+    "reduce": "callShape (0,0,0,0), bitcastCount 1, only=true",
+    "reduce_mod": "callShape (2,1,0,0), bitcastCount 1, only=true",
+    "code_checked": "forall ten Callee members (seven sealed leaves + six family bodies + four new reduce bodies folded into the same enum)"
+  },
+  "open": [
+    "zint_bezout (3908-4200): ternary `?:` clauses, memcpy/memset with sizeof *element (element width 4) lowering, `for (;;)`, `v1[0] &= ~(uint32_t)1`, six-pointer declarations, callBranch `if (zint_reduce(...))` and the four new family callees at call level; its four same-width bitcasts reuse the committed rule",
+    "bitlength (4208-4237), zint_get_top (4272-4278), poly_max_bitlength (4448-4463), poly_big_to_fp (4474-4484) with fpr_scaled/word-to-fpr and the scaled polynomial subtraction used by intermediate",
+    "make_fg_step (5379-5569) with the binary family modp_mkgm2 (2778-2807), modp_NTT2_ext (2816-2847), modp_iNTT2_ext (2855-2901) and the stride-one macros at 2907-2908; complete make_fg (5682-)",
+    "solve_NTRU_deepest/intermediate operational closure, root caller 7278-7397 instantiation, sampled f/g transport through all gates and full material transport; B1.05 Acceptance still NOT MET"
+  ],
+  "traps_new": [
+    "111. `git commit --only` treats later flags as pathspecs after `--`; put `-m` before `--`.",
+    "112. Stale-cache guard (trap 94 family): every module whose source changed must be selected in EVERY job until its cache entry refreshes. A failed build keeps its old cache entry, so the failing module must be selected (last) even in diagnostic jobs.",
+    "113. The C type-pun `*(int32_t*)&tt` has cast target `int32_t *`: the `*` is a token between the type and `)`. A shorter pattern silently fails (fresh falls through, parse none). Print the raw token list before designing patterns.",
+    "114. `#define`/`#undef` macro scope cannot live in a shared lexer (no `#` token); token substitution with a threaded macro table is C's textual semantics. The nested tokenizer recursion for the macro body must reuse the outer structural fuel or termination checking fails.",
+    "115. Unused lambda binders in `#eval` callbacks trigger unusedVariables under warningAsError, and unqualified sibling-namespace names do not resolve in probe scope: use `_` binders and full qualification even in diagnostic modules."
+  ],
+  "attempt_history": {
+    "keygen_zint_crt_026_003": "cbc5e003f7152ad425d5bfa6e4fc1324a46b2f3d21fc3b0984976a7dae76587f",
+    "keygen_zint_crt_026_004": "079f6f191959400813495f72f5b0ba93434f22672ac14327fa4c28813502fb01",
+    "keygen_zint_reduce_026_005": "8728043f4bae0e2b17e4ebe839dfc4a4d705fed825828e7032274add3b8a701f",
+    "keygen_zint_reduce_026_006": "8762d43b3f69d714552c2c37c67c467ef7dbce6597c0d428833b1ed1f9cc66de",
+    "keygen_zint_reduce_026_008": "2e9b5c6818d675414a1de72ee518fb484849a00dc73a01eaba1d11bc6bf1bc17",
+    "keygen_zint_reduce_026_009": "f75f406fc89138090f3d437b2645796cae43cbe2bcee22efd62b729f591ff7e6",
+    "keygen_zint_reduce_026_010": "5b5a99c1c71921ca6cd65759943c1688502a99344ada62edc87e91d152170352"
+  },
+  "attempt_history_receiptless": {
+    "keygen_zint_crt_026_001": "stale-cache refusal before SOURCE_INPUTS/RECEIPTS (KeygenZintCore selected-set mismatch); directory retained, streams honestly absent",
+    "keygen_zint_crt_026_002": "stale-cache refusal (pre-existing stale KeygenZintProbe entry from the previous window); directory retained",
+    "keygen_zint_reduce_026_007": "stale-cache refusal (KeygenZintCore failed build kept its old entry); directory retained"
+  },
+  "git": {
+    "branch": "main",
+    "author": "niirmataa",
+    "writer_lock": "proofs/ft1536/work/archive.lock",
+    "commits": ["1eb416f0 (member access + zint_rebuild_CRT closure)", "61d3e3f8 (co-reduce/reduce family + bitcast + macro scope)"],
+    "push": "none (waiting for an explicit owner signal)",
+    "foreign_changes": "preserved"
+  },
+  "limits": "Unchanged Lean j1/-M6144, maxRecDepth32768/maxHeartbeats2000000, warnings as errors. No Sage work this window."
+}
