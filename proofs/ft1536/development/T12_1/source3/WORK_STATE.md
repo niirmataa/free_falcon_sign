@@ -37,6 +37,21 @@ the new stratum groups that same complete expression and checks its exact
 signed tree. It does not change the shared parser or pinned C.
 Full intermediate source audits and table binding remain in progress.
 
+The exact Sage controls passed in `keygen_zint_checks_029_001` (77.378s,
+0/0): ten normal/UBSan runs, four mutations detected in both modes. Each
+baseline has 15 NTT-subtraction cases, six deepest entries, 25 complete
+intermediate depth calls, four diagnostic root calls, all 1623 prime records
+(including sentinels) and four size tables. Polynomial identities are checked
+independently over ZZ. Some public constant f/g fixtures exceed MODE1's
+coefficient bound; these are helper controls, not sampled production keys.
+
+Complete intermediate certification encountered repeated kernel memory
+exhaustion with the unchanged limits. All attempts are retained. The current
+route separates physical-line/lexical witnesses from parser reductions and
+checks nested loop pieces independently; successful earlier helper modules
+remain valid. The initial direct 585-line source route and the first
+loop-piece/token routes are failed evidence, not complete source proofs.
+
 ## B1.05b-c — CLOSED at complete deepest operational closure — 2026-10-08
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
