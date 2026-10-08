@@ -1,5 +1,22 @@
 # T12.1/source3 — żywy stan
 
+## B1.05 — CLOSED at signed/reduction CRT midpoint — 2026-10-08
+
+**B1.05 Acceptance NOT MET. CLOSED_AT_RECOVERABLE_MIDPOINT.**
+New call-capable word layer `KeygenZintCall` (accepted) embeds the sealed word
+grammar and source-binds zint inter-calls to real bodies (leaf calls share
+KeygenZintLeaves). `KeygenZintCore` (accepted) binds five complete bodies:
+zint_mod_small_signed, zint_norm_zero, zint_exact_length, zint_rshift1_mod,
+zint_sub_mod, with header/close pins, parse/only/callShape audits, frames and
+generic material. `zint_rebuild_CRT` remains OPEN: its body parse is the
+checked fact `none` (dot member access defeats C99ProcedureParser.tokens);
+`Call .rebuildCrt` is a skip placeholder, not a CRT execution. Next: close
+rebuild_CRT parse, then co-reduce/reduce/Bezout, make_fg_step (binary mkgm2/
+NTT2 family), make_fg, deepest/intermediate/root and material transport.
+BATCH_025 pair; entry pins BATCH_015-024 verified (2847 files). Traps 106-110.
+No push/review/import/worker/relay.
+
+
 ## B1.05 — CLOSED at search-dependency / early-material midpoint — 2026-10-08
 
 **B1.05 Acceptance NOT MET. CLOSED_AT_RECOVERABLE_MIDPOINT.**

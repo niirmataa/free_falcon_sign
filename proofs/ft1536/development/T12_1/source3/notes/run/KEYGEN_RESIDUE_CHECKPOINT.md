@@ -1,3 +1,36 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.05 signed/reduction CRT midpoint
+
+**PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
+2026-10-08 window (BATCH_025) closed at a recoverable midpoint.
+**B1.05 Acceptance NOT MET; B1.06 not entered.** Resume protocol: section 6.
+
+## 0. Closed this window — call-capable word layer and five CRT-family bodies
+
+`KeygenZintCall` (accepted) extends the sealed word layer with exactly the
+bigint-family syntax: zint calls with pointer arguments (leaf callees share
+the real KeygenZintLeaves bodies via `leaf_call`; new callees execute their own
+parsed bodies — no arbitrary callee), prime-struct reads and store-prime,
+pointer declare/bind/advance, void return, post-decrement loops, calls in
+conditions and local/store call destinations. Generic `body_frame`/`call_frame`
+(`induction ... generalizing names`), `ReceiveC` heap/tables laws and
+`callShape` audits close the silent word-fallback gap (trap 108).
+
+`KeygenZintCore` (accepted) source-binds COMPLETE bodies for
+zint_mod_small_signed (3426-3433), zint_norm_zero (3542-3559),
+zint_exact_length (3643-3649), zint_rshift1_mod (3489-3497),
+zint_sub_mod (3507-3509) with header/close pins, parse/only/callShape audits
+and generic material preservation. No CRT/normalization/Bezout claim.
+
+**zint_rebuild_CRT is OPEN**: `calleeParsed .rebuildCrt = none` is a checked
+fact (`rebuild_crt_pending`); `C99ProcedureParser.tokens` refuses the
+`primes[0].p` dot access (trap 110) and `Call .rebuildCrt` is a skip-body
+placeholder that must not be used as a CRT execution. The primeRead/storePrime
+productions are probe-verified working (`KeygenZintProbe`, DIAGNOSTIC only).
+
+BATCH_025 pair; entry pins BATCH_015-024 verified (2847 distinct files,
+459 current inputs, `.build/levels_025/ENTRY_PINS_025.json`). 19 retained
+attempt jobs (probes intentionally nonempty stdout = DIAGNOSTIC).
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.05 search dependencies / early-material midpoint
 
 **PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**

@@ -1,0 +1,66 @@
+{
+  "task": "KEYGEN_SOURCE_TO_FIBER_001",
+  "batch": "BATCH_025",
+  "stage": "B1.05",
+  "window": "CLOSED_AT_RECOVERABLE_MIDPOINT",
+  "b1_05_acceptance": "NOT_MET",
+  "status": "IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN",
+  "stage_result": "PARTIAL_PROOF",
+  "entry_pins_receipt": {
+    "path": ".build/levels_025/ENTRY_PINS_025.json",
+    "sha256": "92a8037b87b0490ae15ff4ed8878255bfe4534810d20838d13b1407c15fcb6f0",
+    "checked": "BATCH_015-024 pairs, 2847 distinct pinned files, 459 current inputs, no active job"
+  },
+  "accepted_modules": {
+    "KeygenZintCall": {
+      "source": "formal/Source3/KeygenZintCall.lean",
+      "sha256": "ef889cb14345604b084a55012a0e02dfa9f24e9aabb75a59756db9af7ad9481d"
+    },
+    "KeygenZintCore": {
+      "source": "formal/Source3/KeygenZintCore.lean",
+      "sha256": "77b12f0c61d5ebbeae2cf8f13d27e5160f893d570401c2cd8d0a7cff76cfc04b"
+    }
+  },
+  "contracts": {
+    "call_layer": "KeygenZintCall: call-capable word layer (KeygenZintCall accepted). Sealed KeygenWordExec fragments embedded unchanged; zint leaf calls share real KeygenZintLeaves bodies (leaf_call); new callees execute their own parsed bodies (no arbitrary callee). Prime reads, store-prime, pointer declare/bind/advance, void return, post-decrement loops, calls in conditions and local call destinations. Generic body_frame/call_frame with `generalizing names`, ReceiveC heap/tables laws. callShape counts close the word-fallback gap.",
+    "signed_reduction_crt": "KeygenZintCore accepted: complete source-bound bodies and frames for zint_mod_small_signed, zint_norm_zero, zint_exact_length, zint_rshift1_mod, zint_sub_mod (header/close pins and full parse, only+shape audits); generic material preservation. No CRT correctness, normalization or Bezout claim."
+  },
+  "open": [
+    "zint_rebuild_CRT body parse: C99ProcedureParser.tokens refuses the `primes[0].p` dot access; calleeParsed is the checked fact `none` (rebuild_crt_pending) and Call .rebuildCrt is a skip-body placeholder that must not be used as CRT execution. primeRead/storePrime productions are probe-checked working.",
+    "zint_co_reduce/zint_co_reduce_mod (bitcast *(int32_t*)&tta, #define M macro), zint_reduce/zint_reduce_mod, zint_bezout (bitlength/top extraction, scaled subtraction), make_fg_step (binary mkgm2/NTT2 family bodies + zint call forms at level), make_fg, solve_NTRU_deepest/intermediate closure, root caller and full material transport."
+  ],
+  "traps_new": [
+    "106. `variable` and `local` are reserved tokens (trap 82 family): binder/constructor names must avoid them.",
+    "107. C99ProcedureParser.arguments consumes the closing `)`; post-argument patterns are `[';']::tail`, not `[')']::[';']::tail`.",
+    "108. A failed name-dispatched production silently falls through to the sealed word grammar and yields an uninhabited ModCall. callShape audits per body close this gap.",
+    "109. Inductive constructors referenced in a result index need explicit fields (auto-bound `before` shifts case patterns); use `induction h generalizing names` for frames with per-name IHs.",
+    "110. C99ProcedureParser.tokens rejects `.` dot access; region parsing of member-access bodies needs the level tokenizer (whose postLoop/cmpToken surface then differs) or an extended tokens."
+  ],
+  "attempt_history": {
+    "keygen_zint_call_025_001": "28505a966fec8d664f3a829df6d3954b587edbb677cc98a310f9dd60cdc6489b",
+    "keygen_zint_call_025_002": "0aeede076d748e28035e50f7bc7c4807bb8d7ee30345bfebdf97ce1ed3b09bd5",
+    "keygen_zint_core_025_001": "7cd795da0305547fae120c338bb4f51c07cede493863cdaf8b02b89c7451f9d0",
+    "keygen_zint_core_025_002": "6c268da9ffb3b4973b497b1fb650638e6cb799e68032935986f26262d5758088",
+    "keygen_zint_core_025_003": "6546c5b4329d5f18088c59d73837f79a7826d51f65194e79990a71c9ef3bf911",
+    "keygen_zint_core_025_004": "5346c62ecf11915cbe7dbde23cbbb24db37de70151ebb850342882003690a049",
+    "keygen_zint_core_025_005": "35e68ad568df9ea9bffa03b2a4a34b365f0134bfba1958bd0fa09b1a96eeda60",
+    "keygen_zint_probe_025_001": "5714aa4e725cb3ee89caa6bb84aabf379bc59f1a33e7eb60959875200d284e4f",
+    "keygen_zint_probe_025_002": "e4c068626dd035f11508eb81a751813026047419e68dd09d216ab775d5b51e8b",
+    "keygen_zint_probe_025_003": "d759b0d5416e0d1d30e2d70d3212a92b605da7029c1478976e767087e543e628",
+    "keygen_zint_probe_025_004": "4eedb392ccb0db0ebbd8d15c171a8e8fa3fdd96caa238c98350896ed614a2cf2",
+    "keygen_zint_probe_025_005": "8d75f721bef2c4cef7c57b1f03002637760ae6153fcaa2842f1985845be824af",
+    "keygen_zint_probe_025_007": "6ea21bada93af91b6ba4d4e40e9963748facce02d66e86dfaad5afe8a78409e1",
+    "keygen_zint_core_025_007": "8237b8345d042ef8d6cd01010e3e9656faa8f7fcd2ef46161be9f1a2a952a148",
+    "keygen_zint_core_025_008": "8d40e180bf18a04adbeb07f4dcbda8782f63d059b952e032f4ddf56b4bc36ec4",
+    "keygen_zint_core_025_009": "9955c826d5fe8108aa70d7d6bfa8ada7762a314d998516634216203992afb417",
+    "keygen_zint_core_025_010": "46b7b354c69a3783d5dc5fbf88dfbcdfb5567dfa2265aae0bcd72e906afb67a1"
+  },
+  "limits": "Unchanged Lean j1/-M6144, maxRecDepth32768/maxHeartbeats2000000, warnings as errors. No Sage work this window.",
+  "git": {
+    "branch": "main",
+    "author": "niirmataa",
+    "writer_lock": "proofs/ft1536/work/archive.lock",
+    "push": "none",
+    "foreign_changes": "preserved"
+  }
+}
