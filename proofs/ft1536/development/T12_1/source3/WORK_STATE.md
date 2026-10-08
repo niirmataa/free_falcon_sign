@@ -51,6 +51,16 @@ preceding gates is needed for B1.05 Acceptance. Current accepted jobs:
 `_caller_030_001`, all 0/0. One validation binding attempt exhausted the
 unchanged heartbeat limit; explicit conversion normalization resolved it.
 
+Complete root body coverage and actual caller gate are checked in
+`KeygenRootCoverage` (`keygen_root_coverage_030_002`,0/0). Root controls passed:
+10 normal/UBSan runs ×14 public synthetic cases, nine in-range successes
+per baseline, all four mutations detected in each mode. Full audit job
+`keygen_root_audit_030_001` is0/0:173 entries,145 full terms,28 kernel
+inductives/structures, standard axioms only,zero elisions. The19.5MB artifact
+is retained under that job with tracked generator/pin. Current closure has
+539 source inputs; the unchanged BATCH_015–029 predecessor closure was
+rechecked at preseal. No owned job remains active.
+
 ## B1.05c — complete intermediate and static initializer closure — 2026-10-08
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
