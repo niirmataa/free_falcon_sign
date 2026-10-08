@@ -1,3 +1,83 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.05b member grammar / zint_bezout midpoint
+
+**PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
+2026-10-08 window (BATCH_027, harness: MiMo V2.6 Pro) closed at a
+recoverable midpoint of sub-stage B1.05b. **B1.05 Acceptance NOT MET;
+B1.06 not entered.** Resume protocol: section 7R below.
+
+## 7. Closed this window — complete zint_bezout with the new grammar
+
+Commits on main as niirmataa: `32f2f1ee` (entry pins), `f7952a2a`
+(complete zint_bezout); this pair/checkpoint gets its own local
+documentation commit. Writer windows use `proofs/ft1536/work/archive.lock`
+and exact owned paths.
+
+`KeygenZintCall` (accepted) adds exactly the zint_bezout grammar: ternary
+`?:` assignment lowering to explicit branch-of-assignment, memcpy through
+the sealed byte-copy statement and memset through the new `Memzero`
+zero-byte rule (both with `sizeof *element` width-4 limb lowering),
+`for (;;)` with constant-one condition, `continue`/`break` loop flow
+(loopContinue runs the increment), statement-position pointer binds
+(`pointerStmt`, consuming `;`) separate from for-clause binds
+(`pointerClause`, ending left for `clauses`), the six-pointer walk
+declaration with pointer widths threaded through `env`, `size_t` scalar
+declarations and the `v1[0] &= ~(uint32_t)1` compound store.
+
+`KeygenZintCore` (accepted) kernel-checks the COMPLETE zint_bezout body
+region 3909-4200 (keygenLines body indices 3908-4198, close 4199):
+header/close pins, a 291-line partition into eight statement-boundary
+pieces, NON-VACUOUS per-piece audits (`map ... = some`), and pure-rewrite
+composition: `only(bezoutCode)=true`, `callShape=(28,2,0,0)` (28 family
+calls + the two `if (zint_reduce(...))` call-branches), `bitcastCount=6`
+(the four `*(int32_t*)&ux*` puns plus one per special branch), and the
+`calleeParsed .bezout` exports feeding global `code_checked`. All ten
+earlier body pins re-verified under the extended grammar. Operational/
+frame results only: no Bezout identity, GCD or termination claim.
+
+BATCH_027 pair: `run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_027.json` +
+`_027_NOTES.md`. Entry pins verified BEFORE work via
+`tools/keygen_zint_entry_pins.py` extended to the BATCH_026 pair and its
+7 attempt receipts: `.build/levels_027/ENTRY_PINS_027.json` sha
+`86aee101affed8c1e1e6459c1432429dad74aefab396d8cbdd24a730484c463e`,
+2900 distinct pins, two documented supersessions, no active job. 15
+retained attempt jobs (14 receipted incl. 7 DIAGNOSTIC probes, 1
+receipt-less stale-cache refusal). New traps 116-122 in the BATCH_027
+JSON.
+
+## 7R. Resume protocol (next B1.05b window)
+
+1. Read source3/WORK_STATE, this checkpoint, EXECUTION_PLAN B1.05 and
+   `run2/notes/B1_STAGED_ROADMAP.md`. Resume only B1.05b; B1.05
+   Acceptance is NOT MET.
+2. Verify BATCH_015-027 pairs and all current source/receipt pins with
+   `python3 -B tools/keygen_zint_entry_pins.py` extended to the BATCH_027
+   pair and its 14 attempt receipts (1 receipt-less dir retained); no
+   active owned job. Supersession of closure pins by later accepted
+   module pins must stay explicit and exact (receipt `superseded` field).
+3. Next work in plan order (grammar needs analyzed in BATCH_027 `open`):
+   bitlength (static `vv[32]` table declaration + table-object binding,
+   hex literal, `|=` updates, table-read return), zint_signed_bit_length
+   (break, `xlen--`, and an expression-position value-level call rule for
+   `bitlength(...)` — ModCall is closed, design a retSum-style zint form
+   or a value-call in the zint Expr layer), zint_get_top (`k = sc / 31`
+   division rule, bitcast-in-return), poly_max_bitlength + poly_big_to_fp
+   (fpr pointer decl, pointer advance, ternary, fpr_scaled/word-to-fpr,
+   fpr stores), poly_sub_scaled with zint_add_scaled_mul_small, then
+   make_fg (mixed pointer/scalar decl `uint32_t *ft, *gt, p0;`, pointer
+   ternary `primes = ter ? PRIMES3 : PRIMES2`, modp_set stores with int16
+   loads, make_fg_ternary_top/make_fg_step calls) and the binary
+   mkgm2/NTT2 family (B1.05c), deepest/intermediate/root closure and full
+   material transport.
+4. Unique labels `keygen_zint_*_028_*` via `python3 -B
+   tools/job_when_available.py lean LABEL Source3.Module...`; one guarded
+   proof job, unchanged limits, 0/0 logs. Kernel-certify new bodies in
+   statement-boundary pieces (traps 116/121): `map ... = some` audits,
+   line partition, pure-rewrite composition. Exact calculations use
+   `sage file.sage` with HOME/TMPDIR under the component `.build`.
+5. Save small local commits. Close at B1.05 Acceptance or another
+   expanded recoverable checkpoint with the next JSON/notes pair. No
+   automatic push, review, worker/relay, migration or stages import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.05 member access / reduce-family midpoint
 
 **PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**

@@ -1,0 +1,88 @@
+{
+  "task": "KEYGEN_SOURCE_TO_FIBER_001",
+  "batch": "BATCH_027",
+  "stage": "B1.05b",
+  "window": "CLOSED_AT_RECOVERABLE_MIDPOINT",
+  "b1_05_acceptance": "NOT_MET",
+  "status": "IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN",
+  "stage_result": "PARTIAL_PROOF",
+  "entry_pins_receipt": {
+    "path": ".build/levels_027/ENTRY_PINS_027.json",
+    "sha256": "86aee101affed8c1e1e6459c1432429dad74aefab396d8cbdd24a730484c463e",
+    "checked": "BATCH_015-026 pairs (12 external pair pins), full ENTRY_PINS_026 closure (2889 files) with the two documented supersessions (KeygenZintCall/KeygenZintCore pre-window-026 bytes superseded exactly by BATCH_026 accepted pins), BATCH_026 accepted-module sources and 7 attempt RECEIPTS + 3 receipt-less retained dirs; 2900 distinct pinned files, 459 current inputs, no active job"
+  },
+  "accepted_modules": {
+    "KeygenZintCall": {
+      "source": "formal/Source3/KeygenZintCall.lean",
+      "sha256": "b2d01551a8b5576df6946016680f397f0af7f6447c5ef66c838997777e549a31",
+      "contract": "zint_bezout grammar layer: ternary `?:` assignment lowering to explicit branch-of-assignment, memcpy through the sealed byte-copy statement and memset through the new Memzero zero-byte rule (both with sizeof *element width-4 limb lowering via the checked KeygenSearchParser.sizes normalizer), `for (;;)` with constant-one condition, continue/break loop flow rules (loopContinue/loopBreak), statement-position pointer binds consuming `;` (pointerStmt) kept separate from for-clause binds (pointerClause, ending left for clauses), six-pointer walk declaration with pointer widths threaded through env, `size_t` scalar declarations (zintTypeToken), and zint_bezout as eight statement-boundary pieces (bezoutParsed/bezoutPart/bezoutCode) with the chained scaffold"
+    },
+    "KeygenZintCore": {
+      "source": "formal/Source3/KeygenZintCore.lean",
+      "sha256": "4a5df8f6e4c4536c895b0bc8f7dd6e03790ab66153e982343d84b67077cc15bf",
+      "contract": "complete zint_bezout body region 3909-4200 (keygenLines body indices 3908-4198, close index 4199): header/close pins, line partition of all 291 body lines into the 8 pieces, non-vacuous per-piece parse/only/callShape/bitcastCount audits (map ... = some), derivation lemmas (bezout_parsed_part/part_shape/part_bits), and pure-rewrite composition giving only(bezoutCode)=true, callShape (28,2,0,0), bitcastCount 6 and the three calleeParsed exports feeding code_checked; all eleven prior body pins re-verified under the extended grammar"
+    },
+    "KeygenZintProbe": {
+      "source": "formal/Source3/KeygenZintProbe.lean",
+      "sha256": "e283727598198a257916ea13de81f797e60eeffc982c54d1260a4c4b9a5f250a",
+      "contract": "DIAGNOSTIC only (nonempty stdout); localization evidence for the piece boundaries, statement-path parses and the monolithic-vs-piece split; never proof evidence"
+    }
+  },
+  "audits": {
+    "bezout_header_close": "region 3904 4 = the four signature lines; keygenLines[4199] = \"}\\n\"",
+    "bezout_partition": "region 3909 291 = regions (3909,4)(3913,33)(3946,7)(3953,9)(3962,17)(3979,15)(3994,21)(4015,185)",
+    "bezout_pieces": "all 8 piece parses succeed in-kernel (map ... = some, Depth0 pattern); only=true for every piece; callShape per piece (0/0/2/0/0/0/0/26 calls, 2 call-branches in piece 7), bitcastCount 0 except piece 7 = 6",
+    "bezout_total": "callShape (28,2,0,0) = 28 family calls + 2 `if (zint_reduce(...))` call-branches, 0 prime reads, 0 bare return; bitcastCount 6 = the four `*(int32_t*)&ux*` puns of the else branch plus one each in the uxa/uyb special branches; code_checked .bezout discharged into the global code_checked",
+    "regressions": "zint_mod_small_signed/norm_zero/exact_length/rshift1_mod/sub_mod/rebuild_CRT/co_reduce/co_reduce_mod/reduce/reduce_mod body pins all re-verified under the extended grammar (probe-confirmed and KeygenZintCore rechecked)"
+  },
+  "open": [
+    "bitlength (4209-4240): static const unsigned vv[32] declaration rule + table-object binding, hex literal 0xF04653AE, `x |= x >> k` updates, return vv[(x*0xF04653AE)>>27] table read",
+    "zint_signed_bit_length (4246-4266): break in while, xlen--, and `return ... + bitlength(...)` needs an expression-position value-level call rule (ModCall is closed; design a retSum-style zint form or a value-call in the zint Expr layer)",
+    "zint_get_top (4272-4323): `k = sc / 31` division (absent from frozen CLogicParser.opInfo; needs a zint-level div statement rule), `w2 = x[k+2] | (sign << 31)`, `return *(int64_t *)&z` (bitcast in return position)",
+    "poly_max_bitlength (4445-4463), poly_big_to_fp (4475-4487): fpr *d pointer declaration, MKN macro (already available), pointer advance f += fstride, ternary `off = maxbl < 63 ? 0 : maxbl - 63`, d[u] = fpr_scaled(zint_get_top(...), (int)(off - scale)) fpr stores and fpr_scaled/word-to-fpr calls",
+    "scaled polynomial subtraction poly_sub_scaled (4523-) with zint_add_scaled_mul_small (4336-)",
+    "make_fg (5684-5761): mixed pointer/scalar declaration `uint32_t *ft, *gt, p0;`, pointer ternary `primes = ter ? PRIMES3 : PRIMES2`, modp_set stores through ft/gt with int16 loads, make_fg_ternary_top/make_fg_step statement calls and the binary mkgm2/NTT2 family (B1.05c)",
+    "make_fg_step (5379-5569) with binary family modp_mkgm2 (2778-2807), modp_NTT2_ext (2816-2847), modp_iNTT2_ext (2855-2901) and stride-one macros (2907-2908)",
+    "solve_NTRU_deepest/intermediate operational closure, root caller 7278-7397 instantiation, sampled f/g transport through all gates and full material transport; B1.05 Acceptance still NOT MET"
+  ],
+  "traps_new": [
+    "116. `KeygenZintCall.region start count` covers keygenLines indices start-1..start+count-2, i.e. source-file lines start+3..start+count+2 (keygenLines[0] is file line 4). Verify every piece boundary by grep before pinning: a misaligned piece fails its parse and falls back to `getD skip`, making `only`/shape audits pass VACUOUSLY. Always state piece audits as `map ... = some` (the Depth0 pattern) so a failed parse cannot pass.",
+    "117. A comment line starting `|--` inside a match-alternative list tokenizes as the `|` alternative marker plus a line comment and breaks the equation compiler. Write `-- ` comment lines between alternatives.",
+    "118. A `some`/constructor application split across a layout-sensitive newline inside `do`-match alternatives can elaborate as a bare `some : Option Unit` statement and poison the following pattern compilation. Keep constructor applications on one line or bind the tuple to a named `let` first.",
+    "119. `fresh`'s fallback chain serves both statement and for-clause positions. Statement-position pointer binds (`u0 = u;`, `f += fstride;`) must consume their `;` (pointerStmt); for-clause binds (`x = xx`, `x += xstride` in rebuild_CRT's loop clauses) must leave the ending token for `clauses`. `pointerExpr` accepts ANY token as a name, so an unguarded pointer clause can misparse a scalar assignment.",
+    "120. A diagnostic probe must exercise the real `parseStatement` path, not `fresh` alone: word-layer statements (assignment/store/return/for/if) fall through `fresh` by design and only parse at the statement level.",
+    "121. Monolithic `by decide` over a ~300-line body parse exceeds kernel memory (traps 88/95/98 family). Bind in statement-boundary pieces with a chained scaffold and a line-partition theorem, then compose only/callShape/bitcastCount via rfl equations (`only_seq`/`callShape_seq`/`bitcastCount_seq`) and literal `decide` at the end; `simp only` + `try decide` silently re-reduces the parse when a rewrite misses and panics the kernel instead of failing softly.",
+    "122. `Eq.trans` direction in `some`-injection derivations: from `both : map p = map (some part)` and `rhs : map (some part) = some (f part)` conclude `some (f part) = some v` via `(both.trans rhs).symm.trans hs`."
+  ],
+  "attempt_history": {
+    "keygen_zint_bezout_probe_027_001": "b13536ac862facae004846447cb4381ebecbf51de5c8542dafd31c7280fe964a",
+    "keygen_zint_bezout_probe_027_002": "ba5340f3d71bae37b8aad049f88162c63d6abacf1ed68e58113187bfb2236f6f",
+    "keygen_zint_bezout_probe_027_003": "ecaf88177f2892ceba1060576210152e91b0eebadad5dac433a030730d2f7932",
+    "keygen_zint_bezout_probe_027_004": "2f0cbb8e004445877e2de06ba7b12c98474553355200b671fa552c3dc0a0fef8",
+    "keygen_zint_bezout_probe_027_005": "5de1fbe4c4150e146b1ca859e307d6504240f8f5d8487dc65fd4ae07ea9b458a",
+    "keygen_zint_bezout_probe_027_006": "790bfd7c346950906cf18a1201dde86cc67d49beec27416861e65a0d8c9360f8",
+    "keygen_zint_bezout_probe_027_008": "882fc3e031cc0ddf07e4eee2b0e78cd53fa2c0a5bfc3c882399b91e0398493ec",
+    "keygen_zint_bezout_027_001": "7a0dc74a54f0b6e9b7b8d5da6ecdfe5f017b13edee8fbc2ebc6b47cdb429f9a5",
+    "keygen_zint_bezout_027_002": "a544e4f11c6ea5d9026e625d1226585c7cad2d375b363607502fccdf2084d3d2",
+    "keygen_zint_bezout_027_003": "f313f52349b9622a150b6033765eacceb1b1a3b491963b7dbf7be3dcf139a491",
+    "keygen_zint_bezout_027_004": "189548c10f5514e1650834e341734622d93180c763ed31f26f4ca8ace0dec788",
+    "keygen_zint_bezout_027_005": "194fefa859ba3bb62273f9884139cb040a92967c7b1b2adb37f4e78c7f68e957",
+    "keygen_zint_bezout_027_006": "83da958bcb07baf1a697cb06d0ed2ed406428bd176c57e15e18d75c0e1980a2c",
+    "keygen_zint_bezout_027_007": "86065003cd15206d2732d035308c8be20660021d150fbcb3aad9b25bdde2ca16"
+  },
+  "attempt_history_receiptless": {
+    "keygen_zint_bezout_probe_027_007": "stale-cache refusal before SOURCE_INPUTS/RECEIPTS (trap 112: failing KeygenZintCore keeps its old cache entry and must be selected in every job); directory retained, streams honestly absent"
+  },
+  "git": {
+    "branch": "main",
+    "author": "niirmataa",
+    "writer_lock": "proofs/ft1536/work/archive.lock",
+    "commits": [
+      "32f2f1ee (entry pins extended to batch026 pair and attempts)",
+      "f7952a2a (complete zint_bezout with ternary, memzero and loop flow)"
+    ],
+    "push": "none (waiting for an explicit owner signal)",
+    "foreign_changes": "preserved"
+  },
+  "limits": "Unchanged Lean j1/-M6144, maxRecDepth32768/maxHeartbeats2000000, warnings as errors. No Sage work this window. Max accepted cumulative RSS 6044296KiB (KeygenZintCore)."
+}

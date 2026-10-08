@@ -1,5 +1,30 @@
 # T12.1/source3 — żywy stan
 
+## B1.05b — CLOSED at complete zint_bezout midpoint — 2026-10-08
+
+**B1.05 Acceptance NOT MET. CLOSED_AT_RECOVERABLE_MIDPOINT.**
+The complete `zint_bezout` body (3908-4200) is now kernel-checked under
+the new grammar: ternary `?:` lowering, memcpy/Memzero with `sizeof
+*element` width-4 limbs, `for (;;)` with continue/break loop flow,
+statement-position pointer binds separate from for-clause binds, the
+six-pointer walk declaration, `size_t` scalars and the `&=` store. Bound
+in eight statement-boundary pieces with non-vacuous `map ... = some`
+audits and pure-rewrite composition: only=true, callShape (28,2,0,0),
+bitcastCount 6, code_checked fed. All ten earlier body pins re-verified.
+Operational/frame only — no Bezout/GCD claim. `Call .bezout`/`call_frame`/
+`material` ready for B1.05c's deepest caller.
+
+BATCH_027 pair; entry pins BATCH_015-026 verified before work
+(`.build/levels_027/ENTRY_PINS_027.json` sha `86aee101...`, 2900 pins,
+two explicit supersessions). 15 retained attempts (14 receipted incl. 7
+DIAGNOSTIC probes, 1 receipt-less stale-cache refusal). Traps 116-122.
+Commits `32f2f1ee`, `f7952a2a` + docs commit. Open: bitlength (static
+table), zint_signed_bit_length (expression-position call), zint_get_top
+(division, bitcast-in-return), poly_max_bitlength/poly_big_to_fp
+(fpr_scaled), poly_sub_scaled, make_fg and the binary family. No
+push/review/import/worker/relay.
+
+
 ## B1.05 — CLOSED at signed/reduction CRT midpoint — 2026-10-08
 
 **B1.05 Acceptance NOT MET. CLOSED_AT_RECOVERABLE_MIDPOINT.**
