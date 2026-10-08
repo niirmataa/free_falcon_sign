@@ -1,3 +1,127 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.05c intermediate closure / root midpoint
+
+**PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
+2026-10-08, BATCH_029, GPT-6 Astra Ultrafast. **CLOSED_AT_RECOVERABLE_MIDPOINT.**
+**B1.05 Acceptance NOT MET; B1.06 not entered.** Resume: section 9R.
+
+## 9. Closed this window — complete intermediate and static initializer closure
+
+Small source commits on main as niirmataa: `b0563b0b`, `2f515241`, `32c35607`,
+`c3042ca7`, `82797fd0`, `ef55a071`, `4be29464`. Exact owned paths and shared
+archive.lock; this pair/checkpoint has its own final documentation commit.
+Full scope, failed attempts and traps 132–141:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_029_NOTES.md` and `_029.json`.
+
+1. **poly_sub_scaled_ntt:** complete 74-line body, both transform families,
+   actual signed32 k reads, dereferenced zint-call stores, CRT and scaled
+   subtraction. Fixed callees, source counts and derived byte frame.
+2. **Intermediate support:** complete align_u32; cast-before-add and
+   same-array pointer comparison; seven complete binary FFT bodies; typed
+   argument/member/prime reads and conversions; fixed callee table and a
+   control language retaining break/continue/return and actual loop updates.
+3. **solve_NTRU_intermediate:** all 585 physical body lines5805–6389,
+   declarations, context reads, lifting branches, Babai reduction, every
+   failure/break, compression, sign extension and final return. Source-line
+   certificates, complete lexer parts at checked whitespace boundaries,
+   statement-boundary pieces, exact scope declarations and rewrite composition.
+   Full word-call coverage rejects unknown closed-ModCall fallbacks.
+4. **Static tables:** all522 PRIMES2 and1101 PRIMES3 records (both sentinels
+   included),102 kernel chunks, all four exact size_t initializers, qualified
+   bitlength.vv and explicit byte-object relations. `KeygenStaticReads`
+   identifies the actual indexed struct-member load with its source value,
+   including the first M0 prime. Later-prime primality is not asserted.
+
+The exact new material boundary is:
+
+```text
+ctx : KeygenSearchContext.Context
+before, after : C99ArrayReference.State; v : C99IntegerReference.Value
+source : KeygenIntermediateSource.Call ctx before after v
+input : C99MemoryReference.ArrayPointer
+separated : KeygenIntermediateSource.Protected ctx before input.block
+vector : Geometry.Vec
+represented : KeygenMaterial.Represents before.heap input vector
+-------------------------------------------------------------------
+KeygenMaterial.Represents after.heap input vector
+```
+
+Protected = scratch/static-table object separation. Execution consumes the
+actual fk/f/g/depth bindings and full fixed source bodies, on either finite
+defined return. Caller slots/tables are restored. No arbitrary callee or
+heap-frame premise occurs. The SAME incoming f/g is retained; its arrival
+through earlier attempt operations and the root composition remain open.
+No numerical Babai, whole-solver equation, termination or probability claim.
+
+### 9.1 Pins, checks and resolved resource failures
+
+Entry verified BATCH_015–028 BEFORE work:3202 distinct pins,471 current
+inputs and no active job. `.build/levels_029/ENTRY_PINS_029.json` SHA256
+`68dca17afa1685f9f4d31c022defd52f652c791c1429b9aeb399889e17986f58`.
+The same predecessor closure remained unchanged at preseal; no new supersession.
+
+- **BATCH_029 JSON:** `dbfdd6d345092d6e4630aaa27e0436b4a78fea76405dd31d504f632365fd752f`.
+- **BATCH_029 notes:** `fbf9bc79f1c904e5f163a190c505a3e021014372686ff5b9f57b8d9b6c7c325d`.
+- **Full audit:** `8c4ff3e27cdfaf00d0cf5f697d1e6d1b26f961babc20e303fb760eb17a6f29f6`.
+- **Audit receipt:** `2fbb46e1ad06283504102b7dd777395694f37d281a1aa6c1f20cdacb0b8db4c4`.
+- **Material source:** `e629cad43c776acf2f0806c980eb89f09bc832a46c1759dce5c3b93a6e5bae82`.
+- **POSTSEAL:** `.build/levels_029/POSTSEAL.json`, SHA256
+  `204550e450e11e74c1b9a6801da780d35593ac98225668fc0fc0cbb396cd43b7`:
+  **4243 distinct pins,527 current inputs,no active job**.
+
+53 current accepted Lean modules, all0/0; audit4174 entries includes4156
+named declarations and18 inherited interfaces:4145 complete terms,29
+inductives with full constructor types, standard axioms only,zero elisions.
+The43111035-byte audit remains in `.build/jobs/keygen_zint_audit_029_003/`,
+with tracked generator/producer and complete closure pins in the pair.
+Maximum accepted cumulative RSS5050244KiB; all limits unchanged.
+
+Large direct reductions and asynchronous elaboration failed and are retained.
+The final route uses bounded kernel checks (`decide +kernel`), synchronous
+certificate elaboration, complete lexical chunks and generic list identities.
+The truncated first audit is not evidence: per-line cons-slice proofs make
+the final full audit printable under the unchanged print limit. No warnings
+were suppressed. This is the explicit chunked lexical reference, not a
+claim that the failed monolithic flat-lexer reduction succeeded.
+
+Sage/ZZ controls:10 normal/UBSan runs; each baseline has15 NTT subtraction,
+6 deepest,25 intermediate and4 diagnostic root cases,1623 prime records and
+4 size tables. Four mutations detected in both modes. Public helper fixtures
+include constants outside MODE1 bounds; these finite controls are not the
+full sampled-key/solver theorem.44 attempts retained:33 failed,7 wholly
+accepted,3 diagnostic and1 receipt-less stale-cache refusal;136 steps.
+
+## 9R. Resume protocol — root caller and whole material transport
+
+1. Read source3/WORK_STATE, this checkpoint, EXECUTION_PLAN B1.05 and
+   `run2/notes/B1_STAGED_ROADMAP.md`. Intermediate, deepest and their fixed
+   active helper bodies are complete. **B1.05 Acceptance remains NOT MET.**
+2. BEFORE edits/jobs, verify the complete BATCH_015–029 closure:
+
+   ```sh
+   mkdir -p .build/levels_030
+   python3 -B tools/keygen_intermediate_batch.py verify dbfdd6d345092d6e4630aaa27e0436b4a78fea76405dd31d504f632365fd752f fbf9bc79f1c904e5f163a190c505a3e021014372686ff5b9f57b8d9b6c7c325d .build/levels_030/ENTRY_PINS_030.json
+   ```
+
+   Expect4243 pins,527 current inputs,no active job. Preserve all failed
+   snapshots and diagnostic scope; never weaken a mismatched pin.
+3. Bind the complete root solve_NTRU: actual logn/MKN/profile reads, deepest,
+   post-decrement intermediate loop, depth0 and rejection flow. Instantiate
+   static/global/context/scratch aliases from the actual caller. Reuse the
+   checked `KeygenIntermediateSource.Call/material`, deepest and depth0.
+4. Transport the actual sampled f/g through the preceding resultant/raw/GS/
+   public/search operations, derive root output-gate and Validation entry
+   fields, and connect the same arrays to the existing exact integer lift.
+   Static SourceObject relations are available; their arrival/preservation
+   in that full execution is not yet proved. No assumed equation/frame or
+   source completeness may replace these remaining obligations.
+5. Unique `keygen_root_*_030_*` labels via `tools/job_when_available.py`;
+   one guarded proof job, unchanged limits,0/0 logs. Keep defs/pieces small;
+   serialize large certificate elaboration instead of enlarging limits.
+   Exact controls run as `sage file.sage` in the persistent job environment.
+6. Small local commits; close at B1.05 Acceptance or a documented expanded
+   recoverable midpoint under the context discipline. No automatic push,
+   review, worker/relay, migration or stages import; do not advance to B1.06.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.05b closure / B1.05c deepest midpoint
 
 **PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**

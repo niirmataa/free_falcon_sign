@@ -2,8 +2,9 @@
 
 ## B1.05c — complete intermediate and static initializer closure — 2026-10-08
 
-**PARTIAL_PROOF / NOT_REVIEWED / WORKING_NOT_FROZEN. B1.05 Acceptance NOT MET.**
-The long BATCH_029 window is closing at a recoverable midpoint; the root
+**CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
+**B1.05 Acceptance NOT MET; B1.06 not entered.**
+The long BATCH_029 window is closed at a recoverable midpoint; the root
 caller and complete sampled-material transport remain the next obligations.
 `KeygenIntermediateSource` binds all 585 body lines, its declarations,
 members, pointer casts/alignment/comparison, both lifting branches, complete
@@ -36,6 +37,16 @@ prime. Root initialization/profile/scratch binding and its post-decrement
 loop remain open, as do GS/public/search transport and final Validation
 instantiation. No whole-solver equation, termination, probability or review
 status follows from this midpoint. B1.06 has not been entered.
+
+Sealed pair JSON `dbfdd6d345092d6e4630aaa27e0436b4a78fea76405dd31d504f632365fd752f`,
+notes `fbf9bc79f1c904e5f163a190c505a3e021014372686ff5b9f57b8d9b6c7c325d`.
+POSTSEAL verifies 4243 distinct pins and 527 current inputs, no active job:
+`.build/levels_029/POSTSEAL.json`, SHA256
+`204550e450e11e74c1b9a6801da780d35593ac98225668fc0fc0cbb396cd43b7`.
+Source commits `b0563b0b`, `2f515241`, `32c35607`, `c3042ca7`, `82797fd0`,
+`ef55a071`, `4be29464`, plus the final pair/checkpoint commit. No owned job
+or unresolved production Lean draft remains. Resume at checkpoint **9R**.
+No push, review, stages import, migration, worker or relay was started.
 
 ## B1.05c — intermediate/root continuation — 2026-10-08
 
