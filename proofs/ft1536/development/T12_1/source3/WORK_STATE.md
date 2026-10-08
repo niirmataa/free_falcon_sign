@@ -52,6 +52,18 @@ checks nested loop pieces independently; successful earlier helper modules
 remain valid. The initial direct 585-line source route and the first
 loop-piece/token routes are failed evidence, not complete source proofs.
 
+Static initializer closure is now checked in the five table modules:
+`KeygenStaticTables`, `KeygenPrimeTablesBinary`, `KeygenPrimeTablesTernaryLow`,
+`KeygenPrimeTablesTernaryHigh`, `KeygenPrimeTableBinding`. The table steps of
+`keygen_zint_tables_029_001` are accepted 0/0 (13.099/199.200/213.020/209.015/
+1.418s). All 522 binary and 1101 ternary records, including both sentinels,
+are covered in 102 bounded chunks. All four size_t initializers and the
+12-byte struct/8-byte size-word object relations are explicit. Later-prime
+primality is not needed or asserted. The full root still has to instantiate
+this initial static environment and transport it through its execution.
+The same job's diagnostic prefix succeeded, then the selected stale
+intermediate module failed honestly on its still-unbuilt token dependency.
+
 ## B1.05b-c — CLOSED at complete deepest operational closure — 2026-10-08
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
