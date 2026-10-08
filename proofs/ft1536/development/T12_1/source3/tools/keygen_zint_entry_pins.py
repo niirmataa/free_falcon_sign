@@ -1,17 +1,25 @@
 #!/usr/bin/env python3
-"""Read-only entry-pin verification for the BATCH_026 window (B1.05).
+"""Read-only entry-pin verification for the BATCH_027 window (B1.05b).
 
-Owner scope: pins BATCH_015-025 before any new work. The chain is:
-  1. the eleven BATCH_015-025 JSON/NOTES pairs against their externally
+Owner scope: pins BATCH_015-026 before any new work. The chain is:
+  1. the twelve BATCH_015-026 JSON/NOTES pairs against their externally
      recorded hashes (checkpoint section 2 pins for 015-024, the committed
-     BATCH_025 pair at 55752cf1 for 025);
-  2. .build/levels_025/ENTRY_PINS_025.json against its recorded hash and a
-     full re-verification of all 2847 checked file pins (BATCH_015-024
-     closure, 459 current BATCH_024 audit inputs included);
-  3. every BATCH_025 accepted-module source pin and all 17 retained attempt
+     BATCH_025 pair at 55752cf1 for 025, the committed BATCH_026 pair at
+     6f30ed47 for 026);
+  2. .build/levels_026/ENTRY_PINS_026.json against its recorded hash and a
+     full re-verification of all 2889 checked file pins (BATCH_015-025
+     closure, 459 current BATCH_024 audit inputs included). Two closure
+     pins (KeygenZintCall/KeygenZintCore) are superseded on purpose: the
+     ENTRY receipt records their pre-window-026 bytes while the window
+     extended them and BATCH_026 accepted the new bytes. Such drift is
+     accepted ONLY when the current file matches the BATCH_026
+     accepted-module pin exactly, and is listed in the receipt field
+     `superseded` with both hashes; every other mismatch still fails;
+  3. every BATCH_026 accepted-module source pin and all 7 retained attempt
      job RECEIPTS.json pins;
-  4. no active owned job.
-Output receipt: .build/levels_026/ENTRY_PINS_026.json (exclusive create).
+  4. the three receipt-less retained BATCH_026 attempt directories and no
+     active owned job.
+Output receipt: .build/levels_027/ENTRY_PINS_027.json (exclusive create).
 """
 from datetime import datetime, timezone
 import hashlib
@@ -45,8 +53,12 @@ PAIRS = [
      '804a5d9ea7abc0b438e70cbe14d32bdb793f7a934b318d3b4e60727e8c57e344'),
     ('BATCH_025', '4b6752945f14ee7d84253c1f9d1f14d9f6389549073c93a0aeb12fc4b0956b94',
      '7b9a6cae8701134cc505e835f7100d8cab51281b506e1f49c40e647a052504d9'),
+    ('BATCH_026', '0418ae59af6ffe2d03a3b42ca3f63b18f4a2ef9008f696bcacad50e2452943a5',
+     '27f85d9eb232cf1e39b96ecfe7c76cd26229750d2e599930d97cef2bfb3f63fd'),
 ]
-ENTRY_PINS_025_SHA = '92a8037b87b0490ae15ff4ed8878255bfe4534810d20838d13b1407c15fcb6f0'
+ENTRY_PINS_026_SHA = 'e628ced648ea005663e65961f63a156ad473daa43aa40481836985251d9547de'
+RECEIPTLESS = ('keygen_zint_crt_026_001', 'keygen_zint_crt_026_002',
+               'keygen_zint_reduce_026_007')
 
 
 def verify():
@@ -57,45 +69,59 @@ def verify():
         assert actual == expected, (str(path), expected, actual)
         checked[str(path)] = actual
 
-    # 1. The eleven externally pinned pairs.
+    # 1. The twelve externally pinned pairs.
     for batch, batch_sha, notes_sha in PAIRS:
         base = 'notes/run/KEYGEN_SOURCE_TO_FIBER_001_' + batch
         check(base + '.json', batch_sha)
         check(base + '_NOTES.md', notes_sha)
 
-    # 2. The full BATCH_015-024 closure pinned at the previous window entry.
-    entry = job.BUILD / 'levels_025' / 'ENTRY_PINS_025.json'
-    assert job.sha(entry) == ENTRY_PINS_025_SHA, 'ENTRY_PINS_025.json changed'
-    checked[str(entry)] = ENTRY_PINS_025_SHA
+    # 2. The full BATCH_015-025 closure pinned at the previous window entry.
+    entry = job.BUILD / 'levels_026' / 'ENTRY_PINS_026.json'
+    assert job.sha(entry) == ENTRY_PINS_026_SHA, 'ENTRY_PINS_026.json changed'
+    checked[str(entry)] = ENTRY_PINS_026_SHA
     record = json.loads(entry.read_text())
-    assert record['distinct_pinned_files'] == 2847 and record['current_source_inputs'] == 459
+    assert record['distinct_pinned_files'] == 2889 and record['current_source_inputs'] == 459
     assert record['active_jobs'] == []
+    batch = json.loads((job.ROOT / 'notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_026.json').read_text())
+    superseding = {e['source']: (name, e['sha256'])
+                   for name, e in batch['accepted_modules'].items()}
+    superseded = {}
     for path, expected in record['checked'].items():
         actual = job.sha(Path(path))
-        assert actual == expected, (path, expected, actual)
-        checked[path] = actual
+        if actual != expected:
+            hit = superseding.get(path)
+            assert hit is not None, (path, expected, actual)
+            name, accepted = hit
+            assert actual == accepted, (path, accepted, actual)
+            superseded[path] = {'module': name, 'entry_pins_026': expected,
+                                'batch_026': actual}
+        else:
+            checked[path] = actual
 
-    # 3. BATCH_025 accepted modules and retained attempt receipts.
-    batch = json.loads((job.ROOT / 'notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_025.json').read_text())
+    # 3. BATCH_026 accepted modules and retained attempt receipts.
     for entry in batch['accepted_modules'].values():
         check(entry['source'], entry['sha256'])
-    # 17 attempts carry receipts and are pinned in attempt_history; the two
-    # receipt-less retained directories (keygen_zint_core_025_006 and
-    # keygen_zint_probe_025_006) are preflight/interrupt history and are kept
-    # as-is, matching the 19 retained jobs of the BATCH_025 notes.
-    assert len(batch['attempt_history']) == 17, len(batch['attempt_history'])
+    # 7 attempts carry receipts and are pinned in attempt_history; the three
+    # receipt-less retained directories (stale-cache refusals before
+    # SOURCE_INPUTS/RECEIPTS, trap 94 family) are kept as-is, matching the 10
+    # retained jobs of the BATCH_026 notes. All three names are cross-checked
+    # against the pair so a renamed/lost directory fails loudly.
+    assert len(batch['attempt_history']) == 7, len(batch['attempt_history'])
+    assert set(batch['attempt_history_receiptless']) == set(RECEIPTLESS)
     for label, expected in batch['attempt_history'].items():
         check('.build/jobs/' + label + '/RECEIPTS.json', expected)
-    for label in ('keygen_zint_core_025_006', 'keygen_zint_probe_025_006'):
+    for label in RECEIPTLESS:
         kept = job.BUILD / 'jobs' / label
         assert kept.is_dir() and not (kept / 'RECEIPTS.json').exists(), label
 
     active = job.active()
     assert not active, active
-    return {'utc': datetime.now(timezone.utc).isoformat(), 'batch': 'BATCH_026',
+    return {'utc': datetime.now(timezone.utc).isoformat(), 'batch': 'BATCH_027',
         'pair_batches': [p[0] for p in PAIRS],
-        'entry_pins_025_sha256': ENTRY_PINS_025_SHA,
-        'batch_025_attempt_receipts': len(batch['attempt_history']),
+        'entry_pins_026_sha256': ENTRY_PINS_026_SHA,
+        'superseded': superseded,
+        'batch_026_attempt_receipts': len(batch['attempt_history']),
+        'batch_026_receiptless_dirs': list(RECEIPTLESS),
         'checked': checked, 'distinct_pinned_files': len(checked),
         'current_source_inputs': 459, 'active_jobs': active,
         'verifier_sha256': job.sha(Path(__file__))}
