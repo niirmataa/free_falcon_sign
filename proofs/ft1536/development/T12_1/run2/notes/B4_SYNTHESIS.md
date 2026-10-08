@@ -396,6 +396,35 @@ full solver proof remains open), then B1.07 (stride=1 via the wrapper
 frame), B1.10 (emitted_to_actual_fiber = hkey), B1.11, and the do_sign
 realization (hshape + PointwiseStageRoad) + final assembly (arrows 1-2).
 
+## 2026-10-08: state review confirms the trajectory + the do-not-reopen map
+
+Independent state review at 8ca34465 (63 commits since its previous
+snapshot) confirms: E2/E3 FIXED in code (cost is part of the export
+contract - `CompWinCert` consumed with `costLine` conjunct and
+`chachaBlocksTotal` binding; `KeyLawBinding.identify` makes `True`
+insufficient - two concrete laws must be equated), B1.03 fully closed
+(`KeygenMkgm3.source_contract` for ALL 1024 gm words + the
+aliasing-aware `source_then_overwrite` composition), B1.04 = the full
+transform identified (`source_transform` -> evaluations for all 1536
+cells from the parsed forwardBody; `generated_converted_transform`
+composes generation+conversion - the project may NO LONGER be described
+as "local NTT ops without whole-transform polynomial binding"), and
+B1.05's chain: `checked_pointwise` -> `residual_zero` ->
+`exact_of_images` gives the EXACT equation **fG - gF = 18433** in the
+coefficient quotient with |f|,|g| <= 1, |F|,|G| <= 2047 (Bound v 1 now
+CONCLUDED from sampler execution via `KeygenSamplerBounds.source_material`,
+and `generated_converted_checked` holds the equation AND the
+`Represents` of the SAME vectors in final memory). Paper sec_04
+confirmed to separate proven/target correctly.
+
+**DO-NOT-REOPEN MAP** (reviewer's correction of stale gaps): E2/E3,
+B1.03 table certificate (REV10/modp_R2/row laws), B1.04 full transform,
+completed CRT/zint_bezout local bindings (operational/memory scope -
+NOT arithmetic Bezout/GCD theorems; non-vacuous chunk audits
+`map ... = some`). Remaining = exactly the closing list: full call
+chain + material transport (B1.05c), key-law identification instance
+(B1.10), honest-Sign realization + final assembly (arrows 1-2).
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
