@@ -31,6 +31,21 @@ Accepted jobs `keygen_attempt_shake_031_002` and `_context_031_002` are0/0;
 both earlier failed attempts are retained. The prefix and public composition
 remain the current obligations.
 
+`KeygenPublicScalar` binds nine complete mq/rev10 scalar bodies to a fixed
+stratified call relation. `KeygenPublicWord/Exec/Parser/Frame/Source` binds
+the eight complete array procedures (including compute_public), actual
+signed/unsigned16 reads, stores/narrowing, both dispatch arms, dynamic M0
+twiddle generation and automatic t/gm/igm lifetimes. `material` preserves
+the incoming f/g through either defined return, and `KeygenPublicStability`
+derives metadata/read-only-byte preservation. Accepted source job
+`keygen_attempt_public_source_031_003` (Frame and Source), stability job
+`_public_stability_031_001`, all0/0. No public/inverse algebra is claimed.
+Exact controls `_checks_031_001` passed:10 normal/UBSan runs ×24 public
+fixtures, exact two-call sampler/cursor, actual LP64 offsets, raw/GS words,
+public/context/material frames and four mutations in each mode. Public
+helpers are exercised independently also after earlier rejections; these
+controls are not a successful full-attempt theorem.
+
 ## B1.05c — CLOSED at complete active root/caller — 2026-10-08
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
