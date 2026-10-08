@@ -1,5 +1,33 @@
 # T12.1/source3 — żywy stan
 
+## B1.05 — CLOSED at search-dependency / early-material midpoint — 2026-10-08
+
+**B1.05 Acceptance NOT MET. CLOSED_AT_RECOVERABLE_MIDPOINT.**
+Complete inverse NTT, all-depth modular calls/frames, make_fg_ternary_top
+and seven bigint leaves are checked. Complete mod2_res_ternary and both
+actual gates now transport the sampled f/g Bound1 into their same final
+heap, including rejection. The active raw FFT/FPEMU norm gate has its
+separate source frame and actual object-copy comparator. **Complete
+deepest/intermediate/root and later GS/public/search material transport
+remain open.** B1.06 has not been entered.
+
+BATCH_024 JSON `fbfe3b1c6c297b20b31d92370963c89aa1a0fe3cedfbfb5b0b799f1b3a72d365`;
+notes `804a5d9ea7abc0b438e70cbe14d32bdb793f7a934b318d3b4e60727e8c57e344`.
+14 current accepted modules,236 full audit entries,459 final inputs and
+2595 predecessor pins checked at sealing.0/0 logs, max accepted cumulative
+RSS5102368KiB.14 attempts:9 wholly accepted,3 failed retained and2 explicitly
+superseded scope routes.14 normal/UBSan controls; six mutations detected
+in both modes. No current source consumes the discarded norm routes.
+
+Source commits `4f787baf`, `60eb842b`, `dfff8cd4`, `3663e509`, plus final
+documentation commit. Main as niirmataa, exact owned paths/archive.lock.
+Postseal verified2847 distinct pins and459 current inputs, no active job:
+`.build/levels_024/POSTSEAL.json` SHA256
+`4db7e5c366fe190798fc2b497308558b3cc63e9ab1acac8cdef4b84bcd708703`.
+No owned job or unfinished Lean draft remains. Expanded checkpoint
+`notes/run/KEYGEN_RESIDUE_CHECKPOINT.md` section6 is the resume entry.
+No push, review, stages import, migration, worker or relay was started.
+
 ## B1.05 — deepest/intermediate continuation — 2026-10-08
 
 Owner resumed checkpoint section6 for a BIG recoverable midpoint with

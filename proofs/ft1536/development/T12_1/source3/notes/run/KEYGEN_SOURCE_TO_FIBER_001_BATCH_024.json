@@ -1,0 +1,2596 @@
+{
+  "task": "KEYGEN_SOURCE_TO_FIBER_001",
+  "batch": "BATCH_024",
+  "stage": "B1.05",
+  "created_utc": "2026-10-08T00:33:41.961351+00:00",
+  "window": "CLOSED_AT_RECOVERABLE_MIDPOINT",
+  "b1_05_acceptance": "NOT_MET",
+  "stage_result": "PARTIAL_PROOF",
+  "status": "IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN",
+  "harness": "GPT-6 Astra Ultrafast / openai/gpt-6-astra-ultrafast",
+  "runner_note": "Historical runner labels are provenance.",
+  "runner": {
+    "path": "tools/job.py",
+    "sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+    "bytes": 12792
+  },
+  "waiter": {
+    "path": "tools/job_when_available.py",
+    "sha256": "525785c5321ebdda583c4e42d0daf5243b29146d10d47bd086d65fd89c53c37b",
+    "bytes": 3870
+  },
+  "organizer": {
+    "path": "tools/keygen_levels_batch.py",
+    "sha256": "437208748d312a3348fa7ae8ba8281451cf8509bfc7247f17514328100543f14",
+    "bytes": 12340
+  },
+  "organizer_helpers": {
+    "path": "tools/keygen_ntt_batch.py",
+    "sha256": "70aedf6cc132052d6a6a6ca48e400e5c1cccff051d5f5e91b1abf80c8b14717e",
+    "bytes": 15050
+  },
+  "verifier": {
+    "path": "tools/keygen_levels_verify.py",
+    "sha256": "4d99207719f37a1440b2652c20428b4ba3cefb9c4b751385d6fbacd558ee9f77",
+    "bytes": 2527
+  },
+  "audit_source_generator": {
+    "path": "tools/keygen_levels_audit_source.py",
+    "sha256": "7356b82c2df4576298312c4a1f770c2229ff0fd953b491f17585f99cd186b307",
+    "bytes": 2993
+  },
+  "audit_generator_template": {
+    "path": "formal/Source3/KeygenSmallBoundsAudit.lean",
+    "sha256": "e314b2696bbacb8a4e16aa75fcd58abef9c85ba58bfcd080c4d27660a97a6b80",
+    "bytes": 4377
+  },
+  "preflight": {
+    "path": ".build/levels_024/PREFLIGHT.json",
+    "sha256": "baa5c4d6a850a2f4ae13977212614c2628678884753468544b46a3859aa994e8",
+    "bytes": 583812
+  },
+  "preflight_program": {
+    "path": "tools/keygen_search_verify.py",
+    "sha256": "f858610673ba53fb98768ad7017f12cc110036e3c25fe0f1d5fcd03b26b2862f",
+    "bytes": 2775
+  },
+  "preflight_files_checked": 2595,
+  "preflight_current_inputs": 445,
+  "input_pins": {
+    "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_023.json": "b39218519e349795bad183b6ccc234c89c1aa11c7102d2ff57005a0344274a95",
+    "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_023_NOTES.md": "d21ed7413e216eaee69afdbae2abdfc621ec3e04203491328c067af707859592",
+    "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_015.json": "b5bb63f5ddfb423ff6a4742dfd2893bcc7587b4cb50f51877b9b3910285be134",
+    "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_015_NOTES.md": "aec981ffab3f9065ac10d6d99f4f931ceccd852f237382e3b0240b64fbe53cd8",
+    "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_016.json": "cc28381bb1188400d0ea1d15e3c83ba045a2e5476a9644ee4dd0585c58e2b25f",
+    "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_016_NOTES.md": "e323ac9783e41e2143638088af6cfb0453b756a8418273b62bd961c1b0695419",
+    "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_017.json": "50f35519c32d1d16dd6987b781ac43e59cc835dd076ce15f146a1fe9ac9cbc0b",
+    "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_017_NOTES.md": "814660ca606d29600793dc3e61e5903b05ef56e83042b4d6aba131f86c6f28d6",
+    "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_018.json": "f4e28b724e588b7e91cdb429646dfefe5939332f307f0ae15dc282369edc72cf",
+    "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_018_NOTES.md": "c19d5c9cb893793dd6ff23fa232271fcfe704f0821160de1a1e2065551bd546d",
+    "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_019.json": "983a481a10293c01bf80250a9dd4ad2797e351db0a3c5d41825845d80fde6098",
+    "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_019_NOTES.md": "289d85f0ec1f25fe5950ad6b182363afe9ede0484c3053cf0c915d9cd52b1c01",
+    "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_020.json": "6b8a839151d8d174eb1b6a8b09e1b2f02a8f6c20b8c9055d40e687e951602dff",
+    "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_020_NOTES.md": "b402d5035667835182f539ed8ee8a812ad00a75687bd0662950373a098e26c6d",
+    "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_021.json": "ed560886f8cacfe513cea222b46552cf3abc717a1232172a1da197753393395a",
+    "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_021_NOTES.md": "a08b583aae3dc02996e21717eeab54085470b662b4854eb2dc5fa250b0701b55",
+    "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_022.json": "e891df0f07b936c594130ec258afc31e2d18a0af1d30b63833d2b1b1481a52a8",
+    "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_022_NOTES.md": "89d81f521e582421c8c62ad7f9f5fc140772f3b4fae8f5dd34cde252868196c3"
+  },
+  "proof_head": "3663e50994fe3099f2660a42ec2c5405910dd780",
+  "accepted_module_checks": [
+    {
+      "module": "Source3.KeygenLevelModularFrame",
+      "source": {
+        "path": "formal/Source3/KeygenLevelModularFrame.lean",
+        "sha256": "699e4249f81d5d5f82599a85bf9d84fc6986b55135928d350ebd5abd4ae0a5c6",
+        "bytes": 3540
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_level_ntt_024_001/formal/Source3/KeygenLevelModularFrame.lean",
+        "sha256": "699e4249f81d5d5f82599a85bf9d84fc6986b55135928d350ebd5abd4ae0a5c6",
+        "bytes": 3540
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_level_ntt_024_001/lib/Source3/KeygenLevelModularFrame.olean",
+        "sha256": "a2f31f701b22d9a9849161c7bd34185b7f2987f08167eb1c54a0bea5b38f2f52",
+        "bytes": 140168
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_level_ntt_024_001/RECEIPTS.json",
+        "sha256": "44feda8439a77205370f2c911e972cdae9eab70200362fae3835ab9247b0cd2d",
+        "bytes": 5939
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_level_ntt_024_001/SOURCE_INPUTS.json",
+        "sha256": "cfeea37009cd7d98d7c0fbf41e282802d6748cc9dd9e6000d5216cd144ccfd17",
+        "bytes": 467551
+      },
+      "job": "keygen_level_ntt_024_001",
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_level_ntt_024_001/logs/Source3_KeygenLevelModularFrame.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_level_ntt_024_001/logs/Source3_KeygenLevelModularFrame.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenNttMemoryFrame": "c623923f100c8790869aa485c97c1678acd248b87634a5cef9a285c58f4faa86",
+        "Source3.C99PointerFootprint": "0f8a1a54f8455421aa4eb00a8386651d5316fc53421b51e7d32196dacf0f12c0"
+      },
+      "elapsed_s": 1.117,
+      "maxrss_kib": 2754576,
+      "all_steps_in_job_accepted": true
+    },
+    {
+      "module": "Source3.KeygenLevelNtt",
+      "source": {
+        "path": "formal/Source3/KeygenLevelNtt.lean",
+        "sha256": "7359150a16185695f68d413113de155b4e09bde45c821a1a23b5e8c460080f10",
+        "bytes": 6927
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_level_ntt_024_001/formal/Source3/KeygenLevelNtt.lean",
+        "sha256": "7359150a16185695f68d413113de155b4e09bde45c821a1a23b5e8c460080f10",
+        "bytes": 6927
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_level_ntt_024_001/lib/Source3/KeygenLevelNtt.olean",
+        "sha256": "4f891a05c250e811f72b12719561fbd856e1731caf211dd7cd6de86c7615f0a3",
+        "bytes": 592424
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_level_ntt_024_001/RECEIPTS.json",
+        "sha256": "44feda8439a77205370f2c911e972cdae9eab70200362fae3835ab9247b0cd2d",
+        "bytes": 5939
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_level_ntt_024_001/SOURCE_INPUTS.json",
+        "sha256": "cfeea37009cd7d98d7c0fbf41e282802d6748cc9dd9e6000d5216cd144ccfd17",
+        "bytes": 467551
+      },
+      "job": "keygen_level_ntt_024_001",
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_level_ntt_024_001/logs/Source3_KeygenLevelNtt.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_level_ntt_024_001/logs/Source3_KeygenLevelNtt.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenLevelModularFrame": "a2f31f701b22d9a9849161c7bd34185b7f2987f08167eb1c54a0bea5b38f2f52",
+        "Source3.KeygenMkgm3Program": "a0686ffd4073b404d26dc7780eff5b5ddfc732d71c89ae7ac37a4caae03c14d5"
+      },
+      "elapsed_s": 25.224,
+      "maxrss_kib": 3748220,
+      "all_steps_in_job_accepted": true
+    },
+    {
+      "module": "Source3.KeygenLevelCalls",
+      "source": {
+        "path": "formal/Source3/KeygenLevelCalls.lean",
+        "sha256": "1534f00519ae237fc0a9bd387fc927070fe18c7e64659d560e09962832088774",
+        "bytes": 6940
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_level_calls_024_001/formal/Source3/KeygenLevelCalls.lean",
+        "sha256": "1534f00519ae237fc0a9bd387fc927070fe18c7e64659d560e09962832088774",
+        "bytes": 6940
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_level_calls_024_001/lib/Source3/KeygenLevelCalls.olean",
+        "sha256": "97a72668d3d8b3943fb87fbdd8f51377af30d8106b5fa6d23394dd86e63764e9",
+        "bytes": 571344
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_level_calls_024_001/RECEIPTS.json",
+        "sha256": "d08860f0cd47ab010f29dbac15af2d382fbc4ecc0cca5d08f0412b29db4bcf97",
+        "bytes": 5932
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_level_calls_024_001/SOURCE_INPUTS.json",
+        "sha256": "b1c61a48310d24dec6543c2189e765506301448e0dc9a15678e13df295e7a6eb",
+        "bytes": 469845
+      },
+      "job": "keygen_level_calls_024_001",
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_level_calls_024_001/logs/Source3_KeygenLevelCalls.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_level_calls_024_001/logs/Source3_KeygenLevelCalls.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenLevelNtt": "4f891a05c250e811f72b12719561fbd856e1731caf211dd7cd6de86c7615f0a3",
+        "Source3.KeygenSearchMemory": "f3e74d675e9b8ed29f7cb04adad129754636b083fd2109eaee701ed2b3382bc0",
+        "Source3.KeygenFirstPrime": "03a70b82d0b2be24f1f18efc92eb8016a08d10f6447317600b97c33c9cb13e2d"
+      },
+      "elapsed_s": 1.368,
+      "maxrss_kib": 2778288,
+      "all_steps_in_job_accepted": true
+    },
+    {
+      "module": "Source3.KeygenLevelExec",
+      "source": {
+        "path": "formal/Source3/KeygenLevelExec.lean",
+        "sha256": "fdb294e04d5fbfa2f4bd13c6fd345512ddb6ace5c490e08054df51e6dac43001",
+        "bytes": 7644
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_level_calls_024_001/formal/Source3/KeygenLevelExec.lean",
+        "sha256": "fdb294e04d5fbfa2f4bd13c6fd345512ddb6ace5c490e08054df51e6dac43001",
+        "bytes": 7644
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_level_calls_024_001/lib/Source3/KeygenLevelExec.olean",
+        "sha256": "7fe4c3ec34815d6fa706ccaa9fda26198f810bf5ec108799dabdbdccf0277917",
+        "bytes": 1167064
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_level_calls_024_001/RECEIPTS.json",
+        "sha256": "d08860f0cd47ab010f29dbac15af2d382fbc4ecc0cca5d08f0412b29db4bcf97",
+        "bytes": 5932
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_level_calls_024_001/SOURCE_INPUTS.json",
+        "sha256": "b1c61a48310d24dec6543c2189e765506301448e0dc9a15678e13df295e7a6eb",
+        "bytes": 469845
+      },
+      "job": "keygen_level_calls_024_001",
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_level_calls_024_001/logs/Source3_KeygenLevelExec.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_level_calls_024_001/logs/Source3_KeygenLevelExec.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenLevelCalls": "97a72668d3d8b3943fb87fbdd8f51377af30d8106b5fa6d23394dd86e63764e9"
+      },
+      "elapsed_s": 1.468,
+      "maxrss_kib": 2781644,
+      "all_steps_in_job_accepted": true
+    },
+    {
+      "module": "Source3.KeygenLevelParser",
+      "source": {
+        "path": "formal/Source3/KeygenLevelParser.lean",
+        "sha256": "80437ec5510aa4eb516aecf34e400a9167060fa4051e6c487f4f523c3373d770",
+        "bytes": 7676
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_makefg_top_024_001/formal/Source3/KeygenLevelParser.lean",
+        "sha256": "80437ec5510aa4eb516aecf34e400a9167060fa4051e6c487f4f523c3373d770",
+        "bytes": 7676
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_makefg_top_024_001/lib/Source3/KeygenLevelParser.olean",
+        "sha256": "42e555e89afe95278fa388054973a2c3a4702c36eaa80c2e57ac5e8b7b401235",
+        "bytes": 1212696
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_makefg_top_024_001/RECEIPTS.json",
+        "sha256": "8a1cc2429d8e351bced2c4e4b7f7249a5adf3a074986e6627dce8741e659ca22",
+        "bytes": 5922
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_makefg_top_024_001/SOURCE_INPUTS.json",
+        "sha256": "4f5c42087b7aa87d08fb4f0ceb535da7009a62a65cd6cd7c43cf09f7917c7127",
+        "bytes": 472121
+      },
+      "job": "keygen_makefg_top_024_001",
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_makefg_top_024_001/logs/Source3_KeygenLevelParser.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_makefg_top_024_001/logs/Source3_KeygenLevelParser.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenLevelExec": "7fe4c3ec34815d6fa706ccaa9fda26198f810bf5ec108799dabdbdccf0277917",
+        "Source3.KeygenSearchParser": "8db403054de0adb5874f7de356e8e2e51ba5cf023fd8f2b7a906daec043387e0"
+      },
+      "elapsed_s": 1.618,
+      "maxrss_kib": 2791464,
+      "all_steps_in_job_accepted": true
+    },
+    {
+      "module": "Source3.KeygenMakeFgTop",
+      "source": {
+        "path": "formal/Source3/KeygenMakeFgTop.lean",
+        "sha256": "74c647ef769424a373986b9cdb27d198e5bb0d7b3ce7eb676188838eee91775c",
+        "bytes": 4200
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_makefg_top_024_001/formal/Source3/KeygenMakeFgTop.lean",
+        "sha256": "74c647ef769424a373986b9cdb27d198e5bb0d7b3ce7eb676188838eee91775c",
+        "bytes": 4200
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_makefg_top_024_001/lib/Source3/KeygenMakeFgTop.olean",
+        "sha256": "e193dccb30442657d5a71853f51cddb2980a55c65d020718ecd036424dd11cea",
+        "bytes": 145736
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_makefg_top_024_001/RECEIPTS.json",
+        "sha256": "8a1cc2429d8e351bced2c4e4b7f7249a5adf3a074986e6627dce8741e659ca22",
+        "bytes": 5922
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_makefg_top_024_001/SOURCE_INPUTS.json",
+        "sha256": "4f5c42087b7aa87d08fb4f0ceb535da7009a62a65cd6cd7c43cf09f7917c7127",
+        "bytes": 472121
+      },
+      "job": "keygen_makefg_top_024_001",
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_makefg_top_024_001/logs/Source3_KeygenMakeFgTop.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_makefg_top_024_001/logs/Source3_KeygenMakeFgTop.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenLevelParser": "42e555e89afe95278fa388054973a2c3a4702c36eaa80c2e57ac5e8b7b401235",
+        "Source3.KeygenMaterial": "2976855fbf270a1f0ed62dad67ef0e3b088fc5ce041233f9d92b5927ea1d9143"
+      },
+      "elapsed_s": 21.312,
+      "maxrss_kib": 5102368,
+      "all_steps_in_job_accepted": true
+    },
+    {
+      "module": "Source3.KeygenWordExpr",
+      "source": {
+        "path": "formal/Source3/KeygenWordExpr.lean",
+        "sha256": "29d653b9580799113885e2f036a4c303c97c56dc8d0b929f38184def98a97be1",
+        "bytes": 7838
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_word_language_024_002/formal/Source3/KeygenWordExpr.lean",
+        "sha256": "29d653b9580799113885e2f036a4c303c97c56dc8d0b929f38184def98a97be1",
+        "bytes": 7838
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_word_language_024_002/lib/Source3/KeygenWordExpr.olean",
+        "sha256": "f7640f9f49f7e32fa268fb1eda29da3df921bda36ba198471ad14aa5846dd7ac",
+        "bytes": 1860456
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_word_language_024_002/RECEIPTS.json",
+        "sha256": "659f99d51b75cd41aec8a75bd7019cb160cdf69bd85b2560057f84104d3e5ba4",
+        "bytes": 8933
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_word_language_024_002/SOURCE_INPUTS.json",
+        "sha256": "9c5dd583702c489435930d596bc905731b079c642876139556a2e47582bb0371",
+        "bytes": 474668
+      },
+      "job": "keygen_word_language_024_002",
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_word_language_024_002/logs/Source3_KeygenWordExpr.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_word_language_024_002/logs/Source3_KeygenWordExpr.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenLevelParser": "42e555e89afe95278fa388054973a2c3a4702c36eaa80c2e57ac5e8b7b401235"
+      },
+      "elapsed_s": 1.667,
+      "maxrss_kib": 2809468,
+      "all_steps_in_job_accepted": true
+    },
+    {
+      "module": "Source3.KeygenWordExec",
+      "source": {
+        "path": "formal/Source3/KeygenWordExec.lean",
+        "sha256": "666b54ce99bb31f207aa769a9d00af3d4cb11bb45eecdeb31a2c083d9e5a45da",
+        "bytes": 6156
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_word_language_024_002/formal/Source3/KeygenWordExec.lean",
+        "sha256": "666b54ce99bb31f207aa769a9d00af3d4cb11bb45eecdeb31a2c083d9e5a45da",
+        "bytes": 6156
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_word_language_024_002/lib/Source3/KeygenWordExec.olean",
+        "sha256": "ed9ad88920462fdd139edf8813323920390e40835b6c47deaaa599432ae2b233",
+        "bytes": 959528
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_word_language_024_002/RECEIPTS.json",
+        "sha256": "659f99d51b75cd41aec8a75bd7019cb160cdf69bd85b2560057f84104d3e5ba4",
+        "bytes": 8933
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_word_language_024_002/SOURCE_INPUTS.json",
+        "sha256": "9c5dd583702c489435930d596bc905731b079c642876139556a2e47582bb0371",
+        "bytes": 474668
+      },
+      "job": "keygen_word_language_024_002",
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_word_language_024_002/logs/Source3_KeygenWordExec.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_word_language_024_002/logs/Source3_KeygenWordExec.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenWordExpr": "f7640f9f49f7e32fa268fb1eda29da3df921bda36ba198471ad14aa5846dd7ac"
+      },
+      "elapsed_s": 1.367,
+      "maxrss_kib": 2809468,
+      "all_steps_in_job_accepted": true
+    },
+    {
+      "module": "Source3.KeygenWordParser",
+      "source": {
+        "path": "formal/Source3/KeygenWordParser.lean",
+        "sha256": "2401c648e8621abac62a8a32dc2cd76026c1479721a586139f562d6a11908714",
+        "bytes": 5246
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_resultant_024_001/formal/Source3/KeygenWordParser.lean",
+        "sha256": "2401c648e8621abac62a8a32dc2cd76026c1479721a586139f562d6a11908714",
+        "bytes": 5246
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_resultant_024_001/lib/Source3/KeygenWordParser.olean",
+        "sha256": "e5306c591e2205ae3c73468d61ca85910be3e07e6950a4bad3efec6cd7420915",
+        "bytes": 1042488
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_resultant_024_001/RECEIPTS.json",
+        "sha256": "30e07bc272d50d12e75e4c9cecaa8945fe606d9d38e9939f0c3861b6a4a881b1",
+        "bytes": 8804
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_resultant_024_001/SOURCE_INPUTS.json",
+        "sha256": "85a0f605327f8ab2a79933c0780c3a1b4e81b4670e5e45d107f57b4ccb5eed76",
+        "bytes": 477991
+      },
+      "job": "keygen_resultant_024_001",
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_resultant_024_001/logs/Source3_KeygenWordParser.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_resultant_024_001/logs/Source3_KeygenWordParser.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenWordExec": "ed9ad88920462fdd139edf8813323920390e40835b6c47deaaa599432ae2b233"
+      },
+      "elapsed_s": 1.367,
+      "maxrss_kib": 2788276,
+      "all_steps_in_job_accepted": false
+    },
+    {
+      "module": "Source3.KeygenZintLeaves",
+      "source": {
+        "path": "formal/Source3/KeygenZintLeaves.lean",
+        "sha256": "e2ab36e7cdc964aab00e8a1d0ad30a570c7b488796ad13d34728253a4125cd5b",
+        "bytes": 6100
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_resultant_024_001/formal/Source3/KeygenZintLeaves.lean",
+        "sha256": "e2ab36e7cdc964aab00e8a1d0ad30a570c7b488796ad13d34728253a4125cd5b",
+        "bytes": 6100
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_resultant_024_001/lib/Source3/KeygenZintLeaves.olean",
+        "sha256": "fe8152760dda3f79483edd3bae357d8c2e9ded2f0cd3867aa92262b8cc404d15",
+        "bytes": 518456
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_resultant_024_001/RECEIPTS.json",
+        "sha256": "30e07bc272d50d12e75e4c9cecaa8945fe606d9d38e9939f0c3861b6a4a881b1",
+        "bytes": 8804
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_resultant_024_001/SOURCE_INPUTS.json",
+        "sha256": "85a0f605327f8ab2a79933c0780c3a1b4e81b4670e5e45d107f57b4ccb5eed76",
+        "bytes": 477991
+      },
+      "job": "keygen_resultant_024_001",
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_resultant_024_001/logs/Source3_KeygenZintLeaves.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_resultant_024_001/logs/Source3_KeygenZintLeaves.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenWordParser": "e5306c591e2205ae3c73468d61ca85910be3e07e6950a4bad3efec6cd7420915"
+      },
+      "elapsed_s": 20.516,
+      "maxrss_kib": 3284756,
+      "all_steps_in_job_accepted": false
+    },
+    {
+      "module": "Source3.KeygenResultantSource",
+      "source": {
+        "path": "formal/Source3/KeygenResultantSource.lean",
+        "sha256": "ce837f8531633998c58ac00a8c76f90f6d4114bafe2ee2fa5b656106d08b0d5e",
+        "bytes": 8615
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_resultant_024_002/formal/Source3/KeygenResultantSource.lean",
+        "sha256": "ce837f8531633998c58ac00a8c76f90f6d4114bafe2ee2fa5b656106d08b0d5e",
+        "bytes": 8615
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_resultant_024_002/lib/Source3/KeygenResultantSource.olean",
+        "sha256": "ffba2063b9c84beed1a89daca4dbca097fbf64587b378f6fcb287fc57f23f365",
+        "bytes": 459808
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_resultant_024_002/RECEIPTS.json",
+        "sha256": "946d21a7ce8da34e3bb2a123a42d49506a2f7999eb46f1d616d52544fd6905d4",
+        "bytes": 2989
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_resultant_024_002/SOURCE_INPUTS.json",
+        "sha256": "62a48db5cb0f3e6662bb160c736d3e2d4d2a2163ed673502a4d3d64a1f45636d",
+        "bytes": 479489
+      },
+      "job": "keygen_resultant_024_002",
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_resultant_024_002/logs/Source3_KeygenResultantSource.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_resultant_024_002/logs/Source3_KeygenResultantSource.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenWordParser": "e5306c591e2205ae3c73468d61ca85910be3e07e6950a4bad3efec6cd7420915",
+        "Source3.KeygenRngSource": "4f87408fbbc8ab420a4d41072406dbf7e6a9548b5ad3812ba12ca1de75792252"
+      },
+      "elapsed_s": 41.466,
+      "maxrss_kib": 3799368,
+      "all_steps_in_job_accepted": true
+    },
+    {
+      "module": "Source3.KeygenResultantGate",
+      "source": {
+        "path": "formal/Source3/KeygenResultantGate.lean",
+        "sha256": "13562804754e53225e8ba04bd781b5679f83912a5b56992114f4208f9986e833",
+        "bytes": 4195
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_resultant_gate_024_001/formal/Source3/KeygenResultantGate.lean",
+        "sha256": "13562804754e53225e8ba04bd781b5679f83912a5b56992114f4208f9986e833",
+        "bytes": 4195
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_resultant_gate_024_001/lib/Source3/KeygenResultantGate.olean",
+        "sha256": "209b2092eca3e4d23ffae450ae1f21b31d9871df7cb7c60d6944817251fcb404",
+        "bytes": 105232
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_resultant_gate_024_001/RECEIPTS.json",
+        "sha256": "79c935393cb914cb8eef79751a524a255e03a23f0a6cb843b5853ea70cc106ac",
+        "bytes": 3019
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_resultant_gate_024_001/SOURCE_INPUTS.json",
+        "sha256": "30527b019b8924dbecc16a036c18426c6517f40a6dba3c817b4ee0ebd0a2db68",
+        "bytes": 480639
+      },
+      "job": "keygen_resultant_gate_024_001",
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_resultant_gate_024_001/logs/Source3_KeygenResultantGate.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_resultant_gate_024_001/logs/Source3_KeygenResultantGate.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenResultantSource": "ffba2063b9c84beed1a89daca4dbca097fbf64587b378f6fcb287fc57f23f365",
+        "Source3.KeygenSamplerCalls": "44f17a493e93a58ecc0ee168b1a954f3e42ba499c0fadff901e549455def8572"
+      },
+      "elapsed_s": 3.573,
+      "maxrss_kib": 3139728,
+      "all_steps_in_job_accepted": true
+    },
+    {
+      "module": "Source3.KeygenNormFrame",
+      "source": {
+        "path": "formal/Source3/KeygenNormFrame.lean",
+        "sha256": "ac11b88be8f6cbb2adebfbbd8e09517af28311b2beb50629a1480d894a288088",
+        "bytes": 4629
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_active_norm_024_002/formal/Source3/KeygenNormFrame.lean",
+        "sha256": "ac11b88be8f6cbb2adebfbbd8e09517af28311b2beb50629a1480d894a288088",
+        "bytes": 4629
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_active_norm_024_002/lib/Source3/KeygenNormFrame.olean",
+        "sha256": "a19ba25ae534f02ad9cad37b1503e3435687a8fc109f1e197cdc07d46a56e699",
+        "bytes": 168560
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_active_norm_024_002/RECEIPTS.json",
+        "sha256": "036f6267664f040bb5ca7ffe73ab75058713f068b57430993d3972eba59a0392",
+        "bytes": 2964
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_active_norm_024_002/SOURCE_INPUTS.json",
+        "sha256": "681bc14695cedbb2abe0d7ddecf53a7b8ab423cef402e71a23bc7c46ebe0f989",
+        "bytes": 480551
+      },
+      "job": "keygen_active_norm_024_002",
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_active_norm_024_002/logs/Source3_KeygenNormFrame.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_active_norm_024_002/logs/Source3_KeygenNormFrame.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenSearchParser": "8db403054de0adb5874f7de356e8e2e51ba5cf023fd8f2b7a906daec043387e0",
+        "Source3.KeygenSearchFrame": "6bc08968364dab769092b9a717e94305dc7a7230075b5dc91fe0591eadfb75bb",
+        "Source3.KeygenSamplerCalls": "44f17a493e93a58ecc0ee168b1a954f3e42ba499c0fadff901e549455def8572",
+        "Source3.C99CompareObjects": "818e1426bdb37b8e23882bd09667880c2f4124ece7acff6df8a98199acc1c864"
+      },
+      "elapsed_s": 9.886,
+      "maxrss_kib": 3367608,
+      "all_steps_in_job_accepted": true
+    },
+    {
+      "module": "Source3.KeygenLevelsAudit",
+      "source": {
+        "path": "formal/Source3/KeygenLevelsAudit.lean",
+        "sha256": "83f6b37a34bd7527fe4a14fef8167cbe67e8deffe617f57478a32db8e814d8bd",
+        "bytes": 6914
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_levels_audit_024_001/formal/Source3/KeygenLevelsAudit.lean",
+        "sha256": "83f6b37a34bd7527fe4a14fef8167cbe67e8deffe617f57478a32db8e814d8bd",
+        "bytes": 6914
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_levels_audit_024_001/lib/Source3/KeygenLevelsAudit.olean",
+        "sha256": "2d68630ece1991aa560d8bf322a22e6103e070ce661eb12f79b06c57a201ff8a",
+        "bytes": 4064
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_levels_audit_024_001/RECEIPTS.json",
+        "sha256": "33835fd69282bcce3256fa0e58e4614a52e2679cb9935698561f11d1737fb229",
+        "bytes": 2986
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_levels_audit_024_001/SOURCE_INPUTS.json",
+        "sha256": "9e36c96005d1d49dc7ae1508c7962650b83866f57b539236cd289c16d8913efd",
+        "bytes": 481904
+      },
+      "job": "keygen_levels_audit_024_001",
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_levels_audit_024_001/logs/Source3_KeygenLevelsAudit.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_levels_audit_024_001/logs/Source3_KeygenLevelsAudit.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenLevelModularFrame": "a2f31f701b22d9a9849161c7bd34185b7f2987f08167eb1c54a0bea5b38f2f52",
+        "Source3.KeygenLevelNtt": "4f891a05c250e811f72b12719561fbd856e1731caf211dd7cd6de86c7615f0a3",
+        "Source3.KeygenLevelCalls": "97a72668d3d8b3943fb87fbdd8f51377af30d8106b5fa6d23394dd86e63764e9",
+        "Source3.KeygenLevelExec": "7fe4c3ec34815d6fa706ccaa9fda26198f810bf5ec108799dabdbdccf0277917",
+        "Source3.KeygenLevelParser": "42e555e89afe95278fa388054973a2c3a4702c36eaa80c2e57ac5e8b7b401235",
+        "Source3.KeygenMakeFgTop": "e193dccb30442657d5a71853f51cddb2980a55c65d020718ecd036424dd11cea",
+        "Source3.KeygenWordExpr": "f7640f9f49f7e32fa268fb1eda29da3df921bda36ba198471ad14aa5846dd7ac",
+        "Source3.KeygenWordExec": "ed9ad88920462fdd139edf8813323920390e40835b6c47deaaa599432ae2b233",
+        "Source3.KeygenWordParser": "e5306c591e2205ae3c73468d61ca85910be3e07e6950a4bad3efec6cd7420915",
+        "Source3.KeygenZintLeaves": "fe8152760dda3f79483edd3bae357d8c2e9ded2f0cd3867aa92262b8cc404d15",
+        "Source3.KeygenResultantSource": "ffba2063b9c84beed1a89daca4dbca097fbf64587b378f6fcb287fc57f23f365",
+        "Source3.KeygenResultantGate": "209b2092eca3e4d23ffae450ae1f21b31d9871df7cb7c60d6944817251fcb404",
+        "Source3.KeygenNormFrame": "a19ba25ae534f02ad9cad37b1503e3435687a8fc109f1e197cdc07d46a56e699",
+        "Source3.KeygenDepth0Call": "d2f06d60d54bf8ac04298181172c80dd9138414e6db4e7252b03206b744f8664"
+      },
+      "elapsed_s": 2.67,
+      "maxrss_kib": 2803508,
+      "all_steps_in_job_accepted": true
+    }
+  ],
+  "current_final_audit_inputs": 459,
+  "contracts": {
+    "search_dependencies": "Complete inverse ternary NTT and fixed all-depth forward/inverse/generator calls with derived byte frames; complete make_fg_ternary_top with actual prime-member reads and memmove; seven complete bigint leaves.",
+    "sampled_material": "Complete mod2_res_ternary with local b[96], memset, all switch cases/fallthrough and actual return; both actual caller gates, including rejection paths, preserve sampled f/g Bound1 on the same heap via sampled_material.",
+    "norm": "Active raw FFT/FPEMU norm computation and gate preserve disjoint f/g. Comparator executes the real object-copy helper, not a missing entry in the generic scalar table.",
+    "entry_boundary": "Existing typed sampler Layout/global/profile/n1536 and legal object bindings remain explicit; search static tables and scratch separation are local inputs. Norm bound initialization and its connection to preceding gates remain open.",
+    "open": "Full deepest/intermediate, make_fg_step/CRT/Bezout and remaining intermediate dependencies; root solver post-decrement loop, actual member/alias/static/profile/validation bindings; complete sampled-material transport through GS/public/search. B1.05 Acceptance NOT MET."
+  },
+  "audit": {
+    "path": ".build/jobs/keygen_levels_audit_024_001/LEVELS_AUDIT.json",
+    "sha256": "c58f8974f6aff9583775aedd804428ab7d4f20f64bbba5ed056af6185e20d5c5",
+    "bytes": 458751,
+    "receipt": {
+      "path": ".build/jobs/keygen_levels_audit_024_001/RECEIPTS.json",
+      "sha256": "33835fd69282bcce3256fa0e58e4614a52e2679cb9935698561f11d1737fb229",
+      "bytes": 2986
+    },
+    "source_inputs": {
+      "path": ".build/jobs/keygen_levels_audit_024_001/SOURCE_INPUTS.json",
+      "sha256": "9e36c96005d1d49dc7ae1508c7962650b83866f57b539236cd289c16d8913efd",
+      "bytes": 481904
+    },
+    "exports": 236,
+    "new_declarations": 216,
+    "full_pretty_terms": 206,
+    "kernel_inductives_with_constructor_types": 30,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "elisions": 0,
+    "generator": "formal/Source3/KeygenLevelsAudit.lean",
+    "independent_review": false
+  },
+  "sage": {
+    "job": "keygen_levels_checks_024_002",
+    "source": {
+      "path": "sage/check_keygen_levels.sage",
+      "sha256": "7ccfd434621bdcf85cca2122b145113b3004009e14060533f01ed14a8f21a733",
+      "bytes": 10310
+    },
+    "snapshot": {
+      "path": ".build/jobs/keygen_levels_checks_024_002/sage/check_keygen_levels.sage",
+      "sha256": "7ccfd434621bdcf85cca2122b145113b3004009e14060533f01ed14a8f21a733",
+      "bytes": 10310
+    },
+    "receipt": {
+      "path": ".build/jobs/keygen_levels_checks_024_002/RECEIPTS.json",
+      "sha256": "dcc25eb7f7c710d636da9c2ee2dbc151873be854ea0eb37ff610082d6a26c453",
+      "bytes": 2280
+    },
+    "source_inputs": {
+      "path": ".build/jobs/keygen_levels_checks_024_002/SOURCE_INPUTS.json",
+      "sha256": "889a8f94bc5fee9f1d8f1ec4ff8a51f36deb255e0d9948056dbc7c7cb5842044",
+      "bytes": 481851
+    },
+    "result": {
+      "path": ".build/jobs/keygen_levels_checks_024_002/LEVELS_CHECK.json",
+      "sha256": "8060e5b70c1588e23d916451d118f09629dd1ec79fcf7de39739e67fbaf1b7e2",
+      "bytes": 42983
+    },
+    "logs": {
+      "stdout": {
+        "path": ".build/jobs/keygen_levels_checks_024_002/logs/sage.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_levels_checks_024_002/logs/sage.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "artifacts": [
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/PUBLIC_FIXTURE.json",
+        "sha256": "ac6b9c5ef5bf67ecb44827f4e6bd3e0c6a5f9176ab517109703208d22d811172",
+        "bytes": 228298
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_baseline.c",
+        "sha256": "01642c7daa824b1217e4ff569d9022a0342ad05a1bae5f44369fab7aab94586a",
+        "bytes": 270255
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_baseline.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_baseline.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_baseline.stdout",
+        "sha256": "954e4452d35b790b9d8819df6e78655b52daed18946b1e79282a651d797dfddf",
+        "bytes": 25109
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_baseline.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_inverse_scale.c",
+        "sha256": "c9504f3ebea4f4a8d50a44caadd7d4cb74fe993164b7e3c2a36882616f7b8bc0",
+        "bytes": 270221
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_inverse_scale.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_inverse_scale.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_inverse_scale.stdout",
+        "sha256": "88734969b8b1e593d289818256aff576151f4b113fae99216ff748502449126c",
+        "bytes": 25485
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_inverse_scale.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_top_g_alias.c",
+        "sha256": "7bd8598c9671b39ca75feaf1ec5b7f3af5a36522384584579c2eaa1c3573d400",
+        "bytes": 270259
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_top_g_alias.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_top_g_alias.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_top_g_alias.stdout",
+        "sha256": "e95682b9671ae923ffa84574b2f4e74417b4be751acdeeff9f8fc29afe1f4a4d",
+        "bytes": 41916
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_top_g_alias.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_mul_carry.c",
+        "sha256": "a28607fe254e35ff6e006d626fd4a2d3eefaee0c5da87b8cbb8cf6053ee89154",
+        "bytes": 270255
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_mul_carry.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_mul_carry.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_mul_carry.stdout",
+        "sha256": "e657ced27b9e03a8f4de13dff50796d6823351100214b3f57b20a75e99cfb1e1",
+        "bytes": 25109
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_mul_carry.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_sub_mask.c",
+        "sha256": "40d5c87f0000836ab455eb688982b3662e3f9be48ff613448618ae6f79185ad0",
+        "bytes": 270255
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_sub_mask.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_sub_mask.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_sub_mask.stdout",
+        "sha256": "56dc6c6f7ea239fbed1c323904402ae5d57d0618d8ef6decea8bb08f7c61f234",
+        "bytes": 25100
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_sub_mask.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_resultant_writes_f.c",
+        "sha256": "359f92d653148eaa11796786b991712411bfa066b5ad7bd7b4164775417193cd",
+        "bytes": 270279
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_resultant_writes_f.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_resultant_writes_f.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_resultant_writes_f.stdout",
+        "sha256": "57e46991d1dab55ca361bfb64d5049a2171f7b816f9469ae9dd2b3314461f8a5",
+        "bytes": 25109
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_resultant_writes_f.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_norm_writes_g.c",
+        "sha256": "5df5de0f716c48f47f61cfdeef93886c38845f4153aeaa5e4bff2564310890af",
+        "bytes": 270279
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_norm_writes_g.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_norm_writes_g.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_norm_writes_g.stdout",
+        "sha256": "e011b76bb9f12991f2fd5a738c2b15b0e05b2f170162707b8e1f503c09b2a306",
+        "bytes": 25109
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/normal_norm_writes_g.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_baseline.c",
+        "sha256": "01642c7daa824b1217e4ff569d9022a0342ad05a1bae5f44369fab7aab94586a",
+        "bytes": 270255
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_baseline.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_baseline.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_baseline.stdout",
+        "sha256": "954e4452d35b790b9d8819df6e78655b52daed18946b1e79282a651d797dfddf",
+        "bytes": 25109
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_baseline.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_inverse_scale.c",
+        "sha256": "c9504f3ebea4f4a8d50a44caadd7d4cb74fe993164b7e3c2a36882616f7b8bc0",
+        "bytes": 270221
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_inverse_scale.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_inverse_scale.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_inverse_scale.stdout",
+        "sha256": "88734969b8b1e593d289818256aff576151f4b113fae99216ff748502449126c",
+        "bytes": 25485
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_inverse_scale.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_top_g_alias.c",
+        "sha256": "7bd8598c9671b39ca75feaf1ec5b7f3af5a36522384584579c2eaa1c3573d400",
+        "bytes": 270259
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_top_g_alias.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_top_g_alias.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_top_g_alias.stdout",
+        "sha256": "e95682b9671ae923ffa84574b2f4e74417b4be751acdeeff9f8fc29afe1f4a4d",
+        "bytes": 41916
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_top_g_alias.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_mul_carry.c",
+        "sha256": "a28607fe254e35ff6e006d626fd4a2d3eefaee0c5da87b8cbb8cf6053ee89154",
+        "bytes": 270255
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_mul_carry.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_mul_carry.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_mul_carry.stdout",
+        "sha256": "e657ced27b9e03a8f4de13dff50796d6823351100214b3f57b20a75e99cfb1e1",
+        "bytes": 25109
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_mul_carry.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_sub_mask.c",
+        "sha256": "40d5c87f0000836ab455eb688982b3662e3f9be48ff613448618ae6f79185ad0",
+        "bytes": 270255
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_sub_mask.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_sub_mask.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_sub_mask.stdout",
+        "sha256": "56dc6c6f7ea239fbed1c323904402ae5d57d0618d8ef6decea8bb08f7c61f234",
+        "bytes": 25100
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_sub_mask.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_resultant_writes_f.c",
+        "sha256": "359f92d653148eaa11796786b991712411bfa066b5ad7bd7b4164775417193cd",
+        "bytes": 270279
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_resultant_writes_f.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_resultant_writes_f.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_resultant_writes_f.stdout",
+        "sha256": "57e46991d1dab55ca361bfb64d5049a2171f7b816f9469ae9dd2b3314461f8a5",
+        "bytes": 25109
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_resultant_writes_f.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_norm_writes_g.c",
+        "sha256": "5df5de0f716c48f47f61cfdeef93886c38845f4153aeaa5e4bff2564310890af",
+        "bytes": 270279
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_norm_writes_g.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_norm_writes_g.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_norm_writes_g.stdout",
+        "sha256": "e011b76bb9f12991f2fd5a738c2b15b0e05b2f170162707b8e1f503c09b2a306",
+        "bytes": 25109
+      },
+      {
+        "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_norm_writes_g.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    ]
+  },
+  "attempt_history": [
+    {
+      "job": "keygen_active_norm_024_001",
+      "status": "ACCEPTED_SUPERSEDED_SCOPE",
+      "preflight": {
+        "path": ".build/jobs/keygen_active_norm_024_001/PREFLIGHT.json",
+        "sha256": "027ab4ba1160a57ac58865fbc6ac90f61b2f607aed59d3cb984317fac115fc2a",
+        "bytes": 147
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_active_norm_024_001/RECEIPTS.json",
+        "sha256": "519a2fbceb6f10a99dd70f3fe64411e63058a86a151db2caf533aea219878de0",
+        "bytes": 2964
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_active_norm_024_001/SOURCE_INPUTS.json",
+        "sha256": "cab9694ca815510a6be6abe910e7bd8e980d2ddc3b22bde4566920a77c0659b1",
+        "bytes": 478245
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_active_norm_024_001/formal/Source3/KeygenNormFrame.lean",
+          "sha256": "4b0a23ebf4bbdbfc36ca6630c522cab181b78867791889ea503450098d19a1a2",
+          "bytes": 3195
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenNormFrame",
+          "runner_accepted": true,
+          "clean_log": true,
+          "source_sha256": "4b0a23ebf4bbdbfc36ca6630c522cab181b78867791889ea503450098d19a1a2",
+          "elapsed_s": 9.784,
+          "maxrss_kib": 3403628,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_active_norm_024_001/logs/Source3_KeygenNormFrame.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_active_norm_024_001/logs/Source3_KeygenNormFrame.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "products": [],
+      "scope_correction": "Parsed raw-norm gate used the generic scalar table, which lacks fpr_lt. Not accepted as complete operational closure; replaced by explicit C99CompareObjects.Exec in _002.",
+      "wait": {
+        "path": ".build/waits/keygen_active_norm_024_001/WAIT.jsonl",
+        "sha256": "9601d2348b268a8ec3ccb2836bd5ccd3fdcf651ea764aa2ca9c9b94136d70653",
+        "bytes": 97
+      }
+    },
+    {
+      "job": "keygen_active_norm_024_002",
+      "status": "ACCEPTED",
+      "preflight": {
+        "path": ".build/jobs/keygen_active_norm_024_002/PREFLIGHT.json",
+        "sha256": "3153907aae1521bfcec25936b5f820b7d88be696e2316e3cecc9f396a43d9ea0",
+        "bytes": 147
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_active_norm_024_002/RECEIPTS.json",
+        "sha256": "036f6267664f040bb5ca7ffe73ab75058713f068b57430993d3972eba59a0392",
+        "bytes": 2964
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_active_norm_024_002/SOURCE_INPUTS.json",
+        "sha256": "681bc14695cedbb2abe0d7ddecf53a7b8ab423cef402e71a23bc7c46ebe0f989",
+        "bytes": 480551
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_active_norm_024_002/formal/Source3/KeygenNormFrame.lean",
+          "sha256": "ac11b88be8f6cbb2adebfbbd8e09517af28311b2beb50629a1480d894a288088",
+          "bytes": 4629
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenNormFrame",
+          "runner_accepted": true,
+          "clean_log": true,
+          "source_sha256": "ac11b88be8f6cbb2adebfbbd8e09517af28311b2beb50629a1480d894a288088",
+          "elapsed_s": 9.886,
+          "maxrss_kib": 3367608,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_active_norm_024_002/logs/Source3_KeygenNormFrame.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_active_norm_024_002/logs/Source3_KeygenNormFrame.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_active_norm_024_002/WAIT.jsonl",
+        "sha256": "771970cd760b0fe173ae9e44bf5c8a0b03906350a7027505dba8e8032533ba11",
+        "bytes": 97
+      }
+    },
+    {
+      "job": "keygen_level_calls_024_001",
+      "status": "ACCEPTED",
+      "preflight": {
+        "path": ".build/jobs/keygen_level_calls_024_001/PREFLIGHT.json",
+        "sha256": "760296e9651832414edc65f3fb1fcfb516537cc14c855449795f4c57f9109315",
+        "bytes": 147
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_level_calls_024_001/RECEIPTS.json",
+        "sha256": "d08860f0cd47ab010f29dbac15af2d382fbc4ecc0cca5d08f0412b29db4bcf97",
+        "bytes": 5932
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_level_calls_024_001/SOURCE_INPUTS.json",
+        "sha256": "b1c61a48310d24dec6543c2189e765506301448e0dc9a15678e13df295e7a6eb",
+        "bytes": 469845
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_level_calls_024_001/formal/Source3/KeygenLevelCalls.lean",
+          "sha256": "1534f00519ae237fc0a9bd387fc927070fe18c7e64659d560e09962832088774",
+          "bytes": 6940
+        },
+        {
+          "path": ".build/jobs/keygen_level_calls_024_001/formal/Source3/KeygenLevelExec.lean",
+          "sha256": "fdb294e04d5fbfa2f4bd13c6fd345512ddb6ace5c490e08054df51e6dac43001",
+          "bytes": 7644
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenLevelCalls",
+          "runner_accepted": true,
+          "clean_log": true,
+          "source_sha256": "1534f00519ae237fc0a9bd387fc927070fe18c7e64659d560e09962832088774",
+          "elapsed_s": 1.368,
+          "maxrss_kib": 2778288,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_level_calls_024_001/logs/Source3_KeygenLevelCalls.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_level_calls_024_001/logs/Source3_KeygenLevelCalls.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        },
+        {
+          "name": "Source3_KeygenLevelExec",
+          "runner_accepted": true,
+          "clean_log": true,
+          "source_sha256": "fdb294e04d5fbfa2f4bd13c6fd345512ddb6ace5c490e08054df51e6dac43001",
+          "elapsed_s": 1.468,
+          "maxrss_kib": 2781644,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_level_calls_024_001/logs/Source3_KeygenLevelExec.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_level_calls_024_001/logs/Source3_KeygenLevelExec.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_level_calls_024_001/WAIT.jsonl",
+        "sha256": "06aec0c55b69705691a4716deb4cb425636f0b7d64a07dd9420c7cf85b6a1172",
+        "bytes": 97
+      }
+    },
+    {
+      "job": "keygen_level_ntt_024_001",
+      "status": "ACCEPTED",
+      "preflight": {
+        "path": ".build/jobs/keygen_level_ntt_024_001/PREFLIGHT.json",
+        "sha256": "7c39f104d5057fd5b0e9961f4018fe5258fe6c87878bb3f09c4424d92f75ff3c",
+        "bytes": 147
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_level_ntt_024_001/RECEIPTS.json",
+        "sha256": "44feda8439a77205370f2c911e972cdae9eab70200362fae3835ab9247b0cd2d",
+        "bytes": 5939
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_level_ntt_024_001/SOURCE_INPUTS.json",
+        "sha256": "cfeea37009cd7d98d7c0fbf41e282802d6748cc9dd9e6000d5216cd144ccfd17",
+        "bytes": 467551
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_level_ntt_024_001/formal/Source3/KeygenLevelModularFrame.lean",
+          "sha256": "699e4249f81d5d5f82599a85bf9d84fc6986b55135928d350ebd5abd4ae0a5c6",
+          "bytes": 3540
+        },
+        {
+          "path": ".build/jobs/keygen_level_ntt_024_001/formal/Source3/KeygenLevelNtt.lean",
+          "sha256": "7359150a16185695f68d413113de155b4e09bde45c821a1a23b5e8c460080f10",
+          "bytes": 6927
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenLevelModularFrame",
+          "runner_accepted": true,
+          "clean_log": true,
+          "source_sha256": "699e4249f81d5d5f82599a85bf9d84fc6986b55135928d350ebd5abd4ae0a5c6",
+          "elapsed_s": 1.117,
+          "maxrss_kib": 2754576,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_level_ntt_024_001/logs/Source3_KeygenLevelModularFrame.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_level_ntt_024_001/logs/Source3_KeygenLevelModularFrame.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        },
+        {
+          "name": "Source3_KeygenLevelNtt",
+          "runner_accepted": true,
+          "clean_log": true,
+          "source_sha256": "7359150a16185695f68d413113de155b4e09bde45c821a1a23b5e8c460080f10",
+          "elapsed_s": 25.224,
+          "maxrss_kib": 3748220,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_level_ntt_024_001/logs/Source3_KeygenLevelNtt.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_level_ntt_024_001/logs/Source3_KeygenLevelNtt.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_level_ntt_024_001/WAIT.jsonl",
+        "sha256": "648f6c0c668fefbb2d85b50cfa660b99113ca91f9195db3d8f788a125a274b5d",
+        "bytes": 95
+      }
+    },
+    {
+      "job": "keygen_levels_audit_024_001",
+      "status": "ACCEPTED",
+      "preflight": {
+        "path": ".build/jobs/keygen_levels_audit_024_001/PREFLIGHT.json",
+        "sha256": "cdb28dfc9ab12dcf23eef92dd0695d503ba5017b04122b92a3afedea672b1e07",
+        "bytes": 147
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_levels_audit_024_001/RECEIPTS.json",
+        "sha256": "33835fd69282bcce3256fa0e58e4614a52e2679cb9935698561f11d1737fb229",
+        "bytes": 2986
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_levels_audit_024_001/SOURCE_INPUTS.json",
+        "sha256": "9e36c96005d1d49dc7ae1508c7962650b83866f57b539236cd289c16d8913efd",
+        "bytes": 481904
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_levels_audit_024_001/formal/Source3/KeygenLevelsAudit.lean",
+          "sha256": "83f6b37a34bd7527fe4a14fef8167cbe67e8deffe617f57478a32db8e814d8bd",
+          "bytes": 6914
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenLevelsAudit",
+          "runner_accepted": true,
+          "clean_log": true,
+          "source_sha256": "83f6b37a34bd7527fe4a14fef8167cbe67e8deffe617f57478a32db8e814d8bd",
+          "elapsed_s": 2.67,
+          "maxrss_kib": 2803508,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_levels_audit_024_001/logs/Source3_KeygenLevelsAudit.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_levels_audit_024_001/logs/Source3_KeygenLevelsAudit.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "products": [
+        {
+          "path": ".build/jobs/keygen_levels_audit_024_001/LEVELS_AUDIT.json",
+          "sha256": "c58f8974f6aff9583775aedd804428ab7d4f20f64bbba5ed056af6185e20d5c5",
+          "bytes": 458751
+        },
+        {
+          "path": ".build/jobs/keygen_levels_audit_024_001/LEVELS_AUDIT_PARTIAL.json",
+          "sha256": "c58f8974f6aff9583775aedd804428ab7d4f20f64bbba5ed056af6185e20d5c5",
+          "bytes": 458751
+        },
+        {
+          "path": ".build/jobs/keygen_levels_audit_024_001/LEVELS_AUDIT_PROGRESS.json",
+          "sha256": "a100e1c766052fbe8d9ec419b8f9a00f1fdc0e1baafff9859f958688788a5709",
+          "bytes": 46
+        }
+      ],
+      "wait": {
+        "path": ".build/waits/keygen_levels_audit_024_001/WAIT.jsonl",
+        "sha256": "0b9747fb50eb6d6122086477a9d9627909013dcc7a2c2c2694c73d9931fcaf81",
+        "bytes": 98
+      }
+    },
+    {
+      "job": "keygen_levels_checks_024_001",
+      "status": "FAILED_RETAINED",
+      "preflight": {
+        "path": ".build/jobs/keygen_levels_checks_024_001/PREFLIGHT.json",
+        "sha256": "6db653cd4e5b375a03de67f0ed6265d1fcbc9b89f61163321d0452789a41bdd7",
+        "bytes": 147
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_levels_checks_024_001/RECEIPTS.json",
+        "sha256": "85b7bff1135894d34d8fca184c48b99ae9e5c3ff5a6d317488fda0c932b3351f",
+        "bytes": 2281
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_levels_checks_024_001/SOURCE_INPUTS.json",
+        "sha256": "a8a929444b17608f81c1101ba91c96f999896c94247c4d119dcc429fc14abb80",
+        "bytes": 481851
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_001/sage/check_keygen_levels.sage",
+          "sha256": "b007923779c81ed0cf76cb9005b9c57fdfb95842ab81774ef2640b6b793dd219",
+          "bytes": 10299
+        }
+      ],
+      "steps": [
+        {
+          "name": "sage",
+          "runner_accepted": false,
+          "clean_log": false,
+          "source_sha256": "b007923779c81ed0cf76cb9005b9c57fdfb95842ab81774ef2640b6b793dd219",
+          "elapsed_s": 3.123,
+          "maxrss_kib": 226736,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_levels_checks_024_001/logs/sage.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_levels_checks_024_001/logs/sage.stderr",
+              "sha256": "39464ccb57b56d0f5765a00a1f3cee4a5ce0aa5a62169e1b3257c8088666343c",
+              "bytes": 1229
+            }
+          },
+          "failure_excerpt": [
+            "AssertionError: normal_baseline"
+          ]
+        }
+      ],
+      "products": [
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_001/PUBLIC_FIXTURE.json",
+          "sha256": "ac6b9c5ef5bf67ecb44827f4e6bd3e0c6a5f9176ab517109703208d22d811172",
+          "bytes": 228298
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_001/normal_baseline.c",
+          "sha256": "0ee8a61082cc1f3ecd68f3b454a601a7a27b592565e716fa17fc92f228047eac",
+          "bytes": 270244
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_001/normal_baseline.compile.stderr",
+          "sha256": "4153ec15527376b221ea9e5a967adfea1e93b878551223d317d4e3ea3f43e1c8",
+          "bytes": 561
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_001/normal_baseline.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      ],
+      "wait": {
+        "path": ".build/waits/keygen_levels_checks_024_001/WAIT.jsonl",
+        "sha256": "96c15de3ffe4fdb2ce9688152928b620e8321b3199fe115e7a341f4dacbc757a",
+        "bytes": 99
+      }
+    },
+    {
+      "job": "keygen_levels_checks_024_002",
+      "status": "ACCEPTED",
+      "preflight": {
+        "path": ".build/jobs/keygen_levels_checks_024_002/PREFLIGHT.json",
+        "sha256": "c307e5085a845439e8fec76a65687ad9febcb3ec06111a4a80479c7a6b9bcd48",
+        "bytes": 147
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_levels_checks_024_002/RECEIPTS.json",
+        "sha256": "dcc25eb7f7c710d636da9c2ee2dbc151873be854ea0eb37ff610082d6a26c453",
+        "bytes": 2280
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_levels_checks_024_002/SOURCE_INPUTS.json",
+        "sha256": "889a8f94bc5fee9f1d8f1ec4ff8a51f36deb255e0d9948056dbc7c7cb5842044",
+        "bytes": 481851
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/sage/check_keygen_levels.sage",
+          "sha256": "7ccfd434621bdcf85cca2122b145113b3004009e14060533f01ed14a8f21a733",
+          "bytes": 10310
+        }
+      ],
+      "steps": [
+        {
+          "name": "sage",
+          "runner_accepted": true,
+          "clean_log": true,
+          "source_sha256": "7ccfd434621bdcf85cca2122b145113b3004009e14060533f01ed14a8f21a733",
+          "elapsed_s": 24.524,
+          "maxrss_kib": 226516,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_levels_checks_024_002/logs/sage.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_levels_checks_024_002/logs/sage.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "products": [
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/LEVELS_CHECK.json",
+          "sha256": "8060e5b70c1588e23d916451d118f09629dd1ec79fcf7de39739e67fbaf1b7e2",
+          "bytes": 42983
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/PUBLIC_FIXTURE.json",
+          "sha256": "ac6b9c5ef5bf67ecb44827f4e6bd3e0c6a5f9176ab517109703208d22d811172",
+          "bytes": 228298
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_baseline.c",
+          "sha256": "01642c7daa824b1217e4ff569d9022a0342ad05a1bae5f44369fab7aab94586a",
+          "bytes": 270255
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_baseline.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_baseline.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_baseline.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_baseline.stdout",
+          "sha256": "954e4452d35b790b9d8819df6e78655b52daed18946b1e79282a651d797dfddf",
+          "bytes": 25109
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_inverse_scale.c",
+          "sha256": "c9504f3ebea4f4a8d50a44caadd7d4cb74fe993164b7e3c2a36882616f7b8bc0",
+          "bytes": 270221
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_inverse_scale.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_inverse_scale.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_inverse_scale.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_inverse_scale.stdout",
+          "sha256": "88734969b8b1e593d289818256aff576151f4b113fae99216ff748502449126c",
+          "bytes": 25485
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_mul_carry.c",
+          "sha256": "a28607fe254e35ff6e006d626fd4a2d3eefaee0c5da87b8cbb8cf6053ee89154",
+          "bytes": 270255
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_mul_carry.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_mul_carry.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_mul_carry.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_mul_carry.stdout",
+          "sha256": "e657ced27b9e03a8f4de13dff50796d6823351100214b3f57b20a75e99cfb1e1",
+          "bytes": 25109
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_norm_writes_g.c",
+          "sha256": "5df5de0f716c48f47f61cfdeef93886c38845f4153aeaa5e4bff2564310890af",
+          "bytes": 270279
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_norm_writes_g.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_norm_writes_g.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_norm_writes_g.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_norm_writes_g.stdout",
+          "sha256": "e011b76bb9f12991f2fd5a738c2b15b0e05b2f170162707b8e1f503c09b2a306",
+          "bytes": 25109
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_resultant_writes_f.c",
+          "sha256": "359f92d653148eaa11796786b991712411bfa066b5ad7bd7b4164775417193cd",
+          "bytes": 270279
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_resultant_writes_f.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_resultant_writes_f.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_resultant_writes_f.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_resultant_writes_f.stdout",
+          "sha256": "57e46991d1dab55ca361bfb64d5049a2171f7b816f9469ae9dd2b3314461f8a5",
+          "bytes": 25109
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_sub_mask.c",
+          "sha256": "40d5c87f0000836ab455eb688982b3662e3f9be48ff613448618ae6f79185ad0",
+          "bytes": 270255
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_sub_mask.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_sub_mask.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_sub_mask.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_sub_mask.stdout",
+          "sha256": "56dc6c6f7ea239fbed1c323904402ae5d57d0618d8ef6decea8bb08f7c61f234",
+          "bytes": 25100
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_top_g_alias.c",
+          "sha256": "7bd8598c9671b39ca75feaf1ec5b7f3af5a36522384584579c2eaa1c3573d400",
+          "bytes": 270259
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_top_g_alias.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_top_g_alias.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_top_g_alias.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/normal_top_g_alias.stdout",
+          "sha256": "e95682b9671ae923ffa84574b2f4e74417b4be751acdeeff9f8fc29afe1f4a4d",
+          "bytes": 41916
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_baseline.c",
+          "sha256": "01642c7daa824b1217e4ff569d9022a0342ad05a1bae5f44369fab7aab94586a",
+          "bytes": 270255
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_baseline.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_baseline.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_baseline.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_baseline.stdout",
+          "sha256": "954e4452d35b790b9d8819df6e78655b52daed18946b1e79282a651d797dfddf",
+          "bytes": 25109
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_inverse_scale.c",
+          "sha256": "c9504f3ebea4f4a8d50a44caadd7d4cb74fe993164b7e3c2a36882616f7b8bc0",
+          "bytes": 270221
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_inverse_scale.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_inverse_scale.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_inverse_scale.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_inverse_scale.stdout",
+          "sha256": "88734969b8b1e593d289818256aff576151f4b113fae99216ff748502449126c",
+          "bytes": 25485
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_mul_carry.c",
+          "sha256": "a28607fe254e35ff6e006d626fd4a2d3eefaee0c5da87b8cbb8cf6053ee89154",
+          "bytes": 270255
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_mul_carry.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_mul_carry.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_mul_carry.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_mul_carry.stdout",
+          "sha256": "e657ced27b9e03a8f4de13dff50796d6823351100214b3f57b20a75e99cfb1e1",
+          "bytes": 25109
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_norm_writes_g.c",
+          "sha256": "5df5de0f716c48f47f61cfdeef93886c38845f4153aeaa5e4bff2564310890af",
+          "bytes": 270279
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_norm_writes_g.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_norm_writes_g.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_norm_writes_g.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_norm_writes_g.stdout",
+          "sha256": "e011b76bb9f12991f2fd5a738c2b15b0e05b2f170162707b8e1f503c09b2a306",
+          "bytes": 25109
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_resultant_writes_f.c",
+          "sha256": "359f92d653148eaa11796786b991712411bfa066b5ad7bd7b4164775417193cd",
+          "bytes": 270279
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_resultant_writes_f.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_resultant_writes_f.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_resultant_writes_f.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_resultant_writes_f.stdout",
+          "sha256": "57e46991d1dab55ca361bfb64d5049a2171f7b816f9469ae9dd2b3314461f8a5",
+          "bytes": 25109
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_sub_mask.c",
+          "sha256": "40d5c87f0000836ab455eb688982b3662e3f9be48ff613448618ae6f79185ad0",
+          "bytes": 270255
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_sub_mask.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_sub_mask.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_sub_mask.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_sub_mask.stdout",
+          "sha256": "56dc6c6f7ea239fbed1c323904402ae5d57d0618d8ef6decea8bb08f7c61f234",
+          "bytes": 25100
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_top_g_alias.c",
+          "sha256": "7bd8598c9671b39ca75feaf1ec5b7f3af5a36522384584579c2eaa1c3573d400",
+          "bytes": 270259
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_top_g_alias.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_top_g_alias.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_top_g_alias.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_levels_checks_024_002/ubsan_top_g_alias.stdout",
+          "sha256": "e95682b9671ae923ffa84574b2f4e74417b4be751acdeeff9f8fc29afe1f4a4d",
+          "bytes": 41916
+        }
+      ],
+      "wait": {
+        "path": ".build/waits/keygen_levels_checks_024_002/WAIT.jsonl",
+        "sha256": "538a4e0431339cd9d11c4fcf23f710af3f6b23209b988f63550014ee53d6904c",
+        "bytes": 99
+      }
+    },
+    {
+      "job": "keygen_makefg_top_024_001",
+      "status": "ACCEPTED",
+      "preflight": {
+        "path": ".build/jobs/keygen_makefg_top_024_001/PREFLIGHT.json",
+        "sha256": "b08fe222e96de62bfa570aa16ab483e421f248a3f61f1c0617d5d06e9507da4c",
+        "bytes": 147
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_makefg_top_024_001/RECEIPTS.json",
+        "sha256": "8a1cc2429d8e351bced2c4e4b7f7249a5adf3a074986e6627dce8741e659ca22",
+        "bytes": 5922
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_makefg_top_024_001/SOURCE_INPUTS.json",
+        "sha256": "4f5c42087b7aa87d08fb4f0ceb535da7009a62a65cd6cd7c43cf09f7917c7127",
+        "bytes": 472121
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_makefg_top_024_001/formal/Source3/KeygenLevelParser.lean",
+          "sha256": "80437ec5510aa4eb516aecf34e400a9167060fa4051e6c487f4f523c3373d770",
+          "bytes": 7676
+        },
+        {
+          "path": ".build/jobs/keygen_makefg_top_024_001/formal/Source3/KeygenMakeFgTop.lean",
+          "sha256": "74c647ef769424a373986b9cdb27d198e5bb0d7b3ce7eb676188838eee91775c",
+          "bytes": 4200
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenLevelParser",
+          "runner_accepted": true,
+          "clean_log": true,
+          "source_sha256": "80437ec5510aa4eb516aecf34e400a9167060fa4051e6c487f4f523c3373d770",
+          "elapsed_s": 1.618,
+          "maxrss_kib": 2791464,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_makefg_top_024_001/logs/Source3_KeygenLevelParser.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_makefg_top_024_001/logs/Source3_KeygenLevelParser.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        },
+        {
+          "name": "Source3_KeygenMakeFgTop",
+          "runner_accepted": true,
+          "clean_log": true,
+          "source_sha256": "74c647ef769424a373986b9cdb27d198e5bb0d7b3ce7eb676188838eee91775c",
+          "elapsed_s": 21.312,
+          "maxrss_kib": 5102368,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_makefg_top_024_001/logs/Source3_KeygenMakeFgTop.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_makefg_top_024_001/logs/Source3_KeygenMakeFgTop.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_makefg_top_024_001/WAIT.jsonl",
+        "sha256": "ff798182b91767374b68fac2e3a48038577b7892bcb9c56a791a7145968acdd2",
+        "bytes": 96
+      }
+    },
+    {
+      "job": "keygen_resultant_024_001",
+      "status": "FAILED_RETAINED",
+      "preflight": {
+        "path": ".build/jobs/keygen_resultant_024_001/PREFLIGHT.json",
+        "sha256": "312cff1e958cae2488e8c33405d91705d9b6e2424927fcd769f7b2923de9f605",
+        "bytes": 147
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_resultant_024_001/RECEIPTS.json",
+        "sha256": "30e07bc272d50d12e75e4c9cecaa8945fe606d9d38e9939f0c3861b6a4a881b1",
+        "bytes": 8804
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_resultant_024_001/SOURCE_INPUTS.json",
+        "sha256": "85a0f605327f8ab2a79933c0780c3a1b4e81b4670e5e45d107f57b4ccb5eed76",
+        "bytes": 477991
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_resultant_024_001/formal/Source3/KeygenWordParser.lean",
+          "sha256": "2401c648e8621abac62a8a32dc2cd76026c1479721a586139f562d6a11908714",
+          "bytes": 5246
+        },
+        {
+          "path": ".build/jobs/keygen_resultant_024_001/formal/Source3/KeygenZintLeaves.lean",
+          "sha256": "e2ab36e7cdc964aab00e8a1d0ad30a570c7b488796ad13d34728253a4125cd5b",
+          "bytes": 6100
+        },
+        {
+          "path": ".build/jobs/keygen_resultant_024_001/formal/Source3/KeygenResultantSource.lean",
+          "sha256": "71b91f437561e63495c2443d72dd6f2078b651b9291470d65a8c9f84ffe43c6e",
+          "bytes": 8467
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenWordParser",
+          "runner_accepted": true,
+          "clean_log": true,
+          "source_sha256": "2401c648e8621abac62a8a32dc2cd76026c1479721a586139f562d6a11908714",
+          "elapsed_s": 1.367,
+          "maxrss_kib": 2788276,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_resultant_024_001/logs/Source3_KeygenWordParser.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_resultant_024_001/logs/Source3_KeygenWordParser.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        },
+        {
+          "name": "Source3_KeygenZintLeaves",
+          "runner_accepted": true,
+          "clean_log": true,
+          "source_sha256": "e2ab36e7cdc964aab00e8a1d0ad30a570c7b488796ad13d34728253a4125cd5b",
+          "elapsed_s": 20.516,
+          "maxrss_kib": 3284756,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_resultant_024_001/logs/Source3_KeygenZintLeaves.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_resultant_024_001/logs/Source3_KeygenZintLeaves.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        },
+        {
+          "name": "Source3_KeygenResultantSource",
+          "runner_accepted": false,
+          "clean_log": false,
+          "source_sha256": "71b91f437561e63495c2443d72dd6f2078b651b9291470d65a8c9f84ffe43c6e",
+          "elapsed_s": 41.462,
+          "maxrss_kib": 3799052,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_resultant_024_001/logs/Source3_KeygenResultantSource.stdout",
+              "sha256": "a537f3aac3bd61e22161214ff23b4c70986e17000b1831a741d2dab137b2c3d9",
+              "bytes": 645
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_resultant_024_001/logs/Source3_KeygenResultantSource.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          },
+          "failure_excerpt": [
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_resultant_024_001/formal/Source3/KeygenResultantSource.lean:152:59: error: Application type mismatch: The argument"
+          ]
+        }
+      ],
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_resultant_024_001/WAIT.jsonl",
+        "sha256": "ae9cc94d974a38a45c940ec010b2f91b9dfc5fc1cae153acb3839edd0cc01a01",
+        "bytes": 95
+      }
+    },
+    {
+      "job": "keygen_resultant_024_002",
+      "status": "ACCEPTED",
+      "preflight": {
+        "path": ".build/jobs/keygen_resultant_024_002/PREFLIGHT.json",
+        "sha256": "5166c0a938d2e76895115b00e792ed26ec21b19d396c303df707fede3c6ed130",
+        "bytes": 147
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_resultant_024_002/RECEIPTS.json",
+        "sha256": "946d21a7ce8da34e3bb2a123a42d49506a2f7999eb46f1d616d52544fd6905d4",
+        "bytes": 2989
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_resultant_024_002/SOURCE_INPUTS.json",
+        "sha256": "62a48db5cb0f3e6662bb160c736d3e2d4d2a2163ed673502a4d3d64a1f45636d",
+        "bytes": 479489
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_resultant_024_002/formal/Source3/KeygenResultantSource.lean",
+          "sha256": "ce837f8531633998c58ac00a8c76f90f6d4114bafe2ee2fa5b656106d08b0d5e",
+          "bytes": 8615
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenResultantSource",
+          "runner_accepted": true,
+          "clean_log": true,
+          "source_sha256": "ce837f8531633998c58ac00a8c76f90f6d4114bafe2ee2fa5b656106d08b0d5e",
+          "elapsed_s": 41.466,
+          "maxrss_kib": 3799368,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_resultant_024_002/logs/Source3_KeygenResultantSource.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_resultant_024_002/logs/Source3_KeygenResultantSource.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_resultant_024_002/WAIT.jsonl",
+        "sha256": "aef290b45042b93c0c8a5aa08950e0026c292d15dd824efcbfc7d462135bd3c8",
+        "bytes": 95
+      }
+    },
+    {
+      "job": "keygen_resultant_gate_024_001",
+      "status": "ACCEPTED",
+      "preflight": {
+        "path": ".build/jobs/keygen_resultant_gate_024_001/PREFLIGHT.json",
+        "sha256": "b9deed152317c0b35ca96245306790ebfc07a83c2392cec4fddbeee6612eab0e",
+        "bytes": 147
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_resultant_gate_024_001/RECEIPTS.json",
+        "sha256": "79c935393cb914cb8eef79751a524a255e03a23f0a6cb843b5853ea70cc106ac",
+        "bytes": 3019
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_resultant_gate_024_001/SOURCE_INPUTS.json",
+        "sha256": "30527b019b8924dbecc16a036c18426c6517f40a6dba3c817b4ee0ebd0a2db68",
+        "bytes": 480639
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_resultant_gate_024_001/formal/Source3/KeygenResultantGate.lean",
+          "sha256": "13562804754e53225e8ba04bd781b5679f83912a5b56992114f4208f9986e833",
+          "bytes": 4195
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenResultantGate",
+          "runner_accepted": true,
+          "clean_log": true,
+          "source_sha256": "13562804754e53225e8ba04bd781b5679f83912a5b56992114f4208f9986e833",
+          "elapsed_s": 3.573,
+          "maxrss_kib": 3139728,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_resultant_gate_024_001/logs/Source3_KeygenResultantGate.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_resultant_gate_024_001/logs/Source3_KeygenResultantGate.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_resultant_gate_024_001/WAIT.jsonl",
+        "sha256": "2555b3f951b9ff07cbb549d607f9cbfb6b50e9b0a51854531baec85e43fbfe8e",
+        "bytes": 100
+      }
+    },
+    {
+      "job": "keygen_word_language_024_001",
+      "status": "FAILED_RETAINED",
+      "preflight": {
+        "path": ".build/jobs/keygen_word_language_024_001/PREFLIGHT.json",
+        "sha256": "6d7cc5ce08405bc3e72acb6a74b364b81dbbe2a1510241e802030b3897a6a286",
+        "bytes": 147
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_word_language_024_001/RECEIPTS.json",
+        "sha256": "abef095e7c612cfb4bfedd4106c51d232bf90bccc28289ec7e7d9e29ecbbdad9",
+        "bytes": 2889
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_word_language_024_001/SOURCE_INPUTS.json",
+        "sha256": "c61e10d6a3143f72d395617c39226f7f93b2da68166afb1adef74a319bba2746",
+        "bytes": 474668
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_word_language_024_001/formal/Source3/KeygenWordExpr.lean",
+          "sha256": "9e6507177156bb13f98b7b2518edbfeab524acd41ce52f04fe3a21962289cc05",
+          "bytes": 6551
+        },
+        {
+          "path": ".build/jobs/keygen_word_language_024_001/formal/Source3/KeygenWordExec.lean",
+          "sha256": "666b54ce99bb31f207aa769a9d00af3d4cb11bb45eecdeb31a2c083d9e5a45da",
+          "bytes": 6156
+        },
+        {
+          "path": ".build/jobs/keygen_word_language_024_001/formal/Source3/KeygenWordParser.lean",
+          "sha256": "72e2cf1485c546301c1a806a8995ecf18be63b9e76d96815fe2d0e8b84e6e00c",
+          "bytes": 5100
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenWordExpr",
+          "runner_accepted": false,
+          "clean_log": false,
+          "source_sha256": "9e6507177156bb13f98b7b2518edbfeab524acd41ce52f04fe3a21962289cc05",
+          "elapsed_s": 1.367,
+          "maxrss_kib": 2772620,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_word_language_024_001/logs/Source3_KeygenWordExpr.stdout",
+              "sha256": "2df0aea5b315ed1d2317d4ba325746ce4513d14f5abff0aa6d667bac189855c5",
+              "bytes": 249
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_word_language_024_001/logs/Source3_KeygenWordExpr.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          },
+          "failure_excerpt": [
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_word_language_024_001/formal/Source3/KeygenWordExpr.lean:27:11: error: None of the deriving handlers for class `DecidableEq` applied to `Expr`"
+          ]
+        }
+      ],
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_word_language_024_001/WAIT.jsonl",
+        "sha256": "48821087b7d51905fa8bc2ba15d16bad466c4e5881a9acb7b464a2528a0e2b45",
+        "bytes": 99
+      }
+    },
+    {
+      "job": "keygen_word_language_024_002",
+      "status": "ACCEPTED",
+      "preflight": {
+        "path": ".build/jobs/keygen_word_language_024_002/PREFLIGHT.json",
+        "sha256": "6d15e77d7afe352cd0e763d910b38bf0636f15d07c2ab860a10aac84399f51a2",
+        "bytes": 147
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_word_language_024_002/RECEIPTS.json",
+        "sha256": "659f99d51b75cd41aec8a75bd7019cb160cdf69bd85b2560057f84104d3e5ba4",
+        "bytes": 8933
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_word_language_024_002/SOURCE_INPUTS.json",
+        "sha256": "9c5dd583702c489435930d596bc905731b079c642876139556a2e47582bb0371",
+        "bytes": 474668
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_word_language_024_002/formal/Source3/KeygenWordExpr.lean",
+          "sha256": "29d653b9580799113885e2f036a4c303c97c56dc8d0b929f38184def98a97be1",
+          "bytes": 7838
+        },
+        {
+          "path": ".build/jobs/keygen_word_language_024_002/formal/Source3/KeygenWordExec.lean",
+          "sha256": "666b54ce99bb31f207aa769a9d00af3d4cb11bb45eecdeb31a2c083d9e5a45da",
+          "bytes": 6156
+        },
+        {
+          "path": ".build/jobs/keygen_word_language_024_002/formal/Source3/KeygenWordParser.lean",
+          "sha256": "72e2cf1485c546301c1a806a8995ecf18be63b9e76d96815fe2d0e8b84e6e00c",
+          "bytes": 5100
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenWordExpr",
+          "runner_accepted": true,
+          "clean_log": true,
+          "source_sha256": "29d653b9580799113885e2f036a4c303c97c56dc8d0b929f38184def98a97be1",
+          "elapsed_s": 1.667,
+          "maxrss_kib": 2809468,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_word_language_024_002/logs/Source3_KeygenWordExpr.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_word_language_024_002/logs/Source3_KeygenWordExpr.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        },
+        {
+          "name": "Source3_KeygenWordExec",
+          "runner_accepted": true,
+          "clean_log": true,
+          "source_sha256": "666b54ce99bb31f207aa769a9d00af3d4cb11bb45eecdeb31a2c083d9e5a45da",
+          "elapsed_s": 1.367,
+          "maxrss_kib": 2809468,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_word_language_024_002/logs/Source3_KeygenWordExec.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_word_language_024_002/logs/Source3_KeygenWordExec.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        },
+        {
+          "name": "Source3_KeygenWordParser",
+          "runner_accepted": true,
+          "clean_log": true,
+          "source_sha256": "72e2cf1485c546301c1a806a8995ecf18be63b9e76d96815fe2d0e8b84e6e00c",
+          "elapsed_s": 1.367,
+          "maxrss_kib": 2809468,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_word_language_024_002/logs/Source3_KeygenWordParser.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_word_language_024_002/logs/Source3_KeygenWordParser.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "products": [],
+      "wait": {
+        "path": ".build/waits/keygen_word_language_024_002/WAIT.jsonl",
+        "sha256": "fe6f0c1ddea4e664ecf1768383396aa4621f097c739370cbe03c89049cae5d63",
+        "bytes": 99
+      }
+    },
+    {
+      "job": "keygen_zint_leaves_024_001",
+      "status": "ACCEPTED_SUPERSEDED_SCOPE",
+      "preflight": {
+        "path": ".build/jobs/keygen_zint_leaves_024_001/PREFLIGHT.json",
+        "sha256": "1e2caf43b3b1a51c2bd2425b0fe41c8aca18390fadd5fc072a8fda7094160215",
+        "bytes": 147
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_zint_leaves_024_001/RECEIPTS.json",
+        "sha256": "da2cd6ca2090ac9a900ab69c28b5e79dc42b96814ceee2652938a0c136b31e7d",
+        "bytes": 5933
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_zint_leaves_024_001/SOURCE_INPUTS.json",
+        "sha256": "19a7ea6d4fc33ec969301f61fd3e1d4ad2646a8b97c20b8bc3da75bb816ceccd",
+        "bytes": 477491
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_zint_leaves_024_001/formal/Source3/KeygenZintLeaves.lean",
+          "sha256": "e2ab36e7cdc964aab00e8a1d0ad30a570c7b488796ad13d34728253a4125cd5b",
+          "bytes": 6100
+        },
+        {
+          "path": ".build/jobs/keygen_zint_leaves_024_001/formal/Source3/KeygenNormFrame.lean",
+          "sha256": "59bab2b5a83491a79f7d9b1a5ef4ef2d9b822bcd8210764d686bffd23d97c2f3",
+          "bytes": 2744
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenZintLeaves",
+          "runner_accepted": true,
+          "clean_log": true,
+          "source_sha256": "e2ab36e7cdc964aab00e8a1d0ad30a570c7b488796ad13d34728253a4125cd5b",
+          "elapsed_s": 20.562,
+          "maxrss_kib": 3284528,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_zint_leaves_024_001/logs/Source3_KeygenZintLeaves.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_zint_leaves_024_001/logs/Source3_KeygenZintLeaves.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        },
+        {
+          "name": "Source3_KeygenNormFrame",
+          "runner_accepted": true,
+          "clean_log": true,
+          "source_sha256": "59bab2b5a83491a79f7d9b1a5ef4ef2d9b822bcd8210764d686bffd23d97c2f3",
+          "elapsed_s": 3.322,
+          "maxrss_kib": 3284528,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_zint_leaves_024_001/logs/Source3_KeygenNormFrame.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_zint_leaves_024_001/logs/Source3_KeygenNormFrame.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "products": [],
+      "scope_correction": "NormFrame step was a binary-only helper, not the active M0 gate. Current ZintLeaves remains checked after rebuild; the binary helper snapshot is retained but superseded.",
+      "wait": {
+        "path": ".build/waits/keygen_zint_leaves_024_001/WAIT.jsonl",
+        "sha256": "8d88725836635313a8f8f8480caa7d349355c733d0510f1aa0cd22023daae3f3",
+        "bytes": 97
+      }
+    }
+  ],
+  "attempt_counts": {
+    "ACCEPTED": 9,
+    "FAILED_RETAINED": 3,
+    "ACCEPTED_SUPERSEDED_SCOPE": 2
+  },
+  "retained_failures": "Failed deriving/type-composition/compiler-warning attempts retained. Both superseded norm routes are explicit; _active_norm_024_001 is not evidence of a complete call closure. Current comparator uses existing inhabited source execution.",
+  "limits": "Unchanged Lean-j1/-M6144, maxRecDepth32768/maxHeartbeats2000000, wall1800s, AS12GiB/RSS8GiB, warnings as errors, pp.maxSteps200000. Sage standard preparser.",
+  "build_scope": "Changed/new dependency closure, full new-declaration audit and targeted finite controls. No unchanged broad replay or independent review.",
+  "next_owner_stage": "Resume B1.05 checkpoint section6; complete remaining deepest/intermediate dependencies, root caller and whole material transport. B1.06 not entered.",
+  "git": {
+    "branch": "main",
+    "author": "niirmataa",
+    "writer_lock": "proofs/ft1536/work/archive.lock",
+    "source_commits": [
+      "4f787baf",
+      "60eb842b",
+      "dfff8cd4",
+      "3663e50994fe3099f2660a42ec2c5405910dd780"
+    ],
+    "push": "none; owner signal required",
+    "foreign_changes": "preserved"
+  },
+  "active_jobs_at_close": []
+}

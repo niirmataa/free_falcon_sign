@@ -1,19 +1,95 @@
-# KEYGEN_SOURCE_TO_FIBER_001 — B1.05 complete depth0/search-frame midpoint
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.05 search dependencies / early-material midpoint
 
 **PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
 2026-10-08: owner-requested BIG B1.05 checkpoint,
 **CLOSED_AT_RECOVERABLE_MIDPOINT** under `run2/notes/B1_STAGED_ROADMAP.md`.
-**B1.05 Acceptance NOT MET.** Deepest/intermediate and full root-caller execution remain open.
+**B1.05 Acceptance NOT MET.** Search dependencies and early material transport
+have expanded; complete deepest/intermediate and root-caller execution remain open.
 The next owner window resumes B1.05. B1.06 has not been entered.
 No owned job or unresolved Lean draft remains. Resume protocol: **section6**.
 
 Harness: GPT-6 Astra Ultrafast (`openai/gpt-6-astra-ultrafast`). Historical
 runner labels remain provenance. Latest pair:
-`KEYGEN_SOURCE_TO_FIBER_001_BATCH_023.json` + `_023_NOTES.md`.
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_024.json` + `_024_NOTES.md`.
 B1.04 Acceptance and its complete NTT theorem remain BATCH_019 dependencies;
 their historical checkpoint is preserved in Git at `2868c49e`/`30359d3b`.
 
-## 1. Closed this window — complete ternary_depth0 and same-material composition
+## 1. Closed this window — search dependencies and sampled-resultant transport
+
+Source commits: `4f787baf`, `60eb842b`, `dfff8cd4`, `3663e509` on main as
+niirmataa, exact owned paths under archive.lock. A separate local documentation
+commit closes this pair/checkpoint. Foreign changes and history are preserved.
+
+### 1.1 Fixed search dependencies
+
+`KeygenLevelNtt` binds the COMPLETE inverse ternary NTT3143–3245: mixed
+declaration, logn0 return, both full branches, all loops/stores and corrective
+division. Its five statement-boundary pieces share the real State. The
+stride-one wrapper is bound separately. `KeygenLevelModularFrame` applies
+at every defined dimension without canonical/evaluation/prime premises.
+`KeygenLevelCalls` executes fixed complete forward/inverse/generator bodies,
+preserving caller slots and using actual prime-struct memory reads.
+
+`KeygenMakeFgTop` binds the COMPLETE5579–5668 make_fg_ternary_top body,
+including memmove, source prime members, generator, both forward transforms,
+all stores and optional inverse transforms. `Call` has no arbitrary callee;
+`material` preserves an incoming vector separated from data/static objects.
+The enclosing static-table and scratch bindings are still caller obligations.
+
+`KeygenZintLeaves` binds complete headers/bodies/returns for zint_add,
+zint_sub, zint_mul_small, zint_add_mul_small, zint_rshift1,
+zint_mod_small_unsigned and zint_ucmp. Actual limb loads inside arithmetic,
+casts/promotions, stores and return conversion are explicit. Post-decrement
+also updates on the failing test. These are operational/frame results,
+not a proof of bigint arithmetic or the full deepest/intermediate call.
+
+### 1.2 Same sampled f/g through both actual resultant gates
+
+`KeygenResultantSource` binds the COMPLETE541–772 mod2_res_ternary helper:
+fresh local b[96], literal384-byte memset, packing, every switch case11–2,
+fallthrough/break and actual return. All caller bytes are preserved after
+the automatic object's disposal. No assumed readonly/frame property is used.
+
+`KeygenResultantGate` binds M0-selected7931–7948. Both rejection/continue
+edges and successful fallthrough execute the actual calls. Its checked
+`sampled_material` composes BATCH_022 two_calls with these gates:
+
+```text
+ctx : ShakeExtractSource.Layout
+before, middle, sampled : State; out : Result; f, g : ArrayPointer
+legal live distinct f/g/context objects, f/g width2
+before.n = uint64 1536; before.f = f; before.g = g
+KeygenSamplerCalls.Call ctx before (arguments "f") middle
+KeygenSamplerCalls.Call ctx middle (arguments "g") sampled
+KeygenResultantGate.Exec sampled out
+------------------------------------------------------------------
+exists fv gv : Geometry.Vec,
+  Represents out.state.heap f fv and Bound fv 1
+  and Represents out.state.heap g gv and Bound gv 1
+```
+
+The result includes rejected attempts. No f/g bound, resultant arithmetic
+fact or gate-success assumption is an input. Actual fk-to-RNG/global/profile
+resolution remains the inherited sampler caller seam. This is now actual
+sampled-material transport through the first two gates, not through all later
+attempt/search operations.
+
+### 1.3 Active raw-norm frame
+
+`KeygenNormFrame` binds M0-selected7969–7990: small-to-fpr, FFT3, norm
+accumulation, double and the actual comparison/continue gate. The comparison
+executes `C99CompareObjects.Exec`, including the private-object copies;
+its source decomposition and exists_execution are audited. For any
+`Exec ctx before out`, `Protected ctx before input.block` and incoming
+`Represents before.heap input vector`, `material` concludes the same
+representation in out.state.heap, on either gate outcome.
+
+Protected means legal scratch/static/rt1/rt2 object separation. Incoming
+bound/local/profile bindings remain explicit. **Bound initialization and
+the link from the preceding gates, the GS/public calls and subsequent search
+transport are still open.** No real-number FFT norm or probability claim.
+
+## 1P. Inherited BATCH_023 — complete ternary_depth0 and same-material composition
 
 Source commits on main as niirmataa: `409c3ae9`, `633c6200`, `f8195a0c`.
 The final pair/checkpoint has its own local documentation commit. Writer
@@ -318,7 +394,47 @@ is proved heap-readonly.
 
 ## 2. Pins and validation
 
-**Current BATCH_023:** preflight verified BATCH_015–022,2317 distinct pinned
+**Current BATCH_024:** preflight verified BATCH_015–023,2595 distinct files,
+445 final BATCH_023 inputs and2317 predecessor pins. No active job.
+`.build/levels_024/PREFLIGHT.json` SHA256
+`baa5c4d6a850a2f4ae13977212614c2628678884753468544b46a3859aa994e8`.
+At sealing all459 final-audit inputs and2595 predecessor files match.
+Postseal:2847 distinct pinned files,459 current inputs and no active job;
+`.build/levels_024/POSTSEAL.json` SHA256
+`4db7e5c366fe190798fc2b497308558b3cc63e9ab1acac8cdef4b84bcd708703`.
+
+- **BATCH_024 JSON:** `fbfe3b1c6c297b20b31d92370963c89aa1a0fe3cedfbfb5b0b799f1b3a72d365`.
+- **BATCH_024 notes:** `804a5d9ea7abc0b438e70cbe14d32bdb793f7a934b318d3b4e60727e8c57e344`.
+- `.build/jobs/keygen_levels_audit_024_001/RECEIPTS.json`:
+  `33835fd69282bcce3256fa0e58e4614a52e2679cb9935698561f11d1737fb229`.
+- Same job SOURCE_INPUTS:
+  `9e36c96005d1d49dc7ae1508c7962650b83866f57b539236cd289c16d8913efd`.
+- Same job LEVELS_AUDIT:
+  `c58f8974f6aff9583775aedd804428ab7d4f20f64bbba5ed056af6185e20d5c5`.
+- `.build/jobs/keygen_levels_checks_024_002/RECEIPTS.json`:
+  `dcc25eb7f7c710d636da9c2ee2dbc151873be854ea0eb37ff610082d6a26c453`.
+- Same job LEVELS_CHECK:
+  `8060e5b70c1588e23d916451d118f09629dd1ec79fcf7de39739e67fbaf1b7e2`.
+- Same job PUBLIC_FIXTURE:
+  `ac6b9c5ef5bf67ecb44827f4e6bd3e0c6a5f9176ab517109703208d22d811172`.
+
+14 current accepted Lean modules with source/snapshot/olean/receipt bindings
+and0/0 logs, max accepted cumulative RSS5102368KiB.14 attempts:9 wholly
+accepted,3 failed retained,2 runner-accepted but superseded for scope. The
+initial binary-only norm helper and the first raw-norm gate with missing
+fpr_lt closure are explicitly not current proof evidence. Final corrected
+source uses the actual inhabited comparator. All snapshots/raw streams remain.
+
+Final audit236 entries covers216 new named declarations and20 inherited
+interfaces:206 full terms,30 inductives/structures with full constructors,
+standard axioms only, no elisions. Its458751 bytes are regenerated by the
+tracked audit/generator. Exact Sage ZZ/GF(2) plus14 normal/UBSan runs:35 bigint,
+38 NTT dimension/stride,5 resultant pairs,10 ternary-top norm pairs and15
+raw-norm gate/frame cases per run. All six mutations detected in both modes.
+Finite controls do not execute full deepest/intermediate/root or prove a
+compiler/termination/probability theorem. No unchanged broad replay/review.
+
+**Inherited BATCH_023:** preflight verified BATCH_015–022,2317 distinct pinned
 files,433 final BATCH_022 inputs and1840 predecessor pins. No active job.
 `.build/search_023/PREFLIGHT.json` SHA256
 `c43284c6a1d1f0672eb6f2ed54bab2be7b18d2c60c7d53ffc2a6fa51e6393e1d`.
@@ -500,8 +616,14 @@ local declarations, MKN/logn10/ternary1 and all branch/call results. The M0
 search path is `solve_NTRU_deepest`, the post-decrement intermediate loop
 (body depths9 through1), and the NOW CHECKED `solve_NTRU_ternary_depth0`.
 Reuse BATCH_023's full Call/frame/return; do not redo that body or replace it
-by an arbitrary transformer. **Deepest/intermediate and their active closure
-are still open.** Each remaining callee must execute its pinned body and active
+by an arbitrary transformer. **Deepest/intermediate and the remaining active
+closure are still open.** BATCH_024 supplies inverse NTT, all-depth modular
+frames, complete make_fg_ternary_top and seven bigint leaves. Still needed:
+make_fg_step, complete make_fg, signed/reduction wrappers, zint_rebuild_CRT,
+zint_bezout and its co-reduction helpers, bitlength/top extraction, big-to-fpr
+and scaled polynomial subtraction used by intermediate. Full PRIMES3 and
+size-table bindings must come from source. Each remaining callee must execute
+its pinned body and active
 dependencies. Their search algorithm
 need not itself prove NTRU, since final validation now supplies that equation;
 an arbitrary heap transformer, return-value oracle or source-completeness
@@ -533,10 +655,14 @@ The full local MODE1 loop/refill theorem and two-call f/g Bound1 are NOW
 CHECKED by section1A.3. Derive the actual fk->rng Layout, source-profile/LE
 selection, global RC environment and n1536 from the enclosing allowed M0
 entry and its executed initializers. Bind both7888–7889 calls to the same
-context and arrays via `KeygenSamplerCalls.two_calls`. Then prove f/g
+context and arrays via `KeygenSamplerCalls.two_calls`. Then finish f/g
 preservation through intervening attempt gates and the actual search.
-Frames now prove preservation across g sampling and across the actual complete
-ternary_depth0 call, not across the still-unexecuted earlier search/gates.
+BATCH_024 sampled_material now composes both sampling calls with the complete
+actual resultant gates and preserves Bound1/material on all outcomes.
+Its separate active raw-norm frame still needs bound initialization and
+connection to that preceding state; GS/public and deepest/intermediate remain.
+Frames also cover g sampling and complete ternary_depth0. Do not insert
+arbitrary transitions or heap equalities between these actual source pieces.
 The sampler result is deterministic and finite-execution scoped;
 it supplies no IID law, acceptance probability or termination theorem.
 
@@ -557,7 +683,7 @@ B1.11 complete fresh replay/mutations/final handoff.
 `emitted_to_actual_fiber` remains uninhabited. No serializer, solver,
 certificate acceptance or source-completeness premise may fill a gap.
 
-## 5. Traps — prior1–75 in Git, retained76–94, new95–100
+## 5. Traps — prior1–75 in Git, retained76–100, new101–105
 
 76. The outer shell's120s timeout can interrupt a guarded job before its
     receipt. `_equation_020_001` is retained as INTERRUPTED_NO_RECEIPT with
@@ -648,21 +774,40 @@ slots. The source root/permutation and Montgomery scale remain fixed.
     p.block. Destructure Result before eliminating dependent ReturnValue;
     then eliminate the flow equality rather than guessing constructor binders.
 100. A full audit must explicitly import inherited interfaces not already in
-     the dependency chain (here sampler two_calls). The initial failed audit
-     and superseded successful163-entry audit remain alongside final180.
+      the dependency chain (here sampler two_calls). The initial failed audit
+      and superseded successful163-entry audit remain alongside final180.
+
+101. Lean's default DecidableEq deriving did not handle this nested Expr/list
+     call syntax. Fixed-arity call constructors resolved it without changing
+     limits or using an unchecked evaluator. The failed source remains.
+102. The source's poly_small_sqnorm belongs to the binary attempt branch.
+     An accepted helper build does not close the active M0 norm gate. Its
+     initial NormFrame snapshot is retained and explicitly superseded.
+103. A parsed caller plus a syntactic write check does NOT establish callee
+     coverage. FprPrefixCalls lacks fpr_lt; the first raw-norm route was not
+     valid complete-closure evidence. Use actual C99CompareObjects.Exec,
+     with its source decomposition/inhabitation, as in the final NormFrame.
+104. Across memset, normalize the zeroed byte equality to the unchanged
+     outside-block equality before transitivity. The initial type-composition
+     failure is retained. Final local-object disposal restores original bytes.
+105. Generated C controls still obey -Werror: a same-line unbraced for/printf
+     triggered misleading-indentation. Braces fixed the harness; warning
+     policy remained unchanged. Audit generation handles qualified Field.offset
+     as its true namespace, not as another declaration named Field.
 
 ## 6. Resume protocol
 
 1. Read source3/WORK_STATE, this checkpoint, EXECUTION_PLAN B1.05 and
    `run2/notes/B1_STAGED_ROADMAP.md`. Resume only B1.05; this window closed
    at a recoverable midpoint, not Acceptance.
-2. Verify BATCH_015–023 pairs against section2/WORK_STATE. Verify all current
-   BATCH_023 source/snapshot/olean/receipt/log/audit/control/generator pins
-   and445 final SOURCE_INPUTS. Check its2317 predecessor file pins. Use
-   `python3 -B tools/keygen_search_verify.py BATCH023_SHA NOTES023_SHA` with
-   the external pair pins recorded here. `keygen_search_batch.py` documents
+2. Verify BATCH_015–024 pairs against section2/WORK_STATE. Verify all current
+   BATCH_024 source/snapshot/olean/receipt/log/audit/control/generator pins
+   and459 final SOURCE_INPUTS. Check its2595 predecessor file pins. Use
+   `python3 -B tools/keygen_levels_verify.py BATCH024_SHA NOTES024_SHA` with
+   the external pair pins recorded here. `keygen_levels_batch.py` documents
    sealing but intentionally refuses to overwrite its historical receipt.
-   Retain all19 BATCH_023 attempts (11 failed, one non-proof diagnostic), all45
+   Retain all14 BATCH_024 attempts (3 failed,2 superseded scope routes), all19
+   BATCH_023 attempts (11 failed, one non-proof diagnostic), all45
    BATCH_022 attempts (23 failed, one no-receipt refusal), and BATCH_018–021
    history including BATCH_020's interrupted launch.
 3. Confirm main, physical repo, ownership, status/staging/log and no live
@@ -671,7 +816,12 @@ slots. The source root/permutation and Montgomery scale remain fixed.
 4. Resume section3 and KEYGEN_SOLVER_GRAPH_021.md: complete deepest/intermediate
    operational closure and the full solver/root caller; derive concrete
    context/member/alias/static-global/profile bindings, and transport sampled
-   f/g through actual preceding source. Reuse complete sampler/refill/two-call
+   f/g through actual preceding source. Reuse BATCH_024 inverse NTT/fixed
+   calls, complete make_fg_ternary_top, seven bigint leaves, complete resultant
+   helper/gates and sampled_material, plus the corrected active raw-norm
+   computation/gate. Full deepest/intermediate, root and GS/public transport
+   are still open; their current helper frames are not a full caller theorem.
+   Reuse complete sampler/refill/two-call
    Bound1, BATCH_023's full depth0 Call/frame/return_one and call_gate_validated,
    actual output gate and existing validation. Their local entry seams remain
    explicit; none is the complete successful-solver theorem.
