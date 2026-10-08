@@ -1,4 +1,4 @@
-import Source3.KeygenZintCall
+import Source3.KeygenZintExtract
 import Source3.KeygenMaterial
 
 set_option maxRecDepth 32768
@@ -392,6 +392,8 @@ theorem code_checked : ∀ kind : Callee,
   | reduce => exact checked_of .reduce reduce_k_audit
   | reduceMod => exact checked_of .reduceMod reduce_mod_audit
   | bezout => exact checked_of .bezout bezout_audit
+  | bitlength => exact checked_of .bitlength KeygenZintExtract.bitlength_audit
+  | signedBitLength => exact checked_of .signedBitLength KeygenZintExtract.signed_audit
 
 theorem material (kind : Callee) (before after : State) (args : List Arg) (v : Option Value)
     (source : KeygenZintCall.Call kind before args after v) (names : List Name)

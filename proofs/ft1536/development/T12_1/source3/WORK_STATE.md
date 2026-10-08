@@ -1,5 +1,31 @@
 # T12.1/source3 — żywy stan
 
+## B1.05b-c — extraction continuation — 2026-10-08
+
+Owner resumed checkpoint 7R with GPT-6 Astra Ultrafast. BATCH_028 is
+IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN; B1.05 Acceptance NOT MET.
+ENTRY_PINS_028_002 verified all BATCH_015-027 pairs, 2917 distinct pins,
+459 inherited current inputs, three exact documented supersessions and
+14 BATCH_027 receipts; no active proof job at entry. Receipt SHA256
+`b9cec873c9440265d16347bfcb13104630dfeee33a14bf907699a13d87f1ce60`.
+The first receipt is retained; _002 only corrects the verifier's descriptive
+count of superseded sources (including the diagnostic probe). Entry-pin
+source commit: `8ca34465`.
+
+`keygen_zint_extract_028_002` accepted KeygenZintCall, KeygenZintExtract
+and KeygenZintCore with 0/0 streams. Complete bitlength and
+zint_signed_bit_length are bound in 3/5 statement-boundary pieces with
+non-vacuous audits and pure-rewrite composition. The unsized static vv[]
+declaration infers 32 words, resolves `bitlength.vv` in the table environment,
+checks the actual read-only object/initializer bytes and binds the local vv.
+The returned sum has its own value-call rule executing the fixed bitlength
+body with uint32 argument/return conversion and the actual C addition.
+All previous core body audits rebuilt. No bitlength arithmetic or full
+solver claim. First failed attempt retained: incorrect storage spelling in
+the expected header and the parser's `return (`/generic-call precedence.
+Next: get_top division/return pun, polynomial conversion/subtraction,
+make_fg and deepest/intermediate/root closure in the owner's order.
+
 ## B1.05b — CLOSED at complete zint_bezout midpoint — 2026-10-08
 
 **B1.05 Acceptance NOT MET. CLOSED_AT_RECOVERABLE_MIDPOINT.**

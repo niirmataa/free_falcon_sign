@@ -27,6 +27,7 @@ inductive Callee where
   | leaf (kind : KeygenZintLeaves.Kind)
   | modSigned | normZero | exactLen | rshiftMod | subMod | rebuildCrt
   | coReduce | coReduceMod | reduce | reduceMod | bezout
+  | bitlength | signedBitLength
   deriving DecidableEq, Repr
 
 def calleeName : Callee → Name
@@ -42,6 +43,8 @@ def calleeName : Callee → Name
   | .reduce => "zint_reduce".toList
   | .reduceMod => "zint_reduce_mod".toList
   | .bezout => "zint_bezout".toList
+  | .bitlength => "bitlength".toList
+  | .signedBitLength => "zint_signed_bit_length".toList
 
 def params : Callee → List Param
   | .leaf kind => KeygenZintLeaves.params kind
@@ -74,6 +77,8 @@ def params : Callee → List Param
   | .bezout => [.pointer "u".toList,.pointer "v".toList,
     .pointer "x".toList,.pointer "y".toList,
     .scalar .uint64 "len".toList,.pointer "tmp".toList]
+  | .bitlength => [.scalar .uint32 "x".toList]
+  | .signedBitLength => [.pointer "x".toList,.scalar .uint64 "xlen".toList]
 
 def result : Callee → Option Ty
   | .leaf kind => KeygenZintLeaves.result kind
@@ -88,6 +93,7 @@ def result : Callee → Option Ty
   | .reduce => some .int32
   | .reduceMod => none
   | .bezout => some .int32
+  | .bitlength | .signedBitLength => some .uint32
 
 def writable : Callee → List Name
   | .leaf kind => KeygenZintLeaves.writable kind
@@ -107,6 +113,7 @@ def writable : Callee → List Name
   -- binds check their source name and stores check their walk name.
   | .bezout => ["u".toList,"v".toList,"tmp".toList,
     "u0".toList,"u1".toList,"v0".toList,"v1".toList,"a".toList,"b".toList]
+  | .bitlength | .signedBitLength => []
 
 def extraPointers : Callee → List Name
   | .rebuildCrt => ["x".toList]
@@ -130,6 +137,8 @@ def header : Callee → Nat×Nat
   | .reduce => (3808,2)
   | .reduceMod => (3851,3)
   | .bezout => (3904,4)
+  | .bitlength => (4206,2)
+  | .signedBitLength => (4244,2)
 
 /-- Body region as (first body line, closing brace line). -/
 def bodyRegion : Callee → Nat×Nat
@@ -145,6 +154,8 @@ def bodyRegion : Callee → Nat×Nat
   | .reduce => (3811,3845)
   | .reduceMod => (3855,3889)
   | .bezout => (3909,4200)
+  | .bitlength => (4209,4237)
+  | .signedBitLength => (4247,4263)
 
 inductive CDest where
   | discard
@@ -165,6 +176,21 @@ def Memzero (before : Memory) (p : ArrayPointer) (bytes : Nat) (after : Memory) 
   (∀ block offset, block≠p.block ∨ offset<p.offset ∨ p.offset+bytes≤offset →
     after.bytes block offset=before.bytes block offset)
 
+/- A block-scope static array is an existing read-only object, not an
+   automatic allocation or a lookup oracle. The declaration resolves its
+   qualified identity and checks every initializer against actual Load32
+   bytes. The local array name is restored by the usual scope/call rules. -/
+def vvName : Name := "vv".toList
+def vvObject : Name := "bitlength.vv".toList
+def Static32 (heap : Memory) (p : ArrayPointer) (values : List (BitVec 32)) : Prop :=
+  heap.writable p.block=false ∧ p.base=0 ∧ p.index=0 ∧
+  p.elementBytes=4 ∧ p.count=values.length ∧ heap.size p.block=4*values.length ∧
+  ∀ i : Fin values.length, Load32 heap {p with index := i.val} values[i.val]
+
+def valueEntry (caller : State) (value : Value) : State :=
+  bindValue ⟨caller.heap,caller.globals,caller.tables,caller.globals,caller.tables⟩
+    "x".toList .uint32 value
+
 inductive Stmt where
   | word (code : KeygenWordExec.Stmt)
   | call (kind : Callee) (args : List Arg) (dst : CDest)
@@ -174,6 +200,8 @@ inductive Stmt where
   | storePrime (array : Name) (index : CLogic.Expr) (src : Name)
       (srcIndex : CLogic.Expr) (field : KeygenLevelCalls.Field)
   | bitcastInto (dst src : Name) (ty : Ty)
+  | static32 (values : List (BitVec 32))
+  | retSum (left argument : Expr)
   | memzero (array : Name) (index count : CLogic.Expr)
   | breakLoop
   | continueLoop
@@ -240,6 +268,8 @@ def calleeOf (token : Token) : Option Callee :=
   if token="zint_reduce_mod".toList then some .reduceMod else
   if token="zint_reduce".toList then some .reduce else
   if token="zint_bezout".toList then some .bezout else
+  if token="bitlength".toList then some .bitlength else
+  if token="zint_signed_bit_length".toList then some .signedBitLength else
   if token="zint_mod_small_unsigned".toList then some (.leaf .reduce) else
   if token="zint_add_mul_small".toList then some (.leaf .addMul) else
   if token="zint_mul_small".toList then some (.leaf .mul) else
@@ -364,8 +394,45 @@ def primeRead (src : Token) (rest : List Token)
     | _ => none
   | _ => none
 
+/- Initializer grammar for the unsized `static const unsigned vv[]`.
+   The source supplies its inferred length; decimal/hex literals use the
+   pinned C literal typing rule, with no truncation of out-of-range words. -/
+def staticWords : Nat → List Token → Option (List (BitVec 32)×List Token)
+  | 0,_ => none
+  | fuel+1,token::rest => do
+    let expression ← CLogicParser.number token
+    let n ← match expression with | .literal _ n => some n | _ => none
+    if n≥2^32 then none else do
+      match rest with
+      | ['}']::[';']::tail => pure ([BitVec.ofNat 32 n],tail)
+      | [',']::tail => do
+        let (values,tail) ← staticWords fuel tail
+        pure (BitVec.ofNat 32 n::values,tail)
+      | _ => none
+  | _,_ => none
+
+/- A value-level call in the returned sum. The word-expression parser
+   supplies the exact operator tree, but this call must execute bitlength's
+   body rather than fall through to the closed modular-call relation. No
+   invented local or pointer-to-scalar argument is introduced. -/
+def returnValueCall (types : KeygenWordExpr.Types) (ptrs : List Name) :
+    List Token → Option (Stmt×List Name×List Token)
+  | ['r','e','t','u','r','n']::rest => do
+    let (e,rest) ← KeygenWordExpr.expression (env types ptrs) rest
+    match e,rest with
+    | .bin .add left (.call1 name argument),[';']::tail =>
+      if name="bitlength".toList then some (.retSum left argument,ptrs,tail) else none
+    | _,_ => none
+  | _ => none
+
 def fresh (types : KeygenWordExpr.Types) (ptrs : List Name) :
     List Token → Option (Stmt×List Name×List Token)
+  | ['r','e','t','u','r','n']::[';']::rest => pure (.retVoid,ptrs,rest)
+  | ['r','e','t','u','r','n']::rest => returnValueCall types ptrs ("return".toList::rest)
+  | ['s','t','a','t','i','c']::['c','o','n','s','t']::['u','n','s','i','g','n','e','d']::
+      ['v','v']::['[']::[']']::['=']::['{']::rest => do
+    let (values,rest) ← staticWords 64 rest
+    pure (.static32 values,vvName::ptrs,rest)
   | slot::['=']::['*']::['(']::ty::['*']::[')']::['&']::src::[';']::rest => do
     let base ← KeygenWordExpr.typeToken ty
     pure (.bitcastInto slot src (C99ValueBridge.type base),ptrs,rest)
@@ -419,7 +486,6 @@ def fresh (types : KeygenWordExpr.Types) (ptrs : List Name) :
         | none => none
       | _ => none
     | _ => none
-  | ['r','e','t','u','r','n']::[';']::rest => pure (.retVoid,ptrs,rest)
   | ['b','r','e','a','k']::[';']::rest => pure (.breakLoop,ptrs,rest)
   | ['c','o','n','t','i','n','u','e']::[';']::rest => pure (.continueLoop,ptrs,rest)
   | slot::['=']::src::['[']::rest =>
@@ -427,15 +493,17 @@ def fresh (types : KeygenWordExpr.Types) (ptrs : List Name) :
       match tail with
       | [';']::done => some (.prime slot src srcIndex field,ptrs,done)
       | _ => none)
-  | tokens => match ternaryAssign types ptrs tokens with
-    | some conditional => some conditional
-    | none => match pointerDeclare ptrs tokens with
-      | some declared => some declared
-      | none => match scalarDeclare tokens with
-        | some (code,rest) => some (code,ptrs,rest)
-        | none => match pointerStmt ptrs tokens with
+  | tokens => match returnValueCall types ptrs tokens with
+    | some returned => some returned
+    | none => match ternaryAssign types ptrs tokens with
+      | some conditional => some conditional
+      | none => match pointerDeclare ptrs tokens with
+        | some declared => some declared
+        | none => match scalarDeclare tokens with
           | some (code,rest) => some (code,ptrs,rest)
-          | none => none
+          | none => match pointerStmt ptrs tokens with
+            | some (code,rest) => some (code,ptrs,rest)
+            | none => none
 
 def clause (types : KeygenWordExpr.Types) (ptrs : List Name) :
     List Token → Option (Stmt×List Token)
@@ -459,6 +527,7 @@ def clauses (types : KeygenWordExpr.Types) (ptrs : List Name) (ending : Token) :
       | _ => none
 
 def declarations : Stmt → List Name×List Name
+  | .static32 _ => ([],[vvName])
   | .word (.modular (.base (.scalar (.declare _ vars)))) => (vars,[])
   | .word (.modular (.base (.declarePtr slot))) => ([],[slot])
   | .seq a b => ((declarations a).1++(declarations b).1,
@@ -645,10 +714,32 @@ def bezoutPart (index : Nat) : Stmt := (bezoutParsed index).getD skip
 def bezoutCode : Stmt := chain [bezoutPart 0,bezoutPart 1,bezoutPart 2,bezoutPart 3,
   bezoutPart 4,bezoutPart 5,bezoutPart 6,bezoutPart 7]
 
+/- Statement-boundary pieces keep the initializer and each return-call
+   grammar obligation independently kernel-checkable. Source line partitions
+   and non-vacuous per-piece audits live in KeygenZintExtract. -/
+def extractParsed : Callee → Nat → Option Stmt
+  | .bitlength,0 => region (widths .bitlength) [] 4209 21
+  | .bitlength,1 => region (widths .bitlength) [vvName] 4230 6
+  | .bitlength,2 => region (widths .bitlength) [vvName] 4236 1
+  | .signedBitLength,0 => region (widths .signedBitLength) [] 4247 2
+  | .signedBitLength,1 => region (widths .signedBitLength) [] 4249 3
+  | .signedBitLength,2 => region (widths .signedBitLength) [] 4252 7
+  | .signedBitLength,3 => region (widths .signedBitLength) [] 4259 3
+  | .signedBitLength,4 => region (widths .signedBitLength) [] 4262 1
+  | _,_ => none
+def extractPart (kind : Callee) (index : Nat) : Stmt := (extractParsed kind index).getD skip
+def bitlengthCode : Stmt := chain [extractPart .bitlength 0,extractPart .bitlength 1,
+  extractPart .bitlength 2]
+def signedBitLengthCode : Stmt := chain [extractPart .signedBitLength 0,
+  extractPart .signedBitLength 1,extractPart .signedBitLength 2,
+  extractPart .signedBitLength 3,extractPart .signedBitLength 4]
+
 def calleeParsed (kind : Callee) : Option Stmt :=
   match kind with
   | .leaf leaf => some (.word (KeygenZintLeaves.code leaf))
   | .bezout => some bezoutCode
+  | .bitlength => some bitlengthCode
+  | .signedBitLength => some signedBitLengthCode
   | _ => region (widths kind) (extraPointers kind) (bodyRegion kind).1
     ((bodyRegion kind).2-(bodyRegion kind).1)
 def calleeBody (kind : Callee) : Stmt := (calleeParsed kind).getD skip
@@ -660,7 +751,8 @@ def shapeAdd (left right : Nat×Nat×Nat×Nat) : Nat×Nat×Nat×Nat :=
    silently fell through to the sealed word grammar would not be counted, so
    the per-body shape audits close that fallback gap. -/
 def callShape : Stmt → Nat×Nat×Nat×Nat
-  | .word _ | .bitcastInto _ _ _ | .memzero _ _ _ | .breakLoop | .continueLoop => (0,0,0,0)
+  | .word _ | .bitcastInto _ _ _ | .static32 _ | .memzero _ _ _ | .breakLoop | .continueLoop => (0,0,0,0)
+  | .retSum _ _ => (1,0,0,0)
   | .call _ _ _ => (1,0,0,0)
   | .callBranch _ _ _ _ a b => shapeAdd (0,1,0,0) (shapeAdd (callShape a) (callShape b))
   | .prime _ _ _ _ => (0,0,1,0)
@@ -680,6 +772,7 @@ def bitcastCount : Stmt → Nat
   | _ => 0
 
 def only : List Name → Stmt → Bool
+  | _,.static32 _ | _,.retSum _ _ => true
   | names,.word code => KeygenWordExec.only names code
   | names,.call kind args dst =>
     C99PointerFootprint.arguments names (writable kind) (params kind) args && destOnly names dst
@@ -695,6 +788,17 @@ def only : List Name → Stmt → Bool
   | names,.branch _ yes no => only names yes && only names no
 
 inductive Exec : Stmt → State → Result → Prop where
+  | static32 (values : List (BitVec 32)) (before : State) (p : ArrayPointer)
+      (binding : before.tables vvObject=some p)
+      (initialized : Static32 before.heap p values) :
+      Exec (.static32 values) before ⟨C99ArrayReference.bindPointer before vvName p,.normal⟩
+  | retSum (left argument : Expr) (before : State) (a x v z : Value) (out : Result)
+      (leftValue : KeygenWordExpr.Eval before left a)
+      (argumentValue : KeygenWordExpr.Eval before argument x)
+      (source : Exec (calleeBody .bitlength) (valueEntry before x) out)
+      (returned : C99ProcedureReference.ReturnValue (result .bitlength) out.flow (some v))
+      (addition : C99OperatorBridge.Binary .add a v z) :
+      Exec (.retSum left argument) before ⟨{before with heap := out.state.heap},.returned (some z)⟩
   | word (code : KeygenWordExec.Stmt) (before : State) (out : Result)
       (source : KeygenWordExec.Exec code before out) : Exec (.word code) before out
   | call (before : State) (kind : Callee) (args : List Arg) (dst : CDest) (entry : State)
@@ -842,6 +946,21 @@ theorem body_frame (calleeChecked : ∀ kind : Callee, only (writable kind) (cal
     C99ArrayFrame.Outside out.state names block offset ∧ out.state.tables=before.tables ∧
       out.state.heap.bytes block offset=before.heap.bytes block offset := by
   induction source generalizing names with
+  | static32 values before p binding initialized =>
+    refine ⟨?_,rfl,rfl⟩
+    intro n hn q hq
+    by_cases he : n=vvName
+    · have hpq : p=q := Option.some.inj (by simpa [C99ArrayReference.bindPointer,he] using hq)
+      subst q
+      exact tables vvObject p binding
+    · exact outside n hn q (by simpa [C99ArrayReference.bindPointer,he] using hq)
+  | retSum left argument before a x v z out leftValue argumentValue source returned addition ih =>
+    have ho : C99ArrayFrame.Outside (valueEntry before x) (writable .bitlength) block offset := by
+      intro n hn
+      cases hn
+    have ht : C99PointerFootprint.TablesOutside (valueEntry before x) block offset := tables
+    obtain ⟨_,_,keep⟩ := ih (writable .bitlength) (calleeChecked .bitlength) ho ht
+    exact ⟨outside,rfl,keep⟩
   | word code before out source =>
     exact KeygenWordExec.body_frame code before out source names checked block offset outside
   | call before kind args dst entry out v after binding source returned receive ih =>
