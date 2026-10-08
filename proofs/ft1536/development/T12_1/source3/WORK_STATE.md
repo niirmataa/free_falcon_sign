@@ -1,5 +1,27 @@
 # T12.1/source3 — żywy stan
 
+## B1.05c — sampled attempt continuation — 2026-10-08
+
+Owner resumed checkpoint section 10R with GPT-6 Astra Ultrafast.
+BATCH_031 is IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN;
+B1.05 Acceptance remains NOT MET. Before edits or proof jobs, the committed
+BATCH_030 verifier checked BATCH_015–030: 4510 distinct pins, 539 current
+inputs, no supersession and no active proof job. Entry receipt:
+`.build/levels_031/ENTRY_PINS_031.json`, SHA256
+`094e3bc10bc90f51b66cfd984a344e93b7d4a717bb59e07bbe7af51fd7b43a0f`.
+Next: actual sampler context, raw/GS/public operational closure, and same
+material transport into `KeygenRootCaller.success`.
+
+`KeygenAttemptFft` binds the full mulconst3 body and its internal.h alias.
+`KeygenAttemptNorm` binds raw-bound initialization, the complete active GS
+computation and both raw/GS rejection gates, deriving byte preservation and
+allocation/read-only stability. Accepted jobs `keygen_attempt_fft_031_002`
+and `keygen_attempt_norm_031_003` have 0/0 logs; the three failed proof/parser
+attempts are retained. The signed `73732L` literal is explicitly lowered to
+the LP64 signed-long cast because the inherited parser lacks an L suffix.
+This is a local operational/material result; sampled entry composition and
+the public helper still have to be connected.
+
 ## B1.05c — CLOSED at complete active root/caller — 2026-10-08
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
