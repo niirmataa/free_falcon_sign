@@ -1,5 +1,33 @@
 # T12.1/source3 — żywy stan
 
+## B1.05 — CLOSED at same sampled raw/GS/public material — 2026-10-08
+
+**CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
+**B1.05 Acceptance NOT MET; B1.06 not entered.** Resume checkpoint **11R**.
+`KeygenAttemptMaterial.material` derives the SAME retained f/g vectors with
+Bound1 through both actual sampler calls, resultant gates, bound/raw/GS
+and public gate, including rejection edges. Incoming vectors/bounds are
+absent from its Entry. Full public helper closure (17 bodies), unsigned16
+stores/loads, local-array lifetimes, embedded-RNG pointwise frames and
+metadata/static-byte frames are checked.
+
+Remaining: derive Entry from actual preceding dimension/rt initialization;
+derive RootCaller.Legal at the NORMAL prefix output from original legal
+profile/static/scratch memory; consume the existing root return1 theorem.
+The sampled-bound transport is now proved. The missing enclosing legality
+composition is not a code counterexample or a completed Acceptance.
+
+Pair JSON `0c9a115662976366fde92ae515aa372663674dc3d3988718e3e1532f26facb74`,
+notes `7c7a5131d2fa6003a5d85c2b0621240c77b26f6b7a0537ee0c0622aa40faaec7`.
+POSTSEAL `.build/levels_031/POSTSEAL.json` SHA256
+`4c68c6716e807a111b0eb5a7eaa3a0b23a384abc997dcb5ed08833fe78e49955`:
+4824 distinct pins,554 current inputs,no active job,no predecessor changes.
+15 accepted modules,all0/0;268-entry full audit,standard axioms,zero elisions.
+Sage:10 normal/UBSan runs ×24 public fixtures,four detected mutations/mode.
+All29 attempts/32 steps retained;no unresolved Lean draft. Source commits
+`a776a183`, `4322e2df`, `2661ee1c`, `08cf8002`, `510d0804`, plus final
+pair/checkpoint commit. No push,review,import,migration,worker or relay.
+
 ## B1.05c — sampled attempt continuation — 2026-10-08
 
 Owner resumed checkpoint section 10R with GPT-6 Astra Ultrafast.

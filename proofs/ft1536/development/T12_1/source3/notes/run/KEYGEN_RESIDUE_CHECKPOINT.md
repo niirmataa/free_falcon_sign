@@ -1,3 +1,132 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.05 sampled-material closure / caller-entry midpoint
+
+**PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
+2026-10-08, BATCH_031, GPT-6 Astra Ultrafast. **CLOSED_AT_RECOVERABLE_MIDPOINT.**
+**B1.05 Acceptance NOT MET; B1.06 not entered.** Resume: section11R.
+
+## 11. Closed this window — Bound1 through the actual raw/GS/public gates
+
+Small local source commits on main as niirmataa: `a776a183`, `4322e2df`,
+`2661ee1c`, `08cf8002`, `510d0804`, plus the final pair/checkpoint commit.
+Exact owned paths under shared archive.lock. Complete scope, failed histories
+and traps151–158: `KEYGEN_SOURCE_TO_FIBER_001_BATCH_031_NOTES.md` and `_031.json`.
+
+1. **Raw/GS:** complete raw-bound initialization7958–7964 and complete GS
+   computation/gate7995–8019, reusing raw norm and the actual object-copy
+   comparison. The missing mulconst3 body1119–1128 and internal.h646 alias
+   are checked. Material, allocation and immutable-byte frames are derived.
+2. **Embedded RNG:** actual fk argument resolution, rng at offset8, all
+   SHAKE subobjects and pointwise preservation within the same allocation.
+   M0 fields and adjacent tmp bytes survive all actual refills. Full MODE1
+   two_calls still supplies the vectors and Bound1, without a distribution.
+3. **Public helper:** all17 bodies in the operational closure: nine scalar
+   mq/rev10 helpers and eight array procedures including compute_public.
+   Actual signed f/g versus unsigned16 reads, stores/narrowing, both NTT
+   dispatch arms, M0 twiddle generation and automatic t/gm/igm lifetimes.
+   Both returns preserve protected material; metadata and read-only bytes
+   are derived separately. Public/inverse algebra remains B1.06.
+4. **Composition:** actual pointer/table frames and resultant metadata;
+   one Exec for the SAME two sampler calls → resultant gates → bound/raw/GS
+   → public gate. Every rejection edge remains. The same sampled f/g has
+   Bound1 in the resulting heap, with no incoming f/g material/bound premise.
+
+### 11.1 Exact new boundary and remaining composition
+
+```text
+ctx : KeygenSearchContext.Context
+before : C99ArrayReference.State; out : C99ProcedureReference.Result
+f, g : C99MemoryReference.ArrayPointer
+entry : KeygenAttemptMaterial.Entry ctx before f g
+source : KeygenAttemptMaterial.Exec ctx before out
+-------------------------------------------------------------------
+exists fv gv : Geometry.Vec,
+  KeygenMaterial.Represents out.state.heap f fv and Bound fv 1 and
+  KeygenMaterial.Represents out.state.heap g gv and Bound gv 1
+```
+
+Entry = live/disjoint f/g/context objects, width2, actual f/g slots, n1536
+caller slot and initial rt/h/table separation. All fields and constructors
+are fully audited. These are initial memory/profile facts; no incoming
+coefficient bounds, arbitrary callee/frame or NTRU equation is supplied.
+
+**Still OPEN:** derive this Entry from the preceding actual caller
+initialization, and derive `KeygenRootCaller.Legal` at the NORMAL output
+of the same prefix from original legal context/static/scratch memory.
+Then consume the already checked root Call/return1 theorem. The new
+material theorem removes the sampled-bound transport gap from the first
+sampler call through public; it does not itself finish this caller-entry
+composition. This is a missing enclosing proof, not a numerical/code
+counterexample. No complete KeyGen/termination/probability/compiler or
+security claim follows.
+
+### 11.2 Pins and completed checks
+
+BEFORE edits/jobs, BATCH_015–030 verified:4510 distinct pins,539 current
+inputs,no supersession,no active job. Entry receipt:
+`.build/levels_031/ENTRY_PINS_031.json` SHA256
+`094e3bc10bc90f51b66cfd984a344e93b7d4a717bb59e07bbe7af51fd7b43a0f`.
+Identical predecessor closure rechecked at preseal and during sealing.
+
+- **BATCH_031 JSON:** `0c9a115662976366fde92ae515aa372663674dc3d3988718e3e1532f26facb74`.
+- **BATCH_031 notes:** `7c7a5131d2fa6003a5d85c2b0621240c77b26f6b7a0537ee0c0622aa40faaec7`.
+- **Full audit:** `43d10fe1079e170f23819a7820801d118dbff9895cb0fe3d3bef5f19f5d07618`.
+- **Audit receipt:** `ab1eae82dfcd0eba8b427042b5f45164bb9268ae91926f3334395e2e484f1bbc`.
+- **Material source:** `63b9f4ef32d99898ac58aab0faa212effe9dadf04e2eacfdcc0caa0737a3e525`.
+- **POSTSEAL:** `.build/levels_031/POSTSEAL.json`, SHA256
+  `4c68c6716e807a111b0eb5a7eaa3a0b23a384abc997dcb5ed08833fe78e49955`:
+  **4824 distinct pins,554 current inputs,no active job**.
+
+Fifteen current accepted Lean modules,0/0 streams. Full audit268 entries:
+242 new named declarations and26 inherited interfaces,232 complete terms,
+36 inductives/structures with constructor types, standard axioms only,
+zero elisions. The713364-byte artifact remains in
+`.build/jobs/keygen_attempt_audit_031_002/`, with tracked generator/producer
+and full closure pins. Maximum accepted cumulative RSS5882828KiB; all
+process/kernel/print limits unchanged.
+
+Sage/ZZ controls:10 normal/UBSan runs ×24 public fixtures, exact two-call
+MODE1 values/cursor, actual LP64 offsets, raw/GS words and retained input/
+context/sentinels. Four mutations detected in both modes. Public helpers
+are also exercised independently after earlier rejected gates; these are
+finite helper controls, not full-attempt acceptance evidence. All29 attempts/
+32 steps retained:13 wholly current accepted,14 failed,2 accepted earlier
+interfaces. No unresolved Lean draft or owned job remains.
+
+## 11R. Resume protocol — derive caller entry and finish the root composition
+
+1. Read source3/WORK_STATE, this checkpoint, EXECUTION_PLAN B1.05 and
+   `run2/notes/B1_STAGED_ROADMAP.md`. Full sampler→resultant→raw/GS→public
+   material transport is now checked. **Acceptance remains NOT MET.**
+2. BEFORE edits/jobs, verify BATCH_015–031:
+
+   ```sh
+   mkdir -p .build/levels_032
+   python3 -B tools/keygen_attempt_batch.py verify 0c9a115662976366fde92ae515aa372663674dc3d3988718e3e1532f26facb74 7c7a5131d2fa6003a5d85c2b0621240c77b26f6b7a0537ee0c0622aa40faaec7 .build/levels_032/ENTRY_PINS_032.json
+   ```
+
+   Expect4824 distinct pins,554 current inputs,no active job. Preserve all
+   failed and earlier-interface snapshots and their exact scope.
+3. Bind actual dimension reads/MKN7824–7826 and local declaration/tmp/rt
+   initialization7876–7881. Derive `KeygenAttemptMaterial.Entry` at the
+   actual first sampler call. Reuse Resolve/rng/profile; do not redo loops.
+4. Transport the initial legal profile/source prime/REV10/scratch objects
+   and separation through that SAME prefix. Derive
+   `KeygenRootCaller.Legal ctx rootEntry input primes rev` at its normal
+   output. Available: sampler subobject/context frames; resultant stable/
+   slots; norm stable/slots; public stable/material frame. The static-byte
+   invariant must use read-only stability, not a disjoint-all-tables premise
+   for the table's own block. Initial caller memory is allowed; final Legal
+   or an arbitrary transition/frame cannot replace this derivation.
+5. Consume the derived Entry/material/Bound1 and RootCaller.Legal with
+   `KeygenRootCaller.success` on the actual root Call/return1. Validation,
+   output bounds2047 and integer NTRU are already derived. Only this
+   composition closes B1.05 Acceptance; B1.06 waits.
+6. Unique `keygen_attempt_*_032_*` labels through `tools/job_when_available.py`;
+   one guarded job, unchanged limits,0/0 logs. Small source-bound steps,
+   Sage standard preparser in persistent job environments, small local
+   commits. Finish at Acceptance or the next expanded recoverable midpoint.
+   No automatic push/review/worker/relay/migration/stages import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.05c root/caller closure / attempt-prefix midpoint
 
 **PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
