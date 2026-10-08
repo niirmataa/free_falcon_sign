@@ -21,6 +21,13 @@ real memory. Accepted `_level_ntt_024_001` and `_level_calls_024_001`
 (prefix `keygen`), four modules,0/0 logs. The enclosing static table and
 search caller remain to be instantiated; no deepest/intermediate claim yet.
 
+`KeygenMakeFgTop` binds the entire make_fg_ternary_top5579–5668 body and
+derives preservation of any original material separated from its data/static
+objects. It executes memmove, actual prime-member loads, complete generator,
+forward/inverse NTT and all stores. Both out_ntt paths are retained.
+Accepted `keygen_makefg_top_024_001`, two modules,0/0 logs. This is the
+shared ternary-top dependency; make_fg_step/CRT/Bezout remain open.
+
 ## B1.05 — CLOSED at complete depth0/search-frame midpoint — 2026-10-08
 
 **B1.05 Acceptance NOT MET.** Complete local `solve_NTRU_ternary_depth0`
