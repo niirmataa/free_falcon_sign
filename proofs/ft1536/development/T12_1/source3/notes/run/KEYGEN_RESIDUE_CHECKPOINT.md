@@ -1,3 +1,140 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.05c root/caller closure / attempt-prefix midpoint
+
+**PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
+2026-10-08, BATCH_030, GPT-6 Astra Ultrafast. **CLOSED_AT_RECOVERABLE_MIDPOINT.**
+**B1.05 Acceptance NOT MET; B1.06 not entered.** Resume: section10R.
+
+## 10. Closed this window — complete active M0 root and return to the caller
+
+Small local source commits on main as niirmataa: `691b965e`, `2fa9a920`,
+`095f1ba9`, `a068de60`, plus this final pair/checkpoint commit. Exact owned
+paths under shared archive.lock. Full scope and failed histories:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_030_NOTES.md` and `_030.json`.
+
+1. **Root search:** all55 prefix lines7282–7336, actual logn/MKN/profile
+   reads, deepest, dynamic M0 dispatch, depth declaration/assignment,
+   post-decrement loop, intermediate gates, depth0 and scope restoration.
+   `dispatch_enabled` derives the ternary route; `loop_trace` derives actual
+   depths `[9,8,7,6,5,4,3,2,1]` and terminal0. Rejections are retained.
+2. **Memory/static transport:** derived allocation metadata/read-only-byte
+   stability through all fixed active helpers, including memcpy/memmove,
+   scaled subtraction, deepest/intermediate/depth0 and the root. Source
+   prime/size/REV10 objects, legal scratch and M0 context can be transported.
+   No supplied heap frame replaces execution.
+3. **Validation entry:** actual tmp aliases, conditional prime selection,
+   indexed p/g reads, ninv31, generator Bind/body, conversions, four NTTs,
+   target and comparison. `KeygenRootValidation.validation` DERIVES every
+   inherited Validation field; the record is no longer a root premise.
+4. **Caller:** `KeygenRootCaller.success` consumes the actual five-pointer
+   Bind, whole active M0 root execution and observed return1. It returns
+   exact integer NTRU and bounds for the SAME retained caller arrays.
+   The115-line complete body partition, header/close/MKN and actual caller
+   gate8097–8106 are certified by `KeygenRootCoverage`.
+
+### 10.1 Exact local boundary and remaining premise
+
+```text
+ctx : KeygenSearchContext.Context
+before, after : C99ArrayReference.State; v : C99IntegerReference.Value
+input : Fin 4 → C99MemoryReference.ArrayPointer
+primes, rev : C99MemoryReference.ArrayPointer
+legal : KeygenRootCaller.Legal ctx before input primes rev
+source : KeygenRootSource.Call ctx before after v
+returned : v = int32 1
+f, g : Geometry.Vec
+fRepr : KeygenMaterial.Represents before.heap (input 0) f
+gRepr : KeygenMaterial.Represents before.heap (input 1) g
+fBound : KeygenIntegerLift.Bound f 1
+gBound : KeygenIntegerLift.Bound g 1
+---------------------------------------------------------------------
+∃ F G, Bounds(1,1,2047,2047) ∧
+  multiply f G - multiply g F = constantCoeffs (18433 : Int) ∧
+  ∀ slot, Represents after.heap (input slot) (material f g F G slot)
+```
+
+Legal is input profile, source static objects, actual pointer bindings,
+scratch allocation and required separation; all fields/constructors are
+fully audited. No equation, solver correctness, F/G bounds, generated NTT
+table/image, Validation or arbitrary callee/frame is an input.
+
+**Incoming f/g Represents and Bound1 remain explicit local premises.**
+Their arrival from the actual sampler through the complete preceding
+attempt is OPEN. That is the remaining B1.05 obligation, not a numerical
+counterexample or failure of the now-checked root. No full sampled-attempt,
+compiler, termination, distribution or security claim follows here.
+
+### 10.2 Pins, full audit and finite controls
+
+BEFORE edits/jobs, BATCH_015–029 verified:4243 distinct pins,527 current
+inputs,no supersession,no active job. Entry receipt:
+`.build/levels_030/ENTRY_PINS_030.json` SHA256
+`081d46659ff070cf49dc92446b8b84f3d694372b77c586b9c51120ba21133c6a`.
+Identical predecessor closure rechecked at preseal; no old pin changed.
+
+- **BATCH_030 JSON:** `2b6dd2c2b36ef8824159121661e8db9868807cfed8903fe4e867a86dd26b86b2`.
+- **BATCH_030 notes:** `d6c555a0b7c518d4ba1f9cc3ac82ef69cdc4308d39577f9d992ca05eca736163`.
+- **Full audit:** `f2ccbea7495f2df6fe26e3f10dcaa52a0b376c7b782cf4bbf41efb3ada1ba0a8`.
+- **Audit receipt:** `e3221ba0f193d46c7afb349a5d20ee2462d1fd03911dfa49a96eae5c2073d262`.
+- **POSTSEAL:** `.build/levels_030/POSTSEAL.json`, SHA256
+  `74d36b61bda74fb64c744c083debab9e9e93e0c68094e94d7c0557f8f5abf978`:
+  **4510 distinct pins,539 current inputs,no active job**.
+
+Twelve current accepted Lean modules,0/0 streams. Audit173 entries covers
+149 new named declarations and24 inherited interfaces:145 complete terms,
+28 inductives/structures with full constructor types,standard axioms only,
+zero elisions. The19538876-byte artifact is retained in
+`.build/jobs/keygen_root_audit_030_001/` with tracked generator/producer and
+complete closure pins. Maximum accepted cumulative RSS4917460KiB; all
+process/kernel/print limits unchanged.
+
+Sage/ZZ:10 normal/UBSan runs ×14 public synthetic root cases; four mutations
+detected in both modes. Each baseline includes nine in-range successes,
+three in-range nonconstant rejections, one in-range constant rejection and
+one outside-MODE1 helper success. Actual depths/terminal decrement, exact
+integer equation, output bounds and retained input/context/sentinels are
+checked. These finite controls do not supply missing sampler-to-root proof.
+
+All26 attempts/27 steps remain:12 wholly accepted,13 failed,one superseded
+source-order draft. Traps142–150 are in the notes. Important: the first
+accepted draft restored depth before depth0; it was corrected BEFORE the
+source commit and is explicitly not current evidence. A generator-binding
+heartbeat exhaustion was resolved by typed conversion normalization, not
+by raising limits. No unresolved Lean draft or owned job remains.
+
+## 10R. Resume protocol — sampled material through the complete attempt prefix
+
+1. Read source3/WORK_STATE, this checkpoint, EXECUTION_PLAN B1.05 and
+   `run2/notes/B1_STAGED_ROADMAP.md`. The whole active M0 root/caller is now
+   checked with the exact local boundary above. **Acceptance remains NOT MET.**
+2. BEFORE edits/jobs, verify BATCH_015–030:
+
+   ```sh
+   mkdir -p .build/levels_031
+   python3 -B tools/keygen_root_batch.py verify 2b6dd2c2b36ef8824159121661e8db9868807cfed8903fe4e867a86dd26b86b2 d6c555a0b7c518d4ba1f9cc3ac82ef69cdc4308d39577f9d992ca05eca736163 .build/levels_031/ENTRY_PINS_031.json
+   ```
+
+   Expect4510 distinct pins,539 current inputs,no active job. Preserve every
+   failed/superseded snapshot and its actual scope; never weaken a mismatch.
+3. Bind the actual sampler caller fk->rng/layout/profile/static environment.
+   Reuse full sampler/two_calls and resultant gates. Compose their SAME f/g
+   with raw-bound initialization7958–7964, raw norm and full GS7995–8019.
+   Missing operational dependency: `falcon_poly_mulconst_fft3` alias to
+   `falcon_poly_mulconst3` (`internal.h`646; `falcon-fft.c`1119–1128).
+4. Bind complete active `falcon_compute_public` (`falcon-vrfy.c`1521–1547)
+   and all fixed active callees, uint16 stores, automatic t lifetime and
+   actual failures. Here prove material preservation, leaving public/inverse
+   algebra to B1.06. No arbitrary public-call frame can replace that body.
+5. Derive RootCaller.Legal and incoming f/g Represents/Bound1 from this SAME
+   full attempt prefix and consume `KeygenRootCaller.success`. The root's
+   Validation fields, F/G bounds and integer equation are already derived;
+   do not redo or re-assume them. Close Acceptance only at that composition.
+6. Unique `keygen_attempt_*_031_*` labels via `tools/job_when_available.py`;
+   one guarded proof job, unchanged limits,0/0 logs. Small definitions and
+   statement-boundary certificates; exact controls via `sage file.sage` in
+   the persistent job environment. Small local commits and expanded pair/
+   checkpoint at Acceptance or the next context-discipline midpoint.
+   No automatic push/review/worker/relay/migration/stages import; B1.06 waits.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.05c intermediate closure / root midpoint
 
 **PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**

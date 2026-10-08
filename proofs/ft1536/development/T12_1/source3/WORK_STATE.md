@@ -1,5 +1,35 @@
 # T12.1/source3 — żywy stan
 
+## B1.05c — CLOSED at complete active root/caller — 2026-10-08
+
+**CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
+**B1.05 Acceptance NOT MET; B1.06 not entered.** Resume checkpoint **10R**.
+The active M0 root now composes deepest → actual intermediate depths9…1 →
+depth0 → output gate → generated/conversion/four-NTT/target/check suffix →
+actual caller return. `KeygenRootCaller.success` derives exact integer NTRU,
+F/G bounds2047 and the SAME final caller arrays, with every Validation field
+constructed from source execution. Allocation metadata/static-object frames
+and the complete115-line source partition are checked.
+
+The remaining local premises are incoming f/g Represents/Bound1 and legal
+root entry objects/profile. Full sampler-to-root transport through bound/
+raw norm/GS/public and actual caller initialization is still OPEN. This is
+a missing enclosing source proof, not a numerical failure or code bug.
+Next: actual sampler context binding, preceding gate composition and full
+operational public helper frame, then consume the existing root theorem.
+
+Pair JSON `2b6dd2c2b36ef8824159121661e8db9868807cfed8903fe4e867a86dd26b86b2`,
+notes `d6c555a0b7c518d4ba1f9cc3ac82ef69cdc4308d39577f9d992ca05eca736163`.
+POSTSEAL `.build/levels_030/POSTSEAL.json` SHA256
+`74d36b61bda74fb64c744c083debab9e9e93e0c68094e94d7c0557f8f5abf978`:
+4510 distinct pins,539 current inputs,no active job,no predecessor change.
+Twelve current accepted modules,all0/0;173-entry full audit,standard axioms,
+zero elisions. Exact Sage controls:10 normal/UBSan runs ×14 public cases,
+nine in-range successes per baseline,four mutations detected in both modes.
+All26 attempts/27 steps retained; no unresolved production Lean draft.
+Source commits `691b965e`, `2fa9a920`, `095f1ba9`, `a068de60`, plus final
+pair/checkpoint commit. No push, review, import, migration, worker or relay.
+
 ## B1.05c — root/caller continuation — 2026-10-08
 
 Owner resumed checkpoint section 9R with GPT-6 Astra Ultrafast.
