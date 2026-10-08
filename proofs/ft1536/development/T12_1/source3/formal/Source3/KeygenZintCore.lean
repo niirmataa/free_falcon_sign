@@ -6,11 +6,13 @@ set_option maxHeartbeats 2000000
 
 /- Source bindings of the signed/reduction/CRT bigint closure used by
    make_fg_step and zint_bezout: zint_mod_small_signed, zint_norm_zero,
-   zint_exact_length, zint_rshift1_mod, zint_sub_mod and the complete
-   zint_rebuild_CRT body. Every callee executes its pinned body; the
+   zint_exact_length, zint_rshift1_mod, zint_sub_mod, the complete
+   zint_rebuild_CRT body and the co-reduce/reduce family (zint_co_reduce,
+   zint_co_reduce_mod, zint_reduce, zint_reduce_mod). Every callee executes
+   its pinned body; the
    seven sealed leaves are shared through KeygenZintLeaves. These are
-   operational/frame results: no CRT correctness, normalization or
-   Bezout claim is made here. -/
+   operational/frame results: no CRT correctness, normalization,
+   reduction or Bezout claim is made here. -/
 namespace FT1536.Source3.KeygenZintCore
 open C99ArrayReference (State Name Param Arg)
 open C99MemoryReference
@@ -80,6 +82,54 @@ theorem rebuild_crt_shape : (KeygenZintCall.calleeParsed .rebuildCrt).map Keygen
 theorem rebuild_crt_audit : (KeygenZintCall.calleeParsed .rebuildCrt).map
     (KeygenZintCall.only (KeygenZintCall.writable .rebuildCrt))=some true := by decide
 
+/- Co-reduce/reduce family used by zint_bezout. The bodies exercise the
+   same-width `*(T*)&local` bitcasts (zint_co_reduce, zint_reduce and both
+   mod variants) and the `#define M`/`#undef M` macro scope with token
+   substitution (zint_co_reduce_mod). These are operational/frame results:
+   no Bezout, reduction or Montgomery claim is made here. -/
+theorem co_reduce_header : region 3666 3 = ["static int\n",
+  "zint_co_reduce(uint32_t *a, uint32_t *b, size_t len,\n",
+  "\tint32_t xa, int32_t xb, int32_t ya, int32_t yb)\n"] := by decide
+theorem co_reduce_close : Pinned.keygenLines[3724]?=some "}\n" := by decide
+theorem co_reduce_audit : (KeygenZintCall.calleeParsed .coReduce).map
+    (KeygenZintCall.only (KeygenZintCall.writable .coReduce))=some true := by decide
+theorem co_reduce_shape : (KeygenZintCall.calleeParsed .coReduce).map KeygenZintCall.callShape
+    =some (0,0,0,0) := by decide
+theorem co_reduce_bitcasts : (KeygenZintCall.calleeParsed .coReduce).map KeygenZintCall.bitcastCount
+    =some 2 := by decide
+
+theorem co_reduce_mod_header : region 3731 3 = ["static void\n",
+  "zint_co_reduce_mod(uint32_t *a, uint32_t *b, const uint32_t *m, size_t len,\n",
+  "\tuint32_t m0i, int32_t xa, int32_t xb, int32_t ya, int32_t yb)\n"] := by decide
+theorem co_reduce_mod_close : Pinned.keygenLines[3801]?=some "}\n" := by decide
+theorem co_reduce_mod_audit : (KeygenZintCall.calleeParsed .coReduceMod).map
+    (KeygenZintCall.only (KeygenZintCall.writable .coReduceMod))=some true := by decide
+theorem co_reduce_mod_shape : (KeygenZintCall.calleeParsed .coReduceMod).map KeygenZintCall.callShape
+    =some (4,2,0,0) := by decide
+theorem co_reduce_mod_bitcasts : (KeygenZintCall.calleeParsed .coReduceMod).map
+    KeygenZintCall.bitcastCount =some 2 := by decide
+
+theorem reduce_k_header : region 3808 2 = ["static int\n",
+  "zint_reduce(uint32_t *a, const uint32_t *b, size_t len, int32_t k)\n"] := by decide
+theorem reduce_k_close : Pinned.keygenLines[3844]?=some "}\n" := by decide
+theorem reduce_k_audit : (KeygenZintCall.calleeParsed .reduce).map
+    (KeygenZintCall.only (KeygenZintCall.writable .reduce))=some true := by decide
+theorem reduce_k_shape : (KeygenZintCall.calleeParsed .reduce).map KeygenZintCall.callShape
+    =some (0,0,0,0) := by decide
+theorem reduce_k_bitcasts : (KeygenZintCall.calleeParsed .reduce).map KeygenZintCall.bitcastCount
+    =some 1 := by decide
+
+theorem reduce_mod_header : region 3851 3 = ["static void\n",
+  "zint_reduce_mod(uint32_t *a, const uint32_t *b, const uint32_t *m,\n",
+  "\tsize_t len, uint32_t m0i, int32_t k)\n"] := by decide
+theorem reduce_mod_close : Pinned.keygenLines[3888]?=some "}\n" := by decide
+theorem reduce_mod_audit : (KeygenZintCall.calleeParsed .reduceMod).map
+    (KeygenZintCall.only (KeygenZintCall.writable .reduceMod))=some true := by decide
+theorem reduce_mod_shape : (KeygenZintCall.calleeParsed .reduceMod).map KeygenZintCall.callShape
+    =some (2,1,0,0) := by decide
+theorem reduce_mod_bitcasts : (KeygenZintCall.calleeParsed .reduceMod).map
+    KeygenZintCall.bitcastCount =some 1 := by decide
+
 theorem parsed_of (kind : Callee)
     (audit : (KeygenZintCall.calleeParsed kind).map (KeygenZintCall.only (KeygenZintCall.writable kind))=some true) :
     KeygenZintCall.calleeParsed kind=some (KeygenZintCall.calleeBody kind) := by
@@ -105,6 +155,10 @@ theorem code_checked : ∀ kind : Callee,
   | rshiftMod => exact checked_of .rshiftMod rshift_mod_audit
   | subMod => exact checked_of .subMod sub_mod_audit
   | rebuildCrt => exact checked_of .rebuildCrt rebuild_crt_audit
+  | coReduce => exact checked_of .coReduce co_reduce_audit
+  | coReduceMod => exact checked_of .coReduceMod co_reduce_mod_audit
+  | reduce => exact checked_of .reduce reduce_k_audit
+  | reduceMod => exact checked_of .reduceMod reduce_mod_audit
 
 theorem material (kind : Callee) (before after : State) (args : List Arg) (v : Option Value)
     (source : KeygenZintCall.Call kind before args after v) (names : List Name)

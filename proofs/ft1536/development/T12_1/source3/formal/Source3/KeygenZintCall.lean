@@ -10,8 +10,9 @@ set_option maxHeartbeats 2000000
    zint_rshift1_mod/zint_sub_mod/zint_rebuild_CRT: calls to the sealed
    zint leaves and to new family members (each executed through its own
    parsed body, so no callee is arbitrary), prime-struct member reads
-   (tokenized by the member-access rule of `tokens`, trap 110),
-   pointer declaration/assignment/advance for the local walk pointer,
+   (tokenized by the member-access rule of `tokens`, trap 110), the
+   same-width `*(T*)&local` bitcast statements and the `#define`/`#undef`
+   macro scope of zint_co_reduce_mod, pointer declaration/assignment/advance for the local walk pointer,
    void return, and calls in conditions. Leaf callees share their real
    KeygenWordExec bodies through `calleeBody (.leaf kind)`. -/
 namespace FT1536.Source3.KeygenZintCall
@@ -25,6 +26,7 @@ open B20.C (Token)
 inductive Callee where
   | leaf (kind : KeygenZintLeaves.Kind)
   | modSigned | normZero | exactLen | rshiftMod | subMod | rebuildCrt
+  | coReduce | coReduceMod | reduce | reduceMod
   deriving DecidableEq, Repr
 
 def calleeName : Callee → Name
@@ -35,6 +37,10 @@ def calleeName : Callee → Name
   | .rshiftMod => "zint_rshift1_mod".toList
   | .subMod => "zint_sub_mod".toList
   | .rebuildCrt => "zint_rebuild_CRT".toList
+  | .coReduce => "zint_co_reduce".toList
+  | .coReduceMod => "zint_co_reduce_mod".toList
+  | .reduce => "zint_reduce".toList
+  | .reduceMod => "zint_reduce_mod".toList
 
 def params : Callee → List Param
   | .leaf kind => KeygenZintLeaves.params kind
@@ -50,6 +56,20 @@ def params : Callee → List Param
     .scalar .uint64 "xstride".toList,.scalar .uint64 "num".toList,
     .pointer "primes".toList,.scalar .int32 "normalize_signed".toList,
     .pointer "tmp".toList]
+  | .coReduce => [.pointer "a".toList,.pointer "b".toList,
+    .scalar .uint64 "len".toList,.scalar .int32 "xa".toList,
+    .scalar .int32 "xb".toList,.scalar .int32 "ya".toList,
+    .scalar .int32 "yb".toList]
+  | .coReduceMod => [.pointer "a".toList,.pointer "b".toList,
+    .pointer "m".toList,.scalar .uint64 "len".toList,
+    .scalar .uint32 "m0i".toList,.scalar .int32 "xa".toList,
+    .scalar .int32 "xb".toList,.scalar .int32 "ya".toList,
+    .scalar .int32 "yb".toList]
+  | .reduce => [.pointer "a".toList,.pointer "b".toList,
+    .scalar .uint64 "len".toList,.scalar .int32 "k".toList]
+  | .reduceMod => [.pointer "a".toList,.pointer "b".toList,
+    .pointer "m".toList,.scalar .uint64 "len".toList,
+    .scalar .uint32 "m0i".toList,.scalar .int32 "k".toList]
 
 def result : Callee → Option Ty
   | .leaf kind => KeygenZintLeaves.result kind
@@ -59,6 +79,10 @@ def result : Callee → Option Ty
   | .rshiftMod => none
   | .subMod => none
   | .rebuildCrt => none
+  | .coReduce => some .int32
+  | .coReduceMod => none
+  | .reduce => some .int32
+  | .reduceMod => none
 
 def writable : Callee → List Name
   | .leaf kind => KeygenZintLeaves.writable kind
@@ -68,6 +92,10 @@ def writable : Callee → List Name
   | .rshiftMod => ["x".toList]
   | .subMod => ["x".toList]
   | .rebuildCrt => ["xx".toList,"tmp".toList,"x".toList]
+  | .coReduce => ["a".toList,"b".toList]
+  | .coReduceMod => ["a".toList,"b".toList]
+  | .reduce => ["a".toList]
+  | .reduceMod => ["a".toList]
 
 def extraPointers : Callee → List Name
   | .rebuildCrt => ["x".toList]
@@ -86,6 +114,10 @@ def header : Callee → Nat×Nat
   | .rshiftMod => (3486,2)
   | .subMod => (3503,3)
   | .rebuildCrt => (3576,4)
+  | .coReduce => (3666,3)
+  | .coReduceMod => (3731,3)
+  | .reduce => (3808,2)
+  | .reduceMod => (3851,3)
 
 /-- Body region as (first body line, closing brace line). -/
 def bodyRegion : Callee → Nat×Nat
@@ -96,6 +128,10 @@ def bodyRegion : Callee → Nat×Nat
   | .rshiftMod => (3489,3498)
   | .subMod => (3507,3510)
   | .rebuildCrt => (3581,3634)
+  | .coReduce => (3670,3725)
+  | .coReduceMod => (3735,3802)
+  | .reduce => (3811,3845)
+  | .reduceMod => (3855,3889)
 
 inductive CDest where
   | discard
@@ -111,6 +147,7 @@ inductive Stmt where
   | prime (dst src : Name) (index : CLogic.Expr) (field : KeygenLevelCalls.Field)
   | storePrime (array : Name) (index : CLogic.Expr) (src : Name)
       (srcIndex : CLogic.Expr) (field : KeygenLevelCalls.Field)
+  | bitcastInto (dst src : Name) (ty : Ty)
   | retVoid
   | seq (first second : Stmt)
   | scope (locals pointers : List Name) (body : Stmt)
@@ -139,6 +176,29 @@ def destOnly : List Name → CDest → Bool
   | _,.discard | _,.into _ => true
   | names,.store array _ => names.contains array
 
+/- Same-width reinterpretation of an automatic scalar's object bytes for
+   the source type-pun `*(T*)&local` (the cast target is `T*`, GCC LP64).
+   The checked bodies only pun same-width locals (uint32->int32,
+   uint64->int64); cross-width reads stay outside this rule rather than
+   being approximated. -/
+def reinterpret (target : Ty) : Value → Option Value
+  | .uint64 x => match target with
+    | .uint64 => some (.uint64 x)
+    | .int64 => some (.int64 x)
+    | _ => none
+  | .int64 x => match target with
+    | .uint64 => some (.uint64 x)
+    | .int64 => some (.int64 x)
+    | _ => none
+  | .uint32 x => match target with
+    | .uint32 => some (.uint32 x)
+    | .int32 => some (.int32 x)
+    | _ => none
+  | .int32 x => match target with
+    | .uint32 => some (.uint32 x)
+    | .int32 => some (.int32 x)
+    | _ => none
+
 def calleeOf (token : Token) : Option Callee :=
   if token="zint_mod_small_signed".toList then some .modSigned else
   if token="zint_norm_zero".toList then some .normZero else
@@ -146,6 +206,10 @@ def calleeOf (token : Token) : Option Callee :=
   if token="zint_rshift1_mod".toList then some .rshiftMod else
   if token="zint_sub_mod".toList then some .subMod else
   if token="zint_rebuild_CRT".toList then some .rebuildCrt else
+  if token="zint_co_reduce_mod".toList then some .coReduceMod else
+  if token="zint_co_reduce".toList then some .coReduce else
+  if token="zint_reduce_mod".toList then some .reduceMod else
+  if token="zint_reduce".toList then some .reduce else
   if token="zint_mod_small_unsigned".toList then some (.leaf .reduce) else
   if token="zint_add_mul_small".toList then some (.leaf .addMul) else
   if token="zint_mul_small".toList then some (.leaf .mul) else
@@ -193,6 +257,9 @@ def primeRead (src : Token) (rest : List Token)
   | _ => none
 
 def fresh (ptrs : List Name) : List Token → Option (Stmt×List Name×List Token)
+  | slot::['=']::['*']::['(']::ty::['*']::[')']::['&']::src::[';']::rest => do
+    let base ← KeygenWordExpr.typeToken ty
+    pure (.bitcastInto slot src (C99ValueBridge.type base),ptrs,rest)
   | slot::['=']::callee::['(']::rest => do
     let kind ← calleeOf callee
     let (args,rest) ← C99ProcedureParser.arguments (params kind) rest
@@ -350,43 +417,69 @@ mutual
       pure (.seq first tail,final,rest)
 end
 
-/- Member-access tokenization rule (trap 110). The shared LeafScan lexer
-   surface refuses `.`, so prime-struct bodies (`primes[u].p`) never reached
-   their checked primeRead productions. This is the same lexer extended with
-   the dot token; comments and `//` lines are skipped exactly as in LeafScan,
-   and nothing else changes. The rule lives here so no shared pinned parse or
-   cache closure moves; KeygenZintCore pins the parse equalities it enables. -/
-def tokenize : Nat → List Char → Option (List Token)
+/- Member-access and macro-scope tokenization rules (trap 110). The shared
+   LeafScan lexer surface refuses `.`, so prime-struct bodies (`primes[u].p`)
+   never reached their checked primeRead productions. This is the same lexer
+   extended with the dot token; comments and `//` lines are skipped exactly
+   as in LeafScan, and nothing else changes. Preprocessor directives get the
+   C textual semantics used by zint_co_reduce_mod: `#define NAME tokens`
+   splices the tokenized rest-of-line at later word occurrences, `#undef
+   NAME` removes the binding, unknown directives are rejected. The rules live
+   here so no shared pinned parse or cache closure moves; KeygenZintCore
+   pins the parse equalities they enable. -/
+def expand (macros : List (Token×List Token)) (word : Token) : List Token :=
+  match macros.find? (fun entry => entry.1=word) with
+  | some (_,body) => body
+  | none => [word]
+
+def tokenize (macros : List (Token×List Token)) : Nat → List Char → Option (List Token)
   | 0,_ => none
   | _+1,[] => some []
   | fuel+1,'/'::'*'::rest => do
       let tail ← B20.C.Scalar.skipBlock (rest.length+1) rest
-      tokenize fuel tail
-  | fuel+1,'/'::'/'::rest => tokenize fuel (rest.dropWhile (· != '\n'))
+      tokenize macros fuel tail
+  | fuel+1,'/'::'/'::rest => tokenize macros fuel (rest.dropWhile (· != '\n'))
+  | fuel+1,'#'::cs =>
+      let line := cs.takeWhile (· != '\n')
+      let beyond := cs.drop line.length
+      let directive := line.takeWhile B20.C.wordChar
+      let after := line.drop directive.length
+      if directive="undef".toList then
+        let name := (after.dropWhile (·==' ')).takeWhile B20.C.wordChar
+        tokenize (macros.filter (fun entry => entry.1≠name)) fuel beyond
+      else if directive="define".toList then
+        let spacing := after.dropWhile (·==' ')
+        let name := spacing.takeWhile B20.C.wordChar
+        let body := (spacing.drop name.length).dropWhile (·==' ')
+        do
+          let expansion ← tokenize macros fuel body
+          tokenize ((name,expansion)::macros) fuel beyond
+      else none
   | fuel+1,c::cs =>
-      if c==' ' || c=='\t' || c=='\n' || c=='\r' then tokenize fuel cs
+      if c==' ' || c=='\t' || c=='\n' || c=='\r' then tokenize macros fuel cs
       else if B20.C.wordChar c then
         let tail:=cs.takeWhile B20.C.wordChar
-        (tokenize fuel (cs.drop tail.length)).map ((c::tail)::·)
+        let emitted := expand macros (c::tail)
+        (tokenize macros fuel (cs.drop tail.length)).map (emitted++·)
       else match c,cs with
-        | '+','+'::rest => (tokenize fuel rest).map (['+','+']::·)
-        | '>','>'::'='::rest => (tokenize fuel rest).map (['>','>','=']::·)
-        | '<','<'::'='::rest => (tokenize fuel rest).map (['<','<','=']::·)
-        | '>','>'::rest => (tokenize fuel rest).map (['>','>']::·)
-        | '<','<'::rest => (tokenize fuel rest).map (['<','<']::·)
-        | '&','&'::rest => (tokenize fuel rest).map (['&','&']::·)
-        | '|','|'::rest => (tokenize fuel rest).map (['|','|']::·)
+        | '+','+'::rest => (tokenize macros fuel rest).map (['+','+']::·)
+        | '>','>'::'='::rest => (tokenize macros fuel rest).map (['>','>','=']::·)
+        | '<','<'::'='::rest => (tokenize macros fuel rest).map (['<','<','=']::·)
+        | '>','>'::rest => (tokenize macros fuel rest).map (['>','>']::·)
+        | '<','<'::rest => (tokenize macros fuel rest).map (['<','<']::·)
+        | '&','&'::rest => (tokenize macros fuel rest).map (['&','&']::·)
+        | '|','|'::rest => (tokenize macros fuel rest).map (['|','|']::·)
         | _,'='::rest =>
             if ['+','-','*','^','&','|','=','!','<','>'].contains c then
-              (tokenize fuel rest).map ([c,'=']::·)
+              (tokenize macros fuel rest).map ([c,'=']::·)
             else none
         | _,_ =>
             if ['(',')','{','}','[',']',';',',','^','&','|','-','+','*','~','=','!','<','>','.'].contains c
-            then (tokenize fuel cs).map ([c]::·)
+            then (tokenize macros fuel cs).map ([c]::·)
             else none
 
 def tokens (text : List Char) : Option (List Token) :=
-  (tokenize (text.length+1) text).map C99ArrayParser.normalizeTypes
+  (tokenize [] (text.length+1) text).map C99ArrayParser.normalizeTypes
 
 def region (types : KeygenWordExpr.Types) (ptrs : List Name) (start count : Nat) : Option Stmt := do
   let chars := ((Pinned.keygenLines.drop (start-1)).take count).flatMap String.toList++['}']
@@ -408,7 +501,7 @@ def shapeAdd (left right : Nat×Nat×Nat×Nat) : Nat×Nat×Nat×Nat :=
    silently fell through to the sealed word grammar would not be counted, so
    the per-body shape audits close that fallback gap. -/
 def callShape : Stmt → Nat×Nat×Nat×Nat
-  | .word _ => (0,0,0,0)
+  | .word _ | .bitcastInto _ _ _ => (0,0,0,0)
   | .call _ _ _ => (1,0,0,0)
   | .callBranch _ _ _ _ a b => shapeAdd (0,1,0,0) (shapeAdd (callShape a) (callShape b))
   | .prime _ _ _ _ => (0,0,1,0)
@@ -418,6 +511,15 @@ def callShape : Stmt → Nat×Nat×Nat×Nat
   | .scope _ _ body => callShape body
   | .branch _ a b => shapeAdd (callShape a) (callShape b)
 
+/- Separate count of `*(T*)&local` statements: their parse has no fallback
+   production, so an exact per-body count pins the pun sites. -/
+def bitcastCount : Stmt → Nat
+  | .bitcastInto _ _ _ => 1
+  | .callBranch _ _ _ _ a b | .branch _ a b | .seq a b | .loop _ a b =>
+    bitcastCount a + bitcastCount b
+  | .scope _ _ body => bitcastCount body
+  | _ => 0
+
 def only : List Name → Stmt → Bool
   | names,.word code => KeygenWordExec.only names code
   | names,.call kind args dst =>
@@ -425,7 +527,7 @@ def only : List Name → Stmt → Bool
   | names,.callBranch kind args _ _ yes no =>
     C99PointerFootprint.arguments names (writable kind) (params kind) args
       && only names yes && only names no
-  | _,.prime _ _ _ _ => true
+  | _,.prime _ _ _ _ | _,.bitcastInto _ _ _ => true
   | names,.storePrime array _ _ _ _ => names.contains array
   | _,.retVoid => true
   | names,.seq a b | names,.loop _ a b => only names a && only names b
@@ -476,6 +578,12 @@ inductive Exec : Stmt → State → Result → Prop where
       (address : Pointer before array index p)
       (write : Store32 before.heap p w after) :
       Exec (.storePrime array index src srcIndex field) before ⟨{before with heap := after},.normal⟩
+  | bitcastInto (dst src : Name) (ty : Ty) (before : State) (held : Ty)
+      (old : Option Value) (v w : Value)
+      (declared : before.locals dst=some (ty,old))
+      (read : before.locals src=some (held,some v))
+      (view : reinterpret ty v=some w) :
+      Exec (.bitcastInto dst src ty) before ⟨bindValue before dst ty w,.normal⟩
   | retVoid (before : State) : Exec .retVoid before ⟨before,.returned none⟩
   | seqNormal (a b : Stmt) (before middle : State) (out : Result)
       (head : Exec a before ⟨middle,.normal⟩) (tail : Exec b middle out) : Exec (.seq a b) before out
@@ -597,7 +705,7 @@ theorem body_frame (calleeChecked : ∀ kind : Callee, only (writable kind) (cal
       simpa only [C99PointerFootprint.TablesOutside] using tables
     obtain ⟨oa,ta,fb⟩ := ih2 names hno base tm
     exact ⟨oa,ta,fb.trans fa⟩
-  | prime | retVoid | loopFalse => exact ⟨outside,rfl,rfl⟩
+  | prime | retVoid | loopFalse | bitcastInto => exact ⟨outside,rfl,rfl⟩
   | storePrime array index src srcIndex field before after p w read address write =>
     have member : array∈names := List.contains_iff_mem.mp checked
     have keep := write.2.2.2.2.2.2 block offset
