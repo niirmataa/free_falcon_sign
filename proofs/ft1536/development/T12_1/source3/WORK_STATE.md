@@ -52,6 +52,27 @@ are retained. make_fg size tables load64, f/g load16 and mixed declaration/
 pointer conditional are explicit. Static table initialization remains a
 root-caller obligation. Next: deepest's context members and actual gates.
 
+`KeygenDeepestSource` now binds all 48 body lines of solve_NTRU_deepest
+in five pieces (`keygen_zint_deepest_028_001`, accepted 0/0): actual LP64
+member reads, value-bound fk->ternary argument to complete make_fg,
+CRT, negated Bezout gate, short-circuit multiply OR and both returns.
+`material` derives retention of the same incoming vector on either return
+from scratch/static separation; `slots` restores caller locals/pointers.
+The root/intermediate call and initialization of full static tables remain
+open. This is the complete local deepest operational/frame closure.
+
+Full audit `keygen_zint_audit_028_001`: 546 entries, 528 covered module
+declarations plus 18 inherited interfaces; 509 full terms, 37 inductives
+with full constructor types, standard axioms only, zero elisions, 0/0.
+Sage `keygen_zint_checks_028_003`: exact ZZ/QQ expectations, 16 normal/
+UBSan runs with 266 rows each, all seven mutations detected in both modes.
+Two failed control attempts retained: auxiliary n=1 inverse harness path
+and an unused-parameter warning in a mutation; final baseline is clean.
+Preparing BATCH_028's recoverable checkpoint after the owner's listed
+deepest closure; B1.05 Acceptance still NOT MET. Next: full intermediate,
+remaining active dependencies, static/global/root binding and material
+transport into the already checked depth0/output/validation suffix.
+
 ## B1.05b — CLOSED at complete zint_bezout midpoint — 2026-10-08
 
 **B1.05 Acceptance NOT MET. CLOSED_AT_RECOVERABLE_MIDPOINT.**
