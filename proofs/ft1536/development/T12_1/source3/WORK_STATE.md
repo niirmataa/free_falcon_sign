@@ -38,6 +38,20 @@ strata reuse the fixed core without expanding its largest Bezout reduction.
 The first top attempt's two proof elaboration errors are retained. Next:
 scaled subtraction, make_fg and deepest/intermediate/root closure.
 
+Scaled subtraction and the make_fg closure are now kernel-checked:
+KeygenZintScaled (both bigint leaves, 3 pieces each), KeygenPolySubScaled
+(both polynomial branches, 3 pieces), KeygenBinaryNtt (complete binary
+generator/forward/inverse, 4/3/4 pieces), KeygenMakeFgSource (complete
+make_fg_step/make_fg, 5/4 pieces). Jobs `keygen_zint_scaled_028_001`,
+`keygen_zint_polysub_028_001`, `keygen_zint_binary_028_001`,
+`keygen_zint_makefg_028_001`: accepted 0/0. Source call counts exclude
+silent modular-call fallbacks. Backward pointers retain (F+j)-off order
+and intermediate bounds; k[u] is read as signed32. Binary REV10 reads
+are unsigned16, chained assignment and the inverse's empty statement
+are retained. make_fg size tables load64, f/g load16 and mixed declaration/
+pointer conditional are explicit. Static table initialization remains a
+root-caller obligation. Next: deepest's context members and actual gates.
+
 ## B1.05b — CLOSED at complete zint_bezout midpoint — 2026-10-08
 
 **B1.05 Acceptance NOT MET. CLOSED_AT_RECOVERABLE_MIDPOINT.**
