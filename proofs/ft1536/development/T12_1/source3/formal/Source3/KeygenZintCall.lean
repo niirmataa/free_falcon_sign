@@ -9,7 +9,8 @@ set_option maxHeartbeats 2000000
    used by zint_mod_small_signed/zint_norm_zero/zint_exact_length/
    zint_rshift1_mod/zint_sub_mod/zint_rebuild_CRT: calls to the sealed
    zint leaves and to new family members (each executed through its own
-   parsed body, so no callee is arbitrary), prime-struct member reads,
+   parsed body, so no callee is arbitrary), prime-struct member reads
+   (tokenized by the member-access rule of `tokens`, trap 110),
    pointer declaration/assignment/advance for the local walk pointer,
    void return, and calls in conditions. Leaf callees share their real
    KeygenWordExec bodies through `calleeBody (.leaf kind)`. -/
@@ -349,10 +350,48 @@ mutual
       pure (.seq first tail,final,rest)
 end
 
+/- Member-access tokenization rule (trap 110). The shared LeafScan lexer
+   surface refuses `.`, so prime-struct bodies (`primes[u].p`) never reached
+   their checked primeRead productions. This is the same lexer extended with
+   the dot token; comments and `//` lines are skipped exactly as in LeafScan,
+   and nothing else changes. The rule lives here so no shared pinned parse or
+   cache closure moves; KeygenZintCore pins the parse equalities it enables. -/
+def tokenize : Nat → List Char → Option (List Token)
+  | 0,_ => none
+  | _+1,[] => some []
+  | fuel+1,'/'::'*'::rest => do
+      let tail ← B20.C.Scalar.skipBlock (rest.length+1) rest
+      tokenize fuel tail
+  | fuel+1,'/'::'/'::rest => tokenize fuel (rest.dropWhile (· != '\n'))
+  | fuel+1,c::cs =>
+      if c==' ' || c=='\t' || c=='\n' || c=='\r' then tokenize fuel cs
+      else if B20.C.wordChar c then
+        let tail:=cs.takeWhile B20.C.wordChar
+        (tokenize fuel (cs.drop tail.length)).map ((c::tail)::·)
+      else match c,cs with
+        | '+','+'::rest => (tokenize fuel rest).map (['+','+']::·)
+        | '>','>'::'='::rest => (tokenize fuel rest).map (['>','>','=']::·)
+        | '<','<'::'='::rest => (tokenize fuel rest).map (['<','<','=']::·)
+        | '>','>'::rest => (tokenize fuel rest).map (['>','>']::·)
+        | '<','<'::rest => (tokenize fuel rest).map (['<','<']::·)
+        | '&','&'::rest => (tokenize fuel rest).map (['&','&']::·)
+        | '|','|'::rest => (tokenize fuel rest).map (['|','|']::·)
+        | _,'='::rest =>
+            if ['+','-','*','^','&','|','=','!','<','>'].contains c then
+              (tokenize fuel rest).map ([c,'=']::·)
+            else none
+        | _,_ =>
+            if ['(',')','{','}','[',']',';',',','^','&','|','-','+','*','~','=','!','<','>','.'].contains c
+            then (tokenize fuel cs).map ([c]::·)
+            else none
+
+def tokens (text : List Char) : Option (List Token) :=
+  (tokenize (text.length+1) text).map C99ArrayParser.normalizeTypes
+
 def region (types : KeygenWordExpr.Types) (ptrs : List Name) (start count : Nat) : Option Stmt := do
   let chars := ((Pinned.keygenLines.drop (start-1)).take count).flatMap String.toList++['}']
-  let tokens ← C99ProcedureParser.tokens chars
-  let (code,_,rest) ← parseBody types ptrs 512 tokens
+  let lexed ← tokens chars
+  let (code,_,rest) ← parseBody types ptrs 512 lexed
   if rest.isEmpty then pure code else none
 
 def calleeParsed (kind : Callee) : Option Stmt :=

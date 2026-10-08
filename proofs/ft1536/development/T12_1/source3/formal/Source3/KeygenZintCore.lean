@@ -67,13 +67,18 @@ theorem rebuild_crt_header : region 3576 4 = ["static void\n",
   "\tsize_t num, const small_prime *primes, int normalize_signed,\n",
   "\tuint32_t *restrict tmp)\n"] := by decide
 theorem rebuild_crt_close : Pinned.keygenLines[3633]?=some "}\n" := by decide
-/- zint_rebuild_CRT is pinned at its header/closing lines, but its body region
-   contains `primes[0].p` dot access that C99ProcedureParser.tokens refuses to
-   tokenize. The parse is explicitly none (checked fact), NOT a checked body.
-   Call .rebuildCrt therefore has the `skip` body and must not be used as a
-   CRT execution until the next window closes this parse. The prime-read and
-   store-prime productions themselves are probed working in KeygenZintProbe. -/
-theorem rebuild_crt_pending : KeygenZintCall.calleeParsed .rebuildCrt=none := by decide
+/- The member-access tokenization rule (KeygenZintCall.tokens, trap 110)
+   reaches the checked primeRead/storePrime productions, so the COMPLETE
+   zint_rebuild_CRT body region 3581-3633 now parses: declarations, both
+   loops, prime-struct reads, zint leaf calls, word-embedded modp calls
+   (modp_ninv31/modp_R2/modp_montymul with nested modp_sub) and the
+   normalization guard. The shape (4,0,3,0) counts the four zint-family call
+   statements, no call-conditions and the three prime accesses; a silent
+   word-fallback of any zint call site would lower these counts (trap 108). -/
+theorem rebuild_crt_shape : (KeygenZintCall.calleeParsed .rebuildCrt).map KeygenZintCall.callShape
+    =some (4,0,3,0) := by decide
+theorem rebuild_crt_audit : (KeygenZintCall.calleeParsed .rebuildCrt).map
+    (KeygenZintCall.only (KeygenZintCall.writable .rebuildCrt))=some true := by decide
 
 theorem parsed_of (kind : Callee)
     (audit : (KeygenZintCall.calleeParsed kind).map (KeygenZintCall.only (KeygenZintCall.writable kind))=some true) :
@@ -99,7 +104,7 @@ theorem code_checked : ∀ kind : Callee,
   | exactLen => exact checked_of .exactLen exact_len_audit
   | rshiftMod => exact checked_of .rshiftMod rshift_mod_audit
   | subMod => exact checked_of .subMod sub_mod_audit
-  | rebuildCrt => decide
+  | rebuildCrt => exact checked_of .rebuildCrt rebuild_crt_audit
 
 theorem material (kind : Callee) (before after : State) (args : List Arg) (v : Option Value)
     (source : KeygenZintCall.Call kind before args after v) (names : List Name)
