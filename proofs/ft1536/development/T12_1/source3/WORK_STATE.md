@@ -21,6 +21,22 @@ failed attempt is retained: const uint32 pointer declaration and the
 dereferenced zint-call destination needed explicit grammar productions.
 No multiplication/reduction or complete intermediate theorem is claimed.
 
+The intermediate support is checked: `KeygenIntermediateMemory` binds
+align_u32, cast-before-add and same-array pointer comparison;
+`KeygenBinaryFft` executes seven complete binary FFT helpers;
+`KeygenIntermediateCalls` value-binds actual members to a closed callee
+table; `KeygenIntermediateExec` proves the object-separation byte frame
+for the control language, including break/continue/return. Accepted
+`keygen_zint_memory_029_001`, BinaryFft/Calls of `_calls_029_003` and
+Exec of `_intermediate_029_001`, all 0/0. Three binary probes are diagnostic
+only despite the runner's acceptance flag: their stdout is nonempty.
+Failed histories retain the inverse FFT's decrement/unary-argument grammar
+and one namespace import error. The inherited expression parser mistakes
+`-(int)logn` for a call when used as an unparenthesized array-call argument;
+the new stratum groups that same complete expression and checks its exact
+signed tree. It does not change the shared parser or pinned C.
+Full intermediate source audits and table binding remain in progress.
+
 ## B1.05b-c — CLOSED at complete deepest operational closure — 2026-10-08
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
