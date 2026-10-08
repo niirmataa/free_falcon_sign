@@ -46,6 +46,19 @@ public/context/material frames and four mutations in each mode. Public
 helpers are exercised independently also after earlier rejections; these
 controls are not a successful full-attempt theorem.
 
+`KeygenAttemptMaterial.material` now composes the SAME two actual sampler
+calls, resultant gates, complete bound/raw/GS gate execution and public
+call. It derives f/g representation and Bound1 at the resulting caller
+heap, including every rejection edge. Entry has legal live/disjoint objects,
+width2, actual f/g slots and n1536, plus initial rt/h/table separation; it
+does not contain incoming f/g vectors or bounds. `KeygenAttemptSlots` proves
+the pointer/table frames needed by this composition, and resultant metadata
+is derived through allocation, all helper writes and disposal. Accepted
+`keygen_attempt_slots_031_002` and `_material_031_003`,0/0. Earlier failed
+attempts are retained. Remaining: derive this Entry from the preceding actual
+caller initialization, transport the input profile/static/scratch legality
+to RootCaller.Legal, then consume RootCaller.success. Acceptance is NOT MET.
+
 ## B1.05c — CLOSED at complete active root/caller — 2026-10-08
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
