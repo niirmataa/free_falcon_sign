@@ -1,5 +1,26 @@
 # T12.1/source3 — żywy stan
 
+## B1.05 — deepest/intermediate continuation — 2026-10-08
+
+Owner resumed checkpoint section6 for a BIG recoverable midpoint with
+GPT-6 Astra Ultrafast. BATCH_015–023 verified:2595 distinct pinned files,
+445 current inputs,2317 predecessor pins; no active proof job at entry.
+`.build/levels_024/PREFLIGHT.json` SHA256
+`baa5c4d6a850a2f4ae13977212614c2628678884753468544b46a3859aa994e8`.
+Physical shared main, ownership, foreign changes, staging and log checked.
+The next source dependency is complete inverse NTT execution and the
+all-depth modular write frame, followed by the remaining search closure.
+B1.05 Acceptance NOT MET; window IN_PROGRESS.
+
+`KeygenLevelNtt` now binds the complete inverse ternary NTT3143–3245,
+including its mixed declaration, all branches, loops and corrective factor.
+The modular byte frame applies to forward/inverse/generator execution at
+all defined dimensions, without canonical/evaluation premises. Fixed calls
+restore caller slots and execute actual bodies; prime struct fields read
+real memory. Accepted `_level_ntt_024_001` and `_level_calls_024_001`
+(prefix `keygen`), four modules,0/0 logs. The enclosing static table and
+search caller remain to be instantiated; no deepest/intermediate claim yet.
+
 ## B1.05 — CLOSED at complete depth0/search-frame midpoint — 2026-10-08
 
 **B1.05 Acceptance NOT MET.** Complete local `solve_NTRU_ternary_depth0`
