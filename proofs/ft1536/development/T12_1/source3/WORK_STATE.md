@@ -1,5 +1,42 @@
 # T12.1/source3 — żywy stan
 
+## B1.05c — complete intermediate and static initializer closure — 2026-10-08
+
+**PARTIAL_PROOF / NOT_REVIEWED / WORKING_NOT_FROZEN. B1.05 Acceptance NOT MET.**
+The long BATCH_029 window is closing at a recoverable midpoint; the root
+caller and complete sampled-material transport remain the next obligations.
+`KeygenIntermediateSource` binds all 585 body lines, its declarations,
+members, pointer casts/alignment/comparison, both lifting branches, complete
+fixed callees, Babai loop breaks/returns, compression and sign extension.
+`material` preserves the same incoming Vec through either finite defined
+return, from scratch/static-object separation. No assumed heap frame or
+search-correctness postcondition supplies that result.
+
+The final route uses source-line certificates and complete lexer parts
+separated by checked whitespace boundaries (each part closes its comments),
+then checked statement-boundary pieces and rewrite composition. Serial
+elaboration (`Elab.async=false`) and bounded `decide +kernel` avoid the
+failed asynchronous/resource routes; all process, kernel and print limits
+are unchanged. Full word-call coverage rejects the closed-ModCall fallback.
+The 585-line partition is a generic list identity, not a giant reduction.
+
+53 current accepted modules, all 0/0. Full audit: 4174 entries = 4156 named
+source declarations + 18 inherited interfaces; 4145 full terms and 29
+inductives with constructor types, standard axioms only, no elisions.
+Audit SHA256 `8c4ff3e27cdfaf00d0cf5f697d1e6d1b26f961babc20e303fb760eb17a6f29f6`;
+receipt `2fbb46e1ad06283504102b7dd777395694f37d281a1aa6c1f20cdacb0b8db4c4`.
+The 43111035-byte artifact is retained in `.build/jobs/keygen_zint_audit_029_003/`
+with its tracked generator and exact source closure. Maximum accepted
+cumulative RSS 5050244 KiB. The earlier truncated audit remains failed
+evidence; per-line slice composition now makes every full term printable.
+
+`KeygenStaticReads.prime_read` additionally identifies an actual member
+load with the corresponding source initializer, including the first M0
+prime. Root initialization/profile/scratch binding and its post-decrement
+loop remain open, as do GS/public/search transport and final Validation
+instantiation. No whole-solver equation, termination, probability or review
+status follows from this midpoint. B1.06 has not been entered.
+
 ## B1.05c — intermediate/root continuation — 2026-10-08
 
 Owner resumed checkpoint section 8R with GPT-6 Astra Ultrafast.
