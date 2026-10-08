@@ -1,5 +1,31 @@
 # T12.1/source3 — żywy stan
 
+## B1.05c — root/caller continuation — 2026-10-08
+
+Owner resumed checkpoint section 9R with GPT-6 Astra Ultrafast.
+BATCH_030 is IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN;
+B1.05 Acceptance remains NOT MET. Before edits or proof jobs, the committed
+BATCH_029 verifier checked BATCH_015–029: 4243 distinct pins, 527 current
+inputs, no supersession and no active proof job. Entry receipt:
+`.build/levels_030/ENTRY_PINS_030.json`, SHA256
+`081d46659ff070cf49dc92446b8b84f3d694372b77c586b9c51120ba21133c6a`.
+The next steps are actual root dispatch/post-decrement execution, material
+transport and derivation of the validation-entry fields from that execution.
+
+`KeygenRootSearch` now binds the root prefix 7282–7336, including every
+declaration, actual logn/MKN reads, deepest rejection, M0 dispatch, unsigned
+post-decrement, intermediate rejection, depth0 and depth-scope restoration.
+`KeygenRootControl.dispatch_enabled` derives the active dispatch from the
+initial M0 profile and the deepest frame; `loop_trace` derives the actual
+depth list `[9,8,7,6,5,4,3,2,1]` and final zero. `material` preserves the same
+incoming vector through the whole prefix, and `output_caller` derives the
+logn10/n1536/F/G output-gate slots. Accepted source jobs:
+`keygen_root_control_030_001` (Search step only) and `_030_003` (Control),
+all current accepted logs 0/0. Earlier failed attempts are retained; the
+first accepted draft restored the depth scope before depth0 and was
+superseded before commit by the source-ordered body/restoration rule.
+The validation/caller and pre-solver material seams remain open.
+
 ## B1.05c — complete intermediate and static initializer closure — 2026-10-08
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
