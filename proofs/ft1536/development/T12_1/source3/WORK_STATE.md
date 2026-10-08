@@ -38,6 +38,36 @@ DecidableEq derivation failed; fixed-arity call syntax resolved it, with
 the original failed snapshot retained. No bigint arithmetic correctness
 or full deepest execution is claimed.
 
+`KeygenResultantSource` executes complete mod2_res_ternary: b[96] allocation,
+literal memset, packing, all switch labels/fallthroughs and actual return.
+Disposal restores its private object; all caller bytes are preserved.
+`KeygenResultantGate.sampled_material` composes both real gates (including
+continue outcomes) with MODE1 two_calls and retains the same f/g Bound1.
+`KeygenNormFrame` covers the active7969–7990 raw FFT/FPEMU norm computation
+and gate, with its explicit local scratch/static separation and incoming
+bound. It uses C99CompareObjects.Exec for the real object-copy comparator.
+
+Two scope corrections are retained: the first NormFrame snapshot covered
+binary-only poly_small_sqnorm, so it did not address M0; the next parsed
+ternary gate lacked fpr_lt in the generic scalar table. Neither is current
+evidence for complete active-gate execution. Final `_active_norm_024_002`
+uses the inherited inhabited comparator. `_resultant_024_001` first failed
+to compose a byte equality across memset; `_002` explicitly transports it.
+All snapshots/raw logs remain, with unchanged limits and no assumed frame.
+
+Final audit `keygen_levels_audit_024_001`:236 entries, all216 new named
+declarations plus20 inherited interfaces,206 complete terms and30
+inductives/structures with constructor types; standard axioms, no elisions.
+459 final inputs; audit SHA256
+`c58f8974f6aff9583775aedd804428ab7d4f20f64bbba5ed056af6185e20d5c5`.
+`keygen_levels_checks_024_002` passed14 normal/UBSan runs, each with35
+bigint cases,38 NTT dimension/stride cases,5 GF(2) resultant pairs,10 exact
+ZZ ternary-top norm pairs and15 raw-norm gate/frame cases. Six mutations
+detected in both modes. Its first failed build retained a C harness
+misleading-indentation warning; braces fixed it without suppressing warnings.
+No owned job remains. Preparing BATCH_024's recoverable checkpoint;
+full deepest/intermediate/root/GS/public transport remain open.
+
 ## B1.05 — CLOSED at complete depth0/search-frame midpoint — 2026-10-08
 
 **B1.05 Acceptance NOT MET.** Complete local `solve_NTRU_ternary_depth0`
