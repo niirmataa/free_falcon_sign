@@ -26,6 +26,18 @@ the expected header and the parser's `return (`/generic-call precedence.
 Next: get_top division/return pun, polynomial conversion/subtraction,
 make_fg and deepest/intermediate/root closure in the owner's order.
 
+The next accepted sources are KeygenZintTop (`keygen_zint_top_028_002`)
+and KeygenZintPoly (`keygen_zint_poly_028_002`), all 0/0. get_top is bound
+in four pieces, including unsigned sc/31 and the same-width int64 return
+pun. Both polynomial helpers are complete (4/3 pieces): max_bitlength
+executes the signed helper and pointer advance; big_to_fp executes the
+nested get_top/fpr_scaled calls and Store64. Non-vacuous piece audits,
+line partitions, exact special statements, call counts and byte frames
+are checked. No real-number approximation or solver claim. The new grammar
+strata reuse the fixed core without expanding its largest Bezout reduction.
+The first top attempt's two proof elaboration errors are retained. Next:
+scaled subtraction, make_fg and deepest/intermediate/root closure.
+
 ## B1.05b — CLOSED at complete zint_bezout midpoint — 2026-10-08
 
 **B1.05 Acceptance NOT MET. CLOSED_AT_RECOVERABLE_MIDPOINT.**
