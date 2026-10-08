@@ -28,6 +28,16 @@ forward/inverse NTT and all stores. Both out_ntt paths are retained.
 Accepted `keygen_makefg_top_024_001`, two modules,0/0 logs. This is the
 shared ternary-top dependency; make_fg_step/CRT/Bezout remain open.
 
+`KeygenZintLeaves` source-binds seven complete bigint helpers: add, sub,
+mul_small, add_mul_small, rshift1, mod_small_unsigned and ucmp. Word reads
+inside arithmetic/casts, return control and post-decrement on the failed
+test are explicit; derived frames follow actual Store32 destinations.
+`keygen_word_language_024_002`, `_zint_leaves_024_001` and the rebuilt word
+parser/zint steps of `_resultant_024_001` are clean. Initial nested-list
+DecidableEq derivation failed; fixed-arity call syntax resolved it, with
+the original failed snapshot retained. No bigint arithmetic correctness
+or full deepest execution is claimed.
+
 ## B1.05 — CLOSED at complete depth0/search-frame midpoint — 2026-10-08
 
 **B1.05 Acceptance NOT MET.** Complete local `solve_NTRU_ternary_depth0`
