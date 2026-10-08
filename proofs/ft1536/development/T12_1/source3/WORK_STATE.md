@@ -22,6 +22,15 @@ the LP64 signed-long cast because the inherited parser lacks an L suffix.
 This is a local operational/material result; sampled entry composition and
 the public helper still have to be connected.
 
+`ShakePointFrame` now proves preservation outside the actual RNG subobjects,
+including points in the same enclosing allocation. `KeygenSamplerContext`
+resolves the actual fk argument to rng at offset8, derives two-call Bound1,
+and preserves the M0 fields through all refills/rejection draws/stores.
+The protected adjacent fields are outside bytes [fk+8,fk+424); tmp is at432.
+Accepted jobs `keygen_attempt_shake_031_002` and `_context_031_002` are0/0;
+both earlier failed attempts are retained. The prefix and public composition
+remain the current obligations.
+
 ## B1.05c — CLOSED at complete active root/caller — 2026-10-08
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
