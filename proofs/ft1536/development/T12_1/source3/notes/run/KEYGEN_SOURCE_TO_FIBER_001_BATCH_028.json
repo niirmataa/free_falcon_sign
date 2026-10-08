@@ -1,0 +1,2905 @@
+{
+  "task": "KEYGEN_SOURCE_TO_FIBER_001",
+  "batch": "BATCH_028",
+  "stage": "B1.05b-c",
+  "window": "CLOSED_AT_RECOVERABLE_MIDPOINT",
+  "b1_05_acceptance": "NOT_MET",
+  "status": "IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN",
+  "stage_result": "PARTIAL_PROOF",
+  "harness": "GPT-6 Astra Ultrafast / openai/gpt-6-astra-ultrafast",
+  "created_utc": "2026-10-08T16:04:08.890254+00:00",
+  "proof_head": "bcf1f4c2edda38d54605bccfe21c9d6c9f534962",
+  "notes": {
+    "path": "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_028_NOTES.md",
+    "sha256": "f2f8f86807bb5eb4a02850fc64f0c74a188e922b526a7b1958036079f2476809",
+    "bytes": 11039
+  },
+  "entry_pins_receipt": {
+    "path": ".build/levels_028/ENTRY_PINS_028_002.json",
+    "sha256": "b9cec873c9440265d16347bfcb13104630dfeee33a14bf907699a13d87f1ce60",
+    "bytes": 650911
+  },
+  "first_entry_receipt": {
+    "path": ".build/levels_028/ENTRY_PINS_028.json",
+    "sha256": "821bd163db3248c0f14e081b525e5d2459d7ad6836c95ac7d45e0116df240ce8",
+    "bytes": 650911
+  },
+  "entry_verifier": {
+    "path": "tools/keygen_zint_entry_pins.py",
+    "sha256": "1d9b49f6d1f28575b285ac2288bea24bdad30527ccc9f191de526c327858d12e",
+    "bytes": 7405
+  },
+  "superseded": {
+    "formal/Source3/KeygenZintCall.lean": {
+      "entry_pins_028": "b2d01551a8b5576df6946016680f397f0af7f6447c5ef66c838997777e549a31",
+      "batch_028": "205bd62b1e29fbd27e633cf487a634822a023ae8160731d69288562f5e6ab7c8"
+    },
+    "formal/Source3/KeygenZintCore.lean": {
+      "entry_pins_028": "4a5df8f6e4c4536c895b0bc8f7dd6e03790ab66153e982343d84b67077cc15bf",
+      "batch_028": "a3d6e22b75db16847a141944b786bd852f08e7ea221376e03b42b148589fdafa"
+    }
+  },
+  "accepted_modules": {
+    "KeygenZintCall": {
+      "source": "formal/Source3/KeygenZintCall.lean",
+      "sha256": "205bd62b1e29fbd27e633cf487a634822a023ae8160731d69288562f5e6ab7c8"
+    },
+    "KeygenZintExtract": {
+      "source": "formal/Source3/KeygenZintExtract.lean",
+      "sha256": "f12f5e9468119332e8ccbb0af72c747d7be9fd06419fc52ff64769eab96f3235"
+    },
+    "KeygenZintCore": {
+      "source": "formal/Source3/KeygenZintCore.lean",
+      "sha256": "a3d6e22b75db16847a141944b786bd852f08e7ea221376e03b42b148589fdafa"
+    },
+    "KeygenZintTop": {
+      "source": "formal/Source3/KeygenZintTop.lean",
+      "sha256": "0f0e8272fdd54ce423e68eb9889491300a44aaa2fc423936a47f961724a952a0"
+    },
+    "KeygenZintPoly": {
+      "source": "formal/Source3/KeygenZintPoly.lean",
+      "sha256": "7f19d3c9bf0ffce4d16e7b0fa8a01be428789f77f112b7b8324754f3ec9877f3"
+    },
+    "KeygenZintScaled": {
+      "source": "formal/Source3/KeygenZintScaled.lean",
+      "sha256": "e68bd6b8fb5672c53b001e335779a4d9290a21fb51102ec72159ebede3ab6ba6"
+    },
+    "KeygenPolySubScaled": {
+      "source": "formal/Source3/KeygenPolySubScaled.lean",
+      "sha256": "1910612c1385cdceef20c4f72b1a7040f3600b565ec9df5dbed72d0223e397d2"
+    },
+    "KeygenBinaryNtt": {
+      "source": "formal/Source3/KeygenBinaryNtt.lean",
+      "sha256": "5ce4b364852951093da13215d804a5702e1b898f1e952c1b7cb045c45992657d"
+    },
+    "KeygenMakeFgSource": {
+      "source": "formal/Source3/KeygenMakeFgSource.lean",
+      "sha256": "d3b79d5efbc0d8eb8f6f22ea81c8e7693f521821bab2d1bcf22b6768aa1f9db5"
+    },
+    "KeygenDeepestSource": {
+      "source": "formal/Source3/KeygenDeepestSource.lean",
+      "sha256": "35ec014a38aa40e7535c0ae2afd4b7a5f77a5d0dbb5cfb6219b6d8e94ba5344b"
+    },
+    "KeygenZintAudit": {
+      "source": "formal/Source3/KeygenZintAudit.lean",
+      "sha256": "ba3315994c2ed2015fee8fa61087b1106020a11e45616d1e0dba7ba63975de0e"
+    }
+  },
+  "accepted_module_checks": [
+    {
+      "module": "Source3.KeygenZintCall",
+      "source": {
+        "path": "formal/Source3/KeygenZintCall.lean",
+        "sha256": "205bd62b1e29fbd27e633cf487a634822a023ae8160731d69288562f5e6ab7c8",
+        "bytes": 56169
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zint_extract_028_002/formal/Source3/KeygenZintCall.lean",
+        "sha256": "205bd62b1e29fbd27e633cf487a634822a023ae8160731d69288562f5e6ab7c8",
+        "bytes": 56169
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_zint_extract_028_002/lib/Source3/KeygenZintCall.olean",
+        "sha256": "b04ef5e1a5c277ed6b2a8ed3fcdd5a7af24ebb0ab89a27f77d1cd73b9ae0ec06",
+        "bytes": 19019920
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_zint_extract_028_002/RECEIPTS.json",
+        "sha256": "d29fb1c5ce36380f356f3bea534a07747c8cd88c56cf5ac074578df2b3fe1f4a",
+        "bytes": 8917
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_zint_extract_028_002/SOURCE_INPUTS.json",
+        "sha256": "2c57544e9281215534619484babfc7f2abc06a313c69c4ed6e81d2857ebb114c",
+        "bytes": 485899
+      },
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_zint_extract_028_002/logs/Source3_KeygenZintCall.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_zint_extract_028_002/logs/Source3_KeygenZintCall.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenZintLeaves": "fe8152760dda3f79483edd3bae357d8c2e9ded2f0cd3867aa92262b8cc404d15",
+        "Source3.KeygenLevelCalls": "97a72668d3d8b3943fb87fbdd8f51377af30d8106b5fa6d23394dd86e63764e9"
+      },
+      "elapsed_s": 19.826,
+      "maxrss_kib": 3058468
+    },
+    {
+      "module": "Source3.KeygenZintExtract",
+      "source": {
+        "path": "formal/Source3/KeygenZintExtract.lean",
+        "sha256": "f12f5e9468119332e8ccbb0af72c747d7be9fd06419fc52ff64769eab96f3235",
+        "bytes": 6308
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zint_extract_028_002/formal/Source3/KeygenZintExtract.lean",
+        "sha256": "f12f5e9468119332e8ccbb0af72c747d7be9fd06419fc52ff64769eab96f3235",
+        "bytes": 6308
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_zint_extract_028_002/lib/Source3/KeygenZintExtract.olean",
+        "sha256": "7bb8b7047ccd3c7736d9adb7eb88e0ef1b6c83c24b1a489c8abb3b73e15998f5",
+        "bytes": 406816
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_zint_extract_028_002/RECEIPTS.json",
+        "sha256": "d29fb1c5ce36380f356f3bea534a07747c8cd88c56cf5ac074578df2b3fe1f4a",
+        "bytes": 8917
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_zint_extract_028_002/SOURCE_INPUTS.json",
+        "sha256": "2c57544e9281215534619484babfc7f2abc06a313c69c4ed6e81d2857ebb114c",
+        "bytes": 485899
+      },
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_zint_extract_028_002/logs/Source3_KeygenZintExtract.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_zint_extract_028_002/logs/Source3_KeygenZintExtract.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenZintCall": "b04ef5e1a5c277ed6b2a8ed3fcdd5a7af24ebb0ab89a27f77d1cd73b9ae0ec06"
+      },
+      "elapsed_s": 75.843,
+      "maxrss_kib": 3808332
+    },
+    {
+      "module": "Source3.KeygenZintCore",
+      "source": {
+        "path": "formal/Source3/KeygenZintCore.lean",
+        "sha256": "a3d6e22b75db16847a141944b786bd852f08e7ea221376e03b42b148589fdafa",
+        "bytes": 25026
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zint_extract_028_002/formal/Source3/KeygenZintCore.lean",
+        "sha256": "a3d6e22b75db16847a141944b786bd852f08e7ea221376e03b42b148589fdafa",
+        "bytes": 25026
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_zint_extract_028_002/lib/Source3/KeygenZintCore.olean",
+        "sha256": "b8e3a5cd7a5d72d5462d91b7f5ed92ba17669ea3e4689fdb1af24f545ed29544",
+        "bytes": 255224
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_zint_extract_028_002/RECEIPTS.json",
+        "sha256": "d29fb1c5ce36380f356f3bea534a07747c8cd88c56cf5ac074578df2b3fe1f4a",
+        "bytes": 8917
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_zint_extract_028_002/SOURCE_INPUTS.json",
+        "sha256": "2c57544e9281215534619484babfc7f2abc06a313c69c4ed6e81d2857ebb114c",
+        "bytes": 485899
+      },
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_zint_extract_028_002/logs/Source3_KeygenZintCore.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_zint_extract_028_002/logs/Source3_KeygenZintCore.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenZintExtract": "7bb8b7047ccd3c7736d9adb7eb88e0ef1b6c83c24b1a489c8abb3b73e15998f5",
+        "Source3.KeygenMaterial": "2976855fbf270a1f0ed62dad67ef0e3b088fc5ce041233f9d92b5927ea1d9143"
+      },
+      "elapsed_s": 391.219,
+      "maxrss_kib": 6129232
+    },
+    {
+      "module": "Source3.KeygenZintTop",
+      "source": {
+        "path": "formal/Source3/KeygenZintTop.lean",
+        "sha256": "0f0e8272fdd54ce423e68eb9889491300a44aaa2fc423936a47f961724a952a0",
+        "bytes": 10761
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zint_top_028_002/formal/Source3/KeygenZintTop.lean",
+        "sha256": "0f0e8272fdd54ce423e68eb9889491300a44aaa2fc423936a47f961724a952a0",
+        "bytes": 10761
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_zint_top_028_002/lib/Source3/KeygenZintTop.olean",
+        "sha256": "f071303cf27e81e8293268cc461be1d9a797da5948ec8dfb9e1211c6c73d327f",
+        "bytes": 1455336
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_zint_top_028_002/RECEIPTS.json",
+        "sha256": "64b3bc7cd6c8bf304ef462abb54df4b26d2efc168fee6f4c106b7b36b5a4b694",
+        "bytes": 2924
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_zint_top_028_002/SOURCE_INPUTS.json",
+        "sha256": "59ede94a31ed567586399fd0deb46c7977e1a5ace3b11c867a4fc9e723d82d89",
+        "bytes": 488641
+      },
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_zint_top_028_002/logs/Source3_KeygenZintTop.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_zint_top_028_002/logs/Source3_KeygenZintTop.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenZintCore": "b8e3a5cd7a5d72d5462d91b7f5ed92ba17669ea3e4689fdb1af24f545ed29544"
+      },
+      "elapsed_s": 19.008,
+      "maxrss_kib": 3286056
+    },
+    {
+      "module": "Source3.KeygenZintPoly",
+      "source": {
+        "path": "formal/Source3/KeygenZintPoly.lean",
+        "sha256": "7f19d3c9bf0ffce4d16e7b0fa8a01be428789f77f112b7b8324754f3ec9877f3",
+        "bytes": 17581
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zint_poly_028_002/formal/Source3/KeygenZintPoly.lean",
+        "sha256": "7f19d3c9bf0ffce4d16e7b0fa8a01be428789f77f112b7b8324754f3ec9877f3",
+        "bytes": 17581
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_zint_poly_028_002/lib/Source3/KeygenZintPoly.olean",
+        "sha256": "5a842214ed59ece72a44e902766ba52f1253169d2c285c37f282b8aa4856f63e",
+        "bytes": 1688760
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_zint_poly_028_002/RECEIPTS.json",
+        "sha256": "2dc86cebdf36d133497e1542861f489c16d3dcaf1027c82473c4b866c208e72d",
+        "bytes": 2940
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_zint_poly_028_002/SOURCE_INPUTS.json",
+        "sha256": "1c29ad92746a68f0e2440462f1755a8a4ffa9c79eea74eed20e14ae7f6b3f2cf",
+        "bytes": 489658
+      },
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_zint_poly_028_002/logs/Source3_KeygenZintPoly.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_zint_poly_028_002/logs/Source3_KeygenZintPoly.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenZintTop": "f071303cf27e81e8293268cc461be1d9a797da5948ec8dfb9e1211c6c73d327f"
+      },
+      "elapsed_s": 21.608,
+      "maxrss_kib": 3046328
+    },
+    {
+      "module": "Source3.KeygenZintScaled",
+      "source": {
+        "path": "formal/Source3/KeygenZintScaled.lean",
+        "sha256": "e68bd6b8fb5672c53b001e335779a4d9290a21fb51102ec72159ebede3ab6ba6",
+        "bytes": 11231
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zint_scaled_028_001/formal/Source3/KeygenZintScaled.lean",
+        "sha256": "e68bd6b8fb5672c53b001e335779a4d9290a21fb51102ec72159ebede3ab6ba6",
+        "bytes": 11231
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_zint_scaled_028_001/lib/Source3/KeygenZintScaled.olean",
+        "sha256": "a9604632ea13742ef8bd3abcffcbe92bee25bb91ab7f86c773516547e1491807",
+        "bytes": 683080
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_zint_scaled_028_001/RECEIPTS.json",
+        "sha256": "9faec761b5fe6d54c67fe931967bea5e0fb9255fa960695854787ed7277e254c",
+        "bytes": 2972
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_zint_scaled_028_001/SOURCE_INPUTS.json",
+        "sha256": "61f41a9cc7ac3803ff7ee8ca0f6c33f8101031754a49fd30ce25bd858c6a99be",
+        "bytes": 490682
+      },
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_zint_scaled_028_001/logs/Source3_KeygenZintScaled.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_zint_scaled_028_001/logs/Source3_KeygenZintScaled.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenZintCore": "b8e3a5cd7a5d72d5462d91b7f5ed92ba17669ea3e4689fdb1af24f545ed29544"
+      },
+      "elapsed_s": 38.407,
+      "maxrss_kib": 3820412
+    },
+    {
+      "module": "Source3.KeygenPolySubScaled",
+      "source": {
+        "path": "formal/Source3/KeygenPolySubScaled.lean",
+        "sha256": "1910612c1385cdceef20c4f72b1a7040f3600b565ec9df5dbed72d0223e397d2",
+        "bytes": 15438
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zint_polysub_028_001/formal/Source3/KeygenPolySubScaled.lean",
+        "sha256": "1910612c1385cdceef20c4f72b1a7040f3600b565ec9df5dbed72d0223e397d2",
+        "bytes": 15438
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_zint_polysub_028_001/lib/Source3/KeygenPolySubScaled.olean",
+        "sha256": "852f3e66d019ac3bc42f7015355e8044d49dd264ece433dffa7299a9ce8abcce",
+        "bytes": 16781216
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_zint_polysub_028_001/RECEIPTS.json",
+        "sha256": "9f068a17d4a2e7fe26b76399321092ed2604a8dd68a2e1229fd4e5b98720066b",
+        "bytes": 3002
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_zint_polysub_028_001/SOURCE_INPUTS.json",
+        "sha256": "1e59fd660d82500a3599ea56f16fee5a72816f7bc6551857a6aa006900116ed3",
+        "bytes": 491721
+      },
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_zint_polysub_028_001/logs/Source3_KeygenPolySubScaled.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_zint_polysub_028_001/logs/Source3_KeygenPolySubScaled.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenZintScaled": "a9604632ea13742ef8bd3abcffcbe92bee25bb91ab7f86c773516547e1491807",
+        "Source3.KeygenZintTop": "f071303cf27e81e8293268cc461be1d9a797da5948ec8dfb9e1211c6c73d327f"
+      },
+      "elapsed_s": 35.502,
+      "maxrss_kib": 3759032
+    },
+    {
+      "module": "Source3.KeygenBinaryNtt",
+      "source": {
+        "path": "formal/Source3/KeygenBinaryNtt.lean",
+        "sha256": "5ce4b364852951093da13215d804a5702e1b898f1e952c1b7cb045c45992657d",
+        "bytes": 15947
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zint_binary_028_001/formal/Source3/KeygenBinaryNtt.lean",
+        "sha256": "5ce4b364852951093da13215d804a5702e1b898f1e952c1b7cb045c45992657d",
+        "bytes": 15947
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_zint_binary_028_001/lib/Source3/KeygenBinaryNtt.olean",
+        "sha256": "8105179a2032f78ebc400c1cb28af917d02795e917b0a216abb80e23a9424d51",
+        "bytes": 2896432
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_zint_binary_028_001/RECEIPTS.json",
+        "sha256": "783e4e349dc09712d6b7d1b6742f6d60b3e8db2a9e00ad6beb30b6e3e806b89b",
+        "bytes": 2965
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_zint_binary_028_001/SOURCE_INPUTS.json",
+        "sha256": "33ba87e2f842c38899760d1d3e6b7fab4eff0cab5cd2754957fc827ae9989a41",
+        "bytes": 492863
+      },
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_zint_binary_028_001/logs/Source3_KeygenBinaryNtt.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_zint_binary_028_001/logs/Source3_KeygenBinaryNtt.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenLevelCalls": "97a72668d3d8b3943fb87fbdd8f51377af30d8106b5fa6d23394dd86e63764e9"
+      },
+      "elapsed_s": 29.382,
+      "maxrss_kib": 3247540
+    },
+    {
+      "module": "Source3.KeygenMakeFgSource",
+      "source": {
+        "path": "formal/Source3/KeygenMakeFgSource.lean",
+        "sha256": "d3b79d5efbc0d8eb8f6f22ea81c8e7693f521821bab2d1bcf22b6768aa1f9db5",
+        "bytes": 21289
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zint_makefg_028_001/formal/Source3/KeygenMakeFgSource.lean",
+        "sha256": "d3b79d5efbc0d8eb8f6f22ea81c8e7693f521821bab2d1bcf22b6768aa1f9db5",
+        "bytes": 21289
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_zint_makefg_028_001/lib/Source3/KeygenMakeFgSource.olean",
+        "sha256": "0c18d67bf35552884e5026a6ba0b817f286ff46b049a13ffae087ef242e2720d",
+        "bytes": 5440104
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_zint_makefg_028_001/RECEIPTS.json",
+        "sha256": "cbd5fad49dc51222a8fb3165506b4fb14f28bd2774b791acddfddb64ef0ecee2",
+        "bytes": 2987
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_zint_makefg_028_001/SOURCE_INPUTS.json",
+        "sha256": "d8686b7f2ec3a61d2d58c9fd1d46692daa3cb835772f184ac3430b584ab12916",
+        "bytes": 493900
+      },
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_zint_makefg_028_001/logs/Source3_KeygenMakeFgSource.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_zint_makefg_028_001/logs/Source3_KeygenMakeFgSource.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenBinaryNtt": "8105179a2032f78ebc400c1cb28af917d02795e917b0a216abb80e23a9424d51",
+        "Source3.KeygenZintCore": "b8e3a5cd7a5d72d5462d91b7f5ed92ba17669ea3e4689fdb1af24f545ed29544",
+        "Source3.KeygenMakeFgTop": "e193dccb30442657d5a71853f51cddb2980a55c65d020718ecd036424dd11cea"
+      },
+      "elapsed_s": 111.868,
+      "maxrss_kib": 4366220
+    },
+    {
+      "module": "Source3.KeygenDeepestSource",
+      "source": {
+        "path": "formal/Source3/KeygenDeepestSource.lean",
+        "sha256": "35ec014a38aa40e7535c0ae2afd4b7a5f77a5d0dbb5cfb6219b6d8e94ba5344b",
+        "bytes": 15323
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zint_deepest_028_001/formal/Source3/KeygenDeepestSource.lean",
+        "sha256": "35ec014a38aa40e7535c0ae2afd4b7a5f77a5d0dbb5cfb6219b6d8e94ba5344b",
+        "bytes": 15323
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_zint_deepest_028_001/lib/Source3/KeygenDeepestSource.olean",
+        "sha256": "ffb314147751329ce6d340747b4d4ecb7c5423651f75acea44550ac001227127",
+        "bytes": 1728528
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_zint_deepest_028_001/RECEIPTS.json",
+        "sha256": "86868575d8eea10f19b5aa52f6a7030cc2d6340ea40323263355fe2b48662d78",
+        "bytes": 3002
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_zint_deepest_028_001/SOURCE_INPUTS.json",
+        "sha256": "e32f47c8327019ff986295c6dedd6c6ef3bc4d79a56db94dec7802c888965046",
+        "bytes": 495149
+      },
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_zint_deepest_028_001/logs/Source3_KeygenDeepestSource.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_zint_deepest_028_001/logs/Source3_KeygenDeepestSource.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenMakeFgSource": "0c18d67bf35552884e5026a6ba0b817f286ff46b049a13ffae087ef242e2720d",
+        "Source3.KeygenSearchContext": "76868806afd52f67e059a19323e432ab5a665c26f9749e5e0d2867c0e692f63b",
+        "Source3.KeygenMaterial": "2976855fbf270a1f0ed62dad67ef0e3b088fc5ce041233f9d92b5927ea1d9143"
+      },
+      "elapsed_s": 29.928,
+      "maxrss_kib": 3275784
+    },
+    {
+      "module": "Source3.KeygenZintAudit",
+      "source": {
+        "path": "formal/Source3/KeygenZintAudit.lean",
+        "sha256": "ba3315994c2ed2015fee8fa61087b1106020a11e45616d1e0dba7ba63975de0e",
+        "bytes": 11108
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zint_audit_028_001/formal/Source3/KeygenZintAudit.lean",
+        "sha256": "ba3315994c2ed2015fee8fa61087b1106020a11e45616d1e0dba7ba63975de0e",
+        "bytes": 11108
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_zint_audit_028_001/lib/Source3/KeygenZintAudit.olean",
+        "sha256": "82ec4842b61d793bfe927371192d9aaacd7ae401fd746ca4e953de8173496eb8",
+        "bytes": 3712
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_zint_audit_028_001/RECEIPTS.json",
+        "sha256": "3a1709d02ac86b8b054292b851b0d2172d5166b7fe0ba5b3cb0df95aa7b862f8",
+        "bytes": 2956
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_zint_audit_028_001/SOURCE_INPUTS.json",
+        "sha256": "2fc0ea1d5aba73a133a85a08f65d829ae042ff183c56ca971faa86095d719af9",
+        "bytes": 496401
+      },
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_zint_audit_028_001/logs/Source3_KeygenZintAudit.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_zint_audit_028_001/logs/Source3_KeygenZintAudit.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenZintCall": "b04ef5e1a5c277ed6b2a8ed3fcdd5a7af24ebb0ab89a27f77d1cd73b9ae0ec06",
+        "Source3.KeygenZintExtract": "7bb8b7047ccd3c7736d9adb7eb88e0ef1b6c83c24b1a489c8abb3b73e15998f5",
+        "Source3.KeygenZintCore": "b8e3a5cd7a5d72d5462d91b7f5ed92ba17669ea3e4689fdb1af24f545ed29544",
+        "Source3.KeygenZintTop": "f071303cf27e81e8293268cc461be1d9a797da5948ec8dfb9e1211c6c73d327f",
+        "Source3.KeygenZintPoly": "5a842214ed59ece72a44e902766ba52f1253169d2c285c37f282b8aa4856f63e",
+        "Source3.KeygenZintScaled": "a9604632ea13742ef8bd3abcffcbe92bee25bb91ab7f86c773516547e1491807",
+        "Source3.KeygenPolySubScaled": "852f3e66d019ac3bc42f7015355e8044d49dd264ece433dffa7299a9ce8abcce",
+        "Source3.KeygenBinaryNtt": "8105179a2032f78ebc400c1cb28af917d02795e917b0a216abb80e23a9424d51",
+        "Source3.KeygenMakeFgSource": "0c18d67bf35552884e5026a6ba0b817f286ff46b049a13ffae087ef242e2720d",
+        "Source3.KeygenDeepestSource": "ffb314147751329ce6d340747b4d4ecb7c5423651f75acea44550ac001227127",
+        "Source3.KeygenDepth0Call": "d2f06d60d54bf8ac04298181172c80dd9138414e6db4e7252b03206b744f8664"
+      },
+      "elapsed_s": 10.239,
+      "maxrss_kib": 2817712
+    }
+  ],
+  "current_final_audit_inputs": 471,
+  "audit": {
+    "path": ".build/jobs/keygen_zint_audit_028_001/ZINT_AUDIT.json",
+    "sha256": "2a2a052d6b2019232cb8eae6e25dd7c92de5fa9da01ba9496ef5e3c9ee1ec7bc",
+    "bytes": 843467,
+    "receipt": {
+      "path": ".build/jobs/keygen_zint_audit_028_001/RECEIPTS.json",
+      "sha256": "3a1709d02ac86b8b054292b851b0d2172d5166b7fe0ba5b3cb0df95aa7b862f8",
+      "bytes": 2956
+    },
+    "source_inputs": {
+      "path": ".build/jobs/keygen_zint_audit_028_001/SOURCE_INPUTS.json",
+      "sha256": "2fc0ea1d5aba73a133a85a08f65d829ae042ff183c56ca971faa86095d719af9",
+      "bytes": 496401
+    },
+    "exports": 546,
+    "covered_source_declarations": 528,
+    "inherited_interfaces": 18,
+    "full_terms": 509,
+    "kernel_inductives_with_constructor_types": 37,
+    "elisions": 0,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "sage": {
+    "source": {
+      "path": "sage/check_keygen_zint_closure.sage",
+      "sha256": "253d351ec5c59c1f964327085dcaf8a9153cd8ac63d0f2868f1566e0fa8102de",
+      "bytes": 14248
+    },
+    "receipt": {
+      "path": ".build/jobs/keygen_zint_checks_028_003/RECEIPTS.json",
+      "sha256": "38e600270ec34ef6f1f365187c8665e790c36c29aad0ea8c59bca81eef5d14f8",
+      "bytes": 2278
+    },
+    "source_inputs": {
+      "path": ".build/jobs/keygen_zint_checks_028_003/SOURCE_INPUTS.json",
+      "sha256": "c90357478f041aa9f13e4abc63b89aea5b8b1eccc9d3be8312be1168496b01ea",
+      "bytes": 498426
+    },
+    "result": {
+      "path": ".build/jobs/keygen_zint_checks_028_003/ZINT_CHECK.json",
+      "sha256": "e9bcb791f1493c5dcdd82eae267fc9cc3f549f1145f36ff56d07623be1e1b621",
+      "bytes": 53473
+    },
+    "profile": {
+      "path": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_002/continuations/FT1536_MATH_EUFCMA_MTISIS_RUN_003/inputs/source/PROFILE.json",
+      "sha256": "55dc91b373858ddaab78ac4f125538505279c5f74ac3d4e4569a02164ebb1e56",
+      "bytes": 6716
+    },
+    "source_files": [
+      {
+        "path": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_002/continuations/FT1536_MATH_EUFCMA_MTISIS_RUN_003/inputs/source/Makefile",
+        "sha256": "25cd0345332882ccab4beea68d5139955c871499733ab9f5fa3cc8ef898d5049",
+        "bytes": 3395
+      },
+      {
+        "path": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_002/continuations/FT1536_MATH_EUFCMA_MTISIS_RUN_003/inputs/source/falcon-enc.c",
+        "sha256": "0f7085fa975d41ebbeb96d5db4cb68482c344ef2d602ca8853e20a4d4f04fb05",
+        "bytes": 14088
+      },
+      {
+        "path": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_002/continuations/FT1536_MATH_EUFCMA_MTISIS_RUN_003/inputs/source/falcon-fft.c",
+        "sha256": "06b573b636ae368dcda3eb4d89c3936ab31272123440d0d5362317e55d9ac063",
+        "bytes": 33121
+      },
+      {
+        "path": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_002/continuations/FT1536_MATH_EUFCMA_MTISIS_RUN_003/inputs/source/falcon-keygen.c",
+        "sha256": "0a09b6ed2363308f54584dfd1e2d33ee1b4601a68c77712c50da920b5074a5cf",
+        "bytes": 234438
+      },
+      {
+        "path": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_002/continuations/FT1536_MATH_EUFCMA_MTISIS_RUN_003/inputs/source/falcon-sign.c",
+        "sha256": "eee8d7dc503e007cb76bcc157094b2a2de481075ac3f67426848f7a8cae6efd8",
+        "bytes": 92054
+      },
+      {
+        "path": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_002/continuations/FT1536_MATH_EUFCMA_MTISIS_RUN_003/inputs/source/falcon-vrfy.c",
+        "sha256": "3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42",
+        "bytes": 51044
+      },
+      {
+        "path": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_002/continuations/FT1536_MATH_EUFCMA_MTISIS_RUN_003/inputs/source/falcon.h",
+        "sha256": "657ad2b2d45b8932c3b9a703ac718c1f23dad78523036c1a934b8e21cf0f4519",
+        "bytes": 14524
+      },
+      {
+        "path": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_002/continuations/FT1536_MATH_EUFCMA_MTISIS_RUN_003/inputs/source/fpr-double.h",
+        "sha256": "5dd9110dd4e77c96e19263488bd0937cea0032623f40cacb289da7e3e1256d56",
+        "bytes": 303153
+      },
+      {
+        "path": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_002/continuations/FT1536_MATH_EUFCMA_MTISIS_RUN_003/inputs/source/fpr-emulated.c",
+        "sha256": "7cb06c9ea8f8bfc205a207cd73af367d299005d4bfec26333ced702f1c024e5f",
+        "bytes": 36067
+      },
+      {
+        "path": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_002/continuations/FT1536_MATH_EUFCMA_MTISIS_RUN_003/inputs/source/fpr-emulated.h",
+        "sha256": "242a7027d854e1317a3382f198271c69d40f4b34e80192ff896a42a65c83edfa",
+        "bytes": 223785
+      },
+      {
+        "path": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_002/continuations/FT1536_MATH_EUFCMA_MTISIS_RUN_003/inputs/source/frng.c",
+        "sha256": "4b1289adf0c902abe9408d989b4eb8d292cbb6ea86b92e1325a10fd9c5dfc644",
+        "bytes": 8243
+      },
+      {
+        "path": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_002/continuations/FT1536_MATH_EUFCMA_MTISIS_RUN_003/inputs/source/ft1536-adaptive-cdf-tables.h",
+        "sha256": "c16f041a64aba25991b5473111675f1c046ebc38285fca6c052124cf3b7fdf4f",
+        "bytes": 134432
+      },
+      {
+        "path": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_002/continuations/FT1536_MATH_EUFCMA_MTISIS_RUN_003/inputs/source/internal.h",
+        "sha256": "512629d3b79fa5bd74131ed2ecde06e1d157f5ac58db3f758db96b19131f1ba5",
+        "bytes": 27590
+      },
+      {
+        "path": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_002/continuations/FT1536_MATH_EUFCMA_MTISIS_RUN_003/inputs/source/shake.c",
+        "sha256": "c3e7864bf4139264f8c287053214bf869e242757bf555235da81454e40ea316a",
+        "bytes": 14871
+      },
+      {
+        "path": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_002/continuations/FT1536_MATH_EUFCMA_MTISIS_RUN_003/inputs/source/shake.h",
+        "sha256": "2373a37e09907c8e57a6b1adc05e26499d9cf2752518267a80291de931c2d8df",
+        "bytes": 4219
+      },
+      {
+        "path": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_002/continuations/FT1536_MATH_EUFCMA_MTISIS_RUN_003/inputs/source/test_falcon.c",
+        "sha256": "ecd22c8f0ac8c24df0692c94ebb293b5944fe42fc57d97f2e06f01e5ecc44b4c",
+        "bytes": 280297
+      },
+      {
+        "path": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_MATH_EUFCMA_MTISIS_RUN_002/continuations/FT1536_MATH_EUFCMA_MTISIS_RUN_003/inputs/source/tool.c",
+        "sha256": "920ac2d8a96408c505670eb2f044cde763ca11945d90ec24d8c6f2a048377890",
+        "bytes": 15812
+      }
+    ],
+    "logs": {
+      "stdout": {
+        "path": ".build/jobs/keygen_zint_checks_028_003/logs/sage.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zint_checks_028_003/logs/sage.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "counts_per_run": {
+      "W": 91,
+      "B": 99,
+      "A": 36,
+      "P": 6,
+      "S": 9,
+      "M": 14,
+      "D": 11
+    },
+    "artifacts": [
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/PUBLIC_FIXTURE.json",
+        "sha256": "93cb5f884824263c7b30e87cd783141e8fb8bdeb3ddecd8157c26b4a2d6d4561",
+        "bytes": 19288
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_baseline.c",
+        "sha256": "11474b5e4738edb9cfc18b29f1ce5ddf58355476361b10a9279e79e30d981059",
+        "bytes": 249934
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_baseline.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_baseline.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_baseline.stdout",
+        "sha256": "6186738c763670b0456e6af4431d5b86896d55e63bbc4df3958f8bc506d02e3b",
+        "bytes": 11001
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_baseline.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_baseline.run.json",
+        "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+        "bytes": 18
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_vv_zero.c",
+        "sha256": "bda2963d36808aeddcd14ac0875d1f14c5202364060454b6b42df8bbc0df7084",
+        "bytes": 249934
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_vv_zero.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_vv_zero.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_vv_zero.stdout",
+        "sha256": "588e935561e7b55d100489dd6fda65df5995e1eb1c8a7b91d39a9bf3fa108bb3",
+        "bytes": 11001
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_vv_zero.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_vv_zero.run.json",
+        "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+        "bytes": 18
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_signed_scale.c",
+        "sha256": "6029b6124b6bfa98b48f08373bd5794f6f486352284b27608a6b2a23130a1604",
+        "bytes": 249934
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_signed_scale.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_signed_scale.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_signed_scale.stdout",
+        "sha256": "41503546e91061bc540a6ed72ebd04364ee7a417d6e1ce06fd7440b597af652a",
+        "bytes": 11001
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_signed_scale.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_signed_scale.run.json",
+        "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+        "bytes": 18
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_top_bitcast.c",
+        "sha256": "b065bca41f9c9fc767cd5b5a0fced35136e3df542e2773dcff95232f9b9e7d29",
+        "bytes": 249938
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_top_bitcast.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_top_bitcast.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_top_bitcast.stdout",
+        "sha256": "695a2822744a664c1fb8543e8593c013f6a05b8ded883222435ece1b37fa5162",
+        "bytes": 11109
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_top_bitcast.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_top_bitcast.run.json",
+        "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+        "bytes": 18
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_fp_scale.c",
+        "sha256": "1f08256d458e375152aa0c03939709dde7bf0241ab84cdd990d9e66d56ceafad",
+        "bytes": 249938
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_fp_scale.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_fp_scale.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_fp_scale.stdout",
+        "sha256": "3d43fece6592947d7a90f47dd2ffe2cf1e7f2c0c9f0422b7d4a83d0fe73ab0f3",
+        "bytes": 11001
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_fp_scale.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_fp_scale.run.json",
+        "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+        "bytes": 18
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_poly_sign.c",
+        "sha256": "23d6b5b83165eac9dd4a66c17a93e00a28adf96ffcb9fdbf941c9a94a5dcf3f9",
+        "bytes": 249932
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_poly_sign.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_poly_sign.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_poly_sign.stdout",
+        "sha256": "fdf2820751a137442dcabf86ac5953e7438fca0bbb938f295c0a0e2aeebfd8c0",
+        "bytes": 10975
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_poly_sign.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_poly_sign.run.json",
+        "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+        "bytes": 18
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_make_g.c",
+        "sha256": "858a8586df5e9ca6537e9687b5f2b90ddf408bc6b3e0412158880211bde2aad2",
+        "bytes": 249938
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_make_g.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_make_g.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_make_g.stdout",
+        "sha256": "e4b23999334fef399df1b8bbf3fb7e0b1fafdbb36af61478c9f82d6250cfaba2",
+        "bytes": 11009
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_make_g.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_make_g.run.json",
+        "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+        "bytes": 18
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_deepest_return.c",
+        "sha256": "5e00c4e0a3db32fcaa5536b87fed3622ace29f9f737fb145568988b03ec09d66",
+        "bytes": 249934
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_deepest_return.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_deepest_return.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_deepest_return.stdout",
+        "sha256": "9a132904cff066f0a57e3e4bdfa45cc3b1e6f6dd32e68fe42d5ee298dc013b6d",
+        "bytes": 11001
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_deepest_return.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_deepest_return.run.json",
+        "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+        "bytes": 18
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_baseline.c",
+        "sha256": "11474b5e4738edb9cfc18b29f1ce5ddf58355476361b10a9279e79e30d981059",
+        "bytes": 249934
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_baseline.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_baseline.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_baseline.stdout",
+        "sha256": "6186738c763670b0456e6af4431d5b86896d55e63bbc4df3958f8bc506d02e3b",
+        "bytes": 11001
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_baseline.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_baseline.run.json",
+        "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+        "bytes": 18
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_vv_zero.c",
+        "sha256": "bda2963d36808aeddcd14ac0875d1f14c5202364060454b6b42df8bbc0df7084",
+        "bytes": 249934
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_vv_zero.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_vv_zero.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_vv_zero.stdout",
+        "sha256": "588e935561e7b55d100489dd6fda65df5995e1eb1c8a7b91d39a9bf3fa108bb3",
+        "bytes": 11001
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_vv_zero.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_vv_zero.run.json",
+        "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+        "bytes": 18
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_signed_scale.c",
+        "sha256": "6029b6124b6bfa98b48f08373bd5794f6f486352284b27608a6b2a23130a1604",
+        "bytes": 249934
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_signed_scale.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_signed_scale.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_signed_scale.stdout",
+        "sha256": "41503546e91061bc540a6ed72ebd04364ee7a417d6e1ce06fd7440b597af652a",
+        "bytes": 11001
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_signed_scale.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_signed_scale.run.json",
+        "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+        "bytes": 18
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_top_bitcast.c",
+        "sha256": "b065bca41f9c9fc767cd5b5a0fced35136e3df542e2773dcff95232f9b9e7d29",
+        "bytes": 249938
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_top_bitcast.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_top_bitcast.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_top_bitcast.stdout",
+        "sha256": "695a2822744a664c1fb8543e8593c013f6a05b8ded883222435ece1b37fa5162",
+        "bytes": 11109
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_top_bitcast.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_top_bitcast.run.json",
+        "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+        "bytes": 18
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_fp_scale.c",
+        "sha256": "1f08256d458e375152aa0c03939709dde7bf0241ab84cdd990d9e66d56ceafad",
+        "bytes": 249938
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_fp_scale.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_fp_scale.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_fp_scale.stdout",
+        "sha256": "3d43fece6592947d7a90f47dd2ffe2cf1e7f2c0c9f0422b7d4a83d0fe73ab0f3",
+        "bytes": 11001
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_fp_scale.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_fp_scale.run.json",
+        "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+        "bytes": 18
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_poly_sign.c",
+        "sha256": "23d6b5b83165eac9dd4a66c17a93e00a28adf96ffcb9fdbf941c9a94a5dcf3f9",
+        "bytes": 249932
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_poly_sign.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_poly_sign.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_poly_sign.stdout",
+        "sha256": "fdf2820751a137442dcabf86ac5953e7438fca0bbb938f295c0a0e2aeebfd8c0",
+        "bytes": 10975
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_poly_sign.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_poly_sign.run.json",
+        "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+        "bytes": 18
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_make_g.c",
+        "sha256": "858a8586df5e9ca6537e9687b5f2b90ddf408bc6b3e0412158880211bde2aad2",
+        "bytes": 249938
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_make_g.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_make_g.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_make_g.stdout",
+        "sha256": "e4b23999334fef399df1b8bbf3fb7e0b1fafdbb36af61478c9f82d6250cfaba2",
+        "bytes": 11009
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_make_g.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_make_g.run.json",
+        "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+        "bytes": 18
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_deepest_return.c",
+        "sha256": "5e00c4e0a3db32fcaa5536b87fed3622ace29f9f737fb145568988b03ec09d66",
+        "bytes": 249934
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_deepest_return.compile.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_deepest_return.compile.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_deepest_return.stdout",
+        "sha256": "9a132904cff066f0a57e3e4bdfa45cc3b1e6f6dd32e68fe42d5ee298dc013b6d",
+        "bytes": 11001
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_deepest_return.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": ".build/jobs/keygen_zint_checks_028_003/normal_deepest_return.run.json",
+        "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+        "bytes": 18
+      }
+    ]
+  },
+  "attempt_history": {
+    "keygen_zint_audit_028_001": "3a1709d02ac86b8b054292b851b0d2172d5166b7fe0ba5b3cb0df95aa7b862f8",
+    "keygen_zint_binary_028_001": "783e4e349dc09712d6b7d1b6742f6d60b3e8db2a9e00ad6beb30b6e3e806b89b",
+    "keygen_zint_checks_028_001": "a881ef95f6c2aa29ef639bc19bc06db63b26a12861c6c7e5e1ec1876ee676520",
+    "keygen_zint_checks_028_002": "49e7d6ea83a66ee419ddba8affdf7bb26b7b89ae8af04af1dc540660d996b5d2",
+    "keygen_zint_checks_028_003": "38e600270ec34ef6f1f365187c8665e790c36c29aad0ea8c59bca81eef5d14f8",
+    "keygen_zint_deepest_028_001": "86868575d8eea10f19b5aa52f6a7030cc2d6340ea40323263355fe2b48662d78",
+    "keygen_zint_extract_028_001": "bbd48c7ac62881baddeb5e0e43e10f9d9f4d20ce491f8c3dc61c2c1a81f4e832",
+    "keygen_zint_extract_028_002": "d29fb1c5ce36380f356f3bea534a07747c8cd88c56cf5ac074578df2b3fe1f4a",
+    "keygen_zint_makefg_028_001": "cbd5fad49dc51222a8fb3165506b4fb14f28bd2774b791acddfddb64ef0ecee2",
+    "keygen_zint_poly_028_001": "88ddccc8bd14899e65a1c247c226afc298b4a8141f7ed86a980600596aea85fc",
+    "keygen_zint_poly_028_002": "2dc86cebdf36d133497e1542861f489c16d3dcaf1027c82473c4b866c208e72d",
+    "keygen_zint_polysub_028_001": "9f068a17d4a2e7fe26b76399321092ed2604a8dd68a2e1229fd4e5b98720066b",
+    "keygen_zint_scaled_028_001": "9faec761b5fe6d54c67fe931967bea5e0fb9255fa960695854787ed7277e254c",
+    "keygen_zint_top_028_001": "fcdcea47d2d8718ede97a875a451df63322dc27dd0105e4dda657b9096d2bead",
+    "keygen_zint_top_028_002": "64b3bc7cd6c8bf304ef462abb54df4b26d2efc168fee6f4c106b7b36b5a4b694"
+  },
+  "attempt_history_receiptless": {},
+  "attempt_details": [
+    {
+      "job": "keygen_zint_audit_028_001",
+      "status": "ACCEPTED",
+      "receipt": {
+        "path": ".build/jobs/keygen_zint_audit_028_001/RECEIPTS.json",
+        "sha256": "3a1709d02ac86b8b054292b851b0d2172d5166b7fe0ba5b3cb0df95aa7b862f8",
+        "bytes": 2956
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_zint_audit_028_001/SOURCE_INPUTS.json",
+        "sha256": "2fc0ea1d5aba73a133a85a08f65d829ae042ff183c56ca971faa86095d719af9",
+        "bytes": 496401
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_zint_audit_028_001/PREFLIGHT.json",
+        "sha256": "8d52b880c31ccb41788b7859fd037c633584fcb86c00cc54a1bd6e054fd295ba",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_zint_audit_028_001/formal/Source3/KeygenZintAudit.lean",
+          "sha256": "ba3315994c2ed2015fee8fa61087b1106020a11e45616d1e0dba7ba63975de0e",
+          "bytes": 11108
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenZintAudit",
+          "accepted": true,
+          "exit_code": 0,
+          "clean_log": true,
+          "source_sha256": "ba3315994c2ed2015fee8fa61087b1106020a11e45616d1e0dba7ba63975de0e",
+          "elapsed_s": 10.239,
+          "maxrss_kib": 2817712,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_zint_audit_028_001/logs/Source3_KeygenZintAudit.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_zint_audit_028_001/logs/Source3_KeygenZintAudit.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "products": [
+        {
+          "path": ".build/jobs/keygen_zint_audit_028_001/ZINT_AUDIT.json",
+          "sha256": "2a2a052d6b2019232cb8eae6e25dd7c92de5fa9da01ba9496ef5e3c9ee1ec7bc",
+          "bytes": 843467
+        },
+        {
+          "path": ".build/jobs/keygen_zint_audit_028_001/ZINT_AUDIT_PARTIAL.json",
+          "sha256": "2a2a052d6b2019232cb8eae6e25dd7c92de5fa9da01ba9496ef5e3c9ee1ec7bc",
+          "bytes": 843467
+        },
+        {
+          "path": ".build/jobs/keygen_zint_audit_028_001/ZINT_AUDIT_PROGRESS.json",
+          "sha256": "80741b98890bfcb7d37bab684fbc27526959c4cb50559012243d9aeb55ffef9c",
+          "bytes": 37
+        }
+      ]
+    },
+    {
+      "job": "keygen_zint_binary_028_001",
+      "status": "ACCEPTED",
+      "receipt": {
+        "path": ".build/jobs/keygen_zint_binary_028_001/RECEIPTS.json",
+        "sha256": "783e4e349dc09712d6b7d1b6742f6d60b3e8db2a9e00ad6beb30b6e3e806b89b",
+        "bytes": 2965
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_zint_binary_028_001/SOURCE_INPUTS.json",
+        "sha256": "33ba87e2f842c38899760d1d3e6b7fab4eff0cab5cd2754957fc827ae9989a41",
+        "bytes": 492863
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_zint_binary_028_001/PREFLIGHT.json",
+        "sha256": "10fdc817415d4bb2c983dd451a1406274c883083614c2e7401ebf5834dee72d6",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_zint_binary_028_001/formal/Source3/KeygenBinaryNtt.lean",
+          "sha256": "5ce4b364852951093da13215d804a5702e1b898f1e952c1b7cb045c45992657d",
+          "bytes": 15947
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenBinaryNtt",
+          "accepted": true,
+          "exit_code": 0,
+          "clean_log": true,
+          "source_sha256": "5ce4b364852951093da13215d804a5702e1b898f1e952c1b7cb045c45992657d",
+          "elapsed_s": 29.382,
+          "maxrss_kib": 3247540,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_zint_binary_028_001/logs/Source3_KeygenBinaryNtt.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_zint_binary_028_001/logs/Source3_KeygenBinaryNtt.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "products": []
+    },
+    {
+      "job": "keygen_zint_checks_028_001",
+      "status": "FAILED_RETAINED",
+      "receipt": {
+        "path": ".build/jobs/keygen_zint_checks_028_001/RECEIPTS.json",
+        "sha256": "a881ef95f6c2aa29ef639bc19bc06db63b26a12861c6c7e5e1ec1876ee676520",
+        "bytes": 2280
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_zint_checks_028_001/SOURCE_INPUTS.json",
+        "sha256": "5a2007bceb80f4e92654a115534096ff2c08bb6de24d71d2d6091920459385a9",
+        "bytes": 498426
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_zint_checks_028_001/PREFLIGHT.json",
+        "sha256": "93dd6a8d88a78b4711bcfe889ae7549871011d8b477ced82c6cfe8e3fe5ba738",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_001/sage/check_keygen_zint_closure.sage",
+          "sha256": "2ad4c6c98399704901fa2545601553dc0947413f5ed76583a4c807cf44bb670b",
+          "bytes": 14089
+        }
+      ],
+      "steps": [
+        {
+          "name": "sage",
+          "accepted": false,
+          "exit_code": 1,
+          "clean_log": false,
+          "source_sha256": "2ad4c6c98399704901fa2545601553dc0947413f5ed76583a4c807cf44bb670b",
+          "elapsed_s": 56.427,
+          "maxrss_kib": 225992,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_zint_checks_028_001/logs/sage.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_zint_checks_028_001/logs/sage.stderr",
+              "sha256": "a211c5f4d63c2aa210d71c89ee5f72893024b41b19f2c8f592f83658085e0420",
+              "bytes": 1165
+            }
+          }
+        }
+      ],
+      "products": [
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_001/PUBLIC_FIXTURE.json",
+          "sha256": "93cb5f884824263c7b30e87cd783141e8fb8bdeb3ddecd8157c26b4a2d6d4561",
+          "bytes": 19288
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_001/normal_baseline.c",
+          "sha256": "ee12bc79dbb0cc4e8e6889c332922913a0bd097964b006486663cf6e6449a3f3",
+          "bytes": 249894
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_001/normal_baseline.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_001/normal_baseline.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_001/normal_baseline.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_001/normal_baseline.stdout",
+          "sha256": "68d05e43192195b6994f72edb29ffa2641cf029ea8f2dee4273df644333d103b",
+          "bytes": 4096
+        }
+      ]
+    },
+    {
+      "job": "keygen_zint_checks_028_002",
+      "status": "FAILED_RETAINED",
+      "receipt": {
+        "path": ".build/jobs/keygen_zint_checks_028_002/RECEIPTS.json",
+        "sha256": "49e7d6ea83a66ee419ddba8affdf7bb26b7b89ae8af04af1dc540660d996b5d2",
+        "bytes": 2280
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_zint_checks_028_002/SOURCE_INPUTS.json",
+        "sha256": "13ce78756778cf45a23461cb1ae84b3a840fe48f434d6ad2bfbb36527d78421e",
+        "bytes": 498426
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_zint_checks_028_002/PREFLIGHT.json",
+        "sha256": "54c3a5d56713a58ba031708b31929bd4471e9ff81443c0d8e71142a126495c7b",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/sage/check_keygen_zint_closure.sage",
+          "sha256": "626c62e7b8a0830ad55376e93e4bbecdc590ecf1ced5a31afc8b8da88d55c7d4",
+          "bytes": 14244
+        }
+      ],
+      "steps": [
+        {
+          "name": "sage",
+          "accepted": false,
+          "exit_code": 1,
+          "clean_log": false,
+          "source_sha256": "626c62e7b8a0830ad55376e93e4bbecdc590ecf1ced5a31afc8b8da88d55c7d4",
+          "elapsed_s": 15.657,
+          "maxrss_kib": 226916,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_zint_checks_028_002/logs/sage.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_zint_checks_028_002/logs/sage.stderr",
+              "sha256": "0cb6b9614f7a1ac2587ea9b3be66354698b60a4cb47e643d710caa9a65c0a8e3",
+              "bytes": 1230
+            }
+          }
+        }
+      ],
+      "products": [
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/PUBLIC_FIXTURE.json",
+          "sha256": "93cb5f884824263c7b30e87cd783141e8fb8bdeb3ddecd8157c26b4a2d6d4561",
+          "bytes": 19288
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_baseline.c",
+          "sha256": "11474b5e4738edb9cfc18b29f1ce5ddf58355476361b10a9279e79e30d981059",
+          "bytes": 249934
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_baseline.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_baseline.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_baseline.run.json",
+          "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+          "bytes": 18
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_baseline.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_baseline.stdout",
+          "sha256": "6186738c763670b0456e6af4431d5b86896d55e63bbc4df3958f8bc506d02e3b",
+          "bytes": 11001
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_fp_scale.c",
+          "sha256": "1f08256d458e375152aa0c03939709dde7bf0241ab84cdd990d9e66d56ceafad",
+          "bytes": 249938
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_fp_scale.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_fp_scale.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_fp_scale.run.json",
+          "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+          "bytes": 18
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_fp_scale.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_fp_scale.stdout",
+          "sha256": "3d43fece6592947d7a90f47dd2ffe2cf1e7f2c0c9f0422b7d4a83d0fe73ab0f3",
+          "bytes": 11001
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_make_g.c",
+          "sha256": "9f36527130e42cefcf53fee285d0ae1d33eff14312214f7b6b06a9059a6edc7b",
+          "bytes": 249934
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_make_g.compile.stderr",
+          "sha256": "0087618fbe7ccfe729cd8d32eb33ecae5c010011234043a4b58946ae3823c6d8",
+          "bytes": 295
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_make_g.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_poly_sign.c",
+          "sha256": "23d6b5b83165eac9dd4a66c17a93e00a28adf96ffcb9fdbf941c9a94a5dcf3f9",
+          "bytes": 249932
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_poly_sign.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_poly_sign.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_poly_sign.run.json",
+          "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+          "bytes": 18
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_poly_sign.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_poly_sign.stdout",
+          "sha256": "fdf2820751a137442dcabf86ac5953e7438fca0bbb938f295c0a0e2aeebfd8c0",
+          "bytes": 10975
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_signed_scale.c",
+          "sha256": "6029b6124b6bfa98b48f08373bd5794f6f486352284b27608a6b2a23130a1604",
+          "bytes": 249934
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_signed_scale.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_signed_scale.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_signed_scale.run.json",
+          "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+          "bytes": 18
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_signed_scale.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_signed_scale.stdout",
+          "sha256": "41503546e91061bc540a6ed72ebd04364ee7a417d6e1ce06fd7440b597af652a",
+          "bytes": 11001
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_top_bitcast.c",
+          "sha256": "b065bca41f9c9fc767cd5b5a0fced35136e3df542e2773dcff95232f9b9e7d29",
+          "bytes": 249938
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_top_bitcast.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_top_bitcast.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_top_bitcast.run.json",
+          "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+          "bytes": 18
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_top_bitcast.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_top_bitcast.stdout",
+          "sha256": "695a2822744a664c1fb8543e8593c013f6a05b8ded883222435ece1b37fa5162",
+          "bytes": 11109
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_vv_zero.c",
+          "sha256": "bda2963d36808aeddcd14ac0875d1f14c5202364060454b6b42df8bbc0df7084",
+          "bytes": 249934
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_vv_zero.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_vv_zero.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_vv_zero.run.json",
+          "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+          "bytes": 18
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_vv_zero.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_002/ubsan_vv_zero.stdout",
+          "sha256": "588e935561e7b55d100489dd6fda65df5995e1eb1c8a7b91d39a9bf3fa108bb3",
+          "bytes": 11001
+        }
+      ]
+    },
+    {
+      "job": "keygen_zint_checks_028_003",
+      "status": "ACCEPTED",
+      "receipt": {
+        "path": ".build/jobs/keygen_zint_checks_028_003/RECEIPTS.json",
+        "sha256": "38e600270ec34ef6f1f365187c8665e790c36c29aad0ea8c59bca81eef5d14f8",
+        "bytes": 2278
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_zint_checks_028_003/SOURCE_INPUTS.json",
+        "sha256": "c90357478f041aa9f13e4abc63b89aea5b8b1eccc9d3be8312be1168496b01ea",
+        "bytes": 498426
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_zint_checks_028_003/PREFLIGHT.json",
+        "sha256": "d3f2a9e638533b86ae316037de08cd51bfcd225344e3c80e392b83fabc2cd40f",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/sage/check_keygen_zint_closure.sage",
+          "sha256": "253d351ec5c59c1f964327085dcaf8a9153cd8ac63d0f2868f1566e0fa8102de",
+          "bytes": 14248
+        }
+      ],
+      "steps": [
+        {
+          "name": "sage",
+          "accepted": true,
+          "exit_code": 0,
+          "clean_log": true,
+          "source_sha256": "253d351ec5c59c1f964327085dcaf8a9153cd8ac63d0f2868f1566e0fa8102de",
+          "elapsed_s": 32.931,
+          "maxrss_kib": 225936,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_zint_checks_028_003/logs/sage.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_zint_checks_028_003/logs/sage.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "products": [
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/PUBLIC_FIXTURE.json",
+          "sha256": "93cb5f884824263c7b30e87cd783141e8fb8bdeb3ddecd8157c26b4a2d6d4561",
+          "bytes": 19288
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ZINT_CHECK.json",
+          "sha256": "e9bcb791f1493c5dcdd82eae267fc9cc3f549f1145f36ff56d07623be1e1b621",
+          "bytes": 53473
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_baseline.c",
+          "sha256": "11474b5e4738edb9cfc18b29f1ce5ddf58355476361b10a9279e79e30d981059",
+          "bytes": 249934
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_baseline.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_baseline.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_baseline.run.json",
+          "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+          "bytes": 18
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_baseline.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_baseline.stdout",
+          "sha256": "6186738c763670b0456e6af4431d5b86896d55e63bbc4df3958f8bc506d02e3b",
+          "bytes": 11001
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_deepest_return.c",
+          "sha256": "5e00c4e0a3db32fcaa5536b87fed3622ace29f9f737fb145568988b03ec09d66",
+          "bytes": 249934
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_deepest_return.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_deepest_return.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_deepest_return.run.json",
+          "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+          "bytes": 18
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_deepest_return.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_deepest_return.stdout",
+          "sha256": "9a132904cff066f0a57e3e4bdfa45cc3b1e6f6dd32e68fe42d5ee298dc013b6d",
+          "bytes": 11001
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_fp_scale.c",
+          "sha256": "1f08256d458e375152aa0c03939709dde7bf0241ab84cdd990d9e66d56ceafad",
+          "bytes": 249938
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_fp_scale.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_fp_scale.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_fp_scale.run.json",
+          "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+          "bytes": 18
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_fp_scale.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_fp_scale.stdout",
+          "sha256": "3d43fece6592947d7a90f47dd2ffe2cf1e7f2c0c9f0422b7d4a83d0fe73ab0f3",
+          "bytes": 11001
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_make_g.c",
+          "sha256": "858a8586df5e9ca6537e9687b5f2b90ddf408bc6b3e0412158880211bde2aad2",
+          "bytes": 249938
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_make_g.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_make_g.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_make_g.run.json",
+          "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+          "bytes": 18
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_make_g.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_make_g.stdout",
+          "sha256": "e4b23999334fef399df1b8bbf3fb7e0b1fafdbb36af61478c9f82d6250cfaba2",
+          "bytes": 11009
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_poly_sign.c",
+          "sha256": "23d6b5b83165eac9dd4a66c17a93e00a28adf96ffcb9fdbf941c9a94a5dcf3f9",
+          "bytes": 249932
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_poly_sign.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_poly_sign.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_poly_sign.run.json",
+          "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+          "bytes": 18
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_poly_sign.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_poly_sign.stdout",
+          "sha256": "fdf2820751a137442dcabf86ac5953e7438fca0bbb938f295c0a0e2aeebfd8c0",
+          "bytes": 10975
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_signed_scale.c",
+          "sha256": "6029b6124b6bfa98b48f08373bd5794f6f486352284b27608a6b2a23130a1604",
+          "bytes": 249934
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_signed_scale.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_signed_scale.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_signed_scale.run.json",
+          "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+          "bytes": 18
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_signed_scale.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_signed_scale.stdout",
+          "sha256": "41503546e91061bc540a6ed72ebd04364ee7a417d6e1ce06fd7440b597af652a",
+          "bytes": 11001
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_top_bitcast.c",
+          "sha256": "b065bca41f9c9fc767cd5b5a0fced35136e3df542e2773dcff95232f9b9e7d29",
+          "bytes": 249938
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_top_bitcast.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_top_bitcast.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_top_bitcast.run.json",
+          "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+          "bytes": 18
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_top_bitcast.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_top_bitcast.stdout",
+          "sha256": "695a2822744a664c1fb8543e8593c013f6a05b8ded883222435ece1b37fa5162",
+          "bytes": 11109
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_vv_zero.c",
+          "sha256": "bda2963d36808aeddcd14ac0875d1f14c5202364060454b6b42df8bbc0df7084",
+          "bytes": 249934
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_vv_zero.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_vv_zero.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_vv_zero.run.json",
+          "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+          "bytes": 18
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_vv_zero.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/normal_vv_zero.stdout",
+          "sha256": "588e935561e7b55d100489dd6fda65df5995e1eb1c8a7b91d39a9bf3fa108bb3",
+          "bytes": 11001
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_baseline.c",
+          "sha256": "11474b5e4738edb9cfc18b29f1ce5ddf58355476361b10a9279e79e30d981059",
+          "bytes": 249934
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_baseline.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_baseline.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_baseline.run.json",
+          "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+          "bytes": 18
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_baseline.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_baseline.stdout",
+          "sha256": "6186738c763670b0456e6af4431d5b86896d55e63bbc4df3958f8bc506d02e3b",
+          "bytes": 11001
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_deepest_return.c",
+          "sha256": "5e00c4e0a3db32fcaa5536b87fed3622ace29f9f737fb145568988b03ec09d66",
+          "bytes": 249934
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_deepest_return.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_deepest_return.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_deepest_return.run.json",
+          "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+          "bytes": 18
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_deepest_return.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_deepest_return.stdout",
+          "sha256": "9a132904cff066f0a57e3e4bdfa45cc3b1e6f6dd32e68fe42d5ee298dc013b6d",
+          "bytes": 11001
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_fp_scale.c",
+          "sha256": "1f08256d458e375152aa0c03939709dde7bf0241ab84cdd990d9e66d56ceafad",
+          "bytes": 249938
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_fp_scale.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_fp_scale.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_fp_scale.run.json",
+          "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+          "bytes": 18
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_fp_scale.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_fp_scale.stdout",
+          "sha256": "3d43fece6592947d7a90f47dd2ffe2cf1e7f2c0c9f0422b7d4a83d0fe73ab0f3",
+          "bytes": 11001
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_make_g.c",
+          "sha256": "858a8586df5e9ca6537e9687b5f2b90ddf408bc6b3e0412158880211bde2aad2",
+          "bytes": 249938
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_make_g.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_make_g.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_make_g.run.json",
+          "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+          "bytes": 18
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_make_g.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_make_g.stdout",
+          "sha256": "e4b23999334fef399df1b8bbf3fb7e0b1fafdbb36af61478c9f82d6250cfaba2",
+          "bytes": 11009
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_poly_sign.c",
+          "sha256": "23d6b5b83165eac9dd4a66c17a93e00a28adf96ffcb9fdbf941c9a94a5dcf3f9",
+          "bytes": 249932
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_poly_sign.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_poly_sign.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_poly_sign.run.json",
+          "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+          "bytes": 18
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_poly_sign.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_poly_sign.stdout",
+          "sha256": "fdf2820751a137442dcabf86ac5953e7438fca0bbb938f295c0a0e2aeebfd8c0",
+          "bytes": 10975
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_signed_scale.c",
+          "sha256": "6029b6124b6bfa98b48f08373bd5794f6f486352284b27608a6b2a23130a1604",
+          "bytes": 249934
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_signed_scale.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_signed_scale.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_signed_scale.run.json",
+          "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+          "bytes": 18
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_signed_scale.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_signed_scale.stdout",
+          "sha256": "41503546e91061bc540a6ed72ebd04364ee7a417d6e1ce06fd7440b597af652a",
+          "bytes": 11001
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_top_bitcast.c",
+          "sha256": "b065bca41f9c9fc767cd5b5a0fced35136e3df542e2773dcff95232f9b9e7d29",
+          "bytes": 249938
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_top_bitcast.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_top_bitcast.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_top_bitcast.run.json",
+          "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+          "bytes": 18
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_top_bitcast.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_top_bitcast.stdout",
+          "sha256": "695a2822744a664c1fb8543e8593c013f6a05b8ded883222435ece1b37fa5162",
+          "bytes": 11109
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_vv_zero.c",
+          "sha256": "bda2963d36808aeddcd14ac0875d1f14c5202364060454b6b42df8bbc0df7084",
+          "bytes": 249934
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_vv_zero.compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_vv_zero.compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_vv_zero.run.json",
+          "sha256": "df4d721d233a2334088d2d2e0110346ae9e509ff46bf0b379fbcfa85c715af4d",
+          "bytes": 18
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_vv_zero.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_zint_checks_028_003/ubsan_vv_zero.stdout",
+          "sha256": "588e935561e7b55d100489dd6fda65df5995e1eb1c8a7b91d39a9bf3fa108bb3",
+          "bytes": 11001
+        }
+      ]
+    },
+    {
+      "job": "keygen_zint_deepest_028_001",
+      "status": "ACCEPTED",
+      "receipt": {
+        "path": ".build/jobs/keygen_zint_deepest_028_001/RECEIPTS.json",
+        "sha256": "86868575d8eea10f19b5aa52f6a7030cc2d6340ea40323263355fe2b48662d78",
+        "bytes": 3002
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_zint_deepest_028_001/SOURCE_INPUTS.json",
+        "sha256": "e32f47c8327019ff986295c6dedd6c6ef3bc4d79a56db94dec7802c888965046",
+        "bytes": 495149
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_zint_deepest_028_001/PREFLIGHT.json",
+        "sha256": "25da4dad928476e82f4dff42a460385797b00233a03fc5dcafc4f59f5bd190c5",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_zint_deepest_028_001/formal/Source3/KeygenDeepestSource.lean",
+          "sha256": "35ec014a38aa40e7535c0ae2afd4b7a5f77a5d0dbb5cfb6219b6d8e94ba5344b",
+          "bytes": 15323
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenDeepestSource",
+          "accepted": true,
+          "exit_code": 0,
+          "clean_log": true,
+          "source_sha256": "35ec014a38aa40e7535c0ae2afd4b7a5f77a5d0dbb5cfb6219b6d8e94ba5344b",
+          "elapsed_s": 29.928,
+          "maxrss_kib": 3275784,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_zint_deepest_028_001/logs/Source3_KeygenDeepestSource.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_zint_deepest_028_001/logs/Source3_KeygenDeepestSource.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "products": []
+    },
+    {
+      "job": "keygen_zint_extract_028_001",
+      "status": "FAILED_RETAINED",
+      "receipt": {
+        "path": ".build/jobs/keygen_zint_extract_028_001/RECEIPTS.json",
+        "sha256": "bbd48c7ac62881baddeb5e0e43e10f9d9f4d20ce491f8c3dc61c2c1a81f4e832",
+        "bytes": 5866
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_zint_extract_028_001/SOURCE_INPUTS.json",
+        "sha256": "f07276dae13f970dc5ad872dffcf74bcaa7d4c151f0aa0366092e8b5860cd564",
+        "bytes": 485899
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_zint_extract_028_001/PREFLIGHT.json",
+        "sha256": "6790a5db628d4730df2b19355f50dfc48f376f1621ab026df646ecd90fb74247",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_zint_extract_028_001/formal/Source3/KeygenZintCall.lean",
+          "sha256": "99492a51eab0eef02872c35427879be97dcfa2c981736846e52c434f8a18ab86",
+          "bytes": 56079
+        },
+        {
+          "path": ".build/jobs/keygen_zint_extract_028_001/formal/Source3/KeygenZintExtract.lean",
+          "sha256": "bccb27bcd08e331d8042d091f290adb403be87656c35f057d71a36fca72e8729",
+          "bytes": 6315
+        },
+        {
+          "path": ".build/jobs/keygen_zint_extract_028_001/formal/Source3/KeygenZintCore.lean",
+          "sha256": "a3d6e22b75db16847a141944b786bd852f08e7ea221376e03b42b148589fdafa",
+          "bytes": 25026
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenZintCall",
+          "accepted": true,
+          "exit_code": 0,
+          "clean_log": true,
+          "source_sha256": "99492a51eab0eef02872c35427879be97dcfa2c981736846e52c434f8a18ab86",
+          "elapsed_s": 14.753,
+          "maxrss_kib": 2997284,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_zint_extract_028_001/logs/Source3_KeygenZintCall.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_zint_extract_028_001/logs/Source3_KeygenZintCall.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        },
+        {
+          "name": "Source3_KeygenZintExtract",
+          "accepted": false,
+          "exit_code": 1,
+          "clean_log": false,
+          "source_sha256": "bccb27bcd08e331d8042d091f290adb403be87656c35f057d71a36fca72e8729",
+          "elapsed_s": 78.546,
+          "maxrss_kib": 3803128,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_zint_extract_028_001/logs/Source3_KeygenZintExtract.stdout",
+              "sha256": "0c3cd398889183999cc98180e8430bf83080f181f291a1152c48122844f5b516",
+              "bytes": 952
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_zint_extract_028_001/logs/Source3_KeygenZintExtract.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "products": []
+    },
+    {
+      "job": "keygen_zint_extract_028_002",
+      "status": "ACCEPTED",
+      "receipt": {
+        "path": ".build/jobs/keygen_zint_extract_028_002/RECEIPTS.json",
+        "sha256": "d29fb1c5ce36380f356f3bea534a07747c8cd88c56cf5ac074578df2b3fe1f4a",
+        "bytes": 8917
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_zint_extract_028_002/SOURCE_INPUTS.json",
+        "sha256": "2c57544e9281215534619484babfc7f2abc06a313c69c4ed6e81d2857ebb114c",
+        "bytes": 485899
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_zint_extract_028_002/PREFLIGHT.json",
+        "sha256": "8d8bf3a43cff661f016b2f534d3b39327572fbd2b32963e161c9015885536c2f",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_zint_extract_028_002/formal/Source3/KeygenZintCall.lean",
+          "sha256": "205bd62b1e29fbd27e633cf487a634822a023ae8160731d69288562f5e6ab7c8",
+          "bytes": 56169
+        },
+        {
+          "path": ".build/jobs/keygen_zint_extract_028_002/formal/Source3/KeygenZintExtract.lean",
+          "sha256": "f12f5e9468119332e8ccbb0af72c747d7be9fd06419fc52ff64769eab96f3235",
+          "bytes": 6308
+        },
+        {
+          "path": ".build/jobs/keygen_zint_extract_028_002/formal/Source3/KeygenZintCore.lean",
+          "sha256": "a3d6e22b75db16847a141944b786bd852f08e7ea221376e03b42b148589fdafa",
+          "bytes": 25026
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenZintCall",
+          "accepted": true,
+          "exit_code": 0,
+          "clean_log": true,
+          "source_sha256": "205bd62b1e29fbd27e633cf487a634822a023ae8160731d69288562f5e6ab7c8",
+          "elapsed_s": 19.826,
+          "maxrss_kib": 3058468,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_zint_extract_028_002/logs/Source3_KeygenZintCall.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_zint_extract_028_002/logs/Source3_KeygenZintCall.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        },
+        {
+          "name": "Source3_KeygenZintExtract",
+          "accepted": true,
+          "exit_code": 0,
+          "clean_log": true,
+          "source_sha256": "f12f5e9468119332e8ccbb0af72c747d7be9fd06419fc52ff64769eab96f3235",
+          "elapsed_s": 75.843,
+          "maxrss_kib": 3808332,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_zint_extract_028_002/logs/Source3_KeygenZintExtract.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_zint_extract_028_002/logs/Source3_KeygenZintExtract.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        },
+        {
+          "name": "Source3_KeygenZintCore",
+          "accepted": true,
+          "exit_code": 0,
+          "clean_log": true,
+          "source_sha256": "a3d6e22b75db16847a141944b786bd852f08e7ea221376e03b42b148589fdafa",
+          "elapsed_s": 391.219,
+          "maxrss_kib": 6129232,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_zint_extract_028_002/logs/Source3_KeygenZintCore.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_zint_extract_028_002/logs/Source3_KeygenZintCore.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "products": []
+    },
+    {
+      "job": "keygen_zint_makefg_028_001",
+      "status": "ACCEPTED",
+      "receipt": {
+        "path": ".build/jobs/keygen_zint_makefg_028_001/RECEIPTS.json",
+        "sha256": "cbd5fad49dc51222a8fb3165506b4fb14f28bd2774b791acddfddb64ef0ecee2",
+        "bytes": 2987
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_zint_makefg_028_001/SOURCE_INPUTS.json",
+        "sha256": "d8686b7f2ec3a61d2d58c9fd1d46692daa3cb835772f184ac3430b584ab12916",
+        "bytes": 493900
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_zint_makefg_028_001/PREFLIGHT.json",
+        "sha256": "11216403381a58be4eaa945343bc794a134e37b56c04a4bd1121450e874161e3",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_zint_makefg_028_001/formal/Source3/KeygenMakeFgSource.lean",
+          "sha256": "d3b79d5efbc0d8eb8f6f22ea81c8e7693f521821bab2d1bcf22b6768aa1f9db5",
+          "bytes": 21289
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenMakeFgSource",
+          "accepted": true,
+          "exit_code": 0,
+          "clean_log": true,
+          "source_sha256": "d3b79d5efbc0d8eb8f6f22ea81c8e7693f521821bab2d1bcf22b6768aa1f9db5",
+          "elapsed_s": 111.868,
+          "maxrss_kib": 4366220,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_zint_makefg_028_001/logs/Source3_KeygenMakeFgSource.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_zint_makefg_028_001/logs/Source3_KeygenMakeFgSource.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "products": []
+    },
+    {
+      "job": "keygen_zint_poly_028_001",
+      "status": "ACCEPTED",
+      "receipt": {
+        "path": ".build/jobs/keygen_zint_poly_028_001/RECEIPTS.json",
+        "sha256": "88ddccc8bd14899e65a1c247c226afc298b4a8141f7ed86a980600596aea85fc",
+        "bytes": 2940
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_zint_poly_028_001/SOURCE_INPUTS.json",
+        "sha256": "18edd525b96341c1ca56f3d6b2ee69dddb7c54fc15aef5b91db1ca6f63c4c8c8",
+        "bytes": 489658
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_zint_poly_028_001/PREFLIGHT.json",
+        "sha256": "f09e0f5da6263e0b70c00c58628247b3664f8bc688918625d224590f68fcbd48",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_zint_poly_028_001/formal/Source3/KeygenZintPoly.lean",
+          "sha256": "ca877ee0268b86bdbf866c50f051ccd2be94a149d577a25fb403e1e453670138",
+          "bytes": 17018
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenZintPoly",
+          "accepted": true,
+          "exit_code": 0,
+          "clean_log": true,
+          "source_sha256": "ca877ee0268b86bdbf866c50f051ccd2be94a149d577a25fb403e1e453670138",
+          "elapsed_s": 16.902,
+          "maxrss_kib": 3042628,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_zint_poly_028_001/logs/Source3_KeygenZintPoly.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_zint_poly_028_001/logs/Source3_KeygenZintPoly.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "products": []
+    },
+    {
+      "job": "keygen_zint_poly_028_002",
+      "status": "ACCEPTED",
+      "receipt": {
+        "path": ".build/jobs/keygen_zint_poly_028_002/RECEIPTS.json",
+        "sha256": "2dc86cebdf36d133497e1542861f489c16d3dcaf1027c82473c4b866c208e72d",
+        "bytes": 2940
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_zint_poly_028_002/SOURCE_INPUTS.json",
+        "sha256": "1c29ad92746a68f0e2440462f1755a8a4ffa9c79eea74eed20e14ae7f6b3f2cf",
+        "bytes": 489658
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_zint_poly_028_002/PREFLIGHT.json",
+        "sha256": "9ec6b26353e79b116b016bfee8d93775784645f07e7526a2460e0a17e79dc96a",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_zint_poly_028_002/formal/Source3/KeygenZintPoly.lean",
+          "sha256": "7f19d3c9bf0ffce4d16e7b0fa8a01be428789f77f112b7b8324754f3ec9877f3",
+          "bytes": 17581
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenZintPoly",
+          "accepted": true,
+          "exit_code": 0,
+          "clean_log": true,
+          "source_sha256": "7f19d3c9bf0ffce4d16e7b0fa8a01be428789f77f112b7b8324754f3ec9877f3",
+          "elapsed_s": 21.608,
+          "maxrss_kib": 3046328,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_zint_poly_028_002/logs/Source3_KeygenZintPoly.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_zint_poly_028_002/logs/Source3_KeygenZintPoly.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "products": []
+    },
+    {
+      "job": "keygen_zint_polysub_028_001",
+      "status": "ACCEPTED",
+      "receipt": {
+        "path": ".build/jobs/keygen_zint_polysub_028_001/RECEIPTS.json",
+        "sha256": "9f068a17d4a2e7fe26b76399321092ed2604a8dd68a2e1229fd4e5b98720066b",
+        "bytes": 3002
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_zint_polysub_028_001/SOURCE_INPUTS.json",
+        "sha256": "1e59fd660d82500a3599ea56f16fee5a72816f7bc6551857a6aa006900116ed3",
+        "bytes": 491721
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_zint_polysub_028_001/PREFLIGHT.json",
+        "sha256": "5b5e57f1548679d7ec1ae444640c474a262a7b7978a468fb088d0836f754a853",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_zint_polysub_028_001/formal/Source3/KeygenPolySubScaled.lean",
+          "sha256": "1910612c1385cdceef20c4f72b1a7040f3600b565ec9df5dbed72d0223e397d2",
+          "bytes": 15438
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenPolySubScaled",
+          "accepted": true,
+          "exit_code": 0,
+          "clean_log": true,
+          "source_sha256": "1910612c1385cdceef20c4f72b1a7040f3600b565ec9df5dbed72d0223e397d2",
+          "elapsed_s": 35.502,
+          "maxrss_kib": 3759032,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_zint_polysub_028_001/logs/Source3_KeygenPolySubScaled.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_zint_polysub_028_001/logs/Source3_KeygenPolySubScaled.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "products": []
+    },
+    {
+      "job": "keygen_zint_scaled_028_001",
+      "status": "ACCEPTED",
+      "receipt": {
+        "path": ".build/jobs/keygen_zint_scaled_028_001/RECEIPTS.json",
+        "sha256": "9faec761b5fe6d54c67fe931967bea5e0fb9255fa960695854787ed7277e254c",
+        "bytes": 2972
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_zint_scaled_028_001/SOURCE_INPUTS.json",
+        "sha256": "61f41a9cc7ac3803ff7ee8ca0f6c33f8101031754a49fd30ce25bd858c6a99be",
+        "bytes": 490682
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_zint_scaled_028_001/PREFLIGHT.json",
+        "sha256": "307769c7728ee70fd0f254c9a01fd3ea605ebf0de1728a3422ffa6a3d548fc45",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_zint_scaled_028_001/formal/Source3/KeygenZintScaled.lean",
+          "sha256": "e68bd6b8fb5672c53b001e335779a4d9290a21fb51102ec72159ebede3ab6ba6",
+          "bytes": 11231
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenZintScaled",
+          "accepted": true,
+          "exit_code": 0,
+          "clean_log": true,
+          "source_sha256": "e68bd6b8fb5672c53b001e335779a4d9290a21fb51102ec72159ebede3ab6ba6",
+          "elapsed_s": 38.407,
+          "maxrss_kib": 3820412,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_zint_scaled_028_001/logs/Source3_KeygenZintScaled.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_zint_scaled_028_001/logs/Source3_KeygenZintScaled.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "products": []
+    },
+    {
+      "job": "keygen_zint_top_028_001",
+      "status": "FAILED_RETAINED",
+      "receipt": {
+        "path": ".build/jobs/keygen_zint_top_028_001/RECEIPTS.json",
+        "sha256": "fcdcea47d2d8718ede97a875a451df63322dc27dd0105e4dda657b9096d2bead",
+        "bytes": 2837
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_zint_top_028_001/SOURCE_INPUTS.json",
+        "sha256": "48ab8a53f77b4a5186e1a756a26f3c2ba0dda725dde64b973706fe4a2efff0ce",
+        "bytes": 488641
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_zint_top_028_001/PREFLIGHT.json",
+        "sha256": "fe42efb0b9d4cd3cd03a1da0550915a6568841c98d1f38b7e823fa65802c29a3",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_zint_top_028_001/formal/Source3/KeygenZintTop.lean",
+          "sha256": "c9c83dafe49da66ba1ed094b7e1da9618a55b0856b9fb1f79c10fa2e3b057aa8",
+          "bytes": 10537
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenZintTop",
+          "accepted": false,
+          "exit_code": 1,
+          "clean_log": false,
+          "source_sha256": "c9c83dafe49da66ba1ed094b7e1da9618a55b0856b9fb1f79c10fa2e3b057aa8",
+          "elapsed_s": 22.62,
+          "maxrss_kib": 3286352,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_zint_top_028_001/logs/Source3_KeygenZintTop.stdout",
+              "sha256": "f488fcf89b0f9337420ea578b37e120164aff717b28bf2b04113e3040b31dc41",
+              "bytes": 782
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_zint_top_028_001/logs/Source3_KeygenZintTop.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "products": []
+    },
+    {
+      "job": "keygen_zint_top_028_002",
+      "status": "ACCEPTED",
+      "receipt": {
+        "path": ".build/jobs/keygen_zint_top_028_002/RECEIPTS.json",
+        "sha256": "64b3bc7cd6c8bf304ef462abb54df4b26d2efc168fee6f4c106b7b36b5a4b694",
+        "bytes": 2924
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_zint_top_028_002/SOURCE_INPUTS.json",
+        "sha256": "59ede94a31ed567586399fd0deb46c7977e1a5ace3b11c867a4fc9e723d82d89",
+        "bytes": 488641
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_zint_top_028_002/PREFLIGHT.json",
+        "sha256": "5cc2e0dd07f4de9cacbd7bf7222451b99ce18ff8832aee491ccec44ed574ff96",
+        "bytes": 147
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_zint_top_028_002/formal/Source3/KeygenZintTop.lean",
+          "sha256": "0f0e8272fdd54ce423e68eb9889491300a44aaa2fc423936a47f961724a952a0",
+          "bytes": 10761
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenZintTop",
+          "accepted": true,
+          "exit_code": 0,
+          "clean_log": true,
+          "source_sha256": "0f0e8272fdd54ce423e68eb9889491300a44aaa2fc423936a47f961724a952a0",
+          "elapsed_s": 19.008,
+          "maxrss_kib": 3286056,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_zint_top_028_002/logs/Source3_KeygenZintTop.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_zint_top_028_002/logs/Source3_KeygenZintTop.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "products": []
+    }
+  ],
+  "attempt_counts": {
+    "ACCEPTED": 11,
+    "FAILED_RETAINED": 4
+  },
+  "tools": [
+    {
+      "path": "tools/job.py",
+      "sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+      "bytes": 12792
+    },
+    {
+      "path": "tools/job_when_available.py",
+      "sha256": "525785c5321ebdda583c4e42d0daf5243b29146d10d47bd086d65fd89c53c37b",
+      "bytes": 3870
+    },
+    {
+      "path": "tools/keygen_zint_audit_source.py",
+      "sha256": "e0164f30ee267d7f31c47733b795c363c77c649b7aba942f37379c27c609bf09",
+      "bytes": 3008
+    },
+    {
+      "path": "formal/Source3/KeygenLevelsAudit.lean",
+      "sha256": "83f6b37a34bd7527fe4a14fef8167cbe67e8deffe617f57478a32db8e814d8bd",
+      "bytes": 6914
+    },
+    {
+      "path": "tools/keygen_zint_batch.py",
+      "sha256": "5bd9926090b41af22835650cdd4230df5f46c435155d7980d5c54c556aac57f0",
+      "bytes": 15069
+    }
+  ],
+  "contracts": {
+    "extraction": "Complete bitlength, signed bit length, top, max-bitlength and big-to-fpr bodies; static vv initializer/object binding and value-level returned call; actual division, return pun, pointer advance and nested FPEMU Store64.",
+    "scaled": "Complete add-scaled/sub-scaled bigint leaves and both poly_sub_scaled branches. Backward pointers execute (F+j)-off with intermediate bounds; k[u] is signed32.",
+    "make_fg": "Complete binary mkgm2/NTT2/iNTT2, complete make_fg_step/make_fg and fixed ternary-top/CRT dependency closure. Actual width16 REV10, width64 size tables and signed16 f/g loads.",
+    "deepest": "Complete deepest body, actual context-byte reads and member argument binding, CRT/Bezout/multiply failure gates and short-circuit order. Derived frame/material preservation for any input block separate from scratch/static tables.",
+    "boundary": "Finite defined executions in the pinned reference model. Context ABI/allocation, static table environment and legal object separation remain caller inputs. No bigint/NTT arithmetic, termination, probability or whole-solver conclusion is promoted from these frames."
+  },
+  "open": [
+    "Full solve_NTRU_intermediate and remaining active dependencies, including poly_sub_scaled_ntt if reached.",
+    "Full PRIMES2/PRIMES3 and size-table object initialization, context/profile and root caller instantiation.",
+    "Root post-decrement intermediate loop, complete sampled f/g transport through preceding GS/public/search operations and connection to existing depth0/output/validation suffix.",
+    "B1.05 Acceptance exact integer NTRU about the same retained material remains NOT_MET; B1.06 not entered."
+  ],
+  "limits": "Unchanged Lean j1/-M6144, maxRecDepth32768/maxHeartbeats2000000, wall1800s, AS12GiB/RSS8GiB, warnings as errors; pp.maxSteps200000; Sage standard preparser ZZ/QQ.",
+  "git": {
+    "branch": "main",
+    "author": "niirmataa",
+    "writer_lock": "proofs/ft1536/work/archive.lock",
+    "source_commits": [
+      "8ca34465f2a3012adb1e7f2de17e7ecd29e4a1df tools(T12.1): verify batch027 pins before zint extraction work",
+      "a625051313229537248be0c0dc5a9c320f111b8c proof(T12.1): bind bitlength static object and signed return value call",
+      "18678871fffd22984e2344012be5415e5482377c proof(T12.1): execute top extraction and polynomial FPEMU conversion",
+      "5ed5c90e45e618fcfba80d1a41fc2a0a9b9f4f08 proof(T12.1): execute scaled subtraction with signed reads and backward pointers",
+      "71da147c654ba5ff2ed415264fce1c8aabd6e7e8 proof(T12.1): close binary NTT and complete make_fg execution",
+      "d9b71758e86149454db013c758001d392363b7c1 proof(T12.1): bind complete deepest search and preserve caller material",
+      "bcf1f4c2edda38d54605bccfe21c9d6c9f534962 audit(T12.1): record zint closure terms and exact source mutation controls"
+    ],
+    "push": "none; explicit owner signal required",
+    "foreign_changes": "preserved"
+  },
+  "active_jobs_at_close": []
+}

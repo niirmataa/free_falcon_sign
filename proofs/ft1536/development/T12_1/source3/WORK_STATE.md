@@ -1,5 +1,35 @@
 # T12.1/source3 — żywy stan
 
+## B1.05b-c — CLOSED at complete deepest operational closure — 2026-10-08
+
+**CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
+**B1.05 Acceptance NOT MET; B1.06 not entered.** BATCH_028 completes the
+owner's listed dependency chain through full solve_NTRU_deepest: fourteen
+new complete source bodies, static vv object/value-call grammar, signed
+and top extraction, fpr conversion, scaled subtraction, both binary NTT
+and make_fg families. The deepest frame/material theorem preserves the
+same incoming f/g through the actual fixed call, including either return.
+Context/profile/static initialization and the remaining intermediate/root
+transport are still caller/next-stage obligations.
+
+Pair JSON `436e0e87632841746909a23848108cbf5708c2a6cb8f297655584d0920200c02`,
+notes `f2f8f86807bb5eb4a02850fc64f0c74a188e922b526a7b1958036079f2476809`.
+11 accepted Lean modules, all0/0; full546-entry audit (509 terms/37
+inductives), standard axioms and no elisions. Exact Sage/QQ/ZZ controls:
+16 normal/UBSan runs ×266 cases,seven mutations detected in both modes.
+15 attempts retained,including four failed. Postseal verified3202 pins,
+471 current inputs and exact Call/Core supersessions; no active job:
+`.build/levels_028/POSTSEAL.json` SHA256
+`2ae57393e0e95562c7fd3f3c63b7a689e152cac4be5383d99b1de60c6acc363d`.
+
+Source commits `8ca34465`, `a6250513`, `18678871`, `5ed5c90e`, `71da147c`,
+`d9b71758`, `bcf1f4c2` plus final local documentation commit. No owned job
+or unresolved Lean draft. Resume from checkpoint **section8R** using
+`tools/keygen_zint_batch.py verify` before work. Next: complete intermediate,
+remaining active dependencies, full static/global/root bindings and same
+sampled material through all preceding gates into the existing validation.
+No push, review, import, migration, worker or relay was started.
+
 ## B1.05b-c — extraction continuation — 2026-10-08
 
 Owner resumed checkpoint 7R with GPT-6 Astra Ultrafast. BATCH_028 is

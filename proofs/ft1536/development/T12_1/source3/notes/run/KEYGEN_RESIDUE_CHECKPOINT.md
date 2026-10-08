@@ -1,3 +1,143 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.05b closure / B1.05c deepest midpoint
+
+**PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
+2026-10-08, BATCH_028, GPT-6 Astra Ultrafast. **CLOSED_AT_RECOVERABLE_MIDPOINT.**
+The owner's listed dependency chain through complete deepest execution is
+checked. **B1.05 Acceptance NOT MET; B1.06 not entered.** Resume: section 8R.
+
+## 8. Closed this window — fourteen complete bodies and deepest material frame
+
+Source commits on main as niirmataa: `8ca34465`, `a6250513`, `18678871`,
+`5ed5c90e`, `71da147c`, `d9b71758`, `bcf1f4c2`; exact paths under
+`proofs/ft1536/work/archive.lock`. This pair/checkpoint has its own final
+local documentation commit. Full scope/failure record:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_028_NOTES.md` and `_028.json`.
+
+1. **bitlength / zint_signed_bit_length**: 3/5 statement-boundary pieces.
+   New static vv[] declaration rule infers 32 unsigned words, resolves the
+   qualified object `bitlength.vv`, checks its read-only extent and actual
+   initializer bytes, and binds the local vv pointer. The return reads those
+   bytes. The signed helper executes a value-level bitlength call with
+   actual uint32 parameter/return conversion and C addition. Exact return
+   trees and call counts rule out the closed-ModCall fallback. All prior
+   Core audits rechecked. `KeygenZintExtract` + Call/Core.
+2. **zint_get_top**: four pieces, unsigned sc/31 and same-width int64 pun
+   in return. `KeygenZintTop` has the fixed body/Call/frame.
+3. **poly_max_bitlength / poly_big_to_fp**: 4/3 pieces, actual signed
+   helper call, pointer advance, MKN, off conditional and nested
+   get_top→fpr_scaled→Store64. `KeygenZintPoly` uses the eight-byte fpr
+   parameter view and the existing pinned FPEMU body.
+4. **zint_add_scaled_mul_small / zint_sub_scaled / poly_sub_scaled**:
+   three pieces each, both polynomial branches. `KeygenZintScaled` and
+   `KeygenPolySubScaled` retain signed32 k[u], all five calls and the three
+   `(F+j)-off` arguments with intermediate pointer bounds. The byte frame
+   uses object separation, not an assumed nonnegative unsigned j-off.
+5. **binary mkgm2/NTT2/iNTT2**: 4/3/4 pieces, both stride-one macros,
+   unsigned16 REV10 read, right-to-left chained assignment, the inverse's
+   empty statement and pointer scopes. `KeygenBinaryNtt` is a fixed
+   operational closure; no transform correctness premise is used.
+6. **make_fg_step / make_fg**: 5/4 pieces. `KeygenMakeFgSource` executes
+   mixed declarations, pointer conditional, width64 MAX_BL_SMALL reads,
+   actual prime members, signed16 f/g conversion, memmove, complete
+   binary/ternary/top/CRT callees and actual return control. Correct source
+   regions: step5380–5568, make5685–5731 (close5732, not5761).
+7. **solve_NTRU_deepest**: five pieces cover all48 body lines5744–5791.
+   `KeygenDeepestSource` executes actual context members at offsets0/4/432,
+   value-binds fk->ternary to the make_fg parameter, executes the full
+   make_fg/CRT/Bezout/multiply closure, preserves the negated Bezout gate,
+   short-circuit OR and both returns. Caller locals/arrays/tables are
+   restored. Its exact new material theorem is:
+
+```text
+ctx : KeygenSearchContext.Context
+before, after : C99ArrayReference.State; v : C99IntegerReference.Value
+source : KeygenDeepestSource.Call ctx before after v
+input : C99MemoryReference.ArrayPointer
+separated : KeygenDeepestSource.Protected ctx before input.block
+vector : Geometry.Vec
+represented : KeygenMaterial.Represents before.heap input vector
+-----------------------------------------------------------------
+KeygenMaterial.Represents after.heap input vector
+```
+
+Protected = legal scratch/static-table object separation. Execution
+consumes the actual member bytes and fixed bodies. No arbitrary callee or
+heap-frame premise occurs. The result covers either finite defined return.
+It preserves incoming f/g; their arrival at this call and transport through
+intermediate/root remain obligations. Static PRIMES/size-table object
+initialization and the enclosing context/profile remain caller seams.
+No arithmetic Bezout, bigint/NTT evaluation, numerical approximation,
+termination, probability or complete successful-solver claim is added.
+
+### 8.1 Pins and completed checks
+
+ENTRY_PINS_028_002 ran before proof work: BATCH_015–027 pairs,2917 pins,
+459 inherited current inputs,14 BATCH_027 receipts and no active job. Its
+three exact supersessions include the diagnostic Probe. SHA256:
+`b9cec873c9440265d16347bfcb13104630dfeee33a14bf907699a13d87f1ce60`.
+The first receipt/comment-version history is retained in the pair.
+
+- **BATCH_028 JSON:** `436e0e87632841746909a23848108cbf5708c2a6cb8f297655584d0920200c02`.
+- **BATCH_028 notes:** `f2f8f86807bb5eb4a02850fc64f0c74a188e922b526a7b1958036079f2476809`.
+- **Full audit:** `2a2a052d6b2019232cb8eae6e25dd7c92de5fa9da01ba9496ef5e3c9ee1ec7bc`.
+- **Audit receipt:** `3a1709d02ac86b8b054292b851b0d2172d5166b7fe0ba5b3cb0df95aa7b862f8`.
+- **Exact controls:** `e9bcb791f1493c5dcdd82eae267fc9cc3f549f1145f36ff56d07623be1e1b621`.
+- **Controls receipt:** `38e600270ec34ef6f1f365187c8665e790c36c29aad0ea8c59bca81eef5d14f8`.
+- **POSTSEAL:** `.build/levels_028/POSTSEAL.json`, SHA256
+  `2ae57393e0e95562c7fd3f3c63b7a689e152cac4be5383d99b1de60c6acc363d`:
+  3202 distinct pins,471 current inputs,exact Call/Core supersessions,
+  no active job.
+
+11 current accepted Lean modules including the audit, all0/0 streams;
+maximum accepted cumulative RSS6129232KiB, unchanged limits. Audit546
+entries covers528 source declarations in ten modules and18 inherited
+interfaces:509 full terms,37 inductives with full constructor types, only
+standard axioms,zero elisions. The843467-byte artifact has a tracked
+generator/Lean source. No unchanged broad replay or independent review.
+
+Exact Sage ZZ/QQ controls:16 normal/UBSan runs ×266 rows;91 bitlength,
+99 signed/top,36 paired scaled bigint,6 max/fpr,9 polynomial subtraction,
+14 make_fg and11 deepest cases. Seven mutations detected in both modes.
+15 attempts retained:11 accepted,4 failed; all snapshots/receipts/raw streams
+present. New traps123–131 are in BATCH_028 notes: return-dispatch ordering,
+actual unsigned signature/unsized static table, pointer subtraction order,
+signed32/unsigned16/size_t64 loads, empty statement/chained assignment,
+and the two corrected control-harness attempts. These controls are finite.
+
+## 8R. Resume protocol — B1.05c intermediate/root, after deepest
+
+1. Read source3/WORK_STATE, this checkpoint, EXECUTION_PLAN B1.05 and
+   `run2/notes/B1_STAGED_ROADMAP.md`. The listed B1.05b operational bodies
+   and deepest are complete; B1.05 Acceptance remains NOT MET.
+2. BEFORE edits/jobs, verify the BATCH_028 pair and full current/predecessor
+   closure with the committed verifier (do not rerun the old pre-window
+   BATCH_027 verifier against intentionally superseded Call/Core bytes):
+
+   ```sh
+   mkdir -p .build/levels_029
+   python3 -B tools/keygen_zint_batch.py verify 436e0e87632841746909a23848108cbf5708c2a6cb8f297655584d0920200c02 f2f8f86807bb5eb4a02850fc64f0c74a188e922b526a7b1958036079f2476809 .build/levels_029/ENTRY_PINS_029.json
+   ```
+
+   Expect3202 pins,471 current inputs and no active job. All15 attempt
+   receipts and four failed histories are included. Preserve the exact
+   supersession fields. A mismatch is not repaired by weakening a pin.
+3. Continue full solve_NTRU_intermediate and its remaining active callees,
+   including poly_sub_scaled_ntt where reached. Then full root caller/
+   post-decrement loop, complete static PRIMES/size-table initialization,
+   actual profile/context/scratch aliases and sampled f/g transport through
+   the intervening GS/public/search operations. Reuse the checked deepest,
+   depth0/output-gate/validation suffix and every new helper above.
+4. Use unique `keygen_zint_*_029_*` labels through
+   `python3 -B tools/job_when_available.py lean LABEL Source3.Module...`.
+   One guarded proof job, unchanged limits,0/0 logs, statement-boundary
+   kernel pieces with non-vacuous audits and rewrite composition (116/121).
+   Exact calculations run as `sage file.sage` with persistent component
+   HOME/TMPDIR/cache. Keep failed attempts and all actual flow outcomes.
+5. Small local commits; finish at B1.05 Acceptance or another expanded
+   recoverable checkpoint/pair. No automatic push/review/worker/relay,
+   migration or stages import. Do not promote the deepest frame to the
+   complete solver theorem or skip ahead to B1.06.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.05b member grammar / zint_bezout midpoint
 
 **PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
