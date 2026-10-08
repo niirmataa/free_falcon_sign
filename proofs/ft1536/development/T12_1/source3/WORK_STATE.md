@@ -36,6 +36,21 @@ than assumed anew at the validation entry. The output gate also has a
 derived metadata/static-object frame. Current accepted jobs `_memory_030_002`,
 `_helpers_030_003`, `_stability_030_002`, `_objects_030_002` have 0/0 logs.
 
+`KeygenRootValidationSource` binds the actual scratch aliases, indexed prime
+read and ninv31 call, generation parameter binding, conversion, four NTTs,
+target and final comparison. `KeygenRootValidation.validation` constructs
+every inherited Validation field from that source execution and legal input
+objects. `KeygenRootSource.success` composes the search/output/validation
+paths, retaining rejection exits. `KeygenRootCaller.success` additionally
+consumes the actual five-pointer root Bind and return conversion: it proves
+Bounds(1,1,2047,2047), exact integer NTRU and representation in the same
+final caller arrays. **Incoming f/g representation and Bound1 are still
+local premises.** Their complete arrival from the sampler through the
+preceding gates is needed for B1.05 Acceptance. Current accepted jobs:
+`keygen_root_validation_030_003`, `_equation_030_001`, `_whole_030_001`,
+`_caller_030_001`, all 0/0. One validation binding attempt exhausted the
+unchanged heartbeat limit; explicit conversion normalization resolved it.
+
 ## B1.05c — complete intermediate and static initializer closure — 2026-10-08
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
