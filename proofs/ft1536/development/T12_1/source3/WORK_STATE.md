@@ -26,6 +26,16 @@ first accepted draft restored the depth scope before depth0 and was
 superseded before commit by the source-ordered body/restoration rule.
 The validation/caller and pre-solver material seams remain open.
 
+The new `KeygenMemoryStability`, `KeygenHelperStability`,
+`KeygenSearchStability` and `KeygenRootObjects` derive allocation-size,
+writability and read-only-byte preservation through the complete fixed
+helper closure and root search, including overlapping memmove and scaled
+subtraction. Static prime/size/REV10 objects, scratch legality and the M0
+context profile can therefore be transported from the root input, rather
+than assumed anew at the validation entry. The output gate also has a
+derived metadata/static-object frame. Current accepted jobs `_memory_030_002`,
+`_helpers_030_003`, `_stability_030_002`, `_objects_030_002` have 0/0 logs.
+
 ## B1.05c — complete intermediate and static initializer closure — 2026-10-08
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
