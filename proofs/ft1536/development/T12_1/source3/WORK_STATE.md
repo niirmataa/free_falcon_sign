@@ -29,6 +29,16 @@ t disposal. No input nonzero or division-image premise. Inverse correctness,
 normalization/final canonical h and both mulRq equations remain OPEN,not
 assumed by the headline. All eleven failed directories remain;unchanged
 limits. Audit/controls precede the one recoverable inverse-entry midpoint.
+Audit001 accepted0/0:658 entries=51 new+607 inherited,605 complete terms/53
+inductives,standard axioms and zero elisions;660 literal source bindings.
+Sage001 accepted0/0:12 new normal/UBSan runs,eight public synthetic pairs,
+seven successes/one rejection,10753 chronological tests and10752 quotients
+per mode;five targeted mutations per mode all detected. Original common
+evaluations and t at inverse entry are checked;inverse output deliberately
+is NOT used as an inverse/equation proof. The unchanged039 live-header
+decision is rechecked,not a full M0 build. All15 directories/20 steps remain,
+11 failed directories,recorded max RSS3232764KiB;no current unresolved job.
+Sealing the one inverse-entry midpoint follows.
 
 ## B1.06 — CLOSED at universal ORIGINAL public forward evaluations — 2026-10-09
 
