@@ -1,3 +1,148 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.06 successful tests/division at actual inverse entry
+
+**PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
+2026-10-09,BATCH_043,GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`).
+**CLOSED_AT_RECOVERABLE_MIDPOINT. B1.06 Acceptance NOT MET.**
+One midpoint this window,at the actual inverse-call entry. B1.05 stays
+BATCH_032;B1.07 is not entered. Resume: **23R**. Exact types/pins/traps:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_043_NOTES.md`.
+
+## 23. Closed this window — common afterT,successful nonzero tests,all1536 divisions
+
+1. **22.1 item1 DONE:** h/g survives t's actual forward Call at the SAME
+   afterT seam. Both ORIGINAL evaluation arrays now share that state.
+   Actual f/g/t/h bindings,n1536/q18433/u1536/logn10/ternary1 are derived
+   from the SAME complete declaration/allocation/setup/conversion/Call chain.
+   No common-state h image or suffix header is assumed by the headline.
+2. **22.1 item2 tests/nonzero DONE:** the actual finite pass either returns
+   source int32 failure0 or completes all1536 tests. The SAME compute return1
+   excludes failure0. All1536 ORIGINAL f evaluations are nonzero conclusions,
+   not an input invertibility/nonzero premise. Unsigned16→int32 promotion,
+   actual zero comparison and every bounded counter step are source-derived.
+3. **22.1 item2 division DONE:** every actual ternary division consumes the
+   tested nonzero f value and the ORIGINAL g value. Its chronological h store
+   is canonical<18433 and equals g/f. All untouched h cells and every t/f
+   cell are preserved. The full1536-cell quotient image is a conclusion at
+   the actual inverse-call entry,not an assumed image or final canonical h.
+4. The SAME actual inverse Call and return syntax remain in the `Run`
+   witness;final t disposal is linked to that result. **Inverse correctness
+   has NOT been proved.** No round-trip or either desired mulRq equation is
+   smuggled in as a premise. Those are the next obligations,in plan order.
+
+### 23.1 Exact checked boundary and remaining16.1 obligations
+
+`KeygenPublicSuccessfulSuffix.source_same_material` takes:
+
+```text
+s : State; out : Result; f,g,h : ArrayPointer; fv,gv : Geometry.Vec
+Slot s "logn" 10; Ternary s; actual f/g/h array bindings
+Legal s.heap f; Legal s.heap g; Legal s.heap h
+Represents s.heap f fv; Represents s.heap g gv
+Bound fv 1; Bound gv 1
+h.block != f.block; h.block != g.block
+LiveTables s; KeygenPublicFrame.Tables s h.block
+out.flow = returned (some (int32 1))
+Exec fixedPublicProgram signed (code compute) s out
+--------------------------------------------------------------
+Front s out f g h fv gv
+```
+
+`Front` selects the SAME fresh3072-cell t block,common afterT state and
+inner result,with both ORIGINAL evaluation images,derived common header,
+all1536 nonzero f evaluations,successful `Run`,observed flow and final t
+disposal. No generated table,image,nonzero,quotient or round-trip premise.
+
+`Run` selects `beforeInverse`/`afterInverse` and concludes the actual full
+normal division pass,derived beforeInverse header/nonzero values,all1536
+unchanged t/f cells and canonical h/g/f quotient cells,actual inverse Exec,
+and actual return1 syntax. It **does not** conclude the inverse's mathematical
+result or unchanged h quotients after inverse/t cells after disposal.
+
+Legal/profile/material/bounds1/static-table liveness remain enclosing
+KeyGen obligations. **Newly explicit legal-memory frame condition:** static
+table bindings do not alias the h output block. The generic t-Call footprint
+uses it to preserve h/g. It is not an assumed g image;derive it from the
+actual enclosing KeyGen's static/output layout rather than hide or weaken it.
+
+Remaining,in16.1 plan order:
+
+1. **Item3 inverse NEXT:** consume derived beforeInverse quotient cells and
+   the SAME retained inverse execution. Bind actual1067–1159:generated igm,
+   512 inverse triples,eight reverse radix stages,768 first-root inverse
+   bodies and1536 normalization stores. At logn10 the ni branch executes
+   `mq_div_18433(Rt,(uint32_t)n)`;derive its scaled radix/n meaning. Preserve
+   generated-array and caller-t disposals. Conclude canonical output cells
+   of `hv : Relation.Rq` and every original physical evaluation of hv equal
+   to g/f. No assumed source forward/inverse round-trip or output image.
+2. **Item4 THEN:** fInv via the proved evaluation isomorphism and derived
+   nonzero values;BOTH SAME f/g/h `mulRq` equations. These are still required
+   for B1.06 Acceptance. Inspect exact B3/export/dependency types/pins first.
+   B1.07 waits;do not enter later steps or construct an assumed inverse.
+
+The common-state and successful pointwise-division gaps are now closed.
+The remaining inverse/equation gap is a missing source/mathematical proof,
+not a numerical/code counterexample. Whole KeyGen/emitted-to-fiber,compiler,
+probability laws/PRG/security and independent review are outside this result.
+
+### 23.2 Pins,audit,controls,retained attempts
+
+- BEFORE edits/jobs:BATCH_015–042 **7747 pins/652 literal bindings**,no
+  supersession/job. Entry `.build/levels_043/ENTRY_PINS_043.json`:
+  `c18dc2c83083d0cd3b9d26a5600c09c2c0ee957138fade852b1816430675f8ab`.
+- **BATCH_043 JSON:** `fd6dfb54691d59f9eeb5174c427e2cae6e3d2666159c669cee3068de71da957e`.
+- **BATCH_043 notes:** `1073fe3fbcc0801e9c2ed6fba65b9e4dcf9057544b68ec69bbda1df4c57e3d42`.
+- Seven proof modules+audit0/0. Audit **658 entries=51 new+607 inherited;
+  605 complete terms+53 inductives;standard axioms;zero elisions**.
+  JSON `35b5714330f5c25d1455055ab70ba1154853b01698be586901cbe53b878c4c61`;
+  receipt `2451a8d570558d3a1095f0508533148af884cac89bad8b38dc2224b4fcd13374`.
+- Sage001: **0/0;12 new normal/UBSan runs**,eight public synthetic pairs,
+  seven successes/one rejection,**10753 tests/10752 quotients per mode**;
+  all five targeted mutations per mode detected. Common original images,
+  quotient canonicality,t at inverse entry and boundary canaries checked.
+  Result `a200e8e63f5e6cfe53fbabb99a3535f2a962b70d83de1b9424a5d9ea6ae16aa9`;
+  receipt `19629795138e5ecfef4a1dc851a2a6085311aa2a5fceb06e781ddd780f0dbd9f`.
+  Inverse output not checked/promoted. The inherited039 approved live-header
+  difference is rehashed;not a complete M0 build. Finite checks are diagnostic.
+- PRESEAL `675e455c07c47b5d2a01320dbb5d9170a4e61611985e3dd40135c99245be4043`
+  rechecks all7747 predecessor pins. Dedicated043 seal/verify tool:
+  `791dec3cd76bcee6bbeeae0a3e0ebd38b72ac208f748eb2a2b56c96d40a37d0f`.
+- **POSTSEAL** `.build/levels_043/POSTSEAL.json`:
+  `aab9918c9414f298105f6bc8e483c96b0bc5cc0f07474456e61c7fa3ee9b328f`:
+  **8062 distinct pins/660 literal bindings**,no supersession/active job.
+- All15 directories/20 completed steps preserved:four wholly accepted,
+  11 failed directories;nine accepted/11 rejected steps;max recorded cumulative
+  RSS3232764KiB. No interruption or unresolved job;limits unchanged. Traps
+  233–242,full types and every failed snapshot/raw stream are in the pair.
+- Own source/evidence commits:`bebaa1fb`,`bd28a330`,`73ba45aa`,plus final
+  pair/checkpoint commit. Foreign work/staging preserved. No push,review,
+  delegation,relay,migration,stages import or broad replay.
+
+## 23R. Resume B1.06 — actual inverse/normalization,then both SAME-material equations
+
+1. Read source3/WORK_STATE,this checkpoint,the043 pair notes,EXECUTION_PLAN
+   B1.06 and `run2/notes/B1_STAGED_ROADMAP.md`. Acceptance NOT MET;B1.05 stays
+   closed;B1.07 waits. Preserve BATCH_015–043 and every failed/earlier byte.
+2. BEFORE edits/jobs,verify the complete BATCH_015–043 closure from source3:
+
+   ```sh
+   mkdir -p .build/levels_044
+   python3 -B tools/keygen_public_suffix_batch.py verify fd6dfb54691d59f9eeb5174c427e2cae6e3d2666159c669cee3068de71da957e 1073fe3fbcc0801e9c2ed6fba65b9e4dcf9057544b68ec69bbda1df4c57e3d42 .build/levels_044/ENTRY_PINS_044.json
+   ```
+
+   Expect8062 pins/660 literal bindings,no supersession/job. Any mismatch
+   is stop-and-report,not silent repair or weakening of historical pins.
+3. Continue23.1 in the unchanged16.1 order. Common afterT,successful tests,
+   nonzero and division are DONE. Start from the `Run` witness's actual
+   `beforeInverse` quotient/header and retained source inverse execution. Prove its
+   actual inverse/normalization and final canonical h;ONLY THEN fInv and
+   BOTH SAME-material equations. No correctness/nonzero/round-trip premise.
+4. Unique guarded `keygen_public_*_044_*` jobs from001;pair⇒job convention,
+   one serial proof job,unchanged limits,clean0/0 streams,Sage preparser,
+   durable runtime,bounded definitions/pieces,all attempts retained. Use
+   background completion for potentially longer guarded jobs. Small local
+   own commits;one expanded midpoint or Acceptance per window. No automatic
+   push/review/delegation/relay/migration/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.06 universal ORIGINAL public forward evaluations
 
 **PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**

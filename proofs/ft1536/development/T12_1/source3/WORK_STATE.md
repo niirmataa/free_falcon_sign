@@ -1,5 +1,43 @@
 # T12.1/source3 — żywy stan
 
+## B1.06 — CLOSED at successful tests/division and actual inverse entry — 2026-10-09
+
+**CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
+**B1.06 Acceptance NOT MET.** One midpoint in BATCH_043,GPT-6.1 Sol Fast
+(`openai/gpt-6.1-sol-fast`). B1.05 stays032;B1.07 waits. Resume:**23R**.
+
+The SAME complete compute return1 now derives both ORIGINAL f/g evaluation
+arrays at common afterT,actual suffix headers,ALL1536 nonzero f evaluations
+from successful source tests,and ALL1536 chronological canonical g/f stores.
+Every t/f cell and untouched h cell is preserved to the actual inverse entry.
+The SAME inverse Call/return syntax and final t disposal remain in `Run`;
+**inverse correctness is not assumed or proved**. No input image/nonzero/
+quotient/round-trip premise. Static-table nonaliasing with h is an explicit
+legal-memory frame premise;enclosing KeyGen must supply it with the other
+profile/material/bounds1/liveness conditions. Exact full types are in043 notes.
+
+Next in plan order: actual inverse triples/reverse radix/first-root pass,
+source normalization and final canonical h;THEN fInv through a proved
+evaluation isomorphism and BOTH SAME-material mulRq equations. Those remain
+OPEN,not a detected code/numerical counterexample. Whole KeyGen/emitted-to-
+fiber,compiler,laws/PRG/security and independent review are not implied.
+
+Entry7747 pins (`c18dc2c8…`);dedicated043 POSTSEAL **8062 pins/660 literal
+bindings**,no supersession/job (`aab9918c…`). Pair JSON
+`fd6dfb54691d59f9eeb5174c427e2cae6e3d2666159c669cee3068de71da957e`;
+notes `1073fe3fbcc0801e9c2ed6fba65b9e4dcf9057544b68ec69bbda1df4c57e3d42`.
+Seven proofs+audit0/0;658 audit entries/605 complete terms/53 inductives,
+standard axioms/zero elisions (`35b57143…`). Sage0010/0:12 new normal/UBSan
+runs,eight public synthetic pairs,seven successes/one rejection,10753 tests/
+10752 quotients per mode,five mutations per mode detected (`a200e8e6…`).
+Inverse output NOT promoted. The inherited039 live-header decision is
+rechecked;not a full M0 build. All15 directories/20 steps remain,11 failed
+directories,max recorded RSS3232764KiB,limits unchanged,traps233–242 in notes.
+
+Own source/evidence commits:`bebaa1fb`,`bd28a330`,`73ba45aa`,plus final pair/
+checkpoint commit. Foreign work/staging preserved. No push,review,delegation,
+relay,migration,stages import or broad replay.
+
 ## B1.06 — BATCH_043 common afterT / successful suffix continuation — 2026-10-09
 
 Owner-started new window, GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`),
