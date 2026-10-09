@@ -120,6 +120,10 @@ compiler,laws/PRG/security and independent review remain outside.
 - **POSTSEAL:**`.build/levels_039/POSTSEAL.json`,SHA256
   `895e07157bf3a5e81990c262a51383fd529b0f38125500f1318257609af8bbb1`:
   **7048 distinct pins/621 literal source bindings**,no supersession/job.
+- Final documentation-time verification after pair/checkpoint commit163af305:
+  `.build/levels_039/FINAL_VERIFY.json`,SHA256
+  `22136fc59f67e131e07e0576dd240f7761d232724b1f8ee29635aa4a4915b7d6`:
+  identical7048-pin closure/621 literal bindings,no supersession or active job.
 - All36 job directories/38 steps retained:15 wholly accepted directories,
   21 with failure. Max cumulative RSS5098508KiB;limits unchanged;no unresolved
   current source or receipt-less job. Traps206–217 are in the pair notes.

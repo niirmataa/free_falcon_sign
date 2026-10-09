@@ -40,6 +40,10 @@ Own source commits `9dd4c7f3`,`c064dda7`,`fe1f22b7`,`2aa98b27`,`7871e576`,
 plus pair/checkpoint/docs. Foreign work/staging preserved. No push/review/
 subagent/worker/session/relay/migration/import/broad replay. Full KeyGen,
 emitted-to-fiber,compiler,laws/PRG/security/review remain outside.
+Final documentation-time verify after pair/checkpoint163af305 checks the
+identical7048 pins/621 bindings,no supersession/job:
+`.build/levels_039/FINAL_VERIFY.json`,SHA256
+`22136fc59f67e131e07e0576dd240f7761d232724b1f8ee29635aa4a4915b7d6`.
 
 ## B1.06 — SAME-material conversion/evaluation continuation — 2026-10-09
 
