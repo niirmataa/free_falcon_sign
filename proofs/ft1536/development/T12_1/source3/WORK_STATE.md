@@ -1,5 +1,56 @@
 # T12.1/source3 — żywy stan
 
+## B1.06 — CLOSED at BOTH last rows / upward-body midpoint — 2026-10-09
+
+**CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
+**B1.06 Acceptance NOT MET.** B1.05 remains closed at BATCH_032;
+B1.07 is not entered. Resume: checkpoint **15R**.
+SAME complete generator execution derives k1/b512/u0,all256 paired-store
+iterations,BOTH canonical/scaled physical images512..1023,terminal u512,
+original pointers/logn,k1,w declared-uninitialized and actual source suffix.
+Allocation metadata and every byte outside the two last-row ranges survive.
+Both complete upward cube/square bodies are also checked,with explicit LOCAL
+child-cell/counter domains. Whole upper loops,exceptional igm0 and complete
+table/caller/lifetime composition remain OPEN. Forward/nonzero/division/
+inverse,canonical h,fInv and both SAME-material equations follow in B1.06
+order. This is a remaining source proof,not a code/numerical counterexample.
+
+Pair JSON `54e4581580abd4bea4a5cf2f0951dd0c73f1cb75516ffb60c1a4dd12416b9ffe`,
+notes `704e08651dc22c5e52ad918a63f28315c12b9f26b427aae36c82e0574f2e13bb`.
+POSTSEAL `.build/levels_035/POSTSEAL.json`,SHA256
+`62a8ff6e481ec1b55f3d67584cb985db1691de335dc0856d6586b2e0517fa878`:
+6089 distinct pins,592 current inputs,no predecessor supersession/no job.
+Final documentation-time verification passed the identical6089 pins:
+`.build/levels_035/FINAL_VERIFY.json`,SHA256
+`8e0b76b50ba5e11a83ca528dc3246873801a676aef58f2f44a237a49c2bfff78`.
+Twelve current proof/audit modules0/0;187 full entries,179 terms/8 inductives,
+standard axioms/zero elisions. Sage12 normal/UBSan runs/five mutations per mode;
+chronological paired stores and complete pre-upward sentinels checked.
+All28 job directories/38 steps retained:15 wholly accepted,13 with failure.
+Two heap-projection heartbeat failures were resolved with named equations,
+limits unchanged. First packaging assertion was retained and diagnosed:
+different audit run_cmd sources shared one olean hash. Historical lookup now
+requires module+artifact SHA+SOURCE SHA;all six earlier reused pairs are bound
+to immutable matching snapshots/receipts. No old pin was weakened.
+Source commits `b408ced4`,`2b8909ef`,`f7a32284`,`cfa5ee34`,plus final pair/
+checkpoint commit. No unresolved source,active owned job,push,review,subagent,
+worker/session/relay,migration or stages import. Full details in the pair and
+checkpoint15/15R;B1.06 scope remains unchanged.
+
+## B1.06 — paired public-table continuation — 2026-10-09
+
+Owner resumed checkpoint14R with GPT-6 Astra (`openai/gpt-6-astra`).
+BATCH_035 is IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.
+BEFORE edits/jobs, BATCH_015–034 verified:5674 distinct pins,580 current
+inputs,no supersession,no active job. Receipt
+`.build/levels_035/ENTRY_PINS_035.json`,SHA256
+`7a9f11c2eb138bd33182dea526d396e6b774a4c68adcace10b90ae6436f953cf`.
+Continue from the derived last-row entry:actual indices and paired gm/igm
+stores,complete tables,forward/nonzero/division/inverse,and both SAME-material
+equations in B1.06 order. Acceptance remains NOT MET. B1.05 stays closed;
+B1.07 waits. One guarded job,unchanged limits,retained failed attempts and
+small local commits. Inherited session labels remain historical provenance.
+
 ## B1.06 — CLOSED at actual public last-row entry — 2026-10-09
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**

@@ -1,3 +1,150 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.06 BOTH last rows / upward-body midpoint
+
+**PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
+2026-10-09,BATCH_035,GPT-6 Astra (`openai/gpt-6-astra`).
+**CLOSED_AT_RECOVERABLE_MIDPOINT. B1.06 Acceptance NOT MET.**
+B1.05 remains closed at BATCH_032;B1.07 is not entered. Resume: **15R**.
+
+## 15. Closed this window — actual BOTH full last rows and both upward bodies
+
+Small local source commits on main as niirmataa:`b408ced4`,`2b8909ef`,
+`f7a32284`,`cfa5ee34`,plus the final pair/checkpoint commit. Exact owned
+paths under archive.lock;foreign worktree/staging preserved. Complete types,
+failed histories and traps186–195:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_035_NOTES.md` and `_035.json`.
+
+1. **Actual indices:** complete849–860 partition;size_t u<<k THEN unsigned32
+   cast,actual rev10 Call and pointer addition. Both even/odd indices are
+   derived. Solver/FPEMU scalar-call relations are not substituted.
+2. **BOTH last rows:** from the DERIVED entry in BATCH_034,source k1/b512/u0,
+   all256 paired-store iterations,forward AND inverse canonical/scaled
+   images at every physical index512..1023. The real guard/increment yields
+   u512. Both x/ix progress by4 then2 in the same execution.
+3. **Memory/scope:** width2 stores and separation preserve both directions,
+   all allocation metadata and EVERY byte outside the two last-row ranges.
+   The actual b scope restores;logn10,k1,u512,w:uint32 uninitialized and
+   pointer slots are available at the same remaining source suffix.
+4. **BOTH upward bodies:** full863–884 partition and actual cube/square
+   per-iteration source proofs. Both child-cell loads,promotion→U32,
+   nested Montgomery calls and paired stores are checked. Their local
+   child-cell/counter domains still require whole-loop composition.
+
+### 15.1 Exact new boundary and remaining B1.06 types
+
+```text
+s : C99ArrayReference.State; out : C99ProcedureReference.Result
+gm,igm : C99MemoryReference.ArrayPointer
+profile : Slot s "logn" (10#32)
+pointers : s.arrays "gm"=some gm AND s.arrays "igm"=some igm
+gw : gm.elementBytes=2; iw : igm.elementBytes=2
+separate : DisjointBytes gm 2048 igm 2048
+source : KeygenPublicExec.Exec KeygenPublicSource.program []
+  (KeygenPublicSource.code generate) s out
+--------------------------------------------------------------------
+exists after,
+  Exec program [] KeygenPublicTableRows.afterRows after out
+  AND forall512<=i<1024,
+    Cell after.heap gm i (root^tableExponent i)
+    AND Cell after.heap igm i ((inverse root)^tableExponent i)
+  AND LastFrame gm igm s.heap after.heap
+  AND same pointers,logn10,u512,k1,w:uint32 declared-uninitialized
+```
+
+Export:`KeygenPublicLastRow.source_last_row`. Names above abbreviate
+List Char. Cell includes Load16,canonical value<18433 and radix-scaled
+ZMod18433 equality. LastFrame preserves size/writable maps and arbitrary
+bytes outside[p.offset+1024,p.offset+2048) for BOTH tables. The profile,
+pointer-width/separation premises are local caller domains. No generated
+image,loop outcome or scalar/root correctness is a premise.
+
+Remaining,in EXECUTION_PLAN B1.06 order:
+
+1. Consume this SAME afterRows execution. Derive k8,u256,cubeLoop to u512,
+   then u255,squareLoop to u0. `KeygenPublicUpperBody.cube_body/square_body`
+   already give BOTH row updates,normal flow and local/pointer frames,from
+   explicit child Cell facts at2*i and counter domains256<=i<512/1<=i<256.
+   Supply those domains from the preceding SAME run,not as final premises.
+2. Actual gm0 copy,w read and exceptional igm0=radix/(2*firstRoot-1),
+   NOT radix/firstRoot. Compose BOTH complete images with legal caller
+   layout/frame and automatic-array lifetime.
+3. SAME f/g conversion and complete forward NTT→canonical unsigned16 AND
+   evaluations of the original CoefficientQuotient polynomial at
+   KeygenPublicRoots.point,in physical order. Derive tables in the caller.
+4. SAME successful public execution→all1536 nonzero tests→division;
+   actual inverse transform/normalization→canonical h. No assumed round-trip.
+5. Construct fInv from nonzero evaluations/proven evaluation isomorphism;
+   BOTH `mulRq h (reduceVec f)=reduceVec g` and
+   `mulRq fInv (reduceVec f)=constantCoeffs (1 : ZMod18433)` for SAME f/g/h.
+
+This is a missing enclosing source proof,not a numerical/code counterexample.
+The last-row theorem and local upper-body lemmas do NOT meet B1.06 Acceptance.
+Complete KeyGen,emitted-to-fiber,compiler,laws/PRG/security and review remain
+outside this midpoint's claims.
+
+### 15.2 Pins,full audit,controls and preserved packaging failure
+
+BEFORE edits/jobs,BATCH_015–034 verified:5674 distinct pins,580 current
+inputs,no supersession/no active job. Entry receipt
+`.build/levels_035/ENTRY_PINS_035.json`,SHA256
+`7a9f11c2eb138bd33182dea526d396e6b774a4c68adcace10b90ae6436f953cf`.
+Identical predecessor closure rechecked at preseal and sealing.
+
+- **BATCH_035 JSON:**`54e4581580abd4bea4a5cf2f0951dd0c73f1cb75516ffb60c1a4dd12416b9ffe`.
+- **BATCH_035 notes:**`704e08651dc22c5e52ad918a63f28315c12b9f26b427aae36c82e0574f2e13bb`.
+- **Full audit:**`ce0e888a6c6bf10b112c06d34a7ac1db58dd3e60c3d628b6162f34d680bf48c0`.
+- **Audit receipt:**`e2a22668bb318a8b667c8fe908666864bb2faf7af3e887b1e9e70a800f2c5062`.
+- **Exact controls:**`0de88e1a5830c745613de6a1a4eb5db9b20419755e1d84a51f8ec8aa131ba738`.
+- **Controls receipt:**`6f06de35288e0629b2fbd94920bfbe1650e873357669f416fa1ca70e5c232ed6`.
+- **POSTSEAL:**`.build/levels_035/POSTSEAL.json`,SHA256
+  `62a8ff6e481ec1b55f3d67584cb985db1691de335dc0856d6586b2e0517fa878`:
+  **6089 distinct pins,592 current inputs,no supersession/no active job**.
+- **Final documentation-time verification:**`.build/levels_035/FINAL_VERIFY.json`,
+  SHA256 `8e0b76b50ba5e11a83ca528dc3246873801a676aef58f2f44a237a49c2bfff78`:
+  identical6089-pin closure,no supersession/no active job.
+
+Twelve current proof/audit modules0/0;187 full audit entries (158 named new
+declarations +29 inherited),179 complete terms/8 inductives with constructor
+types,standard axioms only,zero elisions. Artifact1814086 bytes under
+`.build/jobs/keygen_public_upper_closure_035_001/`,tracked generator/producer.
+Two entry-heap heartbeat failures were resolved with bounded named equations;
+all limits unchanged. Max cumulative RSS3917340KiB(current)/3917856KiB(all).
+
+Sage standard preparser/ZZ:12 normal/UBSan runs,five mutations per mode.
+Baseline:256 chronological pairs,both next seeds,terminal counters,2050
+pre-upward cells/sentinels,256 cube and255 square paired updates. These
+instrumented finite controls do not prove the open upper-loop/NTT composition.
+All28 job directories/38 steps retained:15 wholly accepted,13 with failure.
+Six old reused source/product versions resolve to immutable matching bytes.
+First packaging attempt also retained:two different audit run_cmd sources
+shared one olean hash;the tool now requires BOTH source and product digests.
+No old pin was weakened or superseded. No unresolved source or active job.
+No push,review,subagent,worker/session/relay,migration or stages import.
+
+## 15R. Resume B1.06 — compose upper loops and BOTH complete tables,then NTT/equations
+
+1. Read source3/WORK_STATE,this checkpoint,EXECUTION_PLAN B1.06 and
+   `run2/notes/B1_STAGED_ROADMAP.md`. Acceptance NOT MET;B1.05 closed;
+   B1.07 waits. Preserve BATCH_015–035 and all failed/earlier accepted bytes.
+2. BEFORE edits/jobs,verify the complete BATCH_015–035 closure:
+
+   ```sh
+   mkdir -p .build/levels_036
+   python3 -B tools/keygen_public_last_batch.py verify 54e4581580abd4bea4a5cf2f0951dd0c73f1cb75516ffb60c1a4dd12416b9ffe 704e08651dc22c5e52ad918a63f28315c12b9f26b427aae36c82e0574f2e13bb .build/levels_036/ENTRY_PINS_036.json
+   ```
+
+   Expect6089 pins,592 current inputs,no supersession/no active job.
+   Any mismatch is stop-and-report,not pin weakening or silent repair.
+3. Continue15.1 in order. Reuse source_last_row and the checked upper bodies;
+   derive their local premises from the actual initializers and preceding
+   iterations. Do not re-assume final table images,public/NTT correctness,
+   nonzero or either SAME-material equation. Actual controls are in
+   KeygenPublicUpperProgram;exceptional index0 is still source proof work.
+4. Unique guarded `keygen_public_*_036_*` jobs,one job,unchanged process/
+   kernel/print limits,0/0 proof streams,Sage preparser,durable environments.
+   Keep defs/pieces bounded;old and failed versions stay intact. Small local
+   commits;close at Acceptance or an expanded recoverable midpoint.
+   No automatic push/review/subagent/worker/session/relay/migration/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.06 actual public last-row entry midpoint
 
 **PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
