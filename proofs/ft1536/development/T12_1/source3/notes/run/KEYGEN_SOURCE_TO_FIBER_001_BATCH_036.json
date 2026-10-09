@@ -1,0 +1,78 @@
+{
+  "batch": "BATCH_036",
+  "utc": "2026-10-09T11:30:02.806063+00:00",
+  "stage": "B1.06",
+  "status": "PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN / CLOSED_AT_RECOVERABLE_MIDPOINT",
+  "acceptance": "B1.06 Acceptance NOT MET; item 1 (upper-loop composition) MET locally",
+  "entry": {
+    "receipt": ".build/levels_036/ENTRY_PINS_036.json",
+    "receipt_sha256": "8d48dfb915639e49843f9a2174c51dfa10576222b1a6c30ce184dcd7d7ab924c",
+    "checked_closure": "BATCH_015-035",
+    "distinct_pins": 6089,
+    "current_inputs": 592,
+    "superseded": {},
+    "active_jobs": [],
+    "result": "match, no pin weakened"
+  },
+  "accepted_modules": [
+    {
+      "module": "Source3.KeygenPublicUpperFrames",
+      "source": "formal/Source3/KeygenPublicUpperFrames.lean",
+      "source_sha256": "2d8a6b44c84791c30c3553648462ecdc94aabab095c50dd23b4e2c8e258a6159"
+    },
+    {
+      "module": "Source3.KeygenPublicUpperLoops",
+      "source": "formal/Source3/KeygenPublicUpperLoops.lean",
+      "source_sha256": "0324535ea4802a7dbec3162840f1e96f668d6905c40853bf3e399ce9e23d6b18"
+    },
+    {
+      "module": "Source3.KeygenPublicUpperFinish",
+      "source": "formal/Source3/KeygenPublicUpperFinish.lean",
+      "source_sha256": "4486bf62bcea745f47b4ac15efde5c556dc8696f11a49f21c7784fd14a101048"
+    }
+  ],
+  "accepted_jobs": [
+    {
+      "label": "keygen_public_upper_loops_036_007",
+      "receipts_sha256": "58b57e86853a148a705bbf04581ea4322db273a9dc7c35a6f5bb7f5444511193",
+      "modules": [
+        "Source3.KeygenPublicUpperFrames",
+        "Source3.KeygenPublicUpperLoops"
+      ],
+      "streams": "0/0"
+    },
+    {
+      "label": "keygen_public_upper_finish_036_006",
+      "receipts_sha256": "9531d427bddf6f6036058ec93b14648694af2eb41cb145bb31373c606b2d4a84",
+      "modules": [
+        "Source3.KeygenPublicUpperFinish"
+      ],
+      "streams": "0/0"
+    }
+  ],
+  "failed_retained_jobs": [
+    "keygen_public_upper_loops_036_001 (String/List name argument)",
+    "keygen_public_upper_loops_036_002 (out eliminated by cases)",
+    "keygen_public_upper_loops_036_003 (frame composition rewrite direction)",
+    "keygen_public_upper_loops_036_004 (def-unfold before rewrite; Mathlib 0<i token adjacency; omega blind to projections)",
+    "keygen_public_upper_loops_036_005 (Common key precondition too strong)",
+    "keygen_public_upper_finish_036_001 (CLogic literal indices; modulus namespace)",
+    "keygen_public_upper_finish_036_002 (linear_combination atom split; ring cancellation)",
+    "keygen_public_upper_finish_036_003..005 (statement layer: promotion unification; retained)"
+  ],
+  "parse_probe": ".build/parse_probe_036_001 (diagnostic, not proof evidence)",
+  "commits": [
+    "36966a99 proof(T12.1): compose both public upper loops with byte frames",
+    "265cedbe proof(T12.1): bind public finish statement and exceptional igm0 algebra"
+  ],
+  "superseded": {},
+  "active_jobs": [],
+  "open_obligations": [
+    "finish statement composition (gstore/wset/istore results) incl. C99NarrowReads promotion bridge",
+    "complete BOTH tables incl. exceptional Cell igm 0 and gm0/igm0-not-radix-over-firstRoot export",
+    "SAME f/g conversion + forward NTT + evaluations (former item 3)",
+    "nonzero tests/division/inverse/normalization to canonical h (former item 4)",
+    "fInv witness and BOTH SAME-material Relation.mulRq equations (former item 5)",
+    "BATCH_036 seal ceremony: full audit, Sage controls, POSTSEAL, FINAL_VERIFY and the 036 verifier before new proof work"
+  ]
+}

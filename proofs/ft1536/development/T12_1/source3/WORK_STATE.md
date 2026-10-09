@@ -1,5 +1,28 @@
 # T12.1/source3 — żywy stan
 
+## B1.06 — CLOSED at upper loops / exceptional-core midpoint — 2026-10-09
+
+**CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
+**B1.06 Acceptance NOT MET.** B1.05 closed at BATCH_032;B1.07 nie jest
+rozpoczęte. Wznowienie: checkpoint **16R**. Cała kompozycja wyższych pętli
+(15.1 pkt 1) DOKOŃCZONA: ten sam afterRows wyprowadza k8/u256/cube→u512/
+u255/square→u0,obie tablice wypełnione w 1..1023,ramki bajtowe UpperFrame,
+`source_tables` domyka generate do jawnego `finish`. Rdzeń wyjątkowego igm[0]
+(15.1 pkt 2) KERNEL-CHECKED:slowo `radix/(2*firstRoot-1)`,NIE
+`radix/firstRoot`,z formalnym `exceptional` i `two_first_root_nonzero`.
+Pozostaje: wykonanie trzech instrukcji finish (z mostkiem promocji wg pułapki
+190),pełne obrazy tablic z wyjątkową komórką,oraz dawne punkty 3-5 (NTT,
+nonzero/dzielenie/odwrotność,kanoniczne h,fInv,oba równania mulRq dla tych
+samych f/g/h) i ceremonia pieczęci BATCH_036 (audit/controls/POSTSEAL/
+FINAL_VERIFY/weryfikator 036) PRZED nową pracą dowodową. To brakujące dowody
+ograniczające,nie kontrprzykład kodu. Piny/odbiory: para
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_036.*` i checkpoint 16/16R. Commity
+`36966a99`,`265cedbe`;bez push/review/subagent/worker/relay/import.
+Zachowane niepowodzenia: joby 036_001-005 (przyczyny w nocie pary) oraz
+sondy parse (diagnostyka). Entry `.build/levels_036/ENTRY_PINS_036.json`
+SHA256 `8d48dfb915639e49843f9a2174c51dfa10576222b1a6c30ce184dcd7d7ab924c`: BATCH_015-035
+zweryfikowane,6089 pinów,592 wejść,bez supersesji/aktywnego joba.
+
 ## B1.06 — CLOSED at BOTH last rows / upward-body midpoint — 2026-10-09
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**

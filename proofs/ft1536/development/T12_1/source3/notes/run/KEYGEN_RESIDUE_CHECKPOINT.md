@@ -1,3 +1,87 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.06 upper loops closed / exceptional core midpoint
+
+**PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
+2026-10-09,BATCH_036,GPT-6 Astra (`openai/gpt-6-astra`).
+**CLOSED_AT_RECOVERABLE_MIDPOINT. B1.06 Acceptance NOT MET.**
+B1.05 remains closed at BATCH_032;B1.07 is not entered. Resume: **16R**.
+
+## 16. Closed this window — whole upper loops and exceptional-core algebra
+
+1. **Item 1 DONE:** the SAME afterRows execution derives k8,u256,cubeLoop to
+   u512 (cells 256..511),u255,squareLoop to u0 (cells 1..1023),with Common
+   frames and byte-level UpperFrame through every iteration;child Cell facts at
+   2*i come from the preceding iterations of the same run.
+   `source_tables` composes the complete generate execution to the `finish`
+   statement with the original-heap frame. Modules
+   `KeygenPublicUpperFrames`/`KeygenPublicUpperLoops`,job
+   `keygen_public_upper_loops_036_007`,0/0.
+2. **Item 2 core DONE:** `KeygenPublicUpperFinish` binds the actual finish parse
+   (source 881-884) and kernel-checks the full word/field chain for the
+   exceptional igm0:stored word **radix/(2*firstRoot-1),NOT radix/firstRoot**,
+   with `exceptional` proving ((2*firstRoot-1)^-1) ≠ (root^-1)^tableExponent 0
+   and `two_first_root_nonzero` from (2*firstRoot-1)^2=-3. Job
+   `keygen_public_upper_finish_036_006`,0/0.
+
+### 16.1 Exact remaining B1.06 obligations (plan order)
+
+1. Finish statement composition: gstore/wset/istore result lemmas executing
+   gm[0]=gm[1],w=gm[1] and the igm0 store,phrased on the store constructor's
+   heap;needs the explicit C99NarrowReads promotion bridge (trap 190: derive
+   `narrow (unsignedPromotion w)=narrow (.uint32 (BitVec.ofNat 32 w.toNat))`
+   and the Slot/Value form). Conclude complete BOTH images:PairCells 1..1023,
+   `Cell out.state.heap gm 0 (root^tableExponent 0)`,
+   `Cell out.state.heap igm 0 ((2*firstRoot-1)⁻¹)` with the raw word law
+   `value out = radix/(2*firstRoot-1)`,`Word out.state "w" firstRoot`,frames.
+2. SAME f/g conversion and complete forward NTT→canonical unsigned16 AND
+   evaluations of the original CoefficientQuotient polynomial at
+   KeygenPublicRoots.point,in physical order;derive tables in the caller.
+3. SAME successful public execution→all 1536 nonzero tests→division;actual
+   inverse transform/normalization→canonical h. No assumed round-trip.
+4. Construct fInv from nonzero evaluations/proven evaluation isomorphism;BOTH
+   `mulRq h (reduceVec f)=reduceVec g` and
+   `mulRq fInv (reduceVec f)=constantCoeffs (1 : ZMod18433)` for SAME f/g/h.
+5. BATCH_036 seal ceremony BEFORE new proof work:full audit (term/type/axiom),
+   Sage standard-preparser controls, POSTSEAL and FINAL_VERIFY receipts and a
+   dedicated 036 verifier extending the BATCH_015-036 closure.
+
+This is a missing enclosing source proof,not a numerical/code counterexample.
+The last-row theorem,upper-loop composition and exceptional algebra do NOT meet
+B1.06 Acceptance. Complete KeyGen,emitted-to-fiber,compiler,laws/PRG/security
+and review remain outside this midpoint's claims.
+
+### 16.2 Pins,controls and traps
+
+Entry `.build/levels_036/ENTRY_PINS_036.json` SHA256
+`8d48dfb915639e49843f9a2174c51dfa10576222b1a6c30ce184dcd7d7ab924c`:BATCH_015-035 verified,6089 distinct pins,592 current inputs,
+no supersession/no active job. Pair JSON/NOTES `KEYGEN_SOURCE_TO_FIBER_001_BATCH_036.*`.
+Module pins (sources):Frames `2d8a6b44c84791c30c3553648462ecdc94aabab095c50dd23b4e2c8e258a6159`,Loops `0324535ea4802a7dbec3162840f1e96f668d6905c40853bf3e399ce9e23d6b18`,
+Finish `4486bf62bcea745f47b4ac15efde5c556dc8696f11a49f21c7784fd14a101048`. Accepted jobs `keygen_public_upper_loops_036_007`
+(receipts `58b57e86853a148a705bbf04581ea4322db273a9dc7c35a6f5bb7f5444511193`) and `keygen_public_upper_finish_036_006`
+(receipts `9531d427bddf6f6036058ec93b14648694af2eb41cb145bb31373c606b2d4a84`),streams 0/0. Failed attempts 036_001-005 retained
+with causes (pair notes);parse probes are diagnostic only. Traps 186-190 in
+the pair notes. Small commits `36966a99`,`265cedbe` as niirmataa;no push,
+review,subagent,worker/session/relay,migration or stages import. No Sage
+controls were run this window (recorded as open);no old pin weakened.
+
+## 16R. Resume B1.06 — finish execution, complete tables, then NTT/equations
+
+1. Read source3/WORK_STATE,this checkpoint,EXECUTION_PLAN B1.06 and
+   `run2/notes/B1_STAGED_ROADMAP.md`. Acceptance NOT MET;B1.05 closed;
+   B1.07 waits. Preserve BATCH_015-036 and all failed/earlier accepted bytes.
+2. BEFORE edits/jobs,run the BATCH_036 seal ceremony of 16.1 step 5 and verify
+   the BATCH_015-036 closure (the 035 verifier plus the re-hashed BATCH_036
+   module pins). Any mismatch is stop-and-report,not pin weakening.
+3. Continue 16.1 in order. Reuse source_upper/source_tables and the accepted
+   exceptional algebra;supply the promotion bridge (trap 190) and execute the
+   three finish statements. Do not re-assume table images beyond these
+   conclusions,NTT correctness,nonzero or either SAME-material equation.
+4. Unique guarded `keygen_public_*_036_*` jobs continuing the numbering,one
+   job,unchanged process/kernel/print limits,0/0 proof streams,Sage
+   preparser,durable environments. Keep defs/pieces bounded;old and failed
+   versions stay intact. Small local commits;close at Acceptance or an
+   expanded recoverable midpoint. No automatic push/review/subagent/worker/
+   session/relay/migration/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.06 BOTH last rows / upward-body midpoint
 
 **PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
