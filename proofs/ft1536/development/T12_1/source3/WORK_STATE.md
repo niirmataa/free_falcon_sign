@@ -1,5 +1,30 @@
 # T12.1/source3 — żywy stan
 
+## B1.06 — public/inverse continuation — 2026-10-09
+
+Owner resumed checkpoint section 12R with GPT-6.1 Sol Fast
+(`openai/gpt-6.1-sol-fast`). BATCH_033 is IN_PROGRESS / NOT_REVIEWED /
+WORKING_NOT_FROZEN. B1.05 remains closed at its explicit Acceptance boundary;
+B1.07 is not entered. BEFORE edits/jobs, the committed BATCH_032 verifier
+checked BATCH_015–032: 5019 distinct pins,561 current inputs,no supersession
+and no active job. Receipt: `.build/levels_033/ENTRY_PINS_033.json`, SHA256
+`0173a014e06b217e3e47053148de2fe410749a0d29d929c2e0d46b7fb0249ba5`.
+Next: source mq word/algebra contracts with radix2^16,then actual generated
+tables/forward/nonzero/division/inverse composition for SAME retained f/g/h.
+The inspected B3 `FftBind.NttSem` concerns the solver's modp source inventory,
+not a q18433 public-transform theorem; it is not used as a substitute.
+No subagent,second worker,session,relay,push,review,migration or import.
+Runner attribution constants remain historical provenance. Limits unchanged.
+
+`KeygenPublicLinear`, `KeygenPublicLeafWords` and `KeygenPublicMontgomery`
+are accepted,0/0. Complete parsed mq_conv_small/add/sub/rshift1/montymul
+bodies yield their exact word results via a proved scalar lowering,actual
+parameter binding and return conversion. The uint32 Montgomery proof uses
+radix2^16,including wrapping z*q0i's LOW16 and a separately proved no-wrap
+numerator bound. No solver uint64/radix2^31 routine is substituted. Actual
+Call field adapters,square/division,table/transform and SAME-material public
+composition remain pending. All earlier proof/linter attempts are retained.
+
 ## B1.05 — CLOSED at Acceptance — 2026-10-09
 
 **B1.05 Acceptance MET / PROVED_KERNEL_SCOPED / CLOSED_AT_ACCEPTANCE.**
