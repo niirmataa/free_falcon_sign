@@ -3,6 +3,10 @@
 
 Refuses staged changes that violate the archive's canonical layout:
 - nothing may be staged under work/ or replay-work/ (ignored scratch areas),
+  with one documented exception: work/AGENTS.md, the archive shield (owner
+  decision 2026-10-09). The shield is the ONLY tracked file under work/;
+  it auto-loads for any agent touching the scratch area and neutralizes
+  historical AGENTS.md cascades injected from frozen W trees.
 - staging stages/<id>/ requires staging catalog/<id>.json in the same commit,
   so every frozen snapshot lands together with its pin registry entry.
 
@@ -17,6 +21,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 PROOF = 'proofs/ft1536/'
 FORBIDDEN = (PROOF + 'work/', PROOF + 'replay-work/')
+ALLOWED = (PROOF + 'work/AGENTS.md',)
 FORBIDDEN_NAMES = ('.private', 'private_extraction')
 
 
@@ -34,7 +39,8 @@ def main():
     stage_ids = set()
     catalog_ids = set()
     for path in paths:
-        if path.startswith(FORBIDDEN) or any(n in path for n in FORBIDDEN_NAMES):
+        if path not in ALLOWED and (
+                path.startswith(FORBIDDEN) or any(n in path for n in FORBIDDEN_NAMES)):
             problems.append(f'non-canonical staged path: {path}')
             continue
         rest = path[len(PROOF):]
