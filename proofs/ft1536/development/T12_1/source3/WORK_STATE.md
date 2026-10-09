@@ -33,6 +33,24 @@ initial residue-domain, empty-global or first-fold correctness premise is
 required by this headline; legal memory/profile/material/bounds1/static
 table liveness are still explicit enclosing-KeyGen obligations.
 Next: radix-2/triple value refinement in physical root order.
+Third checked piece: the actual radix-2 butterfly and complete inner
+v-loop now yield the low/high block-polynomial remainder coefficients,
+with every untouched physical cell preserved. Local outer-row domains
+remain explicit. Universal public-field triple geometry identifies the
+three formulas at `KeygenPublicRoots.point (3*j+k)` in their source order;
+it is not execution of the triple body or evaluation of the original f/g.
+The next composition obligations are outer u1/m loops, generated twiddle
+frames/row laws, triple-body/loop values, and the all1536 original-polynomial
+invariant. RadixValues002/RadixFold002/SplitOrder001(first module only)/
+TripleOrder001 accepted0/0. The three rejected local proof attempts are
+retained. Internal audit001 checked436 entries:125 named (including the
+040 fold)+311 inherited,396 complete terms/40 inductives,standard axioms,
+zero elisions;633 literal inputs. Sage003 checked12 normal/UBSan runs,
+four public f/g pairs,all five mutations per mode,12288 exact finite original
+polynomial evaluations. Sage001's broad mutation anchor and002's unused
+fC2 mutation are retained;003 fixes the controls without weakening -Werror.
+All16 directories/17 steps remain;max cumulative RSS4633812KiB,limits
+unchanged. Sealing the single recoverable midpoint follows.
 
 ## B1.06 — CLOSED at SAME-material domains / first polynomial-value midpoint — 2026-10-09
 
