@@ -1,5 +1,41 @@
 # T12.1/source3 — żywy stan
 
+## B1.06 — CLOSED at derived first domains / inner radix remainders — 2026-10-09
+
+**CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
+**B1.06 Acceptance NOT MET.** One midpoint in BATCH_041,GPT-6 Astra
+Ultrafast (`openai/gpt-6-astra-ultrafast`). B1.05 stays032;B1.07 waits.
+Resume: checkpoint **21R**.
+
+The SAME complete public invocation now derives both original converted
+f/g arrays,all first-loop entry domains and both full first folds,with
+actual generator Call/Bind/aliases/n/hn/r/u and array lifetime/suffix links.
+The inner radix v-loop yields the low/high block-polynomial remainders and
+all untouched physical cells. Universal triple algebra has the correct
+`KeygenPublicRoots.point` order,but is not source triple execution or the
+ORIGINAL-polynomial evaluation theorem. Outer u1/m stage composition,
+table/header frames,source triple body/loop and all1536 original f/g
+evaluations remain OPEN. Nonzero/division/inverse,canonical h,fInv and both
+mulRq equations remain unentered in plan order. No numerical/code
+counterexample was found;the remaining gap is source-proof composition.
+
+Entry7113 pins (`d544a10f…`);dedicated041 POSTSEAL **7417 pins/633 literal
+bindings**,no supersession/job (`d4c5eb2e…`). Pair JSON
+`a649d3c0820d63d5217f70a574bd4e7ff7b6393660add1bd9fc51a7af7240258`;
+notes `ddefe0e53dc55cf62ce26408dd8d4017f4a30329483f6ba258387b3dedba25cd`.
+Audit436 entries/396 full terms/40 inductives/standard axioms/zero elisions
+(`8a0e4e36…`),nine proof modules+audit accepted0/0. Sage003:12 normal/UBSan
+runs,four public f/g pairs,five mutations per mode all detected,12288 finite
+original-polynomial evaluations (`e6261d6a…`). Inherited039 Extra/c header
+decision rechecked;not a full M0 build. All16 directories/17 steps retained,
+six failed directories;max RSS4633812KiB,limits unchanged. Traps218–223 and
+exact remaining types are in the pair notes/checkpoint.
+
+Own commits:`cd847a59`,`d4ac554d`,`2253b8cb`,`47458fa6`,plus final pair/
+checkpoint. Foreign changes/staging preserved. No push,review,delegation,
+relay,migration,stages import or broad replay. Full KeyGen/emitted-to-fiber,
+compiler,laws/PRG/security and independent review remain outside this result.
+
 ## B1.06 — BATCH_041 entry-domain/value continuation — 2026-10-09
 
 Owner-started new window, GPT-6 Astra Ultrafast (`openai/gpt-6-astra-ultrafast`),

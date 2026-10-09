@@ -1,3 +1,155 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.06 derived first domains / inner radix remainders
+
+**PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
+2026-10-09,BATCH_041,GPT-6 Astra Ultrafast (`openai/gpt-6-astra-ultrafast`).
+**CLOSED_AT_RECOVERABLE_MIDPOINT. B1.06 Acceptance NOT MET.**
+One midpoint this window. B1.05 stays BATCH_032;B1.07 is not entered.
+Resume: **21R**. Full types/pins/traps: `KEYGEN_SOURCE_TO_FIBER_001_BATCH_041_NOTES.md`.
+
+## 21. Closed this window — SAME complete invocation→first domains;inner radix values
+
+1. **20.1 item1 DONE:** actual first-entry domains are derived from the SAME
+   complete forward/generator invocation and SAME original converted cells.
+   Declarations,automatic arrays/Fresh separation,n1536/hn768,generator
+   Call/Bind,gm aliases,gm_square[1] promotion,r assignment,u0 and the whole
+   first fold are source-bound. Both automatic-array disposals link the
+   actual remaining-suffix result to the observed output heap/flow.
+2. **SAME public f/g:** `KeygenPublicFirstMaterial.source_same_material`
+   derives both original converted arrays and both `FirstRun` outcomes
+   from the SAME complete public invocation. The actual h/g then t/f
+   association,3072-cell t allocation,original f cells preserved across
+   h's forward,real suffix and final t disposal are all bound.
+3. **Radix VALUE refinement:** `KeygenPublicRadixValues.source_body`
+   derives BOTH chronological source stores x+y*z/x-y*z. The complete
+   inner v-loop is folded by `KeygenPublicRadixFold.source_loop`, preserving
+   every untouched physical input cell. `source_remainders` identifies its
+   resulting block coefficients modulo X^h-z / X^h+z. Universal eval_low/
+   eval_high are checked in the public q18433 field. Outer row/stage caller
+   domains remain explicit; this is not all eight stages composed.
+4. **Physical triple geometry:** for all j<512,k<3,
+   `point(3*j+k)=root^(tableExponent(512+j))*unity^k`. The three formulas
+   A+Bx+Cx²,A+Bxw+Cx²w²,A+Bxw²+Cx²w agree with the degree<3 block's
+   evaluation at those points. `all_physical_evaluations` quantifies every
+   i:Fin1536 but concerns block coefficients,NOT the ORIGINAL f/g polynomial
+   and NOT execution of the triple body. Do not promote its name to a full
+   source-transform theorem.
+
+### 21.1 Exact checked boundaries and remaining16.1 obligations
+
+The complete public headline takes only actual logn10/ternary1/array
+bindings,typed allocated input/output memory,SAME represented fv/gv with
+bounds1,h/input nonaliasing,static-table liveness,and finite fixed-program
+compute execution. No empty-global,initial residue Domain/Image,generated
+table,hn/u/r value,fold correctness,nonzero or equation premise is needed.
+Legal entry facts must still come from the later enclosing KeyGen.
+
+Its `Front` conclusion exposes actual converted/afterH/afterT states,
+converted h=gv/t=fv cells,both forward calls,their `Outcome` witnesses,
+the public suffix,and exact final t disposal. Each `Outcome` exposes:
+
+```text
+entry,after : State; inner : Result
+Inv original a 0 entry
+Exec fixedPublicProgram [] firstLoop entry <after,normal>
+Inv original a 768 after
+Exec fixedPublicProgram [] remaining after inner
+observed.flow=inner.flow
+Block inner.state.heap observed.state.heap a.block
+```
+
+The inner radix-loop headline still takes LOCAL caller domains:
+0<h,base+2*h<=1536,width2,a-pointer,ht=h,v2=base+h,v=base,
+`Local "s" (radix*z)`,original Cells and actual inner-loop Exec. It yields
+the whole physical image and remainder coefficients. These are reusable
+local contracts,not extra allowed premises of the final public theorem.
+
+Remaining,in16.1 plan order:
+
+1. **Item2:** carry actual header/table/material facts through the first
+   fold;derive outer radix t=hn,m=2,ht=t/2,u1/v1/v2/v and source twiddle
+   entries. Compose all inner loops,all rows and all eight stages with
+   t*m=1536 and public-field source-index/root-tree laws. The current
+   `FirstRun.remaining` is the exact source suffix but does not yet export
+   its full header/table invariants. Extend through new modules;preserve pins.
+2. **Item2:** execute actual triple body and whole loop,derive scaled
+   w/x/x2,ordinary values,chronological stores and frames. Combine physical
+   order with the ORIGINAL CoefficientQuotient polynomial invariant to get
+   the required universal source conclusion:
+
+   ```text
+   forall i:Fin1536,
+     Cell output.heap a i.val
+       ((CoefficientQuotient.polynomial (Relation.reduceVec original)).eval
+         (KeygenPublicRoots.point i))
+   ```
+
+   Its full-forward premises may include the actual original converted
+   input cells;the SAME public composition must derive those as already
+   done for the first fold. No canonicality,finite controls or transform
+   in another source model replaces this obligation.
+3. **Item3 OPEN,not entered:** only AFTER evaluations,SAME successful
+   public path→all1536 nonzero tests→division→actual inverse/normalization
+   and canonical h. No assumed forward/inverse round-trip.
+4. **Item4 OPEN,not entered:** fInv via nonzero evaluations/proved
+   evaluation isomorphism and BOTH SAME f/g/h mulRq equations.
+
+### 21.2 Pins,audit,controls,retained attempts
+
+- BEFORE edits/jobs:BATCH_015–040 **7113 pins**,including the unchanged
+  7048-pin/621-binding039 predecessor and all seven040 jobs. Entry
+  `.build/levels_041/ENTRY_PINS_041.json`,SHA256
+  `d544a10f8f23325d47e6082ffd0332b242ad625cb87cb8a9b9ef66ab7673f183`.
+- **BATCH_041 JSON:** `a649d3c0820d63d5217f70a574bd4e7ff7b6393660add1bd9fc51a7af7240258`.
+- **BATCH_041 notes:** `ddefe0e53dc55cf62ce26408dd8d4017f4a30329483f6ba258387b3dedba25cd`.
+- Nine new proof modules+audit accepted0/0. Audit **436 entries=125 named
+  (including040 fold)+311 inherited;396 complete terms+40 inductives with
+  constructor types;standard axioms;zero elisions**. Audit JSON
+  `8a0e4e369e4478c1eff28d6fdec774431cbe171063acb46672e206b77d162e15`,receipt
+  `3c5268ebed37cc342830b8ad4c2155d19f305b5819f000bcaaeb6ff625234565`.
+- Sage final003: **12 normal/UBSan runs**,four public synthetic f/g pairs,
+  all five mutations per mode detected;12288 finite original-polynomial
+  evaluations. Result `e6261d6a83ea371e94f10aeef7470c7b110c0c38f543ade329adaafc38f4b4fc`,
+  receipt `162e1fe2f2a5a1f1f846edcd97994c059fc19dbb38a0a7accfa59ea2c93fb00a`.
+  Actual Extra/c/GCC include pins inherit the unchanged039 live-header
+  decision;not a complete M0 build. These finite checks are diagnostic.
+- PRESEAL `73f840ed5228b89f615a7dd18a31bdfc13b9aa119405185d2a6657458bcf4d7f`
+  rechecks all7113 predecessor pins. Dedicated041 seal/verify tool
+  `3234d16b190dfdd162a61d41ad291854fac937b92ee628dac2986826c624d7e6`.
+- **POSTSEAL:** `.build/levels_041/POSTSEAL.json`,SHA256
+  `d4c5eb2e5acf5dd1a3440552c545e8d29edb86a5fb4cfec1667d14cbe80aee01`:
+  **7417 distinct pins/633 literal bindings**,no supersession or active job.
+- All16 job directories/17 steps retained:10 wholly accepted/six with
+  failure;11 accepted/six rejected steps. Max cumulative RSS4633812KiB;
+  limits unchanged. Traps218–223 in pair notes;no unresolved current source.
+- Own source/evidence commits:`cd847a59`,`d4ac554d`,`2253b8cb`,`47458fa6`,
+  plus final pair/checkpoint. Foreign work/staging preserved. No push,review,
+  subagent,worker,session,relay,migration,stages import or broad replay.
+
+## 21R. Resume B1.06 — outer radix composition,then source triple/all original evaluations
+
+1. Read source3/WORK_STATE,this checkpoint,EXECUTION_PLAN B1.06 and
+   `run2/notes/B1_STAGED_ROADMAP.md`. Acceptance NOT MET;B1.05 closed;
+   B1.07 waits. Preserve BATCH_015–041 and every failed/earlier byte.
+2. BEFORE edits/jobs,verify the complete BATCH_015–041 closure from source3:
+
+   ```sh
+   mkdir -p .build/levels_042
+   python3 -B tools/keygen_public_first_batch.py verify a649d3c0820d63d5217f70a574bd4e7ff7b6393660add1bd9fc51a7af7240258 ddefe0e53dc55cf62ce26408dd8d4017f4a30329483f6ba258387b3dedba25cd .build/levels_042/ENTRY_PINS_042.json
+   ```
+
+   Expect7417 pins,633 literal bindings,no supersession/job. Any mismatch
+   is stop-and-report,not weakening or silently repairing old pins.
+3. Continue21.1 in16.1 order. First domains and inner v-loop remainders are
+   now source theorems;next bind outer header/table frames and row/stage
+   composition,then actual triple body/loop and physical ORIGINAL f/g
+   evaluations. Only AFTER item2 continue nonzero/division/inverse and both
+   equations. Triple geometry alone is not the complete evaluation proof.
+4. Unique guarded `keygen_public_*_042_*` jobs from001,pair⇒job convention;
+   one job,unchanged limits,0/0 proof streams,Sage preparser,durable
+   environments,bounded defs/pieces,all attempts retained. Small local own
+   commits;one expanded recoverable midpoint or Acceptance per window. No
+   automatic push/review/subagent/worker/session/relay/migration/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.06 first-loop fold / low-high coefficient images
 
 **PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
