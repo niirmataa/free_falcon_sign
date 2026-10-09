@@ -35,6 +35,12 @@ scope/case patterns and target-local mutation matching. Own small commits
 `be2f0dc1`,`09fa063b`,`3f82120a`,`b1fbbcf6`,plus final pair/checkpoint/docs;
 foreign changes/staging preserved. No push/review/subagent/worker/session/
 relay/migration/import/broad replay. Full types/pins/history in the038 pair.
+Final documentation-time verify after pair/checkpoint81c65ecc checked the
+identical6438-pin closure/607 literal bindings,no job/supersession:
+`.build/levels_038/FINAL_VERIFY.json`,SHA256
+`730dc56b22b5beb7ba70baf441d8630eafca32b7225d1b19b919eba658efd484`.
+Server restart before adding this reference left the durable pair/receipt
+hashes unchanged;no proof job was restarted.
 
 ## B1.06 — forward-transform continuation — 2026-10-09
 

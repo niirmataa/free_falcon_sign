@@ -34,10 +34,10 @@ s : State; out : Result; a : ArrayPointer
 Slot s "logn" (10#32); Ternary s (=the actual int32 ternary slot1)
 s.arrays "a".toList=some a
 Locals residueNames s.globals
-Domain s.heap a; Initialized s.heap a1536
+Domain s.heap a; Initialized s.heap a 1536
 Exec KeygenPublicSource.program [] (KeygenPublicSource.code forward) s out
 -----------------------------------------------------------------------
-out.flow=normal AND Domain out.state.heap a AND Image out.state.heap a1536
+out.flow=normal AND Domain out.state.heap a AND Image out.state.heap a 1536
 ```
 
 `Domain`: every defined Load16 through the input descriptor is<18433.
@@ -103,6 +103,12 @@ emitted-to-fiber,compiler,laws/PRG/security and review remain outside.
   exactly ten new proof/audit modules. Entry's historical reported596 counter
   remains unchanged;it does not count the036 ceremony producer. No old counter
   or frozen byte was silently rewritten to make the descriptions identical.
+- **Final documentation-time verification:**`.build/levels_038/FINAL_VERIFY.json`,
+  `730dc56b22b5beb7ba70baf441d8630eafca32b7225d1b19b919eba658efd484`:
+  identical6438-pin closure/607 literal bindings,no supersession or active job,
+  after the pair/checkpoint commit81c65ecc. A server restart before writing
+  this reference changed no pair/receipt byte;their durable hashes and the
+  absence of active jobs were checked again,without restarting any proof job.
 - Nine proof modules+audit producer have accepted0/0 module records. All
  22 directories/23 steps retained (10 wholly accepted,12 with a failed step;
   ForwardMemory was accepted before Control failed in `_forward_038_004`).
