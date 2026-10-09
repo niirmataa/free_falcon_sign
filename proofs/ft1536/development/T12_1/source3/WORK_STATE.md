@@ -23,6 +23,16 @@ is linked to the observed output by flow and input-block equality.
 Tables001,Entry001,Invocation002 accepted0/0; Invocation001's indexed
 `Types` transport error is retained. Caller conversion/wrappers follow,
 then radix-2/triple values. This logical commit is not the window midpoint.
+Second checked piece: `KeygenPublicFirstMaterial.source_same_material`
+composes both actual Call/Bind wrappers with the SAME complete public
+conversion/invocation. Both converted original f/g arrays, both first-loop
+entry invariants/folds and their real remaining suffixes are conclusions.
+The h/g and t/f association and actual3072-cell t lifetime are explicit.
+Calls001 and Material001 accepted0/0. No generated table, u/hn/r value,
+initial residue-domain, empty-global or first-fold correctness premise is
+required by this headline; legal memory/profile/material/bounds1/static
+table liveness are still explicit enclosing-KeyGen obligations.
+Next: radix-2/triple value refinement in physical root order.
 
 ## B1.06 — CLOSED at SAME-material domains / first polynomial-value midpoint — 2026-10-09
 
