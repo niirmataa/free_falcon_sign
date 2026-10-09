@@ -1,0 +1,240 @@
+import Source3.KeygenPublicInputProgram
+import Source3.KeygenPublicInputCells
+import Source3.KeygenPublicInputAtoms
+import Source3.KeygenPublicInputLoop
+import Source3.KeygenPublicInputMaterial
+import Source3.KeygenPublicInputSetup
+import Source3.KeygenPublicInputCalls
+import Source3.KeygenPublicInputBridge
+import Source3.KeygenPublicInputLifetime
+import Source3.KeygenPublicValueExpr
+import Source3.KeygenPublicFirstValues
+import Source3.KeygenPublicFirstPolynomial
+import Lean.Util.CollectAxioms
+
+set_option maxRecDepth 32768
+set_option maxHeartbeats 2000000
+set_option pp.proofs true
+set_option pp.deepTerms true
+set_option pp.fullNames true
+set_option pp.universes true
+set_option pp.maxSteps 200000
+
+/- Generated complete internal039 audit, not independent review. -/
+run_cmd Lean.Elab.Command.liftTermElabM do
+  let groups : Array (Lean.Name × List String) := #[
+    (`FT1536.Source3.KeygenPublicInputProgram,
+      ["signed","index","converted","firstStore","secondStore","body","condition","increment","loop","initial","conversion","hArgs","tArgs","hForward","tForward","fragment","setup","suffix","append","ready","completeReady","declareDimensions","complete","source_complete","signed_source","body_supported","loop_supported","conversion_supported","loop_writes","body_writes","conversion_writes"]),
+    (`FT1536.Source3.KeygenPublicInputCells,
+      ["Cell","Cells","Signed","TailEmpty","written","preserves","other_block","signed_other","tail_store","empty_allocated","image","domain"]),
+    (`FT1536.Source3.KeygenPublicInputAtoms,
+      ["seq_inv","word64","index_address","converted_value","store","guard","increment_result","increment_counter"]),
+    (`FT1536.Source3.KeygenPublicInputLoop,
+      ["Pointers","Layout","Fixed","Data","Invariant","fixed_after","body_data","step","source_loop"]),
+    (`FT1536.Source3.KeygenPublicInputMaterial,
+      ["coefficient","reduced","Legal","signed_material","initial_result","source_conversion","source_vectors"]),
+    (`FT1536.Source3.KeygenPublicInputSetup,
+      ["ternaryShift","leftCount","rightCount","dimension","declareQ","nSet","qSet","complete","source_complete","supported","writes","ternary_value","dimension_value","source_setup"]),
+    (`FT1536.Source3.KeygenPublicInputCalls,
+      ["inputPrefix","forwards","convertedForward","remaining","Globals","complete_seam","prefix_supported","normal_seq_inv","append_inv","globals_preserved","global_range","prefix_result","call_binding","source_call_canonical","forward_other","source_both_forward"]),
+    (`FT1536.Source3.KeygenPublicInputBridge,
+      ["append_intro","tables_preserved","source_converted_forward","source_same_vectors_forward"]),
+    (`FT1536.Source3.KeygenPublicInputLifetime,
+      ["LiveTables","Front","legal_live","signed_block","source_front","source_same_material_front"]),
+    (`FT1536.Source3.KeygenPublicValueExpr,
+      ["meaning","Evaluates","Local","add","sub","word_meaning","local_value","add_value","sub_value","twiddle_value","local_after","assign_value"]),
+    (`FT1536.Source3.KeygenPublicFirstValues,
+      ["lowIndex","highIndex","names","declaration","readLow","readHigh","multiply","storeLow","storeHigh","inner","body","firstLoop","pass","seed","remaining","source_first_pass","body_supported","Fixed","PairUpdate","fixed_after","low_value","high_value","load_value","store_value","source_body"]),
+    (`FT1536.Source3.KeygenPublicFirstPolynomial,
+      ["low","high","low_coefficient","high_coefficient","low_degree","eval_original","first_low_evaluation","first_high_evaluation","original_reduced_coefficient","source_original_coefficients"])]
+  let inherited : Array Lean.Name := #[
+    ``FT1536.Source3.C99MemoryReference.Memory,
+    ``FT1536.Source3.C99MemoryReference.ArrayPointer,
+    ``FT1536.Source3.C99MemoryReference.ArrayPointer.offset,
+    ``FT1536.Source3.C99MemoryReference.Allocated,
+    ``FT1536.Source3.C99MemoryReference.PointerAdd,
+    ``FT1536.Source3.C99IntegerReference.Ty,
+    ``FT1536.Source3.C99IntegerReference.Value,
+    ``FT1536.Source3.C99IntegerReference.Value.integer,
+    ``FT1536.Source3.C99IntegerReference.Value.type,
+    ``FT1536.Source3.C99IntegerReference.convert,
+    ``FT1536.Source3.C99IntegerReference.compare,
+    ``FT1536.Source3.C99IntegerReference.promote,
+    ``FT1536.Source3.C99IntegerReference.usual,
+    ``FT1536.Source3.C99IntegerReference.ArithmeticExec,
+    ``FT1536.Source3.C99ScalarReference.Env,
+    ``FT1536.Source3.C99ScalarReference.set,
+    ``FT1536.Source3.C99ScalarReference.boolean,
+    ``FT1536.Source3.C99ScalarReference.Stmt,
+    ``FT1536.Source3.C99ScalarReference.Exec,
+    ``FT1536.Source3.C99ScalarReference.Eval,
+    ``FT1536.Source3.C99Frontend.scalar,
+    ``FT1536.Source3.C99Frontend.expression,
+    ``FT1536.Source3.C99Frontend.binary,
+    ``FT1536.Source3.C99DeclarationCells.declareCells,
+    ``FT1536.Source3.C99DeclarationCells.complete,
+    ``FT1536.Source3.C99ArrayReference.Name,
+    ``FT1536.Source3.C99ArrayReference.Arg,
+    ``FT1536.Source3.C99ArrayReference.Param,
+    ``FT1536.Source3.C99ArrayReference.State,
+    ``FT1536.Source3.C99ArrayReference.bindValue,
+    ``FT1536.Source3.C99ArrayReference.bindPointer,
+    ``FT1536.Source3.C99ArrayReference.restoreScope,
+    ``FT1536.Source3.C99ProcedureReference.Result,
+    ``FT1536.Source3.C99ProcedureReference.Flow,
+    ``FT1536.Source3.C99ProcedureReference.ReturnValue,
+    ``FT1536.Source3.C99ProcedureParser.zero,
+    ``FT1536.Source3.C99CountedWords.comparison_result,
+    ``FT1536.Source3.C99NarrowReads.Load16,
+    ``FT1536.Source3.C99NarrowReads.le16,
+    ``FT1536.Source3.C99NarrowReads.unsignedPromotion,
+    ``FT1536.Source3.C99NarrowReads.unsigned_promotion_exact,
+    ``FT1536.Source3.C99NarrowReads.load16_deterministic,
+    ``FT1536.Source3.C99NarrowReads.load16_transport,
+    ``FT1536.Source3.KeygenSmallOutput.element,
+    ``FT1536.Source3.KeygenSmallOutput.byte16,
+    ``FT1536.Source3.KeygenSmallOutput.Stored,
+    ``FT1536.Source3.KeygenSmallOutput.Store16,
+    ``FT1536.Source3.KeygenResidueVectors.join_bytes,
+    ``FT1536.Source3.KeygenWordExpr.Expr,
+    ``FT1536.Source3.KeygenWordExpr.expression,
+    ``FT1536.Source3.KeygenPublicScalar.Kind,
+    ``FT1536.Source3.KeygenPublicScalar.Call,
+    ``FT1536.Source3.KeygenPublicScalar.Square,
+    ``FT1536.Source3.KeygenPublicScalar.name,
+    ``FT1536.Source3.KeygenPublicScalar.params,
+    ``FT1536.Source3.KeygenPublicScalar.lines,
+    ``FT1536.Source3.KeygenPublicScalar.expand,
+    ``FT1536.Source3.KeygenPublicAlgebra.R,
+    ``FT1536.Source3.KeygenPublicAlgebra.Canonical,
+    ``FT1536.Source3.KeygenPublicAlgebra.value,
+    ``FT1536.Source3.KeygenPublicAlgebra.source_add,
+    ``FT1536.Source3.KeygenPublicAlgebra.source_sub,
+    ``FT1536.Source3.KeygenPublicAlgebra.call_leaf,
+    ``FT1536.Source3.KeygenPublicMontgomery.modulus,
+    ``FT1536.Source3.KeygenPublicMontgomery.inverse,
+    ``FT1536.Source3.KeygenPublicMontgomery.word_contract,
+    ``FT1536.Source3.KeygenPublicArguments.U32,
+    ``FT1536.Source3.KeygenPublicArguments.Conversion,
+    ``FT1536.Source3.KeygenPublicArguments.u32_self,
+    ``FT1536.Source3.KeygenPublicArguments.call_leaf_conversion,
+    ``FT1536.Source3.KeygenPublicArguments.source_mul_exact,
+    ``FT1536.Source3.KeygenPublicLeafWords.source_add,
+    ``FT1536.Source3.KeygenPublicLeafWords.source_sub,
+    ``FT1536.Source3.KeygenPublicSquare.source_square_arguments,
+    ``FT1536.Source3.KeygenPublicWord.Eval,
+    ``FT1536.Source3.KeygenPublicWord.Address,
+    ``FT1536.Source3.KeygenPublicWord.scalar,
+    ``FT1536.Source3.KeygenPublicWord.Bind,
+    ``FT1536.Source3.KeygenPublicWord.narrow,
+    ``FT1536.Source3.KeygenPublicWord.bind_heap,
+    ``FT1536.Source3.KeygenPublicExec.Stmt,
+    ``FT1536.Source3.KeygenPublicExec.Exec,
+    ``FT1536.Source3.KeygenPublicExec.Function,
+    ``FT1536.Source3.KeygenPublicExec.Program,
+    ``FT1536.Source3.KeygenPublicExec.chain,
+    ``FT1536.Source3.KeygenPublicExec.allocated,
+    ``FT1536.Source3.KeygenPublicExec.localPointer,
+    ``FT1536.Source3.KeygenPublicExec.localEntry,
+    ``FT1536.Source3.KeygenPublicExec.localExit,
+    ``FT1536.Source3.KeygenPublicParser.Types,
+    ``FT1536.Source3.KeygenPublicParser.body,
+    ``FT1536.Source3.KeygenPublicParser.statement,
+    ``FT1536.Source3.KeygenPublicSource.Kind,
+    ``FT1536.Source3.KeygenPublicSource.name,
+    ``FT1536.Source3.KeygenPublicSource.code,
+    ``FT1536.Source3.KeygenPublicSource.params,
+    ``FT1536.Source3.KeygenPublicSource.function,
+    ``FT1536.Source3.KeygenPublicSource.program,
+    ``FT1536.Source3.KeygenPublicSource.types,
+    ``FT1536.Source3.KeygenPublicSource.signatures,
+    ``FT1536.Source3.KeygenPublicSource.code_checked,
+    ``FT1536.Source3.KeygenPublicTableAtoms.Slot,
+    ``FT1536.Source3.KeygenPublicTableAtoms.var,
+    ``FT1536.Source3.KeygenPublicTableAtoms.literal,
+    ``FT1536.Source3.KeygenPublicTableAtoms.variable_value,
+    ``FT1536.Source3.KeygenPublicTableAtoms.literal_value,
+    ``FT1536.Source3.KeygenPublicTableAtoms.literal_argument,
+    ``FT1536.Source3.KeygenPublicTableIndex.address,
+    ``FT1536.Source3.KeygenPublicTableStore.Pointers,
+    ``FT1536.Source3.KeygenPublicTableStore.Separate,
+    ``FT1536.Source3.KeygenPublicTableCells.Cell,
+    ``FT1536.Source3.KeygenPublicTableControl.writes,
+    ``FT1536.Source3.KeygenPublicTableControl.supported,
+    ``FT1536.Source3.KeygenPublicTableControl.frame,
+    ``FT1536.Source3.KeygenPublicTableControl.declare_frame,
+    ``FT1536.Source3.KeygenPublicTableRows.noReturn,
+    ``FT1536.Source3.KeygenPublicTableRows.normal,
+    ``FT1536.Source3.KeygenPublicUpperLoops.PairCells,
+    ``FT1536.Source3.KeygenPublicUpperFrames.UpperFrame,
+    ``FT1536.Source3.KeygenPublicUpperFrames.OutsideFull,
+    ``FT1536.Source3.KeygenPublicUpperImages.source_complete_tables,
+    ``FT1536.Source3.KeygenPublicRoots.root,
+    ``FT1536.Source3.KeygenMkgm3Indices.tableExponent,
+    ``FT1536.Source3.KeygenRngSource.Fresh,
+    ``FT1536.Source3.KeygenRngSource.disposed,
+    ``FT1536.Source3.ShakeExtractFrame.SameBlock,
+    ``FT1536.Source3.KeygenZintTop.tokens,
+    ``FT1536.Source3.KeygenPublicForwardWrapper.source_forward_canonical,
+    ``FT1536.Source3.KeygenPublicForwardWrapper.domain_of_image,
+    ``FT1536.Source3.KeygenPublicForwardMemory.Block,
+    ``FT1536.Source3.KeygenPublicForwardMemory.load_block,
+    ``FT1536.Source3.KeygenPublicForwardMemory.initialized_live,
+    ``FT1536.Source3.KeygenPublicForwardMemory.allocated_other,
+    ``FT1536.Source3.KeygenPublicRangeMemory.read_after_store,
+    ``FT1536.Source3.KeygenPublicRangeMemory.image,
+    ``FT1536.Source3.KeygenPublicRangeMemory.domain_same_block,
+    ``FT1536.Source3.KeygenPublicRangeMemory.initialized_same_block,
+    ``FT1536.Source3.KeygenPublicRangeExpr.word_nat,
+    ``FT1536.Source3.KeygenPublicRangeExpr.word_argument,
+    ``FT1536.Source3.KeygenPublicRangeExpr.narrowed_range,
+    ``FT1536.Source3.KeygenPublicAlgebra.source_conv,
+    ``FT1536.Source3.KeygenPublicTableCells.stored_load,
+    ``FT1536.Source3.KeygenPublicTableCells.narrowing,
+    ``FT1536.Source3.KeygenMaterial.Represents,
+    ``FT1536.Source3.KeygenIntegerLift.Bound,
+    ``FT1536.Source3.KeygenSmallOutput.narrowed_exact,
+    ``FT1536.Source3.KeygenNttLoopSupport.USlot,
+    ``FT1536.Source3.KeygenNttLoopSupport.plus_u64,
+    ``FT1536.Source3.KeygenPublicFrame.body,
+    ``FT1536.Source3.KeygenPublicRoots.firstRoot,
+    ``FT1536.Source3.KeygenPublicRoots.first_root_relation,
+    ``FT1536.Source3.KeygenPublicRoots.point_half_power,
+    ``FT1536.Relation.reduceVec,
+    ``FT1536.Run2.CoefficientQuotient.polynomial,
+    ``FT1536.Run2.CoefficientQuotient.coefficient_low,
+    ``FT1536.Run2.CoefficientQuotient.coefficient_high,
+    ``FT1536.Run2.CoefficientQuotient.coefficient_outside]
+  let names := groups.flatMap fun (ns,decls) => decls.toArray.map (Lean.Name.str ns)
+  let allowed : Array Lean.Name := #[``propext, ``Classical.choice, ``Quot.sound]
+  let render (e : Lean.Expr) := do
+    let text := (← Lean.Meta.ppExpr e).pretty
+    if text.contains '⋯' then throwError "Truncated audit text"
+    pure text
+  let mut rows : Array Lean.Json := #[]
+  for name in names ++ inherited do
+    IO.FS.writeFile "../PUBLIC_INPUT_AUDIT_PROGRESS.json" (Lean.toJson name.toString |>.pretty)
+    let info ← Lean.getConstInfo name
+    let axes ← Lean.collectAxioms name
+    for ax in axes do
+      unless allowed.contains ax do throwError "Unexpected axiom {ax} in {name}"
+    let body ← match info.value? (allowOpaque := true) with
+      | some term => pure (Lean.Json.mkObj [("kind",Lean.toJson "definition_or_theorem"),
+          ("term",Lean.toJson (← render term))])
+      | none =>
+          match info with
+          | .inductInfo ind =>
+              let mut constructors : Array Lean.Json := #[]
+              for ctor in ind.ctors do
+                let ci ← Lean.getConstInfo ctor
+                constructors := constructors.push (Lean.Json.mkObj [
+                  ("name",Lean.toJson ctor.toString),("type",Lean.toJson (← render ci.type))])
+              pure (Lean.Json.mkObj [("kind",Lean.toJson "kernel_inductive"),
+                ("constructors",Lean.Json.arr constructors)])
+          | _ => throwError "Unexpected bodyless declaration {name}"
+    rows := rows.push (Lean.Json.mkObj [
+      ("name",Lean.toJson name.toString),("type",Lean.toJson (← render info.type)),
+      ("body",body),("axioms",Lean.toJson (axes.map Lean.Name.toString))])
+    IO.FS.withFile "../PUBLIC_INPUT_AUDIT_ENTRIES.jsonl" .append fun stream =>
+      stream.putStrLn rows.back!.compress
+  IO.FS.writeFile "../PUBLIC_INPUT_AUDIT.json" (Lean.Json.arr rows |>.pretty)
