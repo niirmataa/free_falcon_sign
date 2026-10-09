@@ -1,5 +1,26 @@
 # T12.1/source3 — żywy stan
 
+## B1.06 — BATCH_042 outer radix / triple continuation — 2026-10-09
+
+Owner-started new window, GPT-6 Astra Ultrafast (`openai/gpt-6-astra-ultrafast`),
+following checkpoint21R and the staged roadmap. BEFORE edits/jobs the exact
+BATCH_015–041 closure verified: **7417 pins /633 literal bindings**, no
+supersession or active job. Entry `.build/levels_042/ENTRY_PINS_042.json`,
+SHA256 `9d32b6d8b6d4ed3636da57a34c92bee066d6fd4d126b7889b017e8fe774aedc2`.
+Continue actual outer header/table frames and row/stage composition, then
+source triple execution and universal ORIGINAL f/g evaluations. Nonzero,
+division and inverse follow only after those evaluations. B1.06 Acceptance
+NOT MET; one midpoint or Acceptance in this window. Serial guarded jobs,
+unchanged limits, all attempts retained, small local own commits.
+First checked piece: exact outer syntax, bounded size_t operations and an
+a-only byte frame preserve the writable generated gm table. The actual
+u1 row derives s/v2/v from source loads/assignments and consumes the complete
+inner v-loop. `KeygenPublicRadixRows.source_rows` folds all rows of one
+stage with physical base j*t and table index m+j, preserving all1536 cells
+and the table. Five modules accepted0/0; the earlier parser, existential
+and linter attempts remain in unique042 directories. Eight-stage and
+complete-invocation composition follow; this commit is not the midpoint.
+
 ## B1.06 — CLOSED at derived first domains / inner radix remainders — 2026-10-09
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
