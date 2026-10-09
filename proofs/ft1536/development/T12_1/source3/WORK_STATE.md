@@ -20,6 +20,15 @@ Static tables not aliasing h is an explicit legal-memory premise of this
 consumer's frame proof,not an assumed image;enclosing KeyGen must supply it.
 The exact test/division/inverse/return suffix is parser-bound. Successful
 tests and the complete division loop follow;this commit is not a midpoint.
+The four successful-suffix proof modules are now accepted0/0. The full
+executed pass either returns failure0 or derives every nonzero ORIGINAL f
+evaluation and all1536 chronological canonical g/f stores,with every t cell
+preserved. `KeygenPublicSuccessfulSuffix.source_same_material` consumes the
+SAME complete compute return1 and retains the actual inverse Call and final
+t disposal. No input nonzero or division-image premise. Inverse correctness,
+normalization/final canonical h and both mulRq equations remain OPEN,not
+assumed by the headline. All eleven failed directories remain;unchanged
+limits. Audit/controls precede the one recoverable inverse-entry midpoint.
 
 ## B1.06 — CLOSED at universal ORIGINAL public forward evaluations — 2026-10-09
 
