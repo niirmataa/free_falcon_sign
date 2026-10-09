@@ -38,6 +38,20 @@ row loop/stores, cubing/upward rows and exceptional igm[0] precede forward,
 nonzero/division/inverse and SAME-material equations. B1.06 Acceptance is
 still NOT MET. Internal full audit and targeted Sage controls are pending.
 
+Final internal audit is accepted:271 entries (236 named new declarations
++35 inherited interfaces),255 full terms/16 kernel inductives,standard
+axioms only,zero elisions;580 current inputs. SHA256 `4cca633b…`,receipt
+`38308ed9…`. Five rejected truncated-print attempts remain intact. The
+64-way certificate assembly and deep local-cell proofs were split into
+named bounded lemmas; every affected consumer was rebuilt,without changing
+any print/kernel/process limit. Eight current proof/audit modules have0/0
+streams. Focused Sage controls are accepted:8 normal/UBSan runs,1025 rev
+rows,terminal counter/eight seeds and2050 paired table/sentinel rows per run;
+three mutations detected per mode. Result `cba0d9e4…`,receipt `cfbe5cd5…`.
+This finite table evidence does NOT replace the missing universal store/NTT
+proof. Preseal rechecked the same5308 predecessor pins,without supersession
+or an active job. Preparing the expanded recoverable midpoint pair/checkpoint.
+
 ## B1.06 — CLOSED at public-algebra / transform-entry midpoint — 2026-10-09
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**

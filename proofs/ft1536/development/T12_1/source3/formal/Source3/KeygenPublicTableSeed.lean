@@ -34,6 +34,10 @@ theorem source_complete : KeygenPublicSource.code .generate=prepend steps suffix
 theorem suffix_checked : KeygenPublicFrame.only KeygenPublicSource.signatures KeygenPublicSource.permissions
     (KeygenPublicSource.writable .generate) suffix=true := by decide
 
+def declaredU (s : State) : State :=
+  {s with locals := C99DeclarationCells.declareCells .uint64 ["u".toList] s.locals}
+def declaredK (s : State) : State :=
+  {s with locals := C99DeclarationCells.declareCells .uint32 ["k".toList] (declaredU s).locals}
 def declared (s : State) : State :=
   {s with locals := (C99DeclarationCells.declareCells .uint32 (locals.map String.toList)
     (C99DeclarationCells.declareCells .uint32 ["k".toList]
@@ -121,37 +125,54 @@ theorem post_result (s : State) (out : Result)
   have last := take_step loop increment (setup s) (squared s) out (loop_result s) source
   exact increment_result _ _ _ 11 out (squared_slots s).2 last
 
+theorem declared_g (s : State) : (declared s).locals "g".toList=some (.uint32,none) := by
+  simp [declared,locals,C99DeclarationCells.declareCells,C99ScalarReference.set]
+theorem converted_k_declared (s : State) : (converted s).locals "k".toList=some (.uint32,none) := by
+  simp [converted,declared,locals,bindValue,C99DeclarationCells.declareCells,C99ScalarReference.set]
+theorem converted_profile (s : State) (profile : Slot s "logn" 10) : Slot (converted s) "logn" 10 := by
+  simpa [Slot,converted,declared,locals,bindValue,C99DeclarationCells.declareCells,C99ScalarReference.set] using profile
+theorem unchanged_cell (s : State) (name other : String) (ty : C99IntegerReference.Ty) (v : Value)
+    (different : name≠other) : (bindValue s other.toList ty v).locals name.toList=s.locals name.toList := by
+  simp only [bindValue,C99ScalarReference.set,
+    show name.toList≠other.toList from fun equal => different (String.toList_injective equal),ite_false]
+theorem declared_ig (s : State) : (declared s).locals "ig".toList=some (.uint32,none) := by
+  simp [declared,locals,C99DeclarationCells.declareCells,C99ScalarReference.set]
+theorem completed_ig_declared (s : State) : (completed s).locals "ig".toList=some (.uint32,none) := by
+  rw [completed,unchanged_cell _ "ig" "k" _ _ (by decide),
+    squared,unchanged_cell _ "ig" "g" _ _ (by decide),
+    beforeSquare,unchanged_cell _ "ig" "k" _ _ (by decide),
+    setup,unchanged_cell _ "ig" "k" _ _ (by decide),
+    converted,unchanged_cell _ "ig" "g" _ _ (by decide)]
+  exact declared_ig s
+theorem completed_g (s : State) : Slot (completed s) "g" rootWord :=
+  slot_preserved _ _ _ _ _ _ (by decide) (squared_slots s).1
+theorem conversion_result (s : State) (out : Result)
+    (source : Exec KeygenPublicSource.program [] (.assign "g".toList (mont (literal 25) (literal 4564)))
+      (declared s) out) : out=⟨converted s,.normal⟩ :=
+  assign_result _ _ _ "g" _ convertedWord out ⟨none,declared_g s⟩
+    (fun v hv => mont_value [] _ _ _ 25 4564 v (literal_argument [] _ 25) (literal_argument [] _ 4564) hv) source
+theorem setup_result (s : State) (out : Result) (profile : Slot s "logn" 10)
+    (source : Exec KeygenPublicSource.program [] (.assign "k".toList (var "logn")) (converted s) out) :
+    out=⟨setup s,.normal⟩ :=
+  assign_result _ _ _ "k" _ 10 out ⟨none,converted_k_declared s⟩
+    (fun v hv => variable_value [] _ "logn" 10 v (converted_profile s profile) hv) source
+theorem inverse_result (s : State) (out : Result)
+    (source : Exec KeygenPublicSource.program [] (.assign "ig".toList (divide (literal 4564) (var "g")))
+      (completed s) out) : out=⟨ready s,.normal⟩ :=
+  assign_result _ _ _ "ig" _ inverseWord out ⟨none,completed_ig_declared s⟩
+    (fun v hv => divide_value [] _ _ _ 4564 rootWord v (literal_argument [] _ 4564)
+      (fun z hz => variable_argument [] _ "g" rootWord z (completed_g s) hz) hv) source
 theorem source_prefix (s : State) (out : Result) (profile : Slot s "logn" 10)
     (source : Exec KeygenPublicSource.program [] (KeygenPublicSource.code .generate) s out) :
     Exec KeygenPublicSource.program [] suffix (ready s) out := by
   rw [source_complete] at source
-  let d0 : State := {s with locals := C99DeclarationCells.declareCells .uint64 ["u".toList] s.locals}
-  let d1 : State := {d0 with locals := C99DeclarationCells.declareCells .uint32 ["k".toList] d0.locals}
-  have rest0 := take_step _ _ s d0 out (fun r hr => declaration_result _ _ _ .u64 _ r hr) source
-  have rest1 := take_step _ _ d0 d1 out (fun r hr => declaration_result _ _ _ .u32 _ r hr) rest0
-  have rest2 := take_step _ _ d1 (declared s) out (fun r hr => declaration_result _ _ _ .u32 _ r hr) rest1
-  have gd : (declared s).locals "g".toList=some (.uint32,none) := by
-    simp [declared,locals,C99DeclarationCells.declareCells,C99ScalarReference.set]
-  have rest3 := take_step _ _ (declared s) (converted s) out (fun r hr =>
-    assign_result _ _ _ "g" _ convertedWord r ⟨none,gd⟩
-      (fun v hv => mont_value [] _ _ _ 25 4564 v (literal_argument [] _ 25)
-        (literal_argument [] _ 4564) hv) hr) rest2
-  have kd : (converted s).locals "k".toList=some (.uint32,none) := by
-    simp [converted,declared,locals,bindValue,C99DeclarationCells.declareCells,C99ScalarReference.set]
-  have logn : Slot (converted s) "logn" 10 := by
-    simpa [Slot,converted,declared,locals,bindValue,C99DeclarationCells.declareCells,C99ScalarReference.set] using profile
-  have rest4 := take_step _ _ (converted s) (setup s) out (fun r hr =>
-    assign_result _ _ _ "k" _ 10 r ⟨none,kd⟩ (fun v hv => variable_value [] _ "logn" 10 v logn hv) hr) rest3
+  have rest0 := take_step _ _ s (declaredU s) out (fun r hr => declaration_result _ _ _ .u64 _ r hr) source
+  have rest1 := take_step _ _ (declaredU s) (declaredK s) out (fun r hr => declaration_result _ _ _ .u32 _ r hr) rest0
+  have rest2 := take_step _ _ (declaredK s) (declared s) out (fun r hr => declaration_result _ _ _ .u32 _ r hr) rest1
+  have rest3 := take_step _ _ (declared s) (converted s) out (conversion_result s) rest2
+  have rest4 := take_step _ _ (converted s) (setup s) out (fun r => setup_result s r profile) rest3
   have rest5 := take_step _ _ (setup s) (completed s) out (post_result s) rest4
-  have id : (completed s).locals "ig".toList=some (.uint32,none) := by
-    simp [completed,squared,beforeSquare,setup,converted,declared,locals,bindValue,
-      C99DeclarationCells.declareCells,C99ScalarReference.set]
-  have gslot : Slot (completed s) "g" rootWord :=
-    slot_preserved _ _ _ _ _ _ (by decide) (squared_slots s).1
-  exact take_step _ _ (completed s) (ready s) out (fun r hr =>
-    assign_result _ _ _ "ig" _ inverseWord r ⟨none,id⟩
-      (fun v hv => divide_value [] _ _ _ 4564 rootWord v (literal_argument [] _ 4564)
-        (fun z hz => variable_argument [] _ "g" rootWord z gslot hz) hv) hr) rest5
+  exact take_step _ _ (completed s) (ready s) out (inverse_result s) rest5
 
 theorem root_scaled : Scaled rootWord KeygenPublicRoots.root := by
   have converted := KeygenPublicDivisionAlgebra.conversion (25#32)

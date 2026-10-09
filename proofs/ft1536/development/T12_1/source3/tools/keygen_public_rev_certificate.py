@@ -19,22 +19,34 @@ namespace FT1536.Source3.KeygenPublicRevCert
 def Correct (i : Nat) : Prop :=
   (KeygenPublicRev.reversed 10 (BitVec.ofNat 32 i) 0).toNat=KeygenRev10.bitrev10 i ∧
     KeygenRev10.bitrev10 i<1024
-instance (i : Nat) : Decidable (Correct i) := by unfold Correct; infer_instance
+instance correctDecidable (i : Nat) : Decidable (Correct i) := by unfold Correct; infer_instance
 '''
     for block in range(64):
         text += f'theorem chunk{block:02d} : ∀ j : Fin 16, Correct ({16*block}+j.val) := by decide\n'
-    text += '''theorem all_indices (i : Nat) (hi : i<1024) : Correct i := by
-  have chunks : ∀ b : Fin 64, ∀ j : Fin 16, Correct (16*b.val+j.val) := by
+    for group in range(4):
+        text += f'''theorem block{group:02d} : ∀ b : Fin 16, ∀ j : Fin 16, Correct (16*({16*group}+b.val)+j.val) := by
     intro b
     fin_cases b
 '''
-    for block in range(64):
-        text += f'    · exact chunk{block:02d}\n'
-    text += '''  have hb : i/16<64 := by omega
+        for block in range(16*group,16*(group+1)):
+            text += f'    · exact chunk{block:02d}\n'
+    text += '''theorem all_indices (i : Nat) (hi : i<1024) : Correct i := by
   have hj : i%16<16 := Nat.mod_lt i (by decide)
-  have certificate := chunks ⟨i/16,hb⟩ ⟨i%16,hj⟩
-  have index : 16*(i/16)+i%16=i := by omega
-  simpa only [index] using certificate
+  by_cases h0 : i<256
+  · have certificate := block00 ⟨i/16,by omega⟩ ⟨i%16,hj⟩
+    have index : 16*(0+i/16)+i%16=i := by omega
+    simpa only [index] using certificate
+  by_cases h1 : i<512
+  · have certificate := block01 ⟨i/16-16,by omega⟩ ⟨i%16,hj⟩
+    have index : 16*(16+(i/16-16))+i%16=i := by omega
+    simpa only [index] using certificate
+  by_cases h2 : i<768
+  · have certificate := block02 ⟨i/16-32,by omega⟩ ⟨i%16,hj⟩
+    have index : 16*(32+(i/16-32))+i%16=i := by omega
+    simpa only [index] using certificate
+  · have certificate := block03 ⟨i/16-48,by omega⟩ ⟨i%16,hj⟩
+    have index : 16*(48+(i/16-48))+i%16=i := by omega
+    simpa only [index] using certificate
 theorem source_bitrev (x : BitVec 32) (v : C99IntegerReference.Value) (hx : x.toNat<1024)
     (source : KeygenPublicScalar.Call (KeygenPublicScalar.name .rev) [.uint32 x] v) :
     v=.uint32 (BitVec.ofNat 32 (KeygenRev10.bitrev10 x.toNat)) ∧

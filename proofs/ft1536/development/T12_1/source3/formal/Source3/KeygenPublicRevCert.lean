@@ -11,7 +11,7 @@ namespace FT1536.Source3.KeygenPublicRevCert
 def Correct (i : Nat) : Prop :=
   (KeygenPublicRev.reversed 10 (BitVec.ofNat 32 i) 0).toNat=KeygenRev10.bitrev10 i ∧
     KeygenRev10.bitrev10 i<1024
-instance (i : Nat) : Decidable (Correct i) := by unfold Correct; infer_instance
+instance correctDecidable (i : Nat) : Decidable (Correct i) := by unfold Correct; infer_instance
 theorem chunk00 : ∀ j : Fin 16, Correct (0+j.val) := by decide
 theorem chunk01 : ∀ j : Fin 16, Correct (16+j.val) := by decide
 theorem chunk02 : ∀ j : Fin 16, Correct (32+j.val) := by decide
@@ -76,8 +76,7 @@ theorem chunk60 : ∀ j : Fin 16, Correct (960+j.val) := by decide
 theorem chunk61 : ∀ j : Fin 16, Correct (976+j.val) := by decide
 theorem chunk62 : ∀ j : Fin 16, Correct (992+j.val) := by decide
 theorem chunk63 : ∀ j : Fin 16, Correct (1008+j.val) := by decide
-theorem all_indices (i : Nat) (hi : i<1024) : Correct i := by
-  have chunks : ∀ b : Fin 64, ∀ j : Fin 16, Correct (16*b.val+j.val) := by
+theorem block00 : ∀ b : Fin 16, ∀ j : Fin 16, Correct (16*(0+b.val)+j.val) := by
     intro b
     fin_cases b
     · exact chunk00
@@ -96,6 +95,9 @@ theorem all_indices (i : Nat) (hi : i<1024) : Correct i := by
     · exact chunk13
     · exact chunk14
     · exact chunk15
+theorem block01 : ∀ b : Fin 16, ∀ j : Fin 16, Correct (16*(16+b.val)+j.val) := by
+    intro b
+    fin_cases b
     · exact chunk16
     · exact chunk17
     · exact chunk18
@@ -112,6 +114,9 @@ theorem all_indices (i : Nat) (hi : i<1024) : Correct i := by
     · exact chunk29
     · exact chunk30
     · exact chunk31
+theorem block02 : ∀ b : Fin 16, ∀ j : Fin 16, Correct (16*(32+b.val)+j.val) := by
+    intro b
+    fin_cases b
     · exact chunk32
     · exact chunk33
     · exact chunk34
@@ -128,6 +133,9 @@ theorem all_indices (i : Nat) (hi : i<1024) : Correct i := by
     · exact chunk45
     · exact chunk46
     · exact chunk47
+theorem block03 : ∀ b : Fin 16, ∀ j : Fin 16, Correct (16*(48+b.val)+j.val) := by
+    intro b
+    fin_cases b
     · exact chunk48
     · exact chunk49
     · exact chunk50
@@ -144,11 +152,23 @@ theorem all_indices (i : Nat) (hi : i<1024) : Correct i := by
     · exact chunk61
     · exact chunk62
     · exact chunk63
-  have hb : i/16<64 := by omega
+theorem all_indices (i : Nat) (hi : i<1024) : Correct i := by
   have hj : i%16<16 := Nat.mod_lt i (by decide)
-  have certificate := chunks ⟨i/16,hb⟩ ⟨i%16,hj⟩
-  have index : 16*(i/16)+i%16=i := by omega
-  simpa only [index] using certificate
+  by_cases h0 : i<256
+  · have certificate := block00 ⟨i/16,by omega⟩ ⟨i%16,hj⟩
+    have index : 16*(0+i/16)+i%16=i := by omega
+    simpa only [index] using certificate
+  by_cases h1 : i<512
+  · have certificate := block01 ⟨i/16-16,by omega⟩ ⟨i%16,hj⟩
+    have index : 16*(16+(i/16-16))+i%16=i := by omega
+    simpa only [index] using certificate
+  by_cases h2 : i<768
+  · have certificate := block02 ⟨i/16-32,by omega⟩ ⟨i%16,hj⟩
+    have index : 16*(32+(i/16-32))+i%16=i := by omega
+    simpa only [index] using certificate
+  · have certificate := block03 ⟨i/16-48,by omega⟩ ⟨i%16,hj⟩
+    have index : 16*(48+(i/16-48))+i%16=i := by omega
+    simpa only [index] using certificate
 theorem source_bitrev (x : BitVec 32) (v : C99IntegerReference.Value) (hx : x.toNat<1024)
     (source : KeygenPublicScalar.Call (KeygenPublicScalar.name .rev) [.uint32 x] v) :
     v=.uint32 (BitVec.ofNat 32 (KeygenRev10.bitrev10 x.toNat)) ∧

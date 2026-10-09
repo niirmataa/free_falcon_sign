@@ -72,20 +72,96 @@ def inverseTwoReady (s : State) : State := bindValue (fourReady s) "ig2".toList 
 def ready (s : State) : State := bindValue (inverseTwoReady s) "ig4".toList .uint32 (.uint32 inverseFour)
 def Owned (s : State) : Prop := Slot s "g" rootWord ∧ Slot s "ig" inverseWord ∧
   ∀ n∈["x","ix","g2","g4","ig2","ig4"], s.locals n.toList=some (.uint32,none)
+theorem declaration_preserves (names : List C99ArrayReference.Name) (ty : C99IntegerReference.Ty)
+    (env : C99ScalarReference.Env) (name : C99ArrayReference.Name) (slot : env name=some (ty,none)) :
+    C99DeclarationCells.declareCells ty names env name=some (ty,none) := by
+  induction names generalizing env with
+  | nil => exact slot
+  | cons n ns ih =>
+      apply ih
+      by_cases same : name=n
+      · simp [C99ScalarReference.set,same]
+      · simpa only [C99ScalarReference.set,same,ite_false] using slot
+theorem declaration_member (names : List C99ArrayReference.Name) (ty : C99IntegerReference.Ty)
+    (env : C99ScalarReference.Env) (name : C99ArrayReference.Name) (member : name∈names) :
+    C99DeclarationCells.declareCells ty names env name=some (ty,none) := by
+  induction names generalizing env with
+  | nil => cases member
+  | cons n ns ih =>
+      rcases List.mem_cons.mp member with rfl | rest
+      · exact declaration_preserves ns ty (C99ScalarReference.set env name (ty,none)) name
+          (by simp [C99ScalarReference.set])
+      · exact ih _ rest
+theorem initial_declared (s : State) (n : String) (member : n∈KeygenPublicTableSeed.locals) :
+    (KeygenPublicTableSeed.declared s).locals n.toList=some (.uint32,none) :=
+  declaration_member _ _ _ _ (List.mem_map.mpr ⟨n,member,rfl⟩)
+theorem ready_uninitialized (s : State) (n : String) (ng : n≠"g") (nk : n≠"k") (ni : n≠"ig")
+    (member : n∈KeygenPublicTableSeed.locals) : (KeygenPublicTableSeed.ready s).locals n.toList=some (.uint32,none) := by
+  rw [KeygenPublicTableSeed.ready,KeygenPublicTableSeed.unchanged_cell _ n "ig" _ _ ni,
+    KeygenPublicTableSeed.completed,KeygenPublicTableSeed.unchanged_cell _ n "k" _ _ nk,
+    KeygenPublicTableSeed.squared,KeygenPublicTableSeed.unchanged_cell _ n "g" _ _ ng,
+    KeygenPublicTableSeed.beforeSquare,KeygenPublicTableSeed.unchanged_cell _ n "k" _ _ nk,
+    KeygenPublicTableSeed.setup,KeygenPublicTableSeed.unchanged_cell _ n "k" _ _ nk,
+    KeygenPublicTableSeed.converted,KeygenPublicTableSeed.unchanged_cell _ n "g" _ _ ng]
+  exact initial_declared s n member
 theorem initial_owned (s : State) : Owned (KeygenPublicTableSeed.ready s) := by
   refine ⟨(KeygenPublicTableSeed.ready_slots s).1,(KeygenPublicTableSeed.ready_slots s).2.1,?_⟩
   intro n hn
-  simp only [List.mem_cons,List.not_mem_nil,or_false] at hn
-  rcases hn with rfl | rfl | rfl | rfl | rfl | rfl
-  all_goals simp [KeygenPublicTableSeed.ready,KeygenPublicTableSeed.completed,KeygenPublicTableSeed.squared,
-    KeygenPublicTableSeed.beforeSquare,KeygenPublicTableSeed.setup,KeygenPublicTableSeed.converted,
-    KeygenPublicTableSeed.declared,KeygenPublicTableSeed.locals,bindValue,C99ScalarReference.set,
-    C99DeclarationCells.declareCells]
+  have facts : n∈KeygenPublicTableSeed.locals ∧ n≠"g" ∧ n≠"k" ∧ n≠"ig" := by
+    simp only [List.mem_cons,List.not_mem_nil,or_false] at hn
+    rcases hn with rfl | rfl | rfl | rfl | rfl | rfl <;> decide
+  exact ready_uninitialized s n facts.2.1 facts.2.2.1 facts.2.2.2 facts.1
+theorem ready_x (s : State) : Slot (ready s) "x" rootWord :=
+  slot_preserved _ _ _ _ _ _ (by decide) (slot_preserved _ _ _ _ _ _ (by decide)
+    (slot_preserved _ _ _ _ _ _ (by decide) (slot_preserved _ _ _ _ _ _ (by decide)
+      (slot_preserved _ _ _ _ _ _ (by decide) (slot_after _ _ _)))))
+theorem ready_ix (s : State) : Slot (ready s) "ix" inverseWord :=
+  slot_preserved _ _ _ _ _ _ (by decide) (slot_preserved _ _ _ _ _ _ (by decide)
+    (slot_preserved _ _ _ _ _ _ (by decide) (slot_preserved _ _ _ _ _ _ (by decide) (slot_after _ _ _))))
+theorem ready_two (s : State) : Slot (ready s) "g2" two :=
+  slot_preserved _ _ _ _ _ _ (by decide) (slot_preserved _ _ _ _ _ _ (by decide)
+    (slot_preserved _ _ _ _ _ _ (by decide) (slot_after _ _ _)))
+theorem ready_four (s : State) : Slot (ready s) "g4" four :=
+  slot_preserved _ _ _ _ _ _ (by decide) (slot_preserved _ _ _ _ _ _ (by decide) (slot_after _ _ _))
+theorem ready_inverse_two (s : State) : Slot (ready s) "ig2" inverseTwo :=
+  slot_preserved _ _ _ _ _ _ (by decide) (slot_after _ _ _)
+theorem ready_inverse_four (s : State) : Slot (ready s) "ig4" inverseFour := slot_after _ _ _
 theorem slots (s : State) : Slot (ready s) "x" rootWord ∧ Slot (ready s) "ix" inverseWord ∧
     Slot (ready s) "g2" two ∧ Slot (ready s) "g4" four ∧
-    Slot (ready s) "ig2" inverseTwo ∧ Slot (ready s) "ig4" inverseFour := by
-  simp [Slot,ready,inverseTwoReady,fourReady,twoReady,ixReady,xReady,bindValue,C99ScalarReference.set,
-    KeygenPublicSquare.converted_word]
+    Slot (ready s) "ig2" inverseTwo ∧ Slot (ready s) "ig4" inverseFour :=
+  ⟨ready_x s,ready_ix s,ready_two s,ready_four s,ready_inverse_two s,ready_inverse_four s⟩
+theorem b_preserves (s : State) (n : String) (different : n≠"b") :
+    (bDeclared s).locals n.toList=s.locals n.toList := by
+  simp only [bDeclared,C99DeclarationCells.declareCells,C99ScalarReference.set,
+    show n.toList≠"b".toList from fun equal => different (String.toList_injective equal),ite_false]
+theorem declared_x (s : State) (owned : Owned s) : (bDeclared s).locals "x".toList=some (.uint32,none) := by
+  rw [b_preserves _ "x" (by decide)]
+  exact owned.2.2 "x" (by simp)
+theorem declared_ix (s : State) (owned : Owned s) : (xReady s).locals "ix".toList=some (.uint32,none) := by
+  rw [xReady,KeygenPublicTableSeed.unchanged_cell _ "ix" "x" _ _ (by decide),b_preserves _ "ix" (by decide)]
+  exact owned.2.2 "ix" (by simp)
+theorem declared_two (s : State) (owned : Owned s) : (ixReady s).locals "g2".toList=some (.uint32,none) := by
+  rw [ixReady,KeygenPublicTableSeed.unchanged_cell _ "g2" "ix" _ _ (by decide),
+    xReady,KeygenPublicTableSeed.unchanged_cell _ "g2" "x" _ _ (by decide),b_preserves _ "g2" (by decide)]
+  exact owned.2.2 "g2" (by simp)
+theorem declared_four (s : State) (owned : Owned s) : (twoReady s).locals "g4".toList=some (.uint32,none) := by
+  rw [twoReady,KeygenPublicTableSeed.unchanged_cell _ "g4" "g2" _ _ (by decide),
+    ixReady,KeygenPublicTableSeed.unchanged_cell _ "g4" "ix" _ _ (by decide),
+    xReady,KeygenPublicTableSeed.unchanged_cell _ "g4" "x" _ _ (by decide),b_preserves _ "g4" (by decide)]
+  exact owned.2.2 "g4" (by simp)
+theorem declared_inverse_two (s : State) (owned : Owned s) : (fourReady s).locals "ig2".toList=some (.uint32,none) := by
+  rw [fourReady,KeygenPublicTableSeed.unchanged_cell _ "ig2" "g4" _ _ (by decide),
+    twoReady,KeygenPublicTableSeed.unchanged_cell _ "ig2" "g2" _ _ (by decide),
+    ixReady,KeygenPublicTableSeed.unchanged_cell _ "ig2" "ix" _ _ (by decide),
+    xReady,KeygenPublicTableSeed.unchanged_cell _ "ig2" "x" _ _ (by decide),b_preserves _ "ig2" (by decide)]
+  exact owned.2.2 "ig2" (by simp)
+theorem declared_inverse_four (s : State) (owned : Owned s) : (inverseTwoReady s).locals "ig4".toList=some (.uint32,none) := by
+  rw [inverseTwoReady,KeygenPublicTableSeed.unchanged_cell _ "ig4" "ig2" _ _ (by decide),
+    fourReady,KeygenPublicTableSeed.unchanged_cell _ "ig4" "g4" _ _ (by decide),
+    twoReady,KeygenPublicTableSeed.unchanged_cell _ "ig4" "g2" _ _ (by decide),
+    ixReady,KeygenPublicTableSeed.unchanged_cell _ "ig4" "ix" _ _ (by decide),
+    xReady,KeygenPublicTableSeed.unchanged_cell _ "ig4" "x" _ _ (by decide),b_preserves _ "ig4" (by decide)]
+  exact owned.2.2 "ig4" (by simp)
 theorem row_prefix (s : State) (out : Result) (owned : Owned s)
     (source : Exec KeygenPublicSource.program [] body s out) :
     Exec KeygenPublicSource.program [] remaining (ready s) out := by
@@ -94,43 +170,30 @@ theorem row_prefix (s : State) (out : Result) (owned : Owned s)
     simpa [Slot,bDeclared,C99DeclarationCells.declareCells,C99ScalarReference.set] using owned.1
   have ig : Slot (bDeclared s) "ig" inverseWord := by
     simpa [Slot,bDeclared,C99DeclarationCells.declareCells,C99ScalarReference.set] using owned.2.1
-  have xd : (bDeclared s).locals "x".toList=some (.uint32,none) := by
-    simpa [bDeclared,C99DeclarationCells.declareCells,C99ScalarReference.set] using owned.2.2 "x" (by simp)
   have rest1 := take_step _ _ (bDeclared s) (xReady s) out (fun r hr => assign_result _ _ _ "x" _ rootWord r
-    ⟨none,xd⟩ (fun v hv => variable_value [] _ "g" rootWord v g hv) hr) rest0
+    ⟨none,declared_x s owned⟩ (fun v hv => variable_value [] _ "g" rootWord v g hv) hr) rest0
   have igx : Slot (xReady s) "ig" inverseWord := slot_preserved _ _ _ _ _ _ (by decide) ig
-  have ixd : (xReady s).locals "ix".toList=some (.uint32,none) := by
-    simpa [xReady,bDeclared,bindValue,C99DeclarationCells.declareCells,C99ScalarReference.set] using owned.2.2 "ix" (by simp)
   have rest2 := take_step _ _ (xReady s) (ixReady s) out (fun r hr => assign_result _ _ _ "ix" _ inverseWord r
-    ⟨none,ixd⟩ (fun v hv => variable_value [] _ "ig" inverseWord v igx hv) hr) rest1
+    ⟨none,declared_ix s owned⟩ (fun v hv => variable_value [] _ "ig" inverseWord v igx hv) hr) rest1
   have gi : Slot (ixReady s) "g" rootWord :=
     slot_preserved _ _ _ _ _ _ (by decide) (slot_preserved _ _ _ _ _ _ (by decide) g)
-  have d2 : (ixReady s).locals "g2".toList=some (.uint32,none) := by
-    simpa [ixReady,xReady,bDeclared,bindValue,C99DeclarationCells.declareCells,C99ScalarReference.set] using owned.2.2 "g2" (by simp)
   have rest3 := take_step _ _ (ixReady s) (twoReady s) out (fun r hr => assign_result _ _ _ "g2" _ two r
-    ⟨none,d2⟩ (fun v hv => mont_value [] _ _ _ rootWord rootWord v
+    ⟨none,declared_two s owned⟩ (fun v hv => mont_value [] _ _ _ rootWord rootWord v
       (fun z hz => variable_argument [] _ "g" rootWord z gi hz)
       (fun z hz => variable_argument [] _ "g" rootWord z gi hz) hv) hr) rest2
-  have d4 : (twoReady s).locals "g4".toList=some (.uint32,none) := by
-    simpa [twoReady,ixReady,xReady,bDeclared,bindValue,C99DeclarationCells.declareCells,C99ScalarReference.set] using owned.2.2 "g4" (by simp)
   have rest4 := take_step _ _ (twoReady s) (fourReady s) out (fun r hr => assign_result _ _ _ "g4" _ four r
-    ⟨none,d4⟩ (fun v hv => mont_value [] _ _ _ two two v
+    ⟨none,declared_four s owned⟩ (fun v hv => mont_value [] _ _ _ two two v
       (fun z hz => variable_argument [] _ "g2" two z (slot_after _ _ _) hz)
       (fun z hz => variable_argument [] _ "g2" two z (slot_after _ _ _) hz) hv) hr) rest3
   have igf : Slot (fourReady s) "ig" inverseWord :=
     slot_preserved _ _ _ _ _ _ (by decide) (slot_preserved _ _ _ _ _ _ (by decide)
       (slot_preserved _ _ _ _ _ _ (by decide) igx))
-  have di2 : (fourReady s).locals "ig2".toList=some (.uint32,none) := by
-    simpa [fourReady,twoReady,ixReady,xReady,bDeclared,bindValue,C99DeclarationCells.declareCells,C99ScalarReference.set] using owned.2.2 "ig2" (by simp)
   have rest5 := take_step _ _ (fourReady s) (inverseTwoReady s) out (fun r hr => assign_result _ _ _ "ig2" _ inverseTwo r
-    ⟨none,di2⟩ (fun v hv => mont_value [] _ _ _ inverseWord inverseWord v
+    ⟨none,declared_inverse_two s owned⟩ (fun v hv => mont_value [] _ _ _ inverseWord inverseWord v
       (fun z hz => variable_argument [] _ "ig" inverseWord z igf hz)
       (fun z hz => variable_argument [] _ "ig" inverseWord z igf hz) hv) hr) rest4
-  have di4 : (inverseTwoReady s).locals "ig4".toList=some (.uint32,none) := by
-    simpa [inverseTwoReady,fourReady,twoReady,ixReady,xReady,bDeclared,bindValue,C99DeclarationCells.declareCells,C99ScalarReference.set]
-      using owned.2.2 "ig4" (by simp)
   exact take_step _ _ (inverseTwoReady s) (ready s) out (fun r hr => assign_result _ _ _ "ig4" _ inverseFour r
-    ⟨none,di4⟩ (fun v hv => mont_value [] _ _ _ inverseTwo inverseTwo v
+    ⟨none,declared_inverse_four s owned⟩ (fun v hv => mont_value [] _ _ _ inverseTwo inverseTwo v
       (fun z hz => variable_argument [] _ "ig2" inverseTwo z (slot_after _ _ _) hz)
       (fun z hz => variable_argument [] _ "ig2" inverseTwo z (slot_after _ _ _) hz) hv) hr) rest5
 
@@ -151,6 +214,13 @@ theorem scope_result (s : State) (out : Result)
       out=⟨C99ArrayReference.restoreScope s inner.state ["b".toList] [],inner.flow⟩ := by
   cases source
   exact ⟨_,‹_›,rfl⟩
+theorem seed_profile (s : State) (profile : Slot s "logn" 10) : Slot (KeygenPublicTableSeed.ready s) "logn" 10 := by
+  rw [Slot,KeygenPublicTableSeed.ready,KeygenPublicTableSeed.unchanged_cell _ "logn" "ig" _ _ (by decide),
+    KeygenPublicTableSeed.completed,KeygenPublicTableSeed.unchanged_cell _ "logn" "k" _ _ (by decide),
+    KeygenPublicTableSeed.squared,KeygenPublicTableSeed.unchanged_cell _ "logn" "g" _ _ (by decide),
+    KeygenPublicTableSeed.beforeSquare,KeygenPublicTableSeed.unchanged_cell _ "logn" "k" _ _ (by decide),
+    KeygenPublicTableSeed.setup,KeygenPublicTableSeed.unchanged_cell _ "logn" "k" _ _ (by decide)]
+  exact KeygenPublicTableSeed.converted_profile s profile
 theorem source_last_row_entry (s : State) (out : Result) (profile : Slot s "logn" 10)
     (source : Exec KeygenPublicSource.program [] (KeygenPublicSource.code .generate) s out) :
     ∃ after inner,
@@ -159,11 +229,7 @@ theorem source_last_row_entry (s : State) (out : Result) (profile : Slot s "logn
       inner.flow=.normal ∧ Exec KeygenPublicSource.program [] afterRows after out := by
   have rest := KeygenPublicTableSeed.source_prefix s out profile source
   rw [source_dispatch] at rest
-  have profileReady : Slot (KeygenPublicTableSeed.ready s) "logn" 10 := by
-    simpa [Slot,KeygenPublicTableSeed.ready,KeygenPublicTableSeed.completed,KeygenPublicTableSeed.squared,
-      KeygenPublicTableSeed.beforeSquare,KeygenPublicTableSeed.setup,KeygenPublicTableSeed.converted,
-      KeygenPublicTableSeed.declared,KeygenPublicTableSeed.locals,bindValue,C99ScalarReference.set,
-      C99DeclarationCells.declareCells] using profile
+  have profileReady := seed_profile s profile
   cases rest with
   | seqNormal _ _ _ after _ first tail =>
       cases first with
