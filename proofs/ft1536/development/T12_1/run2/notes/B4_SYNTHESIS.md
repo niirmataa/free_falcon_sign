@@ -444,6 +444,39 @@ B1.10/B1.11 (emitted_to_actual_fiber = hkey material), the do_sign
 realization (hshape + PointwiseStageRoad) and final assembly
 (four-arrow map, arrows 1-2).
 
+## 2026-10-09: B1.05 deep review - premises actually DERIVED, composition gap truly gone
+
+Structural review at 98a4abf6 (33 commits) verifies the B1.05 closure
+at the type level: `KeygenCallerSuccess.exact_integer_ntru` carries
+ONLY `Initial ctx before` (input MEMORY: pointer bindings, M0 profile,
+PRIMES3/REV10 objects, scratch legality, disjointness - NO vector
+coefficients/bounds/equations) + `Exec ctx before out` + `normal` flow
+-> exists f g F G with Bounds 1/1/2047/2047, `multiply f G - multiply g
+F = constantCoeffs (18433)` and `Represents` of the same four in final
+memory. The reviewer's rename-check passed: `RootCaller.Legal` is
+carried through the SAME executed prefix (`root_legal` + `material` off
+one `Exec`); the old `Validation` record is now CONSTRUCTED from
+execution (`KeygenRootValidation.validation` with `start.heap =
+before.heap`). Chain fully realized (`.deepest/.intermediate/.depth0 =>
+named Call` with accept/reject gates and `depth--` semantics). Gap
+noted and closed: C `if (!solve_NTRU(...)) continue;` vs the lemma's
+`return 1` premise - `nonzero_one` derives `v = .int32 1` from the
+actual nonzero gate result (values proven 0 or 1 first). Gate transport
+covers reject paths; local scope closes BEFORE the public call; static
+tables preserved via byte-block properties.
+
+**DO-NOT-REPEAT MAP extended**: the old diagnosis "missing solver chain
+/ sample-to-equation transport" is CLOSED within B1.05's declared
+scope. Scope note preserved: the theorem covers completed execution of
+the indicated fragments with active root under legal initial memory -
+NOT all of `falcon_keygen_make`, not termination, not acceptance
+probability, not emitted-key distribution. Remaining per BATCH_032:
+B1.06 (source public equations + inversion for the same f/g/h),
+B1.07 (full surrounding call + loop chronology: auto allocations, RNG
+readiness, retry counter/limit, full-run composition), then codecs/emitted
+bytes/certificate + `emitted_to_actual_fiber` + do_sign realization +
+final computational assembly.
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
