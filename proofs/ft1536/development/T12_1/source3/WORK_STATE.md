@@ -1,5 +1,26 @@
 # T12.1/source3 — żywy stan
 
+## B1.06 — BATCH_043 common afterT / successful suffix continuation — 2026-10-09
+
+Owner-started new window, GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`),
+following checkpoint22R and the unchanged B1 stage/order discipline.
+BEFORE edits/jobs: BATCH_015–042 verified,7747 distinct pins/652 literal
+bindings,no supersession or active job. Entry receipt:
+`.build/levels_043/ENTRY_PINS_043.json`,SHA256
+`c18dc2c83083d0cd3b9d26a5600c09c2c0ee957138fade852b1816430675f8ab`.
+First derive the common afterT h/g preservation and actual suffix headers;
+then successful tests→nonzero→division→actual inverse/normalization→both
+SAME-material equations. B1.06 Acceptance NOT MET;B1.07 waits. One midpoint
+or Acceptance in this window. All prior bytes/attempts preserved,serial
+guarded jobs,unchanged limits,small local own commits,no push/delegation.
+CommonCalls/CommonMaterial/SuffixProgram001 accepted0/0. Both ORIGINAL
+evaluation arrays now share afterT,with n1536/q18433/u1536/logn10/ternary1
+and actual f/g/t/h bindings derived from the SAME conversion/calls.
+Static tables not aliasing h is an explicit legal-memory premise of this
+consumer's frame proof,not an assumed image;enclosing KeyGen must supply it.
+The exact test/division/inverse/return suffix is parser-bound. Successful
+tests and the complete division loop follow;this commit is not a midpoint.
+
 ## B1.06 — CLOSED at universal ORIGINAL public forward evaluations — 2026-10-09
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
