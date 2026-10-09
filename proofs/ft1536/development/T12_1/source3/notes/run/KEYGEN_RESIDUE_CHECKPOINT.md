@@ -1,3 +1,157 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.06 SAME-material domains / first polynomial-value midpoint
+
+**PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
+2026-10-09,BATCH_039,GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`).
+**CLOSED_AT_RECOVERABLE_MIDPOINT. B1.06 Acceptance NOT MET.**
+One midpoint this window. B1.05 stays BATCH_032;B1.07 is not entered.
+Resume: **19R**. Full types/pins/traps: `KEYGEN_SOURCE_TO_FIBER_001_BATCH_039_NOTES.md`.
+
+## 19. Closed this window — SAME conversion→both caller domains;independent first values
+
+1. SAME complete `falcon_compute_public` execution derives MKN1536,q18433,
+   actual t3072 allocation/Fresh separation/empty tail,all3072 signed f/g
+   conversions and their ORDINARY field values. Actual MODE1-bounded Vec
+   material is retained;initial canonical h or initialized NTT images are
+   not premises. The entire conversion loop preserves original input cells.
+2. Actual Bind/dispatch of h then t consumes038's complete range theorem
+   AFTER deriving its defined-load/input/global domains. The3072-cell t
+   descriptor is not truncated to1536:its proved uninitialized tail supplies
+   Domain. Static-table/non-aliasing/legal extents and empty scalar globals
+   are explicit LEGAL-entry restrictions,not arithmetic-correctness premises.
+3. `KeygenPublicInputLifetime.source_same_material_front` extracts both1536
+   initialized canonical images at the SAME interior point,before nonzero
+   tests,with t still live. The later actual suffix and observed final t
+   disposal are bound to that invocation. This does not conclude canonical
+   h after division/inverse or a complete enclosing KeyGen caller theorem.
+4. **Independent value proofs begun,not assumed:** actual add/sub/Montgomery
+   expressions carry BOTH range and field-value equations. SAME first-body
+   execution yields x+y*z / x+y-y*z in the physical low/high cells and both
+   actual chronological writes. Canonicality alone supplies no value.
+5. Original `CoefficientQuotient.polynomial(Relation.reduceVec original)`
+   is tied to physical original coefficients. Its low/high degree<768 split
+   and evaluation identities at x^768=firstRoot /1-firstRoot are kernel
+   lemmas. `source_original_coefficients` connects the LOCAL actual first
+   butterfly to those split coefficients. Full first-loop/entry/seed and
+   radix2/triple/physical1536-value composition remain OPEN.
+
+### 19.1 Exact checked boundary and remaining16.1 obligations
+
+```text
+s : State; out : Result; f,g,h : ArrayPointer; fv,gv : Geometry.Vec
+actual logn10/ternary1 slots and f/g/h array bindings
+typed allocated1536 input/output cells; SAME stored fv/gv and bounds1
+h-input block separation;actual h descriptor extent1536
+empty scalar globals;static-table blocks live and disjoint from h
+Exec fixedPublicProgram ["f","g"] (code compute) s out
+-------------------------------------------------------------------
+exists actual block,afterT,inner:
+  Fresh s.heap block
+  Image afterT.heap h 1536
+  Image afterT.heap (localPointer block 3072) 1536
+  Exec fixedPublicProgram ["f","g"] actualRemainingSuffix afterT inner
+  out.flow=inner.flow
+  out.heap=disposed s.heap inner.heap block
+```
+
+No input/output residue Domain/Image,generated table,NTT correctness,
+nonzero,round-trip,solver correctness or public equation is a premise.
+The SAME subsequent suffix may return0;no return1 is needed to reach this
+before-test midpoint. The t image is not falsely asserted after disposal.
+The complete enclosing KeyGen must later supply the legal caller facts.
+
+Remaining,in16.1 plan order:
+
+1. **Item2 PARTIAL:** derive actual first-pass entry/u0/hn768/seed r from SAME
+   full forward/generator invocation and SAME converted original cells.
+   Fold all768 first butterflies into low/high polynomial coefficient images
+   with actual source/table/material frames. Local first-body results and
+   split-evaluation identities above are reusable,but not that whole loop.
+2. Continue all radix2/triple value invariants and physical ordering. For
+   each i:Fin1536,the loaded word must equal the SAME original f/g reduced
+   CoefficientQuotient polynomial at `KeygenPublicRoots.point i`. Do not use
+   canonical range,finite controls or another model's transform as this proof.
+3. **Item3 OPEN,not entered:** SAME successful execution→all1536 nonzero
+   tests→division→actual inverse/normalization→canonical h. No assumed
+   forward/inverse round-trip.
+4. **Item4 OPEN,not entered:** fInv via nonzero evaluations/proved evaluation
+   isomorphism and BOTH SAME f/g/h mulRq equations.
+5. **Item5 DONE:** inherited038 closure preserved;own full audit,Sage controls,
+   header decision history,all attempts and dedicated039 seal/verify closure.
+
+This is a remaining universal value/composition proof,not a numerical/code
+counterexample. B1.06 Acceptance is NOT MET. Complete KeyGen/emitted-to-fiber,
+compiler,laws/PRG/security and independent review remain outside.
+
+### 19.2 Pins,audit,controls,retained failures and owner decision
+
+- BEFORE edits/jobs:BATCH_015–038 verified,**6438 pins/607 literal bindings**,
+  no supersession/job. Entry `.build/levels_039/ENTRY_PINS_039.json`,SHA256
+  `cb73d864e35991b4815d930a370e70d383057a30657508a825b6c04265593044`.
+- **BATCH_039 JSON:**`6c19c30afc4dcaaa7013d535752c7b3a11462b9a5b43fa722942d21270261833`.
+- **BATCH_039 notes:**`a698a32fc651aedc2f7cabc612acf65cf285fd0bb1f4dbb2428844e417a11950`.
+- Full audit `356e838a85d9bc24fc1de9c227a8c1f399938d69097a7dae442b849f7c4d759d`,
+  receipt `360151524c42ed0da90013d1c6bea68e290f6e4e0c015220ad739fbbbc5437b1`:
+  **311 entries=154 named+157 inherited;277 full terms+34 inductives with
+  constructor types;standard axioms;zero elisions**. Twelve proof modules,
+  producer and parser diagnostic have accepted0/0 records. Diagnostic is
+  not a correctness theorem. Literal final source inventory621=607+14.
+- Sage final005 `a12b57bab8186f9e223e9d58529ac1644bd52c3c95513b91ee8eabc4506f661b`,
+  receipt `207bffbe5a00bfb48aff627d608336ae0775b1610c208d328b8a105931216e0e`:
+  **12 normal/UBSan runs,eight public synthetic SAME f/g pairs per run,
+  all five mutations per mode detected;96 exact finite split evaluations**.
+  Both conversion/first-pass snapshots,input/subobject/t-tail sentinels and
+  actual GCC repository include dependencies checked. Finite diagnostics do
+  NOT replace the missing whole source physical-evaluation theorem.
+- **Owner-approved extra diagnostic header delta:** public vrfy.c/internal.h
+  match M0,but actual `Extra/c/fpr-emulated.h` is `6b897d6c…`,not M0
+  `242a7027…`. Worker stopped/reported;owner chose live-header pinning twice
+  (question repeated at his request). Header manifest `db8efd20…` records
+  all five actual source/include pins and that exact delta. This is local
+  public-arithmetic diagnostic C,NOT a complete M0 build. Old pins unchanged.
+- Initial PRESEAL,header-decision PRESEAL002 and final PRESEAL003 retained;
+  each checks identical6438 predecessor pins. Final003 SHA256
+  `51ab0ca3bd1f2b999caf5caa53fc55e90e7cf283b62cc7c012073b5ff01d87db`.
+  Exact initial organizer bytes recovered/checked against its recorded SHA.
+- First seal rejected004's own metadata shadowing bug BEFORE writing any
+  pair. Record `aab501e5…`,old result/source/preseal and manually archived
+  tool-error transcription retained. New005 separately names expected_vector
+  and checks the header map. The strict guard/old pins were not weakened;
+  004's clean arithmetic run is not mislabeled as a valid final package.
+- **POSTSEAL:**`.build/levels_039/POSTSEAL.json`,SHA256
+  `895e07157bf3a5e81990c262a51383fd529b0f38125500f1318257609af8bbb1`:
+  **7048 distinct pins/621 literal source bindings**,no supersession/job.
+- All36 job directories/38 steps retained:15 wholly accepted directories,
+  21 with failure. Max cumulative RSS5098508KiB;limits unchanged;no unresolved
+  current source or receipt-less job. Traps206–217 are in the pair notes.
+- Small own main commits:`9dd4c7f3`,`c064dda7`,`fe1f22b7`,`2aa98b27`,`7871e576`,
+  plus pair/checkpoint/docs. Foreign work/staging preserved. No push/review/
+  subagent/worker/session/relay/migration/import/broad replay.
+
+## 19R. Resume B1.06 — full first-loop and remaining source polynomial evaluations
+
+1. Read source3/WORK_STATE,this checkpoint,EXECUTION_PLAN B1.06 and
+   `run2/notes/B1_STAGED_ROADMAP.md`. Acceptance NOT MET;B1.05 closed;
+   B1.07 waits. Preserve BATCH_015–039 and every earlier/failed byte.
+2. BEFORE edits/jobs,verify the complete BATCH_015–039 closure:
+
+   ```sh
+   mkdir -p .build/levels_040
+   python3 -B tools/keygen_public_input_batch.py verify 6c19c30afc4dcaaa7013d535752c7b3a11462b9a5b43fa722942d21270261833 a698a32fc651aedc2f7cabc612acf65cf285fd0bb1f4dbb2428844e417a11950 .build/levels_040/ENTRY_PINS_040.json
+   ```
+
+   Expect7048 pins,621 literal bindings,no supersession/job. Any mismatch
+   is stop-and-report,not weakening or silently repairing old pins.
+3. Continue19.1 in16.1 order. SAME original f/g conversion now derives both
+   forward caller domains. Start with actual first-pass entry/seed and fold;
+   then all radix2/triple values and physical original polynomial evaluations.
+   Only AFTER this continue nonzero/division/inverse and both equations.
+   Neither local first-body correctness nor canonicality completes the NTT.
+4. Unique guarded `keygen_public_*_040_*` jobs from001,pair⇒job convention;
+   one job,unchanged limits,0/0 proof streams,Sage preparser,durable environments,
+   bounded defs/pieces,all attempts retained. Small local own commits;one
+   expanded recoverable midpoint or Acceptance per window. No automatic
+   push/review/subagent/worker/session/relay/migration/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.06 complete forward canonical-range midpoint
 
 **PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**

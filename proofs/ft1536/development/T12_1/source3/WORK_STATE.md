@@ -1,5 +1,46 @@
 # T12.1/source3 — żywy stan
 
+## B1.06 — CLOSED at SAME-material domains / first polynomial-value midpoint — 2026-10-09
+
+**CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
+**B1.06 Acceptance NOT MET.** B1.05 stays032;B1.07 not entered.
+One midpoint in BATCH_039,GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`).
+Resume: checkpoint **19R**. SAME complete public execution now derives
+both actual forward caller domains from SAME original signed f/g conversion,
+MKN/q,actual3072-cell t allocation/empty tail/Fresh separation,Bind frames
+and both complete canonical images at an interior live-object point. Final
+t disposal is tied to that same result. No input/final residue range,image,
+generated table,NTT correctness,nonzero or public equation premise remains.
+Legal M0/global/static-table/typed-extent/nonalias/material/bounds1 entry
+facts are explicit;complete enclosing KeyGen supplies them later.
+
+Independent value refinement: SAME first-butterfly source body derives
+BOTH ordinary field values and chronological writes. Original paired
+coefficients,low/high degree<768 split and its evaluations are kernel lemmas.
+**Still OPEN:** actual full first-pass entry/seed and768-body fold,then all
+radix2/triple value invariants/physical1536 original f/g polynomial evaluations.
+Canonicality is NOT valuation. Nonzero/division/inverse/normalization to h,
+fInv and both SAME-material equations remain unentered,in order. This is a
+remaining source proof,not a code/numerical counterexample or scoped review.
+
+Entry6438 pins (`cb73d864…`);POSTSEAL **7048 pins/621 literal bindings**,
+no supersession/job (`895e0715…`). Pair JSON `6c19c30a…`,notes `a698a32f…`.
+Full audit311 entries/277 complete terms/34 inductives/standard axioms/zero
+elisions (`356e838a…`);12 proofs+producer+diagnostic accepted0/0. Sage final005
+12 normal/UBSan runs,eight SAME public synthetic f/g pairs,five mutations per
+mode all detected,96 finite split evaluations only diagnostic (`a12b57ba…`).
+Owner twice approved live Extra/c header pinning after the FPR/M0 delta was
+reported;explicit header manifest `db8efd20…`,NOT a complete M0 build.
+Failed first seal004 metadata shadowing (`aab501e5…`) and all earlier bytes
+preserved;005 fixes only new own metadata without weakening guard/pins.
+All36 job directories/38 steps retained,15 wholly accepted/21 failed;
+max cumulative RSS5098508KiB,limits unchanged,no unresolved source/job.
+Traps206–217 and full types/pins are in the pair notes/JSON.
+Own source commits `9dd4c7f3`,`c064dda7`,`fe1f22b7`,`2aa98b27`,`7871e576`,
+plus pair/checkpoint/docs. Foreign work/staging preserved. No push/review/
+subagent/worker/session/relay/migration/import/broad replay. Full KeyGen,
+emitted-to-fiber,compiler,laws/PRG/security/review remain outside.
+
 ## B1.06 — SAME-material conversion/evaluation continuation — 2026-10-09
 
 Owner started BATCH_039 with GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`),
