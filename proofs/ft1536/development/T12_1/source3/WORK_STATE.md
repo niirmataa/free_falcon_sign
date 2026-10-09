@@ -17,6 +17,22 @@ Initial coefficient allocations and enclosing RNG-ready/cap/loop semantics
 remain B1.07, not part of this selected initialization-fragment relation.
 All attempts use unique `keygen_attempt_*_032_*` labels and unchanged limits.
 
+`KeygenCallerInit` and `KeygenCallerEntry` are accepted,0/0: actual dimension
+reads derive logn10/ter1/n1536; the actual tmp cast and two additions derive
+rt aliases and sampler Entry from original caller memory. Source commit
+`5213a67f`. `KeygenCallerInitExecution.setup_execution` embeds the specialized
+setup in the checked parser's inherited operational execution.
+`KeygenCallerTransport` preserves original profile/prime/REV10/scratch legality
+through the actual sampler, resultant, norm and public calls. Static objects
+use immutable-byte stability, not impossible own-table separation.
+`KeygenCallerPrefix` closes rt/norm/bound scope BEFORE public and derives both
+RootCaller.Legal and the same f/g representation/Bound1, including rejection
+edges. `KeygenCallerSuccess.success` consumes this SAME normal prefix and the
+actual root gate; nonzero is proved to be return1, and Bounds(1,1,2047,2047)
+and exact integer NTRU follow for retained caller arrays. All six current
+modules accepted,0/0. Full term/type/axiom audit and targeted Sage controls
+still pending before sealing the B1.05 Acceptance record. No B1.06 work.
+
 ## B1.05 — CLOSED at same sampled raw/GS/public material — 2026-10-08
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
