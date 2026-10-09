@@ -20,6 +20,18 @@ stage with physical base j*t and table index m+j, preserving all1536 cells
 and the table. Five modules accepted0/0; the earlier parser, existential
 and linter attempts remain in unique042 directories. Eight-stage and
 complete-invocation composition follow; this commit is not the midpoint.
+Second checked piece: all eight outer m stages and all their u1/v loops
+are composed from the SAME complete forward invocation. Generated gm
+values, both aliases, logn/n/hn and the u/v/w types are carried to the real
+triple seam; m512/t3 are derived and both final table disposals remain bound.
+The q18433 source-index root tree and original-polynomial invariant prove
+that every resulting degree<3 block evaluates to the ORIGINAL polynomial
+at its assigned physical roots. This is still before executing the triple.
+Five further modules accepted0/0. Polynomial001 was interrupted by the
+120s tool timeout (no fabricated engine receipt);002 hit the unchanged
+heartbeat limit while reducing an implicit congruence/incorrect base match.
+Explicit index rewrites and a precisely stated evaluation lemma close003
+in2.769s. All interrupted/failed snapshots and streams remain.
 
 ## B1.06 — CLOSED at derived first domains / inner radix remainders — 2026-10-09
 
