@@ -1,0 +1,123 @@
+{
+  "batch": "BATCH_037",
+  "utc": "2026-10-09T13:25:06.047428+00:00",
+  "stage": "B1.06",
+  "status": "PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN / CLOSED_AT_RECOVERABLE_MIDPOINT",
+  "acceptance": "B1.06 Acceptance NOT MET; BATCH_036 seal ceremony MET; 16.1 item 1 (finish execution + complete BOTH images) MET",
+  "harness": "MiMo V2.6 Pro (xiaomi-token-plan-ams), owner-started window per checkpoint 16R",
+  "entry": {
+    "receipt": ".build/levels_037/ENTRY_PINS_037.json",
+    "receipt_sha256": "deb7a62b9d554033f9d1aacd5609b18b4662d7ab003f1de433235136e21727fd",
+    "chain_receipt": ".build/levels_037/ENTRY_PINS_037_CHAIN.json",
+    "chain_receipt_sha256": "6da71ff7e3c251fea6a6f26adeeabb0752e92ef368114c6a9a9fbaade69376f1",
+    "tool": ".build/levels_037/ENTRY_PINS_037_TOOL.py",
+    "tool_sha256": "ef15535ee5ff0015ff61fc60edaafe2b5b7f2762cae4c83290ee020d6d90537c",
+    "checked_closure": "BATCH_015-036 (committed 035 verifier chain + re-hashed BATCH_036 pair/entry/module/job pins)",
+    "distinct_pins": 6108,
+    "current_inputs": 595,
+    "superseded": {},
+    "active_jobs": [],
+    "result": "match, no pin weakened"
+  },
+  "seal_ceremony_batch_036": {
+    "order": "executed BEFORE any new proof work, per checkpoint 16.1 step 5",
+    "audit_job": {
+      "label": "keygen_public_upper_seal_037_001",
+      "receipts_sha256": "080e26c823376c750808fa1b05907f761acf5433c3ab4604366108c3bf0a7298",
+      "modules": ["Source3.KeygenPublicUpperAudit"],
+      "streams": "0/0",
+      "entries": 187,
+      "named_source_declarations": 66,
+      "inherited_interfaces": 121,
+      "full_terms": 171,
+      "kernel_inductives_with_constructor_types": 16,
+      "elisions": 0,
+      "allowed_axioms": ["propext", "Classical.choice", "Quot.sound"],
+      "generator": "tools/keygen_public_upper_audit_source.py",
+      "producer": "formal/Source3/KeygenPublicUpperAudit.lean"
+    },
+    "controls_job": {
+      "label": "keygen_public_upper_checks_037_001",
+      "receipts_sha256": "8c2592d06219efc57ff8a3397cc8989746126797ab03b9fd74e4086079a0f50d",
+      "sage": "sage/check_keygen_public_upper_finish.sage",
+      "streams": "0/0",
+      "runs": 14,
+      "mutations_per_mode": 6,
+      "counts_per_run": {"C": 256, "S": 255, "F": 1, "L": 2050},
+      "scope": "complete final gm/igm image 1..1023 with sentinels, all cube/square paired stores and the exceptional top row with exact ZZ raw word law; finite diagnostic controls only"
+    },
+    "verifier": {
+      "tool": "tools/keygen_public_upper_batch.py",
+      "scope": "dedicated 036 verifier extending the BATCH_015-036 closure with the seal-ceremony artifacts",
+      "ceremony_manifest": ".build/levels_036/SEAL_CEREMONY_036.json",
+      "ceremony_manifest_sha256": "3c71f60f5186cf5d35be6f2b052952d3fffceedd790317adb95e4bc9524c5191",
+      "first_attempt_retained": ".build/levels_036/SEAL_CEREMONY_036_ATTEMPT_001.json",
+      "first_attempt_sha256": "5400c742bfa9c38d27e97213222fd1f852c149795e2e3d1adc96668678da97cd"
+    },
+    "postseal": {
+      "receipt": ".build/levels_036/POSTSEAL.json",
+      "sha256": "0118a5735fbcfaeb722cea278c38c829e93c93e9240be07857d7ce8e55f21dab",
+      "distinct_pinned_files": 6120,
+      "current_source_inputs": 595,
+      "superseded": {},
+      "active_jobs": []
+    },
+    "final_verify": {
+      "receipt": ".build/levels_036/FINAL_VERIFY.json",
+      "sha256": "496e5b8ec319c8069733aed6d7d1be43df131a472a1714599bd151279f70a3f9",
+      "note": "documentation-time verification of the identical 6120-pin closure"
+    },
+    "artifact_location": "ceremonial artifacts live under .build/levels_036/ (they act ON the sealed BATCH_036 pair); executing jobs are _037_ and listed in this pair"
+  },
+  "accepted_modules": [
+    {
+      "module": "Source3.KeygenPublicUpperImages",
+      "source": "formal/Source3/KeygenPublicUpperImages.lean",
+      "source_sha256": "cb2564a54ddd134860271756fffca656c7324f6caa7e9a766f19d49af92cfa49"
+    }
+  ],
+  "accepted_jobs": [
+    {
+      "label": "keygen_public_upper_finish_037_003",
+      "receipts_sha256": "15272eee2367558a8853d98e88495bc506ee63f1be8e9f4789289aa98c92bc44",
+      "olean_sha256": "ad4cdbcc8b8ab4dcf654d9927d9b59ea78d41864756cb4d79ed77715c6e8769d",
+      "modules": ["Source3.KeygenPublicUpperImages"],
+      "streams": "0/0",
+      "maxrss_kib": 2900444
+    }
+  ],
+  "failed_retained_jobs": [
+    "keygen_public_upper_finish_037_001 (open-list name from the retained 036 attempt killed the whole open; and-projection misuse; trap-191 toInt/toNat change)",
+    "keygen_public_upper_finish_037_002 (write_promoted call arity; Decidable (Canonical ...) through the def; one open name missing)"
+  ],
+  "cross_reference_batch_036_attempts": [
+    "continuity rule per owner 2026-10-09: history reads through description, not labels",
+    ".build/jobs/keygen_public_upper_finish_036_001..005 retained (literal indices; linear_combination atom split; statement-layer promotion unification = trap 190)",
+    ".build/jobs/keygen_public_upper_loops_036_001..006 retained (String/List names; cases on out; frame direction; def-unfold order; token adjacency; omega on projections)",
+    "exact causes in KEYGEN_SOURCE_TO_FIBER_001_BATCH_036_NOTES.md and _036.json; no earlier byte superseded"
+  ],
+  "contracts": {
+    "promotion_bridge": "Value.integer maps .int32 to toInt and .uint32 to toNat; promotion_convert/promotion_slot/promotion_narrow/write_promoted give the explicit narrow and Slot/Value bridges (trap 190/191).",
+    "finish_statements": "gstore_result/wset_result/istore_result execute the actual source 881-884 statements on the store constructor's heap and derive the gm[0] copy, the promoted w word and the exceptional igm[0] store with raw word law value q = radix/(2*firstRoot-1).",
+    "complete_images": "finish_images/source_complete_tables: SAME generate execution derives PairCells 1..1023, Cell out.state.heap gm 0 (root^tableExponent 0), Cell out.state.heap igm 0 ((2*firstRoot-1)⁻¹) with raw word law, Word out.state \"w\" firstRoot, pointers/logn/k/u frames and UpperFrame s.heap out.state.heap. No generated image, transform or equation premise.",
+    "boundary": "B1.06 Acceptance NOT MET; B1.05 remains BATCH_032. Forward NTT/evaluations, nonzero tests, division/inverse/normalization to canonical h, fInv and BOTH SAME-material Relation.mulRq equations remain open; full KeyGen/emitted/security/review outside."
+  },
+  "open_in_b1_06": [
+    "SAME f/g conversion and complete forward NTT to canonical unsigned16 AND evaluations of the original CoefficientQuotient polynomial at KeygenPublicRoots.point, in physical order; derive table inputs in the caller (16.1 item 2).",
+    "SAME successful public execution to all 1536 nonzero tests and division; actual inverse transform/normalization to canonical h; no assumed round-trip (16.1 item 3).",
+    "Construct fInv from nonzero evaluations/proven evaluation isomorphism and derive BOTH mulRq h (reduceVec f)=reduceVec g and mulRq fInv (reduceVec f)=constantCoeffs (1:ZMod18433) for SAME f/g/h (16.1 item 4)."
+  ],
+  "later": ["B1.07 whole caller/attempt control", "B1.08-B1.11 codecs/emitted-to-fiber/final replay/owner-arranged review"],
+  "errata": "checkpoint 16R pkt 4 spoke of keygen_public_*_036_* labels; this window used _037_ per the convention pair N => jobs _N_ (owner confirmed variant 2 before any job started); continuity via the cross_reference section. 16R is not rewritten; the errata note is append-only.",
+  "commits": [
+    "1e6ad254 audit(T12.1): add BATCH_036 seal audit generator and upper-finish controls",
+    "53e5d875 audit(T12.1): add the dedicated BATCH_036 seal verifier",
+    "bcba8c25 audit(T12.1): keep the audit entry count out of pin loop variables",
+    "4d53bf44 proof(T12.1): execute the three public finish statements and complete both table images",
+    "plus the final pair/checkpoint commit"
+  ],
+  "superseded": {},
+  "active_jobs_at_close": [],
+  "push_by_this_worker": false,
+  "limits": "Unchanged Lean j1/-M6144, AS12GiB/RSS8GiB, wall1800s, maxHeartbeats2000000, print200000; 0/0 proof streams, Sage standard preparser ZZ; one job at a time."
+}

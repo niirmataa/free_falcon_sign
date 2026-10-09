@@ -1,3 +1,126 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.06 finish execution / complete BOTH images; BATCH_036 sealed
+
+**PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
+2026-10-09,BATCH_037,MiMo V2.6 Pro (`xiaomi-token-plan-ams`).
+**CLOSED_AT_RECOVERABLE_MIDPOINT. B1.06 Acceptance NOT MET.**
+B1.05 remains closed at BATCH_032;B1.07 is not entered. Resume: **17R**.
+
+## 17. Closed this window — the BATCH_036 seal ceremony and the complete BOTH images
+
+1. **BATCH_036 seal ceremony (16.1 step 5) DONE before new proof work.**
+   Full audit job `keygen_public_upper_seal_037_001` (0/0): generated producer
+   audits the three BATCH_036 modules plus their exact consumed interfaces —
+   **187 entries = 66 named declarations + 121 inherited,171 complete terms +
+   16 kernel inductives with constructor types,standard axioms only,zero
+   elisions**. Sage standard-preparser/ZZ controls job
+   `keygen_public_upper_checks_037_001` (0/0):14 normal/UBSan runs,seven
+   variants,**six mutations per mode all detected**,each run checking all256
+   cube and255 square paired stores,the complete final gm/igm image 1..1023
+   with sentinels (2050 rows) and the exceptional top row incl. the exact ZZ
+   raw word law and the inequality vs radix/firstRoot. Dedicated 036 verifier
+   `tools/keygen_public_upper_batch.py`;ceremony manifest
+   `.build/levels_036/SEAL_CEREMONY_036.json` `3c71f60f…`;first manifest
+   attempt retained byte-exact (`SEAL_CEREMONY_036_ATTEMPT_001.json`,`5400c742…`,
+   descriptive counter bug,trap 196).
+2. **Trap-190 promotion bridge DONE,root cause kernel-visible:** `Value.integer`
+   maps `.int32` to `toInt` and `.uint32` to `toNat`;the narrow/Slot forms of
+   `unsignedPromotion` are therefore only propositionally equal.
+   `KeygenPublicUpperImages.promotion_convert/promotion_slot/promotion_narrow/
+   write_promoted` are the explicit bridges.
+3. **The three finish statements executed (16.1 item 1) DONE.** `gstore_result`
+   executes `gm[0]=gm[1]` yielding `Cell out.state.heap gm 0
+   (root^tableExponent 0)` with per-cell preservation and byte frames;
+   `wset_result` executes `w=gm[1]` binding the promoted word (the Slot/Value
+   form),`exceptional_scaled` identifying it with firstRoot;`istore_result`
+   executes the exceptional division through the full word/field chain
+   (add_field/sub_field/div_word/division_scaled) storing
+   `Cell out.state.heap igm 0 ((2*firstRoot-1)⁻¹)` with the raw word law
+   `value q = radix/(2*firstRoot-1)`,nonzero from `(2*firstRoot-1)²=-3`.
+4. **Complete BOTH images.** `finish_images`/`source_complete_tables` conclude
+   from the SAME generate execution: normal flow,`PairCells gm igm
+   out.state.heap 1` (every pair cell 1..1023),both exceptional top cells with
+   the raw word law,`Word out.state "w" firstRoot`,`Pointers`,logn/k slots,
+   `USlot "u" 0` and `UpperFrame gm igm s.heap out.state.heap`. No generated
+   table image,transform result or equation is assumed.
+
+### 17.1 Exact remaining B1.06 obligations (plan order)
+
+1. SAME f/g conversion and complete forward NTT→canonical unsigned16 AND
+   evaluations of the original CoefficientQuotient polynomial at
+   KeygenPublicRoots.point,in physical order;derive the table inputs in the
+   caller (16.1 item 2).
+2. SAME successful public execution→all 1536 nonzero tests→division;actual
+   inverse transform/normalization→canonical h. No assumed round-trip (item 3).
+3. Construct fInv from nonzero evaluations/proven evaluation isomorphism;BOTH
+   `mulRq h (reduceVec f)=reduceVec g` and
+   `mulRq fInv (reduceVec f)=constantCoeffs (1 : ZMod18433)` for SAME f/g/h
+   (item 4).
+
+This remains a missing enclosing source proof,not a numerical/code
+counterexample. The finish execution and complete table images do NOT meet
+B1.06 Acceptance. Complete KeyGen,emitted-to-fiber,compiler,laws/PRG/security
+and review remain outside this midpoint's claims.
+
+### 17.2 Pins,controls and traps
+
+BEFORE edits/jobs,BATCH_015-036 verified (the committed 035 verifier chain
+plus the re-hashed BATCH_036 pair/entry/module/job pins): entry
+`.build/levels_037/ENTRY_PINS_037.json` SHA256
+`deb7a62b9d554033f9d1aacd5609b18b4662d7ab003f1de433235136e21727fd` —
+**6108 distinct pins,595 current inputs,no supersession/no active job**;
+chain `ENTRY_PINS_037_CHAIN.json` `6da71ff7…`;entry tool `ef15535e…`.
+
+- **BATCH_037 JSON:**`64318672deed520d4d3da6a540b4bc1151efc76d0eaf06973c71b06f5d6977f5`.
+- **BATCH_037 notes:**`7a81c4f2db5e3837397f903e4e06574d7c523c868d442e3eea364d72a3930148`.
+- **POSTSEAL:**`.build/levels_036/POSTSEAL.json`,SHA256
+  `0118a5735fbcfaeb722cea278c38c829e93c93e9240be07857d7ce8e55f21dab`:
+  **6120 distinct pinned files** (6108 closure + 12 ceremony artifacts),595
+  current inputs,no supersession/no active job.
+- **Final documentation-time verification:**`.build/levels_036/FINAL_VERIFY.json`,
+  SHA256 `496e5b8ec319c8069733aed6d7d1be43df131a472a1714599bd151279f70a3f9`:
+  identical 6120-pin closure.
+- **Accepted module (sources):**`KeygenPublicUpperImages.lean`
+  `cb2564a54ddd134860271756fffca656c7324f6caa7e9a766f19d49af92cfa49`.
+  Accepted jobs `keygen_public_upper_finish_037_003` (receipts `15272eee…`),
+  `keygen_public_upper_seal_037_001` (`080e26c8…`),
+  `keygen_public_upper_checks_037_001` (`8c2592d0…`),streams 0/0.
+  Failed proof attempts `_037_001/_037_002` retained with causes (pair notes);
+  BATCH_036's failed attempts stay intact and are cross-referenced there.
+  Traps **191-196** in the pair notes (toInt/toNat asymmetry; open-list
+  cascade; right-nested And; `Decidable (Canonical _)`; call arity with
+  explicit scales; seal-tool loop-variable shadowing).
+- Small commits `1e6ad254`,`53e5d875`,`bcba8c25`,`4d53bf44` as niirmataa,
+  plus the final pair/checkpoint commit;no push,review,subagent,worker/
+  session/relay,migration or stages import. Job labels follow the convention
+  pair⇒jobs (`_037_`);see the 16R errata below. No old pin weakened.
+
+## 17R. Resume B1.06 — forward NTT/evaluations,then nonzero/division/inverse and equations
+
+1. Read source3/WORK_STATE,this checkpoint,EXECUTION_PLAN B1.06 and
+   `run2/notes/B1_STAGED_ROADMAP.md`. Acceptance NOT MET;B1.05 closed;
+   B1.07 waits. Preserve BATCH_015-037 and all failed/earlier accepted bytes.
+2. BEFORE edits/jobs,verify the BATCH_015-037 closure (the dedicated 036
+   verifier plus the re-hashed BATCH_037 module pins):
+
+   ```sh
+   mkdir -p .build/levels_038
+   python3 -B tools/keygen_public_upper_batch.py verify 64318672deed520d4d3da6a540b4bc1151efc76d0eaf06973c71b06f5d6977f5 7a81c4f2db5e3837397f903e4e06574d7c523c868d442e3eea364d72a3930148 3c71f60f5186cf5d35be6f2b052952d3fffceedd790317adb95e4bc9524c5191 .build/levels_038/ENTRY_PINS_038_CHAIN.json
+   ```
+
+   plus the re-hashed BATCH_037 module pins. Expect the 6120-pin ceremony
+   closure plus the BATCH_037 pins;any mismatch is stop-and-report,not pin
+   weakening.
+3. Continue 16.1 items 2-5 in order. Reuse `source_complete_tables` and the
+   checked public scalar/division contracts;derive the table inputs from the
+   caller inside the complete composition. Do not re-assume NTT correctness,
+   nonzero,division/inverse or either SAME-material equation.
+4. Unique guarded `keygen_public_*_038_*` jobs from 001 (convention per the
+   16R errata: pair⇒jobs;continuity of attempts by cross-reference),one job,
+   unchanged process/kernel/print limits,0/0 proof streams,Sage preparser,
+   durable environments. Keep defs/pieces bounded;old and failed versions stay
+   intact. Small local commits;close at Acceptance or an expanded recoverable
+   midpoint. No automatic push/review/subagent/worker/session/relay/migration/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.06 upper loops closed / exceptional core midpoint
 
 **PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
@@ -81,6 +204,17 @@ controls were run this window (recorded as open);no old pin weakened.
    versions stay intact. Small local commits;close at Acceptance or an
    expanded recoverable midpoint. No automatic push/review/subagent/worker/
    session/relay/migration/import.
+
+**Errata (2026-10-09, BATCH_037, append-only):** item 4 of this section spoke
+of `keygen_public_*_036_*` job labels. The resumed window used `_037_` labels
+per the written convention "pair N => jobs _N_" (owner confirmed this variant
+before any job started). Attempt continuity is preserved by an explicit
+cross-reference in `KEYGEN_SOURCE_TO_FIBER_001_BATCH_037_NOTES.md` to the
+retained `keygen_public_upper_finish_036_001..005` and
+`keygen_public_upper_loops_036_001..006`; the seal-ceremony artifacts that act
+ON the sealed BATCH_036 pair live under `.build/levels_036/` while the jobs
+that produced them are `_037_` and are listed in the BATCH_037 receipts. Item
+4 above is intentionally not rewritten.
 
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.06 BOTH last rows / upward-body midpoint
 

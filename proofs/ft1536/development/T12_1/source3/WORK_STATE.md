@@ -1,5 +1,43 @@
 # T12.1/source3 — żywy stan
 
+## B1.06 — CLOSED at finish execution / complete BOTH images — 2026-10-09
+
+**CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
+**B1.06 Acceptance NOT MET.** B1.05 closed at BATCH_032;B1.07 nie jest
+rozpoczęte. Wznowienie: checkpoint **17R**. Okno BATCH_037 (MiMo V2.6 Pro)
+najpierw domknęło **ceremonię pieczęci BATCH_036** (16.1 pkt 5) PRZED nową
+pracą dowodową: pełny audyt **187 wpisów** (66 deklaracji +121 interfejsów
+dziedziczonych;171 pełnych termów +16 kernel-inductives,aksjomaty
+standardowe,0 elizji),kontrole Sage **14 przebiegów** normal/UBSan (6 mutacji
+na tryb — wszystkie wykryte;każdy przebieg:256 par cube,255 par square,
+kompletny obraz końcowy 1..1023 z sentinelami i wiersz wyjątkowy z raw word
+law liczonym w ZZ),dedykowany weryfikator 036
+(`tools/keygen_public_upper_batch.py`),manifest ceremonii `3c71f60f…`
+(pierwsza próba zachowana bajtowo: `5400c742…`,błąd licznika opisowego),
+POSTSEAL `0118a573…` i FINAL_VERIFY `496e5b8e…` — po **6120 pinów**,brak
+supersesji/aktywnego joba. **Mostek promocji (pułapka 190) rozwiązany** z
+ustalonym root cause: `Value.integer` daje `toInt` dla `.int32`,a `toNat`
+dla `.uint32` — obie formy równe tylko propozycjonalnie (trapy 191-196 w
+nocie pary). **Trzy instrukcji finish wykonane**: `gm[0]=gm[1]` daje
+`Cell out.state.heap gm 0 (root^tableExponent 0)`,`w=gm[1]` wiąże promowane
+słowo scalone z firstRoot,a wyjątkowe `igm[0]` przez pełny łańcuch
+add/sub/div/Montgomery daje `Cell out.state.heap igm 0 ((2*firstRoot-1)⁻¹)`
+z prawem surowego słowa `value q = radix/(2*firstRoot-1)` (nie
+radix/firstRoot). `source_complete_tables` domyka **kompletne obrazy obu
+tablic**: PairCells 1..1023,obie wyjątkowe komórki 0,`Word out.state "w"
+firstRoot`,wszystkie ramki i `UpperFrame s.heap out.state.heap`,wszystko z
+tego samego wykonania generate. Pozostają punkty 2-5 planu (16.1): forward
+NTT→kanoniczne unsigned16 + wartościowania wielomianu,wszystkie1536 testów
+nonzero,dzielenie/odwrotna transformaty do kanonicznego h,świadk fInv i oba
+równania `mulRq` dla tych samych f/g/h. To brakujące dowody ograniczające,
+nie kontrprzykład kodu. Piny/odbiory: para
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_037.*` (JSON `64318672…`,noty `7a81c4f2…`)
+i checkpoint 17/17R. Commity `1e6ad254`,`53e5d875`,`bcba8c25`,`4d53bf44`;
+bez push/review/subagent/worker/relay/import. Etykiety jobów `_037_` wg
+konwencji „para ⇒ joby" (errata do §16R append-only,bez przepisywania pkt 4);
+ciągłość prób czyta się przez cross-reference w nocie pary do zachowanych
+`keygen_public_upper_*_036_*`.
+
 ## B1.06 — CLOSED at upper loops / exceptional-core midpoint — 2026-10-09
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
