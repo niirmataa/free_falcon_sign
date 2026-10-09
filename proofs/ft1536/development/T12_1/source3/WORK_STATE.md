@@ -1,5 +1,41 @@
 # T12.1/source3 — żywy stan
 
+## B1.06 — CLOSED at complete public forward canonical range — 2026-10-09
+
+**CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
+**B1.06 Acceptance NOT MET.** B1.05 stays BATCH_032;B1.07 not entered.
+One midpoint in BATCH_038,GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`).
+Resume: checkpoint **18R**. SAME complete mq_NTT dispatch/ternary execution
+at logn10 now derives all1536 initialized canonical unsigned16 output cells,
+under explicit initial input/global range domains. Actual generator Call/Bind
+and both gm aliases consume `source_complete_tables`;table images are not
+premises. All three passes,integer promotion/parameter conversion/narrowing,
+every store range and both automatic-array lifetimes are source-bound.
+Input liveness/Fresh derive separation;uninitialized table holes remain holes.
+
+**Still OPEN:** SAME original f/g conversion and actual caller binding of
+the input/global domains,then complete polynomial evaluations in physical
+KeygenPublicRoots.point order (16.1 item2 remains PARTIAL). All nonzero tests,
+division/inverse/normalization to canonical h,fInv and both SAME-material
+mulRq equations remain unentered,in order. Canonical range is NOT an
+evaluation theorem or B1.06 Acceptance;this is a missing proof,not a code
+counterexample. Full KeyGen/emitted/compiler/laws/PRG/security/review excluded.
+
+Closure: entry6141 pins (`528cb839…`),POSTSEAL **6438 pins/607 literal source
+bindings**,no supersession/job,receipt `e9c851d0…`. Literal037 inventory597
++ten new modules=607;the historical entry596 counter excludes the036
+ceremony producer and remains intact. Pair JSON `18392f13…`,notes `0aa8bb18…`.
+Internal audit245 entries/216 complete terms/29 inductives/standard axioms/
+zero elisions (`42d52f6c…`);nine proof modules+audit0/0. Sage12 normal/UBSan
+runs,five mutations per mode all detected;finite stage/evaluation diagnostics
+only (`a3026601…`). All22 directories/23 steps retained,no unresolved source
+or receipt-less attempt;max cumulative RSS5572456KiB,limits unchanged.
+Traps197–205 include owner-approved17R command errata,integer conversions,
+scope/case patterns and target-local mutation matching. Own small commits
+`be2f0dc1`,`09fa063b`,`3f82120a`,`b1fbbcf6`,plus final pair/checkpoint/docs;
+foreign changes/staging preserved. No push/review/subagent/worker/session/
+relay/migration/import/broad replay. Full types/pins/history in the038 pair.
+
 ## B1.06 — forward-transform continuation — 2026-10-09
 
 Owner started BATCH_038 with GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`),
