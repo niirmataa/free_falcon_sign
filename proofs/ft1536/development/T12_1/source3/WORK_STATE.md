@@ -1,5 +1,26 @@
 # T12.1/source3 — żywy stan
 
+## B1.06 — SAME-material conversion/evaluation continuation — 2026-10-09
+
+Owner started BATCH_039 with GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`),
+per checkpoint18R. BEFORE proof edits/jobs, the committed038 verifier checked
+**6438 distinct BATCH_015–038 pins /607 literal source bindings**, with no
+supersession or active proof job. Entry `.build/levels_039/ENTRY_PINS_039.json`,
+SHA256 `cb73d864e35991b4815d930a370e70d383057a30657508a825b6c04265593044`.
+Continue SAME original f/g conversion and actual forward caller domains,
+then independent polynomial-value refinement. Range is not evaluation.
+B1.05 stays BATCH_032; B1.06 Acceptance NOT MET; B1.07 waits. One guarded
+serial job, unchanged limits, retained attempts, small local own commits,
+one recoverable midpoint in this window. No push/review/delegation/relay/import.
+First checked piece: `KeygenPublicInputProgram.source_complete` partitions
+the SAME complete public body; `KeygenPublicInputAtoms` preserves signed
+promotions and source mq_conv_small; `KeygenPublicInputLoop.source_loop`
+derives all3072 canonical ordinary-residue writes from both SAME signed
+input arrays. It preserves the original arrays and t's uninitialized tail.
+Accepted sources0/0; earlier parser/type attempts and parser diagnostic
+remain in unique039 job directories. Actual setup/global/call binding and
+polynomial evaluation follow; this is not yet the window midpoint.
+
 ## B1.06 — CLOSED at complete public forward canonical range — 2026-10-09
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
