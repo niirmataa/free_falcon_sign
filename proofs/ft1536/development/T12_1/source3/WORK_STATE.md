@@ -25,6 +25,19 @@ The diagnostic RevProbe has nonempty stdout and is NOT proof evidence.
 All failed snapshots are retained. Generated table memory, transforms,
 nonzero tests and both SAME-material equations remain open B1.06 seams.
 
+`KeygenPublicTableAtoms/Seed/Rows/Cells` are accepted with0/0 streams.
+The COMPLETE generator source is partitioned without dropping statements.
+The SAME logn10 execution derives the scalar prefix and actual else-branch
+entry: g/ig are canonical radix-scaled root/inverse-root, x/ix copy them,
+g2/g4 and ig2/ig4 are their scaled powers. The real k++ comparison squares
+once and leaves k=12. Memory/pointers/globals/tables are unchanged at this
+entry. Uint16 narrowing, unsigned promotion, written-cell reads and both
+same-array/separated-table byte preservation have checked local adapters.
+These cell lemmas do NOT populate the complete tables. Remaining actual
+row loop/stores, cubing/upward rows and exceptional igm[0] precede forward,
+nonzero/division/inverse and SAME-material equations. B1.06 Acceptance is
+still NOT MET. Internal full audit and targeted Sage controls are pending.
+
 ## B1.06 — CLOSED at public-algebra / transform-entry midpoint — 2026-10-09
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
