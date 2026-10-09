@@ -1,3 +1,136 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.05 Acceptance closed
+
+**B1.05 Acceptance MET / PROVED_KERNEL_SCOPED / CLOSED_AT_ACCEPTANCE.**
+2026-10-09, BATCH_032, GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`).
+Overall package: **IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN**.
+**B1.06 not entered.** Next owner-started window: section12R.
+
+## 12. Closed this window — original caller memory to SAME sampled NTRU
+
+Small local source commits on main as niirmataa: `5213a67f`, `9bd058a5`,
+`eea54b10`, plus this final pair/checkpoint commit. Exact owned paths under
+shared archive.lock; foreign changes preserved. Complete types, failed
+histories and traps159–165: `KEYGEN_SOURCE_TO_FIBER_001_BATCH_032_NOTES.md`
+and `_032.json`. Inherited runner session/model labels remain historical
+provenance, not attribution of this window. No subagent or second worker.
+
+1. **Initialization:** actual scalar declarations7805–7806, dimension reads
+   and MKN7824–7826, complete local/tmp/rt fragment7876–7881. Derive logn10,
+   ter1,n1536 and actual rt aliases; checked setup parse and operational
+   embedding. `KeygenCallerEntry.entry` constructs sampler Entry from
+   original legal memory, without any incoming vector/Bound1 premise.
+2. **Legality:** actual sampler subobject/profile and table-block frames,
+   resultant bytes/stability, raw/GS stability/context bytes, public frame
+   and immutable-byte stability. Original profile, prime/REV10 objects,
+   scratch and separation survive. A table's own block uses its immutable
+   bytes, not an impossible disjoint-all-tables premise.
+3. **Actual scope:** close the ternary rt/norm/bound locals BEFORE public.
+   The SAME sampler/resultant/raw/GS/public execution supplies both material
+   and `KeygenRootCaller.Legal`; all rejection edges remain.
+4. **NTRU:** the complete root call's boolean flow derives return1 from the
+   actual caller's nonzero gate. Consume the derived Legal/representation/
+   Bound1 with the checked root theorem. Validation, F/G bounds2047 and
+   exact integer NTRU with residual37748737 are conclusions, not premises.
+
+### 12.1 Exact final B1.05 boundary
+
+```text
+ctx : KeygenSearchContext.Context
+before : C99ArrayReference.State; out : C99ProcedureReference.Result
+input : Fin 4 → C99MemoryReference.ArrayPointer
+h, primes, rev : C99MemoryReference.ArrayPointer
+initial : KeygenCallerEntry.Initial ctx before input h primes rev
+source : KeygenCallerSuccess.Exec ctx before out
+normal : out.flow = C99ProcedureReference.Flow.normal
+-----------------------------------------------------------------------
+exists f g F G : Geometry.Vec,
+  Bounds(material f g F G) and
+  multiply f G - multiply g F = constantCoeffs (18433 : Int) and
+  forall slot,
+    Represents out.state.heap (input slot) (material f g F G slot)
+```
+
+Checked exports: `KeygenCallerSuccess.success` and `exact_integer_ntru`.
+Bounds is exactly1/1/2047/2047. Initial contains only ORIGINAL caller slots,
+M0 member bytes, source prime/REV10 objects, allocated coefficient objects,
+scratch extents/writability and physical separation/live-table facts. No
+final Legal, incoming f/g vectors/bounds, Validation, canonical/image or
+generated table result, NTRU, arbitrary transition/callee/frame or solver
+correctness is supplied. All fields/constructors are fully audited.
+
+**No B1.05 obligation remains at this explicit stage boundary.** This is
+the source-fragment/object-reference composition, **not all of KeyGen**.
+The initialization relation covers selected dimension/local fragments, not
+every intervening line. Initial automatic coefficient allocation, RNG
+readiness, cap/tests and chronological whole-loop/caller binding remain
+B1.07; public/inverse algebra remains B1.06. Codecs, emitted-to-fiber,
+compiler, termination, probability/PRG/security and independent review are
+not established here. No arbitrary transition fills those later seams.
+
+### 12.2 Pins, complete audit and finite controls
+
+BEFORE edits/jobs, BATCH_015–031 verified:4824 distinct pins,554 current
+inputs,no supersession,no active job. Entry receipt:
+`.build/levels_032/ENTRY_PINS_032.json`, SHA256
+`779f1403f1685e14465540932ae3d3bedae7e58f06dc293b2cb734861eb6093e`.
+Identical predecessor closure rechecked at preseal and during sealing.
+
+- **BATCH_032 JSON:** `f6c8653b1733d516c6b59147ad99a3b2316076c0f23d754a155d12e85e6db140`.
+- **BATCH_032 notes:** `8f1775c7a65832f3eeb3ab84010475fd93fb32319f4fa9ab4b1f5fb4f637a2a6`.
+- **Full audit:** `719b13b9a0a8bac433a23d8f170f75432206f824cbf13370bdaf00c1bc954b1f`.
+- **Audit receipt:** `ddcabc57485f652d62f4b8733951862c1d2fc5747395b6318c77c40dc0b4dd3d`.
+- **Final success source:** `430dc1cc910eb4162f52f31294bc2a74894e1407e9c1ee5af49c45c766e78f74`.
+- **Exact controls:** `08168c1a7ae8b05d9720cc6509e0f8ab31b78dd1fc696e1d3d15d5ea2220c457`.
+- **POSTSEAL:** `.build/levels_032/POSTSEAL.json`, SHA256
+  `dc8d8c8caf9f6093d6a6b45d5ac4309b10c321d2ce1e280e47a63ddac964f6c3`:
+  **5019 distinct pins,561 current inputs,no active job,no supersession**.
+- **Final verification after documentation:** `.build/levels_032/FINAL_VERIFY.json`,
+  SHA256 `b9d389beb97ab97c8edf1a69aa9f42fa79d6013b51894e424fcdccb1f1a0ff9e`,
+  identical5019-pin closure and no active job.
+
+Seven current accepted Lean modules,0/0 streams. Full audit116 entries:
+84 new declarations +32 inherited interfaces,88 complete terms +28 kernel
+inductives/structures with constructor types, standard axioms only, zero
+elisions. The385699-byte artifact remains under
+`.build/jobs/keygen_attempt_audit_032_001/`, with tracked generator/producer
+and complete closure pins. Maximum accepted cumulative RSS3046576KiB;
+process/kernel/print limits unchanged.
+
+Sage standard preparser/ZZ:10 normal/UBSan runs ×24 public deterministic
+fixtures, exact two-call values/cursor, actual dimension/rt aliases and
+same material/context/sentinel frames. Four mutations detected in both
+modes. Independent root helpers succeed on21 MODE1-range fixtures per
+baseline; they also run after earlier rejected gates, so these are **not21
+accepted full attempts**, private keys or probability evidence. All17
+attempts/17 steps retained:8 accepted,9 failed. No receipt-less attempt,
+unresolved Lean draft or owned job remains. No broad unchanged replay,
+review, push, migration, stages import, worker or relay.
+
+## 12R. Next window — B1.06 only, after verified B1.05 Acceptance
+
+1. Read source3/WORK_STATE, this checkpoint, EXECUTION_PLAN B1.06 and
+   `run2/notes/B1_STAGED_ROADMAP.md`. B1.05 is closed at the exact boundary
+   above. Preserve historical BATCH_015–031 reports and failed attempts.
+2. BEFORE edits/jobs, verify BATCH_015–032 with the new committed verifier:
+
+   ```sh
+   mkdir -p .build/levels_033
+   python3 -B tools/keygen_caller_batch.py verify f6c8653b1733d516c6b59147ad99a3b2316076c0f23d754a155d12e85e6db140 8f1775c7a65832f3eeb3ab84010475fd93fb32319f4fa9ab4b1f5fb4f637a2a6 .build/levels_033/ENTRY_PINS_033.json
+   ```
+
+   Expect5019 distinct pins,561 current inputs,no supersession,no active job.
+   Any mismatch is stop-and-report, not pin weakening or silent repair.
+3. Bind public/inverse algebra for the SAME retained f/g/h: correct q18433
+   word operations and tables, forward-evaluation refinement, actual nonzero
+   tests, pointwise division/inverse transform, canonical h and fInv witness.
+   B3 exports may be reused only after exact-type/full-closure inspection.
+   Complete public operational execution is already a BATCH_031 dependency;
+   it is not a proof of those algebraic properties.
+4. Close at B1.06 Acceptance (or an expanded recoverable midpoint), with
+   unique guarded job labels, unchanged limits,0/0 logs, Sage standard
+   preparser, small local commits and a new pair/checkpoint. B1.07 waits.
+   No automatic push/review/worker/subagent/session/relay/migration/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.05 sampled-material closure / caller-entry midpoint
 
 **PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**

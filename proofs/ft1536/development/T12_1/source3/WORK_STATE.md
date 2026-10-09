@@ -1,5 +1,40 @@
 # T12.1/source3 — żywy stan
 
+## B1.05 — CLOSED at Acceptance — 2026-10-09
+
+**B1.05 Acceptance MET / PROVED_KERNEL_SCOPED / CLOSED_AT_ACCEPTANCE.**
+Overall package: **IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN**.
+**B1.06 not entered.** Next owner-started window: checkpoint **12R**.
+`KeygenCallerSuccess.success/exact_integer_ntru` derives Bounds1/1/2047/2047,
+exact integer NTRU and representation in the SAME final caller arrays from
+original caller memory, finite selected source execution and normal root-gate
+outcome. Initialization derives Entry; actual calls transport profile/static/
+scratch legality; ternary scope closes BEFORE public; nonzero root return
+derives return1. No final Legal, incoming vectors/bounds, Validation, arbitrary
+callee/frame or equation premise remains in this final B1.05 type.
+
+Source/model boundary is explicit: selected dimension/local fragments and
+complete active root, not complete falcon_keygen_make. Automatic coefficient
+allocation, intervening RNG readiness/cap and chronological full-loop/caller
+binding remain B1.07. Public/inverse algebra is B1.06; codecs/emitted-to-fiber,
+compiler/probability/security and independent review remain open.
+
+Pair JSON `f6c8653b1733d516c6b59147ad99a3b2316076c0f23d754a155d12e85e6db140`,
+notes `8f1775c7a65832f3eeb3ab84010475fd93fb32319f4fa9ab4b1f5fb4f637a2a6`.
+POSTSEAL `.build/levels_032/POSTSEAL.json`, SHA256
+`dc8d8c8caf9f6093d6a6b45d5ac4309b10c321d2ce1e280e47a63ddac964f6c3`:
+5019 distinct pins,561 current inputs,no active job,no supersession. Seven
+current accepted Lean modules,0/0;116-entry full audit,standard axioms,zero
+elisions. Sage:10 normal/UBSan runs ×24 public fixtures,four detected mutations
+per mode. Independent root helpers after earlier rejection are NOT accepted
+full attempts. All17 attempts/17 steps retained:8 accepted,9 failed.
+Final documentation-time verify also passed5019 pins/no active job:
+`.build/levels_032/FINAL_VERIFY.json`, SHA256
+`b9d389beb97ab97c8edf1a69aa9f42fa79d6013b51894e424fcdccb1f1a0ff9e`.
+Source commits `5213a67f`, `9bd058a5`, `eea54b10`, plus final pair/checkpoint
+commit. No unresolved Lean draft,subagent,second worker,relay,push,review,
+import,migration or active job.
+
 ## B1.05 — caller-entry continuation — 2026-10-09
 
 Owner resumed checkpoint section 11R. Actual harness: GPT-6.1 Sol Fast
