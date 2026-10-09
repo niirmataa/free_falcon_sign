@@ -1,5 +1,29 @@
 # T12.1/source3 — żywy stan
 
+## B1.06 — BATCH_041 entry-domain/value continuation — 2026-10-09
+
+Owner-started new window, GPT-6 Astra Ultrafast (`openai/gpt-6-astra-ultrafast`),
+following checkpoint **20R**. BATCH_040's first-loop fold is the current
+baseline; the older 039 entries below retain their historical scope.
+BEFORE proof edits/jobs: BATCH_015–040 verified, **7113 distinct pins**,
+including the unchanged 7048-file/621-literal-binding predecessor closure
+and all seven retained040 jobs (snapshots, products, receipts, raw streams).
+Entry `.build/levels_041/ENTRY_PINS_041.json`, SHA256
+`d544a10f8f23325d47e6082ffd0332b242ad625cb87cb8a9b9ef66ab7673f183`;
+no active job or supersession. First derive actual first-pass domains from
+the SAME full forward/generator invocation and original converted cells;
+then radix-2/triple values and physical original-polynomial evaluations.
+B1.06 Acceptance NOT MET; one midpoint or Acceptance in this window.
+First checked piece: `KeygenPublicFirstInvocation.source_first` derives
+the complete first-loop entry and folded images from the SAME full
+`mq_NTT_ternary` execution and original converted cells. The actual
+declarations/allocations, n1536/hn768, generator Call/Bind/aliases, seed r,
+u0 and both final automatic-array disposals are derived. The suffix result
+is linked to the observed output by flow and input-block equality.
+Tables001,Entry001,Invocation002 accepted0/0; Invocation001's indexed
+`Types` transport error is retained. Caller conversion/wrappers follow,
+then radix-2/triple values. This logical commit is not the window midpoint.
+
 ## B1.06 — CLOSED at SAME-material domains / first polynomial-value midpoint — 2026-10-09
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
