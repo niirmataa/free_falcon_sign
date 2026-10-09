@@ -31,6 +31,31 @@ NTT image premise remains. Empty scalar globals and static-table/input/output
 non-aliasing are explicit legal-entry premises,not a proved whole-KeyGen caller.
 All five new material/setup/call/bridge/lifetime modules accepted0/0.
 Next: value/polynomial refinement, separately from this range conclusion.
+Third checked piece: `KeygenPublicFirstValues.source_body` derives BOTH actual
+first-butterfly stores and ordinary values x+y*z / x+y-y*z, not just range.
+`KeygenPublicFirstPolynomial.source_original_coefficients` identifies them
+with the two first-split polynomials of `Relation.reduceVec original`;
+`eval_original` independently proves evaluation equality when x^768 is the
+selected split root. Whole first-loop/entry/seed,radix2/triple and physical
+1536-value composition remain OPEN. New expression/value/polynomial modules
+accepted0/0. Internal audit311 entries (154 named+157 inherited),277 full
+terms/34 inductives,standard axioms/zero elisions. Sage12 finite normal/UBSan
+runs detected all five mutations per mode;96 exact split evaluations only
+diagnostic. Preserve34 directories/36 steps,including21 failed directories.
+PRESEAL rechecked the unchanged6438 predecessor pins (`b674d5df…`).
+Packaging stop-and-report: the control compiler uses actual Extra/c FPR
+header `6b897d6c…`,not historical M0 `242a7027…`. Public vrfy.c/internal.h
+and the other repository headers match M0. Owner selected "pin live headers"
+and confirmed again after requesting the question be repeated. New004
+control explicitly binds all five source/include pins and GCC dependencies;
+this is local diagnostic C,not a complete M0 build. No old pin/proof is changed;
+successful003 and all earlier attempts remain intact.
+Final004 control accepted0/0 (`a34f8301…`,receipt `90dbc55f…`,header binding
+`db8efd20…`);all12 runs have compiler-checked repository include dependencies.
+Final PRESEAL002 rechecks the unchanged6438 pins (`aedbdce4…`). Initial
+preseal receipt and exact organizer bytes (`b2fb2d94…`) are retained and
+SHA-checked against a reversible snapshot;no historical artifact is replaced.
+Final history:35 directories/37 steps,14 wholly accepted/21 with failure.
 
 ## B1.06 — CLOSED at complete public forward canonical range — 2026-10-09
 
