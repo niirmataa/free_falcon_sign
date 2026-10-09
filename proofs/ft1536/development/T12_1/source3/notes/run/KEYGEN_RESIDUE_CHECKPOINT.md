@@ -121,6 +121,26 @@ chain `ENTRY_PINS_037_CHAIN.json` `6da71ff7…`;entry tool `ef15535e…`.
    intact. Small local commits;close at Acceptance or an expanded recoverable
    midpoint. No automatic push/review/subagent/worker/session/relay/migration/import.
 
+<!-- BATCH_038 append-only errata to section 17R; historical command retained. -->
+
+**Errata to 17R item 2 (2026-10-09, BATCH_038, owner approved):**
+`tools/keygen_public_upper_batch.py` fixes `BASE` to BATCH_036; the example
+in 17R passes BATCH_037 pair hashes and would therefore fail before checking
+the closure. This was reported BEFORE proof edits/jobs, without executing
+the inconsistent command or modifying the verifier. The owner selected
+"correct pins": use the actual committed 036 JSON
+`7b0a960fce47bb2a787415a5c974f50abf93deab8309ea8c125b58c151123b41`
+and notes
+`8c70462a5d0ed8f2c8e8b5608a452ffc3329f022f7b5ce10b3d4c80209cfcaec`,
+with the unchanged ceremony SHA, then separately re-hash the full 037 module
+pins. The unchanged verifier checked6120 pins; the separate 037 check
+extended the closure to6141 pins/596 current inputs, no supersession or
+active job. Entry `.build/levels_038/ENTRY_PINS_038.json`
+`528cb839354dcae245061f90acdbc72070b49161e442d8c4fc38112a12c0f8cb`,
+chain `.build/levels_038/ENTRY_PINS_038_CHAIN.json`
+`865babeb7c571e5f15c07a60c93b6c88b295e5bff702e6da2aada567b91080d9`.
+No historical pair, pin or verifier byte was weakened or rewritten.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.06 upper loops closed / exceptional core midpoint
 
 **PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**

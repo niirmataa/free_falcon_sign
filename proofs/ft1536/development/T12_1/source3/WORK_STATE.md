@@ -1,5 +1,26 @@
 # T12.1/source3 — żywy stan
 
+## B1.06 — forward-transform continuation — 2026-10-09
+
+Owner started BATCH_038 with GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`),
+per checkpoint 17R. IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.
+BEFORE proof edits/jobs, the unchanged dedicated 036 verifier checked
+6120 predecessor/ceremony pins; a separate re-hash of the committed 037
+pair, entry, accepted source/snapshot/products/receipt/streams and source
+inputs extended the closure to **6141 distinct pins,596 current inputs**.
+No supersession or active job. Entry receipt
+`.build/levels_038/ENTRY_PINS_038.json`, SHA256
+`528cb839354dcae245061f90acdbc72070b49161e442d8c4fc38112a12c0f8cb`;
+chain receipt `865babeb7c571e5f15c07a60c93b6c88b295e5bff702e6da2aada567b91080d9`.
+The owner approved correct 036 pair arguments for the unchanged verifier
+and a separate 037 re-hash after the 17R command inconsistency was reported;
+the append-only checkpoint errata records that decision. Continue 16.1
+items 2-5 in order, starting with forward NTT/canonical unsigned16. B1.05
+stays closed; B1.06 Acceptance NOT MET; B1.07 waits. One guarded job,
+unchanged limits, all attempts retained, small exact-path local commits.
+No push/review/subagent/worker/session/relay/migration/import. Historical
+runner attribution constants are provenance, not this window's identity.
+
 ## B1.06 — CLOSED at finish execution / complete BOTH images — 2026-10-09
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
