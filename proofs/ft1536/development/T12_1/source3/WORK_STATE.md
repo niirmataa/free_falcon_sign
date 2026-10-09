@@ -1,5 +1,30 @@
 # T12.1/source3 — żywy stan
 
+## B1.06 — public table/transform continuation — 2026-10-09
+
+Owner resumed checkpoint13R with GPT-6.1 Sol Fast
+(`openai/gpt-6.1-sol-fast`). BATCH_034 is IN_PROGRESS / NOT_REVIEWED /
+WORKING_NOT_FROZEN; B1.05 remains closed and B1.07 is not entered.
+BEFORE edits/jobs, the committed verifier checked BATCH_015–033:
+5308 distinct pins,571 current inputs,no supersession,no active job.
+Receipt `.build/levels_034/ENTRY_PINS_034.json`,SHA256
+`53d81c7181148871c32177a3af7a7dbe80e960096fbeb8b1d7ce16ac5cf3cc9a`.
+Next: actual rev10 execution and q18433 generated tables,then forward,
+nonzero/division,inverse and both SAME-material equations in plan order.
+Inherited runner labels are historical provenance. Foreign worktree changes
+and staging remain untouched. No subagent,second worker,session,relay,push,
+review,migration or import. Process/kernel/print limits remain unchanged.
+
+`KeygenPublicScalarControl`, `KeygenPublicRev` and `KeygenPublicRevCert`
+are accepted with0/0 streams. The complete source rev10 return is derived
+for every uint32 input; the1024-index kernel certificate identifies its
+result with bitrev10 and specializes the reached2*u indices to reverse9.
+The real signed32 counter executes exactly ten iterations. Parser grouping,
+scope restoration and parameter/return conversions remain explicit.
+The diagnostic RevProbe has nonempty stdout and is NOT proof evidence.
+All failed snapshots are retained. Generated table memory, transforms,
+nonzero tests and both SAME-material equations remain open B1.06 seams.
+
 ## B1.06 — CLOSED at public-algebra / transform-entry midpoint — 2026-10-09
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
