@@ -1,5 +1,22 @@
 # T12.1/source3 — żywy stan
 
+## B1.05 — caller-entry continuation — 2026-10-09
+
+Owner resumed checkpoint section 11R. Actual harness: GPT-6.1 Sol Fast
+(`openai/gpt-6.1-sol-fast`); inherited runner session/model labels remain
+historical provenance. BATCH_032 is IN_PROGRESS / NOT_REVIEWED /
+WORKING_NOT_FROZEN. No second worker, session, subagent or relay started.
+BEFORE edits/jobs, BATCH_015–031 verified: 4824 distinct pins, 554 current
+inputs, no supersession and no active job. Receipt:
+`.build/levels_032/ENTRY_PINS_032.json`, SHA256
+`779f1403f1685e14465540932ae3d3bedae7e58f06dc293b2cb734861eb6093e`.
+Next: source-bound caller dimension/local initialization, derive Entry and
+root legality through the same sampler/resultant/raw/GS/public prefix, then
+consume root return1. Acceptance is not yet met; B1.06 remains unentered.
+Initial coefficient allocations and enclosing RNG-ready/cap/loop semantics
+remain B1.07, not part of this selected initialization-fragment relation.
+All attempts use unique `keygen_attempt_*_032_*` labels and unchanged limits.
+
 ## B1.05 — CLOSED at same sampled raw/GS/public material — 2026-10-08
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
