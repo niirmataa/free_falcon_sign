@@ -20,6 +20,17 @@ input arrays. It preserves the original arrays and t's uninitialized tail.
 Accepted sources0/0; earlier parser/type attempts and parser diagnostic
 remain in unique039 job directories. Actual setup/global/call binding and
 polynomial evaluation follow; this is not yet the window midpoint.
+Second checked piece: `KeygenPublicInputLifetime.source_same_material_front`
+extracts both canonical forward images from the SAME complete public source
+execution, the SAME stored MODE1-bounded f/g, and legal memory/profile/global
+footprint. It derives MKN1536,q18433,all conversion values,actual3072-cell t
+allocation/empty tail/Fresh separation,parameter Bind frames and both calls.
+The existential midpoint is inside t's lifetime; final disposal is tied to
+the observed complete result. No initial/final residue-range or initialized
+NTT image premise remains. Empty scalar globals and static-table/input/output
+non-aliasing are explicit legal-entry premises,not a proved whole-KeyGen caller.
+All five new material/setup/call/bridge/lifetime modules accepted0/0.
+Next: value/polynomial refinement, separately from this range conclusion.
 
 ## B1.06 — CLOSED at complete public forward canonical range — 2026-10-09
 
