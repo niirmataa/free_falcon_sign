@@ -425,6 +425,25 @@ NOT arithmetic Bezout/GCD theorems; non-vacuous chunk audits
 chain + material transport (B1.05c), key-law identification instance
 (B1.10), honest-Sign realization + final assembly (arrows 1-2).
 
+## 2026-10-09: B1.05 ACCEPTANCE - the complete source -> NTRU-equation chain
+
+B1.05 is CLOSED (BATCH_020..032, 12 batches; final commit 9b927367;
+5019 pins PASS; 4/4 mutations detected per round). The chain is
+complete and kernel-checked: table generation + conversion + the full
+NTT transform (B1.04) + solver execution (deepest -> intermediate ->
+depth0 -> root -> caller) + gate transport (resultants -> raw/GS ->
+public) + Entry from caller initialization + `RootCaller.Legal` on the
+same prefix -> **the exact equation fG - gF = 18433 with bounds
+1/1/2047/2047 on PRESERVED tables**. The `f/g <= 1` bound is CONCLUDED
+from sampler execution (not assumed). Scope honesty: this is NOT a
+full KeyGen theorem and NOT a security proof - it is the complete
+composition gap removal for the solver region.
+
+NEXT: B1.06 (not started), then B1.07 (stride=1 via the wrapper frame),
+B1.10/B1.11 (emitted_to_actual_fiber = hkey material), the do_sign
+realization (hshape + PointwiseStageRoad) and final assembly
+(four-arrow map, arrows 1-2).
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
