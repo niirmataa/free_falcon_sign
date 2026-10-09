@@ -25,6 +25,19 @@ numerator bound. No solver uint64/radix2^31 routine is substituted. Actual
 Call field adapters,square/division,table/transform and SAME-material public
 composition remain pending. All earlier proof/linter attempts are retained.
 
+`KeygenPublicAlgebra`, `KeygenPublicArguments` and `KeygenPublicSquare`
+are accepted,0/0. The SAME operational Call now yields canonical q18433
+add/sub/conversion/half/Montgomery laws; the scale is visible in field
+equations. A proved binding normalization accounts for signed source literals
+at unsigned parameters. Complete square execution derives its word/field law.
+The division draft still needs its general chain proof and finite-field
+composition. Its first harness call timed out externally at120s without a
+receipt; all snapshot/raw bytes remain. A uniquely labelled retry reached
+the unchanged heartbeat limit in dependent name elimination. Generalized
+callee indices avoid that route; no limit or pinned predecessor is changed.
+The first finite-control run reached the mutation compiler and rejected an
+unused y18 under unchanged -Werror; the revised mutation preserves all locals.
+
 ## B1.05 — CLOSED at Acceptance — 2026-10-09
 
 **B1.05 Acceptance MET / PROVED_KERNEL_SCOPED / CLOSED_AT_ACCEPTANCE.**
