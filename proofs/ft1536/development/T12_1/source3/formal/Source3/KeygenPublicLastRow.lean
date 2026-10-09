@@ -19,6 +19,7 @@ open KeygenMkgm3Indices (tableExponent lastIndex)
 
 def Images (heap : Memory) (gm igm : ArrayPointer) : Prop :=
   ∀ i, 512 ≤ i → i<1024 → Cell heap gm i (root^tableExponent i) ∧ Cell heap igm i ((root⁻¹)^tableExponent i)
+theorem entry_w (s : State) : (KeygenPublicLastEntry.start s).locals "w".toList=some (.uint32,none) := rfl
 theorem physical_images (heap : Memory) (gm igm : ArrayPointer)
     (processed : KeygenPublicLastLoop.Processed gm igm 256 heap) : Images heap gm igm := by
   intro i lower upper
@@ -34,19 +35,25 @@ theorem source_last_row (s : State) (out : Result) (gm igm : ArrayPointer)
     (source : Exec KeygenPublicSource.program [] (KeygenPublicSource.code .generate) s out) :
     ∃ after, Exec KeygenPublicSource.program [] KeygenPublicTableRows.afterRows after out ∧
       Images after.heap gm igm ∧ LastFrame gm igm s.heap after.heap ∧
-      Pointers after gm igm ∧ Slot after "logn" 10 ∧ KeygenNttLoopSupport.USlot after "u" 512 := by
+      Pointers after gm igm ∧ Slot after "logn" 10 ∧ KeygenNttLoopSupport.USlot after "u" 512 ∧
+      Slot after "k" 1 ∧ after.locals "w".toList=some (.uint32,none) := by
   obtain ⟨after,inner,executed,restored,normal,tail⟩ := KeygenPublicTableRows.source_last_row_entry s out profile source
   have result := KeygenPublicLastEntry.remaining_result s inner gm igm profile pointers gw iw separate executed
   have images := physical_images inner.state.heap gm igm result.2.cells
   have afterHeap : after.heap=inner.state.heap := by rw [restored]; rfl
   have afterPointers : after.arrays=inner.state.arrays := by rw [restored]; rfl
   have afterU : after.locals "u".toList=inner.state.locals "u".toList := by rw [restored]; rfl
+  have afterK : after.locals "k".toList=inner.state.locals "k".toList := by rw [restored]; rfl
   have profileInner : Slot inner.state "logn" 10 := by
     have cell := (KeygenPublicTableControl.frame _ _ KeygenPublicTableRows.remaining
       (KeygenPublicLastEntry.start s) inner (by decide) executed).2.2 "logn".toList (by decide)
     exact cell.trans (KeygenPublicLastEntry.start_profile s profile)
   have afterLogn : after.locals "logn".toList=inner.state.locals "logn".toList := by rw [restored]; rfl
-  refine ⟨after,tail,?_,?_,?_,afterLogn.trans profileInner,afterU.trans result.2.counter⟩
+  have wInner := ((KeygenPublicTableControl.frame _ _ KeygenPublicTableRows.remaining
+      (KeygenPublicLastEntry.start s) inner (by decide) executed).2.2 "w".toList (by decide)).trans (entry_w s)
+  have afterW : after.locals "w".toList=inner.state.locals "w".toList := by rw [restored]; rfl
+  refine ⟨after,tail,?_,?_,?_,afterLogn.trans profileInner,afterU.trans result.2.counter,
+    afterK.trans result.2.fixed.k,afterW.trans wInner⟩
   · simpa only [afterHeap] using images
   · simpa only [afterHeap] using result.2.bytes
   · simpa only [Pointers,afterPointers] using result.2.fixed.pointers
