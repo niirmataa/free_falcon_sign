@@ -1,0 +1,93 @@
+{
+  "task": "KEYGEN_SOURCE_TO_FIBER_001",
+  "batch": "BATCH_040",
+  "stage": "B1.06",
+  "window": "CLOSED_AT_RECOVERABLE_MIDPOINT",
+  "b1_06_acceptance": "NOT_MET",
+  "stage_result": "PARTIAL_PROOF",
+  "status": "IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN",
+  "harness": "MiMo V2.6 Pro / xiaomi-token-plan-ams",
+  "created_utc": "2026-10-09T17:00:54Z",
+  "scope": "Entry and the complete 768-butterfly FIRST loop of the public forward NTT folded into the low/high coefficient images of the ORIGINAL reduced CoefficientQuotient polynomial (checkpoint 19.1 remaining item 1). No canonicality, generated table image, transform correctness, nonzero, or KeygenPublicRoots.point evaluation is a premise.",
+  "entry_pins": {
+    "batch": "BATCH_015-039",
+    "tool": "tools/keygen_public_input_batch.py verify",
+    "receipt": {
+      "path": ".build/levels_040/ENTRY_PINS_040.json",
+      "sha256": "2612bda3b90d735ec9b21c1db688cc3f05235d2a4cb44ddfa090660e5613d4d2"
+    },
+    "distinct_pinned_files": 7048,
+    "current_source_inputs": 621,
+    "active_jobs": [],
+    "superseded": {}
+  },
+  "headline_theorem": {
+    "name": "FT1536.Source3.KeygenPublicFirstFold.source_first_fold",
+    "type": "width a.elementBytes=2 -> pointer s.arrays \"a\"=some a -> hn USlot s \"hn\" 768 -> r Local s \"r\" (radix*root) -> u0 USlot s \"u\" 0 -> input Cells s.heap a 1536 (reduced original) -> Exec KeygenPublicSource.program [] firstLoop s out -> out.flow=normal AND (forall i<768, Cell out.state.heap a i (lowP original).coeff i AND Cell out.state.heap a (i+768) (highP original).coeff i)",
+    "lowP": "low (Relation.reduceVec original) root",
+    "highP": "high (Relation.reduceVec original) root",
+    "root": "KeygenPublicRoots.firstRoot",
+    "axioms": ["propext", "Classical.choice", "Quot.sound"]
+  },
+  "closed_items": [
+    "image value function over physical cells (low half = lowP once written / original otherwise; high half = highP at j-768 once written / original otherwise) with all four unfolding cases and image_zero/advance/input_low/input_high/unchanged",
+    "coefficient bridge lowP_coeff/highP_coeff: the written butterfly values x+y*z and x+y-y*z equal the low/high coefficients of the ORIGINAL reduced polynomial, via reduced_low/reduced_high and low_coefficient/high_coefficient",
+    "body_data: one executed first butterfly (source_body + two-store preservation preserve_pair) advances the image to k+1 with u still k",
+    "step + loop_result: body+increment iteration and induction over the firstLoop Exec derivation to terminal counter 768 (guard_cmp u<hn, increment_result/counter)",
+    "folded + source_first_fold: from the entry domains the whole first loop yields all 768 low/high coefficient cells"
+  ],
+  "accepted_modules": [
+    {
+      "module": "Source3.KeygenPublicFirstFold",
+      "role": "proof",
+      "source": {"path": "formal/Source3/KeygenPublicFirstFold.lean", "sha256": "2cc2e6ddfd9d90dca0633424180036721d3a8f2a9a047726811b13504e8f5bbb"},
+      "artifact": {"path": ".build/cache/Source3/KeygenPublicFirstFold.olean", "sha256": "ac372671583b972d51d59796a52cefc68ca2c95a0a2b3b8f52eeba1319f65c8f"},
+      "job": "keygen_public_first_fold_040_006",
+      "receipt": {"path": ".build/jobs/keygen_public_first_fold_040_006/RECEIPTS.json", "sha256": "311450ec9995be2ec5e36ec424f14906047cae99d52524599c3b375a91c973e9"},
+      "accepted": true,
+      "clean_log": true,
+      "exit_code": 0,
+      "forbidden_proof_markers": [],
+      "axioms": ["propext", "Classical.choice", "Quot.sound"]
+    }
+  ],
+  "diagnostic": {
+    "module": "Source3.KeygenPublicFirstFoldAxioms",
+    "role": "type/axiom readout only, NOT a correctness theorem",
+    "source": {"path": "formal/Source3/KeygenPublicFirstFoldAxioms.lean", "sha256": "b8036b4424cbe2c6ff140a1755f5fd7003b2555e726799fcfe58e4d754eaf275"},
+    "job": "keygen_public_first_fold_040_007",
+    "receipt": {"path": ".build/jobs/keygen_public_first_fold_040_007/RECEIPTS.json", "sha256": "5f6327817bbf7bfd6eb5f605dd03b00d906d3aad679fa1b7ce8c04248675f4cc"},
+    "accepted": true,
+    "clean_log": false,
+    "clean_log_note": "stdout carries the deliberate type/axiom readout; not a proof step",
+    "readout": "source_first_fold, loop_result, body_data, folded all depend on axioms [propext, Classical.choice, Quot.sound]"
+  },
+  "attempts_retained": [
+    {"job": "keygen_public_first_fold_040_001", "status": "FAILED_RETAINED", "cause": "preserve_pair argument order (preserves needs i≠j); unused-variable lint under warningAsError"},
+    {"job": "keygen_public_first_fold_040_002", "status": "FAILED_RETAINED", "cause": "Polynomial-valued defs need noncomputable (RealizeConstKey on highP/image)"},
+    {"job": "keygen_public_first_fold_040_003", "status": "ACCEPTED", "scope": "foundation: image algebra, coefficient bridge, guard, increment, preserve_pair"},
+    {"job": "keygen_public_first_fold_040_004", "status": "FAILED_RETAINED", "cause": "unused simp arg in step locals; omega missing inv.bound; IH argument order"},
+    {"job": "keygen_public_first_fold_040_005", "status": "FAILED_RETAINED", "cause": "step locals if-reduction; loop_result [] signed index blocks induction"},
+    {"job": "keygen_public_first_fold_040_006", "status": "ACCEPTED", "scope": "full fold module: body_data, step, loop_result, folded, source_first_fold"},
+    {"job": "keygen_public_first_fold_040_007", "status": "ACCEPTED_DIAGNOSTIC", "scope": "type/axiom readout probe"}
+  ],
+  "open_in_b1_06": [
+    "19.1 item 1 remainder: derive the entry domains (u=0, hn=768, seeded r=radix*firstRoot, converted input cells) from the SAME full forward/generator invocation and SAME converted original cells; the fold above takes them as explicit local caller domains.",
+    "19.1 item 2: all radix-2/triple value invariants and physical KeygenPublicRoots.point ordering; universal 1536 original-f/g CoefficientQuotient evaluations, not canonicality or finite controls.",
+    "19.1 item 3: SAME successful public path all 1536 nonzero tests, actual division/inverse/normalization to canonical h; no assumed round-trip.",
+    "19.1 item 4: construct fInv via nonzero evaluations/proved evaluation isomorphism and BOTH SAME-material mulRq equations."
+  ],
+  "not_claimed": "No polynomial evaluation at KeygenPublicRoots.point, full physical 1536-value composition, nonzero, division/inverse, canonical h, fInv, mulRq, complete KeyGen, emitted-to-fiber, compiler, laws/PRG/security, or review. B1.06 Acceptance NOT MET.",
+  "controls": "No Sage controls this window (fold is a kernel value-composition; finite per-butterfly controls remain BATCH_039); recorded as open. Full per-declaration audit producer not run this window; correctness evidence is the clean kernel build (0/0, no markers) plus the standard-axiom/type readout.",
+  "limits": "Unchanged Lean j1/-M6144, AS12GiB/RSS8GiB, wall1800s, maxHeartbeats2000000, warningAsError; 0/0 proof streams.",
+  "git": {
+    "push_by_this_worker": false,
+    "identity": "niirmataa",
+    "foreign_changes_preserved": true,
+    "review_or_stages_import": false
+  },
+  "notes": {
+    "path": "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_040_NOTES.md",
+    "sha256": "b890b8321ff031ce0d94d1b2e5e399af00914913e65e8f70deb741a2e44b1098"
+  }
+}

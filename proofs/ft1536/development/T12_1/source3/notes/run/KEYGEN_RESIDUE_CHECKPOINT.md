@@ -1,3 +1,121 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.06 first-loop fold / low-high coefficient images
+
+**PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
+2026-10-09,BATCH_040,MiMo V2.6 Pro (`xiaomi-token-plan-ams`).
+**CLOSED_AT_RECOVERABLE_MIDPOINT. B1.06 Acceptance NOT MET.**
+One midpoint this window. B1.05 stays BATCH_032;B1.07 is not entered.
+Resume: **20R**. Full types/pins/attempts: `KEYGEN_SOURCE_TO_FIBER_001_BATCH_040_NOTES.md`.
+
+## 20. Closed this window — complete 768-butterfly first-loop fold
+
+New module `formal/Source3/KeygenPublicFirstFold.lean`, kernel-checked (build
+`keygen_public_first_fold_040_006`, logs 0/0, `warningAsError`, zero forbidden
+proof markers). This executes §19.1 remaining item 1's loop fold: the SAME
+first-body value results are composed across the WHOLE executed first loop.
+
+1. **image algebra:** `image original k j` is the physical cell value after k
+   butterflies (low half j<768 = `lowP` once written / original otherwise; high
+   half = `highP` at j-768 once written / original otherwise). All four
+   physical unfoldings plus `image_zero`/`image_advance`/`image_input_*`/
+   `image_unchanged` are kernel facts.
+2. **Coefficient bridge:** `lowP_coeff`/`highP_coeff` prove the written values
+   `x+y*z` and `x+y-y*z` equal the low/high coefficients of the ORIGINAL reduced
+   CoefficientQuotient polynomial, via `reduced_low`/`reduced_high` and
+   `low_coefficient`/`high_coefficient`. `lowP = low (Relation.reduceVec
+   original) root`, `highP = high (Relation.reduceVec original) root`,
+   `root = KeygenPublicRoots.firstRoot`.
+3. **Per-butterfly fold (`body_data`):** one executed first butterfly
+   (`KeygenPublicFirstValues.source_body` + two-store `preserve_pair`) advances
+   the image to k+1 with u still k. Independent value proof, not canonicality.
+4. **Loop composition (`step`/`loop_result`):** body+increment iteration and an
+   induction over the `firstLoop` Exec derivation reach terminal counter 768.
+   `guard_cmp` (u<hn) and `increment_result`/`increment_counter` at `[]`.
+5. **Headline (`folded`/`source_first_fold`):** from the entry domains the whole
+   first loop yields all 768 low/high coefficient cells.
+
+### 20.1 Exact checked boundary and remaining 19.1 obligations
+
+```text
+original : Geometry.Vec; a : ArrayPointer; s : State; out : Result
+width   : a.elementBytes = 2
+pointer : s.arrays "a".toList = some a
+hn      : USlot s "hn" 768
+r       : Local s "r" (radix*root)
+u0      : USlot s "u" 0
+input   : Cells s.heap a 1536 (reduced original)
+source  : Exec KeygenPublicSource.program [] firstLoop s out
+------------------------------------------------------------------------
+out.flow = normal
+  ∧ ∀ i<768, Cell out.state.heap a i (lowP original).coeff i
+       ∧ Cell out.state.heap a (i+768) (highP original).coeff i
+```
+
+Export: `KeygenPublicFirstFold.source_first_fold`. The entry domains are
+explicit local caller domains, exactly as in the per-butterfly
+`source_original_coefficients`. This is a loop-composition VALUE theorem, not a
+polynomial-evaluation theorem. B1.06 Acceptance is NOT MET.
+
+Remaining,in 16.1 plan order:
+
+1. **Item2 remainder:** derive the entry domains (u0/hn768/seed r/converted
+   input cells) from the SAME full forward/generator invocation and SAME
+   converted original cells. The fold above takes them as explicit domains.
+2. **Item2:** all radix-2/triple value invariants and physical
+   KeygenPublicRoots.point ordering; universal 1536 original-f/g
+   CoefficientQuotient evaluations. Do not use canonical range, finite controls
+   or another model's transform as this proof.
+3. **Item3 OPEN,not entered:** SAME successful execution→all1536 nonzero
+   tests→division→actual inverse/normalization→canonical h. No assumed
+   forward/inverse round-trip.
+4. **Item4 OPEN,not entered:** fInv via nonzero evaluations/proved evaluation
+   isomorphism and BOTH SAME f/g/h mulRq equations.
+
+### 20.2 Pins,audit,controls,retained failures
+
+- BEFORE edits/jobs:BATCH_015–039 verified,**7048 pins/621 literal bindings**,
+  no supersession/job. Entry `.build/levels_040/ENTRY_PINS_040.json`,SHA256
+  `2612bda3b90d735ec9b21c1db688cc3f05235d2a4cb44ddfa090660e5613d4d2`.
+- **BATCH_040 JSON:** `notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_040.json`.
+- **BATCH_040 notes:** `notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_040_NOTES.md`.
+- **KeygenPublicFirstFold.lean** `2cc2e6ddfd9d90dca0633424180036721d3a8f2a9a047726811b13504e8f5bbb`;
+  olean `ac372671583b972d51d59796a52cefc68ca2c95a0a2b3b8f52eeba1319f65c8f`;
+  accepted job `keygen_public_first_fold_040_006`,receipt
+  `311450ec9995be2ec5e36ec424f14906047cae99d52524599c3b375a91c973e9`,0/0.
+- **Axiom/type readout** (diagnostic `KeygenPublicFirstFoldAxioms`,
+  `b8036b4424cbe2c6ff140a1755f5fd7003b2555e726799fcfe58e4d754eaf275`,job
+  `_007`,receipt `5f6327817bbf7bfd6eb5f605dd03b00d906d3aad679fa1b7ce8c04248675f4cc`):
+  **standard axioms only `propext, Classical.choice, Quot.sound`**; no
+  `sorry`/`admit`/placeholder. Its stdout carries the readout (clean_log false
+  by design; not a proof step).
+- Retained attempts `_001.._005` (foundation/loop setup failures) and `_007`
+  (probe) with exact causes in the pair notes. Limits unchanged;0/0 streams.
+  No Sage controls this window (fold is a kernel value-composition; finite
+  per-butterfly controls remain BATCH_039) — recorded as open. No push,review,
+  subagent,worker,session,relay,migration or stages import. Small local own
+  commits on main as niirmataa;foreign work/staging preserved.
+
+## 20R. Resume B1.06 — entry-domain derivation,then radix-2/triple evaluations
+
+1. Read source3/WORK_STATE,this checkpoint,EXECUTION_PLAN B1.06 and
+   `run2/notes/B1_STAGED_ROADMAP.md`. Acceptance NOT MET;B1.05 closed;
+   B1.07 waits. Preserve BATCH_015–040 and every earlier/failed byte.
+2. BEFORE edits/jobs,verify the complete BATCH_015–040 closure (the committed
+   BATCH_039 verifier for BATCH_015–039, then re-hash the BATCH_040 pins in
+   `KEYGEN_SOURCE_TO_FIBER_001_BATCH_040.json`). Expect the 7048-pin/621-binding
+   predecessor closure plus the BATCH_040 module/probe/job pins, no supersession
+   or active job. Any mismatch is stop-and-report,not pin weakening.
+3. Continue 20.1 in 16.1 order. First derive the entry domains (u0/hn768/seed
+   r/converted input cells) from the SAME full forward/generator invocation;
+   then radix-2/triple value invariants and physical original polynomial
+   evaluations at `KeygenPublicRoots.point`. Only AFTER this continue
+   nonzero/division/inverse and both equations. Neither the first-loop fold nor
+   canonicality completes the NTT evaluation proof.
+4. Unique guarded `keygen_public_*_041_*` jobs from 001,pair⇒job convention;
+   one job,unchanged limits,0/0 proof streams,Sage preparser,durable
+   environments,bounded defs/pieces,all attempts retained. Small local own
+   commits;one expanded recoverable midpoint or Acceptance per window. No
+   automatic push/review/subagent/worker/session/relay/migration/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.06 SAME-material domains / first polynomial-value midpoint
 
 **PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**

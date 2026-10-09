@@ -1,5 +1,47 @@
 # RUN_003 — source-bound kontynuacja T12.1
 
+## 2026-10-09 — B1.06 okno: fałda pętli 768 motylków do obrazów low/high (okno MiMo)
+
+W oknie B1.06 (harness: **MiMo V2.6 Pro**) wykonano zakres §19R: piny BATCH_015–039
+zweryfikowane PRZED pracą (7048 pinów/621 literal bindings,
+`tools/keygen_public_input_batch.py verify`, receipt
+`2612bda3…` = `.build/levels_040/ENTRY_PINS_040.json`), a następnie **fałda całej
+pętli 768 motylków** first-pass do obrazów low/high coefficient oryginalnego
+redukowanego wielomianu CoefficientQuotient (§19.1 remaining item 1).
+**IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN**; B1.06 Acceptance NOT MET.
+Receipt batcha: `run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_040.json` + `_040_NOTES.md`;
+świeży checkpoint: `run/KEYGEN_RESIDUE_CHECKPOINT.md` (§20/§20R).
+
+- Nowy moduł `formal/Source3/KeygenPublicFirstFold.lean` (SHA
+  `2cc2e6dd…`), kernelowo (build `keygen_public_first_fold_040_006`, logi 0/0,
+  `warningAsError`, zero forbidden proof markers). Zawiera: `image` (wartość
+  komórki po k motylkach), mostek `lowP_coeff`/`highP_coeff` (napisane wartości
+  `x+y*z`/`x+y-y*z` = współczynniki low/high oryginalnego wielomianu przez
+  `reduced_low`/`reduced_high` + `low_coefficient`/`high_coefficient`),
+  `body_data` (jeden motyl = `source_body` + `preserve_pair`), `step`/`loop_result`
+  (indukcja po `firstLoop` do terminalnego 768), `folded`/`source_first_fold`.
+- **Headline `source_first_fold`:** z domen wejściowych (width, pointer,
+  hn=768, r=radix*root, u=0, `Cells … reduced original`) i wykonania `firstLoop`
+  wynika `out.flow=normal ∧ ∀ i<768, Cell a i (lowP original).coeff i ∧ Cell a
+  (i+768) (highP original).coeff i`. Domeny wejściowe to jawne lokalne domeny
+  wywołującego (jak w `source_original_coefficients`).
+- **Odczyt osi/typu** (diagnostyka `KeygenPublicFirstFoldAxioms`, job `_007`):
+  wszystkie twierdzenia wyłącznie na aksjomatach standardowych
+  **`propext, Classical.choice, Quot.sound`**; brak `sorry`/`admit`.
+- Zachowane próby `_001.._005` (usterki fundamentu/pętli: kolejność argumentów
+  `preserves`, `noncomputable` dla `Polynomial`, kolejność argumentów IH,
+  redukcja `if`, indeks `[]` blokujący `indukcję`) i `_007` (sonda) z dokładnymi
+  przyczynami w notach. Limity bez zmian. Bez nowych kontroli Sage (fałda to
+  kernelowa kompozycja wartości; skończone kontrolki per-motyl zostają z BATCH_039)
+  — zapisane jako otwarte. Bez push/recenzji/subagenta/workera/sesji/relay/migracji/
+  importu stages. Małe commity lokalne na `main` jako niirmataa; obcy staging zachowany.
+- **Pozostałe w B1.06:** (1) wyprowadzenie domen wejściowych (u0/hn768/seed
+  r/skonwertowane komórki) z TEGO samego pełnego forward/generator invocation;
+  (2) wartości radix-2/triple i porządek fizyczny `KeygenPublicRoots.point`,
+  uniwersalne1536 ewaluacje oryginalnego f/g; (3) nonzero/dzielenie/inwersja do
+  kanonicznego h; (4) fInv + oba równania mulRq. Fałda pętli nie dowodzi
+  ewaluacji NTT.
+
 ## 2026-10-08 — B1.05 kontynuacja: dostęp członkowy + zint_rebuild_CRT + rodzina co-reduce/reduce (okno MiMo)
 
 W oknie BIG B1.05 (harness: **MiMo V2.6 Pro**) wykonano kolejność właściciela
