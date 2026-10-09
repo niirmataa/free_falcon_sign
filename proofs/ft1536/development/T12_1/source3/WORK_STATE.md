@@ -38,6 +38,23 @@ callee indices avoid that route; no limit or pinned predecessor is changed.
 The first finite-control run reached the mutation compiler and rejected an
 unused y18 under unchanged -Werror; the revised mutation preserves all locals.
 
+Complete `KeygenPublicDivisionWords/Algebra` and `KeygenPublicRoots` are now
+accepted,0/0. The actual nineteen-node addition chain and final ordinary x
+multiplication yield canonical q18433 division with explicit nonzero-divisor
+domain. Root geometry proves orders9216/4608 and1536 distinct Phi roots plus
+coefficient injectivity; it is NOT generated table memory or an executed
+public-transform refinement. Actual rev10/table/forward/inverse and both
+SAME-material Relation.mulRq equations remain B1.06 obligations.
+Full audit accepted:220 entries,205 complete terms,15 kernel inductives,
+standard axioms only,zero elisions; artifact `ffd9038c…`,receipt `2490db63…`,
+571 inputs. Ten current accepted Lean modules,0/0,max cumulative5034220KiB.
+Sage controls accepted:14 runs,18433 scalar +18433 signed rows/2048 table
+rows/seven synthetic transforms/four public cases per run;six mutations
+detected in both modes. This finite evidence is not the missing source proof.
+Preseal verifies the same5019 predecessor pins,no supersession/no active job,
+receipt `06c2c283…`. B1.06 Acceptance NOT MET; preparing the recoverable
+midpoint pair/checkpoint. No unfinished current source or active job remains.
+
 ## B1.05 — CLOSED at Acceptance — 2026-10-09
 
 **B1.05 Acceptance MET / PROVED_KERNEL_SCOPED / CLOSED_AT_ACCEPTANCE.**
