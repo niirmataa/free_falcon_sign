@@ -141,8 +141,8 @@ for mode,flags in [('normal',['-O2']),('ubsan',['-O1','-fsanitize=undefined','-f
             tag,*payload=line.split();counts[tag]+=1;values=[ZZ(x) for x in payload];case=values[0]
             if tag in ['C','F']:
                 ordinal=values[1];actual=values[2:];key=(tag,case,ordinal);assert key not in seen;seen.add(key)
-                expected=converted[int(case)][int(ordinal)] if tag=='C' else splits[int(case)][1-int(ordinal)]
-                ok=actual==expected and len(actual)==n and all(0<=x<q for x in actual)
+                expected_vector=converted[int(case)][int(ordinal)] if tag=='C' else splits[int(case)][1-int(ordinal)]
+                ok=actual==expected_vector and len(actual)==n and all(0<=x<q for x in actual)
             elif tag=='T': ok=values[1:]==[60000,60000]
             elif tag=='M': ok=values[2:]==[60000,60000,12345,12345,12345,12345,0,0]
             else: raise AssertionError(tag)
@@ -152,6 +152,7 @@ for mode,flags in [('normal',['-O2']),('ubsan',['-O1','-fsanitize=undefined','-f
         artifacts=[cfile,deps,Path(label+'.compile.stdout'),Path(label+'.compile.stderr'),Path(label+'.stdout'),Path(label+'.stderr'),Path(label+'.run.json')]
         records.append({'mode':mode,'variant':variant,'counts':counts,'differences':differences,'command':command,
             'artifacts':{str(p):digest(p) for p in artifacts}})
+assert expected==header_binding['historical_m0_pins']
 result={'status':'PASS_FINITE_SOURCE_CONTROLS','variants':records,'source_pins':pins,
     'header_binding_sha256':digest('PUBLIC_INPUT_HEADERS.json'),'historical_m0_pins':expected,
     'header_differences':header_binding['differences'],

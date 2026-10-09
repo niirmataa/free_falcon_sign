@@ -13,8 +13,8 @@ from keygen_public_input_audit_source import MODULES, INHERITED, declarations
 BASE = 'notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_039'
 ENTRY = '.build/levels_039/ENTRY_PINS_039.json'
 ENTRY_SHA = 'cb73d864e35991b4815d930a370e70d383057a30657508a825b6c04265593044'
-PRESEAL = '.build/levels_039/PRESEAL_PREDECESSOR_002.json'
-CONTROL = '.build/jobs/keygen_public_input_checks_039_004'
+PRESEAL = '.build/levels_039/PRESEAL_PREDECESSOR_003.json'
+CONTROL = '.build/jobs/keygen_public_input_checks_039_005'
 SAGE = 'sage/check_keygen_public_input.sage'
 
 
@@ -50,6 +50,10 @@ def seal():
     entry = read(ENTRY)
     assert read(PRESEAL)['checked'] == entry['checked']
     assert job.sha(path('.build/levels_039/PRESEAL_VERIFIER_001.py')) == read('.build/levels_039/PRESEAL_PREDECESSOR.json')['verifier_sha256']
+    failed_seal = read('.build/levels_039/SEAL_ATTEMPT_001.json')
+    assert failed_seal['status']=='FAILED_RETAINED_OWN_METADATA_ERROR' and not failed_seal['pair_written']
+    assert job.sha(path(failed_seal['source']['path'])) == failed_seal['source']['sha256']
+    assert failed_seal['source']['sha256'] == read('.build/levels_039/PRESEAL_PREDECESSOR_002.json')['verifier_sha256']
     for p, expected in entry['checked'].items():
         assert job.sha(path(p)) == expected, ('predecessor changed', p)
     cache = read('.build/cache/CACHE_INDEX.json')
@@ -182,6 +186,7 @@ def seal():
             'recovery_input':pin('.build/levels_039/SEAL_VERIFIER_HEADER_DECISION_001.py'),
             'recovery_generator':pin('tools/keygen_public_input_verifier_history.py'),
             'scope':'Old organizer bytes recovered by exact reversible header-decision changes and matched to the original receipt SHA; old receipt/pins unchanged.'},
+        'failed_packaging_attempts':[{'record':pin('.build/levels_039/SEAL_ATTEMPT_001.json'),**failed_seal}],
         'current_final_audit_inputs':len(inputs['sources'])+len(inputs['reused']),
         'audit':{**pin(audit_dir/'PUBLIC_INPUT_AUDIT.json'),'entries_jsonl':pin(audit_dir/'PUBLIC_INPUT_AUDIT_ENTRIES.jsonl'),
             'receipt':pin(audit_dir/'RECEIPTS.json'),'source_inputs':pin(audit_dir/'SOURCE_INPUTS.json'),

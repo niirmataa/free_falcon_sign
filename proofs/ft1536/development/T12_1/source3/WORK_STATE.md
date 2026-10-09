@@ -56,6 +56,17 @@ Final PRESEAL002 rechecks the unchanged6438 pins (`aedbdce4…`). Initial
 preseal receipt and exact organizer bytes (`b2fb2d94…`) are retained and
 SHA-checked against a reversible snapshot;no historical artifact is replaced.
 Final history:35 directories/37 steps,14 wholly accepted/21 with failure.
+First seal rejected004's metadata field before any pair was written:
+`expected` was shadowed by a test vector. Reported narrow own-code repair;
+005 uses `expected_vector` and a pre-write header-map assertion. Final
+control `a12b57ba…`/receipt `207bffbe…`,identical header manifest `db8efd20…`.
+004 remains a clean arithmetic run with invalid final metadata,not a valid
+packaging result. Failed seal record `aab501e5…`,exact committed organizer
+source,preseal002 and manually archived tool-error text retained. Final
+job history36 directories/38 steps,15 wholly accepted/21 failed directories.
+Final PRESEAL003 (`51ab0ca3…`) verifies the same6438 pins/607 bindings;
+no source supersession or active job. Final seal uses005;all earlier bytes
+and both administrative failure/recovery records remain intact.
 
 ## B1.06 — CLOSED at complete public forward canonical range — 2026-10-09
 
