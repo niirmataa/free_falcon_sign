@@ -32,6 +32,19 @@ Five further modules accepted0/0. Polynomial001 was interrupted by the
 heartbeat limit while reducing an implicit congruence/incorrect base match.
 Explicit index rewrites and a precisely stated evaluation lemma close003
 in2.769s. All interrupted/failed snapshots and streams remain.
+Third checked piece: the actual triple body derives scaled x2, all B/C
+products and the three chronological stores; the complete512-body loop
+preserves all untouched cells and the generated table. Seed w and u/v
+initialization come from the SAME live header. `KeygenPublicEvaluation.
+source_complete` concludes every i:Fin1536 ORIGINAL CoefficientQuotient
+evaluation from the complete forward body and original converted cells.
+Both wrapper bindings and `KeygenPublicEvaluationMaterial.source_same_material`
+derive the f/g evaluation arrays from the SAME complete public conversion
+and call sequence: h/g at afterH, t/f at afterT, with the actual suffix and
+final t disposal. No final transform image, table, nonzero or equation premise.
+Eight additional proof modules accepted0/0. Internal audit607 entries
+(171 new+436 inherited) accepted0/0. Closure/finite checks follow before
+the single checkpoint; nonzero/division/inverse have not been entered.
 
 ## B1.06 — CLOSED at derived first domains / inner radix remainders — 2026-10-09
 
