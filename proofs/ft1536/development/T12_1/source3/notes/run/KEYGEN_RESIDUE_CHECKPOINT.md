@@ -1,3 +1,145 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.06 public algebra / transform-entry midpoint
+
+**PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
+2026-10-09,BATCH_033,GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`).
+**CLOSED_AT_RECOVERABLE_MIDPOINT. B1.06 Acceptance NOT MET.**
+B1.05 remains closed at BATCH_032;B1.07 is not entered. Resume: **13R**.
+
+## 13. Closed this window — actual mq algebra and public-root geometry
+
+Small local source commits on main as niirmataa: `42ec75d1`,`088262cc`,
+`de0a13cd`,`4e5dbf55`,`87cbd89a`,plus the final pair/checkpoint commit.
+Exact owned paths under shared archive.lock;foreign changes preserved.
+Complete scope,types,failed histories and traps166–174:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_033_NOTES.md` and `_033.json`.
+
+1. **Actual scalar words:** complete parsed mq_conv_small/add/sub/rshift1/
+   montymul bodies,proved lowering to the inherited scalar reference,
+   parameter binding and return conversion. Public UINT32/radix2^16 is NOT
+   solver UINT64/radix2^31. Wrapping z*q0i LOW16 and no-wrap numerator are
+   accounted for separately;the source comment is not a numeric premise.
+2. **Actual Call field laws:** canonical q18433 addition/subtraction,signed
+   conversion,halving,Montgomery and square. Radix scale is visible in the
+   type. A binding equality handles real signed constants at unsigned32
+   parameters,rather than pretending literal arguments already have that type.
+3. **Complete division:** both declaration groups,all19 actual assignments,
+   final ordinary x multiplication and return. Every node derives canonical
+   range and scale,R*y^18431 at y18,Fermat and x/y for a nonzero divisor.
+   No division-correctness premise or arbitrary scalar oracle remains.
+4. **Geometry:** prime18433,source literal25,orders9216/4608,1536 distinct Phi
+   roots in physical triple order,and coefficient-polynomial injectivity.
+   This is mathematical geometry,NOT initialized public gm/igm memory or an
+   executed public NTT theorem. The inspected B3 solver inventory supplies
+   no q18433 transform refinement and was not substituted for one.
+
+### 13.1 Exact new boundary and remaining B1.06 types
+
+```text
+x,y,out : BitVec32
+x.toNat < 18433; y.toNat < 18433; y.toNat != 0
+source : KeygenPublicScalar.Call (name divT) [uint32 x,uint32 y] (uint32 out)
+--------------------------------------------------------------------------
+out.toNat < 18433
+value out * value y = value x
+value out = value x * (value y)^(-1)            in ZMod18433
+```
+
+Exports: `KeygenPublicDivisionAlgebra.source_division` and
+`source_division_arguments` (actual pre-conversion values with proved U32
+bindings). Modulus/prime/radix/exponents/division correctness are conclusions
+or kernel facts,not assumptions. **Canonical input and nonzero divisor remain
+explicit local domains.** Successful public source execution must derive
+them. No final public equation or fInv is yet supplied.
+
+Remaining,in EXECUTION_PLAN B1.06 order:
+
+1. Actual public `rev10` execution→bitrev10 on the reached source indices;
+   mq_mkgm3 logn10 path→canonical/scaled BOTH gm/igm images and layout/frame.
+   Old solver REV10-table equality is not that function-execution theorem.
+2. Source f/g conversion and complete forward NTT→canonical unsigned16 words
+   AND evaluations of the original CoefficientQuotient polynomial at
+   `KeygenPublicRoots.point`,including physical ordering. Derive the table
+   inputs from generation in the complete public-call composition.
+3. SAME successful public execution→all1536 nonzero tests→checked pointwise
+   division;actual inverse NTT and normalization→canonical h. No assumed
+   inverse/forward round-trip may replace these source proofs.
+4. Construct fInv from the nonzero evaluations and proven evaluation
+   isomorphism;derive BOTH `mulRq` equations for SAME retained f/g/h:
+   `mulRq h (reduceVec f)=reduceVec g` and
+   `mulRq fInv (reduceVec f)=constantCoeffs (1 : ZMod18433)`.
+
+This is a missing enclosing source proof,not a numerical/code counterexample.
+Finite transform/public controls are supportive evidence only. No complete
+KeyGen,emitted-to-fiber,compiler,probability/PRG/security or review follows.
+
+### 13.2 Pins,audit and finite controls
+
+BEFORE edits/jobs,BATCH_015–032 verified:5019 distinct pins,561 current
+inputs,no supersession,no active job. Entry receipt:
+`.build/levels_033/ENTRY_PINS_033.json`,SHA256
+`0173a014e06b217e3e47053148de2fe410749a0d29d929c2e0d46b7fb0249ba5`.
+Identical predecessor closure rechecked at preseal and during sealing.
+
+- **BATCH_033 JSON:** `6fa821d531a16918a67eac7fae08ccc0ad696557063a8a4c8edf970876d3be7c`.
+- **BATCH_033 notes:** `6066f709f9333d7489c75d311c37dd34b73708ece9fd3922f733a57040919af2`.
+- **Full audit:** `ffd9038c052406edb31f62320beeca0abfebf50de5cb48fece0b8dcc12048bd1`.
+- **Audit receipt:** `2490db6370d34fe6f027da6f888079169c00336f390efecaef72a243067df9f0`.
+- **Division algebra source:** `70544c7f3daf01f177792e53ed082011ee963b5395f85b959518892f8252d36e`.
+- **Exact controls:** `50fbb6d3d8c70d29c416cf6959ee9290bf85a2bba85e1d635678d96e852630d3`.
+- **Controls receipt:** `2cc1993d896f9cf78687c858979ce794612621c09613a23b0b3eac7dfaab72d8`.
+- **POSTSEAL:** `.build/levels_033/POSTSEAL.json`,SHA256
+  `93f4f41e0ac0450ce756cd087ce46bc8050c5825af3af82fe318eff2f5c8931c`:
+  **5308 distinct pins,571 current inputs,no active job,no supersession**.
+- **Final verification after checkpoint documentation:**
+  `.build/levels_033/FINAL_VERIFY.json`,SHA256
+  `df3ada628f2966ab5aaef171b3804cca51ea3dd7a98d054a82f1fa6cb3940feb`:
+  identical5308-pin closure and no active job.
+
+Ten current accepted Lean modules,0/0 streams. Full audit220 entries:
+197 named new declarations +23 inherited interfaces,205 complete terms +15
+kernel inductives with constructor types,standard axioms only,zero elisions.
+The5029668-byte artifact remains under
+`.build/jobs/keygen_public_audit_033_001/`,with tracked generator/producer
+and complete pins. Maximum accepted cumulative RSS5034220KiB;all limits
+unchanged. No broad unchanged replay or independent review.
+
+Sage standard preparser/ZZ and exact residue-polynomial rings:14 normal/
+UBSan runs,each18433 paired scalar rows +18433 signed-conversion rows +2048
+table rows +seven synthetic forward/inverse transforms +four public calls.
+Three synthetic public successes and the zero-f rejection agree with exact
+equations/frames;NOT accepted full KeyGen attempts,private keys or laws.
+Six mutations detected in both modes. All16 attempt directories/25 receipted
+steps retained:four wholly accepted,11 failed,one external120s interruption
+without receipt. Snapshot/raw bytes and its separate interruption record
+remain;no engine receipt/exit was invented. Later invocations remove only
+that extra shell timeout,not the guarded1800s step limit. No unresolved
+current Lean source or active owned job. No push,review,worker/subagent/
+session/relay,migration or stages import.
+
+## 13R. Resume B1.06 — actual public tables,transforms and SAME-material equations
+
+1. Read source3/WORK_STATE,this checkpoint,EXECUTION_PLAN B1.06 and
+   `run2/notes/B1_STAGED_ROADMAP.md`. B1.06 Acceptance is NOT MET;
+   B1.05 remains closed;B1.07 waits. Preserve BATCH_015–033 and failed history.
+2. BEFORE edits/jobs,verify the complete BATCH_015–033 closure:
+
+   ```sh
+   mkdir -p .build/levels_034
+   python3 -B tools/keygen_public_batch.py verify 6fa821d531a16918a67eac7fae08ccc0ad696557063a8a4c8edf970876d3be7c 6066f709f9333d7489c75d311c37dd34b73708ece9fd3922f733a57040919af2 .build/levels_034/ENTRY_PINS_034.json
+   ```
+
+   Expect5308 pins,571 current inputs,no supersession/no active job.
+   Any mismatch is stop-and-report,not pin weakening or silent repair.
+3. Continue the four exact seams in13.1. Reuse checked mq field/division
+   contracts and mathematical root/injectivity facts. Do not supply table
+   images,transform correctness,nonzero/public/inverse equations as final
+   premises. Existing complete public operational bodies are BATCH_031 pins.
+4. Unique guarded `keygen_public_*_034_*` jobs;one job,unchanged engine/
+   kernel/print limits,0/0 streams,Sage standard preparser,durable environments.
+   Retain every failed attempt and any honestly absent receipt. Small local
+   commits. Close at B1.06 Acceptance or another expanded recoverable midpoint.
+   No automatic push/review/subagent/worker/session/relay/migration/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.05 Acceptance closed
 
 **B1.05 Acceptance MET / PROVED_KERNEL_SCOPED / CLOSED_AT_ACCEPTANCE.**

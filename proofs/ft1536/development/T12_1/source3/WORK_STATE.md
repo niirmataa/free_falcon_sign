@@ -1,5 +1,39 @@
 # T12.1/source3 — żywy stan
 
+## B1.06 — CLOSED at public-algebra / transform-entry midpoint — 2026-10-09
+
+**CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
+**B1.06 Acceptance NOT MET.** B1.05 remains closed at BATCH_032;
+B1.07 is not entered. Next owner-started continuation: checkpoint **13R**.
+Actual mq words/Call field laws,signed parameter normalization,complete
+square/division source chain and q18433 root geometry are checked. Division
+has explicit canonical-input/nonzero-divisor domains;source execution derives
+its result,not an assumed division contract. Root geometry has orders9216/
+4608,1536 distinct Phi roots and coefficient injectivity,NOT generated gm/
+igm memory or an executed public-transform refinement. Actual rev10/table/
+forward/inverse composition,all nonzero tests,canonical h and BOTH SAME-key
+Relation.mulRq equations with fInv remain open B1.06 obligations.
+
+Pair JSON `6fa821d531a16918a67eac7fae08ccc0ad696557063a8a4c8edf970876d3be7c`,
+notes `6066f709f9333d7489c75d311c37dd34b73708ece9fd3922f733a57040919af2`.
+POSTSEAL `.build/levels_033/POSTSEAL.json`,SHA256
+`93f4f41e0ac0450ce756cd087ce46bc8050c5825af3af82fe318eff2f5c8931c`:
+5308 distinct pins,571 current inputs,no supersession/no active job.
+Final documentation-time verification also passed5308 pins/no active job:
+`.build/levels_033/FINAL_VERIFY.json`,SHA256
+`df3ada628f2966ab5aaef171b3804cca51ea3dd7a98d054a82f1fa6cb3940feb`.
+Ten accepted Lean modules,0/0;220-entry full audit,205 terms/15 inductives,
+standard axioms/zero elisions,max accepted cumulative5034220KiB. Sage:14
+normal/UBSan runs,18433 paired scalar/18433 signed rows,2048 table rows,seven
+synthetic transforms/four public calls per run,six mutations detected in
+each mode. Finite controls are NOT a substitute for the missing source proof.
+All16 directories/25 receipted steps retained:four wholly accepted,11 failed,
+one externally interrupted without an invented engine receipt. No unresolved
+current source,job,push,review,subagent,worker/session/relay,migration/import.
+Source commits `42ec75d1`,`088262cc`,`de0a13cd`,`4e5dbf55`,`87cbd89a`,plus the
+final pair/checkpoint commit. Limits unchanged. Next work is in13.1/13R;
+the stage has not been silently narrowed to the scalar helpers.
+
 ## B1.06 — public/inverse continuation — 2026-10-09
 
 Owner resumed checkpoint section 12R with GPT-6.1 Sol Fast
