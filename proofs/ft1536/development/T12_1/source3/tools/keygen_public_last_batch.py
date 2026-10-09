@@ -79,6 +79,8 @@ def seal():
         p = job.OLD/'inputs/source'/name; assert job.sha(p) == expected,p
         source_pins.append(pin(p))
     directories = sorted((job.BUILD/'jobs').glob('keygen_public_*_035_*'))
+    # run_cmd-only audit sources can have identical oleans. Historical
+    # provenance therefore requires BOTH source and artifact digests.
     products = {}
     for directory in directories:
         assert (directory/'RECEIPTS.json').exists(), ('unaccounted receipt-less attempt',directory)
@@ -88,7 +90,7 @@ def seal():
             artifact = directory/'lib'/(module.replace('.','/')+'.olean')
             snapshot = directory/'formal'/(module.replace('.','/')+'.lean')
             assert job.sha(artifact) == r['olean_sha256'] and job.sha(snapshot) == r['source_sha256']
-            products[(module,r['olean_sha256'])] = {'artifact':pin(artifact),'source_snapshot':pin(snapshot),
+            products[(module,r['olean_sha256'],r['source_sha256'])] = {'artifact':pin(artifact),'source_snapshot':pin(snapshot),
                 'receipt':pin(directory/'RECEIPTS.json')}
     history = []; resolutions = {}
     for directory in directories:
@@ -100,9 +102,10 @@ def seal():
         for e in inventory['reused']:
             current_source = path(e.get('current_source',e['source'])); artifact = path(e['artifact'])
             if job.sha(current_source) != e['source_sha256'] or job.sha(artifact) != e['artifact_sha256']:
-                key = (e['module'],e['artifact_sha256']); assert key in products, ('missing immutable old product',key)
+                key = (e['module'],e['artifact_sha256'],e['source_sha256'])
+                assert key in products, ('missing immutable old source/product pair',key)
                 resolved = products[key]; assert resolved['source_snapshot']['sha256'] == e['source_sha256']
-                resolutions[e['module']+'@'+e['artifact_sha256']] = {'module':e['module'],
+                resolutions['@'.join(key)] = {'module':e['module'],
                     'recorded_source_path':str(current_source),'recorded_source_sha256':e['source_sha256'],
                     'recorded_artifact_path':str(artifact),'recorded_artifact_sha256':e['artifact_sha256'],**resolved}
         status = 'FAILED_RETAINED' if any(not r['accepted'] for r in records) else 'ACCEPTED'
@@ -143,6 +146,8 @@ def seal():
         'attempt_details':history,'attempt_counts':{status:sum(e['status']==status for e in history)
             for status in ['ACCEPTED','FAILED_RETAINED']},
         'within_window_earlier_product_resolution':list(resolutions.values()),
+        'packaging_failure':pin('.build/levels_035/SEAL_001_FAILURE.json'),
+        'failed_packaging_tool':pin('.build/levels_035/SEAL_001_TOOL.py'),
         'contracts':{
             'last_row':'SAME complete generator execution and local logn10/pointer-width/separation domains derive k1/b512/u0, all256 paired-store iterations, BOTH canonical scaled physical images512..1023, terminal u512, byte/allocation frame, original logn and remaining source suffix. No generated image or loop outcome premise.',
             'upward_bodies':'Complete parsed cube and square bodies derive BOTH per-cell row updates from their explicit local child-cell/counter/pointer domains, including uint16 promotion, actual Montgomery calls and cross-table frames. These domains remain to be supplied by enclosing source-loop composition.',
