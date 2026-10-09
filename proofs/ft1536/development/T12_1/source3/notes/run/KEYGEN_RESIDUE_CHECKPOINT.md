@@ -1,3 +1,151 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.06 universal ORIGINAL public forward evaluations
+
+**PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
+2026-10-09,BATCH_042,GPT-6 Astra Ultrafast (`openai/gpt-6-astra-ultrafast`).
+**CLOSED_AT_RECOVERABLE_MIDPOINT. B1.06 Acceptance NOT MET.**
+One midpoint this window. B1.05 stays BATCH_032;B1.07 is not entered.
+Resume: **22R**. Full types/pins/traps: `KEYGEN_SOURCE_TO_FIBER_001_BATCH_042_NOTES.md`.
+
+## 22. Closed this window — all outer radix stages,source triple,ORIGINAL1536 evaluations
+
+1. **21.1 item1 DONE:** actual outer radix row/stage domains,twiddle m+j
+   loads,counters,t*m=1536 and writable-table frames are derived and folded.
+   All u1/v loops and eight m stages are composed from the SAME complete
+   forward invocation. First-pass header/table facts are retained through
+   new modules,with source n/hn/logn,both aliases and declaration types.
+   Terminal m512/t3 and the real triple seam are conclusions.
+2. **Original polynomial invariant DONE:** the q18433 source-index root
+   tree and low/high remainder identities identify every source-ordered
+   degree<3 block with evaluation of the ORIGINAL CoefficientQuotient
+   polynomial at its assigned physical roots. Only natural REV10/exponent
+   certificates are reused from older NTT work,not a different-field proof.
+3. **21.1 item2 DONE:** actual triple body and full512-body loop derive
+   scaled w/x/x2,ordinary B/C contributions,the physical C2/C1 order,three
+   chronological stores,and every untouched-cell/table frame. Actual seed
+   and u/v initialization are derived. Composing the original invariant
+   gives ALL1536 ORIGINAL polynomial evaluations of the SAME full forward
+   execution,including preservation through both table disposals.
+4. **SAME public f/g DONE at exact forward-return boundaries:** both
+   actual Call/Bind layers and the full public conversion derive h/g's
+   evaluations at afterH and t/f's at afterT,with original cells,fresh3072
+   t allocation,the actual suffix and final disposal. No transform image,
+   generated table,nonzero or equation premise is introduced.
+
+### 22.1 Exact checked boundaries and remaining16.1 obligations
+
+`KeygenPublicEvaluation.source_complete`:
+
+```text
+original : Geometry.Vec; s : State; out : Result; a : ArrayPointer
+Slot s "logn" 10
+s.arrays "a" = some a
+Cells s.heap a 1536 (KeygenPublicInputMaterial.reduced original)
+Exec fixedPublicProgram [] (code forwardT) s out
+--------------------------------------------------------------
+out.flow = normal
+forall i:Fin1536,
+  Cell out.state.heap a i.val
+    ((CoefficientQuotient.polynomial (Relation.reduceVec original)).eval
+      (KeygenPublicRoots.point i))
+```
+
+`Cell` includes actual unsigned16 load,canonical range<18433 and the exact
+ordinary field value. Original converted input cells are the LOCAL forward
+input,not the final public theorem's extra premise.
+
+`KeygenPublicEvaluationMaterial.source_same_material` takes actual
+logn10/ternary1/f,g,h bindings,typed allocated input/output memory,SAME
+represented fv/gv with bounds1,h/input nonaliasing,static-table liveness
+and the finite fixed-program compute execution. It derives both original
+converted arrays and all1536 evaluations as above. These legal entry facts
+remain the later enclosing KeyGen's obligations. No success return1 is
+needed for this before-test result;its actual suffix may reject.
+
+The `Front` conclusion selects converted/afterH/afterT/inner states. It
+asserts **gv evaluations in h at afterH** and **fv evaluations in t at
+afterT**,not g at afterT or unchanged transform cells after division/inverse.
+It retains the SAME suffix afterT→inner,observed flow and exact final
+t disposal. Carry this lifetime boundary to subsequent consumers.
+
+Remaining,in16.1 plan order:
+
+1. **Item2 universal source evaluations DONE.** For the pointwise consumer,
+   expose actual afterT suffix headers/bindings and prove h/g preservation
+   across t's forward call at that common seam. The current exact headline
+   intentionally records both respective forward-return states. Do not
+   turn the missing common-state frame into an assumed h image.
+2. **Item3 NEXT,not entered:** SAME successful public path→all1536 nonzero
+   f tests→actual pointwise division→actual inverse/normalization→canonical h.
+   No input nonzero premise or assumed forward/inverse round-trip.
+3. **Item4 THEN,not entered:** fInv from nonzero evaluations/proved evaluation
+   isomorphism,and BOTH SAME f/g/h `mulRq` equations. These are still required
+   for B1.06 Acceptance. B1.07 waits.
+
+The forward-value gap is now closed universally. Remaining successful-suffix/
+inverse/frame obligations are missing source proofs,not numerical/code
+counterexamples. Full KeyGen/emitted-to-fiber,compiler,laws/PRG/security and
+independent review remain outside this midpoint's claims.
+
+### 22.2 Pins,audit,controls,retained attempts
+
+- BEFORE edits/jobs:BATCH_015–041 **7417 pins/633 literal bindings**,
+  no supersession/job. Entry `.build/levels_042/ENTRY_PINS_042.json`:
+  `9d32b6d8b6d4ed3636da57a34c92bee066d6fd4d126b7889b017e8fe774aedc2`.
+- **BATCH_042 JSON:** `26e10ffedb0b26627920898cae034db1e6b8e555caf15963b8e449d0d7f6ea87`.
+- **BATCH_042 notes:** `bcbf24d078ef4a04f4e2bd0318cecf52128f33cf0ea493f7b3f1a0914cf5bc68`.
+- Eighteen proof modules+audit accepted0/0. Audit **607 entries=171 new+436
+  inherited;557 complete terms+50 inductives;standard axioms;zero elisions**.
+  JSON `0d5f6557b84c7d0757b2073b4a32e4e49bb7f2b0adca43ff9ca80ca27f83392c`;
+  receipt `a1cc956c582e634f6b51e6df69f7d50ae692e6c64137ecacc351022dc4dbbb78`.
+- Sage final002: **122880 physical evaluations,8176 block remainders,13824
+  root-tree laws**,eight public vectors,two negative-control families
+  detected. Result `9836fd36e98b4208cc9b061334a29884d94c0c3b675e8a7742add8e3e01364f0`;
+  receipt `c1411340691c8b03c603a4ef2f8b6978551e36ea50b9495756148680218120af`.
+  Inherited041 twelve C/UBSan runs and039 live-header decision rehashed;
+  no new C execution and no complete M0 build. Finite controls are diagnostic.
+- PRESEAL `aaf7bb919015601c58f22076dd2ef5c1bd28884c10ea527575414d247a605752`
+  rechecks7417 predecessor pins. Dedicated042 seal/verify tool:
+  `69cbeddb0b55a4003b67373c23f7ae64e2c4a4dd28384e696fb87b8e1c2b522e`.
+- **POSTSEAL:** `.build/levels_042/POSTSEAL.json`,SHA256
+  `26f28615dd9544bd33b8e61c20c7bb0818fb853eef20cb7f493571ab7e255115`:
+  **7747 distinct pins/652 literal bindings**,no supersession or active job.
+- All23 directories retained:13 wholly accepted,nine failed,one interrupted.
+  Completed receipts record30 steps/21 accepted/nine rejected;recorded max
+  RSS4714196KiB. Polynomial001's120s tool interruption has no engine/resource
+  receipt;its exact snapshots/partial streams and administrative record
+  `4088e08ff596824527bb5660d17c44f5569a3e74f3914a9d7f7b4fd793119dd8` remain.
+  Limits unchanged. Traps224–232 are in pair notes;no current unresolved job.
+- Own source/evidence commits:`504c361c`,`41b34ee2`,`99ea8729`,`f0ee6e3f`,
+  plus final pair/checkpoint. Foreign work/staging preserved. No push,review,
+  delegation,relay,migration,stages import or broad replay.
+
+## 22R. Resume B1.06 — successful nonzero/division/inverse,then both equations
+
+1. Read source3/WORK_STATE,this checkpoint,EXECUTION_PLAN B1.06 and
+   `run2/notes/B1_STAGED_ROADMAP.md`. Acceptance NOT MET;B1.05 closed;
+   B1.07 waits. Preserve BATCH_015–042 and every failed/interrupted byte.
+2. BEFORE edits/jobs,verify the complete BATCH_015–042 closure from source3:
+
+   ```sh
+   mkdir -p .build/levels_043
+   python3 -B tools/keygen_public_evaluation_batch.py verify 26e10ffedb0b26627920898cae034db1e6b8e555caf15963b8e449d0d7f6ea87 bcbf24d078ef4a04f4e2bd0318cecf52128f33cf0ea493f7b3f1a0914cf5bc68 .build/levels_043/ENTRY_PINS_043.json
+   ```
+
+   Expect7747 pins,652 literal bindings,no supersession/job. Any mismatch
+   is stop-and-report,not weakening or silently repairing historical pins.
+3. Continue22.1 in16.1 order. Universal ORIGINAL forward evaluations are
+   proved,including SAME public f/g at their respective return states.
+   First expose common afterT h/g preservation and actual suffix header/
+   bindings;then consume the SAME successful tests for all1536 nonzero f
+   evaluations,division,actual inverse and normalization. Only afterwards
+   fInv and BOTH equations. No input correctness/nonzero/round-trip premise.
+4. Unique guarded `keygen_public_*_043_*` jobs from001,pair⇒job convention;
+   one serial job,unchanged limits,0/0 streams,Sage preparser,durable runtime,
+   bounded definitions/pieces,all attempts retained. Avoid an outer tool
+   timeout shorter than the existing guard;use background completion for
+   potentially longer jobs. Small local own commits;one expanded midpoint
+   or Acceptance per window. No automatic push/review/delegation/relay/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.06 derived first domains / inner radix remainders
 
 **PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**

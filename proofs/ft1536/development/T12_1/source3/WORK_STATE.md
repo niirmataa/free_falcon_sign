@@ -1,5 +1,48 @@
 # T12.1/source3 — żywy stan
 
+## B1.06 — CLOSED at universal ORIGINAL public forward evaluations — 2026-10-09
+
+**CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
+**B1.06 Acceptance NOT MET.** One midpoint in BATCH_042,GPT-6 Astra
+Ultrafast (`openai/gpt-6-astra-ultrafast`). B1.05 stays032;B1.07 waits.
+Resume: checkpoint **22R**.
+
+The SAME complete forward execution now derives **all1536 evaluations of
+the ORIGINAL reduced CoefficientQuotient polynomial** in physical point
+order. All outer radix rows/eight stages,source-index root tree,original
+polynomial invariant,actual512 triples,scaled w/x/x2,chronological stores,
+table/header frames and both table disposals are composed. Both Call/Bind
+layers and the complete public conversion bind both original f/g arrays:
+**h/g evaluations at afterH,t/f evaluations at afterT**,with the actual
+public suffix and final t disposal. No generated table,NTT correctness,
+final image,nonzero or equation is assumed by the full public headline.
+
+Next in plan order: expose/preserve h/g across t's call at the common
+afterT seam and derive its suffix headers;successful source tests→all1536
+nonzero f evaluations→division→actual inverse/normalization/canonical h;
+then fInv and both SAME-material mulRq equations. Those proofs and B1.06
+Acceptance remain OPEN. The forward-value gap is closed;there is no new
+code/numerical counterexample. Full KeyGen/emitted-to-fiber,compiler,laws/
+PRG/security and independent review are not implied.
+
+Entry7417 pins (`9d32b6d8…`);dedicated042 POSTSEAL **7747 pins/652 literal
+bindings**,no supersession/job (`26f28615…`). Pair JSON
+`26e10ffedb0b26627920898cae034db1e6b8e555caf15963b8e449d0d7f6ea87`;
+notes `bcbf24d078ef4a04f4e2bd0318cecf52128f33cf0ea493f7b3f1a0914cf5bc68`.
+Eighteen proof modules+audit0/0;607 entries/557 complete terms/50 inductives/
+standard axioms/zero elisions (`0d5f6557…`). Sage0020/0:122880 physical
+evaluations,8176 block remainders,13824 root laws,two negative-control
+families detected (`9836fd36…`). Inherited041 twelve C/UBSan runs and039
+live-header decision rehashed;no new C execution or full M0 build.
+All23 directories retained:13 accepted,nine failed,one interrupted;
+30 completed receipt steps,recorded max RSS4714196KiB. The interrupted
+Polynomial001 has no fabricated final engine/resource receipt;partial
+streams and metadata retained. Limits unchanged;traps224–232 in pair notes.
+
+Own commits:`504c361c`,`41b34ee2`,`99ea8729`,`f0ee6e3f`,plus final pair/
+checkpoint. Foreign work/staging preserved. No push,review,delegation,relay,
+migration,stages import or broad replay.
+
 ## B1.06 — BATCH_042 outer radix / triple continuation — 2026-10-09
 
 Owner-started new window, GPT-6 Astra Ultrafast (`openai/gpt-6-astra-ultrafast`),
