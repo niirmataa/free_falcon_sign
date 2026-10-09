@@ -108,12 +108,12 @@ def ceremony(seal_job, checks_job, manifest):
     committed('tools/keygen_public_upper_audit_source.py', head)
     committed(SAGE_SOURCE, head)
     audit = read(audit_dir/(AUDIT_NAME+'.json'))
-    expected = len(declarations())+len(INHERITED)
-    assert len(audit) == len({e['name'] for e in audit}) == expected, (len(audit), expected)
+    audit_entries = len(declarations())+len(INHERITED)
+    assert len(audit) == len({e['name'] for e in audit}) == audit_entries, (len(audit), audit_entries)
     assert set(declarations()) <= {e['name'] for e in audit}
     assert {('FT1536.Source3.'+n) for n in INHERITED} <= {e['name'] for e in audit}
     entries = audit_dir/(AUDIT_NAME+'_ENTRIES.jsonl')
-    assert entries.exists() and entries.read_text().count('\n') == expected
+    assert entries.exists() and entries.read_text().count('\n') == audit_entries
     for e in audit:
         assert set(e['axioms']) <= {'propext', 'Classical.choice', 'Quot.sound'}, e['name']
         assert '⋯' not in json.dumps(e, ensure_ascii=False), e['name']
@@ -171,7 +171,7 @@ def ceremony(seal_job, checks_job, manifest):
     result = {'utc': datetime.now(timezone.utc).isoformat(), 'batch': 'BATCH_036',
         'window': 'BATCH_037 seal ceremony jobs acting on the sealed BATCH_036 pair',
         'checked': checked, 'distinct_pinned_files': len(checked), 'active_jobs': [], 'superseded': {},
-        'audit': {'job': seal_job, 'entries': expected,
+        'audit': {'job': seal_job, 'entries': audit_entries,
             'named_source_declarations': len(declarations()), 'inherited_interfaces': len(INHERITED),
             'full_terms': sum('term' in e['body'] for e in audit),
             'kernel_inductives_with_constructor_types': sum('constructors' in e['body'] for e in audit),
@@ -193,7 +193,7 @@ def ceremony(seal_job, checks_job, manifest):
         json.dump(result, stream, indent=2)
         stream.write('\n')
     print(json.dumps({'ceremony_manifest': pin(target), 'checked': len(checked),
-                      'audit_entries': expected, 'control_runs': 14}, indent=2))
+                      'audit_entries': audit_entries, 'control_runs': 14}, indent=2))
 
 
 def verify(pair_sha, notes_sha, ceremony_sha, receipt):
