@@ -1,5 +1,40 @@
 # T12.1/source3 — żywy stan
 
+## B1.06 — CLOSED at actual public last-row entry — 2026-10-09
+
+**CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
+**B1.06 Acceptance NOT MET.** B1.05 remains closed at BATCH_032;
+B1.07 is not entered. Next owner-started continuation: checkpoint **14R**.
+Complete actual rev10→ten iterations→bitrev10/reverse9 is checked. SAME
+complete mq_mkgm3 logn10 execution now derives the actual last-row entry,
+both canonical/scaled root/inverse-root seeds and their powers. The post-
+increment leaves k=12;memory/pointers remain unchanged at this entry.
+Uint16 written-cell/narrowing/promotion/frame adapters are checked locally.
+Full paired row writes,upward/cubing rows and exceptional igm0 are STILL
+OPEN source proofs;finite matches are not a replacement. Forward/inverse
+NTT,all nonzero tests,canonical h,fInv and BOTH SAME-material equations
+remain open in B1.06,in that order. No code/numerical counterexample found.
+
+Pair JSON `6182e78c1c95a5fe8f6ab710312ceceac703d2c54c68e54f0eb3458be7198b46`,
+notes `dbc975a7ce3214b8a58629c7ef103a8867958471611c5251b4d572458e5dd610`.
+POSTSEAL `.build/levels_034/POSTSEAL.json`,SHA256
+`c6271053307bc5395c88f8f5b285ad10adfc5242052f35aa4c3a296304e12554`:
+5674 distinct pins,580 current inputs,no predecessor supersession/no job.
+Final documentation-time verification also passed the identical5674 pins:
+`.build/levels_034/FINAL_VERIFY.json`,SHA256
+`45eb307662fba0391131abbe89a5fc87713bcdb2afd9e3fbbdfb583f814ae1dd`.
+Eight proof/audit modules0/0;271 full audit entries,255 terms/16 inductives,
+standard axioms/zero elisions. Five truncated audits were rejected/retained;
+bounded named decompositions passed unchanged print/kernel/process limits.
+Sage8 runs/three mutations per mode;finite diagnostics only. All40 directories/
+46 steps retained:16 wholly accepted,23 failed,one diagnostic. Seven old
+within-window reused products resolved to immutable matching snapshots,
+oleans and receipts,not overwritten cache paths. BATCH_015–033 unchanged.
+Source commits `91ee24c5`,`58d07ece`,`4b904bcb`,plus final pair/checkpoint.
+No unresolved source,active owned job,subagent,worker/session/relay,push,
+review,migration or stages import. Exact remaining types/traps175–185 in
+the pair notes and checkpoint14/14R. No full KeyGen/emitted/security claim.
+
 ## B1.06 — public table/transform continuation — 2026-10-09
 
 Owner resumed checkpoint13R with GPT-6.1 Sol Fast

@@ -1,3 +1,147 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.06 actual public last-row entry midpoint
+
+**PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
+2026-10-09,BATCH_034,GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`).
+**CLOSED_AT_RECOVERABLE_MIDPOINT. B1.06 Acceptance NOT MET.**
+B1.05 remains closed at BATCH_032;B1.07 is not entered. Resume: **14R**.
+
+## 14. Closed this window — real rev10 and BOTH source table seeds
+
+Small local source commits on main as niirmataa:`91ee24c5`,`58d07ece`,
+`4b904bcb`,plus the final pair/checkpoint commit. Exact owned paths under
+archive.lock;foreign worktree/staging and other-lane commits preserved.
+Complete types,failed histories and traps175–185 are in
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_034_NOTES.md` and `_034.json`.
+
+1. **Actual rev10:** complete Body/parser grouping/parameter/return
+   conversion. Source execution derives all ten signed-counter iterations
+   and the uint32 word result. All1024 reached-domain indices kernel-bound
+   to bitrev10;2*u calls specialize to reverse9 with result<512. The static
+   solver REV10 table is not substituted for function execution.
+2. **Actual generator prefix:** complete mq_mkgm3 partition,actual logn10
+   path,g conversion,one squaring,ig division and terminal k12. Source
+   scalar calls supply both canonical/scaled root and inverse-root words.
+   Neither a root initializer nor a generated table image is assumed.
+3. **Same source last-row entry:** actual else branch derives x/ix,g2/g4,
+   ig2/ig4;both directions' scaled powers are conclusions. b scope,the
+   remaining row source execution,normal flow and upward suffix are retained.
+   Memory/arrays/globals/tables remain unchanged at this entry.
+4. **Uint16 cells:** written-cell Load16,canonical narrowing,unsigned
+   int32 promotion/U32 conversion and same-array/separated-table byte frames.
+   These are local adapters,NOT populated full gm/igm images.
+
+### 14.1 Exact new boundary and remaining B1.06 types
+
+```text
+s : C99ArrayReference.State; out : C99ProcedureReference.Result
+profile : KeygenPublicTableAtoms.Slot s "logn" (10#32)
+source : KeygenPublicExec.Exec KeygenPublicSource.program []
+  (KeygenPublicSource.code generate) s out
+--------------------------------------------------------------------
+exists after inner,
+  Exec program [] KeygenPublicTableRows.remaining
+    (KeygenPublicTableRows.ready (KeygenPublicTableSeed.ready s)) inner
+  and after = restoreScope (KeygenPublicTableSeed.ready s)
+    inner.state ["b"] []
+  and inner.flow = normal
+  and Exec program [] KeygenPublicTableRows.afterRows after out
+```
+
+Export:`KeygenPublicTableRows.source_last_row_entry`. `remaining` is actual
+source849–860;`afterRows` is863–884. The supplied profile is a local caller
+domain;its binding in complete public composition still must be derived.
+No Owned/initializer/table image/root power/callee correctness premise is
+supplied here. The explicit ready defs contain derived source words and
+unchanged heap/pointers. No final h/fInv/public equation is yet supplied.
+
+Remaining,in EXECUTION_PLAN B1.06 order:
+
+1. From THIS derived last-row entry,execute/refine remaining k1/b512/u0,
+   cast/u<<k→actual rev10 input,and every paired gm/igm write. Derive BOTH
+   last-row canonical/scaled exponent images and preserve other cells.
+2. Actual cubing/upward rows and gm0 copy;exceptional igm0 must yield
+   radix/(2*firstRoot-1),NOT radix/firstRoot. Compose complete BOTH table
+   images with actual legal layout/frame and automatic-array lifetime.
+3. SAME f/g conversion and complete forward NTT→canonical unsigned16 AND
+   evaluations of the original CoefficientQuotient polynomial at
+   KeygenPublicRoots.point,in physical order. Enclosing public execution
+   must derive table inputs;no final generated-image premise.
+4. SAME successful public execution→all1536 nonzero tests→division;
+   actual inverse transform/normalization→canonical h. No assumed round-trip.
+5. Construct fInv from nonzero evaluations/proven evaluation isomorphism;
+   BOTH mulRq equations for SAME retained f/g/h:
+   `mulRq h (reduceVec f)=reduceVec g` and
+   `mulRq fInv (reduceVec f)=constantCoeffs (1 : ZMod18433)`.
+
+This is a missing enclosing source proof,not a numerical/code counterexample.
+No complete KeyGen,emitted-to-fiber,compiler,laws/PRG/security or review follows.
+The midpoint does NOT redefine the stage's Acceptance as a seed-helper goal.
+
+### 14.2 Pins,full audit and targeted finite controls
+
+BEFORE edits/jobs,BATCH_015–033 verified:5308 distinct pins,571 current
+inputs,no supersession,no active job. Entry receipt
+`.build/levels_034/ENTRY_PINS_034.json`,SHA256
+`53d81c7181148871c32177a3af7a7dbe80e960096fbeb8b1d7ce16ac5cf3cc9a`.
+Identical predecessor closure rechecked at preseal and sealing.
+
+- **BATCH_034 JSON:**`6182e78c1c95a5fe8f6ab710312ceceac703d2c54c68e54f0eb3458be7198b46`.
+- **BATCH_034 notes:**`dbc975a7ce3214b8a58629c7ef103a8867958471611c5251b4d572458e5dd610`.
+- **Full audit:**`4cca633bc0abde0a4752399fdf36e4aa8a4851a7ad382adb9613ec075f7da6e3`.
+- **Audit receipt:**`38308ed950d0ccd69b80c2f309c0c478a864411322084f20ceb2f578d95176ab`.
+- **Exact controls:**`cba0d9e4be1548cabf166fd4c87c68e59a281feff4746952cc080fbdd718b439`.
+- **Controls receipt:**`cfbe5cd55c5e64bbae639b132d78f3150bdfcef804efe04715726f105530450b`.
+- **POSTSEAL:**`.build/levels_034/POSTSEAL.json`,SHA256
+  `c6271053307bc5395c88f8f5b285ad10adfc5242052f35aa4c3a296304e12554`:
+  **5674 distinct pins,580 current inputs,no supersession/no active job**.
+- **Final documentation-time verification:**`.build/levels_034/FINAL_VERIFY.json`,
+  SHA256 `45eb307662fba0391131abbe89a5fc87713bcdb2afd9e3fbbdfb583f814ae1dd`:
+  identical5674-pin closure,no active job.
+
+Eight current proof/audit modules,0/0 streams. Full audit271 entries:
+236 named new declarations +35 inherited interfaces,255 complete terms
++16 kernel inductives/structures with constructor types,standard axioms
+only,zero elisions. Artifact7749410 bytes retained under
+`.build/jobs/keygen_public_tables_audit_034_006/`,tracked generator/producer.
+Five elided audits were rejected. Bounded named certificate/cell lemmas and
+affected consumer rebuilds passed without changing print/kernel/process
+limits. Max cumulative RSS5270472KiB(current)/5373720KiB(all wholly accepted).
+
+Sage standard preparser/ZZ:8 normal/UBSan runs,each1025 reversal rows,
+terminal counter/eight seed words and2050 paired table/sentinel rows.
+Three mutations detected in each mode. Instrumented C copies/finite full
+table matches are diagnostic,NOT the missing universal source-store/NTT
+proof,complete accepted KeyGen/private keys or laws. All40 directories/
+46 steps retained:16 wholly accepted,23 failed,one diagnostic. Seven old
+within-window reused products resolve to immutable matching source/olean/
+receipt bytes instead of overwritten cache paths;BATCH_015–033 is unchanged.
+No receipt-less attempt,unresolved current source or active owned job.
+No push,review,subagent,worker/session/relay,migration or stages import.
+
+## 14R. Resume B1.06 — populate BOTH actual tables,then public/inverse equations
+
+1. Read source3/WORK_STATE,this checkpoint,EXECUTION_PLAN B1.06 and
+   `run2/notes/B1_STAGED_ROADMAP.md`. Acceptance NOT MET;B1.05 closed;
+   B1.07 waits. Preserve BATCH_015–034 and every failed/diagnostic artifact.
+2. BEFORE edits/jobs,verify the complete BATCH_015–034 closure:
+
+   ```sh
+   mkdir -p .build/levels_035
+   python3 -B tools/keygen_public_tables_batch.py verify 6182e78c1c95a5fe8f6ab710312ceceac703d2c54c68e54f0eb3458be7198b46 dbc975a7ce3214b8a58629c7ef103a8867958471611c5251b4d572458e5dd610 .build/levels_035/ENTRY_PINS_035.json
+   ```
+
+   Expect5674 pins,580 current inputs,no predecessor supersession/no job.
+   Any mismatch is stop-and-report,not pin weakening or silent repair.
+3. Continue14.1 in order. Start at the DERIVED source_last_row_entry,
+   not at an assumed image. Reuse actual rev10,source scalar/division
+   algebra and both root seeds. Prove full paired-store/row/table memory
+   before supplying table inputs to forward/inverse composition.
+4. Unique guarded `keygen_public_*_035_*` jobs;one job,unchanged process/
+   kernel/print limits,0/0 proof streams,Sage preparser,durable environments.
+   Keep defs/pieces bounded;all failed/earlier accepted versions retained.
+   Small local commits;close at Acceptance or another expanded midpoint.
+   No automatic push/review/subagent/worker/session/relay/migration/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.06 public algebra / transform-entry midpoint
 
 **PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
