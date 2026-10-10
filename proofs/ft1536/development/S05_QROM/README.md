@@ -3,6 +3,20 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
+**Cel końcowy właściciela: dowód bezpieczeństwa FT1536 w QROM z deklaracją
+na takim samym poziomie rygoru jak cel ROM.**
+[Kontrakt tezy, założeń i obowiązków](notes/TARGET_CONTRACT_001.tex)
+oddziela założenia kryptograficzne od lematów, które musimy domknąć.
+Główne twierdzenie dotyczy rzeczywistego prawa kluczy FT1536; jednolity
+all-h certyfikat jest silniejszym celem pomocniczym, nadal OPEN.
+Nie uznano h=0 ani warunkowego budżetu MARGINAL-006 za końcowy wynik.
+
+[Przegląd drugiego okna](notes/REVIEW_006_001.tex): piny zgodne, świeży
+replay skorygowanych 005 i 006 odtworzył certyfikaty 512-bitowe bajt w bajt;
+230 dodatkowych dokładnych praw sprawdziło rachunek mieszanki capu.
+Werdykt: **conditional on a named input**, bez statusu REVIEWED i bez
+nowego kernela. Potwierdzono zakres wyniku, nie istnienie efektywnego S.
+
 **Korekta numeryczna 005:** [erratum końców MPFR](notes/NORMALIZER_005_ERRATUM_001.tex)
 zastępuje pierwotne numeryczne świadectwa normalizatora.
 `QQ(endpoint)` mogło zaokrąglać do pobliskiego ułamka; nowe źródło używa

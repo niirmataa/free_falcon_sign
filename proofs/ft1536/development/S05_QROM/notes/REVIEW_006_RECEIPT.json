@@ -1,0 +1,467 @@
+{
+  "id": "S05_REVIEW_006_001",
+  "primary_verdict": "conditional on a named input",
+  "status": "SCOPED_ANALYTICAL_REVIEW_AND_REPLAY_NOT_PROJECT_ACCEPTANCE",
+  "base_commit": "c957e798dd331d78e168e2fb3811c1bb620bc5bd",
+  "hash_checks": [
+    {
+      "manifest": "notes/MARGINAL_006_OUTPUTS.sha256",
+      "checked": 18,
+      "status": "all match"
+    },
+    {
+      "manifest": "notes/NORMALIZER_005_CORRECTED_OUTPUTS.sha256",
+      "checked": 5,
+      "status": "all match"
+    }
+  ],
+  "symbolic_scope": [
+    "Weighted marginal domination under named two-sided assumptions",
+    "Full capped mixture law with 16 precomputed draws",
+    "AC and exact second-moment expansion including none",
+    "Conservative L2 bound, exact-core identity, boundary cases",
+    "Crude full-box lower bounds and scope of h=1,c=0 cost obstruction"
+  ],
+  "fresh_replays": [
+    {
+      "schema_version": 2,
+      "claim_id": "REVIEW_006_CORRECTED_NORMALIZER_REPLAY",
+      "repository": {
+        "commit": "c957e798dd331d78e168e2fb3811c1bb620bc5bd",
+        "dirty": true
+      },
+      "command": [
+        "sage",
+        "notes/FIBER_NORMALIZER_005_CORRECTED.sage",
+        ".build/review_006_001/runs/normalizer_512",
+        "512"
+      ],
+      "environment": {
+        "software": [
+          {
+            "name": "runner-python",
+            "version": "3.13.5"
+          },
+          {
+            "name": "SageMath",
+            "version": "10.9"
+          }
+        ],
+        "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+      },
+      "mathematics": {
+        "assertion_tested": "Fresh replay of corrected 005 normalizer arithmetic used by MARGINAL-006",
+        "coefficient_domain": "ZZ/QQ and RealBallField(512)",
+        "conventions": "Pinned corrected source; exact_rational MPFR endpoints",
+        "inputs": [
+          "notes/FIBER_NORMALIZER_005_CORRECTED.sage"
+        ],
+        "bounds": {
+          "precision": 512
+        },
+        "non_claims": [
+          "No kernel verification",
+          "Same implementation, not an independent numerical algorithm",
+          "No all-h sampler witness"
+        ]
+      },
+      "randomness": {
+        "used": false,
+        "generator": "",
+        "seed": null
+      },
+      "run": {
+        "started_at": "2026-10-10T17:12:49.299631+00:00",
+        "runtime_seconds": 1.418544,
+        "exit_status": 0,
+        "status": "completed",
+        "timeout_seconds": 180.0,
+        "max_output_bytes": 1048576,
+        "resource_limits": {
+          "memory_bytes": 4294967296,
+          "cpu_seconds": 150,
+          "max_cores": 1,
+          "max_threads": 1
+        },
+        "missing_results": [],
+        "invalid_results": []
+      },
+      "execution_artifacts": [
+        "notes/FIBER_NORMALIZER_005_CORRECTED.sage"
+      ],
+      "input_artifacts": [
+        {
+          "path": "notes/FIBER_NORMALIZER_005_CORRECTED.sage",
+          "sha256": "3f25c436f8def166b1e0e8f75704c2b884bca543f32e8537728dc05749e4e2df",
+          "sha256_after": "3f25c436f8def166b1e0e8f75704c2b884bca543f32e8537728dc05749e4e2df"
+        }
+      ],
+      "output_directory": ".build/review_006_001/runs/normalizer_512",
+      "declared_results": [
+        ".build/review_006_001/runs/normalizer_512/certificate.json"
+      ],
+      "outputs": [
+        {
+          "path": ".build/review_006_001/runs/normalizer_512/stdout.txt",
+          "sha256": "0fec12a2baac3ab4819119dee7999b222e2ecb09f71f59813faa109ac517724a",
+          "kind": "log"
+        },
+        {
+          "path": ".build/review_006_001/runs/normalizer_512/stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "kind": "log"
+        },
+        {
+          "path": ".build/review_006_001/runs/normalizer_512/certificate.json",
+          "sha256": "90a0eb5ab55320cd43dd5ffff2f48e924b9b8a8caca622cac6fa64ac4886a31a",
+          "kind": "result"
+        }
+      ],
+      "checks": [
+        {
+          "check": "input hashes unchanged",
+          "passed": true
+        },
+        {
+          "check": "process exited successfully within enforced limits",
+          "passed": true
+        },
+        {
+          "check": "declared result files are present and regular",
+          "passed": true
+        }
+      ],
+      "result": "Run completed; mathematical assertion requires interpretation and review.",
+      "residual_risks": [
+        "Command success does not establish the mathematical interpretation.",
+        "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+        "The thread cap uses conventional environment variables; a child program may ignore them.",
+        "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+      ]
+    },
+    {
+      "schema_version": 2,
+      "claim_id": "REVIEW_006_CAPPED_MARGINAL_REPLAY",
+      "repository": {
+        "commit": "fceb8966c88eaeca2242b8931e383d8e82fa3207",
+        "dirty": true
+      },
+      "command": [
+        "sage",
+        "notes/MARGINAL_006.sage",
+        ".build/review_006_001/runs/marginal_512",
+        ".build/review_006_001/runs/normalizer_512/certificate.json",
+        "512"
+      ],
+      "environment": {
+        "software": [
+          {
+            "name": "runner-python",
+            "version": "3.13.5"
+          },
+          {
+            "name": "SageMath",
+            "version": "10.9"
+          }
+        ],
+        "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+      },
+      "mathematics": {
+        "assertion_tested": "Fresh replay of MARGINAL-006 with a freshly regenerated corrected normalizer",
+        "coefficient_domain": "QQ and RealBallField(512)",
+        "conventions": "Full cap law with 16 precomputed pairs; failure mass charged in moment",
+        "inputs": [
+          "notes/MARGINAL_006.sage",
+          ".build/review_006_001/runs/normalizer_512/certificate.json"
+        ],
+        "bounds": {
+          "precision": 512,
+          "toy_laws": 102
+        },
+        "non_claims": [
+          "No all-h executable witness",
+          "No independent kernel acceptance"
+        ]
+      },
+      "randomness": {
+        "used": false,
+        "generator": "",
+        "seed": null
+      },
+      "run": {
+        "started_at": "2026-10-10T17:14:03.525860+00:00",
+        "runtime_seconds": 1.7706,
+        "exit_status": 0,
+        "status": "completed",
+        "timeout_seconds": 180.0,
+        "max_output_bytes": 1048576,
+        "resource_limits": {
+          "memory_bytes": 4294967296,
+          "cpu_seconds": 150,
+          "max_cores": 1,
+          "max_threads": 1
+        },
+        "missing_results": [],
+        "invalid_results": []
+      },
+      "execution_artifacts": [
+        "notes/MARGINAL_006.sage",
+        ".build/review_006_001/runs/normalizer_512/certificate.json"
+      ],
+      "input_artifacts": [
+        {
+          "path": "notes/MARGINAL_006.sage",
+          "sha256": "d77ef5fa7e4fac2ba797e763d45b6d216a1881ec72ac1f77b0d84ffc1e423523",
+          "sha256_after": "d77ef5fa7e4fac2ba797e763d45b6d216a1881ec72ac1f77b0d84ffc1e423523"
+        },
+        {
+          "path": ".build/review_006_001/runs/normalizer_512/certificate.json",
+          "sha256": "90a0eb5ab55320cd43dd5ffff2f48e924b9b8a8caca622cac6fa64ac4886a31a",
+          "sha256_after": "90a0eb5ab55320cd43dd5ffff2f48e924b9b8a8caca622cac6fa64ac4886a31a"
+        }
+      ],
+      "output_directory": ".build/review_006_001/runs/marginal_512",
+      "declared_results": [
+        ".build/review_006_001/runs/marginal_512/certificate.json"
+      ],
+      "outputs": [
+        {
+          "path": ".build/review_006_001/runs/marginal_512/stdout.txt",
+          "sha256": "a27259a75303c8ca843f8a6e7120055ac4698e739528fa2c67b4b0c9bcbe640d",
+          "kind": "log"
+        },
+        {
+          "path": ".build/review_006_001/runs/marginal_512/stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "kind": "log"
+        },
+        {
+          "path": ".build/review_006_001/runs/marginal_512/certificate.json",
+          "sha256": "61c0171be03b974571caa0de359f3217c4eb78ea0f5752430f1177049d4c7f62",
+          "kind": "result"
+        }
+      ],
+      "checks": [
+        {
+          "check": "input hashes unchanged",
+          "passed": true
+        },
+        {
+          "check": "process exited successfully within enforced limits",
+          "passed": true
+        },
+        {
+          "check": "declared result files are present and regular",
+          "passed": true
+        }
+      ],
+      "result": "Run completed; mathematical assertion requires interpretation and review.",
+      "residual_risks": [
+        "Command success does not establish the mathematical interpretation.",
+        "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+        "The thread cap uses conventional environment variables; a child program may ignore them.",
+        "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+      ]
+    },
+    {
+      "schema_version": 2,
+      "claim_id": "REVIEW_006_INDEPENDENT_CAP_ARITHMETIC",
+      "repository": {
+        "commit": "990c6355026ad99126ce935538bbf293711735d3",
+        "dirty": true
+      },
+      "command": [
+        "sage",
+        "notes/REVIEW_006_CAP_CHECK.sage",
+        ".build/review_006_001/runs/cap_check"
+      ],
+      "environment": {
+        "software": [
+          {
+            "name": "runner-python",
+            "version": "3.13.5"
+          },
+          {
+            "name": "SageMath",
+            "version": "10.9"
+          }
+        ],
+        "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+      },
+      "mathematics": {
+        "assertion_tested": "Fresh finite-distribution implementation of capped-law second moment and boundary controls",
+        "coefficient_domain": "QQ exact",
+        "conventions": "Three atoms with first atom none, four target laws and 15 candidate core laws; five deltas",
+        "inputs": [
+          "notes/REVIEW_006_CAP_CHECK.sage"
+        ],
+        "bounds": {
+          "exact_cases": 230
+        },
+        "non_claims": [
+          "Finite checks do not replace the symbolic proof",
+          "Not a full sampler or QROM theorem"
+        ]
+      },
+      "randomness": {
+        "used": false,
+        "generator": "",
+        "seed": null
+      },
+      "run": {
+        "started_at": "2026-10-10T17:16:48.097374+00:00",
+        "runtime_seconds": 2.172703,
+        "exit_status": 0,
+        "status": "completed",
+        "timeout_seconds": 60.0,
+        "max_output_bytes": 1048576,
+        "resource_limits": {
+          "memory_bytes": 4294967296,
+          "cpu_seconds": 45,
+          "max_cores": 1,
+          "max_threads": 1
+        },
+        "missing_results": [],
+        "invalid_results": []
+      },
+      "execution_artifacts": [
+        "notes/REVIEW_006_CAP_CHECK.sage"
+      ],
+      "input_artifacts": [
+        {
+          "path": "notes/REVIEW_006_CAP_CHECK.sage",
+          "sha256": "00132f4d32dfbcf5d9b014f104db0156e9e5959a4d8ab478c9f30aaaec2d532b",
+          "sha256_after": "00132f4d32dfbcf5d9b014f104db0156e9e5959a4d8ab478c9f30aaaec2d532b"
+        }
+      ],
+      "output_directory": ".build/review_006_001/runs/cap_check",
+      "declared_results": [
+        ".build/review_006_001/runs/cap_check/cap_checks.json"
+      ],
+      "outputs": [
+        {
+          "path": ".build/review_006_001/runs/cap_check/stdout.txt",
+          "sha256": "b0e793bdbeecec0612e4479fcd7466770bc3f5c4f17a8d9c1564b5dd5588ee94",
+          "kind": "log"
+        },
+        {
+          "path": ".build/review_006_001/runs/cap_check/stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "kind": "log"
+        },
+        {
+          "path": ".build/review_006_001/runs/cap_check/cap_checks.json",
+          "sha256": "419c377cf2d9e63350c43c18bc656623192728a883226348cd15fc8d064ed1b9",
+          "kind": "result"
+        }
+      ],
+      "checks": [
+        {
+          "check": "input hashes unchanged",
+          "passed": true
+        },
+        {
+          "check": "process exited successfully within enforced limits",
+          "passed": true
+        },
+        {
+          "check": "declared result files are present and regular",
+          "passed": true
+        }
+      ],
+      "result": "Run completed; mathematical assertion requires interpretation and review.",
+      "residual_risks": [
+        "Command success does not establish the mathematical interpretation.",
+        "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+        "The thread cap uses conventional environment variables; a child program may ignore them.",
+        "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+      ]
+    }
+  ],
+  "raw_artifacts": [
+    {
+      "path": ".build/review_006_001/runs/normalizer_512/certificate.json",
+      "sha256": "90a0eb5ab55320cd43dd5ffff2f48e924b9b8a8caca622cac6fa64ac4886a31a",
+      "bytes": 78549
+    },
+    {
+      "path": ".build/review_006_001/runs/normalizer_512/manifest.json",
+      "sha256": "ca32c8907b54abb2acba3732c8f35e66aec16f8c722f491db41225332e2e2b25",
+      "bytes": 3467
+    },
+    {
+      "path": ".build/review_006_001/runs/normalizer_512/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".build/review_006_001/runs/normalizer_512/stdout.txt",
+      "sha256": "0fec12a2baac3ab4819119dee7999b222e2ecb09f71f59813faa109ac517724a",
+      "bytes": 384
+    },
+    {
+      "path": ".build/review_006_001/runs/marginal_512/certificate.json",
+      "sha256": "61c0171be03b974571caa0de359f3217c4eb78ea0f5752430f1177049d4c7f62",
+      "bytes": 32788
+    },
+    {
+      "path": ".build/review_006_001/runs/marginal_512/manifest.json",
+      "sha256": "c2b8ae863fe278ff72da080c1cb6b514587209cd9c5886f2b04e6a6d0c43b867",
+      "bytes": 3822
+    },
+    {
+      "path": ".build/review_006_001/runs/marginal_512/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".build/review_006_001/runs/marginal_512/stdout.txt",
+      "sha256": "a27259a75303c8ca843f8a6e7120055ac4698e739528fa2c67b4b0c9bcbe640d",
+      "bytes": 317
+    },
+    {
+      "path": ".build/review_006_001/runs/cap_check/cap_checks.json",
+      "sha256": "419c377cf2d9e63350c43c18bc656623192728a883226348cd15fc8d064ed1b9",
+      "bytes": 279
+    },
+    {
+      "path": ".build/review_006_001/runs/cap_check/manifest.json",
+      "sha256": "08076532533a666a437190b87a18082de24bc53089e03664aa5a69c6caff2f37",
+      "bytes": 3383
+    },
+    {
+      "path": ".build/review_006_001/runs/cap_check/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".build/review_006_001/runs/cap_check/stdout.txt",
+      "sha256": "b0e793bdbeecec0612e4479fcd7466770bc3f5c4f17a8d9c1564b5dd5588ee94",
+      "bytes": 78
+    }
+  ],
+  "normalizer_512_byte_identical": true,
+  "marginal_512_byte_identical": true,
+  "own_cap_check": {
+    "status": "PASS",
+    "exact_cases": 230,
+    "delta_endpoints": [
+      0,
+      1
+    ],
+    "p_none_one_checked": true,
+    "zero_mass_support_control": true,
+    "scope": "Finite checks of equality, conservative moment bound and exact-core identity; general proof separately audited."
+  },
+  "source_files_modified": false,
+  "kernel_verified": false,
+  "project_REVIEWED_assigned": false,
+  "independence_limits": "Own analytical pass and fresh execution in the coordinating chat; same implementation for numerical replay; no claim of a fresh-model independent full audit.",
+  "remaining": [
+    "Full-box finite-bit proposal and relative coin",
+    "Useful execution cost",
+    "All-h Q-JOINT witness",
+    "Kernelization",
+    "Source and quantum reductions"
+  ]
+}

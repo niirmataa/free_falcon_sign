@@ -26,6 +26,13 @@ do ewentualnego Aneksu B; nie zmieniamy paperu ani statusu publikacji.
   TV nie zastępuje `J≪P` ani `ΣJ²/P≤1+e`. Porażki należą do prawa odpowiedzi.
 - Cel nadal obejmuje całą uzgodnioną dziedzinę h. Wynik dla h=0 jest
   oznaczonym wynikiem częściowym; nie ogranicza po cichu końcowego celu.
+- Doprecyzowanie właściciela 2026-10-10 przy kontrakcie tezy: celem
+  końcowym jest **dowód bezpieczeństwa FT1536 z deklaracją jak dla celu ROM**.
+  Dotyczy to rzeczywistego prawa kluczy schematu, z jawnymi założeniami
+  kryptograficznymi i modelem. All-h certyfikat samplera pozostaje osobnym,
+  silniejszym celem pomocniczym OPEN; nie zmieniamy jego historycznej tezy.
+  Ograniczony certyfikat wymaga pokrycia całego nośnika właściwego prawa
+  KeyGen i dowodu nowych interfejsów. Kontrakt: `notes/TARGET_CONTRACT_001.tex`.
 - Nie zmieniaj statusów T12.1/B20, mainline, paperu ani strony.
 - Poprzednie manifesty checkpointów weryfikuj względem ich commitów;
   README jest żywym stanem. Nowe manifesty wyników nie pinują żywego README.

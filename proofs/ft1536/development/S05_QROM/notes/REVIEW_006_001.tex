@@ -1,0 +1,125 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm]{geometry}
+\usepackage{fontspec}\setmainfont{Latin Modern Roman}
+\setmonofont{Latin Modern Mono}[Scale=0.85]
+\usepackage{amsmath,amssymb,booktabs,longtable,xurl,hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\newcommand{\code}[1]{\nolinkurl{#1}}
+\title{S05 / REVIEW\_006\_001\\\large Przegląd wyników drugiego okna przed ustaleniem tezy}
+\author{Przegląd własny z odrębnym replayem}\date{10 października 2026}
+\begin{document}\maketitle
+\textbf{Werdykt: conditional on a named input.}
+Warunkowy rachunek MARGINAL-006 jest spójny w sprawdzonym zakresie.
+Nie dostarcza efektywnego świadka dla all-h Q-JOINT.
+Nie nadajemy projektowego REVIEWED, nie deklarujemy nowego kernela
+ani pełnego niezależnego odbioru całego S05.
+
+\section{Zakres i identyfikacja wyniku}
+Sprawdzono zakończony wynik okna \emph{Sprawdź normalizator włókna QROM},
+po commitach \code{f7588d0a}, \code{bb74c1a5}, \code{c957e798}.
+Ostatni z nich jest bazą tego przeglądu. Odczyt stanu okna wykazał
+zakończony turn i stan idle; nie wysłano tam wiadomości ani nowego zadania.
+
+Zakres: dowód nowego marginalu, prawa capów, absolutnej ciągłości,
+rachunku momentu i budżetu; korekta końców przedziałów w 005; wskazana
+przeszkoda kosztowa i jej ograniczenia. Przeczytano źródła Sage oraz
+istotne definicje użytych majorant. Nie jest to pełny audyt źródeł C,
+Lean, wszystkich starszych pakietów ani całej literatury QROM.
+
+Manifest MARGINAL-006: 18/18 pinów zgodnych.
+Manifest skorygowanego NORMALIZER-005: 5/5 zgodnych.
+Historia błędnych świadectw nie została nadpisana.
+
+\section{Łańcuch zależności i sprawdzenie argumentu}
+\begin{enumerate}
+\item Pełnoboxowa propozycja $\nu$ i moneta $a$ mają mieć nowe, dwustronne
+względne certyfikaty względem $U=w/G$ i $F/M$, gdzie $F=Z_1(c-hy)$.
+Z dolnej granicy akceptacji i górnej granicy licznika wynika punktowa
+dominacja zaakceptowanego marginalu. Przy dominacji kategorii $K_1$
+otrzymujemy $Q_A\le dP_A$.
+\item Niezależny produkt 16 par i ten sam kanał normy, cap16 i emisji
+dają $Q\le CP$, $C=d^{16}$. Z normalizacji wynika $C\ge1$ oraz
+$\sum Q^2/P\le C$. Nowy dowód nie dziedziczy certyfikatu h=0.
+\item Każda z 16 par jest przygotowywana z własnym capem N.
+Wyczerpanie dowolnego capu nadpisuje wynik końcowy porażką.
+Prawo zaakceptowanej pary nie zależy od indeksu akceptacji, więc
+$J=(1-\delta)Q+\delta\delta_\bot$ z
+$\delta=1-(1-(1-\alpha)^N)^{16}$.
+Ta definicja przygotowuje wszystkie 16 par. Leniwy algorytm kończący
+pracę przy pierwszym sukcesie normy wymagałby odrębnego dowodu prawa.
+\item Przy $p=P(\bot)>0$ obie składowe mieszanki są wspierane przez P.
+Rozwinięcie kwadratu daje
+\[
+ \sum J^2/P=(1-\delta)^2\sum Q^2/P
+  +2(1-\delta)\delta Q(\bot)/p+\delta^2/p.
+\]
+Nierówność trójkąta w $L^2(P)$ prowadzi do podanego boundu chi-kwadrat.
+W przypadku $Q=P$ pozostaje dokładnie $1+\delta^2(1/p-1)$.
+Przy $p=0$, $\delta>0$ nośnik rzeczywiście zostaje naruszony.
+\end{enumerate}
+
+Przypadki brzegowe $\delta=0$, $\delta=1$, $p=1$ zgadzają się z rachunkiem.
+Nie zastąpiono małego TV małym momentem. Koszt $\delta^2/p$ jest zachowany,
+a dodatniość p sama w sobie nie oznacza użytecznej dolnej granicy.
+
+\small
+\begin{longtable}{@{}p{.44\linewidth}p{.48\linewidth}@{}}
+\toprule Obowiązek & Wynik przeglądu \\\midrule\endhead
+Prawidłowe prawo po ważeniu & Passed dla zapisanych względnych przesłanek.\\
+Prawo capu i wszystkie porażki & Passed dla konstrukcji z 16 przygotowaniami.\\
+AC i moment mieszanki & Passed tekstowo pod $p>0$ i certyfikatem rdzenia.\\
+Budżet $e<2^{-119}$ & Conditional: liczby policzone poprawnie pod nazwanymi
+założeniami; brak ich wykonawczej instancji.\\
+Koszt odrzucania całych wektorów & Passed w dokładnym zakresie h=1,c=0,
+idealna propozycja U, stały envelope; nie ograniczenie wszystkich metod.\\
+Pełnoboxowa propozycja i moneta & Open. Sampler 004 nie dostarcza
+wymaganego dwustronnego certyfikatu przez samo posiadanie dominacji.\\
+Wykonalność all-h & Open. Skończony cap $2^{336409}$ nie jest użyteczny.\\
+Kernelizacja i source/quantum bridges & Not addressed przez ten przegląd.\\
+\bottomrule\end{longtable}\normalsize
+
+\section{Korekta normalizatora i kontrola rachunku}
+Erratum poprawnie rozpoznaje materialny błąd: konwersja MPFR przez
+\code{QQ(endpoint)} mogła przesunąć koniec przedziału do środka.
+Dotyczyło to również składania obudów, nie tylko ich drukowania.
+Nowe źródło używa \code{exact_rational()} i składa przedziały wyłącznie
+z dokładnych końców wymiernych. W przeglądzie użyto wyłącznie
+skorygowanego świadectwa jako wejścia numerycznego.
+
+Własny świeży replay skorygowanego 005 w precyzji 512 odtworzył
+\code{NORMALIZER_005_CORRECTED_CERTIFICATE.json} bajt w bajt.
+Następnie replay MARGINAL-006 z tym świeżym wejściem odtworzył jego
+512-bitowy certyfikat również bajt w bajt, w tym 102 dokładne prawa
+testowe i deklarowane nierówności kosztu/budżetu.
+To odrębne uruchomienie tej samej implementacji, nie niezależny algorytm
+numeryczny ani dowód poprawności wszystkich bibliotek.
+
+Dodatkowy własny checker \code{REVIEW_006_CAP_CHECK.sage} sprawdził
+230 dokładnych praw na trzech atomach, w tym skrajne delty, $p=1$
+i negatywną kontrolę nośnika. Sprawdza rozwinięcie momentu, konserwatywną
+majorantę oraz przypadek dokładnego rdzenia. Te skończone kontrole
+uzupełniają powyższy dowód, nie zastępują jego ogólnego argumentu.
+
+Kosztowo istotny wynik $\alpha<2^{-767}$ dotyczy odrzucania \emph{całego}
+wektora z U przy h=1,c=0. Nie wolno opisywać go jako dowodu niemożliwości
+faktoryzacji blokowej lub jako ataku na bezpieczeństwo FT1536.
+Analogicznie duży moment przed normą z 005 nie jest automatycznie
+dużym końcowym momentem Q-JOINT.
+
+\section{Co wolno teraz wykorzystać}
+Można wykorzystać nowy warunkowy lemat mieszanki capu i dokładne wskazanie,
+jak jego dodatkowy abort obciąża moment. Można odrzucić tę konkretną
+strategię globalnego odrzucania jako praktycznego świadka zasobowego.
+Nie można odhaczyć Q-JOINT, przyjąć małego e dla niewykonanej propozycji,
+ani oznaczyć DyadicObstruction lub h=0 jako kernelowych.
+
+Następny krok powinien mieć dwa równoległe kryteria: właściwe prawo
+pełnej odpowiedzi oraz użyteczny koszt konstrukcji. Nowy kandydat musi
+otrzymać własny certyfikat; kolejne zwiększenie precyzji nie usuwa
+wykazanej małej akceptacji. Przed wyborem kandydata należy ustalić
+główną tezę i rolę silniejszego all-h celu, jak w
+\code{TARGET_CONTRACT_001.tex}.
+
+Wyniki przeglądu i piny są zapisane osobno. Nie zmieniono bajtów
+MARGINAL-006, NORMALIZER-005, kolekcji obstructions ani ich statusów.
+\end{document}

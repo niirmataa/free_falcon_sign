@@ -1,0 +1,104 @@
+{
+  "id": "S05_TARGET_CONTRACT_001",
+  "date": "2026-10-10",
+  "status": "CONDITIONAL_TARGET_CONTRACT_NOT_SECURITY_DECLARATION",
+  "base_commit": "c957e798dd331d78e168e2fb3811c1bb620bc5bd",
+  "owner_final_goal": "Security proof of FT1536 in QROM, with a declaration at the same rigor as the ROM target.",
+  "final_goal_completed": false,
+  "main_game": "EUF-CMA, quantum public hash and classical signing calls, one key from the real emitted KeyGen law.",
+  "superposition_signing": "OUT_OF_SCOPE",
+  "key_scope": {
+    "main_theorem": "complete support of the exact real key law, with domain/binding proved",
+    "all_h_sampler": "STRONGER_AUXILIARY_GOAL_OPEN_NOT_RELABELED_COMPLETE",
+    "bad_key_exclusion": "Requires explicit probability/law accounting; none authorized by a difficult fixture alone."
+  },
+  "theorem_levels": {
+    "TQ-core": "Conditional coefficient-model reduction",
+    "TQ-api": "Conditional source-program result, only after the actual Q-BIND and Q-PRG hops have been established in their stated form"
+  },
+  "loss_policy": [
+    "D=(1+e)^q_s-1 only under Q-COMPOSE",
+    "No automatic q_H+1 target count",
+    "No double counting classical collision and quantum reprogramming losses",
+    "Implementation TV cost stays inside Phi for the recorded game order",
+    "Source/PRG errors placed according to actual proved hops, not assumed additive",
+    "No security-level numbers at this stage"
+  ],
+  "conditions": [
+    {
+      "id": "Q-MODEL",
+      "kind": "MODEL"
+    },
+    {
+      "id": "A-QMT",
+      "kind": "CRYPTOGRAPHIC_ASSUMPTION"
+    },
+    {
+      "id": "Q-PRG",
+      "kind": "CRYPTOGRAPHIC_ASSUMPTION_AND_HOP_PROOF"
+    },
+    {
+      "id": "Q-KEY",
+      "kind": "PROOF_OBLIGATION"
+    },
+    {
+      "id": "Q-SAMPLER",
+      "kind": "PROOF_OBLIGATION"
+    },
+    {
+      "id": "Q-HASH-LOG",
+      "kind": "PROOF_OBLIGATION"
+    },
+    {
+      "id": "Q-COMPOSE",
+      "kind": "PROOF_OBLIGATION"
+    },
+    {
+      "id": "Q-COLL",
+      "kind": "PROOF_OBLIGATION"
+    },
+    {
+      "id": "Q-EMBED",
+      "kind": "PROOF_OBLIGATION"
+    },
+    {
+      "id": "Q-BIND",
+      "kind": "PROOF_OBLIGATION"
+    },
+    {
+      "id": "Q-RESC",
+      "kind": "PROOF_OBLIGATION"
+    },
+    {
+      "id": "S04",
+      "kind": "SEPARATE_PUBLIC_XOF_EXTENSION"
+    }
+  ],
+  "review_result": {
+    "id": "S05_REVIEW_006_001",
+    "verdict": "conditional on a named input",
+    "author_package": "MARGINAL-006 + corrected NORMALIZER-005",
+    "hash_checks": [
+      18,
+      5
+    ],
+    "fresh_512_replay": "byte-identical for both certificates",
+    "own_cap_cases": 230,
+    "kernel": false,
+    "project_REVIEWED": false
+  },
+  "next": "Develop an adapted proposal or controlled factorization for Q-SAMPLER and Q-RESC; first require a useful acceptance/cost bound and the full failure law. Bind the required key domain through Q-KEY. All-h strengthening remains open.",
+  "artifact_policy": {
+    "main_text": "standalone mathematical definitions and complete conditions",
+    "repository_refs": "appendix",
+    "history_preserved": true,
+    "runtime": ".build/review_006_001 and .build/target_contract_001",
+    "publication": "NO_PUSH"
+  },
+  "artifacts": {
+    "contract": "notes/TARGET_CONTRACT_001.tex",
+    "review": "notes/REVIEW_006_001.tex",
+    "receipt": "notes/REVIEW_006_RECEIPT.json",
+    "manifest": "notes/TARGET_CONTRACT_001_OUTPUTS.sha256"
+  }
+}

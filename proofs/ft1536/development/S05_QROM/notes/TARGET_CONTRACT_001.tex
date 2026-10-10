@@ -1,0 +1,332 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm]{geometry}
+\usepackage{fontspec}\setmainfont{Latin Modern Roman}
+\setmonofont{Latin Modern Mono}[Scale=0.85]
+\usepackage{amsmath,amssymb,amsthm,longtable,booktabs,xurl,hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{3em}
+\newcommand{\code}[1]{\nolinkurl{#1}}
+\newcommand{\Adv}{\operatorname{Adv}}
+\newcommand{\clip}{\operatorname{clip}}
+\newcommand{\PhiB}{\operatorname{Phi}}
+\newcommand{\E}{\mathbb E}
+\newtheorem{proposition}{Propozycja}
+\title{Conditional QROM security of FT1536\\\large Teza docelowa i księga warunków / S05 TARGET\_CONTRACT\_001}
+\author{Kontrakt roboczy dla Niirmata}\date{10 października 2026}
+\begin{document}\maketitle
+\textbf{WARUNKOWY / kontrakt drogi do dowodu bezpieczeństwa.}
+Pierwsza część jest samodzielnym kontraktem matematycznym. Stan dowodów,
+piny i odwołania do repozytorium są w dodatkach. Warunkowa poprawność
+schematu kompozycji nie oznacza, że FT1536 spełnia wszystkie jego warunki.
+\textbf{Cel końcowy przyjęty przez właściciela: dowód bezpieczeństwa FT1536
+w QROM z deklaracją na takim samym poziomie rygoru jak cel ROM.}
+Nie kończymy pracy na mapie, wynikach h=0 ani na niezrealizowanym
+warunkowym interfejsie samplera. Bieżący status pozostaje częściowy.
+
+Docelowa deklaracja po domknięciu obowiązków ma brzmieć:
+\emph{przy jawnych założeniach kwantowej trudności ISIS/MT-ISIS i prywatnego
+generatora oraz w zdefiniowanym modelu wykonania profil FT1536 spełnia
+EUF-CMA w QROM, z udowodnioną redukcją i podaną nierównością strat.}
+Założenia kryptograficzne pozostają częścią gotowego twierdzenia;
+brakujące lematy o tym konkretnym schemacie muszą zostać udowodnione,
+a nie zachowane jako zastępcza deklaracja bezpieczeństwa.
+
+\section{Eksperyment i dziedzina twierdzenia}
+Badamy EUF-CMA z kwantowymi zapytaniami do publicznego losowego hasza
+oraz \emph{klasycznymi} zapytaniami Sign. To standardowy model QROM dla
+podpisów; dostęp do Sign w superpozycji jest osobnym, silniejszym celem,
+poza tą tezą. Wersja modelu odpowiada konwencjom KLS i Unruha wskazanym
+w dodatku bibliograficznym.
+
+Jeden klucz publiczny $h$ jest losowany raz z jawnego prawa $\mu_H$.
+W instancji schematu ma to być marginal prawa klucza wyemitowanego przez
+rzeczywisty KeyGen po właściwym warunkowaniu na akceptację.
+Prawo warunkowe musi być dobrze określone: dodatnia masa akceptacji/emisji
+jest jawnym warunkiem instancji, nie domniemaniem z samej nazwy KeyGen.
+Przeciwnik otrzymuje klucz publiczny, bez sekretu, seedu i liczby prób KeyGen.
+Nie losujemy nowego klucza przy Sign i nie warunkujemy klucza ponownie
+na sukcesie podpisania. To samo $\mu_H$ występuje w założeniu trudności.
+
+Budżet przeciwnika to $\beta=(q_s,q_H,t,w,L)$: liczba klasycznych żądań
+podpisu, liczba kwantowych zapytań hasza, czas, pamięć i limit długości
+wejść. Liczniki reduktora obejmują dodatkowo jego własne zapytania,
+implementację orakulum, prywatną losowość, prekomputację i pamięć.
+Nie wolno przyznać mu darmowego dodatkowego orakulum spoza zadania trudnego.
+
+Profil współczynnikowy ma $q=18433$, $n=1536$, $\sigma=768$,
+$B=2093922385$ i pierścień $R_q=(\mathbb Z/q\mathbb Z)[X]/(X^{1536}-X^{768}+1)$.
+Dla wektora $v$ piszemy
+\[
+ Q_0(v)=\sum_{i=0}^{767}(v_i^2+v_iv_{i+768}+v_{i+768}^2),\quad
+ Q(u,v)=Q_0(u)+Q_0(v),\quad A_h(u,v)=u+hv\pmod q.
+\]
+Hasz $H:\mathcal X\to R_q$ jest jedną wspólną, jednostajnie losową funkcją
+na skończonej dziedzinie wejść określonej limitem $L$.
+Kwantowe zapytanie ma działanie
+$|x,y\rangle\mapsto|x,y\oplus\mathrm{enc}(H(x))\rangle$ przy ustalonym
+kodowaniu wyjścia; konwencja kontrolowanych zapytań i koszt jej symulacji
+są jawne. Jednostajnego $R_q$ nie utożsamiamy z jednostajnymi bitami kodowania.
+
+\subsection*{Rdzeń współczynnikowy Q-COEFF}
+Sign zapisuje całą wiadomość $m$ w SeenSign także przy późniejszej porażce,
+losuje jeden idealny nonce $r\in\{0,1\}^{320}$ i ustala $c=H(r\Vert m)$.
+Podczas jednego Sign nie ma interaktywnego ujawnienia nonce ani zapytań
+przeciwnika pomiędzy jego wewnętrznymi krokami.
+
+Niech $\mathcal V=[-65535,65535]^{1536}\cap\mathbb Z^{1536}$.
+Jedna próba pobiera $(u,v)\in\mathcal V^2$ z włókna $A_h(u,v)=c$
+z wagą proporcjonalną do $\exp(-Q(u,v)/(2\sigma^2))$.
+Gdy włókno jest puste, próba daje porażkę. Próbę odrzucamy, jeśli
+$Q(u,v)\ge B$. Dopuszczamy najwyżej 16 niezależnych prób przy tym samym $c$.
+Po pierwszej akceptacji następuje jedna emisja: zwracamy $v$, jeśli
+wszystkie współczynniki są w $[-32768,32767]$, a w przeciwnym razie porażkę.
+Brak akceptacji po 16 próbach również daje porażkę. Cała odpowiedź to
+$(r,o)$ z $o$ będącym podpisem albo znacznikiem porażki $\bot$.
+Nie warunkujemy prawa na wydaniu podpisu i nie poprawiamy go dodatkowym Verify.
+
+Weryfikacja sprawdza signed16 i $Q(\mathrm{center}_q(c-hs),s)<B$,
+z $c=H(r\Vert m)$. Wygrana to zaakceptowane klasyczne fałszerstwo
+$(m^*,r^*,s^*)$, gdzie $m^*\notin\mathrm{SeenSign}$.
+Nie twierdzimy tu silnej niepodrabialności sEUF-CMA.
+
+\subsection*{Wersja programu Q-API}
+W Q-API prywatne KeyGen/Sign/Verify, serializacje i generator są rzeczywiste
+w przypiętym profilu wykonania. Publiczne H2P pozostaje zastąpione
+wspólnym orakulum QROM; konkretna publiczna funkcja SHAKE i jej H2P
+wymagają osobnego rozszerzenia. Obserwowane odpowiedzi rozróżniają
+PRE\_ABORT, $(r,\mathrm{POST\_ABORT})$ oraz $(r,\mathrm{bytes})$.
+Brak powrotu nie jest automatycznie odpowiedzią timeout, a STUCK nie jest
+źródłowym abortem. Wersja programu wymaga osobnego powiązania tych zachowań
+z Q-COEFF. Funkcyjny model nie obejmuje timing, liczby retry ani innych
+kanałów bocznych. Usługi środowiska muszą mieć tę samą określoną semantykę
+we wszystkich porównywanych grach.
+
+\section{Zdanie główne: warunkowa redukcja z jawnymi stratami}
+Ustalmy zbiór kluczy $K$ zawierający cały nośnik $\mu_H$ i parametry
+wyeksportowane przez wymienione poniżej certyfikaty. Obecny mocny cel
+samplera ma $K=R_q$; inne wybranie $K$ nie następuje przez sam zapis tego zdania.
+
+\textbf{Jeżeli} zachodzą Q-MODEL oraz certyfikaty Q-KEY, Q-SAMPLER,
+Q-HASH-LOG, Q-COMPOSE, Q-COLL, Q-EMBED i Q-RESC,
+\textbf{to} dla każdego dopuszczalnego kwantowego $A$ istnieje efektywny
+reduktor $B_A$ o zasobach $R_B(\beta)$ i liczbie celów $T_Q(\beta)$ taki, że
+\[
+ \varepsilon_{\mathrm{coeff}}\le
+ \clip\!\left[\Delta_{\mathrm{QRO}}+
+ \PhiB\!\left(D,\clip\!\left[
+ L_Q\Adv^{QMT\text{-}ISIS}_{\mu_H,T_Q}(B_A)
+       +\delta_{\mathrm{emb}}+q_s\eta\right]\right)\right],
+ \qquad D=(1+e)^{q_s}-1.                         \tag{TQ-core}
+\]
+Tutaj $\clip(x)=\min\{1,x\}$ dla nieujemnych $x$, a
+\[
+ \PhiB(D,b)=\frac{2b+D+\sqrt{D^2+4Db(1-b)}}{2(1+D)}.
+\]
+W zadaniu QMT-ISIS klucz pochodzi z tego samego $\mu_H$, cele są niezależne
+jednostajne w $R_q$, a reduktor ma podać indeks celu i krótki przeciwobraz
+spełniający $A_hz=c_j$ oraz $Q(z)<B$.
+$T_Q=1$ jest dopuszczalną trasą. $T_Q=q_H+1$ nie jest przesłanką domyślną.
+
+Jeżeli dodatkowo Q-BIND i Q-PRG dostarczają \emph{konkretnych addytywnych}
+porównań zdarzenia wygranej pomiędzy Q-API a Q-COEFF, odpowiednio
+z granicami $\delta_{\mathrm{bind}}$ i $\delta_{\mathrm{PRG}}^Q$, wówczas
+\[
+ \varepsilon_{\mathrm{real}}^{\mathrm{QRO}}\le
+ \clip\!\left[\delta_{\mathrm{bind}}+\delta_{\mathrm{PRG}}^Q
+ +\Delta_{\mathrm{QRO}}+
+ \PhiB\!\left(D,\clip\!\left[
+ L_Q\Adv^{QMT\text{-}ISIS}_{\mu_H,T_Q}(B_A)
+       +\delta_{\mathrm{emb}}+q_s\eta\right]\right)\right]. \tag{TQ-api}
+\]
+Jeśli source bridge ma postać kierunkowego momentu, mnożnika lub innego
+operatora zamiast addytywnego porównania, trzeba zachować jego rzeczywistą
+kolejność w kompozycji. TQ-api w powyższej postaci nie jest wtedy dostępne
+bez dodatkowego dowodu; nie zakładamy, że wszystkie błędy są addytywne.
+
+$\Delta_{\mathrm{QRO}}$ jest \emph{jednym} udowodnionym kosztem przejścia
+od uczciwego orakulum do gry programowanej. Może składać się z kilku
+rozłącznych kroków. Nie dopisujemy obok niego starego klasycznego
+$\varepsilon_{\mathrm{coll}}$, jeśli ta sama trudność jest już objęta
+reprogramowaniem. $L_Q$, $T_Q$, $\delta_{\mathrm{emb}}$ i $R_B$ wynikają
+z konstrukcji reduktora, nie z doboru po zaobserwowaniu sukcesu przeciwnika.
+
+W podstawowej trasie $J$ jest prawem wykonalnego S, a $\eta=0$.
+W wariancie idealnego $J$ z osobnym przybliżeniem $\widehat J$ wymagamy
+pełnego, jednolitego boundu TV $\le\eta$ i wspólnych kanałów kontynuacji;
+wtedy $q_s\eta$ leży \emph{wewnątrz} Phi. Nie liczymy tego samego błędu
+ponownie w $e$. Kwantowe użycie $D$ wymaga Q-COMPOSE; sama postać potęgi
+nie przenosi klasycznego dowodu do QROM.
+
+\section{Księga warunków}
+Poniższe warunki mogą być przesłankami twierdzenia warunkowego.
+\emph{Ich klasy są różne}: model określa eksperyment, założenia
+kryptograficzne dotyczą trudności, a obowiązki dowodowe trzeba dostarczyć
+przed ogłoszeniem instancji twierdzenia dla FT1536.
+\small
+\begin{longtable}{@{}p{.22\linewidth}p{.71\linewidth}@{}}
+\toprule Nazwa i klasa & Pełna treść \\\midrule\endhead
+Q-MODEL: model & Gra i obserwacje z sekcji 1, kwantowy H i klasyczny Sign,
+pojedynczy klucz, jawne budżety, brak ukrytego timing/retry leakage.
+Idealne bity i nonce dotyczą tylko jawnej warstwy idealnej.\\
+A-QMT: krypto & Dla dokładnego $\mu_H$, liczby celów, normy i zasobów
+reduktora zakładamy granicę przewagi kwantowego solvera ISIS/MT-ISIS.
+To osobne założenie; koszt samplera nie dowodzi trudności kratowej.\\
+Q-PRG: krypto i dowód hopu & Przewaga kwantowych rozróżniaczy prywatnego
+rzeczywistego generatora na rzeczywistym horyzoncie. Dokładny sposób dostępu
+jest taki jak w grze. Trzeba skonstruować rozróżniacze i policzyć ich zasoby.
+Nie przyznajemy dostępu do sekretnego seedu ani darmowej idealizacji klucza.\\
+Q-KEY: obowiązek & Identyfikacja $\mu_H$ z prawem zaakceptowanych/emitted
+kluczy, dokładne warunkowanie, jeden wspólny klucz w całej grze.
+$K$ obejmuje cały potrzebny nośnik; nie usuwa się złych kluczy bez rachunku.\\
+Q-SAMPLER: obowiązek & Jeden publiczny, wykonalny S z opisanym kosztem,
+bez trapdooru i bez odczytywania ukrytych zapytań kwantowych.
+Dla każdego wymaganego h i dozwolonej historii jego pełne prawo
+$J_h(c,o)$, łącznie z każdą porażką, spełnia $J_h\ll P_h$ i
+$\sum J_h^2/P_h\le1+e$. $e$ ma wynikać z dowodu.
+Prywatny stan samplera jest ujęty w certyfikacie lub eliminowany;
+wywołanie ze stałym publicznym initial jest dopuszczalną realizacją.\\
+Q-HASH-LOG: obowiązek & Legalna kwantowa semantyka wyroczni i stanu reduktora,
+spójne ramki i reprogramowanie. Nazwa nie daje uprawnienia do mierzenia
+lub klasycznego zapisywania wszystkich zapytań przeciwnika.\\
+Q-COMPOSE: obowiązek & Wspólne warunkowe kanały/stan po tych samych
+klasycznych losowaniach i adaptacyjny rachunek pełnych momentów.
+Musi prowadzić do dokładnego $D=(1+e)^{q_s}-1$ w zadanych grach.\\
+Q-COLL: obowiązek & Osobne oszacowanie kwantowej zmiany orakulum,
+w tym reprogramowania i ewentualnych kolizji. Entropia nonce i wszystkie
+zapytania są liczone we właściwym momencie; bez podwójnego liczenia strat.\\
+Q-EMBED: obowiązek & Konstrukcja osadzenia celów i ekstrakcji,
+właściwy rozkład celu oraz strata $L_Q$ i $\delta_{\mathrm{emb}}$.
+Liczba celów $T_Q$ jest wnioskiem konstrukcji. Samo algebraiczne
+wydobycie świadka z zaakceptowanego podpisu nie daje tego kroku.\\
+Q-BIND: obowiązek & Powiązanie praw i obserwacji rzeczywistego programu
+z grami modelowymi: bajty, Verify, wszystkie aborty, RNG, STUCK i nonreturn.
+Jednolitość względem kwantowej kontynuacji musi być wykazana.
+To nie założenie „kod jest poprawny”.\\
+Q-RESC: obowiązek & Czas, pamięć, zapytania i losowość B, S, prekomputacji,
+monet i obsługi orakulum. Skończony, lecz wykładniczy cap nie jest
+użytecznym certyfikatem efektywności.\\
+S04: osobne rozszerzenie & Publiczny bit-output XOF/H2P i interakcje
+z prywatnym użyciem. Twierdzenie o idealnym H nie staje się automatycznie
+twierdzeniem o konkretnym publicznym SHAKE.\\
+\bottomrule\end{longtable}\normalsize
+
+Nie wolno zamienić otwartego Q-SAMPLER, Q-EMBED lub Q-BIND w małą
+liczbę przyjętą bez dowodu. TQ-core i TQ-api opisują warunkową implikację;
+pełna instancja wymaga świadków tych warunków, nie tylko listy ich nazw.
+
+\section{Uzasadnienie kolejności strat i kryteria domknięcia}
+Schemat dowodu ma następujące krawędzie:
+\[
+ G_{\mathrm{real}}\ \longrightarrow\ G_{\mathrm{coeff}}
+ \ \longrightarrow\ G_{\mathrm{programmed}}
+ \ \longrightarrow\ G_{\mathrm{ideal\ sim}}
+ \ \longrightarrow\ G_{\mathrm{executed\ sim}}
+ \ \longrightarrow\ \mathrm{QMT\text{-}ISIS}.
+\]
+Pierwsza krawędź konsumuje Q-BIND/Q-PRG w ich wykazanej postaci;
+druga Q-HASH-LOG/Q-COLL; trzecia Q-SAMPLER/Q-COMPOSE przez Phi;
+czwarta opcjonalne $\eta$; ostatnia Q-EMBED/Q-RESC.
+Z monotoniczności Phi w drugim argumencie wynika kolejność TQ-core.
+Przewaga jest co najwyżej 1, co uzasadnia końcowe obcięcie.
+To algebra składania krawędzi, a nie dowód istnienia brakujących krawędzi.
+
+Etap uznajemy za domknięty dopiero, gdy określono grę i prawo kluczy,
+wykonano i związano S, udowodniono jego pełny certyfikat, zbudowano
+kwantowy reduktor i zasoby, a wszystkie użyte dowody mają wymagany
+status formalizacji i niezależnego odbioru. Twierdzenie o kodzie wymaga
+nadto źródłowych bridge'ów. Warunkowy rdzeń nie zastępuje tej instancji.
+Nie podajemy tu żadnej liczby bitów bezpieczeństwa. Użyteczność całego
+boundu będzie osobno oceniana dla jawnego budżetu zapytań i primitive.
+
+\section{Kierunek dalszej pracy i decyzja o silniejszym celu}
+Teza bezpieczeństwa używa określonego prawa $\mu_H$. Certyfikat na całym
+$R_q$ jest wystarczający, lecz silniejszy od certyfikatu na całym nośniku
+tego prawa. Klucze poza nośnikiem nie występują w eksperymencie.
+Samo to spostrzeżenie nie dostarcza charakterystyki nośnika ani nowego
+typu formalnego certyfikatu.
+
+\textbf{Główny cel: bezpieczeństwo FT1536 z jego rzeczywistym prawem KeyGen.}
+To znaczenie żądanej przez właściciela deklaracji bezpieczeństwa.
+Jednolity all-h sampler zachowujemy jako osobny, mocniejszy cel pomocniczy,
+który nadal ma status OPEN. Jego historyczny kwantyfikator nie został
+zmieniony i nie ogłaszamy go rozwiązanego przez certyfikat na mniejszym zbiorze.
+Do głównego twierdzenia wolno użyć odpowiednio udowodnionego certyfikatu
+na całym nośniku rzeczywistego prawa kluczy; charakterystykę nośnika
+i nowe interfejsy trzeba dopiero wykazać. Nie wykluczamy h=0 lub h=1
+przez sam fakt, że stanowią trudny przykład dla konkretnego samplera.
+
+Najbliższy obowiązek to Q-SAMPLER wraz z Q-RESC: adaptowana propozycja
+lub kontrolowana faktoryzacja, z nowym certyfikatem pełnej odpowiedzi.
+Wysoka precyzja normalizatora nie naprawia złego rozkładu ani akceptacji
+wykładniczo małej. Równoległym logicznie, ale osobno zlecanym podcelem
+Q-EMBED jest przypadek $q_s=0$; nie utożsamiamy go z pełnym EUF-CMA.
+Kernelizacja wybranych lematów jest osobnym obowiązkiem, nie substytutem
+brakującej instancji samplera.
+
+\appendix
+\section{Why simpler samplers fail — dokładny zakres przeszkód}
+\begin{proposition}[DyadicObstruction — tekstowy]
+Deterministyczna funkcja co najwyżej b uczciwych bitów nie daje dokładnie
+jednostajnego współczynnika modulo 18433. Każda masa ma postać $k/2^b$,
+a równość z $1/18433$ wymagałaby $18433\mid2^b$.
+\end{proposition}
+To przeszkoda dla dokładnej jednostajności przy ustalonej taśmie;
+nie wyklucza aproksymacji ani losowania o nieograniczonej długości.
+Szkic Lean nie jest potwierdzonym wynikiem kernelowym.
+
+\begin{proposition}[Niepoprawny marginal sekwencyjny — tekstowy z balls]
+Dla opisanej w NORMALIZER-005 konstrukcji i h=1,c=0 moment warunkowy
+\emph{przed normą} przekracza $2^{1536}$.
+\end{proposition}
+Nie jest to dolna granica końcowego momentu po normie, cap16, emisji
+lub uśrednieniu wyzwania. Wynik dotyczy tej konstrukcji.
+
+\begin{proposition}[Odrzucanie całych wektorów — tekstowy z balls]
+Dla idealnej propozycji U=w/G, stałego envelope i h=1,c=0 w MARGINAL-006
+akceptacja jest mniejsza niż $2^{-767}$. Sukces w $2^{128}$ propozycjach
+ma prawdopodobieństwo mniejsze niż $2^{-639}$.
+\end{proposition}
+To przeszkoda kosztowa tej strategii, nie dowód niemożliwości faktoryzacji,
+innych propozycji ani QROM dla FT1536. Liczby opisują rachunek kosztu,
+nie poziom bezpieczeństwa schematu.
+
+\section{Stan dowodów i mapowanie na repozytorium}
+\small
+\begin{longtable}{@{}p{.30\linewidth}p{.63\linewidth}@{}}
+\toprule Wynik & Status i rola \\\midrule\endhead
+Algebra ekstrakcji & Istniejący eksport Lean: Relation.accepted\_extracts.
+Nie zastępuje Q-EMBED. Nowego replayu tego modułu tu nie wykonano.\\
+CONTINUATION-002 & Tekstowa kompozycja i model reprogramowania.
+Instancja kwantowa, formalizacja i zasoby pozostają otwarte.\\
+SAMPLER-004, h=0 & Tekstowy pełny moment z rachunkiem Sage.
+Brak kernela; nie jest to wynik dla całego emitted key law.\\
+NORMALIZER-005 & Tekstowy wynik w dokładnym zapisanym zakresie.
+Wiążące liczby pochodzą z CORRECTED certyfikatu i erratum końców MPFR.\\
+MARGINAL-006 & Nowy warunkowy certyfikat pełnej mieszanki capu;
+nie dostarcza efektywnej instancji samplera dla wszystkich h.\\
+DyadicObstruction & Tekstowy dowód i nieuruchomiony szkic Lean.
+Brak potwierdzenia kernela; wcześniejszy timeout dotyczył innego modułu.\\
+Q-SAMPLER/Q-EMBED/Q-BIND/Q-RESC & Otwarte w pełnym wymaganym zakresie;
+nie ma kompletnego twierdzenia QROM dla rzeczywistego programu.\\
+\bottomrule\end{longtable}\normalsize
+
+Piny wejść: \code{TARGET_CONTRACT_001_INPUTS.json} i
+\code{REVIEW_006_INPUTS.json}. Zakres bieżącego przeglądu drugiego okna,
+replay i ograniczenia: \code{REVIEW_006_001.tex} oraz jego receipt.
+Nie nadano statusu REVIEWED i nie zmieniono T12.1/B20.
+
+Interfejsy źródłowe: \code{Run2/LawBinding.lean},
+\code{Run2/ConcreteReduction.lean}, \code{FT1536/Relation.lean};
+wcześniejszy kontrakt programu: \code{T12_1/END_TO_END_SCOPE.md},
+\code{FT1536_M0_CONTRACT_RUN_001/GAME.md} i \code{TARGET_TYPE.md}.
+Mocny \code{LocalJointCertificate} kwantyfikuje po całym $R_q$;
+nie zmieniono go w tym pakiecie.
+
+\section{Źródła modelu QROM}
+Kiltz--Lyubashevsky--Schaffner, zaakceptowany manuskrypt 20 II 2018:
+\url{https://pure.uva.nl/ws/files/45974858/916.pdf}.
+Unruh, wersja konferencyjna EUROCRYPT 2015:
+\url{https://www.iacr.org/archive/eurocrypt2015/90560105/90560105.pdf}.
+Wersje i wcześniejszy zakres ekstrakcji zapisano w CONTINUATION-002.
+Ten kontrakt nie ogłasza nowości ani niezależnego audytu całych publikacji.
+\end{document}
