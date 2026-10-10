@@ -3,7 +3,19 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
-**Najnowszy większy pakiet — [BOX_MOMENT-015](notes/BOX_MOMENT_015_CHECKPOINT.md):**
+**Najnowszy pakiet — [IMPLEMENTATION-016](notes/IMPLEMENTATION_016_CHECKPOINT.md):**
+Wykonywalna referencja Lean z rzeczywistymi publicznymi literałami tablic
+ma **kernelowe J≪P dla każdego h**, poprawną normę i pełne prawa obu capów
+oraz świeżego fallbacku.96 eksportów,17 modułów dowodowych i13 odtwarzalnych
+modułów danych przeszło świeży czysty build. Dołączono3 kernelowe kontrole
+korelacji. Pod(M) i **czterema jawnymi lokalnymi polami** wyprowadzono moment
+`≤1+2^-47` dla tego kodu. **PairLeaves/CubeLeaf nadal nie mają kernelowych
+instancji**; Sage potwierdza marginesy. Koszt operacyjny, zgodność całego
+Python/C runtime i źródłowe pokrycie kluczy pozostają OPEN.
+[Pełne zdanie i ograniczenia](notes/IMPLEMENTATION_016.tex),
+[TODO016 i kontynuacja017](notes/TODO_IMPLEMENTATION_016.md).
+
+**Checkpoint — [BOX_MOMENT-015](notes/BOX_MOMENT_015_CHECKPOINT.md):**
 47 nowych twierdzeń Lean domyka dokładne(M) → skończony box → flatness
 → odrzucenie normy → marginal → **pełny moment z abortami**.
 Pod jawną dominacją `J≤(1+2^-60)J⁰` kernel daje `J≪P` oraz
@@ -19,7 +31,8 @@ Parseval, widmowe A/C/D, reciprocal Schur i dokładne(M)007.
 Z rzeczywistych równań NTRU/public/inverse, ternarności i **jawnego H≥991**
 wynika jedna dodatnia skala dla wszystkich challenge i temperatur0<t≤1,
 z błędem masy2^-34. Gram/Parseval/widmo nie są już wejściowymi certyfikatami.
-**Nadal OPEN: source → H≥991 dla emitted kluczy oraz pełny sampler/J/P/koszt.**
+**Source → H≥991 dla emitted kluczy nadal OPEN.** Pełne prawa referencji
+i AC rozwija016; instancje lokalnych pól momentu i koszt operacyjny pozostają OPEN.
 [Pełne zdanie](notes/ACTUAL_HARMONIC_014.tex),
 [większy TODO](notes/TODO_QUANTITATIVE_GEOMETRY_014.md).
 
@@ -50,8 +63,8 @@ To **kernelowe konstruktory warunkowe**; rzeczywisty `EmissionView` oraz
 pozostaje niezmieniony. [Dokładny zakres](notes/KEY_SUPPORT_011.tex).
 
 Decyzja właściciela: **kernel przed użyciem wyniku w ostatecznej tezie**.
-[Klasy warunków](notes/CERTIFICATE_CLASSES_015.json) rozdzielają obowiązki,
-założenia kryptograficzne i model; [kolejka kernela](notes/KERNEL_QUEUE_015.json)
+[Klasy warunków](notes/CERTIFICATE_CLASSES_016.json) rozdzielają obowiązki,
+założenia kryptograficzne i model; [kolejka kernela](notes/KERNEL_QUEUE_016.json)
 ma priorytety według zależności tezy, również jawne wpisy h=0 i Dyadic.
 
 **Checkpoint — [ponowne użycie ROM010](notes/ROM_REUSE_010_CHECKPOINT.md):**
@@ -136,9 +149,9 @@ Nie nadpisujemy prób. [Handoff 004](notes/SAMPLER_004_HANDOFF.json),
 |---|---|
 | Algebra pojedynczej ekstrakcji, rachunek pełnego Sign, kierunkowy moment J/P | Zachowane w dokładnym dotychczasowym zakresie |
 | Wspólna kontynuacja i kompozycja w grach programowanych | Dowód tekstowy warunkowy, CONTINUATION-002 |
-| Wykonalny publiczny sampler pełnej odpowiedzi, również porażek | SAMPLER-007 wykonany; capy par/wektora rozliczone przez dodatnie fallbacki. `J(none)=0` jawnie, uczciwe porażki pozostają w P. Koszt w receipcie |
-| Absolutna ciągłość J względem uczciwego P | SAMPLER-007: tekstowy argument dla każdego h; każde wyjście ma dodatni zaakceptowany atom uczciwego włókna. 015: kernelowe AC pod(M) i jawną dominacją względem pełnego J⁰. Formal source binding/kod OPEN |
-| Certyfikat `ΣJ²/P≤1+e`, z użytecznym e | 007: tekstowe `e<2^-44` pod (M). 014: kernelowe(M) z rzeczywistej bazy i H≥991;015: pełny kernelowy moment≤1+2^-47 pod jawną dominacją kodu. Rzeczywista instancja007 i emitted prawo OPEN. 004 zachowuje h=0 `e<2^-50`; cel all-h OPEN |
+| Wykonalny publiczny sampler pełnej odpowiedzi, również porażek | 016: konkretna referencja Lean i publiczne literały tablic; pełne prawa capów80/196 oraz zero/świeży sześcian kernelowe. J(none)=0 jawnie; uczciwe porażki pozostają w P. Pełny koszt maszyny OPEN |
+| Absolutna ciągłość J względem uczciwego P | 016: KERNEL dla konkretnego actualSampler i każdego h, bez(M). Osobno source/API binding OPEN |
+| Certyfikat `ΣJ²/P≤1+e`, z użytecznym e | 007: tekstowe `e<2^-44` pod (M). 014: kernelowe(M) z rzeczywistej bazy i H≥991;015: pełny kernelowy moment≤1+2^-47 pod jawną dominacją kodu. 016: cały kod → moment pod lokalnymi PairLeaves/CubeLeaf; instancje tych pól oraz emitted prawo OPEN. 004 zachowuje h=0 `e<2^-50`; cel all-h OPEN |
 | Dokładna baza/LDL → masa wszystkich włókien przy trzech temperaturach | **Kernel014**: konkretne współczynniki → monomiany/primary cap → kanoniczny Parseval → widmowy Schur →(M)007. Jawne wejścia: NTRU/public/inverse, ternarność i kanoniczna H≥991. Source harmonic nadal mixed, bez awansu całego C-KeyGen |
 | Odziedziczone `BasisLeafAlgebra.ldl_shape` | 008: przeszkoda pierwszych dwóch pivotsów; tej instancji nie można użyć w obecnej postaci |
 | Średnia harmoniczna i źródłowy liść767 | 010: H3 ROOT/STABLE +009 dają >1022 w emitted source model, tekstowo/mixed. 3 nowe marginesy kernelowe; full source kernel i typed key-law assembly OPEN |
