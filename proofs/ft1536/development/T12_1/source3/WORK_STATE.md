@@ -1,5 +1,31 @@
 # T12.1/source3 — żywy stan
 
+## B1.06 — BATCH_046 actual first-root continuation — 2026-10-10
+
+Owner-started new window, GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`),
+following checkpoint25R and the unchanged staged roadmap. BEFORE edits/jobs:
+BATCH_015–045 verified, **8604 distinct pins/683 literal source bindings**,
+no supersession or active job. Entry `.build/levels_046/ENTRY_PINS_046.json`,
+SHA256 `a2890d06e8132a7f67a3be86519d276394f0407faaf0b3dd7bd5846005f8732b`.
+Continue the SAME retained1140–1159 execution: exceptional first-root inverse,
+then LIVE ni/normalization/final canonical h; ONLY THEN fInv and BOTH
+SAME-material equations. B1.06 Acceptance NOT MET; B1.07 waits. One midpoint
+or Acceptance this window, preserving every historical/failed byte and the
+unchanged serial guarded limits. Small local own commits; no push, review,
+delegation, relay, migration or import. Historical runner/session labels
+remain provenance, not the current worker identity.
+RootInverseProgram/Values/Fold/Polynomial/Entry/Material accepted0/0:
+exceptional igm[0] derives the actual scaled r, all768 chronological
+butterflies derive the canonical unnormalized image, and ORIGINAL physical
+reconstruction gives factor1536. The SAME successful compute supplies all
+domains through the retained045 invocation, both Call/Bind layers and table/
+caller-t disposals. The actual normalization suffix remains linked, not
+proved correct yet. Five failed directories remain (Lean token boundary,
+finite exponent threshold avoided by the first-root relation, polynomial
+C-of-numeral, and a projected-heap rewrite); no limit was raised. This
+logical source commit is NOT the single window midpoint. LIVE ni and final
+canonical h follow next, before fInv or either equation.
+
 ## B1.06 — CLOSED at complete SAME-material reverse reconstruction — 2026-10-10
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
