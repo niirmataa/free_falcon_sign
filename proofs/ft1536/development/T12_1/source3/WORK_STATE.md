@@ -25,6 +25,16 @@ finite exponent threshold avoided by the first-root relation, polynomial
 C-of-numeral, and a projected-heap rewrite); no limit was raised. This
 logical source commit is NOT the single window midpoint. LIVE ni and final
 canonical h follow next, before fInv or either equation.
+NormalizeProgram/Atoms/Fold/Entry/Polynomial/Material accepted0/0:
+the actual logn10 branch calls mq_div_18433(Rt,(uint32_t)n) and derives
+ni=radix/1536; all1536 chronological stores derive ordinary canonical cells.
+The SAME complete compute's final h is represented by a concrete Relation.Rq
+vector, with every ORIGINAL physical evaluation equal to the derived g/f.
+Both actual table disposals and the caller's t disposal are consumed, not
+assumed away. Two rejected normalization directories remain (opaque
+Canonical decision domains and the exact seq_inv argument list). No limit
+was changed. This second logical source commit is NOT the window midpoint.
+ONLY NOW proceed to fInv/evaluation isomorphism and BOTH SAME equations.
 
 ## B1.06 — CLOSED at complete SAME-material reverse reconstruction — 2026-10-10
 
