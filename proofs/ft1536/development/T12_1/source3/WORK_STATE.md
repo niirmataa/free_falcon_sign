@@ -26,6 +26,19 @@ uniformity. Complete set_seed/rng_ready syntax includes both tmp32 scopes.
 Their enclosing execution/flags/lifetime/prefix composition still follows;
 this logical source step is NOT the window's single midpoint. All rejected
 snapshots/streams remain; no limit change or external/private seed read.
+KeygenRngReference/Frame, KeygenReadyResult, MakeReady and MakeReadySampling
+accepted guarded0/0. The COMPLETE fixed set_seed/rng_ready bodies now execute
+their actual branches/calls/byte stores and both Fresh tmp32 scopes. Every
+finite ready call derives return0 or1; return1 DERIVES both nonzero signed
+flags. Context bytes outside[8,432), all caller slots and automatic-object
+teardown are source consequences, including failure. Full normal prefix
+derives counter0/profile/static/scratch/automatic entry WITHOUT an already-
+ready condition; its SAME first cap/sampler calls derive count1 and both
+Bound1 vectors. The heap is no longer claimed unchanged on seeding paths.
+The explicit finite Linux syscall observations are not proof of the OS or
+seed quality/availability. Full-term audit and public source controls follow
+before one recoverable readiness close. Whole loop/six gates/accepted encoding
+material and full make teardown remain OPEN; no B1.07 Acceptance claim.
 
 ## B1.07 — CLOSED at enclosing entry/first-sampling midpoint — 2026-10-10
 
