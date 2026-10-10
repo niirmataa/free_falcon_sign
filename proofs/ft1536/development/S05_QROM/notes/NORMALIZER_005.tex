@@ -1,0 +1,294 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm]{geometry}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\usepackage{amsmath,amssymb,amsthm,booktabs,xurl,hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{3em}
+\newcommand{\code}[1]{\nolinkurl{#1}}
+\newcommand{\E}{\mathbb E}
+\newcommand{\TV}{\operatorname{TV}}
+\newtheorem{theorem}{Twierdzenie}
+\title{S05 / NORMALIZER\_005\\\large Normalizator włókna, odwrotność i jawny budżet TV}
+\author{Notatka robocza dla Niirmata}
+\date{10 października 2026}
+\begin{document}\maketitle
+
+\textbf{Status: WARUNKOWY / DEVELOPMENT / textual.}
+To jeden midpoint, bez niezależnego odbioru i bez nowego dowodu kernelowego.
+Nie jest to twierdzenie bezpieczeństwa FT1536 w QROM.
+Baza: SAMPLER-004, commit \code{1a6cb3e0a949b21fb9005ce167269a81199e0087}.
+
+Wykazano jednolity względny przedział dla normalizatora reszty
+$Z_1(r)$ i jego odwrotności, obowiązujący także dla $r=c-hz_2$ przy każdym $h$.
+Ponadto obliczono pełny normalizator włókna \emph{niezerowego} klucza
+$h=1$, $c=0$: względna szerokość przedziałów normalizatora i odwrotności
+jest mniejsza niż $2^{-180}$. Uproszczenie do zerowego aliasu ma błąd TV
+pełnej odpowiedzi cap16 mniejszy niż $2^{-180}$, z porażkami włącznie.
+
+\textbf{Nie wykazano} użytecznego momentu dla wszystkich $h$.
+Naturalne rozszerzenie sekwencyjne ma przy $h=1,c=0$ moment
+\emph{przed normą} większy niż $2^{1536}$. Nie jest to dolna granica
+momentu po normie, cap16 ani uśrednieniu po wyzwaniu.
+Pełna kontrakcja normalizatora dla dowolnego $h,c$ pozostaje niewykonana.
+
+\section{Model i dwa normalizatory, których nie wolno utożsamiać}
+W całej notatce $q=18433$, $\sigma=768$, $H=65535$, $b=768$,
+$Q(x,y)=x^2+xy+y^2$, a $Q_0$ jest sumą $b$ bloków $Q$.
+Połówka $z$ należy do $D=[-H,H]^{1536}\cap\mathbb Z^{1536}$,
+$w(z)=\exp(-Q_0(z)/(2\sigma^2))$ i $G=\sum_{z\in D}w(z)$.
+Wszystkie kongruencje są w dotychczasowym pierścieniu
+$R_q=\mathbb F_q[X]/(X^{1536}-X^{768}+1)$.
+\[
+ Z_1(r)=\sum_{z_1\bmod q=r}w(z_1),\qquad
+ Z_{h,c}=\sum_{z_2\in D}w(z_2)Z_1(c-hz_2).
+\]
+Oba są dodatnie. Każdy wektor reszt ma reprezentanta w $D$.
+Uczciwe prawo przed normą i sekwencyjny kandydat mają odpowiednio masy
+\[
+ P_{h,c}(z_1,z_2)=\frac{w(z_1)w(z_2)}{Z_{h,c}},\qquad
+ S_{h,c}(z_1,z_2)=\frac{w(z_2)}G\frac{w(z_1)}{Z_1(c-hz_2)}.
+\]
+Oba wzory obowiązują na tym samym włóknie, poza nim masa wynosi zero.
+Dokładna tożsamość SAMPLER-004 daje
+\[
+ \sum\frac{S_{h,c}^2}{P_{h,c}}
+ =\E_{U}[Z_1(c-hz_2)]\E_U[1/Z_1(c-hz_2)],\qquad U=w/G.
+\]
+Zastąpienie drugiego czynnika odwrotnością pierwszego jest błędem.
+Dokładne liczenie $Z_1$ nie dowodzi jego bliskości do stałej.
+
+\section{Jednolity certyfikat reszt i odwrotności}
+Dla jednej pary reszt $(a,d)$ wypisujemy wszystkie punkty boxu w tej klasie.
+Jest ich od 1 do 64. Niech $m$ oznacza minimalną energię i
+\[
+ u_i=e^{-(Q_i-m)/(2\sigma^2)},\qquad
+ F(a,d)=e^{-m/(2\sigma^2)}\sum_i u_i.
+\]
+\textbf{Odejmowanie minimum jest dokładną tożsamością.}
+Co najmniej jedno $u_i=1$, więc suma przesuniętych wag nie jest mała.
+Nie usuwamy czynnika $e^{-m/(2\sigma^2)}$ z normalizatora ani odwrotności.
+
+\code{exp_weight_interval} zachowuje konstrukcję SAMPLER-004.
+Na siatce $2^{-384}$ zwraca przedział szerokości najwyżej $2^{-372}$.
+Dla $t=0$ wynik jest dokładny. Dla $t\ge400$ przedział $[0,2^{-384}]$
+zawiera $e^{-t}$, bo $e>2$. Dla $0<t<400$ sumy Taylora stopni 127 i 128
+dla $e^{-t/512}$ dają odpowiednio dolną i górną granicę;
+$1/128!<2^{-700}$. Po zaokrągleniu na zewnątrz i dziewięciu kwadratach
+szerokość w jednostkach siatki spełnia
+$v_0\le3$, $v_{j+1}\le2v_j+2$, $v_9\le2558<4096$.
+To skończony rachunek całkowity/wymierny bez adaptacyjnej pętli precyzji.
+
+Sumując końce, otrzymujemy dokładne wymierne $L,U$:
+\[
+ 1\le L\le\sum_i u_i\le U\le64,\quad U-L\le2^{-366},\quad
+ U/L\le1+2^{-366}.
+\]
+Dla $b$ bloków zapiszmy $M=\sum m_j$, $L_r=\prod L_j$, $U_r=\prod U_j$.
+\begin{theorem}[Jednolicie dla wszystkich reszt, również przy $h\ne0$]
+\[
+ e^{-M/(2\sigma^2)}L_r\le Z_1(r)\le e^{-M/(2\sigma^2)}U_r,
+ \qquad
+ \frac{e^{M/(2\sigma^2)}}{U_r}\le\frac1{Z_1(r)}
+ \le\frac{e^{M/(2\sigma^2)}}{L_r}.
+\]
+Stosunek górnego do dolnego końca w obu przedziałach jest nie większy niż
+$K=(1+2^{-366})^{768}<1+2^{-356}$.
+\end{theorem}
+Dowód to mnożenie dodatnich przedziałów i odwrócenie ich końców.
+Ostatnią nierówność sprawdzono dokładnie w $\mathbb Q$.
+Symboliczny czynnik wykładniczy oraz dokładne końce są właściwym
+certyfikatem jednolitym; wydruk dziesiętny nie zastępuje tego certyfikatu.
+W obliczonych przykładach osobna ewaluacja balls512 i balls768 daje
+również względne szerokości poniżej $2^{-350}$.
+
+\subsection*{Co przechodzi na pełny normalizator dla dowolnego $h$}
+Niech $F_-(r),F_+(r)$ będą powyższymi końcami dla $Z_1(r)$ i zdefiniujmy
+$A_\pm=\sum_{z_2\in D}w(z_2)F_\pm(c-hz_2)$.
+\[
+ 0<A_-\le Z_{h,c}\le A_+\le KA_-,\qquad
+ 1/A_+\le1/Z_{h,c}\le1/A_-.
+\]
+Analogicznie sumy $w(z_2)/F_+(r)$ i $w(z_2)/F_-(r)$ obudowują
+nieznormalizowaną średnią odwrotności. Nie ma anulowania dodatnich wag.
+\textbf{To dokładny interfejs redukcji błędu, nie wykonana kontrakcja.}
+Sumowanie ma $131071^{1536}$ składników. W tym kroku nie znaleziono
+wykonalnej kompresji tego sumowania dla dowolnego mnożenia przez $h$.
+
+\subsection*{Pomijanie ogona wymaga osobnej ceny za odwrotność}
+Jeżeli pominięty zbiór ma masę $\tau$ pod \emph{dokładnym} $U$, to
+jego wkład do $\E Z_1$ jest co najwyżej $\tau Z_{\max}$, a do
+$\E(1/Z_1)$ co najwyżej $\tau/Z_{\min}$. Można zawsze użyć
+\[
+ Z_{\min}=e^{-768\cdot3\cdot9216^2/(2\sigma^2)},\qquad
+ Z_{\max}=64^{768}.
+\]
+Względny błąd obu średnich jest wtedy co najwyżej
+$\tau Z_{\max}/Z_{\min}$. Dostateczny warunek dla $2^{-100}$
+wymaga ponad 200000 bitów wykładnika w oszacowaniu ogona.
+To bardzo luźny warunek dostateczny, \emph{nie konieczna granica kosztu}.
+Sama mała odległość TV aproksymacji $U$ nie kontroluje nieograniczonej
+przez małą stałą funkcji $1/Z_1$.
+Rzeczywisty iloraz $Z_1(0)/Z_1((9216,0)^{768})$ przekracza $2^{78000}$.
+Nie jest to wyłącznie efekt luźnego globalnego przedziału.
+
+\section{Dokładność kategorii a prawo odpowiedzi}
+Po przypisaniu $\lfloor 2^{256}\ell_i/U\rfloor$ bitstringów kategorii $i$
+całą pozostałą masę przydzielamy minimizerowi. Z SAMPLER-004, lub bezpośrednio
+przez sumę ubytków, otrzymujemy
+\[
+ \TV(j_{a,d},p_{a,d})\le\epsilon_{\rm cat}
+ =64(2^{-372}+2^{-256}),\qquad
+ j_{a,d}\le(1+64\epsilon_{\rm cat})p_{a,d}.
+\]
+Pierwszy składnik to certyfikowane przedziały wag; drugi to zaokrąglenie
+mas dyadycznych. Nie zamieniamy dowolnego błędu TV na moment.
+Dla 768 kategorii w każdej z 16 prób całkowity wkład tego źródła błędu
+do TV pełnej odpowiedzi jest mniejszy niż $2^{-236}$.
+
+Ta granica jest jednolita po $r=c-hz_2$, więc działa dla każdego $h,c$,
+jeżeli prawo drugiej połówki jest takie samo po obu stronach porównania.
+Dotyczy \emph{tego samego idealnego prawa sekwencyjnego} $S$, nie uczciwego $P$.
+Nie dolicza błędów samplera $z_2$, wyzwania ani źródłowej emisji.
+Norma, wybór pierwszego sukcesu cap16 i ta sama modelowa emisja są wspólnym
+kanałem losowym; kontrakcja TV obejmuje także \code{none}.
+Nie warunkujemy porównania na udanej odpowiedzi.
+
+\section{Pełny normalizator niezerowego włókna \texorpdfstring{$h=1,c=0$}{h=1,c=0}}
+Klucz jest skalarem pierścienia, więc każdy blok rozdziela się niezależnie.
+Niech $x,y\in[-H,H]^2$ oznaczają bloki obu połówek; $x+y=qk$.
+Dokładna tożsamość
+\[
+ Q(x)+Q(qk-x)=2Q(x-qk/2)+q^2Q(k)/2
+\]
+daje czynnik aliasu $e^{-A Q(k)}$, $A=q^2/(4\sigma^2)$.
+Zerowy alias ma skończony normalizator
+$C=\sum_{x\in[-H,H]^2}e^{-Q(x)/\sigma^2}$.
+
+Przy $a=1/\sigma^2$, przez dopełnienie kwadratu i rozdzielenie parzystości,
+\[
+ C_\infty=\theta_0(a)\theta_0(3a)+\theta_{1/2}(a)\theta_{1/2}(3a),\qquad
+ \theta_s(a)=\sum_{k\in\mathbb Z}e^{-a(k+s)^2}.
+\]
+Każdy szereg sumujemy w RealBallField do 16384. Dwa ogony po pierwszym
+pominiętym dodatnim argumencie $r$ mają górną granicę
+$2e^{-ar^2}/(1-e^{-a(2r+1)})$. Dolny koniec używa tylko sumy skończonej,
+górny dodaje tę majorantę; wszystkie końce są zaokrąglane na zewnątrz.
+
+Przejście z kraty nieskończonej do boxu ma osobny koszt.
+Niech $\beta=1/(2\sigma^2)$, $L=2+\sqrt{\pi/\beta}$ oraz
+\[
+ T_H=\frac{2e^{-\beta(H+1)^2}}{1-e^{-\beta(2H+3)}}.
+\]
+Z $Q(x,y)\ge(x^2+y^2)/2$ wynika $0\le C_\infty-C\le2T_HL$.
+Użyto elementarnej majoranty każdej przesuniętej jednowymiarowej sumy
+Gaussa przez $2+\sqrt{\pi/\beta}$: po obu stronach środka pierwszy
+składnik ograniczamy przez 1, a resztę przez całkę po monotonicznym ogonie.
+
+Każda przesunięta dwuwymiarowa suma wewnętrzna aliasu jest co najwyżej $L^2$.
+Dla $\|k\|_\infty\le2$, $k\ne0$, sumujemy $e^{-AQ(k)}$ jawnie.
+Na skorupie $j\ge3$ jest $8j$ punktów i $Q(k)\ge3j^2/4$.
+Stąd pełna masa niezerowych aliasów jest nie większa niż
+\[
+ E=L^2\left(\sum_{0<\|k\|_\infty\le2}e^{-AQ(k)}
+ +\frac{24e^{-27A/4}}{1-(4/3)e^{-21A/4}}\right).
+\]
+Nie zakładamy, że wszystkie aliasy mieszczą się w boxie: nieskończona
+suma daje górną granicę i dlatego bezpiecznie nadlicza.
+
+Jeśli $C_-,C_+$ są obliczonymi końcami dla $C$, to
+\[
+ C_-^{768}\le Z_{1,0}\le(C_++E)^{768},\qquad
+ (C_++E)^{-768}\le1/Z_{1,0}\le C_-^{-768}.
+\]
+Przedziały mają względną szerokość poniżej $2^{-180}$.
+Wyniki, dokładne końce pomocniczych przedziałów i logarytmy całego
+normalizatora są w \code{NORMALIZER_005_CERTIFICATE.json}.
+
+\subsection*{Jawny transfer do pełnej odpowiedzi, również porażek}
+Niech $P^0$ będzie prawem $P_{1,0}$ warunkowanym na zerowe aliasy wszystkich
+bloków. Wtedy $z_1=-z_2$ i $z_2$ ma wagę $e^{-Q_0(z_2)/\sigma^2}$
+na \emph{tym samym skończonym boxie}. Mamy
+\begin{align*}
+ \TV(P_{1,0},P^0)&=P_{1,0}(\text{niezerowy alias})\le768E/C_-,\\
+ \TV(\mathrm{Reply}_{16}(P_{1,0}),\mathrm{Reply}_{16}(P^0))
+ &\le16\cdot768E/C_-<2^{-180}.
+\end{align*}
+Dowód: sprzęgamy każdą z 16 prób, następnie stosujemy ten sam test normy
+$Q_0(z_1)+Q_0(z_2)<2093922385$, wybór pierwszej akceptacji i tę samą emisję.
+Nie dzielimy przez prawdopodobieństwo akceptacji. Porażka cap16 i porażka
+modelowej emisji należą do przestrzeni wyjść. Ten wynik nie obejmuje
+implementacji losowania dokładnego $P^0$ ani przybliżania wyzwania.
+
+Pełne prawo odpowiedzi można też zapisać bez ukrytej normalizacji sukcesu.
+Dla prawa próby $\mu$ niech $s=\mu(Q_0(z_1)+Q_0(z_2)<B)$ oraz
+$t_o=\sum_{z:\,Q_0(z_1)+Q_0(z_2)<B}\mu(z)K_{\rm emit}(z,o)$.
+Wówczas, przy $A_{16}(s)=\sum_{j=0}^{15}(1-s)^j$,
+\[
+ \Pr[o]=A_{16}(s)t_o\quad(o\ne\mathtt{none}),\qquad
+ \Pr[\mathtt{none}]=(1-s)^{16}+A_{16}(s)t_{\mathtt{none}}.
+\]
+Wzór jest dokładny także dla $s=0$; użycie skończonego wielomianu
+usuwa zbędne dzielenie przez bardzo małe $s$. To formuła prawa,
+nie deklaracja wykonania wszystkich wysokowymiarowych sum $t_o$.
+
+\section{Rzeczywista przeszkoda dla rozszerzenia sekwencyjnego}
+Dla jednego bloku oznaczmy przez $G_\triangle$ normalizator
+$e^{-Q/(2\sigma^2)}$ na boxie, a przez $F(r)$ jego masę klasy reszt.
+Przy $h=1,c=0$ moment bloku wynosi dokładnie
+\[
+ M_2=\frac{Z_{\rm block}}{G_\triangle^2}
+       \sum_{z\in[-H,H]^2}\frac{e^{-Q(z)/(2\sigma^2)}}{F(-z)}.
+\]
+Weźmy kwadrat $S=[-R,R]^2$, $R=4\sigma=3072$.
+Dla $z\in S$ i niezerowego wektora całkowitego $k$, forma dwuliniowa
+spełnia $|\langle z,k\rangle_Q|\le\sqrt{Q(z)Q(k)}$ oraz
+$2\sqrt{Q(z)}\le2\sqrt3 R<4R$.
+Zatem
+\[
+ Q(-z+qk)-Q(z)\ge q^2Q(k)-4qR\sqrt{Q(k)}\ge q^2-4qR>0.
+\]
+Ostatnia funkcja jest rosnąca dla $\sqrt{Q(k)}\ge1$, ponieważ $q>4R$.
+W klasie jest najwyżej 63 innych liftów, więc
+$F(-z)\le e^{-Q(z)/(2\sigma^2)}(1+\delta)$,
+$\delta=63e^{-(q^2-4qR)/(2\sigma^2)}$.
+Certyfikowana majoranta theta $G_+$ dla $G_\triangle$ daje
+\[
+ M_2\ge\frac{C_-(2R+1)^2}{G_+^2(1+\delta)}>4,
+ \qquad \sum S_{1,0}^2/P_{1,0}=M_2^{768}>2^{1536}.
+\]
+To dowód na parametrach FT1536, nie ekstrapolacja małego modelu.
+Duży moment obala nadzieję, że sam dokładny rachunek normalizatora da
+mały moment \emph{tego prawa przed normą}. Kanały mogą zmniejszać moment,
+a wyzwanie zerowe ma masę $q^{-1536}$; nie wyprowadzamy zatem dolnej
+granicy końcowego Q-JOINT ani niemożliwości innych samplerów.
+
+\section{Wykonanie, zachowane niepowodzenie i otwarte obowiązki}
+Źródło: \code{FIBER_NORMALIZER_005.sage}, uruchamiane standardowo przez Sage.
+16 par reszt i cztery produkty bloków sprawdzają implementację;
+jednolity kwantyfikator wynika z dowodu przedziałowego, nie z tych testów.
+Drugie wykonanie z 768 bitami kontroluje stabilność wszystkich liczbowych
+wniosków i zgodność przedziałów. Receipty zapisują komendy, piny, limity,
+surowe logi i historię. Próby są w nowym \code{normalizer_005/} we wskazanym W,
+zgodnie z poleceniem tego okna; wcześniejszych prób nie nadpisano.
+
+Pierwsza próba zakończyła się na zbyt mocnej asercji $M_2>8$.
+Właściwy dolny certyfikat daje $M_2>4$; niezmienione granice normalizatora
+i TV przeszły przed tą asercją. Zachowano źródło i log niepowodzenia.
+To korekta progu diagnostycznego, nie ukryty PASS pierwotnego warunku.
+
+Pozostają jawnie otwarte:
+\begin{itemize}
+\item kernelizacja h=0: tekstowe $J\ll P$ i moment SAMPLER-004 do Lean,
+czyste logi jak dla DyadicObstruction; do tego czasu etykieta textual;
+\item wykonany, użyteczny certyfikat pełnego $Z_{h,c}$ i odwrotności dla
+całej dziedziny $h,c$, z kontrolą kosztu kontrakcji;
+\item publiczny sampler dla wszystkich $h$, z pełnym prawem porażek,
+$J\ll P$ i małym kierunkowym momentem; osobno koszt i source binding;
+\item formalizacja tego midpointu i niezależny odbiór; pozostałe obowiązki
+QROM z mapy murów pozostają bez zmian.
+\end{itemize}
+Następny krok powinien zmienić marginalne prawo drugiej połówki na
+proporcjonalne do $w(z_2)Z_1(c-hz_2)$ albo dać inny poprawny sampler
+włókna. Samo zwiększenie precyzji nie usunie wykazanej zmienności.
+\end{document}
