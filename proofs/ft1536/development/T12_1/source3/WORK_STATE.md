@@ -1,5 +1,49 @@
 # T12.1/source3 — żywy stan
 
+## B1.06 — CLOSED at complete SAME-material reverse reconstruction — 2026-10-10
+
+**CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
+**B1.06 Acceptance NOT MET.** One midpoint in BATCH_045,GPT-6.1 Sol Fast
+(`openai/gpt-6.1-sol-fast`). B1.05 stays032;B1.07 waits. Resume:**25R**.
+
+ALL eight actual reverse stages/rows/inner bodies derive the canonical
+unnormalized1536-cell image of the SAME successful public call's ORIGINAL
+g/f quotient input. Source-index block reconstruction is proved:inverse
+triples factor3,each reverse merge factor2,all original physical evaluations
+factor768 in two degree<768 blocks. Header/types,n1536/hn768/logn10,both
+generated igm aliases/table and r/ni declaration types reach the actual
+first-root suffix. Both actual Call/Bind layers,table disposals,observed
+result and caller t disposal remain linked. No043 premise is added.
+
+Next in unchanged16.1 order: actual768 first-root bodies with exceptional
+igm[0]=radix/(2*firstRoot-1) and factor2 reconstruction,THEN LIVE ni division
+radix/1536,1536 normalization stores and final canonical h with ORIGINAL
+quotient evaluations. ONLY THEN fInv via proved evaluation isomorphism and
+BOTH SAME-material mulRq equations. Current factor768 block law is not a
+final inverse or h equation. r/ni types are derived,their values still OPEN.
+These remain missing source/math proofs,not detected code/numerical
+counterexamples. Whole KeyGen/emitted-to-fiber,compiler,laws/PRG/security
+and independent review are outside. No B3 export consumed.
+
+Entry8306 pins (`57ba27fc…`);dedicated045 POSTSEAL **8604 pins/683 literal
+bindings**,no supersession/job (`3c9c9bec…`). Pair JSON
+`0dc008fd6411d286f111a62316efb9bd568e4e7b915d497142c2b6a3ba2f2163`;
+notes `972abd56aeada215706568e262e3454273ed1bd861df63b662f868e1cd340a4f`.
+Thirteen proofs+audit0/0;900 entries/834 complete terms/66 inductives,
+standard axioms/zero elisions (`bcda5608…`). Sage0010/0:12 new normal/UBSan
+runs,ten public inputs including seven SAME quotients,5100 rows/61440
+butterflies/122880 canonical stage cells per baseline mode;five mutations
+per mode detected,122880 ORIGINAL block evaluations (`1b68f0cb…`). First-root/
+normalization/final output/equations NOT checked/promoted;unchanged039
+approved live-header difference rehashed,not a complete M0 build. All11
+directories/20 steps retained,five failed directories/five rejected steps,
+max RSS4431268KiB;limits unchanged,traps248–252 in the pair notes.
+
+Own commits:`ff410718`,`9a1e4842`,`7613f1d8`,`91d4b179`,plus closing pair/
+checkpoint commit. Foreign work/staging preserved. No push,review,
+delegation,relay,migration,stages import or broad replay. No active or
+unresolved proof job. This owner-started window is CLOSED,not auto-restarted.
+
 ## B1.06 — BATCH_045 actual reverse-radix continuation — 2026-10-10
 
 Owner-started new window, GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`),
