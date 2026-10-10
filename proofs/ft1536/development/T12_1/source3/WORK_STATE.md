@@ -1,5 +1,50 @@
 # T12.1/source3 — żywy stan
 
+## B1.07 — CLOSED at whole-syntax/readiness-failure midpoint — 2026-10-10
+
+**CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
+**B1.07 Acceptance NOT MET; package IN_PROGRESS / WORKING_NOT_FROZEN.**
+Exactly one close in BATCH_049,GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`).
+B1.05/032 and B1.06/046 unchanged;B1.08/B4/B5 NOT entered. Resume:**29R**.
+
+Complete407-line caller syntax:13 lexical pieces/1194 tokens/303 grammar nodes,
+both runtime arms,all declarations/scopes/typed expressions/fixed destinations,
+cap before sampling/six gate groups/final break/complete encoding-call tail.
+The SAME complete048 readiness-failure prefix returns0 with all SIX enclosing
+objects dead and their bytes/extents/permissions/saved names restored. No
+whole-body success/callee/encoder oracle. Syntax is NOT source execution.
+Actual whole invocation/argument/global/scratch binding,every later return,
+reachable loop counter/chronological attempts/no normal fallthrough/final
+break,all six SAME mathematical gates and accepted f/g/F/G/h at actual codec
+inputs remain OPEN. The inspected complete certificate requires a derived
+general-scratch↔block0/global/snapshot/lifetime bridge,not an extra assumption.
+No C/numerical counterexample or insufficient bound is claimed.
+
+Entry9871 pins (`3fea9435…`);dedicated049 POSTSEAL **10483 pins/739 literal
+bindings**,no predecessor supersession/job (`465766f7…`). Sealed pair JSON
+`9a8a326482d834dc610522538ca2d635c8157ef864196bb844a52219c0819da6`;
+notes `83155d160c40cf32c57a7d7afc0b0c3ef38ee88a8703f21f5a9c36611f474f23`.
+Twenty proofs+audit0/0:1241 entries/1213 complete terms/28 inductives,standard
+axioms/zero elisions (`26cfce39…`). Fourteen generated producers byte-exact.
+Native Sage0020/0:12 normal/UBSan×14 PUBLIC SCRIPTED cases,five mutations per
+mode detected (`193edc5f…`). Every cryptographic callee/context layout/codec
+is an EXPLICIT MOCK and counter-start injection is an explicit diagnostic
+seam;not real KeyGen/FPEMU/solver/certificate/codecs or an emitted-key law.
+
+All29 directories/52 genuine completed steps retained:32 accepted/20 rejected,
+8 wholly accepted/20 failed/1 interrupted. Max RSS8378988KiB;limits unchanged.
+Owner-reported server restart left005's unfinished Binding exit/time/RSS and
+driver aggregate ABSENT,not reconstructed;three completed engine receipts
+remain (`a17a27f1…`). Three own unsealed cache aliases were rebuilt:two changed,
+Tokens identical;original005 products retained. Separate append-only alias
+reconciliation (`d1ad5b88…`) preserves the old receipt and every predecessor.
+Traps281–294 and exact remaining types are in the sealed notes/checkpoint.
+
+Own commits:`0e38ca35`,`48c8881d`,plus closing pair/checkpoint commit. Foreign
+changes/staging/paper commits preserved. Shared origin/main advanced externally;
+this worker ran NO push/review/delegation/relay/migration/import/broad replay.
+This owner-started window is CLOSED once,not automatically restarted.
+
 ## B1.07 — BATCH_049 whole-caller continuation — 2026-10-10
 
 Owner-started new window from28R, GPT-6.1 Sol Fast

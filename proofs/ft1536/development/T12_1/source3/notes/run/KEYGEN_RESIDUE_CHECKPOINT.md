@@ -1,3 +1,158 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.07 whole-caller syntax / readiness-failure lifetime midpoint
+
+**B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
+**Package: IN_PROGRESS / WORKING_NOT_FROZEN.**
+2026-10-10,BATCH_049,GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`).
+**CLOSED_AT_RECOVERABLE_MIDPOINT.** Exactly one close this window.
+B1.05/032 and B1.06/046 unchanged;B1.08/B4/B5 NOT entered.
+Handoff:**29R**. Exact types/pins/traps:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_049_NOTES.md`.
+
+## 29. Closed — complete caller grammar and all SIX outer lifetimes on readiness failure
+
+1. The complete407-line active M0 caller is bound by13 checked lexical pieces,
+   **1194 tokens/303 compositional syntax nodes**. Exact header/typed arguments,
+   all declarations/scopes/member/pointer/conditional expressions,both RUNTIME
+   arms,fixed destinations/arities,loop clauses and the complete encoding-call
+   tail are retained. No parser/callee oracle. This is SYNTAX,not whole-call
+   execution;the original monolithic direct parser is NOT claimed completed.
+2. Source AST equalities bind counter0/dimensions/readiness,actual increment/
+   cap BEFORE sampling,f/g resultants,both norm gates,public/solver/mandatory
+   certificate/final break. The four actual secret segments,public dispatch,
+   both later capacity tests and final return1 syntax are retained. Gate
+   mathematics and accepted material are NOT assumed or concluded by syntax.
+3. Actual outer names and the scope-exit operation restore each of SIX
+   objects' original bytes/extent/permissions plus saved scalar/pointer names.
+   The SAME complete048 readiness-failure prefix derives return0 and all six
+   DEAD blocks;post-teardown Load16/Load64 are impossible. Both nested RNG
+   temporary lifetimes are inherited. Other whole-call returns remain OPEN.
+4. Two generators reproduce14 lexical/binding producers byte-exactly. Ordinary
+   meta/reflexivity reductions hit memory limits;bounded producers and
+   `decide +kernel` close the SAME equalities with unchanged proof/job/print
+   limits and standard axioms. Own local expression fuel lowered64→24,with
+   complete fixed-source coverage proved rather than assumed. All failures
+   and partial multi-module successes remain,including the server restart.
+
+### 29.1 Exact exports and remaining B1.07 obligations
+
+The complete syntax export is a fact,NOT a whole-body execution relation:
+
+```text
+KeygenMakeGrammar.Whole KeygenMakeTokens.all
+  KeygenMakeSyntax.expectedHeader KeygenMakeProgram.code
+```
+
+The operational FAILURE export has no desired failure/lifetime input:
+
+```text
+ReadinessFailure ctx before blocks externalEvents out
+----------------------------------------------------
+out.flow = returned (some (int32 0))
+forall slot : Fin 6, out.heap.size (blocks slot) = 0
+all source-declared scalar and pointer names restored to before
+```
+
+Its constructor consumes actual048 Prefix,its nonnormal readiness edge and
+the concrete enclosing teardown. No arbitrary later-body/encoder/success
+rule. Both actual RNG temporary scopes precede the outer six teardowns.
+
+Remaining B1.07,in unchanged plan order:
+
+1. **Whole enclosing invocation:** actual argument binding,typed scalar/
+   pointer/member/conditional execution,fixed calls,scratch/legal/global
+   frames and source scope exits on EVERY later return. Full syntax and the
+   readiness-failure edge are now checked,not the normal whole invocation.
+2. **Chronological source loop:** preserve dimensions/counter through actual
+   callee paths,derive reachable invariant from048 counter0,no normal attempt
+   fallthrough,attempted-body list/all earlier rejects/final accepted break
+   and length<=3000000. Exhaustion3000001 is BEFORE sampling and is not counted
+   as a sampled attempt. AttemptExecution/Accepted/Rejected,LoopExecution/
+   Succeeded and successful_loop_last_attempt remain TARGETS,not049 exports.
+3. **SAME six-gate composition:** source resultants f/g,raw/GS FPEMU gates,
+   SAME046 public equations/material,032 source solver and COMPLETE mandatory
+   certificate. DERIVE entries/common call ID/snapshots/frames/bad lifetime.
+   The printed certificate initial/resolveLayout use block0; actual Context
+   scratch is a general descriptor. Prove relocation/generalized layout and
+   global binding,NOT an added scratch-block0/certificate-correctness premise.
+4. **Accepted physical material at actual encoding inputs:** f/g/F/G/h identity
+   from real stores/callee frames,not abstract names or scripted pointer tests.
+   Complete all make teardown. Acceptance precedes capacity checks and differs
+   from return1. Codecs stay B1.08/09;no IID/p_accept/availability law follows.
+
+These are missing source/composition proofs,NOT demonstrated C/numerical
+counterexamples or insufficient arithmetic estimates. B1.07 Acceptance is
+NOT met. Whole KeyGen/emitted-to-fiber,laws/seed quality/PRG/security,OS/
+Windows/compiler/machine/CT and independent review stay outside this result.
+
+### 29.2 Pins,audit,explicit mock controls and retained restart
+
+- BEFORE work:BATCH_015–048 **9871 pins/718 literal bindings**,no predecessor
+  supersession/job. Entry
+  `3fea9435f3f6638bfced299058df18f8cb2842798cd8ce6ec774ef1c2754d909`.
+- **BATCH_049 JSON:** `9a8a326482d834dc610522538ca2d635c8157ef864196bb844a52219c0819da6`.
+- **BATCH_049 notes:** `83155d160c40cf32c57a7d7afc0b0c3ef38ee88a8703f21f5a9c36611f474f23`.
+- Twenty proofs+audit0/0:**1241 entries=1200 new+41 inherited;1213 complete
+  terms+28 inductives;standard axioms/zero elisions**,739 literal inputs.
+  Audit `26cfce39c6a9f1c74e3daea2123cf5c496d606ccde85b1ad5d4bac3b797f8559`;
+  receipt `4a98a549e1b613d3020390eaef6c2995c9865baa556d2c4f0b2bb765f71008d4`.
+  The41 inherited exports include actual046/032/complete certificate TYPES/
+  TERMS,not a fresh audit of their complete transitive closures or consumption
+  as a whole-attempt proof. Complete term rendering is an INTERNAL audit.
+- Native Sage0020/0:**12 normal/UBSan runs ×14 PUBLIC scripted cases**;all
+  FIVE mutations detected in both modes. Controls
+  `193edc5f6015b99e299b7106c81c2b9f35bf5b39b8f3993442235e89871a1981`;
+  receipt `6dacaa07b38e73eef820c9fa8cfa74737c10522e9882a8ed2afef670a8ac03c0`.
+  COMPLETE source CALLER,but EXPLICIT MOCK context/cryptographic callees/codecs
+  and injected counter-start boundary. NOT real sampler/FPEMU/NTT/solver/
+  certificate/codec bodies,private KeyGen or real emitted keys. No entropy or
+  probability measurement. Unchanged039 approved live FPR difference rehashed,
+  not a full M0 build. Finite chronology/pointer controls do not close proofs.
+- All29 directories/52 actual completed steps retained:**32 accepted+20
+  rejected**,8 wholly accepted/20 failed/1 interrupted directories. Max
+  recorded RSS8378988KiB;limits unchanged. Traps281–294 in the sealed notes.
+- Owner-reported server restart interrupted005 Binding. THREE genuine engine
+  receipts survive;driver aggregate/unfinished exit/time/RSS remain ABSENT.
+  Recovery `a17a27f1…`. Three own working cache aliases were rebuilt; TWO
+  hashes changed (Syntax/Grammar),Tokens stayed identical. Original005 products
+  remain byte-exact. Separate reconciliation `d1ad5b88…` preserves the old
+  receipt and explicit alias history;NO015–048 pin is superseded.
+- Generator reproduction `73187e5c…`;PRESEAL `65be270d…` rechecks9871 unchanged
+  predecessors. Dedicated049 organizer
+  `d1e8326ebae7b27b80d459d02d81f5fbdd696274b13800a85560a1b015855c56`.
+- **POSTSEAL** `.build/levels_049/POSTSEAL.json`:
+  `465766f7fd296ebaf2e720575116f883c440fe5f21b0cae14b9c99b23208a2d3`:
+  **10483 distinct pins/739 literal bindings**,no predecessor supersession/job.
+- Own commits:`0e38ca35`,`48c8881d`,plus closing pair/checkpoint commit. Foreign
+  staging/work/paper commits preserved. Shared origin/main advanced externally;
+  this worker ran NO push/review/delegation/relay/migration/import/broad replay.
+
+## 29R. Handoff — continue B1.07 AFTER whole syntax,not from an assumed successful caller
+
+1. This window is CLOSED at exactly one recoverable midpoint,NOT Acceptance.
+   Do not auto-restart it or enter B1.08/B4/B5. Preserve BATCH_015–049 and all
+   earlier/failed bytes. Next owner-started window continues B1.07 in29.1 order.
+2. Read WORK_STATE,this checkpoint,049 pair notes,B1.07's exact Acceptance
+   block in EXECUTION_PLAN and the staged roadmap. BEFORE edits/jobs:
+
+   ```sh
+   mkdir -p .build/levels_050
+   python3 -B tools/keygen_make_batch.py verify 9a8a326482d834dc610522538ca2d635c8157ef864196bb844a52219c0819da6 83155d160c40cf32c57a7d7afc0b0c3ef38ee88a8703f21f5a9c36611f474f23 .build/levels_050/ENTRY_PINS_050.json
+   ```
+
+   Expect10483 pins/739 literal bindings/no predecessor supersession/job. Any
+   mismatch is stop-and-report,not silent repair or weakening historical pins.
+   The own049 restart/cache reconciliation remains part of the verified closure.
+3. Use NEW modules;preserve049 sources/products. Inspect exact export/consumer
+   types BEFORE composition. Whole SYNTAX and readiness FAILURE cannot become
+   a successful whole-body oracle. Do not reintroduce047's already-ready subset,
+   local Count<=cap as a final premise,assumed equations/certificate results,
+   scratch-block0 correctness or seed uniformity. Compose actual invocation,
+   chronology,gates and final physical material in unchanged plan order.
+4. One owner-started stage/window,one Acceptance or expanded midpoint,bounded
+   serial guarded jobs,unchanged limits/0/0 logs/native Sage/durable runtime.
+   Small local exact-path commits;no automatic push/review/delegation/relay/
+   migration/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.07 complete readiness and SAME first sampling midpoint
 
 **B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
