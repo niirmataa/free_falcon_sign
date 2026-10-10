@@ -286,3 +286,132 @@ pathspecami; brak push.
 Następny krok: decyzja właściciela o odbiorze tej formy; po domknięciu
 kolejnych etapów B1 aktualizacja §7/§11 i todo B1-FINAL, a przed ePrint
 prawdziwy skan literatury i materiał pochodzenia do Annex B.
+
+## Batch 5 — window 3: ADDENDUM form pass (classical crypto paper form)
+
+Date: 2026-10-10. Owner addendum: professional crypto-paper form
+("Pornin in form"), standard = Falcon paper / Fouque et al. Content and
+statuses unchanged: scope notes, labels and number honesty preserved;
+the form grows, the theorems do not. One stage per window; this window
+is the form stage, closed at this checkpoint.
+
+### Skeleton (now)
+
+Abstract; 1 Introduction (contributions + full roadmap); 2 Preliminaries,
+notation and threat model; 3 The FT scheme (parameters, algorithms,
+encoding); 4 Main statement (end-to-end thesis + conditional theorem);
+5 The classical reduction; 6 Sampler analysis and negative results;
+7 Binding to the implementation; 8 Security accounting; 9 The
+computational interface; 10 Related work; 11 Limitations, open work and
+conclusion (honesty ledger); **References (BibTeX); then Appendices A/B**.
+File layout kept (sec_03_model now typesets §2, sec_02_parameters §3);
+section numbering follows the classical order in `main.tex`.
+
+### What was added (form only)
+
+- **Notation table (Table 1)** right after the preliminaries prose:
+  f, g, F, G, h, fInv, q, n, N, NTT/evaluations, Q, B, A_h, reduce/
+  center, mu_K/mu_H, beta, AC/second/chi2/TV, e, e2(k), k, eps_coll,
+  delta_PRG, Phi, psi_D, advantages. Numeric instantiations point to
+  Section 3 and the source map.
+- **Family parameter table (Table 2)** in Falcon Table-1 style for
+  768/1536/3072. Only pinned quantities are filled (FT1536: q=18433,
+  bounds 1/2047, cap 16, measured p_accept 0.34671, B and KeyGen cap as
+  labeled configuration values). Unpinned cells are dashes; **FT byte
+  sizes are not invented** — the caption records that the only pinned
+  size fact is the Falcon-512 PADDED 666-byte format.
+- **Algorithms 1-3 (boxed):** KeyGen (ternary f,g, solver fG-gF=q,
+  recorded acceptance gates, public computation h=g/f), Sign (challenge
+  framing, cap-16 attempts, signed-16 emission), Verify (coefficient
+  predicate). Each box restates pinned interfaces (C02/C03/C05) and is
+  followed by its scope: derivation status = Section 7.3 ledger, realized
+  attempt shape open, termination/emitted law/byte framing outside
+  (Assumption A3/A4, Section 11).
+- **Formal environments:** numbered Definition / Assumption / Theorem /
+  Lemma / Corollary / Remark with a shared per-section counter and
+  cross-references; every theorem-like statement now carries a label and
+  is cited in the body (Prop. 2.2, Thms. 4.2/4.3/6.4-6.7, Lem. 5.1,
+  Cor. 4.4, Props. 6.1/6.3, Thm. 9.x). A1-A5 became Assumption 2.4-2.7
+  (verbatim content); ShortPreimage and the MT-ISIS experiment became
+  definitions; the k=1 scope test became Corollary 4.4 (verbatim).
+- **End-to-end thesis highlighted** (mdframed Target statement 4.1) and
+  explicitly kept as a TARGET, not a theorem: the text in front of it
+  states that the highlight marks centrality, not proof status.
+- **Security table** became a numbered float (Table 3) with a caption
+  keeping the proxy/no-certification labels.
+- **BibTeX: only real, verified entries.** Added `falcon2018` (FALCON
+  NIST submission; provenance note in EXTERNAL_REFERENCES.md: no separate
+  2018 proceedings paper was identified, so the submission document is
+  cited), `hps1998` (NTRU, ANTS 1998, LNCS 1423, 267-288), `gpv2008`
+  (STOC 2008, 197-206), `lyu2012` (EUROCRYPT 2012, LNCS 7237, 738-755),
+  `dilithium2018` (TCHES 2018(1), 238-268), `fktwy2020` (Gram-Schmidt
+  key-recovery, EUROCRYPT 2020, LNCS 12107, 34-63). All six were checked
+  against public bibliographic metadata on 2026-10-10 before citing.
+  Related work stays a declared TODO stub; uncertain items (e.g. the
+  full GPV-version history, verified-compiler comparisons) remain TODO,
+  not citations.
+- Notation coherence: the tape length is now $N=q_s\cdot S.\mathrm{bits}$
+  so that $n$ is the ring dimension (the quantity is unchanged).
+- Class/layout: `article` with the crypto-standard packages (amsthm,
+  algorithm/algpseudocode floats, booktabs, hyperref); no logo.
+
+### Discipline check (unchanged content)
+
+No new mathematical statement; every pre-existing sentence kept its
+scope. S06 rows keep CHANGES_REQUIRED/uncertified labels; the two e2
+exponents stay shape-labeled with the B1-ATTEMPT-SHAPE todo; A3/A4 stays
+outside the proof; no QROM claim; family profiles stay
+ALTERNATIVE_PROPOSAL; the honesty ledger stays in the body; REVIEW_002
+stays AUTHOR_RECHECK. All required todo keys (B1-HONEST-HOP, B1-LAWS,
+B1-ATTEMPT-SHAPE, S06-CERTIFICATE, ORIGIN) remain in the text.
+
+### Verification performed in this window
+
+- Final `make check`: **PASS**, 112/112 pins, 21 source IDs, 11 sections
+  + 2 annexes, **23 pages**, clean TeX/BibTeX logs, no overfull/underfull
+  boxes, no undefined references/citations. One family-table overfull was
+  fixed by tightening the float, not by weakening any check.
+- `make numbers` not rerun: pinned numerical inputs unchanged;
+  `build/numbers/run_001/RECEIPT.json` remains the numerical evidence.
+- Bibliography check: `build/main.blg` clean; all nine entries real and
+  metadata-verified; provenance in `sources/EXTERNAL_REFERENCES.md`
+  (rehashed in this revision).
+
+### Window receipts (SHA-256)
+
+| Artifact, relative to paper/ | SHA-256 |
+|---|---|
+| `SOURCES.md` | `3741e4e8d9887db68b0e9984d647fca4c8beff37b488ac600437f3c000c54abd` |
+| `SOURCES.sha256` | `35319f887a2365849eff00eba6c54ad81b5064d8172351e76e0a6a7a99322101` |
+| `build/main.pdf` | `fa32447f9d3b00177b7d35d61461f67f775f2c9dbdd692e2352639b27986d8ce` |
+| `build/CHECK.json` | `3b67eb8ca40ab5883b04cfa2cf69b6b2d2eb6d65dad78554221a106654fdbc02` |
+
+PDF pin identifies the version 0.3 publication-form build
+(10 October 2026). The 112-input evidence snapshot is unchanged except
+the rehashes of `refs.bib` and `sources/EXTERNAL_REFERENCES.md`.
+
+### Ocena i przekazanie dla właściciela (PL)
+
+Paper wygląda teraz jak klasyczny kryptograficzny artykuł: kolejność
+sekcji zgodna ze szkieletem, tabela notacji zaraz po preliminariach,
+tabela parametrów rodziny w stylu Falcon Table 1, trzy algorytmy
+w pudełkach, pełne środowiska formalne z numeracją i cytowaniami,
+teza główna wyróżniona (ale wciąż jawnie jako cel, nie twierdzenie),
+referencje przed aneksami. Bibliografia urosła wyłącznie o prawdziwe,
+zweryfikowane pozycje (NTRU, GPV, Lyubashevsky, Dilithium, key-recovery,
+FALCON); niepewne rzeczy zostają TODO pod skan przed ePrint — nic nie
+zmyślono. Treść i statusy są dokładnie te same co po oknie 2: B1.05
+zamknięte, B1.06 z Acceptance, B1.07 w toku, wszystkie etykiety i noty
+zakresu nietknięte, S06 nadal niecertyfikowane, e2 nadal zależy od
+kształtu próby, A3/A4 poza dowodem, brak QROM.
+
+Czego świadomie nie zrobiłem: nie wypełniłem rozmiarami kluczy tabeli
+parametrów (brak pinów — są kreski zamiast zmyślonych liczb), nie
+dodałem „porównywalnych gwarancji" do cytowanej literatury i nie
+zamieniłem tezy end-to-end w twierdzenie mimo sugestii „THEOREM" —
+to byłoby naruszenie zakresu. Własne źródła zapisane lokalnie na main
+małymi commitami; brak push.
+
+Następny krok: odbiór formy przez właściciela; przed ePrint prawdziwy
+skan literatury (TODO w §10) i materiał do Annex B; przy domknięciu
+kolejnych etapów B1 — aktualizacja §7/§11 i todo B1-FINAL.

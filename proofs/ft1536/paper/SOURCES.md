@@ -16,6 +16,12 @@ not an independent mathematical acceptance or a new Lean replay.
 - Window-2 status update: B1.05 closed (BATCH_032), B1.06 Acceptance met
   (BATCH_046) and B1.07 in progress are recorded from the pinned source3
   stage ledger and exports (claim C21). Six new inputs; **112** total.
+- Window-3 form pass (addendum, 2026-10-10): classical crypto skeleton,
+  notation/family/security table floats, boxed KeyGen/Sign/Verify
+  algorithms, numbered Definition/Assumption/Theorem/Lemma/Corollary/
+  Remark environments with cross-references, and six verified literature
+  context entries. No claim content changed; `refs.bib` and
+  `sources/EXTERNAL_REFERENCES.md` were rehashed. Still **112** inputs.
 - Byte identity is fixed by **SOURCES.sha256**, which lists every input in
   the inventory below. The hash of that manifest and the built PDF are
   recorded in `build/CHECK.json` and the paper handoff.
@@ -417,7 +423,7 @@ nonnegative epsColl. The k=1/D=0 test does not consume LocalJointCertificate.
 
 ### C20 — numerical display and symmetric ceiling convention
 
-**Locations:** section 8; Annex A.
+**Locations:** sections 8, 10; Annex A.
 
 - Binding outline §8: explicitly requested 256 classical /128 quantum
   symmetric reporting convention for ChaCha20/SHAKE, applied consistently
@@ -425,6 +431,13 @@ nonnegative epsColl. The k=1/D=0 test does not consume LocalJointCertificate.
 - `paper/sources/EXTERNAL_REFERENCES.md` and `paper/refs.bib`: versioned
   Grover reference, metadata checked 2026-10-06. Generic O(sqrt(N)) query
   search is distinct from a hardware gate count or a QROM signature proof.
+  The same files carry the section-10 literature context entries
+  (`falcon2018`, `hps1998`, `gpv2008`, `lyu2012`, `dilithium2018`,
+  `fktwy2020`), each verified against public bibliographic metadata on
+  2026-10-10 before being cited. They are cited as design/attack context
+  only, not as compared guarantees; `falcon2018` is the NIST submission
+  document, and no peer-reviewed 2018 proceedings paper by that exact
+  title/author list was identified. Uncertain items remain TODO.
 - `paper/tools/check_numbers.sage`: QQ arithmetic for 0.292β and 0.265β,
   minima, decimal rounding, and 256/2=128. `paper/build/numbers/run_001/`
   `RECEIPT.json` binds the script, argv, exit status and result bytes.
@@ -507,6 +520,20 @@ deterministic traces license no IID, p_accept or availability formula.
     review chronology or any claim quoted from that file; the paper's
     B1.05 statement matches its recorded equation. The superseded bytes
     remain in paper commit `3333088d`.
+14. Form pass (addendum, window 3, 2026-10-10): the section order now
+    follows the classical crypto skeleton (preliminaries/notation,
+    scheme with boxed algorithms, main theorem, reduction, sampler,
+    binding, security levels, computational seam, related work,
+    conclusion; references before appendices). The algorithm boxes
+    restate pinned interfaces only (C02/C03/C05) and carry scope
+    pointers to the B1 stage ledger; the family table reports dashes for
+    quantities not pinned (FT byte sizes are not invented). The
+    tape-length symbol was renamed $n\to N$ so that $n$ is the ring
+    dimension; the quantity is unchanged. Theorem/definition/assumption
+    numbering and cross-references are editorial; every statement keeps
+    its original scope, and the end-to-end thesis remains a target
+    statement, not a theorem. Bibliography additions are limited to the
+    verified entries recorded in C20 and `sources/EXTERNAL_REFERENCES.md`.
 
 ## Pinned input files
 
