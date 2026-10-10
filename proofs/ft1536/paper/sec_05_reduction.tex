@@ -1,5 +1,17 @@
 \section{The classical reduction}\label{sec:reduction}
 \status{\CLOSED{} conditional reduction}
+This section presents the closed reduction as a self-contained
+mathematical argument. Its objects are the laws of
+Section~\ref{sec:model}, its conclusion is
+Theorem~\ref{thm:conditional}, and each step is written out so that it
+can be read without running a proof assistant: the direction of the
+second moment (Section~\ref{sec:direction}), the induction over the
+adaptive adversary (Lemma~\ref{lem:composition}), the collision loss
+(Section~\ref{sec:collstop}) and the extraction into the MT-ISIS
+experiment (Section~\ref{sec:extraction}). The formal exports that
+carry the same steps are listed in the compliance table of
+Appendix~\ref{app:compliance}.\src{C04,C05}
+
 \subsection{One honest reply, including failure}
 The finite candidate space \code{BoxPair} contains two vectors with
 coordinates in $[-65535,65535]$. This is an enclosing box, not a
@@ -22,7 +34,12 @@ not perform another centering or Verify check on a positive emission.
 This is a probability-law specification; an efficient exact sampler
 is not inferred from its definition.\src{C05}
 
-For any one-attempt law $t$, let
+Retries and failures are part of this experiment, not remarks on it.
+A norm rejection is a draw of the $\none$ mass and is retried, at most
+$16$ times; cap exhaustion returns $\none$ and remains in the law as a
+real outcome. Emission failure --- a positive trial whose second
+vector is not signed-$16$ --- is terminal and is not retried. For any
+one-attempt law $t$, let
 $G_{16}(t)=\sum_{i=0}^{15}t(\none)^i$ and let
 $I_t(o)=\sum_{z:\,\mathrm{emit}(z)=o}t(\mathrm{some}\ z)$.
 The exact failure accounting is
@@ -34,7 +51,7 @@ Thus cap exhaustion and emission failure are both retained. A small
 probability of verifier rejection after positive emission is not itself
 a chi-square certificate.\src{C05,C06}
 
-\subsection{Public simulation and extraction}
+\subsection{Public simulation and extraction}\label{sec:extraction}
 The sampler interface accepts only $h$, the public state, message,
 nonce and a finite tape, and returns a pair $(c,o)$ of challenge and
 reply. The simulator first records the submitted message and draws a
@@ -55,6 +72,28 @@ forgery the reducer returns its recorded target index and
 the MT experiment, by the extraction of
 Proposition~\ref{prop:extracts}.\src{C05}
 
+Written out, the extraction argument has four steps.
+\begin{enumerate}
+\item A run of the public simulation against the fixed target list
+ either stops at an occupied name or completes; on completion the
+ table of programmed names is exactly the transcript of the adversary's
+ fresh hash queries and of the simulator's own signings.
+\item If the adversary ends with an accepted forgery $(m^\ast,s^\ast)$,
+ the freshness gate guarantees that $m^\ast$ was never submitted as a
+ message, so the name used at final verification is not
+ signing-programmed and therefore consumed a target entry; the reducer
+ returns its index $i\leq q_h+1$.
+\item Acceptance means the coefficient predicate of
+ Section~\ref{sec:model} holds for $(h,m^\ast,s^\ast)$; by
+ Proposition~\ref{prop:extracts} the extracted pair is a short
+ preimage for the corresponding target, which is exactly the success
+ condition of Definition~\ref{def:mtisis}.
+\item Consequently, a winning public-simulation run yields an MT-ISIS
+ output with the same probability, and no premise about hidden
+ execution traces is used: the identification of the two output laws
+ is equality of expectations for output functions
+ (\code{Dist.Same}).\src{C05}
+\end{enumerate}
 The resulting law identity is
 \[
  \code{runMT}(q_h+1,\mu_H,B_A)
@@ -66,6 +105,45 @@ it does not assert identical hidden execution traces. No independent
 whole-game equality premise is inserted into
 Theorem~\ref{thm:conditional}.\src{C05}
 
+\subsection{The direction of the second moment}\label{sec:direction}
+The certificate compares the \emph{simulated} reply law $j$ against the
+\emph{honest} law $p$, in that direction:
+$\Second(j,p)=1+\chi^2(j\Vert p)$ with $\AC(j,p)$
+(Definition~\ref{def:second}). The direction is load-bearing in two
+ways. The reduction must upper-bound the honest winning probability,
+so the density ratio it needs is $j/p$, not $p/j$; and
+$\AC(j,p)$ --- not its converse --- is the support condition that fails
+exactly when the simulation emits outside the honest law's image
+(Section~\ref{sec:limits}). A bound on $\Second(p,j)$ would control the
+wrong ratio and proves nothing used here.\src{C03,C04}
+
+The event-level consequence is the following computation. Fix a
+winning event $E$, put $a=p(E)$, $b=j(E)$, and let $f=\ind[E]$. Under
+$p$ the indicator has variance
+\[
+ \sum_x p(x)\,(f(x)-a)^2 = a(1-a),
+\]
+and with the density ratio $r(x)=j(x)/p(x)$ on the support of $p$,
+\[
+ b-a=\sum_x p(x)\,(r(x)-1)\,(f(x)-a).
+\]
+Weighted Cauchy--Schwarz applied to $r-1$ and $f-a$ then gives
+\[
+ (a-b)^2\ \leq\ \Bigl(\sum_x p(x)(r(x)-1)^2\Bigr)\cdot a(1-a)
+ \ =\ \chi^2(j\Vert p)\cdot a(1-a),
+\]
+because $\sum_x p(x)(r(x)-1)^2 = \Second(j,p)-1$. Thus for every event,
+\begin{equation}\label{eq:quad}
+ (a-b)^2\ \leq\ D\,a(1-a),\qquad D=\Second(j,p)-1.
+\end{equation}
+Solving \eqref{eq:quad} for $a$ --- the quadratic
+$(1+D)a^2-(2b+D)a+b^2\leq 0$ --- keeps the larger root and yields
+$a\leq\Phi(D,b)$ with $\Phi$ of \eqref{eq:phi}. This is why the honest
+probability is bounded through the simulated one, and why the error
+term enters as $D=(1+e)^{q_s}-1$ after the composition below. For
+$D=0$ the inequality degenerates to $a\leq b$, the content of the
+$k=1$ scope test (Corollary~\ref{cor:scope}).\src{C04,C16}
+
 \subsection{Adaptive composition and stopping loss}
 \begin{lemma}[Adaptive composition and stopping loss]\label{lem:composition}
 The certificate compares the full $(c,o)$ law at every fresh signing
@@ -75,18 +153,63 @@ factor $(1+e)^{q_s}$: hash steps do not pay this factor, and a Sign step
 pays it before following the adaptive continuation.
 \end{lemma}
 This is the content of \code{programComparison} and
-\code{stoppedGameComparison}.\src{C04,C05}
+\code{stoppedGameComparison}. The induction, written out, runs over the
+adversary's program:\src{C04,C05}
+\begin{itemize}
+\item at a \emph{done} step both executions stop and the comparison is
+ reflexive, with factor $1$;
+\item at a \emph{hash} step both games answer from the same programmed
+ record, so the reply laws are identical and the factor stays $1$;
+\item at a \emph{sign} step the certificate compares the complete
+ one-reply law of the honest body with the sampler law at the current
+ public key, state, message and nonce, giving $\Second\leq 1+e$; the
+ factor is multiplied in \emph{before} the adaptive continuation is
+ fed the reply. The certificate is quantified at every public state and
+ message, so nothing about the continuation has to be predictable in
+ advance.
+\end{itemize}
+Second moments multiply under this composition whenever the absolute
+continuity fields hold at each step, and the program type bounds the
+number of Sign tokens by $q_s$; the product is therefore at most
+$(1+e)^{q_s}$. The second-moment direction of
+Section~\ref{sec:direction} then transfers the winning event with
+$D=(1+e)^{q_s}-1$.\src{C04,C05}
 
-At the event level, the underlying directional inequality is
-$(a-b)^2\leq D a(1-a)$, where $a$ is the honest event probability and
-$b$ the simulated one. Solving its upper branch gives \eqref{eq:phi}.
-The stopped-game theorem (Lemma~\ref{lem:composition}) applies this
-comparison with
-$D=(1+e)^{q_s}-1$. Removing the collision stop contributes exactly the
-clipped parameter \eqref{eq:coll}, based on the uniform $320$-bit nonce
-space and the formal query counts. This supplies
-\eqref{eq:conditional}.\src{C04}
+\subsection{Removing the collision stop}\label{sec:collstop}
+The stopped run halts when a drawn name is already occupied in the
+table of hash names. Removing this stop changes the advantage by at
+most the clipped parameter \eqref{eq:coll}, and the counting behind it
+is elementary. Each of at most $q_s$ signing queries draws a fresh
+uniform $40$-byte, $320$-bit nonce. A run can reach an occupied name in
+two ways: a signing nonce can collide with one of the $q_h$ names the
+adversary submitted ($q_s q_h$ pairs), or two signing nonces can
+collide with each other ($q_s(q_s-1)/2$ pairs). Each pair collides with
+probability exactly $2^{-320}$, so a union bound over all pairs gives
+\[
+ \Pr[\text{some collision}]\ \leq\
+ \frac{q_s q_h+q_s(q_s-1)/2}{2^{320}},
+\]
+truncated at $1$; the subtraction $q_s-1$ is truncated natural
+subtraction, as in the formal declaration. The stopped-run advantage
+itself is unchanged on collision-free runs, hence
+\[
+ \Adv_{\mathrm{EUF}}(\beta,\mu_K,A)
+ \ \leq\ \Pr[\text{stopped run wins}]+\epscoll.
+\]
+This is a name-table collision loss of the classical game; it is not a
+QROM statement, and the $320$-bit nonce accounting is not a security
+level.\src{C04,C05,C18}
 
+\subsection{Assembling the closed reduction}
+The four steps compose directly. The adaptive composition
+(Lemma~\ref{lem:composition}) bounds the stopped run by
+$\Phi((1+e)^{q_s}-1,b)$ through the event transfer of
+Section~\ref{sec:direction}; the collision removal
+(Section~\ref{sec:collstop}) adds $\epscoll$; and the extraction
+(Section~\ref{sec:extraction}) identifies the remaining term with
+$b=\Adv_{\mathrm{MT}}(q_h+1,\mu_H,B_A)$ for the concrete reducer
+$B_A=\code{Reduction.build}\ \beta\ A\ S$. Together these are
+\eqref{eq:conditional}, with the overall clipping at $1$.
 The second moment controls a density ratio over the entire observation,
 not merely its expected value or a rejection indicator. Key-law
 conditioning remains in $\mu_H$. The Sign constant $e$ belongs to the

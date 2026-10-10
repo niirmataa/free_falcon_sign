@@ -1,5 +1,20 @@
 \section{Artifact bindings and reproducibility}\label{app:trust}
 \status{selected evidence pinned; release packaging \OPEN}
+\subsection{Structure of the appendices}
+The appendices carry what the body deliberately does not.
+Appendix~\ref{app:trust} --- this appendix --- holds the snapshot
+identity, the theorem-to-export compliance table
+(Section~\ref{app:compliance}), the reader's map, the evidence-layer
+distinctions, the review chronology and the reproduction and release
+boundary. The compliance table is where batch identifiers, formal
+export names and pinned hashes live; the body of the paper states
+mathematical propositions and status only. Appendix~\ref{app:origin}
+reserves the project provenance record for owner-supplied, authenticated
+material. A further release deliverable is the reproduction package:
+the proof dependency closure with replay commands, not merely a
+manifest; its archival form is tracked by
+Section~\ref{app:release}.\src{C17,C21}
+
 \subsection{Snapshot identity}\label{app:bindings}
 This manuscript uses a separately pinned evidence set rather than an
 unspecified current checkout. The editorial base identifies the version
@@ -53,6 +68,124 @@ hash in \code{SOURCES.sha256}. The principal routes are:
   The FG\_PROBE receipt, the S06 review and
   \path{build/numbers/run_001/RECEIPT.json}. S06 is \UNCERTIFIED.
 \end{description}
+
+\subsection{Compliance of statements with formal exports}\label{app:compliance}
+Table~\ref{tab:compliance} is the theorem-to-export compliance map.
+Each row gives one mathematical statement of the body, the formal
+declaration or declarations that carry it, the pinned module, the
+record that sealed it, and the first sixteen hex digits of the pinned
+SHA-256 (the full $64$-digit hashes are in \code{SOURCES.sha256}).
+Stage acceptance records are distinct from independent reviews, as
+Section~\ref{app:trust} explains below.\src{C04,C06,C21}
+
+\begin{longtable}{@{}>{\footnotesize\raggedright\arraybackslash}p{.14\textwidth}>{\footnotesize\raggedright\arraybackslash}p{.34\textwidth}>{\footnotesize\raggedright\arraybackslash}p{.15\textwidth}>{\footnotesize\raggedright\arraybackslash}p{.21\textwidth}@{}}
+\caption{Theorem-to-export compliance at the pinned snapshot. Pin
+columns show SHA-256 prefixes; module paths are relative to the
+aliases of the source map. A dash in the record column means the
+statement is sealed by its module pin without a separate batch
+record.}\label{tab:compliance}\\
+\toprule
+Statement & Formal export & Record & Pin (SHA-256 prefix) \\
+\midrule
+\endfirsthead
+\toprule
+Statement & Formal export & Record & Pin (SHA-256 prefix) \\
+\midrule
+\endhead
+Short-preimage extraction, Prop.~\ref{prop:extracts} &
+\code{Relation.accepted_extracts}\newline
+\path{Relation.lean} &
+--- & \texttt{b3fd466d43912aef} \\
+Event transfer, \eqref{eq:quad}--\eqref{eq:phi} &
+\code{event_quadratic}\newline \code{phi_bound}\newline
+\path{EventTransfer.lean} & --- & \texttt{ad8f42be9ea3ccc3} \\
+Conditional reduction, Thm.~\ref{thm:conditional} &
+\code{concrete_euf_cma_to_mt_isis}\newline
+\code{exists_concrete_reducer}\newline
+\path{Run2/ConcreteReduction.lean} & --- &
+\texttt{80fb029e3e12294d} \\
+Adaptive composition, Lem.~\ref{lem:composition} &
+\code{signStepComparison}\newline \code{programComparison}\newline
+\code{stoppedGameComparison}\newline
+\path{Run2/StoppedComparison.lean} & --- &
+\texttt{c692bfdfec31ecc0} \\
+Collision loss, \eqref{eq:coll} &
+\code{exact_collision_parameter} (with
+\code{loss_exact} in its imported dependency)\newline
+\path{Run2/ConcreteReduction.lean} & --- &
+\texttt{80fb029e3e12294d} \\
+Extraction to MT-ISIS, \S\ref{sec:extraction} &
+\code{Reduction.build}\newline \code{runMT_build_exact}\newline
+\code{concrete_lazy_game_binding}\newline
+\path{Run2/Games.lean}\newline \path{Run2/MTBinding.lean}\newline
+\path{Run2/LazyEventBinding.lean} & --- &
+\texttt{cebab37bc69a1bca}\newline
+\texttt{f4166dba3d966d9c}\newline
+\texttt{86024b2176ecdf43} \\
+Sandwich transport, Prop.~\ref{prop:sandwich} &
+\code{attemptOf_le_of_sandwich}\newline
+\code{layer2_of_obligations}\newline \code{e2_eq}\newline
+\path{AttemptPointwise.lean}\newline \path{SignLayerSupport.lean}\newline
+\path{Assembly.lean} & --- &
+\texttt{33c82338dc0d6743}\newline \texttt{25917792833ece7f}\newline
+\texttt{1a0cc416fd63fdbf} \\
+Computed factor, \eqref{eq:factor} &
+\code{attemptFactor_eq}\newline \code{attemptFactor_comp_lt}\newline
+\code{e2_comp_lt}\newline \code{layer2_of_stageChain}\newline
+\path{AttemptWeights.lean} & --- &
+\texttt{ac1437aab095b924} \\
+Pointwise stage roads &
+\code{PointwiseStageRoad}\newline
+\code{attemptWeights_of_stageRoad}\newline
+\code{layer2_of_stageRoad}\newline \path{T5Pointwise.lean} & --- &
+\texttt{4cac2f4d76ffb4dd} \\
+Failure-point support, Prop.~\ref{prop:tail} &
+\code{onone_syndrome}\newline
+\code{signBody_none_pos_syndrome}\newline
+\path{ONoneGeometry.lean} & --- & \texttt{c57373d50c04ad54} \\
+Negative results, Thms.~\ref{thm:bulkonly}--\ref{thm:additive} &
+\code{bulkOnly_tail_uncontrolled}\newline
+\code{massSandwich_not_pointwise}\newline
+\code{additiveError_no_machineStage}\newline
+\path{AttemptWeights.lean}\newline \path{T5Pointwise.lean} & --- &
+\texttt{ac1437aab095b924}\newline \texttt{4cac2f4d76ffb4dd} \\
+Finite-state route, Thm.~\ref{thm:routea} &
+\code{AdvPrg.route_a_closed}\newline \path{AdvPrg.lean} & --- &
+\texttt{f0c2e858e1ab0e4d} \\
+Exact integer NTRU, Prop.~\ref{prop:ntru} &
+\code{KeygenCallerSuccess}\allowbreak.\allowbreak
+\code{exact_integer_ntru}\newline
+\path{KeygenCallerSuccess.lean} &
+BATCH\_032 & \texttt{430dc1cc910eb416}\newline
+\texttt{f6c8653b1733d516} \\
+Public-key equations, Prop.~\ref{prop:pubkey} &
+\code{KeygenPublicAccepted}\allowbreak.\allowbreak
+\code{source_same_material}\newline
+\path{KeygenPublicAccepted.lean} &
+BATCH\_046 & \texttt{8475e270e8c5d58b}\newline
+\texttt{ad9bae57b27698b5} \\
+Enclosing-stage status, \S\ref{sec:b1status} &
+status records only, no export consumed\newline
+\path{KEYGEN_RESIDUE_CHECKPOINT.md} &
+BATCH\_047,\newline BATCH\_048 &
+\texttt{12b635bcbfbeca45}\newline \texttt{c0ea32767ea601d7} \\
+Generalized inverse, Thm.~\ref{thm:inverse} &
+\code{phiInv_piecewise}\newline \code{phi_inv_le}\newline
+\code{phiInv_at_phi}\newline \path{AssemblyComp.lean} &
+REVIEW\_002\newline supplement & \texttt{b6112bef9c093439} \\
+Public-simulation assembly, Thm.~\ref{thm:public} &
+\code{public_sim_stream_bound}\newline
+\code{advMT_ge_of_}\allowbreak\code{public_sim_stream_win}\newline
+\path{AssemblyComp.lean} &
+REVIEW\_003 & \texttt{b6112bef9c093439}\newline
+\texttt{4b310f4dc0441fb3} \\
+\bottomrule
+\end{longtable}
+\noindent Batch identifiers name sealed record pairs in the source3
+run; they are provenance, not mathematical strength. Statements marked
+``status records only'' establish no export at all. The B1.05/B1.06
+stage names of the ledger correspond to the two proposition rows
+above.\src{C04,C06,C17,C21}
 
 \subsection{What each layer establishes}
 The artifact has four distinct checks. A SHA-256 pin identifies bytes;

@@ -1,12 +1,14 @@
 # PAPER — live work state
 
-Current: **ADDENDUM_3_COMPLETE / DOCUMENT_CHECK_PASS**, 2026-10-10.
-Final handoff: **Batch 6 below**; 28-page PDF, 117 evidence pins,
-21 claim groups. Immutable receipt: `notes/BENCHMARK_003_RECEIPT.json`.
+Current: **REDACTION_PASS / DOCUMENT_CHECK_PASS**, 2026-10-10.
+Final handoff: **Batch 7 below**; 32-page PDF, 117 evidence pins,
+21 claim groups. Prior immutable receipt: `notes/BENCHMARK_003_RECEIPT.json`.
 Starting paper version: 0.3 at `4ac46f50`; mathematical/status snapshot:
 `915178a1` (BATCH_048). Owned scope: `paper/**`, local exact-path commits,
 no push. Title, mission and ePrint venue are decided; the form benchmark
-is recorded in `notes/BENCHMARK_003.md`.
+is recorded in `notes/BENCHMARK_003.md`. Abstract, main theorem formula
+and the security-accounting summary remain deliberately unedited until
+final composition; Related Work remains the separate literature phase.
 
 ## ADDENDUM 3 — recoverable midpoint
 
@@ -537,3 +539,128 @@ Otwarte pozostają: realizacja uczciwego Sign i kształtu próby, prawo
 kluczy, końcowy most A3/A4, S06, literatura i materiał pochodzenia.
 Następny krok publikacyjny to rzeczywisty skan źródeł literaturowych;
 kolejne wyniki B1 wymagają osobnej, przypiętej aktualizacji statusu.
+
+## Batch 7 — REDAKCJA: main-text editing window (argument-ordered)
+
+Date: 2026-10-10. Window: PAPER-REDAKCJA, executed per the editorial
+map in `development/T12_1/run2/notes/B4_SYNTHESIS.md` (2026-10-10
+entry). Rule kept: the body is edited NOW; abstract, main theorem
+formula and the guarantees/security-accounting summary wait for the
+final composition; Related Work is a separate scientific phase.
+
+### What was edited (main text)
+
+- **Motivation** (§1): added the one-directional argument chain as the
+  reading rule --- source execution -> material and law -> security
+  experiment -> reduction --- with missing links named as obligations,
+  never implied by closed parts. Organization paragraph now states the
+  appendix structure.
+- **Profile specification** (§3): the three algorithms are presented at
+  one level (byte-level procedures and coefficient predicates) with the
+  proof-helper laws and joining theorems explicitly separated.
+  Retry/re-sampling/limit/emission/buffer-capacity failure semantics are
+  now described in the experiment text (KeyGen readiness failure,
+  continue-based re-sampling up to the configured $3000000$ limit, cap
+  exhaustion, encoding/output-buffer failure; Sign cap-16 retry with
+  terminal emission failure), not in scope footnotes.
+- **Self-contained closed reduction** (§5): restructured and expanded
+  into readable proofs --- the four-step extraction into MT-ISIS
+  (Section 5.2), the direction of the second moment with the full
+  covariance/Cauchy--Schwarz derivation of the event quadratic and its
+  solution $\Phi(D,b)$ (5.3), the induction over the adaptive adversary
+  step by step (Lemma 5.1), the collision-loss counting
+  $q_sq_h+q_s(q_s-1)/2$ over the $320$-bit name space (5.5), and the
+  assembly (5.6). All statements, equations and scope notes preserved;
+  the derivations restate the pinned exports (compliance table).
+- **B1.05/B1.06 as ordinary propositions** (§7.4): Proposition 7.1
+  (exact integer NTRU equation at the solver-chain boundary) and
+  Proposition 7.2 (public-key equations on the same material) restate
+  `KeygenCallerSuccess.exact_integer_ntru` and
+  `KeygenPublicAccepted.source_same_material` with their exact premises
+  and conclusions --- nothing stronger. Stage names remain only in the
+  status ledger; **no BATCH identifiers appear in the body** --- they
+  live in the compliance table (Appendix A.4) together with export
+  names and hash prefixes. New §7.3 "Why the proved objects are the
+  implementation's objects" states why proof objects = the same
+  execution/key/bytes (parse equality -> bound tree run; Represents over
+  the same final heap and output slots; preserved f/g byte blocks;
+  byte-block properties), with the A3/A4 and compiler caveats kept.
+- **Appendix structure** (A.1) and **theorem-to-export compliance
+  table** (A.4, Table 6): 17 rows mapping every mathematical statement
+  to its formal exports, pinned modules, batch records and SHA-256
+  prefixes.
+
+### Hard constraints kept
+
+No invented citations (§10 untouched, remains the declared stub of the
+literature phase; no EasyCrypt/Jasmin/HACL* claims made); S06 remains
+\UNCERTIFIED{} at every number (§8 untouched); the e2 exponent choice
+(2^-32 unconditioned vs 2^-17 conditioned) is left to the proof-side
+AttemptShape decision with the B1-ATTEMPT-SHAPE todo intact; no QROM
+claim (§5.5 collision text explicitly classical); honesty ledger and
+all scope sentences preserved; the owner-signed mission paragraph
+byte-identical. Untouched files: `main.tex` (abstract, snapshot block),
+`sec_04_main.tex`, `sec_08_security.tex`, `sec_09_computational.tex`,
+`sec_10_related.tex`, `sec_11_limits.tex`.
+
+### Pin drift handled explicitly (SOURCES.md items 18-19)
+
+Two live inputs drifted since Batch 6 and were repinned only after
+their diffs were read: `KEYGEN_RESIDUE_CHECKPOINT.md` gained the
+BATCH_049/050 close blocks (whole-caller syntax and failure-lifetime
+midpoint; chronological five-gate source-prefix midpoint) and still
+records B1.07 as PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED, so
+no paper status statement was promoted; `B4_SYNTHESIS.md` gained the
+2026-10-10 state review and the editorial map itself, with no quoted
+fact changed. Superseded bytes remain in the previous paper commits.
+
+### Checks and receipts
+
+- `make check`: **PASS**, 117/117 pins, all 21 source IDs mapped,
+  11 sections + 2 annexes, **32 pages**, clean TeX/BibTeX logs, no
+  warnings, undefined references, overfull or underfull boxes.
+  The compliance table needed layout work (cell font via column spec,
+  breakable export names); those were document-build issues only.
+- `make numbers` not rerun: pinned numerical inputs unchanged;
+  `build/numbers/run_001/RECEIPT.json` (unchanged hash) remains the
+  numerical evidence and is re-verified by `make check`.
+- Visual inspection: reduction derivations (p. 12), Propositions 7.1/7.2
+  and the stage ledger (p. 19), appendix structure (p. 27) and the
+  compliance table (pp. 29-30) rendered under `build/redaction_001/`,
+  with retained `main.log`, `main.blg` and `snapshot.tex` copies.
+
+| Artifact, relative to paper/ | SHA-256 |
+|---|---|
+| `SOURCES.md` | `1c552ed6ff32cd00201cf287de9791da2157d914d3ea954818a6b11963428a4a` |
+| `SOURCES.sha256` | `5e2809c2861fab0ff6e0af7afcfe5d3eff550efb73b69ed0681e0ff7f67e96b6` |
+| `build/main.pdf` | `588a3662311d613d382eb2eee791723d5441a57b2f662ead290c806ae7d21b65` |
+| `build/CHECK.json` | `0938b77741ba687c3c260b2683d70e3e965a1cd0b4336383d52870491106dc2c` |
+
+The PDF pin identifies this redaction build; the manifest pin covers
+the repinned 117-input snapshot (two repins itemized above). No new
+theorem, Lean replay, C run or independent review was performed in this
+window; `notes/BENCHMARK_003_RECEIPT.json` remains the immutable receipt
+of the previous form build and was not touched.
+
+### Ocena i następny krok (PL)
+
+Tekst główny prowadzi teraz czytelnika argumentem: od wykonania źródła,
+przez realny materiał i jego prawo, do eksperymentu i redukcji.
+Najważniejsza zmiana to uczciwe rozpisanie dowodów bez Leana — kierunek
+drugiego momentu (symulacja mierzona względem prawa uczciwego, stąd
+nierówność zdarzeniowa i Φ), indukcja po adaptacyjnym przeciwniku,
+liczenie straty kolizyjnej i czterokrokowa ekstrakcja do MT-ISIS —
+wszystko zgodne z eksportami, ale czytelne dla matematyka bez asystenta.
+Wyniki etapów źródłowych są teraz zwykłymi propozycjami z jawnymi
+przesłankami; numery BATCH zniknęły z tekstu i trafiły do tabeli
+zgodności w dodatkach. Świadomie nie ruszałem abstraktu, wzoru głównego
+twierdzenia ani podsumowania gwarancji — to materia na finalną
+kompozycję po domknięciu redukcji; Related Work czeka na osobną fazę
+naukową ze porównaniem poziomów gwarancji. Ryzyko okna było redakcyjne,
+nie dowodowe: żadna teza nie urosła, wszystkie noty zakresu i etykiety
+zostały zachowane.
+
+Następny krok: odbiór redakcji przez właściciela; następnie albo osobna,
+przypięta aktualizacja statusu B1 (checkpoint ma już BATCH_049/050),
+albo finalna kompozycja (abstrakt/teza/gwarancje) i faza literaturowa
+przed ePrint.

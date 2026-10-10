@@ -17,6 +17,15 @@ code. A proof about a model is not a proof that the model describes the
 source; keeping the two obligations separate is a design choice of this
 work.\src{C11,C12}
 
+The argument of this paper therefore runs in one direction only:
+source execution, then the material and law that execution actually
+produces, then the security experiment that material must feed, then
+the reduction. Each link is a statement with its own premises; no link
+is promoted to the next by naming convention. Where a link is missing
+--- the honest-signing hop, the realized attempt shape, the emitted-key
+law --- the text says so, and the missing link is a named obligation
+rather than an implicit consequence of the closed parts.\src{C01,C21}
+
 \subsection{Contributions}
 \begin{enumerate}
 \item A conditional classical reduction from EUF-CMA to the multi-target
@@ -73,9 +82,11 @@ Theorem~\ref{thm:conditional} supplies the conditional reduction;
 Theorem~\ref{thm:public} supplies the computational public-game bound.
 The sampler transports and counterexamples of Section~\ref{sec:sampler}
 are kernel results about their specified laws and premises. The
-source-bound B1.05 and B1.06 exports establish the NTRU and public-key
-equations for the same material at their respective fragment boundaries.
-Those two stages remain \NOTREVIEWED{}; B1.07 remains \INFLIGHT.
+source-bound execution propositions of Section~\ref{sec:binding}
+(Propositions~\ref{prop:ntru} and~\ref{prop:pubkey}) establish the
+NTRU and public-key equations for the same material at their respective
+fragment boundaries. Those propositions remain \NOTREVIEWED{} at stage
+level; the enclosing invocation stage remains \INFLIGHT.
 \src{C04,C06,C09,C15,C21}
 
 \paragraph{Still being analyzed.}
@@ -93,7 +104,8 @@ fixes notation and the threat model;
 Section~\ref{sec:parameters} presents the FT scheme with its pinned
 parameters and the three algorithm boxes. Section~\ref{sec:main}
 states the end-to-end thesis as a target and the closed conditional
-theorem; Section~\ref{sec:reduction} develops the classical reduction;
+theorem; Section~\ref{sec:reduction} develops the classical reduction
+in a form readable without the proof assistant;
 Section~\ref{sec:sampler} computes the sampler margins and states the
 negative results as theorems. Section~\ref{sec:binding} records the
 source-binding method and its findings;
@@ -101,5 +113,8 @@ Section~\ref{sec:security} gives the two-level security accounting;
 Section~\ref{sec:computational} details the computational seam.
 Section~\ref{sec:related} is a declared literature stub, and
 Section~\ref{sec:limits} closes with the honesty ledger and
-conclusion; the trust chain and project provenance are in the
-appendices.
+conclusion. The appendices carry what the body deliberately does not:
+Appendix~\ref{app:trust} binds every statement to its formal export,
+batch record and pinned bytes and states how the appendices are
+organized; Appendix~\ref{app:origin} reserves the project's provenance
+record.\src{C01,C17}

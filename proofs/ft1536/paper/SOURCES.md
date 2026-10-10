@@ -1,12 +1,17 @@
 # Paper v0.3 — statement-to-source map
 
-Current editorial revision: **ADDENDUM 3, 2026-10-10**. Evidence status
-remains the BATCH_048 snapshot (`915178a1`), with B1.05/B1.06 locally
-closed and B1.07 partial. There are **117 selected inputs / 21 claim groups**.
-The added BATCH_032/048 pairs document already reported stages; the
-fifth added input is `sources/DOCUMENT_SNAPSHOT.json`. The two style
-benchmarks and their hashes are recorded separately in
-`notes/BENCHMARK_003.md`; they supply no new mathematical premise.
+Current editorial revision: **REDACTION PASS, 2026-10-10** (main-text
+editing window PAPER-REDAKCJA; the ADDENDUM 3 form pass below remains
+the formal baseline). Evidence status remains the BATCH_048 snapshot
+(`915178a1`), with B1.05/B1.06 locally closed and B1.07 partial. There
+are **117 selected inputs / 21 claim groups**. The added BATCH_032/048
+pairs document already reported stages; the fifth added input is
+`sources/DOCUMENT_SNAPSHOT.json`. The two style benchmarks and their
+hashes are recorded separately in `notes/BENCHMARK_003.md`; they supply
+no new mathematical premise. The redaction window repins two live
+inputs after reading their diffs (reconciliation items 18–19) and adds
+the theorem-to-export compliance table in Appendix A; the abstract,
+main theorem formula and security-accounting summary were not edited.
 
 `tools/document_snapshot.py` verifies the manifest and generates the
 full identifiers printed on the first page and in Appendix A. It never
@@ -584,6 +589,33 @@ deterministic traces license no IID, p_accept or availability formula.
     sources had been inspected exceeded the recorded metadata-search work.
     Section 10 now describes bibliographic context and keeps the primary
     literature scan explicitly open. No new reference was added here.
+
+18. Redaction-window pin drift (2026-10-10): `KEYGEN_RESIDUE_CHECKPOINT.md`
+    and `N/B4_SYNTHESIS.md` changed on disk since the ADDENDUM 3 pins; both
+    diffs were read before repinning. The checkpoint gained the BATCH_049/
+    BATCH_050 close blocks (whole-caller syntax and failure-lifetime
+    midpoint; chronological five-gate source-prefix midpoint) and still
+    records B1.07 as PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED,
+    so the paper's stage-status statements remain valid and are not
+    promoted to the later midpoint records. `B4_SYNTHESIS.md` gained the
+    2026-10-10 state review and the owner-chosen reviewer's editorial map
+    for ePrint; no fact quoted by the paper changed (four-arrow target,
+    review chronology and the B1.05 equation are unchanged). Superseded
+    bytes remain in the previous paper commits.
+19. Redaction pass (main text): the narrative now runs source execution
+    -> material and law -> security experiment -> reduction; the B1.05/
+    B1.06 results are stated as ordinary propositions with their exact
+    premises and conclusions (restating `exact_integer_ntru` and
+    `source_same_material`, nothing stronger); batch identifiers, export
+    names and hashes live in the theorem-to-export compliance table of
+    Appendix A; the closed reduction is written out without the proof
+    assistant (second-moment direction, adaptive induction, collision
+    loss, extraction to MT-ISIS); retry limits, re-sampling, emission
+    failure and buffer-capacity error are described in the experiment
+    text rather than scope footnotes. Abstract, main theorem formula and
+    the security-accounting summary were deliberately left for the final
+    composition. Related Work remains the declared stub of the separate
+    literature phase. No new mathematical claim, replay or review.
 
 ## Pinned input files
 

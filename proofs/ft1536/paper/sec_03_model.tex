@@ -28,10 +28,11 @@ $N$ & total tape length in bits of the computational experiment,
 $\Rq$ & coefficient representation of $(\Z/q\Z)[X]/(X^n-X^{n/2}+1)$ \\
 $f,g$ & ternary secret polynomials at the stated material boundary,
  of coefficient bound $1$ \\
-$F,G$ & companion polynomials; B1.05 concludes bound $2047$ and
- $f\cdot G-g\cdot F=q$ at its fragment boundary \\
+$F,G$ & companion polynomials; Proposition~\ref{prop:ntru} concludes
+ bound $2047$ and $f\cdot G-g\cdot F=q$ at its fragment boundary \\
 $h$, $\mathrm{fInv}$ & canonical public polynomial and mathematical
- inverse witness at the B1.06 boundary (Section~\ref{sec:b1status}) \\
+ inverse witness at the boundary of Proposition~\ref{prop:pubkey}
+ (Section~\ref{sec:b1status}) \\
 $s$, $c$ & returned signature vector; challenge in $\Rq$ \\
 $\none$ & failed-attempt symbol \\
 $Q$, $B$ & quadratic form of Section~\ref{sec:model} and its threshold,
@@ -173,4 +174,10 @@ Under absolute continuity, $\Second(j,p)=1+\chi^2(j\Vert p)$.
 The separate absolute-continuity premise is essential: Lean's real
 division is total, while the extended-valued \code{chi2} definition is
 infinite when absolute continuity fails. The direction used below is
-simulation relative to the honest law, not the reverse.\src{C03,C04}
+simulation relative to the honest law, not the reverse. Two things
+depend on that choice: the density ratio $j/p$ is the one whose second
+moment the reduction composes over adaptive signing steps, and
+$\AC(j,p)$ is exactly the support condition that fails when the
+simulation emits outside the honest law's image.
+Section~\ref{sec:direction} writes out the resulting event transfer in
+full.\src{C03,C04}

@@ -78,59 +78,111 @@ quantifying over all events remains statistical even if its name says
 ``PRF'' (Section~\ref{sec:computational}). The records retain the failed
 bindings as well as the selected successful runs.\src{C11,C12,C15}
 
-\subsection{Stage status of the source-to-law campaign}\label{sec:b1status}
-The source-to-law work proceeds in named stages whose Acceptance blocks
-define their exact scope. Below, ``closed'' means kernel-scoped and not
-independently reviewed; no stage closes arrows 1--2 of
-Section~\ref{sec:main}, and none of the statements in this subsection is
-a claim about the whole \code{KeyGen} loop, its termination, or the
-distribution of emitted keys.\src{C21}
+\subsection{Why the proved objects are the implementation's objects}
+The propositions of Section~\ref{sec:b1status} might read as statements
+about abstract vectors. They are statements about the same execution,
+the same key material and the same bytes that the pinned code produces,
+and it is worth being explicit about why.\src{C11,C21}
 
-\paragraph{B1.05 closed: exact integer NTRU.}
-The B1.05 export is
-\code{KeygenCallerSuccess}\allowbreak.\allowbreak\code{exact_integer_ntru}.
-Under its \code{Initial} entry contract, execution through the complete
-root call with normal return
-yields integer vectors $f,g,F,G$ with bounds $1/1/2047/2047$, the exact
-integer equation
+\paragraph{Same execution.}
+The parse equality binds the exact source region --- bytes at pinned
+paths --- to a statement tree, and the execution hypothesis of each
+proposition is the run of \emph{that} bound tree under explicit state,
+memory and word-range contracts. It is not an idealized algorithm that
+happens to share a name with the source. Loop counters, pointer
+positions and even the called butterflies are conclusions of executing
+the parsed bodies (Section~\ref{sec:binding}, first subsection), so a
+claim about the run is a claim about the code as written.\src{C11}
+
+\paragraph{Same key.}
+The conclusions quantify over the final heap of that very run and the
+caller's own output-slot pointers: the four slots \emph{represent} the
+four vectors of the NTRU equation, and the public-computation
+proposition shows the same $f,g$ byte blocks are retained across the
+call, so the resulting $h$ is computed from the retained material
+rather than from fresh, unrelated inputs. The object of the equation
+and the object in memory are the same vectors, by representation, not
+by naming.\src{C21}
+
+\paragraph{Same bytes.}
+Block identity, extents and permissions are premises of the memory
+contracts; the static tables are preserved through byte-block
+properties; and the solver's modular check is consumed with a computed
+residual rather than assumed. What this does \emph{not} give is the
+global byte-level composition of serialization, verifier verdict and
+caller-visible failure --- that is the open A3/A4 bridge
+(Assumption~\ref{ass:a34}). A parse equality is also not a verified C
+compiler, and each proposition speaks about a completed normal
+execution of its fragment, not about every execution of the enclosing
+loop.\src{C11,C21}
+
+\subsection{The closed material propositions and the stage ledger}\label{sec:b1status}
+The source-to-law work proceeds in named stages whose Acceptance blocks
+define their exact scope; the stage names are bookkeeping recorded in
+the compliance table of Appendix~\ref{app:compliance}. Here the two
+closed results appear as ordinary propositions, in the order of the
+argument: source execution, then the material and the equations it
+satisfies. Neither proposition is a claim about the whole
+\code{KeyGen} loop, its termination, or the distribution of emitted
+keys, and both remain \NOTREVIEWED{} --- ``closed'' means
+kernel-scoped at the stated fragment boundary. Neither closes arrows
+1--2 of Section~\ref{sec:main}.\src{C21}
+
+\begin{proposition}[Exact integer NTRU equation at the solver-chain
+ boundary]\label{prop:ntru}
+Under the entry contract of the caller fragment --- profile slots, the
+pinned static table objects, legal scratch and disjoint output buffers,
+and no coefficient, bound or equation facts --- suppose the parsed
+solver region executes from caller entry through the complete root
+call and returns normally. Then there exist integer vectors $f,g,F,G$
+with coefficient bounds $1/1/2047/2047$ such that
 \[
  f\cdot G-g\cdot F=q
 \]
 in the module's \code{multiply}/\code{constantCoeffs} coefficient
-quotient, and the representation of the four output slots. The modular
-solver check is consumed with residual $37748737<2147355649$; it is not
-assumed as a premise. This is a source-fragment and object-reference
-composition theorem. It says nothing about the enclosing key loop, an
-emitted key, or any security property.\src{C21}
+quotient, and each of the four output slots represents the
+corresponding vector in the final memory. The solver's modular check is
+consumed with residual $37748737<2147355649$; it is not a premise.
+\end{proposition}
+This is a source-fragment and object-reference composition theorem:
+completed execution of the indicated fragments under legal initial
+memory with an active root. It says nothing about the enclosing key
+loop, an emitted key, or any security property.\src{C21}
 
-\paragraph{B1.06 Acceptance met: $h=g\cdot f^{-1}$ and both equations.}
-The B1.06 export is
-\code{KeygenPublicAccepted}\allowbreak.\allowbreak\code{source_same_material}. It states that the
-successful fixed public computation, under its profile, legal-memory,
-material, bound-$1$, table-liveness and output-separation premises,
-preserves the same $f,g$ bytes and produces a canonical public vector
-$h$. Nonzero evaluations of $f$ and a mathematical
-$\mathrm{fInv}\in R_q$ are conclusions, together with both equations
+\begin{proposition}[Public-key equations on the same material]%
+\label{prop:pubkey}
+Under its profile, legal-memory, material, bound-$1$, table-liveness
+and output-separation premises, if the fixed public computation of the
+fragment succeeds, then the same $f,g$ bytes are retained and there
+exist $h$ and $\mathrm{fInv}\in\Rq$ such that the output slot holds the
+canonical representation of $h$, the evaluations of $f$ are nonzero,
+and both equations
 \[
  h\cdot f=g
  \qquad\text{and}\qquad
  \mathrm{fInv}\cdot f=1
 \]
-in $R_q$, in the module's \code{mulRq}/\code{reduceVec} semantics; the
-inverse witness $\mathrm{fInv}$ is not a serialized array. No
-correctness, invertibility or round-trip premise is introduced: the
-equations are conclusions of the executed source. This closes the local
-public/inverse/equation gap only; it is not a whole-keygen statement and
-carries no independent review.\src{C21}
+hold in $\Rq$ in the module's \code{mulRq}/\code{reduceVec}
+semantics. The witness $\mathrm{fInv}$ is mathematical; it is not a
+serialized array. No correctness, invertibility or round-trip premise
+is introduced: the equations are conclusions of the executed source.
+\end{proposition}
+This closes the local public/inverse/equation gap only; it is not a
+whole-keygen statement and carries no independent review.
+\src{C21}
 
-\paragraph{B1.07 in progress.}
-The stage is a partial proof: its Acceptance block is not met and it is
-not reviewed. Complete randomness-readiness and first-sampling
-boundaries have been derived at the current checkpoint; the remaining
-obligations are the full enclosing make invocation and control, the
-loop chronology including the attempt cap, the six-gate accepted
-attempt, and the transport of accepted material to the encoding
-inputs.\src{C21}
+In the stage ledger, the solver-chain stage behind
+Proposition~\ref{prop:ntru} and the public-computation stage behind
+Proposition~\ref{prop:pubkey} are closed at their stated scope; the
+enclosing invocation stage is in progress. That stage is a partial
+proof: its Acceptance block is not met and it is not reviewed.
+Complete randomness-readiness and first-sampling boundaries have been
+derived at the current checkpoint; the remaining obligations are the
+full enclosing make invocation and control, the loop chronology
+including the attempt cap, the six-gate accepted attempt, and the
+transport of accepted material to the encoding inputs. Batch-level
+records for all three stages are pinned in Appendix~\ref{app:compliance}.
+\src{C21}
 
 Deterministic execution traces license no IID model, no $p_{\mathrm{accept}}$
 value and no availability formula; the measured acceptance rate of
@@ -152,13 +204,14 @@ records a clean accepted run.\src{C11}
 These results illustrate why a kernel proof of a model and a proof
 that the model describes the source are distinct obligations. The
 stage ledger of Section~\ref{sec:b1status} records how far the
-source-to-law chain has been derived: exact integer NTRU at B1.05, the
-public $h$ and both equations at B1.06 Acceptance, and B1.07 in
-progress. Their completion cannot be inferred from the closed parser or
-table certificates, and the remaining B1 obligations --- enclosing
-control, loop chronology, the accepted attempt and the
-material-to-encoding transport, followed by the emitted-material-to-law
-interfaces --- are still named gaps, not consequences of the theorem
-names.\src{C11,C21}
+source-to-law chain has been derived: the exact integer NTRU equation
+(Proposition~\ref{prop:ntru}), the public $h$ and both equations on the
+same material (Proposition~\ref{prop:pubkey}), and the enclosing
+invocation stage still in progress. Their completion cannot be
+inferred from the closed parser or table certificates, and the
+remaining B1 obligations --- enclosing control, loop chronology, the
+accepted attempt and the material-to-encoding transport, followed by
+the emitted-material-to-law interfaces --- are still named gaps, not
+consequences of the theorem names.\src{C11,C21}
 \todo{B1-FINAL}{Extend this stage ledger with the final source-to-law
 exports and their exact premises after delivery.}

@@ -34,8 +34,9 @@ Profile status & Proposal & Main profile & Proposal \\
 \end{tabular}
 \caption{Family parameters at the cited snapshot. A dash means
 unreported in this reduction paper. FT768 and FT3072 retain
-\ALTP{} status. FT1536 material bounds have the B1.05/B1.06 scope of
-Section~\ref{sec:b1status}; the measured acceptance rate is a finite
+\ALTP{} status. FT1536 material bounds have the scope of
+Propositions~\ref{prop:ntru} and~\ref{prop:pubkey}
+(Section~\ref{sec:b1status}); the measured acceptance rate is a finite
 synthetic-seed observation. Caps are configuration values, not
 termination or security guarantees.\src{C02,C03,C14,C21}}
 \label{tab:family}
@@ -47,9 +48,13 @@ Section~\ref{sec:security} retains their diagnostic estimator rows with
 that status.\src{C14}
 
 \subsection{The three algorithms}
-The three boxes describe different levels of the argument. KeyGen is
-a source-control synopsis; Sign is the coefficient-valued reference
-law; Verify is the coefficient predicate. Their common algebra does
+The three boxes describe one level of the argument: the algorithms of
+the profile as byte-level procedures and coefficient predicates, with
+their failure behaviour stated as part of the procedure rather than in
+remarks. The proof-helper laws used by the reduction --- the reference
+trial, the capped body, the emission map --- live in
+Section~\ref{sec:reduction}, and the theorems that join the two levels
+are the subject of Section~\ref{sec:binding}. Their common algebra does
 not identify their probability laws or complete the byte bridge.
 \src{C01,C02,C03,C05}
 
@@ -102,9 +107,17 @@ not identify their probability laws or complete the byte bridge.
 
 \noindent Algorithm~\ref{alg:keygen} is a presentation of the pinned
 KeyGen interfaces; its derivation status is the stage ledger of
-Section~\ref{sec:b1status}: B1.05 is closed at scope, B1.06 Acceptance
-is met, B1.07 is in progress, and none of these is a whole-KeyGen or
-termination statement. Algorithm~\ref{alg:sign} is the probability-law
+Section~\ref{sec:b1status}: the solver-chain and public-computation
+results are Propositions~\ref{prop:ntru} and~\ref{prop:pubkey}, the
+enclosing invocation stage is in progress, and none of these is a
+whole-KeyGen or termination statement. The failure behaviour of this
+experiment is part of it: a failed RNG-readiness check returns failure
+before the loop; every rejected attempt is re-sampled by
+\textbf{continue}, so the attempt counter and its configured limit of
+$3000000$ govern a genuine retry loop; exhaustion of that limit returns
+failure; and encoding failure --- including the caller's output-buffer
+capacity failure --- returns failure rather than producing a partial
+key. Algorithm~\ref{alg:sign} is the probability-law
 specification of Section~\ref{sec:reduction}; it emits once after a
 successful trial and does not retry emission failure. It specifies no
 efficient exact sampler. In the game, the nonce has $40$ bytes and the
@@ -113,7 +126,7 @@ attempt shape the realized signer obeys is open.
 Algorithm~\ref{alg:verify} is exactly the
 coefficient-level predicate of Section~\ref{sec:model}. Termination, the
 emitted-key law and the byte-level framing sit outside these boxes
-(Assumption~\ref{ass:a34}; Section~\ref{sec:limits}).\src{C02,C03,C05,C21}
+(Assumption~\ref{ass:a34}; Section~\ref{sec:limits}).\src{C02,C03,C05,C13,C21}
 
 \subsection{Acceptance is measured, not postulated}
 \paragraph{Validation (not a proof).}
