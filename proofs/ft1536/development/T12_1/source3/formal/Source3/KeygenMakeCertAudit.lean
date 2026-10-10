@@ -27,10 +27,6 @@ run_cmd Lean.Elab.Command.liftTermElabM do
     (`FT1536.Source3.KeygenMakeCertMaterial,
       ["LegalWorkspace","workspace_scratch_block","accepted_certificate","load16_same","represents_same","cell_same","public_represents_same","leave_shape","leave_bytes"])]
   let inherited : Array Lean.Name := #[
-    ``FT1536.Source3.KeygenMakeCertCall.Call,
-    ``FT1536.Source3.KeygenMakeCertCall.CertBind,
-    ``FT1536.Source3.KeygenMakeCertCall.CertificateGate,
-    ``FT1536.Source3.KeygenMakeCertCall.Profile,
     ``FT1536.Source3.KeygenMakeCertCall.CertBind.workspace,
     ``FT1536.Source3.KeygenMakeSearchPrefix.Sampled,
     ``FT1536.Source3.KeygenMakeSearchPrefix.Dimensions,
