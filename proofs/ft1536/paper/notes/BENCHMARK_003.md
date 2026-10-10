@@ -64,3 +64,20 @@ Pending at midpoint: manifest capture of four existing B1 batch files and
 the document-snapshot configuration; clean build; PDF visual checks;
 immutable final receipt and exact-path local commits. Final outcome will
 be appended below, preserving this recoverable midpoint.
+
+## Final outcome
+
+**DOCUMENT_CHECK_PASS**, 2026-10-10. All matrix features are present in
+the 28-page revised draft. `make check`: 117/117 source pins, 21 claim
+groups, 12 rendered snapshot identities, all formal environments numbered
+and referenced; clean TeX/BibTeX logs. Visual comparison and spot-checks
+are recorded in PAPER_WORK_STATE, Batch 6. The preserved failed build
+exposed layout/label issues, which were corrected without suppressing
+diagnostics. The original 112 evidence pins remain byte-identical.
+
+Immutable receipt: `notes/BENCHMARK_003_RECEIPT.json`, SHA-256
+`1f1761a544c1430c1a4bf42f58d322af780eeab23f68481c69944db013f0c847`.
+It binds 26 manuscript/build-source files and retains the final PDF and
+logs under `build/receipts/BENCHMARK_003_RECEIPT/`.
+PDF SHA-256: `c1c3497320e69d45195a50e168e6eb384cd4fcafc324fa88a9ad9c60e22a05ea`.
+No publication or mathematical acceptance follows from this form check.

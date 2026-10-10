@@ -1,6 +1,8 @@
 # PAPER — live work state
 
-Current: **ADDENDUM_3_EDITORIAL_MIDPOINT**, 2026-10-10.
+Current: **ADDENDUM_3_COMPLETE / DOCUMENT_CHECK_PASS**, 2026-10-10.
+Final handoff: **Batch 6 below**; 28-page PDF, 117 evidence pins,
+21 claim groups. Immutable receipt: `notes/BENCHMARK_003_RECEIPT.json`.
 Starting paper version: 0.3 at `4ac46f50`; mathematical/status snapshot:
 `915178a1` (BATCH_048). Owned scope: `paper/**`, local exact-path commits,
 no push. Title, mission and ePrint venue are decided; the form benchmark
@@ -441,3 +443,97 @@ małymi commitami; brak push.
 Następny krok: odbiór formy przez właściciela; przed ePrint prawdziwy
 skan literatury (TODO w §10) i materiał do Annex B; przy domknięciu
 kolejnych etapów B1 — aktualizacja §7/§11 i todo B1-FINAL.
+
+## Batch 6 — ADDENDUM 3: benchmark-form revision complete
+
+Date: 2026-10-10. The recoverable midpoint above was committed as
+`8bbe8c07`. Form benchmarks and their exact hashes are recorded in
+`notes/BENCHMARK_003.md`. The server restart did not reset the task.
+
+### Delivered
+
+- Revised publication abstract, signed title/mission retained, ePrint
+  preparation identified. The abstract now correctly separates the
+  conditional reduction from the scoped source results.
+- §1.2 **What is fixed, proved, and still being analyzed**; shared
+  `\OPEN`, `\CLOSED`, `\INFLIGHT`, `\UNCERTIFIED`, `\NOTREVIEWED` and
+  `\ALTP` macros; measured/computational checks explicitly marked
+  **Validation (not a proof)**.
+- §11 **Evidence and limitations**, evidence-class Table 4 and numbered
+  honesty-ledger Table 5. The local B1 and global A3/A4 boundaries remain
+  explicit; S06 is UNCERTIFIED beside the security table itself.
+- Appendix A **Artifact bindings and reproducibility**: full Git
+  identities, full manifest/source-map SHA-256 hashes, seven selected
+  artifact hashes and paths, reader's map, exact root-relative check,
+  and the local-runtime/public-release availability distinction.
+- Full manifest identity on the first page. `make pdf` verifies the
+  manifest before generating `build/snapshot.tex`; checking never
+  refreshes pins. The completed receipt additionally verifies that all
+  12 selected identifiers actually appear in the rendered PDF.
+- Formal environments are numbered and cross-referenced; algorithm
+  floats have actual boxes. The closed conditional theorem is highlighted,
+  while the unfinished end-to-end statement retains its target label.
+- Manuscript corrections against existing inputs are disclosed in the
+  benchmark note and SOURCES reconciliation 15–17: KeyGen gate order,
+  terminal Sign emission, partial `n`/`N` rename, B1.06 conclusions versus
+  premises, budget notation and bibliography-inspection wording.
+
+### Pins and checks
+
+The original 112 input hashes were verified unchanged before capture.
+Added only the existing BATCH_032/048 pairs (compared byte-for-byte with
+commit `915178a1`) and the document-snapshot configuration: **117 inputs**.
+No new theorem, Lean replay, C run or independent review was performed.
+The pinned Sage run_001 remains the display-arithmetic evidence; its
+inputs and outputs were rehashed by the document check.
+
+Final build: `make check`, latexmk/pdflatex/BibTeX exit 0; **28 pages**,
+11 sections, two appendices, 21 claim groups, all formal statements
+referenced, no warnings, undefined references/citations, overfull or
+underfull boxes. `build/benchmark_003/build_004.stderr.log` is empty.
+The earlier build_001 failure (repeated longtable label and four
+overfull lines) is retained. Builds 002–004 also retain the layout work:
+complete theorem frames, heading spacing and a fresh appendix page.
+
+Visual inspection covered title/abstract, notation, family table,
+algorithms, main theorem, S06 table, evidence ledger and artifact hashes;
+the final frame and appendix layout were inspected after the last change.
+The mission paragraph was checked byte-identical to `4ac46f50`.
+
+Sealing command, from `paper/`:
+
+```sh
+python3 -B tools/check_paper.py --receipt notes/BENCHMARK_003_RECEIPT.json
+```
+
+This immutable JSON contains hashes of **26 manuscript/build-source
+files**, the PDF and retained logs. Its PDF/log/snapshot copies are in
+`build/receipts/BENCHMARK_003_RECEIPT/`; later routine checks may update
+`build/CHECK.json` but do not alter this receipt or those copies.
+
+| Artifact, relative to paper/ | SHA-256 |
+|---|---|
+| `SOURCES.md` | `fba85f1b6c110c0645c96974529f6f098c2cdd27bb26273f03f3cc21acfcffbc` |
+| `SOURCES.sha256` | `fcff384d354517f0a0b6929fd52b1523e43ae980aaba6be14d4453f617679331` |
+| `build/main.pdf` | `c1c3497320e69d45195a50e168e6eb384cd4fcafc324fa88a9ad9c60e22a05ea` |
+| `notes/BENCHMARK_003_RECEIPT.json` | `1f1761a544c1430c1a4bf42f58d322af780eeab23f68481c69944db013f0c847` |
+
+Source commits: `c4b40b17` (snapshot machinery, scoped abstract and
+artifact bindings), `b0ef2086` (manuscript, algorithms and checks),
+following midpoint `8bbe8c07`. Exact paper-only pathspecs, author
+niirmataa, local main; no push. Foreign staged/working changes were
+preserved. The closing receipt commit follows this entry.
+
+### Ocena i następny krok (PL)
+
+Kryteria formy wskazanych benchmarków zostały wdrożone: tekst prowadzi
+od ustalonych obiektów przez twierdzenia do jawnych braków, a sam PDF
+identyfikuje snapshot i źródła. Istotna poprawa dotyczy także precyzji:
+usunąłem nadmierne zdanie o pełnym code-bindingu i błędne skróty
+pseudokodu. Były to błędy redakcyjne poprzedniej wersji, nie wyniki
+przeciwko przypiętym dowodom. Zakres matematyczny nie urósł.
+
+Otwarte pozostają: realizacja uczciwego Sign i kształtu próby, prawo
+kluczy, końcowy most A3/A4, S06, literatura i materiał pochodzenia.
+Następny krok publikacyjny to rzeczywisty skan źródeł literaturowych;
+kolejne wyniki B1 wymagają osobnej, przypiętej aktualizacji statusu.
