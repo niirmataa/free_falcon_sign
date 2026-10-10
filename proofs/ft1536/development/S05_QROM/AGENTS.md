@@ -2,6 +2,11 @@
 
 Decyzja właściciela 2026-10-10, późniejsza od początkowego podziału work/development:
 **cała nowa praca tej kampanii powstaje bezpośrednio tutaj**.
+Wyjątek dla bieżącego okna NORMALIZER-005: późniejsze bezpośrednie polecenie
+właściciela wyznacza próby/logi/cache w nowym
+`work/FT1536_S05_QROM_001/normalizer_005/`, a źródła, wyniki i receipty tutaj.
+Dotychczasowych prób i podkatalogów nie nadpisujemy. Ten wyjątek zastępuje
+poniższy zakaz dopisków do work wyłącznie dla tego nowego podkatalogu.
 
 - Źródła, szkice i dokumenty: odpowiednie pliki w `notes/` lub `formal/`.
 - Uruchomienia, logi, cache, duże tablice i zachowane wersje prób: ignorowane

@@ -1,0 +1,50 @@
+{
+  "id": "FT1536-S05-QROM-NORMALIZER-005",
+  "date": "2026-10-10",
+  "parent": "FT1536-S05-QROM-SAMPLER-004",
+  "base_commit": "1a6cb3e0a949b21fb9005ce167269a81199e0087",
+  "source_commit": "9dcf81b282a67ce56b108d2f360f8cacb1a7d2e9",
+  "status": "WARUNKOWY_SCOPED_NORMALIZER_TEXTUAL",
+  "all_h_goal_completed": false,
+  "results": {
+    "residual_normalizer_and_inverse": "For every r, ratio of symbolic upper/lower endpoints <1+2^-356.",
+    "local_category_rounding_TV": "<2^-236 through 768 categories and cap16, to the same ideal sequential law.",
+    "nonzero_full_fiber": "h=1,c=0: normalizer and reciprocal relative interval widths <2^-180.",
+    "nonzero_full_reply_TV": "h=1,c=0: TV to ideal zero-alias law through norm/cap16/model emission <2^-180, including none.",
+    "sequential_obstruction": "h=1,c=0 conditional PRE-NORM second moment >2^1536; not a final Q-JOINT lower bound."
+  },
+  "remaining": [
+    {
+      "id": "HZERO_KERNEL",
+      "status": "OPEN_TEXTUAL",
+      "task": "Kernelize SAMPLER-004 J<<P and full moment in Lean, clean logs as DyadicObstruction; textual label until kernel checked."
+    },
+    {
+      "id": "ALL_H_FULL_NORMALIZER",
+      "status": "OPEN",
+      "task": "Compute/contract full Z_h,c and reciprocal with useful cost for arbitrary h,c."
+    },
+    {
+      "id": "Q_JOINT_INSTANCE",
+      "status": "OPEN",
+      "task": "Executable all-h full-reply sampler, J<<P and useful small second-moment excess; include failures."
+    },
+    {
+      "id": "SOURCE_AND_QROM_BRIDGES",
+      "status": "OPEN_UNCHANGED",
+      "task": "Retain source/API, Q-TARGET, reprogramming, PRG/SHAKE/H2P and resources obligations."
+    }
+  ],
+  "next": "Sample or control marginal w(z2)*Z1(c-h*z2), or replace sequential construction; precision alone does not fix its true moment.",
+  "artifacts": {
+    "report": "notes/NORMALIZER_005.tex",
+    "source": "notes/FIBER_NORMALIZER_005.sage",
+    "certificate": "notes/NORMALIZER_005_CERTIFICATE.json",
+    "receipt": "notes/NORMALIZER_005_RECEIPT.json",
+    "outputs": "notes/NORMALIZER_005_OUTPUTS.sha256"
+  },
+  "kernel": false,
+  "independent_review": false,
+  "no_T12_1_B20_mainline_paper_site_changes": true,
+  "push": false
+}

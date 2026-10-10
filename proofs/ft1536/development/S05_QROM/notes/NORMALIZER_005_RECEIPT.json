@@ -1,0 +1,596 @@
+{
+  "checkpoint": "FT1536-S05-QROM-NORMALIZER-005",
+  "status": "WARUNKOWY_TEXTUAL_SCOPED_MIDPOINT",
+  "created_utc": "2026-10-10T16:45:51.214174+00:00",
+  "scientific_base_commit": "1a6cb3e0a949b21fb9005ce167269a81199e0087",
+  "source_commit": "9dcf81b282a67ce56b108d2f360f8cacb1a7d2e9",
+  "path_base": "repository root",
+  "runs": [
+    {
+      "name": "attempt_001",
+      "manifest_pin": {
+        "path": "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_001/manifest.json",
+        "sha256": "e1f4f70552ce9fb00759a62cd4abfe9f77ee80bc52f78c055dd6c597a223b531",
+        "bytes": 3973
+      },
+      "manifest": {
+        "schema_version": 2,
+        "claim_id": "S05_NORMALIZER_005",
+        "repository": {
+          "commit": "1a6cb3e0a949b21fb9005ce167269a81199e0087",
+          "dirty": true
+        },
+        "command": [
+          "sage",
+          "proofs/ft1536/development/S05_QROM/notes/FIBER_NORMALIZER_005.sage",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_001",
+          "512"
+        ],
+        "environment": {
+          "software": [
+            {
+              "name": "runner-python",
+              "version": "3.13.5"
+            },
+            {
+              "name": "SageMath",
+              "version": "10.9"
+            }
+          ],
+          "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+        },
+        "mathematics": {
+          "assertion_tested": "Certified shifted residual normalizers and reciprocals; h=1,c=0 full finite-box fiber normalizer and cap16 alias-TV bounds; sequential pre-norm moment lower bound",
+          "coefficient_domain": "ZZ/QQ exact and RealBallField at >=512 bits",
+          "conventions": "q2=x^2+xy+y^2; q=18433,sigma=768,box=65535,768 blocks; no success conditioning",
+          "inputs": [
+            "proofs/ft1536/development/S05_QROM/notes/FIBER_NORMALIZER_005.sage"
+          ],
+          "bounds": {
+            "local_fixtures": 16,
+            "theta_cutoff": 16384,
+            "alias_inner_shell": 2,
+            "dimension": 1536
+          },
+          "non_claims": [
+            "Not an all-h joint moment certificate",
+            "Not a kernel proof or source/security claim"
+          ]
+        },
+        "randomness": {
+          "used": false,
+          "generator": "",
+          "seed": null
+        },
+        "run": {
+          "started_at": "2026-10-10T16:39:11.178248+00:00",
+          "runtime_seconds": 2.371472,
+          "exit_status": 1,
+          "status": "failed",
+          "timeout_seconds": 300.0,
+          "max_output_bytes": 1048576,
+          "resource_limits": {
+            "memory_bytes": 4294967296,
+            "cpu_seconds": 280,
+            "max_cores": 1,
+            "max_threads": 1
+          },
+          "missing_results": [
+            "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_001/certificate.json"
+          ],
+          "invalid_results": []
+        },
+        "execution_artifacts": [
+          "proofs/ft1536/development/S05_QROM/notes/FIBER_NORMALIZER_005.sage"
+        ],
+        "input_artifacts": [
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/FIBER_NORMALIZER_005.sage",
+            "sha256": "8ef1b7e140d2d8baed60333f9d4ff4d810141850bea5fcf797bde8d78b369f04",
+            "sha256_after": "8ef1b7e140d2d8baed60333f9d4ff4d810141850bea5fcf797bde8d78b369f04"
+          }
+        ],
+        "output_directory": "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_001",
+        "declared_results": [
+          "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_001/certificate.json"
+        ],
+        "outputs": [
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_001/stdout.txt",
+            "sha256": "da3c271b234f877b941f0ac5b205c4376f9af64c44e11613fb5d622d6e75fbe8",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_001/stderr.txt",
+            "sha256": "b17ee5e83d781fd411f4121f4e6e909638d69b89be22d80115ce070ecc52f5ab",
+            "kind": "log"
+          }
+        ],
+        "checks": [
+          {
+            "check": "input hashes unchanged",
+            "passed": true
+          },
+          {
+            "check": "process exited successfully within enforced limits",
+            "passed": false
+          },
+          {
+            "check": "declared result files are present and regular",
+            "passed": false
+          }
+        ],
+        "result": "Run failed; mathematical assertion requires interpretation and review.",
+        "residual_risks": [
+          "Command success does not establish the mathematical interpretation.",
+          "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+          "The thread cap uses conventional environment variables; a child program may ignore them.",
+          "The POSIX CPU-time limit is per process, not an aggregate descendant budget.",
+          "Declared results were not produced: proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_001/certificate.json",
+          "A nonzero exit under an address-space cap does not by itself show whether the cap was reached."
+        ]
+      }
+    },
+    {
+      "name": "attempt_002",
+      "manifest_pin": {
+        "path": "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_002/manifest.json",
+        "sha256": "dce40bf69af93125351eccbfcb333c88ed66f150c946b6bc6dee4bc85660a6ed",
+        "bytes": 3873
+      },
+      "manifest": {
+        "schema_version": 2,
+        "claim_id": "S05_NORMALIZER_005",
+        "repository": {
+          "commit": "1a6cb3e0a949b21fb9005ce167269a81199e0087",
+          "dirty": true
+        },
+        "command": [
+          "sage",
+          "proofs/ft1536/development/S05_QROM/notes/FIBER_NORMALIZER_005.sage",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_002",
+          "512"
+        ],
+        "environment": {
+          "software": [
+            {
+              "name": "runner-python",
+              "version": "3.13.5"
+            },
+            {
+              "name": "SageMath",
+              "version": "10.9"
+            }
+          ],
+          "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+        },
+        "mathematics": {
+          "assertion_tested": "Certified shifted residual normalizers and reciprocals; h=1,c=0 full finite-box fiber normalizer and cap16 alias-TV bounds; sequential pre-norm moment lower bound",
+          "coefficient_domain": "ZZ/QQ exact and RealBallField at >=512 bits",
+          "conventions": "q2=x^2+xy+y^2; q=18433,sigma=768,box=65535,768 blocks; no success conditioning",
+          "inputs": [
+            "proofs/ft1536/development/S05_QROM/notes/FIBER_NORMALIZER_005.sage"
+          ],
+          "bounds": {
+            "local_fixtures": 16,
+            "theta_cutoff": 16384,
+            "alias_inner_shell": 2,
+            "dimension": 1536
+          },
+          "non_claims": [
+            "Not an all-h joint moment certificate",
+            "Not a kernel proof or source/security claim"
+          ]
+        },
+        "randomness": {
+          "used": false,
+          "generator": "",
+          "seed": null
+        },
+        "run": {
+          "started_at": "2026-10-10T16:39:53.528001+00:00",
+          "runtime_seconds": 1.468227,
+          "exit_status": 0,
+          "status": "completed",
+          "timeout_seconds": 300.0,
+          "max_output_bytes": 1048576,
+          "resource_limits": {
+            "memory_bytes": 4294967296,
+            "cpu_seconds": 280,
+            "max_cores": 1,
+            "max_threads": 1
+          },
+          "missing_results": [],
+          "invalid_results": []
+        },
+        "execution_artifacts": [
+          "proofs/ft1536/development/S05_QROM/notes/FIBER_NORMALIZER_005.sage"
+        ],
+        "input_artifacts": [
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/FIBER_NORMALIZER_005.sage",
+            "sha256": "5a20972a6f83b5c5711af75649089592103ebba0e4e759f255d81a3dc4f8394c",
+            "sha256_after": "5a20972a6f83b5c5711af75649089592103ebba0e4e759f255d81a3dc4f8394c"
+          }
+        ],
+        "output_directory": "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_002",
+        "declared_results": [
+          "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_002/certificate.json"
+        ],
+        "outputs": [
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_002/stdout.txt",
+            "sha256": "0fec12a2baac3ab4819119dee7999b222e2ecb09f71f59813faa109ac517724a",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_002/stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_002/certificate.json",
+            "sha256": "f8c70019e9186aecd2e56410023756158a40f04a04c7d06934c22c06a38aa305",
+            "kind": "result"
+          }
+        ],
+        "checks": [
+          {
+            "check": "input hashes unchanged",
+            "passed": true
+          },
+          {
+            "check": "process exited successfully within enforced limits",
+            "passed": true
+          },
+          {
+            "check": "declared result files are present and regular",
+            "passed": true
+          }
+        ],
+        "result": "Run completed; mathematical assertion requires interpretation and review.",
+        "residual_risks": [
+          "Command success does not establish the mathematical interpretation.",
+          "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+          "The thread cap uses conventional environment variables; a child program may ignore them.",
+          "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+        ]
+      }
+    },
+    {
+      "name": "attempt_003_precision768",
+      "manifest_pin": {
+        "path": "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_003_precision768/manifest.json",
+        "sha256": "7a5ea8cd732cbc5e2b01436c423aedc852b9915d1c555b0a65f73e5b982a6cae",
+        "bytes": 3951
+      },
+      "manifest": {
+        "schema_version": 2,
+        "claim_id": "S05_NORMALIZER_005",
+        "repository": {
+          "commit": "1a6cb3e0a949b21fb9005ce167269a81199e0087",
+          "dirty": true
+        },
+        "command": [
+          "sage",
+          "proofs/ft1536/development/S05_QROM/notes/FIBER_NORMALIZER_005.sage",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_003_precision768",
+          "768"
+        ],
+        "environment": {
+          "software": [
+            {
+              "name": "runner-python",
+              "version": "3.13.5"
+            },
+            {
+              "name": "SageMath",
+              "version": "10.9"
+            }
+          ],
+          "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+        },
+        "mathematics": {
+          "assertion_tested": "Certified shifted residual normalizers and reciprocals; h=1,c=0 full finite-box fiber normalizer and cap16 alias-TV bounds; sequential pre-norm moment lower bound",
+          "coefficient_domain": "ZZ/QQ exact and RealBallField at >=512 bits",
+          "conventions": "q2=x^2+xy+y^2; q=18433,sigma=768,box=65535,768 blocks; no success conditioning",
+          "inputs": [
+            "proofs/ft1536/development/S05_QROM/notes/FIBER_NORMALIZER_005.sage"
+          ],
+          "bounds": {
+            "local_fixtures": 16,
+            "theta_cutoff": 16384,
+            "alias_inner_shell": 2,
+            "dimension": 1536
+          },
+          "non_claims": [
+            "Not an all-h joint moment certificate",
+            "Not a kernel proof or source/security claim"
+          ]
+        },
+        "randomness": {
+          "used": false,
+          "generator": "",
+          "seed": null
+        },
+        "run": {
+          "started_at": "2026-10-10T16:42:04.340910+00:00",
+          "runtime_seconds": 1.669029,
+          "exit_status": 0,
+          "status": "completed",
+          "timeout_seconds": 300.0,
+          "max_output_bytes": 1048576,
+          "resource_limits": {
+            "memory_bytes": 4294967296,
+            "cpu_seconds": 280,
+            "max_cores": 1,
+            "max_threads": 1
+          },
+          "missing_results": [],
+          "invalid_results": []
+        },
+        "execution_artifacts": [
+          "proofs/ft1536/development/S05_QROM/notes/FIBER_NORMALIZER_005.sage"
+        ],
+        "input_artifacts": [
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/FIBER_NORMALIZER_005.sage",
+            "sha256": "5a20972a6f83b5c5711af75649089592103ebba0e4e759f255d81a3dc4f8394c",
+            "sha256_after": "5a20972a6f83b5c5711af75649089592103ebba0e4e759f255d81a3dc4f8394c"
+          }
+        ],
+        "output_directory": "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_003_precision768",
+        "declared_results": [
+          "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_003_precision768/certificate.json"
+        ],
+        "outputs": [
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_003_precision768/stdout.txt",
+            "sha256": "0fec12a2baac3ab4819119dee7999b222e2ecb09f71f59813faa109ac517724a",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_003_precision768/stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_003_precision768/certificate.json",
+            "sha256": "94102c25b2fb6db73f99961d12f1058f19404f4ebc694fee92166e9d5392c52f",
+            "kind": "result"
+          }
+        ],
+        "checks": [
+          {
+            "check": "input hashes unchanged",
+            "passed": true
+          },
+          {
+            "check": "process exited successfully within enforced limits",
+            "passed": true
+          },
+          {
+            "check": "declared result files are present and regular",
+            "passed": true
+          }
+        ],
+        "result": "Run completed; mathematical assertion requires interpretation and review.",
+        "residual_risks": [
+          "Command success does not establish the mathematical interpretation.",
+          "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+          "The thread cap uses conventional environment variables; a child program may ignore them.",
+          "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+        ]
+      }
+    },
+    {
+      "name": "crosscheck_001",
+      "manifest_pin": {
+        "path": "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/crosscheck_001/manifest.json",
+        "sha256": "e4220d5df5a000f3c0344f900332cfbb6e5bfa64f2a908d26d2a2f8ca20abff4",
+        "bytes": 4885
+      },
+      "manifest": {
+        "schema_version": 2,
+        "claim_id": "S05_NORMALIZER_005_PRECISION_CROSSCHECK",
+        "repository": {
+          "commit": "1a6cb3e0a949b21fb9005ce167269a81199e0087",
+          "dirty": true
+        },
+        "command": [
+          "sage",
+          "proofs/ft1536/development/S05_QROM/notes/CROSSCHECK_NORMALIZER_005.sage",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_002/certificate.json",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_003_precision768/certificate.json",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/crosscheck_001"
+        ],
+        "environment": {
+          "software": [
+            {
+              "name": "runner-python",
+              "version": "3.13.5"
+            },
+            {
+              "name": "SageMath",
+              "version": "10.9"
+            }
+          ],
+          "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+        },
+        "mathematics": {
+          "assertion_tested": "Exact overlap of common-real endpoint enclosures at 512/768 bits and claimed inequalities at both precisions",
+          "coefficient_domain": "QQ",
+          "conventions": "Precision-dependent widths are checked separately against thresholds, not for overlap",
+          "inputs": [
+            "proofs/ft1536/development/S05_QROM/notes/CROSSCHECK_NORMALIZER_005.sage",
+            "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_002/certificate.json",
+            "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_003_precision768/certificate.json"
+          ],
+          "bounds": {
+            "precisions": [
+              512,
+              768
+            ]
+          },
+          "non_claims": [
+            "Not independent proof verification"
+          ]
+        },
+        "randomness": {
+          "used": false,
+          "generator": "",
+          "seed": null
+        },
+        "run": {
+          "started_at": "2026-10-10T16:43:28.277091+00:00",
+          "runtime_seconds": 0.970256,
+          "exit_status": 0,
+          "status": "completed",
+          "timeout_seconds": 60.0,
+          "max_output_bytes": 1048576,
+          "resource_limits": {
+            "memory_bytes": 4294967296,
+            "cpu_seconds": 45,
+            "max_cores": 1,
+            "max_threads": 1
+          },
+          "missing_results": [],
+          "invalid_results": []
+        },
+        "execution_artifacts": [
+          "proofs/ft1536/development/S05_QROM/notes/CROSSCHECK_NORMALIZER_005.sage",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_002/certificate.json",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_003_precision768/certificate.json"
+        ],
+        "input_artifacts": [
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/CROSSCHECK_NORMALIZER_005.sage",
+            "sha256": "d37236e28440627fcc0c8a38c45d217eebdd513475886e7b0da3109d698aa817",
+            "sha256_after": "d37236e28440627fcc0c8a38c45d217eebdd513475886e7b0da3109d698aa817"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_002/certificate.json",
+            "sha256": "f8c70019e9186aecd2e56410023756158a40f04a04c7d06934c22c06a38aa305",
+            "sha256_after": "f8c70019e9186aecd2e56410023756158a40f04a04c7d06934c22c06a38aa305"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/attempt_003_precision768/certificate.json",
+            "sha256": "94102c25b2fb6db73f99961d12f1058f19404f4ebc694fee92166e9d5392c52f",
+            "sha256_after": "94102c25b2fb6db73f99961d12f1058f19404f4ebc694fee92166e9d5392c52f"
+          }
+        ],
+        "output_directory": "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/crosscheck_001",
+        "declared_results": [
+          "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/crosscheck_001/crosscheck.json"
+        ],
+        "outputs": [
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/crosscheck_001/stdout.txt",
+            "sha256": "d9ebd4232c65f15244b0f382e19332b44aea6b29ede7b4a67253756108bf6825",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/crosscheck_001/stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/crosscheck_001/crosscheck.json",
+            "sha256": "d8bf9cb72648fec0aab10ae7d8e82642a4899f3bf3d3d9f3cfc6f245854d6eb3",
+            "kind": "result"
+          }
+        ],
+        "checks": [
+          {
+            "check": "input hashes unchanged",
+            "passed": true
+          },
+          {
+            "check": "process exited successfully within enforced limits",
+            "passed": true
+          },
+          {
+            "check": "declared result files are present and regular",
+            "passed": true
+          }
+        ],
+        "result": "Run completed; mathematical assertion requires interpretation and review.",
+        "residual_risks": [
+          "Command success does not establish the mathematical interpretation.",
+          "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+          "The thread cap uses conventional environment variables; a child program may ignore them.",
+          "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+        ]
+      }
+    }
+  ],
+  "manifest_validation": {
+    "attempt_002": "PASS with --root",
+    "attempt_003_precision768": "PASS with --root",
+    "crosscheck_001": "PASS with --root",
+    "attempt_001": "PASS schema validation only; failed execution retained. Historical input bytes preserved at source_attempt_001.sage and matched to manifest hash."
+  },
+  "failed_attempts": [
+    {
+      "run": "attempt_001",
+      "kind": "overstrong diagnostic assertion",
+      "cause": "Computed block moment lower bound is below 8; asserting >8 failed after all normalizer/TV assertions. Correct conservative threshold >4 passes.",
+      "repair": "Threshold and derived full lower bound changed; large product certificate endpoints also stored factored to avoid huge JSON strings.",
+      "snapshot": {
+        "path": "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/source_attempt_001.sage",
+        "sha256": "8ef1b7e140d2d8baed60333f9d4ff4d810141850bea5fcf797bde8d78b369f04",
+        "bytes": 10457
+      }
+    }
+  ],
+  "preflight_issue": {
+    "command": "sage --version",
+    "cause": "Default mamba cache lock was unwritable in sandbox",
+    "resolution": "Configured XDG_CACHE_HOME, DOT_SAGE and TMPDIR inside assigned persistent W; sage --version then returned 10.9.",
+    "mathematical_run_started": false
+  },
+  "runtime_policy": {
+    "owner_instruction": "This window explicitly places attempts in work/FT1536_S05_QROM_001; only new normalizer_005 created. Sources/results/receipts in development.",
+    "history_preserved": true,
+    "default_home_not_reassigned": true,
+    "tmp_cache_sage_paths": "proofs/ft1536/work/FT1536_S05_QROM_001/normalizer_005/runtime"
+  },
+  "verification": {
+    "precisions": [
+      512,
+      768
+    ],
+    "main_run_stderr_empty": true,
+    "crosscheck_stderr_empty": true,
+    "common_real_interval_overlaps": 50,
+    "local_residue_fixtures": 16,
+    "product_fixtures": 4,
+    "inherited_pins": 12,
+    "kernel": false,
+    "independent_review": false,
+    "latex": "native compiler success"
+  },
+  "proofreading": {
+    "scope": "Entire new NORMALIZER_005.tex and new README paragraphs",
+    "routine_edits": [
+      "Math-safe none notation",
+      "Long display split",
+      "PDF-safe heading"
+    ],
+    "mathematical_token_changes": "No post-proof substantive formula change; the diagnostic >8 threshold was corrected to >4 and fully rerun, as recorded above.",
+    "unresolved": "All-h contraction, sampler moment, kernel and source binding remain open."
+  },
+  "interpretation": "Finite arithmetic assertions pass; uniform mathematics is a textual derivation. No independent review or kernel proof.",
+  "scope_guards": [
+    "Relative residual-normalizer enclosure is uniform; sampled fixtures are implementation checks only.",
+    "h=1,c=0 TV compares exact honest fiber with ideal zero-alias law, not an implemented finite-bit sampler.",
+    "Categorical TV compares the same ideal sequential law, not honest P.",
+    "Large moment lower bound is conditional before norm, not full joint after challenge/cap16."
+  ],
+  "git_policy": {
+    "branch": "main",
+    "author": "existing niirmataa identity",
+    "push": false,
+    "foreign_changes_preserved": true
+  }
+}
