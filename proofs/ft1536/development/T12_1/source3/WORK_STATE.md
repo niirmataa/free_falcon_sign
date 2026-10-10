@@ -20,6 +20,12 @@ triples. Entry domains come from the actual ready prefix. The full remaining
 reverse-radix/first-root/normalization suffix is retained, not proved correct.
 Two failed directories remain unchanged. Complete-invocation/caller binding
 follows; this logical source commit is NOT the window midpoint.
+InverseInvocation001 and InverseCalls/Material001 accepted0/0. Both actual
+Call/Bind layers and ternary dispatch now refine the SAME successful public
+Run. All512 inverse triples consume its derived ORIGINAL g/f quotient cells;
+the full remaining source execution and both table disposals, observed flow
+and caller t disposal are retained. No output image or inverse correctness
+is assumed. Audit and targeted Sage/C controls precede the single midpoint.
 
 ## B1.06 — CLOSED at successful tests/division and actual inverse entry — 2026-10-09
 
