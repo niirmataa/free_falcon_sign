@@ -1,4 +1,30 @@
-# Paper v0.1 — window 1
+# PAPER — live work state
+
+Current: **ADDENDUM_3_EDITORIAL_MIDPOINT**, 2026-10-10.
+Starting paper version: 0.3 at `4ac46f50`; mathematical/status snapshot:
+`915178a1` (BATCH_048). Owned scope: `paper/**`, local exact-path commits,
+no push. Title, mission and ePrint venue are decided; the form benchmark
+is recorded in `notes/BENCHMARK_003.md`.
+
+## ADDENDUM 3 — recoverable midpoint
+
+- Both requested benchmarks read; PDF text and two rendered pages retained
+  under `build/benchmark_003/`; exact benchmark hashes in BENCHMARK_003.md.
+- Abstract, fixed/proved/open overview, common status macros, §11 evidence
+  classes and Appendix A artifact bindings drafted. Signed mission retained.
+- Existing source re-read to correct KeyGen gate order and terminal Sign
+  emission semantics in the pseudocode. Also fixed partial tape-variable
+  rename and B1.06 premise/conclusion phrasing; no new proof or changed code.
+- In-PDF snapshot generator and document checks drafted; not yet accepted
+  by a build. Intended inputs: 117, adding the existing BATCH_032/048 pairs
+  and `sources/DOCUMENT_SNAPSHOT.json` to the previous 112.
+- Remaining: verify/capture the added pins, run clean TeX/BibTeX checks,
+  inspect rendered title/math/tables/algorithms/ledger/bindings, retain
+  immutable receipt with source/PDF hashes, and commit reviewed exact paths.
+- B1.05/B1.06 scopes and NOT_REVIEWED status retained; B1.07 partial,
+  S06 uncertified, attempt-shape choice and A3/A4 open, no QROM claim.
+
+## Historical window-1 handoff (retained)
 
 Status: WINDOW_1_COMPLETE / DRAFT_V0_1_FOR_OWNER_REVIEW. Date: 2026-10-06.
 Current handoff: **Batch 3 below**, incorporating the late independent
