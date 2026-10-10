@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Bounded S05-017 compiler with pinned016 inputs and fresh attempt directories."""
 from pathlib import Path
-import json,hashlib,shutil,types,sys,os
+import json,hashlib,shutil,types,sys,os,resource
 S=Path(__file__).resolve().parent.parent;R=S.parents[3];B=S/'.build/local_leaves_017';LIB=B/'lib'
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 P=S/'notes/BUILD_KEY_SUPPORT_011.py';manifest=S/'notes/KEY_SUPPORT_011_OUTPUTS.sha256'
@@ -40,8 +40,14 @@ d=B/'runs'/label
 wrapper_bytes=Path(__file__).read_bytes()
 if name.startswith('GaussianWitness017_'):
  batch=int(name.rsplit('_',1)[1]);os.sched_setaffinity(0,{2 if batch%2==0 else 4})
+if name.startswith('GaussianRest017_') and 'S05_WITNESS_CPU' in os.environ:
+ cpu=int(os.environ['S05_WITNESS_CPU']);assert cpu in {2,4,6};os.sched_setaffinity(0,{cpu})
+if name.startswith('GaussianRows017_') and 'S05_WITNESS_CPU' in os.environ:
+ cpu=int(os.environ['S05_WITNESS_CPU']);assert cpu in {0,2,4,6};os.sched_setaffinity(0,{cpu})
 affinity=sorted(os.sched_getaffinity(0))
-ok=h.compile_one(src,d,name,LIB if sys.argv[1]=='upstream' else d/'lib',libs,LIB)
+extra=None if name=='GlobalDimensionsObstruction017' else LIB
+ok=h.compile_one(src,d,name,LIB if sys.argv[1]=='upstream' else d/'lib',libs,extra)
 rp=d/'receipt.json';r=json.loads(rp.read_text());r['wrapper_sha256_at_launch']=hashlib.sha256(wrapper_bytes).hexdigest();r['affinity_at_launch']=affinity
+r['compiler_peak_rss_KiB']=resource.getrusage(resource.RUSAGE_CHILDREN).ru_maxrss
 (d/'wrapper_at_launch.py').write_bytes(wrapper_bytes);rp.write_text(json.dumps(r,indent=2)+'\n')
 sys.exit(0 if ok else 1)

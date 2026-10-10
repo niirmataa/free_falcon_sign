@@ -40,14 +40,16 @@ if sys.argv[1]=='structural':
 elif sys.argv[1]=='final':
  results=json.loads((B/'STRUCTURAL_RECEIPT.json').read_text())['modules']
  prior=json.loads((BASE/'PINS.json').read_text());names={r['module'] for r in prior}
+ selected=json.loads((W/'witness_sources003/SELECTED.json').read_text())
+ witness_names={r['module'] for r in selected['selected']}|{selected['aggregate']['module']}
  for r in json.loads((W/'lib/PINS.json').read_text()):
-  if r['module'].startswith('GaussianWitness017'):
+  if r['module'] in witness_names:
    assert r['module'] not in names
    prior.append(add_pin(r));names.add(r['module'])
- assert sum(n.startswith('GaussianWitness017') for n in names)==122
+ assert witness_names<=names and len(witness_names)==212
  old=BASE/'PINS_before_witness.json';assert not old.exists();shutil.copyfile(BASE/'PINS.json',old)
  (BASE/'PINS.json').write_text(json.dumps(prior,indent=2)+'\n')
- sequence=['ActualInterface017']
+ sequence=['GaussianPrefix017','TableWidths017','ActualInterface017']
 else:raise ValueError('structural|final FRESH_LABEL')
 
 for name in sequence:
