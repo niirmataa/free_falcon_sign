@@ -477,6 +477,71 @@ readiness, retry counter/limit, full-run composition), then codecs/emitted
 bytes/certificate + `emitted_to_actual_fiber` + do_sign realization +
 final computational assembly.
 
+## 2026-10-10: state review at 0e38ca35 (90 commits) + EDITORIAL MAP for ePrint
+
+Proof-side confirmations: B1.06 scope CLOSED (`KeygenPublicAccepted.
+source_same_material`: h*f_bar = g_bar, f_inv*f_bar = 1 in R_q,
+canonical rep of the REAL output h, preserved f/g input bytes; fInv is
+a mathematical invertibility witness, NOT an assumed table; premises =
+profile contract + legal memory + representation + input bounds +
+disjointness + successful public helper; invertibility/inv-NTT
+correctness/canonicity/equations all DERIVED. BATCH_046 normalization:
+mq_div_18433(Rt,(uint32_t)n) scaled for n=1536, reconstruction factor
+canceled by proof of meaning - no "forward and inverse are inverse"
+assumption). B1.07 RNG readiness full (KeygenMakeReadySampling.
+source_same_material: counter=1, bound-1 vectors from original input
+contract + same execution; set_seed/rng_ready/SHAKE/tmps/Linux syscall
+observations incl. failures = source control+memory closure, NOT
+entropy claims). Latest: KeygenMakeProgram.lean binds full caller
+syntax (source_bound, actual_attempt_tail, actual_four_segment_loop,
+post_acceptance_capacity_tests, final_return_source; order
+computePublic -> solve -> certificate -> break; attempt success NOT
+identified with successful encoded key return).
+
+**EDITORIAL MAP (owner-chosen reviewer) - the paper rule for ePrint:**
+- ONE polished article (keep title/authorship/mission/ePrint venue);
+  v0.3 (28pp, 117 pins, 21 theorem groups) is THE base - no new
+  article, no competing version. "Professional like Falcon" = the
+  ORGANIZATION of the argument (falcon-sign.info/falcon.pdf as the
+  organizational reference only).
+- **Narrative follows the ARGUMENT, not batch numbers**: source
+  execution -> proper material/law -> security experiment -> reduction.
+  BATCH ids/Lean names/hashes live in a theorem-to-export compliance
+  table + appendices + reproduction package. In-body: "B1.06" becomes
+  a normal mathematical proposition with premises; appendix points to
+  `KeygenPublicAccepted.source_same_material`.
+- **Proofs readable without running Lean**: expand second-moment
+  direction, adaptive-adversary induction, collision loss, extraction
+  to MT-ISIS.
+- Four final-version items: (A) algorithms at ONE level - real
+  byte-level algorithms vs proof-helper laws + theorems joining them;
+  retry limit/emission failure/buffer-capacity error/re-sampling belong
+  to the EXPERIMENT, not pseudocode footnotes. (B) abstract exponent
+  follows from ACTUAL AttemptShape: e2(k)=k^32-1<2^-32 (unconditional)
+  vs k_cond=k/(1-2^-24), e2<2^-17 (conditioned) - the CODE realization
+  chooses the variant; editorial choice must NOT precede the proof
+  choice; e<2^-32 is NOT a "32-bit security level" (needs q_s,
+  (1+e)^q_s-1, remaining losses). (C) main theorem = FINAL EXPORT
+  after closing: rewrite actual final type with assumptions/costs/
+  terms; don't lock narrative to the current target formula; classical
+  proof stays main result - NO QROM stretching. (D) security section +
+  Related Work need scientific editing: S06 stays
+  UNCERTIFIED/CHANGES_REQUIRED even after the reduction closes; the
+  table must not visually promise more than its caption; Related Work
+  compares actual GUARANTEE LEVELS (games vs code vs compiler vs
+  assumption) incl. EasyCrypt, Jasmin, HACL* alongside GPV/Falcon.
+- **Edit main text NOW** (motivation, profile spec, closed-reduction
+  description, B1.05/B1.06 results, literature, appendix structure);
+  leave abstract + main theorem + guarantees summary for LAST (after
+  final composition).
+- **Reproduction package is a deliverable**: receipts in ignored
+  work/ or .build/ are NOT public access - hash != availability; the
+  publication archive needs dependencies + replay commands, not just a
+  manifest.
+- Reviewer's editorial plan `PLAN_EPRINT_FT1536.md` exists in their
+  sandbox (not in repo) - worth preserving into paper/notes/ when the
+  owner hands it over.
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
