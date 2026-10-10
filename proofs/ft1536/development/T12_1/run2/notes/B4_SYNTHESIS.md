@@ -542,6 +542,22 @@ identified with successful encoded key return).
   sandbox (not in repo) - worth preserving into paper/notes/ when the
   owner hands it over.
 
+## 2026-10-10: OWNER DECISION - paper strategy: our work forward, A1 as end-stage donor
+
+Reviewer "Recent" produced an alternative editorial package
+`Free_FT_A1` (Pobrane/Free_FT_A1_LaTeX/, pinned to Git 0e38ca35):
+same signed title/authorship, tight honest abstract, theorem-centric
+structure with an assembly chapter, Appendix B obstructions as
+propositions with proofs, Appendix C reproduction + SOURCE_MAP +
+SOURCE_LOCATIONS + verification receipts. **Owner decision: keep our
+v0.3-redaction as the living paper and continue the proof lane; merge
+A1's strengths at the FINAL composition** (abstract style, obstructions
+appendix, reproduction appendix, SOURCE_MAP approach) in one end-stage
+move. Rationale: proof is the bottleneck; final composition waits for
+the final export anyway; one living paper + one frozen donor = no
+two-paper drift. Mechanical check of A1 (C01-C22 mapping vs exports,
+bibliography honesty, markers) still due BEFORE any merge.
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
