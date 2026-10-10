@@ -1,0 +1,99 @@
+{
+  "id": "FT1536-S05-QROM-SAMPLER-003",
+  "date": "2026-10-10",
+  "status": "WARUNKOWY_PARTIAL_PROTOTYPE_MOMENT_OPEN",
+  "parent": [
+    "FT1536-S05-QROM-RECON-001",
+    "S05_QROM_CONTINUATION_002"
+  ],
+  "base_commit": "7fd9a69b72c95cea058f0812cf4e08a1eb0b3ebf",
+  "development_baseline_commit": "8bbc5a33",
+  "goal": "Concrete public full-reply sampler with AC, useful directional second moment, and execution costs.",
+  "goal_completed": false,
+  "proved_or_checked": [
+    {
+      "claim": "Executable finite-bit sampler with explicit PAIR_CAP and NORM_CAP replies",
+      "evidence": "Sage source and three synthetic executions; forced branches at actual limits"
+    },
+    {
+      "claim": "TV to ideal publicJoint uniformly in h is below 2^-90",
+      "evidence": "Textual distribution proof plus exact and rigorous-ball arithmetic, not Lean kernel"
+    },
+    {
+      "claim": "Actual candidate is AC relative to honestJoint, including failures",
+      "evidence": "Textual support argument consuming pinned support/ONone exports; no formal binding of Sage program"
+    },
+    {
+      "claim": "No exact uniform coordinate modulo 18433 from fixed finite fair bits",
+      "evidence": "Elementary divisibility proof, kernel draft not verified"
+    },
+    {
+      "claim": "For this candidate at h=0, second(J,P)-1 > 1/8",
+      "evidence": "Textual binary-event reduction plus exact coordinate moment and ball lower bound >0.1745"
+    }
+  ],
+  "scope_preserved": {
+    "quantifier_not_weakened": true,
+    "norm_cap16_honest_unchanged": true,
+    "no_QROM_security_claim": true,
+    "T12_1_B20_statuses_unchanged": true,
+    "no_mainline_paper_site_changes": true,
+    "push_forbidden_without_owner_signal": true
+  },
+  "walls": [
+    {
+      "id": "Q-JOINT-INSTANCE",
+      "status": "OPEN",
+      "remaining": "A useful uniform moment certificate; chosen candidate is ruled out for e<=1/8 on all Rq."
+    },
+    {
+      "id": "Q-DYADIC",
+      "status": "EXACT_UNIFORM_INTERFACE_OBSTRUCTION",
+      "remaining": "Explicitly account for finite-bit approximation or change the randomness interface; no silent change to UniformChallengeAt."
+    },
+    {
+      "id": "Q-KEY-DOMAIN",
+      "status": "OPEN",
+      "remaining": "Either keep all-h target with another sampler, or separately authorize and prove an emitted-key domain contract."
+    },
+    {
+      "id": "Q-TARGET",
+      "status": "OPEN"
+    },
+    {
+      "id": "Q-REPROGRAMMING",
+      "status": "CONDITIONAL_TEXTUAL"
+    },
+    {
+      "id": "Q-SOURCE-PRG-RESOURCES",
+      "status": "OPEN"
+    },
+    {
+      "id": "LEAN",
+      "status": "ENVIRONMENT_IMPORT_TIMEOUT_NO_VERIFICATION"
+    }
+  ],
+  "next": "Test a sampler construction addressing nonuniform syndrome marginals within the unchanged all-h target; key-domain restriction is a separate explicit scope decision. Retain the current candidate as a publicJoint implementation with a TV certificate.",
+  "review": "Self-review only; independent acceptance and full kernel proof absent",
+  "proofreading": {
+    "routine_fixes": [
+      "Unicode font setup",
+      "Code macro moved out of math mode",
+      "Defined Law macro",
+      "Corrected checks filename"
+    ],
+    "mathematical_token_corrections": []
+  },
+  "artifacts": {
+    "report": "notes/SAMPLER_003.tex",
+    "source": "notes/PUBLIC_SAMPLER.sage",
+    "numeric_certificate": "notes/SAMPLER_003_CERTIFICATE.json",
+    "receipt": "notes/SAMPLER_003_RECEIPT.json",
+    "hash_manifest": "notes/SAMPLER_003_OUTPUTS.sha256"
+  },
+  "git": {
+    "publication": "LOCAL_ONLY_NO_PUSH",
+    "stage_import": false,
+    "tag": false
+  }
+}

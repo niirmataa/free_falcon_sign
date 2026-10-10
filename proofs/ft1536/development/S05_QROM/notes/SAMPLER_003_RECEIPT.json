@@ -1,0 +1,324 @@
+{
+  "scope": "Own Sage runs and failed Lean startup attempts; mathematical interpretation remains textual",
+  "source_base": "7fd9a69b72c95cea058f0812cf4e08a1eb0b3ebf",
+  "current_source_commit": "8bbc5a33ed095180d9d8c228a6f6754a6a2c5b93",
+  "generator": {
+    "path": "proofs/ft1536/development/S05_QROM/notes/PUBLIC_SAMPLER.sage",
+    "sha256": "1787774c28b27ec401294730b935f901fc26816c9df5b26342297abdea0faee8",
+    "identical_to": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/checks/public_sampler_v3.sage"
+  },
+  "sage_run": {
+    "schema_version": 2,
+    "claim_id": "S05_PUBLIC_SAMPLER_003",
+    "repository": {
+      "commit": "8bbc5a33ed095180d9d8c228a6f6754a6a2c5b93",
+      "dirty": true
+    },
+    "command": [
+      "sage",
+      "checks/public_sampler_v3.sage",
+      "runs/attempt_003"
+    ],
+    "environment": {
+      "software": [
+        {
+          "name": "runner-python",
+          "version": "3.13.5"
+        },
+        {
+          "name": "SageMath",
+          "version": "10.9"
+        }
+      ],
+      "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+    },
+    "mathematics": {
+      "assertion_tested": "Certified integer tables, exact pair acceptance and norm moment, rigorous TV error bound including every terminal cap failure, plus synthetic coefficient-model runs. Exact coordinate moment and rigorous h=0 lower bound excluding e<=1/8 for this candidate; both cap branches at actual limits.",
+      "coefficient_domain": "ZZ/QQ and 512-bit RealBallField; exact GF(18433) polynomial arithmetic",
+      "conventions": "q(x,y)=x^2+xy+y^2; sigma=768; Q is sum of 1536 blocks; strict Q<2093922385; pair/vector caps 192/512",
+      "inputs": [
+        "checks/public_sampler_v3.sage",
+        "FT1536 coefficient-model definitions pinned in INPUTS.json"
+      ],
+      "bounds": {
+        "cutoff": 15360,
+        "pair_cap": 192,
+        "vector_cap": 512,
+        "proof_ball_bits": 512,
+        "synthetic_keys": 3
+      },
+      "non_claims": [
+        "No LocalJointCertificate J/P moment has been established.",
+        "No real C/source binding or QROM security theorem.",
+        "Synthetic tests are not a universal proof."
+      ]
+    },
+    "randomness": {
+      "used": true,
+      "generator": "SHAKE-256 deterministic public demo labels; proof law is independent fair bits",
+      "seed": "FT1536-S05-PUBLIC-SYNTHETIC-{zero,one,dense}"
+    },
+    "run": {
+      "started_at": "2026-10-10T16:00:09.134625+00:00",
+      "runtime_seconds": 2.720844,
+      "exit_status": 0,
+      "status": "completed",
+      "timeout_seconds": 600.0,
+      "max_output_bytes": 1048576,
+      "resource_limits": {
+        "memory_bytes": 4294967296,
+        "cpu_seconds": 540,
+        "max_cores": 1,
+        "max_threads": 1
+      },
+      "missing_results": [],
+      "invalid_results": []
+    },
+    "execution_artifacts": [
+      "checks/public_sampler_v3.sage"
+    ],
+    "input_artifacts": [
+      {
+        "path": "checks/public_sampler_v3.sage",
+        "sha256": "1787774c28b27ec401294730b935f901fc26816c9df5b26342297abdea0faee8",
+        "sha256_after": "1787774c28b27ec401294730b935f901fc26816c9df5b26342297abdea0faee8"
+      }
+    ],
+    "output_directory": "runs/attempt_003",
+    "declared_results": [
+      "runs/attempt_003/tables.json",
+      "runs/attempt_003/certificate.json",
+      "runs/attempt_003/execution_checks.json"
+    ],
+    "outputs": [
+      {
+        "path": "runs/attempt_003/stdout.txt",
+        "sha256": "f95d03649c65e52c3919c7c41ec598762869cc5078f6f766e08de1d3c5577be3",
+        "kind": "log"
+      },
+      {
+        "path": "runs/attempt_003/stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "kind": "log"
+      },
+      {
+        "path": "runs/attempt_003/tables.json",
+        "sha256": "f2dc9c34407a09c6305772fa8cf430668a56c5dfd6332228c06b74c40af54301",
+        "kind": "result"
+      },
+      {
+        "path": "runs/attempt_003/certificate.json",
+        "sha256": "6237da29986da1148d2ae5ebb9f7c133f283b331206aec5b9ee14d7c91e76333",
+        "kind": "result"
+      },
+      {
+        "path": "runs/attempt_003/execution_checks.json",
+        "sha256": "38952a11d536d5fc00f906a365d7fd545d525a3b56abcd47f8b6b054a46f51e6",
+        "kind": "result"
+      }
+    ],
+    "checks": [
+      {
+        "check": "input hashes unchanged",
+        "passed": true
+      },
+      {
+        "check": "process exited successfully within enforced limits",
+        "passed": true
+      },
+      {
+        "check": "declared result files are present and regular",
+        "passed": true
+      }
+    ],
+    "result": "Run completed; mathematical assertion requires interpretation and review.",
+    "residual_risks": [
+      "Command success does not establish the mathematical interpretation.",
+      "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+      "The thread cap uses conventional environment variables; a child program may ignore them.",
+      "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+    ]
+  },
+  "raw_artifacts": [
+    {
+      "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/attempt_001/manifest.json",
+      "bytes": 4133,
+      "sha256": "1264c7d10bbaba0417fcae21d7e41eb88c612f9d0578aa785147784d8dcde55c"
+    },
+    {
+      "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/attempt_001/stderr.txt",
+      "bytes": 2639,
+      "sha256": "389b5fa9a709b008793d8634df216165302f2d476f93abb4bbcd5846c64bc3cc"
+    },
+    {
+      "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/attempt_001/stdout.txt",
+      "bytes": 187,
+      "sha256": "08fe4359ac5d598453515fc73eb65a24b4fcaeb045b163a57ce4bccd3e5ebddf"
+    },
+    {
+      "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/attempt_001/tables.json",
+      "bytes": 4818845,
+      "sha256": "f2dc9c34407a09c6305772fa8cf430668a56c5dfd6332228c06b74c40af54301"
+    },
+    {
+      "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/attempt_002/certificate.json",
+      "bytes": 4088,
+      "sha256": "b0b00e1645d882fea73661773232497f77e6d227cd7a13405ee4f00f4ecc4083"
+    },
+    {
+      "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/attempt_002/execution_checks.json",
+      "bytes": 1587,
+      "sha256": "cc6aa1fc8595aebb49a6f630b9505070b0cf230e8d03c6f41b043bf6468efcee"
+    },
+    {
+      "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/attempt_002/manifest.json",
+      "bytes": 4182,
+      "sha256": "e85b8f744621cab879da5bf4b8ce5cce9714f0fc8d919cf4912e41f84ddf3f14"
+    },
+    {
+      "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/attempt_002/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/attempt_002/stdout.txt",
+      "bytes": 284,
+      "sha256": "f95d03649c65e52c3919c7c41ec598762869cc5078f6f766e08de1d3c5577be3"
+    },
+    {
+      "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/attempt_002/tables.json",
+      "bytes": 4818845,
+      "sha256": "f2dc9c34407a09c6305772fa8cf430668a56c5dfd6332228c06b74c40af54301"
+    },
+    {
+      "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/attempt_003/certificate.json",
+      "bytes": 5325,
+      "sha256": "6237da29986da1148d2ae5ebb9f7c133f283b331206aec5b9ee14d7c91e76333"
+    },
+    {
+      "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/attempt_003/execution_checks.json",
+      "bytes": 1770,
+      "sha256": "38952a11d536d5fc00f906a365d7fd545d525a3b56abcd47f8b6b054a46f51e6"
+    },
+    {
+      "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/attempt_003/manifest.json",
+      "bytes": 4308,
+      "sha256": "90fb17ecbb256461094a38690e18ea0d5719a0ed9401bb029bfe26244ddec4e5"
+    },
+    {
+      "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/attempt_003/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/attempt_003/stdout.txt",
+      "bytes": 284,
+      "sha256": "f95d03649c65e52c3919c7c41ec598762869cc5078f6f766e08de1d3c5577be3"
+    },
+    {
+      "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/attempt_003/tables.json",
+      "bytes": 4818845,
+      "sha256": "f2dc9c34407a09c6305772fa8cf430668a56c5dfd6332228c06b74c40af54301"
+    },
+    {
+      "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/lean_001/StateErasure.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/lean_001/StateErasure.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/lean_001/receipt.json",
+      "bytes": 436,
+      "sha256": "c7d5a5ef5c21a99546e3dc45580143df1c827cb8dcd4ede599d94a2a26ccc5f1"
+    },
+    {
+      "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/lean_probe_002/ImportProbe.lean",
+      "bytes": 64,
+      "sha256": "3d0bbf365d75ace0bb1d06527ae88564a1e939c553677979744a74de4a4202a2"
+    },
+    {
+      "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/lean_probe_002/receipt.json",
+      "bytes": 422,
+      "sha256": "9aeba0d5e564314d607896ec81af00bc7905a43b81d4100b34c2bab6239774ef"
+    },
+    {
+      "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/lean_probe_002/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/lean_probe_002/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "lean": {
+    "status": "NOT_VERIFIED",
+    "attempts": [
+      {
+        "status": "TIMEOUT",
+        "module": "StateErasure",
+        "timeout_seconds": 120,
+        "source_sha256": "1b18c48357d36792cd7997701b675413dc8cf5b89983f0ffedc8d0b4c39b559c",
+        "stdout_bytes": 0,
+        "stderr_bytes": 0,
+        "exception": "subprocess.TimeoutExpired; parent subprocess.run killed and waited for the direct Lean child",
+        "no_other_modules_executed": true,
+        "note": "No mathematical failure inferred from timeout; no olean produced."
+      },
+      {
+        "argv": [
+          "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+          "-j1",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/lean_probe_002/ImportProbe.lean"
+        ],
+        "status": "timeout",
+        "exit_code": null,
+        "elapsed_seconds": 60.022693041999446,
+        "source_sha256": "3d0bbf365d75ace0bb1d06527ae88564a1e939c553677979744a74de4a4202a2"
+      }
+    ],
+    "draft_sources_in_work": [
+      "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/formal/DyadicObstruction.lean",
+      "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/formal/FullReplySupport.lean",
+      "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/formal/StateErasure.lean"
+    ],
+    "no_lean_sources_promoted_to_development": true
+  },
+  "environment_preflight_failures": [
+    {
+      "cause": "mamba default cache outside writable runtime",
+      "resolution": "XDG_CACHE_HOME set inside W; no lock removed"
+    },
+    {
+      "cause": "wrong Sage cache variable SAGE_DOT_SAGE; attempted default read-only ~/.sage/cache",
+      "resolution": "Use documented DOT_SAGE inside W; HOME unchanged"
+    }
+  ],
+  "latex_history": {
+    "intermediate_sources": "First attempt captured; second/third reconstructed from that source and exact recorded patches, filenames say reconstructed.",
+    "attempts": [
+      {
+        "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/latex_002_result.json",
+        "sha256": "7702a8864ab3fc204d791e4c7c7ace457103f5ddfe902f366902fc618ec05054"
+      },
+      {
+        "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/latex_002_source_reconstructed.tex",
+        "sha256": "d07f533942a073d99ed26758a56427423a5ea45233cb1afd0b7717ba5d2206e5"
+      },
+      {
+        "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/latex_003_result.json",
+        "sha256": "055b0491e06c6cccf3abfae4560697c990a9b213b3f8c1d880057ad09ef5f9f4"
+      },
+      {
+        "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/latex_003_source_reconstructed.tex",
+        "sha256": "7f4a62d11c84f2750b511d795f6cd9058078cc76c6be8989a84e35586cfea75b"
+      }
+    ],
+    "final": "SAMPLER_003_LATEX_RECEIPT.json"
+  }
+}

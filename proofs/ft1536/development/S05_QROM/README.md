@@ -23,8 +23,10 @@ pozostają w `proofs/ft1536/work/FT1536_S05_QROM_001/`. Nie nadpisujemy prób.
 |---|---|
 | Algebra pojedynczej ekstrakcji, rachunek pełnego Sign, kierunkowy moment J/P | Zachowane w dokładnym dotychczasowym zakresie |
 | Wspólna kontynuacja i kompozycja w grach programowanych | Dowód tekstowy warunkowy, CONTINUATION-002 |
-| Wykonalny publiczny sampler pełnej odpowiedzi, również porażek | Aktywny krok S05-Q-JOINT-INSTANCE, kuźnia `sampler_003/` |
-| Certyfikat `J≪P`, `ΣJ²/P≤1+e`, z użytecznym e | Cel bieżącego kroku; sam typ nie daje instancji |
+| Wykonalny publiczny sampler pełnej odpowiedzi, również porażek | SAMPLER-003 wykonany; TV do modelowego publicJoint <2^-90, dowód transferu tekstowy |
+| Absolutna ciągłość J względem uczciwego P | Tekstowy argument nośnika, także dla terminalnego none; formal source binding OPEN |
+| Certyfikat `ΣJ²/P≤1+e`, z użytecznym e | OPEN; ten kandydat dla h=0 ma e>1/8, więc małe e jednolite po całym Rq jest wykluczone |
+| Dokładny UniformChallengeAt z ustalonej taśmy uczciwych bitów | Niemożliwy: masy dyadyczne, moduł 18433 nie dzieli 2^bits; nie zmieniono przesłanek głównej linii |
 | Klasyczny log hasza | Wymaga nowej semantyki QROM |
 | Osadzenie `q_H+1` celów | Wymaga nowej konstrukcji Q-TARGET i straty |
 | Klasyczna strata kolizyjna | Wymaga osobnego rachunku reprogramowania |
@@ -41,3 +43,27 @@ Mały błąd TV również nie zastępuje certyfikatu kierunkowego momentu.
 - runtime i historia prób: `work/FT1536_S05_QROM_001/sampler_003/`.
 
 Pierwszy commit jest zapisem źródeł rozpoznania, nie akceptacją dowodu.
+
+## Checkpoint SAMPLER-003
+
+[Wynik i pełne argumenty](notes/SAMPLER_003.tex),
+[wykonywalne źródło Sage](notes/PUBLIC_SAMPLER.sage),
+[certyfikat rachunku](notes/SAMPLER_003_CERTIFICATE.json),
+[koszt, próby i receipty](notes/SAMPLER_003_RECEIPT.json),
+[duże tablice przez generator/pin](notes/LARGE_ARTIFACTS.json).
+
+Trzy syntetyczne wykonania sprawdziły kongruencję, normę i signed16;
+obie gałęzie cap-failure sprawdzono również przy faktycznych limitach.
+Limit to 150994944 prób par i 18 GiB zużytych bitów, czytanych leniwie,
+bez takiej alokacji pamięci. Obserwowane wykonania po przygotowaniu tablic
+zużyły 2625–2710 prób par; nie jest to benchmark produkcyjny.
+
+Sage 10.9: rachunek ZZ/QQ i balls512 zakończony. Lean: 120 s timeout
+pierwszego modułu i 60 s timeout samego importu. Drafty Lean zachowano
+w kuźni; **niczego nowego nie oznaczono jako kernelowo sprawdzone**.
+
+Następny krok pozostaje **S05-Q-JOINT-INSTANCE**: potrzebny sampler
+z użytecznym momentem na dokładnie wymaganej dziedzinie kluczy.
+Wynik h=0 wyklucza tę konkretną konstrukcję z małym e na całym Rq,
+nie inne samplery. Ewentualne ograniczenie do emitted keys wymaga jawnej
+decyzji i nowego dowodu zakresu; tutaj nie osłabiono kwantyfikatora.

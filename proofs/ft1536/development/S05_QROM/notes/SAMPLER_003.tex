@@ -1,0 +1,308 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm]{geometry}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\setmonofont{Latin Modern Mono}[Scale=0.85]
+\usepackage{amsmath,amssymb,amsthm,booktabs,longtable,xurl,hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{3em}
+\newcommand{\code}[1]{\nolinkurl{#1}}
+\newcommand{\TV}{\operatorname{TV}}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Law}{\operatorname{Law}}
+\newcommand{\PhiB}{\operatorname{Phi}}
+\title{S05 / SAMPLER\_003\\\large Wykonalny sampler publiczny, pełne porażki i granica certyfikatu}
+\author{Notatka robocza dla Niirmata}
+\date{10 października 2026}
+\begin{document}\maketitle
+
+\textbf{Wynik: częściowy, warunkowy.} Zbudowano i wykonano konkretny
+publiczny sampler w SageMath. Ma jawny limit pracy, zwraca również porażkę
+i przy idealnych bitach aproksymuje istniejące modelowe
+\code{PublicSimulation.publicJoint (SigmaMath.syndrome h)} z błędem
+całego prawa mniejszym niż $2^{-90}$, jednolicie po $h$.
+Transfer tego rachunku do rozkładów jest dowodem tekstowym; liczby
+sprawdzono w $\mathbb Z,\mathbb Q$ i rygorystycznych balls.
+
+\textbf{Pełny cel okna nie jest osiągnięty:} nie dostarczono użytecznego
+\code{LocalJointCertificate} dla tego samplera względem
+$P_h=\mathrm{freshHonest}(h)$ z \code{SigmaMath}.
+Mały błąd TV nie zastępuje kierunkowego momentu.
+Co więcej, konkretny kandydat dla $h=0$ ma
+$\sum J_h^2/P_h-1>1/8$; nie może spełniać małego $e<2^{-32}$
+jednolicie na całej obecnej dziedzinie \code{Rq}.
+Nie jest to kontrprzykład bezpieczeństwa FT1536 ani dowód niemożliwości
+innych samplerów. Nie ustalono, że $h=0$ leży w rozkładzie emitted KeyGen.
+
+\section{Kontrakt i wejścia}
+Tor: \code{proofs/ft1536/development/S05_QROM/}.
+Historia prób: \code{work/FT1536_S05_QROM_001/sampler_003/} pod
+\code{proofs/ft1536/}. Poprzedniki: RECON-001 i CONTINUATION-002,
+baza historyczna \code{2d2cdf5}; bieżący odczyt źródeł \code{7fd9a69b}.
+Piny plików są w \code{SAMPLER_003_INPUTS.json}.
+
+Używamy dokładnie modelu współczynnikowego: $q=18433$, $n=1536$,
+$\sigma=768$, $B=2093922385$, wielomian $X^{1536}-X^{768}+1$,
+\[
+ Q(z_1,z_2)=\sum_{j=1}^{1536}(x_j^2+x_jy_j+y_j^2),\qquad Q<B.
+\]
+Pierwsze 768 par tworzy $z_1$, pozostałe $z_2$.
+$G$ oznacza \code{boundedGaussian}: waga $e^{-Q/(2\sigma^2)}$
+na skończonym boxie $[-65535,65535]^{3072}$, warunkowana przez $Q<B$.
+Idealny publiczny joint to $J^G_h=\Law(A_h(z),\mathrm{emit}(z))$, $z\sim G$.
+\emph{To nie jest} uczciwe prawo $P_h$: w $P_h$ wyzwanie jest jednostajne,
+a cap16 działa przy ustalonym wyzwaniu.
+
+Sampler dostaje wyłącznie $h$ i interfejs świeżych niezależnych bitów.
+Ignoruje wiadomość, nonce i stan; może być wywoływany ze stałym
+\code{initial}. Nie czyta wyroczni ani historii przeciwnika.
+Demonstracje używają publicznych etykiet SHAKE, wyłącznie do powtarzalności;
+rachunek rozkładu dotyczy idealnych bitów, nie bezpieczeństwa SHAKE/PRG.
+
+\section{Pierwsza przeszkoda: dokładna jednostajność z ustalonej taśmy}
+Dla deterministycznej funkcji $b$ uczciwych bitów każda masa zdarzenia
+ma postać $k/2^b$. Jednostajny pojedynczy współczynnik w
+$\mathbb Z/18433\mathbb Z$ wymaga masy $1/18433$, a więc
+$18433k=2^b$, co jest niemożliwe. Dotyczy to także algorytmu zużywającego
+co najwyżej $b$ bitów: dopełniamy niewykorzystany sufiks.
+
+\code{Games.Sampler} ma taśmę \code{Fin S.bits -> Bool};
+\code{HacGlue.UniformChallengeAt S} żąda dokładnie jednostajnego marginalu
+tego samplera. Zatem ten zestaw przesłanek nie ma instancji.
+Nie obala to warunkowych twierdzeń Lean, ale uniemożliwia konsumpcję tej
+konkretnej ścieżki przez wykonalny sampler ze skończoną taśmą.
+Własność losowego orakulum i własność wyjścia takiego samplera to dwa różne typy.
+
+Przybliżenie przez modulo jest możliwe. Jeśli $N=2^b=aq+r$, to dla
+$U\leftarrow\{0,\ldots,N-1\}$ i $C=U\bmod q$ dokładny moment względem
+jednostajnego współczynnika wynosi
+\[
+ q\sum_c\Pr[C=c]^2=1+\frac{r(q-r)}{N^2}.
+\]
+Sage sprawdza to także przez pełną enumerację 16 małych przypadków.
+Dla $b=80$, 1536 niezależnych współczynników dałoby $e_1<2^{-120}$.
+To diagnostyka wykonalnego challenge samplera, \emph{nie} rozwiązanie
+publicznego próbkowania odpowiedzi do zadanego $c$.
+Zbudowany niżej sampler wybiera wektor przed wyzwaniem.
+
+\section{Algorytm rzeczywiście wykonany}
+Parametry aproksymacji: $T=15360$, $p=256$, $b=384$.
+Tablice całkowite są generowane przez certyfikowane zaokrąglenia balls:
+\[
+ W_x=\left\lceil2^p e^{-x^2/(4\sigma^2)}\right\rceil\quad(|x|\le T),
+ \qquad A_s=\left\lfloor2^p e^{-s^2/(4\sigma^2)}\right\rfloor
+ \quad(|s|\le2T).
+\]
+Wartości dla zera są dokładnie $2^p$.
+Zaokrąglenie musi być takie samo dla obu końców przedziału; niejednoznaczność
+powoduje błąd generatora, a nie wybór przybliżonej liczby.
+
+Niech $S=\sum_xW_x$. Losujemy $b$ bitów, redukujemy modulo $S$
+i wybieramy $x$ z całkowitej tablicy kumulacyjnej. Dwa niezależne takie
+losowania dają $(x,y)$; akceptujemy, gdy nowe $p$ bitów reprezentuje
+liczbę mniejszą niż $A_{x+y}$. Uzasadnieniem jest tożsamość
+\[
+ e^{-x^2/(4\sigma^2)}e^{-y^2/(4\sigma^2)}e^{-(x+y)^2/(4\sigma^2)}
+ =e^{-(x^2+xy+y^2)/(2\sigma^2)}.
+\]
+Na jedną parę przeznaczamy najwyżej 192 próby.
+Budujemy 1536 par i sprawdzamy ścisłe $Q<B$.
+Odrzucony wektor losujemy ponownie, najwyżej 512 razy.
+Po sukcesie zwracamy
+\[
+ (c,o)=\left((z_1+h z_2)\bmod(X^{1536}-X^{768}+1,q),\ \mathrm{some}(z_2)\right).
+\]
+Mamy $|z_{2,i}|\le15360$, zatem modelowy \code{signed16} jest spełniony.
+Oba wyczerpania limitów zwracają $(0,\mathrm{none})$.
+To legalna para wyjściowa, a nie usuwanie nieudanej próby z eksperymentu.
+Publiczny wynik funkcji \code{sample_public_reply} jest tylko tą parą;
+diagnostyka normy, pierwszej połowy i przyczyny zakończenia nie należy
+do obserwacji przeciwnika.
+
+512 prób symulatora nie zmienia cap16 uczciwego Sign. To odrębny algorytm
+aproksymujący istniejącą specyfikację publiczną, a nie patch do C.
+Koszt tablic i ich generacji jest jawny; żaden sekret nie jest wejściem.
+
+\section{Pełny rachunek aproksymacji, włącznie z porażkami}
+Stosujemy $\TV=\tfrac12\ell_1$.
+Jednowymiarowy błąd losowania względem rozkładu proporcjonalnego do
+$w_x=e^{-x^2/(4\sigma^2)}$ na $[-T,T]$ jest co najwyżej
+\[
+ \varepsilon_s=\frac{2T+1}{2^p}+\frac{S}{2^b}.
+\]
+Pierwszy składnik: dodane przez ceiling masy sumują się do najwyżej
+$2T+1$, a dokładny normalizator jest co najmniej $w_0=1$.
+Drugi: redukcja modulo $S$ ma błąd TV co najwyżej $S/2^b$;
+deterministyczna mapa CDF nie zwiększa TV.
+
+Rzeczywisty rozkład współrzędnej jest znany dokładnie: jeśli
+$2^b=aS+r$ i bucket $x$ ma lewy koniec $L_x$, to liczba bitstringów
+prowadzących do $x$ wynosi
+\[
+ k_x=aW_x+\max\{0,\min(W_x,r-L_x)\}.
+\]
+Suma $k_x$ jest sprawdzana jako dokładne $2^b$.
+Splot wielomianów o współczynnikach $k_x$ daje dokładne racjonalne
+prawdopodobieństwo akceptacji pary $\alpha$ i jej momenty:
+\[
+ \alpha=\frac{\sum_{x,y}k_xk_y A_{x+y}}{2^{2b+p}}>\frac12,
+ \qquad \mu=\E[x^2+xy+y^2\mid\text{akceptacja pary}].
+\]
+Do licznika $\mu$ użyto
+$x^2+xy+y^2=(x+y)^2-xy$, więc wystarczają dwa dokładne sploty.
+
+Zmiana dwóch współrzędnych i Bernoulliego akceptacji daje
+$\gamma=2\varepsilon_s+2^{-p}$ w TV przed warunkowaniem.
+Sprawdzono $\alpha-\gamma>1/2$. Nierówność warunkowania
+$\TV(U\mid E,V\mid E)\le2\TV(U,V)/\Pr_V(E)$ daje zatem
+$\varepsilon_{\mathrm{pair,round}}=4\gamma$.
+
+Pozostaje wycięcie $[-T,T]^2$ z pełnego skończonego boxu.
+Ponieważ $x^2+xy+y^2\ge(x^2+y^2)/2$ i normalizator pary jest co najmniej 1,
+błąd TV nie przekracza $2tZ$, gdzie
+\[
+ a=\frac1{4\sigma^2},\quad
+ t=\frac{2e^{-a(T+1)^2}}{1-e^{-a(2T+3)}},\qquad
+ Z\le S/2^p+t.
+\]
+To zwykłe oszacowanie szeregiem geometrycznym obu ogonów $w_x$;
+sumowanie po całych liczbach jest majorantą skończonego boxu.
+
+Niezależny produkt 1536 par ma błąd
+$\varepsilon_v\le1536(4\gamma+2tZ)$.
+Dokładny moment daje przez Markowa
+\[
+ a_0=1-\frac{1536\mu}{B}>\frac18,
+ \qquad \Pr[Q<B]\ge a_0.
+\]
+Stąd błąd po warunkowaniu przez normę wynosi najwyżej
+$2\varepsilon_v/a_0$. Wyczerpania jawnych limitów mają wspólną majorantę
+\[
+ \delta_{\mathrm{cap}}
+ =512\cdot1536(1-\alpha)^{192}
+   +\left(\frac{1536\mu}{B}\right)^{512}.
+\]
+Dowód przez sprzężenie porównuje wykonanie z niezależnymi losowaniami
+bez limitu, które kończą się prawie na pewno, z wykonaniem limitowanym.
+Sumujemy prawdopodobieństwa wszystkich potencjalnych wyczerpań par
+i prawdopodobieństwo 512 odrzuceń normy. Wartość $(0,\mathrm{none})$
+jest uwzględniona w tej odległości, bez warunkowania na sukces symulatora.
+
+Deterministyczne obliczenie syndromu i emisja nie zwiększają TV. Zatem
+dla \emph{każdego} $h$ rzeczywiste prawo $\widehat J_h$ spełnia
+\[
+ \TV(\widehat J_h,J^G_h)\le
+ \eta=2\varepsilon_v/a_0+\delta_{\mathrm{cap}}<2^{-90}.
+\]
+Sage daje przedział z wartością około $1.46766337246\cdot10^{-30}$.
+Nierówność $\eta<2^{-90}$ sprawdzono bez zaokrąglania do float.
+Transfer z formuł do rozkładów powyżej pozostaje tekstowy,
+nie kernelowo zweryfikowany.
+
+\section{Nośnik obejmuje również porażki}
+Dla każdego sukcesu istnieje wyemitowany świadek $z$ z $A_hz=c$, $Q(z)<B$
+i $\mathrm{emit}(z)=o$. Eksport
+\code{SignLayerSupport.signBody_some_pos_iff} daje dodatnią masę tego
+$o$ przy $c$ w uczciwym ciele. Mnożenie przez $1/|R_q|$ zachowuje dodatniość.
+Dla każdej porażki $o=\mathrm{none}$ eksport
+\code{ONoneGeometry.signBody_none_pos_syndrome} daje dodatnią masę
+przy każdym $h,c$, w szczególności przy użytym $c=0$.
+Stąd $\widehat J_h\ll P_h$ dla opisanego algorytmu.
+
+Moduł \code{FullReplySupport.lean} zapisuje ogólny interfejs tego argumentu:
+każde prawo wspierane przez takie wyjścia jest AC względem $P_h$.
+Identyfikacja kodu Sage z predykatem nośnika jest w tym pakiecie tekstowa;
+nie nazywamy jej pełnym formalnym source bindingiem.
+Status konkretnych kompilacji jest w receipcie Lean.
+
+Istotna granica: dodatniość $P_h(0,\mathrm{none})$ nie daje dostatecznie
+dużej dolnej granicy tej masy. Mała masa porażek samplera może nadal
+mieć duży koszt $\widehat J_h(0,\mathrm{none})^2/P_h(0,\mathrm{none})$.
+Nie wyprowadzamy więc małego momentu z AC i TV.
+
+\section{Rygorystyczna przeszkoda dla małego momentu tego kandydata}
+Dla $h=0$ pierwszy współczynnik wyzwania jest $x\bmod q$.
+Niech $E$ oznacza $|\mathrm{center}(c_0)|\le4096$.
+W uczciwym $P_0$ challenge jest jednostajny niezależnie od odpowiedzi,
+zatem $p=P_0(E)=8193/18433$.
+Dokładny splot $(x^2k_x)\ast k_x$ daje $m_2=\E[x^2\mid\text{akceptacja pary}]$.
+Markow, warunkowanie przez normę i poprzedni cap bound dają
+\[
+ j=\widehat J_0(E)\ge
+ j_{\min}=1-\frac{m_2}{4097^2a_0}-\delta_{\mathrm{cap}}
+ >0.6520900783.
+\]
+Zdarzenie $|x|\le4096$ implikuje $E$; modularne zawijanie może tylko
+dodać masę do tego dolnego oszacowania. Fallback $(0,\mathrm{none})$
+również należy do $E$, więc odjęcie cap bound jest konserwatywne.
+
+Po zgrupowaniu mas w $E$ i jego dopełnieniu Cauchy--Schwarz daje
+\[
+ \sum\frac{\widehat J_0^2}{P_0}-1
+ \ge\frac{(j-p)^2}{p(1-p)}
+ \ge\frac{(j_{\min}-p)^2}{p(1-p)}>\frac18.
+\]
+Obliczona dolna granica jest około $0.1745696173285$.
+To argument uniwersalny dla rozkładu tego kandydata, podparty dokładnymi
+momentami i balls; trzy syntetyczne próbki nie są jego dowodem.
+Wykluczona zostaje droga: \emph{ten} globalny sampler Gaussa + małe $e$
+jednolicie na całym \code{Rq}. Droga dla odpowiednio uzasadnionej rodziny
+kluczy pozostaje otwarta, ale byłaby jawną zmianą zakresu, której tu nie dokonano.
+
+\section{Koszt, kontrola i zachowane niepowodzenia}
+Generacja tablic: 30721 wag i 61441 progów, precyzja balls 512 bitów.
+Próba pary zużywa $2b+p=1024$ bity i dwa wyszukania binarne w CDF.
+Maksimum na odpowiedź:
+\[
+ 512\cdot1536\cdot192=150994944\ \text{prób par},\qquad
+ 154618822656\ \text{bitów} =18\ \text{GiB}.
+\]
+To konserwatywny \emph{limit zużycia losowości}, nie alokacja pamięci:
+taśma jest czytana leniwie. Zapis kosztu nie jest twierdzeniem o tanim
+najgorszym przypadku. Pozostaje koszt tablic, operacji na dużych liczbach
+i mnożenia wielomianów; nie ma jeszcze certyfikatu bitowego maszyny.
+
+W trzech przebiegach syntetycznych ($h=0,1$ i gęsty wielomian) otrzymano
+sukces po jednym wektorze i 2625--2710 próbach par, około 13--14 ms
+po przygotowaniu tablic w tym środowisku. Nie jest to benchmark produkcyjny.
+Sprawdzono kongruencję syndromu, ścisłą normę i signed16.
+Obie końcowe gałęzie porażki wymuszono również przy rzeczywistych limitach
+192 i 512. Etykiety i wyniki są w \code{SAMPLER_003_EXECUTION_CHECKS.json}.
+
+W kuźni zachowano:
+\begin{itemize}
+\item attempt\_001: rachunek doszedł do asercji i prób, zapis JSON nie
+obsłużył Sage Integer; zachowano stderr, źródło i manifest;
+\item attempt\_002: poprawiono tylko serializację, przebieg zakończony;
+\item attempt\_003: dodano moment współrzędnej, przeszkodę $h=0$,
+pomiar czasu oraz obie gałęzie przy faktycznych limitach; przebieg zakończony;
+\item lean\_001: timeout 120 s na pierwszym module, bez diagnostyki;
+nie potraktowano go jako błędu matematycznego ani sukcesu kompilacji.
+\end{itemize}
+Receipty i checkpoint podają ostateczny stan dalszych kontroli.
+
+\section{Pozostały dokładny cel}
+Przy niezmienionym kontrakcie trzeba zbudować sampler o małym momencie
+względem $P_h$ na całej wymaganej dziedzinie, także dla kluczy takich jak $0$,
+albo uzyskać osobną, jawną decyzję dotyczącą zakresu kluczy i przygotować
+dowód właściwego nowego interfejsu. Nie osłabiono tutaj kwantyfikatora.
+
+Dla ewentualnego certyfikatu idealnego $J^G$ wolno użyć uzyskanego
+błędu implementacji w następującej kolejności: po $q_s$ odpowiedziach
+różnica zdarzeń jest co najwyżej $q_s\eta$, zatem w schemacie z
+CONTINUATION-002 pojawia się
+\[
+ \delta_{AR}+\PhiB\!\left((1+e)^{q_s}-1,
+       \min\{1,\Pr[Q_{\widehat J}]+q_s\eta\}\right),
+\]
+z końcowym obcięciem do 1. Błąd implementacji znajduje się
+\emph{wewnątrz} Phi; nie przenosimy go automatycznie na zewnątrz.
+Ta strzałka wymaga nadal certyfikatu idealnego samplera.
+Q-TARGET, realny Sign, PRG i pełne zasoby pozostają odrębne.
+
+\textbf{Ocena:} wykonany sampler jest użytecznym, odtwarzalnym obiektem
+badawczym z pełnym rachunkiem porażek. Odsłonił dwie precyzyjne granice
+instancjowania: dokładną jednostajność z ograniczonej taśmy i zbyt szeroki
+zakres małego momentu dla wybranej konstrukcji. Nie zamieniamy tych
+ograniczeń na deklarację ukończenia certyfikatu lub bezpieczeństwa.
+\end{document}
