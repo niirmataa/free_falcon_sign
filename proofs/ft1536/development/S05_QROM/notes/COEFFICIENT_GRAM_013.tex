@@ -1,0 +1,140 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm]{geometry}
+\usepackage{fontspec}\setmainfont{Latin Modern Roman}
+\setmonofont{Latin Modern Mono}[Scale=0.85]
+\usepackage{amsmath,amssymb,amsthm,xurl,hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{3em}
+\newcommand{\code}[1]{\nolinkurl{#1}}
+\newtheorem{theorem}{Twierdzenie}
+\title{Conditional NTRU coefficient-Gram binding\\\large S05 / COEFFICIENT\_GRAM\_013}
+\author{Notatka robocza dla Niirmata}\date{10 października 2026}
+\begin{document}\maketitle
+\textbf{Klasa: obowiązek dowodowy Q-SAMPLER. Status: kernelowy most
+algebraiczny dla rzeczywistej reprezentacji współczynników.}
+Dowód dotyczy matematycznego \code{ActualNTRUFiber.coefficientBasis}.
+Nie identyfikuje całego wykonania C ani prawa emitted KeyGen z tym modelem.
+Nie ma nowego boundu momentu ani deklaracji bezpieczeństwa QROM.
+
+\section{Ponowne użycie i dokładny brak}
+Mapa \code{REUSE_MAP_013.md} wskazuje gotowe eksporty ROM/T5: całe włókno
+NTRU, Poisson, przesuniętą wieżę, skalę, temperaturę, MGF i konsumenta
+skończonego boxu. Część012 powtarzała funkcje istniejącego T5 w innym
+ułożeniu współrzędnych; liczba nowych deklaracji nie jest liczbą nowych
+wyników matematycznych. Nie powtarzamy tych ogólnych dowodów.
+
+Rzeczywisty brak stanowiło wyprowadzenie macierzy Grama i jej energii
+z konkretnego mnożenia współczynników. \code{T5CholeskyCert.gramEq}
+przyjmuje pełną tożsamość jako wejście. Niniejszy krok dowodzi części
+``konkretna baza $\to$ dodatni Gram i dokładna energia afiniczna'';
+nie dostarcza jeszcze jej kontrolowanej faktoryzacji Cholesky'ego.
+
+\section{Przedmioty i teza}
+Pracujemy w pierścieniu
+$R=\mathbb Z[X]/(X^{1536}-X^{768}+1)$, w istniejącej reprezentacji
+$\mathrm{Vec}=\mathrm{Fin}(768)\to\mathbb Z^2$.
+Mnożenie oznacza dokładny iloczyn modulo wskazany wielomian, tak samo
+jak w \code{CoefficientQuotient.multiply}. Dla $z=(z_1,z_2)$ używamy
+niezmienionej energii
+\[
+ Q(z)=\sum_{c=1}^2\sum_{j<768}
+ \bigl(z_{c,j,0}^2+z_{c,j,0}z_{c,j,1}+z_{c,j,1}^2\bigr).
+\]
+Współrzędne indeksuje $I=\{0,1\}\times(\{0,1\}\times\mathrm{Fin}(768))$:
+kolejno połowa niska/wysoka, pierwszy/drugi wektor oraz para A2.
+$|I|=3072$. Jawne odwrotne mapy \code{pack}/\code{unpack} wiążą
+$\mathrm{Vec}^2$ z $\mathbb Z^I$; jest to inny typ zadania niż pakowanie
+zagnieżdżonych \code{TriangularGaussian.Points} w T5.
+
+Niech $\mathcal B$ będzie dokładnie istniejącą bazą
+\[
+ \mathcal B(u_1,u_2)=(gu_1+Gu_2,-fu_1-Fu_2).
+\]
+Z addytywności tej konkretnej mapy budujemy jej całkowitą macierz $M$
+w powyższych współrzędnych, używając \code{LinearMap.toMatrix'}.
+Metryka $H$ ma bloki $\left(\begin{smallmatrix}1&1/2\\1/2&1\end{smallmatrix}\right)$
+dla każdej pary A2; pozostałe wpisy są zerowe. Definiujemy
+$\Gamma=M^{\mathsf T}HM$, po dokładnym osadzeniu $M$ w $\mathbb R$.
+
+\begin{theorem}[Dokładny most energii]
+Dla dowolnych całkowitych $f,g,F,G$ i $u\in\mathrm{Vec}^2$ zachodzi
+\[
+ \operatorname{pack}(\mathcal B u)=M\operatorname{pack}(u),\qquad
+ \operatorname{pack}(u)^{\mathsf T}\Gamma\operatorname{pack}(u)=Q(\mathcal B u).
+\]
+Jeżeli $fG-gF=18433$ w $R$, to $M$ jest odwracalna nad $\mathbb R$
+i $\Gamma$ jest dodatnio określona. Dla każdego $z,u\in\mathrm{Vec}^2$
+i jawnego $s_z=M^{-1}\operatorname{pack}(z)$ mamy
+\[
+ (\operatorname{pack}(u)+s_z)^{\mathsf T}\Gamma
+   (\operatorname{pack}(u)+s_z)=Q(z+\mathcal B u).
+\]
+Żadna z tych równości nie jest wejściową przesłanką \code{gramEq}.
+\end{theorem}
+Dowód odwracalności wykorzystuje całkowitą tożsamość
+\[
+ \begin{pmatrix}-F&-G\\ f&g\end{pmatrix}
+ \begin{pmatrix}g&G\\-f&-F\end{pmatrix}=18433I
+\]
+przeniesioną przez istniejące odwzorowanie do ilorazu i dokładną macierz
+współczynników. \code{inverseMatrix} to $1/18433$ razy macierz lewej pary.
+Kernel dowodzi obu stron odwrotności, dodatniości metryki i kongruencji.
+Nie używamy bramki KeyGen, boundu widma ani hipotezy bezpieczeństwa.
+
+\section{Całe włókno przez istniejący eksport ROM}
+Dodajmy zwykłe równania publicznego klucza i odwrotności:
+$hf=g\pmod q$, $f^{-1}f=1\pmod q$, $q=18433$. W dokładnych typach
+\code{Relation.A}, \code{Relation.Rq} i \code{centerRq} istniejący
+\code{ActualNTRUFiber.gaussian_fiber_in_basis} daje bijekcję całego włókna.
+Nowy \code{gaussian_fiber_in_gram} konsumuje ten eksport i uzyskaną energię:
+\[
+ \sum_{z:A_hz=c}e^{-aQ(z)}=
+ \sum_{x\in\mathbb Z^I}
+ e^{-a(x+s_{(\mathrm{centerRq}(c),0)})^{\mathsf T}
+          \Gamma(x+s_{(\mathrm{centerRq}(c),0)})}.
+\]
+To dokładna tożsamość \code{tsum}, wyprowadzona przez równoważność indeksów.
+Sam ten eksport nie jest nowym twierdzeniem o zbieżności dla dowolnego
+$a\in\mathbb R$ ani o małym błędzie masy. Gram zależy od materiału klucza;
+challenge zmienia tylko przesunięcie. Sekretna baza i przesunięcie są
+przedmiotami dowodu, nie dodatkowymi danymi publicznego samplera.
+
+\section{Granica wyniku i dalsza konsumpcja}
+\begin{itemize}
+\item Zbudowano konkretny Gram, dodatniość z NTRU, energię z przesunięciem
+i pełną reindeksację włókna. To nie pusty konstruktor zakładający te tezy.
+\item Pozostaje dostosowanie indeksów do wybranego podziału na dwa bloki,
+primary cap oraz tożsamość widmowa Schura/Parseval. Bieżący porządek indeksów
+nie jest deklarowany jako \code{GramLDL.unitCoeff} ani stable leaf schedule.
+\code{reindexed_gram_posDef} już transportuje dodatniość przez dowolną
+równoważność $\mathrm{Fin}(3072)\simeq I$.
+\item Równość z macierzą $\Gamma$ nie daje jeszcze równości z kontrolowanym
+\code{T5Cholesky.GForm d L}. Potrzebne są rzeczywiste dane faktoryzacji
+i ograniczenia współczynników. Dla wariantu991 zachowujemy budżet2$^{-34}$;
+nie zastępuje on wejścia1023 do \code{T5GateBudget}.
+\item Źródłowy bound harmoniczny010, całe emitted prawo kluczy, skończony
+box i pełny moment/koszt007 zachowują osobne obowiązki. Nie przejmujemy
+aktywnego source3; BATCH058 dostarcza tylko warunkowy transport retry.
+\end{itemize}
+
+\section{Weryfikacja i proweniencja}
+Finalny run \code{gram_011}: 27 twierdzeń, czysty Lean4.34.0, standardowe
+aksjomaty tylko. To liczba deklaracji pomocniczych i końcowych, nie27
+odrębnych nowości matematycznych. Użyto9 przypiętych istniejących modułów
+projektu oraz bibliotek Mathlib; nie wykonywano nowego odbioru całego ROM.
+
+Sage10.9:9 dokładnych przypadków nad QQ/ZZ, stopnie2,6,12, wymiary4,12,24.
+Sprawdzono niezależnie mnożenie modulo wielomian, odwróconą macierz,
+Grama i energię afiniczną. Kontrole odrzucają błędny znak bazy, złą metrykę
+i dodatniość zerowej bazy. To syntetyczne przykłady algebraiczne, nie klucze
+z emitowanego profilu FT1536 ani dowód wymiaru1536. Ten wymiar obejmuje Lean.
+
+Zachowano10 poprzednich runów, w tym czysty pośredni \code{gram_005}.
+Pozostałe błędy dotyczyły rozwiązywania importów, elaboracji/coercji,
+rekurencji i przepisywania. Izolowany zestaw bibliotek013 usuwa przesłanianie
+niepełnego katalogu \code{Run2} z012. Failed \code{sorryAx} nie są dowodami.
+Nie nadpisano wcześniejszych źródeł ani produktów. Baza:
+\code{75ae62d660c28aba862c33cee5d9477aa0da0dd2}.
+Piny i receipty: \code{COEFFICIENT_GRAM_013_RECEIPT.json},
+\code{COEFFICIENT_GRAM_013_INPUTS.json}, \code{COEFFICIENT_GRAM_013_OUTPUTS.sha256}.
+\end{document}
