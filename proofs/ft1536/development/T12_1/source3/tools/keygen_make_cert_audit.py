@@ -6,8 +6,7 @@ import re
 
 ROOT=Path(__file__).resolve().parents[1]
 MODULES=['KeygenMakeCertCall','KeygenMakeCertChronology','KeygenMakeCertMaterial']
-INHERITED=['KeygenMakeCertCall.Call','KeygenMakeCertCall.CertBind','KeygenMakeCertCall.CertificateGate',
-    'KeygenMakeCertCall.Profile','KeygenMakeCertCall.CertBind.workspace','KeygenMakeSearchPrefix.Sampled',
+INHERITED=['KeygenMakeCertCall.CertBind.workspace','KeygenMakeSearchPrefix.Sampled',
     'KeygenMakeSearchPrefix.Dimensions','KeygenMakeSearchPrefix.sampled_remaining',
     'KeygenMakeSearchPrefix.exhaustion','KeygenMakeSearchPrefix.gates_locals',
     'KeygenMakeSearchPrefix.gates_flow','KeygenMakeSampling.CappedSetup',
