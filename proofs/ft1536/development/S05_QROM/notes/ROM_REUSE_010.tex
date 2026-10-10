@@ -1,0 +1,174 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm]{geometry}
+\usepackage{fontspec}\setmainfont{Latin Modern Roman}
+\setmonofont{Latin Modern Mono}[Scale=0.85]
+\usepackage{amsmath,amssymb,amsthm,longtable,booktabs,xurl,hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{3em}
+\newcommand{\code}[1]{\nolinkurl{#1}}
+\newcommand{\HH}{\mathcal H}
+\title{Conditional reuse of the ROM proof path\\\large S05 / ROM\_REUSE\_010}
+\author{Notatka robocza dla Niirmata}\date{10 października 2026}
+\begin{document}\maketitle
+\textbf{Wynik przeglądu: istniejące ROM dostarcza mocniejszego błędu g00
+oraz dziedzin stable potrzebnych w nowej drodze samplera.}
+Nie trzeba ich dowodzić od początku. Zachowujemy ich dokładny status:
+H3 ROOT/STABLE są dowodami mieszanymi analityczno-kernelowymi w przypiętym
+modelu źródłowym; nie są pełnymi twierdzeniami interpretera C w Lean.
+Nowa kompozycja z mostem harmonicznym009 jest tekstowa.
+To przegląd wskazanych ogniw do użycia w S05, nie niezależny odbiór całego ROM.
+Nie zmieniamy jego źródeł, statusów ani archiwów.
+
+\section{Co znaleziono i sprawdzono}
+\code{H3_ROOT_LDL/ANALYTIC_PROOF.md} daje dla wszystkich dopuszczonych
+$P_{key}$, a przez jego \code{EMITTED_BINDING} dla wszystkich właściwych
+emitted współczynników:
+\[
+ |\widehat a_i-a_i|<1/1024,\qquad
+ 1/2\le\widehat a_i<2^{23},\qquad
+ a_i=|f(\zeta_i)|^2+|g(\zeta_i)|^2.
+\]
+Ma również dokładną mapę768 slotów na reprezentantów sprzężonych
+pierwiastków. To jest silniejsze od żądanego w009 błędu $1/128$.
+Nie używamy luźnego błędu subtractive $D_C$ jako błędu $g00$.
+
+\code{H3_STABLE_NORMALIZATION/NORMALIZATION.md} oraz
+\code{SQRT_DIV_CONTRACT.md} obejmują rzeczywiste stable top/binary/reverse,
+źródłową kolejność operacji, ścisłe dziedziny i brak fallbacku positive
+w potrzebnym zakresie. Przy $U=2^{-48}$, $\eta=2^{-900}$ każda potrzebna
+skala operacji przekracza $2^{-112}$, więc lokalny względny błąd mieści się
+w $\beta=2U=2^{-47}$, bo $U+2^{112}\eta<\beta$.
+\emph{Nie przenosimy tutaj modelu RN z błędem $2^{-53}$ z009.}
+Tamten lemat pozostaje poprawnym warunkowym wynikiem; bieżący konsument
+używa słabszego, faktycznie udokumentowanego kontraktu H3.
+
+\code{EMITTED_STABLE_BINDING.md} wiąże tę samą sekwencję z obowiązkowym
+skanem KeyGen, sticky bad i zachowaniem danych. Sukces istniejącego KeyGen
+zapewnia dolny próg słowa liścia767; nie dopisujemy nowej bramki ani
+nowego warunkowania prawa kluczy.
+
+\section{Zgodność bajtów i status dowodu}
+Sprawdzono wszystkie \textbf{674/674} wpisy OUTPUTS H3 ROOT i
+\textbf{1119/1119} wpisów OUTPUTS H3 STABLE. To kontrole integralności,
+nie ponowny pełny replay matematyczny archiwów.
+Źródła H3 STABLE są \textbf{17/17} byte-identical z aktywnym manifestem
+\code{56974571...}; H3 ROOT ma \textbf{16/17} identycznych plików.
+Jedyna różnica jest w \code{fpr-emulated.h}, w selektorze
+\code{fpr_floor}: historyczna poprawka FLOOR\_CT. Nie dotyczy wywołań
+of/FFT/Gram/stable, które tutaj konsumujemy; H3 STABLE już korzysta z nowego
+pinu i jawnie konsumuje kontrakty ROOT. Zachowano pełny diff i oba SHA.
+Nie założono globalnego ``FPEMU=IEEE'' ani zgodności innego backendu.
+
+Źródłowy model odziedziczony: C99/GCC14.2/Linux LP64, portable FPEMU,
+legalne bufory/czasy życia/rozdzielność, zdefiniowane skończone successful
+wykonanie, ten sam decoded klucz i profil. Nie rozszerzamy tego wyniku
+na dowolny kompilator, UB lub timing leakage. Własny finite C-check009
+jest osobnym dowodem wykonania jednej instancji, nie podstawą tej
+uniwersalnej implikacji.
+
+\section{Nowe sklejenie liczb z009}
+Z $\widehat a_i\ge1/2$ i $|\widehat a_i-a_i|\le1/1024$ otrzymujemy
+$a_i>0$ i $\widehat a_i\le(512/511)a_i$.
+Powtarzamy tekstowy argument monotoniczności i jednorodności ostatniego
+harmonicznego liścia009, tym razem z \emph{odziedziczonym} $\beta=2^{-47}$:
+\[
+ \widehat\ell_{767}\le
+ \frac{512}{511}\frac{(1+\beta)^{20}}{(1-\beta)^{11}}\HH.
+\]
+Dokładny dolny próg source scan to
+$L_C=4503601027220343/4398046511104>1024$.
+Stąd w odziedziczonym modelu źródłowym dla emitted współczynników:
+\[
+ \HH\ge L_C\frac{511}{512}\frac{(1-2^{-47})^{11}}{(1+2^{-47})^{20}}
+ >1022>991.                                             \tag{H}
+\]
+\code{ROM_REUSE_010.sage} sprawdza dokładnie (H), absorpcję $\eta$ i
+mapę wszystkich1536 pierwiastków. Nawet słabsze $1/64$ z
+\code{CenteringClosure.t5_g00_bound} wystarcza liczbowo przy tym budżecie;
+nie potrzebujemy jednak utożsamiać jego abstrakcyjnej recurrence z source,
+bo H3 ROOT dostarcza mocniejszego źródłowego eksportu.
+
+\code{formal/RomReuseMargin010.lean} ma trzy nowe czyste dowody kernelowe:
+przejście do czynnika512/511, nierówność czynnika oraz końcowy próg991
+pod nazwanym $hlink$. Pełny source $hlink$ i harmoniczny most009 mają
+nadal status analityczny/tekstowy. Nie przypisujemy całego (H) nowemu
+modułowi Lean wyłącznie z powodu jego nazwy.
+
+\section{Dokładny zakres uzyskanego wniosku}
+\textbf{Domknięte na odziedziczonym poziomie źródłowo-analitycznym:}
+warunek harmoniczny009 dla wektorów $f,g$ pochodzących z właściwego
+successful emitted KeyGen, bez nowej numerycznej przesłanki ``dobrego klucza''.
+Ta kompozycja nie używa obalonej równości \code{ldl_shape}.
+Zwykłe P\_key nie daje narrow stable acceptance; właśnie rzeczywisty
+Emitted success daje potrzebny dolny próg. Zachowujemy to rozróżnienie.
+
+Aby wydać kompletną instancję samplera na rzeczywistym $\mu_H$, trzeba
+związać te same wektory, odwracalne $f$, publiczny $h$ i jego końcowe bajty
+w jednym interfejsie. Źródłowy \code{falcon_compute_public} odrzuca zerowe
+współczynniki NTT mianownika i oblicza $h=g/f$; istniejący kernelowy
+\code{KeygenMakePublicCall.source_same_material} eksportuje równość publiczną
+i świadek odwrotności, ale ma jawne przesłanki lokalnego call/heap/material.
+Nie usuwamy ich przez odczyt nazwy twierdzenia. Całościowe połączenie
+source3 i właściwego emitted prawa pozostaje osobnym obowiązkiem.
+
+\textbf{Bezpieczny wniosek warunkowy już teraz:} dla publicznego $h$
+powiązanego z tymi samymi emitted współczynnikami przez dokładne równania
+public/inverse/NTRU, 009 daje wymaganą bazę, a007 daje $J_h\ll P_h$ i
+pełny $e<2^{-44}$. Kwantyfikatory to każdy taki $h$, każde wyzwanie w
+uczciwym prawie i każdy stan/wiadomość/nonce; sampler ignoruje stan.
+Cel pomocniczy all-h nadal OPEN.
+
+To moment względem współczynnikowego $P_h$, nie gotowe porównanie z całym
+rzeczywistym Sign na bajtach. Q-BIND/PRG i mechanizmy QROM nie znikają.
+
+\section{Mapa ponownego użycia ścieżki ROM}
+\small
+\begin{longtable}{@{}p{.24\linewidth}p{.69\linewidth}@{}}
+\toprule Ogniwo ROM & Co wykorzystujemy i czego nie wolno dopowiedzieć \\\midrule\endhead
+H3 ROOT, STABLE & Źródłowe g00, domeny, emitted gate i dokładna sekwencja.
+Status mixed. Nowa kompozycja z harmonicznym Schurem zamyka numeryczną
+przesłankę na tym samym poziomie.\\
+ActualNTRUFiber & Całe włókno, affine coordinates i reindeksacja z równań
+NTRU/public/inverse. Nie jest to samoistny dowód tych równań z całego KeyGen.\\
+ShiftedGaussian, TriangularGaussian, T5ScalarMass & Zbieżność, przesunięcia
+zależne od wcześniejszych współrzędnych, obustronna masa3072 przy jawnej
+CoefficientRange. To już podstawa007/009; nie dowodzimy Poissona ponownie.\\
+NormalizerComparison, RejectionNumericMargin & Partycja włókien, wspólna
+skala i Chernoff. Wyspecjalizowany helper z thetaBudget$=2^{-40}$ nie przyjmuje
+bez dowodu skalarnego błędu masy $2^{-34}$. Używamy parametrów ogólnych
+lub nowych jawnych marginesów007.\\
+FiberBinding, EmitMixture & Dokładne trial/cap16/Emit i pełny none, w tym
+\code{signBody_is_mix}, \code{public_joint_factor}, \code{second_le_inv}.
+To gotowa algebra dla007, bez utożsamiania modelu z source Sign.\\
+JointDecomp, SecondMoment & Rozkład marginal/conditional, właściwy kierunek
+J/P i konstruktory pod jawnym AC. Sam bound momentu nie widzi punktów
+P=0. Nie potrzeba pisać tej algebry od nowa.\\
+LawBinding.LocalJointCertificate & Ma literalnie $\forall h\ st\ m\ r$.
+Certyfikat tylko na nośniku emitted keys nie wypełnia tego all-h typu.
+Potrzebny będzie jawny wariant na właściwej dziedzinie kluczy, bez zmiany
+historycznej tezy lub cichego osłabienia kwantyfikatora.\\
+ConcreteReduction & Rzeczywisty klasyczny interpreter, ekstrakcja i
+$D=(1+e)^{q_s}-1$; dokładny nonce320. Kwantowy hash-log, reprogramowanie,
+liczba celów i koszty wymagają nowego dowodu.\\
+B4 / AttemptPointwise & Są konstruktory pełnej odpowiedzi pod ReplyShape,
+AttemptShape i AttemptWeights. Braku ich source instancji nie usuwa słowo
+ACTUAL w notatce. Q-SAMPLER nie staje się przez to Q-BIND.\\
+S3 / CenteringClosure & $\delta\simeq1.27\cdot10^{-24}$ dotyczy odrzucenia
+pozytywnej odpowiedzi; nie jest $e=\sum J^2/P-1$. Nie przenosimy tej liczby
+jako momentu ani poziomu bezpieczeństwa.\\
+CompPrg / B2B5 & Testy rozróżniające i koszt; pełne honest computational
+assembly nadal OPEN w przypiętym stanie. Q-PRG potrzebuje odpowiedniej
+klasy testów kwantowych, nie statystycznej jednostajności rozwiniętej taśmy.\\
+\bottomrule\end{longtable}\normalsize
+
+\section{Następny krok bez dublowania ROM}
+Baza do pracy jest konkretna: wykorzystać odziedziczone source ROOT/STABLE,
+nowy bound harmoniczny oraz istniejące typy NTRUFiber/T5/pełnej odpowiedzi.
+Dalsza kernelizacja ma dotyczyć brakującego sklejenia i właściwego zakresu
+kluczy. Nie uruchamiamy ponownie historycznych workerów ani pełnego replayu
+ich W. Piny, kontrolę dwóch archiwów, nowe marginesy i rzeczywiste braki
+zapisuje \code{ROM_REUSE_010_RECEIPT.json}.
+
+Status S05 pozostaje WARUNKOWY. Nie ma twierdzenia bezpieczeństwa FT1536
+w QROM, nowego poziomu bezpieczeństwa ani zmian paperu/strony/T12/B20.
+\end{document}

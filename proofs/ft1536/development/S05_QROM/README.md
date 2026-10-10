@@ -3,7 +3,15 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
-**Najnowszy krok — [008/009](notes/BRIDGE_008_009_CHECKPOINT.md):**
+**Najnowszy krok — [ponowne użycie ROM010](notes/ROM_REUSE_010_CHECKPOINT.md):**
+H3 ROOT/STABLE już dostarczają silniejszego g00<1/1024, dziedzin stable
+oraz emitted gate. Nowe sklejenie daje harmoniczną>1022>991 dla emitted f/g
+**na odziedziczonym poziomie źródłowo-analitycznym**. Nie trzeba dowodzić
+tej numeryki od zera. Pełny source kernel i wspólne powiązanie końcowego h/μ_H
+pozostają osobnymi obowiązkami. [Mapa gotowych eksportów i granic](notes/ROM_REUSE_010.tex).
+674+1119 pinów archiwów zgodnych; 3 nowe scalar lemmas mają czysty Lean.
+
+**Checkpoint — [008/009](notes/BRIDGE_008_009_CHECKPOINT.md):**
 wykryto niemożliwą kolejność pivotsów w odziedziczonym `ldl_shape`
 ([dokładny finding](notes/KEY_BASIS_008.tex)). Nie zmieniono źródeł/statusów T12.
 [Nowy most harmoniczny](notes/HARMONIC_BRIDGE_009.tex) wyprowadza potrzebny
@@ -11,9 +19,8 @@ bound LDL z jednej średniej harmonicznej, omijając tę równość list.
 Pełny most jest tekstowy; 12 małych lematów008/009 przeszło Lean z czystymi logami.
 Jawny świadek1536 z ternarnymi f/g i dokładnym NTRU przeszedł też funkcję
 certyfikatu C. **To jedna instancja, nie dowód o całym emitted KeyGen.**
-Następny mur: jednolity błąd g00≤1/128 i źródłowe kontrakty arytmetyczne,
-albo bezpośredni błąd ostatniego liścia<33. Właściciel zlecił sprawdzić,
-które potrzebne eksporty są już dostępne w ścieżce ROM.
+Numeryczne przesłanki wskazane w009 zostały następnie powiązane z eksportami
+ROM w010; historyczne źródła009 zachowują swoje pierwotne granice.
 
 **Cel końcowy właściciela: dowód bezpieczeństwa FT1536 w QROM z deklaracją
 na takim samym poziomie rygoru jak cel ROM.**
@@ -81,7 +88,7 @@ Nie nadpisujemy prób. [Handoff 004](notes/SAMPLER_004_HANDOFF.json),
 | Certyfikat `ΣJ²/P≤1+e`, z użytecznym e | 007: tekstowe `e<2^-44` pod (M); świadek (M) dla emitted KeyGen OPEN. 004 zachowuje osobny wynik h=0 `e<2^-50`. Cel all-h OPEN; przeszkoda 003 zachowana |
 | Dokładna baza/LDL → masa wszystkich włókien przy trzech temperaturach | 007 zachowane; 009 wyprowadza pivotsy ≤q²/991 z harmonicznego widma≥991. Pełny most tekstowy; źródłowe przesłanki i jego kernelizacja OPEN |
 | Odziedziczone `BasisLeafAlgebra.ldl_shape` | 008: przeszkoda pierwszych dwóch pivotsów; tej instancji nie można użyć w obecnej postaci |
-| Średnia harmoniczna i źródłowy liść767 | 009: tekstowy transport rekursji; scalar budget kernelowy. Root error≤1/128 i kontrakty operacji dla wszystkich kluczy OPEN |
+| Średnia harmoniczna i źródłowy liść767 | 010: H3 ROOT/STABLE +009 dają >1022 w emitted source model, tekstowo/mixed. 3 nowe marginesy kernelowe; full source kernel i typed key-law assembly OPEN |
 | Kernelizacja h=0: `J≪P` i moment | **OPEN, obowiązek jawny:** przenieść SAMPLER-004 do Lean z czystymi logami; etykieta **textual** pozostaje. Szkic DyadicObstruction również nie ma potwierdzonego kernela |
 | Normalizator reszty `Z₁(r)` i odwrotność, także `r=c−hz₂` | NORMALIZER-005: textual, jednolity względny przedział <2^-356; błąd TV samych kategorii przez cap16 <2^-236. Nie jest to TV do uczciwego P |
 | Pełny normalizator `Z_h,c`, odwrotność i błędy uproszczeń | NORMALIZER-005: h=1,c=0, balls512/768; względne szerokości <2^-180 i TV zerowego aliasu przez cap16 <2^-180. Efektywna kontrakcja dla wszystkich h,c **OPEN** |
