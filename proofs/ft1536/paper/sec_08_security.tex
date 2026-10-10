@@ -21,7 +21,8 @@ All numbers are comparison proxies; none is a certified lower bound
 on implementation security. S06 retains \code{CHANGES_REQUIRED};
 the starred FT profiles remain alternative proposals.\src{C14,C20}
 
-\begin{center}\small
+\begin{table}[t]
+\centering\small
 \begin{tabular}{lrrrr}
 \toprule
  & $\beta_{\mathrm{P1}}/\beta_{\mathrm{P2}}$
@@ -34,7 +35,13 @@ FT1536 & $1077/1082$ & $314.484/285.405$ & $256/128$ & $256/128$ \\
 FT3072$^\ast$ & $2409/2445$ & $703.428/638.385$ & $256/128$ & $256/128$ \\
 \bottomrule
 \end{tabular}
-\end{center}
+\caption{Security accounting: lattice diagnostics and symmetric
+ceilings, with the system accounting taken as the minimum of the two.
+The starred profiles are ALTERNATIVE\_PROPOSAL. All values are
+comparison proxies under the stated conventions; none is a certified
+implementation-security lower bound.}
+\label{tab:security}
+\end{table}
 \noindent $^\ast$ALTERNATIVE\_PROPOSAL. The lattice columns use the
 smaller of the two listed exponents on the same cost line. These are
 the review's P1a raw-ternary and fixed-width P2 relation-proxy rows;

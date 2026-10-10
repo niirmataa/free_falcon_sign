@@ -7,13 +7,23 @@ reduction from a shared design lineage. The artifact also records
 model-dependent estimator outputs; a comparison with published
 estimator conventions must preserve both the attack model and the
 classical/quantum cost units.\src{C13,C14}
+Falcon~\cite{falcon2018,falcon2020} instantiates the GPV hash-and-sign
+framework~\cite{gpv2008} over NTRU lattices~\cite{hps1998};
+trapdoor-free lattice signatures~\cite{lyu2012} and the Dilithium
+design~\cite{dilithium2018} occupy the neighboring Fiat--Shamir space.
+The Gram--Schmidt-norm key-recovery line~\cite{fktwy2020} is the kind
+of leakage analysis that Assumption~\ref{ass:a5} places outside this
+paper's game. These citations provide design and attack context only;
+they are not statements of comparable guarantees.
 \noindent\textbf{Scope of this section.} This section is a declared
-stub. The bibliography contains only the three entries whose primary
-sources were inspected for this draft: the Falcon specification, the
-project artifact, and the versioned Grover preprint. A real literature
-scan is an explicit obligation before any ePrint submission; no
-citation, comparison or novelty claim is asserted here in advance of
-that scan, and none should be read into the absence of a reference.
+stub. The bibliography contains only entries whose primary sources were
+inspected for this draft: the Falcon submission and specification, the
+NTRU, GPV, Lyubashevsky and Dilithium papers, the Gram--Schmidt
+key-recovery paper, the versioned Grover preprint, and the project
+artifact. A real literature scan is an explicit obligation before any
+ePrint submission; no comparison or novelty claim is asserted here in
+advance of that scan, and none should be read into the absence of a
+reference.
 \todo{LITERATURE}{Complete the comparison with GPV, NTRU, BLISS, Falcon reductions, verified compilers and implementation verification.}
 \todo{LITERATURE-VERIFICATION}{Before submission, verify primary references
 and exact comparable guarantees for CompCert, seL4, FaCT and CompCertSSA;
