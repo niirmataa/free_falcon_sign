@@ -1,3 +1,107 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.07 one-material witness midpoint
+
+**B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
+**Package: IN_PROGRESS / WORKING_NOT_FROZEN.**
+2026-10-10,BATCH_055,MiMo V2.6 Pro (`xiaomi-token-plan-ams`).
+**CLOSED_AT_RECOVERABLE_MIDPOINT.** Exactly one close this window.
+B1.05/032 and B1.06/046 unchanged;B1.08/B4/B5 NOT entered.
+Handoff:**35R**. Exact types/pins/traps:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_055_NOTES.md`.
+
+## 35. Closed — one material witness: the solver-call h frame and both equations
+
+1. The solver-call h frame is proven on the accepted edge (`solver_h_same`):
+   an accepted `solve_NTRU` call keeps EVERY byte of the h block, composed
+   from the search frame (`KeygenRootSearch.frame` on protected blocks), the
+   output-gate write decomposition (`gate_writes` plus a generic
+   `KeygenSmallBounds.Writes` outside-bytes induction) and the four-leg
+   validation body: generation (`KeygenMkgm3Frame.outside_bytes`), conversion
+   (a new `Trace` outside-bytes induction over the store frames), transforms
+   (`sequence_frame`'s `Frame`) and the read-only final check
+   (`read_only_heap`). `h_represented_solver` transports the public h
+   representation across any same-block execution.
+2. ONE material carries BOTH equations (`Witness`): `witness_at_solver`
+   joins the 046 public equations (h·f=g over Rq and the f-inverse equation)
+   with the exact integer NTRU equation fG−gF=18433 on the SAME physical
+   f/g/F/G/h arrays, from the accepted solver call and the public material;
+   no equation, certificate or codec fact is a premise.
+   `public_material_equations` derives the 046 material at the public gate on
+   the actual caller arrays with the h-side separation/legality facts as
+   explicit local inputs of the `LegalWorkspace` class.
+3. The physical material reaches the encoding-tail input boundary:
+   `certificate_material_block` (blocks outside workspace block0 and the
+   static table blocks 1/2 keep their bytes through the accepted certificate
+   call via `CallerFrame` + region/table conditions + the beyond-extent
+   leave) and `witness_represented` give `attempt_witness`: the sixth gate
+   preserves the witness to `EncodingInputs` at the accepted-break state.
+   `encoding_position` ties the 18-statement encoding tail (`outer.drop 15`)
+   to the caller syntax right after the attempt loop; the reference-C
+   control checks the five encoder inputs (`ske[0..3]=f,g,F,G`, `h`).
+4. Entry pins 015–054 **11459 pins/234 interface bindings** verified with
+   the sealed 054 pair (`922f51b3…`/`26261221…`) into
+   `.build/levels_055/ENTRY_PINS_055.json` (`4e850fee…`). One proof+audit
+   0/0: **109 entries=18 new+91 inherited;87 complete terms+22 kernel
+   inductives;standard axioms/zero elisions**. Native Sage scripted PUBLIC
+   controls: 5 families×4 mutations, all detected (EXPLICIT MOCKS; the
+   transcription reads the reference C; no real KeyGen/solver/certificate/
+   codec, no law claim). Retained: two rejected elaboration snapshots (five
+   interface errors; one missing block argument) and one import-visibility
+   rejection, plus two Sage runs (mutation convention inverted in four
+   families; tail-overlap mutation phrased as a fact) — all with sealed
+   causes; limits unchanged. Own commits `7e49fc2e`,`07212e12`,`fceb8966`
+   + closing pair. Sealed pair `47406731…`/`a2fdf0ee…`. Anomaly retained
+   (NOT repaired): `KeygenMakeCertAudit.lean` pinned bytes
+   (`cad35f72…`, generator output) differ from `git HEAD`
+   (`bdd0dca0…`, pre-generation variant committed 15:30:57 in the 051
+   window); every entry verify passes on the pinned bytes. Owner decision
+   wanted: a dedicated provenance commit or an explicit note.
+
+### 35.1 Exact exports and remaining B1.07 obligations
+
+The discharge chain is now: 046 public material (gate 4) → accepted solver
+call with the h frame (gate 5) → ONE material with both equations →
+certificate frame (gate 6) → encoding-tail input boundary. Two gaps remain
+honest and named: (a) the attempt-level spine binding all six gates on ONE
+`AttemptExec` derivation is not assembled — the h-side separations
+(`legalH`/`hTables`/`liveTables`, solver `hProtected`) are explicit local
+inputs of the witness module (the `LegalWorkspace` class) and must be
+discharged from allocation freshness at the statement-machine step; the
+solver-call h frame on the REJECTED edges (partial output-gate writes) is
+also open and belongs to the retry-frame item; (b) the witness reaches the
+encoding-tail INPUT boundary at the accepted-break state — the tail's codec
+bodies (B1.08/09), the whole enclosing invocation to the actual encoding
+call sites, the output-capacity events and the complete teardown are not
+executed here. These are missing source composition proofs, NOT C/numerical
+counterexamples. Acceptance NOT met; Codecs B1.08/09 and B4/B5 laws stay
+outside.
+
+## 35R. Handoff — continue B1.07 AFTER the material witness,NOT from acceptance
+
+1. This window is CLOSED at exactly one recoverable midpoint,NOT Acceptance.
+   Do not auto-restart or enter B1.08/B4/B5. Preserve BATCH_015–055 and all
+   earlier/failed bytes. Next owner-started window continues in35.1 order.
+2. BEFORE edits/jobs:
+   ```sh
+   mkdir -p .build/levels_056
+   python3 -B tools/keygen_make_material_witness_batch.py verify <BATCH_055.json sha> <BATCH_055_NOTES.md sha> .build/levels_056/ENTRY_PINS_056.json
+   ```
+   with the sealed055 pair (`47406731…`/`a2fdf0ee…`). Expect the pinned
+   BATCH_015–055 set and no supersession/job. Mismatch is stop-and-report,
+   not silent repair. The `KeygenMakeCertAudit.lean` git/pin anomaly of §35
+   is expected to persist (working tree = pinned `cad35f72…`); do not
+   "fix" it silently — owner decision.
+3. Use NEW modules;preserve055 sources/products. The material witness now
+   lives in `KeygenMakeMaterialWitness`; do not re-derive it by assumption.
+   The remaining honest gaps are the attempt-level spine on one `AttemptExec`
+   with allocation-derived entry facts (then the rejected-edge frames and the
+   retry chronology) and the statement-machine extraction; never insert
+   certificate outcomes, an equation or a scratch-block0 fact as premises.
+   Inspect actual types before composing.
+4. One owner-started stage/window, one Acceptance or expanded midpoint,
+   bounded serial guarded jobs, unchanged limits/0/0 logs/native Sage.
+   Small local exact-path commits;push only on explicit owner signal;no
+   automatic review/delegation/relay/migration/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.07 certificate-execution transport midpoint
 
 **B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
