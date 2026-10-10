@@ -44,6 +44,17 @@ kernel-decided; explicit cube/fourth-power and polynomial C-add laws needed).
 The one recoverable midpoint will be at this fully reconstructed reverse
 seam, after internal audit, finite source controls and sealing. This commit
 is not that midpoint; no first-root, normalization or equation claim yet.
+Audit001 accepted0/0:900 entries=146 new+754 inherited,834 complete terms/66
+inductives,standard axioms/zero elisions;683 literal inputs. Sage001 accepted
+0/0:12 new normal/UBSan C runs,ten public inputs including seven SAME public
+quotients,5100 reverse rows/61440 butterflies/122880 canonical stage cells
+per baseline mode,all five mutations per mode detected. Sage independently
+checks122880 ORIGINAL block evaluations through all stages;last factor768.
+First-root/normalization/final h/equations are NOT checked/promoted. The
+inherited039 approved live-header difference is rehashed,not a full M0 build.
+All11 directories/20 steps remain,five failed directories/five rejected
+steps;max recorded cumulative RSS4431268KiB,limits unchanged,no unresolved
+job. Audit `bcda5608…`,controls `1b68f0cb…`. Seal the one reverse midpoint next.
 
 ## B1.06 — CLOSED at SAME quotients through all actual inverse triples — 2026-10-10
 
