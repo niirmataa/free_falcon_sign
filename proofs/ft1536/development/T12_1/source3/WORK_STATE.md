@@ -35,6 +35,17 @@ assumed away. Two rejected normalization directories remain (opaque
 Canonical decision domains and the exact seq_inv argument list). No limit
 was changed. This second logical source commit is NOT the window midpoint.
 ONLY NOW proceed to fInv/evaluation isomorphism and BOTH SAME equations.
+EvaluationIso/Equations/ParameterFrames/Accepted accepted0/0: the derived
+normalized image supplies a PROVED evaluation isomorphism in q18433 and
+ORIGINAL physical order. Nonzero values from the SAME successful tests
+construct fInv; BOTH mulRq equations follow. Every writable callee name is
+proved to be an actual pointer parameter, so the SAME f/g bytes are retained
+through the complete compute without any added table/input-nonalias premise.
+KeygenPublicAccepted.source_same_material has unchanged043 entry premises;
+canonical final h, nonzero f and both equations are conclusions. No B3 export
+is consumed. The reserved Lean keyword attempt is retained. This third
+logical source commit is NOT a midpoint. Internal full-term audit, finite
+Sage/C controls and one sealed B1.06 Acceptance close follow; B1.07 waits.
 
 ## B1.06 — CLOSED at complete SAME-material reverse reconstruction — 2026-10-10
 
