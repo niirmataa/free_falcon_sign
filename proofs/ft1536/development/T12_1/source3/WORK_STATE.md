@@ -1,5 +1,26 @@
 # T12.1/source3 — żywy stan
 
+## B1.06 — BATCH_044 actual inverse continuation — 2026-10-10
+
+Owner-started new window, GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`),
+following checkpoint23R and the unchanged staged roadmap. BEFORE edits/jobs:
+BATCH_015–043 verified, **8062 distinct pins/660 literal source bindings**,
+no supersession or active job. Entry `.build/levels_044/ENTRY_PINS_044.json`,
+SHA256 `9bc674cb689a0a09605968ab2175b32c34e9db1d09ffd50fdf4ad930037dfd11`.
+Continue the SAME retained inverse execution: generated inverse table,
+inverse triples, reverse radix stages, first-root inverse and normalization;
+ONLY THEN fInv and BOTH SAME-material equations. B1.06 Acceptance NOT MET;
+B1.07 waits. One midpoint or Acceptance this window. All historical/failed
+bytes preserved; serial guarded jobs, unchanged limits, small local own
+commits, no push/review/delegation/relay/migration/import.
+InverseProgram001, InverseTables/Values/Fold001 and InverseEntry002 accepted
+0/0: literal complete inverse partition, source-generated inverse aliases
+(with exceptional index0), scaled seed and all512 chronological inverse
+triples. Entry domains come from the actual ready prefix. The full remaining
+reverse-radix/first-root/normalization suffix is retained, not proved correct.
+Two failed directories remain unchanged. Complete-invocation/caller binding
+follows; this logical source commit is NOT the window midpoint.
+
 ## B1.06 — CLOSED at successful tests/division and actual inverse entry — 2026-10-09
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
