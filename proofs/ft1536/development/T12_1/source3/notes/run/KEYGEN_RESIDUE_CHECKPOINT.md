@@ -1,3 +1,166 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.07 complete readiness and SAME first sampling midpoint
+
+**B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
+**Package: IN_PROGRESS / WORKING_NOT_FROZEN.**
+2026-10-10,BATCH_048,GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`).
+**CLOSED_AT_RECOVERABLE_MIDPOINT.** One close this window. B1.05/032 and
+B1.06/046 remain closed at their existing scopes;B1.08/B4/B5 NOT entered.
+Handoff:**28R**. Complete types/pins/traps:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_048_NOTES.md`.
+
+## 28. Closed — COMPLETE readiness, both tmp lifetimes and the expanded first-sampling boundary
+
+1. Complete fixed SHAKE init/inject/flip bodies are parsed/executed. Actual
+   capacity arithmetic, complemented initial lanes, full/partial absorb
+   blocks, dec64le/xor_block/process_block, postincrement and BOTH padding
+   branches are retained;no random-output/Keccak oracle. Exact decoder tree
+   and reference lowering are kernel equalities.
+2. Linux system-seed control has failed open/read, EINTR, short/zero reads,
+   pointer advance/unsigned subtraction, close and the actual return test.
+   Open/read/errno/close are EXPLICIT external POSIX-style observations,
+   not uniform seed draws or an OS/availability proof. All computation here
+   uses scripted PUBLIC inputs;no real entropy is read. Windows is outside.
+3. COMPLETE set_seed/rng_ready syntax and operational execution cover
+   replace/nonreplace, seeded/unseeded, flipped/unflipped and entropy failure.
+   BOTH Fresh tmp32 scopes have actual allocation/disposal/saved-name
+   restoration on every exit. Every finite ready call derives return0 or1;
+   return1 DERIVES both nonzero signed member words. Initially negative
+   nonzero flags remain supported. No desired flags or assumed frame input.
+4. Actual memory writes derive unchanged caller slots/size/writability and
+   each byte OUTSIDE the context interval[offset+8,offset+432). RNG/flags
+   INSIDE can change;047's unchanged whole-State conclusion is NOT reused
+   on these paths. Profile, scratch-pointer bytes, static tables and fresh
+   coefficient-array frames follow from this precise source frame.
+5. The SAME complete7805–7838 prefix now derives counter0/Initial/profile/
+   static/scratch entry on EVERY normal readiness path, without the047
+   AlreadyReadyPrefix subset. Its actual failure gate returns0. The SAME
+   first cap/setup and both actual samplers derive count1 and BOTH stored
+   Bound1 vectors;first cap domain comes from source0,not an added premise.
+   Dimensions are not executed twice. This is not a six-gate accepted attempt.
+
+### 28.1 Exact checked types and remaining B1.07 obligations
+
+The new full-readiness type is `KeygenRngReference.Call ctx before events
+after v`: actual finite source execution/argument binding/typed reads and
+stores/fixed bodies plus explicit external system observations. Its exported
+outcomes/flags/frames are conclusions,not fields containing desired results.
+No availability,uniformity,PRG law or arbitrary callee is introduced.
+
+The complete enclosing prefix and first-sampling boundaries are:
+
+```text
+Original ctx before primes rev
+KeygenMakeReady.Prefix ctx before blocks events (after, normal)
+------------------------------------------------------------
+Count after 0
+Initial ctx after (input blocks) (publicPointer blocks) primes rev
+BOTH actual ready flag words nonzero
+after.locals = (old contiguous ready-prefix state).locals
+
+Original ctx before primes rev
+KeygenMakeReadySampling.FirstSamples ctx before blocks events after
+-----------------------------------------------------------------
+Count after 1
+exists fv gv : Geometry.Vec,
+  Represents after.heap (input blocks 0) fv and Bound fv 1
+  Represents after.heap (input blocks 1) gv and Bound gv 1
+```
+
+Original remains incoming context/profile/static/scratch memory ONLY. No
+coefficient allocation/value,Bound1,equation,certificate,already-ready truth,
+changed-heap identity or final legality is an input. Both RNG tmp teardowns
+are checked;the SIX outer make-object teardowns are NOT yet bound.
+
+Remaining B1.07, in unchanged plan order:
+
+1. **Full enclosing make invocation/control**: complete source grammar/
+   scopes/ternary branch/fixed destinations,legal argument/scratch/layout
+   frames and actual outer-object lifetime through every whole-call return.
+2. **Full loop chronology**: derive global reachable counter invariant,no
+   normal attempt fallthrough,actual chronological attempted-body list,all
+   earlier rejects,final successful break and length<=3000000. The named
+   AttemptExecution/Accepted/Rejected,LoopExecution/Succeeded and
+   successful_loop_last_attempt remain TARGET types,not048 exports.
+3. **SAME six-gate attempt**: resultant f/g,raw/orthogonal FPEMU gates,SAME046
+   public material/equations,032 source solver and complete mandatory
+   certificate,with DERIVED local entries/common call ID/snapshots/frames/
+   bad lifetime. Do not add desired equations or certificate correctness.
+4. **Accepted material→actual encoding inputs/teardown**: derive physical
+   retained f/g/F/G/h identity at the real encoding inputs and complete make
+   teardown. Attempt acceptance precedes output-capacity tests and differs
+   from call-level return1. Codecs remain B1.08/09;deterministic traces license
+   no IID,p_accept or availability formula.
+
+These remain missing source/composition proofs,not a detected numerical/code
+counterexample or insufficient arithmetic estimate. B1.07 Acceptance is NOT
+met. Whole KeyGen/emitted-to-fiber,laws/seed quality/PRG/security,OS/Windows/
+compiler/machine/CT and independent review remain outside the checked result.
+
+### 28.2 Pins, audit, controls and retained attempts
+
+- BEFORE edits/jobs:BATCH_015–047 **9257 pins/706 literal bindings**,no
+  supersession/job. Entry
+  `f0864f27ce86fa1d1b3c81f8f8bc27f78cd1c1f43a3a1c77d5cc4b2731084256`.
+- **BATCH_048 JSON:** `c0ea32767ea601d751db4c5b4a8743c45e8a2331ceb13fa9c253d9bfd79e08ee`.
+- **BATCH_048 notes:** `d3e32f90ded6960d67ccf2181bc4244479acaa5cd1ba31a3977ef8e804fc90e1`.
+- Eleven proofs+audit0/0:**231 entries=185 new+46 inherited;189 complete
+  terms+42 kernel inductives;standard axioms/zero elisions**. Audit
+  `9874a2267305699c6a3409ecc295a97c7db3b33a016f601fc5c6d7c2f24f1697`;
+  receipt `e7692494a70a56157ffda001de9813c2e7b0c39a410e4ad85c38d7ded746786c`.
+  Audit-scope clarification for sealed048 notes§5: the46 NAMED inherited
+  entries are printed/audited (including public046);solver/certificate
+  closures remain inherited pins,not a new full-term audit or mathematical
+  review of their final exports. None is consumed in a whole-attempt proof.
+- Native Sage0040/0:**14 normal/UBSan runs**,each1 LP64 layout,35 readiness,
+  18 set_seed and10 scripted entropy cases. All SIX mutations detected in
+  both modes;independent public SHAKE bytes/context frames/counter0/MKN/
+  extents/separation match. Controls
+  `25af27d4cf55a18befdf20fa495273877a1ab8c218426af7c9ee4be9350655e3`;
+  receipt `dc91a734f9e64e41d88acfe946142f62d50935c46bb46ec3061e27f598af7f05`.
+  Actual Extra/c/frng/includes/Linux macros/literal regions bound,unchanged
+  039 approved FPR-header delta rehashed;NOT a full historical M0 build.
+  Public fixtures/scripted syscalls only;no real entropy/private KeyGen/full
+  attempt/emitted key or probability measurement. Successful003 is retained.
+- PRESEAL `addf7e066c6a914b8cdb5d55ff6f2df1e8679c87b4064a0fbdd13d7af4031993`
+  rechecks9257 predecessor pins. Dedicated048 organizer
+  `c818c86c6780f30c8c55193ec783135138ce8ecd873ecf36d7f4cad0651df0f5`.
+- **POSTSEAL** `.build/levels_048/POSTSEAL.json`:
+  `51fbead074f07b808965559b7ff142fcf635a97b9500705aa81ccff66578d9d3`:
+  **9871 distinct pins/718 literal bindings**,no supersession/active job.
+- All31 directories/32 completed steps retained:15 accepted/17 rejected
+  steps,14 wholly accepted/17 failed directories. No interruption/missing
+  receipt/unresolved job. Max recorded RSS3561684KiB;limits unchanged.
+  Traps267–280 and every snapshot/raw stream are in the sealed pair.
+- Own source/evidence commits:`35e37c4f`,`1ac37361`,`49f4854e`,plus closing
+  pair/checkpoint commit. Foreign work/staging preserved. No push/review/
+  delegation/relay/migration/stages import/broad replay.
+
+## 28R. Handoff — continue B1.07 AFTER complete readiness, not the047 fast subset
+
+1. This window is CLOSED at one recoverable midpoint, NOT Acceptance. Do
+   not auto-restart it or enter B1.08/B4/B5. Preserve BATCH_015–048 and every
+   earlier/failed byte. The next owner-started window continues B1.07 with
+   the four obligations in28.1;full readiness is now the checked prefix.
+2. Read WORK_STATE,this checkpoint,048 pair notes,B1.07's exact Acceptance
+   block in EXECUTION_PLAN and the staged roadmap. BEFORE edits/jobs:
+
+   ```sh
+   mkdir -p .build/levels_049
+   python3 -B tools/keygen_rng_batch.py verify c0ea32767ea601d751db4c5b4a8743c45e8a2331ceb13fa9c253d9bfd79e08ee d3e32f90ded6960d67ccf2181bc4244479acaa5cd1ba31a3977ef8e804fc90e1 .build/levels_049/ENTRY_PINS_049.json
+   ```
+
+   Expect9871 pins/718 literal bindings/no supersession/job. Any mismatch
+   is stop-and-report,not silent repair or weakening historical pins.
+3. Inspect exact export/consumer types before composition. Use NEW modules
+   and preserve the pinned048 sources/products. Do not reintroduce the047
+   already-ready condition or whole-State equality,the local Count<=cap
+   premise,assumed public/NTRU/certificate outcomes or seed uniformity.
+   Next compose full enclosing control/loop/gates/final material in plan order.
+4. One owner-started stage/window,one Acceptance or expanded midpoint,
+   bounded serial guarded jobs,unchanged limits/clean0/0 streams/native Sage
+   preparser/durable runtime. Small local exact-path commits;no automatic
+   push/review/delegation/relay/migration/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.07 enclosing entry and first sampling midpoint
 
 **B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**

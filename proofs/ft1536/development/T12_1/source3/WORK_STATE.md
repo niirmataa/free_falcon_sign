@@ -1,5 +1,56 @@
 # T12.1/source3 — żywy stan
 
+## B1.07 — CLOSED at COMPLETE readiness/first-sampling midpoint — 2026-10-10
+
+**CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
+**B1.07 Acceptance NOT MET; package IN_PROGRESS / WORKING_NOT_FROZEN.**
+One close in BATCH_048,GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`).
+B1.05/032 and B1.06/046 unchanged;B1.08/B4/B5 NOT entered. Resume:**28R**.
+
+COMPLETE fixed SHAKE init/inject/flip/dec64le/xor_block/process_block and
+set_seed/rng_ready source execution now covers all readiness branches, with
+explicit finite Linux syscall observations/failures and BOTH Fresh tmp32
+lifetimes. Every finite ready call derives0 or1;return1 derives both nonzero
+signed flags. Source stores derive context/slots/extent/permissions frames
+and both RNG temp teardowns,not whole make teardown. No availability,
+uniformity,OS/PRG proof or arbitrary ready oracle. Newly seeded/flip paths
+do CHANGE RNG/flag bytes;no false whole-State equality. The SAME normal
+enclosing prefix derives counter0/Initial/profile/static/scratch facts
+without047's already-ready subset;SAME first cap/setup/f/g calls derive
+count1 and both stored Bound1 vectors with no extra reachable-count input.
+
+Next:full enclosing make grammar/scopes/branch/destinations/outer lifetime;
+global reachable-count invariant/chronological attempts/no normal fallthrough/
+final break;all six SAME gates/public046/solver032/full mandatory certificate;
+accepted f/g/F/G/h at ACTUAL encoding-input memory and full make teardown.
+Attempt acceptance versus later capacity failure remains distinct. These are
+missing source/composition proofs,not detected code/numerical counterexamples
+or insufficient arithmetic bounds. Whole KeyGen/emitted-to-fiber,laws/seed
+quality/PRG/security/CT,OS/Windows/compiler/machine and review stay outside.
+
+Entry9257 pins (`f0864f27…`);dedicated048 POSTSEAL **9871 pins/718 literal
+bindings**,no supersession/job (`51fbead0…`). Sealed pair JSON
+`c0ea32767ea601d751db4c5b4a8743c45e8a2331ceb13fa9c253d9bfd79e08ee`;
+notes `d3e32f90ded6960d67ccf2181bc4244479acaa5cd1ba31a3977ef8e804fc90e1`.
+Eleven proofs+audit0/0:231 entries/189 complete terms/42 inductives,standard
+axioms/zero elisions (`9874a226…`). Native Sage0040/0:14 normal/UBSan runs,
+each1 LP64 layout+35 readiness+18 set_seed+10 scripted entropy cases,six
+mutations detected per mode (`25af27d4…`). Actual Extra/c/frng/includes/
+Linux macros/literal regions pinned;unchanged039 approved FPR difference
+rehashed,not a full M0 build. No real entropy/private KeyGen/full attempt/
+emitted key. All31 directories/32 steps retained:15 accepted/17 rejected
+steps,14 wholly accepted/17 failed directories. Max RSS3561684KiB;limits
+unchanged,no interruption/missing receipt/active job. Traps267–280 in pair.
+Audit-scope clarification:46 named inherited types/terms are inspected;
+solver/certificate closures are inherited pins,not a new audit/review of
+their final exports. The sealed048 notes' inspected/pinned shorthand does
+not license a whole-attempt consumption claim.
+
+Own commits:`35e37c4f`,`1ac37361`,`49f4854e`,plus closing pair/checkpoint
+commit. Foreign work/staging preserved. No push/review/delegation/relay/
+migration/import/broad replay. This window is CLOSED at one recoverable
+complete-readiness boundary,not auto-restarted and not Acceptance.
+
 ## B1.07 — BATCH_048 complete readiness continuation — 2026-10-10
 
 Owner-started new window from checkpoint27R, GPT-6.1 Sol Fast
