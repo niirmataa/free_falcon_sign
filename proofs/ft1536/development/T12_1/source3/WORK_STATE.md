@@ -1,5 +1,54 @@
 # T12.1/source3 — żywy stan
 
+## B1.07 — CLOSED at chronological five-gate source-prefix midpoint — 2026-10-10
+
+**CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
+**B1.07 Acceptance NOT MET; package IN_PROGRESS / WORKING_NOT_FROZEN.**
+Exactly one close in BATCH_050,GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`).
+B1.05/032 and B1.06/046 unchanged;B1.08/B4/B5 NOT entered. Resume:**30R**.
+
+Actual SIX argument values bind the SAME049 source header. Complete048
+readiness derives counter0/automatic entry without an already-ready subset.
+Source-checked nonwrites through actual sampler/resultant/norm/public/solver
+calls retain local_attempts/logn/ter/n/comp. Actual capped FIVE-gate source
+prefix traces derive consecutive counts/all earlier continues/length<=3000000;
+cap3000001 is BEFORE sampling and excluded. Normal STOP is BEFORE certificate,
+NOT accepted/final break/full LoopSucceeded. Cap-return teardown restores all
+SIX enclosing objects/dead extents/bytes/permissions/saved names. Later returns
+remain OPEN. First actual prefix consumes032 NTRU for SAME physical f/g/F/G
+without rerunning dimensions;later local instances still need Initial transport.
+Actual caller public Call now consumes046: argument conversions/nonzero result
+derive both equations/canonical physical h. Its local legal/small-material/
+static facts and SAME h across later solver/certificate remain to derive.
+
+Complete normal whole invocation/retry Initial/full sixth certificate/control/
+final break/joint accepted f/g/F/G/h at actual encoding inputs are OPEN. The
+inspected complete certificate needs proved general scratch/block0/global/
+call-ID/snapshot/bad-lifetime transport,not a new correctness premise. No
+relocation proof was attempted here. No production C/numerical counterexample
+or insufficient arithmetic bound is claimed;this is missing source composition.
+
+Entry10483 pins (`667972dc…`);dedicated050 POSTSEAL **10876 pins/746 literal
+bindings**,no predecessor supersession/job (`128012d9…`). Sealed pair JSON
+`08c7c50ca78eeb1b82cb7c423efa5e5f30e37fcf3d62649b9c9f3d55a1cc5374`;
+notes `da3871b62019164e335b2be207a43717c2744c05f7a782c8677541602982f722`.
+Six proofs+audit0/0:117 entries=90 new+27 inherited,99 full terms/18 inductives,
+standard axioms/zero elisions (`46071542…`). Producer byte-exact (`4f21914b…`).
+Native Sage0030/0:14 normal/UBSan runs×17 PUBLIC scripted cases,six mutations
+per mode detected (`aec962ba…`),including changed bytes with SAME pointer.
+Cryptographic callees/context/codecs are EXPLICIT MOCKS,counter-start injection
+an explicit diagnostic seam;not real KeyGen/gate results/accepted encoding/law.
+
+All17 directories/18 completed steps retained:9 accepted/9 rejected,8 wholly
+accepted/9 failed directories,actual receipt start order,max RSS8348980KiB,
+limits unchanged. No interruption/missing receipt/active proof job in050.
+Old049 recovery/cache reconciliation remains unchanged in the predecessor
+closure. Every failed snapshot/partial accepted product/stream is retained.
+Traps295–304 and exact remaining types are in the sealed notes/checkpoint.
+Own commits:`2fac6e7b`,`f49077ef`,plus closing pair/checkpoint commit. Foreign
+changes/staging preserved. NO push/review/delegation/relay/migration/import/
+broad replay. This owner-started window is CLOSED once,not automatically resumed.
+
 ## B1.07 — BATCH_050 continuation from29R — 2026-10-10
 
 Owner-started new window, GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`).

@@ -1,3 +1,159 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.07 chronological five-gate source prefix midpoint
+
+**B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
+**Package: IN_PROGRESS / WORKING_NOT_FROZEN.**
+2026-10-10,BATCH_050,GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`).
+**CLOSED_AT_RECOVERABLE_MIDPOINT.** Exactly one close this window.
+B1.05/032 and B1.06/046 unchanged;B1.08/B4/B5 NOT entered.
+Handoff:**30R**. Exact types/pins/traps:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_050_NOTES.md`.
+
+## 30. Closed — actual argument binding and chronological search THROUGH solver,BEFORE certificate
+
+1. The SAME049 source header now binds all SIX actual typed argument values,
+   including real buffer/length pointers and signed comp. The complete048
+   readiness prefix derives counter0/dimensions/fresh automatic entry for all
+   its normal readiness branches;no already-ready subset or body oracle.
+2. Checked scalar nonwrites through the ACTUAL source raw/GS computation and
+   fixed sampler/resultant/public/solver calls preserve local_attempts/logn/ter/
+   n/comp. Cap is BEFORE setup/sampling;the ternary local scope closes BEFORE
+   the actual public call,without resetting the counter.
+3. Finite source FIVE-gate prefix traces now derive consecutive numbers,
+   earlier continue edges,final pre-certificate boundary and length<=3000000
+   from048 counter0. No reachable Count<=cap is a final premise. Cap3000001
+   is before sampling,excluded from the attempted-body list and does not wrap.
+   This trace STOPS BEFORE the mandatory certificate;NOT a full successful
+   for(;;),accepted attempt,final break or PLAN LoopSucceeded export.
+4. The first actual prefix consumes032 solver and DERIVES exact integer NTRU/
+   bounds/SAME physically stored f/g/F/G at certificate entry,without redoing
+   dimension initialization. Later local instances retain Initial as a local
+   boundary;its preservation through all retries remains to be derived.
+5.046 public equations/canonical physical h are now consumed at the ACTUAL
+   caller Call. Source argument binding and observed nonzero result DERIVE
+   the successful function entry/result. Legal f/g/h,small represented f/g,
+   static live/separation facts remain explicit LOCAL inputs,not discharged
+   whole-attempt premises. SAME h through later solver/certificate stays OPEN.
+6. Actual cap-return prefix plus enclosing teardown restores all SIX objects'
+   original bytes/extent/permissions/dead sizes and saved outer names. All
+   later capacity/encoder/function returns still need their source composition.
+
+### 30.1 Exact exports and remaining B1.07 obligations
+
+The new globally initialized PREFIX chronology export is:
+
+```text
+Original ctx (entry caller args) primes rev
+Invocation args ctx caller blocks externalEvents out attempts
+------------------------------------------------------------
+BoundFacts ctx 0 out attempts
+```
+
+For out.flow=normal,it derives rejected++[final],all earlier source continues,
+Numbered0,length<=3000000 and Count out.state attempts.length. **AtCertificate
+final means solver passed but the mandatory certificate HAS NOT RUN.** The
+explicit Trace stop at this boundary cannot be promoted to final loop success.
+Certificate-rejection histories are not covered by this partial prefix trace.
+
+The first SAME prefix exports Solved on the physical input blocks from
+Original+complete PrefixInvocation+Sampled+observed normal boundary,with no
+solver correctness,NTRU,Bound1 or desired certificate input. Later source_ntru
+still has local Initial/Remaining inputs;do not silently promote that type.
+The actual public-call theorem derives both equations from its source Call,
+observed nonzero return and explicit local legal/small-material/static facts.
+
+Remaining B1.07,in unchanged plan order:
+
+1. **Whole enclosing invocation:** six actual argument binding is done;
+   general typed expression/member/destination execution,actual globals/legal/
+   scratch frames and EVERY later return need whole operational composition.
+   Complete049 syntax and these composed fragments are not whole completeness.
+2. **Complete chronological source loop:** derive Initial/legal/static/material
+   frames for every retry;extend the genuine five-gate trace through certificate
+   rejection/retry/final accepted break/no normal full-body fallthrough.
+   AttemptExecution/Accepted/Rejected,LoopExecution/Succeeded and the PLAN
+   successful_loop_last_attempt remain TARGETS,not050 completed exports.
+3. **SAME six-gate composition:** derive046's local entry facts along this SAME
+   history and retain public h through032 solver. Consume the COMPLETE mandatory
+   certificate only after general scratch/block0 relocation,actual globals/
+   common call ID/snapshots/bad lifetime are derived. Its printed initial and
+   resolveLayout still use block0;NO scratch-block0/certificate-correctness or
+   acceptance premise is permitted. No relocation proof was attempted here.
+4. **Accepted physical material at actual encoding inputs:** joint f/g/F/G/h,
+   equations and full certificate witness from real stores/callee frames,not
+   abstract names or these scripted controls;complete every make teardown.
+   Acceptance precedes capacity checks and differs from call return1. Codecs
+   stay B1.08/09;no IID/p_accept/availability law follows.
+
+These remain missing source/composition proofs,NOT demonstrated production
+C/mathematical counterexamples or insufficient arithmetic estimates. B1.07
+Acceptance is NOT met. Whole KeyGen/emitted-to-fiber,laws/seed quality/PRG/
+security,OS/Windows/compiler/machine/CT and independent review stay outside.
+
+### 30.2 Pins,audit,explicit mock controls and preserved failures
+
+- BEFORE work:BATCH_015–049 **10483 pins/739 literal bindings**,no supersession/
+  job. Entry `667972dc8ecd9030625c0a7bbb09a8299e1a72e38ea63df9359369bf0dcb6587`.
+- **BATCH_050 JSON:** `08c7c50ca78eeb1b82cb7c423efa5e5f30e37fcf3d62649b9c9f3d55a1cc5374`.
+- **BATCH_050 notes:** `da3871b62019164e335b2be207a43717c2744c05f7a782c8677541602982f722`.
+- Six proofs+audit0/0:**117 entries=90 new+27 inherited;99 complete terms+18
+  inductives;standard axioms/zero elisions**,746 literal inputs.
+  Audit `46071542006dcd12326b5c04a2cb46e429ceaf5bd8f2db851c9224958077e77a`;
+  receipt `8263bc0882e7b6d084f5b8d74df4b8a5f0bf94963c55b53736dd12046d88836a`.
+  Inherited032/046 exports are consumed in stated local scope;the complete
+  certificate interfaces are inspected,NOT consumed. Internal complete terms,
+  not a fresh review of all inherited transitive closures.
+- Native Sage0030/0:**14 normal/UBSan runs×17 PUBLIC scripted cases**,all SIX
+  mutations detected per mode. Result
+  `aec962bae4881c164787d3dec04ad90cfb2a7d9573fb753fc20515d6754e1ec4`;
+  receipt `76470802c982bad93e84c78816d1ed14c5ab6f394ddbfa87b7add79c6d4710d5`.
+  COMPLETE source CALLER,but all cryptographic callees/context/codecs are
+  EXPLICIT MOCKS;counter-start injection is only a diagnostic seam. Synthetic
+  byte/pointer checks detect changed material with SAME pointer;NOT a proof of
+  real callee results/accepted encoding material/private KeyGen/emitted keys.
+  Unchanged039 approved live FPR difference rehashed,not a full M0 build.
+- All17 directories/18 real completed steps retained:**9 accepted+9 rejected**,
+  8 wholly accepted/9 failed directories,actual receipt start order. Max RSS
+  **8348980KiB**,limits unchanged,no missing receipt/interruption/active job.
+  Argument meta-memory failure and GCC diagnostic-lifetime warning retained;
+  fixed direct proof/static PUBLIC fixture lifetime,no warning suppression.
+  Traps295–304 in the sealed notes. Successful nonfinal controls002 retained.
+- Generator `4f21914b…`;PRESEAL `744e5ac1…` rechecks10483 unchanged predecessors.
+  Dedicated050 organizer
+  `02652ebc865ebd783fce2e50cb9c218d2559fa07f633146cadfd7e89e6d9115f`.
+- **POSTSEAL** `.build/levels_050/POSTSEAL.json`:
+  `128012d9a9183237bd7ca9dedafa00325cc78fd6d51a2289b197e842ff5ed534`:
+  **10876 distinct pins/746 literal bindings**,no predecessor supersession/job.
+- Own commits:`2fac6e7b`,`f49077ef`,plus closing pair/checkpoint commit. Foreign
+  changes/staging preserved. NO push/review/delegation/relay/migration/import/
+  broad replay. This window closes once at this recoverable boundary.
+
+## 30R. Handoff — continue B1.07 AFTER real prefix chronology,NOT from an accepted loop
+
+1. This window is CLOSED at exactly one recoverable midpoint,NOT Acceptance.
+   Do not auto-restart it or enter B1.08/B4/B5. Preserve BATCH_015–050 and all
+   earlier/failed bytes. Next owner-started window continues B1.07 in30.1 order.
+2. Read WORK_STATE,this checkpoint,050 pair notes,B1.07's exact Acceptance block
+   in EXECUTION_PLAN and the staged roadmap. BEFORE edits/jobs:
+
+   ```sh
+   mkdir -p .build/levels_051
+   python3 -B tools/keygen_make_search_batch.py verify 08c7c50ca78eeb1b82cb7c423efa5e5f30e37fcf3d62649b9c9f3d55a1cc5374 da3871b62019164e335b2be207a43717c2744c05f7a782c8677541602982f722 .build/levels_051/ENTRY_PINS_051.json
+   ```
+
+   Expect10876 pins/746 literal bindings/no predecessor supersession/job. Any
+   mismatch is stop-and-report,not silent repair or weakened historical pins.
+3. Use NEW modules;preserve050 sources/products. Inspect actual types BEFORE
+   composition. Five-gate AtCertificate/normal STOP is NOT accepted/break/full
+   LoopSucceeded. The first-prefix NTRU theorem and local actual-public theorem
+   do not derive all retry legality or SAME h through later callees. Extend
+   actual frames/chronology and derive scratch relocation/globals/snapshots,
+   then full sixth gate/final break/accepted physical encoding inputs. Never
+   insert desired equations/certificate outcomes as source execution premises.
+4. One owner-started stage/window,one Acceptance or expanded midpoint,bounded
+   serial guarded jobs,unchanged limits/0/0 logs/native Sage/durable runtime.
+   Small local exact-path commits;no automatic push/review/delegation/relay/
+   migration/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.07 whole-caller syntax / readiness-failure lifetime midpoint
 
 **B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
