@@ -52,7 +52,8 @@ The submitted-message freshness check prevents a signing-programmed
 entry from becoming a valid fresh-message forgery. For an accepted
 forgery the reducer returns its recorded target index and
 \code{Relation.extract}; output soundness checks the same relation as
-the MT experiment.\src{C05}
+the MT experiment, by the extraction of
+Proposition~\ref{prop:extracts}.\src{C05}
 
 The resulting law identity is
 \[
@@ -79,7 +80,8 @@ This is the content of \code{programComparison} and
 At the event level, the underlying directional inequality is
 $(a-b)^2\leq D a(1-a)$, where $a$ is the honest event probability and
 $b$ the simulated one. Solving its upper branch gives \eqref{eq:phi}.
-The stopped-game theorem applies this comparison with
+The stopped-game theorem (Lemma~\ref{lem:composition}) applies this
+comparison with
 $D=(1+e)^{q_s}-1$. Removing the collision stop contributes exactly the
 clipped parameter \eqref{eq:coll}, based on the uniform $320$-bit nonce
 space and the formal query counts. This supplies

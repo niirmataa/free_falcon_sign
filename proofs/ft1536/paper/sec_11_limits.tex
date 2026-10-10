@@ -1,4 +1,4 @@
-\section{Limitations and open work: the honesty ledger}\label{sec:limits}
+\section{Limitations, open work and conclusion: the honesty ledger}\label{sec:limits}
 \status{CLOSED scope record; listed proof obligations OPEN or IN-FLIGHT}
 \subsection{Assumptions and missing interfaces}
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{.16\textwidth}>{\raggedright\arraybackslash}p{.25\textwidth}>{\raggedright\arraybackslash}p{.52\textwidth}@{}}
@@ -45,7 +45,7 @@ mass to a positive output having no norm-admissible preimage under
 \code{emit} on the relevant fiber, then
 \code{chi2_top_of_out_of_support} gives $\chi^2=+\infty$.
 A small additive probability estimate cannot remove that support
-failure. Conversely, wrap-related verifier rejection within the
+failure (cf. Theorem~\ref{thm:additive}). Conversely, wrap-related verifier rejection within the
 modeled emit image does not automatically cause failure of absolute
 continuity. The support theorem states which case is being used.
 \src{C19}
@@ -53,13 +53,15 @@ continuity. The support theorem states which case is being used.
 The additive-to-multiplicative machine lemma is closed only with its
 pointwise floor and error-budget premises. The numeric scalar-leaf
 floor does not discharge a floor on arbitrary weights. Similarly,
-the $2^{-32}$ and $2^{-17}$ bounds attach to different attempt shapes;
+the $2^{-32}$ and $2^{-17}$ bounds attach to different attempt shapes
+(Remark~\ref{rmk:shape});
 the latter cannot be hidden by labeling the former a universal sampler
 constant. The final source realization must settle that distinction.
 \src{C08,C19}
 
 The formal probability reduction gives a specified reducer, while the
-computational public-game export carries a parametric cost contract.
+computational public-game export (Theorem~\ref{thm:public}) carries a
+parametric cost contract.
 Neither statement alone proves a concrete runtime class for the full
 real-world reduction. Nor does the table of security proxies evaluate
 the complete query-dependent bound: the amplification

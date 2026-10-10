@@ -25,6 +25,13 @@ Games.runEUF; realize ReplyShape, AttemptShape and PointwiseStageRoad;
 consume LocalJointCertificate in the comparison. B1.10 must also bind
 the emitted-key law to the law used for MT-ISIS.}
 
+The end-to-end thesis of the project is displayed below as a target
+statement. It is deliberately typeset as the central statement of the
+paper and deliberately \emph{not} as a theorem: arrows 1--2 of the
+assembly are undischarged, and the honesty rule of this draft forbids
+stating the thesis as proved before they are closed.
+
+\begin{mdframed}[linewidth=0.6pt,innerleftmargin=6pt,innerrightmargin=6pt]
 \begin{target}[Intended real-signing statement]\label{target:main}
 Let $B_A$ be the reducer \code{Reduction.build beta A S}, and let
 $b=\Adv_{\mathrm{MT}}(q_h+1,\mu_H,B_A)$. After arrows 1--2 and their
@@ -39,6 +46,7 @@ honest winning test at the stated randomness horizon, and the
 unconditioned candidate factor has $e<2^{-32}$. The acceptance-conditioned
 alternative is stated in Remark~\ref{rmk:shape}.
 \end{target}
+\end{mdframed}
 This is a target, not a proved theorem about C in this draft.
 In particular, $\varepsilon_{\mathrm{real}}$ is a target experiment name,
 not an alias for the public-simulation advantage.\src{C01,C06,C08}
@@ -111,8 +119,11 @@ square-root convention. No inverse assertion for $a>1$ is used.
 Tiny positive $a$ below the threshold give zero, not a positive
 MT lower bound.\src{C16}
 
+\begin{corollary}[Scope test: $k=1$]\label{cor:scope}
 Substituting $k=1$ makes $D=(1+(k^{32}-1))^{q_s}-1=0$, and
-$\Phi(0,b)=b$. The corrected public-simulation weakening allows this
+$\Phi(0,b)=b$.
+\end{corollary}
+The corrected public-simulation weakening allows this
 choice for arbitrary $S$ because its $D$ is only a weakening parameter.
 That scope test cannot establish a real-sampler certificate. A future
 assembly must demonstrate actual consumption of \eqref{eq:cert}, rather

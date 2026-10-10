@@ -135,7 +135,7 @@ execution and discharge its exact premises before choosing either
 numeric exponent in the real-signing target.}
 
 \subsection{Support at the failure point}
-\begin{proposition}[A tail witness on every achievable fiber]
+\begin{proposition}[A tail witness on every achievable fiber]\label{prop:tail}
 For every $h,c$, an achievable syndrome fiber in \code{BoxPair}
 contains a point with $Q\geq B$. For every $h,c$, in particular,
 \[
@@ -154,7 +154,7 @@ premise.\src{C19}
 The following statements are general limitations of proposed proof
 premises. They are not empirical attacks on the signer.
 
-\begin{theorem}[Bulk-only control does not control the tail]
+\begin{theorem}[Bulk-only control does not control the tail]\label{thm:bulkonly}
 For any real $\ell\leq1\leq u$, there exist nonnegative weights $g,w$
 with $\ell g\leq w\leq ug$ on $Q<B$, but
 $T(w)>uT(g)$. There also exist such weights for which
@@ -172,7 +172,7 @@ and $T(w)>0$ by \code{liftPair zeroPair}. The normalized left side is
 positive as well.\src{C09}
 \end{proof}
 
-\begin{theorem}[A mass sandwich does not imply a pointwise sandwich]
+\begin{theorem}[A mass sandwich does not imply a pointwise sandwich]\label{thm:mass}
 For every $0<\ell\leq u$, there are nonnegative $g,w$, with $Z_g>0$,
 such that $\ell Z_g\leq Z_w\leq uZ_g$, but
 $\neg\forall z,\ \ell g(z)\leq w(z)\leq ug(z)$.
@@ -185,7 +185,7 @@ disjoint supports. The module instantiates the result at the exact
 margins of all four stages.\src{C09}
 \end{proof}
 
-\begin{theorem}[Additive accuracy alone does not give the machine stage]
+\begin{theorem}[Additive accuracy alone does not give the machine stage]\label{thm:additive}
 There exist nonnegative $\mathrm{target},\mathrm{mach}$ with
 $|\mathrm{mach}(z)-\mathrm{target}(z)|\leq1$ for every $z$, for which
 \code{MachineStage target mach} is false.
@@ -204,11 +204,11 @@ The numeric \code{machineFloor_gt} proves $\mathrm{machineFloor}>991$;
 it does not by itself prove that this number bounds every realized
 weight from below. That realization is still a premise.\src{C19}
 
-\begin{theorem}[Statistical finite-state PRG route is closed]
+\begin{theorem}[Statistical finite-state PRG route is closed]\label{thm:routea}
 For every law $\nu$ on the modeled \code{FrngState} and every bit length
-$n$, the deterministic tape law satisfies
+$N$, the deterministic tape law satisfies
 \[
- 1-\frac{2^{448}}{2^n}\leq
+ 1-\frac{2^{448}}{2^N}\leq
  \TV(\code{frngTapeLaw}(\nu,n),\U_{\{0,1\}^n}).
 \]
 \end{theorem}
