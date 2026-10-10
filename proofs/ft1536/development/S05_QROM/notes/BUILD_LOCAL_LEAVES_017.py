@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Bounded S05-017 compiler with pinned016 inputs and fresh attempt directories."""
 from pathlib import Path
-import json,hashlib,shutil,types,sys
+import json,hashlib,shutil,types,sys,os
 S=Path(__file__).resolve().parent.parent;R=S.parents[3];B=S/'.build/local_leaves_017';LIB=B/'lib'
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 P=S/'notes/BUILD_KEY_SUPPORT_011.py';manifest=S/'notes/KEY_SUPPORT_011_OUTPUTS.sha256'
@@ -34,4 +34,14 @@ elif sys.argv[1]=='upstream':
 else:
  name,label=sys.argv[1:3];src=S/'formal'/(name+'.lean')
 d=B/'runs'/label
-sys.exit(0 if h.compile_one(src,d,name,LIB if sys.argv[1]=='upstream' else d/'lib',libs,LIB) else 1)
+# The first witness batches used two efficiency cores. Keep the same one-core
+# and memory/time caps, but place later batches on two distinct performance cores.
+# This is scheduling only; the exact affinity and wrapper bytes are receipted.
+wrapper_bytes=Path(__file__).read_bytes()
+if name.startswith('GaussianWitness017_'):
+ batch=int(name.rsplit('_',1)[1]);os.sched_setaffinity(0,{2 if batch%2==0 else 4})
+affinity=sorted(os.sched_getaffinity(0))
+ok=h.compile_one(src,d,name,LIB if sys.argv[1]=='upstream' else d/'lib',libs,LIB)
+rp=d/'receipt.json';r=json.loads(rp.read_text());r['wrapper_sha256_at_launch']=hashlib.sha256(wrapper_bytes).hexdigest();r['affinity_at_launch']=affinity
+(d/'wrapper_at_launch.py').write_bytes(wrapper_bytes);rp.write_text(json.dumps(r,indent=2)+'\n')
+sys.exit(0 if ok else 1)
