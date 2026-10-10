@@ -1,0 +1,227 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm]{geometry}
+\usepackage{fontspec}\setmainfont{Latin Modern Roman}
+\setmonofont{Latin Modern Mono}[Scale=0.85]
+\usepackage{amsmath,amssymb,amsthm,longtable,booktabs,xurl,hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{3em}
+\newcommand{\code}[1]{\nolinkurl{#1}}
+\newtheorem{theorem}{Twierdzenie}
+\title{Conditional finite-tape sampler certificate\\\large S05 / IMPLEMENTATION\_016}
+\author{Notatka robocza dla Niirmata}\date{10--11 października 2026}
+\begin{document}\maketitle
+\textbf{PARTIAL PROOF / WARUNKOWY / NOT REVIEWED.}
+Klasa: obowiązki dowodowe Q-SAMPLER i osobno Q-RESC.
+Pakiet dostarcza wykonywalny kod referencyjny Lean z rzeczywistymi publicznymi
+stałymi tablic, jego dokładne prawa capów i fallbacków oraz kernelowe
+$J_h\ll P_h$ dla każdego publicznego$h$. Dostarcza też warunkowy most do
+$e\le2^{-47}$, wymagający czterech jawnych lokalnych oszacowań oraz(M).
+\textbf{Nie zadeklarowano świadków tych czterech oszacowań w Lean.}
+Sage daje ich wsparcie numeryczne, co nie zamyka kernelowej instancji momentu.
+Nie jest to dowód bezpieczeństwa FT1536 w QROM.
+
+\section{Samodzielny model i kod}
+Niech$q=18433$, $n=1536$, $\sigma=768$,
+$R=\mathbb Z[X]/(X^{1536}-X^{768}+1)$, $R_q=R/qR$ i$h\in R_q$.
+Reprezentujemy wektor przez768 par A2; dla dwóch wektorów mamy1536 par.
+\[
+ q_2(x,y)=x^2+xy+y^2,\quad Q_0(v)=\sum_{i<768}q_2(v_i,v_{i+768}),
+ \quad Q(v,w)=Q_0(v)+Q_0(w),\quad A_h(v,w)=v+hw\pmod q.
+\]
+Pełny box to$\mathcal B=[-65535,65535]^{3072}\cap\mathbb Z^{3072}$,
+próg normy$B=2093922385$, a$\alpha=1/1179648$.
+Niech$g$ będzie prawem pojedynczej pary na$[-65535,65535]^2$ z wagą
+$e^{-\alpha q_2}$, $G=g^{\otimes1536}$ oraz$G_B=G\mid\{Q<B\}$.
+
+Uczciwe prawo$P_h$ losuje$c\in R_q$ jednostajnie. Wykonuje do16 prób
+z$G$ warunkowego na$A_hz=c$, zatrzymując się przy pierwszym$Q(z)<B$.
+Brak takiej próby daje$\bot$. Zaakceptowana próba emituje drugi wektor,
+jeśli wszystkie współczynniki są w signed16, a inaczej$\bot$.
+Pełnym wynikiem jest$(c,o)$; uczciwe prawo nie jest warunkowane na sukcesie.
+
+Publiczny kod używa stałych tablic003:30721 wag i61441 progów.
+Ich źródłem są przypięte pliki i odtwarzalny generator; w Lean są to
+\emph{literały naturalne}. Nie wywołuje się eksponenty jako orakulum runtime.
+Wskaźnik współczynnika$i\in\{0,\ldots,30720\}$ reprezentuje$i-15360$.
+Skumulowane wagi to$F_i$, $S=F_{30720}$.
+Dwa niezależne384-bitowe słowa redukuje się modulo$S$ i znajduje pierwszy
+indeks z$u\bmod S<F_i$. Niezależne256-bitowe słowo akceptuje parę wtedy,
+gdy jest mniejsze od przypiętego progu$V_{x+y+30720}$.
+
+Kod Lean używa jawnego liniowego wyszukiwania pierwszego trafienia.
+Ma też totalizację wyszukiwania: przy braku trafienia zwraca ostatni indeks.
+Ta gałąź należy do definicji i prawa programu. Dla rzeczywistych danych
+kernel potwierdza$S>0$; pełne powiązanie CDF/liczności z oszacowaniem
+Gaussa należy do wskazanego niżej liścia analitycznego.
+Nie przypisujemy wyszukiwaniu liniowemu kosztu \code{bisect} z Sage.
+
+Po80 niezaakceptowanych propozycjach pary kod zwraca$(0,0)$.
+Propozycja wektora zawiera1536 niezależnych takich wyników.
+Pierwszy z najwyżej196 wektorów o$Q<B$ jest wybrany; po196 odrzuceniach
+używa się \emph{oddzielnej świeżej taśmy} do jednostajnego sześcianu
+$[-512,511]^{3072}$. Wynik to$(A_hz,\mathrm{some}(z_2))$.
+Rachunek syndromu korzysta z wykonywalnego
+\code{PolynomialReference.multiply} i jego istniejącego dowodu zgodności.
+
+Kod ignoruje stan, wiadomość i nonce. Model taśmy to niezależne uczciwe bity;
+rekonstrukcja kwantowej historii zapytań nie występuje. Wywołanie z publicznym
+\code{initial} ma to samo prawo co wywołanie z dowolnym stanem.
+Nie jest to jeszcze źródłowa równoważność implementacji Python/C ani hop PRG.
+
+\section{Bezwarunkowy wynik o nośniku}
+\begin{theorem}[Rzeczywiste tablice, każde publiczne h]
+Dla kodu \code{ActualTables016.actualSampler}, każdego$h\in R_q$, stanu,
+wiadomości i nonce, wszystkie taśmy zwracają wektor o$Q<B$ i emisji signed16.
+Pełne prawo wynikowe$J_h$ spełnia
+\[
+ J_h\ll P_h,\qquad J_h(c,\bot)=0\quad\text{dla każdego }c.
+\]
+Ten wynik nie wymaga(M), oszacowania harmonicznego ani poniższych czterech liści.
+\end{theorem}
+Dowód obejmuje oba fallbacki. Para zwrócona przez propozycję mieści się
+w$[-15360,15360]^2$, podobnie fallback zera. Sześcian ma
+$Q\le3\cdot512^2\cdot1536=1207959552<B$ i mieści się w signed16.
+Każdy wyjściowy zaakceptowany atom ma dodatnią masę już w pierwszej uczciwej
+próbie własnego włókna. Reużyto lematów ROM
+\code{BadVerify.trial_positive/cap_first_positive/map_mass_ge}.
+Zerowa masa$J_h(\bot)$ nie usuwa żadnej porażki z$P_h$.
+
+\section{Dokładne prawo wykonania}
+Lemat \code{BitTapes016.word_uniform} dowodzi, że jawny odczyt bitów jest
+jednostajny na$\{0,\ldots,2^b-1\}$. Bijekcje \code{split/chunks/seedEquiv}
+rozdzielają jedną ustaloną taśmę na wszystkie niezależne bloki.
+Nieużyte po wcześniejszej akceptacji pozycje pozostają częścią taśmy.
+
+Dla dowolnego prawa próby$p$ na$\operatorname{Option}(X)$, capu$k$
+i świeżego fallbacku$U$ kernel dowodzi
+\[
+ \Pr[\operatorname{out}=x]=p(\bot)^k U(x)+
+ \left(\sum_{i<k}p(\bot)^i\right)p(x).
+\]
+Twierdzenie obejmuje$k=0$ i zerową masę akceptacji. Przy
+$p(x)=(1-p(\bot))L(x)$ jest to dokładnie
+$(1-p(\bot)^k)L(x)+p(\bot)^kU(x)$.
+\code{ProgramLaw016} wiąże tę tożsamość z konkretnymi funkcjami kodu:
+parą, dwoma768-parowymi połowami, testem normy, capem196 i końcową emisją.
+To nie jest przyjęta równość całego prawa jako przesłanka.
+
+\section{Cztery lokalne obowiązki do małego momentu}
+Niech$p_T$ oznacza prawo \emph{surowej} propozycji pary z konkretnego kodu
+na1024 uczciwych bitach, a$r_T=p_T(\bot)$. Niech$U$ będzie prawem świeżego
+sześcianu z konkretnej taśmy. Pozostają następujące jawne pola:
+\begin{align*}
+ \text{L-REJECT:}\quad&r_T\le7/16,\\
+ \text{L-RAW:}\quad&p_T(b)\le(1-r_T)(1+2^{-100})g(b)\quad\text{dla każdej pary }b,\\
+ \text{L-ZERO:}\quad&g(0,0)\ge2^{-23},\\
+ \text{L-CUBE:}\quad&U(z)\le2^{4630}G_B(z)\quad\text{dla każdego }z.
+\end{align*}
+Pierwsze trzy tworzą \code{ImplementationBridge016.PairLeaves}; ostatni
+jest \code{CubeLeaf}. Każdy to \textbf{obowiązek dowodowy Q-SAMPLER},
+nie założenie kryptograficzne. Kod nie otrzymuje ich jako danych wykonania.
+W szczególności nie przyjęto końcowej dominacji$J_h\le(1+2^{-60})J_h^0$
+pod inną nazwą: jest ona wnioskiem z tych lokalnych warunków, dokładnych
+praw programu i(M).
+
+Przesłanka(M) zachowuje dokładnie postać015: istnieje jedno$K>0$,
+niezależne od$c,t$, takie że
+\[
+ (1-2^{-34})Kt^{-1536}\le\sum_{z\in\mathbb Z^{3072}:A_hz=c}e^{-t\alpha Q(z)}
+ \le(1+2^{-34})Kt^{-1536}
+\]
+dla każdego$c$ i$t\in\{1,1811939328/2093922385,9/16\}$.
+Z015, przez partycję zaakceptowanych mas, wyprowadzono również globalny
+ogon$G(Q\ge B)\le2^{-24}$. Nie jest on nowym dodatkowym liściem.
+
+\begin{theorem}[Warunkowy moment konkretnego kodu]
+Jeżeli dla rzeczywistych tablic zachodzą L-REJECT, L-RAW, L-ZERO i L-CUBE,
+a dany$h$ spełnia(M), to dla każdego stanu, wiadomości i nonce
+\[
+ \sum_x\frac{J_h(x)^2}{P_h(x)}\le1+2^{-47}.
+\]
+Pod jawnym pokryciem nośnika tego samego prawa kluczy$\mu_H$ przez(M),
+ta sama granica obowiązuje dla wspólnego prawa$(h,\text{odpowiedź})$.
+\end{theorem}
+Eksporty: \code{ActualInterface016.moment_if_local_leaves},
+\code{initial_if_local_leaves}, \code{key_law_if_local_leaves}.
+Nie zadeklarowano instancji \code{PairLeaves tables} ani \code{CubeLeaf}.
+
+\section{Dlaczego rachunek capów wystarcza}
+Z trzech pierwszych pól i dokładnego prawa capu80:
+\[
+ H_T(b)\le K_{\rm pair}g(b),\qquad
+ K_{\rm pair}=1+2^{-100}+(7/16)^{80}2^{23}\le1+2^{-72}.
+\]
+Iloczyn daje$F_T\le CG$, gdzie$C=(1+2^{-72})^{1536}\le1+2^{-61}$.
+Dla$r=2^{-24}$ kernel zachowuje anulowanie wspólnej normalizacji:
+\[
+ F_T\mid\{Q<B\}\ \le
+ \left(1+\frac{C-1}{1-Cr}\right)G_B.
+\]
+Zastąpienie tego przez$C/(1-r)$ traci użyteczny zapas.
+Świeży fallback dodaje najwyżej$(Cr)^{196}2^{4630}$ do gęstości.
+Przy$\zeta=65/2^{30}$ mamy$Cr\le\zeta<1$ i
+\[
+ 1+\frac{C-1}{1-Cr}+(Cr)^{196}2^{4630}\le1+2^{-60}.
+\]
+Obraz deterministyczny zachowuje tę dominację; pełny moment z abortami
+z015 daje$2^{-47}$.
+
+Zachowano także niewygodną kontrolę: dla tej konserwatywnej obwiedni
+\[
+ 2^{-70}<\zeta^{196}2^{4630}<2^{-69}.
+\]
+Pierwsza próba użycia$2^{-70}$ była fałszywa. Poprawiono ją do$2^{-69}$;
+końcowy budżet pozostaje poprawny. Obie nierówności i końcowy budżet
+są kernelowe. Jest to granica obwiedni, nie dolna granica rzeczywistego błędu.
+
+\section{Dane, kontrole i rzeczywisty status}
+Przypięty JSON tablic ma SHA256
+\code{f2dc9c34407a09c6305772fa8cf430668a56c5dfd6332228c06b74c40af54301}.
+Generator tworzy13 modułów z całkowitymi literałami, przechowywanych jako
+odtwarzalne duże artefakty. Kernel sprawdza kod korzystający z tych danych.
+Zgodność hashy sama nie dowodzi relacji wag z eksponentą.
+
+Sage ze standardowym preparserem ponownie oblicza dokładne liczności
+modulo i konwolucję: akceptacja jest zgodna z przypiętym003 i większa od$9/16$.
+Sprawdza48 pełnych praw fallbacku, w tym cap0 i akceptację0/1.
+Kontrprzykład do współdzielenia monety z fallbackiem zachowano: dla próby
+akceptującej przy bicie1, fallback$1-b$ z tej samej monety daje zawsze1;
+świeży niezależny bit daje prawdopodobieństwo$3/4$.
+Nie zastępuje to ogólnego kernelowego dowodu niezależności.
+
+Rygorystyczne balls512, z przypiętym wcześniejszym przedziałem normalizatora,
+potwierdzają wystarczające marginesy czterech pól. \textbf{Nadal potrzebny
+jest kernelowy most od odczytu bitów/modulo/CDF i zaokrągleń tablic do
+L-RAW/L-REJECT oraz analityka normalizatora i gęstości sześcianu.}
+Nie awansujemy obliczeń do instancji tych pól.
+
+Koszt taśmy deklarowany przez konkretny kod:
+\[
+ 196\cdot1536\cdot80\cdot(2\cdot384+256)+30720=24662538240
+\]
+pozycji bitowych; slotów propozycji par jest$24084480$.
+To dowody liczb \emph{logicznych slotów}, nie pełne twierdzenia o liczbie
+operacji, odczytów ani pamięci. Funkcyjna referencja może ponownie obliczać
+współrzędne. CDF jest liniowy; odziedziczona referencja mnożenia liczy każdy
+współczynnik przez osobną podwójną sumę. Nie dziedziczymy kosztu binarnego
+wyszukiwania i mnożenia Sage. Prekomputacja i przechowywanie tablic oraz
+pełny koszt bitowy/zasoby reduktora pozostają oddzielnym Q-RESC.
+
+Model uczciwych bitów nie jest hopem PRG. Mimo kodu i bezwarunkowego AC,
+źródłowe prawo emitted KeyGen, powiązanie z rzeczywistym API Sign,
+kwantowe mechanizmy i końcowa kompozycja QROM pozostają otwarte.
+Nie podaje się poziomu bezpieczeństwa.
+
+\appendix\section{Eksporty i dalszy krok}
+\code{ActualTables016.actual_all_h_ac}: bezwarunkowy nośnik dla konkretnych
+publicznych literałów. \code{ProgramLaw016}: dokładne prawa wykonania.
+\code{RawPairDomination016}: cap80 z surowych pól.
+\code{ImplementationBridge016}: dwa capy, obraz odpowiedzi i konsument015.
+\code{ActualInterface016}: initial i to samo prawo kluczy.
+
+\code{IMPLEMENTATION_016_RECEIPT.json} wskazuje piny, czyste buildy, koszty
+weryfikacji i zachowane błędne próby. Koszt kompilacji nie jest kosztem
+samplera. Następny pakiet017 ma wypełnić wymienione lokalne pola
+analityczne; pełny koszt programu wymaga osobnej instancji operacyjnej.
+Samoprzegląd autora, bez niezależnego odbioru i bez zmian statusów ROM.
+\end{document}
