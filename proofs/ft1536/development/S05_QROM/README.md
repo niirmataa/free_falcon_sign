@@ -3,12 +3,23 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
-**Najnowszy krok — [COEFFICIENT_GRAM-013](notes/COEFFICIENT_GRAM_013_CHECKPOINT.md):**
+**Najnowszy większy pakiet — [ACTUAL_HARMONIC-014](notes/ACTUAL_HARMONIC_014_CHECKPOINT.md):**
+Kernelowo domknięto izometrię monomianów, primary cap4608, kanoniczny
+Parseval, widmowe A/C/D, reciprocal Schur i dokładne(M)007.
+Z rzeczywistych równań NTRU/public/inverse, ternarności i **jawnego H≥991**
+wynika jedna dodatnia skala dla wszystkich challenge i temperatur0<t≤1,
+z błędem masy2^-34. Gram/Parseval/widmo nie są już wejściowymi certyfikatami.
+**Nadal OPEN: source → H≥991 dla emitted kluczy oraz pełny sampler/J/P/koszt.**
+[Pełne zdanie](notes/ACTUAL_HARMONIC_014.tex),
+[większy TODO](notes/TODO_QUANTITATIVE_GEOMETRY_014.md).
+
+**Checkpoint — [COEFFICIENT_GRAM-013](notes/COEFFICIENT_GRAM_013_CHECKPOINT.md):**
 Z rzeczywistego `ActualNTRUFiber.coefficientBasis` wyprowadzono dokładną
 macierz bazy, jej Gram w metryce Q, odwrotność z NTRU, dodatniość i energię
 afiniczną. Istniejący eksport ROM daje teraz pełną reindeksację włókna przez
 ten Gram, bez przyjmowania `gramEq` jako wejścia. 27 deklaracji Lean ma czyste
-logi. **Pozostały granice przekątnych/widmo i ilościowa instancja T5/012.**
+logi. Pozostałe wtedy granice przekątnych/widmo i ilościowy most zamyka014
+pod jawnym boundem harmonicznym.
 [Mapa ponownego użycia](notes/REUSE_MAP_013.md) wskazuje gotowe T5/ROM/H3
 i pokrycie części012; nie powtarzamy ogólnej probabilistyki.
 
@@ -18,7 +29,7 @@ przesunięty atom → zbieżna masa Gaussa → jedna dodatnia skala dla wszystki
 przesunięć i temperatur. Przy jawnej tożsamości widmowej i harmonicznej≥991
 kernel daje błąd względny `2^-34` oraz czynnik `t^-1536` dla `0<t≤1`.
 W012 instancja Grama/Parsevala rzeczywistej bazy była OPEN;013 domyka
-konkretną energię i dodatniość. Parseval/widmo oraz cały certyfikat007 są OPEN.
+konkretną energię i dodatniość, a014 Parsevala i widmo. Cały certyfikat007 pozostaje OPEN.
 [Pełne przesłanki i zakres](notes/SCHUR_012.tex); nie jest to deklaracja QROM.
 
 **Checkpoint — [KEY_SUPPORT-011](notes/KEY_SUPPORT_011_CHECKPOINT.md):**
@@ -29,8 +40,8 @@ To **kernelowe konstruktory warunkowe**; rzeczywisty `EmissionView` oraz
 pozostaje niezmieniony. [Dokładny zakres](notes/KEY_SUPPORT_011.tex).
 
 Decyzja właściciela: **kernel przed użyciem wyniku w ostatecznej tezie**.
-[Klasy warunków](notes/CERTIFICATE_CLASSES_013.json) rozdzielają obowiązki,
-założenia kryptograficzne i model; [kolejka kernela](notes/KERNEL_QUEUE_013.json)
+[Klasy warunków](notes/CERTIFICATE_CLASSES_014.json) rozdzielają obowiązki,
+założenia kryptograficzne i model; [kolejka kernela](notes/KERNEL_QUEUE_014.json)
 ma priorytety według zależności tezy, również jawne wpisy h=0 i Dyadic.
 
 **Checkpoint — [ponowne użycie ROM010](notes/ROM_REUSE_010_CHECKPOINT.md):**
@@ -47,8 +58,8 @@ wykryto niemożliwą kolejność pivotsów w odziedziczonym `ldl_shape`
 [Nowy most harmoniczny](notes/HARMONIC_BRIDGE_009.tex) wyprowadza potrzebny
 bound LDL z jednej średniej harmonicznej, omijając tę równość list.
 Pierwotny pełny most009 jest tekstowy; 12 małych lematów008/009 przeszło Lean
-z czystymi logami. Następnie012 skernelizował ogólną geometrię i masę;
-konkretna FT1536 instancja Grama/widma pozostaje OPEN.
+z czystymi logami. Następnie012 skernelizował ogólną geometrię i masę,
+a013/014 konkretny Gram i widmo. Pozostaje źródłowe powiązanie H≥991.
 Jawny świadek1536 z ternarnymi f/g i dokładnym NTRU przeszedł też funkcję
 certyfikatu C. **To jedna instancja, nie dowód o całym emitted KeyGen.**
 Numeryczne przesłanki wskazane w009 zostały następnie powiązane z eksportami
@@ -117,8 +128,8 @@ Nie nadpisujemy prób. [Handoff 004](notes/SAMPLER_004_HANDOFF.json),
 | Wspólna kontynuacja i kompozycja w grach programowanych | Dowód tekstowy warunkowy, CONTINUATION-002 |
 | Wykonalny publiczny sampler pełnej odpowiedzi, również porażek | SAMPLER-007 wykonany; capy par/wektora rozliczone przez dodatnie fallbacki. `J(none)=0` jawnie, uczciwe porażki pozostają w P. Koszt w receipcie |
 | Absolutna ciągłość J względem uczciwego P | SAMPLER-007: tekstowy argument dla każdego h; każde wyjście ma dodatni zaakceptowany atom uczciwego włókna. Formal source binding OPEN |
-| Certyfikat `ΣJ²/P≤1+e`, z użytecznym e | 007: tekstowe `e<2^-44` pod (M); świadek (M) dla emitted KeyGen OPEN. 004 zachowuje osobny wynik h=0 `e<2^-50`. Cel all-h OPEN; przeszkoda 003 zachowana |
-| Dokładna baza/LDL → masa wszystkich włókien przy trzech temperaturach | 013: konkretna macierz bazy, dodatni Gram, energia afiniczna i całe włókno kernelowo z równań NTRU/public. 012/T5: gotowe ogólne boundy masy. OPEN: wybrany podział blokowy, primary cap, widmowy Schur/Parseval i ich ilościowa konsumpcja; source harmonic nadal mixed |
+| Certyfikat `ΣJ²/P≤1+e`, z użytecznym e | 007: tekstowe `e<2^-44` pod (M). 014: kernelowe(M) z rzeczywistej bazy i H≥991; powiązanie całego emitted prawa i pełny kernel J/P007 OPEN. 004 zachowuje h=0 `e<2^-50`; cel all-h OPEN |
+| Dokładna baza/LDL → masa wszystkich włókien przy trzech temperaturach | **Kernel014**: konkretne współczynniki → monomiany/primary cap → kanoniczny Parseval → widmowy Schur →(M)007. Jawne wejścia: NTRU/public/inverse, ternarność i kanoniczna H≥991. Source harmonic nadal mixed, bez awansu całego C-KeyGen |
 | Odziedziczone `BasisLeafAlgebra.ldl_shape` | 008: przeszkoda pierwszych dwóch pivotsów; tej instancji nie można użyć w obecnej postaci |
 | Średnia harmoniczna i źródłowy liść767 | 010: H3 ROOT/STABLE +009 dają >1022 w emitted source model, tekstowo/mixed. 3 nowe marginesy kernelowe; full source kernel i typed key-law assembly OPEN |
 | Kernelizacja h=0: `J≪P` i moment | **OPEN, obowiązek jawny:** przenieść SAMPLER-004 do Lean z czystymi logami; etykieta **textual** pozostaje. Szkic DyadicObstruction również nie ma potwierdzonego kernela |

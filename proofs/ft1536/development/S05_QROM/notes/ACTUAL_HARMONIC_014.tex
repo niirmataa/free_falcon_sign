@@ -1,0 +1,169 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm]{geometry}
+\usepackage{fontspec}\setmainfont{Latin Modern Roman}
+\setmonofont{Latin Modern Mono}[Scale=0.85]
+\usepackage{amsmath,amssymb,amsthm,longtable,booktabs,xurl,hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{3em}
+\newcommand{\code}[1]{\nolinkurl{#1}}
+\newtheorem{theorem}{Twierdzenie}
+\title{Conditional actual harmonic-to-mass theorem\\\large S05 / ACTUAL\_HARMONIC\_014}
+\author{Notatka robocza dla Niirmata}\date{10 października 2026}
+\begin{document}\maketitle
+\textbf{Klasa: obowiązek dowodowy Q-SAMPLER. Status: kernelowy warunkowy
+wynik dla rzeczywistej matematycznej bazy FT1536.} Większy pakiet domyka
+łańcuch od współczynników przez izometrię, pierwiastki, Parsevala, widmowy
+Schur aż do przesłanki masy(M) samplera007. Nie zakłada tożsamości Grama,
+Parsevala ani dopełnienia Schura jako wejściowych certyfikatów.
+Nadal wymaga jawnego boundu harmonicznego dla tego samego materiału klucza.
+Nie jest dowodem całego C-KeyGen/Sign ani bezpieczeństwa QROM.
+
+\section{Samodzielna teza}
+Niech $q=18433$, $m=768$, $n=1536$,
+$R=\mathbb Z[X]/(X^{1536}-X^{768}+1)$ i $\sigma=768$.
+Współczynniki mają tę samą reprezentację par A2 co \code{Geometry.Vec},
+z energią
+\[
+ Q_0(v)=\sum_{j<768}(v_j^2+v_jv_{j+768}+v_{j+768}^2),\qquad
+ Q(z_1,z_2)=Q_0(z_1)+Q_0(z_2).
+\]
+Ustalmy $f,g,F,G\in R$ oraz $h,f^{-1}\in R/qR$ spełniające
+\[
+ fG-gF=q,\qquad hf=g\pmod q,\qquad f^{-1}f=1\pmod q.
+\]
+Zakładamy ternarność wszystkich współczynników $f,g$.
+Nie wymagamy ograniczenia współczynników $F,G$ w tym twierdzeniu geometrycznym.
+
+Zdefiniujmy
+\[
+ \tau=e^{2\pi i/4608},\qquad
+ \zeta_{b,j}=\tau^{e_b+6j},\qquad
+ e_0=1,\ e_1=5,\quad b\in\{0,1\},\ j<768,
+\]
+oraz $a_{b,j}=|f(\zeta_{b,j})|^2+|g(\zeta_{b,j})|^2$.
+Kernel dowodzi, że punkty są różne, mają moduł1, zerują wielomian profilu
+oraz $a_{b,j}>0$ z równania NTRU. Ewaluacja jest homomorfizmem faktycznego
+ilorazu współczynnikowego, bez podmiany na obliczenie FFT w FPEMU.
+
+\begin{theorem}[Rzeczywista harmoniczna wystarcza do(M)]
+Jeżeli
+\[
+ \mathcal H(f,g):=\frac{1536}{\sum_{b,j}1/a_{b,j}}\ge991,
+\]
+to istnieje jedna stała $K>0$, niezależna od $c,t$, taka że dla każdego
+$c\in R/qR$ i każdego $0<t\le1$
+\[
+ (1-2^{-34})K t^{-1536}\le
+ \sum_{z:A_hz=c}\exp\!\left(-\frac{tQ(z)}{1179648}\right)
+ \le(1+2^{-34})K t^{-1536}.
+\]
+W szczególności jest to dokładna przesłanka(M)007 dla
+$t\in\{1,1811939328/2093922385,9/16\}$.
+\end{theorem}
+Eksporty: \code{ReciprocalSchur014.mass_from_actual_harmonic} oraz
+\code{SamplerMassCondition014.sampler007_mass_condition}.
+Wspólny $K$ jest wybierany przed wszystkimi challenge i temperaturami.
+Jest świadkiem dowodowym, nie dodatkowym tajnym wejściem publicznego algorytmu.
+
+\section{Co wyprowadzono, zamiast zakładać}
+\textbf{Izometria i pierwotny cap.}
+Mnożenie przez $X$ cyklicznie przesuwa pary; zawinięcie pary końcowej
+to $(x,y)\mapsto(-y,x+y)$. Dowiedziono zarówno zachowania $Q_0$, jak
+i równości tej operacji z mnożeniem w ilorazie. Indukcja obejmuje wszystkie
+monomiany. Dla faktycznej bazy
+$\mathcal B(u,v)=(gu+Gv,-fu-Fv)$ z013 każda przekątna bloku pierwotnego
+wynosi dokładnie $Q_0(f)+Q_0(g)\le4608$.
+
+\textbf{Dokładny podział.}
+Jawna równoważność indeksów grupuje najpierw1536 współczynników $u$,
+potem1536 współczynników $v$. Macierze $A,C,D$ są podmacierzami
+\emph{tego samego} Grama013. Kernel dowodzi
+$\Gamma_{\rm grouped}=\left(\begin{smallmatrix}A&C\\C^{\mathsf T}&D\end{smallmatrix}\right)$,
+dodatniości i pełnej reindeksacji sumy. Nie zamieniamy rzeczywistego shear
+w całkowitą bijekcję i nie korzystamy z wadliwego \code{ldl_shape}.
+
+\textbf{Rzeczywisty Parseval.}
+Z prymitywności $\tau$ i sum geometrycznych wyprowadzono
+\[
+ \sum_{b,j}\zeta_{b,j}^{k}=
+ \begin{cases}1536&k=0,\\768&k=768,\\0&0<k<1536,\ k\ne768.\end{cases}
+\]
+Sprzężenie daje korelacje ujemnych różnic wykładników. Dla macierzy
+ewaluacji $V$ wynika stąd dokładnie $V^*V=1536H_0$, gdzie $H_0$ jest
+rzeczywistą metryką A2. To udowodniona instancja, nie przesłanka.
+
+\textbf{Ta sama baza w ewaluacjach.}
+Homomorfizmy \code{Evaluation014.atRoot} wiążą mnożenie współczynników
+z mnożeniem wartości. Pełna macierz ewaluacji $E$ i macierz punktowej
+bazy $Z$ spełniają $EM=ZE$ dla rzeczywistej macierzy współczynników $M$.
+Z pełnego Parsevala i tej tożsamości wyprowadzono
+\[
+ A=\frac1{1536}V^*\operatorname{diag}(a)V,\quad
+ C=\frac1{1536}V^*\operatorname{diag}(b)V,\quad
+ D=\frac1{1536}V^*\operatorname{diag}(d)V.
+\]
+Tu równości zespolone identyfikują rzeczywiste macierze po kanonicznym
+osadzeniu w $\mathbb C$; $b=\bar gG+\bar fF$ i $d=|F|^2+|G|^2$
+w każdym punkcie ewaluacji.
+
+\textbf{Odwrotny Schur.}
+Kernel konstruuje obustronną odwrotność $V$ z Parsevala i dodatniej
+metryki. Równanie NTRU daje $ad-|b|^2=q^2$ punkt po punkcie.
+Pełny rachunek odwrotności, sprzężeń i normalizacji daje
+\[
+ S=D-C^{\mathsf T}A^{-1}C
+   =\frac1{1536}\operatorname{Re}\bigl(V^*\operatorname{diag}(q^2/a)V\bigr).
+\]
+Dlatego $S_{jj}=q^2/\mathcal H\le q^2/991$. Granicą przekątnych $A,S$
+zasilono gotowy lemat012 i istniejące składniki T5. Otrzymano pełną masę,
+jej jednolitość względem przesunięcia oraz dokładne skalowanie temperatury.
+
+\section{Przesłanki, klasy i mapa pozostałych murów}
+\begin{itemize}
+\item Pozostaje powiązanie kanonicznej $\mathcal H(f,g)$ z dokładną
+kolekcją ewaluacji w źródłowym ROOT/STABLE010 oraz kernelowy bound dla
+każdego rzeczywiście emitowanego klucza. Argument mixed/source010 nie
+awansuje automatycznie przez niniejszy wynik.
+\item Równania NTRU/public/inverse i ternarność muszą pochodzić od tego
+samego materiału i publicznego $h$. Lokalne mosty011/source3 pomagają,
+ale cały emitted law/codec/pozytywna masa emisji pozostają osobnym Q-KEY/Q-BIND.
+\item(M) dotyczy nieskończonej masy. Skończony box, capy, wszystkie gałęzie
+007, $J\ll P$, kierunkowy moment i koszt programu nadal wymagają właściwej
+kernelowej konsumpcji. $2^{-34}$ nie jest nadmiarem momentu $e$.
+\item Używamy budżetu991/2$^{-34}$. Nie przenosimy go do eksportu T5
+wymagającego1023/2$^{-36}$ ani do helpera wymagającego2$^{-40}$.
+\item Q-HASH-LOG/Q-EMBED/Q-COLL/Q-COMPOSE/Q-PRG/Q-RESC zachowują granice.
+Nie dodano założeń kryptograficznych ani nie zmieniono modelu gry.
+\end{itemize}
+
+\section{Wykonanie i niewygodna kontrola}
+Dziesięć nowych modułów dowodowych zawiera108 sprawdzonych deklaracji;
+osobny \code{GeometryInterface014} drukuje dokładne typy publicznych
+eksportów. Finalne logi są czyste, z wyłącznie standardowymi aksjomatami
+Lean4.34.0. To liczba deklaracji pomocniczych i końcowych, nie108 odrębnych
+nowości. Wykorzystano poprzednie NTRUFiber,013,012 i T5; nie dowodzono
+ponownie Poissona ani ogólnych boundów masy.
+
+Sage10.9:9 dokładnych przypadków nad QQ i ciałami cyklotomicznymi
+(stopnie2,6,12),792 kontrole mnożenia przez monomiany, normalizacja
+Fouriera i pełne dopełnienie Schura. Małe przykłady nie dowodzą stopnia1536
+ani nie są kluczami emitted FT1536. Wymiar1536 obejmuje dowód Lean.
+
+Pierwszy checker błędnie oczekiwał, że niewłaściwe zawinięcie modulo
+$X^{2m}-1$ popsuje normę. Tymczasem na granicy ono zamienia $(x,y)$ w
+$(y,x)$ i też zachowuje normę. Jest nadal innym iloczynem w pierścieniu.
+Zachowano źródło i porażkę; poprawna kontrola sprawdza niezgodność
+reszty wielomianowej oraz jawnie zapisuje, że sama norma nie identyfikuje
+ilorazu. Kernel dowodzi obu własności osobno.
+
+Pozostałe próby zachowują błędy API, linterów, ograniczenia elaboracji,
+nieudaną nadmierną redukcję stałej sumy i stack overflow od ogólnego
+upraszczania \code{apply_ite}. Żaden failed \code{sorryAx} ani artefakt
+odrzuconego runu nie jest przyjętym dowodem.
+
+Baza: \code{bc9decf3c4f6d23d9e8982a361bae2f5f582c2ba}.
+Źródła, piny i receipty: \code{ACTUAL_HARMONIC_014_INPUTS.json},
+\code{ACTUAL_HARMONIC_014_RECEIPT.json}, \code{ACTUAL_HARMONIC_014_ATTEMPTS.json},
+\code{ACTUAL_HARMONIC_014_OUTPUTS.sha256}. Koszt kompilacji i kontroli jest
+zapisany oddzielnie od nadal wymaganego kosztu wykonywalnego samplera.
+\end{document}
