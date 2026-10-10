@@ -22,6 +22,16 @@ setup are consumed. Local row domains remain explicit pending outer-stage
 composition. The first parser/type attempt is retained: scalar compound
 `t <<= 1` is not the same AST as the for-clause `m >>= 1`; no parser or limit
 was weakened. This small source commit is NOT the window midpoint.
+ReverseRows/Stages/Entry/Invocation/Calls/Material accepted0/0: ALL eight
+actual stages (t6→1536, m256→1) and their rows/inner bodies derive the explicit
+unnormalized1536-cell image of the SAME public quotient input. The complete
+invocation derives the t/m/v caller types, and carries n/hn/logn, both igm
+aliases and r/ni declaration types to the actual first-root suffix. Both
+table disposals, observed flow and caller t disposal are retained. No043
+headline premise is added. Two additional failed attempts are retained
+(scalar shift constructor; redundant Declared unfolding in raw existential
+goals). Block-polynomial reconstruction is next, before first-root/normalization.
+This second source commit is NOT the single window midpoint.
 
 ## B1.06 — CLOSED at SAME quotients through all actual inverse triples — 2026-10-10
 
