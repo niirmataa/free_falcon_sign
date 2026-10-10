@@ -1,0 +1,222 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm]{geometry}
+\usepackage{fontspec}\setmainfont{Latin Modern Roman}
+\setmonofont{Latin Modern Mono}[Scale=0.85]
+\usepackage{amsmath,amssymb,amsthm,longtable,booktabs,xurl,hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{3em}
+\newcommand{\code}[1]{\nolinkurl{#1}}
+\newtheorem{theorem}{Twierdzenie}
+\title{Conditional certificate for the actual public sampler\\\large S05 / LOCAL LEAVES 017}
+\author{Notatka robocza dla Niirmata}\date{11 października 2026}
+\begin{document}\maketitle
+\textbf{PARTIAL PROOF / WARUNKOWY / NOT REVIEWED.}
+Klasa: obowiązek dowodowy Q-SAMPLER; koszt operacyjny to osobny Q-RESC.
+Wszystkie literały i finalny \code{ActualInterface017} mają czysty build
+kernelowy. Cztery lokalne obowiązki 016 zostały wypełnione; dokładny(M)
+pozostaje jawną przesłanką, bez źródłowej instancji całego prawa kluczy.
+Nie jest to deklaracja bezpieczeństwa FT1536 w QROM ani niezależny odbiór.
+
+\section{Model, pełna odpowiedź i jawny warunek}
+Niech $q=18433$, $n=1536$, $R=\mathbb Z[X]/(X^{1536}-X^{768}+1)$,
+$R_q=R/qR$, $h\in R_q$, $d=1179648$ i $B=2093922385$.
+Wektor ma 768 par współczynników; para wektorów ma 1536 takich par.
+Definiujemy
+\[
+ q_2(x,y)=x^2+xy+y^2,\quad Q_0(v)=\sum_{i<768}q_2(v_i,v_{i+768}),
+ \quad Q(v,w)=Q_0(v)+Q_0(w),\quad A_h(v,w)=v+hw\pmod q.
+\]
+Na $\mathcal B=[-65535,65535]^{3072}\cap\mathbb Z^{3072}$ niech
+$G$ ma masy proporcjonalne do $e^{-Q/d}$, a $G_B=G\mid\{Q<B\}$.
+Prawo pary $g$ ma normalizator
+$g_1=\sum_{|x|,|y|\le65535}e^{-q_2(x,y)/d}$.
+
+Uczciwe prawo $P_h$ wybiera jednostajny $c\in R_q$, a następnie do 16
+niezależnych prób z $G$ warunkowego na $A_hz=c$. Wybiera pierwszą próbę
+z $Q(z)<B$. Wyczerpanie prób daje $\bot$; wybrany drugi wektor poza
+signed16 również daje $\bot$. Pełny wynik to $(c,o)$ i zawiera wszystkie
+te modelowane porażki. Nie warunkujemy $P_h$ na sukcesie.
+
+Warunek (M) pozostaje dokładnie warunkiem 007/015: istnieje jedno $K>0$
+przed kwantyfikatorami $c,t$, takie że dla każdego $c\in R_q$ i
+$t\in\{1,1811939328/2093922385,9/16\}$ zachodzi
+\[
+ (1-2^{-34})Kt^{-1536}\le
+ \sum_{z\in\mathbb Z^{3072}:A_hz=c}e^{-tQ(z)/d}
+ \le(1+2^{-34})Kt^{-1536}.
+\]
+017 nie dodaje temperatury do tego warunku. Użyta niżej temperatura
+$1/4$ jest osobnym, bezwarunkowo dowiedzionym rachunkiem pojedynczej pary A2.
+
+\section{Konkretny kod}
+Kod używa publicznych całkowitych tablic 003: skumulowanych wag $F_i$ dla
+$0\le i\le30720$ oraz progów $V_j$ dla $0\le j\le61440$.
+Niech $S=F_{30720}$, $F_{-1}=0$ i $W_i=F_i-F_{i-1}$.
+Słowo 384-bitowe jest redukowane modulo $S$; pierwszy indeks spełniający
+$u\bmod S<F_i$ reprezentuje współczynnik $i-15360$. Dwa niezależne
+takie słowa dają $x,y$. Trzecie, niezależne słowo 256-bitowe akceptuje parę,
+gdy jest mniejsze niż $V_{x+y+30720}$.
+
+Po 80 odrzuceniach pary kod zwraca $(0,0)$. Wektor powstaje z 1536
+niezależnych par. Pierwszy z najwyżej 196 wektorów o $Q<B$ zostaje wybrany;
+po wyczerpaniu capu kod wybiera świeży jednostajny punkt
+$[-512,511]^{3072}$. Zwraca $(A_hz,\mathrm{some}(z_2))$.
+Taśma wszystkich prób i świeżego fallbacku składa się z niezależnych,
+uczciwych bitów. Kod ignoruje wiadomość, nonce i stan; wywołujemy go z
+publicznym \code{initial}, a certyfikat obejmuje każdy stan.
+Nie rekonstruujemy historii kwantowych zapytań.
+
+016 dostarcza kod \code{ActualTables016.actualSampler}, dokładne prawa
+obu capów i emisji oraz bezwarunkowe $J_h\ll P_h$ dla każdego $h$.
+W szczególności $J_h(c,\bot)=0$ nie usuwa żadnych atomów porażki z $P_h$.
+017 wypełnia jego cztery lokalne obowiązki analityczne.
+
+\section{Weryfikowalne tablice Gaussa}
+Niech $c_0=2359296=2d$, $E_k=e^{-k^2/c_0}$ i $0\le k\le30720$.
+Wprowadzamy całkowite przedziały $L_k,U_k$ w skali $2^{384}$.
+Dla $a=2k+1$:
+\[
+ D=47!c_0^{47},\qquad N(a)=\sum_{j=0}^{47}\frac{47!}{j!}c_0^{47-j}a^j.
+\]
+Kernel dowodzi tożsamości tego wielomianu z dodatnim wielomianem Taylora
+dla $e^{a/c_0}$ i błędu najwyżej $2^{-400}$, ponieważ $a/c_0<1/32$.
+Dane certyfikatu spełniają
+\begin{align*}
+ L_0=U_0&=2^{384},\\
+ L_{k+1}(N(2k+1)2^{400}+D)&\le L_kD2^{400},\\
+ U_kD&\le U_{k+1}N(2k+1).
+\end{align*}
+Indukcja daje $L_k\le2^{384}E_k\le U_k$. Generator Sage proponuje liczby;
+Lean sprawdza wszystkie nierówności. Wynik generatora sam nie jest dowodem.
+Bezpośrednio sprawdzane są też wszystkie różnice CDF i progi:
+\begin{align*}
+ F_{i-1}&<F_i,\\
+ W_i2^{236}&\le(2^{108}+1)L_{|i-15360|},\\
+ (2^{108}-1)U_{|i-15360|}&\le W_i2^{236},\\
+ V_j2^{128}&\le L_{|j-30720|},\\
+ (2^{108}-1)U_{|j-30720|}&\le V_j2^{236}\quad(|j-30720|\le15360).
+\end{align*}
+Zatem przy $\delta=2^{-108}$:
+\[
+ (1-\delta)E_{|x|}\le W_{x+15360}/2^{256}\le(1+\delta)E_{|x|},
+ \qquad V_{s+30720}/2^{256}\le E_{|s|},
+\]
+a dolna granica progu wynosi $(1-\delta)E_{|s|}$ dla $|s|\le15360$.
+
+Rzeczywisty CDF nie jest traktowany jako idealne losowanie Gaussa.
+Dla $N=2^{384}$ kernel zlicza dokładnie przedział reszt $[a,b)$:
+\[
+ \#\{u<N:a\le u\bmod S<b\}
+ =\lfloor N/S\rfloor(b-a)+\min(b-a,N\bmod S-a),
+\]
+gdzie odejmowanie po prawej jest obciętym odejmowaniem naturalnym.
+Stąd względny błąd wobec $(b-a)/S$ wynosi najwyżej $S/N$.
+Sprawdzony literał $S\le2723\,2^{256}$ daje $S/N\le\beta=2^{-115}$.
+\code{CDFProbability017} i \code{PairProbability017} wiążą ten rachunek
+z \emph{dokładną funkcją kodu} odczytującą bity, wybierającą indeks i
+testującą próg; nie przyjmują równości prawa jako przesłanki.
+
+\section{Cztery rzeczywiste lokalne świadki}
+Z ponownego użycia Poissona i przesuniętego Gaussa ROM dostajemy
+\[
+ 4200000\le g_1\le4300000,\qquad g(0,0)=1/g_1\ge2^{-23}.
+\]
+Niech $C=\{|x|,|y|,|x+y|\le15360\}$. Poza $C$ energia spełnia
+$q_2\ge3\cdot15361^2/4$. Dokładna masa całej pary na $\mathbb Z^2$
+przy temperaturze $1/4$ jest najwyżej17200000. Wykładnicze przesunięcie
+temperatury daje utratę masy najwyżej $2^{-135}$, więc
+\[
+ \sum_{(x,y)\in C}e^{-q_2(x,y)/d}\ge(1-\tau)g_1,
+ \qquad\tau=2^{-130}.
+\]
+To pozwala zachować dolną granicę akceptacji bez pełnej konwolucji tablic.
+
+Niech $p_T$ będzie pełnym prawem surowej próby pary, $r=p_T(\bot)$,
+$a=1-r$, $A=2^{256}/S$ oraz
+\[
+ c_+=(1+\beta)^2(1+\delta)^2,\qquad
+ c_-=(1-\beta)^2(1-\delta)^3.
+\]
+Ponieważ $x^2+y^2+(x+y)^2=2q_2(x,y)$, powyższe nierówności dają
+\[
+ p_T(x,y)\le c_+A^2e^{-q_2(x,y)/d},\qquad
+ a\ge c_-A^2(1-\tau)g_1.
+\]
+Kernelowy rachunek liczb wymiernych potwierdza
+\[
+ c_-(1-\tau)\frac{4200000}{2723^2}\ge\frac9{16},\qquad
+ c_+\le(1+2^{-100})c_-(1-\tau).
+\]
+Zatem $r\le7/16$ i $p_T(b)\le(1-r)(1+2^{-100})g(b)$.
+Te dwa wyniki oraz $g(0,0)\ge2^{-23}$ wypełniają wszystkie pola
+\code{PairLeaves} dla \emph{rzeczywistych} tablic.
+
+Świeży sześcian ma atomy najwyżej $2^{-30720}$ i energię najwyżej
+$1207959552=1024d<B$. Ponadto $Z_B:=\sum_{z\in\mathcal B:Q(z)<B}e^{-Q(z)/d}\le g_1^{1536}$ oraz
+$e^{1024}\le2^{1500}$. Z dokładnego rachunku
+\[
+ \frac{4300000^{1536}\,2^{1500}}{2^{30720}}\le2^{4630}
+\]
+otrzymujemy $U(z)\le2^{4630}G_B(z)$ dla każdego $z$, czyli rzeczywisty
+\code{CubeLeaf}. Ten dowód nie używa(M).
+
+\section{Kompozycja i granice wyniku}
+\begin{theorem}[Kernelowy eksport017 pod dokładnym(M)]
+Dla powyższego konkretnego kodu i każdego $h$ spełniającego(M), każdego
+stanu, wiadomości i nonce, pełne prawa odpowiedzi spełniają
+\[
+ J_h\ll P_h,\qquad \sum_x J_h(x)^2/P_h(x)\le1+2^{-47}.
+\]
+Używamy konwencji $0/0=0$; absolutna ciągłość wyklucza dodatnią masę
+$J_h$ przy zerowej masie $P_h$. Ten sam bound zachodzi dla wspólnego prawa
+$(h,\text{odpowiedź})$, jeżeli \emph{to samo} prawo kluczy $\mu_H$ ma
+nośnik pokryty przez(M). Wywołanie z publicznym \code{initial} jest
+szczególnym przypadkiem twierdzenia obejmującego każdy stan.
+\end{theorem}
+Kompozycja016 zachowuje anulowanie normalizacji po odrzuceniu, pełne prawa
+capów 80/196, niezależny fallback i dominację $1+2^{-60}$.
+015 przenosi tę dominację do pełnego kierunkowego momentu z porażkami.
+Nie wzmacniamy ani nie odwracamy nierówności momentu.
+
+\textbf{Co nadal pozostaje otwarte.} (M) nie jest tu dowiedzione dla
+wszystkich $h$ ani dla całego rzeczywistego prawa emitowanych kluczy.
+014 daje wystarczający warunek z rzeczywistych równań NTRU/public/inverse,
+ternarności i kanonicznej harmonicznej $\ge991$; źródłowe pokrycie tego
+warunku nadal jest osobnym obowiązkiem. Otwarte są też całe prawo Sign/API,
+hop PRG, semantyka QROM, osadzenie celów, kolizje/reprogramowanie i zasoby
+reduktora. Nie podajemy poziomu bezpieczeństwa.
+Kwantowa kompozycja wymaga osobnych, jawnych przesłanek; samo niezależne
+losowanie klasycznej odpowiedzi nie stanowi jej dowodu.
+
+\textbf{Koszt.} Referencja ma ustaloną taśmę 24 662 538 240 bitów i ma
+24 084 480 logicznych miejsc propozycji pary. Te liczby nie są dowodem kosztu
+operacyjnego, czasu, pamięci ani liczby rzeczywistych wywołań: referencja
+funkcyjna może przeliczać współczynniki. Receipt017 mierzy generację i
+weryfikację \emph{dowodu}, nie wykonanie samplera. Q-RESC i zgodność
+optymalizowanej implementacji pozostają OPEN.
+Kernel stwierdza $2^{267}\le S<2^{268}$ oraz środkowy próg
+$V_{30720}=2^{256}$. Słowo monety ma 256 bitów, ale próg wymaga 257 bitów
+albo równoważnej, jawnej reprezentacji pełnej akceptacji.
+
+\section{Kontrole oraz oddzielna przeszkoda źródłowa}
+Kernel odrzuca podniesienie pierwszej dolnej granicy $L_1$ o 1, podniesienie
+środkowego progu ponad $2^{256}$ i wyzerowanie środkowej wagi.
+Mały kontrolny licznik pokazuje, że reszta modulo 5 z 13 słów nie jest
+jednostajna. Próby przekraczające pamięć, błędy elaboracji i nieudany zapis
+Sage pozostają z logami i przyczynami; finalny świadek wymaga czystych logów.
+
+Osobno sprawdzono pin ROM \code{18a3ffe3}. Jego \code{VirtualLegal}
+wymaga iniekcji wszystkich identyfikatorów \code{Nat} w adresy poniżej
+$2^{64}$; kernel dowodzi niemożliwości takiej mapy. Gałąź
+\code{Invocation.encoded} wymaga tego warunku. To przeszkoda w modelu
+tego pinu, nie kontrprzykład bezpieczeństwa C; gałąź \code{capped} nie
+ma tej przesłanki. Szczegóły i piny: \code{ROM_INVOCATION_AUDIT_017.md}.
+Dowody samplera 017 nie importują tej maszyny instrukcji i nie zależą od
+jej niemożliwej przesłanki.
+Osobny kernelowy suplement stwierdza też niemożliwość binderu
+$\forall s,\operatorname{Dimensions}(s)$ w finalnym eksporcie
+tego pinu: aktualizacja dowolnego stanu do pustych \code{locals}
+przeczy wymaganej komórce \code{logn}. Potrzebne są lokalne fakty
+o osiągalnych stanach tej samej inwokacji. Piny i 486 zweryfikowanych par
+wejściowych: \code{ROM_INVOCATION_AUDIT_017_SUPPLEMENT_001.md}.
+\end{document}

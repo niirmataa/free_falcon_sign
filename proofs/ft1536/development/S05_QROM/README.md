@@ -3,14 +3,26 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
-**Najnowszy pakiet — [IMPLEMENTATION-016](notes/IMPLEMENTATION_016_CHECKPOINT.md):**
+**Najnowszy pakiet — [LOCAL_LEAVES017](notes/LOCAL_LEAVES_017_CHECKPOINT.md):**
+Wszystkie cztery lokalne pola 016 mają kernelowe instancje dla rzeczywistych
+tablic i kodu. Sprawdzono 61 441 wierszy; dokładne CDF/modulo i prawo pary
+nie są założeniami. `ActualInterface017` daje pełne **J≪P i moment≤1+2^-47
+pod dokładnym (M)**, dla każdego stanu/publicznego initial i tego samego
+pokrytego prawa kluczy. Źródłowe pokrycie M, Sign/PRG, koszt wykonania oraz
+mechanizmy QROM pozostają OPEN. [Pełne zdanie](notes/LOCAL_LEAVES_017.tex),
+[następny duży TODO018](notes/TODO_COST_AND_SOURCE_018.md).
+Osobno kernelowo wykryto dwie niemożliwe przesłanki pinu ROM 18a3ffe3:
+[VirtualLegal](notes/ROM_INVOCATION_AUDIT_017.md) i
+[Dimensions](notes/ROM_INVOCATION_AUDIT_017_SUPPLEMENT_001.md).
+
+**Checkpoint — [IMPLEMENTATION-016](notes/IMPLEMENTATION_016_CHECKPOINT.md):**
 Wykonywalna referencja Lean z rzeczywistymi publicznymi literałami tablic
 ma **kernelowe J≪P dla każdego h**, poprawną normę i pełne prawa obu capów
 oraz świeżego fallbacku.96 eksportów,17 modułów dowodowych i13 odtwarzalnych
 modułów danych przeszło świeży czysty build. Dołączono3 kernelowe kontrole
 korelacji. Pod(M) i **czterema jawnymi lokalnymi polami** wyprowadzono moment
-`≤1+2^-47` dla tego kodu. **PairLeaves/CubeLeaf nadal nie mają kernelowych
-instancji**; Sage potwierdza marginesy. Koszt operacyjny, zgodność całego
+`≤1+2^-47` dla tego kodu. **W016 PairLeaves/CubeLeaf nie miały kernelowych
+instancji;017 dostarcza je dla rzeczywistych tablic.** Koszt operacyjny, zgodność całego
 Python/C runtime i źródłowe pokrycie kluczy pozostają OPEN.
 [Pełne zdanie i ograniczenia](notes/IMPLEMENTATION_016.tex),
 [TODO016 i kontynuacja017](notes/TODO_IMPLEMENTATION_016.md).
@@ -22,7 +34,7 @@ Pod jawną dominacją `J≤(1+2^-60)J⁰` kernel daje `J≪P` oraz
 `ΣJ²/P≤1+2^-47`, mocniej od historycznego007. Dołączono konsument014
 z rzeczywistej harmonicznej oraz wrapper publicznego initial obejmujący
 każdy stan i to samo pokryte prawo kluczy. **To konstruktory warunkowe:**
-instancja dominacji/kodu007, koszt maszyny i źródłowe pokrycie kluczy nadal OPEN.
+Instancję dominacji konkretnego kodu dostarcza017; koszt maszyny i źródłowe pokrycie kluczy nadal OPEN.
 [Pełne zdanie](notes/BOX_MOMENT_015.tex), [zamknięty TODO](notes/TODO_BOX_MOMENT_015.md).
 
 **Checkpoint — [ACTUAL_HARMONIC-014](notes/ACTUAL_HARMONIC_014_CHECKPOINT.md):**
@@ -32,7 +44,7 @@ Z rzeczywistych równań NTRU/public/inverse, ternarności i **jawnego H≥991**
 wynika jedna dodatnia skala dla wszystkich challenge i temperatur0<t≤1,
 z błędem masy2^-34. Gram/Parseval/widmo nie są już wejściowymi certyfikatami.
 **Source → H≥991 dla emitted kluczy nadal OPEN.** Pełne prawa referencji
-i AC rozwija016; instancje lokalnych pól momentu i koszt operacyjny pozostają OPEN.
+i AC rozwija016, a instancje lokalnych pól momentu domyka017; koszt operacyjny pozostaje OPEN.
 [Pełne zdanie](notes/ACTUAL_HARMONIC_014.tex),
 [większy TODO](notes/TODO_QUANTITATIVE_GEOMETRY_014.md).
 
@@ -58,13 +70,13 @@ konkretną energię i dodatniość, a014 Parsevala i widmo. Cały certyfikat007 
 **Checkpoint — [KEY_SUPPORT-011](notes/KEY_SUPPORT_011_CHECKPOINT.md):**
 29 nowych twierdzeń Lean o tym samym materiale/publicznym h, właściwym
 prawie kluczy po emisji, pokryciu nośnika, publicznym initial i pełnym J/P.
-To **kernelowe konstruktory warunkowe**; rzeczywisty `EmissionView` oraz
-`OnKeys` dla wykonywalnego007 nadal wymagają instancji. Stary all-h typ
+To **kernelowe konstruktory warunkowe**.017 dostarcza certyfikat samplera pod(M);
+rzeczywisty `EmissionView` i źródłowe pokrycie prawa kluczy nadal wymagają instancji. Stary all-h typ
 pozostaje niezmieniony. [Dokładny zakres](notes/KEY_SUPPORT_011.tex).
 
 Decyzja właściciela: **kernel przed użyciem wyniku w ostatecznej tezie**.
-[Klasy warunków](notes/CERTIFICATE_CLASSES_016.json) rozdzielają obowiązki,
-założenia kryptograficzne i model; [kolejka kernela](notes/KERNEL_QUEUE_016.json)
+[Klasy warunków](notes/CERTIFICATE_CLASSES_017.json) rozdzielają obowiązki,
+założenia kryptograficzne i model; [kolejka kernela](notes/KERNEL_QUEUE_017.json)
 ma priorytety według zależności tezy, również jawne wpisy h=0 i Dyadic.
 
 **Checkpoint — [ponowne użycie ROM010](notes/ROM_REUSE_010_CHECKPOINT.md):**
@@ -151,7 +163,7 @@ Nie nadpisujemy prób. [Handoff 004](notes/SAMPLER_004_HANDOFF.json),
 | Wspólna kontynuacja i kompozycja w grach programowanych | Dowód tekstowy warunkowy, CONTINUATION-002 |
 | Wykonalny publiczny sampler pełnej odpowiedzi, również porażek | 016: konkretna referencja Lean i publiczne literały tablic; pełne prawa capów80/196 oraz zero/świeży sześcian kernelowe. J(none)=0 jawnie; uczciwe porażki pozostają w P. Pełny koszt maszyny OPEN |
 | Absolutna ciągłość J względem uczciwego P | 016: KERNEL dla konkretnego actualSampler i każdego h, bez(M). Osobno source/API binding OPEN |
-| Certyfikat `ΣJ²/P≤1+e`, z użytecznym e | 007: tekstowe `e<2^-44` pod (M). 014: kernelowe(M) z rzeczywistej bazy i H≥991;015: pełny kernelowy moment≤1+2^-47 pod jawną dominacją kodu. 016: cały kod → moment pod lokalnymi PairLeaves/CubeLeaf; instancje tych pól oraz emitted prawo OPEN. 004 zachowuje h=0 `e<2^-50`; cel all-h OPEN |
+| Certyfikat `ΣJ²/P≤1+e`, z użytecznym e | 007: tekstowe `e<2^-44` pod (M). 014: kernelowe(M) z rzeczywistej bazy i H≥991;015: pełny kernelowy moment≤1+2^-47 pod jawną dominacją kodu. 017: rzeczywiste PairLeaves/CubeLeaf wypełnione i cały kod → moment≤1+2^-47 pod dokładnym(M). Emitted prawo i pokrycie(M) OPEN. 004 zachowuje h=0 `e<2^-50`; cel all-h OPEN |
 | Dokładna baza/LDL → masa wszystkich włókien przy trzech temperaturach | **Kernel014**: konkretne współczynniki → monomiany/primary cap → kanoniczny Parseval → widmowy Schur →(M)007. Jawne wejścia: NTRU/public/inverse, ternarność i kanoniczna H≥991. Source harmonic nadal mixed, bez awansu całego C-KeyGen |
 | Odziedziczone `BasisLeafAlgebra.ldl_shape` | 008: przeszkoda pierwszych dwóch pivotsów; tej instancji nie można użyć w obecnej postaci |
 | Średnia harmoniczna i źródłowy liść767 | 010: H3 ROOT/STABLE +009 dają >1022 w emitted source model, tekstowo/mixed. 3 nowe marginesy kernelowe; full source kernel i typed key-law assembly OPEN |
@@ -165,7 +177,7 @@ Nie nadpisujemy prób. [Handoff 004](notes/SAMPLER_004_HANDOFF.json),
 | Klasyczny log hasza | Wymaga nowej semantyki QROM |
 | Osadzenie `q_H+1` celów | Wymaga nowej konstrukcji Q-TARGET i straty |
 | Klasyczna strata kolizyjna | Zgodna przestrzeń nonce `256^40=2^320` i wzór ROM; nowy rachunek reprogramowania QROM OPEN |
-| To samo źródłowe h i prawo kluczy | 011: kernelowy lokalny material bridge i warunkowy konstruktor emitted law; pełna source/codec instancja OPEN |
+| To samo źródłowe h i prawo kluczy | 011: kernelowe interfejsy, pełna source/codec instancja OPEN.017: dwie kernelowe przeszkody w pinie18a3ffe3 (globalne VirtualLegal/Dimensions), wymagające naprawionego pinu i lokalnych świadków |
 | Rzeczywiste prawo Sign i wszystkie wyjścia API | Q-BIND pozostaje OPEN; 011 nie zamienia modelowego P w cały program |
 | Kwantowy PRG/seed, publiczny SHAKE/H2P (S04), zasoby reduktora | Osobne otwarte przesłanki |
 

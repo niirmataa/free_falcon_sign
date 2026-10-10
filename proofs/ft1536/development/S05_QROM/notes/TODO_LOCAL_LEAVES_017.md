@@ -1,6 +1,6 @@
 # S05 — duży pakiet017: rzeczywiste lokalne liście
 
-Baza `32d2639ae913c088c6fe7ec163caaf0385b246e8`, status IN_PROGRESS/WARUNKOWY.
+Baza `32d2639ae913c088c6fe7ec163caaf0385b246e8`, status CLOSED_SCOPED/WARUNKOWY/NOT_REVIEWED.
 Cel: dostarczać faktyczne świadki pól016, nie kolejne równoważne założenia.
 Klasa każdego poniższego zadania: obowiązek dowodowy Q-SAMPLER; koszt
 operacyjny i source/KeyGen/QROM pozostają osobnymi obowiązkami.
@@ -12,11 +12,11 @@ operacyjny i source/KeyGen/QROM pozostają osobnymi obowiązkami.
 - [x] Kernelowa semantyka wyboru CDF, przedziały i zliczanie modulo; dokładne
       p_T związane z kodem i literałami; konwolucję zastępuje jawna trasa
       Gaussian sandwich + central mass (patrz GAUSSIAN_CERTIFICATE_ROUTE_017.md).
-- [ ] Zaokrąglenia tablic do Gaussa: potrzebne certyfikaty eksp/sandwich,
+- [x] Zaokrąglenia tablic do Gaussa: potrzebne certyfikaty eksp/sandwich,
       potem rejection i raw. Wyniku Sage nie traktować jako kernela.
-- [ ] Złożyć faktycznie wypełnione pola; przy niewypełnionym polu zachować
+- [x] Złożyć faktycznie wypełnione pola; przy niewypełnionym polu zachować
       dokładny typ i status OPEN, bez przemianowania go na założenie crypto.
-- [ ] Świeży build, piny, próby, kontrole negatywne i polski checkpoint.
+- [x] Świeży build, piny, próby, kontrole negatywne i polski checkpoint.
 
 Kolejność zależności: najpierw dwa niezależne liście normalizatora/cube,
 równolegle w sensie planu — liczności CDF i metoda certyfikacji tablic.
@@ -34,3 +34,17 @@ nie jest jeszcze bezwarunkową instancją, dopóki GaussianWitness017 nie przejd
 Pełny przebieg121 niezależnych modułów kontroli trwa w witness_build001;
 ActualInterface017 jest przygotowany, lecz nie wolno oznaczać go jako kernelowy
 przed zakończeniem kontroli i jego własnym czystym buildem.
+
+Aktualizacja wykonania: oryginalne30 partii obejmuje wiersze0..15359.
+`witness030001` i `rest005001` przekroczyły limit pamięci; sam blok8 wierszy
+również zawiódł w `memoryprobe001`, mimo że pojedyncze128 wierszy przeszło.
+Wybrana dalsza trasa: `witness_sources003/SELECTED.json`, każdy wiersz
+osobnym twierdzeniem kernelowym,181 nowych modułów i zachowany prefiks.
+Cztery ograniczone procesy kompilacji w `witness_build003`; nie są to modele
+ani wykonawcy T12.1. Ostateczna instancja nadal czeka na cały ten przebieg.
+Wszystkie stare źródła, udane kontrole i porażki pozostają zachowane.
+
+Zamknięcie017: pełny wybrany świadek61441 wierszy, aggregate, ActualInterface017
+i świeży finalny replay przeszły. Cztery lokalne pola są wypełnione;
+pozostają M/source coverage, wykonanie/koszt i QROM. Powyższe wpisy „w toku”
+opisują zachowane wcześniejsze granice przebiegu, nie aktualny stan.
