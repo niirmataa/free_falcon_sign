@@ -1,0 +1,584 @@
+{
+  "id": "S05_KEY_SUPPORT_011",
+  "condition_class": "proof_obligation",
+  "condition_ids": [
+    "Q-KEY",
+    "Q-SAMPLER",
+    "Q-BIND"
+  ],
+  "status": "KERNEL_CHECKED_CONDITIONAL_ASSEMBLY_NOT_ACTUAL_INSTANCE",
+  "base_commit": "a068d1ffda847ca25d8ce6f5a2cecd0fd673c63e",
+  "packaging_head": "5f5074e6b8b9ac7a2f209b1cd1232b2bccb5ea21",
+  "final_theorem_eligible": false,
+  "kernel_scope": {
+    "SourceMaterial011": "8 theorems: same public array, encoding-input material, accepted attempt, whole affine fibers and reindexing",
+    "KeySupport011": "17 theorems: explicit key domain, initial wrapper, once-conditioned public marginal, support and full joint moment",
+    "EmissionBridge011": "4 theorems: emission-view support, same material and decoded bytes, old ROM muH, sampler-certificate composition"
+  },
+  "remaining_named_instances": [
+    "EmissionView for actual complete source KeyGen including retry and codec linkage and positive emission mass",
+    "OnKeys for the executable sampler007, including kernelized harmonic/Schur/full-moment chain",
+    "all quantum oracle/composition/embedding and PRG obligations"
+  ],
+  "classes": {
+    "model": [
+      "Q-MODEL:experiment, observations, finite source-law interpretation"
+    ],
+    "proof_obligation": [
+      "Q-KEY",
+      "Q-SAMPLER",
+      "Q-BIND",
+      "Q-RESC",
+      "Q-COMPOSE"
+    ],
+    "cryptographic_assumption": [
+      "A-QMT",
+      "Q-PRG primitive bound"
+    ],
+    "Q-PRG_hop": "proof_obligation; separate from primitive assumption"
+  },
+  "clean_lean_runs": [
+    {
+      "receipt": {
+        "module": "EmissionBridge011",
+        "extra_dependencies": [
+          {
+            "module": "SourceMaterial011",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/local_lib_001/SourceMaterial011.olean",
+            "artifact_sha256": "b34723c120c438fdfd7fe9d5431b74df01723bbb89681845f792802e711a1b56",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/formal/SourceMaterial011.lean",
+            "source_sha256": "1551f9881d40d0bc6a942598ddba77d7732e9cdaf9c8c40a9e214e80cb12e0a3",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/source_002/receipt.json"
+          },
+          {
+            "module": "KeySupport011",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/local_lib_001/KeySupport011.olean",
+            "artifact_sha256": "93dcd1d626b4d12ffc96633cb19635babf98c9094a8f350cd9c960a9ad1a26d5",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/formal/KeySupport011.lean",
+            "source_sha256": "6527eb9e607fb05930938eeb92bb953984302def905083d35d2027f321c22664",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/support_005/receipt.json"
+          }
+        ],
+        "command": [
+          "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+          "--root=/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/emission_001/source",
+          "-j1",
+          "-s8192",
+          "-DElab.async=false",
+          "-M4096",
+          "-o",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/emission_001/lib/EmissionBridge011.olean",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/emission_001/source/EmissionBridge011.lean"
+        ],
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 1.3180104560015025,
+        "source_sha256": "461b899ae42f15b32316c4fd7588e653ade816f6baf29704ff27fdc11630f492",
+        "snapshot_sha256": "461b899ae42f15b32316c4fd7588e653ade816f6baf29704ff27fdc11630f492",
+        "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/emission_001/lib/EmissionBridge011.olean",
+        "artifact_sha256": "74502043ac5c0d3a5ba74cac12ffb115e8f6552cef662b4800d30605271f2b74",
+        "stdout_sha256": "0d3e45d9ec0c317f8cacfa09d306893488ce88488411674dde8ab20822b0129a",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "warning_count": 0,
+        "error_count": 0,
+        "runner_sha256": "4c1c9a989a01ca4a636b09b7781bf58558e23d9a988a2c0e5f5ce1c446cd77ca",
+        "dependency_pins_sha256": "6ac079a4b5de957027376f0b15ae7035a7306e681b60ec5ae7edb5c913bf5476",
+        "memory_GiB": 8,
+        "cpu_seconds": 110,
+        "wall_seconds": 120,
+        "cores": 1
+      },
+      "stdout": "'FT1536.S05.EmissionBridge011.public_support' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.EmissionBridge011.supported_material' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.EmissionBridge011.keypair_public_law' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.EmissionBridge011.emitted_sampler_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "stderr": "",
+      "kernel_theorems": 4
+    },
+    {
+      "receipt": {
+        "module": "SourceMaterial011",
+        "command": [
+          "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+          "--root=/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/source_002/source",
+          "-j1",
+          "-s8192",
+          "-DElab.async=false",
+          "-M4096",
+          "-o",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/source_002/lib/SourceMaterial011.olean",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/source_002/source/SourceMaterial011.lean"
+        ],
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 1.3176341529979254,
+        "source_sha256": "1551f9881d40d0bc6a942598ddba77d7732e9cdaf9c8c40a9e214e80cb12e0a3",
+        "snapshot_sha256": "1551f9881d40d0bc6a942598ddba77d7732e9cdaf9c8c40a9e214e80cb12e0a3",
+        "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/source_002/lib/SourceMaterial011.olean",
+        "artifact_sha256": "b34723c120c438fdfd7fe9d5431b74df01723bbb89681845f792802e711a1b56",
+        "stdout_sha256": "6a35213e233056cb48b7e951bfb75c907a7847693353f49d42761cd6ce115ed5",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "warning_count": 0,
+        "error_count": 0,
+        "runner_sha256": "dc0e27b923552e4fc4c8e1bde4dceb798724a13aeb42e848ec375301743987cb",
+        "dependency_pins_sha256": "6ac079a4b5de957027376f0b15ae7035a7306e681b60ec5ae7edb5c913bf5476",
+        "memory_GiB": 8,
+        "cpu_seconds": 110,
+        "wall_seconds": 120,
+        "cores": 1
+      },
+      "stdout": "'FT1536.S05.SourceMaterial011.public_cell_unique' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SourceMaterial011.public_representation_unique' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SourceMaterial011.key_of_encoding_inputs' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SourceMaterial011.key_at_same_public_array' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SourceMaterial011.key_of_accepted_attempt' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SourceMaterial011.coordinates_formula' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SourceMaterial011.every_fiber_point' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SourceMaterial011.gaussian_reindex' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "stderr": "",
+      "kernel_theorems": 8
+    },
+    {
+      "receipt": {
+        "module": "KeySupport011",
+        "command": [
+          "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+          "--root=/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/support_005/source",
+          "-j1",
+          "-s8192",
+          "-DElab.async=false",
+          "-M4096",
+          "-o",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/support_005/lib/KeySupport011.olean",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/support_005/source/KeySupport011.lean"
+        ],
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 1.318279776001873,
+        "source_sha256": "6527eb9e607fb05930938eeb92bb953984302def905083d35d2027f321c22664",
+        "snapshot_sha256": "6527eb9e607fb05930938eeb92bb953984302def905083d35d2027f321c22664",
+        "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/support_005/lib/KeySupport011.olean",
+        "artifact_sha256": "93dcd1d626b4d12ffc96633cb19635babf98c9094a8f350cd9c960a9ad1a26d5",
+        "stdout_sha256": "f69d6d900abacf08f36fcce9ad558f2397ad5c910e6fc25c2b104fbbe86c75a3",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "warning_count": 0,
+        "error_count": 0,
+        "runner_sha256": "dc0e27b923552e4fc4c8e1bde4dceb798724a13aeb42e848ec375301743987cb",
+        "dependency_pins_sha256": "6ac079a4b5de957027376f0b15ae7035a7306e681b60ec5ae7edb5c913bf5476",
+        "memory_GiB": 8,
+        "cpu_seconds": 110,
+        "wall_seconds": 120,
+        "cores": 1
+      },
+      "stdout": "'FT1536.S05.KeySupport011.restrict_legacy' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.univ_to_legacy' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.initial_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.resetInitial_of_initial_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.resetInitial_bits' does not depend on any axioms\n'FT1536.S05.KeySupport011.resetInitial_law' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.resetInitial_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.key_joint_ac' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.second_self' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.key_joint_moment' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.map_composition' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.public_marginal_of_conditioned_keypair' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'FT1536.S05.KeySupport011.emittedPublic_congr_on_emission' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.conditioned_support' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.mapped_support_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.emitted_support' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.emitted_joint_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "stderr": "",
+      "kernel_theorems": 17
+    }
+  ],
+  "historical_lean_runs": [
+    {
+      "receipt": {
+        "module": "SourceMaterial011",
+        "command": [
+          "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+          "--root=/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/source_001/source",
+          "-j1",
+          "-s8192",
+          "-DElab.async=false",
+          "-M4096",
+          "-o",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/source_001/lib/SourceMaterial011.olean",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/source_001/source/SourceMaterial011.lean"
+        ],
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 1.668476417002239,
+        "source_sha256": "7f877e97ca526fea9fa73a37924a861036ca7f7695138a9a6f144cb423c56cfe",
+        "snapshot_sha256": "7f877e97ca526fea9fa73a37924a861036ca7f7695138a9a6f144cb423c56cfe",
+        "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/source_001/lib/SourceMaterial011.olean",
+        "artifact_sha256": "f801d2075ac5dbb64ea5df8d3569605534077ffb1e23d7b54354e0b1eea2a5b3",
+        "stdout_sha256": "4e9ff7c5089cee044c0f86f49a7d2056f1c47c733b494d8a72346f1cf6c9e1dc",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "warning_count": 1,
+        "error_count": 0,
+        "runner_sha256": "dc0e27b923552e4fc4c8e1bde4dceb798724a13aeb42e848ec375301743987cb",
+        "dependency_pins_sha256": "6ac079a4b5de957027376f0b15ae7035a7306e681b60ec5ae7edb5c913bf5476",
+        "memory_GiB": 8,
+        "cpu_seconds": 110,
+        "wall_seconds": 120,
+        "cores": 1
+      },
+      "stdout": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/source_001/source/SourceMaterial011.lean:8:14: warning: Ambiguous namespace `Relation`: it is interpreted as `_root_.FT1536.Relation` because this `open` occurs inside `namespace FT1536.S05.SourceMaterial011`, while `_root_.Relation` is silently not opened. Specify the namespace unambiguously, e.g. `_root_.FT1536.Relation`. The warning can sometimes also be addressed by moving the `open` outside of the surrounding `namespace`.\n\nNote: This linter can be disabled with `set_option linter.ambiguousOpen false`\n'FT1536.S05.SourceMaterial011.public_cell_unique' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SourceMaterial011.public_representation_unique' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SourceMaterial011.key_of_encoding_inputs' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SourceMaterial011.key_at_same_public_array' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SourceMaterial011.coordinates_formula' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SourceMaterial011.every_fiber_point' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SourceMaterial011.gaussian_reindex' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "stderr": ""
+    },
+    {
+      "receipt": {
+        "module": "KeySupport011",
+        "command": [
+          "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+          "--root=/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/support_001/source",
+          "-j1",
+          "-s8192",
+          "-DElab.async=false",
+          "-M4096",
+          "-o",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/support_001/lib/KeySupport011.olean",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/support_001/source/KeySupport011.lean"
+        ],
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 1.118055175000336,
+        "source_sha256": "674f448e292f570fe9cb71bddb6fb60d5d737dfe0be4103fa6d6957066dbc676",
+        "snapshot_sha256": "674f448e292f570fe9cb71bddb6fb60d5d737dfe0be4103fa6d6957066dbc676",
+        "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/support_001/lib/KeySupport011.olean",
+        "artifact_sha256": "661e0445d8a2e02669a23ccafdbb57d451b9f421a76be8030c03a5728f7ce74f",
+        "stdout_sha256": "100d7f312b91b38c0fe3beab8d9191af2cba81e3beaae791bb6a01c68a4b63f8",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "warning_count": 0,
+        "error_count": 0,
+        "runner_sha256": "dc0e27b923552e4fc4c8e1bde4dceb798724a13aeb42e848ec375301743987cb",
+        "dependency_pins_sha256": "6ac079a4b5de957027376f0b15ae7035a7306e681b60ec5ae7edb5c913bf5476",
+        "memory_GiB": 8,
+        "cpu_seconds": 110,
+        "wall_seconds": 120,
+        "cores": 1
+      },
+      "stdout": "'FT1536.S05.KeySupport011.restrict_legacy' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.univ_to_legacy' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.initial_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.key_joint_ac' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.second_self' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.key_joint_moment' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.conditioned_support' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.mapped_support_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.emitted_support' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.emitted_joint_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "stderr": ""
+    },
+    {
+      "receipt": {
+        "module": "KeySupport011",
+        "command": [
+          "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+          "--root=/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/support_002/source",
+          "-j1",
+          "-s8192",
+          "-DElab.async=false",
+          "-M4096",
+          "-o",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/support_002/lib/KeySupport011.olean",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/support_002/source/KeySupport011.lean"
+        ],
+        "status": "completed",
+        "exit_code": 1,
+        "elapsed_seconds": 1.1665533489976951,
+        "source_sha256": "25280bf7eed23e3e455166f7d1e897293086913ca23e0cb28039e631906c6eaa",
+        "snapshot_sha256": "25280bf7eed23e3e455166f7d1e897293086913ca23e0cb28039e631906c6eaa",
+        "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/support_002/lib/KeySupport011.olean",
+        "artifact_sha256": null,
+        "stdout_sha256": "f4aa5c299976ddbe79c6c148eaa1306d3935484c067b08dc71d30edc3a12afd7",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "warning_count": 0,
+        "error_count": 2,
+        "runner_sha256": "dc0e27b923552e4fc4c8e1bde4dceb798724a13aeb42e848ec375301743987cb",
+        "dependency_pins_sha256": "6ac079a4b5de957027376f0b15ae7035a7306e681b60ec5ae7edb5c913bf5476",
+        "memory_GiB": 8,
+        "cpu_seconds": 110,
+        "wall_seconds": 120,
+        "cores": 1
+      },
+      "stdout": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/support_002/source/KeySupport011.lean:108:11: error: `simp` made no progress\n/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/support_002/source/KeySupport011.lean:127:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern\n  (Law.map ?p ?f).mass ?b\nin the target expression\n  (emittedPublic p E hp pub).mass h = (emittedPublic p E hp pub').mass h\n\nX : Type\ninst\u271d\u00b9 : Fintype X\np : Law X\nE : X \u2192 Prop\ninst\u271d : DecidablePred E\nhp : 0 < p.event E\npub pub' : X \u2192 Rq\nsame : \u2200 (x : X), E x \u2192 pub x = pub' x\nh : Rq\n\u22a2 (emittedPublic p E hp pub).mass h = (emittedPublic p E hp pub').mass h\n'FT1536.S05.KeySupport011.restrict_legacy' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.univ_to_legacy' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.initial_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.resetInitial_bits' does not depend on any axioms\n'FT1536.S05.KeySupport011.resetInitial_law' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.resetInitial_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.key_joint_ac' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.second_self' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.key_joint_moment' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.map_composition' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.public_marginal_of_conditioned_keypair' depends on axioms: [propext,\n sorryAx,\n Classical.choice,\n Quot.sound]\n'FT1536.S05.KeySupport011.emittedPublic_congr_on_emission' depends on axioms: [propext,\n sorryAx,\n Classical.choice,\n Quot.sound]\n'FT1536.S05.KeySupport011.conditioned_support' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.mapped_support_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.emitted_support' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.emitted_joint_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "stderr": ""
+    },
+    {
+      "receipt": {
+        "module": "KeySupport011",
+        "command": [
+          "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+          "--root=/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/support_003/source",
+          "-j1",
+          "-s8192",
+          "-DElab.async=false",
+          "-M4096",
+          "-o",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/support_003/lib/KeySupport011.olean",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/support_003/source/KeySupport011.lean"
+        ],
+        "status": "completed",
+        "exit_code": 1,
+        "elapsed_seconds": 1.2675113340010284,
+        "source_sha256": "fa377bf4bea614c6bb0fc2f09c114a1f44cdecc95033fc86dbfe4b16b24694d5",
+        "snapshot_sha256": "fa377bf4bea614c6bb0fc2f09c114a1f44cdecc95033fc86dbfe4b16b24694d5",
+        "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/support_003/lib/KeySupport011.olean",
+        "artifact_sha256": null,
+        "stdout_sha256": "24dc27c278549af5f973e6e2b1053f0cb8814286a3b85b5ebc4bb4e156c874ab",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "warning_count": 0,
+        "error_count": 1,
+        "runner_sha256": "dc0e27b923552e4fc4c8e1bde4dceb798724a13aeb42e848ec375301743987cb",
+        "dependency_pins_sha256": "6ac079a4b5de957027376f0b15ae7035a7306e681b60ec5ae7edb5c913bf5476",
+        "memory_GiB": 8,
+        "cpu_seconds": 110,
+        "wall_seconds": 120,
+        "cores": 1
+      },
+      "stdout": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/support_003/source/KeySupport011.lean:106:2: error: maximum recursion depth has been reached\nuse `set_option maxRecDepth <num>` to increase limit\nuse `set_option diagnostics true` to get diagnostic information\n'FT1536.S05.KeySupport011.restrict_legacy' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.univ_to_legacy' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.initial_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.resetInitial_bits' does not depend on any axioms\n'FT1536.S05.KeySupport011.resetInitial_law' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.resetInitial_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.key_joint_ac' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.second_self' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.key_joint_moment' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.map_composition' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.public_marginal_of_conditioned_keypair' depends on axioms: [propext,\n sorryAx,\n Classical.choice,\n Quot.sound]\n'FT1536.S05.KeySupport011.emittedPublic_congr_on_emission' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.conditioned_support' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.mapped_support_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.emitted_support' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.emitted_joint_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "stderr": ""
+    },
+    {
+      "receipt": {
+        "module": "KeySupport011",
+        "command": [
+          "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+          "--root=/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/support_004/source",
+          "-j1",
+          "-s8192",
+          "-DElab.async=false",
+          "-M4096",
+          "-o",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/support_004/lib/KeySupport011.olean",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/support_004/source/KeySupport011.lean"
+        ],
+        "status": "completed",
+        "exit_code": 1,
+        "elapsed_seconds": 1.4181118960004824,
+        "source_sha256": "4534f2fd8fe245b9414b6243cae48745d04280f18c9bcb95716c63ddd6fadcfd",
+        "snapshot_sha256": "4534f2fd8fe245b9414b6243cae48745d04280f18c9bcb95716c63ddd6fadcfd",
+        "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/support_004/lib/KeySupport011.olean",
+        "artifact_sha256": null,
+        "stdout_sha256": "dac46a3eb9b1fba1fc373677d08b5e0d0d71d64589adf0a99e628fad37da1157",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "warning_count": 2,
+        "error_count": 1,
+        "runner_sha256": "dc0e27b923552e4fc4c8e1bde4dceb798724a13aeb42e848ec375301743987cb",
+        "dependency_pins_sha256": "6ac079a4b5de957027376f0b15ae7035a7306e681b60ec5ae7edb5c913bf5476",
+        "memory_GiB": 8,
+        "cpu_seconds": 110,
+        "wall_seconds": 120,
+        "cores": 1
+      },
+      "stdout": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/support_004/source/KeySupport011.lean:111:56: error: unsolved goals\nX Y Z : Type\ninst\u271d\u2074 : Fintype X\ninst\u271d\u00b3 : Fintype Y\ninst\u271d\u00b2 : Fintype Z\ninst\u271d\u00b9 : DecidableEq Y\ninst\u271d : DecidableEq Z\np : Law X\nkey : X \u2192 Y\npub : Y \u2192 Z\nh : Z\nx : X\na\u271d : x \u2208 univ\n\u22a2 (\u2211 x_1, if h = pub x_1 then if x_1 = key x then p.mass x else 0 else 0) = if h = pub (key x) then p.mass x else 0\n/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/support_004/source/KeySupport011.lean:121:8: warning: This simp argument is unused:\n  ite_mul\n\nHint: Omit it from the simp argument list.\n  [apply] simp [mul_assoc]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/runs/support_004/source/KeySupport011.lean:121:16: warning: This simp argument is unused:\n  mul_assoc\n\nHint: Omit it from the simp argument list.\n  [apply] simp [ite_mul]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n'FT1536.S05.KeySupport011.restrict_legacy' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.univ_to_legacy' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.initial_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.resetInitial_of_initial_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.resetInitial_bits' does not depend on any axioms\n'FT1536.S05.KeySupport011.resetInitial_law' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.resetInitial_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.key_joint_ac' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.second_self' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.key_joint_moment' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.map_composition' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.public_marginal_of_conditioned_keypair' depends on axioms: [propext,\n sorryAx,\n Classical.choice,\n Quot.sound]\n'FT1536.S05.KeySupport011.emittedPublic_congr_on_emission' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.conditioned_support' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.mapped_support_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.emitted_support' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.KeySupport011.emitted_joint_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "stderr": ""
+    }
+  ],
+  "fresh_dependency_count": 18,
+  "reused_dependency_count": 682,
+  "dependency_pins": {
+    "path": "notes/KEY_SUPPORT_011_INPUTS.json",
+    "sha256": "7c43a9f7a147968f1b0eefedfe3303dd72138dedbdcee74c0dca812c4e21f5fb",
+    "bytes": 579336
+  },
+  "dependency_setup_original": {
+    "path": ".build/key_support_011/dependencies/PINS.json",
+    "sha256": "6ac079a4b5de957027376f0b15ae7035a7306e681b60ec5ae7edb5c913bf5476",
+    "bytes": 546925
+  },
+  "dependency_failed_runs": [
+    {
+      "receipt": {
+        "module": "FT1536.Divergence",
+        "command": [
+          "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+          "--root=/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/dependencies/runs/FT1536_Divergence/source",
+          "-j1",
+          "-M4096",
+          "-o",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/dependencies/lib/FT1536/Divergence.olean",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/dependencies/runs/FT1536_Divergence/source/FT1536/Divergence.lean"
+        ],
+        "status": "completed",
+        "exit_code": -6,
+        "elapsed_seconds": 1.5191161170005216,
+        "source_sha256": "e82efaa4cefb8c6e02089da56d6e76dde5d99ea403e9a742e923974feae4c67d",
+        "snapshot_sha256": "e82efaa4cefb8c6e02089da56d6e76dde5d99ea403e9a742e923974feae4c67d",
+        "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/key_support_011/dependencies/lib/FT1536/Divergence.olean",
+        "artifact_sha256": null,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "8359249f494db5081050f585a4c9d589f4edb85f31252481b841f195761fd4f1",
+        "warning_count": 0,
+        "error_count": 0,
+        "runner_sha256": "0a7f3ae9d21c746f943e9a67ea77ba19cce4f526049676dba37646b7112e7e69",
+        "dependency_pins_sha256": "6ac079a4b5de957027376f0b15ae7035a7306e681b60ec5ae7edb5c913bf5476",
+        "memory_GiB": 8,
+        "cpu_seconds": 110,
+        "wall_seconds": 120,
+        "cores": 1
+      },
+      "stdout": "",
+      "stderr": "libc++abi: terminating due to uncaught exception of type lean::exception: failed to create thread: Resource temporarily unavailable\n"
+    }
+  ],
+  "finite_checks": {
+    "copy": {
+      "path": "notes/KEY_SUPPORT_011_CHECKS.json",
+      "sha256": "1217c2afe07b299f31f07361915bded63b5a81901befe238e19b479b9a5a6acf",
+      "bytes": 464
+    },
+    "manifest": {
+      "schema_version": 2,
+      "claim_id": "S05_KEY_SUPPORT_011",
+      "repository": {
+        "commit": "5f5074e6b8b9ac7a2f209b1cd1232b2bccb5ea21",
+        "dirty": true
+      },
+      "command": [
+        "sage",
+        "notes/KEY_SUPPORT_011.sage",
+        ".build/key_support_011/runs/sage_001"
+      ],
+      "environment": {
+        "software": [
+          {
+            "name": "runner-python",
+            "version": "3.13.5"
+          },
+          {
+            "name": "SageMath",
+            "version": "10.9"
+          }
+        ],
+        "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+      },
+      "mathematics": {
+        "assertion_tested": "Finite exact controls for one-time emission conditioning, same public law, full-reply J/P and support-restricted certificates",
+        "coefficient_domain": "ZZ/QQ",
+        "conventions": "none retained, positive emission mass required, three keys and four source outcomes",
+        "inputs": [
+          "notes/KEY_SUPPORT_011.sage"
+        ],
+        "bounds": {
+          "source_weight_fixtures": 3,
+          "nonzero_boolean_masks": 15,
+          "source_points": 4,
+          "public_keys": 3
+        },
+        "non_claims": [
+          "No actual KeyGen emission law",
+          "No sampler007 instance",
+          "No QROM theorem"
+        ]
+      },
+      "randomness": {
+        "used": false
+      },
+      "run": {
+        "started_at": "2026-10-10T18:47:58.502354+00:00",
+        "runtime_seconds": 5.681362,
+        "exit_status": 0,
+        "status": "completed",
+        "timeout_seconds": 60.0,
+        "max_output_bytes": 1048576,
+        "resource_limits": {
+          "memory_bytes": 4294967296,
+          "cpu_seconds": 45,
+          "max_cores": 1,
+          "max_threads": 1
+        },
+        "missing_results": [],
+        "invalid_results": []
+      },
+      "execution_artifacts": [
+        "notes/KEY_SUPPORT_011.sage"
+      ],
+      "input_artifacts": [
+        {
+          "path": "notes/KEY_SUPPORT_011.sage",
+          "sha256": "8ad1b8077401bf49fd6094e69b41c868c2d9df22e319860eb5b1e12b1605e28d",
+          "sha256_after": "8ad1b8077401bf49fd6094e69b41c868c2d9df22e319860eb5b1e12b1605e28d"
+        }
+      ],
+      "output_directory": ".build/key_support_011/runs/sage_001",
+      "declared_results": [
+        ".build/key_support_011/runs/sage_001/checks.json"
+      ],
+      "outputs": [
+        {
+          "path": ".build/key_support_011/runs/sage_001/stdout.txt",
+          "sha256": "41fbd46e8583a4688df5c68ce540c5d1d04c220a2b24a4a651e34420a55fdf8e",
+          "kind": "log"
+        },
+        {
+          "path": ".build/key_support_011/runs/sage_001/stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "kind": "log"
+        },
+        {
+          "path": ".build/key_support_011/runs/sage_001/checks.json",
+          "sha256": "1217c2afe07b299f31f07361915bded63b5a81901befe238e19b479b9a5a6acf",
+          "kind": "result"
+        }
+      ],
+      "checks": [
+        {
+          "check": "input hashes unchanged",
+          "passed": true
+        },
+        {
+          "check": "process exited successfully within enforced limits",
+          "passed": true
+        },
+        {
+          "check": "declared result files are present and regular",
+          "passed": true
+        }
+      ],
+      "result": "Run completed; mathematical assertion requires interpretation and review.",
+      "residual_risks": [
+        "Command success does not establish the mathematical interpretation.",
+        "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+        "The thread cap uses conventional environment variables; a child program may ignore them.",
+        "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+      ]
+    }
+  },
+  "retained_small_sources": [
+    {
+      "path": "notes/attempts/SourceMaterial011_namespace_warning.lean",
+      "sha256": "7f877e97ca526fea9fa73a37924a861036ca7f7695138a9a6f144cb423c56cfe",
+      "bytes": 5046
+    },
+    {
+      "path": "notes/attempts/KeySupport011_map_rewrite_failure.lean",
+      "sha256": "25280bf7eed23e3e455166f7d1e897293086913ca23e0cb28039e631906c6eaa",
+      "bytes": 8505
+    },
+    {
+      "path": "notes/attempts/KeySupport011_map_recursion_failure.lean",
+      "sha256": "fa377bf4bea614c6bb0fc2f09c114a1f44cdecc95033fc86dbfe4b16b24694d5",
+      "bytes": 8544
+    },
+    {
+      "path": "notes/attempts/KeySupport011_delta_sum_failure.lean",
+      "sha256": "4534f2fd8fe245b9414b6243cae48745d04280f18c9bcb95716c63ddd6fadcfd",
+      "bytes": 9057
+    },
+    {
+      "path": "notes/attempts/SourceMaterial011_resume_duplicate.lean",
+      "sha256": "6785913589d71994d3acc675c841258cea52e5eab8137140763a1f256ce30f25",
+      "bytes": 8394
+    },
+    {
+      "path": "notes/attempts/KeySupport011_resume_duplicate.lean",
+      "sha256": "6f5c31a7097a2751f3dfc1d799f1b35df71ee24e74bff8742a705a0e512dffa4",
+      "bytes": 10021
+    },
+    {
+      "path": "notes/attempts/BUILD_KEY_SUPPORT_011_before_serial.py",
+      "sha256": "0a7f3ae9d21c746f943e9a67ea77ba19cce4f526049676dba37646b7112e7e69",
+      "bytes": 5928
+    },
+    {
+      "path": "notes/attempts/BUILD_KEY_SUPPORT_011_before_local_imports.py",
+      "sha256": "dc0e27b923552e4fc4c8e1bde4dceb798724a13aeb42e848ec375301743987cb",
+      "bytes": 6126
+    }
+  ],
+  "resumption_reconciliation": {
+    "status": "RESUMPTION_RECONCILED",
+    "existing_source_002": "completed clean, exact source restored",
+    "existing_support_002": "failed in map_composition and emittedPublic unfolding; preserved and repaired in fresh support003",
+    "duplicate_edit": "A continuation repeated already attempted additions; duplicate drafts retained here and excluded from final sources",
+    "fresh_output_guard": "source_002 was not overwritten; attempted reuse of its directory rejected before Lean",
+    "note": "All existing source/output hashes matched their receipts; no foreign active S05 writer identified"
+  },
+  "failure_causes": [
+    "Missing B20.C.Integer in initial dependency locator; seeded source metadata added before proof jobs",
+    "Asynchronous dependency elaboration failed creating a thread; same8GiB cap succeeded with serial elaboration and explicit stack",
+    "Source001 ambiguous Relation namespace; qualified explicitly",
+    "Support002 rewriting/unfolding failed; support003 specialized Rq elaboration exceeded recursion; generic map theorem avoided this; support004 finite delta sum needed explicit single-term reduction",
+    "Continuation attempted an existing output directory; guard preserved it. Completed/failed runs reconciled, duplicate additions saved, no history overwritten",
+    "LaTeX raw underscore in falcon_keygen_make; source/diagnostics retained and escaped"
+  ],
+  "self_review": [
+    "Each scope contains explicit AC as well as second moment",
+    "Emission positivity mandatory; no good-key filter or new independent key law",
+    "Key reused once on both sides; no new1/p_emit factor claimed for a law-changing hop",
+    "Public decoder and full source emission are explicit fields, not a proved actual instance",
+    "Initial wrapper preserves bits only, not a whole-machine cost theorem",
+    "Old all-h LocalJointCertificate unchanged",
+    "Compiler-generated sorryAx in failed logs is rejected; final sources and transitive axiom prints clean"
+  ],
+  "runtime_replay": "Use BUILD_KEY_SUPPORT_011.py prepare/dependencies/module with fresh run labels. Imported source3 snapshot/caches and pinned Mathlib must be present; source3 jobs are never resumed. Full682-module rebuild was not performed.",
+  "publication": "Local development only; no source/paper/status edits elsewhere or push by this session"
+}

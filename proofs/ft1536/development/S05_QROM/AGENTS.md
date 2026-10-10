@@ -38,3 +38,16 @@ do ewentualnego Aneksu B; nie zmieniamy paperu ani statusu publikacji.
   README jest żywym stanem. Nowe manifesty wyników nie pinują żywego README.
 
 Pozostałe zasady głównego AGENTS i WORK_COMMITS nadal obowiązują.
+
+## Doprecyzowanie właściciela 2026-10-10 — kernel i klasy
+
+- Każdy wynik wchodzący do ostatecznej tezy musi najpierw otrzymać właściwy
+  dowód kernelowy. Tekstowe dowody/rachunki pozostają materiałem development;
+  mały kernelowy konsument nie awansuje całego source bridge.
+- Przy każdym nowym certyfikacie podawaj klasę z TARGET_CONTRACT:
+  obowiązek dowodowy, założenie kryptograficzne albo model. Q-PRG rozdziela
+  założenie primitive-bound od obowiązku konkretnego hopu/membership/zasobów.
+- Utrzymuj jawną kolejkę kernelizacji według zależności wybranej tezy.
+  Pierwszy indeks: `notes/KERNEL_QUEUE_011.json`; klasy/piny:
+  `notes/CERTIFICATE_CLASSES_011.json`. Starszych zamrożonych wyników nie
+  przepisuj, a h=0 i Dyadic nie oznaczaj jako kernelowe bez dowodu.

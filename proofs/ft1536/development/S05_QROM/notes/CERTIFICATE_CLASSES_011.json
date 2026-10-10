@@ -1,0 +1,179 @@
+{
+  "policy_date": "2026-10-10",
+  "policy": "Every certificate retains condition classes; no textual result enters the final theorem before its required kernel proof. Historical artifacts are not rewritten.",
+  "condition_book": "notes/TARGET_CONTRACT_001.tex",
+  "condition_book_sha256": "91b5c673c40b21c781118a36da061a2a58f8ccad8c8e3aa96427035022f059cf",
+  "classes": [
+    {
+      "id": "Q-MODEL",
+      "class": "model",
+      "scope": "Experiment, observations and interpretation of source-law data; no security result follows from naming the model"
+    },
+    {
+      "id": "A-QMT",
+      "class": "cryptographic_assumption",
+      "scope": "Quantum lattice-hardness bound; not used or proved by011"
+    },
+    {
+      "id": "Q-PRG",
+      "facet": "primitive_bound",
+      "class": "cryptographic_assumption",
+      "scope": "Quantum distinguishing bound, not assumed in011"
+    },
+    {
+      "id": "Q-PRG",
+      "facet": "hop_membership_resources",
+      "class": "proof_obligation",
+      "scope": "Construct and cost the actual hop; separate from primitive assumption"
+    },
+    {
+      "id": "Q-KEY",
+      "class": "proof_obligation"
+    },
+    {
+      "id": "Q-SAMPLER",
+      "class": "proof_obligation"
+    },
+    {
+      "id": "Q-HASH-LOG",
+      "class": "proof_obligation"
+    },
+    {
+      "id": "Q-COMPOSE",
+      "class": "proof_obligation"
+    },
+    {
+      "id": "Q-COLL",
+      "class": "proof_obligation"
+    },
+    {
+      "id": "Q-EMBED",
+      "class": "proof_obligation"
+    },
+    {
+      "id": "Q-BIND",
+      "class": "proof_obligation"
+    },
+    {
+      "id": "Q-RESC",
+      "class": "proof_obligation"
+    }
+  ],
+  "new_certificates": [
+    {
+      "artifact": {
+        "path": "formal/SourceMaterial011.lean",
+        "sha256": "1551f9881d40d0bc6a942598ddba77d7732e9cdaf9c8c40a9e214e80cb12e0a3"
+      },
+      "primary_class": "proof_obligation",
+      "conditions": [
+        "Q-KEY",
+        "Q-BIND"
+      ],
+      "kernel_status": "8 conditional theorems checked",
+      "missing_instance": "Whole emitted source/codec chain"
+    },
+    {
+      "artifact": {
+        "path": "formal/KeySupport011.lean",
+        "sha256": "6527eb9e607fb05930938eeb92bb953984302def905083d35d2027f321c22664"
+      },
+      "primary_class": "proof_obligation",
+      "conditions": [
+        "Q-KEY",
+        "Q-SAMPLER"
+      ],
+      "kernel_status": "17 conditional theorems checked",
+      "missing_instance": "Actual emission law and sampler007 OnKeys"
+    },
+    {
+      "artifact": {
+        "path": "formal/EmissionBridge011.lean",
+        "sha256": "461b899ae42f15b32316c4fd7588e653ade816f6baf29704ff27fdc11630f492"
+      },
+      "primary_class": "proof_obligation",
+      "conditions": [
+        "Q-KEY",
+        "Q-SAMPLER",
+        "Q-BIND"
+      ],
+      "kernel_status": "4 conditional assembly theorems checked",
+      "missing_instance": "EmissionView and local sampler certificate"
+    },
+    {
+      "artifact": {
+        "path": "notes/KEY_SUPPORT_011_CHECKS.json",
+        "sha256": "1217c2afe07b299f31f07361915bded63b5a81901befe238e19b479b9a5a6acf"
+      },
+      "primary_class": "proof_obligation",
+      "conditions": [
+        "Q-KEY",
+        "Q-SAMPLER"
+      ],
+      "evidence_kind": "finite QQ controls, not a universal proof"
+    }
+  ],
+  "prior_sampler_evidence": [
+    {
+      "artifact": {
+        "path": "notes/SAMPLER_003_CERTIFICATE.json",
+        "sha256": "6237da29986da1148d2ae5ebb9f7c133f283b331206aec5b9ee14d7c91e76333"
+      },
+      "primary_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER"
+      ],
+      "evidence_kind": "Historical finite/analytic certificate; its original scope is unchanged",
+      "final_use_requires_kernel": true
+    },
+    {
+      "artifact": {
+        "path": "notes/SAMPLER_004_CERTIFICATE.json",
+        "sha256": "c01ae6bff0a6fcfc2b1901316ac53670fbbf41ce412fbfeca1ed7381c89ca8e2"
+      },
+      "primary_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER"
+      ],
+      "evidence_kind": "Historical finite/analytic certificate; its original scope is unchanged",
+      "final_use_requires_kernel": true
+    },
+    {
+      "artifact": {
+        "path": "notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json",
+        "sha256": "90a0eb5ab55320cd43dd5ffff2f48e924b9b8a8caca622cac6fa64ac4886a31a"
+      },
+      "primary_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER"
+      ],
+      "evidence_kind": "Historical finite/analytic certificate; its original scope is unchanged",
+      "final_use_requires_kernel": true
+    },
+    {
+      "artifact": {
+        "path": "notes/MARGINAL_006_CERTIFICATE.json",
+        "sha256": "61c0171be03b974571caa0de359f3217c4eb78ea0f5752430f1177049d4c7f62"
+      },
+      "primary_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER"
+      ],
+      "evidence_kind": "Historical finite/analytic certificate; its original scope is unchanged",
+      "final_use_requires_kernel": true
+    },
+    {
+      "artifact": {
+        "path": "notes/SAMPLER_007_CERTIFICATE.json",
+        "sha256": "573651dc2372cd1d21ab83f0e609a8c416f0224acf6d89af3c4de279f18f4c5a"
+      },
+      "primary_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER"
+      ],
+      "evidence_kind": "Historical finite/analytic certificate; its original scope is unchanged",
+      "final_use_requires_kernel": true
+    }
+  ],
+  "final_FT1536_QROM_theorem_eligible": false
+}

@@ -1,0 +1,191 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm]{geometry}
+\usepackage{fontspec}\setmainfont{Latin Modern Roman}
+\setmonofont{Latin Modern Mono}[Scale=0.85]
+\usepackage{amsmath,amssymb,amsthm,longtable,booktabs,xurl,hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{3em}
+\newcommand{\code}[1]{\nolinkurl{#1}}
+\title{Conditional key-support assembly\\\large S05 / KEY\_SUPPORT\_011}
+\author{Notatka robocza dla Niirmata}\date{10 października 2026}
+\begin{document}\maketitle
+\textbf{Klasa: obowiązek dowodowy Q-KEY/Q-SAMPLER; status: kernelowe
+konstruktory warunkowe.} Trzy nowe moduły, 29 twierdzeń, świeży Lean 4.34.0,
+czyste logi. Nie zbudowano jeszcze instancji całego rzeczywistego KeyGen
+ani kernelowego certyfikatu programu SAMPLER-007. Nie ma deklaracji
+bezpieczeństwa QROM. Model i założenia kryptograficzne są odrębnymi klasami.
+
+Właściciel doprecyzował: każdy wynik użyty w ostatecznej tezie wymaga
+najpierw kernela. Dotychczasowe tekstowe007/009/010 pozostają roboczymi
+wynikami, z jawną kolejką kernelizacji. Bieżące 29 twierdzeń nie nadaje
+ich pełnym dowodom statusu kernelowego.
+
+\section{Ten sam materiał i publiczne h}
+\code{SourceMaterial011.CoefficientKey h} zawiera jednocześnie
+$f,g,F,G$, odwrotność $f^{-1}$ modulo $q$, granice współczynników,
+$fG-gF=q$, $hf=g$ oraz $f^{-1}f=1$ w właściwych pierścieniach.
+\code{RepresentsKey} wiąże je z pięcioma \emph{tymi samymi fizycznymi
+tablicami} w jednym heapie. To świadek dowodowy; sampler publiczny nie
+otrzymuje tych sekretów jako danych wykonawczych.
+
+\code{key_of_encoding_inputs} konsumuje istniejący
+\code{Source3.KeygenMakeMaterialWitness.EncodingInputs}.
+\code{public_representation_unique} dowodzi jednoznaczności publicznego
+$h$ z deterministycznego odczytu komórek. Dlatego
+\code{key_at_same_public_array} zwraca świadek dla tego $h$, które rzeczywiście
+czyta wskazana tablica, a nie dla niezależnie wybranego klucza.
+
+\code{key_of_accepted_attempt} konsumuje źródłowy ślad jednej zaakceptowanej
+próby przez wszystkie sześć bramek. Używa istniejących
+\code{accepted_spine} i \code{spine_witness}, bez przepisywania ich dowodów.
+Jawne przesłanki: \code{Remaining}, \code{EntryFacts}, faktyczna
+\code{AttemptExec} z końcowym break oraz \code{WorkspaceAtCall}.
+Ostatnia wymaga legalności przy wywołaniach certyfikatu dochodzących do
+rozpatrywanego wyjścia; nie żąda legalności dowolnego niepowiązanego stanu.
+Nie wyprowadzono tych przesłanek z całego wykonania z retry i codecami.
+To dokładna granica wejścia do kodowania, nie twierdzenie o zakończonej emisji.
+
+Z otrzymanego klucza kernelowo konstruujemy
+\[
+ \mathbb Z^{3072}\ \simeq\ \{z:A_hz=c\}
+\]
+dla każdego $c$, z jawną formułą afiniczną, jednoznacznym przeciwobrazem
+każdego punktu włókna i reindeksacją sumy gaussowskiej.
+Są to konsumenci dokładnych twierdzeń \code{ActualNTRUFiber} na tych samych
+równaniach, bez wadliwego \code{ldl_shape}. Nie zawierają jeszcze boundu LDL
+ani dowodu małego momentu007.
+
+\section{Certyfikat na właściwej dziedzinie kluczy}
+Stary \code{Run2.LocalJointCertificate} pozostaje niezmieniony:
+ma kwantyfikator po \emph{wszystkich} $h$. Nowy typ
+\code{KeySupport011.OnKeys K S e} ma jawny warunek $K(h)$ i wymaga
+\[
+ e\ge0,\qquad J_{h,st,m,r}\ll P_h,\qquad
+ \sum_{c,o}\frac{J_{h,st,m,r}(c,o)^2}{P_h(c,o)}\le1+e
+\]
+dla każdego $h\in K$ oraz każdego stanu, wiadomości i nonce.
+Prawo obejmuje pełne \code{Option BoxVec}, w tym \code{none}.
+Nie jest to jeszcze całe source API z PRE\_ABORT/POST\_ABORT i bajtami.
+
+Udowodniono restrykcję starego certyfikatu do dowolnego $K$ i powrót
+z $K=\mathrm{True}$ do dokładnie starego typu. Nie ma twierdzenia
+``emitted-only implikuje all-h''. Dziedzinę należy wyprowadzić ze źródła,
+a nie definiować przez pożądany moment.
+
+\code{resetInitial S} wywołuje zawsze \code{S.code h initial m r coins}.
+Kernel dowodzi identyczności budżetu bitów i prawa, oraz certyfikatu dla
+wszystkich zewnętrznych stanów z bounds przy samym initial.
+Nie rekonstruuje to historii kwantowych zapytań. Zachowanie pola bits nie
+stanowi pełnego certyfikatu czasu ani pamięci reduktora.
+
+\section{Jedno prawo kluczy, jedno warunkowanie}
+Niech $p$ będzie prawem na skończonej przestrzeni źródłowej $X$,
+$E$ zdarzeniem emisji, $p(E)>0$, a $\mathrm{pub}:X\to R_q$ mapą publiczną.
+Definiujemy jeden raz
+\[
+ p_E(x)=\frac{\mathbf1_E(x)p(x)}{p(E)},\qquad
+ \mu_H=\mathrm{pub}_*p_E.
+\]
+Zbiór $E$ ma oznaczać sukces emisji \emph{istniejącego} KeyGen, nie nowy
+filtr dobrych kluczy. Identyfikacja $p,E,\mathrm{pub}$ z programem jest
+osobnym obowiązkiem Q-KEY/Q-BIND. Nie udowodniono tu dodatniego $p(E)$
+rzeczywistego programu; to jawny warunek użycia konstruktora.
+
+Kernel dowodzi: każdy $h$ o $\mu_H(h)\ne0$ ma źródłowy świadek
+$x\in E$ o $p(x)\ne0$ i $\mathrm{pub}(x)=h$. Jeżeli wszystkie takie
+źródłowe wyniki mają własność $K$, całe wsparcie $\mu_H$ jest pokryte przez $K$.
+Zachowanie publicValue poza $E$ nie wpływa na prawo.
+
+Ponadto dla dowolnej mapy pełnej pary kluczy $k:X\to SK\times R_q$:
+\[
+ \operatorname{SigmaMath.muH}(k_*p_E)
+ = (\operatorname{snd}\circ k)_*p_E.
+\]
+To \emph{dokładnie istniejący} marginal z ROM, a nie nowa niezależna
+lub jednostajna populacja kluczy. Dowód kompozycji map jest ogólny;
+nie rozwija ogromnego konkretnego Fintype podczas elaboracji.
+
+Dla dwóch praw zachowujących ten sam, raz wylosowany klucz:
+\[
+ J(h,z)=\mu_H(h)J_h(z),\qquad P(h,z)=\mu_H(h)P_h(z)
+\]
+otrzymujemy z lokalnych certyfikatów na wsparciu
+\[
+ J\ll P,\qquad
+ \operatorname{second}(J,P)
+ =\sum_h\mu_H(h)\operatorname{second}(J_h,P_h)\le1+e.
+\]
+Punkty $\mu_H(h)=0$ rozliczono osobno. \textbf{Nie pojawia się czynnik
+$1/p(E)$ w lokalnym budżecie}: po obu stronach jest to samo już warunkowane
+prawo kluczy. Nie jest to darmowy hop z bezwarunkowego generatora do
+warunkowego ani twierdzenie PRG. To także nie dowód adaptacyjnej kompozycji
+$q_s$ wywołań lub kwantowego reprogramowania.
+
+\section{Sklejenie w jednym interfejsie}
+\code{EmissionBridge011.EmissionView} rozdziela dane modelu i obowiązki:
+prawo źródłowe, predykat emisji i dodatnią masę; publiczne bytes i ich decoder;
+snapshot tablic na wejściu do kodowania; a następnie trzy nazwane dowody
+\code{material}, \code{publicRead}, \code{publicDecode} dla źródłowych
+wyników o niezerowej masie kończących się emisją.
+\emph{Nie dostarczyliśmy instancji tych pól dla całego \code{falcon_keygen_make}.}
+Dowód musi wskazać właściwe źródłowe kodeki i połączyć snapshot z finalnymi bytes.
+Parametr decodePublic nie dostaje domyślnej tożsamości z kodem C.
+
+Dziedzina \code{Domain v} jest obrazem tych źródłowych wyników, bez testu
+momentu. \code{supported_material} daje dla każdego klucza o niezerowej
+masie jednocześnie ten sam wynik źródłowy, CoefficientKey, fizyczne tablice
+i dekodowanie końcowych publicznych bajtów. \code{keypair_public_law}
+wiąże jego prawo z istniejącym marginalem ROM.
+
+\code{emitted_sampler_certificate} składa ten interfejs z
+\code{OnKeys (Domain v) S e} i wrapperem publicznego initial, uzyskując
+pełne AC i moment joint law. Obie brakujące instancje pozostają jawne:
+\textbf{rzeczywisty EmissionView} oraz \textbf{lokalny certyfikat
+wykonywalnego SAMPLER-007 na tej dziedzinie}. Nie zastępujemy ich rekordami
+z dowolnymi założonymi polami i nie ogłaszamy finalnej tezy.
+
+\section{Klasy warunków i kolejka kernela}
+\begin{center}\begin{tabular}{ll}\toprule
+Identyfikator & Klasa\\\midrule
+Q-KEY, Q-SAMPLER, Q-BIND, Q-RESC & obowiązek dowodowy\\
+Q-MODEL & model eksperymentu i obserwacji\\
+A-QMT & założenie kryptograficzne\\
+Q-PRG: bound generatora & założenie kryptograficzne\\
+Q-PRG: hop, membership i zasoby & obowiązek dowodowy\\\bottomrule
+\end{tabular}\end{center}
+Bieżący pakiet nie zakłada A-QMT ani Q-PRG do dowodów algebraicznych.
+\code{CERTIFICATE_CLASSES_011.json} indeksuje dokładne piny wyników;
+\code{KERNEL_QUEUE_011.json} ustala kolejność według zależności finalnej tezy.
+W pierwszej kolejności: source/codec/emitted instance, harmoniczny Schur
+z pełnym atomem i masa włókien, implementacja/prawo007 oraz pełny lokalny
+moment. h=0 i Dyadic zachowują osobne wpisy; nie udają zamkniętych ani nie
+blokują domyślnie wybranej drogi tylko przez wcześniejszą datę powstania.
+Każdy z nich wymaga kernela przed użyciem w ostatecznej tezie.
+
+\section{Receipty i ograniczenia wykonania}
+Przygotowano izolowany snapshot 700 projektowych zależności: 682 przypięte
+produkty RO i 18 zależności przebudowanych ze źródeł, z czystymi końcowymi
+logami. To nie nowy pełny odbiór wszystkich682 odziedziczonych dowodów.
+Własne moduły mają odpowiednio 8, 17 i 4 twierdzenia; końcowe wydruki aksjomatów
+obejmują 29 deklaracji i wyłącznie standardowe aksjomaty Lean (jedna bez aksjomatów).
+Brak wyciszania ostrzeżeń i brak placeholderów w końcowych źródłach.
+
+41 dokładnych kontroli Sage QQ obejmuje małą masę emisji1/1024,
+pełne odpowiedzi z none, puste wsparcie w wybranych punktach, odrzucenie
+normalizacji przy zerowej emisji, rozróżnienie scoped/all-h oraz ponownego
+losowania klucza. Są kontrolami skończonymi, obok dowodów kernelowych.
+
+Historia zachowuje: przerwanie zależności przy tworzeniu wątku (pomogła
+serializacja elaboracji i jawny stos, bez zwiększania limitu pamięci),
+niejednoznaczny namespace, błędy przepisywania/simplifikacji i elaboracji
+mapowania, a także uzgodnienie przerwanego wznowienia. Guard katalogów
+nie pozwolił nadpisać istniejących runów; powtórzone drafty zachowano,
+a ukończone i nieudane próby rozliczono według ich receiptów.
+Automatyczne sorryAx z \emph{nieudanych} elaboracji nie są akceptowanymi dowodami.
+
+Baza naukowa: \code{a068d1ff}; konkretne piny i scope są w
+\code{KEY_SUPPORT_011_INPUTS.json}, \code{KEY_SUPPORT_011_RECEIPT.json}
+i \code{KEY_SUPPORT_011_OUTPUTS.sha256}. Pełne logi/cache pozostają pod
+\code{.build/key_support_011/}. Wszystkie nowe źródła są w S05 development.
+Nie zmieniono T12.1/B20, mainline, paperu ani strony; bez push tej sesji.
+\end{document}

@@ -3,7 +3,19 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
-**Najnowszy krok — [ponowne użycie ROM010](notes/ROM_REUSE_010_CHECKPOINT.md):**
+**Najnowszy krok — [KEY_SUPPORT-011](notes/KEY_SUPPORT_011_CHECKPOINT.md):**
+29 nowych twierdzeń Lean o tym samym materiale/publicznym h, właściwym
+prawie kluczy po emisji, pokryciu nośnika, publicznym initial i pełnym J/P.
+To **kernelowe konstruktory warunkowe**; rzeczywisty `EmissionView` oraz
+`OnKeys` dla wykonywalnego007 nadal wymagają instancji. Stary all-h typ
+pozostaje niezmieniony. [Dokładny zakres](notes/KEY_SUPPORT_011.tex).
+
+Decyzja właściciela: **kernel przed użyciem wyniku w ostatecznej tezie**.
+[Klasy warunków](notes/CERTIFICATE_CLASSES_011.json) rozdzielają obowiązki,
+założenia kryptograficzne i model; [kolejka kernela](notes/KERNEL_QUEUE_011.json)
+ma priorytety według zależności tezy, również jawne wpisy h=0 i Dyadic.
+
+**Checkpoint — [ponowne użycie ROM010](notes/ROM_REUSE_010_CHECKPOINT.md):**
 H3 ROOT/STABLE już dostarczają silniejszego g00<1/1024, dziedzin stable
 oraz emitted gate. Nowe sklejenie daje harmoniczną>1022>991 dla emitted f/g
 **na odziedziczonym poziomie źródłowo-analitycznym**. Nie trzeba dowodzić
@@ -99,7 +111,8 @@ Nie nadpisujemy prób. [Handoff 004](notes/SAMPLER_004_HANDOFF.json),
 | Klasyczny log hasza | Wymaga nowej semantyki QROM |
 | Osadzenie `q_H+1` celów | Wymaga nowej konstrukcji Q-TARGET i straty |
 | Klasyczna strata kolizyjna | Zgodna przestrzeń nonce `256^40=2^320` i wzór ROM; nowy rachunek reprogramowania QROM OPEN |
-| Rzeczywiste prawo Sign i wszystkie wyjścia API | Otwarty bridge źródłowy |
+| To samo źródłowe h i prawo kluczy | 011: kernelowy lokalny material bridge i warunkowy konstruktor emitted law; pełna source/codec instancja OPEN |
+| Rzeczywiste prawo Sign i wszystkie wyjścia API | Q-BIND pozostaje OPEN; 011 nie zamienia modelowego P w cały program |
 | Kwantowy PRG/seed, publiczny SHAKE/H2P (S04), zasoby reduktora | Osobne otwarte przesłanki |
 
 Trzy przebudowy mechanizmów ROM nie są pełną listą wymagań QROM.
