@@ -558,6 +558,21 @@ the final export anyway; one living paper + one frozen donor = no
 two-paper drift. Mechanical check of A1 (C01-C22 mapping vs exports,
 bibliography honesty, markers) still due BEFORE any merge.
 
+## 2026-10-11: CROSS-LANE CATCH - VirtualLegal impossibility (vacuous Invocation.encoded)
+
+The QROM lane (Codex/Astra) found a concrete defect in the B1.07
+invocation result: `VirtualLegal` requires ALL Nat identifiers to have
+distinct addresses < 2^64 - impossible (kernel-proven separately).
+Consequence: the `Invocation.encoded` branch is VACUOUS (premise can
+never hold) - dependent theorems about the encoding path are currently
+vacuously true, i.e. ungrounded. The instruction skeleton remains
+sound; the defect is in map legality. Fix required BEFORE any Q-BIND
+use and before further mainline consumption: restrict map legality to
+the actual finite live memory blocks, re-validate ALL dependent proofs
+(incl. earlier batches consuming VirtualLegal/encoded), new trap entry,
+re-pin. The QROM worker pinned the exact pin+obstacle in S05 and did
+not touch mainline sources (correct cross-lane etiquette).
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
