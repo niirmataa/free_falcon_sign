@@ -1,5 +1,32 @@
 # T12.1/source3 — żywy stan
 
+## B1.07 — BATCH_048 complete readiness continuation — 2026-10-10
+
+Owner-started new window from checkpoint27R, GPT-6.1 Sol Fast
+(`openai/gpt-6.1-sol-fast`). BEFORE edits/jobs: BATCH_015–047 verified,
+9257 distinct pins/706 literal source bindings, no supersession/active job.
+Entry `.build/levels_048/ENTRY_PINS_048.json`, SHA256
+`f0864f27ce86fa1d1b3c81f8f8bc27f78cd1c1f43a3a1c77d5cc4b2731084256`.
+First remove the fast-only readiness subset through actual seed-acquisition
+control, set_seed, SHAKE injection/flip and both tmp32 lifetimes. Retain the
+external entropy/failure boundary; no availability, uniformity or PRG law.
+Then continue enclosing control, chronological attempts, the SAME six gates
+and actual encoding-input material in27.1 order. B1.07 Acceptance NOT MET;
+B1.08/B4/B5 NOT entered. One Acceptance or recoverable midpoint this window,
+serial guarded jobs/unchanged limits/retained attempts, exact-path local
+commits. No push/review/delegation/relay/migration/import. Foreign changes
+and historical runner labels remain intact.
+ShakeSeedMemory/Program/Reference, KeygenEntropySource and KeygenRngProgram
+accepted guarded0/0. Complete SHAKE init/inject/flip parse, fixed executed
+dec64le/xor_block/process_block destinations, byte/subobject frames and
+Linux finite system-seed control are represented without a random-output
+oracle. The Linux read boundary includes EINTR, short/zero reads and failed
+opens, with explicit external observations; it is not seed availability or
+uniformity. Complete set_seed/rng_ready syntax includes both tmp32 scopes.
+Their enclosing execution/flags/lifetime/prefix composition still follows;
+this logical source step is NOT the window's single midpoint. All rejected
+snapshots/streams remain; no limit change or external/private seed read.
+
 ## B1.07 — CLOSED at enclosing entry/first-sampling midpoint — 2026-10-10
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
