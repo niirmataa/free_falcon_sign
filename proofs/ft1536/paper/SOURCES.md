@@ -1,4 +1,17 @@
-# Paper v0.2 — statement-to-source map
+# Paper v0.3 — statement-to-source map
+
+Current editorial revision: **ADDENDUM 3, 2026-10-10**. Evidence status
+remains the BATCH_048 snapshot (`915178a1`), with B1.05/B1.06 locally
+closed and B1.07 partial. There are **117 selected inputs / 21 claim groups**.
+The added BATCH_032/048 pairs document already reported stages; the
+fifth added input is `sources/DOCUMENT_SNAPSHOT.json`. The two style
+benchmarks and their hashes are recorded separately in
+`notes/BENCHMARK_003.md`; they supply no new mathematical premise.
+
+`tools/document_snapshot.py` verifies the manifest and generates the
+full identifiers printed on the first page and in Appendix A. It never
+repins. PDF identity and manuscript-source hashes are external receipts,
+avoiding a self-referential hash inside the PDF.
 
 Snapshot date: **2026-10-06**; status-ledger revision: **2026-10-10**
 (window 2, publication-form pass). Paths below are relative to the repository root.
@@ -68,7 +81,7 @@ a completed C/PRNG law proof.
 
 ### C02 — profile and FG_PROBE measurement
 
-**Locations:** sections 2–3.
+**Locations:** sections 1–3, 11; Annex A.
 
 - `proofs/ft1536/work/FT1536_FG_PROBE_P_ACCEPT_001/out/RECEIPT.json`:
   `flags_profile`, `api_profile`, `seeding`, `transparency_control`,
@@ -83,6 +96,10 @@ a completed C/PRNG law proof.
   instrumentation transparency.
 - `Extra/c/Makefile`, profile flags; `Extra/c/falcon-keygen.c`,
   `falcon_keygen_make` and `ft_keygen_leaf_certificate`.
+  Algorithm 1 is source exposition: readiness 7833–7838; cap 7865–7875;
+  sampling 7888–7889; resultants 7931–7948; norm/GS gates 7983/8012;
+  public computation 8083; solver 8097; leaf 8108–8121; final encoding
+  8137–8181. It is not a new whole-KeyGen execution theorem.
 - `paper/tools/check_numbers.sage` (under `proofs/ft1536/`), measurement
   arithmetic; `build/numbers/run_001/RECEIPT.json` and `numbers.json`.
 
@@ -91,7 +108,7 @@ lower bound on p_accept is substituted into a theorem.
 
 ### C03 — geometry, exact verifier relation and divergence definitions
 
-**Locations:** sections 2–3.
+**Locations:** abstract; sections 1–3.
 
 - `stages/FT1536_CENTERING_CLOSURE_RUN_001/library/FT1536/Geometry.lean`
   (all `stages/` paths here are under `proofs/ft1536/`): `Vec`, `block`,
@@ -127,7 +144,7 @@ no machine-resource or source realization silently added.
 
 ### C05 — laws, reducer construction and lazy identification
 
-**Locations:** sections 3–5.
+**Locations:** sections 1–5.
 
 - `R/Run2/Games.lean`: `Nonce`, `Program`, `Budget`, `ClassicalAdversary`,
   `Sampler`, `programmedReply`, `signHonest`, `signSim`, `simulate`,
@@ -147,6 +164,10 @@ no machine-resource or source realization silently added.
 - `stages/FT1536_CENTERING_CLOSURE_RUN_001/library/FT1536/MathSign.lean`:
   `cap`, `cap_none`, `cap_some`, `emit`, `positive_reply_not_filtered`;
   norm failure is retried, terminal emission failure is not retried.
+  Algorithm 2 restates `PublicSimulation.signBody` at a fixed challenge:
+  at most 16 draws of `trial`, followed by exactly one terminal `emit`.
+  A failed signed16 emission returns none immediately. It is a law
+  specification, not the C sampler algorithm or an efficient exact sampler.
 
 ### C06 — one-attempt, cap, second moment and joint decomposition
 
@@ -423,7 +444,7 @@ nonnegative epsColl. The k=1/D=0 test does not consume LocalJointCertificate.
 
 ### C20 — numerical display and symmetric ceiling convention
 
-**Locations:** sections 8, 10; Annex A.
+**Locations:** abstract; sections 1, 8, 10–11; Annex A.
 
 - Binding outline §8: explicitly requested 256 classical /128 quantum
   symmetric reporting convention for ChaCha20/SHAKE, applied consistently
@@ -444,7 +465,7 @@ nonnegative epsColl. The k=1/D=0 test does not consume LocalJointCertificate.
 
 ### C21 — B1 stage ledger status (B1.05 / B1.06 / B1.07)
 
-**Locations:** sections 7, 11.
+**Locations:** abstract; sections 1–3, 7, 11; Annex A.
 
 - `S/KeygenCallerSuccess.lean`: `exact_integer_ntru` (with `success`,
   `Solved`, `Exec`, `RootGate`, `nonzero_one`, `call_boolean`).
@@ -458,9 +479,18 @@ nonnegative epsColl. The k=1/D=0 test does not consume LocalJointCertificate.
   `mulRq fInv (reduceVec fv) = constantCoeffs 1`). B1.06 Acceptance MET
   at BATCH_046 scope: both equations, retained f/g bytes, mathematical
   `fInv`; no correctness, invertibility or round-trip premise introduced.
+  `Nonzero fv` means nonzero evaluations in the public field, not an
+  assumed vector inequality `f != 0`. Entry profile, legal memory,
+  bounds, material, table lifetime and output separation are hypotheses.
+- `SN/KEYGEN_SOURCE_TO_FIBER_001_BATCH_032.json` and `..._032_NOTES.md`:
+  B1.05 Acceptance pair (added explicitly in this editorial revision).
 - `SN/KEYGEN_SOURCE_TO_FIBER_001_BATCH_046.json` and `..._046_NOTES.md`:
   the sealed B1.06 Acceptance pair; `..._047.json` and `..._047_NOTES.md`:
   the sealed B1.07 enclosing-entry/first-sampling midpoint pair.
+- `SN/KEYGEN_SOURCE_TO_FIBER_001_BATCH_048.json` and `..._048_NOTES.md`:
+  the complete-readiness midpoint already described by the pinned cumulative
+  checkpoint. Acceptance NOT MET / NOT_REVIEWED. Pair hashes were compared
+  with the checkpoint's external pins before inclusion.
 - `SN/KEYGEN_RESIDUE_CHECKPOINT.md`: the cumulative stage ledger. The
   paper cites sections 12/12.1 (B1.05 exact boundary), 26/26.1 (B1.06
   Acceptance type) and the top B1.07 status blocks. The B1.07 statements
@@ -535,6 +565,26 @@ deterministic traces license no IID, p_accept or availability formula.
     statement, not a theorem. Bibliography additions are limited to the
     verified entries recorded in C20 and `sources/EXTERNAL_REFERENCES.md`.
 
+15. ADDENDUM 3: comparison with the owner's specification and CANDIDATE_R2
+    exposed presentation errors in revision 4ac46f50. The abstract's
+    assertion that every mathematical statement was already code-bound
+    was too strong; it now states the conditional reduction and local
+    source results separately. Algorithm 1 now preserves the actual order
+    (public computation before solver and leaf certificate); Algorithm 2
+    returns terminal emission failure instead of suggesting a retry.
+    The statistical tape theorem's partially renamed `n` is consistently
+    `N` throughout. These are corrections of the manuscript against
+    existing pins, not new mathematical results or changes to C.
+16. In-PDF identity and evidence classes now follow the benchmark format.
+    The source map and manifest have full SHA-256 identifiers, with selected
+    exact artifacts and base/closure commit IDs. Benchmark contents were
+    not imported as theorem sources. Existing B1 scopes, S06 diagnostics,
+    attempt-shape dependence, A3/A4 and classical-only scope are retained.
+17. The earlier notes' blanket statement that all bibliography primary
+    sources had been inspected exceeded the recorded metadata-search work.
+    Section 10 now describes bibliographic context and keeps the primary
+    literature scan explicitly open. No new reference was added here.
+
 ## Pinned input files
 
 This inventory is machine-read by `tools/pin_sources.py` and checked against
@@ -595,10 +645,14 @@ proofs/ft1536/development/T12_1/source3/formal/Source3/KeygenPublicAccepted.lean
 proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_014_NOTES.md
 proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_014.json
 proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_015.json
+proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_032.json
+proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_032_NOTES.md
 proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_046.json
 proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_046_NOTES.md
 proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_047.json
 proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_047_NOTES.md
+proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_048.json
+proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_048_NOTES.md
 proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_RESIDUE_CHECKPOINT.md
 proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_rev10_cert_004/RECEIPTS.json
 proofs/ft1536/documents/FT1536_C_CODE_FINDINGS_2026-10-02.md
@@ -651,6 +705,7 @@ proofs/ft1536/stages/FT_FAMILY_SEC_ESTIMATE_REVIEW_RUN_001/inputs/campaign/input
 proofs/ft1536/stages/FT_FAMILY_SEC_ESTIMATE_REVIEW_RUN_001/inputs/campaign/inputs/falcon/falcon-round3.zip
 proofs/ft1536/stages/FT1536_POST_M0_FREEZE_RUN_001/inputs/proofs/ft1536/documents/FT1536_CEL_DOWODU_I_PIERWSZY_LEMAT_2026-09-17.md
 proofs/ft1536/paper/sources/EXTERNAL_REFERENCES.md
+proofs/ft1536/paper/sources/DOCUMENT_SNAPSHOT.json
 proofs/ft1536/paper/refs.bib
 proofs/ft1536/paper/tools/check_numbers.sage
 proofs/ft1536/paper/build/numbers/run_001/RECEIPT.json

@@ -1,5 +1,59 @@
-\section{Trust chain and reproducibility}\label{app:trust}
-\status{CLOSED artifact methodology; release packaging OPEN}
+\section{Artifact bindings and reproducibility}\label{app:trust}
+\status{selected evidence pinned; release packaging \OPEN}
+\subsection{Snapshot identity}\label{app:bindings}
+This manuscript uses a separately pinned evidence set rather than an
+unspecified current checkout. The editorial base identifies the version
+before this revision; the receipt in \code{notes/} records the source
+and PDF hashes of the completed revision. The following full identifiers
+are generated from checked inputs during the document build.
+
+\begin{description}
+\item[Editorial base (Git)] \hfill\\
+  \texttt{\EditorialBaseCommit}
+\item[Corrected computational package (Git)] \hfill\\
+  \texttt{\ComputationalCommit}
+\item[B1 status snapshot (Git)] \hfill\\
+  \texttt{\BOneStatusCommit}
+\item[Evidence manifest (SHA-256)] \hfill\\
+  \texttt{\EvidenceManifestSHA}
+\item[Statement-to-source map (SHA-256)] \hfill\\
+  \texttt{\SourceMapSHA}
+\end{description}
+
+The manifest contains \EvidencePinCount{} selected input files.
+It is not a complete proof dependency closure or a receipt for a new
+kernel replay. Appendix~\ref{app:release} records the availability
+boundary. The displayed source hashes below are selected entries from
+that manifest; paths are relative to the repository root.
+\src{C17,C21}
+
+\begin{description}\small
+\SelectedSnapshotBindings
+\end{description}
+
+\subsection{Reader's map to the artifacts}
+For a statement in the text, follow its C-identifier to
+\code{SOURCES.md}, then to the declaration or receipt and the full-file
+hash in \code{SOURCES.sha256}. The principal routes are:
+\begin{description}
+\item[Reduction (C04--C05).] \hfill\\
+  \path{Run2/ConcreteReduction.lean} and
+  \path{Run2/LazyEventBinding.lean} under the run2 formal directory.
+\item[Sampler (C06--C10, C19).] \hfill\\
+  \path{AttemptWeights.lean}, \path{T5Pointwise.lean},
+  \path{ONoneGeometry.lean} and \path{AdvPrg.lean}.
+\item[Source stages (C11--C12, C21).] \hfill\\
+  The source3 exports above and
+  BATCH\_032, BATCH\_046 and BATCH\_048 with their notes. Stage acceptance
+  remains distinct from independent review.
+\item[Computational review (C15--C17).] \hfill\\
+  \code{CompPrg.lean},
+  \code{AssemblyComp.lean} and the separately pinned REVIEW\_003 result.
+\item[Numbers (C02, C14, C20).] \hfill\\
+  The FG\_PROBE receipt, the S06 review and
+  \path{build/numbers/run_001/RECEIPT.json}. S06 is \UNCERTIFIED.
+\end{description}
+
 \subsection{What each layer establishes}
 The artifact has four distinct checks. A SHA-256 pin identifies bytes;
 a job receipt relates inputs, command, exit status and outputs; a Lean
@@ -64,9 +118,17 @@ audit attempts are retained in the recorded jobs rather than replaced
 by a clean-looking history. A later successful receipt identifies the
 selected final result.\src{C09,C12,C17}
 
-\subsection{Reproduction and release availability}
+\subsection{Reproduction and release availability}\label{app:release}
+\paragraph{Validation (not a proof).}
 From \code{proofs/ft1536/paper}, \code{make check} compiles the PDF,
 checks the cited-byte pins, source identifiers and final TeX log.
+It also checks that the generated snapshot identifiers occur in the
+PDF. From the repository root, the direct manifest check is
+\begin{quote}\small
+\path{sha256sum -c proofs/ft1536/paper/SOURCES.sha256}.
+\end{quote}
+The manifest paths are root-relative. Neither command refreshes pins;
+an input change must be reconciled explicitly before a new snapshot.
 \code{make numbers} runs a byte-identical runtime copy of
 \code{tools/check_numbers.sage} as \code{sage check_numbers.sage}
 with the standard preparser;

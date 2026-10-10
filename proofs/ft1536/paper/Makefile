@@ -1,7 +1,10 @@
 SHELL := /bin/bash
-.PHONY: pdf numbers check
+.PHONY: snapshot pdf numbers check
 
-pdf:
+snapshot:
+	python3 -B tools/document_snapshot.py
+
+pdf: snapshot
 	mkdir -p build/home build/tmp build/cache build/texmf-var build/texmf-config
 	HOME="$(CURDIR)/build/home" TMPDIR="$(CURDIR)/build/tmp" \
 	 XDG_CACHE_HOME="$(CURDIR)/build/cache" TEXMFVAR="$(CURDIR)/build/texmf-var" \
