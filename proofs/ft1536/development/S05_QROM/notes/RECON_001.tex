@@ -1,0 +1,254 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=22mm,headheight=15pt]{geometry}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\setsansfont{DejaVu Sans}
+\setmonofont{DejaVu Sans Mono}[Scale=0.80]
+\usepackage{amsmath,amssymb,amsthm,booktabs,tabularx,array,enumitem,xcolor,fancyhdr,hyperref,ragged2e}
+\definecolor{ink}{HTML}{112C4D}
+\definecolor{blue}{HTML}{176C9A}
+\hypersetup{colorlinks=true,urlcolor=blue,linkcolor=blue,pdftitle={FT1536: rozpoznanie QROM, S05-Q001},pdfauthor={Notatka robocza dla Niirmata}}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\sffamily\small FREE FT / S05}
+\fancyhead[R]{\sffamily\small QROM - ROZPOZNANIE 001}
+\fancyfoot[L]{\sffamily\footnotesize Snapshot 2d2cdf5 / 10 października 2026}
+\fancyfoot[R]{\sffamily\footnotesize\thepage}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{3em}
+\setlist[itemize]{leftmargin=*,itemsep=3pt,topsep=3pt}
+\setlist[enumerate]{leftmargin=*,itemsep=3pt,topsep=3pt}
+\renewcommand{\arraystretch}{1.25}
+\newcommand{\code}[1]{\texttt{\detokenize{#1}}}
+\newcommand{\head}[1]{\section*{\color{ink}\sffamily #1}}
+\newcommand{\subhead}[1]{\subsection*{\color{ink}\sffamily #1}}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\PhiF}{\Phi}
+\newcommand{\base}{https://github.com/niirmataa/free_falcon_sign/blob/2d2cdf52304cee9cf513487d4296392262df22f4/}
+\begin{document}
+\begin{center}
+{\sffamily\color{blue}\small NOTATKA BADAWCZA / CZĘŚĆ II / S05}\par\vspace{8pt}
+{\sffamily\bfseries\color{ink}\LARGE FT1536 w QROM}\par\vspace{5pt}
+{\sffamily\large Droga przez pełny rozkład odpowiedzi Sign}\par\vspace{8pt}
+{\small Dla Niirmata / stan rozpoznania: 10 października 2026}
+\end{center}
+\head{1. Wynik tego rozpoznania}
+\textbf{Istnieje konkretny kierunek dla niezmienionego, ograniczonego do 16 prób Sign: porównywać całe odpowiedzi przy jednym nonce.} Nie wykazano jeszcze jego bezpieczeństwa w QROM. Otrzymano mapę rzeczywistych interfejsów oraz elementarny lemat: kierunkowa nierówność z $\Phi$ pozostaje ważna po wspólnej kwantowej kontynuacji klasycznego losowania. Pełny dowód tekstowy jest na stronie~4.
+
+Trzy ustalenia zmieniają punkt startowy:
+\begin{enumerate}
+\item \textbf{Ekstrakcja w obecnym modelu nie używa rewindingu.} Konstruktor \code{Reduction.build} wykonuje symulację i stosuje \code{finishSim}. Świadek wynika z pojedynczego zaakceptowanego fałszerstwa. Cztery strzałki paperu są przejściami między eksperymentami.
+\item \textbf{Pierwszy cel to kwantowy hash i klasyczny Sign.} Spójny dostęp do Sign jest innym, silniejszym modelem. Nie jest wymagany do tego celu QROM [2].
+\item \textbf{Nonce oraz hash pozostają stałe podczas prób.} Wobec tego gotowego twierdzenia dla CoreFalcon$^+$ nie można zastosować przez samo podstawienie parametrów. Rysunek~9 w [1] pokazuje różnicę algorytmów.
+\end{enumerate}
+
+\subhead{Zakres i status}
+Rozpoznanie rozwija istniejący wpis \textbf{S05 - QROM} w \code{docs/onboarding/ROADMAP.md}. Nie wznawia B1.07 ani pozostałych aktywnych pakietów. Nie zmienia C, Lean, paperu, strony WWW ani stanu repozytorium. Dalsza integracja jest osobną decyzją; pierwszeństwo głównej linii ePrint pozostaje zachowane.
+
+\textbf{Baza:} \code{niirmataa/free_falcon_sign}, commit
+\begin{center}\code{2d2cdf52304cee9cf513487d4296392262df22f4}.\end{center}
+Przeczytano wybrane źródła i instrukcje; 23 lokalne kopie źródeł sprawdzono z identyfikatorami blobów Git. Jest to kontrola integralności odczytu, nie replay dowodów. Lean i Sage nie były dostępne w tym środowisku. Nowy lemat ma wyłącznie dowód tekstowy i wewnętrzne sprawdzenie, bez statusu kernelowego ani projektowego REVIEWED.
+
+\newpage
+\head{2. Co naprawdę robi przypięty Sign}
+Odczyt \code{Extra/c/falcon-sign.c} daje następującą kolejność:
+\begin{enumerate}
+\item \code{falcon_sign_start}: pobranie 40 bajtów nonce z generatora (3281--3288).
+\item \code{falcon_sign_update}: dołączenie wiadomości do kontekstu hasha (3301--3303).
+\item \code{falcon_sign_generate}: pojedyncze hash-to-point do \code{hm}, przed pętlą (3324--3325).
+\item Maksymalnie 16 wywołań \code{do_sign}, zawsze z tym samym \code{hm} (cap 101--109; pętla 3330--3409).
+\item Błąd samplera kończy wywołanie (3374--3375). Odrzucenie normy ponawia próbę. Po akceptacji następuje jedno kodowanie; jego porażka jest końcowa (3411--3421).
+\end{enumerate}
+\textbf{Wniosek źródłowy:} liczba prób samplera, liczba nonce i liczba obliczeń hasha nie są tym samym licznikiem. Domyślny interfejs losuje nonce raz na podpis. Dostępne jest także API z zewnętrznym nonce; własność entropii nie obejmuje dowolnego wejścia do tego API.
+
+\subhead{Obiekt porównania}
+Dla ustalonego klucza publicznego $h$ i wyzwania $c$ proponujemy zachować cały rozkład
+\[
+ P_h(c,o)=\frac{1}{|R_q|}\,\operatorname{signBody}_h(c)(o),
+ \qquad o\in\operatorname{Option}(\operatorname{BoxVec}).
+\]
+To dokładna postać \code{honest_joint_body} z \code{Run2/LawBinding.lean}. Wartość \code{none} obejmuje porażkę modelowego ciała Sign. Nie wolno warunkować całego eksperymentu na wydaniu podpisu.
+
+Dla modelowego prawa jednej próby $T_c$, $u_c=T_c(\mathrm{none})$ i mapy emisji $E$, eksport \code{signBodyOf_mass_none} daje
+\[
+ \Pr[\mathrm{none}\mid c]=u_c^{16}
+ +\left(\sum_{i=0}^{15}u_c^i\right)
+   \sum_{z:E(z)=\mathrm{none}}T_c(\mathrm{some}\ z).
+\]
+Pierwszy składnik to wyczerpanie prób, drugi to końcowa porażka emisji. Tożsamość dotyczy modelowego prawa, nie stanowi sama dowodu zgodności z terminalnym błędem samplera, błędem bufora i wszystkimi zwrotami C. Te zachowania wymagają osobnej realizacji źródłowej.
+
+\subhead{Ekstrakcja bez cofania wykonania}
+\code{Relation.extract} definiuje
+\[
+ z^*=\bigl(\operatorname{center}(c^*-h\operatorname{reduce}(s^*)),\ s^*\bigr).
+\]
+\code{accepted_extracts} dowodzi: $\operatorname{Verify}(h,c^*,s^*)\Rightarrow
+\operatorname{ShortPreimage}(h,c^*,z^*)$. Równanie zachowuje sens dla klasycznego wyniku kwantowego przeciwnika. Otwartym krokiem QROM jest osadzenie właściwego celu i kontrola sukcesu redukcji; klasyczny indeks z tablicy ROM nie przenosi się automatycznie.
+
+\newpage
+\head{3. Mapa lematów: zachować czy rozszerzyć?}
+Prefiks \code{R/} oznacza \code{proofs/ft1536/development/T12_1/run2/formal/}.
+
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{.34\linewidth}>{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Element} & \textbf{Ocena dla S05}\\\midrule
+\code{Relation.lean}: \code{extraction_equation}, \code{accepted_extracts}
+& Zachować twierdzenia algebraiczne. Nie dostarczają kwantowej symulacji ani osadzenia celu.\\
+\code{R/SignLayerSupport.lean}: masy \code{some}/\code{none}, \code{cap_le_of_pointwise}
+& Zachować jako rachunek klasycznego, prywatnego losowania Sign. Sprawdzić identyczność prawa i granicy prób.\\
+\code{R/AttemptPointwise.lean}: \code{AttemptShape}, \code{Sandwich}
+& Zachować interfejsy jako warunkowe przesłanki. Nie uznawać realizacji źródłowej za ukończoną.\\
+\code{R/Run2/LawBinding.lean}: \code{LocalJointCertificate}
+& Obejmuje wspólne prawo wyzwania i odpowiedzi, łącznie z porażką. Potrzebuje interpretacji w nowym eksperymencie.\\
+\code{EventTransfer.lean}: \code{event_quadratic}, \code{phi_bound}
+& Algebra pozostaje użyteczna. Lemat na stronie~4 rozszerza test wskaźnikowy do prawdopodobieństwa akceptacji $v(x)\in[0,1]$.\\
+\code{R/Run2/Games.lean}: \code{Program}, \code{ClassicalAdversary}
+& Nowa semantyka kwantowa konieczna. Obecny typ pozwala wyłącznie na klasyczne zapytania i gałęzie.\\
+\code{R/Run2/StoppedComparison.lean}: \code{programComparison}
+& Dowód jest indukcją po klasycznym \code{Program}. Nie daje bez dodatkowej pracy potęgi $(1+e)^{q_s}$ w QROM.\\
+Klasyczna świeżość, \code{hashTargets}, $q_h+1$ celów
+& Zastąpić dowodem reprogramowania i osadzenia wyzwania. Nie kopiować straty kolizyjnej ani liczby celów.\\
+Hybryda rzeczywistego PRG
+& Osobny kontrakt przeciw kwantowemu rozróżniaczowi; obejmuje rzeczywisty horyzont taśmy i te same wyniki porażki.\\
+\bottomrule
+\end{tabularx}
+
+\subhead{Dodatkowa granica: dostęp do stanu}
+\code{Sampler.code} przyjmuje klasyczny \code{State}, zawierający tablicę ROM i zdarzenia. W QROM nie wolno odczytywać wszystkich zapytań przeciwnika w celu zbudowania takiego stanu. Potrzebny jest efektywny sampler zależny tylko od dozwolonej informacji albo nowy, wykonalny interfejs kwantowej redukcji.
+
+\textbf{Kierunek momentu jest ustalony:}
+\[
+ J=\operatorname{samplerLaw}S,\quad P=\operatorname{freshHonest}h,\qquad
+ J\ll P,\quad\sum_x\frac{J(x)^2}{P(x)}\le 1+e.
+\]
+Ten kierunek pozwala ograniczać sukces w $P$ przez sukces w $J$ za pomocą $\Phi$. Odwrócenie ilorazu zmienia wniosek.
+
+\newpage
+\head{4. Pierwszy lemat: wspólna kontynuacja kwantowa}
+\textbf{Status: pełny argument tekstowy; elementarny lemat pomocniczy, bez roszczenia nowości i bez formalizacji Lean.}
+
+Niech $X$ będzie skończone, $P,J$ znormalizowanymi rozkładami, $J\ll P$, $D\ge0$ oraz
+\[
+ \sum_{x:P(x)>0}\frac{J(x)^2}{P(x)}\le 1+D.
+\]
+Dla każdego $x$ niech $\tau_x$ będzie znormalizowanym stanem kwantowym w tej samej skończenie wymiarowej przestrzeni. \textbf{Rodzina $\tau_x$ jest wspólna dla obu eksperymentów.} Może obejmować cały wynik kontynuacji, łącznie z dozwoloną wyrocznią. Niech $0\le M\le I$ będzie wspólnym efektem pomiarowym. Zdefiniujmy
+\[
+ \rho_P=\sum_xP(x)\tau_x,\quad \rho_J=\sum_xJ(x)\tau_x,
+ \qquad a=\Tr(M\rho_P),\quad b=\Tr(M\rho_J).
+\]
+Wtedy
+\[
+ (a-b)^2\le D\,a(1-a),\qquad
+ a\le\PhiF(D,b)=\frac{2b+D+\sqrt{D^2+4Db(1-b)}}{2(1+D)}.
+\]
+
+\textbf{Dowód.} Niech $v(x)=\Tr(M\tau_x)\in[0,1]$ oraz $L(x)=J(x)/P(x)$ na nośniku $P$. Mamy $\E_P L=1$, $a=\E_Pv$ i $b=\E_P(Lv)$. Stąd
+\[
+ b-a=\E_P[(L-1)(v-a)],\qquad
+ \E_P[(L-1)^2]=\E_P[L^2]-1\le D.
+\]
+Ponieważ $v^2\le v$,
+\[
+ \E_P[(v-a)^2]=\E_P[v^2]-a^2\le a-a^2.
+\]
+Cauchy--Schwarz daje nierówność kwadratową. Po uporządkowaniu:
+\[
+ (1+D)a^2-(2b+D)a+b^2\le0.
+\]
+Górny pierwiastek to podane $\PhiF(D,b)$. Dla $D=0$ otrzymujemy $a=b$; zera masy nie stanowią problemu dzięki $J\ll P$.\hfill$\square$
+
+\subhead{Dlaczego to pomaga i czego jeszcze nie daje}
+Kwantowa kontynuacja sama w sobie nie niszczy tego rachunku. Trzeba jednak \emph{skonstruować} wspólne $\tau_x$ dla konkretnych gier oraz wykazać kontrolę całego rozkładu $X$. Lemat nie dowodzi tej reprezentacji, adaptacyjnego składania ani efektywności samplera.
+
+\textbf{Kontrola konieczności przesłanki.} Niech $b$ będzie uczciwym bitem w obu grach. W pierwszej przekażmy odbiorcy $(b,b)$, w drugiej $(b,1-b)$. Marginały pierwszej składowej są identyczne ($D=0$), ale test równości pary ma sukces $1$ i $0$. Już klasyczna informacja dodatkowa wystarcza, by obalić wnioskowanie tylko z marginału. To przykład diagnostyczny, nie atak na FT1536 ani nowy wynik negatywny.
+
+\newpage
+\head{5. Proponowana konstrukcja eksperymentu}
+\textbf{Cel początkowy:} EUF-CMA dla modelu współczynnikowego FT1536, z kwantowym dostępem do direct-output hasha $H:\mathcal X\to R_q$, klasycznym interfejsem Sign oraz klasycznym fałszerstwem $(m^*,r^*,s^*)$. Długości wejść i zasoby są jawnie ograniczone. Ustalona kodowana reprezentacja $R_q$ określa działanie wyroczni unitarnej. Publiczny SHAKE/H2P pozostaje osobnym torem S04.
+
+\begin{enumerate}
+\item \textbf{Gra Q0:} rzeczywista dla wybranego modelu matematycznego. Jeden świeży idealny nonce na zlecenie, jedno wyzwanie, maksymalnie 16 prywatnych prób, jawny wynik porażki. Wiadomość trafia do zbioru zapytań Sign także przy porażce.
+\item \textbf{Gra Q1:} przeprogramować punkt $(r,m)$ na świeże jednostajne wyzwanie, zachowując całe warunkowe prawo odpowiedzi. Osobno wykazać stratę tego przejścia wobec kwantowego przeciwnika.
+\item \textbf{Gra Q2:} zastąpić joint law $(c,o)$ prawem publicznej symulacji, korzystając z właściwie skierowanego momentu. Cała porażka należy do $o$. Konstrukcja musi zapewnić wspólną kontynuację ze strony~4.
+\item \textbf{Gra Q3:} osadzić niezależny cel ISIS/MT-ISIS i wyprowadzić świadek z końcowego wyniku, z nowym rachunkiem czasu, liczby zapytań i straty sukcesu.
+\end{enumerate}
+To \textbf{szkic gier}, nie ukończony łańcuch redukcji. Ich wspólna semantyka i zgodność z realnym Sign wymagają dowodu.
+
+\subhead{Cztery warunki rozstrzygające drogę}
+\begin{itemize}
+\item \textbf{Q-JOINT:} efektywne, bezpułapkowe losowanie $(c,o)$ o właściwej masie każdej porażki. Zgodność z abstract \code{Sampler} nie wystarcza bez kosztu i legalnego dostępu do stanu.
+\item \textbf{Q-COMMON:} wspólna kontynuacja po tym samym klasycznym wyniku, także przy kwantowym stanie przeciwnika i wyroczni. Nie wystarcza równość marginałów.
+\item \textbf{Q-COMPOSE:} adaptacyjny rachunek momentu dla tego interfejsu. Dopiero jego dowód może uzasadnić $D_Q\le(1+e)^{q_s}-1$.
+\item \textbf{Q-TARGET:} pełna konstrukcja reduktora i właściwa dystrybucja jego klucza/celów. Sam \code{accepted_extracts} nie ustala tych rozkładów.
+\end{itemize}
+
+\textbf{Liczniki:} $q_s$ - zlecenia Sign; $C_s\le16q_s$ - próby samplera; $R$ - faktyczne reprogramowania; $Q$ - wszystkie zapytania uwzględnione w odpowiednim lemacie. Dla proponowanej gry chcemy $R=q_s$, lecz jest to wymaganie konstrukcji, a nie ustalony fakt. W idealnym wariancie świeżego nonce $p_{\max}=2^{-320}$; realny generator wymaga osobnej hybrydy.
+
+\newpage
+\head{6. Literatura i trzy sprawdzone kierunki}
+\subhead{A. Gotowe twierdzenie dla podobnego schematu}
+W [1], wersja~3, lemat~6 dotyczy celowanego przeprogramowania. Twierdzenie~5 obejmuje CoreFalcon$^+$: nowe nonce i wyzwanie w każdej próbie; liczy wszystkie próby. Rysunek~9 (s.~70) odróżnia ten wariant od stałego nonce. \textbf{Wynik sprawdzenia: brak identyczności algorytmu z FT1536.} Nie jest to dowód niemożliwości naszej drogi.
+
+\subhead{B. Pełna odpowiedź i jedno reprogramowanie}
+To kierunek wybrany do dalszego S05. Zachowuje pętlę FT1536 i korzysta z istniejącego joint certificate. Własny lemat ze strony~4 jest pozytywnym wynikiem pomocniczym. Pierwszym nierozwiązanym krokiem pozostaje Q-COMMON wraz z Q-JOINT. Do adaptacyjnego przeprogramowania punktem odniesienia jest [2], twierdzenie~1 i propozycja~2; potrzebna jest entropia w odpowiednim momencie eksperymentu.
+
+\subhead{C. Ogólna zamiana całej wyroczni}
+Twierdzenie~4 w [1] wyklucza uniwersalne, czysto mnożnikowe przeniesienie kontroli Rényiego na kwantowy dostęp do całej wyroczni. \textbf{Ten ogólny wynik negatywny jest znany.} Nowy kontrprzykład musiałby dotyczyć innej, precyzyjnej przesłanki FT1536. Nie ustalono nowości takiego wyniku.
+
+\subhead{Rola wskazanych przez właściciela narzędzi}
+\begin{itemize}
+\item \textbf{Kiltz--Lyubashevsky--Schaffner [3]:} twierdzenia 3.3--3.4 dotyczą określonych protokołów identyfikacyjnych i transformacji Fiat--Shamira. Przed zastosowaniem trzeba dostarczyć odpowiedni protokół i jego przesłanki, w tym właściwe własności symulacji i entropii. Sam nonce FT1536 tego nie zapewnia.
+\item \textbf{Don--Fehr--Majenz--Schaffner [4] oraz Don--Fehr--Majenz [5]:} rozróżniamy pracę CRYPTO~2019 od techniki 2.0 z CRYPTO~2020. Twierdzenie~2 w sprawdzonej wersji [5] daje narzędzie measure-and-reprogram ze stratą $(2q+1)^2$. To kandydat do osadzenia celu; nie buduje sam wyroczni Sign.
+\item \textbf{Unruh [6]:} sprawdzony wczesny lemat O2H kontroluje rozróżnialność przez prawdopodobieństwo trafienia zapytania. Transformacja Unruha jest odrębnym narzędziem. Jej pełnego twierdzenia z pracy 2015 nie pozyskano w tym odczycie i nie użyto jako przesłanki.
+\end{itemize}
+\textbf{Nie ustalono:} nowości proponowanej drogi, pełnego QROM dla FT1536, parametrów bezpieczeństwa ani wykonalnej instancji wszystkich czterech kontraktów. Rozpoznanie nie jest audytem całych dowodów cytowanych prac.
+
+\newpage
+\head{7. Następny pakiet S05: dokładny kontrakt}
+\textbf{Proponowana nazwa:} \code{S05_QROM_WHOLE_REPLY_001}. Jest to projekt zadania, bez zmiany oficjalnego rejestru ani uruchamiania istniejącego wykonawcy.
+
+\textbf{Wejścia:} bieżący przypięty model Sign, \code{LocalJointCertificate}, ograniczenie prób 16, lemat ze strony~4 oraz wybrana, dokładnie przypięta wersja lematów reprogramowania.
+
+\textbf{Główny cel:} skonstruować dwie gry o kwantowym dostępie do tej samej wyroczni i klasycznym Sign, różniące się tylko prawem pełnej odpowiedzi. Udowodnić reprezentację wspólnej kontynuacji i oszacowanie momentu dla adaptacyjnej kompozycji, bez czytania ukrytych zapytań kwantowych.
+
+\textbf{Kryteria wyniku dodatniego:}
+\begin{enumerate}
+\item Jawne typy wiadomości, nonce, wyzwań, podpisów i wszystkich obserwowanych porażek; precyzyjna semantyka interfejsów.
+\item Jeden nonce na podpis i to samo $c$ przez wszystkie próby. Nie zastępować algorytmu wariantem z odświeżaniem nonce.
+\item Dozwolony sampler publiczny i policzony koszt. Każde użycie klasycznej tablicy ROM wymaga legalnej realizacji lub eliminacji.
+\item Konstrukcja wspólnych warunkowych stanów/kanałów; lokalne ograniczenia jednolite po dozwolonej historii, kluczu i wiadomości.
+\item Dowód dokładnego $D_Q$ i jasny zakres wniosku. Parametry reprogramowania oraz redukcja ISIS mogą pozostać osobnymi nazwanymi zobowiązaniami, bez deklaracji pełnego bezpieczeństwa.
+\end{enumerate}
+
+\textbf{Kryteria wyniku negatywnego:} jawne rozkłady, stan, wyrocznia i przeciwnik spełniające rzeczywiste przesłanki proponowanego lematu, wraz z naruszoną nierównością. Wskazać, czy obalono zbyt słaby interfejs, konkretną technikę, czy docelową tezę. Porównać z [1]; nie nazywać automatycznie nowym twierdzeniem istniejącego zakazu globalnego transferu.
+
+\subhead{Co zachowuje pierwszeństwo głównej linii}
+Brak zmian algorytmu dla dopasowania do literatury. Brak podmiany klasycznych eksportów. Brak awansu B1/B4/B5 na podstawie tej notatki. Najpierw osobny kontrakt i mały wynik, potem decyzja o formalizacji oraz integracji po uzgodnieniu z torem ePrint.
+
+\textbf{Najbliższy rozstrzygający krok:} skonstruować Q-COMMON dla jednej odpowiedzi z nowym nonce, obejmującej parę $(c,o)$ i porażkę, przy dowolnym uprzednim kwantowym stanie wyroczni. Jeśli ten krok się powiedzie, przejść do adaptacyjnej kompozycji. Jeśli zawiedzie, zapisać minimalną brakującą przesłankę lub konkretny kontrprzykład.
+
+\newpage
+\head{8. Źródła i odtwarzalność odczytu}
+\small
+\textbf{Repozytorium.} Wszystkie odnośniki i blob SHA-1 znajdują się w dołączonym \code{source_manifest.json}. Bazą jest commit z pierwszej strony. Najważniejsze lokalizacje:
+\begin{itemize}
+\item \href{\base Extra/c/falcon-sign.c}{\code{Extra/c/falcon-sign.c}}: 101--109, 3281--3296, 3324--3421.
+\item \href{\base proofs/ft1536/development/T12_1/run2/formal/Run2/Games.lean}{\code{R/Run2/Games.lean}}: typy przeciwnika i samplera, \code{finishSim}, \code{Reduction.build}.
+\item \href{\base proofs/ft1536/development/T12_1/run2/formal/Run2/LawBinding.lean}{\code{R/Run2/LawBinding.lean}}: \code{LocalJointCertificate}, \code{honest_joint_body}.
+\item \href{\base proofs/ft1536/development/T12_1/run2/formal/SignLayerSupport.lean}{\code{R/SignLayerSupport.lean}}: \code{signBodyOf_mass_none}, \code{ReplyShape}, \code{e2}.
+\item \href{\base proofs/ft1536/development/T12_1/run2/formal/Run2/StoppedComparison.lean}{\code{R/Run2/StoppedComparison.lean}}: klasyczna indukcja \code{programComparison}.
+\item \href{\base proofs/ft1536/paper/sec_04_main.tex}{\code{paper/sec_04_main.tex}}: cztery przejścia i rozróżnienie celu od twierdzenia warunkowego.
+\end{itemize}
+
+\textbf{Literatura.} Numery twierdzeń dotyczą wyłącznie wymienionych wersji. Autoryzacja źródła i odczyt wskazanych fragmentów nie oznaczają niezależnego audytu całej pracy.
+\begin{enumerate}[label={[\arabic*]},itemsep=7pt]
+\item M. Beckmann, C. Majenz, \emph{Quantum Oracle Distribution Switching and Applications to Falcon and Ring Signatures}. arXiv:2602.16268v3, 9 IX 2026. Lemat 6, §§3.2--3.3; twierdzenie 5, §4; rysunek 9 i dodatek E.1. \href{https://arxiv.org/abs/2602.16268v3}{Wersja}, \href{https://arxiv.org/pdf/2602.16268}{PDF odczytany jako v3 na stronie tytułowej}.
+\item A. B. Grilo, K. Hövelmanns, A. Hülsing, C. Majenz, \emph{Tight adaptive reprogramming in the QROM}. arXiv:2010.15103v2, 30 X 2020; ASIACRYPT 2021. Twierdzenie 1, propozycja 2, model z klasycznym SIGN. \href{https://arxiv.org/abs/2010.15103v2}{Wersja}, \href{https://arxiv.org/pdf/2010.15103}{PDF}.
+\item E. Kiltz, V. Lyubashevsky, C. Schaffner, \emph{A Concrete Treatment of Fiat-Shamir Signatures in the Quantum Random-Oracle Model}. Accepted manuscript, 20 II 2018; EUROCRYPT 2018. Twierdzenia 3.3--3.4. \href{https://pure.uva.nl/ws/files/45974858/916.pdf}{Kopia uniwersytecka}.
+\item J. Don, S. Fehr, C. Majenz, C. Schaffner, \emph{Security of the Fiat-Shamir Transformation in the Quantum Random-Oracle Model}. CRYPTO 2019; arXiv:1902.07556v4, 27 VII 2020. Twierdzenia 2 i 22. \href{https://arxiv.org/pdf/1902.07556}{PDF}.
+\item J. Don, S. Fehr, C. Majenz, \emph{The Measure-and-Reprogram Technique 2.0: Multi-Round Fiat-Shamir and More}. CRYPTO 2020; arXiv:2003.05207v3, 7 III 2022. Twierdzenie 2. \href{https://arxiv.org/pdf/2003.05207}{PDF}.
+\item D. Unruh, \emph{Revocable quantum time-capsules}, wczesny manuskrypt autora, 16 VIII 2013, lemat 31, s.40. \href{https://kodu.ut.ee/~unruh/publications/qtc.pdf}{PDF}. Nie utożsamiamy numeracji z późniejszą publikacją JACM.
+\end{enumerate}
+
+\textbf{Granice sprawdzenia.} Brak nowego replayu Lean/Sage, kompilacji C i estymacji bezpieczeństwa. Nie przetestowano jeszcze Q-COMMON ani Q-COMPOSE w formalnym modelu kwantowym. Pakiet zawiera własny tekst, metadane źródeł i checkpoint; nie redystrybuuje cudzych PDF-ów ani całego repozytorium.
+\end{document}

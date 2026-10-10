@@ -1,0 +1,457 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,longtable,array,booktabs,xurl,hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{3em}
+\newcommand{\code}[1]{\nolinkurl{#1}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Law}{\operatorname{Law}}
+\newcommand{\PhiB}{\operatorname{Phi}}
+\newtheorem{proposition}{Propozycja}
+\title{FT1536 / S05: kontynuacja rozpoznania QROM\\
+\large Literatura, mapa eksportów i warunkowa kompozycja pełnych odpowiedzi}
+\author{Notatka robocza dla Niirmata}
+\date{10 października 2026 / CONTINUATION\_002}
+\begin{document}
+\maketitle
+
+\textbf{Status: rozpoznanie literatury oraz dowód tekstowy warunkowego lematu.}
+Bez replayu Lean/Sage, kernelowej formalizacji i niezależnego odbioru.
+Bez twierdzenia o bezpieczeństwie rzeczywistego FT1536. Rozwijamy S05 z
+ROADMAP; nie zmieniamy znaczenia istniejących statusów T12.1 ani B20.
+
+\section{Co zmienia ten krok}
+Punktem wyjścia jest zachowany pakiet \code{FT1536-S05-QROM-RECON-001}.
+Uzupełniono brakujący odczyt transformacji Unruha i sprawdzono dokładne
+twierdzenia KLS, DFMS/DFM oraz adaptacyjnego reprogramowania.
+Wynik pozytywny jest węższy od pełnego QROM: skonstruowano wspólny kanał
+dla dwóch \emph{przeprogramowanych} gier oraz wyprowadzono adaptacyjny
+rachunek drugiego momentu, gdy odpowiedzi pochodzą z niezależnego,
+klasycznego samplera o określonym niżej interfejsie.
+
+To przesuwa pierwszy konkretny obowiązek do \textbf{Q-JOINT-INSTANCE}:
+trzeba dostarczyć efektywny sampler pełnej odpowiedzi i jego lokalny
+certyfikat. Co więcej, kwantowa legalność argumentu stanu ma prostą
+warunkową realizację: istniejący \code{LocalJointCertificate} jest
+jednolity po \emph{wszystkich} stanach, więc do \code{S.code} można zawsze
+podać publiczny \code{initial}. To nowy sampler, nie utożsamienie
+kwantowej historii z tablicą klasycznego ROM.
+Q-TARGET, rzeczywiste prawo Sign i zasoby nadal są otwarte.
+
+\textbf{Ważne rozróżnienie.} Klasyczne zapytania Sign i kwantowe zapytania
+hasza są standardowym modelem QROM dla podpisów, a nie same w sobie
+osłabieniem tego modelu [KLS, U15]. Mniejszym wynikiem jest tutaj warunkowy
+lemat symulacji. Dostęp w superpozycji do Sign byłby osobnym celem.
+
+\textbf{Baza źródłowa:}
+\code{2d2cdf52304cee9cf513487d4296392262df22f4}.
+Lokalny HEAD przy odczycie:
+\code{eb9836cc9138e89d1f0cbcd052a8a58e32caf94f}.
+Wszystkie 24 identyfikatory blobów poprzedniego manifestu sprawdzono lokalnie;
+23 podane SHA-256 również się zgadzają. Pliki formalne i C użyte poniżej
+są takie same w bazie i w odczytanym drzewie roboczym. Zmiany czterech
+dokumentów odnotowano w \code{INPUT_RECEIPT.json}; nie traktujemy ich jako
+aktualizacji historycznego snapshotu. Pięć hashy oryginalnego pakietu jest zgodnych.
+
+\section{Dokładne liście literaturowe}
+Sprawdzono treść pod wskazanymi adresami 10 października 2026.
+Numery stron poniżej są numerami drukowanymi prac, nie indeksem PDF.
+Nie wykonano niezależnego audytu całych publikacji. PDF-ów nie pobierano
+do repozytorium; adres wersji i data są pinem bibliograficznym, nie hashem bajtów.
+Nie formułujemy roszczenia nowości ani kompletności przeglądu literatury.
+
+\subsection*{KLS: konkretny Fiat--Shamir}
+Kiltz--Lyubashevsky--Schaffner, \emph{A Concrete Treatment of Fiat-Shamir
+Signatures in the Quantum Random-Oracle Model}, zaakceptowany manuskrypt
+20 II 2018, DOI 10.1007/978-3-319-78372-7\_18 [KLS].
+Definicja 2.5, rysunek 8 i twierdzenia 3.3--3.4 (s.~9, 11, 14).
+Twierdzenie 3.3 zakłada $\varepsilon_{zk}$-perfect naHVZK i $\alpha$ bitów
+min-entropii zobowiązania; daje
+\[
+ \operatorname{Adv}_{CMA}(A)\le\operatorname{Adv}_{NMA}(B)
+       +q_s2^{1-\alpha}+\kappa_m q_s\varepsilon_{zk},
+ \qquad T_B=T_A+\kappa_m q_Hq_s.
+\]
+Twierdzenie 3.4 wymaga dodatkowo trybu lossy i jego statistical soundness;
+zastępuje NMA przez LOSS z kosztem $8(q_H+1)^2\varepsilon_{ls}$.
+CUR dotyczy mocnej niepodrabialności.
+NaHVZK wymaga m.in. jednostajnego wyzwania w nieabortującej symulacji.
+Rysunek 8 odświeża zobowiązanie przy każdej zewnętrznej próbie.
+\textbf{Zastosowanie: warunkowe.} Słownik kandydata to $W=r$, $c=H(r\Vert m)$,
+$Z=s$. Należałoby włożyć całą pętlę 16 prób do odpowiedzi jednego protokołu
+i osobno obsłużyć widoczne porażki. Ani wymagane naHVZK, ani tryb lossy
+dla rzeczywistego rozkładu kluczy nie wynikają z lokalnego momentu FT1536.
+
+\subsection*{DFMS19 i DFM20: dwa różne kontrakty}
+Don--Fehr--Majenz--Schaffner, \emph{Security of the Fiat-Shamir Transformation
+in the Quantum Random-Oracle Model}, arXiv:1902.07556v4, 27 VII 2020 [DFMS19].
+Twierdzenie 22 (s.~14) jest asymptotycznym wynikiem sEUF-CMA: wymaga trudnej
+relacji, superwielomianowej przestrzeni wyzwań, quantum proof of knowledge
+według definicji 14 oraz naHVZK, entropii i CUR z KLS.
+\textbf{Zastosowanie: brak instancji.} \code{accepted_extracts} wydaje krótki
+przeciwobraz pojedynczego wyzwania; nie dowodzi wymaganej wiedzy świadka
+relacji identyfikacyjnej. Sam rozmiar $R_q$ dla jednego profilu nie zastępuje
+rodziny asymptotycznej. Ten wynik nie jest uzasadnieniem automatycznego
+podstawienia nowego przeciwnika do \code{concrete_euf_cma_to_mt_isis}.
+
+Don--Fehr--Majenz, \emph{The Measure-and-Reprogram Technique 2.0:
+Multi-Round Fiat-Shamir and More}, arXiv:2003.05207v3, 7 III 2022 [DFM20].
+Twierdzenie 2 (s.~5): dla skończonych niepustych $X,Y$, losowego
+$H:X\to Y$ i algorytmu o $q$ zapytaniach, dwustopniowy symulator wybiera
+$x$ przed otrzymaniem jednostajnego $\Theta\in Y$. Dla każdego $x_0$
+i dopuszczalnego predykatu $V$:
+\[
+ \Pr[x=x_0\land V(x,\Theta,z):S^A]
+ \ge\frac{\Pr[x=x_0\land V(x,H(x),z):A^H]}{(2q+1)^2}.
+\]
+Uwzględniony jest końcowy wynik jako miejsce pomiaru; nie ma dodatkowego
+błędu addytywnego z wcześniejszej wersji techniki. Konwencja dopuszcza
+kontrolowane zapytania. \textbf{Zastosowanie: kandydat do Q-TARGET}, z
+$X$ równym dziedzinie ramek, $Y=R_q$, a $V$ opartym na Verify.
+Trzeba wliczyć zapytania symulatora i rozwiązać jego interakcję z Sign.
+Twierdzenie nie dostarcza publicznego samplera podpisu.
+
+\subsection*{U15: transformacja, nie certyfikat starego formatu}
+Dominique Unruh, \emph{Non-Interactive Zero-Knowledge Proofs in the Quantum
+Random Oracle Model}, EUROCRYPT 2015, DOI 10.1007/978-3-662-46803-6\_25;
+sprawdzona wersja konferencyjna IACR [U15]. Definicja 8, rysunek 1,
+twierdzenia 10, 13, 18 i wniosek 14 (s.~6, 12--13, 20, 22, 24).
+Konstrukcja używa wielu transkryptów i dwóch wyroczni $G,H$.
+Twierdzenie 10 wymaga HVZK, superlogarytmicznej min-entropii odpowiedzi
+warunkowo względem jej stanu/wejścia oraz odpowiedniej entropii kolizyjnej
+krotki haszowanej. Twierdzenie 13 wymaga special soundness oraz
+superlogarytmicznych $t\log m$, entropii symulowanej krotki i długości odpowiedzi.
+Wniosek 14 daje istnienie odpowiedniego NIZK po dopuszczonych modyfikacjach
+protokołu. Twierdzenie 18 buduje silnie niepodrabialny podpis z ZK,
+simulation-sound online-extractability i generatora trudnych instancji
+z definicji 16. \textbf{Zastosowanie do niezmienionego FT1536: nie.}
+To inny format i inny algorytm weryfikacji, nie brakująca przesłanka
+dla obecnego Sign. Wcześniejszy O2H Unruha nie jest tym twierdzeniem.
+
+\subsection*{AR: opłata za zmianę istniejącej wyroczni}
+Grilo--Hövelmanns--Hülsing--Majenz, \emph{Tight adaptive reprogramming
+in the QROM}, arXiv:2010.15103v2, 30 X 2020 [AR], twierdzenie 1,
+rysunek 2, s.~6--7. Wybrane adaptacyjnie rozkłady losują miejsca
+przeprogramowania; nowa wartość jest świeża i jednostajna. Koszt rozróżnienia
+jest ograniczony przez sumę
+$\sqrt{\widehat q_i p^{(i)}_{max}}+\widehat q_i p^{(i)}_{max}/2$,
+gdzie $\widehat q_i$ liczy wcześniejsze zapytania, a $p^{(i)}_{max}$ jest
+oczekiwaną największą masą marginalnego rozkładu miejsca.
+\textbf{Zastosowanie:} dla nowego idealnego $r\in\{0,1\}^{320}$ i już
+ustalonego $m$, $p_{max}=2^{-320}$. Wliczamy także klasyczne odczyty hasza
+przez Sign i końcowego weryfikatora. Dla $Q=q_H+q_s+1$ wystarczy
+\[
+ \delta_{AR}=\min\{1,\ q_s(\sqrt{Q\,2^{-320}}+Q\,2^{-320}/2)\}.
+\]
+To podstawienie wymaga idealnego nonce, jednego odczytu hasza na Sign
+i braku innych dostępów; rzeczywisty PRG nie spełnia go na mocy samej długości.
+
+\subsection*{BM26: dokładna granica gotowej drogi Falcona}
+Beckmann--Majenz, \emph{Quantum Oracle Distribution Switching and
+Applications to Falcon and Ring Signatures}, arXiv:2602.16268v3,
+9 IX 2026 [BM26]. Twierdzenie 5, rysunek 9, dodatek E.1:
+gotowy wynik dotyczy CoreFalcon$^+$, który odświeża nonce i wyzwanie w pętli.
+Rysunek odróżnia go od wariantu ze stałym nonce. W FT1536 pozostaje jeszcze
+cap, inne prawo samplera, norma, rozkład kluczy i emisja bajtów.
+Twierdzenie 4 (s.~14) daje przeszkodę dla uniwersalnego przenoszenia
+powodzenia między całymi wyroczniami o różnych rozkładach wyjść,
+przy stracie niezależnej od rozmiaru dziedziny, nawet dla dwóch zapytań.
+\textbf{Wniosek:} nie wolno podmienić wszystkich wartości kwantowej
+wyroczni wyłącznie na podstawie lokalnej dywergencji. Nie wyklucza to
+poniższej zamiany skończonej liczby klasycznych losowań po opłaconym
+reprogramowaniu. Nie przenosimy twierdzenia 5 przez podstawienie parametrów.
+
+\section{Mapa naszych lematów}
+Skrót R oznacza \code{proofs/ft1536/development/T12_1/run2/formal/}.
+Skrót F oznacza \code{proofs/ft1536/stages/FT1536_MATH_EUFCMA_MTISIS_RUN_001/formal/FT1536/}.
+Oceny poniżej dotyczą odczytanych eksportów w przypiętej bazie;
+nie są audytem wszystkich dowodów ani nadaniem statusu REVIEWED.
+
+\small
+\begin{longtable}{@{}p{.34\linewidth}p{.61\linewidth}@{}}
+\toprule Eksport / konstrukcja & Co przeżywa i co trzeba dowieść \\\midrule
+\endhead
+F/Relation: \code{extraction_equation}, \code{accepted_extracts}
+& \textbf{Zachować bez zmiany tezy.} Deterministyczny Verify implikuje
+ShortPreimage dla zmierzonego klasycznego wyniku. Rozkład i osadzenie celu
+są osobnymi obowiązkami.\\
+R/SignLayerSupport: \code{signBodyOf_mass_none}, \code{cap_le_of_pointwise}
+& \textbf{Zachować warunkowo.} Klasyczne masy prób i końcowej emisji nadal
+mają sens. Warunki zgodności z realnym prawem C i wszystkimi porażkami
+nie znikają.\\
+R/AttemptPointwise: \code{AttemptShape}, \code{Sandwich}
+& \textbf{Zachować jako przesłanki.} Model przeciwnika nie zmienia
+nierówności punktowych; nie dostarcza ich instancji źródłowej.\\
+R/Run2/LawBinding: \code{honest_joint_body}
+& \textbf{Zachować definicję} $P_h(c,o)=|R_q|^{-1}\,\mathrm{signBody}_h(c)(o)$,
+z pełnym $o$, także \code{none}.\\
+R/Run2/LawBinding: \code{LocalJointCertificate}
+& \textbf{Zachować certyfikat, zmienić sposób użycia.} Kierunek $J\ll P$,
+$\sum J^2/P\le1+e$ jest właściwy. Uniwersalny kwantyfikator po stanie
+pozwala użyć \code{S.code} zawsze z \code{initial}; patrz specjalizacja poniżej.\\
+F/EventTransfer: \code{event_quadratic}, \code{phi_bound}
+& \textbf{Zachować rachunek.} Dla testu $v\in[0,1]$ i wspólnych stanów
+warunkowych działa dowód z RECON-001; nie dla samych marginałów odpowiedzi.\\
+R/Run2/Games: \code{parse_frame}, \code{framing_injective}, \code{nonce_card}
+& \textbf{Zachować.} To algebra bajtów i liczność. Liczność $2^{320}$ nie
+jest twierdzeniem o entropii rzeczywistego generatora.\\
+R/Run2/Games: \code{Program}, \code{ClassicalAdversary}, \code{recordedHash}
+& \textbf{Zastąpić semantykę.} Klasycznej gałęzi po każdej odpowiedzi hasza
+nie wolno utożsamić z zapytaniem w superpozycji. Nie mierzymy rejestrów
+kwantowych tylko po to, aby sporządzić log.\\
+R/Run2/StoppedComparison: \code{programComparison},
+\code{stopped_game_event_bound}
+& \textbf{Stare dowody nie obejmują QROM.} Poniższa propozycja daje osobny
+dowód tekstowy analogicznej potęgi dla zawężonego interfejsu; nie jest
+kwantową instancją istniejącego typu Lean.\\
+R/Run2/Games: \code{hashTargets}, \code{finishSim};
+R/Run2/ConcreteReduction: \code{concrete_euf_cma_to_mt_isis}
+& \textbf{Nie przenosić.} Lista $q_H+1$ kolejnych celów zakłada klasyczne
+zapytania. Q-TARGET wymaga nowej konstrukcji, straty i kosztu.\\
+R/Run2/ConcreteReduction: \code{exact_collision_parameter}
+& \textbf{Zachować tylko klasyczne znaczenie.} Nie jest kwantowym boundem
+niezauważalności reprogramowania. Kandydat QROM to osobne $\delta_{AR}$.\\
+Realny seed/PRG, S04 i Resources
+& \textbf{Otwarte.} Potrzebne bezpieczeństwo PRG przeciw przeciwnikowi
+kwantowemu, publiczny bit-output SHAKE/H2P i kwantowy koszt reduktora.\\
+\bottomrule
+\end{longtable}
+\normalsize
+
+\textbf{„Nie przenosić” nie znaczy „fałszywe”.} Klasyczne twierdzenia pozostają
+twierdzeniami o swoich typach. Brak kwantowej semantyki jest luką w nowym
+dowodzie, nie kontrprzykładem FT1536. Natomiast utożsamienie samych marginałów
+z całym stanem jest fałszywą ogólną regułą, jak pokazuje przykład z RECON-001.
+
+\section{Mały wynik: wspólny kanał i adaptacyjna kompozycja}
+\textbf{Dowód autorski tekstowy, samosprawdzenie; bez roszczenia nowości.}
+Ustalmy skończoną dziedzinę wejść hasza (jawny limit długości), kodowanie
+$R_q$, klasyczny klucz publiczny $h$ i skończony horyzont obliczeń.
+Wyrocznia działa koherentnie jako
+$U_H\lvert x,y\rangle=\lvert x,y\mathbin{\oplus}\mathrm{enc}(H(x))\rangle$;
+wartość $H(x)$ jest jednostajna w $R_q$, nie we wszystkich bitstringach
+rejestru kodowania. Przeciwnik jest kwantowy, komunikacja Sign jest klasyczna,
+a wynik końcowy jest klasyczny. Nie dodajemy dostępu do Sign w superpozycji.
+
+\subsection*{Dopuszczalny interfejs}
+Po historii $t$ i klasycznym żądaniu $m$ serwer losuje niezależny,
+jednostajny 40-bajtowy nonce $r$. Następnie losuje całą parę $x=(c,o)$
+według $P_{t,m,r}$ albo $J_{t,m,r}$ na tym samym skończonym zbiorze.
+Obie gry mają tę samą listę złożonych wiadomości, także przy porażce.
+W zastosowaniu modelowym
+\[
+ P_{t,m,r}(c,o)=P_h(c,o)
+   =\frac{1}{|R_q|}\,\mathrm{signBody}_h(c)(o),
+ \quad o\in\operatorname{Option}(\operatorname{BoxVec}).
+\]
+Rozkład obejmuje cap16 i końcową porażkę emisji w modelowym prawie.
+PRE\_ABORT, UB, timing i inne wyjścia realnego API nie zostały przez tę
+definicję utożsamione z \code{none}; ich realizacja wymaga osobnego bridge'u.
+
+Sampler używa świeżej prywatnej klasycznej losowości. Jego rozkład zależy
+wyłącznie od $h,m,r$ i dozwolonej klasycznej historii $t$, a \emph{nie}
+od ukrytej tablicy $H$, nieobserwowanych zapytań, prywatnego rejestru
+przeciwnika ani od uzyskanego przez dodatkowe zapytanie starego $H(r\Vert m)$.
+Jeżeli sampler zachowuje prywatny stan, jego zmiana musi być częścią $x$
+i certyfikatu albo deterministyczną funkcją zarejestrowanej historii.
+Sam certyfikat marginalnej pary $(c,o)$ tego nie pokrywa.
+
+Po losowaniu obie gry wykonują \emph{tę samą} operację:
+nadpisują punkt $r\Vert m$ wartością $c$, zwracają $(r,o)$ i kontynuują.
+Poprzednie nadpisania są obsługiwane identycznie (ostatni zapis wygrywa).
+Brak testu „czy przeciwnik już zapytał ten punkt”.
+Każda dodatkowa obserwowalna gałąź ma być wspólna lub uwzględniona w $x$.
+
+\begin{proposition}[Kompozycja dla programowanych pełnych odpowiedzi]
+Załóżmy opisany interfejs, najwyżej $q_s$ wywołań Sign oraz, dla każdej
+dopuszczalnej historii, wiadomości i nonce,
+\[
+ J_{t,m,r}\ll P_{t,m,r},\qquad
+ \sum_{x:P_{t,m,r}(x)>0}\frac{J_{t,m,r}(x)^2}{P_{t,m,r}(x)}\le1+e,
+ \qquad e\ge0.
+\]
+Dla dowolnego końcowego zdarzenia, niech $a$ będzie jego prawdopodobieństwem
+w grze programowanej z $P$, a $b$ w grze programowanej z $J$. Wtedy
+\[
+ (a-b)^2\le D\,a(1-a),\qquad a\le\PhiB(D,b),\qquad
+ D=(1+e)^{q_s}-1,
+\]
+gdzie $\PhiB(D,b)=(2b+D+\sqrt{D^2+4Db(1-b)})/(2(1+D))$.
+\end{proposition}
+
+\begin{proof}
+Najpierw jedna odpowiedź. Dla ustalonej historii obie gry mają ten sam
+znormalizowany stan $\rho$ rejestrów przeciwnika i mechanizmu wyroczni.
+Nie zakładamy, że $\rho$ jest niezależny od $H$.
+Świeże losowanie $x$ jest jednak niezależne od tych rejestrów warunkowo
+względem historii. Dla wspólnego kanału nadpisania i wydania odpowiedzi
+$\mathcal E_{t,m,r,x}$ stan po kroku wynosi odpowiednio
+\[
+ \sum_xP_{t,m,r}(x)\,\mathcal E_{t,m,r,x}(\rho),\qquad
+ \sum_xJ_{t,m,r}(x)\,\mathcal E_{t,m,r,x}(\rho).
+\]
+Są to rzeczywiście wspólne stany warunkowe. Kanał może być opisany przez
+ukrytą klasyczną funkcję $H$ i rejestry przeciwnika; nadpisanie jest kanałem
+z zachowaniem śladu, nie pomiarem zapytań przeciwnika. Implementacja
+interfejsu do nadpisanej wyroczni używa koherentnego testu równości wejścia
+z zapamiętanym punktem. Nie odczytuje całej funkcji $H$.
+
+Rozwijamy teraz analizę w skończone drzewo \emph{istniejących} klasycznych
+wyników: żądań Sign, odpowiedzi, nonce, prywatnych par $(c,o)$ i wszystkich
+rzeczywiście wykonanych pomiarów klasycznych. Rejestrujemy prywatne
+klasyczne wartości tylko na potrzeby analizy, bez ich ujawniania.
+Nie dodajemy pomiarów zapytań w superpozycji.
+Rozszerzona historia analityczna nie poszerza dostępu samplera: jego
+parametrem nadal jest wyłącznie dozwolona projekcja tej historii.
+W korzeniu stan warunkowy jest wspólny. W kroku losowania różni się tylko
+skalarna masa $P(x)$ lub $J(x)$, więc po ustaleniu $x$ stan znormalizowany
+pozostaje wspólny. W kroku wspólnego kwantowego instrumentu prawdopodobieństwo
+każdego klasycznego wyniku i kolejny stan warunkowy są wobec tego wspólne.
+To dowodzi indukcyjnie istnienia wspólnych stanów przy całej historii,
+także gdy następna wiadomość zależy od wcześniejszych wyników kwantowych.
+
+Niech $p(t),j(t)$ będą masami historii; na gałęziach o dodatniej masie $p$
+piszemy $L(t)=j(t)/p(t)$. Zachodzi $j\ll p$ przez indukcję.
+Wspólne rozgałęzienie o prawdopodobieństwach $k(y\mid t)$ zachowuje
+$\sum_t p(t)L(t)^2$, bo $\sum_y k(y\mid t)=1$.
+Krok różniącego się losowania spełnia dokładnie
+\[
+ \sum_{t,x}\frac{(j(t)J_t(x))^2}{p(t)P_t(x)}
+ =\sum_t\frac{j(t)^2}{p(t)}
+       \sum_{x:P_t(x)>0}\frac{J_t(x)^2}{P_t(x)}
+ \le(1+e)\sum_t\frac{j(t)^2}{p(t)}.
+\]
+Zera masy pomijamy, co jest legalne dzięki absolutnej ciągłości.
+Nonce jest wspólnym rozgałęzieniem. Wcześniejsze zakończenia dopełniamy
+fikcyjnymi jednoelementowymi losowaniami; mają czynnik 1.
+Stąd dla końcowego drzewa $\E_pL=1$ i $\E_pL^2\le(1+e)^{q_s}$.
+
+Dla wspólnego końcowego stanu $\tau_t$ i efektu pomiarowego $0\le M\le I$
+niech $v(t)=\Tr(M\tau_t)\in[0,1]$. Mamy $a=\E_pv$, $b=\E_pLv$,
+a z Cauchy'ego--Schwarza i $v^2\le v$:
+\[
+ (b-a)^2
+ =\bigl(\E_p[(L-1)(v-a)]\bigr)^2
+ \le (\E_pL^2-1)\E_p(v-a)^2
+ \le D\,a(1-a).
+\]
+Górny pierwiastek $(1+D)a^2-(2b+D)a+b^2\le0$ daje podane $\PhiB$.
+\end{proof}
+
+Nie utożsamiamy tego dowodu z jego instancją dla istniejącego
+\code{Sampler.code}. W szczególności tabela odczytanych klasycznych
+hashy z \code{Games.State} nie jest legalnym zapisem wszystkich zapytań QROM.
+
+\subsection*{Specjalizacja istniejącego certyfikatu do stanu początkowego}
+Istnieje ważne ułatwienie względem pierwotnego rozpoznania.
+Zapisany w \code{Run2/LawBinding.lean} certyfikat kwantyfikuje po
+\emph{każdym} $h,st,m,r$, bez warunku osiągalności $st$.
+Dla dowolnego $S$ i takiego certyfikatu zdefiniujmy nowy sampler
+\[
+ S^0(h,m,r;u):=S.\mathrm{code}(h,\mathrm{initial},m,r;u),
+ \qquad u\leftarrow\mathrm{Uniform}(\mathrm{Fin}(S.\mathrm{bits})\to\mathrm{Bool}).
+\]
+Wtedy $J^0_{h,m,r}=\mathrm{samplerLaw}(S,h,\mathrm{initial},m,r)$ i bez
+nowego oszacowania, przez podstawienie \code{st := initial}, otrzymujemy
+\[
+ J^0_{h,m,r}\ll\mathrm{freshHonest}(h),\qquad
+ \sum_x\frac{J^0_{h,m,r}(x)^2}{\mathrm{freshHonest}(h)(x)}\le1+e.
+\]
+W sumie stosujemy tę samą konwencję pomijania zer mianownika.
+Argument \code{initial} jest publiczną stałą; \code{S.code} jest funkcją
+podanych klasycznych argumentów i świeżej taśmy. Nie ma dostępu do ukrytego
+$H$ ani pamięci przeciwnika. $S^0$ spełnia więc warunek niezależności
+powyższej propozycji i ma tę samą liczbę losowych bitów.
+
+To \textbf{wyprowadzenie z istniejącej warunkowej przesłanki}, a nie
+konstrukcja świadka $S$ ani dowód istnienia certyfikatu.
+Nie twierdzimy, że rozkład $S^0$ jest równy rozkładowi dawnego
+\code{signSim S} na rzeczywistym stanie: równość nie jest potrzebna,
+bo definiujemy nową grę $Q_J$. Efektywna implementacja $S^0$ i jej
+konkretny koszt wymagają kodu dla $S$; sam typ funkcji Lean tego nie daje.
+Jeśli przyszły certyfikat zostanie osłabiony do stanów osiągalnych,
+trzeba ponownie sprawdzić legalność podstawienia \code{initial}.
+
+\subsection*{Połączenie z nieprzeprogramowanym modelem idealnym}
+Niech $Q_0$ losuje nonce, odczytuje istniejące $H(r\Vert m)$ i wydaje
+odpowiedź według modelowego \code{signBody}. Niech $Q_P$ zamiast tego
+losuje $c$ jednostajnie, nadpisuje ten punkt i wydaje odpowiedź tego samego
+prawa warunkowego. Reprogramowanie poprzedza obliczenie odpowiedzi.
+W grze porównawczej AR odbiorca uzyskuje nonce, wykonuje jeden klasyczny
+odczyt aktualnej wyroczni i dopiero losuje odpowiedź. Może znać sekret
+na potrzeby porównania dwóch uczciwych gier; nie jest to publiczny reduktor.
+Nie pyta o nową wartość przed wykonaniem reprogramowania.
+
+Dla tego modelu podstawienie do [AR] z poprzedniej sekcji daje
+$|\Pr[Q_0]-\Pr[Q_P]|\le\delta_{AR}$.
+Z propozycji, po wprowadzeniu $Q_J$ z legalnym publicznym samplerem,
+otrzymujemy \textbf{warunkowy lemat symulacji}
+\[
+ \boxed{\Pr[Q_0]\le
+ \min\{1,\delta_{AR}+\PhiB((1+e)^{q_s}-1,\Pr[Q_J])\}.}
+\]
+Licznik $Q=q_H+q_s+1$ obejmuje końcowy odczyt weryfikatora.
+Gdy dany model ma więcej odczytów, trzeba zwiększyć $Q$.
+Powtórzenia nonce są dopuszczone przez grę reprogramowania; nie używamy
+nieuzasadnionego testu świeżości względem superpozycyjnych zapytań.
+Liczba reprogramowań wynosi tu najwyżej $q_s$, a nie $16q_s$:
+całe ciało jednego Sign, także jego porażka, jest jednym losowaniem.
+
+\textbf{Granica:} $Q_0$ jest modelem współczynnikowym z idealnym nonce
+i direct-output hashem. Nie wykazano jego równości z rzeczywistym Sign.
+Nie ograniczyliśmy jeszcze $\Pr[Q_J]$ przez trudność ISIS.
+To nie jest dowód EUF-CMA ani deklaracja liczby bitów bezpieczeństwa.
+
+\section{Samosprawdzenie i następny pakiet}
+Wykonano samosprawdzenie argumentu, nie niezależny odbiór.
+Werdykt dla zastosowania do FT1536: \textbf{conditional on a named input}.
+Graf zależności: legalność losowania i kanału $\to$ wspólne stany
+$\to$ iloczyn momentów $\to$ nierówność Phi; osobno [AR] $\to$
+przejście od $Q_0$ do $Q_P$. Żadna z tych strzałek nie dowodzi Q-JOINT.
+
+\begin{itemize}
+\item Sprawdzono kierunek $J/P$, normalizację, zera masy, przypadki
+$q_s=0$ i $e=0$, zakończenie po porażce oraz adaptacyjny wybór wiadomości.
+\item Warunkowa wspólność dotyczy $Q_P,Q_J$. Nie założono jej bez dowodu
+dla $Q_0,Q_P$; tam płacimy osobny błąd reprogramowania.
+\item Wykryta granica: równość marginałów $(c,o)$ przy różnych ukrytych
+korelacjach nie wystarcza. Stan prywatny samplera musi zostać objęty kontraktem.
+\item Bibliografia: źródła pierwotne, wskazane wersje i fragmenty.
+Brak twierdzenia o nowości; brak skanowania całej literatury.
+\item Brak nowych obliczeń Sage i kompilacji Lean: dowód ma status tekstowy.
+Kompilacja dokumentu potwierdza skład, nie poprawność matematyczną.
+\end{itemize}
+
+\textbf{Następny krok S05-Q-JOINT-INSTANCE.}
+Zidentyfikować konkretny efektywny $S$ i jego \code{LocalJointCertificate},
+a następnie zastosować $S^0$ ze stałym \code{initial}. Podać dokładną
+dystrybucję pełnej porażki i koszt. Jeżeli istnieje tylko warunkowy typ
+certyfikatu, skonstruować jego świadka albo wskazać brakujący eksport.
+Nie wymagać już rekonstrukcji historii kwantowych zapytań: specjalizacja
+do \code{initial} usuwa tę potrzebę na poziomie obecnej przesłanki.
+
+Potem można formalizować wspólny kanał i drzewo kompozycji oraz osobno
+konstruować Q-TARGET przez measure-and-reprogram. Jeszcze mniejszym,
+odrębnym celem Q-TARGET jest przypadek $q_s=0$ (bez wyroczni podpisu),
+z pojedynczym wyzwaniem i \code{accepted_extracts}. Nie odhaczamy go
+na podstawie samego wpisania współczynnika $(2q+1)^2$.
+
+\section{Odnośniki do sprawdzonych wersji}
+\begin{description}
+\item[KLS] \url{https://pure.uva.nl/ws/files/45974858/916.pdf}
+\item[DFMS19] \url{https://arxiv.org/pdf/1902.07556v4}
+\item[DFM20] \url{https://arxiv.org/pdf/2003.05207v3}
+\item[U15] \url{https://www.iacr.org/archive/eurocrypt2015/90560105/90560105.pdf}
+\item[AR] \url{https://arxiv.org/pdf/2010.15103v2}
+\item[BM26] \url{https://arxiv.org/pdf/2602.16268v3}
+\end{description}
+Pakiet roboczy: \code{continuation_002/}. Piny wejść i stan dowodowy
+zapisano osobno w \code{INPUT_RECEIPT.json} oraz \code{CHECKPOINT.json}.
+Oryginalny RECON-001 pozostaje niezmieniony. Brak importu do stages,
+commita i push; bieżący materiał pozostaje w przydzielonym W do odbioru.
+\end{document}
