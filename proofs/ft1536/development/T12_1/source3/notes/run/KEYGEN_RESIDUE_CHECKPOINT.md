@@ -1,3 +1,94 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.07 shape extraction / allocation binding midpoint
+
+**B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
+**Package: IN_PROGRESS / WORKING_NOT_FROZEN.**
+2026-10-10,BATCH_053,MiMo V2.6 Pro (`xiaomi-token-plan-ams`).
+**CLOSED_AT_RECOVERABLE_MIDPOINT.** Exactly one close this window.
+B1.05/032 and B1.06/046 unchanged;B1.08/B4/B5 NOT entered.
+Handoff:**33R**. Exact types/pins/traps:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_053_NOTES.md`.
+
+## 33. Closed — the workspace shape extracted from the allocation execution
+
+1. The allocation binding is pinned and executed at the allocation level:
+   the `falcon_keygen_new` region (creation header, `fk = malloc(sizeof *fk)`,
+   profile stores, the `fk->tmp_len = temp_size(logn, ternary);` /
+   `fk->tmp = malloc(fk->tmp_len);` block, the fpr-cast alignment comment)
+   is pinned line-by-line against `Pinned.keygenLines`. `tempSizeBytes` is
+   the exact reservation fold tied to `CertificateWorkspace.bytes`
+   (286720). `Binding` records the `tmp_len` member store of that value,
+   the `malloc` of a fresh block of exactly those bytes and the `tmp` member
+   pointer store; `scratchOf block` is the block-model uint32 scratch of
+   the reserved extent.
+2. From the executed binding: `Shape` (extent 286720, 8-alignment) is
+   DERIVED (`binding_shape`), the scratch legality frame
+   `KeygenMkgm3Layout.Legal` is derived (`binding_legal`) and the `tmp`
+   member readback supplies the `ReadTmp` bytes premise (`binding_tmp_load`,
+   `readTmp_of_binding`). No `Shape`/legality input remains in the accepted
+   chain (`cert_bind_of_allocation`, `legalWorkspace_of_allocation`,
+   `accepted_certificate_of_allocation`); after relocation
+   (`shape_relocated`, `legal_relocated`) the scratch block is derived too
+   (`accepted_certificate_relocated_of_allocation`), so the relocated
+   consumption takes no bridge, shape, legality or block input.
+3. Entry pins015–052 **11321 pins/237 interface bindings** verified with
+   the sealed052 pair (`3d50a4d3…`/`e0f9e0e5…`) into
+   `.build/levels_053/ENTRY_PINS_053.json` (`c39aadac…`). One proof+audit
+   0/0: **95 entries=31 new+64 inherited;83 complete terms+12 kernel
+   inductives;standard axioms/zero elisions**. Native Sage scripted PUBLIC
+   controls: 4 families×14 mutations, all detected (EXPLICIT MOCKS; the
+   binding transcription reads the reference C; no real KeyGen/solver/
+   certificate/codec, no law claim). Retained: one pre-step abort (module
+   name without the `Source3.` prefix) and one rejected elaboration snapshot
+   (`decide` on open goals, unqualified `Shape`, `tmp_len` readback heap);
+   limits unchanged. Own commits `7d298fc3`,`d65f6451`,`eb9836cc` + closing
+   pair. Sealed pair `bad72417…`/`84f1413c…`.
+
+### 33.1 Exact exports and remaining B1.07 obligations
+
+The discharge chain is now: allocation execution (`Binding`) → derived
+`Shape`/legality → bridge discharged by relocation → pinned accepted
+package. Two gaps remain honest and named: (a) `Binding` is the
+allocation-level execution record; extracting it from the C statement
+machine (`temp_size` body, `falcon_keygen_new` prologue) is still open, in
+the class of the declaration projection; (b) the certificate execution
+`Call`/`Exec` is NOT yet transported across the block relocation (or
+re-derived in a generalized layout), so the six-gate composition still runs
+only where the block0 bridge holds.
+
+Remaining, in unchanged plan order: (1) transport or re-derive the
+certificate body across the relocation; (2) SAME h/equations on one material
+witness incl. the solver-call h frame and accepted physical f/g/F/G/h
+through the encoding tail; (3) Initial/legal/static retry frames, whole
+enclosing invocation/each later return and the gate-time `ReadTmp` tie;
+(4) statement-machine extraction of the allocation binding and actual
+globals/common call ID/snapshots composition. These are missing source
+composition proofs, NOT C/numerical counterexamples. Acceptance NOT met;
+Codecs B1.08/09 and B4/B5 laws stay outside.
+
+## 33R. Handoff — continue B1.07 AFTER the shape extraction,NOT from acceptance
+
+1. This window is CLOSED at exactly one recoverable midpoint,NOT Acceptance.
+   Do not auto-restart or enter B1.08/B4/B5. Preserve BATCH_015–053 and all
+   earlier/failed bytes. Next owner-started window continues in33.1 order.
+2. BEFORE edits/jobs:
+   ```sh
+   mkdir -p .build/levels_054
+   python3 -B tools/keygen_make_workspace_allocation_batch.py verify <BATCH_053.json sha> <BATCH_053_NOTES.md sha> .build/levels_054/ENTRY_PINS_054.json
+   ```
+   with the sealed053 pair (`bad72417…`/`84f1413c…`). Expect the pinned
+   BATCH_015–053 set and no supersession/job. Mismatch is stop-and-report,
+   not silent repair.
+3. Use NEW modules;preserve053 sources/products. The shape extraction now
+   lives in `KeygenMakeWorkspaceAllocation`; do not re-derive it by
+   assumption. The remaining honest gap is the certificate `Exec` transport
+   across the relocation (or a generalized layout); never insert certificate
+   outcomes or a scratch-block0 fact as premises. Inspect actual types
+   before composing.
+4. One owner-started stage/window, one Acceptance or expanded midpoint,
+   bounded serial guarded jobs, unchanged limits/0/0 logs/native Sage.
+   Small local exact-path commits;push only on explicit owner signal;no
+   automatic review/delegation/relay/migration/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.07 workspace relocation / bridge discharge midpoint
 
 **B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
