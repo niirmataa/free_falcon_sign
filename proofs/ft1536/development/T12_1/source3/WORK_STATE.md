@@ -31,6 +31,25 @@ failure;bounded direct proofs keep all limits unchanged. This logical source
 step is NOT the window's closing midpoint. Continue physical material/static
 entry transport,source controls and full-term audit before one sealed close.
 
+KeygenMakePublicCall now consumes046 at the ACTUAL caller Call: binding
+derives the same f/g/h and converted logn/ternary cells; the observed nonzero
+return derives source success1 and both equations/canonical physical h.
+Its legal arrays/small represented f/g/static-live/separation facts are LOCAL
+inputs,still to derive for every retry and transport through solver/certificate.
+Six proofs+audit0/0:117 entries=90 new+27 inspected inherited,99 complete terms/
+18 inductives,standard axioms/zero elisions,746 literal inputs (`46071542…`).
+Certificate initial/resolveLayout/full exports are inspected,not consumed.
+Native Sage0030/0:14 normal/UBSan runs×17 PUBLIC scripted cases,six mutations
+per mode detected,including changed bytes with the SAME pointer (`aec962ba…`).
+All cryptographic callees/context/codecs remain explicit MOCKS;public start
+injection is only a diagnostic seam. Successful002 and failed001 preserved;
+GCC's diagnostic-lifetime warning was fixed by static public fixture lifetime,
+not suppressed. All17 directories/18 steps retained:9 accepted/9 rejected
+steps,8 wholly accepted/9 failed directories;max RSS8348980KiB,limits unchanged.
+The audit producer reproduces byte-exactly (`4f21914b…`),PRESEAL rechecks10483
+unchanged predecessors (`744e5ac1…`). One sealed pre-certificate midpoint follows;
+no full six-gate chronology/accepted encoding-material/Acceptance claim.
+
 ## B1.07 — CLOSED at whole-syntax/readiness-failure midpoint — 2026-10-10
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
