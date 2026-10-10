@@ -1,5 +1,28 @@
 # T12.1/source3 — żywy stan
 
+## B1.07 — enclosing automatic objects and original entry — 2026-10-10
+
+Owner-started window from checkpoint26R, GPT-6.1 Sol Fast
+(`openai/gpt-6.1-sol-fast`). BEFORE edits/jobs: BATCH_015–046 verified,
+8965 distinct pins/700 literal source bindings, no supersession/job.
+Entry `.build/levels_047/ENTRY_PINS_047.json`, SHA256
+`4418daa7485006b21aed48081e49da5939e10a53095edca72daee3b341822336`.
+B1.05/B1.06 remain closed at their earlier scopes. B1.07 Acceptance NOT MET.
+
+KeygenMakeObjects/MakeEntry accepted guarded0/0: all SIX automatic objects
+(four signed coefficient arrays, unsigned public array and pointer-array
+ske) have their actual3072/4 extents and2/8-byte widths. Sequential Fresh
+allocations DERIVE separation, legality, writable storage and uninitialized
+bytes. Original contains only incoming context/profile/static/scratch facts;
+the prior KeygenCallerEntry.Initial is a conclusion, not an input. Live
+external objects/tables are retained block-locally despite changed global
+metadata. Disposal laws are checked but not yet bound to whole-call return.
+Both rejected snapshots/streams remain (Fin projection/inference); limits
+unchanged. This logical source commit is not the window's closing midpoint.
+RNG readiness, contiguous prologue/cap and chronological gate/certificate/
+material assembly remain in plan order. No push/review/delegation/relay/
+migration/import; foreign work/staging preserved.
+
 ## B1.06 — CLOSED at SAME-material public/inverse equations Acceptance — 2026-10-10
 
 **CLOSED_AT_ACCEPTANCE / PROVED_KERNEL_SCOPED / NOT_REVIEWED (B1.06).**
