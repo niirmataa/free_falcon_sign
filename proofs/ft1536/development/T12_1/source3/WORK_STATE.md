@@ -46,6 +46,18 @@ canonical final h, nonzero f and both equations are conclusions. No B3 export
 is consumed. The reserved Lean keyword attempt is retained. This third
 logical source commit is NOT a midpoint. Internal full-term audit, finite
 Sage/C controls and one sealed B1.06 Acceptance close follow; B1.07 waits.
+Audit001 accepted0/0:1035 entries=135 new+900 inherited,965 complete terms/
+70 inductives,standard axioms/zero elisions;700 literal source inputs.
+Sage001 accepted0/0:12 new normal/UBSan runs,ten public inputs including
+seven SAME public quotients,7680 chronological first-root butterflies and
+15360 normalization stores per baseline mode. All five mutations per mode
+are detected;30720 ORIGINAL unnormalized/normalized evaluations checked.
+The inherited039 approved live-header difference is rehashed, not a full M0
+build. All15 directories/26 steps remain:eight failed directories/eight
+rejected steps,18 accepted steps,max RSS3779996KiB,unchanged limits,no
+unresolved job. Audit `1510110a…`,controls `ce1240f9…`. Dedicated046 PRESEAL
+rechecks all8604 predecessor pins (`49be9a71…`). Seal the one B1.06 Acceptance
+next, not a midpoint; no B1.07 job or independent review has been started.
 
 ## B1.06 — CLOSED at complete SAME-material reverse reconstruction — 2026-10-10
 
