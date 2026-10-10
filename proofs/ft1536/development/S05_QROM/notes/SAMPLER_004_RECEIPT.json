@@ -1,0 +1,371 @@
+{
+  "scope": "S05-SAMPLER-004; own development runs; no independent review or kernel proof",
+  "root": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM",
+  "base_commit": "29564ffd702a73009e637eeaa817a225c316333a",
+  "runs": [
+    {
+      "schema_version": 2,
+      "claim_id": "S05_HZERO_FULL_REPLY_004",
+      "repository": {
+        "commit": "29564ffd702a73009e637eeaa817a225c316333a",
+        "dirty": true
+      },
+      "command": [
+        "sage",
+        "notes/HZERO_SAMPLER.sage",
+        ".build/sampler_004/runs/development_001",
+        ".build/sampler_004/inputs/SAMPLER_003_tables.json",
+        ".build/sampler_004/inputs/SAMPLER_003_certificate.json"
+      ],
+      "environment": {
+        "software": [
+          {
+            "name": "runner-python",
+            "version": "3.13.5"
+          },
+          {
+            "name": "SageMath",
+            "version": "10.9"
+          }
+        ],
+        "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+      },
+      "mathematics": {
+        "assertion_tested": "Rigorous pointwise factors for Gaussian pair approximation, finite categorical fiber approximation, dyadic challenge marginal and cap16 full reply at h=0; full joint second upper bound below 1+2^-50.",
+        "coefficient_domain": "ZZ, QQ, RealBallField(512); symbolic transfer separately proved in report",
+        "conventions": "Pinned FT1536 coefficient model; h=0; pair cap192 with zero-pair fallback; honest cap16; full Option reply",
+        "inputs": [
+          "notes/HZERO_SAMPLER.sage",
+          ".build/sampler_004/inputs/SAMPLER_003_tables.json",
+          ".build/sampler_004/inputs/SAMPLER_003_certificate.json"
+        ],
+        "bounds": {
+          "theta_cutoff": 24576,
+          "exp_interval_bits": 384,
+          "exp_taylor_degree": 128,
+          "sign_cap": 16,
+          "pair_cap": 192,
+          "h_scope": "exactly zero, all challenges; all-h target unchanged"
+        },
+        "non_claims": [
+          "Not an all-h sampler certificate.",
+          "No C, KeyGen, PRG or QROM security theorem.",
+          "No new kernel verification."
+        ]
+      },
+      "randomness": {
+        "used": true,
+        "generator": "SHAKE-256 public synthetic test labels; proof assumes independent fair bits",
+        "seed": "FT1536-S05-HZERO-{zero,boundary,cap16,deterministic_abort,UNCONDITIONAL}"
+      },
+      "run": {
+        "started_at": "2026-10-10T16:21:55.962976+00:00",
+        "runtime_seconds": 1.773315,
+        "exit_status": 0,
+        "status": "completed",
+        "timeout_seconds": 300.0,
+        "max_output_bytes": 1048576,
+        "resource_limits": {
+          "memory_bytes": 4294967296,
+          "cpu_seconds": 270,
+          "max_cores": 1,
+          "max_threads": 1
+        },
+        "missing_results": [],
+        "invalid_results": []
+      },
+      "execution_artifacts": [
+        "notes/HZERO_SAMPLER.sage",
+        ".build/sampler_004/inputs/SAMPLER_003_tables.json",
+        ".build/sampler_004/inputs/SAMPLER_003_certificate.json"
+      ],
+      "input_artifacts": [
+        {
+          "path": "notes/HZERO_SAMPLER.sage",
+          "sha256": "29052fdac1502bf6fcc53ca49ba336801d53728b8c3758d2fb1ec887f56f3a1c",
+          "sha256_after": "29052fdac1502bf6fcc53ca49ba336801d53728b8c3758d2fb1ec887f56f3a1c"
+        },
+        {
+          "path": ".build/sampler_004/inputs/SAMPLER_003_tables.json",
+          "sha256": "f2dc9c34407a09c6305772fa8cf430668a56c5dfd6332228c06b74c40af54301",
+          "sha256_after": "f2dc9c34407a09c6305772fa8cf430668a56c5dfd6332228c06b74c40af54301"
+        },
+        {
+          "path": ".build/sampler_004/inputs/SAMPLER_003_certificate.json",
+          "sha256": "6237da29986da1148d2ae5ebb9f7c133f283b331206aec5b9ee14d7c91e76333",
+          "sha256_after": "6237da29986da1148d2ae5ebb9f7c133f283b331206aec5b9ee14d7c91e76333"
+        }
+      ],
+      "output_directory": ".build/sampler_004/runs/development_001",
+      "declared_results": [
+        ".build/sampler_004/runs/development_001/certificate.json",
+        ".build/sampler_004/runs/development_001/execution_checks.json"
+      ],
+      "outputs": [
+        {
+          "path": ".build/sampler_004/runs/development_001/stdout.txt",
+          "sha256": "76d7b3c215f8e7887a7d67db46f31498a8f8806727aa4e4628782fc5d44e5c42",
+          "kind": "log"
+        },
+        {
+          "path": ".build/sampler_004/runs/development_001/stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "kind": "log"
+        },
+        {
+          "path": ".build/sampler_004/runs/development_001/certificate.json",
+          "sha256": "c01ae6bff0a6fcfc2b1901316ac53670fbbf41ce412fbfeca1ed7381c89ca8e2",
+          "kind": "result"
+        },
+        {
+          "path": ".build/sampler_004/runs/development_001/execution_checks.json",
+          "sha256": "8f18405d0d0b500e0f065b60556797f8b4160bca9384a820f8de5f50ebd78d2c",
+          "kind": "result"
+        }
+      ],
+      "checks": [
+        {
+          "check": "input hashes unchanged",
+          "passed": true
+        },
+        {
+          "check": "process exited successfully within enforced limits",
+          "passed": true
+        },
+        {
+          "check": "declared result files are present and regular",
+          "passed": true
+        }
+      ],
+      "result": "Run completed; mathematical assertion requires interpretation and review.",
+      "residual_risks": [
+        "Command success does not establish the mathematical interpretation.",
+        "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+        "The thread cap uses conventional environment variables; a child program may ignore them.",
+        "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+      ]
+    },
+    {
+      "schema_version": 2,
+      "claim_id": "S05_RESIDUAL_NORMALIZER_IDENTITY",
+      "repository": {
+        "commit": "29564ffd702a73009e637eeaa817a225c316333a",
+        "dirty": true
+      },
+      "command": [
+        "sage",
+        "notes/RESIDUAL_NORMALIZER.sage",
+        ".build/sampler_004/runs/residual_002"
+      ],
+      "environment": {
+        "software": [
+          {
+            "name": "runner-python",
+            "version": "3.13.5"
+          },
+          {
+            "name": "SageMath",
+            "version": "10.9"
+          }
+        ],
+        "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+      },
+      "mathematics": {
+        "assertion_tested": "Exact equality second(J,P)=E[Zres] E[1/Zres] for sequential conditional Gaussian-shaped sampling in 34 rational toy cases",
+        "coefficient_domain": "QQ, exact",
+        "conventions": "Domain -2..2, weights 2^(-x^2), x+h*y=c mod q",
+        "inputs": [
+          "notes/RESIDUAL_NORMALIZER.sage"
+        ],
+        "bounds": {
+          "q": [
+            3,
+            5
+          ],
+          "h": "all residues",
+          "c": "all residues"
+        },
+        "non_claims": [
+          "Not FT1536 parameters",
+          "Not a general upper bound"
+        ]
+      },
+      "randomness": {
+        "used": false,
+        "generator": "",
+        "seed": null
+      },
+      "run": {
+        "started_at": "2026-10-10T16:27:08.830179+00:00",
+        "runtime_seconds": 1.117436,
+        "exit_status": 0,
+        "status": "completed",
+        "timeout_seconds": 60.0,
+        "max_output_bytes": 1048576,
+        "resource_limits": {
+          "memory_bytes": 4294967296,
+          "cpu_seconds": 45,
+          "max_cores": 1,
+          "max_threads": 1
+        },
+        "missing_results": [],
+        "invalid_results": []
+      },
+      "execution_artifacts": [
+        "notes/RESIDUAL_NORMALIZER.sage"
+      ],
+      "input_artifacts": [
+        {
+          "path": "notes/RESIDUAL_NORMALIZER.sage",
+          "sha256": "e6ad46f8f891ddfa0c0886d22b3a89da7bd5fef5798ab54ac7f2b7c4553aaab2",
+          "sha256_after": "e6ad46f8f891ddfa0c0886d22b3a89da7bd5fef5798ab54ac7f2b7c4553aaab2"
+        }
+      ],
+      "output_directory": ".build/sampler_004/runs/residual_002",
+      "declared_results": [
+        ".build/sampler_004/runs/residual_002/identity_checks.json"
+      ],
+      "outputs": [
+        {
+          "path": ".build/sampler_004/runs/residual_002/stdout.txt",
+          "sha256": "0e8f5f3dc516531b983ecc3660af85884b5439ee769811f4fbe424d05ad34e2d",
+          "kind": "log"
+        },
+        {
+          "path": ".build/sampler_004/runs/residual_002/stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "kind": "log"
+        },
+        {
+          "path": ".build/sampler_004/runs/residual_002/identity_checks.json",
+          "sha256": "f837746f495b503c3ed424958006e6453678d2ebb9e426fd3f38a27b45e350c0",
+          "kind": "result"
+        }
+      ],
+      "checks": [
+        {
+          "check": "input hashes unchanged",
+          "passed": true
+        },
+        {
+          "check": "process exited successfully within enforced limits",
+          "passed": true
+        },
+        {
+          "check": "declared result files are present and regular",
+          "passed": true
+        }
+      ],
+      "result": "Run completed; mathematical assertion requires interpretation and review.",
+      "residual_risks": [
+        "Command success does not establish the mathematical interpretation.",
+        "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+        "The thread cap uses conventional environment variables; a child program may ignore them.",
+        "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+      ]
+    }
+  ],
+  "history": [
+    {
+      "path": ".build/sampler_004/runs/development_001/certificate.json",
+      "sha256": "c01ae6bff0a6fcfc2b1901316ac53670fbbf41ce412fbfeca1ed7381c89ca8e2",
+      "bytes": 2365
+    },
+    {
+      "path": ".build/sampler_004/runs/development_001/execution_checks.json",
+      "sha256": "8f18405d0d0b500e0f065b60556797f8b4160bca9384a820f8de5f50ebd78d2c",
+      "bytes": 1842
+    },
+    {
+      "path": ".build/sampler_004/runs/development_001/manifest.json",
+      "sha256": "5fd96086aeea5f64093d038ce5584a2c2df53ec64425262cfa87a43b537f56a4",
+      "bytes": 5055
+    },
+    {
+      "path": ".build/sampler_004/runs/development_001/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".build/sampler_004/runs/development_001/stdout.txt",
+      "sha256": "76d7b3c215f8e7887a7d67db46f31498a8f8806727aa4e4628782fc5d44e5c42",
+      "bytes": 195
+    },
+    {
+      "path": ".build/sampler_004/runs/imported_attempt_001/certificate.json",
+      "sha256": "a0802470720625ea7ab9fde0fcc59aec2c0898bc2e8c69a48b6f7148625f586c",
+      "bytes": 2366
+    },
+    {
+      "path": ".build/sampler_004/runs/imported_attempt_001/execution_checks.json",
+      "sha256": "25b5fa113b98b236333a2379b8348657fad2e9744e2d7f00249e006e7d0c5cf3",
+      "bytes": 1847
+    },
+    {
+      "path": ".build/sampler_004/runs/imported_attempt_001/manifest.json",
+      "sha256": "c974f424931f611561a79e9b53ef499fe34f30f99f3673e8adff2ca21c18d099",
+      "bytes": 4097
+    },
+    {
+      "path": ".build/sampler_004/runs/imported_attempt_001/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".build/sampler_004/runs/imported_attempt_001/stdout.txt",
+      "sha256": "76d7b3c215f8e7887a7d67db46f31498a8f8806727aa4e4628782fc5d44e5c42",
+      "bytes": 195
+    },
+    {
+      "path": ".build/sampler_004/runs/residual_001/manifest.json",
+      "sha256": "8c1c82f1b275fa4bc19ceea1b6577e3c2b28d377f8a67bd2ba692d05b7d13643",
+      "bytes": 3482
+    },
+    {
+      "path": ".build/sampler_004/runs/residual_001/source_before_repair.sage",
+      "sha256": "514f4d0575adfd0cc0c00c481bc327f7df4145d10ec2a6354cbb2be1c53c0034",
+      "bytes": 1806
+    },
+    {
+      "path": ".build/sampler_004/runs/residual_001/stderr.txt",
+      "sha256": "11b69cb969fae104a75ec0727165531662ff508eee59e0f132a19afc98625981",
+      "bytes": 2460
+    },
+    {
+      "path": ".build/sampler_004/runs/residual_001/stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".build/sampler_004/runs/residual_002/identity_checks.json",
+      "sha256": "f837746f495b503c3ed424958006e6453678d2ebb9e426fd3f38a27b45e350c0",
+      "bytes": 3261
+    },
+    {
+      "path": ".build/sampler_004/runs/residual_002/manifest.json",
+      "sha256": "bd446892e3635e25a2335e0f860463903d5135b06741985d626604e1fba38dc1",
+      "bytes": 3407
+    },
+    {
+      "path": ".build/sampler_004/runs/residual_002/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".build/sampler_004/runs/residual_002/stdout.txt",
+      "sha256": "0e8f5f3dc516531b983ecc3660af85884b5439ee769811f4fbe424d05ad34e2d",
+      "bytes": 92
+    }
+  ],
+  "failed_attempts": [
+    {
+      "run": ".build/sampler_004/runs/residual_001",
+      "cause": "Sage Integer JSON serialization after exact mathematical assertions; fixed serializer only",
+      "source_retained": "source_before_repair.sage"
+    }
+  ],
+  "runtime_transfer": "Completed original W run copied byte-for-byte; current authoritative runs use development root and all three declared inputs. W preserved unchanged.",
+  "readme_manifest_policy": "SAMPLER_003_OUTPUTS.sha256 belongs to commit 0a6999d7; its README pin is verified at that commit, not against the current live README.",
+  "scientific_base_commit": "29564ffd702a73009e637eeaa817a225c316333a",
+  "latex_final_source_sha256": "6e05408b558d86e623a97a94e83ac03c3f232be5fe1bd5dc42c31f4605c14f88"
+}

@@ -1,0 +1,270 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm]{geometry}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\setmonofont{Latin Modern Mono}[Scale=0.85]
+\usepackage{amsmath,amssymb,amsthm,booktabs,xurl,hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{3em}
+\newcommand{\code}[1]{\nolinkurl{#1}}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Law}{\operatorname{Law}}
+\newtheorem{theorem}{Twierdzenie}
+\title{S05 / SAMPLER\_004\\\large Naprawa gałęzi $h=0$ z pełnym momentem odpowiedzi}
+\author{Notatka robocza dla Niirmata}
+\date{10 października 2026}
+\begin{document}\maketitle
+
+\textbf{Wynik częściowy:} skonstruowano wykonalny sampler dla $h=0$
+z punktową dominacją pełnego prawa odpowiedzi, zatem z absolutną ciągłością
+i kierunkowym momentem $\sum J_0^2/P_0\le1+e_0$, gdzie $e_0<2^{-50}$.
+Dowód jest tekstowy, liczby sprawdzono w SageMath 10.9 przez $\mathbb Z$,
+$\mathbb Q$ i balls512. Nie wykonano nowego sprawdzenia kernelowego.
+
+\textbf{Cel dla wszystkich $h$ pozostaje otwarty.} To usunięcie konkretnej
+przeszkody poprzedniego kandydata przy $h=0$, nie ograniczenie końcowego
+kwantyfikatora i nie twierdzenie bezpieczeństwa FT1536.
+Nie przypisujemy zerowego klucza do rozkładu emitted KeyGen.
+
+Po decyzji właściciela cała nowa praca powstaje bezpośrednio w
+\code{development/S05_QROM/} pod \code{proofs/ft1536/}; runtime jest w
+\code{.build/sampler_004/}. Historyczne W zachowano, a przejście tej samej
+sesji zapisuje \code{SAMPLER_004_HANDOFF.json}.
+
+\section{Dokładne prawo docelowe}
+Baza źródeł to commit \code{0a6999d7} i piny SAMPLER-003.
+Używamy $q=18433$, $\sigma=768$, $B=2093922385$ oraz boxu
+$[-65535,65535]^{3072}$. Nie zmieniamy modelowej normy, cap16 ani emisji.
+Niech $q_2(x,y)=x^2+xy+y^2$, a $Q_0(v)$ będzie sumą 768 takich bloków.
+Waga połówki to $w(v)=\exp(-Q_0(v)/(2\sigma^2))$.
+
+W uczciwym $P_0$ wyzwanie $c\in R_q$ jest jednostajne. Jedna próba pobiera
+parę $(z_1,z_2)$ z wagą $w(z_1)w(z_2)$ na włóknie
+$z_1\bmod q=c$, następnie sprawdza $Q_0(z_1)+Q_0(z_2)<B$.
+Normę można odrzucić najwyżej 16 razy. Po pierwszej akceptacji następuje
+jedna modelowa emisja; jej porażka również daje \code{none}.
+
+Dla $h=0$ prawo przed normą rozkłada się dokładnie na:
+768 niezależnych dwuwymiarowych Gaussów w klasach reszt pierwszej połówki
+oraz 768 niezależnych Gaussów na pełnym boxie drugiej połówki.
+Właśnie tę faktoryzację implementujemy z kontrolą punktową.
+Wiadomość, nonce i stan są ignorowane, więc wywołanie ze stałym
+publicznym \code{initial} nie wymaga żadnego dostępu do historii hasza.
+
+\section{Wykonalne losowanie we włóknie}
+Dla pary reszt $(a,b)$ wypisujemy wszystkie
+$(x,y)\in[-65535,65535]^2$ z $x\equiv a$, $y\equiv b\pmod q$.
+Jest ich co najmniej 1 i najwyżej $K=64$.
+Niech $m$ będzie najmniejszym $q_2(x,y)$ w tej liście i
+$u_i=\exp(-(q_2(x_i,y_i)-m)/(2\sigma^2))$.
+Co najmniej jedna waga wynosi dokładnie 1, a każda leży w $(0,1]$.
+Odejmowanie $m$ nie zmienia znormalizowanego prawa.
+
+\subsection*{Jednolita aproksymacja wykładnicza, bez nieznanego czasu pętli}
+Funkcja \code{exp_weight_interval} zwraca całkowite końce przedziału
+w skali $2^{384}$ dla $e^{-t}$ przy dowolnym wymiernym $t\ge0$.
+Dla $t=0$ przedział jest dokładny. Dla $t\ge400$ używamy
+$[0,2^{-384}]$: $e>2$ daje $e^{-t}\le2^{-400}<2^{-384}$.
+
+Dla $0<t<400$ rozwijamy $e^{-t/512}$ naprzemiennym szeregiem Taylora.
+Częściowa suma stopnia 127 jest dolną, a stopnia 128 górną granicą,
+ponieważ $t/512<25/32<1$ i kolejne wyrazy maleją.
+Szerokość wynosi najwyżej $1/128!<2^{-700}$.
+Zaokrąglamy końce na zewnątrz do siatki $2^{-384}$ i dziewięć razy
+podnosimy przedział do kwadratu, za każdym razem zaokrąglając na zewnątrz
+i przecinając z $[0,1]$. W jednostkach siatki szerokość spełnia
+$w_0\le3$, $w_{i+1}\le2w_i+2$, zatem $w_9\le2558<4096$.
+Otrzymujemy jednolicie szerokość $\delta_w=2^{-372}$.
+Wszystkie operacje wykonawcze są wymierne lub całkowite, z najwyżej
+128 wyrazami i dziewięcioma kwadratami; nie ma nieograniczonego
+zwiększania precyzji ani pomijanej gałęzi błędu numerycznego.
+
+\subsection*{Dyadyczne prawo kategorii}
+Niech $\ell_i\le u_i\le v_i$ będą otrzymanymi granicami, a $U=\sum_i v_i$.
+Dla $N=2^{256}$ przydzielamy najpierw
+$n_i=\lfloor N\ell_i/U\rfloor$ bitstringów.
+Całą pozostałą masę przydzielamy wybranemu minimizerowi $q_2$,
+czyli kategorii o największym prawdziwym prawdopodobieństwie.
+Tak powstałe liczności sumują się dokładnie do $N$.
+
+Dla kategorii innych niż ta wyróżniona masa nie wzrasta względem
+prawdziwego prawa. Całkowity ubytek masy jest co najwyżej
+$K\delta_w+K/N$, ponieważ prawdziwy normalizator jest co najmniej 1.
+Prawdopodobieństwo wyróżnionej kategorii wynosi co najmniej $1/K$.
+Zatem dla \emph{każdej} pary reszt i każdej kategorii
+\[
+ j_{\mathrm{cat}}(i)\le K_{\mathrm{cat}}p_{\mathrm{cat}}(i),\qquad
+ K_{\mathrm{cat}}=1+64^2(2^{-372}+2^{-256}).
+\]
+To jednostronna dominacja punktowa, a nie zamiana błędu TV na moment.
+
+\section{Druga połówka: kontrolowana masa wektora awaryjnego}
+Używamy przypiętych tablic SAMPLER-003: $T=15360$, $p=256$, $b=384$,
+\[
+ W_x=\lceil2^p e^{-x^2/(4\sigma^2)}\rceil,\qquad
+ A_s=\lfloor2^p e^{-s^2/(4\sigma^2)}\rfloor.
+\]
+Sposób losowania współrzędnych modulo $S=\sum_xW_x$ i akceptacji
+przez $A_{x+y}$ pozostaje taki sam. Zmieniamy \emph{wewnętrzne}
+wyczerpanie 192 prób pary: zwracamy parę $(0,0)$ zamiast kończyć Sign
+syntetyczną porażką. Ta para ma dodatnią, policzalną masę w docelowym
+Gaussie i jest następnie poddana zwykłej normie całego wektora.
+Nie ukrywamy tej gałęzi; jej koszt dystrybucyjny jest składnikiem poniżej.
+
+Niech $Z_T=\sum_{|x|\le T}e^{-x^2/(4\sigma^2)}$ i $Z_\triangle$ będzie
+normalizatorem Gaussa $e^{-q_2/(2\sigma^2)}$ na pełnym boxie pary.
+Dokładna akceptacja dyadycznej propozycji to przypięte $\alpha>1/2$.
+Mamy
+\[
+ Z_T\ge(S-(2T+1))/2^p=:Z_-,\qquad
+ \kappa=(1+S/2^b)(1+2^{-p}e^{T^2/(4\sigma^2)}).
+\]
+Każda współrzędna propozycji ma masę co najwyżej
+$\kappa e^{-x^2/(4\sigma^2)}/Z_T$.
+Próg akceptacji zaokrąglamy w dół, więc po warunkowaniu na akceptację
+masa pary względem docelowego Gaussa jest ograniczona czynnikiem
+$\kappa^2 Z_\triangle/(\alpha Z_T^2)$.
+Prawdopodobieństwo wyczerpania pary to $\delta_p=(1-\alpha)^{192}$.
+Dodanie go do $(0,0)$ zwiększa czynnik co najwyżej o $\delta_pZ_\triangle$.
+
+Górną granicę $Z_+$ na $Z_\triangle$ obliczamy przez dopełnienie kwadratu
+i rozdzielenie parzystych oraz nieparzystych wartości $y$:
+\[
+Z_\triangle\le
+ \overline\theta_0(a)\overline\theta_0(3a)
+ +\overline\theta_{1/2}(a)\overline\theta_{1/2}(3a)=Z_+,\qquad
+ a=1/(2\sigma^2),\quad
+ \theta_s(a)=\sum_{k\in\mathbb Z}e^{-a(k+s)^2}.
+\]
+Przez $\overline\theta_s$ oznaczamy jawną majorantę $\theta_s$:
+sumy do 24576 są liczone w balls512, a oba ogony przez szereg geometryczny:
+pierwszy pominięty wyraz $e^{-ar^2}$ ma następniki z ilorazem najwyżej
+$e^{-a(2r+1)}$. Suma po wszystkich liczbach całkowitych jest majorantą
+boxu; nie zakładamy równości boxu z nieskończoną kratą.
+
+Ostatecznie rzeczywista para, \emph{łącznie z fallbackiem}, spełnia
+\[
+ j_{\mathrm{pair}}(z)\le K_{\mathrm{pair}}p_{\mathrm{pair}}(z),\qquad
+ K_{\mathrm{pair}}=
+ \frac{\kappa^2 Z_+}{\alpha Z_-^2}+\delta_p Z_+.
+\]
+Rachunek daje $K_{\mathrm{pair}}-1<2^{-108}$
+(około $4.81075\cdot10^{-34}$).
+
+\section{Pełna odpowiedź: porażki i końcowy certyfikat}
+Jedna nieodrzucona jeszcze próba przy ustalonym $c$ spełnia dominację
+z czynnikiem
+$K_A=(K_{\mathrm{cat}}K_{\mathrm{pair}})^{768}$.
+Zastosowanie tej samej normy jest deterministycznym pushforwardem,
+więc zachowuje dominację dla \code{some} i \code{none}.
+
+Cały cap16 można przedstawić jako deterministyczną funkcję 16 niezależnych
+prób: zwróć pierwszy zaakceptowany wektor, a przy braku akceptacji porażkę;
+następnie wykonaj jedną emisję. Dominacja produktu ma czynnik $K_A^{16}$.
+Sumowanie mas po włóknach tej funkcji daje
+\[
+ J_0(o\mid c)\le K_A^{16}P_0(o\mid c)
+ \quad\text{dla każdego }c,o,
+\]
+również dla wyczerpania cap16 i porażki modelowej emisji.
+Fakt, że druga połówka symulatora zawsze mieści się w signed16,
+nie usuwa porażek emisji z prawa docelowego ani z tego oszacowania.
+
+Algorytm zawiera dokładny skrót: oblicza sumę minimalnych norm bloków
+pierwszej połówki przy $c$. Jeśli ta suma jest co najmniej $B$, to wszystkie
+wektory w tym włóknie oblewają normę niezależnie od drugiej połówki.
+Uczciwe prawo wtedy daje \code{none} z prawdopodobieństwem 1, więc bezpośredni
+zwrot porażki jest dokładną realizacją tej gałęzi, nie przybliżeniem.
+
+Wyzwanie losujemy przez 1536 niezależnych 80-bitowych słów modulo $q$.
+Każda masa współczynnika jest co najwyżej $(1+q/2^{80})/q$, stąd
+$K_H=(1+q/2^{80})^{1536}$ jest czynnikiem względem idealnego jednostajnego
+wyzwania. Dokładnej jednostajności nie zakładamy.
+
+\begin{theorem}[Zakres $h=0$, idealne bity, model współczynnikowy]
+Opisany wykonywalny sampler pełnej pary $(c,o)$ spełnia
+\[
+ J_0(c,o)\le C P_0(c,o),\qquad C=K_H K_A^{16}.
+\]
+W konsekwencji $J_0\ll P_0$ oraz
+\[
+ \sum_{P_0(c,o)>0}\frac{J_0(c,o)^2}{P_0(c,o)}\le C^2=1+e_0,
+ \qquad 0<e_0<2^{-50}.
+\]
+\end{theorem}
+\begin{proof}
+Pierwsza nierówność wynika z przemnożenia wykazanych czynników wyzwania
+i odpowiedzi. Gdy $P_0(c,o)=0$, dominacja i nieujemność dają $J_0(c,o)=0$.
+Dla dodatniej masy mianownika $J_0^2/P_0\le C^2P_0$;
+sumowanie i normalizacja $P_0$ dają wniosek.
+Nierówność liczbowa została sprawdzona w balls512 na dokładnych
+parametrach i przypiętych tablicach; przedział dla $e_0$ ma środek
+około $4.6840074950\cdot10^{-17}$.
+\end{proof}
+
+Zachowano konserwatywną postać $C^2$, odpowiadającą dotychczasowemu
+narzędziu punktowemu; nie podmieniono po cichu kierunku $J/P$ ani funkcji
+straty. Jest to certyfikat specjalizacji przy $h=0$, a nie instancja
+całego typu \code{LocalJointCertificate}, który kwantyfikuje po wszystkich $h$.
+
+\section{Dlaczego faktoryzacja nie kończy ogólnego przypadku}
+Dla dowolnego $h$ oznaczmy
+\[
+ Z_1(r)=\sum_{z_1:\,z_1\bmod q=r}w(z_1),\qquad Z_G=\sum_{z_2}w(z_2),
+ \qquad r(z_2)=c-hz_2\pmod q.
+\]
+Naturalna próba rozszerzenia najpierw losuje $z_2$ z prawa $U=w/Z_G$,
+a następnie $z_1$ z Gaussa warunkowanego na resztę $r(z_2)$.
+Nie jest to w ogólności uczciwy Gaussian na całym włóknie.
+Jego gęstość to $J=w(z_1)w(z_2)/(Z_G Z_1(r(z_2)))$,
+podczas gdy $P=w(z_1)w(z_2)/Z_{h,c}$, gdzie
+$Z_{h,c}=\sum_{z_2}w(z_2)Z_1(r(z_2))$.
+Z bezpośredniego sumowania po $z_1$ dostajemy dokładnie
+\[
+ \sum\frac{J^2}{P}=
+ \E_{z_2\sim U}[Z_1(r(z_2))]\,
+ \E_{z_2\sim U}[1/Z_1(r(z_2))].
+\]
+Wszystkie normalizatory są dodatnie: każda klasa reszt ma reprezentanta
+w pierwszym boxie. Dla $h=0$ normalizator $Z_1(c)$ jest stały i iloczyn
+wynosi 1. Dla innych $h$ trzeba kontrolować \emph{także odwrotność}
+normalizatora. Sama kontrola średniej lub równość nośnika nie wystarcza.
+To tożsamość dla prawa przed bramką normy, nie gotowy certyfikat całego Sign.
+
+\code{RESIDUAL_NORMALIZER.sage} sprawdził tożsamość dokładnie w 34 małych
+modelach wymiernych dla $q=3,5$. To test implementacji sumowania;
+ogólny argument jest powyższym rachunkiem, a nie ekstrapolacją testów.
+Nie ogłaszamy niemożliwości innej konstrukcji dla pozostałych kluczy.
+
+\section{Wykonanie, koszt i status}
+Źródło: \code{HZERO_SAMPLER.sage}. Rachunek główny i powtórzenie po
+przejściu do development zakończyły się poprawnie. Sprawdzono:
+sukces dla wyzwania zerowego, sukces przy granicy wyboru reprezentanta,
+pełne wyczerpanie cap16 oraz dokładny abort z dolnej granicy normy.
+Wymuszono również fallback pary przy rzeczywistym limicie 192.
+Każde zdarzenie ma swój wpis w receipcie; nie warunkujemy gry na sukces.
+
+Losowość testowa jest deterministycznym SHAKE z publicznymi etykietami.
+Dowód rozkładu zakłada idealne niezależne bity i nie dowodzi bezpieczeństwa PRG.
+Ograniczenia na odpowiedź:
+\begin{itemize}
+\item 49152 przedziały wag we włóknach; każdy wymaga najwyżej 128 wyrazów
+Taylora i dziewięciu kwadratów, bez nieograniczonego retry numerycznego;
+\item 2359296 propozycji par drugiej połówki;
+\item 2419187712 bitów, czytanych leniwie, bez alokowania całej taśmy;
+\item dodatkowo deterministyczne wyliczenie klas, CDF, norm i odczyt
+przypiętych tablic. To policzone operacje algorytmu, nie pełny certyfikat
+maszyny bitowej ani benchmark produkcyjny.
+\end{itemize}
+
+Nie ponawiano niezmienionej próby Lean, której sam import poprzednio
+przekroczył limit. Nowy dowód pozostaje tekstowy i wymaga niezależnego
+odbioru oraz późniejszej formalizacji. Nie zmieniono T12.1/B20, C,
+paperu ani strony; zapis Git jest lokalny, bez push.
+
+\textbf{Co dalej:} trzeba rozwiązać problem rozkładu syndromów lub
+normalizatora reszt dla pozostałych $h$, utrzymując pełne prawo porażek.
+Wynik SAMPLER-004 pozwala zachować gałąź $h=0$ w przyszłym selektorze
+publicznym, ale nie dowodzi niczego o momencie jego innych gałęzi.
+Cel końcowy nadal ma pierwotny zakres wszystkich $h$.
+\end{document}

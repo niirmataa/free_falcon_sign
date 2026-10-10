@@ -1,0 +1,93 @@
+{
+  "id": "FT1536-S05-QROM-SAMPLER-004",
+  "date": "2026-10-10",
+  "base_commit": "29564ffd702a73009e637eeaa817a225c316333a",
+  "parent": "FT1536-S05-QROM-SAMPLER-003",
+  "status": "WARUNKOWY_SCOPED_HZERO_FULL_MOMENT_TEXTUAL",
+  "all_h_goal_completed": false,
+  "scoped_result": {
+    "domain": "h=0, every challenge, finite-box coefficient Sign, ideal independent fair bits",
+    "full_joint_ac": true,
+    "full_joint_second_bound": "second(J0,P0) <= C^2 = 1+e0, e0 < 2^-50",
+    "approximate_e": "4.6840074950e-17",
+    "failure_accounting": [
+      "Exact deterministic norm abort",
+      "Cap16 exhaustion",
+      "Model emission map, including target none mass",
+      "Pair-cap mass moved to zero pair with an explicit density cost"
+    ],
+    "evidence": "Textual uniform proof plus exact rational and rigorous-ball arithmetic; not kernel verified"
+  },
+  "construction": [
+    "Dyadic 80-bit-per-coefficient challenge with explicit density factor",
+    "Bounded exact-rational Taylor intervals for residue-fiber categories",
+    "Gaussian pair sampler with pointwise-controlled zero-pair fallback",
+    "Independent attempts, honest norm and cap16, then deterministic emission"
+  ],
+  "new_wall": {
+    "name": "Q-RESIDUAL-NORMALIZER",
+    "exact_identity": "second(J_sequential,P_fiber)=E_U[Z1(c-h*z2)] * E_U[1/Z1(c-h*z2)]",
+    "zero_case": "Normalizer constant, factor 1",
+    "other_keys": "No useful uniform bound established; identity is for pre-norm fiber law, not a completed Sign certificate"
+  },
+  "verification": {
+    "sage_version": "10.9",
+    "main_run": ".build/sampler_004/runs/development_001/manifest.json",
+    "residual_run": ".build/sampler_004/runs/residual_002/manifest.json",
+    "conditional_execution_cases": 4,
+    "actual_pair_cap_fallback": true,
+    "residual_toy_cases": 34,
+    "kernel": false,
+    "independent_review": false,
+    "latex": "success",
+    "self_review": [
+      "Support and all denominators positive",
+      "Fixed finite-bit budget, no unbounded numeric refinement",
+      "Uniform Taylor enclosure proof and categorical mass redistribution",
+      "Pointwise propagation through pair fallback, norm, cap16, emission and challenge law",
+      "No interchange of TV and moment",
+      "Residual normalizer identity checked by exact finite summation"
+    ],
+    "proofreading": {
+      "scope": "New SAMPLER_004.tex",
+      "routine_changes": [],
+      "mathematical_token_corrections": [
+        "Theta factors written as upper-theta majorants to match the exact finite-sum-plus-geometric-tail expressions used in the Sage certificate; sampler and numeric bounds unchanged."
+      ]
+    }
+  },
+  "runtime_policy": {
+    "new_work_all_in_development": true,
+    "runtime": ".build/sampler_004",
+    "historical_W_preserved": true,
+    "handoff": "notes/SAMPLER_004_HANDOFF.json"
+  },
+  "cost": {
+    "max_pair_proposals": "2359296",
+    "max_random_bits": "2419187712",
+    "max_category_weight_intervals": "49152",
+    "machine_bit_cost_certificate": false
+  },
+  "remaining": [
+    "Sampler certificate for all other h",
+    "Quantum target embedding and full quantum resources",
+    "Real source law/byte bridge",
+    "PRG and public SHAKE/H2P bridge",
+    "Kernel formalization and independent review"
+  ],
+  "next": "Control the residual normalizer and its reciprocal, or select a different joint construction for nonzero h; retain the proven h=0 branch. Final all-h quantifier unchanged.",
+  "git_policy": {
+    "local_commits_only": true,
+    "push": false,
+    "no_T12_1_or_B20_status_changes": true,
+    "no_mainline_paper_site_changes": true
+  },
+  "artifacts": {
+    "report": "notes/SAMPLER_004.tex",
+    "sampler": "notes/HZERO_SAMPLER.sage",
+    "normalizer_check": "notes/RESIDUAL_NORMALIZER.sage",
+    "receipt": "notes/SAMPLER_004_RECEIPT.json",
+    "manifest": "notes/SAMPLER_004_OUTPUTS.sha256"
+  },
+  "observed_head_at_seal": "29564ffd702a73009e637eeaa817a225c316333a"
+}

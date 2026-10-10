@@ -1,0 +1,59 @@
+{
+  "conditional_fixtures": [
+    {
+      "fixture": "zero",
+      "reason": "SUCCESS",
+      "attempts": 1,
+      "norm": "916208506",
+      "min_norm": "0",
+      "pair_proposals": 1373,
+      "pair_fallbacks": 0,
+      "bits_consumed": "1602560",
+      "elapsed_seconds": 0.03296800700263702,
+      "challenge_was_forced_for_conditional_test": true
+    },
+    {
+      "fixture": "boundary",
+      "reason": "SUCCESS",
+      "attempts": 1,
+      "norm": "925045836",
+      "min_norm": "84943873",
+      "pair_proposals": 1360,
+      "pair_fallbacks": 0,
+      "bits_consumed": "1589248",
+      "elapsed_seconds": 0.028996133001783164,
+      "challenge_was_forced_for_conditional_test": true
+    },
+    {
+      "fixture": "cap16",
+      "reason": "CAP16_ABORT",
+      "attempts": 16,
+      "norm": "not accepted",
+      "min_norm": "1474560000",
+      "pair_proposals": 21151,
+      "pair_fallbacks": 0,
+      "bits_consumed": "24804352",
+      "elapsed_seconds": 0.13866677699843422,
+      "challenge_was_forced_for_conditional_test": true
+    },
+    {
+      "fixture": "deterministic_abort",
+      "reason": "DETERMINISTIC_NORM_ABORT",
+      "attempts": 0,
+      "norm": "not accepted",
+      "min_norm": "2304000000",
+      "pair_proposals": 0,
+      "pair_fallbacks": 0,
+      "bits_consumed": "0",
+      "elapsed_seconds": 0.019807496999419527,
+      "challenge_was_forced_for_conditional_test": true
+    }
+  ],
+  "unconditional_hzero_reply": "none",
+  "unconditional_bits_consumed": "122880",
+  "actual_pair_cap_fallback_checked": true,
+  "exp_enclosure_spot_checks": 8,
+  "categorical_checks": 3,
+  "demo_rng": "SHAKE-256 public labels; mathematical law assumes independent fair bits",
+  "negative_route": "Uniform challenge plus unconditional none is NOT used: no moment bound was established for deleting all positive responses."
+}
