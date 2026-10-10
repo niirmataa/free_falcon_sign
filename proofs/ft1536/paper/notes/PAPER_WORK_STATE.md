@@ -156,3 +156,133 @@ Aktualizacja dla właściciela: niezależny odbiór poprawionego B2/B5 jest już
 odnotowany w artykule. Nadal dotyczy gry publicznego symulatora; strzałki
 1–2, konkretna realizacja i końcowy montaż pozostają otwarte. Lista trzech
 decyzji redakcyjnych właściciela nie zmieniła się.
+
+## Batch 4 — window 2: publication-form pass + B1 stage-status update
+
+Date: 2026-10-10. Window rule: one stage per window; this window is the
+paper's editorial/status stage, closed at its own checkpoint below.
+Owner brief: expand v0.1 to a professional publication form (abstract,
+introduction, contributions, notation, theorem environments, coherent
+editing of all sections and annexes), update statuses to the current
+repository state, keep every sentence within the pinned claim boundaries.
+Identity decisions (title, signed mission, venue ePrint, "Pornin in form,
+us in substance") were already closed and were not altered. No logo.
+
+### What was done
+
+- **Abstract** rewritten in dry form: conditional reduction, computed
+  $e=k^{32}-1<2^{-32}$ (unconditioned) and $e<2^{-17}$
+  (acceptance-conditioned) with the shape named an open obligation,
+  computational theorem with admitted test class and cost certificate,
+  negative results as theorems, defects found by the verification
+  process, in-flight honest hop/law bindings, two-level security
+  accounting with system = minimum, no end-to-end and no QROM claim.
+- **Introduction** restructured: motivation, why reduction for real code,
+  an explicit four-item contribution list (computed-e reduction;
+  source-binding method with kernel counterexamples; two-level security
+  declaration; negative results as theorems), the owner-signed mission
+  paragraph preserved byte-identical, a scope paragraph, and the section
+  roadmap.
+- **Notation** added as §3.1 (symbols, laws, advantages, error terms,
+  status labels, source identifiers); theorem environments made
+  consistent: theorem/proposition/lemma share one counter, definitions
+  and target statements separated, remark style reserved for remarks.
+  The directional second moment is now a definition; adaptive
+  composition and stopping loss is now a lemma. No mathematical content
+  was changed by these moves.
+- **Statuses updated to the current repository state** (new claim group
+  C21, section 7.3 "Stage status of the source-to-law campaign" and the
+  section-11 ledger row):
+  * B1.05 **closed** — `KeygenCallerSuccess.exact_integer_ntru`: caller
+    entry through the complete root call gives $f,g,F,G$ with bounds
+    1/1/2047/2047, the exact integer equation $f\cdot G-g\cdot F=q$
+    (coefficient quotient), output-slot representations; modular check
+    consumed with residual $37748737<2147355649$ (BATCH_032).
+  * B1.06 **Acceptance met** — `KeygenPublicAccepted.source_same_material`:
+    the successful fixed public computation on the same retained $f,g$
+    bytes with $f\neq0$ gives canonical $h$ and mathematical
+    $\mathrm{fInv}\in R_q$ with both equations $h\cdot f=g$ and
+    $\mathrm{fInv}\cdot f=1$; no correctness/invertibility premise
+    (BATCH_046).
+  * B1.07 **in progress** — partial proof, Acceptance not met, not
+    reviewed; RNG-readiness and first-sampling boundaries derived;
+    enclosing invocation/control, loop chronology with the cap, the
+    six-gate accepted attempt and the material-to-encoding transport
+    remain (BATCH_047/048 checkpoint state).
+  * Scope notes are explicit in the text: none of this is a claim about
+    the whole KeyGen loop, termination or key/emitted laws; deterministic
+    traces license no IID, $p_{\mathrm{accept}}$ or availability formula;
+    every stage is NOT_REVIEWED. Arrows 1–2 stay open.
+- **"The verification found bugs"** kept as section 7.2 with F-001 and
+  the model/parser defects, extended by a "What the traps teach" lesson
+  paragraph (names and comments masking different mathematical objects;
+  executed calls versus intended calls; retained failed attempts).
+- **Related work** (§10) declares itself a stub in bold: the bibliography
+  contains only the three inspected primary sources; a real literature
+  scan is an explicit obligation before ePrint; no citation is asserted
+  in advance. No invented citations anywhere.
+- Unchanged by design: S06 rows keep their uncertified/CHANGES_REQUIRED
+  labels at text and numbers; the two attempt shapes keep their separate
+  exponents and the B1-ATTEMPT-SHAPE todo; the A3/A4 byte bridge stays
+  outside the proof and in the ledger; no QROM claim; the honesty ledger
+  stays in the body; family profiles stay ALTERNATIVE_PROPOSAL.
+
+### Verification performed in this window
+
+- `make numbers` was not rerun: its pinned inputs are unchanged, so the
+  existing `build/numbers/run_001/RECEIPT.json` remains the numerical
+  evidence (checked by `make check`, which verifies those input hashes).
+- Final `make check`: **PASS**, 112/112 pins, all 21 source IDs mapped,
+  11 sections + 2 annexes, **21 pages**, clean TeX/BibTeX logs, no
+  undefined references, no overfull/underfull boxes. Two overfull lines
+  caused by unbreakable qualified identifiers were fixed by layout (break
+  opportunities at the name dot), not by weakening any check.
+- Pin drift since Batch 3 was handled explicitly: `KEYGEN_RESIDUE_CHECKPOINT.md`
+  and `B4_SYNTHESIS.md` changed on disk; both diffs were read before
+  repinning (SOURCES.md reconciliation items 12–13). The parallel B1 lane's
+  BATCH_048 closing commit `915178a1` landed mid-window with byte-identical
+  checkpoint content; all 112 pins were re-verified after it.
+
+### Window receipts (SHA-256)
+
+| Artifact, relative to paper/ | SHA-256 |
+|---|---|
+| `SOURCES.md` | `c8ed9ffcf335512f57c892eb28c38f3b81803559a7b946c359239187c5fd4f81` |
+| `SOURCES.sha256` | `1a43c286d7a49b7e62c47228c62e154fb8decb8248c91520c79d6ad85a0ece66` |
+| `build/main.pdf` | `2df28d2d5cd4661dbfd66559a78c1fc31962d5f1d3b3802f579dfee40e510a43` |
+| `build/CHECK.json` | `8c4148a568d9265edba90f07226aa7b1641f90a0ebff9ac9100c7399a21e939e` |
+
+PDF pin identifies this publication-form build (version 0.2,
+10 October 2026). The source pins identify the cited evidence snapshot
+(112 inputs, six of them new: `KeygenCallerSuccess.lean`,
+`KeygenPublicAccepted.lean`, BATCH_046/047 pairs). Runtime products stay
+under the ignored `paper/build/`.
+
+### Ocena i przekazanie dla właściciela (PL)
+
+Artykuł jest teraz w formie publikacyjnej: profesjonalny abstrakt,
+wprowadzenie z jawną listą kontrybucji, sekcja notacji, spójne
+środowiska teoremów i przejrzana redakcja wszystkich sekcji oraz
+aneksów — bez żadnego nowego twierdzenia poza stanem pinów. Statusy
+odzwierciedlają repozytorium: B1.05 zamknięte z dokładnym równaniem
+całkowitym f·G−g·F=q, B1.06 z Acceptance (h = g·f⁻¹ plus oba równania,
+fInv matematyczny), B1.07 w toku. Przy każdym statusie stoi nota
+zakresu: to nie jest twierdzenie o całym KeyGen, terminacji ani rozkładzie
+kluczy, i nic nie jest opisane jako niezależnie zrecenzowane. Wyniki
+negatywne pozostają teoremami, deklaracja poziomów pozostaje podwójna
+(kratka diagnostyczna + kapsel Grover, system = minimum) z etykietami
+S06, e2 zależy od ksztaltu próby, most A3/A4 pozostaje poza dowodem, brak
+roszczenia QROM, a related work jest jawnym TODO pod skan literatury.
+Pod względem dowodowym okno nie zmieniło żadnej tezy: to redakcja i
+wierny zapis statusów. Ryzyko „wygładzenia" ostrzeżnych zdań było
+kontrolowane zdanie po zdaniu; wszystkie zachowano.
+
+Jawnie otwarte: strzałki 1–2 (uczciwy hop + wiązania praw), realizacja
+kształtu próby (e2), B1.07–B1.10, globalne A3/A4, S06 i kampania rodziny,
+niezależny odbiór, skan literatury, materiał marcowego dysku do Annex B.
+Własne źródła zapisane lokalnie na main małymi commitami z dokładnymi
+pathspecami; brak push.
+
+Następny krok: decyzja właściciela o odbiorze tej formy; po domknięciu
+kolejnych etapów B1 aktualizacja §7/§11 i todo B1-FINAL, a przed ePrint
+prawdziwy skan literatury i materiał pochodzenia do Annex B.

@@ -1,6 +1,7 @@
-# Paper v0.1 — statement-to-source map
+# Paper v0.2 — statement-to-source map
 
-Snapshot date: **2026-10-06**. Paths below are relative to the repository root.
+Snapshot date: **2026-10-06**; status-ledger revision: **2026-10-10**
+(window 2, publication-form pass). Paths below are relative to the repository root.
 Formal statements were read from the actual Lean declarations and proof
 bodies, not inferred from status headings. This is a drafting/source audit,
 not an independent mathematical acceptance or a new Lean replay.
@@ -10,7 +11,11 @@ not an independent mathematical acceptance or a new Lean replay.
 - Corrected computational package: `6ff3c8381d73c5059597605880d849f1062b1f4a`.
 - Late, explicit evidence update: independent REVIEW_003 and synthesis
   commits `9b12f04e`/`be610737`, delivered during drafting. Previous 97-pin snapshot
-  is preserved in paper commit `8b98cd39`; this revision has 106 inputs.
+  is preserved in paper commit `8b98cd39`; the 106-input revision is preserved
+  in paper commit `3333088d`.
+- Window-2 status update: B1.05 closed (BATCH_032), B1.06 Acceptance met
+  (BATCH_046) and B1.07 in progress are recorded from the pinned source3
+  stage ledger and exports (claim C21). Six new inputs; **112** total.
 - Byte identity is fixed by **SOURCES.sha256**, which lists every input in
   the inventory below. The hash of that manifest and the built PDF are
   recorded in `build/CHECK.json` and the paper handoff.
@@ -353,7 +358,7 @@ nonnegative epsColl. The k=1/D=0 test does not consume LocalJointCertificate.
 
 ### C17 — evidence, review independence and reproducibility scope
 
-**Locations:** section 9; Annex A (and scope test in section 4).
+**Locations:** sections 3, 9; Annex A (and scope test in section 4).
 
 - `work/FT1536_B2B5_COMPUTATIONAL_REVIEW_001/REVIEW.md` (under proofs/ft1536):
   independent fresh-context CHANGES_REQUIRED for the earlier source version,
@@ -424,6 +429,36 @@ nonnegative epsColl. The k=1/D=0 test does not consume LocalJointCertificate.
   minima, decimal rounding, and 256/2=128. `paper/build/numbers/run_001/`
   `RECEIPT.json` binds the script, argv, exit status and result bytes.
 
+### C21 — B1 stage ledger status (B1.05 / B1.06 / B1.07)
+
+**Locations:** sections 7, 11.
+
+- `S/KeygenCallerSuccess.lean`: `exact_integer_ntru` (with `success`,
+  `Solved`, `Exec`, `RootGate`, `nonzero_one`, `call_boolean`).
+  B1.05 closed at BATCH_032 scope: bounds 1/1/2047/2047,
+  `multiply f G - multiply g F = constantCoeffs (18433 : Int)`, and the
+  four output-slot representations. The module header states this is not
+  the whole KeyGen loop, an emitted-key theorem, or a security claim.
+- `S/KeygenPublicAccepted.lean`: `source_same_material` and `Material`
+  (`KeygenPublicNormalizePolynomial.Represents` for canonical `h`,
+  `Nonzero fv`, `mulRq hv (reduceVec fv) = reduceVec gv`,
+  `mulRq fInv (reduceVec fv) = constantCoeffs 1`). B1.06 Acceptance MET
+  at BATCH_046 scope: both equations, retained f/g bytes, mathematical
+  `fInv`; no correctness, invertibility or round-trip premise introduced.
+- `SN/KEYGEN_SOURCE_TO_FIBER_001_BATCH_046.json` and `..._046_NOTES.md`:
+  the sealed B1.06 Acceptance pair; `..._047.json` and `..._047_NOTES.md`:
+  the sealed B1.07 enclosing-entry/first-sampling midpoint pair.
+- `SN/KEYGEN_RESIDUE_CHECKPOINT.md`: the cumulative stage ledger. The
+  paper cites sections 12/12.1 (B1.05 exact boundary), 26/26.1 (B1.06
+  Acceptance type) and the top B1.07 status blocks. The B1.07 statements
+  in the paper are status-only (partial proof, Acceptance not met, not
+  reviewed, named remaining obligations).
+
+**Status:** kernel-scoped stage records, NOT_REVIEWED at every listed
+stage. Nothing here extends to whole KeyGen, termination, key or emitted
+laws, probabilities, PRG/security; B1.07 Acceptance is not met and its
+deterministic traces license no IID, p_accept or availability formula.
+
 ## Reconciliation decisions made in the draft
 
 1. The prompt's scope-file path was stale: the actual file is at the T12_1 root.
@@ -448,6 +483,30 @@ nonnegative epsColl. The k=1/D=0 test does not consume LocalJointCertificate.
     were read explicitly. The former preserves the quoted REV10 facts in §5
     and keeps row/layout laws open; the latter changes release sequencing,
     not a theorem. Their earlier bytes remain in the previous paper snapshot.
+11. Window-2 status ledger (2026-10-10): the paper reports B1.05 closed,
+    B1.06 Acceptance met and B1.07 in progress exactly as scoped by their
+    Acceptance blocks and the pinned exports (C21). No ledger statement
+    extends to whole KeyGen, termination, key laws or security, and no
+    stage is described as independently reviewed. The paper quotes only
+    `exact_integer_ntru` and `source_same_material`; no new mathematical
+    claim is introduced by the status update.
+12. The pinned `KEYGEN_RESIDUE_CHECKPOINT.md` is a live file of the
+    parallel B1 lane. At this revision's pin time it contained the
+    BATCH_048 close (the lane's closing commit `915178a1` landed during
+    this window with byte-identical content; all 112 pins were re-verified
+    after that commit). The paper cites only the cumulative closed sections
+    (12, 26) and status lines, which persist across later prepends. Any
+    later window must read the checkpoint diff before repinning, as in
+    item 9. The 2026-10-06 bytes of this file remain in paper commit
+    `3333088d`.
+13. The other Batch-3 pin drift, `N/B4_SYNTHESIS.md`, was read at this
+    revision (commits `0a72596b`, `30359d3b`, `da0cbf5f`, `98a4abf6`,
+    `a2c5e304`): B1.03/B1.04 Acceptance records, the B1.05 chain
+    `fG - gF = 18433` with bounds 1/2047, and the state-review
+    do-not-reopen map. None of these changes the four-arrow target, the
+    review chronology or any claim quoted from that file; the paper's
+    B1.05 statement matches its recorded equation. The superseded bytes
+    remain in paper commit `3333088d`.
 
 ## Pinned input files
 
@@ -504,9 +563,15 @@ proofs/ft1536/development/T12_1/source3/formal/Source3/KeygenNttButterflyCalls.l
 proofs/ft1536/development/T12_1/source3/formal/Source3/C99ModularReference.lean
 proofs/ft1536/development/T12_1/source3/formal/Source3/C99ModularParser.lean
 proofs/ft1536/development/T12_1/source3/formal/Source3/KeygenMkgm3Callees.lean
+proofs/ft1536/development/T12_1/source3/formal/Source3/KeygenCallerSuccess.lean
+proofs/ft1536/development/T12_1/source3/formal/Source3/KeygenPublicAccepted.lean
 proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_014_NOTES.md
 proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_014.json
 proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_015.json
+proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_046.json
+proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_046_NOTES.md
+proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_047.json
+proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_047_NOTES.md
 proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_RESIDUE_CHECKPOINT.md
 proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_rev10_cert_004/RECEIPTS.json
 proofs/ft1536/documents/FT1536_C_CODE_FINDINGS_2026-10-02.md
