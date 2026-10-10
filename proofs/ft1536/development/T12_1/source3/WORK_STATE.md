@@ -1,5 +1,39 @@
 # T12.1/source3 — żywy stan
 
+## B1.07 — BATCH_049 whole-caller continuation — 2026-10-10
+
+Owner-started new window from28R, GPT-6.1 Sol Fast
+(`openai/gpt-6.1-sol-fast`). BEFORE edits/jobs: BATCH_015–048 verified,
+9871 distinct pins/718 literal bindings, no supersession or active job.
+Entry `.build/levels_049/ENTRY_PINS_049.json`, SHA256
+`3fea9435f3f6638bfced299058df18f8cb2842798cd8ce6ec774ef1c2754d909`.
+Continue full enclosing source grammar/control/lifetimes, then chronological
+attempts, the SAME six gates and actual encoding-input material in28.1 order.
+Full readiness048 is the baseline; no already-ready restriction or desired
+callee result is reintroduced. One Acceptance or recoverable midpoint, serial
+guarded jobs and unchanged limits. B1.07 Acceptance NOT MET; B1.08/B4/B5 NOT
+entered. Small local exact-path commits only, no push/review/delegation/relay/
+migration/import. Foreign changes and all historical/failed bytes retained.
+
+Whole-caller syntax accepted0/0: all1194 active tokens, the exact header,
+both runtime arms, every declaration/scope, increment-before-sampling,
+resultant f/g, both norm gates, public/solver/mandatory-certificate destinations
+and the complete four-segment/public encoding-call tail. Thirteen lexical
+pieces and303 compositional grammar nodes bind the SAME full407-line source,
+without a parser oracle. Fourteen generated producers reproduce byte-exactly
+(`.build/levels_049/GENERATOR_CHECK.json`, `73187e5c…`). This is syntax, NOT
+whole-loop execution, gate mathematics or accepted material identity.
+The ordinary meta interpreter hit memory limits on nested expressions;
+bounded producers and `decide +kernel` close them without raised proof/job
+limits or new axioms. Local expression-parser fuel was LOWERED64→24; exact
+full-source coverage is checked, not assumed. Every rejected snapshot remains.
+Owner-reported server restart interrupted005 during Binding. Three completed
+engine receipts and products are retained; the missing driver aggregate and
+unfinished child exit/RSS are NOT reconstructed. Only unfinished Binding/
+Program were resumed; later source edits necessarily rebuild their OWN changed
+dependencies. Recovery `a17a27f1…`; unrelated paper commits are preserved.
+This logical source step is not the window's single closing midpoint.
+
 ## B1.07 — CLOSED at COMPLETE readiness/first-sampling midpoint — 2026-10-10
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
