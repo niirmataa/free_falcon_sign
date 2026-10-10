@@ -1,0 +1,111 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm]{geometry}
+\usepackage{fontspec}\setmainfont{Latin Modern Roman}
+\usepackage{amsmath,amssymb,amsthm,xurl,hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{3em}
+\newcommand{\code}[1]{\nolinkurl{#1}}
+\newcommand{\E}{\mathbb E}
+\title{S05 / Kolekcja obstructions\\\large Materiał roboczy do ewentualnego Aneksu B}
+\author{Notatka robocza dla Niirmata}\date{10 października 2026}
+\begin{document}\maketitle
+\textbf{WARUNKOWY / DEVELOPMENT.} Kolekcja zachowuje ograniczenia znanych
+wyników. Nie jest zmianą paperu, jego publikacją ani deklaracją bezpieczeństwa
+lub niebezpieczeństwa FT1536. Manifest \code{INDEX.json} identyfikuje
+zakres, status dowodu, źródła, receipty oraz SHA256 każdego wpisu.
+Nowe wpisy dodajemy bez przepisywania historycznych źródeł.
+
+\section{O1: DyadicObstruction --- dokładna jednostajność}
+\textbf{Teza.} Żaden deterministyczny algorytm zużywający najwyżej $b$
+niezależnych uczciwych bitów nie może zwracać dokładnie jednostajnego
+współczynnika w $\mathbb Z/18433\mathbb Z$, dla skończonego $b$.
+
+\textbf{Dowód.} Dopełniamy każdą krótszą taśmę do długości $b$.
+Masa dowolnego zdarzenia ma wtedy postać $k/2^b$, $k\in\mathbb N$.
+Jednostajność wymaga $18433k=2^b$, co jest niemożliwe: nieparzysta liczba
+18433 większa od 1 nie dzieli potęgi 2. Primalność nie jest potrzebna
+do argumentu tekstowego, choć szkic Lean używa jej jako wygodnego lematu.
+
+\textbf{Dokładny zakres.} Stały skończony limit bitów i dokładna
+jednostajność współczynnika. Wyklucza wspólną instancję obecnego typu
+taśmy \code{Games.Sampler} oraz \code{HacGlue.UniformChallengeAt}.
+Nie obala twierdzenia z tymi warunkowymi przesłankami.
+Nie wyklucza aproksymacji ani losowania z nieograniczoną długością taśmy.
+Idealna wyrocznia jednostajna jest innym obiektem niż taki sampler.
+
+\textbf{Stan dowodu.} Tekstowy argument; historyczny szkic
+\code{DyadicObstruction.lean} istnieje, lecz nie ma potwierdzonego
+uruchomienia jego kernela. Historyczny batch zatrzymał się na timeout
+wcześniejszego modułu StateErasure; drugi timeout dotyczył samego importu.
+Nie należy przedstawiać tych timeoutów jako błędu twierdzenia ani jako PASS.
+
+\textbf{Droga obejścia.} Dla $N=2^b=aq+r$, wynik słowa modulo $q$ ma
+dokładny kierunkowy moment względem jednostajnego współczynnika
+$1+r(q-r)/N^2$. Przybliżenie musi być opłacone w nowym certyfikacie,
+zamiast zmiany znaczenia słowa „jednostajny”.
+
+\section{O2: duży moment przed normą przy pominięciu ważenia marginalu}
+\textbf{Konstrukcja objęta wynikiem.} Sampler najpierw losuje $z_2$ z $U=w/G$,
+a potem $z_1$ z dokładnego Gaussa w reszcie $c-hz_2$, na skończonym boxie.
+Uczciwy Gaussian na całym włóknie ma inne marginalne prawo $z_2$.
+Dokładny moment tej konstrukcji wynosi
+\[
+ \sum S_{h,c}^2/P_{h,c}
+ =\E_U[Z_1(c-hz_2)]\E_U[1/Z_1(c-hz_2)].
+\]
+Przy h=0 czynnik wynosi 1. Przy parametrach FT1536, h=1,c=0,
+NORMALIZER-005 dowodzi dolnej granicy $>4$ dla każdego niezależnego bloku,
+więc dla 768 bloków moment jest $>2^{1536}$.
+
+\textbf{Mechanizm dowodu.} W kwadracie $[-3072,3072]^2$ masa reszty
+jest zdominowana przez centralny lift: każdy inny lift ma energię większą
+o co najmniej $q^2-4q\cdot3072>0$. Dolna granica skończonej sumy
+odwrotności oraz certyfikowane normalizatory theta dają wynik.
+Źródło i pełne końce przedziałów: \code{NORMALIZER_005.tex},
+\code{FIBER_NORMALIZER_005_CORRECTED.sage},
+\code{NORMALIZER_005_CORRECTED_CERTIFICATE.json}.
+Erratum \code{NORMALIZER_005_ERRATUM_001.tex} zastępuje wcześniejsze
+numeryczne świadectwa po wykryciu niepoprawnej konwersji końców MPFR;
+zakres i dolna granica twierdzenia pozostają takie same po ponownym rachunku.
+
+\textbf{Dokładny zakres.} Warunkowo przy h=1,c=0, \emph{przed normą}.
+To nie jest dolna granica momentu po normie, cap16, emisji ani uśrednieniu
+po wyzwaniu. Nie dowodzi słabości bezpieczeństwa FT1536 ani niemożliwości
+innego publicznego samplera. Status: textual, rygorystyczny Sage512/768,
+bez kernela i niezależnego odbioru.
+
+\textbf{Droga obejścia.} Losować marginal proporcjonalny do
+$w(z_2)Z_1(c-hz_2)$; przedziały normalizatora z 005 umożliwiają względną
+kontrolę tych wag. Nie wystarcza większa precyzja dla błędnego marginalu.
+
+\section{O3: koszt odrzucania całych wektorów dla ważonego marginalu}
+\textbf{Konstrukcja objęta wynikiem.} Dokładna propozycja $U=w/G$ i moneta
+$Z_1(c-hz_2)/M$, gdzie jedna stała $M$ dominuje wszystkie wagi reszt.
+Dla h=1,c=0 każdy taki $M\ge Z_1(0)\ge1$ i certyfikat MARGINAL-006 daje
+\[
+ \alpha<2^{-767},\qquad
+ \Pr[\text{akceptacja w co najwyżej }2^{128}\text{ propozycjach}]<2^{-639}.
+\]
+Ten wynik pochodzi z faktoryzacji rzeczywistego włókna i rachunku balls
+normalizatorów, nie z pomiaru czasu ani eksperymentu o małej liczbie prób.
+
+\textbf{Dokładny zakres.} Przeszkoda kosztowa dla odrzucania całego wektora
+z tej propozycji. Nie wyklucza propozycji adaptowanej, faktoryzacji blokowej
+ani innego samplera. Nie jest nowym dolnym oszacowaniem końcowego momentu.
+Przy h=1 faktoryzacja blokowa usuwa ten konkretny iloczyn prawdopodobieństw
+akceptacji; jej pełny skończonobitowy certyfikat pozostaje osobnym zadaniem.
+
+\textbf{Stan dowodu.} Textual, z certyfikatem Sage512/768.
+Nowy ogólny lemat capu zapisuje pełną porażkę jako
+$J=(1-\delta)Q+\delta\delta_{\mathtt{none}}$ i rozlicza jej moment.
+Mała $\delta$ sama nie wystarcza: potrzebna jest także masa
+$P(\mathtt{none})$ w mianowniku. Nie przeniesiono certyfikatu h=0
+na tę konstrukcję.
+
+\section{Zasady późniejszego użycia w Aneksie B}
+Przy każdym wpisie zachować kwantyfikatory, etap prawa, status kernela,
+kierunek ilorazu $J/P$ i non-claims. Przeszkody dotyczą określonych typów
+lub konstrukcji, nie QROM jako całości. Nie zastępować ich nagłówkiem
+„brak bezpieczeństwa”. Kernelizacja h=0 i właściwego lematu capów pozostaje
+na żywej liście; szkic Lean O1 nie służy jako dowód, że ten obowiązek wykonano.
+\end{document}

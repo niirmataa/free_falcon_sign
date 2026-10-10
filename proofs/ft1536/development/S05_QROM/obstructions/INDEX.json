@@ -1,0 +1,149 @@
+{
+  "collection": "S05_QROM obstructions",
+  "version": 1,
+  "date": "2026-10-10",
+  "status": "WARUNKOWY_DEVELOPMENT",
+  "purpose": "Working source for a possible future Appendix B, not a paper/publication update",
+  "path_base": "repository root",
+  "entries": [
+    {
+      "id": "O1_DYADIC",
+      "name": "DyadicObstruction",
+      "status": "TEXTUAL_WITH_UNEXECUTED_LEAN_DRAFT",
+      "statement": "No deterministic algorithm using at most finite b fair bits has exactly uniform output coordinate modulo 18433.",
+      "scope": [
+        "fixed finite bit budget",
+        "exact uniformity",
+        "current Sampler/UniformChallengeAt conjunction"
+      ],
+      "non_claims": [
+        "No exclusion of approximation",
+        "No exclusion of unbounded-length rejection",
+        "No security attack"
+      ],
+      "kernel": {
+        "verified": false,
+        "reason": "Historical StateErasure run timed out before other modules; DyadicObstruction was not executed. Import probe also timed out."
+      },
+      "next": "Isolate and kernel-check the dyadic lemma with clean logs; do not infer a kernel PASS from the existence of its source.",
+      "sources": [
+        {
+          "path": "proofs/ft1536/development/S05_QROM/notes/SAMPLER_003.tex",
+          "sha256": "a14aa0b31df479aede7adb1e919097825b8a45b7435ca5ea34e19ad1d79653c4"
+        },
+        {
+          "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/formal/DyadicObstruction.lean",
+          "sha256": "480866fb7413453c281c3c4c4a2fba6aaa0692d7cc06e992406399fd3ddd7fe4"
+        },
+        {
+          "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/lean_001/receipt.json",
+          "sha256": "c7d5a5ef5c21a99546e3dc45580143df1c827cb8dcd4ede599d94a2a26ccc5f1"
+        },
+        {
+          "path": "proofs/ft1536/work/FT1536_S05_QROM_001/sampler_003/runs/lean_probe_002/receipt.json",
+          "sha256": "9aeba0d5e564314d607896ec81af00bc7905a43b81d4100b34c2bab6239774ef"
+        }
+      ]
+    },
+    {
+      "id": "O2_PRE_NORM_MOMENT",
+      "name": "Unweighted sequential marginal has a large pre-norm moment",
+      "status": "TEXTUAL_WITH_RIGOROUS_BALLS",
+      "statement": "At FT1536 parameters, h=1,c=0, ideal sequential U-then-fiber sampling has conditional pre-norm second moment >2^1536.",
+      "scope": [
+        "finite coefficient box",
+        "h=1,c=0",
+        "768 independent blocks",
+        "before norm"
+      ],
+      "non_claims": [
+        "Not a lower bound after norm/cap16/emission or challenge averaging",
+        "Not proof that h=1 is emitted by KeyGen",
+        "Not an impossibility theorem for other samplers",
+        "Not a security attack"
+      ],
+      "kernel": {
+        "verified": false
+      },
+      "next": "Reweight marginal by Z1(c-h*z2); preserve exact failure law and direction J/P.",
+      "sources": [
+        {
+          "path": "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005.tex",
+          "sha256": "cdbcda0f9c3cee5a35c50d8ad104aa687d2924571884f85eefedef40033158c6"
+        },
+        {
+          "path": "proofs/ft1536/development/S05_QROM/notes/FIBER_NORMALIZER_005_CORRECTED.sage",
+          "sha256": "3f25c436f8def166b1e0e8f75704c2b884bca543f32e8537728dc05749e4e2df"
+        },
+        {
+          "path": "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json",
+          "sha256": "90a0eb5ab55320cd43dd5ffff2f48e924b9b8a8caca622cac6fa64ac4886a31a"
+        },
+        {
+          "path": "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_RECEIPT.json",
+          "sha256": "04235228ca14b368737d1d0506a287220556045a609616fd1053bcce671744b8"
+        },
+        {
+          "path": "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_ERRATUM_001.tex",
+          "sha256": "da5ff56822aab3fd342bdf5bdb3e4484dace213bb112f3884cc4dadbf140e090"
+        }
+      ],
+      "superseded_numeric_sources": [
+        {
+          "path": "proofs/ft1536/development/S05_QROM/notes/FIBER_NORMALIZER_005.sage",
+          "sha256": "5a20972a6f83b5c5711af75649089592103ebba0e4e759f255d81a3dc4f8394c"
+        },
+        {
+          "path": "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json",
+          "sha256": "f8c70019e9186aecd2e56410023756158a40f04a04c7d06934c22c06a38aa305"
+        }
+      ],
+      "numeric_erratum": "QQ(MPFR) did not preserve exact outward endpoints; corrected source and replay replace original numeric witnesses, with unchanged proved bounds."
+    },
+    {
+      "id": "O3_WHOLE_VECTOR_REJECTION",
+      "name": "Whole-vector rejection from U=w/G has exponentially small acceptance",
+      "status": "TEXTUAL_WITH_RIGOROUS_BALLS",
+      "statement": "At h=1,c=0, exact U proposal and any constant envelope M>=max Z1 give alpha<2^-767; success in 2^128 proposals <2^-639.",
+      "scope": [
+        "specific whole-vector proposal",
+        "constant envelope",
+        "ideal exact rejection",
+        "h=1,c=0"
+      ],
+      "non_claims": [
+        "Not exclusion of blockwise or adapted proposals",
+        "Not a lower bound on final Q-JOINT moment",
+        "Not proof that h=1 is a KeyGen output"
+      ],
+      "kernel": {
+        "verified": false
+      },
+      "next": "Use adapted proposals or controlled factorization; certify cap cost anew.",
+      "sources": [
+        {
+          "path": "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.tex",
+          "sha256": "f1693b96b58eef78b763d6f448354d205cb5f5934bee234104402e72f5c475af"
+        },
+        {
+          "path": "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "sha256": "d77ef5fa7e4fac2ba797e763d45b6d216a1881ec72ac1f77b0d84ffc1e423523"
+        },
+        {
+          "path": "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006_CERTIFICATE.json",
+          "sha256": "61c0171be03b974571caa0de359f3217c4eb78ea0f5752430f1177049d4c7f62"
+        },
+        {
+          "path": "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006_PRECISION768.json",
+          "sha256": "53f6e9e1a9ac3c56673dfb121e1eb304278854ba9624f58b60efb6767d9d2727"
+        }
+      ]
+    }
+  ],
+  "independent_review": false,
+  "new_kernel_claims": false,
+  "paper_changed": false,
+  "website_changed": false,
+  "maintenance": "Preserve original pinned sources; append new obstruction entries with exact scope and proof status.",
+  "numeric_evidence_policy": "Use corrected 005 certificate; original numeric artifacts retained only as superseded history."
+}

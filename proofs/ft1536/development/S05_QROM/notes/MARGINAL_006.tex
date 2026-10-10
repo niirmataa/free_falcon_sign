@@ -1,0 +1,220 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm]{geometry}
+\usepackage{fontspec}\setmainfont{Latin Modern Roman}
+\usepackage{amsmath,amssymb,amsthm,xurl,hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{3em}
+\newcommand{\code}[1]{\nolinkurl{#1}}
+\newcommand{\none}{\mathtt{none}}
+\newcommand{\E}{\mathbb E}
+\newtheorem{theorem}{Twierdzenie}
+\title{S05 / MARGINAL\_006\\\large Ważony marginal, capy i nowy certyfikat pełnej odpowiedzi}
+\author{Notatka robocza dla Niirmata}\date{10 października 2026}
+\begin{document}\maketitle
+\textbf{WARUNKOWY / DEVELOPMENT / textual.}
+Nowa konstrukcja otrzymuje własny dowód; nie dziedziczy certyfikatu h=0.
+Wynik to warunkowy interfejs certyfikatu z małym $e$, dokładne skończone
+kontrole prawa oraz przeszkoda kosztowa dla konkretnej propozycji.
+Nie skonstruowano efektywnego świadka Q-JOINT-INSTANCE dla wszystkich $h$.
+
+\section{Właściwy marginal i dane do jego realizacji}
+Zachowujemy $D,w,G,Z_1,Z_{h,c}$ z NORMALIZER-005, $q=18433$, $\sigma=768$,
+768 bloków w połówce oraz 16 prób uczciwego testu normy.
+Dla ustalonych $h,c$ piszmy $F(y)=Z_1(c-hy)$ i $U(y)=w(y)/G$.
+Właściwy marginal drugiej połówki to dokładnie
+\[
+ V(y)=\frac{w(y)F(y)}{Z_{h,c}}=\frac{U(y)F(y)}{\E_U F}.
+\]
+Normalizator globalny znika z implementacji odrzucania, ale pozostaje
+w prawdopodobieństwie jego akceptacji.
+NORMALIZER-005 daje $F_-(y)\le F(y)\le\kappa F_-(y)$,
+$\kappa=(1+2^{-366})^{768}<1+2^{-356}$, dla każdego $y$.
+Ta kontrola względna jest dokładnie kontrolą wag potrzebną marginalowi.
+Numeryczne wejście pochodzi ze skorygowanego certyfikatu 005:
+\code{NORMALIZER_005_ERRATUM_001.tex} opisuje wykryty błąd
+\code{QQ(MPFR)} i ponowny rachunek z \code{exact_rational()}.
+
+Wybierzmy stałą $M\ge\max_yF(y)$, rozkład propozycji $\nu$ i monetę
+akceptacji $a(y)$. Wymagamy jawnych certyfikatów
+\[
+ \ell_U U\le\nu\le u_U U,\qquad
+ \ell_F F/M\le a\le u_F F/M,\qquad \ell_U,\ell_F>0.
+\]
+W szczególności wszystkie istotne nośniki pozostają obecne.
+Po akceptacji pobieramy $z_1$ z przybliżonego prawa kategorii w reszcie
+$c-hy$, z dominacją $K_1$ względem dokładnego Gaussa warunkowego.
+\textbf{Propozycja 004 nie spełnia tych założeń na mocy swojego certyfikatu:}
+ucina współrzędne do 15360 i ma jednostronny certyfikat z fallbackiem.
+Tutaj potrzebny jest osobny certyfikat propozycji na pełnym boxie albo
+odrębne oszacowanie jej znormalizowanej masy po ważeniu.
+
+\subsection*{Względna dokładność skończonej monety}
+Jeżeli wykonalny dolny przedział $L(y)$ spełnia
+$F(y)/\kappa\le L(y)\le F(y)$, to
+$a(y)=2^{-b}\lfloor2^b L(y)/M\rfloor$ spełnia
+\[
+ (1-\eta)F(y)/(\kappa M)\le a(y)\le F(y)/M
+\]
+pod warunkiem $2^{-b}\le\eta\min_y L(y)/M$.
+Nie wystarcza mały błąd \emph{bezwzględny} monety, gdy $F(y)/M$ jest małe.
+Symboliczne końce z 005 zawierają czynnik wykładniczy; realizacja $L(y)$
+przez skończone operacje i rozstrzyganie progów wymaga własnego rachunku
+zaokrągleń. Nie utożsamiamy zapisu $F_-$ z już wykonanym generatorem monety.
+
+\section{Certyfikat po akceptacji, wyprowadzony od początku}
+Prawdopodobieństwo akceptacji jednej propozycji jest
+$\alpha=\sum_y\nu(y)a(y)>0$, a marginal po akceptacji to
+$\widehat V(y)=\nu(y)a(y)/\alpha$.
+Ponieważ $\alpha\ge\ell_U\ell_F\E_U F/M$,
+\[
+ \widehat V(y)\le\frac{u_Uu_F}{\ell_U\ell_F}V(y).
+\]
+Po kategorii $z_1$ jedna zaakceptowana para ma prawo $Q_A$ spełniające
+\[
+ Q_A\le dP_A,\qquad d=\frac{u_Uu_F}{\ell_U\ell_F}K_1,
+\]
+gdzie $P_A$ to uczciwe prawo całego włókna przed normą.
+Po 16 niezależnych parach i tym samym kanale normy, cap16 oraz emisji
+otrzymujemy pełne prawo $Q$ z
+\[
+ Q\le CP,\quad C=d^{16},\quad Q\ll P,\quad
+ \sum Q^2/P\le C,\quad\chi^2(Q\Vert P)\le C-1.
+\]
+Ostatnia granica wynika z $Q^2/P\le CQ$ i $\sum Q=1$.
+Obejmuje $\none$; nie jest to argument TV zamieniony na moment.
+
+\section{Dokładne prawo nowego capu}
+\textbf{Definicja konstrukcji:} przygotuj wszystkie 16 par. Dla każdej
+wolno wykonać najwyżej $N$ niezależnych propozycji marginalu.
+Jeżeli jakikolwiek wewnętrzny cap się wyczerpie, wydaj $\none$.
+W przeciwnym przypadku zastosuj do 16 par uczciwy test normy, wybór
+pierwszej akceptacji i modelową emisję. Maksymalnie jest $16N$ propozycji.
+
+Prawo zaakceptowanej pary nie zależy od numeru akceptacji:
+masa akceptacji $y$ w kroku $k$ to $(1-\alpha)^{k-1}\nu(y)a(y)$.
+Po zsumowaniu do $N$ i normalizacji otrzymujemy to samo $\widehat V$.
+Z niezależności 16 bloków pracy wynika więc dokładnie
+\[
+ \delta=1-\bigl(1-(1-\alpha)^N\bigr)^{16},\qquad
+ J=(1-\delta)Q+\delta\,\delta_{\none}.
+\]
+Nie zastępujemy tej konstrukcji leniwym zatrzymaniem po pierwszym sukcesie
+normy: taki algorytm wymagałby nowego rozliczenia swojego prawa.
+Koszt i gałąź $\none$ są częścią definicji nowego kandydata.
+
+\begin{theorem}[Nowy certyfikat pełnego prawa z capami]
+Załóżmy powyższe warunki i $p=P(\none)>0$. Wtedy $J\ll P$ oraz
+\begin{align*}
+ \sum J^2/P
+ &=(1-\delta)^2\sum Q^2/P
+   +2(1-\delta)\delta\,Q(\none)/p+\delta^2/p,\\
+ \chi^2(J\Vert P)
+ &\le\bigl((1-\delta)\sqrt{C-1}+\delta\sqrt{1/p-1}\bigr)^2\\
+ &\le2(1-\delta)^2(C-1)+2\delta^2(1/p-1).
+\end{align*}
+Dla dokładnego rdzenia $Q=P$ mamy równość
+$\sum J^2/P=1+\delta^2(1/p-1)$.
+\end{theorem}
+Dowód równości to rozwinięcie kwadratu, z osobnym składnikiem dla $\none$.
+Dla nierówności piszemy w $L^2(P)$
+$J/P-1=(1-\delta)(Q/P-1)+\delta(\mathbf1_{\none}/p-1)$,
+stosujemy nierówność trójkąta, a następnie $(a+b)^2\le2a^2+2b^2$.
+Nośnik zachowujemy, bo obie składowe mieszanki są absolutnie ciągłe względem $P$.
+Jeżeli $p=0$ i $\delta>0$, dodanie tej porażki \emph{łamie} $J\ll P$.
+Nie wolno więc traktować wewnętrznego abortu jako darmowej porażki.
+
+Przy dolnych certyfikatach $\alpha\ge\alpha_0>0$, $p\ge\beta_0>0$,
+\[
+ \delta\le16e^{-N\alpha_0},\qquad
+ \chi^2(J\Vert P)\le2(C-1)+512e^{-2N\alpha_0}/\beta_0.
+\]
+To warunek wyboru capu, a nie test jego poprawności przez kilka uruchomień.
+
+\section{Warunkowy budżet z użytecznym e}
+Weźmy $\rho=\eta=2^{-256}$, $\ell_U=1-\rho$, $u_U=1+\rho$,
+$\ell_F=(1-\eta)/\kappa$, $u_F=1$ oraz
+\[
+ K_1=\bigl(1+64^2(2^{-372}+2^{-256})\bigr)^{768}.
+\]
+Dokładny rachunek $\mathbb Q$ daje $C-1<2^{-230}$.
+Jeśli dodatkowo $\delta^2/\beta_0\le2^{-232}$, to
+$\chi^2(J\Vert P)<2^{-228}$ dla każdego $h,c$ objętego tymi przesłankami.
+
+Losując wyzwanie przez 1536 niezależnych 80-bitowych słów modulo $q$,
+otrzymujemy dokładny moment wyzwania
+\[
+ M_H=\left(1+\frac{r(q-r)}{2^{160}}\right)^{1536},\qquad r=2^{80}\bmod q.
+\]
+Zsumowanie pełnego wspólnego prawa po $c$ daje
+\[
+ J_{\rm joint}\ll P_{\rm joint},\qquad
+ \sum J_{\rm joint}^2/P_{\rm joint}
+ \le M_H(1+2^{-228})<1+2^{-119}.
+\]
+Rachunek nie używa odziedziczonego wniosku $e<2^{-50}$ z h=0.
+\textbf{Jest warunkowy:} propozycja, moneta, dodatnie masy i koszt są
+nowymi obowiązkami; nie odhaczono Q-JOINT-INSTANCE.
+
+\section{Dodatnia masa porażki istnieje, lecz prosty cap jest ogromny}
+W skończonym modelu boxu dla każdego $h,c$ można wybrać $z_2$ mające
+jeden blok $(H,H)$ i zera poza nim, $H=65535$. Jego norma już przekracza
+$B=2093922385$. Dobieramy centrowane lifty $z_1$ do $c-hz_2$;
+ich energia jest co najwyżej $E_1=768\cdot3\cdot9216^2$.
+Ponieważ normalizator włókna jest mniejszy niż $2^{17\cdot3072}$,
+a $e<4$, prawdopodobieństwo odrzucenia normy jednej próby jest większe niż
+\[
+ 2^{-R_0},\qquad
+ R_0=2\left\lceil\frac{E_1+3H^2}{2\sigma^2}\right\rceil+17\cdot3072.
+\]
+Stąd $p\ge\beta_0=2^{-16R_0}$. Nie zakładamy porażki emisji, aby to uzyskać.
+To jawna, bardzo luźna dolna granica. Nie dowodzi typowej częstości porażek.
+
+Dla $M=64^{768}$ mamy $F/M>2^{-336384}$, bo
+$E_1/(2\sigma^2)=165888$ i znów $e<4$.
+Przy zadanych względnych błędach daje to $\alpha_0=2^{-336385}$.
+Wystarczy $N\alpha_0\ge120\log2+\tfrac12\log(1/\beta_0)$, aby
+$\delta^2/\beta_0\le2^{-232}$.
+Wykładnik wybranego dostatecznego $N$ zapisuje certyfikat; takiego capu
+\emph{nie wykonywano}. Skończoność nie oznacza wykonalnego kosztu reduktora.
+Dostateczny budżet monety $b=336641$ bitów obejmuje osobno podłogę dyadyczną,
+zakładając dostęp do certyfikowanego $L$. Nie rozwiązuje generowania $L$.
+
+\section{Przeszkoda kosztowa dla odrzucania całego wektora}
+Ta przeszkoda dotyczy nawet \emph{idealnej} propozycji $U=w/G$ i dokładnej
+monety $F/M$. Dla $h=1,c=0$ mamy $M\ge F(0)\ge1$ oraz
+\[
+ \alpha=Z_{1,0}/(GM)
+ \le\left(Z_{\rm block}/G_\triangle\right)^{768}<2^{-767}.
+\]
+Górny certyfikat $Z_{\rm block}$ pochodzi z NORMALIZER-005.
+$G_\triangle$ obliczono w balls, przez sumy theta, ogony geometryczne
+i osobny koszt przejścia z nieskończonej kraty do boxu.
+Wobec tego nawet po $N=2^{128}$ propozycjach
+\[
+ \Pr[\text{co najmniej jedna akceptacja}]\le N\alpha<2^{-639}.
+\]
+To dolna granica trudności \emph{tej strategii odrzucania całego wektora},
+nie dowód niemożliwości innego marginalnego samplera.
+Dla strukturalnego h=1 faktoryzacja blokowa omija ten konkretny iloczyn
+akceptacji; dla ogólnego $h$ potrzebna jest adaptowana propozycja lub inna
+kontrolowana konstrukcja. Nie zamieniamy małej akceptacji w twierdzenie
+o dużym końcowym momencie po wyzwaniu i cap16.
+
+\section{Wykonanie i następne obowiązki}
+\code{MARGINAL_006.sage} sprawdza 102 dokładne prawa skończone
+($q=3,5$, wszystkie $h,c$, capy 1,3,17), w tym emisję, normę, cap16,
+pełną mieszankę abortu, równość momentu i dominację od założeń.
+Osobna rekurencja po stanach 16 przygotowań, w której późny wewnętrzny
+abort nadpisuje nawet już wybrany sukces, potwierdza prawo mieszanki
+bez używania jej wzoru w tej rekurencji.
+Osobna kontrola negatywna pokazuje utratę nośnika przy $P(\none)=0$.
+Te kontrole są testami rachunku prawa; ogólny dowód jest tekstowy powyżej.
+Rachunek FT1536 wykonano przy 512 i 768 bitach, z dokładnymi końcami przedziałów.
+
+Otwarte: pełnoboxowa propozycja ze świeżym certyfikatem, skończona moneta
+o względnej dokładności, użyteczny koszt marginalu dla wszystkich $h,c$,
+kernelizacja h=0 i nowego lematu capów oraz źródłowe i kwantowe mosty.
+Obie wcześniejsze przeszkody i nowy wynik kosztowy są zebrane w
+\code{obstructions/}. Jest to materiał roboczy do ewentualnego Aneksu B;
+paper, strona i statusy T12.1/B20 pozostają bez zmian.
+\end{document}
