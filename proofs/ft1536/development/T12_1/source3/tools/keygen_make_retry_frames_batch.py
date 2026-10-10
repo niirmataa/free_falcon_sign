@@ -122,7 +122,7 @@ def seal():
     controls=read(sage_dir/'CERT_CONTROL_CHECK.json');record=read(sage_dir/'RECEIPTS.json')[0]
     assert record['accepted'] and record['clean_log'] and record['exit_code']==0
     assert job.sha(path(SAGE))==job.sha(sage_dir/SAGE)==record['source_sha256']
-    assert controls['status']=='PASS_SCRIPTED_ATTEMPT_SPINE_CONTROLS'
+    assert controls['status']=='PASS_SCRIPTED_RETRY_FRAME_CONTROLS'
     assert controls['baseline_pass'] and controls['mutations_all_detected']
     reference=path(REFERENCE)
     history=[];directories=sorted((job.BUILD/'jobs').glob('keygen_make_retry_frames*_057_*'),
