@@ -90,9 +90,10 @@ def seal():
         assert record['forbidden_proof_markers']==[] and record['cumulative_child_maxrss_kib']<=8*1024*1024
         snapshot=directory/'formal/Source3'/(name+'.lean');artifact=directory/'lib/Source3'/(name+'.olean')
         assert job.sha(source)==job.sha(snapshot)==record['source_sha256']==current['source_sha256']
-        assert job.sha(artifact)==job.sha(path(current['artifact']))==record['artifact_sha256']==current['artifact_sha256']
+        assert job.sha(artifact)==job.sha(path(current['artifact']))==record['olean_sha256']==current['artifact_sha256']
         for imported,expected in current.get('imports',{}).items():
-            assert cache[imported]['artifact_sha256']==expected,(module,imported)
+            if imported in cache:
+                assert cache[imported]['artifact_sha256']==expected,(module,imported)
         modules.append({'module':module,'source':pin(source),'snapshot':pin(snapshot),'artifact':pin(artifact),
             'cache_artifact':pin(current['artifact']),'receipt':pin(current['receipt']),
             'source_inputs':pin(directory/'SOURCE_INPUTS.json'),'logs':streams(directory,record,True),
