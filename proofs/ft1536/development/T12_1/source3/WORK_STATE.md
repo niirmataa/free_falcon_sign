@@ -1,5 +1,54 @@
 # T12.1/source3 — żywy stan
 
+## B1.07 — CLOSED at enclosing entry/first-sampling midpoint — 2026-10-10
+
+**CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
+**B1.07 Acceptance NOT MET; package IN_PROGRESS / WORKING_NOT_FROZEN.**
+One close in BATCH_047,GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`).
+B1.05/032 and B1.06/046 scopes unchanged;B1.08/B4/B5 NOT entered. Resume:**27R**.
+
+SIX fresh automatic objects derive actual extents/writability/uninitialized
+bytes/separation and the prior Initial from ORIGINAL context/profile/static/
+scratch memory. Chronological declarations bind the complete active7805–7838
+token stream, including intervening scalar/skbuf declarations. The actual
+counter assignment/member/MKN reads derive0/10/1/1536. RNG binding covers the
+already seeded+flipped path ONLY, from signed loads/false guards/return, not
+an arbitrary ready oracle. Source cap precedes setup/sampling; local reachable
+count<=cap gives no wrap and abort3000001 BEFORE setup. FirstSamples derives
+count1 and the SAME two Bound1 vectors through actual f/g calls, without
+repeated dimension execution. Disposal algebra is proved, actual full-call
+teardown is still OPEN. No equations/certificate or final legality input.
+
+Next in B1.07: FULL RNG acquisition/failure/injection/flip/tmp32 lifetimes;
+full enclosing source syntax/ternary branch/call destinations/scopes; global
+reachable-count invariant/chronological attempts/no normal fallthrough/final
+break; all six SAME gates/public046/solver032/complete certificate snapshots;
+accepted memory at actual encoding inputs and full teardown. Current fast
+subset/local cap domain cannot become extra final theorem premises. No
+code/numerical counterexample or insufficient arithmetic estimate found;
+these remain missing source/composition proofs. Whole KeyGen/emitted-to-fiber,
+laws/PRG/security,compiler/machine/CT and independent review remain outside.
+
+Entry8965 pins (`4418daa7…`);dedicated047 POSTSEAL **9257 pins/706 literal
+bindings**,no supersession/job (`3acbab73…`). Pair JSON
+`12b635bcbfbeca453abdb5d6646fd4d357c58a1ae3b76de11d5bba4aadfc7db8`;
+notes `6d9982488b8aa11d4037a91020a629eb0a1f5ef12ae51157f2243e848a7f483a`.
+Five proofs+audit0/0:141 entries/118 complete terms/23 inductives,standard
+axioms/zero elisions (`980f1a1b…`). Sage0010/0:10 normal/UBSan runs,20 public
+prefix/cap cases and6 readiness diagnostics per run,four mutations detected
+in both modes (`62c62321…`). Explicit counter injections and external seed-
+FAILURE stub are finite diagnostic seams,not complete source/PRG proofs.
+Live Extra/c/unchanged039 approved header difference rehashed,not a full M0
+build;no private KeyGen/full attempt/emitted key generated. All19 directories
+retained:18 completed steps=8 accepted/10 rejected,one harness interruption
+with no engine receipt/exit/RSS. Max recorded RSS4896912KiB;limits unchanged.
+Traps260–266 and exact remaining types are in the sealed pair/checkpoint.
+
+Own commits:`12cc16b4`,`91a7b77c`,`c8b613ee`,plus closing pair/checkpoint
+commit. Foreign work/staging preserved. No push/review/delegation/relay/
+migration/import/broad replay. No active or unresolved proof process. This
+window is CLOSED at one recoverable boundary,not auto-restarted.
+
 ## B1.07 — enclosing automatic objects and original entry — 2026-10-10
 
 Owner-started window from checkpoint26R, GPT-6.1 Sol Fast

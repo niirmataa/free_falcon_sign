@@ -1,3 +1,154 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.07 enclosing entry and first sampling midpoint
+
+**B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
+**Package: IN_PROGRESS / WORKING_NOT_FROZEN.**
+2026-10-10,BATCH_047,GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`).
+**CLOSED_AT_RECOVERABLE_MIDPOINT.** One close this window. B1.05/032 and
+B1.06/046 remain closed at their existing scopes. B1.08/B4/B5 NOT entered.
+Handoff:**27R**. Complete types/pins/traps:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_047_NOTES.md`.
+
+## 27. Closed this window — automatic objects → chronological ready prefix → first samples
+
+1. SIX actual automatic objects: f/g/F/G/h count3072,width2; ske count4,
+   width8. Sequential Fresh allocations derive object legality/writability,
+   uninitialized bytes, pairwise separation and separation from original live
+   context/scratch/static objects. No incoming coefficient allocation, vector,
+   Bound1, equation, certificate or arbitrary frame premise. Original input
+   memory DERIVES the prior CallerEntry.Initial. Disposal laws are proved,
+   but full-call teardown is NOT yet bound.
+2. Complete active7805–7838 token stream and chronological declaration
+   snapshots are bound. Intervening klen/skoff/skbuf declarations precede ske;
+   i/local_attempts follow it. The allocation-only projection is PROVED.
+   Actual counter assignment/member/MKN reads derive count0/logn10/ter1/n1536.
+   The RNG path is explicitly **already seeded+flipped ONLY**: actual signed
+   loads/false ! guards/return derive nonzero flags, return1 and unchanged
+   state. Other readiness paths remain OPEN, not abstracted or assumed away.
+3. Source cap precedes actual rt/tmp setup and BOTH samplers, without repeated
+   dimension execution. On the LOCAL reachable-count<=3000000 domain,
+   increment does not wrap and3000001 returns0 BEFORE setup/sampling. The
+   full-loop reachable-count invariant is not yet proved.
+4. The SAME chronological first prefix derives count1 and SAME actual f/g
+   bytes with Bound1 through both resolved sampler calls. No six-gate attempt,
+   chronological full-loop list, accepted material or emitted key is claimed.
+
+### 27.1 Exact checked boundaries and remaining types
+
+`KeygenMakeEntry.Original` is incoming fk/profile/static/scratch memory ONLY;
+no automatic coefficient arrays or mathematical material. The current full
+prefix export is deliberately restricted:
+
+```text
+Original ctx before primes rev
+KeygenMakePrologue.AlreadyReadyPrefix ctx before blocks after
+-----------------------------------------------------------
+after=ready before blocks; Count after 0
+Initial ctx after (input blocks) (publicPointer blocks) primes rev
+```
+
+The checked first-sampling export is:
+
+```text
+Original ctx before primes rev
+KeygenMakeSampling.FirstSamples ctx before blocks after
+-----------------------------------------------------------
+Count after 1
+exists fv gv : Geometry.Vec,
+  Represents after.heap (input blocks 0) fv and Bound fv 1
+  Represents after.heap (input blocks 1) gv and Bound gv 1
+```
+
+FirstSamples consumes that SAME restricted prefix, actual cap/setup, then
+actual f/g calls. The restriction is a SOURCE-PATH SUBSET, not the allowed
+final all-legal-entry boundary. The final theorem cannot assume it.
+
+Remaining B1.07 obligations, in plan order:
+
+1. **Full rng_ready**: unseeded acquisition/failure, set_seed, SHAKE injection/
+   flip, tmp32 allocation/disposal and actual member/argument/frame binding.
+   Keep the external entropy boundary and all failures explicit; no real-PRG
+   law, uniformity or seed-availability theorem follows from these facts.
+2. **Full enclosing invocation/control**: complete source syntax/scopes,
+   actual ternary branch and call destinations, legal scratch/layout frames,
+   actual automatic-object lifetime through return, not disposal algebra only.
+3. **Full loop chronology**: derive reachable counter invariant, no normal
+   attempt fallthrough, actual chronological attempted-body list, all earlier
+   rejects and the final successful break; length<=3000000. The named
+   AttemptExecution/AttemptAccepted/Rejected/LoopExecution/LoopSucceeded and
+   successful_loop_last_attempt remain target types, NOT available047 exports.
+4. **Same six-gate attempt**: resultants f/g, raw/orthogonal FPEMU norms,
+   SAME046 public equations/material,032 source solver and complete mandatory
+   certificate, with actual entry facts/shared call ID/snapshots/frame/bad
+   lifetime. Do not add desired equations or certificate correctness as inputs.
+5. **Accepted material → actual encoding inputs/teardown**: memory identity
+   and retention, not equality of abstract names. Per-attempt acceptance is
+   distinct from later capacity failure/call-level return1. Codec proofs remain
+   B1.08/09; no IID/availability formula is licensed by deterministic traces.
+
+These are missing source/composition proofs, not a detected code/numerical
+counterexample or insufficient arithmetic estimate. B1.07 Acceptance is NOT
+met. Whole KeyGen/emitted-to-fiber, laws/PRG/security, machine/compiler/CT and
+independent review remain outside the checked result.
+
+### 27.2 Pins, audit, finite controls and retained attempts
+
+- BEFORE edits/jobs:BATCH_015–046 **8965 pins/700 literal bindings**, no
+  supersession/job. Entry `4418daa7485006b21aed48081e49da5939e10a53095edca72daee3b341822336`.
+- **BATCH_047 JSON:** `12b635bcbfbeca453abdb5d6646fd4d357c58a1ae3b76de11d5bba4aadfc7db8`.
+- **BATCH_047 notes:** `6d9982488b8aa11d4037a91020a629eb0a1f5ef12ae51157f2243e848a7f483a`.
+- Five proofs+audit0/0: **141 entries=111 new+30 inherited;118 complete
+  terms+23 inductives;standard axioms/zero elisions**. Audit
+  `980f1a1bbc6087dee12f48eec7f1cce90d0db2c5e7df5125a41c6b00de537050`;
+  receipt `5a52619f6890a825d61a06cefd0bd118647d4b8eed8f0269f3718b144f863d4a`.
+- Sage0010/0:**10 normal/UBSan runs**,20 public prefix/cap cases and6
+  readiness diagnostics per run;four mutations per mode detected. Controls
+  `62c62321a55630bb32b454869f9b9c64de3abea8fffae2e55b32f54b51bd77af`;
+  receipt `4b7f03d5aafdc08ac02fc6613dd297623da0d33fc86438537328187cb36a782e`.
+  Counter injections/observations are explicit diagnostics, not production
+  reachable histories. Other RNG-path diagnostics (including a controlled
+  external seed-FAILURE stub) do not replace their missing universal binding.
+  Live Extra/c/unchanged039 approved header difference rehashed; not a complete
+  historical M0 build. No private KeyGen, full attempt or emitted key generated.
+- PRESEAL `474e778d48efcd2c5825b572b5a378bb6c11049e5c6d712e12723e79afcd0e14`
+  rechecks8965 predecessor pins. Dedicated047 organizer
+  `5a7c624b1ca6ed59cf81d634138494c1e91736cf36e22192b34e7209dcf350f8`.
+- **POSTSEAL** `.build/levels_047/POSTSEAL.json`:
+  `3acbab739f02103658ed6d0cbbe655efbb22f982dd2d298e1d1e663be25c753a`:
+  **9257 distinct pins/706 literal bindings**,no supersession/active job.
+- All19 directories retained:18 completed steps=8 accepted/10 rejected,
+  one harness interruption with no engine receipt/completed exit/RSS; its
+  recovery observation found no active job. Max recorded RSS4896912KiB;
+  limits unchanged. Traps260–266 and every snapshot/raw stream are in the pair.
+- Own commits:`12cc16b4`,`91a7b77c`,`c8b613ee`,plus closing pair/checkpoint
+  commit. Foreign work/staging preserved. No push/review/delegation/relay/
+  migration/stages import/broad replay. No active or unresolved proof process.
+
+## 27R. Handoff — continue B1.07 from the enclosing entry/first-sampling boundary
+
+1. This window is CLOSED at one recoverable midpoint, NOT Acceptance. Do not
+   auto-restart it or advance to B1.08/B4/B5. Preserve BATCH_015–047 and all
+   earlier/failed/interrupted bytes. The next owner-started window continues
+   B1.07 with the five precise obligations in27.1, beginning with full RNG.
+2. Read WORK_STATE, this checkpoint,047 pair notes, B1.07's exact Acceptance
+   block in EXECUTION_PLAN and the staged roadmap. BEFORE edits/jobs:
+
+   ```sh
+   mkdir -p .build/levels_048
+   python3 -B tools/keygen_make_entry_batch.py verify 12b635bcbfbeca453abdb5d6646fd4d357c58a1ae3b76de11d5bba4aadfc7db8 6d9982488b8aa11d4037a91020a629eb0a1f5ef12ae51157f2243e848a7f483a .build/levels_048/ENTRY_PINS_048.json
+   ```
+
+   Expect9257 pins/706 literal bindings/no supersession/job. A mismatch is
+   stop-and-report, not silent repair or a weakened historical pin.
+3. Inspect the precise export/consumer types before composition. Full RNG
+   source binding must remove the current fast-only subset without importing
+   seed availability/uniformity or an arbitrary callee. Then complete the
+   actual loop/gates/certificate/material/teardown in plan order. Keep the
+   local Count<=cap premise from being smuggled into the final whole-call type.
+4. One owner-started stage/window, one Acceptance or expanded midpoint,
+   bounded serial guarded jobs, unchanged limits, clean0/0 streams, native
+   Sage preparser and durable runtime. Small local exact-path commits; no
+   automatic push/review/delegation/relay/migration/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.06 Acceptance: SAME final h, fInv and BOTH equations
 
 **B1.06: PROVED_KERNEL_SCOPED / Acceptance MET / NOT_REVIEWED.**
