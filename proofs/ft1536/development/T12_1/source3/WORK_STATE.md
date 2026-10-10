@@ -1,5 +1,47 @@
 # T12.1/source3 — żywy stan
 
+## B1.06 — CLOSED at SAME quotients through all actual inverse triples — 2026-10-10
+
+**CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
+**B1.06 Acceptance NOT MET.** One midpoint in BATCH_044,GPT-6.1 Sol Fast
+(`openai/gpt-6.1-sol-fast`). B1.05 stays032;B1.07 waits. Resume:**24R**.
+
+The SAME successful compute now derives the actual inverse's generated igm,
+both aliases,exceptional index0,scaled inverse-unity seed/counters and ALL512
+chronological inverse triples on its ORIGINAL g/f quotient input. All1536
+canonical UNNORMALIZED post-triple values,untouched cells and table frames
+are proved. Both actual inverse Call/Bind layers,complete declarations and
+automatic-array allocations/disposals are linked to the SAME observed
+result and caller t disposal. No enclosing043 premise is added;no final h
+image,inverse correctness,normalization or round-trip is assumed/concluded.
+
+Next in unchanged16.1 order: derive remaining t6/m256/header/types,compose
+all eight reverse radix stages and their block-polynomial value laws,then
+768 first-root inverse bodies and1536 normalization stores. Prove live
+ni=radix/1536 and final canonical h with all ORIGINAL quotient evaluations;
+ONLY THEN fInv via proved evaluation isomorphism and BOTH SAME-material
+mulRq equations. Current Run exposes n/hn/logn,both aliases,Table,w,u/v and
+explicit post-triple image,not t/m/r/ni types or reverse-stage values. These
+remain missing source/math proofs,not detected numerical/code counterexamples.
+Whole KeyGen/emitted-to-fiber,compiler,laws/PRG/security and review are outside.
+
+Entry8062 pins (`9bc674cb…`);dedicated044 POSTSEAL **8306 pins/669 literal
+bindings**,no supersession/job (`658b3c3d…`). Pair JSON
+`72d73ae91d473ea755e1b49469cf8052566a6876a94482dc991c2cacc38300ac`;
+notes `6563ce18c2c1c8609b7507cb3b51adbef59c5d9e48197c9a6793fff5492a5bc7`.
+Eight proofs+audit0/0;754 entries/697 complete terms/57 inductives,standard
+axioms/zero elisions (`b22d452c…`). Sage0020/0:12 new normal/UBSan runs,
+ten public arrays including seven inherited quotients,5120 triples/15360
+canonical cells per baseline mode,five mutations per mode detected
+(`99b4e8a4…`). Final inverse output NOT checked/promoted;unchanged039
+approved live-header difference rehashed,not a full M0 build. All nine
+directories/13 steps remain,three failed directories/three rejected steps,
+max recorded RSS6057064KiB;limits unchanged,traps243–247 in pair notes.
+
+Own commits:`2afe59e6`,`f695c007`,`7da52b6c`,plus closing pair/checkpoint.
+Foreign work/staging preserved. No push,review,delegation,relay,migration,
+stages import or broad replay. No active/unresolved proof job.
+
 ## B1.06 — BATCH_044 actual inverse continuation — 2026-10-10
 
 Owner-started new window, GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`),

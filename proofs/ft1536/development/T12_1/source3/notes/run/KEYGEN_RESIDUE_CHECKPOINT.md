@@ -1,3 +1,169 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.06 SAME quotient inputs through all actual inverse triples
+
+**PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
+2026-10-10,BATCH_044,GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`).
+**CLOSED_AT_RECOVERABLE_MIDPOINT. B1.06 Acceptance NOT MET.**
+One midpoint this window,AFTER all512 actual inverse triples and BEFORE
+the remaining t6/reverse-radix prefix. B1.05 stays BATCH_032;B1.07 is not
+entered. Resume:**24R**. Exact types/pins/traps:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_044_NOTES.md`.
+
+## 24. Closed this window — SAME actual inverse tables,seed and whole512 triple pass
+
+1. **23.1 item1 PARTIAL:** complete1067–1159 inverse syntax is source-bound.
+   SAME actual generator Call/Bind derives BOTH igm aliases,all inverse
+   words1..1023 and exceptional igm[0]=radix/(2*firstRoot-1). Widths,actual
+   declarations/allocations and Fresh separation come from the full execution.
+2. Actual n1536/hn768,dynamic branch,scaled w=radix*unity^-1 and u0/v512
+   triple-entry domains are derived. No generated-table,seed,counter or
+   correctness hypothesis is added to the complete public headline.
+3. ALL512 actual inverse triples yield all1536 canonical ordinary cells
+   of the explicit UNNORMALIZED linear image of the ACTUAL input. Source
+   scaled x/x2,scaled-left Montgomery calls,all assignments,three chronological
+   stores,untouched cells,table frames and bounded counter steps are proved.
+4. Both actual inverse Call/Bind layers and ternary dispatch consume the
+   SAME successful compute's derived ORIGINAL g/f quotients. All enclosing043
+   premises are unchanged. Both table disposals,the actual remaining inverse
+   execution,observed output flow and caller t disposal remain linked to that
+   same invocation. **Final inverse correctness/normalization are NOT proved.**
+
+### 24.1 Exact checked boundary and remaining16.1 obligations
+
+`KeygenPublicInverseMaterial.source_same_material` takes the SAME043 boundary:
+
+```text
+s : State; out : Result; f,g,h : ArrayPointer; fv,gv : Geometry.Vec
+Slot s "logn" 10; Ternary s; actual f/g/h bindings
+Legal s.heap f; Legal s.heap g; Legal s.heap h
+Represents s.heap f fv; Represents s.heap g gv
+Bound fv 1; Bound gv 1
+h.block != f.block; h.block != g.block
+LiveTables s; KeygenPublicFrame.Tables s h.block
+out.flow=returned (some (int32 1))
+Exec fixedPublicProgram ["f","g"] (code compute) s out
+--------------------------------------------------------------
+Front s out f g h fv gv
+```
+
+Its `Run` retains043's beforeInverse/afterInverse and additionally derives
+`Outcome (quotients fv gv) h <afterInverse,normal>`,where `quotients f g j`
+is ORIGINAL `values g j * (values f j)^-1`. Local inverse input Cells are
+derived by the complete compute theorem,not a new final premise.
+
+`Outcome` selects the actual remaining-suffix inner result,generated igm,
+triple-entry and post-triple after states. It concludes:
+
+```text
+Inv (quotients fv gv) h igm 0 entry
+Exec fixedPublicProgram [] inverseTripleLoop entry <after,normal>
+Inv (quotients fv gv) h igm 512 after
+USlot after "hn" 768; Slot after "logn" 10
+after.arrays "igm_square"=some igm
+Exec fixedPublicProgram [] remaining after inner
+observed.flow=inner.flow
+Block inner.state.heap observed.state.heap h.block
+```
+
+`Inv512` includes n1536,u1536,v1024,igm_cubic binding,Table,p/igm separation,
+scaled w and ALL1536 canonical cells of `value (quotients fv gv)`.
+For A=input(3*j),B=input(3*j+1),C=input(3*j+2),
+x=(root^-1)^tableExponent(512+j),w=unity^-1,the triple image is:
+
+```text
+3*j:   A+(B+C)
+3*j+1: x*(A+(B*w+C*w^2))
+3*j+2: x^2*(A+(B*w^2+C*w))
+```
+
+This is a derived UNNORMALIZED post-triple image,not final canonical h or
+ORIGINAL evaluations of final h. Block connects the remaining suffix's
+FINAL inner heap to the observed inverse output;it does not preserve the
+triple image through that suffix. No round-trip/public equation is assumed.
+The legal/profile/material/bounds1/static-table-liveness/nonaliasing entry
+facts still belong to enclosing KeyGen. No B3 export is consumed here.
+
+Remaining,in unchanged16.1 order:
+
+1. **Item3 NEXT:** consume the retained `remaining` at the actual after seam.
+   Derive t6/m256 and reverse-stage/row/inner domains;retain/derive t/m/r/ni
+   declaration types. Current Run exposes n/hn/logn,both aliases,Table,w,u/v
+   and the1536-cell unnormalized image,but does not yet export t/m/r/ni types
+   or reverse-stage value laws. Extend through NEW modules,preserving pins.
+2. Compose all eight reverse radix stages and public-field block-polynomial
+   reconstruction laws,then768 first-root inverse bodies and1536 normalization
+   stores. At logn10,derive the LIVE `mq_div_18433(Rt,(uint32_t)n)` meaning
+   radix/1536. Preserve both table disposals and caller t disposal. Conclude
+   canonical final cells of hv:Relation.Rq and every ORIGINAL physical hv
+   evaluation equal to g/f. No assumed output image/source round-trip.
+3. **Item4 ONLY THEN:** fInv from the already derived nonzero original f
+   evaluations and PROVED evaluation isomorphism;BOTH SAME f/g/h mulRq
+   equations. Inspect exact B3/export/dependency types/pins before reuse.
+   B1.06 Acceptance still requires both equations;B1.07 waits.
+
+The source inverse-table/first-pass gap is closed. Remaining inverse,
+normalization,reconstruction and equation gaps are missing source/math
+proofs,not detected code/numerical counterexamples. Whole KeyGen/emitted-to-
+fiber,compiler,laws/PRG/security and independent review remain outside.
+
+### 24.2 Pins,audit,controls and retained attempts
+
+- BEFORE edits/jobs:BATCH_015–043 **8062 pins/660 literal bindings**,no
+  supersession/job. Entry `.build/levels_044/ENTRY_PINS_044.json`:
+  `9bc674cb689a0a09605968ab2175b32c34e9db1d09ffd50fdf4ad930037dfd11`.
+- **BATCH_044 JSON:** `72d73ae91d473ea755e1b49469cf8052566a6876a94482dc991c2cacc38300ac`.
+- **BATCH_044 notes:** `6563ce18c2c1c8609b7507cb3b51adbef59c5d9e48197c9a6793fff5492a5bc7`.
+- Eight proof modules+audit0/0. **754 entries=96 new+658 inherited;697
+  complete terms+57 inductives;standard axioms;zero elisions**. Audit JSON
+  `b22d452cb99ed0d360e4f5cbf72b32906c321c0b17d7143f714a93f6e9e0d373`;
+  receipt `a9f3c250feb0bee47f38ee3ac91aff0e74b63834dda1b101fa36a3f5daaa2d6e`.
+- Sage002 **0/0;12 new normal/UBSan runs**,ten public arrays including seven
+  inherited public quotients;**5120 triples/15360 canonical cells per mode**,
+  full generated table/seed and boundary canaries,all five mutations per mode
+  detected. Result `99b4e8a4d042d9c43c707dfb533cf1481494b7aae983a6df0ef9950602c2a308`;
+  receipt `7ad607005a37b34e46d5a64a1fc4e37fcd142c476558f915fc38b2fe4d33df72`.
+  Final inverse output/normalization/equations NOT checked/promoted. Inherited
+  approved039 live-header difference rehashed;not a complete M0 build.
+- PRESEAL `2c6f5bcbf10173e34f485a67c482b5b67ee9482bdd63b78bd988f02f76e9a27b`
+  rechecks all8062 predecessor pins. Dedicated044 seal/verify tool:
+  `44d1f5a87fd906e274766afa583dd539137fadbd39a37e6cc161db00bfde86b7`.
+- **POSTSEAL** `.build/levels_044/POSTSEAL.json`:
+  `658b3c3db1b31075ff233de3f972fedabddd16a7de74b06814824598dcf0c9d1`:
+  **8306 distinct pins/669 literal bindings**,no supersession/active job.
+- All nine directories/13 steps retained:six wholly accepted,three failed;
+  ten accepted/three rejected steps;max recorded cumulative RSS6057064KiB.
+  No interruption/unresolved job;limits unchanged. Traps243–247,complete
+  types and every failed snapshot/raw stream are in the pair.
+- Own source/evidence commits:`2afe59e6`,`f695c007`,`7da52b6c`,plus closing
+  pair/checkpoint commit. Foreign work/staging preserved. No push,review,
+  delegation,relay,migration,stages import or broad replay.
+
+## 24R. Resume B1.06 — reverse radix/first-root/normalization,THEN both equations
+
+1. Read source3/WORK_STATE,this checkpoint,the044 pair notes,EXECUTION_PLAN
+   B1.06 and `run2/notes/B1_STAGED_ROADMAP.md`. Acceptance NOT MET;B1.05 stays
+   closed;B1.07 waits. Preserve BATCH_015–044 and every earlier/failed byte.
+2. BEFORE edits/jobs,verify complete BATCH_015–044 closure from source3:
+
+   ```sh
+   mkdir -p .build/levels_045
+   python3 -B tools/keygen_public_inverse_batch.py verify 72d73ae91d473ea755e1b49469cf8052566a6876a94482dc991c2cacc38300ac 6563ce18c2c1c8609b7507cb3b51adbef59c5d9e48197c9a6793fff5492a5bc7 .build/levels_045/ENTRY_PINS_045.json
+   ```
+
+   Expect8306 pins/669 literal bindings,no supersession/job. Any mismatch
+   is stop-and-report,not silent repair or weakening of historical pins.
+3. Continue24.1 in unchanged16.1 order. Actual inverse tables/seed/full512
+   triples and SAME quotient binding are DONE. Start from `Outcome`'s actual
+   post-triple `Run` state,its explicit unnormalized image and retained
+   `remaining` source execution. Finish reverse stages/first-root/normalization
+   and final canonical h/physical evaluations;ONLY THEN fInv and BOTH
+   SAME-material equations. No correctness/output-image/round-trip premise.
+4. Unique guarded `keygen_public_*_045_*` jobs from001;pair⇒job convention,
+   one serial proof job,unchanged limits,clean0/0 streams,Sage preparser,
+   durable runtime,bounded definitions/pieces,all attempts retained. Use
+   background completion for potentially longer guarded jobs. Small local
+   own commits;one expanded midpoint or Acceptance per window. No automatic
+   push/review/delegation/relay/migration/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.06 successful tests/division at actual inverse entry
 
 **PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**
