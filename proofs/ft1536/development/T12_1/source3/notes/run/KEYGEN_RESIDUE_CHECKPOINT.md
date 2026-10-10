@@ -1,3 +1,104 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.07 attempt-spine midpoint
+
+**B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
+**Package: IN_PROGRESS / WORKING_NOT_FROZEN.**
+2026-10-10,BATCH_056,MiMo V2.6 Pro (`xiaomi-token-plan-ams`).
+**CLOSED_AT_RECOVERABLE_MIDPOINT.** Exactly one close this window.
+B1.05/032 and B1.06/046 unchanged;B1.08/B4/B5 NOT entered.
+Handoff:**36R**. Exact types/pins/traps:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_056_NOTES.md`.
+
+## 36. Closed — the attempt-level spine: six gates on ONE AttemptExec
+
+1. All six gates are bound on ONE `AttemptExec` derivation of a single
+   accepted attempt (`KeygenMakeAttemptSpine`): `accepted_spine` extracts the
+   six-gate spine (f/g sampler calls + resultant gate, raw and orthogonal
+   FPEMU norm bodies, public computation, NTRU solver, mandatory leaf
+   certificate at the accepted break) from ONE derivation; every other edge
+   is impossible on the accepted break (early five-gate rejection,
+   certificate-rejected loop edge, unprofiled skip via the pinned `Profile`
+   from `Dimensions`, normal fallthrough).
+2. The entry facts are derived FROM THE ALLOCATION: `entry_of_allocation`
+   derives `Initial` and the loop-entry `Remaining 0` of the first attempt
+   from the pinned already-ready prologue over the fresh six-array
+   `Declarations` allocation; `root_legal_prepared`/`context_norm_prepared`/
+   `context_public_prepared` lift them to the actual prepared gate state and
+   `entry_from_prepared` supplies the attempt `Entry`.
+3. `spine_witness`/`attempt_spine` compose the pinned witness exports on the
+   SAME physical f/g/F/G/h arrays of that single derivation: gates 1-3 the
+   sampled material, gate 4 the 046 public equations on the actual caller
+   arrays, gate 5 the exact integer NTRU equation through the solver-call h
+   frame, gate 6 the certificate frame — landing `Witness` at the
+   certificate-entry state and `EncodingInputs` at the accepted-break state,
+   the encoding-tail input boundary. The residual explicit local inputs of
+   the witness class (`EntryFacts`: legalF/legalG/legalH, hTables,
+   hProtected, material-block separations; plus the `LegalWorkspace`
+   residual) stay named, to be discharged from allocation freshness at the
+   statement-machine step.
+4. Entry pins 015–055 **11570 pins/200 interface bindings** verified with
+   the sealed 055 pair (`47406731…`/`a2fdf0ee…`) into
+   `.build/levels_056/ENTRY_PINS_056.json` (`ad607f64…`). One proof+audit
+   0/0: **93 entries=22 new+71 inherited;69 complete terms+24 kernel
+   inductives;standard axioms/zero elisions**. Native Sage scripted PUBLIC
+   controls: 5 families×4 mutations, all detected (EXPLICIT MOCKS; the
+   transcription reads the reference C; no real KeyGen/solver/certificate/
+   codec, no law claim). Retained: two rejected elaboration snapshots (seven
+   then six type/rewriting errors) and one Sage run (mutation convention
+   doubled-negated in one family; material written-set wrong in another) —
+   all with sealed causes; limits unchanged. Own commits `956075b0`,
+   `65a053a8`,`fc566013` + closing pair. Sealed pair
+   `9704cfff…`/`4ca62477…`. The 051-window `KeygenMakeCertAudit.lean`
+   git/pin anomaly was resolved before this window by the owner-signal
+   provenance commit `c0e26975`; pinned bytes unchanged.
+
+### 36.1 Exact exports and remaining B1.07 obligations
+
+The discharge chain is now: one accepted `AttemptExec` derivation → six-gate
+spine → allocation-derived entry facts at the gate state → public material
+(gate 4) → accepted solver call with the h frame (gate 5) → ONE material
+with both equations → certificate frame (gate 6) → encoding-tail input
+boundary. Two gaps remain honest and named: (a) the retry-frame item — the
+solver-call h frame on the REJECTED edges (partial output-gate writes), the
+`Initial`/legal/static transport for every retry instance (the per-retry
+transport of `entry_of_allocation`), general typed execution, every later
+return and the gate-time `ReadTmp` tie, with the loop-trace chronology
+transport staying at the gate level; (b) the statement-machine extraction —
+tying the C call site `(fpr *)fk->tmp` to `ExecAt` (temp_size body,
+`falcon_keygen_new` prologue, the gate call), the actual globals/common call
+ID/snapshots composition and the b-not-1/2 side condition of the pinned
+transport; that step also discharges the residual h-side/material-block/
+workspace inputs of `EntryFacts` from allocation freshness. The witness
+still reaches only the encoding-tail INPUT boundary — the tail's codec
+bodies (B1.08/09), the whole enclosing invocation to the actual encoding
+call sites, the output-capacity events and the complete teardown are not
+executed here. These are missing source composition proofs, NOT C/numerical
+counterexamples. Acceptance NOT met; Codecs B1.08/09 and B4/B5 laws stay
+outside.
+
+## 36R. Handoff — continue B1.07 AFTER the attempt spine,NOT from acceptance
+
+1. This window is CLOSED at exactly one recoverable midpoint,NOT Acceptance.
+   Do not auto-restart or enter B1.08/B4/B5. Preserve BATCH_015–056 and all
+   earlier/failed bytes. Next owner-started window continues in36.1 order.
+2. BEFORE edits/jobs:
+   ```sh
+   mkdir -p .build/levels_057
+   python3 -B tools/keygen_make_attempt_spine_batch.py verify <BATCH_056.json sha> <BATCH_056_NOTES.md sha> .build/levels_057/ENTRY_PINS_057.json
+   ```
+   with the sealed056 pair (`9704cfff…`/`4ca62477…`). Expect the pinned
+   BATCH_015–056 set and no supersession/job. Mismatch is stop-and-report,
+   not silent repair.
+3. Use NEW modules;preserve056 sources/products. The attempt spine now
+   lives in `KeygenMakeAttemptSpine`; do not re-derive it by assumption. The
+   remaining honest gaps are the retry frames/rejected edges (then the
+   statement-machine extraction with the residual discharge); never insert
+   certificate outcomes, an equation or a scratch-block0 fact as premises.
+   Inspect actual types before composing.
+4. One owner-started stage/window, one Acceptance or expanded midpoint,
+   bounded serial guarded jobs, unchanged limits/0/0 logs/native Sage.
+   Small local exact-path commits;push only on explicit owner signal;no
+   automatic review/delegation/relay/migration/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.07 one-material witness midpoint
 
 **B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
