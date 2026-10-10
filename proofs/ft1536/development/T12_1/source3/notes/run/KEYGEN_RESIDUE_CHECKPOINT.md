@@ -1,3 +1,111 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.07 certificate-execution transport midpoint
+
+**B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
+**Package: IN_PROGRESS / WORKING_NOT_FROZEN.**
+2026-10-10,BATCH_054,MiMo V2.6 Pro (`xiaomi-token-plan-ams`).
+**CLOSED_AT_RECOVERABLE_MIDPOINT.** Exactly one close this window.
+B1.05/032 and B1.06/046 unchanged;B1.08/B4/B5 NOT entered.
+Handoff:**34R**. Exact types/pins/traps:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_054_NOTES.md`.
+
+## 34. Closed — the certificate `Exec` transported across the relocation
+
+1. The pinned certificate machine is block0-based (workspace view
+   `CertificateAfterConversion.workspacePointer`, automatic flag object
+   `C99Automatic32`, block0 `resolveLayout` aliases), so the machine run
+   against the general `fk->tmp` scratch at block b is exactly the
+   sigma=`swapBlock b` conjugate: `ExecAt b` has the workspace reads hitting
+   actual block b, the material pointers hitting the actual coefficient
+   blocks and the flag object appended to the scratch block. `ExecAt 0` is
+   the pinned execution and `ExecAt b (swapArgs b …)` is its involution
+   (`execAt_zero`, `execAt_swap`).
+2. `CertBindAt b` is IDENTICAL to the canonical relocated binding
+   (`certBindAt_iff`, both directions): caller cells transport under the
+   transposition (`cells_swap`, with `swapState`/`relocateCtx`/`swapArgs`
+   involutions) and the workspace bridge is one equality read in the two
+   worlds (`workspaceAt_iff`). `CallAt`/`CertificateGateAt` are the
+   relocated call/gate whose body is `ExecAt`; `callAt_run` packages an
+   actual-world binding and relativized body into the actual-world call, and
+   the gate edges transport back (`gateAt_flow`, `gateAt_no_normal`,
+   `accepted_break_requires_callAt`, `retry_requires_callAt`, profile read
+   in the actual world).
+3. All conclusion predicates read ACTUAL-WORLD bytes: `StoredBoundsAt`
+   (768 fpr words at the transported leaves slots of the scratch block),
+   `CallerFrameAt` (frame condition sigma-renamed; block b carries block0's
+   workspace/automatic role), `DeadAt` (flag object at `pointerAt` appended
+   to the scratch block) and `LegalAt`/`SpaceAt`/`layoutAt`, each with its
+   transport iff back to the pinned predicates; `wordRead_at_load64` links
+   physical block-b loads to the encoded word view and
+   `foreign_block_retained_at`/`workspace_block_retained_at` give the
+   actual-world byte retention. The M0 `Pinned` environment realizes in the
+   relocated world (`pinned_swap`) while the transposition leaves the static
+   table blocks alone.
+4. `accepted_package_at` consumes the allocation `Binding` and the
+   transported call into `AcceptedPackageAt` with NO bridge, NO shape, NO
+   scratch-legality and NO scratch-block input. Entry pins 015–053
+   **11377 pins/159 interface bindings** verified with the sealed 053 pair
+   (`bad72417…`/`84f1413c…`) into `.build/levels_054/ENTRY_PINS_054.json`
+   (`ebd30e83…`). One proof+audit 0/0: **150 entries=66 new+84 inherited;
+   132 complete terms+18 kernel inductives;standard axioms/zero elisions**.
+   Native Sage scripted PUBLIC controls: 5 families×4 mutations, all
+   detected (EXPLICIT MOCKS; certificate-call transcription reads the
+   reference C; no real KeyGen/solver/certificate/codec, no law claim).
+   Retained: one pre-step guard abort (a foreign Lean process from another
+   work directory was active at preflight), two rejected elaboration
+   snapshots and two Sage runs (relative reference path; three
+   check-definition defects in the controls) — all with sealed causes;
+   limits unchanged. Own commits `fefa20e7`,`7b3f96fc`,`765a8bd2` + closing
+   pair. Sealed pair `922f51b3…`/`26261221…`.
+
+### 34.1 Exact exports and remaining B1.07 obligations
+
+The discharge chain is now: allocation execution (`Binding`) → derived
+`Shape`/legality → bridge discharged by relocation → certificate `Exec`
+transported (`ExecAt`) → accepted package read in actual-world scratch-block
+bytes. Two gaps remain honest and named: (a) `ExecAt` is the model-level
+transport of the pinned machine; tying the C call site `(fpr *)fk->tmp` to
+it is the statement-machine extraction (`temp_size` body,
+`falcon_keygen_new` prologue, the gate call), and the M0 pinned transport
+and frame corollaries carry the side condition that the transposition keeps
+the static table blocks (b not 1/2), to be discharged from allocation
+freshness there; (b) the full six-gate chronology is transported at the
+gate level; the loop-trace transport (`Sampled`/`Remaining`) and the SAME
+h/equation material witness are not done.
+
+Remaining, in unchanged plan order: (1) SAME h/equations on one material
+witness incl. the solver-call h frame and accepted physical f/g/F/G/h
+through the encoding tail; (2) Initial/legal/static retry frames, whole
+enclosing invocation/each later return and the gate-time `ReadTmp` tie, with
+the loop-trace chronology transport; (3) statement-machine extraction of the
+call/allocation binding and actual globals/common call ID/snapshots
+composition. These are missing source composition proofs, NOT C/numerical
+counterexamples. Acceptance NOT met;Codecs B1.08/09 and B4/B5 laws stay
+outside.
+
+## 34R. Handoff — continue B1.07 AFTER the Exec transport,NOT from acceptance
+
+1. This window is CLOSED at exactly one recoverable midpoint,NOT Acceptance.
+   Do not auto-restart or enter B1.08/B4/B5. Preserve BATCH_015–054 and all
+   earlier/failed bytes. Next owner-started window continues in34.1 order.
+2. BEFORE edits/jobs:
+   ```sh
+   mkdir -p .build/levels_055
+   python3 -B tools/keygen_make_cert_relocation_batch.py verify <BATCH_054.json sha> <BATCH_054_NOTES.md sha> .build/levels_055/ENTRY_PINS_055.json
+   ```
+   with the sealed054 pair (`922f51b3…`/`26261221…`). Expect the pinned
+   BATCH_015–054 set and no supersession/job. Mismatch is stop-and-report,
+   not silent repair.
+3. Use NEW modules;preserve054 sources/products. The certificate execution
+   transport now lives in `KeygenMakeCertRelocation`; do not re-derive it by
+   assumption. The remaining honest gap is the SAME h/equation material
+   witness on actual-world bytes (and later the statement-machine
+   extraction); never insert certificate outcomes or a scratch-block0 fact
+   as premises. Inspect actual types before composing.
+4. One owner-started stage/window, one Acceptance or expanded midpoint,
+   bounded serial guarded jobs, unchanged limits/0/0 logs/native Sage.
+   Small local exact-path commits;push only on explicit owner signal;no
+   automatic review/delegation/relay/migration/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.07 shape extraction / allocation binding midpoint
 
 **B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
