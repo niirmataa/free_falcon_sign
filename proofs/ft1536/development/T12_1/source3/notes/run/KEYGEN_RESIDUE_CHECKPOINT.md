@@ -1,3 +1,99 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.07 workspace relocation / bridge discharge midpoint
+
+**B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
+**Package: IN_PROGRESS / WORKING_NOT_FROZEN.**
+2026-10-10,BATCH_052,MiMo V2.6 Pro (`xiaomi-token-plan-ams`).
+**CLOSED_AT_RECOVERABLE_MIDPOINT.** Exactly one close this window.
+B1.05/032 and B1.06/046 unchanged;B1.08/B4/B5 NOT entered.
+Handoff:**32R**. Exact types/pins/traps:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_052_NOTES.md`.
+
+## 32. Closed — workspace relocation, the bridge from source facts, the extent witness
+
+1. The block transposition (`swapBlock`/`swap`/`swapPtr`) moves the general
+   `fk->tmp` scratch descriptor into the certificate model's block0 and is an
+   isomorphism of the byte machine: `Allocated`, `Load64/32`, `Store64/32`,
+   `Memcpy`, `Initialized`, `Preserves`, `Steps` are preserved AND reflected.
+   The bridge is now characterized componentwise (`bridge_iff`:
+   block0 + `args.base=offset` + `extent/8=35840`), and after relocation the
+   block condition is DERIVED (`relocated_scratch_block`), so the bridge
+   becomes exactly the extent condition (`bridge_relocated`).
+2. `CertBind` is assembled from the caller cell bindings plus source facts:
+   `Cells` + `Shape` (+ block0 or its relocation derivation) construct the
+   full binding with the workspace bridge DERIVED (`cert_bind_of_source`);
+   `cert_bind_relocated` constructs it in the canonical relocated world with
+   NO bridge input. State/context/argument relocation transports `Bound`,
+   `ObjectLegal`, `PointerLegal`, `ReadTmp`, all cells; `pointerWord` is
+   relocation invariant. `LegalWorkspace`/`CertificateFrameEntry.Legal` are
+   derived from the same facts; `accepted_certificate_source` consumes the
+   accepted package with the bridge discharged.
+3. The M0 table-block inversion (OPEN in051) is closed with clean logs: the
+   pinned `FftGlobalMemory.tables` dispatch puts the static tables exactly in
+   blocks 1,2 (`tables_block`, split inversion); `TablesOutside` follows for
+   every other block and `CallerFrame` is consumed on any live foreign block
+   (`foreign_block_retained`, `workspace_block_retained`).
+4. The workspace extent witness: pinned `temp_size` reservation block,
+   candidate assignments, fold/return and the `fk->tmp_len`/`malloc` lines;
+   the candidate mirror at (logn=10,ternary=1) has 60 candidates and the
+   kernel facts hold (`decide +kernel`): certificate candidate member, all
+   candidates bounded by it, fold-max equals it and `CertificateWorkspace.bytes`
+   = 286720 (`reservation_matches_workspace`). Mirror transcription pinned
+   line-by-line and checked by the Sage control against `Extra/c`.
+5. Entry pins015–051 **11149 pins/126 literal bindings** (`bd2d5a2d…`);
+   four proofs+audit0/0:**182 entries=127 new+55 inherited;166 complete
+   terms+16 kernel inductives;standard axioms/zero elisions**. Native Sage
+   scripted PUBLIC controls:4 families×9 mutations, all detected (EXPLICIT
+   MOCKS; temp_size transcription reads the reference C; no real KeyGen/
+   solver/certificate/codec, no law claim). All failed snapshots retained
+   (9 FAILED_RETAINED with sealed causes);limits unchanged. Own commits
+   `3187db38`,`bd4f8034`,`57afe678`,`a8b5c226` + closing pair. Sealed pair
+   `3d50a4d3…`/`e0f9e0e5…`.
+
+### 32.1 Exact exports and remaining B1.07 obligations
+
+The discharge chain is now: source facts (`Cells`,`Shape`) → derived
+`CertBind` (no bridge input) → pinned accepted package consumption. Two
+inputs remain honest and named: (a) `Shape` (extent/alignment) is still an
+explicit allocation-shape input; the reservation arithmetic is exact but the
+facts are not yet extracted from the enclosing allocation execution; (b) the
+certificate execution `Call`/`Exec` is NOT yet transported across the block
+relocation (or re-derived in a generalized layout), so the six-gate
+composition still runs where the block0 bridge holds.
+
+Remaining, in unchanged plan order: (1) derive `Shape`/scratch-block from
+source execution (temp_size + fk->tmp malloc binding) and transport or
+re-derive the certificate body across the relocation; (2) SAME h/equations on
+one material witness incl. the solver-call h frame and accepted physical
+f/g/F/G/h through the encoding tail; (3) Initial/legal/static retry frames
+and whole enclosing invocation/each later return; (4) actual globals/common
+call ID/snapshots composition. These are missing source composition proofs,
+NOT C/numerical counterexamples. Acceptance NOT met;Codecs B1.08/09 and
+B4/B5 laws stay outside.
+
+## 32R. Handoff — continue B1.07 AFTER workspace relocation,NOT from acceptance
+
+1. This window is CLOSED at exactly one recoverable midpoint,NOT Acceptance.
+   Do not auto-restart or enter B1.08/B4/B5. Preserve BATCH_015–052 and all
+   earlier/failed bytes. Next owner-started window continues in32.1 order.
+2. BEFORE edits/jobs:
+   ```sh
+   mkdir -p .build/levels_053
+   python3 -B tools/keygen_make_workspace_batch.py verify <BATCH_052.json sha> <BATCH_052_NOTES.md sha> .build/levels_053/ENTRY_PINS_053.json
+   ```
+   with the sealed052 pair (`3d50a4d3…`/`e0f9e0e5…`). Expect the pinned
+   BATCH_015–052 set and no supersession/job. Mismatch is stop-and-report,
+   not silent repair.
+3. Use NEW modules;preserve052 sources/products. The bridge derivation now
+   lives in `KeygenMakeWorkspaceRelocation`/`KeygenMakeWorkspaceBridge`; do
+   not re-derive it by assumption. The two remaining inputs (`Shape` from
+   allocation execution, `Exec` transport across the relocation) are the
+   honest gap;never insert certificate outcomes or a scratch-block0 fact as
+   premises. Inspect actual types before composing.
+4. One owner-started stage/window, one Acceptance or expanded midpoint,
+   bounded serial guarded jobs, unchanged limits/0/0 logs/native Sage.
+   Small local exact-path commits;push only on explicit owner signal;no
+   automatic review/delegation/relay/migration/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.07 sixth certificate gate / retries midpoint
 
 **B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**

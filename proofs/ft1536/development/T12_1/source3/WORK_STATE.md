@@ -1,5 +1,35 @@
 # T12.1/source3 — żywy stan
 
+## B1.07 — CLOSED at workspace-relocation midpoint — 2026-10-10
+
+**CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
+**B1.07 Acceptance NOT MET; package IN_PROGRESS / WORKING_NOT_FROZEN.**
+Exactly one close in BATCH_052,MiMo V2.6 Pro. Resume:**32R**.
+
+Workspace relocation closes plan item 1: the block transposition is a byte-
+machine isomorphism (Allocated/Load/Store/Memcpy/Initialized/Preserves/Steps,
+iff); the bridge is componentwise (`block0 + base=offset + extent/8=35840`)
+and after relocation its block condition is DERIVED, leaving exactly the
+extent condition. `CertBind` is assembled from caller cells + source facts
+with NO bridge input (`cert_bind_relocated` in the canonical relocated
+world); LegalWorkspace/FrameEntry legality derive from the same facts; the
+accepted package is consumed with the bridge discharged. The M0 table-block
+inversion (blocks 1,2) is closed with clean logs and consumed by the same-
+block `CallerFrame` frame on foreign blocks. The pinned `temp_size`
+reservation equals `CertificateWorkspace.bytes` = 286720 =35840 fpr words;
+all 60 mirrored candidates bounded by it (decide +kernel), transcription
+pinned + Sage-checked against Extra/c. Honest gap: `Shape` (extent/align)
+still an allocation-shape INPUT (not yet extracted from the enclosing
+allocation execution) and the certificate `Exec`/`Call` is NOT yet
+transported across the relocation. Sage controls 4×9 all detected (explicit
+mocks). Entry11149 pins (`bd2d5a2d…`); audit 182=127 new+55 inherited,166
+full terms+16 inductives, standard axioms/0 elisions. Sealed pair
+`3d50a4d3…`/`e0f9e0e5…`; attempts 16 = 7 accepted+9 failed retained (causes
+sealed). Own commits `3187db38`,`bd4f8034`,`57afe678`,`a8b5c226` + closing
+pair. NO push/review/delegation/relay/migration/import. Window CLOSED once,
+not auto-resumed.
+
+
 ## B1.07 — CLOSED at sixth-certificate-gate midpoint — 2026-10-10
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
