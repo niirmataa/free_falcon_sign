@@ -11,6 +11,20 @@ Główne twierdzenie dotyczy rzeczywistego prawa kluczy FT1536; jednolity
 all-h certyfikat jest silniejszym celem pomocniczym, nadal OPEN.
 Nie uznano h=0 ani warunkowego budżetu MARGINAL-006 za końcowy wynik.
 
+**Najnowszy wynik: [SAMPLER-007](notes/SAMPLER_007.tex).** Wykonalny sampler
+„wektor przed wyzwaniem”, z zerową parą po cap80 i świeżym sześcianem po
+cap196. Każda gałąź jest rozliczona w dominacji punktowej. Tekstowo `J≪P`
+dla każdego h; pełny moment `e<2^-44` **pod jawnym warunkiem masy włókien (M)**.
+Podano wystarczający warunek dokładnej bazy/LDL i dowód tekstowy (M).
+**Świadek dla rzeczywistego emitted KeyGen pozostaje OPEN**, podobnie all-h.
+Sage512/768 i dokładny crosscheck zakończone; brak nowego kernela.
+
+[Tabela nazw ROM↔QROM i nonce](notes/ROM_QROM_ASSUMPTIONS_001.tex)
+wiąże A1/A2/CompPRGBound z Q-MODEL/A-QMT/Q-PRG bez zmiany statusów ROM.
+Nonce pozostaje 40-bajtowy (`2^320`); klasyczny wzór kolizyjny jest zgodny,
+a koszt reprogramowania QROM nadal wymaga osobnego dowodu. Docelowa deklaracja
+EUF-CMA w QROM pozostaje brzmieniem **po domknięciu świadków**, nie wynikiem 007.
+
 [Przegląd drugiego okna](notes/REVIEW_006_001.tex): piny zgodne, świeży
 replay skorygowanych 005 i 006 odtworzył certyfikaty 512-bitowe bajt w bajt;
 230 dodatkowych dokładnych praw sprawdziło rachunek mieszanki capu.
@@ -50,9 +64,10 @@ Nie nadpisujemy prób. [Handoff 004](notes/SAMPLER_004_HANDOFF.json),
 |---|---|
 | Algebra pojedynczej ekstrakcji, rachunek pełnego Sign, kierunkowy moment J/P | Zachowane w dokładnym dotychczasowym zakresie |
 | Wspólna kontynuacja i kompozycja w grach programowanych | Dowód tekstowy warunkowy, CONTINUATION-002 |
-| Wykonalny publiczny sampler pełnej odpowiedzi, również porażek | SAMPLER-003 wykonany; TV do modelowego publicJoint <2^-90, dowód transferu tekstowy |
-| Absolutna ciągłość J względem uczciwego P | Tekstowy argument nośnika, także dla terminalnego none; formal source binding OPEN |
-| Certyfikat `ΣJ²/P≤1+e`, z użytecznym e | SAMPLER-004 naprawia h=0: tekstowy dowód pełnego momentu e<2^-50. Cel dla wszystkich h nadal OPEN; ograniczenie e>1/8 dotyczy starego kandydata 003 |
+| Wykonalny publiczny sampler pełnej odpowiedzi, również porażek | SAMPLER-007 wykonany; capy par/wektora rozliczone przez dodatnie fallbacki. `J(none)=0` jawnie, uczciwe porażki pozostają w P. Koszt w receipcie |
+| Absolutna ciągłość J względem uczciwego P | SAMPLER-007: tekstowy argument dla każdego h; każde wyjście ma dodatni zaakceptowany atom uczciwego włókna. Formal source binding OPEN |
+| Certyfikat `ΣJ²/P≤1+e`, z użytecznym e | 007: tekstowe `e<2^-44` pod (M); świadek (M) dla emitted KeyGen OPEN. 004 zachowuje osobny wynik h=0 `e<2^-50`. Cel all-h OPEN; przeszkoda 003 zachowana |
+| Dokładna baza/LDL → masa wszystkich włókien przy trzech temperaturach | 007: nowy dowód tekstowy; dokładne pivotsy ≤q²/991 są wystarczające. Source→basis/atom/LDL oraz kernelizacja OPEN |
 | Kernelizacja h=0: `J≪P` i moment | **OPEN, obowiązek jawny:** przenieść SAMPLER-004 do Lean z czystymi logami; etykieta **textual** pozostaje. Szkic DyadicObstruction również nie ma potwierdzonego kernela |
 | Normalizator reszty `Z₁(r)` i odwrotność, także `r=c−hz₂` | NORMALIZER-005: textual, jednolity względny przedział <2^-356; błąd TV samych kategorii przez cap16 <2^-236. Nie jest to TV do uczciwego P |
 | Pełny normalizator `Z_h,c`, odwrotność i błędy uproszczeń | NORMALIZER-005: h=1,c=0, balls512/768; względne szerokości <2^-180 i TV zerowego aliasu przez cap16 <2^-180. Efektywna kontrakcja dla wszystkich h,c **OPEN** |
@@ -62,7 +77,7 @@ Nie nadpisujemy prób. [Handoff 004](notes/SAMPLER_004_HANDOFF.json),
 | Dokładny UniformChallengeAt z ustalonej taśmy uczciwych bitów | Niemożliwy: masy dyadyczne, moduł 18433 nie dzieli 2^bits; nie zmieniono przesłanek głównej linii |
 | Klasyczny log hasza | Wymaga nowej semantyki QROM |
 | Osadzenie `q_H+1` celów | Wymaga nowej konstrukcji Q-TARGET i straty |
-| Klasyczna strata kolizyjna | Wymaga osobnego rachunku reprogramowania |
+| Klasyczna strata kolizyjna | Zgodna przestrzeń nonce `256^40=2^320` i wzór ROM; nowy rachunek reprogramowania QROM OPEN |
 | Rzeczywiste prawo Sign i wszystkie wyjścia API | Otwarty bridge źródłowy |
 | Kwantowy PRG/seed, publiczny SHAKE/H2P (S04), zasoby reduktora | Osobne otwarte przesłanki |
 
@@ -159,7 +174,7 @@ Następny krok: kontrolować lub losować marginalne prawo
 samplera włókna. **Q-JOINT-INSTANCE dla wszystkich h pozostaje OPEN**;
 kernelizacja h=0 jest osobnym, nadal otwartym obowiązkiem.
 
-## Najnowszy krok — MARGINAL-006 i kolekcja obstructions
+## Checkpoint — MARGINAL-006 i kolekcja obstructions
 
 [Nowy dowód prawa capów i momentu](notes/MARGINAL_006.tex),
 [rachunek Sage](notes/MARGINAL_006.sage),
@@ -200,3 +215,24 @@ capu pozostaje **OPEN / textual**.
 README jest żywym stanem. Historyczne manifesty, które pinowały README,
 weryfikujemy względem ich commitów (003: `0a6999d7`). Nowe manifesty
 pinują wyłącznie pliki wynikowe checkpointu.
+
+## Checkpoint — SAMPLER-007 i tabela założeń
+
+[Dowód](notes/SAMPLER_007.tex), [algorytm Sage](notes/VECTOR_FIRST_007.sage),
+[certyfikat512](notes/SAMPLER_007_CERTIFICATE.json),
+[certyfikat768](notes/SAMPLER_007_CERTIFICATE_768.json),
+[porównanie dokładne](notes/SAMPLER_007_CROSSCHECK.json),
+[koszt i historia prób](notes/SAMPLER_007_RECEIPT.json),
+[checkpoint z mapą murów](notes/SAMPLER_007_CHECKPOINT.md).
+
+Najwyżej 24 084 480 propozycji par i 24 662 538 240 bitów na odpowiedź,
+z czytaniem leniwym i skończoną prekomputacją tablic. To jawny limit algorytmu,
+nie certyfikat czasu maszynowego reduktora. Trzy syntetyczne wykonania,
+rzeczywiste capy, 27 dokładnych małych praw i dwie precyzje nie zastępują
+warunku o prawie kluczy. Źródła pierwszej wersji capów i nieudanego zapisu
+JSON checkera zachowano wraz z przyczynami; runtime jest w `.build/sampler_007/`.
+
+**Co dalej:** wykazać źródłowy świadek dokładnej bazy/atomów/LDL dla całego
+wymaganego nośnika emitted KeyGen, potem kernelizować (M) i pełny moment.
+Pozostałe mury QROM nie zmieniły statusu. W szczególności 007 nie zamyka
+Q-SAMPLER dla FT1536, Q-BIND, Q-COLL ani całej deklaracji bezpieczeństwa.

@@ -1,0 +1,839 @@
+{
+  "id": "S05_SAMPLER_007",
+  "status": "CONDITIONAL_TEXTUAL_FULL_MOMENT_WITH_EXECUTABLE_SAMPLER",
+  "base_commit": "a3c1181bb212e97aa43c3b8281aa33625f0396b2",
+  "input_pins_verified": {
+    "small_files_current_and_base": 18,
+    "large_inputs": 2
+  },
+  "scope": {
+    "algorithm": "finite independent ideal bits; complete pair and vector fallback law",
+    "absolute_continuity": "textual all-h in coefficient model",
+    "second_moment": "textual e<2^-44 conditional on all-c three-temperature key mass witness",
+    "emitted_KeyGen_mass_witness": "OPEN",
+    "kernel": "NO NEW KERNEL",
+    "independent_project_review": "NOT PERFORMED",
+    "QROM_security_declaration": "NOT AVAILABLE"
+  },
+  "cost": {
+    "pair_cap": 80,
+    "vector_cap": 196,
+    "worst_pair_proposals": "24084480",
+    "worst_random_bits": "24662538240",
+    "machine_bit_cost_certificate": false
+  },
+  "cost_additions": {
+    "coordinate_proposals": "two 384-bit modulo operations with modulus below 2^271; two binary searches of at most 15 comparisons; 256-bit acceptance comparison",
+    "norms": "at most 196 sums of 1536 A2 blocks",
+    "syndrome": "one schoolbook ring multiplication, at most 1536^2 field products, polynomial reduction and addition",
+    "precomputation": "pinned PUBLIC_SAMPLER.sage; 30721 weights and 61441 thresholds; table generation is not a zero-cost oracle",
+    "table_json_bytes": 4818845,
+    "streaming_randomness": true,
+    "production_benchmark": false,
+    "whole_reducer_resources": "OPEN"
+  },
+  "successful_run_manifests": [
+    {
+      "schema_version": 2,
+      "claim_id": "S05_VECTOR_FIRST_007",
+      "repository": {
+        "commit": "a3c1181bb212e97aa43c3b8281aa33625f0396b2",
+        "dirty": true
+      },
+      "command": [
+        "sage",
+        "notes/VECTOR_FIRST_007.sage",
+        ".build/sampler_007/runs/tuned_512",
+        ".build/sampler_007/inputs/tables.json",
+        ".build/sampler_007/inputs/pair_certificate.json",
+        "512"
+      ],
+      "environment": {
+        "software": [
+          {
+            "name": "runner-python",
+            "version": "3.13.5"
+          },
+          {
+            "name": "SageMath",
+            "version": "10.9"
+          }
+        ],
+        "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+      },
+      "mathematics": {
+        "assertion_tested": "Executable vector-first sampler with pair and cube fallbacks, pointwise approximation to bounded Gaussian, and conditional full joint second moment under the stated shifted-mass witness",
+        "coefficient_domain": "ZZ/QQ, RealBallField(512), GF(18433) polynomial quotient",
+        "conventions": "Finite box, sigma768, strict Q<B, tuned pair cap80, vector cap196, 10-bit cube fallback; both caps charged in pointwise density",
+        "inputs": [
+          "notes/VECTOR_FIRST_007.sage",
+          ".build/sampler_007/inputs/tables.json",
+          ".build/sampler_007/inputs/pair_certificate.json"
+        ],
+        "bounds": {
+          "precision": 512,
+          "theta_cutoff": 24576,
+          "synthetic_keys": 3,
+          "full_law_toy_cases": 27,
+          "pair_cap": 80,
+          "vector_cap": 196
+        },
+        "non_claims": [
+          "Shifted-mass witness not established for emitted KeyGen keys",
+          "No all-h small moment",
+          "No source binding, kernel, or security declaration"
+        ]
+      },
+      "randomness": {
+        "used": true,
+        "generator": "SHAKE-256 public synthetic labels; theorem uses ideal independent bits",
+        "seed": "FT1536-S05-VECTOR-FIRST-007-{zero,one,dense}"
+      },
+      "run": {
+        "started_at": "2026-10-10T17:37:40.668800+00:00",
+        "runtime_seconds": 7.339388,
+        "exit_status": 0,
+        "status": "completed",
+        "timeout_seconds": 300.0,
+        "max_output_bytes": 1048576,
+        "resource_limits": {
+          "memory_bytes": 4294967296,
+          "cpu_seconds": 270,
+          "max_cores": 1,
+          "max_threads": 1
+        },
+        "missing_results": [],
+        "invalid_results": []
+      },
+      "execution_artifacts": [
+        "notes/VECTOR_FIRST_007.sage",
+        ".build/sampler_007/inputs/tables.json",
+        ".build/sampler_007/inputs/pair_certificate.json"
+      ],
+      "input_artifacts": [
+        {
+          "path": "notes/VECTOR_FIRST_007.sage",
+          "sha256": "4071620401edda9e725b698db63a3b0dfd0f0cf1dbf9ba5652fe2ed701fa4d88",
+          "sha256_after": "4071620401edda9e725b698db63a3b0dfd0f0cf1dbf9ba5652fe2ed701fa4d88"
+        },
+        {
+          "path": ".build/sampler_007/inputs/tables.json",
+          "sha256": "f2dc9c34407a09c6305772fa8cf430668a56c5dfd6332228c06b74c40af54301",
+          "sha256_after": "f2dc9c34407a09c6305772fa8cf430668a56c5dfd6332228c06b74c40af54301"
+        },
+        {
+          "path": ".build/sampler_007/inputs/pair_certificate.json",
+          "sha256": "6237da29986da1148d2ae5ebb9f7c133f283b331206aec5b9ee14d7c91e76333",
+          "sha256_after": "6237da29986da1148d2ae5ebb9f7c133f283b331206aec5b9ee14d7c91e76333"
+        }
+      ],
+      "output_directory": ".build/sampler_007/runs/tuned_512",
+      "declared_results": [
+        ".build/sampler_007/runs/tuned_512/certificate.json",
+        ".build/sampler_007/runs/tuned_512/execution_checks.json"
+      ],
+      "outputs": [
+        {
+          "path": ".build/sampler_007/runs/tuned_512/stdout.txt",
+          "sha256": "fcc526c7eca30c97926e729093ad32af6be3968c068fb87645497522c3a1b4be",
+          "kind": "log"
+        },
+        {
+          "path": ".build/sampler_007/runs/tuned_512/stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "kind": "log"
+        },
+        {
+          "path": ".build/sampler_007/runs/tuned_512/certificate.json",
+          "sha256": "573651dc2372cd1d21ab83f0e609a8c416f0224acf6d89af3c4de279f18f4c5a",
+          "kind": "result"
+        },
+        {
+          "path": ".build/sampler_007/runs/tuned_512/execution_checks.json",
+          "sha256": "0fb97d5eb729925729fb780f49c3c44dd95c98096dab7843da4cc9a6a4deb742",
+          "kind": "result"
+        }
+      ],
+      "checks": [
+        {
+          "check": "input hashes unchanged",
+          "passed": true
+        },
+        {
+          "check": "process exited successfully within enforced limits",
+          "passed": true
+        },
+        {
+          "check": "declared result files are present and regular",
+          "passed": true
+        }
+      ],
+      "result": "Run completed; mathematical assertion requires interpretation and review.",
+      "residual_risks": [
+        "Command success does not establish the mathematical interpretation.",
+        "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+        "The thread cap uses conventional environment variables; a child program may ignore them.",
+        "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+      ]
+    },
+    {
+      "schema_version": 2,
+      "claim_id": "S05_VECTOR_FIRST_007",
+      "repository": {
+        "commit": "a3c1181bb212e97aa43c3b8281aa33625f0396b2",
+        "dirty": true
+      },
+      "command": [
+        "sage",
+        "notes/VECTOR_FIRST_007.sage",
+        ".build/sampler_007/runs/tuned_768",
+        ".build/sampler_007/inputs/tables.json",
+        ".build/sampler_007/inputs/pair_certificate.json",
+        "768"
+      ],
+      "environment": {
+        "software": [
+          {
+            "name": "runner-python",
+            "version": "3.13.5"
+          },
+          {
+            "name": "SageMath",
+            "version": "10.9"
+          }
+        ],
+        "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+      },
+      "mathematics": {
+        "assertion_tested": "Executable vector-first sampler with pair and cube fallbacks, pointwise approximation to bounded Gaussian, and conditional full joint second moment under the stated shifted-mass witness",
+        "coefficient_domain": "ZZ/QQ, RealBallField(768), GF(18433) polynomial quotient",
+        "conventions": "Finite box, sigma768, strict Q<B, tuned pair cap80, vector cap196, 10-bit cube fallback; both caps charged in pointwise density",
+        "inputs": [
+          "notes/VECTOR_FIRST_007.sage",
+          ".build/sampler_007/inputs/tables.json",
+          ".build/sampler_007/inputs/pair_certificate.json"
+        ],
+        "bounds": {
+          "precision": 768,
+          "theta_cutoff": 24576,
+          "synthetic_keys": 3,
+          "full_law_toy_cases": 27,
+          "pair_cap": 80,
+          "vector_cap": 196
+        },
+        "non_claims": [
+          "Shifted-mass witness not established for emitted KeyGen keys",
+          "No all-h small moment",
+          "No source binding, kernel, or security declaration"
+        ]
+      },
+      "randomness": {
+        "used": true,
+        "generator": "SHAKE-256 public synthetic labels; theorem uses ideal independent bits",
+        "seed": "FT1536-S05-VECTOR-FIRST-007-{zero,one,dense}"
+      },
+      "run": {
+        "started_at": "2026-10-10T17:40:10.826151+00:00",
+        "runtime_seconds": 2.424624,
+        "exit_status": 0,
+        "status": "completed",
+        "timeout_seconds": 300.0,
+        "max_output_bytes": 1048576,
+        "resource_limits": {
+          "memory_bytes": 4294967296,
+          "cpu_seconds": 270,
+          "max_cores": 1,
+          "max_threads": 1
+        },
+        "missing_results": [],
+        "invalid_results": []
+      },
+      "execution_artifacts": [
+        "notes/VECTOR_FIRST_007.sage",
+        ".build/sampler_007/inputs/tables.json",
+        ".build/sampler_007/inputs/pair_certificate.json"
+      ],
+      "input_artifacts": [
+        {
+          "path": "notes/VECTOR_FIRST_007.sage",
+          "sha256": "4071620401edda9e725b698db63a3b0dfd0f0cf1dbf9ba5652fe2ed701fa4d88",
+          "sha256_after": "4071620401edda9e725b698db63a3b0dfd0f0cf1dbf9ba5652fe2ed701fa4d88"
+        },
+        {
+          "path": ".build/sampler_007/inputs/tables.json",
+          "sha256": "f2dc9c34407a09c6305772fa8cf430668a56c5dfd6332228c06b74c40af54301",
+          "sha256_after": "f2dc9c34407a09c6305772fa8cf430668a56c5dfd6332228c06b74c40af54301"
+        },
+        {
+          "path": ".build/sampler_007/inputs/pair_certificate.json",
+          "sha256": "6237da29986da1148d2ae5ebb9f7c133f283b331206aec5b9ee14d7c91e76333",
+          "sha256_after": "6237da29986da1148d2ae5ebb9f7c133f283b331206aec5b9ee14d7c91e76333"
+        }
+      ],
+      "output_directory": ".build/sampler_007/runs/tuned_768",
+      "declared_results": [
+        ".build/sampler_007/runs/tuned_768/certificate.json",
+        ".build/sampler_007/runs/tuned_768/execution_checks.json"
+      ],
+      "outputs": [
+        {
+          "path": ".build/sampler_007/runs/tuned_768/stdout.txt",
+          "sha256": "fcc526c7eca30c97926e729093ad32af6be3968c068fb87645497522c3a1b4be",
+          "kind": "log"
+        },
+        {
+          "path": ".build/sampler_007/runs/tuned_768/stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "kind": "log"
+        },
+        {
+          "path": ".build/sampler_007/runs/tuned_768/certificate.json",
+          "sha256": "9b1984e4686e0bd9ba597ac63c12ac54114491e8cfc77b03c344a2fbe2ffb768",
+          "kind": "result"
+        },
+        {
+          "path": ".build/sampler_007/runs/tuned_768/execution_checks.json",
+          "sha256": "aa65019fd236b777622dfbf93172c59d8bb50329069bf8dc193a003604072371",
+          "kind": "result"
+        }
+      ],
+      "checks": [
+        {
+          "check": "input hashes unchanged",
+          "passed": true
+        },
+        {
+          "check": "process exited successfully within enforced limits",
+          "passed": true
+        },
+        {
+          "check": "declared result files are present and regular",
+          "passed": true
+        }
+      ],
+      "result": "Run completed; mathematical assertion requires interpretation and review.",
+      "residual_risks": [
+        "Command success does not establish the mathematical interpretation.",
+        "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+        "The thread cap uses conventional environment variables; a child program may ignore them.",
+        "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+      ]
+    },
+    {
+      "schema_version": 2,
+      "claim_id": "S05_SAMPLER_007_PRECISION_CROSSCHECK",
+      "repository": {
+        "commit": "a3c1181bb212e97aa43c3b8281aa33625f0396b2",
+        "dirty": true
+      },
+      "command": [
+        "sage",
+        "notes/SAMPLER_007_CROSSCHECK.sage",
+        ".build/sampler_007/runs/tuned_512/certificate.json",
+        ".build/sampler_007/runs/tuned_768/certificate.json",
+        ".build/sampler_007/runs/tuned_512/execution_checks.json",
+        ".build/sampler_007/runs/tuned_768/execution_checks.json",
+        ".build/sampler_007/runs/crosscheck_002/crosscheck.json"
+      ],
+      "environment": {
+        "software": [
+          {
+            "name": "runner-python",
+            "version": "3.13.5"
+          },
+          {
+            "name": "SageMath",
+            "version": "10.9"
+          }
+        ],
+        "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+      },
+      "mathematics": {
+        "assertion_tested": "Exact endpoint and threshold comparison; deterministic fixtures; no mass witness inferred",
+        "coefficient_domain": "ZZ/QQ",
+        "conventions": "Only underlying normalizer and global tail require interval overlap; upper bound constructions separately satisfy targets",
+        "inputs": [
+          "notes/SAMPLER_007_CROSSCHECK.sage",
+          ".build/sampler_007/runs/tuned_512/certificate.json",
+          ".build/sampler_007/runs/tuned_768/certificate.json",
+          ".build/sampler_007/runs/tuned_512/execution_checks.json",
+          ".build/sampler_007/runs/tuned_768/execution_checks.json"
+        ],
+        "bounds": {
+          "precisions": [
+            512,
+            768
+          ]
+        },
+        "non_claims": [
+          "No universal or source or kernel proof"
+        ]
+      },
+      "randomness": {
+        "used": false
+      },
+      "run": {
+        "started_at": "2026-10-10T17:44:52.803989+00:00",
+        "runtime_seconds": 9.888787,
+        "exit_status": 0,
+        "status": "completed",
+        "timeout_seconds": 60.0,
+        "max_output_bytes": 1048576,
+        "resource_limits": {
+          "memory_bytes": 2147483648,
+          "cpu_seconds": 45,
+          "max_cores": 1,
+          "max_threads": 1
+        },
+        "missing_results": [],
+        "invalid_results": []
+      },
+      "execution_artifacts": [
+        "notes/SAMPLER_007_CROSSCHECK.sage",
+        ".build/sampler_007/runs/tuned_512/certificate.json",
+        ".build/sampler_007/runs/tuned_768/certificate.json",
+        ".build/sampler_007/runs/tuned_512/execution_checks.json",
+        ".build/sampler_007/runs/tuned_768/execution_checks.json"
+      ],
+      "input_artifacts": [
+        {
+          "path": "notes/SAMPLER_007_CROSSCHECK.sage",
+          "sha256": "e6e1ecbb29dc09419f278627dea18f16a553cc4ef0d5503ccf822decb409016e",
+          "sha256_after": "e6e1ecbb29dc09419f278627dea18f16a553cc4ef0d5503ccf822decb409016e"
+        },
+        {
+          "path": ".build/sampler_007/runs/tuned_512/certificate.json",
+          "sha256": "573651dc2372cd1d21ab83f0e609a8c416f0224acf6d89af3c4de279f18f4c5a",
+          "sha256_after": "573651dc2372cd1d21ab83f0e609a8c416f0224acf6d89af3c4de279f18f4c5a"
+        },
+        {
+          "path": ".build/sampler_007/runs/tuned_768/certificate.json",
+          "sha256": "9b1984e4686e0bd9ba597ac63c12ac54114491e8cfc77b03c344a2fbe2ffb768",
+          "sha256_after": "9b1984e4686e0bd9ba597ac63c12ac54114491e8cfc77b03c344a2fbe2ffb768"
+        },
+        {
+          "path": ".build/sampler_007/runs/tuned_512/execution_checks.json",
+          "sha256": "0fb97d5eb729925729fb780f49c3c44dd95c98096dab7843da4cc9a6a4deb742",
+          "sha256_after": "0fb97d5eb729925729fb780f49c3c44dd95c98096dab7843da4cc9a6a4deb742"
+        },
+        {
+          "path": ".build/sampler_007/runs/tuned_768/execution_checks.json",
+          "sha256": "aa65019fd236b777622dfbf93172c59d8bb50329069bf8dc193a003604072371",
+          "sha256_after": "aa65019fd236b777622dfbf93172c59d8bb50329069bf8dc193a003604072371"
+        }
+      ],
+      "output_directory": ".build/sampler_007/runs/crosscheck_002",
+      "declared_results": [
+        ".build/sampler_007/runs/crosscheck_002/crosscheck.json"
+      ],
+      "outputs": [
+        {
+          "path": ".build/sampler_007/runs/crosscheck_002/stdout.txt",
+          "sha256": "17e0bae7e1252ef08385adb26d28b4eda5db2c338474bd64dfce4d08dbc5b0b0",
+          "kind": "log"
+        },
+        {
+          "path": ".build/sampler_007/runs/crosscheck_002/stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "kind": "log"
+        },
+        {
+          "path": ".build/sampler_007/runs/crosscheck_002/crosscheck.json",
+          "sha256": "12215bfdd4d0096115d323058ad532810e06f50e4324fee3b14f731d0bce81fc",
+          "kind": "result"
+        }
+      ],
+      "checks": [
+        {
+          "check": "input hashes unchanged",
+          "passed": true
+        },
+        {
+          "check": "process exited successfully within enforced limits",
+          "passed": true
+        },
+        {
+          "check": "declared result files are present and regular",
+          "passed": true
+        }
+      ],
+      "result": "Run completed; mathematical assertion requires interpretation and review.",
+      "residual_risks": [
+        "Command success does not establish the mathematical interpretation.",
+        "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+        "The thread cap uses conventional environment variables; a child program may ignore them.",
+        "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+      ]
+    }
+  ],
+  "manifest_validation": "validate_manifest.py --root S05_QROM: all three final manifests valid, inputs and outputs checked",
+  "result_copies": [
+    {
+      "path": "notes/SAMPLER_007_CERTIFICATE.json",
+      "sha256": "573651dc2372cd1d21ab83f0e609a8c416f0224acf6d89af3c4de279f18f4c5a",
+      "bytes": 10600
+    },
+    {
+      "path": "notes/SAMPLER_007_CERTIFICATE_768.json",
+      "sha256": "9b1984e4686e0bd9ba597ac63c12ac54114491e8cfc77b03c344a2fbe2ffb768",
+      "bytes": 14413
+    },
+    {
+      "path": "notes/SAMPLER_007_EXECUTION_CHECKS.json",
+      "sha256": "0fb97d5eb729925729fb780f49c3c44dd95c98096dab7843da4cc9a6a4deb742",
+      "bytes": 1364
+    },
+    {
+      "path": "notes/SAMPLER_007_EXECUTION_CHECKS_768.json",
+      "sha256": "aa65019fd236b777622dfbf93172c59d8bb50329069bf8dc193a003604072371",
+      "bytes": 1367
+    },
+    {
+      "path": "notes/SAMPLER_007_CROSSCHECK.json",
+      "sha256": "12215bfdd4d0096115d323058ad532810e06f50e4324fee3b14f731d0bce81fc",
+      "bytes": 844
+    }
+  ],
+  "retained_attempts": [
+    {
+      "kind": "valid earlier caps192/256; not a failure",
+      "source_copy": {
+        "path": "notes/attempts/VECTOR_FIRST_007_CAPS192_256.sage",
+        "sha256": "1826396418215af43ba51c9fa2d8585e8ec93d00e29cd4da425f851f98663ef6",
+        "bytes": 10393
+      },
+      "manifest": {
+        "schema_version": 2,
+        "claim_id": "S05_VECTOR_FIRST_007",
+        "repository": {
+          "commit": "a3c1181bb212e97aa43c3b8281aa33625f0396b2",
+          "dirty": true
+        },
+        "command": [
+          "sage",
+          "notes/VECTOR_FIRST_007.sage",
+          ".build/sampler_007/runs/attempt_001",
+          ".build/sampler_007/inputs/tables.json",
+          ".build/sampler_007/inputs/pair_certificate.json",
+          "512"
+        ],
+        "environment": {
+          "software": [
+            {
+              "name": "runner-python",
+              "version": "3.13.5"
+            },
+            {
+              "name": "SageMath",
+              "version": "10.9"
+            }
+          ],
+          "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+        },
+        "mathematics": {
+          "assertion_tested": "Executable vector-first sampler with pair and cube fallbacks, pointwise approximation to bounded Gaussian, and conditional full joint second moment under the stated shifted-mass witness",
+          "coefficient_domain": "ZZ/QQ, RealBallField(512), GF(18433) polynomial quotient",
+          "conventions": "Finite box, sigma768, strict Q<B, pair cap192, vector cap256, 10-bit uniform-cube fallback",
+          "inputs": [
+            "notes/VECTOR_FIRST_007.sage",
+            ".build/sampler_007/inputs/tables.json",
+            ".build/sampler_007/inputs/pair_certificate.json"
+          ],
+          "bounds": {
+            "precision": 512,
+            "theta_cutoff": 24576,
+            "synthetic_keys": 3,
+            "full_law_toy_cases": 27
+          },
+          "non_claims": [
+            "Shifted-mass witness not established for emitted KeyGen keys",
+            "No all-h small moment",
+            "No source binding, kernel, or security declaration"
+          ]
+        },
+        "randomness": {
+          "used": true,
+          "generator": "SHAKE-256 public synthetic labels; theorem uses ideal independent bits",
+          "seed": "FT1536-S05-VECTOR-FIRST-007-{zero,one,dense}"
+        },
+        "run": {
+          "started_at": "2026-10-10T17:34:02.015378+00:00",
+          "runtime_seconds": 3.377514,
+          "exit_status": 0,
+          "status": "completed",
+          "timeout_seconds": 300.0,
+          "max_output_bytes": 1048576,
+          "resource_limits": {
+            "memory_bytes": 4294967296,
+            "cpu_seconds": 270,
+            "max_cores": 1,
+            "max_threads": 1
+          },
+          "missing_results": [],
+          "invalid_results": []
+        },
+        "execution_artifacts": [
+          "notes/VECTOR_FIRST_007.sage",
+          ".build/sampler_007/inputs/tables.json",
+          ".build/sampler_007/inputs/pair_certificate.json"
+        ],
+        "input_artifacts": [
+          {
+            "path": "notes/VECTOR_FIRST_007.sage",
+            "sha256": "1826396418215af43ba51c9fa2d8585e8ec93d00e29cd4da425f851f98663ef6",
+            "sha256_after": "1826396418215af43ba51c9fa2d8585e8ec93d00e29cd4da425f851f98663ef6"
+          },
+          {
+            "path": ".build/sampler_007/inputs/tables.json",
+            "sha256": "f2dc9c34407a09c6305772fa8cf430668a56c5dfd6332228c06b74c40af54301",
+            "sha256_after": "f2dc9c34407a09c6305772fa8cf430668a56c5dfd6332228c06b74c40af54301"
+          },
+          {
+            "path": ".build/sampler_007/inputs/pair_certificate.json",
+            "sha256": "6237da29986da1148d2ae5ebb9f7c133f283b331206aec5b9ee14d7c91e76333",
+            "sha256_after": "6237da29986da1148d2ae5ebb9f7c133f283b331206aec5b9ee14d7c91e76333"
+          }
+        ],
+        "output_directory": ".build/sampler_007/runs/attempt_001",
+        "declared_results": [
+          ".build/sampler_007/runs/attempt_001/certificate.json",
+          ".build/sampler_007/runs/attempt_001/execution_checks.json"
+        ],
+        "outputs": [
+          {
+            "path": ".build/sampler_007/runs/attempt_001/stdout.txt",
+            "sha256": "fcc526c7eca30c97926e729093ad32af6be3968c068fb87645497522c3a1b4be",
+            "kind": "log"
+          },
+          {
+            "path": ".build/sampler_007/runs/attempt_001/stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "kind": "log"
+          },
+          {
+            "path": ".build/sampler_007/runs/attempt_001/certificate.json",
+            "sha256": "188a67994df1c7df7cf7866ae841ea4cd54ff5e549a94f40aed830d88303e877",
+            "kind": "result"
+          },
+          {
+            "path": ".build/sampler_007/runs/attempt_001/execution_checks.json",
+            "sha256": "50b61dbf4b67a7e0029dc2da4a140a6e2cfce513cf681e7381d0bf2ed7206557",
+            "kind": "result"
+          }
+        ],
+        "checks": [
+          {
+            "check": "input hashes unchanged",
+            "passed": true
+          },
+          {
+            "check": "process exited successfully within enforced limits",
+            "passed": true
+          },
+          {
+            "check": "declared result files are present and regular",
+            "passed": true
+          }
+        ],
+        "result": "Run completed; mathematical assertion requires interpretation and review.",
+        "residual_risks": [
+          "Command success does not establish the mathematical interpretation.",
+          "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+          "The thread cap uses conventional environment variables; a child program may ignore them.",
+          "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+        ]
+      },
+      "current_path_freshness": "historical input restored by source_copy hash, not current VECTOR_FIRST_007.sage"
+    },
+    {
+      "kind": "crosscheck JSON serialization failure after assertions",
+      "source_copy": {
+        "path": "notes/attempts/SAMPLER_007_CROSSCHECK_JSON_FAILURE.sage",
+        "sha256": "7f9b197f9d71115649c53801b1d2c91b06d988e7cfeb8c21b2ed32a75eb2ae69",
+        "bytes": 1889
+      },
+      "manifest": {
+        "schema_version": 2,
+        "claim_id": "S05_SAMPLER_007_PRECISION_CROSSCHECK",
+        "repository": {
+          "commit": "a3c1181bb212e97aa43c3b8281aa33625f0396b2",
+          "dirty": true
+        },
+        "command": [
+          "sage",
+          "notes/SAMPLER_007_CROSSCHECK.sage",
+          ".build/sampler_007/runs/tuned_512/certificate.json",
+          ".build/sampler_007/runs/tuned_768/certificate.json",
+          ".build/sampler_007/runs/tuned_512/execution_checks.json",
+          ".build/sampler_007/runs/tuned_768/execution_checks.json",
+          ".build/sampler_007/runs/crosscheck_001/crosscheck.json"
+        ],
+        "environment": {
+          "software": [
+            {
+              "name": "runner-python",
+              "version": "3.13.5"
+            },
+            {
+              "name": "SageMath",
+              "version": "10.9"
+            }
+          ],
+          "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+        },
+        "mathematics": {
+          "assertion_tested": "Exact endpoint and threshold comparison; deterministic fixtures; no mass witness inferred",
+          "coefficient_domain": "ZZ/QQ",
+          "conventions": "Only underlying normalizer and global tail require interval overlap; upper bound constructions separately satisfy targets",
+          "inputs": [
+            "notes/SAMPLER_007_CROSSCHECK.sage",
+            ".build/sampler_007/runs/tuned_512/certificate.json",
+            ".build/sampler_007/runs/tuned_768/certificate.json",
+            ".build/sampler_007/runs/tuned_512/execution_checks.json",
+            ".build/sampler_007/runs/tuned_768/execution_checks.json"
+          ],
+          "bounds": {
+            "precisions": [
+              512,
+              768
+            ]
+          },
+          "non_claims": [
+            "No universal or source or kernel proof"
+          ]
+        },
+        "randomness": {
+          "used": false
+        },
+        "run": {
+          "started_at": "2026-10-10T17:43:48.836088+00:00",
+          "runtime_seconds": 1.420642,
+          "exit_status": 1,
+          "status": "failed",
+          "timeout_seconds": 60.0,
+          "max_output_bytes": 1048576,
+          "resource_limits": {
+            "memory_bytes": 2147483648,
+            "cpu_seconds": 45,
+            "max_cores": 1,
+            "max_threads": 1
+          },
+          "missing_results": [
+            ".build/sampler_007/runs/crosscheck_001/crosscheck.json"
+          ],
+          "invalid_results": []
+        },
+        "execution_artifacts": [
+          "notes/SAMPLER_007_CROSSCHECK.sage",
+          ".build/sampler_007/runs/tuned_512/certificate.json",
+          ".build/sampler_007/runs/tuned_768/certificate.json",
+          ".build/sampler_007/runs/tuned_512/execution_checks.json",
+          ".build/sampler_007/runs/tuned_768/execution_checks.json"
+        ],
+        "input_artifacts": [
+          {
+            "path": "notes/SAMPLER_007_CROSSCHECK.sage",
+            "sha256": "7f9b197f9d71115649c53801b1d2c91b06d988e7cfeb8c21b2ed32a75eb2ae69",
+            "sha256_after": "7f9b197f9d71115649c53801b1d2c91b06d988e7cfeb8c21b2ed32a75eb2ae69"
+          },
+          {
+            "path": ".build/sampler_007/runs/tuned_512/certificate.json",
+            "sha256": "573651dc2372cd1d21ab83f0e609a8c416f0224acf6d89af3c4de279f18f4c5a",
+            "sha256_after": "573651dc2372cd1d21ab83f0e609a8c416f0224acf6d89af3c4de279f18f4c5a"
+          },
+          {
+            "path": ".build/sampler_007/runs/tuned_768/certificate.json",
+            "sha256": "9b1984e4686e0bd9ba597ac63c12ac54114491e8cfc77b03c344a2fbe2ffb768",
+            "sha256_after": "9b1984e4686e0bd9ba597ac63c12ac54114491e8cfc77b03c344a2fbe2ffb768"
+          },
+          {
+            "path": ".build/sampler_007/runs/tuned_512/execution_checks.json",
+            "sha256": "0fb97d5eb729925729fb780f49c3c44dd95c98096dab7843da4cc9a6a4deb742",
+            "sha256_after": "0fb97d5eb729925729fb780f49c3c44dd95c98096dab7843da4cc9a6a4deb742"
+          },
+          {
+            "path": ".build/sampler_007/runs/tuned_768/execution_checks.json",
+            "sha256": "aa65019fd236b777622dfbf93172c59d8bb50329069bf8dc193a003604072371",
+            "sha256_after": "aa65019fd236b777622dfbf93172c59d8bb50329069bf8dc193a003604072371"
+          }
+        ],
+        "output_directory": ".build/sampler_007/runs/crosscheck_001",
+        "declared_results": [
+          ".build/sampler_007/runs/crosscheck_001/crosscheck.json"
+        ],
+        "outputs": [
+          {
+            "path": ".build/sampler_007/runs/crosscheck_001/stdout.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "kind": "log"
+          },
+          {
+            "path": ".build/sampler_007/runs/crosscheck_001/stderr.txt",
+            "sha256": "ebcd118cd5fd3cd07667396b63d6ffd4e1c11b025fa805e10b9c84f04e8dbaf2",
+            "kind": "log"
+          }
+        ],
+        "checks": [
+          {
+            "check": "input hashes unchanged",
+            "passed": true
+          },
+          {
+            "check": "process exited successfully within enforced limits",
+            "passed": false
+          },
+          {
+            "check": "declared result files are present and regular",
+            "passed": false
+          }
+        ],
+        "result": "Run failed; mathematical assertion requires interpretation and review.",
+        "residual_risks": [
+          "Command success does not establish the mathematical interpretation.",
+          "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+          "The thread cap uses conventional environment variables; a child program may ignore them.",
+          "The POSIX CPU-time limit is per process, not an aggregate descendant budget.",
+          "Declared results were not produced: .build/sampler_007/runs/crosscheck_001/crosscheck.json",
+          "A nonzero exit under an address-space cap does not by itself show whether the cap was reached."
+        ]
+      },
+      "cause": "Sage Integer in precisions list not JSON serializable",
+      "repair": "default=int only; mathematical assertions unchanged",
+      "stderr": "Traceback (most recent call last):\n  File \"/home/footfalcon/miniforge3/envs/sage/bin/sage\", line 5, in <module>\n    from sage.cli.__main__ import main\n  File \"/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__main__.py\", line 9, in <module>\n    sys.exit(main())\n             ~~~~^^\n  File \"/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__init__.py\", line 56, in main\n    return RunFileCmd(options).run()\n           ~~~~~~~~~~~~~~~~~~~~~~~^^\n  File \"/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/run_file_cmd.py\", line 50, in run\n    eval(compile(open(input_file, 'rb').read(), input_file, 'exec'), sage_globals())\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/sampler_007/tmp/sage_u7fn0kfr/SAMPLER_007_CROSSCHECKszjv2t2d.sage.py\", line 33, in <module>\n    out.write_text(json.dumps({'status':'PASS_EXACT_QQ_CROSSCHECK',\n                   ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n        'endpoint_fields_checked':len(keys),'precisions':[_sage_const_512 ,_sage_const_768 ],\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<2 lines>...\n        'synthetic_results_equal_except_timings':True,'no_key_witness_inferred':True,\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n        'interpretation':'Rigorous numeric bounds plus finite execution checks; no universal proof or kernel.'},indent=_sage_const_2 )+'\\n')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/footfalcon/miniforge3/envs/sage/lib/python3.14/json/__init__.py\", line 242, in dumps\n    **kw).encode(obj)\n          ~~~~~~^^^^^\n  File \"/home/footfalcon/miniforge3/envs/sage/lib/python3.14/json/encoder.py\", line 202, in encode\n    chunks = self.iterencode(o, _one_shot=True)\n  File \"/home/footfalcon/miniforge3/envs/sage/lib/python3.14/json/encoder.py\", line 263, in iterencode\n    return _iterencode(o, 0)\n  File \"/home/footfalcon/miniforge3/envs/sage/lib/python3.14/json/encoder.py\", line 182, in default\n    raise TypeError(f'Object of type {o.__class__.__name__} '\n                    f'is not JSON serializable')\nTypeError: Object of type Integer is not JSON serializable\nwhen serializing list item 0\nwhen serializing dict item 'precisions'\n"
+    },
+    {
+      "kind": "runner CLI invocation rejected before Sage execution",
+      "cause": "absolute --output and --result rejected by relative_path",
+      "exit_code": 2,
+      "error": "run-experiment: path must stay inside project: /media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/sampler_007/runs/tuned_768",
+      "repair": "relative paths within the same root; validation unchanged"
+    }
+  ],
+  "math_self_review": [
+    "Finite full reply including honest norm and emission failures retained",
+    "Zero pair atom charged by its inverse Gaussian mass",
+    "Fresh cube cap charged by full density, no TV-to-moment substitution",
+    "Conditional-normalizer cancellation retained",
+    "Exact LDL condition does not assert source leaf or emitted-key binding",
+    "M has one A_h independent of c and all three temperatures",
+    "No all-h small moment or real-source theorem inferred from fixtures"
+  ],
+  "nonce_and_assumption_bridge": {
+    "note": "notes/ROM_QROM_ASSUMPTIONS_001.tex",
+    "nonce_bits": 320,
+    "classical_collision_formula": "min(1,(q_s*q_h+q_s*(q_s-1)/2)/2^320)",
+    "QROM_reprogramming_loss": "OPEN; not equated to classical formula",
+    "declaration_guard": "Only after implementation witnesses are closed"
+  },
+  "replay": "Use the exact command arrays in successful_run_manifests from S05_QROM root, with fresh output paths. Set TMPDIR, XDG_CACHE_HOME and DOT_SAGE below its .build/sampler_007. Run .sage with standard sage preparser.",
+  "large_input_recovery": {
+    "tables": "Regenerate using pinned notes/PUBLIC_SAMPLER.sage into a fresh .build directory; verify f2dc9c34407a09c6305772fa8cf430668a56c5dfd6332228c06b74c40af54301",
+    "pair_certificate": "Byte copy of tracked notes/SAMPLER_003_CERTIFICATE.json; alpha_exact is independent of cap values"
+  },
+  "git": "local source checkpoint only; no push; T12.1/B20/mainline/paper/site unchanged by this work",
+  "administrative_retry": {
+    "step": "final output manifest preparation",
+    "cause": "repo-relative path used after cwd changed to S05_QROM; FileNotFoundError before writes",
+    "resolution": "use Path.cwd() as the scoped S05 root; no mathematical run or historical artifact changed"
+  }
+}

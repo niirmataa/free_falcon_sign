@@ -1,0 +1,127 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm]{geometry}
+\usepackage{fontspec}\setmainfont{Latin Modern Roman}
+\setmonofont{Latin Modern Mono}[Scale=0.85]
+\usepackage{amsmath,amssymb,longtable,booktabs,xurl,hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{3em}
+\newcommand{\code}[1]{\nolinkurl{#1}}
+\title{Conditional ROM--QROM assumption bridge\\\large S05 / ROM\_QROM\_ASSUMPTIONS\_001}
+\author{Notatka robocza dla Niirmata}\date{10 października 2026}
+\begin{document}\maketitle
+\textbf{WARUNKOWY / materiał development do przyszłego paperu.}
+Tabela uzgadnia znaczenia nazw bez zmieniania historycznych tez i statusów ROM.
+Nie stanowi dowodu spełnienia przesłanek przez FT1536. Nie zmieniamy paperu.
+Słowo \emph{wspólne} oznacza ten sam rodzaj granicy modelu lub obiektu,
+a nie automatycznie wspólnego świadka formalnego.
+
+\section{Tabela mostowa}
+\small
+\begin{longtable}{@{}p{.20\linewidth}p{.23\linewidth}p{.51\linewidth}@{}}
+\toprule ROM / nazwa historyczna & QROM / nazwa docelowa & Wspólne znaczenie i wymagany dodatek \\\midrule\endhead
+A1 & Q-MODEL, Q-KEY & Brak obserwacji timing/liczby prób KeyGen; ten sam
+klucz przez grę i właściwe prawo po emisji. Kwantowy hasz nie usuwa wymogu
+braku wycieku. Przeciwna semantyka obserwacji wymaga nowej tezy.\\
+A2: seed uniformity & Q-MODEL i granica Q-PRG & Jednostajny niezależny seed
+na granicy idealizowanego źródła entropii. To nie twierdzenie, że deterministycznie
+rozwinięty strumień jest statystycznie jednostajny.\\
+A2: nazwa przy granicy hasza, UniformChallenge & Q-MODEL, Q-HASH-LOG,
+Q-COLL; publiczny H2P w Q-BIND/S04 & Historyczna księga używa A2 również
+przy idealnym prawie wyzwania. Oddzielamy te dwa znaczenia w tej tabeli,
+nie przemianowujemy archiwum. W QROM jedna wspólna losowa funkcja ma
+jednostajne wartości w $R_q$ oraz kwantowy interfejs; nie wolno wywnioskować
+legalnego reprogramowania z samego marginalu UniformChallenge.\\
+CompPRGBound & Q-PRG & Ta sama abstrakcyjna różnica oczekiwań testu
+$0\le t\le1$ może opisywać oba światy. Wymagana nowa klasa testów realizowanych
+przez obwody kwantowe, świadek przynależności i koszt rzeczywistego rozróżniacza.
+Klasyczny świadek przynależności nie dowodzi kwantowego boundu.\\
+Trudność ISIS/MT-ISIS dla prawa kluczy & A-QMT & To samo właściwe $\mu_H$,
+relacja, norma i rozkład celów; solver jest kwantowy i ma zasoby wyprowadzone
+z redukcji. Ani trudność klasyczna, ani nazwa założenia nie dają trudności
+kwantowej. Liczbę $T_Q$ trzeba wyprowadzić; $q_H+1$ nie jest domyślne.\\
+Pełny Sign, LocalJointCertificate, moment $J/P$ & Q-SAMPLER, Q-COMPOSE &
+Algebra pełnych praw i $D=(1+e)^{q_s}-1$ pozostają językiem rachunku.
+Sampler potrzebuje osobnego świadectwa wykonania/kosztu; kompozycja
+kwantowa potrzebuje jawnych wspólnych kontynuacji i przesłanek.
+Typ certyfikatu nie zapewnia ich automatycznie.\\
+A3/A4, źródłowe mosty Verify/serializacji & Q-BIND & Te same identyfikacje
+funkcyjne trzeba dostarczyć w właściwej grze; wszystkie wyjścia API i generator
+muszą być powiązane. Sama zgodność współczynnikowa nie zamyka gry na bajtach.\\
+Budżet klasycznego reduktora & Q-RESC & Jawnie dodać obwody, pamięć,
+zapytania własne, prekomputację i koszt samplera. Koszt nie jest przesłanką
+ukrytą w określeniu ``wykonalny''.\\\bottomrule
+\end{longtable}\normalsize
+
+\section{Co dokładnie znaczy przejście CompPRGBound do Q-PRG}
+Historyczny typ ma postać
+\[
+ \forall t\in\mathcal C,\quad
+ \left|\sum_x(\tau(x)-U(x))t(x)\right|\le\delta_{\rm PRG}.
+\]
+Kwantowy test na \emph{klasycznej} taśmie $x$ także indukuje prawdopodobieństwo
+akceptacji $t(x)\in[0,1]$. Można zachować ten zewnętrzny kształt definicji,
+lecz trzeba określić $\mathcal C_Q$, dostęp do wspólnego publicznego orakulum,
+stan pomocniczy, jednolitość, horyzont konsumowanych bitów i zasoby.
+Nie dodajemy dostępu w superpozycji do prywatnego generatora, jeżeli gra
+takiego dostępu nie daje. Kwantowy publiczny hasz pozostaje częścią eksperymentu.
+
+Przypięty stan prac B2/B5 wprost pozostawia pełne real/honest EUF-CMA
+computational assembly jako OPEN; dostarczone eksporty dotyczą
+\code{AdvPublicSimStream}, nie kompletnego uczciwego Sign.
+Nie używamy tej tabeli do podwyższenia statusu ROM ani do uznania Q-PRG
+za domknięte. Jeśli bound ma wejść addytywnie do tezy, potrzebny jest
+konkretny hop między dokładnie wskazanymi grami, bez podwójnego liczenia.
+
+\section{Nonce: ta sama przestrzeń 320-bitowa}
+Główna linia definiuje \code{Byte := Fin 256} i
+\code{Nonce := List.Vector Byte 40}. Twierdzenie \code{Games.nonce_card}
+zapisuje $|\mathrm{Nonce}|=256^{40}=2^{320}$.
+Ramka to $r\Vert m$, z prefiksem nonce o stałej długości 40 bajtów.
+W \code{ConcreteReduction.exact_collision_parameter} występuje
+\[
+ \boxed{\varepsilon_{\rm coll}^{\rm ROM}
+ =\min\left\{1,\frac{q_s q_h+q_s(q_s-1)/2}{2^{320}}\right\}.}
+\]
+W Lean $q_s-1$ jest obciętym odejmowaniem naturalnym; dla $q_s=0$ składnik
+również wynosi zero. Sage sprawdza dokładną tożsamość liczności i 12
+przypadków brzegowych, nie zastępując uniwersalnego dowodu ROM.
+
+\textbf{Instancja Q-COLL ma używać tej samej przestrzeni nonce.}
+Podmiana mianownika na $2^{256}$ z powodu długości seedu albo na $2^{384}$
+z powodu długości słowa samplera byłaby zmianą modelu.
+Jednocześnie 40-bajtowy wynik prywatnego PRG \emph{nie uzyskuje automatycznie}
+320 bitów entropii z krótszego seedu. Idealny niezależny nonce jest granicą
+gry idealnej; przejście do rzeczywistego generatora wymaga Q-PRG i Q-BIND.
+
+\textbf{Nie przenosimy klasycznego boundu $q_sq_h/2^{320}$ do QROM.}
+Przeciwnik kwantowy nie ma klasycznej listy wszystkich wejść do hasza.
+Nowa strata reprogramowania musi określić własne liczniki, w tym dodatkowe
+zapytania podpisującego/reduktora i końcową weryfikację, oraz hipotezy
+świeżości/ujawniania nonce. Klasyczny człon powtórzeń niezależnych nonce
+można ponownie uzasadniać w grze idealnej, ale nie wolno doliczać go drugi
+raz, gdy obejmuje go już $\Delta_{\rm QRO}$. \emph{Jedna przestrzeń,
+osobne dowody strat}; zgodność liczby 320 nie zamyka Q-COLL.
+
+\section{Twarda bramka deklaracji}
+Zdanie ``FT1536 spełnia EUF-CMA w QROM'' pozostaje wyłącznie
+\textbf{brzmieniem docelowym po domknięciu}. Gotowe twierdzenie nadal poda
+jawne założenia kryptograficzne A-QMT/Q-PRG i model, lecz jego obowiązki
+schematowe nie mogą pozostać bez świadków. Potrzebne są: właściwe $\mu_H$,
+wykonalny Q-SAMPLER na wymaganym nośniku, Q-HASH-LOG/Q-COMPOSE/Q-COLL,
+Q-EMBED, Q-BIND i policzone Q-RESC. Każdy świadek musi dotyczyć przypiętych
+źródeł i rzeczywistych parametrów. Brak kernela ma pozostać oznaczony
+jako tekstowy; żaden rachunek skończony nie zamienia się w dowód uniwersalny.
+
+SAMPLER-007 dostarcza algorytm i tekstowy moment \emph{pod (M)}.
+Nie dostarcza źródłowej instancji (M) dla emitted KeyGen i dlatego nie
+przekracza tej bramki. Nie podajemy liczbowych poziomów bezpieczeństwa.
+
+\appendix\section{Proweniencja}
+Odczytana baza: \code{a3c1181bb212e97aa43c3b8281aa33625f0396b2}.
+Źródła znaczeń: \code{T12_1/END_TO_END_SCOPE.md},
+\code{run2/formal/CompPrg.lean}, \code{run2/notes/B2B5_COMPUTATIONAL_WORK_STATE.md},
+\code{Run2/Games.lean}, \code{Run2/ConcreteReduction.lean}.
+Piny dokładnych bajtów są w \code{notes/SAMPLER_007_INPUTS.json}.
+Kontrakt docelowy to \code{notes/TARGET_CONTRACT_001.tex}; nie zmieniamy
+jego historycznych bajtów. Nie wykonano nowego replayu tych modułów Lean.
+\end{document}

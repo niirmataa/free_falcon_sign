@@ -1,0 +1,313 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm]{geometry}
+\usepackage{fontspec}\setmainfont{Latin Modern Roman}
+\setmonofont{Latin Modern Mono}[Scale=0.85]
+\usepackage{amsmath,amssymb,amsthm,booktabs,xurl,hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{3em}
+\newcommand{\code}[1]{\nolinkurl{#1}}
+\newcommand{\E}{\mathbb E}\newcommand{\Z}{\mathbb Z}
+\newcommand{\botr}{\bot}\newcommand{\Sec}{\operatorname{second}}
+\newtheorem{theorem}{Twierdzenie}\newtheorem{lemma}{Lemat}
+\title{Conditional public sampler for QROM\\\large S05 / SAMPLER\_007: wektor przed wyzwaniem}
+\author{Notatka robocza dla Niirmata}\date{10 października 2026}
+\begin{document}\maketitle
+\textbf{WARUNKOWY / dowód tekstowy, bez nowego kernela.}
+Budujemy konkretny publiczny sampler o skończonym koszcie, z rozliczonymi
+obiema gałęziami wyczerpania limitów. Jego pełne prawo $J_h$ spełnia
+$J_h\ll P_h$ dla każdego publicznego $h$. Jeżeli włókna danego klucza
+spełniają jawny warunek masy (M), to
+\[
+ \Sec(J_h,P_h):=\sum_{c,o:P_h(c,o)>0}\frac{J_h(c,o)^2}{P_h(c,o)}
+ \le 1+e,\qquad e<2^{-44}.
+\]
+\textbf{Nie wykazano (M) dla rzeczywistego prawa emitted KeyGen.}
+Podajemy wystarczający warunek dokładnej bazy i LDL oraz tekstowe przejście
+do (M). Powiązanie tego warunku ze źródłowym KeyGen pozostaje OPEN.
+To nie jest wynik all-h z małym momentem ani dowód bezpieczeństwa QROM.
+Nie nadajemy nowym wynikom statusu REVIEWED.
+
+\section{Model i pełne prawo docelowe}
+Niech $q=18433$, $n=d=1536$, $\sigma=768$, $B=2093922385$,
+$R_q=(\Z/q\Z)[X]/(X^{1536}-X^{768}+1)$ i $M=|R_q|$.
+Dla $v\in\Z^{1536}$ definiujemy
+\[
+ Q_0(v)=\sum_{i=0}^{767}(v_i^2+v_iv_{i+768}+v_{i+768}^2),\quad
+ Q(z)=Q_0(z_1)+Q_0(z_2),\quad A_hz=z_1+hz_2\pmod q.
+\]
+Box $\mathcal V=[-65535,65535]^{3072}\cap\Z^{3072}$ ma $d$ bloków
+$q_2(x,y)=x^2+xy+y^2$. Niech $G$ będzie prawem na $\mathcal V$
+z wagą $\exp(-Q/(2\sigma^2))$, a $G_B=G\mid\{Q<B\}$.
+Dodatni atom zera zapewnia dobrze określoną normalizację.
+Modelowa emisja $\operatorname{emit}(z)$ zwraca $z_2$ w signed16,
+a poza signed16 zwraca $\botr$.
+
+W $P_h$ wyzwanie jest jednostajne. Przy danym $c$ jedna próba jest
+rozkładem $G$ warunkowym na $A_hz=c$; najwięcej 16 prób normy,
+a po pierwszej akceptacji jedna emisja. Brak akceptacji daje $\botr$.
+Nie ma warunkowania uczciwego prawa na sukcesie emisji.
+W każdym włóknie istnieje punkt boxu, np. $(\operatorname{center}(c),0)$.
+W dalszym rachunku $L_c$ oznacza prawo emisji po zaakceptowanej normie,
+z zachowaniem możliwej masy $L_c(\botr)$. Jeżeli akceptacja w danym
+włóknie ma masę zero, wybieramy $L_c$ dowolnie; pod (M) niżej wykażemy
+dodatnią akceptację dla każdego $c$.
+
+Interfejs rozszerzamy przez $S(h,m,r,st;\omega)=S(h;\omega)$: sampler ignoruje
+wiadomość, nonce i stan. Wywołujemy go zawsze z publicznym
+\code{initial}; ten sam dowód obejmuje każdy stan. Wspólny niezależny nonce
+można dołączyć do obu praw bez zmiany momentu. Nie odtwarzamy logu zapytań
+kwantowych. Model obejmuje pełne odpowiedzi współczynnikowe; awarie przed
+nonce, serializacja C i pozostałe wyjścia API wymagają osobnego Q-BIND.
+
+\section{Skończony sampler na bitach}
+Korzystamy z przypiętych, odtwarzalnych tablic SAMPLER-003. Dla $T=15360$,
+$p=256$, $b=384$ ich dokładne wartości to
+\[
+ W_x=\lceil 2^p e^{-x^2/(4\sigma^2)}\rceil\quad (|x|\le T),\qquad
+ V_s=\lfloor 2^p e^{-s^2/(4\sigma^2)}\rfloor\quad (|s|\le2T).
+\]
+Jedna propozycja pary pobiera dwa niezależne $b$-bitowe słowa, redukuje
+je modulo $S=\sum_xW_x$ i odwraca całkowitą dystrybuantę $W$.
+Niezależna $p$-bitowa liczba mniejsza od $V_{x+y}$ akceptuje parę.
+Po 80 odrzuconych propozycjach wynikiem jest para $(0,0)$.
+
+Jedna propozycja wektora składa się z $d$ niezależnych takich par.
+Pierwszy wektor z $Q<B$ zostaje wybrany. Po 196 odrzuconych wektorach
+losujemy \emph{świeży} wektor jednostajny w sześcianie
+$[-512,511]^{3072}$, używając dokładnie 10 bitów na współczynnik.
+Dla tej gałęzi $Q\le3\cdot512^2d=1207959552<B$.
+Zwracamy $(A_hz,\operatorname{emit}(z))$; wszystkie wyjściowe
+współczynniki samplera mieszczą się w signed16.
+
+Zatem $J_h(c,\botr)=0$ dla każdego $c$. Jest to \emph{jawna własność
+nowego algorytmu}, nie usunięcie porażek z $P_h$: wewnętrzne wyczerpania
+limitów zwracają dodatnie, opisane rozkłady i obciążają oszacowanie poniżej.
+Nie warunkujemy na zdarzeniu, że algorytm nie wykorzystał fallbacku.
+Awaria odczytu/uszkodzenie tablic i awaria środowiska nie są losowymi gałęziami
+tego modelu; poprawne przypięte tablice i wykonanie stanowią wejście implementacji.
+
+\section{Dominacja punktowa, obejmująca limity}
+Niech $g_t=\sum_{|x|,|y|\le65535}\exp(-tq_2(x,y)/(2\sigma^2))$.
+Jedna idealna para ma prawo $G_\triangle(x,y)=e^{-q_2/(2\sigma^2)}/g_1$.
+Dokładne prawdopodobieństwo akceptacji surowej propozycji z tablic,
+wliczające redukcję modulo $S$, to przypięte wymierne $\alpha>1/2$.
+Oznaczmy
+\[
+ Z_-=(S-(2T+1))/2^p,\quad
+ \kappa=(1+S/2^b)(1+2^{-p}e^{T^2/(4\sigma^2)}).
+\]
+Masa losowanego współczynnika jest najwyżej
+$\kappa e^{-x^2/(4\sigma^2)}/Z_-$: pierwszy czynnik pokrywa bias modulo,
+drugi zaokrąglenie $W_x$ w górę. Moneta z $V_s$ jest zaokrąglona w dół.
+Stąd prawo zaakceptowanej pary jest punktowo najwyżej
+$\kappa^2g_1/(\alpha Z_-^2)$ razy $G_\triangle$.
+Prawdopodobieństwo fallbacku pary to $(1-\alpha)^{80}$,
+a $G_\triangle(0,0)=1/g_1$. Pełne prawo pary jest więc zdominowane przez
+\[
+ K_{\rm pair}G_\triangle,\qquad
+ K_{\rm pair}=\frac{\kappa^2g_1}{\alpha Z_-^2}+(1-\alpha)^{80}g_1.
+\]
+Sage bierze dokładny wymierny górny koniec $\overline K_{\rm pair}$.
+Prawo propozycji całego wektora $F$ spełnia $F\le CG$,
+gdzie $C=\overline K_{\rm pair}^{d}$.
+
+Dla $t_N=2\sigma^2d/B\in(0,1)$ nierówność wykładnicza daje
+\[
+ G(Q\ge B)\le r:=e^{-(1-t_N)B/(2\sigma^2)}(g_{t_N}/g_1)^d.
+\]
+W rachunku używamy wymiernej górnej granicy $\bar r$ i $\zeta=C\bar r<1$.
+Jeśli rzeczywisty ogon $G$ wynosi $r_0$, to
+$F(Q<B)\ge1-Cr_0$ oraz
+\[
+ F\mid\{Q<B\}\ \le\ \frac{C(1-r_0)}{1-Cr_0}G_B
+ \ \le\ K_{\rm cond}G_B,\qquad
+ K_{\rm cond}=1+\frac{C-1}{1-\zeta}.
+\]
+To zachowuje anulowanie wspólnej normalizacji. Zastąpienie go luźnym
+$C/(1-r)$ nie daje tego samego budżetu.
+
+Prawo jednostajnego sześcianu $U$ spełnia
+\[
+ U\le R_{\rm cube}G_B,\quad
+ R_{\rm cube}=g_1^d e^{1207959552/(2\sigma^2)}/2^{20d}.
+\]
+Istotnie normalizator $G_B$ jest najwyżej $g_1^d$, a energia każdego
+punktu sześcianu jest ograniczona jak wyżej. Prawdopodobieństwo 196
+odrzuceń wynosi najwyżej $\zeta^{196}$. Pełne prawo wybranego wektora,
+a po deterministycznej emisji także pełne prawo odpowiedzi, spełnia
+\[
+ J_h\le K J^G_h,\qquad
+ K=K_{\rm cond}+\zeta^{196}R_{\rm cube},\qquad
+ J^G_h=\operatorname{Law}_{z\sim G_B}(A_hz,\operatorname{emit}(z)). \tag{I}
+\]
+Dla każdego $h$, jeżeli $J_h(c,o)>0$, istnieje punkt włókna z $Q<B$
+i emisją $o$, o dodatniej wadze. Jego akceptacja w pierwszej uczciwej
+próbie ma dodatnią masę. To dowodzi $J_h\ll P_h$ bez przesłanki (M).
+
+\section{Jawny wystarczający warunek na klucz}
+Dla włókna na \emph{całej} kracie całkowitej niech
+\[
+ Z^\infty_{h,c}(t)=\sum_{z\in\Z^{3072}:A_hz=c}e^{-tQ(z)/(2\sigma^2)}.
+\]
+Przesłanka użyta w małym momencie brzmi: istnieje $A_h>0$ niezależne od $c$
+takie, że dla każdego $c$ i $t\in\{1,t_N,t_X\}$,
+\[
+ (1-\epsilon)A_h t^{-d}\le Z^\infty_{h,c}(t)
+ \le(1+\epsilon)A_h t^{-d},\qquad
+ \epsilon=2^{-34},\quad t_X=9/16.                 \tag{M}
+\]
+Jest to obowiązek dowodowy o kluczach, nie nowe założenie kryptograficzne.
+
+\begin{lemma}[Dokładna baza wystarcza, tekstowo]
+Niech $L_h=\{z\in\Z^{3072}:A_hz=0\}$ ma pełną całkowitą bazę $M_h$
+(o kolumnach tworzących bazę grupy $L_h$). Niech dodatnia macierz Grama
+w metryce $Q$ ma rozkład $M_h^T H_Q M_h=L D L^T$ z jednostkową
+trójkątną $L$, a wszystkie dokładne pivotsy spełniają
+$0<\lambda_i\le18433^2/991$. Wtedy (M) zachodzi.
+\end{lemma}
+\begin{proof}
+Każde włókno jest $w_c+M_h\Z^{3072}$, a reindeksacja po $u\in\Z^{3072}$
+jest bijekcją. Pełny rząd pozwala zapisać $w_c=M_h a_c$ nad $\mathbb R$.
+Rozkład Grama daje dokładnie
+$Q(w_c+M_hu)=\sum_i\lambda_i(u_i+\ell_i(u_{i+1},\ldots)+b_i(c))^2$,
+po ewentualnym odwróceniu kolejności indeksów. Nie zmieniamy całkowitych
+zmiennych sumowania przez niecałkowity shear; jedynie końcowe jednowymiarowe
+sumy mają przesunięcia rzeczywiste zależne od pozostałych współrzędnych.
+
+To wieża \code{TriangularGaussian.Tower} z
+$a_i=t\lambda_i/(2\pi\sigma^2)$. Ponieważ $0<t\le1$, zachodzi
+$0<a_i\le a_*:=q^2/(991\cdot2\pi\sigma^2)$.
+Przypięty lemat \code{T5ScalarMass.uniform_shifted_mass_3072}
+ogranicza masę takiej wieży przez $(1\pm2^{-34})$ razy jej skalę,
+jednolicie we wszystkich przesunięciach. Konkretnie
+$\exp(-\pi/a_*)<2^{-48}$, błąd wiersza wynosi najwyżej
+$2\cdot2^{-48}/(1-2^{-48})$, a iloczyny 3072 wierszy mieszczą się
+w $1\pm2^{-34}$. Sage niezależnie sprawdza te nierówności liczbowe.
+Skala to
+$\prod_i\sqrt{2\pi\sigma^2/(t\lambda_i)}=A_h t^{-1536}$,
+niezależnie od $c$. Daje to (M). Nowa identyfikacja atomów całego
+włókna z wieżą jest tu dowodem tekstowym, nie nowym eksportem Lean.
+\end{proof}
+
+\textbf{Granica źródłowa.} Przyjęcie słów certyfikatu KeyGen nie jest samo
+w sobie warunkiem tego lematu. \code{CertificateAcceptedScan} dotyczy słów,
+\code{SourceLeafBridge} wymaga kontraktu błędu liścia (w szczególności
+$E_{leaf}<33$) i źródłowego powiązania; \code{BasisLeafAlgebra.ldl_shape}
+jest jawną przesłanką. \code{perKey_fiber_reindex} daje reindeksację,
+a \code{perKey_mass_bounds} masę zadanej wieży. Samo zestawienie tych nazw
+nie dostarcza tożsamości pełnego atomu ani instancji dla każdego emitted key.
+Potrzebne są te świadki dla całego nośnika właściwego $\mu_H$ (lub jawny,
+osobno udowodniony rachunek wyjątków). Algorytm samplera nie otrzymuje
+sekretnej bazy ani tych świadków jako danych runtime.
+
+\section{Od masy nieskończonej do pełnego momentu}
+Ponieważ $q_2(x,y)\ge3x^2/4,3y^2/4$, punkt poza boxem ma
+$Q\ge B_X:=3\cdot65536^2/4$; $2\sigma^2d/B_X=t_X$.
+Przesłanka (M) i wykładniczy Markov dają udział masy poza boxem najwyżej
+\[
+ \beta_X=\frac{1+\epsilon}{1-\epsilon}
+ e^{-(1-t_X)B_X/(2\sigma^2)}t_X^{-d}.
+\]
+Niech $Z_c$ będzie skończonym normalizatorem włókna, $Z=\sum_cZ_c$.
+Dostajemy $(1-\epsilon)(1-\beta_X)A_h\le Z_c\le(1+\epsilon)A_h$,
+a zatem
+\[
+ \left|M Z_c/Z-1\right|\le\rho:=
+ \frac{1+\epsilon}{(1-\epsilon)(1-\beta_X)}-1.
+\]
+Jednolity ogon normy \emph{warunkowo na włóknie i boxie} jest najwyżej
+\[
+ u=\frac{1+\epsilon}{(1-\epsilon)(1-\beta_X)}
+ e^{-(1-t_N)B/(2\sigma^2)}t_N^{-d}<1.
+\]
+Niech $u_c\le u$, $a_c=1-u_c$, $\bar a=\sum_c(Z_c/Z)a_c$,
+$\nu_c=(Z_c/Z)a_c/\bar a$, $\pi_c=1-u_c^{16}$.
+Dokładne prawa pełnej odpowiedzi to
+\[
+ J^G_h(c,o)=\nu_c L_c(o),\qquad
+ P_h(c,o)=M^{-1}\bigl[\pi_c L_c(o)+(1-\pi_c)\mathbf1_{o=\botr}\bigr]. \tag{F}
+\]
+Ta postać zachowuje zarówno 16 porażek normy, jak i porażkę emisji.
+Ponieważ $a_c,\bar a\in[1-u,1]$, mamy
+$|M\nu_c-1|\le z:=(\rho+u)/(1-u)$.
+Średnia odchylenia $M\nu_c-1$ po jednostajnym $c$ wynosi zero, więc
+$M\sum_c\nu_c^2\le1+z^2$.
+
+Dla dowolnego prawa $L$, także z masą w $\botr$,
+$P_c=\pi L+(1-\pi)\delta_{\botr}\ge\pi L$ daje
+$\Sec(L,P_c)\le1/\pi$. Z (F) i $\pi_c\ge1-u^{16}>0$ wynika
+\[
+ \Sec(J^G_h,P_h)\le\frac{1+z^2}{1-u^{16}}.
+\]
+Wreszcie (I) daje bezpośrednio, bez zastępowania momentu przez TV,
+\[
+ \boxed{\Sec(J_h,P_h)\le K^2\frac{1+((\rho+u)/(1-u))^2}{1-u^{16}}=:1+e.} \tag{J/P}
+\]
+To jest kierunek $J/P$, a nie $P/J$. Zerowa masa $J(\botr)$ nie usuwa
+z mianownika kosztu uczciwych porażek. Nie ma dodatkowej masy abortu
+$\delta\,\delta_{\botr}$, która w konstrukcji 006 wymagała opłaty
+zależnej od $\delta^2/P(\botr)$.
+
+\section{Rachunek, koszt i zakres wyniku}
+SageMath 10.9, standardowy preparser, ZZ/QQ oraz balls512 i balls768 dały:
+\begin{center}\begin{tabular}{ll}\toprule
+Wielkość & Ścisła granica certyfikatu\\\midrule
+$K-1$ & $<2^{-60}$\\
+$\zeta^{196}R_{\rm cube}$ & $<2^{-160}$\\
+$\beta_X$ & $<2^{-400}$\\
+$\rho$ & $<2^{-32}$\\
+$u$ & $<2^{-24}$\\
+$e$ w (J/P), pod (M) & $<2^{-44}$\\\bottomrule
+\end{tabular}\end{center}
+Wartość obliczonej górnej konstrukcji $e$ jest około $2.22970\cdot10^{-15}$.
+To parametr błędu lokalnego, \textbf{nie liczba bitów bezpieczeństwa}.
+Końce przedziałów zapisano przez \code{exact_rational()}, bez zaokrąglającego
+\code{QQ(endpoint)}. Normalizator pary policzono przez dwa iloczyny sum theta
+(podział parzystości $y$), geometryczne ogony i odjęcie ograniczenia masy
+poza boxem. W ogonie użyto $q_2\ge(x^2+y^2)/2$; wszystkie końce są zewnętrzne.
+
+Najwyżej 24\,084\,480 propozycji par i 24\,662\,538\,240 uczciwych bitów
+na odpowiedź, wliczając sześcian. Bity są czytane leniwie. Całe wykonanie można równoważnie opisać jedną
+taśmą o tej maksymalnej długości i ignorowanym niewykorzystanym sufiksem;
+nie dodajemy nieograniczonego źródła losowości.
+Każda propozycja ma dwa modulo (384-bitowe słowo, moduł $S<2^{271}$),
+dwa przeszukania tablicy 30\,721 kategorii (najwyżej po 15 porównań),
+jedno porównanie monety i stałą liczbę operacji indeksowych.
+Najwyżej 196 razy liczymy sumę $d$ norm par; reprezentacja wektora ma
+3072 małe współczynniki. Syndrom można obliczyć jednym szkolnym mnożeniem
+w $R_q$, najwyżej $n^2$ mnożeń w ciele i redukcją wielomianu.
+Tablice mają 30\,721 wag i 61\,441 progów; JSON wejściowy zajmuje 4\,818\,845 B.
+Prekomputacja tablic jest przypiętym generatorem 003 (skończony wykaz
+certyfikowanych podłóg/sufitów przy stałej precyzji). Jej koszt nie jest
+zerowy: receipt wskazuje generator i wejściowy pin; trzeba doliczyć
+prekomputację, pamięć i arytmetykę do Q-RESC reduktora.
+Nie dostarczono certyfikatu czasu maszynowego ani produkcyjnego benchmarku.
+
+Sprawdzono trzy syntetyczne $h$ (zero, jeden i gęsty), obie gałęzie
+fallbacku przy faktycznych capach, 27 dokładnych małych praw pełnej
+odpowiedzi, tożsamość nonce i 12 brzegowych przypadków wzoru kolizyjnego.
+Wykonania syntetyczne \emph{nie sprawdzają (M)} dla tych kluczy.
+Nie przeczą przeszkodzie h=0 z 003; mały moment 007 pozostaje warunkowy.
+Konstrukcja odrzucania całych wektorów dla ustalonego challenge z 006
+zachowuje swój wykazany koszt wykładniczy. Zmieniliśmy sposób losowania,
+a nie historyczny wynik tej próby.
+
+\section{Następny dokładny obowiązek i checkpoint}
+Następny krok to świadek dokładnej bazy/atomów/LDL na całym wymaganym
+nośniku emitted KeyGen, z właściwym powiązaniem liści źródłowych.
+Potem kernelizacja (M) oraz (J/P), Q-BIND i wpięcie zasobów.
+Q-HASH-LOG, Q-COMPOSE, Q-COLL i Q-EMBED pozostają odrębnymi obowiązkami;
+sampler ich nie rozwiązuje. Cel pomocniczy all-h pozostaje OPEN.
+Docelowej deklaracji EUF-CMA w QROM nie używamy przed domknięciem świadków.
+
+\appendix\section{Pliki i piny}
+Baza wejściowa: \code{a3c1181bb212e97aa43c3b8281aa33625f0396b2}.
+Źródło wykonawcze: \code{notes/VECTOR_FIRST_007.sage}.
+Piny zależności: \code{notes/SAMPLER_007_INPUTS.json}.
+Wyniki 512/768, koszt, zachowana pierwsza wersja capów oraz receipty:
+\code{notes/SAMPLER_007_RECEIPT.json} i \code{notes/SAMPLER_007_OUTPUTS.sha256}.
+Rachunek porównawczy: \code{notes/SAMPLER_007_CROSSCHECK.sage}.
+Świadectwa źródłowe T12.1 są odczytanymi zależnościami; ten checkpoint
+nie zmienia ich statusu, nie uruchamia ich nowego odbioru ani nie replayuje kernela.
+Cała nowa praca jest w development/S05\_QROM; runtime w \code{.build/sampler_007/}.
+\end{document}
