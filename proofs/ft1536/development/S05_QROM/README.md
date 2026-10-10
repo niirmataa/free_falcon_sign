@@ -3,12 +3,20 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
+**Korekta numeryczna 005:** [erratum końców MPFR](notes/NORMALIZER_005_ERRATUM_001.tex)
+zastępuje pierwotne numeryczne świadectwa normalizatora.
+`QQ(endpoint)` mogło zaokrąglać do pobliskiego ułamka; nowe źródło używa
+`endpoint.exact_rational()`. Ponowny rachunek zachował deklarowane granice.
+Historyczne pliki i manifesty pozostają bez zmian; wiążące liczby są w
+[skorygowanym certyfikacie](notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json).
+
 Właściciel uruchomił ten tor 2026-10-10: małe lokalne commity na main,
 **bez push**, bez zmian statusów T12.1/B20, mainline, paperu i strony.
 SAMPLER-004 przeniósł całą ówczesną pracę tutaj: źródła do `notes/` lub
-`formal/`, runtime do `.build/`. **Bieżące polecenie okna NORMALIZER-005**
-wyznaczyło próby w `work/FT1536_S05_QROM_001/normalizer_005/`, a wyniki,
-źródła i receipty w tym development. To nowy podkatalog; wcześniejsza
+`formal/`, runtime do `.build/`. **Bieżące polecenie okna i kontynuacji**
+wyznacza próby w nowych podkatalogach
+`work/FT1536_S05_QROM_001/{normalizer_005,marginal_006}/`, a wyniki,
+źródła i receipty w tym development. Wcześniejsza
 historia work i `.build/sampler_004/` pozostaje bez zmian.
 Nie nadpisujemy prób. [Handoff 004](notes/SAMPLER_004_HANDOFF.json),
 [lokalne zasady](AGENTS.md).
@@ -31,10 +39,12 @@ Nie nadpisujemy prób. [Handoff 004](notes/SAMPLER_004_HANDOFF.json),
 | Wykonalny publiczny sampler pełnej odpowiedzi, również porażek | SAMPLER-003 wykonany; TV do modelowego publicJoint <2^-90, dowód transferu tekstowy |
 | Absolutna ciągłość J względem uczciwego P | Tekstowy argument nośnika, także dla terminalnego none; formal source binding OPEN |
 | Certyfikat `ΣJ²/P≤1+e`, z użytecznym e | SAMPLER-004 naprawia h=0: tekstowy dowód pełnego momentu e<2^-50. Cel dla wszystkich h nadal OPEN; ograniczenie e>1/8 dotyczy starego kandydata 003 |
-| Kernelizacja h=0: `J≪P` i moment | **OPEN, obowiązek jawny:** przenieść SAMPLER-004 do Lean, czyste logi jak DyadicObstruction; etykieta **textual** pozostaje do sprawdzenia kernela |
+| Kernelizacja h=0: `J≪P` i moment | **OPEN, obowiązek jawny:** przenieść SAMPLER-004 do Lean z czystymi logami; etykieta **textual** pozostaje. Szkic DyadicObstruction również nie ma potwierdzonego kernela |
 | Normalizator reszty `Z₁(r)` i odwrotność, także `r=c−hz₂` | NORMALIZER-005: textual, jednolity względny przedział <2^-356; błąd TV samych kategorii przez cap16 <2^-236. Nie jest to TV do uczciwego P |
 | Pełny normalizator `Z_h,c`, odwrotność i błędy uproszczeń | NORMALIZER-005: h=1,c=0, balls512/768; względne szerokości <2^-180 i TV zerowego aliasu przez cap16 <2^-180. Efektywna kontrakcja dla wszystkich h,c **OPEN** |
 | Naturalne rozszerzenie sekwencyjne 004 do h≠0 | Dla h=1,c=0 moment **przed normą >2^1536**; sama precyzja nie naprawia zmienności normalizatora. Nie jest to dolna granica końcowego Q-JOINT |
+| Ważony marginal `w(z₂)Z₁(c−hz₂)` i nowe capy | MARGINAL-006: nowy **warunkowy** certyfikat pełnego prawa z `e<2^-119`; wymagane nowe certyfikaty propozycji, monety i kosztu. Nie jest to świadek all-h Q-JOINT |
+| Koszt odrzucania całych wektorów z propozycji `w/G` | h=1,c=0: akceptacja <2^-767 nawet z idealną monetą; potrzebna adaptowana propozycja lub faktoryzacja. Nie jest to ograniczenie wszystkich samplerów |
 | Dokładny UniformChallengeAt z ustalonej taśmy uczciwych bitów | Niemożliwy: masy dyadyczne, moduł 18433 nie dzieli 2^bits; nie zmieniono przesłanek głównej linii |
 | Klasyczny log hasza | Wymaga nowej semantyki QROM |
 | Osadzenie `q_H+1` celów | Wymaga nowej konstrukcji Q-TARGET i straty |
@@ -49,8 +59,9 @@ Mały błąd TV również nie zastępuje certyfikatu kierunkowego momentu.
 
 - `notes/`: dokumenty wynikowe, piny, receipty i źródła rachunku Sage;
 - `formal/`: nowe moduły Lean z jawnym zakresem weryfikacji;
+- `obstructions/`: wspólna kolekcja zakresów, dowodów i pinów; materiał do ewentualnego Aneksu B;
 - runtime i zachowana historia SAMPLER-004: `.build/sampler_004/`;
-- nowe próby tego midpointu: `work/FT1536_S05_QROM_001/normalizer_005/`;
+- nowe próby okna: `work/FT1536_S05_QROM_001/normalizer_005/` i `marginal_006/`;
 - wcześniejsze podkatalogi work są niezmienionymi wejściami historycznymi.
 
 Pierwszy commit jest zapisem źródeł rozpoznania, nie akceptacją dowodu.
@@ -101,13 +112,15 @@ użytecznego oszacowania. [34 dokładne testy tożsamości](notes/SAMPLER_004_RE
 są małymi modelami kontrolnymi, nie dowodem dla parametrów FT1536.
 Nie osłabiono końcowego kwantyfikatora ani nierówności momentu.
 
-## Najnowszy midpoint — NORMALIZER-005
+## Midpoint — NORMALIZER-005
 
 [Dowód i dokładny zakres](notes/NORMALIZER_005.tex),
-[rachunek Sage](notes/FIBER_NORMALIZER_005.sage),
-[certyfikat](notes/NORMALIZER_005_CERTIFICATE.json),
+[skorygowany rachunek Sage](notes/FIBER_NORMALIZER_005_CORRECTED.sage),
+[skorygowany certyfikat](notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json),
 [receipty i zachowane niepowodzenie](notes/NORMALIZER_005_RECEIPT.json),
-[porównanie precyzji](notes/NORMALIZER_005_CROSSCHECK.json).
+[skorygowane porównanie precyzji](notes/NORMALIZER_005_CORRECTED_CROSSCHECK.json).
+Pierwotne receipty są historią; korektę i jej nowe uruchomienia wiąże
+[receipt MARGINAL-006](notes/MARGINAL_006_RECEIPT.json).
 
 Odejmowanie minimalnej energii daje stabilny **względny** przedział
 normalizatora każdej reszty i jego odwrotności. Dla pełnego włókna h=1,c=0
@@ -131,6 +144,44 @@ Następny krok: kontrolować lub losować marginalne prawo
 `w(z₂) Z₁(c−hz₂)`, z wykonalnym kosztem, albo zbudować inną konstrukcję
 samplera włókna. **Q-JOINT-INSTANCE dla wszystkich h pozostaje OPEN**;
 kernelizacja h=0 jest osobnym, nadal otwartym obowiązkiem.
+
+## Najnowszy krok — MARGINAL-006 i kolekcja obstructions
+
+[Nowy dowód prawa capów i momentu](notes/MARGINAL_006.tex),
+[rachunek Sage](notes/MARGINAL_006.sage),
+[certyfikat](notes/MARGINAL_006_CERTIFICATE.json),
+[receipty](notes/MARGINAL_006_RECEIPT.json),
+[kolekcja przeszkód](obstructions/OBSTRUCTIONS_001.tex),
+[indeks z pinami i statusami](obstructions/INDEX.json).
+
+Ważenie marginalu korzysta z tych samych certyfikowanych `Z₁`.
+Nowa konstrukcja przygotowuje 16 par, każdą z własnym capem odrzucania;
+wyczerpanie dowolnego capu daje pełne `none`. Jej dokładne prawo to
+`J=(1−δ)Q+δ·none`. Świeży dowód obejmuje nośnik i koszt momentu
+zależny od `δ²/P(none)`; dla `P(none)=0` dodatkowy abort narusza `J≪P`.
+
+**Warunkowy** budżet daje `e<2^-119` dla pełnej pary wyzwanie–odpowiedź.
+Nie przeniesiono certyfikatu h=0. Wymagane są osobno: propozycja na pełnym
+boxie z kontrolą dwustronną, względnie dokładna skończona moneta i użyteczny
+koszt. Obecny sampler 004 nie spełnia pierwszej przesłanki przez sam fakt
+posiadania jednostronnej dominacji. Nie ogłaszamy implementacji all-h.
+
+Przeszkoda kosztowa dla konkretnej próby jest rygorystyczna: przy h=1,c=0
+propozycja `w/G` z odrzucaniem całego wektora ma akceptację <2^-767.
+Nawet 2^128 propozycji daje prawdopodobieństwo jakiejkolwiek akceptacji
+<2^-639. To nie wyklucza faktoryzacji blokowej ani innych propozycji.
+Sage512/768 sprawdził też 102 dokładne małe prawa, wszystkie rodzaje porażek
+w modelu testowym i kontrolę negatywną nośnika.
+
+Kolekcja `obstructions` zawiera **DyadicObstruction**, moment przed normą
+oraz nowy wynik kosztowy. Przy każdym wpisie są jawne kwantyfikatory,
+non-claims i status kernela. DyadicObstruction ma tekstowy dowód i historyczny
+szkic Lean; jego modułu nie uruchomiono po wcześniejszym timeout innego modułu.
+Kolekcja nie zmienia paperu ani strony.
+
+Następny krok: adaptowana propozycja lub kontrolowana faktoryzacja marginalu,
+z nowymi certyfikatami oraz rzeczywistym kosztem. Kernelizacja h=0 i lematów
+capu pozostaje **OPEN / textual**.
 
 README jest żywym stanem. Historyczne manifesty, które pinowały README,
 weryfikujemy względem ich commitów (003: `0a6999d7`). Nowe manifesty

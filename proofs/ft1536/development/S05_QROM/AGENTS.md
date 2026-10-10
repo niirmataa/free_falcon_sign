@@ -2,11 +2,17 @@
 
 Decyzja właściciela 2026-10-10, późniejsza od początkowego podziału work/development:
 **cała nowa praca tej kampanii powstaje bezpośrednio tutaj**.
-Wyjątek dla bieżącego okna NORMALIZER-005: późniejsze bezpośrednie polecenie
-właściciela wyznacza próby/logi/cache w nowym
-`work/FT1536_S05_QROM_001/normalizer_005/`, a źródła, wyniki i receipty tutaj.
+Wyjątek dla bieżącego okna NORMALIZER-005 i jego kontynuacji MARGINAL-006:
+późniejsze bezpośrednie polecenie właściciela wyznacza próby/logi/cache
+w nowych podkatalogach `work/FT1536_S05_QROM_001/{normalizer_005,marginal_006}/`,
+a źródła, wyniki i receipty tutaj.
 Dotychczasowych prób i podkatalogów nie nadpisujemy. Ten wyjątek zastępuje
-poniższy zakaz dopisków do work wyłącznie dla tego nowego podkatalogu.
+poniższy zakaz dopisków do work wyłącznie dla tych nowych podkatalogów.
+
+Polecenie właściciela przy MARGINAL-006: dla nowej konstrukcji wymagany
+jest nowy certyfikat capów, pełnych porażek, J≪P i momentu. Kolekcja
+`obstructions/` gromadzi dokładne zakresy i statusy wyników jako materiał
+do ewentualnego Aneksu B; nie zmieniamy paperu ani statusu publikacji.
 
 - Źródła, szkice i dokumenty: odpowiednie pliki w `notes/` lub `formal/`.
 - Uruchomienia, logi, cache, duże tablice i zachowane wersje prób: ignorowane

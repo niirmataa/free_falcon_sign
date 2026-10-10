@@ -1,0 +1,38 @@
+{
+  "id": "S05_MARGINAL_006",
+  "date": "2026-10-10",
+  "parent": "FT1536-S05-QROM-NORMALIZER-005",
+  "status": "WARUNKOWY_TEXTUAL_CONDITIONAL_CERTIFICATE",
+  "source_commit": "bb74c1a55165ea0e56d978c6478e0b3f4c7691e1",
+  "normalizer_correction_commit": "f7588d0a592194418ad819d2c514efaed2d090d9",
+  "full_all_h_instance": false,
+  "fresh_certificate": true,
+  "inherited_hzero_moment_used": false,
+  "results": {
+    "cap_law": "J=(1-delta)Q+delta*none, with 16 precomputed capped marginal draws",
+    "support": "J<<P if core Q<<P and P(none)>0; zero-mass none cannot absorb extra failure",
+    "conditional_joint_second_moment": "<=1+e, e<2^-119 under named fresh assumptions",
+    "whole_vector_rejection_cost": "At h=1,c=0, alpha<2^-767 for ideal U proposal and constant envelope; success in 2^128 attempts <2^-639",
+    "crude_uniform_cap": "2^336409 proposals per marginal; accounting only, not executed or useful",
+    "obstructions_collection": "obstructions/INDEX.json: O1 dyadic, O2 pre-norm moment, O3 whole-vector cost"
+  },
+  "remaining": [
+    "Full-box finite-bit proposal with fresh two-sided certificate",
+    "Relative finite-bit acceptance coin with bounded execution",
+    "Efficient adapted marginal for all h,c",
+    "Kernelize h=0 J<<P and moment, and new cap theorem with clean logs",
+    "Kernel-check DyadicObstruction draft",
+    "Source and remaining QROM bridges unchanged"
+  ],
+  "next": "Replace whole-vector U proposal by an adapted proposal or controlled factorization; retain explicit cap, none and moment certificates.",
+  "artifacts": {
+    "report": "notes/MARGINAL_006.tex",
+    "certificate": "notes/MARGINAL_006_CERTIFICATE.json",
+    "receipt": "notes/MARGINAL_006_RECEIPT.json",
+    "erratum": "notes/NORMALIZER_005_ERRATUM_001.tex",
+    "obstructions": "obstructions/INDEX.json"
+  },
+  "kernel": false,
+  "independent_review": false,
+  "push": false
+}

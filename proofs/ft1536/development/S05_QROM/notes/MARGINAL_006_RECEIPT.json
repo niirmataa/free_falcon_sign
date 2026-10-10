@@ -1,0 +1,2613 @@
+{
+  "checkpoint": "S05_MARGINAL_006",
+  "created_utc": "2026-10-10T17:06:20.116297+00:00",
+  "base_commit": "f7edd08b",
+  "base_commit_full": "f7edd08bd6ab57746d7f5d0879eb2d5ceb0f4637",
+  "source_commit": "bb74c1a55165ea0e56d978c6478e0b3f4c7691e1",
+  "status": "WARUNKOWY_TEXTUAL_CONDITIONAL_CERTIFICATE",
+  "path_base": "repository root",
+  "runs": [
+    {
+      "manifest_pin": {
+        "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_001/manifest.json",
+        "sha256": "aa344eb8f18dbef7e1a21c7d7d0d29b706f18aeea9883fdc4e3742d2c611f356",
+        "bytes": 4402
+      },
+      "authoritative_final": false,
+      "manifest": {
+        "schema_version": 2,
+        "claim_id": "S05_MARGINAL_006",
+        "repository": {
+          "commit": "f7edd08bd6ab57746d7f5d0879eb2d5ceb0f4637",
+          "dirty": true
+        },
+        "command": [
+          "sage",
+          "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_001",
+          "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json",
+          "512"
+        ],
+        "environment": {
+          "software": [
+            {
+              "name": "runner-python",
+              "version": "3.13.5"
+            },
+            {
+              "name": "SageMath",
+              "version": "10.9"
+            }
+          ],
+          "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+        },
+        "mathematics": {
+          "assertion_tested": "102 exact QQ capped marginal/reply laws; fresh conditional moment budget; rigorous h=1,c=0 whole-vector rejection cost; explicit crude all-h positive-none and cap bounds",
+          "coefficient_domain": "ZZ/QQ + RealBallField512/768",
+          "conventions": "All 16 marginal samples precomputed; any internal cap exhaustion maps to model none; no success conditioning",
+          "inputs": [
+            "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+            "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json"
+          ],
+          "bounds": {
+            "toy_q": [
+              3,
+              5
+            ],
+            "toy_h_c": "all",
+            "toy_caps": [
+              1,
+              3,
+              17
+            ],
+            "FT_theta_cutoff": 16384
+          },
+          "non_claims": [
+            "No all-h efficient sampler instance",
+            "No kernel or security claim"
+          ]
+        },
+        "randomness": {
+          "used": false,
+          "generator": "",
+          "seed": null
+        },
+        "run": {
+          "started_at": "2026-10-10T16:55:55.478232+00:00",
+          "runtime_seconds": 1.269093,
+          "exit_status": 0,
+          "status": "completed",
+          "timeout_seconds": 180.0,
+          "max_output_bytes": 1048576,
+          "resource_limits": {
+            "memory_bytes": 4294967296,
+            "cpu_seconds": 160,
+            "max_cores": 1,
+            "max_threads": 1
+          },
+          "missing_results": [],
+          "invalid_results": []
+        },
+        "execution_artifacts": [
+          "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json"
+        ],
+        "input_artifacts": [
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+            "sha256": "071a25a651232a00d3c4599c754bcd858fd52e902905e6e68148debf0d314837",
+            "sha256_after": "071a25a651232a00d3c4599c754bcd858fd52e902905e6e68148debf0d314837"
+          },
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json",
+            "sha256": "f8c70019e9186aecd2e56410023756158a40f04a04c7d06934c22c06a38aa305",
+            "sha256_after": "f8c70019e9186aecd2e56410023756158a40f04a04c7d06934c22c06a38aa305"
+          }
+        ],
+        "output_directory": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_001",
+        "declared_results": [
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_001/certificate.json"
+        ],
+        "outputs": [
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_001/stdout.txt",
+            "sha256": "a27259a75303c8ca843f8a6e7120055ac4698e739528fa2c67b4b0c9bcbe640d",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_001/stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_001/certificate.json",
+            "sha256": "81d12a777d068401fbe16bbe6fcd0c1f4883dc7339a7991b09a55131a6c1e9d2",
+            "kind": "result"
+          }
+        ],
+        "checks": [
+          {
+            "check": "input hashes unchanged",
+            "passed": true
+          },
+          {
+            "check": "process exited successfully within enforced limits",
+            "passed": true
+          },
+          {
+            "check": "declared result files are present and regular",
+            "passed": true
+          }
+        ],
+        "result": "Run completed; mathematical assertion requires interpretation and review.",
+        "residual_risks": [
+          "Command success does not establish the mathematical interpretation.",
+          "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+          "The thread cap uses conventional environment variables; a child program may ignore them.",
+          "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+        ]
+      },
+      "input_byte_recovery": [
+        {
+          "declared_path": "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "sha256": "071a25a651232a00d3c4599c754bcd858fd52e902905e6e68148debf0d314837",
+          "retained_matching_paths": [
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/source_attempt_001.sage",
+            "proofs/ft1536/development/S05_QROM/.build/marginal_006/source_attempt_001.sage"
+          ]
+        },
+        {
+          "declared_path": "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json",
+          "sha256": "f8c70019e9186aecd2e56410023756158a40f04a04c7d06934c22c06a38aa305",
+          "retained_matching_paths": [
+            "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json"
+          ]
+        }
+      ]
+    },
+    {
+      "manifest_pin": {
+        "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_002_precision768/manifest.json",
+        "sha256": "087b52d538a30f047159befe470e5985370d4a9b82cb7d557919700882564bb1",
+        "bytes": 4480
+      },
+      "authoritative_final": false,
+      "manifest": {
+        "schema_version": 2,
+        "claim_id": "S05_MARGINAL_006",
+        "repository": {
+          "commit": "f7edd08bd6ab57746d7f5d0879eb2d5ceb0f4637",
+          "dirty": true
+        },
+        "command": [
+          "sage",
+          "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_002_precision768",
+          "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json",
+          "768"
+        ],
+        "environment": {
+          "software": [
+            {
+              "name": "runner-python",
+              "version": "3.13.5"
+            },
+            {
+              "name": "SageMath",
+              "version": "10.9"
+            }
+          ],
+          "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+        },
+        "mathematics": {
+          "assertion_tested": "102 exact QQ capped marginal/reply laws; fresh conditional moment budget; rigorous h=1,c=0 whole-vector rejection cost; explicit crude all-h positive-none and cap bounds",
+          "coefficient_domain": "ZZ/QQ + RealBallField512/768",
+          "conventions": "All 16 marginal samples precomputed; any internal cap exhaustion maps to model none; no success conditioning",
+          "inputs": [
+            "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+            "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json"
+          ],
+          "bounds": {
+            "toy_q": [
+              3,
+              5
+            ],
+            "toy_h_c": "all",
+            "toy_caps": [
+              1,
+              3,
+              17
+            ],
+            "FT_theta_cutoff": 16384
+          },
+          "non_claims": [
+            "No all-h efficient sampler instance",
+            "No kernel or security claim"
+          ]
+        },
+        "randomness": {
+          "used": false,
+          "generator": "",
+          "seed": null
+        },
+        "run": {
+          "started_at": "2026-10-10T16:56:44.099575+00:00",
+          "runtime_seconds": 1.318428,
+          "exit_status": 0,
+          "status": "completed",
+          "timeout_seconds": 180.0,
+          "max_output_bytes": 1048576,
+          "resource_limits": {
+            "memory_bytes": 4294967296,
+            "cpu_seconds": 160,
+            "max_cores": 1,
+            "max_threads": 1
+          },
+          "missing_results": [],
+          "invalid_results": []
+        },
+        "execution_artifacts": [
+          "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json"
+        ],
+        "input_artifacts": [
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+            "sha256": "071a25a651232a00d3c4599c754bcd858fd52e902905e6e68148debf0d314837",
+            "sha256_after": "071a25a651232a00d3c4599c754bcd858fd52e902905e6e68148debf0d314837"
+          },
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json",
+            "sha256": "f8c70019e9186aecd2e56410023756158a40f04a04c7d06934c22c06a38aa305",
+            "sha256_after": "f8c70019e9186aecd2e56410023756158a40f04a04c7d06934c22c06a38aa305"
+          }
+        ],
+        "output_directory": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_002_precision768",
+        "declared_results": [
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_002_precision768/certificate.json"
+        ],
+        "outputs": [
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_002_precision768/stdout.txt",
+            "sha256": "a27259a75303c8ca843f8a6e7120055ac4698e739528fa2c67b4b0c9bcbe640d",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_002_precision768/stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_002_precision768/certificate.json",
+            "sha256": "0a4ecf42a826c806d6f7dc9acbe658f0b916fc2b1cdee56671614da13c14070d",
+            "kind": "result"
+          }
+        ],
+        "checks": [
+          {
+            "check": "input hashes unchanged",
+            "passed": true
+          },
+          {
+            "check": "process exited successfully within enforced limits",
+            "passed": true
+          },
+          {
+            "check": "declared result files are present and regular",
+            "passed": true
+          }
+        ],
+        "result": "Run completed; mathematical assertion requires interpretation and review.",
+        "residual_risks": [
+          "Command success does not establish the mathematical interpretation.",
+          "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+          "The thread cap uses conventional environment variables; a child program may ignore them.",
+          "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+        ]
+      },
+      "input_byte_recovery": [
+        {
+          "declared_path": "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "sha256": "071a25a651232a00d3c4599c754bcd858fd52e902905e6e68148debf0d314837",
+          "retained_matching_paths": [
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/source_attempt_001.sage",
+            "proofs/ft1536/development/S05_QROM/.build/marginal_006/source_attempt_001.sage"
+          ]
+        },
+        {
+          "declared_path": "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json",
+          "sha256": "f8c70019e9186aecd2e56410023756158a40f04a04c7d06934c22c06a38aa305",
+          "retained_matching_paths": [
+            "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json"
+          ]
+        }
+      ]
+    },
+    {
+      "manifest_pin": {
+        "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_003_states512/manifest.json",
+        "sha256": "b5aa44c1b50504ae20942663733491dd2ad13609c6c05b9addb2b4ab3839c7a3",
+        "bytes": 4462
+      },
+      "authoritative_final": false,
+      "manifest": {
+        "schema_version": 2,
+        "claim_id": "S05_MARGINAL_006",
+        "repository": {
+          "commit": "f7edd08bd6ab57746d7f5d0879eb2d5ceb0f4637",
+          "dirty": true
+        },
+        "command": [
+          "sage",
+          "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_003_states512",
+          "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json",
+          "512"
+        ],
+        "environment": {
+          "software": [
+            {
+              "name": "runner-python",
+              "version": "3.13.5"
+            },
+            {
+              "name": "SageMath",
+              "version": "10.9"
+            }
+          ],
+          "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+        },
+        "mathematics": {
+          "assertion_tested": "102 exact QQ capped marginal/reply laws; fresh conditional moment budget; rigorous h=1,c=0 whole-vector rejection cost; explicit crude all-h positive-none and cap bounds",
+          "coefficient_domain": "ZZ/QQ + RealBallField512/768",
+          "conventions": "All 16 marginal samples precomputed; any internal cap exhaustion maps to model none; no success conditioning",
+          "inputs": [
+            "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+            "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json"
+          ],
+          "bounds": {
+            "toy_q": [
+              3,
+              5
+            ],
+            "toy_h_c": "all",
+            "toy_caps": [
+              1,
+              3,
+              17
+            ],
+            "FT_theta_cutoff": 16384
+          },
+          "non_claims": [
+            "No all-h efficient sampler instance",
+            "No kernel or security claim"
+          ]
+        },
+        "randomness": {
+          "used": false,
+          "generator": "",
+          "seed": null
+        },
+        "run": {
+          "started_at": "2026-10-10T16:57:28.219706+00:00",
+          "runtime_seconds": 1.268446,
+          "exit_status": 0,
+          "status": "completed",
+          "timeout_seconds": 180.0,
+          "max_output_bytes": 1048576,
+          "resource_limits": {
+            "memory_bytes": 4294967296,
+            "cpu_seconds": 160,
+            "max_cores": 1,
+            "max_threads": 1
+          },
+          "missing_results": [],
+          "invalid_results": []
+        },
+        "execution_artifacts": [
+          "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json"
+        ],
+        "input_artifacts": [
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+            "sha256": "42604667ab880dc3f211dc667e1772ea01dae10007585064341062a7721d9ce5",
+            "sha256_after": "42604667ab880dc3f211dc667e1772ea01dae10007585064341062a7721d9ce5"
+          },
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json",
+            "sha256": "f8c70019e9186aecd2e56410023756158a40f04a04c7d06934c22c06a38aa305",
+            "sha256_after": "f8c70019e9186aecd2e56410023756158a40f04a04c7d06934c22c06a38aa305"
+          }
+        ],
+        "output_directory": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_003_states512",
+        "declared_results": [
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_003_states512/certificate.json"
+        ],
+        "outputs": [
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_003_states512/stdout.txt",
+            "sha256": "a27259a75303c8ca843f8a6e7120055ac4698e739528fa2c67b4b0c9bcbe640d",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_003_states512/stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_003_states512/certificate.json",
+            "sha256": "3207fc56b0b3d6c73ef82025abace275d15a603767d6016a32f2640daac937bb",
+            "kind": "result"
+          }
+        ],
+        "checks": [
+          {
+            "check": "input hashes unchanged",
+            "passed": true
+          },
+          {
+            "check": "process exited successfully within enforced limits",
+            "passed": true
+          },
+          {
+            "check": "declared result files are present and regular",
+            "passed": true
+          }
+        ],
+        "result": "Run completed; mathematical assertion requires interpretation and review.",
+        "residual_risks": [
+          "Command success does not establish the mathematical interpretation.",
+          "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+          "The thread cap uses conventional environment variables; a child program may ignore them.",
+          "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+        ]
+      },
+      "input_byte_recovery": [
+        {
+          "declared_path": "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "sha256": "42604667ab880dc3f211dc667e1772ea01dae10007585064341062a7721d9ce5",
+          "retained_matching_paths": [
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/source_attempt_003.sage",
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/pre_endpoint_fix/MARGINAL_006.sage"
+          ]
+        },
+        {
+          "declared_path": "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json",
+          "sha256": "f8c70019e9186aecd2e56410023756158a40f04a04c7d06934c22c06a38aa305",
+          "retained_matching_paths": [
+            "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json"
+          ]
+        }
+      ]
+    },
+    {
+      "manifest_pin": {
+        "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_004_states768/manifest.json",
+        "sha256": "397c3c48b2d25d6021dcd5931e643e7ff2f74348b2fabdf19e6df7e320a07338",
+        "bytes": 4462
+      },
+      "authoritative_final": false,
+      "manifest": {
+        "schema_version": 2,
+        "claim_id": "S05_MARGINAL_006",
+        "repository": {
+          "commit": "f7edd08bd6ab57746d7f5d0879eb2d5ceb0f4637",
+          "dirty": true
+        },
+        "command": [
+          "sage",
+          "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_004_states768",
+          "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json",
+          "768"
+        ],
+        "environment": {
+          "software": [
+            {
+              "name": "runner-python",
+              "version": "3.13.5"
+            },
+            {
+              "name": "SageMath",
+              "version": "10.9"
+            }
+          ],
+          "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+        },
+        "mathematics": {
+          "assertion_tested": "102 exact QQ capped marginal/reply laws; fresh conditional moment budget; rigorous h=1,c=0 whole-vector rejection cost; explicit crude all-h positive-none and cap bounds",
+          "coefficient_domain": "ZZ/QQ + RealBallField512/768",
+          "conventions": "All 16 marginal samples precomputed; any internal cap exhaustion maps to model none; no success conditioning",
+          "inputs": [
+            "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+            "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json"
+          ],
+          "bounds": {
+            "toy_q": [
+              3,
+              5
+            ],
+            "toy_h_c": "all",
+            "toy_caps": [
+              1,
+              3,
+              17
+            ],
+            "FT_theta_cutoff": 16384
+          },
+          "non_claims": [
+            "No all-h efficient sampler instance",
+            "No kernel or security claim"
+          ]
+        },
+        "randomness": {
+          "used": false,
+          "generator": "",
+          "seed": null
+        },
+        "run": {
+          "started_at": "2026-10-10T16:57:52.353506+00:00",
+          "runtime_seconds": 1.318857,
+          "exit_status": 0,
+          "status": "completed",
+          "timeout_seconds": 180.0,
+          "max_output_bytes": 1048576,
+          "resource_limits": {
+            "memory_bytes": 4294967296,
+            "cpu_seconds": 160,
+            "max_cores": 1,
+            "max_threads": 1
+          },
+          "missing_results": [],
+          "invalid_results": []
+        },
+        "execution_artifacts": [
+          "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json"
+        ],
+        "input_artifacts": [
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+            "sha256": "42604667ab880dc3f211dc667e1772ea01dae10007585064341062a7721d9ce5",
+            "sha256_after": "42604667ab880dc3f211dc667e1772ea01dae10007585064341062a7721d9ce5"
+          },
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json",
+            "sha256": "f8c70019e9186aecd2e56410023756158a40f04a04c7d06934c22c06a38aa305",
+            "sha256_after": "f8c70019e9186aecd2e56410023756158a40f04a04c7d06934c22c06a38aa305"
+          }
+        ],
+        "output_directory": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_004_states768",
+        "declared_results": [
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_004_states768/certificate.json"
+        ],
+        "outputs": [
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_004_states768/stdout.txt",
+            "sha256": "a27259a75303c8ca843f8a6e7120055ac4698e739528fa2c67b4b0c9bcbe640d",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_004_states768/stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_004_states768/certificate.json",
+            "sha256": "716e5bc4b08dd197615a98a2493cc78b82d9cd325cc8e737b401b4cc25dc841c",
+            "kind": "result"
+          }
+        ],
+        "checks": [
+          {
+            "check": "input hashes unchanged",
+            "passed": true
+          },
+          {
+            "check": "process exited successfully within enforced limits",
+            "passed": true
+          },
+          {
+            "check": "declared result files are present and regular",
+            "passed": true
+          }
+        ],
+        "result": "Run completed; mathematical assertion requires interpretation and review.",
+        "residual_risks": [
+          "Command success does not establish the mathematical interpretation.",
+          "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+          "The thread cap uses conventional environment variables; a child program may ignore them.",
+          "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+        ]
+      },
+      "input_byte_recovery": [
+        {
+          "declared_path": "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "sha256": "42604667ab880dc3f211dc667e1772ea01dae10007585064341062a7721d9ce5",
+          "retained_matching_paths": [
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/source_attempt_003.sage",
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/pre_endpoint_fix/MARGINAL_006.sage"
+          ]
+        },
+        {
+          "declared_path": "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json",
+          "sha256": "f8c70019e9186aecd2e56410023756158a40f04a04c7d06934c22c06a38aa305",
+          "retained_matching_paths": [
+            "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json"
+          ]
+        }
+      ]
+    },
+    {
+      "manifest_pin": {
+        "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_005_exact512/manifest.json",
+        "sha256": "03f8fe65a71effc07f49eb3ef121de318aca8aa382ab5d8d99b223ae8ec8cc51",
+        "bytes": 4595
+      },
+      "authoritative_final": false,
+      "manifest": {
+        "schema_version": 2,
+        "claim_id": "S05_MARGINAL_006_EXACT_ENDPOINTS",
+        "repository": {
+          "commit": "f7edd08bd6ab57746d7f5d0879eb2d5ceb0f4637",
+          "dirty": true
+        },
+        "command": [
+          "sage",
+          "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_005_exact512",
+          "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json",
+          "512"
+        ],
+        "environment": {
+          "software": [
+            {
+              "name": "runner-python",
+              "version": "3.13.5"
+            },
+            {
+              "name": "SageMath",
+              "version": "10.9"
+            }
+          ],
+          "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+        },
+        "mathematics": {
+          "assertion_tested": "102 exact QQ capped marginal/reply laws; fresh conditional moment budget; rigorous h=1,c=0 whole-vector rejection cost; explicit crude all-h positive-none and cap bounds; independent 16-step state recursion; exact MPFR endpoints and corrected 005 input",
+          "coefficient_domain": "ZZ/QQ + RealBallField512/768",
+          "conventions": "All 16 marginal samples precomputed; any internal cap exhaustion maps to model none; no success conditioning",
+          "inputs": [
+            "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+            "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json"
+          ],
+          "bounds": {
+            "toy_q": [
+              3,
+              5
+            ],
+            "toy_h_c": "all",
+            "toy_caps": [
+              1,
+              3,
+              17
+            ],
+            "FT_theta_cutoff": 16384
+          },
+          "non_claims": [
+            "No all-h efficient sampler instance",
+            "No kernel or security claim"
+          ]
+        },
+        "randomness": {
+          "used": false,
+          "generator": "",
+          "seed": null
+        },
+        "run": {
+          "started_at": "2026-10-10T17:01:18.507587+00:00",
+          "runtime_seconds": 3.874332,
+          "exit_status": 0,
+          "status": "completed",
+          "timeout_seconds": 180.0,
+          "max_output_bytes": 1048576,
+          "resource_limits": {
+            "memory_bytes": 4294967296,
+            "cpu_seconds": 160,
+            "max_cores": 1,
+            "max_threads": 1
+          },
+          "missing_results": [],
+          "invalid_results": []
+        },
+        "execution_artifacts": [
+          "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json"
+        ],
+        "input_artifacts": [
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+            "sha256": "3dc162212b294219938ad22dd2ba25656065d46b44c72f6090445e19e61a63ec",
+            "sha256_after": "3dc162212b294219938ad22dd2ba25656065d46b44c72f6090445e19e61a63ec"
+          },
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json",
+            "sha256": "90a0eb5ab55320cd43dd5ffff2f48e924b9b8a8caca622cac6fa64ac4886a31a",
+            "sha256_after": "90a0eb5ab55320cd43dd5ffff2f48e924b9b8a8caca622cac6fa64ac4886a31a"
+          }
+        ],
+        "output_directory": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_005_exact512",
+        "declared_results": [
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_005_exact512/certificate.json"
+        ],
+        "outputs": [
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_005_exact512/stdout.txt",
+            "sha256": "a27259a75303c8ca843f8a6e7120055ac4698e739528fa2c67b4b0c9bcbe640d",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_005_exact512/stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_005_exact512/certificate.json",
+            "sha256": "61c0171be03b974571caa0de359f3217c4eb78ea0f5752430f1177049d4c7f62",
+            "kind": "result"
+          }
+        ],
+        "checks": [
+          {
+            "check": "input hashes unchanged",
+            "passed": true
+          },
+          {
+            "check": "process exited successfully within enforced limits",
+            "passed": true
+          },
+          {
+            "check": "declared result files are present and regular",
+            "passed": true
+          }
+        ],
+        "result": "Run completed; mathematical assertion requires interpretation and review.",
+        "residual_risks": [
+          "Command success does not establish the mathematical interpretation.",
+          "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+          "The thread cap uses conventional environment variables; a child program may ignore them.",
+          "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+        ]
+      },
+      "input_byte_recovery": [
+        {
+          "declared_path": "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "sha256": "3dc162212b294219938ad22dd2ba25656065d46b44c72f6090445e19e61a63ec",
+          "retained_matching_paths": [
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/source_attempt_005.sage"
+          ]
+        },
+        {
+          "declared_path": "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json",
+          "sha256": "90a0eb5ab55320cd43dd5ffff2f48e924b9b8a8caca622cac6fa64ac4886a31a",
+          "retained_matching_paths": [
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_512/certificate.json",
+            "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json"
+          ]
+        }
+      ]
+    },
+    {
+      "manifest_pin": {
+        "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_006_exact768/manifest.json",
+        "sha256": "f7fc4697330cff01928214a519edc6b8489624c0f1ad0a58b585cd47ca21f0bb",
+        "bytes": 4595
+      },
+      "authoritative_final": false,
+      "manifest": {
+        "schema_version": 2,
+        "claim_id": "S05_MARGINAL_006_EXACT_ENDPOINTS",
+        "repository": {
+          "commit": "f7edd08bd6ab57746d7f5d0879eb2d5ceb0f4637",
+          "dirty": true
+        },
+        "command": [
+          "sage",
+          "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_006_exact768",
+          "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json",
+          "768"
+        ],
+        "environment": {
+          "software": [
+            {
+              "name": "runner-python",
+              "version": "3.13.5"
+            },
+            {
+              "name": "SageMath",
+              "version": "10.9"
+            }
+          ],
+          "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+        },
+        "mathematics": {
+          "assertion_tested": "102 exact QQ capped marginal/reply laws; fresh conditional moment budget; rigorous h=1,c=0 whole-vector rejection cost; explicit crude all-h positive-none and cap bounds; independent 16-step state recursion; exact MPFR endpoints and corrected 005 input",
+          "coefficient_domain": "ZZ/QQ + RealBallField512/768",
+          "conventions": "All 16 marginal samples precomputed; any internal cap exhaustion maps to model none; no success conditioning",
+          "inputs": [
+            "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+            "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json"
+          ],
+          "bounds": {
+            "toy_q": [
+              3,
+              5
+            ],
+            "toy_h_c": "all",
+            "toy_caps": [
+              1,
+              3,
+              17
+            ],
+            "FT_theta_cutoff": 16384
+          },
+          "non_claims": [
+            "No all-h efficient sampler instance",
+            "No kernel or security claim"
+          ]
+        },
+        "randomness": {
+          "used": false,
+          "generator": "",
+          "seed": null
+        },
+        "run": {
+          "started_at": "2026-10-10T17:02:12.976794+00:00",
+          "runtime_seconds": 1.418691,
+          "exit_status": 0,
+          "status": "completed",
+          "timeout_seconds": 180.0,
+          "max_output_bytes": 1048576,
+          "resource_limits": {
+            "memory_bytes": 4294967296,
+            "cpu_seconds": 160,
+            "max_cores": 1,
+            "max_threads": 1
+          },
+          "missing_results": [],
+          "invalid_results": []
+        },
+        "execution_artifacts": [
+          "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json"
+        ],
+        "input_artifacts": [
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+            "sha256": "3dc162212b294219938ad22dd2ba25656065d46b44c72f6090445e19e61a63ec",
+            "sha256_after": "3dc162212b294219938ad22dd2ba25656065d46b44c72f6090445e19e61a63ec"
+          },
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json",
+            "sha256": "90a0eb5ab55320cd43dd5ffff2f48e924b9b8a8caca622cac6fa64ac4886a31a",
+            "sha256_after": "90a0eb5ab55320cd43dd5ffff2f48e924b9b8a8caca622cac6fa64ac4886a31a"
+          }
+        ],
+        "output_directory": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_006_exact768",
+        "declared_results": [
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_006_exact768/certificate.json"
+        ],
+        "outputs": [
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_006_exact768/stdout.txt",
+            "sha256": "a27259a75303c8ca843f8a6e7120055ac4698e739528fa2c67b4b0c9bcbe640d",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_006_exact768/stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_006_exact768/certificate.json",
+            "sha256": "53f6e9e1a9ac3c56673dfb121e1eb304278854ba9624f58b60efb6767d9d2727",
+            "kind": "result"
+          }
+        ],
+        "checks": [
+          {
+            "check": "input hashes unchanged",
+            "passed": true
+          },
+          {
+            "check": "process exited successfully within enforced limits",
+            "passed": true
+          },
+          {
+            "check": "declared result files are present and regular",
+            "passed": true
+          }
+        ],
+        "result": "Run completed; mathematical assertion requires interpretation and review.",
+        "residual_risks": [
+          "Command success does not establish the mathematical interpretation.",
+          "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+          "The thread cap uses conventional environment variables; a child program may ignore them.",
+          "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+        ]
+      },
+      "input_byte_recovery": [
+        {
+          "declared_path": "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "sha256": "3dc162212b294219938ad22dd2ba25656065d46b44c72f6090445e19e61a63ec",
+          "retained_matching_paths": [
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/source_attempt_005.sage"
+          ]
+        },
+        {
+          "declared_path": "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json",
+          "sha256": "90a0eb5ab55320cd43dd5ffff2f48e924b9b8a8caca622cac6fa64ac4886a31a",
+          "retained_matching_paths": [
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_512/certificate.json",
+            "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json"
+          ]
+        }
+      ]
+    },
+    {
+      "manifest_pin": {
+        "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_007_guarded512/manifest.json",
+        "sha256": "7c89e206700bbe827bb81a45f2f3c1251918f1ff0c41887fc132015b3855e231",
+        "bytes": 4606
+      },
+      "authoritative_final": true,
+      "manifest": {
+        "schema_version": 2,
+        "claim_id": "S05_MARGINAL_006_EXACT_ENDPOINTS",
+        "repository": {
+          "commit": "f7edd08bd6ab57746d7f5d0879eb2d5ceb0f4637",
+          "dirty": true
+        },
+        "command": [
+          "sage",
+          "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_007_guarded512",
+          "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json",
+          "512"
+        ],
+        "environment": {
+          "software": [
+            {
+              "name": "runner-python",
+              "version": "3.13.5"
+            },
+            {
+              "name": "SageMath",
+              "version": "10.9"
+            }
+          ],
+          "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+        },
+        "mathematics": {
+          "assertion_tested": "102 exact QQ capped marginal/reply laws; fresh conditional moment budget; rigorous h=1,c=0 whole-vector rejection cost; explicit crude all-h positive-none and cap bounds; independent 16-step state recursion; exact MPFR endpoints and corrected 005 input",
+          "coefficient_domain": "ZZ/QQ + RealBallField512/768",
+          "conventions": "All 16 marginal samples precomputed; any internal cap exhaustion maps to model none; no success conditioning",
+          "inputs": [
+            "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+            "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json"
+          ],
+          "bounds": {
+            "toy_q": [
+              3,
+              5
+            ],
+            "toy_h_c": "all",
+            "toy_caps": [
+              1,
+              3,
+              17
+            ],
+            "FT_theta_cutoff": 16384
+          },
+          "non_claims": [
+            "No all-h efficient sampler instance",
+            "No kernel or security claim"
+          ]
+        },
+        "randomness": {
+          "used": false,
+          "generator": "",
+          "seed": null
+        },
+        "run": {
+          "started_at": "2026-10-10T17:03:24.878092+00:00",
+          "runtime_seconds": 1.42125,
+          "exit_status": 0,
+          "status": "completed",
+          "timeout_seconds": 180.0,
+          "max_output_bytes": 1048576,
+          "resource_limits": {
+            "memory_bytes": 4294967296,
+            "cpu_seconds": 160,
+            "max_cores": 1,
+            "max_threads": 1
+          },
+          "missing_results": [],
+          "invalid_results": []
+        },
+        "execution_artifacts": [
+          "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json"
+        ],
+        "input_artifacts": [
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+            "sha256": "d77ef5fa7e4fac2ba797e763d45b6d216a1881ec72ac1f77b0d84ffc1e423523",
+            "sha256_after": "d77ef5fa7e4fac2ba797e763d45b6d216a1881ec72ac1f77b0d84ffc1e423523"
+          },
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json",
+            "sha256": "90a0eb5ab55320cd43dd5ffff2f48e924b9b8a8caca622cac6fa64ac4886a31a",
+            "sha256_after": "90a0eb5ab55320cd43dd5ffff2f48e924b9b8a8caca622cac6fa64ac4886a31a"
+          }
+        ],
+        "output_directory": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_007_guarded512",
+        "declared_results": [
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_007_guarded512/certificate.json"
+        ],
+        "outputs": [
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_007_guarded512/stdout.txt",
+            "sha256": "a27259a75303c8ca843f8a6e7120055ac4698e739528fa2c67b4b0c9bcbe640d",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_007_guarded512/stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_007_guarded512/certificate.json",
+            "sha256": "61c0171be03b974571caa0de359f3217c4eb78ea0f5752430f1177049d4c7f62",
+            "kind": "result"
+          }
+        ],
+        "checks": [
+          {
+            "check": "input hashes unchanged",
+            "passed": true
+          },
+          {
+            "check": "process exited successfully within enforced limits",
+            "passed": true
+          },
+          {
+            "check": "declared result files are present and regular",
+            "passed": true
+          }
+        ],
+        "result": "Run completed; mathematical assertion requires interpretation and review.",
+        "residual_risks": [
+          "Command success does not establish the mathematical interpretation.",
+          "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+          "The thread cap uses conventional environment variables; a child program may ignore them.",
+          "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+        ]
+      },
+      "input_byte_recovery": [
+        {
+          "declared_path": "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "sha256": "d77ef5fa7e4fac2ba797e763d45b6d216a1881ec72ac1f77b0d84ffc1e423523",
+          "retained_matching_paths": [
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/source_attempt_007.sage",
+            "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage"
+          ]
+        },
+        {
+          "declared_path": "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json",
+          "sha256": "90a0eb5ab55320cd43dd5ffff2f48e924b9b8a8caca622cac6fa64ac4886a31a",
+          "retained_matching_paths": [
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_512/certificate.json",
+            "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json"
+          ]
+        }
+      ]
+    },
+    {
+      "manifest_pin": {
+        "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_008_guarded768/manifest.json",
+        "sha256": "4e3c3c0caaa4b80e8a3d2ebd5f5358133b5e2c953db8766b82f602334430a407",
+        "bytes": 4607
+      },
+      "authoritative_final": true,
+      "manifest": {
+        "schema_version": 2,
+        "claim_id": "S05_MARGINAL_006_EXACT_ENDPOINTS",
+        "repository": {
+          "commit": "f7edd08bd6ab57746d7f5d0879eb2d5ceb0f4637",
+          "dirty": true
+        },
+        "command": [
+          "sage",
+          "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_008_guarded768",
+          "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json",
+          "768"
+        ],
+        "environment": {
+          "software": [
+            {
+              "name": "runner-python",
+              "version": "3.13.5"
+            },
+            {
+              "name": "SageMath",
+              "version": "10.9"
+            }
+          ],
+          "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+        },
+        "mathematics": {
+          "assertion_tested": "102 exact QQ capped marginal/reply laws; fresh conditional moment budget; rigorous h=1,c=0 whole-vector rejection cost; explicit crude all-h positive-none and cap bounds; independent 16-step state recursion; exact MPFR endpoints and corrected 005 input",
+          "coefficient_domain": "ZZ/QQ + RealBallField512/768",
+          "conventions": "All 16 marginal samples precomputed; any internal cap exhaustion maps to model none; no success conditioning",
+          "inputs": [
+            "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+            "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json"
+          ],
+          "bounds": {
+            "toy_q": [
+              3,
+              5
+            ],
+            "toy_h_c": "all",
+            "toy_caps": [
+              1,
+              3,
+              17
+            ],
+            "FT_theta_cutoff": 16384
+          },
+          "non_claims": [
+            "No all-h efficient sampler instance",
+            "No kernel or security claim"
+          ]
+        },
+        "randomness": {
+          "used": false,
+          "generator": "",
+          "seed": null
+        },
+        "run": {
+          "started_at": "2026-10-10T17:03:55.303829+00:00",
+          "runtime_seconds": 1.418972,
+          "exit_status": 0,
+          "status": "completed",
+          "timeout_seconds": 180.0,
+          "max_output_bytes": 1048576,
+          "resource_limits": {
+            "memory_bytes": 4294967296,
+            "cpu_seconds": 160,
+            "max_cores": 1,
+            "max_threads": 1
+          },
+          "missing_results": [],
+          "invalid_results": []
+        },
+        "execution_artifacts": [
+          "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json"
+        ],
+        "input_artifacts": [
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+            "sha256": "d77ef5fa7e4fac2ba797e763d45b6d216a1881ec72ac1f77b0d84ffc1e423523",
+            "sha256_after": "d77ef5fa7e4fac2ba797e763d45b6d216a1881ec72ac1f77b0d84ffc1e423523"
+          },
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json",
+            "sha256": "90a0eb5ab55320cd43dd5ffff2f48e924b9b8a8caca622cac6fa64ac4886a31a",
+            "sha256_after": "90a0eb5ab55320cd43dd5ffff2f48e924b9b8a8caca622cac6fa64ac4886a31a"
+          }
+        ],
+        "output_directory": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_008_guarded768",
+        "declared_results": [
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_008_guarded768/certificate.json"
+        ],
+        "outputs": [
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_008_guarded768/stdout.txt",
+            "sha256": "a27259a75303c8ca843f8a6e7120055ac4698e739528fa2c67b4b0c9bcbe640d",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_008_guarded768/stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_008_guarded768/certificate.json",
+            "sha256": "53f6e9e1a9ac3c56673dfb121e1eb304278854ba9624f58b60efb6767d9d2727",
+            "kind": "result"
+          }
+        ],
+        "checks": [
+          {
+            "check": "input hashes unchanged",
+            "passed": true
+          },
+          {
+            "check": "process exited successfully within enforced limits",
+            "passed": true
+          },
+          {
+            "check": "declared result files are present and regular",
+            "passed": true
+          }
+        ],
+        "result": "Run completed; mathematical assertion requires interpretation and review.",
+        "residual_risks": [
+          "Command success does not establish the mathematical interpretation.",
+          "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+          "The thread cap uses conventional environment variables; a child program may ignore them.",
+          "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+        ]
+      },
+      "input_byte_recovery": [
+        {
+          "declared_path": "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "sha256": "d77ef5fa7e4fac2ba797e763d45b6d216a1881ec72ac1f77b0d84ffc1e423523",
+          "retained_matching_paths": [
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/source_attempt_007.sage",
+            "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage"
+          ]
+        },
+        {
+          "declared_path": "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json",
+          "sha256": "90a0eb5ab55320cd43dd5ffff2f48e924b9b8a8caca622cac6fa64ac4886a31a",
+          "retained_matching_paths": [
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_512/certificate.json",
+            "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json"
+          ]
+        }
+      ]
+    },
+    {
+      "manifest_pin": {
+        "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_512/manifest.json",
+        "sha256": "db31f1e166a3330f619b6279a77b741e31bbcb0900c63bc6948e3953dd6b4418",
+        "bytes": 4038
+      },
+      "authoritative_final": true,
+      "manifest": {
+        "schema_version": 2,
+        "claim_id": "S05_NORMALIZER_005_ENDPOINT_ERRATUM",
+        "repository": {
+          "commit": "f7edd08bd6ab57746d7f5d0879eb2d5ceb0f4637",
+          "dirty": true
+        },
+        "command": [
+          "sage",
+          "proofs/ft1536/development/S05_QROM/notes/FIBER_NORMALIZER_005_CORRECTED.sage",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_512",
+          "512"
+        ],
+        "environment": {
+          "software": [
+            {
+              "name": "runner-python",
+              "version": "3.13.5"
+            },
+            {
+              "name": "SageMath",
+              "version": "10.9"
+            }
+          ],
+          "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+        },
+        "mathematics": {
+          "assertion_tested": "Certified shifted residual normalizers and reciprocals; h=1,c=0 full finite-box fiber normalizer and cap16 alias-TV bounds; sequential pre-norm moment lower bound; corrected exact MPFR endpoint conversion",
+          "coefficient_domain": "ZZ/QQ exact and RealBallField at >=512 bits",
+          "conventions": "q2=x^2+xy+y^2; q=18433,sigma=768,box=65535,768 blocks; no success conditioning",
+          "inputs": [
+            "proofs/ft1536/development/S05_QROM/notes/FIBER_NORMALIZER_005_CORRECTED.sage"
+          ],
+          "bounds": {
+            "local_fixtures": 16,
+            "theta_cutoff": 16384,
+            "alias_inner_shell": 2,
+            "dimension": 1536
+          },
+          "non_claims": [
+            "Not an all-h joint moment certificate",
+            "Not a kernel proof or source/security claim"
+          ]
+        },
+        "randomness": {
+          "used": false,
+          "generator": "",
+          "seed": null
+        },
+        "run": {
+          "started_at": "2026-10-10T17:00:44.397243+00:00",
+          "runtime_seconds": 1.368767,
+          "exit_status": 0,
+          "status": "completed",
+          "timeout_seconds": 180.0,
+          "max_output_bytes": 1048576,
+          "resource_limits": {
+            "memory_bytes": 4294967296,
+            "cpu_seconds": 160,
+            "max_cores": 1,
+            "max_threads": 1
+          },
+          "missing_results": [],
+          "invalid_results": []
+        },
+        "execution_artifacts": [
+          "proofs/ft1536/development/S05_QROM/notes/FIBER_NORMALIZER_005_CORRECTED.sage"
+        ],
+        "input_artifacts": [
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/FIBER_NORMALIZER_005_CORRECTED.sage",
+            "sha256": "3f25c436f8def166b1e0e8f75704c2b884bca543f32e8537728dc05749e4e2df",
+            "sha256_after": "3f25c436f8def166b1e0e8f75704c2b884bca543f32e8537728dc05749e4e2df"
+          }
+        ],
+        "output_directory": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_512",
+        "declared_results": [
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_512/certificate.json"
+        ],
+        "outputs": [
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_512/stdout.txt",
+            "sha256": "0fec12a2baac3ab4819119dee7999b222e2ecb09f71f59813faa109ac517724a",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_512/stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_512/certificate.json",
+            "sha256": "90a0eb5ab55320cd43dd5ffff2f48e924b9b8a8caca622cac6fa64ac4886a31a",
+            "kind": "result"
+          }
+        ],
+        "checks": [
+          {
+            "check": "input hashes unchanged",
+            "passed": true
+          },
+          {
+            "check": "process exited successfully within enforced limits",
+            "passed": true
+          },
+          {
+            "check": "declared result files are present and regular",
+            "passed": true
+          }
+        ],
+        "result": "Run completed; mathematical assertion requires interpretation and review.",
+        "residual_risks": [
+          "Command success does not establish the mathematical interpretation.",
+          "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+          "The thread cap uses conventional environment variables; a child program may ignore them.",
+          "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+        ]
+      },
+      "input_byte_recovery": [
+        {
+          "declared_path": "proofs/ft1536/development/S05_QROM/notes/FIBER_NORMALIZER_005_CORRECTED.sage",
+          "sha256": "3f25c436f8def166b1e0e8f75704c2b884bca543f32e8537728dc05749e4e2df",
+          "retained_matching_paths": [
+            "proofs/ft1536/development/S05_QROM/notes/FIBER_NORMALIZER_005_CORRECTED.sage"
+          ]
+        }
+      ]
+    },
+    {
+      "manifest_pin": {
+        "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_768/manifest.json",
+        "sha256": "c6920c1ddbeb339ab8f9095e58c96adf25880db35c97b512ec2cfbf4c1a02c95",
+        "bytes": 4038
+      },
+      "authoritative_final": true,
+      "manifest": {
+        "schema_version": 2,
+        "claim_id": "S05_NORMALIZER_005_ENDPOINT_ERRATUM",
+        "repository": {
+          "commit": "f7edd08bd6ab57746d7f5d0879eb2d5ceb0f4637",
+          "dirty": true
+        },
+        "command": [
+          "sage",
+          "proofs/ft1536/development/S05_QROM/notes/FIBER_NORMALIZER_005_CORRECTED.sage",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_768",
+          "768"
+        ],
+        "environment": {
+          "software": [
+            {
+              "name": "runner-python",
+              "version": "3.13.5"
+            },
+            {
+              "name": "SageMath",
+              "version": "10.9"
+            }
+          ],
+          "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+        },
+        "mathematics": {
+          "assertion_tested": "Certified shifted residual normalizers and reciprocals; h=1,c=0 full finite-box fiber normalizer and cap16 alias-TV bounds; sequential pre-norm moment lower bound; corrected exact MPFR endpoint conversion",
+          "coefficient_domain": "ZZ/QQ exact and RealBallField at >=512 bits",
+          "conventions": "q2=x^2+xy+y^2; q=18433,sigma=768,box=65535,768 blocks; no success conditioning",
+          "inputs": [
+            "proofs/ft1536/development/S05_QROM/notes/FIBER_NORMALIZER_005_CORRECTED.sage"
+          ],
+          "bounds": {
+            "local_fixtures": 16,
+            "theta_cutoff": 16384,
+            "alias_inner_shell": 2,
+            "dimension": 1536
+          },
+          "non_claims": [
+            "Not an all-h joint moment certificate",
+            "Not a kernel proof or source/security claim"
+          ]
+        },
+        "randomness": {
+          "used": false,
+          "generator": "",
+          "seed": null
+        },
+        "run": {
+          "started_at": "2026-10-10T17:01:18.554570+00:00",
+          "runtime_seconds": 4.174177,
+          "exit_status": 0,
+          "status": "completed",
+          "timeout_seconds": 180.0,
+          "max_output_bytes": 1048576,
+          "resource_limits": {
+            "memory_bytes": 4294967296,
+            "cpu_seconds": 160,
+            "max_cores": 1,
+            "max_threads": 1
+          },
+          "missing_results": [],
+          "invalid_results": []
+        },
+        "execution_artifacts": [
+          "proofs/ft1536/development/S05_QROM/notes/FIBER_NORMALIZER_005_CORRECTED.sage"
+        ],
+        "input_artifacts": [
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/FIBER_NORMALIZER_005_CORRECTED.sage",
+            "sha256": "3f25c436f8def166b1e0e8f75704c2b884bca543f32e8537728dc05749e4e2df",
+            "sha256_after": "3f25c436f8def166b1e0e8f75704c2b884bca543f32e8537728dc05749e4e2df"
+          }
+        ],
+        "output_directory": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_768",
+        "declared_results": [
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_768/certificate.json"
+        ],
+        "outputs": [
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_768/stdout.txt",
+            "sha256": "0fec12a2baac3ab4819119dee7999b222e2ecb09f71f59813faa109ac517724a",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_768/stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_768/certificate.json",
+            "sha256": "bc6aca80387b9c5191cd0e383f947d3f558f0b31fca4edf8c1894ae8e20d6653",
+            "kind": "result"
+          }
+        ],
+        "checks": [
+          {
+            "check": "input hashes unchanged",
+            "passed": true
+          },
+          {
+            "check": "process exited successfully within enforced limits",
+            "passed": true
+          },
+          {
+            "check": "declared result files are present and regular",
+            "passed": true
+          }
+        ],
+        "result": "Run completed; mathematical assertion requires interpretation and review.",
+        "residual_risks": [
+          "Command success does not establish the mathematical interpretation.",
+          "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+          "The thread cap uses conventional environment variables; a child program may ignore them.",
+          "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+        ]
+      },
+      "input_byte_recovery": [
+        {
+          "declared_path": "proofs/ft1536/development/S05_QROM/notes/FIBER_NORMALIZER_005_CORRECTED.sage",
+          "sha256": "3f25c436f8def166b1e0e8f75704c2b884bca543f32e8537728dc05749e4e2df",
+          "retained_matching_paths": [
+            "proofs/ft1536/development/S05_QROM/notes/FIBER_NORMALIZER_005_CORRECTED.sage"
+          ]
+        }
+      ]
+    },
+    {
+      "manifest_pin": {
+        "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_crosscheck/manifest.json",
+        "sha256": "1be8cce65c5ee33ffdf800d215dad8f5e6b80db6e024931b69a3002fb216d163",
+        "bytes": 4987
+      },
+      "authoritative_final": true,
+      "manifest": {
+        "schema_version": 2,
+        "claim_id": "S05_corrected_normalizer_crosscheck",
+        "repository": {
+          "commit": "f7edd08bd6ab57746d7f5d0879eb2d5ceb0f4637",
+          "dirty": true
+        },
+        "command": [
+          "sage",
+          "proofs/ft1536/development/S05_QROM/notes/CROSSCHECK_NORMALIZER_005.sage",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_512/certificate.json",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_768/certificate.json",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_crosscheck"
+        ],
+        "environment": {
+          "software": [
+            {
+              "name": "runner-python",
+              "version": "3.13.5"
+            },
+            {
+              "name": "SageMath",
+              "version": "10.9"
+            }
+          ],
+          "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+        },
+        "mathematics": {
+          "assertion_tested": "Exact cross-precision comparison using corrected MPFR endpoint conversion and claim inequalities",
+          "coefficient_domain": "QQ",
+          "conventions": "Exact rational endpoint strings; uncertainty widths are precision dependent",
+          "inputs": [
+            "proofs/ft1536/development/S05_QROM/notes/CROSSCHECK_NORMALIZER_005.sage",
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_512/certificate.json",
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_768/certificate.json"
+          ],
+          "bounds": {
+            "precisions": [
+              512,
+              768
+            ]
+          },
+          "non_claims": [
+            "Not independent theorem verification"
+          ]
+        },
+        "randomness": {
+          "used": false,
+          "generator": "",
+          "seed": null
+        },
+        "run": {
+          "started_at": "2026-10-10T17:02:46.615601+00:00",
+          "runtime_seconds": 1.017852,
+          "exit_status": 0,
+          "status": "completed",
+          "timeout_seconds": 60.0,
+          "max_output_bytes": 1048576,
+          "resource_limits": {
+            "memory_bytes": 4294967296,
+            "cpu_seconds": 45,
+            "max_cores": 1,
+            "max_threads": 1
+          },
+          "missing_results": [],
+          "invalid_results": []
+        },
+        "execution_artifacts": [
+          "proofs/ft1536/development/S05_QROM/notes/CROSSCHECK_NORMALIZER_005.sage",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_512/certificate.json",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_768/certificate.json"
+        ],
+        "input_artifacts": [
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/CROSSCHECK_NORMALIZER_005.sage",
+            "sha256": "d37236e28440627fcc0c8a38c45d217eebdd513475886e7b0da3109d698aa817",
+            "sha256_after": "d37236e28440627fcc0c8a38c45d217eebdd513475886e7b0da3109d698aa817"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_512/certificate.json",
+            "sha256": "90a0eb5ab55320cd43dd5ffff2f48e924b9b8a8caca622cac6fa64ac4886a31a",
+            "sha256_after": "90a0eb5ab55320cd43dd5ffff2f48e924b9b8a8caca622cac6fa64ac4886a31a"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_768/certificate.json",
+            "sha256": "bc6aca80387b9c5191cd0e383f947d3f558f0b31fca4edf8c1894ae8e20d6653",
+            "sha256_after": "bc6aca80387b9c5191cd0e383f947d3f558f0b31fca4edf8c1894ae8e20d6653"
+          }
+        ],
+        "output_directory": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_crosscheck",
+        "declared_results": [
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_crosscheck/crosscheck.json"
+        ],
+        "outputs": [
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_crosscheck/stdout.txt",
+            "sha256": "d9ebd4232c65f15244b0f382e19332b44aea6b29ede7b4a67253756108bf6825",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_crosscheck/stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_crosscheck/crosscheck.json",
+            "sha256": "d8bf9cb72648fec0aab10ae7d8e82642a4899f3bf3d3d9f3cfc6f245854d6eb3",
+            "kind": "result"
+          }
+        ],
+        "checks": [
+          {
+            "check": "input hashes unchanged",
+            "passed": true
+          },
+          {
+            "check": "process exited successfully within enforced limits",
+            "passed": true
+          },
+          {
+            "check": "declared result files are present and regular",
+            "passed": true
+          }
+        ],
+        "result": "Run completed; mathematical assertion requires interpretation and review.",
+        "residual_risks": [
+          "Command success does not establish the mathematical interpretation.",
+          "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+          "The thread cap uses conventional environment variables; a child program may ignore them.",
+          "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+        ]
+      },
+      "input_byte_recovery": [
+        {
+          "declared_path": "proofs/ft1536/development/S05_QROM/notes/CROSSCHECK_NORMALIZER_005.sage",
+          "sha256": "d37236e28440627fcc0c8a38c45d217eebdd513475886e7b0da3109d698aa817",
+          "retained_matching_paths": [
+            "proofs/ft1536/development/S05_QROM/notes/CROSSCHECK_NORMALIZER_005.sage"
+          ]
+        },
+        {
+          "declared_path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_512/certificate.json",
+          "sha256": "90a0eb5ab55320cd43dd5ffff2f48e924b9b8a8caca622cac6fa64ac4886a31a",
+          "retained_matching_paths": [
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_512/certificate.json",
+            "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CORRECTED_CERTIFICATE.json"
+          ]
+        },
+        {
+          "declared_path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_768/certificate.json",
+          "sha256": "bc6aca80387b9c5191cd0e383f947d3f558f0b31fca4edf8c1894ae8e20d6653",
+          "retained_matching_paths": [
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/corrected_normalizer_768/certificate.json",
+            "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CORRECTED_PRECISION768.json"
+          ]
+        }
+      ]
+    },
+    {
+      "manifest_pin": {
+        "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/crosscheck_001/manifest.json",
+        "sha256": "b6244a21dc1e645b893b3826743b1ce07ea155773004e1aaad2b2932b76f9f19",
+        "bytes": 4980
+      },
+      "authoritative_final": false,
+      "manifest": {
+        "schema_version": 2,
+        "claim_id": "S05_MARGINAL_006_CROSSCHECK",
+        "repository": {
+          "commit": "f7edd08bd6ab57746d7f5d0879eb2d5ceb0f4637",
+          "dirty": true
+        },
+        "command": [
+          "sage",
+          "proofs/ft1536/development/S05_QROM/notes/CROSSCHECK_MARGINAL_006.sage",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_003_states512/certificate.json",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_004_states768/certificate.json",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/crosscheck_001"
+        ],
+        "environment": {
+          "software": [
+            {
+              "name": "runner-python",
+              "version": "3.13.5"
+            },
+            {
+              "name": "SageMath",
+              "version": "10.9"
+            }
+          ],
+          "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+        },
+        "mathematics": {
+          "assertion_tested": "Exact equality of 102 finite laws across precisions; overlapping common-real enclosures; threshold bounds at both precisions",
+          "coefficient_domain": "QQ",
+          "conventions": "Precision-dependent endpoint majorants checked against thresholds",
+          "inputs": [
+            "proofs/ft1536/development/S05_QROM/notes/CROSSCHECK_MARGINAL_006.sage",
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_003_states512/certificate.json",
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_004_states768/certificate.json"
+          ],
+          "bounds": {
+            "precisions": [
+              512,
+              768
+            ],
+            "finite_laws": 102
+          },
+          "non_claims": [
+            "Not independent proof review"
+          ]
+        },
+        "randomness": {
+          "used": false,
+          "generator": "",
+          "seed": null
+        },
+        "run": {
+          "started_at": "2026-10-10T16:58:39.722441+00:00",
+          "runtime_seconds": 1.51973,
+          "exit_status": 1,
+          "status": "failed",
+          "timeout_seconds": 60.0,
+          "max_output_bytes": 1048576,
+          "resource_limits": {
+            "memory_bytes": 4294967296,
+            "cpu_seconds": 45,
+            "max_cores": 1,
+            "max_threads": 1
+          },
+          "missing_results": [
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/crosscheck_001/crosscheck.json"
+          ],
+          "invalid_results": []
+        },
+        "execution_artifacts": [
+          "proofs/ft1536/development/S05_QROM/notes/CROSSCHECK_MARGINAL_006.sage",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_003_states512/certificate.json",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_004_states768/certificate.json"
+        ],
+        "input_artifacts": [
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/CROSSCHECK_MARGINAL_006.sage",
+            "sha256": "f2b16599c556cf76c95f5d37930fa5aaab609011fd0d277d88059833e9dc79c1",
+            "sha256_after": "f2b16599c556cf76c95f5d37930fa5aaab609011fd0d277d88059833e9dc79c1"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_003_states512/certificate.json",
+            "sha256": "3207fc56b0b3d6c73ef82025abace275d15a603767d6016a32f2640daac937bb",
+            "sha256_after": "3207fc56b0b3d6c73ef82025abace275d15a603767d6016a32f2640daac937bb"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_004_states768/certificate.json",
+            "sha256": "716e5bc4b08dd197615a98a2493cc78b82d9cd325cc8e737b401b4cc25dc841c",
+            "sha256_after": "716e5bc4b08dd197615a98a2493cc78b82d9cd325cc8e737b401b4cc25dc841c"
+          }
+        ],
+        "output_directory": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/crosscheck_001",
+        "declared_results": [
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/crosscheck_001/crosscheck.json"
+        ],
+        "outputs": [
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/crosscheck_001/stdout.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/crosscheck_001/stderr.txt",
+            "sha256": "586d5d44c3f437dc508738a1a267525bab3d87fba3febec8b0071b0d8783923e",
+            "kind": "log"
+          }
+        ],
+        "checks": [
+          {
+            "check": "input hashes unchanged",
+            "passed": true
+          },
+          {
+            "check": "process exited successfully within enforced limits",
+            "passed": false
+          },
+          {
+            "check": "declared result files are present and regular",
+            "passed": false
+          }
+        ],
+        "result": "Run failed; mathematical assertion requires interpretation and review.",
+        "residual_risks": [
+          "Command success does not establish the mathematical interpretation.",
+          "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+          "The thread cap uses conventional environment variables; a child program may ignore them.",
+          "The POSIX CPU-time limit is per process, not an aggregate descendant budget.",
+          "Declared results were not produced: proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/crosscheck_001/crosscheck.json",
+          "A nonzero exit under an address-space cap does not by itself show whether the cap was reached."
+        ]
+      },
+      "input_byte_recovery": [
+        {
+          "declared_path": "proofs/ft1536/development/S05_QROM/notes/CROSSCHECK_MARGINAL_006.sage",
+          "sha256": "f2b16599c556cf76c95f5d37930fa5aaab609011fd0d277d88059833e9dc79c1",
+          "retained_matching_paths": [
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/crosscheck_source_attempt_001.sage",
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/pre_endpoint_fix/CROSSCHECK_MARGINAL_006.sage"
+          ]
+        },
+        {
+          "declared_path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_003_states512/certificate.json",
+          "sha256": "3207fc56b0b3d6c73ef82025abace275d15a603767d6016a32f2640daac937bb",
+          "retained_matching_paths": [
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_003_states512/certificate.json",
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/pre_endpoint_fix/MARGINAL_006_CERTIFICATE.json"
+          ]
+        },
+        {
+          "declared_path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_004_states768/certificate.json",
+          "sha256": "716e5bc4b08dd197615a98a2493cc78b82d9cd325cc8e737b401b4cc25dc841c",
+          "retained_matching_paths": [
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_004_states768/certificate.json",
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/pre_endpoint_fix/MARGINAL_006_PRECISION768.json"
+          ]
+        }
+      ]
+    },
+    {
+      "manifest_pin": {
+        "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/crosscheck_002_exact/manifest.json",
+        "sha256": "a94c457ef7736f95e208669522feb72a1ffb1a099ba39db1ccb52a94697d4bd8",
+        "bytes": 4976
+      },
+      "authoritative_final": false,
+      "manifest": {
+        "schema_version": 2,
+        "claim_id": "S05_crosscheck_002_exact",
+        "repository": {
+          "commit": "f7edd08bd6ab57746d7f5d0879eb2d5ceb0f4637",
+          "dirty": true
+        },
+        "command": [
+          "sage",
+          "proofs/ft1536/development/S05_QROM/notes/CROSSCHECK_MARGINAL_006.sage",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_005_exact512/certificate.json",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_006_exact768/certificate.json",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/crosscheck_002_exact"
+        ],
+        "environment": {
+          "software": [
+            {
+              "name": "runner-python",
+              "version": "3.13.5"
+            },
+            {
+              "name": "SageMath",
+              "version": "10.9"
+            }
+          ],
+          "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+        },
+        "mathematics": {
+          "assertion_tested": "Exact cross-precision comparison using corrected MPFR endpoint conversion and claim inequalities",
+          "coefficient_domain": "QQ",
+          "conventions": "Exact rational endpoint strings; uncertainty widths are precision dependent",
+          "inputs": [
+            "proofs/ft1536/development/S05_QROM/notes/CROSSCHECK_MARGINAL_006.sage",
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_005_exact512/certificate.json",
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_006_exact768/certificate.json"
+          ],
+          "bounds": {
+            "precisions": [
+              512,
+              768
+            ]
+          },
+          "non_claims": [
+            "Not independent theorem verification"
+          ]
+        },
+        "randomness": {
+          "used": false,
+          "generator": "",
+          "seed": null
+        },
+        "run": {
+          "started_at": "2026-10-10T17:02:47.773833+00:00",
+          "runtime_seconds": 1.018406,
+          "exit_status": 1,
+          "status": "failed",
+          "timeout_seconds": 60.0,
+          "max_output_bytes": 1048576,
+          "resource_limits": {
+            "memory_bytes": 4294967296,
+            "cpu_seconds": 45,
+            "max_cores": 1,
+            "max_threads": 1
+          },
+          "missing_results": [
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/crosscheck_002_exact/crosscheck.json"
+          ],
+          "invalid_results": []
+        },
+        "execution_artifacts": [
+          "proofs/ft1536/development/S05_QROM/notes/CROSSCHECK_MARGINAL_006.sage",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_005_exact512/certificate.json",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_006_exact768/certificate.json"
+        ],
+        "input_artifacts": [
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/CROSSCHECK_MARGINAL_006.sage",
+            "sha256": "38523b1f1947135b25ac5b2efaf6412e0bea7c9248961c1274cb47b321813c6f",
+            "sha256_after": "38523b1f1947135b25ac5b2efaf6412e0bea7c9248961c1274cb47b321813c6f"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_005_exact512/certificate.json",
+            "sha256": "61c0171be03b974571caa0de359f3217c4eb78ea0f5752430f1177049d4c7f62",
+            "sha256_after": "61c0171be03b974571caa0de359f3217c4eb78ea0f5752430f1177049d4c7f62"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_006_exact768/certificate.json",
+            "sha256": "53f6e9e1a9ac3c56673dfb121e1eb304278854ba9624f58b60efb6767d9d2727",
+            "sha256_after": "53f6e9e1a9ac3c56673dfb121e1eb304278854ba9624f58b60efb6767d9d2727"
+          }
+        ],
+        "output_directory": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/crosscheck_002_exact",
+        "declared_results": [
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/crosscheck_002_exact/crosscheck.json"
+        ],
+        "outputs": [
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/crosscheck_002_exact/stdout.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/crosscheck_002_exact/stderr.txt",
+            "sha256": "f594c57fb2374a354be0a795f66d2011c93a1ece90111802d04dab231af6d08e",
+            "kind": "log"
+          }
+        ],
+        "checks": [
+          {
+            "check": "input hashes unchanged",
+            "passed": true
+          },
+          {
+            "check": "process exited successfully within enforced limits",
+            "passed": false
+          },
+          {
+            "check": "declared result files are present and regular",
+            "passed": false
+          }
+        ],
+        "result": "Run failed; mathematical assertion requires interpretation and review.",
+        "residual_risks": [
+          "Command success does not establish the mathematical interpretation.",
+          "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+          "The thread cap uses conventional environment variables; a child program may ignore them.",
+          "The POSIX CPU-time limit is per process, not an aggregate descendant budget.",
+          "Declared results were not produced: proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/crosscheck_002_exact/crosscheck.json",
+          "A nonzero exit under an address-space cap does not by itself show whether the cap was reached."
+        ]
+      },
+      "input_byte_recovery": [
+        {
+          "declared_path": "proofs/ft1536/development/S05_QROM/notes/CROSSCHECK_MARGINAL_006.sage",
+          "sha256": "38523b1f1947135b25ac5b2efaf6412e0bea7c9248961c1274cb47b321813c6f",
+          "retained_matching_paths": [
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/crosscheck_source_attempt_002.sage"
+          ]
+        },
+        {
+          "declared_path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_005_exact512/certificate.json",
+          "sha256": "61c0171be03b974571caa0de359f3217c4eb78ea0f5752430f1177049d4c7f62",
+          "retained_matching_paths": [
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_007_guarded512/certificate.json",
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_005_exact512/certificate.json",
+            "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006_CERTIFICATE.json"
+          ]
+        },
+        {
+          "declared_path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_006_exact768/certificate.json",
+          "sha256": "53f6e9e1a9ac3c56673dfb121e1eb304278854ba9624f58b60efb6767d9d2727",
+          "retained_matching_paths": [
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_008_guarded768/certificate.json",
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_006_exact768/certificate.json",
+            "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006_PRECISION768.json"
+          ]
+        }
+      ]
+    },
+    {
+      "manifest_pin": {
+        "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/crosscheck_003_final/manifest.json",
+        "sha256": "95f2f60c4b8d98dbd262afe028b7b7042374b5dd231cd92441adedbde09b56fa",
+        "bytes": 4895
+      },
+      "authoritative_final": true,
+      "manifest": {
+        "schema_version": 2,
+        "claim_id": "S05_MARGINAL_006_FINAL_CROSSCHECK",
+        "repository": {
+          "commit": "f7edd08bd6ab57746d7f5d0879eb2d5ceb0f4637",
+          "dirty": true
+        },
+        "command": [
+          "sage",
+          "proofs/ft1536/development/S05_QROM/notes/CROSSCHECK_MARGINAL_006.sage",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_007_guarded512/certificate.json",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_008_guarded768/certificate.json",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/crosscheck_003_final"
+        ],
+        "environment": {
+          "software": [
+            {
+              "name": "runner-python",
+              "version": "3.13.5"
+            },
+            {
+              "name": "SageMath",
+              "version": "10.9"
+            }
+          ],
+          "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+        },
+        "mathematics": {
+          "assertion_tested": "Exact cross-precision comparison using corrected MPFR endpoint conversion and claim inequalities",
+          "coefficient_domain": "QQ",
+          "conventions": "Exact rational endpoint strings; uncertainty widths are precision dependent",
+          "inputs": [
+            "proofs/ft1536/development/S05_QROM/notes/CROSSCHECK_MARGINAL_006.sage",
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_007_guarded512/certificate.json",
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_008_guarded768/certificate.json"
+          ],
+          "bounds": {
+            "precisions": [
+              512,
+              768
+            ]
+          },
+          "non_claims": [
+            "Not independent theorem verification"
+          ]
+        },
+        "randomness": {
+          "used": false,
+          "generator": "",
+          "seed": null
+        },
+        "run": {
+          "started_at": "2026-10-10T17:04:29.786082+00:00",
+          "runtime_seconds": 1.018485,
+          "exit_status": 0,
+          "status": "completed",
+          "timeout_seconds": 60.0,
+          "max_output_bytes": 1048576,
+          "resource_limits": {
+            "memory_bytes": 4294967296,
+            "cpu_seconds": 45,
+            "max_cores": 1,
+            "max_threads": 1
+          },
+          "missing_results": [],
+          "invalid_results": []
+        },
+        "execution_artifacts": [
+          "proofs/ft1536/development/S05_QROM/notes/CROSSCHECK_MARGINAL_006.sage",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_007_guarded512/certificate.json",
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_008_guarded768/certificate.json"
+        ],
+        "input_artifacts": [
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/CROSSCHECK_MARGINAL_006.sage",
+            "sha256": "09a81aaf985e5a5873e141288cd13db3e7db0b6e92f304dba190d8ea0ff3f890",
+            "sha256_after": "09a81aaf985e5a5873e141288cd13db3e7db0b6e92f304dba190d8ea0ff3f890"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_007_guarded512/certificate.json",
+            "sha256": "61c0171be03b974571caa0de359f3217c4eb78ea0f5752430f1177049d4c7f62",
+            "sha256_after": "61c0171be03b974571caa0de359f3217c4eb78ea0f5752430f1177049d4c7f62"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_008_guarded768/certificate.json",
+            "sha256": "53f6e9e1a9ac3c56673dfb121e1eb304278854ba9624f58b60efb6767d9d2727",
+            "sha256_after": "53f6e9e1a9ac3c56673dfb121e1eb304278854ba9624f58b60efb6767d9d2727"
+          }
+        ],
+        "output_directory": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/crosscheck_003_final",
+        "declared_results": [
+          "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/crosscheck_003_final/crosscheck.json"
+        ],
+        "outputs": [
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/crosscheck_003_final/stdout.txt",
+            "sha256": "56a139d1473ed67f0192c2445321988eff29d57b9249901751ff1f2cbb54b630",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/crosscheck_003_final/stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/crosscheck_003_final/crosscheck.json",
+            "sha256": "26ae8e2601f148af47212cc7c27742c38032f5c068bb9ce670102dc15e251093",
+            "kind": "result"
+          }
+        ],
+        "checks": [
+          {
+            "check": "input hashes unchanged",
+            "passed": true
+          },
+          {
+            "check": "process exited successfully within enforced limits",
+            "passed": true
+          },
+          {
+            "check": "declared result files are present and regular",
+            "passed": true
+          }
+        ],
+        "result": "Run completed; mathematical assertion requires interpretation and review.",
+        "residual_risks": [
+          "Command success does not establish the mathematical interpretation.",
+          "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+          "The thread cap uses conventional environment variables; a child program may ignore them.",
+          "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+        ]
+      },
+      "input_byte_recovery": [
+        {
+          "declared_path": "proofs/ft1536/development/S05_QROM/notes/CROSSCHECK_MARGINAL_006.sage",
+          "sha256": "09a81aaf985e5a5873e141288cd13db3e7db0b6e92f304dba190d8ea0ff3f890",
+          "retained_matching_paths": [
+            "proofs/ft1536/development/S05_QROM/notes/CROSSCHECK_MARGINAL_006.sage"
+          ]
+        },
+        {
+          "declared_path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_007_guarded512/certificate.json",
+          "sha256": "61c0171be03b974571caa0de359f3217c4eb78ea0f5752430f1177049d4c7f62",
+          "retained_matching_paths": [
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_007_guarded512/certificate.json",
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_005_exact512/certificate.json",
+            "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006_CERTIFICATE.json"
+          ]
+        },
+        {
+          "declared_path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_008_guarded768/certificate.json",
+          "sha256": "53f6e9e1a9ac3c56673dfb121e1eb304278854ba9624f58b60efb6767d9d2727",
+          "retained_matching_paths": [
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_008_guarded768/certificate.json",
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/attempt_006_exact768/certificate.json",
+            "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006_PRECISION768.json"
+          ]
+        }
+      ]
+    },
+    {
+      "manifest_pin": {
+        "path": "proofs/ft1536/development/S05_QROM/.build/marginal_006/attempt_001/manifest.json",
+        "sha256": "85e83624c336a37fc4df031ed9ecd7c0cf2f836412e813eaac971a47a0b4c458",
+        "bytes": 4419
+      },
+      "authoritative_final": false,
+      "manifest": {
+        "schema_version": 2,
+        "claim_id": "S05_MARGINAL_006",
+        "repository": {
+          "commit": "f7edd08bd6ab57746d7f5d0879eb2d5ceb0f4637",
+          "dirty": true
+        },
+        "command": [
+          "sage",
+          "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "proofs/ft1536/development/S05_QROM/.build/marginal_006/attempt_001",
+          "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json",
+          "512"
+        ],
+        "environment": {
+          "software": [
+            {
+              "name": "runner-python",
+              "version": "3.13.5"
+            },
+            {
+              "name": "SageMath",
+              "version": "10.9"
+            }
+          ],
+          "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+        },
+        "mathematics": {
+          "assertion_tested": "102 exact QQ capped marginal/reply laws; fresh conditional moment budget; rigorous h=1,c=0 whole-vector rejection cost; explicit crude all-h positive-none and cap bounds",
+          "coefficient_domain": "ZZ/QQ + RealBallField512/768",
+          "conventions": "All 16 marginal samples precomputed; any internal cap exhaustion maps to model none; no success conditioning",
+          "inputs": [
+            "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+            "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json"
+          ],
+          "bounds": {
+            "toy_q": [
+              3,
+              5
+            ],
+            "toy_h_c": "all",
+            "toy_caps": [
+              1,
+              3,
+              17
+            ],
+            "FT_theta_cutoff": 16384
+          },
+          "non_claims": [
+            "No all-h efficient sampler instance",
+            "No kernel or security claim"
+          ]
+        },
+        "randomness": {
+          "used": false,
+          "generator": "",
+          "seed": null
+        },
+        "run": {
+          "started_at": "2026-10-10T16:52:45.120591+00:00",
+          "runtime_seconds": 1.31848,
+          "exit_status": 0,
+          "status": "completed",
+          "timeout_seconds": 180.0,
+          "max_output_bytes": 1048576,
+          "resource_limits": {
+            "memory_bytes": 4294967296,
+            "cpu_seconds": 160,
+            "max_cores": 1,
+            "max_threads": 1
+          },
+          "missing_results": [],
+          "invalid_results": []
+        },
+        "execution_artifacts": [
+          "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json"
+        ],
+        "input_artifacts": [
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+            "sha256": "071a25a651232a00d3c4599c754bcd858fd52e902905e6e68148debf0d314837",
+            "sha256_after": "071a25a651232a00d3c4599c754bcd858fd52e902905e6e68148debf0d314837"
+          },
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json",
+            "sha256": "f8c70019e9186aecd2e56410023756158a40f04a04c7d06934c22c06a38aa305",
+            "sha256_after": "f8c70019e9186aecd2e56410023756158a40f04a04c7d06934c22c06a38aa305"
+          }
+        ],
+        "output_directory": "proofs/ft1536/development/S05_QROM/.build/marginal_006/attempt_001",
+        "declared_results": [
+          "proofs/ft1536/development/S05_QROM/.build/marginal_006/attempt_001/certificate.json"
+        ],
+        "outputs": [
+          {
+            "path": "proofs/ft1536/development/S05_QROM/.build/marginal_006/attempt_001/stdout.txt",
+            "sha256": "a27259a75303c8ca843f8a6e7120055ac4698e739528fa2c67b4b0c9bcbe640d",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/development/S05_QROM/.build/marginal_006/attempt_001/stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/development/S05_QROM/.build/marginal_006/attempt_001/certificate.json",
+            "sha256": "81d12a777d068401fbe16bbe6fcd0c1f4883dc7339a7991b09a55131a6c1e9d2",
+            "kind": "result"
+          }
+        ],
+        "checks": [
+          {
+            "check": "input hashes unchanged",
+            "passed": true
+          },
+          {
+            "check": "process exited successfully within enforced limits",
+            "passed": true
+          },
+          {
+            "check": "declared result files are present and regular",
+            "passed": true
+          }
+        ],
+        "result": "Run completed; mathematical assertion requires interpretation and review.",
+        "residual_risks": [
+          "Command success does not establish the mathematical interpretation.",
+          "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+          "The thread cap uses conventional environment variables; a child program may ignore them.",
+          "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+        ]
+      },
+      "input_byte_recovery": [
+        {
+          "declared_path": "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "sha256": "071a25a651232a00d3c4599c754bcd858fd52e902905e6e68148debf0d314837",
+          "retained_matching_paths": [
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/source_attempt_001.sage",
+            "proofs/ft1536/development/S05_QROM/.build/marginal_006/source_attempt_001.sage"
+          ]
+        },
+        {
+          "declared_path": "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json",
+          "sha256": "f8c70019e9186aecd2e56410023756158a40f04a04c7d06934c22c06a38aa305",
+          "retained_matching_paths": [
+            "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json"
+          ]
+        }
+      ]
+    },
+    {
+      "manifest_pin": {
+        "path": "proofs/ft1536/development/S05_QROM/.build/marginal_006/attempt_002_precision768/manifest.json",
+        "sha256": "4f6af6c19f7f6fa6e4ded2f48cbc85cae33e4d7ca01da80247f050a78463070c",
+        "bytes": 4498
+      },
+      "authoritative_final": false,
+      "manifest": {
+        "schema_version": 2,
+        "claim_id": "S05_MARGINAL_006",
+        "repository": {
+          "commit": "f7edd08bd6ab57746d7f5d0879eb2d5ceb0f4637",
+          "dirty": true
+        },
+        "command": [
+          "sage",
+          "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "proofs/ft1536/development/S05_QROM/.build/marginal_006/attempt_002_precision768",
+          "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json",
+          "768"
+        ],
+        "environment": {
+          "software": [
+            {
+              "name": "runner-python",
+              "version": "3.13.5"
+            },
+            {
+              "name": "SageMath",
+              "version": "10.9"
+            }
+          ],
+          "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+        },
+        "mathematics": {
+          "assertion_tested": "102 exact QQ capped marginal/reply laws; fresh conditional moment budget; rigorous h=1,c=0 whole-vector rejection cost; explicit crude all-h positive-none and cap bounds",
+          "coefficient_domain": "ZZ/QQ + RealBallField512/768",
+          "conventions": "All 16 marginal samples precomputed; any internal cap exhaustion maps to model none; no success conditioning",
+          "inputs": [
+            "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+            "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json"
+          ],
+          "bounds": {
+            "toy_q": [
+              3,
+              5
+            ],
+            "toy_h_c": "all",
+            "toy_caps": [
+              1,
+              3,
+              17
+            ],
+            "FT_theta_cutoff": 16384
+          },
+          "non_claims": [
+            "No all-h efficient sampler instance",
+            "No kernel or security claim"
+          ]
+        },
+        "randomness": {
+          "used": false,
+          "generator": "",
+          "seed": null
+        },
+        "run": {
+          "started_at": "2026-10-10T16:55:03.559106+00:00",
+          "runtime_seconds": 1.318208,
+          "exit_status": 0,
+          "status": "completed",
+          "timeout_seconds": 180.0,
+          "max_output_bytes": 1048576,
+          "resource_limits": {
+            "memory_bytes": 4294967296,
+            "cpu_seconds": 160,
+            "max_cores": 1,
+            "max_threads": 1
+          },
+          "missing_results": [],
+          "invalid_results": []
+        },
+        "execution_artifacts": [
+          "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json"
+        ],
+        "input_artifacts": [
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+            "sha256": "071a25a651232a00d3c4599c754bcd858fd52e902905e6e68148debf0d314837",
+            "sha256_after": "071a25a651232a00d3c4599c754bcd858fd52e902905e6e68148debf0d314837"
+          },
+          {
+            "path": "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json",
+            "sha256": "f8c70019e9186aecd2e56410023756158a40f04a04c7d06934c22c06a38aa305",
+            "sha256_after": "f8c70019e9186aecd2e56410023756158a40f04a04c7d06934c22c06a38aa305"
+          }
+        ],
+        "output_directory": "proofs/ft1536/development/S05_QROM/.build/marginal_006/attempt_002_precision768",
+        "declared_results": [
+          "proofs/ft1536/development/S05_QROM/.build/marginal_006/attempt_002_precision768/certificate.json"
+        ],
+        "outputs": [
+          {
+            "path": "proofs/ft1536/development/S05_QROM/.build/marginal_006/attempt_002_precision768/stdout.txt",
+            "sha256": "a27259a75303c8ca843f8a6e7120055ac4698e739528fa2c67b4b0c9bcbe640d",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/development/S05_QROM/.build/marginal_006/attempt_002_precision768/stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "kind": "log"
+          },
+          {
+            "path": "proofs/ft1536/development/S05_QROM/.build/marginal_006/attempt_002_precision768/certificate.json",
+            "sha256": "0a4ecf42a826c806d6f7dc9acbe658f0b916fc2b1cdee56671614da13c14070d",
+            "kind": "result"
+          }
+        ],
+        "checks": [
+          {
+            "check": "input hashes unchanged",
+            "passed": true
+          },
+          {
+            "check": "process exited successfully within enforced limits",
+            "passed": true
+          },
+          {
+            "check": "declared result files are present and regular",
+            "passed": true
+          }
+        ],
+        "result": "Run completed; mathematical assertion requires interpretation and review.",
+        "residual_risks": [
+          "Command success does not establish the mathematical interpretation.",
+          "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+          "The thread cap uses conventional environment variables; a child program may ignore them.",
+          "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+        ]
+      },
+      "input_byte_recovery": [
+        {
+          "declared_path": "proofs/ft1536/development/S05_QROM/notes/MARGINAL_006.sage",
+          "sha256": "071a25a651232a00d3c4599c754bcd858fd52e902905e6e68148debf0d314837",
+          "retained_matching_paths": [
+            "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/source_attempt_001.sage",
+            "proofs/ft1536/development/S05_QROM/.build/marginal_006/source_attempt_001.sage"
+          ]
+        },
+        {
+          "declared_path": "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json",
+          "sha256": "f8c70019e9186aecd2e56410023756158a40f04a04c7d06934c22c06a38aa305",
+          "retained_matching_paths": [
+            "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_CERTIFICATE.json"
+          ]
+        }
+      ]
+    }
+  ],
+  "final_runs": [
+    "corrected_normalizer_512",
+    "corrected_normalizer_768",
+    "corrected_normalizer_crosscheck",
+    "attempt_007_guarded512",
+    "attempt_008_guarded768",
+    "crosscheck_003_final"
+  ],
+  "final_manifest_validation": "All six final manifests validate with --root, including source freshness and output hashes.",
+  "history_validation": "All recorded output hashes checked. Historical changed input files matched byte-for-byte to retained snapshots; historical numerical results before endpoint repair are superseded, not final evidence.",
+  "endpoint_erratum": {
+    "cause": "QQ(MPFR endpoint) may rationally approximate and move inward, affecting both reconstructed intervals and serialized endpoints.",
+    "discovery": "crosscheck_001 failed cross-precision overlap for joint-excess endpoint strings.",
+    "scope": "Original NORMALIZER-005 numerical witnesses and early MARGINAL-006 numerical witnesses. Exact QQ capped-law algebra and symbolic shifted-weight theorem unaffected.",
+    "repair": "Separate corrected 005 source/certificates; exact_rational() at all MPFR boundaries; interval type guards; fresh replay at 512/768; guard rejecting old 005 input; negative QQ-conversion regression.",
+    "old_005_files_unchanged": true,
+    "new_report": {
+      "path": "proofs/ft1536/development/S05_QROM/notes/NORMALIZER_005_ERRATUM_001.tex",
+      "sha256": "da5ff56822aab3fd342bdf5bdb3e4484dace213bb112f3884cc4dadbf140e090",
+      "bytes": 2974
+    }
+  },
+  "failed_attempts": [
+    {
+      "run": "crosscheck_001",
+      "kind": "arithmetic endpoint conversion bug exposed",
+      "source_snapshot": {
+        "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/crosscheck_source_attempt_001.sage",
+        "sha256": "f2b16599c556cf76c95f5d37930fa5aaab609011fd0d277d88059833e9dc79c1",
+        "bytes": 1548
+      },
+      "status": "preserved; superseded by corrected computation"
+    },
+    {
+      "run": "crosscheck_002_exact",
+      "kind": "JSON serialization of Sage Integer after all arithmetic assertions passed",
+      "repair": "Explicit Python int conversion in result metadata only",
+      "source_snapshot": {
+        "path": "proofs/ft1536/work/FT1536_S05_QROM_001/marginal_006/crosscheck_source_attempt_002.sage",
+        "sha256": "38523b1f1947135b25ac5b2efaf6412e0bea7c9248961c1274cb47b321813c6f",
+        "bytes": 2319
+      },
+      "status": "preserved; final crosscheck_003_final passes"
+    }
+  ],
+  "runtime_location_correction": {
+    "issue": "Two preliminary runs initially used development/.build instead of the user-assigned work location.",
+    "resolution": "Both retained unchanged; authoritative later runs use work/FT1536_S05_QROM_001/marginal_006 with TMPDIR/DOT_SAGE/XDG_CACHE_HOME there.",
+    "no_history_overwrite": true
+  },
+  "checks": {
+    "exact_capped_laws": 102,
+    "independent_state_recurrence": true,
+    "negative_support_control": true,
+    "corrected_normalizer_interval_checks": 50,
+    "marginal_common_interval_checks": 3,
+    "exact_binary_endpoint_regression": true,
+    "final_stderr_empty": true,
+    "new_kernel": false,
+    "independent_review": false
+  },
+  "proofreading": {
+    "scope": "MARGINAL_006.tex, OBSTRUCTIONS_001.tex, NORMALIZER_005_ERRATUM_001.tex and new README paragraphs",
+    "routine_edits": [
+      "explicit scope of each obstruction",
+      "distinguish cost and moment",
+      "exact endpoint correction notice"
+    ],
+    "substantive_changes": "Numerical implementation correction, with full preserved history and replay; symbolic theorem bounds unchanged after replay."
+  },
+  "scope_guards": [
+    "e<2^-119 is conditional on fresh proposal, relative coin and cap certificates, not an implemented all-h witness.",
+    "Naive whole-vector rejection cost obstruction is scoped to U=w/G and a constant envelope.",
+    "DyadicObstruction remains textual with an unexecuted Lean draft.",
+    "No T12.1/B20/mainline/paper/site statuses changed."
+  ],
+  "foreign_new_files_seen": [
+    "notes/TARGET_CONTRACT_001.tex",
+    "notes/TARGET_CONTRACT_001_INPUTS.json"
+  ],
+  "foreign_new_files_action": "Not read, changed, staged or committed by this work.",
+  "git_policy": {
+    "branch": "main",
+    "author": "configured niirmataa identity",
+    "push": false
+  }
+}
