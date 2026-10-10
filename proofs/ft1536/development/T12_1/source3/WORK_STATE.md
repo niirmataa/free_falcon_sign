@@ -1,5 +1,30 @@
 # T12.1/source3 — żywy stan
 
+## B1.07 — CLOSED at sixth-certificate-gate midpoint — 2026-10-10
+
+**CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
+**B1.07 Acceptance NOT MET;package IN_PROGRESS / WORKING_NOT_FROZEN.**
+Exactly one close in BATCH_051,MiMo V2.6 Pro. Resume:**31R**.
+
+The mandatory sixth gate now executes at the actual caller tail (profile-
+mandatory call;accepted break needs the truthy certificate return;retries
+its falsy one;no normal fallthrough). Six-gate chronology instantiates the
+PLAN named interfaces (AttemptExecution/Accepted/Rejected,LoopExecution/
+LoopSucceeded,attemptCap,successful_loop_last_attempt) over certificate
+rejection retries and the final accepted break with counter0-derived bounds.
+The accepted call consumes the pinned certificate package (Bound/StoredBounds/
+CallerFrame/dead bad/768 words) with LegalWorkspace as explicit local input;
+foreign blocks keep bytes through every gate edge (general-ret frame+leave),
+transporting f/g/F/G/h Representations across rejections and the break.
+scratch.block=0 is derived from the workspace bridge FIELD;the relocation
+derivation and the M0 table-block inversion stay OPEN. Sage controls:6×4,
+all mutations detected (explicit mocks). Entry10876 pins (`c594bf1e…`);
+sealed pair below;all failed snapshots retained;limits unchanged.
+Own commits:`8df5c233`,tool follow-ups,closing pair. NO push/review/
+delegation/relay/migration/import. Window CLOSED once,not auto-resumed.
+
+# T12.1/source3 — żywy stan
+
 ## B1.07 — CLOSED at chronological five-gate source-prefix midpoint — 2026-10-10
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**

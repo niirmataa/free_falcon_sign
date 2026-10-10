@@ -1,3 +1,76 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.07 sixth certificate gate / retries midpoint
+
+**B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
+**Package: IN_PROGRESS / WORKING_NOT_FROZEN.**
+2026-10-10,BATCH_051,MiMo V2.6 Pro (`xiaomi-token-plan-ams`).
+**CLOSED_AT_RECOVERABLE_MIDPOINT.** Exactly one close this window.
+B1.05/032 and B1.06/046 unchanged;B1.08/B4/B5 NOT entered.
+Handoff:**31R**. Exact types/pins/traps:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_051_NOTES.md`.
+
+## 31. Closed — the sixth gate executes; retries and foreign-block transport
+
+1. The mandatory leaf-certificate gate now EXECUTES at the actual caller
+   tail: fixed source shapes, the seven arguments incl. `(fpr *)fk->tmp`,
+   profile-mandatory call, accepted break requires the truthy certificate
+   return, retries its falsy one, no normal fallthrough. No acceptance or
+   certificate-correctness premise exists.
+2. Six-gate chronology: AttemptExecution/AttemptAccepted/AttemptRejected/
+   LoopExecution/LoopSucceeded/attemptCap=3000000 and
+   successful_loop_last_attempt are instantiated over certificate rejection
+   retries and the final accepted break; counter/numbering bound from048
+   counter0, callee preserves caller cells.
+3. The accepted call DERIVES the pinned certificate package (Bound,
+   StoredBounds, CallerFrame, dead bad, 768 gate words) via the consumed
+   accepted theorem; LegalWorkspace is the same explicit local input class
+   the pinned theorem takes. Foreign blocks keep their bytes through every
+   gate edge (general-ret source_frame + leave shape); Representations and
+   public h cells transport across rejections and the accepted break.
+4. scratch.block=0 is DERIVED from the workspace bridge FIELD; the bridge
+   itself (general scratch vs block0 workspacePointer) is the OPEN
+   relocation obligation. M0 table-block inversion (blocks 1,2) for a
+   general call_same_block frame stays OPEN (ite inversion not closed with
+   clean logs; see retained failures).
+5. Entry10876 pins (`c594bf1e…`) unchanged;three proofs+audit0/0:90 audit
+   entries (54 new declarations+36 inspected inherited), full terms,
+   standard axioms, zero elisions. Native Sage scripted PUBLIC controls:
+   6 cases×4 mutations, all detected (EXPLICIT MOCKS; no real KeyGen/
+   solver/certificate/codec, no law claim). All failed snapshots retained
+   (projection/keyword/index-field/refine/simp-literal causes); limits
+   unchanged. Own commits `8df5c233` + tool follow-ups + closing pair.
+
+### 31.1 Exact exports and remaining B1.07 obligations
+
+Gate/loop exports are in the audit; the PLAN named interfaces hold over the
+six-gate `LoopTrace`. Remaining, in unchanged plan order: (1) workspace
+relocation (discharge CertBind.workspace from source facts); (2) SAME h/
+equations on one material witness incl. the solver-call h frame and accepted
+physical f/g/F/G/h through the encoding tail; (3) Initial/legal/static
+retry frames and whole enclosing invocation/each later return; (4) actual
+globals/common call ID/snapshots composition. These are missing source
+composition proofs, NOT C/numerical counterexamples. Acceptance NOT met;
+Codecs B1.08/09 and B4/B5 laws stay outside.
+
+## 31R. Handoff — continue B1.07 AFTER the sixth gate,NOT from acceptance
+
+1. This window is CLOSED at exactly one recoverable midpoint,NOT Acceptance.
+   Do not auto-restart or enter B1.08/B4/B5. Preserve BATCH_015–051 and all
+   earlier/failed bytes. Next owner-started window continues in31.1 order.
+2. BEFORE edits/jobs:
+   ```sh
+   mkdir -p .build/levels_052
+   python3 -B tools/keygen_make_cert_batch.py verify <BATCH_051.json sha> <BATCH_051_NOTES.md sha> .build/levels_052/ENTRY_PINS_052.json
+   ```
+   Expect the sealed051 pin set and no supersession/job. Mismatch is
+   stop-and-report, not silent repair.
+3. Use NEW modules; preserve051 sources/products. The workspace bridge is
+   an explicit field; never promote it to a derived fact or insert
+   certificate outcomes as premises. Inspect actual types before composing.
+4. One owner-started stage/window, one Acceptance or expanded midpoint,
+   bounded serial guarded jobs, unchanged limits/0/0 logs/native Sage.
+   Small local exact-path commits;push only on explicit owner signal;no
+   automatic review/delegation/relay/migration/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.07 chronological five-gate source prefix midpoint
 
 **B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
