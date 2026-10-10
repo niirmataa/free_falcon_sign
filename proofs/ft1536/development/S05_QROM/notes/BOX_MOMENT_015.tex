@@ -1,0 +1,200 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm]{geometry}
+\usepackage{fontspec}\setmainfont{Latin Modern Roman}
+\setmonofont{Latin Modern Mono}[Scale=0.85]
+\usepackage{amsmath,amssymb,amsthm,longtable,booktabs,xurl,hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{3em}
+\newcommand{\code}[1]{\nolinkurl{#1}}
+\newtheorem{theorem}{Twierdzenie}
+\title{Conditional full-reply moment certificate\\\large S05 / BOX\_MOMENT\_015}
+\author{Notatka robocza dla Niirmata}\date{10 października 2026}
+\begin{document}\maketitle
+\textbf{Klasa: obowiązek dowodowy Q-SAMPLER. Status: kernelowy wynik
+warunkowy, bez niezależnego odbioru.} Domknięto matematyczny transport od
+trzech mas nieskończonych do pełnego prawa odpowiedzi. Wzmocniony budżet
+wynosi $e=2^{-47}$; historyczne $2^{-44}$ pozostaje poprawnym wnioskiem.
+Nie dostarczono tutaj instancji dominacji dla kodu samplera007, jego dowodu
+kosztu ani źródłowego pokrycia prawa kluczy. Nie jest to twierdzenie
+bezpieczeństwa FT1536 w QROM.
+
+\section{Samodzielne zdanie}
+Niech $R=\mathbb Z[X]/(X^{1536}-X^{768}+1)$, $q=18433$ oraz
+$h\in R/qR$. Dla $z=(v,w)\in R^2$ używamy energii
+\[
+ Q(z)=Q_0(v)+Q_0(w),\qquad
+ Q_0(v)=\sum_{i=0}^{767}(v_i^2+v_i v_{i+768}+v_{i+768}^2).
+\]
+Niech $A_h(v,w)=v+hw\pmod q$, $B=2093922385$, $\alpha=1/1179648$
+i $\mathcal B=[-65535,65535]^{3072}\cap\mathbb Z^{3072}$.
+Dla wszystkich $c\in R/qR$ zakładamy jedną wspólną skalę $K>0$:
+\[
+ (1-2^{-34})K t^{-1536}\le Z^\infty_c(t)
+ :=\sum_{z:A_hz=c}e^{-t\alpha Q(z)}
+ \le(1+2^{-34})K t^{-1536},\quad
+ t\in\{1,t_N,t_X\},
+\]
+\[
+ t_N=1811939328/2093922385,\qquad t_X=9/16. \tag{M}
+\]
+To dokładnie przesłanka014/007. Nie dodajemy temperatury$7/8$.
+
+Prawo uczciwe $P_h$ losuje jednostajnie$c$, następnie wykonuje do16
+niezależnych prób z rozkładu proporcjonalnego do $e^{-\alpha Q(z)}$ na
+$\{z\in\mathcal B:A_hz=c\}$. Pierwsza próba z $Q(z)<B$ przechodzi do
+emisji. Emisja zwraca drugi wektor, jeżeli każdy jego współczynnik należy do
+$[-32768,32767]$, a inaczej zwraca$\bot$. Brak zaakceptowanej próby także
+zwraca$\bot$. Wynikiem jest pełna para$(c,o)$, gdzie$o$ może być$\bot$.
+
+Prawo publiczne $J^0_h$ losuje $z\in\mathcal B$ z masą proporcjonalną do
+$\mathbf1_{Q(z)<B}e^{-\alpha Q(z)}$, po czym zwraca$(A_hz,\operatorname{emit}(z))$.
+To definicja prawa, jeszcze nie certyfikat efektywnego algorytmu.
+
+\begin{theorem}[Pełny moment pod jawną dominacją]
+Jeżeli zachodzi(M), a dowolne prawo$J_h$ na tej samej przestrzeni pełnych
+odpowiedzi spełnia dla \emph{każdej} odpowiedzi$x$, także$(c,\bot)$,
+\[
+ J_h(x)\le (1+2^{-60})J^0_h(x), \tag{Dom}
+\]
+to
+\[
+ J_h\ll P_h,\qquad \sum_x\frac{J_h(x)^2}{P_h(x)}\le1+2^{-47}.
+\]
+Sumę rozumiemy na nośniku$P_h$; poza nim obie masy są zerowe dzięki
+osobno dowiedzionej absolutnej ciągłości.
+\end{theorem}
+Eksport: \code{FullMoment015.strengthened_joint_certificate}.
+Przesłanka(Dom) jest obowiązkiem dowodowym konkretnego samplera, a nie
+nowym założeniem kryptograficznym. Sam typ certyfikatu nie dostarcza(Dom).
+
+\section{Dowód i ponowne użycie ROM}
+\textbf{Zbieżność i box.}
+Dodatnia dolna granica(M) wyklucza niesumowalność rzeczywistego szeregu:
+Lean w takim przypadku nadaje mu wartość0. Po uzyskaniu sumowalności
+skończona masa jest dokładnie sumą po osadzonym boxie, a jej dopełnienie
+jest pełnym ogonem. Z istniejącego lematu ROM
+$3x^2\le4(x^2+xy+y^2)$ oraz encoderów wynika
+\[
+ z\notin\mathcal B\Longrightarrow Q(z)\ge B_X=3\cdot65536^2/4=3221225472.
+\]
+Przy$t_X$ granica Markowa daje
+\[
+ 0\le Z^\infty_c(1)-Z_c\le
+ e^{-3584/3}(1+2^{-34})(16/9)^{1536}K\le2^{-160}K,
+\]
+przy czym$Z_c=\sum_{z\in\mathcal B:A_hz=c}e^{-\alpha Q(z)}$.
+Stąd, przy$L=1-2^{-34}-2^{-160}$ oraz$U=1+2^{-34}$,
+\[
+ LK\le Z_c\le UK,\qquad L>0.
+\]
+Jest to jawny, konserwatywny zamiennik ostrzejszych stałych tekstowego007.
+
+\textbf{Normalizatory i odrzucanie.}
+Ogólny eksport ROM \code{NormalizerComparison.finiteFlat_of_common_scale}
+daje, dla$M=|R/qR|$, $T=\sum_c Z_c$ i$\rho=2^{-32}$,
+\[
+ (1-\rho)T\le M Z_c\le(1+\rho)T.
+\]
+Z \code{GaussianFiberTilt.rejection_chernoff} przy dokładnym$t_N$ otrzymujemy
+jednolicie prawdopodobieństwo odrzucenia normy$r_c<u=2^{-24}$.
+Kernel dowodzi potrzebnej numeryki przez
+$\log(2093922385/1811939328)\le144665/10^6$; wystarcza siedem wyrazów
+sumy dolnej eksponenty. Żadne zaokrąglenie zmiennoprzecinkowe nie jest
+aksjomatem tego dowodu.
+
+\textbf{Marginal po akceptacji.}
+Niech$S_c=(1-r_c)Z_c$, $S=\sum_c S_c$ oraz$\nu_c=S_c/S$.
+Z$(1-u)T\le S\le T$ dostajemy
+\[
+ |M\nu_c-1|\le z_0:=\frac{\rho+u}{1-u}.
+\]
+Istniejąca tożsamość \code{Divergence.centered_energy} wykorzystuje
+$\sum_c\nu_c=1$ i daje
+\[
+ M\sum_c\nu_c^2\le1+z_0^2.
+\]
+Nie zastępujemy tego przez$(1+z_0)^2$.
+
+\textbf{Cała odpowiedź, łącznie z porażkami.}
+Niech$L_c$ będzie prawem emisji zaakceptowanego atomu i$\pi_c=1-r_c^{16}$.
+Istniejące \code{FiberBinding.public_joint_factor/signBody_is_mix} dają
+\[
+ J^0_h(c,o)=\nu_c L_c(o),\qquad
+ P_h(c,o)=\frac1M\bigl(\pi_c L_c(o)+(1-\pi_c)\mathbf1_{o=\bot}\bigr).
+\]
+\emph{Nie zakładamy$L_c(\bot)=0$.} Lemat \code{EmitMixture.second_le_inv}
+obejmuje także nakładające się powody abortu. Razem z
+\code{Divergence.joint_bound} daje to
+\[
+ J^0_h\ll P_h,\qquad
+ \sum_x\frac{J^0_h(x)^2}{P_h(x)}\le\frac{1+z_0^2}{1-u^{16}}.
+\]
+(Dom) przenosi osobno nośnik i kwadrat gęstości:
+\[
+ \sum_x\frac{J_h(x)^2}{P_h(x)}
+ \le E_*:=(1+2^{-60})^2\frac{1+z_0^2}{1-u^{16}}<1+2^{-47}.
+\]
+Kernel sprawdził również$E_*>1+2^{-48}$. To ograniczenie obecnego
+oszacowania; \emph{nie} dolna granica rzeczywistego momentu ani przeszkoda
+dla lepszego samplera. Przybliżenie$E_*-1\approx3.5823\cdot10^{-15}$ jest
+wyłącznie orientacyjne.
+
+\section{Rzeczywista geometria, initial i prawo kluczy}
+Eksport \code{FullMoment015.actual_harmonic_certificate} składa014 z tym
+dowodem. Dla tych samych$f,g,F,G,h,f^{-1}$ wymaga dokładnie
+$fG-gF=q$, $hf=g\pmod q$, $f^{-1}f=1\pmod q$, ternarności$f,g$
+oraz kanonicznej harmonicznej
+\[
+ \frac{1536}{\sum_{\zeta}\bigl(|f(\zeta)|^2+|g(\zeta)|^2\bigr)^{-1}}\ge991,
+\]
+gdzie$\zeta=e^{2\pi i(1+6j)/4608},e^{2\pi i(5+6j)/4608}$, $j<768$.
+Wówczas(M) jest wnioskiem kernelowym, a(Dom) pozostaje jawnym wejściem.
+Nie zakłada się tożsamości Grama, Parsevala ani widmowego Schura.
+
+Dla publicznego algorytmu$\mathsf S$ definiujemy(Dom) tylko dla wywołań
+$\mathsf S(h,\mathrm{initial},m,r)$. Istniejący wrapper011 zawsze podstawia
+publiczne$\mathrm{initial}$, niezależnie od dostarczonego stanu.
+\code{SamplerInterface015.on_keys} daje certyfikat obejmujący każdy stan
+na jawnej dziedzinie kluczy. Nie rekonstruuje historii kwantowych zapytań.
+
+Jeżeli jedno i to samo prawo klucza$\mu_H$ ma nośnik pokryty tą dziedziną,
+\code{SamplerInterface015.same_key_law} zachowuje$J\ll P$ i ten sam moment
+w prawie wspólnej pary$(h,\text{odpowiedź})$. To ponowne użycie011;
+nie dobiera ani nie warunkuje kluczy nowym zdarzeniem pomyślności.
+Rzeczywiste pokrycie nośnika musi dostarczyć dowód źródłowego KeyGen.
+
+\section{Status, koszt i mapa murów}
+\begin{longtable}{p{.28\linewidth}p{.65\linewidth}}
+\toprule Obszar & Rzeczywisty status\\\midrule
+Masa$\to$box$\to$marginal$\to$pełny moment & 47 nowych twierdzeń w6 modułach;
+  kernel w podanych przesłankach, wraz ze wzmocnieniem$2^{-47}$.\\
+Ponowne użycie & 16 potrzebnych modułów ROM i KeySupport011 świeżo
+  zbudowano lokalnie; zależności przypięte. Nie uruchamiano workerów ROM.\\
+Sampler007 & Algorytm/capy i koszt mają wcześniejszy receipt007.
+  Formalne(Dom) dla jego konkretnego kodu i koszt wykonania pozostają OPEN.\\
+Prawo uczciwe & Pełne porażki modelu skończonego: norm cap i emisja signed16.
+  Nie jest to source binding wszystkich wyjść API Sign.\\
+KeyGen/H & Powiązanie całego emitted materiału i$\mu_H$ z$H\ge991$ nadal OPEN.\\
+QROM & Mechanizmy kwantowe, reprogramowanie, PRG i kompozycja nadal OPEN.
+  Brak liczbowej deklaracji poziomu bezpieczeństwa.\\
+\bottomrule
+\end{longtable}
+Koszt buildów jest podany w \code{BOX_MOMENT_015_RECEIPT.json}; jest to koszt
+weryfikacji dowodu, \emph{nie} koszt samplera ani reduktora.
+Następny pakiet: formalna implementacja007, dominacja wszystkich gałęzi
+cap/fallback oraz osobny dowód zasobów. Konstruktory015 nie zamykają tych
+obowiązków. Historyczne próby i stałe007 pozostają niezmienione.
+
+\appendix\section{Eksporty i reprodukcja}
+\code{BoxSupport015}: sumowalność, osadzenie, dokładny ogon, próg energii.
+\code{BoxTail015}: dowód Markowa, stałe boxu, skończone normalizatory i flatness.
+\code{NormTail015}: dokładna temperatura$t_N$ i rzeczywiste odrzucanie normy.
+\code{AcceptedMarginal015}: normalizacja zaakceptowanej masy i anulowanie
+pierwszego momentu. \code{FullMoment015}: całe prawa i dominacja.
+\code{SamplerInterface015}: publiczne initial, wszystkie stany i wspólne$\mu_H$.
+
+Reprodukcja: \code{BUILD_BOX_015.py}, \code{REPLAY_BOX_015.py},
+\code{sage CHECK_BOX_MOMENT_015.sage}. Piny wejść, pełne logi i źródła
+nieudanych prób wskazuje \code{BOX_MOMENT_015_RECEIPT.json}.
+Kontrola była samoprzeglądem autora, bez statusu REVIEWED.
+\end{document}

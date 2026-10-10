@@ -3,7 +3,17 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
-**Najnowszy większy pakiet — [ACTUAL_HARMONIC-014](notes/ACTUAL_HARMONIC_014_CHECKPOINT.md):**
+**Najnowszy większy pakiet — [BOX_MOMENT-015](notes/BOX_MOMENT_015_CHECKPOINT.md):**
+47 nowych twierdzeń Lean domyka dokładne(M) → skończony box → flatness
+→ odrzucenie normy → marginal → **pełny moment z abortami**.
+Pod jawną dominacją `J≤(1+2^-60)J⁰` kernel daje `J≪P` oraz
+`ΣJ²/P≤1+2^-47`, mocniej od historycznego007. Dołączono konsument014
+z rzeczywistej harmonicznej oraz wrapper publicznego initial obejmujący
+każdy stan i to samo pokryte prawo kluczy. **To konstruktory warunkowe:**
+instancja dominacji/kodu007, koszt maszyny i źródłowe pokrycie kluczy nadal OPEN.
+[Pełne zdanie](notes/BOX_MOMENT_015.tex), [zamknięty TODO](notes/TODO_BOX_MOMENT_015.md).
+
+**Checkpoint — [ACTUAL_HARMONIC-014](notes/ACTUAL_HARMONIC_014_CHECKPOINT.md):**
 Kernelowo domknięto izometrię monomianów, primary cap4608, kanoniczny
 Parseval, widmowe A/C/D, reciprocal Schur i dokładne(M)007.
 Z rzeczywistych równań NTRU/public/inverse, ternarności i **jawnego H≥991**
@@ -40,8 +50,8 @@ To **kernelowe konstruktory warunkowe**; rzeczywisty `EmissionView` oraz
 pozostaje niezmieniony. [Dokładny zakres](notes/KEY_SUPPORT_011.tex).
 
 Decyzja właściciela: **kernel przed użyciem wyniku w ostatecznej tezie**.
-[Klasy warunków](notes/CERTIFICATE_CLASSES_014.json) rozdzielają obowiązki,
-założenia kryptograficzne i model; [kolejka kernela](notes/KERNEL_QUEUE_014.json)
+[Klasy warunków](notes/CERTIFICATE_CLASSES_015.json) rozdzielają obowiązki,
+założenia kryptograficzne i model; [kolejka kernela](notes/KERNEL_QUEUE_015.json)
 ma priorytety według zależności tezy, również jawne wpisy h=0 i Dyadic.
 
 **Checkpoint — [ponowne użycie ROM010](notes/ROM_REUSE_010_CHECKPOINT.md):**
@@ -127,8 +137,8 @@ Nie nadpisujemy prób. [Handoff 004](notes/SAMPLER_004_HANDOFF.json),
 | Algebra pojedynczej ekstrakcji, rachunek pełnego Sign, kierunkowy moment J/P | Zachowane w dokładnym dotychczasowym zakresie |
 | Wspólna kontynuacja i kompozycja w grach programowanych | Dowód tekstowy warunkowy, CONTINUATION-002 |
 | Wykonalny publiczny sampler pełnej odpowiedzi, również porażek | SAMPLER-007 wykonany; capy par/wektora rozliczone przez dodatnie fallbacki. `J(none)=0` jawnie, uczciwe porażki pozostają w P. Koszt w receipcie |
-| Absolutna ciągłość J względem uczciwego P | SAMPLER-007: tekstowy argument dla każdego h; każde wyjście ma dodatni zaakceptowany atom uczciwego włókna. Formal source binding OPEN |
-| Certyfikat `ΣJ²/P≤1+e`, z użytecznym e | 007: tekstowe `e<2^-44` pod (M). 014: kernelowe(M) z rzeczywistej bazy i H≥991; powiązanie całego emitted prawa i pełny kernel J/P007 OPEN. 004 zachowuje h=0 `e<2^-50`; cel all-h OPEN |
+| Absolutna ciągłość J względem uczciwego P | SAMPLER-007: tekstowy argument dla każdego h; każde wyjście ma dodatni zaakceptowany atom uczciwego włókna. 015: kernelowe AC pod(M) i jawną dominacją względem pełnego J⁰. Formal source binding/kod OPEN |
+| Certyfikat `ΣJ²/P≤1+e`, z użytecznym e | 007: tekstowe `e<2^-44` pod (M). 014: kernelowe(M) z rzeczywistej bazy i H≥991;015: pełny kernelowy moment≤1+2^-47 pod jawną dominacją kodu. Rzeczywista instancja007 i emitted prawo OPEN. 004 zachowuje h=0 `e<2^-50`; cel all-h OPEN |
 | Dokładna baza/LDL → masa wszystkich włókien przy trzech temperaturach | **Kernel014**: konkretne współczynniki → monomiany/primary cap → kanoniczny Parseval → widmowy Schur →(M)007. Jawne wejścia: NTRU/public/inverse, ternarność i kanoniczna H≥991. Source harmonic nadal mixed, bez awansu całego C-KeyGen |
 | Odziedziczone `BasisLeafAlgebra.ldl_shape` | 008: przeszkoda pierwszych dwóch pivotsów; tej instancji nie można użyć w obecnej postaci |
 | Średnia harmoniczna i źródłowy liść767 | 010: H3 ROOT/STABLE +009 dają >1022 w emitted source model, tekstowo/mixed. 3 nowe marginesy kernelowe; full source kernel i typed key-law assembly OPEN |
