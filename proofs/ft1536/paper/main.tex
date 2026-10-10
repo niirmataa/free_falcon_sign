@@ -5,22 +5,26 @@
 \usepackage[margin=28mm]{geometry}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{booktabs,longtable,array}
+\usepackage{algorithm,algpseudocode}
 \usepackage{xcolor}
+\usepackage{mdframed}
 \usepackage{microtype}
 \usepackage{xurl}
 \usepackage[hidelinks]{hyperref}
 \hypersetup{
   pdftitle={Free FT: Ternary Lattice Signatures with a Code-Bound Security Reduction},
   pdfauthor={Niirmata},
-  pdfsubject={Version 0.2 research draft; conditional classical reduction},
+  pdfsubject={Version 0.3 research draft; conditional classical reduction},
   pdfkeywords={FT1536, Falcon, EUF-CMA, MT-ISIS, Lean, source binding}
 }
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
 \newtheorem{target}[theorem]{Target statement (in flight)}
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
@@ -44,7 +48,7 @@
 \title{Free FT: Ternary Lattice Signatures\\
   with a Code-Bound Security Reduction}
 \author{Niirmata\\\small Project draft; author approval pending}
-\date{Version 0.2 --- publication-form draft; 10 October 2026}
+\date{Version 0.3 --- publication form; 10 October 2026}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -81,8 +85,8 @@ declarations and byte pins in the companion \code{SOURCES.md}; every
 number and quoted statement is traceable through that map. Statements
 printed as targets express the intended assembly and are not theorems.
 \input{sec_01_intro}
-\input{sec_02_parameters}
 \input{sec_03_model}
+\input{sec_02_parameters}
 \input{sec_04_main}
 \input{sec_05_reduction}
 \input{sec_06_sampler}
@@ -91,9 +95,9 @@ printed as targets express the intended assembly and are not theorems.
 \input{sec_09_computational}
 \input{sec_10_related}
 \input{sec_11_limits}
+\bibliographystyle{plain}
+\bibliography{refs}
 \appendix
 \input{annex_a_trust}
 \input{annex_b_origin}
-\bibliographystyle{plain}
-\bibliography{refs}
 \end{document}

@@ -1,28 +1,67 @@
-\section{Preliminaries and threat model}\label{sec:model}
+\section{Preliminaries, notation and threat model}\label{sec:model}
 \status{CLOSED definitions; source instantiation IN-FLIGHT}
 \subsection{Notation and conventions}\label{sec:notation}
-Throughout, $q=18433$; $\Z$ and $\R$ are the integers and the reals, and
-$R_q$ is the coefficient representation of the ring defined below. The
-symbol $\none$ marks a failed attempt, $\U_X$ is the uniform law on a
-finite set $X$, $\ind[\cdot]$ the indicator function, and
-$\Law(\cdot)$ the law of a random variable. Laws are written $j,p,\mu$;
-$\AC(j,p)$ is absolute continuity of $j$ with respect to $p$,
-$\Second(j,p)$ the directional second moment,
-$\chi^2(j\Vert p)$ the chi-square divergence and $\TV$ total variation.
-Advantages are $\Adv_{\mathrm{EUF}}$ and $\Adv_{\mathrm{MT}}$ under a
-budget $\beta$ and key laws $\mu_K,\mu_H$. The symbol $e$ is the
-second-moment error of a local reply certificate; $e_2(k)$ is its
-transported form for attempt factor $k$, and $k$ is the computed
-attempt factor of Section~\ref{sec:sampler}. The collision loss is
-$\epscoll$, the computational term $\dprg$, and
-$\Phi(D,b)$, $\psi_D$ are the event transfer and its generalized
-inverse of Section~\ref{sec:main}.\src{C03,C04,C06}
-
+Throughout, $q=18433$ and $n=1536$ for FT1536; $\Z$ and $\R$ are the
+integers and the reals. The symbol $\none$ marks a failed attempt,
+$\U_X$ is the uniform law on a finite set $X$, $\ind[\cdot]$ the
+indicator function, and $\Law(\cdot)$ the law of a random variable.
 Literal source and Lean names are set in \code{monospace}; superscript
 source identifiers map statements to the pinned source map
 \code{SOURCES.md}. Statement environments distinguish proved components
-(theorems, propositions, lemmas), definitions, in-flight target
-statements and remarks; a target statement is not a theorem.\src{C17}
+(theorems, propositions, lemmas, corollaries), definitions and
+assumptions, in-flight target statements and remarks; a target
+statement is not a theorem.\src{C17}
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{.17\textwidth}>{\raggedright\arraybackslash}p{.76\textwidth}@{}}
+\toprule
+Symbol & Meaning \\
+\midrule
+$q$, $n$ & modulus $q=18433$ and ring dimension $n=1536$; the
+ coefficient ring is modulo $X^{n}-X^{n/2}+1$ \\
+$N$ & total tape length in bits of the computational experiment,
+ $N=q_s\cdot S.\mathrm{bits}$ (Sections~\ref{sec:sampler}
+ and~\ref{sec:computational}) \\
+$\Rq$ & coefficient representation of $(\Z/q\Z)[X]/(X^n-X^{n/2}+1)$ \\
+$f,g$ & ternary secret polynomials, of coefficient bound $1$ \\
+$F,G$ & NTRU solution polynomials, of coefficient bound $2047$, with
+ $f\cdot G-g\cdot F=q$ \\
+$h$, $\mathrm{fInv}$ & public polynomial $h=g\cdot f^{-1}$; the
+ mathematical inverse witness of $f$ in $\Rq$ \\
+$s$, $c$ & returned signature vector; challenge in $\Rq$ \\
+$\none$ & failed-attempt symbol \\
+$Q$, $B$ & quadratic form of Section~\ref{sec:model} and its threshold,
+ $B=2093922385$ \\
+$A_h$ & syndrome map $(u,v)\mapsto\operatorname{reduce}(u)
+ +h\operatorname{reduce}(v)$ \\
+$\operatorname{reduce}$, $\operatorname{center}$ & coefficient
+ reduction; centering into $[-9216,9216]$ \\
+NTT, evaluations & the source transform and its evaluation form, bound
+ by executed bodies in Section~\ref{sec:binding} and never assumed as
+ an oracle \\
+$\mu_K$, $\mu_H$ & secret-key law and its public marginal \\
+$\beta=(q_s,q_h)$ & budget: signing and hash query counts \\
+$\AC$, $\Second$, $\chi^2$, $\TV$ & absolute continuity, directional
+ second moment (Definition~\ref{def:second}), chi-square divergence,
+ total variation \\
+$\U_X$, $\ind[\cdot]$ & uniform law on a finite set; indicator function \\
+$e$, $e_2(k)$, $k$ & second-moment error of a reply certificate;
+ $e_2(k)=k^{32}-1$; computed attempt factor \\
+$\epscoll$, $\dprg$ & collision loss \eqref{eq:coll}; computational
+ PRG term \\
+$\Phi(D,b)$, $\psi_D$ & event transfer \eqref{eq:phi} and its
+ generalized inverse (Theorem~\ref{thm:inverse}) \\
+$\Adv_{\mathrm{EUF}}$, $\Adv_{\mathrm{MT}}$ & EUF-CMA and MT-ISIS
+ advantages \\
+\bottomrule
+\end{tabular}
+\caption{Notation used throughout. Numeric instantiations are pinned in
+Section~\ref{sec:parameters} and in the companion source map.}
+\label{tab:notation}
+\end{table}
+\src{C03,C05,C06,C21}
+
 \subsection{The relation and its geometry}
 The formal representation of $\Rq$ is
 $\operatorname{Fin}(768)\to(\Z/18433\Z)^2$.
@@ -34,13 +73,16 @@ $V=\operatorname{Fin}(768)\to\Z^2$, and define
  Q(u,v)&=Q_0(u)+Q_0(v),\qquad B=2093922385,\\
  A_h(u,v)&=\operatorname{reduce}(u)+h\operatorname{reduce}(v).
 \end{align*}
+\begin{definition}[Short preimage relation]\label{def:short}
 \code{ShortPreimage} is exactly $A_h(u,v)=c\ \wedge\ Q(u,v)<B$.
+\end{definition}
 The coefficient-valued verifier accepts $s$ precisely when it is signed-16
 and
 $Q(\operatorname{center}(c-h\operatorname{reduce}(s)),s)<B$.
 The centering interval is $[-9216,9216]$.\src{C03}
 
-\begin{proposition}[Accepted coefficients extract a short preimage]
+\begin{proposition}[Accepted coefficients extract a short preimage]%
+\label{prop:extracts}
 For every $h,c\in\Rq$ and $s\in V$, if the verifier accepts $s$ for
 $(h,c)$, then the extracted pair is a short preimage for $(h,c)$.
 \end{proposition}
@@ -50,12 +92,15 @@ the norm inequality is the second conjunct of \code{Verify}.
 This is \code{Relation.accepted_extracts}.\src{C03}
 \end{proof}
 
+\begin{definition}[MT-ISIS experiment]\label{def:mtisis}
 In the MT-ISIS experiment, $h$ is drawn from a specified public-key law
 $\mu_H$, and the adversary receives $T$ independent uniform targets
 in $\Rq$. It returns an index and a pair; the experiment checks the
-index and the same \code{ShortPreimage} relation. Hardness must therefore
-refer to this key law, target law, quadratic form and resource class.
-An unrelated homogeneous-SIS estimate is not a replacement.\src{C05}
+index and the same \code{ShortPreimage} relation.
+\end{definition}
+Hardness must therefore refer to this key law, target law, quadratic
+form and resource class. An unrelated homogeneous-SIS estimate is not a
+replacement.\src{C05}
 
 \subsection{Classical interactive games}
 A budget record $\beta$ contains $q_s,q_h$, an adversary coin length and
@@ -92,18 +137,24 @@ Decision D2 selects a computational change of randomness, using the
 restricted-test premise of Section~\ref{sec:computational}. Decision
 D3 requires a proved sampler constant at the stated interfaces.
 We retain the named operational boundaries:
-\begin{description}
- \item[A1.] KeyGen timing and restart counts are absent from the
- adversary's view. This is a deployment assumption, not a timing proof.
- \item[A2.] Seed entropy and independence are idealized at the seed
- boundary. ROM uniformity is separately named at the challenge boundary;
- neither premise proves the other.
- \item[A3/A4.] The implementation verdict and serialization must match
- the formal relation and framing. Their final byte-level composition
- remains open.
- \item[A5.] Source contracts use the stated LP64 word and wrapping
- semantics. Faults and side channels are outside this game.
-\end{description}
+
+\begin{assumption}[A1 --- deployment boundary]\label{ass:a1}
+KeyGen timing and restart counts are absent from the adversary's view.
+This is a deployment assumption, not a timing proof.
+\end{assumption}
+\begin{assumption}[A2 --- seed boundary]\label{ass:a2}
+Seed entropy and independence are idealized at the seed boundary. ROM
+uniformity is separately named at the challenge boundary; neither
+premise proves the other.
+\end{assumption}
+\begin{assumption}[A3/A4 --- byte bridge]\label{ass:a34}
+The implementation verdict and serialization must match the formal
+relation and framing. Their final byte-level composition remains open.
+\end{assumption}
+\begin{assumption}[A5 --- source semantics]\label{ass:a5}
+Source contracts use the stated LP64 word and wrapping semantics. Faults
+and side channels are outside this game.
+\end{assumption}
 The complete ledger appears in Section~\ref{sec:limits}.\src{C01}
 
 \subsection{Directional second moment}
