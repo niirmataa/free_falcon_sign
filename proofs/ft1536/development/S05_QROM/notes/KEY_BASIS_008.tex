@@ -1,0 +1,119 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm]{geometry}
+\usepackage{fontspec}\setmainfont{Latin Modern Roman}
+\setmonofont{Latin Modern Mono}[Scale=0.85]
+\usepackage{amsmath,amssymb,amsthm,xurl,hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{3em}
+\newcommand{\code}[1]{\nolinkurl{#1}}
+\newtheorem{proposition}{Propozycja}
+\title{S05 / KEY\_BASIS\_008\\\large Przeszkoda kolejności w odziedziczonym moście LDL}
+\author{Notatka robocza dla Niirmata}\date{10 października 2026}
+\begin{document}\maketitle
+\textbf{Wynik: refuted, with the smallest valid algebraic obstruction.}
+Przypięta przesłanka \code{BasisLeafAlgebra.ldl_shape} nie może zostać
+zrealizowana dla dodatniej listy liści przy podanych definicjach
+\code{coefficientGram}, \code{unitCoeff} i \code{scalarSplit}.
+Problemem są już dwa pierwsze pivotsy. To wynik o interfejsie dowodu,
+nie kontrprzykład bezpieczeństwa, nie błąd źródłowego KeyGen i nie obalenie
+warunkowego SAMPLER-007. Nie zmieniamy źródeł ani statusów T12.1/B20.
+
+\section{Dokładnie sprawdzona teza}
+Baza wejściowa: \code{1659efc0ce752874887e3ff7e31f204a76293220}.
+\code{GramLDL.lean} definiuje LDL jako kolejne dopełnienia Schura,
+a nie jako kolejność sumowania w wieży. Jego \code{unitCoeff 0} odpowiada
+$1$ pierwszej współrzędnej NTRU, a \code{unitCoeff 1} odpowiada $X^{768}$
+tej samej współrzędnej. Tymczasem \code{scalarSplit} zaczyna się od
+$(3\ell/4,\ell)$ dla pierwszego liścia $\ell$.
+
+\begin{proposition}
+Dla dowolnych $f,g,F,G$ nad $\mathbb Z[X]/(X^{1536}-X^{768}+1)$,
+pierwsze dwa pivotsy przypiętego coefficient Gram wynoszą
+$(\lambda,3\lambda/4)$, gdzie $\lambda=Q_0(f)+Q_0(g)$.
+Jeśli $\lambda=0$, oba wynoszą zero przy konwencji Lean $0/0=0$.
+Nie mogą być $(3\ell/4,\ell)$ dla $\ell>0$.
+\end{proposition}
+\begin{proof}
+Niech $\omega=X^{768}$. Ponieważ $\omega^2=\omega-1$, mnożenie przez
+$\omega$ zamienia każdą parę $(x,y)$ na $(-y,x+y)$.
+Dla $q_2(x,y)=x^2+xy+y^2$ i odpowiadającej polaryzacji $b$ mamy
+\[
+ q_2(-y,x+y)=q_2(x,y),\qquad
+ b((x,y),(-y,x+y))=q_2(x,y)/2.
+\]
+Pierwsze dwie kolumny coefficientBasis to $(g,-f)$ i
+$(\omega g,-\omega f)$. Ich Gram jest więc
+$\begin{pmatrix}\lambda&\lambda/2\\\lambda/2&\lambda\end{pmatrix}$.
+Gdy $\lambda\ne0$, pierwszy krok Schura daje
+$\lambda-(\lambda/2)^2/\lambda=3\lambda/4$.
+Gdy $\lambda=0$, w obu pierwszych krokach otrzymujemy zero.
+Równość z $(3\ell/4,\ell)$ wymusza
+$\lambda=3\ell/4$ oraz $3\lambda/4=\ell$, stąd $9\ell/16=\ell$,
+co przeczy $\ell>0$.
+\end{proof}
+
+Z dodatniości 768 korzeni w \code{BasisLeafAlgebra} wynika dodatniość
+\code{nodalFull}: average, harmonic i trzy ternary zachowują dodatniość,
+a ogon jest dodatnią odwrotnością. Lista ma 1536 elementów, więc jej
+pierwszy element istnieje i jest dodatni. Powyższa sprzeczność dotyczy
+zatem samej przesłanki \code{ldl_shape}, nie tylko jednego dobranego klucza.
+Równania NTRU nie są nawet potrzebne do tej sprzeczności.
+
+\section{Dlaczego prosta podmiana kolejności nie jest pełną naprawą}
+Dla pojedynczego bloku LDL eliminuje $x$ przed $y$ i daje
+$(\lambda,3\lambda/4)$. Wieża, która najpierw ustala $y$, a potem losuje
+$x$, ma współczynniki w kolejności $(3\lambda/4,\lambda)$:
+\[
+ \lambda q_2(x+u,y+v)=\lambda(x+u+(y+v)/2)^2
+                         +(3\lambda/4)(y+v)^2.
+\]
+Obie kolejności są poprawne we własnych rolach. Błędem jest ich utożsamienie.
+
+Sama lista pivotsów nie określa także całego atomu gaussowskiego.
+Macierze $I_2$ oraz
+$\begin{pmatrix}1&1/2\\1/2&5/4\end{pmatrix}$ mają pivotsy
+$(1,1)$, lecz ich wartości na $(0,1)$ to odpowiednio $1$ i $5/4$.
+Druga wymaga przesunięcia $x+y/2$. Ogólny krok naprawy ma postać
+\[
+ ax^2+2xs+t=a(x+s/a)^2+(t-s^2/a),\quad a\ne0,
+\]
+gdzie $s$ zależy od pozostałych współrzędnych. Nie wolno zastąpić tej
+zależności wyłącznie stałym przesunięciem kosetu.
+
+Zamiana dwóch elementów \code{scalarSplit} sama nie dowodzi tożsamości
+listy spektralnej z rzeczywistymi pivotsami całej macierzy. Tego nie
+próbujemy uznać za zamknięte przez lokalną poprawkę. Nowa trasa 009
+wyprowadza potrzebny \emph{górny bound} bez takiej tożsamości.
+
+\section{Dowody, rachunek i zasięg}
+\code{formal/PivotOrder008.lean}: sześć lematów elementarnych, świeży
+Lean 4.34.0, exit0, czysty log, aksjomaty wyłącznie
+\code{propext}, \code{Classical.choice}, \code{Quot.sound}.
+To obejmuje obrót A2, jego polaryzację, drugi pivot, sprzeczność dodatniej
+kolejności, atom afiniczny i krok Schura. \textbf{Pełne powiązanie z definicjami
+pierścienia i niezamieszkiwalność BasisLeafAlgebra są dowodem tekstowym},
+nie nowym kernelowym eksportem o module T12.1.
+
+\code{notes/KEY_BASIS_008.sage} sprawdza tożsamości symboliczne w QQ,
+a także osiem dokładnych przypadków rzeczywistej arytmetyki ilorazowej
+przy $m=1,3,6,768$. Przypadki nie zastępują uniwersalnego argumentu.
+Nie uruchomiono istniejących workerów ani odbioru innych torów.
+
+Próba Lean z limitem przestrzeni adresowej 3 GiB przerwała się przed
+elaboracją (utworzenie wątku); przy 8 GiB dotarła do błędu oznaczenia
+nieobliczalnej definicji i ostrzeżeń. Zachowano obie próby. Poprawiono
+import, oznaczenie definicji i zapis taktyk, bez wyciszania ostrzeżeń.
+Końcowy moduł ma czysty log.
+
+\section{Wpływ i następny krok}
+SAMPLER-007 wymaga istnienia dokładnej bazy z ograniczonymi pivotsami;
+nie wymaga wadliwej równości \code{ldl_shape}. Jego dowód warunkowy
+pozostaje zachowany. \code{PerKeyTransport} z tym konkretnym polem nie
+może stanowić świadka dla FT1536 w swojej obecnej postaci. To finding
+S05 o odczytanej zależności; lokalne twierdzenia warunkowe T12.1 nie są
+przez to logicznie fałszywe, lecz tą drogą nie instancjonują klucza.
+
+Nowy most: \code{notes/HARMONIC_BRIDGE_009.tex}.
+Piny: \code{notes/KEY_BASIS_008_INPUTS.json}.
+Receipty i zachowane próby: \code{notes/BRIDGE_008_009_RECEIPT.json}.
+\end{document}

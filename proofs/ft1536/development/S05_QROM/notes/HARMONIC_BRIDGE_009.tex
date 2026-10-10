@@ -1,0 +1,251 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm]{geometry}
+\usepackage{fontspec}\setmainfont{Latin Modern Roman}
+\setmonofont{Latin Modern Mono}[Scale=0.85]
+\usepackage{amsmath,amssymb,amsthm,booktabs,xurl,hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{3em}
+\newcommand{\code}[1]{\nolinkurl{#1}}
+\newcommand{\Z}{\mathbb Z}\newcommand{\C}{\mathbb C}
+\newcommand{\HH}{\mathcal H}\newtheorem{theorem}{Twierdzenie}
+\newtheorem{lemma}{Lemat}
+\title{Conditional key-to-sampler bridge\\\large S05 / HARMONIC\_BRIDGE\_009}
+\author{Notatka robocza dla Niirmata}\date{10 października 2026}
+\begin{document}\maketitle
+\textbf{WARUNKOWY / nowy most tekstowy, z małymi lematami kernelowymi.}
+Ograniczenie pivotsów potrzebne w SAMPLER-007 wyprowadzamy z jednej
+średniej harmonicznej widma. Nie używamy przesłanki
+\code{BasisLeafAlgebra.ldl_shape}, której przeszkodę opisuje 008.
+Dodatkowo jawna instancja stopnia1536 potwierdza, że nowa klasa warunków
+nie jest pusta; sprawdzono ją również przez rzeczywistą funkcję certyfikatu C.
+\textbf{Nie wykazano warunków dla całego prawa emitted KeyGen.}
+Nie ma deklaracji bezpieczeństwa QROM ani podwyższenia statusów T12.1/B20.
+
+\section{Dokładne twierdzenie geometryczne}
+Niech $m=768$, $n=2m=1536$, $q=18433$,
+$R=\Z[X]/(X^{2m}-X^m+1)$ i
+\[
+ Q_0(v)=\sum_{i=0}^{m-1}(v_i^2+v_iv_{i+m}+v_{i+m}^2).
+\]
+Ustalmy $f,g,F,G\in R$ spełniające $fG-gF=q$, odwracalne $f$ modulo $q$
+i $h=g/f\pmod q$. Zakładamy $|f_i|,|g_i|\le1$ dla wszystkich
+współczynników. Nie ograniczamy wielkości $F,G$ w twierdzeniu geometrycznym;
+ich emisja przez program ma osobny kontrakt źródłowy.
+
+Niech $\Omega$ będzie zbiorem $n$ różnych zespolonych pierwiastków
+$X^{2m}-X^m+1$. Wszystkie mają moduł1. Definiujemy
+\[
+ a_\zeta=|f(\zeta)|^2+|g(\zeta)|^2>0,\qquad
+ \HH=\left(\frac1n\sum_{\zeta\in\Omega}a_\zeta^{-1}\right)^{-1}.
+\]
+Dodatniość wynika z równania NTRU: wspólne zero $f,g$ przeczyłoby $q\ne0$.
+Dla współczynników rzeczywistych wartości przy sprzężonych pierwiastkach
+są równe, więc ten sam $\HH$ otrzymujemy z dowolnego jednego reprezentanta
+każdej z 768 par sprzężonych.
+
+\begin{theorem}[Harmoniczny warunek wystarczający]
+Jeżeli $\HH\ge991$, to istnieje całkowita baza całego jądra $A_h$
+w metryce $Q(z_1,z_2)=Q_0(z_1)+Q_0(z_2)$, której dokładne pivotsy LDL
+spełniają $0<\lambda_i\le q^2/991$. W konsekwencji zachodzą przesłanka
+masy (M) i pełny moment SAMPLER-007: $J_h\ll P_h$ oraz
+$\sum J_h^2/P_h\le1+e$ z $e<2^{-44}$.
+Wnioski o masie i momencie zachowują tekstowy status 007.
+\end{theorem}
+\begin{proof}
+Baza to standardowa całkowita baza NTRU
+$\mathcal B(u,v)=(gu+Gv,-fu-Fv)$.
+Przypięte \code{ActualNTRUFiber.coordinates} daje bijekcję z całym włóknem
+z dokładnych równań NTRU/public/inverse. Potrzebną własność Grama wyprowadzamy
+poniżej bez postulowania jego listy pivotsów.
+
+Niech $V_{\zeta,j}=\zeta^j$ dla $0\le j<n$. Macierz metryki $H_0$ ma
+jedynki na przekątnej i $1/2$ na pozycjach $(i,i+m)$ oraz $(i+m,i)$.
+Suma potęg po dwóch kosetach pierwiastków daje
+\[
+ \frac1nV^*V=H_0,\qquad
+ Q_0(v)=\frac1n\sum_{\zeta\in\Omega}|v(\zeta)|^2.       \tag{P}
+\]
+Rzeczywiście średnia $\zeta^k$ dla $|k|<n$ wynosi zero poza
+$k=0,\pm m$; tam wynosi odpowiednio $1,1/2,1/2$.
+Macierz $V$ jest odwracalna, bo pierwiastki są różne.
+
+Przy każdym $\zeta$ dwie kolumny bazy mają zespolony Gram
+$\begin{pmatrix}a_\zeta&b_\zeta\\\bar b_\zeta&d_\zeta\end{pmatrix}$
+(z wyborem sprzężenia zgodnym z iloczynem skalarnym), którego wyznacznik
+to $|f(\zeta)G(\zeta)-g(\zeta)F(\zeta)|^2=q^2$.
+Jego dopełnienie Schura względem pierwszej kolumny to $q^2/a_\zeta$.
+
+Zapiszmy współczynnikowy Gram jako
+$\Gamma=\begin{pmatrix}A&C\\C^T&D\end{pmatrix}$, grupując najpierw
+$n$ współczynników $u$, potem $n$ współczynników $v$.
+Przez (P) oraz regułę dopełnienia Schura po odwracalnej kongruencji:
+\[
+ A=\frac1nV^*\operatorname{diag}(a_\zeta)V,\qquad
+ S:=D-C^TA^{-1}C=\frac1nV^*\operatorname{diag}(q^2/a_\zeta)V. \tag{S}
+\]
+Są to rzeczywiste macierze dodatnio określone. Każdy element przekątnej
+$A$ jest $Q_0(f)+Q_0(g)\le2\cdot768\cdot3=4608$;
+każdy element przekątnej $S$ jest $q^2/\HH\le q^2/991$,
+ponieważ $|V_{\zeta,j}|=1$.
+
+W dodatnio określonej macierzy eliminacja jednej współrzędnej odejmuje
+od następnej przekątnej nieujemne $G_{i0}^2/G_{00}$.
+Indukcja pokazuje, że każdy kolejny dodatni pivot jest najwyżej
+początkowy element tej przekątnej. Pierwsze $n$ pivotsów $\Gamma$ to
+pivotsy $A$; po ich wyeliminowaniu pozostałą macierzą jest dokładnie $S$.
+Zatem wszystkie pivotsy są dodatnie i nie przekraczają
+$\max(4608,q^2/991)=q^2/991$. Dowolna permutacja współczynników
+wewnątrz obu grup zachowuje ten argument, w tym przeplot A2 z \code{unitCoeff}.
+Nie potrzebujemy równości pivotsów z konkretną listą stable leaves.
+Lemat bazy z 007 daje (M), a jego pełny rachunek odpowiedzi daje moment.
+\end{proof}
+
+\section{Jeden liść źródłowej rekursji}
+Niech $a_0,\ldots,a_{767}$ będą dodatnimi dokładnymi wartościami widmowymi,
+zawierającymi po jednej z każdej pary sprzężonej. To wymagane powiązanie
+widma z \code{g00}; sama nazwa tablicy go nie dowodzi.
+\[
+ \frac1{2ab/(a+b)}=\frac12\left(\frac1a+\frac1b\right),\qquad
+ \frac1{3abc/(ab+ac+bc)}=\frac13\left(\frac1a+\frac1b+\frac1c\right).
+\]
+Ostatni liść gałęzi ternary2 po ośmiu poziomach harmonic wynosi więc
+$768/\sum_i1/a_i=\HH$. W kodzie \code{ft_stable_top_branch_keygen}
+jest to \textbf{indeks767} pierwotnej połowy leaves. Późniejszy zapis
+odwrotnych liści trafia do indeksów768--1535 i go nie zmienia.
+Wymagana jest wyłącznie poprawna kolekcja reprezentantów widma:
+średnia harmoniczna nie zależy od ich permutacji.
+
+Jedna wystarczająca wersja mostu to dotychczasowy kontrakt
+$|\widehat\ell_{767}-\HH|<33$ oraz $\widehat\ell_{767}\ge1024$.
+Daje $\HH>991$. Nie wystarczy skan zaakceptowanych słów bez takiego
+powiązania z dokładnym liściem.
+
+\section{Nowa, konkretna redukcja błędu numerycznego}
+Możemy zastąpić globalny kontrakt błędu liścia następującymi przesłankami
+na rzeczywistym wykonaniu. Nie uznajemy ich za udowodnione o FPEMU.
+\begin{enumerate}
+\item Dla wszystkich korzeni odpowiadających \code{g00}:
+$\widehat a_i\ge1/2$ oraz $|\widehat a_i-a_i|\le1/128$.
+Porównujemy z dokładnym widmem właściwych $f,g$, nie z innym FFT.
+\item Każde dodatnie dodawanie, mnożenie i dzielenie użyte na ścieżce
+ostatniego liścia ma błąd względny najwyżej $\varepsilon=2^{-53}$.
+Stała3 jest dokładna, podwojenie w harmonic jest dokładne. Suma, iloczyn
+i iloraz są dodatnie; nie użyto podmiany awaryjnej positive-guard.
+Właściwa semantyka słów, zakresy i tożsamość wykonania są częścią tej przesłanki.
+\item Wartość końcowa odpowiada zaakceptowanemu słowu indeksu767,
+więc $\widehat\ell_{767}\ge1024$.
+\end{enumerate}
+
+Pierwsza przesłanka daje $a_i\ge63/128$ oraz
+$\widehat a_i\le(64/63)a_i$.
+Harmoniczna jest monotoniczna i jednorodna stopnia1, bo jej odwrotność
+jest średnią odwrotności dodatnich argumentów.
+
+Niech $U=1+\varepsilon$, $L=1-\varepsilon$.
+Jedna operacja harmonic ma górny błąd $U^2/L$ (iloczyn, suma, dzielenie;
+podwojenie dokładne). Gałąź ternary2 ma górny błąd $U^4/L^3$:
+iloczyn trzech argumentów i mnożenie przez3 to trzy zaokrąglenia,
+mianownik $ab+ac+bc$ ma co najwyżej trzy czynniki $L$ na każdej ścieżce,
+a końcowe dzielenie wnosi $U$. Dodatniość umożliwia sumowanie tych granic.
+Przez jednorodność i monotoniczność po ośmiu dalszych poziomach:
+\[
+ \widehat\ell_{767}\le
+ K_{\rm src}\HH,\qquad
+ K_{\rm src}=\frac{64}{63}\frac{(1+2^{-53})^{20}}{(1-2^{-53})^{11}}
+ <\frac{1024}{1000}.                                      \tag{R}
+\]
+Z zaakceptowanego słowa wynika $\HH>1000>991$.
+Otrzymaliśmy konkretny pozostały cel: \textbf{jednolity błąd g00 najwyżej
+1/128 oraz wskazane prawa operacji na rzeczywistych ścieżkach}.
+Nie przemianowujemy tych obowiązków na założenia kryptograficzne.
+
+\code{formal/HarmonicBudget009.lean} kernelowo sprawdza obie tożsamości
+odwrotności, przejście $1/128\to64/63$, budżet $4608<q^2/991$,
+dokładną nierówność liczbową (R) oraz końcowy próg991 pod zadanym $hlink$.
+\textbf{Monotoniczny transport całej rekursji, spektralny Schur i powiązanie
+ze źródłem pozostają tekstowe lub otwarte jak wskazano}; nazwa modułu
+nie nadaje im statusu kernelowego.
+
+\section{Jawny świadek pełnego rozmiaru}
+Dla $f_0=g_0=1$ powtarzamy dziesięć razy
+\[
+ f_{k+1}=f_k+X^{2^k}g_k,\qquad g_{k+1}=f_k-X^{2^k}g_k.
+\]
+Obie części mają rozłączne podpory, więc współczynniki należą do
+$\{-1,0,1\}$. Dla $|\zeta|=1$ suma kwadratów modułów podwaja się
+na każdym kroku: $|f_{10}(\zeta)|^2+|g_{10}(\zeta)|^2=2048$.
+Stopień jest1023, mniejszy od1536. Zatem $\HH=2048$.
+
+Aby uzyskać całkowite $F,G$, nie używamy niedostępnego trapdooru.
+Modulo2 $f$ jest sumą1024 kolejnych jednomianów, czyli $(X-1)^{1023}$,
+a $X^{1536}-X^{768}+1$ przy $X=1$ wynosi1 modulo2. Odwrotność istnieje;
+Sage podnosi ją Newtonem do $u=f^{-1}\pmod{2048}$ w tym samym ilorazie.
+Niech $v=(fu-1)/2048\in R$ oraz $f^*,g^*$ oznaczają podstawienie $X^{-1}$.
+Tożsamość $ff^*+gg^*=2048$ daje
+\[
+ G=q(u-vf^*),\qquad F=qvg^*,\qquad fG-gF=q.
+\]
+Następnie odejmujemy $kf,kg$ od $F,G$, gdzie $k$ to całkowite zaokrąglenie
+współczynników $(Ff^*+Gg^*)/2048$. To jawny shear bazy, zachowujący NTRU.
+Dokładny wynik ma $\max|F_i|=49$, $\max|G_i|=50$; sprawdzono też odwracalność
+$f$ modulo18433 i publiczną relację dla zapisanego $h$.
+
+Primal Gram i dualny Schur są tu odpowiednio $2048H_0$ i
+$(q^2/2048)H_0$. Ich pivotsy to pary $(2048,1536)$ i
+$(339775489/2048,1019326467/8192)$, wszystkie poniżej $q^2/991$.
+Daje to \emph{matematyczną instancję} przesłanki samplera dla jednego
+jawnego $h$ i każdego wyzwania, nie tylko sprawdzenie kilku wyzwań.
+Dowód wykorzystuje płaskie widmo, a nie numeryczne LDL macierzy3072.
+
+Ten publiczny syntetyczny świadek nie jest sekretem użytkownika ani wynikiem
+losowania KeyGen. Nie dowodzi pokrycia nośnika $\mu_H$, prawdopodobieństwa
+akceptacji ani źródłowej emisji. Nie służy jako klucz produkcyjny.
+
+\section{Sprawdzenia i granice}
+SageMath10.9, wyłącznie ZZ/QQ, dokładne ciała cyklotomiczne i ciała skończone:
+dwie tożsamości symboliczne, dziewięć głębokości harmonicznej rekursji,
+Parseval/Schur i rzeczywiste pivotsy dla stopni2,6,12 oraz dokładny
+świadek NTRU stopnia1536. Cały dowód spektralny wyżej jest uniwersalnym
+argumentem, nie ekstrapolacją tych małych przypadków.
+
+Osobne wykonanie \code{C_GATE_009.c} włącza niezmieniony
+\code{Extra/c/falcon-keygen.c} i wywołuje jego
+\code{ft_keygen_leaf_certificate} na tym jednym świadku.
+Zweryfikowano cały17-plikowy manifest aktywnego profilu przed buildem;
+flagi profilu pochodzą z przypiętego Makefile, kompilator i binarium
+zapisano w receipcie. Funkcja zwróciła1. Wszystkie768 słów g00 i1536 słów
+liści zapisano surowo; \code{C_GATE_009_CHECK.sage} dekoduje je dokładnie
+w QQ i sprawdza progi oraz błąd względem płaskiego widma2048.
+To \textbf{jedna zaakceptowana instancja funkcji certyfikatu C}, nie wykonanie
+całego KeyGen ani uniwersalny dowód błędu FFT/FPEMU.
+
+Dwanaście nowych elementarnych lematów 008/009 ma świeży czysty log Lean,
+bez \code{sorry} i bez nowych aksjomatów poza standardowymi trzema.
+Nowy dowód całego mostu ma status tekstowy. Nie uruchamiamy ani nie
+przejmujemy aktywnego toru source3; jego przypięte wejścia FFT jawnie
+nie dostarczają kontraktów arytmetycznych.
+
+\section{Co jest teraz następnym murem}
+Potrzebne są źródłowe świadki równań NTRU, ternarności i publicznego klucza
+oraz \emph{dla całego wymaganego nośnika} identyfikacja g00 z dokładnymi
+korzeniami i błąd $\le1/128$. Potrzebna jest też instancja poprawności
+arytmetyki dodatniej na faktycznych ścieżkach prowadzących do liścia767.
+Alternatywnie można dostarczyć bezpośredni $|\widehat\ell_{767}-\HH|<33$.
+Oba są konkretnymi obowiązkami do dowiedzenia; pojedynczy fixture ich nie zamyka.
+
+Dopiero to instancjonuje Q-SAMPLER dla rzeczywistego $\mu_H$.
+Kernelizacja całego mostu, Q-BIND, Q-COMPOSE, Q-COLL/Q-EMBED i Q-RESC
+pozostają osobne. Granica deklaracji bezpieczeństwa z kontraktu001 nie zmienia się.
+
+\appendix\section{Piny i replay}
+Baza naukowa: \code{1659efc0ce752874887e3ff7e31f204a76293220}.
+Wejścia: \code{KEY_BASIS_008_INPUTS.json} i \code{HARMONIC_BRIDGE_009_INPUTS.json}.
+Źródła: \code{HARMONIC_BRIDGE_009.sage}, \code{HarmonicBudget009.lean},
+\code{C_GATE_009_CHECK.sage} oraz runnery w notes.
+Wyniki, zachowane błędy narzędziowe i dokładne komendy są w
+\code{BRIDGE_008_009_RECEIPT.json}; manifest nie pinuje żywego README.
+Nieudane próby zachowano: konstruktor QQ z dwoma argumentami, zapis JSON
+Sage Integer oraz błędną asercję długości przy przejściu z512 do1024.
+Wersja512 poprawnie przeszła rachunek przed błędem zapisu; wersja1024
+została wybrana dla większego marginesu względem źródłowej bramki.
+\end{document}

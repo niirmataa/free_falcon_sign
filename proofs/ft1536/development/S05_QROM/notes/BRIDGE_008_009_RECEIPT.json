@@ -1,0 +1,1337 @@
+{
+  "id": "S05_BRIDGE_008_009",
+  "base_commit": "1659efc0ce752874887e3ff7e31f204a76293220",
+  "packaging_head_observed": "4cf44965bbf0defe31581245efba030290b8e078",
+  "status": "PARTIAL_PROOF_WITH_TEXTUAL_HARMONIC_BRIDGE_AND_SCOPED_KERNEL_LEMMAS",
+  "finding008": {
+    "verdict": "refuted, with the smallest valid algebraic obstruction",
+    "claim": "Positive BasisLeafAlgebra.ldl_shape is uninhabitable under pinned definitions",
+    "proof_status": "Textual source interpretation plus six kernel scalar lemmas",
+    "impact": "Do not instantiate this interface; do not infer QROM insecurity or change T12 status"
+  },
+  "result009": {
+    "claim": "Exact NTRU, invertible f, ternary f/g and harmonic spectral mass>=991 imply required LDL bound, hence007 mass and moment",
+    "proof_status": "Full bridge textual; six scalar budget lemmas kernel checked",
+    "emitted_key_law": "OPEN",
+    "source_remaining": [
+      "actual key/source equations and public law",
+      "g00 spectral dictionary and uniform absolute error<=1/128",
+      "relative operation error<=2^-53 and exact binary scaling on actual positive leaf767 trace"
+    ]
+  },
+  "successful_checks": [
+    "Sage exact symbolic008 and eight quotient fixtures",
+    "Sage009 exact harmonic depths, Parseval/Schur on degree2/6/12, full degree1536 NTRU witness",
+    "Twelve Lean theorems, fresh clean logs, standard axioms only",
+    "17-file C manifest matches; native gate accepts one public fixture; no compiler warnings",
+    "Sage exact decoding of768 root words and1536 leaf words; this fixture max error3/2^40",
+    "Three current computation manifests validated against inputs and outputs",
+    "Both standalone LaTeX documents compiled"
+  ],
+  "output_copies": [
+    {
+      "path": "notes/KEY_BASIS_008_CERTIFICATE.json",
+      "sha256": "d7267db242a3f610cc1416c51e0ce1da8843b64268d87f3fd58d2ac8ea840f32",
+      "bytes": 2143
+    },
+    {
+      "path": "notes/HARMONIC_BRIDGE_009_CERTIFICATE.json",
+      "sha256": "33e16078aafe6ca8e1fd2296c2327f93b4120ddbbef236d901179beb27e554e3",
+      "bytes": 3244
+    },
+    {
+      "path": "notes/C_GATE_009_CHECKS.json",
+      "sha256": "565d855ffee5c50e32f895974d84a1f453847c36262be4061cd36902991efa26",
+      "bytes": 783
+    }
+  ],
+  "historical_source_snapshots": [
+    {
+      "path": "notes/attempts/PivotOrder008_initial.lean",
+      "sha256": "a0f19965cddcb05fa07c58cd5cd29f1b520156221c4c3d9527f694b5054e458f",
+      "bytes": 1536
+    },
+    {
+      "path": "notes/attempts/RUN_LEAN_008_initial_3GiB.py",
+      "sha256": "f383f6460b92833c4bd5132ccb7c2eb73d1f511a29972fa4fc8fb20f34f77ef3",
+      "bytes": 2278
+    },
+    {
+      "path": "notes/attempts/RUN_LEAN_008_fixed_8GiB.py",
+      "sha256": "b18f1f4c1c04bfb2e392fd0bd30bb773dd2b3ead9cf3de5cfc98dc520a48d7bd",
+      "bytes": 2278
+    },
+    {
+      "path": "notes/attempts/HARMONIC_BRIDGE_009_bad_QQ.sage",
+      "sha256": "143516fd092b8ede4be679bab408c3e2bd963ae66923544f141c8cfc50fd714d",
+      "bytes": 5644
+    },
+    {
+      "path": "notes/attempts/HARMONIC_BRIDGE_009_flat1024_JSON_failure.sage",
+      "sha256": "b3bdea1e8d315335d475d92fee12ebfeda5b36d63494cd4313276b600695ecbd",
+      "bytes": 5646
+    },
+    {
+      "path": "notes/attempts/HARMONIC_BRIDGE_009_length_assertion.sage",
+      "sha256": "659f3ddc81d2848a031bc5d1379e8eef6a546c2c69a16bbe5342d127c4f55428",
+      "bytes": 6275
+    }
+  ],
+  "lean_runs": [
+    {
+      "receipt": {
+        "command": [
+          "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+          "-j1",
+          "-M2048",
+          "-o",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/bridge_008/runs/lean_001/PivotOrder008.olean",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/bridge_008/runs/lean_001/PivotOrder008.lean"
+        ],
+        "status": "completed",
+        "exit_code": -6,
+        "elapsed_seconds": 0.6166394079991733,
+        "source_sha256": "a0f19965cddcb05fa07c58cd5cd29f1b520156221c4c3d9527f694b5054e458f",
+        "snapshot_sha256": "a0f19965cddcb05fa07c58cd5cd29f1b520156221c4c3d9527f694b5054e458f",
+        "runner_sha256": "f383f6460b92833c4bd5132ccb7c2eb73d1f511a29972fa4fc8fb20f34f77ef3",
+        "config_sha256": "cfafd2a9c99856ae10f709bca484df4b962e1c3250fb4948a18abc0704eca94e",
+        "library_roots": {
+          "Cli": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Cli/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Cli"
+          },
+          "LeanSearchClient": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/LeanSearchClient/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/LeanSearchClient"
+          },
+          "Qq": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Qq/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Qq"
+          },
+          "aesop": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/aesop/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/aesop"
+          },
+          "batteries": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/batteries/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/batteries"
+          },
+          "importGraph": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/importGraph/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/importGraph"
+          },
+          "lean": {
+            "build": "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean",
+            "source": "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/src/lean"
+          },
+          "mathlib": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/bootstrap/mathlib4/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/bootstrap/mathlib4"
+          },
+          "plausible": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/plausible/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/plausible"
+          },
+          "proofwidgets": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/proofwidgets/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/proofwidgets"
+          }
+        },
+        "resource_limits": {
+          "wall_seconds": 100,
+          "cpu_seconds": 90,
+          "memory_bytes": 3221225472,
+          "cores": 1
+        },
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "8359249f494db5081050f585a4c9d589f4edb85f31252481b841f195761fd4f1",
+        "olean_sha256": null,
+        "scope": "Elementary identities only; coefficient/source binding remains textual and emitted-key witness OPEN"
+      },
+      "stdout": "",
+      "stderr": "libc++abi: terminating due to uncaught exception of type lean::exception: failed to create thread: Resource temporarily unavailable\n",
+      "accepted_clean": false,
+      "snapshot": {
+        "path": ".build/bridge_008/runs/lean_001/PivotOrder008.lean",
+        "sha256": "a0f19965cddcb05fa07c58cd5cd29f1b520156221c4c3d9527f694b5054e458f",
+        "bytes": 1536
+      }
+    },
+    {
+      "receipt": {
+        "command": [
+          "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+          "-j1",
+          "-M2048",
+          "-o",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/bridge_008/runs/lean_002/PivotOrder008.olean",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/bridge_008/runs/lean_002/PivotOrder008.lean"
+        ],
+        "status": "completed",
+        "exit_code": 1,
+        "elapsed_seconds": 2.070189334001043,
+        "source_sha256": "a0f19965cddcb05fa07c58cd5cd29f1b520156221c4c3d9527f694b5054e458f",
+        "snapshot_sha256": "a0f19965cddcb05fa07c58cd5cd29f1b520156221c4c3d9527f694b5054e458f",
+        "runner_sha256": "b18f1f4c1c04bfb2e392fd0bd30bb773dd2b3ead9cf3de5cfc98dc520a48d7bd",
+        "config_sha256": "cfafd2a9c99856ae10f709bca484df4b962e1c3250fb4948a18abc0704eca94e",
+        "library_roots": {
+          "Cli": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Cli/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Cli"
+          },
+          "LeanSearchClient": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/LeanSearchClient/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/LeanSearchClient"
+          },
+          "Qq": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Qq/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Qq"
+          },
+          "aesop": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/aesop/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/aesop"
+          },
+          "batteries": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/batteries/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/batteries"
+          },
+          "importGraph": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/importGraph/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/importGraph"
+          },
+          "lean": {
+            "build": "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean",
+            "source": "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/src/lean"
+          },
+          "mathlib": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/bootstrap/mathlib4/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/bootstrap/mathlib4"
+          },
+          "plausible": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/plausible/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/plausible"
+          },
+          "proofwidgets": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/proofwidgets/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/proofwidgets"
+          }
+        },
+        "resource_limits": {
+          "wall_seconds": 100,
+          "cpu_seconds": 90,
+          "memory_bytes": 8589934592,
+          "cores": 1
+        },
+        "stdout_sha256": "f7d26b49ed91d78c250e88851525d75a160ce5c952581ffca74c569c33bf0b8f",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "olean_sha256": null,
+        "scope": "Elementary identities only; coefficient/source binding remains textual and emitted-key witness OPEN"
+      },
+      "stdout": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/bridge_008/runs/lean_002/PivotOrder008.lean:1:0: warning: \n'Mathlib.Data.Real.Basic' has been deprecated: please replace this import by\n\nimport Mathlib.Basic.Real.Basic\n/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/bridge_008/runs/lean_002/PivotOrder008.lean:12:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Real.instDivInvMonoid', which is 'noncomputable'\n/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/bridge_008/runs/lean_002/PivotOrder008.lean:24:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/bridge_008/runs/lean_002/PivotOrder008.lean:41:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n'FT1536.S05.PivotOrder008.rotation_norm' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.PivotOrder008.rotation_polar' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.PivotOrder008.a2_second_pivot' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.PivotOrder008.positive_order_incompatible' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.PivotOrder008.affine_a2_atom' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.PivotOrder008.schur_complete_square' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "stderr": "",
+      "accepted_clean": false,
+      "snapshot": {
+        "path": ".build/bridge_008/runs/lean_002/PivotOrder008.lean",
+        "sha256": "a0f19965cddcb05fa07c58cd5cd29f1b520156221c4c3d9527f694b5054e458f",
+        "bytes": 1536
+      }
+    },
+    {
+      "receipt": {
+        "command": [
+          "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+          "-j1",
+          "-M2048",
+          "-o",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/bridge_008/runs/lean_003/PivotOrder008.olean",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/bridge_008/runs/lean_003/PivotOrder008.lean"
+        ],
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 0.8666854200018861,
+        "source_sha256": "7bc7683e46ecc960d7c967634b45313698679d7bf05113fb60b342f272c6342b",
+        "snapshot_sha256": "7bc7683e46ecc960d7c967634b45313698679d7bf05113fb60b342f272c6342b",
+        "runner_sha256": "b18f1f4c1c04bfb2e392fd0bd30bb773dd2b3ead9cf3de5cfc98dc520a48d7bd",
+        "config_sha256": "cfafd2a9c99856ae10f709bca484df4b962e1c3250fb4948a18abc0704eca94e",
+        "library_roots": {
+          "Cli": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Cli/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Cli"
+          },
+          "LeanSearchClient": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/LeanSearchClient/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/LeanSearchClient"
+          },
+          "Qq": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Qq/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Qq"
+          },
+          "aesop": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/aesop/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/aesop"
+          },
+          "batteries": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/batteries/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/batteries"
+          },
+          "importGraph": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/importGraph/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/importGraph"
+          },
+          "lean": {
+            "build": "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean",
+            "source": "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/src/lean"
+          },
+          "mathlib": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/bootstrap/mathlib4/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/bootstrap/mathlib4"
+          },
+          "plausible": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/plausible/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/plausible"
+          },
+          "proofwidgets": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/proofwidgets/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/proofwidgets"
+          }
+        },
+        "resource_limits": {
+          "wall_seconds": 100,
+          "cpu_seconds": 90,
+          "memory_bytes": 8589934592,
+          "cores": 1
+        },
+        "stdout_sha256": "5628781b167634a01dd6970100dd8aa6a2f5b2871f0504446fa7cf0342a679b1",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "olean_sha256": "d6033203ffc44229ee4e0ce3ccb099e346e56d34fa7139de173c03e3ef456832",
+        "scope": "Elementary identities only; coefficient/source binding remains textual and emitted-key witness OPEN"
+      },
+      "stdout": "'FT1536.S05.PivotOrder008.rotation_norm' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.PivotOrder008.rotation_polar' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.PivotOrder008.a2_second_pivot' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.PivotOrder008.positive_order_incompatible' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.PivotOrder008.affine_a2_atom' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.PivotOrder008.schur_complete_square' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "stderr": "",
+      "accepted_clean": true,
+      "snapshot": {
+        "path": ".build/bridge_008/runs/lean_003/PivotOrder008.lean",
+        "sha256": "7bc7683e46ecc960d7c967634b45313698679d7bf05113fb60b342f272c6342b",
+        "bytes": 1557
+      }
+    },
+    {
+      "receipt": {
+        "command": [
+          "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+          "-j1",
+          "-M2048",
+          "-o",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/bridge_009/runs/lean_001/HarmonicBudget009.olean",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/bridge_009/runs/lean_001/HarmonicBudget009.lean"
+        ],
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 1.1681440540014592,
+        "source_sha256": "4d7216cb0543f3bff178bba91d12cb4c6bf31b40ed8de004d61461899a911fd0",
+        "snapshot_sha256": "4d7216cb0543f3bff178bba91d12cb4c6bf31b40ed8de004d61461899a911fd0",
+        "runner_sha256": "83332f77b436da50997c0d5a8e02b55b7a3bc3892a1dc429d5baaefa79dabf6c",
+        "config_sha256": "cfafd2a9c99856ae10f709bca484df4b962e1c3250fb4948a18abc0704eca94e",
+        "library_roots": {
+          "Cli": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Cli/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Cli"
+          },
+          "LeanSearchClient": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/LeanSearchClient/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/LeanSearchClient"
+          },
+          "Qq": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Qq/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Qq"
+          },
+          "aesop": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/aesop/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/aesop"
+          },
+          "batteries": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/batteries/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/batteries"
+          },
+          "importGraph": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/importGraph/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/importGraph"
+          },
+          "lean": {
+            "build": "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean",
+            "source": "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/src/lean"
+          },
+          "mathlib": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/bootstrap/mathlib4/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/bootstrap/mathlib4"
+          },
+          "plausible": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/plausible/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/plausible"
+          },
+          "proofwidgets": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/proofwidgets/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/proofwidgets"
+          }
+        },
+        "resource_limits": {
+          "wall_seconds": 100,
+          "cpu_seconds": 90,
+          "memory_bytes": 8589934592,
+          "cores": 1
+        },
+        "stdout_sha256": "f4fd02f1a61a32c80fa6dc9c0418c02930e7ace5c905d610dbab72d3203382b5",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "olean_sha256": "3fd006798ac7973be60f3100ff62334a2c6c61fe326e2c4891fddb123366415a",
+        "scope": "Elementary identities only; coefficient/source binding remains textual and emitted-key witness OPEN"
+      },
+      "stdout": "'FT1536.S05.HarmonicBudget009.reciprocal_harmonic_two' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.HarmonicBudget009.reciprocal_harmonic_three' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.HarmonicBudget009.source_root_relative' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.HarmonicBudget009.primal_ternary_budget' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.HarmonicBudget009.envelope_budget' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.HarmonicBudget009.accepted_leaf_harmonic_floor' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "stderr": "",
+      "accepted_clean": true,
+      "snapshot": {
+        "path": ".build/bridge_009/runs/lean_001/HarmonicBudget009.lean",
+        "sha256": "4d7216cb0543f3bff178bba91d12cb4c6bf31b40ed8de004d61461899a911fd0",
+        "bytes": 1771
+      }
+    }
+  ],
+  "computation_runs": [
+    {
+      "manifest": {
+        "schema_version": 2,
+        "claim_id": "S05_KEY_BASIS_008",
+        "repository": {
+          "commit": "65a053a8f5b19f2ca0c084f3117eee948494bfdc",
+          "dirty": true
+        },
+        "command": [
+          "sage",
+          "notes/KEY_BASIS_008.sage",
+          ".build/bridge_008/runs/sage_001"
+        ],
+        "environment": {
+          "software": [
+            {
+              "name": "runner-python",
+              "version": "3.13.5"
+            },
+            {
+              "name": "SageMath",
+              "version": "10.9"
+            }
+          ],
+          "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+        },
+        "mathematics": {
+          "assertion_tested": "A2 pivot-order obstruction and need for full triangular atom identity",
+          "coefficient_domain": "QQ polynomial ring, rational functions, exact quotient polynomial arithmetic",
+          "conventions": "Q=x^2+xy+y^2, phi=X^(2m)-X^m+1; unitCoeff pair order (1,X^m)",
+          "inputs": [
+            "notes/KEY_BASIS_008.sage"
+          ],
+          "bounds": {
+            "half_degrees": [
+              1,
+              3,
+              6,
+              768
+            ],
+            "fixtures": [
+              "unit",
+              "dense"
+            ]
+          },
+          "non_claims": [
+            "No real KeyGen execution or accepted-key witness",
+            "No all-h mass certificate",
+            "No new source kernel"
+          ]
+        },
+        "randomness": {
+          "used": false
+        },
+        "run": {
+          "started_at": "2026-10-10T17:52:58.563997+00:00",
+          "runtime_seconds": 4.375353,
+          "exit_status": 0,
+          "status": "completed",
+          "timeout_seconds": 60.0,
+          "max_output_bytes": 1048576,
+          "resource_limits": {
+            "memory_bytes": 4294967296,
+            "cpu_seconds": 45,
+            "max_cores": 1,
+            "max_threads": 1
+          },
+          "missing_results": [],
+          "invalid_results": []
+        },
+        "execution_artifacts": [
+          "notes/KEY_BASIS_008.sage"
+        ],
+        "input_artifacts": [
+          {
+            "path": "notes/KEY_BASIS_008.sage",
+            "sha256": "3bb10b9c405bad2bae77ea39b6b6808e71688b74e46b20c3970444b8e000f44d",
+            "sha256_after": "3bb10b9c405bad2bae77ea39b6b6808e71688b74e46b20c3970444b8e000f44d"
+          }
+        ],
+        "output_directory": ".build/bridge_008/runs/sage_001",
+        "declared_results": [
+          ".build/bridge_008/runs/sage_001/certificate.json"
+        ],
+        "outputs": [
+          {
+            "path": ".build/bridge_008/runs/sage_001/stdout.txt",
+            "sha256": "1a938d88c60009eeb4cf7c1dba830cb136a095458723d2fb85c5eb80995dd1fe",
+            "kind": "log"
+          },
+          {
+            "path": ".build/bridge_008/runs/sage_001/stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "kind": "log"
+          },
+          {
+            "path": ".build/bridge_008/runs/sage_001/certificate.json",
+            "sha256": "d7267db242a3f610cc1416c51e0ce1da8843b64268d87f3fd58d2ac8ea840f32",
+            "kind": "result"
+          }
+        ],
+        "checks": [
+          {
+            "check": "input hashes unchanged",
+            "passed": true
+          },
+          {
+            "check": "process exited successfully within enforced limits",
+            "passed": true
+          },
+          {
+            "check": "declared result files are present and regular",
+            "passed": true
+          }
+        ],
+        "result": "Run completed; mathematical assertion requires interpretation and review.",
+        "residual_risks": [
+          "Command success does not establish the mathematical interpretation.",
+          "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+          "The thread cap uses conventional environment variables; a child program may ignore them.",
+          "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+        ]
+      },
+      "stderr": ""
+    },
+    {
+      "manifest": {
+        "schema_version": 2,
+        "claim_id": "S05_HARMONIC_BRIDGE_009",
+        "repository": {
+          "commit": "4cf44965bbf0defe31581245efba030290b8e078",
+          "dirty": true
+        },
+        "command": [
+          "sage",
+          "notes/HARMONIC_BRIDGE_009.sage",
+          ".build/bridge_009/runs/sage_001"
+        ],
+        "environment": {
+          "software": [
+            {
+              "name": "runner-python",
+              "version": "3.13.5"
+            },
+            {
+              "name": "SageMath",
+              "version": "10.9"
+            }
+          ],
+          "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+        },
+        "mathematics": {
+          "assertion_tested": "Reciprocal last leaf, Parseval/Schur source dictionary on small quotient rings, and a full-degree ternary NTRU algebraic witness",
+          "coefficient_domain": "ZZ/QQ polynomials, exact cyclotomic fields, GF(2), GF(18433)",
+          "conventions": "A2 norm, X^(2m)-X^m+1, 9-step public Golay recurrence, Hensel inverse modulo1024",
+          "inputs": [
+            "notes/HARMONIC_BRIDGE_009.sage"
+          ],
+          "bounds": {
+            "spectral_half_degrees": [
+              1,
+              3,
+              6
+            ],
+            "harmonic_depth": 8,
+            "algebraic_witness_degree": 1536
+          },
+          "non_claims": [
+            "No C KeyGen execution or emitted-key support",
+            "No floating leaf error proof",
+            "No universal theorem inferred from finite fixtures"
+          ]
+        },
+        "randomness": {
+          "used": false
+        },
+        "run": {
+          "started_at": "2026-10-10T17:56:22.172613+00:00",
+          "runtime_seconds": 1.419328,
+          "exit_status": 1,
+          "status": "failed",
+          "timeout_seconds": 180.0,
+          "max_output_bytes": 1048576,
+          "resource_limits": {
+            "memory_bytes": 4294967296,
+            "cpu_seconds": 150,
+            "max_cores": 1,
+            "max_threads": 1
+          },
+          "missing_results": [
+            ".build/bridge_009/runs/sage_001/certificate.json",
+            ".build/bridge_009/runs/sage_001/golay_ntru_witness.json"
+          ],
+          "invalid_results": []
+        },
+        "execution_artifacts": [
+          "notes/HARMONIC_BRIDGE_009.sage"
+        ],
+        "input_artifacts": [
+          {
+            "path": "notes/HARMONIC_BRIDGE_009.sage",
+            "sha256": "143516fd092b8ede4be679bab408c3e2bd963ae66923544f141c8cfc50fd714d",
+            "sha256_after": "143516fd092b8ede4be679bab408c3e2bd963ae66923544f141c8cfc50fd714d"
+          }
+        ],
+        "output_directory": ".build/bridge_009/runs/sage_001",
+        "declared_results": [
+          ".build/bridge_009/runs/sage_001/certificate.json",
+          ".build/bridge_009/runs/sage_001/golay_ntru_witness.json"
+        ],
+        "outputs": [
+          {
+            "path": ".build/bridge_009/runs/sage_001/stdout.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "kind": "log"
+          },
+          {
+            "path": ".build/bridge_009/runs/sage_001/stderr.txt",
+            "sha256": "5347c5b48c70c1524670c13c7d3ab70e72c0a0803a9c7b6e0ad95a8918600877",
+            "kind": "log"
+          }
+        ],
+        "checks": [
+          {
+            "check": "input hashes unchanged",
+            "passed": true
+          },
+          {
+            "check": "process exited successfully within enforced limits",
+            "passed": false
+          },
+          {
+            "check": "declared result files are present and regular",
+            "passed": false
+          }
+        ],
+        "result": "Run failed; mathematical assertion requires interpretation and review.",
+        "residual_risks": [
+          "Command success does not establish the mathematical interpretation.",
+          "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+          "The thread cap uses conventional environment variables; a child program may ignore them.",
+          "The POSIX CPU-time limit is per process, not an aggregate descendant budget.",
+          "Declared results were not produced: .build/bridge_009/runs/sage_001/certificate.json, .build/bridge_009/runs/sage_001/golay_ntru_witness.json",
+          "A nonzero exit under an address-space cap does not by itself show whether the cap was reached."
+        ]
+      },
+      "stderr": "Traceback (most recent call last):\n  File \"/home/footfalcon/miniforge3/envs/sage/bin/sage\", line 5, in <module>\n    from sage.cli.__main__ import main\n  File \"/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__main__.py\", line 9, in <module>\n    sys.exit(main())\n             ~~~~^^\n  File \"/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__init__.py\", line 56, in main\n    return RunFileCmd(options).run()\n           ~~~~~~~~~~~~~~~~~~~~~~~^^\n  File \"/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/run_file_cmd.py\", line 50, in run\n    eval(compile(open(input_file, 'rb').read(), input_file, 'exec'), sage_globals())\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/bridge_009/tmp/sage_ql7f7i9t/HARMONIC_BRIDGE_009soxs7sgt.sage.py\", line 24, in <module>\n    xs=[QQ(_sage_const_3 +(j%_sage_const_17 ),_sage_const_1 +(j%_sage_const_5 )) for j in range(_sage_const_3 *_sage_const_2 **k)]\n        ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"sage/structure/parent.pyx\", line 901, in sage.structure.parent.Parent.__call__\n    return mor._call_with_args(x, args, kwds)\n  File \"sage/categories/map.pyx\", line 856, in sage.categories.map.Map._call_with_args\n    raise NotImplementedError(\"_call_with_args not overridden \"\nNotImplementedError: _call_with_args not overridden to accept arguments for <class 'sage.rings.rational.Z_to_Q'>\n"
+    },
+    {
+      "manifest": {
+        "schema_version": 2,
+        "claim_id": "S05_HARMONIC_BRIDGE_009",
+        "repository": {
+          "commit": "4cf44965bbf0defe31581245efba030290b8e078",
+          "dirty": true
+        },
+        "command": [
+          "sage",
+          "notes/HARMONIC_BRIDGE_009.sage",
+          ".build/bridge_009/runs/sage_002"
+        ],
+        "environment": {
+          "software": [
+            {
+              "name": "runner-python",
+              "version": "3.13.5"
+            },
+            {
+              "name": "SageMath",
+              "version": "10.9"
+            }
+          ],
+          "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+        },
+        "mathematics": {
+          "assertion_tested": "Reciprocal last leaf, Parseval/Schur source dictionary on small quotient rings, and a full-degree ternary NTRU algebraic witness",
+          "coefficient_domain": "ZZ/QQ polynomials, exact cyclotomic fields, GF(2), GF(18433)",
+          "conventions": "A2 norm, X^(2m)-X^m+1, 9-step public Golay recurrence, Hensel inverse modulo1024",
+          "inputs": [
+            "notes/HARMONIC_BRIDGE_009.sage"
+          ],
+          "bounds": {
+            "spectral_half_degrees": [
+              1,
+              3,
+              6
+            ],
+            "harmonic_depth": 8,
+            "algebraic_witness_degree": 1536
+          },
+          "non_claims": [
+            "No C KeyGen execution or emitted-key support",
+            "No floating leaf error proof",
+            "No universal theorem inferred from finite fixtures"
+          ]
+        },
+        "randomness": {
+          "used": false
+        },
+        "run": {
+          "started_at": "2026-10-10T17:58:04.442962+00:00",
+          "runtime_seconds": 4.176898,
+          "exit_status": 1,
+          "status": "failed",
+          "timeout_seconds": 180.0,
+          "max_output_bytes": 1048576,
+          "resource_limits": {
+            "memory_bytes": 4294967296,
+            "cpu_seconds": 150,
+            "max_cores": 1,
+            "max_threads": 1
+          },
+          "missing_results": [
+            ".build/bridge_009/runs/sage_002/certificate.json"
+          ],
+          "invalid_results": []
+        },
+        "execution_artifacts": [
+          "notes/HARMONIC_BRIDGE_009.sage"
+        ],
+        "input_artifacts": [
+          {
+            "path": "notes/HARMONIC_BRIDGE_009.sage",
+            "sha256": "b3bdea1e8d315335d475d92fee12ebfeda5b36d63494cd4313276b600695ecbd",
+            "sha256_after": "b3bdea1e8d315335d475d92fee12ebfeda5b36d63494cd4313276b600695ecbd"
+          }
+        ],
+        "output_directory": ".build/bridge_009/runs/sage_002",
+        "declared_results": [
+          ".build/bridge_009/runs/sage_002/certificate.json",
+          ".build/bridge_009/runs/sage_002/golay_ntru_witness.json"
+        ],
+        "outputs": [
+          {
+            "path": ".build/bridge_009/runs/sage_002/stdout.txt",
+            "sha256": "b43ad128a1236cb2b716bb1df3c697ecc3993f7e7afc7f8ed05e42eca9b55c59",
+            "kind": "log"
+          },
+          {
+            "path": ".build/bridge_009/runs/sage_002/stderr.txt",
+            "sha256": "049a1f1bf1e320e29f808c1675f69319214fb8163e92562cc22bbe68259c8e09",
+            "kind": "log"
+          },
+          {
+            "path": ".build/bridge_009/runs/sage_002/golay_ntru_witness.json",
+            "sha256": "c6ebc9c423e4b0cf69c8356428d05ae46b7af5ab300b36020ef8d6591ac20563",
+            "kind": "result"
+          }
+        ],
+        "checks": [
+          {
+            "check": "input hashes unchanged",
+            "passed": true
+          },
+          {
+            "check": "process exited successfully within enforced limits",
+            "passed": false
+          },
+          {
+            "check": "declared result files are present and regular",
+            "passed": false
+          }
+        ],
+        "result": "Run failed; mathematical assertion requires interpretation and review.",
+        "residual_risks": [
+          "Command success does not establish the mathematical interpretation.",
+          "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+          "The thread cap uses conventional environment variables; a child program may ignore them.",
+          "The POSIX CPU-time limit is per process, not an aggregate descendant budget.",
+          "Declared results were not produced: .build/bridge_009/runs/sage_002/certificate.json",
+          "A nonzero exit under an address-space cap does not by itself show whether the cap was reached."
+        ]
+      },
+      "stderr": "Traceback (most recent call last):\n  File \"/home/footfalcon/miniforge3/envs/sage/bin/sage\", line 5, in <module>\n    from sage.cli.__main__ import main\n  File \"/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__main__.py\", line 9, in <module>\n    sys.exit(main())\n             ~~~~^^\n  File \"/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__init__.py\", line 56, in main\n    return RunFileCmd(options).run()\n           ~~~~~~~~~~~~~~~~~~~~~~~^^\n  File \"/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/run_file_cmd.py\", line 50, in run\n    eval(compile(open(input_file, 'rb').read(), input_file, 'exec'), sage_globals())\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/bridge_009/tmp/sage_03v9o69z/HARMONIC_BRIDGE_0097t20n5xy.sage.py\", line 110, in <module>\n    (out/'certificate.json').write_text(json.dumps(cert,indent=_sage_const_2 )+'\\n')\n                                        ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/footfalcon/miniforge3/envs/sage/lib/python3.14/json/__init__.py\", line 242, in dumps\n    **kw).encode(obj)\n          ~~~~~~^^^^^\n  File \"/home/footfalcon/miniforge3/envs/sage/lib/python3.14/json/encoder.py\", line 202, in encode\n    chunks = self.iterencode(o, _one_shot=True)\n  File \"/home/footfalcon/miniforge3/envs/sage/lib/python3.14/json/encoder.py\", line 263, in iterencode\n    return _iterencode(o, 0)\n  File \"/home/footfalcon/miniforge3/envs/sage/lib/python3.14/json/encoder.py\", line 182, in default\n    raise TypeError(f'Object of type {o.__class__.__name__} '\n                    f'is not JSON serializable')\nTypeError: Object of type Integer is not JSON serializable\nwhen serializing dict item 'symbolic_reciprocal_identities'\n"
+    },
+    {
+      "manifest": {
+        "schema_version": 2,
+        "claim_id": "S05_HARMONIC_BRIDGE_009",
+        "repository": {
+          "commit": "4cf44965bbf0defe31581245efba030290b8e078",
+          "dirty": true
+        },
+        "command": [
+          "sage",
+          "notes/HARMONIC_BRIDGE_009.sage",
+          ".build/bridge_009/runs/sage_003"
+        ],
+        "environment": {
+          "software": [
+            {
+              "name": "runner-python",
+              "version": "3.13.5"
+            },
+            {
+              "name": "SageMath",
+              "version": "10.9"
+            }
+          ],
+          "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+        },
+        "mathematics": {
+          "assertion_tested": "Reciprocal last leaf, Parseval/Schur source dictionary on small quotient rings, and a full-degree ternary NTRU algebraic witness",
+          "coefficient_domain": "ZZ/QQ polynomials, exact cyclotomic fields, GF(2), GF(18433)",
+          "conventions": "A2 norm, X^(2m)-X^m+1, 10-step public Golay recurrence, Hensel inverse modulo2048; exact rounded basis shear; scalar source budget",
+          "inputs": [
+            "notes/HARMONIC_BRIDGE_009.sage"
+          ],
+          "bounds": {
+            "spectral_half_degrees": [
+              1,
+              3,
+              6
+            ],
+            "harmonic_depth": 8,
+            "algebraic_witness_degree": 1536
+          },
+          "non_claims": [
+            "No C KeyGen execution or emitted-key support",
+            "No floating leaf error proof",
+            "No universal theorem inferred from finite fixtures"
+          ]
+        },
+        "randomness": {
+          "used": false
+        },
+        "run": {
+          "started_at": "2026-10-10T17:59:15.927109+00:00",
+          "runtime_seconds": 1.118034,
+          "exit_status": 1,
+          "status": "failed",
+          "timeout_seconds": 180.0,
+          "max_output_bytes": 1048576,
+          "resource_limits": {
+            "memory_bytes": 4294967296,
+            "cpu_seconds": 150,
+            "max_cores": 1,
+            "max_threads": 1
+          },
+          "missing_results": [
+            ".build/bridge_009/runs/sage_003/certificate.json",
+            ".build/bridge_009/runs/sage_003/golay_ntru_witness.json"
+          ],
+          "invalid_results": []
+        },
+        "execution_artifacts": [
+          "notes/HARMONIC_BRIDGE_009.sage"
+        ],
+        "input_artifacts": [
+          {
+            "path": "notes/HARMONIC_BRIDGE_009.sage",
+            "sha256": "659f3ddc81d2848a031bc5d1379e8eef6a546c2c69a16bbe5342d127c4f55428",
+            "sha256_after": "659f3ddc81d2848a031bc5d1379e8eef6a546c2c69a16bbe5342d127c4f55428"
+          }
+        ],
+        "output_directory": ".build/bridge_009/runs/sage_003",
+        "declared_results": [
+          ".build/bridge_009/runs/sage_003/certificate.json",
+          ".build/bridge_009/runs/sage_003/golay_ntru_witness.json"
+        ],
+        "outputs": [
+          {
+            "path": ".build/bridge_009/runs/sage_003/stdout.txt",
+            "sha256": "b43ad128a1236cb2b716bb1df3c697ecc3993f7e7afc7f8ed05e42eca9b55c59",
+            "kind": "log"
+          },
+          {
+            "path": ".build/bridge_009/runs/sage_003/stderr.txt",
+            "sha256": "c087212487c8d75e11758d127cedd3e57694dd7702772d71e6f815dfe632012c",
+            "kind": "log"
+          }
+        ],
+        "checks": [
+          {
+            "check": "input hashes unchanged",
+            "passed": true
+          },
+          {
+            "check": "process exited successfully within enforced limits",
+            "passed": false
+          },
+          {
+            "check": "declared result files are present and regular",
+            "passed": false
+          }
+        ],
+        "result": "Run failed; mathematical assertion requires interpretation and review.",
+        "residual_risks": [
+          "Command success does not establish the mathematical interpretation.",
+          "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+          "The thread cap uses conventional environment variables; a child program may ignore them.",
+          "The POSIX CPU-time limit is per process, not an aggregate descendant budget.",
+          "Declared results were not produced: .build/bridge_009/runs/sage_003/certificate.json, .build/bridge_009/runs/sage_003/golay_ntru_witness.json",
+          "A nonzero exit under an address-space cap does not by itself show whether the cap was reached."
+        ]
+      },
+      "stderr": "Traceback (most recent call last):\n  File \"/home/footfalcon/miniforge3/envs/sage/bin/sage\", line 5, in <module>\n    from sage.cli.__main__ import main\n  File \"/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__main__.py\", line 9, in <module>\n    sys.exit(main())\n             ~~~~^^\n  File \"/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/__init__.py\", line 56, in main\n    return RunFileCmd(options).run()\n           ~~~~~~~~~~~~~~~~~~~~~~~^^\n  File \"/home/footfalcon/miniforge3/envs/sage/lib/python3.14/site-packages/sage/cli/run_file_cmd.py\", line 50, in run\n    eval(compile(open(input_file, 'rb').read(), input_file, 'exec'), sage_globals())\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/bridge_009/tmp/sage_qgnenqq9/HARMONIC_BRIDGE_009tebxn1tk.sage.py\", line 70, in <module>\n    assert length==_sage_const_2048  and all(v in [-_sage_const_1 ,_sage_const_0 ,_sage_const_1 ] for v in f.list()+g.list())\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+    },
+    {
+      "manifest": {
+        "schema_version": 2,
+        "claim_id": "S05_HARMONIC_BRIDGE_009",
+        "repository": {
+          "commit": "4cf44965bbf0defe31581245efba030290b8e078",
+          "dirty": true
+        },
+        "command": [
+          "sage",
+          "notes/HARMONIC_BRIDGE_009.sage",
+          ".build/bridge_009/runs/sage_004"
+        ],
+        "environment": {
+          "software": [
+            {
+              "name": "runner-python",
+              "version": "3.13.5"
+            },
+            {
+              "name": "SageMath",
+              "version": "10.9"
+            }
+          ],
+          "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+        },
+        "mathematics": {
+          "assertion_tested": "Reciprocal last leaf, Parseval/Schur source dictionary on small quotient rings, and a full-degree ternary NTRU algebraic witness",
+          "coefficient_domain": "ZZ/QQ polynomials, exact cyclotomic fields, GF(2), GF(18433)",
+          "conventions": "A2 norm, X^(2m)-X^m+1, 10-step public Golay recurrence, Hensel inverse modulo2048; exact rounded basis shear; scalar source budget",
+          "inputs": [
+            "notes/HARMONIC_BRIDGE_009.sage"
+          ],
+          "bounds": {
+            "spectral_half_degrees": [
+              1,
+              3,
+              6
+            ],
+            "harmonic_depth": 8,
+            "algebraic_witness_degree": 1536
+          },
+          "non_claims": [
+            "No C KeyGen execution or emitted-key support",
+            "No floating leaf error proof",
+            "No universal theorem inferred from finite fixtures"
+          ]
+        },
+        "randomness": {
+          "used": false
+        },
+        "run": {
+          "started_at": "2026-10-10T17:59:47.956097+00:00",
+          "runtime_seconds": 4.57546,
+          "exit_status": 0,
+          "status": "completed",
+          "timeout_seconds": 180.0,
+          "max_output_bytes": 1048576,
+          "resource_limits": {
+            "memory_bytes": 4294967296,
+            "cpu_seconds": 150,
+            "max_cores": 1,
+            "max_threads": 1
+          },
+          "missing_results": [],
+          "invalid_results": []
+        },
+        "execution_artifacts": [
+          "notes/HARMONIC_BRIDGE_009.sage"
+        ],
+        "input_artifacts": [
+          {
+            "path": "notes/HARMONIC_BRIDGE_009.sage",
+            "sha256": "97fa98d4229a1ede2e11f774d68583b60946f731465d107ee0f24271c7ca9f7d",
+            "sha256_after": "97fa98d4229a1ede2e11f774d68583b60946f731465d107ee0f24271c7ca9f7d"
+          }
+        ],
+        "output_directory": ".build/bridge_009/runs/sage_004",
+        "declared_results": [
+          ".build/bridge_009/runs/sage_004/certificate.json",
+          ".build/bridge_009/runs/sage_004/golay_ntru_witness.json"
+        ],
+        "outputs": [
+          {
+            "path": ".build/bridge_009/runs/sage_004/stdout.txt",
+            "sha256": "e8e8da86341d51ab6d53b32e996c94ea08cbdee4dd125c1157bfef52fe7c767a",
+            "kind": "log"
+          },
+          {
+            "path": ".build/bridge_009/runs/sage_004/stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "kind": "log"
+          },
+          {
+            "path": ".build/bridge_009/runs/sage_004/certificate.json",
+            "sha256": "33e16078aafe6ca8e1fd2296c2327f93b4120ddbbef236d901179beb27e554e3",
+            "kind": "result"
+          },
+          {
+            "path": ".build/bridge_009/runs/sage_004/golay_ntru_witness.json",
+            "sha256": "d08178c0328f509d7f045391146ba75e649041f7c07fa3ab8e790d83bbed4d67",
+            "kind": "result"
+          }
+        ],
+        "checks": [
+          {
+            "check": "input hashes unchanged",
+            "passed": true
+          },
+          {
+            "check": "process exited successfully within enforced limits",
+            "passed": true
+          },
+          {
+            "check": "declared result files are present and regular",
+            "passed": true
+          }
+        ],
+        "result": "Run completed; mathematical assertion requires interpretation and review.",
+        "residual_risks": [
+          "Command success does not establish the mathematical interpretation.",
+          "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+          "The thread cap uses conventional environment variables; a child program may ignore them.",
+          "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+        ]
+      },
+      "stderr": ""
+    },
+    {
+      "manifest": {
+        "schema_version": 2,
+        "claim_id": "S05_C_GATE_009_CHECK",
+        "repository": {
+          "commit": "4cf44965bbf0defe31581245efba030290b8e078",
+          "dirty": true
+        },
+        "command": [
+          "sage",
+          "notes/C_GATE_009_CHECK.sage",
+          ".build/bridge_009/runs/c_gate_001/gate.json",
+          ".build/bridge_009/runs/sage_004/golay_ntru_witness.json",
+          ".build/bridge_009/runs/c_check_001"
+        ],
+        "environment": {
+          "software": [
+            {
+              "name": "runner-python",
+              "version": "3.13.5"
+            },
+            {
+              "name": "SageMath",
+              "version": "10.9"
+            }
+          ],
+          "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+        },
+        "mathematics": {
+          "assertion_tested": "Decode all output words exactly and compare synthetic flat2048 roots and leaves; C leaf gate return1",
+          "coefficient_domain": "ZZ/QQ",
+          "conventions": "Positive normal binary64 bit pattern decoding; one public Golay fixture",
+          "inputs": [
+            "notes/C_GATE_009_CHECK.sage",
+            ".build/bridge_009/runs/c_gate_001/gate.json",
+            ".build/bridge_009/runs/sage_004/golay_ntru_witness.json"
+          ],
+          "bounds": {
+            "root_words": 768,
+            "leaf_words": 1536,
+            "fixtures": 1
+          },
+          "non_claims": [
+            "No KeyGen execution or distribution theorem",
+            "No universal numerical error",
+            "No source kernel proof"
+          ]
+        },
+        "randomness": {
+          "used": false
+        },
+        "run": {
+          "started_at": "2026-10-10T18:02:13.254310+00:00",
+          "runtime_seconds": 1.57054,
+          "exit_status": 0,
+          "status": "completed",
+          "timeout_seconds": 60.0,
+          "max_output_bytes": 1048576,
+          "resource_limits": {
+            "memory_bytes": 4294967296,
+            "cpu_seconds": 45,
+            "max_cores": 1,
+            "max_threads": 1
+          },
+          "missing_results": [],
+          "invalid_results": []
+        },
+        "execution_artifacts": [
+          "notes/C_GATE_009_CHECK.sage",
+          ".build/bridge_009/runs/c_gate_001/gate.json",
+          ".build/bridge_009/runs/sage_004/golay_ntru_witness.json"
+        ],
+        "input_artifacts": [
+          {
+            "path": "notes/C_GATE_009_CHECK.sage",
+            "sha256": "4e96b33802f9b97e31443b636ed488a4b7e8e0a67710ec75ae0d6c5104ac1980",
+            "sha256_after": "4e96b33802f9b97e31443b636ed488a4b7e8e0a67710ec75ae0d6c5104ac1980"
+          },
+          {
+            "path": ".build/bridge_009/runs/c_gate_001/gate.json",
+            "sha256": "a91f8d767c95e1a0f23a73531e9eaebbd1518ec3e18f2229e99b257a22dc31fe",
+            "sha256_after": "a91f8d767c95e1a0f23a73531e9eaebbd1518ec3e18f2229e99b257a22dc31fe"
+          },
+          {
+            "path": ".build/bridge_009/runs/sage_004/golay_ntru_witness.json",
+            "sha256": "d08178c0328f509d7f045391146ba75e649041f7c07fa3ab8e790d83bbed4d67",
+            "sha256_after": "d08178c0328f509d7f045391146ba75e649041f7c07fa3ab8e790d83bbed4d67"
+          }
+        ],
+        "output_directory": ".build/bridge_009/runs/c_check_001",
+        "declared_results": [
+          ".build/bridge_009/runs/c_check_001/checks.json"
+        ],
+        "outputs": [
+          {
+            "path": ".build/bridge_009/runs/c_check_001/stdout.txt",
+            "sha256": "f035fb43581684a42f22b6c07b5027e97779f9d527e4ffe2792726fe79c8cc5a",
+            "kind": "log"
+          },
+          {
+            "path": ".build/bridge_009/runs/c_check_001/stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "kind": "log"
+          },
+          {
+            "path": ".build/bridge_009/runs/c_check_001/checks.json",
+            "sha256": "565d855ffee5c50e32f895974d84a1f453847c36262be4061cd36902991efa26",
+            "kind": "result"
+          }
+        ],
+        "checks": [
+          {
+            "check": "input hashes unchanged",
+            "passed": true
+          },
+          {
+            "check": "process exited successfully within enforced limits",
+            "passed": true
+          },
+          {
+            "check": "declared result files are present and regular",
+            "passed": true
+          }
+        ],
+        "result": "Run completed; mathematical assertion requires interpretation and review.",
+        "residual_risks": [
+          "Command success does not establish the mathematical interpretation.",
+          "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+          "The thread cap uses conventional environment variables; a child program may ignore them.",
+          "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+        ]
+      },
+      "stderr": ""
+    }
+  ],
+  "c_gate": {
+    "receipt": {
+      "status": "C_GATE_DIAGNOSTIC_ONLY",
+      "command": [
+        "gcc",
+        "-std=c99",
+        "-O",
+        "-Wall",
+        "-Wextra",
+        "-DFPR_IMPL=\"fpr-emulated.h\"",
+        "-DSAMPLER_CODF=0",
+        "-DSAMPLER_CDF=0",
+        "-DCT_BEREXP=1",
+        "-DFT_TERNARY_ADAPTIVE_CDF=1",
+        "-DFT1536_CANDIDATE_PROFILE=1",
+        "-DCLEANSE=1",
+        "-DTRUE_TERNARY_SECRET=1",
+        "-DTRUE_TERNARY_SECRET_MODE=1",
+        "-DTERNARY_KEYGEN_BOUND_SCALE_NUM=1250",
+        "-DTERNARY_KEYGEN_BOUND_SCALE_DEN=100",
+        "-DTERNARY_KEYGEN_MAX_ATTEMPTS=3000000",
+        "-DSIGN_MAX_ATTEMPTS=16",
+        "-I/media/footfalcon/FT1536_DATA/free_falcon_sign/Extra/c",
+        "-I/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/bridge_009/runs/c_gate_001",
+        "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/bridge_009/runs/c_gate_001/C_GATE_009.c",
+        "/media/footfalcon/FT1536_DATA/free_falcon_sign/Extra/c/falcon-enc.c",
+        "/media/footfalcon/FT1536_DATA/free_falcon_sign/Extra/c/falcon-vrfy.c",
+        "/media/footfalcon/FT1536_DATA/free_falcon_sign/Extra/c/frng.c",
+        "/media/footfalcon/FT1536_DATA/free_falcon_sign/Extra/c/shake.c",
+        "/media/footfalcon/FT1536_DATA/free_falcon_sign/Extra/c/fpr-emulated.c",
+        "/media/footfalcon/FT1536_DATA/free_falcon_sign/Extra/c/falcon-fft.c",
+        "/media/footfalcon/FT1536_DATA/free_falcon_sign/Extra/c/falcon-sign.c",
+        "-lm",
+        "-o",
+        "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/bridge_009/runs/c_gate_001/gate"
+      ],
+      "compile_exit": 0,
+      "run_exit": 0,
+      "compiler": "gcc (Debian 14.2.0-19) 14.2.0",
+      "elapsed_seconds": 4.889724815999216,
+      "source_manifest_sha256": "56974571b46e8257bdd3b4097c8c70fded6bb4b94c64805f6e35ec80929a0985",
+      "fixture_sha256": "d08178c0328f509d7f045391146ba75e649041f7c07fa3ab8e790d83bbed4d67",
+      "wrapper_sha256": "65736d5a2f690d9e86b44f66bb1fec50293cbd1cb44a0e7663959ff00120fe93",
+      "runner_sha256": "5bcb2a4b146ce3cde8dc44b73649726a880fa8932dd8de2c8e13be324fe917af",
+      "generated_fixture_header_sha256": "8a89b9b14322b1d7ebdc7210c2fba3758830319d6f944f45e71c7afd14b2a2ca",
+      "files": [
+        {
+          "path": ".build/bridge_009/runs/c_gate_001/gate.json",
+          "sha256": "a91f8d767c95e1a0f23a73531e9eaebbd1518ec3e18f2229e99b257a22dc31fe"
+        },
+        {
+          "path": ".build/bridge_009/runs/c_gate_001/compile.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": ".build/bridge_009/runs/c_gate_001/gate",
+          "sha256": "ac21bca6b796cc6ce26d1c53f34f9eef63d6270fa81c6f0c7c86fe77e53db138"
+        },
+        {
+          "path": ".build/bridge_009/runs/c_gate_001/compile.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": ".build/bridge_009/runs/c_gate_001/C_GATE_009.c",
+          "sha256": "65736d5a2f690d9e86b44f66bb1fec50293cbd1cb44a0e7663959ff00120fe93"
+        },
+        {
+          "path": ".build/bridge_009/runs/c_gate_001/fixture.h",
+          "sha256": "8a89b9b14322b1d7ebdc7210c2fba3758830319d6f944f45e71c7afd14b2a2ca"
+        },
+        {
+          "path": ".build/bridge_009/runs/c_gate_001/run.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "scope": "One public synthetic fixture through actual leaf certificate; no KeyGen execution, no universal root error, no source security proof"
+    },
+    "compile_stdout": "",
+    "compile_stderr": "",
+    "run_stderr": ""
+  },
+  "generated_artifacts": [
+    {
+      "artifact": {
+        "path": ".build/bridge_009/runs/sage_004/golay_ntru_witness.json",
+        "sha256": "d08178c0328f509d7f045391146ba75e649041f7c07fa3ab8e790d83bbed4d67",
+        "bytes": 63439
+      },
+      "generator": "notes/HARMONIC_BRIDGE_009.sage",
+      "regeneration": "sage notes/HARMONIC_BRIDGE_009.sage FRESH_OUT; fixture bytes are deterministic",
+      "sensitivity": "public deterministic algebraic fixture; no user secret or production key"
+    },
+    {
+      "artifact": {
+        "path": ".build/bridge_009/runs/c_gate_001/gate.json",
+        "sha256": "a91f8d767c95e1a0f23a73531e9eaebbd1518ec3e18f2229e99b257a22dc31fe",
+        "bytes": 43820
+      },
+      "generator": "notes/C_GATE_009.c and notes/RUN_C_GATE_009.py",
+      "regeneration": "Run pinned fixture generator, then RUN_C_GATE_009.py with fresh output"
+    }
+  ],
+  "failed_attempts": [
+    {
+      "id": "008/lean_001",
+      "cause": "3GiB virtual address limit led to thread creation failure before elaboration; changed to8GiB, no proof inferred"
+    },
+    {
+      "id": "008/lean_002",
+      "cause": "noncomputable real division definition, deprecated import and tactic style warnings; corrected without suppressing warnings"
+    },
+    {
+      "id": "009/sage_001",
+      "cause": "QQ two-argument constructor unsupported; changed to exact division"
+    },
+    {
+      "id": "009/sage_002",
+      "cause": "math passed including flat1024 degree1536 NTRU fixture, then Sage Integer JSON serialization failed; fixed serializer"
+    },
+    {
+      "id": "009/sage_003",
+      "cause": "mechanical fixture update confused sequence length1024 with spectral mass2048 in assertion; fixed length; no false universal conclusion"
+    },
+    {
+      "id": "008/latex_001 and009/latex_001",
+      "cause": "psmallmatrix environment missing; used standard pmatrix; source snapshots and raw diagnostics retained"
+    }
+  ],
+  "latex_history": [
+    {
+      "path": ".build/bridge_008/runs/latex_001/source_before_matrix_fix.tex",
+      "sha256": "5926d02f0196b0e854182ece72d7b1194e2bf6ac495d80058de2c6981ffac856",
+      "bytes": 6012
+    },
+    {
+      "path": ".build/bridge_008/runs/latex_001/result.json",
+      "sha256": "599be7fdf077022ff4155a26062dd8bbe696e22085e1c363a78f7613e316ed5e",
+      "bytes": 11352
+    },
+    {
+      "path": ".build/bridge_009/runs/latex_001/source_before_matrix_fix.tex",
+      "sha256": "bf762ee891a7c7f6cf055c8b4a1561455445a4386a3be0bb18de11af3801224f",
+      "bytes": 13177
+    },
+    {
+      "path": ".build/bridge_009/runs/latex_001/result.json",
+      "sha256": "9a5a2d99f9d4ef6f2e4667ee15b9401d0ad81c3e77054c50347d2b2f80d476c9",
+      "bytes": 11415
+    }
+  ],
+  "self_audit": "Separate self-review: source pair ordering, full positive Schur, conjugate-root Parseval, integral NTRU basis, conditional row shifts, leaf index767, numeric hlink, complete scope and nonclaims checked. Not independent project review.",
+  "scope_guards": {
+    "sampler007_unchanged": true,
+    "full_bridge_kernel": false,
+    "QROM_security": false,
+    "T12_B20_status_changes": false,
+    "mainline_paper_site_changes": false,
+    "push": false
+  },
+  "route_state": [
+    {
+      "route": "Inherited exact list ldl_shape",
+      "state": "refuted in current definition; no repair claimed"
+    },
+    {
+      "route": "Harmonic Schur bound",
+      "state": "textual proof complete under named algebraic premises"
+    },
+    {
+      "route": "Uniform g00 error and primitive contracts",
+      "state": "OPEN next source obligation; one fixture is not a universal witness"
+    },
+    {
+      "route": "Public flat-spectrum instance",
+      "state": "complete for one exact key and one C certificate invocation; not emitted-key support"
+    }
+  ]
+}

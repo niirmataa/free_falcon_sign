@@ -3,6 +3,18 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
+**Najnowszy krok — [008/009](notes/BRIDGE_008_009_CHECKPOINT.md):**
+wykryto niemożliwą kolejność pivotsów w odziedziczonym `ldl_shape`
+([dokładny finding](notes/KEY_BASIS_008.tex)). Nie zmieniono źródeł/statusów T12.
+[Nowy most harmoniczny](notes/HARMONIC_BRIDGE_009.tex) wyprowadza potrzebny
+bound LDL z jednej średniej harmonicznej, omijając tę równość list.
+Pełny most jest tekstowy; 12 małych lematów008/009 przeszło Lean z czystymi logami.
+Jawny świadek1536 z ternarnymi f/g i dokładnym NTRU przeszedł też funkcję
+certyfikatu C. **To jedna instancja, nie dowód o całym emitted KeyGen.**
+Następny mur: jednolity błąd g00≤1/128 i źródłowe kontrakty arytmetyczne,
+albo bezpośredni błąd ostatniego liścia<33. Właściciel zlecił sprawdzić,
+które potrzebne eksporty są już dostępne w ścieżce ROM.
+
 **Cel końcowy właściciela: dowód bezpieczeństwa FT1536 w QROM z deklaracją
 na takim samym poziomie rygoru jak cel ROM.**
 [Kontrakt tezy, założeń i obowiązków](notes/TARGET_CONTRACT_001.tex)
@@ -11,7 +23,7 @@ Główne twierdzenie dotyczy rzeczywistego prawa kluczy FT1536; jednolity
 all-h certyfikat jest silniejszym celem pomocniczym, nadal OPEN.
 Nie uznano h=0 ani warunkowego budżetu MARGINAL-006 za końcowy wynik.
 
-**Najnowszy wynik: [SAMPLER-007](notes/SAMPLER_007.tex).** Wykonalny sampler
+**Checkpoint samplera: [SAMPLER-007](notes/SAMPLER_007.tex).** Wykonalny sampler
 „wektor przed wyzwaniem”, z zerową parą po cap80 i świeżym sześcianem po
 cap196. Każda gałąź jest rozliczona w dominacji punktowej. Tekstowo `J≪P`
 dla każdego h; pełny moment `e<2^-44` **pod jawnym warunkiem masy włókien (M)**.
@@ -67,7 +79,9 @@ Nie nadpisujemy prób. [Handoff 004](notes/SAMPLER_004_HANDOFF.json),
 | Wykonalny publiczny sampler pełnej odpowiedzi, również porażek | SAMPLER-007 wykonany; capy par/wektora rozliczone przez dodatnie fallbacki. `J(none)=0` jawnie, uczciwe porażki pozostają w P. Koszt w receipcie |
 | Absolutna ciągłość J względem uczciwego P | SAMPLER-007: tekstowy argument dla każdego h; każde wyjście ma dodatni zaakceptowany atom uczciwego włókna. Formal source binding OPEN |
 | Certyfikat `ΣJ²/P≤1+e`, z użytecznym e | 007: tekstowe `e<2^-44` pod (M); świadek (M) dla emitted KeyGen OPEN. 004 zachowuje osobny wynik h=0 `e<2^-50`. Cel all-h OPEN; przeszkoda 003 zachowana |
-| Dokładna baza/LDL → masa wszystkich włókien przy trzech temperaturach | 007: nowy dowód tekstowy; dokładne pivotsy ≤q²/991 są wystarczające. Source→basis/atom/LDL oraz kernelizacja OPEN |
+| Dokładna baza/LDL → masa wszystkich włókien przy trzech temperaturach | 007 zachowane; 009 wyprowadza pivotsy ≤q²/991 z harmonicznego widma≥991. Pełny most tekstowy; źródłowe przesłanki i jego kernelizacja OPEN |
+| Odziedziczone `BasisLeafAlgebra.ldl_shape` | 008: przeszkoda pierwszych dwóch pivotsów; tej instancji nie można użyć w obecnej postaci |
+| Średnia harmoniczna i źródłowy liść767 | 009: tekstowy transport rekursji; scalar budget kernelowy. Root error≤1/128 i kontrakty operacji dla wszystkich kluczy OPEN |
 | Kernelizacja h=0: `J≪P` i moment | **OPEN, obowiązek jawny:** przenieść SAMPLER-004 do Lean z czystymi logami; etykieta **textual** pozostaje. Szkic DyadicObstruction również nie ma potwierdzonego kernela |
 | Normalizator reszty `Z₁(r)` i odwrotność, także `r=c−hz₂` | NORMALIZER-005: textual, jednolity względny przedział <2^-356; błąd TV samych kategorii przez cap16 <2^-236. Nie jest to TV do uczciwego P |
 | Pełny normalizator `Z_h,c`, odwrotność i błędy uproszczeń | NORMALIZER-005: h=1,c=0, balls512/768; względne szerokości <2^-180 i TV zerowego aliasu przez cap16 <2^-180. Efektywna kontrakcja dla wszystkich h,c **OPEN** |
