@@ -39,6 +39,18 @@ retained; its recovery observation found no remaining job. Definitional
 state expansion was split into bounded heap equalities, not a raised limit.
 This second logical source commit is not the closing midpoint. Audit/finite
 controls and one sealed recoverable close follow; no B1.08/B4/B5 work starts.
+Audit001 accepted0/0:141 entries=111 new+30 inspected inherited interfaces,
+118 complete terms/23 inductives, standard axioms/zero elisions;706 literal
+inputs (`980f1a1b…`). Sage001 accepted0/0:10 normal/UBSan runs,20 public
+prefix/cap cases and6 readiness diagnostics per run;four mutations detected
+in both modes (`62c62321…`). No full KeyGen or emitted keys. Readiness
+diagnostics on other paths do NOT close their missing universal source proof.
+All19 directories retained:18 completed steps=8 accepted/10 rejected,one
+harness interruption with no engine receipt/exit/RSS. Max recorded RSS
+4896912KiB;limits unchanged/no active job. Dedicated047 PRESEAL rechecks all
+8965 unchanged predecessor pins (`474e778d…`). Close once at the recoverable
+entry/first-sampling boundary, NOT B1.07 Acceptance. Full RNG/loop/gates/
+certificate/encoding-input/teardown obligations are the next B1.07 work.
 
 ## B1.06 — CLOSED at SAME-material public/inverse equations Acceptance — 2026-10-10
 
