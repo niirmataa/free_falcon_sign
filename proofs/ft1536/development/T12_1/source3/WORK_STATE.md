@@ -1,5 +1,28 @@
 # T12.1/source3 — żywy stan
 
+## B1.06 — BATCH_045 actual reverse-radix continuation — 2026-10-10
+
+Owner-started new window, GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`),
+following checkpoint24R and the unchanged staged roadmap. BEFORE edits/jobs:
+BATCH_015–044 verified, **8306 distinct pins/669 literal source bindings**,
+no supersession or active job. Entry `.build/levels_045/ENTRY_PINS_045.json`,
+SHA256 `57ba27fc87101f488d2de0bd1fcae0fcba3ff45b2f8daee2cb7f1c913e47d2d0`.
+Continue the SAME post-triple remaining execution: reverse radix stages,
+first-root inverse, normalization and final h; ONLY THEN fInv and BOTH
+SAME-material equations. B1.06 Acceptance NOT MET; B1.07 waits. One midpoint
+or Acceptance this window. Preserve every historical/failed byte, unchanged
+serial guarded limits and clean logs. Small local own commits; no push,
+review, delegation, relay, migration or import. Historical runner/session
+labels remain provenance, not the current worker identity.
+ReverseProgram/Values/Fold/Row accepted0/0: the remaining inverse is literally
+partitioned, the reverse butterfly derives x+y and (x-y)*inverseTwiddle,
+and the complete inner loop/row derives canonical chronological writes and
+preserves every untouched cell. The actual generated igm load and row v2/v
+setup are consumed. Local row domains remain explicit pending outer-stage
+composition. The first parser/type attempt is retained: scalar compound
+`t <<= 1` is not the same AST as the for-clause `m >>= 1`; no parser or limit
+was weakened. This small source commit is NOT the window midpoint.
+
 ## B1.06 — CLOSED at SAME quotients through all actual inverse triples — 2026-10-10
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
