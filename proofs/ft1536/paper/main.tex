@@ -12,11 +12,13 @@
 \hypersetup{
   pdftitle={Free FT: Ternary Lattice Signatures with a Code-Bound Security Reduction},
   pdfauthor={Niirmata},
-  pdfsubject={Version 0.1 research draft; conditional classical reduction},
+  pdfsubject={Version 0.2 research draft; conditional classical reduction},
   pdfkeywords={FT1536, Falcon, EUF-CMA, MT-ISIS, Lean, source binding}
 }
+\theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{target}[theorem]{Target statement (in flight)}
@@ -42,30 +44,42 @@
 \title{Free FT: Ternary Lattice Signatures\\
   with a Code-Bound Security Reduction}
 \author{Niirmata\\\small Project draft; author approval pending}
-\date{Version 0.1 --- 6 October 2026}
+\date{Version 0.2 --- publication-form draft; 10 October 2026}
 \begin{document}
 \maketitle
 \begin{abstract}
-We describe a formal reduction framework for FT1536, a research signature
-profile derived from Falcon with ternary secrets. The formal classical
-game has a conditional EUF-CMA to multi-target inhomogeneous short-integer
-solution reduction. A pointwise sampler-comparison framework computes
-an error parameter $e=k^{32}-1<2^{-32}$ for its unconditioned attempt
-shape; the corresponding acceptance-conditioned framework gives
-$e<2^{-17}$. These bounds require the stated law and weight interfaces.
-A separate computational theorem bounds a stream-driven public
-simulation using an admitted class of randomized tests and an explicit
-cost certificate. We present counterexamples to insufficient sampler
-arguments and defects found during source binding. The connection from
-the real signer to these games remains in flight. This draft makes no
-end-to-end implementation-security or QROM claim; its unresolved
-interfaces are listed in the body.\src{C01,C04,C06,C09}
+We present a formal security case for FT1536, a research signature
+profile in the Falcon lineage with ternary secrets, in which every
+mathematical statement is bound to pinned fragments of the
+implementation it describes. The formal classical game admits a
+conditional reduction from EUF-CMA to multi-target inhomogeneous
+short-integer solution; a pointwise sampler comparison computes the
+second-moment error $e=k^{32}-1<2^{-32}$ for the unconditioned attempt
+shape, and $e<2^{-17}$ for the acceptance-conditioned shape, which of
+the two describes the realized signer being an open source-binding
+obligation. A separate computational theorem bounds a stream-driven
+public simulation through an admitted class of randomized tests and an
+explicit cost certificate. Negative results are stated as theorems:
+bulk control does not control the norm-rejected tail, a total-mass
+sandwich does not give pointwise control, additive accuracy alone does
+not yield the machine stage, and the statistical route for the modeled
+finite-state generator is closed. The verification process itself found
+defects, in vendored C code and in the formal models built to describe
+it. Two interfaces remain in flight: the honest-signing hop and the law
+bindings; the bridge from the real signer to the games is not closed.
+We report security as two numbers per profile --- model-dependent
+lattice diagnostics and symmetric search ceilings --- and account the
+system level as their minimum. This draft claims neither end-to-end
+implementation security nor a QROM reduction; all unresolved interfaces
+are listed in the body.\src{C01,C04,C06,C09,C10,C12,C14,C15,C20}
 \end{abstract}
 \noindent\textbf{Reading convention.} CLOSED labels refer to the stated
 formal component, including its premises, rather than to implementation
 security or independent acceptance. IN-FLIGHT and OPEN labels identify
 undischarged work. Superscript identifiers refer to the exact paths,
-declarations and byte pins in the companion \code{SOURCES.md}.
+declarations and byte pins in the companion \code{SOURCES.md}; every
+number and quoted statement is traceable through that map. Statements
+printed as targets express the intended assembly and are not theorems.
 \input{sec_01_intro}
 \input{sec_02_parameters}
 \input{sec_03_model}

@@ -1,5 +1,28 @@
 \section{Preliminaries and threat model}\label{sec:model}
 \status{CLOSED definitions; source instantiation IN-FLIGHT}
+\subsection{Notation and conventions}\label{sec:notation}
+Throughout, $q=18433$; $\Z$ and $\R$ are the integers and the reals, and
+$R_q$ is the coefficient representation of the ring defined below. The
+symbol $\none$ marks a failed attempt, $\U_X$ is the uniform law on a
+finite set $X$, $\ind[\cdot]$ the indicator function, and
+$\Law(\cdot)$ the law of a random variable. Laws are written $j,p,\mu$;
+$\AC(j,p)$ is absolute continuity of $j$ with respect to $p$,
+$\Second(j,p)$ the directional second moment,
+$\chi^2(j\Vert p)$ the chi-square divergence and $\TV$ total variation.
+Advantages are $\Adv_{\mathrm{EUF}}$ and $\Adv_{\mathrm{MT}}$ under a
+budget $\beta$ and key laws $\mu_K,\mu_H$. The symbol $e$ is the
+second-moment error of a local reply certificate; $e_2(k)$ is its
+transported form for attempt factor $k$, and $k$ is the computed
+attempt factor of Section~\ref{sec:sampler}. The collision loss is
+$\epscoll$, the computational term $\dprg$, and
+$\Phi(D,b)$, $\psi_D$ are the event transfer and its generalized
+inverse of Section~\ref{sec:main}.\src{C03,C04,C06}
+
+Literal source and Lean names are set in \code{monospace}; superscript
+source identifiers map statements to the pinned source map
+\code{SOURCES.md}. Statement environments distinguish proved components
+(theorems, propositions, lemmas), definitions, in-flight target
+statements and remarks; a target statement is not a theorem.\src{C17}
 \subsection{The relation and its geometry}
 The formal representation of $\Rq$ is
 $\operatorname{Fin}(768)\to(\Z/18433\Z)^2$.
@@ -84,12 +107,15 @@ We retain the named operational boundaries:
 The complete ledger appears in Section~\ref{sec:limits}.\src{C01}
 
 \subsection{Directional second moment}
-For finite laws $j,p$, the formal definitions are
+\begin{definition}[Absolute continuity and directional second moment]%
+\label{def:second}
+For finite laws $j,p$,
 \[
  \AC(j,p)\iff\forall x,\ p(x)=0\Rightarrow j(x)=0,
  \qquad \Second(j,p)=\sum_x\frac{j(x)^2}{p(x)}.
 \]
-Under absolute continuity, this is $1+\chi^2(j\Vert p)$.
+Under absolute continuity, $\Second(j,p)=1+\chi^2(j\Vert p)$.
+\end{definition}
 The separate absolute-continuity premise is essential: Lean's real
 division is total, while the extended-valued \code{chi2} definition is
 infinite when absolute continuity fails. The direction used below is

@@ -8,13 +8,40 @@ must refer to the same experiment. The present artifact contains a
 conditional classical reduction and several source-bound components;
 their final implementation-level composition is unfinished.\src{C01}
 
-This paper develops three parts of that argument. First, it presents the
-conditional reduction and the computed constants of a pointwise sampler
-comparison. Second, it records negative results that rule out shortcuts
-in that comparison. Third, it describes the source-binding and review
-process, including defects in both C code and formal models that the
-process exposed. The artifact is part of the FT1536 evidence
-archive~\cite{ft1536artifact}.\src{C04,C06,C09,C11,C12}
+A reduction proved for an idealized scheme says little about a concrete
+signer unless the sampler, the key law and the randomness interface of
+the proof are the ones the code implements. Our own experience supports
+the insistence: the source-binding process described in
+Section~\ref{sec:binding} found defects not only in the vendored C code
+but also in the formal models that were being built to describe that
+code. A proof about a model is not a proof that the model describes the
+source; keeping the two obligations separate is a design choice of this
+work.\src{C11,C12}
+
+\subsection{Contributions}
+\begin{enumerate}
+\item A conditional classical reduction from EUF-CMA to the multi-target
+inhomogeneous short-integer solution problem for a formal game tied to
+the FT1536 code, with a \emph{computed} sampler error: the attempt
+factor $k$ and the second-moment error $e=k^{32}-1<2^{-32}$ are derived
+margins from stated pointwise premises, not postulated constants
+(Sections~\ref{sec:main}--\ref{sec:sampler}).\src{C04,C06,C07}
+\item A source-binding method, from C99 fragments through an executed
+statement tree to kernel-checked execution theorems, with explicit
+kernel counterexamples to insufficient premises and concrete defects
+found in both the C code and the formal models
+(Section~\ref{sec:binding}).\src{C11,C12}
+\item A two-level security declaration: model-dependent lattice
+diagnostics and symmetric search ceilings reported side by side, with
+the system accounting taken as their minimum rather than advertised
+from the lattice exponent alone
+(Section~\ref{sec:security}).\src{C14,C20}
+\item Negative results as theorems: impossibility statements ruling out
+whole-tail control from bulk comparisons, pointwise control from
+total-mass sandwiches, the machine stage from additive accuracy alone,
+and a statistical treatment of the modeled finite-state generator
+(Section~\ref{sec:sampler}).\src{C09,C10}
+\end{enumerate}
 
 % Mission paragraph signed by the owner 2026-10-07 ("idealna wersja do
 % paperu i do serca") - EN text below, PL original recorded in
@@ -30,6 +57,19 @@ arguments alongside successful proofs, binding claims to the exact code
 that runs, and preserving the attribution of the Falcon Project and
 Thomas Pornin. Accessibility is a design aim; it is not evidence for a
 security claim.
+
+\subsection{Scope of the claims}
+Every mathematical statement in this paper is conditional on named
+premises and carries those premises with it. In particular: the
+conditional reduction is a theorem about defined interpreters, not
+about the compiled binary; the sampler error attaches to a named
+attempt shape, and which shape the realized signer obeys is an open
+source-binding obligation; the security table is a diagnostic, with the
+S06 estimator campaign uncertified; the byte-level bridge remains
+outside the proof; and no quantum-ROM claim is made or implied
+(Sections~\ref{sec:model}, \ref{sec:security} and~\ref{sec:limits}).
+The honesty ledger of Section~\ref{sec:limits} lists the unresolved
+interfaces in the body of the paper rather than in footnotes.\src{C01,C08,C14,C18}
 
 Section~\ref{sec:main} distinguishes the target assembly from the
 theorems already present. Section~\ref{sec:sampler} states the negative

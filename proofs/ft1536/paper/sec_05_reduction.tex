@@ -66,11 +66,13 @@ whole-game equality premise is inserted into
 Theorem~\ref{thm:conditional}.\src{C05}
 
 \subsection{Adaptive composition and stopping loss}
+\begin{lemma}[Adaptive composition and stopping loss]\label{lem:composition}
 The certificate compares the full $(c,o)$ law at every fresh signing
-point, including $o=\none$. The local comparison consumes its absolute
-continuity and second-moment fields. Induction on the adversary program
-then gives the factor $(1+e)^{q_s}$; hash steps do not pay this factor,
-and a Sign step pays it before following the adaptive continuation.
+point, including $o=\none$, and consumes its absolute continuity and
+second-moment fields. Induction on the adversary program then gives the
+factor $(1+e)^{q_s}$: hash steps do not pay this factor, and a Sign step
+pays it before following the adaptive continuation.
+\end{lemma}
 This is the content of \code{programComparison} and
 \code{stoppedGameComparison}.\src{C04,C05}
 
