@@ -1,5 +1,36 @@
 # T12.1/source3 — żywy stan
 
+## B1.07 — BATCH_050 continuation from29R — 2026-10-10
+
+Owner-started new window, GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`).
+BEFORE edits/jobs: BATCH_015–049 verified,10483 distinct pins/739 literal
+bindings,no supersession/active job. Entry `.build/levels_050/ENTRY_PINS_050.json`,
+SHA256 `667972dc8ecd9030625c0a7bbb09a8299e1a72e38ea63df9359369bf0dcb6587`.
+Continue actual argument binding and caller-local preservation,chronological
+source attempts,the SAME six gates and accepted physical encoding inputs in
+29.1 order. The complete049 syntax/readiness-failure edge is not whole-call
+execution. The complete certificate still needs derived general-scratch/block0,
+globals,snapshot and lifetime transport; no correctness premise is introduced.
+One Acceptance or expanded midpoint,serial guarded jobs,unchanged limits,
+exact-path local commits. No push/review/delegation/relay/migration/import.
+Foreign changes/staging and every predecessor/failed byte remain untouched.
+B1.07 Acceptance NOT MET; B1.08/B4/B5 NOT entered.
+
+Five new modules accepted guarded0/0: actual six argument values bound to
+the SAME049 header; source nonwrites preserve local_attempts/logn/ter/n/comp;
+the actual capped FIVE-gate prefix has finite chronological rejection traces
+from048 counter0,consecutive derived numbers,length<=3000000,and no sampled
+cap3000001. A normal stop is BEFORE the certificate,NOT accepted/final break.
+The SAME source prefix yields exact NTRU/retained f/g/F/G on its first
+pre-certificate boundary without rerunning dimensions or assuming solver
+correctness. Later local instances still require Initial; its transport across
+every retry and the046 public-equation call binding remain separate.
+Cap-return scope restores all six outer objects/dead extents and saved names.
+Every rejected snapshot remains,including the argument-proof meta-memory
+failure;bounded direct proofs keep all limits unchanged. This logical source
+step is NOT the window's closing midpoint. Continue physical material/static
+entry transport,source controls and full-term audit before one sealed close.
+
 ## B1.07 — CLOSED at whole-syntax/readiness-failure midpoint — 2026-10-10
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
