@@ -17,9 +17,11 @@ caller-visible failure and emitted-law support must compose with the
 same game. Local B3 codec/verdict theorems are not that composition. \\
 A5 & Model boundary & LP64 word/memory contracts with the modeled
 wrapping behavior; no compiler, fault or side-channel security theorem. \\
-B1 / arrows 1--2 & IN-FLIGHT & Source honest continuation, fair-law
-identity, actual attempt shape, pointwise roads, and B1.10 key-law
-identification. \\
+B1 / arrows 1--2 & IN-FLIGHT & Stages B1.05 (exact integer NTRU) and
+B1.06 ($h=g\cdot f^{-1}$, both equations) are closed/accepted at kernel
+scope, not reviewed; B1.07 is in progress. Source honest continuation,
+fair-law identity, actual attempt shape, pointwise roads, and B1.10
+key-law identification remain open. \\
 B2 / B5 & CLOSED conditionally for public simulation & The admitted
 test class, test cost and tape law need concrete instantiation. Honest-Sign
 assembly remains open. \\
@@ -33,7 +35,8 @@ and reprogramming arguments require separate theorems. \\
 \bottomrule
 \end{longtable}
 \noindent These entries retain the D1--D3 and A1--A5 scope names while
-using the corrected computational status.\src{C01,C13,C14,C15,C18}
+using the corrected computational status. Stage granularity for B1 is
+recorded in Section~\ref{sec:b1status}.\src{C01,C13,C14,C15,C18,C21}
 
 \subsection{Support, error shape and resources}
 The byte bridge has a mathematical consequence, not merely a

@@ -1,5 +1,5 @@
 \section{Binding to the implementation}\label{sec:binding}
-\status{CLOSED method and recorded findings; B1 IN-FLIGHT}
+\status{CLOSED method and recorded findings; B1 stage ledger IN-FLIGHT}
 \subsection{From source text to executions}
 The source3 method fixes C bytes, parses the supported C99 fragment into
 a statement tree, and proves the equality between the parsed region
@@ -69,6 +69,77 @@ name and misread \code{((size_t)1 << k) - 1}; a token-name guard removed
 the false call. The failed bindings and probes are retained in the
 batch record.\src{C12}
 
+\paragraph{What the traps teach.}
+The recorded failures share one structure: a plausible name or comment
+masking a different mathematical object. A parser that silently
+describes an unbound program tree, a call assumed where the execution
+never makes it, or a predicate named as computational while quantifying
+over all events (Section~\ref{sec:computational}) are the same class of
+defect in different clothing. The disciplines adopted in response are
+correspondingly uniform: calls and counters are derived from executed
+bodies rather than read off intended behavior, claims are checked at
+the kernel against exact types, and every failed attempt stays in the
+record instead of being replaced by a clean-looking history
+(Annex~\ref{app:trust}).\src{C11,C12,C15}
+
+\subsection{Stage status of the source-to-law campaign}\label{sec:b1status}
+The source-to-law work proceeds in named stages whose Acceptance blocks
+define their exact scope. Below, ``closed'' means kernel-scoped and not
+independently reviewed; no stage closes arrows 1--2 of
+Section~\ref{sec:main}, and none of the statements in this subsection is
+a claim about the whole \code{KeyGen} loop, its termination, or the
+distribution of emitted keys.\src{C21}
+
+\paragraph{B1.05 closed: exact integer NTRU.}
+The B1.05 export is
+\code{KeygenCallerSuccess}\allowbreak.\allowbreak\code{exact_integer_ntru}. It states that a caller
+entry executed through the complete root call with normal return
+yields integer vectors $f,g,F,G$ with bounds $1/1/2047/2047$, the exact
+integer equation
+\[
+ f\cdot G-g\cdot F=q
+\]
+in the module's \code{multiply}/\code{constantCoeffs} coefficient
+quotient, and the representation of the four output slots. The modular
+solver check is consumed with residual $37748737<2147355649$; it is not
+assumed as a premise. This is a source-fragment and object-reference
+composition theorem. It says nothing about the enclosing key loop, an
+emitted key, or any security property.\src{C21}
+
+\paragraph{B1.06 Acceptance met: $h=g\cdot f^{-1}$ and both equations.}
+The B1.06 export is
+\code{KeygenPublicAccepted}\allowbreak.\allowbreak\code{source_same_material}. It states that the
+successful fixed public computation, run on the same retained
+$f,g$ bytes with $f\neq0$, produces a canonical public vector $h$ and a
+mathematical $\mathrm{fInv}\in R_q$ satisfying both equations
+\[
+ h\cdot f=g
+ \qquad\text{and}\qquad
+ \mathrm{fInv}\cdot f=1
+\]
+in $R_q$, in the module's \code{mulRq}/\code{reduceVec} semantics; the
+inverse witness $\mathrm{fInv}$ is not a serialized array. No
+correctness, invertibility or round-trip premise is introduced: the
+equations are conclusions of the executed source. This closes the local
+public/inverse/equation gap only; it is not a whole-keygen statement and
+carries no independent review.\src{C21}
+
+\paragraph{B1.07 in progress.}
+The stage is a partial proof: its Acceptance block is not met and it is
+not reviewed. Complete randomness-readiness and first-sampling
+boundaries have been derived at the current checkpoint; the remaining
+obligations are the full enclosing make invocation and control, the
+loop chronology including the attempt cap, the six-gate accepted
+attempt, and the transport of accepted material to the encoding
+inputs.\src{C21}
+
+Deterministic execution traces license no IID model, no $p_{\mathrm{accept}}$
+value and no availability formula; the measured acceptance rate of
+Section~\ref{sec:parameters} remains an empirical control. The realized
+attempt shape, the honest-signing hop and the law bindings of
+Section~\ref{sec:main} remain open at every status of this ledger.
+\src{C02,C08,C21}
+
 \subsection{Proof engineering and current boundary}
 The REV10 certificate now states
 \code{rawTable = some ((List.range 1024).map bitrev10)}.
@@ -81,7 +152,13 @@ records a clean accepted run.\src{C11}
 
 These results illustrate why a kernel proof of a model and a proof
 that the model describes the source are distinct obligations. The
-remaining B1 work includes source value/row laws and the eventual
-emitted-material-to-fiber and law interfaces. Their completion cannot
-be inferred from the closed parser or table certificates.\src{C11,C01}
+stage ledger of Section~\ref{sec:b1status} records how far the
+source-to-law chain has been derived: exact integer NTRU at B1.05, the
+public $h$ and both equations at B1.06 Acceptance, and B1.07 in
+progress. Their completion cannot be inferred from the closed parser or
+table certificates, and the remaining B1 obligations --- enclosing
+control, loop chronology, the accepted attempt and the
+material-to-encoding transport, followed by the emitted-material-to-law
+interfaces --- are still named gaps, not consequences of the theorem
+names.\src{C11,C21}
 \todo{B1-FINAL}{Replace this progress stub with the final source-to-law exports after delivery.}
