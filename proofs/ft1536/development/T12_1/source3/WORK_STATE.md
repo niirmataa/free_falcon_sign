@@ -34,6 +34,43 @@ Program were resumed; later source edits necessarily rebuild their OWN changed
 dependencies. Recovery `a17a27f1…`; unrelated paper commits are preserved.
 This logical source step is not the window's single closing midpoint.
 
+KeygenMakeLifetime accepted0/0: exact source outer names, byte/extent/permission
+restoration for all SIX automatic objects, saved scalar/pointer restoration,
+and the COMPLETE readiness-failure edge returns0 with all six blocks dead.
+Post-teardown Load16/Load64 are impossible. This consumes the actual048 Prefix
+and both nested RNG temporary scopes, not an assumed whole-body result.
+Other whole-call returns and normal attempt-loop execution remain OPEN.
+Native Sage controls002 accepted0/0:12 normal/UBSan runs ×14 PUBLIC scripted
+cases, all FIVE mutations detected in both modes. The full source CALLER
+body is used, but every cryptographic callee/context layout/codec is an
+EXPLICIT diagnostic mock and the counter-start injection is an explicit
+boundary seam. Thus chronology/gate-order/encoding-pointer diagnostics are
+NOT kernel gate composition, real FPEMU/solver/certificate/codec results,
+an emitted-key law or full KeyGen. No entropy/private material is generated.
+Own syntax commit `0e38ca35`; this second logical step is not the single
+closing midpoint. Internal full-term audit and one sealed close follow.
+
+Internal audit002 accepted0/0:1241 entries=1200 new+41 inspected inherited,
+1213 complete terms+28 kernel inductives, standard axioms/zero elisions and
+739 literal inputs (`26cfce39…`). The exact046 public,032 solver and complete
+certificate interfaces are printed/inspected, NOT consumed in a whole-attempt
+proof. In particular the certificate's block0 layout needs transport from
+the actual scratch descriptor and globals; this is a missing bridge, not an
+allowed new correctness premise or a code counterexample.
+Full retained history:29 directories,52 genuinely completed steps=32 accepted
+and20 rejected, one interrupted directory. The three005 engine receipts are
+counted as completed; its unfinished Binding child still has no fabricated
+exit/time/RSS/driver aggregate. Max recorded RSS8378988KiB; limits unchanged.
+Recovery originally pinned three own mutable cache aliases: rehash shows TWO
+changed (Syntax/Grammar), Tokens byte-identical. Original005 products remain
+byte-exact. Separate append-only reconciliation `d1ad5b88…` retains the old
+receipt and documents both organizer path/count mistakes without rewriting it.
+All015–048 predecessor pins remain unchanged. Shared origin/main advanced
+externally during this work; this worker has not run push or published a range.
+Seal exactly one recoverable whole-syntax/readiness-failure midpoint next;
+full caller execution/chronology/six-gate mathematics/final physical encoding
+material and later-return teardown remain OPEN, B1.07 Acceptance NOT MET.
+
 ## B1.07 — CLOSED at COMPLETE readiness/first-sampling midpoint — 2026-10-10
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
