@@ -30,8 +30,8 @@ KeygenRngReference/Frame, KeygenReadyResult, MakeReady and MakeReadySampling
 accepted guarded0/0. The COMPLETE fixed set_seed/rng_ready bodies now execute
 their actual branches/calls/byte stores and both Fresh tmp32 scopes. Every
 finite ready call derives return0 or1; return1 DERIVES both nonzero signed
-flags. Context bytes outside[8,432), all caller slots and automatic-object
-teardown are source consequences, including failure. Full normal prefix
+flags. Context bytes outside[8,432), all caller slots and both RNG temporary
+teardowns are source consequences, including failure. Full normal prefix
 derives counter0/profile/static/scratch/automatic entry WITHOUT an already-
 ready condition; its SAME first cap/sampler calls derive count1 and both
 Bound1 vectors. The heap is no longer claimed unchanged on seeding paths.
@@ -39,6 +39,21 @@ The explicit finite Linux syscall observations are not proof of the OS or
 seed quality/availability. Full-term audit and public source controls follow
 before one recoverable readiness close. Whole loop/six gates/accepted encoding
 material and full make teardown remain OPEN; no B1.07 Acceptance claim.
+Adequacy/audit accepted0/0: exact dec64le source tree/lowering, active Linux
+wrapper, physical member offsets and both temporary extents/disposal laws.
+Internal audit231 entries=185 new+46 inherited,189 complete terms/42 kernel
+inductives, standard axioms/zero elisions,718 literal bindings (`9874a226…`).
+Native Sage004 accepted0/0:14 normal/UBSan runs, each one LP64 layout check,
+35 readiness cases,18 set_seed cases and10 scripted entropy cases. All six
+mutations per mode detected; independent public SHAKE bytes and context frames
+match (`25af27d4…`). Actual Extra/c/frng/includes/macros are pinned, unchanged
+039 FPR difference rehashed; no real entropy, private KeyGen or emitted key.
+Successful pre-layout003 and both failed Sage attempts remain. Full history:
+31 directories/32 completed steps,15 accepted/17 rejected steps;14 wholly
+accepted/17 failed directories, max RSS3561684KiB, unchanged limits/no job.
+Dedicated048 PRESEAL rechecks9257 predecessor bytes (`addf7e06…`). Seal the
+single recoverable COMPLETE-READINESS midpoint next, NOT Acceptance. No
+chronological whole-loop/gate/encoding claim or next-stage job is added.
 
 ## B1.07 — CLOSED at enclosing entry/first-sampling midpoint — 2026-10-10
 
