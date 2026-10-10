@@ -1,3 +1,135 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.06 Acceptance: SAME final h, fInv and BOTH equations
+
+**B1.06: PROVED_KERNEL_SCOPED / Acceptance MET / NOT_REVIEWED.**
+**Package: PARTIAL_PROOF / IN_PROGRESS / WORKING_NOT_FROZEN.**
+2026-10-10,BATCH_046,GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`).
+**CLOSED_AT_ACCEPTANCE.** One close this window,no intermediate midpoint.
+B1.05 stays BATCH_032;B1.07 is NOT entered or started. Handoff:**26R**.
+Exact types/pins/traps:`KEYGEN_SOURCE_TO_FIBER_001_BATCH_046_NOTES.md`.
+
+## 26. Closed this window — first-root → normalization/final h → fInv → BOTH equations
+
+1. **25.1 item1 DONE:** exceptional igm[0] derives actual scaled r. ALL768
+   first-root bodies derive canonical ordinary low/high stores and preserve
+   untouched cells/generated-table/header frames. ORIGINAL physical top-
+   block reconstruction supplies factor2,so045's768 becomes1536. No image,
+   correctness or round-trip premise;the SAME retained suffix is consumed.
+2. **25.1 item2 DONE:** actual logn10 excludes the ni lookup branch. The LIVE
+   `mq_div_18433(Rt,(uint32_t)n)` call derives canonical ni=radix/1536,with both
+   actual argument conversions. ALL1536 normalization stores derive canonical
+   final h and every ORIGINAL physical quotient evaluation. BOTH table
+   disposals,both actual inverse Call/Bind layers,return syntax and caller t
+   disposal are consumed,not assumed away.
+3. **25.1 item3 DONE,ONLY AFTER final h:** the proved normalized image and
+   distinct physical points give a PROVED public-field evaluation isomorphism.
+   SAME successful tests' nonzero f values construct mathematical fInv;BOTH
+   SAME f/g/h mulRq equations follow. Existing pinned quotient-operation
+   types were inspected and public-field laws rechecked. No B3 transform
+   export or different-field transform theorem is consumed.
+4. Actual writable callee names are proved to be pointer parameters. Bind/
+   Exec/Fresh frames preserve the SAME f/g bytes to the final heap,without
+   adding table/f or table/g nonaliasing premises. The complete headline has
+   unchanged043 entry premises and concludes actual canonical h,retained
+   f/g,nonzero f,fInv and BOTH equations. **B1.06 Acceptance MET.**
+
+### 26.1 Exact checked boundary — no remaining local B1.06 obligation
+
+`KeygenPublicAccepted.source_same_material` takes:
+
+```text
+s : State; out : Result; f,g,h : ArrayPointer; fv,gv : Geometry.Vec
+Slot s "logn" 10; Ternary s; actual f/g/h bindings
+Legal s.heap f; Legal s.heap g; Legal s.heap h
+KeygenMaterial.Represents s.heap f fv; Represents s.heap g gv
+Bound fv 1; Bound gv 1
+h.block != f.block; h.block != g.block
+LiveTables s; KeygenPublicFrame.Tables s h.block
+out.flow=returned (some (int32 1))
+Exec fixedPublicProgram ["f","g"] (code compute) s out
+--------------------------------------------------------------
+KeygenMaterial.Represents out.state.heap f fv
+KeygenMaterial.Represents out.state.heap g gv
+exists hv,fInv : Relation.Rq,
+  CanonicalPairedMaterial out.state.heap h hv
+  Nonzero fv
+  mulRq hv   (reduceVec fv) = reduceVec gv
+  mulRq fInv (reduceVec fv) = constantCoeffs (1 : ZMod18433)
+```
+
+CanonicalPairedMaterial is the exact `NormalizePolynomial.Represents`:
+actual unsigned16 loads,range<18433 and ordinary field coefficients in both
+halves for every i:Fin768. Witnesses are `Equations.publicVector fv gv` and
+`Equations.fInverse fv`;fInv is mathematical,not an extra serialized array.
+`EvaluationIso.evaluationEquiv : Relation.Rq ≃ (Fin1536 → ZMod18433)` has a
+proved normalized-image inverse. Nonzero/equations/images/correctness are
+conclusions,NOT complete-headline premises. No043 premise is added.
+
+Enclosing KeyGen must still derive the legal/profile/material/bounds1/
+static-liveness/output-nonaliasing entry facts. Whole KeyGen/gates/cap,
+encoding/emitted-to-fiber,compiler/machine refinement,laws/PRG/security and
+independent review remain outside. Closing B1.06 does not discharge them
+or start B1.07. No code/numerical counterexample or arithmetic-budget failure
+was found in this window;the local source public/inverse/equation gap is closed.
+
+### 26.2 Pins,audit,controls and retained attempts
+
+- BEFORE edits/jobs:BATCH_015–045 **8604 pins/683 literal bindings**,no
+  supersession/job. Entry `.build/levels_046/ENTRY_PINS_046.json`:
+  `a2890d06e8132a7f67a3be86519d276394f0407faaf0b3dd7bd5846005f8732b`.
+- **BATCH_046 JSON:** `ad9bae57b27698b564d1296fc1d00aceb5e30e2551ebe4b7894212a6dcd0ae3e`.
+- **BATCH_046 notes:** `ca27d80a70325a93268f4fa29334458565412e9122ea070adc9f5f7114829699`.
+- Sixteen proof modules+audit0/0. **1035 entries=135 new+900 inherited;965
+  complete terms+70 inductives;standard axioms;zero elisions**. Audit JSON
+  `1510110aa194e6a193e86d927bb2f118c4d6aba4c849f5aebf9a60362c2e1eb2`;
+  receipt `3b2ae8bf4827d2a71b5aaddc6179eee4bce19ee9b0cac4e6171699979da96271`.
+- Sage001 **0/0;12 new normal/UBSan runs**,ten public inputs including seven
+  SAME public g/f quotients;**7680 first-root butterflies/15360 normalization
+  stores per baseline mode**;all five mutations per mode detected. Sage
+  checks30720 ORIGINAL unnormalized/normalized evaluations. Result
+  `ce1240f9423cb02df13d6e9f252f34ff4e7d0b62f83523d6ac469eb6ec45928a`;
+  receipt `d57ecaaa65b93efc19e24bbcc329a8e4a381d86fd7ccf58f16a67720d5c16244`.
+  Inherited039 approved live-header difference rehashed;not a full M0 build.
+  Finite diagnostics supplement,not replace,the universal kernel proof.
+- PRESEAL `49be9a71e70d11e3771e739263f280d5c048b25918476120aa2c303fcde63b3e`
+  rechecks all8604 predecessor pins. Dedicated046 seal/verify tool:
+  `15c980f1463b838d7800d78eda2ddebb4fb1c1f203b69d7115157a8252a89d05`.
+- **POSTSEAL** `.build/levels_046/POSTSEAL.json`:
+  `f528271b382fe6e5469c2846d879797f8d2c6aaa4a3953d5b75a0320125490e8`:
+  **8965 distinct pins/700 literal bindings**,no supersession/active job.
+- All15 directories/26 steps retained:seven wholly accepted,eight failed;
+  18 accepted/eight rejected steps;max recorded cumulative RSS3779996KiB.
+  No interruption/unresolved job;limits unchanged. Traps253–259,complete
+  types and every failed snapshot/raw stream are in the sealed pair.
+- Own source/evidence commits:`cb4344be`,`19e05247`,`53eafe86`,`8dde5b74`,plus
+  closing pair/checkpoint commit. Foreign work/staging preserved. No push,
+  review,delegation,relay,migration,stages import or broad replay.
+
+## 26R. Handoff at B1.06 Acceptance — B1.07 waits for its own owner-started window
+
+1. This B1.06 window is CLOSED. Do not auto-restart it or enter B1.07/B4/B5.
+   Preserve BATCH_015–046,every earlier/failed byte and the actual scoped type.
+   The next plan stage is B1.07 (EXECUTION_PLAN§3);it has not been started.
+2. If the owner starts that next window,read source3/WORK_STATE,this checkpoint,
+   the046 pair notes,the precise B1.07 Acceptance block and the staged roadmap.
+   BEFORE edits/jobs,verify BATCH_015–046 from source3 with a NEW durable receipt:
+
+   ```sh
+   mkdir -p .build/levels_047
+   python3 -B tools/keygen_public_accepted_batch.py verify ad9bae57b27698b564d1296fc1d00aceb5e30e2551ebe4b7894212a6dcd0ae3e ca27d80a70325a93268f4fa29334458565412e9122ea070adc9f5f7114829699 .build/levels_047/ENTRY_PINS_047.json
+   ```
+
+   Expect8965 pins/700 literal bindings,no supersession/job. Any mismatch
+   is stop-and-report,not silent repair or weakening of historical pins.
+3. B1.07 must derive the enclosing entry facts and actual attempt gates/cap/
+   loop-success/material-to-encoding semantics in plan order. The new public
+   export consumes them;it does not assume or discharge whole-KeyGen control.
+   Inspect exact consumer/export types and pins before reuse. No new source
+   code/runner/job for B1.07 was created in this window.
+4. One owner-started stage/window,one Acceptance or expanded midpoint,serial
+   guarded jobs,unchanged limits,clean0/0 streams,Sage preparser,durable runtime,
+   bounded pieces and all attempts retained. Small local own commits;no
+   automatic push/review/delegation/relay/migration/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.06 SAME quotients through complete reverse reconstruction
 
 **PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN.**

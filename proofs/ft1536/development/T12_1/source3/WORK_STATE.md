@@ -1,5 +1,46 @@
 # T12.1/source3 — żywy stan
 
+## B1.06 — CLOSED at SAME-material public/inverse equations Acceptance — 2026-10-10
+
+**CLOSED_AT_ACCEPTANCE / PROVED_KERNEL_SCOPED / NOT_REVIEWED (B1.06).**
+**Package PARTIAL_PROOF / IN_PROGRESS / WORKING_NOT_FROZEN.**
+One close in BATCH_046,GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`),no
+intermediate midpoint. B1.05 stays032;B1.07 NOT entered/started. Handoff:**26R**.
+
+The owner-ordered first-root → normalization/final h → fInv → BOTH equations
+is complete. Exceptional igm[0] derives scaled r and all768 actual first-root
+bodies;ORIGINAL physical reconstruction doubles045's768 to1536. The LIVE
+logn10 division computes canonical ni=radix/1536;all1536 chronological stores
+derive ordinary canonical final h and ORIGINAL g/f evaluations. Both actual
+Call/Bind layers,table disposals,return syntax and caller t disposal are
+consumed. The proved normalized image gives a public-field evaluation
+isomorphism;SAME source-tested nonzero f constructs mathematical fInv and
+BOTH mulRq equations. Parameter-bound frames also preserve SAME final f/g
+bytes without an added table/f or table/g nonaliasing premise. No B3 export
+is consumed. `KeygenPublicAccepted.source_same_material` has unchanged043
+entry premises;actual canonical h,retained f/g,nonzero f and both equations
+are conclusions. Enclosing legal/profile/material/bounds1/static-layout facts
+remain B1.07 obligations;whole KeyGen/emitted-to-fiber,compiler,laws/PRG/
+security and independent review are outside. No code/numerical counterexample.
+
+Entry8604 pins (`a2890d06…`);dedicated046 POSTSEAL **8965 pins/700 literal
+bindings**,no supersession/job (`f528271b…`). Sealed pair JSON
+`ad9bae57b27698b564d1296fc1d00aceb5e30e2551ebe4b7894212a6dcd0ae3e`;
+notes `ca27d80a70325a93268f4fa29334458565412e9122ea070adc9f5f7114829699`.
+Sixteen proofs+audit0/0;1035 entries/965 complete terms/70 inductives,standard
+axioms/zero elisions (`1510110a…`). Sage0010/0:12 new normal/UBSan runs,ten
+public inputs including seven SAME quotients,7680 first-root butterflies/
+15360 normalization stores per baseline mode;five mutations per mode detected,
+30720 ORIGINAL unnormalized/normalized evaluations (`ce1240f9…`). Unchanged039
+approved live-header difference rehashed,not a full M0 build. All15 directories/
+26 steps remain,eight failed directories/eight rejected steps,18 accepted
+steps,max RSS3779996KiB;limits unchanged,traps253–259 in the pair notes.
+
+Own commits:`cb4344be`,`19e05247`,`53eafe86`,`8dde5b74`,plus closing pair/
+checkpoint commit. Foreign work/staging preserved. No push,review,delegation,
+relay,migration,stages import or broad replay. No active/unresolved proof job.
+This owner-started window is CLOSED at B1.06 Acceptance,not auto-restarted.
+
 ## B1.06 — BATCH_046 actual first-root continuation — 2026-10-10
 
 Owner-started new window, GPT-6.1 Sol Fast (`openai/gpt-6.1-sol-fast`),
