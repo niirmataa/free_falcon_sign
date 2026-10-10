@@ -1,0 +1,52 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm]{geometry}
+\usepackage{fontspec}\setmainfont{Latin Modern Roman}
+\usepackage{amsmath,amssymb,xurl,hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\newcommand{\code}[1]{\nolinkurl{#1}}
+\title{S05 / NORMALIZER-005: erratum końców przedziałów}
+\author{Notatka robocza dla Niirmata}\date{10 października 2026}
+\begin{document}\maketitle
+\textbf{Status: jawna korekta błędu implementacji rachunku.}
+Przy porównaniu precyzji MARGINAL-006 wykryto, że zapisane jako dokładne
+końce przedziału dla tego samego wymiernego budżetu nie przecinały się.
+Przyczyną była konwersja \code{QQ(endpoint)} z typu MPFR RealNumber.
+W Sage nie musi ona zachowywać dokładnej wartości binarnej: może wybrać
+pobliską liczbę wymierną. Dla górnego końca balls512 liczby $1/3$
+zwraca $1/3$, ściśle mniej niż dokładny binarny górny koniec.
+
+W oryginalnym \code{FIBER_NORMALIZER_005.sage} użyto tej konwersji
+zarówno podczas składania nowych przedziałów theta, jak i serializacji
+pól \code{lower_exact}, \code{upper_exact}. Nie jest to zatem wyłącznie
+błąd kosmetycznego wydruku. Pierwotne certyfikaty liczbowe 005 nie są
+autorytatywnym świadectwem skierowanego rachunku i zostają zastąpione
+poniższą korektą. Nie nadpisano ich bajtów ani historycznych manifestów.
+
+\textbf{Naprawa.} Każdy koniec MPFR zamieniamy przez
+\code{endpoint.exact_rational()}. Funkcja składania przedziałów przyjmuje
+wyłącznie już dokładne elementy $\mathbb Z$ lub $\mathbb Q$;
+nie dokonuje niejawnej konwersji z liczb rzeczywistych.
+W checkerze dodano kontrolę ujemną starej konwersji oraz kontrolę,
+że zapisane końce binarne mają mianowniki będące potęgami 2.
+
+\textbf{Nowe źródło:} \code{FIBER_NORMALIZER_005_CORRECTED.sage}.
+Nowe świadectwa to \code{NORMALIZER_005_CORRECTED_CERTIFICATE.json}
+oraz \code{NORMALIZER_005_CORRECTED_PRECISION768.json}.
+Ponowne uruchomienia 512/768 bitów zachowują wszystkie zadeklarowane
+granice 005: symboliczną szerokość względną reszt i odwrotności
+$<2^{-356}$; dla h=1,c=0 szerokości pełnego normalizatora i odwrotności
+$<2^{-180}$, TV pełnej odpowiedzi zerowego aliasu $<2^{-180}$ oraz
+moment sekwencyjny przed normą $>2^{1536}$.
+Rachunek MARGINAL-006 został również naprawiony i otrzymuje wyłącznie
+skorygowany normalizator jako wejście.
+
+Dowód symboliczny oparty na całkowitych końcach Taylora i faktoryzacji
+nie zmienił się. Zmieniła się implementacja numerycznych obudów i ich
+wiążące świadectwa. Dawny pozytywny test przecinania się 50 przedziałów
+005 nie mógł sam wykryć niepoprawnej semantyki konwersji.
+
+Historia obejmuje nieudany \code{crosscheck_001}, źródła przed naprawą,
+probe API i surowe logi. Receipty MARGINAL-006 podają ich piny i nowe
+uruchomienia. Wyniki nadal mają status \textbf{textual}, bez nowego kernela,
+niezależnego review ani twierdzenia bezpieczeństwa.
+\end{document}
