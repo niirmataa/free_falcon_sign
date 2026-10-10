@@ -1,4 +1,67 @@
-# FREE Falcon — FT1536
+<div align="center">
+
+<img src="docs/assets/free-ft-emblem.png" alt="Free FT — emblem" width="240">
+
+# Free FT — Ternary Lattice Signatures with a Code-Bound Security Reduction
+
+**FT768 · FT1536 · FT3072** — a free Falcon-family signature variant with
+true ternary secrets, argued against the real C code — byte by byte,
+proof by proof, with receipts.
+
+*Wolna kryptografia dla wolnych ludzi — free cryptography for free people.*
+
+🌐 [Website](https://niirmataa.github.io/freeft-site/) ·
+📄 Paper (ePrint — pending) ·
+🔧 [Start here](START_HERE.md) ·
+🗺️ [Roadmap](docs/onboarding/ROADMAP.md) ·
+🧭 [Proof map](docs/onboarding/PROOF_MAP.md)
+
+</div>
+
+---
+
+## What is this?
+
+FT1536 is an experimental full-ternary-secret signature research project
+developed by **Niirmata**, continuing the historical **Falcon EXTRA / ternary**
+implementation with a new parameter family and a new secret law:
+
+- **Ring** $\mathbb{Z}[X]/(X^{1536}-X^{768}+1)$, modulus **q = 18433**;
+- **Secrets** $f,g \in \{-1,0,1\}$ — *true* ternary (`sample_true_ternary_secret`),
+  not Gaussian-shaped; measured keygen acceptance $p_{accept} = 0.34671$;
+- **Family** $n \in \{768, 1536, 3072\}$;
+- **Proof discipline**: Lean4 kernel-checked statements bound to the pinned C
+  sources (53+ modules, no `sorry`/`admit`/`native_decide`), pinned bytes,
+  SHA-256 receipts, and preserved failed attempts. Claims come labelled
+  `PROVED` / `PARTIAL` / `OPEN` — nothing is promoted by enthusiasm.
+
+## Status (honest, as of 2026-10-10)
+
+| Area | State |
+|---|---|
+| Key law `fG−gF = 18433` for the same preserved `f/g/F/G` | **Closed** (kernel-scoped, B1.05 Acceptance) |
+| Public `h = g·f⁻¹` + inverse + both equations, same material | **Closed** (kernel-scoped, B1.06 Acceptance) |
+| Full KeyGen call composition (B1.07) | **In progress** — six-gate spine, retry frames done; state-machine extraction next |
+| Codecs / emitted key bytes (B1.08/09) | Open |
+| End-to-end assembled theorem (EUF-CMA → MT-ISIS) | Conditional reduction closed; final assembly in progress |
+| QROM (S05 campaign) | **Conditional** — target contract + sampler certificates in progress; no QROM security claim yet |
+| Paper | v0.3 draft (32 pp); final composition after proof closure |
+
+Security numbers, where they appear in the paper, are **certified or labelled
+uncertified** — the estimator campaign (S06) is `CHANGES_REQUIRED`. Classical
+ROM only; **no QROM claim**. Review status across the corpus: `NOT_REVIEWED`
+until owner-designated independent reviews.
+
+## Reproduce
+
+```sh
+make FT1536
+make check-FT1536
+```
+
+---
+
+# Technical documentation
 
 FT1536 is an experimental full-ternary-secret signature research project
 developed by **Niirmata**, continuing the historical **Falcon EXTRA / ternary**
@@ -32,7 +95,8 @@ are required. Every build verifies the
 `56974571b46e8257bdd3b4097c8c70fded6bb4b94c64805f6e35ec80929a0985`.
 See [active-build provenance](provenance/FT1536_ACTIVE_BUILD.md).
 
-**Current status — 2026-09-21:** **L_RHO, the complete L_NTT pipeline and the
+**Status snapshot — 2026-09-21 (historical; current status in the title
+section above):** **L_RHO, the complete L_NTT pipeline and the
 byte-level L_V verifier bridge are proved for the pinned corrected candidate
 and its explicit C model.** M0 now defines the protocol/game/resource contract
 and proves the STATIC capacity bound. **H3_ZERO_SCALAR proves the local
