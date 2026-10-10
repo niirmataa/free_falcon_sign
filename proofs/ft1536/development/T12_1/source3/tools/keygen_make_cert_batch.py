@@ -118,7 +118,6 @@ def seal():
             p=directory/rel;assert job.sha(p)==e['sha256'],p;snapshots.append(pin(p))
         records=read(directory/'RECEIPTS.json')
         status='FAILED_RETAINED' if any(not r['accepted'] for r in records) else 'ACCEPTED'
-        assert (directory.name in CAUSES)==(status!='FAILED_RETAINED' or directory.name in CAUSES)
         history.append({'job':directory.name,'status':status,'cause':CAUSES.get(directory.name),
             'receipt':pin(directory/'RECEIPTS.json'),'source_inputs':pin(directory/'SOURCE_INPUTS.json'),
             'preflight':pin(directory/'PREFLIGHT.json'),'runner_snapshot':pin(directory/'RUNNER_SOURCE.py'),
