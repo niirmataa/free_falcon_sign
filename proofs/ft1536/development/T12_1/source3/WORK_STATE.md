@@ -1,5 +1,43 @@
 # T12.1/source3 — żywy stan
 
+## B1.07 — CLOSED at rejected-edge retry-frame midpoint — 2026-10-10
+
+**CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**
+**B1.07 Acceptance NOT MET; package IN_PROGRESS / WORKING_NOT_FROZEN.**
+Exactly one close in BATCH_057,MiMo V2.6 Pro. Resume:**37R**.
+
+The rejected-edge half of the retry-frame item closes: the solver-call frame
+holds on EVERY solver edge (`solver_frame`/`solver_h_frame` in
+`Source3.KeygenMakeRetryFrames`) — early search rejection, the failed output
+gate (guard conversions plus the state-preserving `return 0` body) and the
+validation suffix on either return. Partial output-gate writes are confined
+to the F/G destination blocks even for a conversion loop that stops half way
+(`writesOnly`/`small_frame`/`call_bytes`/`gate_frame`); a failed guard may
+leave a partial F column (short-circuit) or also a partial G column. The
+validation-body frame (`validation_frame`) is re-derived from the RAW
+`KeygenRootValidationSource.Exec` legs with NO accepted-flow premise, so the
+zero-return validation edge keeps every byte outside the scratch block. The
+h block keeps every byte on all rejected edges (named instance
+`solver_h_frame`). Entry pins 015–056: 11642 pins verified before edits into
+`.build/levels_057/ENTRY_PINS_057.json` (`8b6ae474…`). Audit 100=11 new+89
+inherited, complete terms, standard axioms/0 elisions (`f3492a6d…`). Sage
+controls 5 families×4 mutations all detected (explicit mocks;
+`cac8e28a…`). Retained: 5 rejected elaboration snapshots, 1 prestep abort
+(stale probe cache entry, canonically removed; both probe runs retained), 2
+audit rejections, 3 Sage FAIL runs — all causes sealed in the batch. Own
+commits `4e0128c3`,`d9c551c0`,status-string fix + closing pair; foreign
+`a068d1ff` preserved. Sealed pair `6ccdfa5d…`/`4f23bd5a…`. NO push/review/
+delegation/relay/migration/import. Window CLOSED once, not auto-resumed.
+
+Remaining in 37.1 order: (a) the per-retry `Initial`/legal/static transport
+(the retry instances of `entry_of_allocation`) with the gate-time `ReadTmp`
+tie from the executed `fk->tmp` binding; (b) the statement-machine
+extraction (`(fpr *)fk->tmp` → `ExecAt`, temp_size body, `falcon_keygen_new`
+prologue, globals/call-ID/snapshots, b-not-1/2) discharging the `EntryFacts`
+residuals from allocation freshness. Then the whole invocation to the
+encoding call sites/teardown; codec bodies stay B1.08/09.
+
+
 ## B1.07 — CLOSED at workspace-relocation midpoint — 2026-10-10
 
 **CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.**

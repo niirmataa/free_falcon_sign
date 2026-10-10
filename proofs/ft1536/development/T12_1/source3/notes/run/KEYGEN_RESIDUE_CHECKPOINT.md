@@ -1,3 +1,111 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.07 retry-frame midpoint
+
+**B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
+**Package: IN_PROGRESS / WORKING_NOT_FROZEN.**
+2026-10-10,BATCH_057,MiMo V2.6 Pro (`xiaomi-token-plan-ams`).
+**CLOSED_AT_RECOVERABLE_MIDPOINT.** Exactly one close this window.
+B1.05/032 and B1.06/046 unchanged;B1.08/B4/B5 NOT entered.
+Handoff:**37R**. Exact types/pins/traps:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_057_NOTES.md`.
+
+## 37. Closed — the solver-call frame on EVERY edge: rejected edges keep h
+
+1. The rejected-edge half of the retry-frame item is closed (`Source3.
+   KeygenMakeRetryFrames`): the solver-call frame holds on EVERY edge of the
+   solver gate — early search rejection, the failed output gate and the
+   validation suffix on either return. `solver_h_frame` is the named
+   instance: the public h block keeps every byte through the call on the
+   rejected edges too, given the protected-block and F/G separations.
+2. The partial output-gate writes are confined (`small_frame` +
+   `call_bytes`/`gate_frame`): a `poly_big_to_small` call keeps every byte
+   outside its destination block even when the conversion loop stops half
+   way — the `writesOnly` footprint over the small body (read-only modulars,
+   `plain` locals-only, `store16` into `d` only) and the state-preserving
+   `return 0` body (`KeygenSmallStep.reject_result`). A failed guard may
+   leave a partial F column (short-circuit) or also a partial G column
+   (two-call rejection) and still touches nothing else.
+3. The validation-body frame (`validation_frame`) is re-derived from the RAW
+   `KeygenRootValidationSource.Exec` legs with NO accepted-flow premise —
+   `KeygenMakeMaterialWitness.validation_record_same` at source level — so
+   the zero-return validation edge keeps every byte outside the scratch
+   block. `solver_frame` composes search frame + gate frame + validation
+   frame at any `KeygenRootSearch.Protected` block (the object-block
+   instance needed by the retry transport is available via
+   `contextScratch`/`contextTables`/`contextSeparate`).
+4. Entry pins 015–056 **11642 pins/164 interface bindings** verified with
+   the sealed 056 pair (`9704cfff…`/`4ca62477…`) into
+   `.build/levels_057/ENTRY_PINS_057.json` (`8b6ae474…`) BEFORE edits. One
+   proof+audit 0/0: **100 entries=11 new+89 inherited;all complete
+   terms;standard axioms/zero elisions**. Native Sage scripted PUBLIC
+   controls: 5 families×4 mutations, all detected (EXPLICIT MOCKS; the
+   transcription reads the reference C; no real KeyGen/solver/certificate/
+   codec, no law claim). Retained: five rejected elaboration snapshots
+   (induction motive rebinding; `Pointer.add` case arity; determined-index
+   case binders; export namespace; reversed separations; `refine`
+   metavariable assignment of `Caller.table`), one prestep abort (stale
+   probe cache entry, canonically removed; both probe runs retained), two
+   audit rejections (bodyless constructor exports) and three Sage runs
+   (multi-line needle absent from the reference C; four mutation
+   conventions wrong; rejection drift detected through a later `return 0;`)
+   — all with sealed causes; limits unchanged. Own commits `4e0128c3`,
+   `d9c551c0`,`+ status-string fix` + closing pair; foreign `a068d1ff`
+   preserved. Sealed pair `6ccdfa5d…`/`4f23bd5a…`.
+
+### 37.1 Exact exports and remaining B1.07 obligations
+
+The discharge chain is now: one accepted `AttemptExec` derivation →
+six-gate spine → allocation-derived entry facts at the gate state → public
+material (gate 4) → accepted solver call with the h frame (gate 5) → ONE
+material with both equations → certificate frame (gate 6) → encoding-tail
+input boundary, and the solver-call frame now covers EVERY solver edge (the
+rejected retry edges keep h). Two gaps remain honest and named: (a) the
+retry TRANSPORT — the `Initial`/legal/static transport for every retry
+instance (the per-retry transport of `entry_of_allocation` across the whole
+attempt), general typed execution, every later return and the gate-time
+`ReadTmp` tie from the executed `fk->tmp` binding
+(`readTmp_of_binding` transported through the attempt frames), with the
+loop-trace chronology transport staying at the gate level; (b) the
+statement-machine extraction — tying the C call site `(fpr *)fk->tmp` to
+`ExecAt` (temp_size body, `falcon_keygen_new` prologue, the gate call), the
+actual globals/common call ID/snapshots composition and the b-not-1/2 side
+condition of the pinned transport; that step also discharges the residual
+h-side/material-block/workspace inputs of `EntryFacts` (legalF/legalG/
+legalH, hTables, hProtected, blocks, pubBlocks) from allocation freshness.
+The witness still reaches only the encoding-tail INPUT boundary — the
+tail's codec bodies (B1.08/09), the whole enclosing invocation to the
+actual encoding call sites, the output-capacity events and the complete
+teardown are not executed here. These are missing source composition
+proofs, NOT C/numerical counterexamples. Acceptance NOT met; Codecs
+B1.08/09 and B4/B5 laws stay outside.
+
+## 37R. Handoff — continue B1.07 AFTER the rejected-edge frames,NOT from acceptance
+
+1. This window is CLOSED at exactly one recoverable midpoint,NOT Acceptance.
+   Do not auto-restart or enter B1.08/B4/B5. Preserve BATCH_015–057 and all
+   earlier/failed bytes (including both `ProbeEvaluate` probe runs and their
+   removed cache entry). Next owner-started window continues in37.1 order.
+2. BEFORE edits/jobs:
+   ```sh
+   mkdir -p .build/levels_058
+   python3 -B tools/keygen_make_retry_frames_batch.py verify <BATCH_057.json sha> <BATCH_057_NOTES.md sha> .build/levels_058/ENTRY_PINS_058.json
+   ```
+   with the sealed057 pair (`6ccdfa5d…`/`4f23bd5a…`). Expect the pinned
+   BATCH_015–057 set and no supersession/job. Mismatch is stop-and-report,
+   not silent repair.
+3. Use NEW modules;preserve057 sources/products. The solver-call frame on
+   every edge now lives in `KeygenMakeRetryFrames` (`solver_frame`/
+   `solver_h_frame`/`gate_frame`/`validation_frame`); do not re-derive it by
+   assumption. The remaining honest gaps are the per-retry `Initial`/legal/
+   static transport with the gate-time `ReadTmp` tie (then the
+   statement-machine extraction with the residual discharge); never insert
+   certificate outcomes, an equation or a scratch-block0 fact as premises.
+   Inspect actual types before composing; beware the determined-index case
+   binders documented in the057 notes.
+4. One owner-started stage/window, one Acceptance or expanded midpoint,
+   bounded serial guarded jobs, unchanged limits/0/0 logs/native Sage.
+   Small local exact-path commits;push only on explicit owner signal;no
+   automatic review/delegation/relay/migration/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.07 attempt-spine midpoint
 
 **B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
