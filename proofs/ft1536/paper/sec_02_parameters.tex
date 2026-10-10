@@ -1,5 +1,5 @@
 \section{The FT scheme: parameters, algorithms and encoding}\label{sec:parameters}
-\status{CLOSED profile facts and measurement record; family certification IN-FLIGHT}
+\status{\CLOSED{} profile facts; family certification \OPEN}
 \subsection{Profile and family scope}
 FT1536 is the degree-$1536$ ternary profile of the Falcon-derived code in
 \code{Extra/c}. The pinned configuration enables
@@ -11,31 +11,35 @@ selected by \code{falcon_keygen_new(10, 1)}; the second argument selects
 the ternary branch, so the first argument alone is not the logarithm of
 the degree of a binary profile.\src{C02,C03}
 
-\begin{table}[t]
-\centering\footnotesize
-\begin{tabular}{@{}lllllll@{}}
+Table~\ref{tab:family} collects the pinned profile values and marks the
+unreported family quantities explicitly.
+\begin{table}[!htbp]
+\centering\small
+\begin{tabular}{@{}lccc@{}}
 \toprule
-Profile & $n$ & $q$ & Bound ($f,g$/$F,G$) & Cap
- & $p_{\mathrm{acc}}$ & Scope \\
+Parameter & FT768 & FT1536 & FT3072 \\
 \midrule
-FT768 & 768 & --- & ternary & --- & --- & ALTERNATIVE\_PROPOSAL \\
-FT1536 & 1536 & 18433 & $1$/$2047$ & $16$
- & $0.34671^{\mathrm{m}}$ & Main formal profile \\
-FT3072 & 3072 & --- & ternary & --- & --- & ALTERNATIVE\_PROPOSAL \\
+Degree $n$ & $768$ & $1536$ & $3072$ \\
+Modulus $q$ & --- & $18433$ & --- \\
+Coefficient bound on $f,g$ & --- & $1$ & --- \\
+Coefficient bound on $F,G$ & --- & $2047$ & --- \\
+Strict threshold $B$ & --- & $2093922385$ & --- \\
+Configured Sign cap & --- & $16$ & --- \\
+Configured KeyGen cap & --- & $3000000$ & --- \\
+Measured $\widehat p_{\mathrm{accept}}$ & --- & $0.34671$ & --- \\
+Serialized public-key bytes & --- & --- & --- \\
+Serialized secret-key bytes & --- & --- & --- \\
+Profile status & Proposal & Main profile & Proposal \\
 \bottomrule
 \end{tabular}
-\caption{The FT family and its pinned parameters. A dash marks a
-quantity not established by the pinned evidence of this draft;
-``ternary'' marks the proposed ternary-secret family profiles. For
-FT1536, $B=2093922385$ and the configured KeyGen cap is $3000000$;
-these are configuration values, not security bounds. The marked entry
-is a finite-run measurement on synthetic seeds, not an acceptance
-bound. Byte sizes are not reported: the only pinned size fact in this
-draft is the Falcon-512 PADDED format of $666$ bytes
-(Section~\ref{sec:parameters}).}
+\caption{Family parameters at the cited snapshot. A dash means
+unreported in this reduction paper. FT768 and FT3072 retain
+\ALTP{} status. FT1536 material bounds have the B1.05/B1.06 scope of
+Section~\ref{sec:b1status}; the measured acceptance rate is a finite
+synthetic-seed observation. Caps are configuration values, not
+termination or security guarantees.\src{C02,C03,C14,C21}}
 \label{tab:family}
 \end{table}
-\src{C02,C03,C21}
 
 The family names do not extend the FT1536 theorems to other parameters.
 The alternative profiles remain uncertified pending the family campaign.
@@ -43,44 +47,48 @@ Section~\ref{sec:security} retains their diagnostic estimator rows with
 that status.\src{C14}
 
 \subsection{The three algorithms}
-The scheme is presented as three boxes. They restate pinned interfaces
-and add no statement of their own; each box is followed by its scope.
+The three boxes describe different levels of the argument. KeyGen is
+a source-control synopsis; Sign is the coefficient-valued reference
+law; Verify is the coefficient predicate. Their common algebra does
+not identify their probability laws or complete the byte bridge.
+\src{C01,C02,C03,C05}
 
-\begin{algorithm}[t]
-\caption{FT1536 key generation (as pinned)}\label{alg:keygen}
+\begin{algorithm}[!htbp]
+\caption{FT1536 KeyGen: source-control synopsis}\label{alg:keygen}
 \begin{algorithmic}[1]
-\Require profile FT1536 ($n=1536$, $q=18433$), ternary-secret mode
-\Ensure retained material $(f,g,F,G,h)$, or retry
-\Repeat
-  \State sample ternary $f,g$ of coefficient bound $1$
-  \State run the NTRU solver; on success obtain $F,G$ of bound $2047$
-    with $f\cdot G-g\cdot F=q$
-  \State apply the recorded acceptance gates: resultant, norm,
-    Gram--Schmidt, public-key invertibility, solve, leaf certificate
-  \State run the fixed public computation on $f,g$ and obtain the
-    canonical public polynomial $h=g\cdot f^{-1}$
-\Until{the attempt succeeds or the configured cap ($3000000$) is reached}
-\end{algorithmic}
-\end{algorithm}
-
-\begin{algorithm}[t]
-\caption{FT1536 signing (capped attempts)}\label{alg:sign}
-\begin{algorithmic}[1]
-\Require message $m$, secret material $(f,g,F,G)$; attempt cap $16$
-\Ensure signature $s$, or failure
-\State derive the challenge $c$ from $m$ and a fresh nonce
-  ($40$-byte framing)
-\For{$i=1$ to $16$}
-  \State run one attempt on the fiber $A_h(u,v)=c$; a norm rejection
-    yields $\none$
-  \State on a positive emission, return the second vector $s$ if it is
-    signed-$16$
+\Require selected FT1536 context and legal output buffers
+\Ensure encoded key pair, or failure
+\State Prepare source RNG state; return failure if readiness fails
+\For{$a=1$ to $3000000$}
+  \State Sample $f,g$ with the source ternary proposal
+  \State Check both resultant tests; on rejection continue
+  \State Check raw and Gram--Schmidt source norm gates; on rejection continue
+  \State Compute public $h$ from $f,g$; on failure continue
+  \State Run the NTRU solver for $F,G$; on failure continue
+  \State Check the mandatory leaf certificate; on rejection continue
+  \State Encode $f,g,F,G$ and $h$; return failure if serialization fails
+  \State \Return the encoded key pair
 \EndFor
-\State return failure (cap exhausted)
+\State \Return failure
 \end{algorithmic}
 \end{algorithm}
 
-\begin{algorithm}[t]
+\begin{algorithm}[!htbp]
+\caption{FT1536 Sign: reference body at a fixed challenge}\label{alg:sign}
+\begin{algorithmic}[1]
+\Require public polynomial $h$, challenge $c$; reference trial of Section~\ref{sec:reduction}
+\Ensure coefficient reply $s$, or $\none$
+\For{$i=1$ to $16$}
+  \State Draw $o$ from $\code{trial}(A_h,c)$, including its norm-failure mass
+  \If{$o=\mathrm{some}\ z$}
+    \State \Return $\code{emit}(z)$ \Comment{signed-16 reply or terminal failure}
+  \EndIf
+\EndFor
+\State \Return $\none$ \Comment{cap exhausted}
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[!htbp]
 \caption{FT1536 coefficient-level verification}\label{alg:verify}
 \begin{algorithmic}[1]
 \Require public polynomial $h$, challenge $c$, candidate $s$
@@ -97,13 +105,18 @@ KeyGen interfaces; its derivation status is the stage ledger of
 Section~\ref{sec:b1status}: B1.05 is closed at scope, B1.06 Acceptance
 is met, B1.07 is in progress, and none of these is a whole-KeyGen or
 termination statement. Algorithm~\ref{alg:sign} is the probability-law
-specification of Section~\ref{sec:reduction}; which attempt shape the
-realized signer obeys is open. Algorithm~\ref{alg:verify} is exactly the
+specification of Section~\ref{sec:reduction}; it emits once after a
+successful trial and does not retry emission failure. It specifies no
+efficient exact sampler. In the game, the nonce has $40$ bytes and the
+challenge is obtained at the named classical hash interface. Which
+attempt shape the realized signer obeys is open.
+Algorithm~\ref{alg:verify} is exactly the
 coefficient-level predicate of Section~\ref{sec:model}. Termination, the
 emitted-key law and the byte-level framing sit outside these boxes
 (Assumption~\ref{ass:a34}; Section~\ref{sec:limits}).\src{C02,C03,C05,C21}
 
 \subsection{Acceptance is measured, not postulated}
+\paragraph{Validation (not a proof).}
 The FG\_PROBE record uses deterministic synthetic seeds and the derived
 profile's compiler flags, adding only the probe define. Its measurement
 run records $8192$ successful keys in $23628$ attempts, with

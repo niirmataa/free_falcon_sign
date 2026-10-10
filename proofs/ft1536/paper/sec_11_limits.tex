@@ -1,36 +1,83 @@
-\section{Limitations, open work and conclusion: the honesty ledger}\label{sec:limits}
-\status{CLOSED scope record; listed proof obligations OPEN or IN-FLIGHT}
+\section{Conclusion and research boundaries}\label{sec:limits}
+\status{conditional results recorded; implementation assembly \INFLIGHT}
+\subsection{Evidence and limitations}\label{sec:evidence}
+The evidence supports distinct statements at distinct boundaries.
+Theorem~\ref{thm:conditional} concerns the specified classical game;
+the B1 exports concern executions satisfying their entry contracts;
+and the independent computational review concerns the corrected public
+simulation. The evidence classes in Table~\ref{tab:evidence} state what
+each record establishes. A later implementation theorem must compose
+these interfaces for the same experiment.\src{C04,C15,C17,C21}
+
+\begin{table}[!htbp]
+\centering\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{.23\textwidth}>{\raggedright\arraybackslash}p{.70\textwidth}@{}}
+\toprule
+Evidence class & Established scope and limitation \\
+\midrule
+Kernel-checked statement & The declared proposition with its hypotheses:
+ reduction, transport, negative witness or source-fragment execution.
+ An implementation instance is required where the theorem is conditional. \\
+Exact display arithmetic & Sage recomputes the pinned counts, decimal
+ displays and same-model minima. It does not certify S06 hardness. \\
+Finite validation & FG\_PROBE records a synthetic-seed sample and a
+ build-transparency control. Neither gives a universal acceptance bound. \\
+Scoped review & REVIEW\_003 independently checks the corrected public
+ game. REVIEW\_002 remains an author recheck. \\
+Artifact binding & Hashes and receipts identify bytes and recorded runs.
+ They neither prove a theorem nor establish public archival availability. \\
+\bottomrule
+\end{tabular}
+\caption{Evidence classes and their limits. The detailed bindings and
+review chronology are in Appendix~\ref{app:trust}.\src{C02,C17,C20}}
+\label{tab:evidence}
+\end{table}
+
+\paragraph{Validation (not a proof).}
+The document check verifies selected input hashes, source identifiers,
+display arithmetic, cross-references and PDF diagnostics. The recorded
+Sage display run and the FG\_PROBE experiment have their own receipts.
+Successful typesetting and finite agreement do not discharge the honest
+law, pointwise weights, seed, byte or resource premises.\src{C02,C17,C20}
+
 \subsection{Assumptions and missing interfaces}
+Table~\ref{tab:ledger} is the honesty ledger for this snapshot.
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{.16\textwidth}>{\raggedright\arraybackslash}p{.25\textwidth}>{\raggedright\arraybackslash}p{.52\textwidth}@{}}
+\caption{The honesty ledger: operational assumptions and unfinished
+interfaces.}\label{tab:ledger}\\
 \toprule
 Item & Status & Exact boundary \\
 \midrule
+\endfirsthead
+\toprule
+Item & Status & Exact boundary (continued) \\
+\midrule
 \endhead
-A1 & Model boundary & KeyGen retry counts and timing are absent from the
+A1 & Assumption~\ref{ass:a1} & KeyGen retry counts and timing are absent from the
 adversary interface. A deployment exposing them needs a leakage model;
 offline use is an assumption, not a constant-time theorem. \\
-A2 / ROM & Assumed; source binding open & Seed entropy/independence,
+A2 / ROM & Assumption~\ref{ass:a2}; \OPEN & Seed entropy/independence,
 SHAKE seeding and the exact uniform-challenge interface are named
 separately. The computational tape theorem does not establish them. \\
-A3 / A4 & OPEN globally & The byte verifier, serialization, key decoder,
+A3 / A4 & Assumption~\ref{ass:a34}; \OPEN{} globally & The byte verifier, serialization, key decoder,
 caller-visible failure and emitted-law support must compose with the
 same game. Local B3 codec/verdict theorems are not that composition. \\
-A5 & Model boundary & LP64 word/memory contracts with the modeled
+A5 & Assumption~\ref{ass:a5} & LP64 word/memory contracts with the modeled
 wrapping behavior; no compiler, fault or side-channel security theorem. \\
-B1 / arrows 1--2 & IN-FLIGHT & Stages B1.05 (exact integer NTRU) and
+B1 / arrows 1--2 & \INFLIGHT & Stages B1.05 (exact integer NTRU) and
 B1.06 ($h=g\cdot f^{-1}$, both equations) are closed/accepted at kernel
 scope, not reviewed; B1.07 is in progress. Source honest continuation,
 fair-law identity, actual attempt shape, pointwise roads, and B1.10
 key-law identification remain open. \\
-B2 / B5 & CLOSED conditionally for public simulation & The admitted
+B2 / B5 & \CLOSED{} conditionally for public simulation & The admitted
 test class, test cost and tape law need concrete instantiation. Honest-Sign
 assembly remains open. \\
-B4 & CLOSED conditional transport & Margins and counterexamples are
+B4 & \CLOSED{} conditional transport & Margins and counterexamples are
 proved. The realized per-point source premises are not obtained from
 total-mass bounds or measurements. \\
-S06 / family & Changes required & Lattice rows are diagnostic; FT768
+S06 / family & \UNCERTIFIED & Lattice rows retain CHANGES\_REQUIRED; FT768
 and FT3072 remain ALTERNATIVE\_PROPOSAL. \\
-QROM & OPEN, not claimed & Coherent oracle access and quantum resource
+QROM & \OPEN, not claimed & Coherent oracle access and quantum resource
 and reprogramming arguments require separate theorems. \\
 \bottomrule
 \end{longtable}
@@ -45,12 +92,13 @@ mass to a positive output having no norm-admissible preimage under
 \code{emit} on the relevant fiber, then
 \code{chi2_top_of_out_of_support} gives $\chi^2=+\infty$.
 A small additive probability estimate cannot remove that support
-failure (cf. Theorem~\ref{thm:additive}). Conversely, wrap-related verifier rejection within the
+failure. Conversely, wrap-related verifier rejection within the
 modeled emit image does not automatically cause failure of absolute
 continuity. The support theorem states which case is being used.
 \src{C19}
 
-The additive-to-multiplicative machine lemma is closed only with its
+The obstruction in Theorem~\ref{thm:additive} concerns a different issue:
+additive-to-multiplicative transport. Its positive companion is closed only with its
 pointwise floor and error-budget premises. The numeric scalar-leaf
 floor does not discharge a floor on arbitrary weights. Similarly,
 the $2^{-32}$ and $2^{-17}$ bounds attach to different attempt shapes
@@ -75,7 +123,7 @@ statement. Preserve any additional error or resource term.}
 \todo{BYTE-RELEASE}{Complete the global A3/A4 and source-to-observation
 bindings before making a byte-level implementation-security claim.}
 
-\subsection{Conclusion}
+\subsection{Concluding statement}
 The present contribution is a conditional classical reduction, computed
 sampler-comparison margins, explicit impossibility results for insufficient
 premises, and source-binding work that has found both C and model defects.

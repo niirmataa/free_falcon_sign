@@ -1,5 +1,4 @@
-\section{Introduction and purpose}\label{sec:intro}
-\status{CLOSED narrative material; owner voice review pending}
+\section{Introduction}\label{sec:intro}
 The objective of the FT1536 development is a security argument whose
 objects can be traced to a specified implementation. Such an argument
 requires more than a reduction between ideal games: the key law,
@@ -21,11 +20,12 @@ work.\src{C11,C12}
 \subsection{Contributions}
 \begin{enumerate}
 \item A conditional classical reduction from EUF-CMA to the multi-target
-inhomogeneous short-integer solution problem for a formal game tied to
-the FT1536 code, with a \emph{computed} sampler error: the attempt
-factor $k$ and the second-moment error $e=k^{32}-1<2^{-32}$ are derived
-margins from stated pointwise premises, not postulated constants
-(Sections~\ref{sec:main}--\ref{sec:sampler}).\src{C04,C06,C07}
+inhomogeneous short-integer solution problem for the defined FT1536
+game, with explicit source-instantiation obligations. The computed
+sampler margins give $e=k^{32}-1<2^{-32}$ under the unconditioned
+pointwise and shape premises; the acceptance-conditioned alternative
+has $e<2^{-17}$ (Sections~\ref{sec:main}--\ref{sec:sampler}).
+\src{C04,C06,C07,C08}
 \item A source-binding method, from C99 fragments through an executed
 statement tree to kernel-checked execution theorems, with explicit
 kernel counterexamples to insufficient premises and concrete defects
@@ -59,19 +59,35 @@ that runs, and preserving the attribution of the Falcon Project and
 Thomas Pornin. Accessibility is a design aim; it is not evidence for a
 security claim.
 
-\subsection{Scope of the claims}
-Every mathematical statement in this paper is conditional on named
-premises and carries those premises with it. In particular: the
-conditional reduction is a theorem about defined interpreters, not
-about the compiled binary; the sampler error attaches to a named
-attempt shape, and which shape the realized signer obeys is an open
-source-binding obligation; the security table is a diagnostic, with the
-S06 estimator campaign uncertified; the byte-level bridge remains
-outside the proof; and no quantum-ROM claim is made or implied
-(Sections~\ref{sec:model}, \ref{sec:security} and~\ref{sec:limits}).
-The honesty ledger of Section~\ref{sec:limits} lists the unresolved
-interfaces in the body of the paper rather than in footnotes.\src{C01,C08,C14,C18}
+\subsection{What is fixed, proved, and still being analyzed}\label{sec:fixed}
+\paragraph{Fixed at this snapshot.}
+The FT1536 profile, coefficient relation, capped reference signing law,
+classical query interface and cited source bytes are explicit inputs.
+The emitted-key law is a named object whose implementation binding
+remains to be supplied. The hashes in Appendix~\ref{app:bindings}
+identify the selected evidence; the profile name alone does not.
+\src{C01,C02,C03,C05}
 
+\paragraph{Proved at the stated interfaces.}
+Theorem~\ref{thm:conditional} supplies the conditional reduction;
+Theorem~\ref{thm:public} supplies the computational public-game bound.
+The sampler transports and counterexamples of Section~\ref{sec:sampler}
+are kernel results about their specified laws and premises. The
+source-bound B1.05 and B1.06 exports establish the NTRU and public-key
+equations for the same material at their respective fragment boundaries.
+Those two stages remain \NOTREVIEWED{}; B1.07 remains \INFLIGHT.
+\src{C04,C06,C09,C15,C21}
+
+\paragraph{Still being analyzed.}
+The honest-signing hop, realized attempt weights and shape, and
+emitted-key law must refer to the same source experiment. The global
+A3/A4 byte bridge remains outside the proof. S06 lattice numbers are
+\UNCERTIFIED{} diagnostics; the symmetric ceiling is not an achieved
+security level. All reduction statements use classical oracle access.
+Section~\ref{sec:limits} records these boundaries and the remaining
+obligations; it makes no QROM claim.\src{C01,C08,C14,C18,C20}
+
+\paragraph{Organization.}
 The paper follows the classical order. Section~\ref{sec:model}
 fixes notation and the threat model;
 Section~\ref{sec:parameters} presents the FT scheme with its pinned

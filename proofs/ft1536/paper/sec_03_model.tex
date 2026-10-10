@@ -1,5 +1,5 @@
 \section{Preliminaries, notation and threat model}\label{sec:model}
-\status{CLOSED definitions; source instantiation IN-FLIGHT}
+\status{\CLOSED{} definitions; source instantiation \INFLIGHT}
 \subsection{Notation and conventions}\label{sec:notation}
 Throughout, $q=18433$ and $n=1536$ for FT1536; $\Z$ and $\R$ are the
 integers and the reals. The symbol $\none$ marks a failed attempt,
@@ -12,7 +12,9 @@ source identifiers map statements to the pinned source map
 assumptions, in-flight target statements and remarks; a target
 statement is not a theorem.\src{C17}
 
-\begin{table}[t]
+Table~\ref{tab:notation} fixes the symbols used in the reduction and
+its source interfaces.
+\begin{table}[!htbp]
 \centering\small
 \begin{tabular}{@{}>{\raggedright\arraybackslash}p{.17\textwidth}>{\raggedright\arraybackslash}p{.76\textwidth}@{}}
 \toprule
@@ -24,11 +26,12 @@ $N$ & total tape length in bits of the computational experiment,
  $N=q_s\cdot S.\mathrm{bits}$ (Sections~\ref{sec:sampler}
  and~\ref{sec:computational}) \\
 $\Rq$ & coefficient representation of $(\Z/q\Z)[X]/(X^n-X^{n/2}+1)$ \\
-$f,g$ & ternary secret polynomials, of coefficient bound $1$ \\
-$F,G$ & NTRU solution polynomials, of coefficient bound $2047$, with
- $f\cdot G-g\cdot F=q$ \\
-$h$, $\mathrm{fInv}$ & public polynomial $h=g\cdot f^{-1}$; the
- mathematical inverse witness of $f$ in $\Rq$ \\
+$f,g$ & ternary secret polynomials at the stated material boundary,
+ of coefficient bound $1$ \\
+$F,G$ & companion polynomials; B1.05 concludes bound $2047$ and
+ $f\cdot G-g\cdot F=q$ at its fragment boundary \\
+$h$, $\mathrm{fInv}$ & canonical public polynomial and mathematical
+ inverse witness at the B1.06 boundary (Section~\ref{sec:b1status}) \\
 $s$, $c$ & returned signature vector; challenge in $\Rq$ \\
 $\none$ & failed-attempt symbol \\
 $Q$, $B$ & quadratic form of Section~\ref{sec:model} and its threshold,
@@ -41,7 +44,7 @@ NTT, evaluations & the source transform and its evaluation form, bound
  by executed bodies in Section~\ref{sec:binding} and never assumed as
  an oracle \\
 $\mu_K$, $\mu_H$ & secret-key law and its public marginal \\
-$\beta=(q_s,q_h)$ & budget: signing and hash query counts \\
+$\beta$; $q_s,q_h$ & budget record; its signing and hash query counts \\
 $\AC$, $\Second$, $\chi^2$, $\TV$ & absolute continuity, directional
  second moment (Definition~\ref{def:second}), chi-square divergence,
  total variation \\
@@ -56,11 +59,11 @@ $\Adv_{\mathrm{EUF}}$, $\Adv_{\mathrm{MT}}$ & EUF-CMA and MT-ISIS
  advantages \\
 \bottomrule
 \end{tabular}
-\caption{Notation used throughout. Numeric instantiations are pinned in
-Section~\ref{sec:parameters} and in the companion source map.}
+\caption{Notation used throughout. Material statements retain their
+stage premises; parameter values refer to FT1536.\src{C03,C05,C06,C21}}
 \label{tab:notation}
 \end{table}
-\src{C03,C05,C06,C21}
+\FloatBarrier
 
 \subsection{The relation and its geometry}
 The formal representation of $\Rq$ is
@@ -96,9 +99,9 @@ This is \code{Relation.accepted_extracts}.\src{C03}
 In the MT-ISIS experiment, $h$ is drawn from a specified public-key law
 $\mu_H$, and the adversary receives $T$ independent uniform targets
 in $\Rq$. It returns an index and a pair; the experiment checks the
-index and the same \code{ShortPreimage} relation.
+index and the \code{ShortPreimage} relation of Definition~\ref{def:short}.
 \end{definition}
-Hardness must therefore refer to this key law, target law, quadratic
+Hardness for Definition~\ref{def:mtisis} must therefore refer to this key law, target law, quadratic
 form and resource class. An unrelated homogeneous-SIS estimate is not a
 replacement.\src{C05}
 

@@ -1,5 +1,5 @@
 \section{Security accounting: lattice estimates and symmetric ceilings}\label{sec:security}
-\status{CLOSED diagnostic record; S06 certification OPEN}
+\status{S06 \UNCERTIFIED{}; certification \OPEN}
 \subsection{Two numbers, followed by a ceiling}
 We report the lattice-model exponent and the symmetric-primitive
 ceiling separately. The diagnostic Core-SVP convention is
@@ -13,7 +13,7 @@ The $448$-bit state-cardinality upper bound in
 Section~\ref{sec:sampler} is a different quantity and is not a
 $448$-bit security claim.\src{C10,C14,C20}
 
-The reporting rule is to retain the weakest applicable component:
+Table~\ref{tab:security} uses the reporting rule of retaining the weakest applicable component:
 the lattice exponent cannot be advertised as the system level when
 a symmetric component has a smaller ceiling. The table applies the
 same ceiling convention to the Falcon anchors and the FT profiles.
@@ -21,7 +21,7 @@ All numbers are comparison proxies; none is a certified lower bound
 on implementation security. S06 retains \code{CHANGES_REQUIRED};
 the starred FT profiles remain alternative proposals.\src{C14,C20}
 
-\begin{table}[t]
+\begin{table}[!htbp]
 \centering\small
 \begin{tabular}{lrrrr}
 \toprule
@@ -35,14 +35,15 @@ FT1536 & $1077/1082$ & $314.484/285.405$ & $256/128$ & $256/128$ \\
 FT3072$^\ast$ & $2409/2445$ & $703.428/638.385$ & $256/128$ & $256/128$ \\
 \bottomrule
 \end{tabular}
-\caption{Security accounting: lattice diagnostics and symmetric
-ceilings, with the system accounting taken as the minimum of the two.
+\caption{S06 lattice diagnostics: \UNCERTIFIED{}
+(\code{CHANGES_REQUIRED}). Lattice and symmetric search ceilings are
+reported separately, with system accounting taken as their minimum.
 The starred profiles are ALTERNATIVE\_PROPOSAL. All values are
 comparison proxies under the stated conventions; none is a certified
 implementation-security lower bound.}
 \label{tab:security}
 \end{table}
-\noindent $^\ast$ALTERNATIVE\_PROPOSAL. The lattice columns use the
+\noindent $^\ast$\ALTP. The lattice columns use the
 smaller of the two listed exponents on the same cost line. These are
 the review's P1a raw-ternary and fixed-width P2 relation-proxy rows;
 the Falcon anchors retain its stated radius-floor convention. They

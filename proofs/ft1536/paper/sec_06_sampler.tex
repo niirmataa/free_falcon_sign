@@ -1,5 +1,5 @@
 \section{Sampler analysis and negative results}\label{sec:sampler}
-\status{CLOSED arithmetic and conditional transports; realized weights IN-FLIGHT}
+\status{\CLOSED{} arithmetic and conditional transports; realized weights \INFLIGHT}
 \subsection{From pointwise weights to a reply certificate}
 Let $g=\code{fiberWeight}(A,c)$, and let $w$ be nonnegative attempt
 weights. Write $Z_w=\sum_z w(z)$ and
@@ -28,7 +28,8 @@ the reply with \code{signBodyOf} of that attempt law, then
  e_2(k)=(k^{16})^2-1=k^{32}-1.
 \end{gather*}
 \end{proposition}
-The first statement is \code{attemptOf_le_of_sandwich}.
+Proposition~\ref{prop:sandwich} combines
+\code{attemptOf_le_of_sandwich} with the reply transport below.
 
 The reply bound is \code{layer2_of_obligations}; the exponent identity
 is \code{Assembly.e2_eq}.
@@ -142,8 +143,9 @@ contains a point with $Q\geq B$. For every $h,c$, in particular,
  \code{signBody}(\code{syndrome}\ h,c)(\none)>0.
 \]
 \end{proposition}
-The first assertion is \code{onone_syndrome}; the second is
-\code{signBody_none_pos_syndrome}, also covering empty fibers. The
+In Proposition~\ref{prop:tail}, the first assertion is
+\code{onone_syndrome}; the second is
+\path{signBody_none_pos_syndrome}, also covering empty fibers. The
 construction \code{liftPair} preserves residues modulo $18433$ and
 moves two coordinates of the first vector to at least $47103$ while
 remaining in the finite box. Their block contributes at least
@@ -209,7 +211,7 @@ For every law $\nu$ on the modeled \code{FrngState} and every bit length
 $N$, the deterministic tape law satisfies
 \[
  1-\frac{2^{448}}{2^N}\leq
- \TV(\code{frngTapeLaw}(\nu,n),\U_{\{0,1\}^n}).
+ \TV(\code{frngTapeLaw}(\nu,N),\U_{\{0,1\}^N}).
 \]
 \end{theorem}
 This is \code{AdvPrg.route_a_closed}, with
@@ -219,4 +221,5 @@ At lengths well above that state width, a small statistical error
 budget is impossible. The result applies to a tape generated from one
 such state; it does not identify the C signer's sequence of re-seeded
 instances with that law. Computational test-class bounds have a
-different quantifier and are treated next.\src{C10,C15}
+different quantifier and are treated in
+Section~\ref{sec:computational}.\src{C10,C15}

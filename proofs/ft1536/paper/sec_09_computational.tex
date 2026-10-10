@@ -1,5 +1,5 @@
 \section{The computational interface}\label{sec:computational}
-\status{CLOSED conditional component; independent scoped review recorded}
+\status{\CLOSED{} conditional public-game component; independent scoped review recorded}
 \subsection{An admitted class of randomized tests}
 For a finite tape space $X$ and law $\tau$, a \code{CompTest} is a
 function $t:X\to[0,1]$. The operative premise is exactly
@@ -26,7 +26,7 @@ If \eqref{eq:comp} holds and $t_F\in\mathcal C$, then
        -\Pr_{x\leftarrow\U_X}[F(x)\in E]\right|\leq\dprg.
 \]
 \end{proposition}
-This is \code{comp_game_hop_abs}. Its proof rewrites both probabilities
+Proposition~\ref{prop:hop} is \code{comp_game_hop_abs}. Its proof rewrites both probabilities
 as finite expectations and applies \eqref{eq:comp} to that test.
 It does not pass through a total-variation bound. In contrast, the
 older predicate named \code{ChaCha20PRFBound} quantifies over all

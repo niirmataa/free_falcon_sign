@@ -1,5 +1,5 @@
 \section{Main statement and assembly interfaces}\label{sec:main}
-\status{CLOSED conditional components; real-Sign assembly IN-FLIGHT}
+\status{\CLOSED{} conditional components; real-Sign assembly \INFLIGHT}
 \subsection{The four-arrow target}
 To expose the two unfinished interfaces, split the public-simulation
 identification into its existing stream and lazy-game components:
@@ -25,13 +25,11 @@ Games.runEUF; realize ReplyShape, AttemptShape and PointwiseStageRoad;
 consume LocalJointCertificate in the comparison. B1.10 must also bind
 the emitted-key law to the law used for MT-ISIS.}
 
-The end-to-end thesis of the project is displayed below as a target
-statement. It is deliberately typeset as the central statement of the
-paper and deliberately \emph{not} as a theorem: arrows 1--2 of the
-assembly are undischarged, and the honesty rule of this draft forbids
-stating the thesis as proved before they are closed.
+Target~\ref{target:main} records the intended assembly. Its first two
+arrows are open. The proved conditional component is
+Theorem~\ref{thm:conditional} below.
 
-\begin{mdframed}[linewidth=0.6pt,innerleftmargin=6pt,innerrightmargin=6pt]
+\begin{mdframed}[nobreak=true,linewidth=0.6pt,innerleftmargin=6pt,innerrightmargin=6pt]
 \begin{target}[Intended real-signing statement]\label{target:main}
 Let $B_A$ be the reducer \code{Reduction.build beta A S}, and let
 $b=\Adv_{\mathrm{MT}}(q_h+1,\mu_H,B_A)$. After arrows 1--2 and their
@@ -65,6 +63,7 @@ The actual honest-game theorem requires the following local data:
  \end{gathered}
 \end{equation}
 
+\begin{mdframed}[nobreak=true,linewidth=0.6pt,innerleftmargin=8pt,innerrightmargin=8pt]
 \begin{theorem}[Conditional classical reduction]\label{thm:conditional}
 For any finite secret-key type, budget $\beta$, key law $\mu_K$, classical
 adversary $A$, public sampler $S$ and real $e$, a certificate
@@ -84,6 +83,7 @@ above, and
 The subtraction $q_s-1$ in \eqref{eq:coll} is truncated natural
 subtraction, as in the Lean declaration.
 \end{theorem}
+\end{mdframed}
 This is \code{Run2.concrete_euf_cma_to_mt_isis}, with
 \code{exact_collision_parameter}. Its quantifiers supply a concrete
 reducer for each $A,S$; they do not supply an implementation instance of
@@ -123,7 +123,8 @@ MT lower bound.\src{C16}
 Substituting $k=1$ makes $D=(1+(k^{32}-1))^{q_s}-1=0$, and
 $\Phi(0,b)=b$.
 \end{corollary}
-The corrected public-simulation weakening allows this
+Corollary~\ref{cor:scope} is a diagnostic of premise use. The corrected
+public-simulation weakening allows this
 choice for arbitrary $S$ because its $D$ is only a weakening parameter.
 That scope test cannot establish a real-sampler certificate. A future
 assembly must demonstrate actual consumption of \eqref{eq:cert}, rather

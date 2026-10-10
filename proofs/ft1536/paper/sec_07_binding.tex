@@ -1,5 +1,5 @@
 \section{Binding to the implementation}\label{sec:binding}
-\status{CLOSED method and recorded findings; B1 stage ledger IN-FLIGHT}
+\status{\CLOSED{} local source results; enclosing B1 composition \INFLIGHT}
 \subsection{From source text to executions}
 The source3 method fixes C bytes, parses the supported C99 fragment into
 a statement tree, and proves the equality between the parsed region
@@ -70,17 +70,13 @@ the false call. The failed bindings and probes are retained in the
 batch record.\src{C12}
 
 \paragraph{What the traps teach.}
-The recorded failures share one structure: a plausible name or comment
-masking a different mathematical object. A parser that silently
-describes an unbound program tree, a call assumed where the execution
-never makes it, or a predicate named as computational while quantifying
-over all events (Section~\ref{sec:computational}) are the same class of
-defect in different clothing. The disciplines adopted in response are
-correspondingly uniform: calls and counters are derived from executed
-bodies rather than read off intended behavior, claims are checked at
-the kernel against exact types, and every failed attempt stays in the
-record instead of being replaced by a clean-looking history
-(Annex~\ref{app:trust}).\src{C11,C12,C15}
+These cases motivate three checks. Parse equalities must concern the
+actual source expressions. Calls and counters must follow from the
+executed bodies, not from a list of intended operations. Finally,
+theorem hypotheses must express the advertised experiment: a predicate
+quantifying over all events remains statistical even if its name says
+``PRF'' (Section~\ref{sec:computational}). The records retain the failed
+bindings as well as the selected successful runs.\src{C11,C12,C15}
 
 \subsection{Stage status of the source-to-law campaign}\label{sec:b1status}
 The source-to-law work proceeds in named stages whose Acceptance blocks
@@ -92,8 +88,9 @@ distribution of emitted keys.\src{C21}
 
 \paragraph{B1.05 closed: exact integer NTRU.}
 The B1.05 export is
-\code{KeygenCallerSuccess}\allowbreak.\allowbreak\code{exact_integer_ntru}. It states that a caller
-entry executed through the complete root call with normal return
+\code{KeygenCallerSuccess}\allowbreak.\allowbreak\code{exact_integer_ntru}.
+Under its \code{Initial} entry contract, execution through the complete
+root call with normal return
 yields integer vectors $f,g,F,G$ with bounds $1/1/2047/2047$, the exact
 integer equation
 \[
@@ -109,9 +106,11 @@ emitted key, or any security property.\src{C21}
 \paragraph{B1.06 Acceptance met: $h=g\cdot f^{-1}$ and both equations.}
 The B1.06 export is
 \code{KeygenPublicAccepted}\allowbreak.\allowbreak\code{source_same_material}. It states that the
-successful fixed public computation, run on the same retained
-$f,g$ bytes with $f\neq0$, produces a canonical public vector $h$ and a
-mathematical $\mathrm{fInv}\in R_q$ satisfying both equations
+successful fixed public computation, under its profile, legal-memory,
+material, bound-$1$, table-liveness and output-separation premises,
+preserves the same $f,g$ bytes and produces a canonical public vector
+$h$. Nonzero evaluations of $f$ and a mathematical
+$\mathrm{fInv}\in R_q$ are conclusions, together with both equations
 \[
  h\cdot f=g
  \qquad\text{and}\qquad
@@ -161,4 +160,5 @@ control, loop chronology, the accepted attempt and the
 material-to-encoding transport, followed by the emitted-material-to-law
 interfaces --- are still named gaps, not consequences of the theorem
 names.\src{C11,C21}
-\todo{B1-FINAL}{Replace this progress stub with the final source-to-law exports after delivery.}
+\todo{B1-FINAL}{Extend this stage ledger with the final source-to-law
+exports and their exact premises after delivery.}
