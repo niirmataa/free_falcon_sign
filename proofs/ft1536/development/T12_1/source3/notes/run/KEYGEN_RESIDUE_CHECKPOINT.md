@@ -1,3 +1,141 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.07 statement-machine midpoint
+
+**B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
+**Package: IN_PROGRESS / WORKING_NOT_FROZEN.**
+2026-10-10,BATCH_059,MiMo V2.6 Pro (`xiaomi-token-plan-ams`).
+**CLOSED_AT_RECOVERABLE_MIDPOINT.** Exactly one close this window.
+B1.05/032 and B1.06/046 unchanged;B1.08/B4/B5 NOT entered.
+Handoff:**39R**. Exact types/pins/traps:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_059_NOTES.md`.
+
+## 39. Closed — the statement-machine extraction and the freshness discharges
+
+1. The statement-machine extraction of the call/allocation binding is closed
+   (`Source3.KeygenMakeStatementMachine`): the C call site `(fpr *)fk->tmp`
+   ties to the relativized `ExecAt` at the ACTUAL scratch block. The chain:
+   the `temp_size` reservation body (the pinned candidate mirror storing
+   exactly the workspace extent — `scratch_extent_exact`/
+   `scratch_extent_workspace`/`fprCast_scratch_span`), the
+   `falcon_keygen_new` prologue stores (the `fk->tmp_len`/`malloc`/`fk->tmp`
+   binding of `KeygenMakeWorkspaceAllocation.Binding`) and the gate call
+   compose through `call_site_bridge` (the fpr cast of the bound scratch IS
+   the workspace view of the relocated machine),
+   `certBindAt_of_allocation` and `callAt_of_allocation` (the caller cells
+   plus the executed binding give `CertBindAt` and the call body executes as
+   `ExecAt b`/`CallAt b` at `b = ctx.scratch.block`).
+2. The b-not-1/2 side condition of the pinned transport is DISCHARGED from
+   allocation freshness, never assumed (`binding_scratch_free`, with the
+   pinned table-block liveness `pinned_block_live`/`pinned_one_live`/
+   `pinned_two_live`; `objects_table_free` for the six automatic arrays): a
+   fresh malloc block is separated from every live block and the pinned FFT
+   environment keeps blocks 1/2 live.
+3. The `call_same_block` item is CLOSED: the certificate body keeps every
+   byte of any block outside the model workspace block0 and the static table
+   blocks 1/2 on BOTH return values (live bytes through
+   `CertificateFunctionFrame.source_frame` with the M0 table-block inversion
+   `tablesOutside_nonTable`, beyond-size bytes through `leave_bytes`). The
+   `CertEntryFrame` residual of the retry transport is now DERIVED at the
+   three entry blocks (`cert_entry_frame`) — the certificate leg of the
+   transport consumes no residual any more.
+4. The `EntryFacts` residuals are discharged from allocation freshness
+   (`entry_facts_of_allocation`): legalF/legalG/legalH from the fresh array
+   allocations (`legal_of_pointer`), hTables/hProtected from
+   `fresh_separate` against `staticLive`/scratch liveness, `blocks`/
+   `pubBlocks` against the workspace block0 (through the executed binding;
+   the canonical shape comes from the call's own bridge field —
+   `scratch_block_of_call`, never assumed) and blocks 1/2 (through pinned
+   liveness). The certificate instantiation with its pinned globals, the
+   common call material (768-word gate trace + good event stream of the same
+   call), the bad-flag lifetime and the prefix/reverse source snapshots is
+   `cert_package_of_call`.
+5. Entry pins 015–058 **11874 pins/261 interface bindings** verified with
+   the sealed 058 pair (`081ac276…`/`06cc5801…`) into
+   `.build/levels_059/ENTRY_PINS_059.json` (`c143c1db…`) BEFORE edits. One
+   transient guard rejection before the successful verify: the parallel S05
+   lane's `gram_011` Sage run tripped the global `job.active()` probe
+   (21:53:19 local); no bytes written, retry passed — an environment race,
+   not a pin mismatch. One proof+audit 0/0: **181 entries=20 new+161
+   inherited;all complete terms;standard axioms/zero elisions**. Native
+   Sage scripted PUBLIC controls: 5 families×4 mutations, all detected
+   (EXPLICIT MOCK SEMANTICS; the transcription reads the reference C
+   allocation/gate-call region; no real KeyGen/solver/certificate/codec, no
+   law claim). Retained: two rejected elaboration snapshots (the
+   determined-index `Load64` elimination on a DEFINED table word; nine
+   shape/direction slips listed in the notes; the definitional fpr-cast
+   `rfl` whnf timeout over a free block variable — replaced by composition
+   of pinned exports — and an unused existential binder flagged by the
+   linter), one INTERRUPTED_RETAINED audit attempt (the inherited name
+   `KeygenSearchPrefix.Dimensions` rejected as unknown; its driver then lost
+   the final receipt write to a harness restart — the step record is pinned
+   and the classification distinguishes it from a prestep abort) and one
+   rejected Sage run (reference-source locator one parent level short).
+   Two seal-side transcription fixes after the tools commit (the module
+   source snapshot path and the runner receipt field) are their own commits
+   `8ea0776c`/`758eea7f`; the stale PRESEAL of the pre-fix tool was
+   canonically removed and re-bound. Own commits `c25b93c9` (proof),
+   `3e4452eb` (tools) + closing pair; foreign S05 commits and working tree
+   preserved. Sealed pair `dc9210e9…`/`36e8c469…`.
+
+### 39.1 Exact exports and remaining B1.07 obligations
+
+The discharge chain is now: one accepted `AttemptExec` derivation →
+six-gate spine → allocation-derived entry facts at the gate state (ALL
+`EntryFacts` residuals discharged from allocation freshness) → public
+material (gate 4) → accepted solver call with the h frame (gate 5) → ONE
+material with both equations → certificate frame (gate 6, with
+`CertEntryFrame` DERIVED through `call_same_block`) → encoding-tail input
+boundary, with the per-retry transport and the gate-time `ReadTmp` tie
+through EVERY attempt instance, and the call site `(fpr *)fk->tmp` tied to
+`ExecAt` at the actual scratch block with the b-not-1/2 side condition
+discharged from allocation freshness. The witness still reaches only the
+encoding-tail INPUT boundary. What remains honest and named: (a) the
+whole-invocation statement-machine execution — the call-site/`ExecAt` tie is
+composed at the binding level; the enclosing typed expression/statement
+execution of the gate call through the actual encoding call sites, the
+output-capacity events and the complete teardown are not executed here (if
+the plan phrase "globals/common call ID/snapshots" intends a further
+call-identifier composition beyond `cert_package_of_call`, it stays to be
+pinned there); (b) the loop-trace chronology composition of the per-retry
+transport stays at the gate level; (c) the tail's codec bodies (B1.08/09).
+These are missing source composition proofs, NOT C/numerical
+counterexamples. Acceptance NOT met; Codecs B1.08/09 and B4/B5 laws stay
+outside.
+
+## 39R. Handoff — continue B1.07 AFTER the statement-machine extraction,NOT from acceptance
+
+1. This window is CLOSED at exactly one recoverable midpoint,NOT Acceptance.
+   Do not auto-restart or enter B1.08/B4/B5. Preserve BATCH_015–059 and all
+   earlier/failed bytes (including the INTERRUPTED_RETAINED audit attempt
+   and the two seal-fix commits). Next owner-started window continues in39.1
+   order.
+2. BEFORE edits/jobs:
+   ```sh
+   mkdir -p .build/levels_060
+   python3 -B tools/keygen_make_statement_machine_batch.py verify <BATCH_059.json sha> <BATCH_059_NOTES.md sha> .build/levels_060/ENTRY_PINS_060.json
+   ```
+   with the sealed059 pair (`dc9210e9…`/`36e8c469…`). Expect the pinned
+   BATCH_015–058 set and no supersession/job. Mismatch is stop-and-report,
+   not silent repair. Note the global `job.active()` probe can trip on the
+   parallel lane's short Sage runs: a guard rejection with no bytes written
+   is an environment race (re-run), not a pin mismatch.
+3. Use NEW modules;preserve059 sources/products. The statement-machine tie
+   and the residual discharges now live in `KeygenMakeStatementMachine`
+   (`call_site_bridge`/`callAt_of_allocation`/`call_same_block`/
+   `cert_entry_frame`/`entry_facts_of_allocation`/`cert_package_of_call`);
+   do not re-derive them by assumption. The remaining honest gap is the
+   whole-invocation statement-machine execution to the actual encoding call
+   sites (plus any further call-identifier composition intended by the plan
+   phrase); never insert certificate outcomes, an equation or a
+   scratch-block0 fact as premises. Inspect actual types before composing;
+   beware the determined-index `Load64` elimination on DEFINED indices, the
+   whnf timeouts of definitional arithmetic over free variables (compose the
+   pinned exports instead) and the linter's unused-binder errors, all
+   documented in the059 notes.
+4. One owner-started stage/window, one Acceptance or expanded midpoint,
+   bounded serial guarded jobs, unchanged limits/0/0 logs/native Sage.
+   Small local exact-path commits;push only on explicit owner signal;no
+   automatic review/delegation/relay/migration/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.07 retry-transport midpoint
 
 **B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
