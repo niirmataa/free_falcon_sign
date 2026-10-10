@@ -1,0 +1,162 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm]{geometry}
+\usepackage{fontspec}\setmainfont{Latin Modern Roman}
+\setmonofont{Latin Modern Mono}[Scale=0.85]
+\usepackage{amsmath,amssymb,amsthm,longtable,booktabs,xurl,hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{3em}
+\newcommand{\code}[1]{\nolinkurl{#1}}
+\newtheorem{theorem}{Twierdzenie}
+\title{Conditional harmonic--Schur Gaussian mass bound\\\large S05 / SCHUR\_012}
+\author{Notatka robocza dla Niirmata}\date{10 października 2026}
+\begin{document}\maketitle
+\textbf{Klasa: obowiązek dowodowy Q-SAMPLER. Status: kernelowy lemat
+warunkowy; konkretna instancja FT1536 pozostaje otwarta.}
+Sześć modułów zawiera 47 sprawdzonych twierdzeń. Nowy wynik zastępuje
+tekstowy fragment009 dotyczący ogólnej geometrii Schura i masy przesuniętej.
+Nie zastępuje dowodu tożsamości widmowej rzeczywistej bazy, źródłowej
+granicy harmonicznej010, ani pełnego certyfikatu programu007.
+Nie jest twierdzeniem bezpieczeństwa FT1536 w QROM.
+
+\section{Pełne zdanie, bez znajomości repozytorium}
+Niech $q=18433$, $n=1536$, $\sigma=768$, $k=1/(2\sigma^2)$ oraz
+$\varepsilon=2^{-34}$. Macierze $A,B,D$ są rzeczywistymi macierzami
+$n\times n$. Oznaczmy
+\[
+ \Gamma=\begin{pmatrix}A&B\\ B^{\mathsf T}&D\end{pmatrix},\qquad
+ S=D-B^{\mathsf T}A^{-1}B.
+\]
+Niech $I$ będzie niepustym skończonym zbiorem, $N=|I|$,
+$w:I\to\mathbb R_{>0}$, $V\in\mathbb C^{I\times n}$, oraz
+\[
+ H(w)=\frac{N}{\sum_{\zeta\in I}1/w_\zeta},\qquad
+ \mathcal N(V,v)_{ij}=\frac1N
+       \operatorname{Re}\bigl(V^*\operatorname{diag}(v)V\bigr)_{ij}.
+\]
+\begin{theorem}[Kernelowy, warunkowy bound masy]
+Załóżmy, że $A$ i $\Gamma$ są dodatnio określone, $A_{jj}\le4608$,
+$\overline{V_{\zeta j}}V_{\zeta j}=1$ dla wszystkich indeksów oraz
+\[
+ S=\mathcal N(V,q^2/w),\qquad H(w)\ge991.
+\]
+Istnieje jedna stała $C>0$, niezależna od $s,u,t$, taka że dla każdego
+$s,u\in\mathbb R^n$ i każdego $0<t\le1$, suma
+\[
+ M_t(s,u)=\sum_{(y,x)\in\mathbb Z^n\times\mathbb Z^n}
+ \exp\!\left[-tk
+ \begin{pmatrix}x+s\\y+u\end{pmatrix}^{\!\mathsf T}
+ \Gamma\begin{pmatrix}x+s\\y+u\end{pmatrix}\right]
+\]
+jest zbieżna i spełnia
+\[
+ (1-\varepsilon)t^{-1536}C\ \le M_t(s,u)\ \le
+ (1+\varepsilon)t^{-1536}C.
+\]
+\end{theorem}
+Odpowiednik głównej nierówności to \code{HarmonicMass012.harmonic_mass};
+zbieżność wynika z \code{BlockGaussian012.block_summable} przy tych samych
+granicach przekątnych. Tożsamość widmowa jest pełnoprawną przesłanką
+tego twierdzenia, nie ustalonym faktem o konkretnym kluczu FT1536.
+Stała $C$ jest świadkiem analitycznym; twierdzenie nie nakazuje samplerowi
+obliczać jej przy użyciu sekretnej bazy.
+
+\section{Łańcuch dowodu}
+Dokładna tożsamość Schura daje dla dowolnych rzeczywistych $a,b$
+\[
+ (a,b)^{\mathsf T}\Gamma(a,b)=
+ (a+A^{-1}Bb)^{\mathsf T}A(a+A^{-1}Bb)+b^{\mathsf T}Sb.
+\]
+Dowód zachowuje przesunięcie $A^{-1}B(y+u)$ w każdym wewnętrznym
+sumowaniu. Nie stosuje niecałkowitej zamiany zmiennych na kracie.
+Z dodatniej określoności wynika $S>0$. Skalarna eliminacja Schura
+zachowuje dodatnią określoność i nie zwiększa przekątnych. Dlatego
+każdy pivot wyprowadzony osobno z $A$ i z $S$ jest dodatni i ograniczony
+przez odpowiednią największą przekątną wejściową.
+
+Z jednostkowego modułu wpisów $V$ kernel wyprowadza
+\[
+ S_{jj}=\frac1N\sum_\zeta\frac{q^2}{w_\zeta}
+       =\frac{q^2}{H(w)}\le\frac{q^2}{991}=:L.
+\]
+Również $4608\le L$. Nie zakładamy $D_{jj}\le L$ ani małych wszystkich
+przekątnych $\Gamma$: duże współczynniki dopełniającej pary $F,G$ są
+zgodne z przesłankami. Nie używamy wadliwej równości list
+\code{BasisLeafAlgebra.ldl_shape} wskazanej w008.
+
+\code{GaussianFromSchur012} buduje z rzeczywistej macierzy dokładny
+\code{TriangularGaussian.Tower}. Dowodzi równoważności jego całkowitych
+współrzędnych z $\mathbb Z^d$, równości atomu Gaussa i niezależności
+skali od przesunięcia. Dla pivota $d_j$ współczynnik w konwencji
+$\exp(-\pi a_j(\cdot)^2)$ wynosi $a_j=kd_j/\pi$ i spełnia
+\[
+ 0<a_j\le\frac{kL}{\pi}=
+ \frac{18433^2}{991\cdot2\pi\cdot768^2}.
+\]
+To dokładnie zakres istniejącego kernelowego \code{Run2.T5ScalarMass}.
+Ten eksport daje stosunek theta $r=2^{-48}$, względny błąd jednego
+wiersza $2r/(1-r)$ i bound3072 wierszy z $\varepsilon=2^{-34}$.
+Nie podstawiamy tej wartości do wyspecjalizowanego wcześniejszego
+lematu wymagającego $2^{-40}$.
+
+Dla każdego ustalonego $y$ granice masy dla $A$ są jednolite względem
+rzeczywistego przesunięcia zależnego od $y$. Zbieżność i sumowanie
+dodatnich wyrazów pozwalają następnie zastosować granice dla $S$.
+Stała to iloczyn skal wież $A$ i $S$ przy zerowym przesunięciu.
+Przy przejściu z $k$ do $tk$ każdy z3072 czynników ciągłych skaluje się
+przez $t^{-1/2}$. Kernel dowodzi dokładnie $t^{-1536}C$; mniejsza
+temperatura zachowuje górną granicę współczynników.
+
+\section{Co jeszcze jest obowiązkiem dowodowym}
+\begin{enumerate}
+\item Skonstruować konkretną macierz współczynnikowej bazy NTRU i dowieść,
+że jej energia jest dokładnie używanym w FT1536 kwadratowym $Q$.
+Dowody Parsevala, dodatniej określoności, primary cap i pełnej tożsamości
+widmowej Schura muszą dotyczyć tych samych $f,g,F,G,h$ co most011.
+\item Przenieść źródłowy argument harmoniczny010 na wymagany poziom
+kernelowy i połączyć go z rzeczywistym emitted KeyGen. Mixed/source
+argument ROOT/STABLE nie awansuje przez samo użycie tego lematu.
+\item Połączyć współrzędne całego włókna011 z $M_t$ dla tej konkretnej
+bazy. Bieżący wynik dotyczy sumy nieskończonej; potrzebne są jeszcze
+kernelowe ogony skończonego boxu, capy i pełny moment007.
+\item Zbudować instancję Lean wykonywalnego samplera007, jego wszystkie
+gałęzie i koszt. Przy publicznym initial certyfikat musi obejmować każdy
+stan; nie rekonstruujemy historii zapytań kwantowych.
+\end{enumerate}
+Nie dodano nowych założeń kryptograficznych. A-QMT i primitive-bound
+Q-PRG pozostają odrębną klasą, a model gry nie zmienia się.
+Q-BIND/Q-KEY, Q-HASH-LOG, Q-EMBED, Q-COLL, Q-COMPOSE i Q-RESC
+zachowują swoje otwarte obowiązki. Wynik nie dowodzi all-h momentu.
+
+\section{Dowody wykonania i zachowane próby}
+Świeże finalne logi Lean4.34.0: SchurGeometry17, SpectralDiagonal6,
+GaussianFromSchur10, BlockGaussian5, TemperatureScale6, HarmonicMass3.
+Łącznie47; bez ostrzeżeń i bez niestandardowych aksjomatów. Pięć istniejących
+zależności Gaussa/T5 odbudowano z przypiętych źródeł; wcześniejszy snapshot
+700 modułów011 wykorzystano jako bibliotekę, nie jako nowy odbiór700 modułów.
+Piny oraz rzeczywisty czas wykonania są w \code{SCHUR_012_RECEIPT.json}.
+Koszt kompilacji nie jest kosztem wykonywania samplera.
+
+Sage10.9 sprawdził w dokładnych dziedzinach QQ i cyklotomicznych24 macierze
+w wymiarach0--7,108 podziałów blokowych oraz3 przypadki widmowe w stopniach
+2,6,12. Kontrole wykrywają złą kolejność pivotsów i pominięte przesunięcie;
+przykład z dużą przekątną całego Grama pokazuje znaczenie osobnych bloków.
+To skończone kontrole implementacji, nie dowód wymiaru1536.
+
+Każda nieudana próba Lean zachowuje źródło, log i receipt w osobnym runtime.
+Błędy dotyczyły importów/instancji, dopasowania równości, składni oraz
+ostrzeżeń; nie uzyskano kontrprzykładu do podanej tezy.
+Pierwsze użycie helpera011 uruchomiło jego dispatcher CLI. Guard wykrył
+istniejący produkt przed Lean i zatrzymał próbę; zachowano powód oraz
+utworzony przed guardem katalog. Loader012 ładuje obecnie wyłącznie
+przypięte definicje helpera. Nie nadpisano starszego produktu.
+
+\section{Piny i następny krok}
+Baza: \code{ff5d03ee62d17eb514f94d6d63123f6e8bf4f0fd}.
+Receipty i SHA: \code{SCHUR_012_INPUTS.json}, \code{SCHUR_012_RECEIPT.json},
+\code{SCHUR_012_ATTEMPTS.json}, \code{SCHUR_012_OUTPUTS.sha256}.
+Kolejka i klasy: \code{KERNEL_QUEUE_012.json},
+\code{CERTIFICATE_CLASSES_012.json}. Nie zmieniono archiwalnych011.
+Najbliższy krok to konkretne tożsamości Grama/Parsevala i widmowego Schura,
+aby do sprawdzonego lematu wstawić rzeczywistą bazę. Równoległy tor ROM
+obserwujemy jako źródło przypiętych eksportów; nie przejmujemy jego wykonawcy.
+\end{document}

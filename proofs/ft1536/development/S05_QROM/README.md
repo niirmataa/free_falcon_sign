@@ -3,7 +3,15 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
-**Najnowszy krok — [KEY_SUPPORT-011](notes/KEY_SUPPORT_011_CHECKPOINT.md):**
+**Najnowszy krok — [SCHUR-012](notes/SCHUR_012_CHECKPOINT.md):**
+47 nowych twierdzeń Lean domyka ogólny łańcuch: dokładny Schur → pełny
+przesunięty atom → zbieżna masa Gaussa → jedna dodatnia skala dla wszystkich
+przesunięć i temperatur. Przy jawnej tożsamości widmowej i harmonicznej≥991
+kernel daje błąd względny `2^-34` oraz czynnik `t^-1536` dla `0<t≤1`.
+**Instancja Grama/Parsevala rzeczywistej bazy i cały certyfikat007 są OPEN.**
+[Pełne przesłanki i zakres](notes/SCHUR_012.tex); nie jest to deklaracja QROM.
+
+**Checkpoint — [KEY_SUPPORT-011](notes/KEY_SUPPORT_011_CHECKPOINT.md):**
 29 nowych twierdzeń Lean o tym samym materiale/publicznym h, właściwym
 prawie kluczy po emisji, pokryciu nośnika, publicznym initial i pełnym J/P.
 To **kernelowe konstruktory warunkowe**; rzeczywisty `EmissionView` oraz
@@ -11,8 +19,8 @@ To **kernelowe konstruktory warunkowe**; rzeczywisty `EmissionView` oraz
 pozostaje niezmieniony. [Dokładny zakres](notes/KEY_SUPPORT_011.tex).
 
 Decyzja właściciela: **kernel przed użyciem wyniku w ostatecznej tezie**.
-[Klasy warunków](notes/CERTIFICATE_CLASSES_011.json) rozdzielają obowiązki,
-założenia kryptograficzne i model; [kolejka kernela](notes/KERNEL_QUEUE_011.json)
+[Klasy warunków](notes/CERTIFICATE_CLASSES_012.json) rozdzielają obowiązki,
+założenia kryptograficzne i model; [kolejka kernela](notes/KERNEL_QUEUE_012.json)
 ma priorytety według zależności tezy, również jawne wpisy h=0 i Dyadic.
 
 **Checkpoint — [ponowne użycie ROM010](notes/ROM_REUSE_010_CHECKPOINT.md):**
@@ -28,7 +36,9 @@ wykryto niemożliwą kolejność pivotsów w odziedziczonym `ldl_shape`
 ([dokładny finding](notes/KEY_BASIS_008.tex)). Nie zmieniono źródeł/statusów T12.
 [Nowy most harmoniczny](notes/HARMONIC_BRIDGE_009.tex) wyprowadza potrzebny
 bound LDL z jednej średniej harmonicznej, omijając tę równość list.
-Pełny most jest tekstowy; 12 małych lematów008/009 przeszło Lean z czystymi logami.
+Pierwotny pełny most009 jest tekstowy; 12 małych lematów008/009 przeszło Lean
+z czystymi logami. Następnie012 skernelizował ogólną geometrię i masę;
+konkretna FT1536 instancja Grama/widma pozostaje OPEN.
 Jawny świadek1536 z ternarnymi f/g i dokładnym NTRU przeszedł też funkcję
 certyfikatu C. **To jedna instancja, nie dowód o całym emitted KeyGen.**
 Numeryczne przesłanki wskazane w009 zostały następnie powiązane z eksportami
@@ -98,7 +108,7 @@ Nie nadpisujemy prób. [Handoff 004](notes/SAMPLER_004_HANDOFF.json),
 | Wykonalny publiczny sampler pełnej odpowiedzi, również porażek | SAMPLER-007 wykonany; capy par/wektora rozliczone przez dodatnie fallbacki. `J(none)=0` jawnie, uczciwe porażki pozostają w P. Koszt w receipcie |
 | Absolutna ciągłość J względem uczciwego P | SAMPLER-007: tekstowy argument dla każdego h; każde wyjście ma dodatni zaakceptowany atom uczciwego włókna. Formal source binding OPEN |
 | Certyfikat `ΣJ²/P≤1+e`, z użytecznym e | 007: tekstowe `e<2^-44` pod (M); świadek (M) dla emitted KeyGen OPEN. 004 zachowuje osobny wynik h=0 `e<2^-50`. Cel all-h OPEN; przeszkoda 003 zachowana |
-| Dokładna baza/LDL → masa wszystkich włókien przy trzech temperaturach | 007 zachowane; 009 wyprowadza pivotsy ≤q²/991 z harmonicznego widma≥991. Pełny most tekstowy; źródłowe przesłanki i jego kernelizacja OPEN |
+| Dokładna baza/LDL → masa wszystkich włókien przy trzech temperaturach | 012: ogólny Schur, pełny atom i masa kernelowo, `2^-34` i wspólna skala `C*t^-1536` dla wszystkich `0<t≤1`. Konkretne tożsamości Grama/widma i identyfikacja z całym włóknem FT1536 OPEN; source harmonic nadal mixed |
 | Odziedziczone `BasisLeafAlgebra.ldl_shape` | 008: przeszkoda pierwszych dwóch pivotsów; tej instancji nie można użyć w obecnej postaci |
 | Średnia harmoniczna i źródłowy liść767 | 010: H3 ROOT/STABLE +009 dają >1022 w emitted source model, tekstowo/mixed. 3 nowe marginesy kernelowe; full source kernel i typed key-law assembly OPEN |
 | Kernelizacja h=0: `J≪P` i moment | **OPEN, obowiązek jawny:** przenieść SAMPLER-004 do Lean z czystymi logami; etykieta **textual** pozostaje. Szkic DyadicObstruction również nie ma potwierdzonego kernela |

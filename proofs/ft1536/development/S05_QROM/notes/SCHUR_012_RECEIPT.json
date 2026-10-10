@@ -1,0 +1,1024 @@
+{
+  "id": "S05_SCHUR_012",
+  "condition_class": "proof_obligation",
+  "conditions": [
+    "Q-SAMPLER"
+  ],
+  "status": "KERNEL_CHECKED_CONDITIONAL_MASS_NOT_FT1536_INSTANCE",
+  "base_commit": "ff5d03ee62d17eb514f94d6d63123f6e8bf4f0fd",
+  "packaging_head": "ff5d03ee62d17eb514f94d6d63123f6e8bf4f0fd",
+  "final_FT1536_QROM_theorem_eligible": false,
+  "clean_lean_runs": [
+    {
+      "receipt_pin": {
+        "path": ".build/schur_012/runs/block_006/receipt.json",
+        "sha256": "6fdf955e880eb2be2d35259bb750dd6e6547fc134f27fb55e58a739d053272aa"
+      },
+      "receipt": {
+        "command": [
+          "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+          "-j1",
+          "-s8192",
+          "-DElab.async=false",
+          "-M4096",
+          "-o",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/block_006/SchurGeometry012.olean",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/block_006/SchurGeometry012.lean"
+        ],
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 2.019172238004103,
+        "source_sha256": "1a36a5b8467f862030ee9d1f39cbcec81e2926e9de5da542f4373d2cade3503b",
+        "snapshot_sha256": "1a36a5b8467f862030ee9d1f39cbcec81e2926e9de5da542f4373d2cade3503b",
+        "runner_sha256": "adc23164ac6542c34deb97bffe57f48bb5a546a1cb7c2dd6c9ae1554b471248b",
+        "config_sha256": "cfafd2a9c99856ae10f709bca484df4b962e1c3250fb4948a18abc0704eca94e",
+        "library_roots": {
+          "Cli": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Cli/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Cli"
+          },
+          "LeanSearchClient": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/LeanSearchClient/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/LeanSearchClient"
+          },
+          "Qq": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Qq/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Qq"
+          },
+          "aesop": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/aesop/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/aesop"
+          },
+          "batteries": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/batteries/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/batteries"
+          },
+          "importGraph": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/importGraph/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/importGraph"
+          },
+          "lean": {
+            "build": "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean",
+            "source": "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/src/lean"
+          },
+          "mathlib": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/bootstrap/mathlib4/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/bootstrap/mathlib4"
+          },
+          "plausible": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/plausible/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/plausible"
+          },
+          "proofwidgets": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/proofwidgets/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/proofwidgets"
+          }
+        },
+        "resource_limits": {
+          "wall_seconds": 100,
+          "cpu_seconds": 90,
+          "memory_bytes": 8589934592,
+          "cores": 1
+        },
+        "stdout_sha256": "ebdfb3b927d39b4d444262a5ed2814c0bb45262b88134edb719c22b242fef1f6",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "olean_sha256": "417fea93ff93020dbe6addaa07803b032a502002bc8673454a0d603714c992de",
+        "scope": "Q-SAMPLER proof obligation: generic Schur geometry; source/spectral FT1536 instance remains OPEN"
+      },
+      "source_snapshot": {
+        "path": ".build/schur_012/runs/block_006/SchurGeometry012.lean",
+        "sha256": "1a36a5b8467f862030ee9d1f39cbcec81e2926e9de5da542f4373d2cade3503b"
+      },
+      "stdout": "'FT1536.S05.SchurGeometry012.energy_reindex' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SchurGeometry012.energy_scalar_step' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SchurGeometry012.energy_eq_squareExpansion' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SchurGeometry012.gaussian_squareExpansion' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SchurGeometry012.block_view' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SchurGeometry012.scalarSchur_eq_complement' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SchurGeometry012.scalarSchur_posDef' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SchurGeometry012.scalarSchur_diagonal_le' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SchurGeometry012.pivots_length' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SchurGeometry012.pivots_bounded' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SchurGeometry012.block_pivots_bounded' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SchurGeometry012.energy_split' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SchurGeometry012.complement_posDef' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SchurGeometry012.congruence_diagonal' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SchurGeometry012.complement_diagonal_le' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SchurGeometry012.gaussian_atom_split' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SchurGeometry012.gaussian_affine_atom_split' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "stderr": "",
+      "module": "SchurGeometry012",
+      "kernel_theorems": 17
+    },
+    {
+      "receipt_pin": {
+        "path": ".build/schur_012/runs/blockmass_002/receipt.json",
+        "sha256": "3aaa58b13f29a8c548a7a193952fa3c138fc7fe8038d2c222bd1a58085a31c49"
+      },
+      "receipt": {
+        "module": "BlockGaussian012",
+        "extra_dependencies": [
+          {
+            "module": "SchurGeometry012",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/formal/SchurGeometry012.lean",
+            "source_sha256": "1a36a5b8467f862030ee9d1f39cbcec81e2926e9de5da542f4373d2cade3503b",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/SchurGeometry012.olean",
+            "artifact_sha256": "417fea93ff93020dbe6addaa07803b032a502002bc8673454a0d603714c992de",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/block_006/receipt.json"
+          },
+          {
+            "module": "SpectralDiagonal012",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/formal/SpectralDiagonal012.lean",
+            "source_sha256": "969f9a01a2357973eb1c93fcf385130c5a3acbd35eba1be1cefdcb68c04168ed",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/SpectralDiagonal012.olean",
+            "artifact_sha256": "bdd7bab1b22d4c63e76b8d5850da953df79d6247c5e66cca1af325cfff9add00",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/spectral_003/receipt.json"
+          },
+          {
+            "module": "Run2.A2Theta",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/run2/formal/Run2/A2Theta.lean",
+            "source_sha256": "d9c478744929a0a5aa528ac90a15a37edee07305d7b6812bdf4bf1558e696387",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/A2Theta.olean",
+            "artifact_sha256": "2ad6ce4ff2d522f23ee9511c21dc11a25ec6dc76426ad07253e7e568de6a4426",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_A2Theta/receipt.json"
+          },
+          {
+            "module": "Run2.ShiftedGaussian",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/run2/formal/Run2/ShiftedGaussian.lean",
+            "source_sha256": "f093353e65c09f5e55a5cc508a37156aceec7935c930c56e2b9fcaef7bc18068",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/ShiftedGaussian.olean",
+            "artifact_sha256": "bc7aa993d9b6692ff6b5af612d3ff4a7004415cf4686c73c975257bcc9b829ce",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_ShiftedGaussian/receipt.json"
+          },
+          {
+            "module": "Run2.TriangularGaussian",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/run2/formal/Run2/TriangularGaussian.lean",
+            "source_sha256": "eb40f80ca3543388ebb508f20cab3b23006e00c6426ec5b7a258b8d9da0ac5ba",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/TriangularGaussian.olean",
+            "artifact_sha256": "4d08bf6d396f790443834b380677ce95c6e3cb92048dd7223cf94d60b5ec380a",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_TriangularGaussian/receipt.json"
+          },
+          {
+            "module": "Run2.T5ThetaNumeric",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/run2/formal/Run2/T5ThetaNumeric.lean",
+            "source_sha256": "76ed845bec10b02ce3605c9148f973ae681893a3983ec79c51bfefa8bac59164",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/T5ThetaNumeric.olean",
+            "artifact_sha256": "5717f129bdb9d75226e31dc6c780039b3f6612892533143dd893957dbf1397b5",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_T5ThetaNumeric/receipt.json"
+          },
+          {
+            "module": "Run2.T5ScalarMass",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/run2/formal/Run2/T5ScalarMass.lean",
+            "source_sha256": "6218873b5de06ae3978bf883dba30ab18f925c0e001373ef5f3d212916505e76",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/T5ScalarMass.olean",
+            "artifact_sha256": "eaa4e11e4e0eea7894c3a4a3c27e0305ea58159c0acf90342e8992a4afde2d6b",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_T5ScalarMass/receipt.json"
+          },
+          {
+            "module": "GaussianFromSchur012",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/formal/GaussianFromSchur012.lean",
+            "source_sha256": "e592a76782f61b0274c2d70317fdfd4bc9cc93d86b299769225fd1c15814e814",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/GaussianFromSchur012.olean",
+            "artifact_sha256": "6ead2b0c2bbde37970b77b3b10779e70e5f852f777b5636592f5790578d4c439",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/gaussian_004/receipt.json"
+          }
+        ],
+        "command": [
+          "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+          "--root=/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/blockmass_002/source",
+          "-j1",
+          "-s8192",
+          "-DElab.async=false",
+          "-M4096",
+          "-o",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/blockmass_002/lib/BlockGaussian012.olean",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/blockmass_002/source/BlockGaussian012.lean"
+        ],
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 1.9195617430013954,
+        "source_sha256": "1d616960b497fbdf39ad873da972f7e186a5b2a7ca7ceaf2a58963cab033eb78",
+        "snapshot_sha256": "1d616960b497fbdf39ad873da972f7e186a5b2a7ca7ceaf2a58963cab033eb78",
+        "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/blockmass_002/lib/BlockGaussian012.olean",
+        "artifact_sha256": "b8662c24bd23df6d1416df8e7b1352aedf73810e8c36287c6b9af09c5d26e060",
+        "stdout_sha256": "f931a477de3e66aa71486ccd051cbee38eaa85d2349f0fce13b956a4dd11e8e6",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "warning_count": 0,
+        "error_count": 0,
+        "runner_sha256": "4c1c9a989a01ca4a636b09b7781bf58558e23d9a988a2c0e5f5ce1c446cd77ca",
+        "dependency_pins_sha256": "6ac079a4b5de957027376f0b15ae7035a7306e681b60ec5ae7edb5c913bf5476",
+        "memory_GiB": 8,
+        "cpu_seconds": 110,
+        "wall_seconds": 120,
+        "cores": 1
+      },
+      "source_snapshot": {
+        "path": ".build/schur_012/runs/blockmass_002/source/BlockGaussian012.lean",
+        "sha256": "1d616960b497fbdf39ad873da972f7e186a5b2a7ca7ceaf2a58963cab033eb78"
+      },
+      "stdout": "'FT1536.S05.BlockGaussian012.factors_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.BlockGaussian012.weight_factor' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.BlockGaussian012.row_mass' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.BlockGaussian012.block_summable' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.BlockGaussian012.block_mass_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "stderr": "",
+      "module": "BlockGaussian012",
+      "kernel_theorems": 5
+    },
+    {
+      "receipt_pin": {
+        "path": ".build/schur_012/runs/gaussian_004/receipt.json",
+        "sha256": "2d7b5511056bee2a51e874b9306c2111843e776921358ca9ef20bc801efed435"
+      },
+      "receipt": {
+        "module": "GaussianFromSchur012",
+        "extra_dependencies": [
+          {
+            "module": "SchurGeometry012",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/formal/SchurGeometry012.lean",
+            "source_sha256": "1a36a5b8467f862030ee9d1f39cbcec81e2926e9de5da542f4373d2cade3503b",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/SchurGeometry012.olean",
+            "artifact_sha256": "417fea93ff93020dbe6addaa07803b032a502002bc8673454a0d603714c992de",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/block_006/receipt.json"
+          },
+          {
+            "module": "SpectralDiagonal012",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/formal/SpectralDiagonal012.lean",
+            "source_sha256": "969f9a01a2357973eb1c93fcf385130c5a3acbd35eba1be1cefdcb68c04168ed",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/SpectralDiagonal012.olean",
+            "artifact_sha256": "bdd7bab1b22d4c63e76b8d5850da953df79d6247c5e66cca1af325cfff9add00",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/spectral_003/receipt.json"
+          },
+          {
+            "module": "Run2.A2Theta",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/run2/formal/Run2/A2Theta.lean",
+            "source_sha256": "d9c478744929a0a5aa528ac90a15a37edee07305d7b6812bdf4bf1558e696387",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/A2Theta.olean",
+            "artifact_sha256": "2ad6ce4ff2d522f23ee9511c21dc11a25ec6dc76426ad07253e7e568de6a4426",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_A2Theta/receipt.json"
+          },
+          {
+            "module": "Run2.ShiftedGaussian",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/run2/formal/Run2/ShiftedGaussian.lean",
+            "source_sha256": "f093353e65c09f5e55a5cc508a37156aceec7935c930c56e2b9fcaef7bc18068",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/ShiftedGaussian.olean",
+            "artifact_sha256": "bc7aa993d9b6692ff6b5af612d3ff4a7004415cf4686c73c975257bcc9b829ce",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_ShiftedGaussian/receipt.json"
+          },
+          {
+            "module": "Run2.TriangularGaussian",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/run2/formal/Run2/TriangularGaussian.lean",
+            "source_sha256": "eb40f80ca3543388ebb508f20cab3b23006e00c6426ec5b7a258b8d9da0ac5ba",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/TriangularGaussian.olean",
+            "artifact_sha256": "4d08bf6d396f790443834b380677ce95c6e3cb92048dd7223cf94d60b5ec380a",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_TriangularGaussian/receipt.json"
+          },
+          {
+            "module": "Run2.T5ThetaNumeric",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/run2/formal/Run2/T5ThetaNumeric.lean",
+            "source_sha256": "76ed845bec10b02ce3605c9148f973ae681893a3983ec79c51bfefa8bac59164",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/T5ThetaNumeric.olean",
+            "artifact_sha256": "5717f129bdb9d75226e31dc6c780039b3f6612892533143dd893957dbf1397b5",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_T5ThetaNumeric/receipt.json"
+          },
+          {
+            "module": "Run2.T5ScalarMass",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/run2/formal/Run2/T5ScalarMass.lean",
+            "source_sha256": "6218873b5de06ae3978bf883dba30ab18f925c0e001373ef5f3d212916505e76",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/T5ScalarMass.olean",
+            "artifact_sha256": "eaa4e11e4e0eea7894c3a4a3c27e0305ea58159c0acf90342e8992a4afde2d6b",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_T5ScalarMass/receipt.json"
+          }
+        ],
+        "command": [
+          "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+          "--root=/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/gaussian_004/source",
+          "-j1",
+          "-s8192",
+          "-DElab.async=false",
+          "-M4096",
+          "-o",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/gaussian_004/lib/GaussianFromSchur012.olean",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/gaussian_004/source/GaussianFromSchur012.lean"
+        ],
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 1.91963298599876,
+        "source_sha256": "e592a76782f61b0274c2d70317fdfd4bc9cc93d86b299769225fd1c15814e814",
+        "snapshot_sha256": "e592a76782f61b0274c2d70317fdfd4bc9cc93d86b299769225fd1c15814e814",
+        "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/gaussian_004/lib/GaussianFromSchur012.olean",
+        "artifact_sha256": "6ead2b0c2bbde37970b77b3b10779e70e5f852f777b5636592f5790578d4c439",
+        "stdout_sha256": "46f57fc6692dc40c5d95425e2164a525ad024443f48c8c4ec797be92c3bb7f7e",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "warning_count": 0,
+        "error_count": 0,
+        "runner_sha256": "4c1c9a989a01ca4a636b09b7781bf58558e23d9a988a2c0e5f5ce1c446cd77ca",
+        "dependency_pins_sha256": "6ac079a4b5de957027376f0b15ae7035a7306e681b60ec5ae7edb5c913bf5476",
+        "memory_GiB": 8,
+        "cpu_seconds": 110,
+        "wall_seconds": 120,
+        "cores": 1
+      },
+      "source_snapshot": {
+        "path": ".build/schur_012/runs/gaussian_004/source/GaussianFromSchur012.lean",
+        "sha256": "e592a76782f61b0274c2d70317fdfd4bc9cc93d86b299769225fd1c15814e814"
+      },
+      "stdout": "'FT1536.S05.GaussianFromSchur012.mass_summable' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.GaussianFromSchur012.common_scale_pos' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.GaussianFromSchur012.points_vector' depends on axioms: [propext, Quot.sound]\n'FT1536.S05.GaussianFromSchur012.vector_points' depends on axioms: [propext, Quot.sound]\n'FT1536.S05.GaussianFromSchur012.atom_eq' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.GaussianFromSchur012.mass_eq_total' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.GaussianFromSchur012.scale_independent' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.GaussianFromSchur012.coefficient_range' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.GaussianFromSchur012.mass_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.GaussianFromSchur012.mass_3072' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "stderr": "",
+      "module": "GaussianFromSchur012",
+      "kernel_theorems": 10
+    },
+    {
+      "receipt_pin": {
+        "path": ".build/schur_012/runs/harmonic_001/receipt.json",
+        "sha256": "0c2781399efe213cdcc478928eebb190f880ff2353630351bd70a4e8628b4a68"
+      },
+      "receipt": {
+        "module": "HarmonicMass012",
+        "extra_dependencies": [
+          {
+            "module": "SchurGeometry012",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/formal/SchurGeometry012.lean",
+            "source_sha256": "1a36a5b8467f862030ee9d1f39cbcec81e2926e9de5da542f4373d2cade3503b",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/SchurGeometry012.olean",
+            "artifact_sha256": "417fea93ff93020dbe6addaa07803b032a502002bc8673454a0d603714c992de",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/block_006/receipt.json"
+          },
+          {
+            "module": "SpectralDiagonal012",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/formal/SpectralDiagonal012.lean",
+            "source_sha256": "969f9a01a2357973eb1c93fcf385130c5a3acbd35eba1be1cefdcb68c04168ed",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/SpectralDiagonal012.olean",
+            "artifact_sha256": "bdd7bab1b22d4c63e76b8d5850da953df79d6247c5e66cca1af325cfff9add00",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/spectral_003/receipt.json"
+          },
+          {
+            "module": "Run2.A2Theta",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/run2/formal/Run2/A2Theta.lean",
+            "source_sha256": "d9c478744929a0a5aa528ac90a15a37edee07305d7b6812bdf4bf1558e696387",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/A2Theta.olean",
+            "artifact_sha256": "2ad6ce4ff2d522f23ee9511c21dc11a25ec6dc76426ad07253e7e568de6a4426",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_A2Theta/receipt.json"
+          },
+          {
+            "module": "Run2.ShiftedGaussian",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/run2/formal/Run2/ShiftedGaussian.lean",
+            "source_sha256": "f093353e65c09f5e55a5cc508a37156aceec7935c930c56e2b9fcaef7bc18068",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/ShiftedGaussian.olean",
+            "artifact_sha256": "bc7aa993d9b6692ff6b5af612d3ff4a7004415cf4686c73c975257bcc9b829ce",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_ShiftedGaussian/receipt.json"
+          },
+          {
+            "module": "Run2.TriangularGaussian",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/run2/formal/Run2/TriangularGaussian.lean",
+            "source_sha256": "eb40f80ca3543388ebb508f20cab3b23006e00c6426ec5b7a258b8d9da0ac5ba",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/TriangularGaussian.olean",
+            "artifact_sha256": "4d08bf6d396f790443834b380677ce95c6e3cb92048dd7223cf94d60b5ec380a",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_TriangularGaussian/receipt.json"
+          },
+          {
+            "module": "Run2.T5ThetaNumeric",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/run2/formal/Run2/T5ThetaNumeric.lean",
+            "source_sha256": "76ed845bec10b02ce3605c9148f973ae681893a3983ec79c51bfefa8bac59164",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/T5ThetaNumeric.olean",
+            "artifact_sha256": "5717f129bdb9d75226e31dc6c780039b3f6612892533143dd893957dbf1397b5",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_T5ThetaNumeric/receipt.json"
+          },
+          {
+            "module": "Run2.T5ScalarMass",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/run2/formal/Run2/T5ScalarMass.lean",
+            "source_sha256": "6218873b5de06ae3978bf883dba30ab18f925c0e001373ef5f3d212916505e76",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/T5ScalarMass.olean",
+            "artifact_sha256": "eaa4e11e4e0eea7894c3a4a3c27e0305ea58159c0acf90342e8992a4afde2d6b",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_T5ScalarMass/receipt.json"
+          },
+          {
+            "module": "GaussianFromSchur012",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/formal/GaussianFromSchur012.lean",
+            "source_sha256": "e592a76782f61b0274c2d70317fdfd4bc9cc93d86b299769225fd1c15814e814",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/GaussianFromSchur012.olean",
+            "artifact_sha256": "6ead2b0c2bbde37970b77b3b10779e70e5f852f777b5636592f5790578d4c439",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/gaussian_004/receipt.json"
+          },
+          {
+            "module": "BlockGaussian012",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/formal/BlockGaussian012.lean",
+            "source_sha256": "1d616960b497fbdf39ad873da972f7e186a5b2a7ca7ceaf2a58963cab033eb78",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/BlockGaussian012.olean",
+            "artifact_sha256": "b8662c24bd23df6d1416df8e7b1352aedf73810e8c36287c6b9af09c5d26e060",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/blockmass_002/receipt.json"
+          },
+          {
+            "module": "TemperatureScale012",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/formal/TemperatureScale012.lean",
+            "source_sha256": "1f509ddd5d61cabfbb7b4ccdaef88180053c6d8716a50b129f7e3e0eba927392",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/TemperatureScale012.olean",
+            "artifact_sha256": "0d559c71ba5da1933cd5d5742dc5b55574d72180790acae77c24ee81f83667cf",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/temperature_002/receipt.json"
+          }
+        ],
+        "command": [
+          "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+          "--root=/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/harmonic_001/source",
+          "-j1",
+          "-s8192",
+          "-DElab.async=false",
+          "-M4096",
+          "-o",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/harmonic_001/lib/HarmonicMass012.olean",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/harmonic_001/source/HarmonicMass012.lean"
+        ],
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 1.4180058010024368,
+        "source_sha256": "48ec28f46533b59ff42f463580aff23eeedc45e289627210ee7e64146a3d88ba",
+        "snapshot_sha256": "48ec28f46533b59ff42f463580aff23eeedc45e289627210ee7e64146a3d88ba",
+        "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/harmonic_001/lib/HarmonicMass012.olean",
+        "artifact_sha256": "e07cefa1844354646248aadcdf39b75e2be17795d7458a7f263d5689561e1dce",
+        "stdout_sha256": "1d9f11d51a2db12f8e5ac61c07383e03a6553fcf2313aac81567a2fdff1368f2",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "warning_count": 0,
+        "error_count": 0,
+        "runner_sha256": "4c1c9a989a01ca4a636b09b7781bf58558e23d9a988a2c0e5f5ce1c446cd77ca",
+        "dependency_pins_sha256": "6ac079a4b5de957027376f0b15ae7035a7306e681b60ec5ae7edb5c913bf5476",
+        "memory_GiB": 8,
+        "cpu_seconds": 110,
+        "wall_seconds": 120,
+        "cores": 1
+      },
+      "source_snapshot": {
+        "path": ".build/schur_012/runs/harmonic_001/source/HarmonicMass012.lean",
+        "sha256": "48ec28f46533b59ff42f463580aff23eeedc45e289627210ee7e64146a3d88ba"
+      },
+      "stdout": "'FT1536.S05.HarmonicMass012.scalar_limit' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.HarmonicMass012.primary_cap' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.HarmonicMass012.harmonic_mass' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "stderr": "",
+      "module": "HarmonicMass012",
+      "kernel_theorems": 3
+    },
+    {
+      "receipt_pin": {
+        "path": ".build/schur_012/runs/spectral_003/receipt.json",
+        "sha256": "76e0d1e84a212cb92baaf7f10135fda21a3249f080e6e695cd52b94d3f17d8c4"
+      },
+      "receipt": {
+        "command": [
+          "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+          "-j1",
+          "-s8192",
+          "-DElab.async=false",
+          "-M4096",
+          "-o",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/spectral_003/SpectralDiagonal012.olean",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/spectral_003/SpectralDiagonal012.lean"
+        ],
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 1.4677094709986704,
+        "source_sha256": "969f9a01a2357973eb1c93fcf385130c5a3acbd35eba1be1cefdcb68c04168ed",
+        "snapshot_sha256": "969f9a01a2357973eb1c93fcf385130c5a3acbd35eba1be1cefdcb68c04168ed",
+        "runner_sha256": "adc23164ac6542c34deb97bffe57f48bb5a546a1cb7c2dd6c9ae1554b471248b",
+        "config_sha256": "cfafd2a9c99856ae10f709bca484df4b962e1c3250fb4948a18abc0704eca94e",
+        "library_roots": {
+          "Cli": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Cli/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Cli"
+          },
+          "LeanSearchClient": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/LeanSearchClient/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/LeanSearchClient"
+          },
+          "Qq": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Qq/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/Qq"
+          },
+          "aesop": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/aesop/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/aesop"
+          },
+          "batteries": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/batteries/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/batteries"
+          },
+          "importGraph": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/importGraph/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/importGraph"
+          },
+          "lean": {
+            "build": "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean",
+            "source": "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/src/lean"
+          },
+          "mathlib": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/bootstrap/mathlib4/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/bootstrap/mathlib4"
+          },
+          "plausible": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/plausible/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/plausible"
+          },
+          "proofwidgets": {
+            "build": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/proofwidgets/.lake/build/lib/lean",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/proofwidgets"
+          }
+        },
+        "resource_limits": {
+          "wall_seconds": 100,
+          "cpu_seconds": 90,
+          "memory_bytes": 8589934592,
+          "cores": 1
+        },
+        "stdout_sha256": "e7ba75084c96bfb918fe3d84211820afde1db4bab11e6f7f28383dd668361e0b",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "olean_sha256": "bdd7bab1b22d4c63e76b8d5850da953df79d6247c5e66cca1af325cfff9add00",
+        "scope": "Q-SAMPLER proof obligation: generic Schur geometry; source/spectral FT1536 instance remains OPEN"
+      },
+      "source_snapshot": {
+        "path": ".build/schur_012/runs/spectral_003/SpectralDiagonal012.lean",
+        "sha256": "969f9a01a2357973eb1c93fcf385130c5a3acbd35eba1be1cefdcb68c04168ed"
+      },
+      "stdout": "'FT1536.S05.SpectralDiagonal012.diagonal_gram' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SpectralDiagonal012.diagonal_normalized' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SpectralDiagonal012.inverse_sum_pos' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SpectralDiagonal012.harmonic_pos' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SpectralDiagonal012.reciprocal_diagonal' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.SpectralDiagonal012.reciprocal_diagonal_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "stderr": "",
+      "module": "SpectralDiagonal012",
+      "kernel_theorems": 6
+    },
+    {
+      "receipt_pin": {
+        "path": ".build/schur_012/runs/temperature_002/receipt.json",
+        "sha256": "e6b49ea4c665f8dee65621b3558a9131121447bb3235e3d6ed88e26b4d806ca3"
+      },
+      "receipt": {
+        "module": "TemperatureScale012",
+        "extra_dependencies": [
+          {
+            "module": "SchurGeometry012",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/formal/SchurGeometry012.lean",
+            "source_sha256": "1a36a5b8467f862030ee9d1f39cbcec81e2926e9de5da542f4373d2cade3503b",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/SchurGeometry012.olean",
+            "artifact_sha256": "417fea93ff93020dbe6addaa07803b032a502002bc8673454a0d603714c992de",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/block_006/receipt.json"
+          },
+          {
+            "module": "SpectralDiagonal012",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/formal/SpectralDiagonal012.lean",
+            "source_sha256": "969f9a01a2357973eb1c93fcf385130c5a3acbd35eba1be1cefdcb68c04168ed",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/SpectralDiagonal012.olean",
+            "artifact_sha256": "bdd7bab1b22d4c63e76b8d5850da953df79d6247c5e66cca1af325cfff9add00",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/spectral_003/receipt.json"
+          },
+          {
+            "module": "Run2.A2Theta",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/run2/formal/Run2/A2Theta.lean",
+            "source_sha256": "d9c478744929a0a5aa528ac90a15a37edee07305d7b6812bdf4bf1558e696387",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/A2Theta.olean",
+            "artifact_sha256": "2ad6ce4ff2d522f23ee9511c21dc11a25ec6dc76426ad07253e7e568de6a4426",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_A2Theta/receipt.json"
+          },
+          {
+            "module": "Run2.ShiftedGaussian",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/run2/formal/Run2/ShiftedGaussian.lean",
+            "source_sha256": "f093353e65c09f5e55a5cc508a37156aceec7935c930c56e2b9fcaef7bc18068",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/ShiftedGaussian.olean",
+            "artifact_sha256": "bc7aa993d9b6692ff6b5af612d3ff4a7004415cf4686c73c975257bcc9b829ce",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_ShiftedGaussian/receipt.json"
+          },
+          {
+            "module": "Run2.TriangularGaussian",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/run2/formal/Run2/TriangularGaussian.lean",
+            "source_sha256": "eb40f80ca3543388ebb508f20cab3b23006e00c6426ec5b7a258b8d9da0ac5ba",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/TriangularGaussian.olean",
+            "artifact_sha256": "4d08bf6d396f790443834b380677ce95c6e3cb92048dd7223cf94d60b5ec380a",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_TriangularGaussian/receipt.json"
+          },
+          {
+            "module": "Run2.T5ThetaNumeric",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/run2/formal/Run2/T5ThetaNumeric.lean",
+            "source_sha256": "76ed845bec10b02ce3605c9148f973ae681893a3983ec79c51bfefa8bac59164",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/T5ThetaNumeric.olean",
+            "artifact_sha256": "5717f129bdb9d75226e31dc6c780039b3f6612892533143dd893957dbf1397b5",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_T5ThetaNumeric/receipt.json"
+          },
+          {
+            "module": "Run2.T5ScalarMass",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/run2/formal/Run2/T5ScalarMass.lean",
+            "source_sha256": "6218873b5de06ae3978bf883dba30ab18f925c0e001373ef5f3d212916505e76",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/T5ScalarMass.olean",
+            "artifact_sha256": "eaa4e11e4e0eea7894c3a4a3c27e0305ea58159c0acf90342e8992a4afde2d6b",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_T5ScalarMass/receipt.json"
+          },
+          {
+            "module": "GaussianFromSchur012",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/formal/GaussianFromSchur012.lean",
+            "source_sha256": "e592a76782f61b0274c2d70317fdfd4bc9cc93d86b299769225fd1c15814e814",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/GaussianFromSchur012.olean",
+            "artifact_sha256": "6ead2b0c2bbde37970b77b3b10779e70e5f852f777b5636592f5790578d4c439",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/gaussian_004/receipt.json"
+          },
+          {
+            "module": "BlockGaussian012",
+            "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/formal/BlockGaussian012.lean",
+            "source_sha256": "1d616960b497fbdf39ad873da972f7e186a5b2a7ca7ceaf2a58963cab033eb78",
+            "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/BlockGaussian012.olean",
+            "artifact_sha256": "b8662c24bd23df6d1416df8e7b1352aedf73810e8c36287c6b9af09c5d26e060",
+            "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/blockmass_002/receipt.json"
+          }
+        ],
+        "command": [
+          "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+          "--root=/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/temperature_002/source",
+          "-j1",
+          "-s8192",
+          "-DElab.async=false",
+          "-M4096",
+          "-o",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/temperature_002/lib/TemperatureScale012.olean",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/temperature_002/source/TemperatureScale012.lean"
+        ],
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 1.5683227970002918,
+        "source_sha256": "1f509ddd5d61cabfbb7b4ccdaef88180053c6d8716a50b129f7e3e0eba927392",
+        "snapshot_sha256": "1f509ddd5d61cabfbb7b4ccdaef88180053c6d8716a50b129f7e3e0eba927392",
+        "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/temperature_002/lib/TemperatureScale012.olean",
+        "artifact_sha256": "0d559c71ba5da1933cd5d5742dc5b55574d72180790acae77c24ee81f83667cf",
+        "stdout_sha256": "9ca05dba5c8309967221f4e832992385a67a08bdb3a3c8c9cf3fb6b9d049bca1",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "warning_count": 0,
+        "error_count": 0,
+        "runner_sha256": "4c1c9a989a01ca4a636b09b7781bf58558e23d9a988a2c0e5f5ce1c446cd77ca",
+        "dependency_pins_sha256": "6ac079a4b5de957027376f0b15ae7035a7306e681b60ec5ae7edb5c913bf5476",
+        "memory_GiB": 8,
+        "cpu_seconds": 110,
+        "wall_seconds": 120,
+        "cores": 1
+      },
+      "source_snapshot": {
+        "path": ".build/schur_012/runs/temperature_002/source/TemperatureScale012.lean",
+        "sha256": "1f509ddd5d61cabfbb7b4ccdaef88180053c6d8716a50b129f7e3e0eba927392"
+      },
+      "stdout": "'FT1536.S05.TemperatureScale012.continuousMass_mul' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.TemperatureScale012.scale_temperature' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.TemperatureScale012.temperature_exponent' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.TemperatureScale012.block_common_positive' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.TemperatureScale012.block_common_temperature' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FT1536.S05.TemperatureScale012.block_mass_all_temperatures' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "stderr": "",
+      "module": "TemperatureScale012",
+      "kernel_theorems": 6
+    }
+  ],
+  "fresh_dependency_runs": [
+    {
+      "receipt_pin": {
+        "path": ".build/schur_012/runs/dependency_Run2_A2Theta/receipt.json",
+        "sha256": "2e75d43b547f9ebbf9d3e29c437bdcbc35d04e2ec82bed325daed3a0bb7a11b5"
+      },
+      "receipt": {
+        "module": "Run2.A2Theta",
+        "extra_dependencies": [],
+        "command": [
+          "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+          "--root=/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_A2Theta/source",
+          "-j1",
+          "-s8192",
+          "-DElab.async=false",
+          "-M4096",
+          "-o",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/A2Theta.olean",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_A2Theta/source/Run2/A2Theta.lean"
+        ],
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 2.6207789630061598,
+        "source_sha256": "d9c478744929a0a5aa528ac90a15a37edee07305d7b6812bdf4bf1558e696387",
+        "snapshot_sha256": "d9c478744929a0a5aa528ac90a15a37edee07305d7b6812bdf4bf1558e696387",
+        "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/A2Theta.olean",
+        "artifact_sha256": "2ad6ce4ff2d522f23ee9511c21dc11a25ec6dc76426ad07253e7e568de6a4426",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "warning_count": 0,
+        "error_count": 0,
+        "runner_sha256": "4c1c9a989a01ca4a636b09b7781bf58558e23d9a988a2c0e5f5ce1c446cd77ca",
+        "dependency_pins_sha256": "6ac079a4b5de957027376f0b15ae7035a7306e681b60ec5ae7edb5c913bf5476",
+        "memory_GiB": 8,
+        "cpu_seconds": 110,
+        "wall_seconds": 120,
+        "cores": 1
+      },
+      "source_snapshot": {
+        "path": ".build/schur_012/runs/dependency_Run2_A2Theta/source/Run2/A2Theta.lean",
+        "sha256": "d9c478744929a0a5aa528ac90a15a37edee07305d7b6812bdf4bf1558e696387"
+      },
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "receipt_pin": {
+        "path": ".build/schur_012/runs/dependency_Run2_ShiftedGaussian/receipt.json",
+        "sha256": "fa57eb8cbc857dc2f1b699103e2f1f47f55e3693f991a802dc1a3c14c375f96a"
+      },
+      "receipt": {
+        "module": "Run2.ShiftedGaussian",
+        "extra_dependencies": [],
+        "command": [
+          "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+          "--root=/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_ShiftedGaussian/source",
+          "-j1",
+          "-s8192",
+          "-DElab.async=false",
+          "-M4096",
+          "-o",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/ShiftedGaussian.olean",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_ShiftedGaussian/source/Run2/ShiftedGaussian.lean"
+        ],
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 12.745105177004007,
+        "source_sha256": "f093353e65c09f5e55a5cc508a37156aceec7935c930c56e2b9fcaef7bc18068",
+        "snapshot_sha256": "f093353e65c09f5e55a5cc508a37156aceec7935c930c56e2b9fcaef7bc18068",
+        "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/ShiftedGaussian.olean",
+        "artifact_sha256": "bc7aa993d9b6692ff6b5af612d3ff4a7004415cf4686c73c975257bcc9b829ce",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "warning_count": 0,
+        "error_count": 0,
+        "runner_sha256": "4c1c9a989a01ca4a636b09b7781bf58558e23d9a988a2c0e5f5ce1c446cd77ca",
+        "dependency_pins_sha256": "6ac079a4b5de957027376f0b15ae7035a7306e681b60ec5ae7edb5c913bf5476",
+        "memory_GiB": 8,
+        "cpu_seconds": 110,
+        "wall_seconds": 120,
+        "cores": 1
+      },
+      "source_snapshot": {
+        "path": ".build/schur_012/runs/dependency_Run2_ShiftedGaussian/source/Run2/ShiftedGaussian.lean",
+        "sha256": "f093353e65c09f5e55a5cc508a37156aceec7935c930c56e2b9fcaef7bc18068"
+      },
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "receipt_pin": {
+        "path": ".build/schur_012/runs/dependency_Run2_T5ScalarMass/receipt.json",
+        "sha256": "960a03a0c196bb34d57041c2bb21c9ffe5a90b29938fa78ce5194935ec31fb5f"
+      },
+      "receipt": {
+        "module": "Run2.T5ScalarMass",
+        "extra_dependencies": [],
+        "command": [
+          "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+          "--root=/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_T5ScalarMass/source",
+          "-j1",
+          "-s8192",
+          "-DElab.async=false",
+          "-M4096",
+          "-o",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/T5ScalarMass.olean",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_T5ScalarMass/source/Run2/T5ScalarMass.lean"
+        ],
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 2.070609278001939,
+        "source_sha256": "6218873b5de06ae3978bf883dba30ab18f925c0e001373ef5f3d212916505e76",
+        "snapshot_sha256": "6218873b5de06ae3978bf883dba30ab18f925c0e001373ef5f3d212916505e76",
+        "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/T5ScalarMass.olean",
+        "artifact_sha256": "eaa4e11e4e0eea7894c3a4a3c27e0305ea58159c0acf90342e8992a4afde2d6b",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "warning_count": 0,
+        "error_count": 0,
+        "runner_sha256": "4c1c9a989a01ca4a636b09b7781bf58558e23d9a988a2c0e5f5ce1c446cd77ca",
+        "dependency_pins_sha256": "6ac079a4b5de957027376f0b15ae7035a7306e681b60ec5ae7edb5c913bf5476",
+        "memory_GiB": 8,
+        "cpu_seconds": 110,
+        "wall_seconds": 120,
+        "cores": 1
+      },
+      "source_snapshot": {
+        "path": ".build/schur_012/runs/dependency_Run2_T5ScalarMass/source/Run2/T5ScalarMass.lean",
+        "sha256": "6218873b5de06ae3978bf883dba30ab18f925c0e001373ef5f3d212916505e76"
+      },
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "receipt_pin": {
+        "path": ".build/schur_012/runs/dependency_Run2_T5ThetaNumeric/receipt.json",
+        "sha256": "9bbc86b1e746b8bc93b876852b52fd3056bccaa30af3057cc137f52e31eef0ef"
+      },
+      "receipt": {
+        "module": "Run2.T5ThetaNumeric",
+        "extra_dependencies": [],
+        "command": [
+          "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+          "--root=/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_T5ThetaNumeric/source",
+          "-j1",
+          "-s8192",
+          "-DElab.async=false",
+          "-M4096",
+          "-o",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/T5ThetaNumeric.olean",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_T5ThetaNumeric/source/Run2/T5ThetaNumeric.lean"
+        ],
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 2.0698873439978343,
+        "source_sha256": "76ed845bec10b02ce3605c9148f973ae681893a3983ec79c51bfefa8bac59164",
+        "snapshot_sha256": "76ed845bec10b02ce3605c9148f973ae681893a3983ec79c51bfefa8bac59164",
+        "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/T5ThetaNumeric.olean",
+        "artifact_sha256": "5717f129bdb9d75226e31dc6c780039b3f6612892533143dd893957dbf1397b5",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "warning_count": 0,
+        "error_count": 0,
+        "runner_sha256": "4c1c9a989a01ca4a636b09b7781bf58558e23d9a988a2c0e5f5ce1c446cd77ca",
+        "dependency_pins_sha256": "6ac079a4b5de957027376f0b15ae7035a7306e681b60ec5ae7edb5c913bf5476",
+        "memory_GiB": 8,
+        "cpu_seconds": 110,
+        "wall_seconds": 120,
+        "cores": 1
+      },
+      "source_snapshot": {
+        "path": ".build/schur_012/runs/dependency_Run2_T5ThetaNumeric/source/Run2/T5ThetaNumeric.lean",
+        "sha256": "76ed845bec10b02ce3605c9148f973ae681893a3983ec79c51bfefa8bac59164"
+      },
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "receipt_pin": {
+        "path": ".build/schur_012/runs/dependency_Run2_TriangularGaussian/receipt.json",
+        "sha256": "cf976f4839dd341d8658d613c0270cf691a0e27262aa2c089df156ffa4dce3d6"
+      },
+      "receipt": {
+        "module": "Run2.TriangularGaussian",
+        "extra_dependencies": [],
+        "command": [
+          "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean",
+          "--root=/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_TriangularGaussian/source",
+          "-j1",
+          "-s8192",
+          "-DElab.async=false",
+          "-M4096",
+          "-o",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/TriangularGaussian.olean",
+          "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/runs/dependency_Run2_TriangularGaussian/source/Run2/TriangularGaussian.lean"
+        ],
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 2.3136808420022135,
+        "source_sha256": "eb40f80ca3543388ebb508f20cab3b23006e00c6426ec5b7a258b8d9da0ac5ba",
+        "snapshot_sha256": "eb40f80ca3543388ebb508f20cab3b23006e00c6426ec5b7a258b8d9da0ac5ba",
+        "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/schur_012/lib/Run2/TriangularGaussian.olean",
+        "artifact_sha256": "4d08bf6d396f790443834b380677ce95c6e3cb92048dd7223cf94d60b5ec380a",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "warning_count": 0,
+        "error_count": 0,
+        "runner_sha256": "4c1c9a989a01ca4a636b09b7781bf58558e23d9a988a2c0e5f5ce1c446cd77ca",
+        "dependency_pins_sha256": "6ac079a4b5de957027376f0b15ae7035a7306e681b60ec5ae7edb5c913bf5476",
+        "memory_GiB": 8,
+        "cpu_seconds": 110,
+        "wall_seconds": 120,
+        "cores": 1
+      },
+      "source_snapshot": {
+        "path": ".build/schur_012/runs/dependency_Run2_TriangularGaussian/source/Run2/TriangularGaussian.lean",
+        "sha256": "eb40f80ca3543388ebb508f20cab3b23006e00c6426ec5b7a258b8d9da0ac5ba"
+      },
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "execution_seconds": {
+    "final_six_modules": 10.312405036005657,
+    "five_fresh_dependencies": 21.820061604012153,
+    "all_lean_attempts": 56.50097954602825,
+    "sage": 26.341834
+  },
+  "cost_scope": "These are proof/check execution costs, not sampler runtime. Sampler007 cost receipt unchanged.",
+  "sage_manifest": {
+    "schema_version": 2,
+    "claim_id": "S05_SCHUR_012",
+    "repository": {
+      "commit": "ff5d03ee62d17eb514f94d6d63123f6e8bf4f0fd",
+      "dirty": true
+    },
+    "command": [
+      "sage",
+      "notes/SCHUR_012.sage",
+      ".build/schur_012/runs/sage_001"
+    ],
+    "environment": {
+      "software": [
+        {
+          "name": "runner-python",
+          "version": "3.13.5"
+        },
+        {
+          "name": "SageMath",
+          "version": "10.9"
+        }
+      ],
+      "hardware": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41"
+    },
+    "mathematics": {
+      "assertion_tested": "Exact Schur, scalar quadratic expansion, block pivots and reciprocal spectral diagonal controls",
+      "coefficient_domain": "QQ and exact cyclotomic fields",
+      "conventions": "SPD M^T M+I, full shifts retained; all block partitions including empty",
+      "inputs": [
+        "notes/SCHUR_012.sage"
+      ],
+      "bounds": {
+        "dimensions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "seeds": [
+          1,
+          2,
+          5
+        ],
+        "spectral_degrees": [
+          2,
+          6,
+          12
+        ]
+      },
+      "non_claims": [
+        "No source Gram binding",
+        "Finite tests do not prove universal theorem"
+      ]
+    },
+    "randomness": {
+      "used": false
+    },
+    "run": {
+      "started_at": "2026-10-10T19:20:00.787390+00:00",
+      "runtime_seconds": 26.341834,
+      "exit_status": 0,
+      "status": "completed",
+      "timeout_seconds": 90.0,
+      "max_output_bytes": 1048576,
+      "resource_limits": {
+        "memory_bytes": 4294967296,
+        "cpu_seconds": 75,
+        "max_cores": 1,
+        "max_threads": 1
+      },
+      "missing_results": [],
+      "invalid_results": []
+    },
+    "execution_artifacts": [
+      "notes/SCHUR_012.sage"
+    ],
+    "input_artifacts": [
+      {
+        "path": "notes/SCHUR_012.sage",
+        "sha256": "4d8a2ec692be366dbe235736c2840368868a51ceaf21723c14f9e01a2c0ebb1f",
+        "sha256_after": "4d8a2ec692be366dbe235736c2840368868a51ceaf21723c14f9e01a2c0ebb1f"
+      }
+    ],
+    "output_directory": ".build/schur_012/runs/sage_001",
+    "declared_results": [
+      ".build/schur_012/runs/sage_001/checks.json"
+    ],
+    "outputs": [
+      {
+        "path": ".build/schur_012/runs/sage_001/stdout.txt",
+        "sha256": "f3c39ca2a910937ecd7949c27beb4986972d96e31bdc4948df2dc5811af568e7",
+        "kind": "log"
+      },
+      {
+        "path": ".build/schur_012/runs/sage_001/stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "kind": "log"
+      },
+      {
+        "path": ".build/schur_012/runs/sage_001/checks.json",
+        "sha256": "3625db01bff5dcd30ab90b1dbc884787eefc5117d68555b4c20ee3c88504f493",
+        "kind": "result"
+      }
+    ],
+    "checks": [
+      {
+        "check": "input hashes unchanged",
+        "passed": true
+      },
+      {
+        "check": "process exited successfully within enforced limits",
+        "passed": true
+      },
+      {
+        "check": "declared result files are present and regular",
+        "passed": true
+      }
+    ],
+    "result": "Run completed; mathematical assertion requires interpretation and review.",
+    "residual_risks": [
+      "Command success does not establish the mathematical interpretation.",
+      "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+      "The thread cap uses conventional environment variables; a child program may ignore them.",
+      "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+    ]
+  },
+  "sage_manifest_pin": {
+    "path": ".build/schur_012/runs/sage_001/manifest.json",
+    "sha256": "df57ab543fc7ce5301c9d61e0500071f553e3e2f6bdea0bd539d110ff371cc29"
+  },
+  "sage_manifest_validation": "valid evidence record; mathematical interpretation requires review",
+  "latex": {
+    "source": {
+      "path": "notes/SCHUR_012.tex",
+      "sha256": "49afeb21a3b353d6492cc414caba0ddc9dce83537f73870aa591446c783fb709"
+    },
+    "compiler": "Codex built-in desktop editor",
+    "status": "success"
+  },
+  "remaining": [
+    "Concrete FT1536 coefficient Gram / Parseval / reciprocal Schur identities on the same material",
+    "Kernel source harmonic bound and complete emitted-key law instance",
+    "Whole-fiber identification with this block mass; finite box and sampler007 full law/moment/cost",
+    "Quantum hash/embedding/reprogramming/PRG/resources and composition"
+  ],
+  "all_h_certificate": false,
+  "independent_review": false
+}
