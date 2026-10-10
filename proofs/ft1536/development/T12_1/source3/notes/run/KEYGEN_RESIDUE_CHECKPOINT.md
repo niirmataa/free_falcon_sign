@@ -1,3 +1,135 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.07 whole-invocation midpoint
+
+**B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
+**Package: IN_PROGRESS / WORKING_NOT_FROZEN.**
+2026-10-11,BATCH_060,MiMo V2.6 Pro (`xiaomi-token-plan-ams`).
+**CLOSED_AT_RECOVERABLE_MIDPOINT.** Exactly one close this window.
+B1.05/032, B1.06/046 and the 059 statement-machine extraction unchanged;
+B1.08/B4/B5 NOT entered.
+Handoff:**40R**. Exact types/pins/traps:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_060_NOTES.md`.
+
+## 40. Closed — the whole-invocation statement-machine execution to the encoder call sites
+
+1. The encoding-tail statement machine of the whole invocation is closed
+   (`Source3.KeygenMakeInvocation`): the 18 statements of
+   `KeygenMakeProgram.encoding` execute in source order on the caller
+   state (`tail_source` is ONE kernel list equality; `Head` executes each
+   statement form — typed assignments, the two header byte stores, the
+   `ske` pointer-array stores, the four-segment loop, the public dispatch,
+   the two length stores and `return 1`; `Encoding` sequences them with
+   the non-normal exit edges). The execution reaches the ACTUAL encoder
+   call sites: `SmallSite`/`PublicSite` record the evaluated argument
+   cells of `falcon_encode_small`/`falcon_encode_18433`/
+   `falcon_encode_12289` (skbuf/klen/skoff/comp/ter/logn, the `ske[i]`
+   pointer read, the `h` cell) with their OPEN codec effect (return value
+   + resulting heap); `small_site_material` ties the segment source
+   argument to the material array through the write-then-read pointer
+   uniqueness (`read_unique`/`canonical_word_eq`) under the legal virtual
+   map. The codec bodies themselves are B1.08/09 and appear nowhere as
+   premises.
+2. The output-capacity events are exposed as named return-0 edges: the
+   private `klen<1` pre-check twice, the segment `elen==0` and the public
+   `klen==0`; `tail_exit`/`encoding_exit` characterize EVERY tail
+   execution as ending in `return 1` or one of those four edges.
+3. The complete teardown closes EVERY return edge: `Invocation` composes
+   the external argument binding, the readiness prefix, the capped
+   attempt loop (the accepted break consumed by the loop statement, or
+   the attempt-cap edge) and the 18-statement tail with
+   `KeygenMakeLifetime.close` (outer scope restore + disposal of the six
+   automatic blocks); `invocation_flow` and `invocation_teardown` export
+   the return characterization and the block disposal on every edge.
+4. The same-invocation certificate tie (the call-ID residue): 
+   `invocation_gate` extracts the accepted mandatory leaf-certificate
+   gate of the final attempt (the profile-false skip is impossible under
+   the gate profile) and `invocation_certificate`/`CertPackage`
+   instantiate the complete certificate package — concrete pinned
+   globals, prefix/reverse source snapshots, bad-flag lifetime and the
+   shared call material — at THAT gate call of THIS invocation.
+5. Entry pins 015–059 **11950 pins/342 interface bindings** verified
+   with the sealed 059 pair (`dc9210e9…`/`36e8c469…`) into
+   `.build/levels_060/ENTRY_PINS_060.json` (`10df0c1d…`) BEFORE edits.
+   One proof+audit 0/0: **122 entries=58 new+64 inherited; 87 full terms
+   + 35 kernel inductives; standard axioms/zero elisions**. Native Sage
+   scripted PUBLIC controls: 5 families×4 mutations, all detected
+   (EXPLICIT MOCK SEMANTICS; the transcription reads the reference C
+   encoding-tail region; no real KeyGen/solver/certificate/codec, no law
+   claim). Retained: five rejected elaboration snapshots (Prop-structure
+   projection limits + the missing assignment operator + the `public`/
+   `prefix` keyword clashes; the unspaced `≤i` token parse; the
+   segment-frame lemmas and the encoding-exit refutation direction; the
+   `case` alternative slot counts; the `AttemptExec` pattern arities
+   fixed by `induction … with`), one PRESTEP guard rejection (the
+   parallel S05 lane's active Lean process at preflight — environment
+   race, no source bytes, label burned) and one rejected Sage run (two
+   control-logic defects found by the run itself). Own commits
+   `18a3ffe3` (proof), `090ecb24` (tools) + closing pair; foreign S05
+   commits and working tree preserved. Sealed pair
+   `645f3111…`/`d4a5a41a…`.
+
+### 40.1 Exact exports and remaining B1.07 obligations
+
+The discharge chain now reaches: one accepted `AttemptExec` derivation →
+six-gate spine → allocation-derived entry facts → public material →
+accepted solver call with the h frame → certificate frame (gate 6) →
+encoding-tail input boundary (059) → **the 18-statement tail executed to
+the actual encoder call sites with the four output-capacity events and
+the complete teardown (this window)**. The witness reaches the encoder
+call boundaries with the argument cells bound; the codec bodies remain
+the tail. What remains honest and named: (a) the loop-trace chronology
+composition of the per-retry transport (item (b) of 39.1), still at gate
+level — the `TailCells` tail-entry facts are the named explicit input
+class of this step and their derivation across rejected attempts belongs
+to that item; (b) the codec bodies and their write frames (B1.08/09: the
+exact encoded lengths, the persistence of the stored length words
+`*privkey_len`/`*pubkey_len` and of the source arrays through later
+encoder calls, and the bytewise round-trips); (c) the residue of the
+plan phrase "globals/common call ID/snapshots": the globals, snapshots,
+bad-flag lifetime and shared call material are INSTANTIATED and tied to
+the same invocation (the derivation reading of "identyfikator tej samej
+inwokacji" in the PLAN `FullCertificateWitness`); if the phrase intends
+an EXPLICIT identifier value beyond the shared derivation — a call-ID
+field identifying the certificate's internal prefix/Gate00/suffix
+snapshots as one body execution independent of the derivation — that
+composition is PINNED as OPEN here with its intended shape, and no such
+field is derived or assumed. These are missing source composition
+proofs, NOT C/numerical counterexamples. Acceptance NOT met; Codecs
+B1.08/09 and B4/B5 laws stay outside.
+
+## 40R. Handoff — continue B1.07 AFTER the invocation midpoint,NOT from acceptance
+
+1. This window is CLOSED at exactly one recoverable midpoint,NOT
+   Acceptance. Do not auto-restart or enter B1.08/B4/B5. Preserve
+   BATCH_015–060 and all earlier/failed bytes (including the five
+   rejected elaborations, the PRESTEP guard rejection and the rejected
+   Sage run). Next owner-started window continues in 40.1 order (the
+   loop-trace chronology with the `TailCells` derivation first, per plan
+   order).
+2. BEFORE edits/jobs:
+   ```sh
+   mkdir -p .build/levels_061
+   python3 -B tools/keygen_make_invocation_batch.py verify <BATCH_060.json sha> <BATCH_060_NOTES.md sha> .build/levels_061/ENTRY_PINS_061.json
+   ```
+   with the sealed 060 pair (`645f3111…`/`d4a5a41a…`). Expect the pinned
+   BATCH_015–059 set and no supersession/job. Mismatch is stop-and-report,
+   not silent repair. Note the global `job.active()` probe can trip on the
+   parallel lane's runs: a guard rejection with no source bytes is an
+   environment race (new label, re-run), not a pin mismatch.
+3. Use NEW modules;preserve 060 sources/products. The statement machine
+   now lives in `KeygenMakeInvocation` (`tail_source`/`Head`/`Encoding`/
+   `Segments`/`Invocation`); the call-site records `SmallSite`/`PublicSite`
+   are open at the codec boundary — never insert codec outcomes, exact
+   encoded lengths or codec write frames as premises. Inspect actual types
+   before composing; beware Prop-structure projections (Type-valued for
+   data fields), the unspaced `≤i` token adjacency (space comparison
+   operators), `case` versus `induction` binder naming (index-determined
+   constructor arguments drop from `case` slots), and the linter traps
+   listed in the 060 notes.
+4. One owner-started stage/window, one Acceptance or expanded midpoint,
+   bounded serial guarded jobs, unchanged limits/0/0 logs/native Sage.
+   Small local exact-path commits;push only on explicit owner signal;no
+   automatic review/delegation/relay/migration/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.07 statement-machine midpoint
 
 **B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
