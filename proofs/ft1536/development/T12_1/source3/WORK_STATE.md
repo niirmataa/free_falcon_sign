@@ -22,6 +22,23 @@ unchanged. This logical source commit is not the window's closing midpoint.
 RNG readiness, contiguous prologue/cap and chronological gate/certificate/
 material assembly remain in plan order. No push/review/delegation/relay/
 migration/import; foreign work/staging preserved.
+KeygenReadyFast/MakePrologue/MakeSampling accepted guarded0/0: chronological
+declarations include the intervening scalar/skbuf declarations and ALL six
+fresh checks. Their allocation-only projection is PROVED. The complete active
+7805–7838 token stream is bound; actual counter assignment and member/MKN
+reads derive count0/logn10/ter1/n1536. The already seeded+flipped rng_ready
+path derives return1/unchanged state from both signed loads/false guards.
+This is NOT the full readiness theorem: source seed acquisition/injection/
+flip paths remain open. Actual cap precedes setup and both sampler calls;
+reachable local count<=3000000 gives a nonwrapping increment and abort at
+3000001 BEFORE setup. The first prefix reaches count1 and derives the SAME
+two sampled Bound1 vectors, without repeating dimension execution. Whole-loop
+reachability, attempt chronology/six gates/certificate/encoding-input binding
+remain OPEN. Failed attempts and one receipt-less harness interruption are
+retained; its recovery observation found no remaining job. Definitional
+state expansion was split into bounded heap equalities, not a raised limit.
+This second logical source commit is not the closing midpoint. Audit/finite
+controls and one sealed recoverable close follow; no B1.08/B4/B5 work starts.
 
 ## B1.06 — CLOSED at SAME-material public/inverse equations Acceptance — 2026-10-10
 
