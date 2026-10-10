@@ -32,6 +32,18 @@ headline premise is added. Two additional failed attempts are retained
 (scalar shift constructor; redundant Declared unfolding in raw existential
 goals). Block-polynomial reconstruction is next, before first-root/normalization.
 This second source commit is NOT the single window midpoint.
+InverseTriplePolynomial/ReversePolynomial/ReverseReconstruction accepted0/0:
+each inverse triple reconstructs THREE times its original physical input,
+each reverse merge doubles the corresponding child-block evaluation, and
+all eight stages reconstruct the ORIGINAL1536 physical evaluations with
+factor768. Source-index root ancestry, inverse twiddles and every recursive
+row image are proved in q18433; no forward/inverse oracle, output image or
+round-trip premise. First-root and normalization still wait in plan order.
+Retain two rejected algebra directories (noncomputable inverse cannot be
+kernel-decided; explicit cube/fourth-power and polynomial C-add laws needed).
+The one recoverable midpoint will be at this fully reconstructed reverse
+seam, after internal audit, finite source controls and sealing. This commit
+is not that midpoint; no first-root, normalization or equation claim yet.
 
 ## B1.06 — CLOSED at SAME quotients through all actual inverse triples — 2026-10-10
 
