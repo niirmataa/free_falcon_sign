@@ -26,6 +26,15 @@ Run. All512 inverse triples consume its derived ORIGINAL g/f quotient cells;
 the full remaining source execution and both table disposals, observed flow
 and caller t disposal are retained. No output image or inverse correctness
 is assumed. Audit and targeted Sage/C controls precede the single midpoint.
+Audit001 accepted0/0:754 entries=96 new+658 inherited,697 complete terms/57
+inductives,standard axioms/zero elisions;669 literal inputs. Sage002 accepted
+0/0:12 new normal/UBSan runs,ten public synthetic arrays (including seven
+inherited public g/f quotients),5120 triples/15360 cells per baseline mode;
+all five targeted mutations per mode detected. Final inverse output is NOT
+checked/promoted. The inherited039 approved live-header difference is
+rehashed,not a complete M0 build. All nine directories/13 steps remain,
+three failed directories/three rejected steps;max recorded RSS6057064KiB,
+limits unchanged. Seal the one recoverable post-triple midpoint next.
 
 ## B1.06 — CLOSED at successful tests/division and actual inverse entry — 2026-10-09
 
