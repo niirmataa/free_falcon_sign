@@ -573,6 +573,65 @@ the actual finite live memory blocks, re-validate ALL dependent proofs
 re-pin. The QROM worker pinned the exact pin+obstacle in S05 and did
 not touch mainline sources (correct cross-lane etiquette).
 
+## 2026-10-11: PREMISE AUDIT (premise-audit-001) - 4 confirmed obstructions, DO-NOT-CONSUME list
+
+REPORT_ONLY / CONFIRMED_VACUITY / OPEN_SUSPECTS. Frozen scope
+ef354c48: 761 Source3 + 148 run2 Lean files. PREMISE_MATRIX: 1011
+SUSPECT (open obligations, NOT bugs), 9 TRIVIAL, 2 IMPOSSIBLE, 9 OK,
+1 VACUOUS. `all_impossible_premises_found=false` - completeness NOT
+claimed. W in work/FT1536_PREMISE_AUDIT_20261011_001.
+
+**F01** (independent re-derivation of the cross-lane find): global
+VirtualLegal impossible (Nat->Fin(2^64) injection). PLUS new stronger
+diagnosis: `invocation_only_failure` - EVERY Invocation object returns
+0 in this snapshot; `no_successful_invocation` kills source+success of
+invocation_gate/invocation_certificate. `capped` branch NOT excluded -
+do not call Invocation empty.
+
+**F02**: `dimensions : (s:State) -> Dimensions s` impossible
+(empty-locals state -> none = some). LOCAL Dimensions fine (witness
+exists). Error is the all-states quantifier.
+
+**F03 (NEW, survives F01/F02 fixes!)**: global LegalWorkspace
+(`(s:State) -> LegalWorkspace s ctx`) EXCLUDES every real CertBind:
+`(forall s, LegalWorkspace s ctx) <-> (forall s args, not CertBind)`;
+`attempt_spine_premises_impossible` derives False from the ACTUAL
+attempt_spine export premises. Scope precision: argument-set conflict,
+not whole-family IMPOSSIBLE; local uses (accepted_certificate,
+spine_witness, attempt_witness, cert_package_of_call) not covered.
+
+**F04 (HEAVIEST - interface redesign)**: UniformChallengeAt is
+IMPOSSIBLE for the finite fair-bit Sampler (uniform-preserving map
+2^bits -> 18433^1536 needs 18433 | 2^bits; kernel-rejected). NO current
+Sampler realizes it. **DO-NOT-CONSUME (12 exports)**: 4x
+HacGlue.localJointCertificate_of_* (huc), ONoneGeometry.
+localJointCertificate_of_attemptFactor, 5 Assembly variants, 2 AdvPrg
+final variants (huc). The old B4_SYNTHESIS claim "UniformChallengeAt
+delivered" is NOT consumable for this Sampler type. Abstract ROM NOT
+refuted; its exact realization via finite fair bits is. The corrected
+AssemblyComp.advMT_ge_of_public_sim_stream_win is NOT covered (no huc).
+
+F05: TowerWhole + positive global floor conditional conflict (don't
+bridge positive FPR scalar to lower bound of all weights). F06:
+ChaCha20PRFBound small-delta impossible on long tape (statistical vs
+computational distinction stands). TRIVIAL findings documented
+(CompPRGBound empty-class gate behaves correctly etc.).
+
+Proposed repairs (NOT applied by audit): F01 finite live-block legality
++ witness (the in-tree fix needs own pin + 40.1 acceptance); F02/F03
+invariants moved to concrete rawState along the same real derivation,
+global forall replaced by reachable-states theorem with explicit
+producer; **F04 = MODEL DECISION (owner): (A) ROM challenge sampled
+outside the sampler tape [matches reality: c=H(r||m) from the hash,
+not from signing randomness - RECOMMENDED], (B) unbounded tape +
+termination accounting, (C) approximate uniformity with non-zero
+first-layer error; rewrite types + all 12 consumers either way - do
+NOT replace the proof with an A2 label.**
+
+Also preserved: 3 historically inconsistent import hashes in cache
+(excluded, documented, untouched), full failed-attempt history, fresh
+replay of all probe modules. Audit found what clean builds hide.
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
