@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Own020 machine builds; pinned019 legacy dependencies, fresh attempts only."""
 from pathlib import Path
-import hashlib,json,shutil,sys,types,resource
-S=Path(__file__).resolve().parent.parent;ROOT=S/'.build/pair_machine_020';world=sys.argv.pop(1);assert world in ('legacy','legacy_v2');B=ROOT/world;LIB=B/'lib'
+import hashlib,json,shutil,sys,types,resource,re
+S=Path(__file__).resolve().parent.parent;ROOT=S/'.build/pair_machine_020';world=sys.argv.pop(1);assert re.fullmatch(r'[a-z][a-z0-9_]*',world);B=ROOT/world;LIB=B/'lib'
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 P=S/'notes/BUILD_KEY_SUPPORT_011.py'
 expected=dict(x.split('  ',1)[::-1] for x in (S/'notes/KEY_SUPPORT_011_OUTPUTS.sha256').read_text().splitlines())['notes/BUILD_KEY_SUPPORT_011.py'];assert sha(P)==expected
