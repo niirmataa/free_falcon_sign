@@ -100,8 +100,9 @@ appears as a premise of any export.
 Retained attempts: four rejected elaboration snapshots (063_001-004) with
 sealed causes; no runner aborts; one entry-time slot wait on the foreign
 lane's Lean process (environment race, no source bytes). Accepted job:
-`keygen_make_ske_chain_063_005`. Limits unchanged (Lean j1/-M6144,
-maxHeartbeats 2000000, 0/0 streams).
+`keygen_make_ske_chain_063_005`. Own commits `d95c3d16` (proof), `2d6735bc`
+(notes) + closing pair; foreign lanes' commits and working tree preserved.
+Limits unchanged (Lean j1/-M6144, maxHeartbeats 2000000, 0/0 streams).
 
 ## 4. Open obligations (honest, named, plan order)
 
