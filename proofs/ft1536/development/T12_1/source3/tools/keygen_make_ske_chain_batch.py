@@ -48,8 +48,15 @@ def checked_inputs():
     for p,expected in entry['checked'].items(): check(p,expected)
     check(ORIGINAL+'.json',ORIGINAL_SHA);check(ORIGINAL+'_NOTES.md',ORIGINAL_NOTES_SHA)
     original=read(ORIGINAL+'.json')
+    historical=subprocess.check_output(['git','show','2d6735bc:'+str((job.ROOT/'notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_063_NOTES.md').relative_to(job.REPO))],cwd=job.REPO)
+    import hashlib
+    assert hashlib.sha256(historical).hexdigest()==original['notes']['sha256']=='2c06bc865cc145f62334ce0f06c219b488ffebc66957f19b00a1576cea38b3a2'
+    assert len(historical)==original['notes']['bytes']==8212
+    at_annotation=subprocess.check_output(['git','show','835dfc6b:'+str((job.ROOT/'notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_063_NOTES.md').relative_to(job.REPO))],cwd=job.REPO)
+    assert hashlib.sha256(at_annotation).hexdigest()==ORIGINAL_NOTES_SHA
+    original_for_walk={**original,'notes':pin(ORIGINAL+'_NOTES.md')}
     assert original['batch']=='BATCH_063' and original['active_jobs_at_close']==[]
-    walk(original);check(ORIGINAL+'.json',job.sha(path(ORIGINAL+'.json')))
+    walk(original_for_walk);check(ORIGINAL+'.json',job.sha(path(ORIGINAL+'.json')))
     return entry,original,checked,check,walk
 
 def predecessor(target):
@@ -127,6 +134,7 @@ def seal():
         'proof_head':head,'created_utc':datetime.now(timezone.utc).isoformat(),
         'harness':'Codex; runner historical identity labels retained as provenance',
         'original_pair':[pin(ORIGINAL+'.json'),pin(ORIGINAL+'_NOTES.md')],
+        'owner_authorized_notes_supersession':{'old_sha256':original['notes']['sha256'],'new_sha256':ORIGINAL_NOTES_SHA,'old_bytes':8212,'new_bytes':8330,'historical_git_commit':'2d6735bc2e7e2f52d44c7a4bfd2268b0682b7b3e','annotation_git_commit':'835dfc6bd7bbb7b5f43006a65ea3973d94030d39','owner_authorization':'Zatwierdzam korektę w suplemencie i kontynuację','scope':'Only the original JSON.notes path pin; both original files preserved; strict checks elsewhere'},
         'notes':pin(BASE+'_NOTES.md'),'entry_pins_receipt':pin(ENTRY),'preseal':pin(PRESEAL),
         'generator_check':pin(GENERATOR),'recorded_supersessions':entry.get('recorded_supersessions'),
         'accepted_module_checks':modules,
