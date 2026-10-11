@@ -1,0 +1,144 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm]{geometry}
+\usepackage{fontspec}\setmainfont{Latin Modern Roman}
+\setmonofont{Latin Modern Mono}[Scale=0.85]
+\usepackage{amsmath,amssymb,amsthm,booktabs,longtable,xurl,hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{3em}
+\newcommand{\code}[1]{\nolinkurl{#1}}
+\newtheorem{theorem}{Twierdzenie}
+\title{Conditional sampler equivalence and event bounds\\\large S05 / EXECUTION018: checkpoint częściowy}
+\author{Notatka robocza dla Niirmata}\date{11 października 2026}
+\begin{document}\maketitle
+\textbf{PARTIAL PROOF / WARUNKOWY / NOT REVIEWED.}
+Pakiet018 pozostaje otwarty. Dowiedziono dokładnej zgodności zoptymalizowanego
+samplera, przeniesienia pełnego momentu, ograniczeń liczników zdarzeń i
+wybranych szerokości. Nie dowiedziono jeszcze pełnego kosztu maszyny ani
+bezpieczeństwa FT1536 w QROM. Liczniki nie są czasem wykonania.
+
+\section{Przestrzenie i niezmieniona przesłanka}
+Niech $R_q=(\mathbb Z/18433\mathbb Z)[X]/(X^{1536}-X^{768}+1)$,
+$d=1179648$, $B=2093922385$ i $h\in R_q$. Dla pary wektorów całkowitych
+$z=(v,w)$, każdy z768 parami współczynników, niech
+\[
+ Q_0(v)=\sum_{i<768}(v_i^2+v_iv_{i+768}+v_{i+768}^2),\qquad
+ Q(z)=Q_0(v)+Q_0(w),\qquad A_hz=v+hw\pmod {18433}.
+\]
+Uczciwe pełne prawo $P_h$ wybiera jednostajny $c\in R_q$. Z rozkładu
+Gaussa o masach proporcjonalnych do $e^{-Q(z)/d}$ na
+$[-65535,65535]^{3072}\cap\{A_hz=c\}$ wykonuje najwyżej16 niezależnych
+prób; wybiera pierwszą z $Q(z)<B$. Wyczerpanie capu lub drugi wektor poza
+signed16 daje $\bot$. Wynik to $(c,o)$, także gdy $o=\bot$.
+
+Warunek(M) mówi, że istnieje jedno $K>0$, wspólne dla wszystkich $c$ i
+$t\in\{1,1811939328/2093922385,9/16\}$, takie że
+\[
+ (1-2^{-34})Kt^{-1536}\le
+ \sum_{z\in\mathbb Z^{3072}:A_hz=c}e^{-tQ(z)/d}
+ \le(1+2^{-34})Kt^{-1536}.
+\]
+Nie dodano temperatur ani założenia jednostajnego marginalnego challenge
+publicznego symulatora. Źródłowe pokrycie(M) dla całego prawa KeyGen
+pozostaje otwarte.
+
+\section{Dokładna optymalizacja}
+Sampler używa tych samych publicznych tablic całkowitych co016/017:
+30721 wartości CDF oraz61441 progów. Każde słowo384-bitowe jest redukowane
+modulo końcowy CDF. Pierwszy próg ściśle większy od reszty jest znajdowany
+binarnie, w najwyżej15 krokach. Osobno odczytuje się końcowy CDF.
+Dwa współczynniki oraz niezależne słowo256-bitowe tworzą próbę pary.
+Po80 odrzuceniach para wynosi zero. Wektor składa się z1536 par;
+po196 nieudanych prób normy następuje świeży fallback w
+$[-512,511]^{3072}$. Stan, wiadomość i nonce nie wpływają na losowanie.
+
+Pary są przechowywane w wektorach. Syndrom oblicza się przez przejście
+przez wszystkie1536$^2$ par współczynników, aktualizując najwyżej dwa
+współczynniki akumulatora na parę, według redukcji modulo
+$X^{1536}-X^{768}+1$. Gotowy challenge i odpowiedź także są przechowywane.
+Taśma pozostaje dokładnie tą samą taśmą24662538240 uczciwych bitów co016.
+
+\begin{theorem}[Kernelowy zakres checkpointu]
+Dla każdego $h$, stanu, wiadomości, nonce i każdej taśmy nowy sampler018
+zwraca dokładnie ten sam wynik co sampler016. Jego prawo $J_h$ spełnia
+$J_h\ll P_h$ dla każdego $h$. Jeżeli(M) zachodzi dla $h$, to
+\[
+ \sum_{a:P_h(a)>0}\frac{J_h(a)^2}{P_h(a)}\le 1+2^{-47}.
+\]
+Wynik obejmuje publiczny initial oraz to samo pokryte prawo kluczy:
+jeżeli $\mu$ ma nośnik w dziedzinie, na której(M) zachodzi, analogiczne
+AC i ograniczenie momentu obowiązują dla wspólnych praw $(h,a)$.
+\end{theorem}
+Dowód: inwariant rozcięcia CDF identyfikuje ten sam pierwszy indeks;
+zgodność przenosi się przez capy i przechowanie wektorów. Lemat o odczycie
+po foldzie aktualizacji daje dokładnie współczynniki referencyjnego
+mnożenia. Stąd równość całego samplera i transport certyfikatu017.
+Nie wykonano ponownego przybliżenia statystycznego. Wszystkie modelowane
+porażki pozostają w $P_h$; $J_h(c,\bot)=0$ nie warunkuje $P_h$ na sukcesie.
+
+\section{Co policzono, a czego jeszcze nie}
+Dla dowolnych nieujemnych całkowitych wag zdarzeń ślad ma koszt ważony
+najwyżej równy iloczynowi skalarnemu wag z poniższą tabelą. Dowód respektuje
+wczesny sukces, wyczerpanie capu i świeży fallback. Poszczególne maxima
+nie muszą być jednocześnie osiągalne; to bezpieczna granica górna.
+\begin{center}\begin{tabular}{lr}\toprule
+Zdarzenie & Granica\\\midrule
+Odczyt prywatnego bitu &24662538240\\
+Odczyt CDF, włącznie z terminalnym &770703360\\
+Próba pary &24084480\\
+Krok capu, oba poziomy &24084676\\
+Pusty pozostały cap &301057\\
+Przechowanie pary &302592\\
+Blok normy &301056\\
+Współczynnik świeżego cube &3072\\
+Para współczynników iloczynu &2359296\\
+Aktualizacja scatter &4718592\\
+Skalar wyjścia &3072\\\bottomrule
+\end{tabular}\end{center}
+\textbf{To ślad wybranych zdarzeń, nie kompletny koszt instrukcji.}
+Nie wolno wstawić wag1 i nazwać wyniku liczbą operacji CPU. Pozostają:
+kalibracja arytmetyki, odczytów i adresowania do jawnej maszyny, generacja
+oraz ładowanie tablic, reprezentacja taśmy, kontrola przepływu, zarządzanie
+pamięcią i koszt wyjścia w konkretnym backendzie. Funkcja licząca ślad
+jest instrumentacją specyfikacji; jej własny czas wykonania również nie
+mierzy samplera. Nie wykazano jeszcze refinamentu pełnego śladu instrukcji.
+
+Kernel osobno daje CDF$<2^{268}$, progi$<2^{257}$, adresy bitów$<2^{35}$,
+a dla całego boxu, w tym odrzuconych propozycji, $0\le Q<2^{45}$.
+Iloczyn dwóch kanonicznych reszt pola przed redukcją jest$<2^{29}$,
+a suma$<2^{16}$. Środkowy próg ma dokładnie wartość$2^{256}$;
+nie wolno przechowywać go jako zwykłe256-bitowe słowo. Pełna materializacja
+prywatnej taśmy wymaga3082817280 bajtów. Mała pamięć strumieniowa wymaga
+osobnego dowodu, nie wynika z opuszczania nieodczytanych prób.
+
+\section{F04 i mapa otwartych obowiązków}
+Przyjęty przez właściciela wariant A: challenge rzeczywistego Sign
+pochodzi z ROM, $c=H(r\Vert m)$, poza prywatną taśmą samplera podpisu.
+Publiczny symulator018 nadal emituje $(A_hz,\mathrm{some}(w))$.
+Zgodność jego pełnego prawa z nową grą w wymaganym sensie nie powstaje
+przez samo przepisanie typu. Powiązanie $P_h$ z naprawionym modelem i
+rzeczywistym Sign/PRG pozostaje obowiązkiem. Nie używamy
+\code{UniformChallengeAt} jako niemożliwego mostu z finite fair-bit tape.
+
+Klasy: definicja gry/maszyny to \textbf{model}; równości, moment, pokrycie
+kluczy i koszty to \textbf{obowiązki dowodowe}; A-QMT oraz primitive-bound
+Q-PRG to oddzielne \textbf{założenia kryptograficzne}. Naprawy ROM nie są
+przejęte przez S05. Q-HASH-LOG, Q-EMBED, Q-COLL/reprogramowanie, Q-COMPOSE
+oraz zasoby całego reduktora pozostają otwarte. Użycie
+$D=(1+e)^{q_s}-1$ w świecie kwantowym nadal wymaga jawnych przesłanek
+odpowiedniego lematu kompozycji. Brak deklaracji poziomu bezpieczeństwa.
+
+\section{Indeks dowodu i sprawdzeń}
+\code{StoredInterface018}: równość samplera, AC, moment i prawo kluczy.
+\code{BinarySearch018}, \code{BinaryCDF018}, \code{CapMap018},
+\code{CachedSampler018}, \code{Scatter018}: zgodność komponentów.
+\code{Meter018}, \code{SamplerTrace018}, \code{TraceBudget018}:
+ślad i jego dokładny budżet. \code{WordBounds018}: szerokości.
+Łącznie73 jawnie drukowane eksporty w10 modułach, w tym5 kontroli
+brzegowych; kontrola autora nie jest niezależnym odbiorem.
+\code{AuditExecution018} drukuje typy i aksjomaty.
+\code{DependencyAuditExecution018} sprawdza tylko brak14 wskazanych
+konsumentów F03/F04 w closure trzech eksportów:151019 stałych, brak
+nieznanych definicji. To metadane kompilatora, nie pełny audyt poprawności.
+Źródła, receipty, próby nieudane i dokładne granice są wskazane w
+\code{EXECUTION_018_CHECKPOINT.md} i \code{EXECUTION_018_CHECKS.json}.
+\end{document}

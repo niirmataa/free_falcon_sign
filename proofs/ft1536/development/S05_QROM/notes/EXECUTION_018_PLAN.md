@@ -13,7 +13,7 @@ model operacyjny; koszt kompilacji dowodu i liczba logicznych miejsc prób
 nie zastępują kosztu samplera. Zgodność z konkretnym C/kompilatorem/PRG
 wymaga dalszego mostu źródłowego i nie powstaje przez nazwanie modelu RAM.
 
-Trasy:
+Trasy optymalizacji samplera (ich litery są niezależne od wariantu A naprawy F04):
 
 - A — WYBRANA: binarny pierwszy próg CDF, jawne przechowanie par/wektorów,
   krótkie pętle z capami i pełne złożenie kosztu. Dyskryminator: dla każdej
@@ -57,3 +57,10 @@ oddzielnymi założeniami kryptograficznymi i właściwymi mostami.
 Checkpoint rdzenia: EXECUTION_018_CORE_CHECKPOINT.md.39 eksportów/6 modułów.
 Dalsza praca nad śladem i szerokościami nie jest jeszcze pełnym kosztem.
 F04: decyzja wariant A i granica S05 zapisane w ROM_VARIANT_A_018.md.
+
+Checkpoint uzupełniający: EXECUTION_018_CHECKPOINT.md.73 eksporty/10 modułów,
+Sage10.9 exact003, czysty audyt typów i aksjomatów, native TeX success.
+Zadanie rachunku zdarzeń i wybranych szerokości jest wykonane. Zadanie
+pełnego kosztu operacyjnego/pamięci pozostaje OPEN; cały018 IN_PROGRESS.
+Nie zmniejszamy celu do ledgeru. Kontynuacje maszyny/taśmy/tablic i source
+bindingu są jawnie wskazane w mapie murów checkpointu.

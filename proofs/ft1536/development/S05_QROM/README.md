@@ -3,7 +3,20 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
-**Najnowszy pakiet — [LOCAL_LEAVES017](notes/LOCAL_LEAVES_017_CHECKPOINT.md):**
+**Aktualny pakiet — [EXECUTION018](notes/EXECUTION_018_CHECKPOINT.md), IN_PROGRESS:**
+73 nowe eksporty kernelowe obejmują dokładną równość zoptymalizowanego
+samplera na każdej taśmie, przeniesienie pełnego J/P z017, granice śladu
+zdarzeń i wybrane szerokości. Binary CDF, zapisane wektory/wyjście i scatter
+zachowują capy i świeży fallback. **Pełny koszt maszyny oraz pamięci nadal
+OPEN** — liczniki zdarzeń go nie zastępują. Pod(M) pozostaje e=2^-47;
+źródłowe pokrycie kluczy, Sign/PRG i QROM nadal OPEN.
+[Pełne zdanie](notes/EXECUTION_018.tex), [aktywny plan](notes/EXECUTION_018_PLAN.md).
+F04: [wariant A](notes/ROM_VARIANT_A_018.md) został wybrany przez właściciela;
+challenge rzeczywistego Sign pochodzi z ROM poza jego prywatną taśmą.
+Nowe typy/świadki ROM trzeba sprawdzić przed konsumpcją. Ta decyzja nie
+ustanawia jeszcze powiązania gry z publicznym symulatorem S05.
+
+**Poprzedni pakiet — [LOCAL_LEAVES017](notes/LOCAL_LEAVES_017_CHECKPOINT.md):**
 Wszystkie cztery lokalne pola 016 mają kernelowe instancje dla rzeczywistych
 tablic i kodu. Sprawdzono 61 441 wierszy; dokładne CDF/modulo i prawo pary
 nie są założeniami. `ActualInterface017` daje pełne **J≪P i moment≤1+2^-47
@@ -75,8 +88,8 @@ rzeczywisty `EmissionView` i źródłowe pokrycie prawa kluczy nadal wymagają i
 pozostaje niezmieniony. [Dokładny zakres](notes/KEY_SUPPORT_011.tex).
 
 Decyzja właściciela: **kernel przed użyciem wyniku w ostatecznej tezie**.
-[Klasy warunków](notes/CERTIFICATE_CLASSES_017.json) rozdzielają obowiązki,
-założenia kryptograficzne i model; [kolejka kernela](notes/KERNEL_QUEUE_017.json)
+[Klasy warunków](notes/CERTIFICATE_CLASSES_018.json) rozdzielają obowiązki,
+założenia kryptograficzne i model; [kolejka kernela](notes/KERNEL_QUEUE_018.json)
 ma priorytety według zależności tezy, również jawne wpisy h=0 i Dyadic.
 
 **Checkpoint — [ponowne użycie ROM010](notes/ROM_REUSE_010_CHECKPOINT.md):**

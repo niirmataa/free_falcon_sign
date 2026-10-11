@@ -1,0 +1,160 @@
+{
+  "id": "S05_CLASSES_018",
+  "previous": {
+    "path": "notes/CERTIFICATE_CLASSES_017.json",
+    "sha256": "ab35be0b3cce0378e250936ff427ce6bd30a087382e410d8ed92bac1dd61525e"
+  },
+  "artifacts": [
+    {
+      "artifact": {
+        "path": "formal/BinarySearch018.lean",
+        "sha256": "2b5e1ab93a1164eaa7f178ec10debf7f6d2afa1cf84e8eba6f133a7f0084b56d"
+      },
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "audited_exports": 4,
+      "status": "KERNEL_IN_EXACT_STATED_SCOPE"
+    },
+    {
+      "artifact": {
+        "path": "formal/BinaryCDF018.lean",
+        "sha256": "f74a93a273fc9166403243495de6d7bcc818971480ea581cf0b5235bf3cfa04a"
+      },
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "audited_exports": 6,
+      "status": "KERNEL_IN_EXACT_STATED_SCOPE"
+    },
+    {
+      "artifact": {
+        "path": "formal/CapMap018.lean",
+        "sha256": "7c51c8c57df59234d7aaf347be0bed7d850f57a1d71f8f4f69a8781d7efc4cab"
+      },
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "audited_exports": 2,
+      "status": "KERNEL_IN_EXACT_STATED_SCOPE"
+    },
+    {
+      "artifact": {
+        "path": "formal/CachedSampler018.lean",
+        "sha256": "3d10ede24bfeb0b24a576acee1c8f7136ae3c1ffa5fe9726eacada4834b49773"
+      },
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "audited_exports": 8,
+      "status": "KERNEL_IN_EXACT_STATED_SCOPE"
+    },
+    {
+      "artifact": {
+        "path": "formal/Scatter018.lean",
+        "sha256": "1e041dacecc0a2d1cf89bf5d706e045a9f9d12d635a7ee520d94ee749f78ad70"
+      },
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "audited_exports": 11,
+      "status": "KERNEL_IN_EXACT_STATED_SCOPE"
+    },
+    {
+      "artifact": {
+        "path": "formal/StoredInterface018.lean",
+        "sha256": "d4457501663f2258ca3b863baee4796a7890f90613e47a4d600a663f66635ce4"
+      },
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "audited_exports": 8,
+      "status": "KERNEL_IN_EXACT_STATED_SCOPE"
+    },
+    {
+      "artifact": {
+        "path": "formal/Meter018.lean",
+        "sha256": "0d647af3722181d3f4da5dc074115ce1f6e94df3a7da781ffeaa2762cf3f7656"
+      },
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "audited_exports": 4,
+      "status": "KERNEL_IN_EXACT_STATED_SCOPE"
+    },
+    {
+      "artifact": {
+        "path": "formal/SamplerTrace018.lean",
+        "sha256": "be3844b6056cab54b1907d721eeba75471ba6197aa9a4656cc897836e01a5a23"
+      },
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "audited_exports": 11,
+      "status": "KERNEL_IN_EXACT_STATED_SCOPE"
+    },
+    {
+      "artifact": {
+        "path": "formal/WordBounds018.lean",
+        "sha256": "066b7da018e1ada05c1c41614f73a83004759737377ca4db703fddb633d49898"
+      },
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "audited_exports": 10,
+      "status": "KERNEL_IN_EXACT_STATED_SCOPE"
+    },
+    {
+      "artifact": {
+        "path": "formal/TraceBudget018.lean",
+        "sha256": "abebf5017e453ed7ed691ff1e4f42fc3dba5909653f3069889ad2e38b491ee20"
+      },
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "audited_exports": 9,
+      "status": "KERNEL_IN_EXACT_STATED_SCOPE"
+    }
+  ],
+  "model": {
+    "condition_class": "model",
+    "private_randomness": "same fixed24662538240-bit fair tape as016",
+    "game_repair": "Owner chose F04 variant A: real signing challenge from ROM outside private tape; repaired-game binding OPEN",
+    "weighted_events": "Free nonnegative weights; trace of selected calls/events, not complete machine cost"
+  },
+  "Q_RESC": {
+    "condition_class": "proof_obligation",
+    "status": "PARTIAL_EVENT_COUNTS_AND_WIDTHS",
+    "remaining": "Full instruction/address/arithmetic/storage cost semantics and refinement, table setup, tape implementation, peak memory and output backend"
+  },
+  "remaining_M": {
+    "condition_class": "proof_obligation",
+    "status": "OPEN_SOURCE_KEY_COVERAGE",
+    "formula": "unchanged exact three-temperature M"
+  },
+  "cryptographic_assumptions": {
+    "new": [],
+    "unchanged": [
+      "A-QMT",
+      "Q-PRG primitive bound"
+    ],
+    "Q_PRG_hop": "proof obligation, not discharged"
+  },
+  "full_QROM_claim": false
+}
