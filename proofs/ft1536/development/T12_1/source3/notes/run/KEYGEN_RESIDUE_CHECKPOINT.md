@@ -1,3 +1,135 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.07 / typed-codec projection and local-window midpoint
+
+**B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
+**Package: IN_PROGRESS / WORKING_NOT_FROZEN.**
+2026-10-11, Codex, BATCH_065.
+**CLOSED_AT_RECOVERABLE_MIDPOINT. Exactly one close this window.**
+B1.05/032 and B1.06/046 unchanged. B1.08 local seam advanced;
+full B1.08/09 and B4/B5 NOT reached. Handoff: **45R**.
+Exact types, retained attempts and source/model boundary:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_065_NOTES.md`.
+
+## 45. Closed — typed source execution to the same-heap projection
+
+1. **Entry BEFORE edits/jobs:** sealed064 pair plus the063 supplement
+   verified12667 pins into levels_065/ENTRY_PINS_065.json,
+   `c58e0f05cc3f77cef0373139c469740bf83f838280ed01d6c3888b9ece8ef92a`.
+   Recorded061/063 repairs preserved; no new supersession. Host process
+   inventory empty before proof jobs; job_when_available.py used serially
+   in the host namespace. Old source/binding/audit bytes unchanged.
+2. **Actual typed value/control reference interpreter:** KeygenCodecValues/
+   Execution evaluate scalar conversions, initialized int16 reads, x++,
+   pre/post updates, tests, scopes, finite loops and observed returns on
+   the SAME heaps. Calls read the actual arguments and execute only the
+   fixed bound NONE/STATIC bodies in fresh activations. Coverage kernel-
+   checks all three complete bodies, buf scopes and source sequencing;
+   default-arm Call has a concrete inhabitation witness. No outcome,
+   encoded length, supplied frame or projected execution in the rules.
+   This explicit ordered C99/GCC LP64 fragment is not compiler/OS or a
+   general ISO-C evaluation-order equivalence proof.
+3. **The missing forward bridge is proved:**
+   KeygenCodecRefinement.exec_projection/call_projection derive the fixed
+   Footprint.Exec/Run on identical before/after heaps. Out identifies the
+   actual non-NULL output argument; NULL admits no typed store. call_frame
+   then derives the foreign-BLOCK frame for every return/partial write.
+   This closes44.1(a) in the typed source-reference semantics.
+4. **Typed caller chronology -> body-bound trace:**
+   KeygenCodecTypedSegments.projection derives064's trace from concrete
+   SmallSites with actual typed body executions/observed returns.
+   chain_call_histories/chain_call_material consume063's executed stores
+   and transport the same ske input pointers through calls1–3. comp is
+   env.args.comp from compCell, not the unconstrained legacy site.comp.
+   The typed trace erases to old Segments; the inverse from old arbitrary
+   heaps is not asserted. The enclosing Invocation/Head replacement is
+   still OPEN; do not declare full B1.07 Acceptance.
+5. **B1.08 source bounds advanced honestly:** KeygenCodecProfile derives
+   q18433/logn10 at ALL four segment boundaries from actual caller cells
+   and local preservation. KeygenCodecNoneLength.rhs_eval proves ONLY the
+   bound else-assignment RHS value3072 (not final codec return/length).
+   KeygenCodecGuardedWrite.guarded_window proves the exact requested-
+   capacity WINDOW for each of the three full STATIC guard/write blocks,
+   including return0. u<capacity is derived from the evaluated guard;
+   live u:uint64/max_out_len/buf are explicit local state facts to extract
+   and transport in the remaining whole-body fold. No result/length/frame
+   premise introduced. NONE capacity/pair-loop/return remains open.
+6. **False unqualified generalization retained:** actual normal/UBSan C
+   q18433/logn0/NONE, cap3, destination8 bytes/input2 words: returns3,
+   writes offsets0–3. All accesses allocated, but byte3 outside requested
+   window. This is outside the derived KeyGen profile, not a profile bug
+   or block-frame/security counterexample. Do not erase it or claim a
+   universal capacity frame without the derived argument restriction.
+7. Final018 rebuild8 modules+audit,9 steps clean0/0. Full audit128 entries
+   =112 source+16 inherited,103 full terms+25 kernel inductives, standard
+   axioms/no elisions, byte-exact producer reproduction. Sage value controls
+   128 actual-C normal/UBSan baseline cases,6 mutations detected per mode;
+   scope counterexample019 accepted.20 jobs:7 wholly accepted,12 failed,
+   1 prestep abort;32 command steps/20 accepted, max RSS2979768KiB. All
+   causes/snapshots/raw streams retained; unchanged caps. Own source/tool
+   commits28663c9f/2d262037/1864060b/4e66c979 plus closing receipt. Foreign
+   staging/history preserved. Author self-review only, no REVIEWED/push/
+   delegation/relay/migration/archive import or production C change.
+
+Sealed065 pair:
+- JSON `04c387265046aea6222589d105e1bb12f193e3c54c9f3ba733ee09df16cf0ad0`.
+- Notes `87f5a2f5c25d198af842e18bff5c46fb1a4f9dc4b3dca3d1f83b14ed83caa756`.
+- Postseal verify **13000 pins**, levels_065/POSTSEAL.json
+  `e466ab78ab04ddd6cafd63d3e4fb30088e38b682351fc8d4d701653a6046e50a`.
+
+### 45.1 Exact proved types and the remaining seams
+
+```lean
+Call args before after ret -> Out args dst -> Footprint.Run dst before after
+```
+Here Call is independent typed execution of the complete bound dispatcher,
+not a desired frame/length predicate. ret is universally quantified and
+observed by its actual derivation. Typed Segments derives the projected
+trace and same-pointer histories; it is not derived from the old open
+Segments by pretending arbitrary after heaps are body executions.
+
+The local window type consumes a raw Exec of guarded rhs, live u:uint64,
+the actual capacity cell and buf=some(some dst), and concludes Window dst
+capacity before after. It covers all three bound STATIC blocks, but is NOT
+already the whole STATIC run frame. rhs_eval's3072 is a source temporary,
+not an assumed or proved returned encoding length.
+
+Remaining in order: (a) integrate the actual typed calls/trace at the old
+open enclosing Invocation/Head seam; (b) derive/transport live local facts
+and fold the STATIC guarded windows over complete loops/scopes; NONE actual
+q branch, even pair-loop/cursor/capacity and final return; (c) uint32 low-
+suffix accumulator, terminal ne=-2, padding, exact encoded/consumed lengths,
+source decoder round-trips and four-segment bytes/final length/material;
+(d) B1.09 complete public codec/same h/canonical15-bit packing/actual2881;
+(e) explicit common call ID/snapshots and all-state LegalWorkspace refutation
+status, then full B1.07/B1.10. B4/B5 laws/probability/availability/PRG/security
+remain outside. These are missing source proofs, except the explicit
+OUT-OF-PROFILE capacity counterexample above; no profile failure claimed.
+
+## 45R. Handoff — next owner-started window
+
+1. This window is CLOSED once at an expanded recoverable midpoint, not
+   Acceptance. Preserve015–065, both063 versions/supplement, all failed
+   snapshots/streams, own import-stop evidence and the out-of-profile
+   counterexample. No automatic restart/review/delegation/relay/migration.
+2. BEFORE any edits/jobs:
+   ```sh
+   mkdir -p .build/levels_066
+   python3 -B tools/keygen_codec_typed_batch.py verify \
+     04c387265046aea6222589d105e1bb12f193e3c54c9f3ba733ee09df16cf0ad0 \
+     87f5a2f5c25d198af842e18bff5c46fb1a4f9dc4b3dca3d1f83b14ed83caa756 \
+     .build/levels_066/ENTRY_PINS_066.json
+   ```
+   Expect13000 pins and only the recorded061/063 supersessions. A mismatch
+   is stop-and-report, not permission to repair. Host namespace process
+   guards; serial job_when_available.py, unchanged limits/native Sage.
+3. Inspect the exact exports/terms in065's accepted018 audit and resume
+   45.1 in plan order. Use NEW modules for further composition. Do not
+   assume a body trace from old arbitrary heaps, a full window from local
+   guarded blocks, or a complete encoding length from the3072 RHS. Use
+   the DERIVED q18433/logn10 profile; the generic cap counterexample stays.
+4. One window/one Acceptance or expanded midpoint, clean streams,
+   all failed attempts retained, small exact-path local commits. Push
+   requires a separate explicit owner signal. No advance to B4/B5.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.07 / source codecs and projected frame midpoint
 
 **B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**

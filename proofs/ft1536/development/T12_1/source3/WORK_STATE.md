@@ -1,3 +1,39 @@
+# BATCH_065 — CLOSED at the typed-codec/window midpoint, 2026-10-11
+
+Codex: CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.
+Exactly one close; B1.07 Acceptance NOT MET, package WORKING_NOT_FROZEN.
+Typed complete-codec value/control execution -> fixed projection on SAME
+heaps is proved. Actual typed segment traces derive projected histories
+and same ske input pointers1–3. Profile q18433/logn10 derives from caller
+cells. NONE RHS3072 and all three full STATIC guarded-block windows proved;
+whole invocation replacement/body-window fold/returned lengths/decoders/
+public codec remain OPEN. No result/length/frame correctness premise.
+
+Entry12667 pins c58e0f05…; sealed JSON04c38726…/notes87f5a2f5…;
+postseal13000 pins e466ab78…. Final0188 modules+audit9 clean steps;
+audit128=112+16,103 full terms+25 inductives, standard axioms/no elisions.
+Native Sage128 normal/UBSan actual-C value controls,6 mutants detected per
+mode. Out-of-profile q18433/logn0/NONE cap3/write4 counterexample confirmed
+normal/UBSan, retained; no KeyGen-profile bug claimed.20 jobs retained:
+7 accepted/12 failed/1 prestep abort. All causes/raw streams/snapshots kept,
+including own cold-import stop and Sage metadata/cache guard failures.
+Own local commits28663c9f/2d262037/1864060b/4e66c979 plus closing pair.
+Checkpoint45R has exact next verify command/types/order. No push/review/
+delegation/relay/migration/import. Foreign working tree/staging untouched.
+Historical runner identities remain provenance; current author Codex.
+
+# BATCH_065 — owner-started B1.07 continuation, 2026-10-11
+
+Codex owns this source3 window from c1ff755a and checkpoint44R. Entry
+verify passed12667 pins before source edits: ENTRY_PINS_065.json SHA256
+c58e0f05cc3f77cef0373139c469740bf83f838280ed01d6c3888b9ece8ef92a.
+Host process guard observed no active proof job. Target: typed execution
+of the complete pinned codecs -> fixed memory-effect projection on the
+SAME heaps, then body-derived caller histories. No result/length/frame
+premise. One final Acceptance or expanded midpoint, serial guarded jobs,
+unchanged limits; local exact-path commits. No push/review/delegation/
+relay/migration/import. Foreign working tree/staging remains untouched.
+
 # T12.1/source3 — current window, 2026-10-11
 
 ## B1.07 / B1.08–09 seam — CLOSED at the projected-codec midpoint
