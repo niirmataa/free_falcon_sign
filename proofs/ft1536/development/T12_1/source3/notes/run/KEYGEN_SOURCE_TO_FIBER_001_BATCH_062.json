@@ -1,0 +1,959 @@
+{
+  "task": "KEYGEN_SOURCE_TO_FIBER_001",
+  "batch": "BATCH_062",
+  "stage": "B1.07",
+  "window": "CLOSED_AT_RECOVERABLE_MIDPOINT",
+  "b1_07_acceptance": "NOT_MET",
+  "stage_result": "PARTIAL_PROOF",
+  "status": "IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN",
+  "created_utc": "2026-10-11T06:06:07.759566+00:00",
+  "harness": "MiMo V2.6 Pro / xiaomi-token-plan-ams",
+  "runner_labels": "Historical labels remain provenance.",
+  "proof_head": "42e0adfa3596a0af1cf5221ea6cdf9a548ef8266",
+  "notes": {
+    "path": "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_062_NOTES.md",
+    "sha256": "c42e82107d9b32b049d5c13dec57fe44dc7236d4c79fcde40147e30415bff5a7",
+    "bytes": 9879
+  },
+  "entry_pins_receipt": {
+    "path": ".build/levels_062/ENTRY_PINS_062.json",
+    "sha256": "e6f33de2b0bdf4172750eea00c9af550b88b73cdf14d629ab508b82082ad7a54",
+    "bytes": 2827915
+  },
+  "predecessor_files": 12164,
+  "superseded": {},
+  "recorded_supersessions": {
+    "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/formal/Source3/KeygenMakeInvocation.lean": {
+      "superseded_sha256": "c644d0edd5eeb23dd7893bc88e83a0d9560b8ee899d54318c65baadc1ffbf2d2",
+      "current_sha256": "bee3984b3304a3a551fca374d0d202e6f3d48f394fcaa6b47dd65bc9b828ecd2",
+      "reason": "VirtualLegal repair (2026-10-11 cross-lane catch, kernel-confirmed impossibility of the 060 all-`Nat` shape): the map legality class is restricted to the finite live-block set `Env.live`, the pointer uniqueness proofs are transferred and their consumers (small_site_material/Invocation.encoded and the dependent invocation theorems) are re-elaborated and re-audited in this batch; the 060 bytes remain pinned in their sealed BATCH_060 pair and job snapshots."
+    },
+    "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/cache/Source3/KeygenMakeInvocation.olean": {
+      "superseded_sha256": "73f6a844d55dffa78dd68ea59520e565fc85a25996906515c62938718c438f7f",
+      "current_sha256": "d10ea52906d1311f896afd49e5d25fc497247b22d3b4d63ff9823bfc89f3f77e",
+      "reason": "VirtualLegal repair (2026-10-11 cross-lane catch, kernel-confirmed impossibility of the 060 all-`Nat` shape): the map legality class is restricted to the finite live-block set `Env.live`, the pointer uniqueness proofs are transferred and their consumers (small_site_material/Invocation.encoded and the dependent invocation theorems) are re-elaborated and re-audited in this batch; the 060 bytes remain pinned in their sealed BATCH_060 pair and job snapshots."
+    }
+  },
+  "repair": {
+    "finding": "The 060/061 `invocation_certificate` consumed the two global quantifiers `(s : State) \u2192 Dimensions s` and `(s : State) \u2192 LegalWorkspace s env.ctx`. The first is UNSATISFIABLE (kernel refutation `empty_locals_not_dimensions`/`no_global_dimensions`, mirroring the S05 cross-lane witness GlobalDimensionsObstruction017 at commit ef354c48, pinned read-only and never imported), so the success branch of the theorem was vacuous.",
+    "fix": "Both quantifiers are replaced with reachable-state derivations along the execution chronology: `attempt_gate_dimensions`/`attempt_gate_reachable` transport the `Remaining` instance to the certificate-gate state of one accepted attempt and `loop_gate_reachable` folds that transport over the whole capped loop (entry facts from `entry_of_allocation`/`entry_dimensions`/`entry_remaining`); `gate_workspace` derives `LegalWorkspace` at the same reachable state from the transported scratch legality and automatic-object space (`space_of_frame`), the allocation `Shape` and the gate bind bridge (`workspace_scratch_block` fixes ctx.scratch.block=0 per bind).",
+    "exports": "`invocation_certificate_reachable` (decomposition level) and `invocation_certificate_of_entry` (whole-invocation level) conclude the accepted certificate call and its complete `CertPackage` with premises reduced to reachable entry facts (`Original` + space at the readiness-prefix boundary, the workspace `Shape`, the named `CertEntryFrame` residual) -- no all-state quantifier, no codec premise.",
+    "s05_cross_lane": "formal/GlobalDimensionsObstruction017.lean exports no_global_dimensions/empty_locals_not_dimensions (read-only pin of commit ef354c48, not imported); the in-module kernel mirror pins the trap the way 061 pinned no_global_virtual_legal."
+  },
+  "ske_cells": {
+    "class": "SkeCellWord -- the write-then-read content of the ske cell of segment i (the LP64 word of the material pointer); created by `ske_word_of_bind` at the executed ske[i] store and transported by `ske_word_of_store_frame`/`load64_of_store_frame` across foreign-cell stores.",
+    "derived_liveness": "`small_site_src_live` derives `site.src.block in env.live` from the cell history plus the PINNED explicit live-set extension (map legality on site.src.block::env.live, the 061 module prescription \"consumers needing a further block extend the live set explicitly\"); `small_site_material_extended` supersedes the 061 side condition with the derived tie `site.src = inputOf env i`; `small_site_legal_exists` is the achievability witness of the extension class.",
+    "alias_note": "Word-level aliasing outside the live set is real: VirtualLegal leaves such blocks unconstrained, so the extension is explicit and required, never hidden."
+  },
+  "accepted_module_checks": [
+    {
+      "module": "Source3.KeygenMakeCertificatePremises",
+      "source": {
+        "path": "formal/Source3/KeygenMakeCertificatePremises.lean",
+        "sha256": "9b05ca1f0da1c095fc7bb57b46125b48f2a6344139211f9e7b69cb74e77a43ed",
+        "bytes": 15998
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_make_certificate_premises_062_002/formal/Source3/KeygenMakeCertificatePremises.lean",
+        "sha256": "9b05ca1f0da1c095fc7bb57b46125b48f2a6344139211f9e7b69cb74e77a43ed",
+        "bytes": 15998
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_make_certificate_premises_062_002/lib/Source3/KeygenMakeCertificatePremises.olean",
+        "sha256": "b9be3d7af4da34263f65440c525b45068274a2dd47a62f4e3adc1d15f34f3d9a",
+        "bytes": 155120
+      },
+      "cache_artifact": {
+        "path": ".build/cache/Source3/KeygenMakeCertificatePremises.olean",
+        "sha256": "b9be3d7af4da34263f65440c525b45068274a2dd47a62f4e3adc1d15f34f3d9a",
+        "bytes": 155120
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_make_certificate_premises_062_002/RECEIPTS.json",
+        "sha256": "de26c7748ba86f86d6741f7ebfb02b2e6aa28e71520ddc4128e2b51e24beefd5",
+        "bytes": 6210
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_make_certificate_premises_062_002/SOURCE_INPUTS.json",
+        "sha256": "5f14465192953e1f25a81a2b4774ed597a1ad623ed8593071bc57841671f1b91",
+        "bytes": 868647
+      },
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_make_certificate_premises_062_002/logs/Source3_KeygenMakeCertificatePremises.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_make_certificate_premises_062_002/logs/Source3_KeygenMakeCertificatePremises.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenMakeLoopChronology": "ede0b8db9683facb6ecaec3c50e5dc22816a9655391df2267f5e0f9887c6b5ef",
+        "Source3.KeygenMakeWorkspaceAllocation": "3bf5efe70df62ed621ad80f7929da3e3fbdb8261698af66a115e3e15118f75d7"
+      },
+      "elapsed_s": 1.217,
+      "maxrss_kib": 2957124
+    },
+    {
+      "module": "Source3.KeygenMakeSkeCells",
+      "source": {
+        "path": "formal/Source3/KeygenMakeSkeCells.lean",
+        "sha256": "8a6294fdeaf8d492fe89b3458f6982f8354e9c191fd21f5e6f00bbf1cfa21980",
+        "bytes": 8886
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_make_ske_cells_062_004/formal/Source3/KeygenMakeSkeCells.lean",
+        "sha256": "8a6294fdeaf8d492fe89b3458f6982f8354e9c191fd21f5e6f00bbf1cfa21980",
+        "bytes": 8886
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_make_ske_cells_062_004/lib/Source3/KeygenMakeSkeCells.olean",
+        "sha256": "efdaec588e3686b03c0e4788475ef462fbab1d66373b56440846e240ff7d8330",
+        "bytes": 155040
+      },
+      "cache_artifact": {
+        "path": ".build/cache/Source3/KeygenMakeSkeCells.olean",
+        "sha256": "efdaec588e3686b03c0e4788475ef462fbab1d66373b56440846e240ff7d8330",
+        "bytes": 155040
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_make_ske_cells_062_004/RECEIPTS.json",
+        "sha256": "27619756452a12748f41781639fb442e686168a6893c6482d10e579ec99950bd",
+        "bytes": 3012
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_make_ske_cells_062_004/SOURCE_INPUTS.json",
+        "sha256": "030b0c024580215748f8f6eceba8cb115573df1d34779808dbdc5e00bbf445c8",
+        "bytes": 869580
+      },
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_make_ske_cells_062_004/logs/Source3_KeygenMakeSkeCells.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_make_ske_cells_062_004/logs/Source3_KeygenMakeSkeCells.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenMakeInvocation": "d10ea52906d1311f896afd49e5d25fc497247b22d3b4d63ff9823bfc89f3f77e"
+      },
+      "elapsed_s": 1.216,
+      "maxrss_kib": 2955856
+    },
+    {
+      "module": "Source3.KeygenLevelsAudit",
+      "source": {
+        "path": "formal/Source3/KeygenLevelsAudit.lean",
+        "sha256": "83f6b37a34bd7527fe4a14fef8167cbe67e8deffe617f57478a32db8e814d8bd",
+        "bytes": 6914
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_levels_audit_024_001/formal/Source3/KeygenLevelsAudit.lean",
+        "sha256": "83f6b37a34bd7527fe4a14fef8167cbe67e8deffe617f57478a32db8e814d8bd",
+        "bytes": 6914
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_levels_audit_024_001/lib/Source3/KeygenLevelsAudit.olean",
+        "sha256": "2d68630ece1991aa560d8bf322a22e6103e070ce661eb12f79b06c57a201ff8a",
+        "bytes": 4064
+      },
+      "cache_artifact": {
+        "path": ".build/cache/Source3/KeygenLevelsAudit.olean",
+        "sha256": "2d68630ece1991aa560d8bf322a22e6103e070ce661eb12f79b06c57a201ff8a",
+        "bytes": 4064
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_levels_audit_024_001/RECEIPTS.json",
+        "sha256": "33835fd69282bcce3256fa0e58e4614a52e2679cb9935698561f11d1737fb229",
+        "bytes": 2986
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_levels_audit_024_001/SOURCE_INPUTS.json",
+        "sha256": "9e36c96005d1d49dc7ae1508c7962650b83866f57b539236cd289c16d8913efd",
+        "bytes": 481904
+      },
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_levels_audit_024_001/logs/Source3_KeygenLevelsAudit.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_levels_audit_024_001/logs/Source3_KeygenLevelsAudit.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenLevelModularFrame": "a2f31f701b22d9a9849161c7bd34185b7f2987f08167eb1c54a0bea5b38f2f52",
+        "Source3.KeygenLevelNtt": "4f891a05c250e811f72b12719561fbd856e1731caf211dd7cd6de86c7615f0a3",
+        "Source3.KeygenLevelCalls": "97a72668d3d8b3943fb87fbdd8f51377af30d8106b5fa6d23394dd86e63764e9",
+        "Source3.KeygenLevelExec": "7fe4c3ec34815d6fa706ccaa9fda26198f810bf5ec108799dabdbdccf0277917",
+        "Source3.KeygenLevelParser": "42e555e89afe95278fa388054973a2c3a4702c36eaa80c2e57ac5e8b7b401235",
+        "Source3.KeygenMakeFgTop": "e193dccb30442657d5a71853f51cddb2980a55c65d020718ecd036424dd11cea",
+        "Source3.KeygenWordExpr": "f7640f9f49f7e32fa268fb1eda29da3df921bda36ba198471ad14aa5846dd7ac",
+        "Source3.KeygenWordExec": "ed9ad88920462fdd139edf8813323920390e40835b6c47deaaa599432ae2b233",
+        "Source3.KeygenWordParser": "e5306c591e2205ae3c73468d61ca85910be3e07e6950a4bad3efec6cd7420915",
+        "Source3.KeygenZintLeaves": "fe8152760dda3f79483edd3bae357d8c2e9ded2f0cd3867aa92262b8cc404d15",
+        "Source3.KeygenResultantSource": "ffba2063b9c84beed1a89daca4dbca097fbf64587b378f6fcb287fc57f23f365",
+        "Source3.KeygenResultantGate": "209b2092eca3e4d23ffae450ae1f21b31d9871df7cb7c60d6944817251fcb404",
+        "Source3.KeygenNormFrame": "a19ba25ae534f02ad9cad37b1503e3435687a8fc109f1e197cdc07d46a56e699",
+        "Source3.KeygenDepth0Call": "d2f06d60d54bf8ac04298181172c80dd9138414e6db4e7252b03206b744f8664"
+      },
+      "elapsed_s": 2.67,
+      "maxrss_kib": 2803508
+    }
+  ],
+  "audit": {
+    "path": ".build/jobs/keygen_make_certificate_premises_audit_062_005/SEARCH_AUDIT.json",
+    "sha256": "49c1bcd0b1ba77ea656224911397200d949b7428952fc5615dc508e244c134ed",
+    "bytes": 149608,
+    "entries_jsonl": {
+      "path": ".build/jobs/keygen_make_certificate_premises_audit_062_005/SEARCH_AUDIT_ENTRIES.jsonl",
+      "sha256": "11161ee6d13852822550e87893e9ae42ae56b0ac64d96b9bf0d9364630d57f85",
+      "bytes": 146705
+    },
+    "receipt": {
+      "path": ".build/jobs/keygen_make_certificate_premises_audit_062_005/RECEIPTS.json",
+      "sha256": "a680244005da429498debce023bb288d98e06d04d671936d3f0475c2754a335d",
+      "bytes": 3277
+    },
+    "source_inputs": {
+      "path": ".build/jobs/keygen_make_certificate_premises_audit_062_005/SOURCE_INPUTS.json",
+      "sha256": "60b78e7c7a0dedfe9ed6357205205c786f9c1160fd4cdf290516036bfd8cfe96",
+      "bytes": 870665
+    },
+    "producer": {
+      "path": "formal/Source3/KeygenMakeCertificatePremisesAudit.lean",
+      "sha256": "5737a7f037192e69493a8d481e88c0a009cfbec84f96bc448795ef6d837a4dca",
+      "bytes": 6975
+    },
+    "generator": {
+      "path": "tools/keygen_make_certificate_premises_audit.py",
+      "sha256": "1144d3891a2b87dcb0bdf7309b7db729b5f54c6de29aaa60efea96abb339e702",
+      "bytes": 5563
+    },
+    "exports": 82,
+    "new_declarations": 17,
+    "inherited_interfaces": 65,
+    "full_terms": 55,
+    "kernel_inductives": 27,
+    "elisions": 0,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "sage": {
+    "source": {
+      "path": "sage/check_keygen_make_certificate_premises.sage",
+      "sha256": "91d55785f4405f97d322fb44defe687bc7fc008d95f6360bdaa48d5346da4b44",
+      "bytes": 7525
+    },
+    "receipt": {
+      "path": ".build/jobs/keygen_make_certificate_premises_sage_062_006/RECEIPTS.json",
+      "sha256": "cecc1c809bdac5d941538be0072fc1bd73cd37be453d87ef3f1ec9c9b6f09bef",
+      "bytes": 2532
+    },
+    "source_inputs": {
+      "path": ".build/jobs/keygen_make_certificate_premises_sage_062_006/SOURCE_INPUTS.json",
+      "sha256": "edf6f57ef175729416d819257a62b5ee34719b0a987be4992f935ab2569ed96b",
+      "bytes": 871975
+    },
+    "result": {
+      "path": ".build/jobs/keygen_make_certificate_premises_sage_062_006/CERT_CONTROL_CHECK.json",
+      "sha256": "ccde48772f9863c6ca1edcbf75cce1bbfcc15c39199553ce126d691e48b9910f",
+      "bytes": 3368
+    },
+    "reference_c_source": {
+      "path": "/media/footfalcon/FT1536_DATA/free_falcon_sign/Extra/c/falcon-keygen.c",
+      "sha256": "0a09b6ed2363308f54584dfd1e2d33ee1b4601a68c77712c50da920b5074a5cf",
+      "bytes": 234438
+    },
+    "runs": 1,
+    "cases_per_run": 5,
+    "mutation_kinds": 20,
+    "scope": "EXPLICIT MOCK SEMANTICS; scripted reachable-premise/workspace-derivation/ske-cell-history/live-set-extension records and a transcription check of the certificate-gate/encoding-tail region against the reference C source; no real KeyGen/solver/certificate/codec result, no private key, no probability or law claim; supplements kernel proofs, never replaces them"
+  },
+  "generator_reproduction": {
+    "path": ".build/levels_062/GENERATOR_CHECK.json",
+    "sha256": "f3ca214420f20c5f5613dda484ec26cc25f7983a0b7f81cbbd29ba3fad835f9a",
+    "bytes": 781
+  },
+  "slot_waits": [
+    {
+      "path": ".build/waits/keygen_make_certificate_premises_062_001/WAIT.jsonl",
+      "sha256": "03723c2743c4698892ba13a5f80c15216550dcd733f585800f509c468b54eff5",
+      "bytes": 111
+    },
+    {
+      "path": ".build/waits/keygen_make_certificate_premises_062_002/WAIT.jsonl",
+      "sha256": "8e85bccc3586639c96999e801185db8fef7e2d89d009059069653e2b87726683",
+      "bytes": 111
+    },
+    {
+      "path": ".build/waits/keygen_make_certificate_premises_audit_062_005/WAIT.jsonl",
+      "sha256": "41eae35d466ea2e55542c3f097c9137c818982ded047b59d915df13fb5a2cb24",
+      "bytes": 117
+    },
+    {
+      "path": ".build/waits/keygen_make_certificate_premises_sage_062_006/WAIT.jsonl",
+      "sha256": "eb7110b054b2f68b64bc620486602c94ce476149a9da16720b77a4a107af00c3",
+      "bytes": 116
+    },
+    {
+      "path": ".build/waits/keygen_make_ske_cells_062_003/WAIT.jsonl",
+      "sha256": "69d63d21b39a75e514f7e266dbb2089a25dab311a3478689d493e56d9ad35d3c",
+      "bytes": 100
+    },
+    {
+      "path": ".build/waits/keygen_make_ske_cells_062_004/WAIT.jsonl",
+      "sha256": "f1bff74d08679336013bb9c8dbd29745b33e0e0af7f20614a305575805fc37b8",
+      "bytes": 100
+    }
+  ],
+  "attempt_details": [
+    {
+      "job": "keygen_make_certificate_premises_062_001",
+      "status": "FAILED_RETAINED",
+      "cause": "First elaboration of the two repair modules REJECTED (retained): the index-filling `cases` binder of `AttemptExec.throughCertificate` binds nothing (the gateOut slot is the result index), the workspace bridge helper lives in KeygenMakeCertMaterial (not KeygenMakeCertCall), and unused signature binders tripped the linter.",
+      "receipt": {
+        "path": ".build/jobs/keygen_make_certificate_premises_062_001/RECEIPTS.json",
+        "sha256": "77eaf815742872ef651dad32ebdc5c8220d270c3e65d3f0963390bff081d7954",
+        "bytes": 3102
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_make_certificate_premises_062_001/SOURCE_INPUTS.json",
+        "sha256": "3bfe67d094fe7764069fbfe47cd834772b16904ef74ae250a1a313e07aac7493",
+        "bytes": 868647
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_make_certificate_premises_062_001/PREFLIGHT.json",
+        "sha256": "648343e0e661957c7ba1076368e9d3940a4d5b10dc00f0b314ba6ba7b8416d64",
+        "bytes": 147
+      },
+      "runner_snapshot": {
+        "path": ".build/jobs/keygen_make_certificate_premises_062_001/RUNNER_SOURCE.py",
+        "sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+        "bytes": 12792
+      },
+      "execution_snapshot": {
+        "path": ".build/jobs/keygen_make_certificate_premises_062_001/EXECUTION_SOURCE.py",
+        "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c",
+        "bytes": 8123
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_make_certificate_premises_062_001/formal/Source3/KeygenMakeCertificatePremises.lean",
+          "sha256": "ec6a477228594f484df0ace338cf00b5a9efbc5640951974b75edace63872f77",
+          "bytes": 16191
+        },
+        {
+          "path": ".build/jobs/keygen_make_certificate_premises_062_001/formal/Source3/KeygenMakeSkeCells.lean",
+          "sha256": "8968637e4fcd66f16060ba0fab861c2c1799cb311e2927e296fbc0f6afc2d2dc",
+          "bytes": 8767
+        }
+      ],
+      "raw_files": [
+        {
+          "path": ".build/jobs/keygen_make_certificate_premises_062_001/logs/Source3_KeygenMakeCertificatePremises.receipt.json",
+          "sha256": "9ce94d322905c5cf55c52a159b01d5aa189045f4e52f9d44edbdfca4ab174cf5",
+          "bytes": 2889
+        },
+        {
+          "path": ".build/jobs/keygen_make_certificate_premises_062_001/logs/Source3_KeygenMakeCertificatePremises.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_make_certificate_premises_062_001/logs/Source3_KeygenMakeCertificatePremises.stdout",
+          "sha256": "bc8accd8dbed0bfb96c53f7a6657262d46768e3f81518dedbcda0144f5e90a7c",
+          "bytes": 2581
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenMakeCertificatePremises",
+          "accepted": false,
+          "exit_code": 1,
+          "start": "2026-10-11T05:54:43.546450+00:00",
+          "stop": "2026-10-11T05:54:45.014172+00:00",
+          "elapsed_s": 1.468,
+          "maxrss_kib": 2922508,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_make_certificate_premises_062_001/logs/Source3_KeygenMakeCertificatePremises.stdout",
+              "sha256": "bc8accd8dbed0bfb96c53f7a6657262d46768e3f81518dedbcda0144f5e90a7c",
+              "bytes": 2581
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_make_certificate_premises_062_001/logs/Source3_KeygenMakeCertificatePremises.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "accepted_products": [],
+      "products": []
+    },
+    {
+      "job": "keygen_make_certificate_premises_062_002",
+      "status": "FAILED_RETAINED",
+      "cause": "Second elaboration: the premises module ACCEPTED; the ske-cells module REJECTED (retained): unopened KeygenMakeInvocation names, the invalid `\u27e8s with ...\u27e9` anonymous-constructor syntax (structure update needs `{s with ...}`), and the index-filling `Load64.load` pattern binders (4 visible binders, not 6).",
+      "receipt": {
+        "path": ".build/jobs/keygen_make_certificate_premises_062_002/RECEIPTS.json",
+        "sha256": "de26c7748ba86f86d6741f7ebfb02b2e6aa28e71520ddc4128e2b51e24beefd5",
+        "bytes": 6210
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_make_certificate_premises_062_002/SOURCE_INPUTS.json",
+        "sha256": "5f14465192953e1f25a81a2b4774ed597a1ad623ed8593071bc57841671f1b91",
+        "bytes": 868647
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_make_certificate_premises_062_002/PREFLIGHT.json",
+        "sha256": "9d89292f36ce6502b47274a30d104c87910fed0541121e7e13b964825e1270e1",
+        "bytes": 147
+      },
+      "runner_snapshot": {
+        "path": ".build/jobs/keygen_make_certificate_premises_062_002/RUNNER_SOURCE.py",
+        "sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+        "bytes": 12792
+      },
+      "execution_snapshot": {
+        "path": ".build/jobs/keygen_make_certificate_premises_062_002/EXECUTION_SOURCE.py",
+        "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c",
+        "bytes": 8123
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_make_certificate_premises_062_002/formal/Source3/KeygenMakeCertificatePremises.lean",
+          "sha256": "9b05ca1f0da1c095fc7bb57b46125b48f2a6344139211f9e7b69cb74e77a43ed",
+          "bytes": 15998
+        },
+        {
+          "path": ".build/jobs/keygen_make_certificate_premises_062_002/formal/Source3/KeygenMakeSkeCells.lean",
+          "sha256": "8968637e4fcd66f16060ba0fab861c2c1799cb311e2927e296fbc0f6afc2d2dc",
+          "bytes": 8767
+        }
+      ],
+      "raw_files": [
+        {
+          "path": ".build/jobs/keygen_make_certificate_premises_062_002/logs/Source3_KeygenMakeCertificatePremises.receipt.json",
+          "sha256": "4ed59695036fbe8759f2a1bdc25d1a93f8bd5a8dd9be4dbe766d3b89f04d1867",
+          "bytes": 2887
+        },
+        {
+          "path": ".build/jobs/keygen_make_certificate_premises_062_002/logs/Source3_KeygenMakeCertificatePremises.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_make_certificate_premises_062_002/logs/Source3_KeygenMakeCertificatePremises.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_make_certificate_premises_062_002/logs/Source3_KeygenMakeSkeCells.receipt.json",
+          "sha256": "6a6b99b61790697f28c1e8333343b4f087fa6720da3ed163e7022b0f7e3652a2",
+          "bytes": 2812
+        },
+        {
+          "path": ".build/jobs/keygen_make_certificate_premises_062_002/logs/Source3_KeygenMakeSkeCells.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_make_certificate_premises_062_002/logs/Source3_KeygenMakeSkeCells.stdout",
+          "sha256": "be6077e9271cf98200310d3d54df14ea6f4450d6ea7c3abb437cc24514042268",
+          "bytes": 15017
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenMakeCertificatePremises",
+          "accepted": true,
+          "exit_code": 0,
+          "start": "2026-10-11T05:59:20.843144+00:00",
+          "stop": "2026-10-11T05:59:22.060272+00:00",
+          "elapsed_s": 1.217,
+          "maxrss_kib": 2957124,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_make_certificate_premises_062_002/logs/Source3_KeygenMakeCertificatePremises.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_make_certificate_premises_062_002/logs/Source3_KeygenMakeCertificatePremises.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        },
+        {
+          "name": "Source3_KeygenMakeSkeCells",
+          "accepted": false,
+          "exit_code": 1,
+          "start": "2026-10-11T05:59:22.062963+00:00",
+          "stop": "2026-10-11T05:59:23.856503+00:00",
+          "elapsed_s": 1.794,
+          "maxrss_kib": 2957124,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_make_certificate_premises_062_002/logs/Source3_KeygenMakeSkeCells.stdout",
+              "sha256": "be6077e9271cf98200310d3d54df14ea6f4450d6ea7c3abb437cc24514042268",
+              "bytes": 15017
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_make_certificate_premises_062_002/logs/Source3_KeygenMakeSkeCells.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "accepted_products": [
+        {
+          "path": ".build/jobs/keygen_make_certificate_premises_062_002/lib/Source3/KeygenMakeCertificatePremises.olean",
+          "sha256": "b9be3d7af4da34263f65440c525b45068274a2dd47a62f4e3adc1d15f34f3d9a",
+          "bytes": 155120
+        }
+      ],
+      "products": []
+    },
+    {
+      "job": "keygen_make_ske_cells_062_003",
+      "status": "FAILED_RETAINED",
+      "cause": "Third elaboration REJECTED (retained): `List.mem_cons_self`/`List.mem_cons_of_mem` take implicit arguments in this Mathlib closure; the explicit applications were invalid. Replaced with the `List.mem_cons.mpr` forms.",
+      "receipt": {
+        "path": ".build/jobs/keygen_make_ske_cells_062_003/RECEIPTS.json",
+        "sha256": "6c6d2161279c4817f57fca0851d2e8c92fd6bece9cab7dd9c6f872ca183e5493",
+        "bytes": 2926
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_make_ske_cells_062_003/SOURCE_INPUTS.json",
+        "sha256": "3de882518f84fd3faf56f4b35ef7505b61fe40a3a5883fec51ad38b5616a7aa5",
+        "bytes": 869580
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_make_ske_cells_062_003/PREFLIGHT.json",
+        "sha256": "081ecdd6416457f330f6a9b37fc1527af494637d8d1c6c914aefdfbdae0a1d64",
+        "bytes": 147
+      },
+      "runner_snapshot": {
+        "path": ".build/jobs/keygen_make_ske_cells_062_003/RUNNER_SOURCE.py",
+        "sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+        "bytes": 12792
+      },
+      "execution_snapshot": {
+        "path": ".build/jobs/keygen_make_ske_cells_062_003/EXECUTION_SOURCE.py",
+        "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c",
+        "bytes": 8123
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_make_ske_cells_062_003/formal/Source3/KeygenMakeSkeCells.lean",
+          "sha256": "fc2bd415836b5317dff2c66db0c976ddacfbe3ffee3be20f54e7c9990bfd8cf8",
+          "bytes": 8928
+        }
+      ],
+      "raw_files": [
+        {
+          "path": ".build/jobs/keygen_make_ske_cells_062_003/logs/Source3_KeygenMakeSkeCells.receipt.json",
+          "sha256": "71fa3697cbd20660b10180e90c277793ccfc8738c283ccdef566170ea4008ae6",
+          "bytes": 2713
+        },
+        {
+          "path": ".build/jobs/keygen_make_ske_cells_062_003/logs/Source3_KeygenMakeSkeCells.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_make_ske_cells_062_003/logs/Source3_KeygenMakeSkeCells.stdout",
+          "sha256": "60e325253e7fe01967166868875a4158aed2ea5149d2f4c53bd0b26e7672d422",
+          "bytes": 738
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenMakeSkeCells",
+          "accepted": false,
+          "exit_code": 1,
+          "start": "2026-10-11T06:00:36.158381+00:00",
+          "stop": "2026-10-11T06:00:37.324791+00:00",
+          "elapsed_s": 1.166,
+          "maxrss_kib": 2936580,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_make_ske_cells_062_003/logs/Source3_KeygenMakeSkeCells.stdout",
+              "sha256": "60e325253e7fe01967166868875a4158aed2ea5149d2f4c53bd0b26e7672d422",
+              "bytes": 738
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_make_ske_cells_062_003/logs/Source3_KeygenMakeSkeCells.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "accepted_products": [],
+      "products": []
+    },
+    {
+      "job": "keygen_make_ske_cells_062_004",
+      "status": "ACCEPTED",
+      "cause": null,
+      "receipt": {
+        "path": ".build/jobs/keygen_make_ske_cells_062_004/RECEIPTS.json",
+        "sha256": "27619756452a12748f41781639fb442e686168a6893c6482d10e579ec99950bd",
+        "bytes": 3012
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_make_ske_cells_062_004/SOURCE_INPUTS.json",
+        "sha256": "030b0c024580215748f8f6eceba8cb115573df1d34779808dbdc5e00bbf445c8",
+        "bytes": 869580
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_make_ske_cells_062_004/PREFLIGHT.json",
+        "sha256": "40e5e6523c5775a9fced6a9a186ae4e8dc2a9ec0cb6083397a9fd50299c36ca9",
+        "bytes": 147
+      },
+      "runner_snapshot": {
+        "path": ".build/jobs/keygen_make_ske_cells_062_004/RUNNER_SOURCE.py",
+        "sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+        "bytes": 12792
+      },
+      "execution_snapshot": {
+        "path": ".build/jobs/keygen_make_ske_cells_062_004/EXECUTION_SOURCE.py",
+        "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c",
+        "bytes": 8123
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_make_ske_cells_062_004/formal/Source3/KeygenMakeSkeCells.lean",
+          "sha256": "8a6294fdeaf8d492fe89b3458f6982f8354e9c191fd21f5e6f00bbf1cfa21980",
+          "bytes": 8886
+        }
+      ],
+      "raw_files": [
+        {
+          "path": ".build/jobs/keygen_make_ske_cells_062_004/logs/Source3_KeygenMakeSkeCells.receipt.json",
+          "sha256": "8342557b1d007dac6721926624b215c927d3cc8f253d03d472c99ff32b260b63",
+          "bytes": 2711
+        },
+        {
+          "path": ".build/jobs/keygen_make_ske_cells_062_004/logs/Source3_KeygenMakeSkeCells.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_make_ske_cells_062_004/logs/Source3_KeygenMakeSkeCells.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenMakeSkeCells",
+          "accepted": true,
+          "exit_code": 0,
+          "start": "2026-10-11T06:00:54.790137+00:00",
+          "stop": "2026-10-11T06:00:56.006523+00:00",
+          "elapsed_s": 1.216,
+          "maxrss_kib": 2955856,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_make_ske_cells_062_004/logs/Source3_KeygenMakeSkeCells.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_make_ske_cells_062_004/logs/Source3_KeygenMakeSkeCells.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "accepted_products": [
+        {
+          "path": ".build/jobs/keygen_make_ske_cells_062_004/lib/Source3/KeygenMakeSkeCells.olean",
+          "sha256": "efdaec588e3686b03c0e4788475ef462fbab1d66373b56440846e240ff7d8330",
+          "bytes": 155040
+        }
+      ],
+      "products": []
+    },
+    {
+      "job": "keygen_make_certificate_premises_audit_062_005",
+      "status": "ACCEPTED",
+      "cause": null,
+      "receipt": {
+        "path": ".build/jobs/keygen_make_certificate_premises_audit_062_005/RECEIPTS.json",
+        "sha256": "a680244005da429498debce023bb288d98e06d04d671936d3f0475c2754a335d",
+        "bytes": 3277
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_make_certificate_premises_audit_062_005/SOURCE_INPUTS.json",
+        "sha256": "60b78e7c7a0dedfe9ed6357205205c786f9c1160fd4cdf290516036bfd8cfe96",
+        "bytes": 870665
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_make_certificate_premises_audit_062_005/PREFLIGHT.json",
+        "sha256": "73e479d9183fca5826fb6e6ff44565081e2e7034167340519361511c30d5ae90",
+        "bytes": 147
+      },
+      "runner_snapshot": {
+        "path": ".build/jobs/keygen_make_certificate_premises_audit_062_005/RUNNER_SOURCE.py",
+        "sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+        "bytes": 12792
+      },
+      "execution_snapshot": {
+        "path": ".build/jobs/keygen_make_certificate_premises_audit_062_005/EXECUTION_SOURCE.py",
+        "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c",
+        "bytes": 8123
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_make_certificate_premises_audit_062_005/formal/Source3/KeygenMakeCertificatePremisesAudit.lean",
+          "sha256": "5737a7f037192e69493a8d481e88c0a009cfbec84f96bc448795ef6d837a4dca",
+          "bytes": 6975
+        }
+      ],
+      "raw_files": [
+        {
+          "path": ".build/jobs/keygen_make_certificate_premises_audit_062_005/logs/Source3_KeygenMakeCertificatePremisesAudit.receipt.json",
+          "sha256": "73244c3223dea7d222979903a0c2105f86eb164c4fe210d34a56472d724b628f",
+          "bytes": 2976
+        },
+        {
+          "path": ".build/jobs/keygen_make_certificate_premises_audit_062_005/logs/Source3_KeygenMakeCertificatePremisesAudit.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_make_certificate_premises_audit_062_005/logs/Source3_KeygenMakeCertificatePremisesAudit.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenMakeCertificatePremisesAudit",
+          "accepted": true,
+          "exit_code": 0,
+          "start": "2026-10-11T06:01:58.223264+00:00",
+          "stop": "2026-10-11T06:02:01.647554+00:00",
+          "elapsed_s": 3.424,
+          "maxrss_kib": 2959848,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_make_certificate_premises_audit_062_005/logs/Source3_KeygenMakeCertificatePremisesAudit.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_make_certificate_premises_audit_062_005/logs/Source3_KeygenMakeCertificatePremisesAudit.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "accepted_products": [
+        {
+          "path": ".build/jobs/keygen_make_certificate_premises_audit_062_005/lib/Source3/KeygenMakeCertificatePremisesAudit.olean",
+          "sha256": "834951e1a667f11e8ed7b7476d286e523e3f44ca1a6672e131ae2747aea30dbf",
+          "bytes": 2808
+        }
+      ],
+      "products": [
+        {
+          "path": ".build/jobs/keygen_make_certificate_premises_audit_062_005/SEARCH_AUDIT.json",
+          "sha256": "49c1bcd0b1ba77ea656224911397200d949b7428952fc5615dc508e244c134ed",
+          "bytes": 149608
+        },
+        {
+          "path": ".build/jobs/keygen_make_certificate_premises_audit_062_005/SEARCH_AUDIT_ENTRIES.jsonl",
+          "sha256": "11161ee6d13852822550e87893e9ae42ae56b0ac64d96b9bf0d9364630d57f85",
+          "bytes": 146705
+        },
+        {
+          "path": ".build/jobs/keygen_make_certificate_premises_audit_062_005/SEARCH_AUDIT_PROGRESS.json",
+          "sha256": "3e89f58fd47cdde6fee0c3412913cc1f02cf7203e837a065fff4c73bbaeac768",
+          "bytes": 43
+        }
+      ]
+    },
+    {
+      "job": "keygen_make_certificate_premises_sage_062_006",
+      "status": "ACCEPTED",
+      "cause": null,
+      "receipt": {
+        "path": ".build/jobs/keygen_make_certificate_premises_sage_062_006/RECEIPTS.json",
+        "sha256": "cecc1c809bdac5d941538be0072fc1bd73cd37be453d87ef3f1ec9c9b6f09bef",
+        "bytes": 2532
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_make_certificate_premises_sage_062_006/SOURCE_INPUTS.json",
+        "sha256": "edf6f57ef175729416d819257a62b5ee34719b0a987be4992f935ab2569ed96b",
+        "bytes": 871975
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_make_certificate_premises_sage_062_006/PREFLIGHT.json",
+        "sha256": "9057ad9ce14efe2f15d3963730fc669c8cd5b7ed19f87c9d078e9322357cedd1",
+        "bytes": 147
+      },
+      "runner_snapshot": {
+        "path": ".build/jobs/keygen_make_certificate_premises_sage_062_006/RUNNER_SOURCE.py",
+        "sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+        "bytes": 12792
+      },
+      "execution_snapshot": {
+        "path": ".build/jobs/keygen_make_certificate_premises_sage_062_006/EXECUTION_SOURCE.py",
+        "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c",
+        "bytes": 8123
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_make_certificate_premises_sage_062_006/sage/check_keygen_make_certificate_premises.sage",
+          "sha256": "91d55785f4405f97d322fb44defe687bc7fc008d95f6360bdaa48d5346da4b44",
+          "bytes": 7525
+        }
+      ],
+      "raw_files": [
+        {
+          "path": ".build/jobs/keygen_make_certificate_premises_sage_062_006/logs/sage.receipt.json",
+          "sha256": "1b17e141d0481390b1cf9ddcbd32d63626b898f4dedfee175a95826e79758099",
+          "bytes": 2333
+        },
+        {
+          "path": ".build/jobs/keygen_make_certificate_premises_sage_062_006/logs/sage.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_make_certificate_premises_sage_062_006/logs/sage.stdout",
+          "sha256": "dd79141405623b3e75c588b690d400fa57ba6aecffd4762b20caf0cc41fe3c49",
+          "bytes": 585
+        }
+      ],
+      "steps": [
+        {
+          "name": "sage",
+          "accepted": true,
+          "exit_code": 0,
+          "start": "2026-10-11T06:02:54.780571+00:00",
+          "stop": "2026-10-11T06:03:02.065511+00:00",
+          "elapsed_s": 7.285,
+          "maxrss_kib": 221564,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_make_certificate_premises_sage_062_006/logs/sage.stdout",
+              "sha256": "dd79141405623b3e75c588b690d400fa57ba6aecffd4762b20caf0cc41fe3c49",
+              "bytes": 585
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_make_certificate_premises_sage_062_006/logs/sage.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "accepted_products": [],
+      "products": [
+        {
+          "path": ".build/jobs/keygen_make_certificate_premises_sage_062_006/CERT_CONTROL_CHECK.json",
+          "sha256": "ccde48772f9863c6ca1edcbf75cce1bbfcc15c39199553ce126d691e48b9910f",
+          "bytes": 3368
+        }
+      ]
+    }
+  ],
+  "attempt_counts": {
+    "ACCEPTED": 3,
+    "FAILED_RETAINED": 3,
+    "PRESTEP_ABORTED_RETAINED": 0,
+    "INTERRUPTED_RETAINED": 0
+  },
+  "contracts": {
+    "reachable_gate_dimensions": "The certificate-gate state of an accepted attempt carries the DERIVED `Dimensions` instance: the `Remaining` counter transports through the sampled prefix (`attempt_gate_dimensions`) and the whole loop chronology (`loop_gate_reachable`), starting from the allocation-derived entry facts.",
+    "reachable_workspace": "`LegalWorkspace` at the gate state is CONSTRUCTED by `gate_workspace` from the transported scratch legality + automatic-object space + the bind bridge block numbering + the allocation Shape; the all-state quantifier is never used.",
+    "premise_repair_export": "`invocation_certificate_reachable`/`invocation_certificate_of_entry` keep the exact `invocation_certificate` conclusion with reachable entry premises; every remaining premise class is reachable and achievable.",
+    "trap_pin": "`no_global_dimensions`/`empty_locals_not_dimensions` pin the impossible-premise class kernel-side in the repaired module.",
+    "derived_liveness": "`small_site_src_live` derives `site.src.block in env.live` from the ske cell history + the explicit live-set extension; `small_site_material_extended` replaces the 061 side condition."
+  },
+  "open_in_b1_07": [
+    "The concrete statement-chain extraction of `SkeCellWord` at the four call sites (the nine pre-loop statements reaching the four-segment loop entry) and the persistence of the cell words through the earlier codec calls of segments 1-3 stay with the codec write-frame item (B1.08/09); the store-level creation/transport and the derived liveness are closed here.",
+    "The codec bodies and their write frames are B1.08/09: the exact encoded lengths, the persistence of the stored length words and of the source arrays through later encoder calls, and the bytewise round-trips.",
+    "Residue pin of the plan phrase \"globals/common call ID/snapshots\": instantiated and tied to the same invocation (060/061); an EXPLICIT identifier value beyond the shared derivation stays OPEN with its intended shape.",
+    "The literal refutation status of the all-state `LegalWorkspace` quantifier is not consumed: the repair replaces it with the reachable derivation `gate_workspace` either way."
+  ],
+  "outside_scope": [
+    "B1.08-B1.11 codec bodies/emitted-to-fiber/final replay, B4/B5 probability/availability/PRG/security, OS/Windows/compiler/machine refinement, CT and independent review."
+  ],
+  "tools": [
+    {
+      "path": "tools/job.py",
+      "sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+      "bytes": 12792
+    },
+    {
+      "path": "tools/job_when_available.py",
+      "sha256": "525785c5321ebdda583c4e42d0daf5243b29146d10d47bd086d65fd89c53c37b",
+      "bytes": 3870
+    },
+    {
+      "path": "tools/keygen_make_certificate_premises_audit.py",
+      "sha256": "1144d3891a2b87dcb0bdf7309b7db729b5f54c6de29aaa60efea96abb339e702",
+      "bytes": 5563
+    },
+    {
+      "path": "tools/keygen_make_certificate_premises_batch.py",
+      "sha256": "7eb468335fa0822d85ceba613f1c91a32e6f4ac54cd950662fd203d72de32e71",
+      "bytes": 23081
+    },
+    {
+      "path": "tools/keygen_intermediate_batch.py",
+      "sha256": "1128fdba4855db1ee160c23c228e4a48335eb5965af0bd8272d7b947c2c0c23a",
+      "bytes": 14421
+    },
+    {
+      "path": "tools/keygen_public_first_batch.py",
+      "sha256": "3234d16b190dfdd162a61d41ad291854fac937b92ee628dac2986826c624d7e6",
+      "bytes": 17973
+    },
+    {
+      "path": "formal/Source3/KeygenLevelsAudit.lean",
+      "sha256": "83f6b37a34bd7527fe4a14fef8167cbe67e8deffe617f57478a32db8e814d8bd",
+      "bytes": 6914
+    },
+    {
+      "path": "sage/check_keygen_make_certificate_premises.sage",
+      "sha256": "91d55785f4405f97d322fb44defe687bc7fc008d95f6360bdaa48d5346da4b44",
+      "bytes": 7525
+    }
+  ],
+  "source_commits": [
+    "fe3c6eced773f459e4a0190a07d5aba9185e779d proof(T12.1): reachable-state certificate premises and derived ske-cell call-site liveness",
+    "8ad474ea222c854a037d4936bd9621d09d1cb444 tools(T12.1): certificate-premise audit producer, scripted controls and BATCH_062 seal",
+    "42e0adfa3596a0af1cf5221ea6cdf9a548ef8266 docs(T12.1): BATCH_062 notes for the premise-repair/liveness midpoint"
+  ],
+  "origin_main_observed": "44cece7ffa52277d77d421c3c7daf731e096e243",
+  "active_jobs_at_close": [],
+  "push_by_this_worker": false,
+  "review_or_stages_import": false,
+  "limits": "Unchanged Lean j1/-M6144,AS12GiB/RSS8GiB,wall1800s,maxHeartbeats2000000,print200000;0/0 streams,Sage preparser. No inherited source or job limits raised."
+}

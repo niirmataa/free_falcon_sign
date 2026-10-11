@@ -1,3 +1,152 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.07 certificate-premise repair / derived liveness midpoint
+
+**B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
+**Package: IN_PROGRESS / WORKING_NOT_FROZEN.**
+2026-10-11,BATCH_062,MiMo V2.6 Pro (`xiaomi-token-plan-ams`).
+**CLOSED_AT_RECOVERABLE_MIDPOINT.** Exactly one close this window.
+B1.05/032, B1.06/046, the 059/060 statement-machine extractions and the
+061 virtual-legal repair/loop chronology unchanged;B1.08/B4/B5 NOT entered.
+Handoff:**42R**. Exact types/pins/traps:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_062_NOTES.md`.
+
+## 42. Closed — the invocation_certificate premise repair and the derived call-site liveness
+
+1. PUNKT PIERWSZY (owner-ordered, §41R): the `invocation_certificate`
+   global-premise repair is closed. The 060/061 shape consumed the two
+   all-state quantifiers `(s : State) → Dimensions s` and
+   `(s : State) → LegalWorkspace s env.ctx`; the first is UNSATISFIABLE
+   (in-module kernel refutation `empty_locals_not_dimensions`/
+   `no_global_dimensions`, mirroring the S05 cross-lane witness
+   `GlobalDimensionsObstruction017.lean` at commit `ef354c48` — pinned
+   READ-ONLY, never imported), so the success branch was vacuous. The
+   reachable-state replacement (`Source3.KeygenMakeCertificatePremises`):
+   `attempt_gate_dimensions` transports the `Remaining` instance to the
+   certificate-gate state of one accepted attempt (the sampled prefix of
+   `throughCertificate`), `attempt_gate_reachable` derives the gate
+   premises (`Dimensions` DERIVED, `Profile` from it, the mandatory gate
+   call via `accepted_break_requires_call`, `Initial`/`EntryFrame` via
+   `sampled_entry`), `loop_gate_reachable` folds that transport over the
+   whole capped `LoopTrace` on the successful edge (rejected attempts
+   chain to the accepted final attempt; entry facts from
+   `entry_of_allocation`/`entry_dimensions`/`entry_remaining`), and
+   `gate_workspace` CONSTRUCTS `LegalWorkspace` at that reachable gate
+   state (transported scratch legality + `space_of_frame` automatic-object
+   space + the gate bind's own bridge field
+   `KeygenMakeCertMaterial.workspace_scratch_block` + the allocation
+   `Shape`). Exports: `invocation_certificate_reachable` (decomposition
+   level) and `invocation_certificate_of_entry` (whole-invocation level) —
+   the exact `invocation_certificate` conclusion (accepted certificate call
+   + complete `CertPackage` at the gate call of THIS invocation) with
+   premises reduced to reachable entry facts (`Original` + space at the
+   readiness-prefix boundary, `Shape`, the named `CertEntryFrame`
+   residual). No all-state quantifier, no codec outcome/length/write frame
+   as premise; the 061 loop chronology and `TailCells` derivation are
+   consumed, never re-derived.
+2. PUNKT DRUGI (owner-ordered): the call-site liveness is DERIVED
+   (`Source3.KeygenMakeSkeCells`). `SkeCellWord` is the ske-cell
+   write-then-read history class (the LP64 word of the material pointer),
+   CREATED at the executed `ske[i]` store (`ske_word_of_bind`) and
+   TRANSPORTED across foreign-cell stores (`ske_word_of_store_frame` over
+   the byte-extent frame `load64_of_store_frame`, cells disjoint by
+   `skeElem_disjoint`). `small_site_src_live` derives
+   `site.src.block∈env.live` from the cell history + the PINNED explicit
+   live-set extension (`VirtualLegal (site.src.block::env.live) env.vb` —
+   the 061 module's own prescription "consumers needing a further block
+   extend the live set explicitly"); `small_site_material_extended`
+   supersedes the 061 side condition with the derived tie
+   `site.src=inputOf env i`; `small_site_legal_exists` is the achievability
+   witness. Word aliasing outside the live set is real, so the extension
+   is explicit and required. The concrete statement-chain extraction of
+   `SkeCellWord` at the four call sites and the codec-persistence leg
+   (segments 1–3) remain named (42.1).
+3. Entry pins 015–061 **12164 pins** verified with the sealed 061 pair
+   (`17868bb6…`/`65b23cf7…`) into `.build/levels_062/ENTRY_PINS_062.json`
+   (`e6f33de2…`) BEFORE edits — with the two RECORDED supersessions (the
+   061 VirtualLegal repair) accepted by the 062 batch tool. One
+   proof+audit 0/0: **82 entries=17 new declarations+65 inherited
+   interfaces; full terms+kernel inductives; standard axioms/zero
+   elisions**. Native Sage scripted PUBLIC controls: 5 families×4
+   mutations, all detected (EXPLICIT MOCK SEMANTICS; transcription reads
+   the reference C certificate-gate/encoding-tail region; no real
+   KeyGen/solver/certificate/codec, no law claim). Retained: three
+   rejected elaboration snapshots (the index-filling `cases` binders of
+   `AttemptExec.throughCertificate`/`Load64.load`; the
+   `workspace_scratch_block` module misattribution, the `⟨s with ...⟩`
+   syntax slip and unused signature binders; the `List.mem_cons_self`
+   implicit-argument slip) with sealed causes, and one entry-time guard
+   race on the parallel lane's Lean process (environment race, no source
+   bytes, re-run). Own commits `fe3c6ece` (proof), `8ad474ea` (tools),
+   `42e0adfa` (notes) + closing pair; foreign lanes' commits and working
+   tree preserved. Sealed pair `5fea1a8c…`/`c42e8210…`.
+
+### 42.1 Exact exports and remaining B1.07 obligations
+
+The discharge chain now reaches: one accepted `AttemptExec` derivation →
+six-gate spine → allocation-derived entry facts → public material →
+accepted solver call with the h frame → certificate frame (gate 6) →
+encoding-tail input boundary (059) → the 18-statement tail to the encoder
+call sites + teardown (060) → loop-trace chronology + `TailCells`
+derivation + repaired satisfiable virtual-map legality (061) → **the
+reachable-state certificate premises (gate-state `Dimensions`/`LegalWorkspace`
+derived along the chronology) and the derived call-site liveness from the
+`ske` cell history under the explicit live-set extension (this window)**.
+What remains honest and named: (a) the concrete statement-chain
+extraction of `SkeCellWord` at the four call sites (the nine pre-loop
+statements reaching the four-segment loop entry) and the persistence of
+the cell words through the earlier codec calls of segments 1–3 — the
+codec write-frame item, in B1.08/09 order; (b) the codec bodies and their
+write frames (B1.08/09: exact encoded lengths, persistence of the stored
+length words and source arrays through later encoder calls, bytewise
+round-trips); (c) the residue of "globals/common call ID/snapshots" —
+PINNED OPEN with its intended shape (an EXPLICIT identifier value beyond
+the shared derivation); (d) the literal refutation status of the all-state
+`LegalWorkspace` quantifier — not consumed, the repair replaces it either
+way. These are missing source composition proofs, NOT C/numerical
+counterexamples. Acceptance NOT met; Codecs B1.08/09 and B4/B5 laws stay
+outside.
+
+## 42R. Handoff — continue B1.07 AFTER the premise-repair/liveness midpoint,NOT from acceptance
+
+1. This window is CLOSED at exactly one recoverable midpoint,NOT
+   Acceptance. Do not auto-restart or enter B1.08/B4/B5. Preserve
+   BATCH_015–062 and all earlier/failed bytes (the three rejected
+   elaborations and the entry-time guard race record). Next owner-started
+   window continues in 42.1 order (the ske-chain extraction + codec
+   persistence first, per the B1.08/09 seam).
+2. BEFORE edits/jobs:
+   ```sh
+   mkdir -p .build/levels_063
+   python3 -B tools/keygen_make_certificate_premises_batch.py verify <BATCH_062.json sha> <BATCH_062_NOTES.md sha> .build/levels_063/ENTRY_PINS_063.json
+   ```
+   with the sealed 062 pair (`5fea1a8c…`/`c42e8210…`). Expect the pinned
+   BATCH_015–062 set with the two RECORDED 061 supersessions carried in
+   ENTRY_PINS_062 (accepted, not re-derived) and no further
+   supersession/job. The next batch tool must accept the recorded
+   `superseded` map. Mismatch is stop-and-report, not silent repair. The
+   global `job.active()` probe still trips on the parallel lane's runs: a
+   guard rejection with no source bytes is an environment race (new label,
+   re-run), not a pin mismatch; use `job_when_available.py` and never run
+   two wait-runners of your own at once.
+3. Use NEW modules; the two repair modules and their audit bytes are
+   current. `KeygenMakeCertificatePremises` exports
+   `attempt_gate_dimensions`/`attempt_gate_reachable`/
+   `loop_gate_reachable`/`gate_workspace`/`invocation_certificate_reachable`/
+   `invocation_certificate_of_entry`; `KeygenMakeSkeCells` exports
+   `SkeCellWord`/`ske_word_of_bind`/`ske_word_of_store_frame`/
+   `small_site_src_live`/`small_site_material_extended` — do not re-derive
+   them by assumption. The remaining honest gap is the ske-chain
+   extraction + codec persistence (B1.08/09); never insert codec
+   outcomes, exact encoded lengths or codec write frames as premises.
+   Inspect actual types before composing; beware the traps listed in the
+   060/061/062 notes (`prefix` keyword, index-filling `cases` binders
+   binding nothing, char-list normal forms of `Name` disequalities,
+   `{s with ...}` structure-update form, implicit-argument membership
+   lemmas, unused signature binders under the linter).
+4. One owner-started stage/window, one Acceptance or expanded midpoint,
+   bounded serial guarded jobs, unchanged limits/0/0 logs/native Sage.
+   Small local exact-path commits;push only on explicit owner signal;no
+   automatic review/delegation/relay/migration/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.07 virtual-legal repair / loop-chronology midpoint
 
 **B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
