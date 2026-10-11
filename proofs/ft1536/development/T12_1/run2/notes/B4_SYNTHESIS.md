@@ -647,6 +647,135 @@ run2 window. Rejected variants: B (unbounded tape - unphysical),
 C (approximate uniformity - spreads error terms through the loss
 accounting).
 
+## 2026-10-11: F04 REPAIR, VARIANT A (run2) — IMPLEMENTED; F05 rides the same window
+
+Implementation of the owner decision above, in this run2 window (guarded
+builds in `.build/f04_rom_a_001/`, every attempt retained). The challenge
+`c = H(r‖m)` is the ROM hash answer at the signed name, drawn OUTSIDE the
+sampler's fair-bit tape — the sampler draws only the noise, matching the
+real `to_sign`.
+
+### Types rewritten (run2 core)
+
+- `Run2/Games.lean` — `Sampler.code : Rq → State → Bytes → Nonce → Rq →
+  (Fin bits → Bool) → Option BoxVec` (was `... → (Fin bits → Bool) →
+  Rq × Option BoxVec`): the ROM challenge `c` is an INPUT of the noise map,
+  the tape realizes the reply only. `Games.sample` = the joint signing
+  draw: the lazy ROM answer `c` (uniform, outside the tape) then the noise
+  tape. `Games.signSim` keeps its exact shape (the challenge draw lives
+  inside `sample`, kernel wording preserved).
+- `Run2/LawBinding.lean` — `replyLaw` (per-challenge noise reply law),
+  `samplerLaw = Divergence.joint Law.uniform (replyLaw ...)` — THE
+  challenge-from-ROM joint — plus `samplerLaw_mass`, `map_expect`,
+  `joint_expect`, `sample_law` (all kernel-checked; the
+  `LocalJointCertificate` statement is unchanged, it compares the joint
+  laws).
+- `JointDecomp.samplerLaw_marginal_uniform` — the challenge marginal IS
+  `Law.uniform` exactly (`marginal_joint`), delivered as a THEOREM: this is
+  the F04 replacement, `d1 = 0` with no slack and no premise.
+- `HacGlue` — `UniformChallengeAt` REMOVED (the impossible bridge of the
+  pre-audit model, premise-audit F04); replaced by the challenge-from-ROM
+  interface `RomChallengeAt` with its kernel realization `romChallengeAt`
+  (NOT an assumption) and the bridge `replyAt_eq_replyLaw` (`condOf` of the
+  joint IS the noise reply law).
+
+### The 12 consumers rewritten (the F04 DO-NOT-CONSUME list, all repaired)
+
+`huc : UniformChallengeAt S` is GONE from every consumer; Layer 1 is
+delivered by `romChallengeAt` / `JointDecomp.samplerLaw_marginal_uniform` —
+no A2-label substitution, the uniformity is a kernel proof of the ROM
+construction. New argument lists (binder order):
+
+1. `HacGlue.localJointCertificate_of_named_premises` — (S, k, hk, jatt,
+   hshape, hattempt, hone);
+2. `HacGlue.localJointCertificate_of_named_premises_e` — same;
+3. `HacGlue.localJointCertificate_of_pointwise_premises` — (S, k, hk, jatt,
+   hshape, hattempt); its `localJointCertificate_of_uniform_challenge`
+   premise is discharged by `romChallengeAt S` (a proof, not an assumption);
+4. `HacGlue.localJointCertificate_of_named_premises_attemptFactor` —
+   (S, jatt, hshape, hattempt, hone);
+5. `ONoneGeometry.localJointCertificate_of_attemptFactor` — (S, jatt,
+   hshape, hattempt) (O-NONE discharged by `hone`);
+6. `Assembly.end_to_end_assembled_theorem_statement`;
+7. `Assembly.end_to_end_assembled_theorem_statement_prgTerm`;
+8. `Assembly.end_to_end_assembled_theorem_attemptFactor`;
+9. `Assembly.exists_assembled_reducer`;
+10. `Assembly.assembled_hardness_substitution`;
+11. `AdvPrg.assembled_hardness_substitution_chacha`;
+12. `AdvPrg.end_to_end_assembled_theorem_statement_chacha`
+    — all of 6-12 lose exactly the `huc` binder.
+
+NOT touched (outside the charge, as the audit records):
+`AssemblyComp.advMT_ge_of_public_sim_stream_win` (no `huc` in its type) —
+its whole closure still compiles; `JointDecomp.localJointCertificate_of_joint_bounds`
+/ `_of_pointwise_bounds` keep their abstract `hmarg` shape (satisfiable,
+unchanged). Frozen stages keep the pre-audit bytes; the audit's
+DO-NOT-CONSUME list stays the record of what WAS broken.
+
+### Costs and hprg per variant A
+
+- `PublicEncoding.samplerInput` carries the ROM challenge (`field c`, 24576
+  bits); `samplerOutput` is the reply only (≤ 26113 bits, was ≤ 50689);
+- `SamplerMachine.inputCap` = 49476 + stateCap + 9·bytes + S.bits (the
+  challenge input is charged), `SamplerMachine.cost` at the 26113 output
+  cap; `SamplerCertificate` is a `Code (Option BoxVec)` (noise-only reply);
+- `MeteredExecution.signAfter` charges `challengeCost` (the ROM-hash
+  challenge production — outside the tape) + `drawCost S.bits` (noise tape
+  only) + `sCost` (input includes `field c`); `turnBound` matches;
+- `MachineExecution.run` / `MeteredExecution.run` sign branches draw the ROM
+  challenge like the nonce (outside the tape), then the noise tape; both
+  `run_binding`/`erasure` re-proved;
+- `CompPrg`: `signSimAt`'s window drives the noise map only (challenge is a
+  ROM draw outside the tape), `signSimAt_uniform` re-proved; `tapeWidth =
+  qs · S.bits` and `hprg : AdvPRG tau ≤ deltaPRG` remain the NOISE-tape
+  seam only — the challenge is not on the tape (exactly the variant-A
+  difference versus B/C); `ChaCha20PRFBound` stays the named standard
+  assumption (`hprg_of_chacha20`);
+- `Assembly.samplerLawAt` = the ROM joint with the noise reply under `tau`;
+  `samplerLawAt_uniform` holds by `rfl`.
+
+### F05 (same window) — floor on the proper support / relative pointwise form
+
+`T5Pointwise`:
+
+- `machineStage_of_absErr_floor_support` — the floor restricted to the
+  PROPER SUPPORT (`0 < target z`); zeros outside the fiber are handled
+  SEPARATELY (`hzero`), never conflated with the floor;
+- `machineStage_of_relErr` — the RELATIVE pointwise estimate
+  (`|mach z − target z| ≤ eps · target z`): no floor at all;
+- `machineStage_of_absErr_fiberFloor` — the F05 consistency pin: on the
+  actual `TowerWhole` target the support-restricted floor coexists with the
+  forced fiber support (the audit's CONDITIONAL conflict is dissolved, not
+  papered over). The global-floor form `machineStage_of_absErr_floor` is
+  KEPT as recorded history with its own scope.
+
+### DO-NOT-CONSUME list (premise-audit F04) — status after this repair
+
+| export | status |
+|---|---|
+| 4x `HacGlue.localJointCertificate_of_*` | REPAIRED (variant A) — consumable at the new signatures |
+| `ONoneGeometry.localJointCertificate_of_attemptFactor` | REPAIRED — consumable at the new signature |
+| 5x `Assembly.*` (statement/prngTerm/attemptFactor/exists/hardness) | REPAIRED — consumable at the new signatures |
+| 2x `AdvPrg.*_chacha` | REPAIRED — consumable at the new signatures |
+
+The OLD signatures (with `huc : UniformChallengeAt S`) remain
+NON-consumable. Nothing here asserts any A2 label; Layer 1 is a kernel
+theorem of the ROM construction.
+
+Pre-existing, untouched, outside every closure (recorded, not fixed here):
+`Run2/rawBadEnclosure.lean`, `Run2/Scratch.lean`, `Probe.lean` — historical
+scratch sources of commit `3396e8e0`, imported by nothing, already broken
+before this window (Lean-3 `hypothesis` syntax / stale `#check` names); and
+`FftBind/FftGeometry.lean`, `FftBind/FftSemantics.lean`,
+`FftBind/NttSemantics.lean` — cross-lane BINBIND material importing
+`Source3.*`, whose repair is the separate lane 062 (do-not-touch here).
+
+Open (unchanged, recorded): `ReplyShape`/`S.code` source binding
+(B1/source3), the byte bridge, the additive-error caveat, the F06
+statistical/computational distinction (`chacha20PRFBound_delta_ge` stands).
+F05's `hzero` (machine fiber support) is a named premise of the source
+side, never assumed.
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
