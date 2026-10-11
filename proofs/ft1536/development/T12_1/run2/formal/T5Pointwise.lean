@@ -675,6 +675,103 @@ theorem machineStage_of_absErr_floor {target mach : BoxPair → ℝ} (fl E : ℝ
   · nlinarith
   · nlinarith
 
+/-! ### F05 repair (premise-audit F05) — floor on the PROPER SUPPORT, zeros
+outside the fiber SEPARATELY, and the relative pointwise form
+
+The audit's F05 is a CONDITIONAL conflict, dissolved here (not papered over):
+`TowerWhole A c target` FORCES `target z = 0` off the fiber
+(`towerWhole_support`), so the global positive floor `∀ z, fl ≤ target z` of
+`machineStage_of_absErr_floor` cannot coexist with the actual stage-1 target.
+The additive route needs the floor only where the target is POSITIVE (the
+proper support = the fiber); outside the fiber both sides vanish and are
+handled by their own separate hypothesis `hzero` (machine fiber support —
+a real premise of the source side, never assumed here). The alternative
+RE-LATIVE pointwise form needs no floor at all. -/
+
+/-- **F05 repair, floor form**: the additive route re-shapes to
+`MachineStage` with the floor restricted to the proper support
+(`0 < target z`), and the zeros outside the fiber handled SEPARATELY by
+`hzero` (never conflated with the floor). -/
+theorem machineStage_of_absErr_floor_support {target mach : BoxPair → ℝ} (fl E : ℝ)
+    (hnn : ∀ z, 0 ≤ target z)
+    (herr : ∀ z, |mach z - target z| ≤ E)
+    (hfl : ∀ z, 0 < target z → fl ≤ target z)
+    (hzero : ∀ z, target z = 0 → mach z = 0)
+    (hElo : E ≤ (1 - (CenteringClosure.t5lo : ℝ)) * fl)
+    (hEhi : E ≤ ((CenteringClosure.t5hi : ℝ) - 1) * fl) :
+    MachineStage target mach := by
+  have hlo1 : (0:ℝ) ≤ 1 - (CenteringClosure.t5lo : ℝ) := by
+    norm_num [CenteringClosure.t5lo, CenteringClosure.t5minus,
+      CenteringClosure.t5plus, CenteringClosure.u]
+  have hhi1 : (0:ℝ) ≤ (CenteringClosure.t5hi : ℝ) - 1 := by
+    norm_num [CenteringClosure.t5hi, CenteringClosure.t5minus,
+      CenteringClosure.t5plus, CenteringClosure.u]
+  intro z
+  by_cases hz : 0 < target z
+  · have hflz := hfl z hz
+    have hdle := herr z
+    have hdown : target z - mach z ≤ E := by
+      have h := le_trans (neg_le_abs (mach z - target z)) hdle
+      linarith
+    have hup : mach z - target z ≤ E := le_trans (le_abs_self _) hdle
+    constructor
+    · nlinarith
+    · nlinarith
+  · have hz0 : target z = 0 := le_antisymm (le_of_not_gt hz) (hnn z)
+    have hm0 : mach z = 0 := hzero z hz0
+    rw [hz0, hm0, mul_zero, mul_zero]
+    exact ⟨le_rfl, le_rfl⟩
+
+/-- **F05 repair, relative form**: with a RELATIVE pointwise error
+`|mach z − target z| ≤ eps * target z` NO mass floor is needed at all — the
+multiplicative re-shape holds at every point, and the zeros outside the fiber
+are automatic (`mach z = 0` whenever `target z = 0`). This is the form that
+fits the actual `TowerWhole`-shaped target without any support restriction. -/
+theorem machineStage_of_relErr {target mach : BoxPair → ℝ} (eps : ℝ)
+    (hnn : ∀ z, 0 ≤ target z)
+    (hrel : ∀ z, |mach z - target z| ≤ eps * target z)
+    (hlo : eps ≤ 1 - (CenteringClosure.t5lo : ℝ))
+    (hhi : eps ≤ (CenteringClosure.t5hi : ℝ) - 1) :
+    MachineStage target mach := by
+  intro z
+  have hdle := hrel z
+  have hdown : target z - mach z ≤ eps * target z := by
+    have h := le_trans (neg_le_abs (mach z - target z)) hdle
+    linarith
+  have hup : mach z - target z ≤ eps * target z := le_trans (le_abs_self _) hdle
+  constructor
+  · nlinarith [hnn z]
+  · nlinarith [hnn z]
+
+/-- **F05 consistency pin (the audit's conditional conflict, dissolved)**:
+on the ACTUAL stage-1 target (`TowerWhole A c target`) the support-restricted
+floor coexists with the forced fiber support: off the fiber both the target
+(`towerWhole_support`) and the machine weights (`hzero`, machine fiber
+support) vanish; on the fiber the floor is a genuine premise and the target
+is strictly positive (`towerWhole_iff` + `gaussianWeight_pos`). -/
+theorem machineStage_of_absErr_fiberFloor {A : BoxPair → FT1536.Relation.Rq}
+    {c : FT1536.Relation.Rq} {target mach : BoxPair → ℝ} (fl E : ℝ)
+    (hT : TowerWhole A c target)
+    (herr : ∀ z, |mach z - target z| ≤ E)
+    (hfl : ∀ z, A z = c → 0 < target z → fl ≤ target z)
+    (hzero : ∀ z, A z ≠ c → mach z = 0)
+    (hElo : E ≤ (1 - (CenteringClosure.t5lo : ℝ)) * fl)
+    (hEhi : E ≤ ((CenteringClosure.t5hi : ℝ) - 1) * fl) :
+    MachineStage target mach := by
+  have htl : (0:ℝ) < towerLo := by
+    norm_num [towerLo, Run2.T5ScalarMass.rowBudget]
+  apply machineStage_of_absErr_floor_support fl E (towerWhole_nonneg hT) herr _ _ hElo hEhi
+  · intro z hpos
+    by_cases hz : A z = c
+    · exact hfl z hz hpos
+    · exact absurd (towerWhole_support hT z hz) (ne_of_gt hpos)
+  · intro z hz0
+    by_cases hz : A z = c
+    · exact absurd hz0 (ne_of_gt
+        (lt_of_lt_of_le (mul_pos htl (gaussianWeight_pos z))
+          ((towerWhole_iff A c target).mp hT |>.2 z hz).1))
+    · exact hzero z hz
+
 /-! ## 4. Stage 3 `WrapStage` — the wrap/centering map pointwise -/
 
 /-- **THE exact pointwise strengthening of stage 3**: over the wrap/centering
