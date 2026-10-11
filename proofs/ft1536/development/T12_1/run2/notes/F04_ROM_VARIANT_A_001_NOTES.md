@@ -132,3 +132,86 @@ bash tools/original/run_lean_guarded.sh audit/F04ConsumersAudit.lean \
 additive-error caveat, F06 statistical/computational distinction
 (`chacha20PRFBound_delta_ge` stands), and F05's `hzero` (machine fiber
 support — a named premise of the source side, never assumed).
+
+## 8. Trust boundary correction after REVIEW_001 (2026-10-11, R1/R2)
+
+This appended correction is authoritative for the review scope and trust
+boundary. The preceding text, pair pins and `final_clean_002` remain historical
+bytes; exact previous NOTES/CHECKPOINT copies are retained in
+`F04_ROM_VARIANT_A_SCOPE_002/PREVIOUS_NOTES.md` and `PREVIOUS_CHECKPOINT.md`.
+REVIEW_001 keeps its **CHANGES_REQUIRED** verdict. This correction is
+**SCOPE_CORRECTED_AWAITING_TARGETED_RECHECK**, not a new independent acceptance.
+
+**The submitted F04/F05 closure contains exactly 166 project modules**, with
+the original receipt numbers **#001–#165 and #167**. It is deliberately broad
+and closed under project imports, rather than a minimal dependency closure of
+the repaired exports. The exact numbered list, source hashes and import edges
+are in `F04_ROM_VARIANT_A_SCOPE_002/RECEIPT.json` and `MODULES.md`. The historical
+167-module build remains valid execution evidence; **167 is not the scope of
+the standard-only claim**.
+
+For this 166-module closure, the retained axiom audits are **standard only**:
+`propext`, `Classical.choice`, `Quot.sound`. The evidence comprises 569 recorded
+axiom prints in this scope and the 21 separately audited declarations of
+REVIEW_001, including all 12 consumers, the ROM marginal/interface, the
+untouched AssemblyComp export and the three F05 implications. These are exact
+counts of the recorded audits, not an enumeration of every declaration in the
+Lean environment. There is no new mathematical proof or fresh Lean rebuild
+in this documentation correction.
+
+**R1 — deliberately excluded diagnostic module.** Historical module **#166
+`SelectBitPreserve`** is outside the submitted closure and the standard-only
+claim. Its source SHA256 is
+`b7f57ec65c98b3477a7177e4107d92eefc78ff58ff5c8f57c6d5fb7cb47a9523`.
+The import graph has **zero consumers** of this module, including in the full
+local/archive source mapping; removing it leaves the 166-module scope closed.
+The retained log `F04_ROM_VARIANT_A_SCOPE_002/166_SelectBitPreserve.log`, SHA256
+`81fb8910687d4604cd23a35722862bd82c413b4daa40b953c5c7e746b89f0d09`, explicitly
+prints the additional axiom:
+
+```text
+select_bits_equiv._native.bv_decide.ax_1_5
+```
+
+It occurs in `select_bits_equiv`, `select_old_eq_new` and
+`select_code_variants_equiv`. The fourth recorded print, `mask_extend_eq`, is
+standard only; all four prints are excluded from 573, leaving **569**, not 570.
+The module and its evidence are preserved, not repaired or silently discarded.
+
+**R2 — retained tooling exception in the submitted closure.** Module **#156
+`ThetaBox`**, source SHA256
+`07db75cf4adfc8e3349c92919bf4789ef9453e08685ead8a5026eee203365ebe`, retains
+`set_option linter.constructorNameAsVariable false in` at line 166, locally
+for `blockSum_eq_boxSum`. This historical exception disables a naming linter
+for that declaration; it does not disable the proof or kernel verification.
+There is no blanket claim of “zero suppressions” for the closure. The
+REVIEW_001 test copy with this option enabled is preserved byte for byte as
+`F04_ROM_VARIANT_A_SCOPE_002/ThetaBoxLinterEnabled.lean.txt` (SHA256
+`a3061f1d964cc7877de08f211a884a04d90d2dc9224f8896c3992fd6bfa99def`).
+Its preserved log `theta_linter_enabled.log` (SHA256
+`1fa8918be6d90f09de4c96e65753de6e3ab73c552fb211d0026b9955ff8c53e8`) records
+exit 1 from:
+
+```text
+linter Lean.Linter.constructorNameAsVariable failed: maximum recursion depth has been reached
+```
+
+The expected diagnostic occurred before the 30-second timeout. This correction
+pins the existing test and log; it does not rerun or fix the linter.
+
+**Preservation and reproduction.** `final_clean_002/RECEIPT.json` is unchanged:
+SHA256 `e37814b7b768a414f4bd6a18eca34e7441d4a2ff3986b6c3cf8cc6b63107caae`.
+Its exact copy and the relevant REVIEW_001 evidence are retained alongside the
+new scope receipt. `PRESERVED_INPUTS.sha256` checks all 3813 retained input
+files (earlier attempts, author audit, review sources/logs and pair/prompt),
+without changing them. Recheck the new scope evidence from the repository:
+
+```sh
+python3 -B proofs/ft1536/development/T12_1/run2/tools/check_f04_scope_002.py
+```
+
+Mathematical F04/F05 sources, the six earlier exclusions, open source-binding
+obligations and MIGRATION_HOLD are unchanged. No push, tag or stage import.
+The separate low-priority hardening queue is recorded under T12.1 in ROADMAP:
+rewrite SelectBitPreserve without `bv_decide`, and repair ThetaBox's linter
+recursion without disabling the linter. Neither is part of this correction.

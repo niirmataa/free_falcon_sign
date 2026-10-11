@@ -79,3 +79,53 @@ akceptacji, import/przeniesienie przez koordynatora wg rytmu projektu.
 - próby zachowane — ✓ (`.build/f04_rom_a_001/attempts/`);
 - bez push — ✓; cudze pliki nietknięte (Source3 = tor 062) — ✓
   (commity z dokładnymi pathspecami).
+
+## Korekta granicy zaufania po REVIEW_001 — R1/R2 (2026-10-11)
+
+Ta dopisana korekta zastępuje szeroką interpretację opisu powyżej.
+Wcześniejsze bajty NOTES/CHECKPOINT są zachowane jako dokładne prefiksy oraz
+osobne kopie `F04_ROM_VARIANT_A_SCOPE_002/PREVIOUS_{NOTES,CHECKPOINT}.md`.
+Historyczny receipt `final_clean_002` pozostaje bez zmian, SHA256
+`e37814b7b768a414f4bd6a18eca34e7441d4a2ff3986b6c3cf8cc6b63107caae`;
+167/167 oznacza historyczny czysty rebuild, nie liczbę modułów objętych
+twierdzeniem „standard only”. REVIEW_001 pozostaje **CHANGES_REQUIRED**.
+
+**Odbierana closure F04/F05: dokładnie 166 modułów, #001–#165 i #167.**
+To świadomie szeroki zakres domknięty na importy, nie minimalna closure
+samych eksportów. Nowy receipt `F04_ROM_VARIANT_A_SCOPE_002/RECEIPT.json`
+podaje każdy numer/moduł, SHA256 źródła, importy i powiązanie z zachowanymi
+logami autora oraz recenzenta. Czytelna lista: `MODULES.md` w tym katalogu.
+Twierdzenie **standard-only** dotyczy audytów tej właśnie closure 166 modułów:
+569 wydruków aksjomatów i 21 osobno audytowanych deklaracji recenzenta
+używa jedynie `propext`, `Classical.choice`, `Quot.sound`. Liczby wydruków
+nie utożsamiamy z enumeracją całego środowiska Lean.
+
+**R1:** historyczny diagnostyczny **#166 SelectBitPreserve jest świadomie
+wyłączony**. Zero konsumentów w grafie importów; usunięcie go nie odcina
+żadnej zależności odbieranych modułów. Źródło ma SHA256
+`b7f57ec65c98b3477a7177e4107d92eefc78ff58ff5c8f57c6d5fb7cb47a9523`.
+Zachowany log (pin w nowym receipcie) cytuje dodatkowy aksjomat
+`select_bits_equiv._native.bv_decide.ax_1_5` w trzech eksportach. Moduł
+pozostaje historycznym materiałem diagnostycznym, poza standard-only claim.
+
+**R2:** **#156 ThetaBox pozostaje w closure** z historycznym lokalnym
+wyłączeniem `linter.constructorNameAsVariable` przy `blockSum_eq_boxSum`.
+To jawny wyjątek narzędziowy, nie wyciszenie dowodu lub kernela. Źródło
+ma SHA256 `07db75cf4adfc8e3349c92919bf4789ef9453e08685ead8a5026eee203365ebe`.
+Wersjonowana testowa kopia `ThetaBoxLinterEnabled.lean.txt` i log
+`theta_linter_enabled.log` zachowują dokładne bajty testu REVIEW_001:
+exit 1, „linter Lean.Linter.constructorNameAsVariable failed: maximum
+recursion depth has been reached”. Pełne piny kopii i logu podano w NOTES
+oraz nowym receipcie. Nie deklarujemy „zero wyciszeń” całej closure.
+
+**Wynik korekty:** SCOPE_CORRECTED_AWAITING_TARGETED_RECHECK. Sprawdzono
+graf, piny, audyty i nienaruszenie 3813 wcześniejszych plików; bez nowego
+rebuilda Lean, zmian matematycznych F04/F05 lub awansu werdyktu recenzji.
+Następny krok to ukierunkowany recheck zmienionego zakresu/evidence.
+ReplyShape/source-defined sampler, most bajtowy, hzero/budżety i F06
+pozostają otwarte. MIGRATION_HOLD zachowany; bez push/importu/tagu.
+
+**Kolejka utwardzania T12.1, NISKI priorytet, osobna partia:** przepisanie
+SelectBitPreserve bez `bv_decide` oraz naprawa rekurencji lintera w ThetaBox
+bez wyłączenia. Zlecenia i kryteria odbioru dopisano do żywego ROADMAP;
+nie uruchomiono ich w tej korekcie.

@@ -1,0 +1,5412 @@
+{
+  "schema": "FT1536_F04_SCOPE_RECEIPT_V2",
+  "scope_id": "F04_ROM_VARIANT_A_SCOPE_002",
+  "status": "SCOPE_CORRECTED_AWAITING_TARGETED_RECHECK",
+  "scope_kind": "Deliberately broad import-closed review scope, not a minimal export dependency closure",
+  "input_commit": "d053369e081d1e8b35630f736072286095876e43",
+  "mathematical_sources_changed": false,
+  "fresh_lean_replay_in_this_correction": false,
+  "historical_review_verdict": "CHANGES_REQUIRED (REVIEW_001 unchanged)",
+  "author_final_clean_002": {
+    "path": "proofs/ft1536/development/T12_1/run2/.build/f04_rom_a_001/attempts/final_clean_002/RECEIPT.json",
+    "sha256": "e37814b7b768a414f4bd6a18eca34e7441d4a2ff3986b6c3cf8cc6b63107caae"
+  },
+  "review_replay": {
+    "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/REPLAY_RECEIPT.json",
+    "sha256": "efc1f03db8e768bc5e86e2eb3ce5245b6d8462783b6f01bbff5c7b8fd64af232"
+  },
+  "review_report": {
+    "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/REVIEW.md",
+    "sha256": "42e5e11fb7dc8b35c71312705733f3ab16e9055bacd099b48cf6cc3c7727f8d7"
+  },
+  "toolchain": {
+    "lean_version": "Lean (version 4.34.0, x86_64-unknown-linux-gnu, commit 293d5d0c0c3f3dded4688b3ccd6a33939ac5102b, Release)",
+    "lean_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+    "mathlib_head": "5ed2965256430c3649e86755f9576b54eca72435"
+  },
+  "accepted_module_count": 166,
+  "accepted_module_numbers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127,
+    128,
+    129,
+    130,
+    131,
+    132,
+    133,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147,
+    148,
+    149,
+    150,
+    151,
+    152,
+    153,
+    154,
+    155,
+    156,
+    157,
+    158,
+    159,
+    160,
+    161,
+    162,
+    163,
+    164,
+    165,
+    167
+  ],
+  "modules": [
+    {
+      "number": 1,
+      "module": "FT1536.Basic",
+      "source": {
+        "path": "proofs/ft1536/stages/FT1536_CENTERING_CLOSURE_RUN_001/library/FT1536/Basic.lean",
+        "sha256": "ae231be7cfbe7d8e7618237129d885c45c0e72ec21e592b779f54a0c11cd5ee6"
+      },
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Exp",
+        "Mathlib.Analysis.Real.Sqrt",
+        "Mathlib.Algebra.BigOperators.Field",
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.NormNum",
+        "Mathlib.Tactic.Ring",
+        "Mathlib.Tactic.FieldSimp",
+        "Mathlib.Tactic.Positivity"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/001_FT1536_Basic.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 2,
+      "module": "FT1536.MathSign",
+      "source": {
+        "path": "proofs/ft1536/stages/FT1536_CENTERING_CLOSURE_RUN_001/library/FT1536/MathSign.lean",
+        "sha256": "4f529e06510072fa3a6515babb93e4946b2ed3dcdab5f662d80073e8bc3d5bd9"
+      },
+      "imports": [
+        "FT1536.Basic",
+        "Mathlib.Data.Fintype.Option"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/002_FT1536_MathSign.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 3,
+      "module": "FT1536.Geometry",
+      "source": {
+        "path": "proofs/ft1536/stages/FT1536_CENTERING_CLOSURE_RUN_001/library/FT1536/Geometry.lean",
+        "sha256": "bb03ecee63c43f8da5583fb26bfbf0be87ca926f62fb686e50261a5d9b9de78c"
+      },
+      "imports": [
+        "FT1536.Basic"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/003_FT1536_Geometry.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 4,
+      "module": "FT1536.Divergence",
+      "source": {
+        "path": "proofs/ft1536/stages/FT1536_CENTERING_CLOSURE_RUN_001/library/FT1536/Divergence.lean",
+        "sha256": "e82efaa4cefb8c6e02089da56d6e76dde5d99ea403e9a742e923974feae4c67d"
+      },
+      "imports": [
+        "FT1536.Basic"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/004_FT1536_Divergence.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 5,
+      "module": "FT1536.EventTransfer",
+      "source": {
+        "path": "proofs/ft1536/stages/FT1536_MATH_EUFCMA_MTISIS_RUN_001/formal/FT1536/EventTransfer.lean",
+        "sha256": "ad8f42be9ea3ccc3c136f44b89056dc6d1d4992279f97aa6802b5e38d69e5cd3"
+      },
+      "imports": [
+        "FT1536.Divergence"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/005_FT1536_EventTransfer.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 6,
+      "module": "FT1536.Adaptive",
+      "source": {
+        "path": "proofs/ft1536/stages/FT1536_MATH_EUFCMA_MTISIS_RUN_001/formal/FT1536/Adaptive.lean",
+        "sha256": "f5789d529bfecba11f466cd7d010377549ce4dd3045db88447566caba09d6d11"
+      },
+      "imports": [
+        "FT1536.EventTransfer"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/006_FT1536_Adaptive.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 7,
+      "module": "FT1536.RetryDivergence",
+      "source": {
+        "path": "proofs/ft1536/stages/FT1536_MATH_EUFCMA_MTISIS_RUN_001/formal/FT1536/RetryDivergence.lean",
+        "sha256": "d7315debcf72d90f7ef9e0561387e9aa5c4afb2cbdb8ec4f5427fdcda468f99c"
+      },
+      "imports": [
+        "FT1536.MathSign",
+        "FT1536.Divergence"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/007_FT1536_RetryDivergence.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 8,
+      "module": "FT1536.ROM",
+      "source": {
+        "path": "proofs/ft1536/stages/FT1536_MATH_EUFCMA_MTISIS_RUN_001/formal/FT1536/ROM.lean",
+        "sha256": "6b0d7d0677f4cec3d88cdd96caaebda85132bc235686c3547f7a9e821e47bb36"
+      },
+      "imports": [
+        "FT1536.Basic"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/008_FT1536_ROM.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 9,
+      "module": "FT1536.Collision",
+      "source": {
+        "path": "proofs/ft1536/stages/FT1536_MATH_EUFCMA_MTISIS_RUN_001/formal/FT1536/Collision.lean",
+        "sha256": "7a6c49c2be8a4c1376eb5ac9500ffd50e15a10bc7e9bebaccd21876810d2c114"
+      },
+      "imports": [
+        "FT1536.Basic"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/009_FT1536_Collision.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 10,
+      "module": "FT1536.PublicSimulation",
+      "source": {
+        "path": "proofs/ft1536/stages/FT1536_CENTERING_CLOSURE_RUN_001/library/FT1536/PublicSimulation.lean",
+        "sha256": "03a4f1c4d448c8bc47652b5f1186630a722228beb20780afdd6f5d1d7c50d559"
+      },
+      "imports": [
+        "FT1536.MathSign",
+        "FT1536.Geometry",
+        "FT1536.Divergence"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/010_FT1536_PublicSimulation.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 11,
+      "module": "FT1536.PublicCode",
+      "source": {
+        "path": "proofs/ft1536/stages/FT1536_MATH_EUFCMA_MTISIS_RUN_001/formal/FT1536/PublicCode.lean",
+        "sha256": "a8fdb7447ea9c0c0eb7bb056155e1a3cbf5d2bd3167385782e5c2d14b3f0a32b"
+      },
+      "imports": [
+        "FT1536.PublicSimulation",
+        "FT1536.ROM"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/011_FT1536_PublicCode.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 12,
+      "module": "FT1536.Relation",
+      "source": {
+        "path": "proofs/ft1536/stages/FT1536_MATH_EUFCMA_MTISIS_RUN_001/formal/FT1536/Relation.lean",
+        "sha256": "b3fd466d43912aefe04c8f7b38fb9f59181965c2300cf27cbdbc0952b27d5512"
+      },
+      "imports": [
+        "FT1536.Geometry",
+        "FT1536.ROM",
+        "Mathlib.Data.ZMod.Basic",
+        "Mathlib.Algebra.Polynomial.Div"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/012_FT1536_Relation.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 13,
+      "module": "FT1536.Model",
+      "source": {
+        "path": "proofs/ft1536/stages/FT1536_MATH_EUFCMA_MTISIS_RUN_001/formal/FT1536/Model.lean",
+        "sha256": "25f0f72ab6a4fcd0a004af7e286ec137b64243dfc35fd4f3ec5e523694bdd4d5"
+      },
+      "imports": [
+        "FT1536.PublicCode",
+        "FT1536.Relation"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/013_FT1536_Model.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 14,
+      "module": "FT1536.TraceBound",
+      "source": {
+        "path": "proofs/ft1536/stages/FT1536_MATH_EUFCMA_MTISIS_RUN_001/formal/FT1536/TraceBound.lean",
+        "sha256": "a05d5d218fb8042dc4065a30c06b1e2b7dcefd0cf0321a3cfcc06332f2130c65"
+      },
+      "imports": [
+        "FT1536.Adaptive"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/014_FT1536_TraceBound.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 15,
+      "module": "FT1536.Certificate",
+      "source": {
+        "path": "proofs/ft1536/stages/FT1536_MATH_EUFCMA_MTISIS_RUN_001/formal/FT1536/Certificate.lean",
+        "sha256": "1b6edc797ff06282affae1dc1442fb6c31a9b6128b7785727d8cd7321caeea45"
+      },
+      "imports": [
+        "FT1536.Geometry"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/015_FT1536_Certificate.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 16,
+      "module": "Run2.FiniteDist",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/FiniteDist.lean",
+        "sha256": "37da55ee0838ad4caae95d7a006774ca475b2a2643009f20700e1a8d51c09526"
+      },
+      "imports": [
+        "FT1536.Model",
+        "FT1536.Adaptive"
+      ],
+      "author_log_sha256": "e345f8a3612ed06a1c3c49ade2cfb8ecbe9f17dc58767324d4c98e499bf6d164",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/016_Run2_FiniteDist.log",
+        "sha256": "e345f8a3612ed06a1c3c49ade2cfb8ecbe9f17dc58767324d4c98e499bf6d164"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 17,
+      "module": "Run2.Games",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/Games.lean",
+        "sha256": "c64f9cb5c2066c8a71fb77341dbad9d18211b66ac4c61d7660fc0f5cc2dda467"
+      },
+      "imports": [
+        "Run2.FiniteDist",
+        "Mathlib.Data.Fintype.Vector"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/017_Run2_Games.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 18,
+      "module": "Run2.EmitMixture",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/EmitMixture.lean",
+        "sha256": "5d49eccc575798cc29e9597bb17ac0678c21f660932d0a705de8537021cd460e"
+      },
+      "imports": [
+        "FT1536.RetryDivergence"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/018_Run2_EmitMixture.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 19,
+      "module": "Run2.BadVerify",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/BadVerify.lean",
+        "sha256": "e8e795cb3ad21832125cd5afd844532485c081ab27e49f7d9ea4fd7e6b3a3f70"
+      },
+      "imports": [
+        "Run2.Games",
+        "FT1536.Certificate"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/019_Run2_BadVerify.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 20,
+      "module": "Run2.GameInvariants",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/GameInvariants.lean",
+        "sha256": "24e5a0798599c0302f7ed7109e31109dd125a45bfedcc813ec92f49ef413695f"
+      },
+      "imports": [
+        "Run2.Games",
+        "FT1536.Collision"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/020_Run2_GameInvariants.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 21,
+      "module": "Run2.FiberBinding",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/FiberBinding.lean",
+        "sha256": "3ecff8c8df6ac0096260bc59a96ec5ac0150416a88599b404600532991a3f416"
+      },
+      "imports": [
+        "Run2.EmitMixture",
+        "Run2.BadVerify"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/021_Run2_FiberBinding.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 22,
+      "module": "Run2.LazySampling",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/LazySampling.lean",
+        "sha256": "d5736240ccd06e14d13aa39eb71982667f9d6c37ebb6d2a11f3fc6aa22deb53b"
+      },
+      "imports": [
+        "Run2.FiniteDist"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/022_Run2_LazySampling.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 23,
+      "module": "Run2.LawBinding",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/LawBinding.lean",
+        "sha256": "85c139e161f58b06df516c56e8594bd068becb75a88e8ee6318a5927448588f0"
+      },
+      "imports": [
+        "Run2.GameInvariants",
+        "Run2.FiberBinding",
+        "Run2.LazySampling"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/023_Run2_LawBinding.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 24,
+      "module": "Run2.CorrectnessProbability",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/CorrectnessProbability.lean",
+        "sha256": "2fe93fd64d80cfe1645d13acf2a50c1728de52d5ebe0e3cda63519675edd5ad8"
+      },
+      "imports": [
+        "Run2.FiberBinding"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/024_Run2_CorrectnessProbability.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 25,
+      "module": "Run2.PaidSteps",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/PaidSteps.lean",
+        "sha256": "f787928c4d3989e304c36cec4e8d821a04271dd19c9e7a7c71bc69a2c7068a22"
+      },
+      "imports": [
+        "Run2.GameInvariants"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/025_Run2_PaidSteps.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 26,
+      "module": "Run2.TableCost",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/TableCost.lean",
+        "sha256": "1fbfc4f822dc43a680912a9a023fb7c8a2c704f9744e1f493d28d242b4f199a3"
+      },
+      "imports": [
+        "Run2.Games"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/026_Run2_TableCost.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 27,
+      "module": "Run2.UniformErrorBound",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/UniformErrorBound.lean",
+        "sha256": "bb7e922d9a7a1f866c20a037fb48bce3c584cc3d3245901736b5fb9840868d9c"
+      },
+      "imports": [
+        "Run2.CorrectnessProbability",
+        "Mathlib.Analysis.Complex.ExponentialBounds"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/027_Run2_UniformErrorBound.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 28,
+      "module": "Run2.MTBinding",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/MTBinding.lean",
+        "sha256": "f4166dba3d966d9c9826576e4937d7c3dddfee887c3c2c828c6fc82fb8c42987"
+      },
+      "imports": [
+        "Run2.LawBinding"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/028_Run2_MTBinding.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 29,
+      "module": "Run2.NumericCertificate",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/NumericCertificate.lean",
+        "sha256": "39ba3f00070bb801f33b49f9183ee889135ca19bbedcd7fdb34f78f1b50f4f65"
+      },
+      "imports": [
+        "Run2.UniformErrorBound"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/029_Run2_NumericCertificate.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 30,
+      "module": "AuditRun2",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/AuditRun2.lean",
+        "sha256": "57e5262cfa23151918051034134feb44c1d29fc7fea9d71cc26f2c2fb37edeb0"
+      },
+      "imports": [
+        "FT1536.Basic",
+        "FT1536.MathSign",
+        "FT1536.Geometry",
+        "FT1536.Divergence",
+        "FT1536.EventTransfer",
+        "FT1536.Adaptive",
+        "FT1536.RetryDivergence",
+        "FT1536.ROM",
+        "FT1536.Collision",
+        "FT1536.PublicSimulation",
+        "FT1536.PublicCode",
+        "FT1536.Relation",
+        "FT1536.Model",
+        "FT1536.TraceBound",
+        "FT1536.Certificate",
+        "Run2.FiniteDist",
+        "Run2.Games",
+        "Run2.EmitMixture",
+        "Run2.BadVerify",
+        "Run2.GameInvariants",
+        "Run2.FiberBinding",
+        "Run2.LazySampling",
+        "Run2.LawBinding",
+        "Run2.CorrectnessProbability",
+        "Run2.PaidSteps",
+        "Run2.TableCost",
+        "Run2.UniformErrorBound",
+        "Run2.MTBinding",
+        "Run2.NumericCertificate"
+      ],
+      "author_log_sha256": "b18847c695df45c538eee25aa5a9a24c6102c531ab58f0d265cb8b2b3ec7c489",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/030_AuditRun2.log",
+        "sha256": "b18847c695df45c538eee25aa5a9a24c6102c531ab58f0d265cb8b2b3ec7c489"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 213
+    },
+    {
+      "number": 31,
+      "module": "CenteringClosure",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/CenteringClosure.lean",
+        "sha256": "b2b9d1290ee93227cd7dffe95323e1d1eb96755b3d03218c9c3a3c5dcaa1b4fa"
+      },
+      "imports": [
+        "Mathlib.Data.Rat.Defs",
+        "Mathlib.Basic.Real.Basic",
+        "Mathlib.Tactic"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/031_CenteringClosure.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 32,
+      "module": "SecondMoment",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/SecondMoment.lean",
+        "sha256": "7d008faf2f9d5da3d5b889d99d2b79ab1e5fcbccc4e223f345f40f4d2c5b8462"
+      },
+      "imports": [
+        "FT1536.Divergence",
+        "Run2.LawBinding"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/032_SecondMoment.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 33,
+      "module": "Run2.PolynomialReference",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/PolynomialReference.lean",
+        "sha256": "bbe343fff73f44bdc97896acf396087db038a8dd8ccf4ee4c9ab780beb3cac6d"
+      },
+      "imports": [
+        "FT1536.Relation",
+        "Mathlib.Tactic.ComputeDegree",
+        "Mathlib.Algebra.Polynomial.RingDivision"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/033_Run2_PolynomialReference.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 34,
+      "module": "Run2.BitArithmetic",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/BitArithmetic.lean",
+        "sha256": "4c83a88407706dcf6efca8a9b67b6ad6b523aa1333f2997f1c22d91dd595fcdb"
+      },
+      "imports": [
+        "FT1536.Basic"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/034_Run2_BitArithmetic.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 35,
+      "module": "Run2.BitSubtract",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/BitSubtract.lean",
+        "sha256": "b2e76d54dadadf33ee0371b815a6743ed7e3609b34ebf15eab711ce758242e5c"
+      },
+      "imports": [
+        "Run2.BitArithmetic"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/035_Run2_BitSubtract.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 36,
+      "module": "Run2.BitModular",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/BitModular.lean",
+        "sha256": "2a490ece845a5209311cdfac5a4b6b5a2516e2fc4a7df30ac13bd23807cdb4bb"
+      },
+      "imports": [
+        "Run2.BitSubtract"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/036_Run2_BitModular.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 37,
+      "module": "Run2.FieldConstants",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/FieldConstants.lean",
+        "sha256": "b92818680f1fd4213c037a002b23e5cf1376ba7a8fdc29bb780a5591c7c578b0"
+      },
+      "imports": [
+        "Run2.BitModular"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/037_Run2_FieldConstants.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 38,
+      "module": "Run2.FieldMachine",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/FieldMachine.lean",
+        "sha256": "f6757e1d811cdf7daa6eabb82de8c24b2e7ec4858099bd77f6fe6e36b8f95254"
+      },
+      "imports": [
+        "Run2.FieldConstants",
+        "Mathlib.Data.ZMod.Basic"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/038_Run2_FieldMachine.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 39,
+      "module": "Run2.FieldProgram",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/FieldProgram.lean",
+        "sha256": "15ca28fdd109c5b072707fe1037d0b25f98a5d768b1b3ac813da24821026aa91"
+      },
+      "imports": [
+        "Run2.FieldMachine"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/039_Run2_FieldProgram.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 40,
+      "module": "Run2.SignedMachine",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/SignedMachine.lean",
+        "sha256": "c91501e0bab4c41de28edda8913c48c958e264940442bdfed5657abb9b2e97b9"
+      },
+      "imports": [
+        "Run2.FieldMachine"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/040_Run2_SignedMachine.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 41,
+      "module": "Run2.WordEncoding",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/WordEncoding.lean",
+        "sha256": "4c036c76bd4555fc78f47ff818bc102dd86295da927e108f982ea17334351c72"
+      },
+      "imports": [
+        "Run2.SignedMachine"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/041_Run2_WordEncoding.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 42,
+      "module": "Run2.PolynomialMachine",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/PolynomialMachine.lean",
+        "sha256": "b9a98e2f9a8760116ad615f7d3f1c90620db780ae354bd56f19cc7187410df94"
+      },
+      "imports": [
+        "Run2.PolynomialReference",
+        "Run2.FieldProgram",
+        "Run2.WordEncoding"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/042_Run2_PolynomialMachine.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 43,
+      "module": "Run2.ScalarMachine",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/ScalarMachine.lean",
+        "sha256": "9ee2fb9d50031867540002e8dcbf76717cc14864fca106c422904dfdf1390fb9"
+      },
+      "imports": [
+        "Run2.WordEncoding",
+        "FT1536.Geometry"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/043_Run2_ScalarMachine.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 44,
+      "module": "Run2.NormMachine",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/NormMachine.lean",
+        "sha256": "071db7c35827a0e4ca2080a2e55703a11f4fa733ccf66e837352cd5e804383bc"
+      },
+      "imports": [
+        "Run2.WordEncoding",
+        "FT1536.Geometry"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/044_Run2_NormMachine.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 45,
+      "module": "Run2.FileArithmetic",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/FileArithmetic.lean",
+        "sha256": "a062334819804a998d2accd8ad3d451e726676070934b8dc5da93b42393a720c"
+      },
+      "imports": [
+        "Run2.PolynomialMachine",
+        "Run2.ScalarMachine",
+        "Run2.NormMachine"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/045_Run2_FileArithmetic.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 46,
+      "module": "Run2.FileVerifier",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/FileVerifier.lean",
+        "sha256": "f07b926d0ef932e3046dc3291e81e54dd74143533294e5b2fc7f979b49499232"
+      },
+      "imports": [
+        "Run2.FileArithmetic"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/046_Run2_FileVerifier.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 47,
+      "module": "Run2.VerifierResources",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/VerifierResources.lean",
+        "sha256": "e7d46004bf3b2d2351f37c611dcf57368e9b97efb834011916eecb2ddae18afd"
+      },
+      "imports": [
+        "Run2.FileVerifier"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/047_Run2_VerifierResources.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 48,
+      "module": "Run2.VerifierInputs",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/VerifierInputs.lean",
+        "sha256": "a7be2e896b88bdf635c40cd56b556166b79e7f5168bb5ef78bfbd416726aeb07"
+      },
+      "imports": [
+        "Run2.FileVerifier",
+        "Run2.VerifierResources",
+        "FT1536.PublicSimulation"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/048_Run2_VerifierInputs.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 49,
+      "module": "VerifyBind.StaticCodec",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/VerifyBind/StaticCodec.lean",
+        "sha256": "c3166c8a44446bc6a197e875f44a5bbe18f61a24f0f466d50b2334f1cba087c6"
+      },
+      "imports": [
+        "Run2.WordEncoding"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/049_VerifyBind_StaticCodec.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 50,
+      "module": "VerifyBind.ByteCodec",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/VerifyBind/ByteCodec.lean",
+        "sha256": "851fd7aba0a8f8c6889b6c0e3301968f74199d74fd19ea8117ebf1eaea421334"
+      },
+      "imports": [
+        "Run2.Games",
+        "VerifyBind.StaticCodec"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/050_VerifyBind_ByteCodec.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 51,
+      "module": "VerifyBind.Verdict",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/VerifyBind/Verdict.lean",
+        "sha256": "83d9faaf79c6e2eb578ebb0df16f59e589e92ef880f552449259132ab20da4a3"
+      },
+      "imports": [
+        "Run2.VerifierInputs",
+        "VerifyBind.ByteCodec"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/051_VerifyBind_Verdict.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 52,
+      "module": "VerifyBind.HashTo",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/VerifyBind/HashTo.lean",
+        "sha256": "fa46720f539b241aa4f12b5b182b1b0fb6558366989e293370f8af230fa04254"
+      },
+      "imports": [
+        "VerifyBind.Verdict"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/052_VerifyBind_HashTo.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 53,
+      "module": "JointDecomp",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/JointDecomp.lean",
+        "sha256": "35e865afda2725baa11758299e1d1c1dbe005858013ffb08ad434ebe3bafbcc0"
+      },
+      "imports": [
+        "FT1536.Divergence",
+        "Run2.LawBinding",
+        "SecondMoment",
+        "VerifyBind.HashTo"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/053_JointDecomp.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 54,
+      "module": "Run2.A2Theta",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/A2Theta.lean",
+        "sha256": "d9c478744929a0a5aa528ac90a15a37edee07305d7b6812bdf4bf1558e696387"
+      },
+      "imports": [
+        "FT1536.Geometry",
+        "Mathlib.Topology.Algebra.InfiniteSum.Real",
+        "Mathlib.Topology.Algebra.InfiniteSum.NatInt",
+        "Mathlib.Analysis.SpecificLimits.Normed"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/054_Run2_A2Theta.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 55,
+      "module": "Run2.T5ThetaNumeric",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/T5ThetaNumeric.lean",
+        "sha256": "76ed845bec10b02ce3605c9148f973ae681893a3983ec79c51bfefa8bac59164"
+      },
+      "imports": [
+        "Run2.A2Theta",
+        "Mathlib.Analysis.Real.Pi.Bounds",
+        "Mathlib.Analysis.Complex.ExponentialBounds"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/055_Run2_T5ThetaNumeric.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 56,
+      "module": "Run2.ShiftedGaussian",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/ShiftedGaussian.lean",
+        "sha256": "f093353e65c09f5e55a5cc508a37156aceec7935c930c56e2b9fcaef7bc18068"
+      },
+      "imports": [
+        "Run2.A2Theta",
+        "Mathlib.Analysis.SpecialFunctions.Gaussian.PoissonSummation"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/056_Run2_ShiftedGaussian.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 57,
+      "module": "Run2.TriangularGaussian",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/TriangularGaussian.lean",
+        "sha256": "eb40f80ca3543388ebb508f20cab3b23006e00c6426ec5b7a258b8d9da0ac5ba"
+      },
+      "imports": [
+        "Run2.ShiftedGaussian"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/057_Run2_TriangularGaussian.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 58,
+      "module": "Run2.T5ScalarMass",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/T5ScalarMass.lean",
+        "sha256": "6218873b5de06ae3978bf883dba30ab18f925c0e001373ef5f3d212916505e76"
+      },
+      "imports": [
+        "Run2.T5ThetaNumeric",
+        "Run2.TriangularGaussian"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/058_Run2_T5ScalarMass.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 59,
+      "module": "RejectionBound",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/RejectionBound.lean",
+        "sha256": "915948f8d1a7d3d11557be0a2aeecc671079aedbe8413e30b9e7972682d7971b"
+      },
+      "imports": [
+        "FT1536.PublicSimulation"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/059_RejectionBound.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 60,
+      "module": "SignLayerSupport",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/SignLayerSupport.lean",
+        "sha256": "25917792833ece7f96085837596797831cb7dbe8fd24822e172239c7a0e54d9d"
+      },
+      "imports": [
+        "SecondMoment",
+        "Run2.FiberBinding",
+        "Run2.T5ScalarMass",
+        "RejectionBound",
+        "CenteringClosure"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/060_SignLayerSupport.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 61,
+      "module": "HacGlue",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/HacGlue.lean",
+        "sha256": "4d79f5537277f0830f65b566497cf3a941b7239bc9618cad01f715b5cbdd0bd8"
+      },
+      "imports": [
+        "JointDecomp",
+        "SignLayerSupport",
+        "VerifyBind.HashTo"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/061_HacGlue.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 62,
+      "module": "ONoneGeometry",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/ONoneGeometry.lean",
+        "sha256": "13534b7b06c028749d3fd85aea2a2f5d3cad786c3729d1e4f2dff3fd8a1a0e79"
+      },
+      "imports": [
+        "HacGlue"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/062_ONoneGeometry.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 63,
+      "module": "Run2.TargetLaw",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/TargetLaw.lean",
+        "sha256": "6cb385efb10c863bc171da9357202019cffc0891ccbbae416827c00fe112a9c6"
+      },
+      "imports": [
+        "Run2.LawBinding"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/063_Run2_TargetLaw.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 64,
+      "module": "Run2.ExecutionComparison",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/ExecutionComparison.lean",
+        "sha256": "e8700ad504f370601c13200b66888b0c2733e83e929f696f9b7dbb38f57e2e36"
+      },
+      "imports": [
+        "Run2.TargetLaw"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/064_Run2_ExecutionComparison.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 65,
+      "module": "Run2.ReaderBinding",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/ReaderBinding.lean",
+        "sha256": "e943d44ac2d4408132494ab6e0dbef077f22f741c29f6afb2c62d66da3000b88"
+      },
+      "imports": [
+        "Run2.TargetLaw",
+        "Run2.MTBinding"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/065_Run2_ReaderBinding.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 66,
+      "module": "Run2.StoppedComparison",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/StoppedComparison.lean",
+        "sha256": "c692bfdfec31ecc058368799a0a4b0fe40af6815ea99c2114a24eca02f42ee31"
+      },
+      "imports": [
+        "Run2.ExecutionComparison",
+        "Run2.ReaderBinding"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/066_Run2_StoppedComparison.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 67,
+      "module": "Run2.LazyEventBinding",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/LazyEventBinding.lean",
+        "sha256": "86024b2176ecdf430bea7e9fe5bea619301a99171527a3a45ac4a99d5b52e6f5"
+      },
+      "imports": [
+        "Run2.StoppedComparison"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/067_Run2_LazyEventBinding.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 68,
+      "module": "Run2.StoppingLoss",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/StoppingLoss.lean",
+        "sha256": "2a5244669bc35d2e9b3e95fb8859d759263ad3b6dd0f782dc99de32b67d85ea1"
+      },
+      "imports": [
+        "Run2.LazyEventBinding"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/068_Run2_StoppingLoss.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 69,
+      "module": "Run2.ConcreteReduction",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/ConcreteReduction.lean",
+        "sha256": "80fb029e3e12294d03c190a10c93ebf4c53cd6aca55d69a0c6fbf5a613d3d87f"
+      },
+      "imports": [
+        "Run2.StoppingLoss"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/069_Run2_ConcreteReduction.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 70,
+      "module": "Assembly",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Assembly.lean",
+        "sha256": "c714fbfe4b0d492c300b3bfd26f8a74d7a50c55e4f8c550f9bfb78334e4b53cc"
+      },
+      "imports": [
+        "ONoneGeometry",
+        "Run2.ConcreteReduction"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/070_Assembly.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 71,
+      "module": "AdvPrg",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/AdvPrg.lean",
+        "sha256": "521dd042d7cdeb87a758b4879c6ad16f903648da064926ec3f72264b4616a32b"
+      },
+      "imports": [
+        "Assembly"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/071_AdvPrg.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 72,
+      "module": "CompPrg",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/CompPrg.lean",
+        "sha256": "1d870a7c516253e2e86441ac5b3088a8bc05c9c5a6ff2201d9db159f2bfdd32a"
+      },
+      "imports": [
+        "AdvPrg"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/072_CompPrg.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 73,
+      "module": "AssemblyComp",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/AssemblyComp.lean",
+        "sha256": "b6112bef9c093439acdd7ee01b9aefa8f797b18738140e99306f045d25795929"
+      },
+      "imports": [
+        "CompPrg"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/073_AssemblyComp.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 74,
+      "module": "AttemptPointwise",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/AttemptPointwise.lean",
+        "sha256": "33c82338dc0d67439078fc3641f1fa0a50b9ec144a10caf5888c561620d88f80"
+      },
+      "imports": [
+        "SignLayerSupport"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/074_AttemptPointwise.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 75,
+      "module": "Run2.ExactCounting",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/ExactCounting.lean",
+        "sha256": "efc12d781e4b52dad1e92a0271b83b74e117a6d178003dca9b858b33efc9461c"
+      },
+      "imports": [
+        "Run2.UniformErrorBound",
+        "Mathlib.Algebra.Polynomial.Eval.Defs"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/075_Run2_ExactCounting.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 76,
+      "module": "Run2.BlockMinima",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/BlockMinima.lean",
+        "sha256": "1b95fccd7f5027ef1fcd24adacd085ecb34f19d3be56275015c6267e453d998f"
+      },
+      "imports": [
+        "Run2.ExactCounting"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/076_Run2_BlockMinima.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 77,
+      "module": "Run2.CenteringTriangle",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/CenteringTriangle.lean",
+        "sha256": "ae7e98b7985022ec580770607076af4b67f1df24e2e793c1edffcb6987968f6a"
+      },
+      "imports": [
+        "Run2.BlockMinima"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/077_Run2_CenteringTriangle.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 78,
+      "module": "Run2.CoefficientQuotient",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/CoefficientQuotient.lean",
+        "sha256": "e2be27ef2075dca9e72aa84d5aae50ec1242724f52072a8361f1c56e1eb0b727"
+      },
+      "imports": [
+        "FT1536.Relation",
+        "Mathlib.RingTheory.AdjoinRoot",
+        "Mathlib.Tactic.ComputeDegree"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/078_Run2_CoefficientQuotient.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 79,
+      "module": "Run2.ByteMachine",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/ByteMachine.lean",
+        "sha256": "732adcf43fd58d28163408f4ab4605f47eafe462d4bb20841a87b54f2877a7f4"
+      },
+      "imports": [
+        "Run2.WordEncoding",
+        "Run2.Games"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/079_Run2_ByteMachine.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 80,
+      "module": "Run2.TableMachine",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/TableMachine.lean",
+        "sha256": "a630ec4feda3461f079b290a48f142a6b1cdb67c0ab12e929c9935a8053819d2"
+      },
+      "imports": [
+        "Run2.ByteMachine",
+        "Run2.GameInvariants"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/080_Run2_TableMachine.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 81,
+      "module": "Run2.BitFinish",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/BitFinish.lean",
+        "sha256": "9503aafae22bec1733667e6ec85025584dc3da1c1317bd3d25b45b01efdb1f15"
+      },
+      "imports": [
+        "Run2.VerifierInputs",
+        "Run2.TableMachine"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/081_Run2_BitFinish.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 82,
+      "module": "Run2.PublicErrorIdentity",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/PublicErrorIdentity.lean",
+        "sha256": "967449c61cac84f65e5f2c523ec2d934173e0183e2d1e92a78f34ae4facea8a0"
+      },
+      "imports": [
+        "Run2.ExactCounting"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/082_Run2_PublicErrorIdentity.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 83,
+      "module": "Run2.LegalKeyErrorTransfer",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/LegalKeyErrorTransfer.lean",
+        "sha256": "22a6930266f163d98f1e9101dc7566fe7fc91bed2b9fd0aee5dc19510b7d7254"
+      },
+      "imports": [
+        "Run2.PublicErrorIdentity"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/083_Run2_LegalKeyErrorTransfer.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 84,
+      "module": "Run2.RawProductLaw",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/RawProductLaw.lean",
+        "sha256": "049af5a2e296adb107428b21417030eb1bd85c53d2fd679c3ab2b8a350d11b25"
+      },
+      "imports": [
+        "Run2.LegalKeyErrorTransfer",
+        "Mathlib.Algebra.BigOperators.Ring.Finset"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/084_Run2_RawProductLaw.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 85,
+      "module": "Run2.RawRadialEvents",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/RawRadialEvents.lean",
+        "sha256": "6b2fe6ea2c28df7bb3c5060a21635a42009ea3b0a26159c74b6a717242f0dc0d"
+      },
+      "imports": [
+        "Run2.RawProductLaw",
+        "Run2.CenteringTriangle"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/085_Run2_RawRadialEvents.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 86,
+      "module": "Run2.RadialTriangleSplit",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/RadialTriangleSplit.lean",
+        "sha256": "39a4713519bb3013d0755b11b8fcf2afd4baa764f8cc35bf725a021bc521f565"
+      },
+      "imports": [
+        "Run2.RawRadialEvents"
+      ],
+      "author_log_sha256": "b22af6282d715c437b70e56b7815bd6e9c50de46c860c8f730391509932ae2ef",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/086_Run2_RadialTriangleSplit.log",
+        "sha256": "b22af6282d715c437b70e56b7815bd6e9c50de46c860c8f730391509932ae2ef"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 4
+    },
+    {
+      "number": 87,
+      "module": "FT1536.GameByte",
+      "source": {
+        "path": "proofs/ft1536/stages/FT1536_MATH_EUFCMA_GAME_BINDING_RUN_001/formal/FT1536/GameByte.lean",
+        "sha256": "9aedce2b8d8639a8150119982e21a33f71a22d6190ea2d6db8d255527579113e"
+      },
+      "imports": [
+        "FT1536.Basic",
+        "FT1536.ROM"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/087_FT1536_GameByte.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 88,
+      "module": "FT1536.GameNames",
+      "source": {
+        "path": "proofs/ft1536/stages/FT1536_MATH_EUFCMA_GAME_BINDING_RUN_001/formal/FT1536/GameNames.lean",
+        "sha256": "4203610da1dc1c0b8897aa5530888cefb26218918fb6050acb09140af3f907f9"
+      },
+      "imports": [
+        "FT1536.GameByte",
+        "FT1536.ROM"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/088_FT1536_GameNames.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 89,
+      "module": "FT1536.GameMach",
+      "source": {
+        "path": "proofs/ft1536/stages/FT1536_MATH_EUFCMA_GAME_BINDING_RUN_001/formal/FT1536/GameMach.lean",
+        "sha256": "19f963680c7a3b7001eaddeaecac78e43a387d17f47114e901568b19f407f6fb"
+      },
+      "imports": [
+        "FT1536.GameNames",
+        "FT1536.Model",
+        "FT1536.PublicCode",
+        "FT1536.Relation",
+        "FT1536.Collision"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/089_FT1536_GameMach.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 90,
+      "module": "FT1536.Mixture",
+      "source": {
+        "path": "proofs/ft1536/stages/FT1536_MATH_EUFCMA_GAME_BINDING_RUN_001/formal/FT1536/Mixture.lean",
+        "sha256": "1cf7a927387bda180abe5b4e0708bd915cc47e631533c9daf4946e0451ccfe63"
+      },
+      "imports": [
+        "FT1536.Basic",
+        "FT1536.Divergence",
+        "FT1536.Model"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/090_FT1536_Mixture.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 91,
+      "module": "FT1536.PaidSteps",
+      "source": {
+        "path": "proofs/ft1536/stages/FT1536_MATH_EUFCMA_GAME_BINDING_RUN_001/formal/FT1536/PaidSteps.lean",
+        "sha256": "f02f984e65eadb32bdf69d4eeb87ac39b7c607edb97da4445a3a4a1818cf95d3"
+      },
+      "imports": [
+        "FT1536.Adaptive",
+        "FT1536.Collision",
+        "FT1536.EventTransfer",
+        "FT1536.GameByte",
+        "FT1536.GameNames",
+        "FT1536.ROM"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/091_FT1536_PaidSteps.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 92,
+      "module": "FT1536.Lazy",
+      "source": {
+        "path": "proofs/ft1536/stages/FT1536_MATH_EUFCMA_GAME_BINDING_RUN_001/formal/FT1536/Lazy.lean",
+        "sha256": "28508a4733bff5b38ac020dd2a9a62411ae191d47978ff3391c062853177fdeb"
+      },
+      "imports": [
+        "FT1536.Basic",
+        "FT1536.Mixture",
+        "FT1536.ROM",
+        "Mathlib.Data.Fintype.BigOperators"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/092_FT1536_Lazy.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 93,
+      "module": "FT1536.GameLaw",
+      "source": {
+        "path": "proofs/ft1536/stages/FT1536_MATH_EUFCMA_GAME_BINDING_RUN_001/formal/FT1536/GameLaw.lean",
+        "sha256": "a60bc502a35701051bfd2042a2764eab2911585ed872cddab3581c7416d73ad8"
+      },
+      "imports": [
+        "FT1536.GameMach",
+        "FT1536.Mixture",
+        "FT1536.PaidSteps",
+        "FT1536.Lazy"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/093_FT1536_GameLaw.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 94,
+      "module": "FT1536.PathCounter",
+      "source": {
+        "path": "proofs/ft1536/stages/FT1536_MATH_EUFCMA_GAME_BINDING_RUN_001/formal/FT1536/PathCounter.lean",
+        "sha256": "37c837ddd1034ada7bc9cf5b88024ab669bd743672d934558533d4e1dc25bdb7"
+      },
+      "imports": [
+        "FT1536.Divergence",
+        "FT1536.EventTransfer",
+        "FT1536.PaidSteps"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/094_FT1536_PathCounter.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 95,
+      "module": "FT1536.AdversaryFold",
+      "source": {
+        "path": "proofs/ft1536/stages/FT1536_MATH_EUFCMA_GAME_BINDING_RUN_001/formal/FT1536/AdversaryFold.lean",
+        "sha256": "c2351c319bd9d79112a48a897e6a7df4e1f4d9ca9ade5cfdad59e8f2b90b470c"
+      },
+      "imports": [
+        "FT1536.GameLaw",
+        "FT1536.PathCounter"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/095_FT1536_AdversaryFold.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 96,
+      "module": "FT1536.BitCost",
+      "source": {
+        "path": "proofs/ft1536/stages/FT1536_MATH_EUFCMA_GAME_BINDING_RUN_001/formal/FT1536/BitCost.lean",
+        "sha256": "2f2f8ea4a4682595d86f1d6676d38b42096ec34628a5e24980f857f48177c48b"
+      },
+      "imports": [
+        "FT1536.AdversaryFold"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/096_FT1536_BitCost.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 97,
+      "module": "Run2.MiMoIntegration",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/MiMoIntegration.lean",
+        "sha256": "014b12172e34175c9e7fdfa1d3827f894de6026bb6551d2d0b11fe9755ca52a1"
+      },
+      "imports": [
+        "Run2.ConcreteReduction",
+        "FT1536.GameNames",
+        "FT1536.BitCost"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/097_Run2_MiMoIntegration.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 98,
+      "module": "Run2.PackedConvolution",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/PackedConvolution.lean",
+        "sha256": "da52441ec1adfbeb81fdd0d29984d5980f5f6e246784cb562084af2224c3c210"
+      },
+      "imports": [
+        "FT1536.Basic",
+        "Mathlib.Algebra.Polynomial.Inductions",
+        "Mathlib.Algebra.Polynomial.Eval.Defs"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/098_Run2_PackedConvolution.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 99,
+      "module": "Run2.LocalBitCode",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/LocalBitCode.lean",
+        "sha256": "a0d00c80b31d9be1c0496e4445dc2f380d95a74f0972cf908111db5647929f36"
+      },
+      "imports": [
+        "Run2.BitArithmetic"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/099_Run2_LocalBitCode.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 100,
+      "module": "Run2.NonceBits",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/NonceBits.lean",
+        "sha256": "87663f288b73ea900db1c80185d9ff607a35a302806c3704d9a01c55f517025c"
+      },
+      "imports": [
+        "Run2.WordEncoding",
+        "Run2.TargetLaw",
+        "Mathlib.Logic.Equiv.Fin.Basic"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/100_Run2_NonceBits.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 101,
+      "module": "Run2.BitReduction",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/BitReduction.lean",
+        "sha256": "7a579da177c47b730f428241f781d3ea228c1a5b76a71453ea01f9c92dedbd37"
+      },
+      "imports": [
+        "Run2.BitFinish",
+        "Run2.NonceBits"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/101_Run2_BitReduction.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 102,
+      "module": "Run2.ProgramResources",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/ProgramResources.lean",
+        "sha256": "8abe7450573ff5d09769e108c35160387a2c1f516ed6f1ba9a587e401d2b04d4"
+      },
+      "imports": [
+        "Run2.ConcreteReduction"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/102_Run2_ProgramResources.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 103,
+      "module": "Run2.StateResources",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/StateResources.lean",
+        "sha256": "e3dd8c88fb1613f0ccfc920055f013717def883e3bb73a9b82c11aedfe3bdfbd"
+      },
+      "imports": [
+        "Run2.BitReduction",
+        "Run2.ProgramResources"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/103_Run2_StateResources.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 104,
+      "module": "Run2.PublicEncoding",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/PublicEncoding.lean",
+        "sha256": "ebfbcd1ba38e8bc5d9ed5728684c15742173b8000dadf957f081c549749a9823"
+      },
+      "imports": [
+        "Run2.StateResources"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/104_Run2_PublicEncoding.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 105,
+      "module": "Run2.SamplerMachine",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/SamplerMachine.lean",
+        "sha256": "32b68cd4842eda8ba7b465e222b9712f665dc0cba8a441c786d4c6537abfa2e2"
+      },
+      "imports": [
+        "Run2.LocalBitCode",
+        "Run2.PublicEncoding",
+        "FT1536.BitCost"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/105_Run2_SamplerMachine.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 106,
+      "module": "Run2.AdversaryMachine",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/AdversaryMachine.lean",
+        "sha256": "0268d14becc3310a11db8e738252ef48d567a8c71832c2e2da2c3e3ac59391ac"
+      },
+      "imports": [
+        "Run2.SamplerMachine"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/106_Run2_AdversaryMachine.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 107,
+      "module": "Run2.LocalMachineCode",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/LocalMachineCode.lean",
+        "sha256": "619bf0f175c9773ee19bd920a5eda476e5b6e9fd27d7df0c20b028c901979371"
+      },
+      "imports": [
+        "Run2.AdversaryMachine"
+      ],
+      "author_log_sha256": "14a349ca5881792c3b0318135ab02dc359dec5e71a309f24d0d8cb80778ed057",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/107_Run2_LocalMachineCode.log",
+        "sha256": "14a349ca5881792c3b0318135ab02dc359dec5e71a309f24d0d8cb80778ed057"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 2
+    },
+    {
+      "number": 108,
+      "module": "Run2.PeakExecution",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/PeakExecution.lean",
+        "sha256": "eb7570812d407f5ce2df6874e209df13d14a6724bcec67f43615c20348f81e12"
+      },
+      "imports": [
+        "Run2.StateResources"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/108_Run2_PeakExecution.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 109,
+      "module": "Run2.MachineExecution",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/MachineExecution.lean",
+        "sha256": "41ec8fb48f940d6a4bf98958d8981a9d6a1b601309be0414b205a89fa8bfdbc4"
+      },
+      "imports": [
+        "Run2.LocalMachineCode",
+        "Run2.PeakExecution"
+      ],
+      "author_log_sha256": "7fa5064a1255dee050c0015bbeffd729c4058c9b9fbd76de15b41d97eceaa855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/109_Run2_MachineExecution.log",
+        "sha256": "7fa5064a1255dee050c0015bbeffd729c4058c9b9fbd76de15b41d97eceaa855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 2
+    },
+    {
+      "number": 110,
+      "module": "Run2.MachineAccounting",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/MachineAccounting.lean",
+        "sha256": "96bb73e0d01c5ff637773b604c4089d8d14517feccf3e2afde0a9632465235e6"
+      },
+      "imports": [
+        "Run2.MachineExecution"
+      ],
+      "author_log_sha256": "9b135b2a1ebf974327d8ee7a9db55227f1a3e3fb39a8d840cd374216684942dd",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/110_Run2_MachineAccounting.log",
+        "sha256": "9b135b2a1ebf974327d8ee7a9db55227f1a3e3fb39a8d840cd374216684942dd"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 3
+    },
+    {
+      "number": 111,
+      "module": "Run2.BitAllocation",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/BitAllocation.lean",
+        "sha256": "2a707d43b432c100effb9b2a1c8a0a55ae744b915573365d2bca13f0d33d0bb5"
+      },
+      "imports": [
+        "Run2.ScalarMachine"
+      ],
+      "author_log_sha256": "97ce35758fa5125081f4e928769c8c4af4de84ca3d5d38f94aa0b38fe515ab83",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/111_Run2_BitAllocation.log",
+        "sha256": "97ce35758fa5125081f4e928769c8c4af4de84ca3d5d38f94aa0b38fe515ab83"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 4
+    },
+    {
+      "number": 112,
+      "module": "Run2.TableAllocation",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/TableAllocation.lean",
+        "sha256": "ed90f4496c951529b52a0e2f9e11ecfb46d44a17322e0a1ac4cc4e4bd684829c"
+      },
+      "imports": [
+        "Run2.BitAllocation",
+        "Run2.TableMachine"
+      ],
+      "author_log_sha256": "93e47ac117416cf20fc77ef31dde7a3bc122817f8937911e1e858f9fe04365e0",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/112_Run2_TableAllocation.log",
+        "sha256": "93e47ac117416cf20fc77ef31dde7a3bc122817f8937911e1e858f9fe04365e0"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 2
+    },
+    {
+      "number": 113,
+      "module": "Run2.VerifierAllocation",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/VerifierAllocation.lean",
+        "sha256": "700f02966e4236c77521fe36d5d950941150bca54f82e88fc6f480ef22e82388"
+      },
+      "imports": [
+        "Run2.BitAllocation",
+        "Run2.VerifierInputs"
+      ],
+      "author_log_sha256": "5710fb1909420b542426273ad77a48177585320c0527db74a988d8f45c5f248a",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/113_Run2_VerifierAllocation.log",
+        "sha256": "5710fb1909420b542426273ad77a48177585320c0527db74a988d8f45c5f248a"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 2
+    },
+    {
+      "number": 114,
+      "module": "Run2.MeteredExecution",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/MeteredExecution.lean",
+        "sha256": "53f8146318390326bb04e7b3c8dd72c07b5b83998b7ccc1f4f0dd2dfb6e0ae46"
+      },
+      "imports": [
+        "Run2.MachineAccounting",
+        "Run2.TableAllocation",
+        "Run2.VerifierAllocation"
+      ],
+      "author_log_sha256": "4f35670670387557f9a5e3867c1319d29ed25c9c408e49e472bb4a46043fd410",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/114_Run2_MeteredExecution.log",
+        "sha256": "4f35670670387557f9a5e3867c1319d29ed25c9c408e49e472bb4a46043fd410"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 2
+    },
+    {
+      "number": 115,
+      "module": "Run2.PrefixResources",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/PrefixResources.lean",
+        "sha256": "e2db4fab2d068bc70795063eb03a923b53d7a9804f4a4a8ee8d8e871b32830d1"
+      },
+      "imports": [
+        "Run2.MeteredExecution"
+      ],
+      "author_log_sha256": "28851006d3b486d30d4d408bfefe71dfaf66116661340847a087c269518c8b79",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/115_Run2_PrefixResources.log",
+        "sha256": "28851006d3b486d30d4d408bfefe71dfaf66116661340847a087c269518c8b79"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 1
+    },
+    {
+      "number": 116,
+      "module": "Run2.GaussianFiberTilt",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/GaussianFiberTilt.lean",
+        "sha256": "5dd3830dce267d7bba8f1a7cd215ff0ef6bf237073bb3a332ca8f5851a1057a6"
+      },
+      "imports": [
+        "Run2.LegalKeyErrorTransfer"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/116_Run2_GaussianFiberTilt.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 117,
+      "module": "Run2.StableLeafAlgebra",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/StableLeafAlgebra.lean",
+        "sha256": "7a38311ccdfb30937525da6f8a220a52e8f52d1761dd2516e6f0f8fc98cba8b2"
+      },
+      "imports": [
+        "FT1536.Basic"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/117_Run2_StableLeafAlgebra.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 118,
+      "module": "Run2.RadialSymmetry",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/RadialSymmetry.lean",
+        "sha256": "cfaa791fff8340dff5bc065f6b3193329f63c394cbf6c590c0c6710244f9cf05"
+      },
+      "imports": [
+        "Run2.RadialTriangleSplit"
+      ],
+      "author_log_sha256": "bd1d8c56ffac337e27cb07cc8efd3680b03222493feb0e664109c22614d638ee",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/118_Run2_RadialSymmetry.log",
+        "sha256": "bd1d8c56ffac337e27cb07cc8efd3680b03222493feb0e664109c22614d638ee"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 7
+    },
+    {
+      "number": 119,
+      "module": "Run2.RawIndependence",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/RawIndependence.lean",
+        "sha256": "bddefb0c9a7bea36e43ea0ddd151436710fad030a8bb46b4cf065c022d0f117b"
+      },
+      "imports": [
+        "Run2.RawRadialEvents",
+        "Mathlib.Algebra.BigOperators.GroupWithZero.Finset"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/119_Run2_RawIndependence.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 120,
+      "module": "Run2.RadialWindowSplit",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/RadialWindowSplit.lean",
+        "sha256": "0f16e47fa238f82e1e92f17bb00d564fa0f48a1c62959a96d6f13627154dabab"
+      },
+      "imports": [
+        "Run2.RadialSymmetry",
+        "Run2.RawIndependence"
+      ],
+      "author_log_sha256": "bd7f69e73e0d39bd760ab3b3f908cbfa1239fd0942ceec398afe09066d37af47",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/120_Run2_RadialWindowSplit.log",
+        "sha256": "bd7f69e73e0d39bd760ab3b3f908cbfa1239fd0942ceec398afe09066d37af47"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 3
+    },
+    {
+      "number": 121,
+      "module": "Run2.GuaranteedDigits",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/GuaranteedDigits.lean",
+        "sha256": "f4e866128aa5f8ac114b51068b1fbbe26f3f3ad9d081cf6d730ad7ce28149eb4"
+      },
+      "imports": [
+        "Run2.LegalKeyErrorTransfer"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/121_Run2_GuaranteedDigits.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 122,
+      "module": "Run2.RawRadialEnclosure",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/RawRadialEnclosure.lean",
+        "sha256": "09a92156ddf9dfb275f9ad5b9cbefb0336175d5c49c51831e7de602d45ffea41"
+      },
+      "imports": [
+        "Run2.RawRadialEvents",
+        "Run2.GuaranteedDigits"
+      ],
+      "author_log_sha256": "2ed56948b440be75d1faa150626481a03e994ce01e7ca96f9bef769af366eaff",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/122_Run2_RawRadialEnclosure.log",
+        "sha256": "2ed56948b440be75d1faa150626481a03e994ce01e7ca96f9bef769af366eaff"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 4
+    },
+    {
+      "number": 123,
+      "module": "Run2.RadialObligations",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/RadialObligations.lean",
+        "sha256": "38fa113587a4493782143b3f44e7b1c1d3fd0bcaf72a5715ca8954415d17e579"
+      },
+      "imports": [
+        "Run2.RawIndependence",
+        "Run2.RawRadialEnclosure"
+      ],
+      "author_log_sha256": "d6ca26fecdabfa1676a8b41ba4cd3a3fd95a8b52cdaa1c38efa1693408ebadd1",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/123_Run2_RadialObligations.log",
+        "sha256": "d6ca26fecdabfa1676a8b41ba4cd3a3fd95a8b52cdaa1c38efa1693408ebadd1"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 5
+    },
+    {
+      "number": 124,
+      "module": "Run2.RadialBinningSandwich",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/RadialBinningSandwich.lean",
+        "sha256": "47af31875cac779c68f56a1272a20a138464b33ac526855d7c8f519ad54c03f8"
+      },
+      "imports": [
+        "Run2.RadialWindowSplit",
+        "Run2.RadialObligations"
+      ],
+      "author_log_sha256": "10159181323620e2e2a655cc328dae3ef175426f371f430c2eadcdfdcad913da",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/124_Run2_RadialBinningSandwich.log",
+        "sha256": "10159181323620e2e2a655cc328dae3ef175426f371f430c2eadcdfdcad913da"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 6
+    },
+    {
+      "number": 125,
+      "module": "Run2.StableLeafSchedule",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/StableLeafSchedule.lean",
+        "sha256": "d21744d1e52e6bc7466ac0bf734de25f37c574d0afd1fce90772e1e42b3acdd0"
+      },
+      "imports": [
+        "Run2.StableLeafAlgebra"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/125_Run2_StableLeafSchedule.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 126,
+      "module": "Run2.ChangedTailReduction",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/ChangedTailReduction.lean",
+        "sha256": "b2cb94a18251445bde9e517dc841f60bd06d8b6fc7ad906ce7f18f825b1e1217"
+      },
+      "imports": [
+        "Run2.RadialSymmetry",
+        "Run2.RadialObligations"
+      ],
+      "author_log_sha256": "3f06ebbe390ca60596f3886e9627d80269d25f3e5cb4bcd089ff4cc8c429e0ce",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/126_Run2_ChangedTailReduction.log",
+        "sha256": "3f06ebbe390ca60596f3886e9627d80269d25f3e5cb4bcd089ff4cc8c429e0ce"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 6
+    },
+    {
+      "number": 127,
+      "module": "Run2.DiscreteFourier",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/DiscreteFourier.lean",
+        "sha256": "af497ee462c546dfdb494a4a71e52c526edd43850be1b78832ab823d9d48bce0"
+      },
+      "imports": [
+        "FT1536.Basic",
+        "Mathlib.Analysis.Fourier.ZMod"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/127_Run2_DiscreteFourier.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 128,
+      "module": "Run2.ZeroKeyReduction",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/ZeroKeyReduction.lean",
+        "sha256": "e2efc21b2e8cee2675c80ae65c0bf2cfd3ae5a7b60d0c9fe71ed34233023dfd4"
+      },
+      "imports": [
+        "Run2.PublicErrorIdentity"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/128_Run2_ZeroKeyReduction.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 129,
+      "module": "Run2.ReferenceFinish",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/ReferenceFinish.lean",
+        "sha256": "0a1ce098906417104bdb9e8431c4d2dea519e184375c619ed62df0981c2bd5be"
+      },
+      "imports": [
+        "Run2.PolynomialMachine",
+        "Run2.TableMachine"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/129_Run2_ReferenceFinish.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 130,
+      "module": "Run2.FinishResources",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/FinishResources.lean",
+        "sha256": "333b34586e7761c5fce55b6b28215c18a99a22b8ed8437af3ed51f57ac660dcc"
+      },
+      "imports": [
+        "Run2.PrefixResources"
+      ],
+      "author_log_sha256": "bfcb2f293a47348619a0166b9774a54cf06aa5eb84da69c86cee15a9cf5d3ff3",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/130_Run2_FinishResources.log",
+        "sha256": "bfcb2f293a47348619a0166b9774a54cf06aa5eb84da69c86cee15a9cf5d3ff3"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 2
+    },
+    {
+      "number": 131,
+      "module": "Run2.ResourceReduction",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/ResourceReduction.lean",
+        "sha256": "a85345286ebdbda05e546f5f0eb5f0d2a20eb44d124014324f576ae3949a80f9"
+      },
+      "imports": [
+        "Run2.FinishResources"
+      ],
+      "author_log_sha256": "8dbf4de9904f0c8f279bc6554a3ec17e2821f85cfd1067ce85ed7944b57ff343",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/131_Run2_ResourceReduction.log",
+        "sha256": "8dbf4de9904f0c8f279bc6554a3ec17e2821f85cfd1067ce85ed7944b57ff343"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 4
+    },
+    {
+      "number": 132,
+      "module": "Run2.GeneratingFunction",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/GeneratingFunction.lean",
+        "sha256": "016e8e858d1ec494aa3b917c44730c37bf741b755085ebd067a71ef3404f2254"
+      },
+      "imports": [
+        "FT1536.Adaptive",
+        "Mathlib.Algebra.Polynomial.BigOperators"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/132_Run2_GeneratingFunction.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 133,
+      "module": "Run2.RejectionNumericMargin",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/RejectionNumericMargin.lean",
+        "sha256": "2022f18de319f9f39ebc2d0e3d894263180fb7af483451c876150d3023805c9f"
+      },
+      "imports": [
+        "Run2.GaussianFiberTilt",
+        "Mathlib.Analysis.Complex.ExponentialBounds"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/133_Run2_RejectionNumericMargin.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 134,
+      "module": "Run2.NormalizerComparison",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/NormalizerComparison.lean",
+        "sha256": "aac30db8f052927c68db98e53af1585bf1605f26c47019442ee7bc258dad2469"
+      },
+      "imports": [
+        "Run2.RejectionNumericMargin",
+        "Run2.GuaranteedDigits"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/134_Run2_NormalizerComparison.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 135,
+      "module": "Run2.M6Audit",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/M6Audit.lean",
+        "sha256": "49a91c373b93aae0f8e87b29efb3838d85937c73427297431a1e43d796ce0887"
+      },
+      "imports": [
+        "Run2.NormalizerComparison",
+        "Run2.T5ThetaNumeric",
+        "Run2.TriangularGaussian",
+        "Run2.T5ScalarMass"
+      ],
+      "author_log_sha256": "c2022609ec1d64cb39a9dd5e05537645ef0c728334af3539051ca1662849108d",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/135_Run2_M6Audit.log",
+        "sha256": "c2022609ec1d64cb39a9dd5e05537645ef0c728334af3539051ca1662849108d"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 13
+    },
+    {
+      "number": 136,
+      "module": "Run2.NTRUBasis",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/NTRUBasis.lean",
+        "sha256": "ce2d77f4073cafbfda20ed11561a2d89a41b056db949135af2a750a5b6475fdc"
+      },
+      "imports": [
+        "FT1536.Basic",
+        "Mathlib.Algebra.Ring.Prod"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/136_Run2_NTRUBasis.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 137,
+      "module": "Run2.QuotientOperations",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/QuotientOperations.lean",
+        "sha256": "a5dbf99deaeb786059b9c1d2d96cd9d4ded229679f6cf6ec36b1de73ab706bb1"
+      },
+      "imports": [
+        "Run2.CoefficientQuotient"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/137_Run2_QuotientOperations.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 138,
+      "module": "Run2.ActualNTRUFiber",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/ActualNTRUFiber.lean",
+        "sha256": "5ed6ecc1d657ccb58b14c5455dabcf42b21e1f54f0f1116a92564f0ad136e242"
+      },
+      "imports": [
+        "Run2.NTRUBasis",
+        "Run2.QuotientOperations"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/138_Run2_ActualNTRUFiber.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 139,
+      "module": "Run2.CyclicAliases",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/CyclicAliases.lean",
+        "sha256": "e5affdb40c47cac2ba1dc6b744b230a51c4e6cd5ecf1c1b51696227a8915f625"
+      },
+      "imports": [
+        "FT1536.Basic"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/139_Run2_CyclicAliases.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 140,
+      "module": "Run2.KeygenLeafGate",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/KeygenLeafGate.lean",
+        "sha256": "37a470aa1901494e88a469ab1a8734fb1b2a008f34901503f29bbe6c6ed4e3fd"
+      },
+      "imports": [
+        "FT1536.Basic",
+        "Mathlib.Data.BitVec"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/140_Run2_KeygenLeafGate.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 141,
+      "module": "Run2.KernelBindingAudit",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/KernelBindingAudit.lean",
+        "sha256": "a05eb4b2119a569d0814edc6ff4914bb23205d2774df511acc42c2205bf3d65a"
+      },
+      "imports": [
+        "Run2.M6Audit",
+        "Run2.ActualNTRUFiber",
+        "Run2.KeygenLeafGate",
+        "Run2.StableLeafSchedule"
+      ],
+      "author_log_sha256": "37def1786f084086b92f2b4a5e2e33eb7d2de031c5f379de3805fe1f8c375f89",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/141_Run2_KernelBindingAudit.log",
+        "sha256": "37def1786f084086b92f2b4a5e2e33eb7d2de031c5f379de3805fe1f8c375f89"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 18
+    },
+    {
+      "number": 142,
+      "module": "Run2.OperationTrace",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/OperationTrace.lean",
+        "sha256": "0a9153e53db4ce7b1a0be5f4449a267d6570da41fab3c0fcc8e6db8657c07c4e"
+      },
+      "imports": [
+        "Run2.ProgramResources",
+        "Run2.MiMoIntegration"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/142_Run2_OperationTrace.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 143,
+      "module": "Run2.RestEnergyBridge",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/RestEnergyBridge.lean",
+        "sha256": "8482c47a201c2a83ef8ec932341b0c2340f00d89735127e54decd571ec5331f8"
+      },
+      "imports": [
+        "Run2.RadialBinningSandwich"
+      ],
+      "author_log_sha256": "fd4c99ba83d79285f1073411f67a46153dd72772eb6293fe5e7051ad4aa979e3",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/143_Run2_RestEnergyBridge.log",
+        "sha256": "fd4c99ba83d79285f1073411f67a46153dd72772eb6293fe5e7051ad4aa979e3"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 4
+    },
+    {
+      "number": 144,
+      "module": "Run2.Binning",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Run2/Binning.lean",
+        "sha256": "2b58d30a387b72fd43d2d51b438978bc958324cd44274bd80e3396f7851459ba"
+      },
+      "imports": [
+        "FT1536.Basic"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/144_Run2_Binning.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 145,
+      "module": "AttemptWeights",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/AttemptWeights.lean",
+        "sha256": "ac1437aab095b9244ae4b25cd7a91361b9713277b7c15dc38d5b00e1797bcc46"
+      },
+      "imports": [
+        "AttemptPointwise",
+        "ONoneGeometry"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/145_AttemptWeights.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 146,
+      "module": "GramLDL",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/GramLDL.lean",
+        "sha256": "5cb83a9ac94a34686caa5983c53c31523cc9460c40aa961eff1b3466035ed26c"
+      },
+      "imports": [
+        "Run2.StableLeafSchedule",
+        "Run2.ActualNTRUFiber",
+        "Run2.TriangularGaussian"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/146_GramLDL.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 147,
+      "module": "SourceLeafBridge",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/SourceLeafBridge.lean",
+        "sha256": "6fe615a0bd03ed4c459331432d75ca783b68d1ef404cc11740c58059f609f04e"
+      },
+      "imports": [
+        "Run2.KeygenLeafGate",
+        "Run2.StableLeafSchedule",
+        "GramLDL"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/147_SourceLeafBridge.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 148,
+      "module": "PerKeyTransport",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/PerKeyTransport.lean",
+        "sha256": "12d436370b607edf1f7b97a193d4cfeee762e3b95e6ea54c848d42c4c842d821"
+      },
+      "imports": [
+        "GramLDL",
+        "SourceLeafBridge",
+        "Run2.T5ScalarMass"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/148_PerKeyTransport.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 149,
+      "module": "PerKeyTransport_audit",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/PerKeyTransport_audit.lean",
+        "sha256": "576998e8853a21941ee27bf12a9235ae2ba2b21780fab5a47234fde6697026a6"
+      },
+      "imports": [
+        "PerKeyTransport"
+      ],
+      "author_log_sha256": "3285471171d1aa93761894754b9786d712254abe9015145635d5cf3a92a7ae24",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/149_PerKeyTransport_audit.log",
+        "sha256": "3285471171d1aa93761894754b9786d712254abe9015145635d5cf3a92a7ae24"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 8
+    },
+    {
+      "number": 150,
+      "module": "GramLDL_audit",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/GramLDL_audit.lean",
+        "sha256": "f905989cfd016dabeaf0c6f451179d09c8bf1cb3e5a92b61c0dad0c85c8fd31a"
+      },
+      "imports": [
+        "GramLDL"
+      ],
+      "author_log_sha256": "03d40abeaa3078cbcd08662b6b36e61e9502ca27e03aad00630bc1e20a3826c5",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/150_GramLDL_audit.log",
+        "sha256": "03d40abeaa3078cbcd08662b6b36e61e9502ca27e03aad00630bc1e20a3826c5"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 10
+    },
+    {
+      "number": 151,
+      "module": "SourceLeafBridge_audit",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/SourceLeafBridge_audit.lean",
+        "sha256": "c82ca0740fab5db6d14715b008ac49d676c30356f9f6d6c8d53f9984937572eb"
+      },
+      "imports": [
+        "SourceLeafBridge"
+      ],
+      "author_log_sha256": "fac5cd6f5f31b65113ff3a0b7129e466c4aca03bce452c10006879a02186d0bd",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/151_SourceLeafBridge_audit.log",
+        "sha256": "fac5cd6f5f31b65113ff3a0b7129e466c4aca03bce452c10006879a02186d0bd"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 7
+    },
+    {
+      "number": 152,
+      "module": "MgfProduct",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/MgfProduct.lean",
+        "sha256": "2fca89480c8a6c4c2b16c230f3c804d64f61c583bdc26f0d6d3c3e970f29e506"
+      },
+      "imports": [
+        "FT1536.PublicSimulation"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/152_MgfProduct.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 153,
+      "module": "BlockTheta",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/BlockTheta.lean",
+        "sha256": "e80dd6f5b973ac9bf7154f0a8ea9b1ce88dabb7c10b4e51b4f9c74812e84c154"
+      },
+      "imports": [
+        "MgfProduct",
+        "RejectionBound",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/153_BlockTheta.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 154,
+      "module": "ThetaPoisson",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/ThetaPoisson.lean",
+        "sha256": "7a6b00f12a04d230e5a73f7806fdf1c0641902b8d9d94740023eaffa2b6518e3"
+      },
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Gaussian.PoissonSummation",
+        "Mathlib.Topology.Algebra.InfiniteSum.NatInt",
+        "Mathlib.Topology.Algebra.InfiniteSum.Order",
+        "Mathlib.Topology.Algebra.InfiniteSum.Ring",
+        "Mathlib.Analysis.SpecificLimits.Normed",
+        "Mathlib.Analysis.SpecificLimits.Basic",
+        "Mathlib.Analysis.Real.Pi.Bounds"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/154_ThetaPoisson.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 155,
+      "module": "Theta2Split",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/Theta2Split.lean",
+        "sha256": "3c3587bad825b9ba8331e4ca36b3f7a12ba1b20e25db4a38b8759236d97a3301"
+      },
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Gaussian.PoissonSummation",
+        "Mathlib.Topology.Algebra.InfiniteSum.NatInt",
+        "Mathlib.Topology.Algebra.InfiniteSum.Order",
+        "Mathlib.Topology.Algebra.InfiniteSum.Ring",
+        "Mathlib.Topology.Algebra.InfiniteSum.Group",
+        "Mathlib.Analysis.SpecificLimits.Normed",
+        "Mathlib.Analysis.Real.Pi.Bounds",
+        "FT1536.Geometry",
+        "ThetaPoisson"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/155_Theta2Split.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 156,
+      "module": "ThetaBox",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/ThetaBox.lean",
+        "sha256": "07db75cf4adfc8e3349c92919bf4789ef9453e08685ead8a5026eee203365ebe"
+      },
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Gaussian.PoissonSummation",
+        "Mathlib.Topology.Algebra.InfiniteSum.NatInt",
+        "Mathlib.Topology.Algebra.InfiniteSum.Order",
+        "Mathlib.Topology.Algebra.InfiniteSum.Ring",
+        "Mathlib.Topology.Algebra.InfiniteSum.Group",
+        "Mathlib.Analysis.SpecificLimits.Normed",
+        "Mathlib.Analysis.Real.Pi.Bounds",
+        "Mathlib.Analysis.Complex.ExponentialBounds",
+        "MgfProduct",
+        "ThetaPoisson",
+        "Theta2Split"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/156_ThetaBox.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 157,
+      "module": "ThetaFinal",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/ThetaFinal.lean",
+        "sha256": "94692ba67d0552014a903f2a3d380f930b0163a98f629c233b8b369c9287174c"
+      },
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Gaussian.PoissonSummation",
+        "Mathlib.Topology.Algebra.InfiniteSum.NatInt",
+        "Mathlib.Topology.Algebra.InfiniteSum.Order",
+        "Mathlib.Topology.Algebra.InfiniteSum.Ring",
+        "Mathlib.Topology.Algebra.InfiniteSum.Group",
+        "Mathlib.Analysis.SpecificLimits.Normed",
+        "Mathlib.Analysis.Real.Pi.Bounds",
+        "Mathlib.Analysis.Complex.ExponentialBounds",
+        "ThetaPoisson",
+        "Theta2Split"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/157_ThetaFinal.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 158,
+      "module": "ThetaAssembly",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/ThetaAssembly.lean",
+        "sha256": "3af5d3a14170486aa4ec76ebcde867922918280794163726b578fe3015bb603f"
+      },
+      "imports": [
+        "BlockTheta",
+        "ThetaBox",
+        "ThetaFinal"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/158_ThetaAssembly.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 159,
+      "module": "FinalTails",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/FinalTails.lean",
+        "sha256": "f4cbde87566498132a1857470dae38ca823164e64543f1dc543fd7b5cae314ae"
+      },
+      "imports": [
+        "ThetaAssembly",
+        "ThetaFinal",
+        "Run2.ChangedTailReduction"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/159_FinalTails.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 160,
+      "module": "ConvolutionCert",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/ConvolutionCert.lean",
+        "sha256": "4bdc3fc9aaf7082f066fe9a6d78dca56b2daba3bb3cfe7b540d53a59fe2697a8"
+      },
+      "imports": [
+        "Run2.RadialBinningSandwich",
+        "Run2.PackedConvolution"
+      ],
+      "author_log_sha256": "cef3bc99b07fadf68318e2e57ae810b6ce0bb0a6d7291b647adcd992afad9ff3",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/160_ConvolutionCert.log",
+        "sha256": "cef3bc99b07fadf68318e2e57ae810b6ce0bb0a6d7291b647adcd992afad9ff3"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 8
+    },
+    {
+      "number": 161,
+      "module": "ConvStruct",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/ConvStruct.lean",
+        "sha256": "afcffe5750bd8e485534c6274b7c165e9d9b0a848059b55333a14f488fc77edb"
+      },
+      "imports": [
+        "Run2.RadialBinningSandwich",
+        "Run2.RawProductLaw",
+        "Run2.RawRadialEvents",
+        "Run2.TriangularGaussian",
+        "Run2.T5ScalarMass",
+        "MgfProduct",
+        "ConvolutionCert",
+        "FinalTails"
+      ],
+      "author_log_sha256": "e345f8a3612ed06a1c3c49ade2cfb8ecbe9f17dc58767324d4c98e499bf6d164",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/161_ConvStruct.log",
+        "sha256": "e345f8a3612ed06a1c3c49ade2cfb8ecbe9f17dc58767324d4c98e499bf6d164"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 162,
+      "module": "MachineAudit",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/MachineAudit.lean",
+        "sha256": "02b30a6ade090c4d70ae2d50ecaf0a7f08020b46cdc138aa821742a3382062f0"
+      },
+      "imports": [
+        "Run2.MiMoIntegration",
+        "Run2.SignedMachine",
+        "Run2.WordEncoding",
+        "Run2.FieldProgram",
+        "Run2.PolynomialMachine",
+        "Run2.NormMachine",
+        "Run2.ScalarMachine",
+        "Run2.OperationTrace",
+        "Run2.ByteMachine",
+        "Run2.TableMachine",
+        "Run2.ReferenceFinish",
+        "Run2.NonceBits",
+        "Run2.FileArithmetic",
+        "Run2.FileVerifier",
+        "Run2.VerifierResources",
+        "Run2.VerifierInputs",
+        "Run2.BitFinish",
+        "Run2.BitReduction",
+        "Run2.StateResources",
+        "Run2.PeakExecution",
+        "Run2.LocalBitCode",
+        "Run2.PublicEncoding",
+        "Run2.SamplerMachine",
+        "Run2.AdversaryMachine"
+      ],
+      "author_log_sha256": "0fec9b4e851d2c4cd49e42bc420d0eef44efd07a5188c142d97697ecfa17a6dd",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/162_MachineAudit.log",
+        "sha256": "0fec9b4e851d2c4cd49e42bc420d0eef44efd07a5188c142d97697ecfa17a6dd"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 181
+    },
+    {
+      "number": 163,
+      "module": "VerifyBind.Audit",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/VerifyBind/Audit.lean",
+        "sha256": "64ccda0c499aff21148a1d639b402916ccd088b1bf91d38a2e610a6eb4a5da59"
+      },
+      "imports": [
+        "VerifyBind.HashTo"
+      ],
+      "author_log_sha256": "771dc13469e8719d43ca3cc919c41f6f6b2718e74d61acf81e5e8088dea553e0",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/163_VerifyBind_Audit.log",
+        "sha256": "771dc13469e8719d43ca3cc919c41f6f6b2718e74d61acf81e5e8088dea553e0"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 29
+    },
+    {
+      "number": 164,
+      "module": "T5Pointwise",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/T5Pointwise.lean",
+        "sha256": "61ee2fea13c5fabb69051d3775a4861beb690f0a91e24c962e02a5d6a13cd451"
+      },
+      "imports": [
+        "AttemptWeights",
+        "CenteringClosure",
+        "Run2.T5ScalarMass"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/164_T5Pointwise.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    },
+    {
+      "number": 165,
+      "module": "FftBind.FftPin",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/FftBind/FftPin.lean",
+        "sha256": "b6b54aaa1f49a95ef7e03bccd89583094c4a33afe0eafea63ecf035baaf59546"
+      },
+      "imports": [],
+      "author_log_sha256": "38b367c8354ebd70c255381d18d21363ac580eb2cebd248bdf1feb36887f90e1",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/165_FftBind_FftPin.log",
+        "sha256": "38b367c8354ebd70c255381d18d21363ac580eb2cebd248bdf1feb36887f90e1"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 19
+    },
+    {
+      "number": 167,
+      "module": "FinalDelta",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/FinalDelta.lean",
+        "sha256": "c73289e1b16ffce497b8a4f9f4c15538d4ff7a8829e405659587293f9a72f6ec"
+      },
+      "imports": [
+        "ThetaAssembly",
+        "ThetaFinal",
+        "FinalTails",
+        "Run2.ChangedTailReduction",
+        "Run2.RadialBinningSandwich",
+        "ConvolutionCert"
+      ],
+      "author_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/167_FinalDelta.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 0
+    }
+  ],
+  "imports": [
+    [
+      "FT1536.Basic",
+      "Mathlib.Analysis.SpecialFunctions.Exp"
+    ],
+    [
+      "FT1536.Basic",
+      "Mathlib.Analysis.Real.Sqrt"
+    ],
+    [
+      "FT1536.Basic",
+      "Mathlib.Algebra.BigOperators.Field"
+    ],
+    [
+      "FT1536.Basic",
+      "Mathlib.Tactic.Linarith"
+    ],
+    [
+      "FT1536.Basic",
+      "Mathlib.Tactic.NormNum"
+    ],
+    [
+      "FT1536.Basic",
+      "Mathlib.Tactic.Ring"
+    ],
+    [
+      "FT1536.Basic",
+      "Mathlib.Tactic.FieldSimp"
+    ],
+    [
+      "FT1536.Basic",
+      "Mathlib.Tactic.Positivity"
+    ],
+    [
+      "FT1536.MathSign",
+      "FT1536.Basic"
+    ],
+    [
+      "FT1536.MathSign",
+      "Mathlib.Data.Fintype.Option"
+    ],
+    [
+      "FT1536.Geometry",
+      "FT1536.Basic"
+    ],
+    [
+      "FT1536.Divergence",
+      "FT1536.Basic"
+    ],
+    [
+      "FT1536.EventTransfer",
+      "FT1536.Divergence"
+    ],
+    [
+      "FT1536.Adaptive",
+      "FT1536.EventTransfer"
+    ],
+    [
+      "FT1536.RetryDivergence",
+      "FT1536.MathSign"
+    ],
+    [
+      "FT1536.RetryDivergence",
+      "FT1536.Divergence"
+    ],
+    [
+      "FT1536.ROM",
+      "FT1536.Basic"
+    ],
+    [
+      "FT1536.Collision",
+      "FT1536.Basic"
+    ],
+    [
+      "FT1536.PublicSimulation",
+      "FT1536.MathSign"
+    ],
+    [
+      "FT1536.PublicSimulation",
+      "FT1536.Geometry"
+    ],
+    [
+      "FT1536.PublicSimulation",
+      "FT1536.Divergence"
+    ],
+    [
+      "FT1536.PublicCode",
+      "FT1536.PublicSimulation"
+    ],
+    [
+      "FT1536.PublicCode",
+      "FT1536.ROM"
+    ],
+    [
+      "FT1536.Relation",
+      "FT1536.Geometry"
+    ],
+    [
+      "FT1536.Relation",
+      "FT1536.ROM"
+    ],
+    [
+      "FT1536.Relation",
+      "Mathlib.Data.ZMod.Basic"
+    ],
+    [
+      "FT1536.Relation",
+      "Mathlib.Algebra.Polynomial.Div"
+    ],
+    [
+      "FT1536.Model",
+      "FT1536.PublicCode"
+    ],
+    [
+      "FT1536.Model",
+      "FT1536.Relation"
+    ],
+    [
+      "FT1536.TraceBound",
+      "FT1536.Adaptive"
+    ],
+    [
+      "FT1536.Certificate",
+      "FT1536.Geometry"
+    ],
+    [
+      "Run2.FiniteDist",
+      "FT1536.Model"
+    ],
+    [
+      "Run2.FiniteDist",
+      "FT1536.Adaptive"
+    ],
+    [
+      "Run2.Games",
+      "Run2.FiniteDist"
+    ],
+    [
+      "Run2.Games",
+      "Mathlib.Data.Fintype.Vector"
+    ],
+    [
+      "Run2.EmitMixture",
+      "FT1536.RetryDivergence"
+    ],
+    [
+      "Run2.BadVerify",
+      "Run2.Games"
+    ],
+    [
+      "Run2.BadVerify",
+      "FT1536.Certificate"
+    ],
+    [
+      "Run2.GameInvariants",
+      "Run2.Games"
+    ],
+    [
+      "Run2.GameInvariants",
+      "FT1536.Collision"
+    ],
+    [
+      "Run2.FiberBinding",
+      "Run2.EmitMixture"
+    ],
+    [
+      "Run2.FiberBinding",
+      "Run2.BadVerify"
+    ],
+    [
+      "Run2.LazySampling",
+      "Run2.FiniteDist"
+    ],
+    [
+      "Run2.LawBinding",
+      "Run2.GameInvariants"
+    ],
+    [
+      "Run2.LawBinding",
+      "Run2.FiberBinding"
+    ],
+    [
+      "Run2.LawBinding",
+      "Run2.LazySampling"
+    ],
+    [
+      "Run2.CorrectnessProbability",
+      "Run2.FiberBinding"
+    ],
+    [
+      "Run2.PaidSteps",
+      "Run2.GameInvariants"
+    ],
+    [
+      "Run2.TableCost",
+      "Run2.Games"
+    ],
+    [
+      "Run2.UniformErrorBound",
+      "Run2.CorrectnessProbability"
+    ],
+    [
+      "Run2.UniformErrorBound",
+      "Mathlib.Analysis.Complex.ExponentialBounds"
+    ],
+    [
+      "Run2.MTBinding",
+      "Run2.LawBinding"
+    ],
+    [
+      "Run2.NumericCertificate",
+      "Run2.UniformErrorBound"
+    ],
+    [
+      "AuditRun2",
+      "FT1536.Basic"
+    ],
+    [
+      "AuditRun2",
+      "FT1536.MathSign"
+    ],
+    [
+      "AuditRun2",
+      "FT1536.Geometry"
+    ],
+    [
+      "AuditRun2",
+      "FT1536.Divergence"
+    ],
+    [
+      "AuditRun2",
+      "FT1536.EventTransfer"
+    ],
+    [
+      "AuditRun2",
+      "FT1536.Adaptive"
+    ],
+    [
+      "AuditRun2",
+      "FT1536.RetryDivergence"
+    ],
+    [
+      "AuditRun2",
+      "FT1536.ROM"
+    ],
+    [
+      "AuditRun2",
+      "FT1536.Collision"
+    ],
+    [
+      "AuditRun2",
+      "FT1536.PublicSimulation"
+    ],
+    [
+      "AuditRun2",
+      "FT1536.PublicCode"
+    ],
+    [
+      "AuditRun2",
+      "FT1536.Relation"
+    ],
+    [
+      "AuditRun2",
+      "FT1536.Model"
+    ],
+    [
+      "AuditRun2",
+      "FT1536.TraceBound"
+    ],
+    [
+      "AuditRun2",
+      "FT1536.Certificate"
+    ],
+    [
+      "AuditRun2",
+      "Run2.FiniteDist"
+    ],
+    [
+      "AuditRun2",
+      "Run2.Games"
+    ],
+    [
+      "AuditRun2",
+      "Run2.EmitMixture"
+    ],
+    [
+      "AuditRun2",
+      "Run2.BadVerify"
+    ],
+    [
+      "AuditRun2",
+      "Run2.GameInvariants"
+    ],
+    [
+      "AuditRun2",
+      "Run2.FiberBinding"
+    ],
+    [
+      "AuditRun2",
+      "Run2.LazySampling"
+    ],
+    [
+      "AuditRun2",
+      "Run2.LawBinding"
+    ],
+    [
+      "AuditRun2",
+      "Run2.CorrectnessProbability"
+    ],
+    [
+      "AuditRun2",
+      "Run2.PaidSteps"
+    ],
+    [
+      "AuditRun2",
+      "Run2.TableCost"
+    ],
+    [
+      "AuditRun2",
+      "Run2.UniformErrorBound"
+    ],
+    [
+      "AuditRun2",
+      "Run2.MTBinding"
+    ],
+    [
+      "AuditRun2",
+      "Run2.NumericCertificate"
+    ],
+    [
+      "CenteringClosure",
+      "Mathlib.Data.Rat.Defs"
+    ],
+    [
+      "CenteringClosure",
+      "Mathlib.Basic.Real.Basic"
+    ],
+    [
+      "CenteringClosure",
+      "Mathlib.Tactic"
+    ],
+    [
+      "SecondMoment",
+      "FT1536.Divergence"
+    ],
+    [
+      "SecondMoment",
+      "Run2.LawBinding"
+    ],
+    [
+      "Run2.PolynomialReference",
+      "FT1536.Relation"
+    ],
+    [
+      "Run2.PolynomialReference",
+      "Mathlib.Tactic.ComputeDegree"
+    ],
+    [
+      "Run2.PolynomialReference",
+      "Mathlib.Algebra.Polynomial.RingDivision"
+    ],
+    [
+      "Run2.BitArithmetic",
+      "FT1536.Basic"
+    ],
+    [
+      "Run2.BitSubtract",
+      "Run2.BitArithmetic"
+    ],
+    [
+      "Run2.BitModular",
+      "Run2.BitSubtract"
+    ],
+    [
+      "Run2.FieldConstants",
+      "Run2.BitModular"
+    ],
+    [
+      "Run2.FieldMachine",
+      "Run2.FieldConstants"
+    ],
+    [
+      "Run2.FieldMachine",
+      "Mathlib.Data.ZMod.Basic"
+    ],
+    [
+      "Run2.FieldProgram",
+      "Run2.FieldMachine"
+    ],
+    [
+      "Run2.SignedMachine",
+      "Run2.FieldMachine"
+    ],
+    [
+      "Run2.WordEncoding",
+      "Run2.SignedMachine"
+    ],
+    [
+      "Run2.PolynomialMachine",
+      "Run2.PolynomialReference"
+    ],
+    [
+      "Run2.PolynomialMachine",
+      "Run2.FieldProgram"
+    ],
+    [
+      "Run2.PolynomialMachine",
+      "Run2.WordEncoding"
+    ],
+    [
+      "Run2.ScalarMachine",
+      "Run2.WordEncoding"
+    ],
+    [
+      "Run2.ScalarMachine",
+      "FT1536.Geometry"
+    ],
+    [
+      "Run2.NormMachine",
+      "Run2.WordEncoding"
+    ],
+    [
+      "Run2.NormMachine",
+      "FT1536.Geometry"
+    ],
+    [
+      "Run2.FileArithmetic",
+      "Run2.PolynomialMachine"
+    ],
+    [
+      "Run2.FileArithmetic",
+      "Run2.ScalarMachine"
+    ],
+    [
+      "Run2.FileArithmetic",
+      "Run2.NormMachine"
+    ],
+    [
+      "Run2.FileVerifier",
+      "Run2.FileArithmetic"
+    ],
+    [
+      "Run2.VerifierResources",
+      "Run2.FileVerifier"
+    ],
+    [
+      "Run2.VerifierInputs",
+      "Run2.FileVerifier"
+    ],
+    [
+      "Run2.VerifierInputs",
+      "Run2.VerifierResources"
+    ],
+    [
+      "Run2.VerifierInputs",
+      "FT1536.PublicSimulation"
+    ],
+    [
+      "VerifyBind.StaticCodec",
+      "Run2.WordEncoding"
+    ],
+    [
+      "VerifyBind.ByteCodec",
+      "Run2.Games"
+    ],
+    [
+      "VerifyBind.ByteCodec",
+      "VerifyBind.StaticCodec"
+    ],
+    [
+      "VerifyBind.Verdict",
+      "Run2.VerifierInputs"
+    ],
+    [
+      "VerifyBind.Verdict",
+      "VerifyBind.ByteCodec"
+    ],
+    [
+      "VerifyBind.HashTo",
+      "VerifyBind.Verdict"
+    ],
+    [
+      "JointDecomp",
+      "FT1536.Divergence"
+    ],
+    [
+      "JointDecomp",
+      "Run2.LawBinding"
+    ],
+    [
+      "JointDecomp",
+      "SecondMoment"
+    ],
+    [
+      "JointDecomp",
+      "VerifyBind.HashTo"
+    ],
+    [
+      "Run2.A2Theta",
+      "FT1536.Geometry"
+    ],
+    [
+      "Run2.A2Theta",
+      "Mathlib.Topology.Algebra.InfiniteSum.Real"
+    ],
+    [
+      "Run2.A2Theta",
+      "Mathlib.Topology.Algebra.InfiniteSum.NatInt"
+    ],
+    [
+      "Run2.A2Theta",
+      "Mathlib.Analysis.SpecificLimits.Normed"
+    ],
+    [
+      "Run2.T5ThetaNumeric",
+      "Run2.A2Theta"
+    ],
+    [
+      "Run2.T5ThetaNumeric",
+      "Mathlib.Analysis.Real.Pi.Bounds"
+    ],
+    [
+      "Run2.T5ThetaNumeric",
+      "Mathlib.Analysis.Complex.ExponentialBounds"
+    ],
+    [
+      "Run2.ShiftedGaussian",
+      "Run2.A2Theta"
+    ],
+    [
+      "Run2.ShiftedGaussian",
+      "Mathlib.Analysis.SpecialFunctions.Gaussian.PoissonSummation"
+    ],
+    [
+      "Run2.TriangularGaussian",
+      "Run2.ShiftedGaussian"
+    ],
+    [
+      "Run2.T5ScalarMass",
+      "Run2.T5ThetaNumeric"
+    ],
+    [
+      "Run2.T5ScalarMass",
+      "Run2.TriangularGaussian"
+    ],
+    [
+      "RejectionBound",
+      "FT1536.PublicSimulation"
+    ],
+    [
+      "SignLayerSupport",
+      "SecondMoment"
+    ],
+    [
+      "SignLayerSupport",
+      "Run2.FiberBinding"
+    ],
+    [
+      "SignLayerSupport",
+      "Run2.T5ScalarMass"
+    ],
+    [
+      "SignLayerSupport",
+      "RejectionBound"
+    ],
+    [
+      "SignLayerSupport",
+      "CenteringClosure"
+    ],
+    [
+      "HacGlue",
+      "JointDecomp"
+    ],
+    [
+      "HacGlue",
+      "SignLayerSupport"
+    ],
+    [
+      "HacGlue",
+      "VerifyBind.HashTo"
+    ],
+    [
+      "ONoneGeometry",
+      "HacGlue"
+    ],
+    [
+      "Run2.TargetLaw",
+      "Run2.LawBinding"
+    ],
+    [
+      "Run2.ExecutionComparison",
+      "Run2.TargetLaw"
+    ],
+    [
+      "Run2.ReaderBinding",
+      "Run2.TargetLaw"
+    ],
+    [
+      "Run2.ReaderBinding",
+      "Run2.MTBinding"
+    ],
+    [
+      "Run2.StoppedComparison",
+      "Run2.ExecutionComparison"
+    ],
+    [
+      "Run2.StoppedComparison",
+      "Run2.ReaderBinding"
+    ],
+    [
+      "Run2.LazyEventBinding",
+      "Run2.StoppedComparison"
+    ],
+    [
+      "Run2.StoppingLoss",
+      "Run2.LazyEventBinding"
+    ],
+    [
+      "Run2.ConcreteReduction",
+      "Run2.StoppingLoss"
+    ],
+    [
+      "Assembly",
+      "ONoneGeometry"
+    ],
+    [
+      "Assembly",
+      "Run2.ConcreteReduction"
+    ],
+    [
+      "AdvPrg",
+      "Assembly"
+    ],
+    [
+      "CompPrg",
+      "AdvPrg"
+    ],
+    [
+      "AssemblyComp",
+      "CompPrg"
+    ],
+    [
+      "AttemptPointwise",
+      "SignLayerSupport"
+    ],
+    [
+      "Run2.ExactCounting",
+      "Run2.UniformErrorBound"
+    ],
+    [
+      "Run2.ExactCounting",
+      "Mathlib.Algebra.Polynomial.Eval.Defs"
+    ],
+    [
+      "Run2.BlockMinima",
+      "Run2.ExactCounting"
+    ],
+    [
+      "Run2.CenteringTriangle",
+      "Run2.BlockMinima"
+    ],
+    [
+      "Run2.CoefficientQuotient",
+      "FT1536.Relation"
+    ],
+    [
+      "Run2.CoefficientQuotient",
+      "Mathlib.RingTheory.AdjoinRoot"
+    ],
+    [
+      "Run2.CoefficientQuotient",
+      "Mathlib.Tactic.ComputeDegree"
+    ],
+    [
+      "Run2.ByteMachine",
+      "Run2.WordEncoding"
+    ],
+    [
+      "Run2.ByteMachine",
+      "Run2.Games"
+    ],
+    [
+      "Run2.TableMachine",
+      "Run2.ByteMachine"
+    ],
+    [
+      "Run2.TableMachine",
+      "Run2.GameInvariants"
+    ],
+    [
+      "Run2.BitFinish",
+      "Run2.VerifierInputs"
+    ],
+    [
+      "Run2.BitFinish",
+      "Run2.TableMachine"
+    ],
+    [
+      "Run2.PublicErrorIdentity",
+      "Run2.ExactCounting"
+    ],
+    [
+      "Run2.LegalKeyErrorTransfer",
+      "Run2.PublicErrorIdentity"
+    ],
+    [
+      "Run2.RawProductLaw",
+      "Run2.LegalKeyErrorTransfer"
+    ],
+    [
+      "Run2.RawProductLaw",
+      "Mathlib.Algebra.BigOperators.Ring.Finset"
+    ],
+    [
+      "Run2.RawRadialEvents",
+      "Run2.RawProductLaw"
+    ],
+    [
+      "Run2.RawRadialEvents",
+      "Run2.CenteringTriangle"
+    ],
+    [
+      "Run2.RadialTriangleSplit",
+      "Run2.RawRadialEvents"
+    ],
+    [
+      "FT1536.GameByte",
+      "FT1536.Basic"
+    ],
+    [
+      "FT1536.GameByte",
+      "FT1536.ROM"
+    ],
+    [
+      "FT1536.GameNames",
+      "FT1536.GameByte"
+    ],
+    [
+      "FT1536.GameNames",
+      "FT1536.ROM"
+    ],
+    [
+      "FT1536.GameMach",
+      "FT1536.GameNames"
+    ],
+    [
+      "FT1536.GameMach",
+      "FT1536.Model"
+    ],
+    [
+      "FT1536.GameMach",
+      "FT1536.PublicCode"
+    ],
+    [
+      "FT1536.GameMach",
+      "FT1536.Relation"
+    ],
+    [
+      "FT1536.GameMach",
+      "FT1536.Collision"
+    ],
+    [
+      "FT1536.Mixture",
+      "FT1536.Basic"
+    ],
+    [
+      "FT1536.Mixture",
+      "FT1536.Divergence"
+    ],
+    [
+      "FT1536.Mixture",
+      "FT1536.Model"
+    ],
+    [
+      "FT1536.PaidSteps",
+      "FT1536.Adaptive"
+    ],
+    [
+      "FT1536.PaidSteps",
+      "FT1536.Collision"
+    ],
+    [
+      "FT1536.PaidSteps",
+      "FT1536.EventTransfer"
+    ],
+    [
+      "FT1536.PaidSteps",
+      "FT1536.GameByte"
+    ],
+    [
+      "FT1536.PaidSteps",
+      "FT1536.GameNames"
+    ],
+    [
+      "FT1536.PaidSteps",
+      "FT1536.ROM"
+    ],
+    [
+      "FT1536.Lazy",
+      "FT1536.Basic"
+    ],
+    [
+      "FT1536.Lazy",
+      "FT1536.Mixture"
+    ],
+    [
+      "FT1536.Lazy",
+      "FT1536.ROM"
+    ],
+    [
+      "FT1536.Lazy",
+      "Mathlib.Data.Fintype.BigOperators"
+    ],
+    [
+      "FT1536.GameLaw",
+      "FT1536.GameMach"
+    ],
+    [
+      "FT1536.GameLaw",
+      "FT1536.Mixture"
+    ],
+    [
+      "FT1536.GameLaw",
+      "FT1536.PaidSteps"
+    ],
+    [
+      "FT1536.GameLaw",
+      "FT1536.Lazy"
+    ],
+    [
+      "FT1536.PathCounter",
+      "FT1536.Divergence"
+    ],
+    [
+      "FT1536.PathCounter",
+      "FT1536.EventTransfer"
+    ],
+    [
+      "FT1536.PathCounter",
+      "FT1536.PaidSteps"
+    ],
+    [
+      "FT1536.AdversaryFold",
+      "FT1536.GameLaw"
+    ],
+    [
+      "FT1536.AdversaryFold",
+      "FT1536.PathCounter"
+    ],
+    [
+      "FT1536.BitCost",
+      "FT1536.AdversaryFold"
+    ],
+    [
+      "Run2.MiMoIntegration",
+      "Run2.ConcreteReduction"
+    ],
+    [
+      "Run2.MiMoIntegration",
+      "FT1536.GameNames"
+    ],
+    [
+      "Run2.MiMoIntegration",
+      "FT1536.BitCost"
+    ],
+    [
+      "Run2.PackedConvolution",
+      "FT1536.Basic"
+    ],
+    [
+      "Run2.PackedConvolution",
+      "Mathlib.Algebra.Polynomial.Inductions"
+    ],
+    [
+      "Run2.PackedConvolution",
+      "Mathlib.Algebra.Polynomial.Eval.Defs"
+    ],
+    [
+      "Run2.LocalBitCode",
+      "Run2.BitArithmetic"
+    ],
+    [
+      "Run2.NonceBits",
+      "Run2.WordEncoding"
+    ],
+    [
+      "Run2.NonceBits",
+      "Run2.TargetLaw"
+    ],
+    [
+      "Run2.NonceBits",
+      "Mathlib.Logic.Equiv.Fin.Basic"
+    ],
+    [
+      "Run2.BitReduction",
+      "Run2.BitFinish"
+    ],
+    [
+      "Run2.BitReduction",
+      "Run2.NonceBits"
+    ],
+    [
+      "Run2.ProgramResources",
+      "Run2.ConcreteReduction"
+    ],
+    [
+      "Run2.StateResources",
+      "Run2.BitReduction"
+    ],
+    [
+      "Run2.StateResources",
+      "Run2.ProgramResources"
+    ],
+    [
+      "Run2.PublicEncoding",
+      "Run2.StateResources"
+    ],
+    [
+      "Run2.SamplerMachine",
+      "Run2.LocalBitCode"
+    ],
+    [
+      "Run2.SamplerMachine",
+      "Run2.PublicEncoding"
+    ],
+    [
+      "Run2.SamplerMachine",
+      "FT1536.BitCost"
+    ],
+    [
+      "Run2.AdversaryMachine",
+      "Run2.SamplerMachine"
+    ],
+    [
+      "Run2.LocalMachineCode",
+      "Run2.AdversaryMachine"
+    ],
+    [
+      "Run2.PeakExecution",
+      "Run2.StateResources"
+    ],
+    [
+      "Run2.MachineExecution",
+      "Run2.LocalMachineCode"
+    ],
+    [
+      "Run2.MachineExecution",
+      "Run2.PeakExecution"
+    ],
+    [
+      "Run2.MachineAccounting",
+      "Run2.MachineExecution"
+    ],
+    [
+      "Run2.BitAllocation",
+      "Run2.ScalarMachine"
+    ],
+    [
+      "Run2.TableAllocation",
+      "Run2.BitAllocation"
+    ],
+    [
+      "Run2.TableAllocation",
+      "Run2.TableMachine"
+    ],
+    [
+      "Run2.VerifierAllocation",
+      "Run2.BitAllocation"
+    ],
+    [
+      "Run2.VerifierAllocation",
+      "Run2.VerifierInputs"
+    ],
+    [
+      "Run2.MeteredExecution",
+      "Run2.MachineAccounting"
+    ],
+    [
+      "Run2.MeteredExecution",
+      "Run2.TableAllocation"
+    ],
+    [
+      "Run2.MeteredExecution",
+      "Run2.VerifierAllocation"
+    ],
+    [
+      "Run2.PrefixResources",
+      "Run2.MeteredExecution"
+    ],
+    [
+      "Run2.GaussianFiberTilt",
+      "Run2.LegalKeyErrorTransfer"
+    ],
+    [
+      "Run2.StableLeafAlgebra",
+      "FT1536.Basic"
+    ],
+    [
+      "Run2.RadialSymmetry",
+      "Run2.RadialTriangleSplit"
+    ],
+    [
+      "Run2.RawIndependence",
+      "Run2.RawRadialEvents"
+    ],
+    [
+      "Run2.RawIndependence",
+      "Mathlib.Algebra.BigOperators.GroupWithZero.Finset"
+    ],
+    [
+      "Run2.RadialWindowSplit",
+      "Run2.RadialSymmetry"
+    ],
+    [
+      "Run2.RadialWindowSplit",
+      "Run2.RawIndependence"
+    ],
+    [
+      "Run2.GuaranteedDigits",
+      "Run2.LegalKeyErrorTransfer"
+    ],
+    [
+      "Run2.RawRadialEnclosure",
+      "Run2.RawRadialEvents"
+    ],
+    [
+      "Run2.RawRadialEnclosure",
+      "Run2.GuaranteedDigits"
+    ],
+    [
+      "Run2.RadialObligations",
+      "Run2.RawIndependence"
+    ],
+    [
+      "Run2.RadialObligations",
+      "Run2.RawRadialEnclosure"
+    ],
+    [
+      "Run2.RadialBinningSandwich",
+      "Run2.RadialWindowSplit"
+    ],
+    [
+      "Run2.RadialBinningSandwich",
+      "Run2.RadialObligations"
+    ],
+    [
+      "Run2.StableLeafSchedule",
+      "Run2.StableLeafAlgebra"
+    ],
+    [
+      "Run2.ChangedTailReduction",
+      "Run2.RadialSymmetry"
+    ],
+    [
+      "Run2.ChangedTailReduction",
+      "Run2.RadialObligations"
+    ],
+    [
+      "Run2.DiscreteFourier",
+      "FT1536.Basic"
+    ],
+    [
+      "Run2.DiscreteFourier",
+      "Mathlib.Analysis.Fourier.ZMod"
+    ],
+    [
+      "Run2.ZeroKeyReduction",
+      "Run2.PublicErrorIdentity"
+    ],
+    [
+      "Run2.ReferenceFinish",
+      "Run2.PolynomialMachine"
+    ],
+    [
+      "Run2.ReferenceFinish",
+      "Run2.TableMachine"
+    ],
+    [
+      "Run2.FinishResources",
+      "Run2.PrefixResources"
+    ],
+    [
+      "Run2.ResourceReduction",
+      "Run2.FinishResources"
+    ],
+    [
+      "Run2.GeneratingFunction",
+      "FT1536.Adaptive"
+    ],
+    [
+      "Run2.GeneratingFunction",
+      "Mathlib.Algebra.Polynomial.BigOperators"
+    ],
+    [
+      "Run2.RejectionNumericMargin",
+      "Run2.GaussianFiberTilt"
+    ],
+    [
+      "Run2.RejectionNumericMargin",
+      "Mathlib.Analysis.Complex.ExponentialBounds"
+    ],
+    [
+      "Run2.NormalizerComparison",
+      "Run2.RejectionNumericMargin"
+    ],
+    [
+      "Run2.NormalizerComparison",
+      "Run2.GuaranteedDigits"
+    ],
+    [
+      "Run2.M6Audit",
+      "Run2.NormalizerComparison"
+    ],
+    [
+      "Run2.M6Audit",
+      "Run2.T5ThetaNumeric"
+    ],
+    [
+      "Run2.M6Audit",
+      "Run2.TriangularGaussian"
+    ],
+    [
+      "Run2.M6Audit",
+      "Run2.T5ScalarMass"
+    ],
+    [
+      "Run2.NTRUBasis",
+      "FT1536.Basic"
+    ],
+    [
+      "Run2.NTRUBasis",
+      "Mathlib.Algebra.Ring.Prod"
+    ],
+    [
+      "Run2.QuotientOperations",
+      "Run2.CoefficientQuotient"
+    ],
+    [
+      "Run2.ActualNTRUFiber",
+      "Run2.NTRUBasis"
+    ],
+    [
+      "Run2.ActualNTRUFiber",
+      "Run2.QuotientOperations"
+    ],
+    [
+      "Run2.CyclicAliases",
+      "FT1536.Basic"
+    ],
+    [
+      "Run2.KeygenLeafGate",
+      "FT1536.Basic"
+    ],
+    [
+      "Run2.KeygenLeafGate",
+      "Mathlib.Data.BitVec"
+    ],
+    [
+      "Run2.KernelBindingAudit",
+      "Run2.M6Audit"
+    ],
+    [
+      "Run2.KernelBindingAudit",
+      "Run2.ActualNTRUFiber"
+    ],
+    [
+      "Run2.KernelBindingAudit",
+      "Run2.KeygenLeafGate"
+    ],
+    [
+      "Run2.KernelBindingAudit",
+      "Run2.StableLeafSchedule"
+    ],
+    [
+      "Run2.OperationTrace",
+      "Run2.ProgramResources"
+    ],
+    [
+      "Run2.OperationTrace",
+      "Run2.MiMoIntegration"
+    ],
+    [
+      "Run2.RestEnergyBridge",
+      "Run2.RadialBinningSandwich"
+    ],
+    [
+      "Run2.Binning",
+      "FT1536.Basic"
+    ],
+    [
+      "AttemptWeights",
+      "AttemptPointwise"
+    ],
+    [
+      "AttemptWeights",
+      "ONoneGeometry"
+    ],
+    [
+      "GramLDL",
+      "Run2.StableLeafSchedule"
+    ],
+    [
+      "GramLDL",
+      "Run2.ActualNTRUFiber"
+    ],
+    [
+      "GramLDL",
+      "Run2.TriangularGaussian"
+    ],
+    [
+      "SourceLeafBridge",
+      "Run2.KeygenLeafGate"
+    ],
+    [
+      "SourceLeafBridge",
+      "Run2.StableLeafSchedule"
+    ],
+    [
+      "SourceLeafBridge",
+      "GramLDL"
+    ],
+    [
+      "PerKeyTransport",
+      "GramLDL"
+    ],
+    [
+      "PerKeyTransport",
+      "SourceLeafBridge"
+    ],
+    [
+      "PerKeyTransport",
+      "Run2.T5ScalarMass"
+    ],
+    [
+      "PerKeyTransport_audit",
+      "PerKeyTransport"
+    ],
+    [
+      "GramLDL_audit",
+      "GramLDL"
+    ],
+    [
+      "SourceLeafBridge_audit",
+      "SourceLeafBridge"
+    ],
+    [
+      "MgfProduct",
+      "FT1536.PublicSimulation"
+    ],
+    [
+      "BlockTheta",
+      "MgfProduct"
+    ],
+    [
+      "BlockTheta",
+      "RejectionBound"
+    ],
+    [
+      "BlockTheta",
+      "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic"
+    ],
+    [
+      "ThetaPoisson",
+      "Mathlib.Analysis.SpecialFunctions.Gaussian.PoissonSummation"
+    ],
+    [
+      "ThetaPoisson",
+      "Mathlib.Topology.Algebra.InfiniteSum.NatInt"
+    ],
+    [
+      "ThetaPoisson",
+      "Mathlib.Topology.Algebra.InfiniteSum.Order"
+    ],
+    [
+      "ThetaPoisson",
+      "Mathlib.Topology.Algebra.InfiniteSum.Ring"
+    ],
+    [
+      "ThetaPoisson",
+      "Mathlib.Analysis.SpecificLimits.Normed"
+    ],
+    [
+      "ThetaPoisson",
+      "Mathlib.Analysis.SpecificLimits.Basic"
+    ],
+    [
+      "ThetaPoisson",
+      "Mathlib.Analysis.Real.Pi.Bounds"
+    ],
+    [
+      "Theta2Split",
+      "Mathlib.Analysis.SpecialFunctions.Gaussian.PoissonSummation"
+    ],
+    [
+      "Theta2Split",
+      "Mathlib.Topology.Algebra.InfiniteSum.NatInt"
+    ],
+    [
+      "Theta2Split",
+      "Mathlib.Topology.Algebra.InfiniteSum.Order"
+    ],
+    [
+      "Theta2Split",
+      "Mathlib.Topology.Algebra.InfiniteSum.Ring"
+    ],
+    [
+      "Theta2Split",
+      "Mathlib.Topology.Algebra.InfiniteSum.Group"
+    ],
+    [
+      "Theta2Split",
+      "Mathlib.Analysis.SpecificLimits.Normed"
+    ],
+    [
+      "Theta2Split",
+      "Mathlib.Analysis.Real.Pi.Bounds"
+    ],
+    [
+      "Theta2Split",
+      "FT1536.Geometry"
+    ],
+    [
+      "Theta2Split",
+      "ThetaPoisson"
+    ],
+    [
+      "ThetaBox",
+      "Mathlib.Analysis.SpecialFunctions.Gaussian.PoissonSummation"
+    ],
+    [
+      "ThetaBox",
+      "Mathlib.Topology.Algebra.InfiniteSum.NatInt"
+    ],
+    [
+      "ThetaBox",
+      "Mathlib.Topology.Algebra.InfiniteSum.Order"
+    ],
+    [
+      "ThetaBox",
+      "Mathlib.Topology.Algebra.InfiniteSum.Ring"
+    ],
+    [
+      "ThetaBox",
+      "Mathlib.Topology.Algebra.InfiniteSum.Group"
+    ],
+    [
+      "ThetaBox",
+      "Mathlib.Analysis.SpecificLimits.Normed"
+    ],
+    [
+      "ThetaBox",
+      "Mathlib.Analysis.Real.Pi.Bounds"
+    ],
+    [
+      "ThetaBox",
+      "Mathlib.Analysis.Complex.ExponentialBounds"
+    ],
+    [
+      "ThetaBox",
+      "MgfProduct"
+    ],
+    [
+      "ThetaBox",
+      "ThetaPoisson"
+    ],
+    [
+      "ThetaBox",
+      "Theta2Split"
+    ],
+    [
+      "ThetaFinal",
+      "Mathlib.Analysis.SpecialFunctions.Gaussian.PoissonSummation"
+    ],
+    [
+      "ThetaFinal",
+      "Mathlib.Topology.Algebra.InfiniteSum.NatInt"
+    ],
+    [
+      "ThetaFinal",
+      "Mathlib.Topology.Algebra.InfiniteSum.Order"
+    ],
+    [
+      "ThetaFinal",
+      "Mathlib.Topology.Algebra.InfiniteSum.Ring"
+    ],
+    [
+      "ThetaFinal",
+      "Mathlib.Topology.Algebra.InfiniteSum.Group"
+    ],
+    [
+      "ThetaFinal",
+      "Mathlib.Analysis.SpecificLimits.Normed"
+    ],
+    [
+      "ThetaFinal",
+      "Mathlib.Analysis.Real.Pi.Bounds"
+    ],
+    [
+      "ThetaFinal",
+      "Mathlib.Analysis.Complex.ExponentialBounds"
+    ],
+    [
+      "ThetaFinal",
+      "ThetaPoisson"
+    ],
+    [
+      "ThetaFinal",
+      "Theta2Split"
+    ],
+    [
+      "ThetaAssembly",
+      "BlockTheta"
+    ],
+    [
+      "ThetaAssembly",
+      "ThetaBox"
+    ],
+    [
+      "ThetaAssembly",
+      "ThetaFinal"
+    ],
+    [
+      "FinalTails",
+      "ThetaAssembly"
+    ],
+    [
+      "FinalTails",
+      "ThetaFinal"
+    ],
+    [
+      "FinalTails",
+      "Run2.ChangedTailReduction"
+    ],
+    [
+      "ConvolutionCert",
+      "Run2.RadialBinningSandwich"
+    ],
+    [
+      "ConvolutionCert",
+      "Run2.PackedConvolution"
+    ],
+    [
+      "ConvStruct",
+      "Run2.RadialBinningSandwich"
+    ],
+    [
+      "ConvStruct",
+      "Run2.RawProductLaw"
+    ],
+    [
+      "ConvStruct",
+      "Run2.RawRadialEvents"
+    ],
+    [
+      "ConvStruct",
+      "Run2.TriangularGaussian"
+    ],
+    [
+      "ConvStruct",
+      "Run2.T5ScalarMass"
+    ],
+    [
+      "ConvStruct",
+      "MgfProduct"
+    ],
+    [
+      "ConvStruct",
+      "ConvolutionCert"
+    ],
+    [
+      "ConvStruct",
+      "FinalTails"
+    ],
+    [
+      "MachineAudit",
+      "Run2.MiMoIntegration"
+    ],
+    [
+      "MachineAudit",
+      "Run2.SignedMachine"
+    ],
+    [
+      "MachineAudit",
+      "Run2.WordEncoding"
+    ],
+    [
+      "MachineAudit",
+      "Run2.FieldProgram"
+    ],
+    [
+      "MachineAudit",
+      "Run2.PolynomialMachine"
+    ],
+    [
+      "MachineAudit",
+      "Run2.NormMachine"
+    ],
+    [
+      "MachineAudit",
+      "Run2.ScalarMachine"
+    ],
+    [
+      "MachineAudit",
+      "Run2.OperationTrace"
+    ],
+    [
+      "MachineAudit",
+      "Run2.ByteMachine"
+    ],
+    [
+      "MachineAudit",
+      "Run2.TableMachine"
+    ],
+    [
+      "MachineAudit",
+      "Run2.ReferenceFinish"
+    ],
+    [
+      "MachineAudit",
+      "Run2.NonceBits"
+    ],
+    [
+      "MachineAudit",
+      "Run2.FileArithmetic"
+    ],
+    [
+      "MachineAudit",
+      "Run2.FileVerifier"
+    ],
+    [
+      "MachineAudit",
+      "Run2.VerifierResources"
+    ],
+    [
+      "MachineAudit",
+      "Run2.VerifierInputs"
+    ],
+    [
+      "MachineAudit",
+      "Run2.BitFinish"
+    ],
+    [
+      "MachineAudit",
+      "Run2.BitReduction"
+    ],
+    [
+      "MachineAudit",
+      "Run2.StateResources"
+    ],
+    [
+      "MachineAudit",
+      "Run2.PeakExecution"
+    ],
+    [
+      "MachineAudit",
+      "Run2.LocalBitCode"
+    ],
+    [
+      "MachineAudit",
+      "Run2.PublicEncoding"
+    ],
+    [
+      "MachineAudit",
+      "Run2.SamplerMachine"
+    ],
+    [
+      "MachineAudit",
+      "Run2.AdversaryMachine"
+    ],
+    [
+      "VerifyBind.Audit",
+      "VerifyBind.HashTo"
+    ],
+    [
+      "T5Pointwise",
+      "AttemptWeights"
+    ],
+    [
+      "T5Pointwise",
+      "CenteringClosure"
+    ],
+    [
+      "T5Pointwise",
+      "Run2.T5ScalarMass"
+    ],
+    [
+      "FinalDelta",
+      "ThetaAssembly"
+    ],
+    [
+      "FinalDelta",
+      "ThetaFinal"
+    ],
+    [
+      "FinalDelta",
+      "FinalTails"
+    ],
+    [
+      "FinalDelta",
+      "Run2.ChangedTailReduction"
+    ],
+    [
+      "FinalDelta",
+      "Run2.RadialBinningSandwich"
+    ],
+    [
+      "FinalDelta",
+      "ConvolutionCert"
+    ]
+  ],
+  "external_imports": [
+    "Mathlib.Algebra.BigOperators.Field",
+    "Mathlib.Algebra.BigOperators.GroupWithZero.Finset",
+    "Mathlib.Algebra.BigOperators.Ring.Finset",
+    "Mathlib.Algebra.Polynomial.BigOperators",
+    "Mathlib.Algebra.Polynomial.Div",
+    "Mathlib.Algebra.Polynomial.Eval.Defs",
+    "Mathlib.Algebra.Polynomial.Inductions",
+    "Mathlib.Algebra.Polynomial.RingDivision",
+    "Mathlib.Algebra.Ring.Prod",
+    "Mathlib.Analysis.Complex.ExponentialBounds",
+    "Mathlib.Analysis.Fourier.ZMod",
+    "Mathlib.Analysis.Real.Pi.Bounds",
+    "Mathlib.Analysis.Real.Sqrt",
+    "Mathlib.Analysis.SpecialFunctions.Exp",
+    "Mathlib.Analysis.SpecialFunctions.Gaussian.PoissonSummation",
+    "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic",
+    "Mathlib.Analysis.SpecificLimits.Basic",
+    "Mathlib.Analysis.SpecificLimits.Normed",
+    "Mathlib.Basic.Real.Basic",
+    "Mathlib.Data.BitVec",
+    "Mathlib.Data.Fintype.BigOperators",
+    "Mathlib.Data.Fintype.Option",
+    "Mathlib.Data.Fintype.Vector",
+    "Mathlib.Data.Rat.Defs",
+    "Mathlib.Data.ZMod.Basic",
+    "Mathlib.Logic.Equiv.Fin.Basic",
+    "Mathlib.RingTheory.AdjoinRoot",
+    "Mathlib.Tactic",
+    "Mathlib.Tactic.ComputeDegree",
+    "Mathlib.Tactic.FieldSimp",
+    "Mathlib.Tactic.Linarith",
+    "Mathlib.Tactic.NormNum",
+    "Mathlib.Tactic.Positivity",
+    "Mathlib.Tactic.Ring",
+    "Mathlib.Topology.Algebra.InfiniteSum.Group",
+    "Mathlib.Topology.Algebra.InfiniteSum.NatInt",
+    "Mathlib.Topology.Algebra.InfiniteSum.Order",
+    "Mathlib.Topology.Algebra.InfiniteSum.Real",
+    "Mathlib.Topology.Algebra.InfiniteSum.Ring"
+  ],
+  "axiom_evidence": {
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "standard_only_for_recorded_scope_audits": true,
+    "printed_axiom_entries_in_166_modules": 569,
+    "nonstandard_printed_entries_in_166_modules": [],
+    "focused_review_declarations": [
+      {
+        "declaration": "FT1536.HacGlue.localJointCertificate_of_named_premises",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "declaration": "FT1536.HacGlue.localJointCertificate_of_named_premises_e",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "declaration": "FT1536.HacGlue.localJointCertificate_of_pointwise_premises",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "declaration": "FT1536.HacGlue.localJointCertificate_of_named_premises_attemptFactor",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "declaration": "FT1536.ONoneGeometry.localJointCertificate_of_attemptFactor",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "declaration": "FT1536.Assembly.end_to_end_assembled_theorem_statement",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "declaration": "FT1536.Assembly.end_to_end_assembled_theorem_statement_prgTerm",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "declaration": "FT1536.Assembly.end_to_end_assembled_theorem_attemptFactor",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "declaration": "FT1536.Assembly.exists_assembled_reducer",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "declaration": "FT1536.Assembly.assembled_hardness_substitution",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "declaration": "FT1536.AdvPrg.assembled_hardness_substitution_chacha",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "declaration": "FT1536.AdvPrg.end_to_end_assembled_theorem_statement_chacha",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "declaration": "FT1536.HacGlue.RomChallengeAt",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "declaration": "FT1536.HacGlue.romChallengeAt",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "declaration": "FT1536.JointDecomp.samplerLaw_marginal_uniform",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "declaration": "FT1536.Run2.sample",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "declaration": "FT1536.AssemblyComp.advMT_ge_of_public_sim_stream_win",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "declaration": "FT1536.T5Pointwise.machineStage_of_absErr_floor_support",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "declaration": "FT1536.T5Pointwise.machineStage_of_relErr",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "declaration": "FT1536.T5Pointwise.machineStage_of_absErr_fiberFloor",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "declaration": "FT1536.Run2.Sampler",
+        "axioms": []
+      }
+    ],
+    "boundary": "Recorded #print axioms and focused review audits; not an enumeration of the entire Lean environment"
+  },
+  "excluded_diagnostic": {
+    "module": {
+      "number": 166,
+      "module": "SelectBitPreserve",
+      "source": {
+        "path": "proofs/ft1536/development/T12_1/run2/formal/SelectBitPreserve.lean",
+        "sha256": "b7f57ec65c98b3477a7177e4107d92eefc78ff58ff5c8f57c6d5fb7cb47a9523"
+      },
+      "imports": [
+        "Mathlib.Tactic",
+        "Std.Tactic.BVDecide"
+      ],
+      "author_log_sha256": "81fb8910687d4604cd23a35722862bd82c413b4daa40b953c5c7e746b89f0d09",
+      "review_log": {
+        "path": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/166_SelectBitPreserve.log",
+        "sha256": "81fb8910687d4604cd23a35722862bd82c413b4daa40b953c5c7e746b89f0d09"
+      },
+      "recorded_exit": 0,
+      "printed_axiom_entries": 4
+    },
+    "reverse_importers_in_all_mapped_sources": [],
+    "mapped_source_count": 177,
+    "extra_axiom": "select_bits_equiv._native.bv_decide.ax_1_5",
+    "nonstandard_entries": [
+      {
+        "module": "SelectBitPreserve",
+        "declaration": "FT1536.FPError.SelectBitPreserve.select_bits_equiv",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound",
+          "select_bits_equiv._native.bv_decide.ax_1_5"
+        ]
+      },
+      {
+        "module": "SelectBitPreserve",
+        "declaration": "FT1536.FPError.SelectBitPreserve.select_old_eq_new",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound",
+          "select_bits_equiv._native.bv_decide.ax_1_5"
+        ]
+      },
+      {
+        "module": "SelectBitPreserve",
+        "declaration": "FT1536.FPError.SelectBitPreserve.select_code_variants_equiv",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound",
+          "select_bits_equiv._native.bv_decide.ax_1_5"
+        ]
+      }
+    ],
+    "excluded_deliberately": true
+  },
+  "theta_linter_exception": {
+    "module_number": 156,
+    "source": {
+      "path": "proofs/ft1536/development/T12_1/run2/formal/ThetaBox.lean",
+      "sha256": "07db75cf4adfc8e3349c92919bf4789ef9453e08685ead8a5026eee203365ebe"
+    },
+    "line": 166,
+    "option": "linter.constructorNameAsVariable false",
+    "scope": "blockSum_eq_boxSum only",
+    "kind": "Historical tooling exception; no proof or kernel check disabled",
+    "test_source": {
+      "path": "proofs/ft1536/development/T12_1/run2/notes/F04_ROM_VARIANT_A_SCOPE_002/ThetaBoxLinterEnabled.lean.txt",
+      "sha256": "a3061f1d964cc7877de08f211a884a04d90d2dc9224f8896c3992fd6bfa99def"
+    },
+    "test_log": {
+      "path": "proofs/ft1536/development/T12_1/run2/notes/F04_ROM_VARIANT_A_SCOPE_002/theta_linter_enabled.log",
+      "sha256": "1fa8918be6d90f09de4c96e65753de6e3ab73c552fb211d0026b9955ff8c53e8"
+    },
+    "recorded_exit": 1,
+    "diagnostic": "linter Lean.Linter.constructorNameAsVariable failed: maximum recursion depth has been reached",
+    "fresh_test_in_this_correction": false
+  },
+  "preservation": {
+    "manifest": {
+      "path": "proofs/ft1536/development/T12_1/run2/notes/F04_ROM_VARIANT_A_SCOPE_002/PRESERVED_INPUTS.sha256",
+      "sha256": "0cfd5998ffb6f5a79dc29a4677b4057a5bcc7547c6eb9d76208115a41f8e5e2f"
+    },
+    "verified_files": 3813,
+    "copies": [
+      {
+        "original": "proofs/ft1536/development/T12_1/run2/notes/F04_ROM_VARIANT_A_001_NOTES.md",
+        "copy": "PREVIOUS_NOTES.md",
+        "sha256": "0a684105645efdee2cdecf22b855d3207b9f75f37a8dae5ff17a3716b1d3cad9"
+      },
+      {
+        "original": "proofs/ft1536/development/T12_1/run2/notes/F04_ROM_VARIANT_A_CHECKPOINT.md",
+        "copy": "PREVIOUS_CHECKPOINT.md",
+        "sha256": "458a9e31695f895f2586f982a801fd3e4ae6e631021255c5984d34dcde86ba33"
+      },
+      {
+        "original": "proofs/ft1536/development/T12_1/run2/.build/f04_rom_a_001/attempts/final_clean_002/RECEIPT.json",
+        "copy": "final_clean_002.RECEIPT.json",
+        "sha256": "e37814b7b768a414f4bd6a18eca34e7441d4a2ff3986b6c3cf8cc6b63107caae"
+      },
+      {
+        "original": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/REVIEW.md",
+        "copy": "REVIEW_001.md",
+        "sha256": "42e5e11fb7dc8b35c71312705733f3ab16e9055bacd099b48cf6cc3c7727f8d7"
+      },
+      {
+        "original": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/REPLAY_RECEIPT.json",
+        "copy": "REVIEW_001.REPLAY_RECEIPT.json",
+        "sha256": "efc1f03db8e768bc5e86e2eb3ce5245b6d8462783b6f01bbff5c7b8fd64af232"
+      },
+      {
+        "original": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/EXTRA_CHECKS_RECEIPT.json",
+        "copy": "REVIEW_001.EXTRA_CHECKS_RECEIPT.json",
+        "sha256": "ce230043f920eebec753ea451ac9dc37d2721fe010589fa9d97cbaf0c97c829d"
+      },
+      {
+        "original": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/evidence/REPLAY_LOG_AUDIT.json",
+        "copy": "REVIEW_001.REPLAY_LOG_AUDIT.json",
+        "sha256": "a712db5c9eace6ad41e418a2dc14848d1740e56640302cbd91bf436aa64b836d"
+      },
+      {
+        "original": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/evidence/REVIEWER_AXIOMS.json",
+        "copy": "REVIEW_001.REVIEWER_AXIOMS.json",
+        "sha256": "0f75d34e8e377050729ed37745051dc5f7745ceea642e2c236001e3f4cba0f35"
+      },
+      {
+        "original": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/evidence/THETABOX_EXCEPTION.json",
+        "copy": "REVIEW_001.THETABOX_EXCEPTION.json",
+        "sha256": "0fead3147b92c4d9a137806229a0180021ed3890d206e8d8c1c58b42f7007448"
+      },
+      {
+        "original": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/ThetaBoxLinterEnabled.lean",
+        "copy": "ThetaBoxLinterEnabled.lean.txt",
+        "sha256": "a3061f1d964cc7877de08f211a884a04d90d2dc9224f8896c3992fd6bfa99def"
+      },
+      {
+        "original": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/evidence/theta_linter_enabled.log",
+        "copy": "theta_linter_enabled.log",
+        "sha256": "1fa8918be6d90f09de4c96e65753de6e3ab73c552fb211d0026b9955ff8c53e8"
+      },
+      {
+        "original": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/evidence/theta_linter_enabled.stdout",
+        "copy": "theta_linter_enabled.stdout",
+        "sha256": "f76f25318ba622cf96671b375c8c111cad6267e3a7fe7825b80633620cc61c4a"
+      },
+      {
+        "original": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/evidence/theta_linter_enabled.stderr",
+        "copy": "theta_linter_enabled.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "original": "proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/replay/logs/166_SelectBitPreserve.log",
+        "copy": "166_SelectBitPreserve.log",
+        "sha256": "81fb8910687d4604cd23a35722862bd82c413b4daa40b953c5c7e746b89f0d09"
+      }
+    ],
+    "previous_notes_checkpoint_kept_as_exact_prefixes": true
+  },
+  "checker": {
+    "path": "proofs/ft1536/development/T12_1/run2/tools/check_f04_scope_002.py",
+    "sha256": "1641e209175f1cdd456bf2906c5086f233ae748aa2c4dc45b639507df0056f95"
+  }
+}

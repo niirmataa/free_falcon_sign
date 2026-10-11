@@ -1,5 +1,22 @@
 # Stan projektu — punkt wejścia
 
+**2026-10-11 — F04/F05: korekta zakresu po R1/R2 REVIEW_001.**
+Na polecenie właściciela skorygowano granicę zaufania w NOTES/CHECKPOINT,
+bez zmian matematycznych. Odbierana closure to dokładnie **166 modułów,
+#001–#165 i #167**; #166 SelectBitPreserve świadomie wyłączono jako
+historyczną diagnostykę z aksjomatem `select_bits_equiv._native.bv_decide.ax_1_5`.
+Graf potwierdza zero konsumentów. Standard-only dotyczy audytów closure 166 modułów:
+569 zachowanych wydruków oraz 21 deklaracji odbioru; nie całego builda 167 modułów.
+#156 ThetaBox zachowuje jawny wyjątek narzędziowy lintera, z przypiętą
+testową kopią i logiem błędu rekurencji. Nowy [receipt i lista modułów](../../proofs/ft1536/development/T12_1/run2/notes/F04_ROM_VARIANT_A_SCOPE_002/RECEIPT.json)
+wiąże piny i kontrolę 3813 wcześniejszych plików; `final_clean_002` oraz
+REVIEW_001 są nienaruszone. **SCOPE_CORRECTED_AWAITING_TARGETED_RECHECK**;
+historyczny werdykt CHANGES_REQUIRED nie został podniesiony. Następny krok:
+ukierunkowany recheck zakresu/evidence. Dwa zadania utwardzania mają NISKI
+priorytet w ROADMAP, osobna partia. Bez nowego replayu Lean, push/importu/tagu;
+ReplyShape, sampler źródłowy, most bajtowy, hzero/budżety i F06 nadal OPEN.
+MIGRATION_HOLD zachowany.
+
 **2026-09-30 — właściciel: małe commity źródeł od work i bieżący GitHub.**
 Zapis rzeczywistej pracy na main powstaje po małych logicznych krokach,
 przed końcowym verify/review/stages. Po odbiorze osobny checkpoint i tag

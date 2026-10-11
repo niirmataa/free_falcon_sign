@@ -437,3 +437,23 @@ muszą wskazywać ten sam aktywny etap.
   kontynuacji RUN_003 i T5. Aktywny agent przejdzie po handoffie. Stage/review
   otrzyma osobny commit/tag; nie trzeba czekać na cały wielki etap.
   Duże generowane certyfikaty mają pin i generator, runtime pozostaje lokalny.
+
+### T12.1 — kolejka utwardzania po korekcie F04/F05 R1/R2 (2026-10-11)
+
+Decyzja właściciela: **NISKI priorytet, osobna partia**. Oba zadania są
+QUEUED, bez przydzielonego wykonawcy i bez startu w korekcie dokumentacji.
+Nie są warunkiem matematycznej naprawy F04/F05 w zawężonej closure 166 modułów;
+nie znoszą MIGRATION_HOLD ani otwartych zależności źródłowych T12.1.
+
+| ID w T12.1 | Cel i zależności | Kryterium odbioru osobnej partii |
+|---|---|---|
+| T12.1/HARDEN_R1 | Przepisać historyczny diagnostyczny SelectBitPreserve bez `bv_decide`; baza: źródło/pin #166 oraz trzy dodatkowe zależności aksjomatowe zachowane w SCOPE_002 | Te same twierdzenia, dowody kernelowe bez `select_bits_equiv._native.bv_decide.ax_1_5` lub jego zamiennika; własny clean replay, jawny audyt aksjomatów i nowy receipt; stare bajty/logi zachowane |
+| T12.1/HARDEN_R2 | Naprawić rekurencję lintera ThetaBox bez lokalnego wyłączenia; baza: źródło/pin #156, testowa kopia i log REVIEW_001 | `blockSum_eq_boxSum` z zachowaną treścią matematyczną, włączony `linter.constructorNameAsVariable`, brak błędu rekurencji i nowych wyciszeń, czysty log oraz nowy receipt; wcześniejszy test błędu zachowany |
+
+Evidence i dokładny zakres bieżącej korekty:
+[NOTES](../../proofs/ft1536/development/T12_1/run2/notes/F04_ROM_VARIANT_A_001_NOTES.md),
+[scope receipt](../../proofs/ft1536/development/T12_1/run2/notes/F04_ROM_VARIANT_A_SCOPE_002/RECEIPT.json).
+Standard-only w bieżącym pakiecie dotyczy audytów dokładnie 166 odbieranych
+modułów (#001–#165,#167); #166 jest wyłączony z zerem konsumentów, a #156
+zachowuje jawny wyjątek narzędziowy. REVIEW_001 nadal CHANGES_REQUIRED;
+po korekcie oczekuje tylko ukierunkowany recheck opisu/evidence.
