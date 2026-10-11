@@ -1,3 +1,165 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.07 virtual-legal repair / loop-chronology midpoint
+
+**B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
+**Package: IN_PROGRESS / WORKING_NOT_FROZEN.**
+2026-10-11,BATCH_061,MiMo V2.6 Pro (`xiaomi-token-plan-ams`).
+**CLOSED_AT_RECOVERABLE_MIDPOINT.** Exactly one close this window.
+B1.05/032, B1.06/046 and the 059/060 statement-machine extractions
+unchanged; B1.08/B4/B5 NOT entered.
+Handoff:**41R**. Exact types/pins/traps:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_061_NOTES.md`.
+
+## 41. Closed — the VirtualLegal repair and the loop-chronology composition
+
+1. PUNKT PIERWSZY (owner-ordered): the `VirtualLegal` repair of the
+   cross-lane catch is closed. The 060 shape quantified boundedness and
+   distinctness of the LP64 virtual address map over ALL `Nat` block
+   identifiers — an injection `Nat → Fin (2^64)`, unsatisfiable by
+   pigeonhole (S05 kernel witness `BoundedAddressObstruction017.lean`) —
+   so `Invocation.encoded`, the invocation success paths and
+   `small_site_material` were VACUOUS. The legality class is now
+   restricted to the FINITE live-block set `Env.live` (six automatic
+   objects, five external argument objects, fk object and scratch);
+   `canonical_word_eq`/`read_unique`/`small_site_material` are transferred
+   with live-block membership side conditions (`inputOf_mem_live`/
+   `publicOf_mem_live`/`skePtr_mem_live` place the invocation blocks in the
+   set); the class is ACHIEVABLE (`virtualLegal_identity`/
+   `virtualLegal_exists`); and the trap is pinned kernel-side in the
+   repaired module (`no_global_virtual_legal`). All dependent proofs
+   consuming `VirtualLegal`/`Invocation.encoded` re-elaborated and
+   re-audited (213 entries = 93 declarations + 120 earlier-batch
+   interfaces; 171 full terms + 42 kernel inductives; standard axioms,
+   zero elisions); earlier batches scanned clean of the pattern. RE-PIN:
+   the 060 pins `c644d0ed…`/`73f6a844…` of `KeygenMakeInvocation.lean` are
+   superseded by `bee3984b…`/`d10ea529…` with the repair reason bound in
+   PRESEAL and the batch receipt; the sealed 060 pair and job snapshots
+   keep the 060 bytes. Entry pins `73aba5d6…` (12050 files) verified
+   BEFORE edits.
+2. The plan item (40.1 (a)) is closed: the loop-trace chronology
+   composition of the per-retry transport with the derivation of the
+   `TailCells` class (`Source3.KeygenMakeLoopChronology`):
+   `entry_tail_cells` derives the tail-entry cells at the loop entry (the
+   executed argument binding, the prologue profile cells under the pinned
+   M0 profile, the declaration allocation), `attempt_tail_cells` carries
+   the class through EVERY attempt instance on every return edge (sampler
+   setup rebinds only `rt1/2/3`; the five-gate prefix preserves the slot
+   map; the scope close restores only `norm`/`bound`/rt-names; the
+   certificate gate keeps every cell), `loop_tail_cells` folds it over the
+   whole `LoopTrace` on the successful edge, `loop_retry_entry` folds the
+   per-retry `Initial`/legal/static transport with the entry frame and the
+   advanced counter `i+attempts.length`, and `loop_tail_entry` composes
+   both at the accepted-break state (the encoding-tail entry).
+   `tail_cells_of_loop` is THE derivation across rejected attempts;
+   `TailCells` stays the named explicit input class of
+   `Invocation.encoded` and is now DERIVED from the entry facts + the loop
+   chronology.
+3. NEW trap entry — the impossible-premise class (unbounded quantifiers
+   over `Nat`/`State`): instance 1 `VirtualLegal` (REPAIRED here, kernel
+   refutation in-module); instance 2 the `invocation_certificate` premise
+   `(s : State) → Dimensions s` (and the matching `LegalWorkspace`
+   quantifier), kernel-refuted by the S05 lane mid-window
+   (`GlobalDimensionsObstruction017.lean`, commit `ef354c48`; read-only
+   cross-lane pin) — NOT repaired here (owner scope named VirtualLegal),
+   pinned as the next-window obligation with its reachable-state
+   replacement (this window's `entry_dimensions`/`loop_tail_entry`/
+   `tail_cells_of_loop` + the attempt-level `Remaining` transport to the
+   certificate-gate state). Rule: every premise class of a success branch
+   gets an achievability witness before the branch is consumed.
+4. Entry pins 015–060 **12050 pins/186 interface bindings** verified with
+   the sealed 060 pair (`645f3111…`/`d4a5a41a…`) into
+   `.build/levels_061/ENTRY_PINS_061.json` (`73aba5d6…`) BEFORE edits.
+   One proof+audit 0/0: **213 entries=93 new declarations + 120 inherited
+   interfaces; 171 full terms + 42 kernel inductives; standard axioms/zero
+   elisions**. Native Sage scripted PUBLIC controls: 5 families×4
+   mutations, all detected (EXPLICIT MOCK SEMANTICS; the transcription
+   reads the reference C attempt-loop/encoding-tail region; no real
+   KeyGen/solver/certificate/codec, no law claim). Retained: five rejected
+   elaboration snapshots (the Fin map ascription/congrArg/unused-binder
+   slips of the repair; the unused simp arguments, prologue-cell ite
+   chains, `Eq.elim` misuse, reserved-word `prefix` binder and
+   `induction`/`cases` binder-slot slips of the first module pass; the
+   `prepared_local` namespace, explicit `convert_self` values and
+   index-filling `cases`-binder slips; the char-list normal-form slip),
+   one rejected generated audit (stale `prepared_local` name in INHERITED),
+   one runner-argument abort (redundant `sage/` prefix), one guard
+   rejection at preflight (foreign lane's Lean process — environment race)
+   and slot-wait races (parallel lane's S05 campaign held the shared slot
+   most of the window; one killed wait-runner shell and one own-vs-own
+   `JOB.lock` race, labels burned, no source bytes). Own commits
+   `e1f409ba` (proof), `73134f1b` (tools) + closing pair; foreign S05
+   commits and working tree preserved. Sealed pair
+   `17868bb6…`/`65b23cf7…`.
+
+### 41.1 Exact exports and remaining B1.07 obligations
+
+The discharge chain now reaches: one accepted `AttemptExec` derivation →
+six-gate spine → allocation-derived entry facts → public material →
+accepted solver call with the h frame → certificate frame (gate 6) →
+encoding-tail input boundary (059) → the 18-statement tail executed to the
+actual encoder call sites with the four output-capacity events and the
+complete teardown (060) → **the loop-trace chronology composition of the
+per-retry transport with the derived `TailCells` tail-entry class, and the
+repaired (satisfiable) virtual-map legality on the finite live-block set
+(this window)**. What remains honest and named: (a) the
+`invocation_certificate` global-premise repair — replace the all-`State`
+`Dimensions`/`LegalWorkspace` quantifiers (kernel-refuted by the S05 lane)
+with the reachable-state derivations; the theorem is sound as a
+conditional but its success premise is uninhabited until then; (b) the
+`small_site_material` liveness side condition `site.src.block∈env.live`:
+derive it from the write-then-read history of the `ske` cells with the
+codec persistence item; (c) the codec bodies and their write frames
+(B1.08/09: the exact encoded lengths, the persistence of the stored length
+words and of the source arrays through later encoder calls, and the
+bytewise round-trips); (d) the residue of the plan phrase "globals/common
+call ID/snapshots" — PINNED OPEN with its intended shape (an EXPLICIT
+identifier value beyond the shared derivation); no such field is derived
+or assumed. These are missing source composition proofs, NOT C/numerical
+counterexamples. Acceptance NOT met; Codecs B1.08/09 and B4/B5 laws stay
+outside.
+
+## 41R. Handoff — continue B1.07 AFTER the repair/loop-chronology midpoint,NOT from acceptance
+
+1. This window is CLOSED at exactly one recoverable midpoint,NOT
+   Acceptance. Do not auto-restart or enter B1.08/B4/B5. Preserve
+   BATCH_015–061 and all earlier/failed bytes (the rejected elaborations,
+   the rejected generated audit, the runner-argument abort, the guard
+   rejection and the slot-wait race records). Next owner-started window
+   continues in 41.1 order (the `invocation_certificate` premise repair
+   first, per the S05 kernel obstruction).
+2. BEFORE edits/jobs:
+   ```sh
+   mkdir -p .build/levels_062
+   python3 -B tools/keygen_make_loop_chronology_batch.py verify <BATCH_061.json sha> <BATCH_061_NOTES.md sha> .build/levels_062/ENTRY_PINS_062.json
+   ```
+   with the sealed 061 pair (`17868bb6…`/`65b23cf7…`). Expect the pinned
+   BATCH_015–061 set with the two recorded supersessions (the repaired
+   `KeygenMakeInvocation.lean` source and its cache artifact) and no
+   further supersession/job. The next batch tool must accept the recorded
+   `superseded` map of ENTRY_PINS_062. Mismatch is stop-and-report, not
+   silent repair. Note the global `job.active()` probe trips on the
+   parallel lane's runs: a guard rejection with no source bytes is an
+   environment race (new label, re-run), not a pin mismatch; use
+   `job_when_available.py` and never run two wait-runners of your own at
+   once (own `JOB.lock` race).
+3. Use NEW modules; the repaired `KeygenMakeInvocation` bytes are current
+   (the 060 bytes stay pinned in the sealed 060 pair and job snapshots).
+   The loop chronology and the `TailCells` derivation live in
+   `KeygenMakeLoopChronology` (`entry_tail_cells`/`attempt_tail_cells`/
+   `loop_tail_cells`/`loop_retry_entry`/`tail_cells_of_loop`/
+   `loop_tail_entry`); do not re-derive them by assumption. The remaining
+   honest gap is the certificate-premise repair (reachable-state
+   `Dimensions`/`LegalWorkspace` replacing the all-`State` quantifiers);
+   never insert codec outcomes, exact encoded lengths or codec write
+   frames as premises. Inspect actual types before composing; beware the
+   linter traps listed in the 060/061 notes (`prefix` keyword, index-
+   filling `cases` binders binding nothing, `induction` keeping all
+   constructor args, char-list normal forms of `Name` disequalities,
+   explicit `convert_self` values).
+4. One owner-started stage/window, one Acceptance or expanded midpoint,
+   bounded serial guarded jobs, unchanged limits/0/0 logs/native Sage.
+   Small local exact-path commits;push only on explicit owner signal;no
+   automatic review/delegation/relay/migration/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.07 whole-invocation midpoint
 
 **B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
