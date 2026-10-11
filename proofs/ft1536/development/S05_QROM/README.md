@@ -8,6 +8,8 @@ Publiczny generator wspólnej pary i sampler odpowiedzi dla challenge z ROM
 mają osobne interfejsy. Niezależny wykonywalny rdzeń kompiluje się w obu
 środowiskach;21 równości kernelowych wiąże go z018, zachowując J≪P oraz
 moment≤1+2^-47 pod niezmienionym(M) i to samo pokryte prawo kluczy.
+[Dopisek po odbiorze F04 R1/R2](notes/MODEL_BRIDGE_019_TRUST_SCOPE_001.md)
+potwierdza, że wskazane moduły nie wchodzą do importów naszych audytów.
 84 eksporty obejmują też kontrakcję przy skończonej klasycznej obserwacji,
 przeszkodę dokładnego adaptera oraz jawny koszt zmiany odniesienia:
 e'=kappa(1+e)-1 przy obowiązku P≤kappa R na nośniku J.
