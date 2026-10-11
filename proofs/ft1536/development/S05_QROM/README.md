@@ -3,7 +3,22 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
-**Aktualny pakiet — [EXECUTION018](notes/EXECUTION_018_CHECKPOINT.md), IN_PROGRESS:**
+**Najnowszy podetap — [MODEL_BRIDGE019](notes/MODEL_BRIDGE_019_CHECKPOINT.md):**
+Publiczny generator wspólnej pary i sampler odpowiedzi dla challenge z ROM
+mają osobne interfejsy. Niezależny wykonywalny rdzeń kompiluje się w obu
+środowiskach;21 równości kernelowych wiąże go z018, zachowując J≪P oraz
+moment≤1+2^-47 pod niezmienionym(M) i to samo pokryte prawo kluczy.
+84 eksporty obejmują też kontrakcję przy skończonej klasycznej obserwacji,
+przeszkodę dokładnego adaptera oraz jawny koszt zmiany odniesienia:
+e'=kappa(1+e)-1 przy obowiązku P≤kappa R na nośniku J.
+**Brak źródłowego kappa, scalonego dowodu nowej gry i pełnego kosztu maszyny.**
+Dowód konkretnego certyfikatu pozostaje w przypiętym środowisku legacy;
+nowy konsument przyjmuje go jawnie. Nie mieszamy wersji Run2.Games.
+[Źródło pełnego zdania](notes/MODEL_BRIDGE_019.tex); podgląd PDF niezweryfikowany
+z powodu timeoutów środowiska edytora. [Następny duży TODO020](notes/TODO_PAIR_MACHINE_020.md)
+kontynuuje otwarty Q-RESC018 dla całej pary, nie reply-only API.
+
+**Otwarty pakiet kosztu — [EXECUTION018](notes/EXECUTION_018_CHECKPOINT.md), IN_PROGRESS:**
 73 nowe eksporty kernelowe obejmują dokładną równość zoptymalizowanego
 samplera na każdej taśmie, przeniesienie pełnego J/P z017, granice śladu
 zdarzeń i wybrane szerokości. Binary CDF, zapisane wektory/wyjście i scatter
@@ -88,8 +103,8 @@ rzeczywisty `EmissionView` i źródłowe pokrycie prawa kluczy nadal wymagają i
 pozostaje niezmieniony. [Dokładny zakres](notes/KEY_SUPPORT_011.tex).
 
 Decyzja właściciela: **kernel przed użyciem wyniku w ostatecznej tezie**.
-[Klasy warunków](notes/CERTIFICATE_CLASSES_018.json) rozdzielają obowiązki,
-założenia kryptograficzne i model; [kolejka kernela](notes/KERNEL_QUEUE_018.json)
+[Klasy warunków](notes/CERTIFICATE_CLASSES_019.json) rozdzielają obowiązki,
+założenia kryptograficzne i model; [kolejka kernela](notes/KERNEL_QUEUE_019.json)
 ma priorytety według zależności tezy, również jawne wpisy h=0 i Dyadic.
 
 **Checkpoint — [ponowne użycie ROM010](notes/ROM_REUSE_010_CHECKPOINT.md):**

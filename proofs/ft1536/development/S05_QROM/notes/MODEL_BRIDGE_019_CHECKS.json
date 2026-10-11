@@ -1,0 +1,253 @@
+{
+  "status": "PARTIAL_PROOF / CONDITIONAL / NOT_REVIEWED",
+  "phase_scope": "019 code/law boundary checkpoint;018 machine cost remains OPEN",
+  "core_commit": "35d8ebaf35bb1375cbdb98775674168e8b57165c",
+  "runtime_commit": "67da1757dffad34c4b2d76d696e885eec7019f93",
+  "kernel_checks": {
+    "path": "notes/MODEL_BRIDGE_019_KERNEL_CHECKS.json",
+    "sha256": "458d982113ce7294a92bcbad4bd9055db7b87b788b91153197e2da1d67f5cd11",
+    "unique_exports": 84,
+    "proof_modules": 15,
+    "selected_builds": 27,
+    "audit_legacy_exports": 74,
+    "audit_variant_a_exports": 51,
+    "axioms": "propext/Classical.choice/Quot.sound only; no sorryAx/native_decide"
+  },
+  "common_source_closure": {
+    "path": "notes/MODEL_BRIDGE_019_COMMON_CLOSURE.json",
+    "sha256": "1de82b79cb77c81112c7fda6e3f42166ab569d8880de2c3527145680d4529e72",
+    "modules": 33,
+    "external_imports": 18,
+    "excludes_game_API_imports": true
+  },
+  "input_worlds": {
+    "legacy": 361,
+    "variant_a": 167,
+    "pure_data_modules_reused": 13,
+    "inputs_sha256": "00bd35eadb2b2b89cb2f21062439bed97dc138873980b31408a05161739fbd70"
+  },
+  "generator_check": {
+    "path": "proofs/ft1536/development/S05_QROM/.build/model_bridge_019/RUNTIME_GENERATOR_CHECK_001.json",
+    "sha256": "bf0f550e5989eb4a5dbbf87d26a1f8ef013deffc6432f7d109aa1a9c70b8f15f",
+    "byte_identical": true,
+    "source_lines": 194,
+    "equality_lemmas": 21
+  },
+  "preserved_lean_failures": [
+    {
+      "world": "legacy",
+      "attempt": "agreement001",
+      "module": "RuntimeAgreement019",
+      "receipt_sha256": "c2b875736399d6d4d51577d53ad59546ccdb9caee45d3a28fd267d328e751f40",
+      "snapshot_sha256": "5cc9cb57dcf9f123db0d5701eab5d46d83ed6c5f13f875734e96940990e757c9",
+      "stdout_sha256": "aa417fb43ec2aa1542bb9a781f15214090c62cb323c1c2a951f7407eb5fe41b2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exit_code": 1,
+      "warnings": 0,
+      "errors": 2
+    },
+    {
+      "world": "legacy",
+      "attempt": "agreement002",
+      "module": "RuntimeAgreement019",
+      "receipt_sha256": "256c9e22010ac988c4880c3cd09341a91399883abedc809e098797aa6b304c0a",
+      "snapshot_sha256": "0ffe92008b62cbfe3d966a6742e4d9823238f1fc8e9d6fd4c39ba2a58e1424b9",
+      "stdout_sha256": "8668ce0286873cdce8bf2463c88d5ccd534e8caa8b8c99a87b67b975cede9676",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exit_code": 1,
+      "warnings": 0,
+      "errors": 1
+    },
+    {
+      "world": "legacy",
+      "attempt": "controls001",
+      "module": "BoundaryControls019",
+      "receipt_sha256": "4b257d360bd979aff40ed9c4d498815297fa51239bc89f76e5ff74aa49cd0218",
+      "snapshot_sha256": "6d0d25808b391386820f4af0f4fb54b5e6b6e1d2990c00429d06c5c13d7b0c7e",
+      "stdout_sha256": "c09f51efc273d7458c8d21f274b673c7f16f2e1468755c46779b395caee5a89e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exit_code": 1,
+      "warnings": 0,
+      "errors": 4
+    },
+    {
+      "world": "legacy",
+      "attempt": "dyadic001",
+      "module": "DyadicBridge019",
+      "receipt_sha256": "7747de726cf284cb33c2c8d98fb77feb7797789752c74cfa07e49339f134e241",
+      "snapshot_sha256": "ac00b658d039aae8ff6866b93d1e135145f3cba03e0ece76a6b5527b407bbf02",
+      "stdout_sha256": "eb0392abfbeacffa19d909ae760c7ee376eabf3d49814dd6a43fe327c8425e8e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exit_code": 1,
+      "warnings": 0,
+      "errors": 1
+    },
+    {
+      "world": "legacy",
+      "attempt": "joint001",
+      "module": "JointInterface019",
+      "receipt_sha256": "43c3c9c3e55a4c12355a8c29b708b3835e2d4348fad19b731eb3cee50735e061",
+      "snapshot_sha256": "2971740f08a23369090c4a38b5023636ec8cea2b29a19be6415568d8b6d0d9af",
+      "stdout_sha256": "37816392a6f41303e617bf5ec54469122e8b31804ef6629d6fb14226ffc228bb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exit_code": 1,
+      "warnings": 0,
+      "errors": 1
+    },
+    {
+      "world": "legacy",
+      "attempt": "lower001",
+      "module": "ReferenceLower019",
+      "receipt_sha256": "6ad7de85217209fe000bd2b167fe00bf0d017b9bbfc4e6c176545be34258caab",
+      "snapshot_sha256": "0d737f4b02e5704507c5a60e6f1d72ae5cbe155897f4d14dd76ba8ff47d1f1d1",
+      "stdout_sha256": "0b4fc145ad505046520cf8ae077347c296ca7e35394d000f8c1688d21f8dbcde",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exit_code": 1,
+      "warnings": 0,
+      "errors": 1
+    },
+    {
+      "world": "legacy",
+      "attempt": "observation001",
+      "module": "ObservationMoment019",
+      "receipt_sha256": "99d709b011ef009c1ba34e45d7fa497839f90edcaa629d43f17d6585272ccba5",
+      "snapshot_sha256": "e7d2fa20804215c940ba330acfedbd64cddc5ce525f267507e545027339d62a7",
+      "stdout_sha256": "9ff6b8c1cbd4737c36c79c4df1db2eaef12289e425a8f69b99a08e87bb1e15ee",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exit_code": 1,
+      "warnings": 1,
+      "errors": 2
+    },
+    {
+      "world": "legacy",
+      "attempt": "runtime001",
+      "module": "StandaloneRuntime019",
+      "receipt_sha256": "878ca25a470085039c6d7e9397808462f9edcbfed4979113178f0a6770cd4e84",
+      "snapshot_sha256": "4e3a55a64a5d6118e95f33e9a64042296e5d8b4b43152630b17016d1c3202b58",
+      "stdout_sha256": "4e0963f786e468c2dbc5d7c0ac8bb542194edd5cd09db139ecbe0d01d4f19efe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exit_code": 1,
+      "warnings": 3,
+      "errors": 2
+    },
+    {
+      "world": "legacy",
+      "attempt": "witness001",
+      "module": "LegacyPairWitness019",
+      "receipt_sha256": "2456a12b9c0e41cdb016935ad9599524bf13084d7c761a4f28f019784f2ab691",
+      "snapshot_sha256": "3da0cbb495181463ecfe5696780112f132f4468cd88ac1ce6c198bd0180c8e8e",
+      "stdout_sha256": "2dc97f0381b50cc8b62caa19a44c8d429351bc6446bb75a7698064b0b31102c8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exit_code": 1,
+      "warnings": 0,
+      "errors": 5
+    }
+  ],
+  "sage_attempts": [
+    {
+      "attempt": "exact001",
+      "receipt_sha256": "bcaa7e734309f37d003fe3e1b944f6336d0d3da45cbaf068da6bbf3723949c48",
+      "command": [
+        "/home/footfalcon/miniforge3/envs/sage/bin/sage",
+        "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/model_bridge_019/exact001/CHECK_MODEL_BRIDGE_019.sage"
+      ],
+      "status": "timeout",
+      "exit_code": -9,
+      "elapsed_seconds": 60.11726985499263,
+      "source_sha256": "9f9ce34be93c2be41511b5e6018d5c0dc577db95b06e3d6ec9c2611f5ce2a719",
+      "wrapper_sha256": "30acc61cb5c171920247bc91221eb6b9ee0b990ee85bb83ef66429f75e74a8a8",
+      "executable_sha256": "75b4e44ac8783ffaf340ca9f7033be56356a4fddc02db38a3e01d236581ec8d9",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result_sha256": null,
+      "cost_label": "Sage process only, not sampler runtime",
+      "preparser": "standard sage file.sage"
+    },
+    {
+      "attempt": "exact002",
+      "receipt_sha256": "eb430a5ea7a9f11d77ebba598883dd8647aa309f69e1b56a1ef8339f66a0788c",
+      "command": [
+        "/home/footfalcon/miniforge3/envs/sage/bin/sage",
+        "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/model_bridge_019/exact002/CHECK_MODEL_BRIDGE_019.sage"
+      ],
+      "status": "timeout",
+      "exit_code": -9,
+      "elapsed_seconds": 121.76323990299716,
+      "source_sha256": "a48df810c52fbbf4359d02a172393c54b9d0e66395586b170df0a1a1196beb18",
+      "wrapper_sha256": "174efb5e3d501ed5a86a41cd7f5584cf73b2eadd6c1f9cc782dded13d6a40a59",
+      "executable_sha256": "75b4e44ac8783ffaf340ca9f7033be56356a4fddc02db38a3e01d236581ec8d9",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result_sha256": null,
+      "cost_label": "Sage process only, not sampler runtime",
+      "preparser": "standard sage file.sage"
+    },
+    {
+      "attempt": "exact003",
+      "receipt_sha256": "5704e7c7d751248b31ee8f1ed3901af0282f37d61ee758f894a324f25f32387c",
+      "command": [
+        "/home/footfalcon/miniforge3/envs/sage/bin/sage",
+        "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/model_bridge_019/exact003/CHECK_MODEL_BRIDGE_019.sage"
+      ],
+      "status": "completed",
+      "exit_code": 0,
+      "elapsed_seconds": 51.61555955700169,
+      "source_sha256": "a48df810c52fbbf4359d02a172393c54b9d0e66395586b170df0a1a1196beb18",
+      "wrapper_sha256": "5a41917e30f611746db9b7bfa687291d139c882b86767066002c284f9baffeff",
+      "executable_sha256": "75b4e44ac8783ffaf340ca9f7033be56356a4fddc02db38a3e01d236581ec8d9",
+      "stdout_sha256": "3c5e2f97ac3455599f155aae6fe43c53180e0cef5495c984bd1850247447d550",
+      "stderr_sha256": "35c74ffe1904b92f4e17779404703db5ae108149aef9de691d8e2dc2f3b90143",
+      "result_sha256": "6078bc0429d89e6896ca36548df394ff18a95aa6ee4ddb9ec0b0502c89ba6990",
+      "cost_label": "Sage process only, not sampler runtime",
+      "preparser": "standard sage file.sage"
+    },
+    {
+      "attempt": "exact004",
+      "receipt_sha256": "62d23e2cf6bc8dc74932e02f0eee4be70aad6ce3d72657453d4780b39b535f79",
+      "command": [
+        "/home/footfalcon/miniforge3/envs/sage/bin/sage",
+        "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/model_bridge_019/exact004/CHECK_MODEL_BRIDGE_019.sage"
+      ],
+      "status": "completed",
+      "exit_code": 0,
+      "elapsed_seconds": 1.5690585230040597,
+      "source_sha256": "a48df810c52fbbf4359d02a172393c54b9d0e66395586b170df0a1a1196beb18",
+      "wrapper_sha256": "5a41917e30f611746db9b7bfa687291d139c882b86767066002c284f9baffeff",
+      "executable_sha256": "75b4e44ac8783ffaf340ca9f7033be56356a4fddc02db38a3e01d236581ec8d9",
+      "stdout_sha256": "3c5e2f97ac3455599f155aae6fe43c53180e0cef5495c984bd1850247447d550",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result_sha256": "6078bc0429d89e6896ca36548df394ff18a95aa6ee4ddb9ec0b0502c89ba6990",
+      "cost_label": "Sage process only, not sampler runtime",
+      "preparser": "standard sage file.sage"
+    }
+  ],
+  "sage_result_sha256": "6078bc0429d89e6896ca36548df394ff18a95aa6ee4ddb9ec0b0502c89ba6990",
+  "native_tex": {
+    "status": "PREVIEW_UNVERIFIED_ENVIRONMENT_TIMEOUT",
+    "current_source_sha256": "918aed17f8e1439610ae73f85bb0d1d1379393ea7dcc2de438c9e301424ec909",
+    "attempts": [
+      {
+        "path": "proofs/ft1536/development/S05_QROM/.build/model_bridge_019/NATIVE_TEX_001.json",
+        "sha256": "bcfebc57d3413ff44dbabc10b91a841376101f63eded3fbcb56e27b1ade7e3aa"
+      },
+      {
+        "path": "proofs/ft1536/development/S05_QROM/.build/model_bridge_019/NATIVE_TEX_002.json",
+        "sha256": "01e6c71514fb535bd436ebc358ae9a64d991388289275e999ad83f37347430e8"
+      },
+      {
+        "path": "proofs/ft1536/development/S05_QROM/.build/model_bridge_019/NATIVE_TEX_003.json",
+        "sha256": "01e6c71514fb535bd436ebc358ae9a64d991388289275e999ad83f37347430e8"
+      }
+    ],
+    "source_preserved": true,
+    "editor_open_requested": true,
+    "final_failure": "LaTeX sandbox initialize timed out"
+  },
+  "cost_scope": "Elapsed time and peak RSS in compiler receipts measure proof builds or Sage checks, not sampler execution. No complete machine cost claimed.",
+  "remaining": [
+    "Full machine program/refinement/resources for public pair code",
+    "Combined game kernel and quantum composition/reprogramming",
+    "Actual source key law/M and Sign/PRG binding",
+    "Source lower-reference witness kappa; variant-A consumer remains conditional"
+  ]
+}

@@ -1,0 +1,182 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=23mm]{geometry}
+\usepackage{fontspec}\setmainfont{lmroman10-regular.otf}[BoldFont=lmroman10-bold.otf,ItalicFont=lmroman10-italic.otf,BoldItalicFont=lmroman10-bolditalic.otf]
+\setmonofont{lmmono10-regular.otf}[Scale=0.85]
+\usepackage{amsmath,amssymb,amsthm,booktabs,xurl,hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{3em}
+\newcommand{\code}[1]{\nolinkurl{#1}}
+\newtheorem{theorem}{Twierdzenie}
+\title{Conditional law bridge and exact-adapter obstruction\\\large S05 / MODEL BRIDGE019}
+\author{Notatka robocza dla Niirmata}\date{11 października 2026}
+\begin{document}\maketitle
+\textbf{PARTIAL PROOF / WARUNKOWY / NOT REVIEWED.}
+Domknięty zakres tego kroku: rozdzielenie interfejsów, wspólne prawa,
+niezależny wykonywalny rdzeń samplera, dokładna zgodność z018, transport
+certyfikatu i jawne granice adaptacji. Pełny koszt maszyny018, źródłowe
+powiązanie Sign/KeyGen i redukcja QROM pozostają otwarte.
+Nie ma deklaracji bezpieczeństwa FT1536 ani poziomu bezpieczeństwa.
+
+\section{Dwa algorytmy i dwa prawa}
+Niech $C=R_q$, gdzie
+$R_q=(\mathbb Z/18433\mathbb Z)[X]/(X^{1536}-X^{768}+1)$.
+Niech $O$ będzie skończoną przestrzenią pełnej odpowiedzi, w naszym
+przypadku $O=\mathrm{Option}(\mathrm{BoxVec})$, z atomem porażki $\bot$.
+Taśma $\mathcal T_b=\{0,1\}^b$ ma prawo jednostajne $U_b$.
+
+Publiczny generator pary ma postać $G:\mathcal T_b\to C\times O$;
+jego pełne prawo to $J=G_*U_b$. Sampler odpowiedzi w wariancie A ma
+postać $N:C\times\mathcal T_d\to O$; challenge pochodzi z ROM poza
+taśmą, a jego wspólne prawo jest
+\[
+ R_N(c,o)=U_C(c)\Pr_{w\gets U_d}[N(c,w)=o].
+\]
+Są to oddzielne typy \code{PairCode} i \code{ReplyCode}. Nowe
+\code{Run2.Sampler} jest powiązane kernelowo z drugim typem przez
+\code{VariantABridge019.noiseCode}; \code{fresh_law_eq} identyfikuje
+powyższe prawo z naprawionym \code{Run2.samplerLaw}.
+Pierwszy typ nie wymaga jednostajnego marginalnego challenge.
+
+\begin{theorem}[Granica dokładnego adaptera]
+Dla każdego skończonego $b,d$ i dowolnych $G,N$ opisanych powyżej
+$G_*U_b\ne R_N$.
+\end{theorem}
+Gdyby prawa były równe, pierwszy marginal $G_*U_b$ byłby jednostajny
+na $C$. Liczenie przeciwobrazów wymuszałoby
+$|C|=18433^{1536}\mid2^b$, co jest niemożliwe, bo18433 jest nieparzystą
+liczbą pierwszą. To ponowne użycie argumentu audytu F04, wyodrębnionego
+z zależności od starego typu gry. Dowód nie wyklucza dobrego porównania
+momentem; nie wyklucza też samych samplerów odpowiedzi na zadane wyzwanie.
+Nie wolno jedynie utożsamiać tych dwóch wspólnych praw dokładnym adapterem.
+
+\section{Niezależny rdzeń i rzeczywisty certyfikat018}
+\code{StandaloneRuntime019} zawiera194 linie wykonywalnych deklaracji
+wydzielonych z przypiętych źródeł016/018. Zachowuje binarny pierwszy próg
+CDF, cap80 par, zero po jego wyczerpaniu, cap196 normy, świeży cube,
+przechowane wektory i mnożenie scatter. Publiczne literały tablic są tymi
+samymi danymi.21 równości kernelowych daje zgodność na każdej taśmie;
+\code{publicCode_eq} identyfikuje cały wynik z018.
+Samplera wywołujemy z publicznym initial; dotychczasowa zgodność prawa
+obejmuje każdy stan, wiadomość i nonce. Rdzeń tych danych nie odczytuje
+ani nie rekonstruuje historii zapytań kwantowych.
+
+Podajemy pełny wspólny cel porównania. Dla $z=(v,w)\in\mathbb Z^{3072}$
+niech
+\[
+ Q(z)=\sum_{i<768}(v_i^2+v_iv_{i+768}+v_{i+768}^2)
+      +\sum_{i<768}(w_i^2+w_iw_{i+768}+w_{i+768}^2),
+ \quad A_hz=v+hw\pmod {18433}.
+\]
+Niech $d_0=1179648$, $B=2093922385$. Prawo $P_h$ wybiera jednostajny
+$c\in R_q$, następnie do16 niezależnych prób Gaussa na
+$[-65535,65535]^{3072}\cap\{A_hz=c\}$ z wagą $e^{-Q(z)/d_0}$,
+i bierze pierwszą z $Q(z)<B$. Wyczerpanie capu lub drugi wektor poza
+signed16 daje $\bot$. Pełny wynik to $(c,o)$, także przy porażce.
+Jest to dokładnie \code{SigmaMath.freshHonest}, również w nowym modelu;
+nie jest to jeszcze twierdzenie o rzeczywistym źródłowym Sign.
+
+Warunek(M) zachowuje dokładne kwantyfikatory: istnieje jedno $K>0$,
+niezależne od $c$ i od
+$t\in\{1,1811939328/2093922385,9/16\}$, takie że
+\[
+ (1-2^{-34})Kt^{-1536}\le
+ \sum_{z\in\mathbb Z^{3072}:A_hz=c}e^{-tQ(z)/d_0}
+ \le(1+2^{-34})Kt^{-1536}.
+\]
+\begin{theorem}[Rzeczywisty publiczny generator]
+Dla niezależnego rdzenia019 prawo $J_h$ spełnia $J_h\ll P_h$ dla każdego
+$h$. Pod(M) zachodzi
+\[
+ \sum_{a:P_h(a)>0}\frac{J_h(a)^2}{P_h(a)}\le1+2^{-47}.
+\]
+Dla tego samego prawa kluczy $\mu$, którego nośnik jest pokryty przez
+przesłankę(M), identyczny bound i AC obowiązują dla wspólnych praw $(h,a)$.
+\end{theorem}
+Dowód: dokładna równość kodu z018, a następnie jego istniejący certyfikat.
+Nie dodano temperatur ani przesłanki jednostajnego marginalnego $J_h$.
+Nie usunięto żadnej modelowanej porażki z $P_h$.
+
+\section{Obserwacja oraz płatna zmiana prawa odniesienia}
+\begin{theorem}[Skończona obserwacja klasyczna]
+Jeżeli $J\ll P$, to dla każdej funkcji $f$ do skończonej przestrzeni
+$f_*J\ll f_*P$ oraz
+\[
+ \sum_y\frac{(f_*J)(y)^2}{(f_*P)(y)}
+ \le\sum_x\frac{J(x)^2}{P(x)}.
+\]
+\end{theorem}
+Dowód sumuje nierówność Cauchy'ego osobno po każdym przeciwobrazie $f$.
+Przy zerowej masie odniesienia AC wymusza zerowy licznik. Funkcja $f$
+działa na obu prawach; nie wolno zmieniać samego $J$. Jest to lemat
+skończonej obserwacji klasycznej, nie twierdzenie o kanale kwantowym.
+
+Do porównania z innym prawem, np. źródłowym $R$, potrzebna jest dodatkowa
+kontrola właściwego mianownika. Dla $\kappa>0$ załóżmy jawnie
+\[
+ J(a)\ne0\quad\Longrightarrow\quad P(a)\le\kappa R(a).
+\tag{L}
+\]
+\begin{theorem}[Jawnie opłacony nowy mianownik]
+Jeśli $J\ll P$ oraz $\sum J^2/P\le1+e$, to pod(L)
+\[
+ J\ll R,\qquad \sum J^2/R\le\kappa(1+e)
+       =1+e',\qquad e'=\kappa(1+e)-1\ge0.
+\]
+Ten sam bound przechodzi przez wspólną obserwację $f$ oraz przez to samo
+prawo kluczy, jeżeli(L) zachodzi na jego nośniku z jednym $\kappa$.
+\end{theorem}
+(L) jest obowiązkiem dowodowym, nie nowym założeniem kryptograficznym.
+Nie ma tu źródłowej instancji $\kappa$. Dla $\kappa=1$ odzyskujemy $e$;
+dla ogólnego $\kappa$ nie wolno zachować starej liczby po cichu.
+Wariant-A konsument tych lematów przyjmuje jawnie certyfikat bazowy
+oraz(L) względem \code{Run2.samplerLaw}; nie tworzy ich świadków.
+
+\section{Kontrole pokazujące granice}
+Na $C=\{0,1\}$ i $O=\{\bot,\mathrm{some}(0),\mathrm{some}(1)\}$
+niech $P$ daje masę$1/2$ parom $(0,\bot)$ i $(1,\mathrm{some}(1))$.
+Iloczyn jego marginesów ma te same oba marginesy i prawdopodobieństwo
+porażki$1/2$, lecz nadaje masę$1/4$ parze $(1,\bot)$, gdzie $P=0$.
+Zatem AC nie zachodzi. Surowa suma \code{Divergence.second}, przy
+konwencji dzielenia przez zero w$\mathbb R$, wynosi$1/4$, mimo że
+\code{chi2}$=\infty$. Oddzielnego obowiązku AC nie wolno pominąć.
+
+Kierunku(L) też nie wolno odwrócić: dla
+$J=(1,0)$, $P=(1/2,1/2)$ i $R=(1/8,7/8)$ mamy $R\le2P$, lecz
+$\sum J^2/R=8>2\sum J^2/P=4$.
+Kontrole są kernelowe. Sage ze standardowym preparserem niezależnie
+sprawdza te rachunki,744 przypadki skończonej siatki dla obserwacji,
+modularne kontrole dzielności oraz przykładowy rachunek$e'$.
+Przykładowe $\kappa$ w checkerze nie jest świadkiem źródłowym.
+
+\section{Dokładny zakres obu środowisk}
+84 różne drukowane eksporty w15 modułach są sprawdzone kernelowo; audyty
+drukują74 eksporty w środowisku legacy i51 w variant A, z częścią wspólną.
+Wspólny rdzeń ma33 moduły o identycznych źródłach, bez importu
+\code{Run2.Games}, \code{Run2.LawBinding}, \code{HacGlue} ani
+\code{JointDecomp}. Generowanie rdzenia odtworzono bajt w bajt.
+
+Dowód konkretnego certyfikatu korzysta ze zmrożonego środowiska018.
+Identyczny wykonywalny rdzeń i wspólne definicje są zbudowane także
+w naprawionym środowisku. To weryfikuje granicę definicji i adaptery;
+\textbf{nie jest scalonym dowodem całej nowej gry}. Nowy konsument nadal
+przyjmuje certyfikat bazowy jako jawne wejście. Nie mieszamy niezgodnych
+wersji modułu \code{Run2.Games} ani ich artefaktów.
+
+Wpisy MODEL: dwa interfejsy, uczciwe taśmy, źródło challenge i skończona
+obserwacja klasyczna. OBOWIĄZKI: równość kodu/praw, AC/moment, (L), źródłowe
+powiązanie kluczy i Sign, koszt maszyny oraz kompozycja gry. A-QMT i Q-PRG
+primitive-bound pozostają osobnymi założeniami kryptograficznymi.
+
+Następny koszt018 ma dotyczyć publicznego \code{StandaloneRuntime019.publicCode},
+który zwraca całą parę. Nie wolno przypisać mu ograniczenia26113 bitów
+wyjścia samplera reply-only z wariantu A. Kod pary nadal używa tej samej
+taśmy24662538240 bitów; jej reprezentacja i koszt pamięci są otwarte.
+Źródłowe pokrycie(M), poprawki KeyGen/codec, Sign/PRG, Q-HASH-LOG,
+Q-EMBED, Q-COLL/reprogramowanie i Q-COMPOSE pozostają otwarte.
+$D=(1+e)^{q_s}-1$ wymaga pełnych przesłanek kompozycji kwantowej;
+przy zmianie odniesienia trzeba użyć właściwego $e'$, nie starego $e$.
+
+Pełne piny, receipty, zachowane błędy i następny kontrakt wykonania:
+\code{MODEL_BRIDGE_019_CHECKPOINT.md}, \code{MODEL_BRIDGE_019_CHECKS.json}.
+To kontrola autora, bez niezależnego odbioru, zmian mainline lub push.
+\end{document}

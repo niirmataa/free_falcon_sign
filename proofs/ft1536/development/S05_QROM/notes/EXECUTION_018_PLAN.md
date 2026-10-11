@@ -64,3 +64,11 @@ Zadanie rachunku zdarzeń i wybranych szerokości jest wykonane. Zadanie
 pełnego kosztu operacyjnego/pamięci pozostaje OPEN; cały018 IN_PROGRESS.
 Nie zmniejszamy celu do ledgeru. Kontynuacje maszyny/taśmy/tablic i source
 bindingu są jawnie wskazane w mapie murów checkpointu.
+
+019 / nowy checkpoint granicy modelu: MODEL_BRIDGE_019_CHECKPOINT.md.
+Podetap84 eksportów oddziela parę publiczną od reply-only variant A,
+wydziela ten sam rzeczywisty kod do StandaloneRuntime019 i zachowuje jego
+certyfikat pod(M). Rozstrzygnięto dokładny typ celu dalszego Q-RESC;
+pełny koszt maszyny018 nadal OPEN. Następny kontrakt wykonania zapisany
+w TODO_PAIR_MACHINE_020.md; nie stosować26113-bitowego reply-only boundu
+do pełnej pary. Warunkowy nowy mianownik wymaga jawnego kappa i nowego e'.
