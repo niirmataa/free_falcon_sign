@@ -1,3 +1,129 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.07 / source codecs and projected frame midpoint
+
+**B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
+**Package: IN_PROGRESS / WORKING_NOT_FROZEN.**
+2026-10-11, Codex, BATCH_064.
+**CLOSED_AT_RECOVERABLE_MIDPOINT. Exactly one close this window.**
+The resolved entry incident was not a separate close. B1.05/032 and
+B1.06/046 unchanged. Full B1.08/09 correctness and B4/B5 NOT reached.
+Handoff: **44R**. Exact types, scope and retained causes:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_064_NOTES.md`.
+
+## 44. Closed — complete source bindings, projected block frame and projected trace survival
+
+1. **Owner-ordered tooling063 completed BEFORE codec edits.** Audit87
+   entries (12 new+75 inherited;57 full terms+30 kernel inductives),
+   standard axioms/no elisions, byte-exact reproduction; native Sage3
+   PUBLIC synthetic families/12 mutations. Strict preseal found the stale
+   original JSON.notes pin after835dfc6b. Work stopped; owner explicitly
+   authorized only this notes-pin correction in a supplement. Both Git
+   versions authenticated, original063 pair preserved. Tooling seal JSON
+   `2f84dee824ca78ba96872fba9442ec54064590380061a82ea94141539261b987`,
+   notes `56980509418197aeaa69dbe8a87d251636be94c1198ce1e08a1a8b1b2e46cc7d`.
+   Entry064 verify passed12350 pins, receipt
+   `e472e2a382f5b5d4096951c4738bcc078d93d9c3cce3d62905628fae723e8c75`.
+   Incident history is the resolved064_STOP_001 pair, not a remaining
+   blocker or a midpoint. All earlier/failed bytes remain.
+2. **Complete source bodies bound in NEW modules.** The codec-only
+   rejecting grammar retains while, the exact returning switch arms,
+   U numerals, compound assignments, pre/post ++/-- and byte lvalues.
+   None/Static/Dispatch binding modules kernel-check the complete
+   compress_none/compress_static/falcon_encode_small bodies and lexical
+   characters from reference Extra/c/falcon-enc.c (SHA2560f7085fa…).
+   Source/header, syntax and audit generators reproduce byte-exactly.
+   Pinned caller parse and063 proof/audit bytes unchanged.
+3. **Destination BLOCK frame derived from the fixed projected bodies.**
+   KeygenCodecFootprint.none_complete/static_complete/dispatch_complete
+   prove projection coverage; exec_frame/run_frame/load64_frame preserve
+   sizes/permissions and every byte on foreign blocks for every finite
+   projected path, including partial writes and rejection. buf follows
+   its executed declaration/buf=out; stores use the existing byte rule.
+   No codec result, encoded length or supplied write frame is a premise.
+   Scalar values/read-validity checks/local updates and guard decisions
+   are ERASED in this conservative memory-effect semantics.
+4. **SkeCellWord survival for projected-body traces.**
+   KeygenCodecSkeSurvival.word_after_call/call_histories transport the
+   words through all earlier codec calls (segments1–3 included).
+   chain_call_histories consumes063's concrete nine-statement creation,
+   not assumed loop-entry words. Non-aliasing follows from executed
+   allocation freshness plus a live destination (separate_of_allocation).
+   erase maps the new body-bound trace to old caller Segments. The
+   REVERSE bridge from old unrestricted SmallSite/Segments and the full
+   typed C-to-projection refinement are OPEN. Do not promote this result
+   to an actual complete KeyGen codec frame or B1.07 Acceptance.
+5. Current guarded source bindings and final012 compile/audit have0/0
+   diagnostics. Full audit735=721 named source+14 inherited interfaces,
+  711 full terms+24 kernel inductives, standard axioms/zero elisions.
+   Native Sage011:32 normal+32 UBSan actual-C baseline cases, all6 mutant
+   kinds detected in each mode, PUBLIC synthetic coefficients, exactZZ.
+   Canaries/bytes/returns/NULL/capacity paths/input preservation checked;
+   finite controls are not universal source/codec proofs. Version1
+   computation context validates with its explicit legacy limitations;
+   primary custom argv/caps/snapshot receipts remain pinned.
+6. Twelve064 jobs:4 wholly accepted,7 failed retained,1 interrupted
+   retained (007: clean survival step before user interruption, no
+   terminal whole-job receipt; rebuilt008 and012). Traps: reserved at,
+   rfl dispatcher atom memory blowup (003 TERM/004 OOM; fixed closed
+   decide+kernel atoms), compact n!= and4≤i, cold-import page I/O,
+   unused hash symbol at link009, wrong global mutation target010.
+   No limit increase, foreign process termination or silent pin repair.
+   Own local commits7f862f94/85a7ba0b/9c457984/cb98b9bf/76520667 plus
+   closing receipt commit; foreign S05 history/staging preserved.
+
+Sealed064 pair:
+- JSON `8b9602b3dbd1c6e019936f66194234ce29cbc2c29b274fb53efd7d0176f745d9`.
+- Notes `ce1600dfb7dfb5cb39e2e653d5376cfd825c8090157a4a701a2f44acfb7159d2`.
+- Postseal verify12667 pins, `.build/levels_064/POSTSEAL.json`
+  `c8cd7de3a96d75eb9393a8f3a5d3b696d67f85ca1309338ba967690ef09eaca1`.
+
+### 44.1 Exact remaining types and boundaries
+
+The actual exported frame is `Run dst before after → Frame dst before
+ after`, where Run is the independently executed fixed MEMORY-EFFECT
+projection and Frame protects FOREIGN BLOCKS. The actual segment-history
+export consumes KeygenCodecSkeSurvival.Segments, not merely old Segments.
+No full typed codec value interpreter/adequacy theorem exists in this
+batch. These are named missing source-composition proofs, not assumed
+codec frames and not C/mathematical counterexamples.
+
+Remaining in order: (a) actual typed body execution with evaluated
+out/max_out_len/comp/q/x/logn and SAME heaps -> Footprint.Exec/Run;
+(b) extract the body-bound trace from actual enclosing call executions,
+with observed returns and chronology, then consume the proved survival;
+(c) exact capacity WINDOW confinement, uint32 low-suffix accumulator,
+terminal ne=-2/padding/encoded and consumed lengths/decoder round-trips
+and four-segment caller; (d) public15-bit source codec, same h and actual
+2881 length; (e) explicit common call ID/snapshots and the all-state
+LegalWorkspace refutation status, then the remaining B1 target. B4/B5
+probability/availability/PRG/security laws remain outside.
+
+## 44R. Handoff — resume from the actual partial source/codec boundary
+
+1. This owner-started window is CLOSED once at a recoverable midpoint,
+   not Acceptance. Preserve015–064, both063 versions/supplement, all
+   failed/interrupted snapshots/raw streams and diagnostic generators.
+   No automatic restart, review, delegation, relay, migration or import.
+2. BEFORE edits/jobs in the next owner-started window:
+   ```sh
+   mkdir -p .build/levels_065
+   python3 -B tools/keygen_codec_batch.py verify \
+     8b9602b3dbd1c6e019936f66194234ce29cbc2c29b274fb53efd7d0176f745d9 \
+     ce1600dfb7dfb5cb39e2e653d5376cfd825c8090157a4a701a2f44acfb7159d2 \
+     .build/levels_065/ENTRY_PINS_065.json
+   ```
+   Expect12667 pins with recorded061 repairs and explicit owner-approved
+  063 notes correction preserved. A mismatch is stop-and-report, not
+   authorization for another correction. Process guards must observe the
+   host namespace; job_when_available.py for serial proof/Sage jobs.
+3. Use NEW modules for44.1(a)/(b), consume the actual inspected exports.
+   Do not equate readEffect=true or finite C controls with typed source
+   adequacy; do not assume the body-bound trace from old SmallSite's open
+   heap effect. No codec outcome/length/write-frame premises. Then resume
+   B1.08/09 in plan order; no advance to B4/B5.
+4. One window/one Acceptance or expanded midpoint; bounded serial jobs,
+   unchanged limits/clean streams/native Sage; small exact-path local
+   commits, push only on a separate explicit owner signal.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.07 statement-chain extraction / codec-seam midpoint
 
 **B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**

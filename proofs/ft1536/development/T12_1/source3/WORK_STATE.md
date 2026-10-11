@@ -1,3 +1,27 @@
+# T12.1/source3 — current window, 2026-10-11
+
+## B1.07 / B1.08–09 seam — CLOSED at the projected-codec midpoint
+
+Codex, BATCH_064: CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF /
+NOT_REVIEWED; B1.07 Acceptance NOT MET, package WORKING_NOT_FROZEN.
+Exactly one close.063 tooling and its owner-authorized single notes-pin
+correction completed before edits; ENTRY06412350 pins verified.
+Three complete source codec bodies bound. Block frame and SkeCellWord
+survival1–3 proved for independent projected-body traces, WITHOUT codec
+result/length/frame premises. Full typed C-to-projection and old caller
+trace -> new body-bound trace remain OPEN; exact capacity windows/lengths/
+round-trips/public codec remain OPEN. Read the real type, not a complete
+KeyGen/codec claim. Audit735 (711 terms+24 inductives), standard axioms/no
+elisions;64 actual C normal/UBSan controls,6 mutations detected per mode.
+012 final bindings clean; all failed/interrupted evidence retained.
+
+Sealed JSON8b9602b3…/notesce1600df…; postseal12667 pins, c8cd7de3….
+Checkpoint **44R** gives exact next entry command/types/traps. Own local
+commits7f862f94/85a7ba0b/9c457984/cb98b9bf/76520667 plus closing receipt;
+foreign S05 changes preserved. No push, independent review, delegation,
+relay, migration or archive import. Historical runner identity labels are
+provenance; current author is Codex.
+
 # T12.1/source3 — żywy stan
 
 ## B1.07 — CLOSED at rejected-edge retry-frame midpoint — 2026-10-10
