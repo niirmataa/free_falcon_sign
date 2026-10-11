@@ -632,6 +632,21 @@ Also preserved: 3 historically inconsistent import hashes in cache
 (excluded, documented, untouched), full failed-attempt history, fresh
 replay of all probe modules. Audit found what clean builds hide.
 
+## 2026-10-11: OWNER DECISION - F04 repair = variant A (ROM challenge outside the sampler tape)
+
+The challenge c is sampled from the ROM hash outside the signing
+sampler's fair-bit tape (matches the real code: c = H(r||m) from the
+hash, not from signing randomness; the sampler draws only noise).
+F04 repair window must rewrite the run2 types (Sampler/LawBinding/
+Games, UniformChallengeAt -> challenge-from-ROM interface) and ALL 12
+consumers (4x HacGlue.localJointCertificate_of_*, ONoneGeometry.
+localJointCertificate_of_attemptFactor, 5 Assembly variants, 2 AdvPrg
+final variants). Costs and hprg must match variant A. Do NOT replace
+proofs with A2 labels. F05 (TowerWhole/floor support) rides the same
+run2 window. Rejected variants: B (unbounded tape - unphysical),
+C (approximate uniformity - spreads error terms through the loss
+accounting).
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
