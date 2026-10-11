@@ -1,0 +1,1215 @@
+{
+  "task": "KEYGEN_SOURCE_TO_FIBER_001",
+  "batch": "BATCH_061",
+  "stage": "B1.07",
+  "window": "CLOSED_AT_RECOVERABLE_MIDPOINT",
+  "b1_07_acceptance": "NOT_MET",
+  "stage_result": "PARTIAL_PROOF",
+  "status": "IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN",
+  "created_utc": "2026-10-11T01:24:59.881166+00:00",
+  "harness": "MiMo V2.6 Pro / xiaomi-token-plan-ams",
+  "runner_labels": "Historical labels remain provenance.",
+  "proof_head": "73134f1b1177b2185f5004ad4964f0aa77a559b0",
+  "notes": {
+    "path": "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_061_NOTES.md",
+    "sha256": "65b23cf70ebd09d9f82cdddc50967d5e951cb4d68191f8e9ee3bf62fa1ddeb67",
+    "bytes": 13648
+  },
+  "entry_pins_receipt": {
+    "path": ".build/levels_061/ENTRY_PINS_061.json",
+    "sha256": "73aba5d666c51df49b1baacb094115d161e69a3ccbe38b711773941a5cbad96c",
+    "bytes": 2799199
+  },
+  "predecessor_files": 12050,
+  "superseded": {
+    "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/formal/Source3/KeygenMakeInvocation.lean": {
+      "superseded_sha256": "c644d0edd5eeb23dd7893bc88e83a0d9560b8ee899d54318c65baadc1ffbf2d2",
+      "current_sha256": "bee3984b3304a3a551fca374d0d202e6f3d48f394fcaa6b47dd65bc9b828ecd2",
+      "reason": "VirtualLegal repair (2026-10-11 cross-lane catch, kernel-confirmed impossibility of the 060 all-`Nat` shape): the map legality class is restricted to the finite live-block set `Env.live`, the pointer uniqueness proofs are transferred and their consumers (small_site_material/Invocation.encoded and the dependent invocation theorems) are re-elaborated and re-audited in this batch; the 060 bytes remain pinned in their sealed BATCH_060 pair and job snapshots."
+    },
+    "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/cache/Source3/KeygenMakeInvocation.olean": {
+      "superseded_sha256": "73f6a844d55dffa78dd68ea59520e565fc85a25996906515c62938718c438f7f",
+      "current_sha256": "d10ea52906d1311f896afd49e5d25fc497247b22d3b4d63ff9823bfc89f3f77e",
+      "reason": "VirtualLegal repair (2026-10-11 cross-lane catch, kernel-confirmed impossibility of the 060 all-`Nat` shape): the map legality class is restricted to the finite live-block set `Env.live`, the pointer uniqueness proofs are transferred and their consumers (small_site_material/Invocation.encoded and the dependent invocation theorems) are re-elaborated and re-audited in this batch; the 060 bytes remain pinned in their sealed BATCH_060 pair and job snapshots."
+    }
+  },
+  "repair": {
+    "finding": "VirtualLegal impossibility (cross-lane, kernel-confirmed): the 060 shape quantified boundedness and distinctness of the virtual address map over ALL Nat block identifiers, an injection Nat -> Fin (2^64); every consumer (Invocation.encoded, invocation_gate/invocation_certificate success paths, small_site_material) was vacuous.",
+    "fix": "VirtualLegal is restricted to the finite live-block set (Env.live: six automatic objects, five external argument objects, fk object and scratch); canonical_word_eq/read_unique/small_site_material are transferred with live-block membership side conditions; achievability witnesses virtualLegal_identity/virtualLegal_exists; the refutation no_global_virtual_legal pins the trap kernel-side.",
+    "dependent_validation": "ALL consumers re-elaborated and re-audited in this batch (KeygenMakeInvocation full declarations incl. invocation_flow/invocation_teardown/invocation_gate/invocation_certificate and the codec call-site records); earlier batches scanned: no earlier module consumes VirtualLegal/Invocation.encoded or carries the all-Nat legality pattern (the only prior consumer is the sealed 060 audit, preserved byte-identical as history); the consumed INHERITED closure of earlier batches is re-checked by the 061 audit entries.",
+    "s05_cross_lane": "formal/BoundedAddressObstruction017.lean exports no_global_virtual_legal/no_bounded_nat_injection/finite_map_control (read-only pin, not imported); S05 notes/ROM_INVOCATION_AUDIT_017.md is the finding record."
+  },
+  "accepted_module_checks": [
+    {
+      "module": "Source3.KeygenMakeInvocation",
+      "source": {
+        "path": "formal/Source3/KeygenMakeInvocation.lean",
+        "sha256": "bee3984b3304a3a551fca374d0d202e6f3d48f394fcaa6b47dd65bc9b828ecd2",
+        "bytes": 42426
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_make_invocation_legal_061_003/formal/Source3/KeygenMakeInvocation.lean",
+        "sha256": "bee3984b3304a3a551fca374d0d202e6f3d48f394fcaa6b47dd65bc9b828ecd2",
+        "bytes": 42426
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_make_invocation_legal_061_003/lib/Source3/KeygenMakeInvocation.olean",
+        "sha256": "d10ea52906d1311f896afd49e5d25fc497247b22d3b4d63ff9823bfc89f3f77e",
+        "bytes": 1286184
+      },
+      "cache_artifact": {
+        "path": ".build/cache/Source3/KeygenMakeInvocation.olean",
+        "sha256": "d10ea52906d1311f896afd49e5d25fc497247b22d3b4d63ff9823bfc89f3f77e",
+        "bytes": 1286184
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_make_invocation_legal_061_003/RECEIPTS.json",
+        "sha256": "c64b36a7ac0c6ae1a3831cf0215d7449ea3bd42e8bc2369b3467b988bd0e8a1f",
+        "bytes": 3089
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_make_invocation_legal_061_003/SOURCE_INPUTS.json",
+        "sha256": "aff6b9fe6daf4a0530fd375dbaabf51a9bfb0a67fded3779046121af400bc4e8",
+        "bytes": 864498
+      },
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_make_invocation_legal_061_003/logs/Source3_KeygenMakeInvocation.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_make_invocation_legal_061_003/logs/Source3_KeygenMakeInvocation.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenMakeStatementMachine": "c765a3f9f88fadd463ad53f4a67cd41385bb39d9ac997f7d6b19e1bc07d55688",
+        "Source3.KeygenMakeArguments": "fa841cad177aea80b4a045b6e2da26b0cac68b490527d47025d6f9582edc6029",
+        "Source3.KeygenMakeCertChronology": "5711eeda81e72da4af92960640b708f8fedfea6dd9a481e233b5936fd31c83da"
+      },
+      "elapsed_s": 2.019,
+      "maxrss_kib": 3018652
+    },
+    {
+      "module": "Source3.KeygenMakeLoopChronology",
+      "source": {
+        "path": "formal/Source3/KeygenMakeLoopChronology.lean",
+        "sha256": "ca1bda574b71a8bfc0620ea0722bc77f8982948c150c9317398ff59f349b4f0e",
+        "bytes": 28001
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_make_loop_chronology_061_004/formal/Source3/KeygenMakeLoopChronology.lean",
+        "sha256": "ca1bda574b71a8bfc0620ea0722bc77f8982948c150c9317398ff59f349b4f0e",
+        "bytes": 28001
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_make_loop_chronology_061_004/lib/Source3/KeygenMakeLoopChronology.olean",
+        "sha256": "ede0b8db9683facb6ecaec3c50e5dc22816a9655391df2267f5e0f9887c6b5ef",
+        "bytes": 618800
+      },
+      "cache_artifact": {
+        "path": ".build/cache/Source3/KeygenMakeLoopChronology.olean",
+        "sha256": "ede0b8db9683facb6ecaec3c50e5dc22816a9655391df2267f5e0f9887c6b5ef",
+        "bytes": 618800
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_make_loop_chronology_061_004/RECEIPTS.json",
+        "sha256": "9c20a129cbae80f9df923e18d908f904102449c150e7755b64b48c18008c94ff",
+        "bytes": 3108
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_make_loop_chronology_061_004/SOURCE_INPUTS.json",
+        "sha256": "e1fc006b0c3df2580356dfc31607cf5f16923c512eff7ea3b6f90c8c08b68151",
+        "bytes": 865806
+      },
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_make_loop_chronology_061_004/logs/Source3_KeygenMakeLoopChronology.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_make_loop_chronology_061_004/logs/Source3_KeygenMakeLoopChronology.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenMakeInvocation": "d10ea52906d1311f896afd49e5d25fc497247b22d3b4d63ff9823bfc89f3f77e",
+        "Source3.KeygenMakeRetryTransport": "e94d611d3b4b09cdabdda7112eae1ceafab972a7d2cbd7308f3b70c350e83dfc"
+      },
+      "elapsed_s": 2.721,
+      "maxrss_kib": 2961464
+    },
+    {
+      "module": "Source3.KeygenLevelsAudit",
+      "source": {
+        "path": "formal/Source3/KeygenLevelsAudit.lean",
+        "sha256": "83f6b37a34bd7527fe4a14fef8167cbe67e8deffe617f57478a32db8e814d8bd",
+        "bytes": 6914
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_levels_audit_024_001/formal/Source3/KeygenLevelsAudit.lean",
+        "sha256": "83f6b37a34bd7527fe4a14fef8167cbe67e8deffe617f57478a32db8e814d8bd",
+        "bytes": 6914
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_levels_audit_024_001/lib/Source3/KeygenLevelsAudit.olean",
+        "sha256": "2d68630ece1991aa560d8bf322a22e6103e070ce661eb12f79b06c57a201ff8a",
+        "bytes": 4064
+      },
+      "cache_artifact": {
+        "path": ".build/cache/Source3/KeygenLevelsAudit.olean",
+        "sha256": "2d68630ece1991aa560d8bf322a22e6103e070ce661eb12f79b06c57a201ff8a",
+        "bytes": 4064
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_levels_audit_024_001/RECEIPTS.json",
+        "sha256": "33835fd69282bcce3256fa0e58e4614a52e2679cb9935698561f11d1737fb229",
+        "bytes": 2986
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_levels_audit_024_001/SOURCE_INPUTS.json",
+        "sha256": "9e36c96005d1d49dc7ae1508c7962650b83866f57b539236cd289c16d8913efd",
+        "bytes": 481904
+      },
+      "logs": {
+        "stdout": {
+          "path": ".build/jobs/keygen_levels_audit_024_001/logs/Source3_KeygenLevelsAudit.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": ".build/jobs/keygen_levels_audit_024_001/logs/Source3_KeygenLevelsAudit.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "imports": {
+        "Source3.KeygenLevelModularFrame": "a2f31f701b22d9a9849161c7bd34185b7f2987f08167eb1c54a0bea5b38f2f52",
+        "Source3.KeygenLevelNtt": "4f891a05c250e811f72b12719561fbd856e1731caf211dd7cd6de86c7615f0a3",
+        "Source3.KeygenLevelCalls": "97a72668d3d8b3943fb87fbdd8f51377af30d8106b5fa6d23394dd86e63764e9",
+        "Source3.KeygenLevelExec": "7fe4c3ec34815d6fa706ccaa9fda26198f810bf5ec108799dabdbdccf0277917",
+        "Source3.KeygenLevelParser": "42e555e89afe95278fa388054973a2c3a4702c36eaa80c2e57ac5e8b7b401235",
+        "Source3.KeygenMakeFgTop": "e193dccb30442657d5a71853f51cddb2980a55c65d020718ecd036424dd11cea",
+        "Source3.KeygenWordExpr": "f7640f9f49f7e32fa268fb1eda29da3df921bda36ba198471ad14aa5846dd7ac",
+        "Source3.KeygenWordExec": "ed9ad88920462fdd139edf8813323920390e40835b6c47deaaa599432ae2b233",
+        "Source3.KeygenWordParser": "e5306c591e2205ae3c73468d61ca85910be3e07e6950a4bad3efec6cd7420915",
+        "Source3.KeygenZintLeaves": "fe8152760dda3f79483edd3bae357d8c2e9ded2f0cd3867aa92262b8cc404d15",
+        "Source3.KeygenResultantSource": "ffba2063b9c84beed1a89daca4dbca097fbf64587b378f6fcb287fc57f23f365",
+        "Source3.KeygenResultantGate": "209b2092eca3e4d23ffae450ae1f21b31d9871df7cb7c60d6944817251fcb404",
+        "Source3.KeygenNormFrame": "a19ba25ae534f02ad9cad37b1503e3435687a8fc109f1e197cdc07d46a56e699",
+        "Source3.KeygenDepth0Call": "d2f06d60d54bf8ac04298181172c80dd9138414e6db4e7252b03206b744f8664"
+      },
+      "elapsed_s": 2.67,
+      "maxrss_kib": 2803508
+    }
+  ],
+  "audit": {
+    "path": ".build/jobs/keygen_make_loop_chronology_audit_061_002/SEARCH_AUDIT.json",
+    "sha256": "340c1550dacb85fcf125ac3287b9939b4a25e8e880ab5f515ab33d6f9fa9c6aa",
+    "bytes": 1494598,
+    "entries_jsonl": {
+      "path": ".build/jobs/keygen_make_loop_chronology_audit_061_002/SEARCH_AUDIT_ENTRIES.jsonl",
+      "sha256": "be1a64c65850a9d49333265e6550d065acf44a2ac52615366f3b1f62ac568936",
+      "bytes": 1487159
+    },
+    "receipt": {
+      "path": ".build/jobs/keygen_make_loop_chronology_audit_061_002/RECEIPTS.json",
+      "sha256": "1b95c3530396f14b9a5cafcf31ac29c41c35e026339733240ce69d00d3fc11fc",
+      "bytes": 3197
+    },
+    "source_inputs": {
+      "path": ".build/jobs/keygen_make_loop_chronology_audit_061_002/SOURCE_INPUTS.json",
+      "sha256": "e6aed96cc35395d7d2c4d6d80a414f2fff9229715b1c4be9968110ec776f8cea",
+      "bytes": 867017
+    },
+    "producer": {
+      "path": "formal/Source3/KeygenMakeLoopChronologyAudit.lean",
+      "sha256": "dc52e6d19751ec8fb95a35a66a6ff797331bf378c2f9d88fe8530b8263fd8e58",
+      "bytes": 10656
+    },
+    "generator": {
+      "path": "tools/keygen_make_loop_chronology_audit.py",
+      "sha256": "cf973aaa4253b52b3f58cbb7b9ae65d1d24fd106d365f9851d87dd2e145a6c52",
+      "bytes": 7141
+    },
+    "exports": 213,
+    "new_declarations": 93,
+    "inherited_interfaces": 120,
+    "full_terms": 171,
+    "kernel_inductives": 42,
+    "elisions": 0,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "sage": {
+    "source": {
+      "path": "sage/check_keygen_make_loop_chronology.sage",
+      "sha256": "0ca52e09eb9e6781534a6b634b5859757f33b6d5aa16bb789ea5c5df8ada6a2b",
+      "bytes": 7318
+    },
+    "receipt": {
+      "path": ".build/jobs/keygen_make_loop_chronology_sage_061_002/RECEIPTS.json",
+      "sha256": "d252058de3b8d2a22884ba34ba50e1e48e2bb99e6f173b30139ae451fb2dd5c5",
+      "bytes": 2458
+    },
+    "source_inputs": {
+      "path": ".build/jobs/keygen_make_loop_chronology_sage_061_002/SOURCE_INPUTS.json",
+      "sha256": "410e267a41824e6d07c6a04cbb251ae2f701d2f3c83a51a27a8d0983e69fe7c1",
+      "bytes": 868299
+    },
+    "result": {
+      "path": ".build/jobs/keygen_make_loop_chronology_sage_061_002/CERT_CONTROL_CHECK.json",
+      "sha256": "533dff0038efd83d7c49f1a9810729a1d651349890a9e74e70baa1e4bbfec1d9",
+      "bytes": 3304
+    },
+    "reference_c_source": {
+      "path": "/media/footfalcon/FT1536_DATA/free_falcon_sign/Extra/c/falcon-keygen.c",
+      "sha256": "0a09b6ed2363308f54584dfd1e2d33ee1b4601a68c77712c50da920b5074a5cf",
+      "bytes": 234438
+    },
+    "runs": 1,
+    "cases_per_run": 5,
+    "mutation_kinds": 20,
+    "scope": "EXPLICIT MOCK SEMANTICS; scripted finite-live-set-map-legality/pointer-roundtrip/retry-chronology/tail-cells records and a transcription check of the attempt-loop/encoding-tail region against the reference C source; no real KeyGen/solver/certificate/codec result, no private key, no probability or law claim; supplements kernel proofs, never replaces them"
+  },
+  "generator_reproduction": {
+    "path": ".build/levels_061/GENERATOR_CHECK.json",
+    "sha256": "36177d91ab2d85aef70699073bca0a749a277fe2b7d4d4498e36ddadd8636ec3",
+    "bytes": 769
+  },
+  "slot_waits": [
+    {
+      "path": ".build/waits/keygen_make_invocation_legal_061_001/WAIT.jsonl",
+      "sha256": "5c43cfd47c958bb8ba2e844134c069807e650ffba8e1ae812b4817f383c5ab23",
+      "bytes": 45273
+    },
+    {
+      "path": ".build/waits/keygen_make_invocation_legal_061_002/WAIT.jsonl",
+      "sha256": "daefffd2f088bbc73f9b7527008147affca924a6788b8a4a7da528242cb1c124",
+      "bytes": 29505
+    },
+    {
+      "path": ".build/waits/keygen_make_invocation_legal_061_003/WAIT.jsonl",
+      "sha256": "0a3c128db253a03b2fb79ca29f63e0c98e8843db312df0d6f3d9e0a2765cb6f6",
+      "bytes": 107
+    },
+    {
+      "path": ".build/waits/keygen_make_loop_chronology_061_001/WAIT.jsonl",
+      "sha256": "88e2c470f6792b3eff84e02685c261fc28fcebc838cf7943a8c3046cb64d9ea5",
+      "bytes": 106
+    },
+    {
+      "path": ".build/waits/keygen_make_loop_chronology_061_002/WAIT.jsonl",
+      "sha256": "ff48d25fa26c05e14e85b627086f5cd7e43aa8d1c18bfb1811cd5448525f0351",
+      "bytes": 106
+    },
+    {
+      "path": ".build/waits/keygen_make_loop_chronology_061_003/WAIT.jsonl",
+      "sha256": "1d1fd39b4c600ca06eeb2c4f9aabc502bb1102583e4ddba1ab92af5fa44b65f9",
+      "bytes": 106
+    },
+    {
+      "path": ".build/waits/keygen_make_loop_chronology_061_004/WAIT.jsonl",
+      "sha256": "7c59b589e90c8ea7b74af69c4a2aedb2de72f19eec1de8c28456b5fa79b0e953",
+      "bytes": 106
+    },
+    {
+      "path": ".build/waits/keygen_make_loop_chronology_audit_061_001/WAIT.jsonl",
+      "sha256": "652a0a630895621923bd98b53bc878809bcc60bf2756a3df021270e3b1ae5640",
+      "bytes": 112
+    },
+    {
+      "path": ".build/waits/keygen_make_loop_chronology_audit_061_002/WAIT.jsonl",
+      "sha256": "843a0b47b6ee2345db65d1d0c14769460494b5f5d1f18eb3e6da0b8c12ed9df1",
+      "bytes": 112
+    },
+    {
+      "path": ".build/waits/keygen_make_loop_chronology_sage_061_001/WAIT.jsonl",
+      "sha256": "00af46399be6cbd9ec94e0388f6aec56397a1f78ecc9df578e8bcf9750b88858",
+      "bytes": 111
+    },
+    {
+      "path": ".build/waits/keygen_make_loop_chronology_sage_061_002/WAIT.jsonl",
+      "sha256": "52d8855f0c26f83a2d1ddc3154a2d9149760b6fa510c380d48d7dcb2cc1bff97",
+      "bytes": 111
+    }
+  ],
+  "attempt_details": [
+    {
+      "job": "keygen_make_invocation_legal_061_001",
+      "status": "PRESTEP_ABORTED_RETAINED",
+      "cause": "Guard rejection at PREFLIGHT with no source bytes: the parallel lane Lean process in proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001 was active. Environment race per the handoff note, not a pin mismatch; retried as keygen_make_invocation_legal_061_001_slot_retry_001.",
+      "receipt": null,
+      "step_receipts": [],
+      "preflight": {
+        "path": ".build/jobs/keygen_make_invocation_legal_061_001/PREFLIGHT.json",
+        "sha256": "c16743580c98b2a7515e20db37714db29b697398debd2a4f487d6cb298310e1f",
+        "bytes": 554
+      },
+      "runner_snapshot": null,
+      "execution_snapshot": null,
+      "snapshots": [],
+      "raw_files": [],
+      "steps": [],
+      "accepted_products": [],
+      "products": []
+    },
+    {
+      "job": "keygen_make_invocation_legal_061_001_slot_retry_001",
+      "status": "FAILED_RETAINED",
+      "cause": "First elaboration of the VirtualLegal repair REJECTED (retained): the Fin constructor in the trap refutation needed an explicit map type (the S05 witness shape `let g : Nat -> Fin (2^64)`), `congrArg Fin.val` needed that named map, and two lambda binders were unused under the linter (fixed with `_` names).",
+      "receipt": {
+        "path": ".build/jobs/keygen_make_invocation_legal_061_001_slot_retry_001/RECEIPTS.json",
+        "sha256": "79d2b8b6f1829aa135e88c75d52416c5b3101ea2f3d57366ce3b59eb21f85bfc",
+        "bytes": 3138
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_make_invocation_legal_061_001_slot_retry_001/SOURCE_INPUTS.json",
+        "sha256": "7b37bdfbf56e15e695511fdd84b1e9e62a28e98434b09fb249243be39993a5ac",
+        "bytes": 864498
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_make_invocation_legal_061_001_slot_retry_001/PREFLIGHT.json",
+        "sha256": "e8d93893ea6707661987e247eed6e4a2ea1c9f445fa74b9491d3f3c17112f665",
+        "bytes": 147
+      },
+      "runner_snapshot": {
+        "path": ".build/jobs/keygen_make_invocation_legal_061_001_slot_retry_001/RUNNER_SOURCE.py",
+        "sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+        "bytes": 12792
+      },
+      "execution_snapshot": {
+        "path": ".build/jobs/keygen_make_invocation_legal_061_001_slot_retry_001/EXECUTION_SOURCE.py",
+        "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c",
+        "bytes": 8123
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_make_invocation_legal_061_001_slot_retry_001/formal/Source3/KeygenMakeInvocation.lean",
+          "sha256": "b62dc60f7c0521e3d6ade544d61898b8e32274d366b873bcd4f49e75014d0e96",
+          "bytes": 42400
+        }
+      ],
+      "raw_files": [
+        {
+          "path": ".build/jobs/keygen_make_invocation_legal_061_001_slot_retry_001/logs/Source3_KeygenMakeInvocation.receipt.json",
+          "sha256": "874ffbfb450735b91c7725577d2ecec39ec750b6155e44f301f7f8eff84ba1b2",
+          "bytes": 2925
+        },
+        {
+          "path": ".build/jobs/keygen_make_invocation_legal_061_001_slot_retry_001/logs/Source3_KeygenMakeInvocation.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_make_invocation_legal_061_001_slot_retry_001/logs/Source3_KeygenMakeInvocation.stdout",
+          "sha256": "d759955af2f496c5162bbf75e09d3332e8acb73e88bff243179251f1c42165bf",
+          "bytes": 1719
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenMakeInvocation",
+          "accepted": false,
+          "exit_code": 1,
+          "start": "2026-10-10T23:32:45.247760+00:00",
+          "stop": "2026-10-10T23:32:48.120529+00:00",
+          "elapsed_s": 2.873,
+          "maxrss_kib": 2992232,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_make_invocation_legal_061_001_slot_retry_001/logs/Source3_KeygenMakeInvocation.stdout",
+              "sha256": "d759955af2f496c5162bbf75e09d3332e8acb73e88bff243179251f1c42165bf",
+              "bytes": 1719
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_make_invocation_legal_061_001_slot_retry_001/logs/Source3_KeygenMakeInvocation.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "accepted_products": [],
+      "products": []
+    },
+    {
+      "job": "keygen_make_invocation_legal_061_003",
+      "status": "ACCEPTED",
+      "cause": null,
+      "receipt": {
+        "path": ".build/jobs/keygen_make_invocation_legal_061_003/RECEIPTS.json",
+        "sha256": "c64b36a7ac0c6ae1a3831cf0215d7449ea3bd42e8bc2369b3467b988bd0e8a1f",
+        "bytes": 3089
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_make_invocation_legal_061_003/SOURCE_INPUTS.json",
+        "sha256": "aff6b9fe6daf4a0530fd375dbaabf51a9bfb0a67fded3779046121af400bc4e8",
+        "bytes": 864498
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_make_invocation_legal_061_003/PREFLIGHT.json",
+        "sha256": "d341a2795ce5d6a9bd493460251781576e878fb58b9798d830da733abe1f50e0",
+        "bytes": 147
+      },
+      "runner_snapshot": {
+        "path": ".build/jobs/keygen_make_invocation_legal_061_003/RUNNER_SOURCE.py",
+        "sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+        "bytes": 12792
+      },
+      "execution_snapshot": {
+        "path": ".build/jobs/keygen_make_invocation_legal_061_003/EXECUTION_SOURCE.py",
+        "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c",
+        "bytes": 8123
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_make_invocation_legal_061_003/formal/Source3/KeygenMakeInvocation.lean",
+          "sha256": "bee3984b3304a3a551fca374d0d202e6f3d48f394fcaa6b47dd65bc9b828ecd2",
+          "bytes": 42426
+        }
+      ],
+      "raw_files": [
+        {
+          "path": ".build/jobs/keygen_make_invocation_legal_061_003/logs/Source3_KeygenMakeInvocation.receipt.json",
+          "sha256": "86b62a6c94c71867834d1519541db9fbafc146e7126938df5501e6019ca53434",
+          "bytes": 2788
+        },
+        {
+          "path": ".build/jobs/keygen_make_invocation_legal_061_003/logs/Source3_KeygenMakeInvocation.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_make_invocation_legal_061_003/logs/Source3_KeygenMakeInvocation.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenMakeInvocation",
+          "accepted": true,
+          "exit_code": 0,
+          "start": "2026-10-10T23:35:45.782985+00:00",
+          "stop": "2026-10-10T23:35:47.801665+00:00",
+          "elapsed_s": 2.019,
+          "maxrss_kib": 3018652,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_make_invocation_legal_061_003/logs/Source3_KeygenMakeInvocation.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_make_invocation_legal_061_003/logs/Source3_KeygenMakeInvocation.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "accepted_products": [
+        {
+          "path": ".build/jobs/keygen_make_invocation_legal_061_003/lib/Source3/KeygenMakeInvocation.olean",
+          "sha256": "d10ea52906d1311f896afd49e5d25fc497247b22d3b4d63ff9823bfc89f3f77e",
+          "bytes": 1286184
+        }
+      ],
+      "products": []
+    },
+    {
+      "job": "keygen_make_loop_chronology_061_001",
+      "status": "FAILED_RETAINED",
+      "cause": "First elaboration of the loop-chronology module REJECTED (retained): unused simp arguments and unsolved prologue-cell goals (the ite chains need the whole def chain with literal disequalities), `(congrArg Result.flow _).elim` (no `Eq.elim`; `cases` instead), the reserved-word `prefix` binder clash (060 trap class), the `induction`-versus-`cases` binder-slot distinction and the entry-frame first-state binder.",
+      "receipt": {
+        "path": ".build/jobs/keygen_make_loop_chronology_061_001/RECEIPTS.json",
+        "sha256": "f32ee7d324bf0324f457fe301372989f4dd9e1b9854a813609b91356e9f9f9cd",
+        "bytes": 3022
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_make_loop_chronology_061_001/SOURCE_INPUTS.json",
+        "sha256": "390e4a194f59c63c69daedfa1193a40bd8f2d27b6cf93b37aaffc1e2e0d04e00",
+        "bytes": 865806
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_make_loop_chronology_061_001/PREFLIGHT.json",
+        "sha256": "dd1fe00df58ea60e4c1ace3e760a8d510d858eac10f84fd48f468311116227a9",
+        "bytes": 147
+      },
+      "runner_snapshot": {
+        "path": ".build/jobs/keygen_make_loop_chronology_061_001/RUNNER_SOURCE.py",
+        "sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+        "bytes": 12792
+      },
+      "execution_snapshot": {
+        "path": ".build/jobs/keygen_make_loop_chronology_061_001/EXECUTION_SOURCE.py",
+        "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c",
+        "bytes": 8123
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_061_001/formal/Source3/KeygenMakeLoopChronology.lean",
+          "sha256": "fd8aa7c5465a4cec020339865bc9210f8744c969c424d6745ade8ee9878454b2",
+          "bytes": 30534
+        }
+      ],
+      "raw_files": [
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_061_001/logs/Source3_KeygenMakeLoopChronology.receipt.json",
+          "sha256": "bfa4f1531d65154c6ad05ec137167ebdd767f895d5661377f88677a078b0332b",
+          "bytes": 2809
+        },
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_061_001/logs/Source3_KeygenMakeLoopChronology.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_061_001/logs/Source3_KeygenMakeLoopChronology.stdout",
+          "sha256": "1914fc826b8b215143997d166662d6237b32eff00f78e491dabb725533085417",
+          "bytes": 164787
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenMakeLoopChronology",
+          "accepted": false,
+          "exit_code": 1,
+          "start": "2026-10-10T23:36:08.459418+00:00",
+          "stop": "2026-10-10T23:36:10.532840+00:00",
+          "elapsed_s": 2.073,
+          "maxrss_kib": 2967524,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_make_loop_chronology_061_001/logs/Source3_KeygenMakeLoopChronology.stdout",
+              "sha256": "1914fc826b8b215143997d166662d6237b32eff00f78e491dabb725533085417",
+              "bytes": 164787
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_make_loop_chronology_061_001/logs/Source3_KeygenMakeLoopChronology.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "accepted_products": [],
+      "products": []
+    },
+    {
+      "job": "keygen_make_loop_chronology_061_002",
+      "status": "FAILED_RETAINED",
+      "cause": "Second elaboration REJECTED (retained): `prepared_local` lives in KeygenMakeSearchPrefix (not KeygenMakeSampling), `convert_self` needs its value argument explicit, index-filling constructor arguments bind nothing under `cases` (names at those slots are discarded), and the `Prefix.run` alternative expects 9 names including the index-determined events/out slots.",
+      "receipt": {
+        "path": ".build/jobs/keygen_make_loop_chronology_061_002/RECEIPTS.json",
+        "sha256": "156e08f2eca40d351aa77d60c0f6e1d8c76a9ae02739f35178b7f5afeba6c9c6",
+        "bytes": 3023
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_make_loop_chronology_061_002/SOURCE_INPUTS.json",
+        "sha256": "95e734361d7ecae2e75933f990a3b59cca80110d264f100ce242ab19235eec12",
+        "bytes": 865806
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_make_loop_chronology_061_002/PREFLIGHT.json",
+        "sha256": "33ab5313a8b882fbfa5253f4bbe68d6fcb0182d8962cb494b8ab2c97a422a89c",
+        "bytes": 147
+      },
+      "runner_snapshot": {
+        "path": ".build/jobs/keygen_make_loop_chronology_061_002/RUNNER_SOURCE.py",
+        "sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+        "bytes": 12792
+      },
+      "execution_snapshot": {
+        "path": ".build/jobs/keygen_make_loop_chronology_061_002/EXECUTION_SOURCE.py",
+        "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c",
+        "bytes": 8123
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_061_002/formal/Source3/KeygenMakeLoopChronology.lean",
+          "sha256": "e3a2081b789ad825f481f52e3d4001493cfd3b6307d97d0c59a28b4b7c32093f",
+          "bytes": 27845
+        }
+      ],
+      "raw_files": [
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_061_002/logs/Source3_KeygenMakeLoopChronology.receipt.json",
+          "sha256": "aa6053f35f61f8bd91dc02d4d9b3839303ce3a6f3353bbc7891fcbcd06ad08e3",
+          "bytes": 2810
+        },
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_061_002/logs/Source3_KeygenMakeLoopChronology.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_061_002/logs/Source3_KeygenMakeLoopChronology.stdout",
+          "sha256": "15aeb576a49a0e72254dcd3e603cd5deb121e2a6fc2bc378d3aa456113113e81",
+          "bytes": 11350
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenMakeLoopChronology",
+          "accepted": false,
+          "exit_code": 1,
+          "start": "2026-10-11T00:48:54.160014+00:00",
+          "stop": "2026-10-11T00:49:48.034200+00:00",
+          "elapsed_s": 53.874,
+          "maxrss_kib": 2880804,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_make_loop_chronology_061_002/logs/Source3_KeygenMakeLoopChronology.stdout",
+              "sha256": "15aeb576a49a0e72254dcd3e603cd5deb121e2a6fc2bc378d3aa456113113e81",
+              "bytes": 11350
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_make_loop_chronology_061_002/logs/Source3_KeygenMakeLoopChronology.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "accepted_products": [],
+      "products": []
+    },
+    {
+      "job": "keygen_make_loop_chronology_061_003",
+      "status": "FAILED_RETAINED",
+      "cause": "Third elaboration REJECTED (retained): the ready_arrays_other disequalities must be stated at the evaluated char-list normal form (`n != [s,k,e]`) to match the unfolded ite conditions.",
+      "receipt": {
+        "path": ".build/jobs/keygen_make_loop_chronology_061_003/RECEIPTS.json",
+        "sha256": "626234f029a6cbd6e8e978d642171cad320a8cfb6849c078381f3c821ccf9535",
+        "bytes": 3022
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_make_loop_chronology_061_003/SOURCE_INPUTS.json",
+        "sha256": "741012661f315144d8ff41d39c940c68892d38bb706905bd201cf9c9eb5177ec",
+        "bytes": 865806
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_make_loop_chronology_061_003/PREFLIGHT.json",
+        "sha256": "8caf3fb3d315ce47d6703285bbb12afb834b412175b9e4aece63cd6b81cf24dd",
+        "bytes": 147
+      },
+      "runner_snapshot": {
+        "path": ".build/jobs/keygen_make_loop_chronology_061_003/RUNNER_SOURCE.py",
+        "sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+        "bytes": 12792
+      },
+      "execution_snapshot": {
+        "path": ".build/jobs/keygen_make_loop_chronology_061_003/EXECUTION_SOURCE.py",
+        "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c",
+        "bytes": 8123
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_061_003/formal/Source3/KeygenMakeLoopChronology.lean",
+          "sha256": "d52430b4bc2e5d34caecbe353c010380a2a5875c6ac455eaf1f18fd458460ba2",
+          "bytes": 27973
+        }
+      ],
+      "raw_files": [
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_061_003/logs/Source3_KeygenMakeLoopChronology.receipt.json",
+          "sha256": "bde7ac5d235bc47e59cf8b643ea49de8525abf40ad2397dd74b105924bf25531",
+          "bytes": 2809
+        },
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_061_003/logs/Source3_KeygenMakeLoopChronology.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_061_003/logs/Source3_KeygenMakeLoopChronology.stdout",
+          "sha256": "9578992f3e4207d6521a9d174c478cb104b06a8cc4c0b939d4a525b21c043b9e",
+          "bytes": 7937
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenMakeLoopChronology",
+          "accepted": false,
+          "exit_code": 1,
+          "start": "2026-10-11T01:08:47.066253+00:00",
+          "stop": "2026-10-11T01:08:49.988752+00:00",
+          "elapsed_s": 2.923,
+          "maxrss_kib": 2943612,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_make_loop_chronology_061_003/logs/Source3_KeygenMakeLoopChronology.stdout",
+              "sha256": "9578992f3e4207d6521a9d174c478cb104b06a8cc4c0b939d4a525b21c043b9e",
+              "bytes": 7937
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_make_loop_chronology_061_003/logs/Source3_KeygenMakeLoopChronology.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "accepted_products": [],
+      "products": []
+    },
+    {
+      "job": "keygen_make_loop_chronology_061_004",
+      "status": "ACCEPTED",
+      "cause": null,
+      "receipt": {
+        "path": ".build/jobs/keygen_make_loop_chronology_061_004/RECEIPTS.json",
+        "sha256": "9c20a129cbae80f9df923e18d908f904102449c150e7755b64b48c18008c94ff",
+        "bytes": 3108
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_make_loop_chronology_061_004/SOURCE_INPUTS.json",
+        "sha256": "e1fc006b0c3df2580356dfc31607cf5f16923c512eff7ea3b6f90c8c08b68151",
+        "bytes": 865806
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_make_loop_chronology_061_004/PREFLIGHT.json",
+        "sha256": "e687141e62af94e24da0b68360a52bd86af63e4e301431d0e5ab5d2c2f72dc46",
+        "bytes": 147
+      },
+      "runner_snapshot": {
+        "path": ".build/jobs/keygen_make_loop_chronology_061_004/RUNNER_SOURCE.py",
+        "sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+        "bytes": 12792
+      },
+      "execution_snapshot": {
+        "path": ".build/jobs/keygen_make_loop_chronology_061_004/EXECUTION_SOURCE.py",
+        "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c",
+        "bytes": 8123
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_061_004/formal/Source3/KeygenMakeLoopChronology.lean",
+          "sha256": "ca1bda574b71a8bfc0620ea0722bc77f8982948c150c9317398ff59f349b4f0e",
+          "bytes": 28001
+        }
+      ],
+      "raw_files": [
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_061_004/logs/Source3_KeygenMakeLoopChronology.receipt.json",
+          "sha256": "e0837eb8c392340fa3720edc20832eb58ba4e8fa769db9aa187aca9a50b505c6",
+          "bytes": 2807
+        },
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_061_004/logs/Source3_KeygenMakeLoopChronology.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_061_004/logs/Source3_KeygenMakeLoopChronology.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenMakeLoopChronology",
+          "accepted": true,
+          "exit_code": 0,
+          "start": "2026-10-11T01:12:36.253312+00:00",
+          "stop": "2026-10-11T01:12:38.974588+00:00",
+          "elapsed_s": 2.721,
+          "maxrss_kib": 2961464,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_make_loop_chronology_061_004/logs/Source3_KeygenMakeLoopChronology.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_make_loop_chronology_061_004/logs/Source3_KeygenMakeLoopChronology.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "accepted_products": [
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_061_004/lib/Source3/KeygenMakeLoopChronology.olean",
+          "sha256": "ede0b8db9683facb6ecaec3c50e5dc22816a9655391df2267f5e0f9887c6b5ef",
+          "bytes": 618800
+        }
+      ],
+      "products": []
+    },
+    {
+      "job": "keygen_make_loop_chronology_audit_061_001",
+      "status": "FAILED_RETAINED",
+      "cause": "The generated audit module was REJECTED (retained): its INHERITED list carried the stale KeygenMakeSampling.prepared_local name. Producer fixed; the rejected generated module is retained in the job snapshot and the accepted one regenerated canonically.",
+      "receipt": {
+        "path": ".build/jobs/keygen_make_loop_chronology_audit_061_001/RECEIPTS.json",
+        "sha256": "d1ff6352d41eb7ca3b058918d8b33272855ddb4e0cbcf021e42b21b7aa5ff913",
+        "bytes": 3110
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_make_loop_chronology_audit_061_001/SOURCE_INPUTS.json",
+        "sha256": "1ff886f6f9bb5ef64d993537aa325352693a31087ddd9671d6d37de6354ac3d9",
+        "bytes": 867017
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_make_loop_chronology_audit_061_001/PREFLIGHT.json",
+        "sha256": "bc13be70487434a978bffae46a8e742e7b51ac39e9752600a36ac49cabfdbdb7",
+        "bytes": 147
+      },
+      "runner_snapshot": {
+        "path": ".build/jobs/keygen_make_loop_chronology_audit_061_001/RUNNER_SOURCE.py",
+        "sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+        "bytes": 12792
+      },
+      "execution_snapshot": {
+        "path": ".build/jobs/keygen_make_loop_chronology_audit_061_001/EXECUTION_SOURCE.py",
+        "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c",
+        "bytes": 8123
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_audit_061_001/formal/Source3/KeygenMakeLoopChronologyAudit.lean",
+          "sha256": "c96a5d6cf83e419eeb2d2b40ab9fc6d06854a0de8f94a03df26f2527351a4073",
+          "bytes": 10652
+        }
+      ],
+      "raw_files": [
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_audit_061_001/logs/Source3_KeygenMakeLoopChronologyAudit.receipt.json",
+          "sha256": "cbaf5bea5d77a8dbea7681a8a8cbae49aa5f36856c794f0c4ff8751d0c0deecc",
+          "bytes": 2897
+        },
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_audit_061_001/logs/Source3_KeygenMakeLoopChronologyAudit.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_audit_061_001/logs/Source3_KeygenMakeLoopChronologyAudit.stdout",
+          "sha256": "497b3c58dff2f008552b96c05fbfec9086c3a3cdfb4316cd3d65df80ca677de2",
+          "bytes": 296
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenMakeLoopChronologyAudit",
+          "accepted": false,
+          "exit_code": 1,
+          "start": "2026-10-11T01:14:23.491910+00:00",
+          "stop": "2026-10-11T01:14:25.209725+00:00",
+          "elapsed_s": 1.718,
+          "maxrss_kib": 2907840,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_make_loop_chronology_audit_061_001/logs/Source3_KeygenMakeLoopChronologyAudit.stdout",
+              "sha256": "497b3c58dff2f008552b96c05fbfec9086c3a3cdfb4316cd3d65df80ca677de2",
+              "bytes": 296
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_make_loop_chronology_audit_061_001/logs/Source3_KeygenMakeLoopChronologyAudit.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "accepted_products": [],
+      "products": []
+    },
+    {
+      "job": "keygen_make_loop_chronology_audit_061_002",
+      "status": "ACCEPTED",
+      "cause": null,
+      "receipt": {
+        "path": ".build/jobs/keygen_make_loop_chronology_audit_061_002/RECEIPTS.json",
+        "sha256": "1b95c3530396f14b9a5cafcf31ac29c41c35e026339733240ce69d00d3fc11fc",
+        "bytes": 3197
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_make_loop_chronology_audit_061_002/SOURCE_INPUTS.json",
+        "sha256": "e6aed96cc35395d7d2c4d6d80a414f2fff9229715b1c4be9968110ec776f8cea",
+        "bytes": 867017
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_make_loop_chronology_audit_061_002/PREFLIGHT.json",
+        "sha256": "7b04c8d9ef4f77c8249f45624cb9330a11cf872d879c62501da4a6c8bbe9f964",
+        "bytes": 147
+      },
+      "runner_snapshot": {
+        "path": ".build/jobs/keygen_make_loop_chronology_audit_061_002/RUNNER_SOURCE.py",
+        "sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+        "bytes": 12792
+      },
+      "execution_snapshot": {
+        "path": ".build/jobs/keygen_make_loop_chronology_audit_061_002/EXECUTION_SOURCE.py",
+        "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c",
+        "bytes": 8123
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_audit_061_002/formal/Source3/KeygenMakeLoopChronologyAudit.lean",
+          "sha256": "dc52e6d19751ec8fb95a35a66a6ff797331bf378c2f9d88fe8530b8263fd8e58",
+          "bytes": 10656
+        }
+      ],
+      "raw_files": [
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_audit_061_002/logs/Source3_KeygenMakeLoopChronologyAudit.receipt.json",
+          "sha256": "ce70d07fb990720fb90f0b3fac200120fcb667dcc0e76404c77cf080dc266c45",
+          "bytes": 2896
+        },
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_audit_061_002/logs/Source3_KeygenMakeLoopChronologyAudit.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_audit_061_002/logs/Source3_KeygenMakeLoopChronologyAudit.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenMakeLoopChronologyAudit",
+          "accepted": true,
+          "exit_code": 0,
+          "start": "2026-10-11T01:17:01.783995+00:00",
+          "stop": "2026-10-11T01:17:05.208112+00:00",
+          "elapsed_s": 3.424,
+          "maxrss_kib": 2945692,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_make_loop_chronology_audit_061_002/logs/Source3_KeygenMakeLoopChronologyAudit.stdout",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_make_loop_chronology_audit_061_002/logs/Source3_KeygenMakeLoopChronologyAudit.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "accepted_products": [
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_audit_061_002/lib/Source3/KeygenMakeLoopChronologyAudit.olean",
+          "sha256": "e050be23d980e2d015b6ffcb4bd4ed872de14c491585bce2bdea778b2a0319ad",
+          "bytes": 2808
+        }
+      ],
+      "products": [
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_audit_061_002/SEARCH_AUDIT.json",
+          "sha256": "340c1550dacb85fcf125ac3287b9939b4a25e8e880ab5f515ab33d6f9fa9c6aa",
+          "bytes": 1494598
+        },
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_audit_061_002/SEARCH_AUDIT_ENTRIES.jsonl",
+          "sha256": "be1a64c65850a9d49333265e6550d065acf44a2ac52615366f3b1f62ac568936",
+          "bytes": 1487159
+        },
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_audit_061_002/SEARCH_AUDIT_PROGRESS.json",
+          "sha256": "5f44854ca8b74836e07fea00717ffeb784d040094883a2a7cbd90ddc459dc5be",
+          "bytes": 49
+        }
+      ]
+    },
+    {
+      "job": "keygen_make_loop_chronology_sage_061_001",
+      "status": "PRESTEP_ABORTED_RETAINED",
+      "cause": "Job aborted at source copy with no source bytes: the sage source path was passed with a redundant `sage/` prefix (job.py resolves sage sources under sage/). Runner-argument slip, retried as keygen_make_loop_chronology_sage_061_002.",
+      "receipt": null,
+      "step_receipts": [],
+      "preflight": {
+        "path": ".build/jobs/keygen_make_loop_chronology_sage_061_001/PREFLIGHT.json",
+        "sha256": "34c954bbfc86382da2ef31c82a01f27bb07f73d8e1f57ccfc146eb0d0a9832d0",
+        "bytes": 147
+      },
+      "runner_snapshot": {
+        "path": ".build/jobs/keygen_make_loop_chronology_sage_061_001/RUNNER_SOURCE.py",
+        "sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+        "bytes": 12792
+      },
+      "execution_snapshot": {
+        "path": ".build/jobs/keygen_make_loop_chronology_sage_061_001/EXECUTION_SOURCE.py",
+        "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c",
+        "bytes": 8123
+      },
+      "snapshots": [],
+      "raw_files": [],
+      "steps": [],
+      "accepted_products": [],
+      "products": []
+    },
+    {
+      "job": "keygen_make_loop_chronology_sage_061_002",
+      "status": "ACCEPTED",
+      "cause": null,
+      "receipt": {
+        "path": ".build/jobs/keygen_make_loop_chronology_sage_061_002/RECEIPTS.json",
+        "sha256": "d252058de3b8d2a22884ba34ba50e1e48e2bb99e6f173b30139ae451fb2dd5c5",
+        "bytes": 2458
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_make_loop_chronology_sage_061_002/SOURCE_INPUTS.json",
+        "sha256": "410e267a41824e6d07c6a04cbb251ae2f701d2f3c83a51a27a8d0983e69fe7c1",
+        "bytes": 868299
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_make_loop_chronology_sage_061_002/PREFLIGHT.json",
+        "sha256": "baee782a2a16659b6cbc795d548368bd0c1c92e930b75c30a1991035a320f436",
+        "bytes": 147
+      },
+      "runner_snapshot": {
+        "path": ".build/jobs/keygen_make_loop_chronology_sage_061_002/RUNNER_SOURCE.py",
+        "sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+        "bytes": 12792
+      },
+      "execution_snapshot": {
+        "path": ".build/jobs/keygen_make_loop_chronology_sage_061_002/EXECUTION_SOURCE.py",
+        "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c",
+        "bytes": 8123
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_sage_061_002/sage/check_keygen_make_loop_chronology.sage",
+          "sha256": "0ca52e09eb9e6781534a6b634b5859757f33b6d5aa16bb789ea5c5df8ada6a2b",
+          "bytes": 7318
+        }
+      ],
+      "raw_files": [
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_sage_061_002/logs/sage.receipt.json",
+          "sha256": "8272a1e30c8ddc33517c6c5e495889045b7d3faa904806cfe9a5b628ac56aad6",
+          "bytes": 2259
+        },
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_sage_061_002/logs/sage.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_sage_061_002/logs/sage.stdout",
+          "sha256": "ee717da1df95a789d069ec9492368d460238abc5ae409d1b54731f6b4621050a",
+          "bytes": 577
+        }
+      ],
+      "steps": [
+        {
+          "name": "sage",
+          "accepted": true,
+          "exit_code": 0,
+          "start": "2026-10-11T01:18:33.491565+00:00",
+          "stop": "2026-10-11T01:19:20.863197+00:00",
+          "elapsed_s": 47.372,
+          "maxrss_kib": 221156,
+          "logs": {
+            "stdout": {
+              "path": ".build/jobs/keygen_make_loop_chronology_sage_061_002/logs/sage.stdout",
+              "sha256": "ee717da1df95a789d069ec9492368d460238abc5ae409d1b54731f6b4621050a",
+              "bytes": 577
+            },
+            "stderr": {
+              "path": ".build/jobs/keygen_make_loop_chronology_sage_061_002/logs/sage.stderr",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes": 0
+            }
+          }
+        }
+      ],
+      "accepted_products": [],
+      "products": [
+        {
+          "path": ".build/jobs/keygen_make_loop_chronology_sage_061_002/CERT_CONTROL_CHECK.json",
+          "sha256": "533dff0038efd83d7c49f1a9810729a1d651349890a9e74e70baa1e4bbfec1d9",
+          "bytes": 3304
+        }
+      ]
+    }
+  ],
+  "attempt_counts": {
+    "ACCEPTED": 4,
+    "FAILED_RETAINED": 5,
+    "PRESTEP_ABORTED_RETAINED": 2,
+    "INTERRUPTED_RETAINED": 0
+  },
+  "contracts": {
+    "finite_live_map_legality": "VirtualLegal live vb constrains the LP64 virtual address map only on the finite live-block set (bounded + pairwise distinct there); no_global_virtual_legal pins that the unqualified all-Nat shape is unsatisfiable, and virtualLegal_identity/virtualLegal_exists show the restricted class is achievable.",
+    "pointer_uniqueness_transferred": "canonical_word_eq/read_unique/small_site_material hold for canonical pointers whose blocks are live (inputOf_mem_live/publicOf_mem_live/skePtr_mem_live place the invocation blocks in Env.live); the source tie at a segment call site gains the honest srcLive side condition.",
+    "loop_chronology_composition": "loop_tail_cells and loop_retry_entry fold the per-retry transport over the whole LoopTrace: on the successful edge the rejected attempts chain to the accepted final attempt, carrying TailCells, the Initial/legal/static facts, the entry frame and the advanced loop counter (i+attempts.length) to the loop output state.",
+    "tail_cells_derivation": "entry_tail_cells derives the TailCells class at the loop entry (external argument cells and comp from the executed binding, logn/ter/n profile cells from the prologue under the pinned M0 profile, the six automatic-object cells from the declaration allocation); attempt_tail_cells carries it through every attempt instance; tail_cells_of_loop lands it at the accepted-break state (the encoding-tail entry).",
+    "composed_export": "loop_tail_entry composes the loop-trace chronology of the per-retry transport with the TailCells derivation at the accepted-break state."
+  },
+  "open_in_b1_07": [
+    "The codec bodies and their write frames are B1.08/09: the exact encoded lengths, the persistence of the stored length words and of the source arrays through later encoder calls, and the bytewise round-trips.",
+    "small_site_material now carries the honest side condition site.src.block in Env.live; a downstream derivation of that liveness from the write-then-read history of the ske cells (rather than the readable-word hypothesis) stays with the codec persistence item.",
+    "Residue pin of the plan phrase \"globals/common call ID/snapshots\": the globals, snapshots, bad-flag lifetime and shared call material are instantiated (cert_package_of_call) and tied to the same invocation (invocation_certificate); if the phrase intends an EXPLICIT identifier value beyond the shared derivation, that composition stays OPEN with its intended shape and is not derived or assumed here."
+  ],
+  "outside_scope": [
+    "B1.08-B1.11 codec bodies/emitted-to-fiber/final replay, B4/B5 probability/availability/PRG/security, OS/Windows/compiler/machine refinement, CT and independent review."
+  ],
+  "tools": [
+    {
+      "path": "tools/job.py",
+      "sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+      "bytes": 12792
+    },
+    {
+      "path": "tools/job_when_available.py",
+      "sha256": "525785c5321ebdda583c4e42d0daf5243b29146d10d47bd086d65fd89c53c37b",
+      "bytes": 3870
+    },
+    {
+      "path": "tools/keygen_make_loop_chronology_audit.py",
+      "sha256": "cf973aaa4253b52b3f58cbb7b9ae65d1d24fd106d365f9851d87dd2e145a6c52",
+      "bytes": 7141
+    },
+    {
+      "path": "tools/keygen_make_loop_chronology_batch.py",
+      "sha256": "eb3a12c0f50d1ab99d6c3c7baf1b0a4d281ff5a03da013671f413ff7d61da95b",
+      "bytes": 23896
+    },
+    {
+      "path": "tools/keygen_intermediate_batch.py",
+      "sha256": "1128fdba4855db1ee160c23c228e4a48335eb5965af0bd8272d7b947c2c0c23a",
+      "bytes": 14421
+    },
+    {
+      "path": "tools/keygen_public_first_batch.py",
+      "sha256": "3234d16b190dfdd162a61d41ad291854fac937b92ee628dac2986826c624d7e6",
+      "bytes": 17973
+    },
+    {
+      "path": "formal/Source3/KeygenLevelsAudit.lean",
+      "sha256": "83f6b37a34bd7527fe4a14fef8167cbe67e8deffe617f57478a32db8e814d8bd",
+      "bytes": 6914
+    },
+    {
+      "path": "sage/check_keygen_make_loop_chronology.sage",
+      "sha256": "0ca52e09eb9e6781534a6b634b5859757f33b6d5aa16bb789ea5c5df8ada6a2b",
+      "bytes": 7318
+    }
+  ],
+  "source_commits": [
+    "e1f409ba9e312676c71fb9164c961a992ca777e7 proof(T12.1): restrict map legality to finite live blocks; fold loop chronology with TailCells derivation",
+    "73134f1b1177b2185f5004ad4964f0aa77a559b0 tools(T12.1): loop-chronology audit producer, scripted controls and BATCH_061 seal"
+  ],
+  "origin_main_observed": "c20d5531cd48419de94ecc59b21b6f0467177ff0",
+  "active_jobs_at_close": [],
+  "push_by_this_worker": false,
+  "review_or_stages_import": false,
+  "limits": "Unchanged Lean j1/-M6144,AS12GiB/RSS8GiB,wall1800s,maxHeartbeats2000000,print200000;0/0 streams,Sage preparser. No inherited source or job limits raised."
+}
