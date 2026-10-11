@@ -1,5 +1,23 @@
 # Stan projektu — punkt wejścia
 
+**2026-10-11 — F04/F05: targeted recheck SCOPE_002 = PASS_SCOPED.**
+Na polecenie właściciela sprawdzono (a)–(e) bez nowego pełnego replayu
+i bez wywołań Lean. Przyjęty zakres: dokładnie **166 modułów, #001–#165
+i #167**, z dwoma udokumentowanymi wyjątkami: #166 SelectBitPreserve
+wyłączony (zero konsumentów, cytat dodatkowego bv_decide); #156 ThetaBox
+wewnątrz closure z historycznym wyjątkiem lintera i evidence rekurencji.
+Wszystkie 167 historycznych źródeł są zgodne z pinami i d053369e;
+3813 wcześniejszych plików, PREVIOUS_* i oba receipty replayu nienaruszone.
+Standard-only dotyczy zapisanych audytów: 569 rekordów z listą zależności
+plus 12 wyników axiom-free, razem 581 wyników #print axioms w closure 166.
+[Raport, macierz i proweniencja](../../proofs/ft1536/development/T12_1/run2/notes/F04_ROM_VARIANT_A_RECHECK_002/REVIEW.md)
+oraz REVIEW_RESULT.json zapisują nowy PASS_SCOPED; historyczny REVIEW_001
+pozostaje CHANGES_REQUIRED, receipt SCOPE_002 bez zmian. To odbiór zakresu
+i evidence z jawnym rozliczeniem self-review korekty oraz dwóch izolowanych
+kontrolerów surowych artefaktów. ReplyShape/sampler źródłowy, most bajtowy,
+hzero/budżety i computational PRG/F06 nadal OPEN. Bez owner acceptance,
+push/importu/tagu; MIGRATION_HOLD i NISKI priorytet utwardzania zachowane.
+
 **2026-10-11 — F04/F05: korekta zakresu po R1/R2 REVIEW_001.**
 Na polecenie właściciela skorygowano granicę zaufania w NOTES/CHECKPOINT,
 bez zmian matematycznych. Odbierana closure to dokładnie **166 modułów,
