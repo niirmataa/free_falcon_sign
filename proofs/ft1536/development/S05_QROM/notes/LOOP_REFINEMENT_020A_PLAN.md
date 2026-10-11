@@ -24,3 +24,9 @@ Korekta budżetu po próbach001–004:2GiB Lean było niewystarczające do
 Przywrócono historyczne020 M4096/AS8GiB, nadal1rdzeń i jeden proces.
 Wall600s obejmuje zimny odczyt bibliotek; CPU110s bez zmian.
 ENVIRONMENT_001/002 zachowują diagnostykę i odrzucone zacieśnienie.
+
+Checkpoint: readWord, CDF i cała pojedyncza próba mają75 audytowanych
+eksportów kernelowych. Cap80 pozostaje OPEN_KERNEL po przerwaniach M4096.
+Nie powtarzać niezmienionej ciężkiej próby. Następna trasa B-CAP-LIGHT
+jest opisana w LOOP_REFINEMENT_020A_CHECKPOINT.md; pozostały rodzic020
+nie został zamknięty. Wszystkie joby tej sesji zakończone.

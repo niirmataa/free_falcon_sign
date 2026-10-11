@@ -3,6 +3,17 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
+**Kontynuacja020A — [czytnik, CDF i pojedyncza próba](notes/LOOP_REFINEMENT_020A_CHECKPOINT.md):**
+75 nowych eksportów kernelowych dowodzi zgodności rzeczywistych instrukcji
+z019 na każdym prawidłowym segmencie taśmy: pełny readWord, coordinate
+z rzeczywistymi tablicami oraz cała pojedyncza próba z obiema gałęziami.
+**Cap80 nie jest jeszcze skernelizowane:** próby kompilacji przekroczyły
+M4096; szkice/logi zachowano, limitu nie zwiększono. Następna trasa to lekki
+ogólny lemat pętli, z krokiem wypełnionym przez TrialCorrect020A.
+EveryTape całego samplera i pełne zasoby nadal OPEN.
+[Kolejka020A](notes/KERNEL_QUEUE_020A.json), [klasy020A](notes/CERTIFICATE_CLASSES_020A.json).
+Praca pojedynczym oknem; monitor ROM pozostaje PAUSED.
+
 **Bieżący TODO020 — [PAIR_MACHINE020](notes/PAIR_MACHINE_020_CHECKPOINT.md), IN_PROGRESS:**
 Jest zamknięty program w modelu512bit RAM: oba retry, świeży cube, scatter
 oraz pełna para na wyjściu.81 eksportów kernelowych obejmuje bound rdzenia
