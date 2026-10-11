@@ -25,6 +25,8 @@ CAUSES={
  'keygen_codec_effects_064_004':'Explicit dispatcher constructor did not fix the atom reduction blowup; INTERNAL PANIC out of memory, exit1. Retained; closed decide+kernel atoms used subsequently.',
  'keygen_codec_dispatch_064_005':'Dispatcher accepted; footprint rejected on compact n!= tokenization and bind-case equality inversion syntax. Retained.',
  'keygen_codec_frames_064_006':'Footprint accepted; survival rejected on compact 4≤i parsing in the trace constructor. Spaced comparison, same proof; snapshot retained.',
+ 'keygen_codec_sage_064_010':'Harness mutation-definition failure: first global buf[u] shift match mutated the unrelated public encoder, so the small-codec probe correctly did not detect it. Mutations now confined to the named function body; all previous sources/binaries retained.',
+ 'keygen_codec_sage_064_009':'C link failed before execution: unrelated falcon_hash_to_point in the full translation unit references shake_extract. Scope-preserving function/data sections and linker garbage collection remove unreachable hash code; no encoder source changed.',
  'keygen_codec_survival_064_007':'User interrupted turn: survival step accepted with its own raw receipt and product, audit started but no terminal whole-job receipt. All available streams/snapshots retained; both modules rebuilt in008.'}
 
 def checked_inputs():
@@ -101,7 +103,7 @@ def seal():
  for e in inputs['reused']:
   assert job.sha(path(e.get('current_source',e['source'])))==e['source_sha256']
   assert job.sha(path(e['artifact']))==e['artifact_sha256']
- sage_dir=job.BUILD/'jobs/keygen_codec_sage_064_009'
+ sage_dir=job.BUILD/'jobs/keygen_codec_sage_064_011'
  controls=read(sage_dir/'CODEC_FRAME_CHECK.json');rec=read(sage_dir/'RECEIPTS.json')[0]
  assert rec['accepted'] and rec['clean_log'] and rec['exit_code']==0
  assert job.sha(path(SAGE))==job.sha(sage_dir/SAGE)==rec['source_sha256']
@@ -117,7 +119,7 @@ def seal():
  for h in history:
   assert h['status']=='ACCEPTED' or h['cause'],('missing retained cause',h['job'])
  tools=['tools/job.py','tools/job_when_available.py','tools/keygen_codec_syntax.py','tools/keygen_codec_binding.py',
-  'tools/keygen_codec_audit.py','tools/keygen_codec_batch.py','tools/keygen_make_binding.py',SAGE,'formal/Source3/KeygenLevelsAudit.lean']
+  'tools/keygen_codec_audit.py','tools/keygen_codec_batch.py','tools/keygen_codec_computation_record.py','tools/keygen_make_binding.py',SAGE,'formal/Source3/KeygenLevelsAudit.lean']
  for p in tools+['../../../../../Extra/c/falcon-enc.c','../../../../../Extra/c/falcon.h']:committed(p,head)
  notes=BASE+'_NOTES.md'
  result={'task':'KEYGEN_SOURCE_TO_FIBER_001','batch':'BATCH_064','stage':'B1.07 / B1.08-09 seam',
@@ -131,11 +133,13 @@ def seal():
    'source_inputs':pin(audit_dir/'SOURCE_INPUTS.json'),'exports':len(producer.declarations()),
    'inherited_interfaces':len(producer.INHERITED),'full_terms':sum(e['body']['kind']=='definition_or_theorem' for e in audit),
    'kernel_inductives':sum(e['body']['kind']=='kernel_inductive' for e in audit)},
+  'computation_manifest':pin('.build/levels_064/COMPUTATION_MANIFEST.json'),
   'sage':{'result':pin(sage_dir/'CODEC_FRAME_CHECK.json'),'receipt':pin(sage_dir/'RECEIPTS.json'),
    'scope':controls['scope']},'attempt_details':history,
   'source_reference':[pin('../../../../../Extra/c/falcon-enc.c'),pin('../../../../../Extra/c/falcon.h')],
   'tools':[pin(p) for p in tools],
-  'extra_evidence':[pin(p) for p in sorted((job.BUILD/'levels_064').glob('DISPATCH_STOP_*.json'))],
+  'entry_incident':[pin('notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_064_STOP_001.json'),pin('notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_064_STOP_001_NOTES.md')],
+  'extra_evidence':[pin(p) for p in sorted((job.BUILD/'levels_064').glob('DISPATCH_STOP_*.json'))]+[pin('.build/levels_064/GENERATOR_BINDING_BEFORE_LAYOUT_FIX.py')]+[pin(p) for p in sorted((job.BUILD/'levels_064/generator_binding').glob('*.lean'))],
   'open_obligations':['Typed scalar/value C execution to the fixed memory-effect projection; no such adequacy theorem is assumed.',
    'Derive this body-bound trace from the original unrestricted SmallSite/Segments invocation; current exported histories concern the new projected-body trace.',
    'Capacity-window write range (the proved frame is destination BLOCK), exact codec lengths and bytewise round-trips; public encoder bodies.',

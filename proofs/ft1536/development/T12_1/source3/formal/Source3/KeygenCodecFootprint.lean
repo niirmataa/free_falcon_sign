@@ -32,7 +32,8 @@ inductive Code where
 
 /-- Expressions cannot write heap bytes. Updates are restricted to local
     names and cannot alter the destination pointer bindings. Reads through
-    x++, including its local pointer update, are retained as heap reads. -/
+    x++ are recognized as read-only; values, read-validity checks and local
+    pointer updates are erased in this effect abstraction. -/
 def readEffect : Expr → Bool
   | .variable _ | .number _ _ | .argsNil => true
   | .preInc (.variable n) | .postInc (.variable n)

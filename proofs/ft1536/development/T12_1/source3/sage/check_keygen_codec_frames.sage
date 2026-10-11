@@ -91,7 +91,7 @@ mutations={
  'dispatch_swap':('return compress_none(out, max_out_len, q, x, logn);','return compress_static(out, max_out_len, q, x, logn);')}
 results=[]
 for mode in ['normal','ubsan']:
-    flags=['-O1','-std=c99','-I',include]
+    flags=['-O1','-std=c99','-ffunction-sections','-fdata-sections','-Wl,--gc-sections','-I',include]
     if mode=='ubsan':flags+=['-fsanitize=undefined','-fno-sanitize-recover=all']
     binary=os.path.abspath('probe_'+mode)
     build=subprocess.run(['gcc',*flags,source,'probe.c','-o',binary],capture_output=True,text=True)
@@ -101,12 +101,16 @@ for mode in ['normal','ubsan']:
     assert all(baseline)
     detected={}
     for name,(before,after) in mutations.items():
-        assert before in raw
-        mutant='mutant_'+name+'.c';open(mutant,'w').write(raw.replace(before,after,1))
+        function='compress_none' if name.startswith('none_') else 'falcon_encode_small' if name=='dispatch_swap' else 'compress_static'
+        start=raw.index(function+'(');end=raw.index('\n}\n',start)+2
+        body=raw[start:end];assert before in body
+        changed=raw[:start]+body.replace(before,after,1)+raw[end:]
+        mutant='mutant_'+name+'.c';open(mutant,'w').write(changed)
         binary=os.path.abspath('mutant_'+name+'_'+mode)
         build=subprocess.run(['gcc',*flags,mutant,'probe.c','-o',binary],capture_output=True,text=True)
         assert build.returncode==0,build.stderr
         detected[name]=not all(check(binary,case) for case in cases)
+    with open('MUTATION_PROGRESS_'+mode+'.json','w') as stream:json.dump(detected,stream,indent=2)
     assert all(detected.values())
     results.append({'mode':mode,'cases':len(cases),'baseline_pass':all(baseline),'mutations':detected})
 out={'utc':datetime.now(timezone.utc).isoformat(),'status':'PASS_PUBLIC_SOURCE_CODEC_CONTROLS',
