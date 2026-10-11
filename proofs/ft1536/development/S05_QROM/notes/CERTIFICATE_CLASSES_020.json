@@ -1,0 +1,174 @@
+{
+  "id": "S05_CLASSES_020",
+  "previous": {
+    "path": "notes/CERTIFICATE_CLASSES_019.json",
+    "sha256": "486f10625a0e859959a0df69606ae76b5dfe1a9c1d81f195bada35e730157091"
+  },
+  "artifacts": [
+    {
+      "artifact": {
+        "path": "formal/WordRAM020.lean",
+        "sha256": "b1f8b3e4c2396fbc938a9eea7594ebaa762fc93f353199e63d3699f4137a779c"
+      },
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "status": "KERNEL_EXACT_LOCAL_SCOPE",
+      "exports": 8,
+      "boundary": "EveryTape itself remains unproved; no full runtime resource witness or certificate transfer."
+    },
+    {
+      "artifact": {
+        "path": "formal/PairProgram020.lean",
+        "sha256": "8d7b0f8c02da1037bf4da6f6445384cde0d37cebf8f86572c6d351f33398b0fe"
+      },
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "status": "KERNEL_EXACT_LOCAL_SCOPE",
+      "exports": 1,
+      "boundary": "EveryTape itself remains unproved; no full runtime resource witness or certificate transfer."
+    },
+    {
+      "artifact": {
+        "path": "formal/ProgramCost020.lean",
+        "sha256": "0528f7f739587bc464a70db39f2074854cd18f9ddfde30784af76ad0da2ba23e"
+      },
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "status": "KERNEL_EXACT_LOCAL_SCOPE",
+      "exports": 6,
+      "boundary": "EveryTape itself remains unproved; no full runtime resource witness or certificate transfer."
+    },
+    {
+      "artifact": {
+        "path": "formal/InputLayout020.lean",
+        "sha256": "72aaf92737aeb2a45015f341e427b576aedcd9873f98a42c5f2d9608b16cb76e"
+      },
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "status": "KERNEL_EXACT_LOCAL_SCOPE",
+      "exports": 9,
+      "boundary": "EveryTape itself remains unproved; no full runtime resource witness or certificate transfer."
+    },
+    {
+      "artifact": {
+        "path": "formal/MemoryFrames020.lean",
+        "sha256": "6051008b6923ba55352ef77423e2fdb94e859601e72a819ce79982febbb4c422"
+      },
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "status": "KERNEL_EXACT_LOCAL_SCOPE",
+      "exports": 17,
+      "boundary": "EveryTape itself remains unproved; no full runtime resource witness or certificate transfer."
+    },
+    {
+      "artifact": {
+        "path": "formal/TapeLayout020.lean",
+        "sha256": "647c824c52d14e8f4360cb0baf0d30173d2047fd38f69c9fc731831269eaf803"
+      },
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "status": "KERNEL_EXACT_LOCAL_SCOPE",
+      "exports": 13,
+      "boundary": "EveryTape itself remains unproved; no full runtime resource witness or certificate transfer."
+    },
+    {
+      "artifact": {
+        "path": "formal/PairEncoding020.lean",
+        "sha256": "d5d905eaa6c01577dc4baca96431f3fe8e5bf8f7c9264fcf0526cc3ae8ac65cb"
+      },
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "status": "KERNEL_EXACT_LOCAL_SCOPE",
+      "exports": 9,
+      "boundary": "EveryTape itself remains unproved; no full runtime resource witness or certificate transfer."
+    },
+    {
+      "artifact": {
+        "path": "formal/WordArithmetic020.lean",
+        "sha256": "9b01b49bb002fd57c336d187e97be678902ee4cd99f966c01344a87b0dc24059"
+      },
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "status": "KERNEL_EXACT_LOCAL_SCOPE",
+      "exports": 11,
+      "boundary": "EveryTape itself remains unproved; no full runtime resource witness or certificate transfer."
+    },
+    {
+      "artifact": {
+        "path": "formal/RefinementTarget020.lean",
+        "sha256": "4c1ad08701ebc240a91f32c330c87c640b3c78bdb653a38dd3d7ecf85737580e"
+      },
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "status": "KERNEL_EXACT_LOCAL_SCOPE",
+      "exports": 1,
+      "boundary": "EveryTape itself remains unproved; no full runtime resource witness or certificate transfer."
+    },
+    {
+      "artifact": {
+        "path": "formal/PairEncodingInjective020.lean",
+        "sha256": "80397785c2b0e179fe70b32480b548f47b36358ed256fb2f1e330abcf05a0686"
+      },
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "status": "KERNEL_FULL_PAIR_ENCODING_INJECTIVE",
+      "exports": 6,
+      "boundary": "No executable decoder/driver cost or all-tape program refinement supplied."
+    }
+  ],
+  "models": {
+    "condition_class": "model",
+    "word_machine": "signed512-bit arithmetic, unit word operations, finite random-access banks, structured charged instruction semantics",
+    "coins": "immutable full private fair-bit tape; source PRG is not instantiated",
+    "initial": "fixed public zero buffers/registers; cost to materialize still OPEN"
+  },
+  "Q_RESC": {
+    "condition_class": "proof_obligation",
+    "status": "PARTIAL_CORE_BOUND_NOT_COMPLETE_MACHINE_COST",
+    "remaining": [
+      "EveryTape/refinement and reachable-state no-fault/nowrap",
+      "initialization and input-image/tape loading",
+      "code/control/expression storage implementation and peak memory",
+      "output transfer and backend calibration/source binding",
+      "executable full-pair decoder/caller transfer and its cost"
+    ]
+  },
+  "full_QROM_claim": false,
+  "new_cryptographic_assumptions": [],
+  "unchanged_cryptographic_assumptions": [
+    "A-QMT",
+    "Q-PRG primitive bound"
+  ],
+  "reference_payment": "P<=kappa R on J-support remains a proof obligation; e_paid=kappa(1+e)-1; no kappa=1 instance",
+  "moment_certificate": "Still019 actual code under exactM, not yet020 machine"
+}

@@ -33,3 +33,10 @@ Sekwencja pracy: semantyka → rzeczywisty program → bound całego programu
 → lokalne lematy danych/refinement → pełne sklejenie do019 → audyt.
 Nie oznaczać celu020 jako zamkniętego na podstawie pierwszych czterech
 kroków. Zachowywać każde nieudane podejście z jego source snapshotem.
+
+## Checkpoint020
+
+81 eksportów kernelowych,43 kontrole Sage, konkretny program i bound rdzenia.
+Szczegóły: PAIR_MACHINE_020_CHECKPOINT.md. Status pozostaje IN_PROGRESS;
+EveryTape, driver i pełna pamięć OPEN. Następna trasa jest nadal punktami
+5–6 TODO020, bez przeskoku do nowego numeru. Próby i porażki zachowane.

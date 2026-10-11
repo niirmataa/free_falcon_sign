@@ -1,3 +1,4 @@
+import PairEncodingInjective020
 import WordRAM020
 import PairProgram020
 import ProgramCost020
@@ -159,3 +160,15 @@ import RefinementTarget020
 #check FT1536.S05.RefinementTarget020.public_initial_no_fault
 #print axioms FT1536.S05.RefinementTarget020.public_initial_no_fault
 #check FT1536.S05.RefinementTarget020.EveryTape
+#check FT1536.S05.PairEncodingInjective020.flatten_injective
+#print axioms FT1536.S05.PairEncodingInjective020.flatten_injective
+#check FT1536.S05.PairEncodingInjective020.keyCell_injective
+#print axioms FT1536.S05.PairEncodingInjective020.keyCell_injective
+#check FT1536.S05.PairEncodingInjective020.replyCell_injective
+#print axioms FT1536.S05.PairEncodingInjective020.replyCell_injective
+#check FT1536.S05.PairEncodingInjective020.keyBits_injective
+#print axioms FT1536.S05.PairEncodingInjective020.keyBits_injective
+#check FT1536.S05.PairEncodingInjective020.replyBits_injective
+#print axioms FT1536.S05.PairEncodingInjective020.replyBits_injective
+#check FT1536.S05.PairEncodingInjective020.full_pair_injective
+#print axioms FT1536.S05.PairEncodingInjective020.full_pair_injective

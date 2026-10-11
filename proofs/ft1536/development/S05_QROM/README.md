@@ -3,7 +3,18 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
-**Najnowszy podetap — [MODEL_BRIDGE019](notes/MODEL_BRIDGE_019_CHECKPOINT.md):**
+**Bieżący TODO020 — [PAIR_MACHINE020](notes/PAIR_MACHINE_020_CHECKPOINT.md), IN_PROGRESS:**
+Jest zamknięty program w modelu512bit RAM: oba retry, świeży cube, scatter
+oraz pełna para na wyjściu.81 eksportów kernelowych obejmuje bound rdzenia
+**1106642201817** operacji modelu, bezstratny obraz tablic/h, wszystkie
+adresowania taśmy, ramki pamięci i format50689bit z rozróżnieniem porażki.
+43 skończone kontrole Sage przeszły; to nie dowód każdej taśmy.
+**EveryTape refinement do019, driver wejścia/wyjścia i pełny szczyt pamięci
+pozostają OPEN.** Nie przeniesiono jeszcze certyfikatu momentu na maszynę.
+Model nie podaje czasu CPU/C ani ceny bitowej; pełna taśma ma3082817280
+bajtów. [Kolejka020](notes/KERNEL_QUEUE_020.json) i [klasy020](notes/CERTIFICATE_CLASSES_020.json).
+
+**Poprzedni podetap — [MODEL_BRIDGE019](notes/MODEL_BRIDGE_019_CHECKPOINT.md):**
 Publiczny generator wspólnej pary i sampler odpowiedzi dla challenge z ROM
 mają osobne interfejsy. Niezależny wykonywalny rdzeń kompiluje się w obu
 środowiskach;21 równości kernelowych wiąże go z018, zachowując J≪P oraz
