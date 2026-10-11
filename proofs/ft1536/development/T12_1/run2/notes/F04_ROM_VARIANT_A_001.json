@@ -1,0 +1,194 @@
+{
+  "schema": "FT1536_DEV_PAIR_PINS_V1",
+  "stage": "F04_ROM_VARIANT_A_001",
+  "component": "run2",
+  "window": "proofs/ft1536/development/T12_1/run2",
+  "utc": "2026-10-11T06:35:28.277314+00:00",
+  "owner_decision": "2026-10-11: F04 repair = variant A (challenge c = H(r||m) from the ROM hash, outside the sampler fair-bit tape; sampler draws only noise); F05 rides the same window; no A2-label substitutions",
+  "commits": {
+    "core_types": "832a9953",
+    "consumers": "46761f1d",
+    "costs_hprg": "5f907a43",
+    "f05": "0a8693d1",
+    "notes": "63b81a3c"
+  },
+  "model_change": {
+    "sampler_code_old": "Rq -> State -> Bytes -> Nonce -> (Fin bits -> Bool) -> Rq x Option BoxVec",
+    "sampler_code_new": "Rq -> State -> Bytes -> Nonce -> Rq -> (Fin bits -> Bool) -> Option BoxVec",
+    "challenge_source": "ROM hash answer H(r||m), drawn outside the tape (Law.uniform on Rq, lazy ROM)",
+    "delivered_layer1": "FT1536.JointDecomp.samplerLaw_marginal_uniform (kernel theorem, d1 = 0)",
+    "interface": "FT1536.HacGlue.RomChallengeAt + FT1536.HacGlue.romChallengeAt (realized, NOT an assumption)",
+    "removed": "FT1536.HacGlue.UniformChallengeAt (impossible bridge, premise-audit F04)"
+  },
+  "sources": [
+    {
+      "path": "formal/Run2/Games.lean",
+      "sha256": "c64f9cb5c2066c8a71fb77341dbad9d18211b66ac4c61d7660fc0f5cc2dda467",
+      "commit": "832a9953"
+    },
+    {
+      "path": "formal/Run2/LawBinding.lean",
+      "sha256": "85c139e161f58b06df516c56e8594bd068becb75a88e8ee6318a5927448588f0",
+      "commit": "832a9953"
+    },
+    {
+      "path": "formal/JointDecomp.lean",
+      "sha256": "35e865afda2725baa11758299e1d1c1dbe005858013ffb08ad434ebe3bafbcc0",
+      "commit": "832a9953"
+    },
+    {
+      "path": "formal/HacGlue.lean",
+      "sha256": "4d79f5537277f0830f65b566497cf3a941b7239bc9618cad01f715b5cbdd0bd8",
+      "commit": "46761f1d"
+    },
+    {
+      "path": "formal/ONoneGeometry.lean",
+      "sha256": "13534b7b06c028749d3fd85aea2a2f5d3cad786c3729d1e4f2dff3fd8a1a0e79",
+      "commit": "46761f1d"
+    },
+    {
+      "path": "formal/Assembly.lean",
+      "sha256": "c714fbfe4b0d492c300b3bfd26f8a74d7a50c55e4f8c550f9bfb78334e4b53cc",
+      "commit": "46761f1d"
+    },
+    {
+      "path": "formal/AdvPrg.lean",
+      "sha256": "521dd042d7cdeb87a758b4879c6ad16f903648da064926ec3f72264b4616a32b",
+      "commit": "46761f1d"
+    },
+    {
+      "path": "formal/Run2/PublicEncoding.lean",
+      "sha256": "ebfbcd1ba38e8bc5d9ed5728684c15742173b8000dadf957f081c549749a9823",
+      "commit": "5f907a43"
+    },
+    {
+      "path": "formal/Run2/SamplerMachine.lean",
+      "sha256": "32b68cd4842eda8ba7b465e222b9712f665dc0cba8a441c786d4c6537abfa2e2",
+      "commit": "5f907a43"
+    },
+    {
+      "path": "formal/Run2/LocalMachineCode.lean",
+      "sha256": "619bf0f175c9773ee19bd920a5eda476e5b6e9fd27d7df0c20b028c901979371",
+      "commit": "5f907a43"
+    },
+    {
+      "path": "formal/Run2/MachineExecution.lean",
+      "sha256": "41ec8fb48f940d6a4bf98958d8981a9d6a1b601309be0414b205a89fa8bfdbc4",
+      "commit": "5f907a43"
+    },
+    {
+      "path": "formal/Run2/MeteredExecution.lean",
+      "sha256": "53f8146318390326bb04e7b3c8dd72c07b5b83998b7ccc1f4f0dd2dfb6e0ae46",
+      "commit": "5f907a43"
+    },
+    {
+      "path": "formal/Run2/PrefixResources.lean",
+      "sha256": "e2db4fab2d068bc70795063eb03a923b53d7a9804f4a4a8ee8d8e871b32830d1",
+      "commit": "5f907a43"
+    },
+    {
+      "path": "formal/CompPrg.lean",
+      "sha256": "1d870a7c516253e2e86441ac5b3088a8bc05c9c5a6ff2201d9db159f2bfdd32a",
+      "commit": "5f907a43"
+    },
+    {
+      "path": "formal/T5Pointwise.lean",
+      "sha256": "61ee2fea13c5fabb69051d3775a4861beb690f0a91e24c962e02a5d6a13cd451",
+      "commit": "0a8693d1"
+    },
+    {
+      "path": "notes/B4_SYNTHESIS.md",
+      "sha256": "d69565d50cbcbd0a64d2d156f3f760aa75bb04651ffa258f77bf5249f1f277d5",
+      "commit": "63b81a3c"
+    },
+    {
+      "path": "notes/F04_ROM_VARIANT_A_001_NOTES.md",
+      "sha256": "0a684105645efdee2cdecf22b855d3207b9f75f37a8dae5ff17a3716b1d3cad9",
+      "commit": "63b81a3c"
+    }
+  ],
+  "consumers_repaired": [
+    "FT1536.HacGlue.localJointCertificate_of_named_premises",
+    "FT1536.HacGlue.localJointCertificate_of_named_premises_e",
+    "FT1536.HacGlue.localJointCertificate_of_pointwise_premises",
+    "FT1536.HacGlue.localJointCertificate_of_named_premises_attemptFactor",
+    "FT1536.ONoneGeometry.localJointCertificate_of_attemptFactor",
+    "FT1536.Assembly.end_to_end_assembled_theorem_statement",
+    "FT1536.Assembly.end_to_end_assembled_theorem_statement_prgTerm",
+    "FT1536.Assembly.end_to_end_assembled_theorem_attemptFactor",
+    "FT1536.Assembly.exists_assembled_reducer",
+    "FT1536.Assembly.assembled_hardness_substitution",
+    "FT1536.AdvPrg.assembled_hardness_substitution_chacha",
+    "FT1536.AdvPrg.end_to_end_assembled_theorem_statement_chacha"
+  ],
+  "f05_delivered": [
+    "FT1536.T5Pointwise.machineStage_of_absErr_floor_support",
+    "FT1536.T5Pointwise.machineStage_of_relErr",
+    "FT1536.T5Pointwise.machineStage_of_absErr_fiberFloor"
+  ],
+  "build": {
+    "runner_sha256": "df51462b3eda988ac716ec4c04fb87f388a803d7b952d5b89976cb7d9587ae76",
+    "guard_sha256": "76a4a4a0e0bbf61a5d400d54aae1847687826b9aeef1e0b073fc456d673ca0bb",
+    "lean": "Lean 4.34.0 (293d5d0c0c3f3dded4688b3ccd6a33939ac5102b)",
+    "mathlib_head": "5ed2965256430c3649e86755f9576b54eca72435",
+    "final_receipt": ".build/f04_rom_a_001/attempts/final_clean_002/RECEIPT.json",
+    "final_receipt_sha256": "e37814b7b768a414f4bd6a18eca34e7441d4a2ff3986b6c3cf8cc6b63107caae",
+    "final_receipt_modules": 167,
+    "final_receipt_failures": 0,
+    "clean_rebuild_of_committed_bytes": true,
+    "audit_log": ".build/f04_rom_a_001/audit/F04ConsumersAudit.log",
+    "audit_log_sha256": "a35131b4bd2463d0f45965afe08173ccfb5f4daf0319f0d39e2efea6286d9525",
+    "audit_axioms": "standard only (propext, Classical.choice, Quot.sound) for all 12 consumers, romChallengeAt, samplerLaw_marginal_uniform, AssemblyComp.advMT_ge_of_public_sim_stream_win and the F05 theorems",
+    "attempts_retained": ".build/f04_rom_a_001/attempts/run_001..run_011,final_clean_001,final_clean_002"
+  },
+  "do_not_consume": {
+    "premise_audit_f04_before": [
+      "FT1536.HacGlue.localJointCertificate_of_named_premises",
+      "FT1536.HacGlue.localJointCertificate_of_named_premises_e",
+      "FT1536.HacGlue.localJointCertificate_of_pointwise_premises",
+      "FT1536.HacGlue.localJointCertificate_of_named_premises_attemptFactor",
+      "FT1536.ONoneGeometry.localJointCertificate_of_attemptFactor",
+      "FT1536.Assembly.end_to_end_assembled_theorem_statement",
+      "FT1536.Assembly.end_to_end_assembled_theorem_statement_prgTerm",
+      "FT1536.Assembly.end_to_end_assembled_theorem_attemptFactor",
+      "FT1536.Assembly.exists_assembled_reducer",
+      "FT1536.Assembly.assembled_hardness_substitution",
+      "FT1536.AdvPrg.assembled_hardness_substitution_chacha",
+      "FT1536.AdvPrg.end_to_end_assembled_theorem_statement_chacha"
+    ],
+    "after_this_repair": "all 12 exports REPAIRED and consumable at the new signatures (huc binder removed); the OLD signatures (huc : UniformChallengeAt S) remain NON-consumable; frozen stages keep the pre-audit bytes"
+  },
+  "guardrails": {
+    "no_a2_label_substitution": "Layer 1 is a kernel proof (samplerLaw_marginal_uniform), not a label",
+    "no_new_names_on_false_premise": "UniformChallengeAt deleted; RomChallengeAt is realized by romChallengeAt",
+    "assemblycomp_untouched": "AssemblyComp.advMT_ge_of_public_sim_stream_win and its file unchanged (outside the F04 charge)",
+    "no_push": "local commits only, per the window instruction",
+    "foreign_files_untouched": "Source3 lane 062 and other lanes' files untouched (exact pathspec commits)"
+  },
+  "excluded_preexisting": [
+    {
+      "path": "formal/Run2/rawBadEnclosure.lean",
+      "reason": "historical scratch of commit 3396e8e0, Lean-3 'hypothesis' syntax, imported by nothing, broken before this window"
+    },
+    {
+      "path": "formal/Run2/Scratch.lean",
+      "reason": "historical scratch of commit 3396e8e0, stale identifiers, imported by nothing, broken before this window"
+    },
+    {
+      "path": "formal/Probe.lean",
+      "reason": "historical probe of commit 3396e8e0, stale #check names, imported by nothing, broken before this window"
+    },
+    {
+      "path": "formal/FftBind/FftGeometry.lean",
+      "reason": "cross-lane BINBIND material importing Source3.* (separate repair lane 062)"
+    },
+    {
+      "path": "formal/FftBind/FftSemantics.lean",
+      "reason": "cross-lane BINBIND material importing Source3.* (separate repair lane 062)"
+    },
+    {
+      "path": "formal/FftBind/NttSemantics.lean",
+      "reason": "cross-lane BINBIND material importing Source3.* (separate repair lane 062)"
+    }
+  ]
+}
