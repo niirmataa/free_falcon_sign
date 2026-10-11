@@ -103,22 +103,26 @@ theorem state_length (st : State) : (state st).length≤stateBits st := by
   simp only [state,List.length_append,List.length_replicate,List.length_cons,List.length_nil,stateBits]
   omega
 
-def samplerInput (S : Sampler) (h : Rq) (st : State) (m : Bytes) (r : Nonce)
+def samplerInput (S : Sampler) (h : Rq) (st : State) (m : Bytes) (r : Nonce) (c : Rq)
     (coins : Fin S.bits → Bool) : List Bool :=
-  field h++state st++bytes m++nonce r++List.ofFn coins
+  field h++state st++bytes m++nonce r++field c++List.ofFn coins
 
-def samplerOutput (o : Rq × Option BoxVec) : List Bool :=
-  field o.1++match o.2 with | none => [false] | some s => true::signature s
+/-- Variant A of the F04 repair: the sampler OUTPUT is the reply only — the
+challenge is not drawn from the tape and is not part of the output (it is an
+INPUT of the noise map, `samplerInput`'s `field c` slot: the ROM hash answer
+`H(r‖m)`). -/
+def samplerOutput (o : Option BoxVec) : List Bool :=
+  match o with | none => [false] | some s => true::signature s
 
 theorem samplerInput_length (S : Sampler) (h : Rq) (st : State) (m : Bytes) (r : Nonce)
-    (coins : Fin S.bits → Bool) :
-    (samplerInput S h st m r coins).length≤24900+stateBits st+9*m.length+S.bits := by
+    (c : Rq) (coins : Fin S.bits → Bool) :
+    (samplerInput S h st m r c coins).length≤49476+stateBits st+9*m.length+S.bits := by
   have hs:=state_length st
   simp only [samplerInput,List.length_append,field_length,bytes_length,nonce_length,List.length_ofFn]
   omega
 
-theorem samplerOutput_length (o : Rq × Option BoxVec) : (samplerOutput o).length≤50689 := by
+theorem samplerOutput_length (o : Option BoxVec) : (samplerOutput o).length≤26113 := by
   unfold samplerOutput
-  cases o.2 <;> simp only [List.length_append,field_length,List.length_cons,List.length_nil,signature_length] <;> omega
+  cases o <;> simp only [List.length_cons,List.length_nil,signature_length] <;> omega
 
 end FT1536.Run2.PublicEncoding

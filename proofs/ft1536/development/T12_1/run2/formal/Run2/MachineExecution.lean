@@ -12,7 +12,11 @@ def afterSign (st : State) (m : Bytes) (r : Nonce) (co : Rq × Option BoxVec) : 
 comes from executing the supplied finite local code. Its fuel is explicit;
 the proof below shows that it does not truncate an admissible adversary.
 The typed fields denote their canonical finite files (LocalMachineCode's
-erasure theorem); public table and final arithmetic use the existing code. -/
+erasure theorem); public table and final arithmetic use the existing code.
+Variant A (F04 repair): the sign branch draws the ROM challenge `c = H(r‖m)`
+(the lazy hash answer at the signed name, `Law.uniform` on `Rq`) OUTSIDE the
+sampler tape, then draws the noise tape `bits` and runs the certified
+noise-only reply map at `(c, bits)`. -/
 noncomputable def run (beta : Budget) (A : ClassicalAdversary beta) (S : Sampler)
     (ac : AdversaryCertificate beta A) (sc : SamplerCertificate beta S)
     (h : Rq) (cs : List Rq) (coins : Fin beta.coinBits → Bool) :
@@ -29,9 +33,11 @@ noncomputable def run (beta : Budget) (A : ClassicalAdversary beta) (S : Sampler
           ((Dist.draw (Law.uniform : Law (Fin 320 → Bool))).map NonceBits.nonceEquiv).bind fun r =>
             match (TableMachine.lookup (some r,m) (submitted m st).table.table).1 with
             | some _ => Dist.pure none
-            | none => (Dist.draw (Law.uniform : Law (Fin S.bits → Bool))).bind fun bits =>
-                let co:=LocalMachineCode.sample beta S sc h (submitted m st) m r bits
-                run beta A S ac sc h cs coins fuel (afterSign st m r co)
+            | none => (Dist.draw (Law.uniform : Law Rq)).bind fun c =>
+                (Dist.draw (Law.uniform : Law (Fin S.bits → Bool))).bind fun bits =>
+                  run beta A S ac sc h cs coins fuel
+                    (afterSign st m r
+                      (c,LocalMachineCode.sample beta S sc h (submitted m st) m r c bits))
 
 theorem hash_events (cs : List Rq) (x : Bytes) (st : State) (co : Rq × State)
     (hc : hashTargets cs x st=some co) : co.2.events=st.events := by
@@ -104,9 +110,11 @@ theorem run_binding (beta : Budget) (A : ClassicalAdversary beta) (S : Sampler)
       | none =>
         simp only [FT1536.Run2.sample,Dist.expect_bind,Dist.expect_map]
         apply Dist.expect_congr
+        intro c
+        apply Dist.expect_congr
         intro bits
-        rw [sample_correct beta S sc h (submitted m st) m r bits hcap fits.1]
-        let co:=S.code h (submitted m st) m r bits
+        rw [sample_correct beta S sc h (submitted m st) m r c bits hcap fits.1]
+        let co:=(c,S.code h (submitted m st) m r c bits)
         have hn:=programmed_shape beta.bytes n st m r co hs fits.1
         have hgood:=programmed_good cs.val st m r co hg hm
         have ha : AdversaryMachine.At beta A h coins (afterSign st m r co).events

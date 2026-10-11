@@ -390,14 +390,18 @@ theorem same_bind_same_left {α β : Type} (p q : FT1536.Run2.Dist α)
 
 /-- A PUBLIC SIMULATOR call driven by window `w`: `Games.signSim` with its
 fair sampler draw replaced by `S.code ... w`. The nonce draw, ROM programming
-and collision abort are those of simulation, not `Games.signHonest`. -/
+and collision abort are those of simulation, not `Games.signHonest`.
+Variant A (F04 repair): the window drives the NOISE map only; the challenge
+is the ROM hash answer `H(r‖m)`, drawn OUTSIDE the tape (a ROM draw like the
+nonce), and supplied to `S.code` as an input. -/
 noncomputable def signSimAt (S : Sampler) (w : Fin S.bits → Bool) (h : FT1536.Relation.Rq)
     (st : State) (m : Bytes) : FT1536.Run2.Dist (Option (Reply × State)) :=
   (FT1536.Run2.Dist.draw (Law.uniform : Law Nonce)).bind fun r =>
     match ROM.lookup (parse (frame r m)) (Games.submitted m st).table with
     | some _ => FT1536.Run2.Dist.pure none
-    | none => (FT1536.Run2.Dist.pure (S.code h (Games.submitted m st) m r w)).map
-        (Games.programmedReply (Games.submitted m st) m r)
+    | none => (FT1536.Run2.Dist.draw (Law.uniform : Law FT1536.Relation.Rq)).bind fun c =>
+        (FT1536.Run2.Dist.pure (c, S.code h (Games.submitted m st) m r c w)).map
+          (Games.programmedReply (Games.submitted m st) m r)
 
 /-- The tape-driven execution of `A`'s program: call `i` reads window `i` of
 the tape table `win`. Mirrors `Run2.simulateLazy` with `Games.signSim`
@@ -565,7 +569,9 @@ theorem uniform_table_split {k m : ℕ} (j : Fin k) {α : Type}
   exact key.symm
 
 /-- The window read of one fair per-call tape is the fair sampler tape: the
-`Games.signSim` head at one call. -/
+`Games.signSim` head at one call. Variant A (F04 repair): the window drives
+the NOISE map only and the ROM challenge is drawn outside the tape on both
+sides, so the uniform window average identifies the two kernels exactly. -/
 theorem signSimAt_uniform (S : Sampler) (h : FT1536.Relation.Rq) (st : State) (m : Bytes) :
     ((FT1536.Run2.Dist.draw (Law.uniform : Law (Fin S.bits → Bool))).bind fun t =>
       signSimAt S t h st m).Same (Games.signSim S h st m) := by
@@ -573,61 +579,94 @@ theorem signSimAt_uniform (S : Sampler) (h : FT1536.Relation.Rq) (st : State) (m
       ((FT1536.Run2.Dist.draw (Law.uniform : Law (Fin S.bits → Bool))).bind fun t =>
         (match ROM.lookup (parse (frame r m)) (Games.submitted m st).table with
           | some _ => FT1536.Run2.Dist.pure none
-          | none => (FT1536.Run2.Dist.pure (S.code h (Games.submitted m st) m r t)).map
-              (Games.programmedReply (Games.submitted m st) m r) :
+          | none => (FT1536.Run2.Dist.draw (Law.uniform : Law FT1536.Relation.Rq)).bind fun c =>
+              (FT1536.Run2.Dist.pure (c, S.code h (Games.submitted m st) m r c t)).map
+                (Games.programmedReply (Games.submitted m st) m r) :
           FT1536.Run2.Dist (Option (Reply × State)))).Same
       (match ROM.lookup (parse (frame r m)) (Games.submitted m st).table with
         | some _ => FT1536.Run2.Dist.pure none
-        | none => ((FT1536.Run2.Dist.draw (Law.uniform : Law (Fin S.bits → Bool))).map
-            (S.code h (Games.submitted m st) m r)).map
+        | none => (FT1536.Run2.sample S h (Games.submitted m st) m r).map
             (Games.programmedReply (Games.submitted m st) m r)) := by
     intro r
     cases ROM.lookup (parse (frame r m)) (Games.submitted m st).table with
     | some e => exact bind_const_same _ _
     | none =>
-      have hmap : ((FT1536.Run2.Dist.draw (Law.uniform : Law (Fin S.bits → Bool))).bind fun t =>
-          (FT1536.Run2.Dist.pure (S.code h (Games.submitted m st) m r t)).map
-            (Games.programmedReply (Games.submitted m st) m r)).Same
-          (((FT1536.Run2.Dist.draw (Law.uniform : Law (Fin S.bits → Bool))).bind fun t =>
-            FT1536.Run2.Dist.pure (S.code h (Games.submitted m st) m r t)).map
+      have hswap' :
+          ((FT1536.Run2.Dist.draw (Law.uniform : Law (Fin S.bits → Bool))).bind fun t =>
+            (FT1536.Run2.Dist.draw (Law.uniform : Law FT1536.Relation.Rq)).bind fun c =>
+              (FT1536.Run2.Dist.pure (c, S.code h (Games.submitted m st) m r c t)).map
+                (Games.programmedReply (Games.submitted m st) m r)).Same
+          ((FT1536.Run2.Dist.draw (Law.uniform : Law FT1536.Relation.Rq)).bind fun c =>
+            (FT1536.Run2.Dist.draw (Law.uniform : Law (Fin S.bits → Bool))).bind fun t =>
+              (FT1536.Run2.Dist.pure (c, S.code h (Games.submitted m st) m r c t)).map
+                (Games.programmedReply (Games.submitted m st) m r)) :=
+        Dist.bind_comm _ _ _
+      have hmid :
+          ((FT1536.Run2.Dist.draw (Law.uniform : Law FT1536.Relation.Rq)).bind fun c =>
+            (FT1536.Run2.Dist.draw (Law.uniform : Law (Fin S.bits → Bool))).bind fun t =>
+              (FT1536.Run2.Dist.pure (c, S.code h (Games.submitted m st) m r c t)).map
+                (Games.programmedReply (Games.submitted m st) m r)).Same
+          ((FT1536.Run2.Dist.draw (Law.uniform : Law FT1536.Relation.Rq)).bind fun c =>
+            ((FT1536.Run2.Dist.draw (Law.uniform : Law (Fin S.bits → Bool))).map
+              (fun t => (c, S.code h (Games.submitted m st) m r c t))).map
+              (Games.programmedReply (Games.submitted m st) m r)) :=
+        same_bind_congr _ _ _ (fun c => by
+          have hmap : ((FT1536.Run2.Dist.draw (Law.uniform : Law (Fin S.bits → Bool))).bind fun t =>
+              (FT1536.Run2.Dist.pure (c, S.code h (Games.submitted m st) m r c t)).map
+                (Games.programmedReply (Games.submitted m st) m r)).Same
+              (((FT1536.Run2.Dist.draw (Law.uniform : Law (Fin S.bits → Bool))).bind fun t =>
+                FT1536.Run2.Dist.pure (c, S.code h (Games.submitted m st) m r c t)).map
+                (Games.programmedReply (Games.submitted m st) m r)) :=
+            same_symm' _ _ (same_map_bind _ _ _)
+          have hpure : ((FT1536.Run2.Dist.draw (Law.uniform : Law (Fin S.bits → Bool))).bind fun t =>
+              FT1536.Run2.Dist.pure (c, S.code h (Games.submitted m st) m r c t)).Same
+              ((FT1536.Run2.Dist.draw (Law.uniform : Law (Fin S.bits → Bool))).map
+                (fun t => (c, S.code h (Games.submitted m st) m r c t))) :=
+            same_symm' _ _ (Assembly.map_eq_bind_pure
+              (FT1536.Run2.Dist.draw (Law.uniform : Law (Fin S.bits → Bool)))
+              (fun t => (c, S.code h (Games.submitted m st) m r c t)))
+          exact same_trans' _ _ _ hmap (same_map _ _ _ hpure))
+      have hfold :
+          ((FT1536.Run2.Dist.draw (Law.uniform : Law FT1536.Relation.Rq)).bind fun c =>
+            ((FT1536.Run2.Dist.draw (Law.uniform : Law (Fin S.bits → Bool))).map
+              (fun t => (c, S.code h (Games.submitted m st) m r c t))).map
+              (Games.programmedReply (Games.submitted m st) m r)).Same
+          ((FT1536.Run2.sample S h (Games.submitted m st) m r).map
             (Games.programmedReply (Games.submitted m st) m r)) :=
-        same_symm' _ _ (same_map_bind _ _ _)
-      have hpure : ((FT1536.Run2.Dist.draw (Law.uniform : Law (Fin S.bits → Bool))).bind fun t =>
-          FT1536.Run2.Dist.pure (S.code h (Games.submitted m st) m r t)).Same
-          ((FT1536.Run2.Dist.draw (Law.uniform : Law (Fin S.bits → Bool))).map
-            (S.code h (Games.submitted m st) m r)) :=
-        same_symm' _ _ (Assembly.map_eq_bind_pure
-          (FT1536.Run2.Dist.draw (Law.uniform : Law (Fin S.bits → Bool)))
-          (S.code h (Games.submitted m st) m r))
-      exact same_trans' _ _ _ hmap
-        (same_map _ _ _ hpure)
+        same_symm' _ _ (same_map_bind (FT1536.Run2.Dist.draw (Law.uniform : Law FT1536.Relation.Rq))
+          (fun c => (FT1536.Run2.Dist.draw (Law.uniform : Law (Fin S.bits → Bool))).map
+            (fun t => (c, S.code h (Games.submitted m st) m r c t)))
+          (Games.programmedReply (Games.submitted m st) m r))
+      exact same_trans' _ _ _ hswap' (same_trans' _ _ _ hmid hfold)
   have hswap : ((FT1536.Run2.Dist.draw (Law.uniform : Law (Fin S.bits → Bool))).bind fun t =>
       (FT1536.Run2.Dist.draw (Law.uniform : Law Nonce)).bind fun r =>
         (match ROM.lookup (parse (frame r m)) (Games.submitted m st).table with
           | some _ => FT1536.Run2.Dist.pure none
-          | none => (FT1536.Run2.Dist.pure (S.code h (Games.submitted m st) m r t)).map
-              (Games.programmedReply (Games.submitted m st) m r) :
+          | none => (FT1536.Run2.Dist.draw (Law.uniform : Law FT1536.Relation.Rq)).bind fun c =>
+              (FT1536.Run2.Dist.pure (c, S.code h (Games.submitted m st) m r c t)).map
+                (Games.programmedReply (Games.submitted m st) m r) :
           FT1536.Run2.Dist (Option (Reply × State)))).Same
       ((FT1536.Run2.Dist.draw (Law.uniform : Law Nonce)).bind fun r =>
         (FT1536.Run2.Dist.draw (Law.uniform : Law (Fin S.bits → Bool))).bind fun t =>
           (match ROM.lookup (parse (frame r m)) (Games.submitted m st).table with
             | some _ => FT1536.Run2.Dist.pure none
-            | none => (FT1536.Run2.Dist.pure (S.code h (Games.submitted m st) m r t)).map
-                (Games.programmedReply (Games.submitted m st) m r) :
+            | none => (FT1536.Run2.Dist.draw (Law.uniform : Law FT1536.Relation.Rq)).bind fun c =>
+                (FT1536.Run2.Dist.pure (c, S.code h (Games.submitted m st) m r c t)).map
+                  (Games.programmedReply (Games.submitted m st) m r) :
             FT1536.Run2.Dist (Option (Reply × State)))) :=
     Dist.bind_comm _ _ _
   have hcong : ((FT1536.Run2.Dist.draw (Law.uniform : Law Nonce)).bind fun r =>
       (FT1536.Run2.Dist.draw (Law.uniform : Law (Fin S.bits → Bool))).bind fun t =>
         (match ROM.lookup (parse (frame r m)) (Games.submitted m st).table with
           | some _ => FT1536.Run2.Dist.pure none
-          | none => (FT1536.Run2.Dist.pure (S.code h (Games.submitted m st) m r t)).map
-              (Games.programmedReply (Games.submitted m st) m r) :
+          | none => (FT1536.Run2.Dist.draw (Law.uniform : Law FT1536.Relation.Rq)).bind fun c =>
+              (FT1536.Run2.Dist.pure (c, S.code h (Games.submitted m st) m r c t)).map
+                (Games.programmedReply (Games.submitted m st) m r) :
           FT1536.Run2.Dist (Option (Reply × State)))).Same
       ((FT1536.Run2.Dist.draw (Law.uniform : Law Nonce)).bind fun r =>
         match ROM.lookup (parse (frame r m)) (Games.submitted m st).table with
         | some _ => FT1536.Run2.Dist.pure none
-        | none => ((FT1536.Run2.Dist.draw (Law.uniform : Law (Fin S.bits → Bool))).map
-            (S.code h (Games.submitted m st) m r)).map
+        | none => (FT1536.Run2.sample S h (Games.submitted m st) m r).map
             (Games.programmedReply (Games.submitted m st) m r)) :=
     same_bind_congr _ _ _ haux
   have hleft : ((FT1536.Run2.Dist.draw (Law.uniform : Law (Fin S.bits → Bool))).bind fun t =>
@@ -636,14 +675,14 @@ theorem signSimAt_uniform (S : Sampler) (h : FT1536.Relation.Rq) (st : State) (m
         (FT1536.Run2.Dist.draw (Law.uniform : Law Nonce)).bind fun r =>
           (match ROM.lookup (parse (frame r m)) (Games.submitted m st).table with
             | some _ => FT1536.Run2.Dist.pure none
-            | none => (FT1536.Run2.Dist.pure (S.code h (Games.submitted m st) m r t)).map
-                (Games.programmedReply (Games.submitted m st) m r) :
+            | none => (FT1536.Run2.Dist.draw (Law.uniform : Law FT1536.Relation.Rq)).bind fun c =>
+                (FT1536.Run2.Dist.pure (c, S.code h (Games.submitted m st) m r c t)).map
+                  (Games.programmedReply (Games.submitted m st) m r) :
             FT1536.Run2.Dist (Option (Reply × State)))) := rfl
   have hright : ((FT1536.Run2.Dist.draw (Law.uniform : Law Nonce)).bind fun r =>
       match ROM.lookup (parse (frame r m)) (Games.submitted m st).table with
       | some _ => FT1536.Run2.Dist.pure none
-      | none => ((FT1536.Run2.Dist.draw (Law.uniform : Law (Fin S.bits → Bool))).map
-          (S.code h (Games.submitted m st) m r)).map
+      | none => (FT1536.Run2.sample S h (Games.submitted m st) m r).map
           (Games.programmedReply (Games.submitted m st) m r))
       = Games.signSim S h st m := rfl
   rw [hleft, ← hright]

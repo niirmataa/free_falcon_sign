@@ -75,8 +75,8 @@ theorem sign_go_cost (beta : Budget) (A : ClassicalAdversary beta) (S : Sampler)
   rcases frame_bound beta (submitted m st) (MachineExecution.afterSign st m r co) (.sign m) hn hp hf with
     ⟨hgt,hgw,hgL⟩
   rcases sign_public_bound beta st m r ht hm with ⟨hpt,hpw,hpL⟩
-  have hsc : sCost beta S sc h (submitted m st) m r bits≤SamplerMachine.cost beta S (sc.bitCertificate beta S) :=
-    sample_resources beta S sc h (submitted m st) m r bits hn hm
+  have hsc : sCost beta S sc h (submitted m st) m r co.1 bits≤SamplerMachine.cost beta S (sc.bitCertificate beta S) :=
+    sample_resources beta S sc h (submitted m st) m r co.1 bits hn hm
   rcases hsc with ⟨hst,hsw,hsL⟩
   change _≤_ ∧ _≤_ ∧ _≤_
   dsimp only [turnBound,held,plus,signBefore,signAfter,primitive] at *
@@ -166,23 +166,26 @@ theorem execution_bound (beta : Budget) (A : ClassicalAdversary beta) (S : Sampl
         | none =>
           apply Dist.all_bind _ _ (fun _ => True)
           · intro u; trivial
-          · intro bits _
-            rw [sample_correct beta S sc h (submitted m st) m r bits hsub hh.2.2.1]
-            let co:=S.code h (submitted m st) m r bits
-            have hn:=programmed_shape beta.bytes n st m r co hs hh.2.2.1
-            have hgood:=programmed_good cs.val st m r co hg hm
-            have hnext:=state_cap beta cs (MachineExecution.afterSign st m r co) (n+1) hn hgood (by omega)
-            have hat' : AdversaryMachine.At beta A h coins (MachineExecution.afterSign st m r co).events
-                (k (some (r,co.2))) := AdversaryMachine.At.sign_step hat (some (r,co.2))
-            have hi:=ih (some (r,co.2)) (MachineExecution.afterSign st m r co) (n+1) fuel hn hgood
-              (by omega) (by omega) hat'
-            have hstep:=sign_go_cost beta A S ac sc h coins st m r bits co
-              ha hst hsub hnext ht hh.2.2.1 hcmd
-            intro u
-            have hv:=hi u
-            have he : (s+1)+q+1=(s+q+1)+1 := by omega
-            rw [he]
-            exact ⟨seq_repeat hstep hv.1,hv.2⟩
+          · intro c _
+            apply Dist.all_bind _ _ (fun _ => True)
+            · intro u; trivial
+            · intro bits _
+              rw [sample_correct beta S sc h (submitted m st) m r c bits hsub hh.2.2.1]
+              let co:=(c,S.code h (submitted m st) m r c bits)
+              have hn:=programmed_shape beta.bytes n st m r co hs hh.2.2.1
+              have hgood:=programmed_good cs.val st m r co hg hm
+              have hnext:=state_cap beta cs (MachineExecution.afterSign st m r co) (n+1) hn hgood (by omega)
+              have hat' : AdversaryMachine.At beta A h coins (MachineExecution.afterSign st m r co).events
+                  (k (some (r,co.2))) := AdversaryMachine.At.sign_step hat (some (r,co.2))
+              have hi:=ih (some (r,co.2)) (MachineExecution.afterSign st m r co) (n+1) fuel hn hgood
+                (by omega) (by omega) hat'
+              have hstep:=sign_go_cost beta A S ac sc h coins st m r bits co
+                ha hst hsub hnext ht hh.2.2.1 hcmd
+              intro u
+              have hv:=hi u
+              have he : (s+1)+q+1=(s+q+1)+1 := by omega
+              rw [he]
+              exact ⟨seq_repeat hstep hv.1,hv.2⟩
 
 end FT1536.Run2.PrefixResources
 

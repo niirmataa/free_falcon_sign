@@ -67,26 +67,29 @@ def AdversaryCertificate.bitCertificate (beta : Budget) (A : ClassicalAdversary 
     rw [erasure,cert.correct h coins hist p hat,head_encoding]
 
 structure SamplerCertificate (beta : Budget) (S : Sampler) where
-  code : Code (Rq × Option BoxVec)
-  correct : ∀ (h : Rq) (st : State) (m : Bytes) (r : Nonce) (coins : Fin S.bits → Bool),
+  code : Code (Option BoxVec)
+  correct : ∀ (h : Rq) (st : State) (m : Bytes) (r : Nonce) (c : Rq) (coins : Fin S.bits → Bool),
     StateResources.stateBits st≤SamplerMachine.stateCap beta → m.length≤beta.bytes →
-      run (PublicEncoding.samplerInput S h st m r coins) code=S.code h st m r coins
+      run (PublicEncoding.samplerInput S h st m r c coins) code=S.code h st m r c coins
 
 def SamplerCertificate.bitCertificate (beta : Budget) (S : Sampler)
     (cert : SamplerCertificate beta S) : SamplerMachine.Certificate beta S where
   code := erase PublicEncoding.samplerOutput cert.code
-  correct h st m r coins hs hm := by
-    rw [erasure,cert.correct h st m r coins hs hm]
+  correct h st m r c coins hs hm := by
+    rw [erasure,cert.correct h st m r c coins hs hm]
 
 def resume (beta : Budget) (A : ClassicalAdversary beta)
     (cert : AdversaryCertificate beta A) (h : Rq) (coins : Fin beta.coinBits → Bool)
     (hist : List Event) : Command :=
   run (AdversaryMachine.input beta h coins hist) cert.code
 
+/- Variant A (F04 repair): the certified local run is the noise-only reply
+map at the ROM challenge `c` (an INPUT of the run, not drawn from the tape).
+-/
 def sample (beta : Budget) (S : Sampler) (cert : SamplerCertificate beta S)
-    (h : Rq) (st : State) (m : Bytes) (r : Nonce) (coins : Fin S.bits → Bool) :
-    Rq × Option BoxVec :=
-  run (PublicEncoding.samplerInput S h st m r coins) cert.code
+    (h : Rq) (st : State) (m : Bytes) (r : Nonce) (c : Rq) (coins : Fin S.bits → Bool) :
+    Option BoxVec :=
+  run (PublicEncoding.samplerInput S h st m r c coins) cert.code
 
 theorem resume_correct (beta : Budget) (A : ClassicalAdversary beta)
     (cert : AdversaryCertificate beta A) (h : Rq) (coins : Fin beta.coinBits → Bool)
@@ -95,10 +98,10 @@ theorem resume_correct (beta : Budget) (A : ClassicalAdversary beta)
     resume beta A cert h coins hist=head p := cert.correct h coins hist p hat
 
 theorem sample_correct (beta : Budget) (S : Sampler) (cert : SamplerCertificate beta S)
-    (h : Rq) (st : State) (m : Bytes) (r : Nonce) (coins : Fin S.bits → Bool)
+    (h : Rq) (st : State) (m : Bytes) (r : Nonce) (c : Rq) (coins : Fin S.bits → Bool)
     (hs : StateResources.stateBits st≤SamplerMachine.stateCap beta) (hm : m.length≤beta.bytes) :
-    sample beta S cert h st m r coins=S.code h st m r coins :=
-  cert.correct h st m r coins hs hm
+    sample beta S cert h st m r c coins=S.code h st m r c coins :=
+  cert.correct h st m r c coins hs hm
 
 theorem resume_resources (beta : Budget) (A : ClassicalAdversary beta)
     (cert : AdversaryCertificate beta A) (h : Rq) (coins : Fin beta.coinBits → Bool)
@@ -109,11 +112,11 @@ theorem resume_resources (beta : Budget) (A : ClassicalAdversary beta)
   AdversaryMachine.local_resource_bound beta A (cert.bitCertificate beta A) h coins hist p hat
 
 theorem sample_resources (beta : Budget) (S : Sampler) (cert : SamplerCertificate beta S)
-    (h : Rq) (st : State) (m : Bytes) (r : Nonce) (coins : Fin S.bits → Bool)
+    (h : Rq) (st : State) (m : Bytes) (r : Nonce) (c : Rq) (coins : Fin S.bits → Bool)
     (hs : StateResources.stateBits st≤SamplerMachine.stateCap beta) (hm : m.length≤beta.bytes) :
-    SamplerMachine.actualCost (PublicEncoding.samplerInput S h st m r coins)
+    SamplerMachine.actualCost (PublicEncoding.samplerInput S h st m r c coins)
       (erase PublicEncoding.samplerOutput cert.code)≤SamplerMachine.cost beta S (cert.bitCertificate beta S) :=
-  SamplerMachine.local_resource_bound beta S (cert.bitCertificate beta S) h st m r coins hs hm
+  SamplerMachine.local_resource_bound beta S (cert.bitCertificate beta S) h st m r c coins hs hm
 
 end FT1536.Run2.LocalMachineCode
 

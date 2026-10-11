@@ -28,9 +28,17 @@ def sCode (beta : Budget) (S : Sampler) (sc : SamplerCertificate beta S) : Local
 def aCost (beta : Budget) (A : ClassicalAdversary beta) (ac : AdversaryCertificate beta A)
     (h : Rq) (coins : Fin beta.coinBits → Bool) (st : State) : Cost :=
   SamplerMachine.actualCost (AdversaryMachine.input beta h coins st.events) (aCode beta A ac)
+/- Variant A (F04 repair): the sampler run is the noise-only reply map at the
+ROM challenge `c` — the challenge enters as an INPUT (its hash production is
+charged as `challengeCost`), the tape contributes only `S.bits` noise bits. -/
 def sCost (beta : Budget) (S : Sampler) (sc : SamplerCertificate beta S)
-    (h : Rq) (st : State) (m : Bytes) (r : Nonce) (bits : Fin S.bits → Bool) : Cost :=
-  SamplerMachine.actualCost (PublicEncoding.samplerInput S h st m r bits) (sCode beta S sc)
+    (h : Rq) (st : State) (m : Bytes) (r : Nonce) (c : Rq) (bits : Fin S.bits → Bool) : Cost :=
+  SamplerMachine.actualCost (PublicEncoding.samplerInput S h st m r c bits) (sCode beta S sc)
+
+/- Variant A: the signing challenge `c = H(r‖m)` is produced OUTSIDE the
+sampler tape, by the ROM hash at the signed name; its production is charged
+at the sign step (one field-element hash output of 24576 bits of traffic). -/
+def challengeCost : Cost := drawCost 24576
 
 def hashCost (cs : List Rq) (st next : State) (x : Bytes) : Cost :=
   plus (frameCost st next (.hash x)) (primitive (TableMachine.hash cs x st).2 (TableAllocation.hash cs x st))
@@ -41,8 +49,9 @@ def signBefore (st : State) (m : Bytes) (r : Nonce) : Cost :=
 def signAfter (beta : Budget) (S : Sampler) (sc : SamplerCertificate beta S)
     (h : Rq) (st : State) (m : Bytes) (r : Nonce) (bits : Fin S.bits → Bool)
     (co : Rq × Option BoxVec) : Cost :=
-  plus (drawCost S.bits) (plus (sCost beta S sc h (submitted m st) m r bits)
-    (frameCost (submitted m st) (MachineExecution.afterSign st m r co) (.sign m)))
+  plus challengeCost (plus (drawCost S.bits)
+    (plus (sCost beta S sc h (submitted m st) m r co.1 bits)
+      (frameCost (submitted m st) (MachineExecution.afterSign st m r co) (.sign m))))
 
 noncomputable def prepend (c : Cost) (p : Dist (Option Finished × Cost)) : Dist (Option Finished × Cost) :=
   p.map fun out => (out.1,seq c out.2)
@@ -68,8 +77,9 @@ noncomputable def run (beta : Budget) (A : ClassicalAdversary beta) (S : Sampler
             let before:=plus a (signBefore st m r)
             match (TableMachine.lookup (some r,m) (submitted m st).table.table).1 with
             | some _ => Dist.pure (none,held resident before)
-            | none => (Dist.draw (Law.uniform : Law (Fin S.bits → Bool))).bind fun bits =>
-                let co:=LocalMachineCode.sample beta S sc h (submitted m st) m r bits
+            | none => (Dist.draw (Law.uniform : Law Rq)).bind fun c =>
+              (Dist.draw (Law.uniform : Law (Fin S.bits → Bool))).bind fun bits =>
+                let co:=(c,LocalMachineCode.sample beta S sc h (submitted m st) m r c bits)
                 prepend (held resident (plus before (signAfter beta S sc h st m r bits co)))
                   (run beta A S ac sc h cs coins fuel (MachineExecution.afterSign st m r co))
 
@@ -99,9 +109,12 @@ theorem erasure (beta : Budget) (A : ClassicalAdversary beta) (S : Sampler)
       | none =>
         simp only [Dist.expect_bind]
         apply Dist.expect_congr
+        intro c
+        apply Dist.expect_congr
         intro bits
         simpa only [prepend,Dist.expect_map] using
-          ih (MachineExecution.afterSign st m r (LocalMachineCode.sample beta S sc h (submitted m st) m r bits)) F
+          ih (MachineExecution.afterSign st m r
+            (c,LocalMachineCode.sample beta S sc h (submitted m st) m r c bits)) F
 
 def frameBound (beta : Budget) : Cost :=
   let bits:=2*SamplerMachine.stateCap beta+AdversaryMachine.outputCap beta
@@ -116,7 +129,8 @@ def turnBound (beta : Budget) (A : ClassicalAdversary beta) (S : Sampler)
     (plus (AdversaryMachine.cost beta (aCode beta A ac))
       (plus (SamplerMachine.cost beta S (sc.bitCertificate beta S))
         (plus (frameBound beta) (plus (frameBound beta)
-          (plus (publicBound beta) (plus (drawCost 320) (drawCost S.bits)))))))
+          (plus (publicBound beta) (plus (drawCost 320)
+            (plus (drawCost S.bits) challengeCost)))))))
 
 theorem plus_mono {a b c d : Cost} (h : a≤c) (k : b≤d) : plus a b≤plus c d :=
   ⟨Nat.add_le_add h.1 k.1,Nat.add_le_add h.2.1 k.2.1,Nat.add_le_add h.2.2 k.2.2⟩
