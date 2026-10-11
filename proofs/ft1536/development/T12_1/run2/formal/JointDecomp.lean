@@ -185,6 +185,18 @@ theorem condOf_joint (k : Law α) (l : α → Law β) (x : α) (hx : 0 < k.mass 
   rw [h2, marginal_joint]
   exact mul_div_cancel_left₀ ((l x).mass y) (ne_of_gt hx)
 
+/-- THE challenge-from-ROM realization at the pinned
+`FT1536.Run2.samplerLaw` (F04 repair, owner decision 2026-10-11, variant A):
+the challenge marginal of the joint signing law is exactly `Law.uniform` —
+`marginal_joint` at the ROM joint form of the law (the challenge is the ROM
+hash answer `H(r‖m)`, drawn outside the sampler's fair-bit tape). Kernel fact
+of the construction, NOT a premise: the impossible `UniformChallengeAt`
+bridge of the pre-audit model is replaced by this theorem. -/
+theorem samplerLaw_marginal_uniform (S : FT1536.Run2.Sampler) (h : FT1536.Relation.Rq)
+    (st : FT1536.Run2.State) (m : FT1536.Run2.Bytes) (r : FT1536.Run2.Nonce) :
+    marginal (FT1536.Run2.samplerLaw S h st m r) = (Law.uniform : Law FT1536.Relation.Rq) :=
+  marginal_joint (Law.uniform : Law FT1536.Relation.Rq) (FT1536.Run2.replyLaw S h st m r)
+
 /-! ### Second-moment transport across the decomposition -/
 
 omit [DecidableEq α] in

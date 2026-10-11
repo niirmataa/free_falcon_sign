@@ -87,14 +87,27 @@ structure Budget where
 structure ClassicalAdversary (beta : Budget) where
   code : Rq → (Fin beta.coinBits → Bool) → Program beta.qs beta.qh
 
-/- Full public sampler interface on a fixed FAIR-BIT tape. A function alone
+/- Full public sampler interface on a fixed FAIR-BIT tape — VARIANT A of the
+F04 repair (owner decision 2026-10-11). The challenge is NOT drawn from the
+tape: `c` is the ROM hash answer `H(r‖m)` at the signed name (`frame r m`) and
+is an INPUT of the sampler; the fair-bit tape realizes the NOISE only and the
+output is just the reply. Real-code pin: `c = H(r‖m)` comes from the hash, the
+signing randomness draws only the noise. No uniform-preserving map out of a
+finite tape is used, so the F04 obstruction does not arise. A function alone
 does not supply a cost certificate; computational binding is kept separate. -/
 structure Sampler where
   bits : ℕ
-  code : Rq → State → Bytes → Nonce → (Fin bits → Bool) → Rq × Option BoxVec
+  code : Rq → State → Bytes → Nonce → Rq → (Fin bits → Bool) → Option BoxVec
 
+/- The joint signing draw at a fresh signing point (variant A): the ROM
+challenge `c` — the lazy hash answer `H(r‖m)`, `Law.uniform` on `Rq`, drawn
+OUTSIDE the sampler tape — then the tape draws the noise through the
+noise-only map `S.code h st m r c`. The pair `(c, o)` is exactly the data the
+ROM table stores for the name (`programmedReply`). -/
 noncomputable def sample (S : Sampler) (h : Rq) (st : State) (m : Bytes) (r : Nonce) :
-    Dist (Rq × Option BoxVec) := (Dist.draw Law.uniform).map (S.code h st m r)
+    Dist (Rq × Option BoxVec) :=
+  (Dist.draw (Law.uniform : Law Rq)).bind fun c =>
+    (Dist.draw (Law.uniform : Law (Fin S.bits → Bool))).map fun w => (c, S.code h st m r c w)
 
 namespace Games
 noncomputable def hashHonest (x : Bytes) (st : State) : Dist (Rq × State) :=
