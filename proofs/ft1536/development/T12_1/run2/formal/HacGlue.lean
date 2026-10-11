@@ -43,13 +43,15 @@ new model, no unfinished-proof markers):
    `signBody_none_pos_of_attempt_miss`).
 3. **The assembled certificate** `localJointCertificate_of_named_premises` —
    `FT1536.Run2.LocalJointCertificate S ((1 + d1) * (1 + d2) - 1)` with the
-   exact challenge layer `d1 = 0` (the ROM identification
-   `FT1536.VerifyBind.UniformChallenge`) and `d2 = SignLayerSupport.e2 k =
-   k^32 - 1`, where the ONLY remaining arguments are the named premises
-   `AttemptPointwise` (at its exact `SignLayerSupport` interface, via the
-   family parameter `jatt`), `ReplyShape`, O-NONE (the Lean-premise part of
-   `notes/B4_SYNTHESIS.md` §obligations) plus Layer 1 `UniformChallenge` and
-   the arithmetic side condition `1 ≤ k` (proved at the candidate factor).
+   exact challenge layer `d1 = 0` (F04 repair, variant A: DELIVERED by the
+   challenge-from-ROM construction, `romChallengeAt` /
+   `JointDecomp.samplerLaw_marginal_uniform` — not an argument) and
+   `d2 = SignLayerSupport.e2 k = k^32 - 1`, where the ONLY remaining
+   arguments are the named premises `AttemptPointwise` (at its exact
+   `SignLayerSupport` interface, via the family parameter `jatt`),
+   `ReplyShape`, O-NONE (the Lean-premise part of
+   `notes/B4_SYNTHESIS.md` §obligations) and the arithmetic side condition
+   `1 ≤ k` (proved at the candidate factor).
    The exact argument list of this theorem
    IS the remaining project scope of B4; see `notes/B4_GLUE_WORK_STATE.md`.
    The leaner pointwise route (O-NONE avoidable) is recorded as
@@ -91,6 +93,18 @@ theorem replyAt_eq (S : FT1536.Run2.Sampler) (h : FT1536.Relation.Rq)
     replyAt S h st m r c
       = JointDecomp.condOf (FT1536.Run2.samplerLaw S h st m r) c := rfl
 
+/-- The conditional of the ROM-sourced joint law at `c` is the noise-only
+reply law (variant A): `JointDecomp.condOf_joint` at the joint form of
+`samplerLaw`, with the positive uniform challenge mass
+(`JointDecomp.uniform_mass_pos`) so the fallback is never engaged. -/
+theorem replyAt_eq_replyLaw (S : FT1536.Run2.Sampler) (h : FT1536.Relation.Rq)
+    (st : FT1536.Run2.State) (m : FT1536.Run2.Bytes) (r : FT1536.Run2.Nonce)
+    (c : FT1536.Relation.Rq) :
+    replyAt S h st m r c = FT1536.Run2.replyLaw S h st m r c := by
+  show JointDecomp.condOf (FT1536.Run2.samplerLaw S h st m r) c = _
+  exact JointDecomp.condOf_joint (Law.uniform : Law FT1536.Relation.Rq)
+    (FT1536.Run2.replyLaw S h st m r) c (JointDecomp.uniform_mass_pos c)
+
 /-- The per-signing-point family of one-attempt laws of the real `to_sign`
 sampler — the WITNESS OBJECT of the two Layer-2 named premises (a law, not an
 assumption). Its identification with the sampler's realized attempt law is
@@ -109,15 +123,30 @@ def HacShape (S : FT1536.Run2.Sampler) : Prop :=
     (r : FT1536.Run2.Nonce) (c : FT1536.Relation.Rq) (z : Option BoxVec),
     (JointDecomp.honestReply h c).mass z = 0 → (replyAt S h st m r c).mass z = 0
 
-/-- NAMED PREMISE `UniformChallenge` (Layer 1) at every signing point: the
-single ROM assumption of `FT1536.VerifyBind` — the challenge marginal of the
-sampler law is `FT1536.Law.uniform` exactly (`d1 = 0`). ASSUMED at the
-hash-to-point boundary; no security property is proved here. -/
-def UniformChallengeAt (S : FT1536.Run2.Sampler) : Prop :=
+/-- THE challenge-from-ROM interface (F04 repair, owner decision 2026-10-11,
+variant A): at every signing point the challenge is the ROM hash answer
+`H(r‖m)` — the first coordinate of `FT1536.Run2.samplerLaw` is the ROM law
+`FT1536.Law.uniform` drawn OUTSIDE the sampler's fair-bit tape (the sampler
+draws only the noise, `FT1536.Run2.replyLaw`). This replaces the impossible
+`UniformChallengeAt` bridge of the pre-audit model (a uniform-preserving map
+out of a finite tape into `Rq` cannot exist — premise-audit F04). The
+interface is REALIZED by construction, see `romChallengeAt`; it is NOT an
+assumption and no consumer of the repaired certificates takes it as one. -/
+def RomChallengeAt (S : FT1536.Run2.Sampler) : Prop :=
   ∀ (h : FT1536.Relation.Rq) (st : FT1536.Run2.State) (m : FT1536.Run2.Bytes)
     (r : FT1536.Run2.Nonce),
     FT1536.VerifyBind.UniformChallenge
       (JointDecomp.marginal (FT1536.Run2.samplerLaw S h st m r))
+
+/-- THE challenge-from-ROM realization (variant A), kernel-checked and NOT an
+assumption: `FT1536.Run2.samplerLaw` is the joint of the ROM challenge law
+`Law.uniform` and the noise-only reply law
+(`FT1536.Run2.samplerLaw_marginal_uniform`), so its challenge marginal IS
+`Law.uniform` exactly (`d1 = 0` with no slack) for every sampler `S`. The
+abstract world predicate `FT1536.VerifyBind.UniformChallenge` retains its own
+witness at the `VerifyBind` layer (`Iff.rfl`); nothing is assumed here. -/
+theorem romChallengeAt (S : FT1536.Run2.Sampler) : RomChallengeAt S :=
+  fun h st m r => JointDecomp.samplerLaw_marginal_uniform S h st m r
 
 /-- NAMED PREMISE `ReplyShape` (Layer 2, source binding) at every signing
 point and challenge: the sampler's conditional reply law IS the pinned body
@@ -396,15 +425,17 @@ theorem attempt_miss_satisfiable_iff_onone (A : BoxPair → FT1536.Relation.Rq)
 
 /-- THE assembled B4 certificate (goal 3), in the synthesis shape
 `FT1536.Run2.LocalJointCertificate S ((1 + d1) * (1 + d2) - 1)` with the
-exact challenge layer `d1 = 0` (Layer 1: `UniformChallenge` gives the
-challenge marginal `= Law.uniform`, so `second = 1` exactly) and
+exact challenge layer `d1 = 0` (Layer 1: DELIVERED, not assumed — the
+challenge-from-ROM construction of the F04 repair, variant A, gives the
+challenge marginal `= Law.uniform` exactly, `romChallengeAt` /
+`JointDecomp.samplerLaw_marginal_uniform`) and
 `d2 = SignLayerSupport.e2 k = k^32 - 1` (Layer 2: `ReplyShape` +
 `AttemptPointwise` at factor `k`).
 
 THE EXACT FINAL ARGUMENT LIST, in binder order — nothing else is assumed:
 
 * `S : FT1536.Run2.Sampler` — the sampler under test (object, not an
-  assumption);
+  assumption; variant-A noise-only code with the ROM challenge as input);
 * `k : ℝ` — the per-attempt comparison factor (object; the target value is
   `SignLayerSupport.attemptFactor`);
 * `hk : 1 ≤ k` — arithmetic side condition (at the candidate factor
@@ -412,8 +443,6 @@ THE EXACT FINAL ARGUMENT LIST, in binder order — nothing else is assumed:
   proved, not an assumption);
 * `jatt : AttemptFamily` — the one-attempt law family (witness object of the
   Layer-2 premises);
-* `huc : UniformChallengeAt S` — NAMED PREMISE `UniformChallenge` (Layer 1,
-  the single ROM assumption, B3/X `FT1536.VerifyBind`);
 * `hshape : ReplyShapeAt S jatt` — NAMED PREMISE `ReplyShape` (source
   binding, B1/source3);
 * `hattempt : AttemptPointwiseAt jatt k` — NAMED PREMISE `AttemptPointwise`
@@ -422,11 +451,15 @@ THE EXACT FINAL ARGUMENT LIST, in binder order — nothing else is assumed:
   source-side fiber geometry), consumed by the support-route discharge
   `hac_of_support`.
 
-The byte-bridge swallow and the additive-error caveat are NOT arguments of
-this theorem (recorded open items, outside its multiplicative shape). -/
+Layer 1 (`UniformChallenge`) is NO LONGER an argument (F04 repair, variant
+A): the challenge is the ROM hash answer `H(r‖m)` drawn OUTSIDE the sampler
+tape, so `romChallengeAt S` delivers `d1 = 0` for every `S` with no premise
+and no A2 label. The byte-bridge swallow and the additive-error caveat are
+NOT arguments of this theorem (recorded open items, outside its
+multiplicative shape). -/
 theorem localJointCertificate_of_named_premises (S : FT1536.Run2.Sampler) (k : ℝ)
     (hk : 1 ≤ k) (jatt : AttemptFamily)
-    (huc : UniformChallengeAt S) (hshape : ReplyShapeAt S jatt)
+    (hshape : ReplyShapeAt S jatt)
     (hattempt : AttemptPointwiseAt jatt k)
     (hone : ∀ h : FT1536.Relation.Rq, ONone (FT1536.SigmaMath.syndrome h)) :
     FT1536.Run2.LocalJointCertificate S ((1 + (0:ℝ)) * (1 + SignLayerSupport.e2 k) - 1) := by
@@ -434,7 +467,8 @@ theorem localJointCertificate_of_named_premises (S : FT1536.Run2.Sampler) (k : �
     (by norm_num) (e2_nonneg hk) ?_ ?_ ?_
   · intro h st m r
     have h1 : JointDecomp.marginal (FT1536.Run2.samplerLaw S h st m r)
-        = (Law.uniform : Law FT1536.Relation.Rq) := huc h st m r
+        = (Law.uniform : Law FT1536.Relation.Rq) :=
+      JointDecomp.samplerLaw_marginal_uniform S h st m r
     rw [h1, JointDecomp.second_self]
     norm_num
   · intro h st m r c
@@ -446,33 +480,36 @@ theorem localJointCertificate_of_named_premises (S : FT1536.Run2.Sampler) (k : �
 
 /-- The `d1 = 0` variant in its reduced form (`e = d2`, the synthesis note):
 `(1 + 0) * (1 + e2 k) - 1 = e2 k = k^32 - 1`. Same argument list as
-`localJointCertificate_of_named_premises`. -/
+`localJointCertificate_of_named_premises` (no `huc`: Layer 1 is delivered by
+the challenge-from-ROM construction, `romChallengeAt`). -/
 theorem localJointCertificate_of_named_premises_e (S : FT1536.Run2.Sampler) (k : ℝ)
     (hk : 1 ≤ k) (jatt : AttemptFamily)
-    (huc : UniformChallengeAt S) (hshape : ReplyShapeAt S jatt)
+    (hshape : ReplyShapeAt S jatt)
     (hattempt : AttemptPointwiseAt jatt k)
     (hone : ∀ h : FT1536.Relation.Rq, ONone (FT1536.SigmaMath.syndrome h)) :
     FT1536.Run2.LocalJointCertificate S (SignLayerSupport.e2 k) := by
   have hr : ((1 + (0:ℝ)) * (1 + SignLayerSupport.e2 k) - 1) = SignLayerSupport.e2 k := by
     ring
   rw [← hr]
-  exact localJointCertificate_of_named_premises S k hk jatt huc hshape hattempt hone
+  exact localJointCertificate_of_named_premises S k hk jatt hshape hattempt hone
 
 /-- Lean variant WITHOUT O-NONE (recorded for scope sharpness): with the
 pointwise-route discharge `hac_of_layer2` the certificate's NAMED inputs are
-only `UniformChallenge` + `ReplyShape` + `AttemptPointwise` (over the objects
-`S`, `jatt` and the arithmetic `1 ≤ k`); `hac_of_support`'s `hone` input is
-the only place O-NONE is consumed by the assembled certificate. O-NONE stays
-in the project scope regardless:
-`attempt_miss_satisfiable_iff_onone` pins it as the exact condition under
-which a miss-capable sampler fits the `none`-side of `AttemptPointwise`. -/
+only `ReplyShape` + `AttemptPointwise` (over the objects `S`, `jatt` and the
+arithmetic `1 ≤ k`); `hac_of_support`'s `hone` input is the only place O-NONE
+is consumed by the assembled certificate. Layer 1 is no argument at all —
+`JointDecomp.samplerLaw_marginal_uniform` (the challenge-from-ROM
+realization, `romChallengeAt`) gives `d1 = 0` with no premise. O-NONE stays in
+the project scope regardless: `attempt_miss_satisfiable_iff_onone` pins it as
+the exact condition under which a miss-capable sampler fits the `none`-side
+of `AttemptPointwise`. -/
 theorem localJointCertificate_of_pointwise_premises (S : FT1536.Run2.Sampler) (k : ℝ)
     (hk : 1 ≤ k) (jatt : AttemptFamily)
-    (huc : UniformChallengeAt S) (hshape : ReplyShapeAt S jatt)
+    (hshape : ReplyShapeAt S jatt)
     (hattempt : AttemptPointwiseAt jatt k) :
     FT1536.Run2.LocalJointCertificate S (SignLayerSupport.e2 k) :=
   JointDecomp.localJointCertificate_of_uniform_challenge S (SignLayerSupport.e2 k)
-    (e2_nonneg hk) huc
+    (e2_nonneg hk) (romChallengeAt S)
     (fun h st m r c => (SignLayerSupport.layer2_of_obligations (replyAt S h st m r c)
       (jatt h st m r c) (FT1536.SigmaMath.syndrome h) c k hk (hshape h st m r c)
       (hattempt h st m r c)).2)
@@ -484,17 +521,18 @@ machine sandwich, A2/tower sandwich and wrap budgets of
 `SignLayerSupport`) the assembled certificate has
 `e = SignLayerSupport.e2 SignLayerSupport.attemptFactor < 2^-32`
 (`SignLayerSupport.e2_attemptFactor_lt`), and its argument list is, in
-binder order, EXACTLY the objects `S`, `jatt` and the four named premises
-`huc` (`UniformChallenge`), `hshape` (`ReplyShape`), `hattempt`
-(`AttemptPointwise` at `attemptFactor`), `hone` (`O-NONE`). -/
+binder order, EXACTLY the objects `S`, `jatt` and the three named premises
+`hshape` (`ReplyShape`), `hattempt` (`AttemptPointwise` at `attemptFactor`),
+`hone` (`O-NONE`) — plus the delivered Layer 1 (`romChallengeAt`, not an
+argument). -/
 theorem localJointCertificate_of_named_premises_attemptFactor (S : FT1536.Run2.Sampler)
     (jatt : AttemptFamily)
-    (huc : UniformChallengeAt S) (hshape : ReplyShapeAt S jatt)
+    (hshape : ReplyShapeAt S jatt)
     (hattempt : AttemptPointwiseAt jatt SignLayerSupport.attemptFactor)
     (hone : ∀ h : FT1536.Relation.Rq, ONone (FT1536.SigmaMath.syndrome h)) :
     FT1536.Run2.LocalJointCertificate S
       (SignLayerSupport.e2 SignLayerSupport.attemptFactor) :=
   localJointCertificate_of_named_premises_e S SignLayerSupport.attemptFactor
-    SignLayerSupport.attemptFactor_one_le jatt huc hshape hattempt hone
+    SignLayerSupport.attemptFactor_one_le jatt hshape hattempt hone
 
 end FT1536.HacGlue

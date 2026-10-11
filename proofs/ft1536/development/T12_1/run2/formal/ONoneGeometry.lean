@@ -37,7 +37,9 @@ standard axioms only):
    `HacGlue.attempt_miss_satisfiable_iff_onone`) and
    `localJointCertificate_of_attemptFactor` (the B4 certificate at the
    candidate factor with O-NONE DISCHARGED; its remaining named inputs are
-   exactly `UniformChallenge`, `ReplyShape`, `AttemptPointwise`).
+   exactly `ReplyShape` + `AttemptPointwise` — Layer 1 `UniformChallenge` is
+   DELIVERED by the challenge-from-ROM construction, F04 repair variant A,
+   see `HacGlue.romChallengeAt`).
 
 No NTRU equation (`fG - gF = q`, `h * f = g`) is used or needed here: the
 key-side geometry of rung B1 is NOT consumed by this window. All statements
@@ -260,14 +262,15 @@ theorem attempt_miss_satisfiable (h c : FT1536.Relation.Rq)
   (HacGlue.attempt_miss_satisfiable_iff_onone _ c hach).2 (hone h c hach)
 
 /-- THE B4 certificate at the candidate factor with O-NONE DISCHARGED: the
-remaining named inputs are exactly `UniformChallenge` (Layer 1, the ROM
-assumption), `ReplyShape` (source binding, B1/source3) and `AttemptPointwise`
-(the analytic core, window B4/3a). -/
+remaining named inputs are exactly `ReplyShape` (source binding, B1/source3)
+and `AttemptPointwise` (the analytic core, window B4/3a); Layer 1
+(`UniformChallenge`) is delivered by the challenge-from-ROM construction
+(`HacGlue.romChallengeAt`, F04 repair variant A) and is not an argument. -/
 theorem localJointCertificate_of_attemptFactor (S : FT1536.Run2.Sampler)
-    (jatt : HacGlue.AttemptFamily) (huc : HacGlue.UniformChallengeAt S)
+    (jatt : HacGlue.AttemptFamily)
     (hshape : HacGlue.ReplyShapeAt S jatt)
     (hattempt : HacGlue.AttemptPointwiseAt jatt SignLayerSupport.attemptFactor) :
     FT1536.Run2.LocalJointCertificate S (SignLayerSupport.e2 SignLayerSupport.attemptFactor) :=
-  HacGlue.localJointCertificate_of_named_premises_attemptFactor S jatt huc hshape hattempt hone
+  HacGlue.localJointCertificate_of_named_premises_attemptFactor S jatt hshape hattempt hone
 
 end FT1536.ONoneGeometry

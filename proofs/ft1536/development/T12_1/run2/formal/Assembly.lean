@@ -50,9 +50,15 @@ named assumptions; this list IS the closing checklist of the whole project
 * `hk : 1 ≤ k` — arithmetic side condition of the per-attempt factor (house
   style of `HacGlue.localJointCertificate_of_named_premises`; PROVED at the
   candidate factor `SignLayerSupport.attemptFactor_one_le`);
-* `huc : UniformChallengeAt S` — NAMED PREMISE 1 (B3/X DELIVERED; the single
-  ROM/RED assumption at the hash boundary, scope A2 named predicate
-  `FT1536.VerifyBind.UniformChallenge`);
+* Layer 1 `UniformChallenge` — DELIVERED, NOT an argument (F04 repair, owner
+  decision 2026-10-11, variant A): the challenge `c = H(r‖m)` is the ROM hash
+  answer drawn OUTSIDE the sampler's fair-bit tape (the sampler draws only
+  the noise), so the challenge marginal is `Law.uniform` exactly by
+  construction (`HacGlue.romChallengeAt` /
+  `JointDecomp.samplerLaw_marginal_uniform`, `d1 = 0`). The pre-audit
+  `huc : UniformChallengeAt S` premise is GONE: it was impossible for any
+  finite fair-bit sampler (premise-audit F04) and is replaced by this kernel
+  fact, not by an A2 label;
 * `hshape : ReplyShapeAt S jatt` — NAMED PREMISE 2 (owner B1/source3; source
   binding of the attempt law, `SIGN_MAX_ATTEMPTS = 16`, emission
   `Extra/c/falcon-sign.c:3412-3418`);
@@ -83,7 +89,13 @@ named assumptions; this list IS the closing checklist of the whole project
 Operational assumptions (item 6 of the task list) stay explicit WHERE THEY
 BITE, with their `END_TO_END_SCOPE.md` §3 scope names:
 
-* **A2 (seed uniformity)** bites at the hash boundary = `huc` (above).
+* **A2 (seed uniformity)** bites at the hash boundary = the ROM challenge
+  law (above). Under the F04 repair (variant A) the hash boundary is no
+  longer a sampler-tape bridge: the challenge is the ROM hash answer
+  `H(r‖m)` drawn outside the tape and the uniformity is delivered by
+  construction (`HacGlue.romChallengeAt`); the abstract named predicate
+  `FT1536.VerifyBind.UniformChallenge` keeps its own world witness
+  (`uniform_challenge_eq`, `Iff.rfl`) at the `VerifyBind` layer.
 * **A1 (no timing/attempt-count leakage from KeyGen; D1 refinement (ii),
   theorem-hypothesis rank)** bites at the key law = `hkey`. At MODEL scope it
   is discharged by construction and pinned by `a1_no_retry_interface`: the
@@ -141,13 +153,16 @@ noncomputable def AdvPRG {ξ : Type} [Fintype ξ] [Nonempty ξ] (tau : Law ξ) :
   TV tau (Law.uniform)
 
 /-- The sampler's per-call law under tape law `tau` — the D2 route-(b) seam at
-one fresh signing point: `tau.map (S.code h st m r)`. At the fair tape
+one fresh signing point. Variant A (F04 repair): the challenge is the ROM
+hash answer `H(r‖m)` drawn OUTSIDE the tape (`Law.uniform` factor), and only
+the NOISE reply is pushed through the tape law `tau`. At the fair tape
 `tau = Law.uniform` this is `FT1536.Run2.samplerLaw S h st m r`
-(`Law.uniform.map`) definitionally. -/
+definitionally (`FT1536.Run2.replyLaw`). -/
 noncomputable def samplerLawAt (S : Sampler) (tau : Law (Fin S.bits → Bool))
     (h : FT1536.Relation.Rq) (st : FT1536.Run2.State) (m : FT1536.Run2.Bytes)
     (r : FT1536.Run2.Nonce) : Law (Rq × Option BoxVec) :=
-  tau.map (S.code h st m r)
+  Divergence.joint (Law.uniform : Law Rq)
+    (fun c : Rq => tau.map (S.code h st m r c))
 
 theorem samplerLawAt_uniform {S : Sampler} (h : FT1536.Relation.Rq)
     (st : FT1536.Run2.State) (m : FT1536.Run2.Bytes) (r : FT1536.Run2.Nonce) :
@@ -330,19 +345,22 @@ constant) and the additive PRG seam carried as `deltaPRG` per
 THE EXACT ARGUMENT LIST, in binder order (objects first, then the named
 assumptions; see the module docstring for owners): objects `SK`, `beta`,
 `muKey`, `A`, `S`, `jatt`, `k`, `tau`, `deltaPRG`, `keyIdent`; `hk : 1 ≤ k`
-(arithmetic side condition, proved at the candidate factor); `huc :
-UniformChallengeAt S`; `hshape : ReplyShapeAt S jatt`; `hattempt :
-AttemptPointwiseAt jatt k`; `hkey : keyIdent` (the emitted-key law
-identification, exact type = B1.10 `emitted_to_actual_fiber`, PLAN §1); `hprg :
-AdvPRG tau ≤ deltaPRG`. NOTHING ELSE is assumed. A1/A5 bite inside `hkey`
-(cited scope names), A2 is `huc`, A3/A4 bite at the byte bridge which is an
-open recorded seam and NOT an argument. -/
+(arithmetic side condition, proved at the candidate factor); `hshape :
+ReplyShapeAt S jatt`; `hattempt : AttemptPointwiseAt jatt k`; `hkey :
+keyIdent` (the emitted-key law identification, exact type = B1.10
+`emitted_to_actual_fiber`, PLAN §1); `hprg : AdvPRG tau ≤ deltaPRG`. NOTHING
+ELSE is assumed. Layer 1 (`UniformChallenge`) is DELIVERED by the
+challenge-from-ROM construction (`HacGlue.romChallengeAt`, F04 repair
+variant A) and is NOT an argument; A1/A5 bite inside `hkey` (cited scope
+names), A3/A4 bite at the byte bridge which is an open recorded seam and NOT
+an argument. `hprg` is the PRG seam of the NOISE tape (`tau : Law (Fin
+S.bits → Bool)`, `S.bits` = noise-only tape width of variant A; the challenge
+is not on the tape). -/
 theorem end_to_end_assembled_theorem_statement {SK : Type} [Fintype SK]
     (beta : Budget) (muKey : Law (SK × Rq)) (A : ClassicalAdversary beta)
     (S : Sampler) (jatt : HacGlue.AttemptFamily) (k : ℝ)
     (tau : Law (Fin S.bits → Bool)) (deltaPRG : ℝ) (keyIdent : Prop)
     (hk : 1 ≤ k)
-    (huc : HacGlue.UniformChallengeAt S)
     (hshape : HacGlue.ReplyShapeAt S jatt)
     (hattempt : HacGlue.AttemptPointwiseAt jatt k)
     (hkey : keyIdent)
@@ -361,7 +379,7 @@ theorem end_to_end_assembled_theorem_statement {SK : Type} [Fintype SK]
       + deltaPRG := by
     intro _hkey
     have hcert : LocalJointCertificate S (SignLayerSupport.e2 k) :=
-      HacGlue.localJointCertificate_of_named_premises_e S k hk jatt huc hshape hattempt
+      HacGlue.localJointCertificate_of_named_premises_e S k hk jatt hshape hattempt
         ONoneGeometry.hone
     have hbase := concrete_euf_cma_to_mt_isis beta muKey A S (SignLayerSupport.e2 k) hcert
     rw [e2_eq] at hbase
@@ -378,7 +396,6 @@ theorem end_to_end_assembled_theorem_statement_prgTerm {SK : Type} [Fintype SK]
     (S : Sampler) (jatt : HacGlue.AttemptFamily) (k : ℝ)
     (tau : Law (Fin S.bits → Bool)) (keyIdent : Prop)
     (hk : 1 ≤ k)
-    (huc : HacGlue.UniformChallengeAt S)
     (hshape : HacGlue.ReplyShapeAt S jatt)
     (hattempt : HacGlue.AttemptPointwiseAt jatt k)
     (hkey : keyIdent) :
@@ -389,20 +406,20 @@ theorem end_to_end_assembled_theorem_statement_prgTerm {SK : Type} [Fintype SK]
             (Reduction.build beta A S)))
       + AdvPRG tau :=
   end_to_end_assembled_theorem_statement beta muKey A S jatt k tau (AdvPRG tau) keyIdent hk
-    huc hshape hattempt hkey (le_refl (AdvPRG tau))
+    hshape hattempt hkey (le_refl (AdvPRG tau))
 
 /-- THE candidate-factor export through
 `ONoneGeometry.localJointCertificate_of_attemptFactor`: at
 `k = SignLayerSupport.attemptFactor` the argument list drops the arithmetic
 side condition (`SignLayerSupport.attemptFactor_one_le`, proved) and the error
 is `e = attemptFactor^32 - 1 = SignLayerSupport.e2 SignLayerSupport.attemptFactor < 2^-32`
-(`e_at_attemptFactor`). The remaining named inputs are EXACTLY `huc`, `hshape`,
-`hattempt`, `hkey`, `hprg`. -/
+(`e_at_attemptFactor`). The remaining named inputs are EXACTLY `hshape`,
+`hattempt`, `hkey`, `hprg` (Layer 1 delivered by `HacGlue.romChallengeAt`,
+F04 repair variant A — not an argument). -/
 theorem end_to_end_assembled_theorem_attemptFactor {SK : Type} [Fintype SK]
     (beta : Budget) (muKey : Law (SK × Rq)) (A : ClassicalAdversary beta)
     (S : Sampler) (jatt : HacGlue.AttemptFamily)
     (tau : Law (Fin S.bits → Bool)) (deltaPRG : ℝ) (keyIdent : Prop)
-    (huc : HacGlue.UniformChallengeAt S)
     (hshape : HacGlue.ReplyShapeAt S jatt)
     (hattempt : HacGlue.AttemptPointwiseAt jatt SignLayerSupport.attemptFactor)
     (hkey : keyIdent)
@@ -415,7 +432,7 @@ theorem end_to_end_assembled_theorem_attemptFactor {SK : Type} [Fintype SK]
             (Reduction.build beta A S)))
       + deltaPRG :=
   end_to_end_assembled_theorem_statement beta muKey A S jatt SignLayerSupport.attemptFactor tau
-    deltaPRG keyIdent SignLayerSupport.attemptFactor_one_le huc hshape hattempt hkey hprg
+    deltaPRG keyIdent SignLayerSupport.attemptFactor_one_le hshape hattempt hkey hprg
 
 /-- The `exists_concrete_reducer`-style export of the assembled bound: the
 MT-ISIS adversary is EXACTLY `Reduction.build beta A S` (existence with the
@@ -426,7 +443,6 @@ theorem exists_assembled_reducer {SK : Type} [Fintype SK]
     (S : Sampler) (jatt : HacGlue.AttemptFamily) (k : ℝ)
     (tau : Law (Fin S.bits → Bool)) (deltaPRG : ℝ) (keyIdent : Prop)
     (hk : 1 ≤ k)
-    (huc : HacGlue.UniformChallengeAt S)
     (hshape : HacGlue.ReplyShapeAt S jatt)
     (hattempt : HacGlue.AttemptPointwiseAt jatt k)
     (hkey : keyIdent)
@@ -440,7 +456,7 @@ theorem exists_assembled_reducer {SK : Type} [Fintype SK]
         + deltaPRG :=
   ⟨Reduction.build beta A S, rfl,
     end_to_end_assembled_theorem_statement beta muKey A S jatt k tau deltaPRG keyIdent hk
-      huc hshape hattempt hkey hprg⟩
+      hshape hattempt hkey hprg⟩
 
 /-- The `concrete_hardness_substitution`-style corollary: plug an `AdvMT` bound
 `epsilon ≤ 1` for the concrete reducer. Same argument list as
@@ -450,7 +466,6 @@ theorem assembled_hardness_substitution {SK : Type} [Fintype SK]
     (S : Sampler) (jatt : HacGlue.AttemptFamily) (k : ℝ)
     (tau : Law (Fin S.bits → Bool)) (deltaPRG : ℝ) (keyIdent : Prop) (epsilon : ℝ)
     (hk : 1 ≤ k)
-    (huc : HacGlue.UniformChallengeAt S)
     (hshape : HacGlue.ReplyShapeAt S jatt)
     (hattempt : HacGlue.AttemptPointwiseAt jatt k)
     (hkey : keyIdent)
@@ -468,7 +483,7 @@ theorem assembled_hardness_substitution {SK : Type} [Fintype SK]
       + deltaPRG := by
     intro _hkey
     have hcert : LocalJointCertificate S (SignLayerSupport.e2 k) :=
-      HacGlue.localJointCertificate_of_named_premises_e S k hk jatt huc hshape hattempt
+      HacGlue.localJointCertificate_of_named_premises_e S k hk jatt hshape hattempt
         ONoneGeometry.hone
     have hbase := concrete_hardness_substitution beta muKey A S (SignLayerSupport.e2 k) epsilon
       hcert hepsilon hardness

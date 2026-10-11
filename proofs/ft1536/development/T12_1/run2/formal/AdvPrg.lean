@@ -63,9 +63,11 @@ drawn words stays the open `S.code` byte seam (B1) and is not claimed here.
 
 ## Consumption (the security parameter of the PRG claim)
 
-Per sampler call the model draws ONE tape `Fin S.bits → Bool`
-(`Run2.sample`/`Assembly.samplerLawAt` = `(Dist.draw tape).map (S.code …)`,
-Run2/Games.lean:96-97). A `beta`-budget game run executes at most `beta.qs`
+Per sampler call the model draws ONE tape `Fin S.bits → Bool` — the NOISE
+tape only (F04 repair, variant A: `Run2.sample`/`Assembly.samplerLawAt`
+draw the ROM challenge `c = H(r‖m)` OUTSIDE the tape and map the noise tape
+through `S.code h st m r c`; Run2/Games.lean). A `beta`-budget game run
+executes at most `beta.qs`
 sign tokens (`Program` indices are structural, Run2/Games.lean:76-79) and each
 executed sign token triggers at most one sampler call (the fresh-nonce branch
 of `Games.signSim`, Run2/Games.lean:144,:165-167). Total ChaCha20-tape
@@ -307,7 +309,9 @@ theorem frngTapeLaw_eq (seed : Law FrngState) (n : ℕ) :
 /-! ## 1. The exact tape consumption (the security parameter of the PRG claim) -/
 
 /-- Tape bits consumed per sampler call: exactly `S.bits` (one `Dist.draw` of
-`Fin S.bits → Bool` per call — `Run2.sample`/`Assembly.samplerLawAt`). -/
+`Fin S.bits → Bool` per call — the NOISE tape of `Run2.sample`/
+`Assembly.samplerLawAt`; the ROM challenge of variant A is drawn outside the
+tape and consumes no tape bits). -/
 def tapeBitsPerCall (S : Sampler) : ℕ := S.bits
 
 theorem tapeBitsPerCall_eq (S : Sampler) : tapeBitsPerCall S = S.bits := rfl
@@ -492,13 +496,15 @@ theorem hprg_of_chacha20 {S : Sampler} (tau : Law (Fin S.bits → Bool)) (deltaP
   advPRG_le_of_chacha20PRFBound tau deltaPRG h
 
 /-- The consumer plug: `Assembly.assembled_hardness_substitution` with the seam
-premise INSTALLED as the named standard assumption (task item 3). -/
+premise INSTALLED as the named standard assumption (task item 3). Layer 1 is
+delivered by the challenge-from-ROM construction (`HacGlue.romChallengeAt`,
+F04 repair variant A) and is not an argument; `tau` is the NOISE tape law
+(`S.bits` = noise-only tape width of variant A). -/
 theorem assembled_hardness_substitution_chacha {SK : Type} [Fintype SK]
     (beta : Budget) (muKey : Law (SK × Rq)) (A : ClassicalAdversary beta)
     (S : Sampler) (jatt : HacGlue.AttemptFamily) (k : ℝ)
     (tau : Law (Fin S.bits → Bool)) (deltaPRG : ℝ) (keyIdent : Prop) (epsilon : ℝ)
     (hk : 1 ≤ k)
-    (huc : HacGlue.UniformChallengeAt S)
     (hshape : HacGlue.ReplyShapeAt S jatt)
     (hattempt : HacGlue.AttemptPointwiseAt jatt k)
     (hkey : keyIdent)
@@ -511,7 +517,7 @@ theorem assembled_hardness_substitution_chacha {SK : Type} [Fintype SK]
         EventTransfer.phi ((1 + (k ^ 32 - 1)) ^ beta.qs - 1) epsilon)
       + deltaPRG :=
   Assembly.assembled_hardness_substitution beta muKey A S jatt k tau deltaPRG keyIdent epsilon
-    hk huc hshape hattempt hkey (hprg_of_chacha20 tau deltaPRG hprg) hepsilon hardness
+    hk hshape hattempt hkey (hprg_of_chacha20 tau deltaPRG hprg) hepsilon hardness
 
 /-- The assembled statement with the seam premise INSTALLED as the named
 standard assumption. -/
@@ -520,7 +526,6 @@ theorem end_to_end_assembled_theorem_statement_chacha {SK : Type} [Fintype SK]
     (S : Sampler) (jatt : HacGlue.AttemptFamily) (k : ℝ)
     (tau : Law (Fin S.bits → Bool)) (deltaPRG : ℝ) (keyIdent : Prop)
     (hk : 1 ≤ k)
-    (huc : HacGlue.UniformChallengeAt S)
     (hshape : HacGlue.ReplyShapeAt S jatt)
     (hattempt : HacGlue.AttemptPointwiseAt jatt k)
     (hkey : keyIdent)
@@ -532,7 +537,7 @@ theorem end_to_end_assembled_theorem_statement_chacha {SK : Type} [Fintype SK]
             (Reduction.build beta A S)))
       + deltaPRG :=
   Assembly.end_to_end_assembled_theorem_statement beta muKey A S jatt k tau deltaPRG keyIdent hk
-    huc hshape hattempt hkey (hprg_of_chacha20 tau deltaPRG hprg)
+    hshape hattempt hkey (hprg_of_chacha20 tau deltaPRG hprg)
 
 /-! ## 4. Route (a) is closed BY THEOREM (support counting) -/
 
