@@ -804,6 +804,16 @@ low-priority hardening batch later (re-prove SelectBitPreserve without
 bv_decide; resolve ThetaBox linter recursion properly). Then quick
 second review round on scope+evidence.
 
+## 2026-10-11: owner rule - operational/hardware content NEVER in the repo
+
+Explicit owner order: hardware, migration, mounts and operational
+handoffs stay OUT of the repository (it is public and cloned). Such
+material goes to ignored `proofs/ft1536/work/` or directly into the
+target window via chat. One offending handoff commit was erased from
+GitHub history by explicit owner order (forced update, the only
+allowed exception; two tip commits dropped, all older hashes and pins
+untouched). Future violations = stop-and-report, not silent commits.
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
