@@ -1,0 +1,455 @@
+{
+  "task": "KEYGEN_SOURCE_TO_FIBER_001",
+  "batch": "BATCH_063",
+  "stage": "B1.07",
+  "window": "CLOSED_AT_RECOVERABLE_MIDPOINT",
+  "b1_07_acceptance": "NOT_MET",
+  "stage_result": "PARTIAL_PROOF",
+  "status": "IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN",
+  "created_utc": "2026-10-11T10:36:15.303912+00:00",
+  "harness": "MiMo V2.6 Pro / xiaomi-token-plan-ams",
+  "runner_labels": "Historical labels remain provenance.",
+  "notes": {
+    "path": "notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_063_NOTES.md",
+    "sha256": "2c06bc865cc145f62334ce0f06c219b488ffebc66957f19b00a1576cea38b3a2",
+    "bytes": 8212
+  },
+  "entry_pins_receipt": {
+    "path": ".build/levels_063/ENTRY_PINS_063.json",
+    "sha256": "4403201aac8e9542f6563a90ea7d7b11d8747dacbb1aed9ac0d71fa6238510aa",
+    "bytes": 2848160
+  },
+  "predecessor_files": 12249,
+  "predecessor_inputs": 147,
+  "superseded": {},
+  "recorded_supersessions": "carried from ENTRY_PINS_062 (two 061 entries, accepted)",
+  "entry_verify": "tools/keygen_make_certificate_premises_batch.py verify 5fea1a8c… c42e8210… .build/levels_063/ENTRY_PINS_063.json (the sealed 062 pair; verifier_sha256 7eb468335fa0822d85ceba613f1c91a32e6f4ac54cd950662fd203d72de32e71)",
+  "ske_chain": {
+    "module": {
+      "path": "formal/Source3/KeygenMakeSkeChain.lean",
+      "sha256": "75ea0a449d229c87eb1d0b7365c989e4f92dec487acbaab31953aea55e7bfd87",
+      "bytes": 15006
+    },
+    "exports": "`chain`/`chain_source` (the nine pre-loop statements tied to `encoding.take 9`), `skeName_ne_skbuf`, `mat_at_head`, `bindSke_step` (creation at the `ske` store + foreign-store transport, Nat-indexed word bounds), `encoding_cons_normal`, `prefix_ske_chain` (ALL FOUR `SkeCellWord` words at the four-segment loop entry), `initCounter_words`, `chain_words_at_loop`, `segments_first_site`, `first_site_history`, `first_site_liveness` (062 derived liveness + source tie at the concrete segment-0 call site).",
+    "seam": "The survival of the words through the earlier codec calls of segments 1-3 is the B1.08/09 codec write-frame item (the 060 `SmallSite` heap effect is open); no codec outcome, exact encoded length or codec write frame is a premise of any export."
+  },
+  "accepted_module_checks": [
+    {
+      "module": "Source3.KeygenMakeSkeChain",
+      "source": {
+        "path": "formal/Source3/KeygenMakeSkeChain.lean",
+        "sha256": "75ea0a449d229c87eb1d0b7365c989e4f92dec487acbaab31953aea55e7bfd87",
+        "bytes": 15006
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_005/formal/Source3/KeygenMakeSkeChain.lean",
+        "sha256": "75ea0a449d229c87eb1d0b7365c989e4f92dec487acbaab31953aea55e7bfd87",
+        "bytes": 15006
+      },
+      "artifact": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_005/lib/Source3/KeygenMakeSkeChain.olean",
+        "sha256": "cc49e0b507c36c86bec8ce69c500db6349c0773142ed6ece48c240a9056b6338",
+        "bytes": 527448
+      },
+      "cache_artifact": {
+        "path": ".build/cache/Source3/KeygenMakeSkeChain.olean",
+        "sha256": "cc49e0b507c36c86bec8ce69c500db6349c0773142ed6ece48c240a9056b6338",
+        "bytes": 527448
+      },
+      "receipt": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_005/RECEIPTS.json",
+        "sha256": "e808a3792c56741792a46c6a56187cc210be97bc53824708e7fd5fca922a8a45",
+        "bytes": 3013
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_005/SOURCE_INPUTS.json",
+        "sha256": "0477b16529651c95de90e93921342f4a694bdd3ac10276c40370044c82be292e",
+        "bytes": 872011
+      },
+      "imports": {
+        "Source3.KeygenMakeSkeCells": "efdaec588e3686b03c0e4788475ef462fbab1d66373b56440846e240ff7d8330"
+      },
+      "elapsed_s": 38.571,
+      "maxrss_kib": 2962092
+    }
+  ],
+  "attempt_details": [
+    {
+      "job": "keygen_make_ske_chain_063_001",
+      "status": "FAILED_RETAINED",
+      "cause": "First elaboration REJECTED (retained): compact `j.val<i.val` parser slips, `Encoding` results typed `State` instead of `Result`, and `cases` on `Head` with the computed index `skeBind i.val (skeName i)` failing dependent elimination.",
+      "receipt": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_001/RECEIPTS.json",
+        "sha256": "c5ea3ae6311db35344457569273565f2c60254884c563f05799d2cf4c0d09501",
+        "bytes": 2926
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_001/SOURCE_INPUTS.json",
+        "sha256": "a45081481dbd8d08a86142224bd74198967f4c4a471a9ee4dd9e63561fdfc268",
+        "bytes": 872011
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_001/PREFLIGHT.json",
+        "sha256": "639c8510e6fd7e012f1da0c6ed9e9c78b7f6b7916623ad100b9f12d7aa570991",
+        "bytes": 147
+      },
+      "runner_snapshot": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_001/RUNNER_SOURCE.py",
+        "sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+        "bytes": 12792
+      },
+      "execution_snapshot": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_001/EXECUTION_SOURCE.py",
+        "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c",
+        "bytes": 8123
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_make_ske_chain_063_001/formal/Source3/KeygenMakeSkeChain.lean",
+          "sha256": "dbd8ee094bde01a8e95222a98a830833c518077710de40df3fb0336f40771f17",
+          "bytes": 12038
+        }
+      ],
+      "raw_files": [
+        {
+          "path": ".build/jobs/keygen_make_ske_chain_063_001/logs/Source3_KeygenMakeSkeChain.receipt.json",
+          "sha256": "7f557518b75e4df0a66a72107d4d554a93b0e71e6de3ae93af6da0804c96b9d6",
+          "bytes": 2713
+        },
+        {
+          "path": ".build/jobs/keygen_make_ske_chain_063_001/logs/Source3_KeygenMakeSkeChain.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_make_ske_chain_063_001/logs/Source3_KeygenMakeSkeChain.stdout",
+          "sha256": "df6efca5cb526567fa854b15ac07a6a2f73bc79e921a354169cd1af6b19ef180",
+          "bytes": 11370
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenMakeSkeChain",
+          "accepted": false,
+          "exit_code": 1,
+          "start": "2026-10-11T09:31:18.390750+00:00",
+          "stop": "2026-10-11T09:31:20.409826+00:00",
+          "elapsed_s": 2.019,
+          "maxrss_kib": 2941228
+        }
+      ],
+      "accepted_products": []
+    },
+    {
+      "job": "keygen_make_ske_chain_063_002",
+      "status": "FAILED_RETAINED",
+      "cause": "Second elaboration REJECTED (retained): the shape-equation inversion works but the `zeroCapacity` def is in `KeygenMakeInvocation`, `returnOne` is eliminated by the `.normal` index, `SmallSite` needs a Prop tail in the existential, `omega` cannot see through `Fin.val` literals, and the renamed index-field binder `s0` is unbound.",
+      "receipt": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_002/RECEIPTS.json",
+        "sha256": "58688d1ca3115e7853f5d0a56b5de94076e0f95e2353391f592468ec9620f728",
+        "bytes": 2927
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_002/SOURCE_INPUTS.json",
+        "sha256": "14651341b63ef122b533a548b3c03659a1060e7b9f2f095cc701dc4851e6172b",
+        "bytes": 872011
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_002/PREFLIGHT.json",
+        "sha256": "9997b8ac6396eb014174d8de72201ae5a6b817451c2fb7a542f9b3ad387ecaa0",
+        "bytes": 147
+      },
+      "runner_snapshot": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_002/RUNNER_SOURCE.py",
+        "sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+        "bytes": 12792
+      },
+      "execution_snapshot": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_002/EXECUTION_SOURCE.py",
+        "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c",
+        "bytes": 8123
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_make_ske_chain_063_002/formal/Source3/KeygenMakeSkeChain.lean",
+          "sha256": "a2a98bc748155596e217c545443466cbf28f0ee877e050d071aee6f2ddab7232",
+          "bytes": 15092
+        }
+      ],
+      "raw_files": [
+        {
+          "path": ".build/jobs/keygen_make_ske_chain_063_002/logs/Source3_KeygenMakeSkeChain.receipt.json",
+          "sha256": "61c8e6864c1761f58ad4ca2bb1eefd6eb24d3518c373b870a7f073e2dc157d90",
+          "bytes": 2714
+        },
+        {
+          "path": ".build/jobs/keygen_make_ske_chain_063_002/logs/Source3_KeygenMakeSkeChain.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_make_ske_chain_063_002/logs/Source3_KeygenMakeSkeChain.stdout",
+          "sha256": "16a820de39114a58aa27d514e0990278c855ea2be00d6b75118e17b31215ed3b",
+          "bytes": 5408
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenMakeSkeChain",
+          "accepted": false,
+          "exit_code": 1,
+          "start": "2026-10-11T09:52:05.018219+00:00",
+          "stop": "2026-10-11T09:52:24.274498+00:00",
+          "elapsed_s": 19.256,
+          "maxrss_kib": 2944868
+        }
+      ],
+      "accepted_products": []
+    },
+    {
+      "job": "keygen_make_ske_chain_063_003",
+      "status": "FAILED_RETAINED",
+      "cause": "Third elaboration REJECTED (retained): the index-field binder naming trap (the `bindSke` `(s : State)` field realizes the `s` index, so the binder keeps the index name; `sb` unbound) plus the unused `site` binder lint.",
+      "receipt": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_003/RECEIPTS.json",
+        "sha256": "8de5c7a293e2188d71d0b0e03f04278397d48d143432ed1eaf884d4952b1aee9",
+        "bytes": 2926
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_003/SOURCE_INPUTS.json",
+        "sha256": "c52c50ecf7b64dd2926388c5286c639e87a75c189e5bc35891ee16d6b5b4e7cd",
+        "bytes": 872011
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_003/PREFLIGHT.json",
+        "sha256": "f96b28d11c4bb891d821982bddaca3d61a784fd05e1edc7e0a663a64012e0450",
+        "bytes": 147
+      },
+      "runner_snapshot": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_003/RUNNER_SOURCE.py",
+        "sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+        "bytes": 12792
+      },
+      "execution_snapshot": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_003/EXECUTION_SOURCE.py",
+        "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c",
+        "bytes": 8123
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_make_ske_chain_063_003/formal/Source3/KeygenMakeSkeChain.lean",
+          "sha256": "dc17a7921b09e7b02b5ee0cf49ffd2c6f0c44e58c21f017f76305d0933938ee3",
+          "bytes": 15038
+        }
+      ],
+      "raw_files": [
+        {
+          "path": ".build/jobs/keygen_make_ske_chain_063_003/logs/Source3_KeygenMakeSkeChain.receipt.json",
+          "sha256": "4e551681c7dac462baa70a9d9049549af952d0ee121299e61abb3d7149e71252",
+          "bytes": 2713
+        },
+        {
+          "path": ".build/jobs/keygen_make_ske_chain_063_003/logs/Source3_KeygenMakeSkeChain.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_make_ske_chain_063_003/logs/Source3_KeygenMakeSkeChain.stdout",
+          "sha256": "9bdfd8fa2d7bfef15e1e9b3f45bb946f5c8488c5b6f5a650ffe846a4b291faa5",
+          "bytes": 940
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenMakeSkeChain",
+          "accepted": false,
+          "exit_code": 1,
+          "start": "2026-10-11T09:59:12.391088+00:00",
+          "stop": "2026-10-11T09:59:13.908643+00:00",
+          "elapsed_s": 1.518,
+          "maxrss_kib": 2947200
+        }
+      ],
+      "accepted_products": []
+    },
+    {
+      "job": "keygen_make_ske_chain_063_004",
+      "status": "FAILED_RETAINED",
+      "cause": "Fourth elaboration REJECTED (retained): dead `first | exact same.1 | exact same` fallback flagged by the unused-tactic linter.",
+      "receipt": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_004/RECEIPTS.json",
+        "sha256": "4410392218045a0c1b3d278741c26a0c635e14cf15ec7d6b217b8c01be5efdcc",
+        "bytes": 2927
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_004/SOURCE_INPUTS.json",
+        "sha256": "d22f62fb6ad9c1bb404a469e4d45c792fffeeb6a470b5a56594d658e90032264",
+        "bytes": 872011
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_004/PREFLIGHT.json",
+        "sha256": "89d2cda611fc73c9680d1af10c973e0c81bb76b967f32ab9269600343b6592fd",
+        "bytes": 147
+      },
+      "runner_snapshot": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_004/RUNNER_SOURCE.py",
+        "sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+        "bytes": 12792
+      },
+      "execution_snapshot": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_004/EXECUTION_SOURCE.py",
+        "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c",
+        "bytes": 8123
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_make_ske_chain_063_004/formal/Source3/KeygenMakeSkeChain.lean",
+          "sha256": "d6a59518a1cc7eded40be908ede8e834e5d6d2afabdd6ac56212be45cd3316bb",
+          "bytes": 15027
+        }
+      ],
+      "raw_files": [
+        {
+          "path": ".build/jobs/keygen_make_ske_chain_063_004/logs/Source3_KeygenMakeSkeChain.receipt.json",
+          "sha256": "3d5de78f436dc9fde36f8d673914d96ca05097db3f0b0e2308e3ab3225b8f40b",
+          "bytes": 2714
+        },
+        {
+          "path": ".build/jobs/keygen_make_ske_chain_063_004/logs/Source3_KeygenMakeSkeChain.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_make_ske_chain_063_004/logs/Source3_KeygenMakeSkeChain.stdout",
+          "sha256": "caf8d44364570a3e452ab4fd18e90a052ca5b2bb2ea89e6a39f2e5736da05cec",
+          "bytes": 310
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenMakeSkeChain",
+          "accepted": false,
+          "exit_code": 1,
+          "start": "2026-10-11T10:24:51.170423+00:00",
+          "stop": "2026-10-11T10:33:59.210704+00:00",
+          "elapsed_s": 548.04,
+          "maxrss_kib": 2937036
+        }
+      ],
+      "accepted_products": []
+    },
+    {
+      "job": "keygen_make_ske_chain_063_005",
+      "status": "ACCEPTED",
+      "receipt": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_005/RECEIPTS.json",
+        "sha256": "e808a3792c56741792a46c6a56187cc210be97bc53824708e7fd5fca922a8a45",
+        "bytes": 3013
+      },
+      "source_inputs": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_005/SOURCE_INPUTS.json",
+        "sha256": "0477b16529651c95de90e93921342f4a694bdd3ac10276c40370044c82be292e",
+        "bytes": 872011
+      },
+      "preflight": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_005/PREFLIGHT.json",
+        "sha256": "ce7416d46cfcf27bbb65f873d8e7ee0ea804af5d89501e774b79551285a87e16",
+        "bytes": 147
+      },
+      "runner_snapshot": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_005/RUNNER_SOURCE.py",
+        "sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+        "bytes": 12792
+      },
+      "execution_snapshot": {
+        "path": ".build/jobs/keygen_make_ske_chain_063_005/EXECUTION_SOURCE.py",
+        "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c",
+        "bytes": 8123
+      },
+      "snapshots": [
+        {
+          "path": ".build/jobs/keygen_make_ske_chain_063_005/formal/Source3/KeygenMakeSkeChain.lean",
+          "sha256": "75ea0a449d229c87eb1d0b7365c989e4f92dec487acbaab31953aea55e7bfd87",
+          "bytes": 15006
+        }
+      ],
+      "raw_files": [
+        {
+          "path": ".build/jobs/keygen_make_ske_chain_063_005/logs/Source3_KeygenMakeSkeChain.receipt.json",
+          "sha256": "319c17c6292fee6483be85c29d6173e0350d173c88c1e19634d140336fb960c3",
+          "bytes": 2712
+        },
+        {
+          "path": ".build/jobs/keygen_make_ske_chain_063_005/logs/Source3_KeygenMakeSkeChain.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": ".build/jobs/keygen_make_ske_chain_063_005/logs/Source3_KeygenMakeSkeChain.stdout",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      ],
+      "steps": [
+        {
+          "name": "Source3_KeygenMakeSkeChain",
+          "accepted": true,
+          "exit_code": 0,
+          "start": "2026-10-11T10:34:17.527083+00:00",
+          "stop": "2026-10-11T10:34:56.098162+00:00",
+          "elapsed_s": 38.571,
+          "maxrss_kib": 2962092
+        }
+      ],
+      "accepted_products": [
+        {
+          "path": ".build/jobs/keygen_make_ske_chain_063_005/lib/Source3/KeygenMakeSkeChain.olean",
+          "sha256": "cc49e0b507c36c86bec8ce69c500db6349c0773142ed6ece48c240a9056b6338",
+          "bytes": 527448
+        }
+      ]
+    }
+  ],
+  "attempt_counts": {
+    "ACCEPTED": 1,
+    "FAILED_RETAINED": 4,
+    "PRESTEP_ABORTED_RETAINED": 0,
+    "INTERRUPTED_RETAINED": 0
+  },
+  "contracts": {
+    "statement_chain": "The nine pre-loop statements executed in source order create the four `ske` cell words (`bindSke_step`) and reach the four-segment loop entry with all words holding (`prefix_ske_chain`).",
+    "first_site": "The segment-0 call boundary carries its complete cell history (`first_site_history`), so the 062 derived liveness and source tie apply at the concrete site (`first_site_liveness`)."
+  },
+  "open_in_b1_07": [
+    "The survival of the cell words through the earlier codec calls of segments 1-3 (the B1.08/09 codec write-frame item) with the exact grammar gaps for the codec body binding enumerated in the notes.",
+    "The B1.08/09 codec bodies/write frames/exact encoded lengths/bytewise round-trips and the B1.09 public packing (plan order).",
+    "The 063 batch tooling continuation (audit producer + full-terms audit + Sage scripted controls + batch seal) before further edits, per the 062 pattern.",
+    "Residue pin \"globals/common call ID/snapshots\": an EXPLICIT identifier value stays OPEN.",
+    "The literal refutation status of the all-state `LegalWorkspace` quantifier is not consumed."
+  ],
+  "outside_scope": [
+    "B1.08-B1.11 codec bodies/emitted-to-fiber/final replay, B4/B5 probability/availability/PRG/security, OS/Windows/compiler/machine refinement, CT and independent review."
+  ],
+  "tools": [
+    {
+      "path": "tools/job.py",
+      "sha256": "3bc29bf7aef246bcd49bcd1bafe0120f26225252f505208a9563d76919cafba5",
+      "bytes": 12792
+    },
+    {
+      "path": "tools/job_when_available.py",
+      "sha256": "525785c5321ebdda583c4e42d0daf5243b29146d10d47bd086d65fd89c53c37b",
+      "bytes": 3870
+    },
+    {
+      "path": "tools/keygen_make_certificate_premises_batch.py",
+      "sha256": "7eb468335fa0822d85ceba613f1c91a32e6f4ac54cd950662fd203d72de32e71",
+      "bytes": 23081
+    }
+  ],
+  "proof_head_note": "Own commits recorded at close; proof head in the notes pair.",
+  "active_jobs_at_close": [],
+  "push_by_this_worker": false,
+  "review_or_stages_import": false,
+  "limits": "Unchanged Lean j1/-M6144,AS12GiB/RSS8GiB,wall1800s,maxHeartbeats2000000,print200000;0/0 streams. No inherited source or job limits raised."
+}

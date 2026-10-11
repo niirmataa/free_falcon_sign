@@ -1,3 +1,113 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.07 statement-chain extraction / codec-seam midpoint
+
+**B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
+**Package: IN_PROGRESS / WORKING_NOT_FROZEN.**
+2026-10-11,BATCH_063,MiMo V2.6 Pro (`xiaomi-token-plan-ams`).
+**CLOSED_AT_RECOVERABLE_MIDPOINT.** Exactly one close this window.
+B1.05/032, B1.06/046, the 059/060 statement-machine extractions, the 061
+virtual-legal repair/loop chronology and the 062 premise repair/derived
+liveness unchanged; B1.08/B4/B5 NOT entered.
+Handoff:**43R**. Exact types/pins/traps:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_063_NOTES.md`.
+
+## 43. Closed — the concrete statement-chain extraction of the `ske` cell history
+
+1. PUNKT PIERWSZY (owner-ordered, §42R): the concrete statement-chain
+   extraction of `SkeCellWord` along the nine pre-loop statements is closed
+   (`Source3.KeygenMakeSkeChain`, accepted job
+   `keygen_make_ske_chain_063_005`, clean 0/0). The chain (`chain`, tied to
+   `KeygenMakeProgram.encoding.take 9` by `chain_source`) executes the
+   `klen` read, `skbuf` bind, private capacity test, `skbuf[0]` header byte
+   store, `skoff=1` and the four `ske[i]=...` pointer-array stores in
+   source order; `bindSke_step` shows each executed `ske` store CREATES its
+   segment's cell word (`ske_word_of_bind`) and preserves the earlier
+   segments' words (`ske_word_of_store_frame`, Nat-indexed word bounds);
+   `prefix_ske_chain` folds the nine steps: at the four-segment loop entry
+   ALL FOUR words hold simultaneously. Nothing before the first store
+   creates a word (the header store predates them all); the material cells
+   survive every statement (`mat_at_head` over `head_cells`).
+2. PUNKT DRUGI: the first encoder call site is fully extracted:
+   `segments_first_site` (at `i=0` the loop executes its
+   `falcon_encode_small` call first, so the segment-0 boundary is the
+   loop-entry state), `first_site_history` (the `ske[0]=f` word reaches
+   that boundary with no codec call in between) and `first_site_liveness`
+   (the 062 derived liveness `site.src.block∈env.live` and the source tie
+   `site.src=inputOf env 0` instantiated at the concrete site under the
+   pinned explicit live-set extension). NEW trap pinned this window —
+   index-field binder naming: a constructor field realizing a variable
+   index of the major premise keeps the INDEX variable's name in `cases`
+   alternatives (a renamed pattern binder is silently unbound).
+3. Entry pins 015–062 **12249 pins** verified with the sealed 062 pair
+   (`5fea1a8c…`/`c42e8210…`) into `.build/levels_063/ENTRY_PINS_063.json`
+   (`4403201a…`) BEFORE edits — the two RECORDED 061 supersessions carried,
+   no further supersession. Four rejected elaboration snapshots retained
+   (063_001–004) with sealed causes (compact-comparison parser slips,
+   `Result` typing, dependent-elimination failure on the computed
+   `skeBind` index, the `zeroCapacity` namespace misattribution,
+   `SmallSite` as a Type in the existential, `omega` vs `Fin.val` literals,
+   the index-field binder naming trap, the unused-tactic linter); one
+   entry-time slot wait on the foreign lane's Lean process (environment
+   race, no source bytes). The 063 audit/Sage/batch-seal tooling was NOT
+   run before this midpoint close and is the named next-entry task.
+
+### 43.1 Exact exports and remaining B1.07 obligations
+
+The discharge chain now reaches: one accepted `AttemptExec` derivation →
+six-gate spine → allocation-derived entry facts → public material →
+accepted solver call with the h frame → certificate frame (gate 6) →
+encoding-tail input boundary (059) → the 18-statement tail to the encoder
+call sites + teardown (060) → loop-trace chronology + `TailCells`
+derivation + repaired satisfiable virtual-map legality (061) → reachable
+certificate premises + derived call-site liveness (062) → **the concrete
+statement-chain extraction of the `ske` cell history to the four-segment
+loop entry and the segment-0 call site (this window)**. What remains
+honest and named: (a) the survival of the cell words through the earlier
+codec calls of segments 1–3 — the codec write-frame item, exactly the
+B1.08/09 seam, with the grammar gaps for the codec body binding enumerated
+in the 063 notes (`while`/`switch`, `|=`/`&=`/`<<=`, `U`-suffix numerals,
+pre/postfix `++` in expressions, byte stores in the generic fragment
+parsers); (b) the codec bodies and their write frames (B1.08/09: exact
+encoded lengths, persistence of the stored length words and source arrays
+through later encoder calls, bytewise round-trips); (c) the residue pin
+"globals/common call ID/snapshots" (EXPLICIT identifier value, OPEN); (d)
+the literal refutation status of the all-state `LegalWorkspace`
+quantifier. These are missing source composition proofs, NOT C/numerical
+counterexamples. Acceptance NOT met; Codecs B1.08/09 and B4/B5 laws stay
+outside.
+
+## 43R. Handoff — continue B1.07 at the codec seam, then B1.08/09 in order
+
+1. This window is CLOSED at exactly one recoverable midpoint,NOT
+   Acceptance. Do not auto-restart or enter B4/B5. Preserve BATCH_015–063
+   and all earlier/failed bytes (the four rejected elaborations 063_001–004
+   and the entry-time guard race record). The next owner-started window
+   continues in 43.1 order: the survival through the codec frames of
+   segments 1–3 first (the B1.08/09 seam), then B1.08/09 in plan order.
+2. BEFORE edits/jobs, run the 063 batch-tooling continuation first (the
+   audit producer + `KeygenMakeSkeChainAudit` full-terms audit, the Sage
+   scripted PUBLIC controls and the 063 batch seal, all by the 062
+   templates), then verify the entry pins with the sealed 063 pair
+   (`KEYGEN_SOURCE_TO_FIBER_001_BATCH_063.json` sha + notes sha) into
+   `.build/levels_064/ENTRY_PINS_064.json`. Mismatch is stop-and-report,
+   not silent repair. Use `job_when_available.py`; never run two
+   wait-runners of your own at once; a guard rejection with no source bytes
+   is an environment race (new label, re-run).
+3. Use NEW modules for the codec seam; `KeygenMakeSkeChain` and its audit
+   bytes are current. The codec body binding must close the enumerated
+   grammar gaps honestly (extend the grammar only as needed, keep the
+   pinned caller parse kernel-checked); derive the write confinement from
+   the bodies — never insert codec outcomes, exact encoded lengths or codec
+   write frames as premises. Beware the accumulated traps (`prefix`
+   keyword, index-filling `cases` binders binding nothing, char-list `Name`
+   disequalities, `{s with ...}` structure updates, implicit-argument
+   membership lemmas, unused signature binders/tactics under the linter,
+   computed-index dependent elimination, index-field binder naming,
+   `omega` vs `Fin.val` literals).
+4. One owner-started stage/window, one Acceptance or expanded midpoint,
+   bounded serial guarded jobs, unchanged limits/0/0 logs/native Sage.
+   Small local exact-path commits;push only on explicit owner signal;no
+   automatic review/delegation/relay/migration/import.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.07 certificate-premise repair / derived liveness midpoint
 
 **B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
