@@ -1,3 +1,4 @@
+import Mathlib.Data.Fintype.Pigeonhole
 import Source3.KeygenMakeStatementMachine
 import Source3.KeygenMakeArguments
 import Source3.KeygenMakeCertChronology
@@ -18,6 +19,21 @@ set_option Elab.async false
    (`KeygenMakeLifetime.close`: outer scope restore + disposal of the six
    automatic blocks) closes EVERY return edge of the invocation, including
    the attempt-cap edge.
+
+   Map legality repair (2026-10-11, cross-lane catch): the first 060 shape of
+   `VirtualLegal` quantified the sub-2^64 bound and the distinctness of the
+   virtual address map over ALL `Nat` block identifiers. That shape is
+   UNSATISFIABLE (`no_global_virtual_legal`, kernel pigeonhole below), so
+   every theorem consuming it -- in particular the `Invocation.encoded`
+   branch and the write-then-read pointer tie -- was vacuous. The legality
+   class is now restricted to the FINITE set of live memory blocks of one
+   invocation (`Env.live`: the six automatic-object blocks, the five
+   external argument objects and the two fk-context objects); the pointer
+   uniqueness proofs are transferred to the restricted class
+   (`canonical_word_eq`/`read_unique`/`small_site_material`) and the class
+   is shown ACHIEVABLE (`virtualLegal_identity`/`virtualLegal_exists`).
+   Blocks outside the live set are unconstrained; consumers needing a
+   further block extend the live set explicitly.
 
    Call-site boundary: the codec BODIES are B1.08/09. Each encoder call
    event carries its open return value and heap effect; the write frame of
@@ -56,12 +72,27 @@ open KeygenMakeProgram (varExpr number)
 
 /-- The fixed data of ONE `falcon_keygen_make` invocation: the external
     arguments, the six automatic-object blocks, the fk context and the
-    virtual address map used for LP64 pointer words. -/
+    virtual address map used for LP64 pointer words. The map is constrained
+    by `VirtualLegal` only on the finite live-block set `Env.live`. -/
 structure Env where
   args : KeygenMakeArguments.Arguments
   blocks : Fin 6 → Nat
   ctx : Context
   vb : Nat → Nat
+
+/-- The finite set of LIVE memory blocks of one invocation: the six
+    automatic-object blocks (`f`/`g`/`F`/`G`/`h`/`ske`), the five external
+    argument objects (`fk`, `privkey`, `privkey_len`, `pubkey`,
+    `pubkey_len`) and the two fk-context objects (the fk object and its
+    scratch). Every block whose pointer word the invocation reads or stores
+    lives in this set; the address map is constrained exactly here. -/
+def Env.live (env : Env) : List Nat :=
+  [env.blocks 0,env.blocks 1,env.blocks 2,env.blocks 3,env.blocks 4,env.blocks 5,
+   env.args.fk.block,env.args.privkey.block,env.args.privkeyLen.block,
+   env.args.pubkey.block,env.args.pubkeyLen.block,env.ctx.object.block,env.ctx.scratch.block]
+
+theorem blocks_mem_live (env : Env) (slot : Fin 6) : env.blocks slot∈env.live := by
+  fin_cases slot <;> simp [Env.live]
 
 def inputOf (env : Env) : Fin 4 → ArrayPointer := KeygenMakeEntry.input env.blocks
 def publicOf (env : Env) : ArrayPointer := KeygenMakeEntry.publicPointer env.blocks
@@ -98,11 +129,40 @@ def StoreByte (before : Memory) (p : ArrayPointer) (w : BitVec 8) (after : Memor
 def wordOf (vb : Nat → Nat) (p : ArrayPointer) : BitVec 64 :=
   BitVec.ofNat 64 (vb p.block+p.offset)
 
-/-- Legality of the virtual address map: every live block has a
-    sub-2^64 base and distinct blocks have distinct virtual bases. -/
-structure VirtualLegal (vb : Nat → Nat) : Prop where
-  bounded : ∀ block, vb block<2^64
-  distinct : ∀ b c : Nat, vb b=vb c → b=c
+/-- Legality of the virtual address map ON THE FINITE SET of live memory
+    blocks: every live block has a sub-2^64 virtual base and distinct live
+    blocks have distinct virtual bases. The map is unconstrained outside the
+    live set. The unqualified all-`Nat` reading of these two fields is
+    unsatisfiable (see `no_global_virtual_legal`) and would make every
+    consumer vacuous. -/
+structure VirtualLegal (live : List Nat) (vb : Nat → Nat) : Prop where
+  bounded : ∀ block, block∈live → vb block<2^64
+  distinct : ∀ b c, b∈live → c∈live → vb b=vb c → b=c
+
+/-- THE trap record of the 060 shape: a virtual map with a sub-2^64 base at
+    EVERY `Nat` block identifier and injective on all of `Nat` cannot exist
+    (an injection `Nat → Fin (2^64)` contradicts the pigeonhole principle).
+    Any premise carrying this class is uninhabited, so conclusions drawn
+    under it are vacuous; the legality class must stay restricted to a
+    finite live set. -/
+theorem no_global_virtual_legal (vb : Nat → Nat)
+    (bounded : ∀ block, vb block<2^64) (distinct : ∀ b c : Nat, vb b=vb c → b=c) : False := by
+  let g : Nat → Fin (2^64) := fun n => ⟨vb n,bounded n⟩
+  apply not_injective_infinite_finite g
+  intro a b equal
+  exact distinct a b (congrArg Fin.val equal)
+
+/-- Achievability of the restricted legality: the identity map is legal on
+    any finite live set of sub-2^64 blocks. -/
+theorem virtualLegal_identity (live : List Nat) (small : ∀ b, b∈live → b<2^64) :
+    VirtualLegal live id :=
+  ⟨fun block member => small block member,fun _ _ _ _ words => words⟩
+
+/-- The restricted legality class is inhabited whenever the live blocks are
+    sub-2^64: the encoded branch premise is satisfiable again. -/
+theorem virtualLegal_exists (live : List Nat) (small : ∀ b, b∈live → b<2^64) :
+    ∃ vb, VirtualLegal live vb :=
+  ⟨id,virtualLegal_identity live small⟩
 
 /-- The canonical small-array pointer shape held in the `ske` cells. -/
 structure Canonical (p : ArrayPointer) : Prop where
@@ -146,9 +206,11 @@ theorem load64_of_store (before after : Memory) (p : ArrayPointer) (w : BitVec 6
     exact content i
 
 /-- Two pointer words of canonical shape decide the pointer: the word is
-    the virtual base of the block, and the legal map is injective. -/
-theorem canonical_word_eq (vb : Nat → Nat) (legal : VirtualLegal vb)
+    the virtual base of the block, the legal map is bounded there and
+    injective on the live set, so live blocks with equal words are equal. -/
+theorem canonical_word_eq (vb : Nat → Nat) (live : List Nat) (legal : VirtualLegal live vb)
     (p q : ArrayPointer) (cp : Canonical p) (cq : Canonical q)
+    (plive : p.block∈live) (qlive : q.block∈live)
     (words : wordOf vb p=wordOf vb q) : p=q := by
   cases p with | mk pb pbase pcount pwidth pindex =>
   cases q with | mk qb qbase qcount qwidth qindex =>
@@ -168,18 +230,19 @@ theorem canonical_word_eq (vb : Nat → Nat) (legal : VirtualLegal vb)
   have mods : (vb pb)%2^64=(vb qb)%2^64 := by
     have eq := congrArg BitVec.toNat words
     simpa [BitVec.toNat_ofNat] using eq
-  have bp := Nat.mod_eq_of_lt (legal.bounded pb)
-  have bq := Nat.mod_eq_of_lt (legal.bounded qb)
+  have bp := Nat.mod_eq_of_lt (legal.bounded pb plive)
+  have bq := Nat.mod_eq_of_lt (legal.bounded qb qlive)
   rw [bp,bq] at mods
-  have blocks : pb=qb := legal.distinct pb qb mods
+  have blocks : pb=qb := legal.distinct pb qb plive qlive mods
   subst blocks
   subst zeroBase zeroIndex smallCount smallWidth qBase qIndex qCount qWidth
   rfl
 
-theorem read_unique (vb : Nat → Nat) (legal : VirtualLegal vb) (heap : Memory)
-    (cell p q : ArrayPointer) (first : ReadPointer vb heap cell p)
+theorem read_unique (vb : Nat → Nat) (live : List Nat) (legal : VirtualLegal live vb)
+    (heap : Memory) (cell p q : ArrayPointer) (plive : p.block∈live) (qlive : q.block∈live)
+    (first : ReadPointer vb heap cell p)
     (second : ReadPointer vb heap cell q) : p=q :=
-  canonical_word_eq vb legal p q first.canonical second.canonical
+  canonical_word_eq vb live legal p q first.canonical second.canonical plive qlive
     (load64_deterministic heap cell (wordOf vb p) (wordOf vb q) first.load second.load)
 
 theorem input_canonical (env : Env) (i : Fin 4) : Canonical (inputOf env i) := by
@@ -193,6 +256,11 @@ theorem input_canonical (env : Env) (i : Fin 4) : Canonical (inputOf env i) := b
 
 theorem skeElem_offset (env : Env) (i : Fin 4) : (skeElem env i).offset=8*i.val := by
   simp [skeElem,skePtr,KeygenMakeObjects.pointer,ArrayPointer.offset,KeygenMakeObjects.width]
+
+theorem inputOf_mem_live (env : Env) (i : Fin 4) : (inputOf env i).block∈env.live :=
+  blocks_mem_live env ⟨i.val,by have := i.isLt; omega⟩
+theorem publicOf_mem_live (env : Env) : (publicOf env).block∈env.live := blocks_mem_live env 4
+theorem skePtr_mem_live (env : Env) : (skePtr env).block∈env.live := blocks_mem_live env 5
 
 /-! ## 3. The actual encoder call sites -/
 
@@ -236,17 +304,19 @@ structure PublicSite (env : Env) (destination : Callee) (before : State)
   lognCell : before.locals "logn".toList=some (.uint32,some (.uint32 logn))
 
 /-- THE source tie at a segment call site: when the stored `ske[i]` pointer
-    word is readable at the call boundary, the source argument IS the
-    material array of segment `i` (write-then-read uniqueness of the legal
-    pointer representation). The persistence of that word through earlier
-    codec calls is the B1.08 source-preservation item. -/
+    word is readable at the call boundary and the read block is LIVE, the
+    source argument IS the material array of segment `i` (write-then-read
+    uniqueness of the legal pointer representation on the live set). The
+    persistence of that word through earlier codec calls is the B1.08
+    source-preservation item. -/
 theorem small_site_material (env : Env) (before : State) (i : Fin 4)
     (after : Memory) (ret : BitVec 64) (site : SmallSite env before i after ret)
-    (legal : VirtualLegal env.vb)
+    (legal : VirtualLegal env.live env.vb)
+    (srcLive : site.src.block∈env.live)
     (word : Load64 before.heap (skeElem env i) (wordOf env.vb (inputOf env i))) :
     site.src=inputOf env i :=
-  read_unique env.vb legal before.heap (skeElem env i) site.src (inputOf env i)
-    site.srcCell ⟨input_canonical env i,word⟩
+  read_unique env.vb env.live legal before.heap (skeElem env i) site.src (inputOf env i)
+    srcLive (inputOf_mem_live env i) site.srcCell ⟨input_canonical env i,word⟩
 
 /-! ## 4. The four-segment loop statement -/
 
@@ -571,7 +641,7 @@ inductive Invocation (env : Env) (caller : State) :
       (loop : KeygenMakeCertChronology.LoopTrace env.ctx after loopOut attempts)
       (succeeded : loopOut.flow=.normal)
       (cells : TailCells env loopOut.state)
-      (legal : VirtualLegal env.vb)
+      (legal : VirtualLegal env.live env.vb)
       (tail : Encoding env KeygenMakeProgram.encoding loopOut.state tailOut) :
       Invocation env caller events (KeygenMakeLifetime.close bound env.blocks tailOut)
   | capped (events : List KeygenEntropySource.Event) (bound after : State)
