@@ -1,0 +1,809 @@
+{
+  "scope": "owned compiler telemetry,8 bounded sequential diagnostics; not sampler execution cost or mathematical security evidence",
+  "owner_limits": {
+    "instruction": "nie przerywamy prob zwieksz limit nie mozemy tak zostawic do tego zmapuj co tyle zre",
+    "date": "2026-10-11",
+    "Lean_M_MiB": 6144,
+    "RLIMIT_AS_GiB": 10,
+    "CPU_seconds": 110,
+    "cores": 1,
+    "max_concurrent_Lean": 1,
+    "old_limits_preserved_in_existing_receipts": true,
+    "minimum_MemAvailable_to_launch_KiB": 7340032,
+    "own_process_stop_below_MemAvailable_KiB": 2097152
+  },
+  "method": "RUSAGE_CHILDREN peak RSS plus periodic proc status/smaps and Lean --profile --stats. Snapshot categories need not sum to peak RSS. Wall times may include I/O; no CPU-time inference. Imports-only core rewrite retains the complete original body.",
+  "runs": [
+    {
+      "label": "init001",
+      "receipt": "proofs/ft1536/development/S05_QROM/.build/pair_machine_020/cap_light_001/memory_001/init001/receipt.json",
+      "receipt_sha256": "f5ab8be1df2117943c04d9647c44de261db93c6cadaa67ddb5459486dd5154c8",
+      "source_sha256": "d63c9b8762ae56b9a2bae0842c5492786ffba8d005a3c1195d69999157fdcb13",
+      "exit_code": 0,
+      "peak_RSS_KiB": 459104,
+      "elapsed_seconds": 0.6040862759982701,
+      "stats": {
+        "number of imported modules": 3245,
+        "number of memory-mapped modules": 3245,
+        "number of imported bytes": 389437304,
+        "number of imported consts": 66152
+      },
+      "warning_count": 0,
+      "error_count": 0,
+      "min_MemAvailable_KiB": 9795252
+    },
+    {
+      "label": "tactic001",
+      "receipt": "proofs/ft1536/development/S05_QROM/.build/pair_machine_020/cap_light_001/memory_001/tactic001/receipt.json",
+      "receipt_sha256": "1212038a44d84057633578f6fc5907d5822af4a3aa39b4e44567ca7200b42543",
+      "source_sha256": "9159430547147aa0351f36458aa81528155e1249742a8efc5e7322609e561ce9",
+      "exit_code": 0,
+      "peak_RSS_KiB": 3279068,
+      "elapsed_seconds": 1.7162895839974226,
+      "stats": {
+        "number of imported modules": 23155,
+        "number of memory-mapped modules": 23155,
+        "number of imported bytes": 3758600208,
+        "number of imported consts": 437454
+      },
+      "warning_count": 0,
+      "error_count": 0,
+      "map_snapshot": {
+        "path": "proofs/ft1536/development/S05_QROM/.build/pair_machine_020/cap_light_001/memory_001/tactic001/smaps_000.txt",
+        "sha256": "8a94b9a0437ed44a13550aa74bfa66313660cc5081831b99d07ae897542dcf86",
+        "sample_seconds": 1.0031658579973737,
+        "snapshot_RSS_KiB": 2941468,
+        "by_category_KiB": {
+          "other_Lean_packages": 121796,
+          "Lean_Init_Std": 868960,
+          "Mathlib": 1751428,
+          "anonymous_heap_stack": 113956,
+          "shared_libraries": 85328
+        },
+        "by_type_KiB": {
+          "olean": 902084,
+          "olean.server": 70488,
+          "olean.private": 1531820,
+          "other": 217824,
+          "ir": 219252
+        },
+        "largest_mappings_KiB": [
+          [
+            "[anonymous]",
+            113756
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/libleanshared.so",
+            83232
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/BitVec/Lemmas.olean.private",
+            11736
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DTreeMap/Internal/Lemmas.olean.private",
+            7216
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/Internal/List/Associative.olean.private",
+            7044
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/Array/Lemmas.olean.private",
+            5948
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/BitVec/Bitblast.olean.private",
+            5376
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DTreeMap/Internal/Model.olean",
+            5224
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DHashMap/Internal/RawLemmas.olean.private",
+            4608
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/List/Lemmas.olean.private",
+            4224
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/Int/DivMod/Lemmas.olean.private",
+            4124
+          ],
+          [
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/batteries/.lake/build/lib/lean/Batteries/Data/List/Lemmas.olean.private",
+            4020
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DHashMap/RawLemmas.olean.private",
+            3952
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/Vector/Lemmas.olean.private",
+            3628
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DTreeMap/Internal/Balancing.olean.private",
+            3320
+          ]
+        ]
+      },
+      "min_MemAvailable_KiB": 9499876
+    },
+    {
+      "label": "read001",
+      "receipt": "proofs/ft1536/development/S05_QROM/.build/pair_machine_020/cap_light_001/memory_001/read001/receipt.json",
+      "receipt_sha256": "856f2e6d9f267dc9c1e110d5891458614bedb0aba27bbe06f515fb9b8b56b894",
+      "source_sha256": "6eb4eb2345fddd3a63d39e5201d811b62f678dc78261bbd4d692b232606b09be",
+      "exit_code": 0,
+      "peak_RSS_KiB": 3281188,
+      "elapsed_seconds": 1.7123490780031716,
+      "stats": {
+        "number of imported modules": 23160,
+        "number of memory-mapped modules": 23160,
+        "number of imported bytes": 3760849560,
+        "number of imported consts": 437883
+      },
+      "warning_count": 0,
+      "error_count": 0,
+      "map_snapshot": {
+        "path": "proofs/ft1536/development/S05_QROM/.build/pair_machine_020/cap_light_001/memory_001/read001/smaps_000.txt",
+        "sha256": "afee5eb5641f2487ad2bd99fe0b86f9709844466563c2620402cbeb0570eda67",
+        "sample_seconds": 1.0037934600004519,
+        "snapshot_RSS_KiB": 3038752,
+        "by_category_KiB": {
+          "other_Lean_packages": 131424,
+          "Lean_Init_Std": 912524,
+          "Mathlib": 1773000,
+          "project": 1820,
+          "anonymous_heap_stack": 134656,
+          "shared_libraries": 85328
+        },
+        "by_type_KiB": {
+          "olean": 918444,
+          "olean.server": 70488,
+          "olean.private": 1588804,
+          "other": 238524,
+          "ir": 222492
+        },
+        "largest_mappings_KiB": [
+          [
+            "[anonymous]",
+            134456
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/libleanshared.so",
+            83232
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/BitVec/Lemmas.olean.private",
+            11736
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DTreeMap/Internal/Lemmas.olean.private",
+            7216
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/Internal/List/Associative.olean.private",
+            7044
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/Array/Lemmas.olean.private",
+            5948
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/BitVec/Bitblast.olean.private",
+            5376
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DTreeMap/Internal/Model.olean",
+            5224
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DHashMap/Internal/RawLemmas.olean.private",
+            4796
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/List/Lemmas.olean.private",
+            4224
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/Int/DivMod/Lemmas.olean.private",
+            4124
+          ],
+          [
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/batteries/.lake/build/lib/lean/Batteries/Data/List/Lemmas.olean.private",
+            4020
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DHashMap/RawLemmas.olean.private",
+            3952
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/Vector/Lemmas.olean.private",
+            3628
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DTreeMap/Internal/Balancing.olean.private",
+            3320
+          ]
+        ]
+      },
+      "min_MemAvailable_KiB": 9604112
+    },
+    {
+      "label": "tables001",
+      "receipt": "proofs/ft1536/development/S05_QROM/.build/pair_machine_020/cap_light_001/memory_001/tables001/receipt.json",
+      "receipt_sha256": "4d1ee07f074e515d1e37d86e0fd24090d41392f163e66b8e193211435dd3c982",
+      "source_sha256": "1f1733c6cde683376da7c09e349e59b84af11a070435686e00380b9c681b4ab2",
+      "exit_code": 0,
+      "peak_RSS_KiB": 2432008,
+      "elapsed_seconds": 1.501412359000824,
+      "stats": {
+        "number of imported modules": 17330,
+        "number of memory-mapped modules": 17330,
+        "number of imported bytes": 2826455312,
+        "number of imported consts": 344317
+      },
+      "warning_count": 0,
+      "error_count": 0,
+      "map_snapshot": {
+        "path": "proofs/ft1536/development/S05_QROM/.build/pair_machine_020/cap_light_001/memory_001/tables001/smaps_000.txt",
+        "sha256": "ea41f91cc6970fd87bab0ea5b4e817f609c38741292bf6a1dad411695bd03d5d",
+        "sample_seconds": 1.0038186169986147,
+        "snapshot_RSS_KiB": 2359416,
+        "by_category_KiB": {
+          "other_Lean_packages": 143968,
+          "Lean_Init_Std": 912848,
+          "Mathlib": 1065496,
+          "anonymous_heap_stack": 123796,
+          "project": 28848,
+          "shared_libraries": 84460
+        },
+        "by_type_KiB": {
+          "olean": 697036,
+          "olean.server": 53824,
+          "olean.private": 1181900,
+          "other": 222116,
+          "ir": 204540
+        },
+        "largest_mappings_KiB": [
+          [
+            "[anonymous]",
+            123596
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/libleanshared.so",
+            82364
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/BitVec/Lemmas.olean.private",
+            11736
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DTreeMap/Internal/Lemmas.olean.private",
+            7408
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/Internal/List/Associative.olean.private",
+            7044
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/Array/Lemmas.olean.private",
+            5948
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/BitVec/Bitblast.olean.private",
+            5376
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DTreeMap/Internal/Model.olean",
+            5224
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DHashMap/Internal/RawLemmas.olean.private",
+            4796
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/List/Lemmas.olean.private",
+            4224
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/Int/DivMod/Lemmas.olean.private",
+            4124
+          ],
+          [
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/batteries/.lake/build/lib/lean/Batteries/Data/List/Lemmas.olean.private",
+            4020
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DHashMap/RawLemmas.olean.private",
+            3952
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/Vector/Lemmas.olean.private",
+            3628
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DTreeMap/Internal/Balancing.olean.private",
+            3320
+          ]
+        ]
+      },
+      "min_MemAvailable_KiB": 9086960
+    },
+    {
+      "label": "importpair001",
+      "receipt": "proofs/ft1536/development/S05_QROM/.build/pair_machine_020/cap_light_001/memory_001/importpair001/receipt.json",
+      "receipt_sha256": "546b9c0c3305c015e2b0f361ffe5a8a4c20437070e97b5b96a10c9f2a979eb8c",
+      "source_sha256": "1a548de593a3f74acb9ef557c26342c10bacc27c9ea8937fa3eaea23f0c868d2",
+      "exit_code": 0,
+      "peak_RSS_KiB": 3924612,
+      "elapsed_seconds": 1.9338744050000969,
+      "stats": {
+        "number of imported modules": 26794,
+        "number of memory-mapped modules": 26794,
+        "number of imported bytes": 4555635472,
+        "number of imported consts": 588088
+      },
+      "warning_count": 0,
+      "error_count": 0,
+      "map_snapshot": {
+        "path": "proofs/ft1536/development/S05_QROM/.build/pair_machine_020/cap_light_001/memory_001/importpair001/smaps_000.txt",
+        "sha256": "3b567f77f6dbe693e7f57247d0a8f631a5c71543e4a0a8a7a6414818f32eec05",
+        "sample_seconds": 1.0034938390017487,
+        "snapshot_RSS_KiB": 3533012,
+        "by_category_KiB": {
+          "other_Lean_packages": 117848,
+          "Mathlib": 2169192,
+          "Lean_Init_Std": 864736,
+          "project": 155956,
+          "anonymous_heap_stack": 139948,
+          "shared_libraries": 85332
+        },
+        "by_type_KiB": {
+          "olean": 1199760,
+          "olean.server": 80612,
+          "olean.private": 1796360,
+          "other": 246420,
+          "ir": 209860
+        },
+        "largest_mappings_KiB": [
+          [
+            "[anonymous]",
+            139744
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/libleanshared.so",
+            83236
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/BitVec/Lemmas.olean.private",
+            11736
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DTreeMap/Internal/Lemmas.olean.private",
+            7216
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/Internal/List/Associative.olean.private",
+            7044
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/Array/Lemmas.olean.private",
+            5948
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/BitVec/Bitblast.olean.private",
+            5376
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DTreeMap/Internal/Model.olean",
+            5224
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DHashMap/Internal/RawLemmas.olean.private",
+            4608
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/List/Lemmas.olean.private",
+            4224
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/Int/DivMod/Lemmas.olean.private",
+            4124
+          ],
+          [
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/batteries/.lake/build/lib/lean/Batteries/Data/List/Lemmas.olean.private",
+            4020
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DHashMap/RawLemmas.olean.private",
+            3952
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/Vector/Lemmas.olean.private",
+            3628
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DTreeMap/Internal/Balancing.olean.private",
+            3320
+          ]
+        ]
+      },
+      "min_MemAvailable_KiB": 10155384
+    },
+    {
+      "label": "widepair001",
+      "receipt": "proofs/ft1536/development/S05_QROM/.build/pair_machine_020/cap_light_001/memory_001/widepair001/receipt.json",
+      "receipt_sha256": "6e01577f7a6e2b6ccbf554a53cf665fced7fd281e2c8a33fb06487c625cafa7c",
+      "source_sha256": "d6d0720553b84c4e2a669fe9ba92ad975d96190931f33301f0a988601debcdf6",
+      "exit_code": 1,
+      "peak_RSS_KiB": 6292020,
+      "elapsed_seconds": 446.45588855499955,
+      "stats": {
+        "number of imported modules": 26792,
+        "number of memory-mapped modules": 26792,
+        "number of imported bytes": 4555524136,
+        "number of imported consts": 588081
+      },
+      "warning_count": 0,
+      "error_count": 1,
+      "map_snapshot": {
+        "path": "proofs/ft1536/development/S05_QROM/.build/pair_machine_020/cap_light_001/memory_001/widepair001/smaps_049.txt",
+        "sha256": "c16e525a00b5695fb36fabf66788eb4f48c93079ac626b957b9683eaa8fd7f68",
+        "sample_seconds": 443.5637134179997,
+        "snapshot_RSS_KiB": 6292148,
+        "by_category_KiB": {
+          "other_Lean_packages": 147112,
+          "Mathlib": 2283872,
+          "Lean_Init_Std": 967276,
+          "project": 155908,
+          "anonymous_heap_stack": 2645000,
+          "shared_libraries": 92980
+        },
+        "by_type_KiB": {
+          "olean": 1255136,
+          "olean.server": 80612,
+          "olean.private": 1920832,
+          "other": 2759120,
+          "ir": 276448
+        },
+        "largest_mappings_KiB": [
+          [
+            "[anonymous]",
+            2644796
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/libleanshared.so",
+            90884
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/BitVec/Lemmas.olean.private",
+            11736
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DTreeMap/Internal/Lemmas.olean.private",
+            7408
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/Internal/List/Associative.olean.private",
+            7044
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/Array/Lemmas.olean.private",
+            5948
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/BitVec/Bitblast.olean.private",
+            5376
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DTreeMap/Internal/Model.olean",
+            5224
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DHashMap/Internal/RawLemmas.olean.private",
+            4796
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/List/Lemmas.olean.private",
+            4224
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/Int/DivMod/Lemmas.olean.private",
+            4124
+          ],
+          [
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/batteries/.lake/build/lib/lean/Batteries/Data/List/Lemmas.olean.private",
+            4020
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DHashMap/RawLemmas.olean.private",
+            3952
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Lean/Elab/MutualDef.olean.private",
+            3672
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/Vector/Lemmas.olean.private",
+            3628
+          ]
+        ]
+      },
+      "min_MemAvailable_KiB": 7634636
+    },
+    {
+      "label": "namedpair001",
+      "receipt": "proofs/ft1536/development/S05_QROM/.build/pair_machine_020/cap_light_001/memory_001/namedpair001/receipt.json",
+      "receipt_sha256": "8c75f37d4c516f20b7d218ac86ff2a870edcfc1b372e8b95a12512c77ec53f9b",
+      "source_sha256": "1b663528e9ec3db0e1b24f3caeb41ea5008c6209cda352d6f16759bbf7244f33",
+      "exit_code": 0,
+      "peak_RSS_KiB": 3944920,
+      "elapsed_seconds": 4.048296999997547,
+      "stats": {
+        "number of imported modules": 26795,
+        "number of memory-mapped modules": 26795,
+        "number of imported bytes": 4555667928,
+        "number of imported consts": 588090
+      },
+      "warning_count": 0,
+      "error_count": 0,
+      "map_snapshot": {
+        "path": "proofs/ft1536/development/S05_QROM/.build/pair_machine_020/cap_light_001/memory_001/namedpair001/smaps_001.txt",
+        "sha256": "947c73920ac8c74224f76758368b885d9eb39f6d3067d809aa66281388495edb",
+        "sample_seconds": 2.919888226999319,
+        "snapshot_RSS_KiB": 3922188,
+        "by_category_KiB": {
+          "other_Lean_packages": 147112,
+          "Mathlib": 2283556,
+          "Lean_Init_Std": 961472,
+          "project": 155988,
+          "anonymous_heap_stack": 283376,
+          "shared_libraries": 90684
+        },
+        "by_type_KiB": {
+          "olean": 1255152,
+          "olean.server": 80612,
+          "olean.private": 1920832,
+          "other": 395200,
+          "ir": 270392
+        },
+        "largest_mappings_KiB": [
+          [
+            "[anonymous]",
+            283172
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/libleanshared.so",
+            88588
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/BitVec/Lemmas.olean.private",
+            11736
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DTreeMap/Internal/Lemmas.olean.private",
+            7408
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/Internal/List/Associative.olean.private",
+            7044
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/Array/Lemmas.olean.private",
+            5948
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/BitVec/Bitblast.olean.private",
+            5376
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DTreeMap/Internal/Model.olean",
+            5224
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DHashMap/Internal/RawLemmas.olean.private",
+            4796
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/List/Lemmas.olean.private",
+            4224
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/Int/DivMod/Lemmas.olean.private",
+            4124
+          ],
+          [
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/batteries/.lake/build/lib/lean/Batteries/Data/List/Lemmas.olean.private",
+            4020
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DHashMap/RawLemmas.olean.private",
+            3952
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Lean/Elab/MutualDef.olean.private",
+            3672
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/Vector/Lemmas.olean.private",
+            3628
+          ]
+        ]
+      },
+      "min_MemAvailable_KiB": 10132188
+    },
+    {
+      "label": "lightcore001",
+      "receipt": "proofs/ft1536/development/S05_QROM/.build/pair_machine_020/cap_light_001/memory_001/lightcore001/receipt.json",
+      "receipt_sha256": "65d877cc6b00796d1c86f92e95eb64e656e2c08a79648fa0fc7bc1858fd505a7",
+      "source_sha256": "63ec9def6d34c31e03bcac7ae128612dacfacf4907aebfcd02904ea0af1ebd8a",
+      "exit_code": 0,
+      "peak_RSS_KiB": 1687736,
+      "elapsed_seconds": 11.87940739899932,
+      "stats": {
+        "number of imported modules": 11535,
+        "number of memory-mapped modules": 11535,
+        "number of imported bytes": 1945814200,
+        "number of imported consts": 222999
+      },
+      "warning_count": 0,
+      "error_count": 0,
+      "map_snapshot": {
+        "path": "proofs/ft1536/development/S05_QROM/.build/pair_machine_020/cap_light_001/memory_001/lightcore001/smaps_010.txt",
+        "sha256": "a38f55e31a9115f262a95b94d191becc85c35c5a850955320233e8f4c3e21136",
+        "sample_seconds": 11.630392063001636,
+        "snapshot_RSS_KiB": 1671248,
+        "by_category_KiB": {
+          "other_Lean_packages": 142816,
+          "Lean_Init_Std": 925424,
+          "Mathlib": 359960,
+          "anonymous_heap_stack": 145548,
+          "shared_libraries": 97500
+        },
+        "by_type_KiB": {
+          "olean": 406104,
+          "olean.server": 33384,
+          "olean.private": 786748,
+          "other": 252292,
+          "ir": 192720
+        },
+        "largest_mappings_KiB": [
+          [
+            "[anonymous]",
+            145348
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/libleanshared.so",
+            95404
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/BitVec/Lemmas.olean.private",
+            11736
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DTreeMap/Internal/Lemmas.olean.private",
+            7408
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/Internal/List/Associative.olean.private",
+            7044
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/Array/Lemmas.olean.private",
+            5948
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/BitVec/Bitblast.olean.private",
+            5376
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DTreeMap/Internal/Model.olean",
+            5224
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DHashMap/Internal/RawLemmas.olean.private",
+            4796
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/List/Lemmas.olean.private",
+            4224
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/Int/DivMod/Lemmas.olean.private",
+            4124
+          ],
+          [
+            "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/B20_001/P01/run/.lake/packages/batteries/.lake/build/lib/lean/Batteries/Data/List/Lemmas.olean.private",
+            4020
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DHashMap/RawLemmas.olean.private",
+            3952
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Init/Data/Vector/Lemmas.olean.private",
+            3628
+          ],
+          [
+            "/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/lib/lean/Std/Data/DTreeMap/Internal/Balancing.olean.private",
+            3320
+          ]
+        ]
+      },
+      "min_MemAvailable_KiB": 10289980
+    }
+  ],
+  "source_graph": {
+    "root": "PairCorrect020B",
+    "project_modules_in_closure": 391,
+    "direct_broad_tactic_imports": [
+      {
+        "module": "WordRAM020",
+        "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/legacy_v2/runs/ram004/source/WordRAM020.lean",
+        "source_sha256": "b1f8b3e4c2396fbc938a9eea7594ebaa762fc93f353199e63d3699f4137a779c",
+        "example_path": [
+          "PairCorrect020B",
+          "PairCompose020B",
+          "PairShape020B",
+          "CapDraw020B",
+          "ActualCap020B",
+          "CapGuard020B",
+          "CapCore020B",
+          "ReadSemantics020A",
+          "PairProgram020",
+          "WordRAM020",
+          "Mathlib.Tactic"
+        ]
+      },
+      {
+        "module": "RootMoments014",
+        "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/formal/RootMoments014.lean",
+        "source_sha256": "282cd70f6b7dddef74634e0ec0f5ee6b84a4e3ffdd5a903afa61d5691678a724",
+        "example_path": [
+          "PairCorrect020B",
+          "PairCompose020B",
+          "PairShape020B",
+          "CapDraw020B",
+          "ActualCap020B",
+          "TrialCorrect020A",
+          "TrialFinish020A",
+          "TrialRead020A",
+          "TrialAddress020A",
+          "CoordinateSites020A",
+          "ActualCoordinate020A",
+          "InputLayout020",
+          "WordBounds018",
+          "StoredInterface018",
+          "Scatter018",
+          "CachedSampler018",
+          "BinaryCDF018",
+          "ActualInterface017",
+          "GaussianWitnessRowsAll017",
+          "GaussianPrefix017",
+          "GaussianChunks017",
+          "GaussianCheck017",
+          "GaussianPolynomial017",
+          "SmallExp017",
+          "PairNormalizer017",
+          "ImplementationBridge016",
+          "ProgramLaw016",
+          "SamplerSupport016",
+          "BoxSupport015",
+          "SamplerMassCondition014",
+          "ReciprocalSchur014",
+          "SpectralBlocks014",
+          "FullEvaluation014",
+          "Parseval014",
+          "RootMoments014",
+          "Mathlib.Tactic"
+        ]
+      }
+    ],
+    "rule": "read pinned project source headers; stop at package/library boundary; paths are one DFS path, not exhaustive"
+  }
+}

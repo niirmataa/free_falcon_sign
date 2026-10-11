@@ -3,6 +3,19 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
+**Kontynuacja020B — [cap80 i cała instrukcja pair](notes/CAP_REFINEMENT_020B_CHECKPOINT.md):**
+42 nowe eksporty kernelowe domykają rzeczywisty cap80 z wyczerpaniem prób,
+zerowy fallback, oba zapisy RAM, normę x²+xy+y², dokładny akumulator,
+licznik i ramki stanu. Ogólne przesłanki kroku są wypełnione przez020A;
+końcowy konsument nie przyjmuje poprawności samplera jako założenia.
+Własny audyt wszystkich42 eksportów: standardowe aksjomaty, czysty log;
+bez niezależnego odbioru. EveryTape całej maszyny i pełne zasoby OPEN.
+Następne: pętla1536, norma wektora, cap196 i świeży cube, później scatter/wyjście.
+[Kolejka020B](notes/KERNEL_QUEUE_020B.json), [klasy020B](notes/CERTIFICATE_CLASSES_020B.json).
+Na późniejsze polecenie właściciela limit kolejnych prób podniesiony do6GiB
+Lean/10GiB AS, nadal jeden proces; [mapowanie pamięci](notes/LEAN_MEMORY_020B.md).
+Przyjęte dowody020B przeszły jeszcze przy4GiB. Monitor ROM nadal PAUSED.
+
 **Kontynuacja020A — [czytnik, CDF i pojedyncza próba](notes/LOOP_REFINEMENT_020A_CHECKPOINT.md):**
 75 nowych eksportów kernelowych dowodzi zgodności rzeczywistych instrukcji
 z019 na każdym prawidłowym segmencie taśmy: pełny readWord, coordinate

@@ -20,3 +20,15 @@ Jeden proces Lean i jeden writer; M4096/AS8GiB/CPU110s. Monitor ROM PAUSED.
 Próby020A pozostają nienaruszone; nie powtarzamy szerokiego caploop011.
 Runtime: .build/pair_machine_020/cap_light_001, świeże etykiety prób.
 Bez push/T12.1/B20/paperu/strony; EveryTape i pełne zasoby nadal OPEN.
+
+## Zamknięcie podetapu020B
+
+Kroki1–4 wykonane:42 eksporty, pełny pair z rzeczywistą instancją.
+Audyt42/42 czysty, także przez nowy runner6GiB; dokładna mapa i piny
+w CHECKPOINT/CHECKS. EveryTape rodzica020 pozostaje OPEN.
+Na późniejsze polecenie właściciela limit nowych prób6GiB/AS10GiB,
+jedno zadanie; własna szeroka próba została ponownie zbadana i nadal
+trafiła w limit, natomiast poprawiony dowód przeszedł.
+Po zgłoszeniu zacięć komputera wszystkie próby są zakończone; diagnostyka
+hosta wskazuje silne przeciążenie dysku systemowego USB. Nie uruchamiamy
+kolejnych ciężkich prób w tym kroku. Monitor ROM nadal PAUSED.
