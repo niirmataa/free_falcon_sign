@@ -776,6 +776,34 @@ statistical/computational distinction (`chacha20PRFBound_delta_ge` stands).
 F05's `hzero` (machine fiber support) is a named premise of the source
 side, never assumed.
 
+## 2026-10-11: F04-REVIEW-001 verdict = CHANGES_REQUIRED (scope/trust-boundary, not math)
+
+Independent review (own rebuild 167/167 exit 0): F04/F05 repair
+mathematics passes under explicit premises; 21 checked declarations =
+standard axioms only. Two acceptance-criterion violations:
+**R1**: SelectBitPreserve.lean (32-34, 58-61) - select_bits_equiv/
+select_old_eq_new/select_code_variants_equiv depend on
+`select_bits_equiv._native.bv_decide.ax_1_5` (outside the standard
+trio). Historical diagnostic module; reverse import graph shows NO
+consumers. Fix: re-prove without the axiom OR explicitly narrow the
+accepted build to the F04/F05 closure and exclude this module from
+the "standard only" claim + pin the new scope/evidence. **R2**:
+ThetaBox.lean:166 has a historical local
+`linter.constructorNameAsVariable false` (pre-832a9953, unchanged by
+the repair); with the linter enabled the build dies with "maximum
+recursion depth" IN THE LINTER (tool bug, not math). The blanket
+"zero suppression" claim needs scope correction or the linter issue
+fixed without disabling. Reviewer preserved test copy + error, did
+not touch author sources.
+
+Correction plan: honest scope re-statement now (exact trust boundary:
+repair closure = standard-only; SelectBitPreserve = documented
+historical diagnostic with bv_decide axiom, excluded; ThetaBox =
+documented tool-bug exception with preserved evidence), optional
+low-priority hardening batch later (re-prove SelectBitPreserve without
+bv_decide; resolve ThetaBox linter recursion properly). Then quick
+second review round on scope+evidence.
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
