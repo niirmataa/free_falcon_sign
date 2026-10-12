@@ -1,3 +1,29 @@
+# BATCH_066 — CLOSED at the whole-invocation/full-STATIC midpoint, 2026-10-12
+
+Codex: CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.
+Exactly one close; B1.07 Acceptance NOT MET, package WORKING_NOT_FROZEN.
+Typed secret Head/Encoding/Invocation now extracts all four ordered actual
+codec calls0-3 and SAME-heap projected trace; material INPUT POINTER/profile
+facts derive at every site. Full STATIC capacity windows derive from live
+local/source facts, fold through all loops/scopes/partial-write returns,
+and compose through the fixed dispatcher into the same invocation.
+Public bodies, source exact lengths/decoders/final emitted bytes remain OPEN.
+No desired codec result/length/frame premise. No complete B1.07 claim.
+
+Entry13000 pins d6f02133…; sealed JSON97ef5267…/notesf928dfea…;
+postseal13748 pins99d0acbf…. Final0165 modules+audit6 clean steps;
+audit65=50+15,54 terms+11 inductives,standard axioms/no elisions.
+Native Sage16 PUBLIC normal/UBSan baseline sets/256 capacity probes,
+6 mutations detected per mode; exact length/round-trip evidence is finite
+only. Source-arithmetic model acc1025/acc_len4 after two zero coefficients
+refutes the whole-acc bound; LOW-SUFFIX remains.065 NONE cap counterexample
+unchanged.16 jobs retained:8 accepted/8 failed,21 steps/13 accepted.
+All causes/snapshots/raw streams preserved; self-review only.
+Own local commits18e63200/7cd4d063/d2b821ca plus closing pair/checkpoint.
+Checkpoint46R has exact next verify command/types/order. No push/review/
+delegation/relay/migration/import; foreign working tree/staging untouched.
+Historical runner identities remain provenance; current author Codex.
+
 # BATCH_066 — owner-started B1.07 continuation, 2026-10-12
 
 Entry verified13000 predecessor pins BEFORE edits/jobs, receipt d6f02133…;

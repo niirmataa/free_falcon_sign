@@ -1,3 +1,136 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.07 / whole-invocation and full STATIC midpoint
+
+**B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
+**Package: IN_PROGRESS / WORKING_NOT_FROZEN.**
+2026-10-12, Codex, BATCH_066.
+**CLOSED_AT_RECOVERABLE_MIDPOINT. Exactly one close this window.**
+B1.05/032 and B1.06/046 unchanged. Source lengths/decoders and B1.09
+remain OPEN; no B4/B5 advance. Handoff: **46R**.
+Exact types/causes/source-model boundary:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_066_NOTES.md`.
+
+## 46. Closed — whole-invocation typed calls0–3 and full STATIC capacity windows
+
+1. **Entry BEFORE edits/jobs:** sealed065 pair verified13000 pins into
+   levels_066/ENTRY_PINS_066.json,
+   `d6f02133e0d4723c4e63410462495f961d290af13356735c918faa647755fbdf`.
+   Only recorded061/063 supersessions; no repair. Base HEAD ded2b9ac.
+   Host guard/serial job_when_available.py, unchanged limits/native Sage.
+2. **The open secret-loop seam is replaced in the enclosing invocation.**
+   New KeygenCodecInvocation Head/Encoding/Invocation require the actual065
+   typed body calls at secretLoop; the inherited other-head rule requires
+   stmt different from secretLoop. Erasure to the old machine is ONE WAY.
+   Successful invocation extracts its executed nine-statement prefix,
+   the same four typed calls and SAME-heap projected trace. Return1 derives
+   calls.length=4 and Consecutive0: segments0,1,2,3 together. The old source
+   binding/readiness/loop/TailCells/legal-memory/teardown domain remains
+   explicit, and public-codec heaps remain an open body seam.
+3. **Same-pointer histories/profile at every call:** invocation_calls
+   consumes063/065's executed stores/frames and derives inputOf env index,
+   q18433/logn10 at ALL four sites, with explicit privkey/ske-block
+   separation and finite virtual-map extension. This is input POINTER
+   identity, not yet preservation/decoding of every coefficient word or
+   proof of final emitted bytes. No desired codec result/length/frame.
+4. **Full STATIC window is now proved.** LocalFacts derives capacity-cell
+   preservation, typed initialized scalars and u:uint64 from declarations,
+   assignments/updates and expression effects. StaticWindow derives buf
+   binding/restore and extracts initialized u from the actual guard.
+   The guard derives the strict bound. exec_fold composes all three exact
+   guarded blocks through complete branches, finite while paths, scopes
+   and rejection after partial writes. static_checked binds the complete
+   source syntax; unsupported calls/for forms are rejected (STATIC uses
+   no for loop). static_window has only actual Exec and non-NULL out;
+   flow is universal, no result/length/frame premise and no q/logn restriction.
+5. **Fixed dispatcher and four-call integration:** StaticDispatch reads
+   actual CallArgs/capacity and derives the full window for comp1. New
+   InvocationWindows supplies the per-call capacity windows alongside
+   count/order/material pointers/profile for the SAME invocation. Each
+   capacity is the actual klen-skoff word; no aggregate buffer/cursor/
+   returned-length theorem is inferred from these windows.
+6. **B1.08/09 finite controls, not source proofs:** accepted015 native Sage
+   has16 PUBLIC actual-C normal/UBSan baseline sets,256 capacity probes,
+   all6 mutation kinds detected in each mode. Four independent secret
+   paddings, exact encoded/consumed lengths on segment++tail, same decoded
+   vectors and canonical15-bit public bytes checked. Public decoder returns
+   the supplied length2891 with11 trailing bytes; no trailing rejection.
+   Direct source/header hashes agree before/after. Legacy v1 manifest
+   validates; no full compiler-input closure/compiler verification.
+7. **False whole-accumulator bound retained:** source-arithmetic model after
+   two ZERO coefficients has acc1025,acc_len4, so1025>=16. Only a LOW-SUFFIX
+   invariant is viable. Model bytes agree with the independent ZZ bit-list
+   oracle on the finite families, terminal ne=-2 checked. This is not C
+   local instrumentation or a source/security bug.065's out-of-profile
+   q18433/logn0/NONE cap3/write4 counterexample remains unchanged.
+8. Final016 rebuilt5 new modules+audit,6 steps clean0/0. Full audit65=50
+   new+15 inherited,54 full terms+11 kernel inductives, standard axioms/no
+   elisions; producer reproduces byte-exactly.16 jobs retained:8 accepted/
+   8 failed,21 steps/13 accepted. All causes/snapshots/raw streams retained,
+   including014 exit0 rejected for Sage version-metadata warning;015 clean.
+   Own source/tool commits18e63200/7cd4d063/d2b821ca plus closing pair.
+   Foreign staging/history preserved. Author self-review only; no REVIEWED,
+   push/delegation/relay/migration/import or production C change.
+
+Sealed066 pair:
+- JSON `97ef526756b4c8890d5f9797f765b2456088e20d6c8d1c0cefe65e999b670985`.
+- Notes `f928dfea9ec649ce890a37e0907ac25844459d207a0e5dd8ac9ea3df8c2e4ae6`.
+- Postseal verify **13748 pins**, levels_066/POSTSEAL.json
+  `99d0acbfedc15d4380b30d70cadfceb0fd18696831c0cb04c6b3848bd19ded6e`.
+
+### 46.1 Actual types and remaining seams
+
+```lean
+Invocation env caller events out calls -> out.flow=returned(int32 1) ->
+  calls.length=4 /\ Consecutive 0 calls
+args.out=some dst ->
+  Exec args StaticBinding.code (initial args before) after flow ->
+  Window dst args.capacity.toNat before after.heap
+args.out=some dst -> args.comp=1 -> Call args before after ret ->
+  Window dst args.capacity.toNat before after
+```
+
+Full types/terms/axioms are in accepted016 SEARCH_AUDIT.json. Ret and flow
+are observed execution indices, not desired outcomes. Actual Invocation
+extracts the same-heap projection; the old unrestricted Invocation cannot
+imply this strengthening. Public codec calls retain their old open seam.
+
+Remaining in plan order: (a) NONE actual q18433 branch, capacity/even pair
+loop/cursor/no-wrap and full3072 returned length/window (065 proves ONLY
+RHS3072); (b) STATIC uint32 low-suffix, terminal ne=-2/padding, exact source
+encoded/consumed lengths; bound decoder round-trips of segment++tail;
+four-segment bytes/final length store/material WORD preservation; (c)
+B1.09 source public codec/same h/canonical15-bit packing/actual2881; (d)
+explicit common call ID/snapshots and all-state LegalWorkspace refutation
+status, then full B1.07/B1.10. These are missing source proofs, not refuted
+profile goals. The two retained counterexamples concern false auxiliary
+generalizations. B4/B5 laws/availability/PRG/security remain outside.
+
+## 46R. Handoff — next owner-started window
+
+1. This window is CLOSED once at an expanded recoverable midpoint, not
+   Acceptance. Preserve015–066, both063 versions/supplement, all failed
+   snapshots/streams and both counterexamples. No automatic restart,
+   review/delegation/relay/migration or archive import.
+2. BEFORE any edits/jobs:
+   ```sh
+   mkdir -p .build/levels_067
+   python3 -B tools/keygen_codec_invocation_batch.py verify \
+     97ef526756b4c8890d5f9797f765b2456088e20d6c8d1c0cefe65e999b670985 \
+     f928dfea9ec649ce890a37e0907ac25844459d207a0e5dd8ac9ea3df8c2e4ae6 \
+     .build/levels_067/ENTRY_PINS_067.json
+   ```
+   Expect13748 pins and only the recorded061/063 supersessions. A mismatch
+   is stop-and-report, not permission to repair. Host namespace process
+   guards; serial job_when_available.py, unchanged limits/native Sage.
+3. Inspect accepted016's exact exports/terms; resume46.1 in plan order.
+   Use NEW modules. Do not promote the full STATIC window to returned
+   length/round-trip/aggregate output correctness, or finite C controls to
+   universal source proofs. NONE uses the DERIVED q18433/logn10 profile;
+   its out-of-profile capacity counterexample stays. Preserve low-suffix
+   distinction; whole acc<2^acc_len is FALSE even on zero coefficients.
+4. One window/one Acceptance or expanded midpoint, clean streams, every
+   failed attempt retained, small exact-path local commits. Push requires
+   a separate explicit owner signal. No advance to B4/B5.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.07 / typed-codec projection and local-window midpoint
 
 **B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
