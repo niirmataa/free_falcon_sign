@@ -1,3 +1,126 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.07 / complete NONE and local STATIC suffix midpoint
+
+**B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
+**Package: IN_PROGRESS / WORKING_NOT_FROZEN.**
+2026-10-12, Codex, BATCH_067.
+**CLOSED_AT_RECOVERABLE_MIDPOINT. Exactly one close this window.**
+B1.05/032 and B1.06/046 unchanged. Full STATIC invariant, source
+lengths/decoders and B1.09 remain OPEN; no B4/B5 advance. Handoff: **47R**.
+Exact types/failures/local-source boundary:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_067_NOTES.md`.
+
+## 47. Closed — complete NONE result/window and four actual NONE calls
+
+1. **Entry BEFORE edits/jobs:** sealed066 pair verified13748 pins into
+   levels_067/ENTRY_PINS_067.json,
+   `6027195436c398be9fb25ceef17eb6890275770fa55f788839b6f43872cd543c`.
+   Only recorded061/063 supersessions; no repair. Base HEAD3209aa5b.
+   Host process guard/serial job_when_available.py; limits unchanged.
+2. **Complete NONE source result:** actual declarations/parameter cells and
+   q==12289 false branch derive len3072 at q18433/logn10. NULL queries return
+   3072; short non-NULL capacity returns0; sufficient capacity returns3072.
+   These are universal conclusions from the full actual Exec, with NO
+   desired result/length/frame/capacity-bound premise. Every defined finite
+   flow returns; execution existence/termination outside that domain is not
+   asserted. This closes the former RHS-only3072 gap.
+3. **Actual pair loop and full window:** u starts0, stays even, increments2
+   without wrap, and ends3072. Parity makes BOTH u+0/u+1 stores strictly
+   below3072. The actual capacity test supplies the sufficient-capacity
+   premise of the internal loop proof. Full source window holds on every
+   observed return, including rejection; no arbitrary heap frame supplied.
+   Generic checked scalar/heap/buf frames cover actual effects/scopes/loops;
+   all switch arms checked, calls rejected by the generic frame checkers.
+4. **Dispatcher and SAME invocation:** fixed comp0 body extraction derives
+   out/capacity/q/logn from CallArgs. invocation_none derives all four ordered
+   NONE calls, EACH ret3072 and actual capacity>=3072, input POINTER tie and
+   per-call window. Profile q18433/logn10 and nonzero returns derive from
+   the same successful Invocation. Existing binding/readiness/loop/TailCells/
+   legal-memory/separation/teardown seams remain explicit. No coefficient-
+   word/decoded-byte/aggregate cursor or final length-store claim follows.
+5. **STATIC local progress, not a whole codec theorem:** universal uint32
+   low-shift/shift-OR append/removal laws; actual node040 acc=(acc<<9)|lo
+   gives the correct low suffix under VISIBLE LOCAL j8/lo<512/pending+9<=32
+   and initialized-cell facts. Actual guard087 entered with ne=-1 leaves
+   ne=-2. Deriving those local facts, old ne=-1, all unary bits and the full
+   emitted-byte/padding/counter invariant remains OPEN.
+6. **Counterexamples preserved:**065 out-of-profile q18433/logn0/NONE cap3/
+   write4 unchanged;066 zero-input acc1025/acc_len4 arithmetic-model witness
+   unchanged, and1025<2^4 kernel-refuted. No new counterexample/C bug. No new
+   Sage/C campaign;066 finite controls stay pinned and do not replace source
+   proofs. Source C/header bytes unchanged; reference semantics, not compiler/
+   OS/full ISO-C adequacy or probability/security.
+7. Final028 rebuilt13 new modules+audit,14 clean0/0. Audit117=102+15,
+   111 full terms+6 inductives, standard axioms/no elisions; byte-exact
+   producer reproduction.28 jobs retained:14 accepted/14 failed,41 steps/
+   27 accepted. All causes/snapshots/raw streams/waits retained; max RSS
+   3003772KiB. Author proof-audit/proofread self-review only. Own commits
+   1838879d/28328c9b/eee83ef2/7a73163e plus closing pair. Foreign S05
+   35484c4b/history/staging preserved; no push/review/delegation/relay/
+   migration/import or production C edits.
+
+Sealed067 pair:
+- JSON `2e57229ceff27bf2152b3ae0234ebdd8a58c2bcee0d148c66ae500eb8f42ec06`.
+- Notes `e255f3887dbb91ebe366fecad400038f7082ac0783767a04da0c4d4bcb38a6f0`.
+- Postseal verify **14135 pins**, levels_067/POSTSEAL.json
+  `4af35f182b28d32f70d26f376988bfe65c5b5c0af5f0d35b6c66503a59548154`.
+- Full audit `7826d9549b19ad65f5e8df775eea9eeb90fd4e91a035e4ab44b571513519ffd3`.
+
+### 47.1 Exact proved types and remaining local seams
+
+```lean
+args.q=18433 -> args.logn=10 ->
+  Exec args NoneBinding.code (initial args before) after flow ->
+  flow=.returned (if args.out=none then 3072
+                 else if args.capacity.toNat<3072 then 0 else 3072)
+args.q=18433 -> args.logn=10 -> args.out=some dst ->
+  Exec args NoneBinding.code (initial args before) after flow ->
+  Window dst args.capacity.toNat before after.heap
+```
+
+`invocation_none` has actual Invocation/observed return1/comp0 and inherited
+separation/legal-memory inputs, deriving four ret3072/capacity>=3072/windows.
+`append_low` still has LOCAL j8/lo<512/pending+9<=32/initialized acc+lo cells.
+`terminal_exit` still has LOCAL old ne=-1. Full exact types/terms/axioms are
+in final028 SEARCH_AUDIT.json. Neither is a whole STATIC length/decoder proof.
+
+Remaining in plan order: (a) derive/transport the whole STATIC low-suffix
+invariant from its actual prologue and coefficient/unary loops, including
+j8, lo<512, pending<8, all unary zero/final-one bits, emitted-byte extraction,
+counters/cursor/padding and old ne=-1 at terminal guard; (b) exact source
+STATIC encoded/consumed lengths, complete decoder binding/segment++tail
+round-trips, four segments/final length store and coefficient-WORD identity;
+(c) public codec last: same h/canonical15-bit packing/2881 and actual supplied-
+length decoder behavior; (d) inherited call ID/snapshots/all-state LegalWorkspace
+refutation status, then full B1.07/B1.10. These are missing proofs, not refuted
+profile goals. B4/B5 laws/availability/PRG/security remain outside.
+
+## 47R. Handoff — next owner-started window
+
+1. This window is CLOSED once at an expanded recoverable midpoint, not
+   Acceptance. Preserve015–067, both063 versions/supplement, all failures
+   and both counterexamples. No automatic restart/review/delegation/relay/
+   migration or archive import.
+2. BEFORE any edits/jobs:
+   ```sh
+   mkdir -p .build/levels_068
+   python3 -B tools/keygen_codec_none_batch.py verify \
+     2e57229ceff27bf2152b3ae0234ebdd8a58c2bcee0d148c66ae500eb8f42ec06 \
+     e255f3887dbb91ebe366fecad400038f7082ac0783767a04da0c4d4bcb38a6f0 \
+     .build/levels_068/ENTRY_PINS_068.json
+   ```
+   Expect14135 pins and only recorded061/063 supersessions. Mismatch is
+   stop-and-report, not repair authorization. Host namespace process
+   guards; serial job_when_available.py, unchanged limits/native Sage.
+3. Inspect final028 exact exports/terms and resume47.1 in order with NEW
+   modules. NONE result/window is closed; do not replay it broadly or
+   promote it to bytewise round-trip/material-WORD identity. For STATIC,
+   derive every local premise before using append_low/terminal_exit. Never
+   assume whole acc<2^acc_len, codec result, length or frame. Finite C/Sage
+   controls cannot discharge these source obligations; public codec last.
+4. One window/one Acceptance or expanded midpoint, clean streams, all failed
+   attempts retained, small exact-path local commits. Push needs a separate
+   explicit owner signal. No B4/B5 advance.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.07 / whole-invocation and full STATIC midpoint
 
 **B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**

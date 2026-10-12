@@ -1,3 +1,28 @@
+# BATCH_067 — CLOSED at complete NONE/local STATIC suffix midpoint, 2026-10-12
+
+Codex: CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.
+Exactly one close. B1.07 Acceptance NOT MET; package WORKING_NOT_FROZEN.
+Complete q18433/logn10 NONE result and whole capacity window proved from
+actual Exec; pair loop derives parity/no-wrap/final u3072. Fixed dispatcher
+and SAME successful Invocation derive all four NONE ret3072, actual
+capacity>=3072, material INPUT POINTER ties and windows. No desired codec
+result/length/frame premise. Decoded bytes/coefficient words remain OPEN.
+STATIC universal low-suffix algebra and actual local node040 append proved;
+local old-ne=-1 guard leaves ne=-2. Full STATIC invariant/local-premise
+transport, lengths/decoders/four-segment bytes/public codec remain OPEN.
+
+Entry13748 pins60271954…; sealed JSON2e57229c…/notese255f388…;
+postseal14135 pins4af35f18…. Final02813 modules+audit14 clean0/0;
+audit117=102+15,111 terms+6 inductives,standard axioms/no elisions,
+byte-exact generator.28 jobs retained:14 accepted/14 failed,41 steps/
+27 accepted,all causes/snapshots/streams/waits retained. No new Sage/C;
+066 finite controls and both counterexamples preserved, no substitute
+for a universal theorem. Self-review/proofreading only; no REVIEWED.
+Own local1838879d/28328c9b/eee83ef2/7a73163e plus closing commit.
+Foreign S0535484c4b/history/working tree/staging untouched. Checkpoint47R
+has exact next verify command/types/order. No push/review/delegation/relay/
+migration/import or production C change. Window CLOSED, no auto-resume.
+
 # BATCH_067 — full NONE source result/window, work continues
 
 Accepted022: complete q18433/logn10 NONE -> exact result3072 for NULL or
