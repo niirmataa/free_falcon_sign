@@ -3,6 +3,22 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
+**Kontynuacja020D — [EveryTape i pełne J/P maszyny](notes/SCATTER_OUTPUT_020D_CHECKPOINT.md):**
+Cały oryginalny program020 (select, multiply, emitPair) jest kernelowo
+zgodny z019 dla każdego publicznego h, każdej taśmy i każdego stanu.
+Z publicznego initial kończy bez błędu, z boundem tego samego rdzenia.
+Bezstratne kodowanie pełnych praw obejmuje porażki: maszyna ma J≪P dla
+każdego h, moment≤1+2^-47 pod niezmienionym(M), także dla tego samego
+pokrytego prawa kluczy.186 eksportów,41 modułów dowodowych + audyt;
+42 czyste końcowe buildy,72 próby zachowane. Bez niezależnego odbioru.
+**EveryTape i transport J/P CLOSED w tym zakresie; pełne zasoby,
+źródłowe pokrycie(M), Sign/PRG i QROM OPEN.** Certyfikat pozostaje
+w przypiętym środowisku legacy, bez scalenia z nową grą wariantu A.
+[Kolejka020D](notes/KERNEL_QUEUE_020D.json), [klasy020D](notes/CERTIFICATE_CLASSES_020D.json).
+Następny duży krok: [TODO020E — pełny driver i zasoby](notes/TODO_RESOURCES_020E.md).
+
+Poniższe wpisy opisują wcześniejsze checkpointy; aktualny stan wskazuje020D.
+
 **Kontynuacja020C — [cały select zgodny z019](notes/VECTOR_NORM_020C_CHECKPOINT.md):**
 115 nowych eksportów kernelowych zamyka1536 par, dokładną normę Q,
 cap196 i świeży cube na tej samej taśmie019. Końcowy select dla każdego
@@ -10,8 +26,8 @@ publicznego h, taśmy i stanu daje dokładny obraz wybranego wektora w RAM;
 publiczny initial jest bez błędu. Ten sam program ma bound w modelu020.
 Wszystkie przesłanki lokalnych kroków i układu taśmy są wypełnione.
 Audyt115 eksportów: standardowe aksjomaty, czyste29 końcowych buildów;
-41 prób zachowanych. **EveryTape całego programu, scatter/wyjście,
-transport pełnego J/P i pełne zasoby nadal OPEN.** Bez niezależnego odbioru.
+41 prób zachowanych. **W020C EveryTape, scatter/wyjście i transport J/P pozostawały OPEN;
+020D domyka je powyżej. Pełne zasoby pozostają OPEN.** Bez niezależnego odbioru.
 [Kolejka020C](notes/KERNEL_QUEUE_020C.json), [klasy020C](notes/CERTIFICATE_CLASSES_020C.json).
 Następny duży TODO020D opisano w checkpointcie.
 
@@ -45,8 +61,8 @@ oraz pełna para na wyjściu.81 eksportów kernelowych obejmuje bound rdzenia
 **1106642201817** operacji modelu, bezstratny obraz tablic/h, wszystkie
 adresowania taśmy, ramki pamięci i format50689bit z rozróżnieniem porażki.
 43 skończone kontrole Sage przeszły; to nie dowód każdej taśmy.
-**EveryTape refinement do019, driver wejścia/wyjścia i pełny szczyt pamięci
-pozostają OPEN.** Nie przeniesiono jeszcze certyfikatu momentu na maszynę.
+**EveryTape refinement do019 i certyfikat momentu maszyny domknięto w020D.
+Driver wejścia/wyjścia i pełny szczyt pamięci pozostają OPEN.**
 Model nie podaje czasu CPU/C ani ceny bitowej; pełna taśma ma3082817280
 bajtów. [Kolejka020](notes/KERNEL_QUEUE_020.json) i [klasy020](notes/CERTIFICATE_CLASSES_020.json).
 
