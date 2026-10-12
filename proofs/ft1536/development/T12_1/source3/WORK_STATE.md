@@ -1,3 +1,15 @@
+# BATCH_066 — owner-started B1.07 continuation, 2026-10-12
+
+Entry verified13000 predecessor pins BEFORE edits/jobs, receipt d6f02133…;
+base HEAD ded2b9ac. KeygenCodecInvocation accepted004 clean0/0: actual
+secret-loop typed calls replace the open Head/Encoding/Invocation seam;
+return1 yields all four ordered calls, same-heap projected trace, material
+pointers and derived q18433/logn10. Public encoding remains an open seam.
+Next: whole STATIC fold with derived live local facts; NONE lengths and
+source decoder round-trips in plan order. Exactly one final close pending.
+Serial host-guarded jobs, unchanged limits; no push/review/delegation/relay/
+migration/import. Failed001/002 and accepted003/004 retained.
+
 # BATCH_065 — CLOSED at the typed-codec/window midpoint, 2026-10-11
 
 Codex: CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.
