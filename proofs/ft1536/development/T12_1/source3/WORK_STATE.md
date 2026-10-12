@@ -1,3 +1,19 @@
+# BATCH_067 — owner-started B1.07 continuation, 2026-10-12
+
+Codex owns this source3 window from3209aa5b/checkpoint46R. BEFORE edits/jobs,
+sealed066 verified13748 pins, ENTRY_PINS_067.json SHA256
+6027195436c398be9fb25ceef17eb6890275770fa55f788839b6f43872cd543c.
+Host process guard observed no active proof job; serial host-guarded runner,
+unchanged limits. New KeygenCodecCellFrame accepted002 clean0/0: arbitrary
+protected scalar cell is preserved by checked complete source constructs,
+including expression effects, scopes and finite for/while loops. Calls are
+rejected; all switch arms checked. No length/result/frame correctness premise.
+Next: derive the full NONE q18433/logn10 result/cursor/capacity window, then
+STATIC low suffix and source lengths/decoders/public codec in plan order.
+Exactly one final Acceptance or expanded midpoint pending. Failed001
+(ambiguous body pattern) retained with snapshot/raw streams. No push,
+review/delegation/relay/migration/import; foreign changes preserved.
+
 # BATCH_066 — CLOSED at the whole-invocation/full-STATIC midpoint, 2026-10-12
 
 Codex: CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.
