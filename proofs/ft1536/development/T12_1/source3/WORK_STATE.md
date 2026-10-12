@@ -1,3 +1,15 @@
+# BATCH_067 — full NONE source result/window, work continues
+
+Accepted022: complete q18433/logn10 NONE -> exact result3072 for NULL or
+sufficient capacity,0 for short non-NULL; full window on every observed
+flow. Actual pair loop derives parity, no-wrap and final cursor3072.
+Dispatcher and SAME successful Invocation derive all four NONE ret3072,
+capacity>=3072, input pointer ties and windows, without codec result/length/
+frame premises. Emitted bytes/coefficient-word preservation/decoders remain
+OPEN. Next: STATIC low suffix, then lengths/decoders/public in plan order.
+This is work in progress, NOT the one final midpoint. Serial host guards,
+unchanged limits, failed snapshots/causes preserved; no push/review/delegation.
+
 # BATCH_067 — owner-started B1.07 continuation, 2026-10-12
 
 Codex owns this source3 window from3209aa5b/checkpoint46R. BEFORE edits/jobs,
