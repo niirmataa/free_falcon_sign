@@ -1,3 +1,136 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.07 / complete STATIC unary invariant midpoint
+
+**B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
+**Package: IN_PROGRESS / WORKING_NOT_FROZEN.**
+2026-10-12, Codex, BATCH_068.
+**CLOSED_AT_RECOVERABLE_MIDPOINT. Exactly one close this window.**
+B1.05/032 and B1.06/046 unchanged. The complete actual UNARY low-suffix fold
+is proved under visible local entry cells. Full STATIC coefficient/outer
+invariant, source lengths/decoders and B1.09 remain OPEN; no B4/B5 advance.
+Handoff: **48R**. Exact types/failures/source boundary:
+`KEYGEN_SOURCE_TO_FIBER_001_BATCH_068_NOTES.md`.
+
+## 48. Closed — actual STATIC unary state/low suffix and source byte content
+
+1. **Entry BEFORE edits/jobs:** sealed067 pair verified14135 pins into
+   levels_068/ENTRY_PINS_068.json,
+   `889fdb295e6421fdb8e832b1f084dd8a6665c7b826d05816cf19ba5f244dbd70`.
+   Only recorded061/063 supersessions; no repair. Base HEAD e3488d07.
+   Host guard/serial job_when_available.py; foreign S05 slot was waited on,
+   not interrupted. Limits unchanged. No new Sage/C campaign.
+2. **Profile:** j8 derives from complete actual declarations/q18433 branch;
+   source frames preserve it through the actual remaining body. Internal
+   activation states and their common heap are exposed correctly despite
+   function-scope restoration. n1536/mask255/u/acc/acc_len initialization
+   remains OPEN. Canonical pure scalar calculations are connected to actual
+   Eval, not an unchecked evaluator or desired codec result.
+3. **Actual unary bits/countdown:** real guard087 compares OLD ne, then
+   decrements. Every ne in[-1,128] has exact source-step behavior. REAL RHS062
+   is0 at stored nonnegative ne,1 at stored ne=-1. The complete normal loop
+   derives terminal ne=-2. The former local old-ne=-1 premise is discharged
+   for that loop; the initial coefficient ne range/cell remains explicit.
+4. **Actual accumulator/pending fold:** real061+062 shift/add has a universal
+   low-suffix append law for arbitrary high bits. Real ++acc_len/branch/reset
+   derives pending(p+1)%8 and normal whole-loop pending<8. unary_invariant and
+   unary_low_suffix jointly derive final word, pending=(p+(ne+1).toNat)%8,
+   low suffix finishLow and ne=-2 on the SAME actual loop execution. No whole
+   acc<2^acc_len bound. Visible local INITIAL cells/ranges are not discharged
+   by this whole-unary result; whole STATIC remains OPEN.
+5. **Byte boundary:** actual node068 StoreByte byte content derives from its
+   evaluated index/cast RHS. Full unary-byte and universal mathematical
+   padding identities are proved. Final node108 padding binding, aggregate
+   byte/cursor history, partial-return suffix invariants, source lengths,
+   decoders/four segments/material WORDs remain OPEN. Normal unary flow is
+   an observed LOCAL execution index, not a desired codec return. Inherited
+   full STATIC capacity windows still cover rejection, independently.
+6. **Failures/counterexamples:**24 jobs retained,6 wholly accepted/18 failed,
+   35 steps/17 accepted; every failed snapshot/raw stream/wait and cause is
+   pinned, including bwrap001 before compiler, missing dependencies006/009,
+   mixed007/010, linter008 and dependent-ite021. Environment observations are
+   labelled separately from raw streams.065 NONE out-of-profile cap3/write4,
+   066 acc1025/len4 and its kernel whole-word-bound refutation unchanged. No
+   new counterexample/C bug; finite controls do not replace source proofs.
+7. Final024 rebuilt8 new modules+audit,9 clean0/0. Audit86=66+20,
+   79 full terms+7 kernel inductives, standard axioms/no elisions; byte-exact
+   producer reproduction. Max child RSS3003020KiB, unchanged limits.
+   PRESEAL rechecked all14135 predecessor pins unchanged. Self-review with
+   proof-audit/proofread-math only, target verdict INCOMPLETE. Own fac057de/
+   e5a2cfec plus closing pair. Foreign interleaved eb7a8e7f/staging/history
+   preserved. No push/review/delegation/relay/migration/import/C changes.
+
+Sealed068 pair:
+- JSON `c9727992c390b02628e4fdb793f366de2254a33ce4c2190281a606a7b8114add`.
+- Notes `a8ea492a8a5f4151aa3b784e7c08547fd68fae33f4f64764d290c7ca3f79ab91`.
+- Postseal verify **14460 pins**, levels_068/POSTSEAL.json
+  `a5eecfcdda09fcc7b165d06e1d180fcc7a1bcdd6205f22f92ae3e2d76a077ad8`.
+- Full audit `4edf9db31fabb107f28cc84a6734a279d0023bf468a87adfc31cae359fbb3cfa`.
+- PRESEAL `9955efa4a73c13eb81fa14783a34487e0f96d526bcf0052aeff1c7913ea37373`.
+
+### 48.1 Exact proved type and missing full-STATIC implication
+
+The exact qualified type is in final024 SEARCH_AUDIT.json and
+KeygenCodecStaticUnaryInvariant.unary_low_suffix. Abbreviating the two Cell
+names for this display ONLY:
+
+```text
+Exec args StaticBinding.node087 s t .normal ->
+-1<=ne -> ne<=128 -> pending<8 ->
+Cell_ne ne s.locals -> Cell_acc_len pending s.locals -> Acc word s.locals ->
+exists finalWord,
+  Cell_ne (-2) t.locals /\
+  Cell_acc_len ((pending+(ne+1).toNat)%8) t.locals /\
+  Acc finalWord t.locals /\
+  low finalWord ((pending+(ne+1).toNat)%8) =
+    finishLow (ne+1).toNat pending (low word pending)
+```
+
+This is the COMPLETE ACTUAL unary loop, not the full STATIC body. Its LOCAL
+initial counter range/cell, initialized uint32 acc and pending<8 cell must
+still derive from source prefix/first byte drain on EVERY coefficient. It
+contains no desired whole-codec result/length/frame premise. The byte theorem
+is local actual StoreByte content; padded_byte is mathematical, not source108.
+
+Remaining in plan order: (a) complete source prologue n/mask/u/acc/acc_len;
+actual signed int16 read/magnitude/sign/lo9/ne quotient; first byte drain,
+common emitted-byte/cursor histories and partial-return prefixes; fold outer
+coefficient loop and bind final source padding; (b) exact source encoded and
+consumed lengths, complete decoder/segment++tail round-trips, independent
+four-segment paddings/final length store/coefficient-WORD identity; (c) public
+codec last, same h/canonical15-bit packing/2881 and actual supplied-length
+return; (d) inherited call ID/snapshots/all-state LegalWorkspace refutation
+status and full B1.07/B1.10. These are missing proofs, not refuted goals or
+exhausted routes. B4/B5 laws/availability/PRG/security remain outside.
+
+## 48R. Handoff — next owner-started window
+
+1. This window is CLOSED once at an expanded recoverable midpoint, not
+   Acceptance. Preserve015–068, both063 versions/supplement, every failed
+   attempt and both counterexamples. No automatic restart/review/delegation/
+   relay/migration or archive import.
+2. BEFORE any edits/jobs:
+   ```sh
+   mkdir -p .build/levels_069
+   python3 -B tools/keygen_codec_static_batch.py verify \
+     c9727992c390b02628e4fdb793f366de2254a33ce4c2190281a606a7b8114add \
+     a8ea492a8a5f4151aa3b784e7c08547fd68fae33f4f64764d290c7ca3f79ab91 \
+     .build/levels_069/ENTRY_PINS_069.json
+   ```
+   Expect14460 pins and only recorded061/063 supersessions. Mismatch is
+   stop-and-report, not repair authorization. Host namespace process guards,
+   serial job_when_available.py and unchanged limits/native Sage. Inner bwrap
+   required authorized execution outside this host's outer sandbox;001 is
+   retained as precompiler failure, not accepted proof. No guard bypass.
+3. Inspect exact final024 exports/terms and resume48.1 in order with NEW
+   modules. Derive every LOCAL unary-entry cell from actual coefficient
+   prefix/first drain before consuming the full unary theorem. Do not treat
+   finishLow as a byte trace, byte identities as a complete codec, or local
+   normal-flow results as coverage of capacity-return prefixes. No broad
+   NONE replay; no whole acc bound, requested codec outcome/length/frame or
+   C/Sage surrogate for universal source obligations. Public codec last.
+4. One window/one Acceptance or expanded midpoint, clean streams, all failed
+   attempts retained, small exact-path local commits. Push needs a separate
+   explicit owner signal. No B4/B5 advance.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.07 / complete NONE and local STATIC suffix midpoint
 
 **B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**

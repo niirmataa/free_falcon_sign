@@ -1,3 +1,38 @@
+# BATCH_068 — CLOSED at complete STATIC unary invariant midpoint, 2026-10-12
+
+Codex: CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.
+Exactly one close. B1.07 Acceptance NOT MET; package WORKING_NOT_FROZEN.
+Actual full unary loop derives word/pending/low suffix and terminal ne=-2,
+with LOCAL initial cells/ranges still explicit. j8 derives from full source
+prologue; actual unary byte content and mathematical padding identity proved.
+Full coefficient/outer STATIC invariant, source lengths/decoders/four segments/
+material WORDs/public codec remain OPEN; public stays last. No requested
+whole-codec result/length/frame premise; no B4/B5 advance.
+
+Entry14135 pins889fdb29…; sealed JSONc9727992…/notesa8ea492a…;
+postseal14460 pinsa5eecfcd…. Final0248 modules+audit9 clean0/0;
+audit86=66+20,79 full terms+7 inductives,standard axioms/no elisions,
+byte-exact generator.24 jobs retained:6 wholly accepted/18 failed,35 steps/
+17 accepted,all snapshots/streams/waits/causes preserved,maxRSS3003020KiB.
+No new Sage/C;066 finite controls and both counterexamples unchanged.
+Author self-review/proofreading only; not REVIEWED. Own fac057de/e5a2cfec
+plus closing pair; foreign interleaved S05eb7a8e7f/history/staging preserved.
+Checkpoint48R has exact next verify command/types/order. No push/review/
+delegation/relay/migration/import or production C changes. Window CLOSED;
+no auto-resume. Next: actual prefix/first drain -> full STATIC -> universal
+source lengths/decoders -> public last.
+
+# BATCH_068 — owner-started B1.07 continuation, 2026-10-12
+
+Codex owns this source3 window from e3488d07/checkpoint47R. BEFORE edits/jobs,
+sealed067 verified14135 pins into levels_068/ENTRY_PINS_068.json, SHA256
+889fdb295e6421fdb8e832b1f084dd8a6665c7b826d05816cf19ba5f244dbd70.
+No active proof job observed. Resume STATIC low-suffix/local-source invariant,
+then exact source lengths/decoders; public codec last. No desired codec result,
+length or frame premise. Exactly one final Acceptance or expanded midpoint;
+serial host-guarded jobs, unchanged limits, failures/counterexamples retained.
+No push/review/delegation/relay/migration/import; foreign changes preserved.
+
 # BATCH_067 — CLOSED at complete NONE/local STATIC suffix midpoint, 2026-10-12
 
 Codex: CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.
