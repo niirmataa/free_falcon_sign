@@ -22,3 +22,13 @@ Runtime: .build/pair_machine_020/vector_norm_001. Pojedynczy build,
 M6144/AS10GiB/CPU110s, świeże etykiety; dawne receipty i źródła nienaruszone.
 Bez push, nowych gałęzi, workerów, cudzych replayów, zmian T12.1/B20/paperu.
 Monitor ROM pozostaje PAUSED. Dokumentacja tego kroku dotyczy dowodu.
+
+## Zamknięcie020C
+
+Kroki1–4 zamknięte: cały oryginalny select,115 eksportów w28 modułach,
+wypełnione instancje taśmy/normy/capów/cube, publiczny initial i ten sam
+modelowy bound kosztu. Audyt115/115 czysty; historia41 prób zachowana.
+Piny, własna kontrola i mapa dalszych obowiązków w CHECKPOINT/CHECKS.
+Optymalizacji importów nie prowadzono: nie była konieczna do tego zakresu;
+nie zmieniono pinów podstawy ani limitu. Parent020/EveryTape nadal OPEN.
+Następny020D: scatter, wyjście i złożenie całego programu.

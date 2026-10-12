@@ -3,6 +3,18 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
+**Kontynuacja020C — [cały select zgodny z019](notes/VECTOR_NORM_020C_CHECKPOINT.md):**
+115 nowych eksportów kernelowych zamyka1536 par, dokładną normę Q,
+cap196 i świeży cube na tej samej taśmie019. Końcowy select dla każdego
+publicznego h, taśmy i stanu daje dokładny obraz wybranego wektora w RAM;
+publiczny initial jest bez błędu. Ten sam program ma bound w modelu020.
+Wszystkie przesłanki lokalnych kroków i układu taśmy są wypełnione.
+Audyt115 eksportów: standardowe aksjomaty, czyste29 końcowych buildów;
+41 prób zachowanych. **EveryTape całego programu, scatter/wyjście,
+transport pełnego J/P i pełne zasoby nadal OPEN.** Bez niezależnego odbioru.
+[Kolejka020C](notes/KERNEL_QUEUE_020C.json), [klasy020C](notes/CERTIFICATE_CLASSES_020C.json).
+Następny duży TODO020D opisano w checkpointcie.
+
 **Kontynuacja020B — [cap80 i cała instrukcja pair](notes/CAP_REFINEMENT_020B_CHECKPOINT.md):**
 42 nowe eksporty kernelowe domykają rzeczywisty cap80 z wyczerpaniem prób,
 zerowy fallback, oba zapisy RAM, normę x²+xy+y², dokładny akumulator,
