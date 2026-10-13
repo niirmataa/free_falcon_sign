@@ -3,6 +3,19 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
+**Kontynuacja020E4 — [Array, prymitywy i pełne naliczenia](notes/ARRAY_BACKEND_020E4_CHECKPOINT.md), PARTIAL:**
+183 nowe twierdzenia: backend Array, jawne kopie, wszystkie fazy drivera,
+EveryTape oraz pełne J/P pod tym samym(M). Kernel i Sage dają bound
+11763954238966829723 dla modelowych ticks i skumulowanych naliczeń słów.
+**Nie jest to jeszcze pełny peak.** Kernelowy CostSpaceGap pokazuje, dlaczego
+sam typ liczników nie implikuje pokrycia przechowywanych danych. Brakuje
+konkretnego śladu/układu alokacji, scratch i czasu życia. Pełne020E/Q-RESC
+oraz QROM pozostają OPEN; bez deklaracji praktycznej wydajności.
+38 modułów + końcowy audyt;110 prób zachowanych. [Kontrola autora](notes/ARRAY_BACKEND_020E4_SELF_REVIEW.md),
+[kolejka020E4](notes/KERNEL_QUEUE_020E4.json), [klasy020E4](notes/CERTIFICATE_CLASSES_020E4.json).
+[Następna część tego samego TODO: alokacja i peak](notes/RESOURCES_020E_CONTINUATION_005.md).
+Bez niezależnego odbioru i bez push; monitor ROM pozostaje PAUSED.
+
 **Kontynuacja020E3 — [skończone banki, zgodność i pojemność](notes/FINITE_BANKS_020E3_CHECKPOINT.md):**
 55 nowych twierdzeń domyka model banku28941 ramek i877 komórek wartości. Każdy
 zapis stosu ma udowodnione miejsce; wartości powstają topologicznie po
@@ -72,7 +85,7 @@ w przypiętym środowisku legacy, bez scalenia z nową grą wariantu A.
 [Kolejka020D](notes/KERNEL_QUEUE_020D.json), [klasy020D](notes/CERTIFICATE_CLASSES_020D.json).
 Następny duży krok: [TODO020E — pełny driver i zasoby](notes/TODO_RESOURCES_020E.md).
 
-Poniższe wpisy opisują wcześniejsze checkpointy; aktualny stan wskazuje020E3.
+Poniższe wpisy opisują wcześniejsze checkpointy; aktualny stan wskazuje020E4.
 
 **Kontynuacja020C — [cały select zgodny z019](notes/VECTOR_NORM_020C_CHECKPOINT.md):**
 115 nowych eksportów kernelowych zamyka1536 par, dokładną normę Q,
