@@ -3,6 +3,19 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
+**Kontynuacja020E7 — [uniwersalny odczyt producenta i efekt układu slotów](notes/SOURCE_EQUIVALENCE_020E7_CHECKPOINT.md), IN_PROGRESS / PARTIAL:**
+Kernel obejmuje wszystkie96 pól rzeczywistego odczytu dla każdego typowanego
+stanu, także puste/błędne przypadki, oraz wykonanie zainstalowanego kodu.
+Osobno dowiedziono, że referencyjny układ32 slotów ma dokładnie efekt starego
+CoreStep.15 modułów,63 twierdzenia,audyt72 eksportów;41 prób zachowanych.
+**Pełna zgodność producenta nadal OPEN:** brakuje dowodu, że konkretny
+CoreCircuit/CoreSlots daje ten referencyjny efekt. Próby pełnego złożenia
+i sterowania nie zamknęły celów; nie zastąpiono ich założeniem ani testami.
+[Kontrola autora](notes/SOURCE_EQUIVALENCE_020E7_SELF_REVIEW.md),
+[klasy](notes/CERTIFICATE_CLASSES_020E7.json), [kolejka](notes/KERNEL_QUEUE_020E7.json).
+Bez nowego transportu J/P, pełnego peak, niezależnego odbioru lub push.
+Status QROM WARUNKOWY; monitor ROM PAUSED. Poniższe E6 zachowuje stan historyczny.
+
 **Kontynuacja020E6 — [producent: wykonanie i pamięć lokalna](notes/PRODUCER_020E6_CHECKPOINT.md), IN_PROGRESS / PARTIAL:**
 Zamknięty zestaw instrukcji, kompilator z ochroną rejestrów, jawne przechowanie
 pobranej instrukcji oraz kernelowy ślad pojedynczego wywołania. Payload roboczy
