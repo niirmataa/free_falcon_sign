@@ -1,0 +1,76 @@
+{
+  "task": "S05/TODO020E/decision-equivalence020E8",
+  "status": "PARTIAL_KERNEL_NOT_REVIEWED",
+  "items": [
+    {
+      "id": "E6-SOURCE-WINDOW",
+      "status": "KERNEL_SCOPED_PREVIOUS_E7",
+      "scope": "All96 fields of the actual reader"
+    },
+    {
+      "id": "E8-CONTROL-NONACT",
+      "status": "KERNEL_SCOPED",
+      "export": "ProducerControlNonact020E8.source"
+    },
+    {
+      "id": "E8-SCAN",
+      "status": "KERNEL_SCOPED",
+      "exports": [
+        "ProducerScanDecision020E8.correct",
+        "ProducerScanDecision020E8.cache_words"
+      ]
+    },
+    {
+      "id": "E8-OUTPUT-CONTROL-PADDING",
+      "status": "KERNEL_SCOPED",
+      "exports": [
+        "ProducerOutputSlots020E8.control",
+        "ProducerOutputSlots020E8.padding"
+      ]
+    },
+    {
+      "id": "E8-PASSIVE",
+      "status": "KERNEL_SCOPED",
+      "export": "ProducerPassive020E8.reference_equality",
+      "scope": "The exact original equality for check/done/bad"
+    },
+    {
+      "id": "E8-DATA-ACTIVE",
+      "status": "OPEN_NEXT",
+      "scope": "First3 slots in clear/scan/push: both presence and address/value, including explicit zero writes for absent cache values",
+      "ready": [
+        "ProducerDataList020E8.values_code",
+        "ProducerDataList020E8.frames_code",
+        "ProducerScanDecision020E8.cache_words",
+        "E7 reference effect/layout"
+      ],
+      "failed_route": "datacases001-003: direct code projection of proof-generated CoreDataPatch.program blocked by reduction of Decidable.rec/Eq.mpr casts",
+      "next_route": "Use small explicit projection lemmas or a direct effect proof from CoreFieldPatch.values/frames correctness, preserving every original state and failure; document any change from raw equality to effect equivalence"
+    },
+    {
+      "id": "E8-ACT",
+      "status": "OPEN",
+      "scope": "FixedAction/MemoryEdit against actionOK/editTag/address/value/actionPending, then control words and data writes; no substitute equality premise"
+    },
+    {
+      "id": "E8-WHOLE-STEP",
+      "status": "OPEN",
+      "scope": "Combine all seven phases, then EveryTape/J/P under unchanged(M)"
+    },
+    {
+      "id": "E6-FAMILIES",
+      "status": "OPEN",
+      "scope": "Parser/fill/startup producers"
+    },
+    {
+      "id": "E6-LIFETIMES",
+      "status": "OPEN",
+      "scope": "Both code images, intermediate buffer, load/outer controller and full sampler peak/time"
+    },
+    {
+      "id": "SOURCE-QROM",
+      "status": "OPEN_UNCHANGED",
+      "scope": "M coverage, source key/sign/PRG and quantum reduction obligations"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "task": "S05/TODO020E/decision-equivalence020E8",
+  "status": "PARTIAL_KERNEL_NOT_REVIEWED",
+  "entries": [
+    {
+      "name": "Word512, finite banks, source encoding, checked loads and region in-place",
+      "class": "MODEL",
+      "status": "EXPLICIT_UNCHANGED",
+      "scope": "No native C/Lean memory claim; diagnostic producer flag is not a sampler abort"
+    },
+    {
+      "name": "All16 control words, every typed state outside act",
+      "class": "PROOF_OBLIGATION",
+      "status": "DISCHARGED_SCOPED",
+      "exports": [
+        "ProducerControlNonact020E8.source"
+      ],
+      "scope": "check/clear/scan/push/done/bad; no reachability or success premise"
+    },
+    {
+      "name": "Complete scalar scan and both old cache words",
+      "class": "PROOF_OBLIGATION",
+      "status": "DISCHARGED_SCOPED",
+      "exports": [
+        "ProducerScanDecision020E8.correct",
+        "ProducerScanDecision020E8.cache_words"
+      ],
+      "scope": "All typed Data,16 modeled tags, all Word512 payloads, invalid opcodes/register indices and missing/backward-check-failing children; data-write presence/address integration still separate"
+    },
+    {
+      "name": "Executed producer control slots and padding",
+      "class": "PROOF_OBLIGATION",
+      "status": "DISCHARGED_SCOPED",
+      "exports": [
+        "ProducerOutputSlots020E8.control",
+        "ProducerOutputSlots020E8.padding"
+      ],
+      "scope": "16 control slots outside act;13 empty slots in all phases"
+    },
+    {
+      "name": "Complete producer equality and old-step script for passive phases",
+      "class": "PROOF_OBLIGATION",
+      "status": "DISCHARGED_SCOPED",
+      "exports": [
+        "ProducerPassive020E8.executed",
+        "ProducerPassive020E8.reference_equality",
+        "ProducerPassive020E8.script"
+      ],
+      "scope": "check/done/bad only; script witness constructed from reference and linked to actual code output; no decoder/allocation/runtime claim"
+    },
+    {
+      "name": "Universal concrete producer to old CoreStep",
+      "class": "PROOF_OBLIGATION",
+      "status": "OPEN",
+      "remaining": [
+        "clear/scan/push active data-slot integration",
+        "act success/edit/pending and all control/data words",
+        "whole-step composition without phase restriction"
+      ]
+    },
+    {
+      "name": "Other producer families, full controller lifetime/time/peak, source M/KeyGen/Sign and concrete PRG hop",
+      "class": "PROOF_OBLIGATION",
+      "status": "OPEN_UNCHANGED"
+    },
+    {
+      "name": "A-QMT and Q-PRG primitive bounds",
+      "class": "CRYPTOGRAPHIC_ASSUMPTION",
+      "status": "UNCHANGED_NOT_INSTANTIATED"
+    },
+    {
+      "name": "QROM experiment/hash/embedding/collision/reprogramming and remaining TARGET_CONTRACT obligations",
+      "class": "PROOF_OBLIGATION",
+      "status": "OPEN_UNCHANGED"
+    }
+  ]
+}
