@@ -1,3 +1,24 @@
+# BATCH076 — SAME mathematical-vector/int16 transport complete; public LAST next
+
+Owner TODO item3 PROVED_KERNEL_SCOPED / NOT_REVIEWED in explicit source/
+signed16 scope. Existing768-pair layout has exact1536-word bidirectional
+signedEquiv, actual raw-byte Represents iff codec words, bounded uniqueness
+and physical array construction with exact reads. Unbounded65536->0 alias
+retained; actual source bounds1/2047 discharge the domain and NONE carrier/
+STATIC1920/3264 budgets. Both full source codecs recover SAME mathematical
+values. Existing source-produced four-material witness suppliesALLf/g/F/G/h
+and equations; actual4 caller boundaries/order/bytes/lengths and honest
+per-call decoders are derived without a codec-capacity/result/frame premise.
+
+Final0175 proof modules+audit6 clean0/0,audit34 full terms=29new+5inherited;
+foundation010audit53=49new+4inherited.076total10 modules/78 declarations/
+60 named theorems;17 jobs/5 failures retained. Author self-review only.
+Next after076 postseal/ENTRY077: public codec LAST. Whole TODO ACTIVE; no
+midpoint close. B1.07/B1.08 Acceptance NOT MET;B1.09 OPEN. Root accepted-
+attempt/encoding join, LegalWorkspace/relocation/call-ID and final secret-
+blob/header/lifetime observation scope remain explicit; no B1.10 claim.
+No push/review/subagent/relay/migration/production-C/frozen-byte changes.
+
 #076 foundation postseal — source-bound mathematical codec join next
 
 Foundation postseal PASS_SCOPED_INTERNAL_STEP:18882 pins, all18719 entry pins
