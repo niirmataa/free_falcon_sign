@@ -1,0 +1,7 @@
+# Whole codec TODO — complete declaration audit078
+
+The final declaration census found18 retained073 helper declarations missing from the earlier17 full-body audit inventories. All had accepted native kernel builds; no source pin mismatch or proof failure was found. AUDIT_COVERAGE_GAP_001.json retains the exact missing names and prior audit pins. No historical proof, audit, manifest or seal is edited.
+
+New KeygenCodecWholeTodo078Audit imports all186 new proof modules and prints all1986 named declarations plus4 inherited boundary declarations in one coherent job.1990 complete entries comprise1941 full terms and49 kernel inductives. The 1002 named theorems are counted separately from definitions, structures and aliases. Job keygen_codec_final_078_001 is accepted with clean0/0 and unchanged guards; its full25,671,900-byte audit is pinned as a generated artifact. All1986 new named declarations are covered after this additive audit. Total audit modules18.
+
+The four requested local components are proved in their recorded legal/source domains: NONE, STATIC, same mathematical/int16 transport, and public codec with observed public suffix/header/length. B1.07 and B1.08 Acceptance remain NOT MET; B1.09 local public suffix is proved, but the same accepted-attempt/root assembly remains open. No independent review, full KeyGen-to-fiber, compiler, probability or security claim follows. No push, migration, new worker or source-C change.
