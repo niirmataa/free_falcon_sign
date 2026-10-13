@@ -31,3 +31,7 @@ artifacts. It is not the B1.11 fresh replay of every historical dependency.
 All prior failures, refusals, counterexamples and seals remain unchanged.
 No source C edits, migration, new workers/reviewers, push, probability-law,
 real Sign/do_sign realization, compiler or signature-security claim.
+
+The first seal invocation refused its entry process guard while S05 was
+running Lean. No manifest was written and no hash mismatch was reported;
+the refusal is retained and included by the sealer without weakening guards.

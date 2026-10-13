@@ -82,6 +82,7 @@ def seal():
                                   'audit_entries': 243, 'full_terms': 215, 'kernel_inductives': 28},
               'adapter_counts': {'proof_modules': 1, 'new_named_declarations': 10, 'named_theorems': 3},
               'fiber_source': pin(job.REPO / 'proofs/ft1536/development/T12_1/run2/formal/Run2/ActualNTRUFiber.lean'),
+              'seal_guard_refusals': [pin(p) for p in sorted((ROOT / '.build/levels_083').glob('SEAL_REFUSAL_*.json'))],
               'closed': 'Required B1.07/08/09 source assembly and actual observed joint key output in explicit reference/legal-memory/capacity scope; native adapter to existing fiber coordinates and Gaussian reindexing.',
               'open': 'B1.10 final contract acceptance/consolidation and B1.11 complete fresh closure replay, mutations and independent review. Key-law probabilities, real Sign/do_sign realization, PRG and security remain outside.',
               'tools': [pin(ROOT / 'tools/keygen_assembly_whole083_audit.py'), pin(__file__)],
