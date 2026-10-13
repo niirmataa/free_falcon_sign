@@ -126,7 +126,7 @@ def next_entry(expected,post_sha):
  checked=dict(post['checked']);checked[str(path(postPath))]=post_sha
  original077=read('.build/levels_077/ENTRY_PINS_077.json')
  assert not job.active()
- print(json.dumps(write('.build/levels_077/ENTRY_PINS_077.json',{
+ print(json.dumps(write('.build/levels_078/ENTRY_PINS_078.json',{
   'utc':datetime.now(timezone.utc).isoformat(),'batch':'BATCH_015-077','checked':checked,'distinct_pinned_files':len(checked),
   'completed_owner_todo_item':'4: public codec LAST; all four scoped codec/transport components complete',
   'next_owner_todo_item':'Whole-TODO final report; no automatic start of root assembly',
