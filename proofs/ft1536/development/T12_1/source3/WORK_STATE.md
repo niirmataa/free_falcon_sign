@@ -1,3 +1,11 @@
+# Public077 encoder step complete; decoder and caller next
+
+Full source encoder checked in job030:43 modules clean0/0,677 audit entries
+(673 new declarations,4 inherited;665 full terms,12 kernel inductives).
+Source-derived2880 return/physical trace and honest execution, canonical15-bit
+stream identity. Encoder-step postseal next, then full public decoder/SAMEh/
+header/length. Whole owner TODO ACTIVE; no midpoint close or push.
+
 # BATCH076 final postseal complete; public077 LAST next
 
 Owner TODO item3 SAME mathematical-vector/physical-int16 BOTH directions
