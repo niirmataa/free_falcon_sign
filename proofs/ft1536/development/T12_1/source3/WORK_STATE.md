@@ -1,3 +1,12 @@
+# Public077 decoder postseal complete; final public caller assembly active
+
+Decoder source commit121d6b02. Postseal:20429 pins, all20031 incoming
+unchanged. SHA256`f9fe9c5087ff2ce506f0283cdcf00753c5bbd0101cbd410fa08cd10db56c21ca`.
+Step d3e7cebf0ee38460ca67c8792b680638ceffd2359784d517cbf952cb6411290a.
+Full physical/mathematical public round-trip is checked. Public packet
+header/length/observed-byte caller assembly remains active.
+Whole TODO continues; no midpoint close or push.
+
 # Public077 payload round-trip complete; header and observed public bytes next
 
 Final046:14 proof modules plus audit,15 clean0/0;90 new declarations,
