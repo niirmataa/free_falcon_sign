@@ -836,6 +836,23 @@ Audit findings closure: F01=061, F02/F03=062, F04/F05=run2 repair
 Hardening queue (low priority): re-prove SelectBitPreserve without
 bv_decide; resolve ThetaBox linter recursion without disabling.
 
+## 2026-10-13: B1 mid-review PASS_SCOPED (MIDREVIEW_001, Daybreak) - sealed chain 065-072 attested
+
+Independent mid-review of sealed pairs BATCH_065-072 = **PASS_SCOPED**:
+all 15,815 POSTSEAL pins match bytes 1:1; 90 accepted modules with
+clean receipts; 955 audit entries point only at the standard axiom
+trio; no NOTES-vs-theorem-type discrepancies. PARTIAL_PROOF status
+correctly held; BATCH_073 + its seal supplement explicitly out of
+scope (postseal 073 pending). No full replay by design; no sources
+or pins changed. Reviewer artifacts pinned:
+work/FT1536_B1_MIDREVIEW_001/MIDREVIEW_001.md (a32cd78a...),
+MIDREVIEW_001_RESULT.json (34c95eca...).
+
+Meaning: the rapid-growth chain (invocation bridge, full STATIC on
+physical int16, NONE 3072, STATIC length formula) is now
+independently attested for the paper's artifact story. The
+three-sentence ritual was adopted and returned by the reviewer.
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
