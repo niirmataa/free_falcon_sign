@@ -1,3 +1,14 @@
+# STATIC075 unary/store postseal — complete coefficient/1536 loop next
+
+Unary-step postseal PASS_SCOPED_INTERNAL_STEP:18221 pins, all17951 predecessor
+pins unchanged; SHA256`d32a4a14909aca06b4266459a20f35f3ce94a42d68f33d347f9406a5eaa21d2c`.
+Step SHA256`11b2c13f984545a1a7a1384aa5ffa4b029e7423c4a2a02f9009dd9e726eddd19`.
+Source commit64086a35. Whole TODO ACTIVE; no midpoint close. Full source
+STATIC round-trip remains OPEN. Prefix/unary byte-count conservation is
+proved for eventual return-v derivation; do not assume encoded length.
+Next complete coefficient and1536 physical stores/return/padding/honest
+prologue/body/dispatchers; then SAME vectors/int16 transport, public LAST.
+
 # STATIC075 full source unary loop and SAME-word store checked
 
 UnaryLoop.loop constructs/inverts the COMPLETE actual unary for-loop:
