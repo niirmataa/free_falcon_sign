@@ -1,3 +1,46 @@
+# BATCH_073 — INTEGRITY STOP on the whole codec TODO, 2026-10-13
+
+Owner-expanded autonomy covered all four items, with one final whole-TODO
+report. Work stopped on a hard provenance refusal, not a routine midpoint.
+**TODO_NOT_COMPLETED / PARTIAL_PROOF / NOT_REVIEWED.**
+B1.07/B1.08 Acceptance NOT MET; B1.09 OPEN/unstarted073.
+
+Complete compress_none body now derives return3072 and readable ordered
+high/low bytes from the SAME original1536-word physical array, preserving
+that array: KeygenCodecNoneOriginal.source_bytes and
+KeygenCodecNoneWire.source_readable/source_original_preserved.
+Complete NONE decoder source_frame and physical store_same_memory are checked,
+but the decoder value/1536-store/return/existence composition remains OPEN.
+STATIC decoder, SAME mathematical/physical transport and public LAST were not
+started073. No source inverse or full mathematics↔bytes bridge is claimed.
+
+Integrity wall: memory-step receipt acf532c5… selected eight accepted modules
+from mixed010 and final accepted audit011. The full010 SOURCE_INPUTS still
+pins the failed pre-fix audit d818dd12…; live accepted audit is dc2f5439….
+The existing postseal verifier correctly refused the mismatch; no successful
+MEMORY_POSTSEAL.json exists. The seal/verifier/manifests were not repaired.
+All15815 predecessor pins rechecked unchanged. The final JSON is a diagnostic
+inventory, NOT postseal PASS. The append-only erratum preserves the defect.
+
+13 new proof modules,92 declarations/50 theorems;14 current native module
+checks clean0/0. Initial audit75 entries=62 terms+13 inductives covers eight
+modules only. Five later encoder modules have native clean builds; no expanded
+audit after the stop.21 jobs/33 steps retained,23 accepted steps;10 failed jobs
+with causes. No new Sage/C campaign. No active owned proof job remains.
+
+Own source commits06392f4f/cbad429f, plus the following preservation/report
+commit. No push, review, subagent, relay, migration, import or production-C edit.
+Foreign shared-main commits/working tree/staging were preserved.
+
+Final whole-TODO report:
+[KEYGEN_SOURCE_TO_FIBER_001_BATCH_073_NOTES.md](notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_073_NOTES.md).
+JSON SHA256 b6b0080a341bbe8fae7ecb7b62f658d78cb3defe01acf765789faeee7041b5d0;
+notes SHA256 6d71642b37b51fac0f9cf2d0c5200490343423362875d23ccf29cf41db4bd2f0.
+Next requires owner decision on a DISTINCT superseding provenance receipt/
+clean native rebuild, retaining the rejected step. Then complete source NONE
+decoder, STATIC, mathematical/physical transport and public LAST. No
+mathematical impossibility or exhausted proof route was established.
+
 # BATCH_073 — owner-expanded complete codec TODO, 2026-10-13
 
 Codex resumes52R from3619a22d. Entry072 verified BEFORE edits/jobs:

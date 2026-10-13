@@ -1,3 +1,72 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — 53 / whole-TODO integrity stop
+
+**INTEGRITY_STOP / PARTIAL_PROOF / NOT_REVIEWED / TODO_NOT_COMPLETED.**
+The owner's four-item autonomy replaced52R's single-midpoint stop. This stop
+is caused by a refused new provenance checkpoint, not the window discipline.
+B1.07/B1.08 Acceptance NOT MET; B1.09 OPEN/unstarted073. No B1.10 claim.
+
+## 53. New results and exact boundary
+
+- Complete source compress_none derives return3072, exact ordered high/low
+  writes and final readable bytes from SAME original1536 physical int16 words;
+  original Words are preserved. KeygenCodecNoneOriginal.source_bytes;
+  KeygenCodecNoneWire.source_readable/source_original_preserved.
+- Complete source NONE decoder derives its unrestricted-flow physical frame;
+  exact int16 store readback/store_same_memory is checked. Full decoder value
+  recovery,1536-store fold, actual return, honest existence and dispatcher
+  composition are OPEN. This is NOT source round-trip.
+- STATIC decoder, mathematical/physical SAME-material transport and public
+  LAST were not started073. All inherited071/072 and B1.05/032,B1.06/046
+  statements/limitations/counterexamples remain unchanged.
+
+## 53.1 Integrity refusal — no silent repair
+
+Entry15815 SHA256
+`ec2bab593a372b8dd9fc2b8a15df0c9e3b20d636ee5f1028920998c530ac9681`.
+All predecessors rechecked unchanged at stop. New memory-step receipt
+`acf532c5c2ee03e4d7afc70c477f1e42c69632d73b0c8fb98375e7c131f9bd07`
+collects eight accepted modules from mixed010 and the corrected audit011.
+Its full010 SOURCE_INPUTS includes FAILED selected audit source
+`d818dd129d1b8aee439b4f3f12307d0b3a614cc6d236ba28f40ff4e433085301`;
+current accepted audit source is
+`dc2f54399f781ec25842eea26f5cc7adfa7955d348470443c16d63b2ad9d7cc0`.
+The postseal verifier correctly refused the mismatch. MEMORY_POSTSEAL.json
+was not created. No seal/manifest/verifier/predecessor repair was attempted.
+Append-only erratum: KEYGEN_DECODE_MEMORY_073_ERRATA.md. Raw stdout/stderr and
+structured refusal are in .build/levels_073. This is a local organizer error,
+not a source counterexample or mathematical impossibility.
+
+## 53.2 Final report / complete diagnostic pin inventory
+
+- BATCH_073 JSON SHA256 `b6b0080a341bbe8fae7ecb7b62f658d78cb3defe01acf765789faeee7041b5d0`.
+- BATCH_073 notes SHA256 `6d71642b37b51fac0f9cf2d0c5200490343423362875d23ccf29cf41db4bd2f0`.
+- Integrity-refusal JSON SHA256
+  `8f14d306619aa7a4f8570fe931232c4f2ded1cbe2a490824e932c329b4ce765a`.
+- Predecessor-at-stop receipt SHA256
+  `b153ee960ead46a2a69448ee931f470a0933ad782fce6da0cd6c5b2084ab8d6d`.
+- Full initial audit75 SHA256
+  `513de859597063eca9d258c8f1be4ba4cff6275fd43244a05894f6c65d0fee38`.
+
+13 proof modules/92 declarations/50 theorems; current14 native checks clean0/0.
+Initial audit covers71 new+4 inherited,62 full terms+13 kernel inductives;
+five later encoder modules have native clean builds but no expanded audit.
+21 jobs/33 steps,23 accepted steps;11 wholly accepted/10 failed jobs, all
+causes/snapshots/streams/waits/receipts retained. MaxRSS3016720KiB,unchanged
+limits. No Sage/C campaign or new valid source counterexample.
+Own06392f4f/cbad429f and subsequent exact-path preservation commit; foreign
+S05/root/onboarding/objects/index preserved. No active owned proof job,
+push, review, subagent, relay, migration, stages import or production-C edit.
+
+## 53R. Resumption condition
+
+Owner decision first: new clean native rebuild and DISTINCT superseding
+receipt can retain the rejected memory-step and its complete failure history.
+Do not overwrite the rejected sealed receipt or weaken its verifier. Then
+resume the still-executable source NONE decoder value/loop/existence bridge,
+STATIC, SAME mathematical/physical transport and public LAST. No proof route
+was established as impossible or exhausted. Full details and all pins are in
+the linked BATCH_073 report/inventory; no successful073 postseal is asserted.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.08 / exact lengths and partial NONE decoder
 
 **Exact NONE/STATIC lengths: PROVED_KERNEL_SCOPED / NOT_REVIEWED.**
