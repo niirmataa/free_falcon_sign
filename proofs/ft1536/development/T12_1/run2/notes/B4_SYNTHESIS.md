@@ -871,6 +871,35 @@ entries, no orphans/uncited). Reviewer artifacts pinned:
 work/FT1536_A1_REVIEW_001/A1_REVIEW_001.md (8646d733...),
 A1_REVIEW_001_RESULT.json (61f6bf23...).
 
+## 2026-10-13: WHOLE TODO closed - full codec/transport stack proven (186 modules, 1002 theorems)
+
+The big TODO delivered ALL FOUR components: (1) NONE in-place
+identity + existence (1536 coefficients, 3072 bytes, full decoder
+with stores/return, original array recovered on [-9216,9216]);
+(2) STATIC call roundtrip + in-place identity for ALL int16 values
+including -32768, lengths from source; (3) vectors <-> int16 both
+directions (real 768+768 layout, same f/g/F/G through four calls);
+(4) public codec: actual observed key decode (header 0x8a, payload
+2880, length 2881 -> same h) with extra-byte decoder behavior
+preserved. Totals: 186 modules, 1986 declarations, 1002 named
+theorems; final audit covers ALL declarations; accepted logs 0/0;
+105/214 failed jobs retained with reasons; 18 helper bodies filled
+by separate audit without touching earlier proofs/seals. Supplement
+073 conditions met (manifest 010 + refusal frozen, pin 010->011
+only, 15815/15815 input pins, ENTRY074 after re-postseal).
+Final postseal WHOLE_TODO_POSTSEAL_001: 20619 pins, sha256
+ca4997f1... (verified). Report: notes/run/
+KEYGEN_SOURCE_TO_FIBER_001_CODEC_WHOLE_TODO_REPORT_001.md
+(18767157...), INDEX_001.json. HEAD 738756e1.
+
+Status edges (honest): B1.07 Acceptance NOT MET (connect accepted
+attempt to serialization input; LegalWorkspace, relocation,
+call-ID, lifetime obligations); B1.08 NOT MET (compose+observe
+whole final secret key with 0xaa header); B1.09 public serialization
+proven, full acceptance waits on B1.07 link. Math<->bytes bridge
+now has full codec proofs; biggest gap = whole-KeyGen composition.
+NOT_REVIEWED held.
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
