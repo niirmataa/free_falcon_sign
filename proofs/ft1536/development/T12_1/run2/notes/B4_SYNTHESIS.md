@@ -814,6 +814,28 @@ GitHub history by explicit owner order (forced update, the only
 allowed exception; two tip commits dropped, all older hashes and pins
 untouched). Future violations = stop-and-report, not silent commits.
 
+## 2026-10-13: F04/F05 package ACCEPTED - PASS_SCOPED (REVIEW_002, Daybreak)
+
+Targeted recheck of F04_ROM_VARIANT_A_SCOPE_002 by owner-designated
+reviewer Daybreak = **PASS_SCOPED**. Trust boundary pinned exactly:
+accepted scope = 166 modules (#001-#165, #167), import-closed;
+#166 SelectBitPreserve explicitly excluded (zero importers, native
+bv_decide axiom preserved in evidence); ThetaBox:166 accepted as a
+DOCUMENTED linter exception (tool recursion bug). 3813/3813 files
+hash-consistent, mathematical sources unchanged, no
+sorry/admit/native_decide/sorryAx/new axioms in accepted scope.
+Reviewer artifacts (hashes verified 1:1):
+work/FT1536_F04_SCOPE_RECHECK_002/REVIEW_002.md (f8e0b2ad...),
+REVIEW_002_RESULT.json (dbb00be7...). No full replay per scope of
+the recheck. History intact (CHANGES_REQUIRED of REVIEW_001 stays
+the historical verdict of round 1).
+
+Audit findings closure: F01=061, F02/F03=062, F04/F05=run2 repair
++ SCOPE_002 + REVIEW_002. F06 stays OPEN. Source binding
+(S.code <-> do_sign) stays OPEN and must NOT be claimed closed.
+Hardening queue (low priority): re-prove SelectBitPreserve without
+bv_decide; resolve ThetaBox linter recursion without disabling.
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
