@@ -1,3 +1,21 @@
+# Assembly079 — conditional accepted-attempt/serialization bridge sealed
+
+Owner continuous B1.07/08 → B1.09 task remains ACTIVE. Step1 has a checked
+conditional bridge: final accepted attempt state equals serialization entry;
+reachable workspace, nine pre-loop memory frames and SAME f/g/F/G/h with
+all equations at four actual codec calls. Codec results/lengths/byte traces
+are derived. Certificate entry-frame, root relocation, call-ID/snapshots and
+lifetime composition remain open; B1.07/B1.08/B1.09 full Acceptance NOT MET.
+
+Proof commit57b956ac;4 proof modules/12 declarations/11 theorems;
+final0115 clean0/0 modules;22 full audit entries (15 terms,7 inductives).
+Eleven jobs retained:5 accepted,6 failed/refused with causes. No push/review.
+BATCH079 SHA256615d177f63baed0659ddc639959d448c4ddc9c6261640f520fdbe0356213663d.
+POSTSEAL079:20759 matching pins,SHA256
+b220c61289c1b2797ad9a2d50f9eb248eb1253c2045b7bc2db7a36531f6ba1ab.
+NEXT: Step2 reachable certificate frame, relocation and common-call package;
+then whole secret blob/header0xaa and full public join. No midpoint close.
+
 # Whole owner codec TODO complete in scoped source/reference domains
 
 All four local components are PROVED_KERNEL_SCOPED / NOT_REVIEWED:
