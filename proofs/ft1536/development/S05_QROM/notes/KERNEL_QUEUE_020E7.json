@@ -1,0 +1,56 @@
+{
+  "task": "S05/TODO020E/source-equivalence020E7",
+  "status": "PARTIAL_KERNEL_NOT_REVIEWED",
+  "items": [
+    {
+      "id": "E6-SOURCE-WINDOW",
+      "status": "KERNEL_SCOPED",
+      "exports": [
+        "ProducerWindowSource020E7.field",
+        "ProducerWindowSource020E7.executed"
+      ],
+      "scope": "Entire96-word source snapshot, universally"
+    },
+    {
+      "id": "E7-SLOT-LAYOUT",
+      "status": "KERNEL_SCOPED",
+      "exports": [
+        "ProducerSlotLayout020E7.reference_effect"
+      ],
+      "scope": "Reference fixed layout has exactly the old step effect"
+    },
+    {
+      "id": "E6-SOURCE-DECISION",
+      "status": "OPEN_NEXT",
+      "target": "forall d, ProducerSlotLayout020E7.RemainingEquality d",
+      "route": [
+        "Prove per-field scalar laws for CoreControl.next (do not unfold all codecs/context in one simp_all)",
+        "Prove ArrayValues.entry scan and FixedAction/MemoryEdit dispatch decisions, including absent values and all address failures",
+        "Match0..2 optional data slots and3..18 control slots to reference; padding must be zero",
+        "Combine already proved stored_output and reference_effect; only then transport EveryTape/J/P"
+      ],
+      "failed_routes": [
+        "decision001: all seven phase goals remain",
+        "control001: unfinished case blocks",
+        "control002: bulk-context simplification heartbeat timeout",
+        "control003: unresolved Word512 goals and aggregate heartbeat timeout"
+      ],
+      "guard": "No new equality premise, no finite-test promotion, no conditional constructor mistaken for instance"
+    },
+    {
+      "id": "E6-FAMILIES",
+      "status": "OPEN",
+      "scope": "Parser/fill/startup producer instances"
+    },
+    {
+      "id": "E6-LIFETIMES",
+      "status": "OPEN",
+      "scope": "Both code images, intermediate96-word bank, loading and outer controller in one lifetime/peak proof"
+    },
+    {
+      "id": "E5-6",
+      "status": "OPEN",
+      "scope": "Whole sampler peak/time then source/security bridges"
+    }
+  ]
+}

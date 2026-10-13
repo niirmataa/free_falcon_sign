@@ -1,0 +1,70 @@
+{
+  "task": "S05/TODO020E/source-equivalence020E7",
+  "status": "PARTIAL_KERNEL_NOT_REVIEWED",
+  "entries": [
+    {
+      "name": "Word512, checked loads, finite banks, region in-place",
+      "class": "MODEL",
+      "status": "EXPLICIT_UNCHANGED",
+      "scope": "Producer diagnostic flag is not sampler abort; no native Lean/C claim"
+    },
+    {
+      "name": "Complete source reader and executed first-stage code",
+      "class": "PROOF_OBLIGATION",
+      "status": "DISCHARGED_SCOPED",
+      "exports": [
+        "ProducerWindowSource020E7.field",
+        "ProducerWindowSource020E7.window",
+        "ProducerWindowSource020E7.executed"
+      ],
+      "scope": "All typed Data, both fresh inputs, all96 fields; no reachable-state, token-validity or cache-success hypothesis"
+    },
+    {
+      "name": "Concrete stored producer equals scalar circuit over the proved source snapshot",
+      "class": "PROOF_OBLIGATION",
+      "status": "DISCHARGED_SCOPED",
+      "exports": [
+        "ProducerReference020E7.stored_output",
+        "ProducerReference020E7.fresh_irrelevant"
+      ],
+      "scope": "Current core-command producer only; not a statement that the sampler ignores randomness"
+    },
+    {
+      "name": "Fixed-slot reference executes old CoreStep",
+      "class": "PROOF_OBLIGATION",
+      "status": "DISCHARGED_SCOPED",
+      "exports": [
+        "ProducerSlotLayout020E7.layout_effect",
+        "ProducerSlotLayout020E7.reference_effect"
+      ],
+      "scope": "Reference buffer with optional data slots,16 control slots and empty padding; no equality to concrete scalar output assumed"
+    },
+    {
+      "name": "Concrete CoreCircuit/CoreSlots equals old reference, for every typed Data",
+      "class": "PROOF_OBLIGATION",
+      "status": "OPEN",
+      "target": "forall d, ProducerSlotLayout020E7.RemainingEquality d",
+      "scope": "This is an open proposition, not an axiom or an input field of a completed sampler certificate"
+    },
+    {
+      "name": "Remaining producer families and full producer/sampler lifetime, time and peak",
+      "class": "PROOF_OBLIGATION",
+      "status": "OPEN_UNCHANGED"
+    },
+    {
+      "name": "Source MassCondition coverage, KeyGen/Sign bridge and concrete PRG hop",
+      "class": "PROOF_OBLIGATION",
+      "status": "OPEN_UNCHANGED"
+    },
+    {
+      "name": "A-QMT and Q-PRG primitive bounds",
+      "class": "CRYPTOGRAPHIC_ASSUMPTION",
+      "status": "UNCHANGED_NOT_INSTANTIATED"
+    },
+    {
+      "name": "QROM experiment, hash semantics, embedding, collision/reprogramming and other TARGET_CONTRACT obligations",
+      "class": "PROOF_OBLIGATION",
+      "status": "OPEN_UNCHANGED"
+    }
+  ]
+}
