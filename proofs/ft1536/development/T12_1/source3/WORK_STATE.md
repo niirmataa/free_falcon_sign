@@ -1,3 +1,17 @@
+# BATCH_075 — STATIC foundation checked; whole TODO continues
+
+Complete pinned STATIC syntax, evaluated control with real break, full source
+memory frame, dynamic scalar/byte expression existence and inversion, and
+finite bit-string algebra passed in ONE final010 job15 selected clean0/0.
+Full audit486 entries=480 new+6 inherited, complete terms/inductives recorded
+in the scoped foundation receipt. No whole STATIC value/round-trip claim yet.
+Failed001/003/005/006/009 retained with causes; no predecessor change.
+Next: actual encoder-bit stream, decoder refill/sign/low/unary/reconstruction,
+1536 stores, consumed return, honest execution and source dispatcher/callers.
+Then SAME mathematical-vector/physical-int16 transport; public codec LAST.
+NONE remains complete on its explicit carrier, postseal07416954/ENTRY07516955.
+B1.07/B1.08 Acceptance NOT MET;B1.09 OPEN. No push/review/subagent/relay.
+
 # BATCH_074 postseal complete; STATIC075 active next
 
 2026-10-13. Owner TODO item1 is PROVED_KERNEL_SCOPED / NOT_REVIEWED.
