@@ -1,3 +1,31 @@
+# BATCH_073 — owner-expanded complete codec TODO, 2026-10-13
+
+Codex resumes52R from3619a22d. Entry072 verified BEFORE edits/jobs:
+15815 unchanged pins, ENTRY_PINS_073 SHA256
+ec2bab593a372b8dd9fc2b8a15df0c9e3b20d636ee5f1028920998c530ac9681.
+The owner superseded the single-midpoint/window stop for this assignment:
+complete source NONE round-trip, source STATIC round-trip, SAME mathematical/
+physical int16 transport, public source codec LAST; one final whole-TODO report.
+Small local commits, no push, unchanged guarded serial jobs and0/0 logs.
+This is IN_PROGRESS / NOT_REVIEWED, NOT an Acceptance or midpoint close.
+
+Development result: independent decoder byte reads/int16 stores and scalar/
+pointer/scope semantics; checked scalar/pointer/heap-frame helpers. The complete
+pinned NONE body now derives its physical destination frame on unrestricted
+actual flows (KeygenDecodeNoneFrame.source_frame), without a desired frame,
+length or return premise. KeygenDecodeMemory.store_readback and
+store_same_memory prove exact physical little-endian store consequences.
+These are NOT full decoder value recovery, an honest-execution existence
+proof, encoder-byte binding or a full source memory round-trip. NONE remains
+OPEN; STATIC/transport/public remain in the owner's order.
+
+The outer sandbox refused NETLINK_ROUTE in job073_001; the unchanged inner
+bwrap runner succeeded in authorized outer execution073_002. All failed jobs,
+including proof-authoring and one missing-dependency launch, remain under
+.build/jobs/keygen_decode_none_073_* with raw sources/streams/receipts.
+No predecessor bytes, production C, limits, guards or warnings were changed.
+No subagent, reviewer, relay, migration, import or push was started.
+
 # BATCH_072 — CLOSED at exact lengths/partial NONE decoder midpoint, 2026-10-13
 
 Codex: CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.
