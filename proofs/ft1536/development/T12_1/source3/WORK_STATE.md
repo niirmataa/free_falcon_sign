@@ -1,3 +1,17 @@
+# STATIC075 full coefficient prefix checked; unary loop next
+
+KeygenDecodeStaticPrefixComplete.complete constructs and inverts all three
+actual sign/lo/ne declarations, full prefix-refill while-loop and actual
+sign/db_len/lo assignments, starting from the same physical wire and
+source-derived coefficient bit stream. No old sign/lo/ne values supplied.
+It derives exact sign/low8 cells, uninitialized ne, pending0..7, unchanged
+heap and the precise remaining unary bits followed by arbitrary tail.
+source_partition binds this prefix to the COMPLETE actual coefficient body.
+Final0444 proof modules+audit5 clean0/0; audit20 full terms=16 new+4 inherited.
+All038–044 attempts kept. Full operational STATIC round-trip remains OPEN;
+next actual unary loop,1536 stores/return/existence/prologue/dispatchers.
+Then SAME vectors/int16 transport and public LAST; no midpoint close/push.
+
 # STATIC075 reader-step postseal — source prefix/unary composition continues
 
 Reader-step postseal PASS_SCOPED_INTERNAL_STEP:17821 pins, all17607 predecessor
