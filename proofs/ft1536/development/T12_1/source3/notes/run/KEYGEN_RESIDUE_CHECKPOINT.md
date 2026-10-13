@@ -1,3 +1,39 @@
+# Whole owner codec TODO complete in scoped source/reference domains
+
+All four local components are PROVED_KERNEL_SCOPED / NOT_REVIEWED:
+NONE memory round-trip; STATIC memory round-trip; SAME mathematical-vector
+and physical-int16 transport both directions; public codec and exact observed
+public suffix with header0x8a, payload2880 and output length2881.
+B1.07/B1.08 Acceptance NOT MET; B1.09 local public suffix proved, whole-root
+acceptance NOT MET. Remaining root material-entry/LegalWorkspace/relocation/
+call-ID/lifetime assembly and exact final secret-blob/header observation are
+explicitly open. No compiler, security, probability or full emitted-to-fiber
+claim. No push, migration, independent reviewer or new worker.
+
+Final whole-TODO postseal:20619 file pins, all matching; SHA256
+`ca4997f13d817764049272551ba5d7eb8ae5cf6bfe22ffa39c31382a3a8c6df7`.
+Seal:`736024a24da09688efa56773753319d1dcabf760a94268138279e760eaf5b16f`.
+Public077 postseal:20590 pins; SHA256
+`ff5384bbafad1559af8d838188a6af47f9675ca8038113d7ec5a7a05da74964c`.
+ENTRY078:20591 pins; SHA256
+`dc91e7adad875c0ae6c9a068f210b1a62f1b1e13ddac19147277f9e6b8f122e1`.
+
+186 new proof modules,1986 named declarations,1002 named theorems.
+Final coherent audit078 covers all1986 plus4 inherited declarations:
+1990 entries,1941 full terms,49 kernel inductives, clean0/0. Its SHA256 is
+`cd53ea5fe7999dbd5e0dd0d86a656f72b4b6afc215658eef9129a7e9c1f6ac35`.
+The final inventory found18 old073 helper bodies missing from earlier audit
+lists; the retained gap record and additive audit close coverage with no
+proof/source/seal edits. Total18 audit modules;214 native jobs,105 failed
+jobs retained with causes,586 steps/481 accepted. Full selected logs0/0.
+
+Final owner report and complete index:
+notes/run/KEYGEN_SOURCE_TO_FIBER_001_CODEC_WHOLE_TODO_REPORT_001.md
+notes/run/KEYGEN_SOURCE_TO_FIBER_001_CODEC_WHOLE_TODO_INDEX_001.json
+notes/run/KEYGEN_SOURCE_TO_FIBER_001_CODEC_WHOLE_TODO_CLOSEOUT_001.json
+Report/index generation and final metadata commit complete this closeout;
+no further root-assembly step has been started.
+
 # BATCH076 final postseal complete; public077 LAST next
 
 Owner TODO item3 SAME mathematical-vector/physical-int16 BOTH directions
