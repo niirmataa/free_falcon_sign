@@ -1,3 +1,11 @@
+# Public077 encoder postseal complete; full decoder next
+
+Encoder commit686d5d8a. Postseal: 20031 pins; all19007 entry pins
+unchanged. SHA256`18b10cf0f1c70d6179befe68b139c8eafdea36d0fbedaabde7936d473f2b7fb3`.
+Step manifest133965e0207aff09ce30773871250760d0242585cd4e606c18e35eb9858fa33c.
+Full encoder and canonical bit stream are checked; decoder work is active.
+Whole TODO continues. B1.07/B1.08 NOT MET;B1.09 OPEN; no push or midpoint close.
+
 # Public077 encoder step complete; decoder and caller next
 
 Full source encoder checked in job030:43 modules clean0/0,677 audit entries
