@@ -1,3 +1,17 @@
+# STATIC075 complete source prefix-refill loop checked; whole TODO active
+
+KeygenDecodeStaticPrefixLoop.loop constructs and inverts the whole actual
+refill while-loop from physical unread bytes and their actual extent.
+It preserves all remaining bits and heap; final pending count9..16 with
+zero/one/two physical reads. No whole-codec success assumption. Exact
+source sign/low RHS calculations and bit-slice values are checked.
+Final0378 proof modules+audit9 clean0/0; full audit45=41 new+4 inherited,
+42 full terms+3 kernel inductives. All027–037 attempts retained with causes.
+Next complete actual prologue/sign-low/unary/1536 stores/return/honest
+existence and dispatchers; then SAME vector/int16 transport, public LAST.
+Local Ready/Context seams must be derived from the real prologue; full
+STATIC source round-trip remains OPEN. No midpoint close, no push/review.
+
 # STATIC075 bits-step postseal — operational decoder composition continues
 
 Bits-step postseal PASS_SCOPED_INTERNAL_STEP:17607 pins, all17293 predecessor
