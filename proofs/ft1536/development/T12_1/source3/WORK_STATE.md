@@ -1,3 +1,19 @@
+# Transport076 — exact paired-Vec/int16 foundation checked; source codec join next
+
+KeygenInt16Vector076.signedEquiv is an exact bijection between1536 raw int16
+words and EXISTING Geometry.Vec on its signed16 domain, using first768 first
+coordinates THEN768 second coordinates. No interleaved-layout assumption.
+Representation076.represents_iff_words binds the source-proved raw-byte
+material to the SAME actual codec input relation; represents_unique derives
+bounded mathematical identity from actual bytes. Construct076.
+mathematical_array_exists constructs real1536 physical stores from legal
+arbitrary-old memory and derives exact signed integer reads and frame.
+Unbounded65536->0 alias is kernel-counterexample, preserved as a domain
+limitation; actual f/g/F/G source bounds1/2047 discharge signed16 next.
+Final0105 proof modules+audit6 clean0/0; audit53 full terms=49new+4inherited.
+All001–010 attempts retained. Source codec/vector and four-array caller join
+still next; public LAST. Whole TODO ACTIVE; no midpoint close/push/review.
+
 # BATCH075 final postseal complete; transport076 next
 
 Owner TODO item2 STATIC PROVED_KERNEL_SCOPED / NOT_REVIEWED. Together with
