@@ -1,0 +1,639 @@
+{
+  "status": "PARTIAL_PROOF__DRIVER_AND_LOCAL_RESOURCES__FULL_QRESC_OPEN__NOT_REVIEWED",
+  "date": "2026-10-13",
+  "base_commit": "ad59b07632fb05ae3d06441f44d9fc47cbad31a4",
+  "accepted": [
+    {
+      "module": "ExprStack020E",
+      "path": "formal/ExprStack020E.lean",
+      "sha256": "bce7f213c989fb5e8c92906493a0ebf92b7bd190b06c9c6c2559627f6189fe8a",
+      "receipt": ".build/pair_machine_020/resources_001/runs/expr002/receipt.json",
+      "receipt_sha256": "45af2b565e831c93c2f267899e258191bb5744c314ae49639b446df1ba5e93d4",
+      "exports": [
+        "FT1536.S05.ExprStack020E.append",
+        "FT1536.S05.ExprStack020E.correct",
+        "FT1536.S05.ExprStack020E.length",
+        "FT1536.S05.ExprStack020E.nodes_cost"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED"
+    },
+    {
+      "module": "ExprMeter020E",
+      "path": "formal/ExprMeter020E.lean",
+      "sha256": "ba5f4636fac64fad648237a55f8bde2ac56a63808f19c1ad323b99a15b15fb5d",
+      "receipt": ".build/pair_machine_020/resources_001/runs/meter001/receipt.json",
+      "receipt_sha256": "8f2cdfff6dd75cb29082fed3478e25551ae654f0f54c53ee2df6932cd7431a8f",
+      "exports": [
+        "FT1536.S05.ExprMeter020E.step_growth",
+        "FT1536.S05.ExprMeter020E.answer_eq",
+        "FT1536.S05.ExprMeter020E.resource_bounds",
+        "FT1536.S05.ExprMeter020E.compiled"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED"
+    },
+    {
+      "module": "ExprBackend020E",
+      "path": "formal/ExprBackend020E.lean",
+      "sha256": "cf05d890f70748a6f7791cfd71a9ecf5113e110463f0477c42f6a924e2b198c5",
+      "receipt": ".build/pair_machine_020/resources_001/runs/backend003/receipt.json",
+      "receipt_sha256": "c9e7b5f86798f44d7d8dd57fa1707ae25c26082f4ceab64dcddf3a497d48514b",
+      "exports": [
+        "FT1536.S05.ExprBackend020E.value_eq",
+        "FT1536.S05.ExprBackend020E.atom_eq"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED"
+    },
+    {
+      "module": "ControlStack020E",
+      "path": "formal/ControlStack020E.lean",
+      "sha256": "4b02baf9810ccf21a1a32f04dd6da72a4035af342aee18c91553390d1b851019",
+      "receipt": ".build/pair_machine_020/resources_001/runs/control001/receipt.json",
+      "receipt_sha256": "ca3491da8f68277a1ad5657480620aadda0419fab43c63e8e387fa0f6dd04268",
+      "exports": [
+        "FT1536.S05.ControlStack020E.work_positive",
+        "FT1536.S05.ControlStack020E.decreases",
+        "FT1536.S05.ControlStack020E.preserves",
+        "FT1536.S05.ControlStack020E.correct",
+        "FT1536.S05.ControlStack020E.singleton"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED"
+    },
+    {
+      "module": "ControlSpace020E",
+      "path": "formal/ControlSpace020E.lean",
+      "sha256": "c31ee36e2dcf0b770bea0e8b4c31f8a98018fa0ef19dde153dd1e87d120d74fe",
+      "receipt": ".build/pair_machine_020/resources_001/runs/space002/receipt.json",
+      "receipt_sha256": "40637025730fc0031b12618e2fd52a00637d326ffe4c9868d67ec72bcbf4e38d",
+      "exports": [
+        "FT1536.S05.ControlSpace020E.nodes_le_space",
+        "FT1536.S05.ControlSpace020E.footprint_le",
+        "FT1536.S05.ControlSpace020E.next_reserve",
+        "FT1536.S05.ControlSpace020E.transition_footprint",
+        "FT1536.S05.ControlSpace020E.work_le_bound"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED"
+    },
+    {
+      "module": "SyntaxTape020E",
+      "path": "formal/SyntaxTape020E.lean",
+      "sha256": "f228d7c292a18f0a830975aad7858ae1f0ebbd54efaac31f18613fead0ff9522",
+      "receipt": ".build/pair_machine_020/resources_001/runs/syntax001/receipt.json",
+      "receipt_sha256": "71329f9c36474a6e761768e7871853e19889fd9496257ffcc49400ba45c7a302",
+      "exports": [
+        "FT1536.S05.SyntaxTape020E.parse_append",
+        "FT1536.S05.SyntaxTape020E.expression_roundtrip",
+        "FT1536.S05.SyntaxTape020E.atomic_roundtrip",
+        "FT1536.S05.SyntaxTape020E.program_roundtrip",
+        "FT1536.S05.SyntaxTape020E.expression_length",
+        "FT1536.S05.SyntaxTape020E.atomic_length",
+        "FT1536.S05.SyntaxTape020E.program_length",
+        "FT1536.S05.SyntaxTape020E.program_injective"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED"
+    },
+    {
+      "module": "SyntaxCells020E",
+      "path": "formal/SyntaxCells020E.lean",
+      "sha256": "e0e55e481ce7425a8db1e493e3290d200809827107f5569c97fb686fe144d548",
+      "receipt": ".build/pair_machine_020/resources_001/runs/cells001/receipt.json",
+      "receipt_sha256": "16b5b9619d7334e4147352de5cb7b4cc185adb4542df13f5969ba8f6288d8866",
+      "exports": [
+        "FT1536.S05.SyntaxCells020E.reg_roundtrip",
+        "FT1536.S05.SyntaxCells020E.op_roundtrip",
+        "FT1536.S05.SyntaxCells020E.roundtrip",
+        "FT1536.S05.SyntaxCells020E.injective_on_legal"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED"
+    },
+    {
+      "module": "SyntaxLegal020E",
+      "path": "formal/SyntaxLegal020E.lean",
+      "sha256": "af0b08036d35b2957df361b49206f09752d42b2fccb65d6dd152b43be737627b",
+      "receipt": ".build/pair_machine_020/resources_001/runs/legal002/receipt.json",
+      "receipt_sha256": "c95ee6bb93cb3081a8b7e11dcefe49893a936ac2e48b6661b6d4d527bc6b1d5b",
+      "exports": [
+        "FT1536.S05.SyntaxLegal020E.all_append",
+        "FT1536.S05.SyntaxLegal020E.expr_legal",
+        "FT1536.S05.SyntaxLegal020E.atom_legal",
+        "FT1536.S05.SyntaxLegal020E.code_legal",
+        "FT1536.S05.SyntaxLegal020E.next_legal",
+        "FT1536.S05.SyntaxLegal020E.decode_map"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED"
+    },
+    {
+      "module": "CopyBank020E",
+      "path": "formal/CopyBank020E.lean",
+      "sha256": "1f3f2de723106b58a7aa6e871d195e242b3634cf5fa521c3f7169521d42c9e5b",
+      "receipt": ".build/pair_machine_020/resources_001/runs/copy002/receipt.json",
+      "receipt_sha256": "b50d74ee7f9ebb05425ee3ae1094978d8a29eb47b0c84d7527df3b70aa566851",
+      "exports": [
+        "FT1536.S05.CopyBank020E.cell",
+        "FT1536.S05.CopyBank020E.complete",
+        "FT1536.S05.CopyBank020E.transfers_exact",
+        "FT1536.S05.CopyBank020E.complete_price"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED"
+    },
+    {
+      "module": "ControlMeter020E",
+      "path": "formal/ControlMeter020E.lean",
+      "sha256": "e264541bd10bcf8cf5e23265eeb1d81b3ea518f8c7019dc6b248426011756f85",
+      "receipt": ".build/pair_machine_020/resources_001/runs/controlmeter002/receipt.json",
+      "receipt_sha256": "cbdf58f3eefbae72eea39ae728e565650d5a788ff87316824e4e8e859b7294f3",
+      "exports": [
+        "FT1536.S05.ControlMeter020E.answer_eq",
+        "FT1536.S05.ControlMeter020E.bounds",
+        "FT1536.S05.ControlMeter020E.correct_with_peak",
+        "FT1536.S05.ControlMeter020E.reachable_resources"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED"
+    },
+    {
+      "module": "PublicDriver020E",
+      "path": "formal/PublicDriver020E.lean",
+      "sha256": "d7ed88a623df84851d4320c9d31367c7ec0b7f84d6f41a77b668d5a6ec296ec9",
+      "receipt": ".build/pair_machine_020/resources_001/runs/driver002/receipt.json",
+      "receipt_sha256": "a3ebc8cd631789ac0944954bc43b05404db1f87f744e848f4beea5f4cee21c11",
+      "exports": [
+        "FT1536.S05.PublicDriver020E.input_eq",
+        "FT1536.S05.PublicDriver020E.reset_eq",
+        "FT1536.S05.PublicDriver020E.transfer_eq",
+        "FT1536.S05.PublicDriver020E.execute_eq",
+        "FT1536.S05.PublicDriver020E.run_eq",
+        "FT1536.S05.PublicDriver020E.totalize_eq",
+        "FT1536.S05.PublicDriver020E.code_eq",
+        "FT1536.S05.PublicDriver020E.law_eq",
+        "FT1536.S05.PublicDriver020E.phase_price",
+        "FT1536.S05.PublicDriver020E.transfer_price"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED"
+    },
+    {
+      "module": "DriverCertificate020E",
+      "path": "formal/DriverCertificate020E.lean",
+      "sha256": "5b07452be4698dcb501f96f5a964d26b3076450342bc79e5cec16f484873395e",
+      "receipt": ".build/pair_machine_020/resources_001/runs/drivercert001/receipt.json",
+      "receipt_sha256": "63a9a75850a30184a2f785eab9714901bf02d69eb038dbc42063004d4d43e946",
+      "exports": [
+        "FT1536.S05.DriverCertificate020E.all_h_ac",
+        "FT1536.S05.DriverCertificate020E.certificate",
+        "FT1536.S05.DriverCertificate020E.same_key_law"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED"
+    },
+    {
+      "module": "CopyLoop020E",
+      "path": "formal/CopyLoop020E.lean",
+      "sha256": "462a49c8438efa5150a1deff886e0fdc837651851a2749061123a890b3fe7b5b",
+      "receipt": ".build/pair_machine_020/resources_001/runs/copyloop002/receipt.json",
+      "receipt_sha256": "8555b994d77346f73edcf7f32cdc00bd08fe70e2bad60a9d83c2cb63d7687df0",
+      "exports": [
+        "FT1536.S05.CopyLoop020E.run_prefix",
+        "FT1536.S05.CopyLoop020E.complete",
+        "FT1536.S05.CopyLoop020E.cursor_bound"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED"
+    },
+    {
+      "module": "CompilerAssociation020E",
+      "path": "formal/CompilerAssociation020E.lean",
+      "sha256": "32d2eecb08fac0764aa30f5ee0f5008199530803572eb073ede5abaee22a1282",
+      "receipt": ".build/pair_machine_020/resources_001/runs/association002/receipt.json",
+      "receipt_sha256": "4804ef3382be8528aac556330e278b6a080671bf693e5b34632fe8a3d5ad8489",
+      "exports": [
+        "FT1536.S05.CompilerAssociation020E.bin_shape"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED"
+    },
+    {
+      "module": "ExprCompileBudget020E",
+      "path": "formal/ExprCompileBudget020E.lean",
+      "sha256": "7ecb2c31cd0b1ed11511363a861c2a0938a224c58bc4ac0425913e8cd9561584",
+      "receipt": ".build/pair_machine_020/resources_002/runs/compilebudget002/receipt.json",
+      "receipt_sha256": "7e6e64be874dd48cbe7b55790710b1161e0122cee4626e4580254d62b3ea382f",
+      "exports": [
+        "FT1536.S05.ExprCompileBudget020E.nodes_positive",
+        "FT1536.S05.ExprCompileBudget020E.allocations_bound",
+        "FT1536.S05.ExprCompileBudget020E.call_depth_bound",
+        "FT1536.S05.ExprCompileBudget020E.nested_size",
+        "FT1536.S05.ExprCompileBudget020E.unbounded_expression_work"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED"
+    },
+    {
+      "module": "ProgramResources020E",
+      "path": "formal/ProgramResources020E.lean",
+      "sha256": "a3811536a00f8fe0de9eaaac5fb43abccec372b2c52fe6047c58cd43c2730c57",
+      "receipt": ".build/pair_machine_020/resources_002/runs/resources002/receipt.json",
+      "receipt_sha256": "890d902b61b9eb91a7b7a1bbf4ed9e2dbe1f0aa72cc3e52157abdb1b315783b5",
+      "exports": [
+        "FT1536.S05.ProgramResources020E.cap_value",
+        "FT1536.S05.ProgramResources020E.space_bound",
+        "FT1536.S05.ProgramResources020E.legal",
+        "FT1536.S05.ProgramResources020E.reachable",
+        "FT1536.S05.ProgramResources020E.measured_bounds",
+        "FT1536.S05.ProgramResources020E.syntax_length",
+        "FT1536.S05.ProgramResources020E.reachable_codec"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED"
+    },
+    {
+      "module": "ReachableExpr020E",
+      "path": "formal/ReachableExpr020E.lean",
+      "sha256": "63e60655f84c1b9988d50ddb721639d1810603a6f76f8696f9960039ec3b2ce9",
+      "receipt": ".build/pair_machine_020/resources_002/runs/reachableexpr002/receipt.json",
+      "receipt_sha256": "681d9828ee91ba75da36ff5747534ffb5966ca6de413fc42dca0304ab6dd1c26",
+      "exports": [
+        "FT1536.S05.ReachableExpr020E.local_bound",
+        "FT1536.S05.ReachableExpr020E.next_bound",
+        "FT1536.S05.ReachableExpr020E.program_bound",
+        "FT1536.S05.ReachableExpr020E.reachable",
+        "FT1536.S05.ReachableExpr020E.expression_resources"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED"
+    },
+    {
+      "module": "AuditResources020E",
+      "path": "formal/AuditResources020E.lean",
+      "sha256": "3b94badbb2319725e6de10cb3efdf4423bdb8686ac24e9f921c786f8514cd7aa",
+      "receipt": ".build/pair_machine_020/resources_002/runs/audit001/receipt.json",
+      "receipt_sha256": "80b79b994d9e1a4c6d57670e97f7d6a8b46c4d6b3014b63df8a4155ee913f5f5",
+      "exports": [],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-SAMPLER",
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED"
+    }
+  ],
+  "named_exports": 80,
+  "proof_modules": 17,
+  "final_clean_builds": 18,
+  "attempts": [
+    {
+      "world": "resources_001",
+      "label": "association001",
+      "receipt": ".build/pair_machine_020/resources_001/runs/association001/receipt.json",
+      "sha256": "96bf4d94c0391abc32ad5f2c55c0814597a0dec53b68c660ea3e99c82d104a3d",
+      "clean": false,
+      "cause": "rejected_right_association_probe"
+    },
+    {
+      "world": "resources_001",
+      "label": "association002",
+      "receipt": ".build/pair_machine_020/resources_001/runs/association002/receipt.json",
+      "sha256": "4804ef3382be8528aac556330e278b6a080671bf693e5b34632fe8a3d5ad8489",
+      "clean": true,
+      "cause": "clean"
+    },
+    {
+      "world": "resources_001",
+      "label": "backend001",
+      "receipt": ".build/pair_machine_020/resources_001/runs/backend001/receipt.json",
+      "sha256": "74cd7fee9d1b1a15668c58b4d5796cff2fccf2af94e239ea6b08e68dc0f1cc6b",
+      "clean": false,
+      "cause": "recursion"
+    },
+    {
+      "world": "resources_001",
+      "label": "backend002",
+      "receipt": ".build/pair_machine_020/resources_001/runs/backend002/receipt.json",
+      "sha256": "c83bda3100ebe8ad206c1c1e322d72ba144b2ae5fdb3184896ac16b1baf1a398",
+      "clean": false,
+      "cause": "elaboration_or_warning"
+    },
+    {
+      "world": "resources_001",
+      "label": "backend003",
+      "receipt": ".build/pair_machine_020/resources_001/runs/backend003/receipt.json",
+      "sha256": "c9e7b5f86798f44d7d8dd57fa1707ae25c26082f4ceab64dcddf3a497d48514b",
+      "clean": true,
+      "cause": "clean"
+    },
+    {
+      "world": "resources_001",
+      "label": "cells001",
+      "receipt": ".build/pair_machine_020/resources_001/runs/cells001/receipt.json",
+      "sha256": "16b5b9619d7334e4147352de5cb7b4cc185adb4542df13f5969ba8f6288d8866",
+      "clean": true,
+      "cause": "clean"
+    },
+    {
+      "world": "resources_001",
+      "label": "compilebudget001",
+      "receipt": ".build/pair_machine_020/resources_001/runs/compilebudget001/receipt.json",
+      "sha256": "9f0bfe4939298de7446a2a234caf734bb351a73fa797a861c7454ec03ec5f25d",
+      "clean": true,
+      "cause": "clean"
+    },
+    {
+      "world": "resources_001",
+      "label": "control001",
+      "receipt": ".build/pair_machine_020/resources_001/runs/control001/receipt.json",
+      "sha256": "ca3491da8f68277a1ad5657480620aadda0419fab43c63e8e387fa0f6dd04268",
+      "clean": true,
+      "cause": "clean"
+    },
+    {
+      "world": "resources_001",
+      "label": "controlmeter001",
+      "receipt": ".build/pair_machine_020/resources_001/runs/controlmeter001/receipt.json",
+      "sha256": "253a2393aabea018de1c0fb8818d3401d8f71ab9e0ba037de092db95020e8383",
+      "clean": false,
+      "cause": "elaboration_or_warning"
+    },
+    {
+      "world": "resources_001",
+      "label": "controlmeter002",
+      "receipt": ".build/pair_machine_020/resources_001/runs/controlmeter002/receipt.json",
+      "sha256": "cbdf58f3eefbae72eea39ae728e565650d5a788ff87316824e4e8e859b7294f3",
+      "clean": true,
+      "cause": "clean"
+    },
+    {
+      "world": "resources_001",
+      "label": "copy001",
+      "receipt": ".build/pair_machine_020/resources_001/runs/copy001/receipt.json",
+      "sha256": "0251bf18f98a8945c84c243b199b02080f30c928499ad704f92b0c0c7da9c47c",
+      "clean": false,
+      "cause": "elaboration_or_warning"
+    },
+    {
+      "world": "resources_001",
+      "label": "copy002",
+      "receipt": ".build/pair_machine_020/resources_001/runs/copy002/receipt.json",
+      "sha256": "b50d74ee7f9ebb05425ee3ae1094978d8a29eb47b0c84d7527df3b70aa566851",
+      "clean": true,
+      "cause": "clean"
+    },
+    {
+      "world": "resources_001",
+      "label": "copyloop001",
+      "receipt": ".build/pair_machine_020/resources_001/runs/copyloop001/receipt.json",
+      "sha256": "01f0195cd86ab921b4256455b91f289c9baa35a3a8e1d1b09f17507e610922c2",
+      "clean": false,
+      "cause": "elaboration_or_warning"
+    },
+    {
+      "world": "resources_001",
+      "label": "copyloop002",
+      "receipt": ".build/pair_machine_020/resources_001/runs/copyloop002/receipt.json",
+      "sha256": "8555b994d77346f73edcf7f32cdc00bd08fe70e2bad60a9d83c2cb63d7687df0",
+      "clean": true,
+      "cause": "clean"
+    },
+    {
+      "world": "resources_001",
+      "label": "driver001",
+      "receipt": ".build/pair_machine_020/resources_001/runs/driver001/receipt.json",
+      "sha256": "bc5f295912ec31410a9f0b1c1ade78a9d6076ac9ee75e6d59d7a28d4f4e2c7af",
+      "clean": false,
+      "cause": "recursion"
+    },
+    {
+      "world": "resources_001",
+      "label": "driver002",
+      "receipt": ".build/pair_machine_020/resources_001/runs/driver002/receipt.json",
+      "sha256": "a3ebc8cd631789ac0944954bc43b05404db1f87f744e848f4beea5f4cee21c11",
+      "clean": true,
+      "cause": "clean"
+    },
+    {
+      "world": "resources_001",
+      "label": "drivercert001",
+      "receipt": ".build/pair_machine_020/resources_001/runs/drivercert001/receipt.json",
+      "sha256": "63a9a75850a30184a2f785eab9714901bf02d69eb038dbc42063004d4d43e946",
+      "clean": true,
+      "cause": "clean"
+    },
+    {
+      "world": "resources_001",
+      "label": "expr001",
+      "receipt": ".build/pair_machine_020/resources_001/runs/expr001/receipt.json",
+      "sha256": "dc656dfc26983aad0e111a820419e8b194e9f70b10fcdf4d935ab21c54999c02",
+      "clean": false,
+      "cause": "elaboration_or_warning"
+    },
+    {
+      "world": "resources_001",
+      "label": "expr002",
+      "receipt": ".build/pair_machine_020/resources_001/runs/expr002/receipt.json",
+      "sha256": "45af2b565e831c93c2f267899e258191bb5744c314ae49639b446df1ba5e93d4",
+      "clean": true,
+      "cause": "clean"
+    },
+    {
+      "world": "resources_001",
+      "label": "legal001",
+      "receipt": ".build/pair_machine_020/resources_001/runs/legal001/receipt.json",
+      "sha256": "cc84985cfd1eb17079997aab56629b66d404b5e321e50af9ac2148330b29683e",
+      "clean": false,
+      "cause": "elaboration_or_warning"
+    },
+    {
+      "world": "resources_001",
+      "label": "legal002",
+      "receipt": ".build/pair_machine_020/resources_001/runs/legal002/receipt.json",
+      "sha256": "c95ee6bb93cb3081a8b7e11dcefe49893a936ac2e48b6661b6d4d527bc6b1d5b",
+      "clean": true,
+      "cause": "clean"
+    },
+    {
+      "world": "resources_001",
+      "label": "meter001",
+      "receipt": ".build/pair_machine_020/resources_001/runs/meter001/receipt.json",
+      "sha256": "8f2cdfff6dd75cb29082fed3478e25551ae654f0f54c53ee2df6932cd7431a8f",
+      "clean": true,
+      "cause": "clean"
+    },
+    {
+      "world": "resources_001",
+      "label": "resources001",
+      "receipt": ".build/pair_machine_020/resources_001/runs/resources001/receipt.json",
+      "sha256": "dcb1e66c6bb74e868fde4b53c334eead2a6b588d5870b6a9ad75cea779092c66",
+      "clean": true,
+      "cause": "clean"
+    },
+    {
+      "world": "resources_001",
+      "label": "space001",
+      "receipt": ".build/pair_machine_020/resources_001/runs/space001/receipt.json",
+      "sha256": "f0b46f702350274f7250a3c0d096eb9e5d3e7d1113096f87bc1cdadcc3682460",
+      "clean": false,
+      "cause": "elaboration_or_warning"
+    },
+    {
+      "world": "resources_001",
+      "label": "space002",
+      "receipt": ".build/pair_machine_020/resources_001/runs/space002/receipt.json",
+      "sha256": "40637025730fc0031b12618e2fd52a00637d326ffe4c9868d67ec72bcbf4e38d",
+      "clean": true,
+      "cause": "clean"
+    },
+    {
+      "world": "resources_001",
+      "label": "syntax001",
+      "receipt": ".build/pair_machine_020/resources_001/runs/syntax001/receipt.json",
+      "sha256": "71329f9c36474a6e761768e7871853e19889fd9496257ffcc49400ba45c7a302",
+      "clean": true,
+      "cause": "clean"
+    },
+    {
+      "world": "resources_002",
+      "label": "audit001",
+      "receipt": ".build/pair_machine_020/resources_002/runs/audit001/receipt.json",
+      "sha256": "80b79b994d9e1a4c6d57670e97f7d6a8b46c4d6b3014b63df8a4155ee913f5f5",
+      "clean": true,
+      "cause": "clean"
+    },
+    {
+      "world": "resources_002",
+      "label": "compilebudget002",
+      "receipt": ".build/pair_machine_020/resources_002/runs/compilebudget002/receipt.json",
+      "sha256": "7e6e64be874dd48cbe7b55790710b1161e0122cee4626e4580254d62b3ea382f",
+      "clean": true,
+      "cause": "clean"
+    },
+    {
+      "world": "resources_002",
+      "label": "reachableexpr001",
+      "receipt": ".build/pair_machine_020/resources_002/runs/reachableexpr001/receipt.json",
+      "sha256": "94f7f9eb80e400b312153d550566cfb16fef41378ebafe3b083059c9d15c470c",
+      "clean": false,
+      "cause": "elaboration_or_warning"
+    },
+    {
+      "world": "resources_002",
+      "label": "reachableexpr002",
+      "receipt": ".build/pair_machine_020/resources_002/runs/reachableexpr002/receipt.json",
+      "sha256": "681d9828ee91ba75da36ff5747534ffb5966ca6de413fc42dca0304ab6dd1c26",
+      "clean": true,
+      "cause": "clean"
+    },
+    {
+      "world": "resources_002",
+      "label": "resources002",
+      "receipt": ".build/pair_machine_020/resources_002/runs/resources002/receipt.json",
+      "sha256": "890d902b61b9eb91a7b7a1bbf4ed9e2dbe1f0aa72cc3e52157abdb1b315783b5",
+      "clean": true,
+      "cause": "clean"
+    }
+  ],
+  "nonclean_attempts": 11,
+  "clean_attempts": 20,
+  "superseded_clean_builds": 2,
+  "audit": {
+    "standard_only_lists": 78,
+    "axiom_free": 2,
+    "independent_review": false
+  },
+  "prior020D_manifests_verified": [
+    {
+      "path": "notes/SCATTER_OUTPUT_020D_OUTPUTS.sha256",
+      "sha256": "238e42f4c4e6caaf83768eb8e1fd2f965c93c9e1a937a46711dde8fcd17feb29",
+      "pins": 54
+    },
+    {
+      "path": "notes/SCATTER_OUTPUT_020D_RUNTIME.sha256",
+      "sha256": "39ca325d022593067fc52239170179aec5da8feae959154368f93aa001eacedd",
+      "pins": 420
+    }
+  ],
+  "reused_project_modules": 489,
+  "final_library_modules": 507,
+  "artifact_files_hashed": 507,
+  "revision": "resources_002 retains old world and corrects compiler-copy scope comment; math unchanged",
+  "new_sage_runs": 0,
+  "sage_reason": "No probability tables or numerical approximations changed; all new arithmetic inequalities and closed syntax bounds proved universally or by kernel evaluation.",
+  "full_resource_certificate": "OPEN: cell interpreter/allocator relation, input producers, total time/peak memory and caller decoder",
+  "same_law": "PublicDriver020E.law_eq; DriverCertificate020E under exact inherited M, full wire P and same covered mu",
+  "QROM_claim": false,
+  "push": false
+}

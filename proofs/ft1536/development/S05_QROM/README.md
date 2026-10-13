@@ -3,6 +3,18 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
+**Kontynuacja020E — [jawny driver i lokalne zasoby](notes/RESOURCES_020E_CHECKPOINT.md), PARTIAL:**
+80 nowych twierdzeń wiąże evaluator wyrażeń i sterowanie na stosie z020,
+bezstratne komórki składni, kopiowanie banków, reset initial i pełne wyjście.
+Driver ma dokładnie prawo020D i odziedziczony certyfikat J/P pod tym samym(M).
+Osiągalne wyrażenia mają≤32 węzły; kolejka≤28941, stara+nowa≤57882.
+**To lokalne budżety, nie pełna alokacja ani czas. TODO020E i Q-RESC OPEN:**
+pozostaje wykonawca na komórkach, ramki/scratch, producent wejścia i pełna cena.
+17 modułów dowodowych + audyt;18 czystych końcowych buildów,31 prób zachowanych.
+Bez niezależnego odbioru. [Kontrola autora](notes/RESOURCES_020E_SELF_REVIEW.md),
+[kolejka020E](notes/KERNEL_QUEUE_020E.json), [klasy020E](notes/CERTIFICATE_CLASSES_020E.json).
+[Następna część tego samego TODO](notes/RESOURCES_020E_CONTINUATION_001.md).
+
 **Kontynuacja020D — [EveryTape i pełne J/P maszyny](notes/SCATTER_OUTPUT_020D_CHECKPOINT.md):**
 Cały oryginalny program020 (select, multiply, emitPair) jest kernelowo
 zgodny z019 dla każdego publicznego h, każdej taśmy i każdego stanu.
@@ -17,7 +29,7 @@ w przypiętym środowisku legacy, bez scalenia z nową grą wariantu A.
 [Kolejka020D](notes/KERNEL_QUEUE_020D.json), [klasy020D](notes/CERTIFICATE_CLASSES_020D.json).
 Następny duży krok: [TODO020E — pełny driver i zasoby](notes/TODO_RESOURCES_020E.md).
 
-Poniższe wpisy opisują wcześniejsze checkpointy; aktualny stan wskazuje020D.
+Poniższe wpisy opisują wcześniejsze checkpointy; aktualny stan wskazuje020E.
 
 **Kontynuacja020C — [cały select zgodny z019](notes/VECTOR_NORM_020C_CHECKPOINT.md):**
 115 nowych eksportów kernelowych zamyka1536 par, dokładną normę Q,
