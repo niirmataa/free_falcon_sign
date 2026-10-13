@@ -1,3 +1,20 @@
+# BATCH_074 — source NONE value components checked; whole TODO continues
+
+After owner-authorized supplement073 and verified074 entry, seven new proof
+modules and one full-term audit passed in ONE clean native job074_011.
+54 new declarations plus7 inherited audit interfaces; actual byte indices,
+high/low reconstruction, sign-extension, range guard, LP64 long subtraction,
+int16 narrowing and the actual source store all derive the same input word.
+Calculations supply both genuine operational expression existence and
+inversion; compound/source y/guard existence is constructive. Physical stores
+are constructed from legal allocated writable memory, with no pre-initialized
+output value. Full decoder body/prologue/1536-loop/return/existence composition
+is still OPEN; STATIC, vector/int16 transport and public LAST remain next.
+This is an internal logical step, NOT an Acceptance or midpoint close.
+No result/length/frame correctness assumptions added; no push or review.
+All074_001–011 failures remain with raw snapshots/streams/receipts; limits and
+warnings unchanged. New source modules are committed before pin capture.
+
 # BATCH_074 — resumed after owner-authorized073 seal supplement, 2026-10-13
 
 Provenance stop resolved by a NEW immutable supplement, not by rewriting010.
