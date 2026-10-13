@@ -1,3 +1,18 @@
+# STATIC075 complete1536-store source loop checked; real prologue next
+
+StaticIteration.nonfinal/final cover each WHOLE actual iteration and lexical
+scope, including u++/padding/return. StaticLoop.for_loop composes all1536
+chronological SAME-word int16 stores and derives the consumed-byte return
+from actual wire count conservation. Honest finite source execution and
+uniqueness are constructive; Trace yields full physical readback and exact
+3072-byte destination frame through the already checked generic memory
+lemmas. No whole-codec result/length/frame/success premise. Final0742 proof
+modules+audit3 clean0/0; audit11 full terms=7 new+4 inherited. All072–074 kept.
+Next derive initial n/j/mask/buf/u/v/db/db_len from the actual whole prologue,
+compose body/dispatchers/actual encoder bytes and close STATIC round-trip.
+Then SAME mathematical-vector/int16 transport both ways, public LAST.
+Whole TODO ACTIVE; full STATIC round-trip OPEN; no midpoint close/push/review.
+
 # STATIC075 coefficient/final-suffix postseal — full1536 loop next
 
 Step006 postseal PASS_SCOPED_INTERNAL_STEP:18418 pins, all18221 predecessor
