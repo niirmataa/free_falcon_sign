@@ -1,3 +1,11 @@
+# STATIC075 bits-step postseal — operational decoder composition continues
+
+Bits-step postseal PASS_SCOPED_INTERNAL_STEP:17607 pins, all17293 predecessor
+pins unchanged; SHA256`69bf29ffc7957f5cb6196d13dd8ac99f9f2818c1430501333538c7c9ce11ed57`.
+Step SHA256`3fa9c90314760ff5749a9812fa2c573814da89fbc7c754b2c719ba7640451a8c`.
+Source commit85d68993; full source STATIC round-trip remains OPEN.
+Whole TODO ACTIVE; no midpoint close. Next actual reader guards/refill loops.
+
 # STATIC075 bit history and value inverse checked; operational composition next
 
 KeygenCodecStaticBitStream.encoded_bits derives the exact whole bit stream
