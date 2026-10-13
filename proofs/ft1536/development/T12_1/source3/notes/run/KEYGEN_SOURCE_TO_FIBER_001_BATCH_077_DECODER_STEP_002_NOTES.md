@@ -1,0 +1,9 @@
+# BATCH077 decoder step002 — public payload round-trip and SAME h
+
+PROVED_KERNEL_SCOPED / NOT_REVIEWED. Whole owner TODO continues through the public caller header/length/observed bytes; no midpoint close.
+
+KeygenPublicDecodeComplete077.decoder_checked/source_outcome/decoder_exists construct and invert the complete bound public decoder: actual initial declarations, byte-read loop,1536 pointer stores, canonical guard, accumulator check and return of the SUPPLIED len. Trailing bytes are not silently rejected. KeygenPublicRoundtrip077.source_roundtrip/roundtrip_exists/honest_roundtrip_exists/in_place_identity derive actual memory round-trip from SAME source encoder writes, with arbitrary old destination contents and exact3072-byte frame. Honest encoder and decoder executions both exist; observed returns, bytes and frame are conclusions.
+
+KeygenPublicMaterial077.represented_words/decoded_represents connect actual canonical B1.06 physical h to the existing paired Relation.Rq. KeygenPublicMath077.source_roundtrip/honest_roundtrip_exists/from_witness preserve SAME h and the existing public/inverse equations, together with the source material witness's NTRU equation and bounds. Canonical range is derived from physical source representation; no assumed codec result, encoded length or frame is introduced.
+
+Final046 rebuilds14 proof modules and audit, all15 clean0/0 under unchanged guarded limits.90 new named declarations/52 named theorems,94 full audit entries. All031–046 jobs and causes remain retained, including the mixed045 failure. Caller header/final length/observed public blob remain next. B1.07/B1.08 Acceptance NOT MET;B1.09 OPEN. The accepted-attempt to encoding-entry/root LegalWorkspace/call-ID and final secret-blob/lifetime seams remain explicit. No push/review/relay/new session/C/frozen-source changes.

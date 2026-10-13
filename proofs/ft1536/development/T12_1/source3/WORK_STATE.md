@@ -1,3 +1,12 @@
+# Public077 payload round-trip complete; header and observed public bytes next
+
+Final046:14 proof modules plus audit,15 clean0/0;90 new declarations,
+52 theorems,94 audit entries. Both honest full executions,1536 stores,
+exact physical identity and SAME mathematical h/equations are proved in
+explicit source/legal-memory scope. Decoder postseal next, then public
+caller header0x8a/final length2881 and observed-blob decoding.
+Whole owner TODO ACTIVE; no midpoint close/push/review.
+
 # Public077 encoder postseal complete; full decoder next
 
 Encoder commit686d5d8a. Postseal: 20031 pins; all19007 entry pins
