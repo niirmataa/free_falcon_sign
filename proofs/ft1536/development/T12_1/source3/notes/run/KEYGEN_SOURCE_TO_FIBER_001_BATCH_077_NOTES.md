@@ -1,0 +1,11 @@
+# BATCH077 — public codec and actual observed public suffix
+
+PROVED_KERNEL_SCOPED / NOT_REVIEWED. Owner TODO item4 is the last completed local component. The whole-TODO report follows postseal; no midpoint report or automatic root-assembly work.
+
+KeygenPublicCallerComplete077.observed_output/actual_observed_decode/from_witness prove the actual final public packet has2881 bytes and DecodePublic returns SAME h. Input capacity is read from the real pubkey_len cell, the source writes header0x8a, the actual fixed-body encoder derives2880 payload bytes, and the caller stores2881. ObservedPublic contains only the physical length load and initialized output-buffer bytes, independently of mathematical values and decoding. Observed packet uniqueness derives its agreement with the source-produced packet. The same local source material witness retains f/g/F/G, exact NTRU and public/inverse equations. PublicPacket077.decode_honest permits arbitrary trailing bytes, consistently with the actual public decoder's supplied-length return.
+
+PublicCallerExecution077 refines the existing source caller, retaining typed private executions and replacing the public heap/return seam with an actual fixed-body call. Erasure is one-way. The theorem uses actual caller return1, explicit legal input capacity/memory and source material at the public suffix entry; it does not assume a codec result, output bytes, encoded length or frame.
+
+Final054 rebuilds6 new proof modules plus audit,7 clean0/0.49 new named declarations/38 named theorems;53 full audit entries,49 full terms and4 kernel inductives. BATCH077 totals62 proof modules,812 declarations,360 named theorems and3 complete audits. All054 jobs and failures are retained with reasons; precommit formatting refusal and both historical 073 audit states/refusal remain in the closure.
+
+B1.07 and B1.08 Acceptance NOT MET. B1.09 local public-suffix acceptance clause is proved, but whole-root acceptance remains NOT MET because the accepted-attempt to this source material/serialization entry, LegalWorkspace/relocation/call-ID and lifetime/global assembly are still open. The final secret blob/header/length observation remains open too. No final KeyGen-to-fiber, compiler, probability or security theorem follows. No push, independent review, relay, migration, production-C or frozen-byte edits.
