@@ -3,6 +3,19 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
+**Kontynuacja020E1 — [parser w skończonej arenie](notes/ARENA_PARSER_020E1_CHECKPOINT.md):**
+71 nowych twierdzeń domyka parser na stałym banku węzłów i banku adresów
+stosu. Kanoniczny obraz FT1536 daje877 węzłów i jeden adres wyniku;
+odkodowanie wyłącznie z banku odtwarza dokładnie oryginalny program.
+Strażniki odrzucenia są jawne; pomocnicze Meaning występuje tylko w dowodzie.
+Bezstratne kodowanie trwałego stanu areny ma5264 słowa512bit — nie jest to
+pełny peak ani czas samplera.16 modułów + audyt,17 czystych końcowych buildów,
+29 prób zachowanych. **Parser CLOSED scoped; cały020E/Q-RESC OPEN.**
+Następny krok: [bezpośrednie wykonanie po adresach](notes/RESOURCES_020E_CONTINUATION_002.md).
+[Kontrola autora](notes/ARENA_PARSER_020E1_SELF_REVIEW.md), [kolejka020E1](notes/KERNEL_QUEUE_020E1.json),
+[klasy020E1](notes/CERTIFICATE_CLASSES_020E1.json). Daybreak jest planowanym
+niezależnym recenzentem; odbioru jeszcze nie uruchomiono.
+
 **Kontynuacja020E — [jawny driver i lokalne zasoby](notes/RESOURCES_020E_CHECKPOINT.md), PARTIAL:**
 80 nowych twierdzeń wiąże evaluator wyrażeń i sterowanie na stosie z020,
 bezstratne komórki składni, kopiowanie banków, reset initial i pełne wyjście.
@@ -29,7 +42,7 @@ w przypiętym środowisku legacy, bez scalenia z nową grą wariantu A.
 [Kolejka020D](notes/KERNEL_QUEUE_020D.json), [klasy020D](notes/CERTIFICATE_CLASSES_020D.json).
 Następny duży krok: [TODO020E — pełny driver i zasoby](notes/TODO_RESOURCES_020E.md).
 
-Poniższe wpisy opisują wcześniejsze checkpointy; aktualny stan wskazuje020E.
+Poniższe wpisy opisują wcześniejsze checkpointy; aktualny stan wskazuje020E1.
 
 **Kontynuacja020C — [cały select zgodny z019](notes/VECTOR_NORM_020C_CHECKPOINT.md):**
 115 nowych eksportów kernelowych zamyka1536 par, dokładną normę Q,
