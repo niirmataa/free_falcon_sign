@@ -1,3 +1,12 @@
+# STATIC075 reader-step postseal — source prefix/unary composition continues
+
+Reader-step postseal PASS_SCOPED_INTERNAL_STEP:17821 pins, all17607 predecessor
+pins unchanged; SHA256`1ffff6bb11a5bb9887a648931a909d370ebdafb72380e574a916fc42c56e9a74`.
+Step SHA256`3d9c66d6571508fbf15c09139c7ad48125c3aa366aa6103dd62d2d8c0aa03af8`.
+Source commit4240c75f. Initial metadata-only busy-slot refusal retained with
+before-tool/first reproduction; idle retry passed without source/hash edits.
+Whole TODO ACTIVE; full source STATIC round-trip remains OPEN; no midpoint.
+
 # STATIC075 complete source prefix-refill loop checked; whole TODO active
 
 KeygenDecodeStaticPrefixLoop.loop constructs and inverts the whole actual
