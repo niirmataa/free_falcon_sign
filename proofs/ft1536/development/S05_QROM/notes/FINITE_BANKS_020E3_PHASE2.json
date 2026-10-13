@@ -1,0 +1,152 @@
+{
+  "status": "KERNEL_FINITE_BANKS_AND_CAPACITY__NOT_REVIEWED",
+  "modules": [
+    {
+      "module": "BankProgram020E3",
+      "path": "formal/BankProgram020E3.lean",
+      "sha256": "b9ed24c1ab458bede141381ab9dee3198f9d968a52fc2f6d33f7f2ee004235a2",
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/program001/receipt.json",
+      "receipt_sha256": "b3abe5cd81beea10538f7ca5d545a1420c189e0007dc5043136d3df8441989c8",
+      "exports": [
+        "FT1536.S05.BankProgram020E3.invariant_correct",
+        "FT1536.S05.BankProgram020E3.actual_correct",
+        "FT1536.S05.BankProgram020E3.node_execution_eq",
+        "FT1536.S05.BankProgram020E3.public_initial"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC",
+        "Q-SAMPLER"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.3221115589985857,
+      "compiler_peak_rss_KiB": 3981260,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "BankDriver020E3",
+      "path": "formal/BankDriver020E3.lean",
+      "sha256": "71a3150506819bef30af3993e142e85cbe9f12c47c722980a0789c9b59b31e0f",
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/driver001/receipt.json",
+      "receipt_sha256": "1505b67544564cba670c07d259dbf04a0b6a3a4ad9f10576d1f1c40c8c1935a9",
+      "exports": [
+        "FT1536.S05.BankDriver020E3.run_eq",
+        "FT1536.S05.BankDriver020E3.code_eq",
+        "FT1536.S05.BankDriver020E3.law_eq",
+        "FT1536.S05.BankDriver020E3.same_driver"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC",
+        "Q-SAMPLER"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.2210288779897382,
+      "compiler_peak_rss_KiB": 3976028,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "BankCertificate020E3",
+      "path": "formal/BankCertificate020E3.lean",
+      "sha256": "8682129cb6ce0935742941aa6a2c975380549a5d1f62717d49347347c88005f3",
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/certificate001/receipt.json",
+      "receipt_sha256": "a28ec06ab6173d5e7dec27c678d9af8b4dbaac22f3c17aea0a6dc95a0664cad5",
+      "exports": [
+        "FT1536.S05.BankCertificate020E3.all_h_ac",
+        "FT1536.S05.BankCertificate020E3.certificate",
+        "FT1536.S05.BankCertificate020E3.same_key_law"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC",
+        "Q-SAMPLER"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.121090248998371,
+      "compiler_peak_rss_KiB": 3980236,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "BankStorage020E3",
+      "path": "formal/BankStorage020E3.lean",
+      "sha256": "9afebc55333d00d423f548523469b81907978af125a29189b16ec621b99ba91f",
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/storage001/receipt.json",
+      "receipt_sha256": "6b0e74f1076c6bb3e143dab540cd457b455b7e31800ad01576b3f7293725d61f",
+      "exports": [
+        "FT1536.S05.BankStorage020E3.value_injective",
+        "FT1536.S05.BankStorage020E3.count_exact",
+        "FT1536.S05.BankStorage020E3.frame_injective",
+        "FT1536.S05.BankStorage020E3.values_injective",
+        "FT1536.S05.BankStorage020E3.frames_injective",
+        "FT1536.S05.BankStorage020E3.actual_bank_words",
+        "FT1536.S05.BankStorage020E3.actual_frames_injective"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.2706802650063764,
+      "compiler_peak_rss_KiB": 3969756,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "ValueScan020E3",
+      "path": "formal/ValueScan020E3.lean",
+      "sha256": "e990d3b201f0149b5920e77dba64270df740ddbe76bf8c9323002ef826a55397",
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/scan001/receipt.json",
+      "receipt_sha256": "596bc9ef02c2dbb28d4df50a4dbf9d11a70834add0e45cf07e8d7e711df5aaf5",
+      "exports": [
+        "FT1536.S05.ValueScan020E3.values_eq",
+        "FT1536.S05.ValueScan020E3.writes_eq",
+        "FT1536.S05.ValueScan020E3.full_scan",
+        "FT1536.S05.ValueScan020E3.actual_scan"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.1704323390003992,
+      "compiler_peak_rss_KiB": 3970280,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "BankPrefix020E3",
+      "path": "formal/BankPrefix020E3.lean",
+      "sha256": "db461f9f1d1a0306c70c0c611ea72c506250d2b61fd93a2003cd4f8d331f5529",
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/prefix001/receipt.json",
+      "receipt_sha256": "44169f5ea33031078081cc200e3fe77d1c0f8ed7f3b0f361532f8a6cb94f41eb",
+      "exports": [
+        "FT1536.S05.BankPrefix020E3.next_length",
+        "FT1536.S05.BankPrefix020E3.action_prefix"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.070227126998361,
+      "compiler_peak_rss_KiB": 3966380,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "AuditFiniteBanks020E3",
+      "path": "formal/AuditFiniteBanks020E3.lean",
+      "sha256": "4baa6a7a5a08fd365179c24a4d71323e93c414bf8704f7addcfb9ea9911a89f3",
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/audit001/receipt.json",
+      "receipt_sha256": "fd1b54df48acdc9f24366870ab69cd1080a3371c3a5b09184b9eee54885a68f1",
+      "exports": [],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.07334678999905,
+      "compiler_peak_rss_KiB": 3953820,
+      "Lean_M_MiB": 4096
+    }
+  ],
+  "scope": "Actual877/28941 instance, same full law, injective bank encoding and local scan/prefix quantities;55 theorem exports audited",
+  "remaining": "Physical backend/in-place realization and full price/init/randomness/scratch/time/peak; source KeyGen/M/Sign/PRG, variant-A game and QROM"
+}

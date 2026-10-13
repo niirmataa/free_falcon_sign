@@ -1,0 +1,60 @@
+import BankCertificate020E3
+import BankStorage020E3
+import ValueScan020E3
+import BankPrefix020E3
+
+#print axioms FT1536.S05.BankAction020E3.original
+#print axioms FT1536.S05.BankAction020E3.correct
+#print axioms FT1536.S05.BankCertificate020E3.all_h_ac
+#print axioms FT1536.S05.BankCertificate020E3.certificate
+#print axioms FT1536.S05.BankCertificate020E3.same_key_law
+#print axioms FT1536.S05.BankDriver020E3.run_eq
+#print axioms FT1536.S05.BankDriver020E3.code_eq
+#print axioms FT1536.S05.BankDriver020E3.law_eq
+#print axioms FT1536.S05.BankDriver020E3.same_driver
+#print axioms FT1536.S05.BankExecute020E3.uncons
+#print axioms FT1536.S05.BankExecute020E3.empty_sp
+#print axioms FT1536.S05.BankExecute020E3.nonempty_sp
+#print axioms FT1536.S05.BankExecute020E3.correct
+#print axioms FT1536.S05.BankPrefix020E3.next_length
+#print axioms FT1536.S05.BankPrefix020E3.action_prefix
+#print axioms FT1536.S05.BankProgram020E3.invariant_correct
+#print axioms FT1536.S05.BankProgram020E3.actual_correct
+#print axioms FT1536.S05.BankProgram020E3.node_execution_eq
+#print axioms FT1536.S05.BankProgram020E3.public_initial
+#print axioms FT1536.S05.BankStep020E3.correct
+#print axioms FT1536.S05.BankStorage020E3.value_injective
+#print axioms FT1536.S05.BankStorage020E3.count_exact
+#print axioms FT1536.S05.BankStorage020E3.frame_injective
+#print axioms FT1536.S05.BankStorage020E3.values_injective
+#print axioms FT1536.S05.BankStorage020E3.frames_injective
+#print axioms FT1536.S05.BankStorage020E3.actual_bank_words
+#print axioms FT1536.S05.BankStorage020E3.actual_frames_injective
+#print axioms FT1536.S05.BoundedStack020E3.view_length
+#print axioms FT1536.S05.BoundedStack020E3.view_get
+#print axioms FT1536.S05.BoundedStack020E3.empty_view
+#print axioms FT1536.S05.BoundedStack020E3.top_cons
+#print axioms FT1536.S05.BoundedStack020E3.view_drop
+#print axioms FT1536.S05.BoundedStack020E3.view_put
+#print axioms FT1536.S05.BoundedStack020E3.push_correct
+#print axioms FT1536.S05.BoundedStack020E3.pushMany_correct
+#print axioms FT1536.S05.BoundedStack020E3.capacity
+#print axioms FT1536.S05.BoundedStack020E3.full_reject
+#print axioms FT1536.S05.FrameReserve020E3.nodes_positive
+#print axioms FT1536.S05.FrameReserve020E3.length_le_footprint
+#print axioms FT1536.S05.FrameReserve020E3.length_le_reserve
+#print axioms FT1536.S05.FrameReserve020E3.next_length_bound
+#print axioms FT1536.S05.FrameReserve020E3.actual_reserve
+#print axioms FT1536.S05.ValueBank020E3.advance_correct
+#print axioms FT1536.S05.ValueBank020E3.sweep_correct
+#print axioms FT1536.S05.ValueBank020E3.build_correct
+#print axioms FT1536.S05.ValueBank020E3.lookup_correct
+#print axioms FT1536.S05.ValueBank020E3.unused_reject
+#print axioms FT1536.S05.ValueRefinement020E3.expr_unused
+#print axioms FT1536.S05.ValueRefinement020E3.expr_code
+#print axioms FT1536.S05.ValueRefinement020E3.evaluator_eq
+#print axioms FT1536.S05.ValueScan020E3.values_eq
+#print axioms FT1536.S05.ValueScan020E3.writes_eq
+#print axioms FT1536.S05.ValueScan020E3.full_scan
+#print axioms FT1536.S05.ValueScan020E3.actual_scan
+#print axioms FT1536.S05.ValueSlot020E3.correct
