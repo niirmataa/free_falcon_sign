@@ -1,3 +1,25 @@
+# BATCH_074 — resumed after owner-authorized073 seal supplement, 2026-10-13
+
+Provenance stop resolved by a NEW immutable supplement, not by rewriting010.
+Supplement SHA256 d2a29a84cc9553264e2d5952c0f41442746a539b533a697779565988c0b1c788.
+Postseal073 PASS_WITH_OWNER_AUTHORIZED_SEAL_SUPPLEMENT_001:16149 pins,
+SHA256 c007279d1ae858402163555d2219ed6cc80f0278eab4fe55b2504327c417012e.
+Only AFTER that pass, ENTRY_PINS_074 was created:16150 pins,
+SHA25661663351c06b2852d16512bd6b45ef64f6b2319ba1b09c1c326aa407c618aab3.
+All15815 original input pins match;970 Lean/Sage/C source files unchanged
+through the supplement. Exactly one audit selected-input overlay, with both
+job010/job011 snapshots, correction-diff hash and original refusal retained.
+Correction changes provenance only; B1.07/B1.08 Acceptance NOT MET,B1.09 OPEN.
+Result receipt: notes/run/KEYGEN_SOURCE_TO_FIBER_001_BATCH_073_SEAL_SUPPLEMENT_001_RESULT.json.
+
+Owner resumed the WHOLE ordered TODO: complete source NONE decoder values,
+1536 stores, return and honest-execution existence; then STATIC round-trip;
+SAME mathematical/physical int16 transport; public codec LAST. One final
+whole-TODO summary with three sentences of assessment. No midpoint close,
+no result/length/frame assumptions; stop-and-report on integrity. Small local
+commits, clean0/0 guarded jobs, all failures retained, no push or review.
+New work starts only after074 entry; previously pinned sources remain immutable.
+
 # BATCH_073 — INTEGRITY STOP on the whole codec TODO, 2026-10-13
 
 Owner-expanded autonomy covered all four items, with one final whole-TODO
