@@ -1,3 +1,26 @@
+# BATCH081 — full observed secret accepted; whole public join next
+
+Owner continuous task ACTIVE. B1.07 and B1.08 Acceptance MET in the pinned
+reference/legal-memory domain, PROVED_KERNEL_SCOPED / NOT_REVIEWED.
+KeygenSecretComplete081.observed_secret/actual_observed_decode derive the
+actual final0xaa secret after public serialization and outer teardown,
+all FOUR f/g/F/G, SAME source certificate and equations. Exact lengths and
+7681-10369 bounds are conclusions. Actual full source decoders recover each
+segment from final observed memory. Finite virtual-address legality at actual
+private pointer reads remains the inherited explicit memory domain; no codec
+result/length/frame premise or compiler/security claim. Full B1.09 remains next.
+
+16 proof modules/98 declarations/68 theorems; final02617 clean0/0 modules;
+107 full audit entries (99 terms,8 inductives).26 jobs/13 failed or mixed,
+47 native steps/34 accepted. All retained, plus filename-ignore refusal.
+Own source commits5816f6b9/4cbe1263; foreign S05 commits recorded, no push.
+BATCH081 SHA25680391f19b2fa9b829773a367291154f06049197364dc0d9b6dd82940dc2f1b75.
+POSTSEAL081:21621 matching pins,SHA256
+723df7752d02d7b7919203b5dd5486d3af8cf2f895db4a9deb9c2e22c7722ad1.
+NEXT082: transport initial public capacity/legal output memory through the
+source, join actual observed public packet to SAME accepted attempt/secret,
+and close B1.09. B1.10-11 optional preparation only after clean1-4.
+
 # Assembly080 — B1.07 source acceptance sealed; whole secret packet next
 
 Continuous owner B1.07/08 → B1.09 task remains ACTIVE. B1.07 reference-scope
