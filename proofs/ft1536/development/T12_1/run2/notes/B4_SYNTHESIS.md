@@ -853,6 +853,24 @@ physical int16, NONE 3072, STATIC length formula) is now
 independently attested for the paper's artifact story. The
 three-sentence ritual was adopted and returned by the reviewer.
 
+## 2026-10-13: A1 donor review CHANGES_REQUIRED (A1_REVIEW_001, Daybreak) - merge is selective embedding
+
+Mechanical review of the A1 donor LaTeX package before merge =
+**CHANGES_REQUIRED**: A1 describes the OLD F04 interface, needs F05
+clarification, and does not cover the newest B1 state (NOT_REVIEWED).
+Directly replacing live v0.3 would DELETE its status macros and
+fuller pins - so the merge plan is refined: v0.3 stays the living
+base, A1 DONATES selected parts (text developments, C01-C22 map,
+annexes, SOURCE_MAP) into a single current v0.3 snapshot with
+manifest, statuses and a fresh LaTeX build. Gates before merge:
+(1) align F04/F05 + B1 claims with current statuses, (2) version
+metadata for the comparison snapshot, (3) fresh compilation
+(latexmk missing on reviewer host - environment gate). Donor
+integrity 28/28 hashes; bibliography clean (7 cited keys = 7
+entries, no orphans/uncited). Reviewer artifacts pinned:
+work/FT1536_A1_REVIEW_001/A1_REVIEW_001.md (8646d733...),
+A1_REVIEW_001_RESULT.json (61f6bf23...).
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
