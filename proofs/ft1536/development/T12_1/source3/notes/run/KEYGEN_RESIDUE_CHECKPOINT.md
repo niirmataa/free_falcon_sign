@@ -1,3 +1,128 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.07 / normal STATIC outer state and local stores midpoint
+
+**B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
+**Package: IN_PROGRESS / WORKING_NOT_FROZEN.**
+2026-10-13, Codex, BATCH_069.
+**CLOSED_AT_RECOVERABLE_MIDPOINT. Exactly one close this window.**
+B1.05/032 and B1.06/046 unchanged. Complete actual prologue, coefficient
+preparation and NORMAL1536-iteration outer word/pending/low-suffix state are
+proved. Raw all-flow byte histories and local first-drain/final-padding stores
+are source-bound. Full expected byte/cursor and rejection-prefix STATIC
+invariant remains OPEN. Lengths/decoders wait for it; public last. No B4/B5.
+Handoff **49R**; exact types/failures/boundary in BATCH_069_NOTES.md.
+
+## 49. Closed — prologue, coefficient, normal outer state and local source stores
+
+1. BEFORE edits/jobs: sealed068 verified14460 pins into
+   levels_069/ENTRY_PINS_069.json,
+   `9c376907b119dfd5157d5fc1a3186c384118975fa2ffd32a1cd07c336fbd8c89`.
+   Only recorded061/063 supersessions; no repair. Base ad59b076. Canonical
+   symlink/physical main checked. Same host-guarded serial runner/waiter and
+   unchanged limits; inner bwrap required authorized outer-sandbox execution.
+2. Init.initialization derives actual n1536/j8/mask255/u0/acc0/pending0 and
+   buf=out from full prologue at q18433/logn10, exposing common internal
+   activation/heap and residual source. No desired codec result/length/frame.
+3. Coefficient.input_read exposes actual x++/PointerAdd/Load16. Both branches
+   derive sign/magnitude, including -32768->32768. Low9 executes real mixed
+   signed/unsigned mask/OR; packed<512. Actual quotient derives ne0..128.
+   First real +=9/drain derives pending(p+9)%8 and preserves acc.
+4. Iteration.body_state composes ALL actual coefficient statements with the
+   inherited complete unary loop. Its initial w/lo/ne/range premises are
+   discharged by source declarations/read/branches/first drain. Local incoming
+   acc/pending/j/mask remain explicit; complete prologue supplies them initially.
+5. OuterControl derives actual n-- no-wrap in1..1536 and n>0 test. OuterState
+   and OuterSuffix derive1536 NORMAL iterations, n0, pending<8, exact uint32
+   word and the mathematical low-suffix fold on the same source execution.
+   Old high bits in acc remain allowed. This is a coefficient count, not
+   encoded byte length or original four-Vec word identity.
+6. ByteHistory.execution derives ordered actual StoreByte chains on ALL flows,
+   including partial returns; outside-all-actual-addresses frame follows.
+   Stores binds048/108 at real u; padding byte=low(word,p)*2^(8-p). These local
+   stores are not full branch/padding/cursor coverage or expected byte history.
+7. FullState.complete_source joins full prologue with actual normal outer
+   completion/residual padding-tail OR actual early outer return, under an
+   unrestricted observed flow. It also derives the complete raw byte history.
+   Neither flow value, requested output/length nor codec frame is a premise.
+8. Final022:11 new modules+audit,12 clean0/0. Audit88=68 new+20 inherited,
+   81 full terms+7 inductives, standard axioms/no elisions; byte-exact generator.
+   Max child RSS3011784KiB. All22 jobs/37 steps retained:8 wholly accepted,
+   14 failed jobs,23 accepted steps; mixed006/009 explicit. Causes/snapshots/
+   raw streams/waits pinned. No new Sage/C campaign/counterexample/C bug.
+   Both inherited counterexamples and066 finite controls remain unchanged.
+9. All14460 predecessor pins unchanged at PRESEAL. Author self-review with
+   proof-audit/proofread-math; target INCOMPLETE, not independent review.
+   Own e80c6bcb/9b471946/8572eed6 plus closing pair. Foreign S0582cc931d/
+   ab0fe21e/history/working tree/staging preserved. No push/review/delegation/
+   relay/migration/archive import/production C change.
+
+Sealed069 pair:
+- JSON `586623752969685fa83d6df1028bd16974c0c0131312f4fbe5af81d549e810fb`.
+- Notes `5484ac79622125a873f3ebacd73280bc6aee1d361334719e590b854bf0fc5e4a`.
+- Postseal **14792 pins**, levels_069/POSTSEAL.json
+  `660fac38af00e29fa41f82691d8add64447fdf586199b064aef5458d43a58d1a`.
+- Full audit `e0c831284b06a9dace8250c48b41ab5c726c607457572819e6a038d1d79a6e59`.
+- PRESEAL `21d8e3b07bbbc571208187e3730f54b119150de1ba9a4686394d52c114b2e304`.
+
+### 49.1 Exact strongest type and remaining full-STATIC implication
+
+Qualified type/term: final022 SEARCH_AUDIT.json,
+FT1536.Source3.KeygenCodecStaticFullState.complete_source. Abbreviated only:
+
+```text
+args.q=18433 -> args.logn=10 ->
+Exec args StaticBinding.code (initial args before) after flow ->
+(exists start final,
+ Initialized args start /\ start.heap=before /\ after.heap=final.heap /\
+ (Completed args start final flow \/ EarlyReturn args start final flow)) /\
+exists writes, ByteHistory.Trace before after.heap writes
+```
+
+Completed exposes one actual normal node102 execution, an existential
+1536-input list, n0, pending<8, exact word and low-suffix fold, followed by
+actual node123 padding/tail execution. EarlyReturn is actual node102 returned
+execution. The input list still needs explicit identity with original source
+array words. Raw Trace still needs identity with expected encoded bytes and
+cursor progression/no-wrap. Local048/108 stores do not discharge that gap.
+
+Remaining in order: (a) one common expected emitted-byte/cursor history,
+including capacity-return prefixes, input/material-word identity, every
+padding branch, final u increment and actual return; (b) AFTER full STATIC
+invariant, exact encoded/consumed lengths, complete decoders/segment++tail,
+four independent paddings/final length store/coefficient-WORD transport;
+(c) public LAST, same h/canonical15-bit packing/2881 and actual supplied-length
+decoder return; (d) inherited call IDs/snapshots/all-state LegalWorkspace
+refutation status and full B1.07/B1.10. These are missing proofs, not refuted
+goals or exhausted routes. B4/B5 laws/availability/PRG/security remain outside.
+
+## 49R. Handoff — next owner-started window
+
+1. This window is CLOSED once at an expanded recoverable midpoint, not
+   Acceptance. Preserve015-069, both063 versions/supplement, ALL failed
+   attempts/raw streams and both counterexamples. No automatic restart,
+   review/delegation/relay/migration or archive import.
+2. BEFORE edits/jobs:
+   ```sh
+   mkdir -p .build/levels_070
+   python3 -B tools/keygen_codec_outer_batch.py verify \
+     586623752969685fa83d6df1028bd16974c0c0131312f4fbe5af81d549e810fb \
+     5484ac79622125a873f3ebacd73280bc6aee1d361334719e590b854bf0fc5e4a \
+     .build/levels_070/ENTRY_PINS_070.json
+   ```
+   Expect14792 pins, only recorded061/063 supersessions. Mismatch is
+   stop-and-report, not repair authorization. Use the host namespace process
+   guard and serial job_when_available.py; unchanged inner runner/limits,
+   authorized outer-sandbox execution for bwrap. No guard bypass/native tool.
+3. Resume49.1(a) with NEW modules. Reuse complete_source, initialized normal
+   outer suffix, complete coefficient source state, raw all-flow Trace and
+   local048/108/unary stores. Derive a common expected byte/cursor history
+   and rejected prefixes; do not treat generic Trace, existential input list
+   or finishLow as that history. Close full STATIC BEFORE lengths/decoders;
+   public last. No requested codec outcome/length/frame premise, no whole acc
+   bound and no C/Sage finite substitute for universal source obligations.
+4. One window/one Acceptance or expanded midpoint, clean streams, retained
+   failures and small exact-path local commits. Push requires a separate
+   explicit owner signal. No B4/B5 advance.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.07 / complete STATIC unary invariant midpoint
 
 **B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
