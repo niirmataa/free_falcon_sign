@@ -1,3 +1,31 @@
+# BATCH_070 — CLOSED at coefficient history/complete padding midpoint, 2026-10-13
+
+Codex: CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.
+Exactly one close; B1.07 Acceptance NOT MET, package WORKING_NOT_FROZEN.
+Same actual coefficient read supplies expected first-drain/unary bytes,
+common cursor and capacity-return prefixes on ALL flows. Actual guarded
+writes/NULL dry-run/u++/return and complete padding/tail branches are proved.
+Full STATIC still OPEN: one common outer history tied to its normal state
+fold, source-derived local Ready/cursor/no-wrap and original-array material
+identity, then final padding composition. Local131/1 cursor budgets and
+entry cells remain explicit; no desired codec outcome/length/frame premise.
+Lengths/decoders wait for full STATIC; public last. No B4/B5 advance.
+
+Entry14792 pins0e45bad3…; JSONccd74046…/notes6567b686…;
+postseal15178 pins9e929bd1…. Final02611 modules+audit12 clean0/0;
+audit94=74+20,86 full terms+8 inductives,standard axioms/no elisions,
+byte-exact generator.26 jobs/44 steps retained:9 wholly accepted/17 failed,
+27 accepted steps; mixed005/008/009 and007 import failure explicit; all
+causes/snapshots/raw streams/waits pinned,maxRSS3020276KiB. No new Sage/C
+or valid counterexample; both inherited counterexamples preserved. PRESEAL
+all14792 previous pins unchanged. Author self-review/proofreading only.
+Own8d3ad6fa/15119b37 plus closing pair; foreign S05465dbef5/working tree/
+staging/history preserved. Checkpoint50R has exact verify071/types/order.
+No push/review/delegation/relay/migration/import/production C change.
+Window CLOSED; no automatic resume. Next: simultaneous same-read coefficient
+state/history -> full outer/material/Ready/cursor/padding -> lengths/decoders
+-> public last. The full-STATIC route remains OPEN and executable.
+
 # BATCH_069 — CLOSED at normal STATIC outer state/local stores midpoint, 2026-10-13
 
 Codex: CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.

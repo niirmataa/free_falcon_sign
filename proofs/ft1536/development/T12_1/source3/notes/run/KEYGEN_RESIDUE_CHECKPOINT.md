@@ -1,3 +1,132 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.07 / common coefficient history and complete padding midpoint
+
+**B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
+**Package: IN_PROGRESS / WORKING_NOT_FROZEN.**
+2026-10-13, Codex, BATCH_070.
+**CLOSED_AT_RECOVERABLE_MIDPOINT. Exactly one close this window.**
+B1.05/032 and B1.06/046 unchanged. Complete actual coefficient byte/cursor
+histories, including both loops' capacity-return prefixes, and every final
+padding/tail branch are proved under explicit LOCAL incoming cells/budgets.
+Full STATIC still needs ONE common outer history, source-derived initial
+Ready/cursor/no-wrap and original material-word identity. Lengths/decoders
+wait for full STATIC; public last. No B4/B5 advance. Handoff **50R**.
+Exact types/failures/boundary: KEYGEN_SOURCE_TO_FIBER_001_BATCH_070_NOTES.md.
+
+## 50. Closed — same coefficient read, expected byte/cursor prefixes and complete padding
+
+1. BEFORE edits/jobs: sealed069 verified **14792 pins** into
+   levels_070/ENTRY_PINS_070.json, SHA256
+   `0e45bad321255463e731949ed94122e8801216fdbc51e2793b856ad2f4214205`.
+   Only recorded061/063 supersessions; no repair. Base b72b2c6b, exact target
+   in TARGET.json. Canonical/physical main and approved identity checked.
+2. WriteStep/Emit derive actual048/068/108 byte events at real u, NULL dry-run
+   and non-NULL capacity return0 before store/increment. Cursor/Advance bind
+   actual054/074/114 u++ and node120 return u. No desired codec outcome,
+   whole encoded length or heap frame premise. Natural no-wrap INPUT domains
+   remain local; whole source must discharge them.
+3. History.Progress carries one exact Trace of take k expected bytes at
+   consecutive positions and the SAME final cursor. Normal processes all
+   expected bytes; rejection derives return0/non-NULL/strict prefix/capacity.
+   Composition retains a prefix through an unexecuted mathematical suffix.
+4. DrainHistory covers the entire first drain and UnaryHistory the entire
+   postdecrement unary loop on ALL flows, including capacity returns. Actual
+   append/preincrement/reset and terminal false guard are included. Incoming
+   Ready/u/word/pending/ne cells are local seams, not desired output facts.
+5. Prefix.preparation derives the real node025 read leg, Load16/PointerAdd
+   and common packed word/p+9/ne0..128/Ready/u before either byte loop.
+   CoefficientHistory.coefficient_history joins both loops using THAT read
+   witness. u+131<2^64 is a local conservative budget, not a requested encoded
+   length. Cross-iteration input-pointer/original-array identity is OPEN.
+6. Padding.tail_result covers ALL pending0..7, NULL/non-NULL and capacity
+   branches through actual padding byte/u++/return u or return0 with no new
+   writes. Local u+1<2^64 and entry cells remain explicit. StreamByte.drain_low
+   proves byte(word>>>p)=low(word,p+8)/2^p for arbitrary word/p, without a
+   whole-acc bound. This does not by itself join padding to the outer history.
+7. Final026: **11 new modules+audit,12 clean0/0**. Audit **94=74 new+20
+   inherited**, **86 complete terms+8 kernel inductives**, standard axioms,
+   no elisions, byte-exact generator. Max child RSS3020276KiB; unchanged limits.
+   All **26 jobs/44 steps**, **27 accepted steps**, **9 wholly accepted/
+   17 failed jobs** retained, causes/snapshots/raw streams/waits pinned.
+   Mixed005/008/009 explicit;007 missing accepted import artifact retained.
+   024 omega assignment lacked a local upper-bound field; it is not a valid
+   execution counterexample. No new Sage/C/math/C counterexample; both inherited
+   counterexamples and066 controls unchanged.
+8. PRESEAL all14792 previous pins unchanged. Author self-review/proof-audit/
+   proofread-math only; full target INCOMPLETE, not independent review.
+   Own8d3ad6fa/15119b37 plus closing pair; foreign S05465dbef5 and existing
+   working tree/staging/history preserved. Host guard/serial waiter/bwrap
+   unchanged; first job waited for foreign pid105886. No push/review/delegation/
+   relay/migration/archive import/production C change.
+
+Sealed070 pair:
+- JSON `ccd7404610d1ea2eb41d6507321f186a26c5e4a2a37f5fe1f87338657ab81b53`.
+- Notes `6567b6863674e4add3b6e388e5390a37fbd27763f7729bfb400255a039613c22`.
+- Postseal **15178 pins**, levels_070/POSTSEAL.json
+  `9e929bd17c6bc140d5739cd96747fa8594229195523b27bb21a39765c6b1797f`.
+- Full audit `2a302d74f98e5eca9051c716be0ad1601f31097b60e46399183b112b23be7b05`.
+- PRESEAL `355a84bb753d5dff289c19fefcecfcfde0ad3db1bac4771b5f99db81ac8fe51c`.
+- Generator check `bbfa09c4956d0059a9c44f14969737b6f6d09e2f03e6c210ec5f8d35a4234c6b`.
+
+### 50.1 Exact strongest type and smallest full-STATIC implication
+
+Full qualified coefficient_history type/term: final026 SEARCH_AUDIT.json.
+Its LOCAL inputs are p<8, Ready (buf=out, reserved scalar absence, capacity),
+actual u/word/pending/j8/mask255 cells and u+131<2^64. From unrestricted
+Exec node101 it derives one actual read witness/common Prepared state and
+Progress on firstBytes++lastBytes of THAT int16 value, normal or rejected.
+Padding.tail_result separately consumes local Ready/u/word/pending0..7 and
+u+1<2^64, deriving the real final return and exact optional padding trace.
+Neither theorem consumes a desired codec outcome/length/frame premise.
+These are universal LOCAL source theorems, not the whole STATIC theorem.
+The sealed notes4 shorthand `PointerAdd ptr1 next` means `PointerAdd ptr 1 next`;
+the full audited type and source use the separate unit-increment argument.
+
+The missing conjunction is one common expected whole-segment history on
+THE SAME source input list as the normal state fold, with full early-return
+prefixes and original source-word identity. Simultaneous normal word/pending
+conclusions for the SAME input witness should be added to coefficient_history;
+then fold node102 while carrying Ready/u/conservative budget/read chronology.
+Derive those inputs from the SAME complete prologue, consume actual caller
+separation/prior-write preservation for original words, and join the final
+padding/tail. Generic Trace, the old existential normal input list and local
+histories do not discharge this conjunction. The route is OPEN/executable,
+not refuted or exhausted.
+
+Remaining order: (a) full STATIC as above; (b) ONLY THEN exact whole encoded/
+consumed lengths, complete decoders/segment++tail, four independent paddings,
+final length store and same coefficient-WORD transport; (c) public LAST:
+same h/canonical15-bit packing/2881 and actual supplied-length decoder return;
+(d) inherited call IDs/snapshots/LegalWorkspace status and B1.07/B1.10. B4/B5
+laws/availability/PRG/security remain outside this lane.
+
+## 50R. Handoff — next owner-started window
+
+1. This window closes ONCE at an expanded midpoint, not Acceptance. Preserve
+   015-070, both063 versions/supplement, ALL failures/raw streams and both
+   counterexamples. No auto-resume/review/delegation/relay/migration/import.
+2. BEFORE edits/jobs:
+   ```sh
+   mkdir -p .build/levels_071
+   python3 -B tools/keygen_codec_history_batch.py verify \
+     ccd7404610d1ea2eb41d6507321f186a26c5e4a2a37f5fe1f87338657ab81b53 \
+     6567b6863674e4add3b6e388e5390a37fbd27763f7729bfb400255a039613c22 \
+     .build/levels_071/ENTRY_PINS_071.json
+   ```
+   Expect **15178 pins**, only recorded061/063 supersessions. Mismatch is
+   stop-and-report, not repair authorization. Check actual host processes;
+   use serial job_when_available.py and unchanged inner bwrap/limits with
+   authorized outer-sandbox execution. No guard bypass/native substitute.
+3. Resume50.1(a) using NEW modules; keep all predecessor bytes immutable.
+   Reuse same-read coefficient_history, Progress append/strict-prefix laws,
+   whole first-drain/unary histories, padding.tail_result, full prologue and
+   normal1536 outer word/pending/low-suffix fold. Discharge LOCAL Ready/cursor/
+   budget/material seams; do not promote them to caller premises or equate
+   independently existential input lists. No desired output/length/frame
+   premise, no whole acc bound, no finite C/Sage substitute for source proof.
+4. One window/one Acceptance or expanded midpoint; clean streams, retained
+   failures and exact-path local commits. Push requires separate explicit
+   owner signal. Lengths/decoders after full STATIC, public last; no B4/B5.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.07 / normal STATIC outer state and local stores midpoint
 
 **B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**
