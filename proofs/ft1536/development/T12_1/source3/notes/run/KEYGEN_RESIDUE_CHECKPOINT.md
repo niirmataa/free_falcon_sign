@@ -1,3 +1,142 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.07 / full STATIC physical-input source semantics
+
+**Full STATIC: PROVED_KERNEL_SCOPED_PHYSICAL_INPUT / NOT_REVIEWED.**
+**B1.07: PARTIAL_PROOF / Acceptance NOT MET.**
+**Package: IN_PROGRESS / WORKING_NOT_FROZEN.**
+2026-10-13, Codex, BATCH_071.
+**CLOSED_AT_RECOVERABLE_MIDPOINT. Exactly one close this window.**
+B1.05/032 and B1.06/046 unchanged. The complete bound STATIC body and
+actual dispatcher now derive one expected stream and return behavior from
+the original physical int16 input list, including all capacity-return
+prefixes, complete padding and source-derived common entry/cursor domains.
+Physical arrays survive preceding actual codec writes. Mathematical-vector/
+coefficient-WORD transport is subsequent work; no full KeyGen claim.
+Lengths/decoders next; public LAST. Handoff **51R**.
+
+## 51. Closed — full STATIC history, original physical words and actual return
+
+1. BEFORE edits/jobs: sealed070 verified **15178 pins** into
+   levels_071/ENTRY_PINS_071.json, SHA256
+   `4dbcedebc9813348f5d724170bf11b99371495d271e0dc03c22a9ba445a42ce2`.
+   Only recorded061/063 supersessions; no repair. Base db9683d4; exact target
+   in TARGET.json. Canonical/physical main and approved identity checked.
+2. Joint/ReadJoint use ONE actual coefficient witness for byte/cursor history,
+   normal word/pending result and original x++ read chronology, on ALL flows.
+   ReadPrefix and source-checked PointerFrame derive both boundary pointers.
+   No independently existential input lists are equated.
+3. Budget131 derives from the full int16 range, including -32768. OuterHistory
+   folds ALL actual iterations/early returns with a decreasing source budget.
+   Entry exposes one actual full prologue: Ready/reserved scalar absence/
+   capacity/buf=out/original x/n1536/j8/mask255/u0/acc0/pending0. Local entry
+   seams and natural no-wrap are discharged in the full body theorem.
+4. Material.Words binds the original physical array by Load16/PointerAdd.
+   Progress/Trace and physical input/output separation DERIVE future-word
+   preservation. Uniqueness binds each actual read to the corresponding
+   original input. OuterMaterial carries the WHOLE SAME list through normal
+   state and all rejection prefixes, extending the unexecuted math suffix.
+   No desired heap frame or whole-accumulator bound is assumed.
+5. ReturnHistory/Complete join complete padding0..7, NULL/non-NULL and real
+   u++/return or capacity return0. Complete.source_outcome consumes unrestricted
+   complete Exec and derives Outcome on encoded original inputs. StaticCall
+   consumes actual dispatcher/evaluated arguments; no desired return/length.
+6. Calls preserves all four original physical arrays across actual preceding
+   codec calls. Source-chain profiles/pointer identities are inherited actual
+   execution facts; allocation freshness derives block separation from a live
+   external output. Physical Originals at the chain boundary remain explicit;
+   mathematical Vec/coefficient-WORD transport is NOT silently discharged.
+7. Final019: **13 new modules+audit,14 clean0/0**, native child sum23.906s.
+   Audit **72=52 new+20 inherited**, **63 complete terms+9 kernel inductives**,
+   standard axioms/no elisions, byte-exact generator. Max RSS3014872KiB.
+   All **19 jobs/39 steps**, **28 accepted steps**, **8 wholly accepted/
+   11 failed jobs** retained with causes/snapshots/raw streams/waits/oleans.
+   Mixed004/005/006/008/011 explicit. Failures are proof-authoring/checker-
+   domain/clean-log errors, not valid execution counterexamples. No new Sage/C
+   campaign/counterexample; both065/066 counterexamples unchanged.
+8. PRESEAL all15178 previous pins unchanged. Author self-review/proof-audit/
+   proofread-math only, not independent review. Supplemental validated schema1
+   summary retains legacy limits; native receipts bind inputs/argv/resources.
+   Unchanged host guard/serial waiter/bwrap/limits, authorized outer execution.
+   Own08396662/2bd62b78 plus closing pair; foreign S0515e05f22/21aabee4 and
+   existing working tree/staging/history preserved. No push/review/delegation/
+   relay/migration/archive import/production-C change.
+
+Sealed071 pair:
+- JSON `05932af18510f1a19dbbaf14b20fe264987c6ae0370eecd32e467fd3b1d8c089`.
+- Notes `3d3fa40619db374b29d2ce3e710bb13405fab35dc2bd0736c9c09a56a8f415b3`.
+- Postseal **15526 pins**, levels_071/POSTSEAL.json
+  `bea64c1e03516da058ac8bdc5d4172442ae1261b1975766844746d7b3d21f0c2`.
+- Full audit `17200786eb9902ca27b9b6a737268e07a29b37efffbcf5c03c0d8c2da81ee0b7`.
+- PRESEAL `e03dfc7bd94f48ceabd9966216eaa987a5d83fe103c9d1152d01cc38e257a368`.
+- Generator check `c2a4b1dfca798cda08150a215bbe06458fedfe2fd63a02c6f0efd51c589c73d4`.
+
+### 51.1 Exact strongest type and remaining domain boundary
+
+Full qualified types/terms: final019 SEARCH_AUDIT.json,
+FT1536.Source3.KeygenCodecStaticComplete.source_outcome,
+KeygenCodecStaticCall.call_outcome and KeygenCodecStaticCalls.chain_static.
+Abbreviated body contract:
+
+```text
+args.q=18433 -> args.logn=10 -> args.x=some ptr ->
+inputs.length=1536 -> Words before ptr inputs -> Separated args.out ptr.block ->
+Exec args StaticBinding.code (initial args before) after flow ->
+Outcome args before after.heap (encoded inputs) flow
+```
+
+The flow is unrestricted. Input length1536 counts original physical coefficients,
+not encoded bytes. Words includes actual allocation/alignment/initialized
+little-endian loads; Separated is ordinary legal input/output block separation.
+Outcome derives exact ordered Trace at positions0..k-1, and either actual
+return=encoded.length with k=encoded.length, or return0/non-NULL/strict prefix/
+capacity<=k. complete_source additionally exposes the same internal cursor/
+Ready state. No requested codec result, encoded length, frame or unrelated
+material witness is a premise. NULL output is covered. Full STATIC is closed
+in this physical-input reference-model scope; compiler/ISO-C, source termination,
+probability/security and full KeyGen/B1.07 Acceptance are not claimed.
+
+chain_static explicitly consumes physical Originals at the actual source-chain
+boundary. It derives preservation through earlier calls and source profiles/
+pointer identity. The lift from original mathematical f/g/F/G Vec/coefficient
+WORDs to those physical Words is still a subsequent obligation. Do not replace
+that lift by desired decoding/output assertions, unproved heap frames or an
+all-state LegalWorkspace premise. The inherited refutation status remains.
+
+Remaining owner order: (a) exact encoded/consumed lengths and complete
+source decoders/segment++tail; (b) four independent paddings, final length
+store and same coefficient-WORD transport; (c) public LAST: same h/canonical
+15-bit packing/2881 and actual supplied-length decoder return; (d) inherited
+call IDs/snapshots/LegalWorkspace status, full B1.07/B1.10. B4/B5 laws/
+availability/PRG/security remain outside this lane.
+
+## 51R. Handoff — next owner-started window
+
+1. This window closes ONCE at the expanded full-STATIC midpoint, not B1.07
+   Acceptance. Preserve015-071, both063 versions/supplement, ALL failures/
+   raw streams/produced artifacts and both counterexamples. No automatic
+   resume/review/delegation/relay/migration/import/push.
+2. BEFORE edits/jobs:
+   ```sh
+   mkdir -p .build/levels_072
+   python3 -B tools/keygen_codec_complete_batch.py verify \
+     05932af18510f1a19dbbaf14b20fe264987c6ae0370eecd32e467fd3b1d8c089 \
+     3d3fa40619db374b29d2ce3e710bb13405fab35dc2bd0736c9c09a56a8f415b3 \
+     .build/levels_072/ENTRY_PINS_072.json
+   ```
+   Expect **15526 pins**, only recorded061/063 supersessions. Mismatch is
+   stop-and-report, not repair authorization. Check actual host processes;
+   use serial job_when_available.py and unchanged inner bwrap/limits with
+   authorized outer execution. No guard bypass/native substitute.
+3. Resume51.1(a) in NEW modules; all predecessor bytes immutable. Reuse the
+   complete STATIC/dispatcher Outcome on the SAME original physical inputs,
+   source-derived prologue, conservative budget, actual read chronology,
+   ordered histories, normal fold and complete padding. Derive exact lengths
+   and complete decoder behavior without assuming requested result/length/frame.
+   Preserve the distinction between physical Words and upstream vector-WORD
+   transport. Four segment paddings/length store follow, public last. No B4/B5.
+4. One window/one Acceptance or expanded midpoint; clean streams, all failures
+   retained and exact-path small local commits. Push requires a separate
+   explicit owner signal. No independent review has been started.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.07 / common coefficient history and complete padding midpoint
 
 **B1.07: PARTIAL_PROOF / Acceptance NOT MET / NOT_REVIEWED.**

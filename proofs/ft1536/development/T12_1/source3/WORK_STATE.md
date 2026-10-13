@@ -1,3 +1,43 @@
+# BATCH_071 — CLOSED at full STATIC physical-input midpoint, 2026-10-13
+
+Codex: CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.
+Exactly one close; B1.07 Acceptance NOT MET, package WORKING_NOT_FROZEN.
+Full STATIC body and actual dispatcher are PROVED_KERNEL_SCOPED_PHYSICAL_INPUT:
+one original physical1536-word int16 list supplies byte/cursor/normal-state
+fold and all capacity-return prefixes plus complete padding/actual return.
+Common local entry conditions/no-wrap come from the actual prologue/domain;
+actual pointer/read chronology and preservation of future words are derived.
+All four physical arrays survive preceding actual calls; allocation freshness
+supplies separation. Upstream mathematical Vec/coefficient-WORD transport
+remains subsequent work, together with exact encoded/consumed lengths,
+complete decoders/segment++tail, four paddings and final length store. Public
+codec LAST; full KeyGen/B1.07/B1.10 and B4/B5 remain open/outside this scope.
+
+Entry15178 pins4dbcedeb…; JSON05932af1…/notes3d3fa406…;
+postseal15526 pinsbea64c1e…. Final01913 modules+audit14 clean0/0;
+audit72=52+20,63 full terms+9 inductives,standard axioms/no elisions,
+byte-exact generator.19 jobs/39 steps retained:8 wholly accepted/11 failed,
+28 accepted steps; mixed004/005/006/008/011 explicit; all causes/snapshots/
+raw streams/waits/oleans pinned,maxRSS3014872KiB. No new Sage/C campaign or
+valid counterexample; both065/066 retained. PRESEAL all15178 previous pins
+unchanged. Author self-review/proofreading only. Own08396662/2bd62b78 plus
+closing pair; foreign S0515e05f22/21aabee4/working tree/staging preserved.
+Checkpoint51R has exact verify072 command,types,domain boundaries and order.
+No push/review/delegation/relay/migration/import/production-C change.
+Window CLOSED; no automatic resume. Next: exact lengths and complete decoders;
+physical-input theorem must not be promoted to upstream mathematical material.
+
+# BATCH_071 — owner-started B1.07 continuation, 2026-10-13
+
+Codex resumes checkpoint50R on main from db9683d4. Entry070 verified BEFORE
+edits/jobs:15178 pins, receipt4dbcedebc9813348f5d724170bf11b99371495d271e0dc03c22a9ba445a42ce2.
+Fixed order: same-read joint state/history, all-flow outer/prologue/material,
+complete STATIC; then lengths/decoders; public last. No desired codec result,
+length or frame premise. One final Acceptance or expanded midpoint. Existing
+failures and both counterexamples immutable; no push/review/delegation/relay.
+Unchanged serial guarded runner/limits; existing foreign changes preserved.
+IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN; this is not a close.
+
 # BATCH_070 — CLOSED at coefficient history/complete padding midpoint, 2026-10-13
 
 Codex: CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.
