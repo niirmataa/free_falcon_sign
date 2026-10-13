@@ -58,6 +58,9 @@ accepted (one earlier narrower scope),8 failed/interrupted/mixed with causes;
 63 native steps,55 accepted. The104.171s reduction attempt was stopped and
 replaced by the existing table-length theorem; no resource limit increased.
 The failed dotted-name audit020 and dependent launch011 are preserved.
+The first seal attempt passed its input/native checks but refused its final
+active-process guard when S05 started Lean. No manifest was written; the
+refusal record is retained and enrolled without changing the guard.
 
 Entry080 checks20,760 pins after079 postseal; SHA256
 fbbce8e1516095ce3f5bb740160832a0ec31155918c14aa9c16fb940788b2fa1.

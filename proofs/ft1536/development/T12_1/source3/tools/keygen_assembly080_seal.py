@@ -84,6 +84,7 @@ def seal():
               'closed': 'Source-only certificate calls derive their workspace bridge; immutable globals and all foreign blocks preserved on both outcomes; relocated capped loop, one final-call counter, source-linked snapshots on one witness, same certificate argument material and serializer entry, and outer lifetime. Root successful_frontier uses legal initial memory, fixed source execution and observed return1 only.',
               'open': 'B1.08 entire observed secret packet/header0xaa and B1.09 whole-root observed public join remain; no emitted-to-fiber, compiler or security claim.',
               'interruption': pin(ROOT / '.build/levels_080/INTERRUPTION_002.json'),
+              'seal_guard_refusal': pin(ROOT / '.build/levels_080/SEAL_REFUSAL_001.json'),
               'tools': [pin(ROOT / 'tools/job079.py'), pin(ROOT / 'tools/keygen_assembly080_audit.py'), pin(__file__)],
               'push': False, 'independent_review': False, 'active_jobs': []}
     assert not job.active(), job.active()
