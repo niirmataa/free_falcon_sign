@@ -1,3 +1,20 @@
+# STATIC075 bit history and value inverse checked; operational composition next
+
+KeygenCodecStaticBitStream.encoded_bits derives the exact whole bit stream
+of the source-defined encoder byte history, with each segment's own zero
+padding and arbitrary old high accumulator bits. KeygenCodecStaticBitInverse.
+encoded_inverse recovers ALL original int16 words and only that padding;
+decode_coefficient preserves arbitrary following bits, including -32768.
+This pure value inverse is NOT yet the complete source decoder round-trip.
+Actual dynamic refill source RHSs, promoted int16 negation, physical store
+construction/uniqueness, and compositional source execution certificates
+through real break/return/loops are kernel checked. Final02613 selected
+clean0/0, full audit101 entries=95 new+6 inherited. All011–026 attempts kept.
+Next derive the local reader seams from the complete prologue, compose
+refill/sign/low/unary/1536 stores/source return/existence and dispatchers.
+Then SAME vectors/int16 transport, public LAST. Whole TODO remains ACTIVE;
+no midpoint close. B1.07/B1.08 Acceptance NOT MET;B1.09 OPEN;no push/review.
+
 # STATIC075 foundation postseal — continues immediately to bitstream
 
 Foundation-step postseal PASS_SCOPED_INTERNAL_STEP:17293 pins, all16955
