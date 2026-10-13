@@ -3,6 +3,20 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
+**Kontynuacja020E3 — [skończone banki, zgodność i pojemność](notes/FINITE_BANKS_020E3_CHECKPOINT.md):**
+55 nowych twierdzeń domyka model banku28941 ramek i877 komórek wartości. Każdy
+zapis stosu ma udowodnione miejsce; wartości powstają topologicznie po
+stałej tablicy, bez stosu rekurencyjnych wyrażeń. Całe wykonanie instancji877
+zachowuje oryginalny wynik i pełne J/P pod tym samym(M), z publicznym initial.
+Pełny scan ma877 zapisów, chwilowy prefiks ramek≤2. Bezstratne kodowanie
+obu banków wraz ze sp zajmuje88578 słów512bit — wyłącznie te banki.
+**Banki CLOSED scoped w modelu Fin→payload; fizyczny backend/in-place,
+pełny czas i peak oraz QROM OPEN.**14 modułów + audyt,15 czystych buildów,
+17 prób zachowanych. [Kontrola autora](notes/FINITE_BANKS_020E3_SELF_REVIEW.md),
+[kolejka020E3](notes/KERNEL_QUEUE_020E3.json), [klasy020E3](notes/CERTIFICATE_CLASSES_020E3.json).
+[Następne: pełne ceny i prymitywy](notes/RESOURCES_020E_CONTINUATION_004.md).
+Bez niezależnego odbioru; monitor ROM pozostaje PAUSED.
+
 **Kontynuacja020E2 — [całe wykonanie z tablicy węzłów](notes/NODE_EXECUTION_020E2_CHECKPOINT.md):**
 37 nowych twierdzeń domyka bezpośrednie wykonanie wyrażeń, atomów i całego
 sterowania. Instancja877 daje dokładnie stan końcowy oryginalnego programu
@@ -58,7 +72,7 @@ w przypiętym środowisku legacy, bez scalenia z nową grą wariantu A.
 [Kolejka020D](notes/KERNEL_QUEUE_020D.json), [klasy020D](notes/CERTIFICATE_CLASSES_020D.json).
 Następny duży krok: [TODO020E — pełny driver i zasoby](notes/TODO_RESOURCES_020E.md).
 
-Poniższe wpisy opisują wcześniejsze checkpointy; aktualny stan wskazuje020E2.
+Poniższe wpisy opisują wcześniejsze checkpointy; aktualny stan wskazuje020E3.
 
 **Kontynuacja020C — [cały select zgodny z019](notes/VECTOR_NORM_020C_CHECKPOINT.md):**
 115 nowych eksportów kernelowych zamyka1536 par, dokładną normę Q,

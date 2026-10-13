@@ -19,3 +19,9 @@ całe wykonanie z bankami → konkretna instancja/public initial/law →
 audyt/piny/checkpoint. Dalszy rachunek całkowitego czasu, wejścia/losowości,
 scratch i peak pozostaje kolejką020E. Nie zmieniamy(M), praw ani gry QROM.
 Jedno okno/proces Lean, świeże próby, małe lokalne commity bez push.
+
+## Zamknięcie tego zakresu —2026-10-13
+
+Banki, zgodność i pojemność oraz konkretna instancja są domknięte w modelu.
+Wynik: FINITE_BANKS_020E3_CHECKPOINT.md. Pełne ceny/prymitywy fizyczne
+pozostają jawną kontynuacją004; parent020E, Q-RESC i QROM nadal OPEN.

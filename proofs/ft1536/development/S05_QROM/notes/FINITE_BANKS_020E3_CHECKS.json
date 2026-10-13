@@ -1,0 +1,579 @@
+{
+  "status": "KERNEL_FINITE_BANKS_AND_CAPACITY__NOT_REVIEWED",
+  "date": "2026-10-13",
+  "base_checkpoint": "1236b53f237eb55bf4e685f721f7b9dfd5bf6751",
+  "source_commit_phase1": "ea8f83c4c58ae72ebbaecb40d3d02196e6603585",
+  "prior_manifests": [
+    {
+      "path": "notes/NODE_EXECUTION_020E2_OUTPUTS.sha256",
+      "sha256": "128bcbe60e6ab66ebc17667e4e65cea38c42b322f69d6d6b554305e79f6446d3",
+      "entries_verified": 25
+    },
+    {
+      "path": "notes/NODE_EXECUTION_020E2_RUNTIME.sha256",
+      "sha256": "8f05d40e27686014db4b9e773083eef9e70f2dc33fe6c8827d71ffb097d4d579",
+      "entries_verified": 174
+    }
+  ],
+  "input_modules": 539,
+  "final_pinned_modules": 554,
+  "proof_modules": 14,
+  "audit_modules": 1,
+  "theorem_exports": 55,
+  "final_clean_builds": 15,
+  "compiled_attempts": 17,
+  "nonclean_attempts": 2,
+  "preflight_not_started": 0,
+  "standard_axioms_only": true,
+  "axiom_free_exports": 1,
+  "source_policy_scan": "PASS: no sorry/admit/new axiom/native_decide/bv_decide/linter suppression",
+  "artifacts": [
+    {
+      "module": "BoundedStack020E3",
+      "path": "formal/BoundedStack020E3.lean",
+      "sha256": "e3f42ef4b463bbf8e5f42474f55dccf1483ff7e3dec166f66f5e8eeeca3f8e67",
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/stack002/receipt.json",
+      "receipt_sha256": "55bcdc3d68836e89a4fbb3cd1a046d64804c9bd926ee0b895bccf7b94dd078a3",
+      "exports": [
+        "FT1536.S05.BoundedStack020E3.view_length",
+        "FT1536.S05.BoundedStack020E3.view_get",
+        "FT1536.S05.BoundedStack020E3.empty_view",
+        "FT1536.S05.BoundedStack020E3.top_cons",
+        "FT1536.S05.BoundedStack020E3.view_drop",
+        "FT1536.S05.BoundedStack020E3.view_put",
+        "FT1536.S05.BoundedStack020E3.push_correct",
+        "FT1536.S05.BoundedStack020E3.pushMany_correct",
+        "FT1536.S05.BoundedStack020E3.capacity",
+        "FT1536.S05.BoundedStack020E3.full_reject"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.6254286040057195,
+      "compiler_peak_rss_KiB": 3971544,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "ValueSlot020E3",
+      "path": "formal/ValueSlot020E3.lean",
+      "sha256": "3eaa81faf3aec5f2731500fe953851c592a20fd7866e97e3ee0d43e755c3d870",
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/slot001/receipt.json",
+      "receipt_sha256": "1bc98014f2815625c89170e0c01b49eb6175b3bfb917c6c786ee53c8309a252c",
+      "exports": [
+        "FT1536.S05.ValueSlot020E3.correct"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.321773414994823,
+      "compiler_peak_rss_KiB": 3968980,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "ValueBank020E3",
+      "path": "formal/ValueBank020E3.lean",
+      "sha256": "6ffa1746a24b410dcdf0490a37c235710691727d8b39714e8375bc1cf36e17a0",
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/values002/receipt.json",
+      "receipt_sha256": "a9ee1be61214d39a851bf84e8921fd8ed47d373e308bab9cd796a34ea67c3eeb",
+      "exports": [
+        "FT1536.S05.ValueBank020E3.advance_correct",
+        "FT1536.S05.ValueBank020E3.sweep_correct",
+        "FT1536.S05.ValueBank020E3.build_correct",
+        "FT1536.S05.ValueBank020E3.lookup_correct",
+        "FT1536.S05.ValueBank020E3.unused_reject"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.729933288996108,
+      "compiler_peak_rss_KiB": 3966240,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "ValueRefinement020E3",
+      "path": "formal/ValueRefinement020E3.lean",
+      "sha256": "e2919c18f800c7dee5f679282d28695a7256e912f33455ab8e2cd4b6fcb8a41a",
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/vref001/receipt.json",
+      "receipt_sha256": "3c242c21e301a9279884bbda0711003e1b90a87c13ae7e6fc697e3898a62be6e",
+      "exports": [
+        "FT1536.S05.ValueRefinement020E3.expr_unused",
+        "FT1536.S05.ValueRefinement020E3.expr_code",
+        "FT1536.S05.ValueRefinement020E3.evaluator_eq"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.723842848005006,
+      "compiler_peak_rss_KiB": 3950980,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "BankAction020E3",
+      "path": "formal/BankAction020E3.lean",
+      "sha256": "cad5686df6d1ead9e9734111a2604719e190853fde6c8b227edf8946801fb261",
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/action001/receipt.json",
+      "receipt_sha256": "04fc5230d8377a29f71151b0a78e116fc9fe086c415fbf915f5dc53b4dfa258d",
+      "exports": [
+        "FT1536.S05.BankAction020E3.original",
+        "FT1536.S05.BankAction020E3.correct"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.4705200000025798,
+      "compiler_peak_rss_KiB": 3955992,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "FrameReserve020E3",
+      "path": "formal/FrameReserve020E3.lean",
+      "sha256": "d956963a6f53117e53db840acf925a8f000685d59d00c4efd00652756a11d611",
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/reserve001/receipt.json",
+      "receipt_sha256": "4997e6cb7d81477c0bb5e49912156a9e19ecb9845b1700061277ad1ac293c511",
+      "exports": [
+        "FT1536.S05.FrameReserve020E3.nodes_positive",
+        "FT1536.S05.FrameReserve020E3.length_le_footprint",
+        "FT1536.S05.FrameReserve020E3.length_le_reserve",
+        "FT1536.S05.FrameReserve020E3.next_length_bound",
+        "FT1536.S05.FrameReserve020E3.actual_reserve"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.271342045001802,
+      "compiler_peak_rss_KiB": 3964716,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "BankStep020E3",
+      "path": "formal/BankStep020E3.lean",
+      "sha256": "cf8975a53abf426539d1931c9571b9680f7f2024d0e05e7a6ff8875c061d0a1f",
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/step001/receipt.json",
+      "receipt_sha256": "c43e153dd3b20f9c4401d642148ee9039f18af2c48f699fa6eb21a8a5b09d701",
+      "exports": [
+        "FT1536.S05.BankStep020E3.correct"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.2212266529968474,
+      "compiler_peak_rss_KiB": 3965336,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "BankExecute020E3",
+      "path": "formal/BankExecute020E3.lean",
+      "sha256": "ecb48c1dffd97d537b49e288458b1a71a097db5bdb5af915e20b9489ab1a5321",
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/execute001/receipt.json",
+      "receipt_sha256": "15f6ce6ac73bd51ee5233ac26b2b35be972c396948ef7f1782679b9bb3448cef",
+      "exports": [
+        "FT1536.S05.BankExecute020E3.uncons",
+        "FT1536.S05.BankExecute020E3.empty_sp",
+        "FT1536.S05.BankExecute020E3.nonempty_sp",
+        "FT1536.S05.BankExecute020E3.correct"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.170919838012196,
+      "compiler_peak_rss_KiB": 3969468,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "BankProgram020E3",
+      "path": "formal/BankProgram020E3.lean",
+      "sha256": "b9ed24c1ab458bede141381ab9dee3198f9d968a52fc2f6d33f7f2ee004235a2",
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/program001/receipt.json",
+      "receipt_sha256": "b3abe5cd81beea10538f7ca5d545a1420c189e0007dc5043136d3df8441989c8",
+      "exports": [
+        "FT1536.S05.BankProgram020E3.invariant_correct",
+        "FT1536.S05.BankProgram020E3.actual_correct",
+        "FT1536.S05.BankProgram020E3.node_execution_eq",
+        "FT1536.S05.BankProgram020E3.public_initial"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC",
+        "Q-SAMPLER"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.3221115589985857,
+      "compiler_peak_rss_KiB": 3981260,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "BankDriver020E3",
+      "path": "formal/BankDriver020E3.lean",
+      "sha256": "71a3150506819bef30af3993e142e85cbe9f12c47c722980a0789c9b59b31e0f",
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/driver001/receipt.json",
+      "receipt_sha256": "1505b67544564cba670c07d259dbf04a0b6a3a4ad9f10576d1f1c40c8c1935a9",
+      "exports": [
+        "FT1536.S05.BankDriver020E3.run_eq",
+        "FT1536.S05.BankDriver020E3.code_eq",
+        "FT1536.S05.BankDriver020E3.law_eq",
+        "FT1536.S05.BankDriver020E3.same_driver"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC",
+        "Q-SAMPLER"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.2210288779897382,
+      "compiler_peak_rss_KiB": 3976028,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "BankCertificate020E3",
+      "path": "formal/BankCertificate020E3.lean",
+      "sha256": "8682129cb6ce0935742941aa6a2c975380549a5d1f62717d49347347c88005f3",
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/certificate001/receipt.json",
+      "receipt_sha256": "a28ec06ab6173d5e7dec27c678d9af8b4dbaac22f3c17aea0a6dc95a0664cad5",
+      "exports": [
+        "FT1536.S05.BankCertificate020E3.all_h_ac",
+        "FT1536.S05.BankCertificate020E3.certificate",
+        "FT1536.S05.BankCertificate020E3.same_key_law"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC",
+        "Q-SAMPLER"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.121090248998371,
+      "compiler_peak_rss_KiB": 3980236,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "BankStorage020E3",
+      "path": "formal/BankStorage020E3.lean",
+      "sha256": "9afebc55333d00d423f548523469b81907978af125a29189b16ec621b99ba91f",
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/storage001/receipt.json",
+      "receipt_sha256": "6b0e74f1076c6bb3e143dab540cd457b455b7e31800ad01576b3f7293725d61f",
+      "exports": [
+        "FT1536.S05.BankStorage020E3.value_injective",
+        "FT1536.S05.BankStorage020E3.count_exact",
+        "FT1536.S05.BankStorage020E3.frame_injective",
+        "FT1536.S05.BankStorage020E3.values_injective",
+        "FT1536.S05.BankStorage020E3.frames_injective",
+        "FT1536.S05.BankStorage020E3.actual_bank_words",
+        "FT1536.S05.BankStorage020E3.actual_frames_injective"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.2706802650063764,
+      "compiler_peak_rss_KiB": 3969756,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "ValueScan020E3",
+      "path": "formal/ValueScan020E3.lean",
+      "sha256": "e990d3b201f0149b5920e77dba64270df740ddbe76bf8c9323002ef826a55397",
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/scan001/receipt.json",
+      "receipt_sha256": "596bc9ef02c2dbb28d4df50a4dbf9d11a70834add0e45cf07e8d7e711df5aaf5",
+      "exports": [
+        "FT1536.S05.ValueScan020E3.values_eq",
+        "FT1536.S05.ValueScan020E3.writes_eq",
+        "FT1536.S05.ValueScan020E3.full_scan",
+        "FT1536.S05.ValueScan020E3.actual_scan"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.1704323390003992,
+      "compiler_peak_rss_KiB": 3970280,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "BankPrefix020E3",
+      "path": "formal/BankPrefix020E3.lean",
+      "sha256": "db461f9f1d1a0306c70c0c611ea72c506250d2b61fd93a2003cd4f8d331f5529",
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/prefix001/receipt.json",
+      "receipt_sha256": "44169f5ea33031078081cc200e3fe77d1c0f8ed7f3b0f361532f8a6cb94f41eb",
+      "exports": [
+        "FT1536.S05.BankPrefix020E3.next_length",
+        "FT1536.S05.BankPrefix020E3.action_prefix"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.070227126998361,
+      "compiler_peak_rss_KiB": 3966380,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "AuditFiniteBanks020E3",
+      "path": "formal/AuditFiniteBanks020E3.lean",
+      "sha256": "4baa6a7a5a08fd365179c24a4d71323e93c414bf8704f7addcfb9ea9911a89f3",
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/audit001/receipt.json",
+      "receipt_sha256": "fd1b54df48acdc9f24366870ab69cd1080a3371c3a5b09184b9eee54885a68f1",
+      "exports": [],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.07334678999905,
+      "compiler_peak_rss_KiB": 3953820,
+      "Lean_M_MiB": 4096
+    }
+  ],
+  "attempts": [
+    {
+      "label": "action001",
+      "module": "BankAction020E3",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/action001/receipt.json",
+      "receipt_sha256": "04fc5230d8377a29f71151b0a78e116fc9fe086c415fbf915f5dc53b4dfa258d",
+      "elapsed_seconds": 2.4705200000025798,
+      "compiler_peak_rss_KiB": 3955992
+    },
+    {
+      "label": "audit001",
+      "module": "AuditFiniteBanks020E3",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/audit001/receipt.json",
+      "receipt_sha256": "fd1b54df48acdc9f24366870ab69cd1080a3371c3a5b09184b9eee54885a68f1",
+      "elapsed_seconds": 2.07334678999905,
+      "compiler_peak_rss_KiB": 3953820
+    },
+    {
+      "label": "certificate001",
+      "module": "BankCertificate020E3",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/certificate001/receipt.json",
+      "receipt_sha256": "a28ec06ab6173d5e7dec27c678d9af8b4dbaac22f3c17aea0a6dc95a0664cad5",
+      "elapsed_seconds": 2.121090248998371,
+      "compiler_peak_rss_KiB": 3980236
+    },
+    {
+      "label": "driver001",
+      "module": "BankDriver020E3",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/driver001/receipt.json",
+      "receipt_sha256": "1505b67544564cba670c07d259dbf04a0b6a3a4ad9f10576d1f1c40c8c1935a9",
+      "elapsed_seconds": 2.2210288779897382,
+      "compiler_peak_rss_KiB": 3976028
+    },
+    {
+      "label": "execute001",
+      "module": "BankExecute020E3",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/execute001/receipt.json",
+      "receipt_sha256": "15f6ce6ac73bd51ee5233ac26b2b35be972c396948ef7f1782679b9bb3448cef",
+      "elapsed_seconds": 2.170919838012196,
+      "compiler_peak_rss_KiB": 3969468
+    },
+    {
+      "label": "prefix001",
+      "module": "BankPrefix020E3",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/prefix001/receipt.json",
+      "receipt_sha256": "44169f5ea33031078081cc200e3fe77d1c0f8ed7f3b0f361532f8a6cb94f41eb",
+      "elapsed_seconds": 2.070227126998361,
+      "compiler_peak_rss_KiB": 3966380
+    },
+    {
+      "label": "program001",
+      "module": "BankProgram020E3",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/program001/receipt.json",
+      "receipt_sha256": "b3abe5cd81beea10538f7ca5d545a1420c189e0007dc5043136d3df8441989c8",
+      "elapsed_seconds": 2.3221115589985857,
+      "compiler_peak_rss_KiB": 3981260
+    },
+    {
+      "label": "reserve001",
+      "module": "FrameReserve020E3",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/reserve001/receipt.json",
+      "receipt_sha256": "4997e6cb7d81477c0bb5e49912156a9e19ecb9845b1700061277ad1ac293c511",
+      "elapsed_seconds": 2.271342045001802,
+      "compiler_peak_rss_KiB": 3964716
+    },
+    {
+      "label": "scan001",
+      "module": "ValueScan020E3",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/scan001/receipt.json",
+      "receipt_sha256": "596bc9ef02c2dbb28d4df50a4dbf9d11a70834add0e45cf07e8d7e711df5aaf5",
+      "elapsed_seconds": 2.1704323390003992,
+      "compiler_peak_rss_KiB": 3970280
+    },
+    {
+      "label": "slot001",
+      "module": "ValueSlot020E3",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/slot001/receipt.json",
+      "receipt_sha256": "1bc98014f2815625c89170e0c01b49eb6175b3bfb917c6c786ee53c8309a252c",
+      "elapsed_seconds": 2.321773414994823,
+      "compiler_peak_rss_KiB": 3968980
+    },
+    {
+      "label": "stack001",
+      "module": "BoundedStack020E3",
+      "exit_code": 1,
+      "warnings": 0,
+      "errors": 4,
+      "clean": false,
+      "reason": "Dependent Fin index arithmetic, rewrite-side index premises and an already closed goal",
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/stack001/receipt.json",
+      "receipt_sha256": "132821f1d25d9b1622fdfa3132f269d0eaea2bbd580f277128479041d0ad1de4",
+      "elapsed_seconds": 2.4697661609970964,
+      "compiler_peak_rss_KiB": 3943412
+    },
+    {
+      "label": "stack002",
+      "module": "BoundedStack020E3",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/stack002/receipt.json",
+      "receipt_sha256": "55bcdc3d68836e89a4fbb3cd1a046d64804c9bd926ee0b895bccf7b94dd078a3",
+      "elapsed_seconds": 2.6254286040057195,
+      "compiler_peak_rss_KiB": 3971544
+    },
+    {
+      "label": "step001",
+      "module": "BankStep020E3",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/step001/receipt.json",
+      "receipt_sha256": "c43e153dd3b20f9c4401d642148ee9039f18af2c48f699fa6eb21a8a5b09d701",
+      "elapsed_seconds": 2.2212266529968474,
+      "compiler_peak_rss_KiB": 3965336
+    },
+    {
+      "label": "storage001",
+      "module": "BankStorage020E3",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/storage001/receipt.json",
+      "receipt_sha256": "6b0e74f1076c6bb3e143dab540cd457b455b7e31800ad01576b3f7293725d61f",
+      "elapsed_seconds": 2.2706802650063764,
+      "compiler_peak_rss_KiB": 3969756
+    },
+    {
+      "label": "values001",
+      "module": "ValueBank020E3",
+      "exit_code": 1,
+      "warnings": 1,
+      "errors": 1,
+      "clean": false,
+      "reason": "Wrong update lemma name, Prefix/zero normalization and unnecessarySeqFocus warning",
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/values001/receipt.json",
+      "receipt_sha256": "14c158a0f7b0b27966badf7343fb8b0516553b52b6ab7268414ea83a04df25ab",
+      "elapsed_seconds": 2.220857251988491,
+      "compiler_peak_rss_KiB": 3949064
+    },
+    {
+      "label": "values002",
+      "module": "ValueBank020E3",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/values002/receipt.json",
+      "receipt_sha256": "a9ee1be61214d39a851bf84e8921fd8ed47d373e308bab9cd796a34ea67c3eeb",
+      "elapsed_seconds": 2.729933288996108,
+      "compiler_peak_rss_KiB": 3966240
+    },
+    {
+      "label": "vref001",
+      "module": "ValueRefinement020E3",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/finite_banks_001/runs/vref001/receipt.json",
+      "receipt_sha256": "3c242c21e301a9279884bbda0711003e1b90a87c13ae7e6fc697e3898a62be6e",
+      "elapsed_seconds": 2.723842848005006,
+      "compiler_peak_rss_KiB": 3950980
+    }
+  ],
+  "source_instance": "Actual877 node arena;28941 frame slots;877 value slots; whole execution/public initial/full law unchanged",
+  "kernel_scoped_quantities": {
+    "frame_capacity": 28941,
+    "value_capacity": 877,
+    "temporary_action_prefix_max": 2,
+    "value_scan_writes": 877,
+    "encoded_bank_words512": 88578
+  },
+  "remaining": "Physical backend/in-place realization and full price/init/randomness/scratch/time/peak; source KeyGen/M/Sign/PRG, variant-A game and QROM",
+  "cost_note": "Receipt timings/RSS describe Lean compilation only.877 is advance calls per full scan;88578 is encoded persistent control/value banks only, not total memory.",
+  "new_crypto_assumptions": [],
+  "new_QROM_claim": false
+}
