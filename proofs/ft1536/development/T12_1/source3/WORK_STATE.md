@@ -1,3 +1,19 @@
+# STATIC075 full source unary loop and SAME-word store checked
+
+UnaryLoop.loop constructs/inverts the COMPLETE actual unary for-loop:
+ne=0, each ne++, physical refills/bit extraction, terminal one and break.
+The exact quotient, remaining bits and byte-count conservation are derived.
+PrefixConservation.complete_with_count strengthens the immutable prefix in
+a NEW module. Magnitude.source_guard/source_join derive actual ne>255 gate
+acceptance and magnitude reconstruction. CoefficientStore.source_store
+constructs/inverts the real sign branch and SAME physical int16 write on
+legal arbitrary-old destination, including -32768. No whole-codec result/
+length/frame/success assumptions. Final06010 modules+audit11 clean0/0;
+audit42 full terms=38 new+4 inherited. All045–060 attempts retained.
+Next compose complete coefficient and1536 stores/actual return/padding/
+honest prologue/body/dispatchers; then SAME vector/int16 transport, public
+LAST. Full source STATIC remains OPEN; whole TODO ACTIVE; no midpoint close.
+
 # STATIC075 prefix-step postseal — actual unary loop next
 
 Prefix-step postseal PASS_SCOPED_INTERNAL_STEP:17951 pins, all17821 predecessor
