@@ -1,0 +1,478 @@
+{
+  "status": "PARTIAL_KERNEL_CORE_AND_ALLOCATOR_NOT_REVIEWED",
+  "base": "dd041b73228c59fc14ff80dc56ea46780974db79",
+  "scope": "First-order core with termination and Array refinement; injective full core data layout; concrete <=19 word stores per core step; region-store traces preserve live payload; zero allocation records actual data and startup prefixes. Full input/parser/output/workspace composition remains in progress.",
+  "classes": {
+    "region_RAM_store_and_ALLOC_ZERO": "MODEL",
+    "core_refinement_and_store_realization": "PROOF_OBLIGATION_DISCHARGED_SCOPED",
+    "full_sampler_peak": "PROOF_OBLIGATION_IN_PROGRESS"
+  },
+  "records": [
+    {
+      "module": "RegionRam020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/region002/source/RegionRam020E5.lean",
+      "source_sha256": "640a918b7f6b06d09922254019d9b8507a7177e512cbb999c27992898fb5af0b",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/RegionRam020E5.olean",
+      "artifact_sha256": "0030649996f15603912104a7d07ff8d1da607ffd7c73acc5db2c8ce7bdf9c5e0",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/region002/receipt.json",
+      "exports": [
+        "words",
+        "allocate",
+        "write",
+        "live",
+        "allocate_read",
+        "allocate_size",
+        "allocate_words",
+        "allocate_live",
+        "write_size",
+        "write_words",
+        "write_live",
+        "step_live",
+        "steps_live"
+      ]
+    },
+    {
+      "module": "MemoryEdit020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/edit003/source/MemoryEdit020E5.lean",
+      "source_sha256": "5ef2536d88c5bd494dd77077dde1bd9ec4ff14699a8af9768b09d51c613e5287",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/MemoryEdit020E5.olean",
+      "artifact_sha256": "47cd2c489e8646ada4d83c4316aab995587ef9658377f647d43fcf62ffdcfc40",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/edit003/receipt.json",
+      "exports": [
+        "apply",
+        "atom",
+        "atom_refines",
+        "words",
+        "unchanged_input"
+      ]
+    },
+    {
+      "module": "BankWordLayout020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/banklayout001/source/BankWordLayout020E5.lean",
+      "source_sha256": "c936e9035191353d7a63b2285402fecc7dd2cf27ef9347028d3dbdb4bcb09b29",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/BankWordLayout020E5.olean",
+      "artifact_sha256": "332d25455fa9d8299c621c4d4255f1d1297d9f94b4e01695fedd101f55ca1532",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/banklayout001/receipt.json",
+      "exports": [
+        "encode",
+        "at_cell",
+        "extent",
+        "injective",
+        "updated_at"
+      ]
+    },
+    {
+      "module": "FixedAction020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/fixedaction002/source/FixedAction020E5.lean",
+      "source_sha256": "f5f83edb9cd4ffd2d8659958752dcdec02f2d0e62abda8908b5c7dcad2e9b957",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/FixedAction020E5.olean",
+      "artifact_sha256": "3fec3313df69638159c7fae5781a70f99ffe34f2723f82806c0af41357e1cd18",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/fixedaction002/receipt.json",
+      "exports": [
+        "pendingList",
+        "observe",
+        "loopAction",
+        "dispatch",
+        "action",
+        "loop_refines",
+        "atom_observe",
+        "dispatch_refines",
+        "action_refines",
+        "pending_bound"
+      ]
+    },
+    {
+      "module": "CoreState020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/corestate001/source/CoreState020E5.lean",
+      "source_sha256": "fe5044d1b9e2bfda035f0f97f8f6647caedb0598bc4c07fa5a02af9bb65c05ea",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/CoreState020E5.olean",
+      "artifact_sha256": "160b411ce421d3d877a569009165608a9355d4f7d11a6df2a16047e9912b3423",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/corestate001/receipt.json",
+      "exports": [
+        "start",
+        "terminal",
+        "result",
+        "Ready",
+        "Cleared",
+        "Inv",
+        "start_inv",
+        "cleared_all"
+      ]
+    },
+    {
+      "module": "CoreStep020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/corestep004/source/CoreStep020E5.lean",
+      "source_sha256": "3f6f5cdd9ecd0b090824c9ed8f1ae0c17cd9f8e682952c98da95d1ed29d77bfb",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/CoreStep020E5.olean",
+      "artifact_sha256": "02d163782ff291f75e376d01d77f90d601fa3e5d14c170458393f7862f8d434b",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/corestep004/receipt.json",
+      "exports": [
+        "step",
+        "terminal_fixed",
+        "clear_prefix",
+        "inv"
+      ]
+    },
+    {
+      "module": "CoreMeaning020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/meaning002/source/CoreMeaning020E5.lean",
+      "source_sha256": "a8e62381531c9af2e57cb257062ca4a3e24471fa1b776a8864da4bc9e2d1db79",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/CoreMeaning020E5.olean",
+      "artifact_sha256": "9e47aa4790e4e462ce97937ef49cdcf08915618b7f9e3c84e28380a746bf7816",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/meaning002/receipt.json",
+      "exports": [
+        "finish",
+        "denote",
+        "finish_build",
+        "scan_step",
+        "terminal_meaning"
+      ]
+    },
+    {
+      "module": "CorePreservation020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/preservation003/source/CorePreservation020E5.lean",
+      "source_sha256": "4dd23040e9a806c5ecbebe5d2782e9e63856416501b2630a37e2a76b0f952517",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/CorePreservation020E5.olean",
+      "artifact_sha256": "c146df7371f71a40cd3e5302eaf77063c887bfe5288bec1741f5aec9a68f3333",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/preservation003/receipt.json",
+      "exports": [
+        "preserves"
+      ]
+    },
+    {
+      "module": "CoreRank020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/rank002/source/CoreRank020E5.lean",
+      "source_sha256": "21b716814c839103a43a23833ced9466e80a381427cfcc02a409352b28db5668",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/CoreRank020E5.olean",
+      "artifact_sha256": "815222855e7d34a8f97bdee3fde82724462a479e1c0ce19b93164eb41ea5f87a",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/rank002/receipt.json",
+      "exports": [
+        "cycle",
+        "rank",
+        "positive",
+        "decreases"
+      ]
+    },
+    {
+      "module": "CoreRun020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/corerun001/source/CoreRun020E5.lean",
+      "source_sha256": "14756c1a70362bd8a8064199b688e34c7419c05891bf48795e536ffef93ef66d",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/CoreRun020E5.olean",
+      "artifact_sha256": "2d79aa63a3061efda3d7ccb452cd2a562b0cbef56cd1f05c2170298897924b69",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/corerun001/receipt.json",
+      "exports": [
+        "run",
+        "invariant",
+        "meaning",
+        "halts",
+        "execute",
+        "execute_refines"
+      ]
+    },
+    {
+      "module": "WordCodec020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/codec002/source/WordCodec020E5.lean",
+      "source_sha256": "b9daa33cd6695b3858675d794ed3f62f2d46a66b0da1e8ca93286cba9cc3cb3c",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/WordCodec020E5.olean",
+      "artifact_sha256": "c6e997e38f8ddf3bba26562339930f9a2dd3b0a79fab37e99ec9a94b104b4375",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/codec002/receipt.json",
+      "exports": [
+        "unit",
+        "wordCodec",
+        "boolWord",
+        "boolCodec",
+        "finCodec",
+        "pair",
+        "sumEncode",
+        "sum",
+        "contramap",
+        "bank"
+      ]
+    },
+    {
+      "module": "CoreEncoding020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/coreencoding002/source/CoreEncoding020E5.lean",
+      "source_sha256": "8bc05e854428fc74cdfbd175e78b0e744fc407dada4da91574e2398e5a328a31",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/CoreEncoding020E5.olean",
+      "artifact_sha256": "4de9cfd8e4ea1d3663b0d7fd801a50b226edadede5e6a1e7beed094fb2b8fe7d",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/coreencoding002/receipt.json",
+      "exports": [
+        "frameCodec",
+        "pendingShape",
+        "pendingOfShape",
+        "pending_shape_injective",
+        "pendingCodec",
+        "phaseTag",
+        "phase_tag_injective",
+        "phaseCodec",
+        "metadata",
+        "metaCodec",
+        "fields",
+        "ofFields",
+        "fields_roundtrip",
+        "fields_injective",
+        "payloadWords",
+        "codec",
+        "encode",
+        "encode_injective",
+        "encode_size"
+      ]
+    },
+    {
+      "module": "WordPatch020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/patch002/source/WordPatch020E5.lean",
+      "source_sha256": "0a5fb78a080692844cf149574b9c048484d2195d49e145fcbe0ab2b591470b41",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/WordPatch020E5.olean",
+      "artifact_sha256": "2083a71cda6e43873e4f6bd63ceda1f9fa87d067fb76b3fc1f0dc9dd7666b54b",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/patch002/receipt.json",
+      "exports": [
+        "apply",
+        "extent",
+        "realizes",
+        "singleton",
+        "singleton_apply",
+        "has_trace",
+        "every_payload_size"
+      ]
+    },
+    {
+      "module": "WordJoin020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/join002/source/WordJoin020E5.lean",
+      "source_sha256": "3ef0eb23bf01c138120cca02082520ddc3d4601e0dfb0658d68b8e01b2ae219e",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/WordJoin020E5.olean",
+      "artifact_sha256": "14ffbceced30adb317d2c8d2858ebe50706fcf4d2c6594061f0ccc7fb73e689e",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/join002/receipt.json",
+      "exports": [
+        "join",
+        "left_read",
+        "right_read",
+        "left_write",
+        "right_write",
+        "liftLeft",
+        "liftRight",
+        "apply_left",
+        "apply_right"
+      ]
+    },
+    {
+      "module": "VerifiedPatch020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/verifiedpatch001/source/VerifiedPatch020E5.lean",
+      "source_sha256": "976983e2c5a8dae25633d2ecc19308fb84adecc6c69b1c685717258bb6d4e9b0",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/VerifiedPatch020E5.olean",
+      "artifact_sha256": "d538ae780242cf699f7c69d38b24d9dec873d9c543e6669b62078b036875a1ee",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/verifiedpatch001/receipt.json",
+      "exports": [
+        "pack",
+        "pack_read",
+        "append_apply",
+        "identity",
+        "ofEq",
+        "thenDo",
+        "overwrite",
+        "overwrite_length",
+        "left",
+        "right",
+        "pack_pair",
+        "pack_bank",
+        "cell",
+        "cell_length"
+      ]
+    },
+    {
+      "module": "PairPatch020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/pairpatch001/source/PairPatch020E5.lean",
+      "source_sha256": "71f1f375277bbfc12b54953965d103acdf736f6777e5c76cda5d83e99508ba1a",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/PairPatch020E5.olean",
+      "artifact_sha256": "3c72ae5cbeb7232f0acbc4a2717366c99073a02d7755cc7fc384f031b9deef7c",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/pairpatch001/receipt.json",
+      "exports": [
+        "first",
+        "second",
+        "first_length",
+        "second_length",
+        "then_length"
+      ]
+    },
+    {
+      "module": "CoreFieldPatch020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/corefield004/source/CoreFieldPatch020E5.lean",
+      "source_sha256": "00daa3a46ee28016b86474996ef8b96f6e74bc328108a0474b283053b420f3ec",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/CoreFieldPatch020E5.olean",
+      "artifact_sha256": "d104611b2395e2e043ef78d932ff2256f21a211cde5fe0f7ae9f6a458af87733",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/corefield004/receipt.json",
+      "exports": [
+        "setValues",
+        "setFrames",
+        "setReg",
+        "setRam",
+        "setOut",
+        "setMetadata",
+        "values",
+        "frames",
+        "reg",
+        "ram",
+        "out",
+        "control",
+        "values_length",
+        "frames_length",
+        "reg_length",
+        "ram_length",
+        "out_length",
+        "control_length"
+      ]
+    },
+    {
+      "module": "CoreData020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/coredata001/source/CoreData020E5.lean",
+      "source_sha256": "ac27b3be640cc05da2d2990ce76af43e769f40c22ee27b430b3e80c408435145",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/CoreData020E5.olean",
+      "artifact_sha256": "202cb1a98fb384dcde1e496772acc93ae8519f642373e29f53fb068d305f4707",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/coredata001/receipt.json",
+      "exports": [
+        "edit",
+        "pushData",
+        "next"
+      ]
+    },
+    {
+      "module": "CoreControl020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/corecontrol002/source/CoreControl020E5.lean",
+      "source_sha256": "34876069a1aacdefb010f54b350c2c7e078018d27de1f7d43f41e8f120d97eb0",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/CoreControl020E5.olean",
+      "artifact_sha256": "26d619f826f6e9648d684ca0048b598ce2ab137ce50427f6605633cf0b4e09d3",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/corecontrol002/receipt.json",
+      "exports": [
+        "faultAfter",
+        "pushMeta",
+        "next",
+        "reconstruct"
+      ]
+    },
+    {
+      "module": "ControlStore020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/controlstore001/source/ControlStore020E5.lean",
+      "source_sha256": "803dd3d37f2ca30249e628dc5499213da6804fb742b61b649190d0216f0021d9",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/ControlStore020E5.olean",
+      "artifact_sha256": "1c6edc8ed05e79dd0313f1585b03617368d5d05fe5a696faffa1d1d753cafdfa",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/controlstore001/receipt.json",
+      "exports": [
+        "code",
+        "control_code",
+        "length"
+      ]
+    },
+    {
+      "module": "CoreDataPatch020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/coredatapatch001/source/CoreDataPatch020E5.lean",
+      "source_sha256": "300416c4809bd7f7e5b6693b3d4ab2506e02c4f8107967a226502f4db29183b9",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/CoreDataPatch020E5.olean",
+      "artifact_sha256": "c2657f4db2fe9f71aa7b3c311de6ac1369cd219aba74802dc91f844de0c15f0c",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/coredatapatch001/receipt.json",
+      "exports": [
+        "edit",
+        "push",
+        "program"
+      ]
+    },
+    {
+      "module": "CoreStore020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/corestore001/source/CoreStore020E5.lean",
+      "source_sha256": "5186ff696764da1fcb7078c2018e6b2e4f61ccc003519968dbf58c67f80f3186",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/CoreStore020E5.olean",
+      "artifact_sha256": "80d3a03cc349bdc11d1a924d7d74fcbca7a933ee03a3e62908481d7958445d0a",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/corestore001/receipt.json",
+      "exports": [
+        "code",
+        "realizes",
+        "length_bound",
+        "program"
+      ]
+    },
+    {
+      "module": "RegionFrame020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/regionframe002/source/RegionFrame020E5.lean",
+      "source_sha256": "b8672ed6a029c7f1b6c742f5ebd3e28378f8a702d7380e2225576edd48392a27",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/RegionFrame020E5.olean",
+      "artifact_sha256": "d4506b1dbca3164cf7279aed0d754bf70d57b9071a882675e58e51f6439f6fa7",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/regionframe002/receipt.json",
+      "exports": [
+        "heap",
+        "slot",
+        "first_size",
+        "index",
+        "word_store",
+        "word_step",
+        "word_trace",
+        "words_exact",
+        "live_exact",
+        "complete_store_peak"
+      ]
+    },
+    {
+      "module": "RegionTrace020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/regiontrace001/source/RegionTrace020E5.lean",
+      "source_sha256": "1b6084359ebcf3b80e3def0db2be8f69e896c5a5a7b00eabf96d2996527143bb",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/RegionTrace020E5.olean",
+      "artifact_sha256": "58c9d44ed15507e35d0bb0c922206244c9a33173775fa27b129edc4b267aa148",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/regiontrace001/receipt.json",
+      "exports": [
+        "append",
+        "peak"
+      ]
+    },
+    {
+      "module": "CoreHeap020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/coreheap001/source/CoreHeap020E5.lean",
+      "source_sha256": "9fbc0f3db00199d3e37879321f8d89e7ae49b9a15b9e4f29ba619fe9c4c4827f",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/CoreHeap020E5.olean",
+      "artifact_sha256": "077ed0430991a77e8419c4544a11366c5970c2e39394fb44030d7e8492940d4d",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/coreheap001/receipt.json",
+      "exports": [
+        "step_trace",
+        "run_trace",
+        "run_peak"
+      ]
+    },
+    {
+      "module": "RegionSlot020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/regionslot002/source/RegionSlot020E5.lean",
+      "source_sha256": "9c19f29a01944810dd74c8961182dcb3343f892ad4598a42d6486842079f4f3f",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/RegionSlot020E5.olean",
+      "artifact_sha256": "03f5ad968df1101117b6dcc7b3acddf241a4aa882012191bea30fdcc4be080f4",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/regionslot002/receipt.json",
+      "exports": [
+        "frame",
+        "size",
+        "site",
+        "selected",
+        "cellIndex",
+        "frame_identity",
+        "word_store",
+        "word_step",
+        "trace",
+        "run_existing"
+      ]
+    },
+    {
+      "module": "ZeroAllocate020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/zeroalloc001/source/ZeroAllocate020E5.lean",
+      "source_sha256": "6cf7386c9930bdd4a98faea5ae49ae73d3dddd65666eb1c1db2816fc394427f9",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/ZeroAllocate020E5.olean",
+      "artifact_sha256": "13f8f97d2381ec89ea7622918c72991fe2653e40bc3338ff3bd6f71212b92827",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/zeroalloc001/receipt.json",
+      "exports": [
+        "allocate",
+        "size",
+        "words",
+        "initialized",
+        "run",
+        "size_run",
+        "words_run",
+        "trace",
+        "monotone",
+        "startup_peak"
+      ]
+    }
+  ],
+  "audit": "proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/coreaudit001/receipt.json"
+}
