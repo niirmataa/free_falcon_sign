@@ -1,3 +1,26 @@
+# BATCH075 — full source STATIC physical-memory round-trip complete; TODO continues
+
+Owner item2 now PROVED_KERNEL_SCOPED_PHYSICAL_INPUT / NOT_REVIEWED.
+KeygenCodecStaticCallRoundtrip.source_call_roundtrip/call_roundtrip_exists
+bind BOTH actual dispatchers and SAME1536 original physical int16 words;
+observed returns coincide, with exact readback/frame and honest full decoder
+existence. KeygenCodecStaticMemoryIdentity.source_in_place_identity/
+in_place_exists prove original block identity and decoder heap=encoded heap.
+Full prologue/1536-store loop/padding/return and physical encoder byte closure
+are covered. ANY int16 including -32768; no whole-accumulator bound, supplied
+length equality or result/encoded-length/frame/success correctness premise.
+Capacity is the source-proved mathematical bit budget; uniform26496 suffices
+for all1536 int16 inputs. Source return remains variable and is derived.
+
+Final08611 proof modules+audit12 clean0/0; audit66=61new+5inherited,
+64 full terms+2 kernel inductives. Together075:68 proof modules,771 named
+declarations/376 named theorems, eight full audits. All86 jobs/205 steps,
+42 failed jobs/163 accepted steps retained. Author self-review only.
+NEXT after final075 postseal and ENTRY076: SAME mathematical vectors and
+physical int16 arrays BOTH directions; public codec LAST. Whole TODO ACTIVE,
+no midpoint close/final report. B1.07/B1.08 Acceptance NOT MET;B1.09 OPEN.
+No push/review/subagent/relay/migration/production-C changes.
+
 # STATIC0751536-loop postseal — actual prologue/body/dispatchers next
 
 Step007 postseal PASS_SCOPED_INTERNAL_STEP:18481 pins, all18418 predecessor
