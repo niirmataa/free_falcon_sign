@@ -1,3 +1,25 @@
+# Assembly080 — B1.07 source acceptance sealed; whole secret packet next
+
+Continuous owner B1.07/08 → B1.09 task remains ACTIVE. B1.07 reference-scope
+Acceptance MET / PROVED_KERNEL_SCOPED / NOT_REVIEWED. Root export:
+KeygenPinnedInvocation080.successful_frontier (legal initial memory/profile,
+independent fixed-body source execution, observed return1). Workspace bridge,
+reachable certificate frame, relocation, final call counter, same argument
+material, source-linked snapshots, pre-return flag and outer dead objects are
+proved. B1.08 whole secret/header0xaa and B1.09 whole-root public observation
+remain OPEN. No final emitted-to-fiber, compiler, probability or security claim.
+
+17 proof modules/79 declarations/50 theorems; final02118 clean0/0 modules;
+88 full audit entries (69 terms,19 inductives).21 jobs/8 failed or mixed,
+63 native steps/55 accepted. All retained, plus occupied-slot seal refusal.
+Source commits7ef4062b/b373a0fe; guard-record commitfad3b329; no push.
+BATCH080 SHA25633ed9062757d33b00a84bc0ea532d42db4d834e3118560244fb0abd3bfc6bbfd.
+POSTSEAL080:21222 matching pins,SHA256
+ a023fccf386deda4651b8ae82e92e2de9c6084cec4a1328dd38a9b4fdcfbc673.
+NEXT081: independent DecodeSecret parser, four padded segments, exact full
+observed secret blob and preservation through public suffix/teardown. Then
+whole-root B1.09 public observation. No midpoint close.
+
 # Assembly079 — conditional accepted-attempt/serialization bridge sealed
 
 Owner continuous B1.07/08 → B1.09 task remains ACTIVE. Step1 has a checked
