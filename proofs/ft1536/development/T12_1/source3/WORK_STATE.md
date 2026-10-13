@@ -1,3 +1,41 @@
+# BATCH_069 — CLOSED at normal STATIC outer state/local stores midpoint, 2026-10-13
+
+Codex: CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.
+Exactly one close. B1.07 Acceptance NOT MET; package WORKING_NOT_FROZEN.
+Full prologue derives n1536/j8/mask255/u0/acc0/pending0/buf=out. Actual int16
+read/sign/magnitude/low9/ne0..128 and first drain discharge coefficient/unary
+entry cells. Complete NORMAL outer1536 iterations derive n0, pending<8,
+word and low suffix, with arbitrary old acc high bits. Raw all-flow byte
+histories and real048/108 cursor stores/padding identity proved. Complete
+source derives normal-completion/padding-tail OR real early return, without
+requested codec result/length/frame premises. Expected byte/cursor history,
+rejection-prefix invariant and original word/material identity remain OPEN;
+full STATIC NOT closed. Lengths/decoders wait; public last. No B4/B5 advance.
+
+Entry14460 pins9c376907…; JSON58662375…/notes5484ac79…;
+postseal14792 pins660fac38…. Final02211 modules+audit12 clean0/0;
+audit88=68+20,81 full terms+7 inductives,standard axioms/no elisions,
+byte-exact generator.22 jobs/37 steps retained:8 wholly accepted/14 failed,
+23 accepted steps; all causes/snapshots/streams/waits pinned,maxRSS3011784KiB.
+No new Sage/C/counterexample; inherited counterexamples preserved. PRESEAL
+all14460 pins unchanged. Author self-review/proofreading only; not REVIEWED.
+Own e80c6bcb/9b471946/8572eed6 plus closing pair; foreign S0582cc931d/
+ab0fe21e/staging/history preserved. Checkpoint49R has exact verify070 command,
+types and remaining order. No push/review/delegation/relay/migration/import/
+production C change. Window CLOSED; no auto-resume.
+
+# BATCH_069 — owner-started B1.07 continuation, 2026-10-13
+
+Codex owns this window from checkpoint48R, base ad59b076. BEFORE edits/jobs,
+sealed068 verified14460 pins into levels_069/ENTRY_PINS_069.json, SHA256
+9c376907b119dfd5157d5fc1a3186c384118975fa2ffd32a1cd07c336fbd8c89.
+Only recorded061/063 supersessions. Actual prologue/coefficient/first drain,
+byte/cursor histories and padding precede source lengths/decoders; public last.
+No desired codec result/length/frame premise; all entry conditions local.
+Exactly one final Acceptance or expanded midpoint; failures retained, serial
+host-guarded jobs, unchanged limits. No push/delegation/review/relay/import.
+Foreign working tree/staging/history preserved. Work in progress, not close.
+
 # BATCH_068 — CLOSED at complete STATIC unary invariant midpoint, 2026-10-12
 
 Codex: CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.
