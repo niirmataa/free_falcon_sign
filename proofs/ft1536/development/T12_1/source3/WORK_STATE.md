@@ -1,3 +1,11 @@
+# STATIC075 prefix-step postseal — actual unary loop next
+
+Prefix-step postseal PASS_SCOPED_INTERNAL_STEP:17951 pins, all17821 predecessor
+pins unchanged; SHA256`a71c4d47cdfb7ec8eb3f6f1793f17750d73a4cb7c9d0e810e92b572c6633d0d9`.
+Step SHA256`1652ec35a7055766c3218cb2a893dd0aefabcb2cc09d56e07232e6fd013e470f`.
+Source commitf3becc95. Full source STATIC round-trip remains OPEN; whole
+TODO ACTIVE. Next actual unary loop; no midpoint close, no push/review.
+
 # STATIC075 full coefficient prefix checked; unary loop next
 
 KeygenDecodeStaticPrefixComplete.complete constructs and inverts all three
