@@ -1,3 +1,18 @@
+# STATIC075 complete coefficient and actual final suffix checked
+
+Coefficient.complete constructs/inverts every real operation through the
+SAME physical int16 store, preserving exact unread bits and byte count.
+OuterCounter derives actual ++u>=n without wrap. PaddingBits derives unread
+encoded-byte exhaustion and zero residue from the actual final bit stream.
+PaddingReturn/OuterSuffix construct the actual final padding test and return
+v, including the preceding ++u; earlier iterations complete normally.
+OuterScope preserves actual reader/u fields on lexical exit. No codec
+result/length/frame/success assumptions. Final0717 modules+audit8 clean0/0;
+audit37 full terms=33 new+4 inherited. All061–071 attempts retained.
+Next full iteration composition and1536-store fold, actual prologue/body/
+dispatchers and STATIC round-trip; then SAME vectors/int16, public LAST.
+Whole TODO ACTIVE; no midpoint close, no push/review.
+
 # STATIC075 unary/store postseal — complete coefficient/1536 loop next
 
 Unary-step postseal PASS_SCOPED_INTERNAL_STEP:18221 pins, all17951 predecessor
