@@ -1,3 +1,25 @@
+# BATCH_074 — complete NONE coefficient and while-loop checked; TODO continues
+
+Nine new source-proof modules and one full-term audit passed together in
+clean native job074_020.55 new declarations+7 inherited interfaces.
+KeygenDecodeNoneCoefficient.source_store covers the COMPLETE pinned
+coefficient body, deriving the original int16 value from physical bytes.
+KeygenDecodeNoneCoefficientExists.coefficient_exists constructs that body
+from legal writable memory without initialized output values.
+KeygenDecodeNoneLoop.source_loop derives the full ordered remaining-word
+write trace, normal completion and counter1536; loop_exists constructs the
+finite honest while-loop. Actual uint64 u++ cannot wrap. Source-derived
+encoder readback supplies physical input images; separated real writes
+preserve them, and final readback retains every decoded word.
+
+Full uncompress_none prologue/for initialization/final source return and
+encoder/decoder/dispatcher composition remain OPEN. Typed local entry
+cells in the loop theorem must be derived from that prologue, not leaked as
+whole-codec premises. STATIC, vector/int16 transport and public LAST follow.
+Small source commit and scoped postseal of this internal step; no midpoint
+close, no push or review. All074_012–020 attempts retained, including mixed
+012/017. Current source work next: exact prologue expressions and return.
+
 # BATCH_074 — source NONE value components checked; whole TODO continues
 
 After owner-authorized supplement073 and verified074 entry, seven new proof
