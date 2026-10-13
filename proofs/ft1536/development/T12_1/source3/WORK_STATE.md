@@ -1,3 +1,12 @@
+# STATIC0751536-loop postseal — actual prologue/body/dispatchers next
+
+Step007 postseal PASS_SCOPED_INTERNAL_STEP:18481 pins, all18418 predecessor
+pins unchanged; SHA256`2e233d0593be13437f0a7ce3dec77cdacf5754003eb7d9b351bd59339412268d`.
+Step SHA256`4f425d9b6156254fd47d5fb265c605411ff74da1895432cc2b008e5dfaa338cb`.
+Source commit50dd1f09. Actual1536-store loop and consumed return proved;
+whole STATIC round-trip remains OPEN pending prologue/body/dispatcher and
+SAME encoder-byte closure. Whole TODO ACTIVE; no midpoint close/push/review.
+
 # STATIC075 complete1536-store source loop checked; real prologue next
 
 StaticIteration.nonfinal/final cover each WHOLE actual iteration and lexical
