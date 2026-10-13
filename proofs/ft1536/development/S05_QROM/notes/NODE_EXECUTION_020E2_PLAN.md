@@ -19,3 +19,10 @@ Dwie areny, streaming i backend C pozostają odroczonymi alternatywami.
 Nie zmieniać(M), J/P, prawa kluczy, nonce ani QROM. Jedno okno i jeden
 ciężki proces, świeże próby, małe lokalne commity bez push. Daybreak planowany
 osobno przez właściciela; nie startujemy odbioru ani monitora ROM.
+
+## Zamknięcie zakresu wykonania —2026-10-13
+
+Na końcowe polecenie właściciela domknięto całe bezpośrednie wykonanie
+z tablicy, instancję877 i pełne prawo. Checkpoint:
+NODE_EXECUTION_020E2_CHECKPOINT.md. Bank ramek/wartości i pełne bounds
+pozostają jawną kontynuacją003; parent020E i Q-RESC nadal OPEN.

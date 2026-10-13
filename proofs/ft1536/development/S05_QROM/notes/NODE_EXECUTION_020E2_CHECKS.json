@@ -1,0 +1,711 @@
+{
+  "status": "KERNEL_SCOPED_DIRECT_NODE_EXECUTION__NOT_REVIEWED",
+  "date": "2026-10-13",
+  "base_checkpoint": "21aabee4945d62da958c511a216f4d09ace2ee50",
+  "source_commit_phase1": "a824f625def20e6a9fe038b9d1509a4114b4e5a2",
+  "prior_manifests": [
+    {
+      "path": "notes/ARENA_PARSER_020E1_OUTPUTS.sha256",
+      "sha256": "fb0250f859aa647249b0f21e54395d8f7b13b6fd9f413039b6b5de3b0bbf7153",
+      "entries_verified": 28
+    },
+    {
+      "path": "notes/ARENA_PARSER_020E1_RUNTIME.sha256",
+      "sha256": "e3188502a3791bbf83eeabedce5c44f98019028e7b5e24f3a5123f0938581e4d",
+      "entries_verified": 173
+    }
+  ],
+  "input_modules": 524,
+  "final_pinned_modules": 539,
+  "proof_modules": 14,
+  "audit_modules": 1,
+  "theorem_exports": 37,
+  "final_clean_builds": 15,
+  "compiled_attempts": 29,
+  "nonclean_attempts": 14,
+  "preflight_not_started": {
+    "path": ".build/pair_machine_020/node_execution_001/PREFLIGHT_REJECT_001.json",
+    "sha256": "d61a32f8b397ce71a753a8578acb45cdb531186982b534ec2fbdac9a52d09c25"
+  },
+  "standard_axioms_only": true,
+  "source_policy_scan": "PASS: no sorry/admit/new axiom/native_decide/bv_decide/linter suppression",
+  "artifacts": [
+    {
+      "module": "NodeRead020E2",
+      "path": "formal/NodeRead020E2.lean",
+      "sha256": "1c470db284ed29969e92715a57f1a5bedae2ee54c006d9daf66d5b5b0079f26c",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/read002/receipt.json",
+      "receipt_sha256": "8984d2fd9ed4234cce7918ab90069474eeb83096feb80230d336dfdb64bbc2fe",
+      "exports": [
+        "FT1536.S05.NodeRead020E2.valid_read",
+        "FT1536.S05.NodeRead020E2.inspect_exists"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.1225780399981886,
+      "compiler_peak_rss_KiB": 3959956,
+      "Lean_M_MiB": 6144
+    },
+    {
+      "module": "NodeExpr020E2",
+      "path": "formal/NodeExpr020E2.lean",
+      "sha256": "6c481b0d845263003a3c6cb93fe84a6149dc96065f821744b6c71d99ce516142",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/expr002/receipt.json",
+      "receipt_sha256": "5f6c97d0bb1a43157048a70e4afae726f67ea4119591fb6748e215230e9318a9",
+      "exports": [
+        "FT1536.S05.NodeExpr020E2.correct"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.2704919800016796,
+      "compiler_peak_rss_KiB": 3972612,
+      "Lean_M_MiB": 6144
+    },
+    {
+      "module": "NodeAtom020E2",
+      "path": "formal/NodeAtom020E2.lean",
+      "sha256": "272f452dba7b25028b87ca15598767cde6a51b0e3a6747e3ee8fee1cf8032c05",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/atom002/receipt.json",
+      "receipt_sha256": "009dd19bf7f77551b27c959e53b66fc22c2b3374380f8d2e87065a040afbd10f",
+      "exports": [
+        "FT1536.S05.NodeAtom020E2.from_shape",
+        "FT1536.S05.NodeAtom020E2.correct"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.170639921008842,
+      "compiler_peak_rss_KiB": 3979608,
+      "Lean_M_MiB": 6144
+    },
+    {
+      "module": "NodeFrames020E2",
+      "path": "formal/NodeFrames020E2.lean",
+      "sha256": "f53bee3d870e1796b51b9b29e7a13ff53f343c95367d6354e325e7df0aa9a91b",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/frames002/receipt.json",
+      "receipt_sha256": "4f66f9949eb0e3702605176ffe6226f9f0e9d15f531d9ef23d1ee6bbdbbfcdec",
+      "exports": [
+        "FT1536.S05.NodeFrames020E2.count_eq",
+        "FT1536.S05.NodeFrames020E2.rel_legal",
+        "FT1536.S05.NodeFrames020E2.related_length"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 1.9196066619915655,
+      "compiler_peak_rss_KiB": 3975132,
+      "Lean_M_MiB": 6144
+    },
+    {
+      "module": "NodeAction020E2",
+      "path": "formal/NodeAction020E2.lean",
+      "sha256": "4aec8ebf331d340715a667ceaaf79bfd56e42cc1b1f3d69c42a6682ef742d91c",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/action001/receipt.json",
+      "receipt_sha256": "97724c82139f135be45f5db3234c07bd95f46bb55baf21d3ec647116bd202239",
+      "exports": [],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 1.975507025999832,
+      "compiler_peak_rss_KiB": 3943132,
+      "Lean_M_MiB": 6144
+    },
+    {
+      "module": "ControlNext020E2",
+      "path": "formal/ControlNext020E2.lean",
+      "sha256": "7dcd84c83a0b6abb72399061eac731a0b8c909edeed922aea5b600d6a29746ea",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/next005/receipt.json",
+      "receipt_sha256": "011caea21ea4d553471d763770f26bca351dd1f4cc96a85f9dc16b35a926084f",
+      "exports": [
+        "FT1536.S05.ControlNext020E2.loop_shape",
+        "FT1536.S05.ControlNext020E2.next_tail"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 3.5236896489950595,
+      "compiler_peak_rss_KiB": 3303080,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "NodeControlShape020E2",
+      "path": "formal/NodeControlShape020E2.lean",
+      "sha256": "91ae82a8a59f77d605c49baaa964a2e9a795d1fb901723dab9bc42489bd321fa",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/shape001/receipt.json",
+      "receipt_sha256": "4c6931dee9b63b6d3efa20227f62a8e730b342abc5979b985bedcf63e72476e7",
+      "exports": [
+        "FT1536.S05.NodeControlShape020E2.seq_shape",
+        "FT1536.S05.NodeControlShape020E2.branch_shape",
+        "FT1536.S05.NodeControlShape020E2.loop_shape"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 6.480145139998058,
+      "compiler_peak_rss_KiB": 3979896,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "NodeLoop020E2",
+      "path": "formal/NodeLoop020E2.lean",
+      "sha256": "730e4ee03006d71d9679c08acb3fefe6c4555b16f607cab7c139b8240e756311",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/loop003/receipt.json",
+      "receipt_sha256": "11ee697ef665259b73ff9d64d47858c73d8083a80c54337b2148b7224b17e44a",
+      "exports": [
+        "FT1536.S05.NodeLoop020E2.correct"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.1755456819955725,
+      "compiler_peak_rss_KiB": 3959832,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "NodeRun020E2",
+      "path": "formal/NodeRun020E2.lean",
+      "sha256": "e95a2b9b199fac3c3075458f69773d615b89c39a7e80fb49894442ca6283f32c",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/run002/receipt.json",
+      "receipt_sha256": "45dd4a651be317da62271d22ee34853cd1dd56fa4bf4b1f50b6db6a19c541f63",
+      "exports": [
+        "FT1536.S05.NodeRun020E2.dispatch_atom",
+        "FT1536.S05.NodeRun020E2.correct"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.3207925479946425,
+      "compiler_peak_rss_KiB": 3970396,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "NodeResume020E2",
+      "path": "formal/NodeResume020E2.lean",
+      "sha256": "1ac4f8085e375c9be0924e5ccf017b6745f5b767c574f364dcf1cd6c2676ec7f",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/resume001/receipt.json",
+      "receipt_sha256": "0c86c1f69336497a261ff81d954cd3f314b0db020c77d5c48c66899061f4f4dc",
+      "exports": [
+        "FT1536.S05.NodeResume020E2.correct",
+        "FT1536.S05.NodeResume020E2.action_correct"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.1693469720048597,
+      "compiler_peak_rss_KiB": 3963140,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "NodeExecute020E2",
+      "path": "formal/NodeExecute020E2.lean",
+      "sha256": "0290266e475dc33d8c1d4a63759840cc130c30eb32090c8f5eb6df33abb47e7c",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/execute002/receipt.json",
+      "receipt_sha256": "7859c3a03b170db95315cd0aaac919e2d883d70c6195d547fa5b95583005ce72",
+      "exports": [
+        "FT1536.S05.NodeExecute020E2.related_append",
+        "FT1536.S05.NodeExecute020E2.step_correct",
+        "FT1536.S05.NodeExecute020E2.correct",
+        "FT1536.S05.NodeExecute020E2.singleton"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.2704408449935727,
+      "compiler_peak_rss_KiB": 3975044,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "NodeProgram020E2",
+      "path": "formal/NodeProgram020E2.lean",
+      "sha256": "1dbc3620b407aaa08d5e679d8e19d7b8e29460f405163ced82510c2704538b0a",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/program001/receipt.json",
+      "receipt_sha256": "d80e39edd5b65ef222b1fb0fe5375c5bd7ab8b61293bf600e0b0d07a0b9fecd4",
+      "exports": [
+        "FT1536.S05.NodeProgram020E2.invariant_correct",
+        "FT1536.S05.NodeProgram020E2.built_correct",
+        "FT1536.S05.NodeProgram020E2.work_fits",
+        "FT1536.S05.NodeProgram020E2.actual_correct",
+        "FT1536.S05.NodeProgram020E2.on_actual_arena",
+        "FT1536.S05.NodeProgram020E2.every_state",
+        "FT1536.S05.NodeProgram020E2.public_initial"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC",
+        "Q-SAMPLER"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.5214498809946235,
+      "compiler_peak_rss_KiB": 3983052,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "NodeDriver020E2",
+      "path": "formal/NodeDriver020E2.lean",
+      "sha256": "c1d823c0d7b40e3131bbeb2f25d48dc65a5dcaa8b9e04ef4d55381551859472a",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/driver004/receipt.json",
+      "receipt_sha256": "7edfba75cacac8f6b1ee6be78e6f15bec6015ba151b835d792336d08be2ff77d",
+      "exports": [
+        "FT1536.S05.NodeDriver020E2.observe",
+        "FT1536.S05.NodeDriver020E2.run_eq",
+        "FT1536.S05.NodeDriver020E2.code_eq",
+        "FT1536.S05.NodeDriver020E2.law_eq",
+        "FT1536.S05.NodeDriver020E2.same_driver"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC",
+        "Q-SAMPLER"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.070346292995964,
+      "compiler_peak_rss_KiB": 3984100,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "NodeCertificate020E2",
+      "path": "formal/NodeCertificate020E2.lean",
+      "sha256": "598c74597aa40926425344ab6807506c6688f58ade6d85faeb0c6bd501f0303b",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/certificate001/receipt.json",
+      "receipt_sha256": "c8ef717ee5281ffd84c36220f9bd4b8912f27c0bf1cc9260966eb8dfe30a58a6",
+      "exports": [
+        "FT1536.S05.NodeCertificate020E2.all_h_ac",
+        "FT1536.S05.NodeCertificate020E2.certificate",
+        "FT1536.S05.NodeCertificate020E2.same_key_law"
+      ],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC",
+        "Q-SAMPLER"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 2.0199279419903178,
+      "compiler_peak_rss_KiB": 3982988,
+      "Lean_M_MiB": 4096
+    },
+    {
+      "module": "AuditNodeExecution020E2",
+      "path": "formal/AuditNodeExecution020E2.lean",
+      "sha256": "5a1fc0a68d65aa502ce9b1bde6551cffab3f47d3ac919c848cbb8488da1ffee5",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/audit001/receipt.json",
+      "receipt_sha256": "1125ca04d27435d31758e6714560c37b341c8453bdc2fb8e367bdde163e89f6e",
+      "exports": [],
+      "condition_class": "proof_obligation",
+      "conditions": [
+        "Q-RESC"
+      ],
+      "status": "KERNEL_SCOPED_NOT_REVIEWED",
+      "compiler_elapsed_seconds": 1.8701950749964453,
+      "compiler_peak_rss_KiB": 3959260,
+      "Lean_M_MiB": 4096
+    }
+  ],
+  "attempts": [
+    {
+      "label": "action001",
+      "module": "NodeAction020E2",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/action001/receipt.json",
+      "receipt_sha256": "97724c82139f135be45f5db3234c07bd95f46bb55baf21d3ec647116bd202239",
+      "elapsed_seconds": 1.975507025999832,
+      "compiler_peak_rss_KiB": 3943132
+    },
+    {
+      "label": "atom001",
+      "module": "NodeAtom020E2",
+      "exit_code": 1,
+      "warnings": 0,
+      "errors": 3,
+      "clean": false,
+      "reason": "remaining definitional load equations",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/atom001/receipt.json",
+      "receipt_sha256": "f2292e9e1d4b63adc16829f7ffc87c26e496a351521e4488d91a391232435c11",
+      "elapsed_seconds": 2.3208351080102148,
+      "compiler_peak_rss_KiB": 3955056
+    },
+    {
+      "label": "atom002",
+      "module": "NodeAtom020E2",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/atom002/receipt.json",
+      "receipt_sha256": "009dd19bf7f77551b27c959e53b66fc22c2b3374380f8d2e87065a040afbd10f",
+      "elapsed_seconds": 2.170639921008842,
+      "compiler_peak_rss_KiB": 3979608
+    },
+    {
+      "label": "audit001",
+      "module": "AuditNodeExecution020E2",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/audit001/receipt.json",
+      "receipt_sha256": "1125ca04d27435d31758e6714560c37b341c8453bdc2fb8e367bdde163e89f6e",
+      "elapsed_seconds": 1.8701950749964453,
+      "compiler_peak_rss_KiB": 3959260
+    },
+    {
+      "label": "certificate001",
+      "module": "NodeCertificate020E2",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/certificate001/receipt.json",
+      "receipt_sha256": "c8ef717ee5281ffd84c36220f9bd4b8912f27c0bf1cc9260966eb8dfe30a58a6",
+      "elapsed_seconds": 2.0199279419903178,
+      "compiler_peak_rss_KiB": 3982988
+    },
+    {
+      "label": "driver001",
+      "module": "NodeDriver020E2",
+      "exit_code": 1,
+      "warnings": 0,
+      "errors": 1,
+      "clean": false,
+      "reason": "kernel deep recursion during conversion of closed program",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/driver001/receipt.json",
+      "receipt_sha256": "373c7a28577564d11fbc2daf8d6ff02493e04a5bfa6471640b7d834506325048",
+      "elapsed_seconds": 2.7746744729956845,
+      "compiler_peak_rss_KiB": 4019868
+    },
+    {
+      "label": "driver002",
+      "module": "NodeDriver020E2",
+      "exit_code": -6,
+      "warnings": 0,
+      "errors": 0,
+      "clean": false,
+      "reason": "Lean memory_exception during closed-program conversion at M4096",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/driver002/receipt.json",
+      "receipt_sha256": "fc8edf8b4e43678f8ab968f49b7b3452a26bc5c967c39e32c1450486c23193bd",
+      "elapsed_seconds": 3.7271446020022267,
+      "compiler_peak_rss_KiB": 4196156
+    },
+    {
+      "label": "driver003",
+      "module": "NodeDriver020E2",
+      "exit_code": -6,
+      "warnings": 0,
+      "errors": 0,
+      "clean": false,
+      "reason": "same conversion memory_exception; local irreducibility insufficient",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/driver003/receipt.json",
+      "receipt_sha256": "53fd023ff73022bfa60d8c1d14d7a704ceb2f5c8490585f3dbd10b38e27e1d28",
+      "elapsed_seconds": 3.5233052210096503,
+      "compiler_peak_rss_KiB": 4196264
+    },
+    {
+      "label": "driver004",
+      "module": "NodeDriver020E2",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/driver004/receipt.json",
+      "receipt_sha256": "7edfba75cacac8f6b1ee6be78e6f15bec6015ba151b835d792336d08be2ff77d",
+      "elapsed_seconds": 2.070346292995964,
+      "compiler_peak_rss_KiB": 3984100
+    },
+    {
+      "label": "execute001",
+      "module": "NodeExecute020E2",
+      "exit_code": 1,
+      "warnings": 0,
+      "errors": 1,
+      "clean": false,
+      "reason": "next_tail rewrite target and missing append lemma",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/execute001/receipt.json",
+      "receipt_sha256": "0f0ecf98376a4f4af46ebab2ecffaf9759b43dbaeb752136f4ae1125ddb43256",
+      "elapsed_seconds": 2.1706101419986226,
+      "compiler_peak_rss_KiB": 3946940
+    },
+    {
+      "label": "execute002",
+      "module": "NodeExecute020E2",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/execute002/receipt.json",
+      "receipt_sha256": "7859c3a03b170db95315cd0aaac919e2d883d70c6195d547fa5b95583005ce72",
+      "elapsed_seconds": 2.2704408449935727,
+      "compiler_peak_rss_KiB": 3975044
+    },
+    {
+      "label": "expr001",
+      "module": "NodeExpr020E2",
+      "exit_code": 1,
+      "warnings": 4,
+      "errors": 2,
+      "clean": false,
+      "reason": "assemble shape reduction/elaboration and simp warnings",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/expr001/receipt.json",
+      "receipt_sha256": "9d1f52c3f337dff4c74d8b2a31120b2101a6c9ff8123f5a769f8462a937e469d",
+      "elapsed_seconds": 2.772174134996021,
+      "compiler_peak_rss_KiB": 3961212
+    },
+    {
+      "label": "expr002",
+      "module": "NodeExpr020E2",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/expr002/receipt.json",
+      "receipt_sha256": "5f6c97d0bb1a43157048a70e4afae726f67ea4119591fb6748e215230e9318a9",
+      "elapsed_seconds": 2.2704919800016796,
+      "compiler_peak_rss_KiB": 3972612
+    },
+    {
+      "label": "frames001",
+      "module": "NodeFrames020E2",
+      "exit_code": 1,
+      "warnings": 0,
+      "errors": 3,
+      "clean": false,
+      "reason": "reserved repeat constructor alternative",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/frames001/receipt.json",
+      "receipt_sha256": "75086ef63ca390d92785af627d4a8b5ff57bf20ccb98897968e5d694fdda0a86",
+      "elapsed_seconds": 1.720260418005637,
+      "compiler_peak_rss_KiB": 3946848
+    },
+    {
+      "label": "frames002",
+      "module": "NodeFrames020E2",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/frames002/receipt.json",
+      "receipt_sha256": "4f66f9949eb0e3702605176ffe6226f9f0e9d15f531d9ef23d1ee6bbdbbfcdec",
+      "elapsed_seconds": 1.9196066619915655,
+      "compiler_peak_rss_KiB": 3975132
+    },
+    {
+      "label": "loop001",
+      "module": "NodeLoop020E2",
+      "exit_code": 1,
+      "warnings": 0,
+      "errors": 3,
+      "clean": false,
+      "reason": "conditional normalization and dependent Count coercion",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/loop001/receipt.json",
+      "receipt_sha256": "1d60d34523094319d29ca55efc72723846cad230437dda59f912c899ab0f48b4",
+      "elapsed_seconds": 2.3208407049969537,
+      "compiler_peak_rss_KiB": 3930552
+    },
+    {
+      "label": "loop002",
+      "module": "NodeLoop020E2",
+      "exit_code": 0,
+      "warnings": 4,
+      "errors": 0,
+      "clean": false,
+      "reason": "deprecated if_pos/if_neg",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/loop002/receipt.json",
+      "receipt_sha256": "e80f02df7b109e6ce90d17d18eb7318e21da0d885ec19c3807e2cb164ffb1ec4",
+      "elapsed_seconds": 2.118993006995879,
+      "compiler_peak_rss_KiB": 3959080
+    },
+    {
+      "label": "loop003",
+      "module": "NodeLoop020E2",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/loop003/receipt.json",
+      "receipt_sha256": "11ee697ef665259b73ff9d64d47858c73d8083a80c54337b2148b7224b17e44a",
+      "elapsed_seconds": 2.1755456819955725,
+      "compiler_peak_rss_KiB": 3959832
+    },
+    {
+      "label": "next002",
+      "module": "ControlNext020E2",
+      "exit_code": 1,
+      "warnings": 2,
+      "errors": 3,
+      "clean": false,
+      "reason": "Word zero conditional normalization and exponent warning",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/next002/receipt.json",
+      "receipt_sha256": "c179bd5f139177d2090e9d605ddb7d9d6dcd50220a2471aea13368f173e8c1e6",
+      "elapsed_seconds": 2.72017176701047,
+      "compiler_peak_rss_KiB": 3292360
+    },
+    {
+      "label": "next003",
+      "module": "ControlNext020E2",
+      "exit_code": 1,
+      "warnings": 0,
+      "errors": 2,
+      "clean": false,
+      "reason": "non-definitional ExprBackend.value rewrite; pair/list goal mismatch",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/next003/receipt.json",
+      "receipt_sha256": "456447781c7cb15c3fef3b47f47657be088f75190d8b8baad63168f945f8ec61",
+      "elapsed_seconds": 3.276849764995859,
+      "compiler_peak_rss_KiB": 3292620
+    },
+    {
+      "label": "next004",
+      "module": "ControlNext020E2",
+      "exit_code": 0,
+      "warnings": 1,
+      "errors": 0,
+      "clean": false,
+      "reason": "deprecated Nat.add_eq_zero",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/next004/receipt.json",
+      "receipt_sha256": "87bd2fe3c276e08b66dd1fd712d8a41927d2cf64cdea290253f04a0a887b8e48",
+      "elapsed_seconds": 8.340571540000383,
+      "compiler_peak_rss_KiB": 3298468
+    },
+    {
+      "label": "next005",
+      "module": "ControlNext020E2",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/next005/receipt.json",
+      "receipt_sha256": "011caea21ea4d553471d763770f26bca351dd1f4cc96a85f9dc16b35a926084f",
+      "elapsed_seconds": 3.5236896489950595,
+      "compiler_peak_rss_KiB": 3303080
+    },
+    {
+      "label": "program001",
+      "module": "NodeProgram020E2",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/program001/receipt.json",
+      "receipt_sha256": "d80e39edd5b65ef222b1fb0fe5375c5bd7ab8b61293bf600e0b0d07a0b9fecd4",
+      "elapsed_seconds": 2.5214498809946235,
+      "compiler_peak_rss_KiB": 3983052
+    },
+    {
+      "label": "read001",
+      "module": "NodeRead020E2",
+      "exit_code": 1,
+      "warnings": 2,
+      "errors": 1,
+      "clean": false,
+      "reason": "dependent Fin index/rewrite and simp warnings",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/read001/receipt.json",
+      "receipt_sha256": "fdb1fc20ae1c26adda00a33a355b9d761095cbdbe3374e0f7bbdab6240a189a0",
+      "elapsed_seconds": 5.178507653996348,
+      "compiler_peak_rss_KiB": 3909628
+    },
+    {
+      "label": "read002",
+      "module": "NodeRead020E2",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/read002/receipt.json",
+      "receipt_sha256": "8984d2fd9ed4234cce7918ab90069474eeb83096feb80230d336dfdb64bbc2fe",
+      "elapsed_seconds": 2.1225780399981886,
+      "compiler_peak_rss_KiB": 3959956
+    },
+    {
+      "label": "resume001",
+      "module": "NodeResume020E2",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/resume001/receipt.json",
+      "receipt_sha256": "0c86c1f69336497a261ff81d954cd3f314b0db020c77d5c48c66899061f4f4dc",
+      "elapsed_seconds": 2.1693469720048597,
+      "compiler_peak_rss_KiB": 3963140
+    },
+    {
+      "label": "run001",
+      "module": "NodeRun020E2",
+      "exit_code": 1,
+      "warnings": 1,
+      "errors": 4,
+      "clean": false,
+      "reason": "Option map type inference and branch conditional proof",
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/run001/receipt.json",
+      "receipt_sha256": "11de4cc4a95d176c32ca72b6d5a7d8319f23f0e4e2a937c2520a5feeaecebaa9",
+      "elapsed_seconds": 2.4219341349962633,
+      "compiler_peak_rss_KiB": 3942056
+    },
+    {
+      "label": "run002",
+      "module": "NodeRun020E2",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/run002/receipt.json",
+      "receipt_sha256": "45dd4a651be317da62271d22ee34853cd1dd56fa4bf4b1f50b6db6a19c541f63",
+      "elapsed_seconds": 2.3207925479946425,
+      "compiler_peak_rss_KiB": 3970396
+    },
+    {
+      "label": "shape001",
+      "module": "NodeControlShape020E2",
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "clean": true,
+      "reason": null,
+      "receipt": ".build/pair_machine_020/node_execution_001/runs/shape001/receipt.json",
+      "receipt_sha256": "4c6931dee9b63b6d3efa20227f62a8e730b342abc5979b985bedcf63e72476e7",
+      "elapsed_seconds": 6.480145139998058,
+      "compiler_peak_rss_KiB": 3979896
+    }
+  ],
+  "source_instance": "Actual parsed877 program, all input/state exact execution, all tapes/public initial, same full law and M-conditioned moment",
+  "remaining": "Finite frame/value banks and total resources; source KeyGen/M/Sign/PRG, variant-A game and QROM",
+  "cost_note": "Receipt timings/RSS describe Lean compilation only. controlLimit is control fuel, not total sampler time.",
+  "new_crypto_assumptions": [],
+  "new_QROM_claim": false
+}

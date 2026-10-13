@@ -3,6 +3,22 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
+**Kontynuacja020E2 — [całe wykonanie z tablicy węzłów](notes/NODE_EXECUTION_020E2_CHECKPOINT.md):**
+37 nowych twierdzeń domyka bezpośrednie wykonanie wyrażeń, atomów i całego
+sterowania. Instancja877 daje dokładnie stan końcowy oryginalnego programu
+dla każdego wejścia/stanu, a z publicznego initial pełne wyjście019 na każdej
+taśmie. Driver zachowuje to samo pełne J/P: AC dla każdego h, moment≤1+2^-47
+pod niezmienionym(M), również dla tego samego pokrytego prawa kluczy.
+Tablica kodu jest niezmienna; w samym wykonawcy Code/Meaning występują
+wyłącznie w dowodzie.
+**Wykonanie CLOSED scoped; lista ramek i rekurencyjny evaluator wymagają
+jeszcze realizacji w skończonych bankach. Pełne020E/Q-RESC i QROM OPEN.**
+14 modułów + audyt,15 czystych końcowych buildów,29 prób kompilacji zachowanych.
+[Kontrola autora](notes/NODE_EXECUTION_020E2_SELF_REVIEW.md), [kolejka020E2](notes/KERNEL_QUEUE_020E2.json),
+[klasy020E2](notes/CERTIFICATE_CLASSES_020E2.json).
+[Następne: banki wykonawcy i pełne zasoby](notes/RESOURCES_020E_CONTINUATION_003.md).
+Bez niezależnego odbioru; monitor ROM pozostaje PAUSED.
+
 **Kontynuacja020E1 — [parser w skończonej arenie](notes/ARENA_PARSER_020E1_CHECKPOINT.md):**
 71 nowych twierdzeń domyka parser na stałym banku węzłów i banku adresów
 stosu. Kanoniczny obraz FT1536 daje877 węzłów i jeden adres wyniku;
@@ -42,7 +58,7 @@ w przypiętym środowisku legacy, bez scalenia z nową grą wariantu A.
 [Kolejka020D](notes/KERNEL_QUEUE_020D.json), [klasy020D](notes/CERTIFICATE_CLASSES_020D.json).
 Następny duży krok: [TODO020E — pełny driver i zasoby](notes/TODO_RESOURCES_020E.md).
 
-Poniższe wpisy opisują wcześniejsze checkpointy; aktualny stan wskazuje020E1.
+Poniższe wpisy opisują wcześniejsze checkpointy; aktualny stan wskazuje020E2.
 
 **Kontynuacja020C — [cały select zgodny z019](notes/VECTOR_NORM_020C_CHECKPOINT.md):**
 115 nowych eksportów kernelowych zamyka1536 par, dokładną normę Q,
