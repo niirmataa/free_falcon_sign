@@ -1,0 +1,69 @@
+{
+  "task": "S05/TODO020E/continuation005",
+  "status": "IN_PROGRESS_PARTIAL_KERNEL_NOT_REVIEWED",
+  "entries": [
+    {
+      "name": "Word512 region RAM / ALLOC_ZERO / ideal bit draw",
+      "class": "MODEL",
+      "status": "EXPLICIT",
+      "scope": "Semantic memory operations; native C/Lean and bit implementation separate"
+    },
+    {
+      "name": "Q-SAMPLER / Q-JOINT-INSTANCE EveryTape + J/P transport",
+      "class": "PROOF_OBLIGATION",
+      "status": "DISCHARGED_SCOPED_CONDITIONAL",
+      "exports": [
+        "ResidentCall020E5.every_tape",
+        "ResidentCall020E5.certificate",
+        "ResidentCall020E5.same_key_law"
+      ],
+      "premises": [
+        "unchanged MassCondition M",
+        "same Covered key law for joint result"
+      ],
+      "scope": "Full response law with failures; same public initial and key"
+    },
+    {
+      "name": "Q-RESC local stores and script protocol",
+      "class": "PROOF_OBLIGATION",
+      "status": "DISCHARGED_SCOPED",
+      "exports": [
+        "CoreStore020E5.realizes",
+        "IndexedParser020E5.run_trace",
+        "ScratchRound020E5.round_trace",
+        "ScratchConsumers020E5.checked"
+      ],
+      "scope": "Concrete local traces; checked assumes bounded precomputed code and supplied context"
+    },
+    {
+      "name": "Q-RESC full peak and new time",
+      "class": "PROOF_OBLIGATION",
+      "status": "OPEN",
+      "remaining": [
+        "emitter-local workspace and lifetime realization",
+        "single outer controller and complete allocation/phase composition",
+        "time of the new in-place implementation"
+      ],
+      "not_a_substitute": [
+        "represented-resident sum",
+        "p.code.length bound",
+        "old Run.allocated counter"
+      ]
+    },
+    {
+      "name": "source KeyGen support of M and Q-BIND",
+      "class": "PROOF_OBLIGATION",
+      "status": "OPEN_UNCHANGED"
+    },
+    {
+      "name": "A-QMT / Q-PRG primitive bounds",
+      "class": "CRYPTOGRAPHIC_ASSUMPTION",
+      "status": "UNCHANGED_NOT_INSTANTIATED_HERE"
+    },
+    {
+      "name": "Q-HASH-LOG / Q-EMBED / Q-COLL / remaining TARGET_CONTRACT",
+      "class": "PROOF_OBLIGATION",
+      "status": "OPEN_UNCHANGED"
+    }
+  ]
+}

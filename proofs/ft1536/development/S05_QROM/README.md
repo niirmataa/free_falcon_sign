@@ -3,6 +3,19 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
+**Kontynuacja020E5 — [banki, granice wywołania i scratch](notes/PEAK_MEMORY_020E5_CHECKPOINT.md), IN_PROGRESS / PARTIAL:**
+49 modułów wynikowych, 212 twierdzeń; audyt 418 eksportów. Kernel obejmuje
+cały wynik wywołania, pełne J/P pod tym samym(M), rzeczywiste dane wejścia,
+parsera i wyjścia, inicjalizację rdzenia oraz bufor poleceń z pełnym śladem
+reset/wypełnianie/odczyt/zapis. **Pełny peak nadal OPEN:** brakuje pamięci
+producenta poleceń i jednego sterownika całego cyklu alokacji/faz.
+Rozmiar reprezentowanych danych z buforem wynosi 1 578 427 352 384 bajty
+w modelu jednej komórki512bit na bit taśmy; to nie peak ani pomiar native.
+Stare naliczenia czasu020E4 nie przenoszą się automatycznie na tę realizację.
+[Kontrola autora](notes/PEAK_MEMORY_020E5_SELF_REVIEW.md),
+[klasy](notes/CERTIFICATE_CLASSES_020E5.json), [kolejka](notes/KERNEL_QUEUE_020E5.json).
+Bez niezależnego odbioru i bez push; monitor ROM pozostaje PAUSED.
+
 **Kontynuacja020E4 — [Array, prymitywy i pełne naliczenia](notes/ARRAY_BACKEND_020E4_CHECKPOINT.md), PARTIAL:**
 183 nowe twierdzenia: backend Array, jawne kopie, wszystkie fazy drivera,
 EveryTape oraz pełne J/P pod tym samym(M). Kernel i Sage dają bound
@@ -85,7 +98,7 @@ w przypiętym środowisku legacy, bez scalenia z nową grą wariantu A.
 [Kolejka020D](notes/KERNEL_QUEUE_020D.json), [klasy020D](notes/CERTIFICATE_CLASSES_020D.json).
 Następny duży krok: [TODO020E — pełny driver i zasoby](notes/TODO_RESOURCES_020E.md).
 
-Poniższe wpisy opisują wcześniejsze checkpointy; aktualny stan wskazuje020E4.
+Poniższe wpisy opisują wcześniejsze checkpointy; aktualny stan wskazuje020E5.
 
 **Kontynuacja020C — [cały select zgodny z019](notes/VECTOR_NORM_020C_CHECKPOINT.md):**
 115 nowych eksportów kernelowych zamyka1536 par, dokładną normę Q,

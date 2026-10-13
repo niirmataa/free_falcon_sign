@@ -1,0 +1,1754 @@
+{
+  "task": "S05/TODO020E/continuation005",
+  "status": "IN_PROGRESS_PARTIAL_KERNEL_NOT_REVIEWED",
+  "base": "dd041b73228c59fc14ff80dc56ea46780974db79",
+  "core_source_checkpoint": "2d19cd693064a380a93ba3e0be394cb930f0f0c1",
+  "created_utc": "2026-10-13T18:19:20.040063+00:00",
+  "model": "fixed Word512 region RAM with in-place existing-cell stores and ALLOC_ZERO; no native memory claim",
+  "module_count": 49,
+  "theorem_count": 212,
+  "audited_export_count": 418,
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "kernel_audit_receipt": "proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/boundaryaudit002/receipt.json",
+  "kernel_audit_receipt_sha256": "c214045d378dbc21c34d7078ba2a07ec9f0847166c69f8b19a8372c0d2b2c5c6",
+  "all_library_pins_checked": 642,
+  "pins_snapshot": "proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/checkpoint_002/PINS.json",
+  "pins_snapshot_sha256": "a80084cfcd311bc0a460fe3f75147ab9f180e503933e8cfedd84135985d44eba",
+  "records": [
+    {
+      "module": "RegionRam020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/region002/source/RegionRam020E5.lean",
+      "source_sha256": "640a918b7f6b06d09922254019d9b8507a7177e512cbb999c27992898fb5af0b",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/RegionRam020E5.olean",
+      "artifact_sha256": "0030649996f15603912104a7d07ff8d1da607ffd7c73acc5db2c8ce7bdf9c5e0",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/region002/receipt.json",
+      "exports": [
+        "Heap",
+        "words",
+        "allocate",
+        "write",
+        "live",
+        "allocate_read",
+        "allocate_size",
+        "allocate_words",
+        "allocate_live",
+        "write_size",
+        "write_words",
+        "write_live",
+        "step_live",
+        "steps_live"
+      ]
+    },
+    {
+      "module": "MemoryEdit020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/edit003/source/MemoryEdit020E5.lean",
+      "source_sha256": "5ef2536d88c5bd494dd77077dde1bd9ec4ff14699a8af9768b09d51c613e5287",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/MemoryEdit020E5.olean",
+      "artifact_sha256": "47cd2c489e8646ada4d83c4316aab995587ef9658377f647d43fcf62ffdcfc40",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/edit003/receipt.json",
+      "exports": [
+        "apply",
+        "atom",
+        "atom_refines",
+        "words",
+        "unchanged_input"
+      ]
+    },
+    {
+      "module": "BankWordLayout020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/banklayout001/source/BankWordLayout020E5.lean",
+      "source_sha256": "c936e9035191353d7a63b2285402fecc7dd2cf27ef9347028d3dbdb4bcb09b29",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/BankWordLayout020E5.olean",
+      "artifact_sha256": "332d25455fa9d8299c621c4d4255f1d1297d9f94b4e01695fedd101f55ca1532",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/banklayout001/receipt.json",
+      "exports": [
+        "encode",
+        "at_cell",
+        "extent",
+        "injective",
+        "updated_at"
+      ]
+    },
+    {
+      "module": "FixedAction020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/fixedaction002/source/FixedAction020E5.lean",
+      "source_sha256": "f5f83edb9cd4ffd2d8659958752dcdec02f2d0e62abda8908b5c7dcad2e9b957",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/FixedAction020E5.olean",
+      "artifact_sha256": "3fec3313df69638159c7fae5781a70f99ffe34f2723f82806c0af41357e1cd18",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/fixedaction002/receipt.json",
+      "exports": [
+        "pendingList",
+        "Result",
+        "observe",
+        "loopAction",
+        "dispatch",
+        "action",
+        "loop_refines",
+        "atom_observe",
+        "dispatch_refines",
+        "action_refines",
+        "pending_bound"
+      ]
+    },
+    {
+      "module": "CoreState020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/corestate001/source/CoreState020E5.lean",
+      "source_sha256": "fe5044d1b9e2bfda035f0f97f8f6647caedb0598bc4c07fa5a02af9bb65c05ea",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/CoreState020E5.olean",
+      "artifact_sha256": "160b411ce421d3d877a569009165608a9355d4f7d11a6df2a16047e9912b3423",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/corestate001/receipt.json",
+      "exports": [
+        "start",
+        "terminal",
+        "result",
+        "Ready",
+        "Cleared",
+        "Inv",
+        "start_inv",
+        "cleared_all"
+      ]
+    },
+    {
+      "module": "CoreStep020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/corestep004/source/CoreStep020E5.lean",
+      "source_sha256": "3f6f5cdd9ecd0b090824c9ed8f1ae0c17cd9f8e682952c98da95d1ed29d77bfb",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/CoreStep020E5.olean",
+      "artifact_sha256": "02d163782ff291f75e376d01d77f90d601fa3e5d14c170458393f7862f8d434b",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/corestep004/receipt.json",
+      "exports": [
+        "step",
+        "terminal_fixed",
+        "clear_prefix",
+        "inv"
+      ]
+    },
+    {
+      "module": "CoreMeaning020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/meaning002/source/CoreMeaning020E5.lean",
+      "source_sha256": "a8e62381531c9af2e57cb257062ca4a3e24471fa1b776a8864da4bc9e2d1db79",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/CoreMeaning020E5.olean",
+      "artifact_sha256": "9e47aa4790e4e462ce97937ef49cdcf08915618b7f9e3c84e28380a746bf7816",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/meaning002/receipt.json",
+      "exports": [
+        "finish",
+        "denote",
+        "finish_build",
+        "scan_step",
+        "terminal_meaning"
+      ]
+    },
+    {
+      "module": "CorePreservation020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/preservation003/source/CorePreservation020E5.lean",
+      "source_sha256": "4dd23040e9a806c5ecbebe5d2782e9e63856416501b2630a37e2a76b0f952517",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/CorePreservation020E5.olean",
+      "artifact_sha256": "c146df7371f71a40cd3e5302eaf77063c887bfe5288bec1741f5aec9a68f3333",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/preservation003/receipt.json",
+      "exports": [
+        "preserves"
+      ]
+    },
+    {
+      "module": "CoreRank020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/rank002/source/CoreRank020E5.lean",
+      "source_sha256": "21b716814c839103a43a23833ced9466e80a381427cfcc02a409352b28db5668",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/CoreRank020E5.olean",
+      "artifact_sha256": "815222855e7d34a8f97bdee3fde82724462a479e1c0ce19b93164eb41ea5f87a",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/rank002/receipt.json",
+      "exports": [
+        "cycle",
+        "rank",
+        "positive",
+        "decreases"
+      ]
+    },
+    {
+      "module": "CoreRun020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/corerun001/source/CoreRun020E5.lean",
+      "source_sha256": "14756c1a70362bd8a8064199b688e34c7419c05891bf48795e536ffef93ef66d",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/CoreRun020E5.olean",
+      "artifact_sha256": "2d79aa63a3061efda3d7ccb452cd2a562b0cbef56cd1f05c2170298897924b69",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/corerun001/receipt.json",
+      "exports": [
+        "run",
+        "invariant",
+        "meaning",
+        "halts",
+        "execute",
+        "execute_refines"
+      ]
+    },
+    {
+      "module": "WordCodec020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/codec002/source/WordCodec020E5.lean",
+      "source_sha256": "b9daa33cd6695b3858675d794ed3f62f2d46a66b0da1e8ca93286cba9cc3cb3c",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/WordCodec020E5.olean",
+      "artifact_sha256": "c6e997e38f8ddf3bba26562339930f9a2dd3b0a79fab37e99ec9a94b104b4375",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/codec002/receipt.json",
+      "exports": [
+        "unit",
+        "wordCodec",
+        "boolWord",
+        "boolCodec",
+        "finCodec",
+        "pair",
+        "sumEncode",
+        "sum",
+        "contramap",
+        "bank"
+      ]
+    },
+    {
+      "module": "CoreEncoding020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/coreencoding002/source/CoreEncoding020E5.lean",
+      "source_sha256": "8bc05e854428fc74cdfbd175e78b0e744fc407dada4da91574e2398e5a328a31",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/CoreEncoding020E5.olean",
+      "artifact_sha256": "4de9cfd8e4ea1d3663b0d7fd801a50b226edadede5e6a1e7beed094fb2b8fe7d",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/coreencoding002/receipt.json",
+      "exports": [
+        "frameCodec",
+        "pendingShape",
+        "pendingOfShape",
+        "pending_shape_injective",
+        "pendingCodec",
+        "phaseTag",
+        "phase_tag_injective",
+        "phaseCodec",
+        "Meta",
+        "metadata",
+        "metaCodec",
+        "Fields",
+        "fields",
+        "ofFields",
+        "fields_roundtrip",
+        "fields_injective",
+        "payloadWords",
+        "codec",
+        "encode",
+        "encode_injective",
+        "encode_size"
+      ]
+    },
+    {
+      "module": "WordPatch020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/patch002/source/WordPatch020E5.lean",
+      "source_sha256": "0a5fb78a080692844cf149574b9c048484d2195d49e145fcbe0ab2b591470b41",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/WordPatch020E5.olean",
+      "artifact_sha256": "2083a71cda6e43873e4f6bd63ceda1f9fa87d067fb76b3fc1f0dc9dd7666b54b",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/patch002/receipt.json",
+      "exports": [
+        "Write",
+        "apply",
+        "extent",
+        "realizes",
+        "singleton",
+        "singleton_apply",
+        "has_trace",
+        "every_payload_size"
+      ]
+    },
+    {
+      "module": "WordJoin020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/join002/source/WordJoin020E5.lean",
+      "source_sha256": "3ef0eb23bf01c138120cca02082520ddc3d4601e0dfb0658d68b8e01b2ae219e",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/WordJoin020E5.olean",
+      "artifact_sha256": "14ffbceced30adb317d2c8d2858ebe50706fcf4d2c6594061f0ccc7fb73e689e",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/join002/receipt.json",
+      "exports": [
+        "join",
+        "left_read",
+        "right_read",
+        "left_write",
+        "right_write",
+        "liftLeft",
+        "liftRight",
+        "apply_left",
+        "apply_right"
+      ]
+    },
+    {
+      "module": "VerifiedPatch020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/verifiedpatch001/source/VerifiedPatch020E5.lean",
+      "source_sha256": "976983e2c5a8dae25633d2ecc19308fb84adecc6c69b1c685717258bb6d4e9b0",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/VerifiedPatch020E5.olean",
+      "artifact_sha256": "d538ae780242cf699f7c69d38b24d9dec873d9c543e6669b62078b036875a1ee",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/verifiedpatch001/receipt.json",
+      "exports": [
+        "pack",
+        "pack_read",
+        "append_apply",
+        "identity",
+        "ofEq",
+        "thenDo",
+        "overwrite",
+        "overwrite_length",
+        "left",
+        "right",
+        "pack_pair",
+        "pack_bank",
+        "cell",
+        "cell_length"
+      ]
+    },
+    {
+      "module": "PairPatch020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/pairpatch001/source/PairPatch020E5.lean",
+      "source_sha256": "71f1f375277bbfc12b54953965d103acdf736f6777e5c76cda5d83e99508ba1a",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/PairPatch020E5.olean",
+      "artifact_sha256": "3c72ae5cbeb7232f0acbc4a2717366c99073a02d7755cc7fc384f031b9deef7c",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/pairpatch001/receipt.json",
+      "exports": [
+        "first",
+        "second",
+        "first_length",
+        "second_length",
+        "then_length"
+      ]
+    },
+    {
+      "module": "CoreFieldPatch020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/corefield004/source/CoreFieldPatch020E5.lean",
+      "source_sha256": "00daa3a46ee28016b86474996ef8b96f6e74bc328108a0474b283053b420f3ec",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/CoreFieldPatch020E5.olean",
+      "artifact_sha256": "d104611b2395e2e043ef78d932ff2256f21a211cde5fe0f7ae9f6a458af87733",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/corefield004/receipt.json",
+      "exports": [
+        "valueCodec",
+        "cv",
+        "cf",
+        "co",
+        "cr",
+        "cg",
+        "c0",
+        "c1",
+        "c2",
+        "c3",
+        "image",
+        "setValues",
+        "setFrames",
+        "setReg",
+        "setRam",
+        "setOut",
+        "setMetadata",
+        "values",
+        "frames",
+        "reg",
+        "ram",
+        "out",
+        "control",
+        "values_length",
+        "frames_length",
+        "reg_length",
+        "ram_length",
+        "out_length",
+        "control_length"
+      ]
+    },
+    {
+      "module": "CoreData020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/coredata001/source/CoreData020E5.lean",
+      "source_sha256": "ac27b3be640cc05da2d2990ce76af43e769f40c22ee27b430b3e80c408435145",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/CoreData020E5.olean",
+      "artifact_sha256": "202cb1a98fb384dcde1e496772acc93ae8519f642373e29f53fb068d305f4707",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/coredata001/receipt.json",
+      "exports": [
+        "edit",
+        "pushData",
+        "next"
+      ]
+    },
+    {
+      "module": "CoreControl020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/corecontrol002/source/CoreControl020E5.lean",
+      "source_sha256": "34876069a1aacdefb010f54b350c2c7e078018d27de1f7d43f41e8f120d97eb0",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/CoreControl020E5.olean",
+      "artifact_sha256": "26d619f826f6e9648d684ca0048b598ce2ab137ce50427f6605633cf0b4e09d3",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/corecontrol002/receipt.json",
+      "exports": [
+        "faultAfter",
+        "pushMeta",
+        "next",
+        "reconstruct"
+      ]
+    },
+    {
+      "module": "ControlStore020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/controlstore001/source/ControlStore020E5.lean",
+      "source_sha256": "803dd3d37f2ca30249e628dc5499213da6804fb742b61b649190d0216f0021d9",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/ControlStore020E5.olean",
+      "artifact_sha256": "1c6edc8ed05e79dd0313f1585b03617368d5d05fe5a696faffa1d1d753cafdfa",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/controlstore001/receipt.json",
+      "exports": [
+        "code",
+        "control_code",
+        "length"
+      ]
+    },
+    {
+      "module": "CoreDataPatch020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/coredatapatch001/source/CoreDataPatch020E5.lean",
+      "source_sha256": "300416c4809bd7f7e5b6693b3d4ab2506e02c4f8107967a226502f4db29183b9",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/CoreDataPatch020E5.olean",
+      "artifact_sha256": "c2657f4db2fe9f71aa7b3c311de6ac1369cd219aba74802dc91f844de0c15f0c",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/coredatapatch001/receipt.json",
+      "exports": [
+        "BoundedProgram",
+        "edit",
+        "push",
+        "program"
+      ]
+    },
+    {
+      "module": "CoreStore020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/corestore001/source/CoreStore020E5.lean",
+      "source_sha256": "5186ff696764da1fcb7078c2018e6b2e4f61ccc003519968dbf58c67f80f3186",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/CoreStore020E5.olean",
+      "artifact_sha256": "80d3a03cc349bdc11d1a924d7d74fcbca7a933ee03a3e62908481d7958445d0a",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/corestore001/receipt.json",
+      "exports": [
+        "code",
+        "realizes",
+        "length_bound",
+        "program"
+      ]
+    },
+    {
+      "module": "RegionFrame020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/regionframe002/source/RegionFrame020E5.lean",
+      "source_sha256": "b8672ed6a029c7f1b6c742f5ebd3e28378f8a702d7380e2225576edd48392a27",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/RegionFrame020E5.olean",
+      "artifact_sha256": "d4506b1dbca3164cf7279aed0d754bf70d57b9071a882675e58e51f6439f6fa7",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/regionframe002/receipt.json",
+      "exports": [
+        "heap",
+        "slot",
+        "first_size",
+        "index",
+        "word_store",
+        "word_step",
+        "word_trace",
+        "words_exact",
+        "live_exact",
+        "complete_store_peak"
+      ]
+    },
+    {
+      "module": "RegionTrace020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/regiontrace001/source/RegionTrace020E5.lean",
+      "source_sha256": "1b6084359ebcf3b80e3def0db2be8f69e896c5a5a7b00eabf96d2996527143bb",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/RegionTrace020E5.olean",
+      "artifact_sha256": "58c9d44ed15507e35d0bb0c922206244c9a33173775fa27b129edc4b267aa148",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/regiontrace001/receipt.json",
+      "exports": [
+        "append",
+        "peak"
+      ]
+    },
+    {
+      "module": "CoreHeap020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/coreheap001/source/CoreHeap020E5.lean",
+      "source_sha256": "9fbc0f3db00199d3e37879321f8d89e7ae49b9a15b9e4f29ba619fe9c4c4827f",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/CoreHeap020E5.olean",
+      "artifact_sha256": "077ed0430991a77e8419c4544a11366c5970c2e39394fb44030d7e8492940d4d",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/coreheap001/receipt.json",
+      "exports": [
+        "step_trace",
+        "run_trace",
+        "run_peak"
+      ]
+    },
+    {
+      "module": "RegionSlot020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/regionslot002/source/RegionSlot020E5.lean",
+      "source_sha256": "9c19f29a01944810dd74c8961182dcb3343f892ad4598a42d6486842079f4f3f",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/RegionSlot020E5.olean",
+      "artifact_sha256": "03f5ad968df1101117b6dcc7b3acddf241a4aa882012191bea30fdcc4be080f4",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/regionslot002/receipt.json",
+      "exports": [
+        "frame",
+        "size",
+        "site",
+        "selected",
+        "cellIndex",
+        "frame_identity",
+        "word_store",
+        "word_step",
+        "trace",
+        "run_existing"
+      ]
+    },
+    {
+      "module": "ZeroAllocate020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/zeroalloc001/source/ZeroAllocate020E5.lean",
+      "source_sha256": "6cf7386c9930bdd4a98faea5ae49ae73d3dddd65666eb1c1db2816fc394427f9",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/ZeroAllocate020E5.olean",
+      "artifact_sha256": "13f8f97d2381ec89ea7622918c72991fe2653e40bc3338ff3bd6f71212b92827",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/zeroalloc001/receipt.json",
+      "exports": [
+        "allocate",
+        "size",
+        "words",
+        "initialized",
+        "run",
+        "size_run",
+        "words_run",
+        "trace",
+        "monotone",
+        "startup_peak"
+      ]
+    },
+    {
+      "module": "FillMachine020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/fill002/source/FillMachine020E5.lean",
+      "source_sha256": "b926ca4fc7592bd14e88cebfdd04a70ffb671ac744e4eef3c3a5ef6767fb7ef2",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/FillMachine020E5.olean",
+      "artifact_sha256": "ef86f1990923cc5025eda0e5062f1fe7de9133866a2e0f0c06564e98086187e3",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/fill002/receipt.json",
+      "exports": [
+        "step",
+        "run",
+        "Good",
+        "step_good",
+        "run_good",
+        "cursor_step",
+        "complete",
+        "start",
+        "fills"
+      ]
+    },
+    {
+      "module": "FillStore020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/fillstore002/source/FillStore020E5.lean",
+      "source_sha256": "16b94f82c5135378b6a5fe1789d751ec36e352788f060a0a45541c7a351e6aae",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/FillStore020E5.olean",
+      "artifact_sha256": "cc9ec7ba4c2602f2bf9f42d4d6812274a332ab486b7b7eec075f89c681683219",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/fillstore002/receipt.json",
+      "exports": [
+        "shape",
+        "shape_injective",
+        "codec",
+        "image",
+        "code",
+        "realizes",
+        "length_bound",
+        "fill_trace"
+      ]
+    },
+    {
+      "module": "ZeroCodec020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/zerocodec002/source/ZeroCodec020E5.lean",
+      "source_sha256": "e168f31a2bec26d45be713a7991957196336ff87b4c8b023152166d9b7dea918",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/ZeroCodec020E5.olean",
+      "artifact_sha256": "36eb4ff06ad32dce3ba665331bbf4462a10a033ae8500a008d80499b2b18a871",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/zerocodec002/receipt.json",
+      "exports": [
+        "bank_zero",
+        "join_zero",
+        "fill_start"
+      ]
+    },
+    {
+      "module": "ParserDecision020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/parserdecision001/source/ParserDecision020E5.lean",
+      "source_sha256": "0a92141c88cb9013149fd0911f9b9fc662ff8d3e5bf0ee7b305e1e0d19d7d58d",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/ParserDecision020E5.olean",
+      "artifact_sha256": "f18121ec9f7e3ce8ff891182c640b109f8f28f9f3b31923ebbf8a5da25ffe3b1",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/parserdecision001/receipt.json",
+      "exports": [
+        "apply",
+        "token",
+        "cell",
+        "token_refines",
+        "cell_refines"
+      ]
+    },
+    {
+      "module": "ParserEncoding020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/parserencoding002/source/ParserEncoding020E5.lean",
+      "source_sha256": "8e612744667fe7ec57d9cfc9d37594e57124e248457804fbbf83391d0140fb01",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/ParserEncoding020E5.olean",
+      "artifact_sha256": "6de22333f117fd6e9781991ca3937b44beb32ea2af41d3889358c5f8b29526c6",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/parserencoding002/receipt.json",
+      "exports": [
+        "nodeCodec",
+        "Fields",
+        "fields",
+        "ofFields",
+        "fields_injective",
+        "tailCodec",
+        "codec",
+        "image",
+        "nodes",
+        "stack",
+        "pointers",
+        "commit",
+        "commit_length"
+      ]
+    },
+    {
+      "module": "ParserMachine020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/parsermachine001/source/ParserMachine020E5.lean",
+      "source_sha256": "b9992f8d709ded5b7519d7e6293fe18be485dfecc2818bc3c94b20c8f7c41afa",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/ParserMachine020E5.olean",
+      "artifact_sha256": "455ddcb08e71d0fe0ab6466411cef363a66711c32a979ea20aabd1d2a1f36c0f",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/parsermachine001/receipt.json",
+      "exports": [
+        "start",
+        "decision",
+        "cursorNext",
+        "step",
+        "result",
+        "run",
+        "step_result",
+        "run_result",
+        "start_result",
+        "step_cursor",
+        "run_cursor"
+      ]
+    },
+    {
+      "module": "BoundaryFill020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/boundary006/source/BoundaryFill020E5.lean",
+      "source_sha256": "c545e829588c5d14e864d96685dc98062ca5b06162ee91ac355388c6e25c3b1c",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/BoundaryFill020E5.olean",
+      "artifact_sha256": "4b9dbe4505d2fd951dd5ac806d9993f44f3b9866f1b073715e54b96e93aa6315",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/boundary006/receipt.json",
+      "exports": [
+        "fill",
+        "fill_eq",
+        "fill_read",
+        "tape",
+        "rom",
+        "inputs",
+        "output",
+        "tape_eq",
+        "rom_eq",
+        "inputs_eq",
+        "output_eq"
+      ]
+    },
+    {
+      "module": "ParserStore020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/parserstore003/source/ParserStore020E5.lean",
+      "source_sha256": "bf4a3c0d6c54f3c2a6eb26bcfc27a26397bbdc4dddb4679e9b9c528bc7d9a1a5",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/ParserStore020E5.olean",
+      "artifact_sha256": "52f6b752b5e820dff3f64c77c8c56a113a4bbfcf3880a159013789e9e6b7262c",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/parserstore003/receipt.json",
+      "exports": [
+        "Width",
+        "shape",
+        "shape_injective",
+        "controls",
+        "codec",
+        "image",
+        "control",
+        "commit",
+        "program",
+        "control_length",
+        "commit_length",
+        "length_bound",
+        "run_trace"
+      ]
+    },
+    {
+      "module": "ScriptBuffer020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/scriptbuffer001/source/ScriptBuffer020E5.lean",
+      "source_sha256": "4f763724e942623add67523cbd41f35c366e67d1f24e3f67e1f77f4a9f39969e",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/ScriptBuffer020E5.olean",
+      "artifact_sha256": "388621967b09ebadf0f9b0fb0cf779acf82e7cfce13365bf7c1fff99d2dda62b",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/scriptbuffer001/receipt.json",
+      "exports": [
+        "Buffer",
+        "buffer",
+        "action",
+        "scan",
+        "execute",
+        "scan_append",
+        "scan_none",
+        "scan_some",
+        "buffer_read",
+        "executes",
+        "populate",
+        "populate_eq"
+      ]
+    },
+    {
+      "module": "ScriptMachine020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/scriptmachine002/source/ScriptMachine020E5.lean",
+      "source_sha256": "d6b87419c3f542c8421a27317ed1c38079a5845848a3eee3692269cf93f4845d",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/ScriptMachine020E5.olean",
+      "artifact_sha256": "78dcce9eba2b644d1b90e6d1311c07bcead1d3cae6c182407860295ae60fcbf2",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/scriptmachine002/receipt.json",
+      "exports": [
+        "step",
+        "run",
+        "meaning",
+        "step_meaning",
+        "run_meaning",
+        "step_cursor",
+        "done",
+        "terminal_meaning",
+        "start",
+        "executes",
+        "script_executes"
+      ]
+    },
+    {
+      "module": "ScriptStore020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/scriptstore001/source/ScriptStore020E5.lean",
+      "source_sha256": "f8b57aa0f8b3a69706e5fd1899449931b8ecbd2a8e1de852dddd6b556d5194ac",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/ScriptStore020E5.olean",
+      "artifact_sha256": "c9a414f5ae6f95309e7779be17fa3d29048017deeba3b906a48eae08b4cbe9a2",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/scriptstore001/receipt.json",
+      "exports": [
+        "optionShape",
+        "option_injective",
+        "writeCodec",
+        "controls",
+        "shape",
+        "shape_injective",
+        "codec",
+        "image",
+        "put",
+        "cursor",
+        "program",
+        "put_length",
+        "cursor_length",
+        "length_bound",
+        "run_trace"
+      ]
+    },
+    {
+      "module": "FullCall020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/fullcall001/source/FullCall020E5.lean",
+      "source_sha256": "2020cb1847b39948c1c453e95a588ad3695c8b833968f35b3d9c9d0978b131f2",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/FullCall020E5.olean",
+      "artifact_sha256": "501fdef5f427f13b5b652b3df30db1be869b8e62ace44927cdbcff2f6dfa0e2a",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/fullcall001/receipt.json",
+      "exports": [
+        "fromArena",
+        "fromArena_eq",
+        "parsed",
+        "parsed_eq",
+        "actual",
+        "actual_eq",
+        "observe",
+        "observe_eq",
+        "run",
+        "run_eq",
+        "every_tape"
+      ]
+    },
+    {
+      "module": "PublicData020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/publicdata002/source/PublicData020E5.lean",
+      "source_sha256": "f118cbbfb4361b000266a5db68e04e8076e5b45021d2050c559de32d1f1c6739",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/PublicData020E5.olean",
+      "artifact_sha256": "bae03b21b73d90a3e7c20f3de16577ebf38801325bb69b510671a2c4de185a10",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/publicdata002/receipt.json",
+      "exports": [
+        "fieldCodec",
+        "cellCodec",
+        "codeBank",
+        "prepared",
+        "shape",
+        "shape_injective",
+        "codec",
+        "image",
+        "image_injective",
+        "romCell",
+        "romCell_eq",
+        "code_eq",
+        "image_size",
+        "filledROM",
+        "filledROM_eq"
+      ]
+    },
+    {
+      "module": "IndexedParser020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/indexedparser001/source/IndexedParser020E5.lean",
+      "source_sha256": "637e83933709893977dd949eac42d6adb02339cafafc7104c46d49c2b2c93666",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/IndexedParser020E5.olean",
+      "artifact_sha256": "379c6f786a8f6b23196d192fad07edd81fab656d6c1618ac2b8468997537e27f",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/indexedparser001/receipt.json",
+      "exports": [
+        "step",
+        "run",
+        "meaning",
+        "step_meaning",
+        "run_meaning",
+        "step_cursor",
+        "done",
+        "terminal_meaning",
+        "executes",
+        "run_trace"
+      ]
+    },
+    {
+      "module": "CoreStartup020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/corestartup005/source/CoreStartup020E5.lean",
+      "source_sha256": "665c477763dece56346f6c6a8e397e2c1061ac2dca32327a3911813a71e6a9b1",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/CoreStartup020E5.olean",
+      "artifact_sha256": "5a7af65194731bf3a0e8ee0dd07a546529e6547dd4b973abc70d95ddef8114eb",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/corestartup005/receipt.json",
+      "exports": [
+        "blank",
+        "ready",
+        "program",
+        "length",
+        "ready_start",
+        "push_ready"
+      ]
+    },
+    {
+      "module": "StartupImage020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/startupimage002/source/StartupImage020E5.lean",
+      "source_sha256": "95662df873ec97b6ddb872ba2f514661e3d8c41104cb23bb9ea3c93f386e4d93",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/StartupImage020E5.olean",
+      "artifact_sha256": "c840c63e5359162a65db3604bc78f5d67306b4d8547dda421d0d113035baf4f0",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/startupimage002/receipt.json",
+      "exports": [
+        "pack_zero",
+        "empty_node_zero",
+        "empty_frame_zero",
+        "meta_zero",
+        "core_zero",
+        "parser_zero",
+        "zero_cells"
+      ]
+    },
+    {
+      "module": "WordTrace020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/wordtrace002/source/WordTrace020E5.lean",
+      "source_sha256": "40c4bb7f6ea168ed1f8e8be2cee52f1f9515471be933fc5c548d8b18a935bb7d",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/WordTrace020E5.olean",
+      "artifact_sha256": "16485ce445e675e23b9a309e526d0db25af0b3e37e87ab88fb2506294c25b872",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/wordtrace002/receipt.json",
+      "exports": [
+        "append",
+        "right",
+        "left",
+        "fill"
+      ]
+    },
+    {
+      "module": "ScratchRound020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/scratchround002/source/ScratchRound020E5.lean",
+      "source_sha256": "a249a78157eac0662535b1f75d025101c01a2322014e5d38ef6302259775f195",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/ScratchRound020E5.olean",
+      "artifact_sha256": "99b11eb7275132b5eecc342992f8fc9e70e6cb15fe9066c0e86c4961629719e7",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/scratchround002/receipt.json",
+      "exports": [
+        "reset",
+        "loadState",
+        "round",
+        "loadState_eq",
+        "round_target",
+        "script_trace",
+        "reset_trace",
+        "image_split",
+        "load_trace",
+        "round_trace",
+        "round_heap"
+      ]
+    },
+    {
+      "module": "ResidentCall020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/residentcall001/source/ResidentCall020E5.lean",
+      "source_sha256": "d63bfe92680b4c7f282c4915734381e7d343a996f1e9f85bf519bfe8fb27bc2d",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/ResidentCall020E5.olean",
+      "artifact_sha256": "2a33fe0a8856fad0d1488497a6a200ab4f52f9547d8f6ee419f3643c129c1e6f",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/residentcall001/receipt.json",
+      "exports": [
+        "inputs",
+        "parsed",
+        "run",
+        "inputs_eq",
+        "parsed_eq",
+        "run_eq",
+        "every_tape",
+        "code",
+        "code_eq",
+        "law",
+        "law_eq",
+        "all_h_ac",
+        "certificate",
+        "same_key_law"
+      ]
+    },
+    {
+      "module": "ScratchConsumers020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/scratchconsumers002/source/ScratchConsumers020E5.lean",
+      "source_sha256": "167651d240a8a772b9597519bdb5ab02d2461da154818e98b4cfe0b16aedb860",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/ScratchConsumers020E5.olean",
+      "artifact_sha256": "419c9e34f330c75f9d7f4b5d276e7f0e62c2ae0b43cdff11ce89e7ebd1f84ac1",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/scratchconsumers002/receipt.json",
+      "exports": [
+        "checked",
+        "core",
+        "parser",
+        "fill",
+        "startup"
+      ]
+    },
+    {
+      "module": "BoundaryPayload020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/boundarypayload002/source/BoundaryPayload020E5.lean",
+      "source_sha256": "cf5e95554d79ba0ee50ec9bf70d479fe7be94994da7059a649a0b8181d502efc",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/BoundaryPayload020E5.olean",
+      "artifact_sha256": "0d68735ad5a5b4aa23042f4b7ca8f8fcbb5a6494bffa0c161116811a36b9250b",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/boundarypayload002/receipt.json",
+      "exports": [
+        "region",
+        "heap",
+        "payloadWords",
+        "heap_size",
+        "payload",
+        "resident_live",
+        "scratch",
+        "withScratch",
+        "withScratch_live"
+      ]
+    },
+    {
+      "module": "BoundaryNumbers020E5",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/boundarynumbers003/source/BoundaryNumbers020E5.lean",
+      "source_sha256": "a74ba485c833a7a82a26407e5dbecf000ca1fc7b449a6c022bca0ac331d9d8d5",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/lib/BoundaryNumbers020E5.olean",
+      "artifact_sha256": "4374ea2cf80e5cab6633da3070b52b6fef585d34d452705a2c5ea5e4f113ca95",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/runs/boundarynumbers003/receipt.json",
+      "exports": [
+        "payload",
+        "represented_resident",
+        "padded_bytes"
+      ]
+    }
+  ],
+  "attempts": [
+    {
+      "label": "banklayout001",
+      "module": "BankWordLayout020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "2bdb7ca6733cc7f41d0bf4add1b9e33896d1f20e040ff108802ffe1bbc3d5efe"
+    },
+    {
+      "label": "boundary001",
+      "module": "BoundaryFill020E5",
+      "exit_code": -6,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "288779d07802404bfe513230f0dc6992a8f2c2dba15156655f26586d7b4e5c32"
+    },
+    {
+      "label": "boundary002",
+      "module": "BoundaryFill020E5",
+      "exit_code": -6,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "cf5188164f0e46739f89665afbd89309dcbe9f0c410a8bcdca00570c72ad10f8"
+    },
+    {
+      "label": "boundary003",
+      "module": "BoundaryFill020E5",
+      "exit_code": -6,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "b877820bbae3ad68c06808970bd2b14def8640f197da11cca5380976e173cfc6"
+    },
+    {
+      "label": "boundary004",
+      "module": "BoundaryFill020E5",
+      "exit_code": -6,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "1c9bc186fef2f821cd71a7f358eafc34b666321da7fe90eb5144946cf553025c"
+    },
+    {
+      "label": "boundary005",
+      "module": "BoundaryFill020E5",
+      "exit_code": 1,
+      "error_count": 3,
+      "warning_count": 0,
+      "receipt_sha256": "db6f339270bd59924b2a6b60859211605480f0daea50f23aeb404b8d395b6f7c"
+    },
+    {
+      "label": "boundary006",
+      "module": "BoundaryFill020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "23c8c4bf47119b333f85da4a062447e18af4814d7cb221ca6afa6caa2e5ace02"
+    },
+    {
+      "label": "boundaryaudit001",
+      "module": "PeakBoundaryAudit020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "5d76ff3b63b360aa889bcb719b15a7785d75b8cd6d49b368193535893b87e6b2"
+    },
+    {
+      "label": "boundaryaudit002",
+      "module": "PeakBoundaryAudit020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "c214045d378dbc21c34d7078ba2a07ec9f0847166c69f8b19a8372c0d2b2c5c6"
+    },
+    {
+      "label": "boundarynumbers001",
+      "module": "BoundaryNumbers020E5",
+      "exit_code": 1,
+      "error_count": 1,
+      "warning_count": 0,
+      "receipt_sha256": "d16f33c267d77dd35f90a193051ed6904c29147bbdc663135b6872c1f652d884"
+    },
+    {
+      "label": "boundarynumbers002",
+      "module": "BoundaryNumbers020E5",
+      "exit_code": 1,
+      "error_count": 1,
+      "warning_count": 0,
+      "receipt_sha256": "57e95ba8f195d5af1915d6a06bd01edfeae2750130def87785a61f9d5687ae7e"
+    },
+    {
+      "label": "boundarynumbers003",
+      "module": "BoundaryNumbers020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "9fd56c0f37249bd7a40dd4db53c05cc76c28704be47f34d817f4830bd437b78b"
+    },
+    {
+      "label": "boundarypayload001",
+      "module": "BoundaryPayload020E5",
+      "exit_code": 1,
+      "error_count": 1,
+      "warning_count": 5,
+      "receipt_sha256": "322073a7c9094a4310c629f254647bb70be3257625d5b8feb70a82ed3f53fe40"
+    },
+    {
+      "label": "boundarypayload002",
+      "module": "BoundaryPayload020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "bcc048ceb192991c837595704817f78183a1574f7b4574df88461e40124fc852"
+    },
+    {
+      "label": "codec001",
+      "module": "WordCodec020E5",
+      "exit_code": 1,
+      "error_count": 5,
+      "warning_count": 0,
+      "receipt_sha256": "15f8671114ca54ea9e2ac905ec0a7371d38108a6f2a0a29f077759653dc281f1"
+    },
+    {
+      "label": "codec002",
+      "module": "WordCodec020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "cb1f6db1ee489814b45cd92b74747f07e23d299809c088b78ab343983dd20a6c"
+    },
+    {
+      "label": "controlstore001",
+      "module": "ControlStore020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "1a096d2e5ddff38c0b85c1a8bb9bcabeb7c75bad700309b44b3a08b08a241b4e"
+    },
+    {
+      "label": "coreaudit001",
+      "module": "PeakCoreAudit020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "ef37ab693481c704caf6fcb03b30df009c712bed8886c0adea539751de207298"
+    },
+    {
+      "label": "corecontrol001",
+      "module": "CoreControl020E5",
+      "exit_code": 1,
+      "error_count": 2,
+      "warning_count": 0,
+      "receipt_sha256": "e3182150d367d719b179b46a0b9779883a549131cc420862f03add0b211a865d"
+    },
+    {
+      "label": "corecontrol002",
+      "module": "CoreControl020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "88a2e9321a83f46750aa9b0fb9b6d6589b44cbe85f57a029d39426d3f63b49ce"
+    },
+    {
+      "label": "coredata001",
+      "module": "CoreData020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "f09fd124b6b14eeba9d0c2a5baf39bcc21a39cb8b1075ae1c0ba95f0e7fab301"
+    },
+    {
+      "label": "coredatapatch001",
+      "module": "CoreDataPatch020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "3db9b9905ef2bc31da8c969652eef00b0193c79edd74718bb724af90260ded8d"
+    },
+    {
+      "label": "coreencoding001",
+      "module": "CoreEncoding020E5",
+      "exit_code": 1,
+      "error_count": 5,
+      "warning_count": 0,
+      "receipt_sha256": "73cb9bee40dc5854b01e86da37db1706e79fd865fc2ae66ef0b82ab13305ea7a"
+    },
+    {
+      "label": "coreencoding002",
+      "module": "CoreEncoding020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "8bbf85336c103e050892076da17ad013499ccc4e28a1f0d8ef270e637b262d15"
+    },
+    {
+      "label": "corefield001",
+      "module": "CoreFieldPatch020E5",
+      "exit_code": 1,
+      "error_count": 6,
+      "warning_count": 16,
+      "receipt_sha256": "e6b69a60ca5fd526507ac25b5b47c9a5adffc5e27258765f784dfc752c5fd2a6"
+    },
+    {
+      "label": "corefield002",
+      "module": "CoreFieldPatch020E5",
+      "exit_code": 1,
+      "error_count": 6,
+      "warning_count": 12,
+      "receipt_sha256": "3552458de3bca5ea7cb98498e12973e648cdcc628dee5c795328e95dc649d46b"
+    },
+    {
+      "label": "corefield003",
+      "module": "CoreFieldPatch020E5",
+      "exit_code": 1,
+      "error_count": 12,
+      "warning_count": 0,
+      "receipt_sha256": "02d5e08b0bfe319cb0296bdda3ed31d99ad2ab62027ea64d897590d7325b5d54"
+    },
+    {
+      "label": "corefield004",
+      "module": "CoreFieldPatch020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "01dd82691914cd45ede4db0e03eca914ff88d7948f71013c0454c4d797eee40f"
+    },
+    {
+      "label": "coreheap001",
+      "module": "CoreHeap020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "429e710ee985be70bc27e3e2e6696c223246a7e4abc6866fb9a35cc52b3cdadc"
+    },
+    {
+      "label": "corerun001",
+      "module": "CoreRun020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "f721a3959a88b869e75fad84de5b390ca7c3bdc519506df1063de74a6277fb8f"
+    },
+    {
+      "label": "corestartup001",
+      "module": "CoreStartup020E5",
+      "exit_code": 1,
+      "error_count": 2,
+      "warning_count": 5,
+      "receipt_sha256": "a64d893835ce87dfae6ad40df251a3f373e87028aba3084dc22604928fcd2553"
+    },
+    {
+      "label": "corestartup002",
+      "module": "CoreStartup020E5",
+      "exit_code": 1,
+      "error_count": 3,
+      "warning_count": 2,
+      "receipt_sha256": "acf3ab82f116a201a6baf844c1a1bb00f973a7ebe31f875f96db74df349430a1"
+    },
+    {
+      "label": "corestartup003",
+      "module": "CoreStartup020E5",
+      "exit_code": 1,
+      "error_count": 3,
+      "warning_count": 1,
+      "receipt_sha256": "b2459c1e9e3794987de30be8490ecb0ad6a01059932c67897604a2af97e2975f"
+    },
+    {
+      "label": "corestartup004",
+      "module": "CoreStartup020E5",
+      "exit_code": 1,
+      "error_count": 2,
+      "warning_count": 0,
+      "receipt_sha256": "2cff75e8a2c55958af19f93e59e6d31135987f075a0307a125994b0a1ae0b2e9"
+    },
+    {
+      "label": "corestartup005",
+      "module": "CoreStartup020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "3d79cb6646c779921442984188a56e172668d8585db5eebe2999b9dc2a4c424a"
+    },
+    {
+      "label": "corestate001",
+      "module": "CoreState020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "8d4e82cca3389167972a02621aa3697b3374d800ed7fa009b7dbac97b5c52d9a"
+    },
+    {
+      "label": "corestep001",
+      "module": "CoreStep020E5",
+      "exit_code": 1,
+      "error_count": 5,
+      "warning_count": 1,
+      "receipt_sha256": "70cac8669524abfc9bff7a4f7fde79502f9cc442a5344f34ae30a8a5b391e9ea"
+    },
+    {
+      "label": "corestep002",
+      "module": "CoreStep020E5",
+      "exit_code": 1,
+      "error_count": 14,
+      "warning_count": 0,
+      "receipt_sha256": "5992d2430869a3d771abcfd48dc892ab4a35b7506037169d59c6b9d31d9154f9"
+    },
+    {
+      "label": "corestep003",
+      "module": "CoreStep020E5",
+      "exit_code": 1,
+      "error_count": 6,
+      "warning_count": 3,
+      "receipt_sha256": "f9ce1f603caf7745a23f4e6290488f331222234557e1f117f52a064c75cfd7ba"
+    },
+    {
+      "label": "corestep004",
+      "module": "CoreStep020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "6e8326efead8e8505f44e2f7b0498519deaaac1455b771798bc82adbbd2ebdc3"
+    },
+    {
+      "label": "corestore001",
+      "module": "CoreStore020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "7d32ef3f09faeeefe2ba76b7f1838f02c93d9029562d284fcd5e80e02e0ba599"
+    },
+    {
+      "label": "edit001",
+      "module": "MemoryEdit020E5",
+      "exit_code": 1,
+      "error_count": 4,
+      "warning_count": 1,
+      "receipt_sha256": "47283b8098da7b0e03d07cd7d55c311647b2ee90e70137684d860306371b102a"
+    },
+    {
+      "label": "edit002",
+      "module": "MemoryEdit020E5",
+      "exit_code": 1,
+      "error_count": 2,
+      "warning_count": 0,
+      "receipt_sha256": "3f2c13b5b0f38be6020426b2a610f3a16833e4c376a5c826430673b33d954cf0"
+    },
+    {
+      "label": "edit003",
+      "module": "MemoryEdit020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "0f9da01f6dc48f45009a47bec2dc9cf14d99ab8d348316fb0b45125afe3c0e6c"
+    },
+    {
+      "label": "fill001",
+      "module": "FillMachine020E5",
+      "exit_code": 1,
+      "error_count": 2,
+      "warning_count": 0,
+      "receipt_sha256": "e447e311c610a8c8183471ea12883744e5de9a008464f0487d563f30fd56de1e"
+    },
+    {
+      "label": "fill002",
+      "module": "FillMachine020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "71370c1be56c42b535086e3081e2e677a9cb9550484990dff48cadec3c96b18c"
+    },
+    {
+      "label": "fillstore001",
+      "module": "FillStore020E5",
+      "exit_code": 1,
+      "error_count": 1,
+      "warning_count": 0,
+      "receipt_sha256": "a67fa2867fa9f55e3a4eb6977afbd7786781dc93b488548ea3be096086668666"
+    },
+    {
+      "label": "fillstore002",
+      "module": "FillStore020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "1e8124907b21d25386886f7345cc981c42601e4e577e1b7d86bab519ae5e41f4"
+    },
+    {
+      "label": "fixedaction001",
+      "module": "FixedAction020E5",
+      "exit_code": 1,
+      "error_count": 5,
+      "warning_count": 0,
+      "receipt_sha256": "e54d19618b4f27040d61b96aa71e8ed9fe20e2191d003bf6c30a35c19545e780"
+    },
+    {
+      "label": "fixedaction002",
+      "module": "FixedAction020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "a64ee1b850d64d35c5d890457c8b2ccd9f4a32b26a79fcc2182fc4956165582d"
+    },
+    {
+      "label": "fullcall001",
+      "module": "FullCall020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "e9dc2d280fe6163bc927e0e1db80c78fbb3f8be1fffa0e93322f09db8de05dec"
+    },
+    {
+      "label": "indexedparser001",
+      "module": "IndexedParser020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "a439000375d2805c50cdf0557ba1fcc4d1cef3481c33ac56cbab7c4493c422d1"
+    },
+    {
+      "label": "join001",
+      "module": "WordJoin020E5",
+      "exit_code": 1,
+      "error_count": 2,
+      "warning_count": 0,
+      "receipt_sha256": "c43687f264411d585182392873de9ac2e466061b8f8a0a3a2da2626131dc7247"
+    },
+    {
+      "label": "join002",
+      "module": "WordJoin020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "58c87e5cfa85edf7f73cafe0078736e4d685869a2006afbb140c029131ebecf7"
+    },
+    {
+      "label": "meaning001",
+      "module": "CoreMeaning020E5",
+      "exit_code": 1,
+      "error_count": 2,
+      "warning_count": 3,
+      "receipt_sha256": "aa09273de6041e5f05e9a38e3b290d82c54c02115e47c10d6ae6ffa95ea027b2"
+    },
+    {
+      "label": "meaning002",
+      "module": "CoreMeaning020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "e645c1fa6b2f0e909bb2b8309ef4b79312a2a8284ba63aeb0e252c1dfb20feb2"
+    },
+    {
+      "label": "pairpatch001",
+      "module": "PairPatch020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "49f35a87516b76f1c33236df8c09ce63787c01bf2730f6f871f4d6ea00ccfecf"
+    },
+    {
+      "label": "parserdecision001",
+      "module": "ParserDecision020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "259dbc984614951ae40569c43588d1bb002fe86b936001a324d51b486c9cae3b"
+    },
+    {
+      "label": "parserencoding001",
+      "module": "ParserEncoding020E5",
+      "exit_code": 1,
+      "error_count": 1,
+      "warning_count": 2,
+      "receipt_sha256": "3d0ec1172b8488d10165df93ee3b6e193afbe6a2441964eba1a4a6a8960ac7d3"
+    },
+    {
+      "label": "parserencoding002",
+      "module": "ParserEncoding020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "a5d8dddfabbc17026226f25e4f6eba0615349a48321c8022ac59bcdec1881797"
+    },
+    {
+      "label": "parsermachine001",
+      "module": "ParserMachine020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "077e866b36a974e186911f05617d24f5544226c59528838fe0f5015581edeb0b"
+    },
+    {
+      "label": "parserstore001",
+      "module": "ParserStore020E5",
+      "exit_code": 1,
+      "error_count": 4,
+      "warning_count": 4,
+      "receipt_sha256": "4ec4943d43f34cda5665e2a422d3834b2f12ae3e1ad88e64a4605840828566d4"
+    },
+    {
+      "label": "parserstore002",
+      "module": "ParserStore020E5",
+      "exit_code": 1,
+      "error_count": 1,
+      "warning_count": 0,
+      "receipt_sha256": "0301b50db5e1cf2f719dbae8f4449661a8d4054cbe5934f3619ca3f40885f2a6"
+    },
+    {
+      "label": "parserstore003",
+      "module": "ParserStore020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "c4d641acb7dcf0e9f3a1c6a5ec232025744b586e34ab88a52a41fffe698078de"
+    },
+    {
+      "label": "patch001",
+      "module": "WordPatch020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 2,
+      "receipt_sha256": "ea2ce777d151998018b3849ce3908ab0313e5570ff00c337f67985e16ac00440"
+    },
+    {
+      "label": "patch002",
+      "module": "WordPatch020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "b46c87a8260e8a1beb0605c7915b3a566eb1776c4ced91ed3d929a6263e3dbd7"
+    },
+    {
+      "label": "preservation001",
+      "module": "CorePreservation020E5",
+      "exit_code": 1,
+      "error_count": 1,
+      "warning_count": 0,
+      "receipt_sha256": "2fcc8a108ff4b181d3883300a718c603d12a364d3b16d3993c9643f49f90a77b"
+    },
+    {
+      "label": "preservation002",
+      "module": "CorePreservation020E5",
+      "exit_code": 1,
+      "error_count": 1,
+      "warning_count": 0,
+      "receipt_sha256": "143c2f2627209d6ea31e01f4b26b547539ce2234f3138919dbfe886cf0000ace"
+    },
+    {
+      "label": "preservation003",
+      "module": "CorePreservation020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "5f39f0c10a17fa4b26d7eb256c5c70cbd7964138f3f226417c6c71fca54e6421"
+    },
+    {
+      "label": "publicdata001",
+      "module": "PublicData020E5",
+      "exit_code": 1,
+      "error_count": 10,
+      "warning_count": 0,
+      "receipt_sha256": "7e5e68f707d63e7c45179df75e800be3b92cc1394fbb99a212c91883d96b57cb"
+    },
+    {
+      "label": "publicdata002",
+      "module": "PublicData020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "acb4ae731a35440233ee429eeaf70a0d1a42d44c49676c8e80f8e746e6f334aa"
+    },
+    {
+      "label": "rank001",
+      "module": "CoreRank020E5",
+      "exit_code": 1,
+      "error_count": 2,
+      "warning_count": 0,
+      "receipt_sha256": "08836140adccd326e5cfc355b923a8e8028fb16a48d0f25c1ed7786842d9db58"
+    },
+    {
+      "label": "rank002",
+      "module": "CoreRank020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "ad449b0e66a0fa751f3d89c6e4a211fec4a4529f4ca725170e7784bcf6687318"
+    },
+    {
+      "label": "region001",
+      "module": "RegionRam020E5",
+      "exit_code": 1,
+      "error_count": 1,
+      "warning_count": 1,
+      "receipt_sha256": "bd00ff033a6391aa2e6e3b0fb87c64a25360170cebe5d78fd9c13a77de168c96"
+    },
+    {
+      "label": "region002",
+      "module": "RegionRam020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "77572e492e5d68f1c6989238fe113b5d63ef1e274180c0d1ba51a7bb2483dfe4"
+    },
+    {
+      "label": "regionframe001",
+      "module": "RegionFrame020E5",
+      "exit_code": 1,
+      "error_count": 1,
+      "warning_count": 3,
+      "receipt_sha256": "0e2677b5b86433940647df02f4d200de463f8b3152a539d6232b1e996365092a"
+    },
+    {
+      "label": "regionframe002",
+      "module": "RegionFrame020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "c43e0a7be2fb81223809eaf6fe6ece6386c90f9794937ec3c058ce7dab7c97da"
+    },
+    {
+      "label": "regionslot001",
+      "module": "RegionSlot020E5",
+      "exit_code": 1,
+      "error_count": 1,
+      "warning_count": 0,
+      "receipt_sha256": "720f78c108c369b45d577ddd9882b4ce4c5fcedc59265286184e5abb4a22709e"
+    },
+    {
+      "label": "regionslot002",
+      "module": "RegionSlot020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "4259ca6d9d255c831be48a4b66ed5dd98e38eae75eeb83f2089a624543cda3ab"
+    },
+    {
+      "label": "regiontrace001",
+      "module": "RegionTrace020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "45b50b214cf5578bcd914a6b48e9dfd7953c741fb2b7f060f2650dc3c9e2c6f8"
+    },
+    {
+      "label": "residentcall001",
+      "module": "ResidentCall020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "6bc4a17ef777bc11f19014005d03f4aaea902e904645e8f443921bc96ec18561"
+    },
+    {
+      "label": "scratchconsumers001",
+      "module": "ScratchConsumers020E5",
+      "exit_code": 1,
+      "error_count": 5,
+      "warning_count": 1,
+      "receipt_sha256": "59dc0e83e631b6272d54c156451836ecb2eb021c63e8ead0db809908e266243f"
+    },
+    {
+      "label": "scratchconsumers002",
+      "module": "ScratchConsumers020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "e5469f3985fba55c78c692c99fa1593854fe9e26b929e58533290a186b51f67d"
+    },
+    {
+      "label": "scratchround001",
+      "module": "ScratchRound020E5",
+      "exit_code": 1,
+      "error_count": 2,
+      "warning_count": 0,
+      "receipt_sha256": "735a14582f48ac78dd5fc7937ca9c9fa54522f3e776a51d2933b4b235a6c0972"
+    },
+    {
+      "label": "scratchround002",
+      "module": "ScratchRound020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "398c90f4771d52e0075df7268241653cd59da8bcfa8341868f57c21b9d85e605"
+    },
+    {
+      "label": "scriptbuffer001",
+      "module": "ScriptBuffer020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "f157fb075c39a6c19791b997327e15b9f278ef81b88d2a95d416dc694034d58e"
+    },
+    {
+      "label": "scriptmachine001",
+      "module": "ScriptMachine020E5",
+      "exit_code": 1,
+      "error_count": 2,
+      "warning_count": 1,
+      "receipt_sha256": "7a2b737db6112473b21d8bb5b05af7ec20f5ea9b8011f5d02ac8a11be2c845a1"
+    },
+    {
+      "label": "scriptmachine002",
+      "module": "ScriptMachine020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "1c1f6e914c704164d07127731aff89d91c35ba1de8aca7c23f8281896d05529e"
+    },
+    {
+      "label": "scriptstore001",
+      "module": "ScriptStore020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "ead0b33b053bf2f5e1fb68d48be116155af742446bfa50e264a310808c595bac"
+    },
+    {
+      "label": "startupimage001",
+      "module": "StartupImage020E5",
+      "exit_code": 1,
+      "error_count": 1,
+      "warning_count": 0,
+      "receipt_sha256": "83fea724e12021b1cf39b69fd52c75223c0ed16403ff6f97de50d39bfdd88c55"
+    },
+    {
+      "label": "startupimage002",
+      "module": "StartupImage020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "25861bcd7e9b5d4a208a5ab5462baa346e2d3ccc6b1d4a9ad417ec40a81c78b5"
+    },
+    {
+      "label": "verifiedpatch001",
+      "module": "VerifiedPatch020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "d6e7ef737f930964d8c6893f2398130f79376c24b4727faa4db1594011567909"
+    },
+    {
+      "label": "wordtrace001",
+      "module": "WordTrace020E5",
+      "exit_code": 1,
+      "error_count": 2,
+      "warning_count": 0,
+      "receipt_sha256": "38cbfc4cb9bc924ade83c9900914a0048702040c32fab3bcc915022a9e717b7a"
+    },
+    {
+      "label": "wordtrace002",
+      "module": "WordTrace020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "c3f81694b7f841dc82d1ffabd499891e6fb5e0c5b04131704c6e2a7cc3990ec9"
+    },
+    {
+      "label": "zeroalloc001",
+      "module": "ZeroAllocate020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "7c7b6c674feb7030204b2390d9015a6e6f30c87969959ba9a3ca8751bb4403df"
+    },
+    {
+      "label": "zerocodec001",
+      "module": "ZeroCodec020E5",
+      "exit_code": 1,
+      "error_count": 1,
+      "warning_count": 0,
+      "receipt_sha256": "4e98b385e505edf54e972c5201abd67f1a8666a5655861638ee1b52615aab1ac"
+    },
+    {
+      "label": "zerocodec002",
+      "module": "ZeroCodec020E5",
+      "exit_code": 0,
+      "error_count": 0,
+      "warning_count": 0,
+      "receipt_sha256": "67f086d0a247c5f0a8c9e3607dc27c231707b60ab8156002655e29d81f783bd6"
+    }
+  ],
+  "sage": {
+    "status": "EXACT_SAGE_REPRESENTED_PAYLOAD_NOT_FULL_PEAK",
+    "sage": "10.9",
+    "values": {
+      "public_image": "95452",
+      "tape_with_cursor": "24662538241",
+      "rom_with_cursor": "93699",
+      "parser_with_cursor_and_failure": "5266",
+      "core_complete": "143922",
+      "output_with_cursor": "50690",
+      "stored_script_with_cursor": "97",
+      "seven_region_headers": "14",
+      "boundary_payload": "24662927270",
+      "represented_resident_with_script": "24662927381",
+      "padded_bytes_for_represented_resident": "1578427352384"
+    },
+    "script_sha256": "0cb50b2a2a10d3ca7a9d6e41502b78c3dc8ef475cdc18ecbf7988e5de2853bde",
+    "generated_source_sha256": "a74ba485c833a7a82a26407e5dbecf000ca1fc7b449a6c022bca0ac331d9d8d5",
+    "exclusions": [
+      "emitter-local lifetime proof",
+      "outer scheduler and whole-call allocation composition",
+      "native Lean/C implementation and bit cost"
+    ]
+  },
+  "sage_command": "sage proofs/ft1536/development/S05_QROM/notes/CHECK_BOUNDARY_PAYLOAD_020E5.sage proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/sage_payload_003/BoundaryNumbers020E5.lean",
+  "sage_runtime_environment": {
+    "TMPDIR": "proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/sage_payload_003/tmp",
+    "DOT_SAGE": "proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/sage_payload_003/cache",
+    "XDG_CACHE_HOME": "proofs/ft1536/development/S05_QROM/.build/pair_machine_020/peak_memory_001/sage_payload_003/cache"
+  },
+  "open": [
+    "emitter-local workspace and lifetime realization",
+    "single outer controller and complete allocation/phase composition",
+    "time of the new in-place implementation",
+    "source key support for unchanged M, real Sign/PRG, variant A bridge, QROM reduction"
+  ],
+  "scope_guards": {
+    "full_peak_proved": false,
+    "security_claim": false,
+    "independent_review": false,
+    "push": false,
+    "monitor_rom": "PAUSED",
+    "subagents": 0
+  },
+  "boundary_source_checkpoint": "9b64552fc49f9faa9f50371ba38bbc30c6f61be9"
+}
