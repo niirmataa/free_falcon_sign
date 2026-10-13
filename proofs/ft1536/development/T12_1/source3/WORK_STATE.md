@@ -1,3 +1,25 @@
+# BATCH082 — required owner items1-4 complete and sealed
+
+B1.07/B1.08/B1.09 Acceptance MET in the pinned reference and explicit initial
+memory/capacity domain, PROVED_KERNEL_SCOPED / NOT_REVIEWED.
+KeygenPublicComplete082.observed_pair/actual_observed_pair derive BOTH actual
+final packets after return, SAME f/g/F/G/h/certificate and equations. Public
+length2881 and secret7681-10369 are conclusions; input public capacity domain
+of077 is transported from original caller memory through all source paths.
+No codec result/length/frame, probability, compiler or Sign-security premise
+was added. Finite actual-read pointer legality and legal-memory domain remain
+explicit. Required owner items1-4 COMPLETE; final synthesis still pending.
+
+6 proof modules/29 declarations/26 theorems; final0087 clean0/0 modules;
+38 full audit entries (32 terms,6 inductives).8 jobs/4 failed or refused,
+16 native steps/13 accepted. Own source commits0f960005/28b55829, no push.
+BATCH082 SHA256a72155c715932406d7195036c1932a13f3629aad71a6a225012c7cc43141571b.
+POSTSEAL082:21758 matching pins,SHA256
+b2961b900211b4776da3901112d7aa745c5b85ed6ddfa3f3c7a79072ed3f4b6c.
+NEXT: bounded optional existing-fiber adapter and one coherent final audit/
+whole-task report. Full B1.11 fresh closure replay/mutations/independent review
+are not forced or claimed. do_sign realization and probability laws stay open.
+
 # BATCH081 — full observed secret accepted; whole public join next
 
 Owner continuous task ACTIVE. B1.07 and B1.08 Acceptance MET in the pinned
