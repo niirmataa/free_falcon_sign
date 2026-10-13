@@ -1,3 +1,135 @@
+# KEYGEN_SOURCE_TO_FIBER_001 — B1.08 / exact lengths and partial NONE decoder
+
+**Exact NONE/STATIC lengths: PROVED_KERNEL_SCOPED / NOT_REVIEWED.**
+**Source decoders: PARTIAL; full source round-trip OPEN.**
+**B1.07/B1.08: PARTIAL_PROOF / Acceptance NOT MET.**
+**Package: IN_PROGRESS / WORKING_NOT_FROZEN.**
+2026-10-13, Codex, BATCH_072.
+**CLOSED_AT_RECOVERABLE_MIDPOINT. Exactly one close this window.**
+B1.05/032, B1.06/046 and full STATIC071 unchanged. Exact source lengths and
+actual four-STATIC-call return lengths are closed on SAME original physical
+inputs. NONE complete syntax and centered scalar/pair inverse adapter are
+proved, but neither complete source decoder execution nor actual encoder-to-
+adapter byte connection is proved. Mathematical/physical transport remains
+OPEN; public LAST. Handoff **52R**. Notes072 state all boundaries explicitly.
+
+## 52. Closed — exact encoder lengths / partial NONE inverse adapter
+
+1. BEFORE edits/jobs: sealed071 verified **15526 pins** into
+   levels_072/ENTRY_PINS_072.json, SHA256
+   `a1d9287c4fe6b2d180cd5f39da8828245cee69652bb73f76b8b240dfb79715c1`.
+   Only recorded061/063 supersessions. Base e5038969; host proof slot empty.
+   Original sources read from pinned live Extra/c. No predecessor repairs.
+2. Exact STATIC unary/coefficient lengths, bit conservation, final pending
+   and INDEPENDENT padding give ceil(sum(10+floor(abs(x_i)/256))/8). No whole-
+   accumulator bound; all int16, including-32768. For1536 words:1920..26496
+   bytes. Physical LowMagnitude<256 gives exactly1920. No Vec lift assumed.
+3. Full NONE source/dispatcher derives3072 or real pre-write capacity return0.
+   Full STATIC source/dispatcher derives LengthOutcome for every actual flow:
+   same expected ordered bytes, complete return at exact formula OR exhausted
+   strict prefix/return0. NULL/adequate-capacity successful return is derived.
+   No desired codec result, encoded length or frame premise. Source normal
+   four-call chain derives individual exact lengths on SAME physical inputs.
+4. Complete uncompress_none source lexer/grammar/whole-body partition proved.
+   New parser retains all original tokens, restricted literal0x8000=8*16^3,
+   decoder callee names; old encoder parser immutable. Generator reproduces
+   all7 decoder/parser files byte-exactly from pinned Extra/c/falcon-enc.c.
+   This is SYNTAX ONLY, not inherited encoder Exec applied to a new decoder.
+5. NONE sign/byte reconstruction for ALL int16; range guard and long subtraction
+   on explicit[-9216,9216], pair_roundtrip and PURE pair-stream segment++tail
+   proved. Actual source byte loads/int16 stores/loop/return and original
+   encoder read/write-to-pair connection remain OPEN. Pure adapter round-trip
+   is not a complete source or decoded-memory round-trip theorem.
+6. New kernel witnesses: shared-padding identity false for GENERAL one-word
+   list streams (not M0 executions); unrestricted NONE scalar inverse false
+   at honest9217 (the source scalar range gate rejects it, not a code bug).
+   Both065/066 old counterexamples unchanged. No new Sage/C campaign.
+7. Final013: **13 modules+audit,14 clean0/0**, child sum54.681s, max observed
+   RSS3677568KiB. **305=293 new+12 inherited**, **292 complete terms+13 kernel
+   inductives**, standard axioms only/no elisions. Full audit41,855,762 bytes
+   remains durable ignored output with committed generator/source/pin.
+   **13 jobs/34 steps,28 accepted steps,7 wholly accepted/6 failed jobs**.
+   Mixed011 explicit; every cause/raw stream/snapshot/wait/olean retained.
+8. Final PRESEAL_002 verifies15526 predecessor pins with final organizer hash.
+   Initial PRESEAL preserved/pinned after adding decoder reproduction to the
+   unsealed organizer. Author proof-audit/proofread-math self-review only.
+   Supplemental schema1 validated with legacy limits; native records primary.
+   Own79200d72/7ad36a55/7fbe263e plus closing pair; foreign root/onboarding/
+   S05/objects/index/history preserved. No push/review/delegation/relay/
+   migration/import/production-C change, warning suppression or guard bypass.
+
+Sealed072 pair:
+- JSON `b04e30890d702f84138e0fafac6363484fa8cb0c70765e7a30443d5f320edd6f`.
+- Notes `2d104d30155d537fee17fb77b87e1ef9ec3fd5837351ce43f9e5c4abfeb117bf`.
+- Postseal **15815 pins**, levels_072/POSTSEAL.json
+  `236c61a84e87b51f39fc22a384173201f5fbf2baca39e95361d7ace305704c96`.
+- Full audit `57dafc15133ecd5aa01c4e39341e71437da94000bc1ced93b93684ab481062e6`.
+- PRESEAL_002 `79a19c7c7d750b27483676ee11d6f9240c25692d112c39e3d808ec5b8c583495`.
+- Generator check `5a706521a8f8f2d914701276c4cb7a54ec5811d718597847d9b8e5ae46c022f5`.
+
+### 52.1 Strongest types and smallest missing implication
+
+Full qualified types/terms: final013 SEARCH_AUDIT.json. Exact source length:
+
+```text
+q18433 -> logn10 -> args.x=some ptr -> inputs.length=1536 ->
+Words before ptr inputs -> Separated args.out ptr.block ->
+Exec args StaticBinding.code (initial args before) after flow ->
+LengthOutcome args before after.heap inputs flow
+```
+
+byteLength inputs is the proved mathematical ceiling formula, not a supplied
+output length. LengthOutcome retains the actual original-input ordered byte
+prefix and complete return OR real capacity rejection. chain_lengths consumes
+actual source-chain normal completion and DERIVES each individual length;
+physical Originals at the chain boundary remain explicit, not mathematical
+Vec material. No full KeyGen/B1.07/B1.08 Acceptance follows.
+
+Pure NONE adapter:
+`CarrierList inputs -> parse inputs.length (wire inputs ++ tail) = some(inputs,tail)`.
+It has no Exec or heap conclusion. NEXT: define/bind complete uncompress_none
+reference Exec with genuine byte loads and int16 stores. From finite DEFINED
+execution, q18433/logn10,1536 centered input words, actual byte-source/writable
+int16-destination allocation, separation and sufficient supplied length,
+derive actual return3072, SAME decoded physical Words and outside-destination
+preservation. Independently derive the same wire from the NONE encoder's real
+read/write trace. Neither desired parse/output/frame nor a correctness flag
+may enter its Exec rules. The route is OPEN/executable, not refuted/exhausted.
+
+Remaining owner order: (a) complete source NONE and STATIC decoders with
+explicit carrier, honest round-trip/consumed lengths/segment++tail; full four
+independent paddings/header/cursor/final length store; (b) SAME mathematical
+Vec/coefficient-WORD ↔ physical original/decoded int16 arrays, both directions;
+(c) public LAST, same canonical h/15-bit packing/2881/actual supplied-length
+return; (d) inherited B1.07/B1.10/call IDs/snapshots/LegalWorkspace status.
+B4/B5 laws/availability/PRG/security and compiler/ISO-C remain outside.
+
+## 52R. Handoff — next owner-started window
+
+1. This window closes ONCE at exact lengths/partial NONE decoder midpoint,
+   not Acceptance. Preserve015-072, recorded061/063 supersessions, all failed
+   attempts and old/new domain-limited counterexamples. No automatic resume/
+   review/delegation/relay/migration/import/push.
+2. BEFORE edits/jobs:
+   ```sh
+   mkdir -p .build/levels_073
+   python3 -B tools/keygen_codec_lengths_batch.py verify \
+     b04e30890d702f84138e0fafac6363484fa8cb0c70765e7a30443d5f320edd6f \
+     2d104d30155d537fee17fb77b87e1ef9ec3fd5837351ce43f9e5c4abfeb117bf \
+     .build/levels_073/ENTRY_PINS_073.json
+   ```
+   Expect **15815 pins**, only recorded061/063 supersessions. Mismatch is
+   stop-and-report, not silent repair. Check canonical physical main, shared
+   index/writer lock, approved identity and actual host proof processes.
+3. Resume52.1(a) in NEW modules; predecessors immutable. Reuse exact length
+   contracts, actual four-call lengths and NONE source-bound syntax/scalar/
+   pair adapter while respecting the missing execution bridge. Full STATIC
+   decoder still needs its own source binding/execution (not started072).
+   No desired codec result/length/frame, no obvious Vec/array agreement.
+4. One Acceptance or expanded midpoint; unchanged guarded serial runner/
+   host slot/bwrap/limits, clean0/0, all failures retained, exact-path local
+   commits. Push only after separate explicit owner signal. No review started.
+
 # KEYGEN_SOURCE_TO_FIBER_001 — B1.07 / full STATIC physical-input source semantics
 
 **Full STATIC: PROVED_KERNEL_SCOPED_PHYSICAL_INPUT / NOT_REVIEWED.**

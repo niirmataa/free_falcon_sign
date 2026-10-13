@@ -1,3 +1,46 @@
+# BATCH_072 — CLOSED at exact lengths/partial NONE decoder midpoint, 2026-10-13
+
+Codex: CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.
+Exactly one close; B1.07/B1.08 Acceptance NOT MET; package WORKING_NOT_FROZEN.
+Exact NONE3072 and STATIC ceil(sum(10+floor(abs(x_i)/256))/8) from bound complete
+bodies/dispatcher, all capacity outcomes/NULL; STATIC1920..26496 for1536 original
+physical int16 words,1920 on LowMagnitude. Actual normal four-call source chain
+derives each exact return length for SAME original physical arrays. No desired
+codec output/length/frame premise or whole-accumulator bound.
+Complete NONE decoder syntax bound; scalar sign/range/subtraction and PURE
+pair-stream segment++tail inverse proved on[-9216,9216]. Full decoder Exec/
+byte loads/int16 stores/loop/return and actual encoder-to-adapter byte connection
+remain OPEN. Mathematical Vec/physical transport OPEN/unstarted072; public LAST/
+unstarted072. Four caller padding/header/final length-store composition OPEN.
+No full KeyGen/B1.07/B1.08/B1.10 or B4/B5 advancement claimed.
+
+Entry15526 pinsa1d9287c…; JSONb04e3089…/notes2d104d30…;
+postseal15815 pins236c61a8…. Final01313 modules+audit14 clean0/0;
+audit305=293+12,292 terms+13 inductives,standard axioms/no elisions,
+byte-exact audit/7 decoder-file generators.13jobs/34steps retained,28 accepted,
+7 wholly accepted/6 failed, mixed011 explicit; maxRSS3677568KiB,54.681sfinal.
+Kernel witnesses: GENERAL shared-padding identity false (not M0 execution);
+unrestricted NONE scalar inverse false at9217 (expected carrier rejection).
+Both065/066 counterexamples/history unchanged; no new Sage/C campaign.
+PRESEAL_002 all15526 previous pins; initial PRESEAL retained. Author self-review/
+proofreading only. Own79200d72/7ad36a55/7fbe263e plus closing pair; foreign work/
+index/history preserved. Checkpoint52R has exact verify073 command and remaining
+source-execution type. No push/review/delegation/relay/migration/import/C change.
+Window CLOSED, no automatic resume. NEXT: full NONE source decoder/encoder byte
+bridge, then STATIC decoder, same material transport and public codec LAST.
+
+# BATCH_072 — owner-started lengths/decoders/transport continuation, 2026-10-13
+
+Codex resumes checkpoint51R from e5038969 on main. Entry071 verified BEFORE
+edits/jobs:15526 pins; receipt a1d9287c4fe6b2d180cd5f39da8828245cee69652bb73f76b8b240dfb79715c1.
+Fixed owner order: exact lengths from bound bodies; source decoders/round-trip
+with explicit carrier conditions; mathematical Vec/physical int16 transport;
+public codec LAST. No desired result/length/frame or obvious-agreement premise.
+Exactly one final Acceptance or recoverable midpoint. Predecessors immutable;
+all failed attempts preserved. One serial guarded proof job, unchanged limits,
+clean0/0 logs, exact-path local commits; no push/review/delegation/relay.
+IN_PROGRESS / NOT_REVIEWED / WORKING_NOT_FROZEN; this is not a close.
+
 # BATCH_071 — CLOSED at full STATIC physical-input midpoint, 2026-10-13
 
 Codex: CLOSED_AT_RECOVERABLE_MIDPOINT / PARTIAL_PROOF / NOT_REVIEWED.
