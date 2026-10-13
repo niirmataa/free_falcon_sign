@@ -1,0 +1,1306 @@
+{
+  "task": "S05/TODO020E/producer020E6",
+  "status": "IN_PROGRESS_PARTIAL_KERNEL_NOT_REVIEWED",
+  "goal_achieved": false,
+  "base": "3aed7cb57767886318625927252d4880ecc0c114",
+  "phase1_source_commit": "6e677a8b4b7e8843df35e99b40fa3477928b93cb",
+  "created_utc": "2026-10-13T21:01:48.373946+00:00",
+  "module_count": 37,
+  "theorem_count": 118,
+  "audited_exports": 309,
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "records": [
+    {
+      "module": "ProducerMachine020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/machine004/source/ProducerMachine020E6.lean",
+      "source_sha256": "b581883996bd7cd19b2568bc20162f630bfa8ef6d5cc77256e21986868466ae0",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerMachine020E6.olean",
+      "artifact_sha256": "861379a3102baa2c00fecc16b14328843c69a4a0994a9f3183c47da68cbcc352",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/machine004/receipt.json",
+      "exports": [
+        "Register",
+        "OutputCell",
+        "Sources",
+        "next",
+        "execute",
+        "step",
+        "run",
+        "initial"
+      ]
+    },
+    {
+      "module": "ProducerExpr020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/expr002/source/ProducerExpr020E6.lean",
+      "source_sha256": "214976a09805d79cd78e39cf484935b405b2675654c2b2aa5bb3fe29ad2769d7",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerExpr020E6.olean",
+      "artifact_sha256": "7bde9c0e045ed0a8e9876a235df2a416aad5b3e1258d92d5695259b383075104",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/expr002/receipt.json",
+      "exports": [
+        "readWord",
+        "eval",
+        "need",
+        "positive",
+        "compile",
+        "executeList",
+        "append"
+      ]
+    },
+    {
+      "module": "ProducerPrimitive020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/primitive002/source/ProducerPrimitive020E6.lean",
+      "source_sha256": "4ca027814024be6b4b85e81b41299fede12ad35c1389ec97850b4e2e10186402",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerPrimitive020E6.olean",
+      "artifact_sha256": "a944916714545b56fc2c7448e345ac544a54a43a6d4d895d559efe85b35de874",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/primitive002/receipt.json",
+      "exports": [
+        "destination",
+        "write_below",
+        "literal_value",
+        "load_value",
+        "binary_value",
+        "select_value",
+        "below"
+      ]
+    },
+    {
+      "module": "ProducerFrame020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/frame001/source/ProducerFrame020E6.lean",
+      "source_sha256": "2edc4964d6e7959617b95ab9a72c058ab24d2bc1df42dc08503584af54aba881",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerFrame020E6.olean",
+      "artifact_sha256": "3caa1a5722540e6f640ccf9e56cc24e9b470097a514634de1b440c77ab152522",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/frame001/receipt.json",
+      "exports": [
+        "Above",
+        "append_above",
+        "weaken",
+        "compiled",
+        "execute_below",
+        "compiled_below"
+      ]
+    },
+    {
+      "module": "ProducerCompiler020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/compiler003/source/ProducerCompiler020E6.lean",
+      "source_sha256": "96f567625f6e9e66627ff42561e441f69ce168a55a5c2ab2f9a54ca18ff130e9",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerCompiler020E6.olean",
+      "artifact_sha256": "1e844693b38c7d738cda6da21de15c9bc0626ee1126c9bc22e983da122ad506b",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/compiler003/receipt.json",
+      "exports": [
+        "correct"
+      ]
+    },
+    {
+      "module": "ProducerCodec020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/codec002/source/ProducerCodec020E6.lean",
+      "source_sha256": "fa2a637b56ebead287d76dde3f32e7ae33237c825d35911e176bb84dcc085710",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerCodec020E6.olean",
+      "artifact_sha256": "aecdbf7a0f761e47fe3b58641c0e4ebd3652fcf07e6bf7a883fb64e25a989806",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/codec002/receipt.json",
+      "exports": [
+        "Shape",
+        "shape",
+        "unshape",
+        "shape_injective",
+        "opTag",
+        "op_injective",
+        "opCodec",
+        "rc",
+        "oc",
+        "instruction",
+        "stateShape",
+        "state_shape_injective",
+        "state",
+        "image",
+        "initial_zero"
+      ]
+    },
+    {
+      "module": "ProducerScalar020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/scalar001/source/ProducerScalar020E6.lean",
+      "source_sha256": "1070c7016a7ce00d01402e150fc4e98477760d93caf91d71bdc4fc0834fac811",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerScalar020E6.olean",
+      "artifact_sha256": "5904cd8999452beccd5d4ba94af4eaea82d7e18e90913c478ad724654ae9a04f",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/scalar001/receipt.json",
+      "exports": [
+        "E",
+        "lit",
+        "add",
+        "sub",
+        "mul",
+        "eq",
+        "lt",
+        "choose",
+        "not",
+        "and",
+        "or",
+        "natClamp",
+        "pred",
+        "validAddress",
+        "cell",
+        "none",
+        "some",
+        "guarded",
+        "optionChoose"
+      ]
+    },
+    {
+      "module": "ProducerWordLaws020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/wordlaws002/source/ProducerWordLaws020E6.lean",
+      "source_sha256": "c36764b9a76da3fc6cf1dcebfd169f93459f9734f51b388623600996b3338161",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerWordLaws020E6.olean",
+      "artifact_sha256": "1a226643ca5712c450dc24762badca54c1e8cdb740ccab705039ac30437fef41",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/wordlaws002/receipt.json",
+      "exports": [
+        "word_zero",
+        "word_one",
+        "word_injective",
+        "add_nat",
+        "mul_nat",
+        "lt_nat",
+        "eq_nat",
+        "address_nat",
+        "load_nat",
+        "read_encoded_cell"
+      ]
+    },
+    {
+      "module": "ProducerCoreView020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/coreview002/source/ProducerCoreView020E6.lean",
+      "source_sha256": "11054a330acae282ae0f8f276615e59959b4af59dd341c0bd73e8b31c0c05134",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerCoreView020E6.olean",
+      "artifact_sha256": "d970d8473894d7aa914f1e3cb5228125c787ae74238ec702e257d0b77e824f99",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/coreview002/receipt.json",
+      "exports": [
+        "Core",
+        "Parser",
+        "extent",
+        "sources",
+        "regBase",
+        "ramBase",
+        "outBase",
+        "frameBase",
+        "valueBase",
+        "controlBase",
+        "core",
+        "control",
+        "arena",
+        "phase",
+        "cursor",
+        "left",
+        "sp",
+        "fault",
+        "used",
+        "parserSP",
+        "parserCursor",
+        "parserBad",
+        "valueAt",
+        "nodeAt",
+        "frameAt"
+      ]
+    },
+    {
+      "module": "ProducerEmit020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/emit002/source/ProducerEmit020E6.lean",
+      "source_sha256": "63bb8aa41361738abda73604ed3ce6615cc4c8eccb14e87138aa6cf0b2031705",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerEmit020E6.olean",
+      "artifact_sha256": "02886c4a951a93282f91bdff152b6fe104a058da5b4c1ddc40ea3bd51e803244",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/emit002/receipt.json",
+      "exports": [
+        "NoOutput",
+        "primitive_output",
+        "list_output",
+        "compile_no_output",
+        "one",
+        "one_output",
+        "batch",
+        "fills",
+        "batch_output"
+      ]
+    },
+    {
+      "module": "ProducerBatch020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/batch002/source/ProducerBatch020E6.lean",
+      "source_sha256": "a0437143ae713b5fdf0fb60679053d3e8d1c0308892c84d305869602b888c3c9",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerBatch020E6.olean",
+      "artifact_sha256": "e27e843b4b9e49a89a01a2df6b2203fa5f438914c896e033fc6aa42bc0c2036f",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/batch002/receipt.json",
+      "exports": [
+        "cost",
+        "compile_length",
+        "one_length",
+        "size",
+        "length",
+        "fills_patch",
+        "fills_all",
+        "full_output"
+      ]
+    },
+    {
+      "module": "ProducerStore020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/store002/source/ProducerStore020E6.lean",
+      "source_sha256": "4dc86b56816906d71cf1934bcd72f737716a4c08557f27d90ab929a6f0a03eaf",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerStore020E6.olean",
+      "artifact_sha256": "ce68d12f731dec8ac4ce60a5ee4936f4ffb62877129a9605f2d1fa6db2d2cdce",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/store002/receipt.json",
+      "exports": [
+        "controls",
+        "rest",
+        "reg",
+        "output",
+        "control",
+        "primitive",
+        "run_trace"
+      ]
+    },
+    {
+      "module": "ProducerExecution020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/execution001/source/ProducerExecution020E6.lean",
+      "source_sha256": "191397623f23a2e1bac4c0adf7eb3b77bcc5c0b089b740174b6ba5b5c87e3d98",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerExecution020E6.olean",
+      "artifact_sha256": "7d38c57a0712fb726b36d185dddfabdf3012a74bcb0b1f0c204a606440dd5ef5",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/execution001/receipt.json",
+      "exports": [
+        "execute_pc",
+        "meaning",
+        "step_meaning",
+        "run_meaning",
+        "done",
+        "terminal_meaning",
+        "executes"
+      ]
+    },
+    {
+      "module": "CoreReadGeneric020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/genericread002/source/CoreReadGeneric020E6.lean",
+      "source_sha256": "3fcbbba784a90d342d695c11bf6d858fdc7eb8eb65981de6998f7959eef44f80",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/CoreReadGeneric020E6.olean",
+      "artifact_sha256": "5730bcab0ac99e06bfe1b01fe6bd0454542d9cacd5efb0ae6bd62ed1a55dda67",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/genericread002/receipt.json",
+      "exports": [
+        "metaPtr",
+        "meta_read",
+        "valuePtr",
+        "value_read",
+        "framePtr",
+        "frame_read"
+      ]
+    },
+    {
+      "module": "ProducerCoreRead020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/coreread004/source/ProducerCoreRead020E6.lean",
+      "source_sha256": "229c36d40f8c1c1847d7353c23cae5d6633ff4c9af8163a2e9b82079b14d0913",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerCoreRead020E6.olean",
+      "artifact_sha256": "c27d2fe38ef62b1c4fe4021e1c8f311b381ea3d06204f6102d19d673309ab1b9",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/coreread004/receipt.json",
+      "exports": [
+        "hc",
+        "hf",
+        "hl",
+        "metaPtr",
+        "metaPtr_val",
+        "meta_read",
+        "valuePtr",
+        "valuePtr_val",
+        "value_read",
+        "framePtr",
+        "framePtr_val",
+        "frame_read"
+      ]
+    },
+    {
+      "module": "ProducerFetch020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/fetch002/source/ProducerFetch020E6.lean",
+      "source_sha256": "6934df36b749225a6a84984a11760babf485b123c4d8e64514ae5c4d890faecc",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerFetch020E6.olean",
+      "artifact_sha256": "10ef077fd1f58f2c92381a83f820b583610873a99533be8e41fc2fd0f104b9ed",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/fetch002/receipt.json",
+      "exports": [
+        "start",
+        "step",
+        "cycle",
+        "cycle_vm",
+        "cycle_phase",
+        "run",
+        "refines"
+      ]
+    },
+    {
+      "module": "ProducerProgram020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/program003/source/ProducerProgram020E6.lean",
+      "source_sha256": "15f6a48e6fd05121bee4d276652369d6c67bc83593269dd94419904cfb96064b",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerProgram020E6.olean",
+      "artifact_sha256": "03be554d2caef49ed5dbfd18fb42c645723ba4bd18dff09645b12ac118d56029",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/program003/receipt.json",
+      "exports": [
+        "listCode",
+        "code",
+        "code_read",
+        "initial_pc",
+        "run",
+        "output",
+        "done"
+      ]
+    },
+    {
+      "module": "ProducerCoreSource020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/coresource001/source/ProducerCoreSource020E6.lean",
+      "source_sha256": "b19f62e397a98a4fa0aa2ffaa71528545b8f584731fa968c7a12f3d5a178accb",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerCoreSource020E6.olean",
+      "artifact_sha256": "055a1ed5ffb98326f81449f0f10e8af5c7f6472d0e58ebde38f2436fa81f2bbd",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/coresource001/receipt.json",
+      "exports": [
+        "control_eval",
+        "value_word",
+        "frame_word"
+      ]
+    },
+    {
+      "module": "ProducerBankRead020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/bankread001/source/ProducerBankRead020E6.lean",
+      "source_sha256": "dcd454288815ebbf84876db89108a3469df3bdb9b3eb0d6a32d967cfb91fb86b",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerBankRead020E6.olean",
+      "artifact_sha256": "cd398740f07cb6dd29306c6c2d8c0791dfb7b8eb8af001631eaf6300f84a45da",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/bankread001/receipt.json",
+      "exports": [
+        "regPtr",
+        "reg_read",
+        "ramPtr",
+        "ram_read",
+        "outPtr",
+        "out_read"
+      ]
+    },
+    {
+      "module": "ProducerParserRead020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/parserread002/source/ProducerParserRead020E6.lean",
+      "source_sha256": "43e1aff3f07d92738103df2a37b6b4a221776e61db768551f89c706862e966ad",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerParserRead020E6.olean",
+      "artifact_sha256": "ae5cbfd05f9baddfdc7187ca547dee93925b6557d0e7e51b092c85becad1f058",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/parserread002/receipt.json",
+      "exports": [
+        "nodePtr",
+        "node_read",
+        "stackPtr",
+        "stack_read",
+        "usedPtr",
+        "spPtr",
+        "used_read",
+        "sp_read"
+      ]
+    },
+    {
+      "module": "ProducerWindow020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/window001/source/ProducerWindow020E6.lean",
+      "source_sha256": "9b8cccab8dd3451102d5db186a6ca70b09322e42d2305ef2a5dccebf887e0e0e",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerWindow020E6.olean",
+      "artifact_sha256": "c379847296c348428f3d7d4869a292781877ac1c3da29ca904b39fa3ddabc077",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/window001/receipt.json",
+      "exports": [
+        "top",
+        "topTag",
+        "topPC",
+        "topCount",
+        "scanFirst",
+        "scanSecond",
+        "scanValue",
+        "actFirst",
+        "actSecond",
+        "actThird",
+        "topPresent",
+        "scanPresent",
+        "actPresent",
+        "scanGuarded",
+        "actGuarded",
+        "cells",
+        "workspace"
+      ]
+    },
+    {
+      "module": "ProducerCoreCircuit020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/circuit001/source/ProducerCoreCircuit020E6.lean",
+      "source_sha256": "29fd77b081ce62c89515038d8aac9bd4bbb7c5a64df18d61e1b029bbdc834c8c",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerCoreCircuit020E6.olean",
+      "artifact_sha256": "0d6ad580cdc10b40b6b1532fe988e33a03a06af31601685a0d8659a9d14d231d",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/circuit001/receipt.json",
+      "exports": [
+        "C",
+        "w",
+        "isPhase",
+        "isToken",
+        "payloadNat",
+        "isAgain",
+        "remaining",
+        "binaryResult",
+        "scanPresent",
+        "scanValue",
+        "loopContinues",
+        "loopOK",
+        "ordinaryOK",
+        "actionOK",
+        "memFault",
+        "editTag",
+        "editAddress",
+        "editValue",
+        "actionPending",
+        "pushRoom",
+        "pendingPresent",
+        "pendingTwo",
+        "pushPending",
+        "nextPhase",
+        "nextCursor",
+        "nextMeta"
+      ]
+    },
+    {
+      "module": "ProducerCoreSlots020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/slots001/source/ProducerCoreSlots020E6.lean",
+      "source_sha256": "c818cf7c49936f94c2ee95bc2dda18e61af8fed44dae148dca01fa99595fad50",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerCoreSlots020E6.olean",
+      "artifact_sha256": "4c3a1b5abbd4545f854c10f056a9ef80dd94d843a9e4d2d40f29d5c6f7e2a59d",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/slots001/receipt.json",
+      "exports": [
+        "valueStep",
+        "actStore",
+        "pushStore",
+        "dataPresent",
+        "dataAddress",
+        "dataValue",
+        "cells",
+        "workspace"
+      ]
+    },
+    {
+      "module": "ProducerComposition020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/composition001/source/ProducerComposition020E6.lean",
+      "source_sha256": "f8c7ed9fb391aa06a2b9c7840a2d8e061ddc218dc091441551dccf3533d275e2",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerComposition020E6.olean",
+      "artifact_sha256": "4b079abb803977e6bb055fe7441a3f5e6ba3db071a0e50dbd7768a4fc09f6a54",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/composition001/receipt.json",
+      "exports": [
+        "oneSource",
+        "value",
+        "correct"
+      ]
+    },
+    {
+      "module": "ProducerPipeline020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/pipeline003/source/ProducerPipeline020E6.lean",
+      "source_sha256": "0fcb7c997a7fd9235c6ff6fd2646d5ebb1dc53a873aa6654930962e4bef9797f",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerPipeline020E6.olean",
+      "artifact_sha256": "5fdd69515e4c7ca18c91ad5993228d95fca836956f641f773ad02b70e7df378e",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/pipeline003/receipt.json",
+      "exports": [
+        "window",
+        "windowSources",
+        "words",
+        "run",
+        "run_words",
+        "window_cell",
+        "window_control"
+      ]
+    },
+    {
+      "module": "ProducerBoolLaws020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/boollaws002/source/ProducerBoolLaws020E6.lean",
+      "source_sha256": "0d8eb1373a6c33c44b04eab698efbcfc59cf4c2db973b83541332cd05603988d",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerBoolLaws020E6.olean",
+      "artifact_sha256": "a0a8d27bce75511fc53db67c71aa0a203f04557d45b4335eed7519bf859bffda",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/boollaws002/receipt.json",
+      "exports": [
+        "bool_zero",
+        "choose_word",
+        "eq_word",
+        "not_word",
+        "and_word",
+        "or_word"
+      ]
+    },
+    {
+      "module": "ProducerFetchStore020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/fetchstore003/source/ProducerFetchStore020E6.lean",
+      "source_sha256": "a2fde717432a3668c32524e153e51d7798018b3ec7df9e24394622187a84a216",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerFetchStore020E6.olean",
+      "artifact_sha256": "362a81e0f778fa8e89ac2d487bdfd556eef1d0b115259a6da8069d2742c62da0",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/fetchstore003/receipt.json",
+      "exports": [
+        "irCodec",
+        "tailCodec",
+        "shape",
+        "shape_injective",
+        "codec",
+        "image",
+        "controls",
+        "changeVM",
+        "program",
+        "fetched_word"
+      ]
+    },
+    {
+      "module": "ProducerMetaSource020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/metasource001/source/ProducerMetaSource020E6.lean",
+      "source_sha256": "988c53eec806c683e24e1ed32f2b72e8b13ebf76b57c935aa30c761122159bc2",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerMetaSource020E6.olean",
+      "artifact_sha256": "d3eaae10177247ed6f8c8764680eeb41d705083c4717ce6d0cb693746223f1bb",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/metasource001/receipt.json",
+      "exports": [
+        "env",
+        "phase",
+        "cursor",
+        "left",
+        "sp",
+        "fault"
+      ]
+    },
+    {
+      "module": "ProducerClamp020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/clamp001/source/ProducerClamp020E6.lean",
+      "source_sha256": "b2352556ad5d9c31d118983da0438197d5606fd9b41122ada2bc5db2d0940cff",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerClamp020E6.olean",
+      "artifact_sha256": "872bbc03977ddeb4cf90bd01a7ed1c46d48de363686cdc0af9052d2768657e58",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/clamp001/receipt.json",
+      "exports": [
+        "word_toInt",
+        "clamp"
+      ]
+    },
+    {
+      "module": "ProducerFetchTrace020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/fetchtrace001/source/ProducerFetchTrace020E6.lean",
+      "source_sha256": "b176491f18e88a3c01649bc414d496df2d2fe12ea6ac77af2f5a264fddadcca7",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerFetchTrace020E6.olean",
+      "artifact_sha256": "eb011150dae90963c7772550d6f71bcd1c65b8b5f9b43c4fa24bcbbaff813ad8",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/fetchtrace001/receipt.json",
+      "exports": [
+        "step_trace",
+        "cycle_trace",
+        "run_trace",
+        "run_peak"
+      ]
+    },
+    {
+      "module": "ProducerPhaseFacts020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/phasefacts002/source/ProducerPhaseFacts020E6.lean",
+      "source_sha256": "794b552a66b7d127f45231d2faf7b4a1d384a2cecb43a4294a711722687ee79b",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerPhaseFacts020E6.olean",
+      "artifact_sha256": "43e922ca86b41fb7880bdf8967bbd6ca7fdd68572f51bf1f47a2b76262b57df7",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/phasefacts002/receipt.json",
+      "exports": [
+        "phase_eq",
+        "phase_check"
+      ]
+    },
+    {
+      "module": "ProducerMemory020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/memory001/source/ProducerMemory020E6.lean",
+      "source_sha256": "cc67c22ca4834c37059de879cf70039bb671bd94da41140dfddd2a24792a4edd",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerMemory020E6.olean",
+      "artifact_sha256": "ad8aeb07b6261941d0693508dfb444e077b5a9745b7f99c87bd0f4ac2f88e736",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/memory001/receipt.json",
+      "exports": [
+        "sourceHeap",
+        "source_read",
+        "source_words",
+        "source_live",
+        "codeImage",
+        "context",
+        "context_live",
+        "complete_peak"
+      ]
+    },
+    {
+      "module": "ProducerInitial020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/initial001/source/ProducerInitial020E6.lean",
+      "source_sha256": "0c8c792ec8d066db84d6f8a012dcecc7a562e5456c270c5e5e7ce432f938951e",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerInitial020E6.olean",
+      "artifact_sha256": "19e62ead3e64bc3638b432f973468793b3a0e764aa1ecd2a119720df1765a2a9",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/initial001/receipt.json",
+      "exports": [
+        "zero_image",
+        "allocated_image"
+      ]
+    },
+    {
+      "module": "ProducerCheckPhase020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/checkphase001/source/ProducerCheckPhase020E6.lean",
+      "source_sha256": "28d8c1238f4196a4e608036f5820e262f4488f7b8c935490f845a57c56f8dac2",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerCheckPhase020E6.olean",
+      "artifact_sha256": "f92132f1452ea7e9eac8ff892bf62bfaaad534f56e06eed663c9cd56b63bd560",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/checkphase001/receipt.json",
+      "exports": [
+        "eq_zero",
+        "phase"
+      ]
+    },
+    {
+      "module": "ProducerSnapshot020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/snapshot001/source/ProducerSnapshot020E6.lean",
+      "source_sha256": "2cabffc8dec9e0be313983d662b59445e41f771426fc98a7a5015d38b87db850",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerSnapshot020E6.olean",
+      "artifact_sha256": "b4d9d01948fd52378f2b2e6e2e78d9ff55ba24e0f8c87828c7319e1b6ea89853",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/snapshot001/receipt.json",
+      "exports": [
+        "top",
+        "pc",
+        "actNode",
+        "scanNode",
+        "child",
+        "actValue",
+        "scanValue",
+        "field",
+        "present",
+        "value",
+        "regValue",
+        "memoryValue",
+        "fields"
+      ]
+    },
+    {
+      "module": "ProducerNumbers020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/numbers001/source/ProducerNumbers020E6.lean",
+      "source_sha256": "2fc3d1e4ef25f5b7f05deb99c82f8284b1c02dd17d7d8a7289d8d787478891b5",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerNumbers020E6.olean",
+      "artifact_sha256": "7ef84dbb18ed92663d2cd714e6b637aad4e1d119fa785d06a1170420b72dab79",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/numbers001/receipt.json",
+      "exports": [
+        "window_size",
+        "slot_size",
+        "window_fits",
+        "slot_fits",
+        "payload_bytes",
+        "window_increment",
+        "slot_increment"
+      ]
+    },
+    {
+      "module": "ProducerStored020E6",
+      "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/stored001/source/ProducerStored020E6.lean",
+      "source_sha256": "688924fd1d245ee63071c948ea7c486b4d27962c258cd7d06b2fb31ecf1ff111",
+      "artifact": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/lib/ProducerStored020E6.olean",
+      "artifact_sha256": "b709194a9f22273c17d6accb680ba5d92c49a92865933a024e1e83aebcf52a1a",
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/stored001/receipt.json",
+      "exports": [
+        "invoke",
+        "expression_output",
+        "windowCode",
+        "slotCode",
+        "pairRun",
+        "pair_output",
+        "run",
+        "run_words"
+      ]
+    }
+  ],
+  "attempts": [
+    {
+      "label": "audit001",
+      "module": "ProducerAudit020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "11de5b8c0f990eb3e19f9213c629a0e0e0741d90f85025d62e16fbc064095dbd"
+    },
+    {
+      "label": "bankread001",
+      "module": "ProducerBankRead020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "055222f90b9e38ac748e502eed5d3969d03a168583646ac74161f4704373276f"
+    },
+    {
+      "label": "batch001",
+      "module": "ProducerBatch020E6",
+      "exit_code": 1,
+      "errors": 1,
+      "warnings": 1,
+      "receipt_sha256": "3c92a281b6f5b615b25b28b6802db53a2878a5c9e0a0e40cab8b5435c0f48f3b"
+    },
+    {
+      "label": "batch002",
+      "module": "ProducerBatch020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "9b4205bfc2ed061c4769c674415182815096f0d1e7784d471637f9b14e549b97"
+    },
+    {
+      "label": "boollaws001",
+      "module": "ProducerBoolLaws020E6",
+      "exit_code": 1,
+      "errors": 5,
+      "warnings": 5,
+      "receipt_sha256": "0b38a5dafbc33c2dd39fde63da29a32651035fa4ab7104fd9dfcdd1b49e9cdae"
+    },
+    {
+      "label": "boollaws002",
+      "module": "ProducerBoolLaws020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "153350b86be450c5b7c83f01e3965a550acd9af72a77d36cf1ce216269a4defd"
+    },
+    {
+      "label": "checkphase001",
+      "module": "ProducerCheckPhase020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "f94e32fbf8f2ab5451c3fe446b7ecd8ea362a65ab006fa40c0743c05d429ed23"
+    },
+    {
+      "label": "circuit001",
+      "module": "ProducerCoreCircuit020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "e4c7c4eaa8c69dbf3d0407165e57c4eb9268e2bc3b7ddf9daf54e0ccd8fc81b6"
+    },
+    {
+      "label": "clamp001",
+      "module": "ProducerClamp020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "eed88204207c50b90318f00c548515eeff373cb758ff8374814f0ae90bc9df9d"
+    },
+    {
+      "label": "codec001",
+      "module": "ProducerCodec020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 2,
+      "receipt_sha256": "311276de27d1b1f253e19f47257630088c69002b65f5d8406b6270a4d755b4e5"
+    },
+    {
+      "label": "codec002",
+      "module": "ProducerCodec020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "cab053e9d9b4613f1e1881be14ca5c83002ca95be80878de576d4f9c5456bc51"
+    },
+    {
+      "label": "compiler001",
+      "module": "ProducerCompiler020E6",
+      "exit_code": 1,
+      "errors": 6,
+      "warnings": 0,
+      "receipt_sha256": "9f2881be4df3d72c4734da047a9a5871a25a70512caff9410d573549e1324498"
+    },
+    {
+      "label": "compiler002",
+      "module": "ProducerCompiler020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 4,
+      "receipt_sha256": "2db6dde90c661440718b91c4c5028c8ba97f2a6d1948b29aa5d40b6c42165f07"
+    },
+    {
+      "label": "compiler003",
+      "module": "ProducerCompiler020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "300f7eb4850af62fba481620c5bf1589034e0686f3fe8c9c974a6a0bf8d34bde"
+    },
+    {
+      "label": "composition001",
+      "module": "ProducerComposition020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "36947c1f728b707440bc1c657a67e4b89f09fdf19fc9bb7a924ca2515e2742cb"
+    },
+    {
+      "label": "coreexport001",
+      "module": "ProducerCoreExport020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "cc580b77cb753beac95dc00e5a1b654a7a3a6214179a4adebd00ed370248abe7"
+    },
+    {
+      "label": "coreread001",
+      "module": "ProducerCoreRead020E6",
+      "exit_code": 1,
+      "errors": 5,
+      "warnings": 0,
+      "receipt_sha256": "e8c02c12d7034c2f3b2f862bd53a2fa3b875b7dcbbdf308d0f2c36a56304cffa"
+    },
+    {
+      "label": "coreread002",
+      "module": "ProducerCoreRead020E6",
+      "exit_code": 1,
+      "errors": 3,
+      "warnings": 0,
+      "receipt_sha256": "1ce61299ec671a72a1d8b49d6273d89e10dba6e140ab4d5444b2e214e814c35e"
+    },
+    {
+      "label": "coreread003",
+      "module": "ProducerCoreRead020E6",
+      "exit_code": 1,
+      "errors": 6,
+      "warnings": 0,
+      "receipt_sha256": "d34c70a916bf52685e6da5d702fdb836d61b91d9813524549086d43f985a2ca4"
+    },
+    {
+      "label": "coreread004",
+      "module": "ProducerCoreRead020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "be4e162e64bc30830f7954726b59c52f357821803846f983f0664b628f5a4c74"
+    },
+    {
+      "label": "coresource001",
+      "module": "ProducerCoreSource020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "25fb82464f1fe947a887eddbf406adfe2c22ae591978f706617675fbd683befa"
+    },
+    {
+      "label": "coreview001",
+      "module": "ProducerCoreView020E6",
+      "exit_code": 1,
+      "errors": 12,
+      "warnings": 0,
+      "receipt_sha256": "29b4b970c340fc918dabf412a1682dd09099dd10849e9ddeec4662664f892b0b"
+    },
+    {
+      "label": "coreview002",
+      "module": "ProducerCoreView020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "3be1e3649ea60e1de8119f37f16e037164428d450000f8e778d7f36bc7b44205"
+    },
+    {
+      "label": "emit001",
+      "module": "ProducerEmit020E6",
+      "exit_code": 1,
+      "errors": 2,
+      "warnings": 0,
+      "receipt_sha256": "02201cf9f6e350b4919a05f8f1382054469d9a4d34fe9e6475ffa026c04e8577"
+    },
+    {
+      "label": "emit002",
+      "module": "ProducerEmit020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "095021cab077ae5dce61c3592d25ad9f53dbf01990eebfe0e7ace781491eab95"
+    },
+    {
+      "label": "execution001",
+      "module": "ProducerExecution020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "1dd1c0cac270619e19d817d37261572aa1cefb6b89a4a4909017023706eb1fba"
+    },
+    {
+      "label": "expr001",
+      "module": "ProducerExpr020E6",
+      "exit_code": 1,
+      "errors": 2,
+      "warnings": 0,
+      "receipt_sha256": "d226b850fa9387a1f9c01c1854e8ab0ff5d824f216ebbaa18681b5db3e5dc3fe"
+    },
+    {
+      "label": "expr002",
+      "module": "ProducerExpr020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "f9bc757604527d40b40ae9e523999524c7dd7ec8cb3302b0f7761adddfa5159e"
+    },
+    {
+      "label": "fetch001",
+      "module": "ProducerFetch020E6",
+      "exit_code": 1,
+      "errors": 2,
+      "warnings": 2,
+      "receipt_sha256": "d1d141a4caf05de5d6259c2e7acd2f2dda1702e27cbd1a06014a906d9220db90"
+    },
+    {
+      "label": "fetch002",
+      "module": "ProducerFetch020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "f8b412e7b0bbddc8656d6c08e9b0d81e77b80adc766a73e54a56055d0c98d8bb"
+    },
+    {
+      "label": "fetchstore001",
+      "module": "ProducerFetchStore020E6",
+      "exit_code": 1,
+      "errors": 5,
+      "warnings": 0,
+      "receipt_sha256": "0c92d3938974588c6c76b91b61a0bfb7ab324571deeb994e9171b5b6aa594c91"
+    },
+    {
+      "label": "fetchstore002",
+      "module": "ProducerFetchStore020E6",
+      "exit_code": 1,
+      "errors": 2,
+      "warnings": 0,
+      "receipt_sha256": "9bcd23d13ba01d90adabb856e02128987d65cf89074392e51a212dd6a1a69287"
+    },
+    {
+      "label": "fetchstore003",
+      "module": "ProducerFetchStore020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "e353242399746017aab950d6dc12ff3f83bc4a31ed1076c7554ada4f346aa806"
+    },
+    {
+      "label": "fetchtrace001",
+      "module": "ProducerFetchTrace020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "3d8cab48b5d54f8f68b8ba6a1ba1e2d35c954065e60f7c47fc884e08283b98a7"
+    },
+    {
+      "label": "frame001",
+      "module": "ProducerFrame020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "792b947589f5d5beb1a22eab37121a19651a44266f7bdb653965ccca40d912b0"
+    },
+    {
+      "label": "genericread001",
+      "module": "CoreReadGeneric020E6",
+      "exit_code": 1,
+      "errors": 1,
+      "warnings": 0,
+      "receipt_sha256": "0ba6cf1648e6f698d1d476ddd04f42e5b1059ea6f9474677cfb0db0083b68ebf"
+    },
+    {
+      "label": "genericread002",
+      "module": "CoreReadGeneric020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "ef118dd3046e2fdfcef45001f32a884ad79de50b6b4331d04ebe7f2ab70d9e42"
+    },
+    {
+      "label": "initial001",
+      "module": "ProducerInitial020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "19727d76c130d2bf46bbd78e9abb70036bf74b199b7f8d46a02f130e624abf5a"
+    },
+    {
+      "label": "machine001",
+      "module": "ProducerMachine020E6",
+      "exit_code": 1,
+      "errors": 1,
+      "warnings": 0,
+      "receipt_sha256": "9e73615e9a08e79b986706646e5f12219953978ff7a3493d83b4028b3090356f"
+    },
+    {
+      "label": "machine002",
+      "module": "ProducerMachine020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "e501b31d40ec57126034898995b5336725b017bff33897a4a119e51c8f15d7b7"
+    },
+    {
+      "label": "machine003",
+      "module": "ProducerMachine020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "2baffc55e138107a26a2799fdb55c84dbbe38836522d52f6d7b541171a21a6df"
+    },
+    {
+      "label": "machine004",
+      "module": "ProducerMachine020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "223beca8a63fd7077e345d684fc9eb8f34b725fa0a2d7426d4c7ce23f97756f4"
+    },
+    {
+      "label": "memory001",
+      "module": "ProducerMemory020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "14fcedc6694be08b0cdd1f1b135bb87625793a8a68bb76e883bcb15ddd85e7f3"
+    },
+    {
+      "label": "metasource001",
+      "module": "ProducerMetaSource020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "111c8734b2aad6f73bd4e276ddf9a6a344a6ace241a0a5a2ce5497bbb7c9c4cb"
+    },
+    {
+      "label": "numbers001",
+      "module": "ProducerNumbers020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "9a3a44ba161c62149f354b5630c6afbaaf5d7173a8a5f8c346f683be327355d1"
+    },
+    {
+      "label": "parserread001",
+      "module": "ProducerParserRead020E6",
+      "exit_code": 1,
+      "errors": 3,
+      "warnings": 0,
+      "receipt_sha256": "76f902ba4fee3f6c2e08e5a61caf5968f0f7cd5fdb0f798144e1afd01aecec6f"
+    },
+    {
+      "label": "parserread002",
+      "module": "ProducerParserRead020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "31458d004a295bd03ae2ea9ae2917c330baa120dbce4fa37e96ba0b862d01f80"
+    },
+    {
+      "label": "phasefacts001",
+      "module": "ProducerPhaseFacts020E6",
+      "exit_code": 1,
+      "errors": 2,
+      "warnings": 1,
+      "receipt_sha256": "61caa6aab5c3f41f5bad6349309ee1de2d4f6253d51db03c4c7ca91cccb2ebaa"
+    },
+    {
+      "label": "phasefacts002",
+      "module": "ProducerPhaseFacts020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "f04def96faf4f53d7bdbbaf5c9b422624c43fb6bfe85edc767307d45365c720c"
+    },
+    {
+      "label": "pipeline001",
+      "module": "ProducerPipeline020E6",
+      "exit_code": -6,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "da5efba6971fcf651cf46d711b5532cf60d0fc02377b08a5e3d235f8576fdcb6"
+    },
+    {
+      "label": "pipeline002",
+      "module": "ProducerPipeline020E6",
+      "exit_code": 1,
+      "errors": 1,
+      "warnings": 0,
+      "receipt_sha256": "6cfd65d4b0f8be83e6ad578fa86eed6b48b204655ab49372f1fa524be75e9107"
+    },
+    {
+      "label": "pipeline003",
+      "module": "ProducerPipeline020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "ffd044f858e1ce31dcf49cc622b79c39b07fa158e3f66a2051140484821a934e"
+    },
+    {
+      "label": "primitive001",
+      "module": "ProducerPrimitive020E6",
+      "exit_code": 1,
+      "errors": 2,
+      "warnings": 3,
+      "receipt_sha256": "069b2f52a0acfb7a1abdb2205b08188dfc65cca5e9bc338d9db387b87d56e05d"
+    },
+    {
+      "label": "primitive002",
+      "module": "ProducerPrimitive020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "a3842e4938930dcf4a2e89b328cb1cfdead7f17a12d69824ce92aded5fb620d2"
+    },
+    {
+      "label": "program001",
+      "module": "ProducerProgram020E6",
+      "exit_code": 1,
+      "errors": 3,
+      "warnings": 1,
+      "receipt_sha256": "525d01f84a22eb76cd13e6cb7d2cd420c546cd233d5dbd8aa4ebfe2abdaa6eec"
+    },
+    {
+      "label": "program002",
+      "module": "ProducerProgram020E6",
+      "exit_code": 1,
+      "errors": 1,
+      "warnings": 0,
+      "receipt_sha256": "639db15d1eca5bdcf8aaa2ae8caaacaad5c4bec6f2e1b74192ff8274e1d3ce6d"
+    },
+    {
+      "label": "program003",
+      "module": "ProducerProgram020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "a66718e046b20bc7386b42781392bb8b59df6fe0e7830220c6a3ec47beb17837"
+    },
+    {
+      "label": "scalar001",
+      "module": "ProducerScalar020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "94767f92581deb0b9b93bdd0d2c02265f8ecf029f0643ebefc5a22f75ae54efd"
+    },
+    {
+      "label": "slots001",
+      "module": "ProducerCoreSlots020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "ea8baa32b5e45c8d6d06bc758e4b96e9acb8d1e3a838f36cf979c038b8cbda9d"
+    },
+    {
+      "label": "snapshot001",
+      "module": "ProducerSnapshot020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "9e5cae8d332a7d0f549c4b5c9540d0b4af8b52794433d66097c2171014906b16"
+    },
+    {
+      "label": "store001",
+      "module": "ProducerStore020E6",
+      "exit_code": 1,
+      "errors": 6,
+      "warnings": 0,
+      "receipt_sha256": "d813278cd6bb2568c280d8f1de15c0a88888a77d35485df9158d692e0bd0aba0"
+    },
+    {
+      "label": "store002",
+      "module": "ProducerStore020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "32ea9df92a7ad877988a22ea8767130f0ec8b00d721546dc1dcb1413fb9a2b40"
+    },
+    {
+      "label": "stored001",
+      "module": "ProducerStored020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "4d9821dce0513ffce07383a70025db6f038aa26a62289b49bc76a46f2818be77"
+    },
+    {
+      "label": "window001",
+      "module": "ProducerWindow020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "a9b62dd7cf318d2e52d69c0110e4c1197e7f2497078e27922b011e4189c0e520"
+    },
+    {
+      "label": "windowexport001",
+      "module": "ProducerWindowExport020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "fbd39167451cd67d4abd9d0dcdcab95f96135c837c035ec4bdc0dd2d8d49e9f3"
+    },
+    {
+      "label": "wordlaws001",
+      "module": "ProducerWordLaws020E6",
+      "exit_code": 1,
+      "errors": 4,
+      "warnings": 3,
+      "receipt_sha256": "407ea8c592b7f7e7d13d2cdd5ab61e2ad585fc23445384d2a3bb0704db2a9240"
+    },
+    {
+      "label": "wordlaws002",
+      "module": "ProducerWordLaws020E6",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "receipt_sha256": "bd0a472ce5997aae28d3773b7b78fb4577656a733ade3506bc7b5b540fdedf60"
+    }
+  ],
+  "audit_receipt": "proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/audit001/receipt.json",
+  "audit_receipt_sha256": "11de5b8c0f990eb3e19f9213c629a0e0e0741d90f85025d62e16fbc064095dbd",
+  "verified_library_pins": 679,
+  "pin_snapshot": "proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/checkpoint_001/PINS.json",
+  "pin_snapshot_sha256": "efcb685f17dac7ef216896e11b6d2583e6d648927741c7f502643aaa9232ab24",
+  "finite_diagnostic": {
+    "status": "FINITE_DIAGNOSTIC_PASS_NOT_UNIVERSAL_PROOF",
+    "sage": "10.9",
+    "cases": 4480,
+    "instructions": 11264,
+    "seed": "200006 public fixture seed",
+    "word_bits": 512,
+    "program_sha256": "caa1d641eb2e65dfbd84f9b492b4ca12b62e33e4d8cb791a78f38a9cbe9290cb",
+    "script_sha256": "f8f42b7472b8a03944d6face67b4d5ad516b506dbe0c7bb533915a0892a6ff01",
+    "failure": null,
+    "scope": "96-word synthetic snapshots; independent Sage reference vs exported Lean bytecode; no source/window-formation proof"
+  },
+  "counts": {
+    "status": "EXACT_COUNTS_NOT_SOURCE_EQUIVALENCE",
+    "sage": "10.9",
+    "values": {
+      "window_instructions": "3469",
+      "slot_instructions": "11264",
+      "registers": "64",
+      "output_words": "96",
+      "pc_and_load_flag": "2",
+      "fetched_instruction_words": "23",
+      "fetch_execute_phase": "1",
+      "working_payload_words": "186",
+      "working_payload_bytes": "11904",
+      "window_code_words": "76318",
+      "slot_code_words": "247808",
+      "window_increment_over_resident_sources_words": "76508",
+      "slot_increment_over_resident_sources_words": "247998",
+      "slot_standalone_with_96_word_input_words": "248096"
+    },
+    "program_inputs": [
+      {
+        "path": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/windowexport001/stdout.txt",
+        "sha256": "d9f95c5a32207e540db19b14255e4faeb6f30285c1d17567766994a7dfd4fd7e"
+      },
+      {
+        "path": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/producer_001/runs/coreexport001/stdout.txt",
+        "sha256": "caa1d641eb2e65dfbd84f9b492b4ca12b62e33e4d8cb791a78f38a9cbe9290cb"
+      }
+    ],
+    "source_sha256": "2fc3d1e4ef25f5b7f05deb99c82f8284b1c02dd17d7d8a7289d8d787478891b5",
+    "script_sha256": "ba25536ce5218fd77cb585e65b00a6824055daf50e2502b92957aceac2818e56",
+    "scope": "Two individual compiled programs. Full original-generator equivalence and enclosing lifetime/controller composition remain obligations."
+  },
+  "diagnostic_export_modules": [
+    "ProducerCoreExport020E6",
+    "ProducerWindowExport020E6"
+  ],
+  "remaining": [
+    "universal window-to-source-snapshot equality",
+    "concrete circuit/slots equals old CoreStore/CoreStep effect",
+    "remaining generator families",
+    "two-stage lifetime/allocation and code-loading composition",
+    "full sampler resource composition and external security bridges"
+  ],
+  "scope_guards": {
+    "full_producer_closed": false,
+    "old_JP_transferred_to_E6": false,
+    "full_sampler_peak": false,
+    "independent_review": false,
+    "push": false,
+    "monitor_rom": "PAUSED",
+    "subagents": 0
+  },
+  "phase2_source_commit": "1ea98b3e393103922d54b642c70674f1dc655561"
+}

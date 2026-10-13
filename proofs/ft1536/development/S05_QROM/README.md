@@ -3,6 +3,18 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
+**Kontynuacja020E6 — [producent: wykonanie i pamięć lokalna](notes/PRODUCER_020E6_CHECKPOINT.md), IN_PROGRESS / PARTIAL:**
+Zamknięty zestaw instrukcji, kompilator z ochroną rejestrów, jawne przechowanie
+pobranej instrukcji oraz kernelowy ślad pojedynczego wywołania. Payload roboczy
+maszyny:186 słów512bit; kod i źródła liczone osobno. Kandydat ma programy
+3469 i11 264 instrukcji.37 modułów,118 twierdzeń,audyt309 eksportów.
+**Producent FT1536 nadal OPEN:** nie domknięto pełnej zgodności konkretnego
+okna/circuitu ze starszym krokiem ani wspólnych okresów życia obu etapów.
+4480 sprawdzonych snapshotów to diagnostyka, nie uniwersalny dowód.
+[Kontrola autora](notes/PRODUCER_020E6_SELF_REVIEW.md), [klasy](notes/CERTIFICATE_CLASSES_020E6.json),
+[kolejka](notes/KERNEL_QUEUE_020E6.json). Bez nowego transportu J/P, QROM claim,
+niezależnego odbioru i push; monitor ROM PAUSED.
+
 **Kontynuacja020E5 — [banki, granice wywołania i scratch](notes/PEAK_MEMORY_020E5_CHECKPOINT.md), IN_PROGRESS / PARTIAL:**
 49 modułów wynikowych, 212 twierdzeń; audyt 418 eksportów. Kernel obejmuje
 cały wynik wywołania, pełne J/P pod tym samym(M), rzeczywiste dane wejścia,
@@ -98,7 +110,7 @@ w przypiętym środowisku legacy, bez scalenia z nową grą wariantu A.
 [Kolejka020D](notes/KERNEL_QUEUE_020D.json), [klasy020D](notes/CERTIFICATE_CLASSES_020D.json).
 Następny duży krok: [TODO020E — pełny driver i zasoby](notes/TODO_RESOURCES_020E.md).
 
-Poniższe wpisy opisują wcześniejsze checkpointy; aktualny stan wskazuje020E5.
+Poniższe wpisy opisują wcześniejsze checkpointy; aktualny stan wskazuje020E6.
 
 **Kontynuacja020C — [cały select zgodny z019](notes/VECTOR_NORM_020C_CHECKPOINT.md):**
 115 nowych eksportów kernelowych zamyka1536 par, dokładną normę Q,

@@ -1,0 +1,66 @@
+{
+  "task": "S05/TODO020E/producer020E6",
+  "status": "IN_PROGRESS_PARTIAL_KERNEL_NOT_REVIEWED",
+  "entries": [
+    {
+      "name": "Word512 ALU, closed instructions, region in-place, checked load diagnostic semantics",
+      "class": "MODEL",
+      "status": "EXPLICIT",
+      "scope": "No native memory or C implementation claim; producer diagnostic flag is not sampler abort"
+    },
+    {
+      "name": "Producer compiler and single-machine execution/allocation/local peak",
+      "class": "PROOF_OBLIGATION",
+      "status": "DISCHARGED_SCOPED",
+      "exports": [
+        "ProducerCompiler020E6.correct",
+        "ProducerFetch020E6.refines",
+        "ProducerInitial020E6.allocated_image",
+        "ProducerMemory020E6.complete_peak"
+      ]
+    },
+    {
+      "name": "Concrete code to its scalar-expression value",
+      "class": "PROOF_OBLIGATION",
+      "status": "DISCHARGED_SCOPED",
+      "exports": [
+        "ProducerStored020E6.run_words"
+      ],
+      "scope": "No claim of equivalence to old sampler from this alone"
+    },
+    {
+      "name": "Producer to old sampler source equivalence and all families",
+      "class": "PROOF_OBLIGATION",
+      "status": "OPEN",
+      "smallest_gap": [
+        "universal window-to-source-snapshot equality",
+        "concrete circuit/slots equals old CoreStore/CoreStep effect",
+        "remaining generator families"
+      ]
+    },
+    {
+      "name": "Full producer and sampler resource composition",
+      "class": "PROOF_OBLIGATION",
+      "status": "OPEN",
+      "remaining": [
+        "two-stage lifetime/allocation and code-loading composition",
+        "full sampler resource composition and external security bridges"
+      ]
+    },
+    {
+      "name": "Source M/KeyGen/Sign and concrete PRG hop",
+      "class": "PROOF_OBLIGATION",
+      "status": "OPEN_UNCHANGED"
+    },
+    {
+      "name": "A-QMT and Q-PRG primitive bounds",
+      "class": "CRYPTOGRAPHIC_ASSUMPTION",
+      "status": "UNCHANGED_NOT_INSTANTIATED"
+    },
+    {
+      "name": "QROM experiment/hash/embedding/collision/reprogramming and other TARGET_CONTRACT obligations",
+      "class": "PROOF_OBLIGATION",
+      "status": "OPEN_UNCHANGED"
+    }
+  ]
+}
