@@ -1,0 +1,224 @@
+{
+  "status": "PARTIAL_KERNEL_OBLIGATIONS_NOT_REVIEWED",
+  "base": "7eee9439f94a80d279e9b7c84fa31e1dbf123dce",
+  "phase1": "2507e5e42a7c96710f304009615970c3b250d9f1",
+  "scope": "77 theorems: copying-bank prices, scalar/atom/control costs, exact Array value refinement, whole executor bound, embedded 877-cell image binding. Initialization/input/output and global live-space model still open.",
+  "condition_classes": {
+    "tariffs": "MODEL Word512 copying RAM, cumulative allocation; not native time/peak",
+    "refinement_and_bounds": "OBLIGATION discharged for these modules",
+    "Q_JOINT_M": "ASSUMPTION unchanged; not discharged here"
+  },
+  "records": [
+    {
+      "module": "CostRun020E4",
+      "theorems": [
+        "bind_value",
+        "bind_ticks",
+        "bind_allocated",
+        "bind_bound",
+        "prefix_allocation_bound"
+      ],
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/array_backend_001/runs/cost001/receipt.json",
+      "source_sha256": "da9c70226eb525df1fb0fa44bb1eb17aadbdb0af3046c6e61266986b18ffffde",
+      "artifact_sha256": "6cb2206b4819f8db4e3c8912c69279cd06bdc5e52c4b3b9e101490e7a98e1e8d"
+    },
+    {
+      "module": "CostBank020E4",
+      "theorems": [
+        "copyWrite_eq",
+        "read_value",
+        "write_value",
+        "tabulate_bound",
+        "zero_value",
+        "zero_budget"
+      ],
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/array_backend_001/runs/costbank002/receipt.json",
+      "source_sha256": "d12f526498e0fd0407d2e13a2d8dabe6b01a3ccafe2a0e29c7e8426733577ac2",
+      "artifact_sha256": "67bc7d00600f5cd7809582309adb7c50faf6ac1f85793d62b38fb7f2f0ef2089"
+    },
+    {
+      "module": "CostFlow020E4",
+      "theorems": [
+        "overhead_value",
+        "overhead_bound",
+        "optBind_value",
+        "optBind_bound"
+      ],
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/array_backend_001/runs/flow003/receipt.json",
+      "source_sha256": "4752826e7673aad0e5c65c47c4621ea921604d0ad115a62ccd9af237cbba4dcc",
+      "artifact_sha256": "612257300d61a291b545e163ce0c21925e6b5dcb394805fd294f6e2f982b0a7a"
+    },
+    {
+      "module": "CostScalar020E4",
+      "theorems": [
+        "reg_value",
+        "reg_budget",
+        "op_value",
+        "op_bound",
+        "address_value",
+        "address_budget",
+        "decode_value",
+        "decode_bound"
+      ],
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/array_backend_001/runs/scalar005/receipt.json",
+      "source_sha256": "d5bd5c2d0ec9f08a3a5b034b40812e390716d1b0f69203dca314cadb7125bbbc",
+      "artifact_sha256": "66aa11bb6b6d5c963234a37351fb058c1058cf08864189aaa5d5860208efc4d9"
+    },
+    {
+      "module": "CostValueCell020E4",
+      "theorems": [
+        "lookup_value",
+        "lookup_bound",
+        "compute_value",
+        "compute_bound",
+        "entry_value",
+        "entry_bound"
+      ],
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/array_backend_001/runs/cell002/receipt.json",
+      "source_sha256": "080418fa1ba2c2b50c6e2eacc70f48286f910d677c1f3903903edd4018efff0c",
+      "artifact_sha256": "9fd9762ee44ad3a83617953dba1d56045db16e31cb5a4c22e1a65184bea61329"
+    },
+    {
+      "module": "CostValues020E4",
+      "theorems": [
+        "advance_value",
+        "advance_bound",
+        "sweep_value",
+        "sweep_bound",
+        "build_value",
+        "build_bound"
+      ],
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/array_backend_001/runs/pricedvalues002/receipt.json",
+      "source_sha256": "08fb5a9b1baec5f34fe5fb5c47374d866485402fac23f8b1b7c147441d2a03b8",
+      "artifact_sha256": "aa2f8573a510d0744b89d357115f1cdc2a7366f359be1b2f4b40ea930d98f847"
+    },
+    {
+      "module": "CostFrames020E4",
+      "theorems": [
+        "top_value",
+        "top_bound",
+        "push_value",
+        "push_bound",
+        "pushMany_value",
+        "pushMany_bound"
+      ],
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/array_backend_001/runs/pricedframes001/receipt.json",
+      "source_sha256": "5126c4a725e4ebc07a338ea1ee6e03eb206625287a988a4847e5b3a3d3f3b74f",
+      "artifact_sha256": "e151d1ada60a055442e8a1cdc54f75feaf9d5c3005011207a205fbacd1f3fd27"
+    },
+    {
+      "module": "CostState020E4",
+      "theorems": [
+        "put_value",
+        "store_value",
+        "emit_value",
+        "put_budget",
+        "store_budget",
+        "emit_budget"
+      ],
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/array_backend_001/runs/pricedstate001/receipt.json",
+      "source_sha256": "60c859d6d0feabe7f6fa46d3787828df767df3dde22395eb5bbc7252506a8825",
+      "artifact_sha256": "e5345fb75e1af45a24d86129c32ba1ba5df6850c90155b3464899318687547e2"
+    },
+    {
+      "module": "CostBounds020E4",
+      "theorems": [
+        "weaken",
+        "map_bound",
+        "optBind_bound_on"
+      ],
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/array_backend_001/runs/bounds001/receipt.json",
+      "source_sha256": "4eb66300fd6bf2752e3e54a87591704c9634314ea37447528b04161d4b925e39",
+      "artifact_sha256": "16dbf728936ff4cdb98a4ca7d4e3f69c843ff608fed082a30dce59410e76060a"
+    },
+    {
+      "module": "CostAtom020E4",
+      "theorems": [
+        "core_prices",
+        "value",
+        "bound"
+      ],
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/array_backend_001/runs/pricedatom011/receipt.json",
+      "source_sha256": "197db00694f8bc49f5821744001017c546362a6a56d2f7ab93e0cb766086d311",
+      "artifact_sha256": "7a51ee06e34120c67c6f7490b379db043a9fda2e724f7009755806506e12236a"
+    },
+    {
+      "module": "CostControl020E4",
+      "theorems": [
+        "inspect_value",
+        "inspect_bound",
+        "loop_value",
+        "loop_bound",
+        "dispatch_value",
+        "dispatch_bound"
+      ],
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/array_backend_001/runs/pricedcontrol005/receipt.json",
+      "source_sha256": "8b60000e14bf7b4c0871a1926ca5812b9f651bb84f8260dbf7e693f88f8a1c53",
+      "artifact_sha256": "627d963817e0eb2e23fa0c158c406a3754aa7b5a683b2668714c9c6738e1b57b"
+    },
+    {
+      "module": "CostAction020E4",
+      "theorems": [
+        "evaluator_value",
+        "evaluator_bound",
+        "value",
+        "bound",
+        "prefix_bound"
+      ],
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/array_backend_001/runs/pricedaction003/receipt.json",
+      "source_sha256": "5ada78135cdb78eed0dd2e783cc008998c37a9ceffe70893363921ddd47558da",
+      "artifact_sha256": "fc7889ab368e4c7a6be86d1d64c2c4aa7024c321253ce423d671fe7a6a38e117"
+    },
+    {
+      "module": "CostExecute020E4",
+      "theorems": [
+        "step_value",
+        "value",
+        "step_bound",
+        "bound"
+      ],
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/array_backend_001/runs/pricedexecute002/receipt.json",
+      "source_sha256": "614ae3c7997bffc8a2fc98b2ab2e0ded8bb8ae33dfaa8c3b42be3b9f6ac95d8d",
+      "artifact_sha256": "c3e86ec91d5c47c409fa42c68ccad5b62d1733b2f711883d7c9b798367d23cdf"
+    },
+    {
+      "module": "ArrayPrefix020E4",
+      "theorems": [
+        "loop_prefix",
+        "empty_prefix",
+        "dispatch_prefix",
+        "evaluator_prefix",
+        "action_prefix"
+      ],
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/array_backend_001/runs/arrayprefix005/receipt.json",
+      "source_sha256": "2ab4d481f96ed122c98a6f931033887c6f80a3de21f080cf5ec2a8c7d942eaf4",
+      "artifact_sha256": "e81e6103944fada92b55e60ded73815f19dd14b83dacbe87910ef7981284edff"
+    },
+    {
+      "module": "PublicImage020E4",
+      "theorems": [
+        "serial_injective",
+        "serial_binding",
+        "binding",
+        "length"
+      ],
+      "receipt": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/S05_QROM/.build/pair_machine_020/array_backend_001/runs/publicimage007/receipt.json",
+      "source_sha256": "2f5b773c8b911e4f320eb3e37b0bd87b301ad0b386c7269b9aa8e2c125ce8c05",
+      "artifact_sha256": "ae0f819406982906f2a173217c0b4e1616eeee0630b0cb15312f29af08ebe140"
+    }
+  ],
+  "audit": {
+    "receipt": "proofs/ft1536/development/S05_QROM/.build/pair_machine_020/array_backend_001/runs/costphaseaudit001/receipt.json",
+    "stdout_sha256": "b29b235221c4de272bc5ed77a0d9c502d40eabc080d448ec9682772263511a85",
+    "axioms_allowed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "public_image_reproduction": {
+    "file": "proofs/ft1536/development/S05_QROM/.build/pair_machine_020/array_backend_001/PublicImageReproduced001.lean",
+    "matches_compiled_source": true,
+    "sha256": "2f5b773c8b911e4f320eb3e37b0bd87b301ad0b386c7269b9aa8e2c125ce8c05"
+  }
+}
