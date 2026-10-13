@@ -1,3 +1,31 @@
+# BATCH_074 — NONE source-memory round-trip complete; whole TODO continues
+
+M0/NONE0 q18433/logn10, physical1536-word inputs on explicit carrier[-9216,9216].
+KeygenCodecNoneCallRoundtrip.source_call_roundtrip/call_roundtrip_exists bind
+both actual source dispatchers, actual five-argument identity, SAME physical
+input words, derived return3072, exact output frame and honest finite decoder
+call existence on arbitrary old destination contents. No codec output,
+successful result, encoded length or frame is a premise. Supplied input extent
+is related to the ACTUAL observed encoder return, not an assumed3072 value.
+KeygenCodecNoneMemoryIdentity.source_in_place_identity/in_place_exists prove
+identity of the original physical coefficient block; the decoder's whole heap
+equals the encoded heap. This does not undo the encoder's output buffer writes.
+
+Full prologue/for/1536-store loop/return/source body and NONE dispatcher covered.
+Source geometry/Vec agreement is NOT silently supplied; STATIC and public
+modes are outside this NONE contract. B1.07/B1.08 Acceptance NOT MET;B1.09 OPEN.
+NEXT after postseal and075 entry: STATIC source round-trip, mathematical/physical
+transport, public LAST. No midpoint close or final report at this item boundary.
+
+Final035:17 final proof modules+audit18 clean0/0,131 entries=124 new+7 inherited,
+128 full terms+3 kernel inductives, standard axioms only/no elisions.
+Together with core/loop:33 new proof modules,233 declarations/156 theorems.
+Old034 accepted but omitted21 shared-namespace helper entries; preserved as
+SUPERSEDED_AUDIT_SCOPE. Corrected unsealed producer extends groups, and035
+rebuilt every final module/audit in ONE manifest. All failed jobs and before
+producer/snapshots retained. Author proof-audit/proofread self-review only.
+No independent review, push, subagent, relay, migration or production-C edit.
+
 # BATCH_074 — complete NONE coefficient and while-loop checked; TODO continues
 
 Nine new source-proof modules and one full-term audit passed together in
