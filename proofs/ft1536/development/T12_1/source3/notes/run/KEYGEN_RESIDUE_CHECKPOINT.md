@@ -1,3 +1,42 @@
+# KEYGEN_LAW_087 — stop-and-report; actual law binding remains open
+
+2026-10-14. **BLOCKED_SOURCE_LAW_BINDING / NOT_REVIEWED; Acceptance NOT MET.**
+The generic D1 first-success/per-attempt inference is refuted by a kernel
+counterexample, even with uniform seed and identical attempt marginals.
+This does not refute that equality for the specific FT1536 generator and
+is not an attack. The direct actual seeded/stopped-law route remains open.
+A2 was already recorded; no new assumption was introduced.
+
+New kernel results: conditional-law construction with explicit zero-mass
+failure, exact mass/equality criterion, correlated-retry counterexample,
+and 32-byte-seed/full-ternary-candidate support obstruction. Two proof
+modules, 35 mathematical declarations/21 theorems; final key_law087_017
+3/3 (including full DAG/axiom audit), logs 0/0, standard axioms only.
+17 jobs, 15 failed/mixed preserved with causes; limits unchanged.
+Source commit: e0c991bb09e396ac5d78fa1895a1b19270d1b60a (no push).
+
+BATCH087 SHA256 `540f4610aeb786a7a314da61ed8fc86d1a2a070c14ca9ec00ac1f812033338bc`.
+POSTSEAL087: 22722 matching pins, SHA256
+`119088611faf0ab66f46fe5b26ebb7099361692f7c441a75b72468a3523aec8c`. Integrity PASS does not mean target acceptance.
+Report: `notes/run/KEYGEN_LAW_087_REPORT.md`.
+Final handoff: `notes/run/KEYGEN_LAW_087_FINAL.md`.
+
+Exact next missing construction: seed-indexed pinned source outcomes with
+proved byte uniqueness/adequacy, correct failure/nontermination treatment,
+positive successful mass, and the SAME packet-to-model pushforward.
+`KeygenLawBoundary087.condition_equal_iff` specifies the normalized mass
+identity needed if the per-attempt D1 refinement is retained. No producer
+of `AssemblyComp.KeyLawBinding` from actual source has been added.
+D1 scope needs owner resolution: retain the refinement as a source-specific
+obligation or authorize the direct stopped-law formulation; do not assume IID.
+
+The do_sign slot is unchanged: (1) key/certificate transport,
+(2) AttemptShape/ReplyShapeAt, (3) four PointwiseStageRoad conditions,
+(4) rounding/int16/syndrome, (5) sampler loop and honest-signing PRG hybrid.
+Actual-C e2=k^32-1 remains OPEN. KeyGen law and byte-game obligations remain
+outside these five items. No active own Lean job, push, review, relay,
+import, tag, production-C edit or migration. Prior checkpoints follow.
+
 # Pre-do_sign owner TODO — reference closures done, single-slot target blocked
 
 2026-10-14. B1.10 reference Acceptance MET (PROVED_KERNEL_SCOPED / NOT_REVIEWED);
