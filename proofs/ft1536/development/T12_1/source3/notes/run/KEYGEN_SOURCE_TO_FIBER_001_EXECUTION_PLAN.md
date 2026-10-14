@@ -1,5 +1,20 @@
 # B1 execution plan through final handoff
 
+## Current owner multi-stage closeout — 2026-10-14
+
+The owner explicitly authorized B1.10, scoped B1.11 evidence consolidation,
+assembly feasibility and do_sign preparation in one window, overriding the
+older one-stage cadence for this task. B1.10 reference Acceptance is met;
+B1.11 acceptance uses Daybreak's 45/45 replay and 5 mutations, with 974
+historical source/product bindings by pin. `full_b1_11_replay=false`: this
+is not the full historical rebuild/broader mutation acceptance below.
+The original single-slot end-to-end objective remains BLOCKED; exact
+missing source-to-law/experiment implications and the prepared signing
+contract are in [PRE_DO_SIGN_086_REPORT.md](PRE_DO_SIGN_086_REPORT.md).
+All new results remain NOT_REVIEWED. No migration or new reviewer.
+The original stage descriptions below remain the historical full plan.
+
+
 Status: **ACTIVE / IN_PROGRESS / NOT_REVIEWED**. Updated2026-10-01 after
 the owner's instruction to save the complete remaining implementation plan.
 This expands the existing ROADMAP T12.1 task and

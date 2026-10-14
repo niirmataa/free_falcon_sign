@@ -1,3 +1,29 @@
+# Pre-do_sign owner TODO — reference closures done, single-slot target blocked
+
+2026-10-14. B1.10 reference Acceptance MET (PROVED_KERNEL_SCOPED / NOT_REVIEWED);
+B1.11 owner-scoped evidence consolidation MET / NOT_REVIEWED. The final
+real-implementation theorem with only a do_sign slot is NOT achieved:
+source-defined conditional key law and byte-game/non-signing transport
+remain open in addition to the signing realization and honest PRG hybrid.
+See `notes/run/PRE_DO_SIGN_086_REPORT.md` and `_SELF_REVIEW.md` (full names
+PRE_DO_SIGN_086_REPORT.md / PRE_DO_SIGN_086_SELF_REVIEW.md).
+
+086 delivers the OPEN `SignRealizationObligations086.PointwiseStageGoal`,
+its kernel model consumer, and DO_SIGN_SOURCE_MAP_086.json: 17 C sources,
+23 function bodies, exactly 166 F04 source/product pins. Code's outer norm
+control selects the unconditioned attempt target k^32-1; an actual C e2
+bound is NOT proved. DS-FAULT and DS-TAPE remain early checks.
+Final new compiles 4/4, logs 0/0; 19 new declarations/8 theorems; 6 jobs
+with 4 failed/mixed preserved. B1 review 45/45 and 5 mutations consumed by
+pin; `full_b1_11_replay=false`, 974 historical bindings, not world replay.
+BATCH086 SHA256 d7bdecf25e7dacd76b3c7f1a3c96b22cece1d19223b5dc51f5d1f7c3228ccf6f.
+POSTSEAL086: 22434 pins, SHA256 509ffbec8204a6db762d91fd4da4a1d0f31357473c15318e04267489a3c503b8.
+Own commits so far: 029d679c / B1.10, b4a8d119 / B1.11; final 086 commit follows.
+No active own Lean jobs. No push/reviewer/migration/import/tag.
+Next: exact source-defined conditional key-law/experiment contract; then
+signing realization using the named DS obligations, without hiding other
+open obligations inside the do_sign slot.
+
 # BATCH085 — scoped B1.11 consolidation complete
 
 Current owner reference-evidence Acceptance MET / NOT_REVIEWED. Daybreak
