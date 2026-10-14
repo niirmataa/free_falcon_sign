@@ -1,3 +1,29 @@
+# Whole actual KeyGen law — ACTIVE after checkpoint 088/A
+
+Owner decision 2026-10-14: use the whole actual stopped KeyGen, including
+cap and encoding failures, with no D1 per-attempt shortcut or IID premise.
+Owner then requested a large TODO pursued until completion; internal
+checkpoints do not close this task. Canonical live checklist:
+`notes/run/KEYGEN_WHOLE_LAW_TODO.md`.
+
+088/A is PROVED_KERNEL_SCOPED / NOT_REVIEWED: all finite source branches,
+return classification, the actual cap, SAME observed packets and the
+execution-family probability consumer. Source commit `941a0c37`.
+Final job keygen_whole088_007: 4/4, 0/0, 58 full type/term/axiom entries;
+7 jobs, 3 failed/mixed with causes preserved. Receipt
+`5d394626269ea64a3ce801284d00e964c61a02a227aa234f4a95677997c11c0c`.
+POSTSEAL088/A: 22828 matching pins, SHA256
+`7557e64922b0876e7d610dd33441635a82f1c68eac2ab7502ab631a8d27dd54b`.
+Notes: `notes/run/KEYGEN_WHOLE_LAW_088_A_NOTES.md`.
+
+Whole objective is NOT COMPLETE. The consumer's execution family is still
+an explicit input; source seeding, deterministic stopped outcome production,
+positive successful mass and final model-law identification remain open.
+The next active step is `KeygenSeedEntry089`: a single 32-byte source
+set_seed boundary and the SAME resulting state passed to KeyGen.
+Consult live job receipts before any resume; never start parallel Lean.
+Exactly five do_sign items remain unchanged. No push/review/relay/migration.
+
 # KEYGEN_LAW_087 — stop-and-report; actual law binding remains open
 
 2026-10-14. **BLOCKED_SOURCE_LAW_BINDING / NOT_REVIEWED; Acceptance NOT MET.**
