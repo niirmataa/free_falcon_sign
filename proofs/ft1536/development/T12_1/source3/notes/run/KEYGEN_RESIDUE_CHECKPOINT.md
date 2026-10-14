@@ -1,3 +1,40 @@
+# Whole actual KeyGen law — ACTIVE after checkpoint098
+
+2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
+`notes/run/KEYGEN_WHOLE_LAW_TODO.md`. Source commits89ed1f20,9fe0e94f,
+d8c2d3f3,21694778.098closes the complete actual bigint/CRT/Bezout/extraction
+source family: finite-call state/optional-return uniqueness and exact
+partial runCall/spec, no callee assumption left in the final Call theorem.
+The large source check is backed by kernel source-line/token equalities
+and41universal lexical-prefix certificates; native generation is data only.
+
+Source replay keygen_bigint098_034:20/20clean math modules. Its old aggregate
+audit output failed; streaming audit035repeats all checks and passes1/1,
+296declarations, standard axioms, full DAG/type roundtrips, logs0/0.
+35jobs include20failed/mixed and4data-generation jobs, all preserved.
+Receipt:`75ed0acd441e546e3a378840a75f768303705caa861ce2efbebad39635d03fb6`.
+Postseal25079pins, `edf21ecd9e96a524317fdc78564aa75dfea1d9d9d92e779d081c96f16c05c749`.
+Notes:`notes/run/KEYGEN_BIGINT_098_NOTES.md`.098sources/reports/tools are
+now sealed; do not edit them. Audit output streaming changes no checks.
+
+Active099: actual make_fg_ternary_top, make_fg_step and make_fg composition,
+using closed level/binary/bigint/word source callees. Then search/deepest/
+intermediate/depth0/root solver, certificate/codecs, full capped loop and
+actual whole-law/model binding. Fixed caller, automatic entropy boundary,
+lack of finite defined return, normalization/positive success where needed
+remain open. Exactly five do_sign items unchanged. No push, other worker,
+reviewer, migration or stages import.
+
+# Active098 working commit and recovery
+
+Working source commit89ed1f20 contains three individually accepted bigint
+core/extraction sources.098is NOT_COMPLETE / NOT_REVIEWED; no new postseal
+yet. Read notes/run/KEYGEN_BIGINT_098_PROGRESS.md and the latest098receipts.
+The Bezout loop syntax-check resource bottleneck remains open. Source-line
+cache018is kernel accepted; token equality020is running/needs reconciliation.
+Do not launch a dependent module until its required objects are accepted.
+Whole owner task and five do_sign items remain unchanged; no push.
+
 # Whole actual KeyGen law — ACTIVE after checkpoint097
 
 2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:

@@ -80,18 +80,21 @@ after the required KeyGen task; its previous analytic result retains scope.
 
 ## Current recovery point
 
-Checkpoint097: actual binary/ternary NTT/generator calls, level semantics,
-and seven bigint leaves. Source commit3a2aafa5. Final keygen_levels097_005:
-6/6, logs0/0, audit46 declarations;5 clean jobs. Postseal24534pins,
-`fa00266799a11da34e349e8c8e3b8896808d4b017adcbf4f307553d54e3a5676`.
-Whole task remains ACTIVE. Notes: `KEYGEN_LEVELS_097_NOTES.md`.
+Checkpoint098: complete actual bigint/CRT/Bezout/extraction source family,
+exact partial call and no abstract callee premise. Source commits89ed1f20,
+9fe0e94f,d8c2d3f3,21694778. Source replay034:20/20clean math modules;
+final streaming audit035:1/1clean,296declarations, standard axioms and
+full roundtrips.35jobs,20failed/mixed and4data-generation jobs retained.
+Postseal25079pins,
+`edf21ecd9e96a524317fdc78564aa75dfea1d9d9d92e779d081c96f16c05c749`.
+Whole task remains ACTIVE. Notes:`KEYGEN_BIGINT_098_NOTES.md`.
 
-Current098: whole bigint/CRT/Bezout/extraction source family. Then make_fg,
-search/intermediate/deepest/depth0/root solver composition, certificate,
-codecs, capped loop and actual law/model binding. Every concrete body must
-pass its checked syntax; generic theorems alone do not close source calls.
-Fixed caller, automatic entropy boundary, nonreturn/normalization and
-positive success where required remain open.
+Current099: actual make_fg/top/step composition. Next search/deepest/
+intermediate/depth0/root solver, certificate/codecs, capped loop and whole
+law/model binding. Fixed caller, automatic entropy boundary, lack of finite
+defined return, normalization and positive success where required remain
+explicit. Do not modify sealed098sources or reinterpret data generators
+as proof; the cached values have separate kernel equalities.
 
 Preserved089 tracking refusal/public-copy supplement remains valid:
 `KEYGEN_SEED_089_TRACKING.md`, public tool `tools/keygen_law089_seal.py`.
