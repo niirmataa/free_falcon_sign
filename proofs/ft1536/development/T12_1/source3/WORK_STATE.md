@@ -1,3 +1,34 @@
+# Active three-point program — MODE1 121 sealed; concrete certificates122
+
+2026-10-14. ACTIVE / NOT COMPLETE / NOT_REVIEWED. Full G(seed*)/Z>0,
+actual numerical acceptance and conditional coding remain OPEN.121 has actual
+get_rng_u64 allocation/extract/read/disposal, original scalar/int16 stores,
+MODE1 mask/shift/reject/store/break, refill, both loops, parameter binding and
+checked fk→rng resolution. Source functions use no random-word oracle.
+Two two-coordinate source calls confirm rejection of3, local bit reset and
+shared SHAKE cursor8→16; they are NOT the selected1536-coordinate witness.
+Coherent10/10,0/0,50-declaration audit;9jobs,5failed/mixed retained, including
+one prematurely queued dependent build. Source091760d9,54185d64; final009.
+Receipt121:996dd9ca8c04a482a10b6b598f8df359fde937b9de760eb8b383561773319519.
+Postseal121:29402pins,9429a1765f16774af6865c72dc88a975ec1bf1d6ac5a001acf69176a13101297.
+121 is SEALED; report KEYGEN_SAMPLER_121_REPORT.md. Do not edit sealed sources.
+
+Next122: verify121 pair; test a concrete whole double round of process_block
+using normalized LITERAL heap/state input/output (not word-to-byte heap
+reconstruction). Use the actual119 flipped selected-input state. Generate
+snapshots untrusted, then kernel-check run_sound. Compare resource outcome
+with116; no limit increases, every failure retained. If it passes, extend to
+all source rounds/refills and selected f/g. rfl and factoring unchanged trie
+subtrees are possible next optimizations; neither has been tested yet.
+Full canonical caller/domain, public set_seed/readiness, gates/solver and
+packets remain explicit obligations. Do not confuse local119 zeroed unused
+context fields with the complete M0 caller. Globals/tables and correct stored
+pointer words must be constructed before the whole-law witness is claimed.
+Source119 aliases stay byte-identical (keygen_input119_materialize.py).
+One job, no push/new schedules/worker/review; five do_sign and measured paper
+unchanged. The owner reaffirmed proceeding calmly step by step; continue the
+original program rather than closing at helper checkpoints.
+
 # Active three-point program — extraction120 sealed; source RNG/MODE1 121
 
 2026-10-14. ACTIVE / NOT COMPLETE / NOT_REVIEWED. Full G(seed*)/Z>0,
