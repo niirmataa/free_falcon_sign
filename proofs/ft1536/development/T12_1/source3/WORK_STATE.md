@@ -1,3 +1,27 @@
+# Whole actual KeyGen law — ACTIVE after checkpoint107
+
+2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
+`notes/run/KEYGEN_WHOLE_LAW_TODO.md`. Source commits516536c1,6cdd266d.
+107closes the complete private codec Call: derived unused-comp independence,
+full State equality on normal continuations, full heap/return equality
+on return, exact partial encode/spec. No arbitrary comp equality or callee
+oracle. Commit6cdd266d's "source law" means this deterministic call
+specification only; the actual whole-KeyGen probability law remains OPEN.
+Final keygen_dispatch107_007:7/7, logs0/0, full audit35declarations,
+standard axioms.7jobs,4failed/mixed elaborations retained with causes.
+Receipt:`42199b4819c37c15e6752b52db58dd7318239fc104a3b65e95a50cc77c44a8f3`.
+Postseal26355pins, `2673e88ce18a88f10fbed5cfb483724d18fb0c92d8fd7ef394f1a648d21ffbd7`.
+Notes:`notes/run/KEYGEN_DISPATCH_107_NOTES.md`.107is sealed; do not edit it.
+
+Active108: actual public/ordinary caller heads, then source-faithful
+finite pointer decoding/full memory-domain and complete encoding tail.
+Read `notes/run/KEYGEN_CALLER_108_PLAN.md`. Prepared (unchecked): PublicSite108.
+106's local incomplete-live-set counterexample remains; do not silently
+strengthen frozen ReadPointer or use successful Addresses on failures.
+Then concrete seeded producer, whole law/SAME-model binding and explicit
+zero-success/nonreturn. Five do_sign items unchanged; no push/migration,
+second worker or independent acceptance.
+
 # Whole actual KeyGen law — ACTIVE after checkpoint106
 
 2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:

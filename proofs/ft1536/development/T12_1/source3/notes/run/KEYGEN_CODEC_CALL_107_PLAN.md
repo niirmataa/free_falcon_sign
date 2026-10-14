@@ -39,3 +39,9 @@ semantics. Full tail binding must construct/derive the real fixed caller
 memory/decoding domain on failure paths too; do not assume old unrestricted
 ReadPointer uniqueness, silently strengthen frozen source, or move this
 obligation into do_sign. The whole-law task remains active throughout.
+
+Checkpoint107 outcome: the above private-dispatch route is closed by
+kernel proofs, including source-checked no-comp leaves, terminal byte/
+length uniqueness, full normal-continuation equality and exact partial
+private encode/spec. Caller pointer-memory binding remains the separate
+next obligation; the whole owner task is still ACTIVE / NOT COMPLETE.

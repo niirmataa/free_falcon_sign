@@ -80,25 +80,25 @@ after the required KeyGen task; its previous analytic result retains scope.
 
 ## Current recovery point
 
-106closes actual codec values, reserved-name invariants, both fixed-argument
-private leaves and full public encoder (exact partial encode/spec).
-Kernel-local incomplete_live_set proves raw ReadPointer ambiguity outside
-the declared finite live set, with a finite three-block heap. This is NOT
-two complete KeyGen outcomes or a lawful-C counterexample. Actual whole
-caller pointer decoding remains an explicit obligation, including failures.
-Final keygen_codec106_011:8/8, logs0/0, full audit50declarations, standard
-axioms.11jobs,8failed/mixed elaborations retained with causes. Limits unchanged.
-Receipt:`75bc93ab03d7b8374097f16e838263151abfae5ed4c815b843bb1559063cc29b`.
-Postseal26222pins, `265176eba4d8653988fd2cd963ab5dbd8e7b6528d8bd73a3467b6f4145cdb5a6`.
-Notes:`notes/run/KEYGEN_CODEC_106_NOTES.md`.106is sealed; do not edit it.
+107closes the complete private codec Call: derived unused-comp independence,
+full State equality on normal continuations, full heap/return equality
+on return, exact partial encode/spec. No arbitrary comp equality or callee
+oracle. Commit6cdd266d's "source law" means this deterministic call
+specification only; the actual whole-KeyGen probability law remains OPEN.
+Final keygen_dispatch107_007:7/7, logs0/0, full audit35declarations,
+standard axioms.7jobs,4failed/mixed elaborations retained with causes.
+Receipt:`42199b4819c37c15e6752b52db58dd7318239fc104a3b65e95a50cc77c44a8f3`.
+Postseal26355pins, `2673e88ce18a88f10fbed5cfb483724d18fb0c92d8fd7ef394f1a648d21ffbd7`.
+Notes:`notes/run/KEYGEN_DISPATCH_107_NOTES.md`.107is sealed; do not edit it.
 
-Active107: private terminal-call unused comp independence and dispatcher
-observable heap/return uniqueness. Read `notes/run/KEYGEN_CODEC_CALL_107_PLAN.md`.
-Prepared (unchecked): CodecAgreement107, CodecValueAgreement107. Then
-whole caller tail/pointer-memory construction, concrete seeded producer
-and actual law/model binding. Caller/entropy boundary, nonreturn and
-normalization/positive success remain open. Five do_sign items unchanged;
-no push, migration or second worker.
+Active108: actual public/ordinary caller heads, then source-faithful
+finite pointer decoding/full memory-domain and complete encoding tail.
+Read `notes/run/KEYGEN_CALLER_108_PLAN.md`. Prepared (unchecked): PublicSite108.
+106's local incomplete-live-set counterexample remains; do not silently
+strengthen frozen ReadPointer or use successful Addresses on failures.
+Then concrete seeded producer, whole law/SAME-model binding and explicit
+zero-success/nonreturn. Five do_sign items unchanged; no push/migration,
+second worker or independent acceptance.
 
 Preserved089 tracking refusal/public-copy supplement remains valid:
 `KEYGEN_SEED_089_TRACKING.md`, public tool `tools/keygen_law089_seal.py`.
