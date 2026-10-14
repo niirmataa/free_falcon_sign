@@ -1,3 +1,25 @@
+# Whole actual KeyGen law — ACTIVE after checkpoint092
+
+2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
+`notes/run/KEYGEN_WHOLE_LAW_TODO.md`. Source commit1a846565.
+092 connects the real replacement-seed call and external argument binding
+through declarations, readiness and cap to the first f/g sampler pair.
+Flags, counter=0, dimensions and RNG/table legality are source consequences.
+Finite seeded traces cannot fail readiness or contain entropy events;
+cap/encoding failure and source nonreturn remain explicit.
+
+Final keygen_prefix092_009:6/6, logs0/0, full audit33 declarations,
+standard axioms.9 jobs,6 failed/mixed with causes retained.
+Receipt:`966d0a36ce7d05156ee42467c4fe01ac1cf37577f3b15968f1900c91bd76f294`.
+Postseal:23724 pins, `fe22a4dffaca97ced56d0d231b68959613bab248a07c8a638a210ac99d7b49d1`.
+Notes:`notes/run/KEYGEN_PREFIX_092_NOTES.md`.
+
+Active093: resultant gate source determinism (actual word body and fresh
+local b[96] relocation), then remaining norm/public/solver/certificate/
+codec closure and capped-loop composition. Fixed caller construction,
+automatic entropy boundary, nonreturn/normalization and SAME model law
+remain open. Five do_sign items unchanged. No push or second worker.
+
 # Whole actual KeyGen law — ACTIVE after checkpoint091
 
 2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:

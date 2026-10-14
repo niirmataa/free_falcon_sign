@@ -80,20 +80,19 @@ after the required KeyGen task; its previous analytic result retains scope.
 
 ## Current recovery point
 
-Checkpoint091: seeded readiness and exact partial MODE1 sampler, including
-chronological rejection/coefficient loops and the SAME state between both
-calls. The legal domain is derived at every draw inside the sampler.
-Final keygen_sampler091_013:9/9, logs0/0, audit73 declarations;13 jobs,
-6 failed/mixed with causes. Postseal23583 pins,
-`df3d8520ea270941f8b893512120b6cd6b5bd87e9b639d35577b18e028147575`.
-Whole task remains ACTIVE. Notes: `KEYGEN_SAMPLER_091_NOTES.md`.
+Checkpoint092 connects actual seed, make arguments, complete readiness
+prefix, cap check and first f/g sampler pair; source legality is derived.
+Source commit1a846565. Final keygen_prefix092_009:6/6, logs0/0,
+audit33 declarations;9 jobs,6 failed/mixed with causes. Postseal23724 pins,
+`fe22a4dffaca97ced56d0d231b68959613bab248a07c8a638a210ac99d7b49d1`.
+Whole task remains ACTIVE. Notes: `KEYGEN_PREFIX_092_NOTES.md`.
 
-Current092 connects seeded readiness to the enclosing declarations/prefix
-and derives sampler input legality at the actual caller. Remaining source
-closure includes gates/solver/codecs, then the seed-indexed whole-call
-experiment, nonreturn accounting, normalization and SAME model key law.
-Never duplicate a running proof job or replace the producer with an
-arbitrary execution-family input.
+Current093: actual resultant gate, including word-language determinism
+and fresh local-array relocation. Then norm/public/solver/certificate/
+codec closure, entire capped loop, fixed caller construction, seed-indexed
+whole-call experiment, nonreturn/normalization and SAME model law.
+Never duplicate a running proof job or replace the actual producer with
+an arbitrary execution family. Partial functions do not prove termination.
 
 Preserved089 tracking refusal/public-copy supplement remains valid:
 `KEYGEN_SEED_089_TRACKING.md`, public tool `tools/keygen_law089_seal.py`.
