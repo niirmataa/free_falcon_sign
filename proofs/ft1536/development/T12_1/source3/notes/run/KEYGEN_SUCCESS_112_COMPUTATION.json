@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "claim_id": "KEYGEN_SUCCESS_112_AUXILIARY_CONTROLS",
+  "repository": {
+    "commit": "99bf4a13e036dc26aa2d51d1f4d0bdc5e1dd0ca1",
+    "dirty": true
+  },
+  "command": "/home/footfalcon/.local/bin/sage /media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_success112_007/sage/keygen_success112_controls.sage",
+  "environment": {
+    "software": [
+      "SageMath 10.9",
+      "Python 3.14.7 | packaged by conda-forge | (main, Sep  2 2026, 21:08:32) [GCC 15.3.0]"
+    ],
+    "hardware": "Local x86_64 Linux; one job; canonical job receipt records bwrap network isolation, 1800s wall, 12GiB address-space and 8GiB normal RSS caps."
+  },
+  "mathematics": {
+    "assertion_tested": "Reuse S1 primary/control counts and digest equality, exact atom/quarter arithmetic, all 3^8 accepted/encoded subset configurations, and rejection of geometric availability from equal marginals.",
+    "coefficient_domain": "Sage ZZ and QQ through the standard .sage preparser",
+    "conventions": "Theorem and finite control are separate; empirical rational comparisons do not assert a population lower bound.",
+    "inputs": [
+      {
+        "path": "proofs/ft1536/development/T12_1/source3/notes/run/KEYGEN_SUCCESS_112_INPUTS.json",
+        "sha256": "0d52d99241a20be0ec52f91bf8e24c1e74fe288b15a7465727a65b3be3c96a44"
+      },
+      {
+        "path": "proofs/ft1536/development/T12_1/source3/sage/keygen_success112_controls.sage",
+        "sha256": "543418007d3fea444c15edae74d8912e2df7765322da7f53d22325089f631e1e"
+      }
+    ],
+    "bounds": {
+      "subset_cases": 6561,
+      "synthetic_domain_points": 8,
+      "old_primary_calls": 8192,
+      "old_control_calls": 256,
+      "new_keygen_calls": 0
+    },
+    "non_claims": [
+      "No unconditional positive source acceptance bound",
+      "No concrete kernel source-execution witness",
+      "No IID, F04-to-KeyGen identification or geometric cap law",
+      "No rerun of historical KeyGen measurements"
+    ]
+  },
+  "randomness": {
+    "used": false,
+    "generator": "none; existing deterministic public synthetic-seed observations reused",
+    "seed": null
+  },
+  "run": {
+    "started_at": "2026-10-14T17:16:01.104944+00:00",
+    "runtime_seconds": 1.77,
+    "exit_status": 0
+  },
+  "outputs": [
+    {
+      "path": "proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_success112_007/SUCCESS112_CONTROLS.json",
+      "sha256": "4284d1bd6eb230bce3b11c161ccdd34bc85215cf8d2464706066d19f2fa93f80"
+    },
+    {
+      "path": "proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_success112_007/RECEIPTS.json",
+      "sha256": "8a166be1b095e51b58a15c5505aafd556a7017ce94147f8057bd779a562bf2d9"
+    },
+    {
+      "path": "proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_success112_007/logs/sage.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_success112_007/logs/sage.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "checks": [
+    "Pinned inputs unchanged before and after",
+    "Exact rejection/success accounting for both recorded runs",
+    "Primary/control ratios strictly between1/4 and1/2, empirical only",
+    "Positive atomic mass; quarter requires2^254 seeds",
+    "Every tested encoded subset has mass at most whole-call event; conditional factorization when acceptance positive",
+    "Two couplings with identical attempt marginals refute a marginal-only geometric formula"
+  ],
+  "result": "implementation and finite assertion verified in the stated range; population bound remains open",
+  "residual_risks": [
+    "Version1 supplemental manifest has legacy provenance limits; canonical job receipts additionally record actual argv/source hashes and resource caps.",
+    "Input digests and native observations are not Lean execution derivations."
+  ]
+}

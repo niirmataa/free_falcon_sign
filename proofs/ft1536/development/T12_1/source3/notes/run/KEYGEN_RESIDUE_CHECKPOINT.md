@@ -1,3 +1,33 @@
+# Success-mass112 — partial checkpoint; numerical acceptance OPEN
+
+2026-10-14. PARTIAL_PROOF / NOT_REVIEWED. The owner request is NOT COMPLETE.
+Target1 (witness -> Z>=2^-256) and actual first-attempt/coding monotonicity
+are kernel-proved. No concrete kernel success witness or p_accept>=1/4.
+F04's actual theorem is signing-challenge uniformity, not KeyGen f,g.
+This is the precise failed implication in the suggested completion route.
+Final5/5,logs0/0,34 audited declarations;8jobs,2 failures retained.
+Postseal:27803pins,e387fe7824253fa149e10bbc93fa707aa039df10de2e58b90aea2ad7933e29c3.
+Source commits85cc8842,a996e1e6,f00233e3; no push.
+Current handoff/TODO:`notes/run/KEYGEN_SUCCESS_112_HANDOFF.md`.
+Exact report:`notes/run/KEYGEN_SUCCESS_112_REPORT.md`.
+No proof job running. Old S1,H3,paper and frozen artifacts unchanged;
+measured stays measured. Five do_sign items unchanged. Whole-law111 remains
+closed in its declared scope; this NEW numerical request remains open.
+
+# Active112 — kernel success mass and per-attempt acceptance
+
+2026-10-14. Owner selected p_accept for a SINGLE KeyGen attempt (S1), then
+p_K by first-attempt/coding monotonicity. Previous whole-law task remains
+sealed complete in its declared scope; this new numerical goal is OPEN.
+Plan:`notes/run/KEYGEN_SUCCESS_112_PLAN.md`. First theorem accepted in
+keygen_success112_002: actual seed-success witness implies whole mass>=2^-256;
+positive mass iff a successful source seed, and finite certified-set bound.
+No closed concrete source witness or numerical p_accept lower bound yet.
+F04 samplerLaw_marginal_uniform is a SIGNING CHALLENGE theorem, not f,g.
+Next: source first-attempt subset, exact Sage controls reusing S1, full audit.
+Do not change measured paper wording, old S1/H3 records or any frozen pins.
+One Lean process, local commits, postseal, no push or subagents.
+
 # Whole actual KeyGen law — scoped objective complete
 
 2026-10-14. COMPLETE IN DECLARED A2/REFERENCE SCOPE / NOT_REVIEWED.
