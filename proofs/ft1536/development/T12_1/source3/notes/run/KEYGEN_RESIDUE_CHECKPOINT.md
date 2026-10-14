@@ -1,3 +1,36 @@
+# Active three-point program — extraction120 sealed; source RNG/MODE1 121
+
+2026-10-14. ACTIVE / NOT COMPLETE / NOT_REVIEWED. Full G(seed*)/Z>0,
+actual numerical acceptance and conditional coding remain OPEN.120 proves
+complete original-source shake_extract Exec/Call from finite computation,
+with actual A/RC reads,116 process_block,117 enc64le, object-bounded memcpy,
+all source control/scopes and exact caller entry/restoration. A closed
+prebuffered control reads four bytes and advances cursor2→6; it is NOT the
+selected seed's full extraction/refill witness. Coherent7/7,0/0,32-declaration
+audit;5jobs,0failures. Source5a86cf54,39295834; final keygen_extract120_005.
+Receipt120:ba1d700af0055eb78a955688b60bbc5ca84caca01928f4a7f37b9693989640c1.
+Postseal120:29262pins,f75e98b4654ae3111275aee1dfd56cade8596aa8a5a0c299c88597d734f94793.
+120 is SEALED; report KEYGEN_SHAKE_EXTRACT_120_REPORT.md.119 ignored-tool
+source aliases and materializer now included in the120 pin closure.
+
+Active121 draft KeygenRngCompute121 (not compiled). Verify120 pair into121
+ENTRY_PINS first, then build fresh8-byte allocation→actual extract→Load64→
+disposal as KeygenRngSource.Call. Build MODE1 prologue/scalars, 16-bit store,
+refill, rejection/break and outer loop against original source relations.
+Read exact KeygenSamplerSource, KeygenTernaryStore and KeygenSamplerCalls.
+The C FALCON_LE_U path actually declares uint64_t r; the aligned Load64 is
+source-bound (not the unaligned dec64le helper). Reuse115 allocation/fresh/
+restore; empty-block raw trie nodes can remain after disposal.
+
+Then concrete selected-seed refill/sampler certificates; try one normalized
+whole double round before paying116's49chunks-per-round cost. Full canonical
+caller/domain, set_seed wrapper and readiness remain explicit obligations.
+Original ctx domain checks PRIMES3 all1101rows and REV10, scratch286720,
+M0fields and publiccapacity; correct pointer word and all additional required
+static/global data must be constructed, not inferred from the domain alone.
+One job, no push/new schedules/worker/review; five do_sign and measured paper
+unchanged. Continue original three-point task after each postseal.
+
 # Active three-point program — selected-seed core119 sealed; extraction120 next
 
 2026-10-14. ACTIVE / NOT COMPLETE / NOT_REVIEWED. Full G(seed*)/Z>0,
