@@ -1,3 +1,20 @@
+# Whole actual KeyGen law — scoped objective complete
+
+2026-10-14. COMPLETE IN DECLARED A2/REFERENCE SCOPE / NOT_REVIEWED.
+The source-defined whole-call law and SAME decoded joint/public model law
+are proved and connected to AssemblyComp. Zero success and no-finite-defined
+execution remain explicit; no IID, D1 replacement or new assumption.
+Final replay111_008: 18/18, logs0/0, 110 full declarations. POSTSEAL111 checks
+27064 pins: 0476066da04edb02c2009a6d0fdc7a9286b9e08f8100d3cd5c7c87cd161a6a65.
+Proof commits1694400e,94769403; sealed checkpoint e1a89f75.
+Canonical current view: `notes/run/KEYGEN_WHOLE_LAW_TODO.md`.
+Whole-task assessment: `notes/run/KEYGEN_WHOLE_LAW_FINAL_001.md`.
+No active job or pending route inside this scoped target. Separate project
+work: OS-bootstrap/native-layout extensions, positivity/termination,
+non-signing byte-game transport and the unchanged five do_sign items;
+actual-C e2 remains open. No independent review, push, migration or production
+C change. Historical checkpoints below retain their original status.
+
 # Whole actual KeyGen law — model binding proved, final scope closeout
 
 2026-10-14. PROVED_KERNEL_SCOPED / NOT_REVIEWED; final task assessment pending.
