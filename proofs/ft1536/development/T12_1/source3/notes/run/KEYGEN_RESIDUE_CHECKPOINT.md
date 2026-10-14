@@ -1,3 +1,29 @@
+# Whole actual KeyGen law — ACTIVE after checkpoint108
+
+2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
+`notes/run/KEYGEN_WHOLE_LAW_TODO.md`. Source commits3c5addd0,16aaaa77.
+108closes full original18-statement encoding, every capacity/partial-write
+failure, exact partial encode/spec and source-derived loop-to-tail input.
+The finite canonical address CONSTRUCTION separates used words from ALL
+other identifiers; actual all-exit ske histories derive descriptor identity
+and Addresses without assuming read liveness. It sets both Env.vb and
+ctx.virtualBase before any caller heap; no arbitrary-memory rebasing claim.
+Final keygen_caller108_011:10/10, logs0/0, full audit68declarations,
+standard axioms.11jobs,2failed elaborations retained with causes.
+Receipt:`c49001b80228c6df095f5ca6c18af10e9a1aa9a8c9aa33003e3b86f91ae8562e`.
+Postseal26532pins, `a8ce557584a90bb55dc2fa4f4f59e199c0242839ea6f85825b16bc5ac110f3ad`.
+Notes:`notes/run/KEYGEN_CALLER_108_NOTES.md`.108is sealed; do not edit it.
+
+Active109: raw whole source traces, fixed seed observable uniqueness and
+actual whole outcome constructor. Read `notes/run/KEYGEN_WHOLE_109_PLAN.md`.
+Prepared WholeTrace109; inspect latest109job before use. Then whole A2 law,
+normalizer/zero case and SAME decoded joint/model-public binding. AssemblyComp
+KeyLawBinding and SigmaMath.muH are generic in the joint law, so no D1
+identity is presumed. Fixed caller and entropy/nonreturn scope must remain
+explicit. Five do_sign items unchanged; no push/migration, reviewer or
+second worker. Source OS bootstrap also uses32bytes; its availability law
+is not supplied by A2 and must not be invented.
+
 # Whole actual KeyGen law — ACTIVE after checkpoint107
 
 2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:

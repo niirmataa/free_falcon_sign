@@ -36,3 +36,24 @@ compose the already exact seeded prefix, capped loop and teardown; expose
 no finite defined return separately from observed0, then push the A2 seed
 law through the whole invocation and bind SAME decoded/model keys. No IID,
 new PRG, hidden normalizer, successful-trace selector or extra do_sign item.
+
+Constructive route found and kernel-checked in108_002: choose positive,
+distinct bases for the finite invocation list and sentinel zero outside
+it. This separates every used canonical pointer word from ALL other
+identifiers, without globally injecting Nat into64bits. canonical constructs
+Env.vb and ctx.virtualBase together BEFORE a caller heap is supplied; it
+does not claim to rebase arbitrary existing bytes. read_known therefore
+needs only the source-known live stored word, not assumed liveness of the
+read descriptor. Combining this with all-exit ske histories can retain the
+UNCHANGED frozen source relations and derive their Addresses side condition.
+The fixed caller must still be explicitly bound to the constructed layout;
+no probability-law completion is claimed by the address helper alone.
+
+Checkpoint108 outcome: unchanged original typed encoding relations have
+unique full outcomes for the constructed representation. Every decoded
+private pointer and the formerly explicit Addresses extension follows
+from actual all-exit ske histories; no read-descriptor liveness premise.
+The four-segment loop and complete18-statement tail are related in BOTH
+directions to trace-list-free runs. Tail inputs are derived from actual
+binding/prefix/accepted-loop execution. Fixed-caller input and whole
+seeded invocation/law assembly remain the next owner-task obligations.

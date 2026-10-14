@@ -80,25 +80,27 @@ after the required KeyGen task; its previous analytic result retains scope.
 
 ## Current recovery point
 
-107closes the complete private codec Call: derived unused-comp independence,
-full State equality on normal continuations, full heap/return equality
-on return, exact partial encode/spec. No arbitrary comp equality or callee
-oracle. Commit6cdd266d's "source law" means this deterministic call
-specification only; the actual whole-KeyGen probability law remains OPEN.
-Final keygen_dispatch107_007:7/7, logs0/0, full audit35declarations,
-standard axioms.7jobs,4failed/mixed elaborations retained with causes.
-Receipt:`42199b4819c37c15e6752b52db58dd7318239fc104a3b65e95a50cc77c44a8f3`.
-Postseal26355pins, `2673e88ce18a88f10fbed5cfb483724d18fb0c92d8fd7ef394f1a648d21ffbd7`.
-Notes:`notes/run/KEYGEN_DISPATCH_107_NOTES.md`.107is sealed; do not edit it.
+108closes full original18-statement encoding, every capacity/partial-write
+failure, exact partial encode/spec and source-derived loop-to-tail input.
+The finite canonical address CONSTRUCTION separates used words from ALL
+other identifiers; actual all-exit ske histories derive descriptor identity
+and Addresses without assuming read liveness. It sets both Env.vb and
+ctx.virtualBase before any caller heap; no arbitrary-memory rebasing claim.
+Final keygen_caller108_011:10/10, logs0/0, full audit68declarations,
+standard axioms.11jobs,2failed elaborations retained with causes.
+Receipt:`c49001b80228c6df095f5ca6c18af10e9a1aa9a8c9aa33003e3b86f91ae8562e`.
+Postseal26532pins, `a8ce557584a90bb55dc2fa4f4f59e199c0242839ea6f85825b16bc5ac110f3ad`.
+Notes:`notes/run/KEYGEN_CALLER_108_NOTES.md`.108is sealed; do not edit it.
 
-Active108: actual public/ordinary caller heads, then source-faithful
-finite pointer decoding/full memory-domain and complete encoding tail.
-Read `notes/run/KEYGEN_CALLER_108_PLAN.md`. Prepared (unchecked): PublicSite108.
-106's local incomplete-live-set counterexample remains; do not silently
-strengthen frozen ReadPointer or use successful Addresses on failures.
-Then concrete seeded producer, whole law/SAME-model binding and explicit
-zero-success/nonreturn. Five do_sign items unchanged; no push/migration,
-second worker or independent acceptance.
+Active109: raw whole source traces, fixed seed observable uniqueness and
+actual whole outcome constructor. Read `notes/run/KEYGEN_WHOLE_109_PLAN.md`.
+Prepared WholeTrace109; inspect latest109job before use. Then whole A2 law,
+normalizer/zero case and SAME decoded joint/model-public binding. AssemblyComp
+KeyLawBinding and SigmaMath.muH are generic in the joint law, so no D1
+identity is presumed. Fixed caller and entropy/nonreturn scope must remain
+explicit. Five do_sign items unchanged; no push/migration, reviewer or
+second worker. Source OS bootstrap also uses32bytes; its availability law
+is not supplied by A2 and must not be invented.
 
 Preserved089 tracking refusal/public-copy supplement remains valid:
 `KEYGEN_SEED_089_TRACKING.md`, public tool `tools/keygen_law089_seal.py`.
