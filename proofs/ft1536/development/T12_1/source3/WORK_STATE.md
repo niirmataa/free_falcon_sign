@@ -1,3 +1,39 @@
+# Whole actual KeyGen law — ACTIVE after checkpoint 089
+
+2026-10-14. Whole-task TODO remains ACTIVE / NOT COMPLETE:
+`notes/run/KEYGEN_WHOLE_LAW_TODO.md`. No D1 shortcut or IID premise.
+
+Checkpoint089 is PROVED_KERNEL_SCOPED / NOT_REVIEWED: exact mathematical
+partial function for source set_seed(fk, seed, 32, 1), both-direction source
+specification, proved determinism of its fixed scalar/SHAKE callees, derived
+caller-domain transport and physical seeded=1/flipped=0 flags. It is not
+whole-KeyGen execution, universal termination, success positivity, default
+OS-entropy-law identification or the final key-law binding.
+Source commits: 7152a18f (determinism), c5cbb1b0 (partial seeding/caller facts).
+Final keygen_seed089_025: 14/14, logs0/0; full audit122 declarations,
+standard axioms only.25 jobs/40 steps/27 accepted steps;13 failed/mixed
+jobs retained with causes. Receipt SHA256
+`bd82112740ece709d4ed14e07f84adb4007e5a7f76c36dcfd58e93890f85599d`.
+POSTSEAL089: 23162 matching pins, SHA256
+`8f9963abbb256e1786d9fa0c12a53db25416df3e0ac3b509ff1a59da0a64556a`.
+Notes: `notes/run/KEYGEN_SEED_089_NOTES.md`.
+
+Tracking supplement: the broad `.gitignore:*seed*` rule refused the
+public organizer filename; both failed Git actions are preserved. The
+sealed original remains unchanged and its identical public copy is tracked
+as `tools/keygen_law089_seal.py`; reconstruction is described in
+`notes/run/KEYGEN_SEED_089_TRACKING.md`. Additive postseal23166 pins, SHA256
+`d460b99b748afbfe760d641ca1a5e80b718fb6ebe10feecb9b6c7df462d9d37e`.
+
+Next active090: actual extraction and get_rng_u64 temporary-object
+relocation. `ShakeExtractDeterminism090` accepted in keygen_extract090_001
+for a FIXED output object; cross-object relocation is still open. Then
+seeded readiness, the full sampler/KeyGen closure, exact whole-call law,
+normalizer and SAME packet-to-model law. Do not insert an assumed execution
+family, a callee correctness predicate or a dummy successful key.
+The five do_sign points and optional actual-C e2 status are unchanged.
+No push, new reviewer, relay, migration, production C edit, tag or import.
+
 # Whole actual KeyGen law — ACTIVE after checkpoint 088/A
 
 Owner decision 2026-10-14: use the whole actual stopped KeyGen, including

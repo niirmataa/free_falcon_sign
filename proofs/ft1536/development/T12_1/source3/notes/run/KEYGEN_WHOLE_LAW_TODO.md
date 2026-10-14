@@ -36,7 +36,9 @@ assumption, or new KeyGen PRG assumption closes a missing step.
 ## B. Seeded source execution
 
 - [ ] Specify the fixed legal caller and explicit 32-byte A2 seed boundary; distinguish fresh, user-seeded and resumed contexts.
-- [ ] Bind the sampled bytes to the actual pinned init/inject/flip or source seed interface.
+- [x] Bind the sampled bytes to the actual pinned source replacement-seed interface (089, exact partial source specification).
+- [x] Derive caller-domain transport and seeded=1/flipped=0 from source execution (089).
+- [ ] Reconcile the explicit seed API with the intended fresh automatic entropy path, without inventing an OS failure law.
 - [ ] Preserve the SAME SHAKE state through every scalar draw and outer attempt.
 - [ ] Establish source observation determinism or an equally strong exact operational construction; do not assume it.
 - [ ] Represent observed failures separately from lack of a finite defined execution.
@@ -77,15 +79,27 @@ after the required KeyGen task; its previous analytic result retains scope.
 
 ## Current recovery point
 
-Checkpoint 088/A: source commit `941a0c37`, final `keygen_whole088_007`
-4/4 with 0/0 logs, audit 58 mathematical declarations, postseal
-`7557e64922b0876e7d610dd33441635a82f1c68eac2ab7502ab631a8d27dd54b`
-(22828 pins). Whole task remains ACTIVE. `wholeLaw` is a
-checked consumer of source executions, not a concrete seeded producer.
-The current source step is `KeygenSeedEntry089`; check its latest job receipt
-before resuming. Seeded operational determinism and nonreturn are the next
-substantive dependencies. No automatic second worker, reviewer or push.
+Checkpoint089: source commits `7152a18f` and `c5cbb1b0`, final
+`keygen_seed089_025`14/14, logs0/0, full audit122 declarations.
+Postseal `8f9963abbb256e1786d9fa0c12a53db25416df3e0ac3b509ff1a59da0a64556a`
+(23162 pins). Whole task remains ACTIVE.
+An exact source partial seeding function and derived caller facts exist;
+whole-KeyGen source outcomes, positivity and law identification remain open.
+
+Tracking supplement: the broad `.gitignore:*seed*` rule refused the
+public organizer filename; both failed Git actions are preserved. The
+sealed original remains unchanged and its identical public copy is tracked
+as `tools/keygen_law089_seal.py`; reconstruction is described in
+`notes/run/KEYGEN_SEED_089_TRACKING.md`. Additive postseal23166 pins, SHA256
+`d460b99b748afbfe760d641ca1a5e80b718fb6ebe10feecb9b6c7df462d9d37e`.
+
+Active090: `ShakeExtractDeterminism090` accepted at keygen_extract090_001
+for fixed before-state/output object. Next prove relocation of the temporary
+output object in get_rng_u64 and then continue the source closure. A lawful
+partial value may be selected only after its actual source result is shown
+unique. No source-correctness assumption or arbitrary trace family may close
+this seam. Inspect the current immutable job receipts before resuming.
 
 Two owner-requested one-time heartbeat checks were created for this chat on
-2026-10-14 at 11:00 and 13:00 Europe/Warsaw, to recover only if execution
-stops; do not duplicate them or start another executor.
+2026-10-14 at11:00 and13:00 Europe/Warsaw to recover if execution stops;
+do not duplicate them or start another executor.
