@@ -412,3 +412,40 @@ process certificates, test rfl/factored unchanged trie subtrees before
 forcing whole-state equality over unchanged static objects; not yet tested.
 One job,no push/new worker/review/schedules; measured paper/five do_sign
 unchanged. Owner explicitly reaffirmed continuing the whole task to goal.
+
+## Checkpoint125 closed; cap and sampler126 active
+
+2026-10-15. ACTIVE / NOT COMPLETE / NOT_REVIEWED.125 has a CLOSED
+SelectedPrefix125.seeded_prefix from selected public seed to the ACTUAL
+make prefix: header binding, chronological scalar/pointer declarations,
+six fresh automatic objects, counter0, profile dimension reads/MKN1536,
+and actual rng_ready plus caller gate. This removes124's local-readiness
+boundary. SelectedPrefixFacts125 derives Count0, actual Initial objects,
+flags present, n1536 and all416 RNG bytes matching the native first-sampler
+image. The output is CAPPED LOOP ENTRY, not yet the first sampler caller:
+actual increment and cap condition still execute before f/g.
+
+Final keygen_prefix125_008 audit1/1; coherent7/7,0/0,54-declaration full audit.
+8jobs,1failed retained (fixed header some-entry reduction made naive bind
+inversion skip a step; explicit header entry+rfl fixes it). Source86c9bca5,
+8a7bed11,66a7920d. Receipt125:
+f2774d9f152ec47ec4dab235558a160c329163966fe3c9d2acf0c4205ee61881.
+Postseal125:30079 pins,
+3227093900325379decdbf3351104b2407dcfac1217278000e7eb2d5306ad8f8.
+All125 mathematical/evidence sources are SEALED. Do not edit them.
+
+Next126: verify125 ENTRY, then actual first cap increment/test, selected
+sampler binding/prologue/initial counter/declaration of x, and actual RNG
+refill on that exact state. KeygenCapCompute126.lean is an UNCOMPILED draft.
+Cheapest resource discriminator: one actual get_rng_u64 call's Option
+isSome with the metadata-efficient heap (no whole-state equality), under
+unchanged limits. If full source process still exceeds resources, use
+source-certified call fragments/normalized round certificates with proved
+lookups; try rfl/factored unchanged trie subtrees before comparing whole
+unchanged static data. No arbitrary random-word oracle or native premise.
+Full f/g, additional callee static/global objects, gates/solver/packets and
+G(seed*)/Z>0 remain OPEN, as do numerical acceptance and conditional coding.
+123's current example includes PRIMES3/REV10/RC only; enrichment must preserve
+and prove its domain/exact source chain, never silently swap inputs.
+One job,no push/new worker/review/schedules; measured paper/five do_sign
+unchanged. Owner reiterated proceeding with the whole task until goal.
