@@ -80,19 +80,19 @@ after the required KeyGen task; its previous analytic result retains scope.
 
 ## Current recovery point
 
-Checkpoint094: actual raw norm/GS and complete sampler/resultant/norm
-ternary prefix, retaining all rejection edges. Source commit a7a10d4b.
-Final keygen_norm094_006:5/5, logs0/0, audit30 declarations;6 jobs,
-1 failed with cause. Postseal23980 pins,
-`527dea7a71d61ae2352e57fae94bc88116498e12242a20f22271f18b9601d591`.
-Whole task remains ACTIVE. Notes: `KEYGEN_NORM_094_NOTES.md`.
+Checkpoint095: exact partial actual public computation, including local
+arrays, source-proved lifetime structure, restored caller and return-zero.
+Source commits de29eea9/c17e0117. Final keygen_public095_015:11/11,
+logs0/0, audit63 declarations;15 jobs,6 failed/mixed with causes and stop
+race preserved. Postseal24205 pins,
+`b9cc36819c43d89dfe1c4fd771e1f6697ba7f677fd9e0653ea62daa4ab7a53b6`.
+Whole task remains ACTIVE. Notes: `KEYGEN_PUBLIC_095_NOTES.md`.
 
-Current095: actual public computation, starting with closed scalar strata
-and public word semantics, then local-array relocation/determinism and
-caller input legality. Next solver/certificate/codecs, capped loop and
-whole law/model binding. The fixed caller, automatic entropy boundary,
+Current096: solver source closure. Start with correct-arity modular R2/div
+semantics, not assumed global ModCall determinism (arbitrary base in
+malformed-argument bodies). Then full solver, certificate/codecs, capped
+loop and whole law/model binding. Fixed caller, automatic entropy boundary,
 nonreturn/normalization and positive success where needed remain open.
-Partial source functions are not termination or success-mass theorems.
 
 Preserved089 tracking refusal/public-copy supplement remains valid:
 `KEYGEN_SEED_089_TRACKING.md`, public tool `tools/keygen_law089_seal.py`.

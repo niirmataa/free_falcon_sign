@@ -1,3 +1,31 @@
+# Whole actual KeyGen law — ACTIVE after checkpoint095
+
+2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
+`notes/run/KEYGEN_WHOLE_LAW_TODO.md`. Source commits de29eea9/c17e0117.
+095 proves the actual public computation and gate deterministic, including
+local-array choices and full restored caller state/scalar return. Exact
+partial compute_spec retains return-zero results. TailArrays is proved
+for all eight source functions; internal dangling aliases are handled by
+visible-result equality, not assumed live. Caller facts and h allocation
+are source derived. No source totality or probability claim.
+
+Final keygen_public095_015:11/11, logs0/0, full audit63 declarations,
+standard axioms.15 jobs,6 failed/mixed; causes and unsuccessful stop race
+retained. Limits unchanged; inverse source partition reused for memory.
+Receipt:`291e14e560aefaa1a8d9737f4e21a84e3d93078e45f208b03c22fd3cdc56ed05`.
+Postseal:24205 pins, `b9cc36819c43d89dfe1c4fd771e1f6697ba7f677fd9e0653ea62daa4ab7a53b6`.
+Notes:`notes/run/KEYGEN_PUBLIC_095_NOTES.md`.
+
+Active096: solver source closure, starting with its modular callees and
+correct-arity R2/div bodies. Generic ModCall is NOT known deterministic
+for malformed argument lists: r2Body/divBody use an arbitrary base state.
+Do not insert an all-call determinism assumption. R2 has a pinned exact
+word result (KeygenModpR2Exec); div needs a genuine source proof or a pure
+scalar observational transport. Then solver composition, certificate,
+codecs and whole loop/law/model binding. Fixed caller/entropy boundary,
+nonreturn/normalization/positive success remain open. Five do_sign points
+unchanged; no push or second worker.
+
 # Whole actual KeyGen law — ACTIVE after checkpoint094
 
 2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
