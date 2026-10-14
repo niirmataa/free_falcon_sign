@@ -1,3 +1,28 @@
+# Whole actual KeyGen law — ACTIVE after checkpoint097
+
+2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
+`notes/run/KEYGEN_WHOLE_LAW_TODO.md`. Source commit3a2aafa5.
+097 closes actual ternary and binary NTT/generator calls, checked level
+semantics and seven bigint leaf calls, including source argument/return
+seams. Each concrete body has a kernel arity proof; memmove/PrimeRead and
+level binding are unique. No full solver, termination or law claim.
+
+Final keygen_levels097_005:6/6, logs0/0, full audit46 declarations,
+standard axioms.5 clean jobs; explicitly empty failure registry.
+Receipt:`3d9aecd556079ffa74a07725bdd7db91129f0afc82ea317fe88ff151c122bd95`.
+Postseal24534pins, `fa00266799a11da34e349e8c8e3b8896808d4b017adcbf4f307553d54e3a5676`.
+Notes:`notes/run/KEYGEN_LEVELS_097_NOTES.md`.
+
+Active098: complete KeygenZintCall language and source family, including
+CRT, co-reduce/reduce, bit extraction and Bezout. New unverified file
+KeygenZintDeterminism098 is prepared; inspect latest job receipts before
+using it. Prove finite all-callee syntax closure, then instantiate generic
+execution comparison; no abstract callee assumption in final Call result.
+Then make_fg/search/intermediate/deepest/depth0/root solver, certificate,
+codecs and full loop/law/model binding. Fixed caller/entropy boundary,
+nonreturn/normalization/positive success remain open; five do_sign points
+unchanged. No push or second worker.
+
 # Whole actual KeyGen law — ACTIVE after checkpoint096
 
 2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
