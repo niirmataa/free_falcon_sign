@@ -80,18 +80,19 @@ after the required KeyGen task; its previous analytic result retains scope.
 
 ## Current recovery point
 
-Checkpoint099: actual make_fg top/step/make, all9source pieces and actual
-call binding, exact partial function. Source commit2e7968ff. Final
-keygen_make099_003:5/5, logs0/0, audit21declarations;3clean jobs.
-Postseal25152pins,
-`fc5c67ea8d292950ed5c697b31a94ecb07de217f1ddbf89eb89747eb7fe557f6`.
-Whole task remains ACTIVE. Notes:`KEYGEN_MAKE_099_NOTES.md`.
+100closes search pointer/value/execution uniqueness and the actual depth0
+call, with exact partial runCall/spec. No termination or success premise.
+Final keygen_search100_003:5/5, logs0/0, full audit17declarations, standard
+axioms.3jobs,1failed elaboration with cause and all evidence preserved.
+Receipt:`1e7d8d76cc3eedb06660cb8d7fc959ddde2da31abc5bdf383a9863bf5f053007`.
+Postseal25232pins, `6c162fc55ee4283c166d7331480d263e154f72fe3207a6a7e32fe7b8593f5203`.
+Notes:`notes/run/KEYGEN_SEARCH_100_NOTES.md`.100is sealed; do not edit it.
 
-Current100: full search-language pointers/values/source calls and actual
-depth0. Then deepest/intermediate/root solver, certificate/codecs, capped
-loop and actual law/model binding. Fixed caller, automatic entropy
-boundary, lack of finite defined return, normalization and positive success
-where required remain open. Five do_sign items unchanged.
+Active101: actual scaled bigint/top/polynomial helpers, then deepest/
+intermediate/root, certificate/codecs, full loop and actual law/model
+binding. Fixed caller, entropy boundary, lack of finite defined return,
+normalization/positive success remain open. Five do_sign items unchanged;
+no push or second worker.
 
 Preserved089 tracking refusal/public-copy supplement remains valid:
 `KEYGEN_SEED_089_TRACKING.md`, public tool `tools/keygen_law089_seal.py`.

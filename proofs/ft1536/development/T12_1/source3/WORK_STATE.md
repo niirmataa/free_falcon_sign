@@ -1,3 +1,21 @@
+# Whole actual KeyGen law — ACTIVE after checkpoint100
+
+2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
+`notes/run/KEYGEN_WHOLE_LAW_TODO.md`. Source commita0da9f53.
+100closes search pointer/value/execution uniqueness and the actual depth0
+call, with exact partial runCall/spec. No termination or success premise.
+Final keygen_search100_003:5/5, logs0/0, full audit17declarations, standard
+axioms.3jobs,1failed elaboration with cause and all evidence preserved.
+Receipt:`1e7d8d76cc3eedb06660cb8d7fc959ddde2da31abc5bdf383a9863bf5f053007`.
+Postseal25232pins, `6c162fc55ee4283c166d7331480d263e154f72fe3207a6a7e32fe7b8593f5203`.
+Notes:`notes/run/KEYGEN_SEARCH_100_NOTES.md`.100is sealed; do not edit it.
+
+Active101: actual scaled bigint/top/polynomial helpers, then deepest/
+intermediate/root, certificate/codecs, full loop and actual law/model
+binding. Fixed caller, entropy boundary, lack of finite defined return,
+normalization/positive success remain open. Five do_sign items unchanged;
+no push or second worker.
+
 # Whole actual KeyGen law — ACTIVE after checkpoint099
 
 2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
