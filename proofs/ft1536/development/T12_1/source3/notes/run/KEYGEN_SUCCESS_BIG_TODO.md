@@ -162,3 +162,27 @@ Performance follow-up remains open: normalize literal byte tries in future
 state certificates instead of rebuilding every heap from words; untested.
 Paper stays measured; exactly five do_sign items unchanged. No push, new
 schedule, second executor or independent review claim. Continue all3points.
+
+## Checkpoint117 closed; source seed grammar118 active
+
+2026-10-14. ACTIVE / NOT COMPLETE / NOT_REVIEWED. Original3points unchanged:
+full G(seed*)/Z>0, actual acceptance bound and conditional coding remain OPEN.
+117 has source-sound computed dec64le, enc64le and xor_block, including byte
+bounds/alignment, casts, source declarations/assignments, stores and xor loop.
+Coherent5/5,0/0,56-declaration full audit;10 closed controls;7jobs,5failed/mixed
+retained. Source commits2950d95e,1270677d. Final audit keygen_shake117_007.
+Receipt117:7eba3aafb027bd56e9490e5d61b23fcb9de9167fc59efd4b747978fc412fb69b.
+Postseal117:28989pins,b208d09df5396e4819b712e23da449a4d7fb31e265837e127c37abc7f754ecfe.
+117 sources and metadata SEALED; do not edit. Report:
+`notes/run/KEYGEN_SHAKE_BYTES_117_REPORT.md`.116 local concrete Process witness
+and its1291-declaration audit remain sealed; seed-origin binding still open.
+
+Active118 drafts: ShakeSeedRead118,ShakeSeedBasic118, not yet compiled.
+Verify117 pair into118 ENTRY_PINS before first job. Complete actual source
+init/inject/flip grammar: reads/basic ops, indexed stores/postByte, fill/copy,
+flow and Init/Inject/Flip wrappers. Reuse117 byte helpers and116 Process.
+Then construct selected seed initialization/padding and extract/MODE1 chain,
+followed by source gates/solver/final packets. Fuel None stays inconclusive.
+Untested literal-byte-trie normalization route is recorded in116 performance
+note for future concrete blocks. One process, no push/schedule/new worker,
+standard axioms and logs0/0. Five do_sign items and measured paper unchanged.

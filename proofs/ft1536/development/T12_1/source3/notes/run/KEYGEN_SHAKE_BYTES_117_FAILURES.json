@@ -1,0 +1,7 @@
+{
+  "keygen_shake117_001": "The original scalar-reference expression type has no DecidableEq instance. The dec64le lowering equality is definitional, so use rfl instead of decide; no decoder computation or source relation changed.",
+  "keygen_shake117_002": "Decoder accepted. Encoder entry conversion is propositionally related to the source conversion by Cell.converted_reference, rather than definitionally identical. Prove the singleton environment lemma with that existing cast bridge and reuse it for xor entry; no computation changed.",
+  "keygen_shake117_003": "Encoder accepted. Definitional reduction collapsed the xor declaration and initialization binds before generic Option.bind decomposition, so the extracted state was already the loop result. Name both computed prologue states and prove their rfl evaluations explicitly before decomposing the loop; no semantics changed.",
+  "keygen_shake117_004": "Rewriting Option.bind_some did not match the elaborated monadic bind head after the first rewrite. Expose the already definitionally equal residual loop bind with change, preserving the separately proved prologue equalities.",
+  "keygen_shake117_005": "The XorCall constructor exposed a definitionally equal heap-record reconstruction in its input, preventing backward syntactic entry rewrite. Rewrite the standalone scalar-source proof forward and use definitional equality when applying it. No computation or source semantics changed."
+}
