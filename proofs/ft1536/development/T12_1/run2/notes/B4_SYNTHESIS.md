@@ -900,6 +900,24 @@ proven, full acceptance waits on B1.07 link. Math<->bytes bridge
 now has full codec proofs; biggest gap = whole-KeyGen composition.
 NOT_REVIEWED held.
 
+## 2026-10-14: B1.07-09 ACCEPTED independently - PASS_SCOPED (REVIEW_B1_CLOSEOUT_001, Daybreak)
+
+Independent review of the B1.07-09 closeout (batches 079-083) =
+**PASS_SCOPED** in the C99/GCC LP64 reference model: input pins
+21759 and final 21798 consistent; fresh replay 45/45 clean; five
+deliberate mutations (bound 7681-10369, header 0xaa, memory-legality
+premise, frame weakening) all rejected as expected. Verdict confirms
+the CONDITIONAL agreement of both key packages (secret 0xaa + public
+2881 joined on the same accepted material/certificate). Explicitly
+NOT proven: real keygen success, Sign security, S.code<->do_sign.
+Next: separate B1.10 contract, then B1.11 consolidation; then
+do_sign realization. Reviewer artifacts pinned:
+work/FT1536_B1_CLOSEOUT_REVIEW_001/REVIEW_B1_CLOSEOUT_001.md
+(b4df4d69...), REVIEW_B1_CLOSEOUT_001_RESULT.json (ee080453...).
+
+The B1.07, B1.08, B1.09 reference-scope Acceptance is now both
+author-established AND independently reviewed.
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
