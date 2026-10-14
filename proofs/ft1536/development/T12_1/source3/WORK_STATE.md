@@ -1,3 +1,28 @@
+# Active three-point success program — state115 sealed; actual SHAKE116
+
+2026-10-14. ACTIVE / NOT COMPLETE / NOT_REVIEWED. Canonical TODO:
+`notes/run/KEYGEN_SUCCESS_BIG_TODO.md`. Public native fixture remains meas1/
+counter9, first-attempt return1, sk7681/pk2881; full kernel G(seed*) witness
+and numerical p_accept/coding bounds remain OPEN.
+
+115: finite typed local cells/maps, fresh allocation/disposal, original
+scalar execution, compact five-field state, scopes, pointers and both Bind
+interfaces. Final keygen_state115_012:9/9,0/0,full91-declaration audit,
+standard axioms;12jobs,7 failed/mixed retained. Source3fe5fcc4,60759bdb.
+Receipt115:ee41a19c692ddccbbaa86cc22f31220d4226d8ba87ae2167b12cdb646a215a1a.
+Postseal115:28633pins,5d08a2cbf7af83e48e0dca6b5ddfe3aeb4c314e48dd623a3acd00eda55782e30.
+Notes:`notes/run/KEYGEN_STATE_115_REPORT.md`.115is sealed; do not edit it.
+
+Active116: ShakeBlockComputeRead116 and ShakeBlockCompute116 first job
+keygen_shake116_001; inspect receipts before another Lean. Plan:
+`notes/run/KEYGEN_SHAKE_116_PLAN.md`. These execute the pinned process_block
+AST, with actual A/RC reads and source-sound finite-fuel execution. Next:
+Process call/readonly RC binding, concrete first-block kernel replay against
+retained native bytes, then init/inject/flip/extract and the source sampler.
+Fuel failure is unknown, not source nonreturn. Reuse old C99/primitive/source
+pins. No native_decide, arbitrary callee or postcondition premise. Continue
+all three points, no push/new schedules/second worker; five do_sign unchanged.
+
 # Active three-point success program — kernel memory114 sealed; state115
 
 2026-10-14. ACTIVE / NOT COMPLETE / NOT_REVIEWED. Canonical TODO:
