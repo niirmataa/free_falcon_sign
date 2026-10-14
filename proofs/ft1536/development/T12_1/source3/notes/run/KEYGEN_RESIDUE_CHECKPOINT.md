@@ -18,7 +18,8 @@ with 4 failed/mixed preserved. B1 review 45/45 and 5 mutations consumed by
 pin; `full_b1_11_replay=false`, 974 historical bindings, not world replay.
 BATCH086 SHA256 d7bdecf25e7dacd76b3c7f1a3c96b22cece1d19223b5dc51f5d1f7c3228ccf6f.
 POSTSEAL086: 22434 pins, SHA256 509ffbec8204a6db762d91fd4da4a1d0f31357473c15318e04267489a3c503b8.
-Own commits so far: 029d679c / B1.10, b4a8d119 / B1.11; final 086 commit follows.
+Own source commits: 029d679c / B1.10, b4a8d119 / B1.11, 577eddf6 / preparation.
+Final handoff: notes/run/PRE_DO_SIGN_FINAL_001.md.
 No active own Lean jobs. No push/reviewer/migration/import/tag.
 Next: exact source-defined conditional key-law/experiment contract; then
 signing realization using the named DS obligations, without hiding other
