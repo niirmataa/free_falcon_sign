@@ -186,3 +186,31 @@ followed by source gates/solver/final packets. Fuel None stays inconclusive.
 Untested literal-byte-trie normalization route is recorded in116 performance
 note for future concrete blocks. One process, no push/schedule/new worker,
 standard axioms and logs0/0. Five do_sign items and measured paper unchanged.
+
+## Checkpoint118 closed; selected-seed source execution119 next
+
+2026-10-14. ACTIVE / NOT COMPLETE / NOT_REVIEWED. Full G(seed*)/Z>0, numeric
+acceptance and conditional coding remain OPEN in the canonical BIG_TODO.
+118: complete original-source SHAKE init/inject/flip computation and soundness,
+including fields, pointer/scalar operations, word/byte/postincrement stores,
+Fill/Memcpy,117 xor and116 process, all control/scopes and call wrappers.
+Closed concrete Init(512) begins from uninitialized context bytes and produces
+rate136,dptr0,all25 source lanes; data buffer stays uninitialized. This is NOT
+yet the selected seed's full seeding API or the whole KeyGen witness.
+Coherent8/8,0/0,51-declaration full audit;5kernel controls;6jobs,2failed/mixed.
+Source commitsa4620c37,4041bfcb; final audit keygen_shake118_006.
+Receipt118:fd686743224f9737f2d6df8d6eac17f8143bc13ad1e65184494fe2626432b7b4.
+Postseal118:29087pins,dc2cedbbcf2bb782dec14897d0db85b78eb035dc925f785f5f00843411838b2b.
+118 is SEALED; do not edit. Report:KEYGEN_SHAKE_SEED_118_REPORT.md.
+
+Next119: verify118 pair into ENTRY_PINS, extract selected32-byte seed and
+rng_new/rng_seeded/first shake_before from113_005 evidence; construct explicit
+literal byte-trie states and kernel-check actual Init/Inject/Flip on the same
+seed. Native values are candidates/controls, never proof premises. Retain
+complete byte metadata, exact source calls, fresh seed-object semantics and
+honest local-versus-whole-input scope. Then attach set_seed replace1/readiness,
+extraction and MODE1, gates/solver and final packets. The finite canonical
+caller/domain still needs explicit construction; no arbitrary native pointer
+rebasing claim. Investigate normalized literal tries before paying116's
+word-to-byte reconstruction cost for every later block. One job, no push,
+new schedules/worker/review; five do_sign obligations and measured paper stay.
