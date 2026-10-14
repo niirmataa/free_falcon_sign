@@ -1,3 +1,41 @@
+# Active three-point success program — checkpoint113 sealed, kernel work114
+
+2026-10-14. ACTIVE / NOT COMPLETE / NOT_REVIEWED. Owner authorized continuous
+work and explicitly approved the metadata repair after the integrity stop.
+Canonical TODO:`notes/run/KEYGEN_SUCCESS_BIG_TODO.md`.
+Native first-attempt fixture: public meas1/counter9, sk7681/pk2881, SHAKE1032.
+Final native005 and prior/byte-comparison006 passed; exact controls and original/
+observed/repeated outputs agree. This is not yet the kernel G(seed*) witness.
+Receipt113:907d29e9ca5d9282e4c4debf1f674c8674340f7fd721fc0303f6d3e5158a88e1.
+Postseal113:28256pins,35af0f85303e89bf092de7b13ee2710105a084a9926a35a171c3624f0c43cce8.
+Notes:`notes/run/KEYGEN_WITNESS_113_REPORT.md`.113is sealed; do not edit it.
+Old manifest/failed seal/cache incident and owner authorization are preserved.
+
+Active114: finite-map implementation accepted in keygen_memory114_003,0/0.
+C99FiniteMemory114 first compile:keygen_memory114_004; inspect its receipt
+before launching another Lean. Goal: actual source execution via computable
+memory/evaluator soundness, using existing C99 expression/header/primitive
+bridges. No native return-code axiom, IID, F04 shortcut or empirical premise.
+Small local commits, no push; paper measured; five do_sign items unchanged.
+
+# Three-point success program — integrity stop at113, not complete
+
+2026-10-14. Owner authorized continuous work; integrity stop-and-report applies.
+Incoming112pair verified27803pins; ENTRY_PINS113 hash272ea532d91b350bea7273d996e496fb9683c118575809c2abf0175e45782401.
+Native public witness meas1/counter9 passes first attempt: sk7681,pk2881;
+original/observed/repeated outputs and exact Sage checks agree. Source commit
+e43db84b. Kernel G(seed*) success is still OPEN; no probability promotion.
+Sealer failed on an ephemeral cache/mamba/proc file included by recursive
+manifest collection.46 matching entries,1missing,0hash mismatches. Old
+WITNESS113 unchanged; no113receipt/postseal. No Lean or Sage running.
+Incident:`.build/success113/INTEGRITY_STOP_001.json`.
+Concrete repair proposal:`.build/success113/PROPOSED_REPAIR_001.patch`.
+Owner approval requested under the explicit stop-and-report rule; NOT applied.
+Canonical TODO:`notes/run/KEYGEN_SUCCESS_BIG_TODO.md`.
+114 finite-map lemma accepted in job114_003; finite-memory module is UNCOMPILED
+DRAFT, saved and hashed in `.build/success113/STOP_CHECKPOINT_FILES.json`.
+Resume only after integrity decision; no push, no new schedule/subagent.
+
 # Success-mass112 — partial checkpoint; numerical acceptance OPEN
 
 2026-10-14. PARTIAL_PROOF / NOT_REVIEWED. The owner request is NOT COMPLETE.

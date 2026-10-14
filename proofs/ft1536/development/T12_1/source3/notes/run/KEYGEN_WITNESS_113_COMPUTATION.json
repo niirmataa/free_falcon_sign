@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "claim_id": "KEYGEN_WITNESS_113_NATIVE_AND_EXACT_CONTROLS",
+  "repository": {
+    "commit": "e43db84b7e5d4b69abd025ded080e81340bc214d",
+    "dirty": true
+  },
+  "command": "/home/footfalcon/.local/bin/sage /media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_witness113_005/sage/keygen_witness113.sage 9",
+  "environment": {
+    "software": [
+      "SageMath 10.9",
+      "Python 3.14.7 | packaged by conda-forge | (main, Sep  2 2026, 21:08:32) [GCC 15.3.0]",
+      "C99 compiler and executed binaries pinned in COMMANDS.json"
+    ],
+    "hardware": "Linux x86_64 LP64; isolated serial job; canonical receipt records1800s wall/12GiB address space/8GiB normal RSS."
+  },
+  "mathematics": {
+    "assertion_tested": "One selected public seed has native first-attempt success with byte-equal original/observed/repeated outputs, independent SHAKE/MODE1/codec replay and exact NTRU/public equations.",
+    "coefficient_domain": "Sage ZZ and ZZ[x]; byte controls exact",
+    "conventions": "Native evidence is not a kernel source witness. Fixed initialized-memory service plan, exact Makefile flags, actual replace=1 seed API.",
+    "inputs": [
+      {
+        "path": "proofs/ft1536/development/T12_1/source3/checks/keygen_witness113.c",
+        "sha256": "5a1e8caee8e9ccd63f30a065250ce02cb9e0964bc48c285a02d93b9adca25510"
+      },
+      {
+        "path": "proofs/ft1536/development/T12_1/source3/tools/keygen_witness113_instrument.py",
+        "sha256": "5638da48ba5a278b0d1f10f5c452e93071df8a7f4d3591cd1ff7b80d7eb865af"
+      },
+      {
+        "path": "proofs/ft1536/development/T12_1/source3/sage/keygen_witness113.sage",
+        "sha256": "bd43262a89abc0732938643569fde18bc88d0e2edb3a53e83e5bdbce1d212bf6"
+      }
+    ],
+    "bounds": {
+      "selected_counter": 9,
+      "selected_native_calls": 3,
+      "degree": 1536,
+      "modulus": 18433,
+      "shaKe_bytes": 1032,
+      "first_attempts": 1
+    },
+    "non_claims": [
+      "No full scalar/store trace",
+      "No Lean Execution witness",
+      "No probability lower bound",
+      "No universal transparency or arbitrary native-layout theorem"
+    ]
+  },
+  "randomness": {
+    "used": false,
+    "generator": "public S1 synthetic meas1 counter9",
+    "seed": "6d65617331000000000000000000000000000000000000000000000000000009"
+  },
+  "run": {
+    "started_at": "2026-10-14T18:05:30.914822+00:00",
+    "runtime_seconds": 6.127,
+    "exit_status": 0
+  },
+  "outputs": [
+    {
+      "path": "proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_witness113_005/WITNESS113.json",
+      "sha256": "dda0d8b5ec86f6b29139bf6c6ef02f30146ecf7cba87e9fe042b7b8624839ddf"
+    },
+    {
+      "path": "proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_witness113_005/COMMANDS.json",
+      "sha256": "e63d800c3197f79175bdb109aa96b9609e7e6bf9f56c7138434941efdb0b22e5"
+    },
+    {
+      "path": "proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_witness113_005/RECEIPTS.json",
+      "sha256": "3f9ac99600497140e07c15cf531ff17fc0b04e130b78a98cb2ac48f2f19ea52d"
+    },
+    {
+      "path": "proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_witness113_005/logs/sage.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_witness113_005/logs/sage.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "checks": [
+    "original/observed/repeated packet equality",
+    "repeated boundary evidence byte equality",
+    "SHAKE256 output equality",
+    "MODE1 2-bit rejection stream equality",
+    "STATIC decoding and segment padding",
+    "public canonical decoding",
+    "coefficient bounds",
+    "exact NTRU equation",
+    "public-key quotient equation"
+  ],
+  "result": "implementation and finite assertion verified in the stated range; kernel source witness remains open",
+  "residual_risks": [
+    "Version1 supplemental record retains legacy provenance limits; native COMMANDS and canonical job receipts additionally pin actual executable/argv/source/resource metadata.",
+    "Boundary snapshots omit helper-internal transitions pending the kernel execution checker.",
+    "Initial recursive manifest included a transient runtime cache file; owner-authorized explicit result declaration and fresh005/006 replay resolved this, retaining all old records."
+  ]
+}
