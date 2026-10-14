@@ -41,3 +41,11 @@ which is not a parameter of none/static callees. Their initial activation
 still contains a synthetic comp slot. Prove non-observation/independence for
 those actual bodies and unique heap/return; do not assert arbitrary full
 activation equality across different unused comp metadata.
+
+Checkpoint106 outcome: expression/scope invariants and both fixed-argument
+private leaves are checked, as is the complete public encoder and its
+exact partial heap/length denotation. Kernel-local incomplete_live_set
+confirms the raw-pointer interface ambiguity on a finite three-object
+heap; it is not a full KeyGen/C execution counterexample. Complete private
+dispatch and caller-tail closure remain ACTIVE; the next concrete route
+is KEYGEN_CODEC_CALL_107_PLAN.md. The full owner task is not complete.

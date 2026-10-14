@@ -1,3 +1,27 @@
+# Whole actual KeyGen law — ACTIVE after checkpoint106
+
+2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
+`notes/run/KEYGEN_WHOLE_LAW_TODO.md`. Source commits5c746a08,edf731ce.
+106closes actual codec values, reserved-name invariants, both fixed-argument
+private leaves and full public encoder (exact partial encode/spec).
+Kernel-local incomplete_live_set proves raw ReadPointer ambiguity outside
+the declared finite live set, with a finite three-block heap. This is NOT
+two complete KeyGen outcomes or a lawful-C counterexample. Actual whole
+caller pointer decoding remains an explicit obligation, including failures.
+Final keygen_codec106_011:8/8, logs0/0, full audit50declarations, standard
+axioms.11jobs,8failed/mixed elaborations retained with causes. Limits unchanged.
+Receipt:`75bc93ab03d7b8374097f16e838263151abfae5ed4c815b843bb1559063cc29b`.
+Postseal26222pins, `265176eba4d8653988fd2cd963ab5dbd8e7b6528d8bd73a3467b6f4145cdb5a6`.
+Notes:`notes/run/KEYGEN_CODEC_106_NOTES.md`.106is sealed; do not edit it.
+
+Active107: private terminal-call unused comp independence and dispatcher
+observable heap/return uniqueness. Read `notes/run/KEYGEN_CODEC_CALL_107_PLAN.md`.
+Prepared (unchecked): CodecAgreement107, CodecValueAgreement107. Then
+whole caller tail/pointer-memory construction, concrete seeded producer
+and actual law/model binding. Caller/entropy boundary, nonreturn and
+normalization/positive success remain open. Five do_sign items unchanged;
+no push, migration or second worker.
+
 # Whole actual KeyGen law — ACTIVE after checkpoint105
 
 2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:

@@ -80,26 +80,25 @@ after the required KeyGen task; its previous analytic result retains scope.
 
 ## Current recovery point
 
-105closes actual full attempt/stopped-loop outcome determinism, all retry
-invariants, exact partial runLoop/spec and input derivation from the SAME
-actual seeded prefix. Trace-list erasure/restoration is bidirectional;
-all cap/reject/accept transitions and states remain. No IID or totality.
-Final keygen_loop105_006:6/6, logs0/0, full audit25declarations, standard
-axioms.6jobs,3failed elaborations retained with causes. Limits unchanged.
-Receipt:`e6bcedf27d1f6ca211ce592a175d7bfb54c5cce764702f7a443fd678fd3895a6`.
-Postseal26030pins, `01621abf53d2c728893b7b798169517971c2628e298e461dfadd5e1b41c391e5`.
-Notes:`notes/run/KEYGEN_LOOP_105_NOTES.md`.105is sealed; do not edit it.
+106closes actual codec values, reserved-name invariants, both fixed-argument
+private leaves and full public encoder (exact partial encode/spec).
+Kernel-local incomplete_live_set proves raw ReadPointer ambiguity outside
+the declared finite live set, with a finite three-block heap. This is NOT
+two complete KeyGen outcomes or a lawful-C counterexample. Actual whole
+caller pointer decoding remains an explicit obligation, including failures.
+Final keygen_codec106_011:8/8, logs0/0, full audit50declarations, standard
+axioms.11jobs,8failed/mixed elaborations retained with causes. Limits unchanged.
+Receipt:`75bc93ab03d7b8374097f16e838263151abfae5ed4c815b843bb1559063cc29b`.
+Postseal26222pins, `265176eba4d8653988fd2cd963ab5dbd8e7b6528d8bd73a3467b6f4145cdb5a6`.
+Notes:`notes/run/KEYGEN_CODEC_106_NOTES.md`.106is sealed; do not edit it.
 
-Active106: codec expression/execution closure and all-path tail binding.
-Read `notes/run/KEYGEN_CODEC_106_PLAN.md`: inspect pointer-word decoding
-on failure branches; do not assume it from successful Addresses. This is
-an inspection concern, not a proved C counterexample. Codec scalar locals
-must exclude pointer-reserved names. Private terminal CallArgs leaves the
-unused comp field unconstrained: prove actual callee comp independence/
-observable heap+return, not arbitrary full activation equality. Then
-complete seeded producer and actual law/model binding. Caller/entropy,
-nonreturn, normalization/positive success remain open. Five do_sign items
-unchanged; no push or second worker.
+Active107: private terminal-call unused comp independence and dispatcher
+observable heap/return uniqueness. Read `notes/run/KEYGEN_CODEC_CALL_107_PLAN.md`.
+Prepared (unchecked): CodecAgreement107, CodecValueAgreement107. Then
+whole caller tail/pointer-memory construction, concrete seeded producer
+and actual law/model binding. Caller/entropy boundary, nonreturn and
+normalization/positive success remain open. Five do_sign items unchanged;
+no push, migration or second worker.
 
 Preserved089 tracking refusal/public-copy supplement remains valid:
 `KEYGEN_SEED_089_TRACKING.md`, public tool `tools/keygen_law089_seal.py`.
