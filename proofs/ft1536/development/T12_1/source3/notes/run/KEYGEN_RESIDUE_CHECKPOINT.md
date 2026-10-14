@@ -1,3 +1,19 @@
+# BATCH084 — B1.10 reference contract accepted by author
+
+`PROVED_KERNEL_SCOPED / NOT_REVIEWED`; B1.10 reference Acceptance MET.
+`KeygenSourceToFiber001.emitted_to_actual_fiber` and `actual_observed_fiber`
+export the same output, certificate, equations/fiber, observed bytes, length
+bounds and call bound. Exactly the 083 source/input-memory/return1 domain;
+no probabilistic key-law identification is claimed. 2/2 final compiles,
+0/0 logs, all 11 declarations audited, standard axioms only. Two failed
+jobs retained (sandbox, dependent alias). Receipt SHA256
+`406ac28e0fc685b7837bf1944f88a08a3d2d4d6b7055d9c6a4a18d5c40d1e413`;
+postseal SHA256 `6784b910569b42d942ecf8add91feee15da615e9b39a00b42bd18c668010944a`
+with 21841 checked pins. See BATCH_084_NOTES.md for exact scope and replay.
+The owner authorized four pre-do_sign stages in this window, overriding
+the older one-stage window cadence. Next: scoped B1.11 consolidation,
+assembly feasibility and pinned do_sign obligation map. No push.
+
 # B1.07–B1.09 owner closeout after BATCH083 postseal
 
 Required items 1–4 are COMPLETE / PROVED_KERNEL_SCOPED / NOT_REVIEWED in the
