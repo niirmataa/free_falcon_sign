@@ -80,23 +80,22 @@ after the required KeyGen task; its previous analytic result retains scope.
 
 ## Current recovery point
 
-103closes complete active M0 solver source execution/call uniqueness and
-exact partial runCall/spec: deepest, intermediate loop, depth0, narrow
-output gates, generator/conversion/transforms/final validation. All actual
-branches retained. No callee, syntax, expected solution or success premise.
-Final keygen_solver103_004:7/7, logs0/0, full audit44declarations, standard
-axioms.4jobs,2failed elaborations preserved with causes. Global limits unchanged.
-Receipt:`48e615259969317d76e567c9b61035cc065b2eae0f169ff24aff0d0cc09180b9`.
-Postseal25819pins, `bf99ccfa6e234d87843faf58e773afeb34f67600a2d458e62b38cbd6f5210645`.
-Notes:`notes/run/KEYGEN_SOLVER_103_NOTES.md`.103is sealed; do not edit it.
+104closes actual certificate function and relocated caller observable
+state/truth-bit uniqueness, exact partial runCall/spec, source-derived
+suffix/frame/space and pre-certificate input. Scalar Value is only
+truth-bit constrained: no arbitrary Value equality is claimed.
+Final keygen_certificate104_005:6/6, logs0/0, full audit21declarations,
+standard axioms.5jobs,1failed elaboration retained with cause. Limits unchanged.
+Receipt:`28c672417205bf96b1313df9f9ee0574e418c78d26a6e4a01d8ed6dee7e88b1a`.
+Postseal25918pins, `5c580ecd28994ad021c040814f0de4971a559ac90aaaf252ae7a05946536d8b9`.
+Notes:`notes/run/KEYGEN_CERTIFICATE_104_NOTES.md`.104is sealed; do not edit it.
 
-Active104: certificate prefix/Gate00/function determinism with suffix
-legality derived from actual execution and existing frame input, then
-actual relocated call state/Boolean and gate. Scalar Value is only
-truth-bit constrained, so no claim of arbitrary Value equality. Then
-codecs, full capped loop, seeded producer and actual law/model binding.
-Fixed caller/entropy boundary, nonreturn, normalization/positive success
-remain open. Five do_sign items unchanged; no push or second worker.
+Active105: complete source attempt and capped loop determinism with retry
+invariants and the SAME state, then exact partial loop. Prepared but not
+checked: AttemptGates105, AttemptFunction105. Next codecs, concrete seeded
+producer and actual law/model binding. Fixed caller/entropy boundary,
+nonreturn, normalization/positive success remain open. Five do_sign items
+unchanged; no push or second worker.
 
 Preserved089 tracking refusal/public-copy supplement remains valid:
 `KEYGEN_SEED_089_TRACKING.md`, public tool `tools/keygen_law089_seal.py`.

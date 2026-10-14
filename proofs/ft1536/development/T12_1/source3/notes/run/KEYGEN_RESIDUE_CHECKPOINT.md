@@ -1,3 +1,24 @@
+# Whole actual KeyGen law — ACTIVE after checkpoint104
+
+2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
+`notes/run/KEYGEN_WHOLE_LAW_TODO.md`. Source commitbd956aaf.
+104closes actual certificate function and relocated caller observable
+state/truth-bit uniqueness, exact partial runCall/spec, source-derived
+suffix/frame/space and pre-certificate input. Scalar Value is only
+truth-bit constrained: no arbitrary Value equality is claimed.
+Final keygen_certificate104_005:6/6, logs0/0, full audit21declarations,
+standard axioms.5jobs,1failed elaboration retained with cause. Limits unchanged.
+Receipt:`28c672417205bf96b1313df9f9ee0574e418c78d26a6e4a01d8ed6dee7e88b1a`.
+Postseal25918pins, `5c580ecd28994ad021c040814f0de4971a559ac90aaaf252ae7a05946536d8b9`.
+Notes:`notes/run/KEYGEN_CERTIFICATE_104_NOTES.md`.104is sealed; do not edit it.
+
+Active105: complete source attempt and capped loop determinism with retry
+invariants and the SAME state, then exact partial loop. Prepared but not
+checked: AttemptGates105, AttemptFunction105. Next codecs, concrete seeded
+producer and actual law/model binding. Fixed caller/entropy boundary,
+nonreturn, normalization/positive success remain open. Five do_sign items
+unchanged; no push or second worker.
+
 # Whole actual KeyGen law — ACTIVE after checkpoint103
 
 2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
