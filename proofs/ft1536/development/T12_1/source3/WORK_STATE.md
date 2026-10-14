@@ -1,3 +1,132 @@
+# Active program — first actual refill126 sealed; full static/global input127
+
+2026-10-15. Original three-point program ACTIVE / NOT COMPLETE.126 is
+SEALED: PROVED_KERNEL_SCOPED / PARTIAL_SELECTED_SAMPLER / NOT_REVIEWED.
+CLOSED ActualDraw126.source executes first actual get_rng_u64:24 SHAKE
+rounds, all25 enc64le calls, actual memcpy8/loop/scope/final cursor update,
+read of the same fresh uint64 object7 and disposal. Cursor8/freshness checked.
+ActualRefill126.source installs the returned word and rbits64 in the original
+first f refill. native_word matches pinned first-block A0 as a conclusion.
+No complete f/g, accepted attempt, solver/packets or G(seed*)/Z>0 yet.
+
+Final keygen_sampler126_025 audit1/1; coherent26/26,0/0,277declarations,
+25jobs,7failed/mixed retained. ActualProcess126Generator018 proposes from
+sealed119 plus candidate header bytes but every proof uses FULL actual126
+caller. Direct whole-state rfl failed; checked projections plus original
+source memory/global/table frames prove exact reference-state equality.
+Failed SelectedDraw126.lean and historical GeneratedActualProcess126Probe
+are NOT current proof dependencies; immutable snapshots preserve them.
+Reproduce12 generated modules from job018; do not edit SEALED126 sources.
+Commits cb1e175b,3f17bcab,da275076,84917e9d,0211f68b. Receipt126:
+ffb009ae0e2c562193000aeb74803f09ab61ab1e5c539bdbe0dfd6850e445f06.
+Postseal126:30445 pins,
+83cc4e5ff75a0d73d1be8549eac5e9e87a7f7f04e1aa7ecb0fc43a68cd730717.
+
+IMPORTANT next127: full static/global caller before full f/g. Inspection of
+ACTIVE KeygenCertificateSource080.Call→KeygenMakeCertRelocation.ExecAt→
+CertificateM0Environment.Exec shows FFT readonly objects at1/2 after swapping
+scratch with0. Current example ctx1/scratch2 collides: swap2 leavesblock1
+as writable context, whereas Pinned requires block1 readonly square FFT.
+This is a representation conflict in the incomplete123 example, not an input
+integrity mismatch or a proved C bug. Prefix/RNG scoped results remain valid;
+no full-success result was claimed. Prove this local incompatibility in the
+kernel, then construct a NEW explicit full input (do not mutate123/frozen
+history): reserve FFT1/2, use context30/scratch31, outputs3/4/5/6, seed0,
+RNGtemp7, automatic10..15; keep RC20/PRIMES3=21/REV10=22 and add PRIMES2=23,
+size tables24..27,vv28. Canonical scratch word remains13*2^32 with this live
+list order, but prove it. Install FftGlobalScalars'13 source constants and
+source FftTableSources square/cubic words; inspect remaining active callees.
+Do NOT infer requirements from old block0-only KeygenMakeCertCall comments:
+active whole trace109 uses CertificateSource080/ExecAt relocation.
+
+Then reinstantiate generic proved seed/prefix/cap/setup/RNG machinery on that
+same complete input, or prove exact transport. No silent substitution of
+fixed input. Build composable sampler segments/source RNG certificates for
+both1536-coordinate calls; complete gates/solver/encoding and quantitative
+success targets. S1 remains measured; no F04/IID/geometric shortcut. Five
+do_sign items fixed. One job,no push/new worker/review/schedules; keep going
+to the owner's whole goal, not just this internal checkpoint.
+
+# Active126 — actual24-round Process accepted; complete extract in flight
+
+2026-10-15. Original three-point program ACTIVE / NOT COMPLETE.126 now
+has all24 source SHAKE rounds at the ACTUAL first process_block site.
+ActualProcess126 accepted in keygen_sampler126_021 (19.304s), including
+source Process and25-word native output comparison. Each of rounds01..11
+accepted in019 at21.918–22.716s; round00 in01730.188s. Full-range candidate
+generator018 passed2.570s; round00 byte-identical to016, hash
+ dea991f4552d4b41b77affed3db87ae5b785e77d5f8e388a3f2b0e8111261e92.
+Generated data stay ignored under formal/.gitignore (not the sealed nested
+Source3/.gitignore). Sources remain in immutable jobs.
+
+Method: whole draw007 exceeded kernel memory; direct full-state rfl013
+failed; projection probe014 proved actual input context/result definedness/
+locals/context. ShakeBlockNormalize126 (015) then proved exact reference
+state equality from checked changed block/locals plus ORIGINAL source frame
+for all other bytes and globals/tables. This is not an assumption or partial
+state comparison. Generated source round certificates use that theorem.
+Native proposal generation010/011 was deliberately terminated (198.693s /
+133.466s, exit143);012/016/018 use the pinned119 RNG image plus candidate
+context header bytes, without importing full-call runtime values. All
+emitted proofs still name the FULL ACTUAL126 caller; proposal-input
+agreement is never a premise. Failed/probe snapshots and causes preserved.
+
+Accepted math: cap/setup/sampler-start/prep from earlier126, normalization,
+12generated rounds, ActualProcess126, ShakeExtractFragments126 and
+ActualExtractTail126. The latter (02114.297s) proves source Process dispatch,
+25 enc64le calls, refill scope and copy/update iteration tail.
+CURRENT keygen_sampler126_022 (unified session32329) checks
+ActualExtractBody126.lean: real loop/scope exits, final dptr store and full
+ShakeExtractFrame.Call8. Inspect before the next job. Then source Load64
+from temporary block7 and disposal give actual get_rng_u64; failed
+SelectedDraw126.lean remains UNACCEPTED and must not be imported.
+GeneratedActualProcess126Probe is historical accepted diagnostic014 whose
+current generator import changed; use its immutable snapshot, not as a
+current proof dependency.126 is NOT SEALED / NOT REVIEWED.
+
+Commits cb1e175b,3f17bcab,da275076; uncommitted generator/policy/composition
+and working reports remain. Parent125 postseal
+3227093900325379decdbf3351104b2407dcfac1217278000e7eb2d5306ad8f8,30079pins;
+126ENTRY38009016cc14c39d967dc4bc0d023090d7af53ed6bbe82be8cc0a6313986bb24.
+No full f/g, accepted attempt, solver/packets or G(seed*)/Z>0 yet. Complete
+callee statics/globals and quantitative bounds still OPEN; avoid silently
+changing123's fixed input when enriching it. One job,no push/new worker/
+review/schedules; measured paper and five do_sign items unchanged.
+
+# Active126 — first cap/setup/source sampler entry; fragmented refill probe
+
+2026-10-15. Original three-point program ACTIVE / NOT COMPLETE.126 entry
+verified30079pins, ENTRY38009016cc14c39d967dc4bc0d023090d7af53ed6bbe82be8cc0a6313986bb24.
+Accepted cap source proof is now general over the procedure program, with
+closed first counter0→1. The actual rt1/rt2/rt3 setup between cap and sampler
+is included: stored tmp pointer read,8-byte cast and two n-offset additions.
+SelectedSetup126.capped/entry are closed, and SelectedSamplerStart126 proves
+the exact f binding/prologue/u0/first outer guard/x declaration/refill guard.
+ActualExtractPrep126 reaches the exact first process_block call site through
+actual temporary allocation and source extraction head/guards/refill head.
+These six mathematical modules are accepted with0/0, but126 is NOT SEALED.
+
+Failed007: whole first get_rng_u64 Option-definedness at fuel4096 hit kernel
+memory after38.404s; exit1, decide stuck and explicit kernel excessive-memory
+error. RSS5152712KiB at27s. No negative source result, no accepted draw theorem.
+SelectedDraw126.lean is a retained UNACCEPTED draft; never import it as a
+proved dependency. Immutable job007 retains the full failed source/log.
+Other failures003(setup normalization) and009(generator syntax/#eval abort)
+are recorded; no #eval!, warning suppression or resource increase.
+
+Current job keygen_sampler126_010 is the corrected UNTRUSTED one-double-round
+generator ActualProcess126Generator (unified session14996). Inspect its result
+before launching anything else. It proposes literal context/locals while
+sharing untouched objects from ActualExtractPrep126.processBefore.heap, and
+emits GeneratedActualProcess126Round00.lean using rfl computations. The first
+kernel round check has NOT run yet. Copy only verified generated output to
+formal/Source3 and test it under unchanged limits. If successful, extend to
+12double rounds and manually compose the surrounding extraction fragments.
+The source branch/loop/scope exits must be included; no arbitrary word oracle.
+No full f/g, accepted attempt, solver/packet or G(seed*)/Z>0 witness yet.
+Additional callee statics/globals and numerical bounds still OPEN.
+One job,no push/new worker/review/schedules; measured paper/five do_sign fixed.
+
 # Active three-point program — make prefix125 sealed; first cap and sampler126
 
 2026-10-15. ACTIVE / NOT COMPLETE / NOT_REVIEWED.125 has a CLOSED
