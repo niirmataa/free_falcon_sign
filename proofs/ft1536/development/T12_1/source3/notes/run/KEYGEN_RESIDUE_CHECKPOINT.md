@@ -1,3 +1,30 @@
+# Whole actual KeyGen law — ACTIVE after checkpoint090
+
+2026-10-14. Whole-task TODO ACTIVE / NOT COMPLETE:
+`notes/run/KEYGEN_WHOLE_LAW_TODO.md`. No IID or D1 shortcut.
+
+090 is PROVED_KERNEL_SCOPED / NOT_REVIEWED: actual SHAKE extraction,
+block-renaming transport and temporary-object relocation for get_rng_u64;
+unique returned word AND restored caller state in the live-context/live-table
+input domain. `KeygenRngFunction090.draw` is an exact source partial value
+and preserves that domain. This is not a total RNG, independent word law,
+whole-KeyGen producer, positive-success theorem or final model binding.
+Source commits32c5c880 and85aba153. Final keygen_extract090_014:11/11,
+logs0/0, full audit78 declarations, standard axioms only.14 jobs/28 steps,
+21 accepted steps;7 failed/mixed retained with causes (including the
+explicitly recorded dependent-build organizer mistake).
+Receipt SHA256`3feeb920927d3055e5399e802da62fc2e5c214062c6ce02fdf56b166a9d6e08c`.
+POSTSEAL090:23389 matching pins,SHA256
+`fe2e07f03be54246088b3ab40660646cfcc9e423428dbd32524b642e5b83de81`.
+Notes:`notes/run/KEYGEN_EXTRACT_090_NOTES.md`.
+
+Active091: seeded rng_ready and MODE1 sampler source closure, preserving
+SAME state and deriving memory-domain transport at each draw. Current
+sources KeygenReadySeeded091/C99Metadata091/C99SimpleModular091 are being
+checked; consult latest keygen_sampler091 receipts before resuming.
+Then full KeyGen, exact whole-call law, normalization and SAME model key
+law. Five do_sign items unchanged. No push/reviewer/relay/migration.
+
 # Whole actual KeyGen law — ACTIVE after checkpoint 089
 
 2026-10-14. Whole-task TODO remains ACTIVE / NOT COMPLETE:

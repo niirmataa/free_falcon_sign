@@ -38,6 +38,7 @@ assumption, or new KeyGen PRG assumption closes a missing step.
 - [ ] Specify the fixed legal caller and explicit 32-byte A2 seed boundary; distinguish fresh, user-seeded and resumed contexts.
 - [x] Bind the sampled bytes to the actual pinned source replacement-seed interface (089, exact partial source specification).
 - [x] Derive caller-domain transport and seeded=1/flipped=0 from source execution (089).
+- [x] Prove actual get_rng_u64 outcome uniqueness across fresh temporary choices and construct its exact partial draw (090).
 - [ ] Reconcile the explicit seed API with the intended fresh automatic entropy path, without inventing an OS failure law.
 - [ ] Preserve the SAME SHAKE state through every scalar draw and outer attempt.
 - [ ] Establish source observation determinism or an equally strong exact operational construction; do not assume it.
@@ -79,27 +80,19 @@ after the required KeyGen task; its previous analytic result retains scope.
 
 ## Current recovery point
 
-Checkpoint089: source commits `7152a18f` and `c5cbb1b0`, final
-`keygen_seed089_025`14/14, logs0/0, full audit122 declarations.
-Postseal `8f9963abbb256e1786d9fa0c12a53db25416df3e0ac3b509ff1a59da0a64556a`
-(23162 pins). Whole task remains ACTIVE.
-An exact source partial seeding function and derived caller facts exist;
-whole-KeyGen source outcomes, positivity and law identification remain open.
+Checkpoint090: source commits `32c5c880` and `85aba153`; final
+`keygen_extract090_014`11/11, logs0/0, audit78 declarations. Postseal
+`fe2e07f03be54246088b3ab40660646cfcc9e423428dbd32524b642e5b83de81`
+(23389 pins). Whole task remains ACTIVE.
 
-Tracking supplement: the broad `.gitignore:*seed*` rule refused the
-public organizer filename; both failed Git actions are preserved. The
-sealed original remains unchanged and its identical public copy is tracked
-as `tools/keygen_law089_seal.py`; reconstruction is described in
-`notes/run/KEYGEN_SEED_089_TRACKING.md`. Additive postseal23166 pins, SHA256
-`d460b99b748afbfe760d641ca1a5e80b718fb6ebe10feecb9b6c7df462d9d37e`.
+The source seeding function and the actual RNG draw are exact PARTIAL
+values, with source uniqueness and caller facts proved. The RNG's fresh
+temporary choice is now eliminated. Current091 is seeded readiness and
+MODE1 sampler composition; then full KeyGen and the final probability/model
+binding. Consult the latest immutable `keygen_sampler091_*` job receipts;
+never duplicate a running proof job or assume an execution-family input.
 
-Active090: `ShakeExtractDeterminism090` accepted at keygen_extract090_001
-for fixed before-state/output object. Next prove relocation of the temporary
-output object in get_rng_u64 and then continue the source closure. A lawful
-partial value may be selected only after its actual source result is shown
-unique. No source-correctness assumption or arbitrary trace family may close
-this seam. Inspect the current immutable job receipts before resuming.
-
-Two owner-requested one-time heartbeat checks were created for this chat on
-2026-10-14 at11:00 and13:00 Europe/Warsaw to recover if execution stops;
-do not duplicate them or start another executor.
+Preserved089 tracking refusal/public-copy supplement remains valid:
+`KEYGEN_SEED_089_TRACKING.md`, public tool `tools/keygen_law089_seal.py`.
+The two owner-requested one-time heartbeat checks for this chat are
+2026-10-14 at11:00 and13:00 Europe/Warsaw; do not duplicate them.
