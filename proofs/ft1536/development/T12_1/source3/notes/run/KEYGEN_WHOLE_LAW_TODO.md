@@ -49,13 +49,13 @@ assumption, or new KeyGen PRG assumption closes a missing step.
 
 ## C. Whole-call probability law
 
-- [ ] Push the fixed input law through the actual seeded construction, with no independence between attempts.
-- [ ] Account for readiness, exhaustion, encoding and nonreturn mass without discarding any branch.
-- [ ] Prove normalization of the whole experiment in its declared outcome space.
-- [ ] Define conditioning only on whole-call successful byte emission.
-- [ ] Preserve the zero-success case explicitly; prove any positivity needed for a normalized successful-key law.
-- [ ] Prove exact successful output masses from the full stopped experiment, without a geometric shortcut.
-- [ ] Audit, checkpoint, commit and postseal the whole-call law.
+- [x] Push the fixed input law through the actual seeded construction, with no independence between attempts.
+- [x] Account for readiness, exhaustion, encoding and nonreturn mass without discarding any branch.
+- [x] Prove normalization of the whole experiment in its declared outcome space.
+- [x] Define conditioning only on whole-call successful byte emission.
+- [x] Preserve the zero-success case explicitly; prove any positivity needed for a normalized successful-key law.
+- [x] Prove exact successful output masses from the full stopped experiment, without a geometric shortcut.
+- [x] Audit, checkpoint, commit and postseal the whole-call law.
 
 ## D. Model binding and acceptance
 
@@ -80,26 +80,27 @@ after the required KeyGen task; its previous analytic result retains scope.
 
 ## Current recovery point
 
-109constructs the whole source-defined seeded byte outcome. Raw traces and
-consumer traces agree BOTH ways on result/failure class, with Addresses
-derived. Same-seed observation is unique; evaluate selects ANY finite
-execution only after proving choice irrelevant, with no execution family
-as input. none is no finite defined initialization+invocation, not return0
-or a divergence proof. Success has SAME decoded/certificate/fiber facts;
-attempt cap3000000 and no extra entropy/readiness failure are retained.
-Final keygen_whole109_008:8/8, logs0/0, full audit36declarations,
-standard axioms.8jobs,4failed/mixed elaborations retained with causes.
-Receipt:`ac894459d095ab26d482ca59282ca5471587d3e7783d44429561e985f282dd87`.
-Postseal26681pins, `199b2d130a54ddac3640f463e5b8bae600c57e521a3aa2dc5219ce455f93d89c`.
-Notes:`notes/run/KEYGEN_WHOLE_109_NOTES.md`.109is sealed; do not edit it.
+# Whole actual KeyGen law — ACTIVE after checkpoint110
 
-Active110: actual A2 uniform32-byte pushforward, exact masses/accounting,
-whole-success normalization and zero case. Read `notes/run/KEYGEN_LAW_110_PLAN.md`.
-Prepared (unchecked): InputLaw110, LawAlgebra110, Probability110. Then SAME
-decoded joint/model-public law and actual AssemblyComp binding. Fixed
-caller uses the constructed representation and public replace=1 seed API;
-OS availability and mixed/resumed contexts are not silently identified.
-Five do_sign items unchanged; no push/migration, reviewer or second worker.
+2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
+`notes/run/KEYGEN_WHOLE_LAW_TODO.md`. Source commits b1fa3e00, a23ae0a6.
+110 constructs the actual A2 uniform 32-byte seed pushforward through the
+whole source outcome. Exact preimage counts give output and success mass;
+all failure/nonreturn/success masses total 1. Conditioning uses whole-call
+emission only; zero success returns none. No IID or positive-success premise.
+Final keygen_probability110_009: 7/7, logs 0/0, full audit 37 declarations,
+standard axioms. Nine jobs, five failed/mixed with causes and one exact Sage
+control job (synthetic algebra only, not actual acceptance estimation).
+Receipt: `7a51c28fd66cd9471d4df12c0dd0e618d42993ace80772aa1c269bc88c166087`.
+Postseal 26841 pins, `519cc807438728617d8adffb91b0ccf4dfffaecd4f3e260d0e7098bd4b5d051c`.
+Notes: `notes/run/KEYGEN_LAW_110_NOTES.md`. 110 is sealed; do not edit it.
+
+Active 111: SAME decoded joint law, SigmaMath.muH and concrete AssemblyComp
+binding, then final source/input/quantifier audit. First job keygen_model111_001
+was launched; inspect its receipts before another Lean run. The fixed caller
+uses the constructed representation and actual replacement-seed API. No POSIX
+availability or mixed/resumed context law is invented. Five do_sign items
+unchanged; no push/migration, reviewer or second worker.
 
 Preserved089 tracking refusal/public-copy supplement remains valid:
 `KEYGEN_SEED_089_TRACKING.md`, public tool `tools/keygen_law089_seal.py`.

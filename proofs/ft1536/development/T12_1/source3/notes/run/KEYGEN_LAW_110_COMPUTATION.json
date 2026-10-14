@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "claim_id": "KEYGEN_LAW_110_EXACT_FINITE_CONTROLS",
+  "repository": {
+    "commit": "073d5b2596b0ee41be65ebda04cac110b037fd4d",
+    "dirty": true
+  },
+  "command": [
+    "/home/footfalcon/.local/bin/sage",
+    "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_probability110_007/sage/keygen_whole_law110_controls.sage"
+  ],
+  "environment": {
+    "software": [
+      {
+        "name": "SageMath",
+        "version": "10.9"
+      },
+      {
+        "name": "Python (Sage runtime)",
+        "version": "3.14.7 | packaged by conda-forge | (main, Sep  2 2026, 21:08:32) [GCC 15.3.0]"
+      }
+    ],
+    "hardware": "{\"machine\": \"x86_64\", \"platform\": \"Linux-6.12.111+deb13-amd64-x86_64-with-glibc2.41\"}"
+  },
+  "mathematics": {
+    "assertion_tested": "Exact seed cardinality and finite whole-outcome accounting/conditioning controls, including zero success and a many-to-one public marginal.",
+    "coefficient_domain": "ZZ and QQ, standard Sage preparser",
+    "conventions": "One input draw for the entire toy invocation; disjoint failure labels; condition only on keyA/keyB success; noDefined is never a key.",
+    "inputs": [
+      {
+        "path": "proofs/ft1536/development/T12_1/source3/sage/keygen_whole_law110_controls.sage",
+        "sha256": "a4db052dbe0a21161754f824ca4855d749cf5c04fd217a6a4bb363253af79080"
+      },
+      {
+        "path": "proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_probability110_007/sage/keygen_whole_law110_controls.sage",
+        "sha256": "a4db052dbe0a21161754f824ca4855d749cf5c04fd217a6a4bb363253af79080"
+      }
+    ],
+    "bounds": {
+      "seed_cardinality_identity_only": "256^32=2^256; no seed enumeration",
+      "toy_inputs": 8,
+      "toy_success_labels": 2,
+      "wrong_normalizations_rejected": 3,
+      "wall_seconds": 1800,
+      "address_space_bytes": 12884901888,
+      "normal_rss_budget_bytes": 8589934592
+    },
+    "non_claims": [
+      "No actual KeyGen frequency or acceptance lower bound",
+      "No IID/retry-geometric inference",
+      "Not a replacement for general kernel theorems"
+    ]
+  },
+  "randomness": {
+    "used": false,
+    "generator": "none",
+    "seed": null
+  },
+  "run": {
+    "started_at": "2026-10-14T16:32:48.796727+00:00",
+    "runtime_seconds": 3.375,
+    "exit_status": 0
+  },
+  "outputs": [
+    {
+      "path": "proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_probability110_007/LAW110_CONTROLS.json",
+      "sha256": "98fd29b5c3af66d67db1ad1ce829b15cc5756d2b929f5ab9d346aab263556d23"
+    },
+    {
+      "path": "proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_probability110_007/RECEIPTS.json",
+      "sha256": "78389dc1365001584656ae0f75b4e861b29e4c72f3561ff8c1b2e7e6d9fbfc64"
+    },
+    {
+      "path": "proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_probability110_007/SOURCE_INPUTS.json",
+      "sha256": "1b1a9c9360dab30c46951c0d2f87986fb9d6efa2d55e56bbe08a01d908b7d88c"
+    },
+    {
+      "path": "proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_probability110_007/logs/sage.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_probability110_007/logs/sage.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "checks": [
+    "Sage exact cardinality identity",
+    "Disjoint raw masses sum to one",
+    "Independent frequency/count formula for conditioned mass",
+    "Zero-success returns None",
+    "Many-to-one public pushforward commutes with conditioning",
+    "Three wrong normalizations rejected",
+    "JSON rational/integer roundtrip",
+    "Original/executed script hashes agree",
+    "Canonical runner logs are0/0"
+  ],
+  "result": "Implementation and finite assertion verified in the stated range; author self-audit. General source claims are proved separately in Lean.",
+  "residual_risks": [
+    "This is the supplied schema-version1 manifest, not a retroactively claimed version2 predeclared run. Its validator legacy provenance limitations remain; canonical job receipts additionally pin sources, actual argv, isolation and limits.",
+    "No actual KeyGen acceptance probability or source seed enumeration is computed.",
+    "Independent reviewer has not accepted this stage."
+  ]
+}
