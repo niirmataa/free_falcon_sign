@@ -80,21 +80,23 @@ after the required KeyGen task; its previous analytic result retains scope.
 
 ## Current recovery point
 
-101closes actual top/scaled-bigint/polynomial conversion/quadratic and
-NTT subtraction helper source determinism, all concrete part checks and
-parser witnesses. No assumed arithmetic answer, termination or success.
-Final keygen_poly101_004:6/6, logs0/0, full audit54declarations, standard
-axioms.4jobs,2failed elaborations with causes and all evidence preserved.
-Receipt:`f125f3ff109e5a77b8889317fffe6534f03b594cb21714115d6f04bace1833e4`.
-Postseal25331pins, `ec580bd61cb2238134d792f013d442eeea5ad5ba94dea3617f0b0ba895d85f36`.
-Notes:`notes/run/KEYGEN_POLY_101_NOTES.md`.101is sealed; do not edit it.
+102closes complete actual intermediate source/call determinism and exact
+partial runCall/spec, concrete20pieces plus loop shells. Final theorem
+has no callee/syntax premise. Generic composition avoids repeated parser
+reduction; all actual source pieces are checked by the kernel.
+Final keygen_intermediate102_006:30/30, logs0/0, full audit52declarations,
+standard axioms.6jobs,2OOM failures preserved with causes. Limits unchanged.
+Receipt:`e4ff5738cfb5f8e7b6c04c9ca8a35e8de2f009ee0a967d48166e4fb050d583a4`.
+Postseal25709pins, `a5e19376e41ca7f20c8b16f29c961d7bd31ebd4b9a05dad9956276d53609d8f1`.
+Notes:`notes/run/KEYGEN_INTERMEDIATE_102_NOTES.md`.102is sealed; do not edit it.
 
-Active102: intermediate pointers/value/call table and full execution,
-concrete lift/reduce/top arities and actual call. Eight modules prepared,
-not yet checked. Deepest103 also drafted, not yet checked. Then root,
-certificate/codecs, full loop and actual law/model binding. Fixed caller,
-entropy boundary, lack of finite defined return, normalization/positive
-success remain open. Five do_sign items unchanged; no push/second worker.
+Active103: deepest, root search, narrow output gate, root validation and
+complete solver call. Six modules prepared, not yet checked. Then actual
+certificate/codecs, full capped loop and source law/model binding. Fixed
+caller/entropy boundary, lack of finite defined return, normalization/
+positive success remain open. Five do_sign items unchanged; no push or
+second worker. The certificate scalar value is only constrained by its
+truth bit; prove its observable state/Boolean, not arbitrary Value equality.
 
 Preserved089 tracking refusal/public-copy supplement remains valid:
 `KEYGEN_SEED_089_TRACKING.md`, public tool `tools/keygen_law089_seal.py`.

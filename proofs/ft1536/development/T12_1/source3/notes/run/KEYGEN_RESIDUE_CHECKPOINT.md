@@ -1,3 +1,25 @@
+# Whole actual KeyGen law — ACTIVE after checkpoint102
+
+2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
+`notes/run/KEYGEN_WHOLE_LAW_TODO.md`. Source commitsac5c4f3b,4f29fc07.
+102closes complete actual intermediate source/call determinism and exact
+partial runCall/spec, concrete20pieces plus loop shells. Final theorem
+has no callee/syntax premise. Generic composition avoids repeated parser
+reduction; all actual source pieces are checked by the kernel.
+Final keygen_intermediate102_006:30/30, logs0/0, full audit52declarations,
+standard axioms.6jobs,2OOM failures preserved with causes. Limits unchanged.
+Receipt:`e4ff5738cfb5f8e7b6c04c9ca8a35e8de2f009ee0a967d48166e4fb050d583a4`.
+Postseal25709pins, `a5e19376e41ca7f20c8b16f29c961d7bd31ebd4b9a05dad9956276d53609d8f1`.
+Notes:`notes/run/KEYGEN_INTERMEDIATE_102_NOTES.md`.102is sealed; do not edit it.
+
+Active103: deepest, root search, narrow output gate, root validation and
+complete solver call. Six modules prepared, not yet checked. Then actual
+certificate/codecs, full capped loop and source law/model binding. Fixed
+caller/entropy boundary, lack of finite defined return, normalization/
+positive success remain open. Five do_sign items unchanged; no push or
+second worker. The certificate scalar value is only constrained by its
+truth bit; prove its observable state/Boolean, not arbitrary Value equality.
+
 # Whole actual KeyGen law — ACTIVE after checkpoint101
 
 2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
