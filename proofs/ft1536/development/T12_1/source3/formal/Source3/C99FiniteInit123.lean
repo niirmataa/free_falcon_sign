@@ -11,32 +11,45 @@ open C99MemoryReference
 open C99FiniteMemory114 (Heap memory putBlock)
 open C99FiniteWrite114 (writeVec)
 
+/-- The byte trie stays behind constant object metadata. Accessing size or
+    permissions does not evaluate a large source table's initializer. -/
+def cells : (n : Nat) → (Fin n → Byte) → C99FiniteMap114.Tree (Option Byte)
+  | 0, _ => .empty
+  | n+1, bytes => C99FiniteMap114.insert (cells n (fun i => bytes i.castSucc)) n (some (bytes ⟨n,by omega⟩))
+
+theorem cells_at (n : Nat) (bytes : Fin n → Byte) (i : Fin n) :
+    C99FiniteMap114.lookup (cells n bytes) i.val=some (some (bytes i)) := by
+  induction n with
+  | zero => exact Fin.elim0 i
+  | succ n ih =>
+      rw [cells,C99FiniteMap114.lookup_insert]
+      by_cases same : i.val=n
+      · have index : i=⟨n,by omega⟩ := Fin.ext same
+        rw [ite_eq_left same]
+        exact congrArg (fun j : Fin (n+1) => some (some (bytes j))) index.symm
+      · rw [ite_eq_right same]
+        exact ih (fun j => bytes j.castSucc) ⟨i.val,by omega⟩
+
 /-- Data construction, not a C write: immutable source tables may be
     initialized here, while later execution retains their readonly bit. -/
 def install (heap : Heap) (block n : Nat) (writable : Bool) (bytes : Fin n → Byte) : Heap :=
-  writeVec (putBlock heap block ⟨n,writable,none,.empty⟩) block 0 n bytes
+  putBlock heap block ⟨n,writable,none,cells n bytes⟩
 
 theorem metadata (heap : Heap) (block n : Nat) (writable : Bool) (bytes : Fin n → Byte) :
     (memory (install heap block n writable bytes)).size =
       (fun b => if b=block then n else (memory heap).size b) ∧
     (memory (install heap block n writable bytes)).writable =
       (fun b => if b=block then writable else (memory heap).writable b) := by
-  have h := C99FiniteWrite114.writeVec_metadata (putBlock heap block ⟨n,writable,none,.empty⟩) block 0 n bytes
-  unfold install
   constructor
-  · rw [h.1]
-    funext b
+  · funext b
     exact C99FiniteMemory114.size_putBlock heap block b _
-  · rw [h.2]
-    funext b
+  · funext b
     exact C99FiniteMemory114.writable_putBlock heap block b _
 
 theorem initialized (heap : Heap) (block n : Nat) (writable : Bool) (bytes : Fin n → Byte)
     (i : Fin n) : (memory (install heap block n writable bytes)).bytes block i.val=some (bytes i) := by
-  have bound : 0+n≤(memory (putBlock heap block ⟨n,writable,none,.empty⟩)).size block := by
-    rw [C99FiniteMemory114.size_putBlock]
-    simp
-  simpa only [install,Nat.zero_add] using C99FiniteWrite114.writeVec_at _ block 0 n bytes bound i
+  rw [install,C99FiniteMemory114.bytes_putBlock]
+  simp only [ite_true,C99FiniteMemory114.Block.read,i.isLt,cells_at,Option.getD_some]
 
 theorem outside (heap : Heap) (block n : Nat) (writable : Bool) (bytes : Fin n → Byte)
     (other : Nat) (different : other≠block) :
@@ -44,9 +57,7 @@ theorem outside (heap : Heap) (block n : Nat) (writable : Bool) (bytes : Fin n �
   have h := metadata heap block n writable bytes
   refine ⟨by rw [h.1]; simp [different],by rw [h.2]; simp [different],?_⟩
   intro offset
-  unfold install
-  rw [C99FiniteWrite114.writeVec_frame _ block 0 n bytes other offset (Or.inl different),
-    C99FiniteMemory114.bytes_putBlock]
+  rw [install,C99FiniteMemory114.bytes_putBlock]
   simp [different]
 
 def words32 {n : Nat} (words : Fin n → BitVec 32) (i : Fin (4*n)) : Byte :=
