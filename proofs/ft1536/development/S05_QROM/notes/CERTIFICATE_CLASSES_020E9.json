@@ -1,0 +1,68 @@
+{
+  "task": "S05/TODO020E/data-equivalence020E9",
+  "status": "KERNEL_SCOPED_NOT_REVIEWED",
+  "entries": [
+    {
+      "name": "Word512/finite banks/checked source loads and instruction semantics",
+      "class": "MODEL",
+      "status": "EXPLICIT_UNCHANGED",
+      "scope": "No physical/native memory assertion; producer diagnostic flag is not sampler abort"
+    },
+    {
+      "name": "Active data slots clear/scan/push",
+      "class": "PROOF_OBLIGATION",
+      "status": "DISCHARGED_SCOPED",
+      "exports": [
+        "ProducerSweepSlots020E9.clear",
+        "ProducerSweepSlots020E9.scan",
+        "ProducerPushSlots020E9.data"
+      ],
+      "scope": "All typed states, both fresh values, all3 slots and3 fields; no reachability/success premise"
+    },
+    {
+      "name": "Complete producer output and old-step effect outside act",
+      "class": "PROOF_OBLIGATION",
+      "status": "DISCHARGED_SCOPED",
+      "exports": [
+        "ProducerNonact020E9.executed",
+        "ProducerNonact020E9.script",
+        "ProducerNonact020E9.reference_effect",
+        "ProducerNonactConsumer020E9.execute"
+      ],
+      "scope": "check/clear/scan/push/done/bad; canonical encoding equality and original reference effect equality, not original raw-bank equality"
+    },
+    {
+      "name": "Boundary zero stores and absent data writes",
+      "class": "PROOF_OBLIGATION",
+      "status": "DISCHARGED_SCOPED",
+      "exports": [
+        "ProducerDataBoundary020E9.clear_zero",
+        "ProducerDataBoundary020E9.scan_absent",
+        "ProducerDataBoundary020E9.sweep_terminal",
+        "ProducerDataBoundary020E9.push_full",
+        "ProducerDataBoundary020E9.push_empty"
+      ]
+    },
+    {
+      "name": "Act dispatch, whole-step and EveryTape/J/P transport",
+      "class": "PROOF_OBLIGATION",
+      "status": "OPEN",
+      "scope": "No change to M or original domain"
+    },
+    {
+      "name": "Other producer families, full time/lifetime/peak, native/source key/sign/PRG bridge",
+      "class": "PROOF_OBLIGATION",
+      "status": "OPEN_UNCHANGED"
+    },
+    {
+      "name": "A-QMT and Q-PRG primitive bounds",
+      "class": "CRYPTOGRAPHIC_ASSUMPTION",
+      "status": "UNCHANGED_NOT_INSTANTIATED"
+    },
+    {
+      "name": "QROM experiment, hash/embedding/collision/reprogramming and remaining TARGET_CONTRACT obligations",
+      "class": "PROOF_OBLIGATION",
+      "status": "OPEN_UNCHANGED"
+    }
+  ]
+}

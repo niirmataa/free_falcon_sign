@@ -3,6 +3,20 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
+**Kontynuacja020E9 — [aktywne zapisy clear/scan/push](notes/DATA_EQUIVALENCE_020E9_CHECKPOINT.md), KERNEL_SCOPED / NOT_REVIEWED:**
+Domknięte tagi obecności, adresy i wartości wszystkich trzech slotów danych,
+także dwa aktywne zapisy zer przy braku wyniku skanu, końcowy kursor, pusty
+pending i pełny stos. **Całe 96 słów rzeczywistego producenta i efekt starego
+CoreStep są zgodne we wszystkich sześciu fazach poza act.** Dowód idzie przez
+jawny bufor o udowodnionym efekcie; nie deklaruje równości surowej starej listy.
+11 modułów, 49 twierdzeń, audyt 55 eksportów; 19 prób zachowanych.
+**Następne: pełny dispatch act**, potem złożenie wszystkich faz i EveryTape/J/P.
+Pełny peak/czas, pozostałe rodziny producenta i QROM nadal OPEN. Bez zmiany(M),
+niezależnego odbioru lub push; status WARUNKOWY.
+[Kontrola autora](notes/DATA_EQUIVALENCE_020E9_SELF_REVIEW.md),
+[klasy](notes/CERTIFICATE_CLASSES_020E9.json), [kolejka](notes/KERNEL_QUEUE_020E9.json).
+Monitor ROM PAUSED; poniżej zachowano historyczny zakres wcześniejszych checkpointów.
+
 **Kontynuacja020E8 — [sterowanie, skan i trzy pełne przypadki](notes/DECISION_EQUIVALENCE_020E8_CHECKPOINT.md), IN_PROGRESS / PARTIAL:**
 Kernel domyka wszystkie 16 słów sterowania poza act i pełną decyzję skanu,
 włącznie z błędnymi opcode/rejestrami oraz brakującymi argumentami. Wynik

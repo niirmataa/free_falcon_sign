@@ -1,0 +1,86 @@
+{
+  "task": "S05/TODO020E/data-equivalence020E9",
+  "status": "KERNEL_SCOPED_NOT_REVIEWED",
+  "items": [
+    {
+      "id": "E6-SOURCE-WINDOW",
+      "status": "KERNEL_SCOPED_PREVIOUS_E7",
+      "scope": "All96 fields of the actual reader"
+    },
+    {
+      "id": "E8-CONTROL-NONACT",
+      "status": "KERNEL_SCOPED",
+      "export": "ProducerControlNonact020E8.source"
+    },
+    {
+      "id": "E8-SCAN",
+      "status": "KERNEL_SCOPED",
+      "exports": [
+        "ProducerScanDecision020E8.correct",
+        "ProducerScanDecision020E8.cache_words"
+      ]
+    },
+    {
+      "id": "E8-OUTPUT-CONTROL-PADDING",
+      "status": "KERNEL_SCOPED",
+      "exports": [
+        "ProducerOutputSlots020E8.control",
+        "ProducerOutputSlots020E8.padding"
+      ]
+    },
+    {
+      "id": "E8-PASSIVE",
+      "status": "KERNEL_SCOPED",
+      "export": "ProducerPassive020E8.reference_equality",
+      "scope": "The exact original equality for check/done/bad"
+    },
+    {
+      "id": "E9-NONACT-EXECUTED-EFFECT",
+      "status": "KERNEL_SCOPED",
+      "exports": [
+        "ProducerNonact020E9.executed",
+        "ProducerNonact020E9.script",
+        "ProducerNonactConsumer020E9.execute"
+      ],
+      "scope": "All96 actual output words; complete old-step effect for six phases except act; unique semantic buffer, no executable decoder claim"
+    },
+    {
+      "id": "E8-DATA-ACTIVE",
+      "status": "KERNEL_SCOPED_E9",
+      "scope": "All actual presence/address/payload fields; boundary cases included",
+      "failed_route": "datacases001-003: direct code projection of proof-generated CoreDataPatch.program blocked by reduction of Decidable.rec/Eq.mpr casts",
+      "exports": [
+        "ProducerSweepSlots020E9.clear",
+        "ProducerSweepSlots020E9.scan",
+        "ProducerPushSlots020E9.data"
+      ],
+      "resolution": "Direct canonical effect via CoreFieldPatch values/frames, complete encoded actual output outside act; preserves original domain."
+    },
+    {
+      "id": "E8-ACT",
+      "status": "OPEN_NEXT",
+      "scope": "FixedAction/MemoryEdit against actionOK/editTag/address/value/actionPending, then control words and data writes; no substitute equality premise",
+      "next": "Prove actionOK/editTag/address/value/actionPending against FixedAction.action for run/again, all modeled tokens and failed reads; then act control/data and remove phase restriction."
+    },
+    {
+      "id": "E8-WHOLE-STEP",
+      "status": "OPEN",
+      "scope": "Combine all seven phases, then EveryTape/J/P under unchanged(M)"
+    },
+    {
+      "id": "E6-FAMILIES",
+      "status": "OPEN",
+      "scope": "Parser/fill/startup producers"
+    },
+    {
+      "id": "E6-LIFETIMES",
+      "status": "OPEN",
+      "scope": "Both code images, intermediate buffer, load/outer controller and full sampler peak/time"
+    },
+    {
+      "id": "SOURCE-QROM",
+      "status": "OPEN_UNCHANGED",
+      "scope": "M coverage, source key/sign/PRG and quantum reduction obligations"
+    }
+  ]
+}
