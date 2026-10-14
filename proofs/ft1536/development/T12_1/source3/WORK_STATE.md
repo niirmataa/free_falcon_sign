@@ -1,3 +1,52 @@
+# Active program — compatible full input127 sealed; sampler certificates128
+
+2026-10-15. Original three-point program ACTIVE / NOT COMPLETE.127 is
+SEALED / PROVED_KERNEL_SCOPED / NOT_REVIEWED. Kernel proves old ctx1/scratch2
+input cannot enter the active certificate with writableblock1. This was an
+incomplete-input representation conflict, not C bug/integrity mismatch; all
+older scoped prefix/RNG results stand unchanged.
+
+NEW FIXED INPUT is KeygenFullDomain127.input for KeygenFullData127.rawEnv:
+FFT1/2,context30,scratch31,outputs3/4/5/6,seed0,RNGtemp7,autos10..15,RC20,
+PRIMES3=21,REV10=22,PRIMES2=23,sizes24..27,vv28.11source table bindings and
+13FPR scalar constants. Source bytes/loads/readonly metadata, static interface,
+canonical addresses/stored scratch word55834574848, physical buffers and
+whole-law domain/fresh seed are all proved. Certificate pinned environment
+holds after swap31; no successful body/material/normalization premise.
+SelectedFullStart127 reexecutes real public seed and full make prefix on
+THIS same input. SelectedFullStatics127 derives static preservation and
+certificate_pinned at the resulting capped-loop entry from source effects.
+Use these new instances going forward; never silently substitute old123.
+
+Final keygen_environment127_018 audit1/1; coherent15/15,0/0,117declarations,
+18jobs,9failed preserved. Source95515370,8bf8df38,da4197b4,cc3a8287,2801bbf7.
+Receipt127:71a1163a354e749c939120e0f6a7b6346ce0c3483d9049ef6748f07acbfcf79a.
+Postseal127:30673 pins,
+f5e833e9346f78f3bcfd59e5b8084287fc60f771c2e6cb904c0bb18124b9e568.
+All127 math/evidence sources are SEALED. Do not edit them. No running job.
+
+Next128: composable sampler certificates on the fixed full input. Reuse
+KeygenCapCompute126/AttemptSetup126 and generic seed/prefix adapters. For
+heavy SHAKE calls use validated fragments/projections+source frames as126,
+but reinstantiate on context30 and the full heap. Native generator must NOT
+eagerly initialize the full source tables (010/011 demonstrated the cost).
+Use untrusted local candidates, with theorem statements always anchored to
+actual full states; render A/RC pointers by actual named definitions, not
+old ctx1 literals. No arbitrary word oracle.
+
+Suggested scalable checker: instrument the executable extract/RNG/sampler
+with a finite log of proposed process-call events. Successful overall source
+soundness requires a CLOSED original source Process/Exec proof for EVERY
+logged actual before/after event. No provider-correctness axiom or native
+premise. Use bounded outer-loop segments with continuation lemmas and actual
+n1536, not an artificial smaller n; normalize changed context/coefficient
+blocks using source frames. Preserve every rejection and f→g local bit reset
+on the same SHAKE heap. This route is a plan, not yet implemented/proved.
+Full f/g, all gates/solver/packets and G(seed*)/Z>0 remain OPEN, as do numeric
+acceptance and conditional coding bounds. Continue to whole owner goal;
+S1 measured, no F04/IID/geometric shortcut, five do_sign fixed, one job,
+no push/new worker/review/schedules, retained failures and0/0.
+
 # Active program — first actual refill126 sealed; full static/global input127
 
 2026-10-15. Original three-point program ACTIVE / NOT COMPLETE.126 is
