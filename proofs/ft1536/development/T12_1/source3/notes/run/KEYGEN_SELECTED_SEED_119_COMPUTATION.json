@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "claim_id": "KEYGEN_SELECTED_SEED_119_LOCAL_SOURCE_CHAIN",
+  "repository": {
+    "commit": "76328b366ab12164cdd888fdff824d4842ee8891",
+    "dirty": true
+  },
+  "command": "/home/footfalcon/.local/bin/sage /media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_seed119_004/sage/keygen_selected_seed119.sage\n/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean -DwarningAsError=true -j1 -M6144 -o /media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_seed119_005/lib/Source3/GeneratedSeed119Fixture.olean /media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_seed119_005/formal/Source3/GeneratedSeed119Fixture.lean\n/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean -DwarningAsError=true -j1 -M6144 -o /media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_seed119_005/lib/Source3/SelectedSeedInit119.olean /media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_seed119_005/formal/Source3/SelectedSeedInit119.lean\n/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean -DwarningAsError=true -j1 -M6144 -o /media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_seed119_005/lib/Source3/SelectedSeedFlip119.olean /media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_seed119_005/formal/Source3/SelectedSeedFlip119.lean\n/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean -DwarningAsError=true -j1 -M6144 -o /media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_seed119_005/lib/Source3/SelectedSeedBytes119.olean /media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_seed119_005/formal/Source3/SelectedSeedBytes119.lean\n/home/footfalcon/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean -DwarningAsError=true -j1 -M6144 -o /media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_seed119_005/lib/Source3/SelectedSeed119Audit.olean /media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_seed119_005/formal/Source3/SelectedSeed119Audit.lean",
+  "environment": {
+    "software": [
+      "SageMath 10.9 (standard preparser)",
+      "Lean 4.34.0; pinned Mathlib and original C99 source closure",
+      "Exact executed argv and resource metadata in immutable job receipts"
+    ],
+    "hardware": "Linux x86_64 LP64; sequential isolated jobs; per Lean module -j1 -M6144,1800s wall,12GiB address-space,8GiB normal RSS limit."
+  },
+  "mathematics": {
+    "assertion_tested": "The selected public32-byte seed executes actual source Init(512),Inject32,Flip in one fixed local caller; all416 RNG bytes at each boundary and all32 input bytes match the literal images extracted from sealed native evidence.",
+    "coefficient_domain": "Sage ZZ byte/word operations; Lean BitVec and original C99 finite byte memory",
+    "conventions": "Literal trie/state generation is untrusted. Kernel checks every source phase and byte image. Native outputs are candidate comparison values, not execution or probability premises.",
+    "inputs": [
+      {
+        "path": "proofs/ft1536/development/T12_1/source3/sage/keygen_selected_seed119.sage",
+        "sha256": "71fcb93e2b449525ea033dde929276facb50f6a195314872e98ce00aaa2b82ce"
+      },
+      {
+        "path": "proofs/ft1536/development/T12_1/source3/formal/Source3/SelectedSeedInit119.lean",
+        "sha256": "891fee7ec0a77d621189f21a646001c487b80ac14c75304e61ec8f8ba07843b9"
+      },
+      {
+        "path": "proofs/ft1536/development/T12_1/source3/formal/Source3/SelectedSeedFlip119.lean",
+        "sha256": "ca5916a6c4c006a356e07a4120c53a25edcde87bd01891e16a361770b4944838"
+      },
+      {
+        "path": "proofs/ft1536/development/T12_1/source3/formal/Source3/SelectedSeedBytes119.lean",
+        "sha256": "f5e3f9d8427dea25769be34fca2b14cf8fe8dcfebaa19d9a82babfbc41e3fd18"
+      },
+      {
+        "path": "proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_witness113_005/WITNESS113.json",
+        "sha256": "dda0d8b5ec86f6b29139bf6c6ef02f30146ecf7cba87e9fe042b7b8624839ddf"
+      }
+    ],
+    "bounds": {
+      "seed_bytes": 32,
+      "rng_image_bytes": 416,
+      "context_bytes": 448,
+      "padding_xor_words": 17,
+      "capacity": 512,
+      "rate": 136,
+      "kernel_fuel": 128
+    },
+    "non_claims": [
+      "No complete law110 caller/domain constructed",
+      "No public set_seed wrapper or readiness prefix witness yet",
+      "No sampler/gates/solver/whole KeyGen success witness",
+      "No probability lower bound or IID claim"
+    ]
+  },
+  "randomness": {
+    "used": false,
+    "generator": "Previously selected public synthetic S1 meas1 counter9 fixture",
+    "seed": "Retained pinned seed.bin; literal bytes remain in generated artifacts"
+  },
+  "run": {
+    "started_at": "2026-10-14T20:05:16.390581+00:00",
+    "runtime_seconds": 58.561199,
+    "exit_status": 0
+  },
+  "outputs": [
+    {
+      "path": "proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_seed119_004/SELECTED119.json",
+      "sha256": "6d78ef1696cef3fa530d881a2f6739acbd2f4cfa761d6116ce31c94cee3fbf57"
+    },
+    {
+      "path": "proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_seed119_004/GeneratedSeed119Fixture.lean",
+      "sha256": "e66a1a490d3ed9bc0f59ad4a28268072c7628841a30f2971d2f2c9c43bd36392"
+    },
+    {
+      "path": "proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_seed119_004/RECEIPTS.json",
+      "sha256": "b599857d00f6c9d9511e0ec9b44625b79ec6a1c0c8d97d4b078ef6a67f0ed081"
+    },
+    {
+      "path": "proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_seed119_005/RECEIPTS.json",
+      "sha256": "b0016c64a01102c58114367e50aec8ed0c9ecb974f1010156d7513edc6abf922"
+    },
+    {
+      "path": "proofs/ft1536/development/T12_1/source3/.build/jobs/keygen_seed119_005/SEARCH_AUDIT.json",
+      "sha256": "8b43689cf1b6aec42a30a7e8adb18bd8cb8fef982e0e7a5041180b0d1fe83b7d"
+    }
+  ],
+  "checks": [
+    "Pinned32-byte seed/native event inputs",
+    "Exact rng_new initialization image",
+    "Exact rng_seeded injection image",
+    "Exact first shake_before padding/xor image",
+    "Readonly source RC",
+    "Kernel Init/Inject/Flip computations and source-call constructors",
+    "Kernel32-byte input and416-byte boundary images",
+    "Full26-declaration term/type/axiom audit"
+  ],
+  "result": "implementation and finite assertion verified in the stated range; closed local selected-seed source SHAKE chain and byte images; whole KeyGen witness remains open",
+  "residual_risks": [
+    "Version1 supplemental manifest retains legacy provenance limits; immutable canonical job receipts additionally pin executable argv, source and resource limits.",
+    "Local caller fixes unused context bytes to zero; construction of the complete canonical KeyGen caller/domain and attachment of public set_seed/readiness are separate open obligations."
+  ]
+}
