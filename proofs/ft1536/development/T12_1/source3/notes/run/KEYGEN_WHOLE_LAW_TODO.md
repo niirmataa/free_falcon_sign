@@ -59,14 +59,14 @@ assumption, or new KeyGen PRG assumption closes a missing step.
 
 ## D. Model binding and acceptance
 
-- [ ] Define the packet-to-model decoding map and prove no decoding-failure mass on successful source outputs.
-- [ ] Prove the SAME joint secret/public law is the actual emitted-key pushforward.
-- [ ] Prove the public marginal used by SigmaMath.muH is that law's public marginal.
-- [ ] Supply the actual source-law equality to the applicable model interface; inspect the theorem body as well as its type.
+- [x] Define the packet-to-model decoding map and prove no decoding-failure mass on successful source outputs.
+- [x] Prove the SAME joint secret/public law is the actual emitted-key pushforward.
+- [x] Prove the public marginal used by SigmaMath.muH is that law's public marginal.
+- [x] Supply the actual source-law equality to the applicable model interface; inspect the theorem body as well as its type.
 - [ ] Keep non-signing byte-game transport obligations visible, outside do_sign.
 - [ ] Check all final hypotheses and quantifiers against the owner target; no partial construction is promoted to acceptance.
-- [ ] Run a coherent selected replay and full declaration/type/axiom audit with 0/0 accepted logs.
-- [ ] Preserve all failures, generator versions, receipts and postseal pins; final local commits without push.
+- [x] Run a coherent selected replay and full declaration/type/axiom audit with 0/0 accepted logs.
+- [x] Preserve all failures, generator versions, receipts and postseal pins; final local commits without push.
 - [ ] Write the final whole-task assessment and exact remaining scope; mark complete only if definition of done is met.
 
 ## E. Unchanged signing boundary
@@ -80,27 +80,21 @@ after the required KeyGen task; its previous analytic result retains scope.
 
 ## Current recovery point
 
-# Whole actual KeyGen law — ACTIVE after checkpoint110
+# Whole actual KeyGen law — model binding proved, final scope closeout
 
-2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
-`notes/run/KEYGEN_WHOLE_LAW_TODO.md`. Source commits b1fa3e00, a23ae0a6.
-110 constructs the actual A2 uniform 32-byte seed pushforward through the
-whole source outcome. Exact preimage counts give output and success mass;
-all failure/nonreturn/success masses total 1. Conditioning uses whole-call
-emission only; zero success returns none. No IID or positive-success premise.
-Final keygen_probability110_009: 7/7, logs 0/0, full audit 37 declarations,
-standard axioms. Nine jobs, five failed/mixed with causes and one exact Sage
-control job (synthetic algebra only, not actual acceptance estimation).
-Receipt: `7a51c28fd66cd9471d4df12c0dd0e618d42993ace80772aa1c269bc88c166087`.
-Postseal 26841 pins, `519cc807438728617d8adffb91b0ccf4dfffaecd4f3e260d0e7098bd4b5d051c`.
-Notes: `notes/run/KEYGEN_LAW_110_NOTES.md`. 110 is sealed; do not edit it.
-
-Active 111: SAME decoded joint law, SigmaMath.muH and concrete AssemblyComp
-binding, then final source/input/quantifier audit. First job keygen_model111_001
-was launched; inspect its receipts before another Lean run. The fixed caller
-uses the constructed representation and actual replacement-seed API. No POSIX
-availability or mixed/resumed context law is invented. Five do_sign items
-unchanged; no push/migration, reviewer or second worker.
+2026-10-14. PROVED_KERNEL_SCOPED / NOT_REVIEWED; final task assessment pending.
+Source commits1694400e,94769403.111 binds the SAME decoded joint key law to
+whole successful source bytes, proves SigmaMath.muH is its public marginal,
+and supplies concrete AssemblyComp.KeyLawBinding from two computed laws.
+Zero success returns no package; invalid decoder defaults have zero mass.
+Final selected replay keygen_model111_008:18/18, logs0/0, full audit110 named
+declarations (37 new). Eight111jobs, six failed/mixed retained with causes.
+Receipt:d2e539d50329951d22dad35c8a34372edb2b78ffc1696923b4254a71b2832b14.
+Postseal27064pins:0476066da04edb02c2009a6d0fdc7a9286b9e08f8100d3cd5c7c87cd161a6a65.
+Notes:`notes/run/KEYGEN_MODEL_111_NOTES.md`.111is sealed; do not edit it.
+Next: final exact input/nonreturn/model quantifier self-audit and durable
+whole-task handoff, preserving the original A2 replacement scope and the
+separate non-signing byte-game work. No do_sign expansion or e2 promotion.
 
 Preserved089 tracking refusal/public-copy supplement remains valid:
 `KEYGEN_SEED_089_TRACKING.md`, public tool `tools/keygen_law089_seal.py`.

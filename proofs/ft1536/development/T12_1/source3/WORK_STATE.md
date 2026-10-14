@@ -1,3 +1,19 @@
+# Whole actual KeyGen law — model binding proved, final scope closeout
+
+2026-10-14. PROVED_KERNEL_SCOPED / NOT_REVIEWED; final task assessment pending.
+Source commits1694400e,94769403.111 binds the SAME decoded joint key law to
+whole successful source bytes, proves SigmaMath.muH is its public marginal,
+and supplies concrete AssemblyComp.KeyLawBinding from two computed laws.
+Zero success returns no package; invalid decoder defaults have zero mass.
+Final selected replay keygen_model111_008:18/18, logs0/0, full audit110 named
+declarations (37 new). Eight111jobs, six failed/mixed retained with causes.
+Receipt:d2e539d50329951d22dad35c8a34372edb2b78ffc1696923b4254a71b2832b14.
+Postseal27064pins:0476066da04edb02c2009a6d0fdc7a9286b9e08f8100d3cd5c7c87cd161a6a65.
+Notes:`notes/run/KEYGEN_MODEL_111_NOTES.md`.111is sealed; do not edit it.
+Next: final exact input/nonreturn/model quantifier self-audit and durable
+whole-task handoff, preserving the original A2 replacement scope and the
+separate non-signing byte-game work. No do_sign expansion or e2 promotion.
+
 # Whole actual KeyGen law — ACTIVE after checkpoint110
 
 2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
