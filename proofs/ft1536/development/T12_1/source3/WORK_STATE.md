@@ -1,3 +1,25 @@
+# Whole actual KeyGen law — ACTIVE after checkpoint099
+
+2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
+`notes/run/KEYGEN_WHOLE_LAW_TODO.md`. Source commit2e7968ff.
+099closes actual make_fg_ternary_top/step/make source bodies and calls,
+including all9piece checks and parser witnesses. Final Call uniqueness
+and exact partial runCall/spec use closed actual callees, no oracle.
+
+Final keygen_make099_003:5/5, logs0/0, full audit21declarations, standard
+axioms.3clean jobs; empty failure registry.
+Receipt:`f59f789890ade2a93441855a0188d74ea83600173acc4b75d705e94636be6b3f`.
+Postseal25152pins, `fc5c67ea8d292950ed5c697b31a94ecb07de217f1ddbf89eb89747eb7fe557f6`.
+Notes:`notes/run/KEYGEN_MAKE_099_NOTES.md`.099is sealed; do not edit it.
+
+Active100: complete search-language pointer/value/call determinism and
+actual depth0 call. Prepared but not yet checked: SearchPointer100,
+SearchValue100, SearchDeterminism100, DepthZero100. Inspect latest100jobs
+before use. Then deepest/intermediate/root, certificate/codecs, full loop
+and actual law/model binding. Fixed caller, entropy boundary, lack of
+finite defined return, normalization/positive success remain open. Five
+do_sign items unchanged; no push or second worker.
+
 # Whole actual KeyGen law — ACTIVE after checkpoint098
 
 2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:

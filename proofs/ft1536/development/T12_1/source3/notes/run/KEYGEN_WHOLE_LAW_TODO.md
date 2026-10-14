@@ -80,21 +80,18 @@ after the required KeyGen task; its previous analytic result retains scope.
 
 ## Current recovery point
 
-Checkpoint098: complete actual bigint/CRT/Bezout/extraction source family,
-exact partial call and no abstract callee premise. Source commits89ed1f20,
-9fe0e94f,d8c2d3f3,21694778. Source replay034:20/20clean math modules;
-final streaming audit035:1/1clean,296declarations, standard axioms and
-full roundtrips.35jobs,20failed/mixed and4data-generation jobs retained.
-Postseal25079pins,
-`edf21ecd9e96a524317fdc78564aa75dfea1d9d9d92e779d081c96f16c05c749`.
-Whole task remains ACTIVE. Notes:`KEYGEN_BIGINT_098_NOTES.md`.
+Checkpoint099: actual make_fg top/step/make, all9source pieces and actual
+call binding, exact partial function. Source commit2e7968ff. Final
+keygen_make099_003:5/5, logs0/0, audit21declarations;3clean jobs.
+Postseal25152pins,
+`fc5c67ea8d292950ed5c697b31a94ecb07de217f1ddbf89eb89747eb7fe557f6`.
+Whole task remains ACTIVE. Notes:`KEYGEN_MAKE_099_NOTES.md`.
 
-Current099: actual make_fg/top/step composition. Next search/deepest/
-intermediate/depth0/root solver, certificate/codecs, capped loop and whole
-law/model binding. Fixed caller, automatic entropy boundary, lack of finite
-defined return, normalization and positive success where required remain
-explicit. Do not modify sealed098sources or reinterpret data generators
-as proof; the cached values have separate kernel equalities.
+Current100: full search-language pointers/values/source calls and actual
+depth0. Then deepest/intermediate/root solver, certificate/codecs, capped
+loop and actual law/model binding. Fixed caller, automatic entropy
+boundary, lack of finite defined return, normalization and positive success
+where required remain open. Five do_sign items unchanged.
 
 Preserved089 tracking refusal/public-copy supplement remains valid:
 `KEYGEN_SEED_089_TRACKING.md`, public tool `tools/keygen_law089_seal.py`.
