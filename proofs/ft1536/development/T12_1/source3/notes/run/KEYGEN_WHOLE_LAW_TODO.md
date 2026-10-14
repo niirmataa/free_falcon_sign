@@ -80,19 +80,18 @@ after the required KeyGen task; its previous analytic result retains scope.
 
 ## Current recovery point
 
-Checkpoint092 connects actual seed, make arguments, complete readiness
-prefix, cap check and first f/g sampler pair; source legality is derived.
-Source commit1a846565. Final keygen_prefix092_009:6/6, logs0/0,
-audit33 declarations;9 jobs,6 failed/mixed with causes. Postseal23724 pins,
-`fe22a4dffaca97ced56d0d231b68959613bab248a07c8a638a210ac99d7b49d1`.
-Whole task remains ACTIVE. Notes: `KEYGEN_PREFIX_092_NOTES.md`.
+Checkpoint093: actual resultant gate, including checked word body and
+fresh b[96] relocation. Source commits d2a34e6b/ecb24348. Final
+keygen_resultant093_010:9/9, logs0/0, audit49 declarations;10 jobs,
+3 failed/mixed with causes. Postseal23888 pins,
+`2cb53254ff998fe688846782637386564f846205445a77d89fc35ab940f63c09`.
+Whole task remains ACTIVE. Notes: `KEYGEN_RESULTANT_093_NOTES.md`.
 
-Current093: actual resultant gate, including word-language determinism
-and fresh local-array relocation. Then norm/public/solver/certificate/
-codec closure, entire capped loop, fixed caller construction, seed-indexed
-whole-call experiment, nonreturn/normalization and SAME model law.
-Never duplicate a running proof job or replace the actual producer with
-an arbitrary execution family. Partial functions do not prove termination.
+Current094: actual raw norm/GS source closure, beginning with generic
+procedure execution uniqueness and fixed search leaves. Then public,
+solver, certificate, codecs, capped loop, fixed caller and whole-call law.
+No arbitrary execution-family input, acceptance selector or IID premise
+is allowed. Partial functions do not prove termination or success mass.
 
 Preserved089 tracking refusal/public-copy supplement remains valid:
 `KEYGEN_SEED_089_TRACKING.md`, public tool `tools/keygen_law089_seal.py`.

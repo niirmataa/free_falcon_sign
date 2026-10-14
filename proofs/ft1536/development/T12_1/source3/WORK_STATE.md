@@ -1,3 +1,25 @@
+# Whole actual KeyGen law — ACTIVE after checkpoint093
+
+2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
+`notes/run/KEYGEN_WHOLE_LAW_TODO.md`. Source commits d2a34e6b/ecb24348.
+093 proves actual mod2_res_ternary scalar and caller-state uniqueness
+across fresh b[96] choices, both f/g resultant gates, and exact partial
+gate with legal input derived after source sampler calls. Array/modular/
+word source transport and checked word determinism are reusable.
+
+Final keygen_resultant093_010:9/9, logs0/0, full audit49 declarations,
+standard axioms.10 jobs,3 failed/mixed with causes retained. Kernel-memory
+failure004 was resolved by splitting nine checks without raising limits.
+Receipt:`8a5ea45007ecceeb069ef9324a0554da80f7edc89b8a1dcf768d34da48b44c4f`.
+Postseal:23888 pins, `2cb53254ff998fe688846782637386564f846205445a77d89fc35ab940f63c09`.
+Notes:`notes/run/KEYGEN_RESULTANT_093_NOTES.md`.
+
+Active094: actual raw norm/GS source determinism; start with generic
+C99Procedure execution uniqueness and necessary fixed search leaves.
+Then public/solver/certificate/codecs, full capped loop and law/model
+binding. Fixed caller, automatic entropy boundary, nonreturn and positive
+success remain open. Five do_sign items unchanged; no push/second worker.
+
 # Whole actual KeyGen law — ACTIVE after checkpoint092
 
 2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
