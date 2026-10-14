@@ -1,0 +1,7 @@
+{
+  "keygen_shake116_001": "Read-call computation and source soundness accepted. Store soundness required explicit reduction of the compact-state reference heap projection in simpa; the memory and source store contracts were already identical. No source or checker behavior changed.",
+  "keygen_shake116_003": "Process constructor elaboration exposed a definitionally equal record update, preventing syntactic rewrite of blockEntry. Use change to expose the exact definitional equality; no source contract or computation changed.",
+  "keygen_shake116_006": "Whole local SHAKE process fixture reduction exceeded the 6144 MiB Lean memory limit (exit134,35.676s). This is a resource failure, not a counterexample or source failure. Retain the snapshot and replace monolithic reduction with independently kernel-checked source chunks and normalized intermediate states, within the same limits.",
+  "keygen_shake116_008": "The empty-scope composition proof also needed the scalar restore definition reduced; pointer restoration alone left an opaque empty scalar restore. No semantics or computation changed.",
+  "keygen_shake116_009": "The simp-only empty-scope proof retained the scalar restore head despite its requested unfolding. Replace simplifier-dependent rewriting with the explicit definitional restoreScope equality; the generator had not run."
+}

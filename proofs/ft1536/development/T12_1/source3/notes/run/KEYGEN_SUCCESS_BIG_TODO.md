@@ -112,3 +112,53 @@ Source commits3fe5fcc4,60759bdb. Actual process_block read/statement
 interpreter sources116 prepared; first job keygen_shake116_001. Next build
 Process/RC source-call binding and a concrete kernel block replay from the
 selected native fixture, then attach the seed/init/flip/extract chain.
+
+## Current116 checkpoint: source interpreter and bounded replay
+
+2026-10-14. ACTIVE / NOT COMPLETE / NOT_REVIEWED. Three-point TODO remains
+`notes/run/KEYGEN_SUCCESS_BIG_TODO.md`; no full kernel G(seed*) witness yet.
+116 entry verifies all28633 predecessor pins; ENTRY_PINS SHA
+b35cec1cd464a84b8a1a907a7863038c5146c99673ac9ef1225c98209b75c889.
+Source interpreter/Process soundness accepted002/004 and committed b88e7f6f.
+Concrete whole-block reduction006 exceeded6144MiB, exit134,35.676s; retained.
+Replacement: explicit normalized states,49 source chunks per double round,
+12 double rounds, all transitions independently checked with decide +kernel.
+Untrusted generator010 passed and matched final native fixture heap; this
+match is a control, not a source proof. Generic chunk composition010 and
+fixture007 accepted. keygen_shake116_011: Start accepted, Round00 last observed
+RUNNING; inspect receipts/process before another proof/computation job.
+Fixture source and generator remain UNSEALED. No resources/lint relaxed.
+Next: verify bounded chunks, compose actual Process source proof, audit and
+postseal116, then attach initialization/padding/extraction and MODE1 sampling.
+All top-level success/acceptance/coding claims remain open. No push, no new
+schedules, no second executor, five do_sign items unchanged.
+
+## Checkpoint116 closed; byte helpers117 active
+
+2026-10-14. ACTIVE / NOT COMPLETE / NOT_REVIEWED. Canonical TODO remains
+`notes/run/KEYGEN_SUCCESS_BIG_TODO.md`. Point1 full KeyGen G(seed*) and Z>0,
+point2 numerical acceptance, and point3 conditional coding remain OPEN.
+
+116 now has a CLOSED concrete local original-source process_block witness:
+`ShakeBlockReplay116.source_process`,24 rounds/588 kernel-checked chunks.
+The input/output A-array fixture comes from public counter9; its arrival
+from actual seed initialization is NOT yet proved. Readonly RC/source scalar/
+store/scope/loop semantics are checked; no native-return or SHAKE idealization.
+Coherent20/20 modules,0/0,full1291-declaration audit; final014 passed2/2.
+Fourteen jobs, five failed/mixed retained, including006 memory exhaustion.
+Source commitsb88e7f6f,d0ca23a3,a835ff35. No repeat of accepted rounds.
+Receipt116:cb2296765d2fbffc2af043029c3e33f782a2adee4c5bb5c8026a8da582061377.
+Postseal116:28890pins,de8687c6bf87d5c5b4c903b6820276e40f36a9b9c7c907891e886e60f797b693.
+Report/replay:KEYGEN_SHAKE_116_REPORT.md andKEYGEN_SHAKE_116_REPLAY.md.
+116 sources and metadata are SEALED; do not edit. Generated14fixture/state
+modules are ignored inputs, regenerated from the pinned Sage/Lean generators
+and retained as immutable job artifacts. No seed/private-key binary committed.
+
+Active117 drafts: ShakeDecodeCompute117,ShakeEncodeCompute117,
+ShakeXorCompute117. None compiled yet; verify116 pair into117 ENTRY_PINS,
+then run one job for these three in dependency order. Continue original
+init/inject/flip/extract, MODE1 sampling, gates/solver and emitted packets.
+Performance follow-up remains open: normalize literal byte tries in future
+state certificates instead of rebuilding every heap from words; untested.
+Paper stays measured; exactly five do_sign items unchanged. No push, new
+schedule, second executor or independent review claim. Continue all3points.
