@@ -80,23 +80,23 @@ after the required KeyGen task; its previous analytic result retains scope.
 
 ## Current recovery point
 
-102closes complete actual intermediate source/call determinism and exact
-partial runCall/spec, concrete20pieces plus loop shells. Final theorem
-has no callee/syntax premise. Generic composition avoids repeated parser
-reduction; all actual source pieces are checked by the kernel.
-Final keygen_intermediate102_006:30/30, logs0/0, full audit52declarations,
-standard axioms.6jobs,2OOM failures preserved with causes. Limits unchanged.
-Receipt:`e4ff5738cfb5f8e7b6c04c9ca8a35e8de2f009ee0a967d48166e4fb050d583a4`.
-Postseal25709pins, `a5e19376e41ca7f20c8b16f29c961d7bd31ebd4b9a05dad9956276d53609d8f1`.
-Notes:`notes/run/KEYGEN_INTERMEDIATE_102_NOTES.md`.102is sealed; do not edit it.
+103closes complete active M0 solver source execution/call uniqueness and
+exact partial runCall/spec: deepest, intermediate loop, depth0, narrow
+output gates, generator/conversion/transforms/final validation. All actual
+branches retained. No callee, syntax, expected solution or success premise.
+Final keygen_solver103_004:7/7, logs0/0, full audit44declarations, standard
+axioms.4jobs,2failed elaborations preserved with causes. Global limits unchanged.
+Receipt:`48e615259969317d76e567c9b61035cc065b2eae0f169ff24aff0d0cc09180b9`.
+Postseal25819pins, `bf99ccfa6e234d87843faf58e773afeb34f67600a2d458e62b38cbd6f5210645`.
+Notes:`notes/run/KEYGEN_SOLVER_103_NOTES.md`.103is sealed; do not edit it.
 
-Active103: deepest, root search, narrow output gate, root validation and
-complete solver call. Six modules prepared, not yet checked. Then actual
-certificate/codecs, full capped loop and source law/model binding. Fixed
-caller/entropy boundary, lack of finite defined return, normalization/
-positive success remain open. Five do_sign items unchanged; no push or
-second worker. The certificate scalar value is only constrained by its
-truth bit; prove its observable state/Boolean, not arbitrary Value equality.
+Active104: certificate prefix/Gate00/function determinism with suffix
+legality derived from actual execution and existing frame input, then
+actual relocated call state/Boolean and gate. Scalar Value is only
+truth-bit constrained, so no claim of arbitrary Value equality. Then
+codecs, full capped loop, seeded producer and actual law/model binding.
+Fixed caller/entropy boundary, nonreturn, normalization/positive success
+remain open. Five do_sign items unchanged; no push or second worker.
 
 Preserved089 tracking refusal/public-copy supplement remains valid:
 `KEYGEN_SEED_089_TRACKING.md`, public tool `tools/keygen_law089_seal.py`.

@@ -1,3 +1,25 @@
+# Whole actual KeyGen law — ACTIVE after checkpoint103
+
+2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
+`notes/run/KEYGEN_WHOLE_LAW_TODO.md`. Source commit0ffdefc7.
+103closes complete active M0 solver source execution/call uniqueness and
+exact partial runCall/spec: deepest, intermediate loop, depth0, narrow
+output gates, generator/conversion/transforms/final validation. All actual
+branches retained. No callee, syntax, expected solution or success premise.
+Final keygen_solver103_004:7/7, logs0/0, full audit44declarations, standard
+axioms.4jobs,2failed elaborations preserved with causes. Global limits unchanged.
+Receipt:`48e615259969317d76e567c9b61035cc065b2eae0f169ff24aff0d0cc09180b9`.
+Postseal25819pins, `bf99ccfa6e234d87843faf58e773afeb34f67600a2d458e62b38cbd6f5210645`.
+Notes:`notes/run/KEYGEN_SOLVER_103_NOTES.md`.103is sealed; do not edit it.
+
+Active104: certificate prefix/Gate00/function determinism with suffix
+legality derived from actual execution and existing frame input, then
+actual relocated call state/Boolean and gate. Scalar Value is only
+truth-bit constrained, so no claim of arbitrary Value equality. Then
+codecs, full capped loop, seeded producer and actual law/model binding.
+Fixed caller/entropy boundary, nonreturn, normalization/positive success
+remain open. Five do_sign items unchanged; no push or second worker.
+
 # Whole actual KeyGen law — ACTIVE after checkpoint102
 
 2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
