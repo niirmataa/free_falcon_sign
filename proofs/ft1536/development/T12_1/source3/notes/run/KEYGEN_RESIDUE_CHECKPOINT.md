@@ -1,3 +1,28 @@
+# Whole actual KeyGen law — ACTIVE after checkpoint105
+
+2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
+`notes/run/KEYGEN_WHOLE_LAW_TODO.md`. Source commitb58b4ac4.
+105closes actual full attempt/stopped-loop outcome determinism, all retry
+invariants, exact partial runLoop/spec and input derivation from the SAME
+actual seeded prefix. Trace-list erasure/restoration is bidirectional;
+all cap/reject/accept transitions and states remain. No IID or totality.
+Final keygen_loop105_006:6/6, logs0/0, full audit25declarations, standard
+axioms.6jobs,3failed elaborations retained with causes. Limits unchanged.
+Receipt:`e6bcedf27d1f6ca211ce592a175d7bfb54c5cce764702f7a443fd678fd3895a6`.
+Postseal26030pins, `01621abf53d2c728893b7b798169517971c2628e298e461dfadd5e1b41c391e5`.
+Notes:`notes/run/KEYGEN_LOOP_105_NOTES.md`.105is sealed; do not edit it.
+
+Active106: codec expression/execution closure and all-path tail binding.
+Read `notes/run/KEYGEN_CODEC_106_PLAN.md`: inspect pointer-word decoding
+on failure branches; do not assume it from successful Addresses. This is
+an inspection concern, not a proved C counterexample. Codec scalar locals
+must exclude pointer-reserved names. Private terminal CallArgs leaves the
+unused comp field unconstrained: prove actual callee comp independence/
+observable heap+return, not arbitrary full activation equality. Then
+complete seeded producer and actual law/model binding. Caller/entropy,
+nonreturn, normalization/positive success remain open. Five do_sign items
+unchanged; no push or second worker.
+
 # Whole actual KeyGen law — ACTIVE after checkpoint104
 
 2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:

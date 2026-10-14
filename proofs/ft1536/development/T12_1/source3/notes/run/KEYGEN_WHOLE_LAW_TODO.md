@@ -40,7 +40,7 @@ assumption, or new KeyGen PRG assumption closes a missing step.
 - [x] Derive caller-domain transport and seeded=1/flipped=0 from source execution (089).
 - [x] Prove actual get_rng_u64 outcome uniqueness across fresh temporary choices and construct its exact partial draw (090).
 - [ ] Reconcile the explicit seed API with the intended fresh automatic entropy path, without inventing an OS failure law.
-- [ ] Preserve the SAME SHAKE state through every scalar draw and outer attempt.
+- [x] Preserve the SAME SHAKE state through every scalar draw and outer attempt (090–105 finite source execution and exact stopped loop; no IID).
 - [ ] Establish source observation determinism or an equally strong exact operational construction; do not assume it.
 - [ ] Represent observed failures separately from lack of a finite defined execution.
 - [ ] Resolve source progress/nonreturn obligations to the extent required by the experiment, without using the outer cap as an inner-loop termination proof.
@@ -80,20 +80,24 @@ after the required KeyGen task; its previous analytic result retains scope.
 
 ## Current recovery point
 
-104closes actual certificate function and relocated caller observable
-state/truth-bit uniqueness, exact partial runCall/spec, source-derived
-suffix/frame/space and pre-certificate input. Scalar Value is only
-truth-bit constrained: no arbitrary Value equality is claimed.
-Final keygen_certificate104_005:6/6, logs0/0, full audit21declarations,
-standard axioms.5jobs,1failed elaboration retained with cause. Limits unchanged.
-Receipt:`28c672417205bf96b1313df9f9ee0574e418c78d26a6e4a01d8ed6dee7e88b1a`.
-Postseal25918pins, `5c580ecd28994ad021c040814f0de4971a559ac90aaaf252ae7a05946536d8b9`.
-Notes:`notes/run/KEYGEN_CERTIFICATE_104_NOTES.md`.104is sealed; do not edit it.
+105closes actual full attempt/stopped-loop outcome determinism, all retry
+invariants, exact partial runLoop/spec and input derivation from the SAME
+actual seeded prefix. Trace-list erasure/restoration is bidirectional;
+all cap/reject/accept transitions and states remain. No IID or totality.
+Final keygen_loop105_006:6/6, logs0/0, full audit25declarations, standard
+axioms.6jobs,3failed elaborations retained with causes. Limits unchanged.
+Receipt:`e6bcedf27d1f6ca211ce592a175d7bfb54c5cce764702f7a443fd678fd3895a6`.
+Postseal26030pins, `01621abf53d2c728893b7b798169517971c2628e298e461dfadd5e1b41c391e5`.
+Notes:`notes/run/KEYGEN_LOOP_105_NOTES.md`.105is sealed; do not edit it.
 
-Active105: complete source attempt and capped loop determinism with retry
-invariants and the SAME state, then exact partial loop. Prepared but not
-checked: AttemptGates105, AttemptFunction105. Next codecs, concrete seeded
-producer and actual law/model binding. Fixed caller/entropy boundary,
+Active106: codec expression/execution closure and all-path tail binding.
+Read `notes/run/KEYGEN_CODEC_106_PLAN.md`: inspect pointer-word decoding
+on failure branches; do not assume it from successful Addresses. This is
+an inspection concern, not a proved C counterexample. Codec scalar locals
+must exclude pointer-reserved names. Private terminal CallArgs leaves the
+unused comp field unconstrained: prove actual callee comp independence/
+observable heap+return, not arbitrary full activation equality. Then
+complete seeded producer and actual law/model binding. Caller/entropy,
 nonreturn, normalization/positive success remain open. Five do_sign items
 unchanged; no push or second worker.
 
