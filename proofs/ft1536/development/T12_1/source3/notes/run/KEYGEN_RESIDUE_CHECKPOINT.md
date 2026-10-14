@@ -1,3 +1,25 @@
+# Active three-point success program — kernel memory114 sealed; state115
+
+2026-10-14. ACTIVE / NOT COMPLETE / NOT_REVIEWED. Canonical TODO:
+`notes/run/KEYGEN_SUCCESS_BIG_TODO.md`. Native fixture113 is sealed after the
+owner-approved manifest repair: public meas1/counter9, first attempt,
+sk7681/pk2881; no complete kernel execution witness or numerical law bound yet.
+
+114: computable sparse finite memory, explicit uninitialized bytes, source
+Store8/32/64, Load32/64, Memcpy and Fill soundness, exact frames and11 closed
+kernel controls. Final keygen_memory114_012:7/7,logs0/0,full65-declaration audit,
+standard axioms;12jobs,4 failures retained. Source commits2b7437fb,bf74f2c6.
+Receipt114:43e0bfda0a2bbf42f4f373df5e03e77dae12bd2c82e1002c0f4fd3fb117f56b9.
+Postseal114:28438pins,0e88cebf270167a227edc1bad5e562fd78e02187343dac64dccbdffce8fbeeb4.
+Notes:`notes/run/KEYGEN_MEMORY_114_REPORT.md`.114is sealed; do not edit it.
+
+Active115: C99FiniteAllocation115 and C99NameMap115 first job
+keygen_state115_001; inspect receipts before another Lean. Plan:
+`notes/run/KEYGEN_STATE_115_PLAN.md`. Next construct computable typed state,
+source expression/scalar execution, lifetimes and actual initial caller/static
+tables, then the SAME109 seeded source witness. No arbitrary-callee or native
+return-code premise. Continue all three points; no push or new schedules.
+
 # Active three-point success program — checkpoint113 sealed, kernel work114
 
 2026-10-14. ACTIVE / NOT COMPLETE / NOT_REVIEWED. Owner authorized continuous
