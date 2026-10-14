@@ -1,3 +1,21 @@
+# B1.07–B1.09 owner closeout after BATCH083 postseal
+
+Required items 1–4 are COMPLETE / PROVED_KERNEL_SCOPED / NOT_REVIEWED in the
+pinned source reference and explicit memory/capacity domain. B1.07/08/09
+Acceptance are MET there. The optional emitted-key fiber adapter is
+PREPARED_KERNEL_ADAPTER; B1.10 final contract acceptance and B1.11 fresh
+closure replay, mutations and independent review are still OPEN.
+
+Read `KEYGEN_SOURCE_TO_FIBER_001_B1_07_09_CLOSEOUT_001.md` for exact theorem
+interfaces, phase counts, commits, all five receipt and postseal pins,
+preserved refusals and the remaining arrows 1–2/do_sign boundary. Latest
+receipt BATCH083 SHA256
+`ff6410db4bf653a7727e4df3ff741c5580dad240bb2959166c44a0d8893f565d`;
+postseal 21,798 distinct pins SHA256
+`c030bfa32b6b45d7ddabc2a5b1582ed9aef225df6078c68f320e047bdf98218b`.
+No active B1 jobs, no push. Do not promote the prepared adapter or historical
+conditional 079 export to a stronger acceptance claim.
+
 # BATCH082 — required owner items1-4 complete and sealed
 
 B1.07/B1.08/B1.09 Acceptance MET in the pinned reference and explicit initial

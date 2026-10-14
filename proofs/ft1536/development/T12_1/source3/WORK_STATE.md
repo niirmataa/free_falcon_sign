@@ -1,3 +1,25 @@
+# B1.07–B1.09 closeout — required owner items 1–4 complete
+
+The 079–083 assembly has a final coherent audit and successful postseal.
+B1.07, B1.08 and B1.09 Acceptance are MET in the pinned C99/GCC LP64
+reference and explicit legal-memory/capacity domain,
+PROVED_KERNEL_SCOPED / NOT_REVIEWED. The optional 083 fiber adapter is
+PREPARED; formal B1.10 acceptance and B1.11 fresh replay/mutations/independent
+review remain OPEN. No claim is made for key-law probabilities, real
+Sign/do_sign, compiler binding, QROM or security of the actual signing code.
+
+Full owner closeout:
+`notes/run/KEYGEN_SOURCE_TO_FIBER_001_B1_07_09_CLOSEOUT_001.md`.
+BATCH083 SHA256
+`ff6410db4bf653a7727e4df3ff741c5580dad240bb2959166c44a0d8893f565d`.
+WHOLE_ASSEMBLY_POSTSEAL_001: 21,798 distinct pinned files, SHA256
+`c030bfa32b6b45d7ddabc2a5b1582ed9aef225df6078c68f320e047bdf98218b`.
+Final audit: 44 proof modules, 228 named declarations, 158 named theorems,
+243 entries; only standard axioms. Local source/guard commits
+`1387b8c1`/`dd77c496`; no push. The earlier occupied-proof-slot refusal
+and all failed histories are retained. Next: B1.10 contract consolidation,
+then separate B1.11 replay and owner-selected review.
+
 # BATCH082 — required owner items1-4 complete and sealed
 
 B1.07/B1.08/B1.09 Acceptance MET in the pinned reference and explicit initial
