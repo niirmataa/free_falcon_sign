@@ -3,6 +3,20 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
+**Kontynuacja020E10 — [pełny dispatch act i wszystkie fazy kroku](notes/ACTION_EQUIVALENCE_020E10_CHECKPOINT.md), KERNEL_SCOPED / NOT_REVIEWED:**
+Domknięte run/again, wszystkie modelowane tagi, Edit/Pending, sterowanie i
+zapisy act, w tym odmowy, fault, brak danych i granice pętli/adresów.
+**Całe96 słów rzeczywistego producenta koduje bufor dający dokładnie stary
+CoreStep dla każdego typowanego stanu — bez ograniczenia fazy lub sukcesu.**
+30 modułów,114 twierdzeń, audyt126 eksportów;46 prób zachowanych.
+**Następne: konsument kodowanego wyjścia i driver kolejnych kroków**, potem
+EveryTape/J/P pod tym samym(M). Pozostałe rodziny producenta, pełny czas/peak,
+source binding i QROM nadal OPEN. Bufor kanoniczny jest świadkiem dowodowym,
+nie nowym darmowym orakulum runtime. Bez niezależnego odbioru i push.
+[Kontrola autora](notes/ACTION_EQUIVALENCE_020E10_SELF_REVIEW.md),
+[klasy](notes/CERTIFICATE_CLASSES_020E10.json), [kolejka](notes/KERNEL_QUEUE_020E10.json).
+Status QROM WARUNKOWY; monitor ROM PAUSED. Niżej pozostaje historia checkpointów.
+
 **Kontynuacja020E9 — [aktywne zapisy clear/scan/push](notes/DATA_EQUIVALENCE_020E9_CHECKPOINT.md), KERNEL_SCOPED / NOT_REVIEWED:**
 Domknięte tagi obecności, adresy i wartości wszystkich trzech slotów danych,
 także dwa aktywne zapisy zer przy braku wyniku skanu, końcowy kursor, pusty

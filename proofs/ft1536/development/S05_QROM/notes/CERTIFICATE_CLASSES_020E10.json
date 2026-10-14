@@ -1,0 +1,67 @@
+{
+  "task": "S05/TODO020E/action-equivalence020E10",
+  "status": "KERNEL_SCOPED_NOT_REVIEWED",
+  "entries": [
+    {
+      "name": "Word512, finite banks, checked source loads and E6 instruction semantics",
+      "class": "MODEL",
+      "status": "EXPLICIT_UNCHANGED",
+      "scope": "No native/physical memory claim; producer diagnostic flag is not sampler abort"
+    },
+    {
+      "name": "Complete act dispatch and semantic Edit/Pending fields",
+      "class": "PROOF_OBLIGATION",
+      "status": "DISCHARGED_SCOPED",
+      "exports": [
+        "ProducerActDecision020E10.correct"
+      ],
+      "scope": "All typed Data, all16 modeled tags and Word512 payloads, run/again, missing values/nodes, invalid addresses/registers and loop bounds"
+    },
+    {
+      "name": "Act control and actual data output",
+      "class": "PROOF_OBLIGATION",
+      "status": "DISCHARGED_SCOPED",
+      "exports": [
+        "ProducerControlAct020E10.correct",
+        "ProducerActOutput020E10.control",
+        "ProducerActSlots020E10.correct",
+        "ProducerActBoundary020E10.rejected_control",
+        "ProducerActBoundary020E10.fault_control"
+      ]
+    },
+    {
+      "name": "All-phase producer output and old CoreStep effect",
+      "class": "PROOF_OBLIGATION",
+      "status": "DISCHARGED_SCOPED",
+      "exports": [
+        "ProducerWholeStep020E10.executed",
+        "ProducerWholeStep020E10.script",
+        "ProducerWholeStep020E10.unique",
+        "ProducerWholeStep020E10.execute",
+        "ProducerWholeStep020E10.reference_effect"
+      ],
+      "scope": "Every typed Data, both fresh values, no phase/reachability/success restriction. Complete96-word encoding equality and old-step effect; no old raw-list equality asserted"
+    },
+    {
+      "name": "Whole driver / execution of encoded outputs / EveryTape and J/P transport",
+      "class": "PROOF_OBLIGATION",
+      "status": "OPEN",
+      "scope": "No executable decoder or whole-run producer integration claimed. Preserve original M and public initial/domain."
+    },
+    {
+      "name": "Other producer families, full time/lifetime/peak, native/source KeyGen/Sign/PRG bridge",
+      "class": "PROOF_OBLIGATION",
+      "status": "OPEN_UNCHANGED"
+    },
+    {
+      "name": "A-QMT and Q-PRG primitive bounds",
+      "class": "CRYPTOGRAPHIC_ASSUMPTION",
+      "status": "UNCHANGED_NOT_INSTANTIATED"
+    },
+    {
+      "name": "QROM experiment, hash/embedding/collision/reprogramming and remaining TARGET_CONTRACT obligations",
+      "class": "PROOF_OBLIGATION",
+      "status": "OPEN_UNCHANGED"
+    }
+  ]
+}

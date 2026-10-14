@@ -1,0 +1,64 @@
+{
+  "task": "S05/TODO020E/action-equivalence020E10",
+  "status": "KERNEL_SCOPED_NOT_REVIEWED",
+  "items": [
+    {
+      "id": "E7-SOURCE-WINDOW",
+      "status": "KERNEL_SCOPED_PREVIOUS_E7",
+      "scope": "All96 fields of the actual reader"
+    },
+    {
+      "id": "E8-SCAN",
+      "status": "KERNEL_SCOPED_PREVIOUS_E8",
+      "scope": "Full scan including absent/invalid cases"
+    },
+    {
+      "id": "E9-NONACT",
+      "status": "KERNEL_SCOPED_PREVIOUS_E9",
+      "scope": "All data/control slots and old-step effect outside act"
+    },
+    {
+      "id": "E10-ACT-DISPATCH",
+      "status": "KERNEL_SCOPED",
+      "export": "ProducerActDecision020E10.correct"
+    },
+    {
+      "id": "E10-ACT-STORES-CONTROL",
+      "status": "KERNEL_SCOPED",
+      "exports": [
+        "ProducerActSlots020E10.correct",
+        "ProducerControlAct020E10.correct"
+      ]
+    },
+    {
+      "id": "E10-ALL-PHASE-STEP",
+      "status": "KERNEL_SCOPED",
+      "exports": [
+        "ProducerWholeStep020E10.executed",
+        "ProducerWholeStep020E10.script",
+        "ProducerWholeStep020E10.execute"
+      ],
+      "scope": "No phase restriction. Old effect on encoded input state, not arbitrary raw memory or original raw-list equality."
+    },
+    {
+      "id": "E10-WHOLE-RUN",
+      "status": "OPEN_NEXT",
+      "scope": "Integrate actual produced96 words with checked buffer consumption/ScriptMachine and driver across steps. Cover failures and zero/final fuel before EveryTape/J/P transport under unchanged M. Do not use proof-only canonical list as an uncharged runtime oracle."
+    },
+    {
+      "id": "E6-FAMILIES",
+      "status": "OPEN",
+      "scope": "Parser/fill/startup producers"
+    },
+    {
+      "id": "E6-LIFETIMES",
+      "status": "OPEN",
+      "scope": "Both code images, intermediate buffer, code loading/outer controller, full sampler time and peak"
+    },
+    {
+      "id": "SOURCE-QROM",
+      "status": "OPEN_UNCHANGED",
+      "scope": "M coverage, source key/sign/PRG and quantum reduction obligations"
+    }
+  ]
+}
