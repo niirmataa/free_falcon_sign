@@ -80,17 +80,20 @@ after the required KeyGen task; its previous analytic result retains scope.
 
 ## Current recovery point
 
-Checkpoint090: source commits `32c5c880` and `85aba153`; final
-`keygen_extract090_014`11/11, logs0/0, audit78 declarations. Postseal
-`fe2e07f03be54246088b3ab40660646cfcc9e423428dbd32524b642e5b83de81`
-(23389 pins). Whole task remains ACTIVE.
+Checkpoint091: seeded readiness and exact partial MODE1 sampler, including
+chronological rejection/coefficient loops and the SAME state between both
+calls. The legal domain is derived at every draw inside the sampler.
+Final keygen_sampler091_013:9/9, logs0/0, audit73 declarations;13 jobs,
+6 failed/mixed with causes. Postseal23583 pins,
+`df3d8520ea270941f8b893512120b6cd6b5bd87e9b639d35577b18e028147575`.
+Whole task remains ACTIVE. Notes: `KEYGEN_SAMPLER_091_NOTES.md`.
 
-The source seeding function and the actual RNG draw are exact PARTIAL
-values, with source uniqueness and caller facts proved. The RNG's fresh
-temporary choice is now eliminated. Current091 is seeded readiness and
-MODE1 sampler composition; then full KeyGen and the final probability/model
-binding. Consult the latest immutable `keygen_sampler091_*` job receipts;
-never duplicate a running proof job or assume an execution-family input.
+Current092 connects seeded readiness to the enclosing declarations/prefix
+and derives sampler input legality at the actual caller. Remaining source
+closure includes gates/solver/codecs, then the seed-indexed whole-call
+experiment, nonreturn accounting, normalization and SAME model key law.
+Never duplicate a running proof job or replace the producer with an
+arbitrary execution-family input.
 
 Preserved089 tracking refusal/public-copy supplement remains valid:
 `KEYGEN_SEED_089_TRACKING.md`, public tool `tools/keygen_law089_seal.py`.

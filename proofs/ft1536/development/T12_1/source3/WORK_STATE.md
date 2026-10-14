@@ -1,3 +1,25 @@
+# Whole actual KeyGen law — ACTIVE after checkpoint091
+
+2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
+`notes/run/KEYGEN_WHOLE_LAW_TODO.md`. Checkpoint091 derives seeded readiness
+(no automatic entropy events) and the exact partial MODE1 sampler including
+all rejections and coefficients. Source uniqueness, legal-memory transport
+at every draw and two-call composition retain the SAME SHAKE state.
+No termination, IID law, whole-KeyGen law or positive-success claim.
+
+Source commits cd704acd and 07708b5d.
+Final keygen_sampler091_013:9/9, logs0/0; full audit73 declarations,
+standard axioms.13 jobs,6 failed/mixed, causes preserved.
+Receipt: `9f0a18a73da3a585fe0051962cc53a53cb344319ef0c9acdc9577b4d474a329d`.
+Postseal:23583 pins, `df3d8520ea270941f8b893512120b6cd6b5bd87e9b639d35577b18e028147575`.
+Notes: `notes/run/KEYGEN_SAMPLER_091_NOTES.md`.
+
+Active092: connect seeded flags/readiness through the real enclosing
+KeyGen declarations and prefix, derive the sampler legal domain there,
+then continue gate/solver/codec source closure. Whole seed-to-KeyGen
+producer, success normalization and SAME model-law binding remain open.
+Exactly five do_sign items unchanged; no push or other worker.
+
 # Whole actual KeyGen law — ACTIVE after checkpoint090
 
 2026-10-14. Whole-task TODO ACTIVE / NOT COMPLETE:
