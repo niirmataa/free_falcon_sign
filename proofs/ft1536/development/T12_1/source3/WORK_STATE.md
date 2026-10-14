@@ -1,3 +1,28 @@
+# Whole actual KeyGen law — ACTIVE after checkpoint096
+
+2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
+`notes/run/KEYGEN_WHOLE_LAW_TODO.md`. Source commits ddd33efc/021185af.
+096 closes source scalar LeafCall, proper two-argument R2 and five-argument
+modp_div independently of arbitrary base states. Declaration-aware read-set
+agreement is proved for actual code, including local z2 inside the loop.
+Proper ModCall is deterministic; modular/word syntax checkers lift actual
+executions. Remaining concrete solver bodies must pass those checks.
+No unqualified malformed-call determinism, termination or solver claim.
+
+Final keygen_solver096_016:10/10, logs0/0, full audit61 declarations,
+standard axioms.16 jobs,10 failed/mixed with causes retained; limits unchanged.
+Receipt:`a5df59f1ab92ca9beae9dbd8243025b88ddc3085d08cbd4753bf8b47acd1ab6e`.
+Postseal:24439 pins, `f0748e9ff0ad8a4a35a8f0b565efbeac5453421592ee919d7362ad6c368ca31a`.
+Notes:`notes/run/KEYGEN_SOLVER_096_NOTES.md`.
+
+Active097: actual NTT/level solver bodies and calls, then bigint/Bezout/
+make_fg/intermediate/deepest/root composition. Start with PrimeRead,
+LevelCalls.Bind and real memmove uniqueness; check actual modular bodies
+for arity using existing source partitions if needed. Then certificate,
+codecs, full capped loop and whole law/model binding. Fixed caller,
+automatic entropy boundary, nonreturn/normalization/positive success
+remain open. Five do_sign items unchanged; no push or second worker.
+
 # Whole actual KeyGen law — ACTIVE after checkpoint095
 
 2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:

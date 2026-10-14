@@ -80,19 +80,20 @@ after the required KeyGen task; its previous analytic result retains scope.
 
 ## Current recovery point
 
-Checkpoint095: exact partial actual public computation, including local
-arrays, source-proved lifetime structure, restored caller and return-zero.
-Source commits de29eea9/c17e0117. Final keygen_public095_015:11/11,
-logs0/0, audit63 declarations;15 jobs,6 failed/mixed with causes and stop
-race preserved. Postseal24205 pins,
-`b9cc36819c43d89dfe1c4fd771e1f6697ba7f677fd9e0653ea62daa4ab7a53b6`.
-Whole task remains ACTIVE. Notes: `KEYGEN_PUBLIC_095_NOTES.md`.
+Checkpoint096: actual modular scalar leaves, proper R2/div source
+uniqueness, declaration-aware read-set agreement and modular/word arity
+lifting. Source commits ddd33efc/021185af. Final keygen_solver096_016:
+10/10, logs0/0, audit61 declarations;16 jobs,10 failed/mixed with causes.
+Postseal24439 pins,
+`f0748e9ff0ad8a4a35a8f0b565efbeac5453421592ee919d7362ad6c368ca31a`.
+Whole task remains ACTIVE. Notes: `KEYGEN_SOLVER_096_NOTES.md`.
 
-Current096: solver source closure. Start with correct-arity modular R2/div
-semantics, not assumed global ModCall determinism (arbitrary base in
-malformed-argument bodies). Then full solver, certificate/codecs, capped
-loop and whole law/model binding. Fixed caller, automatic entropy boundary,
-nonreturn/normalization and positive success where needed remain open.
+Current097: actual NTT/level source bodies and calls, then bigint/Bezout/
+make_fg/intermediate/deepest/root composition. Every concrete body needs
+its source syntax check; generic checker theorems alone do not close it.
+Then certificate/codecs, capped loop and whole law/model binding. Fixed
+caller, automatic entropy boundary, nonreturn/normalization and positive
+success where needed remain open.
 
 Preserved089 tracking refusal/public-copy supplement remains valid:
 `KEYGEN_SEED_089_TRACKING.md`, public tool `tools/keygen_law089_seal.py`.
