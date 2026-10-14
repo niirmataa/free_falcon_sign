@@ -1,0 +1,6 @@
+{
+  "keygen_whole109_001": "The erasure intentionally drops two proof fields but named them, producing unused-pattern-variable errors. Replaced only those pattern names with anonymous fields. Full raw-to-consumer refinement and source classification are unchanged.",
+  "keygen_whole109_003": "Whole-stage matching derived the common loop output but did not unfold abortFlow in its dependent context; the listed simplifier entry was consequently unused. Added the explicit kernel-decided abort-vs-normal distinction and removed the unused simplifier entry. No statement or resource change.",
+  "keygen_whole109_005": "Execution witness/observable uniqueness passed. Totalization needed an explicit classical decision for existence of a finite execution; dif_pos is deprecated in this Lean version. Added classical locally and used dite_eq_left. Later split errors were consequences of the missing decision instance. Standard classical axioms only; no new semantic premise.",
+  "keygen_whole109_006": "split_ifs already eliminated the impossible none=some branch, leaving a redundant proof branch. Removed that unreachable tactic branch; totalization and source correspondence unchanged."
+}

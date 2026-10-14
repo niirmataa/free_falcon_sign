@@ -41,11 +41,11 @@ assumption, or new KeyGen PRG assumption closes a missing step.
 - [x] Prove actual get_rng_u64 outcome uniqueness across fresh temporary choices and construct its exact partial draw (090).
 - [ ] Reconcile the explicit seed API with the intended fresh automatic entropy path, without inventing an OS failure law.
 - [x] Preserve the SAME SHAKE state through every scalar draw and outer attempt (090–105 finite source execution and exact stopped loop; no IID).
-- [ ] Establish source observation determinism or an equally strong exact operational construction; do not assume it.
-- [ ] Represent observed failures separately from lack of a finite defined execution.
+- [x] Establish source observation determinism or an equally strong exact operational construction; do not assume it (109, complete fixed seeded call).
+- [x] Represent observed failures separately from lack of a finite defined execution (109 evaluate/none_iff).
 - [ ] Resolve source progress/nonreturn obligations to the extent required by the experiment, without using the outer cap as an inner-loop termination proof.
-- [ ] Produce the seed-indexed whole-call output construction; a family of arbitrary pre-supplied traces is only an intermediate consumer.
-- [ ] Audit, checkpoint, commit and postseal the concrete seeded construction.
+- [x] Produce the seed-indexed whole-call output construction; a family of arbitrary pre-supplied traces is only an intermediate consumer (109 uses actual raw execution and proved observation uniqueness).
+- [x] Audit, checkpoint, commit and postseal the concrete seeded construction (109; input/entropy scope retained).
 
 ## C. Whole-call probability law
 
@@ -80,27 +80,26 @@ after the required KeyGen task; its previous analytic result retains scope.
 
 ## Current recovery point
 
-108closes full original18-statement encoding, every capacity/partial-write
-failure, exact partial encode/spec and source-derived loop-to-tail input.
-The finite canonical address CONSTRUCTION separates used words from ALL
-other identifiers; actual all-exit ske histories derive descriptor identity
-and Addresses without assuming read liveness. It sets both Env.vb and
-ctx.virtualBase before any caller heap; no arbitrary-memory rebasing claim.
-Final keygen_caller108_011:10/10, logs0/0, full audit68declarations,
-standard axioms.11jobs,2failed elaborations retained with causes.
-Receipt:`c49001b80228c6df095f5ca6c18af10e9a1aa9a8c9aa33003e3b86f91ae8562e`.
-Postseal26532pins, `a8ce557584a90bb55dc2fa4f4f59e199c0242839ea6f85825b16bc5ac110f3ad`.
-Notes:`notes/run/KEYGEN_CALLER_108_NOTES.md`.108is sealed; do not edit it.
+109constructs the whole source-defined seeded byte outcome. Raw traces and
+consumer traces agree BOTH ways on result/failure class, with Addresses
+derived. Same-seed observation is unique; evaluate selects ANY finite
+execution only after proving choice irrelevant, with no execution family
+as input. none is no finite defined initialization+invocation, not return0
+or a divergence proof. Success has SAME decoded/certificate/fiber facts;
+attempt cap3000000 and no extra entropy/readiness failure are retained.
+Final keygen_whole109_008:8/8, logs0/0, full audit36declarations,
+standard axioms.8jobs,4failed/mixed elaborations retained with causes.
+Receipt:`ac894459d095ab26d482ca59282ca5471587d3e7783d44429561e985f282dd87`.
+Postseal26681pins, `199b2d130a54ddac3640f463e5b8bae600c57e521a3aa2dc5219ce455f93d89c`.
+Notes:`notes/run/KEYGEN_WHOLE_109_NOTES.md`.109is sealed; do not edit it.
 
-Active109: raw whole source traces, fixed seed observable uniqueness and
-actual whole outcome constructor. Read `notes/run/KEYGEN_WHOLE_109_PLAN.md`.
-Prepared WholeTrace109; inspect latest109job before use. Then whole A2 law,
-normalizer/zero case and SAME decoded joint/model-public binding. AssemblyComp
-KeyLawBinding and SigmaMath.muH are generic in the joint law, so no D1
-identity is presumed. Fixed caller and entropy/nonreturn scope must remain
-explicit. Five do_sign items unchanged; no push/migration, reviewer or
-second worker. Source OS bootstrap also uses32bytes; its availability law
-is not supplied by A2 and must not be invented.
+Active110: actual A2 uniform32-byte pushforward, exact masses/accounting,
+whole-success normalization and zero case. Read `notes/run/KEYGEN_LAW_110_PLAN.md`.
+Prepared (unchecked): InputLaw110, LawAlgebra110, Probability110. Then SAME
+decoded joint/model-public law and actual AssemblyComp binding. Fixed
+caller uses the constructed representation and public replace=1 seed API;
+OS availability and mixed/resumed contexts are not silently identified.
+Five do_sign items unchanged; no push/migration, reviewer or second worker.
 
 Preserved089 tracking refusal/public-copy supplement remains valid:
 `KEYGEN_SEED_089_TRACKING.md`, public tool `tools/keygen_law089_seal.py`.

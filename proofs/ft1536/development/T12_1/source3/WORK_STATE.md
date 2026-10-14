@@ -1,3 +1,28 @@
+# Whole actual KeyGen law — ACTIVE after checkpoint109
+
+2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
+`notes/run/KEYGEN_WHOLE_LAW_TODO.md`. Source commits50edf6bc,720f380b.
+109constructs the whole source-defined seeded byte outcome. Raw traces and
+consumer traces agree BOTH ways on result/failure class, with Addresses
+derived. Same-seed observation is unique; evaluate selects ANY finite
+execution only after proving choice irrelevant, with no execution family
+as input. none is no finite defined initialization+invocation, not return0
+or a divergence proof. Success has SAME decoded/certificate/fiber facts;
+attempt cap3000000 and no extra entropy/readiness failure are retained.
+Final keygen_whole109_008:8/8, logs0/0, full audit36declarations,
+standard axioms.8jobs,4failed/mixed elaborations retained with causes.
+Receipt:`ac894459d095ab26d482ca59282ca5471587d3e7783d44429561e985f282dd87`.
+Postseal26681pins, `199b2d130a54ddac3640f463e5b8bae600c57e521a3aa2dc5219ce455f93d89c`.
+Notes:`notes/run/KEYGEN_WHOLE_109_NOTES.md`.109is sealed; do not edit it.
+
+Active110: actual A2 uniform32-byte pushforward, exact masses/accounting,
+whole-success normalization and zero case. Read `notes/run/KEYGEN_LAW_110_PLAN.md`.
+Prepared (unchecked): InputLaw110, LawAlgebra110, Probability110. Then SAME
+decoded joint/model-public law and actual AssemblyComp binding. Fixed
+caller uses the constructed representation and public replace=1 seed API;
+OS availability and mixed/resumed contexts are not silently identified.
+Five do_sign items unchanged; no push/migration, reviewer or second worker.
+
 # Whole actual KeyGen law — ACTIVE after checkpoint108
 
 2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:

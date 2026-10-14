@@ -28,3 +28,12 @@ Fresh automatic entropy uses32bytes in pinned C too. Its successful-byte
 boundary must be related explicitly to replacement seeding; no probability
 of POSIX open/read success, EINTR, short reads or zero-read loops is invented.
 Resumed/mixed contexts are distinct games. Five do_sign items unchanged.
+
+Checkpoint109 outcome: raw-source/consumer trace correspondence preserves
+outputs and failure tags both ways; same-seed whole observation is unique.
+evaluate constructs the whole outcome from existence of any finite actual
+execution, with choice proved observationally irrelevant. It has no input
+execution family. Source success retains SAME decoded/certificate/fiber
+facts; readiness failure and extra entropy events are absent on this
+replacement path. No termination or POSIX availability law is asserted.
+Next:110 actual seed pushforward and normalization, then model binding.
