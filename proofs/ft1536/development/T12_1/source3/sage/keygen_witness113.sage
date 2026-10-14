@@ -131,10 +131,20 @@ assert all(v%18433==0 for v in ((f*ring(h)-g)%phi).list())
 (selected/'DECODED.json').write_text(json.dumps({'f':[int(v) for v in decoded[0]],'g':[int(v) for v in decoded[1]],'F':[int(v) for v in decoded[2]],'G':[int(v) for v in decoded[3]],'h':[int(v) for v in h]},indent=2)+'\n')
 (selected/'STREAM.bin').write_bytes(stream)
 for row in inputs:assert sha(row['path'])==row['sha256']
+# Declare scientific outputs explicitly; runtime cache/process files are not evidence.
+scientific=[modified,modified.with_suffix('.json'),dest/'witness.c',dest/'COMMANDS.json',dest/'SOURCE_INPUTS.json']
+for run_info in attempts:
+    folder=dest/('candidate_%03d'%run_info['counter'])
+    scientific += [folder/name for name in ['seed.bin','events.bin','RESULT.json','private.bin','public.bin']]
+scientific += [selected/'DECODED.json',selected/'STREAM.bin']
+for folder in [control,repeat]:
+    scientific += [folder/name for name in ['seed.bin','events.bin','RESULT.json','private.bin','public.bin']]
+assert len(scientific)==len(set(scientific))
 artifacts=[]
-for path in sorted(dest.rglob('*')):
-    if path.is_file() and path.suffix in ['.bin','.json','.c'] and path.name not in ['WITNESS113.json']:
-        artifacts.append({'path':str(path),'sha256':sha(path),'bytes':int(path.stat().st_size)})
+for path in sorted(scientific):
+    assert path.is_file(),('MISSING_DECLARED_RESULT',str(path))
+    artifacts.append({'path':str(path),'sha256':sha(path),'bytes':int(path.stat().st_size)})
+
 result={'status':'NATIVE_FIRST_ATTEMPT_WITNESS_AND_EXACT_CONTROLS; KERNEL_SOURCE_WITNESS_OPEN',
     'selected':str(selected),'counter':int(counter),'seed_hex':seed.hex(),'selection_attempts':attempts,
     'observed_return':int(1),'observed_attempt_count':int(1),'private_length':int(len(sk)),'public_length':int(len(pk)),
