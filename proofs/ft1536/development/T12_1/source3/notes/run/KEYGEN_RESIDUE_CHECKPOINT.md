@@ -1,3 +1,38 @@
+# Continuous success program — checkpoint124
+
+2026-10-14. ACTIVE / NOT COMPLETE / NOT_REVIEWED.124 has CLOSED
+SelectedInput124.source : original Seeded on the SAME123 law-domain base,
+for the selected public32-byte counter9 seed, replace1. Exact seedHeap and
+public parameter entry, Init/Inject, actual flag stores and early return
+are proved. SelectedInput124.domain transports the input domain.
+SelectedReady124.source runs original rng_ready with no entropy events on
+an explicit fk-bound caller with exactly the seeded heap; it is NOT YET the
+make prologue with six automatic objects/counter/dimensions. All416 bytes
+after each of seeding/readiness match the native pinned images as kernel
+CONCLUSIONS; actual flags1/0 then1/1. Full G(seed*)/Z>0 and both quantitative
+probability targets remain OPEN. Additional callee statics/globals remain
+explicit before solver execution;123's example has PRIMES3/REV10/RC only.
+
+Coherent8/8,0/0,52-declaration full audit; final keygen_input124_011 audit1/1
+with exact imported source/artifact pins.11jobs,3failed retained. Source
+e538a8ca,d9e10e2c,b74d1ebd. Receipt124:
+76e87219d7c21747c521a7ecc2b7892b70bc127171a97d0e8ed2b3f1aed40984.
+Postseal124:29983 pins,
+546b8ce08b2e12403a36896d55969fff6f4c3aa0820d1f8210d1cdce55feb9d9.
+All124 mathematical/evidence sources are SEALED. Do not edit them.
+
+Next125: actual make header binding, chronological declarations/allocations
+with freshness at each object, counter0, dimension loads and MKN1536, then
+actual readiness call/gate on THAT state. Build closed source Prefix before
+selected full f/g. KeygenMakeDeclare125.lean is an UNCOMPILED draft of the
+finite declaration states and reference equalities; verify124 ENTRY first.
+Then exact-state sampler/refill certificates, enriched callee environment,
+gates/solver/packets and original three-point success targets. For large
+process certificates, test rfl/factored unchanged trie subtrees before
+forcing whole-state equality over unchanged static objects; not yet tested.
+One job,no push/new worker/review/schedules; measured paper/five do_sign
+unchanged. Owner explicitly reaffirmed continuing the whole task to goal.
+
 # Continuous success program — checkpoint123
 
 2026-10-14. ACTIVE / NOT COMPLETE / NOT_REVIEWED.123 constructs a closed
