@@ -80,19 +80,21 @@ after the required KeyGen task; its previous analytic result retains scope.
 
 ## Current recovery point
 
-100closes search pointer/value/execution uniqueness and the actual depth0
-call, with exact partial runCall/spec. No termination or success premise.
-Final keygen_search100_003:5/5, logs0/0, full audit17declarations, standard
-axioms.3jobs,1failed elaboration with cause and all evidence preserved.
-Receipt:`1e7d8d76cc3eedb06660cb8d7fc959ddde2da31abc5bdf383a9863bf5f053007`.
-Postseal25232pins, `6c162fc55ee4283c166d7331480d263e154f72fe3207a6a7e32fe7b8593f5203`.
-Notes:`notes/run/KEYGEN_SEARCH_100_NOTES.md`.100is sealed; do not edit it.
+101closes actual top/scaled-bigint/polynomial conversion/quadratic and
+NTT subtraction helper source determinism, all concrete part checks and
+parser witnesses. No assumed arithmetic answer, termination or success.
+Final keygen_poly101_004:6/6, logs0/0, full audit54declarations, standard
+axioms.4jobs,2failed elaborations with causes and all evidence preserved.
+Receipt:`f125f3ff109e5a77b8889317fffe6534f03b594cb21714115d6f04bace1833e4`.
+Postseal25331pins, `ec580bd61cb2238134d792f013d442eeea5ad5ba94dea3617f0b0ba895d85f36`.
+Notes:`notes/run/KEYGEN_POLY_101_NOTES.md`.101is sealed; do not edit it.
 
-Active101: actual scaled bigint/top/polynomial helpers, then deepest/
-intermediate/root, certificate/codecs, full loop and actual law/model
-binding. Fixed caller, entropy boundary, lack of finite defined return,
-normalization/positive success remain open. Five do_sign items unchanged;
-no push or second worker.
+Active102: intermediate pointers/value/call table and full execution,
+concrete lift/reduce/top arities and actual call. Eight modules prepared,
+not yet checked. Deepest103 also drafted, not yet checked. Then root,
+certificate/codecs, full loop and actual law/model binding. Fixed caller,
+entropy boundary, lack of finite defined return, normalization/positive
+success remain open. Five do_sign items unchanged; no push/second worker.
 
 Preserved089 tracking refusal/public-copy supplement remains valid:
 `KEYGEN_SEED_089_TRACKING.md`, public tool `tools/keygen_law089_seal.py`.

@@ -1,3 +1,23 @@
+# Whole actual KeyGen law — ACTIVE after checkpoint101
+
+2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
+`notes/run/KEYGEN_WHOLE_LAW_TODO.md`. Source commitb3bf8cd6.
+101closes actual top/scaled-bigint/polynomial conversion/quadratic and
+NTT subtraction helper source determinism, all concrete part checks and
+parser witnesses. No assumed arithmetic answer, termination or success.
+Final keygen_poly101_004:6/6, logs0/0, full audit54declarations, standard
+axioms.4jobs,2failed elaborations with causes and all evidence preserved.
+Receipt:`f125f3ff109e5a77b8889317fffe6534f03b594cb21714115d6f04bace1833e4`.
+Postseal25331pins, `ec580bd61cb2238134d792f013d442eeea5ad5ba94dea3617f0b0ba895d85f36`.
+Notes:`notes/run/KEYGEN_POLY_101_NOTES.md`.101is sealed; do not edit it.
+
+Active102: intermediate pointers/value/call table and full execution,
+concrete lift/reduce/top arities and actual call. Eight modules prepared,
+not yet checked. Deepest103 also drafted, not yet checked. Then root,
+certificate/codecs, full loop and actual law/model binding. Fixed caller,
+entropy boundary, lack of finite defined return, normalization/positive
+success remain open. Five do_sign items unchanged; no push/second worker.
+
 # Whole actual KeyGen law — ACTIVE after checkpoint100
 
 2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
