@@ -80,18 +80,19 @@ after the required KeyGen task; its previous analytic result retains scope.
 
 ## Current recovery point
 
-Checkpoint093: actual resultant gate, including checked word body and
-fresh b[96] relocation. Source commits d2a34e6b/ecb24348. Final
-keygen_resultant093_010:9/9, logs0/0, audit49 declarations;10 jobs,
-3 failed/mixed with causes. Postseal23888 pins,
-`2cb53254ff998fe688846782637386564f846205445a77d89fc35ab940f63c09`.
-Whole task remains ACTIVE. Notes: `KEYGEN_RESULTANT_093_NOTES.md`.
+Checkpoint094: actual raw norm/GS and complete sampler/resultant/norm
+ternary prefix, retaining all rejection edges. Source commit a7a10d4b.
+Final keygen_norm094_006:5/5, logs0/0, audit30 declarations;6 jobs,
+1 failed with cause. Postseal23980 pins,
+`527dea7a71d61ae2352e57fae94bc88116498e12242a20f22271f18b9601d591`.
+Whole task remains ACTIVE. Notes: `KEYGEN_NORM_094_NOTES.md`.
 
-Current094: actual raw norm/GS source closure, beginning with generic
-procedure execution uniqueness and fixed search leaves. Then public,
-solver, certificate, codecs, capped loop, fixed caller and whole-call law.
-No arbitrary execution-family input, acceptance selector or IID premise
-is allowed. Partial functions do not prove termination or success mass.
+Current095: actual public computation, starting with closed scalar strata
+and public word semantics, then local-array relocation/determinism and
+caller input legality. Next solver/certificate/codecs, capped loop and
+whole law/model binding. The fixed caller, automatic entropy boundary,
+nonreturn/normalization and positive success where needed remain open.
+Partial source functions are not termination or success-mass theorems.
 
 Preserved089 tracking refusal/public-copy supplement remains valid:
 `KEYGEN_SEED_089_TRACKING.md`, public tool `tools/keygen_law089_seal.py`.

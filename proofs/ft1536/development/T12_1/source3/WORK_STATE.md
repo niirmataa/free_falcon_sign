@@ -1,3 +1,25 @@
+# Whole actual KeyGen law — ACTIVE after checkpoint094
+
+2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
+`notes/run/KEYGEN_WHOLE_LAW_TODO.md`. Source commit a7a10d4b.
+094 proves actual raw norm/GS, source fpr_lt and the entire Ternary
+sampler/resultant/norm prefix deterministic, with exact partial functions
+retaining all source rejection edges. No real FFT/rounding premise.
+Generic C99Procedure determinism follows actual recursive call bodies.
+
+Final keygen_norm094_006:5/5, logs0/0, full audit30 declarations,
+standard axioms.6 jobs,1 failed job with tactical-pattern cause retained.
+Receipt:`59d7899072b529ce577b82c3ebf81f5788b5c8b3e59559eda67911ea3766b5fd`.
+Postseal:23980 pins, `527dea7a71d61ae2352e57fae94bc88116498e12242a20f22271f18b9601d591`.
+Notes:`notes/run/KEYGEN_NORM_094_NOTES.md`.
+
+Active095: public computation source closure. Start with fixed public
+scalar strata and public word semantics, then generic local-array
+relocation/determinism and actual caller input legality. Follow with
+solver, certificate, codecs and full capped-loop/law/model binding.
+Fixed caller, entropy boundary, nonreturn/normalization/positive success
+remain open. Five do_sign items unchanged; no push or second worker.
+
 # Whole actual KeyGen law — ACTIVE after checkpoint093
 
 2026-10-14. Overall ACTIVE / NOT COMPLETE / NOT_REVIEWED; canonical TODO:
