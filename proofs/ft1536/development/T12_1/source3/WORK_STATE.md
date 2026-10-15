@@ -1,3 +1,79 @@
+#141 sealed — generic source loop and actual first384-butterfly group
+
+Source commits9bf41847 and484a6bcc. Receipt
+4356302193206162b7d047e6170f1328242b90e5adc3e7042186a1dbfe081be8;
+postseal747168573920c137a6271de138fd744ee4bc337aed8ccf77c63b929c3e2326fb,
+42155 pins.14 math +14 audit modules,74 declarations,0/0,standard3axioms.
+15jobs,5failed/mixed with causes. Audit collection
+0a29b7b0c0a01cce91abc024d2d34d42223056bc425fe964a7273bdabd4e0074.
+Sage014 exact index schedule controls0/0, auxiliary only. All141 evidence
+is immutable; no active computation after postseal.
+
+FftLoopInduction141.source proves the ORIGINAL complete inner loop by
+induction, with exact pure vector recurrence, final false guard and full
+frame outside its logical buffer. Natural uint64/index/counter conditions
+are derived, not left as pointer hypotheses. SelectedFftBuffer141 derives
+the actual1536-word image at v24 from its captured block (valid sparse tree
+plus initialized default; no assumed image). SelectedFftLoop141.source
+closes the remaining360 iterations in13.752s; SelectedFftGroup141.prior /
+loop_source / source compose the earlier8+16 and close all384 butterflies
+and the original group scope. No per-index certificate series.
+
+NEXT STATE: SelectedFftGroup141.after, a reference State from a proved
+existential (standard Classical.choose), not a compact/numeric snapshot.
+Its heap represents SelectedFftLoop141.finalValues exactly. The inner
+endpoint had v384; group scope restores v/v2/sr/si. u1=0,v1=0,t768,ht384,
+hm1,m2,hn768 remain available from the loop frame and saved input cells.
+Group increments and outer t=ht,m<<=1 are still open; do not call this a
+complete outer pass. Read KEYGEN_FFT_LOOP_141_NEXT_ROUTE.md.
+
+Next142: recover control cells, execute group increment and false guard,
+close t assignment/outer scope/m shift, then reuse the parametric loop for
+other groups/passes. Full FFT/KeyGen source witness and positive Z/p_accept/
+p_K still OPEN; corrected134 and old110zero unchanged. Whole owner program
+ACTIVE, no push/workers/schedules/IID/F04/newaxioms; measured and five do_sign
+fixed. Final whole-task report still due. Never print generated dataBlock
+lines; use bounded character slices to avoid megabyte single-line output.
+
+#141 live011 — generic loop proved; actual360-iteration instantiation checking
+
+Base140 is sealed at f9c4bad1, postseal
+e4fad5e82e6f2f04f03a4b6ce7f86c372458ab18631c87903d6aaedef0a8d185.
+ENTRY141 d31e85e71a7a967f3c78cfe507f48d110ed5e441c6aba0969423994642de1213
+verified41819pins. One worker/job, no new concrete-prefix series.
+
+Accepted001/002/004: C99NatWord141, C99LoopScalar141, FftLoopShape141,
+C99PointerNat141, FftLoopIndices141 derive actual uint64 arithmetic, v++,
+comparison and all four source pointer addresses from natural bounds.
+Accepted005/010: FftLoopInvariant141.Fixed and frame preservation;
+FftLoopStep141 executes one symbolic source body+increment; the stronger
+FftLoopInduction141.prefix_source/source proves any bounded prefix and the
+ENTIRE original inner loop including its final false guard. Exact pure
+vector recurrence is retained, plus all other locals/arrays/globals/tables,
+metadata and bytes outside the logical buffer span.
+
+Accepted009: C99InitializedBlock141 proves initialized sparse-block reads
+(no Some none overrides); SelectedFftBuffer141 proves the actual complete
+1536-word image at GeneratedFft140Middle16.after from its checked block,
+metadata and a kernel valid-tree check. No assumed buffer image and no rerun
+of the confirmed source prefix. NEVER print generated dataBlock lines:
+those files contain a megabyte on one line; use bounded character slices.
+
+CURRENT keygen_fftloop141_011 (session returned by runner) checks
+SelectedFftLoop141: actual Fixed/counter v24 and the remaining360 source
+iterations by the general theorem. Its after is a Classical.choose of the
+proved execution with exact symbolic vector image; this is not yet a fresh
+literal numeric snapshot. Standard choice only; source semantics unchanged.
+Inspect receipts before another computation. Failures003/006/008 recorded.
+
+Next compose existing8+16 prefix with the remaining loop to close all384
+butterflies in the first group. Generalize compact-only scope composition
+from139 to reference states if needed, then close group/outer controls and
+advance other passes. Need no per-index AST replay.141 unsealed/no audit
+and no source commits yet. Whole KeyGen/positive masses remain open; law134,
+old110zero, measured paper and five do_sign unchanged; no IID/F04/newaxioms,
+push, workers or schedules. Final whole-task report remains due.
+
 #140 sealed — one source butterfly and buffer invariant; actual loop next
 
 The owner's compression is implemented: FftButterflyClosed140.source proves
