@@ -1,3 +1,14 @@
+# Current continuation — success-mass task ACTIVE after151
+
+Full original raw-norm computation now kernel-proved through1536 ordered
+updates and doubling, from the source-bound state before conversion/FFT.
+Next state SelectedRawNorm151.after; exact numerical gate OPEN. Direct
+whole-expression check hit memory limit; use staged numeric certificates.
+Sage/native candidate preserved as auxiliary evidence only.9modules/70decl
+audited,0/0,postseal. See KEYGEN_NORM_151_REPORT.md / KEYGEN_NORM_151_PINS.md.
+Full witness and positive bounds remain open; corrected134, paper measured
+and five do_sign unchanged. Detailed program KEYGEN_SUCCESS_BIG_TODO.md.
+
 # Current continuation — success-mass task ACTIVE after150
 
 Both ACTUAL FFT calls are kernel-proved, including the second caller return

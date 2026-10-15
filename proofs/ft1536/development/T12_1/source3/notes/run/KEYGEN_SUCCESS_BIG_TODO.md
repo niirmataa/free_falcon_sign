@@ -1,3 +1,36 @@
+#151 sealed — actual raw-norm computation; numerical gate OPEN
+
+Source commits94a48554/40fa743e. Nine mathematical modules,70 declarations,
+20 sequential full kernel/DAG audit processes, accepted logs0/0. Seven jobs;
+001 recursion/composition failure and005 direct numerical memory failure
+retained. Sage006 exact-word/native controls passed, auxiliary only. Receipt
+fcdd392893d55352d4a50bfb368d54d226907e14b7301fdea99cdc82ce1acd4d; postseal
+787b3a2e25602a6dc4a391218a682769791f6ca3dfd3e590f3b0a5068a46b86b,46019pins.
+Audit collectionc722374d462d0137f97e8b9f36f7e236173ca6ac04503f1da0a615522f302518.
+
+SelectedRawNorm151.computation proves the ENTIRE original raw-norm code
+from reference SelectedBound135.after: two small conversions, both FFT
+calls, zero,1536 ordered square/add pairs and doubling. It uses the OLD
+KeygenSearchExec/KeygenNormFrame spine required by133; no scalar revision
+is needed inside raw norm. NEW actual state SelectedRawNorm151.after.
+Heap/both images unchanged; exact source fpr_lt comparison proved.
+
+OPEN: SelectedRawNorm151.NumericalObligation, the finite equality
+FprCompare.spec SelectedRawNorm151.finalWord GeneratedBound135.finalWord=1.
+accepted_of_comparison is conditional, NOT an accepted gate witness. Direct
+decide +kernel failed with memory limit005; no acceptance/rejection follows.
+Sage/native candidate word4704131856579166192 (0x41486efffffffff0), bound
+4737176763271429578, native result1. Candidate vectors/3072 updates in
+.build/jobs/keygen_norm151_006/NORM151_CANDIDATE.json, SHA
+f586d16a9da07b6367374216852faf6462292834230ec58e2953e5e656bd772b.
+Still prove symbolic-image equalities; use per-pass indexed formulas and
+staged numeric certificates, not whole-expression retry. See NEXT_ROUTE.
+
+All151 evidence immutable, no active job. Whole task ACTIVE under corrected134.
+Gate/GS/solver/emitted packet/certificate/codecs and positive Z/p_accept/
+coding/p_K remain OPEN. Frozen110zero, measured wording and exactly five
+do_sign unchanged. No higher limits, push, new worker, schedule or axiom.
+
 #150 sealed — both actual FFT calls complete
 
 Source commits745f47ac/1885df5e/394c0446. Nine mathematical modules,118
