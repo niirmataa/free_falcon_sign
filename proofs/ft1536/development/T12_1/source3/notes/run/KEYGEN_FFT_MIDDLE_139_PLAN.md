@@ -17,3 +17,14 @@ One computation/Lean,0/0,failure causes retained,small local commits/no push,
 postseal scoped milestones. Source/law134 and frozen earlier files unchanged.
 Raw/GS/public/solver/cert/codecs and complete success-mass goals remain open;
 no IID/F04/newassumptions,workers/reviewers/schedules; measured/five do_sign fixed.
+
+## Execution scope update after017
+
+Retain an internal PARTIAL checkpoint for the exact first middle-group entry,
+readonly table transport and eight original butterfly iterations, with
+complete endpoint normalization and source continuation. The larger middle/
+tripling target remains open. Accepted4-iteration checks cost about40s each;
+a12-iteration check did not establish its result under fixed limits. The next
+route is a reusable source-exact butterfly theorem to avoid repeated AST/state
+interpretation; see KEYGEN_FFT_MIDDLE_139_NEXT_ROUTE.md. This changes the
+internal checkpoint size, not the owner objective or the reference law.
