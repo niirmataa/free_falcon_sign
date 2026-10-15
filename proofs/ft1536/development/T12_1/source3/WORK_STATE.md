@@ -1,3 +1,167 @@
+#140 sealed — one source butterfly and buffer invariant; actual loop next
+
+The owner's compression is implemented: FftButterflyClosed140.source proves
+one ENTIRE original middle butterfly for arbitrary legal entries and words;
+FftButterflyBuffer140.source_and_invariant also preserves a complete symbolic
+word-buffer representation for arbitrary length/indices. Four ordered byte
+writes, all local scopes restored, other bytes/metadata unchanged. Exact
+source137 FPEMU operations; no ideal-real or probabilistic premise.
+
+Source commits d6810991, e3843238, 7bb1f01b, 825a1ec2, 0d7be325. Receipt
+6199bf28b84b3311bae73f947b9bc4e3047e28d81ca69c0b94754b330d91e659;
+postseal e4fad5e82e6f2f04f03a4b6ce7f86c372458ab18631c87903d6aaedef0a8d185,
+41819 pins.36 math +36 audit modules,239 declarations, accepted logs0/0,
+standard3axioms.32 jobs,14 failed/mixed with causes and corrected diagnostic
+attribution. Audit collection104ca504033b1f5f9ae4ab6f45b707c7547ad636ce3400de40c5fb1f504b2eae.
+Sage031 exact ZZ/native C controls40cases plus remaining-byte frame passed
+0/0; auxiliary only. All140 sources/evidence are now immutable. No active
+computation after postseal.
+
+Next141: derive the actual pointer/index/counter/guard conditions from a
+source caller invariant, then induct through the original loop and final
+false guard, reusing the body theorem. Derive the actual buffer image from
+initialized scratch and source frames; never assume it. Continue at
+GeneratedFft140Middle16.after (v=24; accepted16-prefix from normalized v=8),
+composing the earlier8+16 prefixes if needed. No large concrete-prefix series.
+The earlier compiled checker/pilot remains evidence, not the primary route.
+Read KEYGEN_BUTTERFLY_140_PARAMETRIC_CONTINUATION.md for detailed next steps.
+
+Full FFT/middle/tripling/rt2, raw/GS/public/solver/cert/codecs and the actual
+whole KeyGen success witness remain OPEN. No new concrete positive Z,
+p_accept or p_K bound. Corrected134 and old110zero131 unchanged. Whole owner
+three-point program ACTIVE / NOT COMPLETE; final whole-task report still due.
+No IID/F04/new assumptions, push, workers or schedules; measured paper and
+exactly five do_sign items unchanged.
+
+#140 live025 — full parametric source butterfly CLOSED; loop invariant next
+
+Full FftButterflyClosed140.source accepted025 with0/0 (2.470s), together
+with FftButterflyExec140 (17.907s) and C99WordRead140 (1.868s). This is ONE
+source theorem for arbitrary four input words, twiddle words, original
+source-evaluated legal pointers, incoming Load64 facts and writable objects.
+It executes the EXACT original butterfly body, gives four ordered canonical
+byte writes with bit-exact137 arithmetic, restores all outer/macro locals,
+and preserves arrays/globals/tables, object sizes/permissions and every byte
+outside the four write ranges. No result/callee contract or IEEE premise.
+
+C99WordRead140.here/outside give output-word reading and disjoint-read
+preservation, ready for the buffer/loop invariant. Source shapes and full
+read/MUL/ADD/SUB composition are all accepted; no concrete-prefix series was
+launched after owner steering. The earlier compiled route/pilot remains
+historical evidence, not the claimed parametric compression.
+
+Current HEAD e3843238; newer accepted store/pair/load/full-butterfly files
+are not yet all committed. No active Lean after025.140 is UNSEALED, no final
+DAG audit yet. Failures through024 are recorded;021/022 diagnostics corrected
+explicitly: recursion was in whole-state final_shape. FftFourWrites140 proves
+four-word composition generically before instantiation, resolving it within
+unchanged limits. The final resultWords definition retains named pair
+operations to avoid expanding nested FPR formulas during state equality.
+
+Next: small source commits, then prove a word-buffer invariant under the
+universal body (C99WordRead140; eight-byte disjointness from distinct array
+indices) and derive the original counter/guard loop by induction. Instantiate
+at the existing actual state, without interpreting the AST per index. Need
+actual buffer representation, derived from known initialized scratch block
+and source frames, not assumed. Entire source KeyGen witness and positive
+Z/p_accept/p_K remain OPEN; corrected134 and old110zero unchanged. No IID/F04,
+newassumptions,push,workers,schedules; measured and five do_sign unchanged.
+
+#140 live020 — all three macro rules closed; composing the full butterfly
+
+Owner direction retained: one parametric butterfly, then loop invariant;
+no large concrete-prefix series. Source commit e3843238 records the universal
+MUL macro and restoration helpers. FftPairClosed140 accepted018 (2.323s):
+both ADD/SUB source macros for arbitrary words/legal pointers, exact ordered
+two-byte-region writes, full local restoration and unchanged other bytes.
+No disjointness premise for macro semantics; actual loop disjointness later.
+
+Accepted014: C99WordStore140.source/finite and FftPointerTransport140.
+Accepted016/017: pair shapes/readNames, declaration preservation, generic
+store step, PairStates/PairExec. Accepted019: FftLoadShape140 ties the entire
+outer butterfly body and four load indices to the original source;
+FftLoadStates140 preserves heap/arrays and unread locals through declarations
+and all four local assignments. CURRENT keygen_butterfly140_020 checks
+FftLoadExec140 (uniform source loads, allocation/width extracted from Load64).
+Inspect its receipt before the next job.140 remains UNSEALED/NOT_REVIEWED.
+
+Next build FftButterflyStates140: afterLoad=s4, afterMul=Mul.output on the last
+two inputs and sr/si, afterAdd=Pair.output add at p0/p1, afterSub=sub at p2/p3.
+Derive local bindings and all pointer transport from original Entry; allocation
+and writable metadata survive canonical writes. Compose the exact source
+body using C99Chain139.append and restore the four outer cells. Final state
+is original with four ordered canonical writes; preserve other bytes.
+Then derive loop invariant and instantiate; no actual AST replay per index.
+The detailed route is KEYGEN_BUTTERFLY_140_PARAMETRIC_CONTINUATION.md.
+Whole KeyGen/mass task active, law134 unchanged, no IID/F04/newassumptions,
+no push/workers/schedules, measured paper and five do_sign unchanged.
+
+#140 live013 — parametric FPC_MUL closed; full butterfly still open
+
+Owner steering is binding: prove the butterfly once parametrically and
+instantiate a loop invariant; do not launch hundreds of concrete prefixes.
+The earlier compiled checker/pilot is retained, not confused with this goal.
+FftMulClosed140.source/in_butterfly accepted012 (2.772s,0/0): for EVERY
+four-word operand record and EVERY surrounding state satisfying its typed
+local bindings, the actual source FPC_MUL macro changes exactly a1r/a1i to
+the bit-exact real/imag formulas, restores all six temporary cells, and keeps
+heap/other locals unchanged. Source shape is tied to the actual butterfly
+part5 by FftMulShape140.source_bound. No new arithmetic premise.
+
+Reusable accepted helpers: FftWordExpressions140, FftLocalCells140,
+FftMulStates140, FftMulExec140, C99RestoreCells140, FftRestoreState140.
+Failures006/008/009/010/011 retained with causes; warnings fixed, not hidden.
+CURRENT job keygen_butterfly140_013 (session43875): C99WordStore140 exact
+canonical byte update + finite-heap agreement, FftPointerTransport140 address
+transport across changes to unread locals. Inspect receipt before next job.
+No140audit/seal yet; source commit d6810991 covers the earlier compiled route.
+
+Next: actual FPC_ADD/SUB macros (butterfly parts6/7), two writes each and exact
+scope restoration, then full four-input/four-write butterfly theorem with
+legal indices/addresses and unchanged remaining memory. Use source137 FPR
+word functions; retain all C guards. C99ExpressionEnvironment.transport
+already transfers pure index evaluations over agreement on readNames.
+Then derive the loop invariant and instantiate it, without full AST replay
+per index. Full KeyGen/mass task remains active; five do_sign/measured fixed.
+
+#140 owner steering — true parametric butterfly takes priority
+
+HEAD d6810991 records the source-certified compiled checker. Jobs001–005
+all accepted, no active Lean after005. Compiled4 pilot00310.288s/5253580KiB
+versus139's40.560s; new16-prefix00549.801s is accepted from v=8 to v=24.
+GeneratedFft140Middle16 SHA fddef28bd288a6486c8198cdd92fc1e2238a295504b87f9db1cc7d00e0b7380a.
+Its generator004 and candidate manifest are preserved. No140audit/seal yet.
+
+LATEST OWNER: prove the butterfly ONCE parametrically, then instantiate an
+invariant, instead of hundreds of concrete executions. The compiled checker
+has parametric soundness but still computes each concrete instance; this is
+not yet the requested compression. Do NOT launch a large prefix-job series.
+Next derive exact four-word/twiddle transformation and four memory writes
+for arbitrary legal indices, with original FPC scopes and C guards. Then
+compose the loop invariant. Actual chosen endpoint v=24 is available through
+GeneratedFft140Middle16.closed; original normalized139 endpoint remains v=8.
+Global three-point KeyGen/mass objective active; law134/old110zero unchanged,
+no IID/F04/newassumptions, no push/workers/schedules, five do_sign unchanged.
+
+#140 live003 — source-certified straight-line checker, performance pilot pending
+
+Whole owner program ACTIVE.139sealed, metadata commit959a3127; postseal
+36cc2d43f8a317d40dd1a69e01b8b1d48d4100985f187d0db0c7c0faef6eaa84.
+ENTRY140 c0774dd1bf5a344e758d2c72b73cf4b561ffbdfa347683ff5153a00a0413efa7
+verified all40997pins. C99StraightArray140/Procedure140 accepted001;
+C99CompiledSegments140/Capture140 accepted002, with every original guard,
+atomic source check, scope restoration and complete normalization retained.
+FftButterfly140Generator002 proposes a literal straight-line certificate.
+
+Next job003 checks GeneratedFftButterfly140 code equality, CompiledButterfly140
+source refinement and CompiledButterflyPilot140 against the already accepted
+original4-iteration endpoint. This is a discriminating performance check,
+not new iteration progress. Inspect receipts before another computation.
+If useful, continue from NormalizedFftMiddle139.after (v=8) with larger
+prefixes; otherwise strengthen to the four-word/four-write source rule.
+No140seal/audit yet; no source/reference/law change, no increased limits.
+Full KeyGen/positive masses remain open, five do_sign/measured unchanged.
+
 #139 sealed — exact middle entry and eight butterflies; whole program active
 
 Source commits af81dece, ce804821, b2a27cf8. Receipt
