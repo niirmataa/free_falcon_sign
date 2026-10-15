@@ -1,3 +1,201 @@
+#130 ACTIVE — actual resultant source gates after sealed complete f/g129
+
+129 is SEALED / PROVED_KERNEL_SCOPED / NOT_REVIEWED. Both actual1536-
+coefficient source calls, all8 SHAKE processes, rejection/bit reset/returns,
+exact normalized final state and every f/g byte/bound are closed. Source
+continuation is NormalizedSamples129.after; first/second are actual source
+calls and middle_same/after_same preserve the entire reference state.
+SamplerImages129 joins these calls with exact pinned f/g vectors.
+
+129 final audit030:175/175 isolated audit processes,175 mathematical modules,
+2288 declarations,350 coherent modules,0/0.30jobs,12failed/mixed preserved.
+Audit collection375c064e521cd3b025758e9f91aee2586428394fb807e36fa8fb8804b2a83cc7.
+Receipt3615c5ace527b54dc0fe9f181576ba9cccccb9c6fcee4bcecb755c3527377904.
+Postseal34685pins:301c5a6ba4fc143d0accc4d22ac292dcb6165c055c7f7e2294f4ca7352012527.
+All129 mathematical/evidence/tool sources are now SEALED; do not edit.
+
+130 ENTRY_PINS verified34685pins:
+e2514e59bd00e1e2405f8122dc9e04a09613b654f0389cc7649281384ceaf8c3.
+.build/resultant130/SOURCE_C_PIN.json verifies current Extra/c/falcon-keygen.c
+SHA0a09b6ed2363308f54584dfd1e2d33ee1b4601a68c77712c50da920b5074a5cf
+against sealed113. Actual lines541..772: allocate uint32_t b[96], derive
+n=MKN(logn,1), memset384bytes, pack parity bits, selected switch fallthrough,
+return b[0]!=0. Need ACTUAL source execution, not a mathematical resultant
+property or native nonzero assumption. Build finite word expression/statement
+checking and preserve local allocation/disposal; then close both gates.
+
+No running job. Whole owner program ACTIVE / NOT COMPLETE. All later norm,
+public,solver,mandatory certificate and encoding steps remain open; no actual
+G(seed*)=success or Z>0/p_accept/p_K numerical instantiation yet. No IID/F04/
+measured premise. No push/worker/review/schedules; exactly five do_sign fixed.
+
+#129 live030 — mathematical f/g/image proofs COMPLETE; isolated final audit running
+
+Both full source samplers, all8 actual SHAKE processes, exact normalized final
+state and all3072 coefficient images/bounds are kernel-closed. Source exports:
+SamplerFComplete129.source; SamplerGComplete129.source; SelectedSamples129;
+NormalizedSamples129.first/second and middle_same/after_same; SamplerImages129.
+Use NormalizedSamples129.after for130's actual source gates. Source images023
+passed33.744s. Latest math commit908d8cd5; complete samplersbc09b521.
+
+CURRENT keygen_sampler129_030 (session26574):175 audit modules in separate
+Lean processes, sequentially. Parts000..039 already pass0/0.175 mathematical
+modules,2288 named declarations, unchanged limits. Inspect receipts before
+another computation. Final full audit is NOT complete until all175 pass.
+
+Audit recovery:024 full Meta audit hit200000-heartbeat type conversion;
+025 G19-only Meta audit repeated it.026 used a non-exported API name;
+027 public kernel API probe passed.028 combined175-command kernel audit
+aborted bad_alloc after5 complete parts, none promoted; isolated F07 probe029
+passed. tools/keygen_kernel_audit129.py retains full DAG/axiom checks and
+uses kernel checking of a fresh SAFE definition at original declared type,
+with original options and explicit skipKernelTC rejection. Result environment
+is discarded. Checked template KeygenKernel129AuditProbe2 SHA
+2af3cf64cc107cfe747f249a46a836edbf15b5ef7df73bf7476da35a2fa56daa.
+keygen_isolated_audit129.py emits one audit source/process per module; exact
+plan .build/sampler129/ISOLATED_AUDIT_PLAN.json. Earlier failed configs/plans
+preserved separately. No resource increase or weakened source obligation.
+
+After030 exits successfully: run tools/keygen_audit129_collect.py (requires
+all175 accepted0/0 receipts and exact ordered name union), update report's
+AUDIT IN_PROGRESS wording to actual results, source/tool commits, then
+keygen_sampler129_seal.py seal/postseal. Sealer adapted to AUDITS list and
+AUDIT_129.json collection, NOT RUN yet. Check it before use. Draft report,
+AUDIT_METHOD, CHAIN_CHECK, failure map and130 source-seam notes are saved.
+
+129 remains unsealed/NOT_REVIEWED. Full KeyGen acceptance/solver/certificate/
+encoding, G(seed*)=success, Z>0 and numeric p_accept/p_K instantiations remain
+OPEN. Whole owner program ACTIVE; no push/workers/review/schedules, exactly
+five do_sign items and measured paper unchanged. Continue130 after postseal.
+
+#129 — BOTH complete source samplers closed; final images023 checking
+
+022 accepted all4 g process/event closures; SamplerGPrefix129 passed1.919s,
+SamplerGComplete129.source1.971s, SelectedSamples129.first/second1.869s,
+and NormalizedSamples129 full reference-state equalities6.880s. BOTH f/g
+source calls are now unconditional on fixed127 input and the SAME stream.
+All8 SHAKE processes, all rejection iterations, actual g bit reset, final
+guards and caller returns are included. NormalizedSamples129.after is the
+compact exact state for the next source gates, with explicit first/second
+source calls and middle_same/after_same equalities. No shadow input premise.
+
+022 failed only at the additional SamplerImages129 checks: Decidable was
+not synthesized for opaque Represents/Bound definitions. No byte mismatch.
+Cause recorded;023 now checks the same finite goals after explicit unfold
+of Represents/Stored/Bound. Inspect job before new Lean/Sage. After success:
+generate full129 audit/module list, run one audit job, report/commit/seal/
+postseal; then proceed to actual resultant/norm/public/solver/certificate/
+encoding source gates. Whole source-success and mass results STILL OPEN.
+
+#129 live022 — all f/g fragment computations passed; closing full g source
+
+021 finished8/8,0/0 after the explicit pointer-transfer repair: G20 passed
+45.363s, G21 candidate/site/normalized/round00 passed, G22..24 passed45–47s.
+All1536 f/g candidate computations and every actual process site/round00 are
+checked. Full f source is unconditional (017); full g is still OPEN.
+
+CURRENT keygen_sampler129_022 sequential57-module job: remaining11 rounds
+for each G02/G08/G15/G21, each ProcessSource/EventValid; then GPrefix,
+GComplete, SelectedSamples, NormalizedSamples, SamplerImages. Inspect receipts
+before any new job. NormalizedSamples is a NEW draft exact reference-state
+normalization using full prefix frames and source heap preservation; it
+rebases final memory on the original sampler entry, not a shadow heap.
+SamplerImages uses pinned Sage016 integer trees and that normalized state.
+
+Latest local commit f1b425ba contains the accepted pointer-transfer helpers
+and revised generator. Failure019 is recorded; no limits raised, earlier G
+files and every literal block preserved.129 unsealed; final audit/report/
+seal required only after all source/image modules pass. Existing sealer129
+is prepared, not run; it needs AUDIT_MODULES.json, FINAL_AUDIT.json and report.
+Full KeyGen gates/solver/certificate/encoding and success-mass instantiations
+remain later. Whole task ACTIVE; no push/worker/review/schedules; five do_sign fixed.
+
+#129 — COMPLETE f;019 checks remaining g fragments and event pilots
+
+Unconditional SamplerFComplete129.source passed017, all1536 original f
+iterations and4 SHAKE calls; committed105a0b7d. Source G entry/bit reset
+passed015.018 completed5/5,0/0: G01 closed64-coefficient source prefix,
+G02 candidate64 and actual event site, normalized context+RC, round00 pilot
+(35.654s). Full source g currently closes only first64; its4 events still
+need remaining source rounds and event identities.
+
+CURRENT keygen_sampler129_019 (one sequential job): G03..G24, event sites
+G08/G15/G21, normalized input/RC and their round00 pilots. Inspect receipts
+before any new proof/computation. Then run remaining11 rounds each for
+G02/G08/G15/G21, their ProcessSource/EventValid, SamplerGPrefix129,
+SamplerGComplete129, SelectedSamples129 and SamplerImages129. All source
+files/candidates are prepared. Word fixture from016 accepted017, exact pin
+215d1425e47725bcc60829a68bf63648393c833a08ac59a71bf5224434b1ac19.
+
+Continuous owner task ACTIVE.129 unsealed; pending coherent full audit,
+small source commits and postseal after complete f/g. No full source-success
+witness or numerical p_accept/Z/p_K instantiation yet. Measured paper and
+five do_sign unchanged. No push/new worker/review/schedules.
+
+#129 — COMPLETE actual f source call; g verification018 running
+
+017 completed29/29,0/0. All F13/F20 process rounds and full event identities
+closed. SamplerFPrefix129.through24 passed2.019s; SamplerFComplete129.source
+passed1.870s: unconditional ORIGINAL f Call for all1536 coefficients on full127
+input, including same-stream refills, rejection, final guard and caller return.
+No g source completion, accepted attempt, whole packet or Z>0 claim yet.
+
+Current keygen_sampler129_018 (session from current tool): G01/G02, actual
+ProcessSite129G02, normalized input+RC and round00 pilot. Then all remaining
+g fragments and sitesG08/G15/G21, with all12 original double-round proofs for
+each of4 g events. Existing source drafts GPrefix/GComplete/SelectedSamples/
+SamplerImages are ready but UNCOMPILED until dependencies close. Word fixture
+GeneratedSamplerWords129 already accepted017; its Sage016 source/pin is in
+previous checkpoint. Same fixed full127 input; no IID or extra seed draw.
+
+#129 live017 — remaining f process proofs; all f computations and g entry passed
+
+015 finished25/25,0/0: all F08..F24, F13/F20 sites+normalized context/RC+round00,
+F-return conditional interface and actual G-start with bit reset/context.
+016 Sage word fixture passed2.172s; GeneratedSamplerWords129 copied and
+ignored,122384bytes, SHA215d1425e47725bcc60829a68bf63648393c833a08ac59a71bf5224434b1ac19.
+017 current sequential Lean job (session94224): word fixture passed4.223s;
+F13 rounds01..10 passed17–19s each. Then round11, ProcessSource/EventValidF13,
+F20 rounds01..11 and ProcessSource/EventValidF20, SamplerFPrefix129 and
+SamplerFComplete129. Inspect receipts before launching another job.
+
+Source latest local commits ba00daf5 (F07 closed),e844d50d (accepted remaining
+f sites/conditional return/actual g entry and word recipe). Full f source NOT
+closed until017 last module passes. Full g OPEN. Remaining G pipeline:24
+fragments from014, sitesG02/G08/G15/G21, normalized sites+all12 rounds each
+from010 (G014 byte-identical), ProcessSource/EventValid, GPrefix/GComplete,
+SelectedSamples129 and final SamplerImages129. All these are prepared except
+execution/audit/seal; no changed limits or second process.
+
+129 failures004/005/006/007/008/013 are preserved with causes. Sage012 finite
+control matched all3072 f/g words; no source/probability premise. Old128 sources
+sealed;129 still active/unsealed. Whole three-point task ACTIVE, no Z>0 or
+p_accept/p_K numeric instantiation yet; measured and five do_sign unchanged.
+
+#129 live015 — source through448 closed; rest of f and g entry checking
+
+014 finished successfully: all12 rounds of the second actual process event
+are source-proved. ProcessSource129F07 passed21.565s; EventValid129F07.closed
+passed13.094s, closing the F07 normalized64-coefficient prefix. Together with
+closed earlier chunks this gives the actual first448 f coefficients. Remaining
+f eventsF13/F20 and all g events remain OPEN. No whole-call witness or bound.
+
+Current job keygen_sampler129_015 sequentially checks F08..F24, sites F13/F20,
+their normalized input images and first double rounds, then SelectedFReturn129
+and SelectedGStart129. Inspect receipts before more Lean/Sage. Conditional
+F-return interface is not yet a closed f invocation: complete SamplerFPrefix129
+and SamplerFComplete129 only after both remaining event proofs. G start resets
+rb/rbits by actual prologue while retaining the same full F heap.
+
+Current generated F08..24/G01..24 from014 use KeygenLazySampler129, source
+identity proved. F02..07 unchanged. Normalized event site inputs+RC and rounds
+from010 (G014 byte-identical). Sage012 control matches all3072 native f/g words;
+not a probability/source premise.129 not sealed. Source commits7204ed33,
+ae04a1e0,ac380163; prior128 fully sealed8c058c06. All failed jobs retained.
+Next after015: finish11 rounds each F13/F20 then their ProcessSource/EventValid;
+compose actual full f. Check all g chunks/sites/events and complete both calls.
+Whole three-point owner program ACTIVE; measured/five do_sign unchanged.
+
 # Active129 — first64 sealed; continue full f/g
 
 2026-10-15. Whole three-point program ACTIVE / NOT COMPLETE. First64Source128.source

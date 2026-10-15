@@ -693,3 +693,35 @@ remain open; continue autonomously. No IID or measured premise.
 First64Source128.source closed. Receipt9a774a5c09f4c614261bd4a6823800e26ed66a91366fd9ae7c1fd89a899c7eb6,
 post9eb4c0e090c3fe5f608a7996dea0d71c65cb8a0a284f8aa8e8e28ca1c510aabb.
 Continue complete f/g from GeneratedSampler128F01.after in129. Whole task active.
+
+##129 source through448 f coefficients
+
+EventValid129F07.closed passed01413.094s after all24 original SHAKE rounds.
+Current015 checks remaining f fragments and actual g entry; other heavy
+events remain explicit obligations. Full f/g, gates/solver/packets and all
+three owner-level mass results are still open. Continue without new workers.
+
+##129 complete actual f source invocation
+
+SamplerFComplete129.source passed017,1.870s,0/0. All1536 original f iterations,
+rejection and all4 source SHAKE calls are closed; actual final guard/return
+included. Source G entry/bit reset already checked015;018 begins G fragments.
+Whole three-point task remains ACTIVE until full G, gates/solver/certificate/
+packets and quantitative consumers are handled.
+
+##129 both complete source sampler calls closed
+
+SamplerFComplete129.source017 and SamplerGComplete129.source022 are closed.
+SelectedSamples129 binds both actual fk calls; NormalizedSamples129 proves
+full reference-state equality and exports the exact compact continuation.
+All8 process events are source-proved.023 checks all physical f/g images after
+explicitly unfolding finite predicates. Full gates/solver/certificate/encoding
+and the actual whole-call success witness remain OPEN. Continue after129seal.
+
+##129 sealed;130 actual resultant gates active
+
+Both full f/g source calls and exact final images closed. Receipt
+3615c5ace527b54dc0fe9f181576ba9cccccb9c6fcee4bcecb755c3527377904;
+postseal34685pins301c5a6ba4fc143d0accc4d22ac292dcb6165c055c7f7e2294f4ca7352012527.
+Continue from NormalizedSamples129.after into actual mod2_res_ternary f/g calls.
+Whole source-success and all owner quantitative goals remain OPEN.
