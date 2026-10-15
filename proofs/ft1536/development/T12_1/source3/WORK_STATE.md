@@ -1,3 +1,120 @@
+#147 sealed — complete original tripling body, loop still open
+
+Own source commits4c2b987b,fb766036,022ced85,1bc77f6c. Receipt
+2e49342bb236c4f556193937cb4fc48f2f669b3e0de420701404e68f16dae1f5;
+postseal8e42d926730a54abc641de1610ed8c2950890a91bbbfdddf7ff908cebf3ae1fd,
+44573 pins.19 mathematical modules +30 isolated audit processes,
+222 declarations,0/0,standard3axioms.27jobs,16failed/mixed retained with
+causes. Audit collection03a62724fa8fa9185e42c6f69c5dfc428bd41f745988b96e7290b73c6ad7c68e.
+Sage014:40 raw-word ORIGINAL C body controls with actual cubic words/
+constants, six outputs and control/local/buffer frames, auxiliary only.
+Symbolic source generator replay byte-identical, no Python word arithmetic.
+
+FftTripleBody147.source_and_image proves the ENTIRE ORIGINAL generic body:
+20 declarations in four statements,eight derived loads,ten local macros,
+three pair-store macros and full scope restoration. Exact symbolic vector
+recurrence and full caller/metadata/outside-buffer byte frame are retained.
+Input prefix FftTripleInputs147.source; local arithmetic
+FftTripleArithmetic147.source; joined prefix FftTripleLocal147.source;
+ordered stores FftTripleWrites147.source_and_image. All operand cells and
+write/read premises are derived from ordinary context/buffer/table facts.
+
+Audit issue RESOLVED without changing checks or limits: old module-wide
+run_cmd exhausted its cumulative200000-heartbeat budget, not an individually
+uncheckable real_cell. Diagnostic022 isolated the comparison phase; single
+025 passed in2.871s. V2 splits the cubic module per declaration and verifies
+exact ordered coverage. Full027 passed all30 processes. Unnecessary proof
+identity/irreducibility experiments were archived with hashes and original
+source proofs restored. Old plans, partial audits and all failures remain.
+No keep_type helper or irreducibility experiment remains in final sources.
+
+ACTUAL endpoint remains SelectedFftMiddle144.after (full1/logn10,n1536,
+hn768,t3/m512); no actual tripling iteration or complete first FFT yet.
+Next148: source full branch/v declaration/u0-v1024 initialization and256-step
+induction with u=3*k,v=2*(512+k), then final false guard and v scope, then
+FftMiddleContinuation144.body and actual call/receive. Read
+KEYGEN_FFT_INPUTS_147_NEXT_ROUTE.md. Do not replay256 numerical bodies.
+
+Shared main advanced independently: S05 commitsf246feae,e6c5678f,b0a1784a
+and B4 integration-note commits60835e6a,9a37e29f. Scopes inspected; foreign
+files/index untouched. The reconciled B4 note confirms CompPrg/134 adapters
+already exist and this witness lane supplies positive mass; FFT results
+are not invalidated. Separate whole-Sign chronology issues do not change
+this task's scope or the owner's exact five do_sign items. No independent
+kernel acceptance is claimed for those external reviews or this self-audit.
+
+Whole success-mass program ACTIVE under corrected134. Full emitted-packet
+witness, concrete positive Z/p_accept/coding/p_K remain OPEN; frozen110zero,
+measured and five do_sign unchanged. No push/workers/schedules/IID/F04/new
+axioms. All147 sealed evidence immutable; no active job after postseal.
+
+#147 live024 — whole-body source proof passed; exact audit-phase repair testing
+
+Source023 coherently passed all dependent modules with the keep_type(P,h):P
+identity. Focused audit024 now tests unchanged part007. Diagnostic022 pinned
+failure to Meta.isDefEq at real_cell, before kernel/type rendering. Earlier
+proof packaging and lookup-reduction changes alone did not pass audits.
+The identity is a proved logical identity with the full underlying proof;
+no axiom, audit check, resource limit or warning policy changed.
+
+If024 passes, generate a new complete audit plan including keep_type (223
+mathematical declarations expected) while preserving the old plan, then
+run full025. FINAL_AUDIT.json points to planned ISOLATED_AUDIT_PLAN_V2.json,
+which must be generated before collection. No seal or finished147 claim yet.
+The actual caller endpoint remains144; generic full tripling body is proved.
+Failure histories002/003/004/005/006/008/009/010/011/012/015/017/019/021/022
+are retained. Full success-mass task ACTIVE; no push/workers/schedules.
+
+#147 live020 — full body proved, final audit resource repair in progress
+
+FftTripleBody147.source_and_image passed013: complete original body with
+all declarations/loads/macros/stores, exact vector and full scope/frame.
+Sage014 whole-body40-case control passed0/0. Source commits4c2b987b,fb766036,
+022ced85,1bc77f6c. Shared-main S05 commitsf246feae,e6c5678f,b0a1784a were
+inspected and left untouched; no foreign staging or parallel Lean observed.
+
+Final audit015/017 and focused019 stopped at FftTripleCubic147.real_cell on
+unchanged200000-heartbeat Meta.isDefEq. No seal yet. Abstract-cell proof and
+an irreducible elaborator annotation did not suffice; pair remains fully
+defined/source-bound and audited, never an axiom. Current020 tests the same
+after state expressed via two-cell update and definitional final-cell proofs,
+with dependent module rebuild. If it passes, targeted audit021 then full022
+are planned. FINAL_AUDIT.json currently022; do not collect before success.
+All failed jobs and partial audits retained, no limit/template changes.
+Actual execution endpoint stays144; full goal ACTIVE, no push/workers/schedules.
+
+#147 live012 — input prefix and local arithmetic proved; whole-body composition checking
+
+Accepted source input prefix:20 declarations, six buffer loads and two
+pinned cubic loads. FftTripleInputs147.source exposes all incoming cells,
+declarations and caller/heap metadata. Source commits4c2b987b,fb766036.
+Shared main also gained unrelated S05 commitf246feae (seven S05_QROM files);
+scope inspected, foreign files/index preserved, only this task's Lean was
+active when checked. No push.
+
+FftTripleArithmetic147 passed011 in7.182s: all ten original local macros
+(6MUL,1SQR,3ADD) in sequence, exact symbolic words and full local frame.
+The earlier metadata timeout was a whole-state rfl, not the chain;008/009/010
+retain diagnostics and generator correction history. Heap/frame lemmas fixed
+it without higher limits. Generator only emits symbolic proof syntax.
+
+FftTripleLocal147 failed011 with memory exhaustion while combining input
+and arithmetic. Current012 tests an abstract-word Entry factory and explicit
+state/data arguments, then final cells, three store pairs and full scoped
+body. No full body or actual tripling iteration claimed yet. All unsealed147
+changes remain recoverable; failures JSON current. Full goal ACTIVE.
+
+#147 in progress — original tripling input prefix
+
+Previous turn: verified progress, sealed146 / HEAD2234c715.
+ENTRY147 8bf7197ea220a36c909cfc34f51ed1606ea4541f4551f6b7c941d74f768bf1ad
+verified43500 inherited pins. Accepted001: generic declaration facts,
+original20 declarations and cubic pair reads. Accepted002: six load shapes/
+addresses. Load-state proof failed because unspaced ≤i was parsed as initial-
+segment notation; corrected comparison spacing and explicit Fin.val equality
+check next. Failure/recovery diagnostics retained; no source placeholder or
+limit change. No147 commits yet; actual endpoint remains144. Full goal ACTIVE.
+
 #146 sealed — source ADD variants with derived buffer safety
 
 Source commits0d7a3929,df407193. Receipt

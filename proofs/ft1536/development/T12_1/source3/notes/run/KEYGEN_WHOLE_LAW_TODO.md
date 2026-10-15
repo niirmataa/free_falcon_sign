@@ -1,3 +1,16 @@
+# Current continuation — success-mass task ACTIVE after147
+
+The entire original generic degree-tripling body is proved: source loads,
+13 macros, six stores, exact vector and full scope/frame. Full audit222
+names passed with unchanged checks/limits and a per-declaration partition
+for the expensive cubic module. See KEYGEN_FFT_INPUTS_147_REPORT.md and
+KEYGEN_FFT_INPUTS_147_PINS.md. Actual selected endpoint remains144 until
+branch setup and256-iteration induction are instantiated. KeyGen witness
+and all concrete positive mass/acceptance/coding bounds remain open under
+corrected134. Existing CompPrg and law adapters must not be recreated;
+external B4 integration chronology work is separate. Detailed live program:
+KEYGEN_SUCCESS_BIG_TODO.md. Historical scope records below are preserved.
+
 # Current continuation — success-mass task ACTIVE after146
 
 Six source ADD sites are closed, including derived pointer/allocation facts
