@@ -1,0 +1,5 @@
+{
+  "keygen_fftadd146_002": "Local ADD passed. Pair-store second-value proof left cell_at state/value implicit through a heap-updated record, causing type inference failure and deep kernel reduction. Supply the original realState and fpct_im word explicitly. Also rewrite the outside-byte disjunction with unambiguous spaced syntax and pointer q. No address, word formula or recursion limit changes.",
+  "keygen_fftadd146_003": "Explicit cell_at arguments removed the inference and syntax errors, but second_source still hit fixed recursion limits during type conversion with the concrete .add word formula. Prove the two write steps for an abstract operation kind, then instantiate .add in the composed ADD theorem; unchanged writes, source code and limits.",
+  "keygen_fftadd146_004": "Generic pair-store proof passed after abstract-kind staging. The new index AST used an Int cast, but CLogic.Expr.literal stores a Nat; remove that cast. The resulting dependent source-shape errors came from the invalid literal expression, not changed C indices."
+}

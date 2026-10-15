@@ -1,3 +1,14 @@
+# Current continuation — success-mass task ACTIVE after146
+
+Six source ADD sites are closed, including derived pointer/allocation facts
+and exact full-buffer updates. Together with145, all thirteen tripling macro
+sites have source rules; incoming loads, full body and256-step loop remain
+open. Actual endpoint still SelectedFftMiddle144.after. See
+KEYGEN_FFT_ADD_146_REPORT.md / KEYGEN_FFT_ADD_146_PINS.md and the detailed
+KEYGEN_SUCCESS_BIG_TODO.md. Full KeyGen witness and all concrete positive
+mass/acceptance/coding bounds remain open under corrected134; historical
+frozen110 scope below is preserved. No new probability premise or schedule.
+
 # Current continuation — success-mass task ACTIVE after145
 
 Latest milestone: reusable source MUL/SQR with direct bindings for six MUL

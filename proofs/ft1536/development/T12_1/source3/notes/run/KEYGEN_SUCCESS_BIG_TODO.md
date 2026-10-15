@@ -1,3 +1,47 @@
+#146 sealed — source ADD variants with derived buffer safety
+
+Source commits0d7a3929,df407193. Receipt
+9e245cfb7d1432e2e710a6300ec05fc46eecd1e03a0d6b993abb09f8368daeb0;
+postseal7769e5bd4d4815ea76f051c68f450710b2f17ee7e882e0724dd0ccaaacd12461,
+43500 pins.11 mathematical +11 isolated audit modules,79 declarations,0/0,
+standard3axioms.9jobs,3failed/mixed002/003/004 retained with causes.
+Audit collection9444e6a773cac2382a7cf1a58a4ba0de462a240362e3f6fab37e7e66427501e0.
+Sage008:40 raw-word C ADD cases, local/input aliasing, distinct/coincident
+store addresses, caller-temp/buffer frame; finite256-position slot control,
+all auxiliary only. No new C/reference/law134 definitions or probability.
+
+FpcAddCompute146.source proves shared word arithmetic; FpcAddLocal146.source
+and FpcAddStore146.source prove local and source-ordered pair outputs with
+scope restoration. No disjointness premise on generic store addresses.
+FftTripleAddShape146/Calls146 binds all six actual ADD sites19..24. Together
+with145, all thirteen tripling macro sites now have source rules, but the
+full body has NOT yet been composed from its actual incoming state.
+
+C99SmallLiteral146.add_word/add/update proves mixed uint64/int32 additions
+for literals0..3, retaining modular output. FftTripleIndices146 derives six
+original pointer judgments from u+2<hn,2*hn<=n,n<2^64, typed u/hn, capacity
+and array binding. C99TwoWordBuffer146/FpcPairBuffer146 preserve the exact
+whole vector under two ordered writes and full caller/metadata/byte frame.
+FftTripleStore146.source_and_image combines each ORIGINAL store site with
+those derived pointers and allocation from Represents; no pointer judgment
+or allocation is left as an opaque source-premise argument.
+
+ACTUAL endpoint remains SelectedFftMiddle144.after: full1/logn10,n1536,hn768,
+t3/m512. No new tripling iteration executed. Next147: declare20 locals,
+six input loads, two cubic loads, constants and13 macros in original order,
+then generic six-write body and256-step loop. Read KEYGEN_FFT_ADD_146_NEXT_ROUTE.md.
+Triplingu0/v1024, u=3*k,v=1024+2*k, cubic pair512+k; endsu768/v1536.
+
+Trap fixed without higher limits: second write through heap-record update
+needs explicit cell_at state/name/word; prove abstract operation-kind write
+transport before .add specialization to avoid huge FPR definitional reduction.
+CLogic.Expr.literal carries Nat, not Int. Historical145 rejected generic
+expander remains pinned/unused. No assumed native numeric image. rt2/later
+KeyGen/full emitted witness and concrete positive Z/p_accept/coding/p_K
+remain OPEN. Whole task ACTIVE under corrected134; frozen110zero, measured
+and five do_sign unchanged. No push/workers/schedules/IID/F04/newaxioms.
+All146 evidence immutable; no active computation after postseal.
+
 #145 sealed — source MUL/SQR ingredients for tripling
 
 Source commits84d44b68,7542dddd. Receipt
