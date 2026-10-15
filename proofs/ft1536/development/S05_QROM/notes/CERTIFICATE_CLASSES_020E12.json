@@ -1,0 +1,70 @@
+{
+  "task": "S05/TODO020E/public-call020E12",
+  "status": "KERNEL_SCOPED_CONDITIONAL_M_NOT_REVIEWED",
+  "entries": [
+    {
+      "name": "Ideal finite tape, resident public key/tables/code, Word512 and finite bank transitions",
+      "class": "MODEL",
+      "status": "EXPLICIT",
+      "scope": "Concrete finite E5 FillMachine/IndexedParser + materialized ports + new stored E6 startup + E11 raw core/consumer + finite output fill"
+    },
+    {
+      "name": "Concrete public preparation and reset/startup",
+      "class": "PROOF_OBLIGATION",
+      "status": "DISCHARGED_IN_SELECTED_MODEL",
+      "exports": [
+        "PublicPreparation020E12.context_eq",
+        "PublicPreparation020E12.inputs_eq",
+        "PublicStartup020E12.correct"
+      ],
+      "scope": "Actual finite fill/parser loops and materialized ports; startup is a stored IR image consumed by the checked consumer; no caller-supplied private Core"
+    },
+    {
+      "name": "Full call and every tape",
+      "class": "PROOF_OBLIGATION",
+      "status": "DISCHARGED_SCOPED",
+      "exports": [
+        "PublicCall020E12.run_eq",
+        "PublicCall020E12.every_tape",
+        "PublicCall020E12.full_response",
+        "PublicCallFailures020E12.abort_retained"
+      ],
+      "scope": "Every resident Data and tape for reference equality; canonical prepared key/code for every-tape full response, always public initial"
+    },
+    {
+      "name": "Full law, AC and directional second moment",
+      "class": "PROOF_OBLIGATION",
+      "status": "DISCHARGED_UNDER_SAME_M",
+      "exports": [
+        "PublicCallLaw020E12.law_eq",
+        "PublicCallLaw020E12.full_law",
+        "PublicCallLaw020E12.all_h_ac",
+        "PublicCallLaw020E12.certificate",
+        "PublicCallLaw020E12.same_key_law"
+      ],
+      "scope": "AC for all h; second moment1+2^-47 under exact old MassCondition; identical old encoded P and identical covered mu, no conditioning on success"
+    },
+    {
+      "name": "Source proof of M and coverage of actual key law",
+      "class": "PROOF_OBLIGATION",
+      "status": "OPEN_UNCHANGED",
+      "scope": "M is a named mathematical input, not discharged or recategorized as a cryptographic assumption by E12"
+    },
+    {
+      "name": "Uniform fill/parser lowering, allocation/lifetime/code loading, all execution costs and peak",
+      "class": "PROOF_OBLIGATION",
+      "status": "OPEN_SEPARATE",
+      "scope": "Direct E5 preparation is executed in the selected model; no claim it is now compiled into the same stored-command backend, no practical/native bound"
+    },
+    {
+      "name": "Native KeyGen/Sign/concrete PRG binding and remaining quantum reduction",
+      "class": "PROOF_OBLIGATION",
+      "status": "OPEN_UNCHANGED"
+    },
+    {
+      "name": "A-QMT and Q-PRG primitive bounds",
+      "class": "CRYPTOGRAPHIC_ASSUMPTION",
+      "status": "UNCHANGED_NOT_INSTANTIATED"
+    }
+  ]
+}

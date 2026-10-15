@@ -3,6 +3,19 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
+**Kontynuacja020E12 — [pełne publiczne wywołanie i J/P](notes/PUBLIC_CALL_020E12_CHECKPOINT.md), KERNEL_SCOPED / CONDITIONAL_M / NOT_REVIEWED:**
+Konkretne pętle E5 przygotowania/parsera, materializacja portów, nowy stały
+startup w IR, raw core E11 i pełny odbiór tworzą jedno wywołanie. **EveryTape
+oraz pełne prawo odpowiedzi są zgodne ze starą maszyną przy publicznym initial.**
+AC dla wszystkich h; moment J/P≤1+2^-47 pod dokładnie tym samym(M), także dla
+tego samego pokrytego prawa kluczy. Zakodowane aborty pozostają w prawie.
+12 modułów,52 twierdzenia, audyt83 eksportów;39 prób zachowanych.
+**OPEN:** pełny czas/peak, jednolity backend fill/parser, źródłowe pokrycie(M),
+KeyGen/Sign/PRG i redukcja QROM. Bez niezależnego odbioru i push.
+[Kontrola autora](notes/PUBLIC_CALL_020E12_SELF_REVIEW.md),
+[klasy](notes/CERTIFICATE_CLASSES_020E12.json), [kolejka](notes/KERNEL_QUEUE_020E12.json).
+Status QROM WARUNKOWY; monitor ROM PAUSED. Niżej zachowano historyczny zakres etapów.
+
 **Kontynuacja020E11 — [konsument i driver surowej pamięci](notes/CONSUMER_DRIVER_020E11_CHECKPOINT.md), KERNEL_SCOPED / NOT_REVIEWED:**
 Sprawdzany dekoder i konsument wykonują rzeczywiste96 słów producenta, bez
 listy dostarczonych poleceń. **Driver przekazuje aktualną surową pamięć między
