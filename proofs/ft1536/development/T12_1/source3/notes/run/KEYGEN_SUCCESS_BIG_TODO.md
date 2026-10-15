@@ -1,3 +1,33 @@
+#134 sealed — corrected whole law defined; resume concrete seed9
+
+Owner three-point program ACTIVE / NOT COMPLETE. New work targets explicit
+KeygenByteGame134/KeygenProbability134 and decoded model134. Old110/111 and
+131zero theorem remain immutable. New law is normalized with original seed
+space/cap/errors; conditional source byte/certificate/fiber contract and model
+binding are re-proved. KeygenExecutionEmbedding134.old_some preserves every
+old defined result, not absence of execution or equality of whole laws.
+
+Source commits8440bbc5,ccb8b5f4,292d7b39. Receipt
+52e71b3ed2604150c0a6bdc189e033f0bb376f45af3ddaa6260e4d4fe8e88e4a;
+postseal261563ec139b14a9b332e1486313921fffba248871c6947ae3bb5f410238a59b,
+37543pins.55math+55isolatedaudit=110/110,227decl,0/0,standard3axioms.
+9jobs,4failed/mixed001/003/005/007 retained; all final sources accepted.
+Audit collection418179c4674e992594fe83a6adc89e8345f33638ff159c61ad3dd46557d0975f.
+No active job/Lean at this checkpoint. Recipe keygen_revision134_sources.py
+plus constant graph/plans in .build/revision134 reproduces source candidates;
+final compiled/audited hashes, not metadata alone, establish proof status.
+
+NO actual positive success witness/mass bound yet. Next135 resume selected
+actual caller NormalizedSamples129.after (samplers129 and resultants130
+unchanged). Complete actual boundCode assignment, then raw/GS/public/solver/
+mandatory certificate/encoding. Source m0 bound scale is1250/100, explicitly
+confirmed in native113 profile_flags, despite C defaults105/100; pinned
+preprocessor/proof and fixture agree. Do not use default compile flags.
+Use KeygenExecutionEmbedding134.of_source for complete source witness;
+instantiate KeygenSuccessMass134.success_lower_of_witness, then first mass134.
+Paper stays measured, no IID/F04/geometric renewal, five do_sign fixed.
+One job, no push/reviewer/subagent/relay/schedule.
+
 #133 sealed — explicit new norm relation; downstream versioning next
 
 Whole owner program ACTIVE / NOT COMPLETE. Source commit1d3e97ce.

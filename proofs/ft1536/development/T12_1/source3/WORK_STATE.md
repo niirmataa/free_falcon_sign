@@ -1,3 +1,62 @@
+#134 sealed — corrected whole law defined; resume concrete seed9
+
+Owner three-point program ACTIVE / NOT COMPLETE. New work targets explicit
+KeygenByteGame134/KeygenProbability134 and decoded model134. Old110/111 and
+131zero theorem remain immutable. New law is normalized with original seed
+space/cap/errors; conditional source byte/certificate/fiber contract and model
+binding are re-proved. KeygenExecutionEmbedding134.old_some preserves every
+old defined result, not absence of execution or equality of whole laws.
+
+Source commits8440bbc5,ccb8b5f4,292d7b39. Receipt
+52e71b3ed2604150c0a6bdc189e033f0bb376f45af3ddaa6260e4d4fe8e88e4a;
+postseal261563ec139b14a9b332e1486313921fffba248871c6947ae3bb5f410238a59b,
+37543pins.55math+55isolatedaudit=110/110,227decl,0/0,standard3axioms.
+9jobs,4failed/mixed001/003/005/007 retained; all final sources accepted.
+Audit collection418179c4674e992594fe83a6adc89e8345f33638ff159c61ad3dd46557d0975f.
+No active job/Lean at this checkpoint. Recipe keygen_revision134_sources.py
+plus constant graph/plans in .build/revision134 reproduces source candidates;
+final compiled/audited hashes, not metadata alone, establish proof status.
+
+NO actual positive success witness/mass bound yet. Next135 resume selected
+actual caller NormalizedSamples129.after (samplers129 and resultants130
+unchanged). Complete actual boundCode assignment, then raw/GS/public/solver/
+mandatory certificate/encoding. Source m0 bound scale is1250/100, explicitly
+confirmed in native113 profile_flags, despite C defaults105/100; pinned
+preprocessor/proof and fixture agree. Do not use default compile flags.
+Use KeygenExecutionEmbedding134.of_source for complete source witness;
+instantiate KeygenSuccessMass134.success_lower_of_witness, then first mass134.
+Paper stays measured, no IID/F04/geometric renewal, five do_sign fixed.
+One job, no push/reviewer/subagent/relay/schedule.
+
+#134 live006 — explicit downstream source/law revision in progress
+
+Whole owner three-point program ACTIVE, no full seed witness/positive mass
+bound. Parent133 sealed; ENTRY134f36b1433097540eb8116f353f896bdbe9e2afca006d8ea6d0b974aa4ab52aa44
+verified post67dbc1567adab964708f3ad847575caf07ca6bfcc517a9a8e05180e94d12a421.
+Kernel constant graph002 isolates407affected reachable constants owned by
+220source declarations/57modules. Seven existing replacements use133;
+54new modules/213selected declarations are reproducible UNSEALED candidates,
+plus a newly proved extended-Search local nonwrite helper. Unchanged types
+and declarations are reused, not wholesale-copied. Plans and source hashes
+in .build/revision134/{DEPENDENCY_PLAN,SOURCE_REVISION_PLAN}.json;
+initial and pre-open-fix snapshots retained. Tools keygen_revision134_plan.py
+and keygen_revision134_sources.py; graph exporter KeygenRevision134Inspect.
+
+First20 current modules passed003/004/005. First15 source commit8440bbc5.
+Failures:001 diagnostic IO spelling;003 old Search local-frame helper needed
+new-source proof;005 ambiguous opens between old/new types. Causes preserved.
+Generator now splits explicit opens and hides revised names in whole opens;
+16UNCOMPILED candidates changed headers; no accepted source hash changed.
+
+CURRENT job keygen_revision134_006, session34007:34sequential modules from
+KeygenLoopMaterial134 through KeygenModelBinding134. Inspect receipts before
+another computation. No final audit/seal yet. A compile success only checks
+the explicit new semantic spine; concrete progress/existence remains separate.
+Next add old-finite-execution/observation preservation and full DAG audit,
+seal corrected law, then resume exact seed9 at NormalizedSamples129.after.
+New law must not be identified with110; frozenzero131 remains true.
+No push/review/subagents/schedules; one job,0/0,measured/five do_sign fixed.
+
 #133 sealed — explicit new norm relation; downstream versioning next
 
 Whole owner program ACTIVE / NOT COMPLETE. Source commit1d3e97ce.
