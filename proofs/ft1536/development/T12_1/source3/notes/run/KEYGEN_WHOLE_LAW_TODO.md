@@ -1,3 +1,13 @@
+# Current continuation — success-mass task ACTIVE after150
+
+Both ACTUAL FFT calls are kernel-proved, including the second caller return
+and exact simultaneous rt1/rt2 images.9modules/118decl audited,0/0; postseal
+complete. See KEYGEN_FFT_SECOND_150_REPORT.md / KEYGEN_FFT_SECOND_150_PINS.md.
+Next actual state SelectedFftGComplete150.after; continue at first norm
+accumulation/gate through FftShape138.remaining. Numerical norm comparison,
+full KeyGen witness and concrete positive probability bounds remain open.
+Corrected134, measured wording and five do_sign obligations unchanged.
+
 # Current continuation — success-mass task ACTIVE after149
 
 Generic original first FFT pass is kernel-proved: one body lemma, exact

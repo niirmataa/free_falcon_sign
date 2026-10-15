@@ -1,3 +1,33 @@
+#150 sealed — both actual FFT calls complete
+
+Source commits745f47ac/1885df5e/394c0446. Nine mathematical modules,118
+declarations,33 sequential full kernel/DAG audit processes, accepted logs0/0.
+Nine jobs; mixed/failed003/005/006 retained with causes. Sage008 exact complete
+schedule/coverage/disjoint-span controls passed; auxiliary only. Receipt
+4873e6ff6ba4336100aba4becde56593ff42c013a66122f4b729368aadf690d0; postseal
+ca6399191ee5d69192fa4cdba3c071c87b87ef2a3e2818cbe9fa27ec8b3a6922,45713pins.
+Audit collection566867fd59c0825f05d05623e3f09630bd2348696e02e8ab11995df7d8c012fb.
+
+SelectedFftGComplete150.source proves the ACTUAL rt2 call from the returned
+rt1 caller, all source setup/body/void return/discard. It reuses first-loop149
+(768), middle-loop144 (8passes/3072 butterflies), tripling-loop148 (256).
+SelectedFftGFrame150.both_images preserves both exact symbolic word images
+and the outside-rt2 byte frame, including all of rt1. No numerical FFT
+snapshot assumption. Entry constants/tables/dimensions are source-derived.
+
+NEW actual caller endpoint: SelectedFftGComplete150.after. continue_norm now
+discharges BOTH calls and starts at FftShape138.remaining, source7973 onward:
+first norm initialization/1536 ordered sums/double/fpr_lt gate, then GS.
+Concrete numerical norm comparison is NOT yet proved. See
+KEYGEN_FFT_SECOND_150_NEXT_ROUTE.md; preserve exact symbolic-to-numeric
+obligations and reuse per-operation lemmas. Fast source div remains later.
+
+All150 evidence immutable; no active job after postseal. Full emitted-packet
+witness, solver/certificate/codecs and concrete positive Z/p_accept/coding/
+p_K remain OPEN under corrected134. Whole task ACTIVE, NOT_COMPLETE.
+Frozen110zero history, paper measured wording and exactly five do_sign
+items unchanged. No push, independence assumption, new axiom or worker.
+
 #149 sealed — generic original first FFT pass
 
 Source commits5e6c5bbb/0810d740. Eight mathematical modules,53 declarations,
