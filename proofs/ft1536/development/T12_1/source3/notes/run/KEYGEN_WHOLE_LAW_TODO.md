@@ -1,3 +1,13 @@
+# Current continuation — success-mass task ACTIVE after148
+
+The actual first rt1 FFT CALL is complete, including all tripling iterations
+and caller return. New caller state SelectedFftFComplete148.after; actual
+second-call Bind and represented input are ready at SelectedFftGBinding148.bound.
+The second FFT and later KeyGen remain open. See KEYGEN_FFT_LOOP_148_REPORT.md
+and KEYGEN_FFT_LOOP_148_PINS.md; detailed live program KEYGEN_SUCCESS_BIG_TODO.md.
+No concrete positive mass/acceptance/coding bound yet; corrected134 remains
+the active law, frozen110 history/measured wording/five do_sign preserved.
+
 # Current continuation — success-mass task ACTIVE after147
 
 The entire original generic degree-tripling body is proved: source loads,

@@ -1,3 +1,56 @@
+#148 sealed — actual first FFT call complete, rt2 entry ready
+
+Own source commits e769500b,e35a9c7a,e9e09b0d. Receipt
+2e4080ffa56f911080d01e7f53afc3210265b825e2a53054a2cf508cf4d89a1f;
+postseal ed68d651d9165439af56e074f0af7da213b472942752fca5ec0b4aaaa07c4e2e,
+45019 pins.14 mathematical modules +29 isolated audit processes,
+92 declarations,0/0,standard3axioms.12jobs,4failed/mixed002/005/007/009
+retained with causes. Audit collection
+6289c191c7a6d87241af3db368ebaad1a60abaec376f6550c40f5a4495bfb1ad.
+Sage011 exact schedule/frame-span control passed, auxiliary only.
+
+FftTriplingInduction148.source proves the ORIGINAL tripling loop, all256
+iterations, actual +3/+2 updates and final false guard. Actual full1/logn10,
+constants,u0/v1024 setup and v scope are derived. SelectedTripling148 closes
+the complete first FFT function body. SelectedFftFComplete148.source closes
+the ACTUAL rt1 call from reference NormalizedSmall136.after, including
+Bind,void return and caller receive; extended lifts to corrected133.
+
+NEW actual caller endpoint: SelectedFftFComplete148.after. Caller locals/
+arrays/globals/tables exactly retained; heap represents exact symbolic
+SelectedTripling148.finalValues in rt1. continue_norm starts at original rt2.
+SelectedFftFFrame148 gives metadata/readonly pins and outside-rt1 bytes.
+SelectedFftGInput148 derives rt2 values from the ACTUAL accepted141 snapshot
+and this frame. Do NOT claim a new equality to ConvertedWords136.gWord;
+this is the exact captured source memory, sufficient for the actual call.
+rt2 base block31,index1536,count35840,width8, span[12288,24576).
+
+NEW second callee entry: SelectedFftGBinding148.bound, with actual source
+Bind from the returned caller, logn10/full1, source globals/tables and
+represented rt2 input. The SECOND FFT BODY remains open. Next149: generic
+first-pass body/invariant over arbitrary buffer words,768 iterations, then
+reuse full middle/tripling inductions and call return. Read
+KEYGEN_FFT_LOOP_148_NEXT_ROUTE.md; avoid the old per-chunk numeric replay.
+
+Key proof engineering: use a fresh existential body endpoint before counter
+transport; explicit constructor states/arguments; small metadata/frame lemmas.
+Audit uses at most4 declarations per process with exact ordered coverage,
+unchanged checks/limits. No native numeric-image assumption or higher limits.
+Whole task ACTIVE under corrected134; full KeyGen witness and concrete
+positive Z/p_accept/coding/p_K still OPEN. Frozen110zero, measured and exactly
+five do_sign unchanged. No push/workers/schedules/IID/F04/newaxioms.
+All148 sealed evidence immutable; no active computation after postseal.
+
+#148 in progress — tripling loop invariant and control
+
+Previous turn: verified progress, sealed147 / HEAD32e8b415.
+ENTRY148 6fa783f5dcde17ada9f1719ec4e48694d0c515948ee764af3b8d2cef21a03b6d
+verified44573 inherited pins. Accepted001: fixed buffer/table/constants
+invariant and u/v frame.002 hit kernel memory in step transport of a concrete
+symbolic body heap; expose the existing body result as a fresh existential
+State before counter updates. Same semantics/limits; failure retained.
+No148 commits yet. Actual endpoint144, whole success-mass goal ACTIVE.
+
 #147 sealed — complete original tripling body, loop still open
 
 Own source commits4c2b987b,fb766036,022ced85,1bc77f6c. Receipt
