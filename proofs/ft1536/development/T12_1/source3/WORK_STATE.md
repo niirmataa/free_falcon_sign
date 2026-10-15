@@ -1,3 +1,26 @@
+#133 sealed — explicit new norm relation; downstream versioning next
+
+Whole owner program ACTIVE / NOT COMPLETE. Source commit1d3e97ce.
+KeygenSearchExtended133 uses132 source scalar closure on original syntax.
+Embedding, determinism, frame, pointer slots and heap stability are proved.
+KeygenAttemptNorm133 changes ONLY bound initialization; old raw/GS relations
+are reused. previous/unique/norm_spec and frame/bytes/material/stable/slots
+closed. KeygenBoundSqrt133 identifies the exact parsed source denominator
+and proves its value; full bound assignment and raw/GS execution remain open.
+
+Receipt1b9ba17937a2581f6cb69af627ca80887cecb9995f3fed360ea8ed57a836ceed;
+postseal67dbc1567adab964708f3ad847575caf07ca6bfcc517a9a8e05180e94d12a421,
+36620 pins.4jobs,0failures;7math+7audit=14/14,32decl,0/0,standard3axioms.
+No active Lean. An exploratory textual dependency search was stopped for
+inefficiency (not a proof job); a faster lexical pass suggests128candidate
+files, an overestimate because it follows entire namespaces. Next134 must
+use declaration-level dependency evidence to preserve unchanged domain/data
+types and version only affected caller/attempt/loop/whole-law statements.
+
+Old110/111 immutable and131zero theorem retained. No whole corrected law,
+positiveZ/p_accept/p_K or fullseedwitness claimed. Same three-point task;
+no IID/F04; no push/review/subagent/schedules; five do_sign and measured fixed.
+
 #132 sealed — missing sqrt callee source-closed; new norm spine next
 
 Whole owner program ACTIVE / NOT COMPLETE. Source commit1dbd49de.
