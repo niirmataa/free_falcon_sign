@@ -1,3 +1,38 @@
+#137 sealed — universal source-exact FPR words ready for actual FFT
+
+Whole owner program ACTIVE / NOT COMPLETE, law134 unchanged. Actual next
+caller NormalizedSmall136.after; remaining syntax KeygenSmallShape136.remaining.
+FprMulFast137.execution/model/source and FprAddFast137.execution/model/source
+prove exact original C results for ALL64-bit operand pairs via explicit word
+functions. Every signed/packing guard is proved, no host IEEE oracle or real
+error premise. FprHeadersFast137 closes neg/sub/sqr/half/double; source-correct
+parameter/global handling is FprHeaderEval137, cast lemmas FprHeaderCells137.
+FprFastCalls137.sound is the fixed source-sound computable dispatcher, with
+ternary of(-1/0/1) fallback. FftScalarCoverage137.forward_source_covered proves
+actual forward FFT scalar-name/arity coverage only, not execution or safety.
+
+Source commitsfab1f6fd,778e8c81,4c7591a1. Receipt
+47e9f88326c2c19dec037d7894b52766f5f6edf7a475d752510cd10bd90b0d4e;
+postseald844211ad416d14ac0d646128cc23869f21bdd56b7b480f3666f95f72b6bfc57,
+39767pins.15math+15audit=30/30,89decl,0/0,standard3axioms.18jobs,
+7failed/mixed004/008/010/011/012/013/014 retained. Sage017 exactZZ and pinned
+nativeC controls208pairs×7ops pass0/0; auxiliary only. Audit collection
+05f25942821095305f03a6bdcd62c27c75f47d79123e49ce740ef79cdc155023.
+All137 sources/evidence now immutable; no active job after postseal.
+
+Next138: actual falcon_FFT3(rt1,logn,1), then rt2. Read active pinned
+Extra/c/falcon-fft.c758–851. Its FPC macros lower to compound ARRAY .scope/.seq
+statements (FpcSourceExpansion.cached), so C99ArraySteps136 alone is insufficient.
+Add a source-sound compound array interpreter and matching procedure checker;
+reuse136 expressions/atomicsteps with FprFastCalls137.sound. FPC macros use
+array-level call1/call2, not scalar interpreter calls; source syntax confirms.
+Preserve macro locals, original loops/guards and exact source-frame normalization.
+Bind the parsed FFT body to literal AST, split source loop prefixes if needed,
+keep readonly table bytes/root views. No source/reference/law revision needed
+for this checker extension. Complete rawFFT/norm/GS, public/solver/cert/codecs
+and full seed witness/mass goals remain OPEN. No IID/F04/new assumptions,
+no push/review/subagents/schedules; five do_sign and measured paper unchanged.
+
 #136 sealed — complete source conversions and exact3072 FPR words
 
 Whole owner three-point program ACTIVE / NOT COMPLETE, corrected law134.

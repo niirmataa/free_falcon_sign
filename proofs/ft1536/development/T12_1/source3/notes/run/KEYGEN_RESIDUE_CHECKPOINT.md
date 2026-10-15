@@ -1,3 +1,67 @@
+#137 sealed — universal source-exact FPR words ready for actual FFT
+
+Whole owner program ACTIVE / NOT COMPLETE, law134 unchanged. Actual next
+caller NormalizedSmall136.after; remaining syntax KeygenSmallShape136.remaining.
+FprMulFast137.execution/model/source and FprAddFast137.execution/model/source
+prove exact original C results for ALL64-bit operand pairs via explicit word
+functions. Every signed/packing guard is proved, no host IEEE oracle or real
+error premise. FprHeadersFast137 closes neg/sub/sqr/half/double; source-correct
+parameter/global handling is FprHeaderEval137, cast lemmas FprHeaderCells137.
+FprFastCalls137.sound is the fixed source-sound computable dispatcher, with
+ternary of(-1/0/1) fallback. FftScalarCoverage137.forward_source_covered proves
+actual forward FFT scalar-name/arity coverage only, not execution or safety.
+
+Source commitsfab1f6fd,778e8c81,4c7591a1. Receipt
+47e9f88326c2c19dec037d7894b52766f5f6edf7a475d752510cd10bd90b0d4e;
+postseald844211ad416d14ac0d646128cc23869f21bdd56b7b480f3666f95f72b6bfc57,
+39767pins.15math+15audit=30/30,89decl,0/0,standard3axioms.18jobs,
+7failed/mixed004/008/010/011/012/013/014 retained. Sage017 exactZZ and pinned
+nativeC controls208pairs×7ops pass0/0; auxiliary only. Audit collection
+05f25942821095305f03a6bdcd62c27c75f47d79123e49ce740ef79cdc155023.
+All137 sources/evidence now immutable; no active job after postseal.
+
+Next138: actual falcon_FFT3(rt1,logn,1), then rt2. Read active pinned
+Extra/c/falcon-fft.c758–851. Its FPC macros lower to compound ARRAY .scope/.seq
+statements (FpcSourceExpansion.cached), so C99ArraySteps136 alone is insufficient.
+Add a source-sound compound array interpreter and matching procedure checker;
+reuse136 expressions/atomicsteps with FprFastCalls137.sound. FPC macros use
+array-level call1/call2, not scalar interpreter calls; source syntax confirms.
+Preserve macro locals, original loops/guards and exact source-frame normalization.
+Bind the parsed FFT body to literal AST, split source loop prefixes if needed,
+keep readonly table bytes/root views. No source/reference/law revision needed
+for this checker extension. Complete rawFFT/norm/GS, public/solver/cert/codecs
+and full seed witness/mass goals remain OPEN. No IID/F04/new assumptions,
+no push/review/subagents/schedules; five do_sign and measured paper unchanged.
+
+#137 live006 — source-exact fast multiplication closed; addition underway
+
+Whole owner program ACTIVE / NOT COMPLETE; corrected134 unchanged.
+136 SEALED, actual next caller NormalizedSmall136.after, syntax
+KeygenSmallShape136.remaining. ENTRY137b624deb028ff3a8dba0885e2469cabbdbda4e641cee94efe4848561007ab35d6
+verified136postbbd5976e0c21fbfc9b4cab81e25eafdf31c3e6a4140429e20e404cfa3d2444ef.
+
+001 diagnostic FprMul137Inspect reduced unsigned prefix projection to an
+explicit7429-byte bit expression; no theorem inferred from that output.
+002 FprMulMantissa137 source_result/source_x/source_y prove by kernel rfl
+that the compact25-bit-limb formula matches original prefix for ALL x/y.
+003 FprMulSuffix137 strengthens original signed/pack suffix to exact output
+using already proved FprSmallSigned guards; passed33.084s.
+005 FprMulFast137.execution/model/source closes the FULL original C multiply
+for every pair of64-bit words, with a direct computable result.004 reserved
+local-name/import failure retained. No real-error/host IEEE premise, no source
+reinterpretation or limit change. The3math files are now locally committed.
+
+CURRENT keygen_fastfpr137_006: FprAddSwap137 and FprAddCombine137.
+These propose explicit unsigned swap and exact aligned mantissa combination;
+inspect receipts before assuming acceptance. Next explicit normalization and
+packing result using FprNormRound.flag/delta/nextM/after/round_exec and the
+existing FprNormTotal range facts, then full add composition and fixed header
+wrappers for FFT. New helper files may strengthen existential old results;
+never modify frozen dependencies or assume extracted formulas correct.
+No final137audit/seal yet. Whole rawFFT/GS/public/solver/cert/codecs and
+positive Z/p_accept/p_K still open. One job,0/0,small local commits/no push;
+five do_sign, measured paper, no IID/F04/newassumptions/workers unchanged.
+
 #136 sealed — complete source conversions and exact3072 FPR words
 
 Whole owner three-point program ACTIVE / NOT COMPLETE, corrected law134.
