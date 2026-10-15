@@ -1,3 +1,60 @@
+#143 sealed — parametric source group bodies and whole group-loop induction
+
+Source commits d9d5e280,57eec111,8dc4af50. Receipt
+894cab1c48507a5d95dee5e4a93ea8809d97bdeaffc68a2c243459532a76c264;
+postseal9fb8f638e65dd7c5a7226df05b73bf6458b3ce110979df34ec2ab7434d1ba72b,
+42651 pins.11 mathematical +11 isolated audit modules,67 declarations,0/0,
+standard3axioms.13jobs,7failed/mixed with causes retained. Audit collection
+fa7390eeb42deed466d6fcac5441126f1671469509b1c80117155c55d8c63f4d.
+Sage012 checks all1024 source pairs and255 planned group instances in ZZ;
+auxiliary only, no actual later-pass execution or probability claim.
+
+FftGroupExec143.prologue/initial_source derives original group setup from
+typed controls, actual table binding and pinned readonly memory.
+FftGroupSource143.source proves the entire original group body with exact
+pure buffer recurrence and full caller-local/metadata/outside-byte frame.
+FftGroupsInduction143.prefix_source/source proves the ORIGINAL group loop
+by induction, with increments, final false guard, u1=hm,v1=hm*t, exact nested
+word recurrence and frame. No per-butterfly/group C-AST execution series.
+Generic table lookup passed in1.769s after the rejected31.194s direct table
+normalization hit the kernel memory limit; limits stayed unchanged.
+
+ACTUAL endpoint remains SelectedFftOuterControl142.after (t384,m4);143 does
+not claim any further actual pass. Next144: source outer declarations/right
+shifts/initializers, instantiate143 for ht192,hm2, then a parametric outer
+step and induction over the remaining seven middle passes. Read
+KEYGEN_FFT_GROUP_143_NEXT_ROUTE.md. Symbolic image is not an assumed numeric
+snapshot; tripling,rt2 FFT, later KeyGen and the emitted-packet witness remain
+open. All concrete positive Z/p_accept/coding/p_K bounds remain OPEN.
+
+Corrected134 is the active law; frozen110zero unchanged. Whole owner program
+ACTIVE / NOT COMPLETE. No push/workers/schedules/IID/F04/newaxioms; measured
+and exactly five do_sign items unchanged. All143 evidence now immutable;
+no active computation after postseal. No printed generated dataBlock lines.
+
+#143 live008 — complete parametric group body checking
+
+Accepted002/003/004: arbitrary pinned-table twiddle lookup, original table
+indices/pointers, declarations, scalar-state transport and full source
+prologue. Source commit d9d5e280. Accepted007: group-frame restoration.
+Current008 checks FftGroupSource143.source, composing prologue, original
+inner-loop induction and lexical scope. All accepted logs0/0; failures
+001/002/005/006/007 recorded with causes. No limits/semantics changed.
+Actual endpoint remains sealed142 t384/m4; the new theorem is generic and
+has not yet been used to claim subsequent actual passes.
+Next: group counter/loop invariant, then outer-pass induction. Full goal ACTIVE.
+
+#143 in progress — generic group setup
+
+Previous turn: verified progress, sealed142 at ad61b582.
+ENTRY143 bd059b8ec532cb2e159628989a4b0586ca4205b9f646487f78c1b09ad17310b0
+verified42368 inherited pins. Job001 failed at the kernel memory limit while
+proving source-table lookup directly. Replace its normalization with one
+abstract-list lookup lemma, then instantiate. No limits/semantics changed.
+FftGroupTwiddle143, FftGroupIndex143, FftGroupDeclare143 are unsealed/in-flight.
+No143 commits yet. Exact actual endpoint remains SelectedFftOuterControl142.after.
+Whole KeyGen/mass program ACTIVE; no push/workers/schedules.
+
 #142 sealed — actual first middle-FFT outer iteration
 
 Source commits f0845d25,d79a01b7. Receipt

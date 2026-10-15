@@ -1,0 +1,9 @@
+{
+  "keygen_fftgroup143_001": "Kernel memory limit hit in the source-specific list lookup proof, which normalized the large parsed table. Prove getD lookup once for an arbitrary list and instantiate that lemma; retain the same exact table and bounds. No memory-limit increase.",
+  "keygen_fftgroup143_002": "Abstract table lookup passed in1.769s. Generic pointer output has base.index+i, while the table-specific output uses i; Nat zero+i is not definitionally reduced for arbitrary i. Rewrite Nat.zero_add after exposing the fixed table pointer. No index/bound change.",
+  "keygen_fftgroup143_005": "The two local-name nonmembership simplifications retained the empty-list tail because mem_cons expanded the singleton first. Include standard empty-list simplification. Frame scope and source semantics unchanged.",
+  "keygen_fftgroup143_006": "General simp normalized String.toList literals before matching the non-equality hypotheses and reported unused arguments. Replace this fragile simplification with direct list-membership elimination, with unchanged local-name exclusion.",
+  "keygen_fftgroup143_007": "Complete group frame passed. The final image transport retained the restoreScope heap projection and values alias, so restricted simp did not align the types. Expose the definitionally equal heap and recurrence before rewriting the iteration count.",
+  "keygen_fftgroup143_009": "Group-loop invariant passed. The frame proof referenced its name binder only through inferred arguments, triggering the unused-variable linter. Pass name explicitly; no warning suppression or mathematical change.",
+  "keygen_fftgroup143_010": "Group-loop frame passed. The step proof left the final local let alias after opaque to the restricted arithmetic simplifier. Expand only that alias before rewriting (u+1)*t; same state and update semantics."
+}

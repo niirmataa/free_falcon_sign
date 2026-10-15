@@ -1,3 +1,18 @@
+# Current continuation — success-mass task ACTIVE after143
+
+The historical whole-law reference-scope completion below is retained as
+history. Its original110 dispatcher has the sealed131 zero-success defect;
+the explicit corrected134 law is the current target. No real-C zero-success
+claim follows. The separate owner success-mass program is NOT COMPLETE.
+
+Latest checkpoint: KEYGEN_FFT_GROUP_143_REPORT.md / KEYGEN_FFT_GROUP_143_PINS.md.
+The live detailed program is KEYGEN_SUCCESS_BIG_TODO.md. Generic FFT
+butterfly/group/group-loop source proofs are closed; the actual endpoint
+remains SelectedFftOuterControl142.after (t384,m4). Outer-pass composition,
+tripling,rt2 FFT and later full KeyGen execution remain open. No concrete
+Z>0, population p_accept bound or coding/p_K bound is claimed. Native C and
+S1 measurements remain auxiliary. No schedules or parallel workers.
+
 # Whole actual KeyGen law — active owner TODO
 
 Owner continuation instruction, 2026-10-14: keep a large TODO active until

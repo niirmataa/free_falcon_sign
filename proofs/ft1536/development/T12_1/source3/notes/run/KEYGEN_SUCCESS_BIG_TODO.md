@@ -1,3 +1,37 @@
+#143 sealed — parametric source group bodies and whole group-loop induction
+
+Source commits d9d5e280,57eec111,8dc4af50. Receipt
+894cab1c48507a5d95dee5e4a93ea8809d97bdeaffc68a2c243459532a76c264;
+postseal9fb8f638e65dd7c5a7226df05b73bf6458b3ce110979df34ec2ab7434d1ba72b,
+42651 pins.11 mathematical +11 isolated audit modules,67 declarations,0/0,
+standard3axioms.13jobs,7failed/mixed with causes retained. Audit collection
+fa7390eeb42deed466d6fcac5441126f1671469509b1c80117155c55d8c63f4d.
+Sage012 checks all1024 source pairs and255 planned group instances in ZZ;
+auxiliary only, no actual later-pass execution or probability claim.
+
+FftGroupExec143.prologue/initial_source derives original group setup from
+typed controls, actual table binding and pinned readonly memory.
+FftGroupSource143.source proves the entire original group body with exact
+pure buffer recurrence and full caller-local/metadata/outside-byte frame.
+FftGroupsInduction143.prefix_source/source proves the ORIGINAL group loop
+by induction, with increments, final false guard, u1=hm,v1=hm*t, exact nested
+word recurrence and frame. No per-butterfly/group C-AST execution series.
+Generic table lookup passed in1.769s after the rejected31.194s direct table
+normalization hit the kernel memory limit; limits stayed unchanged.
+
+ACTUAL endpoint remains SelectedFftOuterControl142.after (t384,m4);143 does
+not claim any further actual pass. Next144: source outer declarations/right
+shifts/initializers, instantiate143 for ht192,hm2, then a parametric outer
+step and induction over the remaining seven middle passes. Read
+KEYGEN_FFT_GROUP_143_NEXT_ROUTE.md. Symbolic image is not an assumed numeric
+snapshot; tripling,rt2 FFT, later KeyGen and the emitted-packet witness remain
+open. All concrete positive Z/p_accept/coding/p_K bounds remain OPEN.
+
+Corrected134 is the active law; frozen110zero unchanged. Whole owner program
+ACTIVE / NOT COMPLETE. No push/workers/schedules/IID/F04/newaxioms; measured
+and exactly five do_sign items unchanged. All143 evidence now immutable;
+no active computation after postseal. No printed generated dataBlock lines.
+
 #138 sealed — complete first FFT pass, middle/tripling still open
 
 Whole owner program ACTIVE / NOT COMPLETE; corrected134 unchanged.
