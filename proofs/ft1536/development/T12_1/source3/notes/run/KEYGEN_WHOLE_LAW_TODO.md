@@ -1,3 +1,14 @@
+# Current continuation — success-mass task ACTIVE after144
+
+Latest source milestone: all eight original middle passes of the first FFT
+are proved, including actual seven-pass continuation to t3/m512. Exact next
+state SelectedFftMiddle144.after; firstFFT tripling,rt2 and later KeyGen still
+open. See KEYGEN_FFT_OUTER_144_REPORT.md and KEYGEN_FFT_OUTER_144_PINS.md;
+KEYGEN_SUCCESS_BIG_TODO.md remains the detailed active program. Actual
+logn10/full1 is proved; tripling initial v1024. No concrete positive mass or
+population acceptance/coding bound is claimed. Historical110 completion
+scope below is preserved; corrected134 is the explicit current law.
+
 # Current continuation — success-mass task ACTIVE after143
 
 The historical whole-law reference-scope completion below is retained as

@@ -1,3 +1,42 @@
+#144 sealed — entire actual middle portion of the first FFT
+
+Source commits cb5d6a39,4cd41e80,76adc1b6. Receipt
+004fc14fd1282f986e5793eefcb5485011e467eef82c57838772a7e7c6399d13;
+postseal2c3460b9e636de4dac800cc95fe992322a37cac231e7e66760b76a2bc7c0cee0,
+42937 pins.13 mathematical +13 isolated audit modules,90 declarations,0/0,
+standard3axioms.11jobs,3failed/mixed001/006/008 with causes retained.
+Audit collection cd1d9837b7ccf6301932bbe6b76b3bc898ea09e24874501e55f2dc11eb67a8b4.
+Sage010 exact profile/schedule/uint64 boundary controls passed, auxiliary only.
+
+FftOuterStep144.source proves one original outer body+increment from typed
+context and natural bounds; FftOuterInduction144.source proves the original
+loop from a checked finite schedule. SelectedFftMiddle144.exists_source
+instantiates the remaining seven ACTUAL passes in7.183s; complete_loop_source
+composes the prior first pass, closing ALL EIGHT middle outer passes.
+Exact next reference state: SelectedFftMiddle144.after, t3,m512,hn768,n1536,
+tmin3,full1,logn10, rootblock31/index0/count35840/width8. Actual logn is10,
+not9; rejected new9 lemma in008 corrected from the already pinned snapshot.
+C MKN=(1+2*full)<<(logn-full), so tripling starts v1024 (not512).
+
+SelectedFftMiddle144.image gives exact symbolic finalValues. Context/table
+pins, full/logn/cubic alias and outside-buffer frame are proved. This is
+not a literal numeric snapshot. FftMiddleContinuation144.body exposes
+precisely seq(original tripling branch,base skip) from the new state as the
+remaining firstFFT body obligation. Next145: generic tripling body (six
+input words, cubic pair512+k, six MUL/one SQR/six ADD macros), then its256
+iterations u+=3,v+=2 to u768/v1536. Read KEYGEN_FFT_OUTER_144_NEXT_ROUTE.md.
+No repeated per-butterfly/group execution series; reuse generic source rules.
+
+Potential later numeric route ONLY (not a proved optimization): use disjoint
+slots to equate each pure pass recurrence with a direct per-slot map before
+checking literal vector values, avoiding quadratic nested-update reduction.
+Do not identify the symbolic image with native diagnostic output by fiat.
+Tripling,rt2 FFT,later KeyGen and full emitted-packet witness remain OPEN,
+as do all concrete positive Z/p_accept/coding/p_K bounds. Corrected134 is
+the active law; frozen110zero unchanged. Whole owner program ACTIVE, no
+push/workers/schedules/IID/F04/newaxioms; measured and five do_sign unchanged.
+All144 evidence immutable; no active computation after postseal.
+
 #143 sealed — parametric source group bodies and whole group-loop induction
 
 Source commits d9d5e280,57eec111,8dc4af50. Receipt
