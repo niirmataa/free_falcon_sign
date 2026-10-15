@@ -918,6 +918,36 @@ work/FT1536_B1_CLOSEOUT_REVIEW_001/REVIEW_B1_CLOSEOUT_001.md
 The B1.07, B1.08, B1.09 reference-scope Acceptance is now both
 author-established AND independently reviewed.
 
+## 2026-10-15: independent integration audit (snapshot f246feae) - INCOMPLETE, smallest missing implication
+
+Independent integration audit (owner-designated, own W, no Git
+writes) verdict: **INCOMPLETE** for the final real-C theorem. The
+smallest missing implication: a typed, resource-bounded comparison
+of the WHOLE C game vs model Games.runEUF at the SAME emitted key
+and generator state. Findings: **F01 (NEW B2 spec error)**:
+ChaCha20PRFBound is forall-E = statistical distance; route_a_closed
+forces delta >= 1-2^(448-n), at n=512 that is 1-2^-64 - not a small
+computational advantage (Sage-verified; does not question ChaCha20
+security, only the formal interface). **F02**: Assembly statement
+takes keyIdent : Prop unbound to muKey; hprg yields only 0<=delta;
+no real-C-win <= model-win+loss. **F03**: T5 successfulKeyGen has
+independent words quantifier - gate_full_floor not yet a floor for
+the Gram of the same emitted key. **F04**: runEUF samples (sk,h)
+once but honest calls depend only on h; equal single marginals do
+not give joint multi-Sign law (exact countermodel); needs per-secret
+or stateful source implication. **F05**: known open obligations
+stand (successfulLaw may be none, D1 countermodel, B3/B4/S05 scope).
+Local chains type-consistent; reviewer's own Lean replay died at
+2GiB (exit 134) so NO independent kernel PASS granted; statuses
+NOT_REVIEWED justified. Reviewer's one next step: B2 resource-bounded
+distinguishertype + real whole-game hop consumed in Assembly for one
+emitted (sk,h), same SHAKE/ChaCha state, exact horizon.
+
+Impact on plan: audit SHARPENS the endgame, does not break it -
+F02/F03/F04 become named assembly/do_sign obligations; F01 = B2
+interface fix (small precise task); the ePrint condition "rozliczenie
+otwartych interfejsow" now has its authoritative inventory.
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
