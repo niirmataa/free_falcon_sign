@@ -1,3 +1,150 @@
+#131 sealed — frozen-law coverage obstruction; explicit source repair next
+
+Owner continuous three-point program ACTIVE / NOT COMPLETE / NOT_REVIEWED.
+The kernel proves `KeygenFrozenNoSuccess131.success_mass_zero`: frozen law110
+has Z=0 for every env/input because mandatory norm initialization calls
+fpr_sqrt absent from its semantic closure. This is a MODEL defect, not a
+failure or probability theorem for real C. Its old positive-witness target
+cannot be met unchanged. No frozen source or pin was modified.
+
+131 diagnosis commit3241fd1e; receipt
+f83561b2e27b9e5e56e7b8c0fba2fed6838726a70b98a32ea4dfd8a394450dce;
+postseal dfa71365f53d85c9d163247d6147a226cbe46a356e696c2432342523a3a47fc9.
+36274 distinct files verified.2math+2audit=4/4,20named declarations,
+logs0/0,standard3axioms; five jobs/two failures retained. No active Lean/job.
+
+130 is also sealed: both actual resultant calls return1 and leave the whole
+caller state unchanged (`SelectedResultantGate130.source`). Receipt
+8aa8ce825538d7b7ff11cc67edbaee332b7d655c9fc60784617653df7bccd405;
+postseal06a3f8d68c1cd417aa075a93d5eb2a4973fe42426e280e46f9eaf875fde9dcb6,
+36196pins.76math+76audit,965decl,0/0. Finite Sage residue controls45/34;
+NOT probability premises. Commits e373c370/5ef2caab.
+
+Next132: bind actual Extra/c/fpr-emulated.c non-ASM sqrt body including its
+`for (int i=0; i<54; i++)` declaration scope and all arithmetic guards.
+Check the required sqrt(8) source execution and reachable call closure.
+Then explicitly version the affected semantic spine and law, preserving110
+and the zero theorem. Broad owner continuation authorizes completing source
+coverage; this target revision is declared here and in131 repair proposal,
+never an equality or silent reinterpretation of old110. Source-only132 does
+not yet change any whole law. All three final task targets remain OPEN.
+
+Reuse exact actual sampler/resultant continuation NormalizedSamples129.after.
+No IID/F04/geometric formula; measured stays measured; exactly five do_sign
+obligations fixed. One computation, no subagents/review/push/schedules.
+
+#130 live027 — all48 packing prefixes accepted; finishing actual gates
+
+026 completed47/47 after pilotF00 from024; all24 F and24 G packing chunks
+are source-proved with exact384-byte b block/local images and full frames.
+Source n1536 unchanged. Current keygen_resultant130_027 compiles
+PackingFComplete130,SelectedResultantFComplete130,PackingGComplete130,
+SelectedResultantGComplete130,SelectedResultantGate130,ResultantTail130Generator.
+This must close actual final guards, source switch/tail, return conversion,
+disposal and unchanged caller state. No concrete resultant-gate PASS until
+those modules pass. Inspect receipts before any new computation.
+
+Generated48 modules from025; pilot F00 unchanged hash410130c73f3656aad1e76a61b0a7c4c6fc802af95a1512d268f292a654fcfcc1.
+All source code machinery uses the source-proved guarded shift extension;
+frozen B20/121 untouched. Literal syntaxfrom013/source equalities014 retained.
+Sage control recipe keygen_resultant130_control.sage is prepared but UNRUN:
+when candidate JSON exists, pin its hash and pass its job label+hash, compare
+packed words and exact GF(2)[x] remainder modulo x^6+x^3+1. Auxiliary only.
+
+Source commits5cf909b7 (guarded shifts),a2c41d29 (prefix/frame),893efee7
+(source AST/entries/generators), plus earlier8826545b/a0ce4e38.130 unsealed,
+no final audit. Parent129 sealed34685pins; whole owner task active, later
+norm/public/solver/certificate/encoding and all success-mass instantiations
+remain OPEN. No push/worker/review/schedules; exactly five do_sign fixed.
+
+#130 live026 — source packing fragments for both resultants
+
+129 SEALED and unchanged; whole owner three-point program ACTIVE. Exact
+continuation NormalizedSamples129.after.130 ENTRY e2514e59bd00e1e2405f8122dc9e04a09613b654f0389cc7649281384ceaf8c3
+verified34685pins from129post301c5a6ba4fc143d0accc4d22ac292dcb6165c055c7f7e2294f4ca7352012527.
+
+The checker gap is fixed and source-proved: C99ShiftCompute130 supports
+safe signed left shifts and64-bit count values with original ShiftExec guards;
+C99ScalarCompute130/Steps130 feed updated word/statement/call computations.
+Frozen B20/121 remain untouched. Minimal fixed setup and actual F/G entries
+now pass; both actual entries prove n1536. Whole-call monolithic reduction
+still exceeded kernel memory021, so exact source loop prefixes are used.
+
+GeneratedResultantSyntax130 from013 (SHA5e1ccf35351394f2b6f3befdd757fd997bcbd5a653a18473d4d0c120564086da)
+has exact kernel source equalities014; literal packing shape and cached run
+are source-identical. WordSegments/Frame/Normalize/Binding130 prove exact
+prefix composition and full-state normalization of b[96] plus locals.
+Pilot GeneratedPacking130F00 passed02421.566s; source generator023 and full
+candidate generator025 agree byte-for-byte (F00SHA410130c73f3656aad1e76a61b0a7c4c6fc802af95a1512d268f292a654fcfcc1).
+All48 candidate modules F00..23/G00..23 copied from025 and ignored/pinned.
+
+CURRENT keygen_resultant130_026 (session37744), ONE sequential Lean job:
+F01..F23 then G00..G23. F01..F21 already passed about22s each (through1408).
+Inspect receipts before another computation. Every prefix keeps actual n1536;
+no earlier source return or independent state is substituted.
+
+Prepared UNCOMPILED finishing modules: PackingFComplete130/GComplete130
+compose24 prefixes, actual final guard and original packing syntax;
+SelectedResultantFComplete130/GComplete130 execute literal source switch/tail,
+prove return1, source Call with allocation/memset/disposal, and exact unchanged
+caller state; SelectedResultantGate130 composes both original nonzero gates.
+ResultantTail130Generator is a pending finite control generator (not source
+proof) to produce packed/reduced b words and return values for Sage checks.
+Run these only after026 dependencies close. No concrete resultant return
+or whole KeyGen success claim is made yet.
+
+Latest local commits8826545b,a0ce4e38,5cf909b7,a2c41d29,893efee7.130 NOT SEALED;
+no final audit. Failed005/007/009/012/015/016/017/018/021/022 retained with causes.
+Unaccepted diagnostics/drafts SelectedResultantF130,SelectedResultantCachedF130,
+ResultantSetup130Probe,SelectedResultantBind130 must not be used as witnesses.
+Only the last is an unused field-normalization draft. Preserve them/history.
+After these two gates: norm/public/solver/mandatory certificate/encoding,
+actual G(seed*) and all mass goals. Measured paper/five do_sign unchanged;
+no push/new worker/review/schedules, unchanged limits,0/0 accepted logs.
+
+#130 live021 — missing defined shifts repaired; actual setup passed
+
+129 sealed: receipt3615c5ace527b54dc0fe9f181576ba9cccccb9c6fcee4bcecb755c3527377904,
+post34685pins301c5a6ba4fc143d0accc4d22ac292dcb6165c055c7f7e2294f4ca7352012527.
+130 entrye2514e59bd00e1e2405f8122dc9e04a09613b654f0389cc7649281384ceaf8c3.
+Continue from NormalizedSamples129.after. Whole owner task ACTIVE, no whole
+KeyGen success or numerical mass instantiation yet.
+
+130 source machinery: read16, word expressions, instruction loops, allocation/
+memset and full resultant-call soundness closed001..008. A monolithic f witness
+and actual setup reductions were initially stuck. Minimal diagnostic017
+proved expected definedness FALSE: the frozen B20 shift evaluator deliberately
+omits signed LEFT shifts (including valid1<<1 in MKN) and64-bit count values
+(in packing u&31). This is checker incompleteness, NOT a C bug; old soundness
+remains valid for supported cases. Frozen B20/121 sources were NOT edited.
+
+C99ShiftCompute130 proves computation against existing ShiftExec with all
+count/sign/overflow guards, including counterexamples to old completeness
+and rejection of undefined shifts. C99ScalarCompute130 and C99ScalarSteps130
+extend only computation, with full original-source soundness (019/020).
+130 word/run/call modules were consistently rebuilt in current021. Minimal
+fixed probe now proves n1536. Actual SelectedPackingF130 passed29.034s.
+CURRENT keygen_resultant130_021 (session81493) is at its LAST module:
+SelectedResultantCachedF130 attempts the full actual f call with proof fuel2048.
+Inspect completion before another computation. If full reduction still fails,
+use already proved WordSegments/Frame/Normalize130 and exact packing shape.
+
+GeneratedResultantSyntax130 from013, SHA
+5e1ccf35351394f2b6f3befdd757fd997bcbd5a653a18473d4d0c120564086da,
+has kernel exact source equalities014 (23.822s). Cached130.run_eq is exact
+code identity; SelectedPackingF uses literal AST to avoid parser replay.
+Source reference Extra/c/falcon-keygen.c SHA0a09b6ed2363308f54584dfd1e2d33ee1b4601a68c77712c50da920b5074a5cf.
+
+Failures005/007/009/012/015/016/017/018 retained with causes. Earlier
+SelectedResultantF130, ResultantSetup130Probe, SelectedResultantBind130 are
+unaccepted diagnostic/draft routes, not source witnesses. Last is an unused
+field-normalization draft. ResultantSetup130FixedProbe is only a minimal
+model diagnostic, not the actual-input claim. No limits raised/warnings muted.
+Source commits8826545b,a0ce4e38 precede the guarded-shift extension; extension
+and dependent changes currently uncommitted.130 NOT SEALED. Continue both
+actual resultant gates, then norm/public/solver/certificate/encoding and all
+three owner points. No push/new worker/review/schedules; five do_sign unchanged.
+
 #130 ACTIVE — actual resultant source gates after sealed complete f/g129
 
 129 is SEALED / PROVED_KERNEL_SCOPED / NOT_REVIEWED. Both actual1536-

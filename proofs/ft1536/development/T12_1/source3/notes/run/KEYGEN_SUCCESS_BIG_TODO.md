@@ -1,3 +1,38 @@
+#131 sealed — frozen-law coverage obstruction; explicit source repair next
+
+Owner continuous three-point program ACTIVE / NOT COMPLETE / NOT_REVIEWED.
+The kernel proves `KeygenFrozenNoSuccess131.success_mass_zero`: frozen law110
+has Z=0 for every env/input because mandatory norm initialization calls
+fpr_sqrt absent from its semantic closure. This is a MODEL defect, not a
+failure or probability theorem for real C. Its old positive-witness target
+cannot be met unchanged. No frozen source or pin was modified.
+
+131 diagnosis commit3241fd1e; receipt
+f83561b2e27b9e5e56e7b8c0fba2fed6838726a70b98a32ea4dfd8a394450dce;
+postseal dfa71365f53d85c9d163247d6147a226cbe46a356e696c2432342523a3a47fc9.
+36274 distinct files verified.2math+2audit=4/4,20named declarations,
+logs0/0,standard3axioms; five jobs/two failures retained. No active Lean/job.
+
+130 is also sealed: both actual resultant calls return1 and leave the whole
+caller state unchanged (`SelectedResultantGate130.source`). Receipt
+8aa8ce825538d7b7ff11cc67edbaee332b7d655c9fc60784617653df7bccd405;
+postseal06a3f8d68c1cd417aa075a93d5eb2a4973fe42426e280e46f9eaf875fde9dcb6,
+36196pins.76math+76audit,965decl,0/0. Finite Sage residue controls45/34;
+NOT probability premises. Commits e373c370/5ef2caab.
+
+Next132: bind actual Extra/c/fpr-emulated.c non-ASM sqrt body including its
+`for (int i=0; i<54; i++)` declaration scope and all arithmetic guards.
+Check the required sqrt(8) source execution and reachable call closure.
+Then explicitly version the affected semantic spine and law, preserving110
+and the zero theorem. Broad owner continuation authorizes completing source
+coverage; this target revision is declared here and in131 repair proposal,
+never an equality or silent reinterpretation of old110. Source-only132 does
+not yet change any whole law. All three final task targets remain OPEN.
+
+Reuse exact actual sampler/resultant continuation NormalizedSamples129.after.
+No IID/F04/geometric formula; measured stays measured; exactly five do_sign
+obligations fixed. One computation, no subagents/review/push/schedules.
+
 # Continuous three-point KeyGen success program
 
 Owner instruction2026-10-14; base9c8c045bbc61ad04d2e779027707f2147656b61c.
