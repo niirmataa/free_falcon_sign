@@ -1,3 +1,97 @@
+# Active129 — first64 sealed; continue full f/g
+
+2026-10-15. Whole three-point program ACTIVE / NOT COMPLETE. First64Source128.source
+is an unconditional original source prefix on fixed full127 input. All first
+process obligations closed; full context/coefficient/local images checked.
+128 audit38/38,292 declarations,32jobs9failed,0/0. Source1df9e71c,677d79bb.
+Receipt1289a774a5c09f4c614261bd4a6823800e26ed66a91366fd9ae7c1fd89a899c7eb6;
+postseal9eb4c0e090c3fe5f608a7996dea0d71c65cb8a0a284f8aa8e8e28ca1c510aabb.
+128 sources/evidence are SEALED: do not edit.129 starts from
+GeneratedSampler128F01.after, with source dimension1536 and same SHAKE stream.
+Continue bounded64-coefficient fragments; every later process event needs
+original source proof.129 ENTRY_PINS verifies all128 pins before new jobs.
+No full f/g, accepted attempt, packets, G(seed*)/Z>0 or numeric bound yet.
+No push/subagent/review/schedule; measured paper/five do_sign unchanged.
+
+# Active128 — first source coefficient closed; next63 under kernel check
+
+2026-10-15. Whole three-point program ACTIVE / NOT COMPLETE. First original
+coefficient on the compatible fixed127 input is now UNCONDITIONAL:
+FirstEventValid128.first_coefficient, job02617.056s. All12 double rounds
+have original source proofs, FirstProcess128.source_process passed025,
+and Event.Valid is closed with exact full-state frames. The normalized
+result is closed by FirstNormalized128.source (0291.870s); its complete
+context/coefficient/local images passed02824.572s. Source n remains1536.
+No full f/g or accepted attempt, G(seed*)/Z>0 or numerical bound yet.
+
+Current job keygen_trace128_030 checks GeneratedSampler128F01:63 more
+coefficients starting from the normalized first result. Generator029 is
+untrusted; candidate has zero heavy process events, but every computation
+and image must pass the kernel before source status. Inspect receipts
+before any further job. One Lean process,0/0, no changed limits.
+
+GeneratedFirstSegment128 from027 SHA
+ a54e1c2d4edbac469261ff6b987aec9e1f5c77f7c12b99a4ce6b66285a7308fc.
+GeneratedSampler128F01 from029 SHA
+ c0c40b76cca298264757206e988e1f5e044048b06187d91b97bc160b1072bdfd.
+Generators are tracked; literal fixtures are ignored and pinned. Earlier
+SelectedSegment12832-coefficient candidate remains CONDITIONAL and is not
+used as a closed source proof. Failures024–026 recorded; final128 audit and
+seal pending. Continue all f/g, gates/solver/certificate/packets and the three
+success-mass points. No push/subagent/review/schedules; measured/five do_sign fixed.
+
+# Continuous success program — mid128 trace and resource checkpoint
+
+2026-10-15. Three-point owner program ACTIVE / NOT COMPLETE.128 entry
+verified30673pins:7f75a610a778efc93b2af105aee653b82a0587fd5ad8d076746c832ee27a1af4.
+Generic trace-aware extract/RNG/refill/rejection/outer-prefix code is proved
+sound ONLY after ALL recorded process events have original source proofs.
+Event now carries actual resolved pointer+source resolution proof and proposed
+lane words; Event.after is a fixed writeWords effect, not arbitrary state.
+No provider-correctness/native axiom. Prefix relation records real steps;
+normalization covers context+coefficient blocks and every other object,
+including dead objects, using ORIGINAL source frames. Generic source
+modules accepted through016; ShakeEventFrame128 accepted018, connecting
+source Process + changed-block equality to full Event.Valid.
+
+SelectedFullSampler128 enters actual first f call on FIXED full127 input.
+Sage013 extracts8 distinct25-lane transition proposals from sealed113's129
+8-byte draws; all finite controls pass, these are UNTRUSTED DATA ONLY.
+GeneratedProcessTransitions128 hash290ebfe7324b03571fa7ed4e1755f2fe2841253c6e69e4f082d6eb771654075d,
+current file matches immutable Sage013. Sources sage/keygen_transitions128.sage,
+ShakeProcessProposal128. Formal/.gitignore contains exact generated patterns;
+sealed formal/Source3/.gitignore untouched.
+SelectedSegment128 candidate32 coefficients passed015/016 (35.246s after
+Event strengthening), event_count1/counter32; Obligations NOT closed, so no
+unconditional source segment. Historical result is kept.
+
+FirstProcessSite128 originally selected that32-cut event. Generator019 proposed
+round00 (hash3dd8ed0dc723e5231bf9b23016be96e5de808d2b847843dc3cf493916861e569),
+020 failed52.943s: projections did not reduce, plus pointer.block/ctx.block
+not definitionally identified. No explicit memory error and no false-result
+proof. To lower reduction depth, NEW SelectedFirst128 uses a separate1-
+coefficient proof cut (source n still1536). FirstProcessSite128 now selects
+its event, uses the explicit ctx.a pointer and proves event_pointer equality.
+CURRENT job keygen_trace128_021 (session33873) compiles SelectedFirst128,
+updated FirstProcessSite128 and the SAME candidate round00. Inspect before
+new jobs. FirstProcess128Generator runtime imports only fast119/122 path;
+emitted pointers reference actual FirstProcessSite128.pointer/table, never
+old ctx1 literals. Range remains1 pilot; extend12 only after success.
+
+After all12 process rounds, compose source Process at event.before, rewrite
+its pointer using event_pointer as needed, then ShakeEventFrame128.valid
+and FirstProcessSite128.obligations close the actual first coefficient.
+Normalize verified segment outputs and continue both full1536 f/g calls,
+with all rejection/local-bit-reset/same-stream effects. Event.after effect
+frame is proved; don't assume a proposed word or shadow-input equivalence.
+128 NOT SEALED, no final audit yet. Failed jobs007/008/010/011/017/020 are
+recorded. Sage011 partial output is NOT accepted. Generic commits bf10b81d,
+286fa956,16b517c1; later Event strengthening/source fixtures remain uncommitted.
+Parent127 sealed receipt71a1163a354e749c939120e0f6a7b6346ce0c3483d9049ef6748f07acbfcf79a,
+postf5e833e9346f78f3bcfd59e5b8084287fc60f771c2e6cb904c0bb18124b9e568.
+No full f/g, gates/solver/packets, G(seed*)/Z>0 or probability bound yet.
+No push/new worker/review/schedules; measured paper/five do_sign fixed.
+
 # Continuous success program — checkpoint127 full source input
 
 2026-10-15. Original three-point program ACTIVE / NOT COMPLETE.127 is

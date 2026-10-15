@@ -627,3 +627,69 @@ Full f/g, all gates/solver/packets and G(seed*)/Z>0 remain OPEN, as do numeric
 acceptance and conditional coding bounds. Continue to whole owner goal;
 S1 measured, no F04/IID/geometric shortcut, five do_sign fixed, one job,
 no push/new worker/review/schedules, retained failures and0/0.
+
+## Mid128: certified trace framework, first-event pilot
+
+2026-10-15. Three-point owner program ACTIVE / NOT COMPLETE.128 entry
+verified30673pins:7f75a610a778efc93b2af105aee653b82a0587fd5ad8d076746c832ee27a1af4.
+Generic trace-aware extract/RNG/refill/rejection/outer-prefix code is proved
+sound ONLY after ALL recorded process events have original source proofs.
+Event now carries actual resolved pointer+source resolution proof and proposed
+lane words; Event.after is a fixed writeWords effect, not arbitrary state.
+No provider-correctness/native axiom. Prefix relation records real steps;
+normalization covers context+coefficient blocks and every other object,
+including dead objects, using ORIGINAL source frames. Generic source
+modules accepted through016; ShakeEventFrame128 accepted018, connecting
+source Process + changed-block equality to full Event.Valid.
+
+SelectedFullSampler128 enters actual first f call on FIXED full127 input.
+Sage013 extracts8 distinct25-lane transition proposals from sealed113's129
+8-byte draws; all finite controls pass, these are UNTRUSTED DATA ONLY.
+GeneratedProcessTransitions128 hash290ebfe7324b03571fa7ed4e1755f2fe2841253c6e69e4f082d6eb771654075d,
+current file matches immutable Sage013. Sources sage/keygen_transitions128.sage,
+ShakeProcessProposal128. Formal/.gitignore contains exact generated patterns;
+sealed formal/Source3/.gitignore untouched.
+SelectedSegment128 candidate32 coefficients passed015/016 (35.246s after
+Event strengthening), event_count1/counter32; Obligations NOT closed, so no
+unconditional source segment. Historical result is kept.
+
+FirstProcessSite128 originally selected that32-cut event. Generator019 proposed
+round00 (hash3dd8ed0dc723e5231bf9b23016be96e5de808d2b847843dc3cf493916861e569),
+020 failed52.943s: projections did not reduce, plus pointer.block/ctx.block
+not definitionally identified. No explicit memory error and no false-result
+proof. To lower reduction depth, NEW SelectedFirst128 uses a separate1-
+coefficient proof cut (source n still1536). FirstProcessSite128 now selects
+its event, uses the explicit ctx.a pointer and proves event_pointer equality.
+CURRENT job keygen_trace128_021 (session33873) compiles SelectedFirst128,
+updated FirstProcessSite128 and the SAME candidate round00. Inspect before
+new jobs. FirstProcess128Generator runtime imports only fast119/122 path;
+emitted pointers reference actual FirstProcessSite128.pointer/table, never
+old ctx1 literals. Range remains1 pilot; extend12 only after success.
+
+After all12 process rounds, compose source Process at event.before, rewrite
+its pointer using event_pointer as needed, then ShakeEventFrame128.valid
+and FirstProcessSite128.obligations close the actual first coefficient.
+Normalize verified segment outputs and continue both full1536 f/g calls,
+with all rejection/local-bit-reset/same-stream effects. Event.after effect
+frame is proved; don't assume a proposed word or shadow-input equivalence.
+128 NOT SEALED, no final audit yet. Failed jobs007/008/010/011/017/020 are
+recorded. Sage011 partial output is NOT accepted. Generic commits bf10b81d,
+286fa956,16b517c1; later Event strengthening/source fixtures remain uncommitted.
+Parent127 sealed receipt71a1163a354e749c939120e0f6a7b6346ce0c3483d9049ef6748f07acbfcf79a,
+postf5e833e9346f78f3bcfd59e5b8084287fc60f771c2e6cb904c0bb18124b9e568.
+No full f/g, gates/solver/packets, G(seed*)/Z>0 or probability bound yet.
+No push/new worker/review/schedules; measured paper/five do_sign fixed.
+
+##128 first source coefficient closed
+
+FirstEventValid128.first_coefficient is unconditional on full127 input;
+FirstNormalized128.source gives its fully checked normalized result. All12
+SHAKE double rounds are source-proved. Job030 checks the following63
+coefficients from that result. Complete f/g and all three success goals
+remain open; continue autonomously. No IID or measured premise.
+
+##128 sealed;129 full sampling active
+
+First64Source128.source closed. Receipt9a774a5c09f4c614261bd4a6823800e26ed66a91366fd9ae7c1fd89a899c7eb6,
+post9eb4c0e090c3fe5f608a7996dea0d71c65cb8a0a284f8aa8e8e28ca1c510aabb.
+Continue complete f/g from GeneratedSampler128F01.after in129. Whole task active.
