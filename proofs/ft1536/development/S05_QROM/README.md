@@ -3,6 +3,20 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
+**Kontynuacja020E11 — [konsument i driver surowej pamięci](notes/CONSUMER_DRIVER_020E11_CHECKPOINT.md), KERNEL_SCOPED / NOT_REVIEWED:**
+Sprawdzany dekoder i konsument wykonują rzeczywiste96 słów producenta, bez
+listy dostarczonych poleceń. **Driver przekazuje aktualną surową pamięć między
+krokami i daje dokładnie stary CoreRun dla każdego paliwa i typowanego stanu.**
+Zachowany pełny wynik reg/RAM/out/fault, None i oryginalny limit sterowania;
+błąd konsumenta ma osobny poziom, wykluczony na kodowaniach objętych dowodem.
+8 modułów,43 twierdzenia, audyt69 eksportów;16 prób Lean zachowanych.
+**Następne: złożenie publicznego przygotowania, rdzenia i pełnej odpowiedzi**,
+potem EveryTape/J/P pod tym samym(M). Pozostałe rodziny producenta, pełny
+czas/peak, source binding i QROM nadal OPEN. Bez niezależnego odbioru i push.
+[Kontrola autora](notes/CONSUMER_DRIVER_020E11_SELF_REVIEW.md),
+[klasy](notes/CERTIFICATE_CLASSES_020E11.json), [kolejka](notes/KERNEL_QUEUE_020E11.json).
+Status QROM WARUNKOWY; monitor ROM PAUSED. Niżej pozostaje historia checkpointów.
+
 **Kontynuacja020E10 — [pełny dispatch act i wszystkie fazy kroku](notes/ACTION_EQUIVALENCE_020E10_CHECKPOINT.md), KERNEL_SCOPED / NOT_REVIEWED:**
 Domknięte run/again, wszystkie modelowane tagi, Edit/Pending, sterowanie i
 zapisy act, w tym odmowy, fault, brak danych i granice pętli/adresów.

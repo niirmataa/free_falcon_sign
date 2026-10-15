@@ -1,0 +1,67 @@
+{
+  "task": "S05/TODO020E/consumer-driver020E11",
+  "status": "KERNEL_SCOPED_NOT_REVIEWED",
+  "entries": [
+    {
+      "name": "Word512/finite banks, signed address checks, E6 stored producer code",
+      "class": "MODEL",
+      "status": "EXPLICIT_UNCHANGED",
+      "scope": "Same producer code; dedicated raw consumer transition and driver are new. No native or physical-memory claim."
+    },
+    {
+      "name": "Strict command decoding and encoded consumer",
+      "class": "PROOF_OBLIGATION",
+      "status": "DISCHARGED_SCOPED",
+      "exports": [
+        "CommandDecode020E11.roundtrip",
+        "CommandDecode020E11.sound",
+        "CommandDecode020E11.accepts_iff",
+        "CommandConsumerRefinement020E11.step_model",
+        "CommandConsumerRefinement020E11.consumes"
+      ],
+      "scope": "Generic capacities/targets with signed-word address bound; no predecoded script supplied to operational consumer; malformed encoding differs from empty slot"
+    },
+    {
+      "name": "Raw core step and multi-step driver",
+      "class": "PROOF_OBLIGATION",
+      "status": "DISCHARGED_SCOPED",
+      "exports": [
+        "ProducerRawCore020E11.step_image",
+        "ProducerRawDriver020E11.refines"
+      ],
+      "scope": "Every typed initial Core and every fuel, both fresh values; execution uses current raw memory, no old CoreStep/CoreRun/canonical list in operational path"
+    },
+    {
+      "name": "Complete old core execution result",
+      "class": "PROOF_OBLIGATION",
+      "status": "DISCHARGED_SCOPED",
+      "exports": [
+        "ProducerRawResult020E11.refines",
+        "ProducerCoreExecution020E11.execute_refines",
+        "ProducerCoreExecution020E11.halts"
+      ],
+      "scope": "Full state and old failure result preserved; outer none is consumer failure, inner none is old result. Inherited core-transition budget is not an implementation time bound."
+    },
+    {
+      "name": "Whole public call and EveryTape/J/P transport",
+      "class": "PROOF_OBLIGATION",
+      "status": "OPEN_NEXT",
+      "scope": "Compose public preparation/parser/input banks, raw core, and final response; keep source/domain/initial and M unchanged."
+    },
+    {
+      "name": "Remaining producer families, allocation/lifetime/readout copies/code-loading and full time/peak",
+      "class": "PROOF_OBLIGATION",
+      "status": "OPEN_UNCHANGED"
+    },
+    {
+      "name": "Source KeyGen/Sign/concrete PRG bridge and remaining QROM reduction",
+      "class": "PROOF_OBLIGATION",
+      "status": "OPEN_UNCHANGED"
+    },
+    {
+      "name": "A-QMT and Q-PRG primitive bounds",
+      "class": "CRYPTOGRAPHIC_ASSUMPTION",
+      "status": "UNCHANGED_NOT_INSTANTIATED"
+    }
+  ]
+}

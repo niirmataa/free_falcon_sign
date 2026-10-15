@@ -1,0 +1,59 @@
+{
+  "task": "S05/TODO020E/consumer-driver020E11",
+  "status": "KERNEL_SCOPED_NOT_REVIEWED",
+  "items": [
+    {
+      "id": "E7-E10-CORE-PRODUCER",
+      "status": "KERNEL_SCOPED_PREVIOUS",
+      "scope": "Actual source reads, all-phase producer encoding and old-step effect"
+    },
+    {
+      "id": "E11-COMMAND-DECODE",
+      "status": "KERNEL_SCOPED",
+      "exports": [
+        "CommandDecode020E11.roundtrip",
+        "CommandDecode020E11.sound",
+        "CommandDecode020E11.accepts_iff"
+      ]
+    },
+    {
+      "id": "E11-ENCODED-CONSUMER",
+      "status": "KERNEL_SCOPED",
+      "exports": [
+        "CommandConsumerRefinement020E11.consumes",
+        "CommandConsumerBoundary020E11.malformed_stops",
+        "CommandConsumerBoundary020E11.encoded_incomplete"
+      ]
+    },
+    {
+      "id": "E11-RAW-CORE-DRIVER",
+      "status": "KERNEL_SCOPED",
+      "exports": [
+        "ProducerRawDriver020E11.refines",
+        "ProducerRawResult020E11.refines",
+        "ProducerCoreExecution020E11.execute_refines"
+      ],
+      "scope": "Any fuel and encoded typed Core; exact full old result, no phase/success/reachability premise"
+    },
+    {
+      "id": "E11-PUBLIC-CALL",
+      "status": "OPEN_NEXT",
+      "scope": "Connect actual public preparation and parser/banks to this raw core and full final response. Transport EveryTape and J/P only after full call equality, under unchanged M and public initial. Do not treat ofData/image specification bridges as an uncharged complete runtime."
+    },
+    {
+      "id": "E6-FAMILIES",
+      "status": "OPEN",
+      "scope": "Parser/fill/startup producer implementations beyond the core"
+    },
+    {
+      "id": "E6-LIFETIMES",
+      "status": "OPEN",
+      "scope": "All producer/consumer contexts and temporaries, two code images, encoded buffer, final readout copies and complete allocation/lifetime/time/peak"
+    },
+    {
+      "id": "SOURCE-QROM",
+      "status": "OPEN_UNCHANGED",
+      "scope": "M coverage, actual key/sign/PRG and quantum reduction obligations"
+    }
+  ]
+}
