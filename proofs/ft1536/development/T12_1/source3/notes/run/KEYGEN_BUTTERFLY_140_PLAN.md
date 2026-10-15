@@ -25,3 +25,21 @@ One proof/computation at a time, standard Sage preparser for finite controls,
 accepted logs0/0, all failures with causes, small local commits/no push,
 postseal after a scoped result. No workers, schedules, IID/F04/D1 or added
 assumptions. Measured paper and exactly five do_sign items stay unchanged.
+
+## Owner steering after005: one parametric butterfly, not a certificate series
+
+The owner explicitly highlighted the cost of certifying many individual
+butterflies and requested a single parametric invariant-preservation lemma
+followed by instantiation. The staged checker is a partial optimization:
+its soundness is parametric, but it still evaluates each concrete instance.
+Do not launch a large series of concrete-prefix certificates.
+
+Preserve the useful result: the same4-iteration pilot improved from40.560s
+to10.288s; a new16-iteration prefix from v=8 passed005 in49.801s. Thus the
+first24 iterations have accepted component proofs, but the full composed
+24-prefix has not yet been exported. The current goal is the stronger
+four-input-word/twiddle/index theorem with exact four writes, untouched
+memory and scopes, all source index/address conditions derived at the caller,
+and source-proved bit-level FPR operations. Next derive the loop invariant
+and instantiate that theorem, without interpreting the complete AST anew
+for every instance. No IEEE-real or independence assumption is introduced.
