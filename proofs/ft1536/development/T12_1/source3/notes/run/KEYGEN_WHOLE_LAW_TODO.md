@@ -1,3 +1,14 @@
+# Current continuation — success-mass task ACTIVE after149
+
+Generic original first FFT pass is kernel-proved: one body lemma, exact
+ordered buffer update, source-loop induction with hn-u iterations and
+outside-memory frame. Eight modules/53 declarations audited,0/0; postseal
+complete. See KEYGEN_FFT_FIRST_149_REPORT.md and KEYGEN_FFT_FIRST_149_PINS.md.
+Actual endpoint remains148 (first call complete, second binding ready).
+Next: selected second-call setup and composition of reusable FFT passes.
+Full witness and all concrete positive probability bounds remain open;
+corrected134, measured wording and five do_sign obligations unchanged.
+
 # Current continuation — success-mass task ACTIVE after148
 
 The actual first rt1 FFT CALL is complete, including all tripling iterations

@@ -1,3 +1,30 @@
+#149 sealed — generic original first FFT pass
+
+Source commits5e6c5bbb/0810d740. Eight mathematical modules,53 declarations,
+17 sequential full kernel/DAG audit processes, accepted logs0/0. Seven jobs;
+002/003 elaboration failures preserved with causes. Sage006 exact schedule,
+coverage and byte-span controls passed; auxiliary only. Receipt
+6648fdb046cce58a4c1e3705abb8d4603e101f7ff0e1993a4aa73fc7eee804e0; postseal
+8dceb26328047776ee71598a37a7e1debd09c06df17999e551be6021311c9e74, 45284pins.
+Audit collection0a1775835584c5843d9d4be7288a855b78a446da185f8e3b82770201927118fa.
+
+FftFirstBody149.source proves the original two-load/two-store scoped body
+for arbitrary words. FftFirstBuffer149.source derives original pointers and
+preserves the complete image/outside bytes. FftFirstInduction149.source
+proves the original whole loop in exactly hn-u iterations, final u=hn and
+false guard. No per-iteration numeric execution series is needed. The
+structural entry hypotheses are explicit and await actual instantiation.
+
+Actual endpoint remains148: SelectedFftFComplete148.after, with second-call
+entry SelectedFftGBinding148.bound and its exact represented input. No new
+actual selected iteration is claimed. Next150: derive original n1536/hn768/u0
+setup and W1 cells; instantiate149, then reuse144 middle and148 tripling
+induction and close the actual rt2 return. See KEYGEN_FFT_FIRST_149_NEXT_ROUTE.md.
+All149 evidence immutable. No active job after postseal. Whole success-mass
+task ACTIVE under corrected134; full emitted-packet witness, positive Z,
+p_accept and encoding/p_K bounds remain OPEN. Frozen110 history, measured
+wording and exactly five do_sign items unchanged. No push or new worker.
+
 #148 sealed — actual first FFT call complete, rt2 entry ready
 
 Own source commits e769500b,e35a9c7a,e9e09b0d. Receipt
