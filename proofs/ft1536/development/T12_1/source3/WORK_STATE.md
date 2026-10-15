@@ -1,3 +1,53 @@
+#145 sealed — source MUL/SQR ingredients for tripling
+
+Source commits84d44b68,7542dddd. Receipt
+3cdfc99c46a56ea61de7fc02f59ee716144c441f2e688d49b651e592b0ac34bf;
+postseal ed18fdf9b820a95b267bec04cbe5fd4df7476b226d13a2730ef58414e5992fe2,
+43248 pins.12 mathematical +12 isolated audit modules,93 declarations,0/0,
+standard3axioms.13jobs,7failed/mixed001/002/003/005/006/008/009 retained with
+causes. Audit collection456f8cdf2d401cda9088fa412a3db9232845f0727cbe5034c54e0ef17e24bfd1.
+Sage012:40 raw-word cases vs pinned C MUL/SQR, output aliasing and caller
+macro-temporary names preserved, auxiliary only; no probability premise.
+
+FpcMulClosed145.source proves arbitrary-name/all-word local complex MUL,
+exact original arithmetic and scope restoration. FftTripleShape145.mul_shape
+binds all six actual source sites12/13/14,16/17/18; FftTripleCalls145.mul
+reduces their entry obligations to typed input cells and declared outputs.
+FpcSqrClosed145.source proves arbitrary-name in-place square, preserving
+sqr/sub/mul/double order; FftTripleCalls145.square binds actual site15 xr/xi.
+Both preserve heap and caller cells outside their specified outputs.
+
+Optional FpcMulBinding145 generic expander equality was NOT accepted after
+memory/resource failures. Its final source/record are pinned under
+.build/ffttriple145/rejected_source, with all immutable job snapshots.
+It is not an import or premise. Direct six-site bindings passed007 in4.024s
+and fully cover the required MUL sites. Abstract C99MapMIndex145 and
+C99MacroExpand145 helpers passed but do not close that optional equality.
+Failed TERM after006 found no process; job already failed, not cancelled.
+No increased limits or silent repair of historical failures.
+
+ACTUAL endpoint remains SelectedFftMiddle144.after (all middle FFT passes
+closed, t3/m512,full1/logn10). No tripling iteration is claimed in145.
+Next146: local ADD at19/20/21 and pair-store ADD at22/23/24, six input loads,
+two cubic loads, exact body composition and256-iteration invariant. Read
+KEYGEN_FFT_TRIPLE_145_NEXT_ROUTE.md. Tripling startsu0/v1024, cubic pair512+k,
+endsu768/v1536. Derive all caller cells/ranges, preserve source order/scopes;
+no per-iteration C replay. rt2,later KeyGen,full packet witness and concrete
+positive Z/p_accept/coding/p_K remain OPEN. Whole program ACTIVE under
+corrected134; frozen110zero, measured and exactly five do_sign unchanged.
+No push/workers/schedules/IID/F04/newaxioms. All145 evidence immutable;
+no active computation after postseal. Never print giant generated dataBlock.
+
+#145 in progress — general local FPC macros for tripling
+
+Previous goal turn: verified progress, sealed144 / HEAD97224dc9.
+ENTRY145 3a5048446b2e87f86027e767d74ccc46725ef5b2e2bd3731fc8457588bda5a51
+verified42937 inherited pins. Job001 failed on a reserved helper identifier;
+rename only variable to varName. Generic MUL shape/frame are unsealed and
+checking; no145 commits yet. Actual endpoint remains SelectedFftMiddle144.after,
+all middle passes closed, full1/logn10, tripling initialu0/v1024 still to prove.
+No new assumptions/limits, no push/workers/schedules; full goal ACTIVE.
+
 #144 sealed — entire actual middle portion of the first FFT
 
 Source commits cb5d6a39,4cd41e80,76adc1b6. Receipt

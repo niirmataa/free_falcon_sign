@@ -1,3 +1,14 @@
+# Current continuation — success-mass task ACTIVE after145
+
+Latest milestone: reusable source MUL/SQR with direct bindings for six MUL
+sites and one SQR site in the tripling body; see KEYGEN_FFT_TRIPLE_145_REPORT.md
+and KEYGEN_FFT_TRIPLE_145_PINS.md. Six ADD sites/body/loop still open. Actual
+execution endpoint remains SelectedFftMiddle144.after, no new tripling
+iteration claimed. The rejected optional generic expander proof is retained
+and is not a premise. Full KeyGen witness and all concrete positive mass/
+acceptance/coding bounds remain open under corrected134. Detailed live
+program: KEYGEN_SUCCESS_BIG_TODO.md. Historical states below are preserved.
+
 # Current continuation — success-mass task ACTIVE after144
 
 Latest source milestone: all eight original middle passes of the first FFT
