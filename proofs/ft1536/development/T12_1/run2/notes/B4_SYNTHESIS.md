@@ -948,6 +948,48 @@ F02/F03/F04 become named assembly/do_sign obligations; F01 = B2
 interface fix (small precise task); the ePrint condition "rozliczenie
 otwartych interfejsow" now has its authoritative inventory.
 
+## 2026-10-15: second integration audit (base 60835e6a) reconciles the first - work is FURTHER along
+
+Owner-side integration audit (base 60835e6a) verdict: still
+incomplete, but with an important correction of the picture:
+**the previous audit's coverage map OMITTED existing CompPrg,
+AssemblyComp and KeygenModelBinding134** (all present in its base).
+Current work is further along than the first audit suggested.
+CORRECTION TO MY OWN ENTRY ABOVE: the ChaCha20PRFBound TV/PRG issue
+is NOT new - it is our F06 from Oct 11 (B4 register); both the first
+audit and my yesterday's entry misclassified it as NEW. Apologies
+in the record.
+
+Confirmed sound locally (by type/proof reading + own 5 axiom-free
+Lean lemmas + Sage checks): CompPRGBound/consume its premises
+(cost certificate is INPUT, not a machine-cost proof); KeyLawBinding
+requires real law equality (keyIdent := True insufficient);
+KeygenModelBinding134 adapter is a real transport - its open
+instantiation is EXACTLY positive success mass (package_none_iff,
+KeygenSuccessMass134.positive_iff_witness). Source #147 = whole body
+of one tripling iteration (no 256-iteration consumer yet).
+
+New precise problems: **A02 (code-level!)**: falcon_prng_init is
+INSIDE the attempt loop (falcon-sign.c:3330/3356/3361), each init
+pulls 56 bytes from shared SHAKE (frng.c:290/302), nonces 40 bytes
+from same state (:3286) - one-expansion AdvPrg description does not
+identify whole C Sign. **A03**: joint/stateful honest-signing bridge
+(countered: fixed bit -> equality 1, independent -> 1/2). **A04**:
+game horizon != C randomness-consumption bound (sampler_large own
+rejection loop :2898, get_u64 tail discards internal.h:824-829);
+T01 a.s.-termination vs ghost budgets must not become hard caps.
+**A05**: T5 gate words identity with key vectors (= prior F03).
+**A06**: whole-call law vs per-attempt D1 (KeygenLawBoundary087.
+condition_equal_iff + countermodel 1/2 vs 2/3).
+
+Most valuable next contract per audit: source chronology
+nonce -> seed per attempt -> sampler draws/refill -> retry/abort/
+emit -> next query at one key/one state; then honest-stream game
+type, horizon/loss at truncation, cost certificate. Parallel
+source3 witness lane feeds the prepared consumers - FFT results
+NOT invalidated. Do NOT recreate CompPrg/law adapter. Full
+independent replay remains a separate gate.
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
