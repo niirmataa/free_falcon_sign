@@ -1,3 +1,35 @@
+#135 sealed — actual bound assignment complete; small-to-FPR calls next
+
+Whole owner three-point program ACTIVE / NOT COMPLETE, target corrected134.
+SelectedBound135.source executes original boundCode on actual
+NormalizedSamples129.after to SelectedBound135.after. Exact word
+0x41bdd52ae5073dca (4737176763271429578), source local bound_word proved;
+heap/arrays/globals/tables and every other local are unchanged.8source FPR
+calls independently kernel-checked; source AST equality checked. Generator
+small local map was only a proposal; actual-state checked_locals+frame closes
+full source execution. M0 scale1250/100, n1536, same native113flags.
+
+Source commit7da5d68c. Receipt59df3c9c35a01e254c559a2df616b5dd2ecfad5060d9bbfd035d96b293fd7c6a;
+postseal80593ef9d15bb241d9d5f33a192ab19555e40806e4886ba00fd7cd1f4fe13059,
+37761pins.7math+7audit=14/14,60decl,0/0,standard3axioms.11jobs,
+6failed/mixed001/002/003/004/005/009 preserved. Sage010 exact ZZ/QQ rounding
+and chain checks0/0; final dyadic interpretation4198577266204389/8388608 is
+auxiliary, no source/probability premise. No active computation at seal.
+
+Next136: actual KeygenSearchLeaves.SmallCall / smallBody for
+poly_small_to_fp(rt1,f,logn,1), then rt2/g, on SelectedBound135.after.
+This differs in names/body from certificate smallints_to_fpr_keygen;
+old Smallints* theorems mostly consume source executions, not existence.
+Build/use source-sound array expression+normal procedure checking with
+read16/store64 and validated fpr_of(-1/0/1) calls. Existing
+C99FiniteWrite114.write64_sound, C99Read16Compute130.read_sound,
+C99CompactBinding115.bind_sound and C99ScalarCompute130/Steps130 are reusable.
+If full loop reduction is too large, retain actual n1536/guards and normalize
+source-proved chunks; no shadow-state premise. Then raw FFT/GS, public,
+solver, certificate, codecs and positive success-mass instantiations remain.
+No IID/F04, no push/review/subagent/relay/schedule. Five do_sign and measured
+unchanged. Frozen110zero131 and corrected134 both preserved honestly.
+
 #134 sealed — corrected whole law defined; resume concrete seed9
 
 Owner three-point program ACTIVE / NOT COMPLETE. New work targets explicit
