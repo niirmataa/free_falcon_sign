@@ -1,3 +1,38 @@
+#152 sealed — exact indexed FFT images; numerical certificates OPEN
+
+Source commits7ba52070/4c594e79/509f6067.13 mathematical modules,73
+declarations,21 sequential full kernel/DAG audit processes,0/0 accepted
+logs.10jobs; elaboration failures001/003/005/007 retained. Sage009 exact
+sequential/indexed/native-final controls passed, auxiliary only. Receipt
+3b70dc62f7fe7591d2fd8be78ce790885daf4650a829e884af20519e62f42799; postseal
+684e3c2b7ff6a0b89dd71ebb2710491f3d13c6d10dd9ec03d8c6ca844618ec48,46376pins.
+Audit collectionb349b632b360feae97478e6c58d06a07f4d6a37f8b4aaac197444a948b044cba.
+
+Generic disjoint/region lemmas now give exact indexed formulas for first
+pass, complete/partial butterfly groups, all middle passes and tripling.
+SelectedFftImages152.f_source/g_source identify BOTH actual old FFT images
+with fImage/gImage. source_images carries them in SelectedRawNorm151.after;
+norm_source/obligation preserve exactly the old numerical norm target.
+No source operation reassociation, no weakened comparison or native premise.
+
+Actual endpoint remains151; no gate success claimed. Next153: kernel
+certify captured input vectors, then literal numerical vectors per pass,
+then ordered accumulation/comparison. Exact candidate JSON
+.build/jobs/keygen_fftvalues152_009/FFT152_CANDIDATES.json, SHA
+3e9da927968cec19503661809c41af3402da104bfad29c2f041e59204b24d891:
+12 vectors per buffer (input,first,middle0_at24,middle0..7,triple).
+Use f.middle0_at24 for SelectedFftBuffer141.values and g.input for
+SelectedFftGInput148.values, proving those equalities rather than assuming
+them. Norm proposal4704131856579166192; bound4737176763271429578.
+Use KEYGEN_FFT_VALUES_152_NEXT_ROUTE.md. Do not retry whole-expression005
+or source-loop execution; use shared bounded finite checking and existing
+indexed formulas. No increased resources or unsafe evaluation.
+
+All152 evidence immutable; no active job. Whole task ACTIVE under corrected134.
+Numerical gate/GS/solver/emitted packet/certificate/codecs and concrete
+positive Z/p_accept/coding/p_K remain OPEN. Frozen110zero history, measured
+wording and five do_sign obligations unchanged; no push/new worker/schedule.
+
 #151 sealed — actual raw-norm computation; numerical gate OPEN
 
 Source commits94a48554/40fa743e. Nine mathematical modules,70 declarations,

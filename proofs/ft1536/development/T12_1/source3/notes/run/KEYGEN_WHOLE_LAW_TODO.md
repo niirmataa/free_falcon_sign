@@ -1,3 +1,14 @@
+# Current continuation — success-mass task ACTIVE after152
+
+Exact indexed formulas now replace every FFT pass recurrence, with both
+actual images and the original norm obligation preserved kernel-wise.
+13modules/73decl audited,0/0,postseal complete. Staged Sage vectors are
+prepared but not yet kernel-certified; numerical gate remains OPEN.
+See KEYGEN_FFT_VALUES_152_REPORT.md / KEYGEN_FFT_VALUES_152_PINS.md and
+KEYGEN_FFT_VALUES_152_NEXT_ROUTE.md. Actual endpoint SelectedRawNorm151.after.
+Full witness and concrete positive bounds remain open under corrected134;
+measured wording and five do_sign obligations unchanged.
+
 # Current continuation — success-mass task ACTIVE after151
 
 Full original raw-norm computation now kernel-proved through1536 ordered
