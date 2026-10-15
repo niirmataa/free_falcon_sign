@@ -1,3 +1,149 @@
+#136 sealed — complete source conversions and exact3072 FPR words
+
+Whole owner three-point program ACTIVE / NOT COMPLETE, corrected law134.
+Both actual poly_small_to_fp calls are CLOSED: SelectedSmallCalls136.first/
+second,1536iterations each, original final guards/body/void returns/caller
+restoration. All3072 FPR words are source-proved by ConvertedImages136 and
+NormalizedSmallImages136. NormalizedSmall136.reference_equal identifies the
+ENTIRE actual final state with one scratch31 update over SelectedBound135.after.
+USE NormalizedSmall136.after as next computation endpoint, with its second/
+continue_raw source bridges. Raw norm itself is NOT complete.
+
+Source commits572c6350,083466b8,1452a46e,e7e01925,b4dcda80. Receipt
+acb3471a8f0829abf74ed59daad42258f5f991d1f383f99343cfd9de92a4c01f;
+postsealbbd5976e0c21fbfc9b4cab81e25eafdf31c3e6a4140429e20e404cfa3d2444ef,
+39380pins.93math+93isolatedaudit=186/186,967decl,0/0,standard3axioms.
+20jobs,6failed/mixed005/006/008/014/015/016 preserved with causes. Sage019
+checks exact ZZ words, pinned113 f/g and final block text identity0/0; no
+probability premise. Audit collection1e3f6849865292636dbe3992952b2fedf60854bf786eda34782dbab8160dee2a.
+Generated48chunks26MB from011; pilotF00 SHA
+df472ec5cfd8468985c0c733caba4444718a6f8ece775974d91ce468135842a4.
+Image candidate013SHA901b2bdbc364446d12ecb41aa4081c1065f68d6f0b998093ffcaa79c6f8f4c0c.
+Large generated sources ignored/pinned; small24imagechecks tracked with recipe.
+No active computation after postseal. All136 sources/evidence now immutable.
+
+Next137: raw FFT calls in KeygenSmallShape136.remaining on compact endpoint.
+Read pinned Extra/c/falcon-fft.c, actual parsed program/headers and tables.
+Need source-exact efficient FPR calls; existing FprAllTotal/C99PrimitiveExists
+prove source-defined add/mul/div for all64-bit words, and FprHeaderTotal has
+explicit packWord/ulshWord/urshWord source equalities. A promising route is
+partial evaluation of unsigned FPR prefixes to word expressions (untrusted
+code generation, then kernel equality), and strengthening existing signed
+suffix proofs to explicit outputs using their ALREADY PROVED range lemmas.
+Alternative proved erasure+existing totality is recorded in NEXT_ROUTE.
+Do not assume host IEEE operations or extracted formulas, increase limits,
+change source arithmetic or reinterpret134. Concrete source FFT/raw/GS,
+public/solver/certificate/encoding and positive mass instantiation remain.
+Old110zero131 retained; no IID/F04, no push/review/subagents/schedules;
+five do_sign and measured paper unchanged. Final whole-task report still due.
+
+#136 live018 — full calls and exact compact endpoint; image coverage finishing
+
+All3072 actual conversion iterations/source calls are CLOSED in013,
+including final guards, void returns and caller-state restoration.
+Pilot image block checks required another bounded split:014/016 full1536
+read reflection reached about6GiB without reducing;015 binder error fixed.
+017 accepted ConvertedWords136 (definitions + actual scratch block identity),
+ConvertedImage136Part00 (64F+64G reads), and NormalizedSmall136.
+The latter proves the ENTIRE final reference state equals a single scratch
+block update over SelectedBound135.after; source frames include all other
+objects, including readonly tables. It exports second/continue_raw at the
+compact endpoint. No shadow-state assumption or source-law change.
+
+CURRENT keygen_conversion136_018 (runner session): imageparts01..23,
+ConvertedImages136 full Fin1536 coverage, NormalizedSmallImages136 transport
+of all words to compact endpoint. Inspect completion before another job.
+Image generator/control candidate013 exists; Sage recipe UNRUN until current
+job ends. Then full isolated audit of all accepted136math, final seal/postseal.
+Failed005/006/008/014/015/016 retained with causes. Existing source commits
+572c6350,083466b8,1452a46e; no136finalseal yet. Next rawFFT state is
+NormalizedSmall136.after, remaining syntax KeygenSmallShape136.remaining.
+Whole KeyGen success/positive mass still OPEN; no push,oneLean,no workers,
+five do_sign unchanged, paper measured, no IID/F04 or new assumptions.
+
+#136 live014 — both full source conversions closed; word images running
+
+Whole program ACTIVE under corrected134. All48 original64-iteration
+prefixes passed: F00pilot010, F01..23+completion/G-entry012,
+G00..23+completion/combinedsource013. Source n1536 and guards unchanged.
+SelectedSmallFComplete136.source and SelectedSmallGComplete136.source are
+now ACCEPTED full actual poly_small_to_fp calls; caller restoration included.
+SelectedSmallCalls136.first/second combine exact sequential states;
+continue_raw is only a continuation rule, not a completed raw norm.
+Old005 monolithic draft was replaced after prefix completion; its failed
+job/source snapshot remains immutable. Commits572c6350,083466b8,1452a46e.
+
+Generated48source candidates from011,total26158093bytes; F00 reproduces
+pilot SHA df472ec5cfd8468985c0c733caba4444718a6f8ece775974d91ce468135842a4.
+GENerated hashes in .build/conversion136/GENERATED_CANDIDATES.json.
+Conversion136ImagesGenerator passed013 and emitted finite control words and
+final block texts, not proof premises. Sage control recipe prepared UNRUN.
+
+CURRENT keygen_conversion136_014 (session returned by runner):
+ConvertedWords136 attempts all1536 load64 images of f and g on the final
+actual state afterG. Inspect receipt before any next computation. If full
+image reduction is too large, preserve failure and use checked smaller
+images/normalization; no new assumption or limit increase. After image
+proof and exact Sage control, full isolated DAG/kernel audit and seal136.
+Current complete caller state SelectedSmallGComplete136.after; next raw FFT
+path KeygenSmallShape136.remaining, then raw gate, GS, public/solver/cert/
+codecs and positive mass instantiation. Read NEXT_ROUTE note for potential
+source-exact fast FPR computation; it is planning only, not a theorem.
+136 failures005/006/008 retained.0/0accepted logs; one job; no push/review/
+subagent/relay/schedules. Five do_sign and measured unchanged.
+
+#136 live010 — first64 conversion prefix under kernel check
+
+Whole owner program ACTIVE, corrected134.135 sealed, actual continuation
+SelectedBound135.after.136 initial6 modules committed572c6350; actual
+poly_small_to_fp entry n1536/u0 established.005 monolithic1536 loop failed
+kernel memory after45.725s; no negative C/probability result inferred.
+C99ProcedureSegments136/Frame136/Normalize136 now accepted006/007; exact
+source prefix composition, whole-state metadata/array/byte frames, literal
+block/local normalization. KeygenSmallChecks136 accepted008.
+
+008 actual-state proposal generator used about4.05GiB without output and
+was deliberately terminated after235.454s(exit143).009 minimal-state
+proposal generator passed2.42s. Only proposal generation uses the small
+state; emitted kernel checks use real SelectedSmallFStart136.initial.
+GeneratedConversion136F00 from009,24551bytes,SHA
+df472ec5cfd8468985c0c733caba4444718a6f8ece775974d91ce468135842a4,
+proposes64iterations and exact scratch block/local images. Source n1536
+and every actual guard retained. Current010 (session11218) compiles this
+pilot, including source_prefix and complete reference-state normalization.
+Inspect result before more computation.136 failure causes005/006/008 kept.
+No final136audit/seal yet; SelectedSmallFComplete136 is the FAILED monolithic
+draft, not an accepted witness. After pilot passes, extend all24F prefixes,
+then G with preserved F scratch contents; close final guards/body/call.
+One job,0/0,limits fixed,no push/review/subagents/schedules; original whole
+source witness and all positive success-mass instantiations still open.
+
+#136 live005 — actual first small-to-FPR loop running
+
+Whole program ACTIVE, target corrected134. Parent135 SEALED. ENTRY136
+be348ec2a295bce151720ce2d8c02c1e030aae83d2bead393f87cd45193113ad
+verified135post80593ef9d15bb241d9d5f33a192ab19555e40806e4886ba00fd7cd1f4fe13059.
+Continuation SelectedBound135.after, exact bound0x41bdd52ae5073dca.
+
+001..004 accepted6math modules0/0: FprTernary136 source of(-1/0/1),
+C99ArrayCompute136 signed16/read64 and source calls; C99ArraySteps136 guarded
+store64, declarations/assignments; C99ProcedureRun136 normal source loops;
+KeygenSmallShape136 exact original raw-norm first two SmallCall arguments and
+smallBody decomposition; SelectedSmallFStart136 actual binding/prologue,
+n1536,u0. Source commit572c6350. No final audit/seal136 yet.
+
+CURRENT keygen_conversion136_005, session50684, one Lean: draft
+SelectedSmallFComplete136 attempts full1536loop via isSome, then body and
+actual KeygenSearchLeaves.SmallCall with restored caller locals/arrays/tables.
+Do NOT claim it passed without receipts. If too large, preserve failure,
+split original source prefixes/normalize rather than raise limits or change n.
+No other process/worker. All136 failures file initially{} pending005 result.
+Next second rt2/g call, exact output images, audit/seal; then FFT/raw/GS,
+public/solver/certificate/codecs, fullseed and success-mass instantiation.
+No IID/F04/newassumptions,push,review,subagents,schedules; five do_sign/ measured
+unchanged. Smallints* historical helper is a different function and mostly
+source→property; active source is poly_small_to_fp x/f.
+
 #135 sealed — actual bound assignment complete; small-to-FPR calls next
 
 Whole owner three-point program ACTIVE / NOT COMPLETE, target corrected134.

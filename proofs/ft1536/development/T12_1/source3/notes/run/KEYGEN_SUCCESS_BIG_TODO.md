@@ -1,3 +1,42 @@
+#136 sealed — complete source conversions and exact3072 FPR words
+
+Whole owner three-point program ACTIVE / NOT COMPLETE, corrected law134.
+Both actual poly_small_to_fp calls are CLOSED: SelectedSmallCalls136.first/
+second,1536iterations each, original final guards/body/void returns/caller
+restoration. All3072 FPR words are source-proved by ConvertedImages136 and
+NormalizedSmallImages136. NormalizedSmall136.reference_equal identifies the
+ENTIRE actual final state with one scratch31 update over SelectedBound135.after.
+USE NormalizedSmall136.after as next computation endpoint, with its second/
+continue_raw source bridges. Raw norm itself is NOT complete.
+
+Source commits572c6350,083466b8,1452a46e,e7e01925,b4dcda80. Receipt
+acb3471a8f0829abf74ed59daad42258f5f991d1f383f99343cfd9de92a4c01f;
+postsealbbd5976e0c21fbfc9b4cab81e25eafdf31c3e6a4140429e20e404cfa3d2444ef,
+39380pins.93math+93isolatedaudit=186/186,967decl,0/0,standard3axioms.
+20jobs,6failed/mixed005/006/008/014/015/016 preserved with causes. Sage019
+checks exact ZZ words, pinned113 f/g and final block text identity0/0; no
+probability premise. Audit collection1e3f6849865292636dbe3992952b2fedf60854bf786eda34782dbab8160dee2a.
+Generated48chunks26MB from011; pilotF00 SHA
+df472ec5cfd8468985c0c733caba4444718a6f8ece775974d91ce468135842a4.
+Image candidate013SHA901b2bdbc364446d12ecb41aa4081c1065f68d6f0b998093ffcaa79c6f8f4c0c.
+Large generated sources ignored/pinned; small24imagechecks tracked with recipe.
+No active computation after postseal. All136 sources/evidence now immutable.
+
+Next137: raw FFT calls in KeygenSmallShape136.remaining on compact endpoint.
+Read pinned Extra/c/falcon-fft.c, actual parsed program/headers and tables.
+Need source-exact efficient FPR calls; existing FprAllTotal/C99PrimitiveExists
+prove source-defined add/mul/div for all64-bit words, and FprHeaderTotal has
+explicit packWord/ulshWord/urshWord source equalities. A promising route is
+partial evaluation of unsigned FPR prefixes to word expressions (untrusted
+code generation, then kernel equality), and strengthening existing signed
+suffix proofs to explicit outputs using their ALREADY PROVED range lemmas.
+Alternative proved erasure+existing totality is recorded in NEXT_ROUTE.
+Do not assume host IEEE operations or extracted formulas, increase limits,
+change source arithmetic or reinterpret134. Concrete source FFT/raw/GS,
+public/solver/certificate/encoding and positive mass instantiation remain.
+Old110zero131 retained; no IID/F04, no push/review/subagents/schedules;
+five do_sign and measured paper unchanged. Final whole-task report still due.
+
 #135 sealed — actual bound assignment complete; small-to-FPR calls next
 
 Whole owner three-point program ACTIVE / NOT COMPLETE, target corrected134.
