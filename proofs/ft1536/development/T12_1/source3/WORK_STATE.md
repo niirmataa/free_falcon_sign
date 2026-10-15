@@ -1,3 +1,94 @@
+#138 sealed — complete first FFT pass, middle/tripling still open
+
+Whole owner program ACTIVE / NOT COMPLETE; corrected134 unchanged.
+First rt1 FFT pass ALL768 iterations and original final guard are closed:
+FftFirstPrefix138.through25, SelectedFftFirstF138.loop_source.
+NormalizedFftFirst138.reference_equal identifies the ENTIRE actual endpoint
+with one scratch update; USE NormalizedFftFirst138.after next. continue_body
+is a source continuation rule, not a completed FFT or KeyGen witness.
+Source entry n1536/hn768/u0 and actual two caller sites are bound to C.
+
+Source commits6497447d,f83abe48,bef344af,479c6e19. Receipt
+095962af00a9e24d304deb2fb3a30298ef427de221586bd14e05daa481b87d27;
+postseal1aec6e0b1b72a064fb0103c75df9219332747a123ea1b7da62272cf2825d313c,
+40573pins.42math+42audit=84/84,410decl,0/0,standard3axioms.15jobs,
+2failed001/007 retained. Sage014 consistency controls0/0, auxiliary only.
+Audit collection381b0bca7041c546a334fa2e579ff7d68b676a72bb5c1a6bd943f4cfa439d66c.
+All138 sources/evidence now immutable. No active proof/computation after seal.
+
+Computational assets: compound C99ArrayRun138/ProcedureRun138 preserve FPC
+macro local scopes; C99ProcedureSegments138.run_source uses originalPrefix136.
+Frame138/Normalize138 provide complete state equality. Capture138 checks one
+changed-block/local snapshot instead of recomputing it three times. FprCached138
+uses15kernel-proved first-pass events and source-sound137fallback. First16pilot
+50.633s/5678104KiB; cached32pilot36.345s/6018312KiB; limits unchanged.
+25chunks16+23*32+16, allactual-state checks; manifestFIRST_CANDIDATES.json.
+Large generated AST/chunks ignored/pinned; recipes reproduce both pilots.
+
+Next139: remaining actual rt1 FFT body afterFirst: part4 t=hn; part5 tmin;
+part6 is seq m=2 and outer loop(t>tmin), then part7 degree-tripling branch.
+Middle outer iterations halve t and double m; inner u1/v1 groups contain
+v-loop butterflies. Extract exact source fragments, bind readonly tables,
+retain macro scopes and all guards. Start from the compact endpoint above;
+no source/law change and no native result premise. Full firstFFT/secondFFT,
+raw accumulation/gate,GS/public/solver/cert/codecs and positive mass goals
+still OPEN. No IID/F04/newassumptions,push,review,subagents,schedules;
+five do_sign and measured paper unchanged; final whole-task report still due.
+
+#138 live010 — first16 source iterations closed; cached32 capture checking
+
+137 sealed; law134 unchanged; whole owner task ACTIVE.138entry
+abc6da7fd5e4dc30aef65d7cf90a2975c340cb8b1e79a655c3bae316c57382f4.
+Generic compound-array/procedure checker+frames committed6497447d. Actual
+FFT syntax/source and entry n1536/hn768/u0 accepted004.005 generated pilot,
+006 accepted GeneratedFft138FirstF00 (16original iterations)50.633s,
+peak5678104KiB. Source guards remain hn768; exact block/local images and
+entire state normalization are proved. No whole FFT completed yet.
+
+To reduce repeated evaluation, C99ProcedureCapture138 captures changed block
+and locals in ONE checked computation, then applies full source frames.
+FprTable138/FprCached138 provide source-proved cached calls with general137
+fallback.009 accepted15concrete operation certificates in
+GeneratedFft138FirstCalls, SHAe8e720d4aed0c8f07aa9fb8b12cdfea77df1292c9ca6fcd2f1b3207ae52ee8a8,
+and FftFirstCache138. Tables are source proofs, not observed-value premises.
+Current keygen_fft138_010(session36356) checks next32iterations on F00.after:
+GeneratedFft138FirstF01,candidate1099746bytes,
+SHA2570e72853e95d847c9c3e4853c62166c4c30b8877f8d550eb02d6d6ff375d22.
+Inspect receipts before another job. F00SHA8c6a37c60905618668f282dcbd1f1780f92e7c6d442b5e300c356402ef08b63a.
+AST450088bytesSHA1fa1241c5810b2576713946f10dbcb209e4ff7baf46e2cf249f63d06d19358a5.
+138failures001/007 retained, no audit/seal yet. Next finish768first-pass,
+then original middle/tripling passes/full F+G FFT and remaining KeyGen path.
+One Lean,limits fixed,0/0,no push/review/workers/schedules; no IID/F04/new
+assumptions, five do_sign and measured paper unchanged.
+
+#138 live006 — actual FFT entry closed; first16-iteration pilot running
+
+Whole owner program ACTIVE / NOT COMPLETE.137 SEALED, law134 unchanged.
+ENTRY138abc6da7fd5e4dc30aef65d7cf90a2975c340cb8b1e79a655c3bae316c57382f4
+verified137postd844211ad416d14ac0d646128cc23869f21bdd56b7b480f3666f95f72b6bfc57.
+Actual caller NormalizedSmall136.after. C99ArrayRun138/ProcedureRun138 support
+compound array scopes/seq/branches/loops with source soundness; FPC macros
+need this, not a source-relation change. Segments/Frame/Normalize138 accepted,
+using original Prefix136 and complete metadata/byte/array frames.
+
+GeneratedFft138Syntax from002 binds actual FFT program and full literal body:
+450088bytes,SHA1fa1241c5810b2576713946f10dbcb209e4ff7baf46e2cf249f63d06d19358a5.
+8top parts: declaration,n,hn, firstu-loop, t=hn,tmin,middlem-loop, full-branch.
+FftShape138 binds both caller sites rt1/rt2 and first-loop fragments. Actual
+SelectedFftFStart138 binding+declaration+n1536+hn768+u0 passed004.
+
+005 generated minimal-state proposals with the source-proved137FPR table.
+CURRENT keygen_fft138_006(session37867): GeneratedFft138FirstF00,16actual
+first-pass iterations, source guards hn768 unchanged, whole scratch/local
+images and full-state normalization. Candidate1100213bytes,SHA
+8c6a37c60905618668f282dcbd1f1780f92e7c6d442b5e300c356402ef08b63a.
+Must inspect receipts before claiming acceptance or another computation.
+001 escaped-constructor syntax failure retained. No final138audit/seal.
+Next finish first-pass768 then exact middle/tripling passes and full F/G FFT
+calls; raw accumulation/gate,GS/public/solver/cert/codecs and positive mass
+instantiation still open. One Lean,limits fixed,0/0,no push/review/subagents/
+schedules; paper measured, five do_sign unchanged, no IID/F04/newassumptions.
+
 #137 sealed — universal source-exact FPR words ready for actual FFT
 
 Whole owner program ACTIVE / NOT COMPLETE, law134 unchanged. Actual next

@@ -1,3 +1,40 @@
+#138 sealed — complete first FFT pass, middle/tripling still open
+
+Whole owner program ACTIVE / NOT COMPLETE; corrected134 unchanged.
+First rt1 FFT pass ALL768 iterations and original final guard are closed:
+FftFirstPrefix138.through25, SelectedFftFirstF138.loop_source.
+NormalizedFftFirst138.reference_equal identifies the ENTIRE actual endpoint
+with one scratch update; USE NormalizedFftFirst138.after next. continue_body
+is a source continuation rule, not a completed FFT or KeyGen witness.
+Source entry n1536/hn768/u0 and actual two caller sites are bound to C.
+
+Source commits6497447d,f83abe48,bef344af,479c6e19. Receipt
+095962af00a9e24d304deb2fb3a30298ef427de221586bd14e05daa481b87d27;
+postseal1aec6e0b1b72a064fb0103c75df9219332747a123ea1b7da62272cf2825d313c,
+40573pins.42math+42audit=84/84,410decl,0/0,standard3axioms.15jobs,
+2failed001/007 retained. Sage014 consistency controls0/0, auxiliary only.
+Audit collection381b0bca7041c546a334fa2e579ff7d68b676a72bb5c1a6bd943f4cfa439d66c.
+All138 sources/evidence now immutable. No active proof/computation after seal.
+
+Computational assets: compound C99ArrayRun138/ProcedureRun138 preserve FPC
+macro local scopes; C99ProcedureSegments138.run_source uses originalPrefix136.
+Frame138/Normalize138 provide complete state equality. Capture138 checks one
+changed-block/local snapshot instead of recomputing it three times. FprCached138
+uses15kernel-proved first-pass events and source-sound137fallback. First16pilot
+50.633s/5678104KiB; cached32pilot36.345s/6018312KiB; limits unchanged.
+25chunks16+23*32+16, allactual-state checks; manifestFIRST_CANDIDATES.json.
+Large generated AST/chunks ignored/pinned; recipes reproduce both pilots.
+
+Next139: remaining actual rt1 FFT body afterFirst: part4 t=hn; part5 tmin;
+part6 is seq m=2 and outer loop(t>tmin), then part7 degree-tripling branch.
+Middle outer iterations halve t and double m; inner u1/v1 groups contain
+v-loop butterflies. Extract exact source fragments, bind readonly tables,
+retain macro scopes and all guards. Start from the compact endpoint above;
+no source/law change and no native result premise. Full firstFFT/secondFFT,
+raw accumulation/gate,GS/public/solver/cert/codecs and positive mass goals
+still OPEN. No IID/F04/newassumptions,push,review,subagents,schedules;
+five do_sign and measured paper unchanged; final whole-task report still due.
+
 #137 sealed — universal source-exact FPR words ready for actual FFT
 
 Whole owner program ACTIVE / NOT COMPLETE, law134 unchanged. Actual next
