@@ -1,3 +1,16 @@
+# Current continuation — success-mass task ACTIVE after155
+
+Full ACTUAL GS computation is source-proved through all helper calls,
+ordered norm and double. Exact finite comparison remains OPEN:
+SelectedGsNorm155.NumericalObligation. Its accepted_of_comparison and
+norm_prefix are conditional, not success witnesses.20 modules/225decl
+fully audited, logs0/0; postseal passed. See KEYGEN_GS_155_REPORT.md /
+KEYGEN_GS_155_PINS.md / KEYGEN_GS_155_NEXT_ROUTE.md. Next certify inverse,
+final vectors, norm trace and comparison using bounded kernel checks.
+No source execution restart. Full witness and all concrete positive
+mass/population/coding bounds remain open. Corrected134, measured wording
+and five do_sign unchanged; no active job, verify pins/processes at entry.
+
 # Current continuation — success-mass task ACTIVE after154
 
 First ACTUAL GS helper complete: source inverse-norm call, all768 iterations,

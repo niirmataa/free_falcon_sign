@@ -1,3 +1,41 @@
+#155 sealed — full actual GS computation; numerical gate OPEN
+
+Source commits d8b997c0/34579672/9dc66ae7/0e2b43a6/39dd7e6a.
+20 mathematical modules,225 declarations,20 sequential full kernel/DAG
+audit processes, accepted logs0/0. All14 jobs retained; mixed001 deprecated
+lemma warning fixed without suppression. Receipt
+a0eb5f0f84c6524e3b0b964396a607840009ce309cef803f44f9ff4e61862649; postseal
+a0b7e82932e2636da5eef20e3a6aa3c1af64425e03d1215e9fc876f50f244c01, 53769 pins.
+Audit collection fa35c9a001efba59879bc8b2a9d9eb6d6855dd9c51afb07fca25692e391b06e6.
+
+Both original adjoint calls, source fpr_of18433 and both scalings, both
+mul-autoadjoint calls, all1536 ordered norm updates and final double are
+source-proved. Shared C99VectorLoop155 induction and exact indexed image
+lemmas avoid per-iteration source replay. Actual pointer bindings, buffer
+separation and preservation of rt3/other inputs are derived.
+New endpoint SelectedGsNorm155.after. SelectedGsNorm155.tail proves the
+whole original GS tail; comparison proves the original comparator at its
+exact arguments. Remaining finite target:
+SelectedGsNorm155.NumericalObligation =
+FprCompare.spec SelectedGsNorm155.finalWord GeneratedBound135.finalWord=1.
+accepted_of_comparison and norm_prefix remain CONDITIONAL on that target.
+
+Sage008 compares9985 words from the actual pinned C helper chain and norm
+against154 candidates; auxiliary only. Candidate GS norm word4736654857535133486
+is NOT kernel-certified; bound word4737176763271429578 is inherited.
+Candidate JSON .build/jobs/keygen_gs154_009/GS154_CANDIDATES.json, SHA
+ dcc03ce308ed26ab1e17578ec0884e3d0487d716df97877ccabeb37ae22b987b.
+Next: bounded inverse-vector/final-vector/trace certificates with
+FiniteWordVector153, WordTree153 and NormTrace153, then exact comparison.
+See KEYGEN_GS_155_NEXT_ROUTE.md. Do not redo source FFT/GS execution or
+retry one giant nested numerical expression; unchanged limits.
+
+All155 evidence immutable; no active proof job after postseal. Whole task
+ACTIVE / NOT_COMPLETE under corrected134. GS acceptance, solver, final
+packet/certificate/codecs and concrete positive Z/p_accept/coding/p_K
+remain OPEN. Frozen110 diagnostic, measured wording and five do_sign
+unchanged; no IID/F04/D1, new axiom/worker/schedule or push.
+
 #154 sealed — actual first GS helper complete
 
 Source commits32b868ac/eb0e6148/f4ca404f. 15 mathematical modules,
