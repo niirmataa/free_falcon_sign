@@ -69,6 +69,18 @@ def generate : IO Unit := do
     let name := "GeneratedSampler129" ++ suffix
     let proposed ← segment 64 state
     emitG name previous 64 proposed
+    if i+1>=20 then
+      let path := "../" ++ name ++ ".lean"
+      let content ← IO.FS.readFile path
+      let support := if i+1=20 then "G19Pointer129" else "KeygenLazyBinding129"
+      let content := content.replace "import Source3.GeneratedProcessTransitions128\n"
+        ("import Source3.GeneratedProcessTransitions128\nimport Source3." ++ support ++ "\n")
+      let bindingName := if i+1=20 then "G19Pointer129.after_binding" else previous ++ ".after_binding"
+      let content := content.replace (previous ++ ".pointer_binding") bindingName
+      let ending := "end FT1536.Source3." ++ name
+      let transfer := "theorem after_binding : (reference after).arrays \"v\".toList=some destination :=\n" ++
+        "  KeygenLazyBinding129.pointer_after ctx destination before contextBlock coefficientBlock localSnapshot pointer_binding\n\n"
+      IO.FS.writeFile path (content.replace ending (transfer ++ ending))
     if proposed.2.length=1 then
       match proposed.2 with
       | event::_ => SamplerProcess129Generator.generateEvent suffix event.before
