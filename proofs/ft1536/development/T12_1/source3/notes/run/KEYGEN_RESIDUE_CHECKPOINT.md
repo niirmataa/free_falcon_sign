@@ -1,3 +1,70 @@
+#139 sealed — exact middle entry and eight butterflies; whole program active
+
+Source commits af81dece, ce804821, b2a27cf8. Receipt
+ dd1f88650fdc1c1c0546692675b920e0bb27d57a0881739a60c1c83e15f157dd;
+postseal 36cc2d43f8a317d40dd1a69e01b8b1d48d4100985f187d0db0c7c0faef6eaa84,
+40997 pins. 13 math +13 audit modules,232 declarations, accepted logs0/0,
+standard3axioms.21jobs,10failed/mixed with causes;014setup-only cache guard
+has explicit record and no invented execution receipt. Sage020 exact C/ZZ
+controls for4/8iterations passed0/0; auxiliary only. All139evidence is now
+immutable. No active computation after postseal.
+
+Use NormalizedFftMiddle139.after, with reference_equal/source/continue_loop,
+not a candidate state. FftMiddlePrefix139.through_eight starts at actual
+FftMiddleLoad139.initial; next v=8, original guard still true. The first
+group has376iterations remaining. FftPinned139 transports actual immutable
+tables; FftTableWord139 obtains exact source words by row without expanding
+the whole table. FftMiddleCompose139 supplies group/outer scope composition.
+
+Next140: reusable source-exact butterfly execution/refinement theorem.
+Read KEYGEN_FFT_MIDDLE_139_NEXT_ROUTE.md. Direct4 and cached4 each cost about40s;
+12-iteration captures failed with fixed limits. Avoid repeating the full AST
+for every butterfly by proving its four-input/four-write rule with all source
+address/arithmetic guards and macro scopes retained. Slower4-iteration
+prefix route remains feasible, deferred for efficiency. No model/source/law
+change. Full middle/tripling, rt2FFT, raw/GS/public/solver/cert/codecs and
+all original concrete positive-mass goals remain OPEN. Law134 is current;
+old110zero131 is unchanged. No IID/F04/newassumptions/push/workers/schedules;
+measured paper and five do_sign items unchanged. Final whole-task report due.
+
+#139 live007 — actual first middle-loop entry and immutable table reads closed
+
+Whole owner program ACTIVE; law134 and sealed138 unchanged. Source commit
+af81dece binds original nested shapes and chain composition. ENTRY139
+9a126b657a4f114383383595733b82fbe81349ee98de8c6965922bb8487e5e39;
+all40573 inherited pins reverified. One Lean only, no active job after007.
+
+SelectedFftMiddleStart139 scalar setup/outerEntry/groupInit accepted004.
+FftPinned139 accepted005: actual original FFT table binding transported
+through seed/cap/setup, both samplers, conversions and first FFT pass.
+FftTableList139/FftTableWord139 accepted007: generic mapM/index transport
+avoids expanding the entire parsed table. Actual square words4/5 are
+0x3febb67ae8584cab and0x3fdfffffffffffff, source-bound without empirical premise.
+FftMiddleLoad139 accepted007(21.77s): actual two loads, group prologue and
+butterfly initialization, dimensions t768/tmin3/m2/ht384/hm1/v2=384/v0.
+NEXT actual endpoint: FftMiddleLoad139.initial. Candidate generator prepared
+for4 original butterfly iterations; not yet run/accepted. No complete
+middle/tripling FFT or whole KeyGen witness yet. Failure jobs001/003/004/006
+retained;006 exhausted memory137.787s, resolved by generic source-index
+transport (word module0071.769s), no resource-limit increase.
+
+Next generate/check actual-state butterfly pilot, then compose full original
+nested loops and tripling. All remaining KeyGen/mass obligations open;
+S1 measured/five do_sign unchanged, no IID/F04/newassumptions/push/workers.
+No139seal/audit yet. Final whole-task report remains due.
+
+#139 resumed — middle FFT source shapes accepted; composition lemma repair
+
+Whole owner program ACTIVE / NOT COMPLETE; law134 and sealed138 unchanged.
+HEAD ea51ccb7; ENTRY139 9a126b657a4f114383383595733b82fbe81349ee98de8c6965922bb8487e5e39.
+Job keygen_fftmiddle139_001 completed: FftMiddleShape139 accepted 0/0;
+C99Chain139 failed on a redundant induction-hypothesis argument, retained
+with cause in KEYGEN_FFT_MIDDLE_139_FAILURES.json. No active Lean at resume.
+The unsealed repair removes only that extra argument. Next check the lemma
+and the actual middle-loop entry, including readonly table loads, from
+NormalizedFftFirst138.after. All full KeyGen and positive-mass goals remain
+open; no IID/F04/new assumptions, push, subagents or schedules.
+
 #138 sealed — complete first FFT pass, middle/tripling still open
 
 Whole owner program ACTIVE / NOT COMPLETE; corrected134 unchanged.
