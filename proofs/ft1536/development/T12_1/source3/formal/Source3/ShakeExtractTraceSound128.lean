@@ -42,12 +42,7 @@ theorem run_sound (ctx : Layout) (propose : Proposal) (fuel : Nat) (code : Stmt)
           exact .fieldPointer _ _ _
       | fieldRead dst member => exact ShakeExtractBasic120.fieldRead_sound ctx before after dst member (ordinary_source _ after events computed).1
       | fieldStore member value => exact ShakeExtractBasic120.fieldStore_sound ctx before after member value (ordinary_source _ after events computed).1
-      | process name =>
-          obtain ⟨middle,_,result⟩ := Option.map_eq_some_iff.mp computed
-          obtain ⟨sameState,sameEvents⟩ := Prod.mk.inj result
-          subst after
-          subst events
-          exact ShakeProcessEvents128.singleton ctx ⟨before,name,middle⟩ checked
+      | process name => exact ShakeProcessEvents128.request_sound ctx propose before after name events computed checked
       | encode dst index value => exact ShakeExtractCalls120.encode_sound ctx before after dst index value (ordinary_source _ after events computed).1
       | copy dst index count => exact ShakeExtractCopy120.copy_sound ctx before after dst index count (ordinary_source _ after events computed).1
       | skip =>

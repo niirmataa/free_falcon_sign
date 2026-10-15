@@ -21,7 +21,7 @@ def run (ctx : Layout) (propose : Proposal) : Nat → Stmt → State → Option 
   | _+1, .fieldPointer dst member, state => some (C99CompactState115.bindPointer state dst (field ctx member),[])
   | _+1, .fieldRead dst member, state => ordinary (ShakeSeedBasic118.readLocal ctx state dst member)
   | _+1, .fieldStore member value, state => ordinary (ShakeExtractBasic120.fieldStore ctx state member value)
-  | _+1, .process name, state => (propose state name).map (fun after => (after,[⟨state,name,after⟩]))
+  | _+1, .process name, state => ShakeProcessEvents128.request propose state name
   | _+1, .encode dst index value, state => ordinary (ShakeExtractCalls120.encode state dst index value)
   | _+1, .copy dst index count, state => ordinary (ShakeExtractCopy120.copy ctx state dst index count)
   | _+1, .skip, state => some (state,[])
