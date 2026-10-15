@@ -1,3 +1,16 @@
+# Current continuation — success-mass task ACTIVE after154
+
+First ACTUAL GS helper complete: source inverse-norm call, all768 iterations,
+derived caller binding/array separation, exact output and preserved inputs.
+15 modules/143 declarations fully audited, logs0/0; postseal passed.
+See KEYGEN_GS_154_REPORT.md / KEYGEN_GS_154_PINS.md / KEYGEN_GS_154_NEXT_ROUTE.md.
+Next source state SelectedGsInvNorm154.after; continue original head via
+SelectedGsContinuation154.source with both adjoint calls, then scale,
+mulAuto and GS norm/gate. Native/Sage candidates are auxiliary only.
+Full GS acceptance, final witness and all concrete positive mass/population/
+coding bounds remain open. Corrected134, measured wording and five do_sign
+unchanged. No active proof job; verify pins/processes at the next entry.
+
 # Current continuation — success-mass task ACTIVE after153
 
 Both ACTUAL FFT numeric images and the first raw-norm gate are now proved

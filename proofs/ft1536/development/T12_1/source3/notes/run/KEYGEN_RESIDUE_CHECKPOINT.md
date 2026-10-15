@@ -1,3 +1,39 @@
+#154 sealed — actual first GS helper complete
+
+Source commits32b868ac/eb0e6148/f4ca404f. 15 mathematical modules,
+143 declarations,15 sequential full kernel/DAG audit processes, accepted
+logs0/0. All16 jobs retained; failed/mixed001/002/004/005/008/011 with
+causes and separate pre-launch approval-timeout record. Receipt
+0fd5c115938650b070bfcd55acc1cb5bf626873ab524dacea82820982541c322; postseal
+0e3bdef22b878705d8d5de47f69dab13ba6cbc906ba16c32a61e0e9e22281ed7, 52751 pins.
+Audit collection 72b389cc6678472012b4566b736daa414fa7758e62c3bbee531c8185985c0da3.
+
+FprDivFast154.source and FprInvFast154.source provide exact source word
+formulas for arbitrary64-bit inputs, reusing the original55-round proof.
+GsInvNormBody154.source is parametric; GsInvNormLoop154.source executes
+all iterations without requiring initialized output. Source syntax and
+caller dimensions/binding/allocation/separation are proved explicitly.
+SelectedGsInvNorm154.source executes the ACTUAL first GS helper from the
+accepted raw-norm state, including all768 inverse-norm iterations and
+caller return. image gives the exact rt3 vector, first_image/second_image
+preserve the two certified FFT inputs. New caller state:
+SelectedGsInvNorm154.after. SelectedGsContinuation154.source requests only
+the original head remainder, starting with both adjoint calls.
+
+Sage009 native controls passed976 pairs; auxiliary GS vectors/trace in
+.build/jobs/keygen_gs154_009/GS154_CANDIDATES.json, SHA
+ dcc03ce308ed26ab1e17578ec0884e3d0487d716df97877ccabeb37ae22b987b.
+Proposed GS norm word4736654857535133486 is NOT kernel-certified; bound
+word4737176763271429578 is inherited. See KEYGEN_GS_154_NEXT_ROUTE.md:
+adjoint, scaling/source fpr_of18433, mulAuto, ordered norm/double/gate,
+with kernel finite certificates. Do not redo completed inverse-norm/FFT.
+
+All154 evidence immutable; no active proof job after postseal. Whole task
+ACTIVE / NOT_COMPLETE under corrected134. Full GS acceptance, solver,
+emitted packet/certificate/codecs and positive Z/p_accept/coding/p_K remain
+OPEN. Frozen110 diagnostic, measured wording and five do_sign unchanged;
+no IID/F04/D1, new axiom/worker/schedule, increased limits or push.
+
 #153 sealed — both numeric FFT images and first raw-norm gate proved
 
 Source commits acf448e9/d645432d/b5b7c54f. 213 mathematical modules,
