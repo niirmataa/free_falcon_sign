@@ -27,7 +27,12 @@ def generate : IO Unit := do
     let replacement := "theorem pointer_binding : (reference before).arrays \"v\".toList=some destination := " ++ previous ++ ".pointer_binding"
     if !(content.splitOn old).length == 2 then
       throw (IO.userError "Pointer lemma template mismatch")
-    IO.FS.writeFile path (content.replace old replacement)
+    let revised := content.replace old replacement
+    let revised := if index>=8 then
+      (revised.replace "import Source3.GeneratedProcessTransitions128\n" "import Source3.GeneratedProcessTransitions128\nimport Source3.KeygenLazySampler129\n").replace
+        "KeygenSamplerNormalize128" "KeygenLazySampler129"
+      else revised
+    IO.FS.writeFile path revised
     manifest := manifest.push (Lean.Json.mkObj [("module",Lean.toJson name),
       ("count",Lean.toJson (64:Nat)),("through",Lean.toJson (64*(index:Nat))),
       ("events",Lean.toJson proposed.2.length)])

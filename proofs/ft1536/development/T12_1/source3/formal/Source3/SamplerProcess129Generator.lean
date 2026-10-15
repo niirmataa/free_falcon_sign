@@ -28,7 +28,30 @@ def run (fuel : Nat) (code : ShakeBlock.Stmt) (state : State) : IO State :=
   | some after => pure after
 
 def generateEvent (suffix : String) (before : State) : IO Unit := do
-  let site := "ProcessSite129" ++ suffix
+  let original := "ProcessSite129" ++ suffix
+  let site := "NormalizedProcessSite129" ++ suffix
+  let inputBlock ← match C99FiniteMap114.lookup before.heap.blocks 30 with
+    | some data => pure data | none => throw (IO.userError "Missing event input context")
+  let rcBlock ← match C99FiniteMap114.lookup before.heap.blocks 20 with
+    | some data => pure data | none => throw (IO.userError "Missing event RC block")
+  let siteText := "import Source3." ++ original ++ "\nimport Source3.C99LazyBlock129\n\n" ++
+    "set_option maxRecDepth 32768\nset_option maxHeartbeats 2000000\nset_option Elab.async false\n\n" ++
+    "namespace FT1536.Source3." ++ site ++ "\nopen C99CompactState115 (State reference)\n\n" ++
+    "def ctx := " ++ original ++ ".ctx\n" ++
+    "def pointer := " ++ original ++ ".pointer\n" ++
+    "def table := " ++ original ++ ".table\n" ++
+    "def inputBlock : C99FiniteMemory114.Block := " ++ blockText inputBlock ++ "\n\n" ++
+    "def rcBlock : C99FiniteMemory114.Block := " ++ blockText rcBlock ++ "\n\n" ++
+    "theorem input_image : C99FiniteMap114.lookup " ++ original ++ ".event.before.heap.blocks ctx.block=some inputBlock := by decide +kernel\n\n" ++
+    "theorem rc_image : C99FiniteMap114.lookup " ++ original ++ ".event.before.heap.blocks table.block=some rcBlock := by decide +kernel\n\n" ++
+    "def caller : State := C99LazyBlock129.pair " ++ original ++ ".event.before ctx.block table.block inputBlock rcBlock\n" ++
+    "theorem caller_same : reference caller=reference " ++ original ++ ".event.before := C99LazyBlock129.pair_same _ _ _ _ _ (by decide +kernel) input_image rc_image\n" ++
+    "def blockEntry := ShakeProcessCompute116.entry caller pointer table\n" ++
+    "theorem table_binding : (reference caller).tables \"RC\".toList=some table := " ++ original ++ ".table_binding\n" ++
+    "theorem static_checked : ShakeProcessCompute116.StaticGuard caller.heap table := by decide +kernel\n\n" ++
+    "end FT1536.Source3." ++ site ++ "\n"
+  IO.FS.createDirAll "../generated"
+  IO.FS.writeFile ("../generated/" ++ site ++ ".lean") siteText
   let entered := ShakeProcessCompute116.entry before ⟨30,224,25,8,0⟩ GeneratedSeed119Fixture.rcPointer
   let declared ← run 64 (ShakeBlock.chain ShakeBlock.prologue) entered
   let mut ready ← run 64 ShakeBlock.initial declared
