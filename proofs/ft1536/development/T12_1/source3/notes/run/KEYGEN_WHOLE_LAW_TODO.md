@@ -1,3 +1,16 @@
+# Current continuation — success-mass task ACTIVE after156
+
+Both ACTUAL raw and GS norm gates now accept unconditionally in the kernel.
+SelectedGsGate156 closes the numerical obligation; SelectedAttemptPrefix156
+composes the same source samplers, resultants and both norm gates.
+51 modules/160decl fully audited, logs0/0; postseal passed. See
+KEYGEN_GS_CELLS_156_REPORT.md / KEYGEN_GS_CELLS_156_PINS.md /
+KEYGEN_GS_CELLS_156_NEXT_ROUTE.md. Next source state publicInput includes
+original scope close; next PUBLIC-KEY gate, then root solver, certificate
+and encoding. Full witness and positive mass/population/coding bounds
+remain open. Corrected134, measured wording and five do_sign unchanged;
+no active job, verify pins/processes at entry.
+
 # Current continuation — success-mass task ACTIVE after155
 
 Full ACTUAL GS computation is source-proved through all helper calls,

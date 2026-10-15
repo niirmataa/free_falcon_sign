@@ -1,3 +1,35 @@
+#156 sealed — GS gate accepts; actual sampled prefix complete
+
+Source commit5d58b995.51 mathematical modules,160 declarations,51 sequential
+full kernel/DAG audit processes, accepted logs0/0. Seven jobs, no failures;
+108 bounded certificates and seven full vector equalities. Receipt
+d968918296fb647b2b2b8ef1226b6c68e7d2dd13e7c7db879066bab38b077067; postseal
+1916153fd32fed70e7ee963fd049a0305379434fd075763ef124798f0dcdafcd, 54931 pins.
+Audit collection 177858bdf2edc736a810be346a0567e3282a423f7209f89944d8c60b3be1c64b.
+
+SelectedGsGate156.sum_word/norm_word prove accumulator4732151257907762990
+and final GS norm word4736654857535133486. The original comparator returns1
+against bound word4737176763271429578. These are FPEMU encodings.
+accepted/source/norm_prefix are UNCONDITIONAL: both actual raw and GS norm
+gates accept. No comparison premise remains. SelectedNumericGs156 connects
+literal denominators/inverses/scaled/final vectors and the ordered trace
+to actual source images; Sage/native evidence is not a premise.
+
+SelectedAttemptPrefix156.ternary composes BOTH actual samplers, BOTH
+resultant checks and BOTH norm gates from the same prepared entry.
+Next state: SelectedAttemptPrefix156.publicInput, with original
+KeygenCallerPrefix.close saved normed, saved=reference SelectedFullStart127.ready.
+Next obligations are PUBLIC-KEY gate, then ROOT solver, then certificate
+and final encoding. continue_search leaves publicGate/rootGate explicit.
+See KEYGEN_GS_CELLS_156_NEXT_ROUTE.md; do not redo completed FFT/GS checks.
+
+All156 evidence immutable; no active proof job after postseal. Whole task
+ACTIVE / NOT_COMPLETE under corrected134. No complete emitted-packet
+witness or concrete positive Z/p_accept/coding/p_K bound yet. Population
+acceptance remains separate from this selected prefix. Frozen110 diagnostic,
+measured wording and five do_sign unchanged; no IID/D1/F04, new axiom,
+worker/schedule, increased limits or push.
+
 #155 sealed — full actual GS computation; numerical gate OPEN
 
 Source commits d8b997c0/34579672/9dc66ae7/0e2b43a6/39dd7e6a.
