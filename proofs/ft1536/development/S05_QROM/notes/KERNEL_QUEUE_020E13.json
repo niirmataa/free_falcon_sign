@@ -1,0 +1,74 @@
+{
+  "task": "S05/TODO020E/execution-counts020E13",
+  "status": "KERNEL_SCOPED_COUNTS_NOT_REVIEWED",
+  "items": [
+    {
+      "id": "E7-E11-RAW-CORE",
+      "status": "KERNEL_SCOPED_PREVIOUS",
+      "scope": "Actual producer, consumer and multi-step raw core with full old result"
+    },
+    {
+      "id": "E12-PREPARATION",
+      "status": "KERNEL_IN_SELECTED_MODEL",
+      "scope": "Concrete E5 fill/parser, finite port materialization, public reset, stored startup and output fill"
+    },
+    {
+      "id": "E12-PUBLIC-CALL",
+      "status": "KERNEL_SCOPED",
+      "exports": [
+        "PublicCall020E12.run_eq",
+        "PublicCall020E12.every_tape",
+        "PublicCall020E12.full_response"
+      ]
+    },
+    {
+      "id": "E12-JP",
+      "status": "KERNEL_UNDER_UNCHANGED_M",
+      "exports": [
+        "PublicCallLaw020E12.certificate",
+        "PublicCallLaw020E12.same_key_law"
+      ],
+      "scope": "Full output law including none-response; same P, public initial, no loss change or new success conditioning"
+    },
+    {
+      "id": "E6-FAMILIES-STARTUP",
+      "status": "KERNEL_SCOPED_E12",
+      "scope": "New fixed stored IR startup producer with checked consumer"
+    },
+    {
+      "id": "E13-CORE-COUNTS",
+      "status": "KERNEL_SCOPED",
+      "exports": [
+        "CoreDriverCount020E13.valid",
+        "PublicCallCount020E13.core_bound",
+        "ExecutionCountNumbers020E13.public_bounds"
+      ],
+      "scope": "Exact14733 cycles and32 consumer transitions per executed raw-core round; ghosts, not total time/peak."
+    },
+    {
+      "id": "E14-PRIMITIVE-PRICES",
+      "status": "OPEN_NEXT",
+      "scope": "Price actual Fetch.step/execute, decode/store and loop control using finite primitive operations and explicit scratch; compose with E13, then add remaining E12 phases and allocation lifetimes."
+    },
+    {
+      "id": "E6-FAMILIES-FILL-PARSER",
+      "status": "OPEN_SEPARATE_BACKEND",
+      "scope": "E12 uses the concrete finite E5 machines. Uniform lowering of these phases into the stored-command backend is not claimed."
+    },
+    {
+      "id": "E6-FULL-RESOURCES",
+      "status": "OPEN_PARTIAL_E13",
+      "scope": "Inner core structural counts and erasure are kernel-proved. Primitive prices, all public preparation/startup/readout work, loading/copies, actual scratch and all lifetimes/peak remain open."
+    },
+    {
+      "id": "SOURCE-M-KEY-LAW",
+      "status": "OPEN_UNCHANGED",
+      "scope": "Prove original M on support of actual source key law and bind the same h; E12 transport does not construct this witness"
+    },
+    {
+      "id": "SOURCE-QROM",
+      "status": "OPEN_UNCHANGED",
+      "scope": "Native sign/key/PRG binding and all remaining TARGET_CONTRACT quantum obligations; no security declaration"
+    }
+  ]
+}

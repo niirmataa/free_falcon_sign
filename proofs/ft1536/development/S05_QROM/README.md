@@ -3,6 +3,20 @@
 Status: **WARUNKOWY / DEVELOPMENT**, bez twierdzenia bezpieczeństwa FT1536
 w QROM i bez niezależnego odbioru. Tor rozwija wpis S05 w ROADMAP.
 
+**Kontynuacja020E13 — [liczniki wykonania rdzenia](notes/EXECUTION_COUNTS_020E13_CHECKPOINT.md), KERNEL_SCOPED_COUNTS / NOT_REVIEWED:**
+Instrumentowane rzeczywiste wykonanie zachowuje wynik całego publicznego
+wywołania i pełną odpowiedź dla każdej taśmy. **Dokładnie14733 cykle producentów
+oraz32 przejścia konsumenta na rundę rdzenia**, z osobnym rachunkiem skanów,
+zapisów i zatrzymania, także przy błędach.16 modułów,68 twierdzeń,
+audyt93 eksportów; dokładne stałe Sage i Lean;37 prób zachowanych.
+**Liczniki obejmują tylko wewnętrzny raw core. Pełny czas i peak nadal OPEN:**
+ceny prymitywów, przygotowanie/startup/parser/readout, kopie i wspólne okresy
+życia wymagają dowodu. Liczniki nie są certyfikatem alokacji.
+(M), źródłowe pokrycie prawa kluczy i QROM bez zmian; bez niezależnego odbioru.
+[Kontrola autora](notes/EXECUTION_COUNTS_020E13_SELF_REVIEW.md),
+[klasy](notes/CERTIFICATE_CLASSES_020E13.json), [kolejka](notes/KERNEL_QUEUE_020E13.json).
+Jedno okno, bez push; monitor ROM PAUSED. Poniżej historia wcześniejszych etapów.
+
 **Kontynuacja020E12 — [pełne publiczne wywołanie i J/P](notes/PUBLIC_CALL_020E12_CHECKPOINT.md), KERNEL_SCOPED / CONDITIONAL_M / NOT_REVIEWED:**
 Konkretne pętle E5 przygotowania/parsera, materializacja portów, nowy stały
 startup w IR, raw core E11 i pełny odbiór tworzą jedno wywołanie. **EveryTape

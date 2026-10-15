@@ -1,0 +1,69 @@
+{
+  "task": "S05/TODO020E/execution-counts020E13",
+  "status": "KERNEL_SCOPED_COUNTS_NOT_REVIEWED",
+  "entries": [
+    {
+      "name": "Selected E12 finite model and ghost structural counters",
+      "class": "MODEL",
+      "status": "EXPLICIT",
+      "scope": "Same finite E5 preparation/parser and E6/E11 raw core. Counters record selected events, not native time or allocated machine cells."
+    },
+    {
+      "name": "Producer/consumer counts and erasure",
+      "class": "PROOF_OBLIGATION",
+      "status": "DISCHARGED_SCOPED",
+      "exports": [
+        "ProducerCount020E13.value",
+        "ProducerExactCount020E13.invoke_cycles",
+        "ProducerExactCount020E13.core_cycles",
+        "ConsumerCount020E13.consume_value",
+        "ConsumerCount020E13.consume_bound",
+        "ConsumerCountBoundary020E13.run_no_write"
+      ]
+    },
+    {
+      "name": "Raw core composition and full public-result preservation",
+      "class": "PROOF_OBLIGATION",
+      "status": "DISCHARGED_SCOPED",
+      "exports": [
+        "CoreDriverCount020E13.value",
+        "CoreDriverCount020E13.valid",
+        "PublicCallCount020E13.value",
+        "PublicCallCount020E13.every_tape",
+        "PublicCallCount020E13.core_bound"
+      ],
+      "scope": "All Context/Memory/fuel for raw core; all resident Data/tapes for public erasure/bound. Canonical prepared key/code for every-tape response. Full call executes but counts cover only inner core."
+    },
+    {
+      "name": "Scalar specialization",
+      "class": "PROOF_OBLIGATION",
+      "status": "KERNEL_AND_EXACT_SAGE",
+      "exports": [
+        "ExecutionCountNumbers020E13.budget_value",
+        "ExecutionCountNumbers020E13.public_bounds"
+      ]
+    },
+    {
+      "name": "Q-RESC primitive prices, preparation/startup/readout, actual allocations and peak",
+      "class": "PROOF_OBLIGATION",
+      "status": "OPEN",
+      "scope": "No free load/copy/shared-memory assumption. Counters are not memory certificates."
+    },
+    {
+      "name": "Full J/P under exact original M; source proof of M on actual keys",
+      "class": "PROOF_OBLIGATION",
+      "status": "E12_CONDITIONAL_TRANSPORT_UNCHANGED_SOURCE_COVERAGE_OPEN",
+      "scope": "M is not a cryptographic assumption; E13 does not discharge it or redefine the output law."
+    },
+    {
+      "name": "Uniform fill/parser lowering, KeyGen/Sign/PRG source binding and remaining QROM reduction",
+      "class": "PROOF_OBLIGATION",
+      "status": "OPEN_UNCHANGED"
+    },
+    {
+      "name": "A-QMT and Q-PRG primitive bounds",
+      "class": "CRYPTOGRAPHIC_ASSUMPTION",
+      "status": "UNCHANGED_NOT_INSTANTIATED"
+    }
+  ]
+}
