@@ -1,3 +1,27 @@
+#132 sealed — missing sqrt callee source-closed; new norm spine next
+
+Whole owner program ACTIVE / NOT COMPLETE. Source commit1dbd49de.
+FprSqrtEight132.source/exact: actual source sqrt on0x4020000000000000
+returns0x4006a09e667f3bcd. FprOfEight132.source closes actual of(8).
+FprScalarClosure132.previous/deterministic/strict_extension preserve old
+calls and define a genuine new deterministic source closure. Frozen110 stays
+unchanged with its131zero theorem; no positive whole success claim yet.
+
+Receipt132 dc7c5a4efcef525c3f4433cc9264921325655cc4e37971e60cd53799098d8537;
+postseal6e507b3cbbea5b10799f4254f73a0a61e6a21b870c55eb05dd493a410d87cf41,
+36481 pins.7math+7audit=14/14,52decl,0/0,standard3axioms. Sage010 exact
+ZZ/QQ54round and midpoint control0/0, auxiliary only.11jobs,4failures
+001/003/005/009 retained;009 was invocation/setup failure before Sage,
+no computation receipt invented. Full report KEYGEN_SQRT_132_REPORT.md.
+
+Next133: explicit new Search evaluation/execution using132 scalar closure
+on SAME source syntax, old execution embedding, determinism, frames/slots/
+stability. New norm execution changes only mandatory bound initialization;
+reuse unchanged raw/GS relations. Then transport the affected caller/attempt/
+loop/whole-law spine explicitly. Do not identify old/new whole laws.
+One job, no active process at this checkpoint, no push/review/subagents.
+Three-point TODO and five do_sign obligations unchanged; paper measured.
+
 #131 sealed — frozen-law coverage obstruction; explicit source repair next
 
 Owner continuous three-point program ACTIVE / NOT COMPLETE / NOT_REVIEWED.
