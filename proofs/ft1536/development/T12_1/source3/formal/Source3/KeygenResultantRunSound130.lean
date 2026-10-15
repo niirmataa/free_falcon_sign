@@ -37,7 +37,7 @@ theorem sound (fuel block : Nat) (before after : State) (args : List C99ArrayRef
         (KeygenResultantRun130.profile_sound packed word profile)
         (KeygenWordEndpoints130.normal_sound fuel _ packed reduced fallthrough)
         (KeygenWordEndpoints130.returned_sound fuel _ reduced last returned ending) ?_
-      · have source := KeygenScalarCompute121.run_sound 16 KeygenResultantSource.setup
+      · have source := C99ScalarSteps130.run_sound 16 KeygenResultantSource.setup
           (KeygenResultantInit130.entry bound block) ready setup
         rw [KeygenResultantInit130.entry_source] at source
         exact source

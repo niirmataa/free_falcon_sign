@@ -19,7 +19,7 @@ theorem sound (fuel : Nat) (code : Stmt) (before : State) (out : Result)
       | modular code =>
           obtain ⟨after,source,same⟩ := Option.map_eq_some_iff.mp computed
           subst out
-          exact .modular code (reference before) _ (KeygenScalarCompute121.run_sound fuel code before after source)
+          exact .modular code (reference before) _ (C99ScalarSteps130.run_sound fuel code before after source)
       | assign name expr =>
           obtain ⟨after,source,same⟩ := Option.map_eq_some_iff.mp computed
           subst out

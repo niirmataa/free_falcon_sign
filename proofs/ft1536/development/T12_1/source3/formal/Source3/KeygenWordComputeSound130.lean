@@ -15,8 +15,7 @@ theorem sound (before : State) (expr : Expr) (out : B20.C.Val)
     (computed : evaluate before expr=some out) : Eval (reference before) expr (value out) := by
   induction expr generalizing out with
   | scalar expr =>
-      exact .scalar expr (value out) (C99CompactScalar115.evaluate_sound FprPrefixCalls.calls noCalls
-        (C99CompactPointer115.noCalls_sound _) before.locals expr out computed)
+      exact .scalar expr (value out) (C99ScalarCompute130.evaluate_sound FprPrefixCalls.calls before.locals expr out computed)
   | load32 name index =>
       obtain ⟨pointer,address,rest⟩ := Option.bind_eq_some_iff.mp computed
       obtain ⟨word,read,same⟩ := Option.map_eq_some_iff.mp rest
@@ -52,7 +51,7 @@ theorem sound (before : State) (expr : Expr) (out : B20.C.Val)
       obtain ⟨x,readLeft,rest⟩ := Option.bind_eq_some_iff.mp computed
       obtain ⟨y,readRight,operation⟩ := Option.bind_eq_some_iff.mp rest
       exact .bin op left right (value x) (value y) (value out) (ihLeft x readLeft) (ihRight y readRight)
-        (C99ExpressionSound.binary_sound op x y out operation)
+        (C99ShiftCompute130.bin_sound op x y out operation)
   | cmp op left right ihLeft ihRight =>
       obtain ⟨x,readLeft,rest⟩ := Option.bind_eq_some_iff.mp computed
       obtain ⟨y,readRight,result⟩ := Option.bind_eq_some_iff.mp rest

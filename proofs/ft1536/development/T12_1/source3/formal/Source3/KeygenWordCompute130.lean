@@ -1,6 +1,7 @@
 import Source3.C99Read16Compute130
 import Source3.KeygenWordExec
 import Source3.KeygenScalarCompute121
+import Source3.C99ScalarSteps130
 
 set_option maxRecDepth 32768
 set_option maxHeartbeats 2000000
@@ -15,7 +16,7 @@ open B20.C (Val)
 /-- Checked finite word expressions. Unsupported calls produce no certificate;
     arithmetic remains the existing UB-aware model, not host arithmetic. -/
 def evaluate (before : State) : Expr → Option Val
-  | .scalar expr => C99CompactScalar115.evaluate noCalls before.locals expr
+  | .scalar expr => C99ScalarCompute130.evaluate before.locals expr
   | .load32 name index => do
       let pointer ← C99CompactPointer115.pointer noCalls before name index
       (C99FiniteRead114.read32 before.heap pointer).map Val.u32
@@ -29,7 +30,7 @@ def evaluate (before : State) : Expr → Option Val
   | .bin op left right => do
       let x ← evaluate before left
       let y ← evaluate before right
-      B20.C.bin op x y
+      C99ShiftCompute130.bin op x y
   | .cmp op left right => do
       let x ← evaluate before left
       let y ← evaluate before right

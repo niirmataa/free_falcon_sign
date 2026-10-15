@@ -17,7 +17,7 @@ def result (out : Result) : C99ProcedureReference.Result :=
     unsupported modular code or an unsupported increment return gives no witness. -/
 def run : Nat → Stmt → State → Option Result
   | 0, _, _ => none
-  | fuel+1, .modular code, before => (KeygenScalarCompute121.run fuel code before).map (fun after => (after,none))
+  | fuel+1, .modular code, before => (C99ScalarSteps130.run fuel code before).map (fun after => (after,none))
   | _+1, .assign name expr, before => (KeygenWordSteps130.assign before name expr).map (fun after => (after,none))
   | _+1, .store name index expr, before => (KeygenWordSteps130.store before name index expr).map (fun after => (after,none))
   | fuel+1, .seq first second, before => do

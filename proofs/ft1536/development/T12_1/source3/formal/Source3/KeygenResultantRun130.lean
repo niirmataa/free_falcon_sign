@@ -10,7 +10,7 @@ open C99CompactState115 (State reference)
 open C99CompactPointer115 (noCalls)
 
 def profileWord (before : State) : Option (BitVec 32) := do
-  let value ← C99CompactScalar115.evaluate noCalls before.locals (.var "logn".toList)
+  let value ← C99ScalarCompute130.evaluate before.locals (.var "logn".toList)
   match value with | .u32 word => some word | _ => none
 
 theorem profile_sound (before : State) (word : BitVec 32)
@@ -24,13 +24,12 @@ theorem profile_sound (before : State) (word : BitVec 32)
   | u32 actual =>
       have same := Option.some.inj rest
       subst word
-      exact C99CompactScalar115.evaluate_sound FprPrefixCalls.calls noCalls
-        (C99CompactPointer115.noCalls_sound _) before.locals (.var "logn".toList) (.u32 actual) evaluated
+      exact C99ScalarCompute130.evaluate_sound FprPrefixCalls.calls before.locals (.var "logn".toList) (.u32 actual) evaluated
 
 def run (fuel block : Nat) (before : State) (args : List C99ArrayReference.Arg) : Option (State×B20.C.Val) := do
   let bound ← C99CompactBinding115.bind noCalls before KeygenResultantSource.params args
   if C99FiniteAllocation115.fresh bound.heap block then
-    let ready ← KeygenScalarCompute121.run 16 KeygenResultantSource.setup (KeygenResultantInit130.entry bound block)
+    let ready ← C99ScalarSteps130.run 16 KeygenResultantSource.setup (KeygenResultantInit130.entry bound block)
     if KeygenResultantInit130.ZeroGuard ready block then
       let packed ← KeygenWordEndpoints130.normal fuel KeygenResultantSource.packing (KeygenResultantInit130.zeroed ready block)
       let word ← profileWord packed
