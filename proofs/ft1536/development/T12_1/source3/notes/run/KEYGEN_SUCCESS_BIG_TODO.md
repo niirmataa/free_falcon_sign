@@ -1,3 +1,35 @@
+#153 sealed — both numeric FFT images and first raw-norm gate proved
+
+Source commits acf448e9/d645432d/b5b7c54f. 213 mathematical modules,
+711 declarations, 213 sequential full kernel/DAG audit processes, accepted
+logs 0/0. All 26 jobs retained, including failed/mixed001/006/025 with
+causes. Sage003/010/015/021 auxiliary only. Receipt
+322663da1dc7559065aab045b8f2a2f60cd0dfa50627b4ce8781782506aa55d9; postseal
+98b6e9ac1c6a62114660a4c11763ce22d24e8a06d818b6760e2be842ec9e7da4, 51996 pins.
+Audit collection 25030a422a2d842b9787555d8f2bc122c0a62748a44145a9376dd35b348aeed8.
+
+SelectedNumericFft153.f_source/g_source identify both ACTUAL FFT images
+with kernel-certified literals; images preserves them in the actual heap.
+SelectedNormGate153.sum_word/norm_word prove accumulator4699628256951795696
+and final word4704131856579166192 (0x41486efffffffff0), with bound word
+4737176763271429578. These are FPEMU encodings, not probabilities.
+accepted/source now prove unconditional acceptance of the original first
+raw-norm gate, from reference SelectedBound135.after to SelectedRawNorm151.after.
+
+The exact next obligation is SelectedNormGate153.continue_gs: original
+KeygenAttemptNorm133.GS ctx SelectedRawNorm151.after out. GS is defined in
+KeygenAttemptNorm.lean and aliased in133; no KeygenGSFrame file is required.
+Read KEYGEN_FFT_CELLS_153_NEXT_ROUTE.md: inverse-norm, adjoints, scale,
+autoadjoint multiplication, ordered norm and comparison. Reuse existing
+division source/totality and generic loop/trace proofs. Numeric candidate
+values remain auxiliary until each new source equality is kernel checked.
+
+All153 evidence immutable. No active proof job after postseal. Whole task
+ACTIVE / NOT_COMPLETE under corrected134. GS/solver/final emitted packet/
+certificate/codecs and concrete positive Z/p_accept/coding/p_K remain OPEN.
+Frozen110 zero-model diagnostic, measured wording and five do_sign items
+unchanged; no IID/F04/D1, new worker, increased limits, schedule or push.
+
 #152 sealed — exact indexed FFT images; numerical certificates OPEN
 
 Source commits7ba52070/4c594e79/509f6067.13 mathematical modules,73

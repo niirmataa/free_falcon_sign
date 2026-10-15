@@ -1,3 +1,15 @@
+# Current continuation — success-mass task ACTIVE after153
+
+Both ACTUAL FFT numeric images and the first raw-norm gate are now proved
+in the kernel, without a numerical-comparison premise. 213 modules /711
+declarations audited in213 sequential processes, logs0/0; postseal passed.
+See KEYGEN_FFT_CELLS_153_REPORT.md / KEYGEN_FFT_CELLS_153_PINS.md and
+KEYGEN_FFT_CELLS_153_NEXT_ROUTE.md. Next: original GS from
+SelectedRawNorm151.after via SelectedNormGate153.continue_gs. Full witness
+and all concrete positive mass/population/coding bounds remain open.
+Corrected134, measured wording and five do_sign items are unchanged.
+No active job after153; verify pins/processes before the next stage.
+
 # Current continuation — success-mass task ACTIVE after152
 
 Exact indexed formulas now replace every FFT pass recurrence, with both
