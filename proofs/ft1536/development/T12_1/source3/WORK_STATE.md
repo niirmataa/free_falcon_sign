@@ -1,3 +1,43 @@
+#142 sealed — actual first middle-FFT outer iteration
+
+Source commits f0845d25,d79a01b7. Receipt
+2e5d17541bf509a507a8c56413b90f207aa11569c99b4ee509c33f48f4fc9b67;
+postseal f1186fe58723e6ababba8d82d6fd0bd31510fbccf915d96e3db5d87a4ca6a0c6,
+42368 pins.8 mathematical +8 isolated audit modules,64 declarations,0/0,
+standard3axioms.10jobs,5failed/mixed with causes retained; Sage009 auxiliary
+exact controls accepted. Audit collection
+325557e9d684d1255692d136a9c28fe578742d298a4bb6f48e0cd60c5eab1ed6.
+
+SelectedFftGroupControl142.source closes u1++,v1+=t and the final false
+group guard after the sealed384-butterfly body. SelectedFftOuterControl142.source
+closes ORIGINAL outer Prefix1 from reference SelectedFftMiddleStart139.setup,
+including t=ht, original outer scope restoration and m<<=1. Endpoint
+SelectedFftOuterControl142.after has t384,m4 and exactly represents
+SelectedFftLoop141.finalValues (symbolic word recurrence, not a new literal
+numeric memory snapshot). SelectedFftOuterContext142 proves n1536,hn768,
+tmin3, root binding, arrays/globals/tables, metadata, outside-buffer byte
+frame relative to the actual v24 snapshot, and readonly FFT-table pins.
+
+NEXT: generic source group prologue/table load and group/pass induction,
+reusing FftLoopInduction141.source; next pass t384,m4,ht192,hm2. Read
+KEYGEN_FFT_CONTROL_142_NEXT_ROUTE.md. Seven middle passes, tripling,rt2 FFT,
+remaining KeyGen witness and all concrete positive mass bounds still OPEN.
+No new source/reference/law134 semantics; frozen110zero unchanged. Full
+owner program ACTIVE, no push/workers/schedules/IID/F04/newaxioms; measured
+and exactly five do_sign items unchanged. All142 evidence now immutable;
+no active computation after postseal. Do not print generated dataBlock lines.
+
+#142 in progress — first outer-pass control closure
+
+Entry6e88f0f4edde1f897ee53a1949b9b2ec5448f60a9d968f03c4cbb68a6ee5e0c9
+verified42155 inherited pins from sealed141 / HEAD8ce9b70e.
+Job001: C99LoopAssign142 accepted0/0; FftControlShape142 rejected one wrong
+AST wrapper in setTNext. Original C assignment is an array-language
+assignment with scalar expression. Failure retained; shape correction
+checks next. No running Lean at recovery. No source142 commits/seal yet.
+Exact endpoint remains SelectedFftGroup141.after until142 is verified.
+Whole program ACTIVE; no push/workers/schedules; five do_sign unchanged.
+
 #141 sealed — generic source loop and actual first384-butterfly group
 
 Source commits9bf41847 and484a6bcc. Receipt
