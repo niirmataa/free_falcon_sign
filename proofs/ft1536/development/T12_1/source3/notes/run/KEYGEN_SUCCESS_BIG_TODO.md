@@ -1,3 +1,39 @@
+#157 sealed — public scalar execution and actual entry; public call OPEN
+
+Source commits 50335c7c/791d4d34/f4a147ec/e5cb4d77.
+16 mathematical modules,131 declarations,16 sequential full kernel/DAG
+audit processes, accepted logs0/0. All17 jobs retained; failed/mixed
+001/002/003/008/009/011/013 with explicit construction/elaboration causes.
+Receipt f1e1ba1f95a084decca017798af452f79e73fb81eab603472ca9f7dd529659bd; postseal
+1e780ae73d16bcc69875f0c466b89ce15322ee2f3bd10048625220144b620e44, 55659 pins.
+Audit collection fc8ec2991a4b386a115e0d88d6f979d27575ae1e574c0c5c595956d63e1c17a6.
+
+PublicCalls157.sound supplies constructive source rules for the eight
+ternary public scalar helpers, including exact argument conversions,
+19-assignment mq_div18433 chain plus final multiplication, and ten-round
+rev10. Existing word/source models are reused, not replaced. The binary
+q12289 adapter is absent; original relations are unchanged and selected
+profile is ternary1. Sage016 agrees with pinned C for164 diagnostic pairs.
+
+SelectedPublicBinding157.source is the actual falcon_compute_public
+parameter binding after both accepted norm gates, including unsigned
+caller ter to signed callee ternary. SelectedPublicMemory157.fresh proves
+block32 fresh through source readonly preservation. SelectedPublicStart157
+supplies original declarations, t[3072] allocation and MKN/q setup:
+ready has n1536/q18433 and actual f/g/h/t bindings. Signed MKN shift safety
+is proved directly. Next state: SelectedPublicStart157.ready; remaining
+conversion, two forward NTTs, nonzero/division loop, inverse NTT and return.
+continue_body/continue_call remain conditional on those executions.
+See KEYGEN_PUBLIC_157_NEXT_ROUTE.md; do not treat inverse source lemmas
+that assume Exec as constructive execution witnesses.
+
+All157 evidence immutable; no active proof job after postseal. Whole task
+ACTIVE / NOT_COMPLETE under corrected134. Full public call, root solver,
+certificate/encoding and emitted-packet witness remain OPEN, as do concrete
+positive Z/p_accept/coding/p_K bounds. Both norm gates156 remain proved.
+Frozen110 diagnostic, measured wording and five do_sign unchanged; no
+IID/D1/F04, new axiom/worker/schedule, increased limits or push.
+
 #156 sealed — GS gate accepts; actual sampled prefix complete
 
 Source commit5d58b995.51 mathematical modules,160 declarations,51 sequential

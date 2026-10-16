@@ -1,3 +1,15 @@
+# Current continuation — success-mass task ACTIVE after157
+
+Eight public scalar helpers now have constructive source rules, including
+q18433 division and rev10. Actual public binding/fresh t array/MKN/q setup
+are proved; next SelectedPublicStart157.ready, original conversion and NTT
+suffix. Full public-call success remains OPEN.16 modules/131decl fully
+audited, logs0/0; postseal passed. See KEYGEN_PUBLIC_157_REPORT.md /
+KEYGEN_PUBLIC_157_PINS.md / KEYGEN_PUBLIC_157_NEXT_ROUTE.md. Both norm
+gates156 stay proved; root solver/certificate/encoding/full witness and
+positive mass/population/coding bounds remain open. Corrected134, measured
+wording and five do_sign unchanged; no active job, verify pins at entry.
+
 # Current continuation — success-mass task ACTIVE after156
 
 Both ACTUAL raw and GS norm gates now accept unconditionally in the kernel.
