@@ -1,3 +1,17 @@
+# Current continuation - success-mass task ACTIVE after159 batch
+
+Ordered-plan continuation accepted three constructive modules:
+PublicForwardEntry159 (both mq_NTT call executions), PublicForwardBody159
+(complete mq_NTT_ternary wrapper; premises = mq_mkgm3 body + tail) and
+PublicGenerateHead159 (generator prologue with the post-increment square
+loop). Audit sets 50+19 declarations, accepted logs 0/0; 15 jobs retained
+with causes. Named wall: the generator suffix (256/256/255 loops + final
+stores; shape pinned by probe 008), then tail passes, fragment 1537 10,
+root solver, certificate, codecs and G(seed*) remain OPEN - not claimed.
+Postseal `.build/public159/POSTSEAL_159.json` and
+`.build/public159b/POSTSEAL_159B.json`. See KEYGEN_PUBLIC_FORWARD_159_REPORT.md.
+Corrected134, measured wording and five do_sign unchanged.
+
 # Current continuation - success-mass task ACTIVE after159
 
 Window158 conversion chain is committed (a253ce47/3326e294/cacf2393) and

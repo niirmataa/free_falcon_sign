@@ -144,3 +144,51 @@ it remains part of the eventual window close. No independent review.
 4. Small local commits without push, retained failures, 0/0 accepted logs,
    one guarded job at a time via tools/job111.py with unique labels
    keygen_publicforward159_*; postseal at the next recoverable checkpoint.
+
+# CONTINUATION batch — ordered plan steps 1a-c, named wall
+
+Status: PARTIAL_PROOF / IN_PROGRESS / NOT_REVIEWED. G(seed*) is NOT proved.
+
+## Step table
+
+| Step (ordered plan) | Status at this close |
+|---|---|
+| 1a. Forward call layer (h/t calls over the ternary body) | DONE — PublicForwardEntry159 accepted (job 003) |
+| 1b. mq_NTT_ternary wrapper body (declarations, gm/igm arrays, MKN, dynamic generator call, aliases) | DONE — PublicForwardBody159 accepted (job 006); open premises: mq_mkgm3 body + tail |
+| 1c. mq_mkgm3 generator head (decls, g init, k=logn, post-increment square loop, ig=div) | DONE — PublicGenerateHead159 accepted (job 014); continuation over the generator suffix |
+| 1d. mq_mkgm3 generator suffix (logn==1 branch, else arm, 256/256/255 loops, final stores) | WALL POINT — shape fully decomposed (probe 008, DIAGNOSTIC, 31264-byte pin), not constructed |
+| 2. tail passes (fragment 1001 61: first pass 768, eight intermediate rounds, tripling 512) | OPEN — not started |
+| 3. suffix fragment 1537 10 (nonzero tests, mq_div_18433 stores, mq_iNTT call, return 1) + packet emit | OPEN — not started |
+| 4. root solver (solve_NTRU_deepest/intermediate) + certificate gate + codec tails | OPEN — not started (historically separate windows) |
+| 5. G(seed*) = KeygenByteGame134.evaluate = some (.inr packet) => Z >= 2^-256 | OPEN — requires 1d+2+3+4 |
+
+## The named wall
+
+The wall is construction volume, not a mathematical obstruction and not an
+integrity event. The exact next unbuilt construct is the constructive
+execution of `KeygenPublicTableSeed.suffix` (falcon-vrfy.c lines 837-884 of
+mq_mkgm3): its parsed shape is fully pinned by the retained probe
+`keygen_publicforward159_008` (stdout:
+`.build/jobs/keygen_publicforward159_008/logs/Source3_PublicGenerateProbe159.stdout`);
+the loop invariants are the value-free Written-range facts described in
+NEXT_ROUTE. After it, the tail passes and fragment 1537 10 follow the same
+pattern, and steps 4-5 add the root solver, certificate and codec stages.
+Each region is window-sized at this project's historical pace (windows
+125-158 delivered roughly one such region each), so steps 1d-5 comprise at
+least ten further window-sized constructions.
+
+## Continuation validation
+
+Fifteen jobs retained (001/002/004/005/008/009/010/011/013 failed or
+diagnostic; 003/006/007/012/014/015 accepted), causes in
+KEYGEN_PUBLIC_FORWARD_159_FAILURES.json; accepted logs all 0/0; limits
+unchanged; one Lean process. Audit sets: 50 declarations over
+PublicForwardEntry159/PublicForwardBody159 (job 007) and 19 declarations
+over PublicGenerateHead159 (job 015), full DAG roundtrip, fresh kernel
+definitions, standard three axioms only. No Sage control, no independent
+review. Postseal pins: `.build/public159/POSTSEAL_159.json` (sha
+ccd05f39988fc963d38139928cacd17a307659dc2db74bbae97d51b0f2ea6299) and
+`.build/public159b/POSTSEAL_159B.json` (sha
+1558cd5b1ffc98f8d8d3c78e96667e9a66a648cd3b813b122befefd87efe367c).
+Local commits without push: a253ce47, 3326e294, cacf2393, 125a1b41,
+edab7a12, 3e735378, e40477f9.
