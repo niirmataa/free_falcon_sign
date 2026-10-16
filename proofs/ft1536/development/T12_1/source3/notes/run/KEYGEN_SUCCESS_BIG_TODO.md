@@ -1,3 +1,18 @@
+# Current continuation - success-mass task ACTIVE after159
+
+Window158 conversion chain is committed (a253ce47/3326e294/cacf2393) and
+window159 opened the constructive public-call layer: PublicForwardEntry159
+(both actual mq_NTT call executions over the ternary body) and
+PublicForwardBody159 (complete mq_NTT_ternary wrapper body; only the
+mq_mkgm3 body and the tail passes remain open). 2 modules/50 declarations
+fully audited (2 isolated processes), accepted logs0/0; jobs 001/002/004/005
+retained with causes; postseal pins `.build/public159/POSTSEAL_159.json`.
+See KEYGEN_PUBLIC_FORWARD_159_REPORT.md / _NEXT_ROUTE.md. Full public-call
+success, root solver, certificate/encoding, G(seed*) and positive mass/
+population/coding bounds remain open; G(seed*) is NOT claimed. Corrected134,
+measured wording and five do_sign unchanged; no active job, verify pins at
+entry.
+
 #157 sealed — public scalar execution and actual entry; public call OPEN
 
 Source commits 50335c7c/791d4d34/f4a147ec/e5cb4d77.

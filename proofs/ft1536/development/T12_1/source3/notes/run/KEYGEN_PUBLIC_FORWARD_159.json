@@ -1,0 +1,59 @@
+{
+  "window": "KEYGEN_PUBLIC_FORWARD_159",
+  "status": "PARTIAL_PROOF_IN_PROGRESS_NOT_REVIEWED_WORKING_NOT_FROZEN",
+  "whole_owner_task": "ACTIVE / NOT_COMPLETE",
+  "entry_pins": {
+    "path": ".build/public158/ENTRY_PINS.json",
+    "checked": 55659,
+    "sha256": "528dbf18337a1e33322eac63ff99a9ba5008fc03449c1751483dcec7b9130290"
+  },
+  "accepted_modules": [
+    {
+      "module": "Source3.PublicForwardEntry159",
+      "source_sha256": "11dcbeda2b5e65299e561fd219f87b91f35e8c8bab6c38c4894918955caa2b7d",
+      "job": "keygen_publicforward159_003",
+      "receipt_sha256": "d02c0721a1388608d195c10ab037d76394c0e4073bf649ff79ef4e1fb21cd861"
+    },
+    {
+      "module": "Source3.PublicForwardBody159",
+      "source_sha256": "6f50af5374bfe5520bcd893b581f8316fbd52c9f3cfd3e7c8a5bb4832eab360b",
+      "job": "keygen_publicforward159_006",
+      "receipt_sha256": "1491cc1bb2a1951114eee2869ab696015791cd2770e232d44aaf40c16ffeaf62"
+    }
+  ],
+  "audit": {
+    "method": "unchanged full DAG roundtrip and fresh safe kernel definition at original type; one declaration per run_cmd; standard three axioms only",
+    "mathematical_modules": 2,
+    "declarations": 50,
+    "isolated_clean_audit_processes": 2,
+    "job": "keygen_publicforward159_007",
+    "receipt_sha256": "dda9930ee764cfb2950d65b37cc8f6a75211e09854d8919cb4c34805ace40f07",
+    "plan_sha256": "ec4c996a5e67349c75ce254ce3b49beb1edec9dc1f8ab42dd2e00a08f189e982",
+    "collection_sha256": "4c3ae08248583fdf3b6055af694ce9045885e6c26cdb36821ff99194ce0ddad4",
+    "aggregate_sha256": "c9006882da78a8eded008ee891888413f55669b8d1a9da913120b89b382debe4"
+  },
+  "jobs_retained": {
+    "count": 7,
+    "failed": ["keygen_publicforward159_001", "keygen_publicforward159_002", "keygen_publicforward159_004", "keygen_publicforward159_005"],
+    "accepted": ["keygen_publicforward159_003", "keygen_publicforward159_006", "keygen_publicforward159_007"],
+    "causes_file": "notes/run/KEYGEN_PUBLIC_FORWARD_159_FAILURES.json"
+  },
+  "source_commits_without_push": ["a253ce47", "3326e294", "cacf2393", "125a1b41", "edab7a12"],
+  "proved": [
+    "constructive mq_NTT call executions for both actual forward invocations, parameterized over the ternary body",
+    "complete mq_NTT_ternary wrapper body from the mq_mkgm3 body and tail executions"
+  ],
+  "open": [
+    "mq_mkgm3 body execution (PublicForwardGenerate159)",
+    "tail passes execution (PublicForwardPasses159)",
+    "both-call frames and the suffix fragment 1537 10 with return 1",
+    "root solver call, certificate gate and codec encoding tail",
+    "G(seed*) witness and positive mass Z >= 2^-256"
+  ],
+  "claims_not_made": [
+    "no public-call success or G(seed*) is proved",
+    "no NTT evaluation, canonical twiddle or table image is assumed",
+    "no IID/D1/F04 or empirical premise, no new axiom, unchanged limits",
+    "no Sage control in this window; no independent review"
+  ]
+}
