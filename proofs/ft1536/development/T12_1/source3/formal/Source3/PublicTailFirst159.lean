@@ -1,7 +1,7 @@
 import Source3.PublicGenerateRemaining159
 import Source3.PublicTailShape159
 
-set_option maxRecDepth 32768
+set_option maxRecDepth 524288
 set_option maxHeartbeats 2000000
 set_option Elab.async false
 
@@ -16,14 +16,14 @@ open C99IntegerReference (Value Ty)
 open C99ProcedureReference (Result)
 open KeygenPublicExec (Exec Stmt)
 open KeygenPublicWord (Eval Address)
-open KeygenPublicTableAtoms (Slot)
+open KeygenPublicTableAtoms (Slot var literal mont)
 open KeygenNttLoopSupport (USlot u64)
 open KeygenSmallOutput (element)
 open PublicTailShape159
 open PublicGenerateTable159 (Written WrittenRange)
 open PublicGenerateIndex159 (lit_i32 var_u64 pointer_within)
 open PublicGenerateHead159 (eval_lit eval_var)
-open PublicGenerateRow159 (mont_var keep_slot keep_u64 u32_slot_after u64_slot_after
+open PublicGenerateRow159 (rowValue mont_var keep_slot keep_u64 u32_slot_after u64_slot_after
   restoreScope_empty scope_empty chain_step)
 open PublicGenerateUpper159 (load_slot)
 
@@ -138,5 +138,57 @@ theorem rSet_exec (s : State) (a gm : ArrayPointer) (e : TailEntry s a gm) :
       (BitVec.ofNat 32 w.toNat) :=
     load_slot s "r" w
   exact ⟨w,read,exec,slot⟩
+
+/- First-pass invariant after u iterations: all 1536 a-cells stay Written
+   (the image is only overwritten, never erased); counters and dims fixed. -/
+structure FirstInv (s : State) (a gm : ArrayPointer) (u : Nat) : Prop where
+  aBinding : s.arrays "a".toList=some a
+  squareBinding : s.arrays "gm_square".toList=some gm
+  nSlot : USlot s "n" 1536
+  hnSlot : USlot s "hn" 768
+  lognSlot : Slot s "logn" 10
+  rSlot : ∃ w, Slot s "r" w
+  uSlot : USlot s "u" u
+  aImage : ∀ i, i<1536 → Written s.heap (element a i)
+  aWidth : a.elementBytes=2
+  aWritable : s.heap.writable a.block=true
+  aAllocated : ∀ i, i<1536 → Allocated s.heap (element a i)
+  aCount : a.index+1536 ≤ a.count
+
+/- Assemble the six first-body statements into the scoped chain. -/
+theorem firstBody_chain (s s1 s2 s3 s4 s5 s6 : State)
+    (dExec : Exec KeygenPublicSource.program []
+      (.scalar (.declare .u32 ["a0".toList,"a1".toList,"b".toList])) s ⟨s1,.normal⟩)
+    (a0Exec : Exec KeygenPublicSource.program []
+      (.assign "a0".toList (load "a" (cvar "u"))) s1 ⟨s2,.normal⟩)
+    (a1Exec : Exec KeygenPublicSource.program []
+      (.assign "a1".toList (load "a" (cadd (cvar "u") (cvar "hn")))) s2 ⟨s3,.normal⟩)
+    (bExec : Exec KeygenPublicSource.program []
+      (.assign "b".toList (PublicTailShape159.mont (var "a1") (var "r"))) s3 ⟨s4,.normal⟩)
+    (store1 : Exec KeygenPublicSource.program []
+      (.store "a".toList (cvar "u") false (addQ (var "a0") (var "b"))) s4 ⟨s5,.normal⟩)
+    (store2 : Exec KeygenPublicSource.program []
+      (.store "a".toList (cadd (cvar "u") (cvar "hn")) false
+        (subQ (addQ (var "a0") (var "a1")) (var "b"))) s5 ⟨s6,.normal⟩) :
+    Exec KeygenPublicSource.program [] PublicTailShape159.firstBody s
+      ⟨C99ArrayReference.restoreScope s s6 ["a0".toList,"a1".toList,"b".toList] [],.normal⟩ := by
+  have chainExec : Exec KeygenPublicSource.program []
+      (KeygenPublicExec.chain [
+        .scalar (.declare .u32 ["a0".toList,"a1".toList,"b".toList]),
+        .assign "a0".toList (load "a" (cvar "u")),
+        .assign "a1".toList (load "a" (cadd (cvar "u") (cvar "hn"))),
+        .assign "b".toList (PublicTailShape159.mont (var "a1") (var "r")),
+        .store "a".toList (cvar "u") false (addQ (var "a0") (var "b")),
+        .store "a".toList (cadd (cvar "u") (cvar "hn")) false
+          (subQ (addQ (var "a0") (var "a1")) (var "b"))]) s ⟨s6,.normal⟩ :=
+    chain_step _ _ s s1 ⟨s6,.normal⟩ dExec
+      (chain_step _ _ s1 s2 ⟨s6,.normal⟩ a0Exec
+        (chain_step _ _ s2 s3 ⟨s6,.normal⟩ a1Exec
+          (chain_step _ _ s3 s4 ⟨s6,.normal⟩ bExec
+            (chain_step _ _ s4 s5 ⟨s6,.normal⟩ store1
+              (chain_step _ _ s5 s6 ⟨s6,.normal⟩ store2 (.skip s6))))))
+  exact KeygenPublicExec.Exec.scope ["a0".toList,"a1".toList,"b".toList] []
+    (KeygenPublicExec.chain _) s ⟨s6,.normal⟩ chainExec
+
 
 end FT1536.Source3.PublicTailFirst159
