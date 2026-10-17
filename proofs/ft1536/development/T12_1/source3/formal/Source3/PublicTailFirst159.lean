@@ -198,9 +198,12 @@ theorem declare_abc (s : State) :
       s1.locals "a0".toList=some (.uint32,none) ∧
       s1.locals "a1".toList=some (.uint32,none) ∧
       s1.locals "b".toList=some (.uint32,none) ∧
-      s1.arrays=s.arrays := by
+      s1.arrays=s.arrays ∧ s1.heap=s.heap ∧
+      s1.locals "u".toList=s.locals "u".toList ∧
+      s1.locals "hn".toList=s.locals "hn".toList ∧
+      s1.locals "r".toList=s.locals "r".toList := by
   set s1 : State := {s with locals := C99DeclarationCells.declareCells .uint32 ["a0".toList,"a1".toList,"b".toList] s.locals}
-  refine ⟨s1,?_,?_,?_,?_,rfl⟩
+  refine ⟨s1,?_,?_,?_,?_,rfl,rfl,?_,?_,?_⟩
   · exact .scalar _ _ _ (C99DeclarationCells.exists_execution KeygenPublicScalar.Call .uint32
       ["a0".toList,"a1".toList,"b".toList] s.locals)
   · show (C99DeclarationCells.declareCells .uint32 ["a0".toList,"a1".toList,"b".toList] s.locals) "a0".toList=_
@@ -208,6 +211,12 @@ theorem declare_abc (s : State) :
   · show (C99DeclarationCells.declareCells .uint32 ["a0".toList,"a1".toList,"b".toList] s.locals) "a1".toList=_
     simp [C99DeclarationCells.declareCells,C99ScalarReference.set]
   · show (C99DeclarationCells.declareCells .uint32 ["a0".toList,"a1".toList,"b".toList] s.locals) "b".toList=_
+    simp [C99DeclarationCells.declareCells,C99ScalarReference.set]
+  · show (C99DeclarationCells.declareCells .uint32 ["a0".toList,"a1".toList,"b".toList] s.locals) "u".toList=s.locals "u".toList
+    simp [C99DeclarationCells.declareCells,C99ScalarReference.set]
+  · show (C99DeclarationCells.declareCells .uint32 ["a0".toList,"a1".toList,"b".toList] s.locals) "hn".toList=s.locals "hn".toList
+    simp [C99DeclarationCells.declareCells,C99ScalarReference.set]
+  · show (C99DeclarationCells.declareCells .uint32 ["a0".toList,"a1".toList,"b".toList] s.locals) "r".toList=s.locals "r".toList
     simp [C99DeclarationCells.declareCells,C99ScalarReference.set]
 
 theorem load_a0_exec (s : State) (a : ArrayPointer) (u : Nat) (hu : u<2^64)
@@ -254,5 +263,141 @@ theorem mont_b_exec (s : State) (rw : BitVec 32) (w1 : BitVec 16)
   · exact .assign "b".toList _ _ .uint32 none (.uint32 bw) bCell
       (mont_var s "a1" "r" (BitVec.ofNat 32 w1.toNat) rw a1Slot rSlot)
   · exact u32_slot_after s "b" bw
+
+/- Store a[u] = mq_add(a0, b). -/
+theorem store_a0_exec (s : State) (a : ArrayPointer) (u : Nat) (hu : u<2^64)
+    (w0 bw : BitVec 32)
+    (aBinding : s.arrays "a".toList=some a) (uSlot : USlot s "u" u)
+    (a0Slot : Slot s "a0" w0) (bSlot : Slot s "b" bw)
+    (aWidth : a.elementBytes=2) (aWritable : s.heap.writable a.block=true)
+    (aAllocated : Allocated s.heap (element a u))
+    (capacity : a.index+u ≤ a.count) :
+    ∃ s', Exec KeygenPublicSource.program []
+      (.store "a".toList (cvar "u") false (addQ (var "a0") (var "b"))) s ⟨s',.normal⟩ ∧
+      Written s'.heap (element a u) ∧ s'.arrays=s.arrays ∧ s'.locals=s.locals ∧
+      s'.heap=Word16Memory158.write s.heap (element a u)
+        (KeygenPublicWord.narrow (.uint32 (KeygenModpAddSub.result .add
+          (PublicArgumentSource157.word (.u32 w0)) (PublicArgumentSource157.word (.u32 bw))
+          (PublicArgumentSource157.word (.i32 (BitVec.ofInt 32 18433)))))) := by
+  set sumW : BitVec 32 := KeygenModpAddSub.result .add
+    (PublicArgumentSource157.word (.u32 w0)) (PublicArgumentSource157.word (.u32 bw))
+    (PublicArgumentSource157.word (.i32 (BitVec.ofInt 32 18433)))
+  have addCall : KeygenPublicScalar.Call (KeygenPublicScalar.name .add)
+      [.uint32 w0,.uint32 bw,C99IntegerReference.convert .int32 18433] (.uint32 sumW) :=
+    PublicArgumentSource157.add (.u32 w0) (.u32 bw) (.i32 (BitVec.ofInt 32 18433))
+  have addEval : Eval [] s (addQ (var "a0") (var "b")) (.uint32 sumW) :=
+    KeygenPublicWord.Eval.call3 _ _ _ _ (.uint32 w0) (.uint32 bw)
+      (C99IntegerReference.convert .int32 18433) _
+      (eval_var s "a0" w0 a0Slot) (eval_var s "b" bw bSlot) (eval_lit s 18433) addCall
+  have addr : Address s "a".toList (cvar "u") (element a u) :=
+    address_u s "a" a u hu aBinding uSlot capacity
+  set h' := Word16Memory158.write s.heap (element a u) (KeygenPublicWord.narrow (.uint32 sumW))
+  refine ⟨{s with heap := h'},?_,?_,rfl,rfl,rfl⟩
+  · exact store_a s a u (.uint32 sumW) (addQ (var "a0") (var "b")) (cvar "u")
+      aWidth aWritable aAllocated addr addEval
+  · exact ⟨_,Word16Memory158.here s.heap (element a u) _ aAllocated aWidth aWritable⟩
+
+/- Store a[u+hn] = mq_sub(mq_add(a0,a1), b). -/
+theorem store_a1_exec (s : State) (a : ArrayPointer) (u : Nat) (hu : u<2^64)
+    (hsum : u+768<2^64) (w0 w1 bw : BitVec 32)
+    (aBinding : s.arrays "a".toList=some a) (uSlot : USlot s "u" u) (hnSlot : USlot s "hn" 768)
+    (a0Slot : Slot s "a0" w0) (a1Slot : Slot s "a1" w1) (bSlot : Slot s "b" bw)
+    (aWidth : a.elementBytes=2) (aWritable : s.heap.writable a.block=true)
+    (aAllocated : Allocated s.heap (element a (768+u)))
+    (capacity : a.index+(u+768) ≤ a.count) :
+    ∃ s', Exec KeygenPublicSource.program []
+      (.store "a".toList (cadd (cvar "u") (cvar "hn")) false
+        (subQ (addQ (var "a0") (var "a1")) (var "b"))) s ⟨s',.normal⟩ ∧
+      Written s'.heap (element a (768+u)) ∧ s'.arrays=s.arrays ∧ s'.locals=s.locals ∧
+      s'.heap=Word16Memory158.write s.heap (element a (768+u))
+        (KeygenPublicWord.narrow (.uint32 (KeygenModpAddSub.result .sub
+          (PublicArgumentSource157.word (.u32 (KeygenModpAddSub.result .add
+            (PublicArgumentSource157.word (.u32 w0)) (PublicArgumentSource157.word (.u32 w1))
+            (PublicArgumentSource157.word (.i32 (BitVec.ofInt 32 18433))))))
+          (PublicArgumentSource157.word (.u32 bw))
+          (PublicArgumentSource157.word (.i32 (BitVec.ofInt 32 18433)))))) := by
+  set midW : BitVec 32 := KeygenModpAddSub.result .add
+    (PublicArgumentSource157.word (.u32 w0)) (PublicArgumentSource157.word (.u32 w1))
+    (PublicArgumentSource157.word (.i32 (BitVec.ofInt 32 18433)))
+  have addCall : KeygenPublicScalar.Call (KeygenPublicScalar.name .add)
+      [.uint32 w0,.uint32 w1,C99IntegerReference.convert .int32 18433] (.uint32 midW) :=
+    PublicArgumentSource157.add (.u32 w0) (.u32 w1) (.i32 (BitVec.ofInt 32 18433))
+  have addEval : Eval [] s (addQ (var "a0") (var "a1")) (.uint32 midW) :=
+    KeygenPublicWord.Eval.call3 _ _ _ _ (.uint32 w0) (.uint32 w1)
+      (C99IntegerReference.convert .int32 18433) _
+      (eval_var s "a0" w0 a0Slot) (eval_var s "a1" w1 a1Slot) (eval_lit s 18433) addCall
+  set subW : BitVec 32 := KeygenModpAddSub.result .sub
+    (PublicArgumentSource157.word (.u32 midW)) (PublicArgumentSource157.word (.u32 bw))
+    (PublicArgumentSource157.word (.i32 (BitVec.ofInt 32 18433)))
+  have subCall : KeygenPublicScalar.Call (KeygenPublicScalar.name .sub)
+      [.uint32 midW,.uint32 bw,C99IntegerReference.convert .int32 18433] (.uint32 subW) :=
+    PublicArgumentSource157.sub (.u32 midW) (.u32 bw) (.i32 (BitVec.ofInt 32 18433))
+  have subEval : Eval [] s (subQ (addQ (var "a0") (var "a1")) (var "b")) (.uint32 subW) :=
+    KeygenPublicWord.Eval.call3 _ _ _ _ (.uint32 midW) (.uint32 bw)
+      (C99IntegerReference.convert .int32 18433) _
+      addEval (eval_var s "b" bw bSlot) (eval_lit s 18433) subCall
+  have addr : Address s "a".toList (cadd (cvar "u") (cvar "hn")) (element a (768+u)) := by
+    simpa [Nat.add_comm] using
+      address_u_plus_hn s "a" a u 768 hu (by decide) hsum aBinding uSlot hnSlot capacity
+  set h' := Word16Memory158.write s.heap (element a (768+u)) (KeygenPublicWord.narrow (.uint32 subW))
+  refine ⟨{s with heap := h'},?_,?_,rfl,rfl,rfl⟩
+  · exact store_a s a (768+u) (.uint32 subW)
+      (subQ (addQ (var "a0") (var "a1")) (var "b")) (cadd (cvar "u") (cvar "hn"))
+      aWidth aWritable aAllocated addr subEval
+  · exact ⟨_,Word16Memory158.here s.heap (element a (768+u)) _ aAllocated aWidth aWritable⟩
+
+/- Two writes: a[u] and a[u+hn], given the read slots. -/
+theorem writes2 (s : State) (a : ArrayPointer) (u : Nat) (hu : u<768) (hsum : u+768<2^64)
+    (aBinding : s.arrays "a".toList=some a) (uSlot : USlot s "u" u) (hnSlot : USlot s "hn" 768)
+    (w0 w1 bw : BitVec 32)
+    (a0Slot : Slot s "a0" w0) (a1Slot : Slot s "a1" w1) (bSlot : Slot s "b" bw)
+    (aWidth : a.elementBytes=2) (aWritable : s.heap.writable a.block=true)
+    (aAllocated : ∀ i, i<1536 → Allocated s.heap (element a i))
+    (capacityU : a.index+u ≤ a.count) (capacityH : a.index+(u+768) ≤ a.count) :
+    ∃ s2, Exec KeygenPublicSource.program []
+        (KeygenPublicExec.chain [
+          .store "a".toList (cvar "u") false (addQ (var "a0") (var "b")),
+          .store "a".toList (cadd (cvar "u") (cvar "hn")) false
+            (subQ (addQ (var "a0") (var "a1")) (var "b"))]) s ⟨s2,.normal⟩ ∧
+      Written s2.heap (element a u) ∧ Written s2.heap (element a (768+u)) := by
+  obtain ⟨s5,store1,low1,arrays5,locals5,heap5⟩ := store_a0_exec s a u (by omega) w0 bw
+    aBinding uSlot a0Slot bSlot aWidth aWritable (aAllocated u (by omega)) capacityU
+  have u5 : USlot s5 "u" u := by
+    show s5.locals "u".toList=some (.uint64,some (u64 u)); rw [locals5]; exact uSlot
+  have hn5 : USlot s5 "hn" 768 := by
+    show s5.locals "hn".toList=some (.uint64,some (u64 768)); rw [locals5]; exact hnSlot
+  have a0Slot5 : Slot s5 "a0" w0 := by
+    show s5.locals "a0".toList=some (.uint32,some (.uint32 w0)); rw [locals5]; exact a0Slot
+  have a1Slot5 : Slot s5 "a1" w1 := by
+    show s5.locals "a1".toList=some (.uint32,some (.uint32 w1)); rw [locals5]; exact a1Slot
+  have bSlot5 : Slot s5 "b" bw := by
+    show s5.locals "b".toList=some (.uint32,some (.uint32 bw)); rw [locals5]; exact bSlot
+  have aB5 : s5.arrays "a".toList=some a := by rw [arrays5]; exact aBinding
+  have allocH : Allocated s5.heap (element a (768+u)) := by
+    rw [heap5]
+    exact PublicGenerateTable159.allocated_write s.heap (element a u) (element a (768+u))
+      (KeygenPublicWord.narrow (.uint32 (KeygenModpAddSub.result .add
+        (PublicArgumentSource157.word (.u32 w0)) (PublicArgumentSource157.word (.u32 bw))
+        (PublicArgumentSource157.word (.i32 (BitVec.ofInt 32 18433))))))
+      (aAllocated (768+u) (by omega))
+  obtain ⟨s6,store2,high1,arrays6,locals6,heap6⟩ := store_a1_exec s5 a u (by omega) hsum w0 w1 bw
+    aB5 u5 hn5 a0Slot5 a1Slot5 bSlot5 aWidth
+    (by rw [heap5]; exact aWritable) allocH capacityH
+  have writes : Exec KeygenPublicSource.program []
+      (KeygenPublicExec.chain [
+        .store "a".toList (cvar "u") false (addQ (var "a0") (var "b")),
+        .store "a".toList (cadd (cvar "u") (cvar "hn")) false
+          (subQ (addQ (var "a0") (var "a1")) (var "b"))]) s ⟨s6,.normal⟩ :=
+    chain_step _ _ s s5 ⟨s6,.normal⟩ store1
+      (chain_step _ _ s5 s6 ⟨s6,.normal⟩ store2 (.skip s6))
+  refine ⟨s6,writes,?_,high1⟩
+  -- low1 is Written s5.heap; transport across the second write
+  have sep : Word16Memory158.Separate (element a (768+u)) (element a u) := by
+    refine .inr (.inr ?_)
+    show (element a u).offset+2 ≤ (element a (768+u)).offset
+    show a.base+a.elementBytes*(a.index+u)+2 ≤ a.base+a.elementBytes*(a.index+(768+u))
+    rw [aWidth]; omega
+  rw [heap6]
+  exact PublicGenerateTable159.written_preserved s5.heap (element a (768+u)) (element a u) _ sep low1
 
 end FT1536.Source3.PublicTailFirst159
