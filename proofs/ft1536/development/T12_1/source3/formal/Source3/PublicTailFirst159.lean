@@ -190,5 +190,69 @@ theorem firstBody_chain (s s1 s2 s3 s4 s5 s6 : State)
   exact KeygenPublicExec.Exec.scope ["a0".toList,"a1".toList,"b".toList] []
     (KeygenPublicExec.chain _) s ⟨s6,.normal⟩ chainExec
 
+/- Individual first-body steps (small proof terms; compose via firstBody_chain). -/
+
+theorem declare_abc (s : State) :
+    ∃ s1, Exec KeygenPublicSource.program []
+      (.scalar (.declare .u32 ["a0".toList,"a1".toList,"b".toList])) s ⟨s1,.normal⟩ ∧
+      s1.locals "a0".toList=some (.uint32,none) ∧
+      s1.locals "a1".toList=some (.uint32,none) ∧
+      s1.locals "b".toList=some (.uint32,none) ∧
+      s1.arrays=s.arrays := by
+  set s1 : State := {s with locals := C99DeclarationCells.declareCells .uint32 ["a0".toList,"a1".toList,"b".toList] s.locals}
+  refine ⟨s1,?_,?_,?_,?_,rfl⟩
+  · exact .scalar _ _ _ (C99DeclarationCells.exists_execution KeygenPublicScalar.Call .uint32
+      ["a0".toList,"a1".toList,"b".toList] s.locals)
+  · show (C99DeclarationCells.declareCells .uint32 ["a0".toList,"a1".toList,"b".toList] s.locals) "a0".toList=_
+    simp [C99DeclarationCells.declareCells,C99ScalarReference.set]
+  · show (C99DeclarationCells.declareCells .uint32 ["a0".toList,"a1".toList,"b".toList] s.locals) "a1".toList=_
+    simp [C99DeclarationCells.declareCells,C99ScalarReference.set]
+  · show (C99DeclarationCells.declareCells .uint32 ["a0".toList,"a1".toList,"b".toList] s.locals) "b".toList=_
+    simp [C99DeclarationCells.declareCells,C99ScalarReference.set]
+
+theorem load_a0_exec (s : State) (a : ArrayPointer) (u : Nat) (hu : u<2^64)
+    (aBinding : s.arrays "a".toList=some a) (uSlot : USlot s "u" u)
+    (aImage : Written s.heap (element a u)) (a0Cell : s.locals "a0".toList=some (.uint32,none))
+    (capacity : a.index+u ≤ a.count) :
+    ∃ w, Exec KeygenPublicSource.program []
+      (.assign "a0".toList (load "a" (cvar "u"))) s
+      ⟨bindValue s "a0".toList .uint32 (C99NarrowReads.unsignedPromotion w),.normal⟩ ∧
+      Slot (bindValue s "a0".toList .uint32 (C99NarrowReads.unsignedPromotion w)) "a0"
+        (BitVec.ofNat 32 w.toNat) := by
+  obtain ⟨w,read⟩ := aImage
+  refine ⟨w,?_,load_slot s "a0" w⟩
+  exact .assign "a0".toList _ _ .uint32 none (C99NarrowReads.unsignedPromotion w) a0Cell
+    (.load16 "a".toList (cvar "u") (element a u) w
+      (address_u s "a" a u hu aBinding uSlot capacity) read)
+
+theorem load_a1_exec (s : State) (a : ArrayPointer) (u : Nat) (hu : u<2^64) (hsum : u+768<2^64)
+    (aBinding : s.arrays "a".toList=some a) (uSlot : USlot s "u" u) (hnSlot : USlot s "hn" 768)
+    (aImage : Written s.heap (element a (768+u))) (a1Cell : s.locals "a1".toList=some (.uint32,none))
+    (capacity : a.index+(u+768) ≤ a.count) :
+    ∃ w, Exec KeygenPublicSource.program []
+      (.assign "a1".toList (load "a" (cadd (cvar "u") (cvar "hn")))) s
+      ⟨bindValue s "a1".toList .uint32 (C99NarrowReads.unsignedPromotion w),.normal⟩ ∧
+      Slot (bindValue s "a1".toList .uint32 (C99NarrowReads.unsignedPromotion w)) "a1"
+        (BitVec.ofNat 32 w.toNat) := by
+  obtain ⟨w,read⟩ := aImage
+  refine ⟨w,?_,load_slot s "a1" w⟩
+  have addr : Address s "a".toList (cadd (cvar "u") (cvar "hn")) (element a (768+u)) := by
+    simpa [Nat.add_comm] using
+      address_u_plus_hn s "a" a u 768 hu (by decide) hsum aBinding uSlot hnSlot capacity
+  exact .assign "a1".toList _ _ .uint32 none (C99NarrowReads.unsignedPromotion w) a1Cell
+    (.load16 "a".toList (cadd (cvar "u") (cvar "hn")) (element a (768+u)) w addr read)
+
+theorem mont_b_exec (s : State) (rw : BitVec 32) (w1 : BitVec 16)
+    (a1Slot : Slot s "a1" (BitVec.ofNat 32 w1.toNat)) (rSlot : Slot s "r" rw)
+    (bCell : s.locals "b".toList=some (.uint32,none)) :
+    ∃ bw, Exec KeygenPublicSource.program []
+      (.assign "b".toList (PublicTailShape159.mont (var "a1") (var "r"))) s
+      ⟨bindValue s "b".toList .uint32 (.uint32 bw),.normal⟩ ∧
+      Slot (bindValue s "b".toList .uint32 (.uint32 bw)) "b" bw := by
+  set bw : BitVec 32 := rowValue (BitVec.ofNat 32 w1.toNat) rw
+  refine ⟨bw,?_,?_⟩
+  · exact .assign "b".toList _ _ .uint32 none (.uint32 bw) bCell
+      (mont_var s "a1" "r" (BitVec.ofNat 32 w1.toNat) rw a1Slot rSlot)
+  · exact u32_slot_after s "b" bw
 
 end FT1536.Source3.PublicTailFirst159
