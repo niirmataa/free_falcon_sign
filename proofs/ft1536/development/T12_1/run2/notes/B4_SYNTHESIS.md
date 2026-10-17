@@ -990,6 +990,35 @@ source3 witness lane feeds the prepared consumers - FFT results
 NOT invalidated. Do NOT recreate CompPrg/law adapter. Full
 independent replay remains a separate gate.
 
+## 2026-10-17: Z-lower 134 STOP_AND_REPORT - positivity IS witness existence (analytic route refuted)
+
+The bounds window delivered step 1 fully (**KeygenMode1Law134** -
+exact conditional per-coefficient law from source MODE1; uniform
+margin m(c)/(1-m(3)) = 1/3, deviation transfer 16delta/(9-12delta),
+oneDraw_transfer identity; deviations computed explicitly - the ONLY
+undetermined component is the SHAKE chunk law over uniform seeds,
+which sources do not determine) and step 4's full consumption chain
+(KeygenModelUnlock134.{z_positive_of_first_attempt_bounds,
+package_of_first_attempt_bounds, package_of_witness,
+package_of_certified_set, acceptMass_positive_iff}). **The key
+theorem: acceptMass_positive_iff - first-attempt mass is positive
+IFF an accepting seed exists.** Therefore the analytic route cannot
+be cheaper than the witness route: positivity = witness existence.
+Step 2 (a > 0 for the real seed law) is a REAL wall (SHAKE chunk
+law), not an omission; measurement 8192/23628 stays a control.
+epsilon = a*c shape closed formally; a and c1 numerically OPEN
+(codec/certificate line). My earlier recommendation (analytic
+shortcut) is hereby formally refuted - recorded like D1.
+
+Decision requested: **R1 (kernel certificate of one public synthetic
+seed = seed9 fixture) is the cheapest sufficient form and unlocks
+KeygenModelBinding134.package via package_of_witness immediately** -
+RECOMMENDED; R2 (explicit RNG premise) would add a new external
+assumption and weaken the claim - only with explicit owner consent.
+R3 (MODE1 law + consumption chain) stays as immutable math.
+Receipt: KEYGEN_Z_LOWER_134.json (643a160d...), postseal Z134,
+commits 8b18ef5b/430ef59b/1ed29612/4926a6df.
+
 ## Consumption map
 
     B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
