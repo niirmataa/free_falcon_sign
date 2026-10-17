@@ -8,8 +8,8 @@ mq_mkgm3 generator suffix) is split into three modules and is the active
 work. This window continues the R1 witness track - the only live path per
 the Z-lower 134 reduction (acceptMass_positive_iff); no analytic shortcut.
 
-Accepted so far (jobs keygen_publicforward159_020/024/029, logs 0/0,
-standard three axioms, one Lean process, unchanged limits):
+Accepted so far (jobs keygen_publicforward159_020/024/029/037/041/044,
+logs 0/0, standard three axioms, one Lean process, unchanged limits):
 - PublicGenerateTable159: Written cells, table frames, legal sixteen-bit
   writes and per-target write preservation.
 - PublicGenerateIndex159: forward source operations and store addresses
@@ -20,16 +20,26 @@ standard three axioms, one Lean process, unchanged limits):
   (falcon-vrfy.c 852-859) with the four-store/four-update body, the exact
   four-layer heap composition, the value-free Written-range invariant
   Cover2, the full loop induction and covered_top ([512,1024) handoff).
-Local commits without push: 3632a30d (support pair), 560fe129 (row loop).
+- PublicGenerateUpper159 (job 041): the complete upper loop body and its
+  256-iteration induction, the square loop body and its 255-iteration
+  descending induction, the finalTail execution (gm0/w/igm0 through
+  executed mq_add/mq_sub/mq_div_18433 calls) and the afterRows composition
+  kSet/u2Init/upperLoop/u3Init/squareLoop/finalTail delivering WrittenRange
+  0 1024 on both arrays from AfterEntry.
+- PublicGenerateRemaining159 (job 044): initK/initB/initU executions
+  composed with the row loop into KeygenPublicTableRows.remaining, and the
+  region-2 handoff generator_suffix_source/suffix_seq_source (WrittenRange
+  0 1024 on gm and igm from RowEntry).
+Local commits without push: 3632a30d (support pair), 560fe129 (row loop),
+c8591c9d (upper/square/finalTail/init-remaining composition).
 
-In checking: PublicGenerateUpper159 - exact parsed shapes of the upper and
-square loops (afterRows_shape against the pinned parser), UpperInv/CoverUp
-and the update executions. Open: the two loop bodies/inductions, finalTail
-(gm0/w/igm0), initK/initB/initU + remaining composition, then regions 2
-(tail passes), 3 (suffix 1537 + emit), 4 (solver/certificate/codec) and 5
-(G(seed*) + package_of_witness -> Z >= 2^-256).
+Region 1d CLOSED; the R1 window continues with region 2 (tail passes,
+fragment 1001 61), instantiating the universal butterfly rules already
+accepted in the 140-148 family at the actual states. Open after that:
+region 3 (suffix 1537 + emit), region 4 (solver/certificate/codec) and
+region 5 (G(seed*) + package_of_witness -> Z >= 2^-256).
 
-Failures 016-028 retained with causes (elaboration/construction only; no
+Failures 016-043 retained with causes (elaboration/construction only; no
 source-C counterexample, no integrity event). Two DIAGNOSTIC syntax probes
 retained (PublicGenerateSyntaxProbe): the toolchain tokenizer glues
 comparison operators immediately followed by `i`; `scoped` is a keyword.
