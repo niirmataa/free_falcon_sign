@@ -400,4 +400,85 @@ theorem writes2 (s : State) (a : ArrayPointer) (u : Nat) (hu : u<768) (hsum : u+
   rw [heap6]
   exact PublicGenerateTable159.written_preserved s5.heap (element a (768+u)) (element a u) _ sep low1
 
+/- declare + load a0. -/
+theorem reads2a (s : State) (a : ArrayPointer) (u : Nat) (hu : u<768)
+    (inv : FirstInv s a gm u) :
+    ∃ s2, Exec KeygenPublicSource.program []
+        (KeygenPublicExec.chain [
+          .scalar (.declare .u32 ["a0".toList,"a1".toList,"b".toList]),
+          .assign "a0".toList (load "a" (cvar "u"))]) s ⟨s2,.normal⟩ ∧
+      s2.arrays "a".toList=some a ∧ USlot s2 "u" u ∧ USlot s2 "hn" 768 ∧
+      (∃ rw, Slot s2 "r" rw) ∧ (∃ w0, Slot s2 "a0" w0) ∧
+      s2.locals "a1".toList=some (.uint32,none) ∧
+      s2.locals "b".toList=some (.uint32,none) := by
+  obtain ⟨rw,rSlot⟩ := inv.rSlot
+  obtain ⟨s1,dExec,a0Cell1,a1Cell1,bCell1,arrays1,heap1,eqU1,eqHn1,eqR1⟩ := declare_abc s
+  have u1 : USlot s1 "u" u := by
+    show s1.locals "u".toList=some (.uint64,some (u64 u)); rw [eqU1]; exact inv.uSlot
+  have hn1 : USlot s1 "hn" 768 := by
+    show s1.locals "hn".toList=some (.uint64,some (u64 768)); rw [eqHn1]; exact inv.hnSlot
+  have r1 : Slot s1 "r" rw := by
+    show s1.locals "r".toList=some (.uint32,some (.uint32 rw)); rw [eqR1]; exact rSlot
+  have aB1 : s1.arrays "a".toList=some a := by rw [arrays1]; exact inv.aBinding
+  have image1 : Written s1.heap (element a u) := by rw [heap1]; exact inv.aImage u (by omega)
+  have capU : a.index+u ≤ a.count := by have := inv.aCount; omega
+  obtain ⟨w0,a0Exec,a0Slot⟩ := load_a0_exec s1 a u (by omega) aB1 u1 image1 a0Cell1 capU
+  set s2 : State := bindValue s1 "a0".toList .uint32 (C99NarrowReads.unsignedPromotion w0)
+  have u2 : USlot s2 "u" u := keep_u64 s1 "u" "a0" .uint32 _ u (by decide) u1
+  have hn2 : USlot s2 "hn" 768 := keep_u64 s1 "hn" "a0" .uint32 _ 768 (by decide) hn1
+  have r2 : Slot s2 "r" rw := keep_slot s1 "r" "a0" .uint32 _ rw (by decide) r1
+  have a1Cell2 : s2.locals "a1".toList=some (.uint32,none) := by
+    show (bindValue s1 "a0".toList _ _).locals "a1".toList=_
+    simp [C99ArrayReference.bindValue,C99ScalarReference.set]; exact a1Cell1
+  have bCell2 : s2.locals "b".toList=some (.uint32,none) := by
+    show (bindValue s1 "a0".toList _ _).locals "b".toList=_
+    simp [C99ArrayReference.bindValue,C99ScalarReference.set]; exact bCell1
+  have reads : Exec KeygenPublicSource.program []
+      (KeygenPublicExec.chain [
+        .scalar (.declare .u32 ["a0".toList,"a1".toList,"b".toList]),
+        .assign "a0".toList (load "a" (cvar "u"))]) s ⟨s2,.normal⟩ :=
+    chain_step _ _ s s1 ⟨s2,.normal⟩ dExec
+      (chain_step _ _ s1 s2 ⟨s2,.normal⟩ a0Exec (.skip s2))
+  exact ⟨s2,reads,aB1,u2,hn2,⟨rw,r2⟩,⟨_,a0Slot⟩,a1Cell2,bCell2⟩
+
+/- load a1 + mont b. -/
+theorem reads2b (s : State) (a : ArrayPointer) (u : Nat) (hu : u<2^64) (hsum : u+768<2^64)
+    (aBinding : s.arrays "a".toList=some a) (uSlot : USlot s "u" u) (hnSlot : USlot s "hn" 768)
+    (rw : BitVec 32) (rSlot : Slot s "r" rw) (w0 : BitVec 32) (a0Slot : Slot s "a0" w0)
+    (a1Cell : s.locals "a1".toList=some (.uint32,none))
+    (bCell : s.locals "b".toList=some (.uint32,none))
+    (aImage : Written s.heap (element a (768+u)))
+    (capacity : a.index+(u+768) ≤ a.count) :
+    ∃ (s2 : State) (w1 : BitVec 16) (bw : BitVec 32), Exec KeygenPublicSource.program []
+        (KeygenPublicExec.chain [
+          .assign "a1".toList (load "a" (cadd (cvar "u") (cvar "hn"))),
+          .assign "b".toList (PublicTailShape159.mont (var "a1") (var "r"))]) s ⟨s2,.normal⟩ ∧
+      Slot s2 "a1" (BitVec.ofNat 32 w1.toNat) ∧ Slot s2 "b" bw ∧ Slot s2 "r" rw ∧
+      Slot s2 "a0" w0 ∧ USlot s2 "u" u ∧ USlot s2 "hn" 768 ∧
+      s2.arrays "a".toList=some a := by
+  obtain ⟨w1,a1Exec,a1Slot⟩ := load_a1_exec s a u hu hsum aBinding uSlot hnSlot aImage a1Cell capacity
+  set s1 : State := bindValue s "a1".toList .uint32 (C99NarrowReads.unsignedPromotion w1)
+  have r1 : Slot s1 "r" rw := keep_slot s "r" "a1" .uint32 _ rw (by decide) rSlot
+  have a01 : Slot s1 "a0" w0 := keep_slot s "a0" "a1" .uint32 _ w0 (by decide) a0Slot
+  have u1 : USlot s1 "u" u := keep_u64 s "u" "a1" .uint32 _ u (by decide) uSlot
+  have hn1 : USlot s1 "hn" 768 := keep_u64 s "hn" "a1" .uint32 _ 768 (by decide) hnSlot
+  have bCell1 : s1.locals "b".toList=some (.uint32,none) := by
+    show (bindValue s "a1".toList _ _).locals "b".toList=_
+    simp [C99ArrayReference.bindValue,C99ScalarReference.set]; exact bCell
+  obtain ⟨bw,bExec,bSlot⟩ := mont_b_exec s1 rw w1 a1Slot r1 bCell1
+  set s2 : State := bindValue s1 "b".toList .uint32 (.uint32 bw)
+  have reads : Exec KeygenPublicSource.program []
+      (KeygenPublicExec.chain [
+        .assign "a1".toList (load "a" (cadd (cvar "u") (cvar "hn"))),
+        .assign "b".toList (PublicTailShape159.mont (var "a1") (var "r"))]) s ⟨s2,.normal⟩ :=
+    chain_step _ _ s s1 ⟨s2,.normal⟩ a1Exec
+      (chain_step _ _ s1 s2 ⟨s2,.normal⟩ bExec (.skip s2))
+  have a1Slot2 : Slot s2 "a1" (BitVec.ofNat 32 w1.toNat) :=
+    keep_slot s1 "a1" "b" .uint32 _ _ (by decide) a1Slot
+  have r2 : Slot s2 "r" rw := keep_slot s1 "r" "b" .uint32 _ rw (by decide) r1
+  have a02 : Slot s2 "a0" w0 := keep_slot s1 "a0" "b" .uint32 _ w0 (by decide) a01
+  have u2 : USlot s2 "u" u := keep_u64 s1 "u" "b" .uint32 _ u (by decide) u1
+  have hn2 : USlot s2 "hn" 768 := keep_u64 s1 "hn" "b" .uint32 _ 768 (by decide) hn1
+  exact ⟨s2,w1,bw,reads,a1Slot2,bSlot,r2,a02,u2,hn2,aBinding⟩
+
 end FT1536.Source3.PublicTailFirst159
