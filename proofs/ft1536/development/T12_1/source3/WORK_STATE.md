@@ -1,3 +1,44 @@
+# Z_LOWER_134 — analytic Z>0 window closed at a named wall (STOP-AND-REPORT)
+
+2026-10-17. Owner window "ANALITYCZNE Z > 0 I BOUNDY (zamiast kernelowego
+swiadka)" executed under the three-window budget. Status PARTIAL_PROOF /
+STOP_AND_REPORT / NOT_REVIEWED; owner task NOT COMPLETE: no positive epsilon
+is established for the actual 32-byte seed law of KeygenProbability134.
+Receipt `notes/run/KEYGEN_Z_LOWER_134.json`;
+postseal `.build/zlower134/POSTSEAL_Z134.json`;
+report `notes/run/KEYGEN_Z_LOWER_134_REPORT.md`.
+
+Proved (jobs keygen_zlower134_006 modules / 007 audit / 011 Sage controls,
+all accepted, logs 0/0; audit KeygenZLower134Audit 43 declarations, full DAG
+roundtrip, standard axioms only; failures 001-005/008-010 retained with
+causes in KEYGEN_Z_LOWER_134_FAILURES.json):
+
+- `Source3.KeygenMode1Law134` derives the MODE1 coefficient law from the
+  pinned sampler body: exact 32-chunk-per-word map, the accepted-chunk store
+  `x-1` with values in {-1,0,1} (coeffs_mem), the rejection-normalized
+  per-coefficient marginal `valueLaw` = m(c)/(1-m(3)) with the geometric
+  retry identity (oneDraw_transfer), the exact uniform case 1/3
+  (valueLaw_uniform) and the explicit deviation transfer 16d/(9-12d)
+  (valueLaw_deviation). The sampler introduces no code-level deviation; the
+  residual deviation is exactly the SHAKE chunk-law deviation, which the
+  sources do not determine (recorded open, not skipped; F04 not used).
+- `Source3.KeygenModelUnlock134` closes the consumption chain: any positive
+  `a*c` from KeygenFirstMass134.acceptMass/codingRatio yields Z>0
+  (z_positive_of_first_attempt_bounds) and unlocks
+  KeygenModelBinding134.package (package_of_first_attempt_bounds,
+  package_of_witness, package_of_certified_set). Structural reduction
+  acceptMass_positive_iff: positivity of the first-attempt mass is
+  EQUIVALENT to an accepting-seed witness, so the analytic route cannot be
+  easier than the separate G(seed*) track.
+
+Named wall: the per-chunk SHAKE law over the uniform seed is not supplied by
+any pinned source; per-gate acceptance bounds (resultants/gs/public/solve/
+certificate) are unproved and the solver/certificate/codec lane remains OPEN
+at the 159 wall; the measured 8192/23628 stays a control. Re-scope options
+(R1 witness / R2 owner-authorized RNG premise / R3 delivered content) are in
+the report; recommendation R1 for unblocking the package. No new assumption,
+no paper change, no push, no reviewer/worker; five do_sign items unchanged.
+
 #148 sealed — actual first FFT call complete, rt2 entry ready
 
 Own source commits e769500b,e35a9c7a,e9e09b0d. Receipt

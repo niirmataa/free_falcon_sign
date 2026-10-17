@@ -1,3 +1,21 @@
+# Current continuation - success-mass task ACTIVE after Z_LOWER_134 window
+
+2026-10-17. The analytic Z>0 window (owner: "ANALITYCZNE Z > 0 I BOUNDY")
+closed at a named wall under the three-window budget: STOP_AND_REPORT, task
+NOT COMPLETE. No positive epsilon for the seed law; no G(seed*) witness in
+this window (separate track). Proved: the MODE1 coefficient law from the
+pinned sampler body (KeygenMode1Law134 — per-coefficient marginal
+m(c)/(1-m(3)), exact uniform 1/3, deviation transfer 16d/(9-12d), geometric
+retry identity) and the full consumption chain from any positive first-
+attempt bound to KeygenModelBinding134.package (KeygenModelUnlock134,
+incl. acceptMass_positive_iff: positivity = accepting-seed existence).
+Wall: the SHAKE chunk law over the uniform 32-byte seed is not derivable
+from the sampler sources; per-gate acceptance bounds and the coding bound
+need the OPEN solver/certificate/codec lane. Re-scope options in
+KEYGEN_Z_LOWER_134_REPORT.md (R1 kernel witness recommended). Receipt
+notes/run/KEYGEN_Z_LOWER_134.json; postseal .build/zlower134/POSTSEAL_Z134.json.
+Corrected134, measured wording and five do_sign unchanged; no push.
+
 # Current continuation - success-mass task ACTIVE after159 batch
 
 Ordered-plan continuation accepted three constructive modules:
