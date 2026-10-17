@@ -1,3 +1,41 @@
+# SEED9_R1 — kernel certificate of one seed (fixture seed9): window in progress
+
+2026-10-17. Owner window "R1: kernel certificate of one seed (fixture
+seed9), G(seed*) = success -> Z > 0" opened at HEAD 81dfc5bd (after Z-lower
+134) on the base of infrastructure 159. Status PARTIAL_PROOF / IN_PROGRESS
+/ NOT_REVIEWED. Ordered regions 1d-5 per the owner plan; region 1d (the
+mq_mkgm3 generator suffix) is split into three modules and is the active
+work. This window continues the R1 witness track - the only live path per
+the Z-lower 134 reduction (acceptMass_positive_iff); no analytic shortcut.
+
+Accepted so far (jobs keygen_publicforward159_020/024/029, logs 0/0,
+standard three axioms, one Lean process, unchanged limits):
+- PublicGenerateTable159: Written cells, table frames, legal sixteen-bit
+  writes and per-target write preservation.
+- PublicGenerateIndex159: forward source operations and store addresses
+  for all three suffix loops, including the bit-reversed row indices
+  through the executed rev10 calls (KeygenPublicRevCert) and the exact
+  loop guards.
+- PublicGenerateRow159: the complete 256-iteration row loop
+  (falcon-vrfy.c 852-859) with the four-store/four-update body, the exact
+  four-layer heap composition, the value-free Written-range invariant
+  Cover2, the full loop induction and covered_top ([512,1024) handoff).
+Local commits without push: 3632a30d (support pair), 560fe129 (row loop).
+
+In checking: PublicGenerateUpper159 - exact parsed shapes of the upper and
+square loops (afterRows_shape against the pinned parser), UpperInv/CoverUp
+and the update executions. Open: the two loop bodies/inductions, finalTail
+(gm0/w/igm0), initK/initB/initU + remaining composition, then regions 2
+(tail passes), 3 (suffix 1537 + emit), 4 (solver/certificate/codec) and 5
+(G(seed*) + package_of_witness -> Z >= 2^-256).
+
+Failures 016-028 retained with causes (elaboration/construction only; no
+source-C counterexample, no integrity event). Two DIAGNOSTIC syntax probes
+retained (PublicGenerateSyntaxProbe): the toolchain tokenizer glues
+comparison operators immediately followed by `i`; `scoped` is a keyword.
+Report: notes/run/KEYGEN_SEED9_R1_REPORT.md. No push, no reviewer/worker,
+no new axiom; corrected134, measured wording and five do_sign unchanged.
+
 # Z_LOWER_134 — analytic Z>0 window closed at a named wall (STOP-AND-REPORT)
 
 2026-10-17. Owner window "ANALITYCZNE Z > 0 I BOUNDY (zamiast kernelowego
