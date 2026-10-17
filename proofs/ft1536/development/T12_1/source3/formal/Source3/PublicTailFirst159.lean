@@ -481,4 +481,50 @@ theorem reads2b (s : State) (a : ArrayPointer) (u : Nat) (hu : u<2^64) (hsum : u
   have hn2 : USlot s2 "hn" 768 := keep_u64 s1 "hn" "b" .uint32 _ 768 (by decide) hn1
   exact ⟨s2,w1,bw,reads,a1Slot2,bSlot,r2,a02,u2,hn2,aBinding⟩
 
+/- Individual store execs for firstBody_chain. -/
+theorem writes2_steps (s : State) (a : ArrayPointer) (u : Nat) (hu : u<768) (hsum : u+768<2^64)
+    (aBinding : s.arrays "a".toList=some a) (uSlot : USlot s "u" u) (hnSlot : USlot s "hn" 768)
+    (w0 w1 bw : BitVec 32)
+    (a0Slot : Slot s "a0" w0) (a1Slot : Slot s "a1" w1) (bSlot : Slot s "b" bw)
+    (aWidth : a.elementBytes=2) (aWritable : s.heap.writable a.block=true)
+    (aAllocated : ∀ i, i<1536 → Allocated s.heap (element a i))
+    (capacityU : a.index+u ≤ a.count) (capacityH : a.index+(u+768) ≤ a.count) :
+    ∃ s5 s6, Exec KeygenPublicSource.program []
+        (.store "a".toList (cvar "u") false (addQ (var "a0") (var "b"))) s ⟨s5,.normal⟩ ∧
+      Exec KeygenPublicSource.program []
+        (.store "a".toList (cadd (cvar "u") (cvar "hn")) false
+          (subQ (addQ (var "a0") (var "a1")) (var "b"))) s5 ⟨s6,.normal⟩ ∧
+      Written s6.heap (element a u) ∧ Written s6.heap (element a (768+u)) := by
+  obtain ⟨s5,store1,low1,arrays5,locals5,heap5⟩ := store_a0_exec s a u (by omega) w0 bw
+    aBinding uSlot a0Slot bSlot aWidth aWritable (aAllocated u (by omega)) capacityU
+  have u5 : USlot s5 "u" u := by
+    show s5.locals "u".toList=some (.uint64,some (u64 u)); rw [locals5]; exact uSlot
+  have hn5 : USlot s5 "hn" 768 := by
+    show s5.locals "hn".toList=some (.uint64,some (u64 768)); rw [locals5]; exact hnSlot
+  have a0Slot5 : Slot s5 "a0" w0 := by
+    show s5.locals "a0".toList=some (.uint32,some (.uint32 w0)); rw [locals5]; exact a0Slot
+  have a1Slot5 : Slot s5 "a1" w1 := by
+    show s5.locals "a1".toList=some (.uint32,some (.uint32 w1)); rw [locals5]; exact a1Slot
+  have bSlot5 : Slot s5 "b" bw := by
+    show s5.locals "b".toList=some (.uint32,some (.uint32 bw)); rw [locals5]; exact bSlot
+  have aB5 : s5.arrays "a".toList=some a := by rw [arrays5]; exact aBinding
+  have allocH : Allocated s5.heap (element a (768+u)) := by
+    rw [heap5]
+    exact PublicGenerateTable159.allocated_write s.heap (element a u) (element a (768+u))
+      (KeygenPublicWord.narrow (.uint32 (KeygenModpAddSub.result .add
+        (PublicArgumentSource157.word (.u32 w0)) (PublicArgumentSource157.word (.u32 bw))
+        (PublicArgumentSource157.word (.i32 (BitVec.ofInt 32 18433))))))
+      (aAllocated (768+u) (by omega))
+  obtain ⟨s6,store2,high1,arrays6,locals6,heap6⟩ := store_a1_exec s5 a u (by omega) hsum w0 w1 bw
+    aB5 u5 hn5 a0Slot5 a1Slot5 bSlot5 aWidth
+    (by rw [heap5]; exact aWritable) allocH capacityH
+  have sep : Word16Memory158.Separate (element a (768+u)) (element a u) := by
+    refine .inr (.inr ?_)
+    show (element a u).offset+2 ≤ (element a (768+u)).offset
+    show a.base+a.elementBytes*(a.index+u)+2 ≤ a.base+a.elementBytes*(a.index+(768+u))
+    rw [aWidth]; omega
+  refine ⟨s5,s6,store1,store2,?_,high1⟩
+  rw [heap6]
+  exact PublicGenerateTable159.written_preserved s5.heap (element a (768+u)) (element a u) _ sep low1
+
 end FT1536.Source3.PublicTailFirst159
