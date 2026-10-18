@@ -624,4 +624,56 @@ theorem firstBody_exec (s : State) (a gm : ArrayPointer) (u : Nat)
   · exact low
   · exact high
 
+/- FirstInv after the scoped body (locals restored, heap = s6). -/
+theorem firstInv_after_body (s s6 : State) (a gm : ArrayPointer) (u : Nat)
+    (inv : FirstInv s a gm u)
+    (arrays6 : s6.arrays=s.arrays)
+    (localsU : s6.locals "u".toList=s.locals "u".toList)
+    (localsHn : s6.locals "hn".toList=s.locals "hn".toList)
+    (localsN : s6.locals "n".toList=s.locals "n".toList)
+    (localsLogn : s6.locals "logn".toList=s.locals "logn".toList)
+    (localsR : s6.locals "r".toList=s.locals "r".toList)
+    (writable6 : s6.heap.writable=s.heap.writable)
+    (alloc6 : ∀ i, i<1536 → Allocated s6.heap (element a i))
+    (aImage : ∀ i, i<1536 → Written s6.heap (element a i)) :
+    FirstInv (C99ArrayReference.restoreScope s s6 ["a0".toList,"a1".toList,"b".toList] []) a gm u := by
+  set s7 : State := C99ArrayReference.restoreScope s s6 ["a0".toList,"a1".toList,"b".toList] []
+  have aB : s7.arrays "a".toList=some a := by
+    show s6.arrays "a".toList=_
+    rw [arrays6]; exact inv.aBinding
+  have sq : s7.arrays "gm_square".toList=some gm := by
+    show s6.arrays "gm_square".toList=_
+    rw [arrays6]; exact inv.squareBinding
+  have uSlot : USlot s7 "u" u := by
+    show (C99ScalarReference.restore s.locals s6.locals ["a0".toList,"a1".toList,"b".toList]) "u".toList=some (.uint64,some (u64 u))
+    exact localsU.trans inv.uSlot
+  have hnSlot : USlot s7 "hn" 768 := by
+    show (C99ScalarReference.restore s.locals s6.locals ["a0".toList,"a1".toList,"b".toList]) "hn".toList=some (.uint64,some (u64 768))
+    exact localsHn.trans inv.hnSlot
+  have nSlot : USlot s7 "n" 1536 := by
+    show (C99ScalarReference.restore s.locals s6.locals ["a0".toList,"a1".toList,"b".toList]) "n".toList=some (.uint64,some (u64 1536))
+    exact localsN.trans inv.nSlot
+  have lognSlot : Slot s7 "logn" 10 := by
+    show s6.locals "logn".toList=some (.uint32,some (.uint32 10))
+    exact localsLogn.trans inv.lognSlot
+  have rSlot : ∃ w, Slot s7 "r" w := by
+    obtain ⟨w,hw⟩ := inv.rSlot
+    exact ⟨w,localsR.trans hw⟩
+  refine ⟨aB,sq,nSlot,hnSlot,lognSlot,rSlot,uSlot,aImage,inv.aWidth,?_,?_,inv.aCount⟩
+  · show s6.heap.writable a.block=true
+    rw [writable6]; exact inv.aWritable
+  · intro i hi
+    show Allocated s6.heap (element a i)
+    exact alloc6 i hi
+
+/- FirstInv after u := u+1 (heap unchanged). -/
+theorem firstInv_next (s : State) (a gm : ArrayPointer) (u : Nat) (hu : u+1<2^64)
+    (inv : FirstInv s a gm u) :
+    FirstInv (bindValue s "u".toList .uint64 (u64 (u+1))) a gm (u+1) := by
+  refine ⟨inv.aBinding,inv.squareBinding,inv.nSlot,inv.hnSlot,inv.lognSlot,inv.rSlot,
+    u64_slot_after s "u" (u+1) hu,?_,inv.aWidth,inv.aWritable,inv.aAllocated,inv.aCount⟩
+  intro i hi
+  show Written (bindValue s "u".toList .uint64 (u64 (u+1))).heap (element a i)
+  exact inv.aImage i (by omega)
+
 end FT1536.Source3.PublicTailFirst159
