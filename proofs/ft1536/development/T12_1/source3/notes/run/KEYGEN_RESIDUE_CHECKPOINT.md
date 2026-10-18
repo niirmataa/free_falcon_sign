@@ -1,3 +1,17 @@
+# Current continuation — complete public table generator166 sealed
+
+2026-10-18. Three modules / 14 declarations audited in job139, logs0/0;
+source commits f7e94213 and eee7e933. PublicGenerateComplete166.source
+constructs the full generator, including its original b scope exit and
+both table ranges, using the existing159 loops. Postseal passed with
+57140 pins. The entry-checker count typo is retained separately; no
+failed proof job or pin mismatch. See KEYGEN_PUBLIC_GENERATOR_166_REPORT.md
+/ _PINS.md / _NEXT_ROUTE.md. Next167 prepared: fresh automatic-array domains
+and generator+tail composition, then concrete selected h/t invocations.
+Public suffix, solver/certificate/codecs, G(seed*) and positive numerical
+bounds remain OPEN; corrected134, measured wording and five do_sign
+items unchanged. No push.
+
 # Current continuation — complete generic public NTT tail165 sealed
 
 2026-10-18. Eleven modules/52 declarations audited (job137,11 sequential
