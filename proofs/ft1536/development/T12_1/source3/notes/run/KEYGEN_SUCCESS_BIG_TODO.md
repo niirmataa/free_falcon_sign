@@ -1,3 +1,20 @@
+# Current continuation — actual generator cube phase180 sealed
+
+2026-10-18. Both upper-half table reads are now derived from actual last-row
+stores and linked to state179 by source determinism. SelectedGeneratorCube180.source
+executes the original full branch and all 256 cube iterations, with k=8/u=512.
+SelectedGeneratorCubeTable180 proves canonical gm and actual reads of BOTH
+tables at indices256..1023; SelectedGeneratorCubeFrame180 preserves f/g.
+15 mathematical modules / 79 declarations passed audit280, logs0/0;
+postseal verified 64490 paths. Sources30468d6d/cd91f802/fec81489/f26e5e10.
+Eight failed or mixed jobs are retained; no cancellation or relaxed limit.
+See KEYGEN_GENERATOR_CUBE_180_REPORT.md / _PINS.md / _NEXT_ROUTE.md.
+Next181 starts at SelectedGeneratorCubeLoop180.after: squareLoop and
+three topElements, then construct the complete original generator call.
+Full root/encoding/corrected134 emitted witness and positive probability
+bounds remain OPEN. Whole owner goal ACTIVE / NOT_COMPLETE; measured and
+five do_sign unchanged. No running proof job; no push. Next job suffix281.
+
 # Current continuation — actual generator last row179 sealed
 
 2026-10-18. SelectedGeneratorRow179.source constructs the actual rowSelect
