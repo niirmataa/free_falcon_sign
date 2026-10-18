@@ -1,3 +1,17 @@
+# Current continuation — middle NTT inner loop161 sealed
+
+2026-10-18. Five modules/32 declarations accepted and audited (job120,
+five sequential processes, logs0/0); source commits12878be1/80405a4a.
+PublicMiddleBody161.source executes one modular butterfly with all locals
+restored; PublicMiddleLoop161.source executes the complete inner loop
+with its endpoint and byte frame. Explicit caller domains remain.
+Postseal161 passed with56188 pins; failed116/117 and mixed118 retained.
+See KEYGEN_PUBLIC_MIDDLE_161_REPORT.md / _PINS.md / _NEXT_ROUTE.md.
+Next prepared162: generated twiddle load and group-body composition,
+then group/outer loops, tripling, actual calls, solver/certificate/codecs.
+G(seed*) and concrete positive probability bounds remain OPEN; corrected134,
+measured wording and five do_sign unchanged. No push.
+
 # Current continuation — first public NTT pass160 sealed
 
 2026-10-18. Owner-approved historical-pin reconciliation completed;
