@@ -1,3 +1,16 @@
+# Current continuation — composed first/middle NTT prefix164 sealed
+
+2026-10-18. Two modules/12 declarations audited (job131,2 sequential
+processes, logs0/0); source47b9efc1. PublicInitializedFrame164 preserves
+readability under supported source statements, including overlapping
+stores; PublicTailPrefix164.source composes the first and eight middle
+passes with generated-table and caller-slot transport. Postseal passed
+with56685 pins; no failures in130/131. See KEYGEN_PUBLIC_PREFIX_164_REPORT.md
+/ _PINS.md / _NEXT_ROUTE.md. Next165: final triple body and512 iterations,
+then actual caller composition. Full witness and positive numeric bounds
+remain OPEN; corrected134, measured wording and five do_sign unchanged.
+No push.
+
 # Current continuation — eight middle NTT rounds163 sealed
 
 2026-10-18. Six modules/35 declarations audited in six sequential
