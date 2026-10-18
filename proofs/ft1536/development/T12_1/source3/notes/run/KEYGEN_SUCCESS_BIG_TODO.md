@@ -1,3 +1,21 @@
+# Current continuation — first public NTT pass160 sealed
+
+2026-10-18. Owner-approved historical-pin reconciliation completed;
+old159 manifests and document versions preserved (a121ee46). Accepted108
+invariant transports committed unchanged (d70e6c9d). New source commit
+b50e8b56 proves the body-to-invariant implication and the full768-step
+first pass, including r load/u initialization from explicit TailEntry.
+Three modules/38 declarations fully audited in job112, all accepted logs0/0;
+failed110 preserved. Postseal55965 pins passed. See
+KEYGEN_PUBLIC_TAIL_160_REPORT.md / _PINS.md / _NEXT_ROUTE.md.
+This is a generic source-domain theorem: actual caller composition,
+middle/triple passes, public suffix, solver/certificate/codecs and G(seed*)
+remain OPEN, as do all concrete positive acceptance/coding bounds.
+Next: public uint16 modular middle-body adapter (PublicWordSteps161);
+the old FFT140-148 theorems have a different execution/word type and cannot
+be directly instantiated. Reuse the induction pattern and proved modular
+helpers. Corrected134, measured wording and five do_sign unchanged.
+
 # Current continuation - success-mass task ACTIVE after Z_LOWER_134 window
 
 2026-10-17. The analytic Z>0 window (owner: "ANALITYCZNE Z > 0 I BOUNDY")
