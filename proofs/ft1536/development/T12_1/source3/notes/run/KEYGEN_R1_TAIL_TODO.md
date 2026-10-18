@@ -1,3 +1,19 @@
+# Current continuation — actual root/deepest entry175 sealed
+
+2026-10-18. The original root entry, fk/static bytes and actual f/g words
+are derived from the same sampler/norm/public execution. Deepest declarations,
+len335/PRIMES3 selection, scratch views and original make_fg argument binding
+are constructed. Fourteen mathematical modules /147 declarations passed
+audit210, logs0/0; postseal verified 61059 pins. Sources
+03e83f57/9e1aa51f/f5b9ed34/863330ca. Failures198/202/206/207 preserved.
+See KEYGEN_ROOT_ENTRY_175_REPORT.md / _PINS.md / _NEXT_ROUTE.md.
+Next176: execute KeygenMakeFgSource.code .make at SelectedMakeFgEntry175.entry.
+MakeFgSyntax176 is prepared diagnostic only, not yet run. Actual make_fg,
+CRT/Bezout, remaining root solver, certificate/codecs and corrected134
+emitted witness remain OPEN, as do Z>0 and numeric acceptance/coding/p_K.
+Whole owner goal ACTIVE / NOT_COMPLETE; measured and five do_sign unchanged.
+No push.
+
 # Current continuation — complete selected public return174 sealed
 
 2026-10-18. SelectedPublicSuccess174.source/gate proves the full actual
