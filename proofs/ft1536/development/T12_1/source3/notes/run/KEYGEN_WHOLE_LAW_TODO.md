@@ -1,3 +1,16 @@
+# Current continuation — both selected forward calls168 sealed
+
+2026-10-18. Four modules/26 declarations audited in job144, logs0/0;
+source commitaf0ec90a. SelectedForwardT168.both constructs both actual
+mq_NTT calls, deriving fresh blocks33/34 and preservation of t across h.
+Postseal passed with57442 pins; no failed jobs143/144. See
+KEYGEN_PUBLIC_SELECTED_168_REPORT.md / _PINS.md / _NEXT_ROUTE.md.
+Next169 prepared: actual sampler vectors, conversion invariant and
+polynomial evaluations at the constructed afterT heap. Nonzero tests,
+division/inverse/return, solver/certificate/codecs, full witness and all
+positive numerical bounds remain OPEN. Corrected134, measured and five
+do_sign obligations unchanged. No push.
+
 # Current continuation — constructive public forward call167 sealed
 
 2026-10-18. Four modules/22 declarations audited in job142, logs0/0;
