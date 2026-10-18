@@ -1,3 +1,16 @@
+# Current inspection — 2026-10-18, R1 mid-tail
+
+Task NOT COMPLETE; latest entry HEAD85a40d91, accepted job108 (0/0).
+Generator suffix and first-body execution are implemented; uncommitted
+firstInv_after_body/firstInv_next match the accepted108 snapshot exactly.
+Full first loop, remaining NTT/public suffix, solver/certificate/codecs,
+G(seed*) and concrete positive bounds remain open. See
+KEYGEN_R1_RESUME_20261018.md for the current three-objective status.
+STOP_AND_REPORT: old159 postseal has two document-version mismatches;
+55659 entry pins and the159B/Z134 sets pass. Original document bytes
+were located in Git3e735378. Repair is prepared, not applied, pending
+owner decision under the integrity rule. No new proof job or push.
+
 # Current continuation — success-mass task ACTIVE after157
 
 Eight public scalar helpers now have constructive source rules, including
