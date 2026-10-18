@@ -1,3 +1,17 @@
+# Current continuation — selected inverse triples172 sealed
+
+2026-10-18. SelectedInversePrefix172 constructs the generator and all
+512 inverse triples on the selected state; continue_inverse keeps the
+original remaining inverse code explicit. Fourteen modules / 99 declarations
+passed audit186, logs 0/0; postseal verified 59549 pins. Sources
+d0f797b2/04389300/aa8a9f7d. No failed proof jobs178–186.
+See KEYGEN_INVERSE_TRIPLES_172_REPORT.md / _PINS.md / _NEXT_ROUTE.md.
+Prepared173: reverse reads/writes/body/inner-loop adapters, uncompiled.
+Next: eight reverse radix rounds, first-root inverse and normalization,
+then public return1, root solver/certificate/codecs and corrected134 witness.
+Z>0 and numeric acceptance/coding/p_K bounds remain OPEN. Measured and
+five do_sign obligations unchanged; no push.
+
 # Current continuation — actual public quotient loop171 sealed
 
 2026-10-18. SelectedQuotient171.source constructs all 1536 original
