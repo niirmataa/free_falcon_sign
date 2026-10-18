@@ -1,3 +1,19 @@
+# Current continuation — actual ternary-top memory prefix177 sealed
+
+2026-10-18. SelectedTopPrefix177.source executes the original declarations,
+three size expressions, six scratch pointers and overlapping12288-byte
+memmove. SelectedTopMove177.f_image/g_image preserve both complete converted
+sampler arrays at fs/gs. Source parser binding is kernel checked in stages,
+with no semantic change. Thirteen mathematical modules /98 declarations
+passed audit235; accepted logs0/0; postseal verified62402 paths.
+Sources2266e504/241b5bfd/cd50d521/d4ac0145. Seven failed/mixed jobs retained.
+See KEYGEN_TOP_MEMORY_177_REPORT.md / _PINS.md / _NEXT_ROUTE.md.
+Next178 begins at MakeFgTopShape177.remaining on SelectedTopMove177.after:
+original prime/p0i/R2, generator,32-bit NTTs and triple products. The full
+make_fg/root/certificate/codecs/emitted witness134 and positive probability
+bounds remain OPEN. Whole owner goal ACTIVE / NOT_COMPLETE; measured and
+five do_sign unchanged. No proof job remains running; no push.
+
 # Current continuation — actual make_fg conversion176 sealed
 
 2026-10-18. Original declarations/setup and both complete1536-coefficient
