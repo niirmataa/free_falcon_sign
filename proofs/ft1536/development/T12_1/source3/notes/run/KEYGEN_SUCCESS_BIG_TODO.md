@@ -1,3 +1,39 @@
+# Current state — checkpoint189 sealed; owner-requested pause
+
+2026-10-18. The owner requested a break at the next checkpoint.189 is now
+closed; the whole goal is PAUSED_AT_OWNER_REQUEST / NOT_COMPLETE. Do not
+start190 or another job until the owner resumes. No worker/relay/reviewer
+or schedule was started; no push. Prior history below is preserved.
+
+Actual first-step logn9/full0 modp_mkgm3 is COMPLETE in source semantics:
+row k2,b256,128 REV iterations; k8 and false full guard;255 square iterations;
+top elements; entire body and caller branch. SelectedGen0Top189.body_source
+and SelectedGen0Call189.source/branch_source close the actual invocation.
+SelectedGen0Frame189 preserves both512-word inputs and proves actual
+512-word gm/igm readability. SelectedGen0Ready189 exposes the restored
+caller state. No canonical full0 table law or whole step/root completion
+is claimed; wider raw initialization is only a derived helper condition.
+
+19 mathematical modules /163 declarations passed audit342, accepted logs0/0.
+Postseal verified69858 paths. Sources62488273/02dfb243/fa96267e.
+Four failed/mixed jobs337-340 are retained with causes;341/342 accepted;
+no cancellation. See KEYGEN_FULL0_TABLES_189_REPORT.md / _PINS.md /
+_NEXT_ROUTE.md. Receipt SHA256:
+c2b0100ec0192faae04e8d4985df9575c533593a69501db6e5d991ec5f579eac
+Postseal .build/full0tables189/POSTSEAL_189.json SHA256:
+e8652663b0a0dbb6bc75bbf215a77482d6f59d8d7d8c4faeddafdba046cf867f
+
+Exact resume obligation after fresh pin/process verification:
+KeygenMakeFgSource.Exec StepPrimeShape188.tail SelectedGen0Call189.after out.
+Next unused proof job suffix343. Finish source copy/product/inverse paths,
+scopes/outer loop, CRT/additional prime, later levels/root/encoding before
+using the complete emitted witness for corrected KeygenProbability134.
+Unconditional Z>0, numerical p_accept, conditional coding and positive p_K
+remain OPEN. Old110 stays frozen; measured wording and the five do_sign
+items remain unchanged. Scoped proof, NOT_REVIEWED; no IID/D1/F04 premise.
+
+---
+
 # Current continuation — first prime and full0 generator scalar prefix188 sealed
 
 2026-10-18. SelectedStepPrime188 executes u0, proves its guard and constructs
