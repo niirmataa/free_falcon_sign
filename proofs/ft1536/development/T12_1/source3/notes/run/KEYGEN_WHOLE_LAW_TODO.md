@@ -1,3 +1,17 @@
+# Current continuation — selected reverse radix173 sealed
+
+2026-10-18. SelectedReverse173.source executes all eight original reverse
+rounds on the selected state, including initialization and t1536/m1 exit.
+Fifteen modules / 75 declarations passed audit192, accepted logs 0/0;
+postseal verified 60003 pins. Sources da0f5a66/9842053c/e86316ff.
+Mixed187 is retained with its guard-alias cause. See
+KEYGEN_INVERSE_REVERSE_173_REPORT.md / _PINS.md / _NEXT_ROUTE.md.
+Prepared174: first-root read/write/body adapters, uncompiled. Remaining:
+768 first-root butterflies, normalization1536 and public return1, then root
+solver/certificate/codecs and corrected134 emitted witness. Z>0 and numeric
+acceptance/coding/p_K bounds remain OPEN; measured and five do_sign unchanged.
+No push.
+
 # Current continuation — selected inverse triples172 sealed
 
 2026-10-18. SelectedInversePrefix172 constructs the generator and all
