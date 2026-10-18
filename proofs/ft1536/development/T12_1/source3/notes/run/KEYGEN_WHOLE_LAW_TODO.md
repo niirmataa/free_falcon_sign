@@ -1,3 +1,13 @@
+# Current continuation — authorized reconciliation complete, 2026-10-18
+
+Owner-approved recovery preserved both old159 document versions under
+snapshots/KEYGEN_PUBLIC_FORWARD_159_INITIAL and left old seals unchanged.
+KEYGEN_POSTSEAL_159_RECONCILIATION_001.json records the exact historical
+resolution; .build/r1resume160/ENTRY_PINS.json verifies55716 paths, with
+PASS postseal. Resume from accepted108; source PublicTailFrame160 now
+prepared for the body-to-invariant implication, not yet compiled.
+Full witness and quantitative bounds remain OPEN; no push.
+
 # Current inspection — 2026-10-18, R1 mid-tail
 
 Task NOT COMPLETE; latest entry HEAD85a40d91, accepted job108 (0/0).

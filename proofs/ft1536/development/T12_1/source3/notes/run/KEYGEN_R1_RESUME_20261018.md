@@ -85,3 +85,22 @@ unsealed module. Historical manifests and documents were left untouched.
 The pause follows the repository's explicit hash-mismatch stop-and-report
 rule. This is not an automatic approval rejection or a new usage-limit
 failure. No repair has been applied and no full-region completion claimed.
+
+## Owner-approved recovery completed
+
+The owner approved this plan explicitly on2026-10-18 and instructed
+continuation from job108. Historical snapshots and reconciliation receipt
+were written by `tools/keygen_reconcile159.py`; old manifests and current
+documents were not modified. The original live-path mismatch remains
+recorded, and the new receipt verifies the historical resolution.
+
+- Receipt SHA256: `48b3009bf741af928c326b5338ff7227eaba074fcc68f7d19fd1bc67d31e922c`.
+- Resume ENTRY_PINS SHA256: `1a547dbddcfa8b65da7061ca4cee4c6b3c98fb2504a601c66a0a1abd061531d7`.
+- Postseal: `.build/r1resume160/POSTSEAL_RECONCILIATION.json`,55716 checked paths.
+- One preparatory script failure (repository parent index, before writes)
+  is retained in `.build/r1resume160/REPAIR_ATTEMPTS.json`; corrected before
+  successful recovery. This was a script-construction error, not a new
+  integrity mismatch.
+
+Status after this addendum: ACTIVE / PARTIAL_PROOF / NOT_REVIEWED.
+The integrity blocker is resolved under the explicit owner authorization.
