@@ -1,3 +1,26 @@
+# Current continuation — both modular forward calls185 sealed
+
+2026-10-18. NttWholeSource185.source composes the existing parametric
+prologue/first/middle/triple executions into the complete original forwardBody.
+SelectedSecondEntry185.binding/input facts establish the actual gs call at
+the caller state after the first invocation. SelectedSecondCall185.source /
+instruction / both_source closes the second call and both original calls
+in order, with void return. SelectedSecondFrame185 preserves every first
+transformed-input word and canonical gm; both full inputs remain readable.
+Second writes are confined to block31 [12920,19064); paired frames and caller
+metadata are explicit. TopProductShape185 identifies original R3/loop/tail.
+8 mathematical modules /70 declarations passed audit321, logs0/0;
+postseal verified 67318 paths. Sources83f8f62f/1a7a61b0/a117477f.
+No failed/mixed job or cancellation in185; all historical failures retained.
+See KEYGEN_NTT_SECOND_185_REPORT.md / _PINS.md / _NEXT_ROUTE.md.
+Next186: original R3 assignment and512 paired triple products at
+SelectedSecondCall185.after, final !out_ntt guard (out_ntt=1 established),
+then complete top source call. Top products, remaining make_fg/root/encoding,
+full corrected134 emitted witness and unconditional Z>0 / numerical
+p_accept / p_K remain OPEN. Whole goal ACTIVE / NOT_COMPLETE; NOT_REVIEWED;
+measured and five do_sign unchanged. No running proof job or push.
+Next unused suffix322.
+
 # Current continuation — complete first modular forward call184 sealed
 
 2026-10-18. NttTripleBody184.source constructs the original triple butterfly;
