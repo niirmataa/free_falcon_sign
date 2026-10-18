@@ -1,3 +1,18 @@
+# Current continuation — actual make_fg conversion176 sealed
+
+2026-10-18. Original declarations/setup and both complete1536-coefficient
+modp_set conversions now execute on the actual sampler-derived state.
+Output images and ranges, false early branch and ternary-top binding are
+kernel proved. Fifteen mathematical modules /148 declarations passed
+audit225, accepted logs0/0; postseal verified61827 paths. Sources
+bbaed752/e6a3ab96/c1504bc0. Nine failed/mixed jobs retained with causes.
+See KEYGEN_MAKEFG_CONVERT_176_REPORT.md / _PINS.md / _NEXT_ROUTE.md.
+Next177: actual ternary-top declarations/layout/overlapping memmove, then
+its generator and32-bit transforms. Prepared diagnostics and MemmoveWord177
+are uncompiled. Full make_fg/root/certificate/codecs/emitted witness134,
+Z>0 and numeric acceptance/coding/p_K remain OPEN. Whole owner task ACTIVE /
+NOT_COMPLETE; measured and five do_sign unchanged. No push.
+
 # Current continuation — actual root/deepest entry175 sealed
 
 2026-10-18. The original root entry, fk/static bytes and actual f/g words
