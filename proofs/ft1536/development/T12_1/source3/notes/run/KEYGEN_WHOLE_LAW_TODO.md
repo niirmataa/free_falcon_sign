@@ -1,3 +1,27 @@
+# Current continuation — complete selected ternary-top call186 sealed
+
+2026-10-18. SelectedTopProducts186.body_source constructs the entire
+original make_fg_ternary_top body: previous prefix/generator/two forward
+calls, actual R3 assignment, all512 paired products and proved false
+!out_ntt guard. SelectedTopCall186.source/instruction closes the actual
+helper call with void return. SelectedTopOutput186 supplies both512-word
+output read contracts, source-derived initialization preservation, stable
+sizes/writability and bytes outside block31 or below2680. Inputs/table
+survive the product suffix. The original make_fg caller is restored.
+13 mathematical modules /91 declarations passed audit327, logs0/0;
+postseal verified 67797 paths. Sources2098e690/30ded08a/c2df16f9.
+One failed/mixed job323 retained with cause (free-index width decide→rfl);
+no controlled cancellation or increased limit. Terminal bookkeeping note
+is preserved in PLAN; no duplicate runner or proof-input integrity failure.
+See KEYGEN_TOP_PRODUCTS_186_REPORT.md / _PINS.md / _NEXT_ROUTE.md.
+Next187: SelectedMakeFgTopEntry176.tail at SelectedTopCall186.after,
+original d1..9 make_fg_step calls. Caller logn10/depth10/ter1/out_ntt0;
+first step logn9/depth1/ter1/in_ntt1/out_ntt1. The logn10/full1 NTT theorem
+is not a full0/stride-slen theorem. Whole make_fg/root/encoding, corrected134
+emitted witness and unconditional Z>0 / numerical p_accept / p_K remain OPEN.
+Whole goal ACTIVE / NOT_COMPLETE; NOT_REVIEWED; measured and five do_sign
+unchanged. No running proof job or push. Next unused suffix328.
+
 # Current continuation — both modular forward calls185 sealed
 
 2026-10-18. NttWholeSource185.source composes the existing parametric
