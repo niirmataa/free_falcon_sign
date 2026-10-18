@@ -1,3 +1,21 @@
+# Current continuation — COMPLETE selected generator call181 sealed
+
+2026-10-18. The original descending squareLoop (255 iterations), three
+original topElements and complete KeygenMkgm3Program.code now execute at
+the actual selected entry. SelectedGeneratorCall181.source/instruction
+closes the original .generate call and void return for logn10/full1/first
+prime. Its forward_table is fully canonical; both buffers are initialized,
+and SelectedGeneratorFrame181 preserves the same complete f/g input images.
+13 mathematical modules / 76 declarations passed audit287, logs0/0;
+postseal verified 64932 paths. Sources bbd23d49/51561490/cb1b698e.
+Two failed or mixed jobs retained; no cancellation or relaxed limit.
+See KEYGEN_GENERATOR_FINISH_181_REPORT.md / _PINS.md / _NEXT_ROUTE.md.
+Next182 starts at SelectedGeneratorCall181.after: both original32-bit
+forward NTT calls, then R3/triples and the remaining make_fg/root/encoding
+path. Full corrected134 emitted witness and positive probability bounds
+remain OPEN. Whole owner goal ACTIVE / NOT_COMPLETE; measured and five
+do_sign unchanged. No running proof job or push. Next unused suffix288.
+
 # Current continuation — actual generator cube phase180 sealed
 
 2026-10-18. Both upper-half table reads are now derived from actual last-row
