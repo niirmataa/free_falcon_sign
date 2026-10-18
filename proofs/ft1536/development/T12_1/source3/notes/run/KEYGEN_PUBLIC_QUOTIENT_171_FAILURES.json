@@ -1,0 +1,6 @@
+{
+  "keygen_publicforward159_172": "The comparison proof reduced to if false=true then1 else0; its restricted simp list lacked the Bool-to-Prop false fact. Added that explicit fact. No arithmetic condition, source semantics or resource limit changed; dependent modules did not run.",
+  "keygen_publicforward159_173": "The restricted simplifier still retained the coerced Bool condition. Reworked the proof to establish falsity of the original condition directly and rewrite the entire conditional, preserving its exact decision instance. No source/domain or limit change.",
+  "keygen_publicforward159_174": "The condition now reduced correctly, but restricted simpa did not identify the two zero bit-vector representations. Added an explicit kernel-checked result equality and equality transport of the CompareExec proof. No source/domain change or limit increase.",
+  "keygen_publicforward159_175": "The result equality was proved, but unrestricted equality substitution also rewrote the zero comparison operand. Replaced it by congrArg over only the result argument of CompareExec. Operand and output are now transported separately; source conditions unchanged."
+}
