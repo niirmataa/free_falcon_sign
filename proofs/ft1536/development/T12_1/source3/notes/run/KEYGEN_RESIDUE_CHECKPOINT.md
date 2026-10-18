@@ -1,3 +1,16 @@
+# Current continuation — public NTT group loop162 sealed
+
+2026-10-18. Five modules/24 declarations audited in five sequential
+processes (job125, logs0/0); sources1b4cb08a/51294a1e. The group prologue
+loads the actual generated twiddle, then GroupBody consumes the161 inner
+loop; GroupLoop162.source proves all groups and transports the table
+through data writes. Postseal passed with56374 pins; mixed121/122 and
+failed123 retained. See KEYGEN_PUBLIC_GROUPS_162_REPORT.md / _PINS.md /
+_NEXT_ROUTE.md. Next prepared163: exact eight-round setup/body/loop,
+then tripling and actual caller composition. Full witness and all concrete
+positive bounds remain OPEN; corrected134, measured wording and five
+do_sign obligations unchanged. No push.
+
 # Current continuation — middle NTT inner loop161 sealed
 
 2026-10-18. Five modules/32 declarations accepted and audited (job120,
