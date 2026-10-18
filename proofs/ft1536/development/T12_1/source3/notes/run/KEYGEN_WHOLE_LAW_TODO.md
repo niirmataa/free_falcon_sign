@@ -1,3 +1,17 @@
+# Current continuation — complete selected public return174 sealed
+
+2026-10-18. SelectedPublicSuccess174.source/gate proves the full actual
+falcon_compute_public call returning1 and accepted public gate.
+Eleven modules /54 declarations passed audit197, accepted logs0/0;
+postseal verified 60342 pins. Sources1cca11a6/ca0d7c14.
+Mixed194 is retained with its record-syntax cause. See
+KEYGEN_INVERSE_FINISH_174_REPORT.md / _PINS.md / _NEXT_ROUTE.md and
+KEYGEN_SUCCESS_WINDOW_174_HANDOFF.md. Next175 starts at
+SelectedPublicSuccess174.after: original NTRU root solver, then certificate/
+codecs and the complete corrected134 emitted witness. Full owner goal
+ACTIVE / NOT_COMPLETE; Z>0 and numeric acceptance/coding/p_K bounds OPEN.
+Measured and exactly five do_sign obligations unchanged. No push.
+
 # Current continuation — selected reverse radix173 sealed
 
 2026-10-18. SelectedReverse173.source executes all eight original reverse
