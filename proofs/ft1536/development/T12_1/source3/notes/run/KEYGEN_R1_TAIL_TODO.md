@@ -1,3 +1,17 @@
+# Current continuation — complete generic public NTT tail165 sealed
+
+2026-10-18. Eleven modules/52 declarations audited (job137,11 sequential
+processes, logs0/0); sourcesd25d4d59/42d46fa6/ad0d0f06. PublicFullTail165.source
+now constructs the original complete first/middle/triple tail from explicit
+Arrays/TailEntry/cubic/cell domains. The512-step triple loop and w/u/v
+initializers are included. Postseal passed with57036 pins; failed132 and
+mixed134/135 retained. See KEYGEN_PUBLIC_TRIPLE_165_REPORT.md / _PINS.md /
+_NEXT_ROUTE.md. Next166: full generator prologue/dispatch/scope composition,
+then actual fresh-array/caller domains and both forward calls. Public
+nonzero/inverse/return, solver/certificate/codecs, G(seed*) and all positive
+numeric bounds remain OPEN; corrected134, measured wording and five
+do_sign items unchanged. No push.
+
 # Current continuation — composed first/middle NTT prefix164 sealed
 
 2026-10-18. Two modules/12 declarations audited (job131,2 sequential
