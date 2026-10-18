@@ -1,3 +1,23 @@
+# Current continuation — actual generator scalar prefix178 sealed
+
+2026-10-18. SelectedTopInit178.source executes the actual p/p0i/R2 setup;
+SelectedGeneratorEntry178.binding binds the original generator arguments.
+SelectedGeneratorInverse178.prefix_source executes its scalar/control prefix
+through ig, including the exact k++ behavior. ModpDivTotal178.source_exists
+constructs the complete original modp_div with an exact recursive word result
+and all 31 rounds. This is source execution, not a probability bound.
+20 mathematical modules / 170 declarations passed audit257, logs 0/0;
+postseal verified 63347 paths. Sources d44c1749/7be74530/858f3d36/
+a8d38870/857c15cb. All 15 failed or mixed jobs, including seven controlled
+diagnostic cancellations, are retained with causes. No resource change.
+See KEYGEN_TOP_INIT_178_REPORT.md / _PINS.md / _NEXT_ROUTE.md.
+Next179: generator rowSelect/table-writing loops on
+SelectedGeneratorInverseCall178.after, then both forward transforms and the
+remaining root/certificate/codecs path to the corrected134 emitted witness.
+Whole owner goal ACTIVE / NOT_COMPLETE; Z>0 and numerical acceptance/coding/
+p_K remain OPEN; measured and five do_sign unchanged. No running proof job;
+no push. Next unused job suffix258.
+
 # Current continuation — actual ternary-top memory prefix177 sealed
 
 2026-10-18. SelectedTopPrefix177.source executes the original declarations,
