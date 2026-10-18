@@ -1,3 +1,17 @@
+# Current continuation — actual polynomial evaluations169 sealed
+
+2026-10-18. Two modules/11 declarations audited in job148, logs0/0;
+source commit6ae8bcc6. SelectedEvaluation169.source attaches the header
+and original f/g polynomial evaluations to the actual168 afterT heap,
+using the source-derived sampler vectors and conversion invariant.
+Postseal passed with57543 pins; failed145 and mixed146 retained. See
+KEYGEN_PUBLIC_EVALUATION_169_REPORT.md / _PINS.md / _NEXT_ROUTE.md.
+Next170 prepared: reusable finite array-certificate checks and an exact
+Sage control, not yet executed. Selected nonzero tests, division/inverse,
+return1, solver/certificate/codecs, full witness and positive numeric
+bounds remain OPEN. Corrected134, measured and five do_sign unchanged.
+No push.
+
 # Current continuation — both selected forward calls168 sealed
 
 2026-10-18. Four modules/26 declarations audited in job144, logs0/0;
