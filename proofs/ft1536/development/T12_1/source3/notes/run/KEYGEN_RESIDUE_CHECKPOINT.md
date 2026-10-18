@@ -1,3 +1,27 @@
+# Current continuation — complete first modular forward call184 sealed
+
+2026-10-18. NttTripleBody184.source constructs the original triple butterfly;
+NttTriplePass184.full includes actual wSquared, initialization, all512
+iterations, full1 branch and scope restoration. SelectedNttTriple184.body_source
+closes the entire original forwardBody at SelectedForwardEntry182.entry.
+SelectedForwardCall184.source/instruction closes the actual first .forward
+call with void return. SelectedForwardFrame184 preserves the complete
+second input and canonical gm, caller locals/arrays and precise byte frame
+outside block31 [6776,12920). Transformed fs remains readable.
+20 mathematical modules /121 declarations passed audit317, logs0/0;
+postseal verified 66977 paths. Sourcesaa76efa9/06753d6e/2305bd39/3dfc083d.
+Seven failed or mixed jobs309-315 retained, including three deliberate
+cancellations311-313; no limit increase. Explicit heap-only Slot transport
+resolved the store elaboration cost; prior hypotheses are recorded honestly.
+See KEYGEN_NTT_TRIPLE_184_REPORT.md / _PINS.md / _NEXT_ROUTE.md.
+Next185: bind and execute the second original gs forward call at
+SelectedForwardCall184.after, reusing the parametric first/middle/triple
+proofs, then continue the original top products. The second call and later
+make_fg/root/encoding path stay OPEN. Full corrected134 emitted witness,
+unconditional Z>0 and numerical p_accept/p_K remain OPEN.
+Whole goal ACTIVE / NOT_COMPLETE; NOT_REVIEWED; measured and five do_sign
+unchanged. No running proof job or push. Next unused suffix318.
+
 # Current continuation — selected modular NTT middle passes183 sealed
 
 2026-10-18. NttMLoop183.full constructs the original intermediatePass:
