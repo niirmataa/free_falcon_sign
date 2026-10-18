@@ -1,3 +1,17 @@
+# Current continuation — all1536 actual public denominators nonzero170 sealed
+
+2026-10-18. SelectedTreeNonzero170.t_nonzero proves the actual t words
+at SelectedForwardT168.output have0<word.toNat<18433. All26 accepted
+modules/251 declarations passed the full kernel/DAG audit171, logs0/0.
+Postseal passed with58828 pins. Sources aa8b8b1d/e0c6ba62/3517e17d/
+4a830a35/3b068ff7. All14 failed/mixed jobs149..171 are retained with causes.
+The successful certificate uses balanced finite maps; array-route drafts
+are preserved but inactive. See KEYGEN_PUBLIC_NONZERO_170_REPORT.md /
+_PINS.md / _NEXT_ROUTE.md. Next171: actual quotient loop, then inverse/
+return, solver/certificate/codecs and the complete corrected134 witness.
+Z>0 and numeric p_accept/coding/p_K bounds remain OPEN; measured and five
+do_sign obligations unchanged. No push.
+
 # Current continuation — actual polynomial evaluations169 sealed
 
 2026-10-18. Two modules/11 declarations audited in job148, logs0/0;
