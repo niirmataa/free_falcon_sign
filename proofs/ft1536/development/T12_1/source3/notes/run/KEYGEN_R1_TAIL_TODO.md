@@ -1,3 +1,16 @@
+# Current continuation — eight middle NTT rounds163 sealed
+
+2026-10-18. Six modules/35 declarations audited in six sequential
+processes (job129, logs0/0); sources41138d1d/65963ace. The full original
+middle section now executes eight rounds from t768/m2 to t3/m512,
+including t=hn/m=2 initialization. Postseal passed with56600 pins;
+mixed126/127 retained. See KEYGEN_PUBLIC_ROUNDS_163_REPORT.md / _PINS.md /
+_NEXT_ROUTE.md. Next164: preserve initialized tables across prefix,
+compose first+middle passes, then execute tripling512 and actual caller.
+Full public call, solver/certificate/codecs, G(seed*) and positive numeric
+bounds remain OPEN; corrected134, measured wording and five do_sign
+obligations unchanged. No push.
+
 # Current continuation — public NTT group loop162 sealed
 
 2026-10-18. Five modules/24 declarations audited in five sequential
