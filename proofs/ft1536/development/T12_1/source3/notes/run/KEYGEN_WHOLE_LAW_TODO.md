@@ -1,3 +1,25 @@
+# Current continuation — selected modular NTT middle passes183 sealed
+
+2026-10-18. NttMLoop183.full constructs the original intermediatePass:
+all eight rounds, actual nested v/u1 loops, mixed-width guard and m/t
+updates, ending m512/t3. SelectedNttMiddle183.source instantiates it at
+SelectedNttFirst182.after with every input condition discharged.
+SelectedMiddleFrame183 preserves the complete second input and canonical
+gm; combined_frame reaches the original entry and limits writes to block31
+bytes [6776,12920). SelectedMiddleMetadata183 preserves logn10/full1/u768
+and the declared r cell, and constructs the combined source prefix.
+17 mathematical modules /108 declarations passed audit307, logs0/0;
+postseal verified 66224 paths. Sources8d40fe2f/ad126b3a/7b0eb029/0f728e39.
+Nine failed or mixed jobs297-305 retained with causes; no cancellations or
+relaxed limits. See KEYGEN_NTT_MIDDLE_183_REPORT.md / _PINS.md / _NEXT_ROUTE.md.
+Next184: original triplePass at SelectedNttMiddle183.after (512 triple
+butterflies), then complete the first actual forward call and reuse the
+parametric construction for gs. Both complete calls and the remaining
+make_fg/root/encoding path stay OPEN. Full corrected134 emitted witness,
+unconditional Z>0 and numerical p_accept/p_K remain OPEN.
+Whole goal ACTIVE / NOT_COMPLETE; NOT_REVIEWED; measured and five do_sign
+unchanged. No running proof job or push. Next unused suffix308.
+
 # Current continuation — selected modular NTT first pass182 sealed
 
 2026-10-18. SelectedForwardEntry182.binding and NttPrologue182.source
