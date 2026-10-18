@@ -1,3 +1,22 @@
+# Current continuation — actual generator last row179 sealed
+
+2026-10-18. SelectedGeneratorRow179.source constructs the actual rowSelect
+branch, scope restoration and all 256 lastRowLoop iterations. The common
+body proves four source REV10 stores and four scalar updates per iteration.
+SelectedGeneratorRowTable179.forward_filled closes canonical gm[512..1023]
+using the previous correctness theorem on this new execution; u=512/k=1.
+SelectedGeneratorRowFrame179.f_image/g_image preserves both complete input
+images. 14 mathematical modules / 112 declarations passed audit269, logs0/0;
+postseal verified 63963 paths. Sources d2076b75/0e869601/933d21bb/60e7dac7.
+Six failed or mixed jobs, including three controlled diagnostic cancellations,
+are retained with causes. See KEYGEN_GENERATOR_ROW_179_REPORT.md / _PINS.md /
+_NEXT_ROUTE.md. Next180 starts at SelectedGeneratorRow179.after: derive the
+needed igm initialization from actual stores, then construct kFromLogn,
+ifFull/cubeLoop, squareLoop and topElements. Full generator/root/encoding,
+corrected134 emitted witness and positive probability bounds remain OPEN.
+Whole owner goal ACTIVE / NOT_COMPLETE; measured and five do_sign unchanged.
+No running proof job and no push. Next unused job suffix270.
+
 # Current continuation — actual generator scalar prefix178 sealed
 
 2026-10-18. SelectedTopInit178.source executes the actual p/p0i/R2 setup;
