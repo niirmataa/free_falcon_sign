@@ -1,3 +1,16 @@
+# Current continuation — constructive public forward call167 sealed
+
+2026-10-18. Four modules/22 declarations audited in job142, logs0/0;
+source commit24c7bcf0. PublicForwardConstruct167.source/call constructs
+allocation, complete generator and transform tail, cleanup and wrapper
+from legal memory domains, with no callee-execution premise. Postseal
+passed with57291 pins; failed140 retained. See
+KEYGEN_PUBLIC_FORWARD_167_REPORT.md / _PINS.md / _NEXT_ROUTE.md.
+Next168 prepared: actual fresh blocks33/34, h call, t preservation and
+second call. Public suffix, solver/certificate/codecs, full G(seed*) and
+positive numerical bounds remain OPEN; corrected134, measured wording
+and exactly five do_sign obligations unchanged. No push.
+
 # Current continuation — complete public table generator166 sealed
 
 2026-10-18. Three modules / 14 declarations audited in job139, logs0/0;
