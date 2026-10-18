@@ -1,3 +1,27 @@
+# Current continuation — first make_fg_step entry and preparation187 sealed
+
+2026-10-18. FirstStepEntry187 executes parent d=1, proves the first guard
+and source expressions, and binds data/logn9/depth1/ter1/in_ntt1/out_ntt1.
+The original declarations, n512/hn256, source length reads1/2, ternary prime
+selection, seven pointer binds and4096-byte memmove now execute. New pointers:
+fd670/gd1182/fs1694/gs2206/gm2718/igm3230/t1=3742, block31,width4,count71680.
+SelectedStepMove187 supplies both moved512-word inputs; SelectedStepReady187
+preserves static/table objects and actual scalar cells. SelectedStepPrefix187
+exposes exactly original parts.step2/3/4 at SelectedStepMove187.after.
+12 mathematical modules /159 declarations passed audit332, logs0/0;
+postseal verified 68469 paths. Sources4958da28/2f919cb0/e78d3839.
+Two failed/mixed jobs329/330 retained (concrete state-comparison heartbeat
+limits), resolved by explicit empty-scope/heap/cell proofs without changing
+source operations or limits. No controlled cancellation.
+See KEYGEN_STEP_ENTRY_187_REPORT.md / _PINS.md / _NEXT_ROUTE.md.
+Next188: execute the first prime loop, including u0 setup and actual
+logn9/full0 generator/inverse bodies; then remaining first-step CRT/prime
+loops and the other d-levels. The full first step call is NOT yet proved.
+Full make_fg/root/encoding, corrected134 emitted witness and unconditional
+Z>0 / numerical p_accept / p_K remain OPEN. Whole goal ACTIVE / NOT_COMPLETE;
+NOT_REVIEWED; measured and five do_sign unchanged. No running proof job
+or push. Next unused suffix333.
+
 # Current continuation — complete selected ternary-top call186 sealed
 
 2026-10-18. SelectedTopProducts186.body_source constructs the entire
