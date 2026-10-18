@@ -1,3 +1,24 @@
+# Current continuation — selected modular NTT first pass182 sealed
+
+2026-10-18. SelectedForwardEntry182.binding and NttPrologue182.source
+construct the actual first forward-call entry and original prologue.
+SelectedNttFirst182.first_pass / SelectedFirstMetadata182.prefix_source
+construct all768 first butterflies, with one parametric body and induction.
+SelectedFirstFrame182 preserves the complete second input and canonical gm;
+the precise modified byte interval is block31 [6776,12920). logn/full and
+m/t declarations are ready for the next original loops.
+19 mathematical modules /110 declarations passed audit295, logs0/0;
+postseal verified 65570 paths. Source commits261a5ef8/e850c2cd/311e73b6/2df0ca57.
+Three failed or mixed jobs289/290/291 retained with causes; no cancellations
+or relaxed limits. See KEYGEN_NTT_FIRST_182_REPORT.md / _PINS.md / _NEXT_ROUTE.md.
+Next183: construct original middle and triple passes at
+SelectedNttFirst182.after, close the complete first forward call, then reuse
+for the second input. Both complete forward calls and the later
+make_fg/root/encoding path remain OPEN. Full corrected134 emitted witness,
+unconditional Z>0 and numerical p_accept/p_K remain OPEN.
+Whole goal ACTIVE / NOT_COMPLETE; NOT_REVIEWED; measured and five do_sign
+unchanged. No running proof job or push. Next unused suffix296.
+
 # Current continuation — COMPLETE selected generator call181 sealed
 
 2026-10-18. The original descending squareLoop (255 iterations), three
