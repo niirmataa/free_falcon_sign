@@ -67,7 +67,8 @@ transform property, table law, twiddle or numerical premise.
 ## Retained failures and diagnostics
 
 Failed/mixed jobs 378/379/380/382/385/386/387/391/392/393/394/395/396/
-397/398/399/400/402/403/404/406/407/408/409/410 are retained with causes in
+397/398/399/400/402/403/404/406/407/408/409/410/413/414/416/417/418/419
+are retained with causes in
 KEYGEN_STEP_INVERSE_192_FAILURES.json; all were workshop/elaboration
 errors or localization tools. Two DIAGNOSTIC syntax probes
 (NttInverseShapeProbe192, jobs 381/383) printed parser/transcription
@@ -92,15 +93,27 @@ evidence. No source-C counterexample and no integrity event occurred.
 
 3. (closed) The correction statement composition is complete.
 
-## Degree-1 final pass: state skeleton drafted, not accepted
+## Degree-1 final pass: closed through the 256-step loop
 
-The NttInverseFinalBody192 draft (uncommitted) defines the exact
-modp_add/modp_sub/modp_montymul words of the a0/a1/b/c butterfly
+NttInverseFinalBody192 (job 412) closes the butterfly state skeleton:
+the exact modp_add/modp_sub/modp_montymul words of the a0/a1/b/c block
 (bb/subA/mid/low/high), the declared/assigned intermediate states, the
-two written positions and the state-preservation helper as the exact
-reuse of StepProductBody191.put32_outside. The single remaining obstacle
-is the after_locals scope-restoration chain (jobs 406-410 retained); the
-iteration and increment executions and the loop module follow after it.
+two written positions and the scope restoration (after_locals/
+after_arrays/body_state) with the state-preservation helper as the exact
+reuse of StepProductBody191.put32_outside.
+
+NttInverseFinalExec192 (job 415) executes one butterfly iteration and
+its three-clause increment: the a0/a1 block declarations, the two r1/r2
+loads, the exact b/c words, the two stores and the u/r1/r2 updates, all
+value-free with the standard three axioms.
+
+NttInverseFinalLoop192 (job 420) runs all 256 paired iterations: the
+two-sided image of the a+u / a+hn+u walks (lowWord/highWord per pair),
+the Fixed invariant (capacity, cells, pairwise separation of the 2*hn
+walk positions), the guard, and the whole loop statement execution
+(remaining, by induction). OPEN for part 3: only the finalPass
+composition (wAssign igm[0] + u/r1/r2 init + loop + skip) which joins
+this loop to the statement finalPass.
 4. NttInverseWhole192: the composition Exec KeygenLevelNtt.inverse at the
    bound entry state (prologue + triple skip + the three passes).
 5. SelectedStepInverse192: the KeygenLevelCalls.Bind of the actual s3
@@ -108,7 +121,7 @@ iteration and increment executions and the loop module follow after it.
    slen=1, logn=9, full=0, p/p0i slots), the .inverse call execution with
    void return, and the s3 branch composition to
    `KeygenMakeFgSource.Exec MakeFgTailShape190.s3 productOutput out`.
-   Then checkpoint 192 can be sealed (next unused proof job suffix 411).
+   Then checkpoint 192 can be sealed (next unused proof job suffix 421).
 
 The gs path s4-s7, false !out_ntt s8, outer loop tail, CRT/additional
 prime part, remaining d-levels, root validation, certificate and encoding
