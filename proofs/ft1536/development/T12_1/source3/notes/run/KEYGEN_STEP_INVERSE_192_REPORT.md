@@ -56,9 +56,20 @@ Tool tools/keygen_stepinverse192_entry.py, commit 6cd11d9b.
 Values stay value-free: only executed integer/call operations, no
 transform property, table law, twiddle or numerical premise.
 
+## Correction scaling loop: drafted, not accepted
+
+The 512-iteration Montgomery scaling loop module
+(NttInverseCorrectionLoop192) is drafted with the Image/Fixed invariant,
+one scaling iteration, the two-clause increment, the guard and the
+count-based loop induction, but a single unsolved transport goal at the
+empty-scope restore step of the iteration body blocks acceptance (jobs
+391-396 retained with causes). The draft source stays uncommitted as the
+exact starting point of the next window; no partial module is committed.
+
 ## Retained failures and diagnostics
 
-Failed/mixed jobs 378/379/380/382/385/386/387 are retained with causes in
+Failed/mixed jobs 378/379/380/382/385/386/387/391/392/393/394/395/396
+are retained with causes in
 KEYGEN_STEP_INVERSE_192_FAILURES.json; all were workshop/elaboration
 errors or localization tools. Two DIAGNOSTIC syntax probes
 (NttInverseShapeProbe192, jobs 381/383) printed parser/transcription

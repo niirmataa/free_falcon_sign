@@ -36,10 +36,17 @@ edit sealed 191 sources.
 3. `NttInverseCorrectionLoop192` (the modp_R/modp_div word assignments
    are already closed in NttInverseCorrection192): the 512-iteration
    scaling loop `*r1 = modp_montymul(*r1, ni, p, p0i)` at the setNi
-   state, with the walked r1 pointer (StepCopyBody190.addr/zero_pointer
-   are the type-compatible address helpers), the executed image as
-   Montgomery words over the input words, and the u counter induction
-   (C99LoopScalar141 patterns from StepProductLoop191).
+   state. The module is DRAFTED (uncommitted, retained at
+   formal/Source3/NttInverseCorrectionLoop192.lean) with Image/Fixed,
+   the iteration body, the two-clause increment, the guard and the
+   count-based induction; the single blocker is the empty-scope restore
+   transport in the iteration body (jobs 391-396). Suggested fix: state
+   the iteration output state definitionally as the restoreScope form, or
+   prove `restoreScope s out [] [] = out` by explicit funext on
+   locals/arrays (C99ScalarReference.restore reduces on the empty list)
+   and use it as a `have` equality consumed by `exact`. Watch the known
+   tokenizer defect: comparison operators glued to a following `i`
+   (write `j < i`, `i < n`).
 4. `NttInverseWhole192`: compose `Exec KeygenLevelNtt.inverse` from
    prologue (NttInversePrologue192.source), triplePass
    (NttInverseTriple192.source at full=0), the three new passes and the
