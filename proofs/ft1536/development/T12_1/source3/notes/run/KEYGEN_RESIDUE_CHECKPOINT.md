@@ -1,3 +1,42 @@
+# Current state — checkpoint190 sealed; first-prime fs copy path closed
+
+2026-10-19. Whole goal ACTIVE / NOT_COMPLETE. Checkpoint190 closes the
+original make_fg_step first-prime fs-to-t1 copy loop at the actual selected
+seed9 state: copyInit, all512 source copies with the two-clause increment
+and exact pointer walk, the copied image as executed loads
+(SelectedStepCopy190.fv), v=512/x=fs+512 and the exact false !in_ntt
+branch. Locals outside v and arrays outside x stay readable to the root
+state. No pair product, inverse call, gs path, outer loop, CRT, step, root
+or encoding completion is claimed.
+
+5 mathematical modules /105 declarations passed audit362, accepted logs
+0/0. Postseal verified70613 paths. Sources dacd8991/43f2a7a5/9c821bb4/
+10a6949d/f5280843. Nine accepted jobs in343-362; ten failed/mixed retained
+with causes plus two receipt-less setup aborts345/360 (stale cache and
+stale dependency) recorded; no cancellation. See
+KEYGEN_STEP_COPY_190_REPORT.md / _PINS.md / _NEXT_ROUTE.md. Receipt SHA256:
+dd76380b944d686463d8f2b6676f6936329a21823a1f3ca2c257f5af19655c37
+Postseal .build/steptail190/POSTSEAL_190.json SHA256:
+d15f8d30f0a40cd3c8cb37225f051ccf0c641304ebb3af47611733d2101764cb
+
+Resume note: the owner prompt PROMPT_R1_RESUME_003.md summarized the state
+as mid-suffix NTT with region3 open; the live records show regions2/3
+closed at checkpoints160-174 and the work at189. The live records were
+followed and the discrepancy is recorded in KEYGEN_STEP_COPY_190_REPORT.md.
+
+Exact resume obligation after fresh pin/process verification:
+KeygenMakeFgSource.Exec MakeFgTailShape190.s2 at the
+SelectedStepCopy190.source copy output. Next unused proof job suffix363.
+Then the active modp_iNTT3_ext call s3, the gs path s4-s7, false !out_ntt
+s8, outer u-loop tail, CRT/additional prime, later levels/root/encoding
+before using the complete emitted witness for corrected
+KeygenProbability134. Unconditional Z>0, numerical p_accept, conditional
+coding and positive p_K remain OPEN. Old110 stays frozen; measured wording
+and the five do_sign items remain unchanged. Scoped proof, NOT_REVIEWED;
+no IID/D1/F04 premise.
+
+---
+
 # Current state — checkpoint189 sealed; owner-requested pause
 
 2026-10-18. The owner requested a break at the next checkpoint.189 is now
