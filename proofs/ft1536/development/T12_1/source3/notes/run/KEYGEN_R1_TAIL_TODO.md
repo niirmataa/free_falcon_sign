@@ -1,3 +1,44 @@
+# Current state — checkpoint192 window in progress; inverse call s3 opened
+
+2026-10-19. Whole goal ACTIVE / NOT_COMPLETE. Checkpoint 192 is NOT
+sealed (no postseal); the s3 statement execution is open. Entry
+obligation fulfilled first: POSTSEAL_191 (`97d24fde…`) and the sealed
+product receipt (`cd2798f1…`) verified and all 71052 inherited pins
+re-checked into `.build/stepinverse192/ENTRY_PINS.json` (SHA256
+9842d9ffedece50b7b19787b8c77cafe9629edbaa7d245c5439e661bf44cc60d);
+no active processes.
+
+Accepted in this window (jobs 377/384/388/389, logs 0/0, standard three
+axioms): MakeFgInverseShape192 names the s3 branch and the original
+`modp_iNTT3_ext(fs+u, slen, igm, logn, 0, p, p0i)` call by decide;
+NttInversePrograms192 splits the whole pinned inverse corpus (region
+3147 98) into prologue / three passes / correction with decide-checked
+source binding to the accepted KeygenLevelNtt.part projections;
+NttInversePrologue192 executes the prologue at logn9/full0 (n=512,
+hn=256, declarations, cleared r1/r2, preservation); NttInverseTriple192
+closes the divide-by-three pass as the original skipped branch at
+full=0. Nine failed/mixed jobs 378-387 retained with causes (workshop
+errors and two DIAGNOSTIC parse-dump probes 381/383; no integrity
+event). See KEYGEN_STEP_INVERSE_192_REPORT.md / _NEXT_ROUTE.md /
+_FAILURES.json.
+
+Exact resume obligation after fresh pin/process verification:
+`KeygenMakeFgSource.Exec MakeFgTailShape190.s3` at the
+SelectedStepProduct191.source product output is still OPEN: the
+intermediate doubling pass (part 2, eight reverse rounds, 2048 butterfly
+iterations), the final degree-1 pass (part 3, 256 iterations), the
+correction (part 4, modp_R/modp_div words and 512 scaling steps), the
+corpus composition and the s3 branch instance at the bound call. Next
+unused proof job suffix 390. Then the gs path s4-s7, false !out_ntt s8
+(logn-1=8 instance), outer loop tail, CRT/additional prime, later
+levels/root/encoding before using the complete emitted witness for
+corrected KeygenProbability134. Unconditional Z>0, numerical p_accept,
+conditional coding and positive p_K remain OPEN. Old110 stays frozen;
+measured wording and the five do_sign items remain unchanged. Scoped
+proof, NOT_REVIEWED; no IID/D1/F04 premise.
+
+---
+
 # Current state — checkpoint191 sealed; first-prime product path closed
 
 2026-10-19. Whole goal ACTIVE / NOT_COMPLETE. Checkpoint191 closes the
