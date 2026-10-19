@@ -7,7 +7,7 @@ ENTRY_PINS.json`, SHA256
 `9842d9ffedece50b7b19787b8c77cafe9629edbaa7d245c5439e661bf44cc60d`)
 against its external pin and re-check the inherited chain
 (POSTSEAL_191 `97d24fde…`, receipt `cd2798f1…`) before any new proof
-work. Next unused proof job suffix is 390. Keep one Lean process
+work. Next unused proof job suffix is 391. Keep one Lean process
 (`tools/job111.py`, `-j1 -M6144`), logs 0/0, standard axioms. Never
 edit sealed 191 sources.
 
@@ -33,12 +33,13 @@ edit sealed 191 sources.
    igm[0] load and the 256-iteration degree-1 butterfly loop (a0/a1/b/c
    block locals, the modp_add/modp_sub/modp_montymul words, the two
    stores per iteration).
-3. `NttInverseCorrection192`: `Exec NttInversePrograms192.correction` —
-   `R = modp_R(p)` via KeygenModpR2Exec.r_exists (LeafCall stratum
-   transports to the ModCall stratum), `ni = modp_div(R, (uint32_t)n, p,
-   p0i, R)` via ModpDivTotal178.source_exists with the exact word
-   `ModpDivTotal178.word rWord 512 p p0i rWord`, then the 512-iteration
-   scaling loop `*r1 = modp_montymul(*r1, ni, p, p0i)`.
+3. `NttInverseCorrectionLoop192` (the modp_R/modp_div word assignments
+   are already closed in NttInverseCorrection192): the 512-iteration
+   scaling loop `*r1 = modp_montymul(*r1, ni, p, p0i)` at the setNi
+   state, with the walked r1 pointer (StepCopyBody190.addr/zero_pointer
+   are the type-compatible address helpers), the executed image as
+   Montgomery words over the input words, and the u counter induction
+   (C99LoopScalar141 patterns from StepProductLoop191).
 4. `NttInverseWhole192`: compose `Exec KeygenLevelNtt.inverse` from
    prologue (NttInversePrologue192.source), triplePass
    (NttInverseTriple192.source at full=0), the three new passes and the
@@ -63,7 +64,7 @@ After the s3 statement is closed and audited: write
 per process, unchanged checks), the final audit job, `keygen_audit192_
 collect.py`, then `keygen_stepinverse192_seal.py seal` and
 `postseal RECEIPT_SHA256`, the _PINS.md external pins and the R1 tail
-register entry. Next unused job suffix 390; all failed jobs and their
+register entry. Next unused job suffix 391; all failed jobs and their
 recorded causes stay retained.
 
 The gs path s4-s7 (copy/product/inverse on gs/t1/gd), the false !out_ntt

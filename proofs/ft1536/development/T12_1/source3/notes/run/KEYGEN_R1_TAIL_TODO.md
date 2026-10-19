@@ -8,8 +8,8 @@ re-checked into `.build/stepinverse192/ENTRY_PINS.json` (SHA256
 9842d9ffedece50b7b19787b8c77cafe9629edbaa7d245c5439e661bf44cc60d);
 no active processes.
 
-Accepted in this window (jobs 377/384/388/389, logs 0/0, standard three
-axioms): MakeFgInverseShape192 names the s3 branch and the original
+Accepted in this window (jobs 377/384/388/389/390, logs 0/0, standard
+three axioms): MakeFgInverseShape192 names the s3 branch and the original
 `modp_iNTT3_ext(fs+u, slen, igm, logn, 0, p, p0i)` call by decide;
 NttInversePrograms192 splits the whole pinned inverse corpus (region
 3147 98) into prologue / three passes / correction with decide-checked
@@ -17,19 +17,21 @@ source binding to the accepted KeygenLevelNtt.part projections;
 NttInversePrologue192 executes the prologue at logn9/full0 (n=512,
 hn=256, declarations, cleared r1/r2, preservation); NttInverseTriple192
 closes the divide-by-three pass as the original skipped branch at
-full=0. Nine failed/mixed jobs 378-387 retained with causes (workshop
-errors and two DIAGNOSTIC parse-dump probes 381/383; no integrity
-event). See KEYGEN_STEP_INVERSE_192_REPORT.md / _NEXT_ROUTE.md /
-_FAILURES.json.
+full=0; NttInverseCorrection192 executes the exact modp_R(p) and
+modp_div(R,(uint32_t)n,p,p0i,R) word assignments of the correction at
+the ModCall stratum. Nine failed/mixed jobs 378-387 retained with causes
+(workshop errors and two DIAGNOSTIC parse-dump probes 381/383; no
+integrity event). See KEYGEN_STEP_INVERSE_192_REPORT.md /
+_NEXT_ROUTE.md / _FAILURES.json.
 
 Exact resume obligation after fresh pin/process verification:
 `KeygenMakeFgSource.Exec MakeFgTailShape190.s3` at the
 SelectedStepProduct191.source product output is still OPEN: the
 intermediate doubling pass (part 2, eight reverse rounds, 2048 butterfly
 iterations), the final degree-1 pass (part 3, 256 iterations), the
-correction (part 4, modp_R/modp_div words and 512 scaling steps), the
-corpus composition and the s3 branch instance at the bound call. Next
-unused proof job suffix 390. Then the gs path s4-s7, false !out_ntt s8
+512-step Montgomery scaling loop of the correction (part 4, word
+assignments closed), the corpus composition and the s3 branch instance
+at the bound call. Next unused proof job suffix 391. Then the gs path s4-s7, false !out_ntt s8
 (logn-1=8 instance), outer loop tail, CRT/additional prime, later
 levels/root/encoding before using the complete emitted witness for
 corrected KeygenProbability134. Unconditional Z>0, numerical p_accept,

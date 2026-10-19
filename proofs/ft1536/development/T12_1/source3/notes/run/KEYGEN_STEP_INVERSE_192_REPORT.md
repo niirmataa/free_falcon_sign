@@ -45,6 +45,13 @@ Tool tools/keygen_stepinverse192_entry.py, commit 6cd11d9b.
 - NttInverseTriple192 (job keygen_publicforward159_389): the divide-by-
   three pass is the original skipped branch at full 0 (false guard, state
   unchanged). No full=1 instance is claimed.
+- NttInverseCorrection192 (job keygen_publicforward159_390): the exact
+  word assignments of the corrective section execute at the ModCall
+  stratum: R = modp_R(p) through the pinned KeygenModpR leaf body and
+  ni = modp_div(R, (uint32_t)n, p, p0i, R) through the accepted
+  ModpDivTotal178 composite body, giving the exact words
+  KeygenModpR.word p and ModpDivTotal178.word (KeygenModpR.word p) 512 p
+  p0i (KeygenModpR.word p) with the executed cast of n=512.
 
 Values stay value-free: only executed integer/call operations, no
 transform property, table law, twiddle or numerical premise.
@@ -68,9 +75,9 @@ evidence. No source-C counterexample and no integrity event occurred.
    r1/r2 pointers.
 2. Final degree-1 pass (part 3): w=igm[0] and the 256-iteration final
    butterfly loop.
-3. Correction (part 4): the exact modp_R(p) and modp_div words
-   (ModpDivTotal178.source_exists is the type-compatible reusable helper)
-   and the 512-iteration Montgomery scaling loop.
+3. Correction (part 4) continuation: the 512-iteration Montgomery
+   scaling loop `*r1 = modp_montymul(*r1, ni, p, p0i)` at the setNi state
+   (the modp_R/modp_div word assignments are closed, see above).
 4. NttInverseWhole192: the composition Exec KeygenLevelNtt.inverse at the
    bound entry state.
 5. SelectedStepInverse192: the KeygenLevelCalls.Bind of the actual s3
@@ -78,7 +85,7 @@ evidence. No source-C counterexample and no integrity event occurred.
    slen=1, logn=9, full=0, p/p0i slots), the .inverse call execution with
    void return, and the s3 branch composition to
    `KeygenMakeFgSource.Exec MakeFgTailShape190.s3 productOutput out`.
-   Then checkpoint 192 can be sealed (next unused proof job suffix 390).
+   Then checkpoint 192 can be sealed (next unused proof job suffix 391).
 
 The gs path s4-s7, false !out_ntt s8, outer loop tail, CRT/additional
 prime part, remaining d-levels, root validation, certificate and encoding
