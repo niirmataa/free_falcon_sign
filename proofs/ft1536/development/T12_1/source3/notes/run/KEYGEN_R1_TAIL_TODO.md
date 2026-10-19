@@ -1,3 +1,40 @@
+# Current state — checkpoint191 sealed; first-prime product path closed
+
+2026-10-19. Whole goal ACTIVE / NOT_COMPLETE. Checkpoint191 closes the
+original make_fg_step first-prime pair-product statement s2 at the actual
+selected seed9 copy output: productInit with the exact x walk, all 256
+product iterations with the two source loads t1[(v<<1)+0]/t1[(v<<1)+1],
+the nested Montgomery products with the source R2 written through x, the
+two-clause increment and the written image as executed words
+(SelectedStepProduct191.source). Locals outside v and arrays outside x
+stay readable to the root state. No inverse call, gs path, outer loop,
+CRT, step, root or encoding completion is claimed.
+
+5 mathematical modules /89 declarations passed audit376, accepted logs
+0/0. Postseal verified71052 paths. Sources da249223/fcaa3480/1801f7db/
+786ac16e/81d574f3/b2efc769. Six accepted jobs in363-376; seven
+failed/mixed retained with causes plus one receipt-less ENOSPC setup
+abort365 (recorded; STOP_AND_REPORT raised and the owner freed space;
+the entry pin chain re-checked intact). See
+KEYGEN_STEP_PRODUCT_191_REPORT.md / _PINS.md / _NEXT_ROUTE.md. Receipt
+SHA256: cd2798f1139e5eb05d0724f11a4ebc8128cb8311ddd326d3220ddd9b5cb997ae
+Postseal .build/stepproduct191/POSTSEAL_191.json SHA256:
+97d24fdeeb2bd7e443b1ec1a2982163e10b650926ff5002523235ca86f201087
+
+Exact resume obligation after fresh pin/process verification:
+KeygenMakeFgSource.Exec MakeFgTailShape190.s3 at the
+SelectedStepProduct191.source product output, with modp_iNTT3_ext split
+into prologue/passes/correction like forward 182-185. Next unused proof
+job suffix377. Then the gs path s4-s7, false !out_ntt s8, outer u-loop
+tail, CRT/additional prime, later levels/root/encoding before using the
+complete emitted witness for corrected KeygenProbability134.
+Unconditional Z>0, numerical p_accept, conditional coding and positive
+p_K remain OPEN. Old110 stays frozen; measured wording and the five
+do_sign items remain unchanged. Scoped proof, NOT_REVIEWED; no
+IID/D1/F04 premise.
+
+---
+
 # Current state — checkpoint190 sealed; first-prime fs copy path closed
 
 2026-10-19. Whole goal ACTIVE / NOT_COMPLETE. Checkpoint190 closes the
