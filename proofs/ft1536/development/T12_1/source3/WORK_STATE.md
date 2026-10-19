@@ -1,3 +1,66 @@
+# SEED9_R1 — checkpoint 192 window in progress: s3 inverse call
+
+2026-10-19 (continuation sessions). Whole goal ACTIVE / NOT_COMPLETE;
+checkpoint 192 NOT sealed (no postseal). Entry obligation fulfilled
+first: POSTSEAL_191 (`97d24fdeeb2bd7e443b1ec1a2982163e10b650926ff5002523235ca86f201087`)
+and the sealed product receipt (`cd2798f1139e5eb05d0724f11a4ebc8128cb8311ddd326d3220ddd9b5cb997ae`)
+verified with all 71052 inherited pins into
+`.build/stepinverse192/ENTRY_PINS.json` (SHA256
+`9842d9ffedece50b7b19787b8c77cafe9629edbaa7d245c5439e661bf44cc60d`);
+no active processes. Tool `tools/keygen_stepinverse192_entry.py`.
+
+ACCEPTED (jobs 377/384/388/389/390/401/405, logs 0/0, standard three
+axioms, value-free): MakeFgInverseShape192 names the s3 branch and the
+original `modp_iNTT3_ext(fs+u, slen, igm, logn, 0, p, p0i)` call by
+decide; NttInversePrograms192 splits the whole pinned inverse corpus
+(region 3147 98) into prologue / three passes / correction with
+decide-checked binding to the accepted KeygenLevelNtt.part projections
+(body_source to KeygenLevelNtt.inverse); NttInversePrologue192 executes
+the prologue at logn9/full0 (n=512, hn=256, declarations, cleared
+r1/r2, preservation); NttInverseTriple192 closes the divide-by-three
+pass as the skipped branch at full=0; NttInverseCorrection192 executes
+the exact modp_R(p)/modp_div words; NttInverseCorrectionLoop192 runs all
+512 Montgomery scaling steps with the executed image and the u/r1 walk;
+NttInverseCorrectionSource192 composes the whole correction statement
+execution. Commits 6cd11d9b/28aacad9/2bd1be84/16b9590c/3e21c388/
+9cea4456/85170b5e/15941fde plus the record commits.
+
+DRAFTED, UNACCEPTED (starting point of the next window):
+`formal/Source3/NttInverseFinalBody192.lean` — the degree-1 butterfly
+state skeleton (bb/subA/mid/low/high words, declared/assigned states,
+both written positions, state-preservation as the exact reuse of
+StepProductBody191.put32_outside). Single obstacle: the after_locals
+scope-restoration chain (rw across the assigned-state projections plus
+the final declared_outside composition) and after_arrays/body_state.
+Then body_source/inc_run and the 256-step induction (mirror
+NttInverseCorrectionLoop192). Suggested closing: explicit funext over
+locals with the empty/declared-list reduction of C99ScalarReference.restore.
+
+27 failed/mixed jobs 378-387/391-400/402-404/406-410 retained with
+causes in notes/run/KEYGEN_STEP_INVERSE_192_FAILURES.json (workshop
+errors plus two DIAGNOSTIC parse-dump probes 381/383; no integrity
+event; known toolchain tokenizer defect: comparison operators glued to a
+following `i` — write `j < i`). Next unused proof job suffix 411.
+
+Exact resume obligations: degree-1 pass (part 3), intermediate doubling
+pass (part 2, eight reverse rounds, 2048 butterflies), the corpus
+composition Exec KeygenLevelNtt.inverse, and SelectedStepInverse192
+binding the s3 call at the SelectedStepProduct191.source product output
+(u=0, slen=1, logn=9, full=0) to `KeygenMakeFgSource.Exec
+MakeFgTailShape190.s3 productOutput out`; then audit + seal 192
+(s3-sealing tooling not yet written; mirror keygen_stepproduct191_seal).
+Then the gs path s4-s7, false !out_ntt s8 (logn-1=8 instance needs a
+logn-8 control variant of the prologue size lemma), outer loop tail,
+CRT/additional prime, later levels/root/encoding to the complete
+emitted witness for corrected KeygenProbability134. Unconditional Z>0,
+numerical p_accept, conditional coding and positive p_K remain OPEN.
+Old110 frozen; measured wording and five do_sign items unchanged;
+no IID/D1/F04 premise. No push without the explicit owner signal
+(currently N local commits on main). One writer; foreign changes in the
+root tree untouched. Full stage records: notes/run/
+KEYGEN_STEP_INVERSE_192_REPORT.md / _NEXT_ROUTE.md / _FAILURES.json and
+the R1 tail register notes/run/KEYGEN_R1_TAIL_TODO.md.
+
 # SEED9_R1 — kernel certificate of one seed (fixture seed9): window in progress
 
 2026-10-17. Owner window "R1: kernel certificate of one seed (fixture
