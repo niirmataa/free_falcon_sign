@@ -20,20 +20,21 @@ closes the divide-by-three pass as the original skipped branch at
 full=0; NttInverseCorrection192 executes the exact modp_R(p) and
 modp_div(R,(uint32_t)n,p,p0i,R) word assignments of the correction at
 the ModCall stratum. NttInverseCorrectionLoop192 closes the complete
-512-step Montgomery scaling loop with the executed image and the u/r1
-walk (job 401). Nineteen failed/mixed jobs 378-387/391-400 retained with
-causes (workshop errors and two DIAGNOSTIC parse-dump probes 381/383; no
-integrity event). See KEYGEN_STEP_INVERSE_192_REPORT.md /
-_NEXT_ROUTE.md / _FAILURES.json.
+512-step Montgomery scaling loop (job 401) and
+NttInverseCorrectionSource192 composes the whole correction statement
+execution (job 405). Twenty-two failed/mixed jobs 378-387/391-400/402-404
+retained with causes (workshop errors and two DIAGNOSTIC parse-dump
+probes 381/383; no integrity event). See KEYGEN_STEP_INVERSE_192_REPORT.md
+/ _NEXT_ROUTE.md / _FAILURES.json.
 
 Exact resume obligation after fresh pin/process verification:
 `KeygenMakeFgSource.Exec MakeFgTailShape190.s3` at the
 SelectedStepProduct191.source product output is still OPEN: the
 intermediate doubling pass (part 2, eight reverse rounds, 2048 butterfly
 iterations), the final degree-1 pass (part 3, 256 iterations), the
-correction composition (part 4 fully executed: words + scaling loop), the
-corpus composition and the s3 branch instance at the bound call. Next
-unused proof job suffix 402. Then the gs path s4-s7, false !out_ntt s8
+corpus composition (correction part 4 fully executed and composed) and
+the s3 branch instance at the bound call. Next unused proof job
+suffix 406. Then the gs path s4-s7, false !out_ntt s8
 (logn-1=8 instance), outer loop tail, CRT/additional prime, later
 levels/root/encoding before using the complete emitted witness for
 corrected KeygenProbability134. Unconditional Z>0, numerical p_accept,

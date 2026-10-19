@@ -67,7 +67,7 @@ transform property, table law, twiddle or numerical premise.
 ## Retained failures and diagnostics
 
 Failed/mixed jobs 378/379/380/382/385/386/387/391/392/393/394/395/396/
-397/398/399/400 are retained with causes in
+397/398/399/400/402/403/404 are retained with causes in
 KEYGEN_STEP_INVERSE_192_FAILURES.json; all were workshop/elaboration
 errors or localization tools. Two DIAGNOSTIC syntax probes
 (NttInverseShapeProbe192, jobs 381/383) printed parser/transcription
@@ -84,9 +84,13 @@ evidence. No source-C counterexample and no integrity event occurred.
    r1/r2 pointers.
 2. Final degree-1 pass (part 3): w=igm[0] and the 256-iteration final
    butterfly loop.
-3. NttInverseCorrectionSource192: compose the correction statement
-   (rAssign/niAssign + cInit + the scaling loop + chain skip) into
-   `Exec NttInversePrograms192.correction` at the prologue state.
+- NttInverseCorrectionSource192 (job keygen_publicforward159_405): the
+  complete correction statement executes as one chain: the exact
+  modp_R/modp_div word assignments, the u/r1 initialization and the full
+  512-step scaling loop, exporting the scaled array image, the u counter
+  and the walked r1 endpoint.
+
+3. (closed) The correction statement composition is complete.
 4. NttInverseWhole192: the composition Exec KeygenLevelNtt.inverse at the
    bound entry state (prologue + triple skip + the three passes).
 5. SelectedStepInverse192: the KeygenLevelCalls.Bind of the actual s3
@@ -94,7 +98,7 @@ evidence. No source-C counterexample and no integrity event occurred.
    slen=1, logn=9, full=0, p/p0i slots), the .inverse call execution with
    void return, and the s3 branch composition to
    `KeygenMakeFgSource.Exec MakeFgTailShape190.s3 productOutput out`.
-   Then checkpoint 192 can be sealed (next unused proof job suffix 402).
+   Then checkpoint 192 can be sealed (next unused proof job suffix 406).
 
 The gs path s4-s7, false !out_ntt s8, outer loop tail, CRT/additional
 prime part, remaining d-levels, root validation, certificate and encoding
