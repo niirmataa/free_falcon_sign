@@ -7,7 +7,7 @@ ENTRY_PINS.json`, SHA256
 `9842d9ffedece50b7b19787b8c77cafe9629edbaa7d245c5439e661bf44cc60d`)
 against its external pin and re-check the inherited chain
 (POSTSEAL_191 `97d24fde…`, receipt `cd2798f1…`) before any new proof
-work. Next unused proof job suffix is 391. Keep one Lean process
+work. Next unused proof job suffix is 402. Keep one Lean process
 (`tools/job111.py`, `-j1 -M6144`), logs 0/0, standard axioms. Never
 edit sealed 191 sources.
 
@@ -33,20 +33,12 @@ edit sealed 191 sources.
    igm[0] load and the 256-iteration degree-1 butterfly loop (a0/a1/b/c
    block locals, the modp_add/modp_sub/modp_montymul words, the two
    stores per iteration).
-3. `NttInverseCorrectionLoop192` (the modp_R/modp_div word assignments
-   are already closed in NttInverseCorrection192): the 512-iteration
-   scaling loop `*r1 = modp_montymul(*r1, ni, p, p0i)` at the setNi
-   state. The module is DRAFTED (uncommitted, retained at
-   formal/Source3/NttInverseCorrectionLoop192.lean) with Image/Fixed,
-   the iteration body, the two-clause increment, the guard and the
-   count-based induction; the single blocker is the empty-scope restore
-   transport in the iteration body (jobs 391-396). Suggested fix: state
-   the iteration output state definitionally as the restoreScope form, or
-   prove `restoreScope s out [] [] = out` by explicit funext on
-   locals/arrays (C99ScalarReference.restore reduces on the empty list)
-   and use it as a `have` equality consumed by `exact`. Watch the known
-   tokenizer defect: comparison operators glued to a following `i`
-   (write `j < i`, `i < n`).
+3. Correction composition (`NttInverseCorrectionSource192`): the
+   modp_R/modp_div words (NttInverseCorrection192) and the complete
+   512-step scaling loop (NttInverseCorrectionLoop192) are CLOSED; bind
+   rAssign/niAssign/cInit/loop into `Exec NttInversePrograms192.correction`
+   and export the scaled array image.
+
 4. `NttInverseWhole192`: compose `Exec KeygenLevelNtt.inverse` from
    prologue (NttInversePrologue192.source), triplePass
    (NttInverseTriple192.source at full=0), the three new passes and the
