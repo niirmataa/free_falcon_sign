@@ -1,3 +1,43 @@
+# Current state — checkpoint192 window in progress; part 3 CLOSED, part 2 open
+
+2026-10-19. Whole goal ACTIVE / NOT_COMPLETE. Checkpoint 192 is NOT
+sealed. Entry pins192 re-verified (ENTRY_PINS.json 9842d9ff…) before
+work; no active processes.
+
+This window closed part 3 and opened part 2 of the inverse call s3:
+NttInverseFinalPass192 (job 422; draft 421 retained) composes the whole
+original finalPass chain in one execution (w = igm[0], u = 0,
+r1 = a, r2 = a + hn*stride with the u64 product word, the closed
+256-step loop instance, the trailing skip; Fixed/full Image/exported
+endpoints). NttInverseMiddleBody192 (job 425; drafts 423/424 retained
+as linter failures) executes one intermediate butterfly iteration and
+its three-clause increment at generic walked positions. NttInverse-
+MiddleVLoop192 (job 427; draft 426 retained) runs the complete radix-2
+loop of one u1 group (ht iterations at offset v1, two-sided Image,
+Fixed, remaining by induction). Accepted logs 0/0, standard three
+axioms, value-free. Commits 1c7b8771/e659d44a/6fd7fe19. Thirty-seven
+failed jobs retained with causes (33 earlier + 421/423/424/426); the
+FAILURES.json stray literal backslash-n tail was normalized with the
+33 prior entries kept verbatim (recorded in the report).
+
+Exact resume obligation after fresh pin/process verification: finish
+`Exec NttInversePrograms192.intermediatePass` — the u1-group loop (s =
+igm[m+u1] load, r1 = a + v1*stride, r2 = r1 + ht*stride, the closed
+NttInverseMiddleVLoop192.remaining instance, the u1/v1 increment), the
+eight-round outer loop (ht = t>>1, t <<= 1, m >>= 1) and the tInit/mInit
+composition. Next unused proof job suffix 428. Then
+NttInverseWhole192 + SelectedStepInverse192 (s3 at the
+SelectedStepProduct191.source product output) + audit + seal 192. Then
+the gs path s4-s7, false !out_ntt s8 (logn-1=8 instance), outer loop
+tail, CRT/additional prime, later levels/root/encoding before using the
+complete emitted witness for corrected KeygenProbability134.
+Unconditional Z>0, numerical p_accept, conditional coding and positive
+p_K remain OPEN. Old110 stays frozen; measured wording and the five
+do_sign items remain unchanged. Scoped proof, NOT_REVIEWED; no
+IID/D1/F04 premise; no push.
+
+---
+
 # Current state — checkpoint192 window in progress; inverse call s3 opened
 
 2026-10-19. Whole goal ACTIVE / NOT_COMPLETE. Checkpoint 192 is NOT

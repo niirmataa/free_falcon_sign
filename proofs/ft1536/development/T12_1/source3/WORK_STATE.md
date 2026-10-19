@@ -1,5 +1,43 @@
 # SEED9_R1 — checkpoint 192 window in progress: s3 inverse call
 
+2026-10-19 (continuation window, finalPass + middle). Whole goal ACTIVE /
+NOT_COMPLETE; checkpoint 192 NOT sealed (no postseal). Entry pins192
+re-verified before work (ENTRY_PINS.json SHA256 9842d9ffedece50b7b19787b8c77cafe9629edbaa7d245c5439e661bf44cc60d,
+no active processes).
+
+ACCEPTED this window (jobs 422/425/427, logs 0/0, standard three
+axioms, value-free):
+- NttInverseFinalPass192 (job 422; draft 421 retained) closes part 3:
+  the complete finalPass statement execution — w = igm[0] assignment
+  (i32-literal zero index), u = 0 / r1 = a / r2 = a + hn*stride init
+  (r2 index as the u64 product word via word_mul), the closed 256-step
+  loop instance and the trailing skip, exporting Fixed/full Image/u=256/
+  walked endpoints. PART 3 IS CLOSED.
+- NttInverseMiddleBody192 (job 425; drafts 423/424 retained as linter
+  failures) executes one intermediate butterfly and its three-clause
+  increment at generic walked positions j/k.
+- NttInverseMiddleVLoop192 (job 427; draft 426 retained) runs the
+  complete radix-2 loop of one u1 group (ht iterations at offset v1,
+  two-sided Image, Fixed, remaining by induction). Commits
+  1c7b8771/e659d44a/6fd7fe19.
+
+OPEN: part 2 remainder (u1-group loop: s=igm[m+u1] load, r1/r2 binds
+with v1*stride/ht*stride product words, v-loop instance, u1/v1
+increment; then the eight-round outer loop with t<<=1 / m>>=1 shift
+executions and the intermediatePass composition), then
+NttInverseWhole192 + SelectedStepInverse192 + audit + seal 192. Then
+per map: gs s4-s7, !out_ntt s8 (logn-8 variant), outer loop tail,
+CRT/rest, levels/root/certificate/codec → witness KeygenProbability134
+(G(seed*)). Unconditional Z>0, p_accept, p_K remain OPEN. Next unused
+job suffix 428. Thirty-seven failed jobs retained with causes (33
+earlier + 421/423/424/426); the FAILURES.json stray literal backslash-n
+tail was normalized with the 33 prior entries kept verbatim (recorded
+in the report). Old110 stays frozen; measured wording and the five
+do_sign items unchanged. Scoped proof, NOT_REVIEWED; no IID/D1/F04
+premise; no push.
+
+# SEED9_R1 — checkpoint 192 window in progress: s3 inverse call
+
 2026-10-19 (continuation sessions). Whole goal ACTIVE / NOT_COMPLETE;
 checkpoint 192 NOT sealed (no postseal). Entry obligation fulfilled
 first: POSTSEAL_191 (`97d24fdeeb2bd7e443b1ec1a2982163e10b650926ff5002523235ca86f201087`)

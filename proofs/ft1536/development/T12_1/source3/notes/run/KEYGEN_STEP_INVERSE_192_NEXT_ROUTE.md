@@ -7,37 +7,33 @@ ENTRY_PINS.json`, SHA256
 `9842d9ffedece50b7b19787b8c77cafe9629edbaa7d245c5439e661bf44cc60d`)
 against its external pin and re-check the inherited chain
 (POSTSEAL_191 `97d24fde…`, receipt `cd2798f1…`) before any new proof
-work. Next unused proof job suffix is 402. Keep one Lean process
+work. Next unused proof job suffix is 428. Keep one Lean process
 (`tools/job111.py`, `-j1 -M6144`), logs 0/0, standard axioms. Never
 edit sealed 191 sources.
 
 ## Exact next source obligations (in order)
 
-1. `NttInverseMiddle*192`: `Exec NttInversePrograms192.intermediatePass
-   s ⟨out,.normal⟩` at any state with the n/hn cells (512/256), the
-   t/m/u1/v1/ht/v counters declared, p/p0i slots, the igm pointer with
-   executed table loads, the a pointer with writable 4-byte words and
-   r1/r2 cursor bindings. Suggested split like the forward 183: one
-   butterfly body module (the two loads, the add store and the sub+mont
-   store), one v-loop induction, one u1-loop module, one eight-round
-   outer module. The loops walk r1/r2 by `stride` (the actual instance
-   has stride=1); keep the stride magnitude symbolic where cheap and
-   discharge the actual value at the instance. Reuse only type-compatible
-   helpers: ModularAtoms178.assign/cell/mont, ModularWordOps182.add/sub,
-   C99DeclarationStatements, StepProductBody191.cells_outside,
-   Word32Memory176.source/write, RootBinding175.zero, the C99LoopScalar141
-   counter patterns. The forward butterfly modules (NttFirstBody182,
-   NttMBody183, NttTripleBody184) are a DIFFERENT word type/statement
-   shape: reuse their induction patterns, not their statements.
-2. `NttInverseFinal*192`: `Exec NttInversePrograms192.finalPass` — w =
-   igm[0] load and the 256-iteration degree-1 butterfly loop (a0/a1/b/c
-   block locals, the modp_add/modp_sub/modp_montymul words, the two
-   stores per iteration).
-3. Correction composition (`NttInverseCorrectionSource192`): the
-   modp_R/modp_div words (NttInverseCorrection192) and the complete
-   512-step scaling loop (NttInverseCorrectionLoop192) are CLOSED; bind
-   rAssign/niAssign/cInit/loop into `Exec NttInversePrograms192.correction`
-   and export the scaled array image.
+1. `NttInverseMiddleU1Loop192` / `NttInverseMiddleRounds192` (part 2
+   remainder): the u1-group loop of the intermediatePass — per group
+   the s = igm[m+u1] executed load (index m+u1 as the u64 add word),
+   the r1 = a + v1*stride and r2 = r1 + ht*stride binds (the second is
+   r1-relative with the ht*stride product word), the closed
+   NttInverseMiddleVLoop192.remaining instance and the u1/v1 two-clause
+   increment (u1 += 1 through the counter cell, v1 += t through the
+   t cell); then the eight-round outer loop with ht = t>>1, the
+   t <<= 1 and m >>= 1 shift executions and the tInit/mInit
+   composition closing `Exec NttInversePrograms192.intermediatePass`.
+   The butterfly body, its increment and the v-loop induction are
+   CLOSED (NttInverseMiddleBody192 job 425,
+   NttInverseMiddleVLoop192 job 427); reuse them as instances, one
+   group at a time. The forward butterfly modules remain a DIFFERENT
+   word type: reuse their induction patterns, not their statements.
+2. (closed) `NttInverseFinal*192`: `Exec NttInversePrograms192.finalPass`
+   is closed by NttInverseFinalPass192 (job 422): w = igm[0], the
+   u/r1/r2 initialization, the 256-iteration loop and the trailing
+   skip.
+3. (closed) Correction composition `NttInverseCorrectionSource192`
+   (job 405) exports the scaled array image.
 
 4. `NttInverseWhole192`: compose `Exec KeygenLevelNtt.inverse` from
    prologue (NttInversePrologue192.source), triplePass
@@ -63,7 +59,7 @@ After the s3 statement is closed and audited: write
 per process, unchanged checks), the final audit job, `keygen_audit192_
 collect.py`, then `keygen_stepinverse192_seal.py seal` and
 `postseal RECEIPT_SHA256`, the _PINS.md external pins and the R1 tail
-register entry. Next unused job suffix 391; all failed jobs and their
+register entry. Next unused job suffix 428; all failed jobs and their
 recorded causes stay retained.
 
 The gs path s4-s7 (copy/product/inverse on gs/t1/gd), the false !out_ntt

@@ -68,30 +68,43 @@ transform property, table law, twiddle or numerical premise.
 
 Failed/mixed jobs 378/379/380/382/385/386/387/391/392/393/394/395/396/
 397/398/399/400/402/403/404/406/407/408/409/410/413/414/416/417/418/419
-are retained with causes in
-KEYGEN_STEP_INVERSE_192_FAILURES.json; all were workshop/elaboration
-errors or localization tools. Two DIAGNOSTIC syntax probes
-(NttInverseShapeProbe192, jobs 381/383) printed parser/transcription
-trees into retained job logs; they are environment evidence, not proof
-evidence. No source-C counterexample and no integrity event occurred.
+plus this window's 421/423/424/426 are retained with causes in
+KEYGEN_STEP_INVERSE_192_FAILURES.json (37 entries); all were workshop/
+elaboration errors, clean-log linter warnings or localization tools.
+Two DIAGNOSTIC syntax probes (NttInverseShapeProbe192, jobs 381/383)
+printed parser/transcription trees into retained job logs; they are
+environment evidence, not proof evidence. No source-C counterexample
+and no integrity event occurred. Record hygiene: the FAILURES.json file
+carried a stray literal backslash-n after its closing brace (an earlier
+append artifact); the 33 existing entries were rewritten verbatim and
+the tail normalized during this window's append, with the anomaly
+recorded here.
 
 ## Open at this window boundary (exact resume obligations)
 
-1. Intermediate doubling pass (part 2) at the prologue output: t/m
-   initialization, the eight reverse rounds with their nested u1 and v
-   loops (2048 executed butterfly iterations), each iteration the two
-   loads `x=*r1, y=*r2`, the `*r1=modp_add(x,y,p)` store and the
-   `*r2=modp_montymul(modp_sub(x,y,p),s,p,p0i)` store through the walked
-   r1/r2 pointers.
-2. Final degree-1 pass (part 3): w=igm[0] and the 256-iteration final
-   butterfly loop.
-- NttInverseCorrectionSource192 (job keygen_publicforward159_405): the
-  complete correction statement executes as one chain: the exact
-  modp_R/modp_div word assignments, the u/r1 initialization and the full
-  512-step scaling loop, exporting the scaled array image, the u counter
-  and the walked r1 endpoint.
-
-3. (closed) The correction statement composition is complete.
+1. Intermediate doubling pass (part 2) remainder at the prologue
+   output: the u1-group loop (m iterations: the s = igm[m+u1] executed
+   load, the r1 = a + v1*stride and r2 = r1 + ht*stride binds, the v
+   loop as the closed NttInverseMiddleVLoop192.remaining instance, and
+   the u1/v1 two-clause increment) and the eight-round outer loop
+   (t/m/ht updates, the t <<= 1 and m >>= 1 shift executions), then the
+   tInit/mInit composition of the intermediatePass statement. The
+   butterfly body, its increment and the v-loop induction are CLOSED
+   (NttInverseMiddleBody192 / NttInverseMiddleVLoop192, jobs 425/427);
+   2048 executed iterations total, one group instance at a time.
+2. (closed) The degree-1 final pass: NttInverseFinalPass192 composes
+   wAssign igm[0] + u/r1/r2 init + the 256-step loop + skip (job 422).
+   The NttInverseCorrectionSource192 correction statement (job 405) was
+   already complete: the exact modp_R/modp_div word assignments, the
+   u/r1 initialization and the full 512-step scaling loop.
+3. NttInverseWhole192: the composition Exec KeygenLevelNtt.inverse at the
+   bound entry state (prologue + triple skip + the three passes).
+4. SelectedStepInverse192: the KeygenLevelCalls.Bind of the actual s3
+   arguments at the SelectedStepProduct191.source product output (u=0,
+   slen=1, logn=9, full=0, p/p0i slots), the .inverse call execution with
+   void return, and the s3 branch composition to
+   `KeygenMakeFgSource.Exec MakeFgTailShape190.s3 productOutput out`.
+   Then checkpoint 192 can be sealed (next unused proof job suffix 428).
 
 ## Degree-1 final pass: closed through the 256-step loop
 
@@ -114,14 +127,36 @@ walk positions), the guard, and the whole loop statement execution
 (remaining, by induction). OPEN for part 3: only the finalPass
 composition (wAssign igm[0] + u/r1/r2 init + loop + skip) which joins
 this loop to the statement finalPass.
-4. NttInverseWhole192: the composition Exec KeygenLevelNtt.inverse at the
-   bound entry state (prologue + triple skip + the three passes).
-5. SelectedStepInverse192: the KeygenLevelCalls.Bind of the actual s3
-   arguments at the SelectedStepProduct191.source product output (u=0,
-   slen=1, logn=9, full=0, p/p0i slots), the .inverse call execution with
-   void return, and the s3 branch composition to
-   `KeygenMakeFgSource.Exec MakeFgTailShape190.s3 productOutput out`.
-   Then checkpoint 192 can be sealed (next unused proof job suffix 421).
+
+## Part 3 closed: the complete finalPass statement execution
+
+NttInverseFinalPass192 (job 422; first draft job 421 retained) composes
+the whole original finalPass chain in one execution: the w = igm[0]
+assignment through the i32-literal zero index (zero_i32 Pointer), the
+u = 0 / r1 = a / r2 = a + hn*stride initialization (the r2 bind index
+evaluates as the u64 product word hn*stride through the word_mul
+ArithmeticExec rule over the two counter cells), the complete 256-step
+loop and the trailing skip. The exported state carries Fixed, the full
+transformed Image, the u=256 counter and the walked r1/r2 endpoints.
+Values stay executed words only. This closes the OPEN item 2 of the
+previous boundary.
+
+## Part 2 opened: the intermediate doubling pass
+
+NttInverseMiddleBody192 (job 425; drafts 423/424 retained as linter
+failures) executes one intermediate-pass butterfly iteration and its
+three-clause increment at generic walked positions j/k: the x/y block
+declarations, the two r1/r2 loads, the exact modp_add/modp_sub/
+modp_montymul words over the s twiddle cell, the two stores and the
+v/r1/r2 updates. Scope restoration mirrors the degree-1 skeleton.
+
+NttInverseMiddleVLoop192 (job 427; first draft job 426 retained) runs
+the complete radix-2 loop of one u1 group: ht paired iterations at the
+v1 block offset, the two-sided Image (lowWord/highWord per pair over
+the round input words), the Fixed invariant (capacity, cells, pairwise
+separation of the walk positions), the guard and the whole loop
+execution (remaining, by induction), exporting the transformed group
+image and the walked r1/r2 endpoints.
 
 The gs path s4-s7, false !out_ntt s8, outer loop tail, CRT/additional
 prime part, remaining d-levels, root validation, certificate and encoding
