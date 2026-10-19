@@ -19,13 +19,11 @@ hn=256, declarations, cleared r1/r2, preservation); NttInverseTriple192
 closes the divide-by-three pass as the original skipped branch at
 full=0; NttInverseCorrection192 executes the exact modp_R(p) and
 modp_div(R,(uint32_t)n,p,p0i,R) word assignments of the correction at
-the ModCall stratum. Fifteen failed/mixed jobs 378-387/391-396 retained with
+the ModCall stratum. NttInverseCorrectionLoop192 closes the complete
+512-step Montgomery scaling loop with the executed image and the u/r1
+walk (job 401). Nineteen failed/mixed jobs 378-387/391-400 retained with
 causes (workshop errors and two DIAGNOSTIC parse-dump probes 381/383; no
-integrity event). The correction scaling loop module
-NttInverseCorrectionLoop192 is drafted (iteration body, increment, guard,
-loop induction) but unaccepted on one unsolved empty-scope restore
-transport in the iteration body; the draft stays uncommitted as the
-next-window starting point. See KEYGEN_STEP_INVERSE_192_REPORT.md /
+integrity event). See KEYGEN_STEP_INVERSE_192_REPORT.md /
 _NEXT_ROUTE.md / _FAILURES.json.
 
 Exact resume obligation after fresh pin/process verification:
@@ -33,9 +31,9 @@ Exact resume obligation after fresh pin/process verification:
 SelectedStepProduct191.source product output is still OPEN: the
 intermediate doubling pass (part 2, eight reverse rounds, 2048 butterfly
 iterations), the final degree-1 pass (part 3, 256 iterations), the
-512-step Montgomery scaling loop of the correction (part 4, word
-assignments closed), the corpus composition and the s3 branch instance
-at the bound call. Next unused proof job suffix 391. Then the gs path s4-s7, false !out_ntt s8
+correction composition (part 4 fully executed: words + scaling loop), the
+corpus composition and the s3 branch instance at the bound call. Next
+unused proof job suffix 402. Then the gs path s4-s7, false !out_ntt s8
 (logn-1=8 instance), outer loop tail, CRT/additional prime, later
 levels/root/encoding before using the complete emitted witness for
 corrected KeygenProbability134. Unconditional Z>0, numerical p_accept,

@@ -56,20 +56,18 @@ Tool tools/keygen_stepinverse192_entry.py, commit 6cd11d9b.
 Values stay value-free: only executed integer/call operations, no
 transform property, table law, twiddle or numerical premise.
 
-## Correction scaling loop: drafted, not accepted
-
-The 512-iteration Montgomery scaling loop module
-(NttInverseCorrectionLoop192) is drafted with the Image/Fixed invariant,
-one scaling iteration, the two-clause increment, the guard and the
-count-based loop induction, but a single unsolved transport goal at the
-empty-scope restore step of the iteration body blocks acceptance (jobs
-391-396 retained with causes). The draft source stays uncommitted as the
-exact starting point of the next window; no partial module is committed.
+- NttInverseCorrectionLoop192 (job keygen_publicforward159_401): the
+  complete corrective Montgomery scaling loop: all 512 iterations of
+  `*r1 = modp_montymul(*r1, ni, p, p0i)` through the walked r1 pointer,
+  with the executed image as Montgomery words over the input words
+  (scaled prefix, raw tail), the exact two-clause increment and the
+  count-based loop induction. The final state exports the fully scaled
+  array image and locals/arrays preservation outside u/r1.
 
 ## Retained failures and diagnostics
 
-Failed/mixed jobs 378/379/380/382/385/386/387/391/392/393/394/395/396
-are retained with causes in
+Failed/mixed jobs 378/379/380/382/385/386/387/391/392/393/394/395/396/
+397/398/399/400 are retained with causes in
 KEYGEN_STEP_INVERSE_192_FAILURES.json; all were workshop/elaboration
 errors or localization tools. Two DIAGNOSTIC syntax probes
 (NttInverseShapeProbe192, jobs 381/383) printed parser/transcription
@@ -86,17 +84,17 @@ evidence. No source-C counterexample and no integrity event occurred.
    r1/r2 pointers.
 2. Final degree-1 pass (part 3): w=igm[0] and the 256-iteration final
    butterfly loop.
-3. Correction (part 4) continuation: the 512-iteration Montgomery
-   scaling loop `*r1 = modp_montymul(*r1, ni, p, p0i)` at the setNi state
-   (the modp_R/modp_div word assignments are closed, see above).
+3. NttInverseCorrectionSource192: compose the correction statement
+   (rAssign/niAssign + cInit + the scaling loop + chain skip) into
+   `Exec NttInversePrograms192.correction` at the prologue state.
 4. NttInverseWhole192: the composition Exec KeygenLevelNtt.inverse at the
-   bound entry state.
+   bound entry state (prologue + triple skip + the three passes).
 5. SelectedStepInverse192: the KeygenLevelCalls.Bind of the actual s3
    arguments at the SelectedStepProduct191.source product output (u=0,
    slen=1, logn=9, full=0, p/p0i slots), the .inverse call execution with
    void return, and the s3 branch composition to
    `KeygenMakeFgSource.Exec MakeFgTailShape190.s3 productOutput out`.
-   Then checkpoint 192 can be sealed (next unused proof job suffix 391).
+   Then checkpoint 192 can be sealed (next unused proof job suffix 402).
 
 The gs path s4-s7, false !out_ntt s8, outer loop tail, CRT/additional
 prime part, remaining d-levels, root validation, certificate and encoding
