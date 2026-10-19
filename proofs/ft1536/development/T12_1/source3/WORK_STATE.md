@@ -25,22 +25,36 @@ NttInverseCorrectionSource192 composes the whole correction statement
 execution. Commits 6cd11d9b/28aacad9/2bd1be84/16b9590c/3e21c388/
 9cea4456/85170b5e/15941fde plus the record commits.
 
-DRAFTED, UNACCEPTED (starting point of the next window):
-`formal/Source3/NttInverseFinalBody192.lean` — the degree-1 butterfly
-state skeleton (bb/subA/mid/low/high words, declared/assigned states,
-both written positions, state-preservation as the exact reuse of
-StepProductBody191.put32_outside). Single obstacle: the after_locals
-scope-restoration chain (rw across the assigned-state projections plus
-the final declared_outside composition) and after_arrays/body_state.
-Then body_source/inc_run and the 256-step induction (mirror
-NttInverseCorrectionLoop192). Suggested closing: explicit funext over
-locals with the empty/declared-list reduction of C99ScalarReference.restore.
+ACCEPTED 2026-10-19 continuation (jobs 412/415/420, logs 0/0, standard
+three axioms, value-free): NttInverseFinalBody192 closes the degree-1
+butterfly state skeleton (bb/subA/mid/low/high words, declared/assigned
+states, both written positions, scope restoration after_locals/
+after_arrays/body_state, state-preservation as the exact reuse of
+StepProductBody191.put32_outside); NttInverseFinalExec192 executes one
+butterfly iteration (a0/a1 declarations, the two r1/r2 loads, the exact
+b/c words, the two stores) and the three-clause u/r1/r2 increment;
+NttInverseFinalLoop192 runs all 256 paired iterations (two-sided image
+lowWord/highWord, Fixed with pairwise separation of the 2*hn walk
+positions, guard, remaining by induction). Commits 820c9639/2bdd0fa3/
+3f5aa429.
 
-27 failed/mixed jobs 378-387/391-400/402-404/406-410 retained with
-causes in notes/run/KEYGEN_STEP_INVERSE_192_FAILURES.json (workshop
-errors plus two DIAGNOSTIC parse-dump probes 381/383; no integrity
-event; known toolchain tokenizer defect: comparison operators glued to a
-following `i` — write `j < i`). Next unused proof job suffix 411.
+OPEN for part 3: only the finalPass composition (wAssign igm[0] +
+u/r1/r2 init + loop + skip = Exec KeygenLevelNtt.part 3 statement
+finalPass). Then part 2 (middle doubling pass, eight reverse rounds,
+2048 butterflies, nested u1/v loops), the corpus composition
+NttInverseWhole192 (Exec KeygenLevelNtt.inverse) and
+SelectedStepInverse192 binding the s3 call at the
+SelectedStepProduct191.source product output (u=0, slen=1, logn=9,
+full=0) to `KeygenMakeFgSource.Exec MakeFgTailShape190.s3 productOutput
+out`; then audit + seal 192 (seal tooling not yet written; mirror
+keygen_stepproduct191_seal).
+
+33 failed/mixed jobs 378-387/391-400/402-404/406-410/413-414/416-419
+retained with causes in notes/run/KEYGEN_STEP_INVERSE_192_FAILURES.json
+(workshop errors plus two DIAGNOSTIC parse-dump probes 381/383; no
+integrity event; known toolchain tokenizer defect: comparison operators
+glued to a following `i` — write `j < i`). Next unused proof job
+suffix 421.
 
 Exact resume obligations: degree-1 pass (part 3), intermediate doubling
 pass (part 2, eight reverse rounds, 2048 butterflies), the corpus
