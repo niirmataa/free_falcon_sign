@@ -22,10 +22,13 @@ modp_div(R,(uint32_t)n,p,p0i,R) word assignments of the correction at
 the ModCall stratum. NttInverseCorrectionLoop192 closes the complete
 512-step Montgomery scaling loop (job 401) and
 NttInverseCorrectionSource192 composes the whole correction statement
-execution (job 405). Twenty-two failed/mixed jobs 378-387/391-400/402-404
-retained with causes (workshop errors and two DIAGNOSTIC parse-dump
-probes 381/383; no integrity event). See KEYGEN_STEP_INVERSE_192_REPORT.md
-/ _NEXT_ROUTE.md / _FAILURES.json.
+execution (job 405). The degree-1 final pass state skeleton
+(NttInverseFinalBody192) is drafted and uncommitted, blocked on the
+after_locals restoration chain (jobs 406-410). Twenty-seven failed/mixed
+jobs 378-387/391-400/402-404/406-410 retained with causes (workshop
+errors and two DIAGNOSTIC parse-dump probes 381/383; no integrity
+event). See KEYGEN_STEP_INVERSE_192_REPORT.md / _NEXT_ROUTE.md /
+_FAILURES.json.
 
 Exact resume obligation after fresh pin/process verification:
 `KeygenMakeFgSource.Exec MakeFgTailShape190.s3` at the

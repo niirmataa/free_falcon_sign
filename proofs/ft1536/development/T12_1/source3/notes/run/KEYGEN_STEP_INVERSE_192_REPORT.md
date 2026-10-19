@@ -67,7 +67,7 @@ transform property, table law, twiddle or numerical premise.
 ## Retained failures and diagnostics
 
 Failed/mixed jobs 378/379/380/382/385/386/387/391/392/393/394/395/396/
-397/398/399/400/402/403/404 are retained with causes in
+397/398/399/400/402/403/404/406/407/408/409/410 are retained with causes in
 KEYGEN_STEP_INVERSE_192_FAILURES.json; all were workshop/elaboration
 errors or localization tools. Two DIAGNOSTIC syntax probes
 (NttInverseShapeProbe192, jobs 381/383) printed parser/transcription
@@ -91,6 +91,16 @@ evidence. No source-C counterexample and no integrity event occurred.
   and the walked r1 endpoint.
 
 3. (closed) The correction statement composition is complete.
+
+## Degree-1 final pass: state skeleton drafted, not accepted
+
+The NttInverseFinalBody192 draft (uncommitted) defines the exact
+modp_add/modp_sub/modp_montymul words of the a0/a1/b/c butterfly
+(bb/subA/mid/low/high), the declared/assigned intermediate states, the
+two written positions and the state-preservation helper as the exact
+reuse of StepProductBody191.put32_outside. The single remaining obstacle
+is the after_locals scope-restoration chain (jobs 406-410 retained); the
+iteration and increment executions and the loop module follow after it.
 4. NttInverseWhole192: the composition Exec KeygenLevelNtt.inverse at the
    bound entry state (prologue + triple skip + the three passes).
 5. SelectedStepInverse192: the KeygenLevelCalls.Bind of the actual s3
@@ -98,7 +108,7 @@ evidence. No source-C counterexample and no integrity event occurred.
    slen=1, logn=9, full=0, p/p0i slots), the .inverse call execution with
    void return, and the s3 branch composition to
    `KeygenMakeFgSource.Exec MakeFgTailShape190.s3 productOutput out`.
-   Then checkpoint 192 can be sealed (next unused proof job suffix 406).
+   Then checkpoint 192 can be sealed (next unused proof job suffix 411).
 
 The gs path s4-s7, false !out_ntt s8, outer loop tail, CRT/additional
 prime part, remaining d-levels, root validation, certificate and encoding
