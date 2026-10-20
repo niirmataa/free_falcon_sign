@@ -240,4 +240,102 @@ theorem u1_fixed (s : State) (a igm : ArrayPointer) (stride : Nat) (i : Nat)
       rw [← round_product i (by omega)]
       omega)
 
+theorem mOf_two (i : Nat) (bound : i+1 ≤ 8) : mOf i = 2*mOf (i+1) := by
+  show 2^(8-i) = 2*2^(8-(i+1))
+  have tail : 8-(i+1) = 8-i-1 := by omega
+  have e : 8-i = (8-i-1)+1 := by omega
+  rw [e,tail,Nat.pow_succ]
+  exact (Nat.mul_comm _ _).symm
+
+theorem group_shift (i g : Nat) : g*tOf (i+1) = (g*2)*tOf i := by
+  show g*2^(i+1+1) = (g*2)*2^(i+1)
+  simp only [Nat.pow_succ,Nat.mul_comm,Nat.mul_left_comm,Nat.mul_assoc]
+
+theorem group_two (i g : Nat) (bound : i+1 ≤ 8) (slot : g < mOf (i+1)) : g*2 < mOf i := by
+  have split := mOf_two i bound
+  omega
+
+theorem round_lowpos (i g' j : Nat) : g'*tOf (i+1)+j = (g'*2)*tOf i + j := by
+  rw [group_shift i g']
+
+theorem round_highpos (i g' j : Nat) :
+    g'*tOf (i+1)+htOf (i+1)+j = (g'*2+1)*tOf i + j := by
+  have shift : g'*tOf (i+1) = (g'*2)*tOf i := group_shift i g'
+  have half : htOf (i+1) = tOf i := rfl
+  rw [shift,half]
+  simp only [Nat.add_mul,Nat.one_mul,Nat.mul_assoc]
+
+theorem round_image (s : State) (a : ArrayPointer) (stride : Nat) (i : Nat)
+    (p p0i : BitVec 32) (tws : Nat → BitVec 32) (fv0 : Nat → BitVec 32)
+    (bound : i+1 ≤ 8)
+    (image : NttInverseMiddleU1Loop192.Image s a stride (tOf i) (htOf i) (mOf i)
+      (roundTws tws i) p p0i (fvAt fv0 tws p p0i i) (mOf i)) :
+    NttInverseMiddleU1Loop192.Image s a stride (tOf (i+1)) (htOf (i+1)) (mOf (i+1))
+      (roundTws tws (i+1)) p p0i (fvAt fv0 tws p p0i (i+1)) 0 := by
+  intro g' j slot' jBound
+  have group : g'*2 < mOf i := group_two i g' bound slot'
+  have groupSucc : g'*2+1 < mOf i := by
+    have split := mOf_two i bound
+    omega
+  have span : 2*htOf i = tOf i := tOf_htOf i
+  have jSmall : j < tOf i := jBound
+  constructor
+  · intro impossible
+    exact absurd impossible (Nat.not_lt_zero g')
+  · intro _
+    by_cases low : j < htOf i
+    · have evaluated := next_low (fvAt fv0 tws p p0i i) (tOf i) (htOf i) (roundTws tws i)
+        p p0i (g'*2) j (Nat.le_of_eq span) (pow_nonzero _) low
+      have transformed := (image (g'*2) j group low).1 group
+      have evaluated' := next_low (fvAt fv0 tws p p0i i) (tOf i) (htOf i) (roundTws tws i)
+        p p0i (g'*2+1) j (Nat.le_of_eq span) (pow_nonzero _) low
+      have transformed' := (image (g'*2+1) j groupSucc low).1 groupSucc
+      constructor
+      · rw [round_lowpos i g' j]
+        show Load32 s.heap (walk a ((g'*2)*tOf i + j) stride)
+          (fvAt fv0 tws p p0i (i+1) ((g'*2)*tOf i + j))
+        rw [show fvAt fv0 tws p p0i (i+1) ((g'*2)*tOf i + j)=
+          nextWord (fvAt fv0 tws p p0i i) (tOf i) (htOf i) (roundTws tws i) p p0i
+            ((g'*2)*tOf i + j) from rfl,evaluated]
+        exact transformed.1
+      · rw [round_highpos i g' j]
+        show Load32 s.heap (walk a ((g'*2+1)*tOf i + j) stride)
+          (fvAt fv0 tws p p0i (i+1) ((g'*2+1)*tOf i + j))
+        rw [show fvAt fv0 tws p p0i (i+1) ((g'*2+1)*tOf i + j)=
+          nextWord (fvAt fv0 tws p p0i i) (tOf i) (htOf i) (roundTws tws i) p p0i
+            ((g'*2+1)*tOf i + j) from rfl,evaluated']
+        exact transformed'.1
+    · have offset : j - htOf i < htOf i := by
+        have := span
+        omega
+      have join : htOf i + (j - htOf i) = j := by omega
+      have evaluated := next_high (fvAt fv0 tws p p0i i) (tOf i) (htOf i) (roundTws tws i)
+        p p0i (g'*2) (j - htOf i) (Nat.le_of_eq span) (pow_nonzero _) offset
+      have transformed := (image (g'*2) (j - htOf i) group offset).1 group
+      have evaluated' := next_high (fvAt fv0 tws p p0i i) (tOf i) (htOf i) (roundTws tws i)
+        p p0i (g'*2+1) (j - htOf i) (Nat.le_of_eq span) (pow_nonzero _) offset
+      have transformed' := (image (g'*2+1) (j - htOf i) groupSucc offset).1 groupSucc
+      have position : g'*tOf (i+1)+j = (g'*2)*tOf i + htOf i + (j - htOf i) := by
+        rw [round_lowpos i g' j]
+        omega
+      have position' : g'*tOf (i+1)+htOf (i+1)+j =
+          (g'*2+1)*tOf i + htOf i + (j - htOf i) := by
+        rw [round_highpos i g' j]
+        omega
+      constructor
+      · rw [position]
+        show Load32 s.heap (walk a ((g'*2)*tOf i + htOf i + (j - htOf i)) stride)
+          (fvAt fv0 tws p p0i (i+1) ((g'*2)*tOf i + htOf i + (j - htOf i)))
+        rw [show fvAt fv0 tws p p0i (i+1) ((g'*2)*tOf i + htOf i + (j - htOf i))=
+          nextWord (fvAt fv0 tws p p0i i) (tOf i) (htOf i) (roundTws tws i) p p0i
+            ((g'*2)*tOf i + htOf i + (j - htOf i)) from rfl,evaluated]
+        exact transformed.2
+      · rw [position']
+        show Load32 s.heap (walk a ((g'*2+1)*tOf i + htOf i + (j - htOf i)) stride)
+          (fvAt fv0 tws p p0i (i+1) ((g'*2+1)*tOf i + htOf i + (j - htOf i)))
+        rw [show fvAt fv0 tws p p0i (i+1) ((g'*2+1)*tOf i + htOf i + (j - htOf i))=
+          nextWord (fvAt fv0 tws p p0i i) (tOf i) (htOf i) (roundTws tws i) p p0i
+            ((g'*2+1)*tOf i + htOf i + (j - htOf i)) from rfl,evaluated']
+        exact transformed'.2
+
 end FT1536.Source3.NttInverseMiddleRounds192
