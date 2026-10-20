@@ -1,4 +1,7 @@
 import Source3.NttInverseMiddleU1Loop192
+import Source3.C99OuterScalar144
+import Source3.KeygenNttControl
+import Source3.KeygenMkgm3RowInit
 
 set_option maxRecDepth 32768
 set_option maxHeartbeats 2000000
@@ -337,5 +340,247 @@ theorem round_image (s : State) (a : ArrayPointer) (stride : Nat) (i : Nat)
           nextWord (fvAt fv0 tws p p0i i) (tOf i) (htOf i) (roundTws tws i) p p0i
             ((g'*2+1)*tOf i + htOf i + (j - htOf i)) from rfl,evaluated']
         exact transformed'.2
+
+/- Round body execution (part 2 tail): the mInner block of one m round at
+   the executed words — the ht/u1/v1 declarations, ht = t >> 1 as the u64
+   shr word (the div-two conversion with the cell identity
+   tOf i / 2 = htOf i), the closed u1-group loop instance at
+   (tOf i, htOf i, mOf i), the t <<= 1 body shift and the trailing skip
+   under the block scope. Values stay executed words only. -/
+open KeygenNttLoopSupport (u64)
+
+def declared (s : State) : State := C99DeclarationStatements.effect .u64 names s
+def prepared (s : State) (h : Nat) : State := bindValue (declared s) "ht".toList .uint64 (u64 h)
+
+def innerBody : C99ModularReference.Stmt :=
+  .seq (NttInversePrograms192.declareU64 ["ht","u1","v1"])
+    (.seq NttInversePrograms192.htAssign
+      (.seq NttInversePrograms192.u1Loop
+        (.seq (NttInversePrograms192.update "t" .shl (NttInversePrograms192.num 1))
+          (.base .skip))))
+
+theorem mInner_split : NttInversePrograms192.mInner=.scope names innerBody := by decide
+
+theorem restore_locals (before after : State) (list : List Name) (name : Name)
+    (absent : name∉list) :
+    (restoreScope before after list []).locals name=after.locals name := by
+  have restore : (restoreScope before after list []).locals name=
+      (if list.contains name then before.locals name else after.locals name) := rfl
+  rw [restore]
+  split_ifs with h
+  · exact absurd (List.contains_iff_mem.mp h) absent
+  · rfl
+
+theorem put_locals (before : State) (name : Name) (w : BitVec 64) (other : Name)
+    (different : other≠name) :
+    (FftLocalCells140.put before name w).locals other=before.locals other :=
+  FftLocalCells140.outside before name other w different
+
+theorem effect_keep (s : State) (name : String) (n : Nat) (absent : name.toList∉names)
+    (cell : USlot s name n) : USlot (declared s) name n :=
+  (NttInverseMiddleU1Loop192.effect_outside .u64 names s name.toList absent).trans cell
+
+theorem prepared_keep (s : State) (h : Nat) (name : String) (n : Nat)
+    (different : name.toList≠"ht".toList) (cell : USlot (declared s) name n) :
+    USlot (prepared s h) name n := by
+  have keep : (prepared s h).locals name.toList=(declared s).locals name.toList := by
+    simp only [prepared,bindValue,C99ScalarReference.set,different,ite_false]
+  exact keep.trans cell
+
+theorem effect_keep32 (s : State) (name : String) (w : BitVec 32) (absent : name.toList∉names)
+    (cell : Slot s name w) : Slot (declared s) name w :=
+  (NttInverseMiddleU1Loop192.effect_outside .u64 names s name.toList absent).trans cell
+
+theorem prepared_keep32 (s : State) (h : Nat) (name : String) (w : BitVec 32)
+    (different : name.toList≠"ht".toList) (cell : Slot (declared s) name w) :
+    Slot (prepared s h) name w := by
+  have keep : (prepared s h).locals name.toList=(declared s).locals name.toList := by
+    simp only [prepared,bindValue,C99ScalarReference.set,different,ite_false]
+  exact keep.trans cell
+
+theorem declared_u1 (s : State) : (declared s).locals "u1".toList=some (.uint64,none) := rfl
+theorem declared_v1 (s : State) : (declared s).locals "v1".toList=some (.uint64,none) := rfl
+
+theorem prepared_u1 (s : State) (h : Nat) : (prepared s h).locals "u1".toList=some (.uint64,none) := by
+  have keep : (prepared s h).locals "u1".toList=(declared s).locals "u1".toList := by
+    simp only [prepared,bindValue,C99ScalarReference.set,
+      show ("u1".toList : Name)≠"ht".toList from by decide,ite_false]
+  rw [keep]
+  exact declared_u1 s
+
+theorem prepared_v1 (s : State) (h : Nat) : (prepared s h).locals "v1".toList=some (.uint64,none) := by
+  have keep : (prepared s h).locals "v1".toList=(declared s).locals "v1".toList := by
+    simp only [prepared,bindValue,C99ScalarReference.set,
+      show ("v1".toList : Name)≠"ht".toList from by decide,ite_false]
+  rw [keep]
+  exact declared_v1 s
+
+theorem prepared_ht (s : State) (h : Nat) (bound : h<2^64) : USlot (prepared s h) "ht" h :=
+  KeygenMkgm3RowInit.set64_slot (declared s) "ht" h bound
+
+/- Round-constant reconstruction at a successor state: the bounds, span
+   and separation facts are state-free; the cells, bindings, writability
+   and twiddle reads are supplied for the new state. -/
+theorem fixed_state {s s' : State} {a igm : ArrayPointer} {stride : Nat} {p p0i : BitVec 32}
+    {tws : Nat → BitVec 32} (base : Fixed s a igm stride p p0i tws)
+    (nCell : USlot s' "n" 512) (strideCell : USlot s' "stride" stride)
+    (pCell : Slot s' "p" p) (iCell : Slot s' "p0i" p0i)
+    (aBinding : s'.arrays "a".toList=some a) (igmBinding : s'.arrays "igm".toList=some igm)
+    (aWritable : s'.heap.writable a.block=true)
+    (twLoads : ∀ k : Nat, k < 512 → Load32 s'.heap ({igm with index := igm.index+k}) (tws k)) :
+    Fixed s' a igm stride p p0i tws where
+  strideBound := base.strideBound
+  wide := base.wide
+  aWidth := base.aWidth
+  aCapacity := base.aCapacity
+  aWritable := aWritable
+  igmCapacity := base.igmCapacity
+  nCell := nCell
+  strideCell := strideCell
+  pCell := pCell
+  iCell := iCell
+  aBinding := aBinding
+  igmBinding := igmBinding
+  separate := base.separate
+  twSeparate := base.twSeparate
+  twLoads := twLoads
+
+/- The u64 shr word through the div-two conversion. -/
+theorem shr_word (x : Nat) (bound : x<2^64) :
+    C99IntegerReference.ShiftExec .right (u64 x) (C99IntegerReference.convert .int32 1)
+      (u64 (x/2)) := by
+  have raw := C99IntegerReference.ShiftExec.right (u64 x)
+    (C99IntegerReference.convert .int32 1) 1 rfl (by change (1 : Nat)<64; decide)
+  have half : (u64 x).integer/2^1=(u64 x).integer/2 := by simp [pow_one]
+  have hty : (u64 x).type=C99IntegerReference.Ty.uint64 := rfl
+  rw [half] at raw
+  rw [hty] at raw
+  rw [KeygenNttLoopSupport.convert_div_two x bound] at raw
+  exact raw
+
+theorem below (i x : Nat) (bound : i+1 ≤ 8) (slot : x < mOf i * tOf i) : x < 512 := by
+  have := round_product i (by omega)
+  omega
+
+/- One executed m round: the mInner block at round i. -/
+theorem round_run (i : Nat) (bound : i+1 ≤ 8) (s : State) (a igm : ArrayPointer) (stride : Nat)
+    (p p0i : BitVec 32) (tws : Nat → BitVec 32) (fv0 : Nat → BitVec 32)
+    (fixed : Fixed s a igm stride p p0i tws)
+    (tCell : USlot s "t" (tOf i)) (mCell : USlot s "m" (mOf i))
+    (image : NttInverseMiddleU1Loop192.Image s a stride (tOf i) (htOf i) (mOf i)
+      (roundTws tws i) p p0i (fvAt fv0 tws p p0i i) 0) :
+    ∃ out, Exec NttInversePrograms192.mInner s ⟨out,.normal⟩ ∧
+      Fixed out a igm stride p p0i tws ∧
+      USlot out "t" (tOf (i+1)) ∧ USlot out "m" (mOf i) ∧
+      NttInverseMiddleU1Loop192.Image out a stride (tOf (i+1)) (htOf (i+1)) (mOf (i+1))
+        (roundTws tws (i+1)) p p0i (fvAt fv0 tws p p0i (i+1)) 0 ∧
+      (∀ q : ArrayPointer, (∀ x : Nat, x < 512 → Separate (walk a x stride) q) →
+        ∀ w : BitVec 32, Load32 s.heap q w → Load32 out.heap q w) ∧
+      out.heap.writable=s.heap.writable := by
+  have tBound : tOf i < 2^64 := two_pow_bound i bound
+  have htBound : htOf i < 2^64 := ht_pow_bound i bound
+  have mBound : mOf i < 2^64 := m_pow_bound i bound
+  have product : mOf i * tOf i = 512 := round_product i (by omega)
+  have dc : Exec (NttInversePrograms192.declareU64 ["ht","u1","v1"]) s ⟨declared s,.normal⟩ :=
+    .base _ _ _ (C99DeclarationStatements.source_exists FftLeafPrograms.program .u64 names s)
+  have tKept : USlot (declared s) "t" (tOf i) := effect_keep s "t" (tOf i) (by decide) tCell
+  have mKept : USlot (declared s) "m" (mOf i) := effect_keep s "m" (mOf i) (by decide) mCell
+  have nKept : USlot (declared s) "n" 512 := effect_keep s "n" 512 (by decide) fixed.nCell
+  have shrWord : C99IntegerReference.ShiftExec .right (u64 (tOf i))
+      (C99IntegerReference.convert .int32 1) (u64 (htOf i)) := by
+    have raw : C99IntegerReference.ShiftExec .right (u64 (tOf i))
+        (C99IntegerReference.convert .int32 1) (u64 (tOf i / 2)) := shr_word (tOf i) tBound
+    rw [htOf_eq] at raw
+    exact raw
+  have htRun : Exec NttInversePrograms192.htAssign (declared s) ⟨prepared s (htOf i),.normal⟩ :=
+    .assign _ _ _ .uint64 none (u64 (htOf i)) (by rfl)
+      (.scalar _ _ (.shift .right _ _ _ _ _
+        (C99LoopScalar141.read (declared s) "t".toList (tOf i) tKept) (.literal .int32 1) shrWord))
+  have nPrepared : USlot (prepared s (htOf i)) "n" 512 :=
+    prepared_keep s (htOf i) "n" 512 (by decide) nKept
+  have tPrepared : USlot (prepared s (htOf i)) "t" (tOf i) :=
+    prepared_keep s (htOf i) "t" (tOf i) (by decide) tKept
+  have mPrepared : USlot (prepared s (htOf i)) "m" (mOf i) :=
+    prepared_keep s (htOf i) "m" (mOf i) (by decide) mKept
+  have preparedFixed : Fixed (prepared s (htOf i)) a igm stride p p0i tws :=
+    fixed_state fixed nPrepared
+      (prepared_keep s (htOf i) "stride" stride (by decide)
+        (effect_keep s "stride" stride (by decide) fixed.strideCell))
+      (prepared_keep32 s (htOf i) "p" p (by decide)
+        (effect_keep32 s "p" p (by decide) fixed.pCell))
+      (prepared_keep32 s (htOf i) "p0i" p0i (by decide)
+        (effect_keep32 s "p0i" p0i (by decide) fixed.iCell))
+      fixed.aBinding fixed.igmBinding fixed.aWritable fixed.twLoads
+  have u1Fixed : NttInverseMiddleU1Loop192.Fixed (prepared s (htOf i)) a igm stride
+      (tOf i) (htOf i) (mOf i) p p0i (roundTws tws i) (fvAt fv0 tws p p0i i) :=
+    u1_fixed (prepared s (htOf i)) a igm stride i p p0i tws (fvAt fv0 tws p p0i i)
+      preparedFixed bound tPrepared mPrepared (prepared_ht s (htOf i) htBound)
+  obtain ⟨after,u1Run,afterFixed,afterU1,afterV1,afterImage,afterKeep,afterWritable⟩ :=
+    NttInverseMiddleU1Loop192.full (prepared s (htOf i)) a igm stride (tOf i) (htOf i) (mOf i)
+      p p0i (roundTws tws i) (fvAt fv0 tws p p0i i) u1Fixed none none (prepared_u1 s (htOf i))
+      (prepared_v1 s (htOf i)) image
+  have tAfter : Cell after "t".toList (tOf i) := afterFixed.tCell
+  have tBase : C99ArrayReference.Exec FftLeafPrograms.program
+      (.scalar (.update "t".toList .shl (NttInversePrograms192.num 1))) after
+      (FftLocalCells140.put after "t".toList (word (tOf i * 2))) := by
+    cases C99ControlShift142.double (fun _ => none) after "t".toList (tOf i) tBound tAfter with
+    | base _ _ _ source => exact source
+  have tRun : Exec (NttInversePrograms192.update "t" .shl (NttInversePrograms192.num 1))
+      after ⟨FftLocalCells140.put after "t".toList (word (tOf i * 2)),.normal⟩ :=
+    .base _ _ _ tBase
+  set shifted : State := FftLocalCells140.put after "t".toList (word (tOf i * 2)) with shiftedEq
+  have skipRun : Exec (.base .skip) shifted ⟨shifted,.normal⟩ := .base _ _ _ (.skip shifted)
+  have tailRun : Exec (.seq (NttInversePrograms192.update "t" .shl (NttInversePrograms192.num 1))
+      (.base .skip)) after ⟨shifted,.normal⟩ :=
+    .seqNormal _ _ after shifted ⟨shifted,.normal⟩ tRun skipRun
+  have u1Seq : Exec (.seq NttInversePrograms192.u1Loop
+      (.seq (NttInversePrograms192.update "t" .shl (NttInversePrograms192.num 1)) (.base .skip)))
+      (prepared s (htOf i)) ⟨shifted,.normal⟩ :=
+    .seqNormal _ _ (prepared s (htOf i)) after ⟨shifted,.normal⟩ u1Run tailRun
+  have htSeq : Exec (.seq NttInversePrograms192.htAssign
+      (.seq NttInversePrograms192.u1Loop
+        (.seq (NttInversePrograms192.update "t" .shl (NttInversePrograms192.num 1)) (.base .skip))))
+      (declared s) ⟨shifted,.normal⟩ :=
+    .seqNormal _ _ (declared s) (prepared s (htOf i)) ⟨shifted,.normal⟩ htRun u1Seq
+  have bodyRun : Exec innerBody s ⟨shifted,.normal⟩ :=
+    .seqNormal _ _ s (declared s) ⟨shifted,.normal⟩ dc htSeq
+  have innerRun : Exec NttInversePrograms192.mInner s ⟨restoreScope s shifted names [],.normal⟩ := by
+    rw [mInner_split]
+    exact .scope names innerBody s ⟨shifted,.normal⟩ bodyRun
+  have control := KeygenNttControl.frame NttInversePrograms192.mInner s
+    ⟨restoreScope s shifted names [],.normal⟩ (by decide) innerRun
+  refine ⟨restoreScope s shifted names [],innerRun,?_,?_,?_,?_,?_,?_⟩
+  · refine fixed_state fixed
+      (control.2.1 "n".toList (by decide) |>.trans fixed.nCell)
+      (control.2.1 "stride".toList (by decide) |>.trans fixed.strideCell)
+      (control.2.1 "p".toList (by decide) |>.trans fixed.pCell)
+      (control.2.1 "p0i".toList (by decide) |>.trans fixed.iCell)
+      (control.2.2 "a".toList (by decide) |>.trans fixed.aBinding)
+      (control.2.2 "igm".toList (by decide) |>.trans fixed.igmBinding) ?_ ?_
+    · show after.heap.writable a.block=true
+      rw [afterWritable]
+      exact fixed.aWritable
+    · intro k kBound
+      show Load32 after.heap {igm with index := igm.index+k} (tws k)
+      exact afterKeep {igm with index := igm.index+k}
+        (fun x xSlot => fixed.twSeparate k kBound x (below i x bound xSlot)) (tws k)
+        (fixed.twLoads k kBound)
+  · have tShift : USlot shifted "t" (tOf i * 2) :=
+      FftLocalCells140.cell_at after "t".toList (word (tOf i * 2))
+    have tOut : USlot (restoreScope s shifted names []) "t" (tOf i * 2) :=
+      (restore_locals s shifted names "t".toList (by decide)).trans tShift
+    show USlot (restoreScope s shifted names []) "t" (tOf (i+1))
+    rw [tOf_succ]
+    exact tOut
+  · exact (control.2.1 "m".toList (by decide) |>.trans mCell)
+  · show NttInverseMiddleU1Loop192.Image (restoreScope s shifted names []) a stride
+      (tOf (i+1)) (htOf (i+1)) (mOf (i+1)) (roundTws tws (i+1)) p p0i
+      (fvAt fv0 tws p p0i (i+1)) 0
+    exact round_image _ a stride i p p0i tws fv0 bound afterImage
+  · intro q sep w loaded
+    show Load32 after.heap q w
+    exact afterKeep q (fun x xSlot => sep x (below i x bound xSlot)) w loaded
+  · show after.heap.writable=s.heap.writable
+    exact afterWritable.trans rfl
 
 end FT1536.Source3.NttInverseMiddleRounds192
