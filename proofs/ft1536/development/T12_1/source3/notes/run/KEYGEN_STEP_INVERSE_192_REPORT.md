@@ -81,7 +81,85 @@ append artifact); the 33 existing entries were rewritten verbatim and
 the tail normalized during this window's append, with the anomaly
 recorded here.
 
+## Part 2 tail closed: the complete intermediate doubling pass (window 2026-10-20)
+
+2026-10-20. Entry integrity re-verified before any proof work:
+ENTRY_PINS.json checked against `9842d9ffedece50b7b19787b8c77cafe9629e
+dba7d245c5439e661bf44cc60d`, POSTSEAL_191 against `97d24fde…` and the
+sealed product receipt against `cd2798f1…`; all 71052 inherited pins
+re-checked (0 missing, 0 changed); no active owned process. Retained
+failure register was 45 entries on entry and is 48 on exit.
+
+NttInverseMiddleRounds192 (job 441; drafts 439/440 retained) executes one
+mInner round body end to end at the executed words: the ht/u1/v1
+declarations of the block, the ht = t >> 1 assignment as the u64 shr word
+(ShiftExec .right through the KeygenNttLoopSupport.convert_div_two
+conversion with the cell identity tOf i / 2 = htOf i by pow_two_div_two),
+the closed NttInverseMiddleU1Loop192.full instance at (tOf i, htOf i,
+mOf i) with the roundTws twiddles and the fvAt fv0 tws p p0i i input
+words (the cell transports through the declaration chain follow the
+setup_locals pattern), the t <<= 1 body shift (tOf i * 2 = tOf (i+1) by
+tOf_succ) and the trailing skip under the block scope. The export carries
+the round-constant Fixed facts (n/stride/p/p0i cells, the a/igm bindings,
+writability and the twiddle reads for all k < 512), the t/m cells at
+(tOf (i+1), mOf i), the round_image transition to the fvAt (i+1) input at
+index 0 and the load keeps for all positions separated from the 512
+walked elements.
+
+NttInverseMiddleRounds192 (job 443; draft 442 retained) closes the
+m-loop and the tInit/mInit composition: the m >>= 1 increment (the cell
+identity mOf i / 2 = mOf (i+1) by mOf_succ), the eight-iteration m loop
+with the guard t < n (true for i < 8 through tOf_small, false at i = 8
+where tOf 8 = 512 = n) and the count-based induction i+count = 8, then
+t = 2 + (full << 2) = 2 and m = (u64)1 << ((logn-1) - full) = 256 at
+logn 9 / full 0 (the shift evaluations mirroring
+NttInversePrologue192.size_value), closing `Exec
+NttInversePrograms192.intermediatePass` with the exported composed image
+at (tOf 8, htOf 8, mOf 8) and the load keeps for all separated
+positions. Accepted logs 0/0, standard three axioms, values stay
+executed words only. Commits 1bd5fa4d/b7989b8a.
+
+Retained failures 439/440/442 (register now 48 entries) were workshop
+errors only: the scope-restore splitting over the Bool-coercion
+condition, the String/Name mismatch in the cell keep lemmas (with the
+needed 32-bit variants for p/p0i), the shr-word width bound and the
+(u64 x).type unfolding before convert_div_two, the u1 instance handed the
+bare fv0 instead of the composed fvAt input words, the guard
+falsification needing the tOf reduction and the initial t/m cells derived
+by conversion instead of the definitional equations. No source-C
+counterexample and no integrity event.
+
 ## Open at this window boundary (exact resume obligations)
+
+1. NttInverseWhole192: compose `Exec KeygenLevelNtt.inverse` from the
+   prologue (NttInversePrologue192.source), the triple skip
+   (NttInverseTriple192.source at full=0), the three passes and the chain
+   trailing skip (NttInversePrograms192.body_source rewrites to the
+   accepted corpus). Word bridges still to write: the round-8 image at
+   index 0 gives exactly the final-pass pairs (j, j+256) for j < 256; the
+   final-pass output image feeds the correction input through a
+   finalWord case split at 256 (lowWord/highWord of the fvAt 8 words);
+   the correction words are the scale/mont words over those, with the
+   modp_R/modp_div words already exported by NttInverseCorrectionSource192.
+   TRAP found and recorded: NttInverseCorrectionSource192.source takes
+   `uDeclared : s.locals "u".toList=some (.uint64,none)` but the final
+   pass leaves u = 256 at the correction entry; the whole composition
+   needs a generalized correction init over any old value (mirror
+   NttInverseCorrectionSource192.init_run with the uInit assignment at
+   old := some (u64 256)).
+2. SelectedStepInverse192: the KeygenLevelCalls.Bind of the actual s3
+   arguments at the SelectedStepProduct191.source product output (u=0,
+   slen=1, logn=9, full=0, p/p0i slots), the .inverse call execution with
+   void return, and the s3 branch composition to `KeygenMakeFgSource.Exec
+   MakeFgTailShape190.s3 productOutput out`.
+3. Audit + seal 192: `.build/stepinverse192/AUDIT_MODULES.json`,
+   `keygen_isolated_audit192.py` (one declaration per command, one module
+   per process, unchanged checks), the final audit job,
+   `keygen_audit192_collect.py`, `keygen_stepinverse192_seal.py seal` and
+   `postseal RECEIPT_SHA256`, the _PINS.md external pins and the R1 tail
+   register entry. Next unused proof job suffix 444.
+
+## Open at the 2026-10-19 boundary (previous record, annotations updated)
 
 1. (closed) Intermediate doubling pass (part 2) remainder at the u1
    level: NttInverseMiddleU1Loop192 (job 433; drafts 428-432 retained)
@@ -101,7 +179,7 @@ recorded here.
    Fixed facts with the twiddle-table reads for all used indices, the
    per-round u1 instance (u1_fixed) and the round-to-round image
    transition (round_image).
-3. NttInverseMiddleRounds192 remainder: the mInner round execution
+3. (closed) NttInverseMiddleRounds192 remainder: the mInner round execution
    (the ht/u1/v1 declarations, ht = t >> 1 as the u64 shr word through
    KeygenNttLoopSupport.convert_div_two, the NttInverseMiddleU1Loop192
    full instance at (tOf i, htOf i, mOf i), the t <<= 1 body shift

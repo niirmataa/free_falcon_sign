@@ -1,3 +1,42 @@
+# Current state — checkpoint192 window in progress; part 2 tail CLOSED
+
+2026-10-20. Whole goal ACTIVE / NOT_COMPLETE. Checkpoint 192 is NOT
+sealed. Entry pins192 re-verified (ENTRY_PINS.json 9842d9ff…,
+POSTSEAL_191 97d24fde…, receipt cd2798f1…, all 71052 inherited pins
+0 missing/0 changed) before work; no active processes.
+
+This window closed the complete intermediate doubling pass (part 2 tail)
+of the inverse call s3: NttInverseMiddleRounds192 (job 441) executes one
+mInner round body end to end (ht = t >> 1 as the u64 shr word through the
+div-two conversion with tOf i / 2 = htOf i by pow_two_div_two, the closed
+u1 group instance at (tOf i, htOf i, mOf i) with roundTws twiddles and
+fvAt input words, the t <<= 1 shift, the block scope) with the
+round-constant Fixed facts, the round_image transition and the load
+keeps exported; job 443 closes the m >>= 1 increment, the eight-round m
+loop (guard t < n true for i < 8, false at i = 8 where tOf 8 = 512 = n,
+induction i+count = 8) and the tInit/mInit composition (t = 2, m = 256 at
+logn 9 / full 0), closing `Exec NttInversePrograms192.intermediatePass`
+with the composed image at (tOf 8, htOf 8, mOf 8). Drafts 439/440/442
+retained as workshop failures; register now 48 entries. Accepted logs
+0/0, standard three axioms, value-free. Commits 1bd5fa4d/b7989b8a.
+
+Exact resume obligation after fresh pin/process verification: finish
+`Exec KeygenLevelNtt.inverse` (NttInverseWhole192: prologue + triple
+skip + the three passes + trailing skip, with the fvAt8→finalWord→scale
+word bridges; TRAP recorded: the correction source freezes
+uDeclared := none but the final pass leaves u = 256 — generalize the
+correction uInit over old := some (u64 256)), then SelectedStepInverse192
+(s3 at the SelectedStepProduct191.source product output) + audit +
+seal 192. Next unused proof job suffix 444. Then the gs path s4-s7,
+false !out_ntt s8 (logn-1=8 instance), outer loop tail, CRT/additional
+prime, later levels/root/encoding before using the complete emitted
+witness for corrected KeygenProbability134. Unconditional Z>0,
+numerical p_accept, conditional coding and positive p_K remain OPEN.
+Old110 stays frozen; measured wording and the five do_sign items remain
+unchanged. Scoped proof, NOT_REVIEWED; no IID/D1/F04 premise; no push.
+
+---
+
 # Current state — checkpoint192 window in progress; part 3 CLOSED, part 2 open
 
 2026-10-19. Whole goal ACTIVE / NOT_COMPLETE. Checkpoint 192 is NOT
