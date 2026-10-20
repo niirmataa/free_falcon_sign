@@ -1,3 +1,52 @@
+# Current state — checkpoint193 sealed; s3 product-output hypotheses discharged
+
+2026-10-20. Whole goal ACTIVE / NOT_COMPLETE. Checkpoint 193 closes the
+SelectedStepInverse192 export follow-up at the step assembly: the fs
+image and the igm twiddle reads are kept through the copy and product
+writes (separation of the fs/gm/igm regions from the t1/fd walk
+positions, threaded as executed load words through both loop executions:
+StepCopyKeep193 / StepProductKeep193), the product-output caller frame
+comes from the kept executions, and every product-output hypothesis of
+the sealed s3 inverse call is discharged there (SelectedStepChain193:
+u/slen/logn/ter/in_ntt/p/p0i cells, fs/igm bindings, fs writability,
+fs/igm capacities, fs and twiddle separations, fs image, twiddle loads,
+locals/arrays frame). The stage statement `KeygenMakeFgSource.Exec
+MakeFgTailShape190.s3 out after` and the composed `Exec tailPrefix base
+⟨after,.normal⟩` (s0 copy, s1 skipped !in_ntt, s2 products, s3 inverse
+call) hold unconditionally at the assembled product output. The igm
+twiddle reads are the actual executed load words at the selected seed9
+state (tws from SelectedGen0Frame189.igm_read; no table law). Values
+only as executed words: no transform property, table law, root law,
+positivity or NTT claim.
+
+3 mathematical modules /26 declarations passed audit 466, accepted logs
+0/0. Postseal verified 73379 paths. Sources ea62ebfe/7088b759/6394dbff.
+3 accepted clean jobs in 459-466 (460/461/465) plus the accepted audit
+job 466; 4 failed/mixed retained with causes (459/462/463/464, workshop
+errors only). The checkpoint192 failure ledger (58 register entries) is
+untouched. See KEYGEN_STEP_ASSEMBLY_193_REPORT.md / _PINS.md /
+_NEXT_ROUTE.md. Receipt SHA256:
+1d6f11ec19d5b0cb0f1f4ba4be63bd9d74f4800bcef66d55d611a00931b16d3e
+Postseal .build/stepassembly193/POSTSEAL_193.json SHA256:
+386e4cbcf8ecee725cec39de9e32e0012d8c0efbdb96b8f0f99fe9a03e964562
+
+Exact resume obligation after fresh pin/process verification: the gs
+copy/products/inverse path s4-s7 from the assembled `after` state of
+SelectedStepChain193.source (the StepCopyKeep193/StepProductKeep193
+keeps pattern is reusable for the gs region), then the false !out_ntt
+branch s8 (its body is the fd/gd inverse pair at logn-1 = 8 and tlen = 2,
+a different instance of the corpus needing a logn-8 control variant of
+the prologue size lemma), the outer u++/guard tail, CRT and the
+additional-prime part; then later d-levels, root validation, certificate
+and encoding before using the complete emitted witness for corrected
+KeygenProbability134. Unconditional Z>0, numerical p_accept, conditional
+coding and positive p_K remain OPEN. Old110 stays frozen; measured
+wording and the five do_sign items remain unchanged. Scoped proof,
+NOT_REVIEWED; no IID/D1/F04 premise; no push. Next unused proof job
+suffix 467.
+
+---
+
 # Current state — checkpoint192 sealed; first-prime inverse call s3 closed
 
 2026-10-20. Whole goal ACTIVE / NOT_COMPLETE. Checkpoint192 closes the
