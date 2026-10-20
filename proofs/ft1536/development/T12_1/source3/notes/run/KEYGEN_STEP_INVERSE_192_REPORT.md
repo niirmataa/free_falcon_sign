@@ -68,8 +68,9 @@ transform property, table law, twiddle or numerical premise.
 
 Failed/mixed jobs 378/379/380/382/385/386/387/391/392/393/394/395/396/
 397/398/399/400/402/403/404/406/407/408/409/410/413/414/416/417/418/419
-plus this window's 421/423/424/426 are retained with causes in
-KEYGEN_STEP_INVERSE_192_FAILURES.json (37 entries); all were workshop/
+plus this window's 421/423/424/426 and the u1/rounds drafts
+428/429/430/431/432/434/435/437 are retained with causes in
+KEYGEN_STEP_INVERSE_192_FAILURES.json (45 entries); all were workshop/
 elaboration errors, clean-log linter warnings or localization tools.
 Two DIAGNOSTIC syntax probes (NttInverseShapeProbe192, jobs 381/383)
 printed parser/transcription trees into retained job logs; they are
@@ -82,29 +83,49 @@ recorded here.
 
 ## Open at this window boundary (exact resume obligations)
 
-1. Intermediate doubling pass (part 2) remainder at the prologue
-   output: the u1-group loop (m iterations: the s = igm[m+u1] executed
-   load, the r1 = a + v1*stride and r2 = r1 + ht*stride binds, the v
-   loop as the closed NttInverseMiddleVLoop192.remaining instance, and
-   the u1/v1 two-clause increment) and the eight-round outer loop
-   (t/m/ht updates, the t <<= 1 and m >>= 1 shift executions), then the
-   tInit/mInit composition of the intermediatePass statement. The
-   butterfly body, its increment and the v-loop induction are CLOSED
-   (NttInverseMiddleBody192 / NttInverseMiddleVLoop192, jobs 425/427);
-   2048 executed iterations total, one group instance at a time.
-2. (closed) The degree-1 final pass: NttInverseFinalPass192 composes
+1. (closed) Intermediate doubling pass (part 2) remainder at the u1
+   level: NttInverseMiddleU1Loop192 (job 433; drafts 428-432 retained)
+   runs one u1 group of a round end to end (the s = igm[m+u1] load as
+   the u64 add word, the r1 = a + v1*stride and r1-relative
+   r2 = r1 + ht*stride product binds, the group radix-2 loop as the
+   NttInverseMiddleVLoop192.remaining instance in the vloop_keep
+   strengthening that adds load persistence outside the walked pair
+   region, the u1/v1 two-clause increment) and the full m-iteration u1
+   loop with its exported image of transformed group words over the
+   round input words and the loaded twiddle words.
+2. (closed) The eight-round geometry and composition layer:
+   NttInverseMiddleRounds192 (jobs 436/438; drafts 434/435/437
+   retained) fixes tOf/htOf/mOf with the pow/div arithmetic (t*m = 512
+   in every round), the nextWord round word composition with its two
+   evaluation laws at the butterfly pair positions, the round-constant
+   Fixed facts with the twiddle-table reads for all used indices, the
+   per-round u1 instance (u1_fixed) and the round-to-round image
+   transition (round_image).
+3. NttInverseMiddleRounds192 remainder: the mInner round execution
+   (the ht/u1/v1 declarations, ht = t >> 1 as the u64 shr word through
+   KeygenNttLoopSupport.convert_div_two, the NttInverseMiddleU1Loop192
+   full instance at (tOf i, htOf i, mOf i), the t <<= 1 body shift
+   through convert_mul_two, the block scope), the m >>= 1 increment and
+   the eight-iteration m loop (guard t < n, induction on the remaining
+   count with i+count = 8), then the tInit/mInit composition (t = 2 +
+   (full << 2) and m = (u64)1 << ((logn-1) - full) at logn 9 / full 0)
+   closing `Exec NttInversePrograms192.intermediatePass` with the
+   exported composed image (fvAt 8) at (tOf 8, htOf 8, mOf 8). The u1
+   run needs the cell transports through the ht/u1/v1 declaration
+   chain (the setup_locals pattern of NttInverseMiddleU1Loop192).
+4. (closed) The degree-1 final pass: NttInverseFinalPass192 composes
    wAssign igm[0] + u/r1/r2 init + the 256-step loop + skip (job 422).
    The NttInverseCorrectionSource192 correction statement (job 405) was
    already complete: the exact modp_R/modp_div word assignments, the
    u/r1 initialization and the full 512-step scaling loop.
-3. NttInverseWhole192: the composition Exec KeygenLevelNtt.inverse at the
+5. NttInverseWhole192: the composition Exec KeygenLevelNtt.inverse at the
    bound entry state (prologue + triple skip + the three passes).
-4. SelectedStepInverse192: the KeygenLevelCalls.Bind of the actual s3
+6. SelectedStepInverse192: the KeygenLevelCalls.Bind of the actual s3
    arguments at the SelectedStepProduct191.source product output (u=0,
    slen=1, logn=9, full=0, p/p0i slots), the .inverse call execution with
    void return, and the s3 branch composition to
    `KeygenMakeFgSource.Exec MakeFgTailShape190.s3 productOutput out`.
-   Then checkpoint 192 can be sealed (next unused proof job suffix 428).
+   Then checkpoint 192 can be sealed (next unused proof job suffix 439).
 
 ## Degree-1 final pass: closed through the 256-step loop
 
@@ -165,3 +186,43 @@ remain OPEN, as do unconditional Z>0, numerical p_accept, conditional
 coding and positive p_K. Old110 stays frozen; measured wording and the
 five do_sign items remain unchanged. No IID/D1/F04 premise, no push, no
 reviewer/worker, no new axiom.
+
+## Part 2 closed at the u1 level and opened at the round level
+
+NttInverseMiddleU1Loop192 (job 433; first drafts 428-432 retained as
+workshop failures) closes the u1-group loop of one round end to end:
+per group the executed s = igm[m+u1] load (the m+u1 index as the u64
+add word through C99LoopScalar141.add, the pointer at the parser's
+(m+u1) element of the igm table), the r1 = a + v1*stride bind (the
+v1*stride product word through NttInverseFinalPass192.word_mul) and
+the r1-relative r2 = r1 + ht*stride bind (the ht*stride product word),
+the v = 0 initialization, the group radix-2 loop and the trailing skip
+under the block scope, plus the u1/v1 two-clause increment (u1 += 1
+through the counter cell, v1 += t through the t cell) and the full
+m-iteration loop. The radix-2 execution is the closed
+NttInverseMiddleVLoop192.remaining induction reused through vloop_keep,
+the same instance with an added load-persistence component: the
+twiddle-table reads of the remaining groups and the raw words of the
+other groups must survive the writes of the current group, and the
+closed export alone does not constrain those positions. The exported
+image records the transformed group words as the executed butterfly
+words (bb/high of NttInverseMiddleBody192) over the round input words
+and the loaded twiddle words; the loop also exports the load keeps for
+all positions separated from the m*t walked elements. Values stay
+executed words only.
+
+NttInverseMiddleRounds192 (jobs 436/438; drafts 434/435/437 retained)
+fixes the eight-round geometry and the round word composition: tOf/
+htOf/mOf with the pow/div arithmetic from the core lemmas (every round
+keeps t*m = 512 and 2*ht = t), nextWord as the composed round output
+word (bb word at low positions, mont word at high positions over the
+group twiddle word) with its two evaluation laws at the butterfly pair
+positions, the round-constant Fixed facts with the twiddle-table reads
+for all used indices, the per-round u1 instance (u1_fixed) and the
+round-to-round image transition (round_image) through the four-way
+pair decomposition (low/high halves of the two consecutive groups).
+The mInner round execution, the m >>= 1 increment, the eight-iteration
+m loop and the tInit/mInit composition closing intermediatePass remain
+OPEN with their exact obligations above; the window freezes at this
+recoverable mid-point by the staged-roadmap context discipline. No
+push, no reviewer/worker, no new axiom.
