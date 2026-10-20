@@ -1,5 +1,11 @@
 # T12.1 — przygotowane nowe miejsce małych commitów
 
+**MIGRATION_HOLD — decyzja właściciela2026-09-30 po raporcie SOURCE_MAP.**
+Dalsze przenosiny, uzupełnianie migracji i porządkowanie duplikatów nastąpią
+dopiero po zakończeniu wszystkich omawianych prac. Bieżąca praca toczy się
+w już potwierdzonych katalogach. Poniższe statusy komponentów pozostają
+opisem ich pracy; samo zakończenie kroku nie jest zgodą na kolejną migrację.
+
 Docelowy katalog: [development/T12_1](development/T12_1/README.md).
 Statusy są osobne dla komponentów. `source3` ma obecnie **ACTIVE**:
 GPT-6 Astra (`openai/gpt-6-astra`), ta sama sesja
@@ -18,5 +24,6 @@ Szczegóły: [WORK_COMMITS](../../docs/onboarding/WORK_COMMITS.md).
 
 **Zatwierdzenie właściciela2026-09-30:** małe commity i push wykonuje worker
 po uzgodnieniu z nim. Koordynator prowadzi odbiór oraz import/commit/tag stages.
-Nowy katalog jest zatwierdzony; przekazanie pracującej sesji następuje po jej
-kroku. Po przejęciu zgoda zastępuje dawne „bez Git” dla źródeł development.
+Nowy katalog jest zatwierdzony; kolejne przekazanie czeka do zakończenia
+wszystkich omawianych prac, zgodnie z MIGRATION_HOLD powyżej.
+Po przejęciu zgoda zastępuje dawne „bez Git” dla źródeł development.

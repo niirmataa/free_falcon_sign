@@ -2,6 +2,16 @@
 
 Docelowym repozytorium prac jest `free_falcon_sign`.
 
+## Najnowsza decyzja właściciela — migracja po zakończeniu prac (2026-09-30)
+
+- **Dalsza migracja/scalanie dopiero po zakończeniu wszystkich omawianych
+  prac T12.1.** Zakończenie pojedynczego kroku nie uruchamia przenosin.
+- Raport SOURCE_MAP jest materiałem do późniejszego scalenia. Dwa wskazane
+  dodatki i porządkowanie dziewięciu duplikatów czekają do tego momentu.
+- Workerzy kontynuują w swoich aktualnych, potwierdzonych katalogach.
+  Uzgodnione małe commity/push oraz podział worker–koordynator nadal obowiązują.
+- Ta decyzja zastępuje wcześniejszy termin kolejnej migracji „po kroku/handoffie”.
+
 ## Aktualna decyzja właściciela — małe commity od work (2026-09-30)
 
 - Źródła rzeczywistej pracy commitujemy normalnie od początku w małych

@@ -8,6 +8,11 @@ nowości, pominąć identyczne źródła już obecne w stages i zachować bież�
 pracę aktywnego agenta. ROADMAP: T12.1/T5. Repo: `free_falcon_sign`, gałąź
 `main`, jeden writer Git.
 
+**Późniejsza decyzja właściciela2026-09-30:** dalsza migracja i scalenie
+czekają do zakończenia wszystkich omawianych prac. Dotyczy to także dwóch
+małych dodatków oraz dziewięciu duplikatów wskazanych w SOURCE_MAP.
+Workerzy dalej pracują i commitują w aktualnych, potwierdzonych katalogach.
+
 ## Codzienny rytm
 
 1. Autor kończy mały logiczny kawałek i zapisuje pliki: np. faktoryzację MGF,
@@ -63,11 +68,12 @@ Nowa/zmieniona wersja trafia do `formal/`, `sage/` lub `tools/original/`.
 Źródła większe niż8 MiB są podczas przygotowania pomijane i wymienione
 jawnie jako duże artefakty. To selekcja przy migracji, nie nowa bramka review.
 
-## Aktywny agent: przekazanie na granicy kroku
+## Dalsze przekazanie: po zakończeniu wszystkich omawianych prac
 
-Nowy katalog ma początkowo status **PREPARED_HANDOFF**. Autor kończy obecny
-krok w swoim dotychczasowym W. Koordynator kopiuje źródła read-only, zapisuje
-SHA256 i pochodzenie; starych plików nie przenosi ani nie usuwa.
+Obowiązuje **MIGRATION_HOLD**. Warunkiem następnego przeniesienia/scalenia
+jest zakończenie wszystkich omawianych prac, a nie pojedynczego kroku.
+Wówczas koordynator przygotowuje aktualne piny i rozliczenie dopisków.
+Dotychczasowe potwierdzone przejęcia pozostają podstawą bieżącej pracy.
 
 Przed przełączeniem właściciel odbiera handoff i rozlicza późniejsze dopiski:
 

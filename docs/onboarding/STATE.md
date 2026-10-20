@@ -35,6 +35,45 @@ priorytet w ROADMAP, osobna partia. Bez nowego replayu Lean, push/importu/tagu;
 ReplyShape, sampler źródłowy, most bajtowy, hzero/budżety i F06 nadal OPEN.
 MIGRATION_HOLD zachowany.
 
+**2026-10-11 — F04 wariant A + F05: niezależny odbiór CHANGES_REQUIRED.**
+Na polecenie właściciela („no to odbierdxz”) wykonano własny fresh replay
+HEAD `d053369e`: 167/167 modułów exit 0, bez diagnostyk kompilatora;
+własny audyt 21 deklaracji i 3 dodatkowe lematy supportu mają standardowe
+aksjomaty. Matematyczna naprawa interfejsów jest poprawna pod jawnymi
+przesłankami źródłowymi. Pełny pakiet nie spełnia jednak literalnego
+kryterium 1 prompta: nieimportowany przez naprawę historyczny
+`SelectBitPreserve` ma 3 eksporty z dodatkowym aksjomatem natywnego
+`bv_decide`; `ThetaBox:166` zachowuje historyczny wyjątek lintera
+(własny test z włączeniem: błąd limitu rekurencji lintera).
+[Raport i zakres](../../proofs/ft1536/work/FT1536_F04_ROM_A_REVIEW_001/REVIEW.md),
+REPORT `42e5e11fb7dc8b35c71312705733f3ab16e9055bacd099b48cf6cc3c7727f8d7`.
+Wymagana korekta dowodów/evidence albo jawne zawężenie zakresu i rozliczenie
+wyjątku; nie trzeba od nowa wykonywać matematycznego F04/F05.
+ReplyShape/source-defined sampler, most bajtowy, hzero/budżety oraz
+computational PRG/F06 nadal OPEN. Bez owner acceptance, importu,
+commita, tagu i push w tym odbiorze; MIGRATION_HOLD zachowany.
+
+**2026-09-30 — przygotowany dodatkowy audyt GPT-6.1 Sol: całe development + T03-B.**
+Właściciel rozszerzył test nowego modelu na połączenie wszystkich aktualnych
+ścieżek `development/T12_1/{run2,source3,t5}` oraz własny audyt T03 RUN_002.
+[TASK/prompt/W](../../proofs/ft1536/CURRENT_SOL61_AUDIT_TASK.md):
+`FT1536_SOL61_DEVELOPMENT_T03_AUDIT_001`, **PREPARED_OWNER_START**,
+`openai/gpt-6.1-sol`, sugerowany xhigh/świeża sesja. Snapshot523 plików
+development,3669 przypiętych wejść; MANIFEST `c7ca6aa4…`, TASK `65b7e63b…`.
+Wymagane mapa integracji, końcowy typ/premises, własny clean replay oraz
+FINDINGS/MISSING_TYPES/COVERAGE. source3 nadal IN_PROGRESS; audyt otrzyma
+werdykt snapshotu i osobny werdykt końcowego połączenia. Przygotowano tylko
+wejścia/zlecenie, bez startu modelu/replayu. Istniejące scoped reviews,
+ownership i MIGRATION_HOLD pozostają podstawą pracy.
+
+**2026-09-30 — najnowsza decyzja: dalsza migracja po zakończeniu wszystkich prac.**
+Właściciel wstrzymał dalsze przenosiny/scalanie omawianych torów T12.1
+do zakończenia wszystkich tych prac. Raport SOURCE_MAP służy późniejszemu
+scaleniu; dwa małe dodatki i dziewięć duplikatów pozostają na liście.
+Workerzy kontynuują w aktualnych, potwierdzonych miejscach z uzgodnionymi
+małymi commitami/push. Pojedynczy zakończony krok nie zwalnia tej blokady.
+[Zasady](WORK_COMMITS.md), [bieżące komponenty](../../proofs/ft1536/CURRENT_DEVELOPMENT.md).
+
 **2026-09-30 — właściciel: małe commity źródeł od work i bieżący GitHub.**
 Zapis rzeczywistej pracy na main powstaje po małych logicznych krokach,
 przed końcowym verify/review/stages. Po odbiorze osobny checkpoint i tag
@@ -177,6 +216,19 @@ nie nowy review/source proof; nieudaną pierwszą próbę i zgodę na poprawkę 
 zachowano w [evidence](../../proofs/ft1536/background/T03_B_GAP_2026-09-29/README.md).
 P02 ma nowszy lokalny HANDOFF z deklarowanym freeze2026-09-25,ale jego odbiór
 i required exports nie zostały związane tym przygotowaniem; STATUS B20 zachowany.
+
+**2026-09-27 — tor treningowy: Qwen3-14B zamiast Kairosa (decyzja właściciela).**
+Aktywna baza to `Qwen/Qwen3-14B`, rewizja
+`40c069824f4251a91eefaf281ebe4c544efd3e18`; **LoRA BF16 bez kwantyzacji**, A100 80 GB,
+etapy do 8 h ciągłej sesji. Konfiguracja i runbook:
+`proofs/ft1536/work/KAIROS_RLVR_001/` (historyczna nazwa katalogu).
+Eksport Qwen ma natywne think i sprawdzony tokenowy prefiks; cały paper SFT
+451/30/19 mieści się w 4096 (max 3021 tokenów). Krótki pilot Lean: SFT192/250
+train przy8192; GRPO187/250 train przy prompt6144 + completion2048. Holdouty31/31
+są pełne. Tokenizer/testy CPU i adapter native-think→final-proof→Lean sprawdzono;
+**trening GPU oraz poprawa skuteczności modelu nie były jeszcze mierzone**.
+Aktualne archiwa: `KAIROS_SFT_PAPERS_001/release/QWEN3_14B_SFT_v1.zip` i
+`KAIROS_RLVR_001/release/QWEN3_14B_RLVR_v1.zip`, pod `proofs/ft1536/work/`.
 
 **2026-09-25 — import nowości work/ do stages + przeniesienie na NVMe.**
 Kanoniczna lokalizacja pracy to od teraz

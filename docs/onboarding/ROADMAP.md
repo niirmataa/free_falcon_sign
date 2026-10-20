@@ -241,6 +241,19 @@ z własnym W, wspólnym budżetem i jawnym source suffix D/target A3. Stan:
 PREPARED_OWNER_START. P07–P10 zachowują zależności i wymagają swoich odbiorów;
 brakujące P02/P06/source exports nie stają się przesłankami przez przygotowanie.
 
+**Aktualizacja2026-09-30 — zlecenie audytu integracji T12.1/T5 + T03-B.**
+Właściciel wybrał przygotowanie niezależnego testu GPT-6.1 Sol, rozszerzonego
+na całe `development` jako końcowe połączenie aktualnych ścieżek.
+[FT1536_SOL61_DEVELOPMENT_T03_AUDIT_001](../../proofs/ft1536/CURRENT_SOL61_AUDIT_TASK.md)
+ma osobny W, snapshot523 plików development i3669 pinned inputs, stan
+PREPARED_OWNER_START. Cel: pełna mapa run2/source3/t5/archived dependencies,
+zgodność typów na krawędziach, końcowa redukcja+Resources z właściwymi
+instancjami M6/T5/source oraz osobny audyt zakresu T03 RUN_002. Kryteria:
+COVERAGE każdej ścieżki, własny fresh replay i IntegrationAudit.lean,
+FINAL_THEOREM_AUDIT, FINDINGS i dokładne MISSING_TYPES. Audit verdict nie
+zastępuje integration verdict ani statusu REVIEWED. To rozszerzenie odbioru
+T12.1/T5/T03, bez zmiany ich celów/gates i bez migracji/scalania live źródeł.
+
 ### Obowiązkowy krok przy rozwijaniu T05/T06/T09/T14
 
 Stary M0 ledger zawiera H3_LIKELIHOOD(P→M) i H1R(M→Q), natomiast nowe
