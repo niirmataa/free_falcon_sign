@@ -1,3 +1,43 @@
+# Current state — gs window frozen mid-stage; s4/s5 and s8 closed
+
+2026-10-20. Whole goal ACTIVE / NOT_COMPLETE. The gs window (prompt
+PROMPT_R1_RESUME_005) froze at a safe mid-point after jobs 467-474.
+Entry re-verified (POSTSEAL_193 386e4cbc…, receipt 1d6f11ec…, all 73564
+inherited pins 0 missing/0 changed; ENTRY_PINS 99ac47a1…). Closed:
+MakeFgGsShape194 (source naming of s4-s8 by decide, including the s8 body
+as the fd/gd inverse pair at logn-1 = 8 / tlen = 2),
+StepGsCopyKeep194 + SelectedStepGsCopy194 (the gs copy s4 with the igm
+keep and the skipped s5 branch), SelectedStepOutNtt194 (the false
+!out_ntt guard s8 as its skip) with NttInverseSizeControl194 (the logn-8
+control variant of the prologue size lemma: 256 / 128 at logn 8 / full
+0), and StepGsProductKeep194 (the gd product loop with the gs + igm
+keeps). 5 accepted clean jobs (468/469/471/472/474), 3 failed workshop
+jobs retained with causes (467/470/473). Values only as executed words.
+The gs image, the igm reads and the heap writability at the assembled
+s0-s3 `after` state are stage HYPOTHESES (the sealed 193 export keeps
+only the fs image and the caller frames); their discharge needs
+bystander-load preservation through the inverse corpus's final pass and
+correction, then a re-assembly. Uncommitted-draft recognition duty done:
+84 files recognized in 5 provenance commits (34c6e348/59893692/1826aef0/
+ad637864/193fe202), catalog untouched. See KEYGEN_STEP_GS_194_REPORT.md /
+_NEXT_ROUTE.md / _FAILURES.json. No push (batch 4 waits).
+
+Exact resume obligation after fresh pin/process verification:
+SelectedStepGsProduct194 (s6 at the gs-copy output through
+StepGsProductKeep194), SelectedStepGsInverse194 (s7, the gs twin of
+SelectedStepInverse192 over the closed NttInverseWhole192 corpus),
+SelectedStepGsChain194 (the composed s4-s7 stage statement with explicit
+hypotheses and the gs-transformed/gd-written export), then the hypothesis
+discharge at the full first-prime assembly. Next unused proof job suffix
+475. Then the outer u++/guard tail, CRT, additional-prime part, later
+d-levels, root/certificate/encoding before using the complete emitted
+witness for corrected KeygenProbability134. Unconditional Z>0, numerical
+p_accept, conditional coding and positive p_K remain OPEN. Old110 stays
+frozen; measured wording and the five do_sign items remain unchanged.
+Scoped proof, NOT_REVIEWED; no IID/D1/F04 premise; no push.
+
+---
+
 # Current state — checkpoint193 sealed; s3 product-output hypotheses discharged
 
 2026-10-20. Whole goal ACTIVE / NOT_COMPLETE. Checkpoint 193 closes the
