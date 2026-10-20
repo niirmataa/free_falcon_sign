@@ -583,4 +583,244 @@ theorem round_run (i : Nat) (bound : i+1 ≤ 8) (s : State) (a igm : ArrayPointe
   · show after.heap.writable=s.heap.writable
     exact afterWritable.trans rfl
 
+/- The eight-iteration m loop of the intermediate doubling pass: the
+   guard t < n (true for i < 8, false at i = 8 where tOf 8 = 512 = n),
+   the mInner round bodies, the m >>= 1 increment (mOf i / 2 = mOf (i+1))
+   and the tInit/mInit composition (t = 2 + (full << 2) = 2 and
+   m = (u64)1 << ((logn-1) - full) = 256 at logn 9 / full 0), closing
+   Exec NttInversePrograms192.intermediatePass with the composed image
+   at (tOf 8, htOf 8, mOf 8) and the load keeps for all separated
+   positions. Values stay executed words only. -/
+theorem guard_run (s : State) (i : Nat) (bound : i ≤ 8) (tCell : USlot s "t" (tOf i))
+    (nCell : USlot s "n" 512) :
+    C99ArrayReference.scalar s NttInversePrograms192.mGuard
+      (C99ScalarReference.boolean (decide (tOf i < 512))) :=
+  C99LoopScalar141.less s (NttInversePrograms192.var "t") (NttInversePrograms192.var "n")
+    (tOf i) 512 (by
+      have step : 2^(i+1) < 2^64 := Nat.pow_lt_pow_of_lt (by decide : 1 < 2) (by omega)
+      show tOf i < 2^64
+      exact step) (by decide)
+    (C99LoopScalar141.read s "t".toList (tOf i) tCell)
+    (C99LoopScalar141.read s "n".toList 512 nCell)
+
+theorem tOf_small (i : Nat) (bound : i < 8) : tOf i < 512 := by
+  have step : 2^(i+1) < 2^9 := Nat.pow_lt_pow_of_lt (by decide : 1 < 2) (by omega)
+  have e : (2^9 : Nat) = 512 := by decide
+  rw [← e]
+  show 2^(i+1) < 2^9
+  exact step
+
+theorem m_step (s : State) (m : Nat) (bound : m<2^64) (mc : USlot s "m" m) :
+    C99ArrayReference.Exec FftLeafPrograms.program
+      (.scalar (.update "m".toList .shr (NttInversePrograms192.num 1))) s
+      (FftLocalCells140.put s "m".toList (word (m/2))) := by
+  cases C99LoopAssign142.update (fun _ => none) s "m".toList .shr (NttInversePrograms192.num 1)
+    m (word (m/2)) mc (C99OuterScalar144.half_eval s "m".toList m bound mc) with
+  | base _ _ _ source => exact source
+
+theorem m_loop (count i : Nat) (s : State) (a igm : ArrayPointer) (stride : Nat)
+    (p p0i : BitVec 32) (tws : Nat → BitVec 32) (fv0 : Nat → BitVec 32)
+    (fixed : Fixed s a igm stride p p0i tws) (tCell : USlot s "t" (tOf i))
+    (mCell : USlot s "m" (mOf i))
+    (image : NttInverseMiddleU1Loop192.Image s a stride (tOf i) (htOf i) (mOf i)
+      (roundTws tws i) p p0i (fvAt fv0 tws p p0i i) 0) (finish : i+count = 8) :
+    ∃ after, Exec mWalk s ⟨after,.normal⟩ ∧
+      Fixed after a igm stride p p0i tws ∧
+      USlot after "t" (tOf 8) ∧ USlot after "m" (mOf 8) ∧
+      NttInverseMiddleU1Loop192.Image after a stride (tOf 8) (htOf 8) (mOf 8)
+        (roundTws tws 8) p p0i (fvAt fv0 tws p p0i 8) 0 ∧
+      (∀ q : ArrayPointer, (∀ x : Nat, x < 512 → Separate (walk a x stride) q) →
+        ∀ w : BitVec 32, Load32 s.heap q w → Load32 after.heap q w) ∧
+      after.heap.writable=s.heap.writable := by
+  induction count generalizing i s with
+  | zero =>
+    have equal : i = 8 := by omega
+    subst i
+    have false : C99ArrayReference.scalar s NttInversePrograms192.mGuard (.int32 0) := by
+      simpa [C99ScalarReference.boolean, tOf] using guard_run s 8 (by omega) tCell fixed.nCell
+    exact ⟨s,.loopFalse _ _ _ _ (.int32 0) false (by decide),fixed,tCell,mCell,image,
+      fun _ _ _ => id,rfl⟩
+  | succ count ih =>
+    have slot : i < 8 := by omega
+    have nonzero : (C99ScalarReference.boolean (decide (tOf i < 512))).integer ≠ 0 := by
+      simp [tOf_small i slot,C99ScalarReference.boolean,C99IntegerReference.Value.integer]
+    obtain ⟨out,bodyExec,outFixed,outT,outM,outImage,outKeep,outWritable⟩ :=
+      round_run i (by omega) s a igm stride p p0i tws fv0 fixed tCell mCell image
+    have stepRun : Exec NttInversePrograms192.mStep out
+        ⟨FftLocalCells140.put out "m".toList (word (mOf i / 2)),.normal⟩ :=
+      .base _ _ _ (m_step out (mOf i) (m_pow_bound i (by omega)) outM)
+    set mid : State := FftLocalCells140.put out "m".toList (word (mOf i / 2)) with midEq
+    have midFixed : Fixed mid a igm stride p p0i tws := by
+      rw [midEq]
+      refine fixed_state outFixed
+        ((FftLocalCells140.outside out "m".toList "n".toList (word (mOf i / 2))
+          (by decide)).trans outFixed.nCell)
+        ((FftLocalCells140.outside out "m".toList "stride".toList (word (mOf i / 2))
+          (by decide)).trans outFixed.strideCell)
+        ((FftLocalCells140.outside out "m".toList "p".toList (word (mOf i / 2))
+          (by decide)).trans outFixed.pCell)
+        ((FftLocalCells140.outside out "m".toList "p0i".toList (word (mOf i / 2))
+          (by decide)).trans outFixed.iCell)
+        outFixed.aBinding outFixed.igmBinding outFixed.aWritable outFixed.twLoads
+    have midT : USlot mid "t" (tOf (i+1)) := by
+      rw [midEq]
+      exact (FftLocalCells140.outside out "m".toList "t".toList (word (mOf i / 2))
+        (by decide)).trans outT
+    have midM : USlot mid "m" (mOf (i+1)) := by
+      rw [midEq]
+      have base : USlot (FftLocalCells140.put out "m".toList (word (mOf i / 2))) "m" (mOf i / 2) :=
+        FftLocalCells140.cell_at out "m".toList (word (mOf i / 2))
+      rw [← mOf_succ i (by omega)]
+      exact base
+    have midImage : NttInverseMiddleU1Loop192.Image mid a stride (tOf (i+1)) (htOf (i+1))
+        (mOf (i+1)) (roundTws tws (i+1)) p p0i (fvAt fv0 tws p p0i (i+1)) 0 := by
+      rw [midEq]
+      exact outImage
+    have midKeep : ∀ q : ArrayPointer, (∀ x : Nat, x < 512 → Separate (walk a x stride) q) →
+        ∀ w : BitVec 32, Load32 s.heap q w → Load32 mid.heap q w := by
+      intro q sep w loaded
+      rw [midEq]
+      exact outKeep q sep w loaded
+    have midWritable : mid.heap.writable=s.heap.writable := by
+      rw [midEq]
+      exact outWritable
+    obtain ⟨after,rest,afterFixed,afterT,afterM,afterImage,afterKeep,afterWritable⟩ :=
+      ih (i+1) mid midFixed midT midM midImage (by omega)
+    refine ⟨after,?_,afterFixed,afterT,afterM,afterImage,?_,?_⟩
+    · refine .loopNormal _ _ _ s out mid ⟨after,.normal⟩
+        (C99ScalarReference.boolean (decide (tOf i < 512)))
+        (guard_run s i (by omega) tCell fixed.nCell) nonzero bodyExec stepRun rest
+    · intro q sep w loaded
+      exact afterKeep q sep w (midKeep q sep w loaded)
+    · exact afterWritable.trans midWritable
+
+/- tInit/mInit evaluations at logn 9 / full 0, mirroring the prologue
+   shift evaluations. -/
+theorem tInit_value (s : State) (full : Slot s "full" 0) :
+    C99ArrayReference.scalar s (.bin .add (NttInversePrograms192.num 2)
+      (.bin .shl (NttInversePrograms192.var "full") (NttInversePrograms192.num 2)))
+      (.uint32 2) := by
+  have f : C99ArrayReference.scalar s (NttInversePrograms192.var "full") (.uint32 0) :=
+    .variable _ _ _ full
+  have shifted : C99ArrayReference.scalar s
+      (.bin .shl (NttInversePrograms192.var "full") (NttInversePrograms192.num 2)) (.uint32 0) :=
+    .shift .left _ _ _ _ _ f (.literal .int32 2)
+      (.unsignedLeft (.uint32 0) (.int32 2) 2 rfl rfl (by decide))
+  exact .arithmetic .plus _ _ _ _ _ (.literal .int32 2) shifted
+    (.step .plus (.int32 2) (.uint32 0) .uint32 rfl (.uint32 2) (.uint32 0) rfl rfl
+      (by intro impossible; cases impossible))
+
+theorem mInit_value (s : State) (logn : Slot s "logn" 9) (full : Slot s "full" 0) :
+    C99ArrayReference.scalar s (.bin .shl (.cast .u64 (NttInversePrograms192.num 1))
+      (.bin .sub (.bin .sub (NttInversePrograms192.var "logn") (NttInversePrograms192.num 1))
+        (NttInversePrograms192.var "full"))) (u64 256) := by
+  have l : C99ArrayReference.scalar s (NttInversePrograms192.var "logn") (.uint32 9) :=
+    .variable _ _ _ logn
+  have f : C99ArrayReference.scalar s (NttInversePrograms192.var "full") (.uint32 0) :=
+    .variable _ _ _ full
+  have first : C99ArrayReference.scalar s
+      (.bin .sub (NttInversePrograms192.var "logn") (NttInversePrograms192.num 1)) (.uint32 8) :=
+    .arithmetic .minus _ _ _ _ _ l (.literal .int32 1)
+      (.step .minus (.uint32 9) (.int32 1) .uint32 rfl (.uint32 9) (.uint32 1) rfl rfl
+        (by intro impossible; cases impossible))
+  have second : C99ArrayReference.scalar s
+      (.bin .sub (.bin .sub (NttInversePrograms192.var "logn") (NttInversePrograms192.num 1))
+        (NttInversePrograms192.var "full")) (.uint32 8) :=
+    .arithmetic .minus _ _ _ _ _ first f
+      (.step .minus (.uint32 8) (.uint32 0) .uint32 rfl (.uint32 8) (.uint32 0) rfl rfl
+        (by intro impossible; cases impossible))
+  have cast : C99ArrayReference.scalar s (.cast .u64 (NttInversePrograms192.num 1)) (u64 1) :=
+    .cast .uint64 _ (.int32 1) (.literal .int32 1)
+  exact .shift .left _ _ _ _ _ cast second
+    (.unsignedLeft (.uint64 1) (.uint32 8) 8 rfl rfl (by decide))
+
+def withT (s : State) : State := bindValue s "t".toList .uint64 (C99IntegerReference.Value.uint32 2)
+def initial (s : State) : State := bindValue (withT s) "m".toList .uint64 (u64 256)
+
+theorem withT_keep (s : State) (name : String) (ty : C99IntegerReference.Ty)
+    (old : Option C99IntegerReference.Value) (different : name.toList≠"t".toList)
+    (cell : s.locals name.toList = some (ty,old)) :
+    (withT s).locals name.toList = some (ty,old) := by
+  simp only [withT, bindValue, C99ScalarReference.set,different,ite_false]
+  exact cell
+
+theorem initial_keep (s : State) (name : String) (ty : C99IntegerReference.Ty)
+    (old : Option C99IntegerReference.Value) (different : name.toList≠"m".toList)
+    (cell : (withT s).locals name.toList = some (ty,old)) :
+    (initial s).locals name.toList = some (ty,old) := by
+  simp only [initial, bindValue, C99ScalarReference.set,different,ite_false]
+  exact cell
+
+theorem withT_keep64 (s : State) (name : String) (n : Nat) (different : name.toList≠"t".toList)
+    (cell : USlot s name n) : USlot (withT s) name n :=
+  withT_keep s name .uint64 (some (u64 n)) different cell
+
+theorem initial_keep64 (s : State) (name : String) (n : Nat) (different : name.toList≠"m".toList)
+    (cell : USlot (withT s) name n) : USlot (initial s) name n :=
+  initial_keep s name .uint64 (some (u64 n)) different cell
+
+theorem withT_keep32 (s : State) (name : String) (w : BitVec 32) (different : name.toList≠"t".toList)
+    (cell : Slot s name w) : Slot (withT s) name w :=
+  withT_keep s name .uint32 (some (.uint32 w)) different cell
+
+theorem initial_keep32 (s : State) (name : String) (w : BitVec 32)
+    (different : name.toList≠"m".toList) (cell : Slot (withT s) name w) : Slot (initial s) name w :=
+  initial_keep s name .uint32 (some (.uint32 w)) different cell
+
+theorem withT_t (s : State) : USlot (withT s) "t" 2 := rfl
+
+theorem initial_m (s : State) : USlot (initial s) "m" 256 := rfl
+
+/- The complete intermediatePass statement execution at logn 9 / full 0. -/
+theorem source (oldT oldM : Option C99IntegerReference.Value) (s : State)
+    (a igm : ArrayPointer) (stride : Nat) (p p0i : BitVec 32) (tws : Nat → BitVec 32)
+    (fv0 : Nat → BitVec 32)
+    (logn : Slot s "logn" 9) (full : Slot s "full" 0)
+    (tDeclared : s.locals "t".toList=some (.uint64,oldT))
+    (mDeclared : s.locals "m".toList=some (.uint64,oldM))
+    (fixed : Fixed s a igm stride p p0i tws)
+    (image : NttInverseMiddleU1Loop192.Image s a stride (tOf 0) (htOf 0) (mOf 0)
+      (roundTws tws 0) p p0i fv0 0) :
+    ∃ after, Exec NttInversePrograms192.intermediatePass s ⟨after,.normal⟩ ∧
+      Fixed after a igm stride p p0i tws ∧
+      USlot after "t" (tOf 8) ∧ USlot after "m" (mOf 8) ∧
+      NttInverseMiddleU1Loop192.Image after a stride (tOf 8) (htOf 8) (mOf 8)
+        (roundTws tws 8) p p0i (fvAt fv0 tws p p0i 8) 0 ∧
+      (∀ q : ArrayPointer, (∀ x : Nat, x < 512 → Separate (walk a x stride) q) →
+        ∀ w : BitVec 32, Load32 s.heap q w → Load32 after.heap q w) ∧
+      after.heap.writable=s.heap.writable := by
+  have tRun : Exec NttInversePrograms192.tInit s ⟨withT s,.normal⟩ :=
+    .assign _ _ _ .uint64 oldT (.uint32 2) tDeclared (.scalar _ _ (tInit_value s full))
+  have mDeclaredT : (withT s).locals "m".toList=some (.uint64,oldM) :=
+    withT_keep s "m" .uint64 oldM (by decide) mDeclared
+  have lognT : Slot (withT s) "logn" 9 :=
+    withT_keep32 s "logn" 9 (by decide) logn
+  have fullT : Slot (withT s) "full" 0 :=
+    withT_keep32 s "full" 0 (by decide) full
+  have mRun : Exec NttInversePrograms192.mInit (withT s) ⟨initial s,.normal⟩ :=
+    .assign _ _ _ .uint64 oldM (u64 256) mDeclaredT (.scalar _ _ (mInit_value (withT s) lognT fullT))
+  have nInitial : USlot (initial s) "n" 512 :=
+    initial_keep64 s "n" 512 (by decide) (withT_keep64 s "n" 512 (by decide) fixed.nCell)
+  have strideInitial : USlot (initial s) "stride" stride :=
+    initial_keep64 s "stride" stride (by decide)
+      (withT_keep64 s "stride" stride (by decide) fixed.strideCell)
+  have pInitial : Slot (initial s) "p" p :=
+    initial_keep32 s "p" p (by decide) (withT_keep32 s "p" p (by decide) fixed.pCell)
+  have iInitial : Slot (initial s) "p0i" p0i :=
+    initial_keep32 s "p0i" p0i (by decide) (withT_keep32 s "p0i" p0i (by decide) fixed.iCell)
+  have fixedInitial : Fixed (initial s) a igm stride p p0i tws :=
+    fixed_state fixed nInitial strideInitial pInitial iInitial
+      fixed.aBinding fixed.igmBinding fixed.aWritable fixed.twLoads
+  have tInitial : USlot (initial s) "t" (tOf 0) :=
+    initial_keep64 s "t" 2 (by decide) (withT_t s)
+  have mInitial : USlot (initial s) "m" (mOf 0) := initial_m s
+  obtain ⟨after,loopRun,afterFixed,afterT,afterM,afterImage,afterKeep,afterWritable⟩ :=
+    m_loop 8 0 (initial s) a igm stride p p0i tws fv0 fixedInitial tInitial mInitial image
+      (by omega)
+  have mLoopRun : Exec NttInversePrograms192.mLoop (withT s) ⟨after,.normal⟩ :=
+    .seqNormal _ _ (withT s) (initial s) ⟨after,.normal⟩ mRun loopRun
+  refine ⟨after,?_,afterFixed,afterT,afterM,afterImage,afterKeep,afterWritable⟩
+  exact .seqNormal _ _ s (withT s) ⟨after,.normal⟩ tRun
+    (.seqNormal _ _ (withT s) after ⟨after,.normal⟩ mLoopRun (.base _ _ _ (.skip after)))
+
 end FT1536.Source3.NttInverseMiddleRounds192
