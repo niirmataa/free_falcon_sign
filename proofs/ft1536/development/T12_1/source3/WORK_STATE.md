@@ -1,3 +1,69 @@
+# SEED9_R1 — checkpoint 194 crt part 3 window: the block-21 table word at the rebuildCrt entry
+
+2026-10-21 (R1 crt part 3 window, restart after provider failure).
+Whole goal ACTIVE / NOT_COMPLETE; checkpoint 194 stage still open (the
+crt route is not exhausted). Entry pins 194 re-verified before work
+(ENTRY_PINS.json SHA256
+99ac47a1d981ebfc3afe3c54aac98c02773816faa489682d205682fd31c475b8,
+all 73564 inherited pinned paths 0 missing / 0 changed, no active
+processes).
+
+Restart obligation 0: the three uncommitted drafts of the interrupted
+window are retained and accepted here as continuation; none deleted.
+StepCopyKeepCell194/StepProductKeepCell194 were already accepted in the
+interrupted job 512 and are committed as the s0/s2 keeps (543f751d);
+SelectedStepCrtWord194 (drafts 513/514/515 retained with causes) is
+accepted as job 516 (6016c4f3). Suffix note: job 512 is CONSUMED by the
+interrupted job (its two module receipts are real accepted products), so
+the next unused proof job suffix is 517 (the resume prompt listed 512 as
+free).
+
+ACCEPTED this window (jobs 512/516, logs 0/0, standard three axioms,
+value-free):
+- StepCopyKeepCell194 + StepProductKeepCell194 (job 512, interrupted
+  window) — the per-cell bystander keeps for the s0 fs-to-t1 copy loop
+  and the s2 fd pair-product loop in the NttInverseMiddleRounds192.source
+  form: every load from a cell separate from the whole t1/fd walk
+  survives every loop write, with the writable transport; the fs/fd
+  invariants, the written fd image and the tracked read images of
+  StepCopyKeep193/StepProductKeep193 are kept unchanged
+  (edit-by-new-module). Sources 45fc82e7/12dae04a, oleans
+  577bd1fe/888d00d3, commit 543f751d.
+- SelectedStepCrtWord194 (job 516; drafts 513/514/515 retained) — the
+  transport of the block-21 ternary table word primes[0].p
+  (SelectedTopInit178.p) from the body input state to the make_fg_step
+  loop exit state, the entry state of both zint_rebuild_CRT calls of
+  part 3: the mkgm3 call (SelectedGen0Frame189.stable), the s0/s2
+  per-cell keeps, the s3 inverse keep (SelectedStepInverseKeep194.fs_source),
+  the s4/s6 per-cell keeps, the s7 inverse keep
+  (SelectedStepInverseKeep194.gs_source) and the heap-free s8-true
+  branch, loop tail and part-2 statement; the run is tied to the exit
+  state by the KeygenMakeFgDeterminism099 determinism of part .step 2.
+  Exports: source (the load at the exit state), keep (any part-2 run of
+  the step carries the word) and entry_keep (the zint_rebuild_CRT bind
+  chain keeps the heap, so the storePrime consumer sees the word).
+  OBLIGATION (a) OF THE CRT PART-3 ROUTE IS CLOSED. Source e091c3e6,
+  olean d82bd04b, commit 6016c4f3.
+
+OPEN per the route order: (b) the zint_norm_zero / zint_sub body runs at
+len = 1 (the two comparison branches of zint_norm_zero are data-dependent;
+the honest export is the executed-word image
+`normWord p0 x = if x < p0>>>1 then x else if p0>>>1 < x then x-p0 else
+x` with decidable case splits; the zint_sub write at len = 1 is the
+unconditional word x-p0), (c) the 512-step normalize loop induction over
+the x walk, the rebuildCrt body run (the tmp[0] = primes[0].p storePrime,
+the empty co-reduction loop at xlen = 1, the normalize branch), then both
+call statements of part 3 composed at the exit state. Then the
+additional-prime part (slen 1 / tlen 2), the remaining d-levels and the
+root/certificate/codec path, then the witness instantiation for
+KeygenProbability134 (G(seed*)). Unconditional Z>0, p_accept, p_K remain
+OPEN. Next unused proof job suffix 517. Three retained records 513/514/515
+(register now 28, all three workshop failures with causes; the inherited
+checkpoint192 register (58) and checkpoint193 register (4) unchanged).
+Old110 frozen; measured wording and the five do_sign items unchanged.
+Scoped proof, NOT_REVIEWED; no IID/D1/F04 premise; no push (batch 4
+waits for the owner's signal).
+
 # SEED9_R1 — checkpoint 194 crt window: fs/fd at the loop exit state closed, CRT calls named
 
 2026-10-20 (R1 crt window, suffix 506+). Whole goal ACTIVE / NOT_COMPLETE;

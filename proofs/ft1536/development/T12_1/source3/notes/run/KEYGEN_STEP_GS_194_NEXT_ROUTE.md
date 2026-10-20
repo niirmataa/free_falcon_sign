@@ -1,3 +1,35 @@
+# CRT part-3 route — obligation (a) closed, the normZero engine next
+
+2026-10-21 (restart window after the provider failure). The table-word
+transport is closed: SelectedStepCrtWord194 (job 516) carries the
+block-21 ternary table word primes[0].p (SelectedTopInit178.p) from the
+body input state through the whole s0-s7 chain and the heap-free tail to
+the make_fg_step loop exit state, and entry_keep delivers it to the
+zint_rebuild_CRT callee entry state (the storePrime consumer). The s0/s2
+per-cell bystander keeps StepCopyKeepCell194/StepProductKeepCell194
+(job 512) closed the keep-arity gap of the copy/product loops. Commits
+543f751d/6016c4f3. The interrupted job 512 consumed the 512 suffix;
+next unused proof job suffix is **517**.
+
+## Exact remaining obligations (in order)
+
+1. The zint_norm_zero / zint_sub body runs at len = 1: the two comparison
+   branches of zint_norm_zero are data-dependent, so the honest export is
+   the executed-word image `normWord p0 x = if x < p0>>>1 then x else if
+   p0>>>1 < x then x-p0 else x` (decidable case splits; the zint_sub
+   write at len = 1 is the unconditional word x-p0).
+2. The 512-step normalize loop induction over the x walk, the rebuildCrt
+   body run (the tmp[0] = primes[0].p storePrime, the empty co-reduction
+   loop at xlen = 1, the normalize branch), then both call statements of
+   part 3 composed at the exit state.
+3. Then the additional-prime part (slen 1 / tlen 2), the remaining
+   d-levels and the root/certificate/codec path, before the complete
+   emitted witness can instantiate the corrected KeygenProbability134
+   consumers (KeygenModelUnlock134.package_of_witness,
+   KeygenSuccessMass134.success_lower_of_witness).
+
+---
+
 # Continuation after the discharge — s0-s7 unconditional, the tail open
 
 The discharge window (this stage's previous route) closed all three
