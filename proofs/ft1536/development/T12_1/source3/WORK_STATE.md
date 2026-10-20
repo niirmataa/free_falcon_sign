@@ -1,3 +1,40 @@
+# SEED9_R1 — checkpoint 194 tail window closed: loop u++/guard, exit state exported
+
+2026-10-20 (R1 tail window, suffix 502+). Whole goal ACTIVE /
+NOT_COMPLETE; checkpoint 194 stage still open (the tail route is not
+exhausted). Entry pins 194 re-verified before work (ENTRY_PINS.json
+SHA256 99ac47a1d981ebfc3afe3c54aac98c02773816faa489682d205682fd31c475b8,
+all 73564 inherited pinned paths 0 missing / 0 changed, no active
+processes).
+
+ACCEPTED this window (job 505, logs 0/0, standard three axioms,
+value-free): SelectedStepLoopTail194 — the complete one-iteration
+execution of the make_fg_step first-prime loop at the selected seed9
+state: tail s0-s8 as MakeFgSequence187.Run from the sealed
+SelectedStepFull194.fullPrefix run (seq_inv + tail_expand), the body
+scope, the u increment to u = 1, the false u < slen guard exit and the
+part-2 statement execution to the loop exit state (transport to the
+second prime). Export: the u/n/hn/slen/tlen/logn/ter/in_ntt/out_ntt
+cells, caller frames outside u/v/p/p0i/R2 and x, the restored x binding,
+the gs transformed words and the gd written image at the exit state.
+Sources 98d0b2e6, olean 01ada839, commit 04aca610.
+
+OPEN per the route order: (1) the fs/fd image transport from the s0-s3
+assembly state to the loop exit state (s4 keep is single-image, s6 keep
+is two-image; needs a two-image gs-copy keep variant or per-cell
+bystander keeps for the copy/product loops), (2) both zint_rebuild_CRT
+calls (part 3; xlen = 1 empties the co-reduction loop, the
+normalize_signed norm loop runs 512 zint_norm_zero words over fs and gs),
+(3) the additional-prime part (slen 1 / tlen 2), (4) the remaining
+d-levels, (5) the root/certificate/codec path, then the witness
+instantiation for KeygenProbability134 (G(seed*)). Unconditional Z>0,
+p_accept, p_K remain OPEN. Next unused proof job suffix 506. Three
+workshop failures 502/503/504 retained with causes (register now 22);
+the inherited checkpoint192 register (58) and checkpoint193 register (4)
+unchanged. Old110 frozen; measured wording and the five do_sign items
+unchanged. Scoped proof, NOT_REVIEWED; no IID/D1/F04 premise; no push
+(batch 4 waits for the owner's signal).
+
 # SEED9_R1 — checkpoint 192 window in progress: s3 inverse call
 
 2026-10-19 (continuation window, finalPass + middle). Whole goal ACTIVE /

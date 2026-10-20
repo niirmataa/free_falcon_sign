@@ -369,3 +369,97 @@ d-pozomy i ścieżka root/certificate/codec do pełnego świadka
 KeygenProbability134. Nic z tego nie implikuje własności NTT, prawa
 tabeli, dodatniości, bezwarunkowego Z > 0 ani p_accept/p_K — te
 pozostają OPEN.
+
+## R1 tail window (2026-10-20) — the loop u++/guard tail closed, exit state exported
+
+Window launched per `KEYGEN_STEP_GS_194_NEXT_ROUTE.md` (proof job
+suffix 502, the outer u++/final-guard tail of the first-prime loop).
+Entry re-verified read-only before any proof work: ENTRY_PINS
+`99ac47a1…` recomputed against its receipt (SHA256 match), all 73564
+inherited pinned paths re-checked (0 missing / 0 changed) and no active
+owned job/Lean/Sage process. Scoped proof, NOT_REVIEWED; no push (batch
+4 waits for the owner's signal).
+
+### Closed (proof job 505; logs 0/0, standard three axioms)
+
+1. `SelectedStepLoopTail194` (job 505) — the complete one-iteration
+   execution of the make_fg_step first-prime loop at the selected seed9
+   state. The s0-s8 tail is re-derived from the sealed
+   `SelectedStepFull194.source` fullPrefix run by generic sequence
+   destructuring (`seq_inv`) and the `MakeFgSequence187.Run` chain
+   against the sealed projection splits (`tail_expand`); the body scope
+   runs over the tail (SelectedGen0Call189.continue_inner plus the scope
+   restore), the u increment reaches u = 1 (C99LoopScalar141.increment),
+   the false u < slen guard exits the loop (loopFalse at u = 1 against
+   slen = 1) and the part-2 statement (`u = 0; for (u = 0; u < slen;
+   u ++) { body }`) executes from SelectedStepMove187.after to the loop
+   exit state — the state transport to the second prime. Export at the
+   exit state: the executed u = 1 / n = 512 / hn = 256 / slen = 1 /
+   tlen = 2 / logn = 9 / ter = 1 / in_ntt = 1 / out_ntt = 1 cells, the
+   caller frames outside u/v/p/p0i/R2 and x, the x binding restored to
+   its caller-scope value, and the gs transformed words
+   (`scaledWord gvs tws p p0i`) and the gd written image at the exit
+   state (both ride through the scope restore and the u increment
+   unchanged, since both are heap-free). Sources `98d0b2e6`, olean
+   `01ada839`, commit `04aca610`.
+
+Retained workshop failures in this window (register grew to 22
+entries): 502, 503, 504 — all mechanical (deprecated if_neg/if_pos
+rewrites in the restoreScope transport helpers; the unopened
+SelectedStepLayout187.gs/gd names auto-bound as implicits in the export
+statement; one rcases pattern short of the five-way localNames
+membership disjunction; the nested seqNormal of the part-2 composition
+carrying the wrong middle state; simp's ite normalization form clashing
+with the contains-form hypotheses; List.not_mem_nil arity; String.toList
+versus the cons form of the concrete name; and the x binding being the
+caller-scope value rather than none). No source statement, value, pin or
+sealed module was touched by any of them. The inherited checkpoint192
+register (58) and checkpoint193 register (4) remain untouched.
+
+### Open (in order)
+
+1. The fs/fd image transport from the assembled s0-s3 state to the loop
+   exit state (their consumption feeds the CRT/additional-prime
+   consumers). The s4 copy keep is single-image (FixedGs binds the gs
+   source; the tracked slot carries the igm reads) and the s6 product
+   keep is two-image (gs source + igm), so the fd+fs bystander images
+   need either a two-image StepGsCopyKeep194 variant over the combined
+   fd/gd/fs or fs+gs+gm+igm walks, or a per-cell bystander keep for the
+   copy/product loops in the NttInverseMiddleRounds192.source form. The
+   s7 per-cell keep (SelectedStepInverseKeep194) and the gd/gs images at
+   the exit state are already exported; the gd input words of a combined
+   walk would need the SelectedStepMove187.input_read loads carried to
+   the s0-s3 assembly state.
+2. Both `zint_rebuild_CRT` calls (part 3) at the exit state (xlen = slen
+   = 1 makes the co-reduction loop empty and the normalize_signed norm
+   loop runs 512 zint_norm_zero words over the fs and gs walks), then the
+   additional-prime part (slen 1 / tlen 2), the remaining d-levels and
+   the root/certificate/codec path, before the complete emitted witness
+   can instantiate the corrected KeygenProbability134 consumers
+   (KeygenModelUnlock134.package_of_witness,
+   KeygenSuccessMass134.success_lower_of_witness); the prospective bound
+   remains Z>=2^-256 and is NOT established by this window.
+
+Next unused proof job suffix: **506**. Scoped proof, NOT_REVIEWED; no
+IID/D1/F04 premise; no push (batch 4 waits for the owner's signal).
+Values remain executed words only: no transform property, table law,
+root law or positivity claim; unconditional Z>0, numerical p_accept,
+conditional coding and positive p_K remain OPEN. Old110 stays frozen;
+measured wording 8192/23628 with the separate 256/739 control and the
+five do_sign items remain unchanged.
+
+### Three sentences (this window)
+
+Udowodniono: pełne wykonanie jednej iteracji pętli liczby pierwszej
+make_fg_step — ogon s0-s8 odtworzony jako Run przez rozłożenie
+fullPrefix, zakres ciała z restoreScope, przyrost u do 1, fałszywe
+wyjście guardu u<slen oraz wykonanie part-2 do stanu wyjścia pętli
+(transport do drugiej liczby pierwszej), z komórkami u/n/hn/slen/tlen/
+logn/ter/in_ntt/out_ntt, ramkami wywołującego i obrazami gs/gd w stanie
+wyjściowym — wszystko jako wykonane słowa. Najbliższy brak: transport
+obrazów fs/fd ze stanu montażu s0-s3 do stanu wyjścia pętli (luka
+aritytetu keep-ów s4/s6), potem oba `zint_rebuild_CRT`, dodatkowa liczba
+pierwsza, d-pozomy i ścieżka root/certificate/codec do pełnego świadka
+KeygenProbability134. Nic z tego nie implikuje własności NTT, prawa
+tabeli, dodatniości, bezwarunkowego Z > 0 ani p_accept/p_K — te pozostają
+OPEN.
