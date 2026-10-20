@@ -28,6 +28,41 @@ next unused proof job suffix is **517**.
    consumers (KeygenModelUnlock134.package_of_witness,
    KeygenSuccessMass134.success_lower_of_witness).
 
+## normZero body shape — read this before writing the engine (do not re-derive)
+
+From the retained ZintCrtParseProbe194 record (job 510 stdout), the
+parsed `KeygenZintCall.calleeBody .normZero` is:
+
+- `normBody = seq normDeclC (seq normDeclU (seq normCC0 (seq normSetU
+  (seq normLoopDec normFinalSkip))))` with `normDeclC` = declare u32
+  [cc], `normDeclU` = declare u64 [u], `normCC0` = assign cc 0,
+  `normSetU` = assign u (var len), `normFinalSkip` = word skip.
+- `normLoopDec = seq (loop (u>0) loopBody (word skip)) (word (u-=1))` —
+  the C post-decrement `u -- > 0` is modeled as the guard `u > 0` plus a
+  `u-=1` at the body head, and the final false-guard decrement is the
+  trailing `word (u-=1)` AFTER the loop (do not look for the decrement
+  in the guard or the increment slot).
+- `loopBody = seq (word (u-=1)) (scope [w] [] (seq decl(w:u32) (seq
+  (w = (p[u]>>1)|(cc<<30)) (seq (cc = p[u]&1) (seq branch1 (seq branch2
+  (word skip)))))))` with `branch1 = branch (x[u] < w) (scope [] []
+  (seq retVoid (word skip))) (word skip)` and `branch2 = branch (x[u] > w)
+  (scope [] [] (seq (call (leaf sub) [ptr x 0, ptr p 0, scalar (var len)]
+  .discard) (seq retVoid (word skip)))) (word skip)`.
+- At len = 1 the loop runs exactly one iteration (u: 1 -> 0 at the body
+  head, word index u = 0), the `w` variable holds `p[0]>>>1` because
+  `cc = 0` on the only iteration, and the two `retVoid` paths exit
+  through `Exec.loopReturn` while the tie path falls out through the
+  false guard into the trailing `u-=1`. The zint_sub leaf call at
+  len = 1 is the unconditional word `x[0] = x[0]-p[0]` (the leaf body
+  run is part of the engine work).
+- The honest export (obligation (b)) is the executed-word image
+  `normWord p0 x = if x < p0>>>1 then x else if p0>>>1 < x then x-p0
+  else x` with decidable case splits on the two branch guards; the three
+  cases must each carry the same heap-keeps-except-x[0] frame and the
+  void return flow of the callee (check the exact
+  `C99ProcedureReference.ReturnValue (result .normZero)` shape for both
+  the `.returned` and `.normal` end flows against `KeygenZintCall.Call`).
+
 ---
 
 # Continuation after the discharge — s0-s7 unconditional, the tail open
