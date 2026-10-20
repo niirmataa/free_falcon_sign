@@ -129,9 +129,10 @@ falsification needing the tOf reduction and the initial t/m cells derived
 by conversion instead of the definitional equations. No source-C
 counterexample and no integrity event.
 
-## Open at this window boundary (exact resume obligations)
+## Open at this window boundary (exact resume obligations; annotations updated)
 
-1. NttInverseWhole192: compose `Exec KeygenLevelNtt.inverse` from the
+1. (closed this window, job 453) NttInverseWhole192: compose `Exec
+   KeygenLevelNtt.inverse` from the
    prologue (NttInversePrologue192.source), the triple skip
    (NttInverseTriple192.source at full=0), the three passes and the chain
    trailing skip (NttInversePrograms192.body_source rewrites to the
@@ -146,13 +147,13 @@ counterexample and no integrity event.
    pass leaves u = 256 at the correction entry; the whole composition
    needs a generalized correction init over any old value (mirror
    NttInverseCorrectionSource192.init_run with the uInit assignment at
-   old := some (u64 256)).
-2. SelectedStepInverse192: the KeygenLevelCalls.Bind of the actual s3
+   old := some (u64 256)); done in NttInverseCorrectionInit192, job 447.
+2. (closed this window, job 457) SelectedStepInverse192: the KeygenLevelCalls.Bind of the actual s3
    arguments at the SelectedStepProduct191.source product output (u=0,
    slen=1, logn=9, full=0, p/p0i slots), the .inverse call execution with
    void return, and the s3 branch composition to `KeygenMakeFgSource.Exec
    MakeFgTailShape190.s3 productOutput out`.
-3. Audit + seal 192: `.build/stepinverse192/AUDIT_MODULES.json`,
+3. (closed this window) Audit + seal 192: `.build/stepinverse192/AUDIT_MODULES.json`,
    `keygen_isolated_audit192.py` (one declaration per command, one module
    per process, unchanged checks), the final audit job,
    `keygen_audit192_collect.py`, `keygen_stepinverse192_seal.py seal` and
@@ -304,3 +305,123 @@ m loop and the tInit/mInit composition closing intermediatePass remain
 OPEN with their exact obligations above; the window freezes at this
 recoverable mid-point by the staged-roadmap context discipline. No
 push, no reviewer/worker, no new axiom.
+
+## Window 2026-10-20 (second): the whole inverse call, the s3 stage statement and seal 192
+
+2026-10-20. Entry integrity re-verified before any proof work:
+ENTRY_PINS.json checked against `9842d9ffedece50b7b19787b8c77cafe9629e
+dba7d245c5439e661bf44cc60d`, POSTSEAL_191 against `97d24fde…` and the
+sealed product receipt against `cd2798f1…`; all 71052 inherited pins
+re-checked (0 missing, 0 changed); no active owned process. The
+retained failure register was 48 entries on entry and is 58 on exit
+(nine new workshop failures with recorded causes, plus one
+record-hygiene correction below).
+
+Proved in this window (accepted jobs 446/447/449/453/457, logs 0/0,
+standard three axioms, values stay executed words only):
+
+- NttInverseFrame192 (job 446) extends the accepted KeygenMkgm3Control
+  frame grammar with the pointer declarations and pointer binds of the
+  prologue/passes: executing a supported statement chain changes only
+  the declared local write names and the bound pointer names; every
+  other local cell and pointer slot is returned exactly as it was.
+- NttInverseCorrectionInit192 (job 447) closes the recorded TRAP: the
+  accepted correction source freezes `uDeclared : some (.uint64,none)`
+  while the degree-1 final pass leaves u = 256 at the correction entry.
+  The uInit assignment is now mirrored over an arbitrary old value, in
+  particular at `some (u64 256)`, with the same executed words and the
+  same exports.
+- NttInverseWholeBridges192 (job 449) writes the three word bridges as
+  executed word terms: the round-8 image at index 0 is the raw load of
+  every walked position with the composed fvAt 8 word; the raw words
+  are exactly the final-pass pairs (j, j+256) for j < 256; the
+  final-pass output image feeds the correction input through the
+  finalWord case split at 256 (lowWord/highWord of the fvAt 8 words);
+  the correction words are the scale/Montgomery words over those with
+  the niWord (modp_R/modp_div) cell word.
+- NttInverseWhole192 (job 453) composes `Exec KeygenLevelNtt.inverse`
+  at the call entry state from the prologue (size/mixed declarations,
+  the false logn0 guard, n = 512 and hn = 256), the skipped
+  divide-by-three pass at full = 0, the complete intermediate doubling
+  pass (NttInverseMiddleRounds192.source), the degree-1 final pass
+  (NttInverseFinalPass192.source at w = tws 0, the twLoads 0 instance
+  of the round Fixed) and the corrective 1/n scaling through the
+  generalized correction source, with the frame keeps (hn/w/u through
+  the intermediate pass, R/ni/n and the a/igm slots through the final
+  pass and the correction) exported alongside the scaled image, the
+  u = 512 counter, the r1 endpoint and the n/stride/p/p0i/ni cells.
+- SelectedStepInverse192 (job 457) builds the
+  KeygenLevelCalls.Bind of the original call
+  modp_iNTT3_ext(fs + u, slen, igm, logn, 0, p, p0i) at the
+  SelectedStepProduct191.source product output (the u = 0 cell, the fs
+  binding, the slen = 1 stride cell, igm at the parser zero index, the
+  logn = 9 cell, the original zero literal for full, the p/p0i slots),
+  runs the body through the whole composition, and composes the s3
+  branch (s3Yes_shape/inner_shape/terBranch_shape/terYes_shape rewrite
+  the projections) to the stage statement
+  `KeygenMakeFgSource.Exec MakeFgTailShape190.s3 productOut out`. The
+  exported image records the transformed fs words as the executed
+  modp_add/modp_sub/modp_montymul/modp_R/modp_div word terms
+  (NttInverseWholeBridges192.scaledWord over
+  SelectedStepProduct191.fvs, the copied fs image), with the caller
+  locals/arrays frame outside v/x.
+
+Audit + seal 192: `.build/stepinverse192/AUDIT_MODULES.json` (20
+mathematical modules), `keygen_isolated_audit192.py` (471 declarations,
+one declaration per run_cmd, all commands of one module in one
+sequential Lean process, unchanged full DAG roundtrip and fresh safe
+kernel definition at the original type), the final audit job 458
+(20 clean modules, logs 0/0), `keygen_audit192_collect.py`
+(PASS_FULL_KERNEL_DAG_AUDIT; NOT_INDEPENDENT_REVIEW), then
+`keygen_stepinverse192_seal.py seal` and `postseal`, the _PINS.md
+external pins and the R1 tail register entry. Source pins
+39780107 (frame), 4f82d5d4 (correction init), 09c34208 (bridges),
+569768e4 (whole), 38d87c62 (s3). All 471 audited declarations carry
+only the standard three axioms; no ellipsis, no new axiom, no source-C
+counterexample and no integrity event.
+
+Retained failures this window: 444/445 (frame drafts), 448 (bridges
+draft: deprecated dif_pos/dif_neg and an unused dite binder), 450/451/
+452 (whole drafts: the `≤i` InitialSeg lexeme of
+`igm.index+512≤igm.count`, a missing NttInverseTriple192 import, the
+`have … where` structure-instance syntax, the setNi_outside namespace
+and an opaque intermediate state hiding the defeq transports), 454/455/
+456 (s3 drafts: an empty `open ()`, bindValue given a raw BitVec, the
+auto-bound free variable `fs` before opening SelectedStepLayout187, the
+C99CountedWords.convert_self transports for the variable p/p0i slots,
+the C99ProcedureParser.zero = .literal .u64 0 pointer shape and a
+congr/omega split of walk_fs). All are workshop/elaboration or linter
+failures retained with their causes in
+KEYGEN_STEP_INVERSE_192_FAILURES.json (58 entries); no source-C
+counterexample and no integrity event.
+
+Record hygiene (second correction of this register): the failed first
+draft of NttInverseFinalBody192 (job 411) had been omitted from the
+register when the first window listed its retained failures; the job
+is retained unchanged and its entry was appended during this window
+with its actual workshop causes (a block_outside-style hypothesis in
+the wrong argument position and a StepProductBody191.state_ext
+unification of the output/second record shape; the accepted rewrite is
+job 412). The register also keeps the DIAGNOSTIC syntax probes of the
+first window (job 381 NttInverseShapeProbe192 succeeded and is
+recorded as an accepted diagnostic; job 383 was a probe draft that
+failed and stays a failed register entry); the seal separates accepted
+diagnostics from failed jobs.
+
+Open after this window: the gs copy/products/inverse path s4-s7, the
+false !out_ntt branch s8 (its body is the fd/gd inverse pair at
+logn-1=8 and tlen=2 — a DIFFERENT instance of the corpus needing a
+logn-8 control variant of the prologue size lemma), the outer u++/final
+guard tail, both CRT calls and the additional-prime part (slen1/tlen2),
+the remaining d-levels and the root/certificate/codec path. The
+s3 statement is proved at the product output under the product-output
+facts; the fs-image and twiddle-load keeps through the copy/product
+writes, and the caller frame (locals/arrays outside v/x) taken from the
+product export, remain to be discharged at the step assembly. Only the
+complete emitted source witness can instantiate the corrected134
+consumers (KeygenModelUnlock134.package_of_witness,
+KeygenSuccessMass134.success_lower_of_witness); their prospective
+bound remains Z>=2^-256>0 and is NOT a theorem established by 192.
+Paper wording stays measured 8192/23628 with the separate 256/739
+control. No IID/D1/F04/empirical premise; exactly five do_sign items
+remain. No push and no independent-review claim.

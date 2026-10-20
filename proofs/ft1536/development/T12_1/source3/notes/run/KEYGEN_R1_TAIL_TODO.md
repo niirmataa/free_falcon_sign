@@ -1,3 +1,55 @@
+# Current state — checkpoint192 sealed; first-prime inverse call s3 closed
+
+2026-10-20. Whole goal ACTIVE / NOT_COMPLETE. Checkpoint192 closes the
+original make_fg_step first-prime inverse call statement s3 at the
+actual selected seed9 product output: the KeygenLevelCalls.Bind of
+modp_iNTT3_ext(fs + u, slen, igm, logn, 0, p, p0i) with the u = 0 cell,
+the slen = 1 stride cell, igm at the parser zero index, the logn = 9
+cell and the p/p0i slots; the complete pinned corpus execution as one
+`Exec KeygenLevelNtt.inverse` (prologue with n = 512 / hn = 256, the
+skipped divide-by-three pass at full = 0, the eight intermediate
+doubling rounds, the degree-1 final pass at w = igm[0] and the
+corrective 1/n Montgomery scaling with the modp_R/modp_div cell words);
+the fvAt8 -> finalWord -> scale word bridges; and the s3 branch
+composition to `KeygenMakeFgSource.Exec MakeFgTailShape190.s3
+productOut out` (SelectedStepInverse192). The exported image records
+the transformed fs words as the executed modp_add/modp_sub/modp_montymul/
+modp_R/modp_div word terms over the copied fs image; locals outside v
+and arrays outside x stay readable to the root state. The u = none trap
+is fixed (correction uInit over old := some (u64 256)). Values are only
+executed words: no transform property, table law, root law or
+positivity claim.
+
+20 mathematical modules /471 declarations passed audit 458, accepted
+logs 0/0. Postseal verified 73379 paths. Sources 39780107/4f82d5d4/
+09c34208/569768e4/38d87c62 (the five new modules; the fifteen corpus
+modules keep their window-2026-10-19/20 pins). 25 accepted jobs in
+377-458 (including the DIAGNOSTIC probe 381 and the final audit job
+458); 57 failed/mixed retained with causes, with the record-hygiene
+correction of the omitted job 411 (58 register entries). See KEYGEN_STEP_INVERSE_192_REPORT.md /
+_PINS.md / _NEXT_ROUTE.md. Receipt SHA256:
+4a7edbb50b35b1a059670bf9eab5adc5ae4695d8c56328a6f14358cda38bb9f2
+Postseal .build/stepinverse192/POSTSEAL_192.json SHA256:
+3c31e4610a48d95190d68952998c4a00962d5e896381f1372ed6aecf7582141a
+
+Exact resume obligation after fresh pin/process verification: the gs
+copy/products/inverse path s4-s7, the false !out_ntt branch s8 (its
+body is the fd/gd inverse pair at logn-1 = 8 and tlen = 2, a different
+instance of the corpus needing a logn-8 control variant of the
+prologue size lemma), the outer u++/guard tail, CRT and the
+additional-prime part; the s3 product-output hypotheses (fs-image and
+twiddle-load keeps through the copy/product writes, the caller frame
+from the product export) get discharged at the step assembly. Next
+unused proof job suffix 459. Then later d-levels, root validation,
+certificate and encoding before using the complete emitted witness for
+corrected KeygenProbability134. Unconditional Z>0, numerical
+p_accept, conditional coding and positive p_K remain OPEN. Old110
+stays frozen; measured wording and the five do_sign items remain
+unchanged. Scoped proof, NOT_REVIEWED; no IID/D1/F04 premise; no
+push.
+
+---
+
 # Current state — checkpoint192 window in progress; part 2 tail CLOSED
 
 2026-10-20. Whole goal ACTIVE / NOT_COMPLETE. Checkpoint 192 is NOT
