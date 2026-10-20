@@ -1,0 +1,71 @@
+{
+  "batch": "088",
+  "stage": "KEYGEN_STEP_GS_194",
+  "window": "R1 continuation per notes/run/KEYGEN_STEP_GS_194_NEXT_ROUTE.md (2026-10-20)",
+  "status": "IN_PROGRESS / NOT_REVIEWED",
+  "scope": "executed-word semantics only: no transform property, table law, root law, positivity, NTT or Z>0 claim",
+  "entry": {
+    "verification": "read-only re-check before any proof work",
+    "postseal_193": "386e4cbcf8ecee725cec39de9e32e0012d8c0efbdb96b8f0f99fe9a03e964562",
+    "receipt_193": "1d6f11ec19d5b0cb0f1f4ba4be63bd9d74f4800bcef66d55d611a00931b16d3e",
+    "entry_pins_194": "99ac47a1d981ebfc3afe3c54aac98c02773816faa489682d205682fd31c475b8",
+    "checked_count": 73564,
+    "missing": 0,
+    "changed": 0,
+    "active_processes": []
+  },
+  "closed_modules": [
+    {
+      "module": "Source3.SelectedStepGsProduct194",
+      "statement": "s6: gd pair-product init + 256 iterations through StepGsProductKeep194 with the gs and igm keeps, FixedGd frame and the written gd image value (gvs (2v)) (gvs (2v+1)) R2 p p0i",
+      "job": "keygen_publicforward159_475",
+      "source_sha256": "5c61b37874d2ae1418858a82546b20d8c75567e86aecbc751733d8d378662f35",
+      "olean_sha256": "fa38bf7a26c694f74b1d4afe66c583a206f8f944f99afd906ccf910ebe497e4c",
+      "clean_log": true,
+      "commit": "8c6b8784"
+    },
+    {
+      "module": "Source3.SelectedStepGsInverse194",
+      "statement": "s7: gs instance of the modp_iNTT3_ext call bind (name \"gs\", addr gs 0 0 1) through the closed NttInverseWhole192 corpus at stride 1, export scaledWord gvs tws p p0i",
+      "job": "keygen_publicforward159_476",
+      "source_sha256": "92c702b278903107d0b48c0a9dc319004a6a3d724e54b74eb565f73cd5a4918f",
+      "olean_sha256": "0404deab06016f9b1cae5dcceeab264fe9eab40dff862ff02984f09c3b8bda5a",
+      "clean_log": true,
+      "commit": "8e92d57f"
+    },
+    {
+      "module": "Source3.SelectedStepGsChain194",
+      "statement": "composed s4-s7 stage statement from the assembled after-state shape of SelectedStepChain193.source with explicit stage hypotheses (gs image, igm reads, writability); export: gs transformed, gd written image at the s6 output, composed s0-s7 execution, caller frames",
+      "job": "keygen_publicforward159_478",
+      "source_sha256": "c4b65be7d3fbeea0cd96c59fde786f9a91d22c8665d99f658ad981b7f8dfcd50",
+      "olean_sha256": "28f7a597db42c67469efee5d9940dbf5701a744f1adf79ca4f07327e4c7f870c",
+      "clean_log": true,
+      "commit": "652f8eb0"
+    }
+  ],
+  "retained_failures": {
+    "keygen_publicforward159_477": "SelectedStepGsChain194 first draft: gs/igm separation stated without index bounds; omega correctly refuted the unbounded form (ranges overlap at j = k + 1024). Fixed as j<512 / k<512; see KEYGEN_STEP_GS_194_FAILURES.json."
+  },
+  "counts": {
+    "accepted_jobs": [475, 476, 478],
+    "failed_jobs": [477],
+    "logs": "0/0 on all accepted jobs",
+    "axioms": "standard three (propext, Classical.choice, Quot.sound)",
+    "limits": "unchanged; one Lean process (tools/job111.py, -j1 -M6144, warningAsError=true)"
+  },
+  "hypotheses": {
+    "stated_explicitly": "gs source image and igm twiddle reads at the assembled s0-s3 state, heap writability (the sealed 193 export keeps only the transformed fs image and the caller frames)",
+    "discharged": false,
+    "discharge_obligation": "bystander-load preservation through NttInverseFinalPass192 and NttInverseCorrectionSource192 (per-cell keep in the shape NttInverseMiddleRounds192.source already exports), then a re-assembly of s0-s3 with the extra gs/igm/fd keeps"
+  },
+  "open": [
+    "hypothesis discharge at the full first-prime assembly (see KEYGEN_STEP_GS_194_NEXT_ROUTE.md)",
+    "outer u++/final guard tail, both zint_rebuild_CRT calls, additional-prime part (slen 1 / tlen 2), remaining d-levels, root/certificate/codec path",
+    "complete emitted witness for KeygenProbability134 consumers; prospective bound Z>=2^-256 NOT established by this window"
+  ],
+  "new_assumptions": false,
+  "independent_review": false,
+  "push": false,
+  "do_sign_slot_items": 5,
+  "next_unused_job_suffix": 479
+}

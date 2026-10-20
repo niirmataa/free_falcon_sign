@@ -1,3 +1,46 @@
+# Current state — R1 window closed at the s4-s7 chain; hypothesis discharge frozen
+
+2026-10-20. Whole goal ACTIVE / NOT_COMPLETE. The R1 continuation window
+(prompt: this stage's previous NEXT_ROUTE) closed the three named gs-path
+statements with accepted clean jobs 475/476/478 (logs 0/0, standard
+axioms): SelectedStepGsProduct194 (s6: gd product init + 256 iterations
+through StepGsProductKeep194 with the gs/igm keeps, FixedGd frame and the
+gd written image `value (gvs (2v)) (gvs (2v+1)) R2 p p0i`),
+SelectedStepGsInverse194 (s7: the gs bind instance over the closed
+NttInverseWhole192 corpus at stride 1, export `scaledWord gvs tws p
+p0i`), SelectedStepGsChain194 (composed s4-s7 from the assembled
+after-state shape with explicit stage hypotheses — gs image, igm reads,
+writability — and the composed s0-s7 execution). Retained workshop
+failure 477 (unbounded gs/igm separation refuted by omega; bounds
+j<512/k<512 added; register now 4 entries). Entry re-verified read-only
+(POSTSEAL_193 386e4cbc…, receipt 1d6f11ec…, all 73564 inherited pins
+0/0; ENTRY_PINS 99ac47a1…). Traps recorded: the assembled state carries
+v = 256 (the s4 init is generalized in the chain module), and
+cross-region separations need exact index bounds. Sources
+5c61b378/92c702b2/c4b65be7; commits 8c6b8784/8e92d57f/652f8eb0. Receipt
+pair KEYGEN_SOURCE_TO_FIBER_001_BATCH_088.json/_NOTES.md. No push
+(batch 4 waits).
+
+Exact resume obligation after fresh pin/process verification: the
+hypothesis discharge at the full first-prime assembly — bystander-load
+per-cell keep through NttInverseFinalPass192 and
+NttInverseCorrectionSource192 (keep-extended re-proof of the final and
+correction loops, keep-threaded re-composition of both passes and the
+whole inverse; the middle pass already exports the keep), then a
+re-assembly of s0-s3 with the extra gs/igm/fd keeps (arity gap: s0 needs
+two simultaneous image keeps, s2 three; N-image loop keep variants or
+parallel keep runs identified by determinism), then the unconditional
+s0-s7 assembly instantiating SelectedStepGsChain194.source. Next unused
+proof job suffix 479. Then the outer u++/guard tail, CRT / additional
+prime, later d-levels, root/certificate/encoding before using the
+complete emitted witness for corrected KeygenProbability134.
+Unconditional Z>0, numerical p_accept, conditional coding and positive
+p_K remain OPEN. Old110 stays frozen; measured wording and the five
+do_sign items remain unchanged. Scoped proof, NOT_REVIEWED; no
+IID/D1/F04 premise; no push.
+
+---
+
 # Current state — gs window frozen mid-stage; s4/s5 and s8 closed
 
 2026-10-20. Whole goal ACTIVE / NOT_COMPLETE. The gs window (prompt
