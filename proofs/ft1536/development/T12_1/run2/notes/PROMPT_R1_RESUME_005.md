@@ -11,6 +11,13 @@ WORK_STATE) + piny 193 → ENTRY_PINS kolejnego poziomu
 
 ## Kolejność (meldunek po etapie)
 
+0. Na starcie ROZPOZNANIE niezacommitowanych szkiców w
+   source3/formal/Source3: FirstBlockCertificate170_1/2/3.lean,
+   KeygenKernel129AuditProbe.lean, KeygenKernel159AuditV2Part000.lean.
+   Każdy plik: albo wciągnięty jako mały commit (własny, z opisem
+   pochodowania), albo usunięty z uzasadnieniem w meldunku.
+   Żadnego „leży i czeka”. Osobno: catalog/FT1536_PREMISE_AUDIT_20261011_001.json
+   NIE ruszać (chroniony katalog — decyzja właściciela).
 1. Region gs s4–s7 z zmontowanego stanu after — te same moduły
    keeps (StepCopy/StepProductKeep193) wielokrotnego użytku:
    strzeżone obrazy przez zapisy regionu gs, wartości jako wykonane
