@@ -1,3 +1,74 @@
+# SEED9_R1 — checkpoint 194 crt window: fs/fd at the loop exit state closed, CRT calls named
+
+2026-10-20 (R1 crt window, suffix 506+). Whole goal ACTIVE / NOT_COMPLETE;
+checkpoint 194 stage still open (the crt route is not exhausted). Entry
+pins 194 re-verified before work (ENTRY_PINS.json SHA256
+99ac47a1d981ebfc3afe3c54aac98c02773816faa489682d205682fd31c475b8,
+all 73564 inherited pinned paths 0 missing / 0 changed, no active
+processes).
+
+ACCEPTED this window (jobs 507/509/511, logs 0/0, standard three axioms,
+value-free):
+- StepGsCopyKeepCell194 + StepGsProductKeepCell194 (job 507) — the
+  per-cell bystander keep in the NttInverseMiddleRounds192.source form
+  for the s4 gs-copy loop and the s6 gd-product loop: every load from a
+  cell separate from the whole t1/gd writer walk survives the loop, with
+  the writable transport; the FixedGs/FixedGd invariants, the written
+  gd image and the tracked reads of the sealed keep modules are kept
+  unchanged (edit-by-new-module). Sources c0d37bfe/33f7397e, oleans
+  a8181a8f/236d6a18, commit ed565081.
+- SelectedStepFsFd194 (job 509) — the fs transformed words and the fd
+  written image transported from the assembled s0-s3 state to the loop
+  exit state: the s4/s6 cell keeps, the s7 per-cell keep of
+  SelectedStepInverseKeep194 (bounded fs/fd-vs-gs walk separation) and
+  the heap-free loop tail; the run is tied to the sealed
+  SelectedStepLoopTail194 exit package by the KeygenMakeFgDeterminism099
+  determinism of part .step 2 (KeygenMakeFgArity099.step2 /
+  KeygenMakeFgArity099.body). Export at the exit state: the fs
+  transformed words and the fd written image as executed words, plus the
+  gs/gd images, the exit cells/frames and the writability transport.
+  WINDOW DELIVERABLE (1) IS CLOSED. Sources e697021c, olean 4626649e,
+  commit ed565081.
+- MakeFgCrtShape194 (job 511) — source-bound naming of both
+  zint_rebuild_CRT calls of part 3 (`zint_rebuild_CRT(fs/gs, slen, slen,
+  n, primes, 1, gm)`) with their exact parsed arguments by decide, and
+  the body spines of zint_rebuild_CRT (xlen = 1) and zint_norm_zero
+  (len = 1) as decide-checked projections. The exact parse record is the
+  retained DIAGNOSTIC probe ZintCrtParseProbe194 (job 510). Sources
+  3596a3f6/28d62dc7, oleans 2db56824/2bfd6593, commit e6023c7a.
+
+OPEN per the route order: (1) the EXECUTION of both zint_rebuild_CRT
+calls at the loop exit state (window deliverable (2): the calls are
+named and their arguments bound, the bodies are NOT executed here).
+Exact obligations in order: (a) the table-word transport
+`Load32 next.heap (fieldPointer primes .p) SelectedTopInit178.p` to the
+rebuildCrt entry state — block 21 is readonly and never written, but the
+keep/stability plumbing covers only parts of the segment: the mkgm3 call
+needs the SelectedGen0Frame189.stable pattern, the s0 copy loop and the
+s2 product loop need fs/fd-name cell keeps (mirrors of
+StepGsCopyKeepCell194/StepGsProductKeepCell194 over
+StepCopyKeep193/StepProductKeep193, or a generic block keep over the
+loop runs), the s3 call is covered by SelectedStepInverseKeep194.fs_source;
+then Gate00Memory.load32_transport supplies the load; (b) the
+zint_norm_zero / zint_sub body runs at len = 1 — the two comparison
+branches of zint_norm_zero are data-dependent, so the honest export is
+the executed-word image `normWord p0 x = if x < p0 >>> 1 then x else if
+p0 >>> 1 < x then x - p0 else x` (decidable case splits; the zint_sub
+write at len = 1 is the unconditional word x - p0); (c) the 512-step
+normalize loop induction over the x walk, the rebuildCrt body run (the
+tmp[0] = primes[0].p storePrime, the empty co-reduction loop at
+xlen = 1, the normalize branch), then both call statements of part 3
+composed at the exit state. (2) the additional-prime part (slen 1 /
+tlen 2), the remaining d-levels and the root/certificate/codec path,
+then the witness instantiation for KeygenProbability134 (G(seed*)).
+Unconditional Z>0, p_accept, p_K remain OPEN. Next unused proof job
+suffix 512. Three retained records 506/508/510 (register now 25: two
+workshop failures and the DIAGNOSTIC parse probe) with causes; the
+inherited checkpoint192 register (58) and checkpoint193 register (4)
+unchanged. Old110 frozen; measured wording and the five do_sign items
+unchanged. Scoped proof, NOT_REVIEWED; no IID/D1/F04 premise; no push
+(batch 4 waits for the owner's signal).
+
 # SEED9_R1 — checkpoint 194 tail window closed: loop u++/guard, exit state exported
 
 2026-10-20 (R1 tail window, suffix 502+). Whole goal ACTIVE /

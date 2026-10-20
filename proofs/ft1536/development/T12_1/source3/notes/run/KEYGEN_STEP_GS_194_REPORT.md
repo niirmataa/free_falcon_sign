@@ -463,3 +463,143 @@ pierwsza, d-pozomy i ścieżka root/certificate/codec do pełnego świadka
 KeygenProbability134. Nic z tego nie implikuje własności NTT, prawa
 tabeli, dodatniości, bezwarunkowego Z > 0 ani p_accept/p_K — te pozostają
 OPEN.
+
+## R1 crt window (2026-10-20) — fs/fd at the loop exit state closed; both CRT calls named, execution open
+
+Window launched per `KEYGEN_STEP_GS_194_NEXT_ROUTE.md` in the route
+order pinned by the tail window (proof job suffix 506): the fs/fd image
+transport to the loop exit state first, then both `zint_rebuild_CRT`
+calls. Entry re-verified read-only before any proof work: ENTRY_PINS
+`99ac47a1…` recomputed against its receipt (SHA256 match), all 73564
+inherited pinned paths re-checked (0 missing / 0 changed) and no active
+owned job/Lean/Sage process. Scoped proof, NOT_REVIEWED; no push
+(batch 4 waits for the owner's signal).
+
+### Closed (proof jobs 507/509/511; logs 0/0, standard three axioms)
+
+1. `StepGsCopyKeepCell194` + `StepGsProductKeepCell194` (job 507) — the
+   per-cell bystander keep in the `NttInverseMiddleRounds192.source` form
+   for the s4 gs-copy loop and the s6 gd-product loop (the keep-arity gap
+   of the step re-assembly): every load from a cell separate from the
+   whole t1 copy walk (resp. gd product walk) survives the loop, with the
+   writable transport. The gs/gd invariants, the written gd image and the
+   tracked reads of the sealed `StepGsCopyKeep194` /
+   `StepGsProductKeep194` are kept unchanged (edit-by-new-module; the
+   induction threads the keep as one more conclusion of the same run).
+   Sources `c0d37bfe`/`33f7397e`, oleans `a8181a8f`/`236d6a18`, commit
+   `ed565081`.
+2. `SelectedStepFsFd194` (job 509) — the fs transformed words and the fd
+   written image transported from the assembled s0-s3 state to the loop
+   exit state: the s4/s6 cell keeps, the s7 per-cell keep of
+   `SelectedStepInverseKeep194` (bounded fs/fd-vs-gs walk separation) and
+   the heap-free loop tail (body scope restore, u increment, false guard,
+   part-2 statement). The window run is tied to the sealed
+   `SelectedStepLoopTail194.source` exit package by the
+   `KeygenMakeFgDeterminism099.execution` determinism of `part .step 2`
+   (`KeygenMakeFgArity099.step2` / `KeygenMakeFgArity099.body`), so the
+   export carries the complete exit-state package: the cells
+   u/n/hn/slen/tlen/logn/ter/in_ntt/out_ntt, the caller frames, the gs
+   transformed words and gd written image of the sealed export, the new
+   fs transformed words and fd written image, and the heap writability
+   transport. **The window deliverable (1) is closed.** Sources `e697021c`,
+   olean `4626649e`, commit `ed565081`.
+3. `MakeFgCrtShape194` (job 511) — source-bound naming of both
+   `zint_rebuild_CRT` calls of `KeygenMakeFgSource.part .step 3`
+   (`zint_rebuild_CRT(fs/gs, slen, slen, n, primes, 1, gm)`) with their
+   exact parsed arguments checked by decide (walk source pointer at index
+   0, the xlen/xstride words read from the slen cell, the num word from
+   the n cell, the primes table pointer, the i32 literal 1 and the gm
+   scratch pointer), and the body spines of `zint_rebuild_CRT` (xlen = 1)
+   and `zint_norm_zero` (len = 1) as decide-checked projections (the u/x
+   declarations, the `tmp[0] = primes[0].p` storePrime, the u = 1 init,
+   the empty co-reduction loop, the normalize branch; the cc/u
+   declarations, the cc = 0 and u = len assignments and the u > 0 loop
+   with its trailing guard decrement). Sources `3596a3f6`, olean
+   `2db56824`, commit `e6023c7a`.
+
+### Parse record (DIAGNOSTIC, retained)
+
+`ZintCrtParseProbe194` (job 510, source `28d62dc7`, olean `2bfd6593`) is
+a DIAGNOSTIC parse-dump probe (not proof evidence) whose pinned job log
+records the exact parsed ASTs of part 3 and of the three consumed bodies.
+Key facts pinned by the probe: the `u -- > 0` guard of zint_norm_zero is
+emulated exactly by the loop body prefix `u -= 1` plus the trailing
+`u -= 1` of the final guard evaluation (one iteration at len = 1, ending
+with u wrapped as in C); the two comparison branches return (the second
+through a `zint_sub(x, p, len)` call), so the per-word outcome is the
+data-dependent three-way split; the zint_sub leaf body at len = 1 has the
+unconditional single write `a[0] := a[0] - b[0]` (the borrow word is
+computed into a discarded local).
+
+### Retained failures (register 22 -> 25)
+
+506, 508 (mechanical workshop failures) and 510 (the DIAGNOSTIC probe,
+accepted as a record) with causes in `KEYGEN_STEP_GS_194_FAILURES.json`:
+506 — the induction hypothesis already carries the per-cell keep inside
+its existential conclusion, so the step application passed the keep as
+one argument too many; 508 — the walk-separation lemmas were stated
+without index bounds and omega correctly refuted the unbounded forms
+(the writer walks are finite). No source statement, value, pin or sealed
+module was touched by any of them. The inherited checkpoint192 register
+(58) and checkpoint193 register (4) remain untouched.
+
+### Open (in order)
+
+1. **Both `zint_rebuild_CRT` calls EXECUTED at the loop exit state** —
+   the window deliverable (2) is NOT closed: the calls are named and
+   their arguments bound, the callee bodies are not executed here. Exact
+   obligations in order:
+   (a) the table-word transport
+   `Load32 next.heap (KeygenLevelCalls.fieldPointer primes .p)
+   SelectedTopInit178.p` to the rebuildCrt entry state (the bind chain
+   keeps the heap): block 21 is readonly and never written by the step,
+   but the keep/stability plumbing covers only parts of the segment — the
+   mkgm3 call needs the `SelectedGen0Frame189.stable` pattern, the s0
+   copy loop and the s2 product loop need fs/fd-name cell keeps (mirrors
+   of `StepGsCopyKeepCell194`/`StepGsProductKeepCell194` over
+   `StepCopyKeep193`/`StepProductKeep193`, or one generic block keep over
+   the loop runs), the s3 call is covered by
+   `SelectedStepInverseKeep194.fs_source`, and
+   `Gate00Memory.load32_transport` then supplies the load;
+   (b) the `zint_norm_zero` / `zint_sub` body runs at len = 1 — the two
+   comparison branches are data-dependent, so the honest export is the
+   executed-word image `normWord p0 x = if x < p0 >>> 1 then x else if
+   p0 >>> 1 < x then x - p0 else x` (decidable case splits in the proof;
+   the zint_sub write is the unconditional word `x - p0`);
+   (c) the 512-step normalize loop induction over the x walk (xlen = 1
+   stride), the `zint_rebuild_CRT` body run (the storePrime, the empty
+   co-reduction loop at xlen = 1, the normalize branch), then both call
+   statements of part 3 composed at the exit state over the named
+   arguments.
+2. Then the additional-prime part (slen 1 / tlen 2), the remaining
+   d-levels and the root/certificate/codec path, before the complete
+   emitted witness can instantiate the corrected KeygenProbability134
+   consumers (KeygenModelUnlock134.package_of_witness,
+   KeygenSuccessMass134.success_lower_of_witness); the prospective bound
+   remains Z>=2^-256 and is NOT established by this window.
+
+Next unused proof job suffix: **512**. Scoped proof, NOT_REVIEWED; no
+IID/D1/F04 premise; no push (batch 4 waits for the owner's signal).
+Values remain executed words only: no transform property, table law,
+root law or positivity claim; unconditional Z>0, numerical p_accept,
+conditional coding and positive p_K remain OPEN. Old110 stays frozen;
+measured wording 8192/23628 with the separate 256/739 control and the
+five do_sign items remain unchanged.
+
+### Three sentences (this window)
+
+Udowodniono: transport obrazów fs/fd ze stanu montażu s0-s3 do stanu
+wyjścia pętli — luka aritytetu keep-ów s4/s6 domknięta per-cell
+bystander keepami w kształcie NttInverseMiddleRounds192 (z transportem
+writability), przez keep s7 i bezpieczny ogon, z pełnym pakietem stanu
+wyjścia (komórki, ramki, obrazy gs/gd) spiętym determinizmem part .step 2
+— oraz nazwy i dokładne argumenty obu wywołań `zint_rebuild_CRT` z
+części 3 (decide na parsowanej składni, z pinowanym zapisem parse
+probe). Najbliższy brak: samo wykonanie obu wywołań — transport słowa
+tabeli primes[0].p do stanu wejścia ciała (blok 21 przez mkgm3/s0/s2/s3),
+wykonania ciał zint_norm_zero/zint_sub przy len = 1 z rozgałęzieniami na
+porównaniach (eksport jako słowo `normWord p0 x`), pętla 512 kroków
+normalizacji i montaż part 3. Nic z tego nie implikuje własności NTT,
+prawa tabeli, dodatniości, bezwarunkowego Z > 0 ani p_accept/p_K — te
+pozostają OPEN; okno nie wykonało też żadnego z wywołań CRT, więc
+deliverable (2) pozostaje niezamknięte w całości.
