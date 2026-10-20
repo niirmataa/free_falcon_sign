@@ -247,3 +247,125 @@ pass), re-montaż s0-s3 z keeps obrazów gs/igm/fd i bezwarunkowy montaż
 s0-s7; okno zamrożono na granicy z dokładnymi zobowiązaniami. Nic z
 tego nie implikuje własności NTT, prawa tabeli, dodatniości,
 bezwarunkowego Z > 0 ani p_accept/p_K — te pozostają OPEN.
+
+## R1 discharge window (2026-10-20) — hypothesis discharge closed, unconditional s0-s7
+
+Window launched per `KEYGEN_STEP_GS_194_NEXT_ROUTE.md` (jobs 479+, the
+discharge obligations). Entry re-verified read-only before any proof
+work: ENTRY_PINS `99ac47a1…` recomputed against its receipt (SHA256
+match), all 73564 inherited pins re-checked (0 missing / 0 changed) and
+no active owned job/Lean/Sage process. Scoped proof, NOT_REVIEWED; no
+push (batch 4 waits for the owner's signal).
+
+### Closed (proof jobs 480/481/482/483/485/487/498/501; logs 0/0, standard axioms)
+
+1. `NttInverseCorrectionLoopKeep194` + `NttInverseFinalLoopKeep194`
+   (job 480) — keep-extended re-proofs of the two sealed writer loops in
+   the per-cell bystander shape `NttInverseMiddleRounds192.source`
+   exports: every load from a cell separate from the walked a region
+   survives the whole loop (512 one-write steps of the Montgomery
+   scaling; 256 two-write iterations of the degree-1 butterfly), with
+   the writable transport. Sources `8bae905b`/`a0994994`, oleans
+   `bb24ee52`/`5748a79a`.
+2. `NttInverseCorrectionKeep194` (job 481) +
+   `NttInverseFinalPassKeep194` (job 482) — keep-threaded
+   re-compositions of `NttInversePrograms192.correction` and
+   `NttInversePrograms192.finalPass` (the setNi/uInit and
+   wAssign/uInit/r1Init/r2Init prefixes are heap-free; the loops are the
+   only writers). Sources `3d1cbeae`/`5b6b232c`, oleans `3570ea1a`/
+   `07517b1e`.
+3. `NttInverseWholeKeep194` (job 483) — the whole-inverse bystander keep
+   over the `NttInverseWhole192.source` composition at logn 9 / full 0:
+   prologue and skipped triple pass heap-free, the middle pass keep from
+   `NttInverseMiddleRounds192.source`, and the two keep-threaded passes
+   close the chain. Export: the same executed-word image as
+   `NttInverseWhole192.source` plus the per-cell keep (every load from a
+   cell separate from the walked a region survives the whole
+   `KeygenLevelNtt.inverse`) and the writable transport. This yields the
+   fd/gd image keeps through the s3/s7 calls for free. Source
+   `3505205e`, olean `6d9a455b`.
+4. `StepCopyKeepTwo194` + `StepProductKeepThree194` (job 485) — the
+   s0/s2 keep arity gap closed: two and three simultaneous tracked read
+   images through the copy (t1-walk writes) and product (fd-walk writes)
+   loops. Sources `012a19cd`/`823a1b81`, oleans `3dea25d2`/`76439b4c`.
+5. `SelectedStepInverseKeep194` (job 487) — both modp_iNTT3_ext call
+   statements of the tail (the fs instance s3, the gs instance s7)
+   re-proved over the generic entry/Bind helpers with the body run
+   through the whole-inverse keep; the call result is the caller state
+   with the body heap, so the per-cell keep and the writable transport
+   lift through the call wrapper. Source `45c91f3b`, olean `eb1183f5`.
+6. `SelectedStepChainKeep194` (job 498) — the s0-s3 re-assembly with the
+   extra keeps: the gs source image and the igm twiddle reads survive the
+   copy writes, the fs reads, gs source and igm twiddle reads survive the
+   product writes, and the fd written image, the gs source image and the
+   igm twiddle reads survive the s3 inverse call. Export at the
+   assembled state: the transformed fs image, the written fd image, the
+   gs source image `gvs` (the actual executed load words of
+   `SelectedGen0Frame189.g_read`), the igm twiddle reads `tws`, the v
+   cell (v = 256) and the caller frames - every stage hypothesis of the
+   sealed `SelectedStepGsChain194.source` is now unconditional. The v
+   cell rides through the s3 wrapper via the generic `localSafe`
+   caller-local extraction (`localSafe_result`); the parser leaf
+   `modp_iNTT2_ext` of the false-ter branch is a make-level binary call
+   whose rule returns the caller state with the callee heap (probed in
+   jobs 492/495). Source `125e7d4a`, olean `cb77a6b9`.
+7. `SelectedStepFull194` (job 501) — the unconditional full first-prime
+   assembly. `stage_discharge` instantiates the sealed
+   `SelectedStepGsChain194.source` at the re-assembled state (its stage
+   hypotheses free) and records the composed
+   `Exec SelectedStepGsChain194.fullPrefix base ⟨final,.normal⟩` with
+   the gs transformed words (`scaledWord gvs tws p p0i`), the gd written
+   image at the s6 output and the caller frames. `source` additionally
+   extends the gd written image to the final assembled state through the
+   s7 keep (bounded gd/gs walk separation), exporting: the unconditional
+   full-prefix execution, the gs transformed words, the gd written image
+   `value (gvs (2v)) (gvs (2v+1)) R2 p p0i` at the final state, the fd
+   written image at the assembled s0-s3 state, the transformed fs image
+   and the caller frames. Source `a3465686`, olean `e3b014eb`.
+
+Retained diagnostic records (not proof evidence):
+`NttInverseLocalSafeProbe194` (job 492 probe; sources of the draft
+checker's values) and `NttInverseTerProbe194` (job 495 probe; the
+false-ter leaf's form is the make-level binary call), both accepted as
+records in job 501 (`35f40e96`/`f658b2e6` oleans).
+
+Retained workshop failures in this window (register grew to 18 entries):
+479, 484, 486, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 499,
+500 - all mechanical (type conflation, missing imports, IH arity,
+destructure off-by-one, defeq coercion, `=`/`&&` precedence in
+annotations, unused binders); no source statement, value, pin or sealed
+module was touched by any of them. The inherited checkpoint192 register
+(58) and checkpoint193 register (4) remain untouched.
+
+### Open (in order)
+
+1. The outer u++/final guard tail, both `zint_rebuild_CRT` calls, the
+   additional-prime part (slen 1 / tlen 2), the remaining d-levels and
+   the root/certificate/codec path, before the complete emitted witness
+   can instantiate the corrected KeygenProbability134 consumers
+   (KeygenModelUnlock134.package_of_witness,
+   KeygenSuccessMass134.success_lower_of_witness); the prospective bound
+   remains Z>=2^-256 and is NOT established by this window.
+
+Next unused proof job suffix: **502**. Scoped proof, NOT_REVIEWED; no
+IID/D1/F04 premise; no push (batch 4 waits for the owner's signal).
+Values remain executed words only: no transform property, table law,
+root law or positivity claim; unconditional Z>0, numerical p_accept,
+conditional coding and positive p_K remain OPEN. Old110 stays frozen;
+measured wording 8192/23628 with the separate 256/739 control and the
+five do_sign items remain unchanged.
+
+### Three sentences (this window)
+
+Udowodniono: rozliczenie hipotez etapu w całości — obcy odczyt przeżywa
+final pass, correction i całe odwrotność (per-cell keep w kształcie
+middle pass, z transportem writability), lukę aritytetu s0/s2 domykają
+keep-moduły na 2 i 3 obrazy, re-montaż s0-s3 unieważnia hipotezy
+(obraz gs, odczyty igm, zapisany obraz fd, komórka v=256), a montaż
+s0-s7 jest bezwarunkowy także z obrazem gd w stanie finalnym przez keep
+s7 — wszystko jako wykonane słowa. Najbliższy brak: ogon u++/guard, oba
+`zint_rebuild_CRT`, część dodatkowej liczby pierwszej, pozostałe
+d-pozomy i ścieżka root/certificate/codec do pełnego świadka
+KeygenProbability134. Nic z tego nie implikuje własności NTT, prawa
+tabeli, dodatniości, bezwarunkowego Z > 0 ani p_accept/p_K — te
+pozostają OPEN.

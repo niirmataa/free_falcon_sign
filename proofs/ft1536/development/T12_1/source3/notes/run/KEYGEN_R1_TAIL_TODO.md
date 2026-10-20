@@ -1,3 +1,38 @@
+# Current state — checkpoint194 discharge CLOSED; s0-s7 unconditional, tail open
+
+2026-10-20. Whole goal ACTIVE / NOT_COMPLETE. The R1 discharge window
+closed all three discharge obligations of the gs-path stage: the
+per-cell bystander keep through the final pass, the correction and the
+whole inverse (jobs 480-483), the s0/s2 keep arity gap with two- and
+three-image keep modules (job 485), the keep-threaded s3/s7 call
+statements (job 487), the s0-s3 re-assembly with the gs/igm/fd keeps
+and the v = 256 cell (job 498), and the unconditional full first-prime
+assembly with the gd written image at the final assembled state
+(job 501). The stage hypotheses of SelectedStepGsChain194.source are
+discharged: SelectedStepFull194.stage_discharge instantiates the sealed
+chain at the re-assembled state and records the composed
+`Exec fullPrefix base <final>` with the gs transformed words, the gd
+written image and the caller frames. Ten modules accepted (logs 0/0,
+standard axioms); 15 workshop failures retained (register 18+1
+entries); two diagnostic probe records retained (jobs 492/495, not proof
+evidence). Entry pins 194 re-verified (73564, 0 missing / 0 changed).
+See KEYGEN_STEP_GS_194_REPORT.md (discharge window section), the
+BATCH_089 receipt pair and KEYGEN_STEP_GS_194_NEXT_ROUTE.md.
+
+Exact resume obligation after fresh pin/process verification: route
+item 4 of the gs stage - the outer u++/final guard tail of the prime
+loop, both `zint_rebuild_CRT` calls, the additional-prime part
+(slen 1 / tlen 2), the remaining d-levels and the root/certificate/codec
+path, before the complete emitted witness can instantiate the corrected
+KeygenProbability134 consumers. The fd/gd written images (executed
+words) are exported and feed the CRT consumers. Next unused proof job
+suffix 502. Unconditional Z>0, numerical p_accept, conditional coding
+and positive p_K remain OPEN; Old110 frozen; measured wording and the
+five do_sign items unchanged. Scoped proof, NOT_REVIEWED; no
+IID/D1/F04 premise; no push (batch 4 waits for the owner's signal).
+
+---
+
 # Current state — R1 window closed at the s4-s7 chain; hypothesis discharge frozen
 
 2026-10-20. Whole goal ACTIVE / NOT_COMPLETE. The R1 continuation window

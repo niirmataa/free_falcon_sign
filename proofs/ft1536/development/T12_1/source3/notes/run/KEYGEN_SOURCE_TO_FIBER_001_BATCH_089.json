@@ -1,0 +1,148 @@
+{
+  "batch": "089",
+  "stage": "KEYGEN_STEP_GS_194",
+  "window": "R1 discharge window per notes/run/KEYGEN_STEP_GS_194_NEXT_ROUTE.md (2026-10-20)",
+  "status": "IN_PROGRESS / NOT_REVIEWED",
+  "scope": "executed-word semantics only: no transform property, table law, root law, positivity, NTT or Z>0 claim",
+  "entry": {
+    "verification": "read-only re-check before any proof work",
+    "entry_pins_194": "99ac47a1d981ebfc3afe3c54aac98c02773816faa489682d205682fd31c475b8",
+    "checked_count": 73564,
+    "missing": 0,
+    "changed": 0,
+    "active_processes": []
+  },
+  "closed_modules": [
+    {
+      "module": "Source3.NttInverseCorrectionLoopKeep194",
+      "statement": "keep-extended re-proof of the sealed correction scaling loop (512 one-write steps) in the per-cell bystander shape with writable transport",
+      "job": "keygen_publicforward159_480",
+      "source_sha256": "8bae905b93873191db0452138949bd4c54ada803ad7f6a1049d30c9542ebceb0",
+      "olean_sha256": "bb24ee522bfc28568522ec5755c4d5c1c59fc03cb65266aa02e050e66317d3f1",
+      "clean_log": true,
+      "commit": "b74154e7"
+    },
+    {
+      "module": "Source3.NttInverseFinalLoopKeep194",
+      "statement": "keep-extended re-proof of the sealed degree-1 butterfly loop (256 two-write iterations) in the per-cell bystander shape with writable transport",
+      "job": "keygen_publicforward159_480",
+      "source_sha256": "a099499442e4e28eaa50251369bf2cc711232b99cc7acf2d7f9b6a6ab386c4cd",
+      "olean_sha256": "5748a79a8a1565ca2181ccd4432cbcb5b3b169afc01e26e9a1f1e24a4a95f80b",
+      "clean_log": true,
+      "commit": "b74154e7"
+    },
+    {
+      "module": "Source3.NttInverseCorrectionKeep194",
+      "statement": "keep-threaded re-composition of NttInversePrograms192.correction (setNi/uInit heap-free, scaleLoop the only writer)",
+      "job": "keygen_publicforward159_481",
+      "source_sha256": "3d1cbeae017d12a73fe2995a03cdb5cd68b8a03608725ad4081485d87bada0d2",
+      "olean_sha256": "3570ea1a6b965ee96bc2f645f7a3c79c7d9558c37807526640456257c061dc3c",
+      "clean_log": true,
+      "commit": "0ac3d16c"
+    },
+    {
+      "module": "Source3.NttInverseFinalPassKeep194",
+      "statement": "keep-threaded re-composition of NttInversePrograms192.finalPass (wAssign/uInit/r1Init/r2Init heap-free, butterfly loop the only writer)",
+      "job": "keygen_publicforward159_482",
+      "source_sha256": "5b6b232c98a08dc8b61a0072b71ee1b27e6ffde08c777d77a0119d51a991c2d1",
+      "olean_sha256": "07517b1ebd9e8c7db364b2ff03b6dba66c6fbdd5daf7c68359d8ad8dae0c8adf",
+      "clean_log": true,
+      "commit": "0ac3d16c"
+    },
+    {
+      "module": "Source3.NttInverseWholeKeep194",
+      "statement": "whole-inverse bystander keep over the NttInverseWhole192.source composition at logn 9 / full 0; yields the fd/gd image keeps through s3/s7 for free",
+      "job": "keygen_publicforward159_483",
+      "source_sha256": "3505205e27380001dd7f90250c6ede8e8c84a5e785a9325a7b226a54fffaa98f",
+      "olean_sha256": "6d9a455b196b0d5858795e34a9da63898624c8403506be007073dd5e84aea131",
+      "clean_log": true,
+      "commit": "00bfdb8a"
+    },
+    {
+      "module": "Source3.StepCopyKeepTwo194",
+      "statement": "copy loop with two simultaneous tracked read images (gs source + igm twiddles through the s0 t1-walk writes)",
+      "job": "keygen_publicforward159_485",
+      "source_sha256": "012a19cd9d879365765fcacc75eb72b3df1d796499ad74dbbc55843e35a93025",
+      "olean_sha256": "3dea25d291ddf45a908c3e0e9b6491b44e1750a83f6952178b3108abbb54a2c2",
+      "clean_log": true,
+      "commit": "702d0508"
+    },
+    {
+      "module": "Source3.StepProductKeepThree194",
+      "statement": "product loop with three simultaneous tracked read images (fs reads + gs source + igm twiddles through the s2 fd-walk writes)",
+      "job": "keygen_publicforward159_485",
+      "source_sha256": "823a1b81f49d9972f491587c3c960d3b82c3aa17e97ff0b74f3cbc0c11716005",
+      "olean_sha256": "76439b4c8f0bba56437b1137eb127150453ca687cd4854b185620beca0424cda",
+      "clean_log": true,
+      "commit": "702d0508"
+    },
+    {
+      "module": "Source3.SelectedStepInverseKeep194",
+      "statement": "both modp_iNTT3_ext call statements (fs instance s3, gs instance s7) with the whole-inverse keep and writable transport lifted through the call wrapper",
+      "job": "keygen_publicforward159_487",
+      "source_sha256": "45c91f3b50c83b56c42603ffd12776eeccd24ad952a0242da7e0c78c2e1f6db2",
+      "olean_sha256": "eb1183f50e9cb8c9c75ac77577c04dc225009d1b11afa258cb7a22b45e51e3b8",
+      "clean_log": true,
+      "commit": "4ddcf564"
+    },
+    {
+      "module": "Source3.SelectedStepChainKeep194",
+      "statement": "s0-s3 re-assembly with the gs/igm/fd keeps and the v = 256 cell; every stage hypothesis of SelectedStepGsChain194.source becomes unconditional",
+      "job": "keygen_publicforward159_498",
+      "source_sha256": "125e7d4aa9e031016f07e7f97654674618fb1fcc065e402e9f5a4ba36c1ad980",
+      "olean_sha256": "cb77a6b959ef1ece8c06bfb7e96edca7e46c66c7f93fff94e2778327433f3f35",
+      "clean_log": true,
+      "commit": "fa100cae"
+    },
+    {
+      "module": "Source3.SelectedStepFull194",
+      "statement": "unconditional full first-prime assembly: stage_discharge instantiates the sealed chain at the re-assembled state; source extends the gd written image to the final state through the s7 keep",
+      "job": "keygen_publicforward159_501",
+      "source_sha256": "a346568693c5fc249c14ffaac8dbe594c7ca6dbbcd31a8e11639f57dcf772f3d",
+      "olean_sha256": "e3b014eb3948c0e958fdf8a3f786bcb9eea76e97d8f21a1f3f63541e8f0cc032",
+      "clean_log": true,
+      "commit": "2eb26d3c"
+    },
+    {
+      "module": "Source3.NttInverseLocalSafeProbe194",
+      "statement": "DIAGNOSTIC record (not proof evidence): the draft caller-local checker's values on the parsed s3 projections (job 492 probe)",
+      "job": "keygen_publicforward159_501",
+      "olean_sha256": "35f40e9699aed05fc7210f27b3e8258aa02e5b9b40bd8fefef5aff8147b95941",
+      "clean_log": true,
+      "commit": "2eb26d3c"
+    },
+    {
+      "module": "Source3.NttInverseTerProbe194",
+      "statement": "DIAGNOSTIC record (not proof evidence): the false-ter leaf terNoCall is the make-level binary call form (job 495 probe)",
+      "job": "keygen_publicforward159_501",
+      "olean_sha256": "f658b2e6b29d4f8a17ba15c7970a1cc9b185133d24ee17e859e3ec0ff33eab31",
+      "clean_log": true,
+      "commit": "2eb26d3c"
+    }
+  ],
+  "retained_failures": {
+    "count": 15,
+    "jobs": [479, 484, 486, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 499, 500],
+    "register": "notes/run/KEYGEN_STEP_GS_194_FAILURES.json (18 entries with the inherited 467/470/473/477); all workshop errors only, see register"
+  },
+  "counts": {
+    "accepted_jobs": [480, 481, 482, 483, 485, 487, 498, 501],
+    "logs": "0/0 on all accepted jobs",
+    "axioms": "standard three (propext, Classical.choice, Quot.sound)",
+    "limits": "unchanged; one Lean process (tools/job111.py, -j1 -M6144, warningAsError=true)"
+  },
+  "hypotheses": {
+    "stated_explicitly": "gs source image, igm twiddle reads and heap writability at the assembled s0-s3 state (stage hypotheses of SelectedStepGsChain194.source)",
+    "discharged": true,
+    "discharge_proof": "SelectedStepChainKeep194.source (job 498) + SelectedStepFull194.stage_discharge (job 501)"
+  },
+  "open": [
+    "outer u++/final guard tail, both zint_rebuild_CRT calls, additional-prime part (slen 1 / tlen 2), remaining d-levels, root/certificate/codec path",
+    "complete emitted witness for KeygenProbability134 consumers; prospective bound Z>=2^-256 NOT established by this window"
+  ],
+  "new_assumptions": false,
+  "independent_review": false,
+  "push": false,
+  "do_sign_slot_items": 5,
+  "next_unused_job_suffix": 502
+}
