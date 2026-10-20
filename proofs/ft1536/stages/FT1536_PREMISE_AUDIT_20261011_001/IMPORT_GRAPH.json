@@ -1,0 +1,3142 @@
+{
+  "source_modules": {
+    "Source3.BitcastObjects": [
+      "B20.Word.LESpec",
+      "Source3.CLogicParser"
+    ],
+    "B20.Word.LESpec": [
+      "B20.C.ByteMemory",
+      "Mathlib.Data.Fintype.Basic",
+      "Mathlib.Tactic.FinCases"
+    ],
+    "B20.C.ByteMemory": [
+      "B20.C.Parser",
+      "Lean.Elab.Tactic.Omega"
+    ],
+    "B20.C.Parser": [
+      "B20.C.Syntax"
+    ],
+    "B20.C.Syntax": [
+      "Mathlib.Basic.Logic.Basic",
+      "Init.Data.BitVec.Lemmas"
+    ],
+    "Source3.CLogicParser": [
+      "Source3.CLogic",
+      "B20.C.ScalarParser"
+    ],
+    "Source3.CLogic": [
+      "B20.C.Scalar"
+    ],
+    "B20.C.Scalar": [
+      "B20.C.Integer"
+    ],
+    "B20.C.Integer": [
+      "B20.C.Syntax",
+      "Lean.Elab.Tactic.Omega"
+    ],
+    "B20.C.ScalarParser": [
+      "B20.C.Scalar",
+      "B20.C.Parser"
+    ],
+    "Source3.C99AddMulSound": [
+      "Source3.C99FprInversion"
+    ],
+    "Source3.C99FprInversion": [
+      "Source3.C99HeaderSound",
+      "Source3.C99PrimitiveProof"
+    ],
+    "Source3.C99HeaderSound": [
+      "Source3.C99BodySound",
+      "Source3.C99HeaderSignature"
+    ],
+    "Source3.C99BodySound": [
+      "Source3.C99StateSound",
+      "Source3.C99NormalBodyBridge"
+    ],
+    "Source3.C99StateSound": [
+      "Source3.C99ExpressionSound",
+      "Source3.C99StatementBridge"
+    ],
+    "Source3.C99ExpressionSound": [
+      "Source3.C99ShiftSound",
+      "Source3.C99ExpressionBridge"
+    ],
+    "Source3.C99ShiftSound": [
+      "Source3.C99UnarySound"
+    ],
+    "Source3.C99UnarySound": [
+      "Source3.C99IntegerSound"
+    ],
+    "Source3.C99IntegerSound": [
+      "Source3.C99OperatorBridge"
+    ],
+    "Source3.C99OperatorBridge": [
+      "Source3.C99Typing",
+      "Source3.C99ArithmeticBridge",
+      "Source3.C99BitwiseBridge",
+      "Source3.C99ShiftLeftBridge",
+      "Source3.C99UnaryBridge",
+      "Source3.C99CompareBridge"
+    ],
+    "Source3.C99Typing": [
+      "Source3.C99Frontend"
+    ],
+    "Source3.C99Frontend": [
+      "Source3.C99ScalarReference",
+      "Source3.C99ValueBridge",
+      "Source3.FprASTBinding"
+    ],
+    "Source3.C99ScalarReference": [
+      "Source3.C99IntegerReference"
+    ],
+    "Source3.C99IntegerReference": [
+      "Init.Data.BitVec.Lemmas",
+      "Lean.Elab.Tactic.Omega"
+    ],
+    "Source3.C99ValueBridge": [
+      "Source3.C99IntegerReference",
+      "B20.C.Integer"
+    ],
+    "Source3.FprASTBinding": [
+      "Source3.FprAST",
+      "Source3.ExpressionFuel"
+    ],
+    "Source3.FprAST": [
+      "Source3.FprPrimitives"
+    ],
+    "Source3.FprPrimitives": [
+      "Source3.StableBinary",
+      "Source3.FprCSource"
+    ],
+    "Source3.StableBinary": [
+      "Source3.StablePositive",
+      "Source3.LeafScan",
+      "Source3.StableBinaryPin"
+    ],
+    "Source3.StablePositive": [
+      "Source3.CRefWord",
+      "Source3.KeygenHelpers"
+    ],
+    "Source3.CRefWord": [
+      "Source3.CLogicParser"
+    ],
+    "Source3.KeygenHelpers": [
+      "Source3.BitcastObjects",
+      "Source3.KeygenSource",
+      "Run2.KeygenLeafGate"
+    ],
+    "Source3.KeygenSource": [],
+    "Run2.KeygenLeafGate": [
+      "FT1536.Basic",
+      "Mathlib.Data.BitVec"
+    ],
+    "FT1536.Basic": [
+      "Mathlib.Analysis.SpecialFunctions.Exp",
+      "Mathlib.Analysis.Real.Sqrt",
+      "Mathlib.Algebra.BigOperators.Field",
+      "Mathlib.Tactic.Linarith",
+      "Mathlib.Tactic.NormNum",
+      "Mathlib.Tactic.Ring",
+      "Mathlib.Tactic.FieldSimp",
+      "Mathlib.Tactic.Positivity"
+    ],
+    "Source3.LeafScan": [
+      "Source3.LeafRange"
+    ],
+    "Source3.LeafRange": [
+      "Source3.StablePositive"
+    ],
+    "Source3.StableBinaryPin": [
+      "Source3.KeygenHelpers"
+    ],
+    "Source3.FprCSource": [],
+    "Source3.ExpressionFuel": [
+      "Source3.FprPrimitives"
+    ],
+    "Source3.C99ArithmeticBridge": [
+      "Source3.C99ValueBridge"
+    ],
+    "Source3.C99BitwiseBridge": [
+      "Source3.C99ArithmeticBridge"
+    ],
+    "Source3.C99ShiftLeftBridge": [
+      "Source3.C99ShiftBridge"
+    ],
+    "Source3.C99ShiftBridge": [
+      "Source3.C99ArithmeticBridge"
+    ],
+    "Source3.C99UnaryBridge": [
+      "Source3.C99ValueBridge"
+    ],
+    "Source3.C99CompareBridge": [
+      "Source3.C99Frontend",
+      "Source3.C99ArithmeticBridge"
+    ],
+    "Source3.C99ExpressionBridge": [
+      "Source3.C99OperatorBridge",
+      "Source3.ExpressionFuel"
+    ],
+    "Source3.C99StatementBridge": [
+      "Source3.C99DeclarationsBridge"
+    ],
+    "Source3.C99DeclarationsBridge": [
+      "Source3.C99StateBridge",
+      "Source3.C99ControlInversion"
+    ],
+    "Source3.C99StateBridge": [
+      "Source3.C99ExpressionBridge"
+    ],
+    "Source3.C99ControlInversion": [
+      "Source3.C99ScalarReference"
+    ],
+    "Source3.C99NormalBodyBridge": [
+      "Source3.C99StatementBridge",
+      "Source3.UnsignedState"
+    ],
+    "Source3.UnsignedState": [
+      "Source3.UnsignedSafety"
+    ],
+    "Source3.UnsignedSafety": [
+      "Source3.ExpressionFuel"
+    ],
+    "Source3.C99HeaderSignature": [
+      "Source3.C99HeaderProof"
+    ],
+    "Source3.C99HeaderProof": [
+      "Source3.C99ParametersBridge",
+      "Source3.C99CompletenessObligations"
+    ],
+    "Source3.C99ParametersBridge": [
+      "Source3.C99BodyBridge"
+    ],
+    "Source3.C99BodyBridge": [
+      "Source3.C99StatementBridge"
+    ],
+    "Source3.C99CompletenessObligations": [
+      "Source3.C99Frontend",
+      "Source3.C99MemoryBridge",
+      "Source3.C99ArithmeticBridge",
+      "Source3.C99BitwiseBridge",
+      "Source3.C99ShiftBridge",
+      "Source3.C99UnaryBridge",
+      "Source3.HelperAllTotal"
+    ],
+    "Source3.C99MemoryBridge": [
+      "Source3.C99MemoryReference",
+      "Source3.StableBinaryByteView"
+    ],
+    "Source3.C99MemoryReference": [
+      "Source3.C99ScalarReference"
+    ],
+    "Source3.StableBinaryByteView": [
+      "Source3.StableBinary",
+      "B20.Word.LESpec"
+    ],
+    "Source3.HelperAllTotal": [
+      "Source3.HelperCopyTotal"
+    ],
+    "Source3.HelperCopyTotal": [
+      "Source3.HelperLoopTotal"
+    ],
+    "Source3.HelperLoopTotal": [
+      "Source3.HelperGroupsTotal"
+    ],
+    "Source3.HelperGroupsTotal": [
+      "Source3.HelperCalleesTotal"
+    ],
+    "Source3.HelperCalleesTotal": [
+      "Source3.HelperMemoryTotal"
+    ],
+    "Source3.HelperMemoryTotal": [
+      "Source3.FprAllTotal",
+      "Source3.StableBinaryInlineTotal",
+      "Source3.StableBinaryByteLayout"
+    ],
+    "Source3.FprAllTotal": [
+      "Source3.FprAddTotal",
+      "Source3.FprMulTotal",
+      "Source3.FprDivTotal",
+      "Source3.FprFuelPins",
+      "Source3.StableBinaryRefinementGoal"
+    ],
+    "Source3.FprAddTotal": [
+      "Source3.FprAddTail"
+    ],
+    "Source3.FprAddTail": [
+      "Source3.FprNormTotal"
+    ],
+    "Source3.FprNormTotal": [
+      "Source3.FprNormRound"
+    ],
+    "Source3.FprNormRound": [
+      "Source3.FprAddCombine",
+      "Mathlib.Tactic.FinCases"
+    ],
+    "Source3.FprAddCombine": [
+      "Source3.FprAddDecode"
+    ],
+    "Source3.FprAddDecode": [
+      "Source3.FprScalarSequence",
+      "Source3.FprSmallSigned"
+    ],
+    "Source3.FprScalarSequence": [
+      "Source3.FprUnsignedPrefixes"
+    ],
+    "Source3.FprUnsignedPrefixes": [
+      "Source3.FprASTBinding",
+      "Source3.UnsignedState"
+    ],
+    "Source3.FprSmallSigned": [
+      "Source3.FprHeaderTotal"
+    ],
+    "Source3.FprHeaderTotal": [
+      "Source3.FprASTBinding"
+    ],
+    "Source3.FprMulTotal": [
+      "Source3.FprMulSuffix",
+      "Source3.FprScalarSequence"
+    ],
+    "Source3.FprMulSuffix": [
+      "Source3.FprUnsignedPrefixes",
+      "Source3.FprSmallSigned"
+    ],
+    "Source3.FprDivTotal": [
+      "Source3.FprDivSuffix"
+    ],
+    "Source3.FprDivSuffix": [
+      "Source3.FprDivTail",
+      "Source3.FprScalarSequence"
+    ],
+    "Source3.FprDivTail": [
+      "Source3.FprDivLoopTotal"
+    ],
+    "Source3.FprDivLoopTotal": [
+      "Source3.FprDivRound",
+      "Source3.FprSmallSigned"
+    ],
+    "Source3.FprDivRound": [
+      "Source3.FprUnsignedPrefixes"
+    ],
+    "Source3.FprFuelPins": [
+      "Source3.FprASTBinding"
+    ],
+    "Source3.StableBinaryRefinementGoal": [
+      "Source3.StableBinaryCExec",
+      "Source3.StableBinarySourceTyped"
+    ],
+    "Source3.StableBinaryCExec": [
+      "Source3.StableBinarySourceSyntax",
+      "Source3.StableBinaryByteView",
+      "Source3.FprCErasure"
+    ],
+    "Source3.StableBinarySourceSyntax": [
+      "Source3.StableBinaryFpr"
+    ],
+    "Source3.StableBinaryFpr": [
+      "Source3.FprPrimitives"
+    ],
+    "Source3.FprCErasure": [
+      "Source3.FprCFrame"
+    ],
+    "Source3.FprCFrame": [
+      "Source3.FprPrimitives",
+      "B20.C.ByteMemory"
+    ],
+    "Source3.StableBinarySourceTyped": [
+      "Source3.StableBinarySourceSyntax"
+    ],
+    "Source3.StableBinaryInlineTotal": [
+      "Source3.StableBinaryTotality"
+    ],
+    "Source3.StableBinaryTotality": [
+      "Source3.StableBinarySourceProof"
+    ],
+    "Source3.StableBinarySourceProof": [
+      "Source3.StableBinaryFinalBridge",
+      "Source3.StableBinaryByteFrameRecursion",
+      "Source3.StableBinaryRefinementGoal",
+      "Source3.StableBinaryMemcpySpec"
+    ],
+    "Source3.StableBinaryFinalBridge": [
+      "Source3.StableBinaryRecursionRefinement"
+    ],
+    "Source3.StableBinaryRecursionRefinement": [
+      "Source3.StableBinaryCopyRefinement"
+    ],
+    "Source3.StableBinaryCopyRefinement": [
+      "Source3.StableBinaryLoopRefinement"
+    ],
+    "Source3.StableBinaryLoopRefinement": [
+      "Source3.StableBinaryStepAssembly"
+    ],
+    "Source3.StableBinaryStepAssembly": [
+      "Source3.StableBinarySuffixGrouping"
+    ],
+    "Source3.StableBinarySuffixGrouping": [
+      "Source3.StableBinaryPrefixGrouping"
+    ],
+    "Source3.StableBinaryPrefixGrouping": [
+      "Source3.StableBinaryGroupRefinement"
+    ],
+    "Source3.StableBinaryGroupRefinement": [
+      "Source3.StableBinaryStepRefinement"
+    ],
+    "Source3.StableBinaryStepRefinement": [
+      "Source3.StableBinaryCalleeBridge"
+    ],
+    "Source3.StableBinaryCalleeBridge": [
+      "Source3.StableBinaryRelation"
+    ],
+    "Source3.StableBinaryRelation": [
+      "Source3.StableBinaryByteSimulation",
+      "Source3.StableBinaryBytePositive",
+      "Source3.StableBinarySourceTyped"
+    ],
+    "Source3.StableBinaryByteSimulation": [
+      "Source3.StableBinaryByteLayout"
+    ],
+    "Source3.StableBinaryByteLayout": [
+      "Source3.StableBinaryByteView"
+    ],
+    "Source3.StableBinaryBytePositive": [
+      "Source3.StableBinaryCExec"
+    ],
+    "Source3.StableBinaryByteFrameRecursion": [
+      "Source3.StableBinaryByteFrameGroups",
+      "Source3.StableBinaryLoopRefinement"
+    ],
+    "Source3.StableBinaryByteFrameGroups": [
+      "Source3.StableBinaryByteFrame"
+    ],
+    "Source3.StableBinaryByteFrame": [
+      "Source3.StableBinaryFinalBridge",
+      "Source3.StableBinaryRefinementGoal",
+      "Source3.StableBinaryByteLayout"
+    ],
+    "Source3.StableBinaryMemcpySpec": [
+      "Source3.StableBinaryCopyRefinement",
+      "Mathlib.Tactic.FinCases"
+    ],
+    "Source3.C99PrimitiveProof": [
+      "Source3.C99MulProof",
+      "Source3.C99DivProof"
+    ],
+    "Source3.C99MulProof": [
+      "Source3.C99ScalarToFpr",
+      "Source3.FprUnsignedPrefixes"
+    ],
+    "Source3.C99ScalarToFpr": [
+      "Source3.C99HeaderSignature"
+    ],
+    "Source3.C99DivProof": [
+      "Source3.C99DivWhileProof"
+    ],
+    "Source3.C99DivWhileProof": [
+      "Source3.C99DivLoopBridge"
+    ],
+    "Source3.C99DivLoopBridge": [
+      "Source3.C99AddProof",
+      "Source3.FprDivLoopTotal"
+    ],
+    "Source3.C99AddProof": [
+      "Source3.C99PrefixBridge",
+      "Source3.C99HeaderSignature",
+      "Source3.FprNormTotal"
+    ],
+    "Source3.C99PrefixBridge": [
+      "Source3.C99ScopeBridge",
+      "Source3.C99ScalarToFpr"
+    ],
+    "Source3.C99ScopeBridge": [
+      "Source3.C99NormalBodyBridge",
+      "Source3.FprScalarSequence"
+    ],
+    "Source3.C99AliasHeap": [
+      "Source3.C99AliasSequence",
+      "Source3.C99ProcedureScalars"
+    ],
+    "Source3.C99AliasSequence": [
+      "Source3.C99ProcedureSequence"
+    ],
+    "Source3.C99ProcedureSequence": [
+      "Source3.C99ProcedureReference"
+    ],
+    "Source3.C99ProcedureReference": [
+      "Source3.FftLeafPrograms",
+      "Source3.C99OperatorBridge"
+    ],
+    "Source3.FftLeafPrograms": [
+      "Source3.C99ArrayParser",
+      "FftBind.FftPin"
+    ],
+    "Source3.C99ArrayParser": [
+      "Source3.C99ArrayReference",
+      "Source3.LeafScan"
+    ],
+    "Source3.C99ArrayReference": [
+      "Source3.FprPrefixCalls",
+      "Source3.C99InitializationTrace",
+      "Source3.C99NarrowReads"
+    ],
+    "Source3.FprPrefixCalls": [
+      "Source3.FprOfThree",
+      "Source3.C99LeafCalls"
+    ],
+    "Source3.FprOfThree": [
+      "Source3.FprScaledBridge"
+    ],
+    "Source3.FprScaledBridge": [
+      "Source3.FprScaledBinding"
+    ],
+    "Source3.FprScaledBinding": [
+      "Source3.FprScaledAST",
+      "Source3.C99AddMulSound"
+    ],
+    "Source3.FprScaledAST": [
+      "Source3.FprPrimitives"
+    ],
+    "Source3.C99LeafCalls": [
+      "Source3.C99BitcastReference",
+      "Source3.StableBinaryInlineTotal"
+    ],
+    "Source3.C99BitcastReference": [
+      "Source3.C99MemoryAccess",
+      "Source3.C99HeaderSound"
+    ],
+    "Source3.C99MemoryAccess": [
+      "Source3.C99MemoryBridge",
+      "Source3.StableBinaryMemcpySpec"
+    ],
+    "Source3.C99InitializationTrace": [
+      "Source3.C99MemoryAccess"
+    ],
+    "Source3.C99NarrowReads": [
+      "Source3.KeygenSmallOutput"
+    ],
+    "Source3.KeygenSmallOutput": [
+      "Source3.C99MemoryReference",
+      "Source3.KeygenHelpers",
+      "Mathlib.Tactic.NormNum"
+    ],
+    "FftBind.FftPin": [],
+    "Source3.C99ProcedureScalars": [
+      "Source3.C99ProcedureSequence",
+      "Source3.C99StateSound",
+      "Source3.C99StatementBridge"
+    ],
+    "Source3.C99ArrayFrame": [
+      "Source3.C99ArrayReference"
+    ],
+    "Source3.C99Automatic32": [
+      "Source3.C99MemoryAccess",
+      "Source3.C99InitializationTrace"
+    ],
+    "Source3.C99AutomaticReadback": [
+      "Source3.C99Automatic32"
+    ],
+    "Source3.C99CheckBridge": [
+      "Source3.C99CheckModels"
+    ],
+    "Source3.C99CheckModels": [
+      "Source3.C99CheckReference",
+      "Source3.C99NormalBodyBridge"
+    ],
+    "Source3.C99CheckReference": [
+      "Source3.C99CheckCalls",
+      "Source3.C99BodySound"
+    ],
+    "Source3.C99CheckCalls": [
+      "Source3.C99LeafCalls"
+    ],
+    "Source3.C99CompareObjects": [
+      "Source3.C99CheckCalls",
+      "Source3.FprCompare"
+    ],
+    "Source3.FprCompare": [
+      "Source3.CObjectScalar",
+      "Source3.KeygenHelpers"
+    ],
+    "Source3.CObjectScalar": [
+      "Source3.BitcastObjects"
+    ],
+    "Source3.C99CountedWords": [
+      "Source3.C99ArrayReference"
+    ],
+    "Source3.C99DeclarationCells": [
+      "Source3.C99Frontend"
+    ],
+    "Source3.C99DeclarationStatements": [
+      "Source3.C99DeclarationCells",
+      "Source3.FftLeafPrograms"
+    ],
+    "Source3.C99DivSound": [
+      "Source3.C99AddMulSound"
+    ],
+    "Source3.C99ExpressionEnvironment": [
+      "Source3.C99ScalarReference"
+    ],
+    "Source3.C99HeapOnly": [
+      "Source3.C99ProcedureSequence"
+    ],
+    "Source3.C99HelperAtoms": [
+      "Source3.C99HelperReference"
+    ],
+    "Source3.C99HelperReference": [
+      "Source3.C99HelperObjects",
+      "Source3.C99PrimitiveExists"
+    ],
+    "Source3.C99HelperObjects": [
+      "Source3.C99CheckBridge",
+      "Source3.HelperAllTotal"
+    ],
+    "Source3.C99PrimitiveExists": [
+      "Source3.C99DivSound",
+      "Source3.FprAllTotal"
+    ],
+    "Source3.C99HelperComplete": [
+      "Source3.C99HelperCopy"
+    ],
+    "Source3.C99HelperCopy": [
+      "Source3.C99HelperGroups"
+    ],
+    "Source3.C99HelperGroups": [
+      "Source3.C99HelperAtoms"
+    ],
+    "Source3.C99HelperControl": [
+      "Source3.C99HelperExists"
+    ],
+    "Source3.C99HelperExists": [
+      "Source3.C99HelperGroupExists"
+    ],
+    "Source3.C99HelperGroupExists": [
+      "Source3.C99HelperComplete"
+    ],
+    "Source3.C99HelperOrders": [
+      "Source3.C99HelperControl"
+    ],
+    "Source3.C99HelperShape": [
+      "Source3.C99HelperExists"
+    ],
+    "Source3.C99KnownAssignment": [
+      "Source3.C99ArrayReference"
+    ],
+    "Source3.C99LoopTrace": [
+      "Source3.C99ProcedureReference"
+    ],
+    "Source3.C99ModularAnnotation": [
+      "Source3.C99ModularParser"
+    ],
+    "Source3.C99ModularParser": [
+      "Source3.C99ModularReference",
+      "Source3.C99ProcedureParser"
+    ],
+    "Source3.C99ModularReference": [
+      "Source3.KeygenModpAddSub",
+      "Source3.KeygenNinv31",
+      "Source3.KeygenModpSet",
+      "Source3.KeygenModpR",
+      "Source3.C99ProcedureReference"
+    ],
+    "Source3.KeygenModpAddSub": [
+      "Source3.KeygenMontgomery"
+    ],
+    "Source3.KeygenMontgomery": [
+      "Source3.KeygenModpWord",
+      "Source3.MontgomeryArithmetic"
+    ],
+    "Source3.KeygenModpWord": [
+      "Source3.C99HeaderSound",
+      "Source3.KeygenHelpers"
+    ],
+    "Source3.MontgomeryArithmetic": [
+      "Mathlib.Data.Nat.ModEq",
+      "Mathlib.Tactic.Linarith",
+      "Mathlib.Tactic.Ring"
+    ],
+    "Source3.KeygenNinv31": [
+      "Source3.KeygenMontgomery"
+    ],
+    "Source3.KeygenModpSet": [
+      "Source3.KeygenModpAddSub"
+    ],
+    "Source3.KeygenModpR": [
+      "Source3.KeygenModpSet"
+    ],
+    "Source3.C99ProcedureParser": [
+      "Source3.C99ProcedureReference",
+      "Source3.FpcSourceExpansion"
+    ],
+    "Source3.FpcSourceExpansion": [
+      "Source3.C99ArrayParser",
+      "FftBind.FftSemantics"
+    ],
+    "FftBind.FftSemantics": [
+      "FftBind.FftPin",
+      "FftBind.FftGeometry",
+      "Source3.StableBinary"
+    ],
+    "FftBind.FftGeometry": [
+      "FftBind.FftPin",
+      "Source3.CLogicParser",
+      "Mathlib.Tactic.IntervalCases",
+      "Mathlib.Tactic.Ring"
+    ],
+    "Source3.C99ModularFlow": [
+      "Source3.C99ModularReference"
+    ],
+    "Source3.C99ModularFrame": [
+      "Source3.C99ModularReference"
+    ],
+    "Source3.C99NarrowAnnotation": [
+      "Source3.C99ProcedureParser"
+    ],
+    "Source3.C99PointerFootprint": [
+      "Source3.C99ArrayFrame"
+    ],
+    "Source3.C99ProcedureFootprint": [
+      "Source3.C99ProcedureReference",
+      "Source3.C99PointerFootprint"
+    ],
+    "Source3.C99SequenceInversion": [
+      "Source3.C99ProcedureReference"
+    ],
+    "Source3.C99TableFrame": [
+      "Source3.C99ProcedureReference"
+    ],
+    "Source3.C99VariablePointer": [
+      "Source3.C99CountedWords"
+    ],
+    "Source3.CElementLoop": [
+      "Source3.LeafScan"
+    ],
+    "Source3.CertificateAcceptedScan": [
+      "Source3.CertificateReturn"
+    ],
+    "Source3.CertificateReturn": [
+      "Source3.CertificateScan"
+    ],
+    "Source3.CertificateScan": [
+      "Source3.CertificateScanStep"
+    ],
+    "Source3.CertificateScanStep": [
+      "Source3.CertificateRangeBridge"
+    ],
+    "Source3.CertificateRangeBridge": [
+      "Source3.CertificateRange"
+    ],
+    "Source3.CertificateRange": [
+      "Source3.CertificateReverse"
+    ],
+    "Source3.CertificateReverse": [
+      "Source3.CertificateIndex"
+    ],
+    "Source3.CertificateIndex": [
+      "Source3.CertificateAtoms"
+    ],
+    "Source3.CertificateAtoms": [
+      "Source3.CertificateEffects"
+    ],
+    "Source3.CertificateEffects": [
+      "Source3.CertificateMemory",
+      "Source3.LeafWordBounds"
+    ],
+    "Source3.CertificateMemory": [
+      "Source3.CertificateSuffixSyntax",
+      "Source3.StableTop001Outcome"
+    ],
+    "Source3.CertificateSuffixSyntax": [
+      "Source3.CertificateQSquared",
+      "Source3.LeafCertificateSuffix",
+      "Source3.StableTopSyntax"
+    ],
+    "Source3.CertificateQSquared": [
+      "Source3.FprOfThree",
+      "Source3.C99HelperOrders"
+    ],
+    "Source3.LeafCertificateSuffix": [
+      "Source3.LeafScan"
+    ],
+    "Source3.StableTopSyntax": [
+      "Source3.FprOfThree",
+      "Source3.StableBinarySourceSyntax"
+    ],
+    "Source3.StableTop001Outcome": [
+      "Source3.StableTopCore",
+      "Source3.StableTopControl"
+    ],
+    "Source3.StableTopCore": [
+      "Source3.StableTopBranches"
+    ],
+    "Source3.StableTopBranches": [
+      "Source3.StableTopBinaryBridge"
+    ],
+    "Source3.StableTopBinaryBridge": [
+      "Source3.StableTopBranchLayout",
+      "Source3.StableBinary004Outcome"
+    ],
+    "Source3.StableTopBranchLayout": [
+      "Source3.StableTopLoop",
+      "Source3.C99HelperShape"
+    ],
+    "Source3.StableTopLoop": [
+      "Source3.StableTopBodyTotal"
+    ],
+    "Source3.StableTopBodyTotal": [
+      "Source3.StableTopBodyBridge"
+    ],
+    "Source3.StableTopBodyBridge": [
+      "Source3.StableTopAtoms"
+    ],
+    "Source3.StableTopAtoms": [
+      "Source3.StableTopReference"
+    ],
+    "Source3.StableTopReference": [
+      "Source3.StableTopExec"
+    ],
+    "Source3.StableTopExec": [
+      "Source3.StableTopEffects"
+    ],
+    "Source3.StableTopEffects": [
+      "Source3.StableTopMemory"
+    ],
+    "Source3.StableTopMemory": [
+      "Source3.StableTopExpr",
+      "Source3.C99HelperExists"
+    ],
+    "Source3.StableTopExpr": [
+      "Source3.StableTopSyntax",
+      "Source3.C99PrimitiveExists"
+    ],
+    "Source3.StableBinary004Outcome": [
+      "Source3.C99HelperOrders",
+      "Source3.StableBinary003Outcome"
+    ],
+    "Source3.StableBinary003Outcome": [
+      "Source3.HelperAllTotal",
+      "Source3.FprBlockFuel",
+      "Source3.StableBinarySourceProof"
+    ],
+    "Source3.FprBlockFuel": [
+      "Source3.FprAllTotal"
+    ],
+    "Source3.StableTopControl": [
+      "Source3.StableTopLoop",
+      "Source3.C99HelperOrders"
+    ],
+    "Source3.LeafWordBounds": [
+      "Source3.LeafCertificateSuffix"
+    ],
+    "Source3.CertificateAfterConversion": [
+      "Source3.FftProcedureFrames",
+      "Source3.C99ProcedureSequence",
+      "Source3.CertificateWorkspace"
+    ],
+    "Source3.FftProcedureFrames": [
+      "Source3.FftProcedurePrograms",
+      "Source3.C99ProcedureFootprint"
+    ],
+    "Source3.FftProcedurePrograms": [
+      "Source3.C99ProcedureParser"
+    ],
+    "Source3.CertificateWorkspace": [
+      "Source3.C99InitializationTrace",
+      "Source3.CertificateMemory"
+    ],
+    "Source3.CertificateAliases": [
+      "Source3.C99AliasSequence",
+      "Source3.CertificatePrologue"
+    ],
+    "Source3.CertificatePrologue": [
+      "Source3.C99ProcedureScalars",
+      "Source3.CertificateAfterConversion"
+    ],
+    "Source3.CertificateBadAssignment": [
+      "Source3.CertificateEntryPrologue",
+      "Source3.C99Automatic32"
+    ],
+    "Source3.CertificateEntryPrologue": [
+      "Source3.MknReference",
+      "Source3.C99DeclarationStatements",
+      "Source3.C99KnownAssignment",
+      "Source3.C99CountedWords",
+      "Source3.C99SequenceInversion"
+    ],
+    "Source3.MknReference": [
+      "Source3.CertificatePrologue",
+      "Source3.C99ExpressionEnvironment"
+    ],
+    "Source3.CertificateConversions": [
+      "Source3.SmallintsInvocation"
+    ],
+    "Source3.SmallintsInvocation": [
+      "Source3.SmallintsPrelude"
+    ],
+    "Source3.SmallintsPrelude": [
+      "Source3.SmallintsLoopBridge",
+      "Source3.MknReference",
+      "Source3.C99DeclarationCells",
+      "Source3.C99SequenceInversion"
+    ],
+    "Source3.SmallintsLoopBridge": [
+      "Source3.SmallintsIteration",
+      "Source3.SmallintsCounter"
+    ],
+    "Source3.SmallintsIteration": [
+      "Source3.SmallintsProgram",
+      "Source3.C99CountedWords",
+      "Source3.C99ProcedureScalars"
+    ],
+    "Source3.SmallintsProgram": [
+      "Source3.C99NarrowAnnotation",
+      "Source3.FftProcedureFrames",
+      "Source3.SmallintsConversion"
+    ],
+    "Source3.SmallintsConversion": [
+      "Source3.C99NarrowReads",
+      "Source3.FprPrefixCalls",
+      "Source3.C99InitializationTrace"
+    ],
+    "Source3.SmallintsCounter": [
+      "Source3.SmallintsProgram",
+      "Source3.C99CountedWords"
+    ],
+    "Source3.CertificateCore": [
+      "Source3.CertificateExec"
+    ],
+    "Source3.CertificateExec": [
+      "Source3.CertificateTop"
+    ],
+    "Source3.CertificateTop": [
+      "Source3.CertificateAcceptedScan"
+    ],
+    "Source3.CertificateDeclarations": [
+      "Source3.CertificateAliases",
+      "Source3.C99SequenceInversion"
+    ],
+    "Source3.CertificateEntryDeclarations": [
+      "Source3.CertificateDeclarations",
+      "Source3.C99DeclarationStatements"
+    ],
+    "Source3.CertificateFrameEntry": [
+      "Source3.C99Automatic32",
+      "Source3.CertificateWorkspace"
+    ],
+    "Source3.CertificateFunctionBindings": [
+      "Source3.CertificateFunctionEntry",
+      "Source3.CertificateWorkspaceViews",
+      "Source3.C99TableFrame"
+    ],
+    "Source3.CertificateFunctionEntry": [
+      "Source3.CertificateFunctionReference"
+    ],
+    "Source3.CertificateFunctionReference": [
+      "Source3.CertificateBadAssignment",
+      "Source3.CertificateEntryDeclarations",
+      "Source3.CertificateConversions",
+      "Source3.CertificatePrefixMetadata",
+      "Source3.CertificateFrameEntry",
+      "Source3.CertificateSuffix001Outcome",
+      "Source3.Gate00Memory"
+    ],
+    "Source3.CertificatePrefixMetadata": [
+      "Source3.CertificateTailMetadata"
+    ],
+    "Source3.CertificateTailMetadata": [
+      "Source3.CertificateGramPrefix",
+      "Source3.C99AliasSequence",
+      "Source3.C99KnownAssignment",
+      "Source3.C99VariablePointer",
+      "Source3.C99SequenceInversion"
+    ],
+    "Source3.CertificateGramPrefix": [
+      "Source3.CertificateAfterConversion",
+      "Source3.C99HeapOnly"
+    ],
+    "Source3.CertificateSuffix001Outcome": [
+      "Source3.CertificateCore"
+    ],
+    "Source3.Gate00Memory": [
+      "Source3.Gate00Scalar",
+      "Source3.CertificateMemory"
+    ],
+    "Source3.Gate00Scalar": [
+      "Source3.C99CompareObjects",
+      "Source3.RootGate00",
+      "Source3.C99NormalBodyBridge"
+    ],
+    "Source3.RootGate00": [
+      "Source3.CElementLoop",
+      "Source3.FprCompare"
+    ],
+    "Source3.CertificateWorkspaceViews": [
+      "Source3.CertificateEntryDeclarations",
+      "Source3.CertificatePrefixFrame"
+    ],
+    "Source3.CertificatePrefixFrame": [
+      "Source3.CertificateAfterConversion"
+    ],
+    "Source3.CertificateFunctionFrame": [
+      "Source3.CertificateFunctionBindings",
+      "Source3.CertificateRegionFrame",
+      "Source3.C99AliasHeap"
+    ],
+    "Source3.CertificateRegionFrame": [
+      "Source3.CertificateFunctionWitness"
+    ],
+    "Source3.CertificateFunctionWitness": [
+      "Source3.CertificateFunctionEntry",
+      "Source3.CertificatePrefixToSuffix",
+      "Source3.CertificateReturnLifetime"
+    ],
+    "Source3.CertificatePrefixToSuffix": [
+      "Source3.CertificateAfterConversion",
+      "Source3.Gate00Initialization",
+      "Source3.CertificateSuffix001Outcome"
+    ],
+    "Source3.Gate00Initialization": [
+      "Source3.Gate00Memory",
+      "Source3.C99InitializationTrace"
+    ],
+    "Source3.CertificateReturnLifetime": [
+      "Source3.CertificateSuffix001Outcome"
+    ],
+    "Source3.CertificateFunctionOutcome": [
+      "Source3.CertificateFunctionFrame",
+      "Source3.CertificateReturnedWords",
+      "Source3.CertificateFunctionSyntax"
+    ],
+    "Source3.CertificateReturnedWords": [
+      "Source3.CertificateFunctionWitness",
+      "Source3.C99AutomaticReadback"
+    ],
+    "Source3.CertificateFunctionSyntax": [
+      "Source3.CertificateFunctionWitness"
+    ],
+    "Source3.CertificateM0Environment": [
+      "Source3.FftGlobalMemory",
+      "Source3.CertificateFunctionOutcome"
+    ],
+    "Source3.FftGlobalMemory": [
+      "Source3.FftTableSources",
+      "Source3.CertificateFunctionReference"
+    ],
+    "Source3.FftTableSources": [
+      "Source3.FftTableSquareChecks",
+      "Source3.FftTableCubicLowChecks",
+      "Source3.FftTableCubicHighChecks",
+      "Source3.ParsedChunks"
+    ],
+    "Source3.FftTableSquareChecks": [
+      "Source3.FftTableChecks00"
+    ],
+    "Source3.FftTableChecks00": [
+      "Source3.FftTableParser"
+    ],
+    "Source3.FftTableParser": [
+      "Source3.FftGlobalScalars"
+    ],
+    "Source3.FftGlobalScalars": [
+      "Source3.FftProcedurePrograms"
+    ],
+    "Source3.FftTableCubicLowChecks": [
+      "Source3.FftTableChecks00"
+    ],
+    "Source3.FftTableCubicHighChecks": [
+      "Source3.FftTableChecks00"
+    ],
+    "Source3.ParsedChunks": [
+      "Mathlib.Data.List.Basic"
+    ],
+    "Source3.CertificateOrders": [
+      "Source3.CertificateSuffix001Outcome"
+    ],
+    "Source3.CertificateSuffix001Audit": [
+      "Source3.CertificateOrders"
+    ],
+    "Source3.CertificateSuffix001Exports": [
+      "Source3.CertificateSuffix001Outcome",
+      "Source3.CertificateSuffix001Audit"
+    ],
+    "Source3.EmitScaledAST": [
+      "Source3.C99PrimitiveExists"
+    ],
+    "Source3.ExprAuditDag": [
+      "Lean"
+    ],
+    "Source3.FftLeafFrames": [
+      "Source3.FftLeafPrograms",
+      "Source3.C99ArrayFrame"
+    ],
+    "Source3.FprOfThreeAudit": [
+      "Source3.FprOfThree"
+    ],
+    "Source3.KeygenAttemptAudit": [
+      "Source3.KeygenAttemptPin",
+      "Source3.KeygenAttemptFft",
+      "Source3.KeygenAttemptNorm",
+      "Source3.ShakePointFrame",
+      "Source3.KeygenSamplerContext",
+      "Source3.KeygenPublicScalar",
+      "Source3.KeygenPublicWord",
+      "Source3.KeygenPublicExec",
+      "Source3.KeygenPublicParser",
+      "Source3.KeygenPublicFrame",
+      "Source3.KeygenPublicSource",
+      "Source3.KeygenPublicStability",
+      "Source3.KeygenAttemptSlots",
+      "Source3.KeygenAttemptMaterial",
+      "Source3.KeygenRootCaller",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenAttemptPin": [],
+    "Source3.KeygenAttemptFft": [
+      "Source3.KeygenAttemptPin",
+      "Source3.KeygenRootObjects",
+      "Source3.KeygenNormFrame"
+    ],
+    "Source3.KeygenRootObjects": [
+      "Source3.KeygenSearchStability",
+      "Source3.KeygenRootControl",
+      "Source3.KeygenStaticReads"
+    ],
+    "Source3.KeygenSearchStability": [
+      "Source3.KeygenHelperStability"
+    ],
+    "Source3.KeygenHelperStability": [
+      "Source3.KeygenMemoryStability"
+    ],
+    "Source3.KeygenMemoryStability": [
+      "Source3.KeygenRootSearch"
+    ],
+    "Source3.KeygenRootSearch": [
+      "Source3.KeygenIntermediateSource",
+      "Source3.KeygenDepth0Call",
+      "Source3.KeygenDeepestSource"
+    ],
+    "Source3.KeygenIntermediateSource": [
+      "Source3.KeygenIntermediateReduce",
+      "Source3.KeygenIntermediateTokensTop0",
+      "Source3.KeygenIntermediateTokensTop1",
+      "Source3.KeygenIntermediateTokensTop2",
+      "Source3.KeygenIntermediateTokensTop3",
+      "Source3.KeygenIntermediateTokensTop4",
+      "Source3.KeygenIntermediateTokensTop5",
+      "Source3.KeygenIntermediateTokensTop6",
+      "Source3.KeygenIntermediateTokensTop7",
+      "Source3.KeygenMaterial"
+    ],
+    "Source3.KeygenIntermediateReduce": [
+      "Source3.KeygenIntermediateLift",
+      "Source3.KeygenIntermediateReduceCheck0",
+      "Source3.KeygenIntermediateReduceCheck1",
+      "Source3.KeygenIntermediateReduceCheck2",
+      "Source3.KeygenIntermediateReduceCheck3",
+      "Source3.KeygenIntermediateReduceCheck4",
+      "Source3.KeygenIntermediateReduceCheck5"
+    ],
+    "Source3.KeygenIntermediateLift": [
+      "Source3.KeygenIntermediateLiftCheck0",
+      "Source3.KeygenIntermediateLiftCheck1",
+      "Source3.KeygenIntermediateLiftCheck2",
+      "Source3.KeygenIntermediateLiftCheck3",
+      "Source3.KeygenIntermediateLiftCheck4",
+      "Source3.KeygenIntermediateLiftCheck5"
+    ],
+    "Source3.KeygenIntermediateLiftCheck0": [
+      "Source3.KeygenIntermediateLiftData"
+    ],
+    "Source3.KeygenIntermediateLiftData": [
+      "Source3.KeygenIntermediateTokensLift0",
+      "Source3.KeygenIntermediateTokensLift1",
+      "Source3.KeygenIntermediateTokensLift2",
+      "Source3.KeygenIntermediateTokensLift3",
+      "Source3.KeygenIntermediateTokensLift4",
+      "Source3.KeygenIntermediateTokensLift5",
+      "Source3.KeygenIntermediateCoverage"
+    ],
+    "Source3.KeygenIntermediateTokensLift0": [
+      "Source3.KeygenSourceLines",
+      "Source3.KeygenLexicalChunks"
+    ],
+    "Source3.KeygenSourceLines": [
+      "Source3.KeygenIntermediateParser"
+    ],
+    "Source3.KeygenIntermediateParser": [
+      "Source3.KeygenIntermediateExec"
+    ],
+    "Source3.KeygenIntermediateExec": [
+      "Source3.KeygenIntermediateCalls"
+    ],
+    "Source3.KeygenIntermediateCalls": [
+      "Source3.KeygenIntermediateMemory",
+      "Source3.KeygenBinaryFft",
+      "Source3.KeygenPolySubNtt",
+      "Source3.KeygenPolySubScaled",
+      "Source3.KeygenZintPoly"
+    ],
+    "Source3.KeygenIntermediateMemory": [
+      "Source3.KeygenSearchMemory",
+      "Source3.KeygenSearchContext",
+      "Source3.KeygenSearchParser"
+    ],
+    "Source3.KeygenSearchMemory": [
+      "Source3.KeygenSearchProbe",
+      "Source3.C99PointerFootprint"
+    ],
+    "Source3.KeygenSearchProbe": [
+      "Source3.KeygenSmallSource"
+    ],
+    "Source3.KeygenSmallSource": [
+      "Source3.KeygenNttForwardExec",
+      "Source3.KeygenSmallOutput",
+      "Source3.C99ModularFrame",
+      "Source3.StableBinaryByteView"
+    ],
+    "Source3.KeygenNttForwardExec": [
+      "Source3.KeygenNttForwardPrograms",
+      "Source3.C99ControlInversion",
+      "Source3.C99CountedWords"
+    ],
+    "Source3.KeygenNttForwardPrograms": [
+      "Source3.KeygenNttButterflyPrograms"
+    ],
+    "Source3.KeygenNttButterflyPrograms": [
+      "Source3.C99ModularParser"
+    ],
+    "Source3.KeygenSearchContext": [
+      "Source3.KeygenOutputGateSource",
+      "Source3.KeygenRngSource",
+      "Source3.Gate00Memory"
+    ],
+    "Source3.KeygenOutputGateSource": [
+      "Source3.KeygenSmallCalls"
+    ],
+    "Source3.KeygenSmallCalls": [
+      "Source3.KeygenSmallBounds",
+      "Source3.KeygenSolverNttCalls"
+    ],
+    "Source3.KeygenSmallBounds": [
+      "Source3.KeygenSmallStep",
+      "Source3.KeygenMaterial"
+    ],
+    "Source3.KeygenSmallStep": [
+      "Source3.KeygenSmallSource",
+      "Source3.KeygenCheckLoopBridge"
+    ],
+    "Source3.KeygenCheckLoopBridge": [
+      "Source3.KeygenCheckIteration",
+      "Source3.C99ModularFlow",
+      "Source3.SmallintsCounter"
+    ],
+    "Source3.KeygenCheckIteration": [
+      "Source3.KeygenCheckGate",
+      "Source3.C99DeclarationStatements"
+    ],
+    "Source3.KeygenCheckGate": [
+      "Source3.KeygenCheckExpression"
+    ],
+    "Source3.KeygenCheckExpression": [
+      "Source3.KeygenCheckProgram",
+      "Source3.C99CountedWords"
+    ],
+    "Source3.KeygenCheckProgram": [
+      "Source3.C99ModularParser",
+      "Source3.KeygenFinalCheck"
+    ],
+    "Source3.KeygenFinalCheck": [
+      "Source3.KeygenFinalCheckAlgebra",
+      "Source3.C99MemoryReference",
+      "Source3.KeygenSmallOutput"
+    ],
+    "Source3.KeygenFinalCheckAlgebra": [
+      "Source3.KeygenModpAddSub",
+      "Source3.KeygenNinv31"
+    ],
+    "Source3.KeygenMaterial": [
+      "Source3.KeygenSmallOutput",
+      "Source3.KeygenIntegerLift"
+    ],
+    "Source3.KeygenIntegerLift": [
+      "Run2.QuotientOperations",
+      "Mathlib.Algebra.Order.BigOperators.Group.Finset",
+      "Mathlib.Tactic.Linarith",
+      "Mathlib.Tactic.Ring"
+    ],
+    "Run2.QuotientOperations": [
+      "Run2.CoefficientQuotient"
+    ],
+    "Run2.CoefficientQuotient": [
+      "FT1536.Relation",
+      "Mathlib.RingTheory.AdjoinRoot",
+      "Mathlib.Tactic.ComputeDegree"
+    ],
+    "FT1536.Relation": [
+      "FT1536.Geometry",
+      "FT1536.ROM",
+      "Mathlib.Data.ZMod.Basic",
+      "Mathlib.Algebra.Polynomial.Div"
+    ],
+    "FT1536.Geometry": [
+      "FT1536.Basic"
+    ],
+    "FT1536.ROM": [
+      "FT1536.Basic"
+    ],
+    "Source3.KeygenSolverNttCalls": [
+      "Source3.KeygenNttTransform",
+      "Source3.C99ProcedureParser"
+    ],
+    "Source3.KeygenNttTransform": [
+      "Source3.KeygenNttRoundPolynomial"
+    ],
+    "Source3.KeygenNttRoundPolynomial": [
+      "Source3.KeygenNttTwiddleTree",
+      "Source3.KeygenNttSubpolynomial",
+      "Source3.KeygenNttExecution"
+    ],
+    "Source3.KeygenNttTwiddleTree": [
+      "Source3.KeygenNttTwiddleCert",
+      "Source3.KeygenNttTripleValues"
+    ],
+    "Source3.KeygenNttTwiddleCert": [
+      "Source3.KeygenMkgm3Indices"
+    ],
+    "Source3.KeygenMkgm3Indices": [
+      "Source3.KeygenMkgm3Rows",
+      "Source3.KeygenRev10Cert"
+    ],
+    "Source3.KeygenMkgm3Rows": [
+      "Source3.KeygenModpR2",
+      "Source3.KeygenFirstPrime",
+      "Source3.KeygenGeneratorOrder",
+      "Mathlib.GroupTheory.OrderOfElement"
+    ],
+    "Source3.KeygenModpR2": [
+      "Source3.KeygenModpR2Exec"
+    ],
+    "Source3.KeygenModpR2Exec": [
+      "Source3.KeygenMkgm3Callees",
+      "Source3.KeygenModpR2Word",
+      "Source3.MknReference",
+      "Source3.C99DeclarationStatements",
+      "Source3.C99CountedWords"
+    ],
+    "Source3.KeygenMkgm3Callees": [
+      "Source3.C99ModularAnnotation"
+    ],
+    "Source3.KeygenModpR2Word": [
+      "Source3.KeygenModpR",
+      "Source3.KeygenNttWordAlgebra"
+    ],
+    "Source3.KeygenNttWordAlgebra": [
+      "Source3.KeygenFinalCheckAlgebra",
+      "Mathlib.Data.ZMod.Basic"
+    ],
+    "Source3.KeygenFirstPrime": [
+      "Source3.KeygenNttWordAlgebra"
+    ],
+    "Source3.KeygenGeneratorOrder": [
+      "Source3.KeygenModpR",
+      "Source3.KeygenNinv31"
+    ],
+    "Source3.KeygenRev10Cert": [
+      "Source3.KeygenRev10"
+    ],
+    "Source3.KeygenRev10": [
+      "Source3.C99ModularAnnotation"
+    ],
+    "Source3.KeygenNttTripleValues": [
+      "Source3.KeygenNttMiddleValues",
+      "Source3.KeygenNttTripleLoop",
+      "Source3.KeygenNttRoots"
+    ],
+    "Source3.KeygenNttMiddleValues": [
+      "Source3.KeygenNttBinaryValues",
+      "Source3.KeygenNttFirstComposition",
+      "Source3.KeygenNttControl"
+    ],
+    "Source3.KeygenNttBinaryValues": [
+      "Source3.KeygenNttGeometry",
+      "Source3.KeygenNttFirstValues"
+    ],
+    "Source3.KeygenNttGeometry": [
+      "Source3.KeygenNttMiddleRounds",
+      "Source3.KeygenNttCells"
+    ],
+    "Source3.KeygenNttMiddleRounds": [
+      "Source3.KeygenNttMiddleLoops"
+    ],
+    "Source3.KeygenNttMiddleLoops": [
+      "Source3.KeygenNttButterflyCalls"
+    ],
+    "Source3.KeygenNttButterflyCalls": [
+      "Source3.KeygenNttTripleLoop",
+      "Source3.KeygenNttButterflyAlgebra"
+    ],
+    "Source3.KeygenNttTripleLoop": [
+      "Source3.KeygenNttFirstLoop"
+    ],
+    "Source3.KeygenNttFirstLoop": [
+      "Source3.KeygenNttLoopSupport"
+    ],
+    "Source3.KeygenNttLoopSupport": [
+      "Source3.KeygenNttForwardExec"
+    ],
+    "Source3.KeygenNttButterflyAlgebra": [
+      "Source3.KeygenNttWordAlgebra"
+    ],
+    "Source3.KeygenNttCells": [
+      "Source3.KeygenNttButterflyCalls",
+      "Source3.KeygenMkgm3Table"
+    ],
+    "Source3.KeygenMkgm3Table": [
+      "Source3.KeygenMkgm3IndexCert",
+      "Source3.KeygenMkgm3Layout",
+      "Source3.KeygenMkgm3Control"
+    ],
+    "Source3.KeygenMkgm3IndexCert": [
+      "Source3.KeygenMkgm3Indices"
+    ],
+    "Source3.KeygenMkgm3Layout": [
+      "Source3.KeygenNttLoopSupport",
+      "Source3.KeygenResidueVectors"
+    ],
+    "Source3.KeygenResidueVectors": [
+      "Source3.KeygenResidueMaterial",
+      "Source3.KeygenMaterial"
+    ],
+    "Source3.KeygenResidueMaterial": [
+      "Source3.KeygenResidueFrame"
+    ],
+    "Source3.KeygenResidueFrame": [
+      "Source3.KeygenResidueRanges"
+    ],
+    "Source3.KeygenResidueRanges": [
+      "Source3.KeygenResidueLoop"
+    ],
+    "Source3.KeygenResidueLoop": [
+      "Source3.KeygenResidueTrace",
+      "Source3.KeygenCheckLoopBridge"
+    ],
+    "Source3.KeygenResidueTrace": [
+      "Source3.KeygenResidueStore"
+    ],
+    "Source3.KeygenResidueStore": [
+      "Source3.KeygenResidueProgram",
+      "Source3.C99CountedWords",
+      "Source3.Gate00Memory"
+    ],
+    "Source3.KeygenResidueProgram": [
+      "Source3.C99ModularAnnotation",
+      "Source3.KeygenCheckProgram"
+    ],
+    "Source3.KeygenMkgm3Control": [
+      "Source3.KeygenMkgm3Program",
+      "Source3.KeygenNttLoopSupport"
+    ],
+    "Source3.KeygenMkgm3Program": [
+      "Source3.C99ModularAnnotation"
+    ],
+    "Source3.KeygenNttFirstValues": [
+      "Source3.KeygenNttCells",
+      "Source3.KeygenMkgm3Atoms"
+    ],
+    "Source3.KeygenMkgm3Atoms": [
+      "Source3.KeygenMkgm3Table",
+      "Source3.KeygenNttButterflyCalls"
+    ],
+    "Source3.KeygenNttFirstComposition": [
+      "Source3.KeygenNttPolynomial",
+      "Source3.KeygenMkgm3"
+    ],
+    "Source3.KeygenNttPolynomial": [
+      "Source3.KeygenNttFirstValues",
+      "Run2.CoefficientQuotient"
+    ],
+    "Source3.KeygenMkgm3": [
+      "Source3.KeygenMkgm3Frame"
+    ],
+    "Source3.KeygenMkgm3Frame": [
+      "Source3.KeygenMkgm3Assembly"
+    ],
+    "Source3.KeygenMkgm3Assembly": [
+      "Source3.KeygenMkgm3RowInit"
+    ],
+    "Source3.KeygenMkgm3RowInit": [
+      "Source3.KeygenMkgm3Prelude"
+    ],
+    "Source3.KeygenMkgm3Prelude": [
+      "Source3.KeygenMkgm3Loops"
+    ],
+    "Source3.KeygenMkgm3Loops": [
+      "Source3.KeygenMkgm3Counters"
+    ],
+    "Source3.KeygenMkgm3Counters": [
+      "Source3.KeygenMkgm3LastRow"
+    ],
+    "Source3.KeygenMkgm3LastRow": [
+      "Source3.KeygenMkgm3RevMemory"
+    ],
+    "Source3.KeygenMkgm3RevMemory": [
+      "Source3.KeygenMkgm3Upward"
+    ],
+    "Source3.KeygenMkgm3Upward": [
+      "Source3.KeygenMkgm3Atoms"
+    ],
+    "Source3.KeygenNttControl": [
+      "Source3.KeygenMkgm3Control",
+      "Source3.KeygenNttButterflyCalls"
+    ],
+    "Source3.KeygenNttRoots": [
+      "Source3.KeygenNttPolynomial",
+      "Mathlib.Algebra.Polynomial.Roots",
+      "Mathlib.Algebra.Field.ZMod",
+      "Mathlib.Tactic.NormNum.Prime"
+    ],
+    "Source3.KeygenNttSubpolynomial": [
+      "Source3.KeygenNttBinaryValues",
+      "Source3.KeygenNttPolynomial"
+    ],
+    "Source3.KeygenNttExecution": [
+      "Source3.KeygenNttTripleValues"
+    ],
+    "Source3.KeygenRngSource": [
+      "Source3.ShakeExtractFrame"
+    ],
+    "Source3.ShakeExtractFrame": [
+      "Source3.ShakeExtractBinding"
+    ],
+    "Source3.ShakeExtractBinding": [
+      "Source3.ShakeExtractSource",
+      "Source3.ShakeRcBinding"
+    ],
+    "Source3.ShakeExtractSource": [
+      "Source3.ShakeEncode"
+    ],
+    "Source3.ShakeEncode": [
+      "Source3.ShakeBlockProgram",
+      "Source3.KeygenSolverNttCalls"
+    ],
+    "Source3.ShakeBlockProgram": [
+      "Source3.ShakeBlock"
+    ],
+    "Source3.ShakeBlock": [
+      "Source3.ShakeSource",
+      "Source3.KeygenSmallSource"
+    ],
+    "Source3.ShakeSource": [],
+    "Source3.ShakeRcBinding": [
+      "Source3.ShakeExtractSource"
+    ],
+    "Source3.KeygenSearchParser": [
+      "Source3.KeygenSearchExec"
+    ],
+    "Source3.KeygenSearchExec": [
+      "Source3.KeygenSearchLeaves",
+      "Source3.KeygenSearchMemory",
+      "Source3.KeygenSearchContext"
+    ],
+    "Source3.KeygenSearchLeaves": [
+      "Source3.KeygenSearchFft",
+      "Source3.SmallintsProgram",
+      "Source3.KeygenSmallSource"
+    ],
+    "Source3.KeygenSearchFft": [
+      "Source3.FftProcedureFrames"
+    ],
+    "Source3.KeygenBinaryFft": [
+      "Source3.KeygenSearchFft"
+    ],
+    "Source3.KeygenPolySubNtt": [
+      "Source3.KeygenMakeFgSource",
+      "Source3.KeygenZintScaled",
+      "Source3.KeygenZintTop"
+    ],
+    "Source3.KeygenMakeFgSource": [
+      "Source3.KeygenBinaryNtt",
+      "Source3.KeygenZintCore",
+      "Source3.KeygenMakeFgTop"
+    ],
+    "Source3.KeygenBinaryNtt": [
+      "Source3.KeygenLevelCalls"
+    ],
+    "Source3.KeygenLevelCalls": [
+      "Source3.KeygenLevelNtt",
+      "Source3.KeygenSearchMemory",
+      "Source3.KeygenFirstPrime"
+    ],
+    "Source3.KeygenLevelNtt": [
+      "Source3.KeygenLevelModularFrame",
+      "Source3.KeygenMkgm3Program"
+    ],
+    "Source3.KeygenLevelModularFrame": [
+      "Source3.KeygenNttMemoryFrame",
+      "Source3.C99PointerFootprint"
+    ],
+    "Source3.KeygenNttMemoryFrame": [
+      "Source3.KeygenSolverNttCalls"
+    ],
+    "Source3.KeygenZintCore": [
+      "Source3.KeygenZintExtract",
+      "Source3.KeygenMaterial"
+    ],
+    "Source3.KeygenZintExtract": [
+      "Source3.KeygenZintCall"
+    ],
+    "Source3.KeygenZintCall": [
+      "Source3.KeygenZintLeaves",
+      "Source3.KeygenLevelCalls"
+    ],
+    "Source3.KeygenZintLeaves": [
+      "Source3.KeygenWordParser"
+    ],
+    "Source3.KeygenWordParser": [
+      "Source3.KeygenWordExec"
+    ],
+    "Source3.KeygenWordExec": [
+      "Source3.KeygenWordExpr"
+    ],
+    "Source3.KeygenWordExpr": [
+      "Source3.KeygenLevelParser"
+    ],
+    "Source3.KeygenLevelParser": [
+      "Source3.KeygenLevelExec",
+      "Source3.KeygenSearchParser"
+    ],
+    "Source3.KeygenLevelExec": [
+      "Source3.KeygenLevelCalls"
+    ],
+    "Source3.KeygenMakeFgTop": [
+      "Source3.KeygenLevelParser",
+      "Source3.KeygenMaterial"
+    ],
+    "Source3.KeygenZintScaled": [
+      "Source3.KeygenZintCore"
+    ],
+    "Source3.KeygenZintTop": [
+      "Source3.KeygenZintCore"
+    ],
+    "Source3.KeygenPolySubScaled": [
+      "Source3.KeygenZintScaled",
+      "Source3.KeygenZintTop"
+    ],
+    "Source3.KeygenZintPoly": [
+      "Source3.KeygenZintTop"
+    ],
+    "Source3.KeygenLexicalChunks": [
+      "Source3.KeygenZintTop"
+    ],
+    "Source3.KeygenIntermediateTokensLift1": [
+      "Source3.KeygenSourceLines",
+      "Source3.KeygenLexicalChunks"
+    ],
+    "Source3.KeygenIntermediateTokensLift2": [
+      "Source3.KeygenSourceLines",
+      "Source3.KeygenLexicalChunks"
+    ],
+    "Source3.KeygenIntermediateTokensLift3": [
+      "Source3.KeygenSourceLines",
+      "Source3.KeygenLexicalChunks"
+    ],
+    "Source3.KeygenIntermediateTokensLift4": [
+      "Source3.KeygenSourceLines",
+      "Source3.KeygenLexicalChunks"
+    ],
+    "Source3.KeygenIntermediateTokensLift5": [
+      "Source3.KeygenSourceLines",
+      "Source3.KeygenLexicalChunks"
+    ],
+    "Source3.KeygenIntermediateCoverage": [
+      "Source3.KeygenIntermediateParser"
+    ],
+    "Source3.KeygenIntermediateLiftCheck1": [
+      "Source3.KeygenIntermediateLiftData"
+    ],
+    "Source3.KeygenIntermediateLiftCheck2": [
+      "Source3.KeygenIntermediateLiftData"
+    ],
+    "Source3.KeygenIntermediateLiftCheck3": [
+      "Source3.KeygenIntermediateLiftData"
+    ],
+    "Source3.KeygenIntermediateLiftCheck4": [
+      "Source3.KeygenIntermediateLiftData"
+    ],
+    "Source3.KeygenIntermediateLiftCheck5": [
+      "Source3.KeygenIntermediateLiftData"
+    ],
+    "Source3.KeygenIntermediateReduceCheck0": [
+      "Source3.KeygenIntermediateReduceData"
+    ],
+    "Source3.KeygenIntermediateReduceData": [
+      "Source3.KeygenIntermediateLiftData",
+      "Source3.KeygenIntermediateTokensReduce0",
+      "Source3.KeygenIntermediateTokensReduce1",
+      "Source3.KeygenIntermediateTokensReduce2",
+      "Source3.KeygenIntermediateTokensReduce3",
+      "Source3.KeygenIntermediateTokensReduce4",
+      "Source3.KeygenIntermediateTokensReduce5"
+    ],
+    "Source3.KeygenIntermediateTokensReduce0": [
+      "Source3.KeygenSourceLines",
+      "Source3.KeygenLexicalChunks"
+    ],
+    "Source3.KeygenIntermediateTokensReduce1": [
+      "Source3.KeygenSourceLines",
+      "Source3.KeygenLexicalChunks"
+    ],
+    "Source3.KeygenIntermediateTokensReduce2": [
+      "Source3.KeygenSourceLines",
+      "Source3.KeygenLexicalChunks"
+    ],
+    "Source3.KeygenIntermediateTokensReduce3": [
+      "Source3.KeygenSourceLines",
+      "Source3.KeygenLexicalChunks"
+    ],
+    "Source3.KeygenIntermediateTokensReduce4": [
+      "Source3.KeygenSourceLines",
+      "Source3.KeygenLexicalChunks"
+    ],
+    "Source3.KeygenIntermediateTokensReduce5": [
+      "Source3.KeygenSourceLines",
+      "Source3.KeygenLexicalChunks"
+    ],
+    "Source3.KeygenIntermediateReduceCheck1": [
+      "Source3.KeygenIntermediateReduceData"
+    ],
+    "Source3.KeygenIntermediateReduceCheck2": [
+      "Source3.KeygenIntermediateReduceData"
+    ],
+    "Source3.KeygenIntermediateReduceCheck3": [
+      "Source3.KeygenIntermediateReduceData"
+    ],
+    "Source3.KeygenIntermediateReduceCheck4": [
+      "Source3.KeygenIntermediateReduceData"
+    ],
+    "Source3.KeygenIntermediateReduceCheck5": [
+      "Source3.KeygenIntermediateReduceData"
+    ],
+    "Source3.KeygenIntermediateTokensTop0": [
+      "Source3.KeygenSourceLines",
+      "Source3.KeygenLexicalChunks"
+    ],
+    "Source3.KeygenIntermediateTokensTop1": [
+      "Source3.KeygenSourceLines",
+      "Source3.KeygenLexicalChunks"
+    ],
+    "Source3.KeygenIntermediateTokensTop2": [
+      "Source3.KeygenSourceLines",
+      "Source3.KeygenLexicalChunks"
+    ],
+    "Source3.KeygenIntermediateTokensTop3": [
+      "Source3.KeygenSourceLines",
+      "Source3.KeygenLexicalChunks"
+    ],
+    "Source3.KeygenIntermediateTokensTop4": [
+      "Source3.KeygenSourceLines",
+      "Source3.KeygenLexicalChunks"
+    ],
+    "Source3.KeygenIntermediateTokensTop5": [
+      "Source3.KeygenSourceLines",
+      "Source3.KeygenLexicalChunks"
+    ],
+    "Source3.KeygenIntermediateTokensTop6": [
+      "Source3.KeygenSourceLines",
+      "Source3.KeygenLexicalChunks"
+    ],
+    "Source3.KeygenIntermediateTokensTop7": [
+      "Source3.KeygenSourceLines",
+      "Source3.KeygenLexicalChunks"
+    ],
+    "Source3.KeygenDepth0Call": [
+      "Source3.KeygenDepth0Source",
+      "Source3.KeygenOutputGateValidation"
+    ],
+    "Source3.KeygenDepth0Source": [
+      "Source3.KeygenSearchParser",
+      "Source3.KeygenSearchFrame"
+    ],
+    "Source3.KeygenSearchFrame": [
+      "Source3.KeygenSearchExec"
+    ],
+    "Source3.KeygenOutputGateValidation": [
+      "Source3.KeygenOutputGateBounds",
+      "Source3.KeygenSolverValidation"
+    ],
+    "Source3.KeygenOutputGateBounds": [
+      "Source3.KeygenOutputGateSource"
+    ],
+    "Source3.KeygenSolverValidation": [
+      "Source3.KeygenSolverTarget",
+      "Source3.KeygenNttMemoryFrame"
+    ],
+    "Source3.KeygenSolverTarget": [
+      "Source3.KeygenSolverTransforms"
+    ],
+    "Source3.KeygenSolverTransforms": [
+      "Source3.KeygenSolverNttCalls",
+      "Source3.KeygenSolverEquation"
+    ],
+    "Source3.KeygenSolverEquation": [
+      "Source3.KeygenNttTransform",
+      "Source3.KeygenNttEvaluation",
+      "Source3.KeygenCheckLoopBridge"
+    ],
+    "Source3.KeygenNttEvaluation": [
+      "Source3.KeygenNttRoots",
+      "Run2.QuotientOperations"
+    ],
+    "Source3.KeygenDeepestSource": [
+      "Source3.KeygenMakeFgSource",
+      "Source3.KeygenSearchContext",
+      "Source3.KeygenMaterial"
+    ],
+    "Source3.KeygenRootControl": [
+      "Source3.KeygenRootSearch"
+    ],
+    "Source3.KeygenStaticReads": [
+      "Source3.KeygenPrimeTableBinding",
+      "Source3.KeygenSearchContext"
+    ],
+    "Source3.KeygenPrimeTableBinding": [
+      "Source3.KeygenPrimeTablesBinary",
+      "Source3.KeygenPrimeTablesTernaryLow",
+      "Source3.KeygenPrimeTablesTernaryHigh"
+    ],
+    "Source3.KeygenPrimeTablesBinary": [
+      "Source3.KeygenStaticTables"
+    ],
+    "Source3.KeygenStaticTables": [
+      "Source3.KeygenFirstPrime",
+      "Source3.ParsedChunks",
+      "Source3.KeygenLevelCalls",
+      "Source3.KeygenZintExtract"
+    ],
+    "Source3.KeygenPrimeTablesTernaryLow": [
+      "Source3.KeygenStaticTables"
+    ],
+    "Source3.KeygenPrimeTablesTernaryHigh": [
+      "Source3.KeygenStaticTables"
+    ],
+    "Source3.KeygenNormFrame": [
+      "Source3.KeygenSearchParser",
+      "Source3.KeygenSearchFrame",
+      "Source3.KeygenSamplerCalls",
+      "Source3.C99CompareObjects"
+    ],
+    "Source3.KeygenSamplerCalls": [
+      "Source3.KeygenSamplerFrame",
+      "Source3.KeygenSolverNttCalls"
+    ],
+    "Source3.KeygenSamplerFrame": [
+      "Source3.KeygenSamplerBounds"
+    ],
+    "Source3.KeygenSamplerBounds": [
+      "Source3.KeygenSamplerInner",
+      "Source3.KeygenSmallBounds"
+    ],
+    "Source3.KeygenSamplerInner": [
+      "Source3.KeygenSamplerSource",
+      "Source3.KeygenNttControl"
+    ],
+    "Source3.KeygenSamplerSource": [
+      "Source3.KeygenRngSource",
+      "Source3.KeygenTernaryStore",
+      "Source3.KeygenM0Preprocess"
+    ],
+    "Source3.KeygenTernaryStore": [
+      "Source3.KeygenSmallStep",
+      "Source3.KeygenTernaryBound"
+    ],
+    "Source3.KeygenTernaryBound": [
+      "Source3.C99CountedWords",
+      "Source3.KeygenSmallOutput"
+    ],
+    "Source3.KeygenM0Preprocess": [
+      "Source3.KeygenCPP"
+    ],
+    "Source3.KeygenCPP": [
+      "Source3.KeygenHelpers"
+    ],
+    "Source3.KeygenAttemptNorm": [
+      "Source3.KeygenAttemptFft"
+    ],
+    "Source3.ShakePointFrame": [
+      "Source3.KeygenAttemptFft"
+    ],
+    "Source3.KeygenSamplerContext": [
+      "Source3.ShakePointFrame",
+      "Source3.KeygenResultantGate"
+    ],
+    "Source3.KeygenResultantGate": [
+      "Source3.KeygenResultantSource",
+      "Source3.KeygenSamplerCalls"
+    ],
+    "Source3.KeygenResultantSource": [
+      "Source3.KeygenWordParser",
+      "Source3.KeygenRngSource"
+    ],
+    "Source3.KeygenPublicScalar": [
+      "Source3.KeygenAttemptPin",
+      "Source3.KeygenRootObjects"
+    ],
+    "Source3.KeygenPublicWord": [
+      "Source3.KeygenPublicScalar"
+    ],
+    "Source3.KeygenPublicExec": [
+      "Source3.KeygenPublicWord"
+    ],
+    "Source3.KeygenPublicParser": [
+      "Source3.KeygenPublicExec"
+    ],
+    "Source3.KeygenPublicFrame": [
+      "Source3.KeygenPublicParser"
+    ],
+    "Source3.KeygenPublicSource": [
+      "Source3.KeygenPublicFrame",
+      "Source3.KeygenSamplerFrame"
+    ],
+    "Source3.KeygenPublicStability": [
+      "Source3.KeygenPublicSource"
+    ],
+    "Source3.KeygenAttemptSlots": [
+      "Source3.KeygenAttemptNorm",
+      "Source3.KeygenSamplerContext"
+    ],
+    "Source3.KeygenAttemptMaterial": [
+      "Source3.KeygenAttemptSlots",
+      "Source3.KeygenPublicStability"
+    ],
+    "Source3.KeygenRootCaller": [
+      "Source3.KeygenRootSource"
+    ],
+    "Source3.KeygenRootSource": [
+      "Source3.KeygenRootValidation"
+    ],
+    "Source3.KeygenRootValidation": [
+      "Source3.KeygenRootValidationSource"
+    ],
+    "Source3.KeygenRootValidationSource": [
+      "Source3.KeygenRootObjects"
+    ],
+    "Source3.KeygenAttemptCap": [
+      "Source3.KeygenM0Preprocess",
+      "Source3.C99ProcedureParser"
+    ],
+    "Source3.KeygenCallerAudit": [
+      "Source3.KeygenCallerInit",
+      "Source3.KeygenCallerEntry",
+      "Source3.KeygenCallerTransport",
+      "Source3.KeygenCallerPrefix",
+      "Source3.KeygenCallerSuccess",
+      "Source3.KeygenCallerInitExecution",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenCallerInit": [
+      "Source3.KeygenAttemptMaterial",
+      "Source3.KeygenRootCaller"
+    ],
+    "Source3.KeygenCallerEntry": [
+      "Source3.KeygenCallerInit"
+    ],
+    "Source3.KeygenCallerTransport": [
+      "Source3.KeygenCallerEntry"
+    ],
+    "Source3.KeygenCallerPrefix": [
+      "Source3.KeygenCallerTransport"
+    ],
+    "Source3.KeygenCallerSuccess": [
+      "Source3.KeygenCallerPrefix",
+      "Source3.KeygenRootCoverage"
+    ],
+    "Source3.KeygenRootCoverage": [
+      "Source3.KeygenRootCaller",
+      "Source3.KeygenM0Preprocess"
+    ],
+    "Source3.KeygenCallerInitExecution": [
+      "Source3.KeygenCallerInit"
+    ],
+    "Source3.KeygenCapExecution": [
+      "Source3.KeygenCapWords",
+      "Source3.C99SequenceInversion",
+      "Source3.C99ProcedureScalars"
+    ],
+    "Source3.KeygenCapWords": [
+      "Source3.KeygenAttemptCap",
+      "Source3.C99CountedWords"
+    ],
+    "Source3.KeygenCheckExpressionSound": [
+      "Source3.KeygenCheckExpression"
+    ],
+    "Source3.KeygenCheckMutations": [
+      "Source3.KeygenCheckProgram"
+    ],
+    "Source3.KeygenCheckOutcome": [
+      "Source3.KeygenCheckLoopBridge",
+      "Source3.KeygenCheckExpressionSound",
+      "Source3.C99ModularFrame",
+      "Source3.KeygenCheckMutations"
+    ],
+    "Source3.KeygenDepth0Return": [
+      "Source3.KeygenDepth0Call"
+    ],
+    "Source3.KeygenEntropySource": [
+      "Source3.ShakeSeedReference"
+    ],
+    "Source3.ShakeSeedReference": [
+      "Source3.ShakeSeedProgram"
+    ],
+    "Source3.ShakeSeedProgram": [
+      "Source3.ShakeSeedMemory"
+    ],
+    "Source3.ShakeSeedMemory": [
+      "Source3.ShakePointFrame"
+    ],
+    "Source3.KeygenExecutionAudit": [
+      "Source3.KeygenOutputGateSource",
+      "Source3.KeygenOutputGateBounds",
+      "Source3.ShakeSource",
+      "Source3.ShakeBlock",
+      "Source3.ShakeBlockProgram",
+      "Source3.ShakeEncode",
+      "Source3.ShakeExtractSource",
+      "Source3.ShakeRcBinding",
+      "Source3.ShakeExtractBinding",
+      "Source3.ShakeExtractFrame",
+      "Source3.KeygenRngSource",
+      "Source3.KeygenSamplerSource",
+      "Source3.KeygenSamplerInner",
+      "Source3.KeygenSamplerBounds",
+      "Source3.KeygenSamplerFrame",
+      "Source3.KeygenSamplerCalls",
+      "Source3.KeygenOutputGateValidation",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenFiber001Audit": [
+      "Source3.KeygenFiberAssembly",
+      "Source3.KeygenMaterial",
+      "Source3.Gate00Memory",
+      "Source3.CertificateReturnLifetime"
+    ],
+    "Source3.KeygenFiberAssembly": [
+      "Source3.KeygenIntegerLift",
+      "Run2.ActualNTRUFiber"
+    ],
+    "Run2.ActualNTRUFiber": [
+      "Run2.NTRUBasis",
+      "Run2.QuotientOperations"
+    ],
+    "Run2.NTRUBasis": [
+      "FT1536.Basic",
+      "Mathlib.Algebra.Ring.Prod"
+    ],
+    "Source3.KeygenFiber002Audit": [
+      "Source3.CertificateWorkspace",
+      "Source3.FftLeafFrames",
+      "Source3.KeygenNinv31"
+    ],
+    "Source3.KeygenFiber003Audit": [
+      "Source3.FftProcedureFrames"
+    ],
+    "Source3.KeygenFiber004Audit": [
+      "Source3.CertificateFrameEntry",
+      "Source3.CertificatePrefixToSuffix",
+      "Source3.SmallintsConversion",
+      "Source3.CertificatePrefixFrame",
+      "Source3.C99LoopTrace"
+    ],
+    "Source3.KeygenFiber005Audit": [
+      "Source3.SmallintsInvocation",
+      "Source3.CertificateDeclarations",
+      "Source3.CertificateConversions"
+    ],
+    "Source3.KeygenFiber006Audit": [
+      "Source3.CertificateFunctionOutcome",
+      "Source3.FftGlobalScalars"
+    ],
+    "Source3.KeygenFiber007Audit": [
+      "Source3.CertificateM0Environment",
+      "Source3.KeygenMakePreprocess",
+      "Source3.KeygenCapExecution",
+      "Source3.KeygenTernaryBound",
+      "Source3.KeygenFinalCheck"
+    ],
+    "Source3.KeygenMakePreprocess": [
+      "Source3.KeygenM0Preprocess"
+    ],
+    "Source3.KeygenFiber008Audit": [
+      "Source3.KeygenCheckOutcome",
+      "Source3.KeygenModpSet"
+    ],
+    "Source3.KeygenIntermediateAudit": [
+      "Source3.KeygenPolySubNtt",
+      "Source3.KeygenIntermediateMemory",
+      "Source3.KeygenBinaryFft",
+      "Source3.KeygenIntermediateCalls",
+      "Source3.KeygenIntermediateExec",
+      "Source3.KeygenIntermediateParser",
+      "Source3.KeygenSourceLines",
+      "Source3.KeygenIntermediateCoverage",
+      "Source3.KeygenLexicalChunks",
+      "Source3.KeygenIntermediateTokensLift0",
+      "Source3.KeygenIntermediateTokensLift1",
+      "Source3.KeygenIntermediateTokensLift2",
+      "Source3.KeygenIntermediateTokensLift3",
+      "Source3.KeygenIntermediateTokensLift4",
+      "Source3.KeygenIntermediateTokensLift5",
+      "Source3.KeygenIntermediateTokensReduce0",
+      "Source3.KeygenIntermediateTokensReduce1",
+      "Source3.KeygenIntermediateTokensReduce2",
+      "Source3.KeygenIntermediateTokensReduce3",
+      "Source3.KeygenIntermediateTokensReduce4",
+      "Source3.KeygenIntermediateTokensReduce5",
+      "Source3.KeygenIntermediateTokensTop0",
+      "Source3.KeygenIntermediateTokensTop1",
+      "Source3.KeygenIntermediateTokensTop2",
+      "Source3.KeygenIntermediateTokensTop3",
+      "Source3.KeygenIntermediateTokensTop4",
+      "Source3.KeygenIntermediateTokensTop5",
+      "Source3.KeygenIntermediateTokensTop6",
+      "Source3.KeygenIntermediateTokensTop7",
+      "Source3.KeygenIntermediateLiftData",
+      "Source3.KeygenIntermediateLiftCheck0",
+      "Source3.KeygenIntermediateLiftCheck1",
+      "Source3.KeygenIntermediateLiftCheck2",
+      "Source3.KeygenIntermediateLiftCheck3",
+      "Source3.KeygenIntermediateLiftCheck4",
+      "Source3.KeygenIntermediateLiftCheck5",
+      "Source3.KeygenIntermediateLift",
+      "Source3.KeygenIntermediateReduceData",
+      "Source3.KeygenIntermediateReduceCheck0",
+      "Source3.KeygenIntermediateReduceCheck1",
+      "Source3.KeygenIntermediateReduceCheck2",
+      "Source3.KeygenIntermediateReduceCheck3",
+      "Source3.KeygenIntermediateReduceCheck4",
+      "Source3.KeygenIntermediateReduceCheck5",
+      "Source3.KeygenIntermediateReduce",
+      "Source3.KeygenIntermediateSource",
+      "Source3.KeygenStaticTables",
+      "Source3.KeygenPrimeTablesBinary",
+      "Source3.KeygenPrimeTablesTernaryLow",
+      "Source3.KeygenPrimeTablesTernaryHigh",
+      "Source3.KeygenPrimeTableBinding",
+      "Source3.KeygenStaticReads",
+      "Source3.KeygenDeepestSource",
+      "Source3.KeygenDepth0Call",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenIntermediateProbe": [
+      "Source3.KeygenSearchFft"
+    ],
+    "Source3.KeygenLevelsAudit": [
+      "Source3.KeygenLevelModularFrame",
+      "Source3.KeygenLevelNtt",
+      "Source3.KeygenLevelCalls",
+      "Source3.KeygenLevelExec",
+      "Source3.KeygenLevelParser",
+      "Source3.KeygenMakeFgTop",
+      "Source3.KeygenWordExpr",
+      "Source3.KeygenWordExec",
+      "Source3.KeygenWordParser",
+      "Source3.KeygenZintLeaves",
+      "Source3.KeygenResultantSource",
+      "Source3.KeygenResultantGate",
+      "Source3.KeygenNormFrame",
+      "Source3.KeygenDepth0Call",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenMakeArguments": [
+      "Source3.KeygenMakeLifetime"
+    ],
+    "Source3.KeygenMakeLifetime": [
+      "Source3.KeygenMakeProgram",
+      "Source3.KeygenMakeReady"
+    ],
+    "Source3.KeygenMakeProgram": [
+      "Source3.KeygenMakeBinding"
+    ],
+    "Source3.KeygenMakeBinding": [
+      "Source3.KeygenMakeBindingPart11",
+      "Source3.KeygenMakeTokens"
+    ],
+    "Source3.KeygenMakeBindingPart11": [
+      "Source3.KeygenMakeBindingPart10"
+    ],
+    "Source3.KeygenMakeBindingPart10": [
+      "Source3.KeygenMakeBindingPart09"
+    ],
+    "Source3.KeygenMakeBindingPart09": [
+      "Source3.KeygenMakeBindingPart08"
+    ],
+    "Source3.KeygenMakeBindingPart08": [
+      "Source3.KeygenMakeBindingPart07"
+    ],
+    "Source3.KeygenMakeBindingPart07": [
+      "Source3.KeygenMakeBindingPart06"
+    ],
+    "Source3.KeygenMakeBindingPart06": [
+      "Source3.KeygenMakeBindingPart05"
+    ],
+    "Source3.KeygenMakeBindingPart05": [
+      "Source3.KeygenMakeBindingPart04"
+    ],
+    "Source3.KeygenMakeBindingPart04": [
+      "Source3.KeygenMakeBindingPart03"
+    ],
+    "Source3.KeygenMakeBindingPart03": [
+      "Source3.KeygenMakeBindingPart02"
+    ],
+    "Source3.KeygenMakeBindingPart02": [
+      "Source3.KeygenMakeBindingPart01"
+    ],
+    "Source3.KeygenMakeBindingPart01": [
+      "Source3.KeygenMakeBindingPart00"
+    ],
+    "Source3.KeygenMakeBindingPart00": [
+      "Source3.KeygenMakeGrammar"
+    ],
+    "Source3.KeygenMakeGrammar": [
+      "Source3.KeygenMakeSyntax"
+    ],
+    "Source3.KeygenMakeSyntax": [
+      "Source3.KeygenMakePreprocess",
+      "Source3.KeygenZintTop"
+    ],
+    "Source3.KeygenMakeTokens": [
+      "Source3.KeygenMakeSyntax"
+    ],
+    "Source3.KeygenMakeReady": [
+      "Source3.KeygenReadyResult",
+      "Source3.KeygenMakePrologue"
+    ],
+    "Source3.KeygenReadyResult": [
+      "Source3.KeygenRngFrame"
+    ],
+    "Source3.KeygenRngFrame": [
+      "Source3.KeygenRngReference"
+    ],
+    "Source3.KeygenRngReference": [
+      "Source3.KeygenRngProgram",
+      "Source3.KeygenSamplerContext"
+    ],
+    "Source3.KeygenRngProgram": [
+      "Source3.KeygenReadyFast",
+      "Source3.KeygenEntropySource"
+    ],
+    "Source3.KeygenReadyFast": [
+      "Source3.KeygenMakeEntry"
+    ],
+    "Source3.KeygenMakeEntry": [
+      "Source3.KeygenMakeObjects"
+    ],
+    "Source3.KeygenMakeObjects": [
+      "Source3.KeygenCallerEntry",
+      "Source3.KeygenPublicExec"
+    ],
+    "Source3.KeygenMakePrologue": [
+      "Source3.KeygenReadyFast",
+      "Source3.KeygenCapExecution"
+    ],
+    "Source3.KeygenMakeAtomProbe": [
+      "Source3.KeygenMakeGrammar"
+    ],
+    "Source3.KeygenMakeAttemptSpine": [
+      "Source3.KeygenMakeMaterialWitness",
+      "Source3.KeygenMakeCertChronology",
+      "Source3.KeygenMakeSearchTrace"
+    ],
+    "Source3.KeygenMakeMaterialWitness": [
+      "Source3.KeygenMakeCertMaterial",
+      "Source3.KeygenMakePublicCall",
+      "Source3.KeygenMakeWorkspaceTables"
+    ],
+    "Source3.KeygenMakeCertMaterial": [
+      "Source3.KeygenMakeSearchMaterial",
+      "Source3.KeygenMakePublicCall",
+      "Source3.KeygenMakeCertChronology"
+    ],
+    "Source3.KeygenMakeSearchMaterial": [
+      "Source3.KeygenMakeSearchTrace"
+    ],
+    "Source3.KeygenMakeSearchTrace": [
+      "Source3.KeygenMakeSearchPrefix"
+    ],
+    "Source3.KeygenMakeSearchPrefix": [
+      "Source3.KeygenMakeLocalFrame",
+      "Source3.KeygenMakeArguments"
+    ],
+    "Source3.KeygenMakeLocalFrame": [
+      "Source3.KeygenMakeReadySampling",
+      "Source3.KeygenCallerSuccess"
+    ],
+    "Source3.KeygenMakeReadySampling": [
+      "Source3.KeygenMakeReady",
+      "Source3.KeygenMakeSampling"
+    ],
+    "Source3.KeygenMakeSampling": [
+      "Source3.KeygenMakePrologue"
+    ],
+    "Source3.KeygenMakePublicCall": [
+      "Source3.KeygenMakeSearchMaterial",
+      "Source3.KeygenPublicAccepted"
+    ],
+    "Source3.KeygenPublicAccepted": [
+      "Source3.KeygenPublicParameterFrames"
+    ],
+    "Source3.KeygenPublicParameterFrames": [
+      "Source3.KeygenPublicEquations"
+    ],
+    "Source3.KeygenPublicEquations": [
+      "Source3.KeygenPublicEvaluationIso",
+      "Source3.KeygenPublicNormalizeMaterial"
+    ],
+    "Source3.KeygenPublicEvaluationIso": [
+      "Source3.KeygenPublicNormalizePolynomial",
+      "Run2.QuotientOperations"
+    ],
+    "Source3.KeygenPublicNormalizePolynomial": [
+      "Source3.KeygenPublicNormalizeEntry"
+    ],
+    "Source3.KeygenPublicNormalizeEntry": [
+      "Source3.KeygenPublicNormalizeFold"
+    ],
+    "Source3.KeygenPublicNormalizeFold": [
+      "Source3.KeygenPublicNormalizeAtoms"
+    ],
+    "Source3.KeygenPublicNormalizeAtoms": [
+      "Source3.KeygenPublicNormalizeProgram"
+    ],
+    "Source3.KeygenPublicNormalizeProgram": [
+      "Source3.KeygenPublicRootInverseMaterial"
+    ],
+    "Source3.KeygenPublicRootInverseMaterial": [
+      "Source3.KeygenPublicRootInverseEntry"
+    ],
+    "Source3.KeygenPublicRootInverseEntry": [
+      "Source3.KeygenPublicRootInversePolynomial"
+    ],
+    "Source3.KeygenPublicRootInversePolynomial": [
+      "Source3.KeygenPublicRootInverseFold",
+      "Source3.KeygenPublicReverseReconstruction"
+    ],
+    "Source3.KeygenPublicRootInverseFold": [
+      "Source3.KeygenPublicRootInverseValues"
+    ],
+    "Source3.KeygenPublicRootInverseValues": [
+      "Source3.KeygenPublicRootInverseProgram"
+    ],
+    "Source3.KeygenPublicRootInverseProgram": [
+      "Source3.KeygenPublicReverseMaterial"
+    ],
+    "Source3.KeygenPublicReverseMaterial": [
+      "Source3.KeygenPublicReverseCalls"
+    ],
+    "Source3.KeygenPublicReverseCalls": [
+      "Source3.KeygenPublicReverseInvocation"
+    ],
+    "Source3.KeygenPublicReverseInvocation": [
+      "Source3.KeygenPublicReverseEntry"
+    ],
+    "Source3.KeygenPublicReverseEntry": [
+      "Source3.KeygenPublicReverseStages"
+    ],
+    "Source3.KeygenPublicReverseStages": [
+      "Source3.KeygenPublicReverseRows"
+    ],
+    "Source3.KeygenPublicReverseRows": [
+      "Source3.KeygenPublicReverseRow"
+    ],
+    "Source3.KeygenPublicReverseRow": [
+      "Source3.KeygenPublicReverseFold"
+    ],
+    "Source3.KeygenPublicReverseFold": [
+      "Source3.KeygenPublicReverseValues"
+    ],
+    "Source3.KeygenPublicReverseValues": [
+      "Source3.KeygenPublicReverseProgram"
+    ],
+    "Source3.KeygenPublicReverseProgram": [
+      "Source3.KeygenPublicInverseMaterial"
+    ],
+    "Source3.KeygenPublicInverseMaterial": [
+      "Source3.KeygenPublicInverseCalls"
+    ],
+    "Source3.KeygenPublicInverseCalls": [
+      "Source3.KeygenPublicInverseInvocation",
+      "Source3.KeygenPublicSuccessfulSuffix"
+    ],
+    "Source3.KeygenPublicInverseInvocation": [
+      "Source3.KeygenPublicInverseEntry"
+    ],
+    "Source3.KeygenPublicInverseEntry": [
+      "Source3.KeygenPublicInverseFold"
+    ],
+    "Source3.KeygenPublicInverseFold": [
+      "Source3.KeygenPublicInverseValues"
+    ],
+    "Source3.KeygenPublicInverseValues": [
+      "Source3.KeygenPublicInverseTables",
+      "Source3.KeygenPublicTripleFold"
+    ],
+    "Source3.KeygenPublicInverseTables": [
+      "Source3.KeygenPublicInverseProgram"
+    ],
+    "Source3.KeygenPublicInverseProgram": [
+      "Source3.KeygenPublicValueLists"
+    ],
+    "Source3.KeygenPublicValueLists": [
+      "Source3.KeygenPublicTripleExpr"
+    ],
+    "Source3.KeygenPublicTripleExpr": [
+      "Source3.KeygenPublicTripleProgram"
+    ],
+    "Source3.KeygenPublicTripleProgram": [
+      "Source3.KeygenPublicRadixInvocation"
+    ],
+    "Source3.KeygenPublicRadixInvocation": [
+      "Source3.KeygenPublicRadixEntry"
+    ],
+    "Source3.KeygenPublicRadixEntry": [
+      "Source3.KeygenPublicRadixStages"
+    ],
+    "Source3.KeygenPublicRadixStages": [
+      "Source3.KeygenPublicRadixRows"
+    ],
+    "Source3.KeygenPublicRadixRows": [
+      "Source3.KeygenPublicRadixRow"
+    ],
+    "Source3.KeygenPublicRadixRow": [
+      "Source3.KeygenPublicValueFrames"
+    ],
+    "Source3.KeygenPublicValueFrames": [
+      "Source3.KeygenPublicSizeOps"
+    ],
+    "Source3.KeygenPublicSizeOps": [
+      "Source3.KeygenPublicRadixProgram"
+    ],
+    "Source3.KeygenPublicRadixProgram": [
+      "Source3.KeygenPublicTripleOrder"
+    ],
+    "Source3.KeygenPublicTripleOrder": [
+      "Source3.KeygenPublicSplitPolynomial"
+    ],
+    "Source3.KeygenPublicSplitPolynomial": [
+      "Source3.KeygenPublicRadixFold"
+    ],
+    "Source3.KeygenPublicRadixFold": [
+      "Source3.KeygenPublicRadixValues"
+    ],
+    "Source3.KeygenPublicRadixValues": [
+      "Source3.KeygenPublicFirstMaterial"
+    ],
+    "Source3.KeygenPublicFirstMaterial": [
+      "Source3.KeygenPublicFirstCalls"
+    ],
+    "Source3.KeygenPublicFirstCalls": [
+      "Source3.KeygenPublicFirstInvocation"
+    ],
+    "Source3.KeygenPublicFirstInvocation": [
+      "Source3.KeygenPublicFirstEntry"
+    ],
+    "Source3.KeygenPublicFirstEntry": [
+      "Source3.KeygenPublicFirstTables"
+    ],
+    "Source3.KeygenPublicFirstTables": [
+      "Source3.KeygenPublicFirstFold"
+    ],
+    "Source3.KeygenPublicFirstFold": [
+      "Source3.KeygenPublicFirstPolynomial"
+    ],
+    "Source3.KeygenPublicFirstPolynomial": [
+      "Source3.KeygenPublicFirstValues"
+    ],
+    "Source3.KeygenPublicFirstValues": [
+      "Source3.KeygenPublicValueExpr"
+    ],
+    "Source3.KeygenPublicValueExpr": [
+      "Source3.KeygenPublicInputLifetime"
+    ],
+    "Source3.KeygenPublicInputLifetime": [
+      "Source3.KeygenPublicInputBridge"
+    ],
+    "Source3.KeygenPublicInputBridge": [
+      "Source3.KeygenPublicInputCalls"
+    ],
+    "Source3.KeygenPublicInputCalls": [
+      "Source3.KeygenPublicInputSetup"
+    ],
+    "Source3.KeygenPublicInputSetup": [
+      "Source3.KeygenPublicInputMaterial"
+    ],
+    "Source3.KeygenPublicInputMaterial": [
+      "Source3.KeygenPublicInputLoop"
+    ],
+    "Source3.KeygenPublicInputLoop": [
+      "Source3.KeygenPublicInputAtoms"
+    ],
+    "Source3.KeygenPublicInputAtoms": [
+      "Source3.KeygenPublicInputCells"
+    ],
+    "Source3.KeygenPublicInputCells": [
+      "Source3.KeygenPublicInputProgram"
+    ],
+    "Source3.KeygenPublicInputProgram": [
+      "Source3.KeygenPublicForwardWrapper"
+    ],
+    "Source3.KeygenPublicForwardWrapper": [
+      "Source3.KeygenPublicForwardRange"
+    ],
+    "Source3.KeygenPublicForwardRange": [
+      "Source3.KeygenPublicForwardCall"
+    ],
+    "Source3.KeygenPublicForwardCall": [
+      "Source3.KeygenPublicForwardControl"
+    ],
+    "Source3.KeygenPublicForwardControl": [
+      "Source3.KeygenPublicForwardMemory"
+    ],
+    "Source3.KeygenPublicForwardMemory": [
+      "Source3.KeygenPublicForwardProgram"
+    ],
+    "Source3.KeygenPublicForwardProgram": [
+      "Source3.KeygenPublicRangeExec"
+    ],
+    "Source3.KeygenPublicRangeExec": [
+      "Source3.KeygenPublicRangeExpr"
+    ],
+    "Source3.KeygenPublicRangeExpr": [
+      "Source3.KeygenPublicRangeMemory"
+    ],
+    "Source3.KeygenPublicRangeMemory": [
+      "Source3.KeygenPublicUpperImages"
+    ],
+    "Source3.KeygenPublicUpperImages": [
+      "Source3.KeygenPublicUpperFinish"
+    ],
+    "Source3.KeygenPublicUpperFinish": [
+      "Source3.KeygenPublicUpperLoops"
+    ],
+    "Source3.KeygenPublicUpperLoops": [
+      "Source3.KeygenPublicUpperFrames"
+    ],
+    "Source3.KeygenPublicUpperFrames": [
+      "Source3.KeygenPublicUpperBody"
+    ],
+    "Source3.KeygenPublicUpperBody": [
+      "Source3.KeygenPublicUpperAtoms"
+    ],
+    "Source3.KeygenPublicUpperAtoms": [
+      "Source3.KeygenPublicUpperProgram"
+    ],
+    "Source3.KeygenPublicUpperProgram": [
+      "Source3.KeygenPublicLastRow"
+    ],
+    "Source3.KeygenPublicLastRow": [
+      "Source3.KeygenPublicLastEntry"
+    ],
+    "Source3.KeygenPublicLastEntry": [
+      "Source3.KeygenPublicLastLoop"
+    ],
+    "Source3.KeygenPublicLastLoop": [
+      "Source3.KeygenPublicLastBody"
+    ],
+    "Source3.KeygenPublicLastBody": [
+      "Source3.KeygenPublicTableStore",
+      "Source3.KeygenMkgm3Table"
+    ],
+    "Source3.KeygenPublicTableStore": [
+      "Source3.KeygenPublicTableIndex"
+    ],
+    "Source3.KeygenPublicTableIndex": [
+      "Source3.KeygenPublicLastProgram",
+      "Source3.KeygenNttLoopSupport"
+    ],
+    "Source3.KeygenPublicLastProgram": [
+      "Source3.KeygenPublicTableControl",
+      "Source3.KeygenPublicRevCert",
+      "Source3.KeygenPublicTableCells"
+    ],
+    "Source3.KeygenPublicTableControl": [
+      "Source3.KeygenPublicTableRows"
+    ],
+    "Source3.KeygenPublicTableRows": [
+      "Source3.KeygenPublicTableSeed"
+    ],
+    "Source3.KeygenPublicTableSeed": [
+      "Source3.KeygenPublicTableAtoms",
+      "Source3.KeygenPublicRoots"
+    ],
+    "Source3.KeygenPublicTableAtoms": [
+      "Source3.KeygenPublicSource",
+      "Source3.KeygenPublicDivisionAlgebra"
+    ],
+    "Source3.KeygenPublicDivisionAlgebra": [
+      "Source3.KeygenPublicDivisionWords",
+      "Mathlib.FieldTheory.Finite.Basic"
+    ],
+    "Source3.KeygenPublicDivisionWords": [
+      "Source3.KeygenPublicSquare"
+    ],
+    "Source3.KeygenPublicSquare": [
+      "Source3.KeygenPublicArguments"
+    ],
+    "Source3.KeygenPublicArguments": [
+      "Source3.KeygenPublicAlgebra"
+    ],
+    "Source3.KeygenPublicAlgebra": [
+      "Source3.KeygenPublicMontgomery",
+      "Mathlib.Algebra.Field.ZMod",
+      "Mathlib.Tactic.NormNum.Prime"
+    ],
+    "Source3.KeygenPublicMontgomery": [
+      "Source3.KeygenPublicLeafWords"
+    ],
+    "Source3.KeygenPublicLeafWords": [
+      "Source3.KeygenPublicLinear",
+      "Source3.KeygenModpSet"
+    ],
+    "Source3.KeygenPublicLinear": [
+      "Source3.KeygenPublicScalar"
+    ],
+    "Source3.KeygenPublicRoots": [
+      "Source3.KeygenPublicAlgebra",
+      "Source3.KeygenMkgm3IndexCert",
+      "Run2.CoefficientQuotient",
+      "Mathlib.Algebra.Polynomial.Roots"
+    ],
+    "Source3.KeygenPublicRevCert": [
+      "Source3.KeygenPublicRev",
+      "Source3.KeygenMkgm3IndexCert"
+    ],
+    "Source3.KeygenPublicRev": [
+      "Source3.KeygenPublicScalarControl",
+      "Source3.KeygenPublicArguments",
+      "Source3.C99DivWhileProof",
+      "Source3.KeygenRev10"
+    ],
+    "Source3.KeygenPublicScalarControl": [
+      "Source3.KeygenPublicLinear"
+    ],
+    "Source3.KeygenPublicTableCells": [
+      "Source3.KeygenPublicTableRows",
+      "Source3.KeygenResidueVectors"
+    ],
+    "Source3.KeygenPublicTripleFold": [
+      "Source3.KeygenPublicTripleValues"
+    ],
+    "Source3.KeygenPublicTripleValues": [
+      "Source3.KeygenPublicValueLists"
+    ],
+    "Source3.KeygenPublicSuccessfulSuffix": [
+      "Source3.KeygenPublicSuffixLoop"
+    ],
+    "Source3.KeygenPublicSuffixLoop": [
+      "Source3.KeygenPublicSuffixBody"
+    ],
+    "Source3.KeygenPublicSuffixBody": [
+      "Source3.KeygenPublicSuffixAtoms"
+    ],
+    "Source3.KeygenPublicSuffixAtoms": [
+      "Source3.KeygenPublicSuffixProgram"
+    ],
+    "Source3.KeygenPublicSuffixProgram": [
+      "Source3.KeygenPublicCommonMaterial"
+    ],
+    "Source3.KeygenPublicCommonMaterial": [
+      "Source3.KeygenPublicCommonCalls"
+    ],
+    "Source3.KeygenPublicCommonCalls": [
+      "Source3.KeygenPublicEvaluationMaterial"
+    ],
+    "Source3.KeygenPublicEvaluationMaterial": [
+      "Source3.KeygenPublicEvaluationCalls"
+    ],
+    "Source3.KeygenPublicEvaluationCalls": [
+      "Source3.KeygenPublicEvaluation"
+    ],
+    "Source3.KeygenPublicEvaluation": [
+      "Source3.KeygenPublicTripleFold",
+      "Source3.KeygenPublicRadixPolynomial"
+    ],
+    "Source3.KeygenPublicRadixPolynomial": [
+      "Source3.KeygenPublicRootTree"
+    ],
+    "Source3.KeygenPublicRootTree": [
+      "Source3.KeygenPublicRadixInvocation",
+      "Source3.KeygenNttTwiddleCert"
+    ],
+    "Source3.KeygenPublicReverseReconstruction": [
+      "Source3.KeygenPublicReversePolynomial"
+    ],
+    "Source3.KeygenPublicReversePolynomial": [
+      "Source3.KeygenPublicInverseTriplePolynomial"
+    ],
+    "Source3.KeygenPublicInverseTriplePolynomial": [
+      "Source3.KeygenPublicReverseMaterial"
+    ],
+    "Source3.KeygenPublicNormalizeMaterial": [
+      "Source3.KeygenPublicNormalizePolynomial"
+    ],
+    "Source3.KeygenMakeCertChronology": [
+      "Source3.KeygenMakeCertCall",
+      "Source3.KeygenMakeSearchTrace"
+    ],
+    "Source3.KeygenMakeCertCall": [
+      "Source3.KeygenMakeSearchPrefix",
+      "Source3.CertificateM0Environment"
+    ],
+    "Source3.KeygenMakeWorkspaceTables": [
+      "Source3.KeygenMakeWorkspaceRelocation",
+      "Source3.KeygenMakeCertMaterial"
+    ],
+    "Source3.KeygenMakeWorkspaceRelocation": [
+      "Source3.KeygenMakeCertCall",
+      "Source3.C99InitializationTrace"
+    ],
+    "Source3.KeygenMakeAttemptSpineAudit": [
+      "Source3.KeygenMakeAttemptSpine",
+      "Source3.CertificateM0Environment",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenMakeAudit": [
+      "Source3.KeygenMakeSyntax",
+      "Source3.KeygenMakeTokens",
+      "Source3.KeygenMakeGrammar",
+      "Source3.KeygenMakeAtomProbe",
+      "Source3.KeygenMakeExpressionProbe",
+      "Source3.KeygenMakeBindingPart00",
+      "Source3.KeygenMakeBindingPart01",
+      "Source3.KeygenMakeBindingPart02",
+      "Source3.KeygenMakeBindingPart03",
+      "Source3.KeygenMakeBindingPart04",
+      "Source3.KeygenMakeBindingPart05",
+      "Source3.KeygenMakeBindingPart06",
+      "Source3.KeygenMakeBindingPart07",
+      "Source3.KeygenMakeBindingPart08",
+      "Source3.KeygenMakeBindingPart09",
+      "Source3.KeygenMakeBindingPart10",
+      "Source3.KeygenMakeBindingPart11",
+      "Source3.KeygenMakeBinding",
+      "Source3.KeygenMakeProgram",
+      "Source3.KeygenMakeLifetime",
+      "Source3.KeygenPublicAccepted",
+      "Source3.KeygenRootCaller",
+      "Source3.KeygenMakeReadySampling",
+      "Source3.CertificateM0Environment",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenMakeExpressionProbe": [
+      "Source3.KeygenMakeGrammar"
+    ],
+    "Source3.KeygenMakeCertAudit": [
+      "Source3.KeygenMakeCertCall",
+      "Source3.KeygenMakeCertChronology",
+      "Source3.KeygenMakeCertMaterial",
+      "Source3.CertificateM0Environment",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenMakeCertRelocation": [
+      "Source3.KeygenMakeWorkspaceAllocation",
+      "Source3.KeygenMakeWorkspaceTables"
+    ],
+    "Source3.KeygenMakeWorkspaceAllocation": [
+      "Source3.KeygenMakeWorkspaceBridge",
+      "Source3.KeygenMakeWorkspaceExtent"
+    ],
+    "Source3.KeygenMakeWorkspaceBridge": [
+      "Source3.KeygenMakeWorkspaceRelocation",
+      "Source3.KeygenMakeCertMaterial",
+      "Source3.KeygenMkgm3Layout"
+    ],
+    "Source3.KeygenMakeWorkspaceExtent": [
+      "Source3.CertificateWorkspace",
+      "Source3.KeygenSource"
+    ],
+    "Source3.KeygenMakeCertRelocationAudit": [
+      "Source3.KeygenMakeCertRelocation",
+      "Source3.CertificateM0Environment",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenMakeEntryAudit": [
+      "Source3.KeygenMakeObjects",
+      "Source3.KeygenMakeEntry",
+      "Source3.KeygenReadyFast",
+      "Source3.KeygenMakePrologue",
+      "Source3.KeygenMakeSampling",
+      "Source3.KeygenMakePreprocess",
+      "Source3.KeygenPublicAccepted",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenMakeInvocation": [
+      "Source3.KeygenMakeStatementMachine",
+      "Source3.KeygenMakeArguments",
+      "Source3.KeygenMakeCertChronology"
+    ],
+    "Source3.KeygenMakeStatementMachine": [
+      "Source3.KeygenMakeAttemptSpine",
+      "Source3.KeygenMakeRetryTransport",
+      "Source3.KeygenMakeWorkspaceAllocation",
+      "Source3.KeygenMakeCertRelocation"
+    ],
+    "Source3.KeygenMakeRetryTransport": [
+      "Source3.KeygenMakeRetryFrames",
+      "Source3.KeygenMakeCertMaterial"
+    ],
+    "Source3.KeygenMakeRetryFrames": [
+      "Source3.KeygenMakeAttemptSpine",
+      "Source3.KeygenMakeWorkspaceAllocation",
+      "Source3.CertificateFunctionFrame"
+    ],
+    "Source3.KeygenMakeInvocationAudit": [
+      "Source3.KeygenMakeInvocation",
+      "Source3.CertificateM0Environment",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenMakeMaterialWitnessAudit": [
+      "Source3.KeygenMakeMaterialWitness",
+      "Source3.CertificateM0Environment",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenMakeRetryFramesAudit": [
+      "Source3.KeygenMakeRetryFrames",
+      "Source3.CertificateM0Environment",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenMakeRetryTransportAudit": [
+      "Source3.KeygenMakeRetryTransport",
+      "Source3.CertificateM0Environment",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenMakeSearchAudit": [
+      "Source3.KeygenMakeArguments",
+      "Source3.KeygenMakeLocalFrame",
+      "Source3.KeygenMakeSearchPrefix",
+      "Source3.KeygenMakeSearchTrace",
+      "Source3.KeygenMakeSearchMaterial",
+      "Source3.KeygenMakePublicCall",
+      "Source3.CertificateM0Environment",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenMakeStatementMachineAudit": [
+      "Source3.KeygenMakeStatementMachine",
+      "Source3.CertificateM0Environment",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenMakeWorkspaceAllocationAudit": [
+      "Source3.KeygenMakeWorkspaceAllocation",
+      "Source3.CertificateM0Environment",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenMakeWorkspaceAudit": [
+      "Source3.KeygenMakeWorkspaceRelocation",
+      "Source3.KeygenMakeWorkspaceBridge",
+      "Source3.KeygenMakeWorkspaceTables",
+      "Source3.KeygenMakeWorkspaceExtent",
+      "Source3.CertificateM0Environment",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenMandatory": [
+      "Source3.KeygenCPP",
+      "B20.C.ByteMemory"
+    ],
+    "Source3.KeygenMkgm3Audit": [
+      "Source3.KeygenMkgm3",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenModpR2Audit": [
+      "Source3.KeygenModpR2",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenModpSetProbe": [
+      "Source3.KeygenHelpers"
+    ],
+    "Source3.KeygenNttTransformAudit": [
+      "Source3.KeygenNttTransform",
+      "Source3.KeygenNttEvaluation",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenNttValuesAudit": [
+      "Source3.KeygenNttFirstComposition",
+      "Source3.KeygenNttSubpolynomial",
+      "Source3.KeygenNttRoots",
+      "Source3.ExprAuditDag",
+      "Source3.KeygenNttEvaluation",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenPublicAcceptedAudit": [
+      "Source3.KeygenPublicRootInverseProgram",
+      "Source3.KeygenPublicRootInverseValues",
+      "Source3.KeygenPublicRootInverseFold",
+      "Source3.KeygenPublicRootInversePolynomial",
+      "Source3.KeygenPublicRootInverseEntry",
+      "Source3.KeygenPublicRootInverseMaterial",
+      "Source3.KeygenPublicNormalizeProgram",
+      "Source3.KeygenPublicNormalizeAtoms",
+      "Source3.KeygenPublicNormalizeFold",
+      "Source3.KeygenPublicNormalizeEntry",
+      "Source3.KeygenPublicNormalizePolynomial",
+      "Source3.KeygenPublicNormalizeMaterial",
+      "Source3.KeygenPublicEvaluationIso",
+      "Source3.KeygenPublicEquations",
+      "Source3.KeygenPublicParameterFrames",
+      "Source3.KeygenPublicAccepted",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenPublicAudit": [
+      "Source3.KeygenPublicLinear",
+      "Source3.KeygenPublicLeafWords",
+      "Source3.KeygenPublicMontgomery",
+      "Source3.KeygenPublicAlgebra",
+      "Source3.KeygenPublicArguments",
+      "Source3.KeygenPublicSquare",
+      "Source3.KeygenPublicDivisionWords",
+      "Source3.KeygenPublicDivisionAlgebra",
+      "Source3.KeygenPublicRoots",
+      "Source3.KeygenPublicSource",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenPublicEvaluationAudit": [
+      "Source3.KeygenPublicRadixProgram",
+      "Source3.KeygenPublicSizeOps",
+      "Source3.KeygenPublicValueFrames",
+      "Source3.KeygenPublicRadixRow",
+      "Source3.KeygenPublicRadixRows",
+      "Source3.KeygenPublicRadixStages",
+      "Source3.KeygenPublicRadixEntry",
+      "Source3.KeygenPublicRadixInvocation",
+      "Source3.KeygenPublicRootTree",
+      "Source3.KeygenPublicRadixPolynomial",
+      "Source3.KeygenPublicTripleProgram",
+      "Source3.KeygenPublicTripleExpr",
+      "Source3.KeygenPublicValueLists",
+      "Source3.KeygenPublicTripleValues",
+      "Source3.KeygenPublicTripleFold",
+      "Source3.KeygenPublicEvaluation",
+      "Source3.KeygenPublicEvaluationCalls",
+      "Source3.KeygenPublicEvaluationMaterial",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenPublicFirstAudit": [
+      "Source3.KeygenPublicFirstTables",
+      "Source3.KeygenPublicFirstEntry",
+      "Source3.KeygenPublicFirstInvocation",
+      "Source3.KeygenPublicFirstCalls",
+      "Source3.KeygenPublicFirstMaterial",
+      "Source3.KeygenPublicRadixValues",
+      "Source3.KeygenPublicRadixFold",
+      "Source3.KeygenPublicSplitPolynomial",
+      "Source3.KeygenPublicTripleOrder",
+      "Source3.KeygenPublicFirstFold",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenPublicFirstFoldAxioms": [
+      "Source3.KeygenPublicFirstFold"
+    ],
+    "Source3.KeygenPublicForwardAudit": [
+      "Source3.KeygenPublicRangeMemory",
+      "Source3.KeygenPublicRangeExpr",
+      "Source3.KeygenPublicRangeExec",
+      "Source3.KeygenPublicForwardProgram",
+      "Source3.KeygenPublicForwardMemory",
+      "Source3.KeygenPublicForwardControl",
+      "Source3.KeygenPublicForwardCall",
+      "Source3.KeygenPublicForwardRange",
+      "Source3.KeygenPublicForwardWrapper",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenPublicInputAudit": [
+      "Source3.KeygenPublicInputProgram",
+      "Source3.KeygenPublicInputCells",
+      "Source3.KeygenPublicInputAtoms",
+      "Source3.KeygenPublicInputLoop",
+      "Source3.KeygenPublicInputMaterial",
+      "Source3.KeygenPublicInputSetup",
+      "Source3.KeygenPublicInputCalls",
+      "Source3.KeygenPublicInputBridge",
+      "Source3.KeygenPublicInputLifetime",
+      "Source3.KeygenPublicValueExpr",
+      "Source3.KeygenPublicFirstValues",
+      "Source3.KeygenPublicFirstPolynomial",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenPublicInputProbe": [
+      "Source3.KeygenPublicForwardWrapper"
+    ],
+    "Source3.KeygenPublicInverseAudit": [
+      "Source3.KeygenPublicInverseProgram",
+      "Source3.KeygenPublicInverseTables",
+      "Source3.KeygenPublicInverseValues",
+      "Source3.KeygenPublicInverseFold",
+      "Source3.KeygenPublicInverseEntry",
+      "Source3.KeygenPublicInverseInvocation",
+      "Source3.KeygenPublicInverseCalls",
+      "Source3.KeygenPublicInverseMaterial",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenPublicLastAudit": [
+      "Source3.KeygenPublicTableControl",
+      "Source3.KeygenPublicLastProgram",
+      "Source3.KeygenPublicTableIndex",
+      "Source3.KeygenPublicTableStore",
+      "Source3.KeygenPublicLastBody",
+      "Source3.KeygenPublicLastLoop",
+      "Source3.KeygenPublicLastEntry",
+      "Source3.KeygenPublicLastRow",
+      "Source3.KeygenPublicUpperProgram",
+      "Source3.KeygenPublicUpperAtoms",
+      "Source3.KeygenPublicUpperBody",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenPublicRevProbe": [
+      "Source3.KeygenPublicScalarControl"
+    ],
+    "Source3.KeygenPublicReverseAudit": [
+      "Source3.KeygenPublicReverseProgram",
+      "Source3.KeygenPublicReverseValues",
+      "Source3.KeygenPublicReverseFold",
+      "Source3.KeygenPublicReverseRow",
+      "Source3.KeygenPublicReverseRows",
+      "Source3.KeygenPublicReverseStages",
+      "Source3.KeygenPublicReverseEntry",
+      "Source3.KeygenPublicReverseInvocation",
+      "Source3.KeygenPublicReverseCalls",
+      "Source3.KeygenPublicReverseMaterial",
+      "Source3.KeygenPublicInverseTriplePolynomial",
+      "Source3.KeygenPublicReversePolynomial",
+      "Source3.KeygenPublicReverseReconstruction",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenPublicSuffixAudit": [
+      "Source3.KeygenPublicCommonCalls",
+      "Source3.KeygenPublicCommonMaterial",
+      "Source3.KeygenPublicSuffixProgram",
+      "Source3.KeygenPublicSuffixAtoms",
+      "Source3.KeygenPublicSuffixBody",
+      "Source3.KeygenPublicSuffixLoop",
+      "Source3.KeygenPublicSuccessfulSuffix",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenPublicTablesAudit": [
+      "Source3.KeygenPublicScalarControl",
+      "Source3.KeygenPublicRev",
+      "Source3.KeygenPublicRevCert",
+      "Source3.KeygenPublicTableAtoms",
+      "Source3.KeygenPublicTableSeed",
+      "Source3.KeygenPublicTableRows",
+      "Source3.KeygenPublicTableCells",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenPublicUpperAudit": [
+      "Source3.KeygenPublicUpperFrames",
+      "Source3.KeygenPublicUpperLoops",
+      "Source3.KeygenPublicUpperFinish",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenResidueAudit": [
+      "Source3.KeygenResidueVectors"
+    ],
+    "Source3.KeygenRngAdequacy": [
+      "Source3.KeygenMakeReadySampling"
+    ],
+    "Source3.KeygenRngAudit": [
+      "Source3.ShakeSeedMemory",
+      "Source3.ShakeSeedProgram",
+      "Source3.ShakeSeedReference",
+      "Source3.KeygenEntropySource",
+      "Source3.KeygenRngProgram",
+      "Source3.KeygenRngReference",
+      "Source3.KeygenRngFrame",
+      "Source3.KeygenReadyResult",
+      "Source3.KeygenMakeReady",
+      "Source3.KeygenMakeReadySampling",
+      "Source3.KeygenRngAdequacy",
+      "Source3.KeygenMakePreprocess",
+      "Source3.KeygenPublicAccepted",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenRootAudit": [
+      "Source3.KeygenRootSearch",
+      "Source3.KeygenRootControl",
+      "Source3.KeygenMemoryStability",
+      "Source3.KeygenHelperStability",
+      "Source3.KeygenSearchStability",
+      "Source3.KeygenRootObjects",
+      "Source3.KeygenRootValidationSource",
+      "Source3.KeygenRootValidation",
+      "Source3.KeygenRootSource",
+      "Source3.KeygenRootCaller",
+      "Source3.KeygenRootCoverage",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenSearchAudit": [
+      "Source3.KeygenSearchFft",
+      "Source3.KeygenSearchProbe",
+      "Source3.KeygenSearchMemory",
+      "Source3.KeygenSearchLeaves",
+      "Source3.KeygenSearchContext",
+      "Source3.KeygenSearchExec",
+      "Source3.KeygenSearchFrame",
+      "Source3.KeygenSearchParser",
+      "Source3.KeygenDepth0Source",
+      "Source3.KeygenDepth0Call",
+      "Source3.KeygenDepth0Return",
+      "Source3.KeygenSamplerCalls",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenSmallBoundsAudit": [
+      "Source3.KeygenSmallCalls",
+      "Source3.KeygenTernaryStore",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenSolverValidationAudit": [
+      "Source3.KeygenSolverValidation",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.KeygenZintAudit": [
+      "Source3.KeygenZintCall",
+      "Source3.KeygenZintExtract",
+      "Source3.KeygenZintCore",
+      "Source3.KeygenZintTop",
+      "Source3.KeygenZintPoly",
+      "Source3.KeygenZintScaled",
+      "Source3.KeygenPolySubScaled",
+      "Source3.KeygenBinaryNtt",
+      "Source3.KeygenMakeFgSource",
+      "Source3.KeygenDeepestSource",
+      "Source3.KeygenDepth0Call",
+      "Lean.Util.CollectAxioms"
+    ],
+    "Source3.StableBinary003Audit": [
+      "Source3.StableBinary003Outcome",
+      "Source3.C99CompletenessObligations"
+    ],
+    "Source3.StableBinary003Exports": [
+      "Source3.StableBinary003Outcome",
+      "Source3.C99CompletenessObligations",
+      "Source3.StableBinary003Audit"
+    ],
+    "Source3.StableBinary004Audit": [
+      "Source3.StableBinary004Outcome",
+      "Source3.C99HelperOrders"
+    ],
+    "Source3.StableBinary004Exports": [
+      "Source3.StableBinary004Outcome",
+      "Source3.StableBinary004Audit"
+    ],
+    "Source3.StableTop001Audit": [
+      "Source3.StableTop001Outcome"
+    ],
+    "Source3.StableTop001Exports": [
+      "Source3.StableTop001Outcome",
+      "Source3.StableTop001Audit"
+    ],
+    "Source3.StableTopBootstrap": [
+      "Source3.StableBinary004Outcome"
+    ]
+  },
+  "stale_excluded": [
+    "Source3.KeygenZintProbe",
+    "Source3.KeygenPinProbe",
+    "Source3.KeygenTokenPinProbe"
+  ],
+  "excluded_reachable": []
+}

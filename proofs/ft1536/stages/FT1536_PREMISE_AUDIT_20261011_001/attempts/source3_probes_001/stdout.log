@@ -1,0 +1,37 @@
+/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/attempts/source3_probes_001/Source3Probes.lean:39:26: error: Insufficient number of fields for `⟨...⟩` constructor: Constructor `FT1536.Source3.C99ArrayReference.State.mk` has 5 explicit field, but only 4 were provided
+/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/attempts/source3_probes_001/Source3Probes.lean:39:27: error: Application type mismatch: The argument
+  fun x => none
+has type
+  (x : ?m.3) → Option (?m.5 x)
+but is expected to have type
+  Memory
+in the application
+  State.mk fun x => none
+/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/attempts/source3_probes_001/Source3Probes.lean:47:27: error: unexpected token '('; expected 'else'
+/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/attempts/source3_probes_001/Source3Probes.lean:52:2: error: failed to synthesize
+  Decidable (KeygenMakeSearchPrefix.Dimensions dimensionState)
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/attempts/source3_probes_001/Source3Probes.lean:65:4: error: Dependent elimination failed: Failed to solve equation
+  (match ctx.virtualBase ctx.scratch.block + ctx.scratch.offset, 2 ^ 64 with
+    | 0, x => 0
+    | n@h:n_1.succ, m => if m ≤ n then n.modCore m else n) =
+    Nat.bitwise or (BitVec.shiftLeftZeroExtend (bytes 7) (8 + (8 + (8 + (8 + (8 + (8 + 8))))))).toNat
+      (BitVec.setWidth' ⋯ (bytes 6 ++ (bytes 5 ++ (bytes 4 ++ (bytes 3 ++ (bytes 2 ++ (bytes 1 ++ bytes 0))))))).toNat
+/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/attempts/source3_probes_001/Source3Probes.lean:102:67: error: failed to synthesize
+  Decidable (Allocated wordMemory wordPointer)
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+'FT1536.PremiseAudit.no_virtual_legal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.PremiseAudit.invocation_only_failure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.PremiseAudit.no_successful_invocation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.PremiseAudit.no_all_state_dimensions' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536.PremiseAudit.dimensions_inhabited' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536.PremiseAudit.certbind_readonly' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536.PremiseAudit.all_workspace_iff_no_binding' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536.PremiseAudit.all_workspace_excludes_call' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FT1536.PremiseAudit.workspace_vacuous_nonzero_scratch' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.PremiseAudit.allocated_empty_false' depends on axioms: [propext, Quot.sound]
+'FT1536.PremiseAudit.allocated_witness' depends on axioms: [sorryAx]
+'FT1536.PremiseAudit.load64_witness' depends on axioms: [propext, sorryAx, Quot.sound]
+'FT1536.PremiseAudit.no_empty_law' depends on axioms: [propext, Classical.choice, Quot.sound]

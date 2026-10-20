@@ -1,0 +1,29 @@
+theorem FT1536.Source3.KeygenMandatory.source_break_requires_gate_call : ∀ {Memory : Type}
+  (calls : FT1536.Source3.KeygenMandatory.Calls Memory) (frame : FT1536.Source3.KeygenMandatory.Frame)
+  (before after : Memory),
+  FT1536.Source3.KeygenMandatory.LegalProfile frame →
+    (FT1536.Source3.KeygenMandatory.source.bind fun flow =>
+          FT1536.Source3.KeygenMandatory.execute calls frame flow before) =
+        some (FT1536.Source3.KeygenMandatory.Exit.acceptedBreak, after) →
+      ∃ args value,
+        List.mapM (FT1536.Source3.KeygenMandatory.resolve frame) FT1536.Source3.KeygenMandatory.program.args =
+            some args ∧
+          calls "ft_keygen_leaf_certificate".toList args before = some (value, after) ∧
+            FT1536.Source3.CLogic.truth value = true :=
+fun {Memory} calls frame before after hp hexec =>
+  FT1536.Source3.KeygenMandatory.break_requires_call calls frame before after hp
+    (Eq.mp
+      (congrArg (fun _a => _a = some (FT1536.Source3.KeygenMandatory.Exit.acceptedBreak, after))
+        (Option.bind_some FT1536.Source3.KeygenMandatory.program fun flow =>
+          FT1536.Source3.KeygenMandatory.execute calls frame flow before))
+      (Eq.mp
+        (congrArg
+          (fun _a =>
+            (_a.bind fun flow => FT1536.Source3.KeygenMandatory.execute calls frame flow before) =
+              some (FT1536.Source3.KeygenMandatory.Exit.acceptedBreak, after))
+          FT1536.Source3.KeygenMandatory.source_parses)
+        hexec))
+'FT1536.Source3.KeygenMandatory.source_parses' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FT1536.Source3.KeygenMandatory.source_break_requires_gate_call' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

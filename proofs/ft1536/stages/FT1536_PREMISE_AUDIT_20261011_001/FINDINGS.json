@@ -1,0 +1,83 @@
+{
+  "F01": {
+    "classification": "IMPOSSIBLE",
+    "premise": "VirtualLegal vb",
+    "consumer": [
+      {
+        "consumer": "FT1536.Source3.KeygenMakeInvocation.canonical_word_eq",
+        "binder": "legal",
+        "type": "FT1536.Source3.KeygenMakeInvocation.VirtualLegal vb",
+        "proof": true
+      },
+      {
+        "consumer": "FT1536.Source3.KeygenMakeInvocation.read_unique",
+        "binder": "legal",
+        "type": "FT1536.Source3.KeygenMakeInvocation.VirtualLegal vb",
+        "proof": true
+      },
+      {
+        "consumer": "FT1536.Source3.KeygenMakeInvocation.small_site_material",
+        "binder": "legal",
+        "type": "FT1536.Source3.KeygenMakeInvocation.VirtualLegal env.vb",
+        "proof": true
+      }
+    ],
+    "branch": "Invocation.encoded",
+    "proof": "FT1536.PremiseAudit.no_virtual_legal"
+  },
+  "F02": {
+    "classification": "IMPOSSIBLE",
+    "premise": "∀ s : State, Dimensions s",
+    "consumers": [
+      "FT1536.Source3.KeygenMakeInvocation.invocation_certificate"
+    ],
+    "proof": "FT1536.PremiseAudit.no_all_state_dimensions"
+  },
+  "F03": {
+    "classification": "VACUOUS",
+    "premise": "∀ s : State, LegalWorkspace s ctx together with an executed certificate call",
+    "consumers": [
+      "FT1536.Source3.KeygenMakeAttemptSpine.attempt_spine",
+      "FT1536.Source3.KeygenMakeInvocation.invocation_certificate"
+    ],
+    "proof": "FT1536.PremiseAudit.attempt_spine_premises_impossible"
+  },
+  "F04": {
+    "classification": "IMPOSSIBLE",
+    "premise": "UniformChallengeAt S",
+    "consumers": [
+      "FT1536.AdvPrg.assembled_hardness_substitution_chacha",
+      "FT1536.AdvPrg.end_to_end_assembled_theorem_statement_chacha",
+      "FT1536.Assembly.end_to_end_assembled_theorem_statement",
+      "FT1536.Assembly.end_to_end_assembled_theorem_statement_prgTerm",
+      "FT1536.Assembly.end_to_end_assembled_theorem_attemptFactor",
+      "FT1536.Assembly.exists_assembled_reducer",
+      "FT1536.Assembly.assembled_hardness_substitution",
+      "FT1536.HacGlue.localJointCertificate_of_named_premises",
+      "FT1536.HacGlue.localJointCertificate_of_named_premises_e",
+      "FT1536.HacGlue.localJointCertificate_of_pointwise_premises",
+      "FT1536.HacGlue.localJointCertificate_of_named_premises_attemptFactor",
+      "FT1536.ONoneGeometry.localJointCertificate_of_attemptFactor"
+    ],
+    "proof": "FT1536.PremiseAuditRun2.no_uniform_challenge_at"
+  },
+  "F05": {
+    "classification": "SUSPECT",
+    "premise": "positive global mass floor + TowerWhole + a point outside the fiber",
+    "consumers": [
+      "FT1536.T5Pointwise.machineStage_of_absErr_floor"
+    ],
+    "proof": "FT1536.PremiseAuditRun2.positive_floor_incompatible_with_fiber_support",
+    "note": "Conditional incompatibility; not a refutation of the lemma with its actual argument list."
+  },
+  "F06": {
+    "classification": "IMPOSSIBLE",
+    "premise": "ChaCha20PRFBound at delta < 1 - 2^448/2^n",
+    "consumers": [
+      "FT1536.AdvPrg.assembled_hardness_substitution_chacha",
+      "FT1536.AdvPrg.end_to_end_assembled_theorem_statement_chacha"
+    ],
+    "proof": "FT1536.PremiseAuditRun2.no_statistical_chacha_below_support_bound",
+    "note": "Known statistical obstruction; no such verdict about class-restricted CompPRGBound."
+  }
+}

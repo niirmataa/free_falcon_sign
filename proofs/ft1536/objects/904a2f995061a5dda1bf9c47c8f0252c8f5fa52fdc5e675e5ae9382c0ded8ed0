@@ -1,0 +1,584 @@
+# B4 synthesis — the delta -> e chain is now a two-premise problem (2026-10-02)
+
+Assembly record of the three parallel deliveries (B4/1 `JointDecomp.lean`,
+B4/2 `SignLayerSupport.lean`, B3/X `HashTo.lean`) as consumed by
+`SecondMoment.localJointCertificate_of_joint_bounds`.
+
+## The assembled shape
+
+    LocalJointCertificate S ((1+d1)*(1+d2)-1)
+
+- **Layer 1 (challenge)**: `UniformChallenge` (B3/X) gives `d1 = 0`
+  exactly -> `e = d2`. The exact variant of
+  `JointDecomp.localJointCertificate_of_joint_bounds` applies.
+- **Layer 2 (reply)**: `honestReply h c = signBody (syndrome h) c` is
+  PROVEN (B4/1) to be the conditional of `freshHonest h` -> the comparison
+  target is exactly `signBody`. B4/2's `layer2_of_obligations` gives
+  `AC + second <= 1 + e2` from one pointwise factor `k` on the trial law,
+  propagated as `e2 = k^32 - 1` through `cap 16 .map emit`.
+- **AC feasibility (the wrap-error question)**: RESOLVED by B4/2 — the
+  `delta` mass lands INSIDE the support (`emitted_reply_supported`,
+  `wrap_channel_in_support`; the honest law itself carries Verify-rejected
+  replies, `BadVerify.emitted_bad_mass`), so the POINTWISE route applies
+  and `second_cond_le` is not needed here. The converse risk is recorded
+  (`chi2_top_of_out_of_support`): any real-sampler mass outside the `emit`
+  image (byte-decode artifact) breaks AC and makes chi2 infinite.
+
+## The exact remaining obligations (nothing else blocks e)
+
+1. **`AttemptPointwise`** (the heavy analytic core): the one-attempt mass
+   comparison of the real `to_sign` attempt law against `fiberWeight` +
+   normalizer + the miss comparison. Candidate factor already computed
+   kernel-side: T5 machine sandwich `machineMargin < 1 + 2^-42`, A2 tower
+   sandwich `towerMargin < 1 + 2^-43`, wrap budgets `tauB/boxB` ->
+   `attemptFactor < 1 + 2^-38`; with it, `e2 < 2^-32` (conditional
+   corollary, kernel-checked). `rejB` stays outside the factor (miss-mass
+   budget of the delta bridge).
+2. **`ReplyShape`** (source binding): the law shape of one attempt bound to
+   the pinned C (`SIGN_MAX_ATTEMPTS=16`, emission `:3412-3418`) — the
+   source3/B1 and B3 SIGN-side material is the input.
+3. **`O-NONE`** (box point): positive `signBody` mass at `none` for every
+   achievable challenge (the exact condition is `signBody_none_pos_iff`).
+4. **Byte bridge** of the model (open swallow, recorded by B4/2).
+
+The additive-error caveat (e.g. `Adv_PRG`) does NOT fit the multiplicative
+`AttemptPointwise` shape without a mass floor — recorded openly; it stays
+an additive term of the outer bound (Section 1 of the scope), not of `e`.
+
+## 2026-10-02 update: B4/3a + B4/3b closed — the remaining scope is EXACTLY four named premises
+
+**`layer2_e2_actual`: `e2 < 2^-32` is now ACTUAL** (from `ReplyShape` + the
+two named analytic bounds), not conditional. `attemptFactor` computed
+kernel-side exactly (`chainHi`/`chainLo`, `norm_num` in the CenteringClosure
+style), `attemptFactor < 1 + 2^-38`, propagated `k^32 - 1`.
+
+`HacGlue.localJointCertificate_of_named_premises` delivers
+`LocalJointCertificate S ((1+d1)*(1+d2)-1)` with `d1 = 0`
+(`UniformChallengeAt`), `d2 = e2`. Its EXACT argument list IS the remaining
+project scope for rung B4:
+
+1. `huc : UniformChallengeAt S` — **already delivered** (B3/X);
+2. `hshape : ReplyShapeAt S jatt` — source binding of the attempt law
+   (`SIGN_MAX_ATTEMPTS=16`, emission `:3412-3418`) — B1/source3;
+3. `hattempt : AttemptPointwiseAt jatt k` — the analytic core, reduced to
+   TWO named bounds (B4/3a): `AttemptShape` (S.code/do_sign binding) and
+   `AttemptWeights` (the 4-stage sandwich transport, incl. the
+   tower/fiber-tilt sandwich over the whole tail region); the normalizer
+   ratio is absorbed by the two-sided sandwich (kernel);
+4. `hone : ∀ h, ONone (syndrome h)` — fiber geometry of `Relation.A` for
+   the real key (source side); pinned by
+   `attempt_miss_satisfiable_iff_onone` (miss side fits the trial law iff
+   O-NONE holds at achievable challenges).
+
+Not theorem arguments (open, recorded): the byte bridge (chi2 = top risk if
+real mass leaves the emit image) and the additive-error caveat (Adv_PRG
+needs a mass floor `mu <= (trial A c).mass (some z)` to enter the
+multiplicative shape; it stays an additive term of the outer bound).
+
+Known shape trap (recorded, not assumed): if the real `to_sign` attempt is
+conditioned on acceptance inside one attempt, the some-side picks up a
+`1/(1-rejB)` factor — `rejB = 2^-24` then moves inside the multiplicative
+accounting.
+
+Owner decision 2026-10-02: **the work stays public** (traffic note: 30.09
+scraper wave, 2008 clones / 65 unique cloners, 3 unique human visitors —
+recorded as-is; no secrets in the bytes; Kerckhoffs posture kept).
+
+Next: B5 assembly skeleton may consume
+`localJointCertificate_of_named_premises` with exactly these four
+arguments; B1/source3 and one geometry window supply premises 2-4.
+
+## 2026-10-02 (late): O-NONE DISCHARGED UNCONDITIONALLY — two premises left
+
+The O-NONE window proved `hone : ∀ h, HacGlue.ONone (syndrome h)` with NO
+named assumption — stronger than the prompt asked for: `Relation.A`
+depends only on coordinate residues mod 18433, so every fiber is a coset
+of the `18433·Z` residue lattice; `liftPair` shifts a witness to a
+coordinate >= 47103 where `block >= 2*47103^2 = 4437385218 > B =
+2093922385` (2x margin, inside the finite box); a nonempty fiber suffices.
+No NTRU equations needed — B1 supplies NOTHING for this premise.
+
+The window also assembled `localJointCertificate_of_attemptFactor`: the B4
+certificate with O-NONE discharged — **e < 2^-32, THREE named arguments
+instead of four**. The remaining B4 scope is exactly:
+
+1. `hshape : ReplyShapeAt S jatt` — source binding of the attempt law
+   (B1/source3; B1.01 CLOSED with receipts — NTT word algebra over
+   `ZMod 2147355649` with the Montgomery scale in the type and PRIMES3
+   pinned to source bytes; B1.02 prepared analytically in
+   `KEYGEN_RESIDUE_CHECKPOINT.md` section 2: region map `3046..91`, the
+   exact missing grammar list, the five consumers to patch);
+2. `hattempt : AttemptPointwiseAt jatt k` — the two named analytic bounds
+   (`AttemptShape`, `AttemptWeights`).
+
+Open non-arguments unchanged: the byte bridge and the additive-error mass
+floor. B5 skeleton may now target `localJointCertificate_of_attemptFactor`
+directly (see `run2/notes/PROMPT_B5_ASSEMBLY.md`).
+
+## 2026-10-02 (night): B5 SKELETON DONE — the closing list (Assembly.lean, commit 132098c2)
+
+`end_to_end_assembled_theorem_statement` is PROVEN from named premises
+(0/0, 20/20 standard axioms, the argument list printed in
+`.build/audit/AssemblyAudit.log`): the Section-1 bound in full — B4
+certificate (`e = k^32-1`, O-NONE discharged unconditionally) ->
+`concrete_euf_cma_to_mt_isis` over `Reduction.build` -> carried `deltaPRG`
+term. The D2-route-(b) hybrid lives at the Dist/Law level
+(`tape_game_hop` family: `AdvEUF(real stream) <= AdvEUF(uniform tape) +
+deltaPRG`, including the `Law.uniform.map` seam of `Games.Sampler.code`).
+Exports: the literal `+AdvPRG` variant, the `attemptFactor` variant
+(`e < 2^-32`), `exists_assembled_reducer` (the reducer IS
+`Reduction.build beta A S`), `assembled_hardness_substitution`. A1 pinned
+in model scope (`a1_no_retry_interface`). Recorded deviation: `AdvPRG`
+realized on the tape law `tau : Law (Fin S.bits -> Bool)` (distance needs
+a law object); the outer bound carries `deltaPRG`, the literal variant is
+separate.
+
+**THE CLOSING LIST (= the project's checklist):**
+
+| Arg | Content | Owner | State |
+|---|---|---|---|
+| `hk` | arithmetic | kernel | PROVEN (attemptFactor) |
+| `huc` | UniformChallengeAt (the ROM) | B3/X | DELIVERED |
+| `hshape` | ReplyShapeAt (attempt law bound to C) | B1/source3 | in progress (B1.02 window) |
+| `hattempt` | AttemptPointwiseAt (= AttemptShape + AttemptWeights) | B1 + AttemptWeights window | AttemptWeights prompt READY, unlaunched |
+| `hkey` | keyIdent (emitted-key law identification) | B1.10 (`emitted_to_actual_fiber`) | type slot, content owed by B1 |
+| `hprg` | AdvPRG <= deltaPRG (ChaCha20 account) | B2 | **NEW WINDOW NEEDED** (`PROMPT_B2_ADVPRG.md`) |
+
+Non-arguments (open, recorded): the byte bridge, the additive-error mass
+floor. A2 rides in `huc`; A1/A5 bite into `hkey`; A3/A4 in the byte bridge.
+
+## 2026-10-02 (night, late): AttemptWeights DONE — the heavy core's analytics closed
+
+`AttemptWeights.lean` (781 lines, 0/0, 51/51 standard axioms; commits
+2eec3920/0190943c). `attemptFactor = machineMargin * towerMargin *
+wrapFactor * boxFactor` (exact, `rfl`) with ALL numeric margins proven
+kernel-side (tower < 1+2^-43, machine < 1+2^-42, wrap < 1+1/(2^39-1), box
+< 1+1e-30; composition `attemptFactor_comp_lt` from the stage table).
+
+**Both attempt shapes are now kernelized** (no shape assumed):
+- unconditioned (sample-then-check): `rejB = 2^-24` OUTSIDE the factor,
+  `layer2_of_stageChain` -> `second < 1+2^-32`;
+- acceptance-conditioned: delta EXACTLY `1/(1-rejB)` inside
+  (`conditioned_ratio_le`), `conditionedFactor < 1+2^-23`, `e2 < 2^-17`
+  (`layer2_e2_conditioned`). Truncated weights have zero tail mass — the
+  tail sandwich cannot pass through them (the same counterexample).
+
+**The whole-tail sandwich is proven NECESSARY** (kernel counter-theorems
+`bulkOnly_tail_uncontrolled` / `bulkOnly_normalized_tail_uncontrolled`,
+witnesses `zeroPair`/`liftPair`): any future "tail mass is negligible"
+shortcut is inadmissible in this proof shape. The global tail theorem
+(`regionMass`, `RegionSandwich`, `sandwich_regionMass`,
+`sandwich_tailMass`, `tail_ratio_le`) transfers the sandwiches to EVERY
+region's masses with identical margins.
+
+**`hattempt`'s remaining content is now purely realization (no analytics
+left):** the definitions of the realized weights `target/mach/wrapS/w` and
+their four POINTWISE stage sandwiches — which need (i) the `do_sign` core
+binding (B1/source3) and (ii) the T5/REFINE material RE-STATED POINTWISE
+(their current bounds are TOTAL masses, not pointwise — the exact missing
+lemma type is recorded on both sides). Once B1 delivers the transport
+`do_sign -> AttemptShape` + `TowerWhole` realized on target (per point,
+with tail), the whole of B4/3 closes with no new mathematics.
+
+## 2026-10-02 (post-compact): B2/AdvPRG DONE — hprg delivered, route (a) closed BY THEOREM
+
+`AdvPrg.lean` (0/0, 71/71 standard axioms; commit 3870dc50). The final
+assumption is ONE named predicate, `ChaCha20PRFBound` — the standard
+distinguishing game for the ChaCha20 stream of the pinned `Extra/c/frng.c`
+(SHAKE-256 seeding <- /dev/urandom + user seed) vs the uniform tape, at
+total consumption `n = beta.qs * S.bits` bits, budget `deltaPRG`. The SHAPE
+is proven both ways: `ChaCha20PRFBound tau delta <-> AdvPRG tau <= delta`
+(exactly the same delta) — `hprg` plugs into the B5 consumer
+(`assembled_hardness_substitution_chacha`) with zero slack. Consumption is
+kernel-counted: `S.bits` per sampler call (rfl), <= beta.qs calls per
+budget game (structural Program tokens); generator state 56 B = 2^448
+states, block 64 B, refill 4096 B = 64 blocks; nonce 320 bits/query comes
+from SHAKE (A2 boundary, outside the ChaCha20 claim).
+
+**Route (a) is now closed by theorem** (not just by the D2 decision): the
+stream is a function of the 56-byte seed => `1 - 2^448/2^n <= AdvPRG` —
+any delta satisfying the assumption on the real tape is >= `1-2^448/2^n`
+(~1 at real lengths). The statistical reading of deltaPRG is ~1 and
+vacuous; only the COMPUTATIONAL `Adv_PRG(ChaCha20)` at the stated
+consumption is meaningful (route (b)). A future ideal-PRNG theorem would
+delete `deltaPRG` from the assembly entirely.
+
+**C-side audit finding (recorded, not smoothed):** `falcon_prng_get_bytes`
+(`frng.c:355`) copies from the buffer START, unlike the indexed
+`get_u8`/`get_u64`. In the pinned profile nothing calls it (the sampler
+draws via get_u64/get_u8) — a dead pipe TODAY, but a live wire if any
+future profile starts using it. Pinned bytes must not change; this is a
+finding for the FT-family C candidate line.
+
+## 2026-10-02 (evening): T5-pointwise DONE — hattempt's math FULLY closed (commit 95bac2c0)
+
+The collision's happy ending: `T5Pointwise.lean` (1003 lines = window B's
+base `b2b36cad` + window A's fixes/additions; 0/0, 56/56 standard
+axioms). ALL FOUR stage transports proven pointwise
+(TowerRowRoad->TowerWhole, MachineEvalRoad->MachineStage,
+WrapCoordRoad->WrapStage, BoxRetentionRoad->BoxStage) + the composition
+`layer2_of_stageRoad` (attemptFactor < 1+2^-38, second < 1+2^-32). The
+rows->points road closed arithmetically: recorded margins = exactly the
+2-row product (`tower_margin_row2`); 3072 rows force 2^-58-class per-row
+budgets (`road_fit_3072_rows`); full rowBudget per row BUSTS the whole
+budget (`rowwise_fullBudget_busts`).
+
+**Insufficiency is now THEOREM-level, not warning-level:**
+- `massSandwich_not_pointwise` (at the exact margins of ALL four stages):
+  total-mass bounds NEVER give pointwise control;
+- `additiveError_no_machineStage`: additive error without a floor cannot
+  restate multiplicatively — BUT with a floor (`machineFloor` from
+  `t5_leaf_floor_gt`, window A's addition) the bridge
+  `machineStage_of_absErr_floor` closes the additive route CONDITIONALLY.
+
+**`hattempt` now reduces to PURE REALIZATION** (no new mathematics):
+per-row/per-op/per-coordinate data on the real `do_sign` weights
+(B1/source3), delivered as `PointwiseStageRoad` ->
+`attemptWeights_of_stageRoad` -> `layer2_of_stageRoad`. Note for B1: the
+3072-row variant needs the 2^-58-class row bound. After that: merge with
+`layer2_of_stageChain` in Assembly and `end_to_end` closes.
+
+Toolchain lessons added: `prod x : a, body` binds `body` with LIMITED
+binding (`prod i, 1 - b i` silently parses outside the product - ALWAYS
+parenthesize); Rat.cast trap extension: nlinarith/simpa choke on heavy
+local hypotheses - prove small facts in clean context first.
+
+## 2026-10-06: B1.02 ACCEPTANCE — the complete source-bound execution model
+
+The whole of B1.02 (2.1.1 + 2.1.2) is closed (commits aa86ba27/d81c257c/
+ccf94077 pushed in 69092f01..ccf94077; 56a7ee7b/01eb7fae local): a
+complete source-bound execution model of the `modp_NTT3_ext` body with
+derived counters and pointer positions for ALL THREE loop families
+(first/triple/intermediate) and the butterfly call observations extracted
+as CONCLUSIONS from the parsed bodies (call-premise leakage removed;
+Load32/Store32 witnesses at current positions). The intermediate bounds
+(`i <= 7` from the executed `mGuard` `t > 3`, hence `m <= 2^8`,
+`t <= 768`, `v1 <= 2^18`) are derived from ROUND COUNTS with the
+`t*m=n` ban honored (that identity lives in B1.04 and only there) — one
+premise `2^18*s < 2^64` discharges both product non-overflows. This is
+the boundary where the source binding ends and the mathematics begins.
+Next: B1.03 (modp_mkgm3 root table, order 9216/4608 as a proof
+obligation), then B1.04 (values/ranges - t*m=n lives there), B1.07
+(stride=1 via the wrapper frame), B1.10 (`emitted_to_actual_fiber` =
+ `hkey`).
+
+## 2026-10-06 (evening): B2/B5 package CHANGES_REQUIRED (E1-E5) - the seam's true state
+
+Independent review (own replay 70/70, kernel counterexamples
+`membership_without_cost`, `export_without_key_ident`; pins REVIEW
+a638b45d, OUTPUTS 4a9d8197) verdict: CHANGES_REQUIRED. Traps F/G
+CLEAN: no TV smuggling, the winning test covers the experiment's
+remaining randomness, the simulator/MT-game identification is correct,
+the Phi inversion is sharp and exact. Three real gaps + two descriptive:
+E1 (significant): `P_tau` is the stream-driven PUBLIC SIMULATION - the
+direct bound is the main form FOR THAT experiment; the honest/real-Sign
+-> P_tau bridge with the correct second-moment comparison is MISSING and
+must not be claimed closed (`b <= phi D b` is not that comparison; D is
+only a redundant weakening for P_tau). E2 (significant): `CompWinCert`
+is dangling - membership must feed the hop and the cost line must be in
+the export's type (q tied to `AdvPrg.chachaBlocksTotal beta S`). E3
+(significant): `hkey` is fake-consumed (`intro _hkey`; `True.intro`
+reproduces the export) - bind the key-law identification dependently.
+E4/E5 (descriptive): total piecewise inverse form / negative-radican
+convention, domination for `max 0 (eps-deltaPRG)`; comments reference
+nonexistent `CompTest.ofEvent` etc.; audit bookkeeping 52+4.
+
+Consequence for the public claim: the computational seam is REAL but
+scoped to P_tau; the honest-Sign bridge is now the explicitly recorded
+open interface (overlaps the B1 do_sign/ReplyShape realization and the
+B4 second-moment consumption). Fix window: E1-E5 on the corrected work
+contract (f6561725); one window, statement surgery + wiring, no new
+math campaign.
+
+## 2026-10-06 (night): third independent review - convergence confirmed + premium tools
+
+Third review (snapshot to 844c0d07, i.e. PRE-dating the 6ff3c838 fix)
+CONFIRMS E1-E3 as recorded and validates the synthesis as the most
+reliable status. Three tools added to the project's kit:
+1. **The k=1 scope test** (the standard meaning-test for the export):
+   `end_to_end_stream_theorem` accepts any `1 <= k`, so `k = 1` (D = 0)
+   needs no divergence proof - proof the export does NOT consume the
+   real-Sign statistical certificate. Correct for P_tau; the fixed
+   export must either consume the comparison or say D is a redundant
+   weakening for P_tau (E1 criterion). Use this test in every future
+   assembly review.
+2. **The four-arrow target assembly map** (official closure shape):
+   real Sign on real randomness -(computational hybrid)-> same Sign on
+   fair randomness -(law bindings + certificate)-> public simulation
+   -(extraction)-> MT-ISIS. Arrows 3-4 EXIST (streamGame_uniform +
+   concrete_lazy_game_binding + Reduction.build); arrows 1-2 = the
+   honest-Sign bridge = the B1 realization lane (do_sign/ReplyShape/
+   AttemptShape/keyIdent + LocalJointCertificate S e consumption via
+   `stopped_euf_to_concrete_mt`). CompPRG's tape arrow must NEVER be
+   identified with the generator change in real signing.
+3. **The piecewise publication form of the inverse**: psi_D(a) = 0 for
+   a <= D/(1+D), else a - sqrt(D*a*(1-a)) (E4 enhancement - the
+   piecewise form does not suggest tiny positive advantages give
+   positive guarantees).
+
+Also confirmed: P_tau is the stream-driven PUBLIC SIMULATION (signSimAt:
+nonce+ROM+stop-on-collision+S.code returning challenge AND response ->
+programmedReply; streamCont draws only the public key from muH - no
+secret key in the signing execution). Minor bookkeeping: the older
+WORK_STATE.md header still lists already-fixed items (stale vs
+checkpoint).
+
+## 2026-10-07: B2/B5 package CLOSED - PASS_SCOPED, independent, zero changes
+
+The computational seam is formally accepted: INDEPENDENT_REVIEWER
+(fresh context, independent of author - different model than the
+6ff3c838/REVIEW_002 author), verdict **PASS_SCOPED with NO
+CHANGES_REQUIRED** across A-G + E1-E5 + F/G non-regression. Evidence
+base (own hands): 68/68 rebuilds exit 0, audit 79/79 1:1 with own
+inventory (zero phantoms, standard-axiom subsets only), zero markers in
+66 sources raw AND comment-stripped, 21 own kernel checks
+(generalized_inverse_iff both ways, psiD = phiInv, k_one_D_zero,
+key_binding_true_iff, membership_without_cost_fails,
+class_restriction_is_load_bearing, sampler_is_not_honest_in_general...),
+7/7 material pins reproduced. Key resolutions:
+- B: D does NOT get lost - (1+e)^qs-1 enters in
+  `concrete_euf_cma_to_mt_isis` (B4 certificate -> second moment); the
+  public chain deliberately carries no D;
+- C: the companion bound is the CORRECT main form for the public game
+  (no second-moment loss lives there); the phi form is kernel-weaker and
+  consistent (max 0 clipping necessary - own counterexample);
+- F: hop direct from CompPRGBound + bind_draw_event (proven Fubini);
+  zero TV traces in the closure;
+- G: signSimAt != signHonest/freshHonest (kernel); the certificate
+  factor lands exactly in D: Comparison (1+e) -> (1+e)^qs -> phi.
+Controls worth reusing: empty class = no bound at AdvPRG = 1/2 (class is
+load-bearing), averaged_test_half (1/2-test), the k=1/D=0 weakening
+probe. 79-vs-64 = API change + log-set choice, not an error.
+
+CLOSING LIST NOW: everything except the four-arrow map's arrows 1-2 -
+the honest-Sign bridge = the B1 realization lane (do_sign/ReplyShape/
+AttemptShape/keyIdent/B1.10) + final assembly. **Owner decision
+2026-10-07: the formal stages-import + tag happens ONCE, at T12.1
+acceptance** (single archive.py pass at the end - not per-package stages
+mid-campaign); the B2/B5 acceptance is recorded here and in REVIEW_003.
+
+## 2026-10-07: B1.03 ACCEPTANCE - the complete source table-law layer
+
+All of B1.03's stages closed (commits through f27008de; BATCH_017 pin
+50f35519... exact): syntax frontend + non-mutual strata (trap 33),
+modp_R value law (2^31 mod p), generator order 9216/4608 kernel-VERIFIED,
+REV10 exactness (rawTable = some (bitrev10 0..1023) - all 1024 entries),
+div_source_bound + KeygenMkgm3Program.source_bound (three REAL parser
+bugs found en route: dead revStoreTail, false call on ((size_t)1<<k)-1,
+duplicated outer xor in divSelect), modp_R2 law (2^62 mod p, R^2 scale,
+p0i from the initializer execution), and the row laws (all 1024 gm words
+with ranges, exponents, orders, Montgomery scale; igm=ft; gm behavior +
+source material; sizes + memory non-overlap). Mutation-tested: 6/6
+injected mutations detected in BOTH normal and UBSan builds (the row-law
+checker is not vacuous). Traps 32-48 recorded.
+
+NEXT: B1.04 (values/ranges/polynomial invariants + butterfly cells -
+`t*m=n` lives THERE and only there) = the last heavy rung before
+realization and final assembly. Status remains NOT_REVIEWED (stage
+acceptance is not an independent review - reviews run per the owner's
+schedule).
+
+## 2026-10-07 (later): B1.04 ACCEPTANCE - the full NTT transformation identified
+
+The last heavy rung is CLOSED (commits through 2868c49e; BATCH_019 pin
+983a481a10293c01 exact; 8 non-empty logs verified = preserved FAILED
+ATTEMPTS' error logs, disclosed provenance; accepted jobs 0/0): u1/m
+loops + all 8 rounds + 512 triple iterations; **the complete source NTT
+execution is identified with evaluations of the input Vec polynomial -
+all 1536 results canonical** (`KeygenNttExecution`, `KeygenNttTransform`
++ twiddle tree/cert, round-polynomial); composed with table generation
+and input conversion. Audit 131 exports, 402 consistent inputs.
+`t*m=n` discharged HERE, as designed. Source-NTT <-> polynomial-math
+binding is COMPLETE.
+
+NEXT: B1.05 (solver success -> the exact integral NTRU equation; the
+full solver proof remains open), then B1.07 (stride=1 via the wrapper
+frame), B1.10 (emitted_to_actual_fiber = hkey), B1.11, and the do_sign
+realization (hshape + PointwiseStageRoad) + final assembly (arrows 1-2).
+
+## 2026-10-08: state review confirms the trajectory + the do-not-reopen map
+
+Independent state review at 8ca34465 (63 commits since its previous
+snapshot) confirms: E2/E3 FIXED in code (cost is part of the export
+contract - `CompWinCert` consumed with `costLine` conjunct and
+`chachaBlocksTotal` binding; `KeyLawBinding.identify` makes `True`
+insufficient - two concrete laws must be equated), B1.03 fully closed
+(`KeygenMkgm3.source_contract` for ALL 1024 gm words + the
+aliasing-aware `source_then_overwrite` composition), B1.04 = the full
+transform identified (`source_transform` -> evaluations for all 1536
+cells from the parsed forwardBody; `generated_converted_transform`
+composes generation+conversion - the project may NO LONGER be described
+as "local NTT ops without whole-transform polynomial binding"), and
+B1.05's chain: `checked_pointwise` -> `residual_zero` ->
+`exact_of_images` gives the EXACT equation **fG - gF = 18433** in the
+coefficient quotient with |f|,|g| <= 1, |F|,|G| <= 2047 (Bound v 1 now
+CONCLUDED from sampler execution via `KeygenSamplerBounds.source_material`,
+and `generated_converted_checked` holds the equation AND the
+`Represents` of the SAME vectors in final memory). Paper sec_04
+confirmed to separate proven/target correctly.
+
+**DO-NOT-REOPEN MAP** (reviewer's correction of stale gaps): E2/E3,
+B1.03 table certificate (REV10/modp_R2/row laws), B1.04 full transform,
+completed CRT/zint_bezout local bindings (operational/memory scope -
+NOT arithmetic Bezout/GCD theorems; non-vacuous chunk audits
+`map ... = some`). Remaining = exactly the closing list: full call
+chain + material transport (B1.05c), key-law identification instance
+(B1.10), honest-Sign realization + final assembly (arrows 1-2).
+
+## 2026-10-09: B1.05 ACCEPTANCE - the complete source -> NTRU-equation chain
+
+B1.05 is CLOSED (BATCH_020..032, 12 batches; final commit 9b927367;
+5019 pins PASS; 4/4 mutations detected per round). The chain is
+complete and kernel-checked: table generation + conversion + the full
+NTT transform (B1.04) + solver execution (deepest -> intermediate ->
+depth0 -> root -> caller) + gate transport (resultants -> raw/GS ->
+public) + Entry from caller initialization + `RootCaller.Legal` on the
+same prefix -> **the exact equation fG - gF = 18433 with bounds
+1/1/2047/2047 on PRESERVED tables**. The `f/g <= 1` bound is CONCLUDED
+from sampler execution (not assumed). Scope honesty: this is NOT a
+full KeyGen theorem and NOT a security proof - it is the complete
+composition gap removal for the solver region.
+
+NEXT: B1.06 (not started), then B1.07 (stride=1 via the wrapper frame),
+B1.10/B1.11 (emitted_to_actual_fiber = hkey material), the do_sign
+realization (hshape + PointwiseStageRoad) and final assembly
+(four-arrow map, arrows 1-2).
+
+## 2026-10-09: B1.05 deep review - premises actually DERIVED, composition gap truly gone
+
+Structural review at 98a4abf6 (33 commits) verifies the B1.05 closure
+at the type level: `KeygenCallerSuccess.exact_integer_ntru` carries
+ONLY `Initial ctx before` (input MEMORY: pointer bindings, M0 profile,
+PRIMES3/REV10 objects, scratch legality, disjointness - NO vector
+coefficients/bounds/equations) + `Exec ctx before out` + `normal` flow
+-> exists f g F G with Bounds 1/1/2047/2047, `multiply f G - multiply g
+F = constantCoeffs (18433)` and `Represents` of the same four in final
+memory. The reviewer's rename-check passed: `RootCaller.Legal` is
+carried through the SAME executed prefix (`root_legal` + `material` off
+one `Exec`); the old `Validation` record is now CONSTRUCTED from
+execution (`KeygenRootValidation.validation` with `start.heap =
+before.heap`). Chain fully realized (`.deepest/.intermediate/.depth0 =>
+named Call` with accept/reject gates and `depth--` semantics). Gap
+noted and closed: C `if (!solve_NTRU(...)) continue;` vs the lemma's
+`return 1` premise - `nonzero_one` derives `v = .int32 1` from the
+actual nonzero gate result (values proven 0 or 1 first). Gate transport
+covers reject paths; local scope closes BEFORE the public call; static
+tables preserved via byte-block properties.
+
+**DO-NOT-REPEAT MAP extended**: the old diagnosis "missing solver chain
+/ sample-to-equation transport" is CLOSED within B1.05's declared
+scope. Scope note preserved: the theorem covers completed execution of
+the indicated fragments with active root under legal initial memory -
+NOT all of `falcon_keygen_make`, not termination, not acceptance
+probability, not emitted-key distribution. Remaining per BATCH_032:
+B1.06 (source public equations + inversion for the same f/g/h),
+B1.07 (full surrounding call + loop chronology: auto allocations, RNG
+readiness, retry counter/limit, full-run composition), then codecs/emitted
+bytes/certificate + `emitted_to_actual_fiber` + do_sign realization +
+final computational assembly.
+
+## 2026-10-10: state review at 0e38ca35 (90 commits) + EDITORIAL MAP for ePrint
+
+Proof-side confirmations: B1.06 scope CLOSED (`KeygenPublicAccepted.
+source_same_material`: h*f_bar = g_bar, f_inv*f_bar = 1 in R_q,
+canonical rep of the REAL output h, preserved f/g input bytes; fInv is
+a mathematical invertibility witness, NOT an assumed table; premises =
+profile contract + legal memory + representation + input bounds +
+disjointness + successful public helper; invertibility/inv-NTT
+correctness/canonicity/equations all DERIVED. BATCH_046 normalization:
+mq_div_18433(Rt,(uint32_t)n) scaled for n=1536, reconstruction factor
+canceled by proof of meaning - no "forward and inverse are inverse"
+assumption). B1.07 RNG readiness full (KeygenMakeReadySampling.
+source_same_material: counter=1, bound-1 vectors from original input
+contract + same execution; set_seed/rng_ready/SHAKE/tmps/Linux syscall
+observations incl. failures = source control+memory closure, NOT
+entropy claims). Latest: KeygenMakeProgram.lean binds full caller
+syntax (source_bound, actual_attempt_tail, actual_four_segment_loop,
+post_acceptance_capacity_tests, final_return_source; order
+computePublic -> solve -> certificate -> break; attempt success NOT
+identified with successful encoded key return).
+
+**EDITORIAL MAP (owner-chosen reviewer) - the paper rule for ePrint:**
+- ONE polished article (keep title/authorship/mission/ePrint venue);
+  v0.3 (28pp, 117 pins, 21 theorem groups) is THE base - no new
+  article, no competing version. "Professional like Falcon" = the
+  ORGANIZATION of the argument (falcon-sign.info/falcon.pdf as the
+  organizational reference only).
+- **Narrative follows the ARGUMENT, not batch numbers**: source
+  execution -> proper material/law -> security experiment -> reduction.
+  BATCH ids/Lean names/hashes live in a theorem-to-export compliance
+  table + appendices + reproduction package. In-body: "B1.06" becomes
+  a normal mathematical proposition with premises; appendix points to
+  `KeygenPublicAccepted.source_same_material`.
+- **Proofs readable without running Lean**: expand second-moment
+  direction, adaptive-adversary induction, collision loss, extraction
+  to MT-ISIS.
+- Four final-version items: (A) algorithms at ONE level - real
+  byte-level algorithms vs proof-helper laws + theorems joining them;
+  retry limit/emission failure/buffer-capacity error/re-sampling belong
+  to the EXPERIMENT, not pseudocode footnotes. (B) abstract exponent
+  follows from ACTUAL AttemptShape: e2(k)=k^32-1<2^-32 (unconditional)
+  vs k_cond=k/(1-2^-24), e2<2^-17 (conditioned) - the CODE realization
+  chooses the variant; editorial choice must NOT precede the proof
+  choice; e<2^-32 is NOT a "32-bit security level" (needs q_s,
+  (1+e)^q_s-1, remaining losses). (C) main theorem = FINAL EXPORT
+  after closing: rewrite actual final type with assumptions/costs/
+  terms; don't lock narrative to the current target formula; classical
+  proof stays main result - NO QROM stretching. (D) security section +
+  Related Work need scientific editing: S06 stays
+  UNCERTIFIED/CHANGES_REQUIRED even after the reduction closes; the
+  table must not visually promise more than its caption; Related Work
+  compares actual GUARANTEE LEVELS (games vs code vs compiler vs
+  assumption) incl. EasyCrypt, Jasmin, HACL* alongside GPV/Falcon.
+- **Edit main text NOW** (motivation, profile spec, closed-reduction
+  description, B1.05/B1.06 results, literature, appendix structure);
+  leave abstract + main theorem + guarantees summary for LAST (after
+  final composition).
+- **Reproduction package is a deliverable**: receipts in ignored
+  work/ or .build/ are NOT public access - hash != availability; the
+  publication archive needs dependencies + replay commands, not just a
+  manifest.
+- Reviewer's editorial plan `PLAN_EPRINT_FT1536.md` exists in their
+  sandbox (not in repo) - worth preserving into paper/notes/ when the
+  owner hands it over.
+
+## 2026-10-10: OWNER DECISION - paper strategy: our work forward, A1 as end-stage donor
+
+Reviewer "Recent" produced an alternative editorial package
+`Free_FT_A1` (Pobrane/Free_FT_A1_LaTeX/, pinned to Git 0e38ca35):
+same signed title/authorship, tight honest abstract, theorem-centric
+structure with an assembly chapter, Appendix B obstructions as
+propositions with proofs, Appendix C reproduction + SOURCE_MAP +
+SOURCE_LOCATIONS + verification receipts. **Owner decision: keep our
+v0.3-redaction as the living paper and continue the proof lane; merge
+A1's strengths at the FINAL composition** (abstract style, obstructions
+appendix, reproduction appendix, SOURCE_MAP approach) in one end-stage
+move. Rationale: proof is the bottleneck; final composition waits for
+the final export anyway; one living paper + one frozen donor = no
+two-paper drift. Mechanical check of A1 (C01-C22 mapping vs exports,
+bibliography honesty, markers) still due BEFORE any merge.
+
+## 2026-10-11: CROSS-LANE CATCH - VirtualLegal impossibility (vacuous Invocation.encoded)
+
+The QROM lane (Codex/Astra) found a concrete defect in the B1.07
+invocation result: `VirtualLegal` requires ALL Nat identifiers to have
+distinct addresses < 2^64 - impossible (kernel-proven separately).
+Consequence: the `Invocation.encoded` branch is VACUOUS (premise can
+never hold) - dependent theorems about the encoding path are currently
+vacuously true, i.e. ungrounded. The instruction skeleton remains
+sound; the defect is in map legality. Fix required BEFORE any Q-BIND
+use and before further mainline consumption: restrict map legality to
+the actual finite live memory blocks, re-validate ALL dependent proofs
+(incl. earlier batches consuming VirtualLegal/encoded), new trap entry,
+re-pin. The QROM worker pinned the exact pin+obstacle in S05 and did
+not touch mainline sources (correct cross-lane etiquette).
+
+## Consumption map
+
+    B3/X  UniformChallenge + HashToSpec        -> Layer 1 (d1 = 0)
+    B4/1  decomposition + joint_bounds ctor    -> the assembly mechanism
+    B4/2  support/AC + layer2_of_obligations   -> Layer 2 skeleton (e2 = k^32-1)
+    S3    CenteringClosure delta + budgets     -> the wrap-error inputs
+    T5    machine/tower sandwiches             -> the mass-margin inputs
+    B1    (source3, in progress)               -> ReplyShape + S.code binding
+    B5    assembly                             -> the final theorem

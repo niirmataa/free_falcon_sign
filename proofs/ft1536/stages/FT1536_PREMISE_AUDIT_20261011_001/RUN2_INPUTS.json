@@ -1,0 +1,703 @@
+[
+  {
+    "module": "FT1536.Basic",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/stages/FT1536_CENTERING_CLOSURE_RUN_001/library/FT1536/Basic.lean",
+    "sha256": "ae231be7cfbe7d8e7618237129d885c45c0e72ec21e592b779f54a0c11cd5ee6",
+    "reused": true,
+    "imports": [
+      "Mathlib.Analysis.SpecialFunctions.Exp",
+      "Mathlib.Analysis.Real.Sqrt",
+      "Mathlib.Algebra.BigOperators.Field",
+      "Mathlib.Tactic.Linarith",
+      "Mathlib.Tactic.NormNum",
+      "Mathlib.Tactic.Ring",
+      "Mathlib.Tactic.FieldSimp",
+      "Mathlib.Tactic.Positivity"
+    ]
+  },
+  {
+    "module": "FT1536.Divergence",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/stages/FT1536_CENTERING_CLOSURE_RUN_001/library/FT1536/Divergence.lean",
+    "sha256": "e82efaa4cefb8c6e02089da56d6e76dde5d99ea403e9a742e923974feae4c67d",
+    "reused": false,
+    "imports": [
+      "FT1536.Basic"
+    ]
+  },
+  {
+    "module": "FT1536.MathSign",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/stages/FT1536_CENTERING_CLOSURE_RUN_001/library/FT1536/MathSign.lean",
+    "sha256": "4f529e06510072fa3a6515babb93e4946b2ed3dcdab5f662d80073e8bc3d5bd9",
+    "reused": false,
+    "imports": [
+      "FT1536.Basic",
+      "Mathlib.Data.Fintype.Option"
+    ]
+  },
+  {
+    "module": "FT1536.Geometry",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/stages/FT1536_CENTERING_CLOSURE_RUN_001/library/FT1536/Geometry.lean",
+    "sha256": "bb03ecee63c43f8da5583fb26bfbf0be87ca926f62fb686e50261a5d9b9de78c",
+    "reused": true,
+    "imports": [
+      "FT1536.Basic"
+    ]
+  },
+  {
+    "module": "FT1536.PublicSimulation",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/stages/FT1536_CENTERING_CLOSURE_RUN_001/library/FT1536/PublicSimulation.lean",
+    "sha256": "03a4f1c4d448c8bc47652b5f1186630a722228beb20780afdd6f5d1d7c50d559",
+    "reused": false,
+    "imports": [
+      "FT1536.MathSign",
+      "FT1536.Geometry",
+      "FT1536.Divergence"
+    ]
+  },
+  {
+    "module": "FT1536.ROM",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/stages/FT1536_MATH_EUFCMA_MTISIS_RUN_001/formal/FT1536/ROM.lean",
+    "sha256": "6b0d7d0677f4cec3d88cdd96caaebda85132bc235686c3547f7a9e821e47bb36",
+    "reused": true,
+    "imports": [
+      "FT1536.Basic"
+    ]
+  },
+  {
+    "module": "FT1536.PublicCode",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/stages/FT1536_MATH_EUFCMA_MTISIS_RUN_001/formal/FT1536/PublicCode.lean",
+    "sha256": "a8fdb7447ea9c0c0eb7bb056155e1a3cbf5d2bd3167385782e5c2d14b3f0a32b",
+    "reused": false,
+    "imports": [
+      "FT1536.PublicSimulation",
+      "FT1536.ROM"
+    ]
+  },
+  {
+    "module": "FT1536.Relation",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/stages/FT1536_MATH_EUFCMA_MTISIS_RUN_001/formal/FT1536/Relation.lean",
+    "sha256": "b3fd466d43912aefe04c8f7b38fb9f59181965c2300cf27cbdbc0952b27d5512",
+    "reused": true,
+    "imports": [
+      "FT1536.Geometry",
+      "FT1536.ROM",
+      "Mathlib.Data.ZMod.Basic",
+      "Mathlib.Algebra.Polynomial.Div"
+    ]
+  },
+  {
+    "module": "FT1536.Model",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/stages/FT1536_MATH_EUFCMA_MTISIS_RUN_001/formal/FT1536/Model.lean",
+    "sha256": "25f0f72ab6a4fcd0a004af7e286ec137b64243dfc35fd4f3ec5e523694bdd4d5",
+    "reused": false,
+    "imports": [
+      "FT1536.PublicCode",
+      "FT1536.Relation"
+    ]
+  },
+  {
+    "module": "FT1536.EventTransfer",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/stages/FT1536_MATH_EUFCMA_MTISIS_RUN_001/formal/FT1536/EventTransfer.lean",
+    "sha256": "ad8f42be9ea3ccc3c136f44b89056dc6d1d4992279f97aa6802b5e38d69e5cd3",
+    "reused": false,
+    "imports": [
+      "FT1536.Divergence"
+    ]
+  },
+  {
+    "module": "FT1536.Adaptive",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/stages/FT1536_MATH_EUFCMA_MTISIS_RUN_001/formal/FT1536/Adaptive.lean",
+    "sha256": "f5789d529bfecba11f466cd7d010377549ce4dd3045db88447566caba09d6d11",
+    "reused": false,
+    "imports": [
+      "FT1536.EventTransfer"
+    ]
+  },
+  {
+    "module": "Run2.FiniteDist",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/FiniteDist.lean",
+    "sha256": "37da55ee0838ad4caae95d7a006774ca475b2a2643009f20700e1a8d51c09526",
+    "reused": false,
+    "imports": [
+      "FT1536.Model",
+      "FT1536.Adaptive"
+    ]
+  },
+  {
+    "module": "Run2.Games",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/Games.lean",
+    "sha256": "cebab37bc69a1bcad927ef430e0f789715e1a3baa8fcf1a47a63bba9cf02f95c",
+    "reused": false,
+    "imports": [
+      "Run2.FiniteDist",
+      "Mathlib.Data.Fintype.Vector"
+    ]
+  },
+  {
+    "module": "FT1536.Collision",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/stages/FT1536_MATH_EUFCMA_MTISIS_RUN_001/formal/FT1536/Collision.lean",
+    "sha256": "7a6c49c2be8a4c1376eb5ac9500ffd50e15a10bc7e9bebaccd21876810d2c114",
+    "reused": false,
+    "imports": [
+      "FT1536.Basic"
+    ]
+  },
+  {
+    "module": "Run2.GameInvariants",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/GameInvariants.lean",
+    "sha256": "24e5a0798599c0302f7ed7109e31109dd125a45bfedcc813ec92f49ef413695f",
+    "reused": false,
+    "imports": [
+      "Run2.Games",
+      "FT1536.Collision"
+    ]
+  },
+  {
+    "module": "FT1536.RetryDivergence",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/stages/FT1536_MATH_EUFCMA_MTISIS_RUN_001/formal/FT1536/RetryDivergence.lean",
+    "sha256": "d7315debcf72d90f7ef9e0561387e9aa5c4afb2cbdb8ec4f5427fdcda468f99c",
+    "reused": false,
+    "imports": [
+      "FT1536.MathSign",
+      "FT1536.Divergence"
+    ]
+  },
+  {
+    "module": "Run2.EmitMixture",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/EmitMixture.lean",
+    "sha256": "5d49eccc575798cc29e9597bb17ac0678c21f660932d0a705de8537021cd460e",
+    "reused": false,
+    "imports": [
+      "FT1536.RetryDivergence"
+    ]
+  },
+  {
+    "module": "FT1536.Certificate",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/stages/FT1536_MATH_EUFCMA_MTISIS_RUN_001/formal/FT1536/Certificate.lean",
+    "sha256": "1b6edc797ff06282affae1dc1442fb6c31a9b6128b7785727d8cd7321caeea45",
+    "reused": false,
+    "imports": [
+      "FT1536.Geometry"
+    ]
+  },
+  {
+    "module": "Run2.BadVerify",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/BadVerify.lean",
+    "sha256": "e8e795cb3ad21832125cd5afd844532485c081ab27e49f7d9ea4fd7e6b3a3f70",
+    "reused": false,
+    "imports": [
+      "Run2.Games",
+      "FT1536.Certificate"
+    ]
+  },
+  {
+    "module": "Run2.FiberBinding",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/FiberBinding.lean",
+    "sha256": "3ecff8c8df6ac0096260bc59a96ec5ac0150416a88599b404600532991a3f416",
+    "reused": false,
+    "imports": [
+      "Run2.EmitMixture",
+      "Run2.BadVerify"
+    ]
+  },
+  {
+    "module": "Run2.LazySampling",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/LazySampling.lean",
+    "sha256": "d5736240ccd06e14d13aa39eb71982667f9d6c37ebb6d2a11f3fc6aa22deb53b",
+    "reused": false,
+    "imports": [
+      "Run2.FiniteDist"
+    ]
+  },
+  {
+    "module": "Run2.LawBinding",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/LawBinding.lean",
+    "sha256": "83a1d393262792bc3b60f1952941ca3310ad99a15d4eb52d51b138b678335356",
+    "reused": false,
+    "imports": [
+      "Run2.GameInvariants",
+      "Run2.FiberBinding",
+      "Run2.LazySampling"
+    ]
+  },
+  {
+    "module": "SecondMoment",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/SecondMoment.lean",
+    "sha256": "7d008faf2f9d5da3d5b889d99d2b79ab1e5fcbccc4e223f345f40f4d2c5b8462",
+    "reused": false,
+    "imports": [
+      "FT1536.Divergence",
+      "Run2.LawBinding"
+    ]
+  },
+  {
+    "module": "Run2.PolynomialReference",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/PolynomialReference.lean",
+    "sha256": "bbe343fff73f44bdc97896acf396087db038a8dd8ccf4ee4c9ab780beb3cac6d",
+    "reused": false,
+    "imports": [
+      "FT1536.Relation",
+      "Mathlib.Tactic.ComputeDegree",
+      "Mathlib.Algebra.Polynomial.RingDivision"
+    ]
+  },
+  {
+    "module": "Run2.BitArithmetic",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/BitArithmetic.lean",
+    "sha256": "4c83a88407706dcf6efca8a9b67b6ad6b523aa1333f2997f1c22d91dd595fcdb",
+    "reused": false,
+    "imports": [
+      "FT1536.Basic"
+    ]
+  },
+  {
+    "module": "Run2.BitSubtract",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/BitSubtract.lean",
+    "sha256": "b2e76d54dadadf33ee0371b815a6743ed7e3609b34ebf15eab711ce758242e5c",
+    "reused": false,
+    "imports": [
+      "Run2.BitArithmetic"
+    ]
+  },
+  {
+    "module": "Run2.BitModular",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/BitModular.lean",
+    "sha256": "2a490ece845a5209311cdfac5a4b6b5a2516e2fc4a7df30ac13bd23807cdb4bb",
+    "reused": false,
+    "imports": [
+      "Run2.BitSubtract"
+    ]
+  },
+  {
+    "module": "Run2.FieldConstants",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/FieldConstants.lean",
+    "sha256": "b92818680f1fd4213c037a002b23e5cf1376ba7a8fdc29bb780a5591c7c578b0",
+    "reused": false,
+    "imports": [
+      "Run2.BitModular"
+    ]
+  },
+  {
+    "module": "Run2.FieldMachine",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/FieldMachine.lean",
+    "sha256": "f6757e1d811cdf7daa6eabb82de8c24b2e7ec4858099bd77f6fe6e36b8f95254",
+    "reused": false,
+    "imports": [
+      "Run2.FieldConstants",
+      "Mathlib.Data.ZMod.Basic"
+    ]
+  },
+  {
+    "module": "Run2.FieldProgram",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/FieldProgram.lean",
+    "sha256": "15ca28fdd109c5b072707fe1037d0b25f98a5d768b1b3ac813da24821026aa91",
+    "reused": false,
+    "imports": [
+      "Run2.FieldMachine"
+    ]
+  },
+  {
+    "module": "Run2.SignedMachine",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/SignedMachine.lean",
+    "sha256": "c91501e0bab4c41de28edda8913c48c958e264940442bdfed5657abb9b2e97b9",
+    "reused": false,
+    "imports": [
+      "Run2.FieldMachine"
+    ]
+  },
+  {
+    "module": "Run2.WordEncoding",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/WordEncoding.lean",
+    "sha256": "4c036c76bd4555fc78f47ff818bc102dd86295da927e108f982ea17334351c72",
+    "reused": false,
+    "imports": [
+      "Run2.SignedMachine"
+    ]
+  },
+  {
+    "module": "Run2.PolynomialMachine",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/PolynomialMachine.lean",
+    "sha256": "b9a98e2f9a8760116ad615f7d3f1c90620db780ae354bd56f19cc7187410df94",
+    "reused": false,
+    "imports": [
+      "Run2.PolynomialReference",
+      "Run2.FieldProgram",
+      "Run2.WordEncoding"
+    ]
+  },
+  {
+    "module": "Run2.ScalarMachine",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/ScalarMachine.lean",
+    "sha256": "9ee2fb9d50031867540002e8dcbf76717cc14864fca106c422904dfdf1390fb9",
+    "reused": false,
+    "imports": [
+      "Run2.WordEncoding",
+      "FT1536.Geometry"
+    ]
+  },
+  {
+    "module": "Run2.NormMachine",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/NormMachine.lean",
+    "sha256": "071db7c35827a0e4ca2080a2e55703a11f4fa733ccf66e837352cd5e804383bc",
+    "reused": false,
+    "imports": [
+      "Run2.WordEncoding",
+      "FT1536.Geometry"
+    ]
+  },
+  {
+    "module": "Run2.FileArithmetic",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/FileArithmetic.lean",
+    "sha256": "a062334819804a998d2accd8ad3d451e726676070934b8dc5da93b42393a720c",
+    "reused": false,
+    "imports": [
+      "Run2.PolynomialMachine",
+      "Run2.ScalarMachine",
+      "Run2.NormMachine"
+    ]
+  },
+  {
+    "module": "Run2.FileVerifier",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/FileVerifier.lean",
+    "sha256": "f07b926d0ef932e3046dc3291e81e54dd74143533294e5b2fc7f979b49499232",
+    "reused": false,
+    "imports": [
+      "Run2.FileArithmetic"
+    ]
+  },
+  {
+    "module": "Run2.VerifierResources",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/VerifierResources.lean",
+    "sha256": "e7d46004bf3b2d2351f37c611dcf57368e9b97efb834011916eecb2ddae18afd",
+    "reused": false,
+    "imports": [
+      "Run2.FileVerifier"
+    ]
+  },
+  {
+    "module": "Run2.VerifierInputs",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/VerifierInputs.lean",
+    "sha256": "a7be2e896b88bdf635c40cd56b556166b79e7f5168bb5ef78bfbd416726aeb07",
+    "reused": false,
+    "imports": [
+      "Run2.FileVerifier",
+      "Run2.VerifierResources",
+      "FT1536.PublicSimulation"
+    ]
+  },
+  {
+    "module": "VerifyBind.StaticCodec",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/VerifyBind/StaticCodec.lean",
+    "sha256": "c3166c8a44446bc6a197e875f44a5bbe18f61a24f0f466d50b2334f1cba087c6",
+    "reused": false,
+    "imports": [
+      "Run2.WordEncoding"
+    ]
+  },
+  {
+    "module": "VerifyBind.ByteCodec",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/VerifyBind/ByteCodec.lean",
+    "sha256": "851fd7aba0a8f8c6889b6c0e3301968f74199d74fd19ea8117ebf1eaea421334",
+    "reused": false,
+    "imports": [
+      "Run2.Games",
+      "VerifyBind.StaticCodec"
+    ]
+  },
+  {
+    "module": "VerifyBind.Verdict",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/VerifyBind/Verdict.lean",
+    "sha256": "83d9faaf79c6e2eb578ebb0df16f59e589e92ef880f552449259132ab20da4a3",
+    "reused": false,
+    "imports": [
+      "Run2.VerifierInputs",
+      "VerifyBind.ByteCodec"
+    ]
+  },
+  {
+    "module": "VerifyBind.HashTo",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/VerifyBind/HashTo.lean",
+    "sha256": "fa46720f539b241aa4f12b5b182b1b0fb6558366989e293370f8af230fa04254",
+    "reused": false,
+    "imports": [
+      "VerifyBind.Verdict"
+    ]
+  },
+  {
+    "module": "JointDecomp",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/JointDecomp.lean",
+    "sha256": "2a7227e4f73f2cb1e58e7119aade777648c26885a730544261ff81a874f0e27c",
+    "reused": false,
+    "imports": [
+      "FT1536.Divergence",
+      "Run2.LawBinding",
+      "SecondMoment",
+      "VerifyBind.HashTo"
+    ]
+  },
+  {
+    "module": "Run2.A2Theta",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/A2Theta.lean",
+    "sha256": "d9c478744929a0a5aa528ac90a15a37edee07305d7b6812bdf4bf1558e696387",
+    "reused": false,
+    "imports": [
+      "FT1536.Geometry",
+      "Mathlib.Topology.Algebra.InfiniteSum.Real",
+      "Mathlib.Topology.Algebra.InfiniteSum.NatInt",
+      "Mathlib.Analysis.SpecificLimits.Normed"
+    ]
+  },
+  {
+    "module": "Run2.T5ThetaNumeric",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/T5ThetaNumeric.lean",
+    "sha256": "76ed845bec10b02ce3605c9148f973ae681893a3983ec79c51bfefa8bac59164",
+    "reused": false,
+    "imports": [
+      "Run2.A2Theta",
+      "Mathlib.Analysis.Real.Pi.Bounds",
+      "Mathlib.Analysis.Complex.ExponentialBounds"
+    ]
+  },
+  {
+    "module": "Run2.ShiftedGaussian",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/ShiftedGaussian.lean",
+    "sha256": "f093353e65c09f5e55a5cc508a37156aceec7935c930c56e2b9fcaef7bc18068",
+    "reused": false,
+    "imports": [
+      "Run2.A2Theta",
+      "Mathlib.Analysis.SpecialFunctions.Gaussian.PoissonSummation"
+    ]
+  },
+  {
+    "module": "Run2.TriangularGaussian",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/TriangularGaussian.lean",
+    "sha256": "eb40f80ca3543388ebb508f20cab3b23006e00c6426ec5b7a258b8d9da0ac5ba",
+    "reused": false,
+    "imports": [
+      "Run2.ShiftedGaussian"
+    ]
+  },
+  {
+    "module": "Run2.T5ScalarMass",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/T5ScalarMass.lean",
+    "sha256": "6218873b5de06ae3978bf883dba30ab18f925c0e001373ef5f3d212916505e76",
+    "reused": false,
+    "imports": [
+      "Run2.T5ThetaNumeric",
+      "Run2.TriangularGaussian"
+    ]
+  },
+  {
+    "module": "RejectionBound",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/RejectionBound.lean",
+    "sha256": "915948f8d1a7d3d11557be0a2aeecc671079aedbe8413e30b9e7972682d7971b",
+    "reused": false,
+    "imports": [
+      "FT1536.PublicSimulation"
+    ]
+  },
+  {
+    "module": "CenteringClosure",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/CenteringClosure.lean",
+    "sha256": "b2b9d1290ee93227cd7dffe95323e1d1eb96755b3d03218c9c3a3c5dcaa1b4fa",
+    "reused": false,
+    "imports": [
+      "Mathlib.Data.Rat.Defs",
+      "Mathlib.Basic.Real.Basic",
+      "Mathlib.Tactic"
+    ]
+  },
+  {
+    "module": "SignLayerSupport",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/SignLayerSupport.lean",
+    "sha256": "25917792833ece7f96085837596797831cb7dbe8fd24822e172239c7a0e54d9d",
+    "reused": false,
+    "imports": [
+      "SecondMoment",
+      "Run2.FiberBinding",
+      "Run2.T5ScalarMass",
+      "RejectionBound",
+      "CenteringClosure"
+    ]
+  },
+  {
+    "module": "HacGlue",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/HacGlue.lean",
+    "sha256": "df81199ba5b9441140864a7ffba81d560cb9a2af64b596d29979175761a94ee7",
+    "reused": false,
+    "imports": [
+      "JointDecomp",
+      "SignLayerSupport",
+      "VerifyBind.HashTo"
+    ]
+  },
+  {
+    "module": "ONoneGeometry",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/ONoneGeometry.lean",
+    "sha256": "c57373d50c04ad54daea938fe64274222c1b7b0a3efa1f0283304f96fada9579",
+    "reused": false,
+    "imports": [
+      "HacGlue"
+    ]
+  },
+  {
+    "module": "Run2.TargetLaw",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/TargetLaw.lean",
+    "sha256": "6cb385efb10c863bc171da9357202019cffc0891ccbbae416827c00fe112a9c6",
+    "reused": false,
+    "imports": [
+      "Run2.LawBinding"
+    ]
+  },
+  {
+    "module": "Run2.ExecutionComparison",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/ExecutionComparison.lean",
+    "sha256": "e8700ad504f370601c13200b66888b0c2733e83e929f696f9b7dbb38f57e2e36",
+    "reused": false,
+    "imports": [
+      "Run2.TargetLaw"
+    ]
+  },
+  {
+    "module": "Run2.MTBinding",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/MTBinding.lean",
+    "sha256": "f4166dba3d966d9c9826576e4937d7c3dddfee887c3c2c828c6fc82fb8c42987",
+    "reused": false,
+    "imports": [
+      "Run2.LawBinding"
+    ]
+  },
+  {
+    "module": "Run2.ReaderBinding",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/ReaderBinding.lean",
+    "sha256": "e943d44ac2d4408132494ab6e0dbef077f22f741c29f6afb2c62d66da3000b88",
+    "reused": false,
+    "imports": [
+      "Run2.TargetLaw",
+      "Run2.MTBinding"
+    ]
+  },
+  {
+    "module": "Run2.StoppedComparison",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/StoppedComparison.lean",
+    "sha256": "c692bfdfec31ecc058368799a0a4b0fe40af6815ea99c2114a24eca02f42ee31",
+    "reused": false,
+    "imports": [
+      "Run2.ExecutionComparison",
+      "Run2.ReaderBinding"
+    ]
+  },
+  {
+    "module": "Run2.LazyEventBinding",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/LazyEventBinding.lean",
+    "sha256": "86024b2176ecdf430bea7e9fe5bea619301a99171527a3a45ac4a99d5b52e6f5",
+    "reused": false,
+    "imports": [
+      "Run2.StoppedComparison"
+    ]
+  },
+  {
+    "module": "Run2.StoppingLoss",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/StoppingLoss.lean",
+    "sha256": "2a5244669bc35d2e9b3e95fb8859d759263ad3b6dd0f782dc99de32b67d85ea1",
+    "reused": false,
+    "imports": [
+      "Run2.LazyEventBinding"
+    ]
+  },
+  {
+    "module": "Run2.ConcreteReduction",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/ConcreteReduction.lean",
+    "sha256": "80fb029e3e12294d03c190a10c93ebf4c53cd6aca55d69a0c6fbf5a613d3d87f",
+    "reused": false,
+    "imports": [
+      "Run2.StoppingLoss"
+    ]
+  },
+  {
+    "module": "Assembly",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Assembly.lean",
+    "sha256": "1a0cc416fd63fdbfc18e5f2ed81c8df1b1c71087357bc2144db8c64ee877254b",
+    "reused": false,
+    "imports": [
+      "ONoneGeometry",
+      "Run2.ConcreteReduction"
+    ]
+  },
+  {
+    "module": "AdvPrg",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/AdvPrg.lean",
+    "sha256": "f0c2e858e1ab0e4d53aa4f3610d1b4738549094ded29711976469da9fbc093d8",
+    "reused": false,
+    "imports": [
+      "Assembly"
+    ]
+  },
+  {
+    "module": "CompPrg",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/CompPrg.lean",
+    "sha256": "0b80f096cb6af0d77ef1762f58301af76dc94569e5c5cbcfeb690cc921876f3b",
+    "reused": false,
+    "imports": [
+      "AdvPrg"
+    ]
+  },
+  {
+    "module": "AssemblyComp",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/AssemblyComp.lean",
+    "sha256": "b6112bef9c093439acdd7ee01b9aefa8f797b18738140e99306f045d25795929",
+    "reused": false,
+    "imports": [
+      "CompPrg"
+    ]
+  },
+  {
+    "module": "Run2.CorrectnessProbability",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/CorrectnessProbability.lean",
+    "sha256": "2fe93fd64d80cfe1645d13acf2a50c1728de52d5ebe0e3cda63519675edd5ad8",
+    "reused": false,
+    "imports": [
+      "Run2.FiberBinding"
+    ]
+  },
+  {
+    "module": "Run2.UniformErrorBound",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/Run2/UniformErrorBound.lean",
+    "sha256": "bb7e922d9a7a1f866c20a037fb48bce3c584cc3d3245901736b5fb9840868d9c",
+    "reused": false,
+    "imports": [
+      "Run2.CorrectnessProbability",
+      "Mathlib.Analysis.Complex.ExponentialBounds"
+    ]
+  },
+  {
+    "module": "AttemptPointwise",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/AttemptPointwise.lean",
+    "sha256": "33c82338dc0d67439078fc3641f1fa0a50b9ec144a10caf5888c561620d88f80",
+    "reused": false,
+    "imports": [
+      "SignLayerSupport"
+    ]
+  },
+  {
+    "module": "AttemptWeights",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/AttemptWeights.lean",
+    "sha256": "ac1437aab095b9244ae4b25cd7a91361b9713277b7c15dc38d5b00e1797bcc46",
+    "reused": false,
+    "imports": [
+      "AttemptPointwise",
+      "ONoneGeometry"
+    ]
+  },
+  {
+    "module": "T5Pointwise",
+    "source": "/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/work/FT1536_PREMISE_AUDIT_20261011_001/snapshot/proofs/ft1536/development/T12_1/run2/formal/T5Pointwise.lean",
+    "sha256": "4cac2f4d76ffb4dd15f96f7db8640099940544289a05970e217ad989f13570ec",
+    "reused": false,
+    "imports": [
+      "AttemptWeights",
+      "CenteringClosure",
+      "Run2.T5ScalarMass"
+    ]
+  }
+]
