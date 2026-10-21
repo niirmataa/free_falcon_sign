@@ -1,3 +1,61 @@
+# SEED9_R1 — add-prime prefix window CLOSED: SelectedStepAddPrime195 accepted (job 565), step 2 of the route done
+
+2026-10-21 (R1 add-prime prefix window, suffix 565). Entry pins
+re-verified read-only before work AND again after the job (ENTRY_PINS
+.build/steprx195/ENTRY_PINS.json SHA256
+00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964 =
+route pin; all 74673 checked paths 0 missing / 0 changed; old manifest
+99ac47a1… untouched; no active job/Lean/Sage processes; the two loose
+run2/notes files stay untracked and reported, not claimed). ACCEPTED
+this window: SelectedStepAddPrime195 (job keygen_publicforward159_565;
+source d1c0407c2590b603…, olean 5cb290f64e78e9a9…, 3.575 s,
+-DwarningAsError, logs 0/0, clean_log, forbidden_proof_markers = [];
+#print axioms on twelve key exports = exactly the standard three) — the
+seven-statement prime prefix of the make_fg_step additional-prime loop
+body at u = 1 (MakeFgAddPrimeShape194.prefixSteps) ASSEMBLED FROM READY
+ELEMENTS ONLY (no new engine in this layer): declP/declV/declX runs
+(MakeFgDeclarations176/DeepestDeclarations175), the primes[1].p
+PrimeRead at the u = 1 index (p1 = BitVec.ofNat 32 2147346433, the
+row-1 block-21 ternary word pinned by decide against the parse record,
+row1/row1_value/object_word), iSet at KeygenNinv31.source_exists
+(p0i1 = KeygenNinv31.word p1), rSet at KeygenModpR2Exec.source_exists
+(r21 = KeygenModpR2Word.word p1 p0i1) and rxSet at the KeygenModpRxExec
+u64 call shape source64_exists/source64_* (rx1 = KeygenModpR.word p1 =
+the kernel-checked empty-loop word). Exports: prefix_source /
+continue_inner (the loop-body continuation), the result-state Slot cells
+p/p0i/R2/Rx and after_heap, plus the loop head over ANY exit state
+(init_source u := slen = 1, guard1 u < tlen true at 1 < 2) composed into
+body_entry at u1 = bindValue exit "u" .uint64 (.uint64 (word 1)).
+Values are executed words only: no transform property, table law, root
+law or positivity claim. Traps recorded (do not re-derive): an empty
+namespace directory inside an EARLIER LEAN_PATH root swallows module
+search for the whole namespace (the workshop must populate that root
+with the dependency oleans first), and dotted constructor notation
+(.uint32/.uint64) is ambiguous in congrArg lambda types — use the
+explicit cell_pair helper. Workshop: 3 local typecheck iterations (one
+module-search setup, two typing), no draft job suffixes, no sorry even
+in diagnostics; accepted source 0 markers. Retained register unchanged:
+64 + 58 + 4. OPEN (in order): (1) the ter modp_mkgm3 generator branch at
+the u = 1 cell, then walkFs/walkGs (the two 512-step zint_mod_small_signed
+marches — ZintModSignedWord194.ms_call ready; the walk loop composition
+and the t1[v] stores are the new work), nttFs/nttGs (the forward
+modp_NTT3 runs — NO execution engine exists yet: biggest item),
+productFd/productGd (the product engines transfer), the false !out_ntt
+skip (fd/gd inverse pairs), then the loop composition and the section
+export — at that export the body_entry hypotheses are discharged: the
+row-1 block-21 table-word keep (SelectedStepCrtWord194 precedent) and
+the u/slen/tlen cells + primes binding from SelectedStepFsFd194.source
+through SelectedStepCrtRun194; (2) then the remaining d-levels and the
+root/certificate/codec path. Unconditional Z>0, p_accept and p_K remain
+OPEN. Old110 frozen; measured wording 8192/23628 with the separate
+256/739 control and the five do_sign items unchanged. Scoped proof,
+NOT_REVIEWED. Next unused proof job suffix: **566**. No push (the
+outgoing range holds the earlier local commits plus this window's local
+commit for the owner's publication signal). Resume: verify
+.build/steprx195/ENTRY_PINS.json (00f602e7…) read-only, then continue
+from OPEN (1) per NEXT_ROUTE; do not re-derive the prefix, the pin
+structure or the rx engine.
+
 # SEED9_R1 — rx window CLOSED: KeygenModpRxExec accepted (job 564), step 1 of the route done
 
 2026-10-21 (R1 rx window, suffix 564). Entry pins re-verified read-only

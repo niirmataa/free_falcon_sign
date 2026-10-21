@@ -1,3 +1,74 @@
+# Additional-prime route 565 — the u = 1 prime prefix closed (assembly layer), the ter/walk/NTT chain next
+
+2026-10-21 (R1 add-prime prefix window). STEP 2 OF THE STEPS 1-7 ROUTE
+IS CLOSED: the seven-statement prime prefix at u = 1
+(MakeFgAddPrimeShape194.prefixSteps) is executed at the part-4
+loop-body scope entry, assembled from ready elements only
+(SelectedStepAddPrime195, job keygen_publicforward159_565; source
+`d1c0407c…`, olean `5cb290f6…`, 3.575 s, logs 0/0, standard three
+axioms on twelve key exports, markers 0). The words are the executed
+words p1 = BitVec.ofNat 32 2147346433 (the primes[1] row of the
+block-21 ternary table, pinned by decide: 2147346433 / 1119654270 /
+238827065), p0i1 = KeygenNinv31.word p1, r21 = KeygenModpR2Word.word p1
+p0i1, rx1 = KeygenModpR.word p1 (the kernel-checked empty-loop modp_Rx
+word at x = 1). Next unused proof job suffix is **566**. Entry
+re-verified read-only at window start and after the job (ENTRY_PINS
+`00f602e7…`, all 74673 inherited pins 0 missing / 0 changed, no active
+processes). Scoped proof, NOT_REVIEWED; no push (4 waits); values stay
+executed words.
+
+## Exact remaining obligations (in order)
+
+1. The eight-statement chain at the same u = 1 cell: the ter branch
+   (the modp_mkgm3 wrapper call with the pinned seven-argument list,
+   MakeFgAddPrimeShape194.generateArgs), walkFs and walkGs (each 512
+   per-word zint_mod_small_signed calls — ZintModSignedWord194.ms_call is
+   ready; the walk loop composition and the t1[v] stores are the new
+   work), nttFs/nttGs (the forward modp_NTT3 runs — NO execution engine
+   exists yet: the biggest item; KeygenNttForwardPrograms pins the
+   body), productFd/productGd (the product engines transfer), the false
+   !out_ntt skip (the fd/gd inverse pairs), then the loop composition
+   and the section export. At that export the prefix entry facts are
+   discharged: the row-1 block-21 table-word keep (SelectedStepCrtWord194
+   keep precedent) and the u/slen/tlen cells + primes binding from
+   SelectedStepFsFd194.source through SelectedStepCrtRun194 —
+   SelectedStepAddPrime195.body_entry consumes exactly those
+   hypotheses.
+2. The remaining d-levels and the root/certificate/codec path, before
+   the complete emitted witness can instantiate the corrected
+   KeygenProbability134 consumers; the prospective bound remains
+   Z>=2^-256 and is NOT established.
+
+## Prefix facts pinned this window (consume, do not re-derive)
+
+- SelectedStepAddPrime195 exports: words p1/p0i1/r21/rx1 and the row-1
+  pin row1/row1_value/object_word; the executed states withWords/withV/
+  withX/withP/withI/withR/after and their cell equations (withP_p …
+  after_rx, after_heap); statement runs words_run/v_run/x_run/decls_run/
+  p_read/p_source/i_source/r_source/rx_source; the composed
+  append_source/prefix_source/continue_inner; the result cells p_cell/
+  i_cell/r2_cell/rx_cell; and the loop head init_source/guard1 over any
+  exit state, composed in body_entry at u1.
+- The PrimeRead at u = 1 is the same constructor shape as the
+  first-prime p_read (SelectedStepPrime188), with the address
+  PointerAdd.within primes 1 and the bridge fieldPointer_one
+  (fieldPointer primes1 .p = primeField primes 1 .p).
+
+## Trap wall (księga additions)
+
+- An EMPTY namespace directory inside an earlier LEAN_PATH root swallows
+  module search for the whole namespace (Lean binds the namespace to
+  that root and reports missing object files there). The workshop root
+  must be populated with the dependency oleans (symlinks) before use, or
+  kept out of LEAN_PATH during compilation.
+- Dotted constructor notation (.uint32/.uint64) is ambiguous in
+  congrArg lambda types (many same-named constructors); use an explicit
+  cell_pair helper. `if_neg` is deprecated in this toolchain
+  (warningAsError) — use simp with the disequality instead.
+- Scope boundary recorded in the module: the row-1 load at the entry
+  heap is a hypothesis; the exact direction (uniqueness of the seven
+  statement words) is not claimed, matching the first-prime layer.
+
 # Additional-prime route 564 — the empty-loop modp_Rx engine closed, the prime prefix next
 
 2026-10-21 (R1 rx window). STEP 1 OF THE STEPS 1-7 ROUTE IS CLOSED: the
