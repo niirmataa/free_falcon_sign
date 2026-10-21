@@ -1,3 +1,53 @@
+# SEED9_R1 — engine window CLOSED: ZintModSignedWord194 accepted (job 563)
+
+2026-10-21 (R1 engine window, suffix 563). Entry pins re-verified
+read-only before work (ENTRY_PINS .build/steprx195/ENTRY_PINS.json
+SHA256 00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964
+matches the route pin; old manifest 99ac47a1d981ebfc… untouched in
+.build/stepgs194/ and recorded in the supplement
+run2/notes/PINY_I_OLEAN_STRUKTURA.md; no active job/Lean/Sage
+processes; the two loose run2/notes files, PINY_I_OLEAN_STRUKTURA.md
+and PROMPT_K1_R5_ANSWERS_001.md, stay untracked and are reported, not
+claimed). ACCEPTED this window: ZintModSignedWord194 (job
+keygen_publicforward159_563; source 4f96c58f8dddd45a…, olean
+a85b5697a5f28e98…, receipts 4667a145f0b7a523…; 42.299 s,
+-DwarningAsError=true, logs 0/0, clean_log, forbidden_proof_markers =
+[]; #print axioms on five key theorems = exactly the standard three) —
+the zint_mod_small_signed engine at dlen = 1 per march word: the full
+zint_mod_small_unsigned leaf body at one loop round
+(untouched-word image unsignedWord = modp_add(modp_montymul(0,R2,p,p0i),
+w2, p) with w2 = (d0-p)+(p&-((d0-p)>>>31))), the modSigned spine (the
+dlen = 0 branch resolved false, the leaf call into z with its Bind and
+ReceiveC, the modp_sub sign correction over the d[dlen-1] load at
+index 0, the z return), and the call-level export ms_call at the
+pinned walk shape MakeFgAddPrimeShape194.modArgs. Shapes stay
+decide-bound to the job-553/557 parse record; no reconnaissance.
+Workshop note (honesty): about 12 local typecheck iterations preceded
+the single acceptance run; no draft suffixes consumed. Retained
+register unchanged: 64 + 58 + 4. OPEN (in order): (1) the
+additional-prime steps 1-7 (the seven-statement prime prefix at
+u = 1: declP/declV/declX, primes[1].p read, modp_ninv31, modp_R2 and
+the new modp_Rx call4) — NOT started this window (budget; clean
+freeze), everything prepared (pinned prefixSteps shapes, the closed
+modp_Rx wall, the accepted engine; plan in
+notes/run/KEYGEN_STEP_GS_194_NEXT_ROUTE.md, first lemma = the
+empty-loop rx body at x = 1 with the intended word modp_R(p), now to
+be proven); (2) then the ter modp_mkgm3 call, the two 512-step walks
+(engine ready), the forward modp_NTT3 runs (no engine — biggest
+item), the fd/gd product loops and the false !out_ntt skip, then the
+loop composition and the section export; (3) then the remaining
+d-levels and the root/certificate/codec path. Values remain executed
+words only; no transform property, table law, root law or positivity
+claim; unconditional Z>0, p_accept and p_K remain OPEN. Old110
+frozen; measured wording 8192/23628 with the separate 256/739
+control and the five do_sign items unchanged. Scoped proof,
+NOT_REVIEWED. Next unused proof job suffix: **564**. No push (the
+outgoing range holds 7 commits plus this window's local commits for
+the owner's publication signal). Resume: verify
+.build/steprx195/ENTRY_PINS.json (00f602e7…) read-only, then continue
+from the steps 1-7 route (the empty-loop rx lemma first); do not
+re-derive the pin structure.
+
 # SEED9_R1 — decision-A window CLOSED: re-baseline done, drafts accepted
 
 2026-10-21 (R1 decision-A resume window, suffixs 559-562). RE-BASELINE

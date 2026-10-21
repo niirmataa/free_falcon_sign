@@ -435,3 +435,52 @@ and the five do_sign items remain unchanged. Scoped proof, NOT_REVIEWED;
 no IID/D1/F04 premise; no push (batch 4 waits for the owner's signal).
 Retained failures: `KEYGEN_STEP_GS_194_FAILURES.json` (18 workshop jobs),
 the inherited checkpoint192 register (58) and checkpoint193 register (4).
+
+## Engine window route (2026-10-21): the additional-prime steps 1-7
+
+(After job 563 = ZintModSignedWord194 accepted; next unused proof job
+suffix 564. The modp_Rx wall is CLOSED (previous window: the rx
+stratum constructor + KeygenModpRx + the documented pin-chain
+re-baseline); the seven-statement prime prefix shapes are pinned and
+decide-bound in MakeFgAddPrimeShape194; the per-march-word engine is
+accepted. This route is the steps 1-7 plan; execute, do not
+reconnoitre.)
+
+1. The empty-loop rx lemma first: `rxBody [.uint32 1, .uint32 p,
+   .uint32 p0i, .uint32 r2] (.uint32 (KeygenModpR.word p))` — at
+   x = 1 the body decrements x to 0, sets r = R2, z = modp_R(p), the
+   loop guard (1U << i) <= x is false already at i = 0, and the return
+   is z. Build it as GenExec LeafCall over C99ModularReference.rxCode
+   in the KeygenModpR2Exec body_exists pattern (r2Code precedent);
+   then `ModCall.rx` gives the executed word of the rxSet statement.
+   (This replaces the earlier paper note "the intended word is
+   modp_R(p)" by a kernel-checked statement.)
+2. The seven-statement prime prefix at the u = 1 iteration, in the
+   MakeFgAddPrimeShape194.prefixSteps order (decide-bound shapes; no
+   reconnaissance): declP/declV/declX (C99DeclarationStatements.effect
+   via ZintSubWord194.declare_run), pSet (KeygenZintCall.Exec.prime
+   with a KeygenLevelCalls.PrimeRead of primes[1].p — the block-21
+   table word transport of SelectedStepCrtWord194 is the keep
+   precedent), iSet (ModCall inverse at KeygenNinv31.word), rSet
+   (ModCall r2 at KeygenModpR2Word.word via KeygenModpR2Exec), rxSet
+   (ModCall rx at KeygenModpR.word via step 1). Entry state: the
+   part-4 loop-body scope entry at u = 1 (the part-3 CRT exit state
+   exported by SelectedStepCrtRun194); values as executed words only.
+3. Then the eight-statement chain: the ter branch (modp_mkgm3 wrapper
+   call with the pinned seven-argument list), walkFs and walkGs (each
+   512 per-word calls — ZintModSignedWord194.ms_call is ready; the
+   walk loop composition and the t1[v] stores are the new work),
+   nttFs/nttGs (the forward modp_NTT3 runs — NO execution engine
+   exists yet: the biggest item; KeygenNttForwardPrograms pins the
+   body), productFd/productGd (the product engines transfer), the
+   false !out_ntt skip (fd/gd inverse pairs), then the loop
+   composition and the section export.
+4. The same modp_Rx decision opens the four later call sites
+   (poly_sub_scaled_ntt falcon-keygen.c:4626, solve_NTRU_intermediate
+   :5906/:5985, solve_NTRU_binary_depth1 :6474) — execution only, no
+   further stratum extensions.
+
+Build-order note (księga): for any multi-module run order by the REAL
+transitive source-import graph, transitively through cached modules;
+the cached `imports` maps record only bindings present at build time
+(job-560 trap).

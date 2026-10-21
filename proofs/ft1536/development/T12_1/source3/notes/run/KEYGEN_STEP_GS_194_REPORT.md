@@ -1139,3 +1139,155 @@ tabeli, dodatniości, bezwarunkowego Z > 0 ani p_accept/p_K — te
 pozostają OPEN; okno nie wykonało ani jednego kroku sekcji, a ściana
 jest luką pokrycia semantyki wywołań, nie wynikiem o niepoprawności
 kodu.
+
+## R1 engine window (2026-10-21) — the zint_mod_small_signed march engine accepted (job 563)
+
+Window launched per the WORK_STATE resume (proof job suffix 563: the
+engine ZintModSignedWord194 (per march word, dlen = 1) first, then the
+additional-prime steps 1-7). Entry re-verified read-only before any
+proof work: ENTRY_PINS `.build/steprx195/ENTRY_PINS.json` SHA256
+00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964
+(matches the route pin), the old manifest 99ac47a1d981ebfc… untouched
+in `.build/stepgs194/` and recorded in the supplement
+`run2/notes/PINY_I_OLEAN_STRUKTURA.md`; no active owned job/Lean/Sage
+process. Build-order rule (księga) observed: the engine is a single
+module over cached bindings, its real transitive import graph
+(MakeFgAddPrimeShape194 -> KeygenModpR2Exec -> ZintNormWord194 ->
+ZintSubWord194, all cached) checked before the run; no cache-map order
+was relied on. Scoped proof, NOT_REVIEWED; no push (the outgoing range
+holds 7 commits for the owner's publication signal).
+
+### Closed (proof job 563; logs 0/0, standard three axioms)
+
+`ZintModSignedWord194` (job `keygen_publicforward159_563`; source
+`4f96c58f8dddd45a…`, olean `a85b5697a5f28e98…`, receipts
+`4667a145f0b7a523…`; 42.299 s, `-DwarningAsError=true`, clean_log,
+forbidden_proof_markers = [], sandbox bwrap/prlimit 12 GiB) — the
+zint_mod_small_signed engine at dlen = 1, per march word (the marched
+limb `d[0] = d0` and the section words p/p0i/R2/Rx are arbitrary
+BitVec 32; the walked pointer x is arbitrary at its marched position
+pd):
+
+1. `unsignedWord d0 p p0i R2` — the executed word of the nested
+   zint_mod_small_unsigned leaf at dlen = 1: one loop round (u = dlen
+   = 1; the body decrements u first, so the read limb is d[0] = d0):
+   `x := modp_montymul(0, R2, p, p0i); w := d0 - p; w := w +
+   (p & -(w >>> 31)); x := modp_add(x, w, p)`, then the trailing u wrap
+   (u = 0-1) and the x return; both modular calls at their pinned leaf
+   bodies (KeygenModpWord.montgomery / KeygenModpAddSub.result .add).
+2. `signWord Rx d0 = Rx & -(d0 >>> 30)` and the exported image
+   `modSignedWord d0 p p0i R2 Rx = modp_sub(unsignedWord d0 p p0i R2,
+   signWord Rx d0, p)` (KeygenModpAddSub.result .sub) — the honest
+   executed word of the whole callee (the mask/negation semantics
+   follow the pinned parse, not any shorthand).
+3. `leaf_run` — the complete pinned leaf body
+   `KeygenZintCall.calleeBody (.leaf .reduce)` executed in full as one
+   KeygenWordExec.Exec (declaration chain, one loopNormal round, the
+   loopFalse exit, the wrap decrement, the return) with the returned
+   word and the heap-keeps fact (the body writes locals only).
+4. `spine_run` — the complete pinned spine `MakeFgAddPrimeShape194.msBody`
+   executed in full as one KeygenZintCall.Exec: the z declaration, the
+   dlen = 0 early-return branch resolved FALSE at dlen = 1, the
+   zint_mod_small_unsigned leaf call into z (its Bind over the five
+   leaf parameters and the ReceiveC.into), the modp_sub sign
+   correction with the `d[dlen-1]` load at index 0, and the z return.
+5. `ms_call` — the call-level export at the pinned walk shape
+   `MakeFgAddPrimeShape194.modArgs`: for any caller state with the
+   slen = 1 u64 cell, the p/p0i/R2/Rx u32 cells and the walked pointer
+   x at pd with the loaded word d0, `KeygenZintCall.Call .modSigned
+   before modArgs before (some (.uint32 (modSignedWord d0 pw p0w r2w
+   rxw)))` — the per-march-word engine the two 512-step walks will
+   consume (512 instantiations at slen = 1).
+
+Shape bindings stay decide-bound to the pinned job-553/557 parse
+record (`reduce_shape`, `ms_decl_shape`, `ms_zero_shape`,
+`ms_leaf_shape`, `ms_sub_shape`, `ms_ret_shape`); no new parse
+recognition was performed. Axiom audit (workshop, `#print axioms` on
+leaf_run/spine_run/ms_call/reduce_shape/ms_leaf_shape): exactly the
+standard three (propext, Classical.choice, Quot.sound); marker scan
+sorry/admit/native_decide = 0 hits. Workshop note (honesty): the
+module was developed in a local typecheck loop (about 12 iterations
+against the job-562 library) before the single acceptance run; no
+draft job suffixes were consumed and no draft job records exist.
+
+Values stay executed words: no residue range, normalization,
+positivity or correctness claim of the C algorithm is made; no
+transform property, table law, root law or Z>0 claim.
+
+### Traps met (księga pułapek — do not re-derive)
+
+- `KeygenWordExpr.Eval` constructors take every index explicitly
+  (bin: 9 arguments, neg: 5, call3: 12, call4: 15); partially
+  dot-annotated applications fail or elaborate against the wrong type.
+- The CLogic-layer read `bin sub a b` evaluates through
+  `C99Frontend.binary = .arithmetic .minus`; build it with `_` for the
+  translated operands and `C99ScalarReference.Eval.literal .int32 n`
+  for literals (the `C99ValueBridge.type` conversions are defeq).
+- `Exec.loopNormal`'s middle state is the state after the whole loop
+  BODY (the first body statement is inside); `branchFalse`/`loopFalse`
+  take `out` before the boolean guard value.
+- Deep `rfl` heap chains time out (`whnf`, 2M heartbeats) when they
+  cross both a t*-state chain and an entry bind chain; split them into
+  `Eq.trans` of per-definition heap lemmas (leaf_entry_heap,
+  ms_entry_heap, msV_heap).
+- `show` does not unfold definitions: the bind-cell/bind-other rewrites
+  need the unfolded `bindValue …` form in the goal first.
+- The acceptance runner enforces `-DwarningAsError=true`; unused simp
+  arguments are errors in acceptance runs (drop them).
+- Lean resolves a module name against the first LEAN_PATH entry that
+  contains the parent directory; a scratch library root must contain
+  the whole symlink farm, not just the new olean.
+
+### Retained failures (register unchanged: 64 + 58 + 4)
+
+No job failed this window; `KEYGEN_STEP_GS_194_FAILURES.json` keeps
+its 64 records, the inherited checkpoint192 register (58) and the
+checkpoint193 register (4) are untouched.
+
+### Open (in order)
+
+1. The additional-prime steps 1-7 (the seven-statement prime prefix of
+   the loop body at the u = 1 iteration: the three declarations, the
+   `p = primes[1].p` read, `p0i = modp_ninv31(p)`, `R2 = modp_R2(p,
+   p0i)`, `Rx = modp_Rx(1, p, p0i, R2)`) — NOT started this window
+   (budget; clean freeze instead of stretching). Everything is
+   prepared: the shapes are pinned and decide-bound
+   (MakeFgAddPrimeShape194.prefixSteps / front / prefix_shape), the
+   modp_Rx wall is closed (the rx constructor + KeygenModpRx + the
+   pin-chain re-baseline of the previous window) and the route file
+   carries the plan. The first lemma is the empty-loop rx body at
+   x = 1 (x-- leaves 0, the loop is empty, the intended executed word
+   is modp_R(p) — paper analysis of earlier windows, to be PROVEN).
+2. Then the ter generator call (modp_mkgm3 wrapper), the two 512-step
+   walks (their per-word engine is NOW READY: ZintModSignedWord194.ms_call),
+   the forward modp_NTT3 runs (no execution engine exists yet — the
+   biggest item), the fd/gd product loops and the false !out_ntt skip;
+   then the loop composition and the section export.
+3. Then the remaining d-levels and the root/certificate/codec path,
+   before the complete emitted witness can instantiate the corrected
+   KeygenProbability134 consumers. Unconditional Z>0, numerical
+   p_accept, conditional coding and positive p_K remain OPEN.
+
+Next unused proof job suffix: **564**. Scoped proof, NOT_REVIEWED; no
+IID/D1/F04 premise; no push (the outgoing range holds 7 commits plus
+this window's local commits for the owner's publication signal).
+Old110 stays frozen; measured wording 8192/23628 with the separate
+256/739 control and the five do_sign items remain unchanged.
+
+### Three sentences (this window)
+
+Udowodniono: kompletny silnik egzekucji zint_mod_small_signed przy
+dlen = 1 per słowo marszu — ciało zint_mod_small_unsigned w całości
+(jedna runda pętli, montymul/add na przypiętych ciałach liści),
+kręgosłup modSigned z wywołaniem tego liścia, poprawka znaku modp_sub
+przez wczytanie d[dlen-1] oraz eksport na poziomie wywołania dla
+przypiętego kształtu marszu modArgs (job 563, logi 0/0, trzy
+standardowe aksjomaty, markery 0). Najbliższy brak: kroki 1–7 sekcji
+additional-prime (siedmiowyrazowy prefiks prime/p0i/R2/Rx przy u = 1)
+nie rozpoczęte w tym oknie — budżet; najpierw pusty przypadek pętli
+rxBody przy x = 1 (zamierzane słowo modp_R(p)), potem prolog, mkgm3,
+oba marsze (silnik gotowy), modp_NTT3 (brak silnika — największa
+pozycja), pętle produktowe i fałszywa gałąź !out_ntt. Wynik NIE
+implikuje żadnej własności liczbowej algorytmu C (zakres/reszta/
+normalizacja/Z>0/p_accept/p_K pozostają otwarte), nie zamyka sekcji
+additional-prime ani KeyGen i nie jest odbiorem (NOT_REVIEWED).
