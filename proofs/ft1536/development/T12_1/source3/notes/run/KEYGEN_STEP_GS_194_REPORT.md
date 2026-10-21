@@ -1291,3 +1291,133 @@ pozycja), pętle produktowe i fałszywa gałąź !out_ntt. Wynik NIE
 implikuje żadnej własności liczbowej algorytmu C (zakres/reszta/
 normalizacja/Z>0/p_accept/p_K pozostają otwarte), nie zamyka sekcji
 additional-prime ani KeyGen i nie jest odbiorem (NOT_REVIEWED).
+
+## R1 rx-window (2026-10-21) — the empty-loop modp_Rx engine accepted (job 564)
+
+### Entry (obligation 0)
+
+Read-only re-verification before any proof work: the new ENTRY_PINS
+`.build/steprx195/ENTRY_PINS.json` (SHA256
+`00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964`,
+matching the route pin) recomputed path-by-path — all 74673 checked pins
+0 missing / 0 changed; the old manifest `99ac47a1…` untouched in
+`.build/stepgs194/`; no active job/Lean/Sage process; the two loose
+`run2/notes` files (PINY_I_OLEAN_STRUKTURA.md, PROMPT_K1_R5_ANSWERS_001.md)
+remain untracked and are reported, not claimed. Verification log
+`.build/steprx195/entry_reverify_564.log`. Integrity facts only.
+
+### Accepted in this window (proof job 564)
+
+- `KeygenModpRxExec` (job keygen_publicforward159_564; source SHA256
+  `20dc6330d4ace12a1c368f820914568cfac4fb58f8b97d670582fee66bee07cb`,
+  olean `d69d182903d8b81099bdc02fb185f631b75519a3c9be93d36314c5007987966f`,
+  5.125 s, `-DwarningAsError=true`, logs 0/0, clean_log,
+  forbidden_proof_markers = []) — the modp_Rx engine at the empty-loop
+  instance x = 1, the exact KeygenModpR2Exec.body_exists pattern at the
+  LeafCall stratum over the pinned body `C99ModularReference.rxCode`
+  (source binding KeygenRxCallees.rx_source_bound / rx_transcription).
+  The whole body executes: the x decrement leaves 0, the r = R2 store,
+  the z = modp_R(p) leaf call at its pinned body (KeygenModpR.source_exists),
+  the EMPTY loop (the guard `(1U << i) <= x` is false already at i = 0 —
+  kernel-checked through guard_exists / guard_value_exact, not assumed),
+  and the z return. STEP 1 OF THE ROUTE IS CLOSED.
+
+### Exports (both directions, values as executed words)
+
+- `body_exists` / `source_exists`: for arbitrary words p/p0i/r2 there is a
+  run of rxCode at `bindParams base rxParams [.uint32 1#32, .uint32 p,
+  .uint32 p0i, .uint32 r2]` returning `some (.uint32 (KeygenModpR.word p))`.
+- `body_exact` / `source_exact`: EVERY derivation of rxCode at that entry
+  has that same returned word — the paper note "the intended word is
+  modp_R(p)" is now a kernel-checked statement.
+- `source64_exists` / `source64_exact`: the same export at the u64 first
+  argument of the parsed call4 `modp_Rx(slen, p, p0i, R2)` (the slen = 1
+  u64 cell) — the call shape of MakeFgAddPrimeShape194.rxSet, ready for
+  step 2.
+- Axiom audit (workshop, `#print axioms` on body_exists/body_exact/
+  source_exact/source_exists/source64_exact/source64_exists/
+  guard_value_exact/loop_unique): exactly the standard three
+  (propext, Classical.choice, Quot.sound). Marker scan
+  sorry/admit/native_decide = 0 hits on the accepted source.
+
+### Traps met (księga pułapek — do not re-derive)
+
+- `cases … with` alternative patterns must carry the FULL constructor
+  arity; names placed in index-determined slots DO NOT bind (for
+  `C99ScalarReference.Eval.variable` the name and the value slots are
+  index-determined: write `| «variable» _ _ _ bound =>` and read the value
+  through the scrutinee's own variable). Exact arities used here:
+  `Eval.variable` 4, `Eval.literal` 2 (write `| literal =>`, both slots
+  substituted), `Eval.arithmetic`/`Eval.shift`/`Eval.compare` 9 (result
+  slot substituted — use the scrutinee's value variable),
+  `C99IntegerReference.CompareExec.step` 6 (t/ht/a/b/ha/hb), and the
+  GenExec loop constructors loopFalse/loopNormal/loopReturn 7/13/10
+  (all slots bind). Wrong arities fail SILENTLY with unbound names.
+- A defeq that must normalize two ground-equal state-cell facts (e.g.
+  passing `s6_x` where `s5_x` was expected) forces the kernel to fully
+  normalize both giant nested record-update states and blows the 6 GiB
+  kernel limit ("excessive memory consumption"); keep every cell
+  argument syntactically exact. This is the same family as the 556
+  shape-equality trap: make every crossing syntactic.
+- `show … at h` does not parse — use `change … at h`.
+- `rw [source_result …]` alone closes goals `⟨after,.normal⟩ =
+  ⟨effect …,.normal⟩`; a trailing `rfl` errors with "no goals".
+- `KeygenModpR2Exec.return_exact` concludes `out = ⟨s,.returned (some v)⟩`
+  (a Result equation), not `out.flow = …`; wrap with `congrArg Result.flow`.
+- `arithmetic_deterministic` takes FIVE values (op x y a b) before the two
+  derivations.
+
+### Workshop honesty note
+
+The module was developed in a local typecheck loop (~10 iterations
+against the job-563 library; no draft job suffixes consumed, no draft job
+records). While bisecting the kernel-memory trap, discarded `.build`
+diagnostics used `sorry` (owner clarification 2026-10-21: diagnostics
+may, the final may not); the accepted source is marker-free and the
+acceptance run enforces `-DwarningAsError=true`.
+
+### Retained failures (register unchanged: 64 + 58 + 4)
+
+No job failed this window; `KEYGEN_STEP_GS_194_FAILURES.json` keeps its
+64 records, the inherited checkpoint192 register (58) and the
+checkpoint193 register (4) are untouched.
+
+### Open (in order)
+
+1. The seven-statement prime prefix at the u = 1 iteration
+   (MakeFgAddPrimeShape194.prefixSteps: declP/declV/declX, the
+   primes[1].p PrimeRead, modp_ninv31, modp_R2, and the rxSet statement —
+   whose executed word is now `KeygenModpR.word p` by
+   KeygenModpRxExec.source_exact) at the part-4 loop-body scope entry.
+2. Then the ter generator call (modp_mkgm3 wrapper), the two 512-step
+   walks (their per-word engine ZintModSignedWord194.ms_call is ready),
+   the forward modp_NTT3 runs (NO execution engine exists yet — the
+   biggest item), the fd/gd product loops and the false !out_ntt skip;
+   then the loop composition and the section export.
+3. Then the remaining d-levels and the root/certificate/codec path,
+   before the complete emitted witness can instantiate the corrected
+   KeygenProbability134 consumers. Unconditional Z>0, numerical
+   p_accept, conditional coding and positive p_K remain OPEN.
+
+Next unused proof job suffix: **565**. Scoped proof, NOT_REVIEWED; no
+IID/D1/F04 premise; no push (the outgoing range holds the earlier
+commits plus this window's local commits for the owner's publication
+signal). Old110 stays frozen; measured wording 8192/23628 with the
+separate 256/739 control and the five do_sign items remain unchanged.
+
+### Three sentences (this window)
+
+Udowodniono: kompletny silnik modp_Rx przy pustej pętli x = 1 — całe
+przypięte ciało rxCode wykonuje się (dekrement x do 0, zapis r = R2,
+wywołanie liścia modp_R(p), pusta pętla przy FAŁSZYWYM strażniku
+`(1U << i) <= x` już przy i = 0 — sprawdzone w kernelu, nie założone —
+i zwrócone słowo), a `body_exact` pokazuje to samo słowo dla KAŻDEJ
+derivacji (job 564, logi 0/0, trzy standardowe aksjomaty, markery 0;
+eksport także dla kształtu call4 z argumentem u64). Najbliższy brak:
+krok 2 trasy — siedmiowyrazowy prefiks prime/p0i/R2/Rx przy u = 1
+(pRxSet ma już słowo wykonane `KeygenModpR.word p`), potem mkgm3, oba
+marsze (silnik gotowy), modp_NTT3 (brak silnika — największa pozycja),
+pętle produktowe i fałszywa gałąź !out_ntt. Wynik NIE implikuje żadnej
+własności liczbowej algorytmu C (zakres/reszta/normalizacja/Z>0/
+p_accept/p_K pozostają otwarte), nie zamyka sekcji additional-prime ani
+KeyGen i nie jest odbiorem (NOT_REVIEWED).

@@ -1,3 +1,73 @@
+# Additional-prime route 564 — the empty-loop modp_Rx engine closed, the prime prefix next
+
+2026-10-21 (R1 rx window). STEP 1 OF THE STEPS 1-7 ROUTE IS CLOSED: the
+modp_Rx engine at the empty-loop instance x = 1 (`KeygenModpRxExec`, job
+keygen_publicforward159_564; source `20dc6330…`, olean `d69d1829…`,
+5.125 s, logs 0/0, standard three axioms, markers 0). The pinned body
+C99ModularReference.rxCode executes in full at x = 1 and the executed
+word of the whole callee is the pinned leaf word `KeygenModpR.word p` —
+PROVEN in both directions (body_exists/source_exists and
+body_exact/source_exact), not assumed; the empty loop is kernel-checked
+(guard `(1U << i) <= x` false at i = 0). The u64-argument variant
+`SourceExec64`/`source64_exact`/`source64_exists` matches the parsed
+call4 shape of MakeFgAddPrimeShape194.rxSet (slen = 1 u64 cell).
+Next unused proof job suffix is **565**. Entry re-verified read-only at
+window start (ENTRY_PINS `00f602e7…`, all 74673 inherited pins 0 missing
+/ 0 changed, no active processes). Scoped proof, NOT_REVIEWED; no push
+(2 waits); values stay executed words.
+
+## Exact remaining obligations (in order)
+
+1. STEP 2 — the seven-statement prime prefix at the u = 1 iteration
+   (MakeFgAddPrimeShape194.prefixSteps, decide-bound shapes; NO
+   reconnaissance): declP/declV/declX (C99DeclarationStatements.effect),
+   pSet (KeygenZintCall.Exec.prime with a KeygenLevelCalls.PrimeRead of
+   primes[1].p — the block-21 table word transport of
+   SelectedStepCrtWord194 is the keep precedent), iSet (ModCall inverse
+   at KeygenNinv31.word), rSet (ModCall r2 at KeygenModpR2Word.word via
+   KeygenModpR2Exec) and rxSet (ModCall rx at KeygenModpR.word via
+   KeygenModpRxExec.source64_exists / source64_exact — CLOSED this
+   window). Entry state: the part-4 loop-body scope entry at u = 1 (the
+   part-3 CRT exit state exported by SelectedStepCrtRun194).
+2. Then the eight-statement chain: the ter branch (modp_mkgm3 wrapper
+   call with the pinned seven-argument list), walkFs and walkGs (each
+   512 per-word calls — ZintModSignedWord194.ms_call is ready; the walk
+   loop composition and the t1[v] stores are the new work), nttFs/nttGs
+   (the forward modp_NTT3 runs — NO execution engine exists yet: the
+   biggest item; KeygenNttForwardPrograms pins the body),
+   productFd/productGd (the product engines transfer), the false
+   !out_ntt skip (fd/gd inverse pairs), then the loop composition and
+   the section export.
+3. The remaining d-levels and the root/certificate/codec path, before
+   the complete emitted witness can instantiate the corrected
+   KeygenProbability134 consumers; the prospective bound remains
+   Z>=2^-256 and is NOT established.
+
+## Engine facts pinned this window (consume, do not re-derive)
+
+- KeygenModpRxExec names the whole empty-loop run: statement pieces
+  declI/declRZ/xDec/rSet/zSet/iInit/loopRun/retZ (code_split,
+  loop_split by rfl), executed states entry/s1..s6, the cell facts
+  entry_x/entry_p/entry_R2/s2_x/s3_r/s3_R2/s4_z/s4_p/s5_i/s5_x/s6_i/
+  s6_x/s6_z (literal cells by rfl, variable cells through
+  ZintSubWord194.convert_self32) and the statement runs declI_run/
+  declRZ_run/xdec_run/rset_run/zset_run/iinit_run/loop_false/rxloop_run.
+- The exact direction is the chain exact_t2..exact_t7 (one continuation
+  step per statement, split for kernel locality) plus the export
+  body_exact = congrArg Result.flow (return_exact …).
+- Word-op bridges: minus_one32/dec_one32 (x -= 1 at u32),
+  shift_one_zero (1U << 0), le_one_zero (1 <= 0 false) and the guard
+  evaluation guard_exists/guard_value_exact over guardExpr.
+
+## Trap wall (księga — see the report §Traps met for the full list)
+
+`cases … with` alternative patterns need the FULL constructor arity and
+names in index-determined slots do not bind; a defeq across two
+ground-equal state-cell facts kernel-normalizes both giant states and
+blows the memory limit (the s6_x-vs-s5_x trap). Make every crossing
+syntactic. Build-order note stands: order modules by the REAL
+transitive source-import graph.
+
 # Additional-prime route — the section call shapes pinned, the modp_Rx stratum decision next
 
 2026-10-21 (R1 additional-prime window). The NAJPIERW obligation of the

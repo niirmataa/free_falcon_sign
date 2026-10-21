@@ -1,3 +1,47 @@
+# SEED9_R1 — rx window CLOSED: KeygenModpRxExec accepted (job 564), step 1 of the route done
+
+2026-10-21 (R1 rx window, suffix 564). Entry pins re-verified read-only
+before work (ENTRY_PINS .build/steprx195/ENTRY_PINS.json SHA256
+00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964 =
+route pin; all 74673 checked paths 0 missing / 0 changed; old manifest
+99ac47a1… untouched; no active job/Lean/Sage processes; the two loose
+run2/notes files stay untracked and reported, not claimed). ACCEPTED
+this window: KeygenModpRxExec (job keygen_publicforward159_564; source
+20dc6330d4ace12a…, olean d69d182903d8b810…, 5.125 s, -DwarningAsError,
+logs 0/0, clean_log, forbidden_proof_markers = []; #print axioms on
+eight key exports = exactly the standard three) — the modp_Rx engine at
+the empty-loop instance x = 1 in the KeygenModpR2Exec body_exists
+pattern over the pinned C99ModularReference.rxCode: the x decrement to
+0, the r = R2 store, the z = modp_R(p) leaf call at its pinned body, the
+EMPTY loop (guard `(1U << i) <= x` false at i = 0 — kernel-checked, not
+assumed) and the z return; both directions exported
+(body_exists/source_exists AND body_exact/source_exact — every
+derivation returns KeygenModpR.word p), plus the u64-argument call shape
+SourceExec64/source64_* for the parsed call4 `modp_Rx(slen, p, p0i, R2)`.
+Traps recorded (do not re-derive): cases-pattern arities and
+index-determined slots (variable 4/literal 2/step 6/loops 7-13-10), and
+the defeq-normalization kernel blowup (s6_x vs s5_x) — keep cell
+arguments syntactic. Workshop: ~10 local typecheck iterations, no draft
+job suffixes; diagnostics used sorry only in discarded .build probes
+(owner clarification: diagnostics may, final may not; accepted source
+0 markers). Retained register unchanged: 64 + 58 + 4. OPEN (in order):
+(1) step 2 of the route — the seven-statement prime prefix at u = 1
+(declP/declV/declX, primes[1].p PrimeRead, ninv31, R2, rxSet — whose
+word is now proven; entry = the part-4 loop-body scope at the
+SelectedStepCrtRun194 part-3 exit state); (2) then mkgm3, the two
+512-step walks (engine ready), modp_NTT3 (no engine — biggest item),
+the fd/gd product loops, the false !out_ntt skip, the loop composition
+and the section export; (3) then the remaining d-levels and the
+root/certificate/codec path. Values remain executed words only; no
+transform property, table law, root law or positivity claim;
+unconditional Z>0, p_accept and p_K remain OPEN. Old110 frozen;
+measured wording 8192/23628 with the separate 256/739 control and the
+five do_sign items unchanged. Scoped proof, NOT_REVIEWED. Next unused
+proof job suffix: **565**. No push (2 waits for the owner's publication
+signal). Resume: verify .build/steprx195/ENTRY_PINS.json (00f602e7…)
+read-only, then continue from the steps 1-7 route (prime prefix next);
+do not re-derive the pin structure or the rx engine.
+
 # SEED9_R1 — engine window CLOSED: ZintModSignedWord194 accepted (job 563)
 
 2026-10-21 (R1 engine window, suffix 563). Entry pins re-verified
