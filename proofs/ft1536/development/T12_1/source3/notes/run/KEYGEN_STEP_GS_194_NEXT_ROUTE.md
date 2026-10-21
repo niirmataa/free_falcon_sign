@@ -1,3 +1,61 @@
+# CRT part-3 route — the part-3 composition closed, the additional-prime part next
+
+2026-10-21 (R1 crt-run window). Obligation (c) is fully closed: the
+make-level composition of both zint_rebuild_CRT call statements of part 3
+(`SelectedStepCrtRun194.source`, job 551, commit of this window) runs the
+exact Bind chain of MakeFgCrtShape194.crtArgs "fs"/"gs" over the named
+arguments at the SelectedStepFsFd194.source loop exit state, executes
+both ZintRebuildCrt194 bodies at xlen = 1 and composes
+first3/second3/tail3; the export carries the executed-word images
+`normWord p0 (fsWords i)` / `normWord p0 (gsWords i)` over the twin
+512-word walks and the bystander keeps from `next.heap` to
+`final.heap` for every cell separated from gm and both walks. The axiom
+audit of the assembly (`SelectedStepCrtAudit194`, job 552) shows the
+standard three axioms only; proj_heap/proj_arrays are axiom-free.
+Next unused proof job suffix is **553**.
+
+## Exact remaining obligations (in order)
+
+1. The additional-prime part (slen 1 / tlen 2): NOT started in the
+   crt-run window; before any engine, pin the parsed call shapes of the
+   additional-prime section (the same decide-bound shape-module pattern
+   as MakeFgCrtShape194 against a parse probe record). Then the
+   remaining d-levels and the root/certificate/codec path, before the
+   complete emitted witness can instantiate the corrected
+   KeygenProbability134 consumers (KeygenModelUnlock134... see the
+   report).
+2. No assembly obligation remains: SelectedStepCrtRun194.source and its
+   axiom audit are accepted (jobs 551/552, logs 0/0).
+
+## Bridge recipe (validated end-to-end by job 551 — do not re-derive)
+
+The concrete-Memory defeq trap (jobs 543-548) has a working discipline:
+(a) never let the unifier compare two syntactically different concrete
+Memory terms and never let it compare a projection of a concrete
+record-update instance with its own field value — the unifier unfolds the
+non-projection side first and explodes over the walkImage/write closures
+(probe CrtBridgeProbe194); (b) project through abstract bridge lemmas
+instantiated at the concrete memory (`proj_heap`/`proj_arrays`/
+`proj_locals := rfl`), rewrite along CLOSED-pattern bridging equations,
+or take a single delta step of a plain top-level definition into its own
+body; (c) plain top-level noncomputable defs for intermediate
+states/heaps (fsHeapOf/midFs/gsHeapOf/midGs), never set-bindings, and
+witness states chosen equal to the engine result states so the whole
+composition is syntactic; (d) NEW parse trap: in `{src with f := v}` a
+field value on the NEXT line parses as a new elided field — keep
+structure-instance values on one line.
+
+## Engine facts to consume (do not re-derive)
+
+- `SelectedStepCrtRun194.call_run` is the per-call engine over the named
+  arguments (Bind chain `bind_crt`/`entryOf`, body run at xlen = 1,
+  flat walkImage result state, per-word image); `keep_through` crosses
+  one call's heap image for any separated cell.
+- `SelectedStepCrtRun194.source` exports the part-2/part-3 runs at
+  `SelectedStepMove187.after`, the fs/gs normWord images at the final
+  state and the bystander keeps; midFs/midGs are the two call result
+  states and midFs_heap/midGs_heap are their only heap bridges.
+
 # CRT part-3 route — the 512-step walk and the rebuildCrt engine closed, the part-3 assembly next
 
 2026-10-21 (R1 walk/body window). Obligation (c) is half closed: the

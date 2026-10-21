@@ -868,3 +868,116 @@ własności NTT, prawa tabeli, dodatniości, bezwarunkowego Z > 0 ani
 p_accept/p_K — te pozostają OPEN; okno nie wykonało additional-prime
 ani żadnego z wywołań CRT w pełnym montażu, więc deliverable (2)
 pozostaje w toku w części montażowej.
+
+---
+
+## R1 crt-run window (2026-10-21) — part-3 composition closed at the exit state (job 551)
+
+Window launched per this stage's `KEYGEN_STEP_GS_194_NEXT_ROUTE.md`
+(proof job suffix 549, obligation 1 of the CRT route: close
+`SelectedStepCrtRun194.source`, then axiom audit; additional-prime only
+if budget). Entry re-verified read-only before any proof work: ENTRY_PINS
+`99ac47a1…` recomputed against the route pin (SHA256 match), the
+inherited pin chain intact and no active owned job/Lean/Sage process.
+Scoped proof, NOT_REVIEWED; no push (batch 4 waits for the owner's
+signal). Values remain executed words only: no NTT property, table law,
+root law, positivity or Z>0 claim.
+
+### Closed (proof jobs 551/552; logs 0/0, standard three axioms)
+
+1. `SelectedStepCrtRun194` (job 551; source `3e2337dd`, olean
+   `379dcff0`) — the make-level composition of the two zint_rebuild_CRT
+   call statements of part 3 at the loop exit state of
+   SelectedStepFsFd194.source, and the exit-state export. The export of
+   `source` is the existential pair (next, final) with the part-2 run at
+   `SelectedStepMove187.after`, the part-3 run, the two executed-word
+   images `normWord p0 (fsWords i)` / `normWord p0 (gsWords i)` over the
+   twin 512-word walks at `final.heap`, and the bystander keep from
+   `next.heap` to `final.heap` for every cell separated from gm and from
+   both walks. The engines consumed without re-derivation: `bind_crt`/
+   `entryOf` (the exact Bind chain of `crtArgs "fs"/"gs"`, first
+   parameter outermost), `call_run` (one full rebuildCrt call over the
+   named arguments at xlen = 1, with the flat walkImage result state and
+   the per-word image), `keep_through` over walkImage_keep and the
+   gm/table separations (gm_offset0/fs_offset/gs_offset, fs_gm_separate/
+   gs_gm_separate, block facts 31 vs 21). Commit of this window.
+2. `SelectedStepCrtAudit194` (job 552, DIAGNOSTIC record) — the axioms
+   of proj_heap/proj_arrays (axiom-free), bind_crt/call_run/
+   keep_through/midFs_heap/midGs_heap/source: all the standard three
+   (propext, Classical.choice, Quot.sound). Olean `ba2427e2`.
+
+### The bridge recipe that closed it (księga pułapek — extend, do not re-derive)
+
+The concrete-Memory defeq trap (jobs 543-548) is now pinned with its
+working discipline, validated end-to-end by job 551:
+
+- Never let the unifier compare two syntactically different concrete
+  Memory terms. The unifier unfolds the non-projection side first, which
+  unrolls the walkImage/write closures to different depths and then
+  compares nested byte closures (recursion cap -> stack overflow ->
+  bad_alloc). Projection-of-instance vs its own field value is equally
+  lethal at a concrete memory (CrtBridgeProbe194 probe1): project
+  instead through an ABSTRACT bridge lemma instantiated at the concrete
+  memory (`proj_heap s H := rfl`, applied at the concrete H).
+- Every remaining crossing must be (a) a rewrite along a bridging
+  equation whose pattern is closed (no metavariable patterns where a
+  stuck fvar projection could be matched), (b) a single delta step of a
+  plain top-level definition into its own body, or (c) syntactic
+  identity. Intermediate states/heaps are plain noncomputable top-level
+  defs (fsHeapOf/midFs/gsHeapOf/midGs), never set-bindings.
+- State witnesses follow the engines: midFs/midGs ARE the literal result
+  states of the two calls, so the composition (first3/second3/tail3 via
+  part3_split/rest3_split and two seqNormal steps) is fully syntactic
+  and no double record-update collapse is ever needed.
+- New parse trap (job 549): in `{src with f := v}` a field value placed
+  on the NEXT line parses as a new ELIDED field (sepByIndent/layout),
+  so the def silently fails to parse and, as a stub, poisons later
+  unification with bogus recursion-depth errors. Keep structure-instance
+  field values on the same line; feed them through named defs.
+
+### Retained failures (register 55 -> 57)
+
+Jobs 549/550 (SelectedStepCrtRun194 fourteenth/fifteenth drafts) — both
+mechanical workshop failures with causes recorded above; no source
+statement, value, pin or sealed module was touched. The inherited
+checkpoint192 register (58) and checkpoint193 register (4) remain
+untouched.
+
+### Open (in order)
+
+1. The additional-prime part (slen 1 / tlen 2): NOT started in this
+   window (the designated deliverable — the part-3 composition and its
+   axiom audit — consumed the budget; the additional-prime section needs
+   its own route pinning of the parsed call shapes before any engine).
+   Then the remaining d-levels and the root/certificate/codec path,
+   before the complete emitted witness can instantiate the corrected
+   KeygenProbability134 consumers (KeygenModelUnlock134.package_of_witness,
+   KeygenSuccessMass134.success_lower_of_witness); the prospective bound
+   remains Z>=2^-256 and is NOT established by this window.
+
+Next unused proof job suffix: **553**. Scoped proof, NOT_REVIEWED; no
+IID/D1/F04 premise; no push (batch 4 waits for the owner's signal).
+Values remain executed words only: no transform property, table law,
+root law or positivity claim; unconditional Z>0, numerical p_accept,
+conditional coding and positive p_K remain OPEN. Old110 stays frozen;
+measured wording 8192/23628 with the separate 256/739 control and the
+five do_sign items remain unchanged.
+
+### Three sentences (this window)
+
+Udowodniono: domknięcie montażu part 3 — oba wywołania zint_rebuild_CRT
+("fs"/"gs") złożone na stanie wyjścia pętli make_fg_step przez dokładny
+łańcuch Bind nazwanych argumentów, uruchomienia ciała przy xlen = 1 i
+kompozycję first3/second3/tail3, z eksportem obrazów wykonanych słów
+`normWord p0 (fsWords/gsWords)` i keepów bliźniaczych marszów oraz
+komórek obojętnych (job 551, standardowe trzy aksjomaty; audyt job 552)
+— i to recepturą z probe 547: abstrakcyjne mosty proj_heap/proj_arrays,
+przejścia syntaktyczne, zero unifikacji konkretnych termów Memory.
+Najbliższy brak: additional-prime (slen 1 / tlen 2) — nie rozpoczęte
+w tym oknie (budżet zużyty na domknięcie i audyt; wymaga najpierw
+przypięcia kształtów parsowanych wywołań), potem d-pozomy i ścieżka
+root/certificate/codec do pełnego świadka KeygenProbability134. Nic z
+tego nie implikuje własności NTT, prawa tabeli, dodatniości,
+bezwarunkowego Z > 0 ani p_accept/p_K — te pozostają OPEN; okno nie
+wykonało additional-prime ani nie ruszało pełnego montażu KeyGen, więc
+deliverable (2) trasy pozostaje otwarty.
