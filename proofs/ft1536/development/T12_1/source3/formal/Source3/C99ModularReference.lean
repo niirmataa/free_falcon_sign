@@ -15,9 +15,15 @@ import Source3.C99ProcedureReference
    the call relation (the C99ScalarReference pattern), so they remain
    ordinary inductive families with working induction. The strata are:
    LeafCall (six pinned scalar leaf bodies), then ModCall = LeafCall plus
-   the two composite callees, whose body executions run under LeafCall.
+   the three composite callees, whose body executions run under LeafCall.
    The hand-built body statements r2Code/divCode below are checked against
-   the pinned source parse in KeygenMkgm3Callees. -/
+   the pinned source parse in KeygenMkgm3Callees; rxCode (the decision-A
+   modp_Rx extension, 2026-10-21, exact r2/div precedent) is checked in
+   KeygenRxCallees against the parse record of KeygenModpRx (job 558).
+   The modp_Rx constructor closes the call-stratum wall of the make_fg_step
+   additional-prime section and its four later solve/d-level call sites;
+   the pin-chain re-baseline of this edit is documented in the batch-097
+   supplement (both chain versions retained). -/
 namespace FT1536.Source3.C99ModularReference
 open C99ArrayReference (Name State scalar bindValue restoreScope Pointer)
 open C99IntegerReference (Value)
@@ -124,6 +130,49 @@ def divCode : Stmt := chainOf [
     (.scalar (.literal .i32 1)) (.scalar (.var "p".toList)) (.scalar (.var "p0i".toList))),
   .ret (.call4 "modp_montymul".toList (.scalar (.var "a".toList))
     (.scalar (.var "z".toList)) (.scalar (.var "p".toList)) (.scalar (.var "p0i".toList)))]
+
+/- Pinned modular body of modp_Rx (composite modular callee of the
+   make_fg_step additional-prime section; `Rx = modp_Rx(slen, p, p0i,
+   R2)` with the body `x--; r = R2; z = modp_R(p); for (i = 0; (1U << i)
+   <= x; i ++) { if ((x & (1U << i)) != 0) z = modp_montymul(z, r, p,
+   p0i); r = modp_montymul(r, r, p, p0i); } return z;`). The transcription
+   is the job-558 KeygenModpRx record in verbatim content (helper names
+   carry the rx prefix to stay unambiguous under open); its parse equality
+   in KeygenRxCallees is the source binding. -/
+def rxParams : List (C99IntegerReference.Ty×Name) :=
+  [(.uint32,"x".toList),(.uint32,"p".toList),(.uint32,"p0i".toList),(.uint32,"R2".toList)]
+
+def rxCell (name : String) : Expr := .scalar (.var name.toList)
+
+/- Original loop shapes: the guard `(1U << i) <= x` and the inner test
+   `(x & (1U << i)) != 0`; the literal 1U parses as .u32 1. -/
+def rxShiftI : CLogic.Expr := .bin .shl (.literal .u32 1) (.var "i".toList)
+def rxLoopGuard : CLogic.Expr := .cmp .le rxShiftI (.var "x".toList)
+def rxBranchGuard : CLogic.Expr :=
+  .cmp .ne (.bin .band (.var "x".toList) rxShiftI) (.literal .i32 0)
+
+def rxZMont : Expr := .call4 "modp_montymul".toList
+  (rxCell "z") (rxCell "r") (rxCell "p") (rxCell "p0i")
+def rxRMont : Expr := .call4 "modp_montymul".toList
+  (rxCell "r") (rxCell "r") (rxCell "p") (rxCell "p0i")
+
+def rxZAssign : Stmt := .assign "z".toList rxZMont
+def rxRAssign : Stmt := .assign "r".toList rxRMont
+def rxIfBody : Stmt := .scope [] (chainOf [rxZAssign])
+def rxIfStep : Stmt := .branch rxBranchGuard rxIfBody (.base .skip)
+def rxLoopBody : Stmt := .scope [] (chainOf [rxIfStep,rxRAssign])
+def rxLoopStep : Stmt := .base (.scalar (.update "i".toList .add (.literal .i32 1)))
+def rxLoop : Stmt := .seq (.assign "i".toList (.scalar (.literal .i32 0)))
+  (.loop rxLoopGuard rxLoopBody rxLoopStep)
+
+def rxCode : Stmt := chainOf [
+  .base (.scalar (.declare .i32 ["i".toList])),
+  .base (.scalar (.declare .u32 ["r".toList,"z".toList])),
+  .base (.scalar (.update "x".toList .sub (.literal .i32 1))),
+  .assign "r".toList (rxCell "R2"),
+  .assign "z".toList (.call1 "modp_R".toList (rxCell "p")),
+  rxLoop,
+  .ret (rxCell "z")]
 
 abbrev CallRelation := Name → List Value → Value → Prop
 
@@ -246,6 +295,10 @@ def divBody : List Value → Value → Prop := fun args out =>
   ∃ base after, GenExec LeafCall divCode (bindParams base divParams args)
     ⟨after,.returned (some out)⟩
 
+def rxBody : List Value → Value → Prop := fun args out =>
+  ∃ base after, GenExec LeafCall rxCode (bindParams base rxParams args)
+    ⟨after,.returned (some out)⟩
+
 /- Second stratum: the leaf bodies plus the composite modular callees. -/
 inductive ModCall : CallRelation where
   | montgomery (args : List Value) (out : Value)
@@ -276,6 +329,8 @@ inductive ModCall : CallRelation where
       ModCall "modp_R2".toList args out
   | div (args : List Value) (out : Value) (body : divBody args out) :
       ModCall "modp_div".toList args out
+  | rx (args : List Value) (out : Value) (body : rxBody args out) :
+      ModCall "modp_Rx".toList args out
 
 abbrev Eval (s : State) : Expr → Value → Prop := GenEval ModCall s
 abbrev Exec : Stmt → State → Result → Prop := GenExec ModCall
