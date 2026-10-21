@@ -1,3 +1,193 @@
+# SEED9_R1 — decision-A window CLOSED: re-baseline done, drafts accepted
+
+2026-10-21 (R1 decision-A resume window, suffixs 559-562). RE-BASELINE
+WYKONANY (stary pin ab9d082856281144… → nowy b2abbf443891f97d… dla
+C99ModularReference.lean, stary ed270027c1daed03… → nowy
+92aa68594f06edbd… dla KeygenProperModular096.lean; oleany
+479bc1b497d279e0… → 8b99a85057fc8c49… oraz e4dca69b0ba9556a… →
+0324b18bb42e6a1b…; nowe KeygenModularRx096/KeygenRxCallees wpinają się
+40fccaeb…/7a34b238… oraz 1191a723…/65288500…; obie wersje łańcucha
+zachowane, suplement BATCH_061/063/073; dokument
+notes/run/KEYGEN_MODCALL_RX_REBASELINE_195.md z sekcją „Zakres przebudowy
+096-lane"). ACCEPTANCE ZAMKNIĘTY: przebudowa domknięcia 816 modułów
+(810 cache-desc + root + 2 nowe + 2 doklejone stale-dep + Proper096)
+przez joby 559 (280 produktów, przerwany zewnętrznie, consumed) / 560
+(495 + retained failure Leaf096 na pułapce kolejności) / 561 (41/41,
+logi 0/0, forbidden_proof_markers = []) + job 562 DIAGNOSTIC (KeygenRxAudit195:
+11 eksportów, same standardowe 3 aksjomaty [propext, Classical.choice,
+Quot.sound]); skan markerów sorry/admit/native_decide = 0 trafień. NOWY
+ENTRY_PINS dla następnych okien: .build/steprx195/ENTRY_PINS.json SHA256
+00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964
+(narzędzie tools/keygen_steprx195_entry.py; stary manifest 99ac47a1…
+nietknięty w .build/stepgs194/). Rejestr retained: 64 + 58 + 4. Stary
+checkpoint194 stage dalej OTWARTY; kolejny krok wykonawczy (wg decyzji A
+i OPEN): engine ZintModSignedWord194 (per słowo marszu, dlen = 1) — NIE
+rozpoczęty w tym oknie (budżet; czyste zamrożenie zamiast przeciągania).
+NEXT_ROUTE: decyzja A otwiera 4 dalsze miejsca modp_Rx
+(poly_sub_scaled_ntt:4626, solve_NTRU_intermediate:5906/:5985,
+solve_NTRU_binary_depth1:6474) — bez dalszych rozszerzeń stratum, tylko
+egzekucja. Next unused proof job suffix: **563**. No push (the outgoing
+range holds 5 commits + this window's local commits for the owner's
+publication signal). Resume: verify .build/steprx195/ENTRY_PINS.json
+(00f602e7…) read-only, then continue from the engine; do not re-derive
+the pin structure.
+
+# SEED9_R1 — checkpoint194 decision-A window, resume 559: re-baseline + acceptance build
+
+2026-10-21 (R1 decision-A resume window, suffix 559). Entry pins 194
+re-verified read-only (manifest 99ac47a1… unchanged, 73564 checked paths:
+0 missing / 2 changed = EXACTLY the two decision-A draft files
+C99ModularReference.lean ab9d0828→b2abbf44 and KeygenProperModular096.lean
+ed270027→92aa6859, documented delta, all four draft hashes match the
+frozen WORK_STATE record; no active processes). rxBody origin (one
+reading): rxBody/rxCode/rxParams = C99ModularReference.* via `open
+C99ModularReference` in KeygenModularRx096, import chain
+KeygenModularLeaf096 → KeygenModpR2Exec → KeygenMkgm3Callees → … →
+C99ModularReference. Build selection = CLOSURE_ORDER 813 + 2 assert-doomed
+deps inserted (Source3.KeygenModularLeaf096 before KeygenModularRx096,
+Source3.KeygenModpRx before KeygenRxCallees) + Source3.KeygenProperModular096
+last = 816 modules; job keygen_publicforward159_559 launched for the
+acceptance rebuild (810-module cache closure, B1.03 precedent). Job 559
+INTERRUPTED by an external kill at module 281 (KeygenPublicForwardProgram,
+empty logs, no receipt — not a Lean failure; MAKE_BINDING_PROGRESS.json is
+the module's own run_cmd writeFile, not a foreign process): 280 modules
+completed with real accepted receipts and are CONSUMED (job-512 precedent),
+retained as record 559. Continuation job 560 launched over the remaining
+536 modules (SELECTION_ORDER 281-816) via setsid nohup with the console log
+in .build/steprx195/job560_console.txt. Job 560 accepted 495 modules and
+FAILED on KeygenModularLeaf096 (record retained): its compile needed
+Source3.KeygenWholeBytes088.olean, a transitive dependency through the
+cached KeygenPublicDomain095, positioned later in the prepared order —
+the cached `imports` maps record only deps present in bindings at build
+time, so the recorded-graph topological order is INCOMPLETE (TRAP for all
+future closure orders: order by the REAL source-import graph, transitively
+through cached modules). Job 561 launched over the remaining 41 modules
+(SELECTION_ORDER_561.txt, real-import topological order, 0 violations,
+KeygenWholeBytes088 before KeygenModularLeaf096; KeygenModpRx kept in
+scope — a product of job 558 must be rebuilt, the '55x' origin filter of
+the first reorder attempt was a bug, fixed by exact 559/560 origins).
+
+# SEED9_R1 — checkpoint194 decision-A window: FROZEN at entry (edits drafted, nothing compiled)
+
+2026-10-21 (R1 decision-A window; owner stop-and-freeze at the context
+limit per run2/notes/PINY_I_OLEAN_STRUKTURA.md section 4). Whole goal
+ACTIVE / NOT_COMPLETE; checkpoint 194 stage open. THIS ENTRY IS THE
+RESUME POINT. No job ran this window: proof job suffix **559 is still
+UNUSED**; retained-failure register unchanged (KEYGEN_STEP_GS_194_FAILURES.json
+61 records, inherited checkpoint192 register 58 and checkpoint193
+register 4 untouched); no commit, no push (the outgoing range still
+holds 5 commits for the owner's publication signal). Git state at
+freeze: exactly two modified files (C99ModularReference.lean,
+KeygenProperModular096.lean) and two new files (KeygenModularRx096.lean,
+KeygenRxCallees.lean) as UNCOMMITTED drafts below; nothing else touched.
+
+Entry pins 194 re-verified read-only BEFORE any edit (ENTRY_PINS.json
+SHA256 99ac47a1d981ebfc3afe3c54aac98c02773816faa489682d205682fd31c475b8,
+all 73564 inherited pinned paths 0 missing / 0 changed, no active
+processes).
+
+OWNER DECISION A received this window (scope): extend the pinned
+C99ModularReference.lean ModCall stratum with the modp_Rx constructor
+exactly per the call `modp_Rx(slen, p, p0i, R2)` in the body (the B1.03
+r2/div precedent) + re-baseline the pin chain as a SUPPLEMENT (both
+chain versions, never overwrite, BATCH_061/063/073 form); the plug
+KeygenModpRx (job 558) is ready; after the re-baseline build the engine
+ZintModSignedWord194 (per march word, dlen = 1) as the first execution
+step, then additional-prime steps 1-7 (pins from job 557, decide, no
+reconnaissance); values as executed words; no NTT and no Z>0 claims;
+NEXT_ROUTE must record that the same decision opens the four later
+modp_Rx sites (poly_sub_scaled_ntt falcon-keygen.c:4626,
+solve_NTRU_intermediate :5906/:5985, solve_NTRU_binary_depth1 :6474).
+Retained failures (61); meldunek; no push (5 waits).
+
+DRAFTED IN THE WORKING TREE (uncommitted; NO job has compiled or
+verified any of them — treat as retained drafts; the 194 modules stay
+byte-stable, these edits touch the pinned stratum file + the 096
+determinism lane only):
+- formal/Source3/C99ModularReference.lean (MODIFIED; old pin ab9d0828…,
+  new bytes b2abbf443891f97d1608c08d8c0a045c2bf429ae4546832d4eb0fbc603712041):
+  rxParams/rxCell/rxShiftI/rxLoopGuard/rxBranchGuard/rxZMont/rxRMont/
+  rxZAssign/rxRAssign/rxIfBody/rxIfStep/rxLoopBody/rxLoopStep/rxLoop/
+  rxCode (job-558 transcription in verbatim AST content; helper names
+  rx-prefixed to stay unambiguous under open), rxBody (the GenExec
+  LeafCall rxCode form) and `| rx (args out) (body : rxBody args out) :
+  ModCall "modp_Rx".toList args out` appended after `| div`; header
+  comment updated. The parse binding cannot live in this file
+  (C99ModularParser imports it) — it lives in the new KeygenRxCallees.
+- formal/Source3/KeygenProperModular096.lean (MODIFIED; old ed270027…,
+  new 92aa68594f06edbd8de52e63f560be547915fb07eb00c3bc08fd00d354d485d2):
+  Arity gains the modp_Rx count = 4 row (the rx.rx uniqueness case
+  cannot destructure args without it — uniqueness is FALSE at arity ≠ 4
+  because bindParams then leaves parameters to arbitrary base states),
+  new `four` lemma, `calls` gains `case rx.rx` via
+  KeygenModularRx096.source_unique, arity projections updated
+  (arity.2.1 / arity.2.2), import added.
+- formal/Source3/KeygenModularRx096.lean (NEW,
+  40fccaeb6ab6172cf5a59dea9db684cf68de32010147774dbfe1ea2ee607aa71):
+  the KeygenModularDiv096-pattern uniqueness module for the
+  four-argument rxBody (names ["x","p","p0i","R2"], checked,
+  parameters_agree, source_unique over C99ModularLocalAgreement096.
+  execution + KeygenModularLeaf096.leaf_calls).
+- formal/Source3/KeygenRxCallees.lean (NEW,
+  1191a7234e203fcf9251c6ca91548fa17bae1a462d6ae02eac5ec78553218362):
+  rx_source_bound (C99ModularParser.region 2609 18 = some
+  C99ModularReference.rxCode, by decide) + rx_transcription (stratum
+  rxCode = KeygenModpRx.rxCode, by decide). KeygenModpRx stays
+  byte-stable.
+
+RE-BASELINE NOT DONE. The procedure is NOT to be derived: it is
+prescribed in proofs/ft1536/development/T12_1/run2/notes/
+PINY_I_OLEAN_STRUKTURA.md section 3 (owner instruction 2026-10-21):
+compute new SHA256 for the changed modules and their oleans, record the
+OLD and NEW chain in `..._REBASELINE_<id>.md` (what changed and why,
+with the owner's decision referenced), next windows inherit the NEW
+ENTRY_PINS, old records stay untouched, and the meldunek states
+explicitly "re-baseline done, old pin X -> new Y". Pin pairs follow the
+BATCH_061/063/073 supplement form (both versions, never overwrite).
+The old cache-artifact pin of C99ModularReference is 479bc1b4…; its new
+olean hash exists only after the first accepted build.
+
+WORKSHOP FACTS established this window (read-only analysis; consume,
+do not re-derive): the live runner is tools/job111.py (SHA256 e8e9cf4b…,
+derived from job.py 3bc29bf7 / job088.py da8912cb); the cache-descendant
+closure of Source3.C99ModularReference is 810 cached modules
+(.build/steprx195/CLOSURE_SET.json; CLOSURE_ORDER.txt is the
+topological order with the new modules inserted; historical build time
+~1.6 h) and ZERO frozen seeds depend on it; the only ModCall
+elimination in the live sources is KeygenProperModular096.calls
+(`cases first <;> cases second`), whose rx.rx case is why the patch
+above exists; the 096 determinism lane (KeygenProperModular096 /
+C99ModularArity096 / KeygenWordArity096 / KeygenModularDiv096 /
+KeygenModularLeaf096 / C99ModularLocalAgreement096 …) is OUTSIDE the
+current cache/seed surface — its products are pinned snapshots under
+.build/jobs/keygen_solver096_* built by the historical job088.py
+(da8912cb) variant. Whether the re-baseline/rebuild scope covers that
+lane is a question FOR THE PRESCRIBED RE-BASELINE PROCEDURE and the
+next window; nothing here decides it.
+
+OPEN (in order): (1) the re-baseline per PINY_I_OLEAN_STRUKTURA.md
+section 3 over the drafted edit + the acceptance build of the drafted
+modules (descendant-closure rebuild, B1.03 precedent); (2) engine
+ZintModSignedWord194 (per-word march, dlen = 1, over the pinned
+zint_mod_small_signed callee spine + the zint_mod_small_unsigned leaf)
+as the first execution step; (3) additional-prime steps 1-7 at slen = 1
+/ tlen = 2 (the seven-statement prime prefix; job-557 shapes by decide,
+no reconnaissance), then the prologue words, the two 512-step marches,
+the forward modp_NTT3 runs (no engine — separate step), the fd/gd
+product loops and the false !out_ntt skip; (4) the NEXT_ROUTE record of
+the four modp_Rx solve sites. Values remain executed words only: no
+transform property, table law, root law or positivity claim;
+unconditional Z>0, p_accept and p_K remain OPEN; no IID/D1/F04 premise.
+Old110 frozen; measured wording 8192/23628 with the separate 256/739
+control and the five do_sign items unchanged. Scoped proof,
+NOT_REVIEWED. Next unused proof job suffix: **559**. Resume: verify
+entry pins 194 read-only, then continue from item (1); do not re-derive
+the pin structure.
+
+---
+
+
+
 # SEED9_R1 — checkpoint194 additional-prime window: section call shapes pinned, modp_Rx stratum wall
 
 2026-10-21 (R1 additional-prime window, suffix 553+). Whole goal ACTIVE
