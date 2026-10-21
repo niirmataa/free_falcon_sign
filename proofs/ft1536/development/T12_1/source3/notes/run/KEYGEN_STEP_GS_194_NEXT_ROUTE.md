@@ -1,3 +1,76 @@
+# CRT part-3 route — obligation (b) closed, the 512-step normalize loop next
+
+2026-10-21 (R1 normZero window). The len = 1 engines are closed:
+`ZintSubWord194` (job 520) executes the pinned zint_sub leaf body at
+len = 1 and exports the single limb write `subWord x p = (x - p) &&&
+2147483647` (the parsed store is `w & 0x7FFFFFFF`; the old route
+shorthand "the unconditional word x-p0" drops the 31-bit mask and is
+WRONG at bit 31 — always compose `ZintSubWord194.subWord`, never a bare
+`x - p0`) plus the borrow word `(x - p) >>> 31`; `ZintNormWord194`
+(job 524) executes the pinned zint_norm_zero body at len = 1 with the
+two comparison branches resolved by decidable case splits and exports
+`normWord p0 x = if x < p0>>>1 then x else if p0>>>1 < x then subWord x
+p0 else x`, `normImage` (the heap image), `normFlow` (`.returned none`
+on both comparison returns, `.normal` on the tie path whose trailing
+`u -= 1` wraps), the heap-keeps-except-x[0] frame and the void return
+flow of both reached end flows. `norm_call` is the per-step engine for
+the consumer call `zint_norm_zero(x, tmp, xlen)` (consumerArgs,
+`normEntry`/`bind_norm`); `call_len1`/`bind_leaf` cover the inner leaf
+call. Commits and the window report record the details; jobs 520/524
+logs 0/0, standard three axioms (audit job 525). Next unused proof job
+suffix is **526**.
+
+## Exact remaining obligations (in order)
+
+1. The 512-step normalize loop induction over the x walk (obligation
+   (c) of the previous route): the loop of
+   `zint_rebuild_CRT`'s normalize branch is `for (u = 0, x = xx; u < num;
+   u ++, x += xstride) zint_norm_zero(x, tmp, xlen)` with num = 512 (the
+   n cell), xstride = slen = 1 and xlen = 1, so exactly 512 iterations,
+   each one `norm_call` at the walked word with the SAME p0 = tmp[0]
+   (the gm scratch word stored by the `tmp[0] = primes[0].p` storePrime
+   — its load is a `storePrime`/`PrimeRead` image, already transported
+   by SelectedStepCrtWord194 for the table word). The caller's `x` is
+   rebind per iteration by `bindPtr x xx (var xstride)`; the induction
+   threads the `normImage` writes through `Word32Memory176` keeps over
+   the twin fs/gs walks (512-word separation, the same per-cell
+   bystander shape as StepCopyKeepCell194/StepGsCopyKeepCell194). The
+   exported image is `fun i => normWord p0 (word i)` over the fs walk
+   (first call) and the gs walk (second call), with the flow of the
+   composed loop.
+2. The `zint_rebuild_CRT` body run at xlen = 1 (the body spine is
+   decide-bound by `MakeFgCrtShape194.crtBody`): the u/x declarations,
+   the `tmp[0] = primes[0].p` storePrime (the `KeygenLevelCalls.PrimeRead`
+   of block 21), the u = 1 init, the EMPTY co-reduction loop at xlen = 1
+   (one false guard), the normalize branch (the 512-step loop above) and
+   the void return flow; then both call statements of part 3
+   (`MakeFgCrtShape194.first3`/`second3`, args `crtArgs "fs"/"gs"`)
+   composed at the loop exit state over the named arguments.
+3. Then the additional-prime part (slen 1 / tlen 2), the remaining
+   d-levels and the root/certificate/codec path, before the complete
+   emitted witness can instantiate the corrected KeygenProbability134
+   consumers (KeygenModelUnlock194... see the report).
+
+## Engine facts to consume (do not re-derive)
+
+- The len = 1 step engine is `ZintNormWord194.norm_call` over
+  `consumerArgs = [pointer "x" 0, pointer "tmp" 0, scalar (var xlen)]`
+  with hypotheses: `before.arrays "x" = some px`,
+  `before.arrays "tmp" = some pp`, `before.locals "xlen" =
+  some (.uint64, some (.uint64 1#64))`, `Load32 before.heap px xw`,
+  `Load32 before.heap pp pw`, `Allocated before.heap px`,
+  `px.elementBytes = 4`, `before.heap.writable px.block = true` and the
+  two `index+0 <= count` bounds. The result state is
+  `{before with heap := normImage before px pw xw}` with value `none`.
+- The tie path (x = p0>>>1) ends `.normal` with u wrapped; both strict
+  comparison paths end `.returned none`. `void_flow`/`flow_shape` give
+  `ReturnValue none (normFlow pw xw) none`.
+- `ZintSubWord194.subWord` is the ONLY correct name for the zint_sub
+  limb write at len = 1 (masked); `borrowWord` is the discarded return.
+- The parse shapes are decide-bound (`sub_shape`, `norm_shape`) against
+  the pinned probe-510 record; no parse probe is needed again.
+
+---
 # CRT part-3 route — obligation (a) closed, the normZero engine next
 
 2026-10-21 (restart window after the provider failure). The table-word

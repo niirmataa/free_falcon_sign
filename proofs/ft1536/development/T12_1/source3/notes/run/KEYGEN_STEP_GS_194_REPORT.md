@@ -603,3 +603,145 @@ normalizacji i montaż part 3. Nic z tego nie implikuje własności NTT,
 prawa tabeli, dodatniości, bezwarunkowego Z > 0 ani p_accept/p_K — te
 pozostają OPEN; okno nie wykonało też żadnego z wywołań CRT, więc
 deliverable (2) pozostaje niezamknięte w całości.
+
+## R1 normZero window (2026-10-21) — the len = 1 zint_sub/zint_norm_zero engines closed
+
+Window launched per this stage's `KEYGEN_STEP_GS_194_NEXT_ROUTE.md`
+(proof job suffix 517, obligation (b): the normZero engine). Entry
+re-verified read-only before any proof work: ENTRY_PINS `99ac47a1…`
+recomputed against its receipt (SHA256 match), all 73564 inherited
+pinned paths re-checked (0 missing, 0 changed) and no active owned
+job/Lean/Sage process. Scoped proof, NOT_REVIEWED; no push (batch 4
+waits for the owner's signal). Values remain executed words only.
+
+### Closed (proof jobs 520/524; logs 0/0, standard three axioms)
+
+1. `ZintSubWord194` (job 520) — the zint_sub leaf engine at len = 1:
+   the pinned leaf body `KeygenZintLeaves.code .sub` is executed in full
+   (`sub_shape` re-binds the parsed body by decide, no new parse probe)
+   and exported as executed words. The single limb write is the parsed
+   store `w & 0x7FFFFFFF`, so the executed word is
+   `subWord x p = (x - p) &&& 2147483647` — the 31-bit masked limb
+   difference — and the returned borrow word is
+   `borrowWord x p = (x - p) >>> 31` (`ReturnValue.value .uint32`, the
+   call site discards it). Everything outside the a[0] cell keeps its
+   bytes (the Store32 frame of `Word32Memory176.write`); `sub_image` /
+   `sub_frame` export the load and the frame. `call_len1` packages the
+   leaf `Call` statement at the concrete `zint_sub(x, p, len)` argument
+   list, and `bind_leaf`/`leafEntry` bind it for the normZero consumer.
+   Source `2f44d37f`, olean `147a5077`, commit `11b9c37d`.
+2. `ZintNormWord194` (job 524) — the zint_norm_zero engine at len = 1
+   (obligation (b) of the CRT route): the pinned body
+   `KeygenZintCall.calleeBody .normZero` is executed in full
+   (`norm_shape` re-binds the parse-record shape of probe job 510 by
+   decide; no re-recognition at start) with the two data-dependent
+   comparison branches resolved by decidable case splits. Export — the
+   executed-word image
+
+     normWord p0 x = if x < p0>>>1 then x
+                     else if p0>>>1 < x then (x-p0) &&& 2147483647
+                     else x
+
+   together with `normImage` (the heap image: the single limb write in
+   the second case, untouched otherwise), `normFlow` (`.returned none`
+   on both comparison returns, `.normal` on the tie path that falls out
+   through the false guard into the trailing `u -= 1` wrap — the run
+   ends `u = 0-1` in that case, as in C) and the heap-keeps-except-x[0]
+   frame in all three cases. The void return flow is closed for both end
+   flows actually reached (`void_flow`/`flow_shape`: `ReturnValue none
+   flow none` via `voidReturn`/`voidEnd` against `KeygenZintCall.Call`).
+   `norm_call` packages the call statement of the rebuildCrt normalize
+   loop (`zint_norm_zero(x, tmp, xlen)`) at the len = 1 instance over
+   `normEntry`/`bind_norm`. The len = 1 zint_sub run is the leaf engine
+   of job 520, called through `Exec.call` + `bind_leaf` with the state
+   cast through the sub_run heap fact. Source `e6b8ac7b`, olean
+   `ac67288c`, commit `f320cde7`.
+
+Retained diagnostic record (not proof evidence): `ZintNormAudit194`
+(job 525, source `abedab24`, olean `b360bbd4`) prints the axioms of the
+six engine exports — all the standard three
+[propext, Classical.choice, Quot.sound].
+
+### Trap recorded (route discrepancy — supplement, not overwrite)
+
+The CRT route's shorthand "the zint_sub write at len = 1 is the
+unconditional word x-p0" (and the job-510 report note "a[0] :=
+a[0] - b[0]") drop the 31-bit limb mask of the parsed store
+`a[u] = w & 0x7FFFFFFF`. The honest executed word is
+`(x - p0) &&& 2147483647`, which is NOT the bare 32-bit `x - p0`
+whenever bit 31 of the difference is set. The engine exports follow the
+pinned parse record and carry the mask; `subWord` is the name to use in
+every downstream composition. No historical wording was changed.
+
+### Retained failures (register 28 -> 35)
+
+517, 518, 519, 521, 522, 523 (mechanical workshop failures of the two
+engine drafts) and 525 (the DIAGNOSTIC axiom audit, accepted as a
+record) with causes in `KEYGEN_STEP_GS_194_FAILURES.json`: 517 — the
+`Eval.literal` type argument written with the B20.C.Ty constructor,
+`Bind.nil` applied to an argument, convert lemmas referenced before
+their declaration, BitVec rewrite-chain order, Eq.trans chains over raw
+bindValue/restoreScope forms instead of show-normalized statements;
+518 — deprecated if_pos/if_neg/if_true, the missing `setWidth_eq` tail,
+`Call.run` wanting the bare `KeygenWordExec.Exec` source, the call
+state needing the heap fact rewritten in; 519 — the and_mask rewrite
+direction; 521 — the `or_zero_right` rewrite direction, Bool-ite
+motive failures in the comparison helpers (fixed via the sealed
+`C99NatWord141.less` change/simpa pattern), unnormalized guard Boolean
+facts (`BitVec.toNat_ushiftRight` shape), `B20.C.BinOp.and` vs
+`.band`, `ReceiveC` under the wrong namespace, seqNormal middle
+argument positions, the loop-body definition missing the head `u -= 1`;
+522 — the case exports' hypothesis normalization mismatch, the
+`ReceiveC.discard` arity, have-bound states not unfolding in `show`
+patterns (promoted to the top-level defs tAfter/tGt9); 523 — the
+`ReceiveC` unification against the opaque existential heap (fixed by
+constructing at the raw state and casting through the sub_run heap
+fact) and the swapped obtain order in `norm_call`. No source statement,
+value, pin or sealed module was touched by any of them. The inherited
+checkpoint192 register (58) and checkpoint193 register (4) remain
+untouched.
+
+### Open (in order)
+
+1. The 512-step normalize loop induction over the x walk (obligation
+   (c) of the CRT route): the loop body is one `norm_call` per walked
+   word at xlen = 1 (the walk rebinds the caller's `x` pointer through
+   `bindPtr x xx (var xstride)`; the per-step engine is now closed), the
+   induction threads the normImage writes through `Word32Memory176`
+   keeps over the twin walk. Then the `zint_rebuild_CRT` body run (the
+   `tmp[0] = primes[0].p` storePrime, the empty co-reduction loop at
+   xlen = 1, the normalize branch) and both call statements of part 3
+   composed at the exit state over the named arguments of
+   `MakeFgCrtShape194`.
+2. Then the additional-prime part (slen 1 / tlen 2), the remaining
+   d-levels and the root/certificate/codec path, before the complete
+   emitted witness can instantiate the corrected KeygenProbability134
+   consumers (KeygenModelUnlock134.package_of_witness,
+   KeygenSuccessMass134.success_lower_of_witness); the prospective
+   bound remains Z>=2^-256 and is NOT established by this window.
+
+Next unused proof job suffix: **526**. Scoped proof, NOT_REVIEWED; no
+IID/D1/F04 premise; no push (batch 4 waits for the owner's signal).
+Values remain executed words only: no transform property, table law,
+root law or positivity claim; unconditional Z>0, numerical p_accept,
+conditional coding and positive p_K remain OPEN. Old110 stays frozen;
+measured wording 8192/23628 with the separate 256/739 control and the
+five do_sign items remain unchanged.
+
+### Three sentences (this window)
+
+Udowodniono: pełny wykonawczy silnik normZero przy len = 1 — ciała
+zint_norm_zero i zint_sub wykonane w całości z rozstrzygalnymi
+trójdrożnymi rozgałęzieniami na porównaniach, eksport jako obraz
+wykonanych słów `normWord p0 x` (z gałęzią piszącą `(x-p0) &&&
+2147483647` — maska 31-bitowa z pinowanego parse'u, nie surowe `x-p0`),
+obrazy `normImage`/`normFlow`, ramka heap-keeps-except-x[0] i pusty
+przepływ zwrotu dla obu realnie osiąganych końcówek; wszystko jako
+wykonane słowa, standardowe trzy aksjomaty. Najbliższy brak: indukcja
+pętli normalizacji 512 kroków, wykonanie ciała zint_rebuild_CRT i montaż
+obu wywołań części 3, potem dodatkowa liczba pierwsza, d-pozomy i
+ścieżka root/certificate/codec do pełnego świadka KeygenProbability134.
+Nic z tego nie implikuje własności NTT, prawa tabeli, dodatniości,
+bezwarunkowego Z > 0 ani p_accept/p_K — te pozostają OPEN; trasa nie
+została zgodna z niepoprawnym skrótem `x-p0` i wymaga użycia `subWord`
+w każdym dalszym montażu.
