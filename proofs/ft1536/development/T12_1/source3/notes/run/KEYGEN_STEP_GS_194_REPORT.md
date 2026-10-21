@@ -745,3 +745,126 @@ Nic z tego nie implikuje własności NTT, prawa tabeli, dodatniości,
 bezwarunkowego Z > 0 ani p_accept/p_K — te pozostają OPEN; trasa nie
 została zgodna z niepoprawnym skrótem `x-p0` i wymaga użycia `subWord`
 w każdym dalszym montażu.
+
+## R1 walk/body window (2026-10-21) — the 512-step normalize walk and the rebuildCrt body engine closed; the part-3 assembly in progress
+
+Window launched per this stage's `KEYGEN_STEP_GS_194_NEXT_ROUTE.md`
+(proof job suffix 526, obligation (c) of the CRT route). Entry
+re-verified read-only before any proof work: ENTRY_PINS `99ac47a1…`
+recomputed against its receipt (SHA256 match), the inherited pin chain
+intact and no active owned job/Lean/Sage process. Scoped proof,
+NOT_REVIEWED; no push (batch 4 waits for the owner's signal — 10 commits
+outstanding at window start, 12 at close). Values remain executed words
+only: no NTT property, table law, root law, positivity or Z>0 claim.
+
+### Closed (proof jobs 529/530/534; logs 0/0, standard three axioms)
+
+1. `ZintNormWalk194` (job 529; source `a011b7e4`, olean `d0aaf240`) —
+   the 512-step normalize walk of the zint_rebuild_CRT normalize branch
+   at num = 512, xstride = xlen = 1: the walk-loop statement pieces are
+   decide-bound projections of the pinned parse record through
+   MakeFgCrtShape194.crtNormalize (norm_split…norm_p2_skip), each
+   iteration is exactly one ZintNormWord194.norm_call at the walked word
+   with the same p0 = tmp[0], the fuel induction threads the
+   executed-word writes through the Word32Memory176 keeps
+   (walkImage_pending/walkImage_keep/walkImage_written over the
+   walkImage/stepImage image), and the export carries the executed-word
+   image `fun i => normWord p0 (words i)` over the walk, the keeps
+   outside the walk region (the twin fs/gs instantiations at the
+   512-word separation) and the u = 512 / x one-past-walk exit cells.
+   The case facts of normWord are consumed in the `p0.toNat >>> 1`
+   normalized form (the job-522 trap; see the retained failures).
+   Commit `cab5bf85`.
+2. `ZintNormWalkAudit194` (job 530, DIAGNOSTIC record) — the axioms of
+   norm_loop/walkImage_cells/walk_fuel/walk_run: all the standard three.
+3. `ZintRebuildCrt194` (job 534; source `dfc11ef8`, olean `82c5abe1`) —
+   the full zint_rebuild_CRT body run at xlen = 1 over an abstract entry
+   state: the u/x declarations, the storePrime tmp[0] = primes[0].p (the
+   KeygenLevelCalls.PrimeRead of the block-21 table word with the
+   alloc/writable transport and the Store32 write), the u = 1 init, the
+   EMPTY co-reduction loop (one false guard at u = xlen = 1), the
+   normalize branch through the closed 512-step walk and the
+   fall-through end flow; the export carries the executed run, the
+   body-end heap `walkImage (write entry.heap pp p0) px p0 words 512`
+   and the per-word image. Commit `df6c67ac`.
+
+### In progress — the part-3 assembly (`SelectedStepCrtRun194`, drafts 535–548)
+
+The Bind chain of the named part-3 arguments (`entryOf`/`bind_crt` —
+the first parameter binds outermost exactly as the Bind constructors
+nest), the per-call engine wrapper (`call_run`, including the image
+conjunct), the image keeps (`keep_through` over walkImage_keep and the
+gm/table separation lemmas: gm_offset0/fs_offset/gs_offset,
+fs_gm_separate/gs_gm_separate over the literal 2718/1694/2206 offsets,
+block separations 31 vs 21 by decide) and the composition skeleton
+(first3/second3/tail3 via part3_split/rest3_split) are written. The
+final `source` theorem is blocked on the pathological unification below;
+the current source file plus the abstract-bridge recipe (proj_heap
+applied at the concrete memory, all other crossings syntactic via
+unfold/rewrite) are in place for the next window.
+
+### Trap recorded (księga pułapek) — concrete-Memory defeq explodes
+
+Unification across `Memory`-valued terms that differ syntactically
+dives into the nested `Word32Memory176.write` byte closures and the
+walkImage recursion: it first exceeded the recursion cap (jobs 543–545,
+with the cap raised to 4194304), then exhausted the stack and finally
+the heap (jobs 546/548, `Stack overflow` / `std::bad_alloc` / `out of
+memory`). The isolated probe `CrtBridgeProbe194` (job 547, DIAGNOSTIC)
+localized it: `({s with heap := H}).heap = H` discharges trivially with
+ABSTRACT `H` but fails at max recursion depth with the CONCRETE
+`heapFsOf next`. Consequence for all future modules: never let the
+unifier compare concrete memory terms — project through abstract
+bridges (lemma application) and make every remaining crossing
+syntactic (`unfold` of the defs on both sides, or `rw` along a bridging
+equation). The set-tactic is also not defeq-safe here (its bindings are
+fvar+equation, not definitions) — use plain top-level
+noncomputable definitions.
+
+### Retained failures (register 35 -> 55)
+
+Jobs 526/527/528 (ZintNormWalk194 drafts), 531/532/533 (ZintRebuildCrt194
+drafts), 535–546/548 (SelectedStepCrtRun194 drafts) — all mechanical
+workshop failures with causes recorded, and 547 (the DIAGNOSTIC bridge
+probe, accepted as a diagnosis). No source statement, value, pin or
+sealed module was touched by any of them. The inherited checkpoint192
+register (58) and checkpoint193 register (4) remain untouched.
+
+### Open (in order)
+
+1. Finish `SelectedStepCrtRun194.source` (the part-3 composition and
+   the exit-state export) with the abstract-bridge discipline above;
+   then an axiom audit of both 194 assembly modules.
+2. The additional-prime part (slen 1 / tlen 2), the remaining d-levels
+   and the root/certificate/codec path, before the complete emitted
+   witness can instantiate the corrected KeygenProbability134 consumers
+   (KeygenModelUnlock134.package_of_witness,
+   KeygenSuccessMass134.success_lower_of_witness); the prospective
+   bound remains Z>=2^-256 and is NOT established by this window.
+
+Next unused proof job suffix: **549**. Scoped proof, NOT_REVIEWED; no
+IID/D1/F04 premise; no push (batch 4 waits for the owner's signal).
+Values remain executed words only: no transform property, table law,
+root law or positivity claim; unconditional Z>0, numerical p_accept,
+conditional coding and positive p_K remain OPEN. Old110 stays frozen;
+measured wording 8192/23628 with the separate 256/739 control and the
+five do_sign items remain unchanged.
+
+### Three sentences (this window)
+
+Udowodniono: pętlę normalizacji 512 kroków przez norm_call per słowo
+(indukcja paliwowa z keepami marszu przez Word32Memory176, eksport
+obrazu `fun i => normWord p0 (words i)` i keepy bliźniaczych marszów
+oraz kompletne wykonanie ciała zint_rebuild_CRT przy xlen = 1 —
+storePrime/PrimeRead bloku 21, fałszywy guard pętli współredukcji,
+gałąź normalizacji i przepływ końca; joby 529/530/534, commity
+cab5bf85/df6c67ac, standardowe trzy aksjomaty). Najbliższy brak:
+domknięcie montażu part 3 (SelectedStepCrtRun194.source — łańcuch Bind,
+kompozycja first3/second3/tail3 i eksport stanu wyjścia zablokowane
+patologiczną unifikacją termów Memory; przepis naprawy gotowy), potem
+dodatkowa liczba pierwsza, d-pozomy i ścieżka root/certificate/codec
+do pełnego świadka KeygenProbability134. Nic z tego nie implikuje
+własności NTT, prawa tabeli, dodatniości, bezwarunkowego Z > 0 ani
+p_accept/p_K — te pozostają OPEN; okno nie wykonało additional-prime
+ani żadnego z wywołań CRT w pełnym montażu, więc deliverable (2)
+pozostaje w toku w części montażowej.

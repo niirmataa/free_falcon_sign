@@ -1,3 +1,66 @@
+# CRT part-3 route — the 512-step walk and the rebuildCrt engine closed, the part-3 assembly next
+
+2026-10-21 (R1 walk/body window). Obligation (c) is half closed: the
+512-step normalize walk (ZintNormWalk194, job 529 + audit 530) and the
+full zint_rebuild_CRT body run at xlen = 1 (ZintRebuildCrt194, job 534)
+are accepted, commits cab5bf85/df6c67ac, standard three axioms. The
+walk export is the executed-word image `fun i => normWord p0 (words i)`
+over the walk with the Word32Memory176 keeps (the twin fs/gs
+instantiation at the 512-word separation); the body engine covers the
+storePrime/PrimeRead of the block-21 table word, the u = 1 init, the
+EMPTY co-reduction loop at xlen = 1, the normalize branch and the void
+end flow, with the body-end heap `walkImage (write entry.heap pp p0) px
+p0 words 512`. Next unused proof job suffix is **549**.
+
+## Exact remaining obligations (in order)
+
+1. `SelectedStepCrtRun194.source` (drafts 535-548, source present):
+   the Bind chain of MakeFgCrtShape194.crtArgs "fs"/"gs" (entryOf/
+   bind_crt — the first parameter binds outermost), the two
+   ZintRebuildCrt194 body runs instantiated at the loop exit state of
+   SelectedStepFsFd194.source, and the make-level composition of
+   first3/second3/tail3 over the named arguments with the exit-state
+   export (the fs/gs normWord images and the keeps). The blockage and
+   its fix recipe are recorded below. Then an axiom audit of the
+   assembly modules.
+2. The additional-prime part (slen 1 / tlen 2), the remaining d-levels
+   and the root/certificate/codec path, before the complete emitted
+   witness can instantiate the corrected KeygenProbability134 consumers
+   (KeygenModelUnlock134... see the report).
+
+## Trap recorded (do not re-derive) — concrete-Memory defeq explodes
+
+Unification across `Memory`-valued terms that differ syntactically
+dives into the nested `Word32Memory176.write` closures and the
+walkImage recursion and blows up (recursion cap at 4M -> stack overflow
+-> std::bad_alloc/out of memory; jobs 543-548). The isolated probe
+CrtBridgeProbe194 (job 547) localized it: the record-update projection
+`({s with heap := H}).heap = H` is trivial with ABSTRACT H but explodes
+with the CONCRETE heapFsOf next. Rules for every module from here on:
+(a) never let the unifier compare concrete memory terms — project
+through abstract bridge lemmas (proj_heap applied at the concrete
+memory) and make every remaining crossing syntactic (unfold the defs on
+both sides, or rw along a bridging equation); (b) set-tactic bindings
+are fvar+equation and NOT defeq-safe — use plain top-level
+noncomputable definitions for intermediate states/heaps; (c) a
+noncomputable def rejected by the compiler stays a stub and poisons all
+later unification with bogus recursion-depth errors.
+
+## Engine facts to consume (do not re-derive)
+
+- `ZintNormWalk194.walk_run` over the walk entry state exports the loop
+  run, the normWord image, the keeps, and the u = 512 / x exit cells;
+  `walkImage_keep`/`walkImage_pending` give arbitrary-cell keeps.
+- `ZintRebuildCrt194.body_run` over an abstract entry state (cell
+  hypotheses xx/primes/tmp/xlen/xstride/num/normalize_signed plus the
+  table-word load and the walk loads) exports the full rebuildCrt run
+  at xlen = 1 with the body-end heap and image; `bind_crt`/
+  `entryOf` of SelectedStepCrtRun194 give the exact Bind of the named
+  arguments and its entry-state cells.
+- `keep_through` crosses one call's heap image for any separated cell;
+  gm/table separations are gm_offset0/fs_offset/gs_offset and the block
+  facts 31 vs 21.
+
 # CRT part-3 route — obligation (b) closed, the 512-step normalize loop next
 
 2026-10-21 (R1 normZero window). The len = 1 engines are closed:
