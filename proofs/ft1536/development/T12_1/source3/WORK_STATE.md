@@ -1,3 +1,69 @@
+# SEED9_R1 — checkpoint194 additional-prime window: section call shapes pinned, modp_Rx stratum wall
+
+2026-10-21 (R1 additional-prime window, suffix 553+). Whole goal ACTIVE
+/ NOT_COMPLETE; checkpoint 194 stage still open. Entry pins 194
+re-verified read-only before work (ENTRY_PINS.json SHA256
+99ac47a1d981ebfc3afe3c54aac98c02773816faa489682d205682fd31c475b8,
+all 73564 inherited pinned paths 0 missing / 0 changed, no active
+processes).
+
+ACCEPTED this window (jobs 553/557/558, logs 0/0, standard three
+axioms, value-free):
+- AddPrimeParseProbe194 (job 553, DIAGNOSTIC record) — the parse dump
+  of KeygenMakeFgSource.part .step 4 (the additional-prime remaining-
+  words loop at slen = 1 / tlen = 2) and of the
+  zint_mod_small_signed / zint_mod_small_unsigned callee bodies. Source
+  57089341, stdout ad9df22f.
+- MakeFgAddPrimeShape194 (job 557; drafts 554/555/556 retained) — the
+  decide-bound naming of the whole additional-prime section against the
+  probe's parse record: loop head, the seven-statement prime prefix
+  (declarations, primes[u].p read, modp_ninv31, modp_R2 and the new
+  modp_Rx call4), the ter generator branch with exact modp_mkgm3/
+  modp_mkgm2 argument lists, the fs/gs zint_mod_small_signed walks
+  (per-word call + t1[v] store), the modp_NTT3/modp_NTT2 branches, the
+  fd/gd product loops (= productF/productFGd verbatim) and the false
+  !out_ntt branch with the fd/gd inverse pairs, plus the
+  zint_mod_small_signed callee spine. THE OWNER'S NAJPIERW OBLIGATION
+  (parsed call shapes before any engine) IS CLOSED. Source a7cd77d3,
+  olean 828367ab.
+- KeygenModpRx (job 558) — the modp_Rx body transcription (rxParams
+  x/p/p0i/R2) with its source binding (region 2609 18, header line
+  2607): the ready plug for the call-stratum decision. Source 103a04dd,
+  olean 5d341010.
+
+WALL (księga pułapek): `Rx = modp_Rx(slen, p, p0i, R2)` parses as a
+modular-layer call4 assignment and the canonical
+C99ModularReference.Exec = GenExec ModCall has no modp_Rx constructor
+(the closed stratum: montymul/add/sub/ninv31/set/R/R2/div; all three
+caller Exec relations fix it). The additional-prime section is blocked
+at statement 7 of its loop body; statements 1-6 are executable. The fix
+is the precedented ModCall extension in the PINNED
+formal/Source3/C99ModularReference.lean (r2/div precedent, B1.03) with
+a documented pin-chain re-baseline — OWNER DECISION. The same wall hits
+the later modp_Rx call sites (poly_sub_scaled_ntt:4626,
+solve_NTRU_intermediate:5906/:5985, solve_NTRU_binary_depth1:6474).
+
+OPEN per the route order: (1) the owner decision on the wall; (2) the
+additional-prime steps after it — prologue words at u = 1 (p/p0i/R2/Rx;
+at slen = 1 the modp_Rx body loop is empty and the intended word is
+modp_R(p) — paper analysis, not proven), the mkgm3 call, the two
+512-step zint_mod_small_signed walks (their per-word dlen = 1 engine is
+NOT blocked — first engine to build), the forward modp_NTT3 runs (no
+execution engine yet — biggest item), the fd/gd product loops and the
+false !out_ntt skip, then the loop composition and the section export;
+(3) the remaining d-levels and the root/certificate/codec path, then
+the witness instantiation for KeygenProbability134 (G(seed*)).
+Unconditional Z>0, p_accept, p_K remain OPEN. Next unused proof job
+suffix 559. Retained records 553/554/555/556 (register now 61: one
+DIAGNOSTIC probe, two workshop failures, one provider-restart
+interrupt; the inherited checkpoint192 register (58) and checkpoint193
+register (4) unchanged). Old110 frozen; measured wording and the five
+do_sign items unchanged. Scoped proof, NOT_REVIEWED; no IID/D1/F04
+premise; no push (the outgoing range holds 3 commits for the owner's
+publication signal).
+
+---
+
 # SEED9_R1 — checkpoint 194 crt part 3 window: the block-21 table word at the rebuildCrt entry
 
 2026-10-21 (R1 crt part 3 window, restart after provider failure).

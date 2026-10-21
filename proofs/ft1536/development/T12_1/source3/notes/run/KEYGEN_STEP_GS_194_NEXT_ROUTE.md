@@ -1,3 +1,115 @@
+# Additional-prime route — the section call shapes pinned, the modp_Rx stratum decision next
+
+2026-10-21 (R1 additional-prime window). The NAJPIERW obligation of the
+owner's route is closed: the parsed call shapes of the make_fg_step
+additional-prime section (KeygenMakeFgSource.part .step 4, the
+remaining-words loop `for (u = slen; u < tlen; u ++)` at the selected
+instance slen = 1 / tlen = 2) are pinned by decide against the parse
+record of the retained diagnostic probe AddPrimeParseProbe194 (job 553)
+in MakeFgAddPrimeShape194 (job 557, drafts 554/555/556 retained), and
+the modp_Rx callee body transcription plus its source binding are
+pinned in KeygenModpRx (job 558). The section's steps are NOT started:
+the canonical execution is blocked at statement 7 of the loop body by
+the modp_Rx call-stratum wall recorded below. Next unused proof job
+suffix is **559**. Entry re-verified read-only at window start
+(ENTRY_PINS `99ac47a1…`, all 73564 inherited pins 0 missing / 0
+changed, no active processes). Scoped proof, NOT_REVIEWED; no push
+(batch 4 waits for the owner's signal); values stay executed words.
+
+## Exact remaining obligations (in order)
+
+1. THE OWNER DECISION on the modp_Rx wall: extend the pinned
+   formal/Source3/C99ModularReference.lean ModCall stratum with the rx
+   constructor (rxParams/rxCode/rxBody plus `| rx (args out) (body :
+   rxBody args out) : ModCall "modp_Rx" args out`; the exact B1.03
+   precedent of the r2/div constructors, commits 0e5a0b02/c3170530;
+   the ready plug is KeygenModpRx and its binding moves verbatim) and
+   document the pin-chain re-baseline, or route the section otherwise.
+   Without it no statement of the additional-prime loop body past the
+   prime prefix receives a canonical KeygenMakeFgSource.Exec
+   derivation.
+2. The additional-prime steps at slen = 1 / tlen = 2 (after the
+   decision): the prologue words at the u = 1 iteration (p = primes[1].p,
+   p0i = modp_ninv31(p), R2 = modp_R2(p, p0i), Rx = modp_Rx(1, p, p0i,
+   R2); at x = 1 the body loop is empty and the intended executed word
+   is modp_R(p) — paper analysis only, the value law needs the stratum
+   constructor), the ter generator call modp_mkgm3(gm, igm, logn, 0,
+   primes[1].g, p, p0i), the two 512-step zint_mod_small_signed walks
+   over fs/gs — their per-word engine at dlen = 1 is NOT blocked by the
+   wall and is the first engine to build: ZintModSignedWord194 over the
+   pinned callee spine plus the zint_mod_small_unsigned leaf at dlen = 1
+   — then the two forward modp_NTT3 runs (KeygenNttForwardPrograms pins
+   the body; no execution engine exists yet — the biggest item), the
+   fd/gd product loops at the u = 1 cell (tlen = 2 walk; the product
+   engines transfer) and the false !out_ntt skip; then the loop
+   composition and the section export.
+3. The remaining d-levels and the root/certificate/codec path, before
+   the complete emitted witness can instantiate the corrected
+   KeygenProbability134 consumers (KeygenModelUnlock134.package_of_witness,
+   KeygenSuccessMass134.success_lower_of_witness); the prospective bound
+   remains Z>=2^-256 and is NOT established.
+
+## WALL (księga pułapek — modp_Rx is outside the pinned ModCall stratum; do not re-derive)
+
+The `Rx = modp_Rx(slen, p, p0i, R2)` statement of the additional-prime
+loop body parses as a modular-layer `Expr.call4` assignment (probe 553).
+The canonical modular execution relation is `C99ModularReference.Exec =
+GenExec ModCall` and the closed ModCall stratum covers exactly
+modp_montymul / modp_add / modp_sub / modp_ninv31 / modp_set / modp_R /
+modp_R2 / modp_div; KeygenMakeFgSource.Exec, KeygenLevelExec.Exec and
+KeygenWordExec.Exec all fix that relation, so NO KeygenMakeFgSource.Exec
+derivation exists for the rxSet statement (statements 1-6 of the loop
+body are executable under the pinned semantics, the seventh is not).
+The fix is the precedented call-stratum extension in the PINNED source
+C99ModularReference.lean; that file is inside the inherited
+73564-path pin set, so the edit is an owner decision and needs a
+documented pin-chain re-baseline. The same wall hits every later
+modp_Rx call site (poly_sub_scaled_ntt falcon-keygen.c:4626,
+solve_NTRU_intermediate :5906/:5985, solve_NTRU_binary_depth1 :6474) —
+one extension closes them all. The wall is a coverage gap of the pinned
+call whitelist, not a source-correctness result.
+
+## Engine facts pinned this window (consume, do not re-derive)
+
+- MakeFgAddPrimeShape194 names the whole additional-prime section:
+  loop head (init u = slen, guard u < tlen, increment u += 1, body
+  scope locals p/p0i/R2/Rx/v and pointer x), the seven-statement prime
+  prefix (three declarations; pSet/iSet/rSet = StepPrimeShape188
+  verbatim; the new rxSet call4), and the eight-statement chain with
+  every call's exact parsed argument list: generateBranch (modp_mkgm3
+  wrapper + modp_mkgm2 binary), walkFs/walkGs (the per-word
+  zint_mod_small_signed call stored to t1[v], walked over fs/gs at
+  stride slen; one walk shape, two instantiations), nttFs/nttGs (the
+  modp_NTT3 wrapper at the expanded stride-1 argument list + the
+  modp_NTT2 binary), productFd/productGd (= MakeFgProductShape191.
+  productF / MakeFgGsShape194.productFGd verbatim) and outBranch (the
+  false !out_ntt branch with the fd/gd modp_iNTT3_ext pair at
+  logn-1/tlen and the modp_iNTT2_ext binary pair).
+- The zint_mod_small_signed callee spine is pinned (z declaration, dlen
+  = 0 early return, the zint_mod_small_unsigned leaf call into z, the
+  modp_sub correction `z = modp_sub(z, Rx & -(d[dlen-1] >> 30), p)`,
+  the z return) — the per-word walk engine consumes it directly.
+- KeygenModpRx pins the modp_Rx body (region 2609 18, header line
+  2607): `x--; r = R2; z = modp_R(p); for (i = 0; (1U << i) <= x; i ++)
+  { if ((x & (1U << i)) != 0) z = modp_montymul(z, r, p, p0i); r =
+  modp_montymul(r, r, p, p0i); } return z;` with rxParams (x/p/p0i/R2).
+- Trap (register 556): a shape equality comparing two projections of
+  two different whole-section parses blows the kernel memory limit;
+  bind cross-section shapes as local transcriptions in split form
+  (guard, then each side) instead.
+
+Only executed-word semantics is in scope: no transform property, table
+law, root law or positivity claim; unconditional Z>0, numerical
+p_accept, conditional coding and positive p_K remain OPEN. Old110 stays
+frozen; measured wording 8192/23628 with the separate 256/739 control
+and the five do_sign items remain unchanged. Scoped proof,
+NOT_REVIEWED; no IID/D1/F04 premise; no push (batch 4 waits for the
+owner's signal). Retained failures: `KEYGEN_STEP_GS_194_FAILURES.json`
+(61 records), the inherited checkpoint192 register (58) and
+checkpoint193 register (4).
+
+---
+
 # CRT part-3 route — the part-3 composition closed, the additional-prime part next
 
 2026-10-21 (R1 crt-run window). Obligation (c) is fully closed: the
