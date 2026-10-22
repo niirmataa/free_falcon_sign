@@ -1,3 +1,110 @@
+# Additional-prime route 567 — the u = 1 ter generator branch closed (mkgm3 body run at the u = 1 words), the marches next
+
+2026-10-22 (R1 generate window). STEP 3 OF THE STEPS 1-7 ROUTE IS
+CLOSED: the ter generator branch of the make_fg_step additional-prime
+loop body at the u = 1 cell is executed in full
+(SelectedStepGenerate195, job keygen_publicforward159_567; sources
+`4043f71b…`/`1f1dea19…`/`cb65b2ea…`/`91c53ae8…`, oleans
+`9b0f7307…`/`6773f91a…`/`99685a03…`/`24fad3ea…`, 4/4 accepted,
+logs 0/0, standard three axioms on twelve key exports, markers 0,
+maxRSS 4140504 KiB). The whole KeygenMkgm3Program.code body runs at the
+u = 1 words p1/p0i1/r21/rx1(= r1)/g1 = 1119654270 (row-1 .g of the
+block-21 ternary table), the wrapper call binds the pinned
+seven-argument list generateArgs and the branch closes at ter = 1 with
+the loop-body continuation. Next unused proof job suffix is **568**.
+Entry re-verified read-only at window start (ENTRY_PINS `00f602e7…`,
+all 74673 inherited pins 0 missing / 0 changed, no active processes).
+Retained register 65 + 58 + 4 (566 = the runner-misuse refusal). Scoped
+proof, NOT_REVIEWED; no push (6 waits); values stay executed words.
+
+## Exact remaining obligations (in order)
+
+1. The two marches walkFs and walkGs (MakeFgAddPrimeShape194.walkF
+   "fs"/"gs"): each is the 512-step zint_mod_small_signed walk over the
+   fs/gs source words at stride slen = 1 with the executed word stored
+   to t1[v] (modCall = .call .modSigned modArgs (.store "t1" varV),
+   modArgs = [pointer x 0, scalar slen, p, p0i, R2, Rx]). The per-word
+   engine ZintModSignedWord194.ms_call is ready; the NEW work is the
+   walk loop composition and the t1[v] stores — ZintNormWalk194.walk_run
+   is the loop precedent (loop run + image + keeps + exit cells), and
+   the Word32Memory176 keep discipline is the same as the fs/gs walks of
+   the CRT layer.
+2. nttFs/nttGs — the forward modp_NTT3 runs (nttBranch at ter = 1, the
+   wrapper call modp_NTT3(t1, gm, logn, 0, p, p0i) over the expanded
+   stride-1 argument list forwardArgs): NO execution engine exists yet —
+   the biggest item; KeygenNttForwardPrograms pins the body and
+   KeygenNttForwardExec has only the prologue derivations.
+3. productFd/productGd (the fd/gd pair-product loops; the product
+   engines transfer from MakeFgProductShape191.productF /
+   MakeFgGsShape194.productFGd verbatim).
+4. The false !out_ntt skip (out_ntt = 1 at this step): the fd/gd
+   modp_iNTT3_ext inverse pairs at logn-1/tlen (pairYes) and the
+   modp_iNTT2_ext binary pair of the false ter alternative.
+5. The loop composition and the section export: at that export the
+   prefix/generator entry facts are discharged — the row-1 block-21
+   table-word keeps (SelectedStepCrtWord194 precedent; now both .p and
+   .g), the u/slen/tlen cells + primes binding from
+   SelectedStepFsFd194.source through SelectedStepCrtRun194, and the
+   StepU1Entry195.Input bundle (p/p0i/logn/u/ter cells, gm/igm/primes/
+   REV10 bindings, REV10 SourceTable, block-31 scratch allocations,
+   writable 31, raw-initialized gm/igm spans). SelectedStepAddPrime195.
+   body_entry and SelectedStepGenerate195.continue_inner consume
+   exactly those hypotheses in sequence.
+6. Then the remaining d-levels and the root/certificate/codec path,
+   before the complete emitted witness can instantiate the corrected
+   KeygenProbability134 consumers; the prospective bound remains
+   Z>=2^-256 and is NOT established.
+
+## Generate facts pinned this window (consume, do not re-derive)
+
+- The u = 1 run words are StepU1Entry195.{p1,p0i1,r21,g1,r1} with
+  g1_word/fieldPointer_one_g/r1_word and g_object_word (the .g analog of
+  SelectedStepAddPrime195.object_word). r1 = KeygenModpR.word p1 is the
+  same word as SelectedStepAddPrime195.rx1 (r1_word).
+- StepU1Entry195: the callee entry spine (empty/withI/withP/withG/
+  withFull/withLogn/withIgm/entry over the caller state), the primes[1].g
+  PrimeRead at MakeFgAddPrimeShape194.var "u" (PointerAdd.within primes
+  1, fieldPointer_one_g), the Bind of generateArgs, source_call and the
+  static-fact transports (entry_heap := rfl, rev_binding via the tables
+  frame — the fresh callee frame sees tables, not caller arrays).
+- StepU1Body195: the prelude spine and runs (rAssign/r2Assign/gConvert/
+  kFromLogn0, ifNotFull at full = 0 with the g cube, whileK at logn = 9
+  with one loop round, igAssign), append_source/continue_generator into
+  KeygenMkgm3Program.code and the Ready-style cell/heap facts.
+- StepU1Run195: the row prelude and 512-row loop instance
+  (Gen0RowLoop189.full at the u = 1 words), rowSelect at logn = 9 ->
+  elseRow, kFromLogn/ifFull, the squareLoop instance
+  (GeneratorSquareLoop181.full) and the top elements
+  (GeneratorTopSource181.source), composed in body_source. The
+  engine-result states (rowLoopAfter/squareAfter/w/topAfter) are
+  parameterized by the caller-state input proof; thread ONE input0 term
+  through every use (defeq discipline).
+- SelectedStepGenerate195: call_run/instruction/scoped_run/branch_source
+  at ter = 1 and the continuation; afterGenerate changes only the heap,
+  so every caller local/array cell keeps (locals_keep/arrays_keep).
+
+## Trap wall (księga additions — do not re-derive)
+
+- A naked `ModCall` in a fresh FT1536.Source3.* namespace is NOT
+  `C99ModularReference.ModCall`: with autoImplicit it becomes a new fvar
+  of type CallRelation and the theorem silently gains an implicit. The
+  failure surfaces as a general "Type mismatch" whose expected type
+  prints the fvar SHORT against the FULLY-QUALIFIED constant of the real
+  term; the printed state difference (preAfter s vs the unfolded form) is
+  defeq-fine and is NOT the cause. Open `C99ModularReference (… ModCall
+  …)` or qualify the constant in every Run/ModularSequence178 statement.
+- The acceptance runner of the key-law lane is tools/job111.py (its
+  RUNNER_SOURCE is byte-identical to jobs 559-565); it merges the
+  .build/key_law088/CACHE_INDEX.json lane cache. tools/job.py is the
+  historical rebind runner and refuses the re-baselined rx-stratum
+  source against its stale main-cache entry ("stale source cache
+  (rebuild): Source3.C99ModularReference"). Label 566 was consumed by
+  that refusal and retained in KEYGEN_STEP_GS_194_FAILURES.json.
+- Entry-frame reminder: the fresh callee frame starts
+  locals := globals, arrays := tables (KeygenLevelCalls.Bind.nil), so a
+  callee-side REV10 binding comes from the CALLER TABLES
+  (s.tables "REV10"), not from s.arrays.
+
 # Additional-prime route 565 — the u = 1 prime prefix closed (assembly layer), the ter/walk/NTT chain next
 
 2026-10-21 (R1 add-prime prefix window). STEP 2 OF THE STEPS 1-7 ROUTE

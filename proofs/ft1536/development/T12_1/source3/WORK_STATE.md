@@ -1,3 +1,89 @@
+# SEED9_R1 — generate window CLOSED: SelectedStepGenerate195 accepted (job 567), step 3 of the route done
+
+2026-10-22 (R1 generate window, suffix range 566-567). Entry pins
+re-verified read-only before work (ENTRY_PINS .build/steprx195/
+ENTRY_PINS.json SHA256
+00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964 =
+route pin; all 74673 checked paths 0 missing / 0 changed via
+entry_reverify_566; old manifest 99ac47a1… untouched; no active
+job/Lean/Sage processes; the two loose run2/notes files stay untracked
+and reported, not claimed). ACCEPTED this window: the ter modp_mkgm3
+generator branch of the make_fg_step additional-prime loop body at the
+u = 1 cell, in four modules (job keygen_publicforward159_567; sources
+StepU1Entry195 `4043f71bd5d5…`, StepU1Body195 `1f1dea19a1ef…`,
+StepU1Run195 `cb65b2ead1dc…`, SelectedStepGenerate195 `91c53ae8a36c…`;
+oleans `9b0f73079021…`/`6773f91ae3fa…`/`99685a03e6ea…`/`24fad3ead011…`;
+4/4 exit 0 accepted, 12.792/5.026/4.829/3.171 s, -DwarningAsError,
+logs 0/0, clean_log, forbidden_proof_markers = []; #print axioms on
+twelve key exports = exactly the standard three; maxRSS 4140504 KiB).
+WHAT IT PROVES: the whole KeygenMkgm3Program.code body runs at the u = 1
+words p1 = 2147346433 / p0i1 = KeygenNinv31.word p1 / r21 =
+KeygenModpR2Word.word p1 p0i1 / rx1 = r1 = KeygenModpR.word p1 / g1 =
+1119654270 (the row-1 .g word of the block-21 ternary table, pinned by
+decide), i.e. the StepGeneratorScalar188/Cube188/Square188/
+InverseCall188/Prefix188/Ready188 + SelectedGen0Prelude189/RowFixed189/
+RowLoop189/Row189/Control189/Square189/Top189 chain re-instantiated at
+the u = 1 words over the generic engines (Gen0RowLoop189.full,
+GeneratorSquareLoop181.full, GeneratorTopSource181.source); the
+KeygenLevelCalls.Bind of the pinned seven-argument list
+MakeFgAddPrimeShape194.generateArgs (gm/igm pointers, logn = 9, full =
+0, primes[u].g PrimeRead at the u = 1 index, p/p0i cells), the Call
+.generate wrapper and the gBranch statement at ter = 1 (the modp_mkgm2
+binary alternative not taken), with the loop-body continuation
+SelectedStepGenerate195.continue_inner. Values are executed words only:
+no transform property, table law, root law or positivity claim. SCOPE
+BOUNDARY (honest): the layer is stated over an abstract caller state s
+with the StepU1Entry195.Input hypotheses (p/p0i/logn/u/ter cells, the
+gm/igm/primes/REV10 bindings, the row-1 .p and .g table-word loads, the
+REV10 SourceTable, the block-31 scratch allocations, writable 31 and the
+raw-initialized gm/igm spans); their transport to the concrete part-3
+CRT exit state is the keep chain of the section export, consuming
+SelectedStepAddPrime195.body_entry exactly as the previous window
+planned. Traps recorded (do not re-derive): (1) in a fresh namespace a
+naked `ModCall` is NOT `C99ModularReference.ModCall` — with autoImplicit
+it becomes a new fvar and the failure prints the fvar short against the
+fully-qualified constant ("Type mismatch ... Run ModCall ... (preAfter
+s)" vs "Run C99ModularReference.ModCall ... (after …)"); open or
+qualify every call-relation constant; (2) the acceptance runner of this
+lane is tools/job111.py (byte-identical to the RUNNER_SOURCE of jobs
+559-565, merging the key_law088 lane cache); tools/job.py is the
+historical rebind runner and refuses the re-baselined rx-stratum source
+at its stale main-cache entry. Workshop: four typing-error iterations
+(the REV10 tables-vs-arrays entry frame, the missing
+Gen0RowPreludeFacts189 import together with the Run-vs-Exec prelude
+form, the cell-chain states at the square loop, and the ModCall type
+mismatch) plus eight diagnostic probes that isolated the bare-ModCall
+autoImplicit shadow; no draft job suffixes, no sorry even in
+diagnostics; accepted source 0 markers. RETAINED register grew to 65 + 58 + 4:
+keygen_publicforward159_566 is the runner-misuse refusal above (zero
+Lean invocations, zero math, label consumed per the job-512 precedent),
+recorded in KEYGEN_STEP_GS_194_FAILURES.json. OPEN (in order): (1) the
+two 512-step zint_mod_small_signed marches walkFs/walkGs at stride
+slen = 1 with the t1[v] stores (ZintModSignedWord194.ms_call ready;
+the walk loop composition and the t1[v] stores are the new work,
+ZintNormWalk194 is the loop precedent); (2) nttFs/nttGs — the forward
+modp_NTT3 runs, NO execution engine exists yet (biggest item;
+KeygenNttForwardPrograms pins the body); (3) productFd/productGd (the
+product engines transfer, MakeFgProductShape191.productF /
+MakeFgGsShape194.productFGd verbatim); (4) the false !out_ntt skip (the
+fd/gd modp_iNTT3_ext inverse pairs at logn-1/tlen); (5) the loop
+composition and the section export with the body_entry discharge (the
+row-1 block-21 table-word keep, the u/slen/tlen cells + primes binding
+from SelectedStepFsFd194.source through SelectedStepCrtRun194, and the
+Input hypotheses above); then the remaining d-levels and the
+root/certificate/codec path before the emitted witness can instantiate
+the corrected KeygenProbability134 consumers. Unconditional Z>0,
+p_accept and p_K remain OPEN; the prospective bound stays Z>=2^-256 and
+is NOT established. Old110 frozen; measured wording 8192/23628 with the
+separate 256/739 control and the five do_sign items unchanged. Scoped
+proof, NOT_REVIEWED. Next unused proof job suffix: **568**. No push
+(the outgoing range holds the earlier local commits plus this window's
+two for the owner's publication signal). Resume: verify
+.build/steprx195/ENTRY_PINS.json (00f602e7…) read-only, run the lane
+runner tools/job111.py, then continue from OPEN (1) per NEXT_ROUTE; do
+not re-derive the generator branch, the u = 1 words or the pin
+structure.
+
 # SEED9_R1 — add-prime prefix window CLOSED: SelectedStepAddPrime195 accepted (job 565), step 2 of the route done
 
 2026-10-21 (R1 add-prime prefix window, suffix 565). Entry pins
