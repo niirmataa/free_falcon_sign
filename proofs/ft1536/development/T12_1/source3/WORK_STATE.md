@@ -1,3 +1,109 @@
+# SEED9_R1 — NTT3 first-pass window CLOSED: prologue at logn = 9 / full = 0, w = gm[1], firstInit + hn-step loop composed and exported at the StepNttEntry195 frame (job 571); intermediate passes next
+
+2026-10-23 (R1 engine window, suffix 571). Entry pins re-verified
+read-only before work (ENTRY_PINS .build/steprx195/ENTRY_PINS.json SHA256
+00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964 =
+route pin; all 74673 checked paths 0 missing / 0 changed via
+entry_reverify_571; old manifest 99ac47a1… untouched; no active
+job/Lean/Sage processes; the two loose run2/notes files stay untracked
+and reported, not claimed). ACCEPTED this window: the composition of
+the FIRST pass of the modp_NTT3_ext forward engine at the selected call
+words (job keygen_publicforward159_571; sources StepNttPrologue195
+`f570ec966095b35d…`, StepNttFirstLoop195 `6f9becf1a7a45be3…`; oleans
+`53c013996fe296fe…`/`af6afe2b0752c9e1…`; 2/2 exit 0 accepted,
+4.892/10.737 s, -DwarningAsError=true, logs 0/0, clean_log,
+forbidden_proof_markers = []; #print axioms on fifteen key exports =
+exactly the standard three; maxRSS 4011804/4054128 KiB). WHAT THE
+COMPOSITION PROVES: (1) the prologue at the words logn = 9 / full = 0
+runs in full — the logn0 guard is kernel-checked false (guard_value
+extracted from Exec, early_run constructing the branch-false run), the
+MKN macro word is n = 512 and the halving hn = 256 (mkn_value/half_value
+extracted FROM arbitrary Exec derivations; mkn_eval/half_eval construct
+the same concrete evaluations), with the complete statement chain
+locals_run/word_run/pointers_run/early_run/n_run/hn_run/prologue_run and
+its uniqueness mirror prologue_result at ready; (2) the w = gm[1]
+assign runs and binds the butterfly w slot to the loaded gm word
+(gm_one_pointer/w_run, the wState frame); (3) firstInit runs at any hn
+(init_run: u = 0, r1 = elem a 0, r2 = elem a hn at the pinned stride =
+1 via elem_half) with its keeps (init_u/init_r1/init_r2/init_locals/
+init_arrays) and the post-init invariant init_fixed; (4) the hn-step
+loop composition — the per-iteration run (body_run: one block_run
+instance at the walked pair (a[u], a[hn+u]) at the loaded words via
+body_state, plus increment_run for the verbatim u/r1/r2 step; combined
+in iteration_run), next_image/next_fixed at the corrected iteration
+states bodyAt/stepAt, the remaining induction (exit cells u = hn,
+r1 = elem a hn, r2 = elem a (hn+hn), the full Image at v = hn, Fixed and
+the locals/arrays keeps) and first_run (firstInit + the walk); (5) the
+export at the StepNttEntry195 entry frame words — entry_run at
+`frame before t1 gm 9 pw p0w`: the entryPrefix (the prologue + wAssign +
+firstLoop spine prefix) runs to the completed executed image over the
+input words with Fixed-after, the exit cells and the frame keeps, and
+prefix_continue chains C99ModularReference continuation into tailT along
+the pinned parse map (body_spine + splits). DEFECT NOTE (retained
+finding, job 570 bytes untouched, owner decision pending):
+StepNttFirst195.bodyHeap composes StepNttBody195.highHeap at the OUTPUT
+words lowWordAt/highWordAt where highHeap expects the butterfly INPUT
+words, so its written cells are `lowWord (lowWordAt) …`/`highWord
+(lowWordAt) …` instead of the executed words and the image does NOT hold
+at StepNttFirst195.stepState; the execution-derived equation
+StepNttBody195.body_state (bodyOut at the input words) is correct and is
+the iteration state this window composes at (bodyAt/stepAt are defeq to
+bodyOut and its increment closure). The job-570 keeps (step_*) never
+read the heap and remain valid facts about its own stepState; the parse
+map, the per-cell keeps, the butterfly words and the step engine are
+consumed as pinned, not re-derived. COUNT NOTE (honest): the
+kernel-checked loop bound is hn = 256 degree-1 butterfly iterations over
+512 marched words at this call instance (logn = 9 / full = 0, MKN =
+512); the route shorthand "512 butterflies" counts the words or both
+calls nttFs+nttGs at 2x256. SCOPE BOUNDARY (honest): values stay
+executed words — no transform property, table law, root law or
+positivity claim; the export runs over an abstract caller state with the
+t1/gm bindings, the u32 section cells and the data hypotheses (Pending0
+input image on t1, the gm loads and pairwise separation, t1
+width/capacity/writable); their transport to the concrete part-3 CRT
+exit state is the keep chain of the section export. Traps recorded (do
+not re-derive): (1) the `{src with f := v}` structure-instance parser
+breaks not only on `⟨x, by omega⟩` but on ANY parenthesized argument in
+a field value ("unexpected token '('; expected '}'") — precompute the
+whole value in a top-level def (fvLo/fvHi/bodyHeapAt); (2)
+C99LoopScalar141.less takes CLogic.EXPR arguments, not Names (pair with
+C99LoopScalar141.read on the cells); (3) simp normalizes `"hn".toList`
+to `['h','n']` in goals but NOT in hypothesis patterns — if-discharge
+through C99ScalarReference.set needs the differences stated as list
+literals (`name≠['h','n']`), while term-level `exact` accepts the String
+form by defeq; (4) `prefix` is a Lean keyword and cannot be a binder
+name; (5) rw does not see through defs (wState) — precede with `change`
+of the unfolded form, and `have x : T := v` pins only T, so rfl lemmas
+must state the concrete terms. Workshop: 10 local typecheck iterations
+(module 1: 3, module 2: 6, one isolated probe settling the simp
+normalization question), no draft job suffixes, no sorry even in
+diagnostics; accepted sources 0 markers. RETAINED register unchanged:
+65 + 58 + 4 (no new failed runs; suffix 571 is a real acceptance run)
+plus the one retained finding above (the job-570 bodyHeap
+mis-composition, recorded and supplemented, not patched). OPEN (in
+order): (1) the intermediate doubling passes and the kernel-checked
+full = 0 branch (the triple pass is NOT taken at full = 0 — check the
+branch, do not assume it); (2) productFd/productGd; (3) the false
+!out_ntt skip (fd/gd inverse pairs); (4) the loop composition and the
+section export with the body_entry discharge; then the remaining
+d-levels and the root/certificate/codec path. Unconditional Z>0,
+p_accept and p_K remain OPEN; the prospective bound stays Z>=2^-256 and
+is NOT established. Old110 frozen; measured wording 8192/23628 with the
+separate 256/739 control and the five do_sign items unchanged. Scoped
+proof, NOT_REVIEWED. Next unused proof job suffix: **572**. No push (the
+outgoing range holds 6 earlier local commits plus this window's for the
+owner's publication signal). Resume: verify
+.build/steprx195/ENTRY_PINS.json (00f602e7…) read-only, run the lane
+runner tools/job111.py, then continue from OPEN (1); consume the parse
+map/keeps/step engine of job 570 and the prologue/w/init/loop
+composition plus bodyAt/stepAt of job 571; do not re-derive them and do
+not rebuild the loop on the defective StepNttFirst195.stepState.
+
+Job records (one line each): keygen_publicforward159_571 — ACCEPTED
+2/2 (StepNttPrologue195/StepNttFirstLoop195), logs 0/0, markers 0,
+standard three axioms on fifteen exports, next = the intermediate
+doubling passes (multi-window engine continues).
+
 # SEED9_R1 — NTT3 engine window OPEN: parse map + per-cell keeps + step layer accepted (job 570), first-pass loop composition next
 
 2026-10-23 (R1 engine window, suffix 570). Entry pins re-verified

@@ -1,3 +1,109 @@
+# NTT3 engine route 571 — the first pass composed and exported at the entry frame; the intermediate doubling passes next
+
+2026-10-23 (R1 engine window). OBLIGATION 1 (the NTT3 execution
+engine) has its FIRST pass composed and exported (job
+keygen_publicforward159_571, StepNttPrologue195 `f570ec96…`/olean
+`53c01399…`, StepNttFirstLoop195 `6f9becf1…`/olean `af6afe2b…`, 2/2
+accepted, logs 0/0, markers 0, standard three axioms on fifteen
+exports). The prologue runs at the selected words logn = 9 / full = 0
+(n = 512, hn = 256) with the kernel-checked false logn0 guard and the
+executed MKN/halving words; the w = gm[1] assign binds the butterfly w
+slot; firstInit walks u = 0, r1 = a, r2 = a + hn at the pinned stride =
+1; the hn-step loop is composed (per-iteration run = block_run at the
+walked pair + the u/r1/r2 increment; next_image/next_fixed; the
+remaining induction) and exported at the StepNttEntry195 entry frame
+(entry_run over the entryPrefix spine prefix, with prefix_continue
+chaining continuation into tailT). COUNT NOTE (honest): hn = 256
+degree-1 butterfly iterations over 512 marched words; "512 butterflies"
+counts the words or both calls nttFs+nttGs at 2x256. Next unused proof
+job suffix is **572**. Entry re-verified read-only at window start
+(ENTRY_PINS `00f602e7…`, all 74673 inherited pins 0 missing / 0
+changed, no active processes). Retained register 65 + 58 + 4 (no new
+failed runs) plus one retained FINDING (below). Scoped proof,
+NOT_REVIEWED; no push (6 earlier local commits wait plus this window's
+for the owner's publication signal). Values stay executed words.
+
+## RETAINED FINDING — the job-570 stepState is mis-composed (do not re-derive, do not patch silently)
+
+StepNttFirst195.bodyHeap passes the OUTPUT words lowWordAt/highWordAt as
+the a0/a1 arguments of StepNttBody195.highHeap, which expects the
+butterfly INPUT words; its writes are therefore `lowWord (lowWordAt)
+…` / `highWord (lowWordAt) …`, not the executed words the Image claims,
+and next_image is FALSE at StepNttFirst195.stepState. The
+execution-derived StepNttBody195.body_state (bodyOut at the input
+words) is correct; this window composes at bodyAt/stepAt (defeq to
+bodyOut and its increment closure) and records the defect instead of
+editing pinned job-570 bytes. The job-570 keeps (step_*) never read the
+heap and stay valid about its own stepState. Owner decision pending:
+errata/refix of the 195 step layer or a permanent corrected supplement.
+
+## Exact remaining obligations (in order)
+
+1. The intermediate doubling passes (t = hn down; the
+   KeygenNttForwardPrograms.mInner round body) and the full = 0 branch:
+   the triple pass is NOT taken at full = 0 — kernel-check the branch,
+   do not assume it. Continue from the entry_run/after state; the
+   continuation hook is prefix_continue (entryPrefix + tailT).
+2. productFd/productGd (the fd/gd pair-product loops; the product
+   engines transfer from MakeFgProductShape191.productF /
+   MakeFgGsShape194.productFGd verbatim).
+3. The false !out_ntt skip (out_ntt = 1 at this step): the fd/gd
+   modp_iNTT3_ext inverse pairs at logn-1/tlen (pairYes) and the
+   modp_iNTT2_ext binary pair of the false ter alternative.
+4. The loop composition and the section export: at that export the
+   march exports consume the body_entry hypotheses directly (the row-1
+   block-21 table-word keeps, the u/slen/tlen cells + primes binding,
+   the StepU1Entry195.Input bundle). SelectedStepAddPrime195.body_entry
+   and SelectedStepGenerate195.continue_inner chain into
+   SelectedStepWalks195.walkFs_continue/walkGs_continue and then the
+   NTT engine continuations.
+5. Then the remaining d-levels and the root/certificate/codec path,
+   before the complete emitted witness can instantiate the corrected
+   KeygenProbability134 consumers; the prospective bound remains
+   Z>=2^-256 and is NOT established.
+
+## Layer facts pinned this window (consume, do not re-derive)
+
+- StepNttPrologue195: lognAt/fullAt at 9/0, nCell/hnCell at 512/256;
+  value words guard_value/shl_zero_value/plus_one_value/
+  minus_nine_value/mkn_value/half_value (inversion from Exec) and
+  mkn_eval/plus_one_eval/minus_eval/half_eval/shl_full_eval
+  (construction); statement results early_u/n_u/hn_u/prologue_result
+  and locals_run/word_run/pointers_run/early_run/n_run/hn_run/
+  prologue_run; ready-state exports ready_n/ready_hn/ready_hn_cell/
+  ready_logn/ready_full/ready_p/ready_p0i/ready_stride/ready_a/ready_gm
+  and the prologue keeps; gm_one_pointer/w_run (w = gm[1]); r2_pointer/
+  initState/init_run/init_u/init_r1/init_r2/init_locals/init_arrays.
+- StepNttFirstLoop195: fvLo/fvHi/bodyHeapAt/bodyAt/stepAt (the
+  execution-derived iteration states) with bodyAt_*/stepAt_* keeps;
+  load_allocated/load_width; body_run/increment_run/iteration_run; the
+  two-write keeps two_write_keep/two_write_here_left/
+  two_write_here_right; next_image/next_fixed; the guard helper;
+  remaining; init_fixed/first_run; frame/firstTail/entryPrefix/
+  firstNames with frame_logn/frame_full/frame_p/frame_p0i/
+  frame_stride/frame_a/frame_gm, ready_w_free/ready_u_free/
+  ready_locals_keep/ready_arrays_keep/w_set_locals_keep/w_set_arrays,
+  wState/entry_fixed, and the exports entry_run + seq_parts/
+  prefix_continue.
+
+## Trap wall (księga additions — do not re-derive)
+
+- `{src with f := v}` breaks on ANY parenthesized argument in a field
+  value, not only `⟨x, by omega⟩` ("unexpected token '('"); precompute
+  the entire value in a top-level def (fvLo/fvHi/bodyHeapAt pattern).
+- C99LoopScalar141.less takes CLogic.EXPR arguments; pair it with
+  C99LoopScalar141.read on the cells (guard helper pattern).
+- simp normalizes `"hn".toList` to `['h','n']` in goals but not in
+  hypothesis patterns: simp-based if-discharge through
+  C99ScalarReference.set needs list-literal differences; term-level
+  `exact` accepts the String form by defeq (probe kept in job logs).
+- `prefix` is a Lean keyword; do not use it as a binder name.
+- rw does not see through defs (wState): precede with `change` of the
+  unfolded form; `have x : T := v` pins only T, so rfl lemmas must
+  state the concrete terms or use `set`.
+- branchFalse's constructor order is (condition)(yes no)(before)
+  (result)(v)(guard)(zero)(body) — result before the guard value.
+
 # NTT3 engine route 570 — the parse map + per-cell keeps + step layer accepted; the first-pass run next
 
 2026-10-23 (R1 engine window). OBLIGATION 1 (the NTT3 execution
