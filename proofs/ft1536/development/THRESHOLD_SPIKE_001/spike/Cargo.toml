@@ -1,0 +1,24 @@
+[package]
+name = "ft1536-threshold-spike"
+version = "0.1.0"
+edition = "2021"
+description = "T-THRESHOLD spike 001 — kiełek wyprowadzania bajtu klucza z udziałów seeda. PROTOTYP, nie threshold signing."
+publish = false
+
+[dependencies]
+rand = "0.8"
+zeroize = { version = "1", features = ["derive"] }
+# Pedersen VSS jak ghost-dkg/san-dkg (uzasadnione: DL-hiding zobowiązania)
+curve25519-dalek = "4"
+sha3 = "0.10"
+sha2 = "0.10"
+# Działający silnik FT1536 (oracle) — formalizacja Lean4 nie blokuje.
+ft1536-sys = { path = "/home/footfalcon/Muzyka/[N]/crates/ft1536-sys" }
+
+[[bin]]
+name = "iso"
+path = "src/bin/iso.rs"
+
+[profile.release]
+overflow-checks = true
+panic = "abort"

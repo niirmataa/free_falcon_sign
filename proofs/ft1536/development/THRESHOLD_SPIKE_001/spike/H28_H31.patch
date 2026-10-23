@@ -1,0 +1,57 @@
+# TT-56 / K2 — proponowany patch dla san-mpc (NIE APLIKOWANY)
+# Ścieżka: crates/san-mpc/src/lib.rs (z Obrazy/.../secure_ai_network)
+# Aplikacja wyłącznie za zgodą właściciela; testy upstream obowiązkowe.
+
+--- a/crates/san-mpc/src/lib.rs
++++ b/crates/san-mpc/src/lib.rs
+@@ H-28.1 spdz_setup @@
+ pub fn spdz_setup(rng: &mut impl RngCore, n: usize) -> Vec<SpdzKeyShare> {
++    if n < 2 {
++        return Vec::new();
++    }
+     loop {
+         let mut sum: u64 = 0;
+         ...
+@@ H-28.2 spdz_input_dealer @@
+ ) -> Vec<AuthShare> {
+     let n = keys.len();
++    if n == 0 {
++        return Vec::new();
++    }
+     let v_mod = value % SPDZ_P;
+     ...
+@@ H-28.3 spdz_open_batch @@
+ ) -> Result<Vec<u64>> {
+     let n = all_values.len();
++    if n == 0 {
++        bail!("spdz_open_batch: empty input");
++    }
+     let m = all_values[0].len();
++    for row in all_values.iter().chain(all_macs.iter()) {
++        if row.len() != m {
++            bail!("spdz_open_batch: ragged rows");
++        }
++    }
+     if all_macs.len() != n || keys.len() != n {
+         bail!("spdz_open_batch: length mismatch");
+     }
+
+--- a/crates/san-mpc/src/lib.rs (H-31 derives) ---
+@@ SpdzKeyShare @@
+-#[derive(Debug, Clone, Copy)]
++#[derive(Zeroize, ZeroizeOnDrop)]
+ pub struct SpdzKeyShare {
+     pub delta_i: u64,
+ }
+
+@@ AuthShare @@
+-#[derive(Debug, Clone)]
++#[derive(Zeroize, ZeroizeOnDrop)]
+ pub struct AuthShare {
+     pub value: u64,
+     pub mac: u64,
+ }
+
+# Uwaga: usunięcie Copy/Clone może wymagać zmian w wywołaniach (kopiowanie
+# przez *ref lub przejście przez Vec). Testy upstream + nowe edge-case
+# (n=0, empty keys, ragged batch) — warunek odbioru TT-56.
