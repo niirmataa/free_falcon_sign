@@ -1,3 +1,106 @@
+# Additional-prime route 568/569 — the marches closed (512 ms_call instances each, t1[v] stores), NTT3 call-shape binding pinned; the NTT3 engine next
+
+2026-10-22/23 (R1 march window). OBLIGATION 1 OF THE REMAINING LIST IS
+CLOSED: walkFs and walkGs (MakeFgAddPrimeShape194.walkF "fs"/"gs") run
+in full at n = 512, slen = 1 (SelectedStepWalks195, job
+keygen_publicforward159_568; sources `ee1d5f7f…`/`d9cb2531…`/
+`20f5c7bf…`/`1028e8af…`, oleans `d79737df…`/`6240d233…`/`4567317f…`/
+`5718d9e1…`, 4/4 accepted, logs 0/0, standard three axioms on eleven
+key exports, markers 0, maxRSS 4147720 KiB). Each march is the walk
+initialiser (v = 0, x = fs/gs + 0) plus exactly 512
+ZintModSignedWord194.ms_call instances at the pinned walk shape
+MakeFgAddPrimeShape194.modArgs — one per marched word, marched limb
+Load32 (addr src 0 i 1) (fv i) — each returned executed word
+modSignedWord (fv i) pw p0w r2w rxw stored to t1[i] through the
+ReceiveC.store of modCall, with the two-clause increment composed over
+the whole march. Exports: the executed image t1[i] = modSignedWord
+(fv i) pw p0w r2w rxw (PrefixImage over Fin 512), the keeps outside
+the t1 region (source words survive; fv carries only executed loads),
+exit cells v = 512 / x = addr src 0 512 1, and the continuations
+walkFs_continue (r1 = walkFs ; r2) / walkGs_continue (r4 = walkGs ;
+r5). OBLIGATION 2 IS STARTED at its call-shape binding (job
+keygen_publicforward159_569, StepNttEntry195 `15d44393…`, olean
+`050a9b11…`, accepted/clean): the pinned seven-argument wrapper list
+forwardArgs binds to KeygenLevelCalls.params .forward with the exact
+fresh callee entry frame a := t1, stride := 1, gm := gm, logn := word,
+full := 0, p := pw, p0i := p0w. NO execution engine yet. Next unused
+proof job suffix is **570**. Entry re-verified read-only at window
+start (ENTRY_PINS `00f602e7…`, all 74673 inherited pins 0 missing / 0
+changed, no active processes). Retained register 65 + 58 + 4 (no new
+failures). Scoped proof, NOT_REVIEWED; no push (2 earlier commits wait
+plus this window's two). Values stay executed words.
+
+## Exact remaining obligations (in order)
+
+1. The NTT3 execution engine (nttFs/nttGs at ter = 1): the
+   modp_NTT3_ext body run (KeygenNttForwardPrograms.forwardBody) from
+   the StepNttEntry195 entry frame — the biggest item, now a clean
+   multi-window engine start with the call binding in hand.
+   Suggested order inside this item: the prologue at the u = 1 words
+   (KeygenNttForwardExec has the prologue derivations to transfer),
+   then the first pass (512 degree-1 butterflies,
+   KeygenNttButterflyCalls supplies the per-butterfly call
+   observations), the intermediate doubling passes and the full = 0
+   branch (the triple pass is NOT taken at full = 0 — kernel-check the
+   branch, do not assume it).
+2. productFd/productGd (the fd/gd pair-product loops; the product
+   engines transfer from MakeFgProductShape191.productF /
+   MakeFgGsShape194.productFGd verbatim).
+3. The false !out_ntt skip (out_ntt = 1 at this step): the fd/gd
+   modp_iNTT3_ext inverse pairs at logn-1/tlen (pairYes) and the
+   modp_iNTT2_ext binary pair of the false ter alternative.
+4. The loop composition and the section export: at that export the
+   march exports consume the body_entry hypotheses directly — the
+   row-1 block-21 table-word keeps (SelectedStepCrtWord194 precedent;
+   both .p and .g), the u/slen/tlen cells + primes binding from
+   SelectedStepFsFd194.source through SelectedStepCrtRun194, and the
+   StepU1Entry195.Input bundle. SelectedStepAddPrime195.body_entry and
+   SelectedStepGenerate195.continue_inner chain into
+   SelectedStepWalks195.walkFs_continue/walkGs_continue.
+5. Then the remaining d-levels and the root/certificate/codec path,
+   before the complete emitted witness can instantiate the corrected
+   KeygenProbability134 consumers; the prospective bound remains
+   Z>=2^-256 and is NOT established.
+
+## March facts pinned this window (consume, do not re-derive)
+
+- StepWalkBody195.body_source is ONE march step: the ms_call instance
+  at modArgs with the t1[v] store; the callee keeps every caller cell
+  and the heap, the only state change is the store. inc_source is the
+  copy-loop increment verbatim (StepCopyBody190.inc_source at u0 = 0,
+  slen = 1).
+- StepWalkFixed195.Fixed is the march invariant (srcName, source/t1
+  pointers, n, fv : Fin n → BitVec 32, section words pw p0w r2w rxw);
+  next_fixed/next_prefix preserve it through one step; the image word
+  is modSignedWord (fv i) pw p0w r2w rxw.
+- StepWalkLoop195.remaining is the n-step induction (the
+  StepCopyLoop190 pattern), walk_run adds the initialiser over
+  midState; walkOf/initOf are the Name-generic walk statements with
+  init_shape/walk_shape rfl-binding them to walkInit/walkF.
+- SelectedStepWalks195.walkFs_run/walkGs_run instantiate n = 512 at
+  the named statements; the continuations close r1_split/r4_split.
+
+## Trap wall (księga additions — do not re-derive)
+
+- `simpa [rules] using e` fails with "Type mismatch: After
+  simplification" when the goal names a DEFINED constant (walkGuard)
+  defeq to the lemma's constant (copyCondition), although `rfl` proves
+  the equality and plain `exact`/term mode accept the defeq. State
+  such a `have` with the raw constant (or without an ascription) and
+  let the later constructor application do the defeq step.
+- `rw` does not see through the Cell/Slot definitions: precede it with
+  `show (state).locals name = some (ty, some (value))` of the unfolded
+  form.
+- KeygenLevelCalls.Param is C99ArrayReference.Param (opened there);
+  KeygenLevelCalls.Eval.modular and C99ModularReference.GenEval.scalar
+  take (e v source) three arguments.
+- KeygenLevelCalls.Bind binds the head parameter OUTERMOST: the nil
+  frame is ⟨heap, globals, tables, globals, tables⟩ and the chain
+  builds tail-first (entry defs in StepNttEntry195 follow this order).
+- The stride/full arguments of forwardArgs are i32 literals (.literal
+  .i32 1 / 0) evaluated to .int32 values and converted at bindValue;
+  the entry cells show the converted words.
+
 # Additional-prime route 567 — the u = 1 ter generator branch closed (mkgm3 body run at the u = 1 words), the marches next
 
 2026-10-22 (R1 generate window). STEP 3 OF THE STEPS 1-7 ROUTE IS

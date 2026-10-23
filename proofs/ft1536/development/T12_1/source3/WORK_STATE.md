@@ -1,3 +1,113 @@
+# SEED9_R1 — march window CLOSED: walkFs/walkGs accepted (job 568), NTT3 call-shape binding started (job 569)
+
+2026-10-22/23 (R1 march window, suffix range 568-569). Entry pins
+re-verified read-only before work (ENTRY_PINS .build/steprx195/
+ENTRY_PINS.json SHA256
+00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964 =
+route pin; all 74673 checked paths 0 missing / 0 changed via
+entry_reverify_568; old manifest 99ac47a1… untouched; no active
+job/Lean/Sage processes; the two loose run2/notes files stay untracked
+and reported, not claimed). ACCEPTED this window in two acceptance runs:
+(1) the two 512-step marches (job keygen_publicforward159_568; sources
+StepWalkBody195 `ee1d5f7fbfff5878…`, StepWalkFixed195 `d9cb25313de477d7…`,
+StepWalkLoop195 `20f5c7bf0725d6ee…`, SelectedStepWalks195
+`1028e8afe0821bb9…`; oleans `d79737df71cdc0f7…`/`6240d23334a1a40b…`/
+`4567317f1f999af2…`/`5718d9e1fb8b6afe…`; 4/4 exit 0 accepted,
+3.072/3.071/3.222/2.921 s, -DwarningAsError=true, logs 0/0, clean_log,
+forbidden_proof_markers = []; #print axioms on eleven key exports =
+exactly the standard three; maxRSS 4147720 KiB); (2) the NTT3
+call-shape binding layer (job keygen_publicforward159_569; source
+StepNttEntry195 `15d4439328df5e82…`, olean `050a9b11ab53fa37…`,
+10.401 s, accepted/clean, logs 0/0, markers = [], three standard
+axioms on bind_forward/params_forward/args_shape). WHAT THE MARCHES
+PROVE: walkFs and walkGs (MakeFgAddPrimeShape194.walkF "fs"/"gs") run
+in full at n = 512, slen = 1: the walk initialiser (v = 0, x = fs/gs +
+0), then exactly 512 ZintModSignedWord194.ms_call instances at the
+pinned walk shape MakeFgAddPrimeShape194.modArgs — one per marched
+word at the walked pointer addr src 0 i 1 — each with its returned
+executed word modSignedWord (fv i) pw p0w r2w rxw STORED to t1[i]
+(the ReceiveC.store of modCall = .call .modSigned modArgs (.store "t1"
+varV)), and the two-clause increment (v += 1, x += slen, the copy-loop
+clause verbatim) composed over the whole march
+(StepWalkLoop195.remaining/walk_run, the ZintNormWalk194/StepCopyLoop190
+composition pattern). Exports: the executed march image t1[i] =
+modSignedWord (fv i) pw p0w r2w rxw for i < 512 (PrefixImage), the
+Word32Memory176 keeps for every cell separate from t1 (the source
+words survive the march, fv carries only executed loads), the exit
+cells v = 512 and x = addr src 0 512 1, and the locals/arrays keeps
+outside v/x; SelectedStepWalks195 names both instances and adds the
+loop-body continuations walkFs_continue (r1 = walkFs ; r2) and
+walkGs_continue (r4 = walkGs ; r5). The march invariant (StepWalkFixed195.
+Fixed) threads the section words p/p0i/R2/Rx (Slot), the slen = 1 and
+n cells, the t1 frame (writable/allocated/pairwise separate from the
+source walk) and the source reads. SCOPE BOUNDARY (honest): the
+statements are the pinned projections of MakeFgAddPrimeShape194; the
+exports run over an abstract caller state satisfying the march
+hypotheses (u32 section words arbitrary BitVec 32, no residue range,
+normalization, transform, table law, root law or positivity claim);
+their discharge at the u = 1 loop-body state (the body_entry/continue
+chain, the row-1 block-21 .p/.g keeps, the u/slen/tlen cells and the
+StepU1Entry195.Input bundle) remains the section-export step. WHAT THE
+NTT3 STEP PROVES (start only): the pinned seven-argument wrapper list
+MakeFgAddPrimeShape194.forwardArgs (the expanded stride-1 call
+modp_NTT3(t1, gm, logn, 0, p, p0i) = modp_NTT3_ext(t1, 1, gm, logn, 0,
+p, p0i)) binds to the callee spine KeygenLevelCalls.params .forward at
+any caller state with the t1/gm bindings and the logn/p/p0i u32 cells
+(StepNttEntry195.bind_forward), with the exact fresh callee entry
+frame a := t1, stride := 1 (i32 literal converted at bind), gm := gm,
+logn := word, full := 0, p := pw, p0i := p0w. NO NTT3 execution engine
+exists yet — this is only the call-shape binding the engine consumes.
+Traps recorded (do not re-derive): (1) `simpa [...] using e` fails
+"Type mismatch: After simplification" when the goal is stated through
+a DEFINED name (walkGuard) whose value is defeq to the lemma's
+condition (copyCondition), even though `rfl` proves the equality and
+plain `exact`/term mode accept the same defeq — state such a `have`
+with the raw constant or without the ascription; (2) `rw` cannot see
+through the Cell/Slot definitions — precede it with `show` of the
+unfolded `.locals` equality; (3) KeygenLevelCalls opens Param from
+C99ArrayReference (KeygenLevelCalls.Param does not exist) and
+Eval.modular/GenEval.scalar take (e v source) three arguments; (4) the
+Bind constructors bind the head parameter OUTERMOST (the nil frame is
+⟨heap, globals, tables, globals, tables⟩ and the chain builds tail-
+first). Workshop: 6 local typecheck iterations total (module 1 and 4
+clean at first shot; 2/3/5 one or two typing iterations each; one
+defeq probe module isolated the simpa quirk), no draft job suffixes, no
+sorry even in diagnostics; accepted source 0 markers. RETAINED register
+unchanged: 65 + 58 + 4 (no new failures this window; suffixes 568 and
+569 are both real acceptance runs). OPEN (in order): (1) the NTT3
+execution engine (nttFs/nttGs at ter = 1 — the modp_NTT3_ext body run
+from the StepNttEntry195 entry frame; KeygenNttForwardPrograms pins the
+body, KeygenNttForwardExec has the prologue derivations only — still
+the biggest item, now a clean multi-window engine start with the call
+binding in hand); (2) productFd/productGd (the product engines
+transfer, MakeFgProductShape191.productF / MakeFgGsShape194.productFGd
+verbatim); (3) the false !out_ntt skip (the fd/gd modp_iNTT3_ext
+inverse pairs at logn-1/tlen); (4) the loop composition and the section
+export with the body_entry discharge (the march exports consume
+directly: the row-1 block-21 table-word keeps, the u/slen/tlen cells +
+primes binding from SelectedStepFsFd194.source through
+SelectedStepCrtRun194, and the StepU1Entry195.Input hypotheses);
+(5) then the remaining d-levels and the root/certificate/codec path
+before the emitted witness can instantiate the corrected
+KeygenProbability134 consumers. Unconditional Z>0, p_accept and p_K
+remain OPEN; the prospective bound stays Z>=2^-256 and is NOT
+established. Old110 frozen; measured wording 8192/23628 with the
+separate 256/739 control and the five do_sign items unchanged. Scoped
+proof, NOT_REVIEWED. Next unused proof job suffix: **570**. No push
+(the outgoing range holds 2 earlier local commits plus this window's
+two for the owner's publication signal). Resume: verify
+.build/steprx195/ENTRY_PINS.json (00f602e7…) read-only, run the lane
+runner tools/job111.py, then continue from OPEN (1) per NEXT_ROUTE; do
+not re-derive the marches, the march image, the call-shape binding or
+the pin structure.
+
+Job records (one line each): keygen_publicforward159_568 — ACCEPTED
+4/4 (StepWalkBody195/StepWalkFixed195/StepWalkLoop195/
+SelectedStepWalks195), logs 0/0, markers 0, standard three axioms,
+next = NTT3 engine; keygen_publicforward159_569 — ACCEPTED 1/1
+(StepNttEntry195), logs 0/0, markers 0, standard three axioms, next =
+the NTT3 body run (multi-window).
+
 # SEED9_R1 — generate window CLOSED: SelectedStepGenerate195 accepted (job 567), step 3 of the route done
 
 2026-10-22 (R1 generate window, suffix range 566-567). Entry pins
