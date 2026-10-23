@@ -1,3 +1,95 @@
+# NTT3 engine route 570 — the parse map + per-cell keeps + step layer accepted; the first-pass run next
+
+2026-10-23 (R1 engine window). OBLIGATION 1 (the NTT3 execution
+engine) has its parse/keep/step layer accepted (job
+keygen_publicforward159_570, StepNttBody195 `b39a0b90…`/olean
+`9c3120e7…`, StepNttFirst195 `928525ec…`/olean `cda17946…`, 2/2
+accepted, logs 0/0, markers 0, standard three axioms on twelve
+exports). The forward body is now a right spine of named run steps
+(body_spine + splits), the butterfly words lowWord/highWord are the
+executed leaf words tied to the KeygenNttButterflyCalls observations
+(first_calls_words), the per-cell keeps are closed (load32_unique,
+store32_unique/memory_ext, store_keep/here, the block frame), the
+per-step engine runs (body_run/block_run/body_state at any r1/r2 pair),
+and the first-pass layer (Image/Pending0, Fixed, stepState with keeps,
+elem_step/elem_half/elem_double, times_word) is in place. COUNT NOTE
+(honest): at the call instance logn = 9 / full = 0 (MKN = 512) the
+first pass is hn = 256 degree-1 butterfly iterations over 512 marched
+words; the shorthand "512 butterflies" counts words (or both calls
+nttFs+nttGs at 2x256) — the kernel-checked loop bound is hn = 256.
+Next unused proof job suffix is **571**. Entry re-verified read-only at
+window start (ENTRY_PINS `00f602e7…`, all 74673 inherited pins 0
+missing / 0 changed, no active processes). Retained register 65 + 58 +
+4 (no new failures). Scoped proof, NOT_REVIEWED; no push (4 earlier
+local commits wait plus this window's for the owner's publication
+signal). Values stay executed words.
+
+## Exact remaining obligations (in order)
+
+1. The first-pass run (the engine milestone of the next window,
+   possibly two): the prologue at the logn = 9 / full = 0 words
+   (KeygenNttForwardExec's generic pieces transfer; the new mkn/half
+   values are n = 512 / hn = 256 and the logn0 guard is kernel-checked
+   false), the w = gm[1] assign (w_run), firstInit (init_run), the
+   hn-step loop composition (the per-iteration run = block_run at the
+   walked pair + the u/r1/r2 increment runs; next_image/next_fixed; the
+   remaining induction) and the firstPass export at the
+   StepNttEntry195 entry frame words. CONSUME the parse map, the
+   per-cell keeps and the step layer of job 570; do not re-derive them.
+2. The intermediate doubling passes (t = hn down; the KeygenNttForward-
+   Programs.mInner round body) and the full = 0 branch: the triple pass
+   is NOT taken at full = 0 — kernel-check the branch, do not assume
+   it.
+3. productFd/productGd (the fd/gd pair-product loops; the product
+   engines transfer from MakeFgProductShape191.productF /
+   MakeFgGsShape194.productFGd verbatim).
+4. The false !out_ntt skip (out_ntt = 1 at this step): the fd/gd
+   modp_iNTT3_ext inverse pairs at logn-1/tlen (pairYes) and the
+   modp_iNTT2_ext binary pair of the false ter alternative.
+5. The loop composition and the section export: at that export the
+   march exports consume the body_entry hypotheses directly (the row-1
+   block-21 table-word keeps, the u/slen/tlen cells + primes binding,
+   the StepU1Entry195.Input bundle). SelectedStepAddPrime195.body_entry
+   and SelectedStepGenerate195.continue_inner chain into
+   SelectedStepWalks195.walkFs_continue/walkGs_continue and then the
+   NTT engine continuations.
+6. Then the remaining d-levels and the root/certificate/codec path,
+   before the complete emitted witness can instantiate the corrected
+   KeygenProbability134 consumers; the prospective bound remains
+   Z>=2^-256 and is NOT established.
+
+## Layer facts pinned this window (consume, do not re-derive)
+
+- StepNttBody195: the parse map (body_spine/locals_split/…/mHead_split,
+  first_loop_split/init_split/step_split/advance_split, the butterfly
+  chain body_shape/tail1_split..tail5_split); words montWord/sumWord/
+  lowWord/highWord + first_calls_words; keeps load32_unique,
+  memory_ext, store32_unique, store32_write, store_keep, store_here,
+  write_allocated, write_writable, declared_outside/declared_keep,
+  set_keep/slot_keep; the step engine body_run/block_run/block_keep/
+  body_state with the states declared/withA0/withA1/withB/lowState/
+  highState/bodyOut.
+- StepNttFirst195: elem_step/elem_half/elem_double/elem_separate,
+  times_word, Image/Pending0/pending_image, Fixed (a/gm bindings, cells,
+  gmSeparate/gmLoads), bodyHeap/bodyState/stepState with
+  step_locals/step_arrays/step_heap/step_u/step_r1/step_r2.
+
+## Trap wall (księga additions — do not re-derive)
+
+- `{src with f := v}` with a field value containing `⟨x, by …⟩`
+  anonymous constructors breaks the structure-instance parser;
+  precompute such words in top-level defs and keep record values plain
+  (also mind the earlier one-line field-value trap).
+- `Load32.load` has four case binders (h/p are indices); byte equality
+  needs Option.some.inj; `cases` on a structure variable keeps
+  dependent hypotheses readable through defeq and closes with `rfl`.
+- `Pointer` is an inductive family: `show Pointer s …` does not see
+  through record-update states; build zero_pointer at the exact state.
+- Nat.add/mul: `x+(v+1)` ≡ `(x+v)+1` but `x*1`/`2*x` are not defeq —
+  omega-cast congrArg lemmas (elem_half/elem_double).
+- `StepCopyFixed190` and `StepProductBody191` need explicit imports
+  outside the KeygenNtt* closure.
+
 # Additional-prime route 568/569 — the marches closed (512 ms_call instances each, t1[v] stores), NTT3 call-shape binding pinned; the NTT3 engine next
 
 2026-10-22/23 (R1 march window). OBLIGATION 1 OF THE REMAINING LIST IS
