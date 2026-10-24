@@ -1,3 +1,115 @@
+# SEED9_R1 — NTT3 doubling-pass window CLOSED: eight doubling rounds composed and the full = 0 branch kernel-checked at the entry frame words (job 572); whole forward engine at the call words exported
+
+2026-10-24 (R1 engine window, suffix 572). Entry pins re-verified
+read-only before work (ENTRY_PINS .build/steprx195/ENTRY_PINS.json SHA256
+00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964 =
+route pin; all 74673 checked paths 0 missing / 0 changed via
+entry_reverify_572; old manifest 99ac47a1… untouched; no active
+job/Lean/Sage processes; the two loose run2/notes files and the foreign
+untracked THRESHOLD_SPIKE_001/spike/PROMPT_T14_HIDDEN_DELTA_G2.md stay
+untracked and reported, not claimed). ACCEPTED this window: the
+intermediate doubling passes and the KERNEL-CHECKED full = 0 branch of
+the modp_NTT3_ext forward engine at the selected call words (job
+keygen_publicforward159_572; sources StepNttMiddle195 `2d122f8b3f3c8960…`,
+StepNttMloop195 `8f49fdba4a9f1619…`, StepNttWhole195 `09c650be69d251b9…`;
+oleans `261dcd017a80b33d…`/`abf5a145f9ad5b45…`/`09e4b58e90666c18…`;
+3/3 exit 0 accepted, 19.921/3.573/5.426 s, -DwarningAsError=true, logs
+0/0, clean_log, forbidden_proof_markers = []; #print axioms on twelve
+key exports = exactly the standard three (Schedule.selected is
+axiom-free); maxRSS 4125040/4136580/4148116 KiB). WHAT THE COMPOSITION
+PROVES: (1) the mGuard `t > 1+(full<<1)` reads `t > 1` at the frame
+words — the `full` cell is 0 there and the shift/plus/compare chain is
+kernel-checked (m_guard/m_compare: 0<<1 = 0, 1+0 = 1, the loop runs
+while 1<t), so the doubling-loop bound is CHECKED, not assumed; (2) the
+eight doubling rounds run in full — Schedule.selected certifies the
+counter chain (m,t) = (2,256)->(4,128)->...->(256,2)->(512,1), each
+round is one StepNttMiddle195.m_body (the ht = t>>1 halving, the u1
+block loop with its twiddle load s = gm[m+u1] and r2 re-derived from r1
+through htBind, the radix-2 v-loop of NttBinaryBody183.binaryBody
+butterflies at the walked pairs (element a (l+i), element a (l+h+i)),
+and the t = ht reassignment) followed by the verbatim m <<= 1 step,
+stopping at m = 512 / t = 1 (m_walk); (3) the final triple pass is NOT
+taken — the branch `if (full)` reads 0 at the exit state and the
+kernel-checked branchFalse runs the SKIP alternative (triple_skip), so
+the triple pass is excluded by a checked guard, not by assumption; (4)
+the export at the StepNttEntry195 frame words — complete_run composes
+the 571 entryPrefix run with the tailT run (t = hn assign, m = 2 init,
+the m walk, the triple skip) through StepNttFirstLoop195.prefix_continue:
+`Exec KeygenNttForwardPrograms.forwardBody (frame before t1 gm pw p0w)
+<out,.normal>` with the exit counters m = 512 / t = 1, the u = 256
+first-pass cell, the middle-pass invariant MFixed (p/p0i/full/hn/stride
+cells, a/gm bindings, the 512-cell readability, the gm table loads and
+separation) and the write frame of the doubling passes (only t1 cells
+in [0,512) change). COUNT NOTE (honest): the kernel-checked round count
+is 8 rounds = 2048 degree-1 radix-2 butterfly iterations over the 512
+words (256 per round); the route shorthand "512 butterflies" counts the
+words or both calls nttFs+nttGs. DEFECT NOTE (retained finding, job 570
+bytes untouched, OWNER DECISION PENDING — this window's declared
+dependency): StepNttFirst195.bodyHeap mis-composes
+StepNttBody195.highHeap at the OUTPUT words; this window consumes the
+corrected 571 states (bodyAt/stepAt) and the 183-lane binary butterfly,
+never the defective stepState; the owner's decision between the
+supplement (option A) and the errata for the layer-195 record is still
+outstanding and is NOT pre-empted here. SCOPE BOUNDARY (honest): values
+stay executed words — no transform property, table law, root law or
+positivity claim; the executed-word IMAGE of the doubling passes (the
+butterfly words layered over the first-pass words) is NOT claimed —
+this window exports runs, counters, invariant and write frame; the
+kernel-checked keep of u/r1/r2 at the POST-doubling state is also open
+(localsWritten over-approximates the un-taken triple branch, so
+keep_u64 cannot certify `u` across tailT; u = 256 is exported at the
+first-pass exit state); the transport to the concrete part-3 CRT exit
+state remains the keep chain of the section export. Traps recorded (do
+not re-derive): (1) NttMiddleAddress183.product/table and
+NttFirstControl182.address are instance-generic and consumable — the
+`m+j<1024` premise of table is unused, so any bound below 1024
+discharges it; (2) KeygenNttLoopSupport.USlot and C99LoopScalar141.Cell
+are defeq (word = BitVec.ofNat 64), and KeygenSmallOutput.element is
+defeq to StepCopyBody190.elem (structure eta) — the 183 lanes and the
+571 lane interlock without transport lemmas; (3) unused simp arguments
+are ERRORS under -DwarningAsError — bindValue keeps need
+C99ArrayReference.bindValue in the simp set, sets need
+C99ScalarReference.set, and the declaration effect needs
+C99DeclarationCells.declareCells plus the name-list constants unfolded
+(mNames); (4) `to` is a keyword — no `to` binders in obtain patterns;
+(5) rw does not see through defs like wState/mDeclared — precede with
+`change` of the unfolded form; (6) KeygenNttControl.localsWritten is a
+static over-approximation: the un-taken triple branch still contributes
+u/r to the written set, so freshness-based keeps fail across tailT; (7)
+keep MFixed transports simple — gmSeparate is pointer-level and needs
+no heap rewrite. Workshop: 20 local typecheck iterations (module 1: 11,
+module 2: 5, module 3: 4) plus two isolated probes (the import closure
+check and the #print axioms audit), no draft job suffixes, no sorry
+even in diagnostics; accepted sources 0 markers. RETAINED register
+unchanged: 65 + 58 + 4 (no new failed runs; suffix 572 is a real
+acceptance run) plus the one retained finding above (the job-570
+bodyHeap mis-composition, recorded and supplemented, not patched).
+OPEN (in order): (1) the executed-word image of the doubling passes
+(layer the butterfly words over the first-pass words) and the u/r1/r2
+keeps at the post-doubling state; (2) productFd/productGd; (3) the
+false !out_ntt skip (fd/gd inverse pairs); (4) the loop composition and
+the section export with the body_entry discharge; then the remaining
+d-levels and the root/certificate/codec path. Unconditional Z>0,
+p_accept and p_K remain OPEN; the prospective bound stays Z>=2^-256 and
+is NOT established. Old110 frozen; measured wording 8192/23628 with the
+separate 256/739 control and the five do_sign items unchanged. Scoped
+proof, NOT_REVIEWED. Next unused proof job suffix: **573**. No push
+(the outgoing range holds 8 earlier lane commits plus this window's,
+beside 5 unpushed threshold-lane commits of another work; the owner's
+publication signal is pending). Resume: verify
+.build/steprx195/ENTRY_PINS.json (00f602e7…) read-only, run the lane
+runner tools/job111.py, then continue from OPEN (1); consume the parse
+map/keeps/step engine of job 570, the prologue/w/init/loop composition
+plus bodyAt/stepAt of job 571 and the round engine/m walk/full-0 branch
+check of job 572; do not re-derive them and do not rebuild anything on
+the defective StepNttFirst195.stepState.
+
+Job records (one line each): keygen_publicforward159_572 — ACCEPTED
+3/3 (StepNttMiddle195/StepNttMloop195/StepNttWhole195), logs 0/0,
+markers 0, standard three axioms on twelve exports (selected
+axiom-free), next = the doubling-pass image + u/r1/r2 keeps
+(multi-window engine continues).
+
 # SEED9_R1 — NTT3 first-pass window CLOSED: prologue at logn = 9 / full = 0, w = gm[1], firstInit + hn-step loop composed and exported at the StepNttEntry195 frame (job 571); intermediate passes next
 
 2026-10-23 (R1 engine window, suffix 571). Entry pins re-verified
