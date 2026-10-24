@@ -307,3 +307,39 @@
 - **Co:** `validate_f_bound` zwraca `InconsistentShare` (najbliższy
   istniejący wariant; enum SpikeError poza zakresem plików G-2).
 - **Status:** retained — dedykowany `FBoundViolation` byłby czytelniejszy.
+
+---
+
+## T13 (2026-10-24) — audyt fixes #16, #2, #9
+
+### R-T13-1: fail-open cap w samplerach poza Q16/Q73
+
+- **Co:** `sample_clear`, `sample_mpc_naive`, `sample_gaussian_clear` po
+  `attempts > 10_000` zwracają `SampleOutcome` z ostatnim odrzuconym
+  kandydatem (jak dawne Q16/Q73).
+- **Zakres T13:** prompt wskazywał Q16/Q73 — tam `AttemptsExhausted`.
+- **Status:** retained — zmiana API tych samplerów = osobny krok.
+
+### R-T13-2: #9 jawny `delta_known` + skorelowane fałszerstwo (RETAINED)
+
+- **Co:** liniowy MAC + jawne δ → Δ w wartości i δ·Δ w MAC przechodzi
+  zero-check. `t13_correlated_forgery_with_known_delta_is_retained`
+  pilnuje, że atak **nadal przechodzi**.
+- **Decyzja:** prompt dopuszcza „ukryte δ **lub** retained + test
+  skorelowany" — wybrane retained (granica modelu G-2 dealerskiego MAC).
+- **Fix (przyszły):** MAC przez `dkg_zp_delta_shares` / ukryte δ (jak Y6),
+  bez `delta_known` na ścieżce weryfikacji.
+- **Status:** retained, jawne. NIE ogłaszać #9 „naprawione".
+
+### R-T13-3: s8_process_isolation_demo flake (F-18/F-NEW-01)
+
+- **Co:** raz przy pełnym `cargo test` (po lib) s8 fail: „log must not
+  dump column bytes"; osobno `--test isolation` 14/14 OK.
+- **Status:** retained flake (jak F-18); poza zakresem T13.
+
+### R-T13-4: serce-verify --check-secrets → fixtures testowe
+
+- **Co:** 9 podejrzanych linii w `SERCE/tools/tests/data/SECRETS_SAMPLE.md`
+  i `run_tests.py` (sk-TES…, ghp_FA…, AKIAFA… — ewidentne markery testowe
+  skanera). Nie wprowadzone przez T13.
+- **Status:** STOP-AND-REPORT do właściciela; **bez** cichych czystek.

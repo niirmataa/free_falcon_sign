@@ -1822,7 +1822,39 @@ pub fn zp_open_poly_with_mac_hidden_delta(
     Ok(out)
 }
 
+/// Sprawdzenie trójki auth Z_P: `c.mac` w dataflow + `c = a·b` (open z MAC).
+/// Bez tego `c.share` wchodził w wynik z **nowym** MAC — zepsute `c`
+/// (także przy „poprawnym" MAC dla złej wartości) przechodziło cicho.
+/// Fałszerstwo a/b/c lub `c ≠ a·b` → [`SpikeError::MacFail`].
+pub fn check_zp_auth_triple(
+    xs: &[u16],
+    triple: &ZpAuthTriple,
+    delta_known: u64,
+) -> Result<()> {
+    let n = xs.len();
+    if n == 0 {
+        return Err(SpikeError::EmptyXs);
+    }
+    if triple.a.len() != n || triple.b.len() != n || triple.c.len() != n {
+        return Err(SpikeError::PartyCountMismatch);
+    }
+    let a_val: Vec<u64> = triple.a.iter().map(|t| t.share).collect();
+    let a_mac: Vec<u64> = triple.a.iter().map(|t| t.mac).collect();
+    let b_val: Vec<u64> = triple.b.iter().map(|t| t.share).collect();
+    let b_mac: Vec<u64> = triple.b.iter().map(|t| t.mac).collect();
+    let c_val: Vec<u64> = triple.c.iter().map(|t| t.share).collect();
+    let c_mac: Vec<u64> = triple.c.iter().map(|t| t.mac).collect();
+    let av = zp_open_with_mac_known_delta(xs, &a_val, &a_mac, delta_known)?;
+    let bv = zp_open_with_mac_known_delta(xs, &b_val, &b_mac, delta_known)?;
+    let cv = zp_open_with_mac_known_delta(xs, &c_val, &c_mac, delta_known)?;
+    if cv != p_to_i64(p_mul(i64_to_p(av), i64_to_p(bv))) {
+        return Err(SpikeError::MacFail);
+    }
+    Ok(())
+}
+
 /// Mnożenie udział×udział w Z_P **z auth triple** (Beaver, jak U4):
+/// 0. **check trójki** — `c.mac` + `c = a·b` zanim `c.share` wejdzie w wynik.
 /// 1. ε = open(x − a) z kontrolą MAC; ρ = open(y − b) z kontrolą MAC.
 /// 2. [z] = [c] + ε·[b] + ρ·[a] + ε·ρ (na udziałach).
 /// 3. MAC na z liniowością (δ·z).
@@ -1850,6 +1882,8 @@ pub fn mul_auth_zp_with_triple(
     if triple.a.len() != n || triple.b.len() != n || triple.c.len() != n {
         return Err(SpikeError::PartyCountMismatch);
     }
+    // #2: c.mac nie może być ignorowane; c = a·b przed użyciem c.share
+    check_zp_auth_triple(xs, triple, delta_known)?;
     let dk = delta_known % I_P;
 
     // ε = x − a (na udziałach + MAC)
@@ -6365,6 +6399,175 @@ mod tests_t9_mac_s {
             result.map(|_| ()),
             Err(SpikeError::MacFail),
             "tamper MAC f_mac → MacFail (T9.3)"
+        );
+    }
+}
+
+/// T13 — naprawy realnych bugów audytu (#2 Beaver c, #9 jawny δ).
+#[cfg(test)]
+mod tests_t13_audit_fixes {
+    use super::*;
+    use rand::rngs::StdRng;
+    use rand::SeedableRng;
+
+    const XS: [u16; 3] = [1, 2, 3];
+    const K: u8 = 2;
+    const DELTA: u64 = 0x0B;
+
+    fn split_val_mac(v: &[ZpMacShare]) -> (Vec<u64>, Vec<u64>) {
+        (
+            v.iter().map(|s| s.share).collect(),
+            v.iter().map(|s| s.mac).collect(),
+        )
+    }
+
+    /// #2 — zepsute `c` (przy prawidłowym MAC dla złej wartości) → MacFail.
+    /// Przed naprawą `c.mac` był ignorowany; `c.share` wchodził w wynik
+    /// z nowym MAC liniowym.
+    #[test]
+    fn t13_beaver_wrong_c_with_valid_mac_rejected() {
+        let mut rng = StdRng::seed_from_u64(0x13_02_00_01);
+        let mut triple = generate_auth_triple_zp(&mut rng, &XS, K, DELTA).unwrap();
+        // podmień c na dobrze sformułowany zły iloczyn (MAC spójny z nową wartością)
+        let wrong_c = share_val_with_mac_zp(&mut rng, 0xDEAD, &XS, K, DELTA).unwrap();
+        triple.c = wrong_c;
+        assert_eq!(
+            check_zp_auth_triple(&XS, &triple, DELTA),
+            Err(SpikeError::MacFail),
+            "c ≠ a·b z poprawnym MAC → MacFail"
+        );
+
+        let x_full = share_val_with_mac_zp(&mut rng, 3, &XS, K, DELTA).unwrap();
+        let y_full = share_val_with_mac_zp(&mut rng, 5, &XS, K, DELTA).unwrap();
+        let (x, x_mac) = split_val_mac(&x_full);
+        let (y, y_mac) = split_val_mac(&y_full);
+        assert_eq!(
+            mul_auth_zp_with_triple(&mut rng, &XS, K, &x, &x_mac, &y, &y_mac, &triple, DELTA)
+                .map(|_| ()),
+            Err(SpikeError::MacFail),
+            "mul z zepsutym c → MacFail, nie cichy zły iloczyn"
+        );
+    }
+
+    /// #2 — poprawne `c` → OK; `c.mac` w dataflow (open w checku).
+    #[test]
+    fn t13_beaver_good_c_ok_and_c_mac_in_dataflow() {
+        let mut rng = StdRng::seed_from_u64(0x13_02_00_02);
+        let triple = generate_auth_triple_zp(&mut rng, &XS, K, DELTA).unwrap();
+        check_zp_auth_triple(&XS, &triple, DELTA).expect("uczciwa trójka przechodzi");
+
+        // sam c.mac: open z kontrolą — sam c.share bez c.mac nie wystarczy
+        let c_val: Vec<u64> = triple.c.iter().map(|t| t.share).collect();
+        let c_mac: Vec<u64> = triple.c.iter().map(|t| t.mac).collect();
+        assert!(zp_open_with_mac_known_delta(&XS, &c_val, &c_mac, DELTA).is_ok());
+        let mut c_mac_bad = c_mac.clone();
+        c_mac_bad[0] = p_add(c_mac_bad[0], 1);
+        assert_eq!(
+            zp_open_with_mac_known_delta(&XS, &c_val, &c_mac_bad, DELTA),
+            Err(SpikeError::MacFail),
+            "c.mac w dataflow: tamper c.mac → MacFail"
+        );
+
+        // pełny mul 3·5 = 15
+        let x_full = share_val_with_mac_zp(&mut rng, 3, &XS, K, DELTA).unwrap();
+        let y_full = share_val_with_mac_zp(&mut rng, 5, &XS, K, DELTA).unwrap();
+        let (x, x_mac) = split_val_mac(&x_full);
+        let (y, y_mac) = split_val_mac(&y_full);
+        let (z, z_mac) =
+            mul_auth_zp_with_triple(&mut rng, &XS, K, &x, &x_mac, &y, &y_mac, &triple, DELTA)
+                .unwrap();
+        let v = zp_open_with_mac_known_delta(&XS, &z, &z_mac, DELTA).unwrap();
+        assert_eq!(v, 15);
+    }
+
+    /// #2 — tamper `c.share` bez update `c.mac` → MacFail (check trójki).
+    #[test]
+    fn t13_beaver_tamper_c_share_without_mac_rejected() {
+        let mut rng = StdRng::seed_from_u64(0x13_02_00_03);
+        let mut triple = generate_auth_triple_zp(&mut rng, &XS, K, DELTA).unwrap();
+        triple.c[1].share = p_add(triple.c[1].share, 1);
+        assert_eq!(
+            check_zp_auth_triple(&XS, &triple, DELTA),
+            Err(SpikeError::MacFail)
+        );
+    }
+
+    /// #9 — skorelowane fałszerstwo **bez** znajomości δ → wykryte.
+    /// Napastnik dodaje Δ do wartości i niepoprawne Δ_mac do MAC
+    /// (najlepsza próba korelacji bez δ). Open → MacFail.
+    #[test]
+    fn t13_correlated_forgery_without_delta_detected() {
+        let mut rng = StdRng::seed_from_u64(0x13_09_00_01);
+        let secret = 0x1234i64;
+        let shares = share_val_with_mac_zp(&mut rng, secret, &XS, K, DELTA).unwrap();
+        let delta_shares = ZpDeltaShares {
+            xs: XS.to_vec(),
+            shares: ishare_val(&mut rng, (DELTA % I_P) as i64, &XS, K).unwrap(),
+        };
+        let (val, mac) = split_val_mac(&shares);
+        let delta_p = 7u64; // Δ
+        let guessed_mac_shift = 9u64; // nie δ·Δ
+        let val_f: Vec<u64> = val.iter().map(|&s| p_add(s, delta_p)).collect();
+        let mac_f: Vec<u64> = mac.iter().map(|&m| p_add(m, guessed_mac_shift)).collect();
+        // jawny open (model) — skorelowane bez δ nie przechodzi
+        assert_eq!(
+            zp_open_with_mac_known_delta(&XS, &val_f, &mac_f, DELTA),
+            Err(SpikeError::MacFail),
+            "skorelowane bez δ → MacFail (nie value-only / MAC-only)"
+        );
+        // open z ukrytym δ (jak Y6) — też wykryte
+        let zpm: Vec<ZpMacShare> = val_f
+            .iter()
+            .zip(&mac_f)
+            .zip(&XS)
+            .map(|((&s, &m), &x)| ZpMacShare { x, share: s, mac: m })
+            .collect();
+        assert_eq!(
+            zp_open_with_mac_hidden_delta(&zpm, &delta_shares, K),
+            Err(SpikeError::MacFail),
+            "skorelowane bez δ → MacFail przy hidden-δ open"
+        );
+    }
+
+    /// #9 RETAINED (granica modelu G-2): przy **znanym** δ napastnik może
+    /// skorelować Δ w wartości i δ·Δ w MAC — liniowy MAC to przepuszcza.
+    /// Jawne `delta_known` jest retained w modelu dealerskim; tor produkcyjny
+    /// ma używać [`dkg_zp_delta_shares`] (ukryte δ, jak Y6). Test pilnuje,
+    /// by tego nie ogłaszać „naprawionym" bez zmiany modelu.
+    #[test]
+    fn t13_correlated_forgery_with_known_delta_is_retained() {
+        let mut rng = StdRng::seed_from_u64(0x13_09_00_02);
+        let shares = share_val_with_mac_zp(&mut rng, 42, &XS, K, DELTA).unwrap();
+        let (val, mac) = split_val_mac(&shares);
+        let delta_p = 5u64;
+        let mac_shift = p_mul(DELTA % I_P, delta_p); // δ·Δ — napastnik zna δ
+        let val_f: Vec<u64> = val.iter().map(|&s| p_add(s, delta_p)).collect();
+        let mac_f: Vec<u64> = mac.iter().map(|&m| p_add(m, mac_shift)).collect();
+        // Atak przechodzi przy jawnych δ — RETAINED, nie „cicho naprawione".
+        let opened =
+            zp_open_with_mac_known_delta(&XS, &val_f, &mac_f, DELTA).expect("retained: atak z δ");
+        assert_eq!(opened, 42 + delta_p as i64, "skorelowane Δ+δ·Δ przechodzi");
+    }
+
+    /// #9 — value-only i MAC-only (dla kontrastu ze skorelowanym) → wykryte.
+    #[test]
+    fn t13_value_only_and_mac_only_detected() {
+        let mut rng = StdRng::seed_from_u64(0x13_09_00_03);
+        let shares = share_val_with_mac_zp(&mut rng, 99, &XS, K, DELTA).unwrap();
+        let (val, mac) = split_val_mac(&shares);
+        // value-only
+        let mut val_v = val.clone();
+        val_v[0] = p_add(val_v[0], 1);
+        assert_eq!(
+            zp_open_with_mac_known_delta(&XS, &val_v, &mac, DELTA),
+            Err(SpikeError::MacFail)
+        );
+        // MAC-only
+        let mut mac_v = mac.clone();
+        mac_v[1] = p_add(mac_v[1], 1);
+        assert_eq!(
+            zp_open_with_mac_known_delta(&XS, &val, &mac_v, DELTA),
+            Err(SpikeError::MacFail)
         );
     }
 }

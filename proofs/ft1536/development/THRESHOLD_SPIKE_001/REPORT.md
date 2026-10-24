@@ -1,17 +1,19 @@
 # Meldunek — T-THRESHOLD spike 001 (rolling)
 
-> **Stan:** tor otwarty, **400/400** (`cargo test --manifest-path spike/Cargo.toml`), 0 warnings.
+> **Stan:** tor otwarty, **414/414** (`cargo test --manifest-path spike/Cargo.toml`), 0 warnings.
 > Kolejki ft-tryb-pracy: Q, G, H, I, J, K — zamknięte; **T7 PRSS** — kod+testy PASS_SCOPED (werdyfikator PASS).
 > **T8 pairwise PRSS + DKG bez clear f,F** — kod+testy PASS_SCOPED (werdyfikator PASS).
 > **T10 offline NTRU + H1** — kod+testy PASS_SCOPED (6 nowych testów).
+> **T13 audyt fixes (#16, #2)** — NAPRAWIONY + **#9** RETAINED (granica G-2) + 11 testów.
 > To jest SPIKE — nie threshold FT / MPC-90 / produkt.
 
 **Status: SPIKE / PROTOTYP — otwarcie toru. NIE threshold signing gotowy.
 Żadnych deklaracji bezpieczeństwa progu ani publikacji.**
 
-W: `free_falcon_sign/proofs/ft1536/work/FT1536_THRESHOLD_SPIKE_001/`
+W (migracja 2026-10-23): `free_falcon_sign/proofs/ft1536/development/THRESHOLD_SPIKE_001/`
+Źródło zamrożone: `proofs/ft1536/work/FT1536_THRESHOLD_SPIKE_001/`.
 Źródła w `Obrazy/...` — **tylko odczyt, nie zmienione**.
-Dane wyłącznie syntetyczne. Bez push, bez commitów poza W.
+Dane wyłącznie syntetyczne.
 
 ---
 

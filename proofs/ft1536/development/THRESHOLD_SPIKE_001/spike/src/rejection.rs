@@ -56,10 +56,33 @@ pub(crate) fn accept_weight(x: i32, sigma2: i32) -> u32 {
     accept_weight_pub(x, sigma2)
 }
 
-/// Jednostajne na [lo, hi] (helper testowy).
+/// Jednostajne na [lo, hi] — **bez biasu modulo** (rejection sampling).
+/// Stare `u32 % span` faworyzowało wartości z reszty; tu odrzucamy ogon.
 pub fn uniform_range_pub(rng: &mut impl rand::RngCore, lo: i32, hi: i32) -> i32 {
-    let span = (hi - lo + 1) as u32;
-    lo + (rng.next_u32() % span) as i32
+    if lo > hi {
+        // fail-closed: pusty przedział nie jest „cichym" lo
+        return lo;
+    }
+    let span64 = hi as i64 - lo as i64 + 1;
+    if span64 <= 1 {
+        return lo;
+    }
+    // pełny zakres i32: span = 2^32 — każdy next_u32 jest poprawny
+    if span64 > u32::MAX as i64 {
+        return lo.wrapping_add(rng.next_u32() as i32);
+    }
+    let span = span64 as u32;
+    if span.is_power_of_two() {
+        return lo + (rng.next_u32() & (span - 1)) as i32;
+    }
+    // największa wielokrotność span w u32: v in [0, limit) ⇒ v % span bez biasu
+    let limit = (u32::MAX / span) * span;
+    loop {
+        let v = rng.next_u32();
+        if v < limit {
+            return lo + (v % span) as i32;
+        }
+    }
 }
 
 fn uniform_range(rng: &mut impl rand::RngCore, lo: i32, hi: i32) -> i32 {
@@ -688,11 +711,13 @@ pub enum GaussQError {
     ZeroSigma,
     /// w < 1: puste ramię propozycji U{-w..=w}
     EmptyWindow,
+    /// wyczerpanie limitu prób — **Err**, nigdy Ok z odrzuconym kandydatem
+    AttemptsExhausted,
 }
 
 /// Jawny rejection z wagą Q16: accept iff u < W(x), u ~ U{0..2^16-1}.
 /// Oracle/pomiar — bez udziałów, bez `Clone` na sekretach (brak sekretów w API).
-/// Cap prób 10_000: awaryjne zamknięcie retained, nie „cichy sukces".
+/// Cap prób 10_000: wyczerpanie → [`GaussQError::AttemptsExhausted`] (fail-closed).
 pub fn sample_gaussian_q_clear(
     rng: &mut impl rand::RngCore,
     w: i32,
@@ -714,7 +739,7 @@ pub fn sample_gaussian_q_clear(
             return Ok(SampleOutcome { x, attempts });
         }
         if attempts > 10_000 {
-            return Ok(SampleOutcome { x, attempts });
+            return Err(GaussQError::AttemptsExhausted);
         }
     }
 }
@@ -1004,6 +1029,7 @@ pub fn uniform_q73_pub(rng: &mut impl rand::RngCore) -> u128 {
 }
 
 /// Jawny rejection z wagą Q73: accept iff u < W(x), u ~ U{0..2^73-1}.
+/// Cap prób 10_000: wyczerpanie → [`GaussQError::AttemptsExhausted`] (fail-closed).
 pub fn sample_gaussian_q73_clear(
     rng: &mut impl rand::RngCore,
     w: i32,
@@ -1025,7 +1051,7 @@ pub fn sample_gaussian_q73_clear(
             return Ok(SampleOutcome { x, attempts });
         }
         if attempts > 10_000 {
-            return Ok(SampleOutcome { x, attempts });
+            return Err(GaussQError::AttemptsExhausted);
         }
     }
 }
@@ -1196,5 +1222,97 @@ mod tests_y4_q73 {
         let sb = sample_gaussian_q73_clear(&mut b, 6, sigma).unwrap();
         assert_eq!(sa.x, sb.x);
         assert_eq!(sa.attempts, sb.attempts);
+    }
+}
+
+/// T13 #16 — reject fail-open + modulo bias (naprawa realnego buga).
+#[cfg(test)]
+mod tests_t13_reject_fail_open {
+    use super::*;
+    use rand::rngs::StdRng;
+    use rand::{RngCore, SeedableRng};
+
+    /// RNG zwracający stałą 2 — kandydat ≠ 0 i małe u → wyczerpanie przy
+    /// σ takim, że tylko x=0 ma niezerową wagę.
+    struct ConstRng(u32);
+
+    impl RngCore for ConstRng {
+        fn next_u32(&mut self) -> u32 {
+            self.0
+        }
+        fn next_u64(&mut self) -> u64 {
+            self.0 as u64
+        }
+        fn fill_bytes(&mut self, dest: &mut [u8]) {
+            for b in dest {
+                *b = self.0 as u8;
+            }
+        }
+        fn try_fill_bytes(&mut self, dest: &mut [u8]) -> Result<(), rand::Error> {
+            self.fill_bytes(dest);
+            Ok(())
+        }
+    }
+
+    #[test]
+    fn t13_uniform_range_no_modulo_bias() {
+        // span=3: bias u32%3 dałby ~1.5× nadreprezentację reszty 0
+        // przy starym kodzie na ograniczonej próbce z małego RNG.
+        // Tu: rozkład empiryczny bliski 1/3 na każdej z 3 wartości.
+        let mut rng = StdRng::seed_from_u64(0x13_16_00_01);
+        let n = 30_000u32;
+        let mut hist = [0u32; 3];
+        for _ in 0..n {
+            let v = uniform_range_pub(&mut rng, 0, 2);
+            assert!((0..=2).contains(&v));
+            hist[v as usize] += 1;
+        }
+        let expect = n as f64 / 3.0;
+        for (i, &c) in hist.iter().enumerate() {
+            let rel = (c as f64 - expect).abs() / expect;
+            assert!(rel < 0.05, "bin {i}: count={c} expect={expect} rel={rel}");
+        }
+    }
+
+    #[test]
+    fn t13_uniform_range_covers_span() {
+        let mut rng = StdRng::seed_from_u64(0x13_16_00_02);
+        let mut seen = [false; 17];
+        for _ in 0..20_000 {
+            let v = uniform_range_pub(&mut rng, -8, 8);
+            assert!((-8..=8).contains(&v));
+            seen[(v + 8) as usize] = true;
+        }
+        assert!(seen.iter().all(|&s| s), "każda wartość [-8,8] osiągalna");
+    }
+
+    #[test]
+    fn t13_q16_exhaustion_is_err() {
+        // σ_q=1: tylko x=0 ma wagę > 0; ConstRng(2) daje x≠0 → cap → Err
+        let mut rng = ConstRng(2);
+        assert_eq!(
+            sample_gaussian_q_clear(&mut rng, 8, 1),
+            Err(GaussQError::AttemptsExhausted),
+            "wyczerpanie Q16 → Err, nie Ok z odrzuconym kandydatem"
+        );
+    }
+
+    #[test]
+    fn t13_q73_exhaustion_is_err() {
+        // σ_q73=1: s32=0 → waga 0 dla x≠0; ConstRng(2) → x≠0 → Err
+        let mut rng = ConstRng(2);
+        assert_eq!(
+            sample_gaussian_q73_clear(&mut rng, 8, 1),
+            Err(GaussQError::AttemptsExhausted),
+            "wyczerpanie Q73 → Err, nie Ok z odrzuconym kandydatem"
+        );
+    }
+
+    #[test]
+    fn t13_q73_honest_path_still_ok() {
+        let mut rng = StdRng::seed_from_u64(0x13_16_00_03);
+        let s = sample_gaussian_q73_clear(&mut rng, 8, 2 * GAUSS_Q73_ONE).unwrap();
+        assert!((-8..=8).contains(&s.x));
+        assert!(s.attempts >= 1);
     }
 }

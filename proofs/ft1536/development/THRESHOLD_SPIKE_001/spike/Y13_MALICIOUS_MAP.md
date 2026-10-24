@@ -36,6 +36,11 @@ dowodu bezpieczeństwa w modelu złośliwym.
 | **Zła relacja NTRU na ważonej sumie** | **offline check fG−gF=q → false** | `t10_ntru_bad_relation_detected` |
 | **Zepsuty wkład G w ważonej sumie** | **offline check → false** | `t10_ntru_wrong_contribution_detected` |
 | **Brak zgody na wkład trapdoora** | **SHA3-256 digest ≠** | `t10_contribution_digest_agreement` |
+| **Zepsute Beaver `c` (MAC „poprawny" dla złej wartości)** | **check `c=a·b` + c.mac → MacFail** | `t13_beaver_wrong_c_with_valid_mac_rejected` |
+| **Tamper `c.share` / `c.mac` trójki** | **check_zp_auth_triple → MacFail** | `t13_beaver_tamper_c_share_without_mac_rejected`, `t13_beaver_good_c_ok_and_c_mac_in_dataflow` |
+| **Reject fail-open (odrzucony → Ok)** | **cap Q16/Q73 → AttemptsExhausted** | `t13_q16_exhaustion_is_err`, `t13_q73_exhaustion_is_err` |
+| **Modulo bias `u32 % span`** | **unbiased `uniform_range_pub`** | `t13_uniform_range_no_modulo_bias` |
+| **Skorelowane fałszerstwo bez δ** | **MacFail (value+MAC)** | `t13_correlated_forgery_without_delta_detected` |
 
 ## Czego NIE łapiemy (luka — otwarte)
 
@@ -51,6 +56,7 @@ dowodu bezpieczeństwa w modelu złośliwym.
 | **Wyciek Babai (Nguyen–Regev)** | **T6/T7: szum DGDG przed round — łagodzenie, nie proof (MPS_T6_GAUSS_NOTES, MPS_T7_PRSS_NOTES)** |
 | **Tamper szumu bez G-2** | brak MAC na `g` w torze bez G-2 — `t7_no_g2_noise_tamper_retained_gap` |
 | **`delta_known` przy tworzeniu MAC** | szczątkowy model testowy dealera MAC |
+| **Skorelowane Δ+δ·Δ przy znanym δ** | liniowy MAC informacyjnie fałszowalny — **RETAINED G-2** (`t13_correlated_forgery_with_known_delta_is_retained`); produkcyjnie ukryte δ (Y6/DKG) |
 
 ## Co T7 domyka w detekcji / setupie (2026-10-21)
 
@@ -115,5 +121,10 @@ dowodu bezpieczeństwa w modelu złośliwym.
    muszą sumować się do poprawnego NTRU — check weryfikuje wynik),
    pełne Beaver w złocie, `delta_known`. `MPS_T10_NOTES.md`.
    **Nadal nie** malicious-secure / UC / „brak dealera" w pełnym sensie.
+9. **T13 (2026-10-24):** check Beaver `c=a·b` + `c.mac` przed użyciem
+   `c.share`; reject fail-open Q16/Q73 → `Err`; unbiased range.
+   **Retained #9:** skorelowane Δ+δ·Δ przy znanym δ (jawny `delta_known`)
+   — test `t13_correlated_forgery_with_known_delta_is_retained`.
+   `MPS_T13_NOTES.md`. **Nadal nie** malicious-secure / UC.
 
-*Audyt Y13 — 2026-10-21 (upd. G-2 + T7 + T8 + T9 + T10 2026-10-22). Powiązane: SECURITY_POSITION, Q3, Y6–Y12, MPS_G2_NOTES, MPS_T7_PRSS_NOTES, MPS_T8_PRSS_CDI_NOTES, MPS_T9_NOTES, MPS_T10_NOTES.*
+*Audyt Y13 — 2026-10-21 (upd. G-2 + T7 + T8 + T9 + T10 2026-10-22 + T13 2026-10-24). Powiązane: SECURITY_POSITION, Q3, Y6–Y12, MPS_G2_NOTES, MPS_T7_PRSS_NOTES, MPS_T8_PRSS_CDI_NOTES, MPS_T9_NOTES, MPS_T10_NOTES, MPS_T13_NOTES.*

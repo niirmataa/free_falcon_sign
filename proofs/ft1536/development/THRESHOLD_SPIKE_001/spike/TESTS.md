@@ -457,3 +457,30 @@ API: `ntru_fg_gf_open_delta`, `ntru_fg_gf_check_weighted_shares`,
 `trapdoor_contribution_digest`. H1: `g2_deal_trapdoor` = retained/test-only.
 Regresja złota: `t9_*`, `t8_gold_*`, `t7_gold_*`, `t6_`, `mps4h` zielone;
 pin F2 `103747771` nietknięty. Notatki: `MPS_T10_NOTES.md`, Y13 upd.
+
+---
+
+## T13 audyt fixes (#16, #2, #9) — 414 testów
+
+Suite: **414/414** (389 lib + 14 iso + 1 measure + 10 spike), 0 warnings.
+Wejście T13: 403/403.
+
+Nowe (11):
+- `t13_uniform_range_no_modulo_bias` — pomiar rozkładu span=3 bez biasu %.
+- `t13_uniform_range_covers_span` — pełne pokrycie [-8,8].
+- `t13_q16_exhaustion_is_err` — wyczerpanie Q16 → `AttemptsExhausted`.
+- `t13_q73_exhaustion_is_err` — wyczerpanie Q73 → `AttemptsExhausted`.
+- `t13_q73_honest_path_still_ok` — uczciwy sampling nietknięty.
+- `t13_beaver_wrong_c_with_valid_mac_rejected` — zepsute c (MAC zgodny
+  z złą wartością) → MacFail (#2).
+- `t13_beaver_good_c_ok_and_c_mac_in_dataflow` — dobre c OK; c.mac w dataflow.
+- `t13_beaver_tamper_c_share_without_mac_rejected` — share bez MAC.
+- `t13_correlated_forgery_without_delta_detected` — skorelowane bez δ → MacFail.
+- `t13_correlated_forgery_with_known_delta_is_retained` — skorelowane
+  z δ przechodzi (**RETAINED** granica G-2; pilnuje statusu #9).
+- `t13_value_only_and_mac_only_detected` — value-only / MAC-only → MacFail.
+
+API: `check_zp_auth_triple`, `GaussQError::AttemptsExhausted`,
+`uniform_range_pub` (unbiased). Regresja złota: pin F2 `103747771`,
+`t12_*`, `t10_*`, `t9_*`, `t8_gold_*`, `t6_`, `mps4h` zielone.
+Notatki: `MPS_T13_NOTES.md`, `AUDYT_WEWNĘTRZNY_T12.md` (statusy).

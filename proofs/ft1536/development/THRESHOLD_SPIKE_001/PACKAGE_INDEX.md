@@ -1,7 +1,8 @@
 # PACKAGE_INDEX — T-THRESHOLD spike (kompletny wynik roboczy)
 
-**Suite:** `cargo test --manifest-path spike/Cargo.toml` → **400/400** (375+14+1+10).
+**Suite:** `cargo test --manifest-path spike/Cargo.toml` → **414/414** (389+14+1+10).
 **Status:** SPIKE/PROTOTYP. Nie threshold FT, nie MPC-90, nie produkt.
+**T13 (2026-10-24):** #16, #2 NAPRAWIONY; #9 RETAINED (granica G-2) — `spike/MPS_T13_NOTES.md`.
 
 ## Rdzeń (kod, `spike/src/`)
 | Plik | Rola |
