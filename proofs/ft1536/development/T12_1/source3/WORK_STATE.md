@@ -1,3 +1,46 @@
+# SEED9_R1 — continuation check window: state map re-verified, one workshop clobber RESCUED with 0 loss (retained), frontier unchanged (OPEN (1) of the 572 window, suffix 573)
+
+2026-10-25 (R1 continuation check). Owner word "kontynuu" after the
+interrupted region-2 butterfly question of 2026-10-17. This window did
+NOT start a new construction: it re-verified the living state and
+rescued one workshop event. ENTRY_PINS re-verified read-only
+(`.build/steprx195/ENTRY_PINS.json` SHA256 `00f602e7…` = route pin; no
+active job/Lean/Sage processes at check time). RETAINED WORKSHOP EVENT
+(honest, zero data loss): while resuming the 10-17 region-2 thread this
+window WROTE a fresh reconstruction of `formal/Source3/PublicTailFirst159.lean`
+over the ACCEPTED 679-line job-108 version (the file had been committed
+and extended by the 10-17/10-18 windows after the 10-17 snapshot this
+window carried); the clobber was detected via `git status` before any
+commit, and `git checkout --` restored the committed bytes exactly (tree
+clean afterwards, no commit amended, no push). Lesson recorded: before
+writing any Source3 file in a resumed window, run `git status`/`git log --
+<file>` first — the lane moves between windows. STATE MAP (from git +
+WORK_STATE + KEYGEN_STEP_GS_194_NEXT_ROUTE.md, consume do not re-derive):
+region 1d (PublicGenerate*159/Remaining159, jobs 020-044) CLOSED 10-17;
+the region-2 public tail CLOSED by the 10-17/10-18 windows through the
+PublicTail*/PublicMiddle*/PublicRound*/PublicTriple* family (firstBody_exec
+job 108, first/middle passes composed, tripling layers 165/170, prefix
+164); the 10-18 "selected" window reached public return + certificate
+input maps (window-170 array-route drafts recognized at 34c6e348); the
+live route is the make_fg/NTT3 engine (jobs 559-572, batches 097-105)
+whose frontier is exactly the 572 OPEN list. FRONTAL ANSWER to the
+interrupted question (record for future windows): the "universal
+butterflies" of the public tail were instantiated (not recreated) by
+reusing the accepted KeygenPublic*Values body shapes; the 140-148 window
+family is the falcon_FFT3 lane (FPR words) and does NOT bind the tail —
+future windows should cite the PublicTailShape159/First/Loop/Middle/Triple
+family as the tail butterfly rules. NEXT (unchanged, owner choice
+pending on the job-570 stepState finding): OPEN (1) of the 572 window —
+the executed-word image of the doubling passes and the u/r1/r2 keeps at
+the post-doubling state; the bounded first piece is the keep, whose
+obstacle is exactly trap 6 (KeygenNttControl.localsWritten over-counts
+the un-taken triple branch): StepNttMloop195.triple_skip runs the
+branchFalse `.base .skip` side, so a taken-side frame (destruct the tailT
+run at the triplePass branch and apply the write-frame of the taken side
+only) should deliver u/r1/r2 at `out`; then the doubling-pass word image;
+then productFd/productGd. Next unused proof job suffix: **573**. No
+push; no review; five do_sign items and frozen110 unchanged.
+
 # SEED9_R1 — NTT3 doubling-pass window CLOSED: eight doubling rounds composed and the full = 0 branch kernel-checked at the entry frame words (job 572); whole forward engine at the call words exported
 
 2026-10-24 (R1 engine window, suffix 572). Entry pins re-verified
