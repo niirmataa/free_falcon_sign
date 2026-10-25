@@ -1,3 +1,106 @@
+# SEED9_R1 — post-doubling keeps window CLOSED: u/r1/r2 keeps at the post-doubling state kernel-checked through the TAKEN-SIDE frame of the skipped triple pass (job 573); owner decision (A) recorded as the permanent layer-195 supplement
+
+2026-10-25 (R1 keeps window, suffix 573). Entry pins re-verified
+read-only before work (ENTRY_PINS .build/steprx195/ENTRY_PINS.json SHA256
+00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964 =
+route pin; all 74673 checked paths 0 missing / 0 changed via
+entry_reverify_573; old manifest 99ac47a1… untouched; no active
+job/Lean/Sage processes; the foreign untracked
+THRESHOLD_SPIKE_001/spike/PROMPT_T14_HIDDEN_DELTA_G2.md stays untracked
+and reported, not claimed). ACCEPTED this window: the u/r1/r2 keeps at
+the POST-DOUBLING state (job keygen_publicforward159_573; source
+StepNttKeep195 `329bdc446c108d84…`, olean `b5bf3dc211ee46ad…`; 1/1
+exit 0 accepted, 2.522 s, -DwarningAsError=true, logs 0/0, clean_log,
+forbidden_proof_markers = []; #print axioms on eight exports = exactly
+the standard three (tail_keep_words axiom-free); maxRSS 4153260 KiB).
+WHAT THE KEEPS PROVE: (1) var_slot — guard inversion for variable
+conditions (a `.var` scalar eval forces the declared slot value);
+(2) triple_frame — THE TAKEN-SIDE FRAME (the trap-6 bypass): any
+`Exec triplePass s ⟨out,.normal⟩` at full = 0 satisfies out = s — the
+run decomposes to its branch and the trailing skip, the skip inverts by
+C99ModularReference.skip_result, the branchFalse `.base .skip` side
+writes nothing, and branchTrue is excluded by the kernel-checked guard
+read (the variable guard forces v = .uint32 0, contradicting nonzero);
+(3) tail_split — the tailT run DECOMPOSES at the triplePass statement
+(tFromHalf ; mHead ; triplePass) via KeygenNttControl.seq_inv; (4)
+tail_keeps/tail_keep_u — the u cell at the body exit is 256: freshness
+across tFromHalf + mHead (localsWritten computed by decide — the m walk
+writes only t/m, u is untouched), then the taken-side frame across the
+skipped triple pass. NO freshness is taken across tailT — that is
+exactly where KeygenNttControl.localsWritten over-counts the un-taken
+triple branch (trap 6) and keep_u64 would fail; (5) tail_keep_r1/r2 —
+the body-exit r1/r2 bindings ARE the post-doubling bindings
+(out.arrays = s2.arrays where s2 is the m walk exit), and
+tail_keep_words — the body-exit heap is the post-doubling heap, so any
+doubling-pass word image carries to the body exit verbatim. The
+doubling rounds REBIND r1/r2 at every block (v1Bind/htBind/
+pointerAdvance), so no first-pass r1/r2 value survives the rounds; the
+concrete exit bindings are the image work. OWNER DECISION (A) RECORDED:
+notes/run/KEYGEN_LAYER195_BODYHEAP_SUPPLEMENT_001.md — the layer-195
+bodyHeap mis-composition is a PERMANENT BILATERAL SUPPLEMENT (owner word
+2026-10-25): job-570 bytes verified untouched at window start
+(StepNttBody195 `b39a0b909c6d6a85…`, StepNttFirst195 `928525ec67837476…`,
+commit 4874bad1), the corrected layer (body_state + bodyAt/stepAt, job
+571) stands as the operative first-pass layer cited from both sides,
+and the bodyHeap finding stays a document (supplement + DEFECT NOTEs).
+Traps recorded (do not re-derive): (8) `cases … with` SILENTLY IGNORES
+pattern-arity overflow — extra pattern names do not bind and NO error is
+raised (using them yields "unknown identifier"); use the `case` syntax,
+which errors loudly ("too many variable names provided"). Empirical
+binder orders for GenExec after index substitution (index-determined
+fields condition/yes/no/before/result/first/second are NOT bindable):
+seqNormal = [middle, head, tail], seqExit = [exit, head] (REVERSED),
+branchTrue/branchFalse = [v, nonzero, guard, body] (middle two swapped
+against field order); (9) `variable` is a Lean keyword — quote it in
+`cases … with` alternatives (`«variable»`); (10) defeq bridges need no
+transport lemmas: Cell ↔ USlot and Slot ↔ U32Slot (word n =
+BitVec.ofNat 64 n; identical constructors), so keep_u32/keep_u64
+results flow into Slot/Cell statements directly; `skip_result` inverts
+skip runs, `KeygenNttControl.seq_inv` (not C99ModularReference) inverts
+seq runs; equality chains: `binding.symm.trans full` direction. Workshop
+(honest): 4 local typecheck iterations of the module (three with
+errors: keyword/defeq-direction/case-arity, final clean 0/0) plus seven
+isolated probes (namespace scope, binder arity ×3, binder type reveal,
+case-syntax arity) and the #print axioms audit; one discarded probe
+(Probe2) used a `sorry` placeholder for the skip step while isolating
+the binder-arity quirk — no accepted or submitted source ever contained
+a marker; no draft job suffixes; accepted sources 0 markers. RETAINED
+register unchanged: 65 + 58 + 4 (no new failed runs; suffix 573 is a
+real acceptance run) plus the one retained finding (job-570 bodyHeap
+mis-composition) now documented as the permanent supplement above. OPEN
+(in order): (1) the executed-word image of the doubling passes —
+foundation: a word-image predicate (Image s a W := ∀ j<512, Load32
+(element a j) (W j)) plus the butterfly atomic step (the two canonical
+writes via StepNttBody195.body_state + reads_two, job-570 layer), then
+the v-loop image over one u1 block (pairs (l+v, l+h+v), twiddle
+gvs (m+j)), then the u1-loop/round/m-walk composition (8 rounds x 256
+blocks x h butterflies — the butterfly words layered over the
+first-pass words); (2) the productFd/productGd bridge: the product
+loops load t1[(v<<1)+0]/t1[(v<<1)+1] (MakeFgProductShape191.readT1) —
+bind those loads to the image words at the body exit through
+tail_keep_words; (3) the false !out_ntt skip (fd/gd inverse pairs);
+(4) the loop composition and the section export with the body_entry
+discharge; then the remaining d-levels and the root/certificate/codec
+path. Unconditional Z>0, p_accept and p_K remain OPEN; the prospective
+bound stays Z>=2^-256 and is NOT established. Old110 frozen; measured
+wording 8192/23628 with the separate 256/739 control and the five
+do_sign items unchanged. Scoped proof, NOT_REVIEWED. Next unused proof
+job suffix: **574**. No push (owner word: 0 waiting; publication stays
+on the owner's explicit signal). Resume: verify
+.build/steprx195/ENTRY_PINS.json (00f602e7…) read-only, run the lane
+runner tools/job111.py, then continue from OPEN (1); consume the parse
+map/keeps/step engine of job 570, the prologue/w/init/loop composition
+plus bodyAt/stepAt of job 571, the round engine/m walk/full-0 branch of
+job 572 and the post-doubling keeps of job 573; do not re-derive them,
+do not rebuild anything on the defective StepNttFirst195.stepState
+(supplement 001).
+
+Job records (one line each): keygen_publicforward159_573 — ACCEPTED
+1/1 (StepNttKeep195), logs 0/0, markers 0, standard three axioms on
+eight exports (tail_keep_words axiom-free), next = the doubling-word
+image foundation + productFd/productGd bridge (multi-window engine
+continues).
+
 # SEED9_R1 — continuation check window: state map re-verified, one workshop clobber RESCUED with 0 loss (retained), frontier unchanged (OPEN (1) of the 572 window, suffix 573)
 
 2026-10-25 (R1 continuation check). Owner word "kontynuu" after the
