@@ -22,7 +22,7 @@ Rozmiar: S (1 okno), M (2–3), L (4–8), XL (badania, bez daty).
 | ID | Gate | Zadanie | Kryterium odbioru | Dowód | Zależy | Rozmiar | Status |
 |---|---|---|---|---|---|---|---|
 | WP-010 | G1 | Workspace crate'ów + `rust-toolchain.toml` + `deny.toml` | `cargo build --locked --offline` w CI; **brak `ftkey-vm`/QSX/VM** (D-023) | CI log | WP-003 | M | **DONE** (2026-10-26; `impl/ci/WP010_CHECK_2026-10-26.txt`) |
-| WP-011 | G1 | Linty i polityki: `forbid(unsafe_code)`, `clippy -D warnings`, `cargo deny`, `miri` | CI czerwone na naruszeniu | CI | WP-010 | S | **IN_PROGRESS** (fmt/clippy w `ci/check.sh`; `cargo deny`/`miri` TODO) |
+| WP-011 | G1 | Linty i polityki: `forbid(unsafe_code)`, `clippy -D warnings`, `cargo deny`, `miri` | CI czerwone na naruszeniu | CI | WP-010 | S | **DONE** 2026-10-26 — `ci/check.sh`: fmt/build/test/clippy/deny/miri; dowód `ci/WP011_CHECK_2026-10-26.txt`; czerwona ścieżka `deny` (wildcard) potwierdzona |
 | WP-012 | G1 | Port/rewrite prymitywów: `gf_mul`, Shamir, `R_q`, NTT, SHAKE, PRSS, Pedersen | KAT ze spike'a przechodzą; brak `unsafe` | `core/tests` | WP-010 | L | **IN_PROGRESS** (`gf_mul`/GF(256)+Shamir seeda DONE z KAT; `R_q`/NTT/SHAKE/PRSS/Pedersen TODO) |
 | WP-013 | G1 | **#9** ukryte δ w G-2; usunąć `delta_known` z API prod | skorelowane Δ+δ·Δ → `MacFail`; test retained znika | test + audyt | WP-012 | M | TODO |
 | WP-014 | G1 | **#3** typestate DKG/NTRU: sign tylko z walidowanego stanu | nie da się zbudować sesji sign bez evidence | test kompilacyjny | WP-012 | M | TODO |

@@ -1,0 +1,219 @@
+# WP-011 CI check — 2026-10-26
+# host: Linux 6.12.113+deb13-amd64 x86_64
+# rustc: rustc 1.94.0 (4a4ef493e 2026-03-02)
+# cargo: cargo 1.94.0 (85eff7c80 2026-01-15)
+# cargo-deny: cargo-deny 0.20.2
+# nightly: rustc 1.101.0-nightly (19833af72 2026-10-20)
+# miri: miri 0.1.0 (19833af722 2026-10-20)
+# advisory-db: a78282a1414d6c28cc228c4eae3570451affb0dc (2026-10-26)
+
+== toolchain ==
+rustc 1.94.0 (4a4ef493e 2026-03-02)
+cargo 1.94.0 (85eff7c80 2026-01-15)
+== fmt ==
+== build (locked, offline) ==
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.01s
+== test (locked, offline) ==
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.01s
+     Running unittests src/lib.rs (target/debug/deps/ft_threshold_coordinator-fae88909786521b3)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (target/debug/deps/ft_threshold_core-5359fa2ba78a6aba)
+
+running 13 tests
+test error::tests::error_display_is_stable ... ok
+test gf256::tests::consistency_detects_tampered_share ... ok
+test gf256::tests::consistency_with_exact_k_is_trivial ... ok
+test gf256::tests::mul_known_aes_vectors ... ok
+test gf256::tests::pow_small_exponents ... ok
+test gf256::tests::reconstruct_any_k_subset_of_five ... ok
+test gf256::tests::reconstruct_checks_consistency_above_k ... ok
+test gf256::tests::reconstruct_rejects_invalid_inputs ... ok
+test gf256::tests::split_matches_independent_reference_kat ... ok
+test gf256::tests::split_rejects_invalid_points ... ok
+test tests::profile_tags_match_spec ... ok
+test gf256::tests::inv_is_exhaustive_left_inverse ... ok
+test gf256::tests::mul_is_commutative_and_distributive_on_sample ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
+
+     Running unittests src/lib.rs (target/debug/deps/ft_threshold_node-30ad1ef196e5d7ab)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (target/debug/deps/ft_threshold_protocol-fe557a0630ed1293)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (target/debug/deps/ft_threshold_testkit-9442ec70c961400d)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (target/debug/deps/ft_threshold_transport-89d02a7a3269684a)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (target/debug/deps/ft_threshold_verify-45f0b7735b2c855d)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests ft_threshold_coordinator
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests ft_threshold_core
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests ft_threshold_node
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests ft_threshold_protocol
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests ft_threshold_testkit
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests ft_threshold_transport
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests ft_threshold_verify
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+== clippy (-D warnings) ==
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.07s
+== cargo deny (offline, cached advisory DB) ==
+advisories ok, bans ok, licenses ok, sources ok
+== miri (nightly, offline) ==
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.02s
+     Running unittests src/lib.rs (target/miri/x86_64-unknown-linux-gnu/debug/build/ft-threshold-coordinator/a2570acc0525fd2d/out/ft_threshold_coordinator-a2570acc0525fd2d)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running unittests src/lib.rs (target/miri/x86_64-unknown-linux-gnu/debug/build/ft-threshold-core/a37ced41aa9c13a6/out/ft_threshold_core-a37ced41aa9c13a6)
+
+running 13 tests
+test error::tests::error_display_is_stable ... ok
+test gf256::tests::consistency_detects_tampered_share ... ok
+test gf256::tests::consistency_with_exact_k_is_trivial ... ok
+test gf256::tests::inv_is_exhaustive_left_inverse ... ok
+test gf256::tests::mul_is_commutative_and_distributive_on_sample ... ok
+test gf256::tests::mul_known_aes_vectors ... ok
+test gf256::tests::pow_small_exponents ... ok
+test gf256::tests::reconstruct_any_k_subset_of_five ... ok
+test gf256::tests::reconstruct_checks_consistency_above_k ... ok
+test gf256::tests::reconstruct_rejects_invalid_inputs ... ok
+test gf256::tests::split_matches_independent_reference_kat ... ok
+test gf256::tests::split_rejects_invalid_points ... ok
+test tests::profile_tags_match_spec ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 9.85s
+
+     Running unittests src/lib.rs (target/miri/x86_64-unknown-linux-gnu/debug/build/ft-threshold-node/9ecab59a59a25313/out/ft_threshold_node-9ecab59a59a25313)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running unittests src/lib.rs (target/miri/x86_64-unknown-linux-gnu/debug/build/ft-threshold-protocol/a28bda9fb033e899/out/ft_threshold_protocol-a28bda9fb033e899)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running unittests src/lib.rs (target/miri/x86_64-unknown-linux-gnu/debug/build/ft-threshold-testkit/2dca320a151ca6d0/out/ft_threshold_testkit-2dca320a151ca6d0)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running unittests src/lib.rs (target/miri/x86_64-unknown-linux-gnu/debug/build/ft-threshold-transport/6fe320763b00a6f9/out/ft_threshold_transport-6fe320763b00a6f9)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running unittests src/lib.rs (target/miri/x86_64-unknown-linux-gnu/debug/build/ft-threshold-verify/6069421f14677fd9/out/ft_threshold_verify-6069421f14677fd9)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+   Doc-tests ft_threshold_coordinator
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests ft_threshold_core
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests ft_threshold_node
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests ft_threshold_protocol
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests ft_threshold_testkit
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests ft_threshold_transport
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests ft_threshold_verify
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+== zakaz QSX/VM w zaleznosciach (D-023) ==
+OK: workspace P2 build/test/clippy offline
