@@ -1,3 +1,76 @@
+# SEED9_R1 — ACTIVE; generic reduction checkpoint592 accepted;593 next
+
+Owner resumed after short app reset. Continue fully; no push, subagents,
+reviewers, relay or migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+592 canonical keygen_zintreduce209_592 accepted8/8,0/0,25 standard-only axiom
+results; exact arbitrary-length unsigned/signed source bodies and generic
+original calls. Heap unchanged; zero signed path retains int32 literal
+return then uint32 C-return conversion.52.077s,maxRSS4165568KiB.
+ENTRY74673 and predecessor591224 unchanged before/resume/after.
+9 attempts retain2 failures:004 alias/elaboration;007 reset outer-sandbox
+bwrap failure before Lean. Permitted outer escalation preserved original
+inner isolation/limits in008 and canonical. No source claim or limit relaxed.
+Executed/validated scoped source; independent review NOT_RUN.
+Report/evidence KEYGEN_ZINT_REDUCE_209_592_REPORT.md and matching JSON.
+Next593 bounded actual modp_Rx; then lower-forward/additional-prime/products/
+full d2 return and later d levels/root/certificate/codec/full B1. No math
+modular/Montgomery/CRT/NTT/root law or broad KeyGen/Sign/compiler/security/
+unconditional positivity/probability. Old110/measured/five do_sign unchanged.
+Foreign changes excluded; continue after local commit without push.
+
+Previous snapshots and job records follow unchanged.
+
+# SEED9_R1 — ACTIVE after owner resume; continue592
+
+Owner resumed after app reset. Continue in the same source3 directory;
+no push, subagents, reviewers, relay or migration. Overall B1 remains
+IN_PROGRESS / NOT_REVIEWED. Sealed591 commit55e5fc22 unchanged.
+Resume checks: ENTRY74673/74673 unchanged, predecessor591224 bindings valid;
+no active Lean process. Next local attempt007: Source3.ZintSignedCall209.
+All592 drafts and attempts001..006 retained. Original limits/profile apply.
+
+Previous snapshots and job records follow unchanged.
+
+# SEED9_R1 — PAUSED BY OWNER for app reset; resume592 in the same directory
+
+Owner explicitly requested a short pause and application reset. Stop work now.
+No push, subagents, reviewers, relay or migration. Resume only on owner signal.
+Latest sealed OWN checkpoint:591 commit55e5fc225d31010146dbcfc481c58777947933da.
+591 canonical keygen_secondcrt208_591 accepted14/14,42 standard-only audits,
+74673/74673 pins unchanged,224 evidence bindings; actual d2 prefix through
+both full CRT calls, both512-word normalized arrays and all4 product columns.
+Overall source-to-fiber remains IN_PROGRESS / NOT_REVIEWED.
+
+592 active runtime .build/reduce592. ENTRY74673 and591 predecessor224 verified
+before work. Six local attempts:001/002/003/005/006 accepted;004 retained
+array-name alias/unused simp failure. Last006 accepted ZintSignedWhole209,
+12.392s,0/0: generic signed body including actual dlen0 int32 literal return
+followed by uint32 return conversion; positive case uses complete generic
+unsigned source reduction. No own proof job remains running at pause.
+
+592 own uncommitted drafts, durably saved in formal/Source3/:
+ZintReduceStep209, ZintReduceLoop209, ZintReduceWhole209,
+ZintReduceCall209, ZintSignedExpr209, ZintSignedWhole209 — accepted locally.
+ZintSignedCall209 — written, NOT YET TYPECHECKED. This is the immediate next
+check after resume. First add006 to the local reuse runner donor list for
+ZintSignedWhole209 (unchanged source/artifact), then check SignedCall209.
+Local runner .build/reduce592/typecheck.py imports complete canonical591
+namespace and the pinned execution engine; typecheck_reuse.py currently
+seeds Step/Loop from002, Whole from003, ReduceCall/SignedExpr from005.
+Do not overwrite attempt001..006; next unused local attempt007.
+Do not modify sealed208/207 or evidence_v1.py. Original limits and clean-log/
+axiom/marker requirements remain. Preserve all raw failures and snapshots.
+
+Next: finish generic signed-call adapter, audit/replay/seal592; then actual
+additional-prime Rx/lower-size forward/products/full d2 return. Later d
+levels/root/certificate/codec and full B1 stay OPEN. No mathematical CRT/
+centering/NTT/root law, full KeyGen/Sign/compiler/security/unconditional
+positivity/probability claim. Old110/measured/five do_sign unchanged.
+Foreign edits/staging belong to other workers and must remain excluded.
+All current work/runtime files are on durable storage; no system tmp.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — route ACTIVE; actual d2 CRT section checkpoint591 accepted;592 next
 
 Owner: continue fully to completion; no push, handoff, subagents or reviewers.
@@ -9881,3 +9954,29 @@ Job record (591): attempt013 — ACCEPTED_LOCAL audit,5.278s,0/0: six original i
 Job record (591): canonical keygen_secondcrt208_591 — ACCEPTED14/14,0/0,42 standard-only audits,44.842s,maxRSS3802316KiB. Next entry/evidence checks/exact-path local commit, then592 generic signed reduction/additional-prime continuation.
 
 Job record (591 checkpoint): evidence PASS224 new bindings; entry74673/predecessor246 unchanged,14 accepted/42 axiom audits. Foreign index observed empty; exact own18 paths only. Local commit without push; continue592 generic multi-limb reduction and additional-prime/full d2 return.
+
+Job record (592 start):591 committed55e5fc225d31010146dbcfc481c58777947933da, no push. Continue generic multi-limb unsigned/signed source reduction for the additional-prime path, then actual Rx/lower-size forward/products/full d2 return. New runtime .build/reduce592;591 immutable.
+
+Job record (592): entry74673/predecessor591224 verified. attempt001 — ACCEPTED_LOCAL ZintReduceStep209,28.307s,0/0: actual generic descending unsigned-reduction limb, exact Montgomery/conditional correction/add word and source counter/scope frame; heap unchanged. Next complete arbitrary-length reduction loop and whole leaf.
+
+Job record (592): attempt002 — ACCEPTED_LOCAL2/2,0/0: complete generic descending unsigned-reduction loop with exact accumulator fold, final u0/x word and unchanged heap/arrays/other locals. Next full leaf declarations/final unsigned wrap/return, then signed callee including its actual dlen0 return conversion.
+
+Job record (592): attempt003 — ACCEPTED_LOCAL ZintReduceWhole209,4.523s,0/0: complete arbitrary-length parsed unsigned reduction leaf, exact returned fold and final unsigned counter wrap; entire heap/arrays unchanged. Next generic original leaf-call adapter and signed zero/high-limb source branches.
+
+Job record (592): attempt004 retained unsigned-call adapter elaboration/clean-log failure: dName alias left the array-binding conditional opaque and ite_true unused. Explicitly unfold the actual dName; no input or output change. Signed expression module was not run in this failed batch. Source finding: signed dlen0 branch returns an int32 literal before the uint32 function-return conversion; preserve that flow in the generic API.
+
+Job record (592): attempt005 — ACCEPTED_LOCAL2/2,0/0: generic actual unsigned-call adapter with arbitrary source/length/receiver names, signed dlen0 guard, checked high-limb pointer and exact sign-mask/sub expression. Next full signed source body with both zero and positive lengths and actual return-type conversion.
+
+Owner pause record 2026-10-26T16:59:28.812116+00:00: short app-reset pause requested; no new proof job or Git/push started. Resume592 next local attempt007 at ZintSignedCall209. All drafts/logs saved durably.
+
+Resume record 2026-10-26T17:02:35.707520+00:00: owner continued after app reset; entry_resume_01/pred_resume_01 PASS, no active Lean. Added unchanged accepted006 SignedWhole to reuse donor list; next007 actual signed-call adapter.
+
+Job record (592 resume): attempt007 — RETAINED_ENVIRONMENT_FAILURE before Lean startup,0.004s: outer app sandbox blocks bwrap NETLINK_ROUTE creation after reset. No proof diagnostic/counterexample and no accepted artifact. Retry unchanged source/profile in008 through explicit sandbox escalation, preserving bwrap --unshare-net and original limits.
+
+Job record (592 resume): attempt008 — ACCEPTED_LOCAL SignedCall209,28.996s,0/0,maxRSS4155504KiB; unchanged inner bwrap/no-network/original limits, permitted outside reset outer sandbox. Generic unsigned/signed calls now complete for all bounded lengths, including zero-length uint32 return conversion. Next25-result interface/axiom audit and canonical replay.
+
+Job record (592): attempt009 — ACCEPTED_LOCAL audit,6.087s,0/0: four original generic interfaces and25 standard-only axiom results. Next canonical8-module replay, entry/evidence checks and local checkpoint; then593 bounded actual modp_Rx and lower-forward/additional-prime continuation.
+
+Job record (592): canonical keygen_zintreduce209_592 — ACCEPTED8/8,0/0,25 standard-only results,52.077s,maxRSS4165568KiB. Next final pins/evidence/local commit then593 actual bounded Rx; no final handoff.
+
+Job record (592 checkpoint): evidence PASS142 new bindings; entry74673/predecessor224 unchanged at before/resume/after,8 accepted/25 standard-only results. Exact own12 paths prepared, all foreign edits excluded. Local checkpoint only; no push; immediately continue593 actual bounded Rx.
