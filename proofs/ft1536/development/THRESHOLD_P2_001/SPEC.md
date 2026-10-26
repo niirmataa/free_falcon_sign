@@ -314,6 +314,34 @@ zabronione; `ZeroizeOnDrop`; brak serializacji plaintext.
 
 ## 7. Podpis
 
+### 7.0 Dwie domeny arytmetyki (D-025, normatywne)
+
+v1 ma **dwie jawne domeny** i granica między nimi jest częścią protokołu,
+nie szczegółem implementacji:
+
+| Domena | Moduł | Zastosowanie |
+|---|---|---|
+| `Z_q`, `q = 18433` | `ring.rs`, `shamir_zq.rs`, `vss.rs` | udziały Shamir/VSS pułapki `(f,g,F,G)` i seeda; wszystkie operacje `mod q` |
+| `Z_P`, `P = 2^61−1` | `ishare` (WP-013+) | arytmetyka MPC, maskowanie statystyczne, Beaver triples, otwarcia |
+
+Reguły (MUST):
+
+1. Wartość z `Z_q` **wchodzi** do `Z_P` jako reprezentant `0..q−1`
+   (osadzenie tożsamościowe); nie ma „udziału w obu domenach naraz”.
+2. Redukcja `mod q` jest **jawną** operacją końcową (`· mod q`) w miejscach
+   dowiedzionych; nie wolno redukować pośrednio ani polegać na tym, że
+   „i tak wyjdzie”.
+3. Każde przejście domen ma KAT i test graniczny (wartości `q−1`, `P−1`,
+   iloczyny bliskie `P`); przejście bez testu jest błędem scope'u.
+4. Maski w `Z_q` **nie są** dopuszczalne jako maski statystyczne
+   (`q ≈ 2^14`); maskowanie wyłącznie w `Z_P`.
+5. `q`-NTT (`ntt.rs`) pracuje w `Z_q` i nie jest mieszane z `Z_P`.
+
+Uzasadnienie: udziały pułapki są natywnie elementami `R_q` (VSS w `Z_q`
+z WP-012f/g), a `q` jest zbyt małe na bezpieczne maskowanie. `Z_P` daje
+dokładną arytmetykę całkowitą i pokrywa się z prototypem `ishare.rs`
+(spike), ale **nie** dziedziczy jego audytu.
+
 ### 7.1 Wejście
 
 ```text

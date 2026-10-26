@@ -264,12 +264,44 @@ Nie nadpisujemy historii — korekta = nowy wpis.
 
 ---
 
+## D-025 — Dwie domeny arytmetyki w v1: `Z_q` dla udziałów, `Z_P` dla MPC
+
+- **Data:** 2026-10-26
+- **Status:** **ACCEPTED** (właściciel wybrał „dwie jawne domeny”)
+- **Treść:** v1 rozdziela domeny jawnie:
+  - **`Z_q` (`q = 18433`)** — udziały Shamir/VSS pułapki `(f,g,F,G)` i seeda
+    (B′, D-024), wszystkie operacje `mod q` (`ring`, `shamir_zq`, `vss`,
+    `ntt`);
+  - **`Z_P` (`P = 2^61−1`)** — arytmetyka MPC, maskowanie statystyczne,
+    Beaver triples, otwarcia, jak w prototypie `ishare.rs`.
+- **Reguły granicy (normatywne):**
+  1. `Z_q → Z_P` to osadzenie tożsamościowe reprezentanta `0..q−1`;
+     brak „jednej wartości w dwóch domenach naraz”.
+  2. Redukcja `mod q` jest jawną operacją końcową w dowiedzionych miejscach;
+     brak redukcji pośrednich i brak polegania na „i tak wyjdzie”.
+  3. Każde przejście domen ma KAT i test graniczny (`q−1`, `P−1`,
+     iloczyny blisko `P`); przejście bez testu = błąd scope'u.
+  4. Maskowanie wyłącznie w `Z_P`; `q ≈ 2^14` jest zbyt małe na maski
+     statystyczne.
+  5. `q`-NTT pozostaje w `Z_q`, bez mieszania z `Z_P`.
+- **Dlaczego nie jedna domena:** czyste `Z_q` daje słabe maskowanie
+  i wymaga innych dowodów na otwarcia; czyste `Z_P` wypycha udziały
+  pułapki poza natywną domenę `R_q` i wymusza mapowanie przy każdej
+  operacji `mod q`.
+- **Konsekwencje:** WP-013 (ukryte δ) i WP-016 (VSS w sign) dostają
+  jawny kontrakt domen; `ishare` pozostaje `REFERENCE` (spike), nie
+  dziedziczy audytu. Nowe testy granicy domen wchodzą do G1/G2 evidence.
+
+---
+
 ## Status decyzji po potwierdzeniu 2026-10-26
 
 Potwierdzone przez właściciela (domyślne): **D-003** (2-of-3), **D-010**
 (TLS 1.3/mTLS), **D-011** (kanoniczne CBOR), **D-013** (HSM od G3),
 **D-016** (produkcja w `[N]` na G3), **D-022** (G2 = `TEST-ORACLE`,
 G3 = `PROD`). Wybór wariantu: **D-024 = B′** (D-021 `SUPERSEDED`).
+Dodatkowo **D-025** (dwie domeny: `Z_q` dla udziałów, `Z_P` dla MPC)
+potwierdzona 2026-10-26 i wiążąca dla WP-013/WP-015/WP-016.
 
 Nadal `PROPOSED` (nie blokują WP-010/011/012): D-004 (warunek honest
 majority), D-005 (byte-compatibility), D-006 (model bezpieczeństwa),
