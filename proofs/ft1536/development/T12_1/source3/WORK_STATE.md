@@ -1,3 +1,31 @@
+# SEED9_R1 — PAUSED BY OWNER after accepted597; resume598 tomorrow
+
+Owner decision2026-10-26: finish597 and stop; resume tomorrow on explicit
+owner continuation. No598 source/job started. No live proof job remains.
+Overall B1 IN_PROGRESS / NOT_REVIEWED;597 is a scoped local checkpoint.
+No push, subagents, reviewers, relay, stages or migration.
+597 canonical keygen_crtwalk214_597 accepted9/9,0/0,25 standard-only axiom
+results. Generic original CRT coefficient and complete coefficient walk,
+actual v0/xx initialization/stride increments/terminal guard, exact full
+flat row image including untouched later residue columns; private locals,
+modulus and caller/outside reads preserved. Ordinary domains explicit;
+u+1<=stride. No desired source-run/output/CRT-law premise.
+33.055s,maxRSS4005416KiB. ENTRY74673/predecessor596190 unchanged before/after.
+6 attempts retain1 namespace-alias rewrite failure; no resource/suppression/
+failed cache. Four public interfaces; independent review NOT_RUN.
+Report/evidence KEYGEN_CRT_WALK_214_597_REPORT.md and matching JSON;
+failure register KEYGEN_CRT_WALK_214_FAILURES_597.json.
+Next598 after resume: generic indexed prime prefix/whole round/outer CRT
+loop and actual make_fg normalization; then later d levels/root/certificate/
+codec/full B1. Detailed resume preparation is appended below.
+No full CRT outer loop or mathematical CRT/centering/Montgomery/NTT/root/
+table/integer law, broad KeyGen/Sign/compiler/security or unconditional
+positivity/probability. Permanent195 bad bodyHeap/stepState UNUSED;
+sealed predecessors and Old110/measured/five do_sign unchanged.
+Foreign work excluded; save exact local checkpoint, then stop today.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; generic bigint arithmetic checkpoint596 accepted;597 next
 
 Owner: continue fully; no push, subagents, reviewers, relay or migration.
@@ -10190,3 +10218,35 @@ Job record (596): attempt009 — ACCEPTED_LOCAL audit, four public interfaces/25
 Job record (596): canonical keygen_zintarith213_596 — ACCEPTED13/13,0/0,25 standard-only results,39.231s,maxRSS3947676KiB. Next evidence/local checkpoint then597 generic CRT.
 
 Job record (596 checkpoint): evidence PASS190 bindings; entry74673/predecessor307 unchanged,13 accepted/25 standard-only results. Exact own17 paths; foreign work excluded, no push. Continue597 generic CRT composition.
+
+Job record (597 start):596 committed6b34e1aee82398aa8f9cae2004d56806c91cf959; no push. Continue generic CRT coefficient/walk/prime/outer-loop composition; runtime .build/crtgeneral597, all sealed213/596 unchanged. Complete fresh entry/predecessor scan before the first597 proof job.
+
+Job record (597): fresh entry74673/predecessor596190 fully verified before first597 job. Next generic CRT coefficient source, exact n+1 image and restored caller metadata; new214 drafts only.
+
+Job record (597): attempt001 — ACCEPTED_LOCAL2/2,0/0: generic original CRT coefficient with arbitrary u-length reduction and add-multiply, exact u+1 words, complete private-local restoration and outside-read keeps. Next arbitrary-stride coefficient walk.
+
+Job record (597): attempt002 — ACCEPTED_LOCAL2/2,0/0: actual generic v/xstride increment, row geometry/capacity and arbitrary-stride CRT walk invariant. Next source step/complete counted coefficient walk and full row image including untouched residue columns.
+
+Job record (597): attempt003 — ACCEPTED_LOCAL generic CRT coefficient-walk step,9.744s,0/0: same-output u+1 row image, actual stride increment, preserved modulus/pending/written rows and outside reads. Next full counted walk and flat image preserving untouched residue columns.
+
+Job record (597): attempt004 — complete counted walk ACCEPTED_LOCAL,3.071s,0/0; flat image retained two namespace-alias rewrite mismatches (row/point214 vs208). Add explicit alias bridge theorems; no domain or source change. Next full flat image/initialization.
+
+Owner decision (2026-10-26): finish597 with canonical validation/report/evidence/local commit, then stop for today and resume tomorrow. Do not launch598 today. Overall B1 remains IN_PROGRESS / NOT_REVIEWED; this is an owner-requested pause after597, not completion of B1.
+
+Job record (597): attempt005 — ACCEPTED_LOCAL2/2,0/0: full arbitrary-stride coefficient walk, exact complete flat row image including untouched later residues, original v0/xx initialization and caller/outside-read exports. Next25-result audit/canonical9 modules and owner-requested stop after597.
+
+Job record (597): attempt006 — ACCEPTED_LOCAL audit, four public interfaces/25 standard-only results. Next canonical9-module replay and final pins/evidence/exact local commit; owner pause after597, no598 job.
+
+Resume preparation after owner-requested597 closeout (not a598 start):
+- Keep the same canonical source3/main and sole author; do not start subagents/reviewers/relay. No push/migration/stages.
+- Load the597 report/evidence/failure register and this state; verify ENTRY_PINS00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964 remains74673/74673 and recursively verify the597 evidence bindings before new work.
+- Latest source engines: SecondStepReturn212.source gives full actual d2 return and d3 next guard; CrtMulCall213.source/CrtAddMulCall213.source give generic leaf call images; CrtWalkWhole214.source gives the initialized full coefficient walk and flat image, including all untouched residue columns, for u+1<=xstride.
+- Next598: generalize CrtPrimePrefix206 from fixed row1 to indexed PRIMES3 row u, deriving p/s from the actual PrimeObject and p0i/R2 from their source bodies. Compose CrtWalkWhole214.source with CrtMulCall213.source and restore CrtRoundShape205.localNames. Then count the original CRT outer u loop, preserve the modulus/data images, and compose existing generic signed-normalization for the actual make_fg xstride=xlen calls.
+- Preserve ordinary source scalar/memory/table/separation domains. Do not introduce desired output/run/CRT-law/certificate assumptions. Keep executed-word formulas separate from unproved mathematical CRT/centering/NTT laws.
+- Later actual d levels/layouts, root/certificate/codec/full B1 remain open. Full source-to-fiber work is not completed by597. No598 source/job was started today.
+- Use the immutable canonical597 namespace as the next runner predecessor; normal warningAsError/-j1/-M6144/heartbeats/recDepth/AS/RSS/wall limits and inner bwrap --unshare-net unchanged. Since app reset, proof jobs and Git mutations need require_escalated under outer workspace-write; preserve the same internal isolation.
+- One proof job at a time, WORK_STATE after every attempt, every failed snapshot/log retained. Never use defective StepNttFirst195.bodyHeap/stepState. Resume from corrected bodyAt/stepAt and the accepted generic forward211 engine.
+
+Job record (597): canonical keygen_crtwalk214_597 — ACCEPTED9/9,0/0,25 standard-only results,33.055s,maxRSS4005416KiB. Entry74673/predecessor190 unchanged; next evidence/exact local commit and owner-requested pause, no598.
+
+Job record (597 closeout): evidence PASS133 bindings; entry74673/predecessor190 unchanged,9 accepted/25 standard-only results. Exact own13 paths, foreign changes excluded. Owner pause is part of this commit; no598 source/job, no live own proof job, no push. Resume from598 only after owner continuation.
