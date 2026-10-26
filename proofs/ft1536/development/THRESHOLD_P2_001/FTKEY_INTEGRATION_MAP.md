@@ -348,28 +348,40 @@ Nie uruchamiać żywego testu FIDO bez zgody właściciela: test
 `fido_live_create_and_hmac_secret` **tworzy discoverable credential**
 na tokenie i może zniszczyć istniejące pieczęcie po resecie.
 
-### F-8 — Brak żywego E2E (wysokie dla FTKEY; P2 ma własny E2E)
+### F-8 — Żywy host-path domknięty; VM E2E nadal `NOT_RUN` (poza P2)
 
-**Dowód:** raporty mówią wprost:
+**Dowód (host-path, ten token, 2026-10-26):**
 
-- **Host-path, ten token:** `getInfo` **PASS** (2026-10-26, bez PIN,
-  bez zapisu); live `pub` na istniejącym `ftkey.seal` **PASS**
-  (fp = `ftkey.fp`). To zamyka live unseal+keygen, ale **nie** live
-  `sign`/`verify` — te są **NOT_RUN**.
+- `getInfo` **PASS** (bez PIN, bez zapisu).
+- live `pub` na istniejącym `ftkey.seal` **PASS** (fp = `ftkey.fp`).
+- **live `sign` + `verify` PASS** (2026-10-26): podpisany syntetyczny
+  dokument `doc.txt`
+  (`sha256 f9093339ee2dd02a5f72e77321c8f31b7e8fbaea3e8c287b8129966431a89145`),
+  bundle `doc.sig.json`
+  (`sha256 0f00500dca56b10afc7881c847c3ee5c2d30ec4a0d46a6ed1b68ccad6d7d812a`),
+  `ftkey verify` → `OK` (rc=0). Bundle ma dokładnie 5 pól
+  (`alg=FT1536-STATIC`, `pubkey` 2881 B, `nonce` 40 B, `sig` 2390 B,
+  `msg_sha256` zgodny), a `fp` liczony z `pubkey` =
+  `eb61b8afc072c1e450753ee9aa7dda5d8d12ca7a3aa545f69a7574b22c3348b6`
+  = `ftkey.fp`. PIN wpisał właściciel lokalnie; asystent go nie widzi.
 - v0: `53 passed, 0 failed, 1 ignored (live hardware)` — niezależny
-  rerun w `REVIEW_E1_E4.md`, ale **bez żywego tokena** (przed `pub`).
+  rerun w `REVIEW_E1_E4.md`, ale bez żywego tokena (przed `pub`).
 - GUI backend: `21 passed, 0 failed, 0 ignored` — bez Tauri/okna.
 - VM/gość: `14 passed, 0 failed, 1 ignored` — `e2e_sign_mock_via_qsx`
   (`#[ignore]`) wymaga prawdziwego KVM/QSX; `NOT_RUN`. **Poza P2 (D-023).**
 
-**Skutek:** testy VM używają fake QSX/mock; po D-023 to nie dotyczy P2.
-Dla host-path jest live unseal+keygen, ale nadal brak live `sign`/`verify`
-i brak zapisu koperty 4 KB. To jest spójne z F-1: gdyby VM E2E był
-uruchomiony, F-1 by wyszedł.
+**Skutek:** host-path FTKEY ma pełny, powtarzalny łańcuch
+`token → unseal → keygen → sign → verify` na tym samym kluczu co
+2026-10-19. VM E2E nadal nie istnieje (F-1), ale po D-023 to dług
+FTKEY, nie P2. Nadal **brak** testu zapisu koperty 4 KB na tokenie
+(F-4) — to dotyczy ewentualnego udziału seeda, nie B′.
 
-**Znaczenie dla P2:** nie dziedziczyć „PASS” z mocków ani z `pub`.
-P2 potrzebuje własnego E2E na trzech nodach i własnego retained
-`NOT_RUN`, dopóki nie ma żywego przebiegu.
+**Znaczenie dla P2:** nie dziedziczyć „PASS” z mocków; host-path jest
+realnym dowodem dla pieczęci/klucza, ale P2 potrzebuje własnego E2E
+na trzech nodach i własnego retained `NOT_RUN`, dopóki go nie ma.
+
+**Trwały artefakt:** `evidence/FTKEY_HOST_SIGN_2026-10-26/` (`doc.txt`,
+`doc.sig.json`, `README.md`) — publiczne, weryfikowalne bez tokena.
 
 ### F-9 — Brak udziałów i kworum (krytyczne dla P2, nie bug FTKEY)
 
@@ -479,8 +491,8 @@ katalogu, jawne selektory urządzeń, brak globalnego kill.
 - Brak dowodu threshold EUF-CMA; brak audytu P2.
 - Brak sieciowego transportu między nodami — to P2 musi dodać; VM
   `network_cut` nie jest już argumentem po D-023.
-- Brak żywego `sign`/`verify` na host-path (F-8); F-1 (VM) to dług FTKEY,
-  nie P2.
+- Żywy `sign`/`verify` na host-path jest **PASS** (F-8); brakuje
+  zapisu koperty 4 KB (F-4). F-1 (VM) to dług FTKEY, nie P2.
 - Brak żywego E2E P2; statusy FTKEY pochodzą z mocków/raportów.
 
 ---
@@ -571,13 +583,15 @@ dług FTKEY (D-023); **P2 ich nie buduje ani nie uruchamia**.
 
 ## 10. Status dowodowy
 
-- Ten dokument: **analiza źródeł read-only** + dwa nieinwazyjne testy
-  sprzętowe; nie jest pełnym testem ani odbiorem.
+- Ten dokument: **analiza źródeł read-only** + trzy nieinwazyjne testy
+  sprzętowe (`getInfo`, `pub`, `sign`+`verify`); nie jest pełnym testem
+  ani odbiorem.
 - Testy FTKEY: **nie były ponownie uruchamiane w tym oknie**; liczby
   pochodzą z raportów (`REVIEW_E1_E4.md`, `V1d_001/REPORT.md`).
 - Żywy token: `getInfo` + `pub` (unseal + keygen) **PASS** 2026-10-26;
-  live `sign`/`verify` **NOT_RUN**. Żywy KVM/FIDO w VM **NOT_RUN**;
-  po D-023 to nieistotne dla P2.
+  live `sign` + `verify` **PASS** 2026-10-26 (`verify` rc=0, fp bez zmian,
+  hashe bundla w F-8). Żywy KVM/FIDO w VM **NOT_RUN**;
+  po D-023 to nieistotne dla P2. Zapis koperty 4 KB **NOT_RUN** (F-4).
 - P2: **G0 → G1**; decyzje G1 potwierdzone 2026-10-26, żadna bramka
   nie jest jeszcze zamknięta.
 - D-024: **ACCEPTED** — B′; D-021 `SUPERSEDED`. Ten dokument dostarczył

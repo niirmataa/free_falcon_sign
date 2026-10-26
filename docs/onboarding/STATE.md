@@ -11,8 +11,9 @@ O-16 (MPC `G`) wchodzi do v1 jako blocker G3; O-01 jest przez nie
 subsumowany, nie „rozwiązany”. WP-003 `DONE`; G1 odblokowany —
 następne WP-010/011 (workspace + CI), potem WP-012. Nadal `PROPOSED`:
 D-004/005/006/012/014/015 (nie blokują G1). Live `sign`/`verify`
-host-path: polecenia przekazane właścicielowi, wynik **NOT_RUN** do
-czasu przebiegu. Zmiany lokalne; bez push.
+host-path: **PASS** 2026-10-26 (`verify` rc=0; fp bez zmian; bundle
+5 pól, hashe w `FTKEY_INTEGRATION_MAP.md` F-8); PIN wpisał właściciel
+lokalnie. Zmiany lokalne; bez push.
 
 **2026-10-26 — S09/D-023: QSX/VM wyłączone z P2.**
 Właściciel: „nie używamy już VM QSX, ponieważ właśnie po to robimy próg,

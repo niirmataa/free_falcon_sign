@@ -14,6 +14,7 @@ Każdy wpis ma właściciela i datę przeglądu.
 | C-001 | Spike 001 ma 414/414 testów i złoty łańcuch `z udziałów f,F → s1,s2 → engine verify` | **TESTED** | `THRESHOLD_SPIKE_001/REPORT.md`, pin F2 `103747771` | koordynator |
 | C-002 | W spiku fałszywe udziały/otwarcia są wykrywane fail-closed w zadeklarowanym zakresie | **TESTED** | `Y13_MALICIOUS_MAP.md`, macierz testów | koordynator |
 | C-003 | Spike nie jest threshold signingiem | **PROVEN** (brak pełnego, bezpiecznego ffSampling/Kleina i modelu złośliwego) | `P5_GAPS`, `BOUNDARY_*` | koordynator |
+| C-004 | FTKEY host-path: żywy `sign`+`verify` na syntetycznym dokumencie przechodzi na kluczu z 2026-10-19; **single-signer, nie P2** | **TESTED** | `evidence/FTKEY_HOST_SIGN_2026-10-26/` (verify rc=0) | koordynator |
 
 ## 2. Twierdzenia P2 — status docelowy
 
