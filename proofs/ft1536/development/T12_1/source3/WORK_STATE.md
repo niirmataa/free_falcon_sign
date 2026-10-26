@@ -1,3 +1,34 @@
+# SEED9_R1 — sustained route ACTIVE; d=2 prefix checkpoint 580 accepted
+
+Owner instruction: continue fully to completion, without stopping at local
+checkpoints. No push, no subagents or reviewers. This checkpoint is an
+intermediate save; overall route remains IN_PROGRESS / NOT_REVIEWED.
+
+580: PROVED_KERNEL_SCOPED. Actual d=2 Load64 lengths2/3, slen=2/tlen=3,
+PRIMES3 choice, all seven pointer assignments, output stride384/input
+stride512 and the original overlapping4096-byte memmove are kernel-checked.
+New indices (block31/base0/count71680/width4): fd670/gd1054/fs1438/gs1950/
+gm2462/igm2718/t12974. Full parts0/1 prefix is constructed from the actual
+first-step output; moved fs/gs each retain exactly the respective512-word
+first-step data image. Original input region is not claimed unchanged.
+Canonical keygen_secondprefix197_580:5/5 accepted, exit0, logs0/0,
+warningAsError, markers/suppressions0,11 standard-three axiom results;
+23.618s sum, maxRSS4778704 KiB. Independent review NOT_RUN.
+ENTRY_PINS00f602e7…74673/74673 before/after,0 missing/changed; predecessor
+260/260 bindings before/after. No re-baseline, C edit, migration or stages.
+Report/evidence: notes/run/KEYGEN_SECOND_PREFIX_197_580_REPORT.md and JSON.
+Two retained failed/partial attempts:001 isDefEq timeouts repaired by
+explicit heap/read/binding bridges (287.102s, unchanged limits),003 opaque
+old/new fd aliases normalized;002/004 accepted. All inherited failures kept.
+Next581: actual d=2 prime-loop/generator/NTT and multi-limb reduction/CRT;
+then subsequent d levels and enclosing root/certificate/codec. No full
+KeyGen/Sign/compiler/closed-form NTT/root/table or Z>0/p_accept/p_K/Z>=2^-256
+claim. Old110, measured wording, five do_sign obligations unchanged.
+Ten waiting commits at entry + this checkpoint = eleven; no push.
+Foreign run2 pin-reference/threshold prompt untouched. Continue work.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — complete first-step return and concrete d=2 entry CLOSED (579)
 
 2026-10-26, suffix 579. **PROVED_KERNEL_SCOPED / NOT_REVIEWED**.
@@ -9305,3 +9336,14 @@ Job record (579): attempt008 — ACCEPTED_LOCAL 8/8, diagnostics 0/0; explicit h
 Job record (579): keygen_firststep196_579 — ACCEPTED 8/8, exit 0, diagnostics 0/0, warningAsError, markers []; 15 type/axiom audit results (interleave axiom-free, columns_image propext/Quot.sound, remaining dependencies standard three). Full first-step source/caller/d=2 Bind and executable declarations/n/hn prefix accepted. Next: final pins, retained/evidence/report and one local commit; no push.
 
 Job record (579 close): final integrity/evidence — PASS_INTEGRITY, 74673/74673 entry paths and 383/383 predecessor bindings before/after; verified 260 new evidence bindings; canonical 8/8; 15 standard-only/axiom-free results. Next: exact-path local checkpoint, no push; suffix 580.
+
+## 2026-10-26 — sustained owner continuation after 579
+Owner: continue fully to completion; local checkpoints are intermediate, not a stop/handoff. No push or subagents. Step580 entry — PASS_INTEGRITY, 74673/74673 unchanged and 260 job-579 evidence bindings verified; no active competing proof job. Next: actual d=2 length/layout/move, then source loop/multi-limb obligations. Foreign edits remain untouched.
+Job record (580): attempt001 — RETAINED_PERFORMANCE_FAILURE, 287.102s, unchanged heartbeat limit reached at t_source isDefEq and the final heap change. Static/readonly/length read lemmas compiled without diagnostics. Next: explicit withS heap/read/binding/cell bridges and abstract pointer heap projection, retaining limits; no mathematical counterexample.
+Job record (580): attempt002 — ACCEPTED_LOCAL length/table branch and d=2 pointer layout, 2/2, 0/0 (9.485/3.724s). Explicit state projections repair the prior timeouts with unchanged limits. Actual slen=2/tlen=3, new output stride384/input stride512 and pointers are proved. Next: overlapping memmove and full d=2 prefix composition; then continue to loops.
+Job record (580): attempt003 — lengths/layout accepted 2/2, 0/0; move RETAINED_ELABORATION_FAILURE: old/new fd aliases name the same ft pointer but simpa only does not unfold them. Next: normalize those two pointer aliases explicitly; no change to arithmetic or semantics.
+Job record (580): attempt004 — ACCEPTED_LOCAL 5/5, 0/0, eleven standard-three axiom results. The complete actual d=2 declarations/length/table/layout/memmove prefix and both moved 512-word arrays are constructed; overlapping copy is the original memmove semantics. Next: canonical 580 checkpoint while preparing the next loop/multi-limb layer; continue, no handoff or push.
+Job record (580): keygen_secondprefix197_580 — ACCEPTED 5/5, exit 0, diagnostics 0/0, warningAsError; eleven standard-three axiom results. Complete actual d=2 prefix through slen=2/tlen=3, pointer layout and overlapping memmove, preserving both moved input images. Next: intermediate pin/evidence checkpoint and continue directly into the loop/generator layer; overall owner goal IN_PROGRESS, no push or handoff.
+
+Job record (580 checkpoint): pins before/after PASS_INTEGRITY; verified 104 new evidence bindings. Next = local checkpoint, then continue581; no final handoff or push.
+Evidence-summary correction (580): organizer output carried a stale literal15 for axiom_results; actual parsed audit/evidence has11 throughout. The initial summary is retained as .build/step580/evidence_summary.initial.json; corrected organizer summary regenerated. No proof/audit result changed.
