@@ -9058,3 +9058,17 @@ Job record (575 window): keygen_publicforward159_575 — ACCEPTED 2/2, proof 10.
 Correction to the preceding job-575 record: the three definitions are NOT axiom-free; the actual audit gives [propext, Quot.sound] for pairWords/vWords/blockWords. The three theorem exports use exactly [propext, Classical.choice, Quot.sound]. The raw audit is unchanged; this supplement preserves the incorrect earlier wording and corrects it explicitly.
 
 Job record (575 window): entry_reverify_575 after acceptance — PASS_INTEGRITY, 74673/74673, 0 missing / 0 changed; all source/snapshot/olean/raw-log hashes and six printed axiom lists bound in KEYGEN_STEP_VIMAGE_195_575.json. Next = local source checkpoint and closed-window handoff.
+
+Job record (576 window): entry_before — PASS_INTEGRITY, 74673/74673, 0 missing / 0 changed; manifest 00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964 unchanged. Active owner scope = u1-loop word-image composition only; inherited 65 + 58 + 4 failures, bodyHeap finding and two job-575 setup failures retained. No active Lean/Sage; main, empty staging, unrelated threshold prompt untracked. Next = add the u1 image recurrence and compose the accepted block image.
+
+Job record (576 window): u1image576/attempt001 — PROOF_TOOLING_FAILURE, exit 1, 18.065s; deprecated dif_pos rejected under warningAsError (dependent-if variant of the known if_pos trap), not a counterexample. Snapshot/raw logs/receipt retained. Next = replace only dif_pos with dite_eq_left and rerun locally; lane suffix 576 unused. Predecessor job-575 handoff bindings verified 31/31.
+
+Job record (576 window): u1image576/attempt002 — ACCEPTED local typecheck, exit 0, 3.273s, diagnostics 0/0, maxRSS 4144348 KiB; u1_loop_image/u1_loop_full_image compile after the single deprecation repair. Next = canonical job 576 with original-type/axiom audit.
+
+Job record (576 window): keygen_publicforward159_576 — ACCEPTED 2/2, proof 4.426s / audit 3.125s, diagnostics 0/0, warningAsError, forbidden markers []; original types and all six axiom lists retained. Next = inspect exact axiom lists, final 74673-pin recheck, receipt/report and local checkpoint; no push.
+
+Job record (576 window): final pin/evidence check — PASS_INTEGRITY, 74673/74673 before and after, 0 missing / 0 changed; job-575 handoff 31/31 and retained attempt members 12/12 unchanged. Proof/audit 2/2 accepted, main exports standard-only; tableWord axiom-free, tableWord_eq [propext], u1Words/roundWords [propext, Quot.sound]. Report and machine receipt: notes/run/KEYGEN_STEP_U1IMAGE_195_576*. Next = local checkpoint; next unused suffix 577.
+
+## R1 window 576 — closed at the full u1-loop image
+
+Owner scope completed: exact executed-word recurrence across the full u1 loop, including initialization. Status PROVED_KERNEL_SCOPED / NOT_REVIEWED. Inherited 65 + 58 + 4 failures, permanent bodyHeap finding and two setup failures retained; one new dif_pos deprecation failure retained and repaired via dite_eq_left. Next window: lift u1_loop_full_image through StepNttMiddle195.m_body to the actual round; then rounds/m-walk, then tail_keep_words/productFd/productGd. ENTRY_PINS remains 00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964 (74673, 0/0 before and after). No further job, reviewer, subagent, push, stages import, migration or production C change. One local checkpoint adds to the six existing unpublished commits.
