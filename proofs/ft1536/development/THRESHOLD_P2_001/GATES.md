@@ -70,8 +70,9 @@ WP-013 `DONE` (`Z_P` + MAC ukrytego δ, `impl/ci/WP013_CHECK_2026-10-26.txt`),
 WP-014 `DONE` (typestate DKG/NTRU, `impl/ci/WP014_CHECK_2026-10-26.txt`),
 WP-015 `DONE` (maski otwarć w `Z_P`, `impl/ci/WP015_CHECK_2026-10-26.txt`),
 WP-016 `DONE` (pełne VSS + agregacja S5, `impl/ci/WP016_CHECK_2026-10-26.txt`),
-WP-017 `PARTIAL` (zeroizacja po stronie typów; `mlock`/no-dump w node G2).
-Bramka pozostaje **otwarta**: WP-018…WP-027, brak niezależnego
+WP-017 `PARTIAL` (zeroizacja po stronie typów; `mlock`/no-dump w node G2),
+WP-018 `DONE` (bitność i spójność udziałów bitu, `impl/ci/WP018_CHECK_2026-10-26.txt`).
+Bramka pozostaje **otwarta**: WP-019…WP-027, brak niezależnego
 recenzenta (autor ≠ recenzent).
 
 **Recenzent:** niezależny (inny model/człowiek).

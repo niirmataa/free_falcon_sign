@@ -1,0 +1,56 @@
+# WP-018 check — 2026-10-26 (bitność i spójność udziałów bitu)
+# host: Linux 6.12.113+deb13-amd64 x86_64 GNU/Linux
+# rustc: rustc 1.94.0 (4a4ef493e 2026-03-02)
+# cargo-deny: cargo-deny 0.20.2
+# nightly (miri): rustc 1.101.0-nightly (19833af72 2026-10-20), miri 0.1.0
+
+== fmt ==
+cargo fmt --all --check → OK (bez zmian)
+
+== test --workspace (locked, offline) ==
+ft-threshold-core:      108 passed; 0 failed; 0 ignored
+ft-threshold-protocol:   12 passed; 0 failed; 0 ignored
+doc-tests core:           3 passed (3× compile_fail: MacShare, Mask, BitShare bez Clone)
+doc-tests protocol:       2 passed (2× compile_fail)
+RAZEM: 125 testów PASS, 0 failed.
+
+Nowe testy (core, `bits`):
+- shake_bits_matches_known_first_byte_and_stays_binary
+  (SHAKE256("") = 0x46 0xb9…; LSB-first 16 bitów zgodne z bajtami;
+  każdy wynik ∈ {0,1})
+- shake_bits_is_deterministic_and_domain_separated
+  (ten sam input → ten sam strumień; inny input → inny; wszystkie bity 0/1)
+- bit_share_accepts_only_consistent_bits
+  (x=1..4 × bit 0/1; `from_local`; **forged 2..=255 w GF lub Z_q/Z_P →
+  NonBitShare**; gf≠zp → InconsistentShare; x=0 → XZero; x≥q → OutOfRange)
+- debug_does_not_reveal_share_bit
+  (Debug pokazuje tylko `x`, nie `gf`/`zp`)
+
+== clippy -D warnings --workspace --all-targets ==
+Finished `dev` profile — 0 warning, 0 error.
+
+== cargo deny --offline check ==
+advisories ok, bans ok, licenses ok, sources ok
+
+== miri: core, filtr `bits::` (log .build/miri_bits_wp018.log) ==
+MIRIFLAGS="-Zmiri-disable-isolation" rustup run nightly cargo miri test \
+  -p ft-threshold-core --locked --offline bits::
+test result: ok. 4 passed; 0 failed; 0 ignored; 104 filtered out; finished in 2.29s
+
+== Zakres WP-018 (audyt #13) ==
+- `bits::shake_bits(input, out)`: strumień bitów 0/1 z SHAKE256, LSB-first;
+  domenę wiąże wołający (jak w `shake256`).
+- `bits::BitShare`: udział bitu w **obu domenach** (GF(2^8) + `Z_q`/`Z_P`);
+  konstruktor wymusza `{0,1}` i równość reprezentacji; fałszywy bit →
+  `CoreError::NonBitShare`, niezgodność → `InconsistentShare`.
+- Brak `Clone` (audyt #11), `ZeroizeOnDrop`, `Debug` bez bitów udziału.
+
+== Czego ten dowód NIE obejmuje ==
+- To nie jest niezależny odbiór (autor ≠ recenzent pozostaje wymagane).
+- To walidacja **pojedynczego udziału**, nie obwód bitowy: weryfikacja
+  `a(a+1)=0` na otwarciu produktu, carry/AND i consistency całego zestawu
+  udziałów wymagają MPC z auth-triples (WP-030+, O-02). Ten moduł nie
+  zastępuje `verify_accept_bits` ze spike'a.
+- SHAKE na udziałach (MPC, O-16) pozostaje otwarte; ten moduł jest czystym
+  XOF-em po stronie lokalnej.
+- `PROD` nadal zablokowane przez `ProdEvidenceMissing` (O-05).

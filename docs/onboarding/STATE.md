@@ -1,5 +1,17 @@
 # Stan projektu — punkt wejścia
 
+**2026-10-26 — S09/THRESHOLD_P2_001: WP-018 DONE (bitność i spójność udziałów bitu).**
+Audyt #13 domknięty po stronie walidacji udziału: `bits::shake_bits` daje
+strumień bitów 0/1 z SHAKE256 (LSB-first, znany KAT `0x46 0xb9…`), a
+`bits::BitShare` przechowuje ten sam bit w GF(2^8) i `Z_q`/`Z_P`.
+Konstruktor odrzuca każdą wartość spoza `{0,1}` (`NonBitShare`) oraz
+niezgodność reprezentacji (`InconsistentShare`), więc sfałszowany udział
+nie wejdzie do obwodu. Udział nie jest `Clone`, jest zeroizowany, a `Debug`
+nie pokazuje bitów. Stan: 125 testów natywnych PASS (core 108 + protocol 12
++ 5 doctestów), clippy/deny PASS, miri `bits::` 4/4. Dowód:
+`impl/ci/WP018_CHECK_2026-10-26.txt`. Granica: to walidacja pojedynczego
+udziału, nie obwód `a(a+1)=0` ani SHAKE na udziałach (WP-030+/O-16).
+
 **2026-10-26 — S09/THRESHOLD_P2_001: WP-015 DONE (maski otwarć w `Z_P`).**
 Audyt #4 domknięty po stronie prymitywu: `mask::Mask` jest jednorazowa
 i liniowa (brak `Clone`/`Copy`, `apply` konsumuje maskę), więc dwóch otwarć

@@ -37,6 +37,8 @@ pub enum CoreError {
     MacFail,
     /// Korzeń transkryptu DKG nie zgadza się z oczekiwanym.
     TranscriptMismatch,
+    /// Udział bitu nie jest bitem (0/1) — fałszywy udział (WP-018).
+    NonBitShare,
     /// Relacja NTRU `f·h = g` nie zachodzi.
     NtruMismatch,
     /// Profil `PROD` wymaga evidence NTRU z MPC, a otrzymał jawny klucz.
@@ -60,6 +62,7 @@ impl fmt::Display for CoreError {
             Self::MissingKey => write!(f, "missing pairwise key"),
             Self::MacFail => write!(f, "MAC check failed (hidden delta)"),
             Self::TranscriptMismatch => write!(f, "DKG transcript root mismatch"),
+            Self::NonBitShare => write!(f, "bit share is not 0/1"),
             Self::NtruMismatch => write!(f, "NTRU relation f*h = g does not hold"),
             Self::ProdEvidenceMissing => {
                 write!(

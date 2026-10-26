@@ -1,6 +1,7 @@
 //! Rdzeń progowego podpisu FT1536 (P2).
 //!
-//! Zaimplementowane (WP-012a/b/c/d): GF(2^8) i Shamir seeda ([`gf256`]),
+//! Zaimplementowane (WP-012a/b/c/d, WP-018): GF(2^8) i Shamir seeda ([`gf256`]),
+//! udziały bitów i strumień bitów SHAKE ([`bits`]),
 //! pierścień `R_q` ([`ring`]), jawny SHAKE256 i `hash_to_point` ([`shake`])
 //! oraz PRSS z parami kluczy i udziałami zera ([`prss`]).
 //! NTT ternarna z silnika ([`ntt`]), Shamir w `Z_q` ([`shamir_zq`]) i Pedersen
@@ -10,6 +11,7 @@
 
 #![forbid(unsafe_code)]
 
+pub mod bits;
 pub mod error;
 pub mod gf256;
 pub mod mac;
