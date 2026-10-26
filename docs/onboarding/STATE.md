@@ -1,5 +1,20 @@
 # Stan projektu — punkt wejścia
 
+**2026-10-26 — S09/THRESHOLD_P2_001: WP-024 DONE (KAT-piny z silnika).**
+`impl/KAT/falcon_ternary_logn10_v1.txt` to wektor z rzeczywistego
+silnika: syntetyczne publiczne seedy (keygen/sign, `replace=1`) +
+zewnętrzny nonce 40 B + msg 32 B → pk 2881 B, podpis 2363 B i c0 (1536
+współczynników); silnik sam zweryfikował swój podpis (`engine_vrfy=PASS`).
+Klucz prywatny tylko jako `skey_shake256` — nie ma bajtów klucza w repo.
+`ci/kat/run_falcon_kat.sh` regeneruje KAT bitowo identycznie i pilnuje 13
+pinów plików silnika; test Rust (`tests/kat_pins.rs`, 3/3) reprodukuje c0
+współczynnik po współczynniku przez `hash_to_point` i sprawdza
+digesty/nagłówki (pk `0x8A`, sig `0xAA`). Piny pk/sig czekają na
+konsumpcję w WP-027 (wire) i porcie sign/verify. Wynik: 139 testów
+PASS (default) / 143 (all-features), clippy/deny/fmt/skan-PROD PASS.
+Dowód: `impl/ci/WP024_CHECK_2026-10-26.txt`. Następne: WP-027 (wire
+freeze) albo WP-026 (reproducible build).
+
 **2026-10-26 — S09/THRESHOLD_P2_001: WP-025 DONE (build PROD bez oracle).**
 Ścieżka `TEST-ORACLE` (jawny NTRU) jest teraz za cechą `test-oracle`,
 domyślnie wyłączoną: `verify_plaintext`, `validate_ntru` i wariant

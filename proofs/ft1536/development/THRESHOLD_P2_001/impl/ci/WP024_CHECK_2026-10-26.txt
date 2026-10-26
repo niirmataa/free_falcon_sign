@@ -1,0 +1,88 @@
+# WP-024 check — 2026-10-26 (KAT-piny z rzeczywistego silnika FT1536)
+# host: Linux 6.12.113+deb13-amd64 x86_64 GNU/Linux
+# rustc: rustc 1.94.0 (4a4ef493e 2026-03-02) · cc: Debian 14.2.0-19
+# cargo: offline, --locked · flagi silnika: 1:1 z Extra/c/Makefile
+
+== Cel ==
+Przypiąć w repo wektory KAT pochodzące z rzeczywistego silnika
+(`Extra/c`), łączące wejścia (seed/nonce/msg) z wynikami
+(pk/podpis/transkrypt-c0) — kotwica dla WP-027 (wire) i portu
+sign/verify, oraz test Rust, który dziś reprodukuje to, co już liczy
+(c0 przez `hash_to_point`).
+
+== Metoda ==
+Generator `impl/ci/kat/gen_falcon_kat.c` używa WYŁĄCZNIE publicznego API
+silnika: `falcon_keygen_new(10,1)` → `falcon_keygen_set_seed(replace=1)`
+→ `falcon_keygen_make(FALCON_COMP_STATIC)`; `falcon_sign_set_private_key`
+→ `falcon_sign_set_seed(replace=1)` → `falcon_sign_start_external_nonce`
+(40 B) → `falcon_sign_update` → `falcon_sign_generate`; samo-weryfikacja
+`falcon_vrfy_*` = 1. c0 liczone dokładnie ścieżką weryfikatora:
+SHAKE256(nonce‖msg) → `falcon_hash_to_point`. Wejścia syntetyczne,
+publiczne, jawne w pliku KAT. Klucz prywatny NIE jest zapisywany — tylko
+`skey_shake256` (higiena sekretów mimo syntetycznego klucza).
+
+== Wyniki ==
+Przebieg silnika (deterministyczny, bez systemowego RNG):
+  keygen:      pk 2881 B (nagłówek 0x8A), sk 7681 B (tylko hash)
+  sign:        sig 2363 B (nagłówek 0xAA), nonce 40 B zewnętrzny
+  engine_vrfy: PASS (silnik zweryfikował własny KAT)
+
+Odtwarzalność (`./ci/kat/run_falcon_kat.sh`):
+  regeneracja bitowo identyczna z `impl/KAT/falcon_ternary_logn10_v1.txt`
+  sha256   KAT: c96d4e8a6d6105aae1891f7108e776393d734345fb040aefd26aa41651e4ec3c
+  shake256 KAT: b0cbc57aced8e05b1a22ffb4270f893ef8b938572738cfce9c69522f9bb57862
+  MANIFEST: file+sha256+shake256 zgodne; 13/13 pinów silnika zgodne
+
+Testy Rust (`crates/ft-threshold-core/tests/kat_pins.rs`), 3/3 PASS:
+  kat_file_matches_manifest_digest      — SHAKE256(pliku) == pin manifestu
+  kat_c0_is_reproduced_by_hash_to_point — 1536/1536 współczynników c0
+  kat_field_digests_lengths_and_headers — pkey/sig digesty, długości,
+                                          nagłówki 0x8A/0xAA, zakaz
+                                          `skey = ` w pliku
+
+Całość CI: 139 testów PASS (default) / 143 (all-features); clippy
+-D warnings oba warianty, fmt, `cargo deny --offline`, skan PROD (WP-025)
+i skrypt KAT — wszystkie PASS.
+
+== Piny (SHA256) ==
+Harness:
+  b91f95fcc68c4ee83439544c4ef718dc2081e8c56665a190a45953cd6a958f92  ci/kat/gen_falcon_kat.c
+  dd41a707f6f7f0f50df11ed429855227a452858f2382a6f540cef63994c3ce5c  ci/kat/run_falcon_kat.sh
+  e0388191525b3dd888cc95d5aebef9939bd2273c2d75430be1de93c4d5691a96  crates/ft-threshold-core/tests/kat_pins.rs
+Wektory:
+  c96d4e8a6d6105aae1891f7108e776393d734345fb040aefd26aa41651e4ec3c  KAT/falcon_ternary_logn10_v1.txt
+  4bb90d90b42dfda60da468820361d2b22a1b56ea3962ac93a95400b63f94cea8  KAT/MANIFEST.txt
+Silnik: pełna lista 13 plików w `KAT/MANIFEST.txt` (sekcja `engine.*`),
+m.in. falcon-keygen.c 0a09b6ed…; weryfikowane przy każdej regeneracji.
+
+== Pułapki (zachowane jawnie) ==
+1. Brakujące flagi profilu: `falcon-sign.c` twardo wymaga
+   `-DCT_BEREXP=1 -DFT_TERNARY_ADAPTIVE_CDF=1` oraz stałych keygen
+   bound-scale z `Extra/c/Makefile`; bez nich `#error`. Rozwiązanie:
+   flagi skopiowane 1:1 z Makefile w `run_falcon_kat.sh`.
+2. `-DFPR_IMPL` przez `eval` tracił cudzysłowy → `#include expects
+   "FILENAME"`. Rozwiązanie: budowa argumentów przez `set --` z
+   dosłownym `'-DFPR_IMPL="fpr-emulated.h"'`, bez eval.
+3. Nagłówek podpisu: bit 4 jest ZAREZERWOWANY (=0), kompresja to bity
+   6–5; static = `0x80|0x20|0x0A` = 0xAA (nie 0x9A). Silnik sam to
+   zgłosił (`die("unexpected sig header byte")`).
+4. `set --` w skrypcie nadpisuje pozycyjne parametry — tryb `--update`
+   trzeba zapisać do zmiennej przed zbudowaniem listy argumentów.
+
+== Czego ten dowód NIE obejmuje ==
+- To nie jest niezależny odbiór (autor ≠ recenzent) ani ocena
+  poprawności silnika; silnik jest przypięty hashami, jego status
+  leży poza P2 (T12.1, Gate A5).
+- Rust nie dekoduje jeszcze formatów pk/sig silnika — piny czekają na
+  WP-027 (wire/CBOR) i port sign/verify (WP-040/041). Dziś testuje się
+  c0, digesty i nagłówki.
+- Zakres: wyłącznie ternary logn=10, comp=STATIC, jeden wektor; brak
+  pokrycia innych logn/profilów i ścieżek błędnych wejść (to WP-022).
+- KAT nie zastępuje audytu ani twierdzeń bezpieczeństwa.
+
+== Powtórzenie ==
+```
+cd proofs/ft1536/development/THRESHOLD_P2_001/impl
+./ci/kat/run_falcon_kat.sh                                  # PASS
+cargo test -p ft-threshold-core --test kat_pins --offline    # 3/3
+```
