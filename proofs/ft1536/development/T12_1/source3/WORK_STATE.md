@@ -1,3 +1,41 @@
+# SEED9_R1 — sustained route ACTIVE; generic row checkpoint581 accepted;582 running
+
+Owner: continue fully to completion. No stopping/handoff at these local
+checkpoints, no push or subagents. Overall IN_PROGRESS / NOT_REVIEWED.
+581 canonical keygen_mkgmrows198_581 accepted8/8, exit0, diagnostics0/0,
+warningAsError, markers/suppressions0;12 standard-only axiom results,
+44.879s sum/maxRSS3530976 KiB. Independent review NOT_RUN.
+Generic Level=Fin9 covers logn1..9, half=2^l/count=2*half/shift=10-l.
+REV10 address bounds and reversal involution/surjectivity kernel-checked;
+actual generic row store/body and complete lastRowLoop(logn2..9) construct
+initialized gm/igm upper halves from their writes, with no old upper-half
+initialization premise. Logn1 remains its actual separate branch.
+The finite full index family has511 pairs (510 for logn2..9); report has
+an explicit prose-count supplement and retained initial report bytes.
+ENTRY_PINS00f602e7…74673/74673 before/after; parent580104 hashes verified
+before/after. Initial verifier display labels were copied from579 and are
+explicitly corrected in supplemental/final logs; no pin/proof change.
+Four retained local failures among7:001 opaque lastIndex bound;003
+mechanical duplicate l/old index helper;005 repeated reserved prefix binder;
+006 opaque Fin.val/body alias. All original logs/snapshots retained.
+Report/evidence: notes/run/KEYGEN_MKGM_ROWS_198_581_REPORT.md and JSON.
+
+582 is ACTIVE: MkgmControl199 and generic row prelude/facts accepted
+locally3/3,0/0. Next = scalar post-increment power loop, logn1/other row
+branch, descending square loop and top elements, then actual d=2 bindings.
+582 entry pins checked74673; parent581 source/olean pairs8/8 clean verified.
+One retained582 control-helper elaboration attempt; attempt002 repaired
+comparison/shift proof; attempt003 accepts prelude/facts with control.
+New199 files are active drafts excluded from581 checkpoint until accepted
+as their own logical step. Do not discard or confuse them with foreign edits.
+Later prime/NTT/multi-limb reduction/CRT and d levels/root/certificate/codec
+remain OPEN. No full KeyGen/Sign/compiler/security/root-law or
+Z>0/p_accept/p_K/Z>=2^-256 claim; Old110/measured/five do_sign unchanged.
+Eleven waiting commits +581 checkpoint = twelve, without push. Foreign
+run2-reference/Dokumenty/threshold edits untouched. Continue work.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — sustained route ACTIVE; d=2 prefix checkpoint 580 accepted
 
 Owner instruction: continue fully to completion, without stopping at local
@@ -9347,3 +9385,17 @@ Job record (580): keygen_secondprefix197_580 — ACCEPTED 5/5, exit 0, diagnosti
 
 Job record (580 checkpoint): pins before/after PASS_INTEGRITY; verified 104 new evidence bindings. Next = local checkpoint, then continue581; no final handoff or push.
 Evidence-summary correction (580): organizer output carried a stale literal15 for axiom_results; actual parsed audit/evidence has11 throughout. The initial summary is retained as .build/step580/evidence_summary.initial.json; corrected organizer summary regenerated. No proof/audit result changed.
+
+Job record (581): entry verification — 74673/74673 unchanged; 104 actual580 evidence hashes verified. The copied verifier initial log incorrectly retained579 display labels8/8 and15; actual580 canonical evidence is5/5 and11. Initial log retained; verifier display corrected for supplemental/final checks, no pinned input change. Attempt001 — Params accepted9.489s; RowIndex RETAINED_ELABORATION_FAILURE: omega needs lastIndex unfolded in the modulo bound, not only count. Next: expose that equation, limits unchanged.
+Job record (581): attempt002 — ACCEPTED_LOCAL 2/2, 0/0: logn1..9 parameter family, exact REV10 index bounds, finite kernel-checked reversal involution/surjectivity and actual shifted-index/read bridges. Next: generic row store/body and initialization coverage; continue toward full generator, no push.
+Job record (581): attempt003 — parameter/index/fixed/store accepted4/4, 0/0; Body RETAINED_ELABORATION_FAILURE from a duplicated l argument in the state constructor and one leftover old next-index helper. Cascaded compiler placeholder diagnostics are retained; source contains no proof placeholders, no failed product imported. Next: correct those two mechanical adapter errors.
+Job record (581): attempt004 — ACCEPTED_LOCAL6/6, 0/0: generic logn1..9 parameters/REV10 address proof, row invariant/store/body and four-store initialization facts. No old twiddle-value or initialization assumption is used by those row-store facts. Next: full generic row loop and complete upper-half coverage via the proven reversal permutation.
+Job record (581): attempt005 — six dependencies accepted,0/0; loop RETAINED_PARSER_FAILURE from using reserved prefix as a binder (a previously documented trap, repeated here). Next: written binder, distinct nextXCell/nextIXCell proof names, finite kernel evenness fact; no limits or semantic changes.
+Job record (581): attempt006 — six dependencies accepted,0/0; Loop RETAINED_ELABORATION_FAILURE: omega kept the constructed Fin.val opaque in the coverage equation; simpa kept the body alias opaque. Next: explicit Nat projection target and body definition, unchanged limits.
+Job record (581): attempt007 — ACCEPTED_LOCAL7/7,0/0; complete actual last-row loop for all logn2..9, with initialized upper-half coverage constructed via the kernel-proved REV10 permutation, without an old initialized-row premise. Logn1 has its separate source branch and is not falsely run through the two-cell row body. Next: canonical row-engine checkpoint and continue immediately into scalar prelude/square/top generator composition.
+Job record (581): keygen_mkgmrows198_581 — ACCEPTED8/8, exit0, diagnostics0/0, warningAsError, no markers; complete actual generic last-row loop and initialized upper-half output for logn2..9, parametric REV10 proofs for logn1..9. Next: intermediate evidence/checkpoint plus immediate scalar prelude/square/top composition. Overall owner goal IN_PROGRESS; no final handoff or push.
+Job record (582): entry pins74673/74673 and canonical581 source/olean receipts8/8 verified. Attempt001 — RETAINED_ELABORATION_FAILURE: guessed Int.natCast_lt lemma name was unavailable; underspecified finite shift constructors left metas. Next: explicit integer comparison equivalence and fully specified dynamic shift proof, retaining limits.
+Job record (582): attempt002 — ACCEPTED_LOCAL MkgmControl199,3.372s,0/0: uint32 counter increments/comparisons and source row/size scalar arithmetic for all levels. Next: generic row prelude/facts and scalar power loop; source inputs remain pinned, overall work continues.
+
+Job record (581 checkpoint): final evidence {"accepted": 8, "axiom_results": 12, "failed_local_attempts": 4, "new_evidence_bindings": 250, "elapsed_s": 44.879, "maxrss_kib": 3530976}. Count correction is append-only in report; initial bytes retained. Next: local commit, continue582 without handoff or push.
+Job record (582): attempt003 — ACCEPTED_LOCAL3/3,0/0: control, generic row prelude and output field/frame facts; next scalar power/square/top composition.
