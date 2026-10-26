@@ -1,3 +1,28 @@
+# SEED9_R1 — sustained route ACTIVE; full d=2 part2 checkpoint587 accepted;588 starting
+
+Owner: continue fully to completion; no push, handoff, subagents or reviewers.
+Overall source-to-fiber goal IN_PROGRESS / NOT_REVIEWED.
+587 canonical keygen_secondloop204_587 accepted13/13,exit0,diagnostics0/0,
+warningAsError,markers/suppressions0;24 standard-only axiom results.
+No-premise actual complete d=2 part2: both scoped u0/u1 iterations, source
+row0/row1 generators/copies/products/inverses, source increments and false
+u2 terminal guard. All four128-word fd/gd product columns and all four256-word
+corrected fs/gs columns share the final output. Full512-word interleaved fs/gs
+images and outer n256/hn128/slen2/tlen3/u2 domains exported for actual CRT.
+40.395s sum,maxRSS3834112 KiB; limits unchanged; independent review NOT_RUN.
+ENTRY_PINS00f602e7…74673/74673 before/after; predecessor586812 hashes unchanged.
+11 attempts,1 retained before-alias heap-rewrite failure;450 new evidence bindings.
+Report/evidence notes/run/KEYGEN_SECOND_LOOP_204_587_REPORT.md and JSON.
+588 begins actual xlen2/num256 CRT core and signed normalization; then
+remaining additional-prime/forward/products and full d=2 return. Later d
+levels/root/certificate/codec remain OPEN. Executed word images do not assert
+mathematical CRT/normalization/NTT/root laws or full KeyGen/Sign/compiler/
+security/unconditional positivity/probability. Old110/measured/five do_sign
+unchanged. Seventeen waiting commits plus587=eighteen; no push. Foreign edits
+excluded; continue after this intermediate checkpoint.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — sustained route ACTIVE; actual d=2 first body checkpoint586 accepted;587 starting
 
 Owner: continue fully to completion; no push, handoff, subagents or reviewers.
@@ -9604,3 +9629,19 @@ Job record (586): attempt021 — ACCEPTED_LOCAL FirstBody,2.971s,0/0: no-premise
 Job record (586): keygen_secondfirstbody203_586 — ACCEPTED19/19,exit0,0/0,warningAsError,markers0;26 standard-only axiom results. No-premise actual d=2 first scoped prime iteration, both products and inverse images, u0→1 and next true guard; generic two-sided column/pair tail helpers and all bystander keeps. Next integrity/local checkpoint then587 odd-column preservation and actual u1 iteration/CRT; no push or final handoff.
 
 Job record (586 checkpoint): integrity/evidence PASS,74673 entry paths/136 predecessor hashes unchanged,812 new evidence bindings verified. Next exact-path local commit and immediate587 odd-column/u1/CRT work; no final handoff or push.
+Job record (587): entry74673/74673 and812 predecessor586 evidence hashes verified;586 committedc3c58b3d. Next preserve actual untouched odd fs/gs columns through the complete first scoped body/counter update, then execute u1 on that same output and close part2. No push, handoff, subagent or competing proof process.
+Job record (587): attempt001 — ACCEPTED_LOCAL FirstBodyKeep204,17.969s,0/0: both untouched odd columns preserved at the same full first inner-body output as the executed products/inverses. Next retain scope/next-state outer fields and source tables for the actual u1 prime/generator prefix.
+Job record (587): attempt002 — ACCEPTED_LOCAL KeygenTables204,1.969s,0/0: all relevant operational layers preserve symbolic table bindings unconditionally; call receivers restore caller tables. Next outer state after scope/u increment and no-premise first-body export with both untouched odd-column images.
+Job record (587): attempt003 — ACCEPTED_LOCAL3/3,0/0: table-binding constancy, full outer state after scope/u1, and no-premise actual first-body export retaining both untouched odd-column images on that same output. Next readonly PRIMES3/REV10 transport at the actual u1 state and the second-prime source prefix.
+Job record (587): attempt004 — ACCEPTED_LOCAL4/4,0/0: readonly PRIMES3/REV10 and REV10 binding transported to the actual u1 output via full prefix source execution. Next u1 original declarations/row1 p/p0i/R2 prefix and Basic state for the second generator/copy/product/inverse run.
+Job record (587): attempt005 — ACCEPTED_LOCAL5/5,0/0: exact u1 original declarations/PRIMES3[1].p/ninv31/R2 prefix and new Basic state, with source-derived readonly object. Next exact row1 generator and per-cell source-array/earlier-product keeps, then the actual second body and terminal u2 guard.
+Job record (587): attempt006 — five dependencies accepted5/5,0/0; row1 generator adapter RETAINED_ELABORATION_FAILURE: rw again leaves the new before alias opaque at three heap transports. Next explicit before_heap bridge, preserving all domains and limits.
+Proof progress (587): new second-body draft composes row1 declarations/generator and the full original two-sided tail at u1, carrying earlier read images through both generator and column stages; next verify geometry and full inner-body export.
+Job record (587): attempt007 — ACCEPTED_LOCAL7/7,0/0: row1 complete generator, earlier-product/source-array outside domains and cross-product-column separation. Next full u1 inner body, scope/u1→2 and terminal2<2 false guard; outer metadata generalized to the actual counter update.
+Job record (587): attempt008 — ACCEPTED_LOCAL9/9,0/0: full original u1 inner body with actual row1 generator and both product/inverse images; scope/u1→2 source update and terminal2<2 false loop guard. Next preserve four u0 images through u1 and assemble both original iterations into part2 at a single output.
+Job record (587): attempt009 — ACCEPTED_LOCAL10/10,0/0: both earlier u0 product images and corrected fs/gs column0 reads preserved through the complete u1 inner source body. Next no-premise two-iteration original loop/part2 with terminal u2 and all eight images at one scoped output.
+Job record (587): attempt010 — ACCEPTED_LOCAL11/11,0/0: no-premise actual complete d=2 part2 with both scoped u0/u1 iterations, source increments, false u2 guard and all eight product/inverse-column images sharing the final heap. Next interleave both fs/gs columns into full512-word images for the actual CRT input, original-type/axiom audit and canonical checkpoint.
+Job record (587): attempt011 — ACCEPTED_LOCAL12/12,0/0: complete actual d=2 part2 plus both full512-word interleaved fs/gs images, preserving all four fd/gd product columns at the same loop-exit heap. Next canonical13-module job with24 original-type/axiom results and intermediate checkpoint, then actual two-limb CRT588; owner goal remains active.
+Job record (587): keygen_secondloop204_587 — ACCEPTED13/13,exit0,0/0,warningAsError,markers0;24 standard-only axiom results. Complete actual d=2 part2, terminalu2, four output-product columns and full512-word fs/gs interleaved CRT-input images on one final heap. Next integrity/local checkpoint then actual two-limb CRT588; no push or final handoff.
+
+Job record (587 checkpoint): integrity/evidence PASS,74673 entry paths/812 predecessor hashes unchanged,450 new evidence hashes verified. Next exact-path local commit and immediate588 actual two-limb CRT source work; no push or final handoff.
