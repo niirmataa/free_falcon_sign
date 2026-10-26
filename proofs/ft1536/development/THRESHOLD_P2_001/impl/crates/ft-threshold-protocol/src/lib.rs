@@ -5,8 +5,10 @@
 //! sieci** — transport jest w `ft-threshold-transport`.
 //!
 //! WP-014: typestate setupu ([`state`]) — podpis tylko z walidowanego
-//! DKG/NTRU. Pełny protokół (ruchy, complainty, transkrypt) w G2/WP-030.
+//! DKG/NTRU. WP-020: uwierzytelnione koperty, licznik rund i replay-window
+//! ([`envelope`]). Pełny protokół (ruchy, complainty, transkrypt) w G2/WP-030.
 
 #![forbid(unsafe_code)]
 
+pub mod envelope;
 pub mod state;

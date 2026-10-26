@@ -1,5 +1,19 @@
 # Stan projektu — punkt wejścia
 
+**2026-10-26 — S09/THRESHOLD_P2_001: WP-020 DONE (koperty, replay, rollback).**
+Audyt #15 domknięty po stronie warstwy aplikacyjnej: `protocol::envelope`
+ma `Body` zgodne z SPEC §9.3, MAC per para (HMAC-SHA256 z domenami),
+`msg_id` z SHAKE256 niezależny od odbiorcy oraz `SessionReceiver`, który
+sprawdza kolejno MAC → rundę → `seq`. Cofnięcie rundy daje
+`RoundMismatch`, stara lub sprzeczna sekwencja `ReplayDetected`, a
+identyczna retransmisja (`seq` + `msg_id`) jest idempotentna (`Duplicate`).
+Okno replay ma 64 pozycje; skoki nie powodują pętli po całym `u64`.
+Stan: 135 testów natywnych PASS (core 109 + integracyjne 2 + protocol 19
++ 5 doctestów), clippy/deny PASS, miri `envelope::` 7/7. Dowód:
+`impl/ci/WP020_CHECK_2026-10-26.txt`. Granice: to nie AEAD/TLS — klucz
+`K_mac` z PSK jest tylko TEST-ORACLE, a PROD wymaga TLS exporter+HKDF
+(WP-045); kodowanie jest przejściowe binarne, CBOR to WP-027.
+
 **2026-10-26 — S09/THRESHOLD_P2_001: WP-019 DONE (malformed input, limity).**
 Audyt #14 domknięty dla zaimplementowanych typów wire: `ExpShare`,
 `VssCommitments`, `Poly` i `PairwiseKey` mają `TryFrom<&[u8]>` z dokładną

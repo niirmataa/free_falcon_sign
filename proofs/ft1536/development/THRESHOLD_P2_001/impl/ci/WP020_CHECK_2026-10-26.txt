@@ -1,0 +1,76 @@
+# WP-020 check — 2026-10-26 (koperty, licznik rund, replay-window)
+# host: Linux 6.12.113+deb13-amd64 x86_64 GNU/Linux
+# rustc: rustc 1.94.0 (4a4ef493e 2026-03-02)
+# cargo-deny: cargo-deny 0.20.2
+# nightly (miri): rustc 1.101.0-nightly (19833af72 2026-10-20), miri 0.1.0
+
+== fmt ==
+cargo fmt --all --check → OK (bez zmian)
+
+== test --workspace (locked, offline) ==
+ft-threshold-core:        109 passed; 0 failed; 0 ignored
+ft-threshold-core tests:    2 passed (integration `malformed`, 10^6)
+ft-threshold-protocol:      19 passed; 0 failed; 0 ignored
+doc-tests core:             3 passed (3× compile_fail)
+doc-tests protocol:         2 passed (2× compile_fail)
+RAZEM: 135 testów PASS, 0 failed.
+
+Nowe testy (protocol, `envelope`):
+- envelope_roundtrip_and_msg_id_is_recipient_independent
+  (ten sam `body` → ten sam `msg_id` dla różnych odbiorców; open zwraca
+  payload/round/seq/msg_type)
+- tampering_and_wrong_context_are_rejected
+  (mutacja MAC, `round`, payloadu, `recipient`; obcy klucz, inna epoka,
+  inna sesja → `AuthFail`)
+- replay_is_idempotent_only_for_identical_msg_id
+  (ten sam `seq` + `msg_id` → `Duplicate`; ten sam `seq`, inna treść →
+  `ReplayDetected`)
+- round_rollback_and_stale_window_are_rejected
+  (round 5 → round 4 = `RoundMismatch`; ta sama runda + rosnące `seq`
+  dozwolone; skok > okno, potem stara wiadomość → `ReplayDetected`)
+- out_of_order_within_window_is_new_then_duplicate
+  (seq 10, potem 8 → New; powtórka 8 → Duplicate; inne `msg_id` na 8 →
+  ReplayDetected; seq 0 → InvalidInput)
+- body_limits_and_ids_are_enforced
+  (zerowe `sender`/`sid`, `msg_type=0`, payload >1 MiB; zerowe ID klucza,
+  sender==recipient)
+- debug_does_not_reveal_key_or_payload
+
+== clippy -D warnings --workspace --all-targets ==
+Finished `dev` profile — 0 warning, 0 error.
+
+== cargo deny --offline check ==
+advisories ok, bans ok, licenses ok, sources ok
+Nowe zależności: `hmac 0.12.1`, `sha2 0.10.9` (z cache offline; licencje OK).
+
+== miri: protocol, filtr `envelope::` (log .build/miri_envelope_wp020.log) ==
+MIRIFLAGS="-Zmiri-disable-isolation" rustup run nightly cargo miri test \
+  -p ft-threshold-protocol --locked --offline envelope::
+test result: ok. 7 passed; 0 failed; 0 ignored; 12 filtered out; finished in 12.12s
+
+== Zakres WP-020 ==
+- `Body` per SPEC §9.3: version=1, `sid(32)`, `epoch`, `round`, `seq`,
+  `msg_type`, `sender(16)`, payload ≤1 MiB; walidacja pól w konstruktorze.
+- `Envelope::seal/open`: MAC per para (`HMAC-SHA256`, domeny
+  `FT1536/threshold/v1/{envelope-key,mac,msgid}`), weryfikacja odbiorcy,
+  sesji i epoki; `msg_id = SHAKE256(domain || canonical(body))[0..32]`,
+  niezależny od odbiorcy.
+- `EnvelopeKey::derive_psk` — **TEST-ORACLE** (jawnie oznaczony);
+  w `PROD` klucz z TLS exporter + HKDF-SHA256 (WP-045/O-09, poza zakresem).
+- `SessionReceiver`: MAC → runda → `seq`; `round` monotoniczny per nadawca,
+  cofnięcie = `RoundMismatch`.
+- `ReplayWindow` (64): stare poza oknem i sprzeczne `seq` = `ReplayDetected`;
+  identyczna retransmisja = `Duplicate` (idempotentnie, SPEC §9.5).
+- Kodowanie „canonical body” jest **przejściowe, binarne** (BE, długości
+  prefiksowane); canonical CBOR i schematy CDDL to WP-027.
+
+== Czego ten dowód NIE obejmuje ==
+- To nie jest niezależny odbiór (autor ≠ recenzent pozostaje wymagane).
+- To **nie** AEAD/TLS: HMAC koperty działa nad transportem; TLS 1.3/mTLS
+  i exporter-derived `K_mac` są w WP-045. Brak ochrony poufności payloadu
+  na tej warstwie — poufność zapewnia transport.
+- Brak canonical CBOR/CDDL i freeze formatu (WP-027); brak `to_bytes`/
+  `from_bytes` koperty na tym etapie.
+- Brak pełnego message flow setupu/sign (WP-030+); replay-window jest
+  per odbiorca i per nadawca, nie globalny.
+- `PROD` nadal zablokowane przez `ProdEvidenceMissing` (O-05).

@@ -1,0 +1,625 @@
+//! Uwierzytelnione koperty, licznik rund i replay-window (WP-020, SPEC §9.3).
+//!
+//! **Zakres.** Kanoniczny (przejściowy, binarny) `body`, MAC per para,
+//! monotoniczny `round` per nadawca i okno `seq` z idempotentną
+//! retransmisją identycznego `msg_id`. To warstwa aplikacyjna **nad** TLS
+//! 1.3/mTLS (D-010): nie zastępuje transportu i nie jest AEAD.
+//!
+//! **Klucz.** W `TEST-ORACLE` `K_mac` może pochodzić z pre-shared key
+//! ([`EnvelopeKey::derive_psk`]). W `PROD` klucz musi pochodzić z TLS
+//! exporter + HKDF-SHA256 z tagiem, `sid`, `epoch`, `sender`, `recipient`
+//! (SPEC §9.3); to zadanie WP-045/O-09 i **nie** jest tu udowodnione.
+//!
+//! **Kodowanie.** Do zamrożenia CBOR (WP-027) używamy jawnego, kanonicznego
+//! kodowania binarnego: długości i liczby całkowite big-endian, payload
+//! z 4-bajtowym prefiksem. Zmiana formatu wymaga nowej domeny MAC.
+//!
+//! **Fail-closed.** Zły MAC, zły odbiorca, obca sesja/epoka, powtórzone
+//! `seq` z innym `msg_id`, wiadomość poza oknem i cofnięcie rundy → `Err`.
+//! Identyczna retransmisja (`seq` + `msg_id`) jest idempotentna
+//! ([`Delivery::Duplicate`]), zgodnie z SPEC §9.5.
+
+use std::collections::BTreeMap;
+
+use hmac::{Hmac, Mac};
+use sha2::Sha256;
+use zeroize::{Zeroize, ZeroizeOnDrop};
+
+use ft_threshold_core::error::{CoreError, Result};
+use ft_threshold_core::shake;
+
+type HmacSha256 = Hmac<Sha256>;
+
+/// Domena wyprowadzania `K_mac` (PSK/TEST-ORACLE).
+pub const KEY_DOMAIN: &[u8] = b"FT1536/threshold/v1/envelope-key";
+/// Domena MAC koperty.
+pub const MAC_DOMAIN: &[u8] = b"FT1536/threshold/v1/mac";
+/// Domena `msg_id`.
+pub const MSGID_DOMAIN: &[u8] = b"FT1536/threshold/v1/msgid";
+
+/// Maksymalny payload koperty (v0; SPEC §9.5 zaostrza do 1 MiB na wiadomość).
+pub const MAX_PAYLOAD_BYTES: usize = 1 << 20;
+
+/// Rozmiar okna replay (`seq` poza oknem = odrzucone).
+pub const REPLAY_WINDOW: usize = 64;
+
+/// Identyfikator strony (16 B).
+pub type PartyId = [u8; 16];
+
+/// Klucz MAC pary `(sender, recipient)` w sesji i epoce.
+///
+/// Brak `Clone`; drop zeroizuje materiał klucza. `Debug` nie pokazuje klucza.
+#[derive(Zeroize, ZeroizeOnDrop)]
+pub struct EnvelopeKey {
+    key: [u8; 32],
+    sid: [u8; 32],
+    epoch: u64,
+    sender: PartyId,
+    recipient: PartyId,
+}
+
+impl std::fmt::Debug for EnvelopeKey {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("EnvelopeKey")
+            .field("sid", &self.sid)
+            .field("epoch", &self.epoch)
+            .field("sender", &self.sender)
+            .field("recipient", &self.recipient)
+            .finish_non_exhaustive()
+    }
+}
+
+impl EnvelopeKey {
+    /// `K_mac` z pre-shared key (TEST-ORACLE); w `PROD` użyć TLS exporter.
+    pub fn derive_psk(
+        psk: &[u8; 32],
+        sid: [u8; 32],
+        epoch: u64,
+        sender: PartyId,
+        recipient: PartyId,
+    ) -> Result<Self> {
+        if is_zero(&sid) || is_zero(&sender) || is_zero(&recipient) || sender == recipient {
+            return Err(CoreError::InvalidInput);
+        }
+        let mut h =
+            <HmacSha256 as Mac>::new_from_slice(psk).map_err(|_| CoreError::InvalidLength)?;
+        h.update(KEY_DOMAIN);
+        h.update(&sid);
+        h.update(&epoch.to_be_bytes());
+        h.update(&sender);
+        h.update(&recipient);
+        let out = h.finalize().into_bytes();
+        let mut key = [0u8; 32];
+        key.copy_from_slice(&out);
+        Ok(Self {
+            key,
+            sid,
+            epoch,
+            sender,
+            recipient,
+        })
+    }
+
+    /// Nadawca, do którego przypisany jest klucz.
+    pub fn sender(&self) -> &PartyId {
+        &self.sender
+    }
+
+    /// Odbiorca, do którego przypisany jest klucz.
+    pub fn recipient(&self) -> &PartyId {
+        &self.recipient
+    }
+
+    fn mac(&self, body_bytes: &[u8], recipient: &PartyId) -> Result<[u8; 32]> {
+        let mut h =
+            <HmacSha256 as Mac>::new_from_slice(&self.key).map_err(|_| CoreError::InvalidLength)?;
+        h.update(MAC_DOMAIN);
+        h.update(body_bytes);
+        h.update(recipient);
+        let out = h.finalize().into_bytes();
+        let mut mac = [0u8; 32];
+        mac.copy_from_slice(&out);
+        Ok(mac)
+    }
+}
+
+/// `body` wiadomości (SPEC §9.3); payload może być poufny.
+pub struct Body {
+    version: u8,
+    sid: [u8; 32],
+    epoch: u64,
+    round: u64,
+    seq: u64,
+    msg_type: u16,
+    sender: PartyId,
+    payload: Vec<u8>,
+}
+
+impl std::fmt::Debug for Body {
+    /// `Debug` nie wypisuje payloadu (może zawierać udziały).
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("Body")
+            .field("version", &self.version)
+            .field("sid", &self.sid)
+            .field("epoch", &self.epoch)
+            .field("round", &self.round)
+            .field("seq", &self.seq)
+            .field("msg_type", &self.msg_type)
+            .field("sender", &self.sender)
+            .field("payload_len", &self.payload.len())
+            .finish_non_exhaustive()
+    }
+}
+
+impl Body {
+    /// Buduje `body`; wersja musi być 1, `msg_type != 0`, ID niezerowe,
+    /// payload ≤ [`MAX_PAYLOAD_BYTES`].
+    #[allow(clippy::too_many_arguments)]
+    pub fn new(
+        sid: [u8; 32],
+        epoch: u64,
+        round: u64,
+        seq: u64,
+        msg_type: u16,
+        sender: PartyId,
+        payload: Vec<u8>,
+    ) -> Result<Self> {
+        if is_zero(&sid) || is_zero(&sender) {
+            return Err(CoreError::InvalidInput);
+        }
+        if msg_type == 0 {
+            return Err(CoreError::InvalidInput);
+        }
+        if payload.len() > MAX_PAYLOAD_BYTES {
+            return Err(CoreError::InvalidLength);
+        }
+        Ok(Self {
+            version: 1,
+            sid,
+            epoch,
+            round,
+            seq,
+            msg_type,
+            sender,
+            payload,
+        })
+    }
+
+    /// Wersja formatu (stała 1).
+    pub fn version(&self) -> u8 {
+        self.version
+    }
+
+    /// Identyfikator sesji.
+    pub fn sid(&self) -> &[u8; 32] {
+        &self.sid
+    }
+
+    /// Epoka klucza.
+    pub fn epoch(&self) -> u64 {
+        self.epoch
+    }
+
+    /// Runda protokołu.
+    pub fn round(&self) -> u64 {
+        self.round
+    }
+
+    /// Licznik per nadawca.
+    pub fn seq(&self) -> u64 {
+        self.seq
+    }
+
+    /// Typ komunikatu.
+    pub fn msg_type(&self) -> u16 {
+        self.msg_type
+    }
+
+    /// Nadawca.
+    pub fn sender(&self) -> &PartyId {
+        &self.sender
+    }
+
+    /// Payload (może być poufny; nie logować).
+    pub fn payload(&self) -> &[u8] {
+        &self.payload
+    }
+
+    /// `msg_id = SHAKE256(domain || canonical(body))[0..32]`, niezależny
+    /// od odbiorcy.
+    pub fn msg_id(&self) -> [u8; 32] {
+        let encoded = self.encode();
+        let mut input = Vec::with_capacity(MSGID_DOMAIN.len() + encoded.len());
+        input.extend_from_slice(MSGID_DOMAIN);
+        input.extend_from_slice(&encoded);
+        let mut out = [0u8; 32];
+        shake::shake256(&input, &mut out);
+        out
+    }
+
+    /// Kanoniczne bajty `body` (przejściowe, binarne).
+    fn encode(&self) -> Vec<u8> {
+        let mut out = Vec::with_capacity(1 + 32 + 8 + 8 + 8 + 2 + 16 + 4 + self.payload.len());
+        out.push(self.version);
+        out.extend_from_slice(&self.sid);
+        out.extend_from_slice(&self.epoch.to_be_bytes());
+        out.extend_from_slice(&self.round.to_be_bytes());
+        out.extend_from_slice(&self.seq.to_be_bytes());
+        out.extend_from_slice(&self.msg_type.to_be_bytes());
+        out.extend_from_slice(&self.sender);
+        // Limit payloadu jest sprawdzony w `new`, więc konwersja jest ścisła.
+        out.extend_from_slice(
+            &u32::try_from(self.payload.len())
+                .expect("payload ≤ 1 MiB")
+                .to_be_bytes(),
+        );
+        out.extend_from_slice(&self.payload);
+        out
+    }
+}
+
+/// Uwierzytelniona koperta.
+pub struct Envelope {
+    body: Body,
+    recipient: PartyId,
+    mac: [u8; 32],
+}
+
+impl std::fmt::Debug for Envelope {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("Envelope")
+            .field("body", &self.body)
+            .field("recipient", &self.recipient)
+            .finish_non_exhaustive()
+    }
+}
+
+impl Envelope {
+    /// Opakowuje `body` kluczem pary; `body.sender` musi zgadzać się z kluczem.
+    pub fn seal(key: &EnvelopeKey, body: Body) -> Result<Self> {
+        if body.sender != key.sender || body.sid != key.sid || body.epoch != key.epoch {
+            return Err(CoreError::AuthFail);
+        }
+        let bytes = body.encode();
+        let mac = key.mac(&bytes, &key.recipient)?;
+        Ok(Self {
+            body,
+            recipient: key.recipient,
+            mac,
+        })
+    }
+
+    /// Weryfikuje MAC i kontekst, zwraca `body` (konsumuje kopertę).
+    pub fn open(self, key: &EnvelopeKey) -> Result<Body> {
+        if self.body.sender != key.sender
+            || self.recipient != key.recipient
+            || self.body.sid != key.sid
+            || self.body.epoch != key.epoch
+        {
+            return Err(CoreError::AuthFail);
+        }
+        let bytes = self.body.encode();
+        let expected = key.mac(&bytes, &self.recipient)?;
+        if !ct_eq32(&expected, &self.mac) {
+            return Err(CoreError::AuthFail);
+        }
+        Ok(self.body)
+    }
+
+    /// `body` bez weryfikacji — wyłącznie do diagnostyki/testów; nie ufać.
+    pub fn body_unverified(&self) -> &Body {
+        &self.body
+    }
+}
+
+/// Wynik przyjęcia koperty.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum Delivery {
+    /// Nowa wiadomość.
+    New,
+    /// Identyczna retransmisja (`seq` + `msg_id`); idempotentnie zignorowana.
+    Duplicate,
+}
+
+/// Okno `seq` z idempotentną retransmisją identycznego `msg_id`.
+pub struct ReplayWindow {
+    highest: u64,
+    slots: [Option<[u8; 32]>; REPLAY_WINDOW],
+}
+
+impl Default for ReplayWindow {
+    fn default() -> Self {
+        Self {
+            highest: 0,
+            slots: [None; REPLAY_WINDOW],
+        }
+    }
+}
+
+impl ReplayWindow {
+    /// Przyjmuje `seq`/`msg_id`; stare lub sprzeczne → `Err`.
+    pub fn accept(&mut self, seq: u64, msg_id: [u8; 32]) -> Result<Delivery> {
+        if seq == 0 {
+            return Err(CoreError::InvalidInput);
+        }
+        if self.highest == 0 {
+            self.highest = seq;
+            self.slots[idx(seq)] = Some(msg_id);
+            return Ok(Delivery::New);
+        }
+        if seq > self.highest {
+            let gap = seq - self.highest;
+            if gap >= REPLAY_WINDOW as u64 {
+                self.slots.fill(None);
+            } else {
+                for s in (self.highest + 1)..=seq {
+                    self.slots[idx(s)] = None;
+                }
+            }
+            self.highest = seq;
+            self.slots[idx(seq)] = Some(msg_id);
+            return Ok(Delivery::New);
+        }
+        if self.highest - seq >= REPLAY_WINDOW as u64 {
+            return Err(CoreError::ReplayDetected);
+        }
+        match self.slots[idx(seq)] {
+            Some(prev) if prev == msg_id => Ok(Delivery::Duplicate),
+            Some(_) => Err(CoreError::ReplayDetected),
+            None => {
+                self.slots[idx(seq)] = Some(msg_id);
+                Ok(Delivery::New)
+            }
+        }
+    }
+}
+
+/// Stan odbiorcy sesji: `sid`, epoka, własne ID i okna nadawców.
+pub struct SessionReceiver {
+    sid: [u8; 32],
+    epoch: u64,
+    me: PartyId,
+    peers: BTreeMap<PartyId, PeerState>,
+}
+
+#[derive(Default)]
+struct PeerState {
+    round: u64,
+    replay: ReplayWindow,
+}
+
+impl SessionReceiver {
+    /// Nowy odbiorca; IDs i `sid` muszą być niezerowe.
+    pub fn new(sid: [u8; 32], epoch: u64, me: PartyId) -> Result<Self> {
+        if is_zero(&sid) || is_zero(&me) {
+            return Err(CoreError::InvalidInput);
+        }
+        Ok(Self {
+            sid,
+            epoch,
+            me,
+            peers: BTreeMap::new(),
+        })
+    }
+
+    /// Weryfikuje klucz/kopertę, kolejność rundy i okno `seq`.
+    ///
+    /// Kolejność: najpierw MAC (żeby nie ujawniać stanu odbiorcy bez
+    /// uwierzytelnienia), potem `round`, potem `seq`.
+    pub fn accept(&mut self, key: &EnvelopeKey, env: Envelope) -> Result<(Body, Delivery)> {
+        if key.sid != self.sid || key.epoch != self.epoch || key.recipient != self.me {
+            return Err(CoreError::AuthFail);
+        }
+        let body = env.open(key)?;
+        let peer = self.peers.entry(body.sender).or_default();
+        if body.round < peer.round {
+            return Err(CoreError::RoundMismatch);
+        }
+        let msg_id = body.msg_id();
+        let delivery = peer.replay.accept(body.seq, msg_id)?;
+        if delivery == Delivery::New {
+            peer.round = body.round;
+        }
+        Ok((body, delivery))
+    }
+}
+
+fn idx(seq: u64) -> usize {
+    ((seq - 1) as usize) % REPLAY_WINDOW
+}
+
+fn is_zero(bytes: &[u8]) -> bool {
+    bytes.iter().all(|&b| b == 0)
+}
+
+fn ct_eq32(a: &[u8; 32], b: &[u8; 32]) -> bool {
+    let mut diff = 0u8;
+    for i in 0..32 {
+        diff |= a[i] ^ b[i];
+    }
+    diff == 0
+}
+
+#[cfg(test)]
+mod tests {
+    use super::{
+        Body, Delivery, Envelope, EnvelopeKey, MAX_PAYLOAD_BYTES, REPLAY_WINDOW, ReplayWindow,
+        SessionReceiver,
+    };
+    use ft_threshold_core::error::CoreError;
+
+    const SID: [u8; 32] = [0x11; 32];
+    const A: [u8; 16] = [0xa1; 16];
+    const B: [u8; 16] = [0xb2; 16];
+    const C: [u8; 16] = [0xc3; 16];
+    const EPOCH: u64 = 7;
+
+    fn key(seed: u8, sender: [u8; 16], recipient: [u8; 16]) -> EnvelopeKey {
+        EnvelopeKey::derive_psk(&[seed; 32], SID, EPOCH, sender, recipient).expect("key")
+    }
+
+    fn body(round: u64, seq: u64, msg_type: u16, payload: &[u8]) -> Body {
+        Body::new(SID, EPOCH, round, seq, msg_type, A, payload.to_vec()).expect("body")
+    }
+
+    #[test]
+    fn envelope_roundtrip_and_msg_id_is_recipient_independent() {
+        let k1 = key(1, A, B);
+        let k2 = key(1, A, C);
+        let b1 = body(3, 1, 0x05, b"secret payload");
+        let id1 = b1.msg_id();
+        let b2 = body(3, 1, 0x05, b"secret payload");
+        assert_eq!(id1, b2.msg_id());
+        let e1 = Envelope::seal(&k1, b1).expect("seal 1");
+        let e2 = Envelope::seal(&k2, b2).expect("seal 2");
+        assert_eq!(e1.body_unverified().msg_id(), e2.body_unverified().msg_id());
+        let opened1 = e1.open(&k1).expect("open 1");
+        assert_eq!(opened1.payload(), b"secret payload");
+        assert_eq!(opened1.round(), 3);
+        assert_eq!(opened1.seq(), 1);
+        assert_eq!(opened1.msg_type(), 0x05);
+        let opened2 = e2.open(&k2).expect("open 2");
+        assert_eq!(opened2.payload(), b"secret payload");
+    }
+
+    #[test]
+    fn tampering_and_wrong_context_are_rejected() {
+        // Mutacje pól po zapieczętowaniu (testy w module widzą prywatne pola).
+        let k = key(2, A, B);
+        let mut e = Envelope::seal(&k, body(1, 1, 1, b"x")).expect("seal");
+        e.mac[0] ^= 1;
+        assert_eq!(e.open(&k).unwrap_err(), CoreError::AuthFail);
+
+        let mut e = Envelope::seal(&k, body(1, 1, 1, b"x")).expect("seal");
+        e.body.round += 1;
+        assert_eq!(e.open(&k).unwrap_err(), CoreError::AuthFail);
+
+        let mut e = Envelope::seal(&k, body(1, 1, 1, b"x")).expect("seal");
+        e.body.payload[0] ^= 1;
+        assert_eq!(e.open(&k).unwrap_err(), CoreError::AuthFail);
+
+        let mut e = Envelope::seal(&k, body(1, 1, 1, b"x")).expect("seal");
+        e.recipient[0] ^= 1;
+        assert_eq!(e.open(&k).unwrap_err(), CoreError::AuthFail);
+
+        // Obcy klucz (inna para), inna epoka/sesja.
+        let other = key(3, A, B);
+        let e = Envelope::seal(&k, body(1, 1, 1, b"x")).expect("seal");
+        assert_eq!(e.open(&other).unwrap_err(), CoreError::AuthFail);
+
+        let wrong_epoch = EnvelopeKey::derive_psk(&[2; 32], SID, EPOCH + 1, A, B).expect("key");
+        let e = Envelope::seal(&k, body(1, 1, 1, b"x")).expect("seal");
+        assert_eq!(e.open(&wrong_epoch).unwrap_err(), CoreError::AuthFail);
+
+        let wrong_sid = EnvelopeKey::derive_psk(&[2; 32], [0x22; 32], EPOCH, A, B).expect("key");
+        let e = Envelope::seal(&k, body(1, 1, 1, b"x")).expect("seal");
+        assert_eq!(e.open(&wrong_sid).unwrap_err(), CoreError::AuthFail);
+    }
+
+    #[test]
+    fn replay_is_idempotent_only_for_identical_msg_id() {
+        let k = key(4, A, B);
+        let mut rx = SessionReceiver::new(SID, EPOCH, B).expect("receiver");
+        let (_, d) = rx
+            .accept(
+                &k,
+                Envelope::seal(&k, body(2, 10, 1, b"one")).expect("seal"),
+            )
+            .expect("accept");
+        assert_eq!(d, Delivery::New);
+
+        // Ta sama treść → ten sam msg_id → Duplicate (retransmisja).
+        let (_, d) = rx
+            .accept(
+                &k,
+                Envelope::seal(&k, body(2, 10, 1, b"one")).expect("seal"),
+            )
+            .expect("retransmit");
+        assert_eq!(d, Delivery::Duplicate);
+
+        // To samo seq, inna treść → ReplayDetected.
+        let err = rx
+            .accept(
+                &k,
+                Envelope::seal(&k, body(2, 10, 1, b"two")).expect("seal"),
+            )
+            .unwrap_err();
+        assert_eq!(err, CoreError::ReplayDetected);
+    }
+
+    #[test]
+    fn round_rollback_and_stale_window_are_rejected() {
+        let k = key(5, A, B);
+        let mut rx = SessionReceiver::new(SID, EPOCH, B).expect("receiver");
+        rx.accept(&k, Envelope::seal(&k, body(5, 1, 1, b"a")).expect("seal"))
+            .expect("round 5");
+        let err = rx
+            .accept(&k, Envelope::seal(&k, body(4, 2, 1, b"b")).expect("seal"))
+            .unwrap_err();
+        assert_eq!(err, CoreError::RoundMismatch);
+
+        // Ta sama runda, rosnące seq — dozwolone.
+        let (_, d) = rx
+            .accept(&k, Envelope::seal(&k, body(5, 2, 1, b"b")).expect("seal"))
+            .expect("round 5 seq 2");
+        assert_eq!(d, Delivery::New);
+
+        // Skok poza okno, potem stara wiadomość.
+        rx.accept(
+            &k,
+            Envelope::seal(&k, body(6, 1 + REPLAY_WINDOW as u64 + 100, 1, b"jump")).expect("seal"),
+        )
+        .expect("jump");
+        let err = rx
+            .accept(&k, Envelope::seal(&k, body(6, 2, 1, b"old")).expect("seal"))
+            .unwrap_err();
+        assert_eq!(err, CoreError::ReplayDetected);
+    }
+
+    #[test]
+    fn out_of_order_within_window_is_new_then_duplicate() {
+        let mut w = ReplayWindow::default();
+        assert_eq!(w.accept(10, [1; 32]).expect("10"), Delivery::New);
+        assert_eq!(w.accept(8, [2; 32]).expect("8"), Delivery::New);
+        assert_eq!(w.accept(8, [2; 32]).expect("8 again"), Delivery::Duplicate);
+        assert_eq!(w.accept(8, [3; 32]).unwrap_err(), CoreError::ReplayDetected);
+        assert_eq!(w.accept(0, [4; 32]).unwrap_err(), CoreError::InvalidInput);
+    }
+
+    #[test]
+    fn body_limits_and_ids_are_enforced() {
+        assert_eq!(
+            Body::new(SID, EPOCH, 1, 1, 1, [0u8; 16], vec![]).unwrap_err(),
+            CoreError::InvalidInput
+        );
+        assert_eq!(
+            Body::new([0u8; 32], EPOCH, 1, 1, 1, A, vec![]).unwrap_err(),
+            CoreError::InvalidInput
+        );
+        assert_eq!(
+            Body::new(SID, EPOCH, 1, 1, 0, A, vec![]).unwrap_err(),
+            CoreError::InvalidInput
+        );
+        assert_eq!(
+            Body::new(SID, EPOCH, 1, 1, 1, A, vec![0u8; MAX_PAYLOAD_BYTES + 1]).unwrap_err(),
+            CoreError::InvalidLength
+        );
+        assert!(Body::new(SID, EPOCH, 1, 1, 1, A, vec![0u8; MAX_PAYLOAD_BYTES]).is_ok());
+
+        assert!(EnvelopeKey::derive_psk(&[0u8; 32], SID, EPOCH, A, A).is_err());
+        assert!(EnvelopeKey::derive_psk(&[0u8; 32], SID, EPOCH, [0u8; 16], B).is_err());
+        assert!(SessionReceiver::new(SID, EPOCH, [0u8; 16]).is_err());
+    }
+
+    #[test]
+    fn debug_does_not_reveal_key_or_payload() {
+        let k = key(6, A, B);
+        let text = format!("{k:?}");
+        assert!(text.contains("EnvelopeKey"));
+        assert!(!text.contains("key"));
+        let b = body(1, 1, 1, b"top-secret-payload");
+        let text = format!("{b:?}");
+        assert!(text.contains("Body"));
+        assert!(!text.contains("top-secret-payload"));
+    }
+}

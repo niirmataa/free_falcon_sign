@@ -39,6 +39,12 @@ pub enum CoreError {
     TranscriptMismatch,
     /// Udział bitu nie jest bitem (0/1) — fałszywy udział (WP-018).
     NonBitShare,
+    /// Envelope MAC nie przechodzi (zły klucz, podmiana, obcięcie).
+    AuthFail,
+    /// Powtórzone `seq`/`msg_id` albo wiadomość poza oknem replay.
+    ReplayDetected,
+    /// Cofnięcie rundy (round < ostatnia przyjęta).
+    RoundMismatch,
     /// Relacja NTRU `f·h = g` nie zachodzi.
     NtruMismatch,
     /// Profil `PROD` wymaga evidence NTRU z MPC, a otrzymał jawny klucz.
@@ -63,6 +69,9 @@ impl fmt::Display for CoreError {
             Self::MacFail => write!(f, "MAC check failed (hidden delta)"),
             Self::TranscriptMismatch => write!(f, "DKG transcript root mismatch"),
             Self::NonBitShare => write!(f, "bit share is not 0/1"),
+            Self::AuthFail => write!(f, "envelope authentication failed"),
+            Self::ReplayDetected => write!(f, "replay or stale sequence detected"),
+            Self::RoundMismatch => write!(f, "round rollback detected"),
             Self::NtruMismatch => write!(f, "NTRU relation f*h = g does not hold"),
             Self::ProdEvidenceMissing => {
                 write!(
