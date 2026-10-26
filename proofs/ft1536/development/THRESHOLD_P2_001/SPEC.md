@@ -228,6 +228,11 @@ zestaw zobowiązań per współczynnik: `C_{j,l} = a_{j,l}·G + r_{j,l}·H`
 (audyt #7). Rozmiar: `4·N·32 B ≈ 196 kB` na stronę; dla `n=5` ~1 MB.
 Dopuszczalne; mierzone w WP-030.
 
+Generatory: `G = RISTRETTO_BASEPOINT_POINT`;
+`H = RistrettoPoint::from_uniform_bytes(SHA3-512("FT1536/threshold/v1/pedersen-h"))`
+(nothing-up-my-sleeve, pin w `vss.rs`). Dla B′ Faza A: 32 wartości `Z_q`,
+`k` zobowiązań na wartość (32·`k` punktów zamiast `4·N`).
+
 **S3 — udziały.** Dla każdej strony `j`: `s_{i→j} = Σ_l a_l·x_j^l`
 i analogicznie blind. Wysyłka poufna, uwierzytelniona, związana z `sid`.
 Strona `j` weryfikuje:

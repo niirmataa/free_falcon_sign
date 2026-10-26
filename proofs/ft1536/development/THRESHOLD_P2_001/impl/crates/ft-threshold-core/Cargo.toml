@@ -11,5 +11,10 @@ publish.workspace = true
 workspace = true
 
 [dependencies]
+curve25519-dalek = { version = "4", default-features = false, features = [
+    "alloc",
+    "precomputed-tables",
+    "zeroize",
+] }
 sha3 = "0.10"
 zeroize = { version = "1", features = ["derive"] }

@@ -3,7 +3,8 @@
 //! Zaimplementowane (WP-012a/b/c/d): GF(2^8) i Shamir seeda ([`gf256`]),
 //! pierścień `R_q` ([`ring`]), jawny SHAKE256 i `hash_to_point` ([`shake`])
 //! oraz PRSS z parami kluczy i udziałami zera ([`prss`]).
-//! NTT ternarna z silnika ([`ntt`]). W kolejce WP-012: Pedersen. Zasady: brak I/O,
+//! NTT ternarna z silnika ([`ntt`]) i Pedersen VSS nad `Z_q` ([`vss`]).
+//! Zasady: brak I/O,
 //! brak `unsafe`, docelowo `no_std`-ready.
 
 #![forbid(unsafe_code)]
@@ -14,6 +15,7 @@ pub mod ntt;
 pub mod prss;
 pub mod ring;
 pub mod shake;
+pub mod vss;
 
 pub use error::{CoreError, Result};
 
