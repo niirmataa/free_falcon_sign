@@ -1,3 +1,25 @@
+# SEED9_R1 — sustained route ACTIVE; d=2 generator checkpoint583 accepted;584 starting
+
+Owner: continue fully to completion; no push, handoff, subagents or reviewers.
+Overall source-to-fiber goal remains IN_PROGRESS / NOT_REVIEWED.
+583 canonical keygen_secondgenerator200_583 accepted6/6, exit0, diagnostics0/0,
+warningAsError, markers/suppressions0;13 standard-only axiom results.
+Generic complete-generator seven-arg call/ter branch (logn1..9/full0) plus
+actual d=2 static transport, u=0 first-prime declarations/p/p0i/R2 and
+complete256-word gm/igm images on one output. Entry fragment and original
+inner-body continuation exported; full d=2 iteration/part2 remains OPEN.
+19.037s sum,maxRSS4178852 KiB; unchanged limits; independent review NOT_RUN.
+ENTRY_PINS00f602e7…74673/74673 before/after, parent582542 hashes unchanged.
+Four attempts, one retained elaboration failure; 106 new evidence bindings.
+Report/evidence notes/run/KEYGEN_SECOND_GENERATOR_200_583_REPORT.md and JSON.
+584 starts generic lower-size inverse/forward NTT; NttSize201 draft authored.
+Then actual prime loops/multi-limb CRT, later d levels/root/certificate/codec.
+Broad KeyGen/Sign/compiler/security and unconditional probability/positivity
+claims remain OPEN. Old110/measured/five do_sign unchanged.
+Thirteen waiting commits plus583=fourteen; no push. Foreign edits excluded.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — sustained route ACTIVE; complete generator checkpoint582 accepted;583 running
 
 Owner: continue fully to completion; no push, handoff, subagents or reviewers.
@@ -9442,3 +9464,11 @@ Job record (582): attempt017 — ACCEPTED_LOCAL5/5,0/0, with hash-checked unchan
 Job record (582): keygen_mkgmcomplete199_582 — ACCEPTED14/14,exit0,0/0,warningAsError,markers0;22 standard-only axiom results.58.387s sum,maxRSS4164024 KiB. Entire original generator logn1..9/full0 and complete initialized/readable outputs constructed without old-init premise. Next: intermediate evidence/local checkpoint, then actual d=2 call bindings583; no push or final handoff.
 
 Job record (582 checkpoint): final evidence PASS_INTEGRITY,74673 entry paths and250 predecessor bindings unchanged, 542 new evidence bindings verified;14/14,22 standard-only results. Next exact-path local commit and immediate583 continuation; no push or final handoff.
+Job record (583): entry74673/74673 and full582 predecessor evidence reverified before proof work; checkpoint582 committed14d3330b. Next actual seven-argument generator call adapter, then concrete d=2 prime prefix/generator. No competing proof job; no push or handoff.
+Job record (583): attempt001 — RETAINED_ELABORATION_FAILURE: arbitrary pointers need their actual index≤count domains derived from allocation, and symbolic uint32 parameter conversions need explicit simplification rather than rfl. Next derive those bounds/cells from the existing input, no new output assumptions.
+Job record (583): attempt002 — ACCEPTED_LOCAL MkgmCall200,3.271s,0/0: exact seven-argument call/ter branch and both complete readable outputs for logn1..9. No raw initialized-table premise. Next actual d=2 readonly/static transport, first-prime prefix and complete generator instantiation.
+Job record (583): attempt003 — ACCEPTED_LOCAL3/3,0/0: generic generator call plus actual first-step readonly/static transport across d=2 memmove, and d=2 u=0 first-prime declarations/p/p0i/R2 prefix. Next complete d=2 generator instantiation and entry-to-generator fragment with both256-word output images.
+Job record (583): attempt004 — ACCEPTED_LOCAL5/5,0/0: actual d=2 first-prime prefix and complete256-word gm/igm source generator at the same caller output, plus original-body continuation and entry-to-generator fragment. No new initialization/output premise. Next canonical6 modules including original-type/13-axiom audit; continue directly to lower-size NTT.
+Job record (583): keygen_secondgenerator200_583 — ACCEPTED6/6,exit0,0/0,warningAsError,markers0;13 standard-only axiom results. Exact generic seven-argument call plus actual d=2 first-prime prefix/generator and both256-word images; source-entry fragment and original-body continuation exported. Next pin/evidence/local checkpoint and immediately lower-size inverse/forward NTT584; no push or handoff.
+
+Job record (583 checkpoint): final integrity/evidence PASS,74673 entry paths and542 predecessor bindings unchanged,106 new evidence hashes verified. Next exact-path local commit and immediate584 lower-size NTT work, no final handoff or push.
