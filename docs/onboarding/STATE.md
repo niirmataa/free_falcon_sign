@@ -1,5 +1,21 @@
 # Stan projektu — punkt wejścia
 
+**2026-10-26 — S09/THRESHOLD_P2_001: WP-010/011/012 DONE (prymitywy + CI).**
+Workspace 7 crate'ów (toolchain 1.94.0) i hermetyczne `impl/ci/check.sh`
+(fmt/build/test/clippy `-D warnings`/`cargo deny --offline`/miri) gotowe;
+`cargo-deny 0.20.2` z pinem bazy advisoryjnej. WP-012 portu prymitywów
+**DONE**: `gf256` (GF(2^8)+Shamir seeda), `ring` (`R_q`, q=18433, N=1536),
+`shake` (SHAKE256 + `hash_to_point` silnika), `prss` (pary kluczy, udziały
+zera), `ntt` (wierny port `mq_mkgm3`/`mq_NTT_ternary`, logn=10),
+`shamir_zq` (Shamir w `Z_q` dla seeda B′) i `vss` (Pedersen nad `Z_q`,
+zobowiązania + udziały wykładnikowe, pin `H`). Dowody: **71 testów
+natywnych PASS**, KAT niezależne w Pythonie/OpenSSL/dalek, differential NTT
+vs szkolne `Poly::mul`, miri PASS (52 uruchomione + 11 `ignore` na czas
+Miri; blok `shamir_zq` 8/8 PASS). Log zbiorczy:
+`impl/ci/WP012_CHECK_2026-10-26.txt`. Commity lokalne: `d3c17014` (deny),
+`e7036a0b` (VSS), `5d87932f` (Shamir Z_q + WP-012 DONE). To **nie** jest
+odbiór G1: brak niezależnego recenzenta (autor ≠ recenzent). Bez push.
+
 **2026-10-26 — S09: decyzje potwierdzone, wariant B′ (D-024).**
 Właściciel potwierdził: **2-of-3** (D-003), **TLS 1.3/mTLS** (D-010),
 **kanoniczne CBOR** (D-011), **HSM od G3** (D-013), **produkcja w `[N]`

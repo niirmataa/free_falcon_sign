@@ -1,0 +1,59 @@
+# WP-012 CI check — 2026-10-26 (prymitywy + KAT + miri)
+# host: Linux 6.12.113+deb13-amd64 x86_64 GNU/Linux
+# rustc: rustc 1.94.0 (4a4ef493e 2026-03-02)
+# cargo: cargo 1.94.0 (85eff7c80 2026-01-15)
+# nightly: rustc 1.101.0-nightly (19833af72 2026-10-20)
+# cargo-deny: cargo-deny 0.20.2
+# advisory-db: a78282a1414d6c28cc228c4eae3570451affb0dc
+
+== fmt ==
+fmt: OK (bez zmian)
+== build (locked, offline) ==
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.10s
+== test (locked, offline) ==
+running 71 tests
+test result: ok. 71 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.24s
+running 0 tests
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+== clippy -D warnings ==
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.07s
+== cargo deny --offline check ==
+advisories ok, bans ok, licenses ok, sources ok
+== KAT (niezależne, Python) ==
+-- ci/kat/gf256_reference.py
+shares = ['0x53', '0x60', '0x71']
+0x57 * 0x83 = 0xc1
+0x53 * 0xca = 0x1
+inv(0x53)   = 0xca
+-- ci/kat/ring_reference.py
+first8 = [9373, 8988, 8311, 7615, 7173, 7258, 8143, 10101]
+fnv1a64_le = 0x81511cf3e5d1b19d
+x*x^(N-1) = [(0, 18432), (768, 1)]
+x^(3N) = [(0, 1)]
+-- ci/kat/hash_to_point_reference.py
+shake256_abc = 483366601360a8771c6863080cc4114d8db44530f8f1e1ee4f94ea37e78b5739
+hash_to_point_len = 1536
+hash_to_point_first8 = [7860, 3625, 13024, 994, 6512, 8133, 10335, 14238]
+hash_to_point_fnv1a64_le = 0x4e825d9baa76a9a3
+-- ci/kat/prss_reference.py
+counter = 7
+  me 0 [(1, 10130, 196), (2, 2262, 227)] sum_zq 12392 xor_gf 39
+  me 1 [(0, 8303, 196), (2, 3554, 190)] sum_zq 11857 xor_gf 122
+  me 2 [(0, 16171, 227), (1, 14879, 190)] sum_zq 12617 xor_gf 93
+-- ci/kat/ntt_reference.py
+roundtrip_ok = True
+mul_first8 = [9960, 14671, 9872, 1334, 15523, 7435, 8060, 13784]
+mul_matches_schoolbook = True
+mul_fnv1a64_le = 0xf9954b55c857ad34
+-- ci/kat/shamir_zq_reference.py
+reconstruct_k4 = 66
+reconstruct_k5 = 66
+consistency_x7 = True
+tamper_detected = True
+== miri (nightly, locked, offline) ==
+-- pełny zestaw bez shamir_zq (log .build/miri_vss_full.log)
+test result: ok. 52 passed; 0 failed; 11 ignored; 0 measured; 0 filtered out; finished in 675.85s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+-- blok shamir_zq (log .build/miri_shamir.log)
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 63 filtered out; finished in 25.64s
+rc=0
