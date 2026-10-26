@@ -23,7 +23,8 @@ podpisu FT1536:
 5. profile zgodności `TEST-ORACLE` i `PROD`.
 
 **Poza zakresem:** bezpieczeństwo bazy FT1536 (tor T12.1), P1 seed-custody,
-FTKEY, `[N]`, UI, FIPS 140-3, QROM, produkt sprzętowy.
+produkt FTKEY, **QSX/VM i `ftkey-vm` (D-023)**, `[N]`, UI, FIPS 140-3, QROM,
+produkt sprzętowy.
 
 **Zasada nadrzędna:** podpis wyjściowy jest **zwykłym podpisem FT1536**.
 Weryfikator nie wie o progu, stronach ani udziałach. Wszelkie metadane

@@ -23,13 +23,17 @@ q=18433, N=1536, pierścień `X^1536−X^768+1`, secret ternarny).
 ## Zakres v1 (proponowany)
 
 - **2-of-3** (D-003), wariant **A** — udziały pułapki `(f,g,F,G)` (D-021).
+  **D-021 nadal `PROPOSED`:** właściciel skłania się ku B; brak formalnej
+  decyzji A/B/B′.
 - Setup: Pedersen VSS, complaints, transkrypt, `pk` bez reconstruct.
 - Podpis: nonce commit/reveal, HTP, ffSampling na udziałach, check normy,
   `s2`, encoding 0xAA, engine verify.
 - Model: malicious static ≤ k−1, rushing, synchroniczne rundy, abort.
 - G2 = signing plumbing na `TEST-ORACLE`; G3 = bezdealerowy ważny setup
   NTRU + realny Klein/ffSampling (D-022).
-- Poza v1: P1 seed-custody, FTKEY, `[N]`, FT768/FT3072, QROM, FIPS.
+- **Bez QSX/VM:** P2 nie używa `ftkey-vm` ani efemerycznej VM (D-023);
+  node = osobny proces/host z udziałem.
+- Poza v1: P1 seed-custody, produkt FTKEY, `[N]`, FT768/FT3072, QROM, FIPS.
 
 ## Decyzje do potwierdzenia przed G1
 
@@ -40,10 +44,10 @@ q=18433, N=1536, pierścień `X^1536−X^768+1`, secret ternarny).
 | D-011 | CBOR czy inny format? | kanoniczne CBOR |
 | D-013 | HSM od G2 czy G3? | od G3 |
 | D-016 | produkcja w `[N]` na G3? | tak |
-| D-021 | wariant A czy B? | A (udziały pułapki) |
+| D-021 | wariant A, B czy B′? | **otwarte** (właściciel skłania się ku B; rekomendacja B′) |
 
 D-022 (G2 = `TEST-ORACLE`, G3 = realna krypto) wymaga potwierdzenia przed
-WP-030.
+WP-030. **D-023 (QSX/VM wyłączone z P2) — ACCEPTED 2026-10-26.**
 
 ## Czego ten TASK nie robi
 

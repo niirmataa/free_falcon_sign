@@ -58,6 +58,11 @@ i docelowa usługa. Nie obejmuje bazy FT1536 ani silnika C jako przedmiotu dowod
 | Protokół ↔ silnik verify | TCB | pin wersji, KAT, audyt |
 | Człowiek ↔ ceremonia | proces | kworum custodians, nagranie, hash transkryptu |
 
+**Uwaga (D-023):** model **nie zawiera QSX/VM ani enclave**. Kompromitacja
+jednego hosta jest modelowana jako corruption jednej strony; bezpieczeństwo
+opiera się na progu i honest majority, nie na hypervisorze. Nie ma
+założenia „L1/L2”, które trzeba by dowodzić dla VM.
+
 ---
 
 ## 4. Założenia kryptograficzne

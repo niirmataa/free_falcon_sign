@@ -6,6 +6,12 @@ odczyt bez modyfikacji. Ten dokument **nie** zmienia tamtejszych repo.
 **Cel:** ustalić, co z FTKEY jest realnym budulcem P2, co jest tylko
 wzorcem, a co musi zostać napisane od zera. Bez przenoszenia długów.
 
+> **Decyzja D-023 (2026-10-26): QSX/VM OUT OF SCOPE.** P2 **nie używa**
+> `ftkey-vm`, QSX ani efemerycznej VM. Ta mapa nadal opisuje VM, bo to
+> dług FTKEY i dowód, dlaczego nie przenosimy tej ścieżki; **żaden element
+> VM nie jest warunkiem P2**. Reuse dotyczy wyłącznie host-path: pin
+> silnika, token, pieczęć, weryfikator.
+
 > **Bezpieczeństwo danych:** w mapie nie ma seedów, PIN-ów, fraz ani
 > zawartości pieczęci. Wszystkie obserwacje pochodzą z kodu i raportów.
 
@@ -101,7 +107,7 @@ Dwa tryby:
 | Tryb | Droga | Granica |
 |---|---|---|
 | Host v0 | `ftkey` CLI / `LocalCliBackend` | seed w RAM **hosta** podczas podpisu; brak ochrony przed rootem hosta |
-| VM QSX v1 | GUI → `ftkey-vm` → efemeryczna VM → `ftkey-sign-ephemeral` | seed tylko w RAM gościa; L1 (root/hypervisor hosta) **nie** jest w modelu; L2 Confidential Computing **niezaimplementowane** |
+| VM QSX v1 — **OUT OF SCOPE (D-023)** | GUI → `ftkey-vm` → efemeryczna VM → `ftkey-sign-ephemeral` | seed tylko w RAM gościa; L1 (root/hypervisor hosta) **nie** jest w modelu; L2 Confidential Computing **niezaimplementowane**. To dług FTKEY, **nie** ścieżka P2. |
 
 To **nie jest** threshold signing. Jeden token = jeden pełny seed = jeden
 pełny klucz. Nie ma udziałów, kworum ani MPC. Dokument
@@ -124,7 +130,7 @@ nie istnieje”. Nie wolno tego licznika ani nagłówków przenosić do P2.
 | `ftkey-verify` | publiczna weryfikacja bundla | `SignatureBundle{alg,pubkey,nonce,sig,msg_sha256}`, `verify_bundle` |
 | `ftkey-cli` | `init/sign/verify/pub` | wzorzec komend, nie do bezpośredniego reużycia |
 | `ftkey-sign-ephemeral` | gość: mlock → unseal → keygen → sign → zapis | `sign_core`, `lock_memory`, `disable_core_dumps` |
-| `ftkey-vm` | adapter QSX: provision → sign → destroy | `sign_via_qsx`, `qsx::lifecycle` |
+| `ftkey-vm` | adapter QSX — **OUT OF SCOPE (D-023)**, dług FTKEY | `sign_via_qsx`, `qsx::lifecycle` |
 
 ### 2.3 Przepływy
 
@@ -136,7 +142,7 @@ jako składnik KEK, świeża sól/nonce) → `ftkey.seal` (0600) → opcjonalny
 `SHA-512("ftkey-nonce-v0" ‖ seed ‖ SHA-256(doc))[..40]` → `keygen_from_seed_32`
 → `sign_bytes` → zeroizacja → `doc.sig.json` (tylko materiał publiczny).
 
-**Sign (VM v1):** GUI `VmEphemeralBackend` → `ftkey-vm sign` → single-flight
+**Sign (VM v1) — OUT OF SCOPE (D-023), opis długu FTKEY:** GUI `VmEphemeralBackend` → `ftkey-vm sign` → single-flight
 lock → QSX `doctor/start/import/run` → gość `ftkey-sign-ephemeral`
 (mlockall, `RLIMIT_CORE=0`, unseal, keygen, sign, `doc.sig.json`) →
 `stop` + wipe stanu → host zbiera **fingerprint** i zapisuje
@@ -153,8 +159,9 @@ publiczny, bez tokena i bez pieczęci. Sprawdza długości, nagłówki `0x8a`/`0
    pieczęć z fizycznym tokenem.
 2. **Pieczęć z AAD i świeżymi parametrami** — solidny, znany format,
    fail-closed parser, zeroizacja.
-3. **Efemeryczna VM** — seed nie leży na dysku hosta; po sesji `stop` +
-   wipe; `network_cut`; brak współdzielonego FS.
+3. **Efemeryczna VM — OUT OF SCOPE (D-023).** Nie przenosimy: próg usuwa
+   pełny klucz, więc nie ma czego chować w VM. `network_cut`, L1/L2
+   i lifecycle QSX pozostają długiem FTKEY, nie elementem P2.
 4. **Weryfikator jako osobny, wąski crate** — publiczny, bez sekretów,
    z twardą walidacją kodowań.
 5. **Dyscyplina zeroizacji** — `Zeroizing`, brak `Clone`/`Debug` na
@@ -176,10 +183,10 @@ nie przenosić.
 | R-4 | Token bridge FIDO2 | `crates/ftkey-core/src/token*.rs` | **ADAPT** | odszyfrowanie udziału tokenem per node | jeden token per node; PIN przez FD/pipe, nie argv (F-2) |
 | R-5 | Szkic token-resident seed | `crates/ftkey-core/src/token_seed*` | **REFERENCE / BLOCKED** | ewentualnie 32 B udział seeda na tokenie | `UNCOMPILED / NOT_REVIEWED`; błąd `json!([0; 0])`; brak eksportu |
 | R-6 | mlock/zeroize/RLIMIT | `crates/ftkey-sign-ephemeral/src/lib.rs` | **REUSE wzorca** | hardening procesu node | logika `seed → keygen → sign` jest single-signer, do zastąpienia |
-| R-7 | QSX lifecycle | `crates/ftkey-vm/src/qsx.rs` | **ADAPT** | izolacja node'a / sesji | `network_cut` wyklucza MPC; F-1/F-2/F-3/F-6/F-7 |
-| R-8 | GUI `SignBackend` | `FTKEY-gui/crates/ftkey-gui-backend` | **ADAPT** | klient/panel P2 | model „jeden sig_path” nie pasuje do k-z-n; potrzebny stan sesji/koordynatora |
+| R-7 | QSX lifecycle | `crates/ftkey-vm/src/qsx.rs` | **OUT OF SCOPE (D-023)** | — | nie przenosić; F-1/F-3/F-6/F-7 to dług FTKEY, nie blocker P2 |
+| R-8 | GUI `SignBackend` | `FTKEY-gui/crates/ftkey-gui-backend` | **REFERENCE** | kształt klienta P2 (host path) | model „jeden sig_path” nie pasuje do k-z-n; GUI VM out |
 | R-9 | CLI `init/sign/verify/pub` | `crates/ftkey-cli` | **REFERENCE** | kształt komend, UX | nie przenosić logiki seeda |
-| R-10 | ADR-003 L1/L2 | `docs/adr/ADR-003-...md` | **REFERENCE** | granica claimu P2 | P2 nie dziedziczy L2; brak CC |
+| R-10 | ADR-003 L1/L2 | `docs/adr/ADR-003-...md` | **OUT OF SCOPE (D-023)** | — | P2 nie używa VM/enclave; nie dziedziczy L1/L2 |
 
 ### 3.1 Matematyka magazynu udziałów (ważna dla D-021)
 
@@ -212,7 +219,11 @@ Parametry: `N=1536`, `q=18433` (15 bitów na współczynnik), pierścień
 Severity: **krytyczne** = blokuje claim lub psuje wynik; **wysokie** =
 realny wektor lub brak funkcji; **średnie** =-operacyjne/integracyjne.
 
-### F-1 — VM „sign” nie zwraca podpisu (krytyczne, funkcjonalne)
+**Po D-023:** F-1/F-3/F-6/F-7 dotyczą wyłącznie VM/QSX i **nie są
+blockerami P2**; zostają jako dług FTKEY. F-2 daje lekcję dla P2
+(sekrety nie w argv/env), F-4/F-5 dotyczą host-path i pozostają istotne.
+
+### F-1 — VM „sign” nie zwraca podpisu (krytyczne dla FTKEY VM; poza P2)
 
 **Dowód:**
 
@@ -231,12 +242,13 @@ realny wektor lub brak funkcji; **średnie** =-operacyjne/integracyjne.
 **Skutek:** tryb VM „podpisuje” tylko pozornie; `ftkey-verify` na tym
 pliku nie przejdzie. To nie jest drobny bug — to brak deliverable’u v1 VM.
 
-**Znaczenie dla P2:** nie budować na `VmSignResult` jako na podpisie.
-Kanał wyjściowy trzeba zaprojektować jawnie (np. base64 bundla na stdout
-z limitem, albo read-only montowany katalog wyjściowy) i przetestować
-na żywym QSX. Fingerprint to nie podpis.
+**Znaczenie dla P2:** po D-023 **nie budujemy na VM** — to dług FTKEY.
+Lekcja ogólna pozostaje: wynik podpisu musi być weryfikowalnym bundle
+(`SignatureBundle`), nie metadanymi; „plik istnieje” nie znaczy „podpis
+jest poprawny”. Jeżeli FTKEY kiedyś naprawi VM, kanał wyjściowy musi być
+jawny i przetestowany na żywym QSX. Fingerprint to nie podpis.
 
-### F-2 — PIN na argv w dwóch miejscach (wysokie, bezpieczeństwo)
+### F-2 — PIN na argv w dwóch miejscach (wysokie dla FTKEY VM; lekcja dla P2)
 
 **Dowód:**
 
@@ -252,11 +264,12 @@ na żywym QSX. Fingerprint to nie podpis.
 **Skutek:** PIN FIDO wycieka do listy procesów na hoście. PIN nie jest
 seedem, ale jest czynnikiem UV; wyciek ułatwia użycie tokena.
 
-**Znaczenie dla P2:** zakazać sekretów w argv **i** preferować przekazanie
-przez dziedziczony FD/pipe z `PR_SET_DUMPABLE=0`, nie przez env. Test
-`ps`/`/proc` jako bramka.
+**Znaczenie dla P2:** hop QSX jest OUT (D-023), ale lekcja zostaje:
+zakazać sekretów w argv **i** preferować przekazanie przez dziedziczony
+FD/pipe z `PR_SET_DUMPABLE=0`, nie przez env. Host CLI FTKEY pyta o PIN
+bez echa — to jest właściwy wzorzec. Test `ps`/`/proc` jako bramka.
 
-### F-3 — `ftkey-vm` nie ma `init` (wysokie, funkcjonalne)
+### F-3 — `ftkey-vm` nie ma `init` (wysokie dla FTKEY VM; poza P2)
 
 **Dowód:** `ftkey-vm/src/main.rs` ma tylko `enum Command::Sign`. GUI
 `VmEphemeralBackend.init` spawnuje `ftkey-vm init ...` (`vm.rs:210–225`)
@@ -300,7 +313,7 @@ strony ogromne `m_kib` daje memory DoS przy odszyfrowaniu.
 (wersjonowany, z policy bounds), a nie „params z pliku”. To musi być
 test: downgrade i oversize → `Err` przed alokacją.
 
-### F-6 — `/tmp` jako runtime i stale lock (średnie, operacyjne)
+### F-6 — `/tmp` jako runtime i stale lock (średnie dla FTKEY VM; lekcja dla P2)
 
 **Dowód:** lock `"/tmp/ftkey-vm.sign.lock.d"` (`main.rs:108`), log
 `/tmp/ftkey-vm.log` (`qsx.rs:28`), XML USB w `std::env::temp_dir()`
@@ -312,7 +325,7 @@ test: downgrade i oversize → `Err` przed alokacją.
 z PID/epoch, sprzątanie idempotentne, zero sekretów w logach. Nie używać
 `/tmp` jako miejsca stanu.
 
-### F-7 — Sztywne USB i globalne zabijanie VM (niskie/średnie, operacyjne)
+### F-7 — Sztywne USB i globalne zabijanie VM (niskie/średnie dla FTKEY VM; poza P2)
 
 **Dowód:** `UsbSpec::Auto` → `("0x1050","0x0406")` (`qsx.rs:568`);
 `destroy_other_ftkey_vms` zabija **wszystkie** VM pasujące do `ftkey*`
@@ -328,34 +341,35 @@ wymaga jawnego selektora; równoległa praca innych sesji FTKEY jest
 przerywana przez globalny kill. To nie jest zachowanie, które P2 może
 przyjąć dla wielu nodów.
 
-**Znaczenie dla P2:** jawny selektor urządzenia per node, brak globalnego
-kill; izolacja zasobów na poziomie konfiguracji, nie „zabij wszystko”.
+**Znaczenie dla P2:** po D-023 P2 nie używa VM, więc globalny kill nie
+jest problemem P2. Lekcja na przyszłość: jawny selektor tokena per node,
+brak współdzielonego `auto` i brak operacji „zabij wszystko”.
 Nie uruchamiać żywego testu FIDO bez zgody właściciela: test
 `fido_live_create_and_hmac_secret` **tworzy discoverable credential**
 na tokenie i może zniszczyć istniejące pieczęcie po resecie.
 
-### F-8 — Brak żywego E2E (wysokie, dowodowe)
+### F-8 — Brak żywego E2E (wysokie dla FTKEY; P2 ma własny E2E)
 
 **Dowód:** raporty mówią wprost:
 
+- **Host-path, ten token:** `getInfo` **PASS** (2026-10-26, bez PIN,
+  bez zapisu); live `pub` na istniejącym `ftkey.seal` **PASS**
+  (fp = `ftkey.fp`). To zamyka live unseal+keygen, ale **nie** live
+  `sign`/`verify` — te są **NOT_RUN**.
 - v0: `53 passed, 0 failed, 1 ignored (live hardware)` — niezależny
-  rerun w `REVIEW_E1_E4.md`, ale **bez żywego tokena**.
+  rerun w `REVIEW_E1_E4.md`, ale **bez żywego tokena** (przed `pub`).
 - GUI backend: `21 passed, 0 failed, 0 ignored` — bez Tauri/okna.
 - VM/gość: `14 passed, 0 failed, 1 ignored` — `e2e_sign_mock_via_qsx`
-  (`#[ignore]`) wymaga prawdziwego KVM/QSX; `NOT_RUN`.
-- Live FIDO w VM: `NOT_RUN`, checklista ręczna.
-- Token: `getInfo` **PASS** (2026-10-26, bez PIN, bez zapisu);
-  live `pub` na istniejącym `ftkey.seal` **PASS** (fp = `ftkey.fp`).
-  Live `sign`/`verify` **NOT_RUN**; test `create_and_hmac_secret`
-  **NOT_RUN** — tworzy discoverable credential i wymaga PIN-u.
+  (`#[ignore]`) wymaga prawdziwego KVM/QSX; `NOT_RUN`. **Poza P2 (D-023).**
 
-**Skutek:** wszystkie testy VM używają fake QSX/mock. Nie ma dowodu, że
-prawdziwy QSX + token + gość kończą podpis. To jest spójne z F-1: gdyby
-E2E był uruchomiony, F-1 by wyszedł.
+**Skutek:** testy VM używają fake QSX/mock; po D-023 to nie dotyczy P2.
+Dla host-path jest live unseal+keygen, ale nadal brak live `sign`/`verify`
+i brak zapisu koperty 4 KB. To jest spójne z F-1: gdyby VM E2E był
+uruchomiony, F-1 by wyszedł.
 
-**Znaczenie dla P2:** nie dziedziczyć „PASS” z mocków. P2 potrzebuje
-własnego E2E na trzech nodach i własnego retained `NOT_RUN`, dopóki
-nie ma żywego przebiegu.
+**Znaczenie dla P2:** nie dziedziczyć „PASS” z mocków ani z `pub`.
+P2 potrzebuje własnego E2E na trzech nodach i własnego retained
+`NOT_RUN`, dopóki nie ma żywego przebiegu.
 
 ### F-9 — Brak udziałów i kworum (krytyczne dla P2, nie bug FTKEY)
 
@@ -425,15 +439,15 @@ nie seed; podpis jest interaktywny.
 
 **Bramka:** testy braku kopii, `mlock` fail = odmowa, brak sekretu w logach.
 
-### S-6 — Izolacja QSX
+### S-6 — QSX/VM — OUT OF SCOPE (D-023)
 
-QSX nadaje się na **izolację pojedynczego node’a** (jeden proces, jedna
-sesja), ale `network_cut` blokuje MPC. Trzy nody muszą mieć kanały
-sieciowe (mTLS), więc nie można ich włożyć do obecnego profilu VM bez
-zmiany profilu i ponownego dowodu. Nie ogłaszać „P2 w QSX”, dopóki
-nie ma testu trzech nodów.
+QSX **nie jest szwem P2**. `network_cut`, L1/L2 i lifecycle to dług
+FTKEY; P2 nie próbuje wkładać nodów do VM. Próg usuwa pełny klucz, więc
+nie ma czego izolować w efemerycznej VM. Powrót QSX wymaga nowej decyzji,
+nie jest warunkiem żadnej bramki.
 
-**Bramka:** trzy instancje, mTLS, chaos/partition, brak cichych błędów.
+**Bramka P2:** brak zależności od QSX/`ftkey-vm` w buildzie (G1);
+E2E P2 to trzy nody, nie VM.
 
 ### S-7 — GUI/klient
 
@@ -463,9 +477,11 @@ katalogu, jawne selektory urządzeń, brak globalnego kill.
 - Brak MPC ffSampling/Klein; jest tylko `keygen_from_seed_32` + `sign_bytes`.
 - Brak bezdealerowego setupu NTRU (O-01).
 - Brak dowodu threshold EUF-CMA; brak audytu P2.
-- Brak sieciowego transportu między nodami; VM jest `network_cut`.
-- Brak trwałego, niezawodnego kanału wyjścia podpisu z VM (F-1).
-- Brak żywego E2E; statusy „passed” pochodzą z mocków/raportów.
+- Brak sieciowego transportu między nodami — to P2 musi dodać; VM
+  `network_cut` nie jest już argumentem po D-023.
+- Brak żywego `sign`/`verify` na host-path (F-8); F-1 (VM) to dług FTKEY,
+  nie P2.
+- Brak żywego E2E P2; statusy FTKEY pochodzą z mocków/raportów.
 
 ---
 
@@ -507,12 +523,15 @@ czy bramą. To jest pytanie do właściciela, nie do implementacji.
 2. **Nośnik udziału:** token ma **przechowywać** udział (tylko 32 B),
    czy tylko **odblokowywać** pieczęć na dysku/HSM? To zmienia format
    i claim.
-3. **F-1/F-2 w FTKEY:** naprawiamy teraz (małe commity w FTKEY), czy
-   zapisujemy jako `P2-BLOCKER` i nie dotykamy FTKEY do czasu decyzji?
+3. **F-1/F-2 w FTKEY:** po D-023 **nie są blockerami P2**; F-1/F-3/F-6/F-7
+   to dług FTKEY. Czy zgłosić/naprawiać je w FTKEY osobnym zleceniem?
    Bez zgody właściciela nie modyfikuję tamtejszych repo.
-4. **Zakres E2E:** czy P2 ma wymagać żywego QSX/tokena już w G2, czy
-   G2 może zostać na `TEST-ORACLE` + mockach (z jawnym `NOT_RUN`)?
+4. **Zakres E2E P2:** czy G2 może zostać na `TEST-ORACLE` + mockach
+   (z jawnym `NOT_RUN`), czy wymagasz trzech nodów już w G2? QSX/VM
+   **nie wchodzi** (D-023).
 5. **D-003/010/011/013/016/022:** bez zmian; nadal `PROPOSED`.
+
+**D-023 jest ACCEPTED:** QSX/VM wyłączone; nie ma pytania o QSX.
 
 ---
 
@@ -540,7 +559,8 @@ sha256sum provenance/ft1536-candidate.sha256
 
 **Uwaga:** hashe i numery linii dotyczą wskazanego HEAD. Każda zmiana
 w FTKEY/FTKEY-gui wymaga nowego pinu i nowego przeglądu; ten dokument
-nie jest manifestem.
+nie jest manifestem. Pozycje `ftkey-vm`/`vm.rs` są tu wyłącznie jako
+dług FTKEY (D-023); **P2 ich nie buduje ani nie uruchamia**.
 
 ---
 
@@ -551,6 +571,8 @@ nie jest manifestem.
 - Testy FTKEY: **nie były ponownie uruchamiane w tym oknie**; liczby
   pochodzą z raportów (`REVIEW_E1_E4.md`, `V1d_001/REPORT.md`).
 - Żywy token: `getInfo` + `pub` (unseal + keygen) **PASS** 2026-10-26;
-  live `sign`/`verify` **NOT_RUN**; żywy KVM/FIDO w VM **NOT_RUN**.
+  live `sign`/`verify` **NOT_RUN**. Żywy KVM/FIDO w VM **NOT_RUN**;
+  po D-023 to nieistotne dla P2.
 - P2: nadal G0 `IN_PROGRESS`; żadna bramka nie jest zamknięta.
 - D-021: nadal `PROPOSED`; ten dokument dostarcza argumentów, nie decyzji.
+- D-023: **ACCEPTED** — QSX/VM wyłączone z P2.

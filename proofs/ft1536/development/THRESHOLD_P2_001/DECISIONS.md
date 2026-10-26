@@ -204,6 +204,28 @@ Nie nadpisujemy historii — korekta = nowy wpis.
 
 ---
 
+## D-023 — QSX/VM wyłączone z P2
+
+- **Data:** 2026-10-26
+- **Status:** **ACCEPTED** (właściciel: „nie używamy już VM QSX, ponieważ
+  właśnie po to robimy próg, żeby rozwiązać tę historię”)
+- **Treść:** P2 **nie używa** `ftkey-vm`, QSX ani efemerycznej VM jako
+  elementu architektury. Node P2 to osobne procesy/hosty z udziałami;
+  izolację zapewnia próg i brak pełnego klucza w jednym miejscu, a nie VM.
+  QSX był obejściem dla single-signera (pełny seed w RAM hosta), nie
+  fundamentem P2.
+- **Konsekwencje:**
+  - F-1/F-3/F-6/F-7 w FTKEY pozostają długiem FTKEY; **nie są blockerami P2**.
+  - `FTKEY_INTEGRATION_MAP`: R-7 (QSX lifecycle) i S-6 (izolacja QSX)
+    są **OUT OF SCOPE**; nie przenosimy `network_cut`, lifecycle,
+    `ftkey-vm` ani GUI VM do P2.
+  - G1/G2/G3 nie wymagają KVM/QSX; E2E P2 to trzy nody, nie VM.
+  - Powrót QSX/VM do P2 wymaga **nowej decyzji** i nie jest warunkiem
+    żadnej bramki.
+  - HSM/TPM (D-013) pozostaje dla udziałów w spoczynku — to nie QSX.
+
+---
+
 ## Decyzje do potwierdzenia teraz (blokują G1)
 
 | ID | Pytanie | Domyślna odpowiedź |
@@ -213,7 +235,7 @@ Nie nadpisujemy historii — korekta = nowy wpis.
 | D-013 | HSM od G2 czy G3? | od G3 |
 | D-016 | produkcja w `[N]` na G3? | tak |
 | D-011 | CBOR czy inny format? | kanoniczne CBOR |
-| D-021 | wariant A czy B w v1? | A (udziały pułapki) |
+| D-021 | wariant A, B czy B′ w v1? | **otwarte**: właściciel skłania się ku B; rekomendacja B′; brak decyzji |
 
 **D-022** nie blokuje G1; porządkuje G2/G3 i wymaga potwierdzenia przed
 startem WP-030. Brak potwierdzenia = zostaje `PROPOSED`; nie blokuje G0,

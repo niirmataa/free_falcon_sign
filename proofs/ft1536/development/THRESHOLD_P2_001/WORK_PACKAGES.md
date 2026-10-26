@@ -21,7 +21,7 @@ Rozmiar: S (1 okno), M (2–3), L (4–8), XL (badania, bez daty).
 
 | ID | Gate | Zadanie | Kryterium odbioru | Dowód | Zależy | Rozmiar | Status |
 |---|---|---|---|---|---|---|---|
-| WP-010 | G1 | Workspace crate'ów + `rust-toolchain.toml` + `deny.toml` | `cargo build --locked --offline` w CI | CI log | WP-003 | M | TODO |
+| WP-010 | G1 | Workspace crate'ów + `rust-toolchain.toml` + `deny.toml` | `cargo build --locked --offline` w CI; **brak `ftkey-vm`/QSX/VM** (D-023) | CI log | WP-003 | M | TODO |
 | WP-011 | G1 | Linty i polityki: `forbid(unsafe_code)`, `clippy -D warnings`, `cargo deny`, `miri` | CI czerwone na naruszeniu | CI | WP-010 | S | TODO |
 | WP-012 | G1 | Port/rewrite prymitywów: `gf_mul`, Shamir, `R_q`, NTT, SHAKE, PRSS, Pedersen | KAT ze spike'a przechodzą; brak `unsafe` | `core/tests` | WP-010 | L | TODO |
 | WP-013 | G1 | **#9** ukryte δ w G-2; usunąć `delta_known` z API prod | skorelowane Δ+δ·Δ → `MacFail`; test retained znika | test + audyt | WP-012 | M | TODO |

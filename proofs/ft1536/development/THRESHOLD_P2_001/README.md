@@ -51,6 +51,8 @@ Mapa dyspozycji: [`SOURCE_MAP.md`](SOURCE_MAP.md).
 
 - nie jest dowodem bezpieczeństwa FT1536 (baza ma osobny tor),
 - nie jest gotowym SDK ani usługą,
+- nie jest rozszerzeniem FTKEY VM/QSX — P2 **nie używa** `ftkey-vm`
+  ani efemerycznej VM (D-023),
 - nie jest miejscem na publikację lub integrację z `[N]`/FTKEY bez odbioru,
 - nie zastępuje `THRESHOLD_SPIKE_001` ani jego historii.
 

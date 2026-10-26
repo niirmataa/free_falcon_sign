@@ -41,6 +41,8 @@ brak claims register, plan nie ma bramek.
 
 - [ ] Workspace crate'ów (`core`, `protocol`, `transport`, `node`,
       `coordinator`, `testkit`, `verify`) kompiluje się offline.
+- [ ] **Brak zależności od `ftkey-vm`/QSX/VM w P2 (D-023)**; build nie
+      wymaga KVM ani `qsx-alpine`.
 - [ ] `rust-toolchain.toml`, `deny.toml`, `clippy -D warnings`,
       `#![forbid(unsafe_code)]`, hermetyczne CI.
 - [ ] Prymitywy przeniesione/przepisane z KAT ze spike'a:

@@ -21,7 +21,7 @@
 
 | ID | Ryzyko | P | I | Wyzwalacz | Mitigacja | Właściciel |
 |---|---|---|---|---|---|---|
-| R-07 | **Scope creep** — P1, FTKEY, `[N]`, UI wchodzą do P2 | H | M | nowe zadania bez WP | claims register + gates + decyzja właściciela | prowadzący |
+| R-07 | **Scope creep** — P1, FTKEY, **QSX/VM**, `[N]`, UI wchodzą do P2 | H | M | nowe zadania bez WP | claims register + gates + D-023 (QSX out) + decyzja właściciela | prowadzący |
 | R-08 | **Fałszywe claims** — „threshold gotowy” w komunikacji | M | H | publikacja bez rejestru | claims register, review przed publikacją | prowadzący |
 | R-09 | **Brak HSM/TPM** — soft-seal w produkcji | M | H | G5 bez HSM | D-013; HSM od G3 | W13 |
 | R-10 | **Złożoność protokołu** — za dużo rund/stanów | M | M | testy chaosu fail | spec-first, model checking, uproszczenie | W1/W11 |

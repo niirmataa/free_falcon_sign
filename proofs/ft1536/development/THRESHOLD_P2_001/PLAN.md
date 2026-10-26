@@ -56,7 +56,12 @@ bramką `PROD`: bezdealerowy ważny setup NTRU + realny Klein/ffSampling.
 
 ### OUT (świadomie)
 
-- P1 seed custody, FTKEY, `[N]` — osobne decyzje i odbiory.
+- P1 seed custody, produkt FTKEY, `[N]` — osobne decyzje i odbiory.
+  Z FTKEY bierzemy tylko pin silnika, token, pieczęć i weryfikator
+  (D-023); nie przejmujemy produktu ani jego ścieżki VM.
+- **QSX/VM, `ftkey-vm`, efemeryczna VM — wyłączone z P2 (D-023).**
+  Próg zastępuje tę izolację: klucz nigdy nie istnieje w całości, więc
+  nie ma czego „chować” w efemerycznej VM. Powrót QSX wymaga nowej decyzji.
 - FT768/FT3072 — inne profile, poza v1.
 - Quantum/QROM, FIPS 140-3 certification, multi-tenant SaaS.
 - Produkt sprzętowy, aplikacja mobilna, UI.

@@ -1,5 +1,16 @@
 # Stan projektu — punkt wejścia
 
+**2026-10-26 — S09/D-023: QSX/VM wyłączone z P2.**
+Właściciel: „nie używamy już VM QSX, ponieważ właśnie po to robimy próg,
+żeby rozwiązać tę historię”. P2 **nie używa** `ftkey-vm`, QSX ani
+efemerycznej VM; node = osobny proces/host z udziałem, a izolację zapewnia
+próg, nie hypervisor. F-1/F-3/F-6/F-7 w FTKEY pozostają długiem FTKEY,
+nie blockerami P2; G1 wymaga braku zależności od QSX w buildzie.
+Mapa FTKEY: `development/THRESHOLD_P2_001/FTKEY_INTEGRATION_MAP.md`.
+Live host-path: `getInfo` + `pub` na tokenie **PASS** (fp = `ftkey.fp`);
+live `sign`/`verify` **NOT_RUN**. D-021 (A vs B/B′) nadal `PROPOSED`;
+D-003/010/011/013/016/022 bez zmian. Zmiany lokalne; bez push.
+
 **2026-10-26 — S09/THRESHOLD_P2_001: otwarcie toru P2 (G0).**
 Na polecenie właściciela („idę w P2, mimo że może to trwać długo”)
 otwarto nowy tor progowego podpisu FT1536 w

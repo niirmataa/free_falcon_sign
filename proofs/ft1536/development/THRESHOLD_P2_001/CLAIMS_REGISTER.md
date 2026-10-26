@@ -44,6 +44,7 @@ Każdy wpis ma właściciela i datę przeglądu.
 | F-08 | „UC-secure” | brak dowodu | „cel: UC, status OPEN” |
 | F-09 | „zero-knowledge” bez definicji | brak formalizacji | „brak claimu” |
 | F-10 | „post-quantum threshold” | brak analizy QROM | „klasyczny model” |
+| F-11 | „P2 działa w QSX/VM” / „threshold w efemerycznej VM” | D-023 wyłącza QSX/VM z P2; próg nie potrzebuje VM | „P2 = osobne nody z udziałami, bez QSX” |
 
 ## 4. Reguły publikacji
 
