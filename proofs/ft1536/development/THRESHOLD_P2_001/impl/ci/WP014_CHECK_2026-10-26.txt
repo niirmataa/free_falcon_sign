@@ -1,0 +1,63 @@
+# WP-014 check — 2026-10-26 (typestate DKG/NTRU)
+# host: Linux 6.12.113+deb13-amd64 x86_64 GNU/Linux
+# rustc: rustc 1.94.0 (4a4ef493e 2026-03-02)
+# cargo-deny: cargo-deny 0.20.2
+# nightly: rustc 1.101.0-nightly (19833af72 2026-10-20)
+
+== fmt ==
+fmt: OK (bez zmian)
+== test --workspace (locked, offline) ==
+     Running unittests src/lib.rs (target/debug/deps/ft_threshold_coordinator-fae88909786521b3)
+running 0 tests
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+     Running unittests src/lib.rs (target/debug/deps/ft_threshold_core-851707ad7ba51924)
+running 92 tests
+test result: ok. 92 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.23s
+     Running unittests src/lib.rs (target/debug/deps/ft_threshold_node-30ad1ef196e5d7ab)
+running 0 tests
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+     Running unittests src/lib.rs (target/debug/deps/ft_threshold_protocol-e683be4a2da04d30)
+running 10 tests
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 9.00s
+     Running unittests src/lib.rs (target/debug/deps/ft_threshold_testkit-9442ec70c961400d)
+running 0 tests
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+     Running unittests src/lib.rs (target/debug/deps/ft_threshold_transport-89d02a7a3269684a)
+running 0 tests
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+     Running unittests src/lib.rs (target/debug/deps/ft_threshold_verify-45f0b7735b2c855d)
+running 0 tests
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+   Doc-tests ft_threshold_coordinator
+running 0 tests
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+   Doc-tests ft_threshold_core
+running 0 tests
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+   Doc-tests ft_threshold_node
+running 0 tests
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+   Doc-tests ft_threshold_protocol
+running 2 tests
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+   Doc-tests ft_threshold_testkit
+running 0 tests
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+   Doc-tests ft_threshold_transport
+running 0 tests
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+   Doc-tests ft_threshold_verify
+running 0 tests
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+== clippy -D warnings --workspace ==
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.09s
+== cargo deny --offline check ==
+advisories ok, bans ok, licenses ok, sources ok
+== miri: core (pełny, log .build/miri_full_2026-10-26.log) ==
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+rc=0
+== miri: protocol (log w konsoli; testy crypto ignored, powód w atrybucie) ==
+test state::tests::tampered_share_or_commitment_is_rejected ... ignored, Ristretto/Poly O(N^2) w Miri są zbyt wolne; ścieżki crypto pokrywa core
+test state::tests::zero_key_is_rejected ... ignored, Ristretto/Poly O(N^2) w Miri są zbyt wolne; ścieżki crypto pokrywa core
+test result: ok. 1 passed; 0 failed; 9 ignored; 0 measured; 0 filtered out; finished in 0.79s
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s

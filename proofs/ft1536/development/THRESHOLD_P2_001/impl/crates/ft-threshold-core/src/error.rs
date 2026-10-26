@@ -35,6 +35,12 @@ pub enum CoreError {
     MissingKey,
     /// Kontrola MAC z ukrytym δ nie przeszła (`MacFail`).
     MacFail,
+    /// Korzeń transkryptu DKG nie zgadza się z oczekiwanym.
+    TranscriptMismatch,
+    /// Relacja NTRU `f·h = g` nie zachodzi.
+    NtruMismatch,
+    /// Profil `PROD` wymaga evidence NTRU z MPC, a otrzymał jawny klucz.
+    ProdEvidenceMissing,
 }
 
 impl fmt::Display for CoreError {
@@ -53,6 +59,14 @@ impl fmt::Display for CoreError {
             Self::InvalidInput => write!(f, "invalid input"),
             Self::MissingKey => write!(f, "missing pairwise key"),
             Self::MacFail => write!(f, "MAC check failed (hidden delta)"),
+            Self::TranscriptMismatch => write!(f, "DKG transcript root mismatch"),
+            Self::NtruMismatch => write!(f, "NTRU relation f*h = g does not hold"),
+            Self::ProdEvidenceMissing => {
+                write!(
+                    f,
+                    "PROD requires MPC NTRU evidence, plaintext is TEST-ORACLE"
+                )
+            }
         }
     }
 }

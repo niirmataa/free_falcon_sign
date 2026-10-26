@@ -738,6 +738,12 @@ INIT → ACCEPTED → NONCE_COMMITTED → NONCE_REVEALED → SAMPLING
   └──────────────┴──────────────┴────────────┴─────────┴──► ABORTED
 ```
 
+- Wejście do `INIT` **MUST** wymagać zwalidowanego stanu setupu:
+  typestate `PartyState<Ready>` — DKG (32 instancje seeda, VSS wszystkich
+  dealerów, `dkg_root` z transkryptu) **i** relacja NTRU `f·h = g`.
+  Brak drogi do sesji sign bez tych kroków (audyt #3, WP-014).
+- Profil `PROD` **MUST** odrzucić evidence NTRU policzone na jawnym kluczu
+  (`PlaintextTestkit`); wymagane evidence z MPC na udziałach (O-05).
 - `SAMPLING` ma pętlę prób; każda próba zapisuje licznik i zużytą
   losowość (nie sekret) — do audytu.
 - `RELEASED` = podpis + receipt; retry z `request_id` zwraca to samo.

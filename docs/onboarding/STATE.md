@@ -1,5 +1,30 @@
 # Stan projektu — punkt wejścia
 
+**2026-10-26 — S09/THRESHOLD_P2_001: WP-014 DONE (typestate DKG/NTRU).**
+`ft-threshold-protocol::state` wymusza typami drogę do podpisu:
+`PartyState<Unvalidated>` → `validate_dkg` (weryfikacja VSS wszystkich
+dealerów dla 32 instancji seeda + kanoniczny `dkg_root` wiązany z `sid`,
+`pk_hash`, `k` i transkryptem) → `validate_ntru` (`f·h = g` w `R_q`) →
+`PartyState<Ready>` → `SignSession::begin`. Nie ma publicznego konstruktora
+`Ready`; dwa doctesty `compile_fail` pilnują, że ścieżka nie zniknie.
+`PROD` odrzuca evidence NTRU z jawnego klucza (`ProdEvidenceMissing`) —
+O-05 pozostaje otwarte. Testy: 10 jednostkowych + 2 `compile_fail`, pełny
+miri core 81/11 PASS (log `.build/miri_full_2026-10-26.log`), miri protocol
+1/9 ignored (powód w atrybucie). Dowód: `impl/ci/WP014_CHECK_2026-10-26.txt`.
+
+**2026-10-26 — S09/THRESHOLD_P2_001: WP-013 DONE (dwie domeny + ukryte δ).**
+Właściciel potwierdził **D-025** (dwie jawne domeny: `Z_q` dla udziałów
+pułapki, `Z_P` dla MPC). Zaimplementowano `zp` (`P = 2^61−1`: add/sub/mul/
+inv/pow, Shamir, Lagrange, spójność) oraz `mac` (SPDZ-style MAC
+z **ukrytym** δ: `DeltaShares` z wkładów stron, `open_checked`,
+`CoreError::MacFail`). W API produkcyjnym **nie ma** `delta_known` ani
+konstruktora z dealerem — dealer istnieje wyłącznie w `#[cfg(test)]`.
+KAT niezależny (`ci/kat/zp_reference.py`), **92 testy natywne PASS**,
+clippy/deny PASS, miri: `zp` 9/9 i `mac` 12/12. Granica utrzymana: MAC
+pojedynczego otwarcia wykrywa niespójne pary `(share, mac)`, ale nie
+zastępuje kontroli MAC na wynikach obliczeń (auth triples, WP-016).
+Commit `91b0ca52`; bez push.
+
 **2026-10-26 — S09/THRESHOLD_P2_001: WP-010/011/012 DONE (prymitywy + CI).**
 Workspace 7 crate'ów (toolchain 1.94.0) i hermetyczne `impl/ci/check.sh`
 (fmt/build/test/clippy `-D warnings`/`cargo deny --offline`/miri) gotowe;

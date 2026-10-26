@@ -4,6 +4,9 @@
 //! refresh, transkrypt, abort i rozliczanie winy. Ten crate **nie ma
 //! sieci** — transport jest w `ft-threshold-transport`.
 //!
-//! Na etapie WP-010 jest to szkielet; implementacja wchodzi w G2 (WP-030).
+//! WP-014: typestate setupu ([`state`]) — podpis tylko z walidowanego
+//! DKG/NTRU. Pełny protokół (ruchy, complainty, transkrypt) w G2/WP-030.
 
 #![forbid(unsafe_code)]
+
+pub mod state;
