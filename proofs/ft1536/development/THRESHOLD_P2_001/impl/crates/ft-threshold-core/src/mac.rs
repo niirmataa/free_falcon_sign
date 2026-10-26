@@ -38,7 +38,14 @@ use crate::zp::{self, P};
 
 /// Udział wartości z MAC: `(x, share, mac)`, gdzie `mac = δ·share` w `Z_P`
 /// w sensie współdzielenia (nie lokalnej równości — δ też jest podzielone).
-#[derive(Clone, Zeroize, ZeroizeOnDrop)]
+///
+/// **Bez `Clone`:** kopia udziału to kopia sekretu; audyt #11 (WP-017).
+/// ```compile_fail
+/// use ft_threshold_core::mac::MacShare;
+/// fn needs_clone<T: Clone>() {}
+/// needs_clone::<MacShare>();
+/// ```
+#[derive(Zeroize, ZeroizeOnDrop)]
 pub struct MacShare {
     x: u16,
     share: u64,
@@ -271,6 +278,10 @@ mod tests {
         (shares, delta)
     }
 
+    fn copy_share(s: &MacShare) -> MacShare {
+        MacShare::new(s.x(), s.share(), s.mac()).expect("copy")
+    }
+
     #[test]
     fn open_matches_python_kat_and_returns_value() {
         let delta_shares = zp::split(DELTA, &XS, &DELTA_COEFFS).expect("delta");
@@ -311,7 +322,7 @@ mod tests {
             shares[0].mac(),
         )
         .expect("bad");
-        let set = [bad, shares[1].clone()];
+        let set = [bad, copy_share(&shares[1])];
         assert_eq!(
             open_checked(&set, &delta, 2).unwrap_err(),
             CoreError::MacFail
@@ -327,7 +338,7 @@ mod tests {
             zp::add(shares[1].mac(), 7),
         )
         .expect("bad");
-        let set = [shares[0].clone(), bad];
+        let set = [copy_share(&shares[0]), bad];
         assert_eq!(
             open_checked(&set, &delta, 2).unwrap_err(),
             CoreError::MacFail
@@ -345,7 +356,7 @@ mod tests {
                 zp::add(shares[0].mac(), mac_guess),
             )
             .expect("bad");
-            let set = [bad, shares[1].clone()];
+            let set = [bad, copy_share(&shares[1])];
             assert_eq!(
                 open_checked(&set, &delta, 2).unwrap_err(),
                 CoreError::MacFail,
@@ -366,7 +377,7 @@ mod tests {
             zp::add(shares[0].mac(), zp::mul(shift, delta.shares[0])),
         )
         .expect("shifted");
-        let set = [shifted, shares[1].clone()];
+        let set = [shifted, copy_share(&shares[1])];
         assert_eq!(
             open_checked(&set, &delta, 2).unwrap_err(),
             CoreError::MacFail

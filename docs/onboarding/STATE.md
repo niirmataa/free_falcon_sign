@@ -1,5 +1,13 @@
 # Stan projektu — punkt wejścia
 
+**2026-10-26 — S09/THRESHOLD_P2_001: WP-017 PARTIAL (zeroizacja typów).**
+Wszystkie typy sekretne w `core` mają `ZeroizeOnDrop`; `MacShare` stracił
+`Clone` (dowód: doctest `compile_fail`), `Debug` nie wypisuje sekretów.
+`VssCommitments` zostaje `Clone`/`Debug` świadomie — to dane publiczne.
+Poza zakresem i jawnie otwarte: `mlock`/no-dump (node, G2/WP-045) oraz
+test allocator-hook na brak kopii (G2). Dowód:
+`impl/ci/WP017_CHECK_2026-10-26.txt`.
+
 **2026-10-26 — S09/THRESHOLD_P2_001: WP-014 DONE (typestate DKG/NTRU).**
 `ft-threshold-protocol::state` wymusza typami drogę do podpisu:
 `PartyState<Unvalidated>` → `validate_dkg` (weryfikacja VSS wszystkich

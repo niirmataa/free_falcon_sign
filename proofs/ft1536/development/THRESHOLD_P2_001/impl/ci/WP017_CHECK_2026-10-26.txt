@@ -1,0 +1,27 @@
+# WP-017 check — 2026-10-26 (zeroizacja; zakres częściowy)
+# host: Linux 6.12.113+deb13-amd64 x86_64 GNU/Linux
+# rustc: rustc 1.94.0 (4a4ef493e 2026-03-02)
+
+== typy sekretne: ZeroizeOnDrop / brak Clone ==
+crates/ft-threshold-core/src/gf256.rs:63:#[derive(Zeroize, ZeroizeOnDrop)]
+crates/ft-threshold-core/src/mac.rs:48:#[derive(Zeroize, ZeroizeOnDrop)]
+crates/ft-threshold-core/src/mac.rs:123:#[derive(Zeroize, ZeroizeOnDrop)]
+crates/ft-threshold-core/src/prss.rs:32:#[derive(Zeroize, ZeroizeOnDrop)]
+crates/ft-threshold-core/src/ring.rs:70:#[derive(Zeroize, ZeroizeOnDrop)]
+crates/ft-threshold-core/src/shamir_zq.rs:26:#[derive(Zeroize, ZeroizeOnDrop)]
+crates/ft-threshold-core/src/vss.rs:144:#[derive(Zeroize, ZeroizeOnDrop)]
+crates/ft-threshold-core/src/zp.rs:75:#[derive(Zeroize, ZeroizeOnDrop)]
+
+== MacShare bez Clone (compile_fail doctest) ==
+running 1 test
+test crates/ft-threshold-core/src/mac.rs - mac::MacShare (line 43) - compile fail ... ok
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+
+== test + clippy ==
+test result: ok. 92 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.23s
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+    Checking ft-threshold-protocol v0.1.0 (/media/footfalcon/FT1536_DATA/free_falcon_sign/proofs/ft1536/development/THRESHOLD_P2_001/impl/crates/ft-threshold-protocol)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.23s
+
+== poza zakresem (jawnie): mlock/no-dump = node G2 (WP-045);
+   allocator-hook na brak kopii = G2; VssCommitments Clone/Debug = dane publiczne
