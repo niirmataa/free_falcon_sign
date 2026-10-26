@@ -1,3 +1,27 @@
+# SEED9_R1 — sustained route ACTIVE; complete generator checkpoint582 accepted;583 running
+
+Owner: continue fully to completion; no push, handoff, subagents or reviewers.
+Overall source-to-fiber goal remains IN_PROGRESS / NOT_REVIEWED.
+582 canonical keygen_mkgmcomplete199_582 accepted14/14, exit0, diagnostics0/0,
+warningAsError, markers/suppressions0;22 standard-only axiom results.
+Complete original modp_mkgm3 logn1..9/full0 and both full initialized/readable
+output tables are constructed with no old initialized-table premise.
+Scalar post-increment control, actual logn1/other row branches, descending
+squares and top writes all execute original source. No closed-form root law.
+58.387s sum/maxRSS4164024 KiB; unchanged limits; independent review NOT_RUN.
+ENTRY_PINS00f602e7…74673/74673 before/after, parent581250 hashes unchanged.
+17 local attempts retain13 failures; the memory failures were repaired by
+named primitive proofs and abstract empty-scope conversion, not higher limits.
+Evidence binding count 542; report/evidence are
+notes/run/KEYGEN_MKGM_COMPLETE_199_582_REPORT.md and matching JSON.
+583 active draft MkgmCall200 binds the new complete body to actual seven-arg
+source calls; next concrete d=2 prime prefix/call, then NTT/multi-limb CRT,
+later d levels/root/certificate/codec. None of the broad KeyGen/Sign/security
+or unconditional probability/positivity claims is closed by this checkpoint.
+Twelve waiting commits plus582=thirteen; no push. Foreign edits excluded.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — sustained route ACTIVE; generic row checkpoint581 accepted;582 running
 
 Owner: continue fully to completion. No stopping/handoff at these local
@@ -9399,3 +9423,22 @@ Job record (582): attempt002 — ACCEPTED_LOCAL MkgmControl199,3.372s,0/0: uint3
 
 Job record (581 checkpoint): final evidence {"accepted": 8, "axiom_results": 12, "failed_local_attempts": 4, "new_evidence_bindings": 250, "elapsed_s": 44.879, "maxrss_kib": 3530976}. Count correction is append-only in report; initial bytes retained. Next: local commit, continue582 without handoff or push.
 Job record (582): attempt003 — ACCEPTED_LOCAL3/3,0/0: control, generic row prelude and output field/frame facts; next scalar power/square/top composition.
+Job record (582): attempt003 accepted control/prelude/facts3/3,0/0; next = exact post-increment whileK fold for every logn1..9, then square/top. Canonical581 checkpoint committed6e98fb63; overall owner goal remains active and work continues, no push.
+Job record (582): attempt003 accepted control and generic row prelude/facts3/3,0/0. Next: source power fold plus generic square body/initialization; fixed domains use actual count=2^logn, not an artificial1024-cell or k=8 premise.
+Job record (582): attempt004 — power RETAINED_ELABORATION_FAILURE: the literal seq/skip proof needs chainOf unfolded in its scoped target. Attempt005 was launched before inspecting004 and repeated the unchanged power failure; retain it as duplicate workshop failure. Next: expose chainOf explicitly, then resume square modules; no mathematical counterexample.
+Job record (582): attempt006 — control/prelude/facts/power/square invariant accepted5/5,0/0; square body RETAINED_CLEAN_LOG_FAILURE: old lo≥1 premise is unused by the actual generic body proof. Remove that unnecessary helper premise (no semantics or linter weakening); adapt the loop caller and its fixed256 bound bridge. Next full square/top check.
+Job record (582): attempt007 — ACCEPTED_LOCAL9/9,0/0: generic power control, row prelude, descending square loop and source top elements all checked. The square helper drops an unnecessary old lo premise while retaining actual execution guards. Next: scalar prefix and whole row/square/top composition, then actual lower-step generator bindings; continue without push.
+Job record (582): attempt008 — nine component modules accepted,0/0; Scalar RETAINED_PARSER_FAILURE: one unmatched parenthesis in nested sequence assembly. Replace that assembly with sequential typed refinements; all preceding scalar operation/loop/ig proofs elaborated. Next scalar + row branch check; no semantic or limit change.
+
+Job record (582): attempt009 — nine component modules accepted,0/0; Scalar RETAINED_KERNEL_MEMORY_FAILURE at the monolithic source theorem (26.576s,maxRSS6293736 KiB). Elaboration completed but kernel memory limit rejected the large composed proof; no accepted product used. Next: split named scalar phase lemmas and execution interfaces, unchanged limits, then check Rows/Whole.
+Job record (582): attempt010 — RETAINED_RUNNER_INPUT_FAILURE: requested Power without its newly authored Prelude/Facts imports in the complete local namespace. Control accepted; no Scalar check ran. Next: supply the complete ordered199 module list and inspect results before any follow-up.
+Job record (582): attempt011 — nine components accepted; head_source/head_ready RETAINED_KERNEL_MEMORY_FAILURE (49.635s,maxRSS6292040 KiB) after the first scalar split. Next: named primitive source lemmas and explicit afterCube locals bridges, unchanged limits; Rows still not run.
+Job record (582): attempt012 — nine components accepted; Scalar RETAINED_PARSER_FAILURE: promoted cubeScoped proof retained inner indentation after extracting named primitives. No kernel memory errors reported in other named scalar declarations (12.441s). Next: fix that indentation and run the new scalar/row/splice/complete modules with hash-checked unchanged nine-component local inputs.
+Job record (582): attempt013 — RETAINED_KERNEL_MEMORY_FAILURE isolated to cubeScoped (30.636s,maxRSS6291944 KiB); every other scalar declaration checked. Cause: scope-result record reduction over the deeply nested concrete state. Next: prove the empty-scope wrapper at abstract states once and instantiate it; unchanged limits, no failed product reused.
+Job record (582): attempt014 — Scalar ACCEPTED_LOCAL (13.444s,0/0), abstract empty-scope bridge repairs the kernel-memory failure without raising limits. Rows RETAINED_PARSER_FAILURE at multiline using application in logn1 store proof. Next parenthesize the complete Store32 application and check Rows/Splice/Complete.
+Job record (582): attempt015 — Scalar/Rows ACCEPTED_LOCAL2/2,0/0 (12.694/3.123s), including actual logn1 branch and all higher row loops. Splice RETAINED_ELABORATION_FAILURE: induction hypothesis already closes over rest; one surplus argument. Next remove it, explicitly bind ig in prepare_source, then full composition/audit.
+Job record (582): attempt016 — Scalar/Rows/Splice ACCEPTED_LOCAL3/3,0/0; Complete RETAINED_ELABORATION_FAILURE: metadata rewrite still names a Result.state projection while the target names out directly. Next bind size equality at explicit State projections, then repeat full composition/audit. All source composition declarations otherwise produced no diagnostics.
+Job record (582): attempt017 — ACCEPTED_LOCAL5/5,0/0, with hash-checked unchanged nine-component inputs: full original generator source for every logn1..9/full0, both complete initialized/readable tables from executed writes, no old initialization premise.22 axiom results all standard-only. Next canonical14-module job, intermediate checkpoint, and immediate actual d=2 call binding; no push or handoff.
+Job record (582): keygen_mkgmcomplete199_582 — ACCEPTED14/14,exit0,0/0,warningAsError,markers0;22 standard-only axiom results.58.387s sum,maxRSS4164024 KiB. Entire original generator logn1..9/full0 and complete initialized/readable outputs constructed without old-init premise. Next: intermediate evidence/local checkpoint, then actual d=2 call bindings583; no push or final handoff.
+
+Job record (582 checkpoint): final evidence PASS_INTEGRITY,74673 entry paths and250 predecessor bindings unchanged, 542 new evidence bindings verified;14/14,22 standard-only results. Next exact-path local commit and immediate583 continuation; no push or final handoff.
