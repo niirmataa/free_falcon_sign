@@ -1,3 +1,33 @@
+# R1 route 575 — one-block v-loop image accepted; u1-loop image next
+
+2026-10-26. Consume `StepNttVImage195.u1_body_image` (source commit
+`d4e1c26d`, lane job keygen_publicforward159_575, 2/2 accepted, logs
+0/0), with `pairWords` / `vWords` / `blockWords`. The exact 512-word
+image, execution, fixed domains and frame share the same output state;
+the twiddle is the executed `gvs ⟨m+j,tableBound⟩` load. This closes the
+v-loop of ONE u1 block, including setup and scope restoration. The
+image is a source-order recurrence; no transform/table/root law.
+
+Report: `KEYGEN_STEP_VIMAGE_195_575_REPORT.md`. Evidence:
+`KEYGEN_STEP_VIMAGE_195_575.json` SHA256
+`58119377abb6b0560079fd443bbeda00c4de31891ee8049c06d9cfaf0b04b77e`.
+ENTRY_PINS remains `00f602e7…`; 74673/74673, 0 missing / 0 changed
+before and after work. Legacy retained 65+58+4+finding preserved;
+two local setup/environment failures are added in the separate
+`KEYGEN_STEP_VIMAGE_195_FAILURES_575.json` supplement. No proof error,
+no pinned-source edits, no use of the defective job-570 stepState.
+
+Next unused suffix **576**. Next window composes `u1_body_image` across
+u1 blocks, consumes `StepNttMiddle195.u1_step`, and transports the image
+through the increment's unchanged heap. Keep the actual table index
+m+j and block origin j*t explicit. Then compose mInner/rounds and
+m-walk; only later bind productFd/productGd through tail_keep_words /
+image_keep. The remaining false !out_ntt skip, section composition and
+body_entry discharge stay in their existing order. No independent
+review, push, stages import, migration or unconditional positivity
+claim. Use tools/job111.py. The older route snapshots below are
+retained history, not a request to repeat their closed steps.
+
 # NTT3 engine route 571 — the first pass composed and exported at the entry frame; the intermediate doubling passes next
 
 2026-10-23 (R1 engine window). OBLIGATION 1 (the NTT3 execution

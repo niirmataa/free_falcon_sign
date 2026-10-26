@@ -1,3 +1,80 @@
+# SEED9_R1 — one-block v-loop word image CLOSED (job 575); u1-loop image next
+
+2026-10-26, suffix 575. **PROVED_KERNEL_SCOPED / NOT_REVIEWED**.
+WYKONANE: StepNttVImage195 plus its type/axiom audit, source checkpoint
+`d4e1c26d`. PRZETESTOWANE: lane job keygen_publicforward159_575 accepted
+2/2, exit 0, diagnostics 0/0, forbidden markers [], warningAsError;
+proof 10.700s, audit 2.674s, cumulative child maxRSS 4085136 KiB.
+NIEZALEZNIE ODEBRANE: NOT_RUN; no reviewer started.
+
+WHAT CLOSED: pairWords updates the exact pair (l+v,l+h+v) with the
+atomic binary_step leftWord/rightWord; vWords folds these updates in
+source order, blockWords = vWords h 0. v_loop_image constructs the
+remaining loop execution with its exact Image on ALL 512 marched
+words, MFixed, v=h and the write frame. v_loop_full_image also runs the
+v=0 initializer for any declared old v. u1_body_image consumes the
+existing setup (actual gvs(m+j) load and pointer binds), executes the
+full v-loop and restores scope, exporting the SAME output state for
+execution, word image, MFixed, frame and out.locals=s.locals.
+This is the recursive executed-word image, not a closed-form NTT law.
+All domain premises stay explicit; no target execution/image premise.
+
+Entry manifest SHA256
+00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964:
+74673/74673, 0 missing / 0 changed both before AND after work. No
+re-baseline. Original job-570 sources and the permanent bodyHeap
+supplement untouched; no use of the defective stepState. No active
+owned Lean/Sage job on close; foreign untracked threshold prompt left
+untouched. No subagents, push, stages import or migration.
+
+Proof source `ace1fd18e06fdfc1fd7992a331fd12354fcf318a238510e6c4e1988faee77eff`,
+olean `2b69221b0335ec609a43d82b09b4824f71d987a98c209afe007eae239f6b7bae`.
+Three theorem axiom lists: exactly propext/Classical.choice/Quot.sound;
+three definitions: propext/Quot.sound (NOT axiom-free; the erroneous
+intermediate live record has an explicit correction below).
+Evidence: notes/run/KEYGEN_STEP_VIMAGE_195_575.json SHA256
+58119377abb6b0560079fd443bbeda00c4de31891ee8049c06d9cfaf0b04b77e;
+report: notes/run/KEYGEN_STEP_VIMAGE_195_575_REPORT.md.
+
+RETAINED: historical 65 + 58 + 4 plus finding, unchanged; two NEW local
+setup/environment failures in KEYGEN_STEP_VIMAGE_195_FAILURES_575.json
+(`a5defc66ddc32be3b51d29a3e5eef14a046c1cbfe5fb5627abac60a56528edbf`).
+Attempt001: bwrap NETLINK_ROUTE refused by outer sandbox before Lean;
+attempt002: empty first LEAN_PATH Source3 tree shadowed job-574 imports.
+Same proof source then accepted in attempt003 (19.670s, logs 0/0), then
+in canonical job 575. No failed lane-job suffix, no math counterexample,
+no suppressed warnings or weakened limits. Known if_pos/if_neg and
+record-field parser traps avoided; all raw attempts/snapshots retained.
+
+NEXT unused suffix **576**: fold u1_body_image across the u1-loop,
+carrying blockWords through the u1 increment by heap equality. Later
+windows: mInner/rounds, m-walk, then tail_keep_words + image_keep to
+bind productFd/productGd loads. The false !out_ntt skip, loop/section
+assembly and body_entry discharge remain after that. Whole forward
+image, root/table laws, compiler binding, unconditional Z>0/p_accept/p_K
+and prospective Z>=2^-256 remain OPEN; Old110, measured wording and
+five do_sign obligations unchanged. No push: 4 commits at entry plus
+this window's source and closing-documentation commits = 6 waiting.
+Resume from this state, ENTRY_PINS and the new report; lane runner is
+**tools/job111.py**, never the historical tools/job.py.
+
+Previous live snapshots and per-job records follow unchanged.
+
+# SEED9_R1 — v-loop word-image composition window IN PROGRESS (suffix 575)
+
+2026-10-26. Owner scope: one u1 block, pairs (l+v,l+h+v), loaded
+twiddle gvs (m+j), atomic StepNttImage195.binary_step to the full block
+image. Later windows: u1-loop, rounds, m-walk, productFd/productGd via
+tail_keep_words. Entry 00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964
+reverified: 74673/74673, 0 missing / 0 changed; read-only manifest.
+No active Lean/Sage jobs at entry; foreign untracked threshold prompt
+reported and left untouched. Retained 65 + 58 + 4 plus finding unchanged.
+No subagents; no push (4 commits waiting at entry). New source planned:
+StepNttVImage195; consume jobs 572/574, keep all pinned sources untouched.
+
+Job record: entry_reverify_575 — PASS_INTEGRITY, 74673/74673; next =
+v-loop image induction and one u1Inner image export.
+
 # SEED9_R1 — doubling-word image FOUNDATION window: Image/pairAt + the atomic butterfly step over body_state accepted (job 574); v-loop image composition next
 
 2026-10-25/26 (R1 image foundation window, suffix 574). Entry pins
@@ -8969,3 +9046,15 @@ Następny krok: właściciel/koordynator organizuje niezależny odbiór;
 recenzenta nie uruchomiono. Brak otwartego typu wymaganego dla tego
 scoped stable-top; reverse reciprocal, pełny certificate, real-error,
 FFT/exact Gram, KeyGen, T5, M6 i C Sign pozostają kolejnymi obowiązkami.
+
+Job record (575 window): vimage575/attempt001 — ENVIRONMENT_REFUSAL before Lean: bwrap failed to create NETLINK_ROUTE socket under the outer sandbox (exit 1, 0.004s); source snapshot/raw logs/receipt retained. Next = same isolated checker with permitted sandbox setup; do not weaken bwrap or limits.
+
+Job record (575 window): vimage575/attempt002 — SETUP_FAILURE (missing import, 1.318s): the empty first LEAN_PATH Source3 directory shadows the complete job-574 tree; no proof elaboration. Retained snapshot/logs/receipt. Next = use the complete job-574 lib as first import root (known namespace-tree trap).
+
+Job record (575 window): vimage575/attempt003 — ACCEPTED local typecheck, exit 0, 19.670s, logs 0/0, maxRSS 4084196 KiB; v_loop_image/v_loop_full_image/u1_body_image compiled. Next = pinned lane acceptance job 575 plus axiom/type audit; no proof workshop errors.
+
+Job record (575 window): keygen_publicforward159_575 — ACCEPTED 2/2, proof 10.700s / audit 2.674s, warningAsError, logs 0/0, forbidden markers []; all three theorem exports use only propext/Classical.choice/Quot.sound (definitions axiom-free). Next = final inherited-pin recheck, evidence pins and local commits.
+
+Correction to the preceding job-575 record: the three definitions are NOT axiom-free; the actual audit gives [propext, Quot.sound] for pairWords/vWords/blockWords. The three theorem exports use exactly [propext, Classical.choice, Quot.sound]. The raw audit is unchanged; this supplement preserves the incorrect earlier wording and corrects it explicitly.
+
+Job record (575 window): entry_reverify_575 after acceptance — PASS_INTEGRITY, 74673/74673, 0 missing / 0 changed; all source/snapshot/olean/raw-log hashes and six printed axiom lists bound in KEYGEN_STEP_VIMAGE_195_575.json. Next = local source checkpoint and closed-window handoff.
