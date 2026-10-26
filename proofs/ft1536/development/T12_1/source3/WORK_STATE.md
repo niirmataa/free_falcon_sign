@@ -1,3 +1,61 @@
+# SEED9_R1 — eight round images, m-walk and product-read bridge CLOSED (job 577)
+
+2026-10-26, suffix 577. **PROVED_KERNEL_SCOPED / NOT_REVIEWED**.
+WYKONANE: StepNttRoundImage195 + StepNttProductImage195 and original-type/
+axiom audit. PRZETESTOWANE: keygen_publicforward159_577 accepted 3/3,
+exit 0, diagnostics 0/0, warningAsError, forbidden markers []; round
+5.529s, tail/product 2.570s, audit 2.522s, maxRSS 3871920 KiB.
+NIEZALEZNIE ODEBRANE: NOT_RUN; no reviewer or subagent started.
+
+WHAT CLOSED: m_body_image lifts the full u1 image through actual
+mInner declarations, ht assignment, t=ht and scope restore; RoundPlan
+counts exactly eight selected rounds (m=2..256, t=256..2).
+walkWords structurally folds roundWords on that count; m_walk_image
+constructs the actual mWalk and the same output's all-512-word image,
+MFixed, m=512/t=1 and frame. tail_run_image executes t=hn, m=2 and the
+full=0 triple skip. tail_keep_words/image_keep then feed tail_pair_loads,
+product_reads and the ordered original w0/w1 assignments, at the literal
+t1[(v<<1)+0/1] expressions shared by productFd/productGd. Source capacity
+is derived from image loads; product-state t1 binding/v cell/heap equality
+remain explicit. No round/tail execution or output-image hypothesis.
+
+ENTRY_PINS 00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964:
+74673/74673, 0 missing / 0 changed before AND after. Job-576 handoff and
+retained-attempt bindings 33/33 before/after; no re-baseline. Permanent
+bodyHeap supplement remains authoritative; defective stepState unused.
+Round source 265c793c779c5fb94b8805481f818c43ac7e31bd32a91cb8f8beb1bfa5bba3b6;
+olean a0a2c33ba1dec1d06ee9399d06933f301967bfb4d3449b39f8288ddd61565d2c.
+Tail/product source 26b5a943fc673dc537f1d3831b67abc02307e81d59baffd59ce17a7ab83a6ba7;
+olean aa87ed639537a376ec3f755ac20863f6f9de68658e2113256f4828b57e94aed3.
+Evidence/report: notes/run/KEYGEN_STEP_ROUNDIMAGE_195_577.json and
+KEYGEN_STEP_ROUNDIMAGE_195_577_REPORT.md. Eleven axiom results retained;
+RoundPlan/selected_plan axiom-free, all other dependencies standard-only.
+
+RETAINED: 65 + 58 + 4 + bodyHeap finding, two job-575 setup failures,
+repaired job-576 dif_pos failure, plus ONE new local tooling/performance
+failure (attempt001: 191.821s, 2000000-heartbeat timeout in done-case
+recursive simplification, not a counterexample). Explicit round-count
+recursion repaired it without increased limits; attempt002 accepted
+2/2, logs 0/0. The attempted SIGINT reached no process: Lean had already
+exited. Intermediate inaccurate live wording has append-only corrections
+below; raw receipts are authoritative. No failed cache product.
+
+NEXT unused suffix **578**: compose the first-pass/full forward and
+call-frame image, then consume the bridge in concrete product init/
+destination-frame/full-loop/section assembly. The false !out_ntt skip
+and body_entry discharge remain in the route. The complete concrete
+productFd/productGd execution is not claimed by this read bridge.
+No closed-form transform/root/table law, compiler theorem, full KeyGen/
+Sign, unconditional Z>0/p_accept/p_K or prospective Z>=2^-256. Old110,
+measured wording and the five do_sign obligations unchanged.
+No push: seven commits at entry plus this window's one local checkpoint
+= eight waiting. Unrelated threshold prompt untouched; all jobs ended,
+no stages import/migration/C edit. Use tools/job111.py, not tools/job.py.
+Host-wide process checks require permitted host inspection: ordinary
+sandbox ps is namespace-limited; canonical preflight found no competitors.
+
+Previous live snapshots and per-job records follow unchanged.
+
 # SEED9_R1 — one-block v-loop word image CLOSED (job 575); u1-loop image next
 
 2026-10-26, suffix 575. **PROVED_KERNEL_SCOPED / NOT_REVIEWED**.
@@ -9072,3 +9130,17 @@ Job record (576 window): final pin/evidence check — PASS_INTEGRITY, 74673/7467
 ## R1 window 576 — closed at the full u1-loop image
 
 Owner scope completed: exact executed-word recurrence across the full u1 loop, including initialization. Status PROVED_KERNEL_SCOPED / NOT_REVIEWED. Inherited 65 + 58 + 4 failures, permanent bodyHeap finding and two setup failures retained; one new dif_pos deprecation failure retained and repaired via dite_eq_left. Next window: lift u1_loop_full_image through StepNttMiddle195.m_body to the actual round; then rounds/m-walk, then tail_keep_words/productFd/productGd. ENTRY_PINS remains 00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964 (74673, 0/0 before and after). No further job, reviewer, subagent, push, stages import, migration or production C change. One local checkpoint adds to the six existing unpublished commits.
+
+Job record (577 window): entry_before — PASS_INTEGRITY, 74673/74673, 0 missing / 0 changed; ENTRY_PINS 00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964 unchanged. Owner scope = round/u1 composition, eight rounds and m-walk, then tail_keep_words/product reads. Main ahead 7, empty staging, no active Lean/Sage; unrelated threshold prompt untouched. Historical 65 + 58 + 4 + finding, two setup failures and repaired dif_pos failure retained. Next = compose at mPrepared and restore scope, using only corrected operative states.
+
+Job record (577 window): roundimage577/attempt001 — CONTROLLED_INTERRUPT of the sole owned local Lean process after slow elaboration (SIGINT; snapshot/raw receipt retained), no mathematical counterexample or accepted cache product. Diagnosis next = isolate m_body_image and use one-step recurrence rewriting rather than recursive simp. Host PID inspection confirms no other Lean/Sage; ordinary sandbox process inspection is namespace-limited and is not sufficient host preflight.
+
+Correction to preceding attempt001 record: the process had ALREADY exited before the requested SIGINT (kill returned “No such process”); no interruption occurred. Actual raw receipt: exit 1, 191.821s, maxRSS 4469920 KiB, deterministic 2000000-heartbeat timeout in walkWords termination elaboration (lines 106/111). This is a tooling/performance failure, not a counterexample. The original receipt is authoritative and unchanged. Next = replace the well-founded function recursion by a structurally recursive finite-round recurrence; do not raise limits.
+
+Attempt001 diagnostic refinement: the timeout location is the done-case recursive `simp`/definitional comparison at walkWords, not its termination proof (the earlier “termination elaboration” wording was imprecise). The replacement uses explicit RoundPlan 8 2 256 and structurally recursive walkWords on the number of rounds, keeping every geometric premise and the original limits. Next = local attempt002 for both round and product modules.
+
+Job record (577 window): roundimage577/attempt002 — ACCEPTED 2/2 local checks, round image 3.423s / tail-product bridge 2.520s, exit 0, diagnostics 0/0, maxRSS 4146244 KiB. RoundPlan counts eight rounds explicitly; structurally recursive walkWords avoids attempt001's done-case reduction timeout. m_body_image/m_walk_image/tail_run_image/product_reads/product_assignments compile. Next = canonical lane 577 with original-type/axiom audit; no cache writes from local attempts.
+
+Job record (577 window): keygen_publicforward159_577 — ACCEPTED 3/3, exit 0, diagnostics 0/0, warningAsError, forbidden proof markers []; round 5.529s / tail-product 2.570s / original-type-and-axiom audit 2.522s, maxRSS 3871920 KiB. Eleven axiom results inspected: RoundPlan/selected_plan axiom-free; walkWords/doublingWords/tail_pair_loads [propext, Quot.sound]; remaining six audited exports only propext/Classical.choice/Quot.sound. Next = final 74673-pin recheck, retained-attempt/evidence manifest, report and small local checkpoint; no push.
+
+Job record (577 window): final integrity/evidence — PASS_INTEGRITY, 74673/74673 before/after, 0 missing / 0 changed; predecessor bindings 33/33 before/after; new evidence bindings 52/52 verified. Canonical 3/3 accepted, eleven standard-only/axiom-free audit results, one retained performance failure. Report and receipt sealed; next = small local checkpoint, no push; next unused suffix 578.
