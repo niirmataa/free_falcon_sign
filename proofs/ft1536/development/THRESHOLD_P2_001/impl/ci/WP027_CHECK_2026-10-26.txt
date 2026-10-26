@@ -1,0 +1,114 @@
+# WP-027 check — 2026-10-26 (wire/CBOR/CDDL freeze v1)
+# host: Linux 6.12.113+deb13-amd64 x86_64 GNU/Linux
+# rustc: rustc 1.94.0 (4a4ef493e 2026-03-02) · python3: 3.13 (referencja)
+# cargo: offline, --locked
+
+== Cel ==
+Zamrozić format wire v1 (SPEC §9.2/§9.3/§9.5): kanoniczny CBOR dla
+`body` i `envelope`, ścisły dekoder (non-canonical = odrzucone, nie
+„naprawione”), MAC nad `canonical(envelope \ {3})`, `msg_id` nad
+`canonical(body)`, schematy CDDL w repo i przypięte wektory.
+
+== Co zrobiono ==
+1. `crates/ft-threshold-protocol/src/cbor.rs` — ścisły podzbiór
+   kanonicznego CBOR bez zależności zewnętrznych:
+   - writer: uint/bstr/mapa wyłącznie najkrótszą formą (ai 24/25/26/27),
+   - reader: odrzuca major 1/3/4/6/7, ai ≥ 28 (nieokreślone i
+     zarezerwowane), formy nieskrócone, bstr ponad limit, śmieci po
+     elemencie; `next_item_bytes` przegląda zagnieżdżenie z limitem
+     głębokości (MAX_DEPTH = 8).
+   - 7 testów jednostkowych, w tym wektory RFC 8949 Apendyks A dla uint
+     (0, 23, 24, 255, 256, 65535, 65536, 2^32−1, 2^32, u64::MAX).
+2. `envelope.rs` przełączony z przejściowego kodowania binarnego na
+   kanoniczny CBOR (format v1, `WIRE_VERSION = 1`):
+   - `Body::to_cbor` / `TryFrom<&[u8]>` (ścisłe),
+   - `Envelope::to_bytes` / `TryFrom<&[u8]>` (ścisłe; osadzone body,
+     recipient 16 B, mac 32 B),
+   - MAC = HMAC-SHA256(K_mac, MAC_DOMAIN || canonical(envelope\{3}))
+     — dokładnie SPEC §9.3 (wcześniej: body+recipient płasko),
+   - msg_id bez zmiany struktury: SHAKE256(MSGID_DOMAIN || canonical(body)),
+   - replay-window/round bez zmian logiki; testy WP-020 przechodzą bez
+     modyfikacji (18 testów envelope).
+3. `CoreError::NonCanonicalCbor` (core, non_exhaustive) — jeden jawny
+   kod dla wszystkich naruszeń formy.
+4. Niezależna referencja Python (`ci/wire/cbor_reference.py`; własna
+   implementacja kanonicznego CBOR, SHAKE256, HMAC-SHA256) generuje
+   wektor end-to-end + 10 wariantów non-canonical; runner
+   `ci/wire/run_wire_vectors.sh` porównuje bajty z repo.
+5. Schematy: `wire/schema/envelope.cddl` (FROZEN v1),
+   `wire/schema/payloads_v0.cddl` (pola normatywne 24 typów; SIGN_OPEN
+   DRAFT → WP-041 zgodnie z SPEC §9.4). Opis: `wire/README.md`.
+
+== Wyniki ==
+`./ci/wire/run_wire_vectors.sh` → PASS (wektor bitowo identyczny z
+regeneracją referencji).
+
+Testy Rust (`--test wire_vectors`, 4/4):
+  body_encoding_matches_independent_reference — kodowanie == referencja,
+      dekodowanie odtwarza pola, punkt stały, msg_id == pin
+  envelope_seal_matches_independent_reference — seal == envelope_cbor,
+      MAC == pin, dekodowanie + open OK
+  non_canonical_variants_from_reference_are_rejected — 10/10 odrzucone
+      z NonCanonicalCbor (nieskrócona wersja/epoch, mapa nieokreślona,
+      klucze nieposortowane, duplikat klucza 5, obcy klucz 9, bajt po
+      mapie, tag przed sid, text zamiast bstr, brak klucza 8)
+  envelope_decode_rejects_structural_garbage — obcięte, śmieci, puste,
+      podmieniony MAC → AuthFail, payload > 1 MiB → Err
+
+Całość CI: **150 testów PASS** (default) / **154** (all-features);
+clippy -D warnings oba warianty, fmt, `cargo deny --offline`,
+skan PROD (WP-025), skrypt KAT (WP-024) i skrypt wire — PASS.
+Uwaga: 22 testów lib protokołu (15 starych envelope/state + 7 cbor),
+4 wire_vectors, reszta bez zmian.
+
+== Wektor (piny) ==
+sha256   wire/vectors/envelope_v1.txt:
+  c91c8c50a3272f6218261e9a365e5a44e80c9a7cdf7cbe7a252221a471e122f9
+shake256 wire/vectors/envelope_v1.txt:
+  2d2c8c5388dd37fe5a9cc9c1b947a5ef144e521b7c4144a73790cc407cca75e5
+Pliki (SHA256):
+  0fd31ba8d2e81fa9154d086c67f89b9082ff76f49c002d7fdca4969543f4738d  crates/ft-threshold-core/src/error.rs
+  8a63489e48577a07fa0620122ec9741da7ff18b584db7248294374c3c3afd542  crates/ft-threshold-protocol/src/cbor.rs
+  4921d146668e23e7ca35469b005abd8aea437e69ca6959bdf5fdbe2691c6c019  crates/ft-threshold-protocol/src/envelope.rs
+  539f9bb790cb00c34559e5c803c1b65724385f58e1d91bdc0993c42915ecb595  crates/ft-threshold-protocol/src/lib.rs
+  d595bc374b5559c364bdded5e070ac1d98812db143a843881d7a368f986db2e5  crates/ft-threshold-protocol/tests/wire_vectors.rs
+  4ba8989a5c6713396b6635bffbc95c2d440e9ec010f3981520063f27e5bd3a9e  ci/wire/cbor_reference.py
+  3b8765b4821af335c78e9ac52a004bf501fae2e33b25242206f87889af0af5a3  ci/wire/run_wire_vectors.sh
+  807a5eeae9257983914bcda5696e9be91f0bfd1ac1caa0bd6cbaeb6daa4c77f2  wire/README.md
+  d5f594e25f934d084a1677ee83b778b050fa18622d2a6f752df190e502731159  wire/schema/envelope.cddl
+  87d24deddc548c8c882917cfe13569eca39aad58eaba8d22283945dba3248dea  wire/schema/payloads_v0.cddl
+Zgodność z KAT: `setup_final_payload.pk` = 2881 B i limit `sig` ≤ 10370 B
+odpowiadają długościom zmierzonym w WP-024 (pk 2881 B, sig 2363 B).
+
+== Pułapki (zachowane jawnie) ==
+1. Najkrótsza forma ma PIĘĆ poziomów (direct < 24, potem 1/2/4/8 B):
+   pierwszy szkic pomijał ai = 26, co dla 2^16..2^32 dawało 8 B
+   (non-canonical). Wyłapane testem RFC (65 536 → 0x1A …) przed commitem.
+2. Kanoniczność nie wynika z „kodu na oko”: dekoder egzekwuje value ≥
+   minimum dla ai (np. `0x18 0x00` odrzucone), a referencja Python jest
+   osobną implementacją — rozjazd widoczny jako różnica bajtów.
+3. Szybki parser debugowy w Pythonie podwójnie liczył nagłówek bstr
+   (j już zawierało n) — fałszywy alarm o złej kolejności kluczy;
+   autorytetem jest test Rust + regeneracja bajtów.
+4. Zmiana formatu zmienia bajty MAC: stare koperty z WP-020 są
+   nieważne. To zamierzone zamrożenie v1, nie regresja (brak
+   produkcyjnych danych w tym formacie; domeny bez zmian, wersja nowa).
+
+== Czego to nie obejmuje ==
+- Kodery/dekodery payloadów 0x01–0x24 i ich wektory — lądują z ruchami
+  G2 (WP-030+); zamrożone są zbiory pól (payloads_v0.cddl).
+- SIGN_OPEN (0x15) — format defersuje SPEC do WP-041 (DRAFT w schemacie).
+- TLS 1.3/mTLS, exporter kluczy (O-09/WP-045), framing transportowy
+  (u32 BE + typ ramki) — poza tym pakietem.
+- Miri nie było ponawiane dla nowych testów (kod czysto bezpieczny;
+  workspace miri uruchomi się w cyklu CI check.sh).
+- To nie odbiór: niezależny recenzent G1 (autor ≠ recenzent) nadal
+  wymagany.
+
+== Powtórzenie ==
+```
+cd proofs/ft1536/development/THRESHOLD_P2_001/impl
+./ci/wire/run_wire_vectors.sh                                  # PASS
+cargo test -p ft-threshold-protocol --offline                  # 22+4+2
+cargo test -p ft-threshold-protocol --test wire_vectors --offline  # 4/4
+```

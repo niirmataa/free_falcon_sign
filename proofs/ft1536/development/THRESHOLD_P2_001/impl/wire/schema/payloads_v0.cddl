@@ -1,0 +1,197 @@
+; WP-027 — payloady komunikatów v0 (pola normatywne, SPEC §9.4).
+;
+; Status: pola (zbiory i kolejność kluczy) są zamrożone jako v0.
+; Kodery/dekodery i wektory per typ lądują razem z implementacją danego
+; ruchu w G2 (WP-030+); wyjątek SIGN_OPEN — dokładny format defersuje
+; SPEC do WP-041 (oznaczone DRAFT).
+;
+; Każdy payload jest kanonicznym CBOR-mapem z kluczami 1..N w kolejności
+; poniżej; kodowanie i walidacja jw. (envelope.cddl). N = 1536 dla
+; wektorów w R_q. Wszystkie bstr bez tagów, LE tam, gdzie SPEC mówi o
+; little-endian.
+
+; ---- Setup -----------------------------------------------------------
+
+; 0x01 SETUP_INIT (runda S, publiczny)
+setup_init_payload = {
+  1: bstr .size 32,   ; sid (== body.sid)
+  2: uint,            ; epoch (== body.epoch)
+  3: 2..255,          ; k
+  4: 2..255,          ; n
+  5: [*uint],         ; parties (rosnąco, unikalne, ID 16 B poza tym)
+  6: [*uint],         ; xs (rosnąco, unikalne)
+  7: bstr .size 32,   ; policy_hash
+  8: uint,            ; mode
+  9: bstr,            ; setup_nonce
+}
+
+; 0x02 SETUP_ACCEPT (S0, publiczny)
+setup_accept_payload = {
+  1: bstr .size 16,   ; party_id
+  2: bstr .size 32,   ; state_hash
+  3: bstr,            ; setup_nonce_i
+}
+
+; 0x03 CONTRIB_COMMIT (S1, publiczny)
+contrib_commit_payload = {
+  1: bstr .size 32,   ; commitment
+  2: bstr .size 32,   ; vss_root
+  3: uint,            ; contrib_len
+}
+
+; 0x04 CONTRIB_REVEAL (S2, publiczny)
+contrib_reveal_payload = {
+  1: [*bstr],         ; vss_f   (po N punktów)
+  2: [*bstr],         ; vss_g
+  3: [*bstr],         ; vss_F
+  4: [*bstr],         ; vss_G
+  5: bstr .size 32,   ; contribution_digest
+}
+
+; 0x05 VSS_SHARE (S3, PRYWATNY — per odbiorca)
+vss_share_payload = {
+  1: bstr .size 16,   ; dealer
+  2: bstr,            ; share_f  (N·8 B LE — udział Z_P, SPEC §9.4)
+  3: bstr,            ; share_g
+  4: bstr,            ; share_F
+  5: bstr,            ; share_G
+  6: bstr .size 32,   ; blind_f
+  7: bstr .size 32,   ; blind_g
+  8: bstr .size 32,   ; blind_F
+  9: bstr .size 32,   ; blind_G
+}
+
+; 0x06 COMPLAINT (S4, publiczny)
+complaint_payload = {
+  1: bstr .size 16,   ; accused
+  2: bstr .size 16,   ; dealer
+  3: bstr,            ; share
+  4: bstr .size 32,   ; blind
+  5: uint,            ; index
+}
+
+; 0x07 COMPLAINT_RESPONSE (S4′, publiczny)
+complaint_response_payload = {
+  1: bstr .size 16,   ; dealer
+  2: bstr,            ; share
+  3: bstr .size 32,   ; blind
+}
+
+; 0x08 SETUP_FINAL (S5, publiczny)
+setup_final_payload = {
+  1: bstr .size 2881, ; pk (silnik FT1536, ternary logn=10; pin KAT WP-024)
+  2: bstr .size 32,   ; pk_hash
+  3: bstr .size 32,   ; TH_final
+  4: [*bstr .size 16], ; accepted (rosnąco)
+  5: [*bstr .size 16], ; disqualified (rosnąco)
+}
+
+; 0x09 SETUP_CERTIFY (S6, publiczny)
+setup_certify_payload = {
+  1: bstr .size 32,   ; TH_final
+  2: bstr,            ; signature (format silnika, ≤ 10370 B, SPEC §9.5)
+}
+
+; ---- Sign ------------------------------------------------------------
+
+; 0x10 SIGN_INIT (N0, publiczny)
+sign_init_payload = {
+  1: bstr .size 32,   ; sid (== body.sid)
+  2: uint,            ; epoch
+  3: bstr,            ; msg (≤ 1 MiB)
+  4: bstr .size 32,   ; policy_hash
+  5: bstr .size 32,   ; request_id
+  6: [*bstr .size 16], ; participants (rosnąco)
+  7: uint,            ; nonce_mode
+}
+
+; 0x11 SIGN_ACCEPT (N0, publiczny)
+sign_accept_payload = {
+  1: bstr .size 16,   ; party_id
+  2: bstr .size 32,   ; state_hash
+  3: bstr .size 32,   ; session_nonce
+}
+
+; 0x12 NONCE_COMMIT (N1, publiczny)
+nonce_commit_payload = {
+  1: bstr .size 32,   ; commitment
+}
+
+; 0x13 NONCE_REVEAL (N2, publiczny)
+nonce_reveal_payload = {
+  1: bstr .size 40,   ; nonce_share
+  2: bstr .size 32,   ; salt
+}
+
+; 0x14 SIGN_ROUND (C1; payload per runda w sign_round_*.cddl)
+sign_round_payload = {
+  1: uint,            ; sub_round
+  2: bstr,            ; payload (canonical CBOR, schemat per sub_round)
+}
+
+; 0x15 SIGN_OPEN (C2) — DRAFT: dokładny format defersuje SPEC §9.4
+; do WP-041; pola poniżej nie są zamrożone.
+sign_open_payload = {
+  1: bstr,            ; s2_share albo s2 (do rozstrzygnięcia w WP-041)
+  2: bstr .size 32,   ; mac udziału
+}
+
+; 0x16 SIGN_FINAL (C3, publiczny)
+sign_final_payload = {
+  1: bstr,            ; sig (1..10370 B, format silnika)
+  2: bstr .size 40,   ; nonce
+  3: bstr .size 32,   ; pk_hash
+  4: bstr .size 32,   ; TH_final
+}
+
+; 0x17 SIGN_ABORT (dowolna runda, publiczny)
+sign_abort_payload = {
+  1: uint,            ; code
+  2: [*bstr .size 16], ; blame (rosnąco)
+  3: bstr .size 32,   ; evidence_hash
+  4: uint,            ; round
+}
+
+; ---- Refresh / recovery ----------------------------------------------
+
+; 0x20 REFRESH_INIT (R, publiczny) — analogia do SETUP_INIT z new_epoch
+refresh_init_payload = {
+  1: bstr .size 32,   ; sid
+  2: uint,            ; new_epoch
+  3: bstr .size 32,   ; pk_hash
+  4: 2..255,          ; k
+  5: [*uint],         ; parties (rosnąco)
+  6: bstr .size 32,   ; policy_hash
+  7: bstr,            ; refresh_nonce
+}
+
+; 0x21 REFRESH_ACCEPT (R, publiczny)
+refresh_accept_payload = {
+  1: bstr .size 16,   ; party_id
+  2: bstr .size 32,   ; state_hash
+  3: bstr,            ; refresh_nonce_i
+}
+
+; 0x22 REFRESH_FINAL (R, publiczny)
+refresh_final_payload = {
+  1: bstr .size 32,   ; pk_hash_new
+  2: bstr .size 32,   ; TH_final
+  3: [*bstr .size 16], ; accepted
+  4: [*bstr .size 16], ; disqualified
+}
+
+; 0x23 RECOVERY_INIT (R, publiczny)
+recovery_init_payload = {
+  1: bstr .size 32,   ; sid
+  2: uint,            ; new_epoch
+  3: [*bstr .size 16], ; missing_parties (rosnąco)
+  4: bstr .size 32,   ; policy_hash
+  5: bstr,            ; recovery_nonce
+}
+
+; 0x24 RECOVERY_FINAL (R, publiczny)
+recovery_final_payload = {
+  1: bstr .size 32,   ; pk_hash_new
+  2: bstr .size 32,   ; TH_final
+  3: [*bstr .size 16], ; recovered
+}

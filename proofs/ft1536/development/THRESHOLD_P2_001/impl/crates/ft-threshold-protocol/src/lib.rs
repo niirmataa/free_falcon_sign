@@ -12,5 +12,6 @@
 
 #![forbid(unsafe_code)]
 
+pub mod cbor;
 pub mod envelope;
 pub mod state;

@@ -1,18 +1,23 @@
-//! Uwierzytelnione koperty, licznik rund i replay-window (WP-020, SPEC §9.3).
+//! Uwierzytelnione koperty, licznik rund i replay-window (WP-020, WP-027).
 //!
-//! **Zakres.** Kanoniczny (przejściowy, binarny) `body`, MAC per para,
-//! monotoniczny `round` per nadawca i okno `seq` z idempotentną
-//! retransmisją identycznego `msg_id`. To warstwa aplikacyjna **nad** TLS
-//! 1.3/mTLS (D-010): nie zastępuje transportu i nie jest AEAD.
+//! **Zakres.** Kanoniczny CBOR (RFC 8949, deterministic encoding) dla
+//! `body` i `envelope` (SPEC §9.2/§9.3), MAC per para, monotoniczny
+//! `round` per nadawca i okno `seq` z idempotentną retransmisją
+//! identycznego `msg_id`. To warstwa aplikacyjna **nad** TLS 1.3/mTLS
+//! (D-010): nie zastępuje transportu i nie jest AEAD.
 //!
 //! **Klucz.** W `TEST-ORACLE` `K_mac` może pochodzić z pre-shared key
 //! ([`EnvelopeKey::derive_psk`]). W `PROD` klucz musi pochodzić z TLS
 //! exporter + HKDF-SHA256 z tagiem, `sid`, `epoch`, `sender`, `recipient`
 //! (SPEC §9.3); to zadanie WP-045/O-09 i **nie** jest tu udowodnione.
 //!
-//! **Kodowanie.** Do zamrożenia CBOR (WP-027) używamy jawnego, kanonicznego
-//! kodowania binarnego: długości i liczby całkowite big-endian, payload
-//! z 4-bajtowym prefiksem. Zmiana formatu wymaga nowej domeny MAC.
+//! **Format v1 (zamrożony WP-027).** `body` i `envelope` są mapami
+//! CBOR o kluczach `1..=8` / `1..=3` (SPEC §9.3); `mac` jest liczony nad
+//! `MAC_DOMAIN || canonical(envelope \ {3})`, a `msg_id` nad
+//! `MSGID_DOMAIN || canonical(body)`. Dekoder jest ścisły: forma
+//! nieskrócona, długości nieokreślone, tagi, klucze
+//! nieposortowane/podwójne/nieznane i śmieci po elemencie → `Err`.
+//! Zmiana formatu wymaga nowej wersji i nowych domen MAC.
 //!
 //! **Fail-closed.** Zły MAC, zły odbiorca, obca sesja/epoka, powtórzone
 //! `seq` z innym `msg_id`, wiadomość poza oknem i cofnięcie rundy → `Err`.
@@ -28,6 +33,8 @@ use zeroize::{Zeroize, ZeroizeOnDrop};
 use ft_threshold_core::error::{CoreError, Result};
 use ft_threshold_core::shake;
 
+use crate::cbor::{CborReader, CborWriter};
+
 type HmacSha256 = Hmac<Sha256>;
 
 /// Domena wyprowadzania `K_mac` (PSK/TEST-ORACLE).
@@ -36,6 +43,9 @@ pub const KEY_DOMAIN: &[u8] = b"FT1536/threshold/v1/envelope-key";
 pub const MAC_DOMAIN: &[u8] = b"FT1536/threshold/v1/mac";
 /// Domena `msg_id`.
 pub const MSGID_DOMAIN: &[u8] = b"FT1536/threshold/v1/msgid";
+
+/// Wersja formatu wire (v1; zamrożona WP-027).
+pub const WIRE_VERSION: u8 = 1;
 
 /// Maksymalny payload koperty (v0; SPEC §9.5 zaostrza do 1 MiB na wiadomość).
 pub const MAX_PAYLOAD_BYTES: usize = 1 << 20;
@@ -110,12 +120,11 @@ impl EnvelopeKey {
         &self.recipient
     }
 
-    fn mac(&self, body_bytes: &[u8], recipient: &PartyId) -> Result<[u8; 32]> {
+    fn mac(&self, auth_bytes: &[u8]) -> Result<[u8; 32]> {
         let mut h =
             <HmacSha256 as Mac>::new_from_slice(&self.key).map_err(|_| CoreError::InvalidLength)?;
         h.update(MAC_DOMAIN);
-        h.update(body_bytes);
-        h.update(recipient);
+        h.update(auth_bytes);
         let out = h.finalize().into_bytes();
         let mut mac = [0u8; 32];
         mac.copy_from_slice(&out);
@@ -228,7 +237,7 @@ impl Body {
     /// `msg_id = SHAKE256(domain || canonical(body))[0..32]`, niezależny
     /// od odbiorcy.
     pub fn msg_id(&self) -> [u8; 32] {
-        let encoded = self.encode();
+        let encoded = self.to_cbor();
         let mut input = Vec::with_capacity(MSGID_DOMAIN.len() + encoded.len());
         input.extend_from_slice(MSGID_DOMAIN);
         input.extend_from_slice(&encoded);
@@ -237,25 +246,106 @@ impl Body {
         out
     }
 
-    /// Kanoniczne bajty `body` (przejściowe, binarne).
-    fn encode(&self) -> Vec<u8> {
-        let mut out = Vec::with_capacity(1 + 32 + 8 + 8 + 8 + 2 + 16 + 4 + self.payload.len());
-        out.push(self.version);
-        out.extend_from_slice(&self.sid);
-        out.extend_from_slice(&self.epoch.to_be_bytes());
-        out.extend_from_slice(&self.round.to_be_bytes());
-        out.extend_from_slice(&self.seq.to_be_bytes());
-        out.extend_from_slice(&self.msg_type.to_be_bytes());
-        out.extend_from_slice(&self.sender);
-        // Limit payloadu jest sprawdzony w `new`, więc konwersja jest ścisła.
-        out.extend_from_slice(
-            &u32::try_from(self.payload.len())
-                .expect("payload ≤ 1 MiB")
-                .to_be_bytes(),
-        );
-        out.extend_from_slice(&self.payload);
-        out
+    /// Kanoniczne bajty CBOR `body` (format v1, SPEC §9.3).
+    pub fn to_cbor(&self) -> Vec<u8> {
+        let mut w = CborWriter::new();
+        w.put_map(8);
+        w.put_uint(1);
+        w.put_uint(u64::from(self.version));
+        w.put_uint(2);
+        w.put_bstr(&self.sid);
+        w.put_uint(3);
+        w.put_uint(self.epoch);
+        w.put_uint(4);
+        w.put_uint(self.round);
+        w.put_uint(5);
+        w.put_uint(self.seq);
+        w.put_uint(6);
+        w.put_uint(u64::from(self.msg_type));
+        w.put_uint(7);
+        w.put_bstr(&self.sender);
+        w.put_uint(8);
+        w.put_bstr(&self.payload);
+        w.into_bytes()
     }
+
+    /// Ścisłe dekodowanie kanonicznego CBOR `body` (format v1).
+    ///
+    /// Odrzuca wszystko, co nie jest bajt w bajt identyczne z kodowaniem
+    /// [`Body::to_cbor`]: klucze inne niż `1..=8` w kolejności rosnącej,
+    /// złe typy/rozmiary, `version != 1`, payload ponad limit oraz śmieci
+    /// po mapie.
+    fn decode(bytes: &[u8]) -> Result<Self> {
+        let mut r = CborReader::new(bytes);
+        let pairs = r.expect_map()?;
+        if pairs != 8 {
+            return Err(CoreError::NonCanonicalCbor);
+        }
+        let mut version = 0u64;
+        let mut sid = [0u8; 32];
+        let mut epoch = 0u64;
+        let mut round = 0u64;
+        let mut seq = 0u64;
+        let mut msg_type = 0u64;
+        let mut sender = [0u8; 16];
+        let mut payload: Vec<u8> = Vec::new();
+        for key in 1u64..=8 {
+            if r.expect_uint()? != key {
+                return Err(CoreError::NonCanonicalCbor);
+            }
+            match key {
+                1 => version = r.expect_uint()?,
+                2 => {
+                    let b = r.expect_bstr(sid.len())?;
+                    if b.len() != sid.len() {
+                        return Err(CoreError::NonCanonicalCbor);
+                    }
+                    sid.copy_from_slice(b);
+                }
+                3 => epoch = r.expect_uint()?,
+                4 => round = r.expect_uint()?,
+                5 => seq = r.expect_uint()?,
+                6 => msg_type = r.expect_uint()?,
+                7 => {
+                    let b = r.expect_bstr(sender.len())?;
+                    if b.len() != sender.len() {
+                        return Err(CoreError::NonCanonicalCbor);
+                    }
+                    sender.copy_from_slice(b);
+                }
+                _ => {
+                    let b = r.expect_bstr(MAX_PAYLOAD_BYTES)?;
+                    payload = b.to_vec();
+                }
+            }
+        }
+        r.expect_end()?;
+        if version != u64::from(WIRE_VERSION) {
+            return Err(CoreError::NonCanonicalCbor);
+        }
+        let msg_type = u16::try_from(msg_type).map_err(|_| CoreError::NonCanonicalCbor)?;
+        Self::new(sid, epoch, round, seq, msg_type, sender, payload)
+    }
+}
+
+impl TryFrom<&[u8]> for Body {
+    type Error = CoreError;
+
+    fn try_from(value: &[u8]) -> Result<Self> {
+        Body::decode(value)
+    }
+}
+
+/// Wejście MAC: `canonical(envelope \ {3})` — mapa `{1: body, 2: recipient}`
+/// (SPEC §9.3); body jest osadzone jako pełny element CBOR.
+fn envelope_auth_bytes(body_cbor: &[u8], recipient: &PartyId) -> Vec<u8> {
+    let mut w = CborWriter::new();
+    w.put_map(2);
+    w.put_uint(1);
+    w.put_raw(body_cbor);
+    w.put_uint(2);
+    w.put_bstr(recipient);
+    w.into_bytes()
 }
 
 /// Uwierzytelniona koperta.
@@ -280,8 +370,8 @@ impl Envelope {
         if body.sender != key.sender || body.sid != key.sid || body.epoch != key.epoch {
             return Err(CoreError::AuthFail);
         }
-        let bytes = body.encode();
-        let mac = key.mac(&bytes, &key.recipient)?;
+        let auth = envelope_auth_bytes(&body.to_cbor(), &key.recipient);
+        let mac = key.mac(&auth)?;
         Ok(Self {
             body,
             recipient: key.recipient,
@@ -298,8 +388,8 @@ impl Envelope {
         {
             return Err(CoreError::AuthFail);
         }
-        let bytes = self.body.encode();
-        let expected = key.mac(&bytes, &self.recipient)?;
+        let auth = envelope_auth_bytes(&self.body.to_cbor(), &self.recipient);
+        let expected = key.mac(&auth)?;
         if !ct_eq32(&expected, &self.mac) {
             return Err(CoreError::AuthFail);
         }
@@ -309,6 +399,74 @@ impl Envelope {
     /// `body` bez weryfikacji — wyłącznie do diagnostyki/testów; nie ufać.
     pub fn body_unverified(&self) -> &Body {
         &self.body
+    }
+
+    /// Kanoniczne bajty CBOR `envelope` (format v1, SPEC §9.3):
+    /// `{1: body, 2: recipient, 3: mac}`.
+    pub fn to_bytes(&self) -> Vec<u8> {
+        let body_cbor = self.body.to_cbor();
+        let mut w = CborWriter::new();
+        w.put_map(3);
+        w.put_uint(1);
+        w.put_raw(&body_cbor);
+        w.put_uint(2);
+        w.put_bstr(&self.recipient);
+        w.put_uint(3);
+        w.put_bstr(&self.mac);
+        w.into_bytes()
+    }
+
+    /// Ścisłe dekodowanie kanonicznego CBOR `envelope` (format v1).
+    ///
+    /// Odrzuca klucze inne niż `1,2,3` w kolejności rosnącej, złe typy,
+    /// `recipient` ≠ 16 B, `mac` ≠ 32 B oraz śmieci po mapie. Sam `body`
+    /// jest dekodowany tymi samymi regułami ([`Body::decode`]).
+    fn decode(bytes: &[u8]) -> Result<Self> {
+        let mut r = CborReader::new(bytes);
+        let pairs = r.expect_map()?;
+        if pairs != 3 {
+            return Err(CoreError::NonCanonicalCbor);
+        }
+        let mut body_cbor: &[u8] = &[];
+        let mut recipient = [0u8; 16];
+        let mut mac = [0u8; 32];
+        for key in 1u64..=3 {
+            if r.expect_uint()? != key {
+                return Err(CoreError::NonCanonicalCbor);
+            }
+            match key {
+                1 => body_cbor = r.next_item_bytes(0)?,
+                2 => {
+                    let b = r.expect_bstr(recipient.len())?;
+                    if b.len() != recipient.len() {
+                        return Err(CoreError::NonCanonicalCbor);
+                    }
+                    recipient.copy_from_slice(b);
+                }
+                _ => {
+                    let b = r.expect_bstr(mac.len())?;
+                    if b.len() != mac.len() {
+                        return Err(CoreError::NonCanonicalCbor);
+                    }
+                    mac.copy_from_slice(b);
+                }
+            }
+        }
+        r.expect_end()?;
+        let body = Body::decode(body_cbor)?;
+        Ok(Self {
+            body,
+            recipient,
+            mac,
+        })
+    }
+}
+
+impl TryFrom<&[u8]> for Envelope {
+    type Error = CoreError;
+
+    fn try_from(value: &[u8]) -> Result<Self> {
+        Envelope::decode(value)
     }
 }
 

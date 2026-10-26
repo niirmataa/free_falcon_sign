@@ -51,6 +51,10 @@ pub enum CoreError {
     NtruMismatch,
     /// Profil `PROD` wymaga evidence NTRU z MPC, a otrzymał jawny klucz.
     ProdEvidenceMissing,
+    /// Wejście nie jest kanonicznym CBOR (WP-027): forma nieskrócona,
+    /// długość nieokreślona, tag, klucze nieposortowane/podwójne, śmieci
+    /// po elemencie albo zły kształt.
+    NonCanonicalCbor,
 }
 
 impl fmt::Display for CoreError {
@@ -81,6 +85,9 @@ impl fmt::Display for CoreError {
                     f,
                     "PROD requires MPC NTRU evidence, plaintext is TEST-ORACLE"
                 )
+            }
+            Self::NonCanonicalCbor => {
+                write!(f, "input is not canonical CBOR (RFC 8949 §4.2)")
             }
         }
     }

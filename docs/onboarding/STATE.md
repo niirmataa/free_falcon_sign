@@ -1,5 +1,26 @@
 # Stan projektu — punkt wejścia
 
+**2026-10-26 — S09/THRESHOLD_P2_001: WP-027 DONE (wire v1: CBOR freeze).**
+Format `body`/`envelope` przełączony z przejściowego binarnego na
+**kanoniczny CBOR** (RFC 8949 §4.2): własny moduł `cbor.rs` bez zależności
+(writer najkrótszą formą; reader odrzuca nint/text/array/tag/float, formy
+nieskrócone, długości nieokreślone i zarezerwowane, śmieci po elemencie),
+`Body`/`Envelope` mają `to_cbor`/`to_bytes` + ścisłe `TryFrom<&[u8]>`.
+MAC liczony teraz dokładnie wg SPEC §9.3: `HMAC(K, domain ||
+canonical(envelope\{3}))`. Wektor end-to-end wygenerowała **niezależna
+referencja Python** (własna implementacja CBOR); Rust koduje/dekoduje
+bajt w bajt identycznie, `msg_id` i MAC zgodne z pinem, a **10/10
+wariantów non-canonical** (nieskrócone uinty, mapa nieokreślona, klucze
+nieposortowane, duplikat, obcy klucz, trailing, tag, text, brak klucza)
+jest odrzuconych z `NonCanonicalCbor`. Schematy w repo: `wire/schema/
+envelope.cddl` (FROZEN v1) + `payloads_v0.cddl` (24 typy; SIGN_OPEN
+DRAFT → WP-041). Stare koperty WP-020 są nieważne — to zamierzone
+zamrożenie v1. Wynik: **150 testów PASS** (default) / 154 (all-features),
+clippy/deny/fmt + skrypty KAT/wire/PROD PASS. Dowód:
+`impl/ci/WP027_CHECK_2026-10-26.txt`. Kodery payloadów i wektory per typ:
+G2. Następne w G1: WP-026 (reproducible build) albo WP-022 (fuzz, teraz
+ma gotowy cel: dekoder wire).
+
 **2026-10-26 — S09/THRESHOLD_P2_001: WP-024 DONE (KAT-piny z silnika).**
 `impl/KAT/falcon_ternary_logn10_v1.txt` to wektor z rzeczywistego
 silnika: syntetyczne publiczne seedy (keygen/sign, `replace=1`) +

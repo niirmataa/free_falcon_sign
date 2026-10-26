@@ -80,9 +80,11 @@ WP-023 `DONE` (differential 4×10⁴ vs silnik, 0 rozjazdów,
 WP-025 `DONE` (build PROD bez symboli oracle; `ci/check_prod_symbols.sh`,
 `impl/ci/WP025_CHECK_2026-10-26.txt`),
 WP-024 `DONE` (KAT-piny z silnika + reprodukcja c0 w teście,
-`impl/ci/WP024_CHECK_2026-10-26.txt`).
-Bramka pozostaje **otwarta**: WP-022, WP-026, WP-027, brak
-niezależnego recenzenta (autor ≠ recenzent).
+`impl/ci/WP024_CHECK_2026-10-26.txt`),
+WP-027 `DONE` (wire v1: kanoniczny CBOR, ścisły dekoder, wektory +
+CDDL; `impl/ci/WP027_CHECK_2026-10-26.txt`).
+Bramka pozostaje **otwarta**: WP-022, WP-026, brak niezależnego
+recenzenta (autor ≠ recenzent).
 
 **Recenzent:** niezależny (inny model/człowiek).
 **Nie przechodź, jeśli:** jest znany realny bug, fail-open, panic z wejścia,

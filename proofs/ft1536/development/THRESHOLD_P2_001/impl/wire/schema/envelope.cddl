@@ -1,0 +1,44 @@
+; WP-027 — ZAMROŻONY format wire v1 (SPEC §9.2/§9.3).
+;
+; Zasady kanoniczności (RFC 8949 §4.2, egzekwowane dekoderem, nie
+; normalizowane): najkrótsza forma intów i długości, zakaz długości
+; nieokreślonych (ai = 31), zakaz tagów (major 6), klucze map sortowane
+; numerycznie (u nas rosnąco 1..N, bez duplikatów), bez śmieci po
+; elemencie. Kreska: dekoder MUSI odrzucić non-canonical bytes.
+;
+; Zmiana któregokolwiek pola = nowa wersja formatu (WIRE_VERSION) i nowe
+; domeny MAC/msg_id.
+
+body = {
+  1: 1,               ; version == 1 (kanonicznie 0x01)
+  2: bstr .size 32,   ; sid
+  3: uint,            ; epoch
+  4: uint,            ; round
+  5: uint,            ; seq (per sender, strictly increasing)
+  6: 1..65535,        ; msg_type (uint, najkrótsza forma)
+  7: bstr .size 16,   ; sender
+  8: bstr,            ; payload (canonical CBOR; ≤ 1 MiB, SPEC §9.5)
+}
+
+envelope = {
+  1: body,
+  2: bstr .size 16,   ; recipient
+  3: bstr .size 32,   ; mac
+}
+
+; msg_id jest niezależny od odbiorcy (wspólny transkrypt):
+;   msg_id = SHAKE256("FT1536/threshold/v1/msgid" || canonical(body))[0..32]
+;
+; mac jest per para; koordynator nie może go podrobić bez klucza pary:
+;   K_mac = TLS-exporter/HKDF (PROD) albo PSK-derive (TEST-ORACLE, jawnie
+;           oznaczony), z tagiem "FT1536/threshold/v1/envelope-key",
+;           sid, epoch, sender, recipient
+;   mac   = HMAC-SHA256(K_mac,
+;                       "FT1536/threshold/v1/mac"
+;                       || canonical(envelope \ {3}))
+;
+; envelope \ {3} = { 1: body, 2: recipient }  (body osadzone jako pełny
+; element CBOR, nie jako bstr).
+;
+; Limity (SPEC §9.5): payload ≤ 1 MiB (v1 zaostrza §9.2 do koperty),
+; bstr pojedynczy ≤ 16 MiB, zagnieżdżenie ≤ 8, nieznany msg_type = Err.
