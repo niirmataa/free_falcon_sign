@@ -1,10 +1,15 @@
 //! Rdzeń progowego podpisu FT1536 (P2).
 //!
-//! Ten crate **nie ma jeszcze prymitywów kryptograficznych** — port z KAT
-//! wchodzi w WP-012, zgodnie z `SOURCE_MAP.md`. Zasady: brak I/O,
+//! Zaimplementowane (WP-012a): GF(2^8) i Shamir seeda ([`gf256`]).
+//! W kolejce WP-012: `R_q`, NTT, SHAKE, PRSS i Pedersen. Zasady: brak I/O,
 //! brak `unsafe`, docelowo `no_std`-ready.
 
 #![forbid(unsafe_code)]
+
+pub mod error;
+pub mod gf256;
+
+pub use error::{CoreError, Result};
 
 /// Profil zgodności (SPEC §14.1). Tag jest częścią transkryptu.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
