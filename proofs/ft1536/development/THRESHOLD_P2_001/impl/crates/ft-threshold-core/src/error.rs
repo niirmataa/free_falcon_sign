@@ -29,6 +29,10 @@ pub enum CoreError {
     InvalidLength,
     /// Wartość spoza dozwolonego zakresu.
     OutOfRange,
+    /// Niepoprawne dane wejściowe (np. puste lub nierozróżnialne nonce).
+    InvalidInput,
+    /// Brak klucza dla wymaganej pary stron.
+    MissingKey,
 }
 
 impl fmt::Display for CoreError {
@@ -44,6 +48,8 @@ impl fmt::Display for CoreError {
             Self::InconsistentShare => write!(f, "inconsistent share"),
             Self::InvalidLength => write!(f, "invalid input length"),
             Self::OutOfRange => write!(f, "value out of range"),
+            Self::InvalidInput => write!(f, "invalid input"),
+            Self::MissingKey => write!(f, "missing pairwise key"),
         }
     }
 }
