@@ -91,6 +91,28 @@ impl Poly {
         Ok(Self { coeffs: out })
     }
 
+    /// Kanoniczna serializacja: `N` współczynników `u16` little-endian.
+    pub fn to_le_bytes(&self) -> [u8; 2 * N] {
+        let mut out = [0u8; 2 * N];
+        for (i, &c) in self.coeffs.iter().enumerate() {
+            out[2 * i..2 * i + 2].copy_from_slice(&c.to_le_bytes());
+        }
+        out
+    }
+
+    /// Parsuje dokładnie `2·N` bajtów; zły rozmiar lub współczynnik ≥ q
+    /// to `Err` (fail-closed, WP-019).
+    pub fn from_le_bytes(bytes: &[u8]) -> Result<Self> {
+        if bytes.len() != 2 * N {
+            return Err(CoreError::InvalidLength);
+        }
+        let mut coeffs = [0u16; N];
+        for (i, chunk) in bytes.chunks_exact(2).enumerate() {
+            coeffs[i] = u16::from_le_bytes([chunk[0], chunk[1]]);
+        }
+        Self::from_coeffs(&coeffs)
+    }
+
     /// Współczynnik przy `X^i` (dla `i < N`).
     pub fn coeff(&self, i: usize) -> Option<u16> {
         self.coeffs.get(i).copied()
@@ -212,6 +234,14 @@ impl Poly {
     }
 }
 
+impl TryFrom<&[u8]> for Poly {
+    type Error = CoreError;
+
+    fn try_from(bytes: &[u8]) -> Result<Self> {
+        Self::from_le_bytes(bytes)
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::{HALF_N, N, Poly, Q, inv_mod, mul_mod};
@@ -236,6 +266,26 @@ mod tests {
                 .unwrap_or(0);
             assert_eq!(p.coeff(i), Some(want), "coefficient {i}");
         }
+    }
+
+    #[test]
+    fn poly_le_bytes_roundtrip_and_limits() {
+        let coeffs: Vec<u16> = (0..N).map(|i| (i % Q as usize) as u16).collect();
+        let poly = Poly::from_coeffs(&coeffs).expect("poly");
+        let bytes = poly.to_le_bytes();
+        assert_eq!(bytes.len(), 2 * N);
+        let back = Poly::from_le_bytes(&bytes).expect("parse");
+        assert!(back.ct_eq(&poly));
+        assert!(matches!(
+            Poly::from_le_bytes(&bytes[..2 * N - 1]),
+            Err(CoreError::InvalidLength)
+        ));
+        let mut too_big = bytes;
+        too_big[..2].copy_from_slice(&Q.to_le_bytes());
+        assert!(matches!(
+            Poly::from_le_bytes(&too_big),
+            Err(CoreError::OutOfRange)
+        ));
     }
 
     #[test]

@@ -1,5 +1,17 @@
 # Stan projektu — punkt wejścia
 
+**2026-10-26 — S09/THRESHOLD_P2_001: WP-019 DONE (malformed input, limity).**
+Audyt #14 domknięty dla zaimplementowanych typów wire: `ExpShare`,
+`VssCommitments`, `Poly` i `PairwiseKey` mają `TryFrom<&[u8]>` z dokładną
+długością i walidacją kanoniczności; `VssCommitments` odrzuca >16 punktów
+**przed** alokacją, a `Poly` ma serializację LE dokładnie `2·N` bajtów.
+Test 10⁶ deterministycznych wejść (losowe bufory + 1–4-bitowe mutacje
+poprawnych serializacji) zakończył się **0 panik**; błędy wyłącznie przez
+`Result`. Stan: 128 testów natywnych PASS (core 109 + integracyjne 2 +
+protocol 12 + 5 doctestów), clippy/deny PASS, miri `poly_le_bytes` 1/1.
+Dowód: `impl/ci/WP019_CHECK_2026-10-26.txt`. To nie coverage-guided fuzzing
+— brak instrumentacji/korpusu (WP-022); 10⁶ nie jest dowodem formalnym.
+
 **2026-10-26 — S09/THRESHOLD_P2_001: WP-018 DONE (bitność i spójność udziałów bitu).**
 Audyt #13 domknięty po stronie walidacji udziału: `bits::shake_bits` daje
 strumień bitów 0/1 z SHAKE256 (LSB-first, znany KAT `0x46 0xb9…`), a

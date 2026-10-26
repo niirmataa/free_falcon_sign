@@ -113,7 +113,13 @@ impl VssCommitments {
     }
 
     /// Parsuje kanoniczne punkty; zły punkt to `InvalidInput` (fail-closed).
+    ///
+    /// Limit wejścia: `≤ MAX_PARTIES_V1` punktów (WP-019) — większy bufor
+    /// jest odrzucany **przed** alokacją, bez próby parsowania.
     pub fn from_bytes(bytes: &[u8]) -> Result<Self> {
+        if bytes.len() > MAX_PARTIES_V1 * POINT_BYTES {
+            return Err(CoreError::PartyCountMismatch);
+        }
         if !bytes.len().is_multiple_of(POINT_BYTES) {
             return Err(CoreError::InvalidLength);
         }
@@ -222,6 +228,16 @@ impl ExpShare {
             s: self.s + other.s,
             t: self.t + other.t,
         })
+    }
+}
+
+impl TryFrom<&[u8]> for ExpShare {
+    type Error = CoreError;
+
+    fn try_from(bytes: &[u8]) -> Result<Self> {
+        let fixed: &[u8; EXP_SHARE_BYTES] =
+            bytes.try_into().map_err(|_| CoreError::InvalidLength)?;
+        Self::from_bytes(fixed)
     }
 }
 

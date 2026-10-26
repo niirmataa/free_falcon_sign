@@ -1,0 +1,63 @@
+# WP-019 check — 2026-10-26 (malformed input, TryFrom, limity)
+# host: Linux 6.12.113+deb13-amd64 x86_64 GNU/Linux
+# rustc: rustc 1.94.0 (4a4ef493e 2026-03-02)
+# cargo-deny: cargo-deny 0.20.2
+# nightly (miri): rustc 1.101.0-nightly (19833af72 2026-10-20), miri 0.1.0
+
+== fmt ==
+cargo fmt --all --check → OK (bez zmian)
+
+== test --workspace (locked, offline) ==
+ft-threshold-core:        109 passed; 0 failed; 0 ignored
+ft-threshold-core tests:    2 passed (integration `malformed`)
+ft-threshold-protocol:     12 passed; 0 failed; 0 ignored
+doc-tests core:             3 passed (3× compile_fail)
+doc-tests protocol:         2 passed (2× compile_fail)
+RAZEM: 128 testów PASS, 0 failed.
+
+== WP-019: 10^6 zniekształconych wejść ==
+Test `tests/malformed.rs::one_million_malformed_inputs_do_not_panic`:
+- 1 000 000 iteracji, ziarno stałe `0x9e3779b97f4a7c15` (xorshift64),
+- połowa to losowe bufory 0..4096 B, połowa to 1–4-bitowe mutacje
+  poprawnych serializacji,
+- parsery: `ExpShare::try_from`, `VssCommitments::from_bytes`,
+  `Poly::from_le_bytes`, `PairwiseKey::try_from`,
+- wynik: **0 panik**, wszystkie błędy przez `Result`.
+- czas: 23.24 s (profil debug, jeden wątek; `cargo test --test malformed`).
+To **nie** jest coverage-guided fuzzing — brak instrumentacji i korpusu
+rosnącego; to deterministyczny test odporności parserów na śmieci.
+Prawdziwy fuzzing (corpus + CI) pozostaje w WP-022.
+
+== Nowe API i limity (fail-closed) ==
+- `impl TryFrom<&[u8]> for ExpShare` — dokładnie 66 B (`InvalidLength`).
+- `impl TryFrom<&[u8]> for PairwiseKey` — dokładnie 32 B (`InvalidLength`).
+- `impl TryFrom<&[u8]> for Poly` + `Poly::to_le_bytes`/`from_le_bytes`
+  — dokładnie `2·N` B, współczynniki `< q` (`InvalidLength`/`OutOfRange`).
+- `VssCommitments::from_bytes` — **cap przed alokacją**: >16 punktów
+  (`PartyCountMismatch`), długość nie-wielokrotność 32 B (`InvalidLength`),
+  zły punkt (`InvalidInput`), <2 punkty (`ThresholdTooLow`).
+- `parser_limits_are_fail_closed` sprawdza granice: 65/66 B, x=0, x≥q,
+  niekanoniczny Scalar, 0/31/17·32 B zobowiązań, 2N−1 B wielomianu,
+  współczynnik = q, 31/32 B klucza pary.
+
+== clippy -D warnings --workspace --all-targets ==
+Finished `dev` profile — 0 warning, 0 error.
+
+== cargo deny --offline check ==
+advisories ok, bans ok, licenses ok, sources ok
+
+== miri: core, filtr `poly_le_bytes` (log .build/miri_malformed_wp019.log) ==
+MIRIFLAGS="-Zmiri-disable-isolation" rustup run nightly cargo miri test \
+  -p ft-threshold-core --locked --offline poly_le_bytes
+test result: ok. 1 passed; 0 failed; 108 filtered out; finished in 2.11s
+Test 10^6 jest ignorowany pod Miri (jawny powód w atrybucie); ścieżki
+`TryFrom`/limitów pokrywają testy jednostkowe i integracyjne natywnie.
+
+== Czego ten dowód NIE obejmuje ==
+- To nie jest niezależny odbiór (autor ≠ recenzent pozostaje wymagane).
+- Brak coverage-guided fuzzingu i harnessu mutacyjnego (WP-022).
+- Brak parserów dla wszystkich przyszłych typów wire (koperty, CBOR —
+  WP-027); ten krok pokrywa typy już zaimplementowane.
+- 10^6 nie gwarantuje braku paniki dla nieznanych wzorców; to dowód
+  odporności na zadaną rodzinę wejść, nie dowód formalny.
+- `PROD` nadal zablokowane przez `ProdEvidenceMissing` (O-05).

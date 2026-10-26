@@ -74,6 +74,16 @@ impl PairwiseKey {
     }
 }
 
+impl TryFrom<&[u8]> for PairwiseKey {
+    type Error = CoreError;
+
+    /// Parsuje dokładnie 32 bajty klucza pary (WP-019).
+    fn try_from(bytes: &[u8]) -> Result<Self> {
+        let fixed: &[u8; 32] = bytes.try_into().map_err(|_| CoreError::InvalidLength)?;
+        Ok(Self::from_bytes(*fixed))
+    }
+}
+
 impl std::fmt::Debug for PairwiseKey {
     /// Debug celowo **nie** pokazuje materiału klucza.
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
