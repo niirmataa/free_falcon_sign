@@ -45,6 +45,8 @@ pub enum CoreError {
     ReplayDetected,
     /// Cofnięcie rundy (round < ostatnia przyjęta).
     RoundMismatch,
+    /// Sampler wyczerpał cap prób — fail-closed (WP-021).
+    AttemptsExhausted,
     /// Relacja NTRU `f·h = g` nie zachodzi.
     NtruMismatch,
     /// Profil `PROD` wymaga evidence NTRU z MPC, a otrzymał jawny klucz.
@@ -72,6 +74,7 @@ impl fmt::Display for CoreError {
             Self::AuthFail => write!(f, "envelope authentication failed"),
             Self::ReplayDetected => write!(f, "replay or stale sequence detected"),
             Self::RoundMismatch => write!(f, "round rollback detected"),
+            Self::AttemptsExhausted => write!(f, "sampler exhausted its attempt cap"),
             Self::NtruMismatch => write!(f, "NTRU relation f*h = g does not hold"),
             Self::ProdEvidenceMissing => {
                 write!(

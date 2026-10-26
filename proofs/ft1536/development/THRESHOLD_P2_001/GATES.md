@@ -73,8 +73,9 @@ WP-016 `DONE` (pełne VSS + agregacja S5, `impl/ci/WP016_CHECK_2026-10-26.txt`),
 WP-017 `PARTIAL` (zeroizacja po stronie typów; `mlock`/no-dump w node G2),
 WP-018 `DONE` (bitność i spójność udziałów bitu, `impl/ci/WP018_CHECK_2026-10-26.txt`),
 WP-019 `DONE` (`TryFrom`/limity + 10⁶ wejść bez paniki, `impl/ci/WP019_CHECK_2026-10-26.txt`),
-WP-020 `DONE` (koperty + replay/rollback, `impl/ci/WP020_CHECK_2026-10-26.txt`).
-Bramka pozostaje **otwarta**: WP-021…WP-027, brak niezależnego
+WP-020 `DONE` (koperty + replay/rollback, `impl/ci/WP020_CHECK_2026-10-26.txt`),
+WP-021 `DONE` (fail-closed sampler, `impl/ci/WP021_CHECK_2026-10-26.txt`).
+Bramka pozostaje **otwarta**: WP-022…WP-027, brak niezależnego
 recenzenta (autor ≠ recenzent).
 
 **Recenzent:** niezależny (inny model/człowiek).

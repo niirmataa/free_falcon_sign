@@ -1,0 +1,65 @@
+# WP-021 check — 2026-10-26 (fail-closed samplery)
+# host: Linux 6.12.113+deb13-amd64 x86_64 GNU/Linux
+# rustc: rustc 1.94.0 (4a4ef493e 2026-03-02)
+# cargo-deny: cargo-deny 0.20.2
+# nightly (miri): rustc 1.101.0-nightly (19833af72 2026-10-20), miri 0.1.0
+
+== fmt ==
+cargo fmt --all --check → OK (bez zmian)
+
+== test --workspace (locked, offline) ==
+ft-threshold-core:        114 passed; 0 failed; 0 ignored
+ft-threshold-core tests:    2 passed (integration `malformed`, 10^6)
+ft-threshold-protocol:      19 passed; 0 failed; 0 ignored
+doc-tests core:             3 passed (3× compile_fail)
+doc-tests protocol:         2 passed (2× compile_fail)
+RAZEM: 140 testów PASS, 0 failed.
+
+Nowe testy (core, `sampler`):
+- cap_is_hard_and_fail_closed
+  (3 odrzucenia → `AttemptsExhausted`; `attempts=3`, `remaining=0`;
+  kolejne wołanie nadal `Err`, bez resetu)
+- accepts_after_rejections_and_counts_each_draw
+  (czwarta próba akceptowana; licznik dokładnie 4)
+- zero_cap_and_zero_bound_are_rejected
+  (`new(0)` i `uniform_below(0)` → `InvalidInput`)
+- uniform_below_rejects_tail_and_stays_in_range
+  (odrzucony ogon `[limit, 2^64)`; wynik < bound; cap → `AttemptsExhausted`)
+- uniform_below_distribution_is_flat
+  (10⁴ prób, 7 kubełków, chi² < 25 dla df=6)
+
+Zmiana `shake::hash_to_point`: pętla rejection korzysta z
+`RejectionSampler` z capem `MAX_HASH_TO_POINT_STREAM/2` słów; po capie
+`AttemptsExhausted` (wcześniej `InvalidLength`). KAT `hash_to_point`
+bez zmian (wynik identyczny).
+
+== clippy -D warnings --workspace --all-targets ==
+Finished `dev` profile — 0 warning, 0 error.
+
+== cargo deny --offline check ==
+advisories ok, bans ok, licenses ok, sources ok
+
+== miri: core, filtr `sampler::` i `hash_to_point` ==
+MIRIFLAGS="-Zmiri-disable-isolation" rustup run nightly cargo miri test \
+  -p ft-threshold-core --locked --offline sampler::
+test result: ok. 5 passed; 0 failed; 109 filtered out; finished in 2.78s
+(log .build/miri_sampler_wp021.log)
+hash_to_point pod Miri: testy O(N) XOF ignorowane z jawnym powodem
+(log .build/miri_hash_to_point_wp021.log).
+
+== Zakres WP-021 (audyt #16) ==
+- `sampler::RejectionSampler`: twardy cap prób; po capie **wyłącznie**
+  `CoreError::AttemptsExhausted`. Brak typu `SampleOutcome`, brak
+  „awaryjnego” `Ok` z odrzuconą wartością.
+- `uniform_below`: rejection ogona, bez modulo bias; `bound=0` → `InvalidInput`.
+- `hash_to_point` używa samplera; cap w słowach 16-bitowych = dokładnie
+  limit strumienia 1 MiB (2 B/słowo).
+- `new(0)` jest błędem — cap 0 nie znaczy „nieskończoność”.
+
+== Czego ten dowód NIE obejmuje ==
+- To nie jest niezależny odbiór (autor ≠ recenzent pozostaje wymagane).
+- To mechanizm liczenia prób, nie źródło entropii; jakość OS CSPRNG/XOF
+  jest poza zakresem.
+- Klein/Gaussian samplery (G3/WP-040) będą używać tego samego capu, ale
+  ich rozkład i TV nie są tu dowiedzione.
+- `PROD` nadal zablokowane przez `ProdEvidenceMissing` (O-05).

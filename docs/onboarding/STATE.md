@@ -1,5 +1,18 @@
 # Stan projektu — punkt wejścia
 
+**2026-10-26 — S09/THRESHOLD_P2_001: WP-021 DONE (fail-closed sampler).**
+Audyt #16 domknięty po stronie mechanizmu prób: `sampler::RejectionSampler`
+ma twardy cap, a po jego wyczerpaniu zwraca wyłącznie
+`AttemptsExhausted`. Nie istnieje `SampleOutcome` ani „awaryjne” `Ok`
+z odrzuconą próbką; cap 0 jest błędem, nie nieskończonością. `uniform_below`
+odrzuca ogon `[limit, 2^64)`, więc nie ma modulo bias. `hash_to_point`
+korzysta teraz z tego samplera z capem 1 MiB w 16-bitowych słowach; jego
+KAT pozostał identyczny. Stan: 140 testów natywnych PASS (core 114 +
+integracyjne 2 + protocol 19 + 5 doctestów), clippy/deny PASS, miri
+`sampler::` 5/5. Dowód: `impl/ci/WP021_CHECK_2026-10-26.txt`. Granica:
+to licznik prób, nie źródło entropii; rozkłady Klein/Gaussian (WP-040)
+pozostają do dowiedzenia.
+
 **2026-10-26 — S09/THRESHOLD_P2_001: WP-020 DONE (koperty, replay, rollback).**
 Audyt #15 domknięty po stronie warstwy aplikacyjnej: `protocol::envelope`
 ma `Body` zgodne z SPEC §9.3, MAC per para (HMAC-SHA256 z domenami),

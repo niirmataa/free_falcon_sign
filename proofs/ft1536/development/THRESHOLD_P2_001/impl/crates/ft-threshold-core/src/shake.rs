@@ -14,6 +14,7 @@ use sha3::digest::{ExtendableOutput, Update, XofReader};
 
 use crate::error::{CoreError, Result};
 use crate::ring::{N, Poly, Q};
+use crate::sampler::RejectionSampler;
 
 /// Maksymalny strumień XOF zużyty przez `hash_to_point` (fail-closed).
 ///
@@ -43,25 +44,23 @@ pub fn hash_to_point(nonce: &[u8], msg: &[u8]) -> Result<Poly> {
     h.update(msg);
     let mut reader = h.finalize_xof();
 
+    // Cap liczony w 16-bitowych słowach: dokładnie 2 B strumienia na próbę.
+    // Po capie `AttemptsExhausted` (fail-closed, WP-021), nie ciche zero.
+    let max_words =
+        u32::try_from(MAX_HASH_TO_POINT_STREAM / 2).map_err(|_| CoreError::InvalidLength)?;
+    let mut sampler = RejectionSampler::new(max_words)?;
     let mut coeffs = Vec::with_capacity(N);
-    let mut buf = [0u8; 1024];
-    let mut streamed = 0usize;
 
     while coeffs.len() < N {
-        reader.read(&mut buf);
-        streamed += buf.len();
-        if streamed > MAX_HASH_TO_POINT_STREAM {
-            return Err(CoreError::InvalidLength);
-        }
-        for word in buf.chunks_exact(2) {
-            let w = u32::from(u16::from_be_bytes([word[0], word[1]]));
-            if w < HASH_TO_POINT_LIM {
-                coeffs.push((w % Q as u32) as u16);
-                if coeffs.len() == N {
-                    break;
-                }
-            }
-        }
+        let w = sampler.draw(
+            || {
+                let mut word = [0u8; 2];
+                reader.read(&mut word);
+                u32::from(u16::from_be_bytes(word))
+            },
+            |&w| w < HASH_TO_POINT_LIM,
+        )?;
+        coeffs.push((w % Q as u32) as u16);
     }
 
     Poly::from_coeffs(&coeffs)
