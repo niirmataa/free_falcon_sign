@@ -1,3 +1,29 @@
+# SEED9_R1 — route ACTIVE; actual d2 CRT section checkpoint591 accepted;592 next
+
+Owner: continue fully to completion; no push, handoff, subagents or reviewers.
+Overall source-to-fiber goal IN_PROGRESS / NOT_REVIEWED.
+591 canonical keygen_secondcrt208_591 accepted14/14,exit0,diagnostics0/0,
+warningAsError,markers/suppressions0;42 standard-only axiom results.
+No-premise actual d2 prefix through part3: both full original xlen2/num256
+CRT calls (initial source prime store/co-reduction/modulus update/signed
+normalization), both full512-word fs/gs final images and four128-word fd/gd
+product columns at one output. All input domains discharged from587.
+Generic positive arbitrary-limb normalization walk/full CRT call/body source
+engines; old initialized tmp not assumed. Caller Outer2 remains for part4.
+44.842s sum,maxRSS3802316KiB; original limits; independent review NOT_RUN.
+ENTRY_PINS00f602e7…74673/74673 before/after; predecessor590246 unchanged.
+13 attempts retain2 syntax/clean-log failures, no mathematical/resource
+failure or failed cache product; inherited retained history unchanged.
+Report/evidence KEYGEN_SECOND_CRT_208_591_REPORT.md and matching JSON.
+Next592 generic multi-limb unsigned/signed reduction, then additional-prime
+Rx/generator/lower-size forward/products/full d2 return. Later d levels/root/
+certificate/codec and full B1 remain OPEN. No mathematical CRT/centering/
+NTT/root law, full KeyGen/Sign/compiler/security/unconditional positivity/
+probability. Old110/measured/five do_sign unchanged. Foreign edits/staging
+excluded; no push; continue after commit.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — route ACTIVE; generic sub/norm checkpoint590 accepted;591 next
 
 Owner: continue fully to completion; no push, handoff, subagents or reviewers.
@@ -9823,3 +9849,35 @@ Job record (590): attempt015 — ACCEPTED_LOCAL audit, five original interfaces/
 Job record (590): canonical keygen_zintnormalize207_590 — ACCEPTED15/15,0/0,35 standard-only audits,58.774s,maxRSS4182864KiB. Next entry/evidence verification and exact-path local commit, then591 full generic signed-normalization walk/CRT body/callers; do not stop at checkpoint.
 
 Job record (590 checkpoint): evidence PASS246 new bindings; entry74673/predecessor237 unchanged,15 accepted/35 axiom audits. Foreign index observed empty; exact own19 paths only, excluding591 draft and foreign work. Local commit without push; continue591 generic normalization walk/full CRT.
+
+Job record (591 start):590 committed c8a0c38e21cfb9e433a4363768a249c7cd47bbef, no push. Continue generic signed-normalization walk (arbitrary positive limb count/stride), then full CRT declarations/tmp0 store/body/fs+gs caller composition. New runtime .build/normwalk591;590 immutable.
+
+Job record (591): entry74673/predecessor590246 verified. attempt001 — Increment accepted23.257s clean; Fixed failed unused positive hypothesis in row-index separation (limb bounds already imply positivity). Remove redundant hypothesis from the geometry lemmas, strengthening their statement without suppression; keep the real positive stride domain for full walk/image. Next generic normalization step.
+
+Job record (591): attempt002 — ACCEPTED_LOCAL3/3,0/0: actual generic stride/counter increment, arbitrary positive limb-count row geometry and one full normalization body with source caller restoration, complete modulus/future/past rows/outside keeps. Next full generic-count original normalization loop and flattened data image.
+
+Job record (591): attempt003 — ACCEPTED_LOCAL4/4,0/0: full original normalization walk for arbitrary bounded coefficient count and positive arbitrary limb stride, complete normalized row images/modulus/caller/outside keeps and false terminal guard. Next flattened image then actual two-limb CRT body/callers.
+
+Job record (591): attempt004 — ACCEPTED_LOCAL ZintNormWalkFlat208,4.281s,0/0: whole original generic normalization walk exports one full flattened word image and flat-region keeps. Next actual CRT u/x declarations, tmp0 source store/row0 prime derivation and co-loop domains.
+
+Job record (591): attempt005 retained syntax failure from reserved prefix theorem name in new CRT entry adapter. Rename prefix_source; data/table/co-loop-domain bridges otherwise clean. Next original CRT entry prefix and full signed branch assembly.
+
+Job record (591): attempt006 — ACCEPTED_LOCAL CrtEntry208,3.623s,0/0: actual CRT declarations/tmp0 prime source store/u1 init, readonly PRIMES3 and full input-data preservation, source-derived co-loop domains without an old tmp initialization premise. Next full generic signed normalization branch and full xlen2 CRT body.
+
+Job record (591): attempt007 — ACCEPTED_LOCAL ZintNormWalkBranch208,9.186s,0/0: original true signed-normalization branch with u0/x=xx initialization, complete generic walk, full flat word image/modulus/caller keeps. Next full xlen2/num256 rebuildCRT body composition.
+
+Job record (591): attempt008 — ACCEPTED_LOCAL CrtBody208,9.393s,0/0: complete original xlen2/num256 rebuildCRT body from source declarations/initial prime store through real co-reduction and signed normalization, full512-word final image/modulus limbs/caller/outside keeps at one output. Next original make_fg_step CRT call frame and concrete fs/gs composition.
+
+Job record (591): attempt009 — ACCEPTED_LOCAL CrtCall208,5.931s,0/0: original seven-argument make_fg_step CRT call binds full fresh frame/body/void return and preserves caller locals/arrays with the normalized full512-word image. Next concrete fs/gs geometry/outer metadata and both original part3 calls.
+
+Job record (591): attempt010 — ACCEPTED_LOCAL SecondStepCrtDomain208,17.176s,0/0: concrete fs/gs/tmp domains, cross-array/product byte separation, caller Outer transfer and readonly prime-object transport. Next both full original part3 calls and all product images preserved on the same final heap.
+
+Job record (591): attempt011 — ACCEPTED_LOCAL2/2,0/0: both complete original fs/gs CRT calls in part3, one final pair of full normalized512-word images and same-output product/outside keeps; source readonly-object transport from actual full part2 prefix. Next no-premise d2 prefix through part3 with four product columns.
+
+Job record (591): attempt012 — ACCEPTED_LOCAL SecondStepCrtFull208,16.130s,0/0: no-premise actual d2 source prefix through part3, both complete CRT/normalization calls, both full512-word final images and all four fd/gd product columns at one output; source input domains discharged from587. Next42-result axiom/interface audit and canonical checkpoint, then additional-prime/generic signed reduction/forward and full d2 return.
+
+Job record (591): attempt013 — ACCEPTED_LOCAL audit,5.278s,0/0: six original interfaces/42 standard-only axiom results. Next canonical14-module replay/checkpoint then592 generic signed reduction and lower-size forward/additional-prime/full d2 return.
+
+Job record (591): canonical keygen_secondcrt208_591 — ACCEPTED14/14,0/0,42 standard-only audits,44.842s,maxRSS3802316KiB. Next entry/evidence checks/exact-path local commit, then592 generic signed reduction/additional-prime continuation.
+
+Job record (591 checkpoint): evidence PASS224 new bindings; entry74673/predecessor246 unchanged,14 accepted/42 axiom audits. Foreign index observed empty; exact own18 paths only. Local commit without push; continue592 generic multi-limb reduction and additional-prime/full d2 return.

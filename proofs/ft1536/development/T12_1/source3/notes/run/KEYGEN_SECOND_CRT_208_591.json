@@ -1,0 +1,656 @@
+{
+  "utc": "2026-10-26T16:33:35.804678+00:00",
+  "status": "PROVED_KERNEL_SCOPED / NOT_REVIEWED",
+  "overall_owner_goal": "IN_PROGRESS; continue after this intermediate checkpoint",
+  "scope": "No-premise actual d2 source prefix through both full xlen2/num256 CRT/normalization calls; full512-word fs/gs normalized images and all four fd/gd product columns at the same output. Generic arbitrary positive-limb normalization walk and complete original CRT call/body engines.",
+  "entry_manifest": {
+    "path": ".build/steprx195/ENTRY_PINS.json",
+    "sha256": "00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964"
+  },
+  "entry_checked_count": 74673,
+  "entry_missing": 0,
+  "entry_changed": 0,
+  "entry_checks": [
+    {
+      "path": ".build/normwalk591/entry_before.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/normwalk591/entry_after.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/normwalk591/predecessor_before.log",
+      "sha256": "f2a05ad17ce70c585287176aba9df6054d8b23d2bb42f9125d732b957c80a44a"
+    },
+    {
+      "path": ".build/normwalk591/predecessor_after.log",
+      "sha256": "f2a05ad17ce70c585287176aba9df6054d8b23d2bb42f9125d732b957c80a44a"
+    },
+    {
+      "path": ".build/normwalk591/entry_reverify_591.py",
+      "sha256": "641ca0817a30f5d2eea7390621f2686c267a2014e725b574033d856bfbf61d09"
+    },
+    {
+      "path": ".build/normwalk591/predecessor_verify.py",
+      "sha256": "40b9539a1b94c446f0f9cb8193b4408842094f4eacfb2d07108366ba1e12d63b"
+    },
+    {
+      "path": ".build/normwalk591/typecheck_reuse.py",
+      "sha256": "731315d4e976e4b2344e7827c29f4f9e155d20f974451e4044060884507487db"
+    }
+  ],
+  "predecessor_handoff": {
+    "path": "notes/run/KEYGEN_ZINT_NORMALIZE_207_590.json",
+    "sha256": "5a4ee879c0a1a9c80b978067de724f0859315f4040e6bcd367101c92de0dfd11"
+  },
+  "predecessor_bindings_verified": 246,
+  "job": "keygen_secondcrt208_591",
+  "accepted": 14,
+  "receipts": {
+    "path": ".build/jobs/keygen_secondcrt208_591/RECEIPTS.json",
+    "sha256": "3048cab81e212037bfe5de150e1402d052ae577c79f29a8b913aa901e457bca9"
+  },
+  "inputs": {
+    "path": ".build/jobs/keygen_secondcrt208_591/SOURCE_INPUTS.json",
+    "sha256": "0955ed5efb23361665732e1cfca7c8e6d56840c4a6e010fcb5f40ba65c410fc8"
+  },
+  "runner": {
+    "path": ".build/jobs/keygen_secondcrt208_591/RUNNER_SOURCE.py",
+    "sha256": "e8e9cf4ba5e744425464c0057a27d07f62ff82be352c479535425ff436c5b385"
+  },
+  "engine": {
+    "path": ".build/jobs/keygen_secondcrt208_591/EXECUTION_SOURCE.py",
+    "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c"
+  },
+  "preflight": {
+    "path": ".build/jobs/keygen_secondcrt208_591/PREFLIGHT.json",
+    "sha256": "72dc2323730be56673f42d119685f4d9cd7442116cb6fd89d61f7ce64d1f0fbb"
+  },
+  "modules": [
+    {
+      "module": "Source3.ZintNormWalkIncrement208",
+      "source": {
+        "path": "formal/Source3/ZintNormWalkIncrement208.lean",
+        "sha256": "17dd3a995ed655b0ad0147d065e44916217b4e443f1e2f286eaaf4c064b2aae1"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_secondcrt208_591/formal/Source3/ZintNormWalkIncrement208.lean",
+        "sha256": "17dd3a995ed655b0ad0147d065e44916217b4e443f1e2f286eaaf4c064b2aae1"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_secondcrt208_591/lib/Source3/ZintNormWalkIncrement208.olean",
+        "sha256": "5974923e1df19e46922a53d6490c0869caf3e7d9441f0e44a8354b5150c6397b"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_secondcrt208_591/logs/Source3_ZintNormWalkIncrement208.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_secondcrt208_591/logs/Source3_ZintNormWalkIncrement208.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 7.63,
+      "maxrss_kib": 3711168
+    },
+    {
+      "module": "Source3.ZintNormWalkFixed208",
+      "source": {
+        "path": "formal/Source3/ZintNormWalkFixed208.lean",
+        "sha256": "3c7b258aab1ec2604f6ca5f0479466d136813378004a95aaa0ccc04b70779740"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_secondcrt208_591/formal/Source3/ZintNormWalkFixed208.lean",
+        "sha256": "3c7b258aab1ec2604f6ca5f0479466d136813378004a95aaa0ccc04b70779740"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_secondcrt208_591/lib/Source3/ZintNormWalkFixed208.olean",
+        "sha256": "ec22cbc6d07125a9d2a2e56a85d39b9134474a7b06277cc01b1a4431a5be20dc"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_secondcrt208_591/logs/Source3_ZintNormWalkFixed208.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_secondcrt208_591/logs/Source3_ZintNormWalkFixed208.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.969,
+      "maxrss_kib": 3791508
+    },
+    {
+      "module": "Source3.ZintNormWalkStep208",
+      "source": {
+        "path": "formal/Source3/ZintNormWalkStep208.lean",
+        "sha256": "0c627fe821cfc20ade8300f9ffd89ea3d1cf9ba971253a2ddab95e173dcd4006"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_secondcrt208_591/formal/Source3/ZintNormWalkStep208.lean",
+        "sha256": "0c627fe821cfc20ade8300f9ffd89ea3d1cf9ba971253a2ddab95e173dcd4006"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_secondcrt208_591/lib/Source3/ZintNormWalkStep208.olean",
+        "sha256": "8a92fac555e2ee498988e04d05621c8f68e87754311a380b29250af3e1520442"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_secondcrt208_591/logs/Source3_ZintNormWalkStep208.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_secondcrt208_591/logs/Source3_ZintNormWalkStep208.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.87,
+      "maxrss_kib": 3791508
+    },
+    {
+      "module": "Source3.ZintNormWalkLoop208",
+      "source": {
+        "path": "formal/Source3/ZintNormWalkLoop208.lean",
+        "sha256": "24d061933b99c41404e98b9753d3f74a8a0e839976611175ebda0f7896a16e78"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_secondcrt208_591/formal/Source3/ZintNormWalkLoop208.lean",
+        "sha256": "24d061933b99c41404e98b9753d3f74a8a0e839976611175ebda0f7896a16e78"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_secondcrt208_591/lib/Source3/ZintNormWalkLoop208.olean",
+        "sha256": "eba8dd17080df5af2cf7d76276d60ff30492653ba4d103247f5a0be7b2a2c41a"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_secondcrt208_591/logs/Source3_ZintNormWalkLoop208.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_secondcrt208_591/logs/Source3_ZintNormWalkLoop208.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.72,
+      "maxrss_kib": 3791508
+    },
+    {
+      "module": "Source3.ZintNormWalkFlat208",
+      "source": {
+        "path": "formal/Source3/ZintNormWalkFlat208.lean",
+        "sha256": "cc2a6efb2259b42d9f9e474b00744c474e18d1b30888c6e4952c8c53aac16a7f"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_secondcrt208_591/formal/Source3/ZintNormWalkFlat208.lean",
+        "sha256": "cc2a6efb2259b42d9f9e474b00744c474e18d1b30888c6e4952c8c53aac16a7f"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_secondcrt208_591/lib/Source3/ZintNormWalkFlat208.olean",
+        "sha256": "4bd09b363eea0de3a5d1d221bbce6161efa0be2b8b46c9cddbb677b08ca65ba7"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_secondcrt208_591/logs/Source3_ZintNormWalkFlat208.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_secondcrt208_591/logs/Source3_ZintNormWalkFlat208.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.82,
+      "maxrss_kib": 3792296
+    },
+    {
+      "module": "Source3.ZintNormWalkBranch208",
+      "source": {
+        "path": "formal/Source3/ZintNormWalkBranch208.lean",
+        "sha256": "1078229f0e00057b38284b3be33f9cd1d4f33ded2deba90a2e834f79f3119eba"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_secondcrt208_591/formal/Source3/ZintNormWalkBranch208.lean",
+        "sha256": "1078229f0e00057b38284b3be33f9cd1d4f33ded2deba90a2e834f79f3119eba"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_secondcrt208_591/lib/Source3/ZintNormWalkBranch208.olean",
+        "sha256": "3033f4970aba415f75c181b991db1140b26eeaa1dfead0b524ea17cac852b8cb"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_secondcrt208_591/logs/Source3_ZintNormWalkBranch208.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_secondcrt208_591/logs/Source3_ZintNormWalkBranch208.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.071,
+      "maxrss_kib": 3793620
+    },
+    {
+      "module": "Source3.CrtEntry208",
+      "source": {
+        "path": "formal/Source3/CrtEntry208.lean",
+        "sha256": "af3f4cb329cd9b130470b9b4972dc8d77ca132c7590d0c8856cb5a49f66af20a"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_secondcrt208_591/formal/Source3/CrtEntry208.lean",
+        "sha256": "af3f4cb329cd9b130470b9b4972dc8d77ca132c7590d0c8856cb5a49f66af20a"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_secondcrt208_591/lib/Source3/CrtEntry208.olean",
+        "sha256": "7d591563c37041a04db9250ff9a600d03002c82845bb53e456d36fcd6e663dbc"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_secondcrt208_591/logs/Source3_CrtEntry208.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_secondcrt208_591/logs/Source3_CrtEntry208.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.021,
+      "maxrss_kib": 3795712
+    },
+    {
+      "module": "Source3.CrtBody208",
+      "source": {
+        "path": "formal/Source3/CrtBody208.lean",
+        "sha256": "e7f2bc421ce4e1e83219215cc8891af56e9b90ab765db1b4c5e9d41259006be2"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_secondcrt208_591/formal/Source3/CrtBody208.lean",
+        "sha256": "e7f2bc421ce4e1e83219215cc8891af56e9b90ab765db1b4c5e9d41259006be2"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_secondcrt208_591/lib/Source3/CrtBody208.olean",
+        "sha256": "c44549771d2941bead12397d576e3201fce8c17527d42806040499030bd77c8d"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_secondcrt208_591/logs/Source3_CrtBody208.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_secondcrt208_591/logs/Source3_CrtBody208.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.87,
+      "maxrss_kib": 3795712
+    },
+    {
+      "module": "Source3.CrtCall208",
+      "source": {
+        "path": "formal/Source3/CrtCall208.lean",
+        "sha256": "5722fb2bdde87a2877228a61fb59b9a9acbc83e9747f01fb3548e51336baf343"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_secondcrt208_591/formal/Source3/CrtCall208.lean",
+        "sha256": "5722fb2bdde87a2877228a61fb59b9a9acbc83e9747f01fb3548e51336baf343"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_secondcrt208_591/lib/Source3/CrtCall208.olean",
+        "sha256": "fa330178cc4e884858ef21faa32a7e5a13990077396b57d3423a1f705c5c5eb8"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_secondcrt208_591/logs/Source3_CrtCall208.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_secondcrt208_591/logs/Source3_CrtCall208.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.171,
+      "maxrss_kib": 3802316
+    },
+    {
+      "module": "Source3.SecondStepCrtDomain208",
+      "source": {
+        "path": "formal/Source3/SecondStepCrtDomain208.lean",
+        "sha256": "4938a63fe33f9a2a82cc3dc32f7cd1e5b918939e06dc5fb97e13b1c074852ea5"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_secondcrt208_591/formal/Source3/SecondStepCrtDomain208.lean",
+        "sha256": "4938a63fe33f9a2a82cc3dc32f7cd1e5b918939e06dc5fb97e13b1c074852ea5"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_secondcrt208_591/lib/Source3/SecondStepCrtDomain208.olean",
+        "sha256": "45dc7e47c7e054b8b67627a05ac4b694d9ee9de1b7e07a06a8f7521d3df9ef32"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_secondcrt208_591/logs/Source3_SecondStepCrtDomain208.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_secondcrt208_591/logs/Source3_SecondStepCrtDomain208.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.72,
+      "maxrss_kib": 3802316
+    },
+    {
+      "module": "Source3.SecondStepCrtPair208",
+      "source": {
+        "path": "formal/Source3/SecondStepCrtPair208.lean",
+        "sha256": "23fcb5930a365e611d9676c82cf209c4db1d9850af329a7e2d122bc69a15ae46"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_secondcrt208_591/formal/Source3/SecondStepCrtPair208.lean",
+        "sha256": "23fcb5930a365e611d9676c82cf209c4db1d9850af329a7e2d122bc69a15ae46"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_secondcrt208_591/lib/Source3/SecondStepCrtPair208.olean",
+        "sha256": "9ef1a0a29ea5a78a990b3207e912688a78cb1e06099077031f9a84d130048a2f"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_secondcrt208_591/logs/Source3_SecondStepCrtPair208.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_secondcrt208_591/logs/Source3_SecondStepCrtPair208.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.82,
+      "maxrss_kib": 3802316
+    },
+    {
+      "module": "Source3.SecondStepCrtStatics208",
+      "source": {
+        "path": "formal/Source3/SecondStepCrtStatics208.lean",
+        "sha256": "94e4c0c796116bbaae2dcb38a24ea537596f382cb55943699b20f573421b9d3e"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_secondcrt208_591/formal/Source3/SecondStepCrtStatics208.lean",
+        "sha256": "94e4c0c796116bbaae2dcb38a24ea537596f382cb55943699b20f573421b9d3e"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_secondcrt208_591/lib/Source3/SecondStepCrtStatics208.olean",
+        "sha256": "46a82d230b3ddbaa8da6c176be6020994810f49364fc1edfe3c410ef165d2065"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_secondcrt208_591/logs/Source3_SecondStepCrtStatics208.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_secondcrt208_591/logs/Source3_SecondStepCrtStatics208.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.72,
+      "maxrss_kib": 3802316
+    },
+    {
+      "module": "Source3.SecondStepCrtFull208",
+      "source": {
+        "path": "formal/Source3/SecondStepCrtFull208.lean",
+        "sha256": "fc2669129ecdf68d27ea7fb0821da98a7c4313284ca4f88ea913864225bd3c78"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_secondcrt208_591/formal/Source3/SecondStepCrtFull208.lean",
+        "sha256": "fc2669129ecdf68d27ea7fb0821da98a7c4313284ca4f88ea913864225bd3c78"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_secondcrt208_591/lib/Source3/SecondStepCrtFull208.olean",
+        "sha256": "d00efcb8aa4be1f1070ba3828c1a63c63b2dfa23b403d0cb4cd775a470e057d2"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_secondcrt208_591/logs/Source3_SecondStepCrtFull208.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_secondcrt208_591/logs/Source3_SecondStepCrtFull208.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.82,
+      "maxrss_kib": 3802316
+    },
+    {
+      "module": "Source3.SecondStepCrtAudit208",
+      "source": {
+        "path": "formal/Source3/SecondStepCrtAudit208.lean",
+        "sha256": "ae294ad1ce8b5e860272fed7a65921bc54044c77fd95580af85ea31bce012e1e"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_secondcrt208_591/formal/Source3/SecondStepCrtAudit208.lean",
+        "sha256": "ae294ad1ce8b5e860272fed7a65921bc54044c77fd95580af85ea31bce012e1e"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_secondcrt208_591/lib/Source3/SecondStepCrtAudit208.olean",
+        "sha256": "fb7794c4a35982d447f4d39f56f0878edddfa02a4ea3858a023971a5dfd4eebe"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_secondcrt208_591/logs/Source3_SecondStepCrtAudit208.stdout",
+        "sha256": "eb68964ec8f2ab874d5489a036fd35ad36bb12b3cae46b2686bfe8b227ffceab"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_secondcrt208_591/logs/Source3_SecondStepCrtAudit208.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.62,
+      "maxrss_kib": 3802316
+    }
+  ],
+  "axioms": {
+    "FT1536.Source3.ZintNormWalkIncrement208.row_element": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormWalkIncrement208.row_step": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormWalkIncrement208.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormWalkIncrement208.locals": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormWalkIncrement208.arrays": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormWalkIncrement208.counter": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormWalkIncrement208.pointer": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormWalkFixed208.index_different": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormWalkFixed208.different": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormWalkFixed208.row_capacity": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormWalkStep208.step": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormWalkLoop208.guard": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormWalkLoop208.remaining": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormWalkLoop208.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormWalkFlat208.row_zero": [
+      "propext"
+    ],
+    "FT1536.Source3.ZintNormWalkFlat208.index_bound": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormWalkFlat208.quotient_bound": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormWalkFlat208.address": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormWalkFlat208.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormWalkBranch208.fixed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormWalkBranch208.init_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormWalkBranch208.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtEntry208.prime_load": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtEntry208.prefix_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtEntry208.object_after": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtEntry208.round_input": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtEntry208.data_after": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtBody208.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtCall208.input": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtCall208.binding": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtCall208.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.SecondStepCrtDomain208.data_tmp": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.SecondStepCrtDomain208.cross": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.SecondStepCrtDomain208.data_product": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.SecondStepCrtDomain208.tmp_product": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.SecondStepCrtDomain208.domain": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.SecondStepCrtDomain208.outer": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.SecondStepCrtDomain208.prime_object": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.SecondStepCrtPair208.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.SecondStepCrtPair208.product": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.SecondStepCrtStatics208.prime_object": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.SecondStepCrtFull208.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "failures_and_workshop": {
+    "path": "notes/run/KEYGEN_SECOND_CRT_208_FAILURES_591.json",
+    "sha256": "c27fc1e2073ec254cca652c36fca2a466b11face2c9472fcc32f4e861ed3b906"
+  },
+  "report": {
+    "path": "notes/run/KEYGEN_SECOND_CRT_208_591_REPORT.md",
+    "sha256": "a264ce86baaa1011377a23a61cd48549b4b5b25ba44d7111106231b83a961afa"
+  },
+  "evidence_generator": {
+    "path": ".build/evidence_v1.py",
+    "sha256": "1bc738f64ab2604686ab4e8da3ab0cc8eb3ef786f9486ab6b1d94cc70d513b3e"
+  },
+  "evidence_configuration": {
+    "path": ".build/normwalk591/evidence_config.json",
+    "sha256": "03cd8b56def5d83b81a7e9f03520880bc0dc0ea4880fb606915be342ae324f06"
+  },
+  "source_proof_markers": [],
+  "linter_suppressions": [],
+  "limits_unchanged": true,
+  "independent_review": "NOT_RUN",
+  "push": false,
+  "next_unused_suffix": 592,
+  "next_obligations": [
+    "Generic multi-limb unsigned/signed reduction",
+    "Actual additional-prime Rx/generator/lower-size forward/products and full d2 return",
+    "Later d levels/root/certificate/codec and full B1 theorem"
+  ],
+  "not_claimed": [
+    "Full d2 return yet",
+    "Mathematical CRT/centered normalization/NTT/root law",
+    "Full KeyGen/Sign/compiler/security or unconditional positivity/probability",
+    "Independent review"
+  ]
+}
