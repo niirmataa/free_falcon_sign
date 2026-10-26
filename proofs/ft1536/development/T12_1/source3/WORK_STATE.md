@@ -1,3 +1,32 @@
+# SEED9_R1 — sustained route ACTIVE; actual d=2 first body checkpoint586 accepted;587 starting
+
+Owner: continue fully to completion; no push, handoff, subagents or reviewers.
+Overall source-to-fiber goal remains IN_PROGRESS / NOT_REVIEWED.
+586 canonical keygen_secondfirstbody203_586 accepted19/19,exit0,diagnostics0/0,
+warningAsError,markers/suppressions0;26 standard-only axiom results.
+No-premise actual d=2 first scoped prime body: both generator tables, both
+strided copies, skipped in_ntt forwards, fd/gd128 products (stride3),
+fs/gs256 inverses (stride2), false !out_ntt skip, scope restore, u0→1,
+initial0<2 and next1<2 guards. All four data/product images share final heap.
+Generic column/pair helpers cover both sides and u<2 with per-cell keeps.
+57.515s sum,maxRSS3775200 KiB; limits unchanged; independent review NOT_RUN.
+ENTRY_PINS00f602e7…74673/74673 before/after; predecessor585136 hashes unchanged.
+21 attempts retain9 failures:7 formalization/compiler/clean-log,2 distinct
+thread-creation exit134 resource failures. Pinned source-shape equation
+composition replaced repeated parser-wide decide, repairing resource issue
+and reducing final checks to≈3s/module, without changing statements/limits.
+812 new evidence bindings verified. Report/evidence:
+notes/run/KEYGEN_SECOND_FIRSTBODY_203_586_REPORT.md and matching JSON.
+587 begins SecondStepFirstBodyKeep204 draft to retain untouched odd columns
+at the same actual output, then u1 iteration/part2 and multi-limb CRT.
+Remaining lower-size forward/additional-prime work and later d levels/
+root/certificate/codec stay OPEN. No closed-form NTT/root law, full KeyGen/
+Sign/compiler/security or unconditional positivity/probability claim.
+Old110/measured/five do_sign unchanged. Sixteen waiting commits plus586=
+seventeen, no push. Foreign edits excluded; continue after this checkpoint.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — sustained route ACTIVE; inverse call checkpoint585 accepted;586 starting
 
 Owner: continue fully to completion; no push, handoff, subagents or reviewers.
@@ -9548,3 +9577,30 @@ Job record (585): attempt005 — ACCEPTED_LOCAL4/4,0/0: original fs+u/slen seven
 Job record (585): keygen_inversecall202_585 — ACCEPTED5/5,exit0,0/0,warningAsError,markers0;6 standard-only axiom results. Whole generic inverse with separated-read keeps and exact original fs+u/slen call, output image and read keeps on the same caller output. Concrete d=2 copy/product/input domains remain downstream. Next integrity/local checkpoint then586 actual generator/copy/product/inverse composition in source order; no push or handoff.
 
 Job record (585 checkpoint): integrity/evidence PASS,74673 entry paths/506 predecessor hashes unchanged,136 new evidence bindings verified. Next exact-path local commit and immediate586 generator/copy/product/inverse continuation; no push or final handoff.
+Job record (586): entry74673/74673 and136 predecessor585 evidence hashes verified;585 committede3cf8e37. Next generator bystander keep and concrete d=2 data-array preservation; then source-ordered copy/product/inverse column composition. No push or handoff.
+Job record (586): attempt001 — generic generator call/read-frame keep ACCEPTED_LOCAL4.925s,0/0. Concrete generator data keep RETAINED_ELABORATION_FAILURE: underscore change targets retained opaque fs/gs/gm/igm index projections, so omega lacked literal layout positions. Next explicit1438/1950/2462/2718 targets; no actual counterexample.
+Job record (586): attempt002 — ACCEPTED_LOCAL2/2,0/0: generic generator bystander frame and concrete d=2 entry-to-generator prefix preserve both full moved fs/gs arrays on the same output as both256-word gm/igm images. Next d=2 basic state and actual strided copy/product/inverse composition.
+Job record (586): attempt003 — ACCEPTED_LOCAL3/3,0/0: generator data keeps and d=2 basic state/transport. Next generic copy-loop per-cell keep, then the concrete n256/slen2 first-column copy and products before inverse.
+Proof design (586): the existing copy-loop Fixed carries a caller fs binding unused by the loop, which reads through x; this unnecessarily excludes the original gs initializer. New Fixed203 removes only that field; both source-specific initializers still prove their actual fs/gs pointer binding. Generic copied-word and per-cell keep proofs are rebuilt against that reduced invariant before use.
+Job record (586): attempt005 — ACCEPTED_LOCAL6/6,0/0: reduced copy invariant, rebuilt generic copy loop with arbitrary per-cell keeps, and both actual fs/gs d=2 copy initializers/domain proofs. Source array binding remains proved in each initializer. Next complete source exports and false !in_ntt skips, then products.
+Job record (586): attempt006 — ACCEPTED_LOCAL6/6,0/0: both actual strided fs/gs copies, complete256-word copied images, all bystander reads, Basic transport and false !in_ntt skips. Next similarly remove the product-loop unused caller fd binding while retaining each original fd/gd initializer binding, then rebuild product loop with per-cell keeps.
+Job record (586): attempt007 — seven components accepted7/7,0/0, including product invariant without the unused caller fd binding. Product loop RETAINED_ADAPTER_FAILURE: insertion before theorem source matched source_reads, placing the keep branch after guard instead of inside the induction. Next move it to the exact source wrapper boundary; no mathematical counterexample.
+Job record (586): attempt008 — ACCEPTED_LOCAL8/8,0/0: generic source pair-product loop rebuilt with minimal destination invariant and arbitrary per-cell read keeps, alongside the complete copy/data-preserving generator layers. Next actual fd/gd d=2 initializer/domain/product source wrapper.
+Job record (586): attempt009 — eight dependencies accepted8/8,0/0; concrete product wrapper RETAINED_ELABORATION_FAILURE: the selected fd/gd root block remains opaque to direct writable-field unification. Next split Side at that field, with the existing block31 writability; all other fd/gd domains and source composition elaborated.
+Job record (586): attempt010 — ACCEPTED_LOCAL10/10,0/0: both concrete fd/gd128-product loops at stride3 plus generic original fs/gs inverse calls and both in_ntt/ter branch scopes. Next discharge actual d=2 inverse memory/data domains and assemble copy→skip→product→inverse at one output.
+Job record (586): attempt011 — ACCEPTED_LOCAL11/11,0/0: actual d=2 inverse memory/data domains discharged for either source array and column u<2. Next geometric cross-stage keep lemmas and complete source-ordered copy→skip→128 products→inverse with both product/output images on one final state.
+Job record (586): attempt012 — ACCEPTED_LOCAL13/13,0/0: complete actual source-ordered column engine (either fs/fd or gs/gd, u0 oru1), with product and inverse images on one output and composed bystander reads. Next no-premise actual entry-to-first-f-column export, preserving whole gs and actual igm reads.
+Job record (586): attempt013 — fourteen layers accepted14/14,0/0; no-premise actual first-f-column export RETAINED_COMPILATION_FAILURE: inputWord depends on the existing noncomputable first-step executed words and needs that annotation. Next mark it noncomputable and check the export/splice with hash-checked unchanged14 accepted workshop inputs, then recompile all in the canonical seal. No new axiom or source assumption.
+Job record (586): attempt014 — ACCEPTED_LOCAL2/2,0/0 with hash-checked14 unchanged dependencies: no-premise actual entry→first f-column with fd products/fs inverse output, entire old gs and actual igm reads preserved; generic make-level prefix splice also accepted. Next pair both actual source columns at each u<2, the false !out_ntt skip and full original tail r0.
+Job record (586): attempt015 — first-column export/splice accepted2/2,0/0; Pair RETAINED_ELABORATION_FAILURE: rw does not open the fSteps/gSteps list aliases when matching the literal four-statement shape. Next explicit alias/shape normalization with simpa only; pair keeps and false !out_ntt assembly otherwise elaborate.
+Job record (586): attempt016 — first-column/splice accepted2/2,0/0; Pair RETAINED_ENVIRONMENT_FAILURE exit134 (24.224s,maxRSS5642376 KiB): libc++abi failed to create thread, Resource temporarily unavailable. No Lean proof diagnostic. Next inspect active processes/system resources before retrying the unchanged source; limits remain unchanged.
+Environment check after016: no active Lean/Sage/lake process; system MemAvailable≈6.99GB, swap free≈8.28GB, overcommit mode0 with committed virtual memory above CommitLimit. Exact post-failure probe retained in resource_after016.json; this does not establish the precise cause. Next retry unchanged Pair once under the same limits; refactor if resource failure repeats.
+Job record (586): attempt017 — unchanged Pair retry repeats RETAINED_ENVIRONMENT_FAILURE exit134 (25.234s,maxRSS5700448 KiB), failed to create thread; no proof diagnostic, no competing proof process at precheck. Next replace the new tail_shape decide re-normalization with composition of already-pinned r0..r9 source-shape equations, reducing resource use without changing the statement or raising limits.
+Job record (586): attempt018 — ACCEPTED_LOCAL3/3,0/0. Pair tail-shape composition repairs the repeated resource failure: Pair now3.071s/maxRSS3739080 KiB, instead of≈25s/5.7GB failure, limits unchanged. Next apply the same pinned-equation composition to new inverse-branch/column shape proofs and rebuild their dependents with the actual scoped first body/u increment export.
+Proof progress (586): source shape proofs now compose pinned equations instead of re-running parser decide. New draft closes actual first d=2 prime body scope, u0→1, both taken guards and both fd/gd products plus fs/gs inverse images; next full rebuild of the changed shape dependencies and this no-premise first-body export.
+Job record (586): attempt019 — all17 preceding modules ACCEPTED_LOCAL17/17,0/0 after pinned-equation shape refactors (inverse sides3.072s, column2.671s, pair2.821s; maxRSS3748940 KiB). FirstBody RETAINED_PARSER/ELABORATION_FAILURE: repeated reserved scoped identifier and opaque element/elem pointer aliases in the actual igm read. Next bodyState identifier and explicit pointer alias normalization; no failed source placeholder or product reused.
+Job record (586): attempt020 — RETAINED_ELABORATION/CLEAN_LOG_FAILURE isolated to scope_locals: restore uses Bool contains, while absent is a Prop membership fact. Next bridge contains_iff_mem explicitly; body/entry/increment/image construction otherwise has no diagnostics.
+Job record (586): attempt021 — ACCEPTED_LOCAL FirstBody,2.971s,0/0: no-premise actual d=2 first scoped prime body, both fd/gd128 product images and fs/gs256 inverse images, u0→1 and both taken guards. Source-shape resource problem repaired by pinned equations; all18 source modules now locally accepted. Next canonical19 modules with26 original-type/axiom results; then continue actual u1 iteration/CRT.
+Job record (586): keygen_secondfirstbody203_586 — ACCEPTED19/19,exit0,0/0,warningAsError,markers0;26 standard-only axiom results. No-premise actual d=2 first scoped prime iteration, both products and inverse images, u0→1 and next true guard; generic two-sided column/pair tail helpers and all bystander keeps. Next integrity/local checkpoint then587 odd-column preservation and actual u1 iteration/CRT; no push or final handoff.
+
+Job record (586 checkpoint): integrity/evidence PASS,74673 entry paths/136 predecessor hashes unchanged,812 new evidence bindings verified. Next exact-path local commit and immediate587 odd-column/u1/CRT work; no final handoff or push.
