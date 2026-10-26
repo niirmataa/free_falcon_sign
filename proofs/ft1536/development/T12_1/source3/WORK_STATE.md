@@ -1,3 +1,97 @@
+# SEED9_R1 — doubling-word image FOUNDATION window: Image/pairAt + the atomic butterfly step over body_state accepted (job 574); v-loop image composition next
+
+2026-10-25/26 (R1 image foundation window, suffix 574). Entry pins
+re-verified read-only before work AND again after the job (ENTRY_PINS
+.build/steprx195/ENTRY_PINS.json SHA256
+00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964 =
+route pin; all 74673 checked paths 0 missing / 0 changed via
+entry_reverify_574 (both runs); old manifest 99ac47a1… untouched; no
+active job/Lean/Sage processes; the foreign untracked
+THRESHOLD_SPIKE_001/spike/PROMPT_T14_HIDDEN_DELTA_G2.md stays untracked
+and reported, not claimed). ACCEPTED this window: the FOUNDATION of the
+executed-word image of the doubling rounds (job
+keygen_publicforward159_574; source StepNttImage195 `cd8ccc9c7b84a721…`,
+olean `17102ef78a33e4d2…`; 1/1 exit 0 accepted, 3.323 s,
+-DwarningAsError=true, logs 0/0, clean_log, forbidden_proof_markers = [];
+#print axioms on eleven key exports = within the standard three
+(image_keep/image_reads/image_word use the strict subset
+propext+Quot.sound, the rest exactly the standard three); maxRSS
+4142572 KiB). WHAT THE FOUNDATION PROVES: (1) the word-image predicate
+`Image s a W := ∀ j<512, Load32 s.heap (element a j) (W j)` over the
+512 marched cells of `a`, with its bridges — image_keep (the heap-eq
+transport, the later tail_keep_words/productFd-productGd bridge),
+image_reads (the MFixed.reads shape) and image_word (the load32_unique
+tie: any executed word at a marched cell IS the image word); (2) the
+pair update `pairAt W i k wi wk` (the second canonical write wins at k,
+the first at i, all other words unchanged) with its three facts
+pairAt_k/pairAt_i/pairAt_out; (3) THE ATOMIC BUTTERFLY STEP over the
+two canonical writes: two_write_words — at any distinct pair (i,k)
+inside 512 with the image reads, the two writes (first element a i,
+then element a k) turn the image into `pairAt W i k wi wk` with every
+cell keeping its exact word (the job-572 reads_two shape pinned to
+words), and its state form image_two_write (the StepNttBody195.
+body_state write pattern via the precomputed twoHeap); (4) the degree-1
+firstBody step over body_state: body_image (the image at bodyOut with
+the words lowWord/highWord of (W i, W k, w, pw, p0i) via body_state +
+the rfl heap equation highHeap_words) and body_step (the block run at
+the pair — the image supplies the two reads — together with the
+image); (5) the radix-2 binaryBody step of the DOUBLING rounds:
+binary_image (the image at NttBinaryBody183.after with the words
+leftWord/rightWord of (W i, W k, tw, pw, p0i) via the rfl heap equation
+binary_heap) and binary_step (the v-loop iteration shape: the block run
+with the loaded twiddle word and the image). The compositions are the
+NEXT windows and are NOT claimed here: the v-loop image over one u1
+block (pairs (l+v, l+h+v), twiddle gvs (m+j)) consumes binary_step at
+the walked pair and folds pairAt; then the u1-loop/round/m-walk
+composition layers the butterfly words over the first-pass words; the
+productFd/productGd bridge binds the product-loop loads
+t1[(v<<1)+0/1] (MakeFgProductShape191.readT1) to the image words at
+the body exit through tail_keep_words + image_keep. Traps recorded (do
+not re-derive): (11) `if_pos`/`if_neg` are DEPRECATED in the pinned
+toolchain — under -DwarningAsError they are errors ("Use
+`ite_eq_left`/`ite_eq_right` instead"); prove if-form facts with
+`simp [def, ne]`; (12) trap (1) of 571 confirmed at image_two_write —
+ANY parenthesized argument in a `{src with f := v}` field value breaks
+the structure-instance parser; precompute the value in a top-level def
+(twoHeap); the `⟨state,…,.normal⟩` anonymous-constructor literals with
+parenthesized arguments DO parse — the trap is specific to
+record-update literals. Workshop (honest): 2 local typecheck
+iterations of the module (first with errors: five deprecated
+if_pos/if_neg uses + one record-literal parser trap; final clean 0/0)
+plus one isolated probe (the #print axioms audit); no draft job
+suffixes, no sorry even in diagnostics; accepted source 0 markers.
+RETAINED register unchanged: 65 + 58 + 4 (no new failed runs; suffix
+574 is a real acceptance run) plus the one retained finding (job-570
+bodyHeap mis-composition, documented as the permanent supplement).
+OPEN (in order): (1) the v-loop image over one u1 block (pairs (l+v,
+l+h+v), twiddle gvs (m+j) — fold binary_step/pairAt over the v-loop of
+StepNttMiddle195), then the u1-loop/round/m-walk composition (8 rounds
+x 256 blocks x h butterflies — the butterfly words layered over the
+first-pass words); (2) the productFd/productGd bridge (the product
+loops load t1[(v<<1)+0/1] — bind those loads to the image words at the
+body exit through tail_keep_words + image_keep); (3) the false !out_ntt
+skip (fd/gd inverse pairs); (4) the loop composition and the section
+export with the body_entry discharge; then the remaining d-levels and
+the root/certificate/codec path. Unconditional Z>0, p_accept and p_K
+remain OPEN; the prospective bound stays Z>=2^-256 and is NOT
+established. Old110 frozen; measured wording 8192/23628 with the
+separate 256/739 control and the five do_sign items unchanged. Scoped
+proof, NOT_REVIEWED. Next unused proof job suffix: **575**. No push
+(owner word: 2 waiting; publication stays on the owner's explicit
+signal). Resume: verify .build/steprx195/ENTRY_PINS.json (00f602e7…)
+read-only, run the lane runner tools/job111.py, then continue from OPEN
+(1); consume the Image/pairAt/atomic-step layer of job 574, the parse
+map/keeps/step engine of job 570, the prologue/w/init/loop composition
+plus bodyAt/stepAt of job 571, the round engine/m walk/full-0 branch of
+job 572 and the post-doubling keeps of job 573; do not re-derive them,
+do not rebuild anything on the defective StepNttFirst195.stepState
+(supplement 001).
+
+Job records (one line each): keygen_publicforward159_574 — ACCEPTED
+1/1 (StepNttImage195), logs 0/0, markers 0, standard three axioms on
+eleven exports (three strict subsets), next = the v-loop image
+composition (multi-window engine continues).
+
 # SEED9_R1 — post-doubling keeps window CLOSED: u/r1/r2 keeps at the post-doubling state kernel-checked through the TAKEN-SIDE frame of the skipped triple pass (job 573); owner decision (A) recorded as the permanent layer-195 supplement
 
 2026-10-25 (R1 keeps window, suffix 573). Entry pins re-verified
