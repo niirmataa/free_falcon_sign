@@ -36,8 +36,7 @@ fn mutate(st: &mut u64, valid: &[u8]) -> Vec<u8> {
     ignore = "10^6 iteracji parserów jest zbyt wolne w Miri; logikę pokrywają testy jednostkowe"
 )]
 fn one_million_malformed_inputs_do_not_panic() {
-    let (comms, shares) =
-        vss::deal(&[1u16, 2, 3], &[[0u8; 32]; 3], &[1, 2, 3]).expect("deal");
+    let (comms, shares) = vss::deal(&[1u16, 2, 3], &[[0u8; 32]; 3], &[1, 2, 3]).expect("deal");
     assert_eq!(shares.len(), 3);
     let comms_bytes = comms.to_bytes();
     let share_bytes = shares[0].to_bytes();
@@ -60,7 +59,9 @@ fn one_million_malformed_inputs_do_not_panic() {
             4 => drop(ExpShare::try_from(mutate(&mut st, &share_bytes).as_slice())),
             5 => drop(VssCommitments::from_bytes(&mutate(&mut st, &comms_bytes))),
             6 => drop(Poly::from_le_bytes(&mutate(&mut st, &poly_bytes))),
-            _ => drop(PairwiseKey::try_from(mutate(&mut st, &key_bytes).as_slice())),
+            _ => drop(PairwiseKey::try_from(
+                mutate(&mut st, &key_bytes).as_slice(),
+            )),
         }
     }
 }
