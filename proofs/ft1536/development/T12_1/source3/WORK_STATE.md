@@ -1,3 +1,61 @@
+# SEED9_R1 — complete first-step return and concrete d=2 entry CLOSED (579)
+
+2026-10-26, suffix 579. **PROVED_KERNEL_SCOPED / NOT_REVIEWED**.
+WYKONANE: eight Lean modules including one original-type/axiom audit;
+full first make_fg_step source body, caller return and next-entry prefix.
+PRZETESTOWANE: keygen_firststep196_579 accepted 8/8, exit 0, diagnostics
+0/0, warningAsError, forbidden markers [], no linter suppression; elapsed
+sum 24.743s, maxRSS 4148624 KiB. Fifteen axiom results: interleave is
+axiom-free; columns_image uses propext/Quot.sound; others only the standard
+three. NIEZALEZNIE ODEBRANE: NOT_RUN / NOT_REVIEWED.
+
+CLOSED: the original prime's fd/gd columns survive CRT and the entire
+additional-prime section; both stride-2 columns are interleaved into exact
+images of all 512 fd and all 512 gd words at ONE output. The accepted
+parts 2/3/4 compose with declarations/sizes/layout/move to Exec(code .step)
+at FirstStepEntry187.entry. The actual step call returns that heap to the
+caller, executes the enclosing empty-scope d-loop body and uint32 d=1→2,
+and proves the next guard true (2<10). Caller arrays and non-d locals keep.
+SecondStepEntry196 binds the actual next arguments data=ft, logn=8,
+depth=2, ter=1, in_ntt=1, out_ntt=1 (source disjunct 3<10). Both complete
+arrays survive in that fresh entry. SecondStepStart196 executes the
+original declarations and n/hn assignments to n=256, hn=128, with those
+same arrays intact; part1_continue and continue_loop expose the remainder.
+No target first-step execution or resulting image is a headline premise.
+The continuation hook explicitly awaits the future loop; full d=2 body
+execution is NOT claimed.
+
+ENTRY_PINS 00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964:
+74673/74673 unchanged before/after, 0 missing / 0 changed; job-578 evidence
+383/383 before/after. No re-baseline; permanent bodyHeap supplement intact.
+First-step image source 21ef2e579951c7fdf0ad0635ba5c616bc504e2645f594957b9145b6651aceb41;
+olean 83f7e02d65755400cf6c8e11d74bb1541b9edf1afeb653c9b00c024af105b5a7.
+Second-step prefix source 54b5b9c06a943f95142c95fb0df12d901869b3793754d6562d82c758097c2f5a;
+olean 8ac33da3770d6999e577ed4b71fb8f15e84ac7c4f02bf6f45adf6e37f45c8496.
+Report/evidence: notes/run/KEYGEN_FIRST_STEP_196_579_REPORT.md and
+KEYGEN_FIRST_STEP_196_579.json; attempts in its FAILURES register.
+
+RETAINED: inherited 65 + 58 + 4 + finding; all prior 575/576/577/578
+registers untouched. Four new failed/partial local attempts among eight:
+003/004 pointer-congruence elaboration (004 is an avoidable duplicate),
+005 noncomputable state-constructor compilation, 007 heap-rfl whnf timeout
+at unchanged 2000000 heartbeats (114.950s). Explicit generic heap bridges
+repair the latter (accepted prefix 2.470s local, 3.372s canonical).
+All raw snapshots/logs/receipts and accepted products remain under
+.build/step579; no failed canonical job or failed lane cache product.
+
+NEXT unused suffix **580**: execute the d=2 length/table/layout/move
+continuation from SecondStepStart196.ready, then multi-limb reduction/CRT
+and the d=2 loops. Static small3 depth-2/3 entries 2/3 do not replace actual
+loads or body execution. Later d levels, root/certificate/codec, closed-form
+NTT/root/table laws, compiler correctness and full KeyGen/Sign remain OPEN;
+Z>0/p_accept/p_K/Z>=2^-256 not established. Old110, measured wording and
+five do_sign obligations unchanged. No subagents, review, push, stages,
+migration or C edit. Nine waiting commits at entry plus this checkpoint
+= ten waiting. Foreign run2 pin-reference/threshold prompt left untouched.
+
+Previous live snapshots and per-job records follow unchanged.
+
 # SEED9_R1 — full forward image and actual additional-prime section CLOSED (578)
 
 2026-10-26, suffix 578. **PROVED_KERNEL_SCOPED / NOT_REVIEWED**.
@@ -9234,3 +9292,16 @@ Job record: forwardimage578/attempt023 — ACCEPTED_LOCAL StepAddSection195 (3.1
 Job record: keygen_publicforward159_578_section — ACCEPTED 12/12, exit 0, diagnostics 0/0, warningAsError, no markers. Complete actual CRT→generator→two marches/forward/products→skip→scope/increment/terminal guard→part4 source export. Both canonical phases total 16/16; next = final type/axiom and pin seal, full supplement/report, one exact-path local checkpoint; no push.
 
 Job record (578 close): final integrity/evidence — PASS_INTEGRITY, ENTRY_PINS 74673/74673 and predecessor 52/52 before/after; verified 383 window evidence bindings; canonical 16/16; markers 0; linter suppressions 0. Full requested scope complete, NOT_REVIEWED; next = exact-path local checkpoint, no push; next suffix 579.
+
+## 2026-10-26 — R1 step 579 live records
+Owner: continue after 578; no push or subagents. Scope: full first-step call return, preserve/interleave both prime columns, execute d=1→2 and expose concrete next call entry. Entry pins and job-578 predecessor bindings checked before proof work; foreign run2 pin-reference and threshold prompt remain untouched.
+Job record (579): entry integrity — PASS_INTEGRITY, 74673/74673 unchanged; predecessor 383 evidence bindings, canonical 16/16, markers/suppressions 0. Attempt001 — ACCEPTED_LOCAL StepAddBodyKeep196, 2.871s, 0/0; next: section keep and both old columns at the actual CRT/part4 exits.
+Job record (579): attempt002 — ACCEPTED_LOCAL 3/3, 0/0: arbitrary earlier-column keep through the full additional-prime section and both original prime columns bound to the actual CRT/part4 chain; 2.520/2.421/2.922s. Next: interleave the two columns and complete the first-step/caller/d=2 bridge.
+Job record (579): attempt003 — RETAINED_ELABORATION_FAILURE at interleaved pointer equality: record-update lambda leaves congrArg result under-inferred; next = explicit typed ArrayPointer constructor. Attempt004 repeated that unchanged failing module before its preceding result was inspected; retained as duplicate workshop failure, no new mathematical evidence. No accepted lane cache affected.
+Job record (579): attempt005 — first full-step/interleaved-image module ACCEPTED_LOCAL with three dependencies, 0/0; return adapter RETAINED_COMPILATION_FAILURE because returned references the existing noncomputable caller. Next: mark that state constructor noncomputable (no new axiom or assumption).
+Job record (579): attempt006 — ACCEPTED_LOCAL 6/6, 0/0: full first-step return, d=1→2, taken next guard, exact second-call Bind and both whole data images at its entry. Next: execute the second-step declarations/n/hn prefix and original-type/axiom audit; d=2 length/layout/loops remain downstream.
+Job record (579): attempt007 — RETAINED_PERFORMANCE_FAILURE: SecondStepStart196 heap rfl reached the unchanged 2000000-heartbeat limit (114.950s), not a counterexample. Six preceding modules accepted, 0/0. Next: explicit bind_heap/StepDeclarations.heap/entry_heap bridges and image_keep, avoiding normalization of the concrete state machinery. Limits unchanged.
+Job record (579): attempt008 — ACCEPTED_LOCAL 8/8, diagnostics 0/0; explicit heap bridges repair the prefix timeout without raising limits (prefix now 2.470s). First complete-step/caller/d=2-entry and executable n=256/hn=128 prefix accepted, with both full 512-word arrays preserved; 15 standard-only/axiom-free audit results. Next: canonical job 579, final integrity/evidence and local checkpoint; no push.
+Job record (579): keygen_firststep196_579 — ACCEPTED 8/8, exit 0, diagnostics 0/0, warningAsError, markers []; 15 type/axiom audit results (interleave axiom-free, columns_image propext/Quot.sound, remaining dependencies standard three). Full first-step source/caller/d=2 Bind and executable declarations/n/hn prefix accepted. Next: final pins, retained/evidence/report and one local commit; no push.
+
+Job record (579 close): final integrity/evidence — PASS_INTEGRITY, 74673/74673 entry paths and 383/383 predecessor bindings before/after; verified 260 new evidence bindings; canonical 8/8; 15 standard-only/axiom-free results. Next: exact-path local checkpoint, no push; suffix 580.
