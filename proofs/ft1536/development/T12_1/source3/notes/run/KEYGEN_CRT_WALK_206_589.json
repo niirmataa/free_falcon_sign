@@ -1,0 +1,512 @@
+{
+  "utc": "2026-10-26T15:17:20.762705+00:00",
+  "status": "PROVED_KERNEL_SCOPED / NOT_REVIEWED",
+  "overall_owner_goal": "IN_PROGRESS; continue after this intermediate checkpoint",
+  "scope": "Complete original xlen2 co-reduction loop, actual row1 p/s prefix, generic-count coefficient walk, terminal tmp multiplier and u1\u21922/false2<2 exit; full512-word data/two-modulus-limb image at num256.",
+  "entry_manifest": {
+    "path": ".build/steprx195/ENTRY_PINS.json",
+    "sha256": "00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964"
+  },
+  "entry_checked_count": 74673,
+  "entry_missing": 0,
+  "entry_changed": 0,
+  "entry_checks": [
+    {
+      "path": ".build/crtwalk589/entry_before.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/crtwalk589/entry_after.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/crtwalk589/predecessor_before.log",
+      "sha256": "08106da3f33c456ea21116055bd493e9f198f37289d3d66590f15f1731f86e0f"
+    },
+    {
+      "path": ".build/crtwalk589/predecessor_after.log",
+      "sha256": "08106da3f33c456ea21116055bd493e9f198f37289d3d66590f15f1731f86e0f"
+    },
+    {
+      "path": ".build/crtwalk589/entry_reverify_589.py",
+      "sha256": "641ca0817a30f5d2eea7390621f2686c267a2014e725b574033d856bfbf61d09"
+    },
+    {
+      "path": ".build/crtwalk589/predecessor_verify.py",
+      "sha256": "ed23b57663863795f8aa9b820d60d0b569fd118e73dd8fb5be0b69fb2ada1183"
+    },
+    {
+      "path": ".build/crtwalk589/typecheck_reuse.py",
+      "sha256": "37c7d75c349fbe5d17cb66b3192db72ef96414a3d1c37a929c00c37460fe1451"
+    }
+  ],
+  "predecessor_handoff": {
+    "path": "notes/run/KEYGEN_CRT_COEFFICIENT_205_588.json",
+    "sha256": "c0f3c88f28cf44b82ddc7356d1408c4ce7af7ea1b55c4c59c7066e2d50a6eb1a"
+  },
+  "predecessor_bindings_verified": 250,
+  "job": "keygen_crtwalk206_589",
+  "accepted": 11,
+  "receipts": {
+    "path": ".build/jobs/keygen_crtwalk206_589/RECEIPTS.json",
+    "sha256": "f275ac06986cf40419685e1fef1113f764d252d7bbbe761a1dac5b95ae8c4f36"
+  },
+  "inputs": {
+    "path": ".build/jobs/keygen_crtwalk206_589/SOURCE_INPUTS.json",
+    "sha256": "99f46aae2e2fb32087e67fd2acd21ca3000fa640e5d8d94a6c7b4be2b65a0d4c"
+  },
+  "runner": {
+    "path": ".build/jobs/keygen_crtwalk206_589/RUNNER_SOURCE.py",
+    "sha256": "e8e9cf4ba5e744425464c0057a27d07f62ff82be352c479535425ff436c5b385"
+  },
+  "engine": {
+    "path": ".build/jobs/keygen_crtwalk206_589/EXECUTION_SOURCE.py",
+    "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c"
+  },
+  "preflight": {
+    "path": ".build/jobs/keygen_crtwalk206_589/PREFLIGHT.json",
+    "sha256": "5a6f6afd094e72fb3bf7bc6f62c1a9af1e6739a7a0794bbf04d67109977625f6"
+  },
+  "modules": [
+    {
+      "module": "Source3.CrtWalkIncrement206",
+      "source": {
+        "path": "formal/Source3/CrtWalkIncrement206.lean",
+        "sha256": "08c7250723308de0a7b71ee61cea6c43e8c14cfe8b82913b8249d5d0227d92d0"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_crtwalk206_589/formal/Source3/CrtWalkIncrement206.lean",
+        "sha256": "08c7250723308de0a7b71ee61cea6c43e8c14cfe8b82913b8249d5d0227d92d0"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_crtwalk206_589/lib/Source3/CrtWalkIncrement206.olean",
+        "sha256": "e67dd0cbb6c3eacee4c34ae2cb611e0fee5e6228e93e40c2ff55d73dd2416dcf"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_crtwalk206_589/logs/Source3_CrtWalkIncrement206.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_crtwalk206_589/logs/Source3_CrtWalkIncrement206.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 4.825,
+      "maxrss_kib": 3619996
+    },
+    {
+      "module": "Source3.CrtWalkFixed206",
+      "source": {
+        "path": "formal/Source3/CrtWalkFixed206.lean",
+        "sha256": "cdec1e9528fa01a6d683868be7b82394ec8f8022fd63f20b33378054264a3799"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_crtwalk206_589/formal/Source3/CrtWalkFixed206.lean",
+        "sha256": "cdec1e9528fa01a6d683868be7b82394ec8f8022fd63f20b33378054264a3799"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_crtwalk206_589/lib/Source3/CrtWalkFixed206.olean",
+        "sha256": "56869503a512c9a5f6138c1af2c93142b713dcf15f2a40c7e04823ec4efc1d72"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_crtwalk206_589/logs/Source3_CrtWalkFixed206.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_crtwalk206_589/logs/Source3_CrtWalkFixed206.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.669,
+      "maxrss_kib": 3670180
+    },
+    {
+      "module": "Source3.CrtWalkStep206",
+      "source": {
+        "path": "formal/Source3/CrtWalkStep206.lean",
+        "sha256": "77b0f76dc998e18c76c41f7ed98167ff57a4a4b0b434c42e0a4e537dfdb65b87"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_crtwalk206_589/formal/Source3/CrtWalkStep206.lean",
+        "sha256": "77b0f76dc998e18c76c41f7ed98167ff57a4a4b0b434c42e0a4e537dfdb65b87"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_crtwalk206_589/lib/Source3/CrtWalkStep206.olean",
+        "sha256": "516b7f9709a66cde2d0846777e1950d5fdac58b44ed58f0fa8bb464abf0390d8"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_crtwalk206_589/logs/Source3_CrtWalkStep206.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_crtwalk206_589/logs/Source3_CrtWalkStep206.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.72,
+      "maxrss_kib": 3673196
+    },
+    {
+      "module": "Source3.CrtWalkLoop206",
+      "source": {
+        "path": "formal/Source3/CrtWalkLoop206.lean",
+        "sha256": "abb9d5334943566552b603232eb529d3f2291ec49d3a79371bb8dddcb275b66f"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_crtwalk206_589/formal/Source3/CrtWalkLoop206.lean",
+        "sha256": "abb9d5334943566552b603232eb529d3f2291ec49d3a79371bb8dddcb275b66f"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_crtwalk206_589/lib/Source3/CrtWalkLoop206.olean",
+        "sha256": "152dcd14a1036fc2b67b19dbe90906181317faeef4667995f997d58691017f36"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_crtwalk206_589/logs/Source3_CrtWalkLoop206.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_crtwalk206_589/logs/Source3_CrtWalkLoop206.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.973,
+      "maxrss_kib": 3673196
+    },
+    {
+      "module": "Source3.CrtPrimePrefix206",
+      "source": {
+        "path": "formal/Source3/CrtPrimePrefix206.lean",
+        "sha256": "5f0dd9fea2beba27901212be9931c74020f098e2f59a02e4c351116d495d72d4"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_crtwalk206_589/formal/Source3/CrtPrimePrefix206.lean",
+        "sha256": "5f0dd9fea2beba27901212be9931c74020f098e2f59a02e4c351116d495d72d4"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_crtwalk206_589/lib/Source3/CrtPrimePrefix206.olean",
+        "sha256": "39f14b1c42b6b9e1634750a6a2d38376da5229c4b9944b2a2caf7cf854d7bc3a"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_crtwalk206_589/logs/Source3_CrtPrimePrefix206.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_crtwalk206_589/logs/Source3_CrtPrimePrefix206.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.223,
+      "maxrss_kib": 3675444
+    },
+    {
+      "module": "Source3.CrtRoundReady206",
+      "source": {
+        "path": "formal/Source3/CrtRoundReady206.lean",
+        "sha256": "f8fb75d4ce5d4e6950dcc84801a201c3220f34c2e52b5c1f666e3b78e4b6a88a"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_crtwalk206_589/formal/Source3/CrtRoundReady206.lean",
+        "sha256": "f8fb75d4ce5d4e6950dcc84801a201c3220f34c2e52b5c1f666e3b78e4b6a88a"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_crtwalk206_589/lib/Source3/CrtRoundReady206.olean",
+        "sha256": "d65c5e0c97a5c32118b3ec91bc3557d73afba052268281a44f9cef48d4bf7d4e"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_crtwalk206_589/logs/Source3_CrtRoundReady206.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_crtwalk206_589/logs/Source3_CrtRoundReady206.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 17.707,
+      "maxrss_kib": 3694940
+    },
+    {
+      "module": "Source3.CrtMulImage206",
+      "source": {
+        "path": "formal/Source3/CrtMulImage206.lean",
+        "sha256": "fb8e30d8e8d7821b95531d7f75f1be1642546591705eeef681ef8b22dfc30d48"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_crtwalk206_589/formal/Source3/CrtMulImage206.lean",
+        "sha256": "fb8e30d8e8d7821b95531d7f75f1be1642546591705eeef681ef8b22dfc30d48"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_crtwalk206_589/lib/Source3/CrtMulImage206.olean",
+        "sha256": "319a4537151ef12c8a6749f4cfab0367072699332ce0218b84e0dfc26d962045"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_crtwalk206_589/logs/Source3_CrtMulImage206.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_crtwalk206_589/logs/Source3_CrtMulImage206.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.72,
+      "maxrss_kib": 3694940
+    },
+    {
+      "module": "Source3.CrtRound206",
+      "source": {
+        "path": "formal/Source3/CrtRound206.lean",
+        "sha256": "14366dd0436276ca9d402b17b5454be5434958e2eb7fd1993cc19874b48ef346"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_crtwalk206_589/formal/Source3/CrtRound206.lean",
+        "sha256": "14366dd0436276ca9d402b17b5454be5434958e2eb7fd1993cc19874b48ef346"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_crtwalk206_589/lib/Source3/CrtRound206.olean",
+        "sha256": "2ce961b0ff6bf025446adc93341325ce6060abf67ffb48ffa916ec17b4c62e81"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_crtwalk206_589/logs/Source3_CrtRound206.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_crtwalk206_589/logs/Source3_CrtRound206.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.071,
+      "maxrss_kib": 3694940
+    },
+    {
+      "module": "Source3.CrtCoLoop206",
+      "source": {
+        "path": "formal/Source3/CrtCoLoop206.lean",
+        "sha256": "07bd50f311c9db16d0589d0322db079a9958d1064ee69c9d30f9bfc0a329d737"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_crtwalk206_589/formal/Source3/CrtCoLoop206.lean",
+        "sha256": "07bd50f311c9db16d0589d0322db079a9958d1064ee69c9d30f9bfc0a329d737"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_crtwalk206_589/lib/Source3/CrtCoLoop206.olean",
+        "sha256": "fa63a738be194579e0323b1595b1b3db09c114c1d8820a8ed3665dea6b68b96c"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_crtwalk206_589/logs/Source3_CrtCoLoop206.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_crtwalk206_589/logs/Source3_CrtCoLoop206.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 30.583,
+      "maxrss_kib": 5182616
+    },
+    {
+      "module": "Source3.CrtCoLoop256206",
+      "source": {
+        "path": "formal/Source3/CrtCoLoop256206.lean",
+        "sha256": "3dce7d836e4b8ed97211d17f678d028b78f177b4d43445134eb3ce1497340687"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_crtwalk206_589/formal/Source3/CrtCoLoop256206.lean",
+        "sha256": "3dce7d836e4b8ed97211d17f678d028b78f177b4d43445134eb3ce1497340687"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_crtwalk206_589/lib/Source3/CrtCoLoop256206.olean",
+        "sha256": "88bd4d9cbf23c9e8a008d9bda0be9a277f8592bc5300f5c33bdc9c17172fa46a"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_crtwalk206_589/logs/Source3_CrtCoLoop256206.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_crtwalk206_589/logs/Source3_CrtCoLoop256206.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.171,
+      "maxrss_kib": 5182616
+    },
+    {
+      "module": "Source3.CrtWalkAudit206",
+      "source": {
+        "path": "formal/Source3/CrtWalkAudit206.lean",
+        "sha256": "f43d84b67d9aa4bdd7dd1e10a6f1b302da1861f70b69850eb55e963ab9dee75b"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_crtwalk206_589/formal/Source3/CrtWalkAudit206.lean",
+        "sha256": "f43d84b67d9aa4bdd7dd1e10a6f1b302da1861f70b69850eb55e963ab9dee75b"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_crtwalk206_589/lib/Source3/CrtWalkAudit206.olean",
+        "sha256": "624f04070623b3a559cc0249660acebefc70082997888cdc2e7d4ef2b166ac32"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_crtwalk206_589/logs/Source3_CrtWalkAudit206.stdout",
+        "sha256": "3a480fc23063c282cc6bdb190f5aa6291f279a8a830ffc3324014bfc59966988"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_crtwalk206_589/logs/Source3_CrtWalkAudit206.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.47,
+      "maxrss_kib": 5182616
+    }
+  ],
+  "axioms": {
+    "FT1536.Source3.CrtWalkIncrement206.at_step": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtWalkIncrement206.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtWalkIncrement206.counter": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtWalkIncrement206.pointer": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtWalkFixed206.high_eq": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtWalkFixed206.different": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtWalkStep206.next_locals": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtWalkStep206.next_arrays": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtWalkStep206.step": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtWalkLoop206.guard": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtWalkLoop206.remaining": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtWalkLoop206.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtPrimePrefix206.inner_shape": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtPrimePrefix206.pCell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtPrimePrefix206.sCell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtPrimePrefix206.iCell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtPrimePrefix206.rCell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtPrimePrefix206.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtRoundReady206.fixed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtRoundReady206.init_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtMulImage206.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtRound206.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtCoLoop206.increment_shape": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtCoLoop206.guard": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtCoLoop206.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtCoLoop256206.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "failures_and_workshop": {
+    "path": "notes/run/KEYGEN_CRT_WALK_206_FAILURES_589.json",
+    "sha256": "1a9397821d8f68e6959a382263617bc396aa9f4fcb4fcc19ba37310e09f189a7"
+  },
+  "report": {
+    "path": "notes/run/KEYGEN_CRT_WALK_206_589_REPORT.md",
+    "sha256": "3ff88cb56c3a295d0f4fcef19275122a31d1234d430f4e54a2fd02adfa565b7e"
+  },
+  "evidence_generator": {
+    "path": ".build/evidence_v1.py",
+    "sha256": "1bc738f64ab2604686ab4e8da3ab0cc8eb3ef786f9486ab6b1d94cc70d513b3e"
+  },
+  "evidence_configuration": {
+    "path": ".build/crtwalk589/evidence_config.json",
+    "sha256": "5f752f01bdb3b83523e87e4ee640ce51fb88a90e31c13fd29f80ec022bba532a"
+  },
+  "source_proof_markers": [],
+  "linter_suppressions": [],
+  "limits_unchanged": true,
+  "independent_review": "NOT_RUN",
+  "push": false,
+  "next_unused_suffix": 590,
+  "next_obligations": [
+    "Generic subtraction and two-limb signed normalization",
+    "Actual CRT declarations/initial tmp0 source store and both fs/gs callers from587",
+    "Remaining additional-prime/forward/products and full d2 return",
+    "Later d levels/root/certificate/codec and full B1 theorem"
+  ],
+  "not_claimed": [
+    "Signed normalization or complete rebuildCRT body yet",
+    "Discharged actual587-to-CRT caller input yet",
+    "Complete d2 return",
+    "Mathematical CRT/normalization/NTT/root law",
+    "Full KeyGen/Sign/compiler/security or unconditional positivity/probability",
+    "Independent review"
+  ]
+}

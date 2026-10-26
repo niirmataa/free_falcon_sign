@@ -1,3 +1,29 @@
+# SEED9_R1 — route ACTIVE; full CRT co-loop checkpoint589 accepted;590 next
+
+Owner: continue fully to completion; no push, handoff, subagents or reviewers.
+Overall source-to-fiber goal IN_PROGRESS / NOT_REVIEWED.
+589 canonical keygen_crtwalk206_589 accepted11/11,exit0,diagnostics0/0,
+warningAsError,markers/suppressions0;26 standard-only axiom results.
+Complete original generic-count coefficient walk at stride2, actual row1
+PRIMES3.p/s/ninv/R2 prefix, original v0/x=xx initialization, full coBody and
+terminal tmp multiplier; enclosing xlen2 co-loop/u1→2/false2<2 terminal.
+At num256 one full512-word input becomes full512-word executed output plus
+both modulus limbs at the same output; caller metadata/outside reads kept.
+Input/read domains generic; actual587-to-CRT caller discharge stays open.
+76.132s sum,maxRSS5182616KiB; original limits; independent review NOT_RUN.
+ENTRY_PINS00f602e7…74673/74673 before/after; predecessor588250 unchanged.
+13 attempts retain5 syntax/elaboration failures; no mathematical/resource
+failure or failed cache product. Full retained history preserved.
+Report/evidence KEYGEN_CRT_WALK_206_589_REPORT.md and matching JSON.
+Next590 generic subtraction/two-limb signed normalization, actual CRT entry/
+initial tmp0 store and fs/gs callers. Then additional-prime/forward/products/
+full d2 return; later d levels/root/certificate/codec remain OPEN.
+No mathematical CRT/NTT/normalization/root law or full KeyGen/Sign/compiler/
+security/unconditional positivity/probability. Old110/measured/five do_sign
+unchanged. Foreign edits/staging excluded; no push; continue after commit.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — route ACTIVE; CRT coefficient checkpoint588 accepted;589 next
 
 Owner: continue fully to completion; no push, handoff, subagents or reviewers.
@@ -9703,3 +9729,35 @@ Job record (588): attempt015 — ACCEPTED_LOCAL2/2,0/0; scoped coefficient expor
 Job record (588): canonical keygen_crtcoefficient205_588 — ACCEPTED14/14,0/0,30 standard-only audits,68.768s,maxRSS5715732KiB; entry74673/predecessor450 unchanged. Next evidence verification/exact-path local commit, then589 full CRT walk and signed normalization.
 
 Job record (588 checkpoint): evidence PASS250 bindings; exact explicit module list used after path-count assertion rejected a suffix glob containing two historical audit modules (no index mutation occurred). Foreign staging empty; commit own19 paths only, no push; next589 coefficient walk.
+
+Job record (589 start):588 committed ed076baef9fe5237d01097a796a9632ccbb9d18a, no push. Continue actual original CRT coefficient walk with generic count and stride2, then signed normalization. New runtime .build/crtwalk589; predecessor588 stays immutable.
+
+Job record (589): entry74673 and predecessor588250 bindings verified. attempt001 retained syntax failure: reserved at used as pointer helper caused parser-recovery diagnostic cascades; no source admission or accepted artifact. Rename helper cell. Entry scan overlapped first adapter check; completed unchanged before retry, and588 full postcheck remains valid. Next increment/fixed domains.
+
+Job record (589): attempt002 retained pointer-record congrArg inference failure in increment geometry. Use explicit typed ArrayPointer constructor and index equality; no domain/statement or limit change. Next source increment and fixed domains.
+
+Job record (589): attempt003 — ACCEPTED_LOCAL2/2,0/0: actual source v++/x+=2 with arbitrary bounded counter and pointer capacity, plus generic-count CRT loop domains and cross-row byte separation. Next coefficient step preserving pending/written rows/tmp at one output.
+
+Job record (589): attempt004 — Increment/Fixed accepted2/2 clean; step failed omega on an under-reduced Fin constructor in pending row self-bound. Use explicit Nat.le_refl; no stronger domain premise. Next complete step and whole generic-count source loop.
+
+Job record (589): attempt005 — Increment/Fixed/Step accepted3/3 clean; whole loop failed terminal-guard simplification because false=true conditional remained. Use full boolean simplification (same old copy-loop pattern); actual coefficient step now preserves pending/written rows/tmp and source counter/pointer on one output.
+
+Job record (589): attempt006 — ACCEPTED_LOCAL4/4,0/0: complete generic-count original coefficient walk, false terminal guard, full two-limb output image and arbitrary outside-read keeps. Next actual row1 p/s/ninv/R2 source prefix and original walk initialization, then full co-round/multiplier.
+
+Job record (589): attempt007 — ACCEPTED_LOCAL5/5,0/0: actual PRIMES3[1].p/s reads, ninv31/R2 setup and original scalar prefix constructed from the readonly source object. Next original v0/x=xx initialization and full co-round source composition.
+
+Job record (589): attempt008 — retained syntax failure from reserved initialize theorem name; ready input/fixed metadata/counter/pointer proofs otherwise clean. Rename init_source; next initialization and multiplier same-output images.
+
+Job record (589): attempt009 — ACCEPTED_LOCAL2/2,0/0: original v0/x=xx initialization and full source-derived row1 loop-ready domains; multiplier call exports both tmp limbs and outside-read keeps. Next full coBody composition including all rows and terminal tmp update, using operational metadata stability.
+
+Job record (589): attempt010 — ACCEPTED_LOCAL CrtRound206,3.622s,0/0: complete original coBody, actual row1 setup/full generic-count coefficient walk/terminal tmp multiplier, all data+tmp limb images at one scoped output and full caller-local restoration. Next enclosing u1→2 increment and false2<2 outer guard at xlen2.
+
+Job record (589): attempt011 — ACCEPTED_LOCAL CrtCoLoop206,36.874s,0/0,maxRSS5592956KiB: full xlen2 co-reduction loop, actual row1 round/u1→2 update and terminal2<2 false, all data and tmp limb images plus caller/outside keeps. Next concrete n256 full512-word image export and audit.
+
+Job record (589): attempt012 — ACCEPTED_LOCAL CrtCoLoop256206,3.121s,0/0: n256/xlen2 original co-loop consumes one full512-word image and exports its full512-word executed CRT image together with both modulus limbs at the same output. Actual CRT entry/store and signed normalization remain downstream. Next original-interface/axiom audit and canonical replay.
+
+Job record (589): attempt013 — ACCEPTED_LOCAL audit,2.725s,0/0: four original interfaces/26 standard-only axiom results. Next canonical11-module replay and full co-loop checkpoint, then590 two-limb normalization/full CRT entry and both callers.
+
+Job record (589): canonical keygen_crtwalk206_589 — ACCEPTED11/11,0/0,26 standard-only audits,76.132s,maxRSS5182616KiB; entry/predecessor postcheck running. Next evidence/exact-path local commit then590 generic subtraction and signed normalization; do not stop at this checkpoint.
+
+Job record (589 checkpoint): evidence PASS237 new bindings; entry74673/predecessor250 unchanged,11 accepted/26 axiom audits. Foreign index observed empty and unrelated commits preserved; commit own15 exact paths only, no push. Next590 generic subtraction/normalization and full CRT.
