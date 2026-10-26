@@ -1,0 +1,100 @@
+# WP-023 check — 2026-10-26 (differential Rust vs silnik FT1536)
+# host: Linux 6.12.113+deb13-amd64 x86_64 GNU/Linux
+# cc: cc (Debian 14.2.0-19) 14.2.0
+# rustc: rustc 1.94.0 (4a4ef493e 2026-03-02)
+# cargo: offline, --locked (workspace THRESHOLD_P2_001/impl)
+
+== Cel i metoda ==
+Porównanie bajtowe prymitywów Rust (`ft-threshold-core`) z rzeczywistym
+źródłem silnika FT1536 z `Extra/c`, nie z kopią ani z modelem Python.
+Harness C (`impl/ci/engine_diff/probe_engine.c`) robi
+`#include "falcon-vrfy.c"`, więc używa tych samych `static`
+`mq_NTT_ternary`/`mq_iNTT_ternary`/`mq_mkgm3`/`mq_montymul`; do
+`falcon_hash_to_point` linkuje `falcon-enc.c` i `shake.c`. Linkowanie z
+`-ffunction-sections -fdata-sections -Wl,--gc-sections` odcina nieużywane
+funkcje (fpr/keygen/sign/verify), nie zmieniając kodu testowanych ścieżek.
+
+Program Rust (`crates/ft-threshold-core/examples/engine_diff_probe.rs`)
+liczy te same przypadki przez publiczne API crate'a. Oba programy zapisują
+identyczny format `FTDIF01` v1: nagłówek + 32-bajtowy SHAKE256 z
+serializacji wyniku (`N` wartości `u16` little-endian). `run.py` porównuje
+pliki bajt po bajcie.
+
+== Komenda ==
+cd proofs/ft1536/development/THRESHOLD_P2_001/impl
+python3 ci/engine_diff/run.py --cases 10000
+czas: 43.4 s (jeden przebieg C + jeden Rust + porównanie)
+
+== Wynik ==
+cases_per_kind: 10000
+kinds:          hash_to_point, ntt, intt, mul
+digests:        40000 / 40000 zgodnych
+bytes:          1280036 / 1280036 zgodnych
+mismatched:     0
+result:         PASS (0 rozjazdów, pełna zgodność bajtowa)
+
+SHA256 pliku engine.bin = SHA256 pliku rust.bin:
+  b5d5baf82a41c2a69e01bc2afc7a61501c1c14d1977962183c7266eaeca2f083
+(Pełny log: `impl/.build/engine_diff/run_summary.txt`; pliki binarne
+również w `impl/.build/engine_diff/`.)
+
+== Piny wejść (dokładne bajty przebiegu) ==
+Silnik Extra/c:
+  falcon-vrfy.c    3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42
+  falcon-enc.c     0f7085fa975d41ebbeb96d5db4cb68482c344ef2d602ca8853e20a4d4f04fb05
+  shake.c          c3e7864bf4139264f8c287053214bf869e242757bf555235da81454e40ea316a
+  shake.h          2373a37e09907c8e57a6b1adc05e26499d9cf2752518267a80291de931c2d8df
+  internal.h       512629d3b79fa5bd74131ed2ecde06e1d157f5ac58db3f758db96b19131f1ba5
+  falcon.h         657ad2b2d45b8932c3b9a703ac718c1f23dad78523036c1a934b8e21cf0f4519
+  fpr-emulated.h   6b897d6c217ef25a322e3b5c3d9488b9d6b8d0e369a710d8fce2259f24e6d84f
+Harness:
+  probe_engine.c   99b7384ccb0aa0d15521596d55a4fe24144a23d6ab65f93e255e4810c6f7cded
+  run.py           6be518f4598da5ffa024341e6c1c9285f3765f09e761c63b455485ec32a5176d
+  engine_diff_probe.rs
+                   60b57c79ee5942b4b80f367393e6f5cd9bf8be388b8253a2827a4e3c7141033a
+Wiązanie: `impl/ci/engine_diff/PIN_2026-10-26.txt` (sprawdzone skryptem:
+wszystkie 10 hashy + output_sha256 zgodne).
+
+== Co dokładnie porównano ==
+- `hash_to_point`: nonce 16 B || msg 32 B, SHAKE256 (capacity 512,
+  rate 136 B), rejection `w < 65536 − (65536 mod 18433)`, 1536 współczynników.
+- NTT ternarna: dowolny wektor 1536 współczynników w `0..q−1`.
+- iNTT ternarna: dowolny wektor w dziedzinie NTT.
+- Mnożenie w `R_q` ścieżką silnika: NTT(a), NTT(b), `mq_poly_montymul_ntt`,
+  `mq_poly_tomonty`, iNTT — odpowiednik `ntt::mul` w Rust (który ma
+  osobny test vs szkolne `Poly::mul` i niezależny KAT Python).
+
+== Napotkane pułapki harnessu (zachowane jawnie) ==
+1. Pierwszy dym użył `shake_init(&sc, 256)` (SHAKE128) zamiast 512
+   (standardowy SHAKE256, zgodny z `falcon_vrfy_start`). Dostałem inne
+   wektory; to był błąd harnessu, nie rozjazd implementacji. Poprawka:
+   512, potem zgodność.
+2. W kategorii `mul` C początkowo przeplatał współczynniki `a` i `b`
+   (`a[u]`, `b[u]` w jednej pętli), a Rust pobierał najpierw całe `a`,
+   potem całe `b`. Ten sam generator, inna kolejność → różne wielomiany
+   i fałszywy rozjazd 96 B. Poprawka: najpierw całe `a`, potem całe `b`.
+   Kolejność jest teraz częścią kontraktu formatu w README.
+Oba przypadki pokazują, że porównanie bajtowe faktycznie wykrywa różnice
+wejść, a nie tylko „przepisuje” wynik.
+
+== Czego ten dowód NIE obejmuje ==
+- To nie jest niezależny odbiór (autor ≠ recenzent pozostaje wymagane).
+- To nie jest dowód poprawności silnika ani bezpieczeństwa protokołu;
+  pokazuje tylko zgodność czterech prymitywów na 4×10⁴ przypadkach.
+- Nie porównano: FFT/`ffSampling`, sampler Kleina/Gaussa, keygen, sign,
+  verify, norm check, wire/CBOR, ścieżki binarnej `q = 12289`, innych `logn`.
+- Brak coverage-guided fuzzingu i analizy mutacyjnej (WP-022).
+- `hash_to_point` jest jawny (nie MPC); SHAKE na udziałach (O-16) pozostaje
+  otwarty.
+- `PROD` nadal zablokowane przez `ProdEvidenceMissing` (O-05).
+
+== Powtórzenie ==
+```
+cd proofs/ft1536/development/THRESHOLD_P2_001/impl
+python3 ci/engine_diff/run.py --cases 10000
+```
+Oczekiwany `run_summary.txt`: `digests_compared: 40000`,
+`mismatched_bytes: 0`, `engine_bin_sha256 = rust_bin_sha256 =
+b5d5baf82a41c2a69e01bc2afc7a61501c1c14d1977962183c7266eaeca2f083`.
+Zmiana któregokolwiek pliku silnika lub harnessu unieważnia pin i wymaga
+nowego przebiegu (nowy `PIN_...txt`), nie edycji starego.

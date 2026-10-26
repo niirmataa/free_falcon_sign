@@ -1,0 +1,21 @@
+# WP-023 — pin differentialu Rust vs silnik FT1536 (2026-10-26)
+# cases_per_kind=10000
+# kinds=hash_to_point,ntt,intt,mul
+# format=FTDIF01 v1
+# seed=0x9e3779b97f4a7c15
+# Wynik: 40000/40000 digestów zgodnych, 1280036/1280036 bajtów zgodnych.
+output_sha256=b5d5baf82a41c2a69e01bc2afc7a61501c1c14d1977962183c7266eaeca2f083
+
+# Silnik (Extra/c) — dokładne wejścia przebiegu.
+engine.falcon-vrfy.c=3fe78f8df8003b760a21f4897b44b876717e30029bed031ee7d0cd224e968d42
+engine.falcon-enc.c=0f7085fa975d41ebbeb96d5db4cb68482c344ef2d602ca8853e20a4d4f04fb05
+engine.shake.c=c3e7864bf4139264f8c287053214bf869e242757bf555235da81454e40ea316a
+engine.shake.h=2373a37e09907c8e57a6b1adc05e26499d9cf2752518267a80291de931c2d8df
+engine.internal.h=512629d3b79fa5bd74131ed2ecde06e1d157f5ac58db3f758db96b19131f1ba5
+engine.falcon.h=657ad2b2d45b8932c3b9a703ac718c1f23dad78523036c1a934b8e21cf0f4519
+engine.fpr-emulated.h=6b897d6c217ef25a322e3b5c3d9488b9d6b8d0e369a710d8fce2259f24e6d84f
+
+# Harness — zmiana któregokolwiek pliku wymaga nowego przebiegu.
+probe.engine.c=99b7384ccb0aa0d15521596d55a4fe24144a23d6ab65f93e255e4810c6f7cded
+probe.run.py=6be518f4598da5ffa024341e6c1c9285f3765f09e761c63b455485ec32a5176d
+probe.rust.rs=60b57c79ee5942b4b80f367393e6f5cd9bf8be388b8253a2827a4e3c7141033a

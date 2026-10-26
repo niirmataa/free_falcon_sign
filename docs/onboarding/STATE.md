@@ -1,5 +1,21 @@
 # Stan projektu — punkt wejścia
 
+**2026-10-26 — S09/THRESHOLD_P2_001: WP-023 DONE (differential vs silnik).**
+Cztery prymitywy Rust porównano bajtowo z rzeczywistym źródłem silnika
+`Extra/c` (nie z kopią): `hash_to_point`, NTT ternarna, iNTT ternarna i
+mnożenie w `R_q` ścieżką NTT. Harness C kompiluje `falcon-vrfy.c`
+(z dostępem do `static mq_*`) oraz `falcon-enc.c`/`shake.c`; program Rust
+liczy te same przypadki przez publiczne API. Wynik: **10 000 przypadków
+na kategorię (40 000 digestów, 1 280 036 B), 0 rozjazdów**, oba pliki
+mają ten sam SHA256 `b5d5baf8…f083`. Piny silnika i harnessu są w
+`impl/ci/engine_diff/PIN_2026-10-26.txt`, opis formatu i pułapek w
+`engine_diff/README.md`, dowód `impl/ci/WP023_CHECK_2026-10-26.txt`.
+Po drodze złapano dwa błędy harnessu (SHAKE capacity 256 zamiast 512;
+przeplatana kolejność generowania `a`/`b`) — po poprawkach zgodność
+pełna. To nie jest odbiór ani dowód bezpieczeństwa: FFT/ffSampling,
+sampler, keygen/sign/verify i ścieżka binarna `q = 12289` pozostają poza
+zakresem. Następne w G1: WP-024 (KAT pinów) albo WP-022 (fuzz).
+
 **2026-10-26 — S09/THRESHOLD_P2_001: WP-021 DONE (fail-closed sampler).**
 Audyt #16 domknięty po stronie mechanizmu prób: `sampler::RejectionSampler`
 ma twardy cap, a po jego wyczerpaniu zwraca wyłącznie
