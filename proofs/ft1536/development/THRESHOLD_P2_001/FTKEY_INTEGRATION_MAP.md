@@ -190,6 +190,11 @@ Parametry: `N=1536`, `q=18433` (15 bitów na współczynnik), pierścień
   pułapki na sesję” zachowują przewagę 32 B. To trzeba rozstrzygnąć razem
   z D-021, bo wpływa na to, czy token jest nośnikiem udziału, czy tylko
   bramą do odszyfrowania.
+- **Transport:** `getInfo` tego tokena zwraca `maxmsgsize=1536`, więc
+  koperta 4 KB nie mieści się w jednej ramce CTAP2. `largeBlobs` musi być
+  czytane i zapisywane fragmentami; libfido2 obsługuje fragmentację, ale
+  szkic `token_seed` **nie ma testu** takiego przebiegu (F-4). To trzeba
+  zmierzyć przed deklaracją „udział 32 B na tokenie działa”.
 
 ---
 
