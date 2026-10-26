@@ -1,3 +1,25 @@
+# SEED9_R1 — ACTIVE; bounded Rx checkpoint593 accepted;594 next
+
+Owner: continue fully; no push, subagents, reviewers, relay or migration.
+Overall B1 IN_PROGRESS / NOT_REVIEWED.
+593 canonical keygen_modprx210_593 accepted8/8,0/0,45 standard-only axiom
+results. Full original modp_Rx and additional-prime Rx assignment at positive
+lengths1..1024: actual bit branches/squares/signed counter/legal shifts/
+return, uint64 parameter conversion. Length2 word=montgomery(R(p),R2,p,p0i),
+without assuming a Montgomery/power law.23.971s,maxRSS4189740KiB.
+ENTRY74673/predecessor592142 unchanged before/after.7 attempts retain2
+elaboration failures; no resource failure, suppression or failed cache.
+Executed/validated scoped source; independent review NOT_RUN.
+Report/evidence KEYGEN_MODP_RX_210_593_REPORT.md and matching JSON.
+Next594 generic smaller forward (full0/stride1), then actual extra-prime
+prologue/conversion/forward/products/full d2 return and later d levels/root/
+certificate/codec/full B1. No Rx source totality at zero/arbitrary uint32,
+no mathematical power/residue/Montgomery/NTT/root law or broad KeyGen/Sign/
+compiler/security/unconditional positivity/probability. Old110/measured/five
+do_sign unchanged. Foreign work excluded; no push; continue after commit.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; generic reduction checkpoint592 accepted;593 next
 
 Owner resumed after short app reset. Continue fully; no push, subagents,
@@ -9980,3 +10002,23 @@ Job record (592): attempt009 — ACCEPTED_LOCAL audit,6.087s,0/0: four original 
 Job record (592): canonical keygen_zintreduce209_592 — ACCEPTED8/8,0/0,25 standard-only results,52.077s,maxRSS4165568KiB. Next final pins/evidence/local commit then593 actual bounded Rx; no final handoff.
 
 Job record (592 checkpoint): evidence PASS142 new bindings; entry74673/predecessor224 unchanged at before/resume/after,8 accepted/25 standard-only results. Exact own12 paths prepared, all foreign edits excluded. Local checkpoint only; no push; immediately continue593 actual bounded Rx.
+
+Job record (593 start):592 committed39f93735df7ea73b53547010e8fe5ef4282cce51, no push. Continue actual bounded modp_Rx (positive lengths≤1024), including real conditional loop and uint64 call conversion. New runtime .build/rx593;592 immutable.
+
+Job record (593): entry74673/predecessor592142 verified. attempt001 — ACCEPTED_LOCAL RxControl210,25.436s,0/0: signed loop counter fits/increment, unsigned x decrement, legal shifts≤10 and exact source guard/bit-test evaluations. Next actual conditional z multiply/r square body.
+
+Job record (593): attempt002 — Control/Model accepted2/2,0/0; Body retained branch-test simplification failure: global simp rewrote BitVec.toNat_and before applying the negative zero hypothesis. Rewrite the proved decide boolean directly; no condition/domain or execution change. Next actual body and bounded full loop.
+
+Job record (593): attempt003 — ACCEPTED_LOCAL2/2,0/0: complete actual conditional bit body and bounded loop (legal signed counter/shifts through10), exact executed result fold and unchanged heap/arrays/other locals. Next source parameter/declaration prefix/full rxCode and actual uint64 argument conversion.
+
+Job record (593): attempt004 retained entry-frame elaboration failure: equality transport made a by-decide membership goal contain the free name variable. Use the explicit first-list-member constructor from the supplied equality; no logical/domain change. Whole module was not run. Next full prefix/body/uint64 binding.
+
+Job record (593): attempt005 — ACCEPTED_LOCAL2/2,0/0: actual rxCode declaration/parameter/decrement/R2/R/loop/return for all positive lengths≤1024, plus original uint64 argument conversion and ModCall instance. Next original additional-prime Rx assignment and explicit length2 word export.
+
+Job record (593): attempt006 — ACCEPTED_LOCAL RxSection210,3.222s,0/0: original additional-prime Rx assignment for positive lengths≤1024, including actual uint64 input; explicit length2 executed word is montgomery(R(p),R2,p,p0i), with no Montgomery value law assumed. Next45-result audit and canonical replay.
+
+Job record (593): attempt007 — ACCEPTED_LOCAL audit,2.622s,0/0: five original interfaces and45 standard-only axiom results. Next canonical8-module replay, pins/evidence/local checkpoint, then594 lower-size forward/additional-prime source continuation.
+
+Job record (593): canonical keygen_modprx210_593 — ACCEPTED8/8,0/0,45 standard-only results,23.971s,maxRSS4189740KiB. Next final pins/evidence/local commit then594 lower-size forward source.
+
+Job record (593 checkpoint): evidence PASS132 new bindings; entry74673/predecessor142 unchanged,8 accepted/45 standard-only results. Foreign index observed empty; exact own12 paths, no push. Continue594 forward-size generalization after local commit.

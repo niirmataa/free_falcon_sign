@@ -1,0 +1,528 @@
+{
+  "utc": "2026-10-26T17:50:33.220925+00:00",
+  "status": "PROVED_KERNEL_SCOPED / NOT_REVIEWED",
+  "overall_owner_goal": "IN_PROGRESS; continue after this intermediate checkpoint",
+  "scope": "Complete actual modp_Rx body and original additional-prime Rx assignment for positive lengths\u22641024, including conditional bit rounds, legal signed counter/shifts, uint64 argument conversion and explicit length2 executed word.",
+  "entry_manifest": {
+    "path": ".build/steprx195/ENTRY_PINS.json",
+    "sha256": "00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964"
+  },
+  "entry_checked_count": 74673,
+  "entry_missing": 0,
+  "entry_changed": 0,
+  "entry_checks": [
+    {
+      "path": ".build/rx593/entry_before.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/rx593/entry_after.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/rx593/predecessor_before.log",
+      "sha256": "85017020d099f6b29cbd9bbb80ec1669774e368dbf6166759bea2f18b90d0f8b"
+    },
+    {
+      "path": ".build/rx593/predecessor_after.log",
+      "sha256": "85017020d099f6b29cbd9bbb80ec1669774e368dbf6166759bea2f18b90d0f8b"
+    },
+    {
+      "path": ".build/rx593/entry_reverify_593.py",
+      "sha256": "641ca0817a30f5d2eea7390621f2686c267a2014e725b574033d856bfbf61d09"
+    },
+    {
+      "path": ".build/rx593/predecessor_verify.py",
+      "sha256": "8c5f8495d6e6ca3f0332d8f8cd8841827b4766db4b9b342fa71d34cca151150c"
+    },
+    {
+      "path": ".build/rx593/typecheck_reuse.py",
+      "sha256": "f9571eb057648514a7ac779a898f3466b336c3b7257a421adc86d3bb98404bd6"
+    }
+  ],
+  "predecessor_handoff": {
+    "path": "notes/run/KEYGEN_ZINT_REDUCE_209_592.json",
+    "sha256": "d903686814f3b50b4bfab8edeed3cfed7d37b079f3bc56c3c460d3294b28f57a"
+  },
+  "predecessor_bindings_verified": 142,
+  "job": "keygen_modprx210_593",
+  "accepted": 8,
+  "receipts": {
+    "path": ".build/jobs/keygen_modprx210_593/RECEIPTS.json",
+    "sha256": "9c576c83c9ebdc9454381f1aab3b6828441cdf5cc956bbfcc5c9495fda874ce5"
+  },
+  "inputs": {
+    "path": ".build/jobs/keygen_modprx210_593/SOURCE_INPUTS.json",
+    "sha256": "a6423cdb78119710f7b9adff8bc5eb19b0dca947b70b68ca2fc20cdaa5831d38"
+  },
+  "runner": {
+    "path": ".build/jobs/keygen_modprx210_593/RUNNER_SOURCE.py",
+    "sha256": "e8e9cf4ba5e744425464c0057a27d07f62ff82be352c479535425ff436c5b385"
+  },
+  "engine": {
+    "path": ".build/jobs/keygen_modprx210_593/EXECUTION_SOURCE.py",
+    "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c"
+  },
+  "preflight": {
+    "path": ".build/jobs/keygen_modprx210_593/PREFLIGHT.json",
+    "sha256": "bab458ad2cca2f6df039b6b6f46df02c965d3ff5db9b39012413a3ecbaa78da2"
+  },
+  "modules": [
+    {
+      "module": "Source3.RxControl210",
+      "source": {
+        "path": "formal/Source3/RxControl210.lean",
+        "sha256": "673a0d6112bd8b19c05e8408194f6aa437b72bb6d383363c8c01c6d72547ade8"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_modprx210_593/formal/Source3/RxControl210.lean",
+        "sha256": "673a0d6112bd8b19c05e8408194f6aa437b72bb6d383363c8c01c6d72547ade8"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_modprx210_593/lib/Source3/RxControl210.olean",
+        "sha256": "0b6fe642f18ac2a16c80419e8b987df3607c24670bea38c6db65f5ff0f4b4317"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_modprx210_593/logs/Source3_RxControl210.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_modprx210_593/logs/Source3_RxControl210.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 4.123,
+      "maxrss_kib": 4177348
+    },
+    {
+      "module": "Source3.RxModel210",
+      "source": {
+        "path": "formal/Source3/RxModel210.lean",
+        "sha256": "d568a3ca3bb730d46020335339efed5f7016da2ce7b3124edd16c45f000c97fd"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_modprx210_593/formal/Source3/RxModel210.lean",
+        "sha256": "d568a3ca3bb730d46020335339efed5f7016da2ce7b3124edd16c45f000c97fd"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_modprx210_593/lib/Source3/RxModel210.olean",
+        "sha256": "965a9c19a6b1034964dde50d2fa95b5126647e07c283e9d10232ca0087eeefe9"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_modprx210_593/logs/Source3_RxModel210.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_modprx210_593/logs/Source3_RxModel210.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.621,
+      "maxrss_kib": 4177348
+    },
+    {
+      "module": "Source3.RxBody210",
+      "source": {
+        "path": "formal/Source3/RxBody210.lean",
+        "sha256": "6c8a43ca143e2bdfea57e559e0423ee8d9c09bd3db30f96b9942daf84efc4ff6"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_modprx210_593/formal/Source3/RxBody210.lean",
+        "sha256": "6c8a43ca143e2bdfea57e559e0423ee8d9c09bd3db30f96b9942daf84efc4ff6"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_modprx210_593/lib/Source3/RxBody210.olean",
+        "sha256": "4f67304a79899d1d0782f7aef0aee0af10cbb35fdd5a8c2d881833d84726a0a1"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_modprx210_593/logs/Source3_RxBody210.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_modprx210_593/logs/Source3_RxBody210.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.071,
+      "maxrss_kib": 4185404
+    },
+    {
+      "module": "Source3.RxLoop210",
+      "source": {
+        "path": "formal/Source3/RxLoop210.lean",
+        "sha256": "688b72bd17128c05dcadc394a6a96c73f40b6a1f1417f7df433181eb04b3881e"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_modprx210_593/formal/Source3/RxLoop210.lean",
+        "sha256": "688b72bd17128c05dcadc394a6a96c73f40b6a1f1417f7df433181eb04b3881e"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_modprx210_593/lib/Source3/RxLoop210.olean",
+        "sha256": "3b3dd57dc55d2c0b745b93b63af19354af04405809d9e47007073b87b9261311"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_modprx210_593/logs/Source3_RxLoop210.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_modprx210_593/logs/Source3_RxLoop210.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.82,
+      "maxrss_kib": 4189740
+    },
+    {
+      "module": "Source3.RxEntry210",
+      "source": {
+        "path": "formal/Source3/RxEntry210.lean",
+        "sha256": "181f3f0aa30d5ccba996bc074300f67e641d4a6cb73193da0b7908cd4e35a898"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_modprx210_593/formal/Source3/RxEntry210.lean",
+        "sha256": "181f3f0aa30d5ccba996bc074300f67e641d4a6cb73193da0b7908cd4e35a898"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_modprx210_593/lib/Source3/RxEntry210.olean",
+        "sha256": "0f24da926eccb448cc3ee8148ae390a351bd9d6b32bb8fbd253da6c1ee64f34b"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_modprx210_593/logs/Source3_RxEntry210.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_modprx210_593/logs/Source3_RxEntry210.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.82,
+      "maxrss_kib": 4189740
+    },
+    {
+      "module": "Source3.RxWhole210",
+      "source": {
+        "path": "formal/Source3/RxWhole210.lean",
+        "sha256": "9e41b32a052efd9e901b8d7d49d666776145ed4e9e40c8b4d59719a0f2eb48e5"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_modprx210_593/formal/Source3/RxWhole210.lean",
+        "sha256": "9e41b32a052efd9e901b8d7d49d666776145ed4e9e40c8b4d59719a0f2eb48e5"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_modprx210_593/lib/Source3/RxWhole210.olean",
+        "sha256": "dd5193bdbba723294c7f19867c959ab4818a16198eed85ae0dc8176d08fb1a0e"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_modprx210_593/logs/Source3_RxWhole210.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_modprx210_593/logs/Source3_RxWhole210.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.173,
+      "maxrss_kib": 4189740
+    },
+    {
+      "module": "Source3.RxSection210",
+      "source": {
+        "path": "formal/Source3/RxSection210.lean",
+        "sha256": "2351a7645c4663fe975be8d59c88a6f20d96a478633a164b3855eca847869ba1"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_modprx210_593/formal/Source3/RxSection210.lean",
+        "sha256": "2351a7645c4663fe975be8d59c88a6f20d96a478633a164b3855eca847869ba1"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_modprx210_593/lib/Source3/RxSection210.olean",
+        "sha256": "e9515f63351894d0d1e2562849b7cf586161c471a92133284fae691fdb0caa8f"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_modprx210_593/logs/Source3_RxSection210.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_modprx210_593/logs/Source3_RxSection210.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.67,
+      "maxrss_kib": 4189740
+    },
+    {
+      "module": "Source3.RxAudit210",
+      "source": {
+        "path": "formal/Source3/RxAudit210.lean",
+        "sha256": "04bcc8ae15b106d64793d0a6e1ec95c8dde442e9cc53ee8d20db82af4f5236e1"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_modprx210_593/formal/Source3/RxAudit210.lean",
+        "sha256": "04bcc8ae15b106d64793d0a6e1ec95c8dde442e9cc53ee8d20db82af4f5236e1"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_modprx210_593/lib/Source3/RxAudit210.olean",
+        "sha256": "5521ecec1353c25c70024001c19c745f646d699f57318391011bb268ee05095d"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_modprx210_593/logs/Source3_RxAudit210.stdout",
+        "sha256": "ea71d779af0f2de76463df706e4a06dae121db34e5b43a170b2e02a15f4ba00d"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_modprx210_593/logs/Source3_RxAudit210.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.673,
+      "maxrss_kib": 4189740
+    }
+  ],
+  "axioms": {
+    "FT1536.Source3.RxControl210.self_i32": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxControl210.i_cell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxControl210.i_outside": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxControl210.integer_i": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxControl210.add_one_i": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxControl210.sub_one_x": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxControl210.increment": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxControl210.shift_eval": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxControl210.le_word": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxControl210.ne_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxControl210.guard": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxControl210.branch_guard": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxBody210.cell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxBody210.assign": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxBody210.withZ_locals": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxBody210.zChosen": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxBody210.if_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxBody210.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxBody210.locals": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxBody210.rCell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxBody210.zCell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxBody210.heap": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxBody210.arrays": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxLoop210.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxEntry210.binding": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxEntry210.xCell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxEntry210.pCell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxEntry210.iCell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxEntry210.r2Cell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxEntry210.declared_locals": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxEntry210.param_locals": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxEntry210.loop_x": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxEntry210.loop_r": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxEntry210.loop_z": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxWhole210.prefix_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxWhole210.body_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxWhole210.source_exists": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxWhole210.first_bind64": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxWhole210.entry64": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxWhole210.source64_exists": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxWhole210.call64": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxSection210.one_word": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxSection210.two_word": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxSection210.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.RxSection210.source_two": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "failures_and_workshop": {
+    "path": "notes/run/KEYGEN_MODP_RX_210_FAILURES_593.json",
+    "sha256": "a5cff00aea12e31c9e9521ef786a50617ce8c06a9225bf35b2680f67fe5d2671"
+  },
+  "report": {
+    "path": "notes/run/KEYGEN_MODP_RX_210_593_REPORT.md",
+    "sha256": "b53e79f3a6b48bf789e88a01551777a3267e2cbc0006c88d274b6fac03d7222e"
+  },
+  "evidence_generator": {
+    "path": ".build/evidence_v1.py",
+    "sha256": "1bc738f64ab2604686ab4e8da3ab0cc8eb3ef786f9486ab6b1d94cc70d513b3e"
+  },
+  "evidence_configuration": {
+    "path": ".build/rx593/evidence_config.json",
+    "sha256": "53a9207f8a6fc5d6f461231baf63388a3a01fcfeef535fffbd0f9d60d216321f"
+  },
+  "source_proof_markers": [],
+  "linter_suppressions": [],
+  "limits_unchanged": true,
+  "independent_review": "NOT_RUN",
+  "push": false,
+  "next_unused_suffix": 594,
+  "next_obligations": [
+    "Lower-size forward source/image (logn1..9 full0, stride1)",
+    "Actual extra-prime prologue/conversion/forward/products and full d2 return",
+    "Later d levels/root/certificate/codec/full B1"
+  ],
+  "not_claimed": [
+    "modp_Rx totality at zero or arbitrary uint32 length",
+    "Mathematical power/residue/Montgomery/NTT/root law",
+    "Full d2 return or full KeyGen/Sign/compiler/security/unconditional positivity/probability",
+    "Independent review"
+  ]
+}
