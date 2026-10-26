@@ -1,0 +1,564 @@
+{
+  "utc": "2026-10-26T19:28:37.816001+00:00",
+  "status": "PROVED_KERNEL_SCOPED / NOT_REVIEWED",
+  "overall_owner_goal": "IN_PROGRESS; continue after this intermediate checkpoint",
+  "scope": "Complete original zint_mul_small and zint_add_mul_small for arbitrary bounded lengths including zero; exact limb/carry images and original arbitrary-width CRT call frames, n+1 final receiver images, caller metadata/outside-read preservation.",
+  "entry_manifest": {
+    "path": ".build/steprx195/ENTRY_PINS.json",
+    "sha256": "00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964"
+  },
+  "entry_checked_count": 74673,
+  "entry_missing": 0,
+  "entry_changed": 0,
+  "entry_checks": [
+    {
+      "path": ".build/zintarith596/entry_before.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/zintarith596/entry_after.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/zintarith596/predecessor_before.log",
+      "sha256": "887b65a6a6e10b8934fce1afb6dca8a52eebeb20ec795182b09aeb60624b8cf2"
+    },
+    {
+      "path": ".build/zintarith596/predecessor_after.log",
+      "sha256": "887b65a6a6e10b8934fce1afb6dca8a52eebeb20ec795182b09aeb60624b8cf2"
+    },
+    {
+      "path": ".build/zintarith596/entry_reverify_596.py",
+      "sha256": "641ca0817a30f5d2eea7390621f2686c267a2014e725b574033d856bfbf61d09"
+    },
+    {
+      "path": ".build/zintarith596/predecessor_verify.py",
+      "sha256": "92e146f2d30a65a77e1f697999b082d7f1908a11bd2d0b10fd96d9d85d73852b"
+    },
+    {
+      "path": ".build/zintarith596/typecheck_reuse.py",
+      "sha256": "6311f91ec7ed3312979cb1f7d4d9740382c92830db872c2267b3695ef83a5116"
+    },
+    {
+      "path": ".build/zintarith596/reuse.json",
+      "sha256": "a451d8c96705fdd60fd403b6d46aae2b8f5ad2d0a7e39c8b762a21a33db70c80"
+    },
+    {
+      "path": ".build/zintarith596/modules.json",
+      "sha256": "52064f421a443098a5be94be449f5545304eac7a7839c539692500204572e24f"
+    }
+  ],
+  "predecessor_handoff": {
+    "path": "notes/run/KEYGEN_SECOND_EXTRA_212_595.json",
+    "sha256": "c083f251d9ddc7c3359c9fb765b317eaf05c47ef05fc8bd945713350be08c5d3"
+  },
+  "predecessor_bindings_verified": 307,
+  "job": "keygen_zintarith213_596",
+  "accepted": 13,
+  "receipts": {
+    "path": ".build/jobs/keygen_zintarith213_596/RECEIPTS.json",
+    "sha256": "0e43d528e742864fe85154275653f1df5eea10e08696e775264d9d00a50e15a8"
+  },
+  "inputs": {
+    "path": ".build/jobs/keygen_zintarith213_596/SOURCE_INPUTS.json",
+    "sha256": "8e6cba4dce07d3004b586fd331bbcb358de9afb5009c28bdce9f9d53dd1c25e9"
+  },
+  "runner": {
+    "path": ".build/jobs/keygen_zintarith213_596/RUNNER_SOURCE.py",
+    "sha256": "e8e9cf4ba5e744425464c0057a27d07f62ff82be352c479535425ff436c5b385"
+  },
+  "engine": {
+    "path": ".build/jobs/keygen_zintarith213_596/EXECUTION_SOURCE.py",
+    "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c"
+  },
+  "preflight": {
+    "path": ".build/jobs/keygen_zintarith213_596/PREFLIGHT.json",
+    "sha256": "257289d169426f9ac04b343510c7358737e417b423a248e9e34c1d7d062dcdc7"
+  },
+  "modules": [
+    {
+      "module": "Source3.ZintMulLimb213",
+      "source": {
+        "path": "formal/Source3/ZintMulLimb213.lean",
+        "sha256": "c14baa8781ac7334e1dae355fbbcea7a48a8703056cbcf733963c05637b73439"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zintarith213_596/formal/Source3/ZintMulLimb213.lean",
+        "sha256": "c14baa8781ac7334e1dae355fbbcea7a48a8703056cbcf733963c05637b73439"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_zintarith213_596/lib/Source3/ZintMulLimb213.olean",
+        "sha256": "5fda68df4bc48189647b32e1baf88999c96c0ac4f499b088aec1700113208fc2"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_zintarith213_596/logs/Source3_ZintMulLimb213.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zintarith213_596/logs/Source3_ZintMulLimb213.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.322,
+      "maxrss_kib": 3917016
+    },
+    {
+      "module": "Source3.ZintMulFixed213",
+      "source": {
+        "path": "formal/Source3/ZintMulFixed213.lean",
+        "sha256": "42b37d89e81f4411e0c1f98e2754d8ab9f333a71b56ba7916db858c99d52fb5a"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zintarith213_596/formal/Source3/ZintMulFixed213.lean",
+        "sha256": "42b37d89e81f4411e0c1f98e2754d8ab9f333a71b56ba7916db858c99d52fb5a"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_zintarith213_596/lib/Source3/ZintMulFixed213.olean",
+        "sha256": "f39412b289d9cb8c6438c1d0982ee820d62c4769a4df8902c5b0b53b4c654d26"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_zintarith213_596/logs/Source3_ZintMulFixed213.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zintarith213_596/logs/Source3_ZintMulFixed213.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.871,
+      "maxrss_kib": 3917016
+    },
+    {
+      "module": "Source3.ZintMulStep213",
+      "source": {
+        "path": "formal/Source3/ZintMulStep213.lean",
+        "sha256": "7977d316c24c93a8c2251f2160db3af23108170b08e9f6557b74291636f07065"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zintarith213_596/formal/Source3/ZintMulStep213.lean",
+        "sha256": "7977d316c24c93a8c2251f2160db3af23108170b08e9f6557b74291636f07065"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_zintarith213_596/lib/Source3/ZintMulStep213.olean",
+        "sha256": "cc321a9a389f323f8c7db66bc63f2759539a7ea146cbd4ea9f269ce14e269c5e"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_zintarith213_596/logs/Source3_ZintMulStep213.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zintarith213_596/logs/Source3_ZintMulStep213.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.82,
+      "maxrss_kib": 3919280
+    },
+    {
+      "module": "Source3.ZintMulLoop213",
+      "source": {
+        "path": "formal/Source3/ZintMulLoop213.lean",
+        "sha256": "92bdd1bf32fc8709ff33023b9d702ce7a3d7952fa568af8cb3f531f220e3a86b"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zintarith213_596/formal/Source3/ZintMulLoop213.lean",
+        "sha256": "92bdd1bf32fc8709ff33023b9d702ce7a3d7952fa568af8cb3f531f220e3a86b"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_zintarith213_596/lib/Source3/ZintMulLoop213.olean",
+        "sha256": "71ccd4d599942c05fe5f25042303a236c79c6cee4363df467ffd5f6af775f955"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_zintarith213_596/logs/Source3_ZintMulLoop213.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zintarith213_596/logs/Source3_ZintMulLoop213.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.77,
+      "maxrss_kib": 3922748
+    },
+    {
+      "module": "Source3.ZintMulWhole213",
+      "source": {
+        "path": "formal/Source3/ZintMulWhole213.lean",
+        "sha256": "577a0096e336757bcd39d00951bea86490ed8a64da0b8bd08cf53d9d9a7e1014"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zintarith213_596/formal/Source3/ZintMulWhole213.lean",
+        "sha256": "577a0096e336757bcd39d00951bea86490ed8a64da0b8bd08cf53d9d9a7e1014"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_zintarith213_596/lib/Source3/ZintMulWhole213.olean",
+        "sha256": "8c683d1d809235673ef8d31defeacda741fdc73bb8132073761feb5c20601c50"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_zintarith213_596/logs/Source3_ZintMulWhole213.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zintarith213_596/logs/Source3_ZintMulWhole213.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.92,
+      "maxrss_kib": 3933332
+    },
+    {
+      "module": "Source3.ZintAddMulLimb213",
+      "source": {
+        "path": "formal/Source3/ZintAddMulLimb213.lean",
+        "sha256": "aa88e9858c63e0428b934670110aeea88dc93ae0d57f958ac996bcb6ce709b17"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zintarith213_596/formal/Source3/ZintAddMulLimb213.lean",
+        "sha256": "aa88e9858c63e0428b934670110aeea88dc93ae0d57f958ac996bcb6ce709b17"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_zintarith213_596/lib/Source3/ZintAddMulLimb213.olean",
+        "sha256": "2f80cb4ef43ec67a93f19b8ac171a64de816b38fee72ed735adba900391e07e2"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_zintarith213_596/logs/Source3_ZintAddMulLimb213.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zintarith213_596/logs/Source3_ZintAddMulLimb213.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 4.324,
+      "maxrss_kib": 3947676
+    },
+    {
+      "module": "Source3.ZintAddMulFixed213",
+      "source": {
+        "path": "formal/Source3/ZintAddMulFixed213.lean",
+        "sha256": "1b7207579db26198a1d7124d292e4d7345886899ff0e109b3ebcf53591a9350d"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zintarith213_596/formal/Source3/ZintAddMulFixed213.lean",
+        "sha256": "1b7207579db26198a1d7124d292e4d7345886899ff0e109b3ebcf53591a9350d"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_zintarith213_596/lib/Source3/ZintAddMulFixed213.olean",
+        "sha256": "9aec842d89903ed48a36204fb84ade69de72deb75cd2e0de9d59d3e68e5dbe67"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_zintarith213_596/logs/Source3_ZintAddMulFixed213.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zintarith213_596/logs/Source3_ZintAddMulFixed213.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.871,
+      "maxrss_kib": 3947676
+    },
+    {
+      "module": "Source3.ZintAddMulStep213",
+      "source": {
+        "path": "formal/Source3/ZintAddMulStep213.lean",
+        "sha256": "5315fe816f3a223b43df6603a108677189d1ad4368e27f39afc6de3f006d0ca8"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zintarith213_596/formal/Source3/ZintAddMulStep213.lean",
+        "sha256": "5315fe816f3a223b43df6603a108677189d1ad4368e27f39afc6de3f006d0ca8"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_zintarith213_596/lib/Source3/ZintAddMulStep213.olean",
+        "sha256": "e96c86700989e9878ad84a2c73fe0af06478d3c889bfb94ac9a4610cfd2021f0"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_zintarith213_596/logs/Source3_ZintAddMulStep213.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zintarith213_596/logs/Source3_ZintAddMulStep213.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.874,
+      "maxrss_kib": 3947676
+    },
+    {
+      "module": "Source3.ZintAddMulLoop213",
+      "source": {
+        "path": "formal/Source3/ZintAddMulLoop213.lean",
+        "sha256": "06a106638410cd1ab5024ac6b61aea7e9ddacec38416a5fd796953d9b3835032"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zintarith213_596/formal/Source3/ZintAddMulLoop213.lean",
+        "sha256": "06a106638410cd1ab5024ac6b61aea7e9ddacec38416a5fd796953d9b3835032"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_zintarith213_596/lib/Source3/ZintAddMulLoop213.olean",
+        "sha256": "43c26e47553cedb10d585e50709099ba6c8717edebd1746e31c0db1708284c10"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_zintarith213_596/logs/Source3_ZintAddMulLoop213.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zintarith213_596/logs/Source3_ZintAddMulLoop213.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.971,
+      "maxrss_kib": 3947676
+    },
+    {
+      "module": "Source3.ZintAddMulWhole213",
+      "source": {
+        "path": "formal/Source3/ZintAddMulWhole213.lean",
+        "sha256": "6803aa1b13bd9d10393cc848c222ea1de69f2b2ec9b042f71bf6bc4de8433300"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zintarith213_596/formal/Source3/ZintAddMulWhole213.lean",
+        "sha256": "6803aa1b13bd9d10393cc848c222ea1de69f2b2ec9b042f71bf6bc4de8433300"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_zintarith213_596/lib/Source3/ZintAddMulWhole213.olean",
+        "sha256": "b5f68b43b3675401e6c18b64c8da418edf8862320e54895ad06a2ec4d9a14061"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_zintarith213_596/logs/Source3_ZintAddMulWhole213.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zintarith213_596/logs/Source3_ZintAddMulWhole213.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.021,
+      "maxrss_kib": 3947676
+    },
+    {
+      "module": "Source3.CrtAddMulCall213",
+      "source": {
+        "path": "formal/Source3/CrtAddMulCall213.lean",
+        "sha256": "3a58e12e97a0694983f56da02f99b3b898e8b436d8a8a90378cb4842c986c9da"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zintarith213_596/formal/Source3/CrtAddMulCall213.lean",
+        "sha256": "3a58e12e97a0694983f56da02f99b3b898e8b436d8a8a90378cb4842c986c9da"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_zintarith213_596/lib/Source3/CrtAddMulCall213.olean",
+        "sha256": "60cf4d0af9d506d6895da961364aeae1cf606db695ca63788370455f2af0aca0"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_zintarith213_596/logs/Source3_CrtAddMulCall213.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zintarith213_596/logs/Source3_CrtAddMulCall213.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.821,
+      "maxrss_kib": 3947676
+    },
+    {
+      "module": "Source3.CrtMulCall213",
+      "source": {
+        "path": "formal/Source3/CrtMulCall213.lean",
+        "sha256": "a8c34e4fdc2e2d5ff21b53e22757f99f6d85a0be3aa3aa765a6ede450250ee58"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zintarith213_596/formal/Source3/CrtMulCall213.lean",
+        "sha256": "a8c34e4fdc2e2d5ff21b53e22757f99f6d85a0be3aa3aa765a6ede450250ee58"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_zintarith213_596/lib/Source3/CrtMulCall213.olean",
+        "sha256": "00f55bb89af66d2da92038c6fe5bdaab047816e822caa05183d8f381f8aa981e"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_zintarith213_596/logs/Source3_CrtMulCall213.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zintarith213_596/logs/Source3_CrtMulCall213.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.072,
+      "maxrss_kib": 3947676
+    },
+    {
+      "module": "Source3.ZintArithmeticAudit213",
+      "source": {
+        "path": "formal/Source3/ZintArithmeticAudit213.lean",
+        "sha256": "a7c146a6074c4b8587fcb9e7ad603087006a1cb71e118b51487b06bebd599d6f"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zintarith213_596/formal/Source3/ZintArithmeticAudit213.lean",
+        "sha256": "a7c146a6074c4b8587fcb9e7ad603087006a1cb71e118b51487b06bebd599d6f"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_zintarith213_596/lib/Source3/ZintArithmeticAudit213.olean",
+        "sha256": "e0a9a36d898a67447fdd214d32bf51825a3ca483729c41816222596767ae1c4f"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_zintarith213_596/logs/Source3_ZintArithmeticAudit213.stdout",
+        "sha256": "06549188f50d328e9b1a5ef7dec7fd9a1deb5aef8c26e60173c78a22a3296610"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zintarith213_596/logs/Source3_ZintArithmeticAudit213.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.574,
+      "maxrss_kib": 3947676
+    }
+  ],
+  "axioms": {
+    "FT1536.Source3.ZintMulLimb213.locals": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintMulLimb213.carry_cell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintMulLimb213.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintMulFixed213.next_locals": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintMulFixed213.next_arrays": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintMulStep213.step": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintMulLoop213.guard": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintMulLoop213.remaining": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintMulWhole213.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintAddMulLimb213.before2": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintAddMulLimb213.locals": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintAddMulLimb213.carry_cell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintAddMulLimb213.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintAddMulFixed213.next_locals": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintAddMulFixed213.next_arrays": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintAddMulStep213.step": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintAddMulLoop213.guard": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintAddMulLoop213.remaining": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintAddMulWhole213.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtAddMulCall213.entry_cells": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtAddMulCall213.binding": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtAddMulCall213.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtMulCall213.cells": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtMulCall213.binding": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtMulCall213.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "failures_and_workshop": {
+    "path": "notes/run/KEYGEN_ZINT_ARITH_213_FAILURES_596.json",
+    "sha256": "870ddafe5e997f345d07a4f2bc6da2ff4ab3cc9989431707369f3fdbad5f5d8a"
+  },
+  "report": {
+    "path": "notes/run/KEYGEN_ZINT_ARITH_213_596_REPORT.md",
+    "sha256": "15d48a2929e9224042700337f0bdd3eee392a4cf57beccc187f5409f5c77955a"
+  },
+  "evidence_generator": {
+    "path": ".build/evidence_v1.py",
+    "sha256": "1bc738f64ab2604686ab4e8da3ab0cc8eb3ef786f9486ab6b1d94cc70d513b3e"
+  },
+  "evidence_configuration": {
+    "path": ".build/zintarith596/evidence_config.json",
+    "sha256": "7e5865f5d371384f132f8ef436277aa3cbb02c186e9a9507d6eaccbf1fe98667"
+  },
+  "source_proof_markers": [],
+  "linter_suppressions": [],
+  "limits_unchanged": true,
+  "independent_review": "NOT_RUN",
+  "push": false,
+  "next_unused_suffix": 597,
+  "next_obligations": [
+    "Generic CRT coefficient, coefficient walk and prime rounds/outer loop",
+    "Later d levels/root/certificate/codec/full B1"
+  ],
+  "not_claimed": [
+    "Integer multiplication/add-multiplication/CRT/centering/Montgomery law",
+    "Complete arbitrary-width CRT outer loop or later d steps/full B1",
+    "Full KeyGen/Sign/compiler/security/unconditional positivity/probability",
+    "Independent review"
+  ]
+}

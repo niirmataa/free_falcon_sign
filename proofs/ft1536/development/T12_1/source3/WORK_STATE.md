@@ -1,3 +1,27 @@
+# SEED9_R1 — ACTIVE; generic bigint arithmetic checkpoint596 accepted;597 next
+
+Owner: continue fully; no push, subagents, reviewers, relay or migration.
+Overall B1 IN_PROGRESS / NOT_REVIEWED.
+596 canonical keygen_zintarith213_596 accepted13/13,0/0,25 standard-only
+axiom results. Complete original arbitrary-length zint_mul_small and
+zint_add_mul_small, exact limbs/carry, full n+1 final-store images; both
+actual CRT leaf calls preserve caller locals/arrays and outside reads.
+Length0 supported with valid tail allocation, no old tail read assumed.
+39.231s,maxRSS3947676KiB. ENTRY74673/predecessor595307 unchanged before/after
+canonical.9 attempts retain2 elaboration failures; no resource/suppression/
+failed cache. Fresh596 startup scan finished after local001 started; same
+595 post-entry pin was already checked, both596 scans passed before sealing.
+Report/evidence KEYGEN_ZINT_ARITH_213_596_REPORT.md and matching JSON.
+Next597 generic CRT coefficient/walk/prime rounds/outer loop, then later
+d levels/root/certificate/codec/full B1. No integer arithmetic/CRT/centering/
+Montgomery/NTT/root/table law or broad KeyGen/Sign/compiler/security/
+unconditional positivity/probability. Independent review NOT_RUN.
+Permanent195 bad bodyHeap/stepState UNUSED; sealed predecessors unchanged.
+Old110/measured/five do_sign unchanged. Foreign work excluded; no push.
+Continue after local commit.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; complete actual d2 return checkpoint595 accepted;596 next
 
 Owner: continue fully; no push, subagents, reviewers, relay or migration.
@@ -10142,3 +10166,27 @@ Job record (595): attempt016 — ACCEPTED_LOCAL audit,3.132s,0/0: six public int
 Job record (595): canonical keygen_secondextra212_595 — ACCEPTED21/21,0/0,80 standard-only results,129.380s,maxRSS5960992KiB. Next seal evidence/exact own local checkpoint; continue596 generic bigint arithmetic.
 
 Job record (595 checkpoint): evidence PASS307 bindings; entry74673/predecessor262 unchanged,21 accepted/80 standard-only results. Exact own25 paths, foreign work excluded; no push. Continue596 generic bigint multiply/add-multiply and later d levels.
+
+Job record (596 start):595 committed19beddd4f521353dd6629d0b66428eddc5d56f73; no push. Continue generic bigint multiply/add-multiply source/word images for arbitrary-width CRT. Runtime .build/zintarith596, sealed595 unchanged. Next immutable entry/predecessor checks and generic multiply limb.
+
+Job record (596): entry74673/predecessor595307 verified unchanged. Fresh596 hash scan completed after local001 started; immutable595 post-check had already passed before596, and both fresh checks confirm the same pin, no re-baseline. attempt001 retained phantom word inference failure in carry-local preservation; supply the explicit wide word. Next generic multiply limb/fixed/step.
+
+Job record (596): attempt002 — ACCEPTED_LOCAL3/3,0/0: arbitrary multiply limb/carry, pending/written invariant and actual source step/increment. Explicit wide-word bridge repaired001; next complete counted multiply loop/body and then generic add-multiply.
+
+Job record (596): attempt003 — ACCEPTED_LOCAL2/2,0/0: complete original zint_mul_small for every bounded length including zero, exact low limbs/final carry, arrays/other locals/outside reads preserved. Next generic add-multiply limb and full carry walk.
+
+Job record (596): attempt004 — ACCEPTED_LOCAL generic add-multiply limb,4.276s,0/0: actual two loads/wide multiply-add/31-bit store/carry and private-scope restoration at arbitrary index/input carry. Next full counted add-multiply loop and final carry store including length0.
+
+Job record (596): attempt005 — ACCEPTED_LOCAL3/3,0/0: generic add-multiply invariant, source step/carry propagation and complete counted loop. Next original whole body plus final carry store, then actual CRT call wrappers.
+
+Job record (596): attempt006 — ACCEPTED_LOCAL ZintAddMulWhole213,3.021s,0/0: complete original arbitrary-length add-multiply, exact n+1 limb image including final carry store and length0 case, caller-control and outside-read keeps. Next actual arbitrary-width CRT add-multiply/multiply call frames.
+
+Job record (596): attempt007 — add-multiply call ACCEPTED_LOCAL,3.438s,0/0; multiply call retained Cell/Slot64 alias inference failure in entry tuple. Add explicit mlen Cell bridge; no source/domain change. Next both call wrappers and axiom audit.
+
+Job record (596): attempt008 — ACCEPTED_LOCAL2/2,0/0: both original arbitrary-width CRT leaf calls, discard/store receiver, n+1 exact data images, caller locals/arrays and outside reads. Includes zero-length case with explicit valid tail allocation. Next25-result axiom audit/canonical13 modules; then597 generic CRT coefficient/walk.
+
+Job record (596): attempt009 — ACCEPTED_LOCAL audit, four public interfaces/25 standard-only axiom results. Next canonical13-module replay, final pins/evidence and exact local checkpoint; then597 generic CRT coefficient/round/loop.
+
+Job record (596): canonical keygen_zintarith213_596 — ACCEPTED13/13,0/0,25 standard-only results,39.231s,maxRSS3947676KiB. Next evidence/local checkpoint then597 generic CRT.
+
+Job record (596 checkpoint): evidence PASS190 bindings; entry74673/predecessor307 unchanged,13 accepted/25 standard-only results. Exact own17 paths; foreign work excluded, no push. Continue597 generic CRT composition.
