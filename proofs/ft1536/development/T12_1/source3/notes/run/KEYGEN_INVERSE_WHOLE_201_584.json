@@ -1,0 +1,508 @@
+{
+  "utc": "2026-10-26T11:25:42.691159+00:00",
+  "status": "PROVED_KERNEL_SCOPED / NOT_REVIEWED",
+  "overall_owner_goal": "IN_PROGRESS; continue after this intermediate checkpoint",
+  "scope": "Complete original modp_iNTT3_ext for logn1..9/full0, arbitrary valid stride, and exact composed executed-word output image at one execution output.",
+  "entry_manifest": {
+    "path": ".build/steprx195/ENTRY_PINS.json",
+    "sha256": "00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964"
+  },
+  "entry_checked_count": 74673,
+  "entry_missing": 0,
+  "entry_changed": 0,
+  "entry_checks": [
+    {
+      "path": ".build/ntt584/entry_before.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/ntt584/entry_after.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/ntt584/predecessor_before.log",
+      "sha256": "df1415d3c0d1eea9be1c09e13a88828bdbb3a87b9a8750144d859887c6a17bde"
+    },
+    {
+      "path": ".build/ntt584/predecessor_after.log",
+      "sha256": "df1415d3c0d1eea9be1c09e13a88828bdbb3a87b9a8750144d859887c6a17bde"
+    },
+    {
+      "path": ".build/ntt584/entry_reverify_584.py",
+      "sha256": "641ca0817a30f5d2eea7390621f2686c267a2014e725b574033d856bfbf61d09"
+    },
+    {
+      "path": ".build/ntt584/predecessor_verify.py",
+      "sha256": "80987a94ec258d9d8ccce9a06057dc034eb7997336ec76aeb051adda2ee0fedb"
+    }
+  ],
+  "predecessor_handoff": {
+    "path": "notes/run/KEYGEN_SECOND_GENERATOR_200_583.json",
+    "sha256": "ce913c05d09de85629d22ee1a7225d06caa772001222b4082cc98000443c7a4b"
+  },
+  "predecessor_bindings_verified": 106,
+  "job": "keygen_inversewhole201_584",
+  "accepted": 13,
+  "receipts": {
+    "path": ".build/jobs/keygen_inversewhole201_584/RECEIPTS.json",
+    "sha256": "d93642d9053ff82ee637719bb557393b61ac0a4becef9b64c6e3e5fd8988017d"
+  },
+  "inputs": {
+    "path": ".build/jobs/keygen_inversewhole201_584/SOURCE_INPUTS.json",
+    "sha256": "a77fe3f23f1c7020ad742ae25c4c9e08d6a8a50c3ed23f09bb49d1dfd786b8be"
+  },
+  "runner": {
+    "path": ".build/jobs/keygen_inversewhole201_584/RUNNER_SOURCE.py",
+    "sha256": "e8e9cf4ba5e744425464c0057a27d07f62ff82be352c479535425ff436c5b385"
+  },
+  "engine": {
+    "path": ".build/jobs/keygen_inversewhole201_584/EXECUTION_SOURCE.py",
+    "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c"
+  },
+  "preflight": {
+    "path": ".build/jobs/keygen_inversewhole201_584/PREFLIGHT.json",
+    "sha256": "eebe818cae120fb439f2e8f93b8203c67a8da4667fc3b231a1e7615052892530"
+  },
+  "modules": [
+    {
+      "module": "Source3.NttSize201",
+      "source": {
+        "path": "formal/Source3/NttSize201.lean",
+        "sha256": "2cb2af5eb0fa6df1c51a426ec8bf289d61b2f5d708a914296882e9a4019d91ba"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_inversewhole201_584/formal/Source3/NttSize201.lean",
+        "sha256": "2cb2af5eb0fa6df1c51a426ec8bf289d61b2f5d708a914296882e9a4019d91ba"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_inversewhole201_584/lib/Source3/NttSize201.olean",
+        "sha256": "1c90f39c43208af6f201a2e96569ee6bafa81e19f5ae3b02b39cc9631e2d80f3"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_inversewhole201_584/logs/Source3_NttSize201.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_inversewhole201_584/logs/Source3_NttSize201.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 5.278,
+      "maxrss_kib": 3962940
+    },
+    {
+      "module": "Source3.NttInversePrologue201",
+      "source": {
+        "path": "formal/Source3/NttInversePrologue201.lean",
+        "sha256": "e82e52cd130f0d386d3d708a482141cb0627c080703e345fde03e2b5607a493b"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_inversewhole201_584/formal/Source3/NttInversePrologue201.lean",
+        "sha256": "e82e52cd130f0d386d3d708a482141cb0627c080703e345fde03e2b5607a493b"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_inversewhole201_584/lib/Source3/NttInversePrologue201.olean",
+        "sha256": "efccc626e4fb1cbb8b5fa1d2f9201a037074ceb1f05116d6bc5a25c967a63af9"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_inversewhole201_584/logs/Source3_NttInversePrologue201.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_inversewhole201_584/logs/Source3_NttInversePrologue201.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.924,
+      "maxrss_kib": 3984628
+    },
+    {
+      "module": "Source3.NttInverseSchedule201",
+      "source": {
+        "path": "formal/Source3/NttInverseSchedule201.lean",
+        "sha256": "df85a98c80a8278ac7e43d508005bad7100c8d3b5bc6e906160ce3a7964837a5"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_inversewhole201_584/formal/Source3/NttInverseSchedule201.lean",
+        "sha256": "df85a98c80a8278ac7e43d508005bad7100c8d3b5bc6e906160ce3a7964837a5"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_inversewhole201_584/lib/Source3/NttInverseSchedule201.olean",
+        "sha256": "c1f7e890f27452a990d198b068324ff8897ca37548eee266af6dddd69f16eafb"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_inversewhole201_584/logs/Source3_NttInverseSchedule201.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_inversewhole201_584/logs/Source3_NttInverseSchedule201.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.523,
+      "maxrss_kib": 3998648
+    },
+    {
+      "module": "Source3.NttInverseImage201",
+      "source": {
+        "path": "formal/Source3/NttInverseImage201.lean",
+        "sha256": "488f2ac10cc9f04b5547f86409c84f20286e5cd09435eee3dc4295d600952b6f"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_inversewhole201_584/formal/Source3/NttInverseImage201.lean",
+        "sha256": "488f2ac10cc9f04b5547f86409c84f20286e5cd09435eee3dc4295d600952b6f"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_inversewhole201_584/lib/Source3/NttInverseImage201.olean",
+        "sha256": "abd0ca343e1dc19890bed7e0816fab8b3aba11e9119ee8b93c1fb56ec3d02417"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_inversewhole201_584/logs/Source3_NttInverseImage201.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_inversewhole201_584/logs/Source3_NttInverseImage201.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.472,
+      "maxrss_kib": 3998648
+    },
+    {
+      "module": "Source3.NttInverseRound201",
+      "source": {
+        "path": "formal/Source3/NttInverseRound201.lean",
+        "sha256": "7514a1966a8ac342c9920e2ba2ff5cfb2bba90ef5a4b7d0d594ddcdb2e9aaaf7"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_inversewhole201_584/formal/Source3/NttInverseRound201.lean",
+        "sha256": "7514a1966a8ac342c9920e2ba2ff5cfb2bba90ef5a4b7d0d594ddcdb2e9aaaf7"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_inversewhole201_584/lib/Source3/NttInverseRound201.olean",
+        "sha256": "382b2244ce8ddc4c596080aed937eca2f8a81788770b7b8c498bb4607dae572d"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_inversewhole201_584/logs/Source3_NttInverseRound201.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_inversewhole201_584/logs/Source3_NttInverseRound201.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.924,
+      "maxrss_kib": 4000624
+    },
+    {
+      "module": "Source3.NttInverseLoop201",
+      "source": {
+        "path": "formal/Source3/NttInverseLoop201.lean",
+        "sha256": "802ffc87b193b7342263f776bdc494bf3916586e49b16982ab89ba87bdf37929"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_inversewhole201_584/formal/Source3/NttInverseLoop201.lean",
+        "sha256": "802ffc87b193b7342263f776bdc494bf3916586e49b16982ab89ba87bdf37929"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_inversewhole201_584/lib/Source3/NttInverseLoop201.olean",
+        "sha256": "5b395bad23c30ed5121051becbd04cc5b79e3678a4c8efb793feec503a17ca4c"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_inversewhole201_584/logs/Source3_NttInverseLoop201.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_inversewhole201_584/logs/Source3_NttInverseLoop201.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.822,
+      "maxrss_kib": 4004772
+    },
+    {
+      "module": "Source3.NttInverseFinal201",
+      "source": {
+        "path": "formal/Source3/NttInverseFinal201.lean",
+        "sha256": "c9ecd6ad81e669b8a6d4879289b90bda0be7fc669837b44b2f826c4dba51c975"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_inversewhole201_584/formal/Source3/NttInverseFinal201.lean",
+        "sha256": "c9ecd6ad81e669b8a6d4879289b90bda0be7fc669837b44b2f826c4dba51c975"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_inversewhole201_584/lib/Source3/NttInverseFinal201.olean",
+        "sha256": "f801921486c927df77870e7a7b491fbacc6dec1b29e9a26e7b0b75f45c997119"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_inversewhole201_584/logs/Source3_NttInverseFinal201.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_inversewhole201_584/logs/Source3_NttInverseFinal201.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.071,
+      "maxrss_kib": 4004772
+    },
+    {
+      "module": "Source3.NttInverseCorrection201",
+      "source": {
+        "path": "formal/Source3/NttInverseCorrection201.lean",
+        "sha256": "59f2f62585ab8e2550c365f4967b61125b917d1061e94460dbb5dc0b54b1cc2a"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_inversewhole201_584/formal/Source3/NttInverseCorrection201.lean",
+        "sha256": "59f2f62585ab8e2550c365f4967b61125b917d1061e94460dbb5dc0b54b1cc2a"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_inversewhole201_584/lib/Source3/NttInverseCorrection201.olean",
+        "sha256": "3bfe5bed3170a6d05ceceb106a8d9754ad3cf6ca2691181ce34bbe32a5d129e8"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_inversewhole201_584/logs/Source3_NttInverseCorrection201.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_inversewhole201_584/logs/Source3_NttInverseCorrection201.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.324,
+      "maxrss_kib": 4004772
+    },
+    {
+      "module": "Source3.NttInverseCorrectionSource201",
+      "source": {
+        "path": "formal/Source3/NttInverseCorrectionSource201.lean",
+        "sha256": "8e8c65e1561df20c5870f4862e588d7eb3574e1232ef4bc3249e0ef76fb47666"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_inversewhole201_584/formal/Source3/NttInverseCorrectionSource201.lean",
+        "sha256": "8e8c65e1561df20c5870f4862e588d7eb3574e1232ef4bc3249e0ef76fb47666"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_inversewhole201_584/lib/Source3/NttInverseCorrectionSource201.olean",
+        "sha256": "aa1a4079817c8a770b7d606d0802eb09cae9034374fb9cb94b5ab2ff9b132344"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_inversewhole201_584/logs/Source3_NttInverseCorrectionSource201.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_inversewhole201_584/logs/Source3_NttInverseCorrectionSource201.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.222,
+      "maxrss_kib": 4004772
+    },
+    {
+      "module": "Source3.NttInverseCorrectionInit201",
+      "source": {
+        "path": "formal/Source3/NttInverseCorrectionInit201.lean",
+        "sha256": "20d1a59f26ea2e175a691c72bb2a0d64dabbf365eda14ff539fa6f32f1def8a0"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_inversewhole201_584/formal/Source3/NttInverseCorrectionInit201.lean",
+        "sha256": "20d1a59f26ea2e175a691c72bb2a0d64dabbf365eda14ff539fa6f32f1def8a0"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_inversewhole201_584/lib/Source3/NttInverseCorrectionInit201.olean",
+        "sha256": "3052b995389f4f79483ab19689bf13faa8f8887d7531061c9c1c737b9d7db502"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_inversewhole201_584/logs/Source3_NttInverseCorrectionInit201.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_inversewhole201_584/logs/Source3_NttInverseCorrectionInit201.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.226,
+      "maxrss_kib": 4004772
+    },
+    {
+      "module": "Source3.NttInverseWholeBridges201",
+      "source": {
+        "path": "formal/Source3/NttInverseWholeBridges201.lean",
+        "sha256": "6adfe2d3863061faf3e11e26afd873048da061f5ee73b6cbe5a81b3a6cbc2102"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_inversewhole201_584/formal/Source3/NttInverseWholeBridges201.lean",
+        "sha256": "6adfe2d3863061faf3e11e26afd873048da061f5ee73b6cbe5a81b3a6cbc2102"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_inversewhole201_584/lib/Source3/NttInverseWholeBridges201.olean",
+        "sha256": "6236900248fd71ea6f5fca867c23976c88e0b25f915ddd01f1524563a9ab8e4e"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_inversewhole201_584/logs/Source3_NttInverseWholeBridges201.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_inversewhole201_584/logs/Source3_NttInverseWholeBridges201.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.274,
+      "maxrss_kib": 4004772
+    },
+    {
+      "module": "Source3.NttInverseWhole201",
+      "source": {
+        "path": "formal/Source3/NttInverseWhole201.lean",
+        "sha256": "3d59df4e4c4f4577ed0bd90303cb797bc2a6a640fb87eaf3990c18957db0afd3"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_inversewhole201_584/formal/Source3/NttInverseWhole201.lean",
+        "sha256": "3d59df4e4c4f4577ed0bd90303cb797bc2a6a640fb87eaf3990c18957db0afd3"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_inversewhole201_584/lib/Source3/NttInverseWhole201.olean",
+        "sha256": "dd15ec24bb125de5975105d4f37e9d6e1a3d19ecfda7e353f8bdacefffc23db7"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_inversewhole201_584/logs/Source3_NttInverseWhole201.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_inversewhole201_584/logs/Source3_NttInverseWhole201.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 4.476,
+      "maxrss_kib": 4004780
+    },
+    {
+      "module": "Source3.NttInverseAudit201",
+      "source": {
+        "path": "formal/Source3/NttInverseAudit201.lean",
+        "sha256": "65922acf497560d4437d116846e08c5d5ca741ccc0e55b7556c375b4d50224cc"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_inversewhole201_584/formal/Source3/NttInverseAudit201.lean",
+        "sha256": "65922acf497560d4437d116846e08c5d5ca741ccc0e55b7556c375b4d50224cc"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_inversewhole201_584/lib/Source3/NttInverseAudit201.olean",
+        "sha256": "4e59788b14067bbe164c85b07dce42c99052926b91341f106ba9aa8cfc0e43b9"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_inversewhole201_584/logs/Source3_NttInverseAudit201.stdout",
+        "sha256": "08fde2851ed7f3a7429ed7467eb6bee8004476fe48cdfafa1341f97c37471f91"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_inversewhole201_584/logs/Source3_NttInverseAudit201.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.073,
+      "maxrss_kib": 4004780
+    }
+  ],
+  "axioms": {
+    "FT1536.Source3.NttSize201.mkn": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttInversePrologue201.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttInverseSchedule201.round_product": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttInverseSchedule201.u1_fixed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttInverseImage201.round_image": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttInverseRound201.round_run": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttInverseLoop201.m_loop": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttInverseLoop201.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttInverseFinal201.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttInverseCorrection201.ni_run": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttInverseCorrectionSource201.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttInverseCorrectionInit201.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttInverseWholeBridges201.round_raw": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttInverseWholeBridges201.start_image": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttInverseWholeBridges201.final_input": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttInverseWholeBridges201.correction_input": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttInverseWhole201.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "failures_and_workshop": {
+    "path": "notes/run/KEYGEN_INVERSE_WHOLE_201_FAILURES_584.json",
+    "sha256": "673f7ca95ee505879a0e2795cf635092f609df62aad1c8f0e04484767c4186e7"
+  },
+  "report": {
+    "path": "notes/run/KEYGEN_INVERSE_WHOLE_201_584_REPORT.md",
+    "sha256": "aa16d261686c4d4da81a80d957932d244dfe14f02487d22f2a8eb092af955322"
+  },
+  "evidence_generator": {
+    "path": ".build/evidence_v1.py",
+    "sha256": "1bc738f64ab2604686ab4e8da3ab0cc8eb3ef786f9486ab6b1d94cc70d513b3e"
+  },
+  "evidence_configuration": {
+    "path": ".build/ntt584/evidence_config.json",
+    "sha256": "f5897ef80ababfba9e2c80295207593647b7d9462f86d70278ce58b15c1ee1cc"
+  },
+  "source_proof_markers": [],
+  "linter_suppressions": [],
+  "limits_unchanged": true,
+  "independent_review": "NOT_RUN",
+  "push": false,
+  "next_unused_suffix": 585,
+  "next_obligations": [
+    "Separated-read keeps and actual d=2 inverse call",
+    "Generic lower-size forward engine, actual prime loops/multi-limb CRT",
+    "Later d levels/root/certificate/codec and full B1 theorem"
+  ],
+  "not_claimed": [
+    "Closed-form NTT/root/table law",
+    "Whole d=2 step or prime iteration yet",
+    "Full KeyGen/Sign/compiler/security or unconditional Z>0/p_accept/p_K/Z>=2^-256",
+    "Independent review"
+  ]
+}

@@ -1,3 +1,28 @@
+# SEED9_R1 — sustained route ACTIVE; whole inverse checkpoint584 accepted;585 starting
+
+Owner: continue fully to completion; no push, handoff, subagents or reviewers.
+Overall source-to-fiber goal IN_PROGRESS / NOT_REVIEWED.
+584 canonical keygen_inversewhole201_584 accepted13/13,exit0,diagnostics0/0,
+warningAsError,markers/suppressions0;17 standard-only axiom results.
+Complete original modp_iNTT3_ext for every logn1..9/full0 and arbitrary valid
+stride, with exactly composed executed-word output image on one output.
+All declarations, guards, variable-length intermediate rounds (zero at
+logn1), final pass and source division/scaling are constructed. Domains
+cover actual n cells; no extra512-cell input or desired output premise.
+47.609s sum,maxRSS4004780 KiB; limits unchanged; independent review NOT_RUN.
+ENTRY_PINS00f602e7…74673/74673 before/after, predecessor583106 hashes unchanged.
+13 attempts retain9 failures (adapter/elaboration/lexer and clean-log);
+506 new evidence bindings verified. Report/evidence:
+notes/run/KEYGEN_INVERSE_WHOLE_201_584_REPORT.md and matching JSON.
+585 starts with NttInverseFinalKeep202/CorrectionKeep202/WholeKeep202 drafts,
+then actual d=2 inverse call and lower-size forward engine. Later prime
+loops/multi-limb CRT and d levels/root/certificate/codec remain open.
+No closed-form NTT/root law or full KeyGen/Sign/compiler/security/positivity/
+probability claim. Old110/measured/five do_sign remain unchanged.
+Fourteen waiting commits plus584=fifteen; no push. Foreign edits excluded.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — sustained route ACTIVE; d=2 generator checkpoint583 accepted;584 starting
 
 Owner: continue fully to completion; no push, handoff, subagents or reviewers.
@@ -9472,3 +9497,20 @@ Job record (583): attempt004 — ACCEPTED_LOCAL5/5,0/0: actual d=2 first-prime p
 Job record (583): keygen_secondgenerator200_583 — ACCEPTED6/6,exit0,0/0,warningAsError,markers0;13 standard-only axiom results. Exact generic seven-argument call plus actual d=2 first-prime prefix/generator and both256-word images; source-entry fragment and original-body continuation exported. Next pin/evidence/local checkpoint and immediately lower-size inverse/forward NTT584; no push or handoff.
 
 Job record (583 checkpoint): final integrity/evidence PASS,74673 entry paths and542 predecessor bindings unchanged,106 new evidence hashes verified. Next exact-path local commit and immediate584 lower-size NTT work, no final handoff or push.
+Job record (584): entry74673/74673 and106 predecessor583 evidence bindings verified.583 committed020d1759. Next generic lower-size MKN/inverse prologue and the parametric inverse-round engine; owner goal remains active, no push or handoff.
+Job record (584): attempt001 — RETAINED_ELABORATION_FAILURE: underspecified unsignedLeft constructor repeats the earlier metavariable trap even after finite level splitting. Next specify the actual shift words and amounts in every finite branch, then check the generic inverse prologue. Limits unchanged.
+Job record (584): attempt002 — Size ACCEPTED_LOCAL3.422s,0/0; inverse prologue RETAINED_IMPORT_FAILURE: the selected-step locals helper is outside the imported generic closure. Next use a local generic bind_keep lemma, avoiding an unnecessary selected-step dependency, then generic inverse schedule.
+Job record (584): attempt003 — Size and complete generic inverse prologue ACCEPTED_LOCAL2/2,0/0. Schedule RETAINED_LEXER/ADAPTER_FAILURE: ≤igm again lexes as InitialSeg ≤i, and the mechanical adapter inserted a level argument into the preexisting U1 Fixed. Next insert required whitespace, repair that call and supply a size-independent tOf_two fact.
+Job record (584): attempt004 — Size/Prologue accepted2/2,0/0; Schedule RETAINED_LEXER_FAILURE: newly added 1≤i+1 repeats the same ≤i token collision. Next space every ≤ operator in all new inverse-schedule/image/round drafts, then check the complete four-module chain.
+Job record (584): attempt005 — Size/Prologue/Schedule ACCEPTED_LOCAL3/3,0/0, including exact-count U1 domains. Image RETAINED_ADAPTER_FAILURE: two leftover exponent8 terms and missing opens for independent old lemmas/Load32. Next generic exponents and explicit opens; Round draft also gets its missing level at the output Fixed. No arithmetic or semantic counterexample.
+Job record (584): attempt006 — Size/Prologue/Schedule/Image ACCEPTED_LOCAL4/4,0/0: generic inverse round-word image bridge checked. Round RETAINED_ADAPTER_FAILURE: the Fixed-argument regex also changed its open list (invented namespace constant l), cascading unbound helpers; u64 also needed an explicit open. Next repair those imports and inspect the first real round-proof result.
+Job record (584): attempt007 — ACCEPTED_LOCAL5/5,0/0: generic logn1..9 size/prologue, exact-count round domains, complete round-word image bridge and actual mInner round source. Next full variable-length m-loop and its original tInit/mInit source composition.
+Job record (584): attempt008 — five inverse dependencies accepted5/5,0/0; Loop RETAINED_ELABORATION_FAILURE: terminal false guard simplification leaves false=true inside an if. Next normalize the boolean guard completely; the variable-length loop/source otherwise elaborates. Add generic-hn final-pass wrapper over the existing parametric final butterfly loop.
+Job record (584): attempt009 — ACCEPTED_LOCAL7/7,0/0: entire original variable-length inverse intermediate pass for logn1..9 (including zero rounds at logn1), composed round images and separated-read keeps, plus generic-hn final source pass. Next generic correction and whole inverse-image composition; no transform/root law claim.
+Job record (584): attempt010 — ACCEPTED_LOCAL9/9,0/0: generic inverse scalar correction and its source loop compose with all seven earlier layers. Next arbitrary-old-u correction initializer, whole-size image bridges and the full original inverse body. Two generic prologue keep adapters added for whole-body assembly; accepted sources remain active drafts until canonical seal.
+Job record (584): attempt011 — ten inverse components accepted10/10,0/0, including arbitrary-old-u correction initialization. WholeBridges RETAINED_ADAPTER_FAILURE: parameter insertion changed unfold finalWord into unfold finalWord l, where l is a local variable. Next restore the tactic to its declaration name and check the whole inverse composition.
+Job record (584): attempt012 — eleven inverse components accepted11/11,0/0. Whole body has no mathematical/elaboration errors, but RETAINED_CLEAN_LOG_FAILURE: broad first|decide|omega fallback produces unused-tactic diagnostics on static guards. Next specialize each proof to the branch actually used (decide or omega), retaining all linters and limits.
+Job record (584): attempt013 — ACCEPTED_LOCAL13/13,0/0,17 standard-only axiom results. Complete original modp_iNTT3_ext for logn1..9/full0 with arbitrary valid stride and exact executed-word output image constructed. Static proof branches now individually decide/omega, no linter suppression or limit change. Next canonical13-module job; continue with separated-read keeps, actual d=2 call and generic forward engine.
+Job record (584): keygen_inversewhole201_584 — ACCEPTED13/13,exit0,0/0,warningAsError,markers0;17 standard-only axiom results. Complete original inverse body for every logn1..9/full0 with exact executed-word image at arbitrary valid stride. Next intermediate integrity/evidence/local commit and immediate585 separated-read keep/call binding/forward continuation; no push or final handoff.
+
+Job record (584 checkpoint): final integrity/evidence PASS,74673 entry paths/106 predecessor hashes unchanged,506 new evidence bindings verified. Next exact-path local commit and immediate585 separated-read keep/call/forward work; no final handoff or push.
