@@ -1,3 +1,60 @@
+# SEED9_R1 — full forward image and actual additional-prime section CLOSED (578)
+
+2026-10-26, suffix 578. **PROVED_KERNEL_SCOPED / NOT_REVIEWED**.
+WYKONANE: full forward/call-frame image and complete concrete additional-prime
+section; sixteen Lean modules including two original-type/axiom audits.
+PRZETESTOWANE: keygen_publicforward159_578 4/4 and
+keygen_publicforward159_578_section 12/12, exit 0, diagnostics 0/0,
+warningAsError, forbidden markers [], no linter suppression. Thirty-seven
+axiom results: standard-only; final source has exactly
+propext/Classical.choice/Quot.sound. Completion phase 124.958s total,
+maxRSS 5683872 KiB. NIEZALEZNIE ODEBRANE: NOT_RUN / NOT_REVIEWED.
+
+CLOSED: complete first-pass + eight doubling rounds + full=0 skip image of
+all 512 forward words, actual seven-argument binding and caller heap return;
+concrete u=1/tlen=2 productFd/productGd initializers/domains/full 256-step
+loops; gm words kept through marches/products; fd image kept through the
+later gs march/NTT/gd writes. The SAME final state carries both product
+images. Actual CRT entry supplies all body_entry and generator domains:
+immutable prime/rev objects, initialized scratch, cells/bindings and fs/gs
+normalized words. The actual generator, both modular-reduction marches,
+NTTs, products and false !out_ntt skip compose into aInner; aBody scope
+restore, u=1→2, false terminal 2<2, aLoop/aFor and full part .step 4 are
+kernel-checked. StepAddSection195.source exports actual part-2/3/4 runs
+on one threaded chain of states with u=2 and both product images.
+No target execution or resulting image is a headline theorem premise.
+
+ENTRY_PINS 00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964:
+74673/74673, 0 missing / 0 changed before/after both phases; job-577
+bindings 52/52 before/after. No re-baseline. StepNttFirst195.stepState
+remains unused; permanent bodyHeap supplement and all pinned inputs intact.
+Section source a6cad5b30081433ef49a993a639e5a40dca21ea90b67e7594a6b680ff25e95d0;
+olean dca11ef657b6c8b69bcde51ab9532e9c36a70171329d5529e651041ce48c3a2f.
+Final report/evidence: notes/run/KEYGEN_STEP_SECTION_195_578_REPORT.md and
+KEYGEN_STEP_SECTION_195_578.json. First-phase forward report/evidence are
+retained unchanged as an intermediate checkpoint; the owner's explicit
+continue-to-completion instruction superseded its freeze plan/OPEN list.
+
+RETAINED: inherited 65 + 58 + 4 + bodyHeap finding, job-575/576/577 registers;
+23 local attempts in 578, 5 complete successes / 18 failed or partial
+attempts, including 14 additional failures in the completion phase. All
+snapshots/logs/receipts and the attempt015 pre-engine setup failure remain
+under .build/forwardimage578; registers in notes/run. No failed canonical
+job, counterexample, limit increase or failed cache product. The mistaken
+live diagnosis of the ≤igm/≤i lexer collision has an append-only correction.
+
+NEXT unused suffix **579**: remaining d levels and the enclosing root/
+certificate/codec route. The requested forward/product/section scope is
+closed; closed-form transform/root/table laws, compiler correctness, full
+KeyGen/Sign, unconditional Z>0/p_accept/p_K and prospective Z>=2^-256 remain
+OPEN. Old110, measured wording and five do_sign obligations unchanged.
+No subagents/reviewers, push/import/stages/migration/C edit. Eight waiting
+commits at entry plus this one local checkpoint = nine waiting. The foreign
+threshold prompt and concurrent run2 pin-reference edit remain untouched
+and excluded; reference edit is outside ENTRY_PINS. All owned jobs ended.
+
+Previous live snapshots and per-job records follow unchanged.
+
 # SEED9_R1 — eight round images, m-walk and product-read bridge CLOSED (job 577)
 
 2026-10-26, suffix 577. **PROVED_KERNEL_SCOPED / NOT_REVIEWED**.
@@ -9144,3 +9201,36 @@ Job record (577 window): roundimage577/attempt002 — ACCEPTED 2/2 local checks,
 Job record (577 window): keygen_publicforward159_577 — ACCEPTED 3/3, exit 0, diagnostics 0/0, warningAsError, forbidden proof markers []; round 5.529s / tail-product 2.570s / original-type-and-axiom audit 2.522s, maxRSS 3871920 KiB. Eleven axiom results inspected: RoundPlan/selected_plan axiom-free; walkWords/doublingWords/tail_pair_loads [propext, Quot.sound]; remaining six audited exports only propext/Classical.choice/Quot.sound. Next = final 74673-pin recheck, retained-attempt/evidence manifest, report and small local checkpoint; no push.
 
 Job record (577 window): final integrity/evidence — PASS_INTEGRITY, 74673/74673 before/after, 0 missing / 0 changed; predecessor bindings 33/33 before/after; new evidence bindings 52/52 verified. Canonical 3/3 accepted, eleven standard-only/axiom-free audit results, one retained performance failure. Report and receipt sealed; next = small local checkpoint, no push; next unused suffix 578.
+
+
+## 2026-10-26 — R1 window 578 live records
+
+Job record: entry_reverify_578 — PASS_INTEGRITY: ENTRY_PINS 00f602e7…; 74673/74673, 0 missing / 0 changed; predecessor 577 evidence and retained attempts 52/52 bindings; host process check found no competing Lean/Sage/lake job. Next: first-pass/full forward call-frame image, then concrete products/section route. No subagents; no push; eight unpublished commits at entry. Foreign untracked threshold prompt left untouched.
+Job record: forwardimage578/attempt001 — RETAINED_ENVIRONMENT_FAILURE, bwrap NETLINK_ROUTE refused by the outer sandbox before Lean (exit 1, 0.004s); no proof checked and no cache product. Next: unchanged source/limits through host-permitted isolated runner.
+Job record: forwardimage578/attempt002 — RETAINED_ELABORATION_FAILURE, explicit hn=256 needed when unifying Fin (2*hn) with Fin 512; scoped is a reserved parser token. No counterexample. Next: explicit implicit arguments and scopedRun identifier, same limits.
+Job record: forwardimage578/attempt003 — RETAINED_ELABORATION_FAILURE: simplifier normalizes the target element pointer but leaves the source elem wrapper; normalize both pointer definitions explicitly. Other full-forward/call/branch declarations produced no diagnostics. Next: pointer normalization and concrete product check.
+Job record: forwardimage578/attempt004 — full forward/call-frame image ACCEPTED_LOCAL (5.327s, logs 0/0); product module RETAINED_ELABORATION_FAILURE (3.424s): decide requires reducing constant allocation fields first; explicit out state needed because heap equality rfl otherwise infers the input state. Next: concrete field reductions and named out argument, unchanged limits.
+Job record: forwardimage578/attempt005 — ACCEPTED_LOCAL StepAddProduct195 (3.171s, logs 0/0): concrete u=1 fd/gd initialization, allocation/separation, literal read bridge and all 256 products, preserving t1 image. Next: direct forward-to-product composition and false !out_ntt branch; canonical suffix 578 still unused.
+Job record: forwardimage578/attempt006 — ACCEPTED_LOCAL 3/3: forward/call metadata, both concrete products and direct nttFs/productFd + nttGs/productGd compositions; gd_suffix also executes false !out_ntt and r8 skip. Logs 0/0, 5.327/3.676/3.021s, maxRSS 4099520 KiB. Next: canonical job 578 with original-type/axiom audit, final pins/report; aLoop/part4 and body_entry domain discharge remain OPEN.
+Job record: keygen_publicforward159_578 — ACCEPTED 4/4, exit 0, logs 0/0, warningAsError, markers []; forward 6.936s / concrete products 4.676s / composition 4.275s / original-type-and-axiom audit 3.024s. Next: inspect all 21 axiom results, final ENTRY_PINS check and retained/evidence/report seal; aLoop/part4 and body_entry domain discharge OPEN. No push.
+
+Owner steering (2026-10-26): continue to the full requested section; do not freeze on context. This overrides the intermediate freeze plan in KEYGEN_STEP_FORWARDIMAGE_195_578_REPORT; that checked report/evidence remain a historical intermediate checkpoint. No push.
+Job record: forwardimage578/attempt007 — ACCEPTED_LOCAL StepMemoryInit195 (5.733s, diagnostics 0/0): actual helper execution preserves initialized bytes. Next: bystander keeps and concrete CRT-entry binding.
+Job record: forwardimage578/attempt008 — ACCEPTED_LOCAL initialization + walk bystander keeps, 2/2, 0/0. Attempt009 — RETAINED_TOOLING_FAILURE: missing CRT projection exports and concrete-Memory rfl recursion; initial table/array bindings need the conversion/public table frames rather than definitional equality. Next: abstract projection bridges and explicit frame rewrites; no limit increase.
+Job record: forwardimage578/attempt010 — RETAINED_ELABORATION_FAILURE: CRT projections repaired without raising limits; prepared sampler tables are opaque and require the existing prepared_eq bridge before closing canonical table equality. Next: apply that accepted state bridge.
+Job record: forwardimage578/attempt011 — RETAINED_ELABORATION_FAILURE: tables pass through prepared_eq to the computed ready state; rfl cannot replace its finite table-list computation. Next: kernel-decided equality of those concrete finite table lists, then abstract lookup congruence.
+Job record: forwardimage578/attempt012 — RETAINED_CLEAN_LOG_FAILURE: finite table equality closes; two now-unreachable fallback tactics and a trailing rfl trigger unused/no-goal diagnostics under warningAsError. Next: remove redundant tactics, preserving the linter and limits.
+Job record: forwardimage578/attempt013 — CRT entry/tables + walk/product keeps ACCEPTED_LOCAL 4/4, 0/0; Basic adapter RETAINED_ELABORATION_FAILURE: addr src 0 i 1 is propositionally the elem src i pointer, requiring arithmetic normalization. Next: explicit pointer normalization.
+Job record: forwardimage578/attempt014 — Basic plus four dependencies ACCEPTED_LOCAL 5/5, 0/0; Ops RETAINED_ELABORATION_FAILURE: walk_run exports image before counter, unlike remaining. Next: destructure the actual tuple order; reuse only accepted source/olean-pinned local products.
+Job record: forwardimage578/attempt015 — RETAINED_RUNNER_SETUP_FAILURE before Lean: local engine receipts lack canonical olean_sha256. Failed runner snapshot preserved; new reuse records hash actual accepted artifacts and bind their accepted source receipts. Next: same proof through corrected local organizer.
+Job record: forwardimage578/attempt016 — Ops ACCEPTED_LOCAL (70.772s, 0/0; maxRSS 5756252 KiB); generator adapter RETAINED_PARSER_FAILURE: relation is reserved syntax and existential out binder needs an explicit type before the typed gvs binder. Next: rename binder and fix existential syntax; reuse accepted pinned Ops product.
+Job record: forwardimage578/attempt017 — RETAINED_LEXER_FAILURE. Correction to attempt016 live diagnosis: relation was not the established cause; the token sequence ≤igm is lexed as the InitialSeg notation ≤i followed by gm. Insert spaces in gm.offset ≤ igm.offset. The existential syntax repair is effective. No mathematical counterexample.
+Job record: forwardimage578/attempt018 — RETAINED_CLEAN_LOG_FAILURE: generator proof accepted mathematically but the block hypothesis was not explicitly referenced. Next: rewrite the frame block with that hypothesis; retain unused-variable linter, no suppression.
+Job record: forwardimage578/attempt019 — generator ACCEPTED_LOCAL (20.619s, 0/0); Ready RETAINED_PARSER/ELABORATION_FAILURE: prefix is reserved; broad simp normalizes string names before hypotheses match. Next: prefixState and explicit accepted locals/arrays projection lemmas, no broad normalization.
+Job record: forwardimage578/attempt020 — RETAINED_ELABORATION_FAILURE: rw does not open withV/withX projections automatically; prefix_v needs explicit C99ValueBridge.type reduction. Next: one-step wrapper rewrites and the type definition.
+Job record: forwardimage578/attempt021 — Ready ACCEPTED_LOCAL (4.023s, 0/0); Body RETAINED_ELABORATION_FAILURE: layout change used addr-style i*1 terms for elem pointers, which are not defeq without mul_one. Next: use exact elem offsets; all composition code otherwise produced no diagnostics. Foreign run2 pin-reference edit appeared during work and is left untouched.
+Job record: forwardimage578/attempt022 — Body and concrete CRT Entry ACCEPTED_LOCAL 2/2, 3.826/3.125s, 0/0. Section RETAINED_ELABORATION_FAILURE: restoreScope leaves C99ScalarReference.restore opaque in u/tlen keeps. Next: unfold the scalar restore function; body/section execution composition otherwise has no diagnostics.
+Job record: forwardimage578/attempt023 — ACCEPTED_LOCAL StepAddSection195 (3.122s, logs 0/0): full aInner/aBody/aLoop/aFor/part4, body_entry domains discharged at the actual CRT exit, common fd/gd product image output, final u=2 and false terminal guard. Next: canonical section job + original types/axioms, final integrity and checkpoint; no push.
+Job record: keygen_publicforward159_578_section — ACCEPTED 12/12, exit 0, diagnostics 0/0, warningAsError, no markers. Complete actual CRT→generator→two marches/forward/products→skip→scope/increment/terminal guard→part4 source export. Both canonical phases total 16/16; next = final type/axiom and pin seal, full supplement/report, one exact-path local checkpoint; no push.
+
+Job record (578 close): final integrity/evidence — PASS_INTEGRITY, ENTRY_PINS 74673/74673 and predecessor 52/52 before/after; verified 383 window evidence bindings; canonical 16/16; markers 0; linter suppressions 0. Full requested scope complete, NOT_REVIEWED; next = exact-path local checkpoint, no push; next suffix 579.
