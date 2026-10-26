@@ -1,7 +1,8 @@
 //! Rdzeń progowego podpisu FT1536 (P2).
 //!
-//! Zaimplementowane (WP-012a): GF(2^8) i Shamir seeda ([`gf256`]).
-//! W kolejce WP-012: `R_q`, NTT, SHAKE, PRSS i Pedersen. Zasady: brak I/O,
+//! Zaimplementowane (WP-012a/b/c): GF(2^8) i Shamir seeda ([`gf256`]),
+//! pierścień `R_q` ([`ring`]) oraz jawny SHAKE256 i `hash_to_point` ([`shake`]).
+//! W kolejce WP-012: NTT, PRSS i Pedersen. Zasady: brak I/O,
 //! brak `unsafe`, docelowo `no_std`-ready.
 
 #![forbid(unsafe_code)]
@@ -9,6 +10,7 @@
 pub mod error;
 pub mod gf256;
 pub mod ring;
+pub mod shake;
 
 pub use error::{CoreError, Result};
 
