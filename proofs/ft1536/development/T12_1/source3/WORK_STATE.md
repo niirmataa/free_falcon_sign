@@ -1,3 +1,28 @@
+# SEED9_R1 — sustained route ACTIVE; inverse call checkpoint585 accepted;586 starting
+
+Owner: continue fully to completion; no push, handoff, subagents or reviewers.
+Overall source-to-fiber goal remains IN_PROGRESS / NOT_REVIEWED.
+585 canonical keygen_inversecall202_585 accepted5/5,exit0,diagnostics0/0,
+warningAsError,markers/suppressions0;6 standard-only axiom results.
+Whole inverse now preserves all separated Load32 reads at the same output
+as its executed-word image; original fs+u/slen/igm/logn/0/p/p0i seven-arg
+level call and caller return are constructed for all logn1..9/full0.
+Actual d=2 copy/product/input domains remain downstream, not assumed closed.
+23.687s sum,maxRSS4128084 KiB; limits unchanged; independent review NOT_RUN.
+ENTRY_PINS00f602e7…74673/74673 before/after, predecessor584506 hashes unchanged.
+5 attempts,3 retained failures;136 new evidence bindings verified.
+Report/evidence notes/run/KEYGEN_INVERSE_CALL_202_585_REPORT.md and JSON.
+586 starts MkgmCallKeep203/SecondStepGeneratorKeep203 drafts to preserve both
+moved source arrays through the complete generator on one output, then
+actual d=2 copy/products/input domains/inverse in original source order.
+Lower-size forward engine, later prime loops/multi-limb CRT and d levels/
+root/certificate/codec remain OPEN. No transform/root law or broad KeyGen/
+Sign/compiler/security/positivity/probability claim; Old110/measured/five
+do_sign unchanged. Fifteen waiting commits plus585=sixteen; no push.
+Foreign edits excluded; continue work after this intermediate commit.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — sustained route ACTIVE; whole inverse checkpoint584 accepted;585 starting
 
 Owner: continue fully to completion; no push, handoff, subagents or reviewers.
@@ -9514,3 +9539,12 @@ Job record (584): attempt013 — ACCEPTED_LOCAL13/13,0/0,17 standard-only axiom 
 Job record (584): keygen_inversewhole201_584 — ACCEPTED13/13,exit0,0/0,warningAsError,markers0;17 standard-only axiom results. Complete original inverse body for every logn1..9/full0 with exact executed-word image at arbitrary valid stride. Next intermediate integrity/evidence/local commit and immediate585 separated-read keep/call binding/forward continuation; no push or final handoff.
 
 Job record (584 checkpoint): final integrity/evidence PASS,74673 entry paths/106 predecessor hashes unchanged,506 new evidence bindings verified. Next exact-path local commit and immediate585 separated-read keep/call/forward work; no final handoff or push.
+Job record (585): entry74673/74673 and506 predecessor584 evidence hashes verified;584 committed183a1ae6. Next generic inverse final/correction/whole separated-read keeps, then actual call at d=2. No competing proof job or push.
+Job record (585): attempt001 — generic final-pass keep ACCEPTED_LOCAL3.427s,0/0; correction keep RETAINED_ADAPTER_FAILURE: the parameter-insertion pattern touched an open list, producing namespace constant l. Next restore that list; no failed product imported.
+Job record (585): attempt002 — ACCEPTED_LOCAL3/3,0/0: generic final/correction/whole inverse separated-read keep for arbitrary valid stride, at the same execution/image output. Next exact original fs+u/slen inverse-call adapter; its source binds the constructed body and returns both the word image and bystander reads.
+Job record (585): attempt003 — three keep components accepted3/3,0/0; Call RETAINED_ELABORATION/CLEAN_LOG_FAILURE: PointerAdd needs explicit u64 integer.toNat normalization, and broad symbolic stride conversion simp leaves an Int modulus plus an unused simp argument. Next use u64_toNat and the existing set64_slot theorem directly for stride; retain linters.
+Job record (585): attempt004 — keep layers accepted3/3,0/0; Call RETAINED_TACTIC_FAILURE: explicit refine holes use refine_3, not the structure field tag step. Next use constructor so the named structure-field case is available; pointer normalization no longer reports errors.
+Job record (585): attempt005 — ACCEPTED_LOCAL4/4,0/0: original fs+u/slen seven-argument inverse call, full executed-word image and all separated read keeps at one caller output for every logn1..9/full0. Pointer and symbolic stride conversions discharged without added premises. Next canonical5 modules with six original-type/axiom audit results; then actual d=2 generator/copy/product/inverse composition in source order.
+Job record (585): keygen_inversecall202_585 — ACCEPTED5/5,exit0,0/0,warningAsError,markers0;6 standard-only axiom results. Whole generic inverse with separated-read keeps and exact original fs+u/slen call, output image and read keeps on the same caller output. Concrete d=2 copy/product/input domains remain downstream. Next integrity/local checkpoint then586 actual generator/copy/product/inverse composition in source order; no push or handoff.
+
+Job record (585 checkpoint): integrity/evidence PASS,74673 entry paths/506 predecessor hashes unchanged,136 new evidence bindings verified. Next exact-path local commit and immediate586 generator/copy/product/inverse continuation; no push or final handoff.
