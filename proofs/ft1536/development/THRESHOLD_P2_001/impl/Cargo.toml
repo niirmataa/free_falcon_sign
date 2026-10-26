@@ -1,0 +1,33 @@
+# Workspace THRESHOLD_P2_001 (P2) — szkielet G1/WP-010.
+#
+# Zasady:
+# - brak zależności od ftkey-vm / QSX / VM (D-023),
+# - brak zależności zewnętrznych na tym etapie; port prymitywów przyjdzie
+#   w WP-012 z KAT i pinami,
+# - `cargo build --locked --offline` musi przechodzić bez sieci.
+
+[workspace]
+resolver = "3"
+members = [
+    "crates/ft-threshold-core",
+    "crates/ft-threshold-protocol",
+    "crates/ft-threshold-transport",
+    "crates/ft-threshold-node",
+    "crates/ft-threshold-coordinator",
+    "crates/ft-threshold-testkit",
+    "crates/ft-threshold-verify",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.94"
+license = "Apache-2.0 OR MIT"
+publish = false
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+missing_docs = "warn"
+
+[workspace.lints.clippy]
+all = { level = "warn", priority = -1 }
