@@ -53,6 +53,16 @@ To **dokładnie** domyślny `VID:PID` z `qsx.rs:568` (`0x1050:0x0406`),
 więc obawa o niedopasowanie domyślnego selektora do tego egzemplarza
 zostaje wycofana (patrz F-7).
 
+**CTAP2 `getInfo` (bez PIN, bez zapisu, bez tworzenia credentiala):**
+`FIDO_2_0`, `FIDO_2_1`, `FIDO_2_3`; rozszerzenia m.in. **`hmac-secret`**,
+`largeBlobKey`, `credProtect`, `minPinLength`; opcje `largeBlobs=true`,
+`clientPin=true`, `alwaysUv=false`, `makeCredUvNotRqd=true`;
+`maxmsgsize=1536`; protokoły PIN `2` i `1`. To potwierdza przesłankę
+ADR-001 A1/ADR-004 dla **tego** urządzenia, ale **nie** dowodzi jeszcze
+determinizmu `hmac-secret` ani zapisu koperty 4 KB — to wymaga
+utworzenia credentiala, PIN-u i dotknięcia (patrz F-8).
+Probe: `.build/ftkey_probe/getinfo.c` (ignorowany, poza repo).
+
 **Pin silnika jest wspólny z tym repo.** `FTKEY/docs/pins/FT1536_ENGINE_PIN.md`
 wskazuje commit `ad0d0f064a385f3ae7cbb68601139417b8eabb77`, drzewo `Extra/c`
 `7a5b493b0fa7f2007ee79c2af10b555d95c0b4d6` i manifest
@@ -320,6 +330,9 @@ na tokenie i może zniszczyć istniejące pieczęcie po resecie.
 - VM/gość: `14 passed, 0 failed, 1 ignored` — `e2e_sign_mock_via_qsx`
   (`#[ignore]`) wymaga prawdziwego KVM/QSX; `NOT_RUN`.
 - Live FIDO w VM: `NOT_RUN`, checklista ręczna.
+- Token: `getInfo` **PASS** (2026-10-26, bez PIN, bez zapisu);
+  `hmac-secret` live **NOT_RUN** — test tworzy discoverable credential
+  i wymaga PIN-u oraz dotknięcia.
 
 **Skutek:** wszystkie testy VM używają fake QSX/mock. Nie ma dowodu, że
 prawdziwy QSX + token + gość kończą podpis. To jest spójne z F-1: gdyby
