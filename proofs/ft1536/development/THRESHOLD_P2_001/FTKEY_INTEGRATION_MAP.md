@@ -57,11 +57,20 @@ zostaje wycofana (patrz F-7).
 `FIDO_2_0`, `FIDO_2_1`, `FIDO_2_3`; rozszerzenia m.in. **`hmac-secret`**,
 `largeBlobKey`, `credProtect`, `minPinLength`; opcje `largeBlobs=true`,
 `clientPin=true`, `alwaysUv=false`, `makeCredUvNotRqd=true`;
-`maxmsgsize=1536`; protokoły PIN `2` i `1`. To potwierdza przesłankę
-ADR-001 A1/ADR-004 dla **tego** urządzenia, ale **nie** dowodzi jeszcze
-determinizmu `hmac-secret` ani zapisu koperty 4 KB — to wymaga
-utworzenia credentiala, PIN-u i dotknięcia (patrz F-8).
+`maxmsgsize=1536`; protokoły PIN `2` i `1`.
 Probe: `.build/ftkey_probe/getinfo.c` (ignorowany, poza repo).
+
+**Live `pub` na istniejącym seal (2026-10-26, bez nowego credentiala):**
+`cargo run -p ftkey-cli -- pub --token fido --seal ftkey.seal` z
+`FT1536_C_SRC=/home/footfalcon/free_falcon_sign/Extra/c` zakończyło się
+sukcesem; klucz publiczny zaczyna się od `8a` (nagłówek FT1536), a
+`fp` = `eb61b8afc072c1e450753ee9aa7dda5d8d12ca7a3aa545f69a7574b22c3348b6`
+jest **identyczny** z `ftkey.fp` z 2026-10-19. To dowodzi, że
+`hmac-secret` + unseal + `keygen_from_seed_32` odtworzyły **ten sam
+klucz** po 7 dniach dla tego credentiala. **Nie** dowodzi to jeszcze
+live `sign`/`verify` ani zapisu koperty 4 KB (`largeBlobs`), ani
+determinizmu dla innych saltów/credentiali. PIN nie został ujawniony
+ani zapisany.
 
 **Pin silnika jest wspólny z tym repo.** `FTKEY/docs/pins/FT1536_ENGINE_PIN.md`
 wskazuje commit `ad0d0f064a385f3ae7cbb68601139417b8eabb77`, drzewo `Extra/c`
@@ -336,8 +345,9 @@ na tokenie i może zniszczyć istniejące pieczęcie po resecie.
   (`#[ignore]`) wymaga prawdziwego KVM/QSX; `NOT_RUN`.
 - Live FIDO w VM: `NOT_RUN`, checklista ręczna.
 - Token: `getInfo` **PASS** (2026-10-26, bez PIN, bez zapisu);
-  `hmac-secret` live **NOT_RUN** — test tworzy discoverable credential
-  i wymaga PIN-u oraz dotknięcia.
+  live `pub` na istniejącym `ftkey.seal` **PASS** (fp = `ftkey.fp`).
+  Live `sign`/`verify` **NOT_RUN**; test `create_and_hmac_secret`
+  **NOT_RUN** — tworzy discoverable credential i wymaga PIN-u.
 
 **Skutek:** wszystkie testy VM używają fake QSX/mock. Nie ma dowodu, że
 prawdziwy QSX + token + gość kończą podpis. To jest spójne z F-1: gdyby
@@ -536,9 +546,11 @@ nie jest manifestem.
 
 ## 10. Status dowodowy
 
-- Ten dokument: **analiza źródeł read-only**, nie test i nie odbiór.
+- Ten dokument: **analiza źródeł read-only** + dwa nieinwazyjne testy
+  sprzętowe; nie jest pełnym testem ani odbiorem.
 - Testy FTKEY: **nie były ponownie uruchamiane w tym oknie**; liczby
   pochodzą z raportów (`REVIEW_E1_E4.md`, `V1d_001/REPORT.md`).
-- Żywy KVM/FIDO: **NOT_RUN**.
+- Żywy token: `getInfo` + `pub` (unseal + keygen) **PASS** 2026-10-26;
+  live `sign`/`verify` **NOT_RUN**; żywy KVM/FIDO w VM **NOT_RUN**.
 - P2: nadal G0 `IN_PROGRESS`; żadna bramka nie jest zamknięta.
 - D-021: nadal `PROPOSED`; ten dokument dostarcza argumentów, nie decyzji.
