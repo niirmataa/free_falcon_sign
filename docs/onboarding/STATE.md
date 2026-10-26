@@ -1,5 +1,19 @@
 # Stan projektu — punkt wejścia
 
+**2026-10-26 — S09/THRESHOLD_P2_001: WP-015 DONE (maski otwarć w `Z_P`).**
+Audyt #4 domknięty po stronie prymitywu: `mask::Mask` jest jednorazowa
+i liniowa (brak `Clone`/`Copy`, `apply` konsumuje maskę), więc dwóch otwarć
+tego samego sekretu nie da się wykonać tą samą maską. Szerokości 1..=60 są
+dokładnie jednostajne (2^128 dzieli się przez 2^bits), a `bits=61` to pełne
+`Z_P` z redukcją `% P` i obciążeniem ≤ 2^-67 (osobny test). Maski wąskie
+wymagają `secret < 2^bits` — węższa maska nie ukrywa górnych bitów, więc
+takie użycie jest błędem, nie „prawie poprawnym” wynikiem. Test statystyczny:
+2048 par otwarć tego samego sekretu, brak powtórzeń, |Pearson| < 0.05,
+różnice jednostajne (chi² < 45); 120 testów natywnych PASS, miri `mask::`
+4/4 (3 statystyczne ignorowane z powodem). Dowód:
+`impl/ci/WP015_CHECK_2026-10-26.txt`. To prymityw — wiązanie masek z rundą
+i MAC należy do WP-030+; odbiór niezależny pozostaje otwarty.
+
 **2026-10-26 — S09/THRESHOLD_P2_001: WP-016 DONE (pełne VSS + agregacja S5).**
 Domknięto lukę „próbki 8 współczynników”: `state::validate_dkg` składa teraz
 udziały dealerów per instancja seeda (`vss::fold_shares`), sumuje zobowiązania

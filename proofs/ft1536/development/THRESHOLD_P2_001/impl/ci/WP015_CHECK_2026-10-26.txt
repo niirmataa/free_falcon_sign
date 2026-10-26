@@ -1,0 +1,70 @@
+# WP-015 check — 2026-10-26 (maski otwarć w Z_P)
+# host: Linux 6.12.113+deb13-amd64 x86_64 GNU/Linux
+# rustc: rustc 1.94.0 (4a4ef493e 2026-03-02)
+# cargo-deny: cargo-deny 0.20.2
+# nightly (miri): rustc 1.101.0-nightly (19833af72 2026-10-20), miri 0.1.0
+
+== fmt ==
+cargo fmt --all --check → OK (bez zmian)
+
+== test --workspace (locked, offline) ==
+ft-threshold-core:      104 passed; 0 failed; 0 ignored
+ft-threshold-protocol:   12 passed; 0 failed; 0 ignored
+doc-tests core:           2 passed (2× compile_fail: MacShare bez Clone, Mask bez Clone)
+doc-tests protocol:       2 passed (2× compile_fail)
+RAZEM: 120 testów PASS, 0 failed.
+
+Nowe testy (core, `mask`):
+- full_width_mask_bias_bound
+  (2^128/P ≥ 2^67 → względne obciążenie redukcji ≤ 2^-67)
+- full_width_masks_are_unique_and_span_the_field
+  (4096 masek: wszystkie różne, kanoniczne < P, próbka sięga obu połówek
+  ciała; chi² 16 kubełków < 45 dla df=15)
+- narrow_masks_are_uniform_and_widths_are_independent
+  (bits ∈ {1,2,14,30,60}: dokładnie jednostajne na [0,2^bits), chi² < 45;
+  bits=0 i bits=62 → OutOfRange)
+- two_openings_of_the_same_secret_do_not_correlate
+  (2048 par: otwarcie pełnowymiarowe + otwarcie szerokości 30 tego samego
+  sekretu; brak powtórzeń, |Pearson| < 0.05, różnice (mod P) szeroko
+  rozłożone, chi² < 45)
+- apply_remove_roundtrip_and_domain_checks
+  (roundtrip, odrzucenie secret ≥ 2^bits dla wąskiej maski i ≥ P dla pełnej)
+- debug_does_not_reveal_mask
+- canonical_constructor_rejects_out_of_range
+
+== clippy -D warnings --workspace --all-targets ==
+Finished `dev` profile — 0 warning, 0 error.
+
+== cargo deny --offline check ==
+advisories ok, bans ok, licenses ok, sources ok
+
+== miri: core, filtr `mask::` (log .build/miri_mask_wp015.log) ==
+MIRIFLAGS="-Zmiri-disable-isolation" rustup run nightly cargo miri test \
+  -p ft-threshold-core --locked --offline mask::
+test result: ok. 4 passed; 0 failed; 3 ignored; 97 filtered out; finished in 1.14s
+Ignorowane w Miri (jawny powód w atrybucie): trzy testy statystyczne
+(4096 / 10 tys. / 2048 próbek + SHA3) — zbyt wolne w interpreterze;
+ich logika jest pokryta natywnie, a pozostałe ścieżki maskowania (roundtrip,
+zakresy, konstruktor, Debug) przechodzą pod Miri.
+
+== Zakres WP-015 ==
+- `mask::Mask`: jednorazowa maska w `Z_P`, `ZeroizeOnDrop`, **bez `Clone`/
+  `Copy`** (compile_fail); `Debug` nie pokazuje wartości.
+- Świeżość wymuszona typem: `Mask::apply(self, secret)` konsumuje maskę.
+  Dwa otwarcia tego samego sekretu wymagają dwóch masek — nie da się użyć
+  tej samej przez pomyłkę.
+- Szerokości: `from_entropy_bits(bytes, bits)` dla `1..=60` jest **dokładnie**
+  jednostajna (2^128 dzieli się przez 2^bits); `bits=61` to pełne `Z_P`
+  z redukcją `% P` i obciążeniem ≤ 2^-67 (jawnie testowane).
+- Domena: wąska maska wymaga `secret < 2^bits`, pełna `secret < P`;
+  `remove` sprawdza wynik i odrzuca wartości spoza dziedziny.
+- Maski wyłącznie w `Z_P` (D-025); brak maskowania w `Z_q`.
+
+== Czego ten dowód NIE obejmuje ==
+- To nie jest niezależny odbiór (autor ≠ recenzent pozostaje wymagane).
+- To prymityw, nie protokół: kolejność otwarć, wiązanie masek z rundą/
+  transkryptem i MAC na otwarciach należą do WP-030+ (auth triples, O-02).
+- Test statystyczny z deterministyczną entropią SHAKE nie jest dowodem
+  kryptograficznym; sprawdza brak powtórzeń/korelacji w próbce i zgodność
+  z założonym rozkładem, nie zastępuje analizy bezpieczeństwa.
+- `PROD` nadal zablokowane przez `ProdEvidenceMissing` (O-05).

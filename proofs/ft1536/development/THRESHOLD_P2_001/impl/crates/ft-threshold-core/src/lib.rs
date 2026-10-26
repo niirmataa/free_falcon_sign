@@ -5,7 +5,7 @@
 //! oraz PRSS z parami kluczy i udziałami zera ([`prss`]).
 //! NTT ternarna z silnika ([`ntt`]), Shamir w `Z_q` ([`shamir_zq`]) i Pedersen
 //! VSS nad `Z_q` ([`vss`]), oraz domena `Z_P` ([`zp`]) z MAC ukrytego δ
-//! ([`mac`]) — D-025. Zasady: brak I/O,
+//! ([`mac`]) i jednorazowymi maskami otwarć ([`mask`]) — D-025. Zasady: brak I/O,
 //! brak `unsafe`, docelowo `no_std`-ready.
 
 #![forbid(unsafe_code)]
@@ -13,6 +13,7 @@
 pub mod error;
 pub mod gf256;
 pub mod mac;
+pub mod mask;
 pub mod ntt;
 pub mod prss;
 pub mod ring;
