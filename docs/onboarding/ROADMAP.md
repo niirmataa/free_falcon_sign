@@ -275,6 +275,16 @@ M2/M3. Aktualny proof path może zmienić postać końcowego ledgeru tylko jawni
 | S06 CHANGES_REQUIRED / PARTIAL_DIAGNOSTIC — ATTACK_ESTIMATES | [Odbiór częściowego runu](../../proofs/ft1536/validation/2026-09-22-family-estimator-independent/README.md):70/120 entries;12 model rows,21 moments,132 cost values+12 błędów oraz3 usvp samples sprawdzone | E1 zły subfield n;E2 raw rop jako log2/mixed minima;E3 status/repair;E4 weakest-link/targets. Naprawy i pełny freeze nadal wymagane; modeling/Emitted/lift OPEN,nie proof security |
 | S07 PLANNED — FULL_IMPLEMENTATION_CT | Zakres rzeczywistej implementacji/kompilacji/platformy | Osobny threat model i dowody/kontrole; dudect ani floor patch nie domykają całości |
 | S08 PLANNED — PLATFORM_BINDING | Usługi OS/entropy/lifetimes do publicznego E | Jawne założenia/środowisko/refinement; theorem modelu E nie jest automatycznie theorem dowolnego OS |
+| S09 G0 IN_PROGRESS — THRESHOLD_P2_001 (progowy podpis FT1536) | [Lane](../../proofs/ft1536/development/THRESHOLD_P2_001/README.md): P2, **2-of-3** (D-003), wariant **A** — udziały pułapki (D-021); G2 = signing plumbing na `TEST-ORACLE`, G3 = bezdealerowy ważny setup NTRU + realny Klein/ffSampling (D-022) | Decyzje D-003/010/011/013/016/021 (i D-022 przed G2); bramki G0–G5 wg [GATES](../../proofs/ft1536/development/THRESHOLD_P2_001/GATES.md); **G2 nie jest produkcją**; claims register i SOURCE_MAP obowiązują |
+
+S09 jest nowym torem P2 (progowy podpis), niezależnym od S01–S08 i od
+T12.1; nie zastępuje bazy FT1536 ani nie przenosi jej dowodu. G2 wolno
+zamknąć na `TEST-ORACLE` (znany klucz testowy + deterministyczny sampler),
+ale **G3 jest pierwszą bramką `PROD`**: wymaga bezdealerowego, ważnego
+keygenu NTRU, `pk` bez reconstruct i realnego Klein/ffSampling. Wynik G2
+nie może być opisywany jako „bez dealera”, „malicious-secure” ani
+„produkcyjny”. Szczegóły i otwarte punkty: `SPEC.md` §15; rejestr decyzji:
+[DECISIONS](../../proofs/ft1536/development/THRESHOLD_P2_001/DECISIONS.md).
 
 S03/S08 są potrzebne do odpowiednio szerokiego claimu wdrożeniowego; S04/S05
 rozszerzają model pierwszego M7. S01 jest bramką publikacji z decyzji właściciela,
@@ -450,6 +460,14 @@ muszą wskazywać ten sam aktywny etap.
   kontynuacji RUN_003 i T5. Aktywny agent przejdzie po handoffie. Stage/review
   otrzyma osobny commit/tag; nie trzeba czekać na cały wielki etap.
   Duże generowane certyfikaty mają pin i generator, runtime pozostaje lokalny.
+- 2026-10-26/v19: właściciel wybrał **P2** (pełny progowy podpis MPC,
+  „mimo że może to trwać długo”). Otworzono S09/THRESHOLD_P2_001 jako
+  osobny lane; spike 001 pozostaje spec/oracle/testkit. Powstały PLAN,
+  SPEC v0, THREAT_MODEL, DECISIONS, CLAIMS, GATES, WP, RISKS, SOURCE_MAP.
+  G2 = signing plumbing na `TEST-ORACLE`, G3 = bezdealerowy ważny setup
+  NTRU + realny Klein/ffSampling (D-022); wariant A (D-021) i 2-of-3
+  (D-003) są `PROPOSED`. G0 dokumentacyjnie gotowy; G1 czeka na decyzje.
+  Bez produkcji, bez push; brak startu drugiego workera.
 
 ### T12.1 — kolejka utwardzania po korekcie F04/F05 R1/R2 (2026-10-11)
 

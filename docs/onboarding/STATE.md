@@ -1,5 +1,22 @@
 # Stan projektu — punkt wejścia
 
+**2026-10-26 — S09/THRESHOLD_P2_001: otwarcie toru P2 (G0).**
+Na polecenie właściciela („idę w P2, mimo że może to trwać długo”)
+otwarto nowy tor progowego podpisu FT1536 w
+[`development/THRESHOLD_P2_001/`](../../proofs/ft1536/development/THRESHOLD_P2_001/README.md).
+Wejściem jest spike 001 (414/414) jako spec/oracle/testkit, nie fundament
+produkcji. Powstały: README, PLAN, SPEC v0, THREAT_MODEL, DECISIONS,
+CLAIMS_REGISTER, GATES, WORK_PACKAGES, RISKS i SOURCE_MAP.
+Wybór **2-of-3** (D-003), wariantu **A** — udziały pułapki (D-021) — oraz
+podział **G2 = signing plumbing na `TEST-ORACLE`, G3 = bezdealerowy ważny
+setup NTRU + realny Klein/ffSampling** (D-022) są `PROPOSED`, czekają na
+potwierdzenie. G0 jest gotowy dokumentacyjnie (poza decyzjami); G1 blokują
+decyzje D-003/010/011/013/016/021, a G2 dodatkowo D-022. **To nie jest
+produkcja, nie jest „threshold FT gotowy” i nie jest deklaracja
+bezpieczeństwa** — G2 nie może być opisywany jako „bez dealera”. Najbliższe kroki:
+WP-010/011 (workspace + hermetyczne CI) i WP-012 (port prymitywów z KAT).
+Zmiany lokalne; push wyłącznie po słowie właściciela.
+
 **2026-10-11 — F04/F05: targeted recheck SCOPE_002 = PASS_SCOPED.**
 Na polecenie właściciela sprawdzono (a)–(e) bez nowego pełnego replayu
 i bez wywołań Lean. Przyjęty zakres: dokładnie **166 modułów, #001–#165
