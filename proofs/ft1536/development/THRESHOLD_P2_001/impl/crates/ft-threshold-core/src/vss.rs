@@ -225,6 +225,46 @@ impl ExpShare {
     }
 }
 
+/// Składa udziały od wielu dealerów dla **tego samego** `x` (S5, krok 1).
+///
+/// Bound: `≤ MAX_PARTIES_V1 = 16` dealerów daje `< 2^244 < L`, więc suma
+/// Scalarów jest **dokładna** (bez zawijania modulo `L`). Pusty zbiór,
+/// różne `x` i więcej niż 16 dealerów są błędem.
+pub fn fold_shares<'a>(shares: impl IntoIterator<Item = &'a ExpShare>) -> Result<ExpShare> {
+    let mut iter = shares.into_iter();
+    let first = iter.next().ok_or(CoreError::EmptyXs)?;
+    let mut acc = ExpShare::from_bytes(&first.to_bytes())?;
+    let mut count = 1usize;
+    for s in iter {
+        count += 1;
+        if count > MAX_PARTIES_V1 {
+            return Err(CoreError::PartyCountMismatch);
+        }
+        acc = acc.add(s)?;
+    }
+    Ok(acc)
+}
+
+/// Składa zobowiązania dealerów (S5, krok 2): suma po współczynnikach.
+///
+/// Wszystkie zestawy muszą mieć tę samą długość; pusty zbiór jest błędem.
+pub fn fold_commitments<'a>(
+    comms: impl IntoIterator<Item = &'a VssCommitments>,
+) -> Result<VssCommitments> {
+    let mut iter = comms.into_iter();
+    let first = iter.next().ok_or(CoreError::EmptyXs)?;
+    let mut acc = first.clone();
+    let mut count = 1usize;
+    for c in iter {
+        count += 1;
+        if count > MAX_PARTIES_V1 {
+            return Err(CoreError::PartyCountMismatch);
+        }
+        acc = acc.add(c)?;
+    }
+    Ok(acc)
+}
+
 /// Dzieli wkład strony: zobowiązania + udziały dla `xs`.
 ///
 /// `secret_coeffs[j]` to współczynnik `a_j ∈ Z_q`, `blinds[j]` kanoniczny
@@ -349,8 +389,8 @@ fn scalar_mod_q(s: &Scalar) -> u16 {
 #[cfg(test)]
 mod tests {
     use super::{
-        EXP_SHARE_BYTES, ExpShare, H_DOMAIN, VssCommitments, deal, pedersen_h, scalar_mod_q,
-        verify_share,
+        EXP_SHARE_BYTES, ExpShare, H_DOMAIN, VssCommitments, deal, fold_commitments, fold_shares,
+        pedersen_h, scalar_mod_q, verify_share,
     };
     use crate::MAX_PARTIES_V1;
     use crate::error::CoreError;
@@ -565,6 +605,117 @@ mod tests {
             let s = Scalar::from(v);
             assert_eq!(u64::from(scalar_mod_q(&s)), v % u64::from(Q));
         }
+    }
+
+    #[test]
+    fn full_coefficient_verification_rejects_high_index_tamper() {
+        // Audyt #7: próbka 8 współczynników przepuściłaby fałszerstwo
+        // w wysokim współczynniku. Pełna weryfikacja musi je złapać.
+        let k = MAX_PARTIES_V1;
+        let xs: Vec<u16> = (1..=k as u16).collect();
+        let coeffs: Vec<u16> = (0..k).map(|i| (i as u16) * 7 + 1).collect();
+        let blinds: Vec<[u8; 32]> = (0..k as u8).map(|i| blind(20, i)).collect();
+        let (comms, mut shares) = deal(&coeffs, &blinds, &xs).expect("deal");
+
+        // Δ·x^(k−1) w przestrzeni wykładników: tylko współczynnik 15.
+        let x = Scalar::from(u64::from(xs[0]));
+        let mut pow = Scalar::ONE;
+        for _ in 0..k - 1 {
+            pow *= x;
+        }
+        let delta = pow * Scalar::from(5u64);
+        let mut s = shares[0].s_bytes();
+        let cur = Scalar::from_canonical_bytes(s);
+        let cur = Option::<Scalar>::from(cur).expect("canonical");
+        s = (cur + delta).to_bytes();
+        let t = shares[0].t_bytes();
+        shares[0] = ExpShare::new(shares[0].x(), s, t).expect("forged");
+        assert_eq!(
+            verify_share(&shares[0], &comms).unwrap_err(),
+            CoreError::InconsistentShare
+        );
+    }
+
+    #[test]
+    fn fold_shares_and_commitments_are_homomorphic() {
+        let xs = [1u16, 2, 3];
+        let (c1, s1) = deal(&[10u16, 4], &blinds(21, 2), &xs).expect("d1");
+        let (c2, s2) = deal(&[20u16, 9], &blinds(22, 2), &xs).expect("d2");
+        let (c3, s3) = deal(&[30u16, 1], &blinds(23, 2), &xs).expect("d3");
+        let comms = fold_commitments([&c1, &c2, &c3]).expect("comms");
+        // Składamy po tym samym x (nie mieszamy stron).
+        let folded: Vec<ExpShare> = (0..xs.len())
+            .map(|i| fold_shares([&s1[i], &s2[i], &s3[i]]).expect("fold"))
+            .collect();
+        for f in &folded {
+            verify_share(f, &comms).expect("aggregate verifies");
+        }
+        // Suma sekretów 10+20+30 = 60; 3 zagregowane udziały odtwarzają 60.
+        let ys: Vec<u16> = folded.iter().map(ExpShare::share_zq).collect();
+        assert_eq!(lagrange_at_zero(&xs, &ys), 60 % Q);
+    }
+
+    #[test]
+    fn fold_rejects_empty_and_mixed_x() {
+        let (_, s1) = deal(&[1u16, 2], &blinds(24, 2), &[1, 2]).expect("d1");
+        let (_, s2) = deal(&[1u16, 2], &blinds(25, 2), &[2, 3]).expect("d2");
+        assert_eq!(
+            fold_shares(std::iter::empty()).unwrap_err(),
+            CoreError::EmptyXs
+        );
+        assert_eq!(
+            fold_shares([&s1[0], &s2[0]]).unwrap_err(),
+            CoreError::InconsistentShare
+        );
+        assert_eq!(
+            fold_commitments(std::iter::empty::<&VssCommitments>()).unwrap_err(),
+            CoreError::EmptyXs
+        );
+        // >16 dealerów: ten sam cap co dla udziałów (publiczny odpowiednik).
+        let sets: Vec<(VssCommitments, Vec<ExpShare>)> = (0..=MAX_PARTIES_V1 as u8)
+            .map(|d| deal(&[1u16, 2], &blinds(30 + d, 2), &[1, 2]).expect("deal"))
+            .collect();
+        let comms: Vec<&VssCommitments> = sets.iter().map(|(c, _)| c).collect();
+        assert_eq!(
+            fold_commitments(comms).unwrap_err(),
+            CoreError::PartyCountMismatch
+        );
+        let shares: Vec<&ExpShare> = sets.iter().map(|(_, s)| &s[0]).collect();
+        assert_eq!(
+            fold_shares(shares).unwrap_err(),
+            CoreError::PartyCountMismatch
+        );
+    }
+
+    #[test]
+    fn fold_bound_is_below_scalar_order() {
+        // Ewaluacja u dealera: (q−1)^k < 2^(15·16) = 2^240 dla k ≤ 16.
+        // 16 dealerów: < 2^244. Rząd L grupy Ristretto255 jest > 2^252,
+        // więc suma Scalarów nie zawija modulo L. Wartości liczymy z
+        // bieżących stałych, żeby test nie był tautologią.
+        let q_bits = 64 - (Q as u64 - 1).leading_zeros();
+        assert_eq!(q_bits, 15);
+        let parties = u32::try_from(MAX_PARTIES_V1).expect("MAX_PARTIES_V1 fits u32");
+        let per_dealer_bits = parties * q_bits;
+        let all_dealers_bits = per_dealer_bits + 4;
+        assert_eq!(per_dealer_bits, 240);
+        assert_eq!(all_dealers_bits, 244);
+        assert!(all_dealers_bits < 252);
+        // Sam próg 2^252 < L sprawdza test `scalar_order_exceeds_2_252`.
+        assert_eq!(Scalar::ONE.to_bytes().len(), 32);
+    }
+
+    #[test]
+    fn scalar_order_exceeds_2_252() {
+        // 2^252 jako 32 bajty LE jest < L (L = 2^252 + δ, δ > 0).
+        let mut two_252 = [0u8; 32];
+        two_252[31] = 0x10;
+        let sc = Option::<Scalar>::from(Scalar::from_canonical_bytes(two_252)).expect("2^252 < L");
+        assert_eq!(sc.to_bytes(), two_252);
+        // 2^252 + 1 też jest < L (δ ≈ 2^124).
+        let mut plus_one = two_252;
+        plus_one[0] = 1;
+        assert!(Option::<Scalar>::from(Scalar::from_canonical_bytes(plus_one)).is_some());
     }
 
     #[test]

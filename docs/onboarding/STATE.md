@@ -1,5 +1,20 @@
 # Stan projektu — punkt wejścia
 
+**2026-10-26 — S09/THRESHOLD_P2_001: WP-016 DONE (pełne VSS + agregacja S5).**
+Domknięto lukę „próbki 8 współczynników”: `state::validate_dkg` składa teraz
+udziały dealerów per instancja seeda (`vss::fold_shares`), sumuje zobowiązania
+(`vss::fold_commitments`) i weryfikuje agregat **wszystkimi** współczynnikami.
+Test przy k=16 fałszuje wyłącznie współczynnik `x^15` i dostaje
+`InconsistentShare`, więc obejście z próbkowaniem zostałoby złapane.
+Bound dokładności: 16 dealerów × (q−1) < 2^244 < L ≈ 2^252 — suma Scalarów
+nie zawija modulo L. Zagregowany seed jest trzymany jako
+`Zeroizing<[u16; 32]>`, wydawany przez `seed_share()` bez kopiowania, `Debug`
+go nie wypisuje. Stan: 112 testów natywnych PASS (core 97 + protocol 12 +
+3 doctesty), clippy `-D warnings`/deny PASS, miri `vss::` 22/22 oraz protocol
+1 passed/11 ignored (powód w atrybucie). Dowód:
+`impl/ci/WP016_CHECK_2026-10-26.txt`. To nie jest odbiór — autor ≠ recenzent.
+Następne w G1: WP-015 (maski w `Z_P`) albo message flow setupu (WP-030).
+
 **2026-10-26 — S09/THRESHOLD_P2_001: WP-017 PARTIAL (zeroizacja typów).**
 Wszystkie typy sekretne w `core` mają `ZeroizeOnDrop`; `MacShare` stracił
 `Clone` (dowód: doctest `compile_fail`), `Debug` nie wypisuje sekretów.

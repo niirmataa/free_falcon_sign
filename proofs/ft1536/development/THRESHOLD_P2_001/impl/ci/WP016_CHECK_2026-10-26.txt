@@ -1,0 +1,71 @@
+# WP-016 check — 2026-10-26 (pełne VSS + agregacja S5)
+# host: Linux 6.12.113+deb13-amd64 x86_64 GNU/Linux
+# rustc: rustc 1.94.0 (4a4ef493e 2026-03-02)
+# cargo-deny: cargo-deny 0.20.2
+# nightly (miri): rustc 1.101.0-nightly (19833af72 2026-10-20), miri 0.1.0
+
+== fmt ==
+cargo fmt --all --check → OK (bez zmian)
+
+== test --workspace (locked, offline) ==
+ft-threshold-core:      97 passed; 0 failed; 0 ignored
+ft-threshold-protocol:  12 passed; 0 failed; 0 ignored
+doc-tests core:          1 passed
+doc-tests protocol:      2 passed (compile_fail)
+pozostałe crate'y:       0 testów (szkielety)
+RAZEM: 112 testów natywnych PASS, 0 failed.
+
+Nowe/zmienione testy (core, `vss`):
+- full_coefficient_verification_rejects_high_index_tamper
+  (k=16, fałszerstwo wyłącznie we współczynniku x^15 → InconsistentShare;
+  dowód, że pełna weryfikacja nie jest próbką 8 współczynników)
+- fold_shares_and_commitments_are_homomorphic
+- fold_rejects_empty_and_mixed_x (pusty zbiór, różne `x`, >16 dealerów
+  dla obu funkcji)
+- fold_bound_is_below_scalar_order (2^240 / 2^244 / < 2^252)
+- scalar_order_exceeds_2_252
+
+Nowe testy (protocol, `state`):
+- seed_share_equals_sum_of_dealer_secrets
+  (agregat = suma wielomianów dealerów w x = self_party, per instancja)
+- debug_does_not_show_seed
+
+== clippy -D warnings --workspace --all-targets ==
+Finished `dev` profile — 0 warning, 0 error.
+
+== cargo deny --offline check ==
+advisories ok, bans ok, licenses ok, sources ok
+
+== miri: core, filtr `vss::` (log .build/miri_vss_wp016.log) ==
+MIRIFLAGS="-Zmiri-disable-isolation" rustup run nightly cargo miri test \
+  -p ft-threshold-core --locked --offline vss::
+test result: ok. 22 passed; 0 failed; 0 ignored; 75 filtered out; finished in 254.44s
+
+== miri: protocol (log .build/miri_protocol_wp016.log) ==
+MIRIFLAGS="-Zmiri-disable-isolation" rustup run nightly cargo miri test \
+  -p ft-threshold-protocol --locked --offline
+test result: ok. 1 passed; 0 failed; 11 ignored; finished in 0.89s
+test result: ok. 2 passed; 0 failed; 0 ignored (doctesty)
+
+Uwaga o zakresie: testy crypto w protocol są `#[cfg_attr(miri, ignore = ...)]`
+z jawnym powodem (Ristretto/Poly O(N^2)); ich logikę pokrywa core pod miri.
+Miri nie jest dowodem kryptograficznym — to test UB/panic/memory-safety.
+
+== Zakres WP-016 ==
+- `vss::fold_shares`: suma ≤16 udziałów dla tego samego `x`, dokładna w
+  Scalarach (bound 2^244 < L ≈ 2^252; pusty zbiór / różne `x` / >16 → Err).
+- `vss::fold_commitments`: suma zobowiązań po współczynnikach, homomorficzna
+  względem `fold_shares`; ten sam cap 16 dealerów i te same błędy.
+- `state::validate_dkg` (S5): per instancja seeda agreguje udziały dealerów,
+  weryfikuje agregat względem zsumowanych zobowiązań **wszystkimi**
+  współczynnikami, przechowuje `Zeroizing<[u16; 32]>`; dostęp przez
+  `seed_share()` (bez kopiowania), `Debug` nie wypisuje seeda.
+- Usunięta ścieżka „próbki 8 współczynników” w weryfikacji agregatu.
+
+== Czego ten dowód NIE obejmuje ==
+- To nie jest niezależny odbiór (autor ≠ recenzent pozostaje wymagane).
+- Complaints/`CONTRIB_COMMIT`/`CONTRIB_REVEAL`/`SETUP_FINAL` (WP-030) — S5
+  jest tu funkcją agregacji, nie pełnym message flow.
+- MAC na wynikach obliczeń (auth triples) — WP-016 zamyka pełny VSS i
+  agregację, nie circuit-level MAC (O-02).
+- `PROD`: nadal zablokowane przez `ProdEvidenceMissing` (O-05).

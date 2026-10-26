@@ -39,6 +39,7 @@ use ft_threshold_core::ring::Poly;
 use ft_threshold_core::vss::{self, ExpShare, VssCommitments};
 use ft_threshold_core::{MAX_PARTIES_V1, Profile};
 use sha3::{Digest, Sha3_512};
+use zeroize::Zeroizing;
 
 /// Liczba instancji Shamira w Fazie A (jeden bajt `seed*` = jedna instancja).
 pub const SEED_INSTANCES: usize = 32;
@@ -65,6 +66,7 @@ pub struct PartyState<S> {
     k: usize,
     dkg: Option<DkgEvidence>,
     ntru: Option<NtruEvidence>,
+    seed: Option<Zeroizing<[u16; SEED_INSTANCES]>>,
     _stage: PhantomData<S>,
 }
 
@@ -124,6 +126,7 @@ impl PartyState<Unvalidated> {
             k,
             dkg: None,
             ntru: None,
+            seed: None,
             _stage: PhantomData,
         })
     }
@@ -179,6 +182,16 @@ impl PartyState<Unvalidated> {
             }
         }
 
+        // S5: agregacja udziałów i zobowiązań per instancja; agregat musi
+        // weryfikować się względem sumy zobowiązań (pełne współczynniki).
+        let mut seed = Zeroizing::new([0u16; SEED_INSTANCES]);
+        for (i, instance) in by_instance.iter().enumerate() {
+            let folded = vss::fold_shares(instance.values().map(|c| &c.share))?;
+            let comms = vss::fold_commitments(instance.values().map(|c| &c.commitments))?;
+            vss::verify_share(&folded, &comms)?;
+            seed[i] = folded.share_zq();
+        }
+
         let root = dkg_root(
             &self.sid,
             &self.pk_hash,
@@ -202,6 +215,7 @@ impl PartyState<Unvalidated> {
             k: self.k,
             dkg: Some(evidence),
             ntru: None,
+            seed: Some(seed),
             _stage: PhantomData,
         })
     }
@@ -212,6 +226,15 @@ impl PartyState<DkgOk> {
     pub fn dkg(&self) -> &DkgEvidence {
         // Bezpieczne: `PartyState<DkgOk>` powstaje wyłącznie z `validate_dkg`.
         self.dkg.as_ref().expect("DkgOk implies evidence")
+    }
+
+    /// Zagregowany udział seeda (32 wartości w `Z_q`, S5).
+    ///
+    /// To jest **sekret**: zwracamy referencję bez kopiowania; wartość jest
+    /// zerowana przy dropie stanu. Nie logować.
+    pub fn seed_share(&self) -> &[u16; SEED_INSTANCES] {
+        // Bezpieczne: `DkgOk` powstaje wyłącznie z `validate_dkg`.
+        self.seed.as_ref().expect("DkgOk implies seed")
     }
 
     /// Weryfikuje relację NTRU `f·h = g` w `R_q` i przechodzi w stan gotowy.
@@ -229,6 +252,7 @@ impl PartyState<DkgOk> {
             k: self.k,
             dkg: self.dkg,
             ntru: Some(ntru),
+            seed: self.seed,
             _stage: PhantomData,
         })
     }
@@ -238,6 +262,11 @@ impl PartyState<Ready> {
     /// Evidence NTRU (źródło: jawne `f,g,h`).
     pub fn ntru(&self) -> &NtruEvidence {
         self.ntru.as_ref().expect("Ready implies evidence")
+    }
+
+    /// Zagregowany udział seeda (sekret; jw.).
+    pub fn seed_share(&self) -> &[u16; SEED_INSTANCES] {
+        self.seed.as_ref().expect("Ready implies seed")
     }
 }
 
@@ -609,6 +638,45 @@ mod tests {
             SignSession::begin(ready, Profile::Prod).unwrap_err(),
             CoreError::ProdEvidenceMissing
         );
+    }
+
+    #[test]
+    #[cfg_attr(
+        miri,
+        ignore = "Ristretto/Poly O(N^2) w Miri są zbyt wolne; ścieżki crypto pokrywa core"
+    )]
+    fn seed_share_equals_sum_of_dealer_secrets() {
+        let state = validated();
+        let seed = state.seed_share();
+        for (instance, &value) in seed.iter().enumerate() {
+            // Wartość zagregowanego wielomianu w x = self_party = 1:
+            // suma po dealerach (secret_i + coeff_i·1).
+            let expected: u32 = PARTIES
+                .iter()
+                .map(|&d| {
+                    let secret = u32::from(instance as u16) + u32::from(d);
+                    let coeff = 7 + u32::from(d) + u32::from(instance as u16);
+                    secret + coeff
+                })
+                .sum();
+            assert_eq!(
+                u32::from(value),
+                expected % u32::from(ft_threshold_core::ring::Q),
+                "instance={instance}"
+            );
+        }
+    }
+
+    #[test]
+    #[cfg_attr(
+        miri,
+        ignore = "Ristretto/Poly O(N^2) w Miri są zbyt wolne; ścieżki crypto pokrywa core"
+    )]
+    fn debug_does_not_show_seed() {
+        let state = validated();
+        let text = format!("{state:?}");
+        assert!(text.contains("PartyState"));
+        assert!(!text.contains("seed"));
     }
 
     #[test]
