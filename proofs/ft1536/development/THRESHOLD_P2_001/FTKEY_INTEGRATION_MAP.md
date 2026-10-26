@@ -362,6 +362,15 @@ P2 `verify` ma używać **tego samego** commita `ad0d0f0…` i manifestu
 w API, `Drop` → `*_free`). Nie kopiować `build.rs` bez zrozumienia:
 `FT1536_C_SRC` jest jawnym wejściem operatora, brak implicit fetchu.
 
+**Zgodność źródeł sprawdzona 2026-10-26:** `sha256sum -c
+FTKEY/docs/pins/FT1536_SOURCES.sha256` uruchomione w
+`free_falcon_sign/Extra/c` daje **17/17 OK**. Domyślne
+`/opt/ft1536-source` **nie istnieje** na tej maszynie, więc build
+`ftkey-sys` trzeba oprzeć jawnie na
+`FT1536_C_SRC=/home/footfalcon/free_falcon_sign/Extra/c`.
+To nie jest nowy pin — to ten sam manifest, tylko wskazany na lokalne,
+zweryfikowane bajty.
+
 **Bramka:** KAT `pk`/`sig` + differential 10⁴ przed G1.
 
 ### S-2 — Format bundla
