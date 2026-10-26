@@ -2,6 +2,9 @@
 # Ten plik istnieje od WP-010; egzekwowanie w CI dołącza WP-011.
 
 [graph]
+# Budujemy i sprawdzamy wyłącznie x86_64-linux (CI); filtr odcina
+# opcjonalne backendy innych platform (np. fiat-crypto).
+targets = ["x86_64-unknown-linux-gnu"]
 all-features = false
 no-default-features = false
 
@@ -13,6 +16,7 @@ yanked = "deny"
 version = 2
 allow = [
     "Apache-2.0",
+    "BSD-3-Clause",
     "MIT",
     "Unicode-3.0",
 ]
