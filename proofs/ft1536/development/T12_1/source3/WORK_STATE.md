@@ -1,3 +1,27 @@
+# SEED9_R1 — ACTIVE; complete actual d2 return checkpoint595 accepted;596 next
+
+Owner: continue fully; no push, subagents, reviewers, relay or migration.
+Overall B1 IN_PROGRESS / NOT_REVIEWED.
+595 canonical keygen_secondextra212_595 accepted21/21,0/0,80 standard-only
+axiom results. Full original second make_fg_step body/call/enclosing return;
+all six product columns and both384-word images at one final heap, actual
+d2-to3 increment and true next guard. No desired output/source-run premise.
+Original u2 prefix/PRIMES3[2]/generator/signed-store walks/forward/products/
+false inverse branch/private scope/u3 terminal loop constructed. Generic
+signed-store walk exported; no old initialized t1 destination assumed.
+129.380s,maxRSS5960992KiB. ENTRY74673/predecessor594262 unchanged before/after.
+16 attempts retain5 elaboration/linter failures; no resource/suppression/
+failed cache. Executed/validated scoped source; independent review NOT_RUN.
+Report/evidence KEYGEN_SECOND_EXTRA_212_595_REPORT.md and matching JSON.
+Next596 generic bigint multiply/add-multiply and arbitrary-width CRT source;
+then later d levels/root/certificate/codec/full B1. No mathematical NTT/root/
+table/CRT/centering/Montgomery law or broad KeyGen/Sign/compiler/security/
+unconditional positivity/probability. Permanent195 bad bodyHeap/stepState
+UNUSED; corrected bodyAt/stepAt only. Old110/measured/five do_sign unchanged.
+Foreign work excluded; no push; continue after local commit.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; complete generic forward checkpoint594 accepted;595 next
 
 Owner: continue fully; no push, subagents, reviewers, relay or migration.
@@ -10080,3 +10104,41 @@ Job record (594): attempt013 — ACCEPTED_LOCAL2/2,0/0: actual ternary forward b
 Job record (594): canonical keygen_forward211_594 — ACCEPTED15/15,0/0,67 standard-only results,77.740s,maxRSS4206044KiB. Next final pins/evidence/local commit then595 actual additional-prime/full d2 source.
 
 Job record (594 checkpoint): evidence PASS262 bindings; entry74673/predecessor132 unchanged,15 accepted/67 standard-only results. Exact own19 paths, foreign work and212 draft excluded; no push. Continue595 actual additional-prime/full d2 source.
+
+Job record (595 start):594 committed5a6f8ee47f92e6c92817a95242a9bd4a8dc6a412, no push. Continue actual u2 additional-prime source prologue/generator/signed-store walk/forward/products and terminal full d2 return. New runtime .build/secondextra595;594 immutable. Next check stored-call draft ZintSignedStore212.
+
+Job record (595): entry74673/predecessor594262 verified. attempt001 — ACCEPTED_LOCAL ZintSignedStore212,23.297s,0/0: original signed-reduction call with actual t1[v] receiver, exact stored word and same-output bystander keeps; no old initialized t1 cell assumed. Next source row2 prime/R2/Rx prologue and caller Basic state.
+
+Job record (595): attempt002 — ACCEPTED_LOCAL2/2,0/0: actual PRIMES3[2] row/indexed reads and seven-statement p/p0i/R2/Rx prefix, original declarations/pointer clear, heap/other caller fields preserved and Basic2 state. Next generic signed-store walk preserving all source rows and earlier destination words.
+
+Job record (595): attempt003 — ACCEPTED_LOCAL2/2,0/0: generic signed-store step, exact destination prefix image and all source-array/read keeps; only source v/x increment changes caller controls. Next complete counted walk and original fs/gs initialization.
+
+Job record (595): attempt004 — ACCEPTED_LOCAL2/2,0/0: complete generic signed-store walk and original fs/gs initialization, same-output destination image, full source-array and separated-read preservation. Next actual row2 generator/forward/product composition.
+
+Job record (595): attempt005 — ACCEPTED_LOCAL SecondExtraProduct212,5.683s,0/0: actual fd/gd product loops now construct all three valid columns u<3 with exact products and separated-read keeps. No existing source module changed. Next row2 generator and concrete signed-walk/forward wrappers.
+
+Job record (595): attempt006 — generator/product/walk accepted3/3,0/0; forward retained elaboration failure: opaque gm/t1 index projections in omega, not a false separation claim. Add explicit concrete index change; next forward/geometry/one-side composition.
+
+Job record (595): attempt007 — forward ACCEPTED_LOCAL,4.277s,0/0; geometry retained only opaque constant root projections in arithmetic. Replace inferred placeholders by actual scratch indices before omega; scope and separation claims unchanged.
+
+Job record (595): attempt008 — geometry retained elaboration failure: unfolding destination aliases still left ft/element/offset opaque. Use four fully concrete byte-offset goals for column separation; no counterexample or changed domain.
+
+Job record (595): attempt009 — ACCEPTED_LOCAL2/2,0/0: concrete additional-prime write geometry and complete one-side signed-reduce→forward→128 products, exact same-output product image and bystander reads. Next paired source chain, false !out_ntt skip, loop exit and whole d2 call/return.
+
+Job record (595): attempt010 — ACCEPTED_LOCAL2/2,0/0: readonly PRIMES3/REV10 transferred from the actual d2 CRT prefix; both sides composed at one final heap, including actual false !out_ntt branch and exact fd2/gd2 products. Next seven-statement prefix/body scope and terminal u3 loop/full d2 return.
+
+Job record (595): attempt011 — ACCEPTED_LOCAL SecondExtraInner212,4.934s,0/0: full original additional-prime inner body, actual row2 prologue/generator, both signed-walk/forward/product paths and false inverse branch, preserving earlier product columns. Next private-scope restoration and terminal u3 loop, then full d2 return.
+
+Job record (595): attempt012 — retained two elaboration failures in exit metadata: next-state alias before rewrite and result-state size projection before simp. Increment/init/scope/guards themselves accepted; expose explicit next and heap-size equality. Next exit/loop/full d2 check.
+
+Job record (595): attempt013 — ACCEPTED_LOCAL3/3,0/0: private scope restoration, u2→3 increment and false 3<3 exit, original whole part4 and complete second make_fg_step body with all six product columns at one heap. Next flat384-word exports and actual caller return/d3 continuation, then canonical audit.
+
+Job record (595): attempt014 — retained unused simp-argument diagnostics in flat-image branch; warningAsError correctly rejected the module. Remove redundant simplifiers, keep all linters active; next flat image/caller return check.
+
+Job record (595): attempt015 — ACCEPTED_LOCAL2/2,0/0: complete flat fd/gd384 images, actual second call and enclosing body return, actual d2→3 increment/true next guard. No desired output/run premise. Next80-result axiom audit and canonical21-module replay.
+
+Job record (595): attempt016 — ACCEPTED_LOCAL audit,3.132s,0/0: six public interfaces and80 axiom results, only propext/Classical.choice/Quot.sound. Next canonical21-module replay, final immutable entry/predecessor checks and exact local checkpoint; continue596 after commit.
+
+Job record (595): canonical keygen_secondextra212_595 — ACCEPTED21/21,0/0,80 standard-only results,129.380s,maxRSS5960992KiB. Next seal evidence/exact own local checkpoint; continue596 generic bigint arithmetic.
+
+Job record (595 checkpoint): evidence PASS307 bindings; entry74673/predecessor262 unchanged,21 accepted/80 standard-only results. Exact own25 paths, foreign work excluded; no push. Continue596 generic bigint multiply/add-multiply and later d levels.
