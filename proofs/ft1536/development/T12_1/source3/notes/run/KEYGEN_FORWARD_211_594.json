@@ -1,0 +1,812 @@
+{
+  "utc": "2026-10-26T18:46:41.837186+00:00",
+  "status": "PROVED_KERNEL_SCOPED / NOT_REVIEWED",
+  "overall_owner_goal": "IN_PROGRESS; continue after this intermediate checkpoint",
+  "scope": "Complete original modp_NTT3_ext forward body/call/ternary branch for logn1..9,full0,stride1, with exact full word image and before\u2192after write frame/caller and outside-read preservation.",
+  "entry_manifest": {
+    "path": ".build/steprx195/ENTRY_PINS.json",
+    "sha256": "00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964"
+  },
+  "entry_checked_count": 74673,
+  "entry_missing": 0,
+  "entry_changed": 0,
+  "entry_checks": [
+    {
+      "path": ".build/forward594/entry_before.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/forward594/entry_after.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/forward594/predecessor_before.log",
+      "sha256": "122c3a6615236524757ec4805ca17c1343f194f65933553b81306ceddd6ba2ba"
+    },
+    {
+      "path": ".build/forward594/predecessor_after.log",
+      "sha256": "122c3a6615236524757ec4805ca17c1343f194f65933553b81306ceddd6ba2ba"
+    },
+    {
+      "path": ".build/forward594/entry_reverify_594.py",
+      "sha256": "641ca0817a30f5d2eea7390621f2686c267a2014e725b574033d856bfbf61d09"
+    },
+    {
+      "path": ".build/forward594/predecessor_verify.py",
+      "sha256": "efbfddb0781f7dac054aacb06577621c05c3c32677e491a46901f28c19da28d2"
+    },
+    {
+      "path": ".build/forward594/typecheck_reuse.py",
+      "sha256": "5468f1b7e5cab827f5e6d67d41183c5611585c345d7fe7f623e0c8a43f1271c0"
+    },
+    {
+      "path": ".build/forward594/typecheck_reuse_v2.py",
+      "sha256": "b9487802638c6b611c83600c7981aa2094faa7408e27be56df2be184ce56644c"
+    },
+    {
+      "path": ".build/forward594/typecheck_reuse_v3.py",
+      "sha256": "4ed0c98ba809f29b80c731c973c724eb3b41a31d74dd6e5ad223330d14fe206f"
+    }
+  ],
+  "predecessor_handoff": {
+    "path": "notes/run/KEYGEN_MODP_RX_210_593.json",
+    "sha256": "6bfa03618e8e92448703cf03161b47c05294592f5180119f60a681875cd78f28"
+  },
+  "predecessor_bindings_verified": 132,
+  "job": "keygen_forward211_594",
+  "accepted": 15,
+  "receipts": {
+    "path": ".build/jobs/keygen_forward211_594/RECEIPTS.json",
+    "sha256": "1b8721c3f888e26140b035b07cf53108a18d19756ea0b2e2270a74e6907c3b87"
+  },
+  "inputs": {
+    "path": ".build/jobs/keygen_forward211_594/SOURCE_INPUTS.json",
+    "sha256": "f3ad478bc4a6e1ee7cba61b67a7ad0d6059b01cec81a51587b611dfba6557419"
+  },
+  "runner": {
+    "path": ".build/jobs/keygen_forward211_594/RUNNER_SOURCE.py",
+    "sha256": "e8e9cf4ba5e744425464c0057a27d07f62ff82be352c479535425ff436c5b385"
+  },
+  "engine": {
+    "path": ".build/jobs/keygen_forward211_594/EXECUTION_SOURCE.py",
+    "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c"
+  },
+  "preflight": {
+    "path": ".build/jobs/keygen_forward211_594/PREFLIGHT.json",
+    "sha256": "4cd31eec372c256102a7af28792d16d002478f650777da786cef12e424d09ca3"
+  },
+  "modules": [
+    {
+      "module": "Source3.NttForwardPrologue211",
+      "source": {
+        "path": "formal/Source3/NttForwardPrologue211.lean",
+        "sha256": "adb35964b220289d9414a15606e20d4ba487cb878d6a0cc23ad373de50ce4822"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_forward211_594/formal/Source3/NttForwardPrologue211.lean",
+        "sha256": "adb35964b220289d9414a15606e20d4ba487cb878d6a0cc23ad373de50ce4822"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_forward211_594/lib/Source3/NttForwardPrologue211.olean",
+        "sha256": "ce6c5276ae15355e430f5f3eb0c5ade85bed192b3c8b914b476b2545a5741bf6"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardPrologue211.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardPrologue211.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 16.967,
+      "maxrss_kib": 4111696
+    },
+    {
+      "module": "Source3.NttForwardCompose211",
+      "source": {
+        "path": "formal/Source3/NttForwardCompose211.lean",
+        "sha256": "ceb6343c132402e7dcc0543642a64c17f6ee928602191ee9d02a293a14760368"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_forward211_594/formal/Source3/NttForwardCompose211.lean",
+        "sha256": "ceb6343c132402e7dcc0543642a64c17f6ee928602191ee9d02a293a14760368"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_forward211_594/lib/Source3/NttForwardCompose211.olean",
+        "sha256": "9ead8f02baaabf0deaec5f695da681d11e2f39d656683362a04bc96dbe23ca0c"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardCompose211.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardCompose211.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.573,
+      "maxrss_kib": 4150432
+    },
+    {
+      "module": "Source3.NttForwardFirstFrame211",
+      "source": {
+        "path": "formal/Source3/NttForwardFirstFrame211.lean",
+        "sha256": "b5afd1bb0a955f43a04d000cd440fc9f62e9a91e07af1845e091ae05bd00b11a"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_forward211_594/formal/Source3/NttForwardFirstFrame211.lean",
+        "sha256": "b5afd1bb0a955f43a04d000cd440fc9f62e9a91e07af1845e091ae05bd00b11a"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_forward211_594/lib/Source3/NttForwardFirstFrame211.olean",
+        "sha256": "7b5d56093649a2ef2d586012b3fbbf85003aa65fa02e6058beec97dfc6de91c6"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardFirstFrame211.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardFirstFrame211.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 4.374,
+      "maxrss_kib": 4150432
+    },
+    {
+      "module": "Source3.NttForwardFirst211",
+      "source": {
+        "path": "formal/Source3/NttForwardFirst211.lean",
+        "sha256": "307bd281e40545a749e8a6e7bc0cc3fe33bc97d6f522da7b9e7f4291c3c0d6dc"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_forward211_594/formal/Source3/NttForwardFirst211.lean",
+        "sha256": "307bd281e40545a749e8a6e7bc0cc3fe33bc97d6f522da7b9e7f4291c3c0d6dc"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_forward211_594/lib/Source3/NttForwardFirst211.olean",
+        "sha256": "b7ccdaceaf55b20f8e9b4c03e1040bb3b450b4d868227c50b7d476e39cf7c727"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardFirst211.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardFirst211.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 4.675,
+      "maxrss_kib": 4160260
+    },
+    {
+      "module": "Source3.NttForwardBinary211",
+      "source": {
+        "path": "formal/Source3/NttForwardBinary211.lean",
+        "sha256": "6bed453c2f282acef19266405ca9b86a7d8c3e3419817fca750169aeda007654"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_forward211_594/formal/Source3/NttForwardBinary211.lean",
+        "sha256": "6bed453c2f282acef19266405ca9b86a7d8c3e3419817fca750169aeda007654"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_forward211_594/lib/Source3/NttForwardBinary211.olean",
+        "sha256": "386e4ec25548d68359e46eaafbd64a258c1aa2f19c2f9c943644dcfc6ead5bca"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardBinary211.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardBinary211.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.372,
+      "maxrss_kib": 4160260
+    },
+    {
+      "module": "Source3.NttForwardMiddle211",
+      "source": {
+        "path": "formal/Source3/NttForwardMiddle211.lean",
+        "sha256": "503e3599d8a6a561150b0edeaa12c33f28672c3326605e6c388598694792f2df"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_forward211_594/formal/Source3/NttForwardMiddle211.lean",
+        "sha256": "503e3599d8a6a561150b0edeaa12c33f28672c3326605e6c388598694792f2df"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_forward211_594/lib/Source3/NttForwardMiddle211.olean",
+        "sha256": "1668e9258f16143876d7f07d2922c71dfdad9e9675fd6e2e10f8033da07e33b9"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardMiddle211.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardMiddle211.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 9.486,
+      "maxrss_kib": 4206044
+    },
+    {
+      "module": "Source3.NttForwardImage211",
+      "source": {
+        "path": "formal/Source3/NttForwardImage211.lean",
+        "sha256": "e3027807a7cd920f3537663b6fc6d2f82dfa231a7fd0d4290667085213320245"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_forward211_594/formal/Source3/NttForwardImage211.lean",
+        "sha256": "e3027807a7cd920f3537663b6fc6d2f82dfa231a7fd0d4290667085213320245"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_forward211_594/lib/Source3/NttForwardImage211.olean",
+        "sha256": "17736e4a3a54fceac028a5328026067a5a54bd5e088cae7a6275b37472052de9"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardImage211.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardImage211.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 4.077,
+      "maxrss_kib": 4206044
+    },
+    {
+      "module": "Source3.NttForwardVImage211",
+      "source": {
+        "path": "formal/Source3/NttForwardVImage211.lean",
+        "sha256": "85484ee2cc2fcfffb3ff7e40973f78e92e28c69c1f52d239ed493d1e25772ef9"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_forward211_594/formal/Source3/NttForwardVImage211.lean",
+        "sha256": "85484ee2cc2fcfffb3ff7e40973f78e92e28c69c1f52d239ed493d1e25772ef9"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_forward211_594/lib/Source3/NttForwardVImage211.olean",
+        "sha256": "64d193ceb74ddfa132bb9f78bbff439fd72edf0bd280b74d08bdec9bb1c07983"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardVImage211.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardVImage211.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 5.685,
+      "maxrss_kib": 4206044
+    },
+    {
+      "module": "Source3.NttForwardU1Image211",
+      "source": {
+        "path": "formal/Source3/NttForwardU1Image211.lean",
+        "sha256": "1cdad0e56edb9bcf21ae78740a63fc610906c90773fa170deed03261ead6e15b"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_forward211_594/formal/Source3/NttForwardU1Image211.lean",
+        "sha256": "1cdad0e56edb9bcf21ae78740a63fc610906c90773fa170deed03261ead6e15b"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_forward211_594/lib/Source3/NttForwardU1Image211.olean",
+        "sha256": "86d7b9cd4b8650c7faaeaf4604b142228df23ee9e498302c691b6a36a98cd934"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardU1Image211.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardU1Image211.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 4.026,
+      "maxrss_kib": 4206044
+    },
+    {
+      "module": "Source3.NttForwardRound211",
+      "source": {
+        "path": "formal/Source3/NttForwardRound211.lean",
+        "sha256": "9d3a88416330c857ab8eb74641d9319e836a8174992d728b556f959c346e323a"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_forward211_594/formal/Source3/NttForwardRound211.lean",
+        "sha256": "9d3a88416330c857ab8eb74641d9319e836a8174992d728b556f959c346e323a"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_forward211_594/lib/Source3/NttForwardRound211.olean",
+        "sha256": "bf7b1abb7fefff33b16312cba9c8bd1c8b6c18ec3b337064dd6e479ddd98a769"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardRound211.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardRound211.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.875,
+      "maxrss_kib": 4206044
+    },
+    {
+      "module": "Source3.NttForwardMloop211",
+      "source": {
+        "path": "formal/Source3/NttForwardMloop211.lean",
+        "sha256": "4e527e670b3b47e3b444fc85d075327507687ebcd4edaec3d24dee6be697c0f2"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_forward211_594/formal/Source3/NttForwardMloop211.lean",
+        "sha256": "4e527e670b3b47e3b444fc85d075327507687ebcd4edaec3d24dee6be697c0f2"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_forward211_594/lib/Source3/NttForwardMloop211.olean",
+        "sha256": "769622b927827eff30d0e9d1a03ff7aa0875cbb3f323452c632f6af0e677d137"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardMloop211.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardMloop211.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.623,
+      "maxrss_kib": 4206044
+    },
+    {
+      "module": "Source3.NttForwardWhole211",
+      "source": {
+        "path": "formal/Source3/NttForwardWhole211.lean",
+        "sha256": "b224009f48c2ad26afd406d03445cfe4a65dc5f903a3852a93973b662ecd3bac"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_forward211_594/formal/Source3/NttForwardWhole211.lean",
+        "sha256": "b224009f48c2ad26afd406d03445cfe4a65dc5f903a3852a93973b662ecd3bac"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_forward211_594/lib/Source3/NttForwardWhole211.olean",
+        "sha256": "5b2064df168be73df172193a3c19ae6c61159e89a1b8b33c74fda57d8d8600a2"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardWhole211.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardWhole211.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.422,
+      "maxrss_kib": 4206044
+    },
+    {
+      "module": "Source3.NttForwardCall211",
+      "source": {
+        "path": "formal/Source3/NttForwardCall211.lean",
+        "sha256": "438433215f2e0dd214eeaab182d15399eab01ed55243cf40dd42544bd8a142a5"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_forward211_594/formal/Source3/NttForwardCall211.lean",
+        "sha256": "438433215f2e0dd214eeaab182d15399eab01ed55243cf40dd42544bd8a142a5"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_forward211_594/lib/Source3/NttForwardCall211.olean",
+        "sha256": "c93ed5ddba241e0aed0b837d40962f7ae085e4e876c37e090548b2e525fa6d49"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardCall211.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardCall211.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.477,
+      "maxrss_kib": 4206044
+    },
+    {
+      "module": "Source3.NttForwardBranch211",
+      "source": {
+        "path": "formal/Source3/NttForwardBranch211.lean",
+        "sha256": "0c54c7336e88bd087f3ce0bc952e1c4f9423576b044a5d697fb9d640a55dc35d"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_forward211_594/formal/Source3/NttForwardBranch211.lean",
+        "sha256": "0c54c7336e88bd087f3ce0bc952e1c4f9423576b044a5d697fb9d640a55dc35d"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_forward211_594/lib/Source3/NttForwardBranch211.olean",
+        "sha256": "ae7084d05fdc7a048a0404926bfcdaec9c060028a9b78b013c299e7cf1804744"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardBranch211.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardBranch211.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.779,
+      "maxrss_kib": 4206044
+    },
+    {
+      "module": "Source3.NttForwardAudit211",
+      "source": {
+        "path": "formal/Source3/NttForwardAudit211.lean",
+        "sha256": "c5c4c6570dbb532a253461fe8a571e8681e97c0c9b75c879fb63fafd4141c853"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_forward211_594/formal/Source3/NttForwardAudit211.lean",
+        "sha256": "c5c4c6570dbb532a253461fe8a571e8681e97c0c9b75c879fb63fafd4141c853"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_forward211_594/lib/Source3/NttForwardAudit211.olean",
+        "sha256": "b8a8cc0045494aec837821611855f17485cf3893cb04c810c8c4c8dbd425cbf2"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardAudit211.stdout",
+        "sha256": "e98738004b8b70dfe20cb8a6cb85d916442090ca7a97eee9f2c64a18b259b478"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_forward211_594/logs/Source3_NttForwardAudit211.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.329,
+      "maxrss_kib": 4206044
+    }
+  ],
+  "axioms": {
+    "FT1536.Source3.NttForwardPrologue211.mixed_locals": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardPrologue211.locals": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardPrologue211.arrays": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardPrologue211.nCell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardPrologue211.hnCell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardPrologue211.free": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardPrologue211.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardCompose211.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardFirstFrame211.step_frame": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardFirstFrame211.remaining": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardFirstFrame211.first_run": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardFirst211.image": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardFirst211.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardBinary211.two_words": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardBinary211.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.width_at": [],
+    "FT1536.Source3.NttForwardMiddle211.alloc_at": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.reads_two": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.binary_fixed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.binary_frame": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.fixed_map": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.v_step": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.v_counter": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.v_first": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.v_second": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.v_init": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.vput_fixed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.v_after_fixed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.v_loop": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.v_loop_full": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.u1_setup": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.u1_setup_fixed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.u1_setup_twiddle": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.u1_setup_v": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.u1_body": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.u1_step": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.u1_step_fixed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.u1_counter": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.u1_position": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.u1_init": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.u1_initial_fixed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.u1_loop": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.u1_loop_full": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.m_prepared_fixed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMiddle211.m_body": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardImage211.image_keep": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardImage211.image_reads": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardImage211.image_word": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardImage211.binary_step": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardVImage211.v_loop_image": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardVImage211.v_loop_full_image": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardVImage211.u1_body_image": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardU1Image211.tableWord_eq": [
+      "propext"
+    ],
+    "FT1536.Source3.NttForwardU1Image211.u1_loop_image": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardU1Image211.u1_loop_full_image": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardRound211.m_body_image": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMloop211.plan": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMloop211.m_after_fixed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardMloop211.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardWhole211.half_count": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardWhole211.start_fixed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardWhole211.tail_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardWhole211.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardCall211.cells": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardCall211.read_frame": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardCall211.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NttForwardBranch211.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "failures_and_workshop": {
+    "path": "notes/run/KEYGEN_FORWARD_211_FAILURES_594.json",
+    "sha256": "ca367032317b8b1354d4f3f6b63fa799e538ef3ded13e0851877ef025d7f4fae"
+  },
+  "report": {
+    "path": "notes/run/KEYGEN_FORWARD_211_594_REPORT.md",
+    "sha256": "db89eacf02449ed41c77c0fa8960abca830db1e1eea9006a96a88fab51482a5f"
+  },
+  "evidence_generator": {
+    "path": ".build/evidence_v1.py",
+    "sha256": "1bc738f64ab2604686ab4e8da3ab0cc8eb3ef786f9486ab6b1d94cc70d513b3e"
+  },
+  "evidence_configuration": {
+    "path": ".build/forward594/evidence_config.json",
+    "sha256": "99d687732178b3320bbcc424a2dab8e0d7c27dede5699ecd418a2983f68ecab0"
+  },
+  "source_proof_markers": [],
+  "linter_suppressions": [],
+  "limits_unchanged": true,
+  "independent_review": "NOT_RUN",
+  "push": false,
+  "next_unused_suffix": 595,
+  "next_obligations": [
+    "Actual extra-prime u2 prologue/generator/signed conversion/forward/products",
+    "Terminal extra-prime loop/complete d2 return",
+    "Later d levels/root/certificate/codec/full B1"
+  ],
+  "not_claimed": [
+    "Forward full1 or arbitrary stride beyond existing frozen engines",
+    "Mathematical NTT/root/table/convolution law",
+    "Full d2 return/full KeyGen/Sign/compiler/security/unconditional positivity/probability",
+    "Independent review"
+  ]
+}

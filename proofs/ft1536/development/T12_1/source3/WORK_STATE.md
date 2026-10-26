@@ -1,3 +1,29 @@
+# SEED9_R1 — ACTIVE; complete generic forward checkpoint594 accepted;595 next
+
+Owner: continue fully; no push, subagents, reviewers, relay or migration.
+Overall B1 IN_PROGRESS / NOT_REVIEWED.
+594 canonical keygen_forward211_594 accepted15/15,0/0,67 standard-only
+axiom results. Full original modp_NTT3_ext logn1..9/full0/stride1, exact
+first/middle word image and complete write frame; original call/ternary
+branch, caller locals/arrays and outside reads preserved at same output.
+Permanent195 bad bodyHeap/stepState UNUSED; corrected bodyAt/stepAt only.
+Actual-size domains; dependent modules rebuilt after frame interface change.
+77.740s,maxRSS4206044KiB. ENTRY74673/predecessor593132 unchanged before/after.
+13 attempts retain2 elaboration failures; no resource/suppression/failed
+cache. Executed/validated scoped source; independent review NOT_RUN.
+Report/evidence KEYGEN_FORWARD_211_594_REPORT.md and matching JSON.
+Next595 actual u2 extra-prime prologue/generator/signed-store walk/forward/
+products/terminal loop/full d2 return. Draft ZintSignedStore212 written,
+NOT YET TYPECHECKED. Pinned PRIMES3 row2=(2147309569,686923925,434763914),
+read as source text only so far; bind by kernel row/index theorem next.
+Later d levels/root/certificate/codec/full B1 stay OPEN. No math NTT/root/
+table/convolution law or broad KeyGen/Sign/compiler/security/unconditional
+positivity/probability. Full1/arbitrary stride outside new engine scope.
+Old110/measured/five do_sign unchanged; foreign work excluded; no push.
+Continue after local commit.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; bounded Rx checkpoint593 accepted;594 next
 
 Owner: continue fully; no push, subagents, reviewers, relay or migration.
@@ -10022,3 +10048,35 @@ Job record (593): attempt007 — ACCEPTED_LOCAL audit,2.622s,0/0: five original 
 Job record (593): canonical keygen_modprx210_593 — ACCEPTED8/8,0/0,45 standard-only results,23.971s,maxRSS4189740KiB. Next final pins/evidence/local commit then594 lower-size forward source.
 
 Job record (593 checkpoint): evidence PASS132 new bindings; entry74673/predecessor142 unchanged,8 accepted/45 standard-only results. Foreign index observed empty; exact own12 paths, no push. Continue594 forward-size generalization after local commit.
+
+Job record (594 start):593 committed694498bdfde5e2d3a975dc7851e0c7299bc76236, no push. Continue generic full0/stride1 forward source/image over logn1..9; reuse corrected first-pass bodyAt/stepAt only, never defective StepNttFirst195.stepState. New runtime .build/forward594;593 immutable.
+
+Job record (594): entry74673/predecessor593132 verified. attempt001 — ACCEPTED_LOCAL NttForwardPrologue211,3.324s,0/0: original full0 forward prologue for logn1..9, actual early guard/MKN size/half and caller-slot preservation. Next corrected generic first-pass execution and exact word image, then variable-size middle rounds.
+
+Job record (594): attempt002 — Prologue/Compose accepted2/2,0/0; First retained elaboration failures: exact word selector uses dependent if (needs dite bridges), and the Fixed wide goal already expands count. Use dependent-if equations and direct bound arithmetic; no domain or output change. Next generic first-pass image retry.
+
+Job record (594): attempt003 — ACCEPTED_LOCAL NttForwardFirst211,3.473s,0/0: actual corrected first pass for logn1..9/full0/stride1, exact word image, preserved generator table, n/hn/full and free m/t cells. Next size-independent atomic binary image/keeps, then variable-size middle rounds.
+
+Job record (594): attempt004 — ACCEPTED_LOCAL NttForwardBinary211,2.670s,0/0: size-independent original binary butterfly, exact pair-update image and same-output caller/bystander keeps. Next generic-size adaptation of the sealed195 middle source spine (old bytes untouched), with actual data extent and explicit≤512 arithmetic domain.
+
+Job record (594): attempt005 — ACCEPTED_LOCAL NttForwardMiddle211,7.881s,0/0: generic actual-size middle source spine (v/block/u1/one round), with honest≤512 domain and actual data/table bounds; original195 unchanged. Next exact v/block word-image composition over those same outputs.
+
+Job record (594): attempt006 — ACCEPTED_LOCAL2/2,0/0: exact generic binary-image foundation and full v/block image at actual size, sharing the original source witness. Next u1-loop and mInner round word images, then counted dyadic m walk/full forward.
+
+Job record (594): attempt007 — ACCEPTED_LOCAL2/2,0/0: full generic u1-loop and original mInner source/word image at the same output. Next finite logn1..9 dyadic schedules/counting and m-walk image, then whole forward with a complete write frame.
+
+Job record (594): attempt008 — ACCEPTED_LOCAL NttForwardMloop211,3.272s,0/0: actual counted m walk and exact composed word image under kernel-checked dyadic plans for all logn1..9. Next strengthen corrected first-pass witness with a full write frame, then combine the whole forward body/call.
+
+Job record (594): attempt009 — ACCEPTED_LOCAL NttForwardFirstFrame211,4.374s,0/0: corrected first-pass witness now has a complete actual-size write frame together with all prior images/counters/keeps. Strengthened unsealed First211 public interface to expose it; no sealed file changed. Rebuild all dependent211 modules before whole forward check; reuse only unchanged independent inputs.
+
+Job record (594): attempt010 — all8 rebuilt dependencies accepted clean, including strengthened first-pass frame; Whole retained one Cell-vs-USlot alias mismatch under simpa. Use an explicit Cell bridge before the count/half rewrite; no statement/domain change. Next complete whole forward source and call frame.
+
+Job record (594): attempt011 — ACCEPTED_LOCAL NttForwardWhole211,3.530s,0/0: complete original full0/stride1 forward body for logn1..9, exact composed first/middle word image and full before→after write frame; actual m/t/u exits and false triple branch checked. Next original call frame and byte-wise bystander export.
+
+Job record (594): attempt012 — ACCEPTED_LOCAL NttForwardCall211,5.082s,0/0: original seven-argument forward call constructs the full generic body/image/frame, restores all caller locals/arrays and preserves arbitrary reads outside the actual write span. Next actual ternary branch/interface+axiom audit and canonical replay.
+
+Job record (594): attempt013 — ACCEPTED_LOCAL2/2,0/0: actual ternary forward branch and five original interfaces/67 standard-only axiom results. Complete generic logn1..9/full0/stride1 source body/call/image/write-frame ready. Next canonical15-module replay and local checkpoint; then595 additional-prime source composition/full d2 return.
+
+Job record (594): canonical keygen_forward211_594 — ACCEPTED15/15,0/0,67 standard-only results,77.740s,maxRSS4206044KiB. Next final pins/evidence/local commit then595 actual additional-prime/full d2 source.
+
+Job record (594 checkpoint): evidence PASS262 bindings; entry74673/predecessor132 unchanged,15 accepted/67 standard-only results. Exact own19 paths, foreign work and212 draft excluded; no push. Continue595 actual additional-prime/full d2 source.
