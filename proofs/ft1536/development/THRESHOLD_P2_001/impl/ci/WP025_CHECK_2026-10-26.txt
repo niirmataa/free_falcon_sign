@@ -1,0 +1,92 @@
+# WP-025 check — 2026-10-26 (build PROD bez ścieżek zakazanych)
+# host: Linux 6.12.113+deb13-amd64 x86_64 GNU/Linux
+# rustc: rustc 1.94.0 (4a4ef493e 2026-03-02)
+# cc: cc (Debian 14.2.0-19) 14.2.0 · nm: GNU nm (GNU Binutils for Debian) 2.44
+# cargo: offline, --locked
+
+== Cel ==
+Wymusić mechanicznie (I-09), że build PROD nie zawiera ścieżki
+`TEST-ORACLE` ani innych ścieżek zakazanych z G1: jawnego NTRU
+(`verify_plaintext`/`validate_ntru`), `xof`, `iso`, trusted-dealera ani
+linkowania testkitu. Wcześniej `verify_plaintext` istniał w każdym
+buildzie, a `PROD` był blokowany tylko runtime'owo
+(`CoreError::ProdEvidenceMissing`). To za słabe: wymaganie mówi „brak
+symboli”.
+
+== Co zmieniono ==
+1. `ft-threshold-protocol` ma cechę `test-oracle` (domyślnie **wyłączoną**).
+   Za nią są:
+   - `NtruEvidence::verify_plaintext`,
+   - `PartyState::<DkgOk>::validate_ntru`,
+   - wariant `EvidenceSource::PlaintextTestkit`.
+   Build domyślny nie zawiera tych symboli; nie da się też zbudować
+   `PartyState<Ready>` — do czasu O-05 (MPC NTRU) PROD nie ma żadnej
+   ścieżki do `SignSession`. To zamierzone fail-closed, nie regresja:
+   ścieżka PROD powstanie razem z O-05.
+2. `ci/check_prod_symbols.sh` — cztery kontrole:
+   (1) źródła: brak plików `xof.rs`/`iso.rs`, brak `mod xof/iso`, brak
+       `fn sign_ceremony|trusted_dealer|dealer_keygen|deal_full_key|delta_known`,
+       node/coordinator nie linkują `ft-threshold-testkit`;
+   (2) `nm -C` na release'owym rlib `ft-threshold-protocol` bez cechy:
+       **0** wystąpień `verify_plaintext|validate_ntru|PlaintextTestkit`;
+   (3) kontrola negatywna: z `--features test-oracle` **oba** symbole
+       muszą wystąpić (dowód, że skaner nie przechodzi wakacyjnie);
+   (4) przywrócenie artefaktu PROD i ponowny skan = 0.
+3. `ci/check.sh` uruchamia teraz także `cargo test/clippy --all-features`
+   oraz `ci/check_prod_symbols.sh`.
+
+Uwaga o zakresie: trusted dealer, `xof.rs` i `bin/iso.rs` nigdy nie
+istniały w tym workspace (były w spiku `THRESHOLD_SPIKE_001`, który ma
+własny SOURCE_MAP). Tutaj nie było czego „usuwać” — dodano zamknięcie
+jedynej realnej ścieżki oracle oraz mechaniczne guardy na przyszłość.
+
+== Wyniki ==
+`./ci/check_prod_symbols.sh`:
+
+  1. źródła:                  OK (brak zakazanych modułów/entry pointów)
+  2. PROD (bez cechy):        0 symboli oracle
+  3. test-oracle:             2 symbole obecne:
+       ft_threshold_protocol::state::NtruEvidence::verify_plaintext
+       ft_threshold_protocol::state::PartyState<...DkgOk>::validate_ntru
+  4. powrót do PROD:          0 symboli oracle
+
+Kontrola negatywna source-grepa (syntetyczna linia, bez zmiany źródeł):
+  `    fn sign_ceremony() {}` → wzorzec dopasował (MATCH) — guard nie
+  jest wakacyjny.
+
+Testy:
+  cargo test --workspace --locked --offline                 → 136 PASS
+    (core 114 + integracyjne 2 + protocol 15 + doctesty 5)
+  cargo test --workspace --all-features --locked --offline   → 140 PASS
+    (protocol 19; +4 testy oracle: pełny łańcuch, odrzucenie PROD,
+     niezgodność NTRU, klucz zerowy)
+  clippy (-D warnings), default i --all-features             → PASS
+  cargo fmt --all --check                                    → PASS
+  cargo deny --offline check                                 → PASS
+  cargo build --workspace --release --locked --offline       → PASS
+
+Piny zmienionych plików (SHA256):
+  04c1e396dc44658370de23b2ca1695334b12cc551b70357ce75cf463201ebb9d  crates/ft-threshold-protocol/Cargo.toml
+  5033010c62957ee0d76b40042a33b95d0615161869235afef3db7e0b8c423408  crates/ft-threshold-protocol/src/lib.rs
+  b43006d6037e90af7130dc3b15be5604de5e4f3c34d931b216b9edaab3d1f7a4  crates/ft-threshold-protocol/src/state.rs
+  3ab8912bf8da02692df7af4338fa32d9fb89c88cd8a1b43baee7045b407ae172  ci/check_prod_symbols.sh
+  e8708fa558156e468ea30dbcdbf303c0f607200a8c746ca29ddd6c0fdc0b7202  ci/check.sh
+
+== Czego to nie obejmuje ==
+- To nie jest niezależny odbiór ani dowód bezpieczeństwa; autor ≠
+  recenzent nadal wymagane.
+- Guard obejmuje ten workspace. Spike `THRESHOLD_SPIKE_001` ma własne
+  reguły; nie jest linkowany przez P2.
+- Brak analizy binarnej finalnego binarium node (node to szkielet bez
+  zależności; G2/WP-045 doda binarium i wtedy skan obejmie również je).
+- `miri` nie było ponawiane w tym kroku; zmiana dotyczy cfg/feature i
+  testów, nie unsafe. Poprzedni baseline miri pozostaje.
+- PROD nadal zablokowany przez O-05 (MPC NTRU), nie przez ten guard.
+
+== Powtórzenie ==
+```
+cd proofs/ft1536/development/THRESHOLD_P2_001/impl
+./ci/check_prod_symbols.sh
+cargo test --workspace --locked --offline           # 136
+cargo test --workspace --all-features --locked --offline  # 140
+```

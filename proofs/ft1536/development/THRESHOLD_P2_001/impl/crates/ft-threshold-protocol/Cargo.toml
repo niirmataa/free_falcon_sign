@@ -10,6 +10,13 @@ publish.workspace = true
 [lints]
 workspace = true
 
+[features]
+default = []
+# WP-025: jawny NTRU (`verify_plaintext`) i przejście `validate_ntru`
+# istnieją wyłącznie w buildzie testowym. Build PROD (bez tej cechy)
+# nie zawiera tych symboli — egzekwuje to `ci/check_prod_symbols.sh`.
+test-oracle = []
+
 [dependencies]
 ft-threshold-core = { version = "0.1.0", path = "../ft-threshold-core" }
 hmac = "0.12"

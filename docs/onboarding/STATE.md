@@ -1,5 +1,21 @@
 # Stan projektu — punkt wejścia
 
+**2026-10-26 — S09/THRESHOLD_P2_001: WP-025 DONE (build PROD bez oracle).**
+Ścieżka `TEST-ORACLE` (jawny NTRU) jest teraz za cechą `test-oracle`,
+domyślnie wyłączoną: `verify_plaintext`, `validate_ntru` i wariant
+`EvidenceSource::PlaintextTestkit` nie istnieją w buildzie PROD. Skutek
+zamierzony: bez O-05 (MPC NTRU) build PROD nie ma żadnej ścieżki do
+`SignSession` — fail-closed na poziomie kompilacji, nie tylko runtime.
+`ci/check_prod_symbols.sh` skanuje źródła (brak `xof`/`iso`/trusted
+dealera, node/coordinator nie linkują testkitu) oraz `nm` release-rlib:
+PROD = 0 symboli oracle, kontrola negatywna z cechą = 2 symbole.
+`ci/check.sh` uruchamia teraz testy/clippy także `--all-features` i ten
+skaner. Wynik: **136 testów PASS** domyślnie, **140 PASS** z
+`--all-features`; clippy/deny/fmt/release build PASS. Dowód:
+`impl/ci/WP025_CHECK_2026-10-26.txt`. To nie odbiór; PROD nadal czeka na
+O-05. Następne w G1: WP-024 (KAT pinów), WP-026 (reproducible build),
+WP-027 (wire freeze), WP-022 (fuzz).
+
 **2026-10-26 — S09/THRESHOLD_P2_001: WP-023 DONE (differential vs silnik).**
 Cztery prymitywy Rust porównano bajtowo z rzeczywistym źródłem silnika
 `Extra/c` (nie z kopią): `hash_to_point`, NTT ternarna, iNTT ternarna i

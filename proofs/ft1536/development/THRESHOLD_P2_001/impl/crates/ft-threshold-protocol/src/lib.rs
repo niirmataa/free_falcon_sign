@@ -6,7 +6,9 @@
 //!
 //! WP-014: typestate setupu ([`state`]) — podpis tylko z walidowanego
 //! DKG/NTRU. WP-020: uwierzytelnione koperty, licznik rund i replay-window
-//! ([`envelope`]). Pełny protokół (ruchy, complainty, transkrypt) w G2/WP-030.
+//! ([`envelope`]). WP-025: ścieżka `TEST-ORACLE` (jawny NTRU) jest
+//! dostępna wyłącznie z cechą `test-oracle`; build PROD nie zawiera jej
+//! symboli. Pełny protokół (ruchy, complainty, transkrypt) w G2/WP-030.
 
 #![forbid(unsafe_code)]
 

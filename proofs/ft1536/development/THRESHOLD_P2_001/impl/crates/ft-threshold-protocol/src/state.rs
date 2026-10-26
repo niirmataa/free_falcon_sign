@@ -19,13 +19,18 @@
 //!   przez [`vss::verify_share`] względem jego zobowiązań; zobowiązania są
 //!   agregowane w kanonicznej kolejności i wiązane z `sid`, `pk_hash` i `k`
 //!   w `dkg_root`, który musi się zgadzać z korzeniem transkryptu.
-//! - NTRU: relacja `f·h = g` w `R_q` jest liczona na jawnym kluczu.
+//! - NTRU: relacja `f·h = g` w `R_q` jest liczona na jawnym kluczu
+//!   **tylko w buildzie z cechą `test-oracle`** (WP-025).
 //!
 //! **Czego to nie zastępuje (jawne granice):**
 //! - `NtruEvidence::verify_plaintext` to ścieżka `TEST-ORACLE` (G2): używa
-//!   jawnego `f,g,h`. `PROD` wymaga sprawdzenia NTRU na udziałach bez
-//!   rekonstrukcji (O-05); dlatego [`SignSession::begin`] odrzuca profil
-//!   `Prod` z evidence źródła `PlaintextTestkit`.
+//!   jawnego `f,g,h`. W buildzie domyślnym (PROD) ta funkcja i
+//!   `PartyState::validate_ntru` **nie istnieją** — są wycinane przez
+//!   `#[cfg(feature = "test-oracle")]`. `PROD` wymaga sprawdzenia NTRU na
+//!   udziałach bez rekonstrukcji (O-05); do tego czasu build PROD nie ma
+//!   żadnej ścieżki do [`SignSession`]. [`SignSession::begin`] nadal
+//!   odrzuca profil `Prod` z evidence źródła `PlaintextTestkit`, gdy cecha
+//!   jest włączona.
 //! - Wiązanie `pk` z bajtami silnika jest osobnym krokiem (O-05);
 //!   `pk_hash` jest tu etykietą transkryptu, nie weryfikacją kodowania.
 //! - To jest szkielet typestate, nie pełny protokół setupu (ruchy, complainty
@@ -35,6 +40,7 @@ use std::collections::{BTreeMap, BTreeSet};
 use std::marker::PhantomData;
 
 use ft_threshold_core::error::{CoreError, Result};
+#[cfg(feature = "test-oracle")]
 use ft_threshold_core::ring::Poly;
 use ft_threshold_core::vss::{self, ExpShare, VssCommitments};
 use ft_threshold_core::{MAX_PARTIES_V1, Profile};
@@ -239,9 +245,11 @@ impl PartyState<DkgOk> {
 
     /// Weryfikuje relację NTRU `f·h = g` w `R_q` i przechodzi w stan gotowy.
     ///
-    /// To jest ścieżka `TEST-ORACLE`: `f,g,h` są jawne. Dla `PROD` potrzebne
-    /// jest sprawdzenie na udziałach (O-05); samo utworzenie stanu nie
-    /// autoryzuje `PROD` — robi to dopiero [`SignSession::begin`].
+    /// To jest ścieżka `TEST-ORACLE`: `f,g,h` są jawne. Dostępna wyłącznie
+    /// w buildzie z cechą `test-oracle`; build PROD nie zawiera tego
+    /// symbolu (WP-025). Dla `PROD` potrzebne jest sprawdzenie na udziałach
+    /// (O-05).
+    #[cfg(feature = "test-oracle")]
     pub fn validate_ntru(self, f: &Poly, g: &Poly, h: &Poly) -> Result<PartyState<Ready>> {
         let ntru = NtruEvidence::verify_plaintext(f, g, h)?;
         Ok(PartyState {
@@ -350,7 +358,9 @@ impl std::fmt::Debug for DkgEvidence {
 /// Źródło evidence NTRU.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum EvidenceSource {
-    /// Jawne `f,g,h` — wyłącznie `TEST-ORACLE` (G2).
+    /// Jawne `f,g,h` — wyłącznie `TEST-ORACLE` (G2), tylko z cechą
+    /// `test-oracle`. W buildzie PROD wariant nie istnieje.
+    #[cfg(feature = "test-oracle")]
     PlaintextTestkit,
     /// Sprawdzenie na udziałach bez rekonstrukcji (O-05, jeszcze niezaimplementowane).
     Mpc,
@@ -365,7 +375,9 @@ pub struct NtruEvidence {
 impl NtruEvidence {
     /// Weryfikuje `f·h = g` w `R_q` na jawnym kluczu (`TEST-ORACLE`).
     ///
-    /// Odrzuca `f = 0` i `h = 0` (klucz zdegenerowany).
+    /// Dostępna wyłącznie z cechą `test-oracle`; build PROD nie zawiera
+    /// tego symbolu (WP-025). Odrzuca `f = 0` i `h = 0` (klucz zdegenerowany).
+    #[cfg(feature = "test-oracle")]
     pub fn verify_plaintext(f: &Poly, g: &Poly, h: &Poly) -> Result<Self> {
         if f.is_zero() || h.is_zero() {
             return Err(CoreError::InvalidInput);
@@ -421,6 +433,9 @@ impl SignSession {
     ///
     /// Profil `Prod` wymaga evidence NTRU ze źródła [`EvidenceSource::Mpc`];
     /// evidence z jawnych `f,g,h` dostaje [`CoreError::ProdEvidenceMissing`].
+    /// W buildzie PROD (bez `test-oracle`) istnieje wyłącznie wariant `Mpc`,
+    /// więc kontrola jest dodatkową obroną w głąb, nie jedyną barierą:
+    /// samego oracle nie ma wtedy w kodzie.
     pub fn begin(state: PartyState<Ready>, profile: Profile) -> Result<Self> {
         let ntru = state.ntru();
         if profile == Profile::Prod && ntru.source() != EvidenceSource::Mpc {
@@ -530,11 +545,13 @@ fn hex32(bytes: &[u8; 32]) -> String {
 
 #[cfg(test)]
 mod tests {
-    use super::{
-        DealerContribution, EvidenceSource, PartyState, SEED_INSTANCES, SignSession, dkg_root,
-    };
+    use super::{DealerContribution, PartyState, SEED_INSTANCES, dkg_root};
+    #[cfg(feature = "test-oracle")]
+    use super::{EvidenceSource, SignSession};
+    #[cfg(feature = "test-oracle")]
     use ft_threshold_core::Profile;
     use ft_threshold_core::error::CoreError;
+    #[cfg(feature = "test-oracle")]
     use ft_threshold_core::ring::Poly;
     use ft_threshold_core::vss;
     use sha3::{Digest, Sha3_512};
@@ -599,6 +616,7 @@ mod tests {
             .expect("dkg")
     }
 
+    #[cfg(feature = "test-oracle")]
     fn toy_key() -> (Poly, Poly, Poly) {
         let mut f = vec![0u16; 1536];
         f[0] = 3;
@@ -613,6 +631,7 @@ mod tests {
     }
 
     #[test]
+    #[cfg(feature = "test-oracle")]
     #[cfg_attr(
         miri,
         ignore = "Ristretto/Poly O(N^2) w Miri są zbyt wolne; ścieżki crypto pokrywa core"
@@ -627,6 +646,7 @@ mod tests {
     }
 
     #[test]
+    #[cfg(feature = "test-oracle")]
     #[cfg_attr(
         miri,
         ignore = "Ristretto/Poly O(N^2) w Miri są zbyt wolne; ścieżki crypto pokrywa core"
@@ -796,6 +816,7 @@ mod tests {
     }
 
     #[test]
+    #[cfg(feature = "test-oracle")]
     #[cfg_attr(
         miri,
         ignore = "Ristretto/Poly O(N^2) w Miri są zbyt wolne; ścieżki crypto pokrywa core"
@@ -813,6 +834,7 @@ mod tests {
     }
 
     #[test]
+    #[cfg(feature = "test-oracle")]
     #[cfg_attr(
         miri,
         ignore = "Ristretto/Poly O(N^2) w Miri są zbyt wolne; ścieżki crypto pokrywa core"

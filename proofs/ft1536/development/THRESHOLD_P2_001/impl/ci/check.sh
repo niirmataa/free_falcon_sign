@@ -21,8 +21,17 @@ cargo build --workspace --locked --offline
 echo "== test (locked, offline) =="
 cargo test --workspace --locked --offline
 
+echo "== test all-features (test-oracle, locked, offline) =="
+cargo test --workspace --all-features --locked --offline
+
 echo "== clippy (-D warnings) =="
 cargo clippy --workspace --all-targets --locked --offline -- -D warnings
+
+echo "== clippy all-features (-D warnings) =="
+cargo clippy --workspace --all-targets --all-features --locked --offline -- -D warnings
+
+echo "== prod build bez symboli TEST-ORACLE (WP-025) =="
+./ci/check_prod_symbols.sh
 
 echo "== cargo deny (offline, cached advisory DB) =="
 if ! command -v cargo-deny >/dev/null 2>&1; then

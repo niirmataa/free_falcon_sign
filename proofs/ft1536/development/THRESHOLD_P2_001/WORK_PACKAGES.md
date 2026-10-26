@@ -36,7 +36,7 @@ Rozmiar: S (1 okno), M (2–3), L (4–8), XL (badania, bez daty).
 | WP-022 | G1 | Fuzz targets: wire, codec, `hash_to_point`, `decode_sk` | corpus + CI | fuzz | WP-019 | M | TODO |
 | WP-023 | G1 | Differential vs silnik: KAT + 10⁴ | 0 rozjazdów | raport | WP-012 | M | **DONE** 2026-10-26 — harness C kompiluje rzeczywiste `Extra/c/falcon-vrfy.c` (NTT ternarna, `mq_mkgm3`) + `falcon_hash_to_point` (`falcon-enc.c`/`shake.c`); Rust example liczy to samo; **4×10⁴** przypadków (`hash_to_point`, NTT, iNTT, mul), 1 280 036 B, **0 rozjazdów**; pin `impl/ci/engine_diff/PIN_2026-10-26.txt`; dowód `impl/ci/WP023_CHECK_2026-10-26.txt`. FFT/ffSampling/sampler: WP-040/041 |
 | WP-024 | G1 | KAT pins: seed/nonce/msg → pk/podpis/transkrypt | pin w repo + test | `KAT/` | WP-023 | M | TODO |
-| WP-025 | G1 | Usunąć ścieżki zakazane z builda prod (dealer, `xof`, `iso`, oracle sampler) | build prod bez symboli | CI + `grep` | WP-010 | S | TODO |
+| WP-025 | G1 | Usunąć ścieżki zakazane z builda prod (dealer, `xof`, `iso`, oracle sampler) | build prod bez symboli | CI + `grep` | WP-010 | S | **DONE** 2026-10-26 — cecha `test-oracle` (domyślnie OFF) wycina `verify_plaintext`/`validate_ntru`/`PlaintextTestkit`; `ci/check_prod_symbols.sh` skanuje źródła i `nm` release-rlib (PROD 0 symboli, kontrola negatywna 2); 136 testów default / 140 all-features; dowód `impl/ci/WP025_CHECK_2026-10-26.txt` |
 | WP-026 | G1 | Hermetyczne CI + reproducible build (offline, pinned, SBOM) | dwa buildy = ten sam hash | CI | WP-010 | M | TODO |
 | WP-027 | G1 | Wire/CBOR/CDDL freeze: canonical CBOR, envelope, MAC, limity | non-canonical odrzucone; schematy w repo; test vectors | test + dokument | WP-010 | M | TODO |
 
