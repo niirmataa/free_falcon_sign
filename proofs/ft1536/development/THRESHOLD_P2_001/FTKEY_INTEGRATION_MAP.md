@@ -188,7 +188,7 @@ nie przenosić.
 | R-9 | CLI `init/sign/verify/pub` | `crates/ftkey-cli` | **REFERENCE** | kształt komend, UX | nie przenosić logiki seeda |
 | R-10 | ADR-003 L1/L2 | `docs/adr/ADR-003-...md` | **OUT OF SCOPE (D-023)** | — | P2 nie używa VM/enclave; nie dziedziczy L1/L2 |
 
-### 3.1 Matematyka magazynu udziałów (ważna dla D-021)
+### 3.1 Matematyka magazynu udziałów (ważna dla D-024/B′)
 
 Parametry: `N=1536`, `q=18433` (15 bitów na współczynnik), pierścień
 `X^1536 − X^768 + 1`.
@@ -203,9 +203,9 @@ Parametry: `N=1536`, `q=18433` (15 bitów na współczynnik), pierścień
   pieczętowane na dysku/HSM kluczem pochodnym od tokena — to model FTKEY v0
   (`seal.rs`), nie model `token_seed` (blob na tokenie).
 - B (czysty) i ewentualny wariant „seed-share na tokenie + regeneracja
-  pułapki na sesję” zachowują przewagę 32 B. To trzeba rozstrzygnąć razem
-  z D-021, bo wpływa na to, czy token jest nośnikiem udziału, czy tylko
-  bramą do odszyfrowania.
+  pułapki na sesję” zachowują przewagę 32 B. **Rozstrzygnięte w D-024:**
+  v1 = B′ z udziałem pieczętowanym na dysku/HSM; token jest **bramą**
+  do odszyfrowania, nie nośnikiem udziału.
 - **Transport:** `getInfo` tego tokena zwraca `maxmsgsize=1536`, więc
   koperta 4 KB nie mieści się w jednej ramce CTAP2. `largeBlobs` musi być
   czytane i zapisywane fragmentami; libfido2 obsługuje fragmentację, ale
@@ -485,7 +485,10 @@ katalogu, jawne selektory urządzeń, brak globalnego kill.
 
 ---
 
-## 7. Wnioski dla decyzji D-021 (A vs B vs B′)
+## 7. Wnioski dla decyzji D-024 (B′); historia D-021
+
+**Decyzja 2026-10-26: B′ = `ACCEPTED` (D-024).** Poniższa analiza jest
+zapisem rozważań, nie otwartym pytaniem.
 
 1. **A** (udziały pułapki) jest najbliższe istniejącemu złotemu łańcuchowi
    `shares → s1,s2 → engine verify`, ale wymaga O-01 (bezdealerowy ważny
@@ -517,21 +520,23 @@ czy bramą. To jest pytanie do właściciela, nie do implementacji.
 
 ## 8. Pytania do właściciela (blokują część G1/G2)
 
-1. **D-021:** B′ (jednorazowy `G(seed*)` w setupie, duże udziały w
-   pieczęci) czy czysty B (32 B seed share, `G(seed*)` per podpis)?
-   Albo świadomie A (O-01 + O-02) i token tylko jako brama?
-2. **Nośnik udziału:** token ma **przechowywać** udział (tylko 32 B),
-   czy tylko **odblokowywać** pieczęć na dysku/HSM? To zmienia format
-   i claim.
+1. **D-021/D-024: ROZSTRZYGNIĘTE — B′** (jednorazowy `G(seed*)`
+   w setupie, duże udziały pułapki w pieczęci). Czysty B i A pozostają
+   odrzuconymi alternatywami; powrót wymaga nowej decyzji.
+2. **Nośnik udziału: ROZSTRZYGNIĘTE (D-024):** token **odblokowuje**
+   pieczęć na dysku/HSM (brama KEK + PIN/UV), nie przechowuje udziału —
+   udział B′ (~11,5 KB) nie mieści się w kopercie 4 KB.
 3. **F-1/F-2 w FTKEY:** po D-023 **nie są blockerami P2**; F-1/F-3/F-6/F-7
    to dług FTKEY. Czy zgłosić/naprawiać je w FTKEY osobnym zleceniem?
    Bez zgody właściciela nie modyfikuję tamtejszych repo.
 4. **Zakres E2E P2:** czy G2 może zostać na `TEST-ORACLE` + mockach
    (z jawnym `NOT_RUN`), czy wymagasz trzech nodów już w G2? QSX/VM
    **nie wchodzi** (D-023).
-5. **D-003/010/011/013/016/022:** bez zmian; nadal `PROPOSED`.
+5. **D-003/010/011/013/016/022:** **ACCEPTED 2026-10-26**; D-024 (B′)
+   też `ACCEPTED`. Otwarte pozostają D-004/005/006/012/014/015.
 
 **D-023 jest ACCEPTED:** QSX/VM wyłączone; nie ma pytania o QSX.
+**D-024 jest ACCEPTED:** B′; pytanie o nośnik udziału zamknięte.
 
 ---
 
@@ -573,6 +578,8 @@ dług FTKEY (D-023); **P2 ich nie buduje ani nie uruchamia**.
 - Żywy token: `getInfo` + `pub` (unseal + keygen) **PASS** 2026-10-26;
   live `sign`/`verify` **NOT_RUN**. Żywy KVM/FIDO w VM **NOT_RUN**;
   po D-023 to nieistotne dla P2.
-- P2: nadal G0 `IN_PROGRESS`; żadna bramka nie jest zamknięta.
-- D-021: nadal `PROPOSED`; ten dokument dostarcza argumentów, nie decyzji.
+- P2: **G0 → G1**; decyzje G1 potwierdzone 2026-10-26, żadna bramka
+  nie jest jeszcze zamknięta.
+- D-024: **ACCEPTED** — B′; D-021 `SUPERSEDED`. Ten dokument dostarczył
+  argumentów, decyzja jest w `DECISIONS.md`.
 - D-023: **ACCEPTED** — QSX/VM wyłączone z P2.

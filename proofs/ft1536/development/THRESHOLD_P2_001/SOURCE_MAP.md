@@ -69,9 +69,9 @@ regresją `TEST-ORACLE`; nie jest KAT `PROD`.
 | `MPS_T13_NOTES.md` | **REFERENCE** | #16/#2/#9 |
 | `M6_FAILURE_ABORT.md` | **REFERENCE** | fail-closed |
 | `M5_PINS_SCHEMA.md` | **REFERENCE** | pin seeds; packet OPEN |
-| `DESIGN.md` | **REFERENCE** | A vs B; D-021 |
+| `DESIGN.md` | **REFERENCE** | A vs B; D-021 → D-024 (B′); nie wybiera zadania |
 | `P1_SIGN_PROTOCOL.md` | **REFERENCE** | szkic rund; nie spec |
-| `MAP_GSEED_SHARE_NATIVE.md` | **REFERENCE** | wariant B odłożony |
+| `MAP_GSEED_SHARE_NATIVE.md` | **REFERENCE** | wejście do O-16 (B′); nadal nie kod |
 | `I1_COST_NOTES.md`, `I3_SHAKE_MPC_COST.md` | **REFERENCE** | rzędy kosztów, nie pomiar |
 | `PROMPT_T11_PUBLIC_KEYGEN_CEREMONY.md`, `SECURITY_AUDIT_T11_REPORT.md` | **REFERENCE** | wymagania, nie implementacja |
 | `PROMPT_T14_HIDDEN_DELTA_G2.md` | **OUT** | untracked/obcy; nie importować |

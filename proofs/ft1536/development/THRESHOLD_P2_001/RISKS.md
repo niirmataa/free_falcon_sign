@@ -25,7 +25,7 @@
 | R-08 | **Fałszywe claims** — „threshold gotowy” w komunikacji | M | H | publikacja bez rejestru | claims register, review przed publikacją | prowadzący |
 | R-09 | **Brak HSM/TPM** — soft-seal w produkcji | M | H | G5 bez HSM | D-013; HSM od G3 | W13 |
 | R-10 | **Złożoność protokołu** — za dużo rund/stanów | M | M | testy chaosu fail | spec-first, model checking, uproszczenie | W1/W11 |
-| R-11 | **Błędny DKG NTRU** — ceremonia nie generuje poprawnej relacji | H | H | `fG−gF=q` fail | badania W4; check + generacja; stop-and-report | W4 |
+| R-11 | **MPC `G(seed*)` (B′) nie domyka się** — obwód keygenu/rejection jest za drogi lub błędny | H | H | O-16 bez implementacji; zły `pk` | badania W4; zero-test O-04; stop-and-report; jawna decyzja o zmianie zakresu | W4 |
 | R-12 | **Zależność od jednej osoby** — cała wiedza w jednym oknie | M | M | brak handoffu | WORK_STATE, dokumenty, review | prowadzący |
 | R-13 | **Flaky testy/IO** — jak F-18 w spiku | M | M | niestabilne CI | deterministyczne harnessy, `--test-threads=1`, retry z raportem | W2 |
 | R-14 | **Zły nonce/fault** — deterministyczny nonce, replay | M | M | atak na sesję | hedged nonce, sesja/epoka, testy | W9 |
@@ -40,6 +40,7 @@
 | R-18 | Logi zawierają sekrety | L | H | skan logów | `ft-secrets-hygiene`, redakcja, test |
 | R-19 | Nieaktualne piny/KAT po zmianie silnika | M | M | zmiana `ft1536-sys` | pin + re-run KAT |
 | R-20 | Zbyt późne wykrycie buga w audycie | M | H | audyt na końcu | audyt ciągły, scope w G2 |
+| R-21 | **Utrata tokena/HSM blokuje node** (B′: token = brama KEK) | M | M | brak tokena przy podpisie | co najmniej 2 nody sprawne; procedura wymiany tokena; backup pieczęci wg O-21 |
 
 ---
 

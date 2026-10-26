@@ -1,5 +1,19 @@
 # Stan projektu — punkt wejścia
 
+**2026-10-26 — S09: decyzje potwierdzone, wariant B′ (D-024).**
+Właściciel potwierdził: **2-of-3** (D-003), **TLS 1.3/mTLS** (D-010),
+**kanoniczne CBOR** (D-011), **HSM od G3** (D-013), **produkcja w `[N]`
+na G3** (D-016), **G2 = `TEST-ORACLE` / G3 = `PROD`** (D-022) oraz
+**B′** jako reprezentację klucza (D-024; D-021 `SUPERSEDED`).
+B′ = seed-share DKG + jednorazowy MPC `G(seed*)` w setupie → udziały
+pułapki; seed zeroizowany, token = brama KEK pieczęci (nie nośnik).
+O-16 (MPC `G`) wchodzi do v1 jako blocker G3; O-01 jest przez nie
+subsumowany, nie „rozwiązany”. WP-003 `DONE`; G1 odblokowany —
+następne WP-010/011 (workspace + CI), potem WP-012. Nadal `PROPOSED`:
+D-004/005/006/012/014/015 (nie blokują G1). Live `sign`/`verify`
+host-path: polecenia przekazane właścicielowi, wynik **NOT_RUN** do
+czasu przebiegu. Zmiany lokalne; bez push.
+
 **2026-10-26 — S09/D-023: QSX/VM wyłączone z P2.**
 Właściciel: „nie używamy już VM QSX, ponieważ właśnie po to robimy próg,
 żeby rozwiązać tę historię”. P2 **nie używa** `ftkey-vm`, QSX ani

@@ -27,11 +27,10 @@ Nie nadpisujemy historii — korekta = nowy wpis.
 ## D-003 — Parametry v1: 2-of-3
 
 - **Data:** 2026-10-26
-- **Status:** **PROPOSED**
+- **Status:** **ACCEPTED** (właściciel, 2026-10-26: potwierdzone domyślne)
 - **Treść:** v1 = k=2, n=3 (jeden padający/złośliwy); v2 = 3-of-5.
 - **Uzasadnienie:** najmniejszy realny próg z honest majority i tolerancją
   jednej awarii; 2-of-2 nie jest progiem.
-- **Do potwierdzenia:** czy v1 nie ma być od razu 3-of-5.
 
 ## D-004 — Warunek honest majority
 
@@ -84,14 +83,14 @@ Nie nadpisujemy historii — korekta = nowy wpis.
 ## D-010 — Transport: TLS 1.3 / mTLS
 
 - **Data:** 2026-10-26
-- **Status:** **PROPOSED**
+- **Status:** **ACCEPTED** (właściciel, 2026-10-26: potwierdzone domyślne)
 - **Treść:** rustls + mTLS; framing długość+typ; sesje i replay-window.
-- **Alternatywa:** Noise XX. Decyzja po WP-011.
+- **Odrzucona alternatywa:** Noise XX (na razie); powrót wymaga nowej decyzji.
 
 ## D-011 — Serializacja: kanoniczne CBOR
 
 - **Data:** 2026-10-26
-- **Status:** **PROPOSED**
+- **Status:** **ACCEPTED** (właściciel, 2026-10-26: potwierdzone domyślne)
 - **Treść:** deterministyczne CBOR (RFC 8949) + ścisłe schematy + limity.
 - **Uzasadnienie:** audytowalność, wersjonowanie, brak zależności od
   niestabilnego `bincode`.
@@ -107,10 +106,11 @@ Nie nadpisujemy historii — korekta = nowy wpis.
 ## D-013 — HSM/TPM od G3
 
 - **Data:** 2026-10-26
-- **Status:** **PROPOSED**
+- **Status:** **ACCEPTED** (właściciel, 2026-10-26: potwierdzone domyślne)
 - **Treść:** G2 może używać soft-seal z zeroizacją; G3 wymaga HSM/TPM
   dla udziałów w spoczynku.
-- **Do potwierdzenia:** czy HSM ma być wymagany już w G2.
+- **Konsekwencja:** HSM nie jest warunkiem G1/G2; udział B′ w spoczynku
+  na G3 wymaga HSM/TPM (albo jawnej decyzji o ryzyku).
 
 ## D-014 — Refresh w v1.1
 
@@ -130,10 +130,11 @@ Nie nadpisujemy historii — korekta = nowy wpis.
 ## D-016 — Produkcja przenoszona do `[N]` na G3
 
 - **Data:** 2026-10-26
-- **Status:** **PROPOSED**
+- **Status:** **ACCEPTED** (właściciel, 2026-10-26: potwierdzone domyślne)
 - **Treść:** development w `free_falcon_sign`; crate produkcyjne do
   `[N]/crates/` po G3, z zachowaniem pinów i manifestu.
-- **Do potwierdzenia:** docelowa lokalizacja i właściciel integracji.
+- **Konsekwencja:** przeniesienie wykonuje koordynator po odbiorze G3;
+  nie jest automatyczne i nie zmienia historii lane'u.
 
 ## D-017 — Dowód i audyt przed produkcją
 
@@ -171,7 +172,7 @@ Nie nadpisujemy historii — korekta = nowy wpis.
 ## D-021 — Reprezentacja klucza w v1: wariant A (udziały pułapki)
 
 - **Data:** 2026-10-26
-- **Status:** **PROPOSED**
+- **Status:** **SUPERSEDED** przez D-024 (2026-10-26); zachowany jako historia.
 - **Treść:** v1 używa udziałów `(f_i,g_i,F_i,G_i)` i MPC-ffSampling
   (wariant A). Wariant B (udział seeda + obwód `G(seed*)` w MPC) jest
   odłożony poza v1.
@@ -189,11 +190,11 @@ Nie nadpisujemy historii — korekta = nowy wpis.
 ## D-022 — Podział bramek: G2 = signing plumbing, G3 = realna krypto
 
 - **Data:** 2026-10-26
-- **Status:** **PROPOSED**
+- **Status:** **ACCEPTED** (właściciel, 2026-10-26: potwierdzone domyślne)
 - **Treść:** G2 zamyka **protokół podpisu** na profilu `TEST-ORACLE`
   (znany klucz testowy + deterministyczny sampler), z pełnym harnessem
-  złośliwych stron i brakiem reconstruct w ścieżce sign. G3 wymaga
-  bezdealerowego, ważnego setupu NTRU, realnego Klein/ffSampling,
+  złośliwych stron i brakiem reconstruct w ścieżce sign. G3 wymaga MPC
+  `G(seed*)` B′ (ważny NTRU bez rekonstrukcji), realnego Klein/ffSampling,
   bajtowej zgodności i sieci.
 - **Uzasadnienie:** nie blokować całego postępu na nierozwiązanym
   keygenie NTRU; jednocześnie nie ogłaszać G2 „produkcją” ani „bez
@@ -226,17 +227,55 @@ Nie nadpisujemy historii — korekta = nowy wpis.
 
 ---
 
-## Decyzje do potwierdzenia teraz (blokują G1)
+## D-024 — Reprezentacja klucza w v1: wariant B′
 
-| ID | Pytanie | Domyślna odpowiedź |
-|---|---|---|
-| D-003 | 2-of-3 czy 3-of-5 w v1? | 2-of-3 |
-| D-010 | TLS 1.3/mTLS czy Noise? | TLS 1.3/mTLS |
-| D-013 | HSM od G2 czy G3? | od G3 |
-| D-016 | produkcja w `[N]` na G3? | tak |
-| D-011 | CBOR czy inny format? | kanoniczne CBOR |
-| D-021 | wariant A, B czy B′ w v1? | **otwarte**: właściciel skłania się ku B; rekomendacja B′; brak decyzji |
+- **Data:** 2026-10-26
+- **Status:** **ACCEPTED** (właściciel wybrał **B′**; zastępuje D-021)
+- **Treść:** v1 używa **B′**: setup dzieli 32-bajtowy `seed*` na udziały
+  (seed-share DKG), a następnie **jednorazowo** liczy w MPC funkcję
+  `G(seed*)` = `keygen_from_seed_32` i otrzymuje udziały pułapki
+  `(f_i,g_i,F_i,G_i)` oraz publiczne `pk` (`h = g·f^{-1}`), bez
+  rekonstrukcji `seed*`, `f`, `g`, `F` ani `G`. Po udanym setupie udziały
+  seeda są zeroizowane i **nie** są przechowywane w normalnej ścieżce.
+- **Podpis:** A-style MPC ffSampling na udziałach pułapki; brak seeda
+  i brak reconstruct w ścieżce sign.
+- **Magazyn:** udział pułapki to ~11,5 KB binarnie, więc **nie** mieści
+  się w kopercie 4 KB tokena. Udział leży w pieczęci na dysku/HSM
+  (G2: soft-seal z zeroizacją; G3: HSM/TPM — D-013). Token per node
+  pozostaje **bramą KEK** (`hmac-secret` + PIN/UV) do odpieczętowania
+  udziału, a nie nośnikiem udziału.
+- **Dlaczego nie czysty B:** B płaci MPC `G(seed*)` **per podpis** i trzyma
+  udziały seeda bezterminowo; B′ płaci to raz w setupie i usuwa seed
+  z systemu. Czysty B pozostaje odrzuconą alternatywą; powrót wymaga
+  nowej decyzji.
+- **Konsekwencje:**
+  - **O-16** (MPC `G(seed*)`) wchodzi do zakresu v1 jako blocker G3;
+    nie jest już „po v1”. O-01 (bezdealerowy ważny keygen NTRU) jest
+    **subsumowany** przez O-16 na ścieżce B′ — nie wolno ogłaszać O-01
+    „rozwiązanego”, dopóki O-16 nie ma implementacji i dowodu.
+  - **O-02** (realny MPC ffSampling) pozostaje największym blockerem G3.
+  - `TEST-ORACLE`/G2 bez zmian: znany klucz testowy + deterministyczny
+    sampler; G2 nadal nie jest `PROD` ani „bez dealera”.
+  - Refresh/reshare działa na udziałach pułapki (A-style), bez `G`;
+    odzyskanie po utracie udziału wymaga backupu pieczęci albo nowego
+    setupu z nowym `pk` — dokładna polityka to punkt otwarty O-21.
+  - `SOURCE_MAP.md`: `MAP_GSEED_SHARE_NATIVE.md` przestaje być „odłożony”,
+    staje się materiałem wejściowym do O-16 (nadal `REFERENCE`, nie kod).
 
-**D-022** nie blokuje G1; porządkuje G2/G3 i wymaga potwierdzenia przed
-startem WP-030. Brak potwierdzenia = zostaje `PROPOSED`; nie blokuje G0,
-blokuje G1 (D-021) albo G2 (D-022).
+---
+
+## Status decyzji po potwierdzeniu 2026-10-26
+
+Potwierdzone przez właściciela (domyślne): **D-003** (2-of-3), **D-010**
+(TLS 1.3/mTLS), **D-011** (kanoniczne CBOR), **D-013** (HSM od G3),
+**D-016** (produkcja w `[N]` na G3), **D-022** (G2 = `TEST-ORACLE`,
+G3 = `PROD`). Wybór wariantu: **D-024 = B′** (D-021 `SUPERSEDED`).
+
+Nadal `PROPOSED` (nie blokują WP-010/011/012): D-004 (warunek honest
+majority), D-005 (byte-compatibility), D-006 (model bezpieczeństwa),
+D-012 (język/MSRV), D-014 (refresh w v1.1/G5), D-015 (nonce hedged).
+Wymagają potwierdzenia przed G2 (D-005/D-006) i przed G3 (D-012/D-014).
+
+**Uwaga o spójności:** GATES G3 wymaga „refresh/reshare”, a D-014
+odkłada implementację do v1.1/G5. To nie jest rozstrzygnięte tym wpisem;
+przed G3 trzeba albo potwierdzić D-014, albo zaostrzyć G3.

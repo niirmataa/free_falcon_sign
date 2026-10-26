@@ -1,6 +1,6 @@
 # THRESHOLD_P2_001 — progowy podpis FT1536 (P2)
 
-**Status: IN_PROGRESS — G0 (kontrakt, plan, spec v0).**
+**Status: G0 → G1 — decyzje potwierdzone 2026-10-26 (B′ = D-024).**
 **To NIE jest produkcja, NIE jest threshold signing, NIE jest deklaracja bezpieczeństwa.**
 
 Cel programu: progowy podpis FT1536 **k-z-n** w modelu **złośliwym**,
@@ -58,9 +58,10 @@ Mapa dyspozycji: [`SOURCE_MAP.md`](SOURCE_MAP.md).
 
 ## Następny krok
 
-G0 jest domknięty dokumentacyjnie (SPEC v0 istnieje). Właściciel potwierdza
-sześć decyzji z [`DECISIONS.md`](DECISIONS.md) (D-003/010/011/013/016/021;
-D-022 przed G2), potem startuje WP-010/011 (workspace + hermetyczne CI)
-i WP-012 (port prymitywów z KAT). G2 buduje signing plumbing na
-`TEST-ORACLE`; G3 dopiero wprowadza bezdealerowy setup NTRU i realny
+G0 jest domknięty dokumentacyjnie (SPEC v0 istnieje), a decyzje G1 są
+potwierdzone: 2-of-3 (D-003), TLS 1.3/mTLS (D-010), CBOR (D-011), HSM
+od G3 (D-013), produkcja w `[N]` na G3 (D-016), B′ (D-024), G2 =
+`TEST-ORACLE` / G3 = `PROD` (D-022). Startuje WP-010/011 (workspace +
+hermetyczne CI) i WP-012 (port prymitywów z KAT). G2 buduje signing
+plumbing na `TEST-ORACLE`; G3 wprowadza MPC `G(seed*)` B′ i realny
 Klein/ffSampling.

@@ -11,7 +11,7 @@ i docelowa usługa. Nie obejmuje bazy FT1536 ani silnika C jako przedmiotu dowod
 | Aktywo | Gdzie żyje | Skutek kompromitacji |
 |---|---|---|
 | `sk` / trapdoor `f,g,F,G` | wyłącznie udziały u stron | pełne sfałszowanie podpisu |
-| seed 32 B (jeśli używany) | udziały / DKG | odtworzenie klucza |
+| seed 32 B (B′) | tylko w setupie, w udziałach; zeroizowany po MPC `G(seed*)` | odtworzenie klucza (gdyby przetrwał) |
 | udziały Shamir | sealed storage strony | k−1 udziałów = brak klucza; k = klucz |
 | MAC δ / klucze auth | strony, DKG | fałszerstwo otwarć |
 | PRSS seeds | pary stron | przewidzenie masek |
@@ -63,6 +63,13 @@ jednego hosta jest modelowana jako corruption jednej strony; bezpieczeństwo
 opiera się na progu i honest majority, nie na hypervisorze. Nie ma
 założenia „L1/L2”, które trzeba by dowodzić dla VM.
 
+**Uwaga (D-024, B′):** `seed*` istnieje wyłącznie w udziałach podczas
+setupu i jest zeroizowany po MPC `G(seed*)`; w spoczynku trzymamy udziały
+pułapki. Token per node jest **bramą KEK** (hmac-secret + PIN/UV), nie
+nośnikiem udziału: bez tokena i bez pliku pieczęci nie ma udziału, ale
+sama kradzież tokena nie daje udziału. Token + host = kompromitacja
+jednej strony, nie klucza.
+
 ---
 
 ## 4. Założenia kryptograficzne
@@ -102,7 +109,7 @@ jest warunkowe. Nie wolno wpisywać A-01 jako przesłanki dowiedzionej.
 | Atak | Kontrola | Gdzie test |
 |---|---|---|
 | Fałszywy udział DKG | Pedersen VSS + complaints | W4 |
-| Fałszywy wkład NTRU | publiczny check `fG−gF=q` na udziałach | W4 |
+| Fałszywy/błędny wynik MPC `G(seed*)` w setupie B′ | zero-test O-04 + transkrypt + complaints | W4 |
 | Zepsute auth triple | `c=a·b` + MAC przed użyciem | W3 |
 | Skorelowane fałszerstwo MAC | ukryte δ, MAC na każdej linii | W3 |
 | Replay rundy | sesja + epoka + licznik rundy + transkrypt | W11 |

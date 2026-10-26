@@ -69,10 +69,14 @@ MUSZĄ uzyskać identyczne `t`; rozjazd = abort.
 dodatkowo formę kwadratową `Q(s1,s2) < B_norm` (FFT embedding, cross-terms),
 nie tylko `L2`. Patrz §7.6.
 
-**Postać klucza w v1:** wariant **A** — udziały pułapki `(f,g,F,G)`.
-Wariant **B** (udział seeda + obwód `G(seed*)`) jest odłożony; decyzja
-D-021. Spec jest niezależny od reprezentacji w miejscach, gdzie to możliwe,
-ale profile `PROD` i wektory KAT odnoszą się do A.
+**Postać klucza w v1:** wariant **B′** (D-024) — setup dzieli 32-bajtowy
+`seed*`, jednorazowo liczy w MPC `G(seed*)` i otrzymuje udziały pułapki
+`(f_i,g_i,F_i,G_i)`; seed jest zeroizowany po setupie. Podpis używa
+A-style MPC ffSampling; token jest bramą KEK pieczęci, nie nośnikiem
+udziału. Czysty **B** (udział seeda + `G(seed*)` per podpis) jest
+odrzuconą alternatywą; A pozostaje w historii jako D-021 `SUPERSEDED`.
+Spec jest niezależny od reprezentacji w miejscach, gdzie to możliwe,
+ale profile `PROD` i wektory KAT odnoszą się do B′.
 
 ---
 
@@ -141,7 +145,8 @@ Służy do sprawdzenia **plumbing** przed badaniami G3:
 
 ### 5.2 `PROD`
 
-- setup: bez dealera, ważny NTRU, publiczna weryfikowalność (OPEN: O-01);
+- setup: MPC `G(seed*)` B′ → ważny NTRU bez dealera i bez rekonstrukcji,
+  publiczna weryfikowalność (OPEN: O-16/O-04);
 - sampler: realny Klein/ffSampling z budżetem precyzji (OPEN: O-02/O-03);
 - brak symboli testkit/dealer/`xof`/`iso`;
 - wszystkie checki fail-closed, zeroizacja, HSM (G3+);
@@ -153,6 +158,32 @@ może zamknąć signing plumbing na `TEST-ORACLE`; G3 wymaga `PROD`.
 ---
 
 ## 6. Setup (DKG)
+
+### 6.0 Profil B′ (v1, D-024) — nadrzędny
+
+Setup v1 ma dwie fazy:
+
+**Faza A — seed-share DKG (normatywna dla G2/G3).** Strony wykonują
+Pedersen VSS nad 32-bajtowym `seed*` jako wektorem 32 wartości
+w `Z_q` (każdy bajt < q; 32 równoległe instancje Shamir stopnia `k−1`,
+wspólny `sid`). Zobowiązania: `32·k` punktów, nie `4·N`. Wyjście:
+`seed_share_i` (32 elementów `Z_q`) i `seed_commit_root`.
+
+**Faza B — MPC `G(seed*)` (O-16, research; blocker G3).** Strony liczą
+w MPC funkcję `G` = `keygen_from_seed_32` (pin silnika) na udziałach
+`seed*`, otrzymując udziały `(f_i,g_i,F_i,G_i)` i publiczne `pk`.
+`seed*`, `f`, `g`, `F`, `G` nie są rekonstruowane. Po sukcesie
+`seed_share_i` jest zeroizowane i **nie** wchodzi do `PartyState`.
+
+W `TEST-ORACLE` (G2) Faza B jest zastąpiona deterministycznym stand-inem
+testkit na znanym seedzie testowym; stand-in jest `#[cfg(test)]`/`testkit`
+i nie istnieje w buildzie `PROD` (D-009).
+
+**Zakres §6.1–§6.4:** wspólne ramy (wejście, rundy, adjudykacja, wyjście,
+punkty OPEN). Tabela S1–S6 i zobowiązania `4·N` opisują **ścieżkę
+A-style** (historia D-021) i nie są normatywne dla B′; implementacja B′
+używa tej samej maszyny rund z 32 wartościami zamiast `4·N`
+i Fazy B w miejsce agregacji NTRU.
 
 ### 6.1 Wejście i stan
 
@@ -218,7 +249,7 @@ z transkryptu, nie z „większości głosów” koordynatora.
 **S5 — agregacja i `pk`.**
 
 - Suma udziałów: `share_j = Σ_{i∈A} share_{i→j}` (wagi `w_i=1` w v1;
-  ważenie tylko po jawnej decyzji, patrz O-01).
+  ważenie tylko po jawnej decyzji; dotyczy ścieżki A-style).
 - Zobowiązania agregowane addytywnie; `C_agg = Σ C_i`.
 - Relacja NTRU: na udziałach policz `fG − gF`; sprawdź zero-testem
   (open tylko bit `accept`), **bez** otwierania różnicy (OPEN: O-04).
@@ -255,10 +286,12 @@ zabronione; `ZeroizeOnDrop`; brak serializacji plaintext.
 
 ### 6.4 Co jest jawnie OPEN w setupie
 
-1. **Bezdealerowy, ważny keygen NTRU** — suma wkładów musi spełniać
-   `fG − gF = q` bez znajomości pełnego klucza. Spike tego nie robi:
-   ważony DKG dobiera wagi do znanego klucza (test). To jest **główny
-   problem badawczy P2**, nie „implementacja do napisania”.
+1. **MPC `G(seed*)` (B′)** — obwód keygenu `keygen_from_seed_32`
+   (rejection sampling + NTRU solve) w MPC; wynik musi być ważnym NTRU
+   bez rekonstrukcji `seed*`. Spike tego nie robi. To jest **główny
+   problem badawczy P2**, nie „implementacja do napisania”. Ścieżka
+   A-style (bezdealerowy, ważny keygen NTRU z sumy wkładów) jest
+   `SUPERSEDED` przez D-024 i pozostaje referencją.
 2. **`pk` bez reconstruct** — MPC inversion `f^{-1}` i mnożenie przez `g`.
 3. **Zero-test relacji NTRU** bez otwierania różnicy.
 4. **Pełny VSS** i koszt 196 kB/stronę; alternatywy (commitment schemes)
@@ -269,8 +302,8 @@ zabronione; `ZeroizeOnDrop`; brak serializacji plaintext.
    suma pozostałych wkładów musi nadal być poprawna; protokół nie może
    „naprawiać” przez odtworzenie klucza.
 
-**Do czasu zamknięcia O-01 setup `PROD` nie istnieje.** G2 używa
-`TEST-ORACLE`; G3 jest bramką realnego setupu.
+**Do czasu zamknięcia O-16 setup `PROD` nie istnieje.** G2 używa
+`TEST-ORACLE` (Faza B = stand-in testkit); G3 jest bramką realnego setupu.
 
 ---
 
@@ -735,7 +768,7 @@ o progu jest warunkowe. Nie wpisywać A-01 jako przesłanki dowiedzionej.
 | Profil | Setup | Sampler | Build | Claim |
 |---|---|---|---|---|
 | `TEST-ORACLE` | znany klucz testowy | deterministyczny | `testkit` | plumbing |
-| `PROD` | bezdealerowy, ważny NTRU | Klein/ffSampling | release | dopiero po G4/G5 |
+| `PROD` | MPC `G(seed*)` B′ (ważny NTRU, bez rekonstrukcji) | Klein/ffSampling | release | dopiero po G4/G5 |
 
 ### 14.2 Wektory
 
@@ -767,7 +800,7 @@ o progu jest warunkowe. Nie wpisywać A-01 jako przesłanki dowiedzionej.
 
 | ID | Punkt | Domyślnie | Bramka | WP |
 |---|---|---|---|---|
-| O-01 | Bezdealerowy, ważny keygen NTRU | research; `TEST-ORACLE` do G2 | G3 | WP-037 |
+| O-01 | Bezdealerowy, ważny keygen NTRU (ścieżka A) | **subsumowany przez O-16 w B′**; A = `SUPERSEDED` | G3 (przez O-16) | WP-037 |
 | O-02 | Realny ffSampling/LDL w MPC | FFT3+Klein | G3 | WP-041 |
 | O-03 | Klein 73-bit, TV, brak fail-open | parametry z 2026/1300 | G3 | WP-040 |
 | O-04 | Zero-test NTRU bez otwierania różnicy | bit `accept` | G3 | WP-037 |
@@ -782,14 +815,15 @@ o progu jest warunkowe. Nie wpisywać A-01 jako przesłanki dowiedzionej.
 | O-13 | Budżet wydajności | pomiar, nie szacunek | G3 | WP-045 |
 | O-14 | Dowód threshold EUF-CMA | game-based/UC | G4 | WP-050 |
 | O-15 | Side-channel/fault | CT + testy | G4 | WP-052/053 |
-| O-16 | Wariant B (`G(seed*)`) | odłożony (D-021) | po v1 | — |
+| O-16 | MPC `G(seed*)` w setupie (B′) | w zakresie v1 (D-024); research | G3 | WP-037 |
 | O-17 | Pełny VSS: rozmiar/alternatywa | pełne `N` | G1 | WP-016 |
 | O-18 | Ukryte δ / MAC na otwarciach | `dkg_zp_delta_shares` | G1 | WP-013 |
 | O-19 | Polityka koordynatora | limity, approvals | G5 | WP-062 |
 | O-20 | Tenant/key lifecycle | per-installacja v1 | G5 | WP-060 |
+| O-21 | Recovery w B′ po utracie udziału | backup pieczęci albo nowy setup z nowym `pk`; bez rekonstrukcji `f,g` | G5 | WP-061 |
 
 **Reguła:** punkt `OPEN` nie może być prezentowany jako `PASS`. G3 nie
-zamyka się, dopóki O-01…O-06, O-11…O-13 nie są `PASS` z dowodem.
+zamyka się, dopóki O-01…O-06, O-16, O-11…O-13 nie są `PASS` z dowodem.
 
 ---
 
@@ -844,7 +878,7 @@ zamyka się, dopóki O-01…O-06, O-11…O-13 nie są `PASS` z dowodem.
 Spec v0 definiuje pełny kontrakt: role, setup, podpis, nonce, transkrypt,
 wire, abort, refresh i profile `TEST-ORACLE`/`PROD`, z jawnym rozdziałem
 na to, co jest dziś wykonalne, a co jest badaniami. Największe otwarte
-punkty to bezdealerowy ważny keygen NTRU, realny ffSampling/Klein w MPC
-i wierny check normy silnika — bez nich nie ma `PROD`, tylko protokół
-referencyjny. Ten dokument nie jest dowodem bezpieczeństwa; jest
+punkty to MPC `G(seed*)` (ważny NTRU bez rekonstrukcji), realny
+ffSampling/Klein w MPC i wierny check normy silnika — bez nich nie ma
+`PROD`, tylko protokół referencyjny. Ten dokument nie jest dowodem bezpieczeństwa; jest
 kontraktem, względem którego kod, testy i audyt mogą być sprawdzane.

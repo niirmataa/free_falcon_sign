@@ -275,13 +275,14 @@ M2/M3. Aktualny proof path może zmienić postać końcowego ledgeru tylko jawni
 | S06 CHANGES_REQUIRED / PARTIAL_DIAGNOSTIC — ATTACK_ESTIMATES | [Odbiór częściowego runu](../../proofs/ft1536/validation/2026-09-22-family-estimator-independent/README.md):70/120 entries;12 model rows,21 moments,132 cost values+12 błędów oraz3 usvp samples sprawdzone | E1 zły subfield n;E2 raw rop jako log2/mixed minima;E3 status/repair;E4 weakest-link/targets. Naprawy i pełny freeze nadal wymagane; modeling/Emitted/lift OPEN,nie proof security |
 | S07 PLANNED — FULL_IMPLEMENTATION_CT | Zakres rzeczywistej implementacji/kompilacji/platformy | Osobny threat model i dowody/kontrole; dudect ani floor patch nie domykają całości |
 | S08 PLANNED — PLATFORM_BINDING | Usługi OS/entropy/lifetimes do publicznego E | Jawne założenia/środowisko/refinement; theorem modelu E nie jest automatycznie theorem dowolnego OS |
-| S09 G0 IN_PROGRESS — THRESHOLD_P2_001 (progowy podpis FT1536) | [Lane](../../proofs/ft1536/development/THRESHOLD_P2_001/README.md): P2, **2-of-3** (D-003), **bez QSX/VM (D-023)**; wariant **A** — udziały pułapki (D-021) jest `PROPOSED` (właściciel skłania się ku B); G2 = signing plumbing na `TEST-ORACLE`, G3 = bezdealerowy ważny setup NTRU + realny Klein/ffSampling (D-022) | Decyzje D-003/010/011/013/016/021 (i D-022 przed G2); bramki G0–G5 wg [GATES](../../proofs/ft1536/development/THRESHOLD_P2_001/GATES.md); **G2 nie jest produkcją**; claims register i SOURCE_MAP obowiązują |
+| S09 G0→G1 — THRESHOLD_P2_001 (progowy podpis FT1536) | [Lane](../../proofs/ft1536/development/THRESHOLD_P2_001/README.md): P2, **2-of-3** (D-003), **B′** (D-024) — seed-share DKG + jednorazowy MPC `G(seed*)` → udziały pułapki, seed zeroizowany; **bez QSX/VM (D-023)**; G2 = `TEST-ORACLE`, G3 = `PROD` (D-022) | Decyzje G1 potwierdzone; bramki G0–G5 wg [GATES](../../proofs/ft1536/development/THRESHOLD_P2_001/GATES.md); **G2 nie jest produkcją**; O-16/O-02 blokują G3; claims register i SOURCE_MAP obowiązują |
 
 S09 jest nowym torem P2 (progowy podpis), niezależnym od S01–S08 i od
 T12.1; nie zastępuje bazy FT1536 ani nie przenosi jej dowodu. G2 wolno
 zamknąć na `TEST-ORACLE` (znany klucz testowy + deterministyczny sampler),
-ale **G3 jest pierwszą bramką `PROD`**: wymaga bezdealerowego, ważnego
-keygenu NTRU, `pk` bez reconstruct i realnego Klein/ffSampling. Wynik G2
+ale **G3 jest pierwszą bramką `PROD`**: wymaga MPC `G(seed*)` w setupie
+B′ (ważny NTRU bez rekonstrukcji seeda/klucza), `pk` bez reconstruct
+i realnego Klein/ffSampling. Wynik G2
 nie może być opisywany jako „bez dealera”, „malicious-secure” ani
 „produkcyjny”. Szczegóły i otwarte punkty: `SPEC.md` §15; rejestr decyzji:
 [DECISIONS](../../proofs/ft1536/development/THRESHOLD_P2_001/DECISIONS.md).
@@ -468,6 +469,14 @@ muszą wskazywać ten sam aktywny etap.
   NTRU + realny Klein/ffSampling (D-022); wariant A (D-021) i 2-of-3
   (D-003) są `PROPOSED`. G0 dokumentacyjnie gotowy; G1 czeka na decyzje.
   Bez produkcji, bez push; brak startu drugiego workera.
+- 2026-10-26/v20: właściciel potwierdził decyzje: 2-of-3 (D-003),
+  TLS 1.3/mTLS (D-010), CBOR (D-011), HSM od G3 (D-013), produkcja
+  w `[N]` na G3 (D-016), G2 = `TEST-ORACLE` / G3 = `PROD` (D-022)
+  oraz **B′** (D-024; D-021 `SUPERSEDED`). B′ = seed-share DKG +
+  jednorazowy MPC `G(seed*)` w setupie → udziały pułapki; seed
+  zeroizowany, token = brama KEK pieczęci. O-16/O-02 blokują G3.
+  WP-003 `DONE`; G1 odblokowany, start WP-010/011. Nadal `PROPOSED`
+  (poza G1): D-004/005/006/012/014/015. Bez push.
 
 ### T12.1 — kolejka utwardzania po korekcie F04/F05 R1/R2 (2026-10-11)
 

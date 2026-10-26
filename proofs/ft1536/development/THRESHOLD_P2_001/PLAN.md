@@ -39,7 +39,10 @@ jest osobnym, znacznie mniejszym produktem i nie wolno go nazywać P2.
 ### IN (v1)
 
 - Rust, referencyjna implementacja **2-of-3** (jeden padający).
-- DKG bez dealera: Pedersen VSS nad współczynnikami w `Z_q` (pierścień `R_q`) + weryfikacja relacji NTRU.
+- DKG bez dealera: seed-share DKG 32 B `seed*` + **jednorazowy MPC
+  `G(seed*)`** w setupie B′ (D-024), z pełnym VSS/complaints i `pk` bez
+  reconstruct. Relacja NTRU wynika z poprawności `G`; jej zero-test
+  pozostaje osobnym punktem (O-04).
 - Podpis MPC: hash-to-point, ffSampling, `s2`, norm check, encoding, verify.
 - PRSS/CDI bez dealera; złośliwe mnożenia z auth triples.
 - Transport: mTLS/TLS 1.3, framing, sesje, epoki, timeouty, abort.
@@ -51,7 +54,7 @@ jest osobnym, znacznie mniejszym produktem i nie wolno go nazywać P2.
 **Uwaga o kolejności:** G2 zamyka **signing plumbing** na profilu
 `TEST-ORACLE` (znany klucz testowy + deterministyczny sampler), bo nie
 blokujemy całego toru na nierozwiązanym keygenie NTRU. G3 jest pierwszą
-bramką `PROD`: bezdealerowy ważny setup NTRU + realny Klein/ffSampling.
+bramką `PROD`: MPC `G(seed*)` B′ + realny Klein/ffSampling.
 `TEST-ORACLE` nigdy nie jest prezentowany jako `PROD` ani „bez dealera”.
 
 ### OUT (świadomie)
@@ -78,6 +81,8 @@ bramką `PROD`: bezdealerowy ważny setup NTRU + realny Klein/ffSampling.
 | Honest majority | 2 ≤ (3+1)/2 | 3 ≤ (5+1)/2 |
 | Pierścień | `Z_q[X]/(X^1536−X^768+1)`, q=18433 | bez zmian |
 | Secret | ternarny | bez zmian |
+| Reprezentacja klucza | **B′** (D-024): seed-share DKG → jednorazowy MPC `G(seed*)` → udziały pułapki; seed zeroizowany | bez zmian |
+| Udział w spoczynku | pieczęć na dysku/HSM; token = brama KEK (nie nośnik) | HSM/TPM |
 | `pk` / `sk` | 2881 B / 7681–10369 B | bez zmian |
 | Nonce | 40 B, hedged | bez zmian |
 | Podpis | codec 0xAA, Golomb-Rice j=8 | bez zmian |
@@ -140,7 +145,7 @@ Szczegóły: [`THREAT_MODEL.md`](THREAT_MODEL.md).
 | **W1** | Spec & contract | `SPEC.md` v1, wire, state machines, wektory | spec + KAT skeleton | G0 | M |
 | **W2** | Hardened core | port/rewrite prymitywów z hardeningiem | `core` + KAT + fuzz | W1 | L |
 | **W3** | MAC / malicious mul | ukryte δ, auth triples, sacrifice, MAC na bitach | tamper matrix | W2 | L |
-| **W4** | VSS / DKG | publicznie weryfikowalny DKG + ceremonia NTRU | transkrypt + complaints | W2,W3 | XL |
+| **W4** | VSS / DKG | publicznie weryfikowalny DKG + MPC `G(seed*)` (B′) | transkrypt + complaints | W2,W3 | XL |
 | **W5** | PRSS/CDI | pairwise PRF bez dealera | testy niezależności | W2 | M |
 | **W6** | `R_q`/NTT binding | arytmetyka vs silnik/R1 | differential 10⁵ | W2 | L |
 | **W7** | Sampler | Klein 73-bit, `D_Λ`, TV, σ | sampler + statystyka | W6 | XL |
@@ -163,7 +168,7 @@ stand-inem i ogłosić G3.
 | **G0** | kontrakt i plan | decyzje potwierdzone, SPEC v0, claims/threat/gates |
 | **G1** | hardened foundation | wszystkie znane realne bugi zamknięte, fail-closed, hermetyczne CI, fuzz, brak dealera/stand-inu w prod |
 | **G2** | signing protocol on `TEST-ORACLE` | setup message flow + sign + verify w harnessie; złośliwy nie forge'uje; brak reconstruct w sign; replay/abort. **Nie produkcja, nie „bez dealera”** |
-| **G3** | realna krypto (`PROD`) | bezdealerowy ważny setup NTRU + MPC `pk` + realny sampler/ffSampling + check normy; podpis byte-exact; sieć; refresh; budżet wydajności |
+| **G3** | realna krypto (`PROD`) | MPC `G(seed*)` B′ + MPC `pk` + realny sampler/ffSampling + check normy; podpis byte-exact; sieć; refresh; budżet wydajności |
 | **G4** | assurance | dowód + audyt zewnętrzny + side-channel + fault; niezależny PASS |
 | **G5** | production readiness | HSM, refresh/recovery, monitoring, release, IR; gotowość operacyjna |
 
@@ -194,7 +199,7 @@ W13 (ops) ── od G3
 | M2 | reference setup flow | 2-of-3 setup message flow na `TEST-ORACLE`: VSS, complaints, transkrypt; bez claimu produkcji |
 | M3 | reference sign | 2-of-3 podpis na `TEST-ORACLE`, engine verify, brak reconstruct w sign |
 | M4 | malicious harness | złośliwe strony nie forge'ują; tamper matrix |
-| M5 | real crypto | bezdealerowy ważny keygen NTRU, MPC `pk`, realny Klein/ffSampling, check normy, byte-exact |
+| M5 | real crypto | MPC `G(seed*)` B′ → ważny keygen NTRU, MPC `pk`, realny Klein/ffSampling, check normy, byte-exact |
 | M6 | networked | 3 nodes, TLS, sesje, replay, chaos |
 | M7 | assurance | proof + audit + CT/fault |
 | M8 | production | HSM, refresh/recovery, release, IR |
@@ -238,7 +243,7 @@ skrót w W7/W8/W12 jest odrzucane na bramce.
 Produkcja jest ogłaszana dopiero, gdy **wszystkie** punkty są `PASS`:
 
 - [ ] G0–G5 zamknięte z niezależnym odbiorem.
-- [ ] Bezdealerowy, ważny setup NTRU (`fG−gF=q`) i `pk` bez reconstruct.
+- [ ] MPC `G(seed*)` B′ (ważny NTRU) i `pk` bez reconstruct.
 - [ ] Brak symboli `TEST-ORACLE`/dealer/`xof`/`iso` w buildzie `PROD`.
 - [ ] Brak znanych realnych bugów; wszystkie hardeningi zamknięte.
 - [ ] Podpis byte-exact verify na KAT i differential vs silnik.

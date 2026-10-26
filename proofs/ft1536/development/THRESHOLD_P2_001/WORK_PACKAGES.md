@@ -12,7 +12,7 @@ Rozmiar: S (1 okno), M (2–3), L (4–8), XL (badania, bez daty).
 |---|---|---|---|---|---|---|---|
 | WP-001 | G0 | Otworzyć lane: README/PLAN/THREAT/CLAIMS/GATES/WP/RISKS/SOURCE_MAP | pliki istnieją, spójne ID, brak sprzeczności | ten katalog | — | S | **DONE** |
 | WP-002 | G0 | `SPEC.md` v0: role, rundy, komunikaty, transkrypt, abort, otwarte punkty | spec czytelny, punkty otwarte jawnie oznaczone | `SPEC.md` | WP-001 | M | **DONE** (v0) |
-| WP-003 | G0 | Potwierdzić decyzje blokujące G1 (D-003/010/011/013/016/021) | wpisy `ACCEPTED` w `DECISIONS.md` | decyzja właściciela | WP-001 | S | **IN_PROGRESS** |
+| WP-003 | G0 | Potwierdzić decyzje blokujące G1 (D-003/010/011/013/016/021) | wpisy `ACCEPTED` w `DECISIONS.md` | decyzja właściciela | WP-001 | S | **DONE** (2026-10-26; D-021 → D-024 B′) |
 | WP-004 | G0 | Dyspozycja spike'a: reużyj/przepisz/zakaż | tabela per moduł, brak „niejasne” | `SOURCE_MAP.md` | WP-001 | S | **DONE** |
 
 ---
@@ -65,7 +65,7 @@ forge'uje; brak reconstruct w sign. **To nie jest `PROD`.**
 
 | ID | Gate | Zadanie | Kryterium odbioru | Dowód | Zależy | Rozmiar | Status |
 |---|---|---|---|---|---|---|---|
-| WP-037 | G3 | **O-01/O-04** Bezdealerowy, ważny keygen NTRU; zero-test relacji bez otwierania różnicy | `fG−gF=q` na udziałach; brak reconstruct; brak dealera | test + audyt | WP-030 | XL | TODO |
+| WP-037 | G3 | **O-16/O-04** MPC `G(seed*)` w setupie B′; zero-test relacji NTRU bez otwierania różnicy | udziały `(f,g,F,G)` bez rekonstrukcji `seed*`/klucza; seed zeroizowany; brak dealera | test + audyt | WP-030 | XL | TODO |
 | WP-038 | G3 | **O-05** `pk` bez reconstruct: MPC `f^{-1}`, `h=g·f^{-1}` | tylko `h` otwarte; `pk_hash` zgodny | test + raport | WP-037 | L | TODO |
 | WP-039 | G3 | Pełny VSS/complaints w `PROD`; dyskwalifikacja bez reconstruct | wszystkie współczynniki; koszt zmierzony | test + benchmark | WP-037 | M | TODO |
 | WP-040 | G3 | Realny sampler: Klein 73-bit / `D_Λ` | TV vs target z CI; zero fail-open | raport stat. | G2 | XL | TODO |
@@ -79,7 +79,7 @@ forge'uje; brak reconstruct w sign. **To nie jest `PROD`.**
 | WP-048 | G3 | `ft1536-sys` vendor + pin + SBOM | build offline; brak absolutnej ścieżki | CI | WP-010 | M | TODO |
 
 **Exit G3:** podpis bez oracle-samplera, byte-exact, sieciowy, z refresh,
-na bezdealerowym setupie. To pierwsza bramka `PROD`.
+na MPC `G(seed*)` B′. To pierwsza bramka `PROD`.
 
 ---
 
@@ -115,9 +115,9 @@ na bezdealerowym setupie. To pierwsza bramka `PROD`.
 
 ---
 
-## Najbliższy batch (do wykonania po potwierdzeniu decyzji)
+## Najbliższy batch
 
-1. **WP-003** — właściciel potwierdza 5 decyzji.
+1. **WP-003** — **DONE** 2026-10-26 (B′ + domyślne decyzje).
 2. **WP-010/011** — workspace + CI (mechaniczne, bez krypto).
 3. **WP-012** — port prymitywów z KAT (największy kawałek G1).
 4. **WP-013** — T14 ukryte δ (najpierw mały, izolowany fix).

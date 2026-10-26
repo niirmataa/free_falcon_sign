@@ -1,9 +1,10 @@
 # THRESHOLD P2 — progowy podpis FT1536
 
 **TASK_ID=FT1536_THRESHOLD_P2_001** · **ROADMAP_ID=S09**
-**Status2026-10-26:** **G0 IN_PROGRESS — plan i spec v0 gotowe, czekają
-decyzje właściciela.** To NIE jest produkcja, NIE jest deklaracja
-bezpieczeństwa, NIE jest „threshold FT gotowy”.
+**Status 2026-10-26:** **G0 → G1: decyzje potwierdzone (B′ = D-024,
+D-003/010/011/013/016/022 ACCEPTED).** Następny krok: WP-010/011
+(workspace + hermetyczne CI), potem WP-012. To NIE jest produkcja,
+NIE jest deklaracja bezpieczeństwa, NIE jest „threshold FT gotowy”.
 
 ## Cel
 
@@ -22,32 +23,33 @@ q=18433, N=1536, pierścień `X^1536−X^768+1`, secret ternarny).
 
 ## Zakres v1 (proponowany)
 
-- **2-of-3** (D-003), wariant **A** — udziały pułapki `(f,g,F,G)` (D-021).
-  **D-021 nadal `PROPOSED`:** właściciel skłania się ku B; brak formalnej
-  decyzji A/B/B′.
-- Setup: Pedersen VSS, complaints, transkrypt, `pk` bez reconstruct.
+- **2-of-3** (D-003), wariant **B′** (D-024) — seed-share DKG +
+  jednorazowy MPC `G(seed*)` w setupie → udziały pułapki `(f,g,F,G)`;
+  seed zeroizowany, token = brama KEK pieczęci, nie nośnik udziału.
+- Setup: pełny VSS, complaints, transkrypt, `pk` bez reconstruct.
 - Podpis: nonce commit/reveal, HTP, ffSampling na udziałach, check normy,
   `s2`, encoding 0xAA, engine verify.
 - Model: malicious static ≤ k−1, rushing, synchroniczne rundy, abort.
-- G2 = signing plumbing na `TEST-ORACLE`; G3 = bezdealerowy ważny setup
-  NTRU + realny Klein/ffSampling (D-022).
+- G2 = signing plumbing na `TEST-ORACLE`; G3 = MPC `G(seed*)` B′
+  (ważny NTRU bez rekonstrukcji) + realny Klein/ffSampling (D-022).
 - **Bez QSX/VM:** P2 nie używa `ftkey-vm` ani efemerycznej VM (D-023);
   node = osobny proces/host z udziałem.
 - Poza v1: P1 seed-custody, produkt FTKEY, `[N]`, FT768/FT3072, QROM, FIPS.
 
-## Decyzje do potwierdzenia przed G1
+## Decyzje — potwierdzone 2026-10-26
 
-| ID | Pytanie | Domyślnie |
+| ID | Pytanie | Decyzja |
 |---|---|---|
-| D-003 | 2-of-3 czy 3-of-5? | 2-of-3 |
-| D-010 | TLS 1.3/mTLS czy Noise? | TLS 1.3/mTLS |
-| D-011 | CBOR czy inny format? | kanoniczne CBOR |
-| D-013 | HSM od G2 czy G3? | od G3 |
-| D-016 | produkcja w `[N]` na G3? | tak |
-| D-021 | wariant A, B czy B′? | **otwarte** (właściciel skłania się ku B; rekomendacja B′) |
+| D-003 | 2-of-3 czy 3-of-5? | **2-of-3** |
+| D-010 | TLS 1.3/mTLS czy Noise? | **TLS 1.3/mTLS** |
+| D-011 | CBOR czy inny format? | **kanoniczne CBOR** |
+| D-013 | HSM od G2 czy G3? | **od G3** |
+| D-016 | produkcja w `[N]` na G3? | **tak** |
+| D-024 | wariant A, B czy B′? | **B′** (D-021 `SUPERSEDED`) |
+| D-022 | G2 = `TEST-ORACLE`, G3 = `PROD`? | **tak** |
 
-D-022 (G2 = `TEST-ORACLE`, G3 = realna krypto) wymaga potwierdzenia przed
-WP-030. **D-023 (QSX/VM wyłączone z P2) — ACCEPTED 2026-10-26.**
+**D-023 (QSX/VM wyłączone z P2) — ACCEPTED 2026-10-26.**
+Nadal `PROPOSED`, poza blokadą G1: D-004/005/006/012/014/015.
 
 ## Czego ten TASK nie robi
 

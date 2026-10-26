@@ -15,7 +15,7 @@ Wyjątek wymaga decyzji właściciela w `DECISIONS.md`.
 **Exit:**
 
 - [ ] `README.md`, `PLAN.md`, `SPEC.md` v0, `THREAT_MODEL.md` istnieją.
-- [ ] `DECISIONS.md`: decyzje blokujące G1 (D-003/010/011/013/016/021)
+- [ ] `DECISIONS.md`: decyzje blokujące G1 (D-003/010/011/013/016/D-024)
       mają status `ACCEPTED`; `PROPOSED` nie zamyka G0. D-022 jest
       wymagane przed G2, nie przed G1.
 - [ ] `CLAIMS_REGISTER.md`: zakazane sformułowania wypisane.
@@ -108,23 +108,26 @@ na wkłady w testkicie; deterministyczny sampler tylko jako oracle.
 albo złośliwa strona może wymusić cichy zły podpis, albo wynik jest
 prezentowany jako `PROD`.
 
-**Uwaga:** G2 nie zamyka O-01/O-02. To jest **plumbing**, nie krypto.
+**Uwaga:** G2 nie zamyka O-16/O-02. To jest **plumbing**, nie krypto.
 
 ---
 
 ## G3 — Crypto completeness (`PROD` setup + real sampler)
 
-**Cel:** usunąć `TEST-ORACLE`: bezdealerowy, ważny setup NTRU; realny
-Klein/ffSampling; bajtowa zgodność; sieć.
+**Cel:** usunąć `TEST-ORACLE`: MPC `G(seed*)` B′ (ważny NTRU bez
+rekonstrukcji `seed*`); realny Klein/ffSampling; bajtowa zgodność; sieć.
 
-**Wejście:** G2 + D-021 potwierdzone.
+**Wejście:** G2 + D-024 (B′) potwierdzone.
 
 **Exit:**
 
-- [ ] **O-01** Bezdealerowy, ważny keygen NTRU: `fG − gF = q` bez
-      znajomości pełnego klucza; zero-test bez otwierania różnicy.
-      Jeżeli nie da się zamknąć — jawna decyzja właściciela o zmianie
-      zakresu; nie „cichy dealer”.
+- [ ] **O-16** MPC `G(seed*)` = `keygen_from_seed_32` w setupie B′:
+      wejście `seed*` w udziałach, wyjście udziały `(f,g,F,G)`; brak
+      rekonstrukcji `seed*`/klucza; seed zeroizowany po setupie.
+      Nie da się zamknąć — jawna decyzja właściciela o zmianie zakresu;
+      nie „cichy dealer”.
+- [ ] **O-04** Zero-test poprawności relacji NTRU / zgodności MPC `G`
+      bez otwierania różnicy (dowód lub ograniczony, jawny check).
 - [ ] **O-05** `pk` bez reconstruct: MPC `f^{-1}`, `h = g·f^{-1}`,
       otwarcie tylko `h`; `pk_hash` zgodny.
 - [ ] Pełny VSS w setupie (wszystkie współczynniki), complaints,

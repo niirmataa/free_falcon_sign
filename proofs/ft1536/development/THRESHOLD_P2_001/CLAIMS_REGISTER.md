@@ -45,6 +45,7 @@ Każdy wpis ma właściciela i datę przeglądu.
 | F-09 | „zero-knowledge” bez definicji | brak formalizacji | „brak claimu” |
 | F-10 | „post-quantum threshold” | brak analizy QROM | „klasyczny model” |
 | F-11 | „P2 działa w QSX/VM” / „threshold w efemerycznej VM” | D-023 wyłącza QSX/VM z P2; próg nie potrzebuje VM | „P2 = osobne nody z udziałami, bez QSX” |
+| F-12 | „udział B′ jest na tokenie” / „token przechowuje udział” | D-024: udział pułapki ~11,5 KB nie mieści się w kopercie 4 KB; token jest bramą KEK | „token odblokowuje pieczęć; udział leży w pieczęci na dysku/HSM” |
 
 ## 4. Reguły publikacji
 
