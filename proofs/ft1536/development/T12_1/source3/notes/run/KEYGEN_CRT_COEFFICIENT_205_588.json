@@ -1,0 +1,603 @@
+{
+  "utc": "2026-10-26T14:53:50.133584+00:00",
+  "status": "PROVED_KERNEL_SCOPED / NOT_REVIEWED",
+  "overall_owner_goal": "IN_PROGRESS; continue after this intermediate checkpoint",
+  "scope": "Original u1 CRT coefficient body and actual reduce/addMul/mul leaf-call adapters, exact two-limb executed-word image and separated read keeps.",
+  "entry_manifest": {
+    "path": ".build/steprx195/ENTRY_PINS.json",
+    "sha256": "00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964"
+  },
+  "entry_checked_count": 74673,
+  "entry_missing": 0,
+  "entry_changed": 0,
+  "entry_checks": [
+    {
+      "path": ".build/crt588/entry_before.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/crt588/entry_after.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/crt588/predecessor_before.log",
+      "sha256": "614b66991f3ce694bb5b5dc114644118a176c1b8966db6a560e04456688c1a57"
+    },
+    {
+      "path": ".build/crt588/predecessor_after.log",
+      "sha256": "614b66991f3ce694bb5b5dc114644118a176c1b8966db6a560e04456688c1a57"
+    },
+    {
+      "path": ".build/crt588/entry_reverify_588.py",
+      "sha256": "641ca0817a30f5d2eea7390621f2686c267a2014e725b574033d856bfbf61d09"
+    },
+    {
+      "path": ".build/crt588/predecessor_verify.py",
+      "sha256": "85aedba5839eb7785d492c8871acd898fa0eb96b93f34be395828bab6c004044"
+    },
+    {
+      "path": ".build/crt588/typecheck_reuse.py",
+      "sha256": "845b91e35b0df80c1c503f4853dc6936ec920267738ae4f04ab27e61b6859580"
+    }
+  ],
+  "predecessor_handoff": {
+    "path": "notes/run/KEYGEN_SECOND_LOOP_204_587.json",
+    "sha256": "784d43521ea1a4b58507223d5d5c7e93bdc692b7ebbeea1444069e92898e0217"
+  },
+  "predecessor_bindings_verified": 450,
+  "job": "keygen_crtcoefficient205_588",
+  "accepted": 14,
+  "receipts": {
+    "path": ".build/jobs/keygen_crtcoefficient205_588/RECEIPTS.json",
+    "sha256": "c1224286b369d2825fd5613c8241412c062e2e3fb2e2412b6e2aa382e2f3646f"
+  },
+  "inputs": {
+    "path": ".build/jobs/keygen_crtcoefficient205_588/SOURCE_INPUTS.json",
+    "sha256": "32789dcd5ebe6ef1d460bc79c23120cd8c4dfe09c43cb36e5a4be99254323863"
+  },
+  "runner": {
+    "path": ".build/jobs/keygen_crtcoefficient205_588/RUNNER_SOURCE.py",
+    "sha256": "e8e9cf4ba5e744425464c0057a27d07f62ff82be352c479535425ff436c5b385"
+  },
+  "engine": {
+    "path": ".build/jobs/keygen_crtcoefficient205_588/EXECUTION_SOURCE.py",
+    "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c"
+  },
+  "preflight": {
+    "path": ".build/jobs/keygen_crtcoefficient205_588/PREFLIGHT.json",
+    "sha256": "9f46071bfed3018279c017d97a6ab5f8bb8342adb4916119526143204c234a97"
+  },
+  "modules": [
+    {
+      "module": "Source3.CrtWordOps205",
+      "source": {
+        "path": "formal/Source3/CrtWordOps205.lean",
+        "sha256": "ff5e56f9b8afb5a9e1ce26fb8c338b2ac741413512cbe275f5e5f832a14d69c0"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/formal/Source3/CrtWordOps205.lean",
+        "sha256": "ff5e56f9b8afb5a9e1ce26fb8c338b2ac741413512cbe275f5e5f832a14d69c0"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/lib/Source3/CrtWordOps205.olean",
+        "sha256": "9e6a0870585f244c0c3bec7213370d714563f910eeca3d1ecb0de2b94d648dbd"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/logs/Source3_CrtWordOps205.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/logs/Source3_CrtWordOps205.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 9.19,
+      "maxrss_kib": 4105640
+    },
+    {
+      "module": "Source3.CrtState205",
+      "source": {
+        "path": "formal/Source3/CrtState205.lean",
+        "sha256": "80bee7b6780f1236f33784bb61d2c01117b94613c20074a4a2221d5dadb792b9"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/formal/Source3/CrtState205.lean",
+        "sha256": "80bee7b6780f1236f33784bb61d2c01117b94613c20074a4a2221d5dadb792b9"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/lib/Source3/CrtState205.olean",
+        "sha256": "3c458c3a4c459b2fecc288661d9a1b14d8a2b4a8b4ec9febe5bf70c4e6e8b184"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/logs/Source3_CrtState205.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/logs/Source3_CrtState205.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.872,
+      "maxrss_kib": 4134956
+    },
+    {
+      "module": "Source3.WordControl205",
+      "source": {
+        "path": "formal/Source3/WordControl205.lean",
+        "sha256": "93f8ca627df3c45cf56a8195d1d0c3704b453572ab0ffa62852f6bcee1e9ec2f"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/formal/Source3/WordControl205.lean",
+        "sha256": "93f8ca627df3c45cf56a8195d1d0c3704b453572ab0ffa62852f6bcee1e9ec2f"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/lib/Source3/WordControl205.olean",
+        "sha256": "af1ea58fd52cc25125848b0c232c95edff9a76b7c39847b8813ef29535a0e7c5"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/logs/Source3_WordControl205.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/logs/Source3_WordControl205.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.274,
+      "maxrss_kib": 4139992
+    },
+    {
+      "module": "Source3.WordAtoms205",
+      "source": {
+        "path": "formal/Source3/WordAtoms205.lean",
+        "sha256": "be49bb434f873a66644608b6c1ff7c1eed70c65bc16042a70a6860812a1e0f88"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/formal/Source3/WordAtoms205.lean",
+        "sha256": "be49bb434f873a66644608b6c1ff7c1eed70c65bc16042a70a6860812a1e0f88"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/lib/Source3/WordAtoms205.olean",
+        "sha256": "e289369d5fbc503a3e964723ae3aed0e9f0847d4cefb3be145bce04cf8b7cd4d"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/logs/Source3_WordAtoms205.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/logs/Source3_WordAtoms205.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.62,
+      "maxrss_kib": 4139992
+    },
+    {
+      "module": "Source3.ZintMulWord205",
+      "source": {
+        "path": "formal/Source3/ZintMulWord205.lean",
+        "sha256": "4ddefe711b177950efd381ac256a0f08999149144ad104d88eb7cc92ae036e41"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/formal/Source3/ZintMulWord205.lean",
+        "sha256": "4ddefe711b177950efd381ac256a0f08999149144ad104d88eb7cc92ae036e41"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/lib/Source3/ZintMulWord205.olean",
+        "sha256": "f898660c0db08d5a5c77130d51fb74658c6c1a9dd12d366b5b2452769ac7579b"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/logs/Source3_ZintMulWord205.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/logs/Source3_ZintMulWord205.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 6.027,
+      "maxrss_kib": 4398472
+    },
+    {
+      "module": "Source3.ZintAddMulWord205",
+      "source": {
+        "path": "formal/Source3/ZintAddMulWord205.lean",
+        "sha256": "128840dcaeef77c34f54ded39845a56f022ed99d16adfaf738a3a93ce5b75a85"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/formal/Source3/ZintAddMulWord205.lean",
+        "sha256": "128840dcaeef77c34f54ded39845a56f022ed99d16adfaf738a3a93ce5b75a85"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/lib/Source3/ZintAddMulWord205.olean",
+        "sha256": "4de483a3c608d27f66ef1c3451d4d84dd4665aaa17f6b7f9cea4c959135719f8"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/logs/Source3_ZintAddMulWord205.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/logs/Source3_ZintAddMulWord205.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 8.534,
+      "maxrss_kib": 4506176
+    },
+    {
+      "module": "Source3.CrtLeafImages205",
+      "source": {
+        "path": "formal/Source3/CrtLeafImages205.lean",
+        "sha256": "6b0aebabdde5ead2dec956a5ceb1af42116c0e578cce2bfeadad8d0e039f79ee"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/formal/Source3/CrtLeafImages205.lean",
+        "sha256": "6b0aebabdde5ead2dec956a5ceb1af42116c0e578cce2bfeadad8d0e039f79ee"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/lib/Source3/CrtLeafImages205.olean",
+        "sha256": "0e673c6fd5f38eddc6f79de824f772b37291c7b77bde7c0307c7cb2b01f7d3cd"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/logs/Source3_CrtLeafImages205.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/logs/Source3_CrtLeafImages205.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.671,
+      "maxrss_kib": 4506176
+    },
+    {
+      "module": "Source3.CrtAddMulCall205",
+      "source": {
+        "path": "formal/Source3/CrtAddMulCall205.lean",
+        "sha256": "4e6ae407200c2c89aa29eebf96ce3496a1827e604890cc7a09a319b48d08cbac"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/formal/Source3/CrtAddMulCall205.lean",
+        "sha256": "4e6ae407200c2c89aa29eebf96ce3496a1827e604890cc7a09a319b48d08cbac"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/lib/Source3/CrtAddMulCall205.olean",
+        "sha256": "02c0cf9bfdf6bd3dfe6462508dbbc327e5ccca4e74343e877f2b1d72e45124dc"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/logs/Source3_CrtAddMulCall205.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/logs/Source3_CrtAddMulCall205.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.47,
+      "maxrss_kib": 4506176
+    },
+    {
+      "module": "Source3.CrtReduceCall205",
+      "source": {
+        "path": "formal/Source3/CrtReduceCall205.lean",
+        "sha256": "e4ff91a5d73f139354449c4c8120e5b955db86a6f1ffa0c31a477b970d4cf1dd"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/formal/Source3/CrtReduceCall205.lean",
+        "sha256": "e4ff91a5d73f139354449c4c8120e5b955db86a6f1ffa0c31a477b970d4cf1dd"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/lib/Source3/CrtReduceCall205.olean",
+        "sha256": "48e7c0b9581793ac909cd860e3a1f0dcb37219c699b385c4f19c1a5bbfa881a8"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/logs/Source3_CrtReduceCall205.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/logs/Source3_CrtReduceCall205.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.72,
+      "maxrss_kib": 4506176
+    },
+    {
+      "module": "Source3.CrtMulCall205",
+      "source": {
+        "path": "formal/Source3/CrtMulCall205.lean",
+        "sha256": "d42157d1f7c581793eef37c3755fec83d60d56ae228e4753fee2630b16a7e617"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/formal/Source3/CrtMulCall205.lean",
+        "sha256": "d42157d1f7c581793eef37c3755fec83d60d56ae228e4753fee2630b16a7e617"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/lib/Source3/CrtMulCall205.olean",
+        "sha256": "b339829618eced732698dc0e0d05ecd76a72c43cf2a3dc75ff40a0d1d7e3aea4"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/logs/Source3_CrtMulCall205.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/logs/Source3_CrtMulCall205.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.621,
+      "maxrss_kib": 4506176
+    },
+    {
+      "module": "Source3.CrtRoundShape205",
+      "source": {
+        "path": "formal/Source3/CrtRoundShape205.lean",
+        "sha256": "6360d088933e1cba54ea8cea4a61a3eb645de02f35f22516b7b311d788487786"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/formal/Source3/CrtRoundShape205.lean",
+        "sha256": "6360d088933e1cba54ea8cea4a61a3eb645de02f35f22516b7b311d788487786"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/lib/Source3/CrtRoundShape205.olean",
+        "sha256": "aba527a30fac619dafd7eeea5459f0d4b27ff3a61fffca4a9929849e7a9617f4"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/logs/Source3_CrtRoundShape205.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/logs/Source3_CrtRoundShape205.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 18.157,
+      "maxrss_kib": 5715732
+    },
+    {
+      "module": "Source3.CrtCoefficient205",
+      "source": {
+        "path": "formal/Source3/CrtCoefficient205.lean",
+        "sha256": "464f726a1b0c6c0da55e03cf5ac480d653514572a33ed821498176fbed3437fe"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/formal/Source3/CrtCoefficient205.lean",
+        "sha256": "464f726a1b0c6c0da55e03cf5ac480d653514572a33ed821498176fbed3437fe"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/lib/Source3/CrtCoefficient205.olean",
+        "sha256": "f88e3f7226ac790420528f400f146bfa1cde45a596b8c9c7ef74f580773f52da"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/logs/Source3_CrtCoefficient205.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/logs/Source3_CrtCoefficient205.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.82,
+      "maxrss_kib": 5715732
+    },
+    {
+      "module": "Source3.CrtCoefficientImage205",
+      "source": {
+        "path": "formal/Source3/CrtCoefficientImage205.lean",
+        "sha256": "3491e02c66f9e3d64a19eb8e05c282d4237a6ad251ba76013f34ccdfc41cd2d3"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/formal/Source3/CrtCoefficientImage205.lean",
+        "sha256": "3491e02c66f9e3d64a19eb8e05c282d4237a6ad251ba76013f34ccdfc41cd2d3"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/lib/Source3/CrtCoefficientImage205.olean",
+        "sha256": "9c4b8c4cdeed8c0d20f2d781c787ae97e6d7b8092d9cdcd4d8242a158dd25f87"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/logs/Source3_CrtCoefficientImage205.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/logs/Source3_CrtCoefficientImage205.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.47,
+      "maxrss_kib": 5715732
+    },
+    {
+      "module": "Source3.CrtCoefficientAudit205",
+      "source": {
+        "path": "formal/Source3/CrtCoefficientAudit205.lean",
+        "sha256": "4c01d7f7467f3b1b438d68a05ce072b08ba3a9606e930bf365efb601acce0029"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/formal/Source3/CrtCoefficientAudit205.lean",
+        "sha256": "4c01d7f7467f3b1b438d68a05ce072b08ba3a9606e930bf365efb601acce0029"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/lib/Source3/CrtCoefficientAudit205.olean",
+        "sha256": "99a9c20d1e3d5dec2776c9ff3f991728e64e23fb88b3aed0efcfd5ef5a4a00e2"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/logs/Source3_CrtCoefficientAudit205.stdout",
+        "sha256": "29268bb89f62bfc989845370a2a30d6fa4b0bd3fb6ad28d461848da82dfe89b8"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_crtcoefficient205_588/logs/Source3_CrtCoefficientAudit205.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.322,
+      "maxrss_kib": 5715732
+    }
+  ],
+  "axioms": {
+    "FT1536.Source3.CrtWordOps205.cast_widen": [
+      "propext"
+    ],
+    "FT1536.Source3.CrtWordOps205.cast_narrow": [
+      "propext"
+    ],
+    "FT1536.Source3.CrtWordOps205.add64": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtWordOps205.mul64": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtWordOps205.add64_32": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtWordOps205.right64": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtWordOps205.mask31": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtState205.cell32": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtState205.cell64": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.WordControl205.frame": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.WordAtoms205.assign32": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.WordAtoms205.assign64": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.WordAtoms205.widen": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.WordAtoms205.narrow": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintMulWord205.shape": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintMulWord205.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintAddMulWord205.shape": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintAddMulWord205.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtLeafImages205.mul": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtLeafImages205.addMul": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtAddMulCall205.binding": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtAddMulCall205.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtReduceCall205.binding": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtReduceCall205.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtMulCall205.binding": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtMulCall205.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtRoundShape205.shape": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtCoefficient205.restored_locals": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtCoefficient205.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtCoefficientImage205.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "failures_and_workshop": {
+    "path": "notes/run/KEYGEN_CRT_COEFFICIENT_205_FAILURES_588.json",
+    "sha256": "f699c8cfe8c8a6c5da5cc38af7e6bfcf7efab14c0d7168fbc973d98768859406"
+  },
+  "report": {
+    "path": "notes/run/KEYGEN_CRT_COEFFICIENT_205_588_REPORT.md",
+    "sha256": "caf11255ee832fdc4fe7ea190cb59066c492c8c6502eff21e55ad3134044c550"
+  },
+  "evidence_generator": {
+    "path": ".build/evidence_v1.py",
+    "sha256": "1bc738f64ab2604686ab4e8da3ab0cc8eb3ef786f9486ab6b1d94cc70d513b3e"
+  },
+  "evidence_configuration": {
+    "path": ".build/crt588/evidence_config.json",
+    "sha256": "7f1dd7cf40d29311f2f304965f99df02ed3c518d6e658856959607077369832f"
+  },
+  "source_proof_markers": [],
+  "linter_suppressions": [],
+  "limits_unchanged": true,
+  "independent_review": "NOT_RUN",
+  "push": false,
+  "next_unused_suffix": 589,
+  "next_obligations": [
+    "Complete actual256-coefficient CRT walk and signed normalization",
+    "Discharge caller input domains from no-premise587 fs/gs images and retain fd/gd products",
+    "Remaining additional-prime/forward/products and full d2 return",
+    "Later d levels/root/certificate/codec and full B1 theorem"
+  ],
+  "not_claimed": [
+    "Complete256-coefficient CRT walk or signed normalization",
+    "Complete d2 return",
+    "Mathematical CRT/normalization/NTT/root law",
+    "Full KeyGen/Sign/compiler/security or unconditional positivity/probability",
+    "Independent review"
+  ]
+}

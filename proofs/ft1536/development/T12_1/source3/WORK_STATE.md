@@ -1,3 +1,27 @@
+# SEED9_R1 — route ACTIVE; CRT coefficient checkpoint588 accepted;589 next
+
+Owner: continue fully to completion; no push, handoff, subagents or reviewers.
+Overall source-to-fiber goal IN_PROGRESS / NOT_REVIEWED.
+588 canonical keygen_crtcoefficient205_588 accepted14/14,exit0,diagnostics0/0,
+warningAsError,markers/suppressions0;30 standard-only axiom results.
+Full pinned len1 mul/addMul leaves, actual u1 CRT three leaf calls including
+xq receiver and tmp[u] carry store; original coBody shape binding and full
+scoped coefficient body. Exact two-limb images, restored caller locals/arrays
+and separated read keeps share one output. Values remain executed words.
+68.768s sum,maxRSS5715732KiB; limits unchanged; independent review NOT_RUN.
+ENTRY_PINS00f602e7…74673/74673 before/after; predecessor587450 hashes unchanged.
+15 attempts retain8 syntax/elaboration/clean-log failures, no resource failure
+or mathematical counterexample; all inherited retained history preserved.
+Report/evidence KEYGEN_CRT_COEFFICIENT_205_588_REPORT.md and matching JSON.
+589 continues full256 coefficient walk/prime setup/signed normalization and
+actual fs/gs CRT calls, then additional-prime/forward/products/full d2 return.
+Later d levels/root/certificate/codec remain OPEN. No mathematical CRT/NTT/
+normalization/root law, full KeyGen/Sign/compiler/security/unconditional
+positivity/probability claim. Old110/measured/five do_sign unchanged.
+Foreign changes/staging excluded; no push. Continue after local commit.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — sustained route ACTIVE; full d=2 part2 checkpoint587 accepted;588 starting
 
 Owner: continue fully to completion; no push, handoff, subagents or reviewers.
@@ -9645,3 +9669,37 @@ Job record (587): attempt011 — ACCEPTED_LOCAL12/12,0/0: complete actual d=2 pa
 Job record (587): keygen_secondloop204_587 — ACCEPTED13/13,exit0,0/0,warningAsError,markers0;24 standard-only axiom results. Complete actual d=2 part2, terminalu2, four output-product columns and full512-word fs/gs interleaved CRT-input images on one final heap. Next integrity/local checkpoint then actual two-limb CRT588; no push or final handoff.
 
 Job record (587 checkpoint): integrity/evidence PASS,74673 entry paths/812 predecessor hashes unchanged,450 new evidence hashes verified. Next exact-path local commit and immediate588 actual two-limb CRT source work; no push or final handoff.
+Job record (588): entry74673/74673 and450 predecessor587 evidence hashes verified;587 committedacc21017. Scope: actual xlen2/num256 CRT including co-reduction and signed normalization; begin unsigned word/cast bridges and diagnostic pinned AST inspection (no numerical theorem inferred from eval). No push or handoff.
+Job record (588): attempt001 — ACCEPTED_LOCAL2/2,0/0: unsigned64 arithmetic/shift and32↔64 cast/31-bit-mask bridges, plus diagnostic exact pinned mul/addMul/CRT-core ASTs. Diagnostic eval is source inspection only, not an arithmetic theorem. Next shared state/word-control frame helpers and one-limb multiply/addMul source engines for xlen2 CRT.
+
+588 attempt002: Ops/State accepted clean (18.880s/3.123s); WordControl failed unknown Bool.and_eq_true.mp. Retained raw diagnostics; fix to pinned Bool.and_eq_true_iff and retry. No semantic counterexample.
+
+Job record (588): attempt003 — ACCEPTED_LOCAL WordControl205, clean0/0, generic supported WordExec array/local frame including returned flows. Next exact len1 mul and addMul with full64-bit intermediates and31-bit store masks.
+
+Job record (588): attempt004 — WordAtoms failed literal binder Int vs parser Nat; retained diagnostics. Correct literal domain to Nat, then len1 multiply engine.
+
+Job record (588): attempt005 — WordAtoms accepted; mul failed Load32 constructor arity/Allocated projection and explicit alias/word-conversion rewrites. Retained; fix exact source metadata projections, no premise weakening.
+
+Job record (588): attempt006 — retained mul elaboration failure at cc frame: projection unification left state/64-bit word meta unconstrained. Fix explicit s5/wide intermediate; all prior source/arithmetic steps accepted.
+
+Job record (588): attempt007 — ACCEPTED_LOCAL ZintMulWord205,7.436s,0/0,maxRSS4413164KiB. Full pinned mlen1 leaf, exact64-bit product/add and masked low limb/returned carry; no range or CRT law. Next len1 addMul two-limb write.
+
+Job record (588): attempt008 — retained addMul syntax/elaboration failure: extra expression parenthesis caused subsequent shape cascade; explicit as64 expression helper fixes syntax without changing target AST.
+
+Job record (588): attempt009 — ACCEPTED_LOCAL ZintAddMulWord205,10.195s,0/0,maxRSS4496468KiB. Full pinned len1 leaf executes both low31-bit and carry writes with no output premise. Next actual CRT leaf-call adapters and same-output images/keeps, followed by original co-reduction round.
+
+Job record (588): attempt010 — retained image-corollary geometry rewrite failure: record projections remained after element-width rewriting. Use explicit pointer-offset equality before omega; two accepted leaf engines unchanged.
+
+Job record (588): attempt011 — Images accepted clean; AddMul caller failed implicit-state inference across pointer-bound entry aliases. Add explicit scalar-only entry states for cell/frame facts; accepted Bind construction unchanged.
+
+Job record (588): attempt012 — ACCEPTED_LOCAL4/4,0/0: both image/frame corollaries and actual CRT reduce/addMul/mul call adapters (u1, caller receiver and tmp[u] store). Next bind coefficient body to original coBody shape and compose actual reduce→Montgomery correction→addMul.
+
+Job record (588): attempt013 — RoundShape accepted20.774s,0/0,maxRSS5660652KiB; coefficient failed finite-name membership simplification plus unused simp arg. Retained; simplify full three-element membership, no output or limit change.
+
+Job record (588): attempt014 — ACCEPTED_LOCAL CrtCoefficient205,3.426s,0/0: original scoped coefficient body executes xp load→unsigned reduce→Montgomery correction→addMul with caller locals restored. Next same-output two-limb/read-frame export, axiom audit and canonical small checkpoint, then full256 coefficient walk/signed normalization.
+
+Job record (588): attempt015 — ACCEPTED_LOCAL2/2,0/0; scoped coefficient exports both limb images, full caller-local/array restoration and arbitrary separated read preservation at one output;30 standard-only axiom results. Next canonical14-module replay and bounded coefficient checkpoint; full256 walk and signed normalization remain open and continue589.
+
+Job record (588): canonical keygen_crtcoefficient205_588 — ACCEPTED14/14,0/0,30 standard-only audits,68.768s,maxRSS5715732KiB; entry74673/predecessor450 unchanged. Next evidence verification/exact-path local commit, then589 full CRT walk and signed normalization.
+
+Job record (588 checkpoint): evidence PASS250 bindings; exact explicit module list used after path-count assertion rejected a suffix glob containing two historical audit modules (no index mutation occurred). Foreign staging empty; commit own19 paths only, no push; next589 coefficient walk.
