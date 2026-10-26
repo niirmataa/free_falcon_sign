@@ -4,19 +4,22 @@
 //! pierścień `R_q` ([`ring`]), jawny SHAKE256 i `hash_to_point` ([`shake`])
 //! oraz PRSS z parami kluczy i udziałami zera ([`prss`]).
 //! NTT ternarna z silnika ([`ntt`]), Shamir w `Z_q` ([`shamir_zq`]) i Pedersen
-//! VSS nad `Z_q` ([`vss`]). Zasady: brak I/O,
+//! VSS nad `Z_q` ([`vss`]), oraz domena `Z_P` ([`zp`]) z MAC ukrytego δ
+//! ([`mac`]) — D-025. Zasady: brak I/O,
 //! brak `unsafe`, docelowo `no_std`-ready.
 
 #![forbid(unsafe_code)]
 
 pub mod error;
 pub mod gf256;
+pub mod mac;
 pub mod ntt;
 pub mod prss;
 pub mod ring;
 pub mod shake;
 pub mod shamir_zq;
 pub mod vss;
+pub mod zp;
 
 pub use error::{CoreError, Result};
 

@@ -1,0 +1,36 @@
+# WP-013 check — 2026-10-26 (Z_P + MAC ukrytego δ)
+# host: Linux 6.12.113+deb13-amd64 x86_64 GNU/Linux
+# rustc: rustc 1.94.0 (4a4ef493e 2026-03-02)
+# cargo-deny: cargo-deny 0.20.2
+# nightly: rustc 1.101.0-nightly (19833af72 2026-10-20)
+
+== fmt ==
+fmt: OK (bez zmian)
+== test (locked, offline) ==
+running 92 tests
+test result: ok. 92 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.26s
+running 0 tests
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+== clippy -D warnings ==
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.09s
+== cargo deny --offline check ==
+advisories ok, bans ok, licenses ok, sources ok
+== KAT niezależny (Python) ==
+shares = [(1, '0x15294c608397bac'), (2, '0x3a42868ed2db1f2'), (3, '0x8180050388870c1'), (5, '0x17667cec027187fa')]
+ys_fnv1a64_le = 0xebc912f3f65f3a6a
+reconstruct_k3 = 0x123456789abcdef
+reconstruct_k4 = 0x123456789abcdef
+lambdas_sum = 0x1
+lambdas = ['0x1800000000000003', '0x1ffffffffffffffa', '0x1000000000000002', '0x17ffffffffffffff']
+delta_ys = ['0xd75ee1a5d8ebff4', '0xbcdaef86fc31670']
+value_ys = ['0x104172a3d5063767', '0x1f5f9fe02060a0df']
+mac_ys = ['0x177f9de2d53d1c72', '0x18409dd0e77172ea']
+open_value = 0x123456789abcdef z = 0 ok = True
+tamper_detected = True
+== miri (nightly, locked, offline) ==
+-- zp:: (log .build/miri_zp.log)
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 83 filtered out; finished in 2.67s
+rc=0
+-- mac:: (log .build/miri_mac.log)
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 80 filtered out; finished in 3.20s
+rc=0

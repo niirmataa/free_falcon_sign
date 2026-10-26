@@ -33,6 +33,8 @@ pub enum CoreError {
     InvalidInput,
     /// Brak klucza dla wymaganej pary stron.
     MissingKey,
+    /// Kontrola MAC z ukrytym δ nie przeszła (`MacFail`).
+    MacFail,
 }
 
 impl fmt::Display for CoreError {
@@ -50,6 +52,7 @@ impl fmt::Display for CoreError {
             Self::OutOfRange => write!(f, "value out of range"),
             Self::InvalidInput => write!(f, "invalid input"),
             Self::MissingKey => write!(f, "missing pairwise key"),
+            Self::MacFail => write!(f, "MAC check failed (hidden delta)"),
         }
     }
 }

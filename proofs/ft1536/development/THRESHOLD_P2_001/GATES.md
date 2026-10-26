@@ -63,6 +63,13 @@ brak claims register, plan nie ma bramek.
 - [ ] Brak dealera/stand-inu/`iso` w buildzie produkcyjnym.
 
 **Artefakty:** `core` + testy + fuzz corpus + CI logi.
+
+**Stan implementacji (2026-10-26, to NIE odbiór):** WP-010/011/012 `DONE`
+(workspace, hermetyczne CI, prymitywy; 92 testy natywne, miri PASS),
+WP-013 `DONE` (`Z_P` + MAC ukrytego δ, `impl/ci/WP013_CHECK_2026-10-26.txt`).
+Bramka pozostaje **otwarta**: WP-014…WP-027 `TODO`, brak niezależnego
+recenzenta (autor ≠ recenzent).
+
 **Recenzent:** niezależny (inny model/człowiek).
 **Nie przechodź, jeśli:** jest znany realny bug, fail-open, panic z wejścia,
 albo build wymaga zewnętrznej ścieżki.

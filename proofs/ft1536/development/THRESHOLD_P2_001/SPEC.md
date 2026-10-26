@@ -422,7 +422,9 @@ nie obniża normy). Nie wracać do niego bez nowego dowodu.
 
 Checki przed otwarciem `s2` (MUST):
 
-1. `s2` zgodne z udziałami (MAC/commitment),
+1. `s2` zgodne z udziałami (MAC/commitment): MAC z **ukrytym** δ nad `Z_P`
+   (D-025, WP-013); niezgodność → `MacFail` → `ABORT` bez otwarcia `s2`.
+   δ nie jest rekonstruowane; jawny `delta_known` jest zabroniony w `PROD`.
 2. `Q(s1,s2) < B_norm` — **forma silnika**, nie tylko `L2`; jeśli MPC
    liczy konserwatywne górne ograniczenie `Q ≤ c·L2`, to `c·L2 < B_norm`
    (OPEN: O-06),
