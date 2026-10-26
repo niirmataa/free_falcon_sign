@@ -1,0 +1,659 @@
+{
+  "utc": "2026-10-26T15:51:36.776008+00:00",
+  "status": "PROVED_KERNEL_SCOPED / NOT_REVIEWED",
+  "overall_owner_goal": "IN_PROGRESS; continue after this intermediate checkpoint",
+  "scope": "Full generic bounded-length parsed zint_sub and zint_norm_zero bodies, original call adapters, exact source branch/borrow word images and all separated read keeps; explicit xlen2 two-limb normalization call export.",
+  "entry_manifest": {
+    "path": ".build/steprx195/ENTRY_PINS.json",
+    "sha256": "00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964"
+  },
+  "entry_checked_count": 74673,
+  "entry_missing": 0,
+  "entry_changed": 0,
+  "entry_checks": [
+    {
+      "path": ".build/norm590/entry_before.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/norm590/entry_after.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/norm590/predecessor_before.log",
+      "sha256": "8dd42cf4022303194fece7080ac93ba1e4314ffd4ac0e1a9893e8f29c0eb74aa"
+    },
+    {
+      "path": ".build/norm590/predecessor_after.log",
+      "sha256": "8dd42cf4022303194fece7080ac93ba1e4314ffd4ac0e1a9893e8f29c0eb74aa"
+    },
+    {
+      "path": ".build/norm590/entry_reverify_590.py",
+      "sha256": "641ca0817a30f5d2eea7390621f2686c267a2014e725b574033d856bfbf61d09"
+    },
+    {
+      "path": ".build/norm590/predecessor_verify.py",
+      "sha256": "3a51464e950f6163dfce76f47b26e2ca605a548fb29771b7d6a658d3a15dbe97"
+    },
+    {
+      "path": ".build/norm590/typecheck_reuse.py",
+      "sha256": "f163c71cd60ba4301f164f5ead010497fb23a6627d510304c6219c37c68a1e66"
+    }
+  ],
+  "predecessor_handoff": {
+    "path": "notes/run/KEYGEN_CRT_WALK_206_589.json",
+    "sha256": "ab1b787209cb59ecdecf183aef4b69a1bed836e7f08520ffbb1e92bf3ca41ee9"
+  },
+  "predecessor_bindings_verified": 237,
+  "job": "keygen_zintnormalize207_590",
+  "accepted": 15,
+  "receipts": {
+    "path": ".build/jobs/keygen_zintnormalize207_590/RECEIPTS.json",
+    "sha256": "c80f5155dec1689230d34e1d0452f04d70df46a4f5f2701fd2280ee99a22d0e1"
+  },
+  "inputs": {
+    "path": ".build/jobs/keygen_zintnormalize207_590/SOURCE_INPUTS.json",
+    "sha256": "d638c475c5c044c3fdfa9ad99f4213bb3c4a8a27a7421a1541a2fd16c163ffff"
+  },
+  "runner": {
+    "path": ".build/jobs/keygen_zintnormalize207_590/RUNNER_SOURCE.py",
+    "sha256": "e8e9cf4ba5e744425464c0057a27d07f62ff82be352c479535425ff436c5b385"
+  },
+  "engine": {
+    "path": ".build/jobs/keygen_zintnormalize207_590/EXECUTION_SOURCE.py",
+    "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c"
+  },
+  "preflight": {
+    "path": ".build/jobs/keygen_zintnormalize207_590/PREFLIGHT.json",
+    "sha256": "d2e776c0287017accb32a6eb398ce4d4adeb1093600e7932bf23c32a164a91e9"
+  },
+  "modules": [
+    {
+      "module": "Source3.ZintSubLimb207",
+      "source": {
+        "path": "formal/Source3/ZintSubLimb207.lean",
+        "sha256": "f61f095ded0d8baf34bba40f6b84333f0cbf23b83bfcc4bff68f4a1772bc27ea"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/formal/Source3/ZintSubLimb207.lean",
+        "sha256": "f61f095ded0d8baf34bba40f6b84333f0cbf23b83bfcc4bff68f4a1772bc27ea"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/lib/Source3/ZintSubLimb207.olean",
+        "sha256": "e6e962dfbfc70a1a60c5918d01c0e3a7ffa72479cb2d4a67f22917a379ace94e"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintSubLimb207.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintSubLimb207.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 15.746,
+      "maxrss_kib": 4140080
+    },
+    {
+      "module": "Source3.ZintSubFixed207",
+      "source": {
+        "path": "formal/Source3/ZintSubFixed207.lean",
+        "sha256": "6efc57cf622202717cb518e491abc52f60c6fa70802bd1e67d6e747f45c9f385"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/formal/Source3/ZintSubFixed207.lean",
+        "sha256": "6efc57cf622202717cb518e491abc52f60c6fa70802bd1e67d6e747f45c9f385"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/lib/Source3/ZintSubFixed207.olean",
+        "sha256": "4a520b93973b7c36c95c10127f887ec96e5d82ed2298b8983cdd1885fbb0add3"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintSubFixed207.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintSubFixed207.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.821,
+      "maxrss_kib": 4179776
+    },
+    {
+      "module": "Source3.ZintSubStep207",
+      "source": {
+        "path": "formal/Source3/ZintSubStep207.lean",
+        "sha256": "466a923b909778c4df9f63a90509382744bd34e21d2a8ee27976f65016dc861c"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/formal/Source3/ZintSubStep207.lean",
+        "sha256": "466a923b909778c4df9f63a90509382744bd34e21d2a8ee27976f65016dc861c"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/lib/Source3/ZintSubStep207.olean",
+        "sha256": "30508e89791d1b067525f5872bdcc1cd7569e89c4765ddea3a4dc80238ffa120"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintSubStep207.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintSubStep207.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.071,
+      "maxrss_kib": 4179776
+    },
+    {
+      "module": "Source3.ZintSubLoop207",
+      "source": {
+        "path": "formal/Source3/ZintSubLoop207.lean",
+        "sha256": "f707bc2e53017d6b52c7b1f66a641629c7d4f8c8f5e2ad8e0e428b3990bcee22"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/formal/Source3/ZintSubLoop207.lean",
+        "sha256": "f707bc2e53017d6b52c7b1f66a641629c7d4f8c8f5e2ad8e0e428b3990bcee22"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/lib/Source3/ZintSubLoop207.olean",
+        "sha256": "736ff54d904b12863bb0215e8a512f184fcfe43bcb2662b4a7432404271e1b34"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintSubLoop207.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintSubLoop207.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.87,
+      "maxrss_kib": 4179896
+    },
+    {
+      "module": "Source3.ZintSubWhole207",
+      "source": {
+        "path": "formal/Source3/ZintSubWhole207.lean",
+        "sha256": "a2c1d4e309246b3febc280fd2f0de412fe13296b6c63cacff5df597f05bef364"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/formal/Source3/ZintSubWhole207.lean",
+        "sha256": "a2c1d4e309246b3febc280fd2f0de412fe13296b6c63cacff5df597f05bef364"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/lib/Source3/ZintSubWhole207.olean",
+        "sha256": "150c02531a1b091db3e1b1f5758172941580de331780f87461c5dc432be97ce5"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintSubWhole207.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintSubWhole207.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.371,
+      "maxrss_kib": 4179896
+    },
+    {
+      "module": "Source3.ZintSubCall207",
+      "source": {
+        "path": "formal/Source3/ZintSubCall207.lean",
+        "sha256": "c698aec10351058e5c747cf73377bfb5bb1690e2bf096cd804f511c9ab88d2ae"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/formal/Source3/ZintSubCall207.lean",
+        "sha256": "c698aec10351058e5c747cf73377bfb5bb1690e2bf096cd804f511c9ab88d2ae"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/lib/Source3/ZintSubCall207.olean",
+        "sha256": "76321d8f50f481fb02935123fecb01bb818b45ee45c387437ca5ca876bcf2313"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintSubCall207.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintSubCall207.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.037,
+      "maxrss_kib": 4179896
+    },
+    {
+      "module": "Source3.ZintNormPrepare207",
+      "source": {
+        "path": "formal/Source3/ZintNormPrepare207.lean",
+        "sha256": "154874e7b7c95677008357e8b9d7b655e7f2b08e43a69d184ed3ef9711ac5fba"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/formal/Source3/ZintNormPrepare207.lean",
+        "sha256": "154874e7b7c95677008357e8b9d7b655e7f2b08e43a69d184ed3ef9711ac5fba"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/lib/Source3/ZintNormPrepare207.olean",
+        "sha256": "6139cadaec8a02627036bdb6ac3fe56bab87dc02124182afbfd16fda37a219a6"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintNormPrepare207.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintNormPrepare207.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.02,
+      "maxrss_kib": 4179896
+    },
+    {
+      "module": "Source3.ZintNormFixed207",
+      "source": {
+        "path": "formal/Source3/ZintNormFixed207.lean",
+        "sha256": "2557a84609bb3ca1bcec0bf6c98cb3e177f6db5448e3846779535afc39ee5cbe"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/formal/Source3/ZintNormFixed207.lean",
+        "sha256": "2557a84609bb3ca1bcec0bf6c98cb3e177f6db5448e3846779535afc39ee5cbe"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/lib/Source3/ZintNormFixed207.olean",
+        "sha256": "3de0347467fea1819257f3b9cb12bb175c224cb149e1b099b62c20e614cfcc4c"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintNormFixed207.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintNormFixed207.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.522,
+      "maxrss_kib": 4179896
+    },
+    {
+      "module": "Source3.ZintNormState207",
+      "source": {
+        "path": "formal/Source3/ZintNormState207.lean",
+        "sha256": "a3534c268fc057f3b4023b53d8d86f495f1d6a68bd5a0113ede63a6f683cd01e"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/formal/Source3/ZintNormState207.lean",
+        "sha256": "a3534c268fc057f3b4023b53d8d86f495f1d6a68bd5a0113ede63a6f683cd01e"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/lib/Source3/ZintNormState207.olean",
+        "sha256": "900d2ec63c90c3c0827c34460043358c376825573daa6067250e2d3473649f25"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintNormState207.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintNormState207.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.221,
+      "maxrss_kib": 4179896
+    },
+    {
+      "module": "Source3.ZintNormBranches207",
+      "source": {
+        "path": "formal/Source3/ZintNormBranches207.lean",
+        "sha256": "99350d3158626d68585b9a8e820c5969aab5ff3315895c0a13df0db4501e10f1"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/formal/Source3/ZintNormBranches207.lean",
+        "sha256": "99350d3158626d68585b9a8e820c5969aab5ff3315895c0a13df0db4501e10f1"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/lib/Source3/ZintNormBranches207.olean",
+        "sha256": "2f87e8ee891e11217e6bf8a1f25bd9765d79f41a52a3b8b647e94b0d95589ab5"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintNormBranches207.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintNormBranches207.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.971,
+      "maxrss_kib": 4179896
+    },
+    {
+      "module": "Source3.ZintNormLoop207",
+      "source": {
+        "path": "formal/Source3/ZintNormLoop207.lean",
+        "sha256": "7ff9ebcef34b02573a7495bc5352f414158035b221fc9f11969dc06cae777b71"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/formal/Source3/ZintNormLoop207.lean",
+        "sha256": "7ff9ebcef34b02573a7495bc5352f414158035b221fc9f11969dc06cae777b71"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/lib/Source3/ZintNormLoop207.olean",
+        "sha256": "6adff6efb914592bc8d04d588b4563fd92fcd9be0a3e9509960aaada2585bdf9"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintNormLoop207.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintNormLoop207.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.175,
+      "maxrss_kib": 4182864
+    },
+    {
+      "module": "Source3.ZintNormWhole207",
+      "source": {
+        "path": "formal/Source3/ZintNormWhole207.lean",
+        "sha256": "f48f5bec05228784ed9832be455d88bf61d50e9a3521aaff288883f63d113107"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/formal/Source3/ZintNormWhole207.lean",
+        "sha256": "f48f5bec05228784ed9832be455d88bf61d50e9a3521aaff288883f63d113107"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/lib/Source3/ZintNormWhole207.olean",
+        "sha256": "4566117a3fab1fec562e207c2e48f5b73549fd5f1578444611c94d6c76ea660b"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintNormWhole207.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintNormWhole207.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.074,
+      "maxrss_kib": 4182864
+    },
+    {
+      "module": "Source3.ZintNormCall207",
+      "source": {
+        "path": "formal/Source3/ZintNormCall207.lean",
+        "sha256": "835ef67458ef724801e72e602b7830251a5c08de537a2b7ba1c19e456bd92a4c"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/formal/Source3/ZintNormCall207.lean",
+        "sha256": "835ef67458ef724801e72e602b7830251a5c08de537a2b7ba1c19e456bd92a4c"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/lib/Source3/ZintNormCall207.olean",
+        "sha256": "e27b5358949fa443b16c875da803c798adb9083eeb184a74d72f4018a3f22c31"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintNormCall207.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintNormCall207.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.032,
+      "maxrss_kib": 4182864
+    },
+    {
+      "module": "Source3.ZintNormTwo207",
+      "source": {
+        "path": "formal/Source3/ZintNormTwo207.lean",
+        "sha256": "51edddb277177151f72fdb05c9ca5687cbde0d4c20df5ebea5d9daa6cfb91019"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/formal/Source3/ZintNormTwo207.lean",
+        "sha256": "51edddb277177151f72fdb05c9ca5687cbde0d4c20df5ebea5d9daa6cfb91019"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/lib/Source3/ZintNormTwo207.olean",
+        "sha256": "e9a8c81c5735c83f482be5ef288279a8b5c2ea239e24e77b58c7a16884d4bb31"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintNormTwo207.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintNormTwo207.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.921,
+      "maxrss_kib": 4182864
+    },
+    {
+      "module": "Source3.ZintNormAudit207",
+      "source": {
+        "path": "formal/Source3/ZintNormAudit207.lean",
+        "sha256": "f6400c867419b1a1a20d90c2dcbf2cd4a9aa1bbf6429e981696846095a385d65"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/formal/Source3/ZintNormAudit207.lean",
+        "sha256": "f6400c867419b1a1a20d90c2dcbf2cd4a9aa1bbf6429e981696846095a385d65"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/lib/Source3/ZintNormAudit207.olean",
+        "sha256": "0e36981800db1a1e2d94ea708f83c0ecb2e48eff08e93eb89c8c2e5d1254998b"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintNormAudit207.stdout",
+        "sha256": "e3fddf34b6d4effa2efabf774a1d479a675eb379fb58c3b733bb6acfb8c2f5b6"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_zintnormalize207_590/logs/Source3_ZintNormAudit207.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.922,
+      "maxrss_kib": 4182864
+    }
+  ],
+  "axioms": {
+    "FT1536.Source3.ZintSubLimb207.locals": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintSubLimb207.ccCell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintSubLimb207.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintSubFixed207.next_locals": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintSubFixed207.next_arrays": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintSubStep207.step": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintSubLoop207.guard": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintSubLoop207.remaining": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintSubWhole207.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintSubCall207.binding": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintSubCall207.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormPrepare207.outside": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormPrepare207.wCell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormPrepare207.ccCell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormPrepare207.append_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormPrepare207.comparisons": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormFixed207.transport": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormState207.decrement": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormState207.guard_pos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormState207.prepared_fixed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormState207.tied_fixed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormState207.tied_u": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormState207.tied_cc": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormState207.iterate": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormBranches207.less": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormBranches207.equal": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormBranches207.greater": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormLoop207.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormWhole207.before": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormWhole207.initial_fixed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormWhole207.append_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormWhole207.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormCall207.binding": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormCall207.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ZintNormTwo207.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "failures_and_workshop": {
+    "path": "notes/run/KEYGEN_ZINT_NORMALIZE_207_FAILURES_590.json",
+    "sha256": "c4c15ac51fbe4d11bb7d76922f8c7a763f9f43153da20904e28dd8204897ef71"
+  },
+  "report": {
+    "path": "notes/run/KEYGEN_ZINT_NORMALIZE_207_590_REPORT.md",
+    "sha256": "df5aea9f2d27fffee41138f37817f7a51bc218995935fbc65c07940d66593f51"
+  },
+  "evidence_generator": {
+    "path": ".build/evidence_v1.py",
+    "sha256": "1bc738f64ab2604686ab4e8da3ab0cc8eb3ef786f9486ab6b1d94cc70d513b3e"
+  },
+  "evidence_configuration": {
+    "path": ".build/norm590/evidence_config.json",
+    "sha256": "405abeec9ee45cecb1330ddec4f631a28bae06209632fa802c490b9bbb7fda16"
+  },
+  "source_proof_markers": [],
+  "linter_suppressions": [],
+  "limits_unchanged": true,
+  "independent_review": "NOT_RUN",
+  "push": false,
+  "next_unused_suffix": 591,
+  "next_obligations": [
+    "Complete stride2 signed normalization walk",
+    "Actual CRT declarations/initial tmp0 source store and both fs/gs callers from587",
+    "Remaining additional-prime/forward/products and full d2 return",
+    "Later d levels/root/certificate/codec and full B1 theorem"
+  ],
+  "not_claimed": [
+    "Complete rebuildCRT body/callers yet",
+    "Mathematical CRT/centered normalization/NTT/root law",
+    "Complete d2 return",
+    "Full KeyGen/Sign/compiler/security or unconditional positivity/probability",
+    "Independent review"
+  ]
+}

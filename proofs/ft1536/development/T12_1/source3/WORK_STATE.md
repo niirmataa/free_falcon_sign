@@ -1,3 +1,29 @@
+# SEED9_R1 — route ACTIVE; generic sub/norm checkpoint590 accepted;591 next
+
+Owner: continue fully to completion; no push, handoff, subagents or reviewers.
+Overall source-to-fiber goal IN_PROGRESS / NOT_REVIEWED.
+590 canonical keygen_zintnormalize207_590 accepted15/15,exit0,diagnostics0/0,
+warningAsError,markers/suppressions0;35 standard-only axiom results.
+Full generic bounded-length pinned zint_sub and zint_norm_zero bodies;
+exact borrow/mask/source comparison branches, early void returns and final
+unsigned0→2^64−1 post-decrement on ties. Original sub/norm caller adapters
+and explicit xlen2 two-limb word image, caller locals/arrays and outside
+reads at one output. Input domains/read vectors are ordinary source inputs.
+58.774s sum,maxRSS4182864KiB; original limits; independent review NOT_RUN.
+ENTRY_PINS00f602e7…74673/74673 before/after; predecessor589237 unchanged.
+15 attempts retain5 elaboration/clean-log failures; no mathematical/resource
+failure or failed cache product. Full retained history preserved.
+Report/evidence KEYGEN_ZINT_NORMALIZE_207_590_REPORT.md and matching JSON.
+Next591 full normalization walk (generic stride/limb count preferred), actual
+CRT initial tmp0 source store/body and both fs/gs callers. Then remaining
+additional-prime/forward/products/full d2 return and later d levels/root/
+certificate/codec. No mathematical CRT/centering/NTT/root law, full KeyGen/
+Sign/compiler/security/unconditional positivity/probability claim.
+Old110/measured/five do_sign unchanged. Foreign edits/staging excluded;
+no push; continue after commit.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — route ACTIVE; full CRT co-loop checkpoint589 accepted;590 next
 
 Owner: continue fully to completion; no push, handoff, subagents or reviewers.
@@ -9761,3 +9787,39 @@ Job record (589): attempt013 — ACCEPTED_LOCAL audit,2.725s,0/0: four original 
 Job record (589): canonical keygen_crtwalk206_589 — ACCEPTED11/11,0/0,26 standard-only audits,76.132s,maxRSS5182616KiB; entry/predecessor postcheck running. Next evidence/exact-path local commit then590 generic subtraction and signed normalization; do not stop at this checkpoint.
 
 Job record (589 checkpoint): evidence PASS237 new bindings; entry74673/predecessor250 unchanged,11 accepted/26 axiom audits. Foreign index observed empty and unrelated commits preserved; commit own15 exact paths only, no push. Next590 generic subtraction/normalization and full CRT.
+
+Job record (590 start):589 committed dcd4ac2cde7f035e0c45b04a1f0a50464efe3e28, no push. Continue generic source subtraction then two-limb signed normalization/full CRT prefix and caller binding. New runtime .build/norm590; predecessor589 immutable.
+
+Job record (590): entry74673/74673 and predecessor589237 evidence bindings verified. attempt001 retained local alias rewrite failure ccName vs literal cc in restored-scope cell bridge; full generic limb source otherwise clean. Use exact instantiated restored equality; no domain or output weakening. Next generic subtraction loop.
+
+Job record (590): attempt002 — ACCEPTED_LOCAL ZintSubLimb207,3.926s,0/0: generic actual subtraction limb body with arbitrary incoming borrow, exact masked write/outgoing borrow, scope restoration and other-local keeps. Next generic counted subtraction loop and full leaf return.
+
+Job record (590): attempt003 — Limb/Fixed accepted2/2 clean; generic step failed dependent Load32 elimination for indexed av v. Generalize the read word in a local domain lemma before eliminating; keep actual input read and all domains. Next complete step/loop.
+
+Job record (590): attempt004 — ACCEPTED_LOCAL4/4,0/0: generic original subtraction loop executes every limb with recursively computed borrow, exact31-bit writes, final counter/borrow and outside-read/caller keeps. Next full parsed sub leaf declarations/initialization/return and norm call adapter.
+
+Job record (590): attempt005 retained whole-leaf elaboration failure: mistyped shared before4 namespace and underdetermined Result witness. Correct ZintAddMulWord205 namespace and explicit state/return witness; all loop/image statements retained. Next whole leaf and actual normalization sub call.
+
+Job record (590): attempt006 — ACCEPTED_LOCAL2/2,0/0: full parsed generic sub leaf, exact final returned borrow and all written limbs; actual normalization sub-call binds fresh frame and preserves caller locals/arrays. Next generic normalizer threshold/carry/read/branch preparation for multi-limb comparison.
+
+Job record (590): attempt007 — ACCEPTED_LOCAL ZintNormPrepare207,21.576s,0/0: generic shifted-modulus threshold/carry source prelude and both actual unsigned comparisons. Next generic normalizer domains/branch choice and source decrement/scope state bridges.
+
+Job record (590): attempt008 — NormFixed accepted clean; NormState retained explicit Binary/convert bridge and phantom-state inference failures. Supply arithmetic goal/literal conversion and exact transport output states; no premise or execution change. Next state bridges and all three source comparison branches.
+
+Job record (590): attempt009 — ACCEPTED_LOCAL2/2,0/0: exact source decrement/positive loop guard, normalizer state/domain transports and all three original comparison-branch executions. Next complete descending comparison loop with actual subtraction on greater branch and source-flow/word-image export.
+
+Job record (590): attempt010 retained normalizer loop clean-log/elaboration failure: deprecated if_pos/if_neg aliases and simpa leaving prepared state alias opaque. Use current ite_eq_left/right names and explicit prepared unfolding; preserve full loop/domain/word target. Next full comparison loop retry.
+
+Job record (590): attempt011 — ACCEPTED_LOCAL ZintNormLoop207,7.033s,0/0: complete arbitrary-length descending normalization comparison loop, all early returns/equal descent/source subtraction, exact branch-choice word image and outside keeps. Next full normZero declarations/initialization and final unsigned post-decrement wrap/void return.
+
+Job record (590): attempt012 — ACCEPTED_LOCAL ZintNormWhole207,8.296s,0/0: full generic pinned normZero body with real declarations/init, all comparison/subtraction branches, final unsigned0→2^64−1 decrement on complete ties, and checked void return. Next actual CRT normalization call adapter and two-limb export/audit.
+
+Job record (590): attempt013 — ACCEPTED_LOCAL ZintNormCall207,7.631s,0/0: original CRT x/tmp/xlen normalization call executes full generic callee and preserves all caller locals/arrays and outside reads at the same word image. Next exact two-limb export and original-interface/axiom audit.
+
+Job record (590): attempt014 — ACCEPTED_LOCAL ZintNormTwo207,3.423s,0/0: actual xlen2 normalization call exports both exact limb words, caller-frame restoration and arbitrary separated reads at the same output. Generic arbitrary-length subtraction/normalization engines remain upstream. Next audit35 theorem dependencies and canonical replay.
+
+Job record (590): attempt015 — ACCEPTED_LOCAL audit, five original interfaces/35 standard-only axiom results,0/0. Full generic sub/normZero and original calls/two-limb image complete. Next canonical15-module replay/checkpoint, then591 full two-limb CRT normalization walk/entry and both fs/gs callers.
+
+Job record (590): canonical keygen_zintnormalize207_590 — ACCEPTED15/15,0/0,35 standard-only audits,58.774s,maxRSS4182864KiB. Next entry/evidence verification and exact-path local commit, then591 full generic signed-normalization walk/CRT body/callers; do not stop at checkpoint.
+
+Job record (590 checkpoint): evidence PASS246 new bindings; entry74673/predecessor237 unchanged,15 accepted/35 axiom audits. Foreign index observed empty; exact own19 paths only, excluding591 draft and foreign work. Local commit without push; continue591 generic normalization walk/full CRT.
