@@ -8,6 +8,7 @@
 
 pub mod error;
 pub mod gf256;
+pub mod ring;
 
 pub use error::{CoreError, Result};
 
