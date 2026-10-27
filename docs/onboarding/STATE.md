@@ -1,5 +1,19 @@
 # Stan projektu — punkt wejścia
 
+**2026-10-27 — S09/THRESHOLD_P2_001: WP-031 DONE — protokół podpisu 2-z-3 (TEST-ORACLE) na silniku C.**
+`protocol::sign`: `SignMachine` w pełni wdrożone dla 3 stron ($k=2, n=3$) na
+profilu `TEST-ORACLE` (commity `b35c85d4` + `aa9ba6bf`, ~1900 l.). Przepływ N1
+`NONCE_COMMIT` (0x12) → N2 `NONCE_REVEAL` (0x13) z walidacją zobowiązań → N3
+agregacja nonce (kanoniczny porządek `PartyId`) → `hash_to_point` / `t_hash` →
+udziały $(s1_i, s2_i)$ w $R_q$ → `SIGN_OPEN` (0x15) → złożenie Lagrange'a w 0
+w $O(N)$ + check na udziałach + bramka normy + bramka weryfikatora silnika C.
+e2e na prawdziwym silniku C (`falcon_vrfy`): pin F2 `gold-ff` $n=103747771$
+bit-exact, 3 pary rosteru w 100% PASS, przekłamany udział uniemożliwia podpis
+(fail-closed bez częściowego podpisu i bez reconstructu w ścieżce sign).
+184 testy default / 197 all-features / Miri 153 PASS, clippy 0, PROD 0 symboli.
+Wykrywanie mutacji `lagrange_combine2` przez 4 testy. Druga połowa bramki G2 gotowa.
+Następny krok: WP-032 (malicious harness ≥10 strategii) lub WP-033 (transkrypt/replay).
+
 **2026-10-27 — S09/THRESHOLD_P2_001: WP-030 DONE — pełny przepływ setupu 2-z-3 (G2).**
 `protocol::setup`: `SetupSession` w pełni wdrożone dla 3 stron ($k=2, n=3$) na
 profilu `TEST-ORACLE`. Wdrożono kanoniczne kodeki CBOR (`SetupInit`,
