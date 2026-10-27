@@ -1,0 +1,318 @@
+{
+  "utc": "2026-10-27T12:39:23.430434+00:00",
+  "status": "PROVED_KERNEL_SCOPED / NOT_REVIEWED",
+  "overall_owner_goal": "IN_PROGRESS; continue after this intermediate checkpoint",
+  "scope": "Generalized CRT prime prefix at arbitrary bounded u via PrimeObject reads and source-body p0i/R2 words; full one-round composition (prefix + complete coefficient walk + generic multiply) with exact row/tmp product images and keeps; complete source-level co-reduction u-loop u=1..xlen with tmpAt/rowAt executed-word images, PrimeObject transport and exit state; make_fg signed normalization export at xstride=xlen.",
+  "entry_manifest": {
+    "path": ".build/steprx195/ENTRY_PINS.json",
+    "sha256": "00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964"
+  },
+  "entry_checked_count": 74673,
+  "entry_missing": 0,
+  "entry_changed": 0,
+  "entry_checks": [
+    {
+      "path": ".build/crtprime599/entry_before.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/crtprime599/entry_after.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/crtprime599/predecessor_before.log",
+      "sha256": "7b08bb50e4288d8dabeeb966f54991ffe83cff48874edeaf9cfe6c56161c5d9e"
+    },
+    {
+      "path": ".build/crtprime599/predecessor_after.log",
+      "sha256": "7b08bb50e4288d8dabeeb966f54991ffe83cff48874edeaf9cfe6c56161c5d9e"
+    },
+    {
+      "path": ".build/crtprime599/predecessor_verify.py",
+      "sha256": "0e13df1c720928356339c81ff2e644584bf23a1ced2c12712a6b48e4f712486f"
+    },
+    {
+      "path": ".build/crtprime599/typecheck.py",
+      "sha256": "cb78fff4719baa52112979f5148b44f53ff296cd78e133ec8743aa39a66cb6a9"
+    },
+    {
+      "path": ".build/crtprime599/typecheck_reuse.py",
+      "sha256": "86dc36d0ed64f4103a09bafd94bfae2f2908bf3900f6b70689ebc5de4dd407fc"
+    },
+    {
+      "path": ".build/crtprime599/reuse.json",
+      "sha256": "34fc4800fcc83370097d46a382ff0cc4348c6eb616aa054c751ed0f3bd0b3adf"
+    }
+  ],
+  "predecessor_handoff": {
+    "path": "notes/run/KEYGEN_CRT_WALK_214_597.json",
+    "sha256": "4ebfe1774826258dd9ccc5cef105a2f9fe55135ca0b6d5230cc3e88d1dcb1472"
+  },
+  "predecessor_bindings_verified": 133,
+  "job": "keygen_crtprimeround214_599",
+  "accepted": 3,
+  "receipts": {
+    "path": ".build/jobs/keygen_crtprimeround214_599/RECEIPTS.json",
+    "sha256": "855c7d99b6ded92d9ac140c5ac0e9bba6a6e263b18ac89724430bf696e7568d8"
+  },
+  "inputs": {
+    "path": ".build/jobs/keygen_crtprimeround214_599/SOURCE_INPUTS.json",
+    "sha256": "259f66da43325cb00c9a5a9df6e7cca7f065670c4cf5f442eb008a5893156903"
+  },
+  "runner": {
+    "path": ".build/jobs/keygen_crtprimeround214_599/RUNNER_SOURCE.py",
+    "sha256": "e8e9cf4ba5e744425464c0057a27d07f62ff82be352c479535425ff436c5b385"
+  },
+  "engine": {
+    "path": ".build/jobs/keygen_crtprimeround214_599/EXECUTION_SOURCE.py",
+    "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c"
+  },
+  "preflight": {
+    "path": ".build/jobs/keygen_crtprimeround214_599/PREFLIGHT.json",
+    "sha256": "7d0f5883d1e49b42e18802ef0dfb64d066a31ff1cc916a2026dac26bc2a4c791"
+  },
+  "modules": [
+    {
+      "module": "Source3.CrtPrimePrefix214",
+      "source": {
+        "path": "formal/Source3/CrtPrimePrefix214.lean",
+        "sha256": "3213a971af87616eaa5fa8d560fd9368724f441ba3029145a8514553bc73b953"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_crtprimeround214_599/formal/Source3/CrtPrimePrefix214.lean",
+        "sha256": "3213a971af87616eaa5fa8d560fd9368724f441ba3029145a8514553bc73b953"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_crtprimeround214_599/lib/Source3/CrtPrimePrefix214.olean",
+        "sha256": "9bedc196c988889444069b9134942bd2daadd8f9e5e9604554a91454c6000b51"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_crtprimeround214_599/logs/Source3_CrtPrimePrefix214.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_crtprimeround214_599/logs/Source3_CrtPrimePrefix214.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 13.552,
+      "maxrss_kib": 4060688
+    },
+    {
+      "module": "Source3.CrtRound214",
+      "source": {
+        "path": "formal/Source3/CrtRound214.lean",
+        "sha256": "796e97e9c0b51dd663f8e36edadf8aaa7fb2be506f321f4426db9afa803c12a8"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_crtprimeround214_599/formal/Source3/CrtRound214.lean",
+        "sha256": "796e97e9c0b51dd663f8e36edadf8aaa7fb2be506f321f4426db9afa803c12a8"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_crtprimeround214_599/lib/Source3/CrtRound214.olean",
+        "sha256": "5a22c5f2649c3797c5fb123cfb30ed3d456a4e52da747007c1e534883b5be742"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_crtprimeround214_599/logs/Source3_CrtRound214.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_crtprimeround214_599/logs/Source3_CrtRound214.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 34.894,
+      "maxrss_kib": 5632868
+    },
+    {
+      "module": "Source3.CrtRoundAudit214",
+      "source": {
+        "path": "formal/Source3/CrtRoundAudit214.lean",
+        "sha256": "6b7f7d050528412f53ab72c2627594cdb3c1d6d907756031922ec13c4712caed"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_crtprimeround214_599/formal/Source3/CrtRoundAudit214.lean",
+        "sha256": "6b7f7d050528412f53ab72c2627594cdb3c1d6d907756031922ec13c4712caed"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_crtprimeround214_599/lib/Source3/CrtRoundAudit214.olean",
+        "sha256": "6f28fcea3551520bc504d1414a404598aa2ad3c2985328bc81eb7ddac2d981f9"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_crtprimeround214_599/logs/Source3_CrtRoundAudit214.stdout",
+        "sha256": "a0b534673877a11b2a01b340a715ae6ea66fdb00f150b9d50d840dadf08fbcf8"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_crtprimeround214_599/logs/Source3_CrtRoundAudit214.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.526,
+      "maxrss_kib": 5632868
+    }
+  ],
+  "axioms": {
+    "FT1536.Source3.CrtPrimePrefix214.rows_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtPrimePrefix214.fieldPointer_row": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtPrimePrefix214.primeRead": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtPrimePrefix214.inner_shape": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtPrimePrefix214.declared_outside": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtPrimePrefix214.outside": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtPrimePrefix214.pCell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtPrimePrefix214.sCell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtPrimePrefix214.iCell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtPrimePrefix214.rCell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtPrimePrefix214.vDeclared": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtPrimePrefix214.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtRound214.round_shape": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtRound214.localNames_restored": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtRound214.sep_symm": [],
+    "FT1536.Source3.CrtRound214.round_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtRound214.make_fg_normalization": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtRound214.tmpAt_succ": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtRound214.rowAt_succ": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtRound214.coGuard_eval": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtRound214.coInc_shape": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtRound214.coInc_run": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtRound214.object_keep": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtRound214.loop_round": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtRound214.restore_local": [
+      "propext"
+    ],
+    "FT1536.Source3.CrtRound214.restore_arrays": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtRound214.restore_heap": [],
+    "FT1536.Source3.CrtRound214.remaining": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.CrtRound214.outer_loop_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "failures_and_workshop": {
+    "path": "notes/run/KEYGEN_CRT_PRIME_ROUND_214_FAILURES_599.json",
+    "sha256": "c407335c88a3d340516add3f7d2924de56a8020aacaf2b351a76921c00ffeabc"
+  },
+  "report": {
+    "path": "notes/run/KEYGEN_CRT_PRIME_ROUND_214_599_REPORT.md",
+    "sha256": "102089a20911f99cf9302ce063dd607b28c3f4ad5f22b4f0da5479a2790cc2a9"
+  },
+  "evidence_generator": {
+    "path": ".build/evidence_v1.py",
+    "sha256": "1bc738f64ab2604686ab4e8da3ab0cc8eb3ef786f9486ab6b1d94cc70d513b3e"
+  },
+  "evidence_configuration": {
+    "path": ".build/crtprime599/evidence_config.json",
+    "sha256": "5a2ca345b2463bea969687c19a61bcb62578d0b24075f23a9fbbe3c3088d7bf9"
+  },
+  "source_proof_markers": [],
+  "linter_suppressions": [],
+  "limits_unchanged": true,
+  "independent_review": "NOT_RUN",
+  "push": false,
+  "next_unused_suffix": 600,
+  "next_obligations": [
+    "Later actual d levels and d-level layouts",
+    "Root/certificate/codec work and full B1",
+    "Independent review of this checkpoint by a separately chosen model"
+  ],
+  "not_claimed": [
+    "Mathematical CRT/centering/Montgomery/integer/NTT/root/table laws",
+    "Desired output, certificate or equation claims",
+    "Full B1/KeyGen/Sign/compiler/security/unconditional positivity/probability",
+    "Independent review"
+  ]
+}

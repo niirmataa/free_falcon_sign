@@ -24,6 +24,89 @@ positivity/probability. Permanent195 bad bodyHeap/stepState UNUSED;
 sealed predecessors and Old110/measured/five do_sign unchanged.
 Foreign work excluded; save exact local checkpoint, then stop today.
 
+# SEED9_R1 — RESUMED 2026-10-27; window 599: CRT prime prefix + round with real proofs
+
+Owner decision 2026-10-27: Source3 modules are produced with real proofs,
+zero markers, or not at all; scratch only in .build. Window suffix 599
+closes CrtPrimePrefix214 and CrtRound214. The untracked 598 sketches
+(12 sorries total) are read-only geometry: snapshots retained at
+.build/crtprime599/sketches598/, never committed.
+Job record (599 start): entry pins 00f602e7… verified 74673/74673
+(before); predecessor 597 evidence verified 133/133 bindings (canonical
+9/9, 25 standard-only results). Foreign PROMPT_T14_HIDDEN_DELTA_G2.md
+(THRESHOLD_SPIKE_001/spike) untouched. One proof job at a time via
+.build/crtprime599/typecheck.py (donor .build/jobs/keygen_crtwalk214_597).
+
+Job record (599): attempt001/002 retained three scaffolding failures (List
+get? lemma name, ambiguous .uint64 projections in nonneg/within ascriptions,
+0+u rewrite mismatch in extent); no source/domain change, geometry fixed.
+Job record (599): attempt003 — ACCEPTED_LOCAL CrtPrimePrefix214, 3.873s,
+0/0: full generalized prime prefix with real proofs — inner_shape,
+declared_outside/outside, exact p/s/i/r cells (table words pVal/sVal from
+PrimeObject via PrimeRead, iVal/rVal from KeygenNinv31/KeygenModpR2Exec
+source bodies), vDeclared and the seven-statement source theorem. Sketch
+sharpened: values are exact executed words (not zero placeholders /
+existentials) and Input carries u/row/PrimeObject domain. Next CrtRound214
+one-round composition (prefix + CrtWalkWhole214 + CrtMulCall213).
+Job record (599): attempt004 retained missing-reuse-olean setup failure;
+attempt005 retained defeq/rw scaffolding failures (opaque have-a vs
+after_prefix defeq, rw on Slot/Cell defs, omega without room/tmpRoom in
+context, k<=len vs k<len); attempt006 retained two transfer bugs (v cell
+not carried across the mul locals equality; bare address rewrite matched
+the wrong elem). No source/domain change in any of them.
+Job record (599): attempt007 — ACCEPTED_LOCAL CrtRound214 round_source,
+7.184s, 0/0: full one-round composition with real proofs — RoundInput
+domain (prime row read + walk geometry + tmp capacity for the multiply),
+prefix binds executed pVal/sVal/iVal/rVal, CrtWalkWhole214 walk image,
+CrtMulCall213 product image T'=words T pVal len, exact root/tmp data
+images, localNames/arrays/outside-read keeps. Next make_fg normalization
+export (xstride=xlen) and outer u-loop assessment.
+Job record (599): attempt008 — ACCEPTED_LOCAL make_fg_normalization,
+4.427s, 0/0: the make_fg CRT instance of the signed normalization
+(zint_norm_zero row walk at xstride=xlen) exported from the accepted
+ZintNormWalkFlat208 engine with its exact executed-word image.
+Job record (599): attempt009/010 retained loop-foundation and induction
+scaffolding failures (Bool lemma name, missing tmp product image in the
+round_source conclusion, xlen cell chain missing the locals-keep hop,
+Data heap rewrite before intro, Name-vs-String keep64, keep adapters
+needing guardTrue, arsR bindings missing the s-chain); no source/domain
+change. round_source conclusion extended with the exact tmp product
+image (required by the loop invariant).
+Job record (599): attempt011 — ACCEPTED_LOCAL CrtRound214 full outer
+u-loop, 36.372s, 0/0: tmpAt/rowAt executed-word image families with
+rfl step equations, coGuard/coInc source binding (coInc_shape by
+decide), PrimeObject transport across a round (readonly block
+separation), LoopInput/LoopResult invariants, restoreScope/increment
+rebuild and the counted coLoop induction from u=1 to u=xlen with exact
+exit images rowAt L/tmpAt L. Next canonical replay, axiom audit module,
+evidence/report and exact local commit; no push.
+Job record (599 closeout): canonical keygen_crtprimeround214_599 —
+ACCEPTED 3/3, 0/0, 29 standard-only results (12 prefix + 17 round
+interfaces), 51.972s, maxRSS 5632868 KiB. Evidence PASS 113 new
+bindings; entry 74673/74673 unchanged before/after, predecessor 597
+133/133 unchanged. Exact own 7 paths committed; sketches 598 retained
+in .build only, foreign work excluded, no push. Later d levels, root/
+certificate/codec and full B1 remain open; no CRT/centering/NTT law and
+no desired output is claimed. Continue 600 only after owner continuation.
+
+# SEED9_R1 — RESUMED 2026-10-27; 598 start: CrtPrimePrefix214 typecheck
+
+Owner resumed 2026-10-27. Continue fully; no push, subagents, reviewers, relay or migration.
+Overall B1 IN_PROGRESS / NOT_REVIEWED.
+Entry pins 00f602e7…74673/74673 and predecessor 596/190 verified before first 598 job.
+Job 598_attempt001: CrtPrimePrefix214 source written, memory OOM at 95s.
+Job 598_attempt002: simplified imports, memory OOM at 86s.
+Job 598_attempt003: removed values.ternary from defs, memory OOM at 86s.
+Job 598_attempt004: minimal Input struct, syntax errors.
+Job 598_attempt005: added missing opens, syntax errors.
+Job 598_attempt006: fixed Slot64/Slot opens, syntax errors.
+Job 598_attempt007: CrtPrimePrefix214 typechecks (only sorrys remain), 2.9s, 0/0 axioms.
+Created: formal/Source3/CrtPrimePrefix214.lean (generalized prime prefix from fixed row1 to indexed u via PrimeRead).
+Job 598_attempt008: CrtRound214 dependency missing (needs CrtPrimePrefix214 olean).
+Job 598_attempt009: both modules submitted; CrtPrimePrefix214 typechecks (sorrys), CrtRound214 not reached due to sequential stop-on-failure.
+Created: formal/Source3/CrtRound214.lean (composes prime prefix + CrtWalkWhole214 + CrtMulCall213, outer u-loop, signed normalization for make_fg xstride=xlen).
+Next: prove CrtPrimePrefix214 theorems (replace sorries), then CrtRound214 theorems. Requires PrimeRead integration with CrtWalkWhole214 Fixed structure.
+
 Previous snapshots and job records follow unchanged.
 
 # SEED9_R1 — ACTIVE; generic bigint arithmetic checkpoint596 accepted;597 next
