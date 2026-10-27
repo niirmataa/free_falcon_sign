@@ -1,0 +1,133 @@
+WP-031 CHECK — sign 2-z-3 na profilu TEST-ORACLE (tylko plumbing)
+Data: 2026-10-27 · Tor: proofs/ft1536/development/THRESHOLD_P2_001
+Wykonanie: okno FT/T-THRESHOLD (agent MiMo) · Odbiór niezależny: TODO
+
+============================================================
+1. ZAKRES DOSTARCZONY
+============================================================
+- impl/crates/ft-threshold-protocol/src/sign.rs (NOWY, ~1900 l.)
+  SignMachine (maszyna stanów §12.2): N1 NONCE_COMMIT (0x12) →
+  N2 NONCE_REVEAL (0x13, walidacja zobowiazan) → N3 agregacja
+  nonce (§7.2, kolejnosc kanoniczna PartyId) → hash_to_point +
+  t_hash (§7.3) → udzialy (s1_i, s2_i) w R_q (liniowosc Shamira,
+  jawne z zewnatrz) → SIGN_OPEN (0x15) → zlozenie Lagrange w 0 +
+  check "na udzialach" (s2·h == Σ λ s1_i, §7.5 #3) + bramka normy
+  L2^2 < B_norm + bramka weryfikatora (I-10) → Signature.
+  Kazdy blad = Err + abort (fail-closed); brak czesciowego podpisu.
+  Typy CBOR (kanoniczne): NonceCommitPayload, NonceRevealPayload,
+  SignOpenPayload; SignRequest (§7.1 podzbior); TrapdoorShare
+  (ZeroizeOnDrop, bez Clone/Debug); EngineVerifier (brak slotu na
+  klucz prywatny — pod WP-035); lagrange_combine2 (skladanie
+  podpisu, NIE rekonstrukcja klucza).
+- impl/crates/ft-threshold-core/src/codec.rs (NOWY)
+  0xAA || compress_static(s2) — wierny port falcon-enc.c (j=8,
+  n=1536); uncompress_static z kontrola paddingu (niekanonicznosc
+  = odrzucenie); decode_sig wymaga dokladnego konca strumienia.
+- impl/crates/ft-threshold-core/src/error.rs: CommitmentMismatch,
+  HtpMismatch, VerifyFail, NormFail (+Display).
+- impl/crates/ft-threshold-protocol/src/state.rs: SignSession
+  rozszerzony o parties/self_party/k + akcesory (bez zmiany lancucha
+  typestate WP-014).
+- impl/crates/ft-threshold-testkit/ (dealer klucza testowego —
+  Shamir per wspolczynnik z deterministycznym seedem; oracle-
+  sampler z = (round(-t·F/q), round(t·f/q)) — Babai, TYLKO
+  TEST-ORACLE; TestKey::from_engine_sk — dekoder sk silnika;
+  OracleVerifier — komparator-zloty, NIE silnik).
+- impl/ci/sign/sign_e2e.c + run_sign_e2e.sh (harness silnika C:
+  keygen z seeda 0x42 + falcon_vrfy verify_one) oraz
+  impl/crates/ft-threshold-testkit/examples/sign_e2e.rs.
+- impl/crates/ft-threshold-protocol/src/lib.rs, core/src/lib.rs,
+  testkit/Cargo.toml, impl/Cargo.lock (wylacznie zaleznosci testkitu).
+
+============================================================
+2. BRAMKI (czysty log, offline, toolchain przypiety 1.94.0)
+============================================================
+cargo fmt --all -- --check                                OK
+cargo build --workspace --locked --offline                OK
+cargo test --workspace --locked --offline                 184 passed / 0 failed
+  w tym: core 123, protocol 34 (build domyslny), testkit 5,
+  kat_pins 3, wire_vectors 3, malformed 1, pozostale 15
+cargo test --workspace --all-features --locked --offline  197 passed / 0 failed
+  w tym: protocol 47 (test-oracle: przeplywy sign 2-z-3,
+  wszystkie pary, commit/reveal, tamper, weryfikator)
+cargo clippy --workspace --all-targets (-D warnings)      0 ostrzezen (oba buildy)
+./ci/check_prod_symbols.sh (WP-025)                       OK — PROD 0 symboli oracle,
+  kontrola negatywna cechy test-oracle potwierdzona
+cargo +nightly miri test --workspace --locked --offline   PASS (153 passed / 0 failed,
+  34 ignored z uzasadnieniem w atrybucie; core 109/14, protocol 25/9,
+  testkit 2/3, kat_pins 3, wire_vectors 4, doctests 2 compile_fail)
+
+============================================================
+3. ENGINE VERIFY (kryterium odbioru WP-031)
+============================================================
+./ci/sign/run_sign_e2e.sh  →  E2E PASS
+- keygen silnika (seed 0x42, syntetyczny): skey 7681 B, pk 2881 B;
+  klucz dzielony przez dealer testkit; plik sk czyszczony po runie.
+- PIN F2 (gold-ff, nonce [0;40]): norm^2(s1)+norm^2(s2) =
+  103747771 == wartosc pinu ze spike'a (MPS4-H) — BIT-EXACT,
+  mimo drogi przez udzialy i interpolacje Lagrange'a.
+  GOLD-FF engine-verify PASS (falcon_vrfy).
+- Pary (1,2), (1,3), (2,3): pelny protokol 0x12/0x13/0x15 przez
+  uwierzytelnione koperty; obie strony skladaja IDENTYCZNY podpis;
+  engine verify PASS dla kazdej pary (falcon_vrfy: rownanie +
+  forma kwadratowa normy).
+- Przypadek zlosliwy: przeklamany udzial s2 → finish() odmawia
+  (InconsistentShare), podpis NIE jest wydawany (fail-closed).
+
+============================================================
+4. MUTATION-CHECK (test nie moze byc ozdoba)
+============================================================
+Swiadome zepsucie lagrange_combine2 (lam_b zastapione lam_a):
+4 testy FAILED (honest_pair_flow golden, all_three_pairs,
+lagrange_combine2_interpolates_at_zero, rejecting_verifier).
+Po wycofaniu mutacji: 12/12 sign PASS. Testy wykrywaja zepsucie
+sciezki skladania podpisu.
+
+============================================================
+5. RETAINED FAILURES / OGRANICZENIA (prawda przed tempem)
+============================================================
+- To NIE jest PROD. Twierdzenie wylacznie: "plumbing przeplywu
+  dziala na wektorach testowych" (§5.1).
+- Udzial s1 w SIGN_OPEN (odstepstwo od literalnego §7.5 C2
+  "tylko s2"): uzasadnienie i zakres w module doc sign.rs
+  (decyzja plumbingowa #1; §7.5 #3 dopuszcza check "na
+  udzialach"; format SIGN_OPEN = DRAFT do WP-041 — tam przeglad).
+- Brak MAC ukrytego delta na otwarciach (WP-013/WP-041):
+  wykrywanie przeklamanych udzialow = check "na udzialach" +
+  bramka normy + bramka weryfikatora. To NIE jest odpowiednik
+  zabezpieczenia MPC z §7.5 #1.
+- Norma: check wewnetrzny L2^2 < B_norm (nie forma Q silnika;
+  O-06/WP-041). Bezpiecznie-stronniczy; bramka ostateczna =
+  engine verify.
+- TH_final, SignReceipt, replay/epoki/idempotencja request_id,
+  tryb >k uczestnikow (WP-034): poza WP-031 (WP-033).
+- Testy jednostkowe uzywaja klucza zabawkowego "rigged" wokol t
+  (krotkie s1,s2 przez konstrukcje); kryptograficzna krotkosc
+  pochodzi z oracle-samplera + prawdziwego klucza — potwierdzone
+  wylacznie w e2e na silniku (pin F2 + engine verify).
+- Kolejnosc layoutow hashy (epoch u64 BE itd.): determinystyczna,
+  freeze w WP-033 (transkrypt).
+- decode_sk w testkicie odtwarza format sk silnika potwierdzony na
+  prawdziwych kluczach (spike MPS4-D); pelny differential KAT
+  sygnatury = WP-043.
+
+============================================================
+6. DOWODY KOTWICZACE
+============================================================
+- impl/KAT/falcon_ternary_logn10_v1.txt: codec::tests::
+  engine_kat_signature_decodes_and_reencodes_byte_exact —
+  re-encoding sygnatury silnika bajt-po-bajcie identyczny.
+- Pin F2 103747771 (zgodny z FT1536_THRESHOLD_SPIKE_001/ishare.rs
+  mps4h_ffsampling_shares_gold).
+- prod build bez symboli TEST-ORACLE: ci/check_prod_symbols.sh.
+
+Trzy zdania: (1) Wykazano plumbing protokolu sign 2-z-3 na
+TEST-ORACLE: przeplyw 0x12/0x13 z zobowiazaniami, udzialy w R_q,
+zlozenie bez rekonstrukcji klucza i engine verify na prawdziwym
+falcon_vrfy (3 pary + pin F2 bit-exact + mutation-check).
+(2) Najblizszy brak: transkrypt/replay/TH_final (WP-033) i realny
+sampler ffSampling z ukrytym delta (WP-040/041) — bez nich brak
+PROD. (3) Wynik NIE implikuje bezpieczenstwa progu ani zgodnosci
+z PROD: twierdzenie obejmuje wylacznie dzialanie przeplywu na
+wektorach testowych; oracle-sampler i jawny klucz testowy zostaja
+w testkicie (D-009, WP-025/035).

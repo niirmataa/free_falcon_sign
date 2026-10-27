@@ -10,4 +10,17 @@ publish.workspace = true
 [lints]
 workspace = true
 
+# D-009: testkit nigdy nie jest linkowany przez `ft-threshold-node` ani
+# `ft-threshold-coordinator` (kontrola: `ci/check_prod_symbols.sh`).
+# Zależność od `protocol` niesie tu wyłącznie potrzebne typy sign;
+# cecha `test-oracle` jest włączana jawnie tylko dla przykładu e2e.
 [dependencies]
+ft-threshold-core = { version = "0.1.0", path = "../ft-threshold-core" }
+ft-threshold-protocol = { version = "0.1.0", path = "../ft-threshold-protocol" }
+
+[features]
+test-oracle = ["ft-threshold-protocol/test-oracle"]
+
+[[example]]
+name = "sign_e2e"
+required-features = ["test-oracle"]

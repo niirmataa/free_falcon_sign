@@ -55,6 +55,14 @@ pub enum CoreError {
     /// długość nieokreślona, tag, klucze nieposortowane/podwójne, śmieci
     /// po elemencie albo zły kształt.
     NonCanonicalCbor,
+    /// Otwarcie nonce nie zgadza się z zobowiązaniem `NONCE_COMMIT` (N1/N2).
+    CommitmentMismatch,
+    /// Rozjazd `hash_to_point` między stronami (`ABORT {code=BAD_HTP}`, §7.3).
+    HtpMismatch,
+    /// Weryfikator podpisu (silnik C, §7.5) odrzucił wynik — fail-closed.
+    VerifyFail,
+    /// Norma $(s1, s2)$ poza `B_norm` (§11.1 `NORM_FAIL`) — fail-closed.
+    NormFail,
 }
 
 impl fmt::Display for CoreError {
@@ -89,6 +97,12 @@ impl fmt::Display for CoreError {
             Self::NonCanonicalCbor => {
                 write!(f, "input is not canonical CBOR (RFC 8949 §4.2)")
             }
+            Self::CommitmentMismatch => {
+                write!(f, "nonce reveal does not match its commitment")
+            }
+            Self::HtpMismatch => write!(f, "hash_to_point mismatch between parties"),
+            Self::VerifyFail => write!(f, "signature verifier rejected the result"),
+            Self::NormFail => write!(f, "signature norm exceeds the bound"),
         }
     }
 }

@@ -426,6 +426,9 @@ impl std::fmt::Debug for NtruEvidence {
 pub struct SignSession {
     sid: [u8; 32],
     pk_hash: [u8; 32],
+    parties: Vec<u16>,
+    self_party: u16,
+    k: usize,
 }
 
 impl SignSession {
@@ -444,6 +447,9 @@ impl SignSession {
         Ok(Self {
             sid: state.sid,
             pk_hash: state.pk_hash,
+            parties: state.parties,
+            self_party: state.self_party,
+            k: state.k,
         })
     }
 
@@ -455,6 +461,21 @@ impl SignSession {
     /// `pk_hash` sesji.
     pub fn pk_hash(&self) -> [u8; 32] {
         self.pk_hash
+    }
+
+    /// Punkty ewaluacji Shamira wszystkich stron (`x`, w kolejności rosteru).
+    pub fn parties(&self) -> &[u16] {
+        &self.parties
+    }
+
+    /// Własny punkt ewaluacji Shamira (`x`).
+    pub fn self_party(&self) -> u16 {
+        self.self_party
+    }
+
+    /// Próg `k` (2-z-3: `2`).
+    pub fn k(&self) -> usize {
+        self.k
     }
 }
 

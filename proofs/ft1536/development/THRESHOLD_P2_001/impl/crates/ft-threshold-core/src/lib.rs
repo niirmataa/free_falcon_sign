@@ -13,6 +13,7 @@
 #![forbid(unsafe_code)]
 
 pub mod bits;
+pub mod codec;
 pub mod error;
 pub mod gf256;
 pub mod mac;
