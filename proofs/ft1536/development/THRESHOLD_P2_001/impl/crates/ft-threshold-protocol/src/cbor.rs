@@ -363,7 +363,14 @@ mod tests {
 
     #[test]
     fn array_lengths_use_shortest_form_and_roundtrip() {
-        for (len, head_len) in [(0usize, 1usize), (1, 1), (23, 1), (24, 2), (255, 2), (256, 3)] {
+        for (len, head_len) in [
+            (0usize, 1usize),
+            (1, 1),
+            (23, 1),
+            (24, 2),
+            (255, 2),
+            (256, 3),
+        ] {
             let mut w = CborWriter::new();
             w.put_array(len);
             for i in 0..len {

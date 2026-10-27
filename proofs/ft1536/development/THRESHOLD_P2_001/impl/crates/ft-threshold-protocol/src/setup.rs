@@ -423,8 +423,8 @@ impl VssSharePayload {
                         if b.len() != COMMITMENTS_2OF3_BYTES {
                             return Err(CoreError::NonCanonicalCbor);
                         }
-                        let comm =
-                            VssCommitments::from_bytes(b).map_err(|_| CoreError::NonCanonicalCbor)?;
+                        let comm = VssCommitments::from_bytes(b)
+                            .map_err(|_| CoreError::NonCanonicalCbor)?;
                         commitments.push(comm);
                     }
                 }
@@ -911,8 +911,7 @@ impl SetupSession {
             let p0_share = p0_share.ok_or(CoreError::PartyCountMismatch)?;
             let p1_share = p1_share.ok_or(CoreError::PartyCountMismatch)?;
 
-            let contrib =
-                DealerContribution::new(self.me_x, inst as u8, comms.clone(), my_share)?;
+            let contrib = DealerContribution::new(self.me_x, inst as u8, comms.clone(), my_share)?;
             self.contributions.insert((self.me_x, inst as u8), contrib);
 
             all_comms.push(comms);
@@ -923,7 +922,8 @@ impl SetupSession {
         self.dealer_commitments
             .insert(self.me_id, all_comms.clone());
 
-        let payload0 = VssSharePayload::new(self.me_id, self.me_x, peer0_shares, all_comms.clone())?;
+        let payload0 =
+            VssSharePayload::new(self.me_id, self.me_x, peer0_shares, all_comms.clone())?;
         let payload1 = VssSharePayload::new(self.me_id, self.me_x, peer1_shares, all_comms)?;
 
         let env0 = self.seal_message(peer_keys[0].1, 1, MSG_VSS_SHARE, payload0.to_cbor())?;
@@ -1084,12 +1084,8 @@ impl SetupSession {
             K_2OF3,
         )?;
         let dkg_ok = unvalidated.validate_dkg(&ordered, &root)?;
-        let final_msg = SetupFinal::new(
-            self.pk_hash,
-            root,
-            self.init.parties.to_vec(),
-            Vec::new(),
-        )?;
+        let final_msg =
+            SetupFinal::new(self.pk_hash, root, self.init.parties.to_vec(), Vec::new())?;
 
         Ok((dkg_ok, final_msg))
     }
@@ -1414,15 +1410,19 @@ mod tests {
         tampered_bytes[2] ^= 0x01; // Modyfikacja najniższego bajtu skalaru `s` w instancji 5
         forged_shares[5] = ExpShare::from_bytes(&tampered_bytes).expect("valid scalar");
 
-        let forged_payload = VssSharePayload::new(
+        let forged_payload =
+            VssSharePayload::new(P2, 2, forged_shares, honest_payload.commitments().to_vec())
+                .expect("forged payload");
+        let forged_body = Body::new(
+            SID,
+            EPOCH,
+            1,
+            1,
+            MSG_VSS_SHARE,
             P2,
-            2,
-            forged_shares,
-            honest_payload.commitments().to_vec(),
+            forged_payload.to_cbor(),
         )
-        .expect("forged payload");
-        let forged_body =
-            Body::new(SID, EPOCH, 1, 1, MSG_VSS_SHARE, P2, forged_payload.to_cbor()).expect("body");
+        .expect("body");
         let forged_env_2_to_1 = Envelope::seal(&k21, forged_body).expect("seal forged");
 
         // P1 odbiera sfałszowany wkład od P2 -> natychmiastowy błąd InconsistentShare!
@@ -1444,9 +1444,7 @@ mod tests {
         s3.receive_vss_envelope(&k13, env_1_to_3).expect("P3 <- P1");
         s3.receive_vss_envelope(&k23, env_2_to_3).expect("P3 <- P2");
 
-        let complaint_env_1_to_3 = s1
-            .seal_complaint(&k13, &complaint)
-            .expect("seal complaint");
+        let complaint_env_1_to_3 = s1.seal_complaint(&k13, &complaint).expect("seal complaint");
         let p3_err = s3
             .receive_complaint_envelope(&k13, complaint_env_1_to_3)
             .unwrap_err();

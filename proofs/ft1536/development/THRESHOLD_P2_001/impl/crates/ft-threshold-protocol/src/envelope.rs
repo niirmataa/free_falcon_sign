@@ -927,8 +927,11 @@ mod tests {
 
         // Dla seq = 2 dozwolony przedział rund to [2, 4]. Runda 1 i runda 5 są odrzucane.
         assert_eq!(
-            rx.accept(&k, Envelope::seal(&k, body(1, 2, 1, b"bad-low")).expect("seal"))
-                .unwrap_err(),
+            rx.accept(
+                &k,
+                Envelope::seal(&k, body(1, 2, 1, b"bad-low")).expect("seal")
+            )
+            .unwrap_err(),
             CoreError::RoundMismatch
         );
         assert_eq!(
