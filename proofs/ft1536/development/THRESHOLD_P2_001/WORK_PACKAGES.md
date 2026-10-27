@@ -48,7 +48,7 @@ Rozmiar: S (1 okno), M (2–3), L (4–8), XL (badania, bez daty).
 
 | ID | Gate | Zadanie | Kryterium odbioru | Dowód | Zależy | Rozmiar | Status |
 |---|---|---|---|---|---|---|---|
-| WP-030 | G2 | Setup message flow 2-of-3 na `TEST-ORACLE`: znany klucz testowy, pełny VSS, complaints, transkrypt, `pk_hash` | każda runda przechodzi; fałszywy wkład → complaint + abort; `pk_hash` zgodny; `profile=0x01` | test | G1 | L | TODO |
+| WP-030 | G2 | Setup message flow 2-of-3 na `TEST-ORACLE`: znany klucz testowy, pełny VSS, complaints, transkrypt, `pk_hash` | każda runda przechodzi; fałszywy wkład → complaint + abort; `pk_hash` zgodny; `profile=0x01` | test | G1 | L | **DONE** 2026-10-27 — `protocol::setup`: `SetupSession` (3 rundy, 32 instancje VSS nad $Z_q$ i $Z_p$), kanoniczny CBOR (`SetupInit`, `VssSharePayload`, `ComplaintPayload`, `SetupFinal`), automatyczne generowanie skarg i blame przy błędzie VSS (fail-closed), przejście do `PartyState<DkgOk>`, interpolacja Lagrange'a zgodna z sumą sekretów; 31 testów PASS, clippy 0; testy honest i malicious PASS |
 | WP-031 | G2 | Sign 2-of-3 z oracle-samplerem (tylko plumbing) | engine verify; brak reconstruct w ścieżce sign | test | WP-030 | L | TODO |
 | WP-032 | G2 | Malicious harness: ≥10 strategii | każda → abort/`Err` z winnym | macierz | WP-030 | L | TODO |
 | WP-033 | G2 | Nonce commit/reveal, transkrypt/sesje/epoki/replay/abort | replay odrzucony; abort identyfikowalny; nonce unikalny | test | WP-031 | M | TODO |

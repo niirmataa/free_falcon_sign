@@ -1,5 +1,15 @@
 # Stan projektu — punkt wejścia
 
+**2026-10-27 — S09/THRESHOLD_P2_001: WP-030 DONE — pełny przepływ setupu 2-z-3 (G2).**
+`protocol::setup`: `SetupSession` w pełni wdrożone dla 3 stron ($k=2, n=3$) na
+profilu `TEST-ORACLE`. Wdrożono kanoniczne kodeki CBOR (`SetupInit`,
+`VssSharePayload`, `ComplaintPayload`, `SetupFinal`), weryfikację 32 instancji
+VSS nad $Z_q$ i $Z_p$, generowanie skarg i blame przy błędzie dealera oraz
+finalizację DKG do `PartyState<DkgOk>`. Integracyjne testy honest (zgodny
+`dkg_root`, interpolacja Lagrange'a) i malicious (P2 sfałszowany udział →
+skarga, dyskwalifikacja, abort) w 100% PASS (31 testów protocol, clippy 0).
+Następny krok: WP-031 (protokół podpisu 2-z-3).
+
 **2026-10-27 — S09/THRESHOLD_P2_001: Bramka G1 ODEBRANA — werdykt PASS_SCOPED_REVIEW.**
 Niezależny recenzent Gemini 4 Argon (Google AI Studio, wyznaczony przez
 właściciela; autor ≠ recenzent) przeprowadził pełny odbiór G1 na HEAD `5883b19e`

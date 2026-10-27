@@ -14,4 +14,5 @@
 
 pub mod cbor;
 pub mod envelope;
+pub mod setup;
 pub mod state;
