@@ -46,6 +46,10 @@ Precedens: B1.03 (r2/div). Wzór (suplementy, nie nadpisania):
   odzyskiwalnym i melduj; nowe okno wznawia z WORK_STATE, bez
   dochodzenia od nowa. Wcześniej tylko przy wyczerpaniu jobów
   albo po domknięciu kamienia milowego.
+- Decyzja właściciela 2026-10-27: **BEZ szkieletów z sorry** — nawet
+  nieśledzonych. Wykonawca potrafi dowodzić wprost: moduł Source3
+  powstaje z realnymi dowodami (0 markerów) albo wcale; scratch
+  diagnostyczny wyłącznie w `.build` (odrzucany).
 
 ## 5. Uzupełnienia (dopisuj tutaj, data + inicjał okna)
 - (miejsce na kolejne suplementy)
