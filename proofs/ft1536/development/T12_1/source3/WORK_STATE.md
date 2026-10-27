@@ -24,6 +24,169 @@ positivity/probability. Permanent195 bad bodyHeap/stepState UNUSED;
 sealed predecessors and Old110/measured/five do_sign unchanged.
 Foreign work excluded; save exact local checkpoint, then stop today.
 
+# SEED9_R1 — RESUMED 2026-10-27; window 602: d=3 body remainder (CRT, extra primes, body + audit)
+
+Owner continuation 2026-10-27: window suffix 602 closes the d=3 BODY
+remainder in the WORK_STATE/601-report order: ThirdStepCrt215 (the
+part-3 zint_rebuild_CRT pair through the generic CrtRound214 coLoop),
+ThirdStepExtra215 (part-4 additional primes u=3..5 loop), ThirdStepBody215
+(parts 2/3/4 composition + step return) and a full-body audit. Zero
+sorry absolutely; the -M6144 memory ceiling stands (split march-like
+layers early as in 601; no raising -M without owner decision). Trap
+ledger applies: explicit table bindings, evaluated value-word operands,
+rfl/congrArg bridges for elem/element and addr associations. One proof
+job at a time via tools/job111.py; WORK_STATE after every attempt;
+retained failures with reasons; context budget 700000. No push (nine
+commits wait at entry); foreign PROMPT_T14_HIDDEN_DELTA_G2.md untouched.
+
+Job record (602 start): entry manifest .build/steprx195/ENTRY_PINS.json
+sha256 00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964
+verified 74673/74673 (0 missing, 0 changed) before new work; predecessor
+600 evidence 168/168, 599 113/113 and 597 133/133 bindings verified
+(.build/body602/entry_before.log, predecessor_before.log). Route:
+ThirdStepCrt215 (fs/gs zint_rebuild_CRT pair at num=n=128, xlen=stride=
+slen=3, tmp=gm via CrtRound214.outer_loop_source + make_fg_normalization),
+ThirdStepExtra215 (u=3..5: rows 3..5 prefixes with Rx at slen=3, signed
+zint_mod_small_signed walks, modp_NTT3 forwards at Level 6, Montgomery
+product marches, false !out_ntt skips, counted loop), ThirdStepBody215
+(parts 2/3/4 chained + images + step return), full-body audit module.
+Job record (602): attempt001 RETAINED_ELABORATION_FAILURE (job
+keygen_crt602_001, ThirdStepCrtLoop215 v1): the RoundInput refine list
+carried a stray kpos argument (RoundInput has no uBound field; the u
+bound lives inside the CrtPrimePrefix214.Input component) and the goal
+order of the remaining fields shifted. Scaffolding defect, no
+source/domain change; the driver split itself (weakened roomL : L<=stride
+for the xstride=xlen make_fg instance, generic CrtRound214.round_source
+reused unchanged) is recorded here as the open 602 engineering note.
+Job record (602): attempt002 — ThirdStepCrtLoop215 ACCEPTED_LOCAL
+21.314s, 0/0: the exact-room co-loop driver for the make_fg
+zint_rebuild_CRT calls (roomL : L<=stride instead of the 599 generic
+L+1<=stride, which cannot hold at xstride=xlen), one-round engine
+CrtRound214.round_source reused unchanged, full counted loop from u=1
+to the false u<xlen guard with the rowAt/tmpAt executed images and the
+readonly PrimeObject at the exit. Next ThirdStepCrtBody215: the callee
+body at num=128/xlen=3 (decls, tmp[0]=primes[0].p store, coreHead,
+coLoop via the new driver, normalize branch via ZintNormWalkBranch208).
+Job record (602): attempt003 RETAINED (keygen_crt602_003): five
+scaffolding defects in ThirdStepCrtBody215 v1 — unused match binder in
+fv (warningAsError), Word32Memory176.source word/after placeholders in
+the object transport (needs the explicit s.heap tmp p0 arguments as in
+CrtEntry208), a one-short LoopInput refine list, and an inline
+Allocated construction at elem tmp 3 with the wrong block literal
+(31 assumed instead of the abstract tmp.block; replaced by
+ZintRebuildCrt194.alloc_same_block). No source/domain change.
+Job record (602): attempt004 RETAINED (keygen_crt602_004): apart needed
+j<=3 (the driver's tmp bound reaches t<=L), the LoopInput parameter
+order is (W0 T0) data-first while rowAt/tmpAt take (T0 W0) — the
+instantiation swapped them; the body module also needed maxRecDepth
+262144 (precedent exists in the codebase) for the nested rowAt/tmpAt
+unification. attempt005 — ThirdStepCrtBody215 ACCEPTED_LOCAL 15.307s,
+0/0: the complete d=3 zint_rebuild_CRT callee body (num=128, xlen=
+xstride=3, tmp=gm) with the actual tmp[0]=primes[0].p store, the
+co-reduction loop rows 1..2 through the exact-room driver and the
+taken normalize branch over all 384 words; exact words3 image and
+root/tmp heap keeps. Next ThirdStepCrt215: Bind/call wrappers for the
+fs/gs crtCall statements at slen=3/n=128 and the part-3 pair.
+Job record (602): attempt006 RETAINED (keygen_crt602_006): six
+scaffolding defects in ThirdStepCrt215 v1 — the module-level Exec open
+selected KeygenZintCall.Exec instead of KeygenMakeFgSource.Exec for the
+part-3 statements, object_keep lambdas carried the 599 four-binder
+shape instead of the two-binder keep premises, j<3 vs j<=3 mismatches
+at the gs/fs separation sites, and the tables transport needed an
+explicit out.tables=s.tables call-conclusion conjunct (the existentially
+bound call state cannot be unfolded by defeq). attempt007 —
+ThirdStepCrt215 ACCEPTED_LOCAL 12.344s, 0/0: both original
+zint_rebuild_CRT calls over fs and gs executed through the real call
+frames (Bind of the seven parameters at slen=3/n=128 into the fresh
+callee scope), exact words3 reassembled row images, Outer/PrimeObject/
+REV10 transports and the combined Keeps (only fs/gs words and the three
+gm words change). The part-3 CRT transition is CLOSED with real proofs.
+Next ThirdStepExtra215: the part-4 additional-prime loop u=3..5.
+Job record (602): attempt008 — ThirdStepExtraPrime215 ACCEPTED_LOCAL
+14.412s, 0/0: the generic additional-prime row prefix of the part-4
+loop body at any loop index u/row v — p/p0i/R2/Rx declarations, the
+actual PRIMES3 row read (CrtPrimePrefix214.primeRead), the
+modp_ninv31/modp_R2 source-body words and the Rx = modp_Rx(slen=3,...)
+word, with the Basic/Outer transports. Next ThirdStepExtraSide215:
+the per-side walk/NTT/product chain at n=128/slen=3/Level 6 including
+the u<6 product-march clone.
+Job record (602): attempt009 RETAINED (keygen_crt602_009): five
+scaffolding defects in ThirdStepExtraSide215 v1 — the pattern-def of
+walkCode needed the Side-in-type form, and SecondStepCopy203.root is
+the d=2 layout (gs@1950) while the d=3 walks read gs@1822; the walk
+statements now use the local d=3 croot (fs@1438/gs@1822). The u<6
+product-march clone compiled unchanged from the ThirdStepProduct215
+pattern. attempt010 — ThirdStepExtraSide215 ACCEPTED_LOCAL 33.082s,
+0/0: the complete per-side part-4 layer at the d=3 geometry —
+zint_mod_small_signed walks over the 384 reassembled words at slen=3,
+the taken modp_NTT3 forwards at Level 6 (128 words) and the Montgomery
+product marches into the fd/gd columns u<6 at tlen=6/hn=64, with exact
+executed-word images. Next ThirdStepExtraPair215: geometry, the
+two-sided chain and the false !out_ntt skip of one iteration.
+Job record (602): attempt011 RETAINED (keygen_crt602_011): three
+scaffolding defects in ThirdStepExtraPair215 v1 — the side chain ends
+with the product's v=64 cell (not the walk's 128), the second side call
+missed the u<6 argument in the parameter list, and a bare .uint64
+dotted value in the old-cell position. No source/domain change.
+attempt012 — ThirdStepExtraPair215 ACCEPTED_LOCAL 71.431s, 0/0: the
+two-sided chain of one additional-prime iteration (fs side then gs
+side), the false !out_ntt skip, exact sWords column images and the
+Safe keeps; the fs/gs rows and all other columns survive the
+iteration. attempt013 RETAINED with the pinned -M6144 ceiling
+("failed to create thread"): ThirdStepExtra215 v1 stacked the inner
+iteration, the loop machinery and an import of the heavy
+ThirdStepMarch215 olean in one module; attempt014 hit the same ceiling
+even after dropping that import. Forced split (601 pattern): the
+iteration moved to ThirdStepExtraInner215 and the loop machinery to
+ThirdStepExtra215. attempt015 RETAINED: one unused-variable lint in
+the inner (an unneeded object binder). attempt016 —
+ThirdStepExtraInner215 ACCEPTED_LOCAL 32.499s, 0/0: the complete
+additional-prime iteration body at any u<6/row v (prefix + generator +
+walks + NTT3 forwards + product marches + false skip) with exact
+images and Earlier keeps. Job record (602): attempt017 RETAINED (keygen_crt602_017): the
+loopPremises conjunction nesting and the addr-vs-scratch defeq (needs
+cases on the side before applying before_t1).
+Job record (602): attempt018 ACCEPTED_LOCAL ThirdStepExtra215
+machinery 12.15s; attempt019/020/021/022 RETAINED: a parse-level
+nested-by parenthesis, the let-state heap defeqs needing explicit
+bridge haves (object/rev transports across counter states), the
+Image load word being StepProductBody191.value(w(2i),w(2i+1),...) not
+the bare family word, and the image_keep argument order (implicit
+side/k must be pinned before the decide bounds — fixed with named
+implicits). attempt023 — ThirdStepExtra215 ACCEPTED_LOCAL 34.612s,
+0/0: the complete counted part-4 loop — three iterations over the
+PRIMES3 rows 3..5 from the u=3 init to the false u<6 guard, the three
+additional fd/gd product columns with exact sWords images (rows
+v3/v4/v5), the preserved fs/gs reassembled images, PrimeObject/REV10
+facts and the LoopKeep of every earlier column.
+Job record (602 closeout): canonical keygen_crt602_canonical ACCEPTED
+9/9, 0/0, maxRSS 4649660KiB — ThirdStepCrtLoop215, ThirdStepCrtBody215,
+ThirdStepCrt215, ThirdStepExtraPrime215, ThirdStepExtraSide215,
+ThirdStepExtraPair215, ThirdStepExtraInner215, ThirdStepExtra215 and
+ThirdStepExtraAudit215 (eleven checked interfaces, eleven axiom
+results using only propext/Classical.choice/Quot.sound). Marker scan
+0 sorry/admit/native_decide across the eight new sources. Entry
+74673/74673 unchanged before/after; predecessor 600 168/168, 599
+113/113, 597 133/133 unchanged (.build/body602/entry_after.log,
+predecessor_after.log). The part-3 CRT transition (the fs/gs
+zint_rebuild_CRT pair through the generic CrtRound214 coLoop with the
+exact-room driver for xstride=xlen) and the part-4 additional-prime
+loop u=3..5 are CLOSED with real proofs at the d=3 geometry.
+OPEN: ThirdStepBody215 (parts 2/3/4 composition + step return), the
+full-body audit, and later d=4..9/root/certificate/codec/full B1. No
+CRT/NTT/Montgomery/table law and no desired output is claimed.
+Retained: 15 of 25 local attempts with reasons (scaffolding/transfer
+defects plus two -M6144 ceiling aborts forcing the Inner/Loop split);
+no mathematical counterexample. Next window: ThirdStepBody215 from the
+accepted part-2 (ThirdStepLoop215.body_run), part-3 (ThirdStepCrt215.
+source) and part-4 (ThirdStepExtra215.source) engines + the full-body
+audit; trap ledger adds: d=2 layout roots (SecondStepCopy203.root =
+gs@1950) are not the d=3 views (use a local croot), Image load words
+are StepProductBody191.value pairs, implicit-before-decide argument
+order, and let-bound counter states need explicit heap bridge haves.
+No push (nine commits wait for the owner); foreign PROMPT_T14
+untouched; freeze at the part-3+part-4 milestone.
+
 # SEED9_R1 — RESUMED 2026-10-27; window 601: d=3 body (6 modules + audit)
 
 Owner continuation 2026-10-27: window suffix 601 proves the BODY of the
