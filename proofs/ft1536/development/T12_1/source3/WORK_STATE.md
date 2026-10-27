@@ -24,6 +24,94 @@ positivity/probability. Permanent195 bad bodyHeap/stepState UNUSED;
 sealed predecessors and Old110/measured/five do_sign unchanged.
 Foreign work excluded; save exact local checkpoint, then stop today.
 
+# SEED9_R1 — RESUMED 2026-10-27; window 600: further d levels and layouts
+
+Owner continuation 2026-10-27: window suffix 600 covers the further make_fg
+d levels and their layouts (per WORK_STATE/report 599), then root/
+certificate/codec toward B1. Owner decision 2026-10-27 in force: Source3
+modules with real proofs and zero markers, or no module plus a reported
+blocker; scratch stays in .build. One proof job at a time via
+tools/job111.py; WORK_STATE after every attempt; retained failures with
+reasons. Context budget 700000; freeze and three-sentence report at the
+budget or at a natural point; no push (four commits wait for the owner).
+Job record (600 start): entry manifest .build/steprx195/ENTRY_PINS.json
+sha256 00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964
+verified 74673/74673 (0 missing, 0 changed) before new work; predecessor
+599 evidence 113/113 and 597 evidence 133/133 bindings verified
+(.build/dlevels600/entry_before.log, predecessor_before.log). Foreign
+THRESHOLD_P2_001/spike changes left untouched. Route: d=3 level of the
+make_fg d loop (entry binding logn=7/depth=3/out_ntt=1, declarations
+n=128/hn=64, lengths slen=MAX_BL_SMALL3[3]=3/tlen=MAX_BL_SMALL3[4]=6,
+pointer layout, memmove, then body slices), then later d levels and
+root/certificate/codec.
+Job record (600): attempt001 RETAINED_ELABORATION_FAILURE (job
+keygen_dlevel600_001): arithmetic-step operand values transcribed as
+uint64 instead of the required uint32 pairs in logn_expr/out_expr, and
+missing KeygenMakeFgSource.Exec open in the source statement. No
+source/domain change; geometry otherwise intact.
+Job record (600): attempt002 RETAINED_ELABORATION_FAILURE (job
+keygen_dlevel600_002): binding/logn_expr/out_expr accepted; the source
+chain failed on an opaque have-name for the advance state (defeq with
+the set/advance term not visible) in data/logn/depth/dCell transport.
+Inline full terms instead of the intermediate name; no statement change.
+Job record (600): attempt003 — ACCEPTED_LOCAL ThirdStepEntry215, 7.129s,
+0/0: concrete d=3 call binding (data=ft, logn=10-3=7, depth=d=3, ter=1,
+in_ntt=1, out_ntt=(4<10)=1) with exact executed argument words, full
+entry state cells and both 384-word input images at the third entry,
+chained from the accepted SecondStepReturn212 d=2 return/advance. Next
+ThirdStepStart215 declarations/n=128/hn=64.
+Job record (600): attempt004 — ThirdStepStart215 ACCEPTED_LOCAL 6.477s,
+0/0 (declarations, n=1<<7=128, hn=64, cells, heap, part1 hook);
+ThirdStepLengths215 RETAINED two change failures: the generic state
+cannot reduce MAX_BL_SMALL3/PRIMES3 table bindings to the closed entry
+term. Table bindings promoted to explicit hypotheses; no statement
+weakening (the concrete top-level source discharges them).
+Job record (600): attempt005 — ThirdStepLengths215 ACCEPTED_LOCAL
+9.635s, 0/0: slen=MAX_BL_SMALL3[3]=3 and tlen=MAX_BL_SMALL3[4]=6 via
+actual Load64 table reads (new index-4 read value 6, kernel-checked),
+ter branch, primes binding, exact cells.
+Job record (600): attempt006 — ThirdStepLayout215 ACCEPTED_LOCAL 2.92s,
+0/0 (gd=fd+64*6, fs=gd+384, gs=fs+128*3, gm=gs+384, igm=gm+128,
+t1=igm+128; shapes 670/1054/1438/1822/2206/2334/2462); ThirdStepMove215
+RETAINED: extra closing parenthesis in count_source parse, and
+elem/element defeq conversion refused inside simpa-using.
+Job record (600): attempt007 RETAINED: simpa-using placed in term
+context (parse errors at f_image/g_image); moved into by-blocks and
+explicit rfl bridges load_elem/load_element replace the refused defeq
+conversion. No statement/domain change.
+Job record (600): attempt008 RETAINED (one stray parenthesis in
+count_source); attempt009 — ThirdStepMove215 ACCEPTED_LOCAL 3.271s,
+0/0: exact memmove of 768 words (2*n*slen*4=3072 bytes) from data to fs,
+executed-word input image from the d=2 fd/gd 384-word outputs, moved
+fs/gs images and outside-read keeps.
+Job record (600): attempt010 — ThirdStepPrefix215 ACCEPTED_LOCAL
+7.882s, 0/0: full d=3 part-1 prefix (declarations + lengths + seven
+pointer binds + overlapping move) and the concrete source chain from
+SecondStepReturn212 with stability composition, table bindings, the
+new small3[3]/small3[4] reads and both moved 384-word images. Next
+audit module + canonical replay/checkpoint of the d=3 prefix.
+Job record (600): canonical keygen_thirdstep215_600 — ACCEPTED 7/7,
+0/0, 14 standard-only axiom results (ten checked interfaces), 36.331s
+total Lean time, maxRSS 4839124 KiB. Evidence PASS 168 new bindings
+(.build/evidence_v1.py with .build/dlevels600/evidence_config.json);
+entry 74673/74673 unchanged before/after, predecessor 599 113/113 and
+597 133/133 unchanged. Marker scan 0 sorry/admit/native_decide; no
+linter suppression. Report/evidence/failures:
+notes/run/KEYGEN_THIRD_STEP_215_600_REPORT.md,
+KEYGEN_THIRD_STEP_215_600.json, KEYGEN_THIRD_STEP_215_FAILURES_600.json.
+Job record (600 closeout): d=3 level entry/declarations/lengths/layout/
+move prefix closed with real proofs; six of ten local attempts retained
+with reasons (scaffolding/parse/transfer only). The d=3 body (first
+slen=3 prime marches, generator, CRT walk, additional primes u=3..5,
+products), later d levels d=4..9, root/certificate/codec and full B1
+remain OPEN. No CRT/NTT/root/table law and no desired output is
+claimed. WORK_STATE next route: d=3 body first-prime layer reusing the
+generic engines at n=128; trap ledger for windows 601+:
+generic-state table bindings are explicit hypotheses, arithmetic step
+operands are evaluated value words, elem/element conversions need
+rfl bridges. No push (five commits wait for the owner); independent
+review NOT_RUN. Freeze at the milestone before the d=3 body.
+
 # SEED9_R1 — RESUMED 2026-10-27; window 599: CRT prime prefix + round with real proofs
 
 Owner decision 2026-10-27: Source3 modules are produced with real proofs,

@@ -1,0 +1,350 @@
+{
+  "utc": "2026-10-27T14:12:40.238193+00:00",
+  "status": "PROVED_KERNEL_SCOPED / NOT_REVIEWED",
+  "overall_owner_goal": "IN_PROGRESS; continue after this intermediate checkpoint",
+  "scope": "Third make_fg_step call of the make_fg d loop at d=3 with real proofs: executed argument words (data=ft, logn=7, depth=3, ter=1, in_ntt=1, out_ntt=1 from (4<10)), declarations and n=128/hn=64, table-derived lengths slen=MAX_BL_SMALL3[3]=3/tlen=MAX_BL_SMALL3[4]=6 via actual Load64 reads including the new kernel-checked index-4 read, the complete d=3 pointer layout (fd@670, gd@1054, fs@1438, gs@1822, gm@2206, igm@2334, t1@2462), the overlapping 768-word memmove from data to fs with the exact executed-word input image from the accepted d=2 outputs and moved fs/gs images, and the composed part-0/part-1 prefix run chained from the accepted SecondStepReturn212 d=2 return.",
+  "entry_manifest": {
+    "path": ".build/steprx195/ENTRY_PINS.json",
+    "sha256": "00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964"
+  },
+  "entry_checked_count": 74673,
+  "entry_missing": 0,
+  "entry_changed": 0,
+  "entry_checks": [
+    {
+      "path": ".build/dlevels600/entry_before.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/dlevels600/entry_after.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/dlevels600/predecessor_before.log",
+      "sha256": "f1a182b8fdb0bc7f25fdc388f423ce7bdb0c2153402626fea5bbcfb8c2e80633"
+    },
+    {
+      "path": ".build/dlevels600/predecessor_after.log",
+      "sha256": "f1a182b8fdb0bc7f25fdc388f423ce7bdb0c2153402626fea5bbcfb8c2e80633"
+    },
+    {
+      "path": ".build/dlevels600/entry_reverify_600.py",
+      "sha256": "a594fb6a1ff4370c01615add026425f8631f713e9cc501430815805324a85370"
+    },
+    {
+      "path": ".build/dlevels600/predecessor_verify_600.py",
+      "sha256": "ad57a2b3e7f5d7ce651308da45254b2e0b3bc7648721f7b8caa01b54c5cea69b"
+    }
+  ],
+  "predecessor_handoff": {
+    "path": "notes/run/KEYGEN_CRT_PRIME_ROUND_214_599.json",
+    "sha256": "14cf3cb10c2f4546e9299a4f8343004e9c9b5ad90a9860609eee296ad7311c6b"
+  },
+  "predecessor_bindings_verified": 113,
+  "job": "keygen_thirdstep215_600",
+  "accepted": 7,
+  "receipts": {
+    "path": ".build/jobs/keygen_thirdstep215_600/RECEIPTS.json",
+    "sha256": "919bb199a4a95df06b3b53c9e052381972071f2d0c58f261bbd5c3ae6771b726"
+  },
+  "inputs": {
+    "path": ".build/jobs/keygen_thirdstep215_600/SOURCE_INPUTS.json",
+    "sha256": "ce3fc072f98f1fe793dee1ca5672caf6cc4e3a5f4dba44e3450cd6d55be57c71"
+  },
+  "runner": {
+    "path": ".build/jobs/keygen_thirdstep215_600/RUNNER_SOURCE.py",
+    "sha256": "e8e9cf4ba5e744425464c0057a27d07f62ff82be352c479535425ff436c5b385"
+  },
+  "engine": {
+    "path": ".build/jobs/keygen_thirdstep215_600/EXECUTION_SOURCE.py",
+    "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c"
+  },
+  "preflight": {
+    "path": ".build/jobs/keygen_thirdstep215_600/PREFLIGHT.json",
+    "sha256": "b9ab233ed64daf57f942aa452d5fd05c6696004368be4219991bbad3c83b80ed"
+  },
+  "modules": [
+    {
+      "module": "Source3.ThirdStepEntry215",
+      "source": {
+        "path": "formal/Source3/ThirdStepEntry215.lean",
+        "sha256": "8b7fa2099ccbec1f35e2ee016ed462e4bbb81aa31b8d1e04bf949f55cc99d9a7"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_thirdstep215_600/formal/Source3/ThirdStepEntry215.lean",
+        "sha256": "8b7fa2099ccbec1f35e2ee016ed462e4bbb81aa31b8d1e04bf949f55cc99d9a7"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_thirdstep215_600/lib/Source3/ThirdStepEntry215.olean",
+        "sha256": "bfe2baf069a0e4ef78b813212f75ba5ccc0396a1f5a517885d2f997a78d5496b"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_thirdstep215_600/logs/Source3_ThirdStepEntry215.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_thirdstep215_600/logs/Source3_ThirdStepEntry215.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 4.123,
+      "maxrss_kib": 4191964
+    },
+    {
+      "module": "Source3.ThirdStepStart215",
+      "source": {
+        "path": "formal/Source3/ThirdStepStart215.lean",
+        "sha256": "a5c7e0676375e7c5e4292ccaa52815c1fb07cac08eb933d3450d984eafb8daf0"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_thirdstep215_600/formal/Source3/ThirdStepStart215.lean",
+        "sha256": "a5c7e0676375e7c5e4292ccaa52815c1fb07cac08eb933d3450d984eafb8daf0"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_thirdstep215_600/lib/Source3/ThirdStepStart215.olean",
+        "sha256": "58b71e883a2869c21b0e78a751c2654ba0c48a19e4bc7742564591eb6c47c407"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_thirdstep215_600/logs/Source3_ThirdStepStart215.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_thirdstep215_600/logs/Source3_ThirdStepStart215.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.272,
+      "maxrss_kib": 4191964
+    },
+    {
+      "module": "Source3.ThirdStepLengths215",
+      "source": {
+        "path": "formal/Source3/ThirdStepLengths215.lean",
+        "sha256": "577203201ea03e3112f6ea64c4b4f1bb93fac9af69ee081c77753c0b2ec4204a"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_thirdstep215_600/formal/Source3/ThirdStepLengths215.lean",
+        "sha256": "577203201ea03e3112f6ea64c4b4f1bb93fac9af69ee081c77753c0b2ec4204a"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_thirdstep215_600/lib/Source3/ThirdStepLengths215.olean",
+        "sha256": "f8193a50dab48d2d29c63232a46ce27c8e837e907e3ddcb9fe54354c0f2739bd"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_thirdstep215_600/logs/Source3_ThirdStepLengths215.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_thirdstep215_600/logs/Source3_ThirdStepLengths215.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 9.696,
+      "maxrss_kib": 4839124
+    },
+    {
+      "module": "Source3.ThirdStepLayout215",
+      "source": {
+        "path": "formal/Source3/ThirdStepLayout215.lean",
+        "sha256": "769f57ed8691ac669243a15e9b882afd1a74c5d4aee3be45630f1ab44731ca4a"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_thirdstep215_600/formal/Source3/ThirdStepLayout215.lean",
+        "sha256": "769f57ed8691ac669243a15e9b882afd1a74c5d4aee3be45630f1ab44731ca4a"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_thirdstep215_600/lib/Source3/ThirdStepLayout215.olean",
+        "sha256": "5cef954ec2889a9646d8f4dcd6bc7f578000767d0189bda426ee76a679db96e5"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_thirdstep215_600/logs/Source3_ThirdStepLayout215.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_thirdstep215_600/logs/Source3_ThirdStepLayout215.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 6.599,
+      "maxrss_kib": 4839124
+    },
+    {
+      "module": "Source3.ThirdStepMove215",
+      "source": {
+        "path": "formal/Source3/ThirdStepMove215.lean",
+        "sha256": "6497d0d0a1606854c3f33fdc50b9fdff31938d15293b376b10110e515fb8cccf"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_thirdstep215_600/formal/Source3/ThirdStepMove215.lean",
+        "sha256": "6497d0d0a1606854c3f33fdc50b9fdff31938d15293b376b10110e515fb8cccf"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_thirdstep215_600/lib/Source3/ThirdStepMove215.olean",
+        "sha256": "0cefec20de883ab08504742887a35b9479a879fadaace8ac10c57a089f13e473"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_thirdstep215_600/logs/Source3_ThirdStepMove215.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_thirdstep215_600/logs/Source3_ThirdStepMove215.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 6.085,
+      "maxrss_kib": 4839124
+    },
+    {
+      "module": "Source3.ThirdStepPrefix215",
+      "source": {
+        "path": "formal/Source3/ThirdStepPrefix215.lean",
+        "sha256": "25d9bc8011ce0ed4eb9491440c34e491f5ad1e67495d3792ac9ec0a640948e86"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_thirdstep215_600/formal/Source3/ThirdStepPrefix215.lean",
+        "sha256": "25d9bc8011ce0ed4eb9491440c34e491f5ad1e67495d3792ac9ec0a640948e86"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_thirdstep215_600/lib/Source3/ThirdStepPrefix215.olean",
+        "sha256": "688cbd83b9de97f4fc40eb73ec2b57eb70e8567c2aa87b15fb8cf47e1f6b0fc2"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_thirdstep215_600/logs/Source3_ThirdStepPrefix215.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_thirdstep215_600/logs/Source3_ThirdStepPrefix215.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.883,
+      "maxrss_kib": 4839124
+    },
+    {
+      "module": "Source3.ThirdStepPrefixAudit215",
+      "source": {
+        "path": "formal/Source3/ThirdStepPrefixAudit215.lean",
+        "sha256": "bb44ff0884c3605be892a0079a6e64d820a496f8083656eeda521008b0989a45"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_thirdstep215_600/formal/Source3/ThirdStepPrefixAudit215.lean",
+        "sha256": "bb44ff0884c3605be892a0079a6e64d820a496f8083656eeda521008b0989a45"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_thirdstep215_600/lib/Source3/ThirdStepPrefixAudit215.olean",
+        "sha256": "acb8709f7f2065ff81a2c1b9a4fd11e7bc48d7ddee6434a6c5837fc45ab08203"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_thirdstep215_600/logs/Source3_ThirdStepPrefixAudit215.stdout",
+        "sha256": "c8a89594332a177a42212c5ac29541c10416a6408fba7e36552b4d310465fee8"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_thirdstep215_600/logs/Source3_ThirdStepPrefixAudit215.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.673,
+      "maxrss_kib": 4839124
+    }
+  ],
+  "axioms": {
+    "FT1536.Source3.ThirdStepEntry215.binding": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ThirdStepEntry215.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ThirdStepStart215.source_at": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ThirdStepLengths215.first_fourth": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ThirdStepLengths215.reads": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ThirdStepLengths215.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ThirdStepLayout215.pointers": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ThirdStepMove215.input_reads": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ThirdStepMove215.copy": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ThirdStepMove215.move_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ThirdStepMove215.f_image": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ThirdStepMove215.g_image": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ThirdStepPrefix215.prefix_run": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ThirdStepPrefix215.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "failures_and_workshop": {
+    "path": "notes/run/KEYGEN_THIRD_STEP_215_FAILURES_600.json",
+    "sha256": "8f1a723fc84e39cac21f30986b29cf3f7c6d80e8cb0df695d920094268f41b4b"
+  },
+  "report": {
+    "path": "notes/run/KEYGEN_THIRD_STEP_215_600_REPORT.md",
+    "sha256": "74d6e8df20be76fe63fe5d09dd9c77a4e015ef9b8ca17bfddc2b2d31fcf2c690"
+  },
+  "evidence_generator": {
+    "path": ".build/evidence_v1.py",
+    "sha256": "1bc738f64ab2604686ab4e8da3ab0cc8eb3ef786f9486ab6b1d94cc70d513b3e"
+  },
+  "evidence_configuration": {
+    "path": ".build/dlevels600/evidence_config.json",
+    "sha256": "41d2ec309542ffbbe3a0316b62c8438b7325c2b0a3bf48f25bed564ed98afaa2"
+  },
+  "source_proof_markers": [],
+  "linter_suppressions": [],
+  "limits_unchanged": true,
+  "independent_review": "NOT_RUN",
+  "push": false,
+  "next_unused_suffix": 601,
+  "next_obligations": [
+    "d=3 body of make_fg_step: first slen=3 prime loop, generator/march/product layers on the moved fs/gs rows",
+    "Later d levels d=4..9 and their layouts on the same pattern",
+    "Root/certificate/codec work and full B1",
+    "Independent review of this checkpoint by a separately chosen model"
+  ],
+  "not_claimed": [
+    "Any d=3 body execution or d=3 output image",
+    "Mathematical CRT/centering/Montgomery/integer/NTT/root/table laws",
+    "Desired output, certificate or equation claims",
+    "Full B1/KeyGen/Sign/compiler/security/unconditional positivity/probability",
+    "Independent review"
+  ]
+}
