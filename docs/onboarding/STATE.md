@@ -1,5 +1,32 @@
 # Stan projektu — punkt wejścia
 
+**2026-10-27 — S09/THRESHOLD_P2_001: Bramka G1 ODEBRANA — werdykt PASS_SCOPED_REVIEW.**
+Niezależny recenzent Gemini 4 Argon (Google AI Studio, wyznaczony przez
+właściciela; autor ≠ recenzent) przeprowadził pełny odbiór G1 na HEAD `5883b19e`
+(raport `REVIEW_G1_VERDICT_ARGON.md`). Przeliczył 7 skryptów KAT, diff CBOR = 0,
+44 pliki korpusu fuzzera, wektory silnika C oraz SBOM. Wykryte 3 kwestie
+techniczne zostały natychmiast zaadresowane w kodzie:
+1. `envelope.rs`: sprzężenie monotoniczności `(seq, round)` i obsługa duplikatów
+   ze starszych rund bez fałszywych `RoundMismatch` (3 nowe testy PASS).
+2. `cbor.rs`: kanoniczna obsługa tablic CBOR (major 4) pod `payloads_v0.cddl`
+   z odrzucaniem form niekanonicznych (2 nowe testy PASS).
+3. `fuzz.rs`: ujednolicenie losowania `rng.below(16)` i `#![forbid(unsafe_code)]`.
+Wszystkie testy workspace: 163/163 PASS, clippy -D warnings 0 uwag. Bramka G1
+zamknięta ze statusem PASS_SCOPED_REVIEW; wejście w Bramkę G2 (WP-030).
+
+**2026-10-27 — S09/THRESHOLD_P2_001: pakiet materiałów odbioru G1 gotowy.**
+`REVIEW_G1_PACKAGE.md` (v1): jedna komenda powtórzenia całości
+(`impl/ci/check.sh`, ~10,5 min, oczekiwane 158/162 testów, 0 symboli
+oracle w PROD, 35/35 rlib identycznych, SBOM zgodny, miri 100/14),
+indeks dowodów per WP z pinami, granice jawne (9 punktów: silnik poza
+P2, PROD martwy bez O-05, odtwarzalność per-checkout, fuzz
+deterministyczny, kodery payloadów w G2, …), inwarianty do szybkiej
+kontroli i format werdyktu (`PASS_SCOPED_REVIEW`/`CHANGES_REQUIRED`/
+`BLOCKED`). Rejestr twierdzeń zaktualizowany jawnie: **C-109 → TESTED**
+(scope: per-checkout G1; między hostami G5), **C-110** opatrzony
+kotwicami prymitywów (WP-023/024), status całości podpisu pozostaje
+OPEN (G3 KAT). Materiały przekazane do odbioru.
+
 **2026-10-27 — S09/THRESHOLD_P2_001: WP-026 DONE — G1 kompletne po stronie implementacji.**
 `ci/repro_build.sh`: podwójny build release `--frozen` (locked+offline)
 do osobnych katalogów target → **35/35 artefaktów .rlib bitowo

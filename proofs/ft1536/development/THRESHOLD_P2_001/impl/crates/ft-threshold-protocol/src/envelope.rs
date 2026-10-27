@@ -2,9 +2,9 @@
 //!
 //! **Zakres.** Kanoniczny CBOR (RFC 8949, deterministic encoding) dla
 //! `body` i `envelope` (SPEC §9.2/§9.3), MAC per para, monotoniczny
-//! `round` per nadawca i okno `seq` z idempotentną retransmisją
-//! identycznego `msg_id`. To warstwa aplikacyjna **nad** TLS 1.3/mTLS
-//! (D-010): nie zastępuje transportu i nie jest AEAD.
+//! `round` per nadawca powiązany z `seq` oraz okno `seq` z idempotentną
+//! retransmisją identycznego `msg_id`. To warstwa aplikacyjna **nad**
+//! TLS 1.3/mTLS (D-010): nie zastępuje transportu i nie jest AEAD.
 //!
 //! **Klucz.** W `TEST-ORACLE` `K_mac` może pochodzić z pre-shared key
 //! ([`EnvelopeKey::derive_psk`]). W `PROD` klucz musi pochodzić z TLS
@@ -20,9 +20,12 @@
 //! Zmiana formatu wymaga nowej wersji i nowych domen MAC.
 //!
 //! **Fail-closed.** Zły MAC, zły odbiorca, obca sesja/epoka, powtórzone
-//! `seq` z innym `msg_id`, wiadomość poza oknem i cofnięcie rundy → `Err`.
-//! Identyczna retransmisja (`seq` + `msg_id`) jest idempotentna
-//! ([`Delivery::Duplicate`]), zgodnie z SPEC §9.5.
+//! `seq` z innym `msg_id`, wiadomość poza oknem i naruszenie
+//! współmonotoniczności `(seq, round)` → `Err`. Identyczna retransmisja
+//! (`seq` + `msg_id`) wewnątrz okna jest zawsze idempotentna
+//! ([`Delivery::Duplicate`]), nawet po przejściu nadawcy do wyższej rundy.
+
+#![forbid(unsafe_code)]
 
 use std::collections::BTreeMap;
 
@@ -46,10 +49,8 @@ pub const MSGID_DOMAIN: &[u8] = b"FT1536/threshold/v1/msgid";
 
 /// Wersja formatu wire (v1; zamrożona WP-027).
 pub const WIRE_VERSION: u8 = 1;
-
 /// Maksymalny payload koperty (v0; SPEC §9.5 zaostrza do 1 MiB na wiadomość).
 pub const MAX_PAYLOAD_BYTES: usize = 1 << 20;
-
 /// Rozmiar okna replay (`seq` poza oknem = odrzucone).
 pub const REPLAY_WINDOW: usize = 64;
 
@@ -289,6 +290,7 @@ impl Body {
         let mut msg_type = 0u64;
         let mut sender = [0u8; 16];
         let mut payload: Vec<u8> = Vec::new();
+
         for key in 1u64..=8 {
             if r.expect_uint()? != key {
                 return Err(CoreError::NonCanonicalCbor);
@@ -430,6 +432,7 @@ impl Envelope {
         let mut body_cbor: &[u8] = &[];
         let mut recipient = [0u8; 16];
         let mut mac = [0u8; 32];
+
         for key in 1u64..=3 {
             if r.expect_uint()? != key {
                 return Err(CoreError::NonCanonicalCbor);
@@ -540,10 +543,111 @@ pub struct SessionReceiver {
     peers: BTreeMap<PartyId, PeerState>,
 }
 
-#[derive(Default)]
 struct PeerState {
+    /// Runda odpowiadająca najwyższemu przyjętemu `seq` (`replay.highest`).
     round: u64,
+    /// Najwyższa runda spośród wiadomości, które wypadły już poniżej okna.
+    floor_round: u64,
+    /// Rundy wiadomości aktualnie znajdujących się w 64-slotowym oknie.
+    round_slots: [Option<u64>; REPLAY_WINDOW],
     replay: ReplayWindow,
+}
+
+impl Default for PeerState {
+    fn default() -> Self {
+        Self {
+            round: 0,
+            floor_round: 0,
+            round_slots: [None; REPLAY_WINDOW],
+            replay: ReplayWindow::default(),
+        }
+    }
+}
+
+impl PeerState {
+    /// Weryfikuje okno `seq` oraz współmonotoniczność `(seq, round)`:
+    /// `s1 < s2 => round(s1) <= round(s2)`.
+    ///
+    /// * Identyczna retransmisja (`seq` + `msg_id`) wewnątrz okna zwraca
+    ///   [`Delivery::Duplicate`], nawet jeśli nadawca przeszedł już do
+    ///   wyższej rundy.
+    /// * Nowa wiadomość z `seq > highest` wymaga `round >= self.round` i
+    ///   aktualizuje `self.round`.
+    /// * Opóźniona nowa wiadomość z `seq < highest` wewnątrz okna musi
+    ///   być spójna z sąsiadami (`min_round <= round <= max_round`) i
+    ///   **nie** nadpisuje `self.round` (ochrona przed zatruciem rundy).
+    fn accept(&mut self, seq: u64, round: u64, msg_id: [u8; 32]) -> Result<Delivery> {
+        if seq == 0 {
+            return Err(CoreError::InvalidInput);
+        }
+        if self.replay.highest == 0 {
+            let delivery = self.replay.accept(seq, msg_id)?;
+            self.round = round;
+            self.round_slots[idx(seq)] = Some(round);
+            return Ok(delivery);
+        }
+
+        if seq > self.replay.highest {
+            if round < self.round {
+                return Err(CoreError::RoundMismatch);
+            }
+            let gap = seq - self.replay.highest;
+            if gap >= REPLAY_WINDOW as u64 {
+                self.floor_round = self.round;
+                self.round_slots.fill(None);
+            } else {
+                for s in (self.replay.highest + 1)..=seq {
+                    if let Some(evicted_round) = self.round_slots[idx(s)].take() {
+                        self.floor_round = self.floor_round.max(evicted_round);
+                    }
+                }
+            }
+            let delivery = self.replay.accept(seq, msg_id)?;
+            self.round = round;
+            self.round_slots[idx(seq)] = Some(round);
+            return Ok(delivery);
+        }
+
+        // `seq <= self.replay.highest`: najpierw sprawdzamy zasięg okna i
+        // ewentualny duplikat/konflikt w slocie `seq`.
+        if self.replay.highest - seq >= REPLAY_WINDOW as u64 {
+            return Err(CoreError::ReplayDetected);
+        }
+        if let Some(prev_id) = self.replay.slots[idx(seq)] {
+            return if prev_id == msg_id {
+                Ok(Delivery::Duplicate)
+            } else {
+                Err(CoreError::ReplayDetected)
+            };
+        }
+
+        // Nowy, opóźniony pakiet (`seq < highest`, pusty slot w oknie):
+        // wymuszamy `min_round <= round <= max_round` względem sąsiadów.
+        let win_low = self
+            .replay
+            .highest
+            .saturating_sub(REPLAY_WINDOW as u64 - 1)
+            .max(1);
+        let mut min_round = self.floor_round;
+        for s in win_low..seq {
+            if let Some(r) = self.round_slots[idx(s)] {
+                min_round = min_round.max(r);
+            }
+        }
+        let mut max_round = self.round;
+        for s in (seq + 1)..=self.replay.highest {
+            if let Some(r) = self.round_slots[idx(s)] {
+                max_round = max_round.min(r);
+            }
+        }
+        if round < min_round || round > max_round {
+            return Err(CoreError::RoundMismatch);
+        }
+
+        let delivery = self.replay.accept(seq, msg_id)?;
+        self.round_slots[idx(seq)] = Some(round);
+        Ok(delivery)
+    }
 }
 
 impl SessionReceiver {
@@ -560,24 +664,19 @@ impl SessionReceiver {
         })
     }
 
-    /// Weryfikuje klucz/kopertę, kolejność rundy i okno `seq`.
+    /// Weryfikuje klucz/kopertę oraz sprzężoną monotoniczność `(seq, round)`
+    /// w oknie anty-replay nadawcy.
     ///
-    /// Kolejność: najpierw MAC (żeby nie ujawniać stanu odbiorcy bez
-    /// uwierzytelnienia), potem `round`, potem `seq`.
+    /// Kolejność: najpierw MAC (żeby nie ujawniać ani nie mutować stanu
+    /// odbiorcy bez uwierzytelnienia), potem atomowa weryfikacja `(seq, round)`.
     pub fn accept(&mut self, key: &EnvelopeKey, env: Envelope) -> Result<(Body, Delivery)> {
         if key.sid != self.sid || key.epoch != self.epoch || key.recipient != self.me {
             return Err(CoreError::AuthFail);
         }
         let body = env.open(key)?;
-        let peer = self.peers.entry(body.sender).or_default();
-        if body.round < peer.round {
-            return Err(CoreError::RoundMismatch);
-        }
         let msg_id = body.msg_id();
-        let delivery = peer.replay.accept(body.seq, msg_id)?;
-        if delivery == Delivery::New {
-            peer.round = body.round;
-        }
+        let peer = self.peers.entry(body.sender).or_default();
+        let delivery = peer.accept(body.seq, body.round, msg_id)?;
         Ok((body, delivery))
     }
 }
@@ -628,14 +727,17 @@ mod tests {
         let id1 = b1.msg_id();
         let b2 = body(3, 1, 0x05, b"secret payload");
         assert_eq!(id1, b2.msg_id());
+
         let e1 = Envelope::seal(&k1, b1).expect("seal 1");
         let e2 = Envelope::seal(&k2, b2).expect("seal 2");
         assert_eq!(e1.body_unverified().msg_id(), e2.body_unverified().msg_id());
+
         let opened1 = e1.open(&k1).expect("open 1");
         assert_eq!(opened1.payload(), b"secret payload");
         assert_eq!(opened1.round(), 3);
         assert_eq!(opened1.seq(), 1);
         assert_eq!(opened1.msg_type(), 0x05);
+
         let opened2 = e2.open(&k2).expect("open 2");
         assert_eq!(opened2.payload(), b"secret payload");
     }
@@ -678,6 +780,7 @@ mod tests {
     fn replay_is_idempotent_only_for_identical_msg_id() {
         let k = key(4, A, B);
         let mut rx = SessionReceiver::new(SID, EPOCH, B).expect("receiver");
+
         let (_, d) = rx
             .accept(
                 &k,
@@ -709,6 +812,7 @@ mod tests {
     fn round_rollback_and_stale_window_are_rejected() {
         let k = key(5, A, B);
         let mut rx = SessionReceiver::new(SID, EPOCH, B).expect("receiver");
+
         rx.accept(&k, Envelope::seal(&k, body(5, 1, 1, b"a")).expect("seal"))
             .expect("round 5");
         let err = rx
@@ -716,7 +820,7 @@ mod tests {
             .unwrap_err();
         assert_eq!(err, CoreError::RoundMismatch);
 
-        // Ta sama runda, rosnące seq — dozwolone.
+        // Odrzucony pakiet z seq=2 nie mógł zająć slotu seq=2.
         let (_, d) = rx
             .accept(&k, Envelope::seal(&k, body(5, 2, 1, b"b")).expect("seal"))
             .expect("round 5 seq 2");
@@ -732,6 +836,115 @@ mod tests {
             .accept(&k, Envelope::seal(&k, body(6, 2, 1, b"old")).expect("seal"))
             .unwrap_err();
         assert_eq!(err, CoreError::ReplayDetected);
+    }
+
+    #[test]
+    fn delayed_retransmission_from_earlier_round_is_duplicate_not_round_mismatch() {
+        let k = key(7, A, B);
+        let mut rx = SessionReceiver::new(SID, EPOCH, B).expect("receiver");
+
+        // Przyjmujemy wiadomość z rundy 1 (seq = 1), a następnie z rundy 2 (seq = 2).
+        let (_, d1) = rx
+            .accept(&k, Envelope::seal(&k, body(1, 1, 1, b"r1")).expect("seal"))
+            .expect("accept r1");
+        assert_eq!(d1, Delivery::New);
+
+        let (_, d2) = rx
+            .accept(&k, Envelope::seal(&k, body(2, 2, 1, b"r2")).expect("seal"))
+            .expect("accept r2");
+        assert_eq!(d2, Delivery::New);
+
+        // Opóźniona retransmisja wiadomości (seq = 1, round = 1) wewnątrz okna
+        // musi zwrócić Duplicate, a nie fałszywy RoundMismatch.
+        let (_, d1_re) = rx
+            .accept(&k, Envelope::seal(&k, body(1, 1, 1, b"r1")).expect("seal"))
+            .expect("retransmit r1 after r2");
+        assert_eq!(d1_re, Delivery::Duplicate);
+
+        // Podmieniona treść na tym samym (seq = 1, round = 1) to nadal ReplayDetected.
+        let err = rx
+            .accept(
+                &k,
+                Envelope::seal(&k, body(1, 1, 1, b"r1-forged")).expect("seal"),
+            )
+            .unwrap_err();
+        assert_eq!(err, CoreError::ReplayDetected);
+    }
+
+    #[test]
+    fn out_of_order_inflated_round_cannot_deadlock_session() {
+        let k = key(8, A, B);
+        let mut rx = SessionReceiver::new(SID, EPOCH, B).expect("receiver");
+
+        // Wiadomość (seq = 2, round = 1) dociera przed seq = 1.
+        let (_, d) = rx
+            .accept(
+                &k,
+                Envelope::seal(&k, body(1, 2, 1, b"seq2-r1")).expect("seal"),
+            )
+            .expect("accept seq 2");
+        assert_eq!(d, Delivery::New);
+
+        // Złośliwy pakiet out-of-order (seq = 1, round = 99) próbuje podbić
+        // peer.round i zablokować rundę 1 — musi zostać odrzucony jako RoundMismatch.
+        let err = rx
+            .accept(
+                &k,
+                Envelope::seal(&k, body(99, 1, 1, b"poison")).expect("seal"),
+            )
+            .unwrap_err();
+        assert_eq!(err, CoreError::RoundMismatch);
+
+        // Uczciwy opóźniony pakiet (seq = 1, round = 1) nadal przechodzi jako New,
+        // a kolejna wiadomość (seq = 3, round = 1) nie jest zablokowana.
+        let (_, d_seq1) = rx
+            .accept(
+                &k,
+                Envelope::seal(&k, body(1, 1, 1, b"seq1-r1")).expect("seal"),
+            )
+            .expect("accept honest seq 1");
+        assert_eq!(d_seq1, Delivery::New);
+
+        let (_, d_seq3) = rx
+            .accept(
+                &k,
+                Envelope::seal(&k, body(1, 3, 1, b"seq3-r1")).expect("seal"),
+            )
+            .expect("accept honest seq 3");
+        assert_eq!(d_seq3, Delivery::New);
+    }
+
+    #[test]
+    fn out_of_order_middle_slot_respects_neighbor_rounds() {
+        let k = key(9, A, B);
+        let mut rx = SessionReceiver::new(SID, EPOCH, B).expect("receiver");
+
+        // Przyjmujemy (seq = 1, round = 2) oraz (seq = 3, round = 4).
+        rx.accept(&k, Envelope::seal(&k, body(2, 1, 1, b"s1")).expect("seal"))
+            .expect("seq 1 round 2");
+        rx.accept(&k, Envelope::seal(&k, body(4, 3, 1, b"s3")).expect("seal"))
+            .expect("seq 3 round 4");
+
+        // Dla seq = 2 dozwolony przedział rund to [2, 4]. Runda 1 i runda 5 są odrzucane.
+        assert_eq!(
+            rx.accept(&k, Envelope::seal(&k, body(1, 2, 1, b"bad-low")).expect("seal"))
+                .unwrap_err(),
+            CoreError::RoundMismatch
+        );
+        assert_eq!(
+            rx.accept(
+                &k,
+                Envelope::seal(&k, body(5, 2, 1, b"bad-high")).expect("seal")
+            )
+            .unwrap_err(),
+            CoreError::RoundMismatch
+        );
+
+        // Runda 3 dla seq = 2 spełnia 2 <= 3 <= 4 i zostaje przyjęta.
+        let (_, d) = rx
+            .accept(&k, Envelope::seal(&k, body(3, 2, 1, b"ok")).expect("seal"))
+            .expect("seq 2 round 3");
+        assert_eq!(d, Delivery::New);
     }
 
     #[test]
@@ -775,6 +988,7 @@ mod tests {
         let text = format!("{k:?}");
         assert!(text.contains("EnvelopeKey"));
         assert!(!text.contains("key"));
+
         let b = body(1, 1, 1, b"top-secret-payload");
         let text = format!("{b:?}");
         assert!(text.contains("Body"));

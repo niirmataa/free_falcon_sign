@@ -28,8 +28,8 @@ Każdy wpis ma właściciela i datę przeglądu.
 | C-106 | Refresh zachowuje `pk` i unieważnia stare udziały | **OPEN** | G5 |
 | C-107 | Implementacja jest odporna na znane ataki z macierzy | **OPEN** | G2/G4 |
 | C-108 | Brak wycieku side-channel w zadeklarowanym modelu | **OPEN** | G4 |
-| C-109 | Build jest reprodukowalny i pinowany | **OPEN** | G1/G5 |
-| C-110 | Podpis jest byte-compatible z `ft1536-sys` | **OPEN** | G3 KAT |
+| C-109 | Build jest reprodukowalny i pinowany | **TESTED** (scope G1: per-checkout, 35/35 `.rlib` identycznych; SBOM z locka; między hostami → G5) | dowód `impl/ci/WP026_CHECK_2026-10-27.txt`; skrypt `impl/ci/repro_build.sh` |
+| C-110 | Podpis jest byte-compatible z `ft1536-sys` | **OPEN** (prymitywy `hash_to_point`/NTT/iNTT/`mul` byte-equal z silnikiem: WP-023; pk/sig/c0 przypięte: WP-024; całość podpisu → G3 KAT) | G3 KAT; kotwice: `impl/ci/WP023_CHECK_2026-10-26.txt`, `KAT/MANIFEST.txt` |
 
 ## 3. Twierdzenia zakazane (FORBIDDEN)
 
@@ -61,3 +61,8 @@ Każdy wpis ma właściciela i datę przeglądu.
 - Przegląd rejestru: po każdym milestone i przed każdą publikacją.
 - Właściciel: prowadzący tor; zatwierdza: właściciel projektu.
 - Data ostatniego przeglądu: **2026-10-26** (G0).
+- **2026-10-27 (przed odbiorem G1):** C-109 → `TESTED` z jawnym scope
+  per-checkout (G1); C-110 opatrzony kotwicami prymitywów (WP-023/024)
+  przy zachowaniu statusu `OPEN` na całość podpisu. Materiały odbioru:
+  `REVIEW_G1_PACKAGE.md`. Zmiany statusów wymagają potwierdzenia
+  niezależnego recenzenta G1 (autor ≠ recenzent).

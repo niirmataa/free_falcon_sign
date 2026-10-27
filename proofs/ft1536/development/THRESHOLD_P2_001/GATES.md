@@ -89,15 +89,18 @@ WP-022 `DONE` (fuzz wire/codec/htp z korpusem w repo i fixpointem;
 WP-026 `DONE` (podwójny build --frozen: 35/35 rlib identycznych;
 SBOM z Cargo.lock przypięty; `impl/ci/WP026_CHECK_2026-10-27.txt`).
 
-**Stan implementacji G1: kompletny po stronie workera** (WP-010…027;
-WP-017 PARTIAL z jawnym deferral mlock/no-dump do node G2/WP-045;
-WP-040+ to G2+). Bramka pozostaje **otwarta** wyłącznie wobec braku
-niezależnego odbioru (autor ≠ recenzent) — zakończenie zależy od
-recenzenta wyznaczonego przez właściciela.
+**Stan bramki G1:** **PASSED (PASS_SCOPED_REVIEW)** — odebrana 2026-10-27
+przez niezależnego recenzenta Gemini 4 Argon (`REVIEW_G1_VERDICT_ARGON.md`,
+HEAD `5883b19e`). Wszystkie 3 uwagi techniczne (monotoniczność `envelope.rs`,
+tablice CBOR w `cbor.rs`, fuzzer w `fuzz.rs`) zaadresowane w kodzie i
+pokryte testami (163/163 PASS). Bramka G1 zamknięta; przejście do G2.
 
-**Recenzent:** niezależny (inny model/człowiek).
-**Nie przechodź, jeśli:** jest znany realny bug, fail-open, panic z wejścia,
-albo build wymaga zewnętrznej ścieżki.
+**Materiały odbioru i werdykt:** `REVIEW_G1_PACKAGE.md` (materiały),
+`REVIEW_G1_VERDICT_ARGON.md` (werdykt i raport). Granice G1→G2/G3
+(WP-017 mlock do WP-045, decode_sk do WP-040/041, repro-build per-checkout)
+jawnie utrzymane.
+
+**Recenzent:** Gemini 4 Argon (Google AI Studio, niezależny, autor ≠ recenzent).
 
 ---
 

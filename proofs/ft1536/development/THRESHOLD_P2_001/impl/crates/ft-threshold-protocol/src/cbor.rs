@@ -1,26 +1,29 @@
 //! Kanoniczny CBOR (RFC 8949, deterministic encoding) — podzbiór wire v1
-//! (WP-027, SPEC §9.2).
+//! (WP-027, SPEC §9.2) rozszerzony o tablice dla `payloads_v0.cddl` (G2/WP-030).
 //!
 //! **Zakres.** Wyłącznie to, czego używa protokół: `uint` (major 0),
-//! `bstr` (major 2) i mapy (major 5) z kluczami `uint`. Wszystko inne
-//! (nint, text, array, tag, float/simple, długości nieokreślone) jest
+//! `bstr` (major 2), `array` (major 4) i mapy (major 5) z kluczami `uint`.
+//! Wszystko inne (nint, text, tag, float/simple, długości nieokreślone) jest
 //! **odrzucane**. To świadomie mały, ścisły dekoder, nie ogólny CBOR.
 //!
 //! **Kanoniczność jest wymuszona, nie akceptowana.** Dekoder odrzuca:
-//! formę nieskróconą (`0x18 0x00`), długości nieokreślone (`ai = 31`),
-//! wartości zarezerwowane (`ai = 28..30`), bajty po elemencie, bstr
-//! przekraczające limit oraz (na poziomie map, patrz `map` w
+//! formę nieskróconą (`0x18 0x00`, `0x98 0x00`), długości nieokreślone
+//! (`ai = 31`), wartości zarezerwowane (`ai = 28..30`), bajty po elemencie,
+//! `bstr` lub `array` przekraczające limit oraz (na poziomie map, patrz
 //! `envelope.rs`) klucze nieposortowane/podwójne/nieznane. Kodowanie
 //! najkrótszą formą jest testowane wektorami RFC 8949 (Apendyks A).
 //!
 //! **Granica.** To warstwa formatu, nie kryptografia; MAC i `msg_id`
 //! liczy `envelope.rs` na bajtach, które tutaj wychodzą.
 
+#![forbid(unsafe_code)]
+
 use ft_threshold_core::error::{CoreError, Result};
 
 /// Maksymalny pojedynczy element `bstr` (SPEC §9.2: max bstr 16 MiB).
 pub const MAX_ITEM_BYTES: usize = 16 << 20;
-
+/// Maksymalna liczba elementów w pojedynczej tablicy CBOR (`payloads_v0.cddl`).
+pub const MAX_ARRAY_LEN: usize = 4096;
 /// Maksymalna głębokość zagnieżdżenia (SPEC §9.2: max nesting 8).
 pub const MAX_DEPTH: usize = 8;
 
@@ -56,6 +59,11 @@ impl CborWriter {
     pub fn put_bstr(&mut self, b: &[u8]) {
         self.put_len_head(2, b.len() as u64);
         self.buf.extend_from_slice(b);
+    }
+
+    /// Dopisuje nagłówek tablicy (major 4) z liczbą elementów w najkrótszej formie.
+    pub fn put_array(&mut self, len: usize) {
+        self.put_len_head(4, len as u64);
     }
 
     /// Dopisuje nagłówek mapy (major 5) z liczbą par w najkrótszej formie.
@@ -134,12 +142,28 @@ impl<'a> CborReader<'a> {
             return Err(CoreError::NonCanonicalCbor);
         }
         let len = usize::try_from(h.value).map_err(|_| CoreError::NonCanonicalCbor)?;
-        if len > max || len > self.b.len() - self.pos {
+        if len > max || len > MAX_ITEM_BYTES || len > self.b.len() - self.pos {
             return Err(CoreError::NonCanonicalCbor);
         }
         let out = &self.b[self.pos..self.pos + len];
         self.pos += len;
         Ok(out)
+    }
+
+    /// Wymaga tablicy (major 4) o liczbie elementów `<= max` (oraz `<= MAX_ARRAY_LEN`).
+    ///
+    /// Każdy element CBOR zajmuje co najmniej 1 bajt, więc deklaracja większej
+    /// liczby elementów niż pozostałe bajty bufora jest odrzucana natychmiast.
+    pub fn expect_array(&mut self, max: usize) -> Result<usize> {
+        let h = self.read_head()?;
+        if h.major != 4 {
+            return Err(CoreError::NonCanonicalCbor);
+        }
+        let len = usize::try_from(h.value).map_err(|_| CoreError::NonCanonicalCbor)?;
+        if len > max || len > MAX_ARRAY_LEN || len > self.b.len() - self.pos {
+            return Err(CoreError::NonCanonicalCbor);
+        }
+        Ok(len)
     }
 
     /// Wymaga mapy (major 5) i zwraca jej liczbę par; klucze weryfikuje
@@ -168,13 +192,25 @@ impl<'a> CborReader<'a> {
             0 => {}
             2 => {
                 let len = usize::try_from(h.value).map_err(|_| CoreError::NonCanonicalCbor)?;
-                if len > self.b.len() - self.pos {
+                if len > MAX_ITEM_BYTES || len > self.b.len() - self.pos {
                     return Err(CoreError::NonCanonicalCbor);
                 }
                 self.pos += len;
             }
+            4 => {
+                let len = usize::try_from(h.value).map_err(|_| CoreError::NonCanonicalCbor)?;
+                if len > MAX_ARRAY_LEN || len > self.b.len() - self.pos {
+                    return Err(CoreError::NonCanonicalCbor);
+                }
+                for _ in 0..len {
+                    self.next_item_bytes(depth + 1)?;
+                }
+            }
             5 => {
                 let pairs = usize::try_from(h.value).map_err(|_| CoreError::NonCanonicalCbor)?;
+                if pairs > MAX_ARRAY_LEN || pairs > (self.b.len() - self.pos) / 2 {
+                    return Err(CoreError::NonCanonicalCbor);
+                }
                 for _ in 0..pairs {
                     self.next_item_bytes(depth + 1)?;
                     self.next_item_bytes(depth + 1)?;
@@ -202,10 +238,12 @@ impl<'a> CborReader<'a> {
         self.pos += 1;
         let major = ib >> 5;
         let ai = ib & 0x1f;
+
         // Nieokreślona długość i kody zarezerwowane są zakazane w całości.
         if ai >= 28 {
             return Err(CoreError::NonCanonicalCbor);
         }
+
         let (value, extra): (u64, usize) = match ai {
             0..=23 => (u64::from(ai), 0),
             24 => {
@@ -242,11 +280,13 @@ impl<'a> CborReader<'a> {
             _ => return Err(CoreError::NonCanonicalCbor),
         };
         self.pos += extra;
-        // W protokole istnieją tylko uint (0), bstr (2) i mapa (5);
-        // nint/text/array/tag/float są odrzucane centralnie.
-        if !matches!(major, 0 | 2 | 5) {
+
+        // W protokole istnieją tylko uint (0), bstr (2), array (4) i mapa (5);
+        // nint/text/tag/float są odrzucane centralnie.
+        if !matches!(major, 0 | 2 | 4 | 5) {
             return Err(CoreError::NonCanonicalCbor);
         }
+
         // Forma nieskrócona = non-canonical (RFC 8949 §4.2.1).
         let min = match ai {
             0..=23 => 0,
@@ -258,13 +298,14 @@ impl<'a> CborReader<'a> {
         if value < min {
             return Err(CoreError::NonCanonicalCbor);
         }
+
         Ok(Head { major, value })
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::{CborReader, CborWriter, MAX_DEPTH};
+    use super::{CborReader, CborWriter, MAX_ARRAY_LEN, MAX_DEPTH};
     use ft_threshold_core::error::CoreError;
 
     fn uint_bytes(v: u64) -> Vec<u8> {
@@ -321,6 +362,91 @@ mod tests {
     }
 
     #[test]
+    fn array_lengths_use_shortest_form_and_roundtrip() {
+        for (len, head_len) in [(0usize, 1usize), (1, 1), (23, 1), (24, 2), (255, 2), (256, 3)] {
+            let mut w = CborWriter::new();
+            w.put_array(len);
+            for i in 0..len {
+                w.put_uint((i % 24) as u64);
+            }
+            let bytes = w.into_bytes();
+            assert_eq!(bytes.len(), head_len + len, "array len {len}");
+
+            let mut r = CborReader::new(&bytes);
+            let decoded_len = r.expect_array(len).expect("array header");
+            assert_eq!(decoded_len, len);
+            for i in 0..decoded_len {
+                assert_eq!(r.expect_uint().expect("item"), (i % 24) as u64);
+            }
+            r.expect_end().expect("end");
+
+            // `next_item_bytes` musi przejść po całej tablicy i zwrócić identyczny slice.
+            let mut r2 = CborReader::new(&bytes);
+            assert_eq!(r2.next_item_bytes(0).expect("item slice"), &bytes[..]);
+            r2.expect_end().expect("end 2");
+        }
+    }
+
+    #[test]
+    fn non_canonical_and_malformed_arrays_are_rejected() {
+        // Nieskrócona długość 0: 0x98 0x00 zamiast 0x80.
+        let mut r = CborReader::new(&[0x98, 0x00]);
+        assert_eq!(r.expect_array(16), Err(CoreError::NonCanonicalCbor));
+
+        // Nieskrócona długość 23: 0x98 0x17 zamiast 0x97.
+        let mut b = vec![0x98, 0x17];
+        b.extend(std::iter::repeat_n(0x01u8, 23));
+        let mut r = CborReader::new(&b);
+        assert_eq!(r.expect_array(32), Err(CoreError::NonCanonicalCbor));
+
+        // Nieskrócona długość 255: 0x99 0x00 0xff zamiast 0x98 0xff.
+        let mut b = vec![0x99, 0x00, 0xff];
+        b.extend(std::iter::repeat_n(0x01u8, 255));
+        let mut r = CborReader::new(&b);
+        assert_eq!(r.expect_array(512), Err(CoreError::NonCanonicalCbor));
+
+        // Nieokreślona długość tablicy (ai = 31: 0x9f ... 0xff).
+        let mut r = CborReader::new(&[0x9f, 0x01, 0x02, 0xff]);
+        assert_eq!(r.expect_array(16), Err(CoreError::NonCanonicalCbor));
+
+        // Kody zarezerwowane ai = 28, 29, 30 w major 4 (0x9c, 0x9d, 0x9e).
+        for ib in [0x9cu8, 0x9d, 0x9e] {
+            let buf = [ib];
+            let mut r = CborReader::new(&buf);
+            assert_eq!(r.expect_array(16), Err(CoreError::NonCanonicalCbor));
+        }
+
+        // Przekroczenie limitu `max` podanego przez wywołującego.
+        let mut r = CborReader::new(&[0x83, 0x01, 0x02, 0x03]);
+        assert_eq!(r.expect_array(2), Err(CoreError::NonCanonicalCbor));
+
+        // Przekroczenie globalnego limitu MAX_ARRAY_LEN.
+        let mut w = CborWriter::new();
+        w.put_array(MAX_ARRAY_LEN + 1);
+        let bytes = w.into_bytes();
+        let mut r = CborReader::new(&bytes);
+        assert_eq!(
+            r.expect_array(MAX_ARRAY_LEN + 10),
+            Err(CoreError::NonCanonicalCbor)
+        );
+
+        // Obcięta tablica: nagłówek deklaruje 3 elementy, w buforze są tylko 2 bajty.
+        let mut r = CborReader::new(&[0x83, 0x01, 0x02]);
+        assert_eq!(r.expect_array(8), Err(CoreError::NonCanonicalCbor));
+
+        // Tablica z niekanonicznym elementem wewnątrz ([uint(5) jako 0x18 0x05])
+        // musi zostać odrzucona również przez `next_item_bytes`.
+        let mut r = CborReader::new(&[0x81, 0x18, 0x05]);
+        assert_eq!(r.next_item_bytes(0), Err(CoreError::NonCanonicalCbor));
+
+        // Nadmiarowy bajt po poprawnej tablicy.
+        let mut r = CborReader::new(&[0x81, 0x01, 0x00]);
+        assert_eq!(r.expect_array(4).expect("len"), 1);
+        assert_eq!(r.expect_uint().expect("elem"), 1);
+        assert_eq!(r.expect_end(), Err(CoreError::NonCanonicalCbor));
+    }
+
+    #[test]
     fn non_shortest_uint_is_rejected() {
         // 0 == 0x18 0x00 (forma nieskrócona).
         let mut r = CborReader::new(&[0x18, 0x00]);
@@ -354,9 +480,11 @@ mod tests {
         // 0x61 'a' = text — niedozwolone.
         let mut r = CborReader::new(&[0x61, 0x61]);
         assert_eq!(r.expect_bstr(8), Err(CoreError::NonCanonicalCbor));
-        // 0x40 to bstr, nie mapa.
+        // 0x40 to bstr, nie mapa i nie tablica.
         let mut r = CborReader::new(&[0x40]);
         assert_eq!(r.expect_map(), Err(CoreError::NonCanonicalCbor));
+        let mut r = CborReader::new(&[0x40]);
+        assert_eq!(r.expect_array(4), Err(CoreError::NonCanonicalCbor));
         // 0xc0 = tag(0) — niedozwolone.
         let mut r = CborReader::new(&[0xc0, 0x00]);
         assert_eq!(r.expect_uint(), Err(CoreError::NonCanonicalCbor));
@@ -371,6 +499,7 @@ mod tests {
         w.put_uint(5);
         let mut bytes = w.into_bytes();
         bytes.push(0x00);
+
         let r = CborReader::new(&bytes);
         assert!(!r.at_end());
         assert_eq!(r.expect_end(), Err(CoreError::NonCanonicalCbor));
@@ -387,12 +516,14 @@ mod tests {
     }
 
     #[test]
-    fn next_item_bytes_walks_nested_maps_with_depth_limit() {
-        // Mapa {1: bstr(2)}.
+    fn next_item_bytes_walks_nested_maps_and_arrays_with_depth_limit() {
+        // Mapa {1: [bstr(2), uint(7)]}.
         let mut w = CborWriter::new();
         w.put_map(1);
         w.put_uint(1);
+        w.put_array(2);
         w.put_bstr(&[0xde, 0xad]);
+        w.put_uint(7);
         let bytes = w.into_bytes();
 
         let mut r = CborReader::new(&bytes);
@@ -403,7 +534,7 @@ mod tests {
         // Zagnieżdżenie ponad MAX_DEPTH = odrzucone.
         let mut r = CborReader::new(&bytes);
         assert_eq!(
-            r.next_item_bytes(MAX_DEPTH + 1),
+            r.next_item_bytes(MAX_DEPTH),
             Err(CoreError::NonCanonicalCbor)
         );
     }

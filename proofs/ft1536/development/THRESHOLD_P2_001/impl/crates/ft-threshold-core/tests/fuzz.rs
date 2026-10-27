@@ -18,6 +18,8 @@
 //!
 //! Ciężkie pętle ignorowane pod miri (pokrywa je natywny `cargo test`).
 
+#![forbid(unsafe_code)]
+
 use ft_threshold_core::prss::PairwiseKey;
 use ft_threshold_core::ring::{N, Poly, Q};
 use ft_threshold_core::shake;
@@ -57,8 +59,9 @@ fn mutate(rng: &mut Rng, data: &[u8], idx: usize) -> Vec<u8> {
         1 if out.len() > 2 => out.truncate(1 + rng.below(out.len() - 1)),
         2 => {
             let pos = rng.below(out.len() + 1);
-            let mut ins = Vec::with_capacity(1 + rng.below(16));
-            for _ in 0..1 + rng.below(16) {
+            let extra = 1 + rng.below(16);
+            let mut ins = Vec::with_capacity(extra);
+            for _ in 0..extra {
                 ins.push(rng.below(256) as u8);
             }
             let tail = out.split_off(pos);
@@ -70,7 +73,8 @@ fn mutate(rng: &mut Rng, data: &[u8], idx: usize) -> Vec<u8> {
                 return out;
             }
             let pos = rng.below(out.len());
-            for i in 0..1 + rng.below(16) {
+            let n = 1 + rng.below(16);
+            for i in 0..n {
                 if let Some(b) = out.get_mut(pos + i) {
                     *b = rng.below(256) as u8;
                 }
