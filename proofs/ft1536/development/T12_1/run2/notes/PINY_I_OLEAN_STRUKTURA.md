@@ -42,8 +42,10 @@ Precedens: B1.03 (r2/div). Wzór (suplementy, nie nadpisania):
   linię (job, status, co dalej). Nie na końcu okna — w trakcie.
 - Pytania „skąd to / jak zbudowane" → najpierw TEN plik, SERCE i raporty
   checkpointów; jeśli brak — dopisz suplement tutaj i idź dalej.
-- Przy >60% kontekstu: **zamroź w punkcie odzyskiwalnym i melduj** —
-  nowe okno wznawia z WORK_STATE, bez dochodzenia od nowa.
+- Kontekst: okno pracuje do **700 000 tokenów** — tam zamroź w punkcie
+  odzyskiwalnym i melduj; nowe okno wznawia z WORK_STATE, bez
+  dochodzenia od nowa. Wcześniej tylko przy wyczerpaniu jobów
+  albo po domknięciu kamienia milowego.
 
 ## 5. Uzupełnienia (dopisuj tutaj, data + inicjał okna)
 - (miejsce na kolejne suplementy)
