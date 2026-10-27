@@ -36,6 +36,9 @@ echo "== prod build bez symboli TEST-ORACLE (WP-025) =="
 echo "== korpus fuzz (WP-022) =="
 ./ci/fuzz/run_fuzz_corpus.sh
 
+echo "== odtwarzalny build + SBOM (WP-026) =="
+./ci/repro_build.sh
+
 echo "== cargo deny (offline, cached advisory DB) =="
 if ! command -v cargo-deny >/dev/null 2>&1; then
     echo "FAIL: brak cargo-deny (cargo install --locked cargo-deny)" >&2

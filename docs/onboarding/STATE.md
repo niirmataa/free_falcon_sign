@@ -1,5 +1,23 @@
 # Stan projektu — punkt wejścia
 
+**2026-10-27 — S09/THRESHOLD_P2_001: WP-026 DONE — G1 kompletne po stronie implementacji.**
+`ci/repro_build.sh`: podwójny build release `--frozen` (locked+offline)
+do osobnych katalogów target → **35/35 artefaktów .rlib bitowo
+identycznych** (manifest SHA256 `444ff57c…`) — kryterium „dwa buildy =
+ten sam hash" spełnione wprost. SBOM wyprowadzony **wprost z
+Cargo.lock** (stdlib `tomllib`, zero sieci — `cargo metadata --frozen`
+pada, bo chce ściągać manifest niecache'owanego opcjonalnego backendu
+`fiat-crypto`): 32 pakiety, przypięty w `sbom/sbom_v1.txt`, rozjazd z
+pina = FAIL w CI. Pliki `.d`/`.fingerprint` świadomie poza porównaniem
+(zawierają ścieżki target-dir). Pełne `ci/check.sh` end-to-end PASS
+(10,5 min; miri core 100/14). Granica jawna: odtwarzalność per-checkout,
+nie między hostami (remap-path-prefix i stabilny cache rejestru — poza
+G1). Dowód: `impl/ci/WP026_CHECK_2026-10-27.txt`. **Wszystkie pakiety
+implementacyjne G1 są DONE** (WP-017 PARTIAL z deferral mlock→G2);
+bramka czeka już tylko na **niezależny odbiór** (autor ≠ recenzent,
+wyznaczenie należy do właściciela). Następny krok: przygotować pakiet
+materiałów odbioru G1 (dowody, piny, zakresy twierdzeń).
+
 **2026-10-27 — S09/THRESHOLD_P2_001: WP-022 DONE (fuzz + korpus w repo).**
 Bez offline libFuzzera fuzz jest deterministyczny i seedowany (styl
 WP-019), ale z trzema wzmocnieniami: (1) korpus **44 plików w repo**

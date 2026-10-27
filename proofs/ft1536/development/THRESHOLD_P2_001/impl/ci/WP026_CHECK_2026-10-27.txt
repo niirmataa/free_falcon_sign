@@ -1,0 +1,86 @@
+# WP-026 check — 2026-10-27 (hermetyczne CI + odtwarzalny build + SBOM)
+# host: Linux 6.12.113+deb13-amd64 x86_64 GNU/Linux
+# rustc: rustc 1.94.0 (4a4ef493e 2026-03-02)
+# cargo: cargo 1.94.0 (85eff7c80 2026-01-15)
+# toolchain piny: rust-toolchain.toml (1.94.0, minimal), Cargo.lock tracked
+
+== Cel ==
+Kryterium odbioru G1: „dwa buildy = ten sam hash", przy pełnej
+hermetyczności (offline, locked) i inwentarzu zależności (SBOM) w repo.
+
+== Metoda ==
+`ci/repro_build.sh`:
+1. Podwójny build release workspace'u do OSOBNYCH katalogów target
+   (`--frozen` = `--locked` + `--offline`; jakakolwiek zmiana Cargo.lock
+   lub potrzeba sieci = porażka, nie ciche dostosowanie).
+2. Porównanie listy i SHA256 wszystkich artefaktów `.rlib`
+   (top-level `release/` + `release/deps/`), z normalizacją etykiet, żeby
+   porównanie było po parach ten-sam-artefakt. Pliki `.d`,
+   `.fingerprint` i `incremental` są ŚWIADOMIE poza porównaniem:
+   zawierają ścieżki katalogu target, nie są artefaktami.
+3. SBOM wyprowadzony WPROST z `Cargo.lock` (`ci/sbom_from_lock.py`,
+   stdlib `tomllib`, zero resolve/sieci), porównywany z pinem
+   `sbom/sbom_v1.txt` w CI (`--update` tylko po świadomej zmianie locka).
+
+== Wyniki ==
+  build A i B:        35 artefaktów .rlib, listy identyczne
+  SHA256 artefaktów:  35/35 bitowo identycznych
+  manifest_artefaktow_sha256 =
+      444ff57c6d7373f339dd401933c3548d0c4bd99e04c20bd15d8da8e2b8142f58
+  SBOM:               32 pakiety (7 crate'ów workspace + zależności
+                      rejestrowe z checksumami), pin zgodny
+                      sha256(sbom_v1.txt) =
+                      fad5934d7991b275a2d2f1299ad9d7f65ffcb6393dd00d000cdf75c6fcaad974
+  pełne ci/check.sh:  PASS end-to-end (fmt/build/test/clippy oba
+                      warianty/deny/miri/skan PROD/KAT/wire/corpus/repro)
+
+Hermetyczność: `CARGO_NET_OFFLINE=true` + `--locked`/`--frozen` wszędzie;
+Cargo.lock i rust-toolchain.toml są śledzone w git; advisory DB
+(`cargo deny`) odświeżana osobno (sieć wymaga zgody właściciela).
+
+Pełny przebieg `ci/check.sh` (10,5 min, end-to-end): fmt, build, test
+(default + all-features), clippy (oba), skan PROD, korpus fuzz, podwójny
+build + SBOM, `cargo deny`, miri — **PASS**; miri: core 100 passed /
+14 ignored (w tym nowe pętle fuzz z jawnym powodem ignore), protocol
+15 passed / 7 ignored.
+
+== Pułapki (zachowane jawnie) ==
+1. `cargo metadata --frozen` PADA offline: chce pobrać manifesty
+   wszystkich wpisów locka, w tym `fiat-crypto` 0.2.9 (opcjonalny
+   backend curve25519-dalek, nieużywany na tym targecie i nieobecny
+   w cache). Dlatego SBOM jest wyprowadzany wprost z Cargo.lock —
+   lock jest źródłem prawdy inwentarza i nie wymaga resolve.
+2. Artefakty `.d` zawierają absolutne ścieżki katalogu target — ich
+   porównywanie to fałszywy rozjazd; selekcja `.rlib` jest jawną
+   decyzją, nie przeoczeniem.
+3. `grep -c ' | '` liczy też linię nagłówka formatu — 33 trafienia
+   = 32 pakietów + 1 nagłówek (spójność sprawdzona).
+
+== Piny (SHA256) ==
+  73fbdd985198ba948e3e3b1e8dafdb9e338fcc61b8eee1fcadf396fcdd52b13c  ci/repro_build.sh
+  33c7bbda0ac5a0d9c6ec87b6f135f75701d4f9f2c9bed224461b410cac94919f  ci/sbom_from_lock.py
+  fad5934d7991b275a2d2f1299ad9d7f65ffcb6393dd00d000cdf75c6fcaad974  sbom/sbom_v1.txt
+  a517b25934f8c35dadf8c60baa198cfeebf1595d26c71c0945529d2ac54c7aed  sbom/README.md
+  1a20a1d98685aa8566fbe0581d5b9c06af06cc940656ebce9756817cda7b6839  ci/check.sh
+
+== Granice ==
+- „Dwa buildy = ten sam hash" jest spełnione dla podwójnego buildu
+  W TYM SAMYM checkoucie (to jest kryterium G1). Odtwarzalność
+  MIĘDZYKOMPUTEROWA wymaga dodatkowo: `--remap-path-prefix` dla ścieżek
+  workspace'u i rejestru (cargo osadza je w metadanych/panicach),
+  identycznego rustc (pin mamy), identycznej zawartości cache rejestru
+  (checksumy w locku mamy) i deterministycznego środowiska. Nie
+  deklarujemy bitowej odtwarzalności między hostami — to cel poza G1.
+- SBOM to inwentarz wersji z locka; licencje sprawdza osobno
+  `cargo deny check --offline` (PASS); provenance poza checksumami
+  rejestru jest poza zakresem.
+- WP-026 nie zmienia żadnego pliku Rust — pełna weryfikacja testowa
+  (158/162, miri) pochodzi z commita WP-022; `check.sh` po dopięciu
+  `repro_build.sh` był uruchomiony end-to-end (PASS).
+
+== Powtórzenie ==
+```
+cd proofs/ft1536/development/THRESHOLD_P2_001/impl
+./ci/repro_build.sh     # PASS: 35/35 rlib identycznych + SBOM zgodny
+./ci/check.sh           # pełne hermetyczne CI (fmt..miri..repro)
+```

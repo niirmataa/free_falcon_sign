@@ -85,9 +85,15 @@ WP-027 `DONE` (wire v1: kanoniczny CBOR, ścisły dekoder, wektory +
 CDDL; `impl/ci/WP027_CHECK_2026-10-26.txt`),
 WP-022 `DONE` (fuzz wire/codec/htp z korpusem w repo i fixpointem;
 `decode_sk` odroczony do portu sign/verify;
-`impl/ci/WP022_CHECK_2026-10-27.txt`).
-Bramka pozostaje **otwarta**: WP-026, brak niezależnego
-recenzenta (autor ≠ recenzent).
+`impl/ci/WP022_CHECK_2026-10-27.txt`),
+WP-026 `DONE` (podwójny build --frozen: 35/35 rlib identycznych;
+SBOM z Cargo.lock przypięty; `impl/ci/WP026_CHECK_2026-10-27.txt`).
+
+**Stan implementacji G1: kompletny po stronie workera** (WP-010…027;
+WP-017 PARTIAL z jawnym deferral mlock/no-dump do node G2/WP-045;
+WP-040+ to G2+). Bramka pozostaje **otwarta** wyłącznie wobec braku
+niezależnego odbioru (autor ≠ recenzent) — zakończenie zależy od
+recenzenta wyznaczonego przez właściciela.
 
 **Recenzent:** niezależny (inny model/człowiek).
 **Nie przechodź, jeśli:** jest znany realny bug, fail-open, panic z wejścia,
