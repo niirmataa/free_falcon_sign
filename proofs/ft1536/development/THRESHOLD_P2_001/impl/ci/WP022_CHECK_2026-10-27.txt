@@ -1,0 +1,95 @@
+# WP-022 check — 2026-10-27 (fuzz: wire, codec, hash_to_point)
+# host: Linux 6.12.113+deb13-amd64 x86_64 GNU/Linux
+# rustc: rustc 1.94.0 (4a4ef493e 2026-03-02) · python3: 3.13
+# cargo: offline, --locked
+
+== Cel i wybór narzędzia ==
+Zamknięcie celów fuzz G1: wire (dekoder v1), codec (`Poly`/`ExpShare`/
+`VssCommitments`/`PairwiseKey`), `hash_to_point`. `cargo-fuzz`/libFuzzer
+**nie jest dostępny offline** (brak binarium i crate'a `libfuzzer-sys`/
+`arbitrary` w cache) — dlatego harness jest deterministyczny i seedowany
+(styl WP-019), z korpusem przypiętym w repo i regenerowanym przez
+niezależną referencję Python. To pokrycie deterministyczne, nie
+coverage-guided — zapisane jawnie jako granica.
+
+== Co powstało ==
+1. Korpus w repo: `fuzz/corpus/wire/` — 44 pliki (2 `ok_*`, 10 `bad_*`
+   non-canonical, 32 `mut_*` seedowane xorshift64). Generator
+   `ci/fuzz/gen_corpus.py` korzysta z niezależnej referencji CBOR
+   (`ci/wire/cbor_reference.py`); runner `ci/fuzz/run_fuzz_corpus.sh`
+   weryfikuje bitową odtwarzalność (PASS) i liczbę plików; podłączony do
+   `ci/check.sh`.
+2. `crates/ft-threshold-protocol/tests/fuzz_wire.rs` (3 testy):
+   - korpus: `ok_*` dekodują się i re-kodują bajt w bajt, `bad_*`
+     odrzucone przez OBA dekodery (Body i Envelope), `mut_*` — brak
+     paniki, a przy `Ok` fixpoint;
+   - pętla 100 000 mutacji poprawnej koperty: niezmiennik
+     **`Ok(bytes)` ⇒ `to_bytes() == bytes`** (dekoder nie „naprawia”
+     wejścia) — obie ścieżki (akceptacja/odrzucenie) są ćwiczone;
+   - strukturalne nadużycia: zagnieżdżenie map głębiej niż limit,
+     pusta mapa, klucze 2..=9 zamiast 1..=8.
+3. `crates/ft-threshold-core/tests/fuzz.rs` (5 testów):
+   - codec: po 60 000 mutacji na typ (`Poly` 3072 B LE, `ExpShare` 66 B,
+     `VssCommitments` punkty Ristretto, `PairwiseKey`), niezmiennik
+     fixpointu: `Ok` ⇒ re-kodowanie identyczne; dla `PairwiseKey`
+     (brak akcesora bajtów — higiena sekretów): dokładnie 32 B ⇒ `Ok`,
+     inna długość ⇒ `Err`;
+   - `hash_to_point`: 8 000 losowych wejść (nonce 0..64 B, msg 0..128 B)
+     — determinizm (dwa wywołania identyczne), brak paniki,
+     współczynniki < q; dodatkowo wejścia 64 KiB.
+4. Miri: ciężkie pętle i odczyt korpusu mają `#[cfg_attr(miri, ignore)]`
+   z powodem (izolacja miri nie ma fs; pętle pokrywa natywny test).
+
+== Wyniki ==
+  corpus runner:            PASS (44/44 pliki bitowo identyczne)
+  fuzz_wire:                3/3 PASS (100 000 mutacji, fixpoint 100%)
+  fuzz (core):              5/5 PASS (~240 000 mutacji łącznie, fixpoint 100%)
+  hash_to_point:            8 000 + duże wejścia, determinizm OK
+
+Całość CI (po zmianie): 158 testów PASS (default) / 162 (all-features);
+clippy -D warnings oba warianty, fmt, `cargo deny --offline`, skan PROD,
+skrypty KAT/wire/corpus — PASS.
+
+== Piny (SHA256) ==
+  816160b4ee5d079d37f16b3a81586e2aac936c6193b4916b86096826563812dd  ci/fuzz/gen_corpus.py
+  85499ed875b52598a2973391500d15a1efc47a5e19367f1eca118f7119a8e6b7  ci/fuzz/run_fuzz_corpus.sh
+  3913e7a5afad7f9c899aabc3171925bd55326701fc3a1df45dca43721c505f60  crates/ft-threshold-core/tests/fuzz.rs
+  97c1abfa301e179394349ea966ad21e9090d938964cfd258c2d184a1166138a6  crates/ft-threshold-protocol/tests/fuzz_wire.rs
+Korpus (44 pliki): `fuzz/corpus/wire/` — integralność przez runner
+(cmp z regeneracją w CI, `--update` tylko świadomie).
+
+== Pułapki (zachowane jawnie) ==
+1. Sanity-bound „za dużo poprawnych mutacji" był miscalibrowany: dekoder
+   koperty SŁUSZNIE akceptuje flip bajtu w MAC/payload — MAC weryfikuje
+   dopiero `open(key)`, a dekoder testuje formę. Pętla ćwiczy obie
+   ścieżki; assert przepisany na „obie ścieżki występują”.
+2. Ścieżka korpusu z CARGO_MANIFEST_DIR: dwa `..` (crate → crates →
+   impl), nie trzy — pierwsza wersja wskazywała poza repo i test
+   failowało na braku katalogu.
+3. `VssCommitments` ma `from_bytes`, ale NIE ma `TryFrom<&[u8]>`
+   (w odróżnieniu od `ExpShare`/`Poly`/`PairwiseKey`) — fuzz woła
+   `from_bytes` wprost. Ewentualne dodanie TryFrom to świadoma zmiana
+   API, nie side-effect fuzzu.
+4. `PairwiseKey` celowo nie ma akcesora bajtów (materiał klucza) —
+   fixpoint nie jest dostępny; testowalny niezmiennik to długość 32 B.
+
+== Zakres i granice ==
+- `decode_sk`: **odroczony** — w Rust nie istnieje dekoder klucza
+  prywatnego (format jest własnością silnika C; spójność pilnuje KAT
+  WP-024 z pinami `skey_shake256`). Cel wyląduje z portem sign/verify
+  (WP-040/041).
+- Fuzz jest deterministyczny/seedowany, NIE coverage-guided (brak
+  libFuzzera offline). Odkrycie zależy od rozkładu mutacji; korpus
+  dodaje strukturalne złe przypadki z niezależnej referencji.
+- Nie znaleziono paniki ani złamania fixpointu w ~340 000 mutacjach
+  i 44 przypadkach korpusu; to nie jest dowód braku błędów.
+- Miri nie prowadzi pętli (natywne `cargo test` pokrywa); to jawny
+  kompromis w check.sh, z powodem w atrybucie `ignore`.
+
+== Powtórzenie ==
+```
+cd proofs/ft1536/development/THRESHOLD_P2_001/impl
+./ci/fuzz/run_fuzz_corpus.sh                                        # PASS
+cargo test -p ft-threshold-protocol --test fuzz_wire --offline      # 3/3
+cargo test -p ft-threshold-core --test fuzz --offline               # 5/5
+```

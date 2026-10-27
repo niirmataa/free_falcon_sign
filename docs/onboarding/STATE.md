@@ -1,5 +1,22 @@
 # Stan projektu — punkt wejścia
 
+**2026-10-27 — S09/THRESHOLD_P2_001: WP-022 DONE (fuzz + korpus w repo).**
+Bez offline libFuzzera fuzz jest deterministyczny i seedowany (styl
+WP-019), ale z trzema wzmocnieniami: (1) korpus **44 plików w repo**
+(`fuzz/corpus/wire/`: 2 poprawne, 10 non-canonical z niezależnej
+referencji Python, 32 mutacje seedowane) z runnerem weryfikującym bitową
+odtwarzalność w `check.sh`; (2) niezmiennik **fixpoint** — jeśli dekoder
+zaakceptuje bajty, re-kodowanie musi dać identyczne bajty (dekoder nie
+może „naprawiać” wejścia); (3) ~340 000 mutacji łącznie: wire 100k,
+codec 4×60k (`Poly`/`ExpShare`/`VssCommitments`/`PairwiseKey`),
+`hash_to_point` 8k z determinizmem. Wynik: **0 panik, 0 złamań
+fixpointu**; 158 testów PASS (default) / 162 (all-features); miri
+ignoruje ciężkie pętle z powodem. `decode_sk` odroczony — dekoder
+klucza w Rust nie istnieje (format jest własnością silnika C; pin KAT
+WP-024); wróci z portem sign/verify. Dowód:
+`impl/ci/WP022_CHECK_2026-10-27.txt`. W G1 został tylko **WP-026**
+(reproducible build) i niezależny odbiór.
+
 **2026-10-26 — S09/THRESHOLD_P2_001: WP-027 DONE (wire v1: CBOR freeze).**
 Format `body`/`envelope` przełączony z przejściowego binarnego na
 **kanoniczny CBOR** (RFC 8949 §4.2): własny moduł `cbor.rs` bez zależności

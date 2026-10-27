@@ -4,3 +4,8 @@ target/
 # `*seed*` / `*secret*` (ochrona danych operacyjnych). Kod nie zawiera
 # sekretów; pliki danych z prawdziwymi sekretami i tak nie wchodzą do repo.
 !*.rs
+
+# Korpus fuzz WP-022: deterministyczne, syntetyczne wejścia testowe
+# (bitowo weryfikowane przez ci/fuzz/run_fuzz_corpus.sh). Wzorzec
+# `*.bin` z development/.gitignore dotyczy artefaktów builda, nie pinów.
+!fuzz/corpus/wire/*.bin

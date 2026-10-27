@@ -33,6 +33,9 @@ cargo clippy --workspace --all-targets --all-features --locked --offline -- -D w
 echo "== prod build bez symboli TEST-ORACLE (WP-025) =="
 ./ci/check_prod_symbols.sh
 
+echo "== korpus fuzz (WP-022) =="
+./ci/fuzz/run_fuzz_corpus.sh
+
 echo "== cargo deny (offline, cached advisory DB) =="
 if ! command -v cargo-deny >/dev/null 2>&1; then
     echo "FAIL: brak cargo-deny (cargo install --locked cargo-deny)" >&2
