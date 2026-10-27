@@ -1,0 +1,255 @@
+{
+  "utc": "2026-10-27T18:28:14.583000+00:00",
+  "status": "PROVED_KERNEL_SCOPED / NOT_REVIEWED",
+  "overall_owner_goal": "IN_PROGRESS; continue after this intermediate checkpoint",
+  "scope": "First slen=3 prime loop of the d=3 make_fg_step body with real proofs: generic per-row prime prefix (executed pVal/iVal/rVal words from the actual PRIMES3 object and source bodies), complete iterations (prefix + modp_mkgm3 generator at Level 6 with exact 128-word gm/igm reads + both march sides: copy marches at slen=3 over n=128 words, false !in_ntt skips, Montgomery product marches at tlen=6/hn=64, taken modp_iNTT3_ext column visits at stride 3 with scaledWord images, false !out_ntt skip), the three counted iterations over rows 0..2 to the false u<slen guard, all six fd/gd product columns with exact words, the six iNTT column visits, the flat 384-word moved-row images consuming the checkpoint-600 fs/gs rows, and the readonly PRIMES3/REV10 facts at the exit; plus the PRIMES3 rows 0..5 executed word layer and both mkgm3 generator branches for the later loops. The module split (ThirdStepMarch215 + ThirdStepLoop215) is a recorded deviation from the six-module pattern forced by the pinned runner's 6 GiB memory ceiling.",
+  "entry_manifest": {
+    "path": ".build/steprx195/ENTRY_PINS.json",
+    "sha256": "00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964"
+  },
+  "entry_checked_count": 74673,
+  "entry_missing": 0,
+  "entry_changed": 0,
+  "entry_checks": [
+    {
+      "path": ".build/body601/entry_before.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/body601/entry_after.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/body601/predecessor_before.log",
+      "sha256": "827489dc4e6bf58560a366b751667f107611a3e62ee2ed878f6755f239aebe97"
+    },
+    {
+      "path": ".build/body601/predecessor_after.log",
+      "sha256": "827489dc4e6bf58560a366b751667f107611a3e62ee2ed878f6755f239aebe97"
+    },
+    {
+      "path": ".build/body601/entry_reverify_601.py",
+      "sha256": "91553ea645261cab4a33d260c7845a41ce1a52d65e9b504de859ceac0a673eaa"
+    },
+    {
+      "path": ".build/body601/predecessor_verify_601.py",
+      "sha256": "8fb9f1c149f552f990a14d9a70b4a0186e4e561fe4ebe9cd2cce095c11595468"
+    }
+  ],
+  "predecessor_handoff": {
+    "path": "notes/run/KEYGEN_THIRD_STEP_215_600.json",
+    "sha256": "d8c5d3c56cc8f0f93788e6320272e3e1a1afdc8b63ade32ce4bc027ceb2aca87"
+  },
+  "predecessor_bindings_verified": 168,
+  "job": "keygen_body601_final",
+  "accepted": 4,
+  "receipts": {
+    "path": ".build/jobs/keygen_body601_final/RECEIPTS.json",
+    "sha256": "aec599cbdfd91fee00a5b8ef86880d258401d3e21429bb939247cee06cd71307"
+  },
+  "inputs": {
+    "path": ".build/jobs/keygen_body601_final/SOURCE_INPUTS.json",
+    "sha256": "79d96fd518aad3b95bdfc1a15948a4b9d6e9bd3fff6137041e488497c9f53531"
+  },
+  "runner": {
+    "path": ".build/jobs/keygen_body601_final/RUNNER_SOURCE.py",
+    "sha256": "e8e9cf4ba5e744425464c0057a27d07f62ff82be352c479535425ff436c5b385"
+  },
+  "engine": {
+    "path": ".build/jobs/keygen_body601_final/EXECUTION_SOURCE.py",
+    "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c"
+  },
+  "preflight": {
+    "path": ".build/jobs/keygen_body601_final/PREFLIGHT.json",
+    "sha256": "9c7035df0beef22b21d8dc9168058036133f1c6e92550251f7ccdcc9012d583f"
+  },
+  "modules": [
+    {
+      "module": "Source3.ThirdStepGenerator215",
+      "source": {
+        "path": "formal/Source3/ThirdStepGenerator215.lean",
+        "sha256": "c48e7dce1d16081ef065fb28b963be4467dcdf1a424b0638b79f13ada9669c52"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_body601_final/formal/Source3/ThirdStepGenerator215.lean",
+        "sha256": "c48e7dce1d16081ef065fb28b963be4467dcdf1a424b0638b79f13ada9669c52"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_body601_final/lib/Source3/ThirdStepGenerator215.olean",
+        "sha256": "31eccaf961647d67d9c9573b4bdcd740acce611df392b74cc7aa3cd5a1056fbf"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_body601_final/logs/Source3_ThirdStepGenerator215.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_body601_final/logs/Source3_ThirdStepGenerator215.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 18.454,
+      "maxrss_kib": 4159600
+    },
+    {
+      "module": "Source3.ThirdStepProduct215",
+      "source": {
+        "path": "formal/Source3/ThirdStepProduct215.lean",
+        "sha256": "4a7ca2457b694fd1ac07d3d53b31d2c23a8d26d25277d0e4f805ecd39242feb6"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_body601_final/formal/Source3/ThirdStepProduct215.lean",
+        "sha256": "4a7ca2457b694fd1ac07d3d53b31d2c23a8d26d25277d0e4f805ecd39242feb6"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_body601_final/lib/Source3/ThirdStepProduct215.olean",
+        "sha256": "17dcbea6dba0767e79daebe51397d174eee511bc8592022286693ac60ae32933"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_body601_final/logs/Source3_ThirdStepProduct215.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_body601_final/logs/Source3_ThirdStepProduct215.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.324,
+      "maxrss_kib": 4199624
+    },
+    {
+      "module": "Source3.ThirdStepLoop215",
+      "source": {
+        "path": "formal/Source3/ThirdStepLoop215.lean",
+        "sha256": "0210a368c4bd2f440799c3c0d8237f575366d45e5d1969cecb3e0d452e51b8c5"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_body601_final/formal/Source3/ThirdStepLoop215.lean",
+        "sha256": "0210a368c4bd2f440799c3c0d8237f575366d45e5d1969cecb3e0d452e51b8c5"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_body601_final/lib/Source3/ThirdStepLoop215.olean",
+        "sha256": "6a8de728ef48d4cdaca5a2a63dcf9cd6f5392538fbd06f406004d98bc944346d"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_body601_final/logs/Source3_ThirdStepLoop215.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_body601_final/logs/Source3_ThirdStepLoop215.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 5.98,
+      "maxrss_kib": 4244160
+    },
+    {
+      "module": "Source3.ThirdStepLoopAudit215",
+      "source": {
+        "path": "formal/Source3/ThirdStepLoopAudit215.lean",
+        "sha256": "d1baba29ef79d9f8ea4d5f9d0a018810e0537b74e571979519fdd5045df33f5e"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_body601_final/formal/Source3/ThirdStepLoopAudit215.lean",
+        "sha256": "d1baba29ef79d9f8ea4d5f9d0a018810e0537b74e571979519fdd5045df33f5e"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_body601_final/lib/Source3/ThirdStepLoopAudit215.olean",
+        "sha256": "410826965fe1fb9b46a9aec74af7fcc0d967e1c30d57364f8b86f7588b6c8d32"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_body601_final/logs/Source3_ThirdStepLoopAudit215.stdout",
+        "sha256": "497102c372bfd0b98c8c75089e66ba8de48aff485eddba990982451d6be3fbc0"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_body601_final/logs/Source3_ThirdStepLoopAudit215.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.074,
+      "maxrss_kib": 4244160
+    }
+  ],
+  "axioms": {
+    "FT1536.Source3.ThirdStepGenerator215.generator": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ThirdStepGenerator215.generatorT": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ThirdStepProduct215.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ThirdStepMarch215.sourceC": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ThirdStepMarch215.sourceI": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ThirdStepMarch215.sourceCol": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ThirdStepMarch215.sourcePair": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ThirdStepLoop215.appendP": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ThirdStepLoop215.inner_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.ThirdStepLoop215.body_run": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "failures_and_workshop": {
+    "path": "notes/run/KEYGEN_THIRD_BODY_215_FAILURES_601.json",
+    "sha256": "4671d7ed4449a92c0c1ea44b97fb74719d35d7b553f2bba8cb77c2a0bc287993"
+  },
+  "report": {
+    "path": "notes/run/KEYGEN_THIRD_BODY_215_601_REPORT.md",
+    "sha256": "8dbc6a8e7de920c4307233665c2cd7a8bcf2934084e0d7871e3178dc99abd6f4"
+  },
+  "evidence_generator": {
+    "path": ".build/evidence_v1.py",
+    "sha256": "1bc738f64ab2604686ab4e8da3ab0cc8eb3ef786f9486ab6b1d94cc70d513b3e"
+  },
+  "evidence_configuration": {
+    "path": ".build/body601/evidence_config.json",
+    "sha256": "d534e3c82834626876bfc3f86503cfafc2995192ab5e42bf6646d652feb80a50"
+  },
+  "source_proof_markers": [],
+  "linter_suppressions": [],
+  "limits_unchanged": true,
+  "independent_review": "NOT_RUN",
+  "push": false,
+  "next_unused_suffix": 602,
+  "next_obligations": [
+    "d=3 body remainder: ThirdStepCrt215 (part-3 zint_rebuild_CRT pair at n=128/slen=3 via CrtRound214), ThirdStepExtra215 (part-4 loop u=3..5 with rows 3..5 prefixes at slen=3), ThirdStepBody215 (parts 2/3/4 composition and images), full-body audit",
+    "Later d levels d=4..9 and their layouts on the same pattern",
+    "Root/certificate/codec work and full B1",
+    "Independent review of this checkpoint by a separately chosen model"
+  ],
+  "not_claimed": [
+    "Any CRT transition, additional-prime loop or composed d=3 body execution",
+    "Mathematical CRT/centering/Montgomery/integer/NTT/root/table laws",
+    "Desired output, certificate or equation claims",
+    "Full B1/KeyGen/Sign/compiler/security/unconditional positivity/probability",
+    "Independent review"
+  ]
+}

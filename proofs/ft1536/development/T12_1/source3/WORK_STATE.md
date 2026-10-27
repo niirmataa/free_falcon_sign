@@ -24,6 +24,140 @@ positivity/probability. Permanent195 bad bodyHeap/stepState UNUSED;
 sealed predecessors and Old110/measured/five do_sign unchanged.
 Foreign work excluded; save exact local checkpoint, then stop today.
 
+# SEED9_R1 — RESUMED 2026-10-27; window 601: d=3 body (6 modules + audit)
+
+Owner continuation 2026-10-27: window suffix 601 proves the BODY of the
+d=3 make_fg_step level — the first slen=3 prime loop marches (n=128,
+hn=64), the generator calls, the CRT transition, the additional primes
+u=3..5 loop and the Montgomery product marches — in the window-600
+pattern of six modules plus one audit module, with report and this
+WORK_STATE. The moved fs/gs images from 600 are consumed by the body
+(this is their purpose). Later windows: d=4..9 levels, then root/
+certificate/codec toward B1. Zero sorry absolutely (owner decision);
+trap ledger applies: generic-state table bindings are explicit
+hypotheses, arithmetic step operands are evaluated value words, and
+elem/element conversions need explicit rfl bridges. One proof job at a
+time via tools/job111.py; WORK_STATE after every attempt; retained
+failures with reasons; context budget 700000. No push (seven commits
+wait at entry); foreign PROMPT_T14_HIDDEN_DELTA_G2.md untouched.
+
+Job record (601 start): entry manifest .build/steprx195/ENTRY_PINS.json
+sha256 00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964
+verified 74673/74673 (0 missing, 0 changed) before new work; predecessor
+600 evidence 168/168, 599 113/113 and 597 133/133 bindings verified
+(.build/body601/entry_before.log, predecessor_before.log). Route (six
+modules + audit, dependency order): ThirdStepGenerator215 (d=3
+invariants, PRIMES3 row-0..5 word layers, generic prime prefix executor,
+modp_mkgm3 generator at Level 6/logn 7), ThirdStepProduct215 (generic
+Montgomery product-march instances at tlen=6/hn=64/t1 128), ThirdStepMarch215
+(first slen=3 loop complete: rows 0..2 prefixes, copy marches at slen=3,
+iNTT3_ext column visits at Level 6, three counted iterations and loop
+images consuming the moved fs/gs columns), ThirdStepCrt215 (part-3
+zint_rebuild_CRT pair at n=128/slen=3 via generic CrtRound214 coLoop and
+ZintNormWalkFlat208 normalization), ThirdStepExtra215 (part-4 loop u=3..5:
+rows 3..5 prefixes with Rx at slen=3, signed walks, NTT3 forwards at
+Level 6, product marches, counted loop), ThirdStepBody215 (parts 2/3/4
+chained from ThirdStepPrefix215 with the full fd/gd 384-word column
+images and fs/gs consumption), ThirdStepBodyAudit215 (audit). Source
+shapes StepPrimeShape188/MakeFgCrtShape194/MakeFgAddPrimeShape194 are
+generic and reused verbatim; only execution instances are new at the d=3
+geometry (fd@670, gd@1054, fs@1438, gs@1822, gm@2206, igm@2334, t1@2462).
+
+Job record (601): attempt001 RETAINED_ELABORATION_FAILURE (job
+keygen_body601_001): row-0 facts referenced KeygenStaticTables.first_*;
+they live in KeygenStaticReads; the generatorT rw could not see through
+the opaque generateCall def. No source/domain change; explicit statement
+bridge generateCall=generate (by decide) replaces the inner rw.
+Job record (601): attempt002 — ThirdStepGenerator215 ACCEPTED_LOCAL
+10.991s, 0/0: PRIMES3 rows 0..5 executed word layer (p/g/s table words,
+ninv31/R2 body words, Rx at slen=3), d=3 Outer/Basic invariants with
+transport, generic PrimeObject g read at loop index u, and both modp_mkgm3
+generator branches at Level 6 with exact gm/igm 128-word reads and
+outside-read keeps. Next ThirdStepProduct215 product-march instances
+(tlen=6, hn=64, t1 128 words).
+Job record (601): attempt003 — ThirdStepProduct215 ACCEPTED_LOCAL
+3.673s, 0/0: d=3 Montgomery product marches at tlen=6/hn=64 with the
+128-word t1 and the t1@2462 separations; exact Image families for any
+u<3 and any row words; fd/gd code and shape equations reused from the
+sealed d=2 layer (fd/gd/fs pointers coincide at the two levels). Next
+ThirdStepMarch215: the full first slen=3 loop (rows 0..2 prefixes,
+copy marches, iNTT3_ext column visits, three counted iterations).
+Job record (601): attempt004 RETAINED (keygen_body601_004): sourcePair
+tail projected the gKeep function as a tuple; attempt005 RETAINED: a
+j.isLt projection on a Nat binder; attempt006 RETAINED: product_t1/
+product_cross omega goals without row bounds (indices unbounded). All
+three scaffolding/transfer defects, no source/domain change.
+Job record (601): attempt007 — ThirdStepMarch215 ACCEPTED_LOCAL
+36.800s, 0/0: the complete d=3 march layers at the fixed geometry
+(fd@670, gd@1054, fs@1438, gs@1822, gm@2206, igm@2334, t1@2462) —
+generic copy marches at slen=3/n=128, the false !in_ntt skips, the
+product marches of ThirdStepProduct215, the iNTT3_ext column visits at
+Level 6 with exact scaledWord images, the two-sided pair with the false
+!out_ntt skip and the cross-side keep/separation glue. Memory note: this
+module alone ran at 5.84GB RSS against the pinned -M6144 ceiling.
+Job record (601): attempt008/009/010 RETAINED (keygen_body601_008/009/
+010): the pinned runner's 6GB address-space ceiling — "failed to create
+thread" while elaborating the prefix/iteration content stacked onto the
+layers module, reproducible and still failing with the iteration removed.
+Forced engineering split: ThirdStepMarch215 keeps the accepted march
+layers; the prefix/iteration/loop machinery moved to the new
+ThirdStepLoop215 module. This is a deviation from the six-module
+pattern (7 body files instead of 6) forced by the kernel memory
+ceiling; recorded honestly, no proof content weakened.
+Job record (601): attempt011 RETAINED (keygen_body601_011): twelve
+scaffolding defects in ThirdStepLoop215 v1 (diff_copy/diff_prod
+referenced but not yet defined, addr/elem association not defeq and
+needing congrArg bridges, by decide/omega on free variables, an
+increment bound). attempt012 RETAINED: diff_copy/diff_prod row bounds,
+colF/colG definition order, unused {s} binders (linter). attempt013
+RETAINED: object/rev transports hit the implicit-state elaboration order
+(same heap, distinct state records); fixed with named implicits.
+attempt014 RETAINED: part2run seq nesting and unused simp arguments.
+Job record (601): attempt015 — ThirdStepLoop215 ACCEPTED_LOCAL
+17.862s, 0/0: the complete first slen=3 loop of the d=3 body — generic
+per-row prime prefix (p/p0i/R2 from the actual PRIMES3 rows and source
+bodies), the full iteration (prefix + modp_mkgm3 generator + both march/
+product/iNTT sides), the three counted iterations over rows 0..2 from
+the u=0 initializer to the false u<3 guard, all six fd/gd product
+columns with exact words (pVal/iVal/rVal of rows 0..2), the six iNTT
+column visits, the flat 384-word moved-row images and the readonly
+PRIMES3/REV10 facts at the exit. 4.09GB RSS.
+Job record (601): canonical keygen_body601_final — ACCEPTED 4/4, 0/0,
+ten standard-only axiom results (ten checked interfaces), 30.832s
+total Lean time, maxRSS 4244160 KiB (ThirdStepGenerator215,
+ThirdStepProduct215, ThirdStepLoop215 fresh + ThirdStepLoopAudit215;
+the march module carries its accepted keygen_body601_007 receipt and is
+reused byte-identical — fresh aggregate rebuilds of it abort at the
+pinned -M6144 ceiling and are retained as 008/009/010/016/canonical/
+canonical2). Evidence PASS 245 new bindings (.build/evidence_v1.py with
+.build/body601/evidence_config.json); entry 74673/74673 unchanged
+before/after; predecessor 600 168/168, 599 113/113, 597 133/133
+unchanged. Marker scan 0 sorry/admit/native_decide; no linter
+suppression. Report/evidence/failures:
+notes/run/KEYGEN_THIRD_BODY_215_601_REPORT.md,
+KEYGEN_THIRD_BODY_215_601.json, KEYGEN_THIRD_BODY_215_FAILURES_601.json.
+Job record (601 closeout): the d=3 first slen=3 prime loop (marsze
+pierwszej pętli slen=3, generator, iloczyny) is closed with real
+proofs and the checkpoint-600 fs/gs images are now consumed by the
+body. Fourteen of eighteen local attempts retained with reasons
+(scaffolding/transfer defects and the pinned 6 GiB memory ceiling; the
+forced ThirdStepMarch215/ThirdStepLoop215 split deviates from the
+six-module pattern and is recorded openly). The d=3 body remainder
+(CRT transition part 3, additional primes u=3..5 part 4, the part-2/3/4
+composition and the step return), later d levels d=4..9,
+root/certificate/codec and full B1 remain OPEN. No CRT/NTT/root/table
+law and no desired output is claimed. WORK_STATE next route: window
+602 = ThirdStepCrt215 (part-3 zint_rebuild_CRT pair at n=128/slen=3
+via the generic CrtRound214 coLoop), then ThirdStepExtra215 (part-4
+loop u=3..5, rows 3..5 prefixes with Rx at slen=3, signed walks, NTT3
+forwards at Level 6, counted loop), then ThirdStepBody215 (parts 2/3/4
+composition + images + return) and a full-body audit. Trap ledger for
+602+: march-like layers must watch the -M6144 ceiling and split early;
+addr/elem association needs congrArg bridges; by decide/omega refuses
+free binders; state-record transports need named implicits; row-0
+facts live in KeygenStaticReads. No push (seven commits wait for the
+owner); independent review NOT_RUN. Freeze at the first-loop milestone.
+
 # SEED9_R1 — RESUMED 2026-10-27; window 600: further d levels and layouts
 
 Owner continuation 2026-10-27: window suffix 600 covers the further make_fg
