@@ -1,3 +1,30 @@
+# SEED9_R1 — ACTIVE; complete selected d5 return checkpoint609 accepted;610 next
+
+Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+609 canonical keygen_fifth609_canonical accepted17/17,0/0,124 standard-only
+axiom results. Actual selected d5 full body: twelve-limb CRT fs/gs pair,
+additional-prime loop u12..21, all22 fd/gd columns and both352-word flat
+images at one output; actual fifth call/return, d5→6 increment and true
+next guard. Original source/earlier calls constructed, no desired output/
+run premise; exact executed-word formulas only.
+94.266s,maxRSS5836432KiB. ENTRY74673/predecessor608300 unchanged before/after.
+10 local attempts accepted,0 failures; no new resource failure/suppression/
+failed cache. Independent review NOT_RUN. Prior retained findings and604
+supplement remain. Report/evidence KEYGEN_FIFTH_RETURN_217_609_REPORT.md
+and matching JSON; retained register KEYGEN_FIFTH_RETURN_217_FAILURES_609.json.
+Next610 actual d6 entry/layout/move: input prior fd@670/gd@1022, but new
+output fd@670/gd@1006; fs@1342/gs@1694/gm@2046/igm@2062/t1@2078.
+Use n16/hn8,slen22/tlen42; input size352/output size336, move2816 bytes.
+Then d6 body and d7..9/root/certificate/codec/full B1. No mathematical
+CRT/NTT/root/table/centering/Montgomery/integer law or broad KeyGen/Sign/
+compiler/security/unconditional positivity/probability. Permanent195 bad
+bodyHeap/stepState UNUSED; Old110/measured/five do_sign unchanged. Foreign
+PROMPT_T14 untouched; one Lean job, -M6144 and fixed limits, no push.
+Continue after checkpoint.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; selected d5 first-prime loop checkpoint608 accepted;609 next
 
 Owner resumed2026-10-28; continue in source3, no push/subagents/reviewers/
@@ -11066,3 +11093,31 @@ Job record (608): keygen_fifth608_010 — ACCEPTED_LOCAL audit, six public inter
 Job record (608): canonical keygen_fifth608_canonical — ACCEPTED16/16,0/0,109 standard-only results,47.687s,maxRSS3754084KiB. Entry74673/predecessor120 unchanged; next evidence/local checkpoint then609 d5 CRT.
 
 Job record (608 checkpoint): evidence PASS300 bindings; entry74673/predecessor607120 unchanged,16 accepted/109 standard-only results. Exact own20 paths; foreign work excluded, no push. Continue609 d5 CRT.
+
+Job record (609 start):608 committed1714e9a56e0759133c8288573fe89c708d5f0a02; no push. Continue actual d5 CRT pair and extra-prime u12..21; runtime .build/fifthcrt609, verify entry/predecessor before first proof job.
+
+Job record (609): fresh ENTRY74673/predecessor608300 evidence bindings verified before first609 source/job. Next bind PRIMES3 rows12..21, then execute the twelve-limb CRT pair and additional-prime loop.
+
+Job record (609): keygen_fifth609_001 — ACCEPTED_LOCAL FifthStepPrimeRows217,4.625s,0/0: PRIMES3 rows12..21 bound by kernel to the pinned source, including the CRT boundary row12. Next actual twelve-limb rebuild_CRT body and fs/gs pair.
+
+Job record (609): keygen_fifth609_002 — ACCEPTED_LOCAL2/2,0/0: original twelve-limb rebuild_CRT body at num32/xstride12 and the actual fs/gs call pair, with exact reassembled384-word images and readonly keeps. Next additional-prime prefix and signed-store/forward/product side.
+
+Job record (609): keygen_fifth609_003 — ACCEPTED_LOCAL2/2,0/0: actual d5 extra-prime p/p0i/R2/Rx prefix (slen12), signed-store walks on384 words, Level4 forward on32 words and stride22 product calls with gd@1022. Next both-side source composition and per-row iteration.
+
+Job record (609): keygen_fifth609_004 — ACCEPTED_LOCAL2/2,0/0: actual both-side d5 extra-prime signed walks/forwards/products and original generic row iteration for u<22, same-output images and separated-read keeps. Next connect first-loop columns through the actual part3 CRT pair.
+
+Job record (609): keygen_fifth609_005 — ACCEPTED_LOCAL2/2,0/0: actual selected d5 prefix+first loop+CRT, both reassembled384-word images and all twelve first product columns survive part3 on one output. Next extra-prime loop invariant and source induction.
+
+Job record (609): keygen_fifth609_006 — ACCEPTED_LOCAL4/4,0/0: actual additional-prime loop u12..21 through false u<22 exit, with same-witness tables and all first/extra product columns, CRT input rows and static objects. Next associate the complete d5 source body.
+
+Job record (609): keygen_fifth609_007 — ACCEPTED_LOCAL FifthStepFull217,2.821s,0/0: actual complete d5 body linked to all earlier calls, and all22 product columns on each side at one output. Next flat352-word images and actual caller return/d6 guard.
+
+Job record (609): keygen_fifth609_008 — ACCEPTED_LOCAL FifthStepImage217,2.771s,0/0: all22 fd/gd columns gathered into exact flat352-word arrays on the actual full d5 body output. Next actual caller return/d5→6 guard.
+
+Job record (609): keygen_fifth609_009 — ACCEPTED_LOCAL FifthStepReturn217,2.921s,0/0: actual fifth call/enclosing return, both exact352-word arrays and d5→6 increment/true next guard. Next full axiom audit/canonical replay; later d6..9 and full B1 remain open.
+
+Job record (609): keygen_fifth609_010 — ACCEPTED_LOCAL audit, seven public interfaces/124 standard-only axiom results,0/0. Next canonical17-module replay, final pin/evidence checks and local checkpoint; then d6.
+
+Job record (609): canonical keygen_fifth609_canonical — ACCEPTED17/17,0/0,124 standard-only results,94.266s,maxRSS5836432KiB. Entry74673/predecessor300 unchanged; next evidence/local commit then610 d6 entry.
+
+Job record (609 checkpoint): evidence PASS250 bindings; entry74673/predecessor608300 unchanged,17 accepted/124 standard-only results. Exact own21 paths; foreign work excluded, no push. Continue610 actual d6 entry/layout/move.
