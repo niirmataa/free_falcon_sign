@@ -1,0 +1,281 @@
+{
+  "utc": "2026-10-28T10:09:01.625597+00:00",
+  "status": "PROVED_KERNEL_SCOPED / NOT_REVIEWED",
+  "overall_owner_goal": "IN_PROGRESS; continue after this intermediate checkpoint",
+  "scope": "Actual selected bezout source parts0..3 on the reconstructed fp/gp inputs, including original exact-length calls and short-circuit zero-length/oddness guard, with flow expressed as a symbolic condition on actual words and both inputs preserved.",
+  "entry_manifest": {
+    "path": ".build/steprx195/ENTRY_PINS.json",
+    "sha256": "00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964"
+  },
+  "entry_checked_count": 74673,
+  "entry_missing": 0,
+  "entry_changed": 0,
+  "entry_checks": [
+    {
+      "path": ".build/bezoutguard628/entry_before.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/bezoutguard628/entry_after.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/bezoutguard628/predecessor_before.log",
+      "sha256": "5555a45489109115c845eba97d504dd3953f941988d0d15cdccc5eda8cfdfb6f"
+    },
+    {
+      "path": ".build/bezoutguard628/predecessor_after.log",
+      "sha256": "5555a45489109115c845eba97d504dd3953f941988d0d15cdccc5eda8cfdfb6f"
+    },
+    {
+      "path": ".build/bezoutguard628/entry_reverify_628.py",
+      "sha256": "641ca0817a30f5d2eea7390621f2686c267a2014e725b574033d856bfbf61d09"
+    },
+    {
+      "path": ".build/bezoutguard628/predecessor_verify.py",
+      "sha256": "c2d0e6081dd50e93bfdc03ddc965377e5d3b4fbe56570719daa69f9a27d90bd8"
+    },
+    {
+      "path": ".build/bezoutguard628/modules.json",
+      "sha256": "b2347b88263447ee467f6e09496afaf4c577fb0e4192582c239b3c05d23e2a7b"
+    }
+  ],
+  "predecessor_handoff": {
+    "path": "notes/run/KEYGEN_BEZOUT_LENGTHS_217_627.json",
+    "sha256": "876db8fdcd84905e058059e78ad05e5dd43a53374c64bc105df0e7cc46254f31"
+  },
+  "predecessor_bindings_verified": 307,
+  "job": "keygen_guard628_canonical",
+  "accepted": 5,
+  "receipts": {
+    "path": ".build/jobs/keygen_guard628_canonical/RECEIPTS.json",
+    "sha256": "4f36cf9b270c059b0fe2341b761af57709f97ea4b195f80ef1e92b76f1369a39"
+  },
+  "inputs": {
+    "path": ".build/jobs/keygen_guard628_canonical/SOURCE_INPUTS.json",
+    "sha256": "77d53f2706cb4c23b55326fe9d7e813f0a242f3d98b14d636149e9ab6fc8732d"
+  },
+  "runner": {
+    "path": ".build/jobs/keygen_guard628_canonical/RUNNER_SOURCE.py",
+    "sha256": "e8e9cf4ba5e744425464c0057a27d07f62ff82be352c479535425ff436c5b385"
+  },
+  "engine": {
+    "path": ".build/jobs/keygen_guard628_canonical/EXECUTION_SOURCE.py",
+    "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c"
+  },
+  "preflight": {
+    "path": ".build/jobs/keygen_guard628_canonical/PREFLIGHT.json",
+    "sha256": "22926c62b5ecb3b2e5fbcc39ec0e9ebd9aa6ffa019b66864a75127299cc86f13"
+  },
+  "modules": [
+    {
+      "module": "Source3.BezoutGuardOps217",
+      "source": {
+        "path": "formal/Source3/BezoutGuardOps217.lean",
+        "sha256": "9d3829d7c19b3662febd75ae2d836c48ea1986c226b5fd93940ba627fc615adf"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_guard628_canonical/formal/Source3/BezoutGuardOps217.lean",
+        "sha256": "9d3829d7c19b3662febd75ae2d836c48ea1986c226b5fd93940ba627fc615adf"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_guard628_canonical/lib/Source3/BezoutGuardOps217.olean",
+        "sha256": "6d794a19a6f10cecb657807dfec3f5158ff3e6e42cb3c186977d70ca4802619f"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_guard628_canonical/logs/Source3_BezoutGuardOps217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_guard628_canonical/logs/Source3_BezoutGuardOps217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 6.078,
+      "maxrss_kib": 4211780
+    },
+    {
+      "module": "Source3.BezoutGuard217",
+      "source": {
+        "path": "formal/Source3/BezoutGuard217.lean",
+        "sha256": "8556ee957e59da0df1f1742a6cba7b518f3b579b1b232eb1eb846e42bae5313a"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_guard628_canonical/formal/Source3/BezoutGuard217.lean",
+        "sha256": "8556ee957e59da0df1f1742a6cba7b518f3b579b1b232eb1eb846e42bae5313a"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_guard628_canonical/lib/Source3/BezoutGuard217.olean",
+        "sha256": "0fce96a6eb04fd89348bbc02d52fa1efa85b25bbf0aead71e6aa982811755388"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_guard628_canonical/logs/Source3_BezoutGuard217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_guard628_canonical/logs/Source3_BezoutGuard217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 5.607,
+      "maxrss_kib": 4450464
+    },
+    {
+      "module": "Source3.SelectedBezoutGuard217",
+      "source": {
+        "path": "formal/Source3/SelectedBezoutGuard217.lean",
+        "sha256": "6b6ee7d9aab33fa3f328ee3703a48bcc4195d2acde7567c23917c194e9f8d1d5"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_guard628_canonical/formal/Source3/SelectedBezoutGuard217.lean",
+        "sha256": "6b6ee7d9aab33fa3f328ee3703a48bcc4195d2acde7567c23917c194e9f8d1d5"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_guard628_canonical/lib/Source3/SelectedBezoutGuard217.olean",
+        "sha256": "f256cc4746253636ba1a694c6581e9e1bc04b38c3a8b9536628a899f9b386397"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_guard628_canonical/logs/Source3_SelectedBezoutGuard217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_guard628_canonical/logs/Source3_SelectedBezoutGuard217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 4.177,
+      "maxrss_kib": 4450464
+    },
+    {
+      "module": "Source3.SelectedBezoutGuardChain217",
+      "source": {
+        "path": "formal/Source3/SelectedBezoutGuardChain217.lean",
+        "sha256": "037f6d4dcc1301a7323a9e528696b613adb5339098f4c49966b3c92e2a22c2a5"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_guard628_canonical/formal/Source3/SelectedBezoutGuardChain217.lean",
+        "sha256": "037f6d4dcc1301a7323a9e528696b613adb5339098f4c49966b3c92e2a22c2a5"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_guard628_canonical/lib/Source3/SelectedBezoutGuardChain217.olean",
+        "sha256": "aede2f1781bf1582836e82fda25ffc2bdcb661987d5c00f00ae0559a732d1fd7"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_guard628_canonical/logs/Source3_SelectedBezoutGuardChain217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_guard628_canonical/logs/Source3_SelectedBezoutGuardChain217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.071,
+      "maxrss_kib": 4450464
+    },
+    {
+      "module": "Source3.SelectedBezoutGuardAudit217",
+      "source": {
+        "path": "formal/Source3/SelectedBezoutGuardAudit217.lean",
+        "sha256": "659b5442be70d657ce075adc17c13481328ad1cfb479ef3270ac8f1f2103b96e"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_guard628_canonical/formal/Source3/SelectedBezoutGuardAudit217.lean",
+        "sha256": "659b5442be70d657ce075adc17c13481328ad1cfb479ef3270ac8f1f2103b96e"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_guard628_canonical/lib/Source3/SelectedBezoutGuardAudit217.olean",
+        "sha256": "bf147113a6d561d88841d9e29d3a969cd6cf69c20f3da1ac4b33093748b52b41"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_guard628_canonical/logs/Source3_SelectedBezoutGuardAudit217.stdout",
+        "sha256": "754a6b6a5c82524682d7bf84f272a2e78561cd1b36155d48f0d3aca978851ba4"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_guard628_canonical/logs/Source3_SelectedBezoutGuardAudit217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.671,
+      "maxrss_kib": 4450464
+    }
+  ],
+  "axioms": {
+    "FT1536.Source3.BezoutGuardOps217.band": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutGuardOps217.eq_zero64": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutGuardOps217.eq_zero32": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutGuard217.shape": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutGuard217.band_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutGuard217.or_eval": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutGuard217.guard": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutGuard217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.SelectedBezoutGuard217.selected": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.SelectedBezoutGuardChain217.selected": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "failures_and_workshop": {
+    "path": "notes/run/KEYGEN_BEZOUT_GUARD_217_FAILURES_628.json",
+    "sha256": "4f025ee4a06c8bf1223da04c333db405aab6ade4951608d2bc330b7a76afc7e2"
+  },
+  "report": {
+    "path": "notes/run/KEYGEN_BEZOUT_GUARD_217_628_REPORT.md",
+    "sha256": "dba97c8954e903ffea0921c673b81b802b4fd3028b69af02c2402d5ef20fb1e1"
+  },
+  "evidence_generator": {
+    "path": ".build/evidence_v1.py",
+    "sha256": "1bc738f64ab2604686ab4e8da3ab0cc8eb3ef786f9486ab6b1d94cc70d513b3e"
+  },
+  "evidence_configuration": {
+    "path": ".build/bezoutguard628/evidence_config.json",
+    "sha256": "b6d63bc0e3ebad015b6e0ccbb0b747f01fef9e6716adf339821f07e77ab078fe"
+  },
+  "source_proof_markers": [],
+  "linter_suppressions": [],
+  "limits_unchanged": true,
+  "independent_review": "NOT_RUN",
+  "push": false,
+  "next_unused_suffix": 629,
+  "next_obligations": [
+    "Determine or carry the selected guard outcome, execute the appropriate original Bezout continuation or early return; do not assume success",
+    "Continue full zint_bezout source and derive actual result, then root/certificate/codec/full source-to-fiber B1"
+  ],
+  "not_claimed": [
+    "Concrete guard value, completed bezout return in the normal branch, root solve or full KeyGen source-to-fiber B1",
+    "Mathematical NTT/root/table/CRT/centering/Montgomery/integer laws",
+    "Full KeyGen/Sign/compiler/security/unconditional positivity/probability",
+    "Independent review"
+  ]
+}

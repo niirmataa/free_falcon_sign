@@ -1,3 +1,28 @@
+# SEED9_R1 — ACTIVE; selected bezout initial guard checkpoint628 accepted;629 next
+
+Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+628 canonical keygen_guard628_canonical accepted5/5,0/0,10 standard-only axiom results, evidence verified. Original selected bezout parts0..3 execute on one
+witness: declarations, pointer setup, actual exact-length calls and the
+short-circuit zero-length/low-bit guard. Flow is returned int32 0 if xlen or
+ylen is zero or the low-bit conjunction is zero, otherwise normal; both
+input images survive. The symbolic Boolean has not been evaluated to a
+concrete value; neither actual failure nor Bezout success is claimed.
+21.604s,maxRSS4450464KiB. ENTRY74673/predecessor627307 unchanged before/after.
+Eight local attempts retain two corrected elaboration/simplifier failures,
+with limits unchanged. No mathematical counterexample/new memory failure/
+suppression/failed cache. Independent review NOT_RUN. Prior retained findings
+remain. Report/evidence KEYGEN_BEZOUT_GUARD_217_628_REPORT.md and matching
+JSON; failure register KEYGEN_BEZOUT_GUARD_217_FAILURES_628.json.
+Next629 determine or carry guard outcome and execute correct continuation or
+early return, then full Bezout/root/certificate/codec/full B1. No mathematical
+NTT/root/table/CRT/centering/Montgomery/integer law or broad KeyGen/Sign/
+compiler/security/unconditional positivity/probability. Permanent195 bad
+bodyHeap/stepState UNUSED; Old110/measured/five do_sign unchanged. Foreign
+PROMPT_T14 untouched; one Lean job, -M6144 fixed; no push. Continue.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; selected bezout exact-length calls checkpoint627 accepted;628 next
 
 Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -12076,3 +12101,27 @@ Job record (627): keygen_exact627_022 — ACCEPTED_LOCAL audit, six interfaces/2
 Job record (627): canonical keygen_exact627_canonical — ACCEPTED10/10,0/0,25 standard-only axiom results, 34.241s,maxRSS4418020KiB. Entry74673/predecessor626142 unchanged; next evidence/local commit then guard.
 
 Job record (627 checkpoint): evidence PASS307 bindings,10 accepted/25 standard-only results, eleven retained failures; entry74673/predecessor626142 unchanged. Exact own paths include diagnostic source; foreign work excluded, no push. Continue628 actual bezout initial guards.
+
+Job record (628 start):627 committed9b8053e7; no push. Execute actual initial bezout zero-length/oddness guard on selected reconstructed words, preserving data-dependent outcomes; runtime .build/bezoutguard628. Verify entry/predecessor before first proof job.
+
+Job record (628): fresh ENTRY74673 and predecessor627307 evidence bindings verified before first628 source/job. Next source-bound initial bezout guard with symbolic zero-length/low-bit outcomes.
+
+Job record (628): keygen_guard628_001 — ACCEPTED_LOCAL BezoutGuardOps217,3.024s,0/0: exact C word AND and zero comparisons needed for initial guard. Next parsed guard and short-circuit execution.
+
+Job record (628): keygen_guard628_002 — RETAINED elaboration/lint failure,16.563s: Nat/Int modulus conversion in low-bit AND and redundant branch simplifications. Raw snapshot/log preserved; fix coercion and proof style without suppression.
+
+Job record (628): keygen_guard628_003 — RETAINED simplifier step-limit failure,54.837s: broad simp on low-bit Nat/Int conversion overexpanded; no mathematical counterexample. Raw snapshot/log retained; use explicit converted BitVec expression.
+
+Job record (628): keygen_guard628_004 — ACCEPTED_LOCAL BezoutGuard217,7.936s,0/0: original bezout part3 zero-length/low-bit condition and short-circuit branch execute for arbitrary initialized inputs, returning0 or continuing according to exact symbolic Boolean. Next selected-state instantiation.
+
+Job record (628): keygen_guard628_005 — ACCEPTED_LOCAL SelectedBezoutGuard217,5.829s,0/0: actual selected length results instantiate parsed zero-length/low-bit guard, with symbolic return0/continue flow. Extend unsealed export with explicit bezout binding/prefix for a continuous execution chain.
+
+Job record (628): keygen_guard628_006 — ACCEPTED_LOCAL SelectedBezoutGuard217,4.826s,0/0: explicit original bezout binding/prefix plus actual selected length calls and symbolic zero-length/low-bit guard on one witness. Next source prefix/guard composition.
+
+Job record (628): keygen_guard628_007 — ACCEPTED_LOCAL SelectedBezoutGuardChain217,5.981s,0/0: original bezout parts0..3 composed on same selected witness, with exact symbolic early-return/continue flow and input images. Next audit/canonical replay.
+
+Job record (628): keygen_guard628_008 — ACCEPTED_LOCAL audit, four interfaces/10 axiom results,0/0. Next canonical five-module replay, pin recheck and evidence.
+
+Job record (628): canonical keygen_guard628_canonical — ACCEPTED5/5,0/0,10 standard-only axiom results, 21.604s,maxRSS4450464KiB. Entry74673/predecessor627307 unchanged; next evidence/local commit then Bezout continuation.
+
+Job record (628 checkpoint): evidence PASS131 bindings,5 accepted/10 standard-only results, two retained failures; entry74673/predecessor627307 unchanged. Exact own paths only; foreign work excluded, no push. Continue629 Bezout continuation.
