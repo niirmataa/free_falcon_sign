@@ -1,3 +1,29 @@
+# SEED9_R1 — ACTIVE; selected d7 first-prime loop checkpoint614 accepted;615 next
+
+Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+614 canonical keygen_seventh614_canonical accepted16/16,0/0,97 standard-only axiom results, evidence verified. Actual selected d7 first-prime loop u0..41 at n8/hn4,
+slen42/tlen82; original prefix/generator/copy/products/inverse and exit.
+One inductive witness retains each row's table,42 fd/gd product columns and
+both336-word inverse images at gd998. Actual caller/prefix derived from
+completed d1..d6; no desired run/output premise.
+50.002s,maxRSS3723160KiB. ENTRY74673/predecessor613142 unchanged before/after.
+Eleven local attempts retain one audit-name elaboration failure, corrected;
+no new mathematical counterexample/resource failure/suppression/failed cache.
+Independent review NOT_RUN. Prior retained findings remain. Supplement
+KEYGEN_CRT_PART_LABEL_606_609_612_SUPPLEMENT_614.md corrects sealed CRT prose
+labels: actual checked source part3; length values6/12/22 are not part IDs.
+Report/evidence KEYGEN_SEVENTH_FIRST_217_614_REPORT.md and matching JSON;
+failure register KEYGEN_SEVENTH_FIRST_217_FAILURES_614.json.
+Next615 actual d7 CRT pair, extra-prime loop u42..81 and whole d7 return;
+then d8..9/root/certificate/codec/full B1. No mathematical NTT/root/table/
+CRT/centering/Montgomery/integer law or broad KeyGen/Sign/compiler/security/
+unconditional positivity/probability. Permanent195 bad bodyHeap/stepState
+UNUSED; Old110/measured/five do_sign unchanged. Foreign PROMPT_T14 untouched;
+one Lean job, -M6144 fixed; no push. Continue after checkpoint.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; selected d7 prefix checkpoint613 accepted;614 next
 
 Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -11327,3 +11353,35 @@ Job record (613): keygen_seventh613_008 — ACCEPTED_LOCAL audit, six interfaces
 Job record (613): canonical keygen_seventh613_canonical — ACCEPTED7/7,0/0,68 standard-only axiom results, 30.88s,maxRSS4353604KiB. Entry74673/predecessor612234 unchanged; next evidence and local commit.
 
 Job record (613 checkpoint): evidence PASS142 bindings,7 accepted/68 standard-only results, one retained failed local attempt; entry74673 and predecessor612234 unchanged. Exact own paths only; foreign work excluded, no push. Continue614 d7 first-prime loop.
+
+Job record (614 start):613 committede67c3380; no push. Continue actual d7 first-prime loop u0..41; runtime .build/seventhfirst614. Verify entry/predecessor before first proof job.
+
+Job record (614): fresh ENTRY74673 and predecessor613142 evidence bindings verified before first614 source/job. Next d7 first-prime generator and source product.
+
+Job record (614): keygen_seventh614_001 — ACCEPTED_LOCAL SeventhStepGenerator217,3.321s,0/0: original d7 row state and actual Level2 logn3 generator using slen42 and8-word tables. Next product and copy geometry.
+
+Job record (614): keygen_seventh614_002 — ACCEPTED_LOCAL SeventhStepProduct217,3.272s,0/0: original d7 fd/gd product loop for stride82 and hn4, exact word images at root gd998. Next geometric separation.
+
+Job record (614): keygen_seventh614_003 — ACCEPTED_LOCAL SeventhStepGeometry217,3.524s,0/0: separation geometry for d7 copy/product/word ranges. Next source copy and inverse columns.
+
+Job record (614): keygen_seventh614_004 — ACCEPTED_LOCAL2/2,0/0: original d7 copy and Level2 inverse sides on stride42. Next both-side composition, row prefix and complete iteration.
+
+Job record (614): keygen_seventh614_005 — ACCEPTED_LOCAL4/4,0/0: d7 first-prime source prefix, both-side copy/product/inverse composition and single inner iteration. Next first-loop invariant.
+
+Job record (614): keygen_seventh614_006 — ACCEPTED_LOCAL SeventhStepLoopBase217,3.623s,0/0: generic pinned prime rows, counter and preservation of separate earlier columns. Next invariant and 42-iteration loop.
+
+Job record (614): keygen_seventh614_007 — ACCEPTED_LOCAL3/3,0/0: inductive d7 first-prime loop u0..41, all earlier product columns retained, both336-word inverse row images. Next bind actual caller/prefix.
+
+Job record (614): keygen_seventh614_008 — ACCEPTED_LOCAL SeventhStepContext217,2.720s,0/0: initial d7 loop context, actual static objects, readonly tables and allocation derived from source prefix. Next link actual preceding runs and loop.
+
+Job record (614): keygen_seventh614_009 — ACCEPTED_LOCAL SeventhStepFirst217,4.023s,0/0: actual d7 caller/prefix and counted first-prime loop u0..41 share one output with source-indexed rows,42 fd/gd columns and both336-word inverse images. Next full axiom audit and canonical replay.
+
+Job record (614): keygen_seventh614_010 — RETAINED audit elaboration failure,2.675s, exit1: three #check lines used nonexistent generic source names; theorem proofs were already accepted. Raw audit snapshot/log retained. Correct interface names and retry.
+
+Job record (614): keygen_seventh614_011 — ACCEPTED_LOCAL audit, six public interfaces/97 axiom results,0/0. Next canonical16-module replay, pin recheck and evidence.
+
+Documentation supplement (614): sealed FourthStepCrt216/FifthStepCrt217/SixthStepCrt217 comments call the pair part-6/12/22, confusing length with source part; corresponding CrtFirst.part3 theorems establish MakeFgCrtShape194.part3. KEYGEN_CRT_PART_LABEL_606_609_612_SUPPLEMENT_614.md preserves and corrects those labels without altering prior source/evidence.
+
+Job record (614): canonical keygen_seventh614_canonical — ACCEPTED16/16,0/0,97 standard-only axiom results, 50.002s,maxRSS3723160KiB. Entry74673/predecessor613142 unchanged; next evidence/local commit then d7 CRT.
+
+Job record (614 checkpoint): evidence PASS251 bindings,16 accepted/97 standard-only results, one retained audit failure; entry74673/predecessor613142 unchanged. Exact own paths including documentation supplement; foreign work excluded, no push. Continue615 d7 CRT.
