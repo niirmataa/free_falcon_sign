@@ -1,3 +1,29 @@
+# SEED9_R1 — ACTIVE; complete selected d6 return checkpoint612 accepted;613 next
+
+Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+612 canonical keygen_sixth612_canonical accepted16/16,0/0,104 standard-only
+axiom results, evidence verified. Actual selected d6 full body:
+22-limb CRT fs/gs pair, extra-prime loop u22..41, all42 fd/gd columns and
+both336-word flat images at one output; actual sixth call/return, d6→7
+increment and true next guard. Original source/earlier calls constructed,
+no desired output/run premise; exact executed-word formulas only.
+97.515s,maxRSS5812988KiB. ENTRY74673/predecessor611255 unchanged before/after.
+Nine local Lean attempts accepted,0 failures; no new resource failure/
+suppression/failed cache. Independent review NOT_RUN. Prior retained
+findings and606/609 documentation supplement remain. Report/evidence
+KEYGEN_SIXTH_RETURN_217_612_REPORT.md and matching JSON; failure register
+KEYGEN_SIXTH_RETURN_217_FAILURES_612.json.
+Next613 actual d7 entry/layout/move, then d7..9/root/certificate/codec/full
+B1. Verify actual old source and new destination roots in overlapping move.
+No mathematical CRT/NTT/root/table/centering/Montgomery/integer law or broad
+KeyGen/Sign/compiler/security/unconditional positivity/probability.
+Permanent195 bad bodyHeap/stepState UNUSED; Old110/measured/five do_sign
+unchanged. Foreign PROMPT_T14 untouched; one Lean process, -M6144 and fixed
+limits, exact local commits, no push. Continue after checkpoint.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; selected d6 first-prime loop checkpoint611 accepted;612 next
 
 Owner resumed2026-10-28; continue in source3, no push/subagents/reviewers/
@@ -11226,3 +11252,29 @@ Job record (611): keygen_sixth611_010 — ACCEPTED_LOCAL audit, six public inter
 Job record (611): canonical keygen_sixth611_canonical — ACCEPTED17/17,0/0,99 standard-only results,52.762s,maxRSS3709488KiB. Entry74673/predecessor120 unchanged; next evidence/local commit then612 d6 CRT.
 
 Job record (611 checkpoint): evidence PASS255 bindings; entry74673/predecessor610120 unchanged,17 accepted/99 standard-only results. Exact own22 paths including documentation supplement; foreign work excluded, no push. Continue612 d6 CRT.
+
+Job record (612 start):611 committed748be754f8d0026c59ae7be616cd0bcd537f3824; no push. Continue actual d6 CRT pair and extra-prime u22..41 using generic indexed PRIMES3 rows; runtime .build/sixthcrt612. Verify entry/predecessor before first proof job.
+
+Job record (612): fresh ENTRY74673/predecessor611255 evidence bindings verified before first612 source/job. Next real d6 rebuild_CRT body using generic pinned indexed rows, with the row0 prime kept as the established first-source word.
+
+Job record (612): keygen_sixth612_001 — ACCEPTED_LOCAL SixthStepCrtBody217,3.474s,0/0: actual rebuild_CRT callee at num16/xlen=xstride22, indexed pinned rows, source tmp[0] store, co-loop and signed normalization over352 words. Next actual fs/gs call pair and extra-prime side engines.
+
+Job record (612): keygen_sixth612_002 — ACCEPTED_LOCAL3/3,0/0: original d6 fs/gs rebuild_CRT pair, actual extra-prime prefix with Rx(slen22), signed-store/Level3 forward/product sides. Next both-side extra-prime source iteration and CRT column preservation.
+
+Job record (612): keygen_sixth612_003 — ACCEPTED_LOCAL2/2,0/0: actual d6 both-side extra-prime walks/forward/products and generic row iteration for u<42, with same-output images and separated-read keeps. Next connect first-loop product columns through CRT.
+
+Job record (612): keygen_sixth612_004 — ACCEPTED_LOCAL2/2,0/0: actual selected d6 prefix+first loop+CRT, both reassembled352-word images and all22 first product columns survive part3 on one output. Next inductive extra-prime loop u22..41 using generic indexed rows.
+
+Job record (612): keygen_sixth612_005 — ACCEPTED_LOCAL4/4,0/0: actual extra-prime loop u22..41 through false u<42 exit, preserving all first/extra columns and same-witness source-indexed tables/static objects. Next associate complete d6 source body.
+
+Job record (612): keygen_sixth612_006 — ACCEPTED_LOCAL SixthStepFull217,3.422s,0/0: actual selected complete d6 body, first and extra columns on the same execution witness. Next export 336-word sections and caller return.
+
+Job record (612): keygen_sixth612_007 — ACCEPTED_LOCAL SixthStepImage217,3.326s,0/0: gather 42 columns per side into both336-word sections, from the same actual d6 source run. Next caller return and d7 guard.
+
+Job record (612): keygen_sixth612_008 — ACCEPTED_LOCAL SixthStepReturn217,3.071s,0/0: actual sixth caller return, both336-word output sections and d6-to-d7 increment/true guard, on the same selected execution. Next audit and canonical replay.
+
+Job record (612): keygen_sixth612_009 — ACCEPTED_LOCAL audit, seven public interfaces/104 axiom results,0/0. Next canonical16-module replay, pin recheck and evidence.
+
+Job record (612): canonical keygen_sixth612_canonical — ACCEPTED16/16,0/0,104 standard-only axiom results, 97.515s,maxRSS5812988KiB. Entry74673/predecessor611255 unchanged; next evidence/local commit, then d7 prefix.
+
+Job record (612 checkpoint): evidence PASS234 bindings, 16 accepted/104 standard-only results, zero failed local attempts; entry74673 and predecessor611255 unchanged. Exact own paths only; foreign work excluded, no push. Continue613 actual d7 prefix.

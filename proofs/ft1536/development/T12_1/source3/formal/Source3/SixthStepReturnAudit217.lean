@@ -1,0 +1,117 @@
+import Source3.SixthStepReturn217
+
+set_option maxRecDepth 262144
+set_option maxHeartbeats 2000000
+set_option Elab.async false
+
+#check FT1536.Source3.SixthStepCrtBody217.source
+#check FT1536.Source3.SixthStepCrt217.source
+#check FT1536.Source3.SixthStepCrtFirst217.source
+#check FT1536.Source3.SixthStepExtraLoop217.source
+#check FT1536.Source3.SixthStepFull217.source
+#check FT1536.Source3.SixthStepImage217.source
+#check FT1536.Source3.SixthStepReturn217.source
+#print axioms FT1536.Source3.SixthStepCrtBody217.rows22
+#print axioms FT1536.Source3.SixthStepCrtBody217.heap5
+#print axioms FT1536.Source3.SixthStepCrtBody217.arrays5
+#print axioms FT1536.Source3.SixthStepCrtBody217.locals5
+#print axioms FT1536.Source3.SixthStepCrtBody217.prime_load
+#print axioms FT1536.Source3.SixthStepCrtBody217.prefix_source
+#print axioms FT1536.Source3.SixthStepCrtBody217.object5
+#print axioms FT1536.Source3.SixthStepCrtBody217.data_after
+#print axioms FT1536.Source3.SixthStepCrtBody217.tmp_read0
+#print axioms FT1536.Source3.SixthStepCrtBody217.loop_input
+#print axioms FT1536.Source3.SixthStepCrtBody217.source
+#print axioms FT1536.Source3.SixthStepCrt217.sep_at
+#print axioms FT1536.Source3.SixthStepCrt217.fs_word
+#print axioms FT1536.Source3.SixthStepCrt217.gs_word
+#print axioms FT1536.Source3.SixthStepCrt217.gm_word
+#print axioms FT1536.Source3.SixthStepCrt217.fs_gm
+#print axioms FT1536.Source3.SixthStepCrt217.gs_gm
+#print axioms FT1536.Source3.SixthStepCrt217.fs_gs
+#print axioms FT1536.Source3.SixthStepCrt217.input
+#print axioms FT1536.Source3.SixthStepCrt217.binding
+#print axioms FT1536.Source3.SixthStepCrt217.call_source
+#print axioms FT1536.Source3.SixthStepCrt217.object_keep
+#print axioms FT1536.Source3.SixthStepCrt217.rev_keep
+#print axioms FT1536.Source3.SixthStepCrt217.outer_keep
+#print axioms FT1536.Source3.SixthStepCrt217.load_keep
+#print axioms FT1536.Source3.SixthStepCrt217.data_keep
+#print axioms FT1536.Source3.SixthStepCrt217.source
+#print axioms FT1536.Source3.SixthStepExtraPrime217.declared_locals
+#print axioms FT1536.Source3.SixthStepExtraPrime217.arrays
+#print axioms FT1536.Source3.SixthStepExtraPrime217.locals
+#print axioms FT1536.Source3.SixthStepExtraPrime217.p_cell
+#print axioms FT1536.Source3.SixthStepExtraPrime217.i_cell
+#print axioms FT1536.Source3.SixthStepExtraPrime217.r_cell
+#print axioms FT1536.Source3.SixthStepExtraPrime217.rx_cell
+#print axioms FT1536.Source3.SixthStepExtraPrime217.u_cell
+#print axioms FT1536.Source3.SixthStepExtraPrime217.source
+#print axioms FT1536.Source3.SixthStepExtraPrime217.basic
+#print axioms FT1536.Source3.SixthStepExtraSide217.sep_at
+#print axioms FT1536.Source3.SixthStepExtraSide217.walk_shape
+#print axioms FT1536.Source3.SixthStepExtraSide217.walk_fixed
+#print axioms FT1536.Source3.SixthStepExtraSide217.walk_source
+#print axioms FT1536.Source3.SixthStepExtraSide217.forward_source
+#print axioms FT1536.Source3.SixthStepExtraPair217.before_t1
+#print axioms FT1536.Source3.SixthStepExtraPair217.middle
+#print axioms FT1536.Source3.SixthStepExtraPair217.data
+#print axioms FT1536.Source3.SixthStepExtraPair217.twiddle
+#print axioms FT1536.Source3.SixthStepExtraPair217.f_after_g
+#print axioms FT1536.Source3.SixthStepExtraPair217.side_source
+#print axioms FT1536.Source3.SixthStepExtraPair217.out_skip
+#print axioms FT1536.Source3.SixthStepExtraPair217.normal_seq
+#print axioms FT1536.Source3.SixthStepExtraPair217.continue_side
+#print axioms FT1536.Source3.SixthStepExtraPair217.source
+#print axioms FT1536.Source3.SixthStepExtraInner217.fs_gm_out
+#print axioms FT1536.Source3.SixthStepExtraInner217.fs_igm_out
+#print axioms FT1536.Source3.SixthStepExtraInner217.gs_gm_out
+#print axioms FT1536.Source3.SixthStepExtraInner217.gs_igm_out
+#print axioms FT1536.Source3.SixthStepExtraInner217.heapP
+#print axioms FT1536.Source3.SixthStepExtraInner217.inputP
+#print axioms FT1536.Source3.SixthStepExtraInner217.source
+#print axioms FT1536.Source3.SixthStepCrtKeep217.column
+#print axioms FT1536.Source3.SixthStepCrtFirst217.part3
+#print axioms FT1536.Source3.SixthStepCrtFirst217.source
+#print axioms FT1536.Source3.SixthStepExtraLoopBase217.loopPremises
+#print axioms FT1536.Source3.SixthStepExtraLoopBase217.outside_cols
+#print axioms FT1536.Source3.SixthStepExtraLoopBase217.gm_cols
+#print axioms FT1536.Source3.SixthStepExtraLoopBase217.igm_cols
+#print axioms FT1536.Source3.SixthStepExtraLoopBase217.t1_cols
+#print axioms FT1536.Source3.SixthStepExtraLoopBase217.object_keep
+#print axioms FT1536.Source3.SixthStepExtraLoopBase217.rev_keep
+#print axioms FT1536.Source3.SixthStepExtraLoopBase217.revB_keep
+#print axioms FT1536.Source3.SixthStepExtraLoopBase217.scoped_local
+#print axioms FT1536.Source3.SixthStepExtraLoopBase217.scope_source
+#print axioms FT1536.Source3.SixthStepExtraLoopBase217.put_same
+#print axioms FT1536.Source3.SixthStepExtraLoopBase217.init_source
+#print axioms FT1536.Source3.SixthStepExtraLoopBase217.incrementK
+#print axioms FT1536.Source3.SixthStepExtraLoopBase217.counter_u
+#print axioms FT1536.Source3.SixthStepExtraLoopBase217.counter_tlen
+#print axioms FT1536.Source3.SixthStepExtraLoopBase217.counter_heap
+#print axioms FT1536.Source3.SixthStepExtraLoopBase217.counter_arrays
+#print axioms FT1536.Source3.SixthStepExtraLoopBase217.scope_arrays
+#print axioms FT1536.Source3.SixthStepExtraLoopBase217.outer_counter
+#print axioms FT1536.Source3.SixthStepExtraLoopBase217.input_counter
+#print axioms FT1536.Source3.SixthStepExtraLoopBase217.earlier_fs
+#print axioms FT1536.Source3.SixthStepExtraLoopBase217.earlier_gs
+#print axioms FT1536.Source3.SixthStepExtraLoopBase217.earlier_col
+#print axioms FT1536.Source3.SixthStepExtraLoopBase217.image_keep
+#print axioms FT1536.Source3.SixthStepExtraLoopBase217.fs_keep_u
+#print axioms FT1536.Source3.SixthStepExtraLoopBase217.gs_keep_u
+#print axioms FT1536.Source3.SixthStepExtraLoopBase217.extraRow_value
+#print axioms FT1536.Source3.SixthStepExtraLoopBase217.guard
+#print axioms FT1536.Source3.SixthStepExtraIteration217.source
+#print axioms FT1536.Source3.SixthStepExtraLoop217.remaining
+#print axioms FT1536.Source3.SixthStepExtraLoop217.source
+#print axioms FT1536.Source3.SixthStepFull217.complete
+#print axioms FT1536.Source3.SixthStepFull217.source
+#print axioms FT1536.Source3.SixthStepImage217.pointer
+#print axioms FT1536.Source3.SixthStepImage217.f_column
+#print axioms FT1536.Source3.SixthStepImage217.g_column
+#print axioms FT1536.Source3.SixthStepImage217.gather
+#print axioms FT1536.Source3.SixthStepImage217.source
+#print axioms FT1536.Source3.SixthStepReturn217.increment_source
+#print axioms FT1536.Source3.SixthStepReturn217.d_seven
+#print axioms FT1536.Source3.SixthStepReturn217.next_guard
+#print axioms FT1536.Source3.SixthStepReturn217.source
