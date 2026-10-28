@@ -1,3 +1,29 @@
+# SEED9_R1 — ACTIVE; selected d9 first-prime loop checkpoint621 accepted;622 next
+
+Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+621 canonical keygen_ninth621_canonical accepted16/16,0/0,97 standard-only axiom results, evidence verified. Actual selected d9 first-prime loop u0..165 at n2/hn1,
+slen166/tlen335; original prefix/generator/copy/products/inverse and exit.
+Each iteration executes true !out_ntt fd/gd inverse calls at logn0. One
+inductive witness retains each row's table,166 fd/gd product columns and
+both332-word inverse images at gd1005. Actual caller/prefix derived from
+completed d1..d8; no desired run/output premise.
+51.014s,maxRSS3680756KiB. ENTRY74673/predecessor62098 unchanged before/after.
+Twelve local attempts retain two elaboration failures, corrected data-length
+multipliers; no new counterexample/resource failure/suppression/failed cache.
+Independent review NOT_RUN. Prior retained findings remain. Report/evidence
+KEYGEN_NINTH_FIRST_217_621_REPORT.md and matching JSON; failure register
+KEYGEN_NINTH_FIRST_217_FAILURES_621.json.
+Next622 actual d9 CRT pair, extra-prime loop u166..334 with true !out_ntt,
+whole d9 return and false next guard; then root/certificate/codec/full B1.
+No mathematical NTT/root/table/CRT/centering/Montgomery/integer law or broad
+KeyGen/Sign/compiler/security/unconditional positivity/probability.
+Permanent195 bad bodyHeap/stepState UNUSED; Old110/measured/five do_sign
+unchanged. Foreign PROMPT_T14 untouched; one Lean job, -M6144 fixed; no push.
+Continue after checkpoint.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; d9 output inverse-zero checkpoint620 accepted;621 next
 
 Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -11700,3 +11726,35 @@ Job record (620): keygen_ninth620_006 — ACCEPTED_LOCAL audit, two interfaces/s
 Job record (620): canonical keygen_ninth620_canonical — ACCEPTED3/3,0/0,7 standard-only axiom results, 11.076s,maxRSS3668564KiB. Entry74673/predecessor619132 unchanged; next evidence/local commit then d9 loop.
 
 Job record (620 checkpoint): evidence PASS98 bindings,3 accepted/7 standard-only results, three retained elaboration failures; entry74673/predecessor619132 unchanged. Exact own paths only; foreign work excluded, no push. Continue621 actual d9 loop and branch composition.
+
+Job record (621 start):620 committed8ab9e462; no push. Continue actual d9 first-prime loop and instantiate true output branch; runtime .build/ninthfirst621. Verify entry/predecessor before first proof job.
+
+Job record (621): fresh ENTRY74673 and predecessor62098 evidence bindings verified before first621 source/job. Next d9 generator and first-prime product geometry with out_ntt0.
+
+Job record (621): keygen_ninth621_001 — ACCEPTED_LOCAL NinthStepGenerator217,3.423s,0/0: actual d9 row/generator frame with out_ntt0, logn1/Level0 and slen166. Next product and separation geometry.
+
+Job record (621): keygen_ninth621_002 — ACCEPTED_LOCAL NinthStepProduct217,3.484s,0/0: original d9 fd/gd product loop for stride335 and hn1, exact word images at root gd1005. Next separation geometry.
+
+Job record (621): keygen_ninth621_003 — ACCEPTED_LOCAL NinthStepGeometry217,3.228s,0/0: d9 copy/product separation geometry. Next source copy and inverse columns.
+
+Job record (621): keygen_ninth621_004 — RETAINED elaboration failure,3.021s, exit1: byte-width protection also caught the data-length multiplier in two capacity change expressions; no mathematical counterexample. Raw snapshot/log retained; correct only those multipliers and retry.
+
+Job record (621): keygen_ninth621_005 — RETAINED partial attempt: copy accepted, inverse exit1 on same protected data-length multiplier in capacity changes; no mathematical counterexample. Raw snapshots/logs retained; fix two expressions and rebuild.
+
+Job record (621): keygen_ninth621_006 — ACCEPTED_LOCAL2/2,0/0: original d9 copy and Level0 inverse sides on stride166; corrected data-length multipliers. Next both-side composition including true output branch.
+
+Job record (621): keygen_ninth621_007 — ACCEPTED_LOCAL4/4,0/0: d9 first-prime source row, both-side copy/product/inverse composition and single iteration now execute the true !out_ntt pair from620 on the actual tail state. Next first-loop invariant.
+
+Job record (621): keygen_ninth621_008 — ACCEPTED_LOCAL NinthStepLoopBase217,3.475s,0/0: pinned prime rows, counter and separate earlier-column preservation. Next invariant and166-iteration loop.
+
+Job record (621): keygen_ninth621_009 — ACCEPTED_LOCAL3/3,0/0: inductive d9 first-prime loop u0..165 executes true output branch in each iteration, retains earlier columns and both332-word inverse row images. Next bind actual caller/prefix.
+
+Job record (621): keygen_ninth621_010 — ACCEPTED_LOCAL NinthStepContext217,3.078s,0/0: initial d9 loop context with out_ntt0, actual static objects, readonly tables and allocation from prefix. Next link actual earlier runs and full loop.
+
+Job record (621): keygen_ninth621_011 — ACCEPTED_LOCAL NinthStepFirst217,5.125s,0/0: actual d9 caller/prefix and counted first-prime loop u0..165 share one output, with true !out_ntt pair per row,166 fd/gd columns and both332-word inverse images. Next full audit/canonical replay.
+
+Job record (621): keygen_ninth621_012 — ACCEPTED_LOCAL audit, six interfaces/97 axiom results,0/0. Next canonical16-module replay, pin recheck and evidence.
+
+Job record (621): canonical keygen_ninth621_canonical — ACCEPTED16/16,0/0,97 standard-only axiom results, 51.014s,maxRSS3680756KiB. Entry74673/predecessor62098 unchanged; next evidence/local commit then d9 CRT.
+
+Job record (621 checkpoint): evidence PASS266 bindings,16 accepted/97 standard-only results, two retained elaboration failures; entry74673/predecessor62098 unchanged. Exact own paths only; foreign work excluded, no push. Continue622 d9 CRT and extra-prime loop.
