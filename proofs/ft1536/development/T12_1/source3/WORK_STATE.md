@@ -1,3 +1,29 @@
+# SEED9_R1 — ACTIVE; conditional bezout further initialization checkpoint632 accepted;633 next
+
+Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+632 canonical keygen_init632_canonical accepted7/7,0/0,19 standard-only axiom results, evidence verified. Under explicit selected good-guard condition, original
+Bezout initialization executes u1←y and v1←x copies and v1[0] low-bit store
+after631. Exact copied/masked images, previous u0/v0 zero ranges, u0[0]=1,
+x/y inputs and a/b copies survive on one witness. Guard truth remains unknown;
+no unconditional reachability, entire initialization or Bezout success claimed.
+29.675s,maxRSS4464388KiB. ENTRY74673/predecessor631260 unchanged before/after.
+Ten local attempts retain three corrected failures, including008 -M6144 OOM
+from specializing symbolic length cells; abstract-state frame fixed it with
+unchanged limits. No mathematical counterexample/suppression/failed cache.
+Independent review NOT_RUN. Prior retained findings remain. Report/evidence
+KEYGEN_BEZOUT_INIT_MORE_217_632_REPORT.md and matching JSON; failure register
+KEYGEN_BEZOUT_INIT_MORE_217_FAILURES_632.json.
+Next633 compose original Bezout part4 and execute part5 upper-word zeroing
+and mlen selection; then full algorithm/actual return, root/certificate/
+codec/full B1. No mathematical NTT/root/table/CRT/centering/Montgomery/integer
+law or broad KeyGen/Sign/compiler/security/unconditional positivity/probability.
+Permanent195 bad bodyHeap/stepState UNUSED; Old110/measured/five do_sign
+unchanged. Foreign PROMPT_T14 untouched; one Lean job, -M6144 fixed, no push.
+Continue.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; conditional bezout initialization/zeroing checkpoint631 accepted;632 next
 
 Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -12305,3 +12331,31 @@ Job record (631): keygen_init631_016 — ACCEPTED_LOCAL audit, six interfaces/28
 Job record (631): canonical keygen_init631_canonical — ACCEPTED11/11,0/0,28 standard-only axiom results, 39.098s,maxRSS3732216KiB. Entry74673/predecessor630186 unchanged; next evidence/local commit then remaining initialization.
 
 Job record (631 checkpoint): evidence PASS260 bindings,11 accepted/28 standard-only results, six retained failures; entry74673/predecessor630186 unchanged. Exact own paths only; foreign work excluded, no push. Continue632 remaining initialization.
+
+Job record (632 start):631 committed ebba1329; no push. Continue original Bezout initialization under explicit good branch: u1/v1 copies and v1 low-bit update; runtime .build/bezoutinit632. Verify entry/predecessor before first proof job.
+
+Job record (632): fresh ENTRY74673 and predecessor631260 evidence bindings verified before first632 source/job. Next original u1/y and v1/x initialization copies.
+
+Job record (632): keygen_init632_001 — ACCEPTED_LOCAL BezoutInitMoreCopies217,7.836s,0/0: original u1←y and v1←x source copies execute for bounded lengths with exact output images and preserved inputs. Next original v1[0] low-bit update.
+
+Job record (632): keygen_init632_002 — RETAINED elaboration failure,7.130s: bitNot constructor arity, uint32 store conversion and after-heap unfolding needed explicit forms. Raw snapshot/log retained; repair without changing scope.
+
+Job record (632): keygen_init632_003 — ACCEPTED_LOCAL BezoutInitLowBit217,7.281s,0/0: original v1[0] &= ~(uint32_t)1 executes and exact masked-word image is exported, with outside-data frame. Next compose with the two copies.
+
+Job record (632): keygen_init632_004 — ACCEPTED_LOCAL BezoutInitMore217,2.672s,0/0: original u1/v1 copies and v1[0] low-bit update compose, with exact copied/masked word images and generic outside-data frame. Next selected good-branch instantiation.
+
+Job record (632): keygen_init632_005 — ACCEPTED_LOCAL BezoutInitMoreFrame217,2.369s,0/0: source u1/v1 pointer bindings and zeroing heap metadata frame. Next selected good-branch instantiation.
+
+Job record (632): keygen_init632_006 — RETAINED elaboration failure,3.476s: sequential outside-read tactics left ambiguous intermediate heap. Raw snapshot/log retained; name each preserved read explicitly.
+
+Job record (632): keygen_init632_007 — ACCEPTED_LOCAL SelectedBezoutInitMore217,3.575s,0/0: selected good branch executes two further copies and v1 low-bit store, preserving x/y/a/b, prior zero ranges and u0[0], and exporting u1/v1 images. Next expose lengths for later source statements.
+
+Job record (632): keygen_init632_008 — RETAINED -M6144 OOM,15.507s: direct selected-state length-cell reduction expanded symbolic CRT words. Raw snapshot/log retained; use abstract state/word frame rather than raising limit.
+
+Job record (632): keygen_init632_009 — ACCEPTED_LOCAL SelectedBezoutInitMoreCells217,10.194s,0/0: abstract-state length-cell frame after store/zero/copy/mask avoids selected-word reduction, under unchanged memory limit. Next audit/canonical replay.
+
+Job record (632): keygen_init632_010 — ACCEPTED_LOCAL audit, five interfaces/19 axiom results,0/0. Next canonical seven-module replay, pin recheck and evidence.
+
+Job record (632): canonical keygen_init632_canonical — ACCEPTED7/7,0/0,19 standard-only axiom results, 29.675s,maxRSS4464388KiB. Entry74673/predecessor631260 unchanged; next evidence/local commit then upper zeroing.
+
+Job record (632 checkpoint): evidence PASS162 bindings,7 accepted/19 standard-only results, three retained failures including OOM; entry74673/predecessor631260 unchanged. Exact own paths only; foreign work excluded, no push. Continue633 part4 composition and upper zeroing.
