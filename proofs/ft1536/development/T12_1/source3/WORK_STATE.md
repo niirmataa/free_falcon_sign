@@ -1,3 +1,29 @@
+# SEED9_R1 — ACTIVE; selected d5 changed-layout prefix checkpoint607 accepted;608 next
+
+Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+607 canonical keygen_fifth607_canonical accepted7/7,0/0,68 standard-only
+axiom results. Actual d5 call entry after complete d4, n32/hn16,
+MAX_BL_SMALL3 lengths12/22, original part0/part1 and overlapping3072-byte
+move with both384-word fs/gs images. Previous source gd@1054 and new
+output gd@1022 are explicitly distinct; no desired run/output premise.
+New roots fd670/gd1022/fs1374/gs1758/gm2142/igm2174/t12206.
+24.402s,maxRSS4355932KiB. ENTRY74673/predecessor606278 unchanged before/after.
+5 local Lean attempts accepted,0 failures; no resource/suppression/failed
+cache. Independent review NOT_RUN. Report/evidence KEYGEN_FIFTH_PREFIX_
+217_607_REPORT.md and matching JSON; failure register KEYGEN_FIFTH_PREFIX_
+217_FAILURES_607.json.
+Next608 d5 first-prime generator/copy/product/inverse loops (u0..11,
+n32,hn16,slen12,tlen22; product root gd@1022 rather than SecondStep's
+old gd@1054). Then d5 CRT/additional primes/return and d6..9/root/
+certificate/codec/full B1. No mathematical NTT/root/table/CRT/centering/
+Montgomery/integer law or broad KeyGen/Sign/compiler/security/unconditional
+positivity/probability. Permanent195 bad bodyHeap/stepState UNUSED;
+Old110/measured/five do_sign unchanged; foreign PROMPT_T14 untouched.
+One Lean process, -M6144 and fixed resource limits; local commits, no push.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; complete selected d4 return checkpoint606 accepted;607 next
 
 Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -10968,3 +10994,21 @@ Job record (606): keygen_fourth606_014 — ACCEPTED_LOCAL FourthStepReturnAudit2
 Job record (606): canonical keygen_fourth606_canonical — ACCEPTED17/17,0/0,116 standard-only results,93.417s,maxRSS5816740KiB. Entry74673/predecessor361 unchanged; next evidence/local commit, then607 d5 entry.
 
 Job record (606 checkpoint): evidence PASS278 bindings; entry74673/predecessor605361 unchanged,17 accepted/116 standard-only results. Exact own21 paths; foreign work excluded, no push. Continue607 actual d5 entry/layout/move.
+
+Job record (607 start):606 committed749397991786e6b729408156b4b2537d7e005cc2; no push. Continue d5 actual entry/lengths/layout/overlap move; preserve prior gd@1054 as source while new gd@1022 is destination. Runtime .build/fifth607; verify entry and predecessor before first proof job.
+
+Job record (607): fresh ENTRY74673/predecessor606278 evidence bindings verified before first607 source/job. Next actual d5 call frame and distinct previous/new gd layout; no sealed source changed.
+
+Job record (607): keygen_fifth607_001 — ACCEPTED_LOCAL FifthStepEntry217,3.672s,0/0: actual d5 call/Bind after the constructed d4 return and true guard, carrying both previous384-word arrays. Next actual n32/hn16 and source length12/22 table reads.
+
+Job record (607): keygen_fifth607_002 — ACCEPTED_LOCAL2/2,0/0: actual d5 n32/hn16 and pinned MAX_BL_SMALL3[5]=12/[6]=22 source reads. Next new output layout and overlapping move explicitly reading prior gd@1054, not new gd@1022.
+
+Job record (607): keygen_fifth607_003 — ACCEPTED_LOCAL2/2,0/0: original d5 layout and overlapping3072-byte move; input fd@670 and prior gd@1054 are used explicitly, while new gd@1022 differs. Output fs@1374 and gs@1758 each preserve384 words. Next actual caller-to-prefix composition.
+
+Job record (607): keygen_fifth607_004 — ACCEPTED_LOCAL FifthStepPrefix217,2.770s,0/0: actual d1..d4 source calls, fifth call Bind, original part0/part1 and both moved384-word images share one witness. Explicit gd_distinct proves previous gd@1054 differs from new gd@1022; move consumes previous input layout. Next audit/canonical replay then d5 computational body.
+
+Job record (607): keygen_fifth607_005 — ACCEPTED_LOCAL audit, six interfaces/68 standard-only axiom results,0/0. Next canonical7-module replay, pin/evidence checks and local checkpoint; then d5 body.
+
+Job record (607): canonical keygen_fifth607_canonical — ACCEPTED7/7,0/0,68 standard-only results,24.402s,maxRSS4355932KiB. Entry74673/predecessor278 unchanged; next evidence/local commit then608 d5 body.
+
+Job record (607 checkpoint): evidence PASS120 bindings; entry74673/predecessor606278 unchanged,7 accepted/68 standard-only results. Exact own11 paths; foreign work excluded, no push. Continue608 d5 body.
