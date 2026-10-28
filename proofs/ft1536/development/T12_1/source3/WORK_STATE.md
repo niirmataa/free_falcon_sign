@@ -1,3 +1,29 @@
+# SEED9_R1 — ACTIVE; conditional bezout upper zeroing checkpoint633 accepted;634 next
+
+Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+633 canonical keygen_upper633_canonical accepted9/9,0/0,22 standard-only axiom results, evidence verified. Under explicit selected good-guard condition, original
+part5 upper u/v memset statements and mlen=max(alen,blen) execute after prior
+initialization; x/y/a/b/u1/v1 images, lower zero ranges and u0[0]=1 survive.
+Generic source theorems give exact upper zero images and combine lower/upper
+ranges. Direct selected-image wrapper015 hit -M6144 OOM and is not claimed;
+selected guard truth, full part4 composition and remaining a/b zeroing open.
+40.297s,maxRSS4508408KiB. ENTRY74673/predecessor632162 unchanged before/after.
+Seventeen local attempts retain seven failures including015 partial OOM;
+no limits raised, no mathematical counterexample/suppression/failed cache.
+Independent review NOT_RUN. Prior retained findings remain. Report/evidence
+KEYGEN_BEZOUT_UPPER_217_633_REPORT.md and matching JSON; failure register
+KEYGEN_BEZOUT_UPPER_217_FAILURES_633.json.
+Next634 factor selected upper-image instantiation, compose original part4,
+execute remaining part5 a/b zeroing; then full algorithm/actual return and
+root/certificate/codec/full B1. No mathematical NTT/root/table/CRT/centering/
+Montgomery/integer law or broad KeyGen/Sign/compiler/security/unconditional
+positivity/probability. Permanent195 bad bodyHeap/stepState UNUSED;
+Old110/measured/five do_sign unchanged. Foreign PROMPT_T14 untouched; one
+Lean job, -M6144 fixed, no push. Continue.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; conditional bezout further initialization checkpoint632 accepted;633 next
 
 Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -12359,3 +12385,45 @@ Job record (632): keygen_init632_010 — ACCEPTED_LOCAL audit, five interfaces/1
 Job record (632): canonical keygen_init632_canonical — ACCEPTED7/7,0/0,19 standard-only axiom results, 29.675s,maxRSS4464388KiB. Entry74673/predecessor631260 unchanged; next evidence/local commit then upper zeroing.
 
 Job record (632 checkpoint): evidence PASS162 bindings,7 accepted/19 standard-only results, three retained failures including OOM; entry74673/predecessor631260 unchanged. Exact own paths only; foreign work excluded, no push. Continue633 part4 composition and upper zeroing.
+
+Job record (633 start):632 committed85c66ea5; no push. Compose original Bezout part4 and execute part5 upper-word zeroing/mlen selection under explicit good branch; runtime .build/bezoutupper633. Verify entry/predecessor before first proof job.
+
+Job record (633): fresh ENTRY74673 and predecessor632162 evidence bindings verified before first633 source/job. Next original upper u/v zeroing on symbolic bounded lengths.
+
+Job record (633): keygen_upper633_001 — ACCEPTED_LOCAL BezoutUpperZeroOps217,2.671s,0/0: exact C unsigned subtraction for bounded word lengths. Next original upper u/v memset source statements.
+
+Job record (633): keygen_upper633_002 — RETAINED elaboration failure,8.890s: pointer-capacity proofs used decide on variable lengths. Raw snapshot/log retained; discharge using bounded arithmetic.
+
+Job record (633): keygen_upper633_003 — RETAINED elaboration failure,8.633s: variable pointer addition record identity did not simplify automatically. Raw snapshot/log retained; expose record shape explicitly.
+
+Job record (633): keygen_upper633_004 — ACCEPTED_LOCAL BezoutUpperZero217,9.138s,0/0: original upper u/v memzero calls execute for bounded lengths (including empty ranges), preserve u0[0]=1. Next mlen and source image frames.
+
+Job record (633): keygen_upper633_005 — ACCEPTED_LOCAL diagnostic,2.572s,0/0: part5 is upper u/v memset, mlen conditional selection, then upper a/b memset. Next actual mlen branch.
+
+Job record (633): keygen_upper633_006 — RETAINED elaboration failure,8.685s: mlen branch abbreviation needed explicit unfolding in source composition. Raw snapshot/log retained; unfold select.
+
+Job record (633): keygen_upper633_007 — ACCEPTED_LOCAL BezoutMlen217,9.640s,0/0: original mlen conditional executes and sets max(alen,blen), with source-bound shape. Next compose with upper u/v zeroing.
+
+Job record (633): keygen_upper633_008 — ACCEPTED_LOCAL BezoutUpperSequence217,2.521s,0/0: original upper u/v zeroing and mlen=max(alen,blen) branch compose, with preserved outside-data frame. Next selected good-case binding.
+
+Job record (633): keygen_upper633_009 — ACCEPTED_LOCAL BezoutUpperCells217,2.571s,0/0: structural len/mlen declarations, u/v bindings and local/heap frames over abstract images. Next selected good-branch upper-zero and mlen instantiation.
+
+Job record (633): keygen_upper633_010 — RETAINED elaboration failure,2.871s: attempted heap equality across real copies rather than only size/writability equality. Raw snapshot/log retained; preserve actual memory changes and transport metadata only.
+
+Job record (633): keygen_upper633_011 — RETAINED elaboration failure,10.142s: metadata projection inferred heap equality across copies. Raw snapshot/log retained; specialize length-state projection before changing only size/writable.
+
+Job record (633): keygen_upper633_012 — ACCEPTED_LOCAL SelectedBezoutUpper217,4.082s,0/0: under selected good guard, actual upper u/v memset and source mlen=max execute after prior initialization, preserving input/work images and u0[0]. Next export upper zero-word images.
+
+Job record (633): keygen_upper633_013 — RETAINED elaboration failure,3.273s: Fp pointer index 0+nx was not definitionally nx. Raw snapshot/log retained; preserve zero-offset form.
+
+Job record (633): keygen_upper633_014 — ACCEPTED_LOCAL BezoutUpperZeroImages217,3.227s,0/0: exact upper u/v zero-word images, including empty upper ranges, follow from actual zero snapshots. Next export selected good-branch images.
+
+Job record (633): keygen_upper633_015 — RETAINED partial attempt: selected upper state and generic images accepted, direct selected-image wrapper hit -M6144 OOM due symbolic expansion. Raw source/log retained; keep generic images and combine ranges abstractly without increasing limits.
+
+Job record (633): keygen_upper633_016 — ACCEPTED_LOCAL BezoutUpperCombine217,14.915s,0/0: generic lower/upper zero ranges combine to full u0 tail and v0, for bounded lengths including empty cases. Selected direct image wrapper remains retained OOM; no claim it passed. Next audit/canonical replay.
+
+Job record (633): keygen_upper633_017 — ACCEPTED_LOCAL audit, six interfaces/22 axiom results,0/0. Next canonical nine-module replay, pin recheck and evidence.
+
+Job record (633): canonical keygen_upper633_canonical — ACCEPTED9/9,0/0,22 standard-only axiom results, 40.297s,maxRSS4508408KiB. Entry74673/predecessor632162 unchanged; next evidence/local commit then selected upper images.
+
+Job record (633 checkpoint): evidence PASS257 bindings,9 accepted/22 standard-only results, seven retained failures including selected-image OOM; entry74673/predecessor632162 unchanged. Exact own paths include diagnostic source; foreign work excluded, no push. Continue634 selected image factoring and remaining part5.
