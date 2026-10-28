@@ -1,3 +1,31 @@
+# SEED9_R1 — ACTIVE; conditional bezout initialization parts4/5 checkpoint634 accepted;635 next
+
+Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+634 canonical keygen_upper634_canonical accepted13/13,0/0,17 standard-only axiom results, evidence verified. Under explicit selected good-guard condition, grouped
+execution is re-associated into original Bezout parts3/4/5; all initialization
+including upper a/b zeroing executes and exact zero-padded a/b images are
+exported on one witness. A separate compact selected theorem gives u0[0]=1,
+all334 u0-tail and335 v0 words zero; it fixes retained633 wrapper OOM. These
+are separate existential exports; do not assert common witness without proof.
+Selected guard truth and later Bezout body/result remain open.
+116.865s,maxRSS4173736KiB. ENTRY74673/predecessor633257 unchanged before/after.
+Seventeen local attempts retain three failures including010 all-images OOM;
+compact abstract frames passed without increased limits. No mathematical
+counterexample/suppression/failed cache. Independent review NOT_RUN. Prior
+retained findings remain. Report/evidence KEYGEN_BEZOUT_INIT_COMPLETE_217_
+634_REPORT.md and matching JSON; failure register KEYGEN_BEZOUT_INIT_COMPLETE_
+217_FAILURES_634.json.
+Next635 execute original part6 special x=1/y=1 branches or normal continuation
+without assuming selected outcome, then remaining Bezout/root/certificate/
+codec/full B1. No mathematical NTT/root/table/CRT/centering/Montgomery/integer
+law or broad KeyGen/Sign/compiler/security/unconditional positivity/probability.
+Permanent195 bad bodyHeap/stepState UNUSED; Old110/measured/five do_sign
+unchanged. Foreign PROMPT_T14 untouched; one Lean job, -M6144 fixed; no push.
+Continue.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; conditional bezout upper zeroing checkpoint633 accepted;634 next
 
 Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -12427,3 +12455,45 @@ Job record (633): keygen_upper633_017 — ACCEPTED_LOCAL audit, six interfaces/2
 Job record (633): canonical keygen_upper633_canonical — ACCEPTED9/9,0/0,22 standard-only axiom results, 40.297s,maxRSS4508408KiB. Entry74673/predecessor632162 unchanged; next evidence/local commit then selected upper images.
 
 Job record (633 checkpoint): evidence PASS257 bindings,9 accepted/22 standard-only results, seven retained failures including selected-image OOM; entry74673/predecessor632162 unchanged. Exact own paths include diagnostic source; foreign work excluded, no push. Continue634 selected image factoring and remaining part5.
+
+Job record (634 start):633 committed96691214; no push. Factor selected upper zero-image instantiation, compose original part4, execute remaining part5 a/b zeroing; runtime .build/bezoutupper634. Verify entry/predecessor before first proof job.
+
+Job record (634): fresh ENTRY74673 and predecessor633257 evidence bindings verified before first634 source/job. Next factor upper zero-image combination over abstract state.
+
+Job record (634): keygen_upper634_001 — ACCEPTED_LOCAL BezoutUpperImagesFrame217,2.671s,0/0: abstract upper/lower zero ranges combine to full u0 tail and v0 after mlen assignment. Next selected witness with compact export.
+
+Job record (634): keygen_upper634_002 — ACCEPTED_LOCAL SelectedBezoutUpperCombined217,2.973s,0/0: factored selected good-branch exports complete u0 tail334 and v0 335 zero images with u0[0]=1; solves retained633 selected-wrapper OOM without limit change. Next upper a/b zeros.
+
+Job record (634): keygen_upper634_003 — RETAINED elaboration failure,11.947s: Nat.max_le is an iff rather than a two-argument function. Raw snapshot/log retained; use its reverse implication.
+
+Job record (634): keygen_upper634_004 — ACCEPTED_LOCAL BezoutABZero217,9.389s,0/0: original upper a/b memset statements execute for symbolic bounded mlen and preserve u0[0]=1. Next data frame and selected instantiation.
+
+Job record (634): keygen_upper634_005 — ACCEPTED_LOCAL BezoutABZeroFrame217,3.774s,0/0: abstract data frame across both upper a/b zero snapshots. Next selected good-case source instantiation.
+
+Job record (634): keygen_upper634_006 — ACCEPTED_LOCAL SelectedBezoutABZero217,3.272s,0/0: under selected good guard, original upper a/b memzero statements execute on same witness and preserve u0[0], prior zeros and x/y/a/b/u1/v1 images. Next export zero-word images.
+
+Job record (634): keygen_upper634_007 — ACCEPTED_LOCAL BezoutABZeroImages217,8.792s,0/0: exact upper a/b zero-word ranges from original memzero operations, including empty cases. Next generic pad/image composition.
+
+Job record (634): keygen_upper634_008 — ACCEPTED_LOCAL BezoutABZeroCombine217,4.728s,0/0: generic lower data plus zero upper range compose into exact padded image. Next abstract a/b frame and selected export.
+
+Job record (634): keygen_upper634_009 — ACCEPTED_LOCAL BezoutABImagesFrame217,4.927s,0/0: abstract a/b lower images and actual upper zeros combine into exact padded images. Next bind selected witness with full u/v and a/b frames.
+
+Job record (634): keygen_upper634_010 — RETAINED partial attempt: expanded selected all-images interface hit -M6144 OOM while compiling first module; raw snapshot/log retained. Restore earlier accepted source and export compact input separately, without raising limits.
+
+Job record (634): keygen_upper634_011 — ACCEPTED_LOCAL4/4,0/0: compact selected a/b-zero input and rebuilt generic zero-image frame compile with unchanged limits. Next factor compact selected padded images.
+
+Job record (634): keygen_upper634_012 — ACCEPTED_LOCAL SelectedBezoutABImages217,16.225s,0/0: compact abstract-frame specialization exports exact selected a/b images padded with zeros under good guard. Next re-associate grouped source into original part4.
+
+Job record (634): keygen_upper634_013 — RETAINED elaboration failure,14.271s: skip-identity equality orientation reversed in reassociation. Raw snapshot/log retained; use symmetric equality.
+
+Job record (634): keygen_upper634_014 — ACCEPTED_LOCAL BezoutPart4Compose217,22.439s,0/0: grouped executed fragments re-associate to original bezout part4 after a normal initial guard. Next compose actual part5.
+
+Job record (634): keygen_upper634_015 — ACCEPTED_LOCAL BezoutPart5Compose217,17.287s,0/0: grouped normal execution re-associates to original bezout part3, complete part4 and complete part5, with actual source statement order. Next selected padded-image export.
+
+Job record (634): keygen_upper634_016 — ACCEPTED_LOCAL SelectedBezoutInitComplete217,20.974s,0/0: selected good-case execution composes original Bezout parts3/4/5 on same witness and exports exact zero-padded a/b images. Guard truth and later Bezout body remain open. Next audit/canonical replay.
+
+Job record (634): keygen_upper634_017 — ACCEPTED_LOCAL audit, seven interfaces/17 axiom results,0/0. Next canonical thirteen-module replay, pin recheck and evidence.
+
+Job record (634): canonical keygen_upper634_canonical — ACCEPTED13/13,0/0,17 standard-only axiom results, 116.865s,maxRSS4173736KiB. Entry74673/predecessor633257 unchanged; next evidence/local commit then special-case branches.
+
+Job record (634 checkpoint): evidence PASS287 bindings,13 accepted/17 standard-only results, three retained failures including OOM; entry74673/predecessor633257 unchanged. Exact own paths only; foreign work excluded, no push. Continue635 special-case branches.

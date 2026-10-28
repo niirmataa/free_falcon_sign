@@ -1,0 +1,515 @@
+{
+  "utc": "2026-10-28T11:20:14.144831+00:00",
+  "status": "PROVED_KERNEL_SCOPED / NOT_REVIEWED",
+  "overall_owner_goal": "IN_PROGRESS; continue after this intermediate checkpoint",
+  "scope": "Under selected good-guard condition, original Bezout parts3/4/5 execute on one witness through initialization and upper a/b zeroing, exporting exact padded a/b images; a separate selected witness proves full u0-tail and v0 zero images.",
+  "entry_manifest": {
+    "path": ".build/steprx195/ENTRY_PINS.json",
+    "sha256": "00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964"
+  },
+  "entry_checked_count": 74673,
+  "entry_missing": 0,
+  "entry_changed": 0,
+  "entry_checks": [
+    {
+      "path": ".build/bezoutupper634/entry_before.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/bezoutupper634/entry_after.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/bezoutupper634/predecessor_before.log",
+      "sha256": "237918f307c48f16c5e601d3932911b2162445ece481a31c8c92116a80e9c736"
+    },
+    {
+      "path": ".build/bezoutupper634/predecessor_after.log",
+      "sha256": "237918f307c48f16c5e601d3932911b2162445ece481a31c8c92116a80e9c736"
+    },
+    {
+      "path": ".build/bezoutupper634/entry_reverify_634.py",
+      "sha256": "641ca0817a30f5d2eea7390621f2686c267a2014e725b574033d856bfbf61d09"
+    },
+    {
+      "path": ".build/bezoutupper634/predecessor_verify.py",
+      "sha256": "9e63ea3489eee49b2435a27890f93948c2c972eaa999372e6c8bc67398b94e9b"
+    },
+    {
+      "path": ".build/bezoutupper634/modules.json",
+      "sha256": "fa1e85b893a5870a75c52983e1b38250b0b316bbc15b3b7545fc8fe7c556b3e0"
+    }
+  ],
+  "predecessor_handoff": {
+    "path": "notes/run/KEYGEN_BEZOUT_UPPER_217_633.json",
+    "sha256": "3785879ea80f33d803d7c7a4ff98532831248e5f7d34ff984eba3bdd90d1ffc3"
+  },
+  "predecessor_bindings_verified": 257,
+  "job": "keygen_upper634_canonical",
+  "accepted": 13,
+  "receipts": {
+    "path": ".build/jobs/keygen_upper634_canonical/RECEIPTS.json",
+    "sha256": "298eb0157f2762aa3a7e7e201cd3b0a57d094acfb37c473769f9bdce53202413"
+  },
+  "inputs": {
+    "path": ".build/jobs/keygen_upper634_canonical/SOURCE_INPUTS.json",
+    "sha256": "7a74dfec4090b2f19d14dda63ef8f5c6d8e706bcd19ffdfef50cddeb7d384e60"
+  },
+  "runner": {
+    "path": ".build/jobs/keygen_upper634_canonical/RUNNER_SOURCE.py",
+    "sha256": "e8e9cf4ba5e744425464c0057a27d07f62ff82be352c479535425ff436c5b385"
+  },
+  "engine": {
+    "path": ".build/jobs/keygen_upper634_canonical/EXECUTION_SOURCE.py",
+    "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c"
+  },
+  "preflight": {
+    "path": ".build/jobs/keygen_upper634_canonical/PREFLIGHT.json",
+    "sha256": "38c97ec59c1ee1f5b3e3ff8d91fc80ca36e54fb304e239a65027bdb4be668440"
+  },
+  "modules": [
+    {
+      "module": "Source3.BezoutUpperImagesFrame217",
+      "source": {
+        "path": "formal/Source3/BezoutUpperImagesFrame217.lean",
+        "sha256": "a109e225d89bffd421459a9fc0ab67a0f6ed0885e0493af7c7a0d4d5d5fb146d"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_upper634_canonical/formal/Source3/BezoutUpperImagesFrame217.lean",
+        "sha256": "a109e225d89bffd421459a9fc0ab67a0f6ed0885e0493af7c7a0d4d5d5fb146d"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_upper634_canonical/lib/Source3/BezoutUpperImagesFrame217.olean",
+        "sha256": "7b879b59f27ea646bd656d6b5781a1cabda693226a875ac786800dde9ecddf0f"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_upper634_canonical/logs/Source3_BezoutUpperImagesFrame217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_upper634_canonical/logs/Source3_BezoutUpperImagesFrame217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 20.181,
+      "maxrss_kib": 3532740
+    },
+    {
+      "module": "Source3.SelectedBezoutUpperCombined217",
+      "source": {
+        "path": "formal/Source3/SelectedBezoutUpperCombined217.lean",
+        "sha256": "0f271694935aa9a9893a1e1738b35026cb770e5b44649d1e6306397f284d5f9b"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_upper634_canonical/formal/Source3/SelectedBezoutUpperCombined217.lean",
+        "sha256": "0f271694935aa9a9893a1e1738b35026cb770e5b44649d1e6306397f284d5f9b"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_upper634_canonical/lib/Source3/SelectedBezoutUpperCombined217.olean",
+        "sha256": "d4c38e95d5b0e794d499ed68854f75c30654e964ace801e33811bf54a446fcaf"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_upper634_canonical/logs/Source3_SelectedBezoutUpperCombined217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_upper634_canonical/logs/Source3_SelectedBezoutUpperCombined217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.873,
+      "maxrss_kib": 3539992
+    },
+    {
+      "module": "Source3.BezoutABZero217",
+      "source": {
+        "path": "formal/Source3/BezoutABZero217.lean",
+        "sha256": "4e4829e988b90a9e77d5e98f2622f40ccb92f9e22d8803f96b20909986f67294"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_upper634_canonical/formal/Source3/BezoutABZero217.lean",
+        "sha256": "4e4829e988b90a9e77d5e98f2622f40ccb92f9e22d8803f96b20909986f67294"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_upper634_canonical/lib/Source3/BezoutABZero217.olean",
+        "sha256": "6bdad707b3637a0c366834e4cae4018acb525b3f26daeefd8628827fb58e030e"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_upper634_canonical/logs/Source3_BezoutABZero217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_upper634_canonical/logs/Source3_BezoutABZero217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 11.094,
+      "maxrss_kib": 4173736
+    },
+    {
+      "module": "Source3.BezoutABZeroFrame217",
+      "source": {
+        "path": "formal/Source3/BezoutABZeroFrame217.lean",
+        "sha256": "eda594e5bcde9e526dc75fa944e95dc35894f7911c62e6b8a24250c8c25349fd"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_upper634_canonical/formal/Source3/BezoutABZeroFrame217.lean",
+        "sha256": "eda594e5bcde9e526dc75fa944e95dc35894f7911c62e6b8a24250c8c25349fd"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_upper634_canonical/lib/Source3/BezoutABZeroFrame217.olean",
+        "sha256": "de8f3461d6618f21e137c0630b879c532c75dde7cc8a5ea32f11038d9e722873"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_upper634_canonical/logs/Source3_BezoutABZeroFrame217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_upper634_canonical/logs/Source3_BezoutABZeroFrame217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 4.638,
+      "maxrss_kib": 4173736
+    },
+    {
+      "module": "Source3.SelectedBezoutABZero217",
+      "source": {
+        "path": "formal/Source3/SelectedBezoutABZero217.lean",
+        "sha256": "3f4b21aab991c53438952fbbea1fdcd0523e4edd3b11af894cdbf9804f0a7a34"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_upper634_canonical/formal/Source3/SelectedBezoutABZero217.lean",
+        "sha256": "3f4b21aab991c53438952fbbea1fdcd0523e4edd3b11af894cdbf9804f0a7a34"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_upper634_canonical/lib/Source3/SelectedBezoutABZero217.olean",
+        "sha256": "4fe4698b3a7a25538b678e4817cf385e8f2b85bbf2465faa94b794fe397a209e"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_upper634_canonical/logs/Source3_SelectedBezoutABZero217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_upper634_canonical/logs/Source3_SelectedBezoutABZero217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 6.291,
+      "maxrss_kib": 4173736
+    },
+    {
+      "module": "Source3.BezoutABZeroImages217",
+      "source": {
+        "path": "formal/Source3/BezoutABZeroImages217.lean",
+        "sha256": "12726ff33cb05faf58a9c32ba64372ba7e13cac2c8d3f4345674274c04fde04f"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_upper634_canonical/formal/Source3/BezoutABZeroImages217.lean",
+        "sha256": "12726ff33cb05faf58a9c32ba64372ba7e13cac2c8d3f4345674274c04fde04f"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_upper634_canonical/lib/Source3/BezoutABZeroImages217.olean",
+        "sha256": "36b334c21e66d286d65a51ab060aa616191a1af54bcad6e6bec7216511ae506b"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_upper634_canonical/logs/Source3_BezoutABZeroImages217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_upper634_canonical/logs/Source3_BezoutABZeroImages217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 5.879,
+      "maxrss_kib": 4173736
+    },
+    {
+      "module": "Source3.BezoutABZeroCombine217",
+      "source": {
+        "path": "formal/Source3/BezoutABZeroCombine217.lean",
+        "sha256": "3d158374ada5468b2034badd8de62878324fe0dcaecd1c294776bc6f5e9b6dca"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_upper634_canonical/formal/Source3/BezoutABZeroCombine217.lean",
+        "sha256": "3d158374ada5468b2034badd8de62878324fe0dcaecd1c294776bc6f5e9b6dca"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_upper634_canonical/lib/Source3/BezoutABZeroCombine217.olean",
+        "sha256": "b0747bbcbb8d874fd27e7ae53023df494f25f4a95919635257fe87d1f7c29639"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_upper634_canonical/logs/Source3_BezoutABZeroCombine217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_upper634_canonical/logs/Source3_BezoutABZeroCombine217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 21.315,
+      "maxrss_kib": 4173736
+    },
+    {
+      "module": "Source3.BezoutABImagesFrame217",
+      "source": {
+        "path": "formal/Source3/BezoutABImagesFrame217.lean",
+        "sha256": "653f16b896715806f22dea2f9ad395262a75babf1857b7d6f4bfa3abcbe9969f"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_upper634_canonical/formal/Source3/BezoutABImagesFrame217.lean",
+        "sha256": "653f16b896715806f22dea2f9ad395262a75babf1857b7d6f4bfa3abcbe9969f"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_upper634_canonical/lib/Source3/BezoutABImagesFrame217.olean",
+        "sha256": "0ca993f229b79aff04214ee6ff28b73111823bda50bcc3509ef18631c3c128ea"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_upper634_canonical/logs/Source3_BezoutABImagesFrame217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_upper634_canonical/logs/Source3_BezoutABImagesFrame217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 20.302,
+      "maxrss_kib": 4173736
+    },
+    {
+      "module": "Source3.SelectedBezoutABImages217",
+      "source": {
+        "path": "formal/Source3/SelectedBezoutABImages217.lean",
+        "sha256": "059d71d11da24519a7c94877471cfa53338fe181a9cfd3bdc1d34a0fed5e6a87"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_upper634_canonical/formal/Source3/SelectedBezoutABImages217.lean",
+        "sha256": "059d71d11da24519a7c94877471cfa53338fe181a9cfd3bdc1d34a0fed5e6a87"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_upper634_canonical/lib/Source3/SelectedBezoutABImages217.olean",
+        "sha256": "a77cd3d7ad0aaca0c4a91a70cac59c565dabcde0fbd6758c33bc122396ef9147"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_upper634_canonical/logs/Source3_SelectedBezoutABImages217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_upper634_canonical/logs/Source3_SelectedBezoutABImages217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.874,
+      "maxrss_kib": 4173736
+    },
+    {
+      "module": "Source3.BezoutPart4Compose217",
+      "source": {
+        "path": "formal/Source3/BezoutPart4Compose217.lean",
+        "sha256": "3da7ca5851162e123c87185210502a4309896dc51af6a715ffe16c02cf1c460e"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_upper634_canonical/formal/Source3/BezoutPart4Compose217.lean",
+        "sha256": "3da7ca5851162e123c87185210502a4309896dc51af6a715ffe16c02cf1c460e"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_upper634_canonical/lib/Source3/BezoutPart4Compose217.olean",
+        "sha256": "c9b692799dcce2cdfecc0831d0ea3cb8f5d2f3e9a45e8607e072b67b9dfd2222"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_upper634_canonical/logs/Source3_BezoutPart4Compose217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_upper634_canonical/logs/Source3_BezoutPart4Compose217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 8.738,
+      "maxrss_kib": 4173736
+    },
+    {
+      "module": "Source3.BezoutPart5Compose217",
+      "source": {
+        "path": "formal/Source3/BezoutPart5Compose217.lean",
+        "sha256": "5a66bdd32d5ecfd3bebccb743e376a0e279e7a760463530a2ce0ee1bd4a819ef"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_upper634_canonical/formal/Source3/BezoutPart5Compose217.lean",
+        "sha256": "5a66bdd32d5ecfd3bebccb743e376a0e279e7a760463530a2ce0ee1bd4a819ef"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_upper634_canonical/lib/Source3/BezoutPart5Compose217.olean",
+        "sha256": "e04dafad19d2aeafdf17f1bee57ff65816245dfe72b4827cb9d735d89e0cb688"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_upper634_canonical/logs/Source3_BezoutPart5Compose217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_upper634_canonical/logs/Source3_BezoutPart5Compose217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 4.229,
+      "maxrss_kib": 4173736
+    },
+    {
+      "module": "Source3.SelectedBezoutInitComplete217",
+      "source": {
+        "path": "formal/Source3/SelectedBezoutInitComplete217.lean",
+        "sha256": "cc7b8f939362c43ea158c00a59a117a9ec3434422690ca192458c364aa63360b"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_upper634_canonical/formal/Source3/SelectedBezoutInitComplete217.lean",
+        "sha256": "cc7b8f939362c43ea158c00a59a117a9ec3434422690ca192458c364aa63360b"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_upper634_canonical/lib/Source3/SelectedBezoutInitComplete217.olean",
+        "sha256": "3bc6ddba04385ddea9eec7a3acb16da5951c748867e2515352f004606a3323d1"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_upper634_canonical/logs/Source3_SelectedBezoutInitComplete217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_upper634_canonical/logs/Source3_SelectedBezoutInitComplete217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.427,
+      "maxrss_kib": 4173736
+    },
+    {
+      "module": "Source3.SelectedBezoutInitCompleteAudit217",
+      "source": {
+        "path": "formal/Source3/SelectedBezoutInitCompleteAudit217.lean",
+        "sha256": "0cb1ce01bce8630376aacaf2c7ea890def7553637d786736e036e01940fcb0ad"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_upper634_canonical/formal/Source3/SelectedBezoutInitCompleteAudit217.lean",
+        "sha256": "0cb1ce01bce8630376aacaf2c7ea890def7553637d786736e036e01940fcb0ad"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_upper634_canonical/lib/Source3/SelectedBezoutInitCompleteAudit217.olean",
+        "sha256": "b7a96d44a9ebf01a51217fc7de857eda300aca39bb5911948b3ac8bff87e2b05"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_upper634_canonical/logs/Source3_SelectedBezoutInitCompleteAudit217.stdout",
+        "sha256": "2d066079fb725cee01d1f7455da8a408d30e5d924984951256cf565e6be98c04"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_upper634_canonical/logs/Source3_SelectedBezoutInitCompleteAudit217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.024,
+      "maxrss_kib": 4173736
+    }
+  ],
+  "axioms": {
+    "FT1536.Source3.BezoutUpperImagesFrame217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.SelectedBezoutUpperCombined217.selected": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutABZero217.shape": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutABZero217.count_eval": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutABZero217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutABZeroFrame217.keep_data": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.SelectedBezoutABZero217.selected": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutABZeroImages217.a_high": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutABZeroImages217.b_high": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutABZeroCombine217.combine": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutABImagesFrame217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.SelectedBezoutABImages217.selected": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutPart4Compose217.split": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutPart4Compose217.skip_identity": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutPart4Compose217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutPart5Compose217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.SelectedBezoutInitComplete217.selected": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "failures_and_workshop": {
+    "path": "notes/run/KEYGEN_BEZOUT_INIT_COMPLETE_217_FAILURES_634.json",
+    "sha256": "5b361b4ce33442b874114b42771d184a35545d28ae38eb349940160faecca33c"
+  },
+  "report": {
+    "path": "notes/run/KEYGEN_BEZOUT_INIT_COMPLETE_217_634_REPORT.md",
+    "sha256": "5dcbd9ea708feda1910cd55055e3ece83a22e7e8e6441949711797cc9cce6b5f"
+  },
+  "evidence_generator": {
+    "path": ".build/evidence_v1.py",
+    "sha256": "1bc738f64ab2604686ab4e8da3ab0cc8eb3ef786f9486ab6b1d94cc70d513b3e"
+  },
+  "evidence_configuration": {
+    "path": ".build/bezoutupper634/evidence_config.json",
+    "sha256": "301a2b8c360b4575a812f1b03b5225ad33811004c684502364f2fe1fc1b34e17"
+  },
+  "source_proof_markers": [],
+  "linter_suppressions": [],
+  "limits_unchanged": true,
+  "independent_review": "NOT_RUN",
+  "push": false,
+  "next_unused_suffix": 635,
+  "next_obligations": [
+    "Execute original Bezout part6 special x=1/y=1 branches or normal continuation, without assuming selected values",
+    "Continue full Bezout algorithm and derive selected result or guard value, then root/certificate/codec/full B1"
+  ],
+  "not_claimed": [
+    "One common witness for the separately exported full u/v and padded a/b theorems without additional composition",
+    "Selected guard truth, Bezout special-case outcome, complete Bezout result or root success",
+    "Mathematical NTT/root/table/CRT/centering/Montgomery/integer laws",
+    "Full KeyGen/Sign/compiler/security/unconditional positivity/probability",
+    "Independent review"
+  ]
+}
