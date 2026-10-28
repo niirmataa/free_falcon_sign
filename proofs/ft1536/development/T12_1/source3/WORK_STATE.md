@@ -1,3 +1,30 @@
+# SEED9_R1 — ACTIVE; selected bezout exact-length calls checkpoint627 accepted;628 next
+
+Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+627 canonical keygen_exact627_canonical accepted10/10,0/0,25 standard-only axiom results, evidence verified. Actual zint_exact_length body executes its descending
+scan for bounded word images and returns highest nonzero word index (or zero).
+Both original bezout part2 calls execute on selected CRT fp/gp images;
+xlen/ylen equal the corresponding symbolic highest-index specifications and
+both335-word input images survive on one witness. No desired run/output or
+positive length premise; numeric lengths and initial oddness guard are open.
+34.241s,maxRSS4418020KiB. ENTRY74673/predecessor626142 unchanged before/after.
+Twenty-two local attempts retain eleven elaboration/lint/heartbeat failures,
+corrected without changing limits. In particular concrete composition016 and
+partially specialized frame018 timed out; generic state frame/specialization
+passed. No new mathematical counterexample/memory failure/suppression/failed
+cache. Independent review NOT_RUN. Prior retained findings remain. Report/
+evidence KEYGEN_BEZOUT_LENGTHS_217_627_REPORT.md and matching JSON; failure
+register KEYGEN_BEZOUT_LENGTHS_217_FAILURES_627.json.
+Next628 actual bezout initial zero-length/oddness guard, then full bezout
+source and actual return, root/certificate/codec/full B1. No mathematical
+NTT/root/table/CRT/centering/Montgomery/integer law or broad KeyGen/Sign/
+compiler/security/unconditional positivity/probability. Permanent195 bad
+bodyHeap/stepState UNUSED; Old110/measured/five do_sign unchanged. Foreign
+PROMPT_T14 untouched; one Lean job, -M6144 fixed; no push. Continue.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; selected bezout entry/prefix checkpoint626 accepted;627 next
 
 Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -11997,3 +12024,55 @@ Job record (626): keygen_bezout626_009 — ACCEPTED_LOCAL audit, four interfaces
 Job record (626): canonical keygen_bezout626_canonical — ACCEPTED5/5,0/0,15 standard-only axiom results, 30.26s,maxRSS4843780KiB. Entry74673/predecessor625128 unchanged; next evidence/local commit then exact lengths.
 
 Job record (626 checkpoint): evidence PASS142 bindings,5 accepted/15 standard-only results, three retained failures; entry74673/predecessor625128 unchanged. Exact own paths include diagnostic source; foreign work excluded, no push. Continue627 exact-length calls.
+
+Job record (627 start):626 committed8acadcd9; no push. Execute actual zint_exact_length calls on reconstructed x/y and initial guards; runtime .build/exact627. Verify entry/predecessor before first proof job.
+
+Job record (627): fresh ENTRY74673 and predecessor626142 evidence bindings verified before first627 source/job. Next source-bound exact-length loop over arbitrary reconstructed words.
+
+Job record (627): keygen_exact627_001 — ACCEPTED_LOCAL diagnostic,13.904s,0/0: pinned exact-length body is a descending word scan; bezout part2 calls it for x and y, part3 tests lengths/oddness. Next bind source shape and structural length specification.
+
+Job record (627): keygen_exact627_002 — RETAINED elaboration failure,5.185s, exit1: highest-word definition lacked Decidable instance, with consequent generated error placeholders and linter diagnostics; no source proof markers or mathematical counterexample. Raw snapshot/log retained; supply classical decidability and retry.
+
+Job record (627): keygen_exact627_003 — RETAINED warning-as-error failure,4.626s: two unnecessary tactic-style diagnostics after decidability repair; no mathematical counterexample. Raw snapshot/log retained; simplify proof style without suppressing lint.
+
+Job record (627): keygen_exact627_004 — RETAINED warning-as-error failure,7.590s: deprecated if_false name in simplification; no mathematical counterexample. Raw snapshot/log retained; use ite_false.
+
+Job record (627): keygen_exact627_005 — ACCEPTED_LOCAL ExactLengthProgram217,6.332s,0/0: exact parsed descending-scan shape and bounded highest/nonzero/suffix properties; still no source execution claimed. Next source-word counter arithmetic.
+
+Job record (627): keygen_exact627_006 — RETAINED elaboration failure,2.720s: nonzero predicate lacks exported Decidable instance in theorem type; no mathematical counterexample. Add explicit instance and rebuild affected modules.
+
+Job record (627): keygen_exact627_007 — ACCEPTED_LOCAL2/2,0/0: source scan shape/highest-word specification and exact C unsigned decrement/comparison primitives. Next construct actual loop execution by structural induction.
+
+Job record (627): keygen_exact627_008 — RETAINED elaboration failure,8.945s: pointer-index integer coercion, boolean wrapper and source-scope unfolding need explicit normalization; no mathematical counterexample. Raw snapshot/log retained; repair coercion and unfold explicitly.
+
+Job record (627): keygen_exact627_009 — RETAINED elaboration failure,7.389s: only remaining goal is structural record identity for pointer addition. Raw snapshot/log retained; make record shape explicit and retry.
+
+Job record (627): keygen_exact627_010 — RETAINED parse failure,4.332s: tactic block punctuation in pointer proof malformed; raw snapshot/log retained. Correct syntax and retry.
+
+Job record (627): keygen_exact627_011 — ACCEPTED_LOCAL ExactLengthLoop217,3.573s,0/0: actual parsed descending scan executes by structural induction for arbitrary bounded word images, preserves heap and returns highest nonzero index or zero-path state. Next whole callee and calls.
+
+Job record (627): keygen_exact627_012 — ACCEPTED_LOCAL ExactLengthSource217,2.620s,0/0: entire original exact-length callee executes for arbitrary bounded word images and returns the proven highest nonzero index, preserving heap. Next bind and execute both original calls.
+
+Job record (627): keygen_exact627_013 — RETAINED elaboration failure,4.726s: state definitions depend on noncomputable highest and same-width return conversion needed explicit specialization. Raw source/log retained; mark definitions and prove conversion.
+
+Job record (627): keygen_exact627_014 — RETAINED elaboration failure,13.398s: same-width conversion lemma needed explicit value and call abbreviation unfolding. Raw snapshot/log retained; specialize and retry.
+
+Job record (627): keygen_exact627_015 — ACCEPTED_LOCAL ExactLengthCalls217,11.093s,0/0: actual bezout part2 executes both source-bound exact-length calls on arbitrary335-word images and writes exact highest-word lengths. Next instantiate at selected CRT inputs.
+
+Job record (627): keygen_exact627_016 — RETAINED heartbeat timeout,143.734s, exit1: selected composition unfolded large reconstructed-word/entry terms during one theorem; no mathematical counterexample. Raw snapshot/log retained; abstract input images and factor caller-cell proofs, keep limits unchanged.
+
+Job record (627): keygen_exact627_017 — ACCEPTED_LOCAL BezoutPointerCells217,3.426s,0/0: structural proofs of len335 and uninitialized xlen/ylen at selected bezout pointer setup, avoiding nested reduction. Next generic execution frame.
+
+Job record (627): keygen_exact627_018 — RETAINED heartbeat timeout,156.775s: combined concrete pointer-frame theorem still unfolded nested selected state. Preserve raw snapshot/log; factor fully generic state frame and specialize only after proof, without limit change.
+
+Job record (627): keygen_exact627_019 — ACCEPTED_LOCAL ExactLengthFrame217,3.727s,0/0: generic two-call execution, exact length cells and preserved images derived without unfolding selected state. Next specialize through bounded pointer-cell lemmas.
+
+Job record (627): keygen_exact627_020 — ACCEPTED_LOCAL BezoutLengthFrame217,3.373s,0/0: generic exact-length frame specialized to original bezout pointer setup with unchanged limits. Next attach selected reconstructed images.
+
+Job record (627): keygen_exact627_021 — ACCEPTED_LOCAL SelectedBezoutLengths217,4.880s,0/0: actual selected CRT images pass original two exact-length calls; xlen/ylen equal highest-nonzero word indices and images survive on same witness. No bezout guard/result claimed. Next audit/canonical replay.
+
+Job record (627): keygen_exact627_022 — ACCEPTED_LOCAL audit, six interfaces/25 axiom results,0/0. Next canonical ten-module replay, pin recheck and evidence.
+
+Job record (627): canonical keygen_exact627_canonical — ACCEPTED10/10,0/0,25 standard-only axiom results, 34.241s,maxRSS4418020KiB. Entry74673/predecessor626142 unchanged; next evidence/local commit then guard.
+
+Job record (627 checkpoint): evidence PASS307 bindings,10 accepted/25 standard-only results, eleven retained failures; entry74673/predecessor626142 unchanged. Exact own paths include diagnostic source; foreign work excluded, no push. Continue628 actual bezout initial guards.
