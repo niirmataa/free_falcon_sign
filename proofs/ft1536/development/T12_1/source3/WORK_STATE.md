@@ -1,3 +1,29 @@
+# SEED9_R1 — ACTIVE; conditional Bezout loop guard source line checkpoint637 accepted;638 next
+
+Owner resumed 2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+637 canonical keygen_loop637_canonical accepted 6/6, clean, 11 standard-only
+axiom results, 183 evidence bindings verified. Under explicit good-guard and
+nonunit conditions, one selected witness executes parts3–6, a standalone r
+declaration, and evaluates the expression parsed from pinned source line4022
+as symbolic (alen>=3 || blen>=3). Pinned line is kernel-bound to expression;
+full part7 projection, actual loop/branch execution and termination remain OPEN.
+89.225s, maxRSS3460864KiB. ENTRY74673/predecessor63699 unchanged before/after.
+Twelve completed attempts retain six failures: two full part7 projection OOMs
+and four elaboration failures. Attempt008 interrupted by turn reset with no
+receipt, snapshot/preflight/empty logs pinned separately. No limits raised or
+counterexample. Independent review NOT_RUN. Prior retained findings remain.
+Report/evidence KEYGEN_BEZOUT_LOOP_LINE_217_637_REPORT.md and matching JSON;
+failure register KEYGEN_BEZOUT_LOOP_LINE_217_FAILURES_637.json. Next638 find
+structural parser decomposition linking part7 to its source guard, then full
+Bezout/root/certificate/codec/full B1. No mathematical NTT/root/table/CRT/
+centering/Montgomery/integer law or broad KeyGen/Sign/compiler/security/
+unconditional positivity/probability. Permanent195 bad bodyHeap/stepState
+UNUSED; Old110/measured/five do_sign unchanged. Foreign PROMPT_T14 untouched;
+one Lean job, -M6144 fixed; no push. Continue.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; conditional Bezout nonunit continuation checkpoint636 accepted;637 next
 
 Owner resumed 2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -12571,3 +12597,20 @@ Job record (635): keygen_unit635_001 — ACCEPTED_LOCAL diagnostic,23.301s,0/0: 
 - 636 / job `keygen_normal636_004`: FAILED, 44.716 s; retained elaboration failure: generic uint32 bindValue requires normalization of its conversion, not rfl. No counterexample; inspect existing scalar slot lemma and repair without changing limits.
 - 636 / job `keygen_normal636_005`: ACCEPTED, clean log, 39.857 s, `Source3.BezoutNormalNinvCells217`; exact x0i/y0i cell values and unchanged heap/array bindings after both calls. Failed 004 retained; existing uint32 slot lemma repairs it. Receipt retained.
 - 636 / job `keygen_normal636_canonical`: ACCEPTED 5/5, clean logs, 196.648 s; axiom audit pending evidence verification. ENTRY and predecessor after-checks passed. Receipt retained.
+
+- 637 started: continue from local checkpoint a0a1c1d4; verify ENTRY and 636 evidence before any 637 source/job. No push.
+- 637 preflight: ENTRY 74673/74673 unchanged; all99 636 evidence bindings verified before source or Lean job. Logs in `.build/bezoutloop637/`.
+- 637 / job `keygen_loop637_001`: ACCEPTED, clean log, 41.364 s, `Source3.BezoutLoopInspect217`; retained diagnostic inspects actual parsed part7 before proof. Receipt retained.
+- 637 / job `keygen_loop637_002`: FAILED, 76.244 s, retained source/log/receipt; `std::bad_alloc` under unchanged -M6144 while combining full parsed part7 shape with guard proof. Treat as proof-size/resource failure, not mathematical counterexample; factor small guard from source-shape binding.
+- 637 / job `keygen_loop637_003`: FAILED, 43.904 s, retained elaboration errors: Boolean result was not simplified after case splits. Small guard factored successfully past prior memory issue; repair simplification.
+- 637 / job `keygen_loop637_004`: FAILED, 39.118 s, retained elaboration error: simplification did not normalize integer-to-Boolean results for false-branch OR. Factor generic Boolean OR as in earlier short-circuit AND proof.
+- 637 / job `keygen_loop637_005`: ACCEPTED, clean log, 46.114 s, `Source3.BezoutLoopGuard217`; generic exact first guard comparison and C short-circuit OR, source binding pending. Retained failures 002-004 remain.
+- 637 / job `keygen_loop637_006`: FAILED, 218.591 s, retained source/log/receipt; `std::bad_alloc` at unchanged -M6144 even with small projections of full parsed part7. No counterexample or source-guard proof; avoid retrying full expansion and inspect existing pinned parser decomposition for a structural route.
+- 637 / job `keygen_loop637_007`: FAILED, 48.701 s; retained elaboration mismatch when simplifying the loop-local declaration frame. No counterexample; factor an explicit locals-preservation lemma.
+- 637 / job `keygen_loop637_008`: INTERRUPTED by turn reset; no running Lean process or final receipt, empty logs; preflight, source snapshot and partial job directory retained. Not a pass or mathematical failure. Retry with fresh job ID.
+- 637 / job `keygen_loop637_009`: FAILED, 44.500 s; retained elaboration issue: `r`.toList and literal character-list normalization in declaration frame, plus unused simp argument. No counterexample.
+- 637 / job `keygen_loop637_010`: ACCEPTED, clean log, 25.405 s, `Source3.BezoutLoopCells217`; exact alen/blen survive normal calls and an explicit local r declaration. This standalone declaration has not been kernel-bound to part7. Interrupted 008 and failed 007/009 retained.
+- 637 / job `keygen_loop637_011`: ACCEPTED, clean log, 27.851 s, `Source3.SelectedBezoutLoopGuard217`; under selected good/nonunit conditions, parts3-6 execute, then standalone r declaration and equivalent explicit guard evaluate on the same witness. Exact kernel linkage to parsed part7 and its execution remain OPEN after 002/006 OOM.
+- 637 / job `keygen_loop637_012`: ACCEPTED, clean log, 27.210 s, `Source3.BezoutLoopGuardLine217`; kernel parses pinned original line 4022 and proves it equals the explicit guard evaluated in 011. This is a source-line binding, not yet a proof that the full parsed part7 projects to it or that part7 executes.
+- 637 / job `keygen_loop637_013`: ACCEPTED, clean log, 23.601 s, `Source3.SelectedBezoutLoopLine217`; under selected good/nonunit conditions and after standalone r declaration, the expression parsed from pinned line4022 evaluates with exact symbolic length test on the same witness. Full part7 linkage/execution remains open.
+- 637 / job `keygen_loop637_canonical`: ACCEPTED 6/6, clean logs, 89.225 s; axiom audit pending evidence verification. ENTRY and predecessor after-checks passed. Receipt retained.
