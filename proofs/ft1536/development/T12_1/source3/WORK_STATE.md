@@ -1,3 +1,50 @@
+# SEED9_R1 — ACTIVE; complete selected d3 return checkpoint603 accepted;604 next
+
+Owner resumed2026-10-28; continue source3 in the same session, no push,
+subagents, reviewers, relay or migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+603 canonical keygen_body603_canonical accepted10/10,0/0,22 standard-only
+axiom results. Actual first/second/third source executions, full d3 body,
+call/enclosing return, twelve product columns and flat fd/gd384 images on
+one output, real d3→4 increment and true next guard. Generic context has
+an explicit REV10 binding, derived for the actual selected pinned caller.
+ThreeKeep exports preservation of columns0..2 with the same u3..5 loop
+witness and images; sealed602 source unchanged. Executed-word scope only.
+55.675s,maxRSS5617552KiB. ENTRY74673 and predecessor602 9993 hash checks
+(4973 reused source/artifact pairs) unchanged before/after.12 local attempts
+retain3 elaboration/parser failures; no new resource/suppression/failed
+cache. The caller-bound source steps d4..9 remain open; no broader
+mathematical CRT/NTT/root/table/centering/Montgomery/integer law claimed.
+Report/evidence KEYGEN_THIRD_RETURN_216_603_REPORT.md and matching JSON;
+retained failures KEYGEN_THIRD_RETURN_216_FAILURES_603.json.
+Next604 actual d4 entry/layout/move (n64,slen6,tlen12), then d4 body,
+later d5..9/root/certificate/codec/full B1. No independent review, broad
+KeyGen/Sign/compiler/security or unconditional positivity/probability.
+Current model gpt-6.1-terra; one author, one job; -M6144 unchanged,
+reused602 maxRecDepth262144 where needed. Old110/measured/five do_sign
+unchanged. Preserve foreign PROMPT_T14; local commits only, no push.
+
+Previous snapshots and job records follow unchanged.
+
+# SEED9_R1 — ACTIVE 2026-10-28; window 603: complete actual d=3 body and return
+
+Owner resumed: inspect repository and continue. Current model gpt-6.1-terra;
+one proof author/session, no subagents/reviewers/relay/migration/push.
+Latest602 commit db28f2e0 supplies the actual d3 CRT transition and
+additional-prime loop, but its exported LoopKeep excludes every product
+column, so a stronger same-output keep is needed to carry columns0..2
+through the u3..5 loop. Next construct that keep, compose parts2/3/4,
+export the complete d3 call/return and audit; full B1 remains open.
+Entry manifest00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964
+verified74673/74673, and602 canonical9/9 plus dependency artifacts
+were verified by .build/body603/verify_602.py:9993 hash checks,4973 reused
+modules, no missing/changed. No source touched prior to successful checks.
+Use -DwarningAsError=true -j1 -M6144, preserved limits and inner bwrap
+without network; one Lean job at a time; WORK_STATE after every job.
+Foreign THRESHOLD_SPIKE_001 prompt untouched; do not claim mathematical
+CRT/NTT/Montgomery laws, broad KeyGen/Sign/security or independent review.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — PAUSED BY OWNER after accepted597; resume598 tomorrow
 
 Owner decision2026-10-26: finish597 and stop; resume tomorrow on explicit
@@ -10718,3 +10765,31 @@ Resume preparation after owner-requested597 closeout (not a598 start):
 Job record (597): canonical keygen_crtwalk214_597 — ACCEPTED9/9,0/0,25 standard-only results,33.055s,maxRSS4005416KiB. Entry74673/predecessor190 unchanged; next evidence/exact local commit and owner-requested pause, no598.
 
 Job record (597 closeout): evidence PASS133 bindings; entry74673/predecessor190 unchanged,9 accepted/25 standard-only results. Exact own13 paths, foreign changes excluded. Owner pause is part of this commit; no598 source/job, no live own proof job, no push. Resume from598 only after owner continuation.
+
+Job record (603): keygen_body603_001 — ACCEPTED_LOCAL ThirdStepCrtKeep216,14.848s,0/0: original part3 fs/gs CRT calls and gm scratch preserve any fd/gd product column. Next strengthen the u3..5 loop export for earlier columns at the same witness.
+
+Job record (603): keygen_body603_002 — ACCEPTED_LOCAL ThirdStepExtraFrame216,2.920s,0/0: a single ThreeKeep contract implies preservation of each fd/gd column0..2 through all three extra iterations. Next build that contract on the same execution/image witness (do not combine separate existential runs).
+
+Job record (603): keygen_body603_003 — ACCEPTED_LOCAL ThirdStepExtraStrong216,24.540s,0/0: re-executes the original u3..5 loop and exports ThreeKeep together with all six new product images on the same output witness; no modification to sealed602 sources. Inherits the602 maxRecDepth262144 source setting; -M6144 and runtime limits unchanged. Next compose actual part3+part4, preserving first-loop columns.
+
+Job record (603): keygen_body603_004 — ACCEPTED_LOCAL ThirdStepCrtExtra216,6.879s,0/0: actual part3→part4 source composition with both reassembled inputs, columns3..5 and a same-output transport for earlier product columns0..2. Next compose the original first-prime loop and export all six columns.
+
+Job record (603): keygen_body603_005 — ACCEPTED_LOCAL ThirdStepBody216,2.920s,0/0: actual part2→part3→part4 composition at one output, all first/extra fd/gd columns and reassembled source data. This is conditional only on ordinary entry cells/tables/memory; next construct those facts from the actual third-step caller and export the full call/return.
+
+Job record (603): keygen_body603_006 RETAINED_ELABORATION_FAILURE: REV10 binding was asserted for an arbitrary caller, which need not contain that table. The source requires its ordinary initial table binding; add this explicit domain and derive it later for the actual caller. No proof/source output was assumed; other context components elaborated.
+
+Job record (603): keygen_body603_007 — ACCEPTED_LOCAL ThirdStepContext216,4.073s,0/0: actual d3 layout memory domain, declared u, readonly PRIMES3/REV10 transport and explicit initial table binding. Next compose the concrete caller with all d3 source sections.
+
+Job record (603): keygen_body603_008 RETAINED_ELABORATION_FAILURE: reserved Lean token prefix used as a binder in the full-body association helper, causing parser errors and missing helper; no statement/domain change. Rename to prefixRun0 and recheck.
+
+Job record (603): keygen_body603_009 — ACCEPTED_LOCAL ThirdStepFull216,5.476s,0/0: the complete original d3 make_fg_step body is constructed from the actual d1/d2 calls and actual third caller/entry, with all twelve fd/gd columns at one output. No successful run or desired image premise; context table binding derived from pinned entry. Next flatten six columns and construct actual caller return/d4 guard.
+
+Job record (603): keygen_body603_010 RETAINED_ELABORATION_FAILURE: the flat gather expects arguments k/kBound/j/jBound whereas f_column/g_column take k/j/kBound/jBound. Adapt with explicit lambdas; all six column reads and pointer arithmetic elaborated. No source/domain change.
+
+Job record (603): keygen_body603_011 — ACCEPTED_LOCAL2/2,0/0: full flat fd/gd384 executed-word images and actual third call/enclosing-body return, d3→4 increment and true next guard. Gather binder-order defect from010 repaired without source/domain change. Next standard-only axiom audit and canonical replay; later d levels/root/certificate/codec/full B1 remain open.
+
+Job record (603): keygen_body603_012 — ACCEPTED_LOCAL ThirdStepReturnAudit216,9.888s,0/0: six printed interfaces and22 axiom results. Next canonical10-module replay, reverify immutable pins, write scoped evidence/report and local commit; continue with d4 source after603.
+
+Job record (603): canonical keygen_body603_canonical — ACCEPTED10/10,0/0,22 standard-only results,55.675s,maxRSS5617552KiB. Entry74673 and predecessor602 9993 checks unchanged; next evidence/local commit then604.
+
+Job record (603 checkpoint): evidence PASS206 bindings; entry74673 and predecessor602 9993 hash checks unchanged,10 accepted/22 standard-only results. Exact own14 paths; foreign work excluded, no push. Continue604 actual d4 entry/layout/move.
