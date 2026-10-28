@@ -1,3 +1,30 @@
+# SEED9_R1 — ACTIVE; complete selected d8 return checkpoint618 accepted;619 next
+
+Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+618 canonical keygen_eighth618_canonical accepted16/16,0/0,104 standard-only axiom results, evidence verified. Actual selected d8 full body: 82-limb CRT fs/gs
+pair, extra-prime loop u82..165, all166 fd/gd columns and both332-word flat
+images at one output; actual eighth call/return, d8→9 increment and true
+next guard. Original source/earlier calls constructed, no desired output/
+run premise; exact executed-word formulas only.
+131.995s,maxRSS5852388KiB. ENTRY74673/predecessor617260 unchanged before/after.
+Eleven local attempts retain one wrong byte-index elaboration plus subsequent
+kernel-memory diagnostic, corrected under unchanged limit. No mathematical
+counterexample/suppression/failed cache. Independent review NOT_RUN. Prior
+retained findings remain. Report/evidence KEYGEN_EIGHTH_RETURN_217_618_REPORT.md
+and matching JSON; failure register KEYGEN_EIGHTH_RETURN_217_FAILURES_618.json.
+Next619 actual d9 entry/layout/move: outExpr at d9 has false d+1<depth10,
+and selected top out_ntt=0. Construct actual preservation/binding and true
+!out_ntt branch; prior d1..d8 skip cannot be reused. This is not yet a proved
+d9 run. Then d9 body/root/certificate/codec/full B1. No mathematical CRT/
+NTT/root/table/centering/Montgomery/integer law or broad KeyGen/Sign/compiler/
+security/unconditional positivity/probability. Permanent195 bad bodyHeap/
+stepState UNUSED; Old110/measured/five do_sign unchanged. Foreign PROMPT_T14
+untouched; one Lean process, -M6144 fixed, exact local commits, no push.
+Continue after checkpoint.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; selected d8 first-prime loop checkpoint617 accepted;618 next
 
 Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -11546,3 +11573,35 @@ Job record (617): keygen_eighth617_012 — ACCEPTED_LOCAL audit, six public inte
 Job record (617): canonical keygen_eighth617_canonical — ACCEPTED16/16,0/0,97 standard-only axiom results, 47.938s,maxRSS4270904KiB. Entry74673/predecessor616132 unchanged; next evidence/local commit then d8 CRT.
 
 Job record (617 checkpoint): evidence PASS260 bindings,16 accepted/97 standard-only results, two retained elaboration failures; entry74673/predecessor616132 unchanged. Exact own paths only; foreign work excluded, no push. Continue618 d8 CRT.
+
+Job record (618 start):617 committed9ba08e71; no push. Continue actual d8 CRT pair, extra-prime u82..165 and caller return; runtime .build/eighthcrt618. Verify entry/predecessor before first proof job.
+
+Job record (618): fresh ENTRY74673 and predecessor617260 evidence bindings verified before first618 source/job. Next actual d8 rebuild_CRT body.
+
+Job record (618): keygen_eighth618_001 — ACCEPTED_LOCAL EighthStepCrtBody217,11.139s,0/0: actual rebuild_CRT callee at num4/xlen=xstride82, indexed rows, source tmp[0] store, co-loop and signed normalization over328 words. Next fs/gs call pair.
+
+Job record (618): keygen_eighth618_002 — ACCEPTED_LOCAL EighthStepCrt217,3.772s,0/0: original d8 fs/gs rebuild_CRT calls and preserved separate images/static objects. Next extra-prime prefix and side engines.
+
+Job record (618): keygen_eighth618_003 — ACCEPTED_LOCAL2/2,0/0: extra-prime source prefix Rx(slen82), signed-store and Level1 forward/product side engines. Next both-side iteration.
+
+Job record (618): keygen_eighth618_004 — RETAINED elaboration/kernel memory failure,30.484s, exit1: adaptation changed byte-index Fin4 to Fin2 in Outside and compilation subsequently reported excessive memory. Raw snapshot/log retained; restore byte width and retry with unchanged -M6144; not a mathematical counterexample.
+
+Job record (618): keygen_eighth618_005 — ACCEPTED_LOCAL2/2,0/0: actual both-side extra-prime walks/forward/products and generic row iteration for u<166, same-output products; unchanged memory limit. Next preserve first-loop columns through CRT.
+
+Job record (618): keygen_eighth618_006 — ACCEPTED_LOCAL2/2,0/0: actual selected d8 prefix+first loop+CRT, both reassembled328-word images and all82 first product columns survive part3 on one output. Next extra-prime loop u82..165.
+
+Job record (618): keygen_eighth618_007 — ACCEPTED_LOCAL4/4,0/0: actual extra-prime loop u82..165 through false u<166 exit, preserving all first/extra columns and same-witness source-indexed tables/static objects. Next associate complete d8 source body.
+
+Job record (618): keygen_eighth618_008 — ACCEPTED_LOCAL EighthStepFull217,4.824s,0/0: actual selected complete d8 body, first and extra columns on same execution witness. Next export332-word sections and caller return.
+
+Job record (618): keygen_eighth618_009 — ACCEPTED_LOCAL EighthStepImage217,9.988s,0/0: gather 166 columns per side into both332-word sections from same actual d8 source run. Next caller return and d9 guard.
+
+Job record (618): keygen_eighth618_010 — ACCEPTED_LOCAL EighthStepReturn217,5.728s,0/0: actual eighth caller return, both332-word output sections and d8-to-d9 increment/true guard, on same selected execution. Next audit and canonical replay.
+
+Job record (618): keygen_eighth618_011 — ACCEPTED_LOCAL audit, seven public interfaces/104 axiom results,0/0. Next canonical16-module replay, pin recheck and evidence.
+
+Structural trap for619: FirstStepEntry187.outExpr is (d+1<depth) || out_ntt; at d9, depth10, left comparison is false and SelectedTopContinuation186.out_ntt_cell is0. Derive actual caller preservation/binding and handle true !out_ntt source branch; prior d1..d8 false-branch skip is not valid for d9. This is not yet a proved d9 run.
+
+Job record (618): canonical keygen_eighth618_canonical — ACCEPTED16/16,0/0,104 standard-only axiom results, 131.995s,maxRSS5852388KiB. Entry74673/predecessor617260 unchanged; next evidence/local commit then d9 prefix.
+
+Job record (618 checkpoint): evidence PASS251 bindings,16 accepted/104 standard-only results, one retained local failure including memory diagnostic; entry74673/predecessor617260 unchanged. Exact own paths only; foreign work excluded, no push. Continue619 d9 prefix with false outExpr.

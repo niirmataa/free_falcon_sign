@@ -1,0 +1,1006 @@
+{
+  "utc": "2026-10-28T08:54:56.662137+00:00",
+  "status": "PROVED_KERNEL_SCOPED / NOT_REVIEWED",
+  "overall_owner_goal": "IN_PROGRESS; continue after this intermediate checkpoint",
+  "scope": "Complete selected original d8 make_fg_step body and caller return, real CRT pair and counted extra-prime u82..165 loop, all166 fd and166 gd product columns and both flat332-word images at one output, actual d8-to9 increment and true next d-loop guard.",
+  "entry_manifest": {
+    "path": ".build/steprx195/ENTRY_PINS.json",
+    "sha256": "00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964"
+  },
+  "entry_checked_count": 74673,
+  "entry_missing": 0,
+  "entry_changed": 0,
+  "entry_checks": [
+    {
+      "path": ".build/eighthcrt618/entry_before.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/eighthcrt618/entry_after.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/eighthcrt618/predecessor_before.log",
+      "sha256": "b0fdf5b6485edf10eb38d93078d1b513155760d8427b29b23b79c25927f85412"
+    },
+    {
+      "path": ".build/eighthcrt618/predecessor_after.log",
+      "sha256": "b0fdf5b6485edf10eb38d93078d1b513155760d8427b29b23b79c25927f85412"
+    },
+    {
+      "path": ".build/eighthcrt618/entry_reverify_618.py",
+      "sha256": "641ca0817a30f5d2eea7390621f2686c267a2014e725b574033d856bfbf61d09"
+    },
+    {
+      "path": ".build/eighthcrt618/predecessor_verify.py",
+      "sha256": "d3c45433a3d1c74449328acb0f7ec78be6592add6863afde6a025d97931d9511"
+    },
+    {
+      "path": ".build/eighthcrt618/modules.json",
+      "sha256": "ea169b49d4614becc38a634025a94ad88810e476f80128a813b4ff61753eddd7"
+    }
+  ],
+  "predecessor_handoff": {
+    "path": "notes/run/KEYGEN_EIGHTH_FIRST_217_617.json",
+    "sha256": "b9d0e74cc4a15313aeb0f629eab4b146cc3c3ef8a6604a1fd859f6d3f193a4d3"
+  },
+  "predecessor_bindings_verified": 260,
+  "job": "keygen_eighth618_canonical",
+  "accepted": 16,
+  "receipts": {
+    "path": ".build/jobs/keygen_eighth618_canonical/RECEIPTS.json",
+    "sha256": "f518b2fd737ca7dd2c7b1b8bf73cf17e1c72f822a6c869b51591548f75bc7ed9"
+  },
+  "inputs": {
+    "path": ".build/jobs/keygen_eighth618_canonical/SOURCE_INPUTS.json",
+    "sha256": "12579d261c8639703650c684e299e983b566c882a556be1c266089979bb43b63"
+  },
+  "runner": {
+    "path": ".build/jobs/keygen_eighth618_canonical/RUNNER_SOURCE.py",
+    "sha256": "e8e9cf4ba5e744425464c0057a27d07f62ff82be352c479535425ff436c5b385"
+  },
+  "engine": {
+    "path": ".build/jobs/keygen_eighth618_canonical/EXECUTION_SOURCE.py",
+    "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c"
+  },
+  "preflight": {
+    "path": ".build/jobs/keygen_eighth618_canonical/PREFLIGHT.json",
+    "sha256": "64ea81fa79934a77584378b8d3b9369b1f49dbd58a3c44e25cf3d0dc70f77d5d"
+  },
+  "modules": [
+    {
+      "module": "Source3.EighthStepCrtBody217",
+      "source": {
+        "path": "formal/Source3/EighthStepCrtBody217.lean",
+        "sha256": "35cfc41cc57dc8ffc9abd9013b4450e6c1451d335fa2493ee9e7ed9b3459ea5a"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_eighth618_canonical/formal/Source3/EighthStepCrtBody217.lean",
+        "sha256": "35cfc41cc57dc8ffc9abd9013b4450e6c1451d335fa2493ee9e7ed9b3459ea5a"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_eighth618_canonical/lib/Source3/EighthStepCrtBody217.olean",
+        "sha256": "8a5cb063d83345c16c8cb1e35f2edfbb6785e51e48ab70acd40f2c6eefb53b42"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepCrtBody217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepCrtBody217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 15.507,
+      "maxrss_kib": 4020784
+    },
+    {
+      "module": "Source3.EighthStepCrt217",
+      "source": {
+        "path": "formal/Source3/EighthStepCrt217.lean",
+        "sha256": "58a11cc7e8991a7067b360e47a3fdb1bf3bc42e155f9f8c890c7aa3c546ca296"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_eighth618_canonical/formal/Source3/EighthStepCrt217.lean",
+        "sha256": "58a11cc7e8991a7067b360e47a3fdb1bf3bc42e155f9f8c890c7aa3c546ca296"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_eighth618_canonical/lib/Source3/EighthStepCrt217.olean",
+        "sha256": "face35d589e6f7122ae56fb41669ba466d88871ba74ce8fc64ca8fa915d04abc"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepCrt217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepCrt217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 4.425,
+      "maxrss_kib": 4129580
+    },
+    {
+      "module": "Source3.EighthStepExtraPrime217",
+      "source": {
+        "path": "formal/Source3/EighthStepExtraPrime217.lean",
+        "sha256": "aba6b5a8968d55484c47ca6490c423f97871debeec798b415d30f424f935f4f1"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_eighth618_canonical/formal/Source3/EighthStepExtraPrime217.lean",
+        "sha256": "aba6b5a8968d55484c47ca6490c423f97871debeec798b415d30f424f935f4f1"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_eighth618_canonical/lib/Source3/EighthStepExtraPrime217.olean",
+        "sha256": "fdc10be46fe6e0325d4a08f54b192724789cd8a5cd994c086a58c3a1bc05ecc3"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepExtraPrime217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepExtraPrime217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 4.179,
+      "maxrss_kib": 4133528
+    },
+    {
+      "module": "Source3.EighthStepExtraSide217",
+      "source": {
+        "path": "formal/Source3/EighthStepExtraSide217.lean",
+        "sha256": "c60836f9df68c4f4f29a3ef1ebe682798e516540c8da38389574b0c350cb60d3"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_eighth618_canonical/formal/Source3/EighthStepExtraSide217.lean",
+        "sha256": "c60836f9df68c4f4f29a3ef1ebe682798e516540c8da38389574b0c350cb60d3"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_eighth618_canonical/lib/Source3/EighthStepExtraSide217.olean",
+        "sha256": "cc0e3975923ecfa2b58d15b380ec34e51e8d3f06bbfd8e19a155b922139340c0"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepExtraSide217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepExtraSide217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.672,
+      "maxrss_kib": 4133528
+    },
+    {
+      "module": "Source3.EighthStepExtraPair217",
+      "source": {
+        "path": "formal/Source3/EighthStepExtraPair217.lean",
+        "sha256": "a7692ae428908d29a5879c9c05a13b184129a11bcf4dbc1d4876d09b0d6c36e3"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_eighth618_canonical/formal/Source3/EighthStepExtraPair217.lean",
+        "sha256": "a7692ae428908d29a5879c9c05a13b184129a11bcf4dbc1d4876d09b0d6c36e3"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_eighth618_canonical/lib/Source3/EighthStepExtraPair217.olean",
+        "sha256": "f67ce1d3047aba86db0afc99ce87d20beabb804058286f23803737e0e7e9418f"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepExtraPair217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepExtraPair217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 33.643,
+      "maxrss_kib": 5852388
+    },
+    {
+      "module": "Source3.EighthStepExtraInner217",
+      "source": {
+        "path": "formal/Source3/EighthStepExtraInner217.lean",
+        "sha256": "faa01ca580b1efa806ff4b0161d295ef54de8f04a5e5aa7de3083f8fd757acf4"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_eighth618_canonical/formal/Source3/EighthStepExtraInner217.lean",
+        "sha256": "faa01ca580b1efa806ff4b0161d295ef54de8f04a5e5aa7de3083f8fd757acf4"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_eighth618_canonical/lib/Source3/EighthStepExtraInner217.olean",
+        "sha256": "05740c52ecda3b0e5379bc6f9b7063509e66ba8953421dbe24449677b5aafdaa"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepExtraInner217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepExtraInner217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 27.588,
+      "maxrss_kib": 5852388
+    },
+    {
+      "module": "Source3.EighthStepCrtKeep217",
+      "source": {
+        "path": "formal/Source3/EighthStepCrtKeep217.lean",
+        "sha256": "d3124056782593ee2dd641e5fd7b19e4ba372650abe9ffd2bd659c0539537a4f"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_eighth618_canonical/formal/Source3/EighthStepCrtKeep217.lean",
+        "sha256": "d3124056782593ee2dd641e5fd7b19e4ba372650abe9ffd2bd659c0539537a4f"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_eighth618_canonical/lib/Source3/EighthStepCrtKeep217.olean",
+        "sha256": "1025373f86f8068d8971f225df61a3581d733ff1ef9bea61e5274ab03c0bd1de"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepCrtKeep217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepCrtKeep217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 6.137,
+      "maxrss_kib": 5852388
+    },
+    {
+      "module": "Source3.EighthStepCrtFirst217",
+      "source": {
+        "path": "formal/Source3/EighthStepCrtFirst217.lean",
+        "sha256": "110799d4b24546872d214087e7af36360f827a0380abf19c146ccf20a603367e"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_eighth618_canonical/formal/Source3/EighthStepCrtFirst217.lean",
+        "sha256": "110799d4b24546872d214087e7af36360f827a0380abf19c146ccf20a603367e"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_eighth618_canonical/lib/Source3/EighthStepCrtFirst217.olean",
+        "sha256": "85c45aa14cc1672e3b13612046a3804d5e00f7e37d9f10ff1c9f66941fd66b22"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepCrtFirst217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepCrtFirst217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 5.027,
+      "maxrss_kib": 5852388
+    },
+    {
+      "module": "Source3.EighthStepExtraLoopBase217",
+      "source": {
+        "path": "formal/Source3/EighthStepExtraLoopBase217.lean",
+        "sha256": "4b3f916c13a1e6e87cae0e261b7d5b3d2b1f13c6c7fd934dad4b55ee3be20a9c"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_eighth618_canonical/formal/Source3/EighthStepExtraLoopBase217.lean",
+        "sha256": "4b3f916c13a1e6e87cae0e261b7d5b3d2b1f13c6c7fd934dad4b55ee3be20a9c"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_eighth618_canonical/lib/Source3/EighthStepExtraLoopBase217.olean",
+        "sha256": "07f4e5b6fb603741e2af38c27d753dab07778dfb19a2b0e6d203a3976c0f8a6e"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepExtraLoopBase217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepExtraLoopBase217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 4.98,
+      "maxrss_kib": 5852388
+    },
+    {
+      "module": "Source3.EighthStepExtraInvariant217",
+      "source": {
+        "path": "formal/Source3/EighthStepExtraInvariant217.lean",
+        "sha256": "18bf42d97946f3301c2c6dd7420bac97446c408a68ad73413c762a0cefe5d3d0"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_eighth618_canonical/formal/Source3/EighthStepExtraInvariant217.lean",
+        "sha256": "18bf42d97946f3301c2c6dd7420bac97446c408a68ad73413c762a0cefe5d3d0"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_eighth618_canonical/lib/Source3/EighthStepExtraInvariant217.olean",
+        "sha256": "a9da58497396b4aa14e0dc9cc230baec6cb33d34432349e4cbf580ebc1cea24b"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepExtraInvariant217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepExtraInvariant217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.686,
+      "maxrss_kib": 5852388
+    },
+    {
+      "module": "Source3.EighthStepExtraIteration217",
+      "source": {
+        "path": "formal/Source3/EighthStepExtraIteration217.lean",
+        "sha256": "0e4cb98b3880eb85d5ea7e3dff980d3db45817011a2b972486119dab17422d19"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_eighth618_canonical/formal/Source3/EighthStepExtraIteration217.lean",
+        "sha256": "0e4cb98b3880eb85d5ea7e3dff980d3db45817011a2b972486119dab17422d19"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_eighth618_canonical/lib/Source3/EighthStepExtraIteration217.olean",
+        "sha256": "3682a949d0acedc220c792abe7141ed8df97e61c242754d474202a500dc333db"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepExtraIteration217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepExtraIteration217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.124,
+      "maxrss_kib": 5852388
+    },
+    {
+      "module": "Source3.EighthStepExtraLoop217",
+      "source": {
+        "path": "formal/Source3/EighthStepExtraLoop217.lean",
+        "sha256": "b3d0502c477d14314bb687f1d1d5ff71ebd91784958969c88abc3e0a5b46fffe"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_eighth618_canonical/formal/Source3/EighthStepExtraLoop217.lean",
+        "sha256": "b3d0502c477d14314bb687f1d1d5ff71ebd91784958969c88abc3e0a5b46fffe"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_eighth618_canonical/lib/Source3/EighthStepExtraLoop217.olean",
+        "sha256": "97e011f42b9d634b4e3a0d3d32a23097955ff6734862b8115696d0151ba652d7"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepExtraLoop217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepExtraLoop217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.074,
+      "maxrss_kib": 5852388
+    },
+    {
+      "module": "Source3.EighthStepFull217",
+      "source": {
+        "path": "formal/Source3/EighthStepFull217.lean",
+        "sha256": "5e52a1ac0b41b6cadef9a9984b158fd39ff49d7762cd7d9faaf1dc728b3a032b"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_eighth618_canonical/formal/Source3/EighthStepFull217.lean",
+        "sha256": "5e52a1ac0b41b6cadef9a9984b158fd39ff49d7762cd7d9faaf1dc728b3a032b"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_eighth618_canonical/lib/Source3/EighthStepFull217.olean",
+        "sha256": "c97bc8c496ccd478999b202dda924c3bdf0c92e6d21f9b16e55fbdd04eb80879"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepFull217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepFull217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 4.878,
+      "maxrss_kib": 5852388
+    },
+    {
+      "module": "Source3.EighthStepImage217",
+      "source": {
+        "path": "formal/Source3/EighthStepImage217.lean",
+        "sha256": "41435760420fab1602c7f7ed0e52afe8375cef98e9a0fe83a03eb6d46b582f92"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_eighth618_canonical/formal/Source3/EighthStepImage217.lean",
+        "sha256": "41435760420fab1602c7f7ed0e52afe8375cef98e9a0fe83a03eb6d46b582f92"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_eighth618_canonical/lib/Source3/EighthStepImage217.olean",
+        "sha256": "b355861d154dd8eb98ad002e6bf2e2481bb631e56f57405bfa6383472713c861"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepImage217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepImage217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 4.374,
+      "maxrss_kib": 5852388
+    },
+    {
+      "module": "Source3.EighthStepReturn217",
+      "source": {
+        "path": "formal/Source3/EighthStepReturn217.lean",
+        "sha256": "4bab93dc6f3c66b723200717da40c64b1d52aa102974ed0430a5cc0b3a8235ef"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_eighth618_canonical/formal/Source3/EighthStepReturn217.lean",
+        "sha256": "4bab93dc6f3c66b723200717da40c64b1d52aa102974ed0430a5cc0b3a8235ef"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_eighth618_canonical/lib/Source3/EighthStepReturn217.olean",
+        "sha256": "f82422e0f59fb22494b049b59c022f62074381c2808224d2c91ce9322abba6d2"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepReturn217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepReturn217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 4.874,
+      "maxrss_kib": 5852388
+    },
+    {
+      "module": "Source3.EighthStepReturnAudit217",
+      "source": {
+        "path": "formal/Source3/EighthStepReturnAudit217.lean",
+        "sha256": "be99735274d3233dfa399a47b6b0d095618476cfa2a1284529d4abf2c9363979"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_eighth618_canonical/formal/Source3/EighthStepReturnAudit217.lean",
+        "sha256": "be99735274d3233dfa399a47b6b0d095618476cfa2a1284529d4abf2c9363979"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_eighth618_canonical/lib/Source3/EighthStepReturnAudit217.olean",
+        "sha256": "bb15a2334c75f1e558273130abc6f77d09f45007d08fa92fa9a5396d19d48d11"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepReturnAudit217.stdout",
+        "sha256": "ab01225ff635c3db304539215d6e53165973b029c5574d86619a300afdfa8167"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_eighth618_canonical/logs/Source3_EighthStepReturnAudit217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.827,
+      "maxrss_kib": 5852388
+    }
+  ],
+  "axioms": {
+    "FT1536.Source3.EighthStepCrtBody217.rows82": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrtBody217.heap5": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrtBody217.arrays5": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrtBody217.locals5": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrtBody217.prime_load": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrtBody217.prefix_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrtBody217.object5": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrtBody217.data_after": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrtBody217.tmp_read0": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrtBody217.loop_input": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrtBody217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrt217.sep_at": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrt217.fs_word": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrt217.gs_word": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrt217.gm_word": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrt217.fs_gm": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrt217.gs_gm": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrt217.fs_gs": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrt217.input": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrt217.binding": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrt217.call_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrt217.object_keep": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrt217.rev_keep": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrt217.outer_keep": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrt217.load_keep": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrt217.data_keep": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrt217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraPrime217.declared_locals": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraPrime217.arrays": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraPrime217.locals": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraPrime217.p_cell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraPrime217.i_cell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraPrime217.r_cell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraPrime217.rx_cell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraPrime217.u_cell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraPrime217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraPrime217.basic": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraSide217.sep_at": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraSide217.walk_shape": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraSide217.walk_fixed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraSide217.walk_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraSide217.forward_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraPair217.before_t1": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraPair217.middle": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraPair217.data": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraPair217.twiddle": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraPair217.f_after_g": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraPair217.side_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraPair217.out_skip": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraPair217.normal_seq": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraPair217.continue_side": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraPair217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraInner217.fs_gm_out": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraInner217.fs_igm_out": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraInner217.gs_gm_out": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraInner217.gs_igm_out": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraInner217.heapP": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraInner217.inputP": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraInner217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrtKeep217.column": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrtFirst217.part3": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepCrtFirst217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoopBase217.loopPremises": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoopBase217.outside_cols": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoopBase217.gm_cols": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoopBase217.igm_cols": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoopBase217.t1_cols": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoopBase217.object_keep": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoopBase217.rev_keep": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoopBase217.revB_keep": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoopBase217.scoped_local": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoopBase217.scope_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoopBase217.put_same": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoopBase217.init_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoopBase217.incrementK": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoopBase217.counter_u": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoopBase217.counter_tlen": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoopBase217.counter_heap": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoopBase217.counter_arrays": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoopBase217.scope_arrays": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoopBase217.outer_counter": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoopBase217.input_counter": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoopBase217.earlier_fs": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoopBase217.earlier_gs": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoopBase217.earlier_col": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoopBase217.image_keep": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoopBase217.fs_keep_u": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoopBase217.gs_keep_u": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoopBase217.extraRow_value": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoopBase217.guard": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraIteration217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoop217.remaining": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepExtraLoop217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepFull217.complete": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepFull217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepImage217.pointer": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepImage217.f_column": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepImage217.g_column": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepImage217.gather": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepImage217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepReturn217.increment_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepReturn217.d_nine": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepReturn217.next_guard": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.EighthStepReturn217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "failures_and_workshop": {
+    "path": "notes/run/KEYGEN_EIGHTH_RETURN_217_FAILURES_618.json",
+    "sha256": "81258b03d78c8e488aa56741c7fa572f64ad64dc27204e82a5916781e31a5370"
+  },
+  "report": {
+    "path": "notes/run/KEYGEN_EIGHTH_RETURN_217_618_REPORT.md",
+    "sha256": "791f326ddc815b08a712a828a65195ffe016c5b8c8670ef0c9c655e1f653e6d4"
+  },
+  "evidence_generator": {
+    "path": ".build/evidence_v1.py",
+    "sha256": "1bc738f64ab2604686ab4e8da3ab0cc8eb3ef786f9486ab6b1d94cc70d513b3e"
+  },
+  "evidence_configuration": {
+    "path": ".build/eighthcrt618/evidence_config.json",
+    "sha256": "26433c1de5661bc478a083c030d31a65623ff34269aa0384be231b267deeea44"
+  },
+  "source_proof_markers": [],
+  "linter_suppressions": [],
+  "limits_unchanged": true,
+  "independent_review": "NOT_RUN",
+  "push": false,
+  "next_unused_suffix": 619,
+  "next_obligations": [
+    "Actual d9 entry/layout/move and d9 level, root/certificate/codec/full source-to-fiber B1"
+  ],
+  "not_claimed": [
+    "Later d9 step execution or complete KeyGen source-to-fiber B1",
+    "Mathematical NTT/root/table/CRT/centering/Montgomery/integer laws",
+    "Full KeyGen/Sign/compiler/security/unconditional positivity/probability",
+    "Independent review"
+  ]
+}
