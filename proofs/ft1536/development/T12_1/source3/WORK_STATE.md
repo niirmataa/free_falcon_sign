@@ -1,3 +1,29 @@
+# SEED9_R1 — ACTIVE; selected d5 first-prime loop checkpoint608 accepted;609 next
+
+Owner resumed2026-10-28; continue in source3, no push/subagents/reviewers/
+relay/migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+608 canonical keygen_fifth608_canonical accepted16/16,0/0,109 standard-only
+axiom results. Actual selected d5 first-prime loop u0..11 at n32/hn16,
+slen12/tlen22; original prefix/generator/copy/products/inverse and exit.
+One inductive source witness retains each row's real table, twelve fd/gd
+product columns and both384-word inverse images at new gd@1022. Actual
+caller/prefix derived from completed d1..d4; no desired run/output premise.
+47.687s,maxRSS3754084KiB. ENTRY74673/predecessor607120 unchanged before/after.
+10 local attempts accepted,0 failures; two copied comments corrected and
+all12 dependencies rebuilt in009 before canonical. No resource/suppression/
+failed cache; independent review NOT_RUN. Report/evidence KEYGEN_FIFTH_
+FIRST_217_608_REPORT.md and matching JSON; failure register KEYGEN_FIFTH_
+FIRST_217_FAILURES_608.json.
+Next609: actual d5 CRT pair, extra-prime loop u12..21 and whole d5 return;
+then d6..9/root/certificate/codec/full B1. Source root: fd670/gd1022/
+fs1374/gs1758/gm2142/igm2174/t12206. No mathematical NTT/root/table/
+CRT/centering/Montgomery/integer law or broad KeyGen/Sign/compiler/security/
+unconditional positivity/probability. Permanent195 bad bodyHeap/stepState
+UNUSED; Old110/measured/five do_sign unchanged. Foreign PROMPT_T14 untouched.
+One Lean job, -M6144 and fixed limits; exact local commits, no push.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; selected d5 changed-layout prefix checkpoint607 accepted;608 next
 
 Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -11012,3 +11038,31 @@ Job record (607): keygen_fifth607_005 — ACCEPTED_LOCAL audit, six interfaces/6
 Job record (607): canonical keygen_fifth607_canonical — ACCEPTED7/7,0/0,68 standard-only results,24.402s,maxRSS4355932KiB. Entry74673/predecessor278 unchanged; next evidence/local commit then608 d5 body.
 
 Job record (607 checkpoint): evidence PASS120 bindings; entry74673/predecessor606278 unchanged,7 accepted/68 standard-only results. Exact own11 paths; foreign work excluded, no push. Continue608 d5 body.
+
+Job record (608 start):607 committedafe982c55a762eccd9359a577e1dc2d2c3c9d4a2; no push. Continue actual d5 first-prime generator/copy/product/inverse loops, respecting new gd@1022; runtime .build/fifthbody608. Verify entry and predecessor before first proof job.
+
+Job record (608): fresh ENTRY74673/predecessor607120 evidence bindings verified before first608 source/job. Next actual d5 Level4 generator and product root gd@1022, then first-prime loop u0..11.
+
+Job record (608): keygen_fifth608_001 — ACCEPTED_LOCAL FifthStepGenerator217,3.975s,0/0: actual d5 Outer/Basic states and ternary Level4 generator with32 gm/igm words; first six source-bound prime rows available, Rx length12. Next product marches with the new gd@1022 root.
+
+Job record (608): keygen_fifth608_002 — ACCEPTED_LOCAL FifthStepProduct217,2.920s,0/0: original d5 product marches for u<22 at stride22/hn16, with explicit new fd/gd roots including gd@1022. Next copy/inverse geometry and paired first-prime source iteration.
+
+Job record (608): keygen_fifth608_003 — ACCEPTED_LOCAL3/3,0/0: real d5 address geometry with gd@1022, original32-word stride12 copy and Level4 inverse NTT columns. Next both-side product/inverse composition.
+
+Job record (608): keygen_fifth608_004 — ACCEPTED_LOCAL2/2,0/0: both-side d5 copy/product/inverse tail at u<12, exact fd/gd images at the new roots and outside-read keeps. Next complete original per-prime prefix/generator/paired iteration.
+
+Job record (608): keygen_fifth608_005 — ACCEPTED_LOCAL2/2,0/0: original d5 prime prefix plus complete two-sided iteration for any u<12, using new gd@1022 and same-output product/inverse words. Next prove the twelve-row counted loop with the captured per-row tables.
+
+Job record (608): keygen_fifth608_006 — ACCEPTED_LOCAL FifthStepLoopBase217,3.172s,0/0: actual d5 loop control and guard, all twelve pinned PRIMES3 row bindings and cross-column keeps at new fd/gd roots. Next pending/written invariant and counted iteration.
+
+Job record (608): keygen_fifth608_007 — ACCEPTED_LOCAL3/3,0/0: shared pending/written invariant, actual scoped iteration and complete counted u0..11 loop, source-bound row tables, twelve fd/gd columns and both384-word inverse images. Next derive all context from actual fifth entry.
+
+Job record (608): keygen_fifth608_008 — ACCEPTED_LOCAL2/2,0/0: actual fifth caller/prefix and twelve-prime loop at one output, preserving all twelve fd/gd product columns and both384-word inverse images. Before sealing, correct two copied comments (d4 geometry and Level5) to d5/Level4, then rebuild every dependent module.
+
+Job record (608): keygen_fifth608_009 — ACCEPTED_LOCAL12/12,0/0: all sources dependent on two corrected d5/Level4 comment labels freshly rebuilt, including the complete actual fifth first-prime loop and its selected caller witness. Next109-result axiom audit and canonical16-module replay.
+
+Job record (608): keygen_fifth608_010 — ACCEPTED_LOCAL audit, six public interfaces/109 standard-only axiom results,0/0. Next canonical16-module replay, final pins/evidence and local checkpoint; then d5 CRT/additional-prime body.
+
+Job record (608): canonical keygen_fifth608_canonical — ACCEPTED16/16,0/0,109 standard-only results,47.687s,maxRSS3754084KiB. Entry74673/predecessor120 unchanged; next evidence/local checkpoint then609 d5 CRT.
+
+Job record (608 checkpoint): evidence PASS300 bindings; entry74673/predecessor607120 unchanged,16 accepted/109 standard-only results. Exact own20 paths; foreign work excluded, no push. Continue609 d5 CRT.
