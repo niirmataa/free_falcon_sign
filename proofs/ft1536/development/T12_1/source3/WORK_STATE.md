@@ -1,3 +1,27 @@
+# SEED9_R1 — ACTIVE; selected d8 prefix checkpoint616 accepted;617 next
+
+Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+616 canonical keygen_eighth616_canonical accepted7/7,0/0,68 standard-only axiom results, evidence verified. Actual d8 entry after completed d7, n4/hn2, original
+MAX_BL_SMALL3 lengths82/166, part0/part1 and overlapping2624-byte move with
+both328-word fs/gs images. Previous source gd998 and new output gd1002 are
+explicitly distinct; no desired run/output premise. New roots fd670/gd1002/
+fs1334/gs1662/gm1990/igm1994/t11998, output332/input328 words.
+48.323s,maxRSS4438932KiB. ENTRY74673/predecessor615260 unchanged before/after.
+Seven local attempts accepted with0 failures; no new counterexample/resource
+failure/suppression/failed cache. Independent review NOT_RUN. Prior retained
+findings remain. Report/evidence KEYGEN_EIGHTH_PREFIX_217_616_REPORT.md and
+matching JSON; failure register KEYGEN_EIGHTH_PREFIX_217_FAILURES_616.json.
+Next617 d8 first-prime loop u0..81, then CRT and extra u82..165, later d9,
+root/certificate/codec/full B1. No mathematical NTT/root/table/CRT/
+centering/Montgomery/integer law or broad KeyGen/Sign/compiler/security/
+unconditional positivity/probability. Permanent195 bad bodyHeap/stepState
+UNUSED; Old110/measured/five do_sign unchanged; foreign PROMPT_T14 untouched.
+One Lean process, -M6144 and fixed limits; exact local commits, no push.
+Continue after checkpoint.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; complete selected d7 return checkpoint615 accepted;616 next
 
 Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -11443,3 +11467,25 @@ Job record (615): keygen_seventh615_012 — ACCEPTED_LOCAL audit, seven interfac
 Job record (615): canonical keygen_seventh615_canonical — ACCEPTED16/16,0/0,104 standard-only axiom results, 101.412s,maxRSS5825592KiB. Entry74673/predecessor614251 unchanged; next evidence/local commit then d8 prefix.
 
 Job record (615 checkpoint): evidence PASS260 bindings,16 accepted/104 standard-only results, two retained elaboration failures; entry74673/predecessor614251 unchanged. Exact own paths only; foreign work excluded, no push. Continue616 d8 prefix.
+
+Job record (616 start):615 committede510fa75; no push. Continue actual d8 entry/layout and overlapping move; runtime .build/eighth616. Verify entry/predecessor before first proof job.
+
+Job record (616): fresh ENTRY74673 and predecessor615260 evidence bindings verified before first616 source/job. Next actual d8 caller binding and start.
+
+Job record (616): keygen_eighth616_001 — ACCEPTED_LOCAL EighthStepEntry217,6.429s,0/0: actual d8 caller binding and old328-word fd/gd inputs derived from complete d1..d7 execution. Next n4/hn2 and source lengths.
+
+Job record (616): keygen_eighth616_002 — ACCEPTED_LOCAL EighthStepStart217,4.076s,0/0: actual d8 source declarations and n4/hn2 initialization. Next MAX_BL_SMALL3 lengths82/166 and pointer layout.
+
+Job record (616): keygen_eighth616_003 — ACCEPTED_LOCAL EighthStepLengths217,10.297s,0/0: source MAX_BL_SMALL3 reads indices8/9, slen82/tlen166 with readonly stability. Next concrete d8 layout.
+
+Job record (616): keygen_eighth616_004 — ACCEPTED_LOCAL EighthStepLayout217,3.936s,0/0: actual d8 layout fd670/gd1002/fs1334/gs1662/gm1990/igm1994/t11998, output332/input328 words. Next overlapping move from old gd998.
+
+Job record (616): keygen_eighth616_005 — ACCEPTED_LOCAL EighthStepMove217,3.873s,0/0: actual overlapping2624-byte move reads old gd998 and moves both328-word inputs to fs1334/gs1662; new gd1002 is distinct. Next connect complete source prefix.
+
+Job record (616): keygen_eighth616_006 — ACCEPTED_LOCAL EighthStepPrefix217,4.526s,0/0: complete actual d8 prefix from selected earlier runs, both328-word inputs moved under same witness. Next axiom audit and canonical replay.
+
+Job record (616): keygen_eighth616_007 — ACCEPTED_LOCAL audit, six interfaces/68 axiom results,0/0. Next canonical seven-module replay and pin verification.
+
+Job record (616): canonical keygen_eighth616_canonical — ACCEPTED7/7,0/0,68 standard-only axiom results, 48.323s,maxRSS4438932KiB. Entry74673/predecessor615260 unchanged; next evidence and local commit.
+
+Job record (616 checkpoint): evidence PASS132 bindings,7 accepted/68 standard-only results, zero failed local attempts; entry74673 and predecessor615260 unchanged. Exact own paths only; foreign work excluded, no push. Continue617 d8 first-prime loop.
