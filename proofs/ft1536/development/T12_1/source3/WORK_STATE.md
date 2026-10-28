@@ -1,3 +1,31 @@
+# SEED9_R1 — ACTIVE; selected deepest unsigned CRT checkpoint625 accepted;626 next
+
+Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+625 canonical keygen_deepcrt625_canonical accepted5/5,0/0,20 standard-only axiom results, evidence verified. Actual selected solve_NTRU_deepest part3 first CRT
+statement executes on make_fg fp/gp as a contiguous670-word input, num2,
+xlen=xstride335, normalize_signed0. Source-bound prime rows and selected
+memory domain are constructed; exact reconstructed670-word image and caller
+frame are exported on the same witness, with a checked split into fp/gp.
+No desired run/output premise; no mathematical CRT/resultant law claimed.
+50.0s,maxRSS5310916KiB. ENTRY74673/predecessor62474 unchanged before/after.
+Seven local Lean jobs accepted; runner preflight007 failed before Lean when
+a diagnostic source moved while cache referenced it, byte-identical source
+restored and raw preflight/record retained. No new counterexample/resource
+failure/suppression/failed cache. Independent review NOT_RUN. Supplement
+KEYGEN_CRT_DEPTH_LABEL_618_622_SUPPLEMENT_625.md corrects sealed copied
+comments; frozen source/evidence unchanged. Report/evidence
+KEYGEN_DEEPEST_UNSIGNED_CRT_217_625_REPORT.md and matching JSON; failure
+register KEYGEN_DEEPEST_UNSIGNED_CRT_217_FAILURES_625.json.
+Next626 execute actual zint_bezout and success/failure branch on reconstructed
+inputs, without assuming the result; then root/certificate/codec/full B1.
+No mathematical NTT/root/table/CRT/centering/Montgomery/integer law or broad
+KeyGen/Sign/compiler/security/unconditional positivity/probability. Permanent
+195 bad bodyHeap/stepState UNUSED; Old110/measured/five do_sign unchanged.
+Foreign PROMPT_T14 untouched; one Lean job, -M6144 fixed; no push. Continue.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; selected make_fg caller return checkpoint624 accepted;625 next
 
 Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -11889,3 +11917,31 @@ Job record (624): keygen_top624_004 — ACCEPTED_LOCAL audit, one main interface
 Job record (624): canonical keygen_top624_canonical — ACCEPTED2/2,0/0,five standard-only axiom results, 11.555s,maxRSS4002916KiB. Entry74673/predecessor62353 unchanged; next evidence/local commit then deepest CRT.
 
 Job record (624 checkpoint): evidence PASS74 bindings,2 accepted/five standard-only results, zero failed attempts; entry74673/predecessor62353 unchanged. Exact own paths only; foreign work excluded, no push. Continue625 deepest CRT.
+
+Job record (625 start):624 committed29eb1b62; no push. Execute actual selected deepest unsigned CRT reconstruction on fp/gp before zint_bezout; runtime .build/deepcrt625. Verify entry/predecessor before first proof job.
+
+Documentation supplement (625): sealed EighthStepCrtBody217.source and NinthStepCrtBody217.source copied depth labels d=4/d=2; actual caller depths are d8/d9 and4/2 are CRT num. KEYGEN_CRT_DEPTH_LABEL_618_622_SUPPLEMENT_625.md records correction without altering frozen source/evidence.
+
+Job record (625): fresh ENTRY74673 and predecessor62474 evidence bindings verified before first625 source/job. Next unsigned deepest CRT callee at num2/xlen=xstride335.
+
+Documentation supplement update (625): same copied depth labels occur in EighthStepCrt217/NinthStepCrt217 comments as well; supplement covers both body and caller modules without changing frozen evidence.
+
+Job record (625): keygen_deepcrt625_001 — ACCEPTED_LOCAL DeepestUnsignedCrtBody217,17.756s,0/0: actual unsigned rebuild_CRT callee num2/xlen=xstride335, source-bound indexed rows, co-loop and false normalization branch, 670-word image. Next bind original deepest call frame.
+
+Job record (625): keygen_deepcrt625_002 — ACCEPTED_LOCAL DeepestUnsignedCrtCall217,3.722s,0/0: original seven-argument unsigned deepest CRT call frame executes generic 670-word reconstruction under explicit domain. Next inspect actual part3 shape and instantiate selected caller.
+
+Job record (625): keygen_deepcrt625_003 — ACCEPTED_LOCAL diagnostic,2.573s,0/0: exact source part3 starts with unsigned CRT call then bezout branch. Next bind selected fp/gp, prime object and scratch domain to actual call.
+
+Job record (625): keygen_deepcrt625_004 — ACCEPTED_LOCAL DeepestSelectedCrt217,2.778s,0/0: selected fp/gp images combine into contiguous670 words; readonly prime object, scratch allocation, writable bounds and separation follow from ordinary memory stability. Next actual selected CRT call/head.
+
+Job record (625): keygen_deepcrt625_005 — ACCEPTED_LOCAL DeepestCrtSource217,15.230s,0/0: actual selected make_fg output and deepest part3 CRT head execute on same witness; exact unsigned reconstructed670-word image obtained. Extend unsealed result with caller frame and split images for bezout.
+
+Job record (625): keygen_deepcrt625_006 — ACCEPTED_LOCAL DeepestCrtSource217,8.840s,0/0: actual selected CRT head retains caller locals/arrays/tables and exact reconstructed image; checked split into fp/gp-ready sections. Next audit/canonical replay.
+
+Job record (625): keygen_deepcrt625_007 — RETAINED runner preflight failure before Lean: diagnostic source moved while cache referenced original path. Restored exact source, kept failure record, no rebaseline; diagnostic remains a tracked source dependency. Retry audit with new job ID.
+
+Job record (625): keygen_deepcrt625_008 — ACCEPTED_LOCAL audit, four interfaces/20 axiom results,0/0. Next canonical five-module replay, pin recheck and evidence.
+
+Job record (625): canonical keygen_deepcrt625_canonical — ACCEPTED5/5,0/0,20 standard-only axiom results, 50.0s,maxRSS5310916KiB. Entry74673/predecessor62474 unchanged; next evidence/local commit then bezout.
+
+Job record (625 checkpoint): evidence PASS128 bindings,5 accepted/20 standard-only results, zero failed Lean attempts, one retained runner preflight failure; entry74673/predecessor62474 unchanged. Exact own paths include diagnostic source and documentation supplement; foreign work excluded, no push. Continue626 bezout.
